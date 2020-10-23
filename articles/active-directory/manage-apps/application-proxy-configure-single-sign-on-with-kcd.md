@@ -1,29 +1,25 @@
 ---
-title: Eenmalige aanmelding met toepassings proxy | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u eenmalige aanmelding kunt bieden met behulp van Azure AD-toepassingsproxy.
+title: Op Kerberos gebaseerde eenmalige aanmelding (SSO) in Azure Active Directory met toepassings proxy
+description: In dit artikel wordt beschreven hoe u eenmalige aanmelding kunt bieden met behulp van Azure Active Directory-toepassingsproxy.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 08/13/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: it-pro
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8320f5c034eb3a6de8c912ba23a9fb3f69a8a53c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: contperfq2
+ms.openlocfilehash: 860d29d3fff2187e770a5ff00b7145fc188a497c
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91299745"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426487"
 ---
-# <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Beperkte Kerberos-delegatie voor eenmalige aanmelding voor uw apps met de toepassingsproxy
+# <a name="kerberos-constrained-delegation-for-single-sign-on-sso-to-your-apps-with-application-proxy"></a>Beperkte Kerberos-overdracht voor eenmalige aanmelding (SSO) voor uw apps met toepassings proxy
 
 U kunt eenmalige aanmelding bieden voor on-premises toepassingen die zijn gepubliceerd via toepassings proxy die zijn beveiligd met geïntegreerde Windows-verificatie. Voor deze toepassingen is een Kerberos-ticket vereist voor toegang. Toepassings proxy maakt gebruik van Kerberos-beperkte delegering (KCD) ter ondersteuning van deze toepassingen. 
 

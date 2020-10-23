@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 12/24/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: b856381e8d085c6839effd1de6d9867b214d24ee
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 04d53dc213d5e992dc79e322b071025bdb447b1b
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89020385"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057498"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Quickstart: Gegevens verzamelen van een Linux-computer in een hybride omgeving met Azure Monitor
 
@@ -62,13 +62,11 @@ Voordat u de Log Analytics-agent voor Linux installeert, hebt u eerst de werkrui
 
 2. Selecteer in de lijst met Log Analytics-werkruimten de werkruimte die u eerder hebt gemaakt. (Mogelijk hebt u deze de naam **DefaultLAWorkspace** gegeven.)
 
-3. Selecteer **Geavanceerde instellingen**:
-
-    ![Het menu Geavanceerde instellingen voor Log Analytics in de Azure-portal](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png) 
+3. Selecteer **Agents beheren**:
  
-4. Selecteer **Verbonden bronnen** en selecteer vervolgens **Linux-servers**.
+4. Selecteer vervolgens **Linux-servers**.
 
-5. De waarde rechts van **Werkruimte-ID** en **Primaire sleutel**. Kopieer en plak beide in uw favoriete editor.
+5. De waarde rechts van **Werkruimte-id** en **Primaire sleutel**. Kopieer en plak beide in uw favoriete editor.
 
 ## <a name="install-the-agent-for-linux"></a>De agent voor Linux installeren
 

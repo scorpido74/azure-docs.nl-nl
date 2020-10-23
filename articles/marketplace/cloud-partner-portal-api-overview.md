@@ -7,19 +7,19 @@ ms.topic: reference
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: bfb6e9cb510f5fe887f108dfdea5932406aafe0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57d3d1c6bb14db3eb2ca499069934a628d2f7fea
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87292919"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425784"
 ---
 # <a name="cloud-partner-portal-api-reference"></a>Naslaginformatie over Cloud Partner-portal-API
 
 > [!NOTE]
 > De Cloud Partner-portal-Api's zijn geïntegreerd in en blijven werken in het partner centrum. De overgang introduceert kleine wijzigingen. Bekijk de [wijzigingen](#changes-to-cpp-apis-after-the-migration-to-partner-center) in de CCP-api's in dit document om te controleren of uw code blijft werken na het overstappen naar het partner centrum. CCP-Api's mogen alleen worden gebruikt voor bestaande producten die al zijn geïntegreerd vóór de overgang naar het partner centrum. nieuwe producten moeten de indienings-Api's van partner Center gebruiken.
 
-Met de Cloud Partner-portal REST Api's kan werk belastingen, aanbiedingen en Publisher-profielen programmatisch worden opgehaald en gemanipuleerd. De Api's gebruiken op rollen gebaseerd toegangs beheer (RBAC) om de juiste machtigingen af te dwingen tijdens de verwerkings tijd.
+Met de Cloud Partner-portal REST Api's kan werk belastingen, aanbiedingen en Publisher-profielen programmatisch worden opgehaald en gemanipuleerd. De Api's gebruiken Azure op rollen gebaseerd toegangs beheer (Azure RBAC) om de juiste machtigingen af te dwingen tijdens de verwerkings tijd.
 
 Deze Naslag informatie bevat technische Details voor de Cloud Partner-portal REST-Api's. De payload-voor beelden in dit document zijn alleen ter referentie en zijn onderhevig aan wijzigingen wanneer er nieuwe functionaliteit wordt toegevoegd.
 
@@ -50,7 +50,7 @@ Deze referentie Details Api's om de volgende algemene taken uit te voeren.
 - [Een aanbieding maken](./cloud-partner-portal-api-creating-offer.md)
 - [Een aanbieding publiceren](./cloud-partner-portal-api-publish-offer.md)
 
-### <a name="operations"></a>Operations
+### <a name="operations"></a>Bewerkingen
 
 - [Bewerkingen ophalen](./cloud-partner-portal-api-retrieve-operations.md)
 - [Bewerkingen annuleren](./cloud-partner-portal-api-cancel-operations.md)
@@ -63,6 +63,6 @@ Deze referentie Details Api's om de volgende algemene taken uit te voeren.
 
 - [Prijzen voor aanbiedingen van virtuele machines instellen](./cloud-partner-portal-api-setting-price.md)
 
-### <a name="troubleshooting"></a>Problemen oplossen
+### <a name="troubleshooting"></a>Probleemoplossing
 
 - [Problemen met verificatiefouten oplossen](./cloud-partner-portal-api-troubleshooting-authentication-errors.md)

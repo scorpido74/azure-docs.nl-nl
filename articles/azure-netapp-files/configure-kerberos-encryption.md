@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 9/29/2020
+ms.date: 10/19/2020
 ms.author: b-juche
-ms.openlocfilehash: b683719fa2d0c1e7b5333c2ddf9c93f2797ade9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: edb084a3539f4ab25f328d4cc59ee4ef3279bf07
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91461475"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217045"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>NFSv 4.1 Kerberos-versleuteling voor Azure NetApp Files configureren
 
@@ -75,7 +75,7 @@ Door de configuratie van NFSv 4.1 Kerberos worden twee computer accounts gemaakt
 * Een computer account voor SMB-shares
 * Een computer account voor NFSv 4.1: u kunt dit account identificeren met behulp van het voor voegsel `NFS-` . 
 
-Nadat u het eerste NFSv 4.1 Kerberos-volume hebt gemaakt, stelt u het versleutelings type of het computer account in met behulp van de volgende Power shell-opdracht:
+Nadat u het eerste NFSv 4.1 Kerberos-volume hebt gemaakt, stelt u het versleutelings type voor het computer account in met behulp van de volgende Power shell-opdracht:
 
 `Set-ADComputer $NFSCOMPUTERACCOUNT -KerberosEncryptionType AES256`
 
@@ -96,11 +96,11 @@ Volg de instructies in [een NFS-client configureren voor Azure NetApp files](con
 3. Maak de map (koppel punt) voor het nieuwe volume.  
 
 4. Stel het standaard versleutelings type in op AES 256 voor het computer account:  
-    `Set-ADComputer $COMPUTERACCOUNT -KerberosEncryptionType AES256 -Credential $ANFSERVICEACCOUNT`
+    `Set-ADComputer $NFSCOMPUTERACCOUNT -KerberosEncryptionType AES256 -Credential $ANFSERVICEACCOUNT`
 
     * U hoeft deze opdracht slechts één keer uit te voeren voor elk computer account.
     * U kunt deze opdracht uitvoeren vanaf een domein controller of op een PC waarop [RSAT](https://support.microsoft.com/help/2693643/remote-server-administration-tools-rsat-for-windows-operating-systems) is geïnstalleerd. 
-    * De `$COMPUTERACCOUNT` variabele is het computer account dat is gemaakt in Active Directory wanneer u het Kerberos-volume implementeert. Dit is het account dat wordt voorafgegaan door `NFS-` . 
+    * De `$NFSCOMPUTERACCOUNT` variabele is het computer account dat is gemaakt in Active Directory wanneer u het Kerberos-volume implementeert. Dit is het account dat wordt voorafgegaan door `NFS-` . 
     * De `$ANFSERVICEACCOUNT` variabele is een niet-privileged Active Directory gebruikers account met gedelegeerde besturings elementen voor de organisatie-eenheid waar het computer account is gemaakt. 
 
 5. Koppel het volume op de host: 

@@ -4,12 +4,12 @@ description: Meer informatie over de Azure Migrate-service.
 ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 72f2dfb3e5e05466892d838af4e1c84c855b94a9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 48447959f0a60baf8802a9939612bf0d536c2557
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86122078"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314769"
 ---
 # <a name="about-azure-migrate"></a>Over Azure Migrate
 
@@ -124,5 +124,5 @@ Er zijn twee versies van de Azure Migrate-service.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Probeer onze zelfstudies om [VMware-VM's](tutorial-prepare-vmware.md), [Hyper-V-VM's](tutorial-prepare-hyper-v.md)of [fysieke servers](tutorial-prepare-physical.md) te evalueren.
+- Probeer onze zelfstudies om [VMware-VM's](./tutorial-discover-vmware.md), [Hyper-V-VM's](./tutorial-discover-hyper-v.md)of [fysieke servers](./tutorial-discover-physical.md) te evalueren.
 - [Bekijk de veelgestelde vragen](resources-faq.md) over Azure Migrate.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/09/2020
 ms.author: jeedes
-ms.openlocfilehash: c988168f5d56fd7dcf8142a9f1e68af2defdcfc7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2e8f542f8a734f5bd6592ebc743b30676dd61f07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552965"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850540"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-invision"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met InVision
 
@@ -133,15 +133,15 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik op **Team** en selecteer **Instellingen**.
 
-    ![Configuratie van InVision](./media/invision-tutorial/config1.png)
+    ![Schermopname van het tabblad Team met Instellingen geselecteerd.](./media/invision-tutorial/config1.png)
 
 1. Scrol omlaag naar **Eenmalige aanmelding** en klik vervolgens op **Wijzigen**.
 
-    ![Configuratie van InVision](./media/invision-tutorial/config3.png)
+    ![Schermopname met de knop Wijzigen voor Eenmalige aanmelding.](./media/invision-tutorial/config3.png)
 
 1. Voer op de pagina **Eenmalige aanmelding** de volgende stappen uit:
 
-    ![Configuratie van InVision](./media/invision-tutorial/config4.png)
+    ![Schermopname met de pagina Eenmalige aanmelding waarop u de waarden voor deze stap invoert.](./media/invision-tutorial/config4.png)
 
     a. Wijzig **Eenmalige aanmelding vereisten voor elk lid van <accountnaam>** in **Aan**.
 
@@ -169,19 +169,19 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik op **Team** en selecteer **Personen**.
 
-    ![Configuratie van InVision](./media/invision-tutorial/config2.png)
+    ![Schermopname van het tabblad Team met Personen geselecteerd.](./media/invision-tutorial/config2.png)
 
 1. Klik op het **+PICTOGRAM** om een nieuwe gebruiker toe te voegen.
 
-    ![Configuratie van InVision](./media/invision-tutorial/user1.png)
+    ![Schermopname met het pictogram + voor het toevoegen van een gebruiker.](./media/invision-tutorial/user1.png)
 
 1. Voer het e-mailadres in van de gebruiker en klik op **Volgende**.
 
-    ![Configuratie van InVision](./media/invision-tutorial/user2.png)
+    ![Schermopname van het dialoogvenster Uitnodiging waar u adressen kunt invoeren.](./media/invision-tutorial/user2.png)
 
 1. Bevestig het e-mailadres één keer en klik vervolgens op **Uitnodiging**.
 
-    ![Configuratie van InVision](./media/invision-tutorial/user3.png)
+    ![Schermopname van het dialoogvenster Uitnodiging waarin u Uitnodiging kunt selecteren om door te gaan.](./media/invision-tutorial/user3.png)
 
 ## <a name="test-sso"></a>Eenmalige aanmelding testen
 

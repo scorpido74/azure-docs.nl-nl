@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 72e9fd0d5a178897cf84b2babe4c02f7ef920841
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: c59bd7f9bc8c5049572afdf93343222b30c0007b
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531335"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131901"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>Kostenwaarschuwingen gebruiken om gebruik en uitgaven te controleren
 
@@ -21,7 +21,7 @@ In dit artikel leert u hoe u met waarschuwingen van Cost Management uw Azure-geb
 
 ## <a name="budget-alerts"></a>Budgetwaarschuwingen
 
-Met budgetwaarschuwingen wordt u gewaarschuwd wanneer uitgaven, op basis van het gebruik of de kosten, de hoeveelheid overschrijden die is gedefinieerd in de [Waarschuwingsvoorwaarde van het budget](tutorial-acm-create-budgets.md). Cost Management-budgetten worden gemaakt met behulp van de Azure-portal of de [Azure-verbruiks](https://docs.microsoft.com/rest/api/consumption)-API.
+Met budgetwaarschuwingen wordt u gewaarschuwd wanneer uitgaven, op basis van het gebruik of de kosten, de hoeveelheid overschrijden die is gedefinieerd in de [Waarschuwingsvoorwaarde van het budget](tutorial-acm-create-budgets.md). Cost Management-budgetten worden gemaakt met behulp van de Azure-portal of de [Azure-verbruiks](/rest/api/consumption)-API.
 
 In de Azure-portal worden budgetten gedefinieerd op basis van de kosten. Met behulp van de Azure-verbruiks-API worden budgetten gedefinieerd op basis van kosten of verbruik. Budgetwaarschuwingen ondersteunen zowel op kosten gebaseerde als op gebruik gebaseerde budgetten. Budgetwaarschuwingen worden automatisch gegenereerd wanneer wordt voldaan aan de voorwaarden voor budgetwaarschuwingen. U kunt alle kostenwaarschuwingen weergeven in de Azure-portal. Wanneer er een waarschuwing wordt gegenereerd, wordt deze weergegeven in kostenmeldingen. Er wordt ook een e-mailbericht verzonden naar de personen in de lijst met ontvangers van het budget.
 

@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c5dd703851054b058d96440a3a994b9d10eecfa3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88e9d16a205df16a2be63e67f45cdbcf9144b30f
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372660"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108453"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Schaal en hosting van Azure Functions
 
@@ -26,7 +26,7 @@ Zowel verbruik als Premium-abonnementen voegen automatisch reken kracht toe wann
 
 Premium-abonnement biedt extra functies, zoals Premium Compute-instanties, waarmee instanties voor onbepaalde tijd en VNet-connectiviteit kunnen worden bewaard.
 
-Met App Service plan kunt u profiteren van de toegewezen infra structuur, die u beheert. De functie-app kan niet worden geschaald op basis van gebeurtenissen, wat betekent dat nooit wordt geschaald naar nul. (Vereist dat [Always on](#always-on) is ingeschakeld.)
+Met App Service plan kunt u profiteren van de toegewezen infra structuur, die u beheert. De functie-app kan niet worden geschaald op basis van gebeurtenissen, wat betekent dat deze nooit wordt geschaald naar nul. (Vereist dat [Always on](#always-on) is ingeschakeld.)
 
 Zie de [sectie vergelijkings abonnementen](#hosting-plans-comparison)voor een gedetailleerde vergelijking tussen de verschillende hosting plannen (inclusief op Kubernetes gebaseerde hosting).
 
@@ -166,9 +166,9 @@ az resource update --resource-type Microsoft.Web/sites -g <resource_group> -n <f
 
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>Aanbevolen procedures en patronen voor schaal bare apps
 
-Er zijn veel aspecten van een functie-app die van invloed zijn op de manier waarop deze worden geschaald, met inbegrip van hostconfiguratie, runtime footprint en resource-efficiëntie.  Zie de [sectie schaal baarheid in het artikel over prestatie overwegingen](functions-best-practices.md#scalability-best-practices)voor meer informatie. U moet ook weten hoe verbindingen zich gedragen als uw functie-app wordt geschaald. Zie [verbindingen beheren in azure functions](manage-connections.md)voor meer informatie.
+Er zijn veel aspecten van een functie-app die van invloed zijn op de manier waarop deze worden geschaald, met inbegrip van hostconfiguratie, runtime footprint en resource-efficiëntie.  Zie de [sectie schaal baarheid in het artikel over prestatie overwegingen](functions-best-practices.md#scalability-best-practices)voor meer informatie. U moet ook weten hoe verbindingen zich gedragen als uw functie-app wordt geschaald. Raadpleeg [Verbindingen beheren in Azure Functions](manage-connections.md) voor meer informatie.
 
-Voor meer informatie over het schalen van python en Node.js raadpleegt u de [Azure functions python-ontwikkelaars handleiding voor het schalen en gelijktijdigheid](functions-reference-python.md#scaling-and-concurrency) en de [Azure functions Node.js ontwikkelaars handleiding-schalen en gelijktijdigheid](functions-reference-node.md#scaling-and-concurrency).
+Voor meer informatie over het schalen van python en Node.js raadpleegt u de [Azure functions python-ontwikkelaars handleiding voor het schalen en gelijktijdigheid](functions-reference-python.md#scaling-and-performance) en de [Azure functions Node.js ontwikkelaars handleiding-schalen en gelijktijdigheid](functions-reference-node.md#scaling-and-concurrency).
 
 ### <a name="billing-model"></a>Factureringsmodel
 
@@ -188,7 +188,7 @@ In de volgende vergelijkings tabel ziet u alle belang rijke aspecten om het besl
 ### <a name="plan-summary"></a>Samen vatting plannen
 | | |
 | --- | --- |  
-|**[Verbruiks abonnement](#consumption-plan)**| Schaal automatisch en betaal alleen voor reken resources wanneer uw functies worden uitgevoerd. In het verbruiks plan worden instanties van de functions-host dynamisch toegevoegd en verwijderd op basis van het aantal binnenkomende gebeurtenissen.<br/> ✔ Standaard hosting plan.<br/>✔ Betaal alleen wanneer uw functies worden uitgevoerd.<br/>✔ automatisch uitschalen, zelfs tijdens peri Oden met een hoge belasting.|  
+|**[Verbruiksabonnement](#consumption-plan)**| Schaal automatisch en betaal alleen voor reken resources wanneer uw functies worden uitgevoerd. In het verbruiks plan worden instanties van de functions-host dynamisch toegevoegd en verwijderd op basis van het aantal binnenkomende gebeurtenissen.<br/> ✔ Standaard hosting plan.<br/>✔ Betaal alleen wanneer uw functies worden uitgevoerd.<br/>✔ automatisch uitschalen, zelfs tijdens peri Oden met een hoge belasting.|  
 |**[Premium-abonnement](#premium-plan)**|Bij automatisch schalen op basis van de vraag, kunt u vooraf gewarmde werk rollen gebruiken om toepassingen uit te voeren zonder vertraging na inactiviteit, om krachtigere instanties uit te voeren en verbinding te maken met VNETs. Bekijk het Azure Functions Premium-abonnement in de volgende situaties naast alle functies van het App Service plan: <br/>✔ Uw functie-apps continu of bijna continu worden uitgevoerd.<br/>✔ U een groot aantal kleine uitvoeringen hebt en een hoge uitvoerings factuur hebt, maar een laag GB tweede factuur in het verbruiks abonnement.<br/>✔ U meer CPU-of geheugen opties nodig hebt dan wat wordt aangegeven door het verbruiks abonnement.<br/>✔ De code moet langer worden uitgevoerd dan de Maxi maal toegestane uitvoerings tijd voor het verbruiks abonnement.<br/>✔ U functies nodig hebt die alleen beschikbaar zijn in een Premium-abonnement, zoals een verbinding met een virtueel netwerk.|  
 |**[Toegewezen abonnement](#app-service-plan)**<sup>1</sup>|Voer uw functies uit binnen een App Service plan op regel matige App Service plan tarieven. Geschikt voor langlopende bewerkingen en wanneer meer voorspellende schaling en kosten zijn vereist. Houd rekening met een App Service-abonnement in de volgende situaties:<br/>✔ U bestaande, geApp Servicede virtuele machines die al worden uitgevoerd, worden gebruikt.<br/>✔ U een aangepaste installatie kopie wilt opgeven waarop uw functies moeten worden uitgevoerd.|  
 |**[ASE](#app-service-plan)**<sup>1</sup>|App Service Environment (ASE) is een App Service functie die een volledig geïsoleerde en toegewezen omgeving biedt voor het veilig uitvoeren van App Service-apps op grote schaal. As zijn geschikt voor werk belastingen van toepassingen die nodig zijn voor: <br/>✔ Zeer grote schaal.<br/>✔ Volledige Compute-isolatie en beveiligde netwerk toegang.<br/>✔ Hoog geheugen gebruik.|  
@@ -200,7 +200,7 @@ In de volgende vergelijkings tabel ziet u alle belang rijke aspecten om het besl
 
 | | Linux<sup>1</sup><br/>Alleen code | Windows<sup>2</sup><br/>Alleen code | Linux<sup>1, 3</sup><br/>Docker-container |
 | --- | --- | --- | --- |
-| **[Verbruiks abonnement](#consumption-plan)** | .NET Core<br/>Node.js<br/>Java<br/>Python | .NET Core<br/>Node.js<br/>Java<br/>PowerShell Core | Geen ondersteuning  |
+| **[Verbruiksabonnement](#consumption-plan)** | .NET Core<br/>Node.js<br/>Java<br/>Python | .NET Core<br/>Node.js<br/>Java<br/>PowerShell Core | Geen ondersteuning  |
 | **[Premium-abonnement](#premium-plan)** | .NET Core<br/>Node.js<br/>Java<br/>Python|.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python  | 
 | **[Toegewezen abonnement](#app-service-plan)**<sup>4</sup> | .NET Core<br/>Node.js<br/>Java<br/>Python|.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
 | **[ASE](#app-service-plan)**<sup>4</sup> | .NET Core<br/>Node.js<br/>Java<br/>Python |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core  |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python | 
@@ -215,7 +215,7 @@ In de volgende vergelijkings tabel ziet u alle belang rijke aspecten om het besl
 
 | | Uitschalen | Maximum aantal instanties |
 | --- | --- | --- |
-| **[Verbruiks abonnement](#consumption-plan)** | Gestuurde gebeurtenis. Automatisch uitschalen, zelfs tijdens het aantal Peri Oden van hoge belasting. Met Azure Functions-infra structuur worden CPU-en geheugen bronnen geschaald door extra exemplaren van de functions-host toe te voegen op basis van het aantal gebeurtenissen waarvoor de functies zijn geactiveerd. | 200 |
+| **[Verbruiksabonnement](#consumption-plan)** | Gestuurde gebeurtenis. Automatisch uitschalen, zelfs tijdens het aantal Peri Oden van hoge belasting. Met Azure Functions-infra structuur worden CPU-en geheugen bronnen geschaald door extra exemplaren van de functions-host toe te voegen op basis van het aantal gebeurtenissen waarvoor de functies zijn geactiveerd. | 200 |
 | **[Premium-abonnement](#premium-plan)** | Gestuurde gebeurtenis. Automatisch uitschalen, zelfs tijdens het aantal Peri Oden van hoge belasting. Met Azure Functions-infra structuur worden CPU-en geheugen bronnen geschaald door extra exemplaren van de functions-host toe te voegen op basis van het aantal gebeurtenissen waarvoor de functies zijn geactiveerd. |100|
 | **[Toegewezen abonnement](#app-service-plan)**<sup>1</sup> | Hand matig/automatisch schalen |10-20|
 | **[ASE](#app-service-plan)**<sup>1</sup> | Hand matig/automatisch schalen |100 |
@@ -247,7 +247,7 @@ In de volgende vergelijkings tabel ziet u alle belang rijke aspecten om het besl
 
 | | | 
 | --- | --- |
-| **[Verbruiks abonnement](#consumption-plan)** | Betaal alleen voor de tijd dat uw functies worden uitgevoerd. De facturering is dan ook gebaseerd op het aantal uitvoeringen, de uitvoeringstijd en het gebruikte geheugen. |
+| **[Verbruiksabonnement](#consumption-plan)** | Betaal alleen voor de tijd dat uw functies worden uitgevoerd. De facturering is dan ook gebaseerd op het aantal uitvoeringen, de uitvoeringstijd en het gebruikte geheugen. |
 | **[Premium-abonnement](#premium-plan)** | Het Premium-abonnement is gebaseerd op het aantal kern seconden en het geheugen dat wordt gebruikt voor alle benodigde en vooraf gewarmde instanties. Ten minste één exemplaar per plan moet altijd warme worden bewaard. Dit abonnement biedt meer voorspel bare prijzen. |
 | **[Toegewezen abonnement](#app-service-plan)**<sup>1</sup> | U betaalt hetzelfde voor functie-apps in een App Service plan zoals u zou doen voor andere App Service resources, zoals web-apps.|
 | **[ASE](#app-service-plan)**<sup>1</sup> | Er is een vast maand bedrag voor een ASE dat betaalt voor de infra structuur en niet wordt gewijzigd door de grootte van de ASE. Daarnaast zijn er kosten per App Service plan vCPU. Alle apps die worden gehost in een AS-omgeving, vallen onder de Geïsoleerde prijs-SKU. |

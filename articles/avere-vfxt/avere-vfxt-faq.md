@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
 ms.custom: references_regions
-ms.openlocfilehash: c6459e2daf17772b28ee53289754deb33b4823ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 647a9792384a21dfc191371ef444cbdc098bc819
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88272688"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342362"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Veelgestelde vragen over Avere vFXT for Azure
 
@@ -160,7 +160,7 @@ Het loskoppelen en opnieuw koppelen van Ssd's wordt niet ondersteund. Meta gegev
 
 ### <a name="does-the-system-encrypt-the-cache"></a>Wordt de cache door het systeem versleuteld?
 
-De gegevens worden gestripd over de schijven, maar niet versleuteld. De schijven zelf kunnen echter worden versleuteld. Zie voor meer informatie [beleid voor veilig en gebruik van virtuele machines in azure](https://docs.microsoft.com/azure/virtual-machines/linux/security-policy#encryption).
+De gegevens worden gestripd over de schijven, maar niet versleuteld. De schijven zelf kunnen echter worden versleuteld. Zie voor meer informatie [beleid voor veilig en gebruik van virtuele machines in azure](../virtual-machines/security-policy.md#encryption).
 
 ## <a name="technical-networking"></a>Technisch: netwerken
 
@@ -259,7 +259,7 @@ Nee. De Service Level Agreement (SLA) voor archief opslag is niet compatibel met
 
 Blob-opslag voor de cool-laag wordt doorgaans niet aanbevolen voor een avere vFXT voor Azure core-bestanden. Cool-laag biedt lagere opslag kosten, maar hogere bewerkings kosten. (Zie [prijzen voor blok-blobs](<https://azure.microsoft.com/pricing/details/storage/blobs/>) voor meer informatie.) Als gegevens regel matig worden geopend en gewijzigd of verwijderd, kunt u overwegen de warme laag te gebruiken.
 
-[Toegangs lagen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers#cool-access-tier) biedt meer informatie over wanneer het zinvol is om de cool-laag opslag te gebruiken als een vFXT-kern bestand.
+[Toegangs lagen](../storage/blobs/storage-blob-storage-tiers.md#cool-access-tier) biedt meer informatie over wanneer het zinvol is om de cool-laag opslag te gebruiken als een vFXT-kern bestand.
 
 ### <a name="how-do-i-encrypt-the-blob-container"></a>Hoe kan ik de BLOB-container versleutelen?
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 094a146f8e0e32667986a8e807955be1a5f66e39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71d9af57ab85d694cc08f30c19f6ac87796b2c4e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613918"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425563"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>Zelf studie: tableau online configureren voor het automatisch inrichten van gebruikers
 
@@ -67,7 +67,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 *   We raden u aan één Azure AD-gebruiker toe te wijzen aan tableau online om de configuratie voor automatische gebruikers inrichting te testen. U kunt later aanvullende gebruikers of groepen toewijzen.
 
-*   Wanneer u een gebruiker toewijst aan tableau online, selecteert u een geldige toepassingsspecifieke rol, indien beschikbaar, in het dialoog venster toewijzing. Gebruikers met de rol **Standaardtoegang** worden uitgesloten van het inrichten.
+*   Wanneer u een gebruiker toewijst aan tableau online, selecteert u een geldige toepassingsspecifieke rol, indien beschikbaar, in het dialoog venster toewijzing. Gebruikers met de rol **Standaard toegang** worden uitgesloten van het inrichten.
 
 ## <a name="configure-automatic-user-provisioning-to-tableau-online"></a>Automatische gebruikers inrichting configureren voor tableau online
 
@@ -78,7 +78,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="configure-automatic-user-provisioning-for-tableau-online-in-azure-ad"></a>Automatische gebruikers inrichting voor tableau online configureren in azure AD
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer alle toepassingen in **bedrijfs toepassingen**  >  **All applications**  >  **tableau online**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer alle toepassingen in **bedrijfs toepassingen**  >  **All applications**  >  **tableau online**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -98,7 +98,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
    * Vul in het vak **domein** het subdomein in op basis van stap 6.
 
-   * Vul in het vak **Administrator-gebruikers naam** de gebruikers naam in van het beheerders account op uw Clarizen-Tenant. Een voorbeeld is admin@contoso.com.
+   * Vul in het vak **Administrator-gebruikers naam** de gebruikers naam in van het beheerders account op uw tableau online-Tenant. Een voorbeeld is admin@contoso.com.
 
    * In het vak **beheerders wachtwoord** vult u het wacht woord in van het beheerders account dat overeenkomt met de gebruikers naam van de beheerder.
 

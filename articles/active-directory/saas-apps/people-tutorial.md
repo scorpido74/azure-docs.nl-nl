@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 93b418a2bc4e1b03370b1bb86bd7da95255db0b8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fb8374802e7ec2596dc5f65a2acaf739b12dc164
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552387"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995966"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-people"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met People
 
@@ -142,11 +142,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
    
 4. Klik in het menu aan de linkerkant op **Instellingen**.
 
-    ![Eenmalige aanmelding configureren](./media/people-tutorial/tutorial_people_001.png)
+    ![Schermopname van het menu aan de linkerkant met 'Instellingen' geselecteerd.](./media/people-tutorial/tutorial_people_001.png)
 
 5. Klik op **Company** (Bedrijf).
 
-    ![Eenmalige aanmelding configureren](./media/people-tutorial/tutorial_people_002.png)
+    ![Schermopname met 'Company' geselecteerd in het menu 'Settings'.](./media/people-tutorial/tutorial_people_002.png)
 
 6. Klik in het **Bestand met metagegevens voor eenmalige aanmelding van SAML** op **Bladeren** om het gedownloade bestand met metagegevens te uploaden.
 

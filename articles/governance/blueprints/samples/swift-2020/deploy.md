@@ -3,12 +3,12 @@ title: Het blauwdrukvoorbeeld SWIFT CSP-CSCF v2020 implementeren
 description: Implementeer stappen voor het blauwdrukvoorbeeld SWIFT CSP-CSCF v2020, waaronder details van de parameters voor blauwdrukartefacten.
 ms.date: 08/18/2020
 ms.topic: sample
-ms.openlocfilehash: b65dc9cdd601f9fd2d7972b74435702a00244e8e
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 973cd0076ae03fd32db5fc9be262b2c5300fdf16
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612721"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949408"
 ---
 # <a name="deploy-the-swift-csp-cscf-v2020-blueprint-sample"></a>Het blauwdrukvoorbeeld SWIFT CSP-CSCF v2020 implementeren
 
@@ -31,7 +31,7 @@ Implementeer eerst het blauwdrukvoorbeeld door een nieuwe blauwdruk in uw omgevi
 
 1. Zoek het blauwdrukvoorbeeld **SWIFT CSP-CSCF v2020** onder _Andere voorbeelden_ en selecteer **Dit voorbeeld gebruiken**.
 
-1. Voer de _basisinstellingen_ van het blauwdrukvoorbeeld in:
+1. Voer de _Basisinstellingen_ van het blauwdrukvoorbeeld in:
 
    - **Naam van blauwdruk**: Geef een naam op voor uw kopie van het blauwdrukvoorbeeld SWIFT CSP-CSCF v2020.
    - **Definitielocatie**: Gebruik het weglatingsteken en selecteer de beheergroep waarin u uw kopie van het voorbeeld wilt opslaan.
@@ -48,7 +48,7 @@ Uw kopie van het blauwdrukvoorbeeld is nu gemaakt in uw omgeving. De kopie is ge
 
 1. Selecteer de pagina **Blauwdrukdefinities** aan de linkerkant. Gebruik de filters om uw kopie van het blauwdrukvoorbeeld te zoeken en selecteer vervolgens uw kopie.
 
-1. Selecteer **Blauwdruk publiceren** boven aan de pagina. Op de nieuwe pagina aan de rechterkant geeft u een **Versie** voor uw kopie van het blauwdrukvoorbeeld op. Deze eigenschap is handig als u later een aanpassing wilt maken. Geef **notities over wijzigingen** op, zoals 'Eerste gepubliceerde versie op basis van het blauwdrukvoorbeeld SWIFT CSP- CSCF v2020'. Selecteer vervolgens **Publiceren** onderaan de pagina.
+1. Selecteer **Blauwdruk publiceren** boven aan de pagina. Op de nieuwe pagina aan de rechterkant geeft u een **Versie** voor uw kopie van het blauwdrukvoorbeeld op. Deze eigenschap is handig als u later een aanpassing wilt maken. Geef **notities over wijzigingen** op, zoals 'Eerste gepubliceerde versie op basis van het blauwdrukvoorbeeld SWIFT CSP- CSCF v2020'. Selecteer vervolgens **Publiceren** onder aan de pagina.
 
 ## <a name="assign-the-sample-copy"></a>De voorbeeldkopie toewijzen
 
@@ -93,7 +93,7 @@ In de volgende tabel ziet u een lijst met de blauwdrukartefactparameters:
 
 |Naam van het artefact|Type artefact|Parameternaam|Beschrijving|
 |-|-|-|-|
-|\[Preview\]: SWIFT CSP-CSCF v2020-besturingselementen controleren en specifieke VM-extensies implementeren ter ondersteuning van de controlevereisten|Beleidstoewijzing|Lijst met resourcetypen waarvoor diagnostische logboeken moeten zijn ingeschakeld|Lijst met resourcetypen die moeten worden gecontroleerd als de instelling voor diagnostische logboeken niet is ingeschakeld. Acceptabele waarden vindt u in de [schema's van diagnostische logboeken van Azure Monitor](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
+|\[Preview\]: SWIFT CSP-CSCF v2020-besturingselementen controleren en specifieke VM-extensies implementeren ter ondersteuning van de controlevereisten|Beleidstoewijzing|Lijst met resourcetypen waarvoor diagnostische logboeken moeten zijn ingeschakeld|Lijst met resourcetypen die moeten worden gecontroleerd als de instelling voor diagnostische logboeken niet is ingeschakeld. Acceptabele waarden vindt u in de [categorieën van de resourcelogboeken van Azure Monitor](../../../../azure-monitor/platform/resource-logs-categories.md#supported-log-categories-per-resource-type).|
 |\[Preview\]: SWIFT CSP-CSCF v2020-besturingselementen controleren en specifieke VM-extensies implementeren ter ondersteuning van de controlevereisten|Beleidstoewijzing|Verbonden werkruimte-id's|Een door puntkomma's gescheiden lijst met de werkruimte-id's waarmee de Log Analytics-agent moet zijn verbonden|
 |\[Preview\]: SWIFT CSP-CSCF v2020-besturingselementen controleren en specifieke VM-extensies implementeren ter ondersteuning van de controlevereisten|Beleidstoewijzing|Lijst met gebruikers die moeten worden opgenomen in de groep Beheerders voor Windows-VM's|Een lijst met leden die moeten worden opgenomen in de lokale groep beheerders, gescheiden door puntkomma's. Bijvoorbeeld: Beheerder; myUser1; myUser2|
 |\[Preview\]: SWIFT CSP-CSCF v2020-besturingselementen controleren en specifieke VM-extensies implementeren ter ondersteuning van de controlevereisten|Beleidstoewijzing|Domeinnaam (FQDN)|De Fully Qualified Domain Name (FQDN) waaraan de virtuele Windows-machines moeten worden toegevoegd|

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 01/03/2020
-ms.openlocfilehash: 292496c4d458621213fe62105149ac845d78891e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 162049c12c0618298695e43dae43f16e9fb50260
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79479583"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372188"
 ---
 # <a name="hdinsight-sdk-for-go-preview"></a>HDInsight-SDK voor Go (preview-versie)
 
@@ -21,7 +21,7 @@ ms.locfileid: "79479583"
 De HDInsight-SDK voor Go biedt klassen en functies waarmee u uw HDInsight-clusters kunt beheren. Het bevat bewerkingen voor het maken, verwijderen, bijwerken, weer geven, verg Roten/verkleinen, script acties uitvoeren, bewaken, eigenschappen van HDInsight-clusters ophalen, en meer.
 
 > [!NOTE]  
->GoDoc-referentie materiaal voor deze SDK is [hier ook beschikbaar](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight).
+>GoDoc-referentie materiaal voor deze SDK is [hier ook beschikbaar](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2015-03-01-preview/hdinsight).
 
 Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -491,4 +491,4 @@ for (page.NotDone()) {
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Verken het [GoDoc-referentie materiaal](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight). De GoDocs bieden referentie documentatie voor alle functies in de SDK.
+Verken het [GoDoc-referentie materiaal](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2015-03-01-preview/hdinsight). De GoDocs bieden referentie documentatie voor alle functies in de SDK.

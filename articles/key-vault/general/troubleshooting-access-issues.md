@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: d77cc4cc65eb73aa85a1d54202627cd18d5747b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 155837802bd19ec1bb4e41484e229e1f5daef658
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595985"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125249"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Problemen met het toegangsbeleid voor Azure Key Vault oplossen
 
@@ -51,7 +51,9 @@ De toepassing moet ook ten minste één IAM-rol (Identiteits- en toegangsbeheer)
 
 ### <a name="how-can-i-redeploy-key-vault-with-arm-template-without-deleting-existing-access-policies"></a>Hoe kan ik Key Vault opnieuw implementeren met een ARM-sjabloon zonder bestaand toegangsbeleid te verwijderen?
 
-Op dit moment wordt elk toegangsbeleid in Key Vault verwijderd en vervangen door het toegangsbeleid in de ARM-sjabloon als u Key Vault opnieuw implementeert. Er is geen incrementele optie voor Key Vault-toegangsbeleid. Als u het toegangsbeleid in Key Vault wilt behouden, moet u het bestaande toegangsbeleid lezen in Key Vault en de ARM-sjabloon vullen met die beleidsregels om eventuele toegangsstoringen te voorkomen.
+Op dit moment wordt elk toegangsbeleid in Key Vault verwijderd en vervangen door het toegangsbeleid in de ARM-sjabloon als u Key Vault opnieuw implementeert. Er is geen incrementele optie voor Key Vault-toegangsbeleid. Als u het toegangsbeleid in Key Vault wilt behouden, moet u het bestaande toegangsbeleid lezen in Key Vault en de ARM-sjabloon vullen met dit beleid om eventuele toegangsstoringen te voorkomen.
+
+Een andere optie die u kan helpen bij dit scenario, is het gebruik van RBAC-rollen als alternatief voor toegangsbeleid. Met RBAC kunt u de sleutelkluis opnieuw implementeren zonder het beleid opnieuw op te geven. [Hier](https://docs.microsoft.com/azure/key-vault/general/rbac-guide) kunt u meer lezen over deze oplossing.
 
 ### <a name="recommended-troubleshooting-steps-for-following-error-types"></a>Aanbevolen stappen voor probleemoplossing voor de volgende fouttypen
 

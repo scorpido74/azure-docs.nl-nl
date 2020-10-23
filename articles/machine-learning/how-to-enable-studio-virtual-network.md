@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 4b6f2db8a8245db7dddbabc3a31a0de0d8963b84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df45068ff14d8ac08a17719e4e0338308b504cac
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776082"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92426097"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure Machine Learning Studio gebruiken in een virtueel Azure-netwerk
 
@@ -67,7 +67,7 @@ Als u de beheerde identiteit niet inschakelt, wordt deze fout ook weer gegeven, 
 * Een label project starten.
 
 > [!NOTE]
-> [Ml van ondersteunde gegevens etikettering](how-to-create-labeling-projects.md#use-ml-assisted-labeling) biedt geen ondersteuning voor standaard opslag accounts die zijn beveiligd achter een virtueel netwerk. U moet een niet-standaard opslag account gebruiken voor de etiket tering van ondersteunde gegevens. Het niet-standaard opslag account kan worden beveiligd achter het virtuele netwerk. 
+> [Ml van ondersteunde gegevens etikettering](how-to-create-labeling-projects.md#use-ml-assisted-labeling) biedt geen ondersteuning voor standaard opslag accounts die zijn beveiligd achter een virtueel netwerk. U moet een niet-standaard opslagaccount gebruiken voor het labelen van gegevens met behulp van ML. Het niet-standaard opslagaccount kan worden beveiligd achter het virtuele netwerk. 
 
 De Studio ondersteunt het lezen van gegevens uit de volgende gegevensopslag typen in een virtueel netwerk:
 
@@ -89,7 +89,7 @@ Azure Machine Learning maakt gebruik van [data stores](concept-data.md#datastore
 1. Selecteer in de instellingen voor gegevens archief de optie __Ja__  __Als u wilt dat Azure machine learning-service toegang heeft tot de opslag met behulp van een door werk ruimte beheerde identiteit__.
 
 
-Met deze stappen wordt de door de werk ruimte beheerde identiteit als __lezer__ aan de opslag service toegevoegd met behulp van het Azure resource-based Access Control (RBAC). Met __Reader__ toegang kan de werk ruimte Firewall instellingen ophalen en ervoor zorgen dat gegevens het virtuele netwerk niet verlaten.
+Met deze stappen wordt de door de werk ruimte beheerde identiteit als __lezer__ aan de opslag service toegevoegd met behulp van Azure resource-based Access Control (Azure RBAC). Met __Reader__ toegang kan de werk ruimte Firewall instellingen ophalen en ervoor zorgen dat gegevens het virtuele netwerk niet verlaten.
 
 > [!NOTE]
 > Het kan tot tien minuten duren voordat deze wijzigingen van kracht worden.
@@ -104,9 +104,9 @@ Voor __Azure Blob Storage__wordt de door de werk ruimte beheerde identiteit ook 
 
 ### <a name="azure-data-lake-storage-gen2-access-control"></a>Toegangs beheer Azure Data Lake Storage Gen2
 
-U kunt zowel RBAC-als POSIX-toegangscontrole lijsten (Acl's) gebruiken om de toegang tot gegevens binnen een virtueel netwerk te beheren.
+U kunt zowel de toegangs beheer lijsten (Acl's) van Azure RBAC als POSIX-stijl gebruiken om de toegang tot gegevens binnen een virtueel netwerk te beheren.
 
-Als u RBAC wilt gebruiken, voegt u de door de werk ruimte beheerde identiteit toe aan de rol [BLOB data Reader](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) . Zie [toegangs beheer op basis van rollen](../storage/blobs/data-lake-storage-access-control.md#azure-role-based-access-control)voor meer informatie.
+Als u Azure RBAC wilt gebruiken, voegt u de door de werk ruimte beheerde identiteit toe aan de rol [BLOB data Reader](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) . Zie [toegangs beheer op basis van rollen](../storage/blobs/data-lake-storage-access-control-model.md#role-based-access-control)voor meer informatie.
 
 Als u Acl's wilt gebruiken, kan de door de werk ruimte beheerde identiteit toegang krijgen net als elk ander beveiligings principe. Zie [toegangs beheer lijsten voor bestanden en mappen](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)voor meer informatie.
 

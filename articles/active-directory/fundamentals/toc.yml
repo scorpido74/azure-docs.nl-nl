@@ -49,6 +49,34 @@
           href: active-directory-architecture.md
         - name: Al uw apps met Azure AD integreren
           href: five-steps-to-full-application-integration-with-azure-ad.md
+        - name: Verificatie- en inrichtingsprotocollen
+          items:
+            - name: Overzicht
+              href: auth-sync-overview.md
+            - name: Verificatie op basis van headers
+              href: auth-header-based.md
+            - name: LDAP-verificatie
+              href: auth-ldap.md
+            - name: OAuth 2.0-verificatie
+              href: auth-oauth2.md
+            - name: Open ID Connect-verificatie
+              href: auth-oidc.md
+            - name: Verificatie op basis van een wachtwoord
+              href: auth-password-based-sso.md
+            - name: RADIUS-verificatie
+              href: auth-radius.md
+            - name: Gatewayverificatie voor extern bureaublad
+              href: auth-remote-desktop-gateway.md
+            - name: SAML-verificatie
+              href: auth-saml.md
+            - name: Windows-verificatie - KCD
+              href: auth-kcd.md
+            - name: Adreslijstsynchronisatie
+              href: sync-directory.md
+            - name: LDAP-synchronisatie
+              href: sync-ldap.md
+            - name: SCIM-synchronisatie
+              href: sync-scim.md
     - name: Implementatiehandleiding
       items:
         - name: 'Implementatie 30, 90 en hoger'

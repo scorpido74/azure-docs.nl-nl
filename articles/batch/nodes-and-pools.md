@@ -2,13 +2,13 @@
 title: Knoop punten en Pools in Azure Batch
 description: Meer informatie over reken knooppunten en Pools en hoe deze worden gebruikt in een Azure Batch werk stroom vanuit een ontwikkelings oogpunt.
 ms.topic: conceptual
-ms.date: 06/16/2020
-ms.openlocfilehash: 16a5309711b9c8633da9ba473c1b55bc2e54c334
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: a6422976f5362e9ff32cd41cc167a00441ab7aec
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87385752"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371440"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Knoop punten en Pools in Azure Batch
 
@@ -26,7 +26,7 @@ Alle rekenknooppunten in Batch omvatten ook:
 
 - Een standaard[mapstructuur](files-and-directories.md) en daaraan gekoppelde [omgevingsvariabelen](jobs-and-tasks.md) die beschikbaar zijn voor verwijzing door taken.
 - **Firewall**instellingen die zijn geconfigureerd om de toegang te beheren.
-- [Externe toegang](error-handling.md#connect-to-compute-nodes) voor Windows-knooppunten (Remote Desktop Protocol (RDP)) en Linux-knooppunten (Secure Shell (SSH)).
+- [Externe toegang](error-handling.md#connect-to-compute-nodes) tot zowel Windows-(Remote Desktop Protocol (RDP)) als Linux-knoop punten (Secure Shell (SSH)) (tenzij u [uw groep maakt met externe toegang uitgeschakeld](pool-endpoint-configuration.md)).
 
 Knoop punten kunnen standaard met elkaar communiceren, maar ze kunnen niet communiceren met virtuele machines die geen deel uitmaken van dezelfde groep. Als u knoop punten veilig met andere virtuele machines of met een on-premises netwerk wilt laten communiceren, kunt u de groep inrichten [in een subnet van een virtueel Azure-netwerk (VNet)](batch-virtual-network.md). Wanneer u dit doet, kunt u toegang krijgen tot uw knoop punten via open bare IP-adressen. Deze open bare IP-adressen worden gemaakt door batch en kunnen worden gewijzigd gedurende de levens duur van de groep. U kunt ook [een pool maken met een statisch openbaar IP-adres](create-pool-public-ip.md) dat u beheert. Dit zorgt ervoor dat ze niet onverwacht worden gewijzigd.
 

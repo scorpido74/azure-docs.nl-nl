@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bb35b81a287179900485c7190a57c492cfc39203
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: d4e150eddee947aa4ed6f88c122c0fa6d01a0bae
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043031"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460645"
 ---
 # <a name="write-client-app-authentication-code"></a>Verificatie code voor client-app schrijven
 
@@ -20,7 +20,7 @@ Nadat u [een Azure Digital apparaatdubbels-exemplaar en-verificatie hebt ingeste
 
 Azure Digital Apparaatdubbels voert verificatie uit met behulp van [Azure AD-beveiligings tokens op basis van OAUTH 2,0](../active-directory/develop/security-tokens.md#json-web-tokens-jwts-and-claims). Als u uw SDK wilt verifiëren, moet u een Bearer-token met de juiste machtigingen voor Azure Digital Apparaatdubbels verkrijgen en dit samen met uw API-aanroepen door geven. 
 
-In dit artikel wordt beschreven hoe u referenties kunt verkrijgen met behulp van de `Azure.Identity` client bibliotheek. Hoewel in dit artikel code voorbeelden in C# worden weer gegeven, zoals wat u schrijft voor [.net (C#) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core), kunt u een versie van gebruiken, `Azure.Identity` ongeacht de SDK die u gebruikt (voor meer informatie over de sdk's die beschikbaar zijn voor Azure Digital apparaatdubbels raadpleegt u [*Hoe: de Azure Digital Apparaatdubbels-api's en sdk's gebruiken*](how-to-use-apis-sdks.md)).
+In dit artikel wordt beschreven hoe u referenties kunt verkrijgen met behulp van de `Azure.Identity` client bibliotheek. Hoewel in dit artikel code voorbeelden in C# worden weer gegeven, zoals wat u schrijft voor [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true), kunt u een versie van gebruiken, `Azure.Identity` ongeacht de SDK die u gebruikt (voor meer informatie over de sdk's die beschikbaar zijn voor Azure Digital apparaatdubbels raadpleegt u [*Hoe: de Azure Digital Apparaatdubbels-api's en sdk's gebruiken*](how-to-use-apis-sdks.md)).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -105,9 +105,9 @@ client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, opts);
 
 De methode [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet) is bedoeld voor interactieve toepassingen en brengt een webbrowser voor verificatie. U kunt dit in plaats van gebruiken `DefaultAzureCredential` in gevallen waarin u interactieve verificatie nodig hebt.
 
-Als u de interactieve browser referenties wilt gebruiken, hebt u een **app-registratie** nodig die machtigingen heeft voor de Azure Digital Apparaatdubbels-api's. Voor stappen voor het instellen van deze app-registratie, zie de sectie [*toegangs machtigingen voor client toepassingen instellen*](how-to-set-up-instance-portal.md#set-up-access-permissions-for-client-applications) van *instructies: een exemplaar en verificatie*instellen. Zodra de app-registratie is ingesteld, hebt u nodig...
-* de toepassings-ID van de app-registratie *(client)*
-* de *Directory-id (Tenant)* van de app-registratie
+Als u de interactieve browser referenties wilt gebruiken, hebt u een **app-registratie** nodig die machtigingen heeft voor de Azure Digital Apparaatdubbels-api's. Zie [*How to: Create a app Registration*](how-to-create-app-registration.md)(Engelstalig) voor de stappen voor het instellen van deze app-registratie. Zodra de app-registratie is ingesteld, hebt u nodig...
+* de *toepassings-id* van de app-registratie (client) ([te vinden instructies](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
+* de *Directory-id (Tenant)* van de app-registratie ([te vinden instructies](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
 * de URL van het Azure Digital Apparaatdubbels-exemplaar ([instructies om te vinden](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
 
 Hier volgt een voor beeld van de code voor het maken van een geverifieerde SDK-client met `InteractiveBrowserCredential` .

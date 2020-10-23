@@ -7,12 +7,12 @@ ms.date: 08/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a750a98c27fd62288993b2203acc2032ccf39d71
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 1cc4f40374fce83589d2dc10a0422b91f5178c0b
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999766"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123780"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>Eigenschappen in een Azure IoT Central-oplossing gebruiken
 
@@ -40,7 +40,7 @@ De volgende tabel bevat de configuratie-instellingen voor een eigenschaps mogeli
 | Semantisch type   | Het semantische type van de eigenschap, zoals de Tempe ratuur, de status of de gebeurtenis. De keuze van semantisch type bepaalt welke van de volgende velden beschikbaar zijn.                                                                       |
 | Schema          | Het gegevens type van de eigenschap, zoals double, String of vector. Welke opties beschikbaar zijn, wordt bepaald door het semantische type. Schema is niet beschikbaar voor de semantische typen gebeurtenis en status.                                               |
 | Beschrijfbaar       | Als de eigenschap niet schrijfbaar is, kan het apparaat eigenschaps waarden rapporteren aan Azure IoT Central. Als de eigenschap schrijfbaar is, kan het apparaat eigenschaps waarden rapporteren aan Azure IoT Central. Vervolgens kan Azure IoT Central bijgewerkte eigenschappen verzenden naar het apparaat. |
-| Severity        | Alleen beschikbaar voor het semantische gebeurtenis type. De ernst is **fout**, **informatie**of **waarschuwing**.                                                                                                                         |
+| Ernst        | Alleen beschikbaar voor het semantische gebeurtenis type. De ernst is **fout**, **informatie**of **waarschuwing**.                                                                                                                         |
 | Status waarden    | Alleen beschikbaar voor het semantische type status. Definieer de mogelijke status waarden, die elk een weergave naam, naam, opsommings type en waarde hebben.                                                                                   |
 | Eenheid            | Een eenheid voor de waarde van de eigenschap, zoals **mph**, **%** of ** &deg; C**.                                                                                                                                                              |
 | Eenheid weer geven    | Een weergave-eenheid voor gebruik in dash boards en formulieren.                                                                                                                                                                                    |
@@ -152,7 +152,7 @@ De volgende code toont de definitie van een eigenschaps type van een object. Dit
 
 Eigenschappen zijn standaard alleen-lezen. Alleen-lezen eigenschappen betekenen dat het apparaat de waarde van de eigenschapwaarde bijwerkt naar uw Azure IoT Central-toepassing. Uw Azure IoT Central-toepassing kan de waarde van een alleen-lezen eigenschap niet instellen.
 
-Azure IoT Central maakt gebruik van apparaatdubbels om eigenschaps waarden te synchroniseren tussen het apparaat en de Azure IoT Central-toepassing. Waarden van eigenschappen van een apparaat gebruiken door apparaatdubbels gerapporteerde eigenschappen. Zie [device apparaatdubbels](https://docs.microsoft.com/azure/iot-hub/tutorial-device-twins)voor meer informatie.
+Azure IoT Central maakt gebruik van apparaatdubbels om eigenschaps waarden te synchroniseren tussen het apparaat en de Azure IoT Central-toepassing. Waarden van eigenschappen van een apparaat gebruiken door apparaatdubbels gerapporteerde eigenschappen. Zie [device apparaatdubbels](../../iot-hub/tutorial-device-twins.md)voor meer informatie.
 
 Het volgende code fragment van een hulp model voor apparaten toont de definitie van een alleen-lezen eigenschaps type:
 
@@ -250,7 +250,7 @@ Het antwoord bericht moet de `ac` velden en bevatten `av` . Het veld `ad` is opt
 | `'ac': 5xx` | Fout | Het apparaat heeft een onverwachte fout aangetroffen bij het verwerken van de aangevraagde wijziging. |
 
 
-Zie [uw apparaten configureren vanuit een back-end-service](https://docs.microsoft.com/azure/iot-hub/tutorial-device-twins)voor meer informatie over apparaatdubbels.
+Zie [uw apparaten configureren vanuit een back-end-service](../../iot-hub/tutorial-device-twins.md)voor meer informatie over apparaatdubbels.
 
 Wanneer de operator een Beschrijf bare eigenschap in de Azure IoT Central-toepassing instelt, gebruikt de toepassing een door het apparaat dubbele gewenste eigenschap om de waarde naar het apparaat te verzenden. Het apparaat reageert vervolgens met behulp van een dubbele, gerapporteerde eigenschap van het apparaat. Wanneer Azure IoT Central de gerapporteerde eigenschaps waarde ontvangt, wordt de eigenschappen weergave met de status **geaccepteerd**bijgewerkt.
 

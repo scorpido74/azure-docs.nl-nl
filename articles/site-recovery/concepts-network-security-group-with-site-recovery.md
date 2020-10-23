@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: harshacs
-ms.openlocfilehash: 904bc63ed2a135cdcadad75e96acd6fe3ca39039
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 367aba09f84da1e227c08721077aa1b2132a62bf
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90069676"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367970"
 ---
 # <a name="network-security-groups-with-azure-site-recovery"></a>Netwerkbeveiligingsgroepen met Azure Site Recovery
 
-Netwerk beveiligings groepen worden gebruikt om het netwerk verkeer te beperken tot resources in een virtueel netwerk. Een [netwerk beveiligings groep (NSG)](../virtual-network/security-overview.md#network-security-groups) bevat een lijst met beveiligings regels voor het toestaan of weigeren van binnenkomend of uitgaand netwerk verkeer op basis van het bron-of doel-IP-adres, de poort en het protocol.
+Netwerk beveiligings groepen worden gebruikt om het netwerk verkeer te beperken tot resources in een virtueel netwerk. Een [netwerk beveiligings groep (NSG)](../virtual-network/network-security-groups-overview.md#network-security-groups) bevat een lijst met beveiligings regels voor het toestaan of weigeren van binnenkomend of uitgaand netwerk verkeer op basis van het bron-of doel-IP-adres, de poort en het protocol.
 
 Onder het Resource Manager-implementatie model kan Nsg's worden gekoppeld aan subnetten of afzonderlijke netwerk interfaces. Wanneer een NSG is gekoppeld aan een subnet, zijn de regels van toepassing op alle resources die zijn verbonden met het subnet. Verkeer kan verder worden beperkt door ook een NSG te koppelen aan afzonderlijke netwerk interfaces binnen een subnet dat al een gekoppelde NSG heeft.
 
@@ -37,7 +37,7 @@ In dit voor beeld wordt voor inkomend verkeer het subnet NSG eerst geëvalueerd.
 
 Hiermee wordt de toepassing voor de beveiligings regel nauw keuriger. U kunt bijvoorbeeld inkomende Internet toegang toestaan voor een aantal toepassings-Vm's (zoals frontend-Vm's) onder een subnet, maar inkomende Internet toegang beperken tot andere virtuele machines (zoals data bases en andere back-end Vm's). In dit geval kunt u een meer lenient-regel gebruiken op het subnet NSG, het toestaan van Internet verkeer en het beperken van de toegang tot specifieke Vm's door toegang tot VM-NSG te weigeren. Dit kan ook worden toegepast voor uitgaand verkeer.
 
-Bij het instellen van dergelijke NSG-configuraties moet u ervoor zorgen dat de juiste prioriteiten worden toegepast op de [beveiligings regels](../virtual-network/security-overview.md#security-rules). Regels worden verwerkt in volgorde van prioriteit, waarbij lagere getallen worden verwerkt vóór hogere getallen omdat lagere getallen een hogere prioriteit hebben. Zodra het verkeer overeenkomt met een regel, wordt de verwerking beëindigd. Daardoor worden regels met een lagere prioriteit (een hoger getal) die dezelfde kenmerken hebben als regels met een hogere prioriteit, niet verwerkt.
+Bij het instellen van dergelijke NSG-configuraties moet u ervoor zorgen dat de juiste prioriteiten worden toegepast op de [beveiligings regels](../virtual-network/network-security-groups-overview.md#security-rules). Regels worden verwerkt in volgorde van prioriteit, waarbij lagere getallen worden verwerkt vóór hogere getallen omdat lagere getallen een hogere prioriteit hebben. Zodra het verkeer overeenkomt met een regel, wordt de verwerking beëindigd. Daardoor worden regels met een lagere prioriteit (een hoger getal) die dezelfde kenmerken hebben als regels met een hogere prioriteit, niet verwerkt.
 
 U ben er mogelijk niet altijd van op de hoogte wanneer netwerkbeveiligingsgroepen worden toegepast op zowel een netwerkinterface als een subnet. U kunt de geaggregeerde regels controleren die worden toegepast op een netwerk interface door de [juiste beveiligings regels](../virtual-network/virtual-network-network-interface.md#view-effective-security-rules) voor een netwerk interface te bekijken. U kunt ook de functie voor het controleren van de [IP-stroom](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md) in [Azure Network Watcher](../network-watcher/network-watcher-monitoring-overview.md) gebruiken om te bepalen of communicatie is toegestaan van of naar een netwerk interface. Deze functie vertelt u of communicatie is toegestaan en welke netwerkbeveiligingsregel verkeer toestaat of weigert.
 
@@ -72,7 +72,7 @@ Overwegend het [voorbeeld scenario](concepts-network-security-group-with-site-re
 Zodra de Nsg's zijn gemaakt en geconfigureerd, wordt u aangeraden [een testfailover uit](azure-to-azure-tutorial-dr-drill.md) te voeren om de NSG-koppelingen in het script te verifiëren en om na te gaan of de VM-verbinding na de failover.
 
 ## <a name="next-steps"></a>Volgende stappen
--    Meer informatie over [Netwerkbeveiligingsgroepen](../virtual-network/security-overview.md#network-security-groups).
--    Meer informatie over NSG- [beveiligings regels](../virtual-network/security-overview.md#security-rules).
+-    Meer informatie over [Netwerkbeveiligingsgroepen](../virtual-network/network-security-groups-overview.md#network-security-groups).
+-    Meer informatie over NSG- [beveiligings regels](../virtual-network/network-security-groups-overview.md#security-rules).
 -    Meer informatie over de [juiste beveiligings regels](../virtual-network/diagnose-network-traffic-filter-problem.md) voor een NSG.
 -    Meer informatie over [herstel plannen](site-recovery-create-recovery-plans.md) voor het automatiseren van de failover van de toepassing.

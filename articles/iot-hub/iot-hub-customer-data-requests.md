@@ -7,12 +7,12 @@ ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: ebc73c75d9a23a53ac94f28208251dcff83e684a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fdff6e1c29b8484aaea3bb647e2f1738d1889c6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90030698"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142230"
 ---
 # <a name="customer-data-request-features-for-azure-iot-hub-devices"></a>Functies van klant gegevens aanvragen voor Azure IoT Hub-apparaten
 
@@ -49,4 +49,4 @@ Het is ook mogelijk om export bewerkingen uit te voeren voor apparaten met behul
 
 ## <a name="links-to-additional-documentation"></a>Koppelingen naar aanvullende documentatie
 
-Volledige documentatie voor Azure IoT Hub service-Api's bevindt zich op [IOT hub service-api's](https://docs.microsoft.com/rest/api/iothub/service/configuration).
+Volledige documentatie voor Azure IoT Hub service-Api's bevindt zich op [IOT hub service-api's](/rest/api/iothub/service/configuration).

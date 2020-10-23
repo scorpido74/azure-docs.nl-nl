@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: e7d966aa5aa4b5a498c80cab26686411dd586185
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 5ac3d76d8c80947b820d195b9727d1fe50d32899
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044595"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372341"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Zelfstudie: Een end-to-end-oplossing bouwen
 
@@ -453,12 +453,6 @@ Met behulp van [Azure Cloud Shell](https://shell.azure.com) kunt u alle Azure-re
 
 ```azurecli
 az group delete --name <your-resource-group>
-```
-
-Verwijder vervolgens de Azure AD-app-registratie die u voor uw client-app hebt gemaakt, met deze opdracht:
-
-```azurecli
-az ad app delete --id <your-application-ID>
 ```
 
 Verwijder ten slotte de voorbeeldprojectmap die u hebt gedownload naar uw lokale computer.

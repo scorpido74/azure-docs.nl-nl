@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ef46cf0947f1ea31c74a6d189b5bdf00fea44fc
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 9e661bd24acbb15ced9f5bb0a0fba7eec51eae06
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963819"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363535"
 ---
 # <a name="troubleshoot-self-service-password-reset-in-azure-active-directory"></a>Problemen met self-service voor wachtwoord herstel in Azure Active Directory oplossen
 
@@ -32,7 +32,7 @@ Als u problemen ondervindt met het bekijken of configureren van SSPR-opties in d
 
 Als er geen Azure AD-licentie is toegewezen aan de beheerder die de bewerking uitvoert, ziet u niet of de menu optie **wacht woord opnieuw instellen** wordt weer geven.
 
-Als u een licentie wilt toewijzen aan het beheerders account in kwestie, volgt u de stappen voor het [toewijzen, controleren en oplossen van problemen met licenties](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses).
+Als u een licentie wilt toewijzen aan het beheerders account in kwestie, volgt u de stappen voor het [toewijzen, controleren en oplossen van problemen met licenties](../enterprise-users/licensing-groups-assign.md#step-1-assign-the-required-licenses).
 
 ### <a name="i-dont-see-a-particular-configuration-option"></a>Ik zie een bepaalde configuratie optie niet.
 
@@ -52,7 +52,7 @@ Als u problemen ondervindt met SSPR-rapportage in de Azure Portal, raadpleegt u 
 
 Dit kan gebeuren als er geen Azure AD-licentie is toegewezen aan de beheerder die de bewerking uitvoert.
 
-Als u een licentie wilt toewijzen aan het beheerders account in kwestie, volgt u de stappen voor het [toewijzen, controleren en oplossen van problemen met licenties](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses).
+Als u een licentie wilt toewijzen aan het beheerders account in kwestie, volgt u de stappen voor het [toewijzen, controleren en oplossen van problemen met licenties](../enterprise-users/licensing-groups-assign.md#step-1-assign-the-required-licenses).
 
 ### <a name="user-registrations-show-multiple-times"></a>Gebruikers registraties geven meerdere keer weer.
 
@@ -74,7 +74,7 @@ Wijzig in de Azure Portal de configuratie **selfservice voor wacht woord opnieuw
 
 Er kan via Azure Portal momenteel slechts één Azure AD-groep worden ingeschakeld voor SSPR. Als onderdeel van een bredere implementatie van SSPR worden geneste groepen ondersteund. Zorg ervoor dat aan de gebruikers in de groep(en) die u kiest de juiste licenties zijn toegewezen. Bekijk de vorige stap voor probleem oplossing om SSPR in te scha kelen zoals vereist.
 
-Bekijk ook de stappen voor probleem oplossing om ervoor te zorgen dat aan de beheerder die de configuratie-opties uitvoert, een licentie is toegewezen. Als u een licentie wilt toewijzen aan het beheerders account in kwestie, volgt u de stappen voor het [toewijzen, controleren en oplossen van problemen met licenties](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses).
+Bekijk ook de stappen voor probleem oplossing om ervoor te zorgen dat aan de beheerder die de configuratie-opties uitvoert, een licentie is toegewezen. Als u een licentie wilt toewijzen aan het beheerders account in kwestie, volgt u de stappen voor het [toewijzen, controleren en oplossen van problemen met licenties](../enterprise-users/licensing-groups-assign.md#step-1-assign-the-required-licenses).
 
 ### <a name="theres-an-error-processing-the-request"></a>Er is een fout opgetreden bij het verwerken van de aanvraag.
 
@@ -87,7 +87,7 @@ Als u of uw gebruikers problemen ondervinden met SSPR, raadpleegt u de volgende 
 | Fout | Oplossing |
 | --- | --- |
 | De map is niet ingeschakeld voor het opnieuw instellen van wacht woorden. | Wijzig in de Azure Portal de configuratie **selfservice voor wacht woord opnieuw instellen** in *geselecteerd* of *alle* en selecteer vervolgens **Opslaan**. |
-| Er is geen Azure AD-licentie toegewezen aan de gebruiker. | Dit kan gebeuren als er geen Azure AD-licentie is toegewezen aan de gewenste gebruiker. Als u een licentie wilt toewijzen aan het beheerders account in kwestie, volgt u de stappen voor het [toewijzen, controleren en oplossen van problemen met licenties](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses). |
+| Er is geen Azure AD-licentie toegewezen aan de gebruiker. | Dit kan gebeuren als er geen Azure AD-licentie is toegewezen aan de gewenste gebruiker. Als u een licentie wilt toewijzen aan het beheerders account in kwestie, volgt u de stappen voor het [toewijzen, controleren en oplossen van problemen met licenties](../enterprise-users/licensing-groups-assign.md#step-1-assign-the-required-licenses). |
 | De map is ingeschakeld voor het opnieuw instellen van wacht woorden, maar de gebruiker heeft ongeldige verificatie-informatie. | Zorg ervoor dat de gebruiker contact gegevens heeft gemaakt in het bestand in de map. Zie [gegevens die worden gebruikt door Azure AD self-service voor wachtwoord herstel](howto-sspr-authenticationdata.md)voor meer informatie. |
 | De Directory is ingeschakeld voor wachtwoord herstel, maar de gebruiker heeft slechts één contact gegevens in het bestand wanneer het beleid is ingesteld op twee verificatie methoden vereisen. | Zorg ervoor dat de gebruiker ten minste twee correct geconfigureerde contact methoden heeft. Een voor beeld is een mobiel telefoon nummer *en* een kantoor nummer. |
 | De map is ingeschakeld voor het opnieuw instellen van wacht woorden en de gebruiker is op de juiste wijze geconfigureerd, maar er kan geen contact worden gemaakt met de gebruiker. | Dit kan het resultaat zijn van een tijdelijke service fout, of als er onjuiste contact gegevens zijn die niet correct kunnen worden gedetecteerd. <br> <br> Als de gebruiker 10 seconden wacht, wordt een koppeling weer gegeven naar ' Probeer het opnieuw ' en ' Neem contact op met de beheerder '. Als de gebruiker ' opnieuw proberen ' selecteert, wordt de oproep opnieuw geprobeerd. Als de gebruiker ' Neem contact op met de beheerder ', stuurt het een e-mail bericht naar de beheerders die een wachtwoord herstel aanvragen om voor dat gebruikers account te worden uitgevoerd. |

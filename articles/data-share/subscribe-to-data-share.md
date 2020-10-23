@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 08/14/2020
-ms.openlocfilehash: ce47bc5e880f15eaa1bbf07477673d2475e5a10a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d4ef9f1d80604373463450adf597f8202611175
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89489915"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216569"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Zelfstudie: Gegevens accepteren en ontvangen met Azure Data Share  
 
@@ -34,7 +34,7 @@ Zorg ervoor dat alle vereisten zijn voltooid voordat u een uitnodiging voor gege
 
 ### <a name="receive-data-into-a-storage-account"></a>Gegevens ontvangen in een opslagaccount: 
 
-* Een Azure Storage-account: Hier kunt u een [Azure Storage-account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) maken als u nog geen account hebt. 
+* Een Azure Storage-account: Hier kunt u een [Azure Storage-account](../storage/common/storage-account-create.md) maken als u nog geen account hebt. 
 * Machtiging om naar het opslagaccount te schrijven, aanwezig in *Microsoft.Storage/storageAccounts/write*. Deze machtiging maakt onderdeel uit van de rol Inzender. 
 * Machtiging om roltoewijzing toe te voegen aan het opslagaccount, aanwezig in *Microsoft.Authorization/role assignments/write*. Deze machtiging maakt onderdeel uit van de rol Eigenaar.  
 
@@ -62,7 +62,7 @@ Zorg ervoor dat alle vereisten zijn voltooid voordat u een uitnodiging voor gege
 
 ### <a name="receive-data-into-an-azure-data-explorer-cluster"></a>Gegevens ontvangen in een Azure Data Explorer-cluster: 
 
-* Een Azure Data Explorer-cluster in hetzelfde Azure-datacenter als het Data Explorer-cluster van de gegevensprovider: Hier kunt u een [Azure Data Explorer-account](https://docs.microsoft.com/azure/data-explorer/create-cluster-database-portal) maken als u nog geen account hebt. Als u het Azure-datacenter van het cluster van de gegevensprovider niet weet, kunt u het cluster later in het proces maken.
+* Een Azure Data Explorer-cluster in hetzelfde Azure-datacenter als het Data Explorer-cluster van de gegevensprovider: Hier kunt u een [Azure Data Explorer-account](/azure/data-explorer/create-cluster-database-portal) maken als u nog geen account hebt. Als u het Azure-datacenter van het cluster van de gegevensprovider niet weet, kunt u het cluster later in het proces maken.
 * Machtiging om naar het Azure Data Explorer-cluster te schrijven, aanwezig in *Microsoft.Kusto/clusters/write*. Deze machtiging maakt onderdeel uit van de rol Inzender. 
 * Machtiging om roltoewijzing toe te voegen aan het Azure Data Explorer-cluster, aanwezig in *Microsoft.Authorization/role assignments/write*. Deze machtiging maakt onderdeel uit van de rol Eigenaar. 
 

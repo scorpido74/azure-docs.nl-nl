@@ -16,16 +16,16 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 398db465a6cc383f8869c549761afc0947e7ed03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c0d98641f8e2040de8350b7dd0231c2e7c889c9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87421158"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371610"
 ---
 # <a name="activate-an-azure-ad-custom-role-in-privileged-identity-management"></a>Een aangepaste Azure AD-rol activeren in Privileged Identity Management
 
-Privileged Identity Management in Azure Active Directory (Azure AD) biedt nu ondersteuning voor Just-in-time-en tijdgebonden toewijzing aan aangepaste rollen die zijn gemaakt voor toepassings beheer in de beheer ervaring voor identiteits-en toegangs beheer. Zie [aangepaste beheerders rollen in azure Active Directory (preview)](../users-groups-roles/roles-custom-overview.md)voor meer informatie over het maken van aangepaste rollen voor het delegeren van toepassings beheer in azure AD.
+Privileged Identity Management in Azure Active Directory (Azure AD) biedt nu ondersteuning voor Just-in-time-en tijdgebonden toewijzing aan aangepaste rollen die zijn gemaakt voor toepassings beheer in de beheer ervaring voor identiteits-en toegangs beheer. Zie [aangepaste beheerders rollen in azure Active Directory (preview)](../roles/custom-overview.md)voor meer informatie over het maken van aangepaste rollen voor het delegeren van toepassings beheer in azure AD.
 
 > [!NOTE]
 > Aangepaste Azure AD-rollen worden tijdens de preview-fase niet geïntegreerd met de ingebouwde Directory rollen. Zodra de mogelijkheid algemeen beschikbaar is, wordt het beheer van rollen uitgevoerd in de ingebouwde functie-ervaring. Als u de volgende banner ziet, moeten deze rollen worden beheerd [in de ingebouwde functie-ervaring](pim-how-to-activate-role.md) en dit artikel is niet van toepassing:
@@ -67,4 +67,4 @@ Als voor de rol goed keuring vereist is, ontvangt u een melding van Azure dat de
 - [Een aangepaste Azure AD-rol toewijzen](azure-ad-custom-roles-assign.md)
 - [Een aangepaste gebruikersrol toewijzing van Azure AD verwijderen of bijwerken](azure-ad-custom-roles-update-remove.md)
 - [Een aangepaste functie toewijzing voor Azure AD configureren](azure-ad-custom-roles-configure.md)
-- [Roldefinities in azure AD](../users-groups-roles/directory-assign-admin-roles.md)
+- [Roldefinities in azure AD](../roles/permissions-reference.md)

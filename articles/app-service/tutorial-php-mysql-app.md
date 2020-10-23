@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 06/15/2020
 ms.custom: mvc, cli-validate, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: d9f08840165e7e4cf4d13e9a66cbb59489a2b3f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0faf269852418ee8694e5fa51ce8010e57a2c054
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90974272"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150207"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure-app-service"></a>Zelfstudie: een PHP- en MySQL-app bouwen in Azure App Service
 
@@ -153,7 +153,7 @@ Typ `Ctrl + C` in de terminal om PHP te stoppen.
 
 ## <a name="create-mysql-in-azure"></a>MySQL in Azure maken
 
-In deze stap maakt u een MySQL-database in [Azure Database for MySQL](/azure/mysql). Later configureert u de PHP-toepassing om verbinding te maken met deze database.
+In deze stap maakt u een MySQL-database in [Azure Database for MySQL](../mysql/index.yml). Later configureert u de PHP-toepassing om verbinding te maken met deze database.
 
 ### <a name="create-a-resource-group"></a>Een resourcegroep maken
 
@@ -163,7 +163,7 @@ In deze stap maakt u een MySQL-database in [Azure Database for MySQL](/azure/mys
 
 Maak vanuit Cloud Shell een server in Azure Database for MySQL met behulp van de opdracht [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest&preserve-view=true#az-mysql-server-create).
 
-Met de volgende opdracht vervangt u de tijdelijke aanduiding *\<mysql-server-name>* door een unieke servernaam, de *\<admin-user>* door een gebruikersnaam en de tijdelijke aanduiding *\<admin-password>* door een wachtwoord. De servernaam wordt gebruikt als onderdeel van het MySQL-eindpunt (`https://<mysql-server-name>.mysql.database.azure.com`). De naam moet dus uniek zijn voor alle servers in Azure. Zie [Een Azure Database for MySQL-server maken](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-cli#create-an-azure-database-for-mysql-server) voor meer informatie over het selecteren van de MySQL DB-SKU.
+Met de volgende opdracht vervangt u de tijdelijke aanduiding *\<mysql-server-name>* door een unieke servernaam, de *\<admin-user>* door een gebruikersnaam en de tijdelijke aanduiding *\<admin-password>* door een wachtwoord. De servernaam wordt gebruikt als onderdeel van het MySQL-eindpunt (`https://<mysql-server-name>.mysql.database.azure.com`). De naam moet dus uniek zijn voor alle servers in Azure. Zie [Een Azure Database for MySQL-server maken](../mysql/quickstart-create-mysql-server-database-using-azure-cli.md#create-an-azure-database-for-mysql-server) voor meer informatie over het selecteren van de MySQL DB-SKU.
 
 ```azurecli-interactive
 az mysql server create --resource-group myResourceGroup --name <mysql-server-name> --location "West Europe" --admin-user <admin-user> --admin-password <admin-password> --sku-name B_Gen5_1

@@ -1,6 +1,6 @@
 ---
 title: 'Zelfstudie: Webservices migreren vanuit Bing Maps | Microsoft Azure Maps'
-description: Webservices migreren vanuit Bing Maps naar Microsoft Azure Maps.
+description: Zelfstudie over het migreren van webservices vanuit Bing Kaarten naar Microsoft Azure Maps.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 9/10/2020
@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 14e0998b75e0e5bd3ae996f5f5010ecc50180f14
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 462befd505333902bd4560f8f1dafeecceffd27f
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91741666"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873775"
 ---
-# <a name="migrate-web-service-from-bing-maps"></a>Webservice migreren vanuit Bing Maps
+# <a name="tutorial---migrate-web-service-from-bing-maps"></a>Zelfstudie: webservice migreren vanuit Bing Kaarten
 
 Zowel Azure Maps als Bing Maps biedt toegang tot ruimtelijke API's via REST-webservices. De API-interfaces voor deze platformen voeren vergelijkbare functies uit, maar gebruiken verschillende naamconventies en antwoordobjecten.
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: 0869de4ccfe89cc3919ec2d2d80aa3e18749039a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d92dd191c8bfe590f6dab392ff679e5d7712ae6c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87921087"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143857"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Azure Monitor logboeken voor service providers
 
@@ -35,7 +35,7 @@ In deze architectuur wordt een werk ruimte geïmplementeerd in de Tenant van de 
 
 Er zijn twee manieren om toegang te krijgen tot een Log Analytics werkruimte in een Tenant van de klant:
 
-- Een klant kan afzonderlijke gebruikers van de service provider toevoegen als [Azure Active Directory gast gebruikers (B2B)](../../active-directory/b2b/what-is-b2b.md). De beheerder van de service provider moet zich aanmelden bij de directory van elke klant in het Azure Portal om toegang te kunnen krijgen tot deze werk ruimten. Dit vereist ook dat de klanten afzonderlijke toegang beheren voor elke beheerder van de service provider.
+- Een klant kan afzonderlijke gebruikers van de service provider toevoegen als [Azure Active Directory gast gebruikers (B2B)](../../active-directory/external-identities/what-is-b2b.md). De beheerder van de service provider moet zich aanmelden bij de directory van elke klant in het Azure Portal om toegang te kunnen krijgen tot deze werk ruimten. Dit vereist ook dat de klanten afzonderlijke toegang beheren voor elke beheerder van de service provider.
 - Voor een grotere schaal baarheid en flexibiliteit kunnen service providers de Azure-functie voor [gedelegeerde resource beheer](../../lighthouse/concepts/azure-delegated-resource-management.md) van [Azure Lighthouse](../../lighthouse/overview.md) gebruiken om toegang te krijgen tot de Tenant van de klant. Met deze methode worden de service provider beheerders opgenomen in een Azure AD-gebruikers groep in de Tenant van de service provider en krijgt deze groep toegang tijdens het voorbereidings proces voor elke klant. Deze beheerders hebben vervolgens vanaf hun eigen Tenant van de service provider toegang tot de werk ruimten van elke klant, in plaats van zich afzonderlijk aan te melden bij de Tenant van elke klant. Door toegang te krijgen tot de resources van de Log Analytics-werk ruimte van uw klanten op deze manier vermindert u het werk dat aan de klant is vereist en kunt u gemakkelijker gegevens verzamelen en analyseren voor meerdere klanten die worden beheerd door dezelfde service provider via hulpprogram ma's als [Azure monitor werkmappen](./workbooks-overview.md). Zie voor meer informatie [klant resources op schaal bewaken](../../lighthouse/how-to/monitor-at-scale.md).
 
 De voor delen van de gedistribueerde architectuur zijn:
@@ -81,7 +81,7 @@ Er zijn twee opties voor het implementeren van Logboeken op een centrale locatie
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Het maken en configureren van werk ruimten automatiseren met behulp van [Resource Manager-sjablonen](template-workspace-configuration.md)
+* Het maken en configureren van werk ruimten automatiseren met behulp van [Resource Manager-sjablonen](../samples/resource-manager-workspace.md)
 
 * Het maken van werk ruimten automatiseren met [Power shell](./powershell-workspace-configuration.md)
 

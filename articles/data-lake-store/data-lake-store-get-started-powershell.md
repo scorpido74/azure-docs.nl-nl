@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ba51c96e3195f75a0ccf49baded67737f4665615
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 485b14f85d68290c5447c885b9bc4974318f7952
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89077735"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103727"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-powershell"></a>Aan de slag met Azure Data Lake Storage Gen1 met behulp van Azure PowerShell
 
@@ -36,7 +36,7 @@ Meer informatie over het gebruik van Azure PowerShell om een Azure Data Lake Sto
 
 ## <a name="authentication"></a>Verificatie
 
-In dit artikel wordt gebruikgemaakt van een eenvoudigere verificatie methode met Data Lake Storage Gen1 waarbij u wordt gevraagd de referenties van uw Azure-account in te voeren. Het toegangs niveau voor Data Lake Storage Gen1 account en bestands systeem wordt vervolgens bepaald door het toegangs niveau van de aangemelde gebruiker. Er zijn echter andere manieren om te verifiëren met Data Lake Storage Gen1, die verificatie door eind gebruikers of service-naar-service-verificatie zijn. Zie [Verificatie door eindgebruikers](data-lake-store-end-user-authenticate-using-active-directory.md) of [Service-to-serviceverificatie](data-lake-store-authenticate-using-active-directory.md) voor instructies en meer informatie over verificatie.
+In dit artikel wordt gebruikgemaakt van een eenvoudigere verificatie methode met Data Lake Storage Gen1 waarbij u wordt gevraagd de referenties van uw Azure-account in te voeren. Het toegangs niveau voor Data Lake Storage Gen1 account en bestands systeem wordt vervolgens bepaald door het toegangs niveau van de aangemelde gebruiker. Er zijn echter andere manieren om te verifiëren met Data Lake Storage Gen1, die verificatie door eind gebruikers of service-naar-service-verificatie zijn. Zie [Verificatie door eindgebruikers](data-lake-store-end-user-authenticate-using-active-directory.md) of [Service-to-serviceverificatie](./data-lake-store-service-to-service-authenticate-using-active-directory.md) voor instructies en meer informatie over verificatie.
 
 ## <a name="create-a-data-lake-storage-gen1-account"></a>Een Data Lake Storage Gen1-account maken
 

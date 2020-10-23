@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2018
-ms.openlocfilehash: 0320be3a2cfbb96367799577a6e56bcf5da87dcb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b73fa9702a95897afbca53e2de70dcabc04a4665
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77658503"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168502"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Naslag Gids voor het weer geven van ontwerp tegels in Azure Monitor
 Met behulp van View designer in Azure Monitor kunt u verschillende aangepaste weer gaven maken in de Azure Portal die u kan helpen bij het visualiseren van gegevens in uw Log Analytics-werk ruimte. Dit artikel bevat een Naslag Gids voor de instellingen voor de tegels die beschikbaar zijn in uw aangepaste weer gaven.
@@ -104,7 +104,7 @@ De **ring** tegel geeft één getal weer dat een kolom waarde in een logboek que
 ## <a name="line-chart-tile"></a>Tegel lijn diagram
 Deze tegel is een lijn diagram dat gedurende een bepaalde periode meerdere reeksen uit een logboek query weergeeft. 
 
-![Tegel met lijn diagrammen en bijschriften](media/view-designer-tiles/tile-line-chart.png)
+![Scherm afbeelding van een lijn diagram tegel in de ontwerp functie voor de Azure Monitor weergave.](media/view-designer-tiles/tile-line-chart.png)
 
 | Instelling | Beschrijving |
 |:--- |:--- |
@@ -125,7 +125,7 @@ Deze tegel is een lijn diagram dat gedurende een bepaalde periode meerdere reeks
 ## <a name="line-chart-and-callout-tile"></a>Tegel met lijn diagrammen en bijschriften
 Deze tegel heeft een lijn diagram dat meerdere reeksen uit een logboek query in de loop van de tijd en een toelichting met een samenvatte waarde weergeeft. 
 
-![Tegel met lijn diagrammen en bijschriften](media/view-designer-tiles/tile-line-chart-callout.png)
+![Scherm afbeelding van een lijn diagram en een bijschrift tegel in de ontwerp functie voor de Azure Monitor weergave. de toelichting breidt het lijn diagram uit door een samenvatte waarde weer te geven.](media/view-designer-tiles/tile-line-chart-callout.png)
 
 | Instelling | Beschrijving |
 |:--- |:--- |

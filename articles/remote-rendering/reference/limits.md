@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: 61085a5d28fcd74bbf6a393ddc0731e36094a63f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b500a3777ee24d6615022dae2571d021bd0d675a
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617495"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201168"
 ---
 # <a name="limitations"></a>Beperkingen
 
@@ -52,4 +52,4 @@ Zie het hoofd stuk [Server grootte](../reference/vm-sizes.md) voor gedetailleerd
 
 **HoloLens 2**
 
-* De [weer gave van de HW-camera](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers#render-from-the-pv-camera-opt-in) functie wordt niet ondersteund.
+* De [weer gave van de HW-camera](/windows/mixed-reality/mixed-reality-capture-for-developers#render-from-the-pv-camera-opt-in) functie wordt niet ondersteund.

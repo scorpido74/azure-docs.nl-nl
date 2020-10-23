@@ -13,14 +13,14 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.tgt_pltfrm: .NET
 ms.workload: tbd
-ms.date: 10/21/2019
+ms.date: 10/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 145015b7645cf7923f15ecd7c0378ff6cb96dd7e
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: c379d3f99628c2d3fb32ae34ca0214f608d365c7
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767697"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201258"
 ---
 # <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>Quickstart: Functievlaggen toevoegen aan een .NET Framework-app
 
@@ -30,7 +30,7 @@ De .NET Feature Management-bibliotheken breiden het framework uit met ondersteun
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Azure-abonnement: [u kunt een gratis abonnement nemen](https://azure.microsoft.com/free/)
+- Azure-abonnement: [u kunt een gratis abonnement nemen](https://azure.microsoft.com/free/dotnet)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
 - [.NET Framework 4.8](https://dotnet.microsoft.com/download)
 
@@ -70,6 +70,7 @@ De .NET Feature Management-bibliotheken breiden het framework uit met ondersteun
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     using Microsoft.FeatureManagement;
+    using System.Threading.Tasks;
     ```
 
 1. Werk de `Main`-methode bij om verbinding te maken met App Configuration, waarbij u de `UseFeatureFlags`-optie opgeeft, zodat er functievlaggen worden opgehaald. Vervolgens wordt een bericht weergegeven als de functievlag `Beta` is ingeschakeld.
@@ -99,6 +100,8 @@ De .NET Feature Management-bibliotheken breiden het framework uit met ondersteun
             }
 
             Console.WriteLine("Hello World!");
+            Console.WriteLine("Press any key to continue ...");
+            Console.Read();
         }
     ```
 

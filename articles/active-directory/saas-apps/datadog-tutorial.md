@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/13/2020
 ms.author: jeedes
-ms.openlocfilehash: d3bb0ad5305ccba412a403352405711be8f183a2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 75f2574a656f659dfed12b59d52c9f147527c65d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555926"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949977"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datadog"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Datadog
 
@@ -141,6 +141,22 @@ In deze sectie maakt u in Datadog een gebruiker met de naam B.Simon. Werk samen 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u in het toegangsvenster op de tegel Datadog klikt, wordt u automatisch aangemeld bij de instantie van Datadog waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+
+### <a name="enable-all-users-from-your-tenant-to-authenticate-with-the-app"></a>Verificatie met de app mogelijk maken voor alle gebruikers van uw tenant
+
+In deze sectie maakt u het voor iedereen binnen uw tenant mogelijk om toegang te krijgen tot Datadog als één gebruiker een account heeft aan de zijde van Datadog.
+
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Datadog** in de lijst met toepassingen.
+1. Selecteer onder **Beheren** op de overzichtspagina **Eigenschappen**.
+
+    ![De koppeling Eigenschappen](common/properties.png)
+
+1. Voor **Gebruikerstoewijzing vereist?** selecteert u **Nee**.
+
+    ![Gebruikerstoewijzing is niet vereist](common/user-assignment-not-required.png)
+
+1. Selecteer **Opslaan**.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 

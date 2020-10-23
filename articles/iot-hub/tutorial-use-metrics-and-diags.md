@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: b24d9e1cbbcf875d7b4bde3981b28d8999ba8d47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b070d6600f18b87ec16f1f9894d577f4c0a6c51c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019127"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149199"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Zelfstudie: Metrische gegevens en diagnostische logboeken instellen en gebruiken met een IoT-hub
 
@@ -190,7 +190,7 @@ Stel nu wat metrische gegevens in om naar te kijken wanneer berichten naar hub w
 
 Ga naar de hub in de portal. Klik op **Resourcegroepen** en selecteer *ContosoResources* en vervolgens IoT Hub *ContosoTestHub*. 
 
-IoT Hub is nog niet gemigreerd naar de [metrische gegevens in Azure Monitor](/azure/azure-monitor/platform/data-collection#metrics); u moet [klassieke waarschuwingen](/azure/azure-monitor/platform/alerts-classic.overview) gebruiken.
+IoT Hub is nog niet gemigreerd naar de [metrische gegevens in Azure Monitor](../azure-monitor/platform/data-platform.md#metrics); u moet [klassieke waarschuwingen](../azure-monitor/platform/alerts-classic.overview.md) gebruiken.
 
 1. Klik onder **Bewaking** op **Waarschuwingen**. Hierdoor wordt het hoofdscherm met waarschuwingen weergegeven. 
 
@@ -369,7 +369,7 @@ Klik op **Downloaden** om het downloaden en te openen. U ziet de logboekitems va
 
 Als u alle resources die u in deze zelfstudie hebt gemaakt, wilt verwijderen, verwijdert u de resourcegroep. Hiermee verwijdert u ook alle resources in de groep. In dit geval worden de IoT-hub, het opslagaccount en de resourcegroep zelf verwijderd. Als u metrische gegevens aan het dashboard hebt vastgemaakt, moet u die handmatig verwijderen door op de drie puntjes in de rechterbovenhoek van elk ervan te klikken en **Verwijderen** te selecteren.
 
-U kunt de resourcegroep verwijderen met de opdracht [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete).
+U kunt de resourcegroep verwijderen met de opdracht [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete).
 
 ```azurecli-interactive
 az group delete --name $resourceGroup

@@ -3,12 +3,12 @@ title: Levenscyclus beheer van virtuele machines met Azure VMware-oplossingen
 description: Meer informatie over het beheren van alle aspecten van de levens cyclus van uw Azure VMware-oplossing-Vm's met Microsoft Azure systeem eigen hulpprogram ma's.
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: 452fa6bf4610c9d0dcb46587242e8d6df9cebd0d
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 928a632a34dd31272c7c3bf92f6dc6dda97cb6cc
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950360"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216246"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Levenscyclus beheer van virtuele machines met Azure VMware-oplossingen
 
@@ -53,8 +53,8 @@ Met **log Analytics werk ruimte** kan de verzameling van Logboeken en prestatie 
 **Azure updatebeheer** in azure Automation beheert updates van het besturings systeem voor uw Windows-en Linux-computers in een hybride omgeving. Hiermee wordt de compatibiliteit van patches bewaakt en worden waarschuwingen over de afwijking van patches doorgestuurd naar Azure Monitor voor herstel. Azure Updatebeheer moet verbinding maken met uw Log Analytics-werk ruimte om opgeslagen gegevens te kunnen gebruiken om de status van updates op uw Vm's te beoordelen.
 - Als u Log Analytics wilt toevoegen aan Azure Updatebeheer, moet u eerst [een Azure Automation-account maken](../automation/automation-create-standalone-account.md).
 - Als u uw Log Analytics-werk ruimte wilt koppelen aan uw Automation-account, raadpleegt u [log Analytics werk ruimte en Automation-account](../azure-monitor/insights/solutions.md#log-analytics-workspace-and-automation-account).
-- Als u Azure Updatebeheer wilt inschakelen voor uw virtuele machines, raadpleegt u [updatebeheer inschakelen vanuit een Automation-account](../automation/update-management/update-mgmt-enable-automation-account.md).
-- Zodra u Vm's hebt toegevoegd aan Azure Updatebeheer, kunt u [updates op Vm's implementeren en resultaten bekijken](../automation/update-management/update-mgmt-deploy-updates.md). 
+- Als u Azure Updatebeheer wilt inschakelen voor uw virtuele machines, raadpleegt u [updatebeheer inschakelen vanuit een Automation-account](../automation/update-management/enable-from-automation-account.md).
+- Zodra u Vm's hebt toegevoegd aan Azure Updatebeheer, kunt u [updates op Vm's implementeren en resultaten bekijken](../automation/update-management/deploy-updates.md). 
 
 **Azure Security Center** biedt geavanceerde beveiliging tegen bedreigingen in uw hybride werk belastingen in de Cloud en on-premises. Hiermee wordt het beveiligings probleem van Vm's van Azure VMware-oplossingen beoordeeld en worden indien nodig waarschuwingen gegenereerd. Deze beveiligings waarschuwingen kunnen worden doorgestuurd naar Azure Monitor voor oplossing.
 - Voor Azure Security Center is geen implementatie vereist. Zie een lijst met [ondersteunde functies voor virtuele machines](../security-center/security-center-services.md)voor meer informatie.

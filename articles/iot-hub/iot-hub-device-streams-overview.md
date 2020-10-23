@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-ms.openlocfilehash: 4a13d1ff030a63d3ccf33297f215909f5920e16a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8194f520abf5c8d4e47fa279f6cf82013024e9ec
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327681"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152169"
 ---
 # <a name="iot-hub-device-streams-preview"></a>Streams van IoT Hub-apparaten (preview-versie)
 
@@ -103,7 +103,7 @@ De uitvoer is een JSON-object van alle eind punten die het apparaat en de servic
 ```
 
 > [!NOTE]
-> Zorg ervoor dat u Azure CLI-versie 2.0.57 of hoger hebt geïnstalleerd. U kunt de meest recente versie downloaden van de pagina [Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) .
+> Zorg ervoor dat u Azure CLI-versie 2.0.57 of hoger hebt geïnstalleerd. U kunt de meest recente versie downloaden van de pagina [Azure cli installeren](/cli/azure/install-azure-cli?view=azure-cli-latest) .
 >
 
 ## <a name="allow-outbound-connectivity-to-the-device-streaming-endpoints"></a>Uitgaande connectiviteit met de streaming-eind punten van het apparaat toestaan
@@ -119,7 +119,7 @@ az iot hub devicestream show --name <YourIoTHubName>
 ```
 
 > [!NOTE]
-> Zorg ervoor dat u Azure CLI-versie 2.0.57 of hoger hebt geïnstalleerd. U kunt de meest recente versie downloaden van de pagina [Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) .
+> Zorg ervoor dat u Azure CLI-versie 2.0.57 of hoger hebt geïnstalleerd. U kunt de meest recente versie downloaden van de pagina [Azure cli installeren](/cli/azure/install-azure-cli?view=azure-cli-latest) .
 >
 
 ## <a name="troubleshoot-via-device-streams-activity-logs"></a>Problemen oplossen via activiteiten logboeken van Device streams
@@ -156,7 +156,7 @@ Twee zijden van elke stroom (op het apparaat en de service zijde) gebruik de IoT
 
 ## <a name="iot-hub-device-stream-samples"></a>Voor beelden van IoT Hub Device stream
 
-Er zijn twee [Quick](/azure/iot-hub) start-voor beelden beschikbaar op de pagina IOT hub. Hierin wordt het gebruik van apparaten door toepassingen gedemonstreerd.
+Er zijn twee [Quick](./index.yml) start-voor beelden beschikbaar op de pagina IOT hub. Hierin wordt het gebruik van apparaten door toepassingen gedemonstreerd.
 
 * Het *echo* voorbeeld demonstreert het programmatisch gebruik van streams (door de SDK API direct aan te roepen).
 
@@ -194,7 +194,7 @@ De installatie maakt gebruik van twee *lokale proxy* Programma's die worden weer
 
 4. De service-Local proxy luistert op een aangewezen poort, in afwachting van nieuwe SSH-verbindingen van de gebruiker (poort 2222 gebruikt in het voor beeld, maar dit kan worden geconfigureerd voor elke andere beschik bare poort). De gebruiker wijst de SSH-client naar de service-lokale Proxy poort op localhost.
 
-### <a name="notes"></a>Notities
+### <a name="notes"></a>Opmerkingen
 
 * De bovenstaande stappen volt ooien een end-to-end-tunnel tussen de SSH-client (rechts) naar de SSH-daemon (aan de linkerkant). Onderdeel van deze end-to-end-connectiviteit is het verzenden van verkeer via een apparaat stroom naar IoT Hub.
 

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/21/2020
 ms.author: rajosh
-ms.openlocfilehash: db1de363856fd560fea97f8f9cdf542717c4cca3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce6f0ff97b1dfa8757b05b13dff653a1d34f4531
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87090090"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315293"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>Migratieplan bouwen met Azure Migrate
 
@@ -166,4 +166,4 @@ Wanneer u klaar bent om te migreren, gebruikt u het *hulp programma voor server 
 
 - Onderzoek de [reis voor Cloud migratie](/azure/architecture/cloud-adoption/getting-started/migrate)   in het Azure Cloud-acceptatie Framework.
 - [Aan de slag](https://youtu.be/wFfq3YPxYHE) met Azure Migrate.
-- Een evaluatie maken voor virtuele [VMware-machines](tutorial-assess-vmware.md) of [virtuele Hyper-V-machines](tutorial-assess-hyper-v.md).
+- Een evaluatie maken voor virtuele [VMware-machines](./tutorial-assess-vmware-azure-vm.md) of [virtuele Hyper-V-machines](tutorial-assess-hyper-v.md).

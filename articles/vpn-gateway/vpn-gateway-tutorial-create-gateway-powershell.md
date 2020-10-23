@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 09/02/2020
+ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: 34aa805e6af68933326325587c0a442fe5e3652c
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 8e4c0174e9f5e1a15fe85d5744ddcb6ee21c4a86
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420650"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048267"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>Zelfstudie: Een VPN-gateway maken en beheren met behulp van PowerShell
 
@@ -28,7 +28,7 @@ Het volgende diagram toont het virtuele netwerk en de VPN-gateway die zijn gemaa
 
 ![VNet en VPN-gateway](./media/vpn-gateway-tutorial-create-gateway-powershell/vnet1-gateway.png)
 
-### <a name="working-with-azure-cloud-shell-and-azure-powershell"></a>Werken met Azure Cloud Shell en Azure PowerShell
+## <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [working with cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
 
@@ -184,9 +184,7 @@ In deze zelfstudie hebt u informatie gehad over basistaken voor het maken en beh
 > * Het formaat van een VPN-gateway wijzigen
 > * Een VPN-gateway opnieuw instellen
 
-Ga naar de volgende zelfstudies voor meer informatie over S2S-, VNet-naar-VNet- en P2S-verbindingen.
+Ga door met de volgende zelfstudie:
 
 > [!div class="nextstepaction"]
-> * [S2S-verbindingen maken](vpn-gateway-tutorial-vpnconnection-powershell.md)
-> * [VNet-naar-VNet-verbindingen maken](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
-> * [P2S-verbindingen maken](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
+> * [Een verbinding maken](vpn-gateway-tutorial-vpnconnection-powershell.md)

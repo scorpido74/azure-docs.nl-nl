@@ -9,10 +9,10 @@ ms.date: 09/10/2019
 ms.author: lizross
 ms.custom: include file
 ms.openlocfilehash: 64a0e35d1bbcc8df9a827f1f6bc58d72a7498b2a
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86277748"
 ---
-Als uw beheerder de nieuwe preview-versie van **mijn apps** voor uw organisatie heeft ingeschakeld, ziet u nu een banner aan de bovenkant van de pagina **mijn apps** met de melding dat **er een bijgewerkte ervaring voor mijn toepassingen beschikbaar is**. Als u **try**-out selecteert, gaat u meteen naar de nieuwe URL (myapplications.Microsoft.com) en de bijgewerkte ervaring. Daarna gaat u, telkens wanneer u terugkeert naar de pagina **mijn apps** , automatisch naar de nieuwe ervaring.<br><br>Als u de nieuwe ervaring niet meer wilt gebruiken, kunt u **Ja** selecteren in het vaandel **nieuwe ervaring laten staan** boven aan de pagina nieuwe **mijn apps** . U gaat direct terug naar de oude URL (myapps.microsoft.com) en de ervaring. Daarna gaat u, telkens wanneer u terugkeert naar de pagina **mijn apps** , automatisch naar de oude ervaring.
+Als uw beheerder de nieuwe preview-versie van **Mijn apps** voor uw organisatie heeft ingeschakeld, ziet u nu een banner boven aan de pagina **Mijn apps** met de tekst **Er is een bijgewerkte versie voor Mijn apps beschikbaar**. Als u **Probeer het uit** selecteert, komt u meteen bij de nieuwe URL (myapplications.microsoft.com) terecht en de bijgewerkte versie. Daarna keert u, telkens wanneer u terugkeert naar de pagina **Mijn apps**, automatisch bij de nieuwe versie terug.<br><br>Als u wilt stoppen met het gebruik van de nieuwe versie, selecteert u **Ja** in de banner **Nieuwe versie verlaten** aan de bovenkant van de nieuwe pagina **Mijn apps**. U keert onmiddellijk terug naar de oude URL (myapps.microsoft.com) en de oude versie. Daarna keert u, telkens wanneer u terugkeert naar de pagina **Mijn apps**, automatisch bij de oude versie terug.

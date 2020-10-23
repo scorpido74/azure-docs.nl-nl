@@ -9,13 +9,13 @@ ms.date: 05/21/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: 069baf627c0230b6a4727c375494352ab3e6a803
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67175969"
 ---
-Gebruik de opdracht [set-AzResourceGroup](/powershell/module/az.resources/set-azresourcegroup) om twee tags toe te voegen aan een resource groep:
+Gebruik de opdracht [Set-AzResourceGroup](/powershell/module/az.resources/set-azresourcegroup) om twee tags toe te voegen aan een resourcegroep:
 
 ```azurepowershell-interactive
 Set-AzResourceGroup -Name myResourceGroup -Tag @{ Dept="IT"; Environment="Test" }
@@ -86,7 +86,7 @@ Gebruik een JSON-tekenreeks om meerdere waarden met elkaar te combineren in een 
 Set-AzResourceGroup -Name myResourceGroup -Tag @{ CostCenter="{`"Dept`":`"IT`",`"Environment`":`"Test`"}" }
 ```
 
-Als u een nieuwe tag wilt toevoegen met verschillende waarden zonder dat de bestaande Tags verloren gaan, moet u de bestaande Tags ophalen, een JSON-teken reeks gebruiken voor de nieuwe tag en de verzameling tags opnieuw Toep assen:
+Als u een nieuwe tag met verschillende waardes wilt toevoegen zonder de bestaande tags kwijt te raken, moet u de bestaande tags ophalen, een JSON-reeks voor de nieuwe tag gebruiken en de verzameling tags opnieuw toepassen:
 
 ```azurepowershell-interactive
 # Get existing tags and add a new tag

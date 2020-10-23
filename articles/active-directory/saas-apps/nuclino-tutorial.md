@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 18814d23c634dc58148c26b67c2f669e22a136ee
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4b84cbe57c40b12ae01952963b324b8bcfdcfd2e
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554291"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945478"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nuclino"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Nuclino
 
@@ -155,15 +155,15 @@ In deze sectie geeft u B. Simon toestemming om eenmalige aanmelding van Azure te
 
 4. Klik op het **PICTOGRAM**.
 
-    ![Nuclino-configuratie](./media/nuclino-tutorial/configure1.png)
+    ![Schermopname van het geselecteerde pictogram 'Menu' naast 'Azure AD SSO'.](./media/nuclino-tutorial/configure1.png)
 
 5. Klik op **Azure AD SSO** en kies **Teaminstellingen** in de vervolgkeuzelijst.
 
-    ![Nuclino-configuratie](./media/nuclino-tutorial/configure2.png)
+    ![Schermopname van de vervolgkeuzelijst 'Azure AD SSO' met 'Teaminstellingen' geselecteerd.](./media/nuclino-tutorial/configure2.png)
 
 6. Selecteer **Verificatie** in het linkernavigatievenster.
 
-    ![Nuclino-configuratie](./media/nuclino-tutorial/configure3.png)
+    ![Schermopname waarop 'Verificatie' is geselecteerd.](./media/nuclino-tutorial/configure3.png)
 
 7. Voer in het gedeelte **Verificatie** de volgende stappen uit:
 

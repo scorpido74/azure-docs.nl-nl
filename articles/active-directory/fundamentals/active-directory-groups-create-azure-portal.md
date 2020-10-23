@@ -13,15 +13,15 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3dcbd8618dc0f2bae2eacc9ced67869d8209286a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e4533334204a3a1cfd46ff27b04ff0c05350dfc
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565521"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371848"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>Een basisgroep maken en leden toevoegen met Azure Active Directory
-U kunt een basisgroep maken met behulp van de portal Azure Active Directory (Azure AD). Voor de toepassing van dit artikel wordt een basisgroep toegevoegd aan één resource door de resource-eigenaar (administrator) en deze bevat specifieke leden (werknemers) die toegang nodig hebben tot die resource. Voor complexere scenario's, met inbegrip van dynamische lidmaatschappen en regels maken, zie de [Azure Active Directory gebruiker beheerdocumentatie](../users-groups-roles/index.yml).
+U kunt een basisgroep maken met behulp van de portal Azure Active Directory (Azure AD). Voor de toepassing van dit artikel wordt een basisgroep toegevoegd aan één resource door de resource-eigenaar (administrator) en deze bevat specifieke leden (werknemers) die toegang nodig hebben tot die resource. Voor complexere scenario's, met inbegrip van dynamische lidmaatschappen en regels maken, zie de [Azure Active Directory gebruiker beheerdocumentatie](../enterprise-users/index.yml).
 
 ## <a name="group-and-membership-types"></a>Groeps-en lidmaatschaps typen
 Er zijn verschillende typen groepen en lidmaatschappen. De volgende informatie bevat uitleg over elke groep en elk type lidmaatschap en waarom ze worden gebruikt, om u te helpen bepalen welke opties u moet gebruiken wanneer u een groep maakt.
@@ -36,7 +36,7 @@ Er zijn verschillende typen groepen en lidmaatschappen. De volgende informatie b
 - **Dynamisch apparaat.** Hiermee kunt u dynamische groepsregels gebruiken voor automatisch toevoegen en verwijderen van apparaten. Als de kenmerken van een apparaat wijzigen, controleert het systeem de dynamische groepsregels voor de map om te zien of het apparaat aan de regelvereisten voldoet (wordt toegevoegd) of niet langer voldoet aan de regelvereisten (wordt verwijderd).
 
     > [!IMPORTANT]
-    > U kunt een dynamische groep voor apparaten of gebruikers, maar niet voor beide maken. Het is evenmin mogelijk om een apparaatgroep te maken op basis van kenmerken van de apparaateigenaren. Regels voor apparaatlidmaatschap kunnen alleen verwijzen naar apparaatkenmerken. Zie [een dynamische groep maken en de status controleren](../users-groups-roles/groups-create-rule.md) voor meer informatie over het maken van een dynamische groep voor gebruikers en apparaten.
+    > U kunt een dynamische groep voor apparaten of gebruikers, maar niet voor beide maken. Het is evenmin mogelijk om een apparaatgroep te maken op basis van kenmerken van de apparaateigenaren. Regels voor apparaatlidmaatschap kunnen alleen verwijzen naar apparaatkenmerken. Zie [een dynamische groep maken en de status controleren](../enterprise-users/groups-create-rule.md) voor meer informatie over het maken van een dynamische groep voor gebruikers en apparaten.
 
 ## <a name="create-a-basic-group-and-add-members"></a>Een basisgroep maken en leden toevoegen
 U kunt op hetzelfde moment een basisgroep maken en leden toevoegen. Gebruik de volgende procedure om een basis groep te maken en leden toe te voegen:
@@ -81,5 +81,5 @@ Wanneer een nieuwe Microsoft 365 groep wordt gemaakt, of het nu een dynamisch of
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Toegang tot SaaS-apps met behulp van groepen beheren](../users-groups-roles/groups-saasapps.md)
-- [Groepen met behulp van PowerShell-opdrachten beheren](../users-groups-roles/groups-settings-v2-cmdlets.md)
+- [Toegang tot SaaS-apps met behulp van groepen beheren](../enterprise-users/groups-saasapps.md)
+- [Groepen met behulp van PowerShell-opdrachten beheren](../enterprise-users/groups-settings-v2-cmdlets.md)

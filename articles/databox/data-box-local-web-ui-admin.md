@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 8455fafe9ce2465df450e9556e8b2442b01e4e23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f4f9f65b562b01466aec69cd541ea77f443f803
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449669"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127521"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Gebruik de lokale web-UI voor het beheren van uw Data Box en Data Box Heavy
 
@@ -206,7 +206,7 @@ SMB-ondertekening inschakelen in uw Azure-apparaat:
 
 Uw webinterface gebruikers hebben standaard back-upoperator bevoegdheden op SMB-shares. Als u dit niet wilt, gebruikt u de bevoegdheid **back operator inschakelen** om de bevoegdheden uit te scha kelen of in te scha kelen.
 
-Zie Back-upoperators in [Active Directory-beveiligings groepen](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-security-groups#backup-operators)voor meer informatie.
+Zie Back-upoperators in [Active Directory-beveiligings groepen](/windows/security/identity-protection/access-control/active-directory-security-groups#backup-operators)voor meer informatie.
 
 De bevoegdheden van een back-upoperator inschakelen op uw Azure-apparaat:
 

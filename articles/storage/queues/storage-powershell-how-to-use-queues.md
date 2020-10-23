@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8f45a4de2e13f936556f8dd99aa107110edc6e91
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1f758390a270f072bc08e13d1d542e08e4df553
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89077922"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425533"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Azure Queue Storage-bewerkingen uitvoeren met Azure PowerShell
 
@@ -104,7 +104,7 @@ Get-AzStorageQueue -Context $ctx | Select-Object Name
 
 ## <a name="add-a-message-to-a-queue"></a>Een bericht aan een wachtrij toevoegen
 
-Bewerkingen die van invloed zijn op de daad werkelijke berichten in de wachtrij, gebruiken de client bibliotheek voor .NET-opslag als beschikbaar in Power shell. Als u een bericht aan een wachtrij wilt toevoegen, maakt u een nieuw exemplaar van het bericht object [micro soft. Azure. storage. Queue. CloudQueueMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue.cloudqueuemessage) . Daarna roept u de methode [AddMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue.cloudqueue.addmessage) aan. Een CloudQueueMessage kan worden gemaakt vanuit een tekenreeks (in UTF-8-indeling) of een bytematrix.
+Bewerkingen die van invloed zijn op de daad werkelijke berichten in de wachtrij, gebruiken de client bibliotheek voor .NET-opslag als beschikbaar in Power shell. Als u een bericht aan een wachtrij wilt toevoegen, maakt u een nieuw exemplaar van het bericht object [micro soft. Azure. storage. Queue. CloudQueueMessage](/java/api/com.microsoft.azure.storage.queue.cloudqueuemessage) . Daarna roept u de methode [AddMessage](/java/api/com.microsoft.azure.storage.queue.cloudqueue.addmessage) aan. Een CloudQueueMessage kan worden gemaakt vanuit een tekenreeks (in UTF-8-indeling) of een bytematrix.
 
 In het volgende voor beeld ziet u hoe u een bericht aan uw wachtrij kunt toevoegen.
 

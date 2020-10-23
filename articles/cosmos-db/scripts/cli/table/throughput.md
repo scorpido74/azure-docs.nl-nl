@@ -1,30 +1,30 @@
 ---
-title: RU/s bijwerken voor een Table API-tabel voor Azure Cosmos DB
-description: RU/s bijwerken voor een Table API-tabel voor Azure Cosmos DB
+title: Azure CLI-scripts voor doorvoerbewerkingen (RU/s) voor Azure Cosmos DB Table-API-resources
+description: Azure CLI-scripts voor doorvoerbewerkingen (RU/s) voor Azure Cosmos DB Table-API-resources
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
-ms.date: 07/29/2020
-ms.openlocfilehash: 3f3a39e546c83620ded539180197f6fda760260f
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.date: 10/07/2020
+ms.openlocfilehash: 19fe3ecd3b8127c50ef90ef8195afbf14b04509b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431538"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91839330"
 ---
-# <a name="update-rus-for-a-table-api-table-for-azure-cosmos-db-azure-cli"></a>RU/s bijwerken voor een Table API-tabel voor Azure Cosmos DB met de Azure CLI
+# <a name="throughput-rus-operations-with-azure-cli-for-a-table-for-azure-cosmos-db-table-api"></a>Doorvoerbewerkingen (RU/s) met Azure CLI voor een tabel voor Azure Cosmos DB - Table-API
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit onderwerp gebruikmaken van Azure CLI versie 2.9.1 of hoger. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit onderwerp gebruikmaken van Azure CLI versie 2.12.1 of hoger. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
-Met dit script maakt u een Table-API tabel en wordt de doorvoer voor de tabel bijgewerkt.
+Met dit script maakt u een Table-API tabel en wordt de doorvoer voor de tabel bijgewerkt. Met het script wordt de migratie van standaarddoorvoer naar doorvoer met automatische schaalaanpassing uitgevoerd en de waarde van doorvoer met automatische schaalaanpassing gelezen nadat de migratie is voltooid.
 
-[!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/table/throughput.sh "Update RU/s for a Table API table.")]
+[!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/table/throughput.sh "Throughput operations for Table API.")]
 
 ## <a name="clean-up-deployment"></a>Opschonen van implementatie
 
@@ -43,7 +43,8 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 | [az group create](/cli/azure/group#az-group-create) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Hiermee wordt een Azure Cosmos DB-account gemaakt. |
 | [az cosmosdb table create](/cli/azure/cosmosdb/table#az-cosmosdb-table-create) | Hiermee maakt u een Azure Cosmos Table-API-tabel. |
-| [az cosmosdb table throughput update](/cli/azure/cosmosdb/table/throughput#az-cosmosdb-table-throughput-update) | RU/s bijwerken voor een Azure Cosmos Table-API-tabel. |
+| [az cosmosdb table throughput update](/cli/azure/cosmosdb/table/throughput#az-cosmosdb-table-throughput-update) | Doorvoer bijwerken voor een Azure Cosmos Table-API-tabel. |
+| [az cosmosdb table throughput migrate](/cli/azure/cosmosdb/table/throughput#az-cosmosdb-table-throughput-migrate) | Doorvoer migreren voor een Azure Cosmos Table-API-tabel. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 
 ## <a name="next-steps"></a>Volgende stappen

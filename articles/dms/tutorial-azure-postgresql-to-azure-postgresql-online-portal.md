@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.openlocfilehash: 713b1698bff703507f46e1a8f76c6be385f41ec5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef840abdfdb51e2472615ffabf0b49545b6fef3f
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282457"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938420"
 ---
-# <a name="tutorial-migrate-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server-or-hyperscale-citus-online-using-dms-via-the-azure-portal"></a>Zelfstudie: Azure DB for PostgreSQL - Single Server online migreren naar Azure DB for PostgreSQL - Single Server of Hyperscale (Citus) met behulp van DMS en de Azure-portal
+# <a name="tutorial-migrate-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>Zelfstudie: Azure DB for PostgreSQL - Single Server online migreren naar Azure DB for PostgreSQL - Single Server online met behulp van DMS via de Azure-portal
 
-U kunt Azure Database Migration Service gebruiken om de databases met minimale downtime te migreren van een exemplaar van [Azure Database for PostgreSQL - Single Server](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) naar een exemplaar van [Hyperscale (Citus) in Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---hyperscale-citus). In deze zelfstudie migreert u de voorbeelddatabase **DVD Rental** van Azure Database for PostgreSQL v10 naar Hyperscale (Citus) in Azure Database for PostgreSQL met behulp van een onlinemigratieactiviteit in Azure Database Migration Service.
+U kunt Azure Database Migration Service gebruiken om de databases met minimale downtime te migreren van een exemplaar van [Azure Database for PostgreSQL - Single Server](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) naar dezelfde of een andere versie van Azure Database for PostgreSQL - Single Server of Azure Database for PostgresSQL - Flexible Server. In deze zelfstudie migreert u de voorbeelddatabase **DVD Rental** van Azure Database for PostgreSQL v10 naar Azure Database for PostgresSQL - Single Server met behulp van de onlinemigratieactiviteit in Azure Database Migration Service.
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
@@ -57,9 +57,10 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 * Zorg ervoor dat de regels voor netwerkbeveiligingsgroepen voor uw virtuele netwerk niet de volgende poorten voor inkomende communicatie naar Azure Database Migration Service blokkeren: 443, 53, 9354, 445, 12000. Zie het artikel [Netwerkverkeer filteren met netwerkbeveiligingsgroepen](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm) voor meer informatie over verkeer filteren van verkeer via de netwerkbeveiligingsgroep voor virtuele netwerken.
 * Maak een [firewallregel](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) op serverniveau voor de bron van Azure Database for PostgreSQL om Azure Database Migration Service toegang te bieden tot de brondatabases. Geef het subnetbereik van het virtuele netwerk op dat wordt gebruikt voor Azure Database Migration Service.
 * Maak een [firewallregel](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) op serverniveau voor het doel van Azure Database for PostgreSQL om Azure Database Migration Service toegang te bieden tot de doeldatabases. Geef het subnetbereik van het virtuele netwerk op dat wordt gebruikt voor Azure Database Migration Service.
+* [Logische replicatie inschakelen](https://docs.microsoft.com/azure/postgresql/concepts-logical) in de Azure Database for PostgresSQL-bron. 
 * Stel in het exemplaar van Azure Database for PostgreSQL dat als bron wordt gebruikt de volgende serverparameters in:
 
-  * max_replication_slots = [aantal sleuven], aanbevolen instelling is **vijf sleuven**
+  * max_replication_slots = [aantal sleuven], aanbevolen instelling is **tien sleuven**
   * max_wal_senders = [aantal gelijktijdige taken]: met de parameter max_wal_senders stelt u het aantal taken in dat gelijktijdig kan worden uitgevoerd. De aanbevolen instelling is **10 taken**
 
 > [!NOTE]
@@ -284,7 +285,10 @@ Nadat de eerste volledige lading is voltooid, worden de databases gemarkeerd als
 
     ![Scherm Cutover voltooien](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-complete-cutover.png)
 
-3. Wanneer de databasemigratie de status **Voltooid** heeft, verbindt u uw toepassingen met het nieuwe doelexemplaar van Azure Database for PostgreSQL.
+3. Wanneer de databasemigratie de status **Voltooid** heeft, [maakt u de reeksen opnieuw](https://wiki.postgresql.org/wiki/Fixing_Sequences) (indien van toepassing) en verbindt u uw toepassingen met de nieuwe doelinstantie van Azure Database for PostgreSQL.
+ 
+> [!NOTE]
+> Azure Database Migration Service kan worden gebruikt voor het uitvoeren van upgrades van belangrijke versies met een lagere downtime in Azure Database for PostgreSQL - Single Server. U configureert eerst een doeldatabase met de gewenste hogere versie, netwerkinstellingen en parameters van PostgresSQL. Daarna kunt u de migratie naar de doeldatabases initiëren met behulp van de hierboven beschreven procedure. Na de cutover naar de doeldatabaseserver kunt u de verbindingsreeks voor uw toepassing bijwerken zodat deze naar de doeldatabaseserver verwijst. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

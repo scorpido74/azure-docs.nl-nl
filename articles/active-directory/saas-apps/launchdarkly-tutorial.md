@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: bae3f4a0d8c793061bb3833b04717d378e86f85f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 78f9217ea7288bac56b008911f7b39c73bba7771
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88519660"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856531"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-launchdarkly"></a>Zelfstudie: Azure Active Directory-integratie met LaunchDarkly
 
@@ -100,7 +100,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met [toepassingsnaam], m
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij LaunchDarkly](common/idp-intiated.png)
+    ![Schermopname die de Standaard SAML-configuratie toont, waar u de id en URL kunt invoeren en vervolgens Opslaan selecteert.](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL: `app.launchdarkly.com`
 
@@ -113,7 +113,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met [toepassingsnaam], m
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://app.launchdarkly.com`
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij LaunchDarkly](common/metadata-upload-additional-signon.png)
+    ![Schermopname die Extra URL's instellen toont, waar u een aanmeldings-URL kunt invoeren.](common/metadata-upload-additional-signon.png)
 
 6. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
@@ -135,19 +135,19 @@ Voor het configureren van Azure AD-eenmalige aanmelding met [toepassingsnaam], m
 
 2. Selecteer **Accountinstellingen** in het linkernavigatievenster.
 
-    ![LaunchDarkly-configuratie](./media/launchdarkly-tutorial/configure1.png)
+    ![Schermopname met het item Accountinstellingen geselecteerd in Productie.](./media/launchdarkly-tutorial/configure1.png)
 
 3. Klik op het tabblad **Beveiliging**.
 
-    ![LaunchDarkly-configuratie](./media/launchdarkly-tutorial/configure2.png)
+    ![Schermopname van het tabblad Beveiliging van Accountinstellingen.](./media/launchdarkly-tutorial/configure2.png)
 
 4. Klik op **EENMALIGE AANMELDING INSCHAKELEN** en vervolgens **SAML-CONFIGURATIE BEWERKEN**.
 
-    ![LaunchDarkly-configuratie](./media/launchdarkly-tutorial/configure3.png)
+    ![Schermopname van de pagina voor eenmalige aanmelding waar u S S O kunt inschakelen en de SAML-configuratie kunt bewerken.](./media/launchdarkly-tutorial/configure3.png)
 
 5. In het gedeelte **Uw SAML-configuratie bewerken** voert u de volgende stappen uit:
 
-    ![LaunchDarkly-configuratie](./media/launchdarkly-tutorial/configure4.png)
+    ![Schermopname van de sectie Uw SAML-configuratie bewerken, waar u de hier beschreven wijzigingen kunt aanbrengen.](./media/launchdarkly-tutorial/configure4.png)
 
     a. Kopieer de **SAML-consumptieservice-URL** voor uw instantie en plak deze in het tekstvak Antwoord-URL in het gedeelte **Domein en URL's voor LaunchDarkly** van Azure Portal.
 

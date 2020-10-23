@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rohogue
-ms.openlocfilehash: 28278f76497d6e9d0fee221bb4ef32fe6d369db0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cc4678b082aa5a4a3f90518ff8fac448f414f1a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75966655"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342243"
 ---
 # <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>Richt lijnen voor herstel na nood gevallen voor avere vFXT voor Azure
 
@@ -117,7 +117,7 @@ Ga als volgt te werk om toegang te krijgen tot de back-upcontainer van een avere
 * Lees [cluster tuning](avere-vfxt-tuning.md)voor meer informatie over het aanpassen van instellingen voor avere VFXT voor Azure.
 * Meer informatie over herstel na nood gevallen en het maken van flexibele toepassingen in Azure:
 
-  * [Technische richtlijnen voor flexibiliteit van Azure](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview)
-  * [Herstel na een serviceonderbreking in de gehele regio](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region)
-  * [Herstel na noodgevallen en hoge beschikbaarheid voor Azure-toepassingen](<https://docs.microsoft.com/azure/resiliency/resiliency-disaster-recovery-high-availability-azure-applications>)
+  * [Technische richtlijnen voor flexibiliteit van Azure](/azure/architecture/framework/resiliency/overview)
+  * [Herstel na een serviceonderbreking in de gehele regio](/azure/architecture/resiliency/recovery-loss-azure-region)
+  * [Herstel na noodgevallen en hoge beschikbaarheid voor Azure-toepassingen](/azure/architecture/framework/resiliency/backup-and-recovery)
   <!-- can't find these in the source tree to use relative links -->

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: dffd12f319bd2766decda5874299cd7115f0502b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9517eef8976e79db21fbe552861d0d59923e8ba
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91309197"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173957"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Procedure: Text Analytics gebruiken voor de status (preview)
 
@@ -47,7 +47,7 @@ Met relatie-extractie worden betekenis volle verbindingen van concepten aangegev
 > ![Status RE](../media/ta-for-health/health-relation-extraction.png)
 
 
-#### <a name="entity-linking"></a>[Entiteit koppelen](#tab/entity-linking)
+#### <a name="entity-linking"></a>[Entiteiten koppelen](#tab/entity-linking)
 
 Entiteit koppelt disambiguates afzonderlijke entiteiten door benoemde entiteiten die worden vermeld in tekst te koppelen aan concepten die zijn gevonden in een vooraf gedefinieerde data base met concepten. Bijvoorbeeld het Unified medisch taal systeem (UMLS).
 
@@ -227,7 +227,11 @@ Zie de documentatie van NGINX over [NGINX SSL-beëindiging](https://docs.nginx.c
 
 
 ## <a name="example-api-request"></a>Voorbeeld van API-aanvraag
-De container bevat op REST gebaseerde eindpunt-API's voor queryvoorspelling.
+De container bevat op REST gebaseerde eindpunt-API's voor queryvoorspelling.  We hebben ook een visualisatie hulpprogramma in de container beschikbaar gesteld dat toegankelijk is door de **demo** toe te voegen aan het eind punt van de container, bijvoorbeeld:
+
+```bash
+http://<serverURL>:5000/demo
+```
 
 Gebruik de onderstaande voor beeld-krul aanvraag voor het verzenden van een query naar de container die u hebt geïmplementeerd om de variabele te vervangen `serverURL` door de juiste waarde.
 

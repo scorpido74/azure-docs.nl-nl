@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fb1750996f40db6d76db30cd1c3bc07186660159
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44300771ce6471c97dcd582884995395daae4995
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85201851"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215481"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Aanmelden met één pagina met de impliciete OAuth 2,0-stroom in Azure Active Directory B2C
 
@@ -26,7 +26,9 @@ Veel moderne toepassingen hebben een front-end app met één pagina die voorname
 - Veel autorisatie servers en id-providers ondersteunen CORS-aanvragen (cross-Origin Resource Sharing) niet.
 - Browser-omleidingen in volledige pagina's weg van de app kunnen invasief zijn voor de gebruikers ervaring.
 
-Ter ondersteuning van deze toepassingen gebruikt Azure Active Directory B2C (Azure AD B2C) de impliciete OAuth 2,0-stroom. De OAuth 2,0-autorisatie impliciete subsidie stroom wordt beschreven in [sectie 4,2 van de OAuth 2,0-specificatie](https://tools.ietf.org/html/rfc6749). In impliciete stroom ontvangt de app tokens rechtstreeks van het Azure Active Directory (Azure AD)-toestemming-eind punt, zonder server-naar-server-uitwisseling. Alle verificatie logica en sessie verwerking worden volledig in de Java script-client uitgevoerd met een omleiding van pagina's of een pop-upvenster.
+De aanbevolen manier om toepassingen met één pagina te ondersteunen is [OAuth 2,0-autorisatie code stroom (met PKCE)](./authorization-code-flow.md).
+
+Sommige frameworks, zoals [MSAL.js 1. x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core), bieden alleen ondersteuning voor de impliciete toekennings stroom. In deze gevallen ondersteunt Azure Active Directory B2C (Azure AD B2C) de impliciete machtigings stroom OAuth 2,0-autorisatie. Thee flow wordt beschreven in [sectie 4,2 van de OAuth 2,0-specificatie](https://tools.ietf.org/html/rfc6749). In impliciete stroom ontvangt de app tokens rechtstreeks van het Azure Active Directory (Azure AD)-toestemming-eind punt, zonder server-naar-server-uitwisseling. Alle verificatie logica en sessie verwerking worden volledig in de Java script-client uitgevoerd met een omleiding van pagina's of een pop-upvenster.
 
 Azure AD B2C breidt de standaard OAuth 2,0 impliciete stroom uit naar meer dan eenvoudige verificatie en autorisatie. Azure AD B2C introduceert de [para meter beleid](user-flow-overview.md). Met de para meter beleid kunt u OAuth 2,0 gebruiken om beleids regels toe te voegen aan uw app, zoals aanmelden, aanmelden en gebruikers stromen voor Profiel beheer. In het voor beeld van HTTP-aanvragen in dit artikel wordt **{Tenant}. onmicrosoft. com** als voor beeld gebruikt. Vervang door `{tenant}` de naam van uw Tenant als u er een hebt en ook een gebruikers stroom hebt gemaakt.
 

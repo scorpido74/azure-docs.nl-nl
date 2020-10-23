@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: robinsh
 ms.custom: amqp
-ms.openlocfilehash: 91527b5f2159a336e8339c6a128e8d61965292a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f33521dd9110d7ba6ee84650345b38c8c6a4950b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81732602"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149135"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>Azure IoT Device SDK voor C: meer informatie over IoTHubClient
 
@@ -28,7 +28,7 @@ Het artikel wordt afgesloten met een aantal verschillende onderwerpen, met inbeg
 
 We gebruiken de **IoTHubClient** SDK-voor beelden om deze onderwerpen uit te leggen. Als u wilt volgen, raadpleegt u de voor beelden van **iothub \_ \_ -client \_ -http-** en **iothub- \_ client \_ \_ AMQP** -toepassingen die zijn opgenomen in de Azure IOT Device SDK voor C. alles wat wordt beschreven in de volgende secties, wordt in deze voor beelden toegelicht.
 
-U vindt de [**Azure IOT Device SDK voor c**](https://github.com/Azure/azure-iot-sdk-c) github-opslag plaats en Raadpleeg de details van de API in de [C API-referentie](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/).
+U vindt de [**Azure IOT Device SDK voor c**](https://github.com/Azure/azure-iot-sdk-c) github-opslag plaats en Raadpleeg de details van de API in de [C API-referentie](/azure/iot-hub/iot-c-sdk-ref/).
 
 ## <a name="the-lower-level-apis"></a>De lagere Api's
 
@@ -157,7 +157,7 @@ Map_AddOrUpdate(propMap, "SequenceNumber", propText);
 
 We beginnen met het aanroepen van **IoTHubMessage- \_ Eigenschappen** en geven deze de ingang van ons bericht door. We gaan terug naar een verwijzing naar de **kaart \_ koppeling** waarmee we eigenschappen kunnen toevoegen. Deze laatste wordt bereikt door het aanroepen van de **kaart \_ AddOrUpdate**, die een verwijzing naar een koppelings \_ ingang, de naam van de eigenschap en de waarde van de eigenschap. Met deze API kunnen we net zoveel eigenschappen toevoegen als we.
 
-Wanneer de gebeurtenis wordt gelezen uit **Event hubs**, kan de ontvanger de eigenschappen opsommen en de bijbehorende waarden ophalen. In .NET wordt dit bijvoorbeeld gedaan door de [verzameling eigenschappen van het object Event Data](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.properties.aspx)te openen.
+Wanneer de gebeurtenis wordt gelezen uit **Event hubs**, kan de ontvanger de eigenschappen opsommen en de bijbehorende waarden ophalen. In .NET wordt dit bijvoorbeeld gedaan door de [verzameling eigenschappen van het object Event Data](/dotnet/api/microsoft.servicebus.messaging.eventdata)te openen.
 
 In het vorige voor beeld voegen we eigenschappen toe aan een gebeurtenis die wordt verzonden naar IoT Hub. Eigenschappen kunnen ook worden toegevoegd aan berichten die zijn ontvangen van IoT Hub. Als we eigenschappen van een bericht willen ophalen, kunnen we code gebruiken zoals het volgende in onze bericht retour aanroep functie:
 
@@ -277,4 +277,4 @@ In dit artikel wordt gedetailleerde informatie gegeven over het gedrag van de **
 
 Zie de [Azure IOT sdk's](iot-hub-devguide-sdks.md)voor meer informatie over het ontwikkelen van IOT hub.
 
-Zie [AI implementeren op edge-apparaten met Azure IOT Edge](../iot-edge/tutorial-simulate-device-linux.md)om de mogelijkheden van IOT hub verder te verkennen.
+Zie [AI implementeren op edge-apparaten met Azure IOT Edge](../iot-edge/quickstart-linux.md)om de mogelijkheden van IOT hub verder te verkennen.

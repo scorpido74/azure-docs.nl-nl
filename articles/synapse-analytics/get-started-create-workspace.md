@@ -7,14 +7,15 @@ ms.author: saveenr
 manager: julieMSFT
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
+ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 10/07/2020
-ms.openlocfilehash: d3a5f2bd4bf536c1bc5b3723b9b612beef6a647c
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 1b33fa6ea3b5aa5933c1f969f1f1a07aaec79373
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91812315"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173328"
 ---
 # <a name="creating-a-synapse-workspace"></a>Een Synapse-werkruimte maken
 
@@ -29,8 +30,9 @@ Om alle stappen van deze zelfstudie te kunnen voltooien, moet u toegang hebben t
 1. Open de [Azure-portal](https://portal.azure.com) en zoek bovenin naar **Synapse**.
 1. Selecteer in de zoekresultaten onder **Services** de optie **Azure Synapse Analytics (voorbeeld van werkruimten)** .
 1. Selecteer **Toevoegen** om een werkruimte te maken.
-1. Voer in **Basis** de vereiste velden toe en kies een werkruimtenaam. In deze zelfstudie gebruiken we **myworkspace**.
-1. U hebt een ADLSGEN2-account nodig om een werkruimte te maken. Het meest eenvoudige is om een nieuw account te maken. Als u een bestaand account opnieuw wilt gebruiken, moet u een aantal extra configuratiestappen uitvoeren. 
+1. Voer in **Basics** uw gewenste **Abonnement**, **Resourcegroep** en **Regio** in, en kies vervolgens een werkruimtenaam. In deze zelfstudie gebruiken we **myworkspace**.
+1. U hebt een ADLSGEN2-account en een container in dat account nodig om een werkruimte te maken. Het meest eenvoudige is om een nieuw account te maken. Als u een bestaand account opnieuw wilt gebruiken, moet u een aantal extra configuratiestappen uitvoeren. 
+    1. De Synapse-werkruimte gebruikt deze container als de standaardlocatie voor het opslaan van Spark-logboeken en gegevens voor Spark-tabellen.
 1. OPTIE 1 Een nieuw ADLSGEN2-account maken 
     1. Navigeer naar **Data Lake Storage Gen 2 selecteren**. 
     1. Klik op **Nieuwe maken** en voer de naam **contosolake** in.

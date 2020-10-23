@@ -3,12 +3,12 @@ title: Aanbevolen procedures
 description: Leer de aanbevolen procedures en handige tips voor het ontwikkelen van uw Azure Batch-oplossing.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 695f213c0683bd158539b97719f2c2d8c0210edf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0663d1910e2b67b8302e41a96509bdd84cd1a3a0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91849486"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102775"
 ---
 # <a name="azure-batch-best-practices"></a>Aanbevolen procedures Azure Batch
 
@@ -63,7 +63,7 @@ Wanneer u een Azure Batch groep maakt met behulp van de configuratie van de virt
 
 ### <a name="third-party-images"></a>Installatie kopieën van derden
 
-Pools kunnen worden gemaakt met installatie kopieën van derden die naar Azure Marketplace worden gepubliceerd. In het geval van een batch-account in de gebruikers abonnements modus ziet u mogelijk de fout ' toewijzing is mislukt vanwege een Marketplace-aankoop geschiktheids controle ' bij het maken van een groep met bepaalde installatie kopieën van derden. Ga akkoord met de voor waarden die zijn ingesteld door de uitgever van de installatie kopie om deze fout op te lossen. U kunt dit doen met behulp van [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms) of [Azure cli](https://docs.microsoft.com/cli/azure/vm/image/terms).
+Pools kunnen worden gemaakt met installatie kopieën van derden die naar Azure Marketplace worden gepubliceerd. In het geval van een batch-account in de gebruikers abonnements modus ziet u mogelijk de fout ' toewijzing is mislukt vanwege een Marketplace-aankoop geschiktheids controle ' bij het maken van een groep met bepaalde installatie kopieën van derden. Ga akkoord met de voor waarden die zijn ingesteld door de uitgever van de installatie kopie om deze fout op te lossen. U kunt dit doen met behulp van [Azure PowerShell](/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms) of [Azure cli](/cli/azure/vm/image/terms).
 
 ### <a name="azure-region-dependency"></a>Azure-regio afhankelijkheid
 

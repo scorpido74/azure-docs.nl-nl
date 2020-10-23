@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 10/12/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4, azuread-video-2020
-ms.openlocfilehash: b0dec57a67053c3791e68fb40e28d83d5b97777b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d46dfba9d9dedea57b6be872a6853bc522a0bc8c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962153"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145248"
 ---
 # <a name="what-is-conditional-access"></a>Wat is voorwaardelijke toegang?
 
@@ -84,13 +84,6 @@ Veel organisaties hebben [algemene toegangsproblemen waarbij het beleid voor voo
 - Toegang vanaf specifieke locaties blokkeren of verlenen
 - Riskant aanmeldingsgedrag blokkeren
 - Door de organisatie beheerde apparaten vereisen voor specifieke toepassingen
-
-## <a name="customer-case-studies"></a>Casestudy's van klanten
-
-Ontdek hoe andere organisaties voorwaardelijke toegang van Azure AD gebruiken voor het definiëren en implementeren van geautomatiseerde beslissingen voor toegangsbeheer. De volgende verhalen laten zien hoe aan deze klantbehoeften wordt voldaan.
-
-* [Wipro stimuleert mobiele productiviteit met Microsoft-hulpprogramma's voor cloudbeveiliging om klantbetrokkenheid te verbeteren.](https://customers.microsoft.com/story/wipro-professional-services-enterprise-mobility-security) Door het beleid voor voorwaardelijke toegang in Azure AD kan het bedrijf documenten, resources en toepassingen delen met vertrouwde externe entiteiten, die hun eigen referenties kunnen gebruiken, met behoud van de controle over de eigen bedrijfsgegevens.
-* [Aramex delivery limited, wereldwijd logistiek- en transportbedrijf, zorgt met de oplossing voor identiteits- en toegangsbeheer dat kantoren met elkaar zijn verbonden via de cloud](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en). Het garanderen van veilige toegang was vooral moeilijk vanwege de externe medewerkers van Aramex. Het bedrijf past nu voorwaardelijke toegang toe om deze externe medewerkers toegang te geven tot hun SaaS-toepassingen van buiten het netwerk. De voorwaardelijke toegangsregel bepaalt of Multi-Factor Authentication moet worden afgedwongen, zodat alleen de juiste mensen de juiste toegang krijgen.
 
 ## <a name="license-requirements"></a>Licentievereisten
 

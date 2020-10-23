@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: quickstart
-ms.date: 10/05/2020
+ms.date: 10/21/2020
 ms.author: duau
-ms.openlocfilehash: e25ebd181d0017885a24310e3dac3ff30a59a21e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b0fd844021e7398e061072d7939b782616580c1c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973356"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368686"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit"></a>Snelstart: Een ExpressRoute-circuit maken en wijzigen
 
@@ -172,7 +172,7 @@ Als de serviceprovider van het circuit de inrichtingsstatus **Inrichten** of **I
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-U kunt uw ExpressRoute-circuit verwijderen door het pictogram **Verwijderen** te selecteren. 
+U kunt uw ExpressRoute-circuit verwijderen door het pictogram **Verwijderen** te selecteren. Zorg ervoor dat de providerstatus *Niet ingericht* is voordat u doorgaat.
 
 :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-delete.png" alt-text="Een ExpressRoute-circuit maken":::
 

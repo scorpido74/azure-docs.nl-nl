@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
-ms.openlocfilehash: 0bff283b8e9c0c753100c635ecd4451b467c206d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc36fccf84807621b8b3a186979ccfd000fe48f3
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89146620"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372477"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>Een Azure Active Directory implementatie van mijn apps plannen
 
@@ -225,7 +225,7 @@ Goedkeurings werk stromen zijn beschikbaar voor expliciete goed keuring voor toe
 
 U kunt gebruikers in staat stellen hun eigen beveiligings groepen of Microsoft 365 groepen te maken en te beheren in azure AD. De eigenaar van de groep kan lidmaatschaps aanvragen goed keuren of weigeren en het beheer van groepslid maatschap delegeren. Self-service groeps beheer functies zijn niet beschikbaar voor beveiligings groepen met e-mail functionaliteit of distributie lijsten.
 
-Als u wilt plannen voor een self-service groepslid maatschap, bepaalt u of u wilt dat alle gebruikers in uw organisatie groepen kunnen maken en beheren of alleen een subset van gebruikers. Als u een subset van gebruikers toestaat, moet u een groep instellen waaraan deze personen worden toegevoegd. Zie [self-service groeps beheer instellen in azure Active Directory](../users-groups-roles/groups-self-service-management.md) voor meer informatie over het inschakelen van deze scenario's.
+Als u wilt plannen voor een self-service groepslid maatschap, bepaalt u of u wilt dat alle gebruikers in uw organisatie groepen kunnen maken en beheren of alleen een subset van gebruikers. Als u een subset van gebruikers toestaat, moet u een groep instellen waaraan deze personen worden toegevoegd. Zie [self-service groeps beheer instellen in azure Active Directory](../enterprise-users/groups-self-service-management.md) voor meer informatie over het inschakelen van deze scenario's.
 
 ## <a name="plan-reporting-and-auditing"></a>Rapportage en controle plannen
 
@@ -299,7 +299,7 @@ Het is belang rijk om te plannen wat u moet doen als uw implementatie niet volge
 
 ## <a name="manage-your-implementation"></a>Uw implementatie beheren
 
-Gebruik de rol met de minst privileged om een vereiste taak in Azure Active Directory uit te voeren. [Bekijk de verschillende beschik bare rollen](../users-groups-roles/directory-assign-admin-roles.md) en kies de juiste functie om uw behoeften voor elke persoon voor deze toepassing op te lossen. Sommige rollen moeten mogelijk tijdelijk worden toegepast en worden verwijderd nadat de implementatie is voltooid.
+Gebruik de rol met de minst privileged om een vereiste taak in Azure Active Directory uit te voeren. [Bekijk de verschillende beschik bare rollen](../roles/permissions-reference.md) en kies de juiste functie om uw behoeften voor elke persoon voor deze toepassing op te lossen. Sommige rollen moeten mogelijk tijdelijk worden toegepast en worden verwijderd nadat de implementatie is voltooid.
 
 | Persona's| Rollen| Azure AD-rol  |
 | - | -| -|

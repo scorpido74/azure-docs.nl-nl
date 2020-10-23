@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: d0a19a95a0a0d2353070068b2113e11efe471ccc
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8c7fb3841958ac80431f7cb3d97ddb01bd3661a7
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553957"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995246"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-performancecentre"></a>Zelfstudie: Azure Active Directory-integratie met PerformanceCentre
 
@@ -128,19 +128,19 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure Active Directo
 
 2. Klik op het tabblad aan de linkerkant op **Configureren**.
    
-    ![Eenmalige aanmelding van Azure AD][10]
+    ![Schermopname van het menu van PerformanceCenter met Configureren geselecteerd.][10]
 
 3. Klik op het tabblad aan de linkerkant op **Diversen** en klik vervolgens op **Eenmalige aanmelding**.
    
-    ![Eenmalige aanmelding van Azure AD][11]
+    ![Schermopname van het tabblad Configureren met Eenmalige aanmelding geselecteerd in het menu Diversen.][11]
 
 4. Selecteer **SAML-** als **protocol**.
    
-    ![Eenmalige aanmelding van Azure AD][12]
+    ![Schermopname van de sectie Eenmalige aanmelding configureren met SAML geselecteerd in het menu Protocol.][12]
 
 5. Open uw gedownloade metagegevens in Kladblok, kopieer de inhoud en plak deze vervolgens in het tekstvak **Metagegevens identiteitsprovider** en klik vervolgens op **Opslaan**.
    
-    ![Eenmalige aanmelding van Azure AD][13]
+    ![Schermopname van het tekstvak Metagegevens identiteitsprovider.][13]
 
 6. Controleer of de waarden voor de items **Basis-URL voor entiteiten** en **URL voor entiteits-id** correct zijn.
     
@@ -207,7 +207,7 @@ Het doel van deze sectie is het maken van een gebruiker met de naam Britta Simon
 
 2. Klik in het menu aan de linkerkant op **Verbanden leggen** en klik vervolgens op **Deelnemer maken**.
    
-    ![Gebruiker maken][400]
+    ![Schermopname van de PerformanceCenter-bedrijfssite Verbanden leggen - Deelnemers met de knop Deelnemer maken geselecteerd.][400]
 
 3. Voer de volgende stappen uit in het dialoog venster **Verbanden leggen - Deelnemer maken**:
    

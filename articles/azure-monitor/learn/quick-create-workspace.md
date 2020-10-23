@@ -1,17 +1,17 @@
 ---
-title: Een Log Analytics-werk ruimte maken in azure Portal | Microsoft Docs
+title: Een Log Analytics-werk ruimte maken in de Azure Portal | Microsoft Docs
 description: Meer informatie over het maken van een Log Analytics-werk ruimte om beheer oplossingen en gegevens verzameling in te scha kelen vanuit uw Cloud-en on-premises omgevingen in de Azure Portal.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: f86cc5e3edc659a233066fcf2544ed4a5019d0f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0cf7c89c23b3df51dce2710be50c3c62f8f1e3cf
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324281"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320088"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>Een Log Analytics-werkruimte in Azure Portal maken
 Gebruik het menu **log Analytics werk ruimten** om een log Analytics-werk ruimte te maken met behulp van de Azure Portal. Een Log Analytics-werk ruimte is een unieke omgeving voor Azure Monitor logboek gegevens. Elke werk ruimte heeft een eigen gegevens opslagplaats en-configuratie, en gegevens bronnen en-oplossingen zijn geconfigureerd om hun gegevens op te slaan in een bepaalde werk ruimte. U hebt een Log Analytics-werk ruimte nodig als u van plan bent om gegevens te verzamelen uit de volgende bronnen:
@@ -62,8 +62,5 @@ Wanneer u een werk ruimte maakt die in de afgelopen 14 dagen is verwijderd en de
 ## <a name="next-steps"></a>Volgende stappen
 Nu u een werk ruimte beschikbaar hebt, kunt u een verzameling van de telemetrie-bewaking configureren, Zoek opdrachten in Logboeken uitvoeren om die gegevens te analyseren en een beheer oplossing toevoegen om extra gegevens en analytische inzichten te leveren. 
 
-* Zie [Azure service-logboeken en-metrische gegevens verzamelen voor gebruik in log Analytics](../platform/resource-logs.md#send-to-log-analytics-workspace)voor informatie over het inschakelen van het verzamelen van data van Azure-resources met Azure Diagnostics of Azure Storage.  
-* [Voeg System Center Operations Manager als gegevens bron](../platform/om-agents.md) toe om gegevens te verzamelen van agents die uw Operations Manager beheer groep rapporteren en op te slaan in uw log Analytics-werk ruimte. 
-* Verbind [Configuration Manager](../platform/collect-sccm.md) om computers te importeren die lid zijn van verzamelingen in de hiërarchie.  
-* Bekijk de beschik bare [bewakings oplossingen](../insights/solutions.md) en hoe u een oplossing kunt toevoegen aan of verwijderen uit uw werk ruimte.
-
+* Zie [status van log Analytics werk ruimte controleren in azure monitor](../platform/monitor-workspace.md) waarschuwings regels maken om de status van uw werk ruimte te controleren. 
+* Zie [Azure service-logboeken en-metrische gegevens verzamelen voor gebruik in log Analytics](../platform/resource-logs.md#send-to-log-analytics-workspace) voor het inschakelen van de gegevensverzameling van Azure-resources met Azure Diagnostics of Azure Storage.

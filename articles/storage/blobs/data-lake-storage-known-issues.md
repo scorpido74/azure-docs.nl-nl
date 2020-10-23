@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/08/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: fee5427981cbd2c04a5ee88500a1aee77e2e5ffd
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 1c887093972507904b007c696214708eb0e2b039
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876121"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282194"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekende problemen met Azure Data Lake Storage Gen2
 
@@ -72,7 +72,7 @@ Gebruik alleen de meest recente versie van AzCopy ([AzCopy V10 toevoegen](https:
 
 <a id="storage-explorer"></a>
 
-## <a name="azure-storage-explorer"></a>Azure Storage Explorer
+## <a name="azure-storage-explorer"></a>Azure Opslagverkenner
 
 Gebruik alleen versies  `1.6.0`   of hoger.
 
@@ -92,7 +92,11 @@ Toepassingen van derden die gebruikmaken van REST-Api's voor werken, blijven wer
 
 Als [anonieme lees toegang](storage-manage-access-to-resources.md) is verleend aan een container, hebben acl's geen invloed op die container of de bestanden in die container.
 
-## <a name="premium-performance-blockblobstorage-storage-accounts"></a>Premium-performance BlockBlobStorage-opslag accounts
+### <a name="diagnostic-logs"></a>Diagnostische logboeken
+
+De instelling voor Bewaar dagen wordt nog niet ondersteund, maar u kunt Logboeken hand matig verwijderen met behulp van een ondersteund hulp programma zoals Azure Storage Explorer, REST of een SDK.
+
+## <a name="issues-specific-to-premium-performance-blockblobstorage-storage-accounts"></a>Problemen die specifiek zijn voor Premium-performance BlockBlobStorage-opslag accounts
 
 ### <a name="diagnostic-logs"></a>Diagnostische logboeken
 
@@ -108,8 +112,6 @@ Set-AzCurrentStorageAccount -Name premiumGen2Account -ResourceGroupName PremiumG
 #Enable logging
 Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays 14
 ```
-
-De instelling voor Bewaar dagen wordt nog niet ondersteund, maar u kunt Logboeken hand matig verwijderen met behulp van een ondersteund hulp programma zoals Azure Storage Explorer, REST of een SDK.
 
 ### <a name="lifecycle-management-policies"></a>Levenscyclus beheer beleid
 

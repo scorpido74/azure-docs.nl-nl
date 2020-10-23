@@ -4,17 +4,17 @@ ms.service: multiple
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: gwallace
-ms.openlocfilehash: 4eb1a6f351cdf129611949049f762fe51cac4b16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3590b8fdb67b25e0d4389e814aefcc4d18b1193c
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91377395"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92116688"
 ---
 Azure-klanten kunnen iedere maand 25.000 gratis e-mails ontgrendelen. Met deze 25.000 gratis maandelijkse e-mails krijgt u toegang tot geavanceerde rapportage en analyse en [alle api's][all APIs] (Web, SMTP, event, parse en meer). Voor informatie over extra diensten die door SendGrid worden aangeboden, gaat u naar de pagina met [SendGrid-oplossingen][SendGrid Solutions].
 
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>Aanmelden voor een SendGrid-account
-1. Meld u aan bij [Azure Portal][Azure portal].
+1. Meld u aan bij de [Azure-portal][Azure portal].
 2. Selecteer in het menu Azure Portal of de start pagina de optie **een resource maken**.
 
     ![Scherm afbeelding van het menu Azure Portal waarvoor de optie een resource maken is geselecteerd.][command-bar-new]
@@ -69,7 +69,7 @@ Azure-klanten kunnen iedere maand 25.000 gratis e-mails ontgrendelen. Met deze 2
 ### <a name="to-find-your-sendgrid-credentials"></a>Uw SendGrid-referenties vinden
 1. Klik op het sleutelpictogram om uw **gebruikersnaam** te vinden.
 
-    ! Scherm afbeelding van de pagina ContosoSendGrid-account met het sleutel pictogram gemarkeerd.] [sleutel]
+    ![Scherm afbeelding van de pagina ContosoSendGrid-account met het sleutel pictogram gemarkeerd.][key]
 2. Het wachtwoord is door u gekozen tijdens de installatie. Als u wijzigingen wilt aanbrengen, selecteert u **Wachtwoord wijzigen** of **Wachtwoord opnieuw instellen**.
 
 Als u uw instellingen voor de bezorging van e-mail wilt beheren, klikt u op de knop **Beheren**. Dit wordt omgeleid naar uw SendGrid-dash board.
@@ -90,7 +90,7 @@ Ga voor meer informatie over het verzenden van e-mail via SendGrid naar het over
 [api-keys]: ./media/sendgrid-sign-up/api-keys.png
 [general-api-key]: ./media/sendgrid-sign-up/general-api-key.png
 [access]: ./media/sendgrid-sign-up/access.png
-[prestatie]: ./media/sendgrid-sign-up/key.png
+[key]: ./media/sendgrid-sign-up/key.png
 
 <!--Links-->
 

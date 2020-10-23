@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/18/2019
 ms.author: Zhchia
-ms.openlocfilehash: 3990f9533aa6746011b1f070139b39ec884711c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fcb971cd0bd0addd3190e2a3a5f9c6740494b7fd
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91305831"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318968"
 ---
 # <a name="tutorial-configure-airstack-for-automatic-user-provisioning"></a>Zelf studie: een luchtstack configureren voor automatische gebruikers inrichting
 
@@ -89,7 +89,7 @@ Voordat u de functie voor het automatisch inrichten van gebruikers met Azure AD 
 In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in de stroom te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
 
 > [!TIP]
-> U kunt er ook voor kiezen om op SAML gebaseerde eenmalige aanmelding voor de werk stack in te scha kelen, gevolgd door de instructies in de [zelf studie voor eenmalige aanmelding in de netstack](https://docs.microsoft.com/azure/active-directory/saas-apps/airstack-tutorial). Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar in de compliment
+> U kunt er ook voor kiezen om op SAML gebaseerde eenmalige aanmelding voor de werk stack in te scha kelen, gevolgd door de instructies in de [zelf studie voor eenmalige aanmelding in de netstack](./airstack-tutorial.md). Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar in de compliment
 
 ### <a name="to-configure-automatic-user-provisioning-for-airstack-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor de luchtstack in azure AD:
 
@@ -153,4 +153,3 @@ Zie [Rapportage over automatische inrichting van gebruikersaccounts](../app-prov
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Meer informatie over het controleren van logboeken en het ophalen van rapporten over de inrichtingsactiviteit](../app-provisioning/check-status-user-account-provisioning.md)
-

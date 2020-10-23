@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: overview
 ms.date: 07/01/2019
 ms.author: rohogue
-ms.openlocfilehash: acf35015ff7851f7ea2a2527852be2573512e35d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 72308bf64246a8041bd40fa557280014a13c95eb
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "72254839"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218779"
 ---
 # <a name="what-is-azure-fxt-edge-filer-hybrid-storage-cache"></a>Wat is hybride opslagcache van Azure FXT Edge Filer?
 
@@ -19,7 +19,7 @@ Azure FXT Edge Filer is een apparaat voor hybride opslagcache dat snelle toegang
 
 Het apparaat werkt met meerdere gegevensbronnen die in een lokaal datacentrum, op afstand of in de cloud kunnen zijn opgeslagen. Azure FXT Edge Filer kan een uniforme naamruimte voor gegevens in verschillende opslagsystemen bieden.
 
-Drie of meer FXT Edge Filer-hardwareapparaten werken samen als een geclusterd bestandssysteem om de cache te leveren. Neem contact op met uw Microsoft-vertegenwoordiger voor informatie over de aankoop van de vereiste hardware. 
+Drie of meer FXT Edge Filer-hardwareapparaten werken samen als een geclusterd bestandssysteem om de cache te leveren. Neem contact op met uw Microsoft-vertegenwoordiger voor informatie over de aankoop van de vereiste hardware.
 
 Lees de productinformatie en het gegevensblad over [Azure FXT Edge Filer](https://azure.microsoft.com/services/fxt-edge-filer/) voor meer informatie.
 
@@ -27,31 +27,30 @@ Lees de productinformatie en het gegevensblad over [Azure FXT Edge Filer](https:
 
 Met Azure FXT Edge Filer wordt de productiviteit het beste verbeterd voor werkstromen zoals:
 
-* Werkstromen met leesintensieve bestandstoegang 
+* Werkstromen met leesintensieve bestandstoegang
 * NFSv3- of SMB2-protocollen
 * Serverfarms met 1000 tot 100.000 CPU-cores
 
 ### <a name="nas-optimization-and-scaling"></a>NAS-optimalisatie en schaalaanpassing
 
-U kunt de Azure FXT Edge Filer-cache gebruiken voor snelle toegang tot bestaande NetApp- en Dell EMC Isilon NAS-systemen. Ook kunt u Azure Blob of andere cloudopslag toevoegen voor schaalbaarheid, zonder de processen voor gegevenstoegang aan de clientzijde opnieuw te moeten inrichten. 
+U kunt de Azure FXT Edge Filer-cache gebruiken voor snelle toegang tot bestaande NetApp- en Dell EMC Isilon NAS-systemen. Ook kunt u Azure Blob of andere cloudopslag toevoegen voor schaalbaarheid, zonder de processen voor gegevenstoegang aan de clientzijde opnieuw te moeten inrichten.
 
 ### <a name="wan-caching"></a>Opslaan in WAN-cache
 
-Azure FXT Edge Filer kan worden gebruikt voor snelle bestandstoegang van grootschalige gebruikers wanneer de gegevens die zij nodig hebben ergens anders zijn opgeslagen. Geef toegang terwijl u back-up- en andere gegevensbeheersystemen in een gecentraliseerd datacentrum opslaat. 
+Azure FXT Edge Filer kan worden gebruikt voor snelle bestandstoegang van grootschalige gebruikers wanneer de gegevens die zij nodig hebben ergens anders zijn opgeslagen. Geef toegang terwijl u back-up- en andere gegevensbeheersystemen in een gecentraliseerd datacentrum opslaat.
 
 ### <a name="active-archive-in-azure-blob"></a>Actief archief in Azure Blob
 
-Breid uw datacentrum uit naar cloudopslag met Azure FXT Edge Filer als het toegangspunt. 
+Breid uw datacentrum uit naar cloudopslag met Azure FXT Edge Filer als het toegangspunt.
 
-## <a name="features"></a>Functies 
+## <a name="features"></a>Functies
 
-Er zijn twee hardwaremodellen beschikbaar. 
+Er zijn twee hardwaremodellen beschikbaar.
 
-| Modelleren | DRAM | NVMe SSD | Netwerkpoorten | 
+| Modelleren | DRAM | NVMe SSD | Netwerkpoorten |
 |-------|------|----------|---------------|
 | FXT 6600 | 1536 GB | 25,6 TB | 6 x 25 Gb/10 Gb + 2 x 1 Gb |
 | FXT 6400 | 768 GB | 12,8 TB | 6 x 25 Gb/10 Gb + 2 x 1 Gb |
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

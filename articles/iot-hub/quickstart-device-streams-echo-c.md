@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 7b5487233e2bd0e532efad4e108c41f188b51d91
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 57baa06803e9d8c23c04170626b38c47542a4c2f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "83727157"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150677"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Quickstart: communiceren met een apparaattoepassing in C via IoT Hub-apparaatstreams (preview)
 
@@ -120,7 +120,7 @@ Voor deze quickstart gebruikt u de [Azure IoT device-SDK voor C](iot-hub-device-
 
 ## <a name="register-a-device"></a>Een apparaat registreren
 
-U moet een apparaat moet zijn registreren bij uw IoT-hub voordat het verbinding kan maken. In deze sectie gebruikt u Azure Cloud Shell met de [IoT-extensie](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) om een gesimuleerd apparaat te registreren.
+U moet een apparaat moet zijn registreren bij uw IoT-hub voordat het verbinding kan maken. In deze sectie gebruikt u Azure Cloud Shell met de [IoT-extensie](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) om een gesimuleerd apparaat te registreren.
 
 1. Voer de volgende opdrachten uit in Cloud Shell om de apparaat-id te maken:
 

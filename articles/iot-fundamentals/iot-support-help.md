@@ -5,16 +5,16 @@ author: philmea
 ms.author: phil
 ms.service: iot-fundamentals
 services: iot-fundamentals
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 6/10/2020
-ms.openlocfilehash: ea4ecbbeaa4ad016e32aa9301d6f6ac49a6d342e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b9b3b30592237e1bbe1b08b0ed1d118131b15a26
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91330176"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206047"
 ---
-# <a name="azure-iot-support-and-help-options"></a>Opties voor ondersteuning en hulp voor Azure IoT
+# <a name="what-are-the-azure-iot-support-and-help-options"></a>Wat zijn de opties voor ondersteuning en hulp voor Azure IoT?
 
 Hier vindt u suggesties voor waar u hulp kunt krijgen bij het ontwikkelen van uw Azure IoT-oplossingen.
 
@@ -31,21 +31,21 @@ Verken het aanbod aan [ondersteuningsopties voor Azure en kies het abonnement](h
 
 ## <a name="post-a-question-on-microsoft-qa"></a>Een vraag stellen op Microsoft Q&A
 
-Voor snelle en betrouwbare antwoorden op uw technische productvragen van Microsoft Engineers, Azure Most Valuable Professionals (MVP's) of de community van experts, neemt u contact met ons op via [Microsoft Q&A](https://aka.ms/azureqa), de voorkeurslocatie van Azure voor ondersteuning uit de community. 
+Voor snelle en betrouwbare antwoorden op uw technische productvragen van Microsoft Engineers, Azure Most Valuable Professionals (MVP's) of de community van experts, neemt u contact met ons op via [Microsoft Q&A](/answers/products/azure), de voorkeurslocatie van Azure voor ondersteuning uit de community. 
 
 Als u via zoeken geen antwoord op uw probleem kunt vinden, dient u een nieuwe vraag in bij Microsoft Q&A. Gebruik een van de volgende tags wanneer u uw vraag stelt:
 
-- [Azure IoT](https://docs.microsoft.com/answers/topics/azure-iot.html)
-- [Azure IoT Central](https://docs.microsoft.com/answers/topics/azure-iot-central.html)
-- [Azure IoT Edge](https://docs.microsoft.com/answers/topics/azure-iot-edge.html)
-- [Azure IoT Hub](https://docs.microsoft.com/answers/topics/azure-iot-hub.html)
-- [Azure IoT Hub DPS (Device Provisioning Service)](https://docs.microsoft.com/answers/topics/azure-iot-dps.html)
-- [SDK's voor Azure IoT](https://docs.microsoft.com/answers/topics/azure-iot-sdk.html)
-- [Azure Digital Twins](https://docs.microsoft.com/answers/topics/azure-digital-twins.html)
-- [Azure RTOS](https://docs.microsoft.com/answers/topics/azure-rtos.html)
-- [Azure Sphere](https://docs.microsoft.com/answers/topics/azure-sphere.html)
-- [Azure Time Series Insights](https://docs.microsoft.com/answers/topics/azure-time-series-insights.html)
-- [Azure Maps](https://docs.microsoft.com/answers/topics/azure-maps.html)
+- [Azure IoT](/answers/topics/azure-iot.html)
+- [Azure IoT Central](/answers/topics/azure-iot-central.html)
+- [Azure IoT Edge](/answers/topics/azure-iot-edge.html)
+- [Azure IoT Hub](/answers/topics/azure-iot-hub.html)
+- [Azure IoT Hub DPS (Device Provisioning Service)](/answers/topics/azure-iot-dps.html)
+- [SDK's voor Azure IoT](/answers/topics/azure-iot-sdk.html)
+- [Azure Digital Twins](/answers/topics/azure-digital-twins.html)
+- [Azure RTOS](/answers/topics/azure-rtos.html)
+- [Azure Sphere](/answers/topics/azure-sphere.html)
+- [Azure Time Series Insights](/answers/topics/azure-time-series-insights.html)
+- [Azure Maps](/answers/topics/azure-maps.html)
 
 ## <a name="post-a-question-on-stack-overflow"></a>Een vraag stellen op Stack Overflow
 
@@ -101,5 +101,4 @@ U kunt ook uw ervaringen delen, deelnemen en leren van experts in de [Techcommun
 
 ## <a name="next-steps"></a>Volgende stappen
 
-> [!div class="nextstepaction"]
-> [Wat is Azure IoT?](iot-introduction.md)
+[Wat is Azure IoT?](iot-introduction.md)

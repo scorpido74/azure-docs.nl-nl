@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
-ms.openlocfilehash: e0226392ff96c6dc10cbd729135a15c066378f68
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5486752c8a1e36eba047ffd4d82b10cddfc771a1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552717"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850013"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-isams"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met iSAMS
 
@@ -132,16 +132,16 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 1. Ga naar het Control Panel en open de module **Authentication**.
 1. Selecteer **Identity Providers** in het menu aan de rechterkant.
 
-    ![Configuratie](./media/isams-tutorial/click-identity-provider.png)
+    ![Schermopname van Active Directory Configuration met Identity Providers geselecteerd.](./media/isams-tutorial/click-identity-provider.png)
 
 1. Selecteer **Add Provider**
 
-    ![Configuratie](./media/isams-tutorial/add-identity-provider.png)
+    ![Schermopname van Identity Providers met Add Provider geselecteerd.](./media/isams-tutorial/add-identity-provider.png)
 
 
 1. Voer deze stappen uit op de volgende pagina:
 
-    ![Configuratie](./media/isams-tutorial/configure-isams.png)
+    ![Schermopname van de wizard Identity Providers (Id-providers) waarin u de beschreven stappen kunt uitvoeren.](./media/isams-tutorial/configure-isams.png)
 
     a. Geef in het tekstvak **Name** een geldige naam op zoals `Saml2 Azure`. Dit is de naam die wordt weergegeven op de aanmeldingspagina.
 
@@ -159,12 +159,12 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 2.  Ga naar **Control Panel Home** -> **Security & Permissions** -> **User Accounts** -> **User Options and Tasks** -> **Modify User Properties**
 
-    ![Testgebruiker](./media/isams-tutorial/modify-user-properties.png)
+    ![Schermopname van de pagina User Accounts (Gebruikersaccounts) met Modify User Properties (Gebruikerseigenschappen wijzigen) geselecteerd.](./media/isams-tutorial/modify-user-properties.png)
 
 
 3. Selecteer **Account Details** in het pop-upvenster dat verschijnt en wijzig de waarde voor **Authorisation** in de naam van de zojuist gemaakte id-provider.
 
-    ![Testgebruiker](./media/isams-tutorial/account-details.png)
+    ![Schermopname van Account Details met een waarde voor Authorization.](./media/isams-tutorial/account-details.png)
 
 4. Klik op **Save & Close**.
 

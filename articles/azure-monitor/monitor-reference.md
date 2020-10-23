@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: 1841c4eb8975c865c5f15a0e8fe3a6b5f0522820
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1681217c9e55b67ee2a6737aeece5303256bc1e6
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89435402"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461801"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Wat wordt er bewaakt door Azure Monitor?:
 In dit artikel worden de verschillende toepassingen en services beschreven die door Azure Monitor worden bewaakt. 
@@ -55,7 +55,7 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 - Logboeken: de service ondersteunt Diagnostische instellingen waarmee de logboeken en metrische gegevens van het platform kunnen worden verzameld voor Azure Monitor Logboeken.
 - Inzicht: er is een inzicht beschikbaar voor de service die een aangepaste bewakings ervaring biedt voor de service.
 
-| Service | Metrische gegevens | Logboeken | Inzicht | Notities |
+| Service | Metrische gegevens | Logboeken | Inzicht | Opmerkingen |
 |:---|:---|:---|:---|:---|
 |Active Directory | Nee | Ja | [Ja](../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md) |  |
 |Active Directory B2C | Nee | Nee | Nee |  |
@@ -111,7 +111,7 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |ExpressRoute | Ja | Ja | Nee |  |
 |Firewall | Ja | Ja | Nee |  |
 |Front Door | Ja | Ja | Nee |  |
-|Functies | Ja | Ja | Nee |  |
+|Functions | Ja | Ja | Nee |  |
 |HDInsight | Nee | Ja | Nee |  |
 |HPC Cache | Nee | Nee | Nee |  |
 |Information Protection | Nee | Ja | Nee |  |
@@ -131,7 +131,7 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |Microsoft PowerApps | Nee | Nee | Nee |  |
 |Microsoft Social Engagement | Nee | Nee | Nee |  |
 |Microsoft Stream | Ja | Ja | Nee |  |
-|Migrate | Nee | Nee | Nee |  |
+|Migreren | Nee | Nee | Nee |  |
 |Multi-Factor Authentication | Nee | Ja | Nee |  |
 |Network Watcher | Ja | Ja | Nee |  |
 |Notification Hubs | Ja | Nee | Nee |  |
@@ -145,7 +145,7 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |Resource Graph | Nee | Nee | Nee |  |
 |Resource Manager | Nee | Nee | Nee |  |
 |Retail-zoek opdracht: door Bing | Nee | Nee | Nee |  |
-|Zoeken | Ja | Ja | Nee |  |
+|Search | Ja | Ja | Nee |  |
 |Service Bus | Ja | Ja | Nee |  |
 |Service Fabric | Nee | Ja | Nee | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken.  |
 |Aanmeldings Portal | Nee | Nee | Nee |  |
@@ -170,13 +170,26 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |VPN Gateway | Ja | Ja | Nee |  |
 |Windows Virtual Desktop | Nee | Nee | Nee |  |
 
+## <a name="virtual-machine-agents"></a>Virtuele machine-agents
+De volgende tabel geeft een lijst van de agents die gegevens kunnen verzamelen van het gast besturingssysteem van virtuele machines en te bewaken gegevens verzenden. Elke agent kan verschillende gegevens verzamelen en deze naar metrieken of Logboeken in Azure Monitor verzenden. 
+
+Zie [overzicht van Azure monitor-agents](platform/agents-overview.md) voor meer informatie over de gegevens die elke agent kan verzamelen.
+
+| Agent |  Metrische gegevens | Logboeken |
+|:---|:---|:---|:---|
+| [Azure Monitor-agent (preview-versie)](platform/azure-monitor-agent-overview.md) | Ja | Ja |
+| [Log Analytics-agent](platform/log-analytics-agent.md) | Nee | Ja|
+| [Diagnostische extensie](platform/diagnostics-extension-overview.md) | Ja | Nee |
+| [Telegraf-agent](platform/collect-custom-metrics-linux-telegraf.md) | Ja | Nee |
+| [Agent voor afhankelijkheden](insights/vminsights-enable-overview.md) | Nee | Ja |
+
 
 ## <a name="product-integrations"></a>Product integraties
 De services en oplossingen in de volgende tabel slaan hun gegevens op in een Log Analytics-werk ruimte, zodat deze kunnen worden geanalyseerd met andere logboek gegevens die worden verzameld door Azure Monitor.
 
 | Product/service | Beschrijving |
 |:---|:---|
-| [Azure Automation](../automation/index.yml) | Updates van het besturings systeem beheren en wijzigingen bijhouden op Windows-en Linux-computers. Zie [Wijzigingen bijhouden](../automation/change-tracking.md) en [updatebeheer](../automation/update-management/update-mgmt-overview.md). |
+| [Azure Automation](../automation/index.yml) | Updates van het besturings systeem beheren en wijzigingen bijhouden op Windows-en Linux-computers. Zie [Wijzigingen bijhouden](../automation/change-tracking/overview.md) en [updatebeheer](../automation/update-management/update-mgmt-overview.md). |
 | [Azure Information Protection ](/azure/information-protection/) | U kunt documenten en e-mail berichten classificeren en optioneel beveiligen. Zie [centrale rapportage voor Azure Information Protection](/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports). |
 | [Azure Security Center](../security-center/index.yml) | Verzamelen en analyseren van beveiligings gebeurtenissen en het uitvoeren van bedreigings analyses. [Gegevens verzameling in azure Security Center](../security-center/security-center-enable-data-collection.md) weer geven |
 | [Azure Sentinel](../sentinel/index.yml) | Maakt verbinding met verschillende bronnen, waaronder Office 365 en Amazon Web Services Cloud Trail. Zie [verbinding maken met gegevens bronnen](../sentinel/connect-data-sources.md). |

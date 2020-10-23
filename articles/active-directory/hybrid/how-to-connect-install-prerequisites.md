@@ -16,12 +16,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fa96d6bd0032f675ffaeabc58c62c13312039dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca2190079cb97e37318bd1c6a32dfb2b9b309a8d
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89662162"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276941"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Vereisten voor Azure AD Connect
 In dit artikel worden de vereisten en de hardwarevereisten voor Azure Active Directory (Azure AD)-verbinding beschreven.
@@ -46,6 +46,14 @@ Voordat u Azure AD Connect installeert, zijn er enkele dingen die u nodig hebt.
 * De domein controller die door Azure AD wordt gebruikt, moet beschrijfbaar zijn. Het gebruik van een alleen-lezen domein controller (RODC) *wordt niet ondersteund*en Azure AD Connect geen schrijf omleidingen volgen.
 * On-premises forests of domeinen gebruiken met behulp van ' dotted ' (naam bevat een punt ' '. ') NetBIOS-namen worden *niet ondersteund*.
 * U wordt aangeraden [de Prullenbak van Active Directory in te scha kelen](how-to-connect-sync-recycle-bin.md).
+
+### <a name="powershell-execution-policy"></a>PowerShell-uitvoeringsbeleid
+Azure Active Directory Connect ondertekende Power shell-scripts worden uitgevoerd als onderdeel van de installatie. Zorg ervoor dat het Power shell-uitvoerings beleid uitvoering van scripts toestaat.
+
+Het aanbevolen uitvoerings beleid tijdens de installatie is ' RemoteSigned '.
+
+Zie [Set-ExecutionPolicy](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7)voor meer informatie over het instellen van het Power shell-uitvoerings beleid.
+
 
 ### <a name="azure-ad-connect-server"></a>Azure AD Connect server
 De Azure AD Connect-server bevat essentiële identiteits gegevens. Het is belang rijk dat beheerders toegang tot deze server goed is beveiligd. Volg de richt lijnen bij het [beveiligen van bevoegde toegang](/windows-server/identity/securing-privileged-access/securing-privileged-access). 
@@ -132,7 +140,7 @@ We raden u aan uw Azure AD Connect-server te beveiligen om het beveiligings risi
 Raadpleeg MSDN over het [standaard proxy-element](/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings)voor meer informatie.
 Zie [verbindings problemen oplossen](tshoot-connect-connectivity.md)voor meer informatie over problemen met de connectiviteit.
 
-### <a name="other"></a>Anders
+### <a name="other"></a>Overige
 Optioneel: gebruik een test gebruikers account om de synchronisatie te controleren.
 
 ## <a name="component-prerequisites"></a>Onderdeel vereisten

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 2e3b2ee35352c2af4ae8196ba7c9699da761f83e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a203bbd65c07d21c7d96b59c57b441748ed5b9a9
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372490"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127555"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>Zelfstudie: Azure Active Directory-integratie met Springer Link
 
@@ -97,7 +97,7 @@ Voer de volgende stappen uit om Azure AD-eenmalige aanmelding te configureren vo
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Springer Link](common/idp-relay.png)
+    ![Schermopname die de Standaard SAML-configuratie toont, waar u de id en URL kunt invoeren en vervolgens Opslaan selecteert.](common/idp-relay.png)
 
     a. In het tekstvak **Id** typt u een URL: `https://fsso.springer.com`
 
@@ -109,7 +109,7 @@ Voer de volgende stappen uit om Azure AD-eenmalige aanmelding te configureren vo
 
 5. Als u de toepassing wilt configureren in door **SP** geïnitieerde modus, voert u de volgende stap uit:
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Springer Link](common/both-signonurl.png)
+    ![Schermopname die Extra URL's instellen toont, waar u een aanmeldings-URL kunt invoeren.](common/both-signonurl.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://fsso.springer.com/saml/login?idp=<entityID>&targetUrl=https://link.springer.com`
 

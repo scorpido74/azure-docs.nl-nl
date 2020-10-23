@@ -8,12 +8,12 @@ ms.reviewer: yashesvi
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: d032937fe79b9f51818ce8917c36fa1cc30397c0
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 300ac0996d9dcb9ecb07abd3392447e393c1781b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400123"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151614"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Reserveringen voor Azure-resources beheren
 
@@ -110,7 +110,7 @@ Annulering, ruiling of terugbetaling van reserveringen is mogelijk met bepaalde 
 
 ## <a name="change-optimize-setting-for-reserved-vm-instances"></a>De optimalisatie-instelling wijzigen voor gereserveerde VM-instanties
 
- Wanneer u een gereserveerde VM-instantie aanschaft, kunt u de flexibiliteit of de capaciteit van de instantiegrootte prioriteit geven. De flexibiliteit van de instantiegrootte is van toepassing op de reserveringskorting op andere virtuele machines in de [groep met VM’s met dezelfde grootte](https://aka.ms/RIVMGroups). Met de capaciteitsprioriteit wordt prioriteit toegekend aan de datacentercapaciteit voor uw implementaties. Deze optie biedt u extra vertrouwen dat u de VM-instanties kunt starten op het moment dat u ze nodig hebt.
+ Wanneer u een gereserveerde VM-instantie aanschaft, kunt u de flexibiliteit of de capaciteit van de instantiegrootte prioriteit geven. De flexibiliteit van de instantiegrootte is van toepassing op de reserveringskorting op andere virtuele machines in de [groep met VM’s met dezelfde grootte](../../virtual-machines/reserved-vm-instance-size-flexibility.md). Met de capaciteitsprioriteit wordt prioriteit toegekend aan de datacentercapaciteit voor uw implementaties. Deze optie biedt u extra vertrouwen dat u de VM-instanties kunt starten op het moment dat u ze nodig hebt.
 
 Wanneer het bereik van de reservering Gedeeld is, is de flexibiliteit van de instantiegrootte ingeschakeld. De datacentercapaciteit heeft geen prioriteit voor VM-implementaties.
 
@@ -173,7 +173,7 @@ Een serviceabonnement kopen:
 - [Vooruitbetalen voor Azure Cosmos DB-resources met gereserveerde capaciteit van Azure Cosmos DB](../../cosmos-db/cosmos-db-reserved-capacity.md)
 
 Een softwareabonnement kopen:
-- [Vooruitbetalen voor Red Hat-software-abonnementen vanuit Azure Reservations](../../virtual-machines/linux/prepay-rhel-software-charges.md)
+- [Vooruitbetalen voor Red Hat-software-abonnementen vanuit Azure Reservations](../../virtual-machines/linux/prepay-suse-software-charges.md)
 - [Vooruitbetalen voor SUSE-software-abonnementen vanuit Azure Reservations](../../virtual-machines/linux/prepay-suse-software-charges.md)
 
 Inzicht in kortingen en gebruik:

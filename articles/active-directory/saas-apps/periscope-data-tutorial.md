@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: ca0bfcb0c90142924285215c427a7071297be730
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7f808cff5bddf6566276df2f707232bde1ecca8a
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553907"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995090"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>Zelfstudie: Azure Active Directory-integratie met Periscope Data
 
@@ -123,7 +123,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding met Azure Active Directo
 
 2. Open het tandwielmenu linksonder en open het menu **Facturering** > **Beveiliging** en voer de volgende stappen uit. Alleen beheerders hebben toegang tot deze instellingen.
 
-    ![Informatie voor Periscope Data configureren](./media/periscope-data-tutorial/configure01.png)
+    ![Schermopname van het dialoogvenster Beveiliging met de geselecteerde instellingen.](./media/periscope-data-tutorial/configure01.png)
 
     a. Kopieer de **App-URL voor federatieve metagegevens** uit stap 5 # **SAML-handtekeningcertificaat** en open deze in een browser. Hiermee opent u een XML-document.
 
@@ -143,7 +143,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding met Azure Active Directo
 
     i. Klik tot slot op **Opslaan** en **bevestig** de instellingswijzigen voor eenmalige aanmelding door **Afmelden** te typen.
 
-    ![Informatie voor Periscope Data configureren](./media/periscope-data-tutorial/configure02.png)
+    ![Schermopname van het dialoogvenster SSO-configuratie bijwerken met afmelden in het tekstvak getypt en de knop Bevestigen geselecteerd.](./media/periscope-data-tutorial/configure02.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -206,7 +206,7 @@ Als u wilt dat gebruikers van Azure Active Directory zich kunnen aanmelden bij P
 
 2. Klik op het pictogram **Instellingen** in het menu links onder en navigeer naar **Machtigingen**.
 
-    ![Informatie voor Periscope Data configureren](./media/periscope-data-tutorial/configure03.png)
+    ![Schermopname van het menu Instellingen met de optie Machtigingen geselecteerd.](./media/periscope-data-tutorial/configure03.png)
 
 3. Klik op **GEBRUIKER TOEVOEGEN** en voer de volgende stappen uit:
 

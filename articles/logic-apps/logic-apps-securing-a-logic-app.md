@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 09/19/2020
-ms.openlocfilehash: 8023f3d7730a617ec502c8f181bad1fc27627694
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/16/2020
+ms.openlocfilehash: 159f4b2ea0cafb0b2c883cde76ddce7ddd3f1fc6
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269162"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317569"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Beveiligde toegang en gegevens in Azure Logic Apps
 
@@ -316,14 +316,14 @@ Samen met Shared Access Signature (SAS) kunt u de clients die uw logische app ku
 
 1. **Access control configuration**  >  Selecteer **specifieke IP-bereiken**onder toegangs beheer configuratie**toegestane binnenkomende IP-adressen**.
 
-1. Geef onder **IP-bereiken voor triggers**de IP-adresbereiken op die de trigger accepteert.
+1. Wanneer het vak **IP-bereiken voor triggers** wordt weer gegeven, geeft u de IP-adresbereiken op die de trigger accepteert. Een geldig IP-bereik maakt gebruik van de volgende indelingen: *x. x. x. x/x* of *x. x. x. x-x. x.* x. x
 
-   Een geldig IP-bereik maakt gebruik van de volgende indelingen: *x. x. x. x/x* of *x. x. x. x-x. x.* x. x
+   Als u bijvoorbeeld wilt dat uw logische app alleen kan worden opgeroepen als een geneste logische app via de HTTP-actie, gebruikt u de optie **specifieke IP-bereiken** (niet de **enige andere Logic apps** optie) en voert u de [uitgaande IP-adressen](../logic-apps/logic-apps-limits-and-config.md#outbound)van de bovenliggende logische app in.
 
-Als u wilt dat uw logische app alleen als een geneste logische app wordt geactiveerd, selecteert u **alleen andere Logic apps**in de lijst **toegestane binnenkomende IP-adressen** . Met deze optie wordt een lege matrix naar de logische app-resource geschreven. Op die manier kunnen alleen aanroepen van de Logic Apps-service (bovenliggende Logic apps) de geneste logische app activeren.
+   Als u uw logische app echter alleen wilt aanroepen als een geneste logische app via de ingebouwde [Azure Logic apps actie](../logic-apps/logic-apps-http-endpoint.md), selecteert u in plaats daarvan de **enige andere Logic apps** optie. Met deze optie schrijft u een lege matrix naar de logische app-resource en is het vereist dat alleen aanroepen van andere ' bovenliggende ' logische apps de geneste logische app kunnen activeren via de ingebouwde **Azure Logic apps** actie.
 
-> [!NOTE]
-> Ongeacht het IP-adres kunt u nog steeds een logische app met een op aanvragen gebaseerde trigger uitvoeren met behulp van de [Logic Apps rest API: werk stroom triggers-aanvraag uitvoeren](/rest/api/logic/workflowtriggers/run) of door middel van API management. Voor dit scenario is echter nog steeds [verificatie](../active-directory/develop/authentication-vs-authorization.md) vereist voor de Azure-rest API. Alle gebeurtenissen worden weer gegeven in het controle logboek van Azure. Zorg ervoor dat u de beleids regels voor toegangs beheer dienovereenkomstig instelt.
+   > [!NOTE]
+   > Ongeacht de IP-adressen die u opgeeft, kunt u nog steeds een logische app met een op aanvragen gebaseerde trigger uitvoeren met behulp van de [Logic Apps rest API: werk stroom triggers-aanvraag uitvoeren](/rest/api/logic/workflowtriggers/run) of door middel van API management. Voor dit scenario is echter nog steeds [verificatie](../active-directory/develop/authentication-vs-authorization.md) vereist voor de Azure-rest API. Alle gebeurtenissen worden weer gegeven in het controle logboek van Azure. Zorg ervoor dat u de beleids regels voor toegangs beheer dienovereenkomstig instelt.
 
 <a name="restrict-inbound-ip-template"></a>
 
@@ -939,7 +939,7 @@ Op aanvraag triggers kunt u [Azure Active Directory open-verificatie (Azure AD O
 | **Doelgroep** | `audience` | Ja | <*resource-naar-autoriseren*> | De resource die u wilt gebruiken voor autorisatie, bijvoorbeeld `https://management.core.windows.net/` |
 | **Client ID** | `clientId` | Ja | <*client-ID*> | De client-ID voor de app die autorisatie aanvraagt |
 | **Referentie type** | `credentialType` | Ja | Certificaat <br>of <br>Geheim | Het referentie type dat door de client wordt gebruikt voor het aanvragen van autorisatie. Deze eigenschap en waarde worden niet weer gegeven in de onderliggende definitie van de logische app, maar bepaalt de eigenschappen die worden weer gegeven voor het geselecteerde referentie type. |
-| **Geheim** | `secret` | Ja, maar alleen voor het referentie type ' geheim ' | <*client-geheim*> | Het client geheim voor het aanvragen van autorisatie |
+| **Gescheiden** | `secret` | Ja, maar alleen voor het referentie type ' geheim ' | <*client-geheim*> | Het client geheim voor het aanvragen van autorisatie |
 | **Pfx** | `pfx` | Ja, maar alleen voor het referentie type ' certificaat ' | <*encoded-pfx-file-content*> | De met base64 gecodeerde inhoud van een PFX-bestand (Personal Information Exchange) |
 | **Wachtwoord** | `password` | Ja, maar alleen voor het referentie type ' certificaat ' | <*wacht woord voor pfx-bestand*> | Het wacht woord voor toegang tot het PFX-bestand |
 |||||
@@ -1065,7 +1065,7 @@ U kunt Azure Logic Apps gebruiken in [Azure Government](../azure-government/docu
 
   * [Azure App Service plannen](../app-service/overview-hosting-plans.md)
   * [Netwerkopties van Azure Functions](../azure-functions/functions-networking-options.md)
-  * [Voor Azure toegewezen hosts voor virtuele machines](../virtual-machines/windows/dedicated-hosts.md)
+  * [Voor Azure toegewezen hosts voor virtuele machines](../virtual-machines/dedicated-hosts.md)
   * [Isolatie van virtuele machines in azure](../virtual-machines/isolation.md)
   * [Speciale Azure-Services implementeren in virtuele netwerken](../virtual-network/virtual-network-for-azure-services.md)
 

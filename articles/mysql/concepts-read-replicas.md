@@ -1,17 +1,17 @@
 ---
-title: Replica's lezen-Azure Database for MySQL.
+title: Replica's lezen-Azure Database for MySQL
 description: "Meer informatie over het lezen van replica's in Azure Database for MySQL: het kiezen van regio's, het maken van replica's, het verbinden van replica's, het bewaken van replicatie en het stoppen van de replicatie."
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/1/2020
-ms.openlocfilehash: 42ca56e33ff0bc8f48c35849480d8094a2be1cb7
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.date: 10/15/2020
+ms.openlocfilehash: 81c6cd6ffe200f0fbc9df20f4fa7e2e147db86af
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876546"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151186"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Leesreplica's in Azure Database for MySQL
 
@@ -22,9 +22,9 @@ Replica's zijn nieuwe servers die u op dezelfde manier beheert als gewone Azure 
 Zie de [MySQL-replicatie documentatie](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)voor meer informatie over MySQL-replicatie functies en-problemen.
 
 > [!NOTE]
-> Afwijking-vrije communicatie
+> Oordeelloze communicatie
 >
-> Micro soft biedt ondersteuning voor een gevarieerde en inbegrips omgeving. Dit artikel bevat verwijzingen naar het woord _Slave_. De micro soft- [stijl gids voor beschik bare communicatie](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) herkent deze als een uitsluitend woord. Het woord wordt in dit artikel gebruikt voor consistentie omdat het momenteel het woord is dat wordt weer gegeven in de software. Wanneer de software is bijgewerkt om het woord te verwijderen, wordt dit artikel zodanig bijgewerkt dat het in uitlijning is.
+> Microsoft biedt ondersteuning voor een gevarieerde en insluitende omgeving. Dit artikel bevat verwijzingen naar het woord _slaaf_. In de [stijlgids voor oordeelloze communicatie](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) wordt dit woord herkend als uitsluitend. Het woord wordt in dit artikel gebruikt voor consistentie, omdat het momenteel het woord is dat wordt weergegeven in de software. Wanneer de software is bijgewerkt om het woord te verwijderen, wordt dit artikel ook bijgewerkt zodat het is afgestemd.
 >
 
 ## <a name="when-to-use-a-read-replica"></a>Wanneer moet u een lees replica gebruiken?
@@ -38,7 +38,7 @@ Omdat replica's alleen-lezen zijn, worden ze niet rechtstreeks op de Master gere
 De functie replica lezen maakt gebruik van MySQL-asynchrone replicatie. De functie is niet bedoeld voor synchrone replicatie scenario's. Er is een meet bare vertraging tussen de bron en de replica. De gegevens op de replica worden uiteindelijk consistent met de gegevens op de Master. Gebruik deze functie voor werk belastingen die deze vertraging kunnen bevatten.
 
 > [!IMPORTANT]
-> Azure Database for MySQL gebruikt op **rijen** gebaseerde binaire logboek registratie. Als voor de tabel een primaire sleutel ontbreekt, worden alle rijen in de tabel gescand op DML-bewerkingen. Dit veroorzaakt een verhoogde replicatie vertraging. Om ervoor te zorgen dat de replica wijzigingen kan aanbrengen in de bron, is het raadzaam om een primaire sleutel toe te voegen aan tabellen in de bron server voordat u de replica server maakt of de replica server opnieuw maakt als u er al een hebt.
+> Azure Database for MySQL maakt gebruik van op **rijen** gebaseerde binaire logboekregistratie. Als uw tabel geen primaire sleutel heeft, worden alle rijen in de tabel gescand op DML-bewerkingen. Dit leidt tot meer vertraging bij het repliceren. Om ervoor te zorgen dat de replica gelijke tred kan houden met wijzigingen in de bron, is het raadzaam om een primaire sleutel toe te voegen aan tabellen op de bronserver voordat u de replicaserver maakt, of de replicaserver opnieuw maakt als u er al een hebt.
 
 ## <a name="cross-region-replication"></a>Replicatie in meerdere regio's
 U kunt een lees replica maken in een andere regio dan de bron server. Replicatie tussen regio's kan handig zijn voor scenario's zoals het plannen van herstel na nood gevallen of gegevens dichter bij uw gebruikers te brengen.
@@ -50,7 +50,7 @@ U kunt een bron server in een [Azure database for MySQL regio](https://azure.mic
 ### <a name="universal-replica-regions"></a>Universele replica regio's
 U kunt in een van de volgende regio's een lees replica maken, ongeacht waar de bron server zich bevindt. De ondersteunde regio's voor universele replica's zijn:
 
-Australië-oost, Australië-zuidoost, centraal VS, Azië-oost, VS-Oost, VS-Oost 2, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Noord-Centraal VS, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, UK-zuid, UK-west, Europa-west, VS-West, VS-West 2, West-Centraal vs.
+Australië-oost, Australië-zuidoost, Brazilië-zuid, Canada-centraal, Canada-oost, VS, Azië-oost, VS-Oost, VS-Oost 2, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Noord-Centraal VS, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, UK-zuid, UK-west, Europa-west, VS-West, VS-West-Centraal vs.
 
 ### <a name="paired-regions"></a>Gekoppelde regio's
 Naast de universele replica regio's, kunt u een lees replica maken in het gekoppelde Azure-gebied van de bron server. Als u het paar van uw regio niet weet, kunt u meer informatie vinden in het [artikel gekoppelde regio's in azure](../best-practices-availability-paired-regions.md).
@@ -128,6 +128,26 @@ Zodra u hebt vastgesteld dat u een failover naar een replica wilt uitvoeren,
     
 Zodra uw toepassing Lees-en schrijf bewerkingen heeft verwerkt, hebt u de failover voltooid. De uitval tijd van uw toepassings ervaring is afhankelijk van wanneer u een probleem detecteert en de stappen 1 en 2 hierboven uitvoert.
 
+## <a name="global-transaction-identifier-gtid"></a>Algemene trans actie-id (GTID)
+
+Global Trans Action Identifier (GTID) is een unieke id die is gemaakt met elke vastgelegde trans actie op een bron server en is standaard uitgeschakeld in Azure Database for MySQL. GTID wordt alleen ondersteund in versies 5,7 en 8,0 en alleen op servers die ondersteuning bieden voor opslag van Maxi maal 16 TB. Raadpleeg voor meer informatie over GTID en hoe deze worden gebruikt in replicatie, de replicatie van MySQL [met GTID](https://dev.mysql.com/doc/refman/5.7/en/replication-gtids.html) -documentatie.
+
+MySQL ondersteunt twee typen trans acties: GTID trans acties (aangeduid met GTID) en anonieme trans acties (er is geen GTID toegewezen)
+
+De volgende server parameters zijn beschikbaar voor het configureren van GTID: 
+
+|**Server parameter**|**Beschrijving**|**Standaard waarde**|**Waarden**|
+|--|--|--|--|
+|`gtid_mode`|Hiermee wordt aangegeven of GTIDs worden gebruikt om trans acties te identificeren. Wijzigingen tussen modi kunnen slechts één stap per keer in oplopende volg orde worden uitgevoerd (bijvoorbeeld `OFF` -> `OFF_PERMISSIVE` -> `ON_PERMISSIVE` -> `ON`)|`OFF`|`OFF`: Zowel nieuwe als replicatie transacties moeten anoniem zijn <br> `OFF_PERMISSIVE`: Nieuwe trans acties zijn anoniem. Gerepliceerde trans acties kunnen anoniem of GTID-trans acties zijn. <br> `ON_PERMISSIVE`: Nieuwe trans acties zijn GTID trans acties. Gerepliceerde trans acties kunnen anoniem of GTID-trans acties zijn. <br> `ON`: Zowel nieuwe als gerepliceerde trans acties moeten GTID trans acties zijn.|
+|`enforce_gtid_consistency`|Dwingt consistentie van GTID af door alleen de instructies toe te staan die op transactionele veilige wijze kunnen worden geregistreerd. Deze waarde moet worden ingesteld op `ON` voordat u GTID-replicatie inschakelt. |`OFF`|`OFF`: Alle trans acties mogen GTID-consistentie schenden.  <br> `ON`: Geen enkele trans actie mag GTID-consistentie schenden. <br> `WARN`: Alle trans acties mogen GTID-consistentie schenden, maar er wordt een waarschuwing gegenereerd. | 
+
+> [!NOTE]
+> Als GTID is ingeschakeld, kunt u deze niet meer uitschakelen. Als u GTID wilt uitschakelen, neemt u contact op met de ondersteuning. 
+
+Als u GTID wilt inschakelen en het consistentie gedrag wilt configureren, moet `gtid_mode` `enforce_gtid_consistency` u de para meters en server bijwerken met behulp van de [Azure Portal](howto-server-parameters.md), [Azure cli](howto-configure-server-parameters-using-cli.md)of [Power shell](howto-configure-server-parameters-using-powershell.md).
+
+Als GTID is ingeschakeld op een bron server ( `gtid_mode` = aan), is voor nieuw gemaakte replica's ook GTID ingeschakeld en wordt GTID-replicatie gebruikt. Om replicatie consistent te blijven, kunt u niet bijwerken `gtid_mode` op de bron-of replica server (s).
+
 ## <a name="considerations-and-limitations"></a>Overwegingen en beperkingen
 
 ### <a name="pricing-tiers"></a>Prijscategorieën
@@ -178,9 +198,18 @@ De [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-var
 
 Als u een van de bovenstaande para meters op de bron server wilt bijwerken, verwijdert u de replica servers, werkt u de parameter waarde op de Master bij en maakt u de replica's opnieuw.
 
+### <a name="gtid"></a>GTID
+
+GTID wordt ondersteund op:
+- MySQL-versies 5,7 en 8,0 
+- Servers die ondersteuning bieden voor opslag van Maxi maal 16 TB. Raadpleeg het artikel [prijs categorie](concepts-pricing-tiers.md#storage) voor de volledige lijst met regio's die ondersteuning bieden voor 16 TB opslag. 
+
+GTID is standaard uitgeschakeld. Als GTID is ingeschakeld, kunt u deze niet meer uitschakelen. Als u GTID wilt uitschakelen, neemt u contact op met de ondersteuning. 
+
+Als GTID is ingeschakeld op een bron server, is voor nieuw gemaakte replica's ook GTID ingeschakeld en wordt GTID-replicatie gebruikt. Om replicatie consistent te blijven, kunt u niet bijwerken `gtid_mode` op de bron-of replica server (s).
+
 ### <a name="other"></a>Anders
 
-- Algemene trans actie-id's (GTID) worden niet ondersteund.
 - Het maken van een replica van een replica wordt niet ondersteund.
 - In-Memory tabellen kunnen ertoe leiden dat replica's niet meer synchroon zijn. Dit is een beperking van de MySQL-replicatie technologie. Meer informatie vindt u in de [referentie documentatie voor mysql](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) .
 - Zorg ervoor dat de bron Server tabellen primaire sleutels hebben. Het ontbreken van primaire sleutels kan leiden tot replicatie latentie tussen de bron en de replica's.

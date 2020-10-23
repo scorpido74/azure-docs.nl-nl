@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 158caf3a6c4cc0efc2f89e18d065a0112b481ee9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ceb1a299fe09afd0551bdade5526a4aeefebaba
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274041"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441841"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Veelgestelde vragen over Azure Active Directory B2B-samen werking
 
@@ -51,7 +51,7 @@ Deze functie wordt momenteel niet ondersteund. Als voor toegang tot de resources
 Een organisatie kan B2B-samenwerkings gebruikers toevoegen, ze indien nodig inrichten voor toepassingen en vervolgens uitnodigingen verzenden. U kunt de API voor B2B-samen werking gebruiken om de onboarding-werk stroom aan te passen.
 
 ### <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Kan ik gast gebruikers zichtbaar maken in de algemene adres lijst van Exchange?
-Ja. Gast objecten zijn standaard niet zichtbaar in de algemene adres lijst van uw organisatie, maar u kunt Azure Active Directory Power shell gebruiken om ze zichtbaar te maken. Zie [kan ik gast objecten zichtbaar maken in de algemene adres lijst?](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups#add-guests-to-the-global-address-list)
+Ja. Gast objecten zijn standaard niet zichtbaar in de algemene adres lijst van uw organisatie, maar u kunt Azure Active Directory Power shell gebruiken om ze zichtbaar te maken. Zie [kan ik gast objecten zichtbaar maken in de algemene adres lijst?](/office365/admin/create-groups/manage-guest-access-in-groups#add-guests-to-the-global-address-list)
 
 ### <a name="can-i-make-a-guest-user-a-limited-administrator"></a>Kan ik een beperkte beheerder van een gast gebruiker maken?
 Absoluut. Zie voor meer informatie [gast gebruikers toevoegen aan een rol](add-guest-to-role.md).
@@ -80,16 +80,16 @@ Ja. U kunt een beleid voor voorwaardelijke toegang maken waarmee wordt voor kome
 Ja. Multi-factor Authentication-en consumenten-e-mail accounts worden beide ondersteund voor Azure AD B2B-samen werking.
 
 ### <a name="do-you-support-password-reset-for-azure-ad-b2b-collaboration-users"></a>Ondersteunt u het opnieuw instellen van wacht woorden voor Azure AD B2B-samenwerkings gebruikers?
-Als uw Azure AD-Tenant de basis directory voor een gebruiker is, kunt u [het wacht woord van de gebruiker opnieuw instellen](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-reset-password-azure-portal) via de Azure Portal. Maar u kunt een wacht woord niet rechtstreeks opnieuw instellen voor een gast gebruiker die zich aanmeldt met een account dat wordt beheerd door een andere Azure AD-adres lijst of een externe ID-provider. Alleen de gast gebruiker of een beheerder in de basismap van de gebruiker kan het wacht woord opnieuw instellen. Hier volgen enkele voor beelden van hoe het opnieuw instellen van wacht woorden werkt voor gast gebruikers:
+Als uw Azure AD-Tenant de basis directory voor een gebruiker is, kunt u [het wacht woord van de gebruiker opnieuw instellen](../fundamentals/active-directory-users-reset-password-azure-portal.md) via de Azure Portal. Maar u kunt een wacht woord niet rechtstreeks opnieuw instellen voor een gast gebruiker die zich aanmeldt met een account dat wordt beheerd door een andere Azure AD-adres lijst of een externe ID-provider. Alleen de gast gebruiker of een beheerder in de basismap van de gebruiker kan het wacht woord opnieuw instellen. Hier volgen enkele voor beelden van hoe het opnieuw instellen van wacht woorden werkt voor gast gebruikers:
  
 * Gast gebruikers die zich aanmelden met een Microsoft-account (bijvoorbeeld guestuser@live.com ) kunnen hun eigen wacht woorden opnieuw instellen met behulp van Microsoft-account self-service voor wachtwoord herstel (SSPR). Lees [hoe u uw Microsoft-account wacht woord opnieuw instelt](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password).
 * Gast gebruikers die zich aanmelden met een Google-account of een andere externe ID-provider kunnen hun eigen wacht woord opnieuw instellen met behulp van de SSPR-methode van de identiteits provider. Een gast gebruiker met het Google-account kan bijvoorbeeld guestuser@gmail.com het wacht woord opnieuw instellen door de instructies te volgen in [uw wacht woord wijzigen of opnieuw instellen](https://support.google.com/accounts/answer/41078).
-* Als de identiteits Tenant een just-in-time-Tenant (JIT) of ' virale ' is (wat betekent dat het een afzonderlijke, niet-beheerde Azure-Tenant is), kan alleen de gast gebruiker het wacht woord opnieuw instellen. Soms neemt een organisatie het [beheer van virale tenants over](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover) die worden gemaakt wanneer werk nemers hun werk-e-mail adressen gebruiken om zich aan te melden voor services. Nadat de organisatie een virale Tenant heeft overgenomen, kan alleen een beheerder in die organisatie het wacht woord van de gebruiker opnieuw instellen of SSPR inschakelen. Als dat nodig is, kunt u, als de uitnodigende organisatie, het gast gebruikers account uit uw Directory verwijderen en een uitnodiging opnieuw verzenden.
+* Als de identiteits Tenant een just-in-time-Tenant (JIT) of ' virale ' is (wat betekent dat het een afzonderlijke, niet-beheerde Azure-Tenant is), kan alleen de gast gebruiker het wacht woord opnieuw instellen. Soms neemt een organisatie het [beheer van virale tenants over](../users-groups-roles/domains-admin-takeover.md) die worden gemaakt wanneer werk nemers hun werk-e-mail adressen gebruiken om zich aan te melden voor services. Nadat de organisatie een virale Tenant heeft overgenomen, kan alleen een beheerder in die organisatie het wacht woord van de gebruiker opnieuw instellen of SSPR inschakelen. Als dat nodig is, kunt u, als de uitnodigende organisatie, het gast gebruikers account uit uw Directory verwijderen en een uitnodiging opnieuw verzenden.
 
 * Als de basismap van de gast gebruiker uw Azure AD-Tenant is, kunt u het wacht woord van de gebruiker opnieuw instellen. U hebt bijvoorbeeld een gebruiker gemaakt of een gebruiker gesynchroniseerd vanaf uw on-premises Active Directory en de User type ingesteld op gast. Omdat deze gebruiker zich in uw directory bevindt, kunt u het wacht woord opnieuw instellen via de Azure Portal.
 
 ### <a name="does-microsoft-dynamics-365-provide-online-support-for-azure-ad-b2b-collaboration"></a>Biedt micro soft Dynamics 365 online ondersteuning voor Azure AD B2B-samen werking?
-Ja, Dynamics 365 (online) biedt ondersteuning voor Azure AD B2B-samen werking. Zie voor meer informatie het artikel Dynamics 365 [gebruikers uitnodigen met Azure AD B2B-samen werking](https://docs.microsoft.com/dynamics365/customer-engagement/admin/invite-users-azure-active-directory-b2b-collaboration).
+Ja, Dynamics 365 (online) biedt ondersteuning voor Azure AD B2B-samen werking. Zie voor meer informatie het artikel Dynamics 365 [gebruikers uitnodigen met Azure AD B2B-samen werking](/dynamics365/customer-engagement/admin/invite-users-azure-active-directory-b2b-collaboration).
 
 ### <a name="what-is-the-lifetime-of-an-initial-password-for-a-newly-created-b2b-collaboration-user"></a>Wat is de levens duur van een eerste wacht woord voor een nieuw gemaakte B2B-samenwerkings gebruiker?
 Azure AD heeft een vaste set tekens, wachtwoord sterkte en account vergrendelings vereisten die gelijk zijn voor alle Azure AD-Cloud gebruikers accounts. Cloud gebruikers accounts zijn accounts die niet zijn federatief met een andere ID-provider, zoals 
@@ -135,4 +135,3 @@ Zie [Azure Active Directory B2B Collaboration guidance](licensing-guidance.md)(E
 ### <a name="next-steps"></a>Volgende stappen
 
 - [Wat is Azure AD B2B-samenwerking?](what-is-b2b.md)
-

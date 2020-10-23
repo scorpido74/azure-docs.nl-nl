@@ -5,22 +5,22 @@ ms.service: expressroute
 ms.topic: include
 ms.author: cherylmc
 ms.openlocfilehash: f04861d55c9cea3c79f4983f7be2e1f5a3c6d864
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74926223"
 ---
-Installeer de nieuwste versies van de Azure Service Management (SM) Power shell-modules en de ExpressRoute-module. U kunt de Azure Cloud shell-omgeving niet gebruiken om SM-modules uit te voeren.
+Installeer de nieuwste versie van de Azure SM (Service Management) PowerShell-modules en de Azure ExpressRoute-module. U kunt de Azure CloudShell-omgeving niet gebruiken om SM-modules uit te voeren.
 
-1. Volg de instructies in het artikel [service management-module installeren](/powershell/azure/servicemanagement/install-azure-ps) om de Azure service management-module te installeren. Als u de module AZ of RM al hebt geïnstalleerd, zorg er dan voor dat u '-AllowClobber ' gebruikt.
-2. Importeer de geïnstalleerde modules. Wanneer u het volgende voor beeld gebruikt, past u het pad aan om de locatie en versie van de geïnstalleerde Power shell-modules weer te geven.
+1. Volg de instructies in het artikel [De Service Management-module installeren](/powershell/azure/servicemanagement/install-azure-ps) artikel voor het installeren van de Azure Service Management-module. Als de Az- of RM-module al is geïnstalleerd, gebruikt u -AllowClobber.
+2. Importeer de geïnstalleerde modules. Wanneer u het volgende voorbeeld gebruikt, past u het pad aan de locatie en versie van de geïnstalleerde PowerShell-modules aan.
 
    ```powershell
    Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.3.0\Azure.psd1'
    Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.3.0\ExpressRoute\ExpressRoute.psd1'
    ```
-3. Open uw Power shell-console met verhoogde rechten en maak verbinding met uw account om u aan te melden bij uw Azure-account. Gebruik het volgende voor beeld om verbinding te maken met behulp van de module Service Management:
+3. Als u zich wilt aanmelden bij uw Azure-account, opent u de PowerShell-console met verhoogde rechten en maakt u verbinding met uw account. Gebruik het volgende voorbeeld om verbinding te maken met behulp van de Service Management-module:
 
    ```powershell
    Add-AzureAccount

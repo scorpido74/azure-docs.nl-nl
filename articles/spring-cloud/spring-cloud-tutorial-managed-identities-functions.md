@@ -6,12 +6,12 @@ ms.author: margard
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/10/2020
-ms.openlocfilehash: 44268bf1b7805ece8de4a3499a7d53fc851af142
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 8ea8376307807abff8227d82bb6de7956fa3de99
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91664984"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088530"
 ---
 # <a name="tutorial-use-a-managed-identity-to-invoke-azure-functions-from-an-azure-spring-cloud-app"></a>Zelfstudie: Een beheerde identiteit gebruiken om Azure Functions aan te roepen vanuit een Azure Spring Cloud-app
 
@@ -23,9 +23,9 @@ Zowel Azure Functions als App Services hebben ingebouwde ondersteuning voor Azur
 ## <a name="prerequisites"></a>Vereisten
 
 * [Aanmelden voor een Azure-abonnement](https://azure.microsoft.com/free/)
-* [Azure CLI-versie 2.0.67 of hoger installeren](https://docs.microsoft.com/cli/azure/install-azure-cli)
+* [Azure CLI-versie 2.0.67 of hoger installeren](/cli/azure/install-azure-cli)
 * [Maven 3.0 of hoger installeren](https://maven.apache.org/download.cgi)
-* [Installeer Azure Functions Core Tools versie 3.0.2009 of hoger](https://docs.microsoft.com/azure/azure-functions/functions-run-local#install-the-azure-functions-core-tools)
+* [Installeer Azure Functions Core Tools versie 3.0.2009 of hoger](../azure-functions/functions-run-local.md#install-the-azure-functions-core-tools)
 
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
@@ -77,7 +77,7 @@ func init --worker-runtime node
 func new --template HttpTrigger --name HttpTrigger
 ```
 
-Standaard gebruikt Functions op sleutel gebaseerde verificatie om http-eindpunten te beveiligen. Omdat we Azure AD-verificatie inschakelen om de toegang tot de functies te beveiligen, willen we het [verificatieniveau voor de functie instellen op anoniem](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger#secure-an-http-endpoint-in-production).
+Standaard gebruikt Functions op sleutel gebaseerde verificatie om http-eindpunten te beveiligen. Omdat we Azure AD-verificatie inschakelen om de toegang tot de functies te beveiligen, willen we het [verificatieniveau voor de functie instellen op anoniem](../azure-functions/functions-bindings-http-webhook-trigger.md#secure-an-http-endpoint-in-production).
 
 ```json function.json
 {
@@ -124,7 +124,7 @@ az spring-cloud app create --name "msiapp" --service "mymsispringcloud" --resour
 
 ## <a name="build-sample-spring-boot-app-to-invoke-the-function"></a>Voorbeeld van Spring Boot-app bouwen om de functie aan te roepen
 
-Met dit voorbeeld wordt de door http geactiveerde functie aangeroepen door eerst een toegangstoken op te vragen van het [MSI-eindpunt](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http) en dat token te gebruiken om de HTTP-aanvraag van de functie te verifiëren.
+Met dit voorbeeld wordt de door http geactiveerde functie aangeroepen door eerst een toegangstoken op te vragen van het [MSI-eindpunt](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md#get-a-token-using-http) en dat token te gebruiken om de HTTP-aanvraag van de functie te verifiëren.
 
 1. Kloon het voorbeeldproject. 
 
@@ -173,6 +173,6 @@ Met dit voorbeeld wordt de door http geactiveerde functie aangeroepen door eerst
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Door het systeem toegewezen beheerde identiteit inschakelen voor de Azure Spring Cloud-toepassing](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-howto-enable-system-assigned-managed-identity)
+* [Door het systeem toegewezen beheerde identiteit inschakelen voor de Azure Spring Cloud-toepassing](./spring-cloud-howto-enable-system-assigned-managed-identity.md)
 * [Meer informatie over beheerde identiteiten voor Azure-resources](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
-* [Een daemon-clienttoepassing configureren voor service-naar-service-aanroepen](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad#configure-a-daemon-client-application-for-service-to-service-calls)
+* [Een daemon-clienttoepassing configureren voor service-naar-service-aanroepen](../app-service/configure-authentication-provider-aad.md#configure-a-daemon-client-application-for-service-to-service-calls)

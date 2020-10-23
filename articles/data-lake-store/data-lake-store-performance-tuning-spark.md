@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 7012808e4ebcd936f30aba767731e7888d92161f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 799a2d20513f331890bec0882fec852c462c5840
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85856909"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108266"
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Richt lijnen voor het afstemmen van de prestaties van Spark in HDInsight en Azure Data Lake Storage Gen1
 
@@ -22,8 +22,8 @@ Bij het afstemmen van de prestaties van Spark moet u rekening houden met het aan
 * **Een Azure-abonnement**. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
 * **Een Azure data Lake Storage gen1-account**. Zie [aan de slag met Azure data Lake Storage gen1](data-lake-store-get-started-portal.md) voor instructies over het maken van een account.
 * **Azure HDInsight-cluster** met toegang tot een Data Lake Storage gen1-account. Zie [een HDInsight-cluster met data Lake Storage gen1 maken](data-lake-store-hdinsight-hadoop-use-portal.md). Zorg ervoor dat Extern bureaublad voor het cluster is ingeschakeld.
-* **Spark-cluster wordt uitgevoerd op Data Lake Storage gen1**. Zie [HDInsight Spark-cluster gebruiken voor het analyseren van gegevens in data Lake Storage gen1](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store) voor meer informatie
-* **Richt lijnen voor het afstemmen van de prestaties van data Lake Storage gen1**. Zie [Data Lake Storage gen1 richt lijnen voor het afstemmen van prestaties](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance) voor algemene concepten. 
+* **Spark-cluster wordt uitgevoerd op Data Lake Storage gen1**. Zie [HDInsight Spark-cluster gebruiken voor het analyseren van gegevens in data Lake Storage gen1](../hdinsight/spark/apache-spark-use-with-data-lake-store.md) voor meer informatie
+* **Richt lijnen voor het afstemmen van de prestaties van data Lake Storage gen1**. Zie [Data Lake Storage gen1 richt lijnen voor het afstemmen van prestaties](./data-lake-store-performance-tuning-guidance.md) voor algemene concepten. 
 
 ## <a name="parameters"></a>Parameters
 

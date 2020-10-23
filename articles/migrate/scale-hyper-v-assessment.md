@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: raynew
-ms.openlocfilehash: c1ae3a9ed8a775161aaf85ab2c91b1e43113d2e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 393c58334f4a1bead7e089d0a64b2d165b67401d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70279442"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317179"
 ---
 # <a name="assess-large-numbers-of-hyper-v-vms-for-migration-to-azure"></a>Een groot aantal virtuele Hyper-V-machines beoordelen voor migratie naar Azure
 
@@ -30,7 +30,7 @@ In dit artikel leert u het volgende:
 
 
 > [!NOTE]
-> Als u een haalbaarheids test wilt uitproberen om een aantal Vm's te beoordelen voordat u op schaal controleert, volgt u de [reeks zelf](tutorial-prepare-hyper-v.md) studies
+> Als u een haalbaarheids test wilt uitproberen om een aantal Vm's te beoordelen voordat u op schaal controleert, volgt u de [reeks zelf](./tutorial-discover-hyper-v.md) studies
 
 ## <a name="plan-for-assessment"></a>Beoordeling plannen
 
@@ -66,7 +66,7 @@ Azure en Hyper-V voorbereiden voor de evaluatie van de server.
 2. Stel machtigingen in voor uw Azure-account om te communiceren met Azure Migrate
 3. Hyper-V-hosts en virtuele machines voorbereiden
 
-Volg de instructies in [deze zelf studie](tutorial-prepare-hyper-v.md) om deze instellingen te configureren.
+Volg de instructies in [deze zelf studie](./tutorial-discover-hyper-v.md) om deze instellingen te configureren.
 
 ## <a name="create-a-project"></a>Een project maken
 

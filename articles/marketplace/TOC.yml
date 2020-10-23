@@ -107,28 +107,36 @@
               href: partner-center-portal/create-azure-container-offer.md
     - name: Aanbiedingen voor virtuele Azure-machines
       items:
-        - name: Een aanbieding voor een virtuele machine plannen
+        - name: Een VM-aanbieding plannen
           href: marketplace-virtual-machines.md
-        - name: Een aanbieding voor een virtuele machine maken en publiceren
+        - name: Een VM-aanbieding maken en publiceren
           items:
-            - name: Een Azure Virtual Machine-aanbieding maken
-              href: partner-center-portal/azure-vm-create-offer.md
-            - name: Technische assets voor Azure-VM maken
+            - name: Een VM-aanbieding maken
+              href: azure-vm-create.md
+            - name: Eigenschappen van een VM-aanbieding configureren
+              href: azure-vm-create-properties.md
+            - name: Vermelding voor een VM-aanbieding configureren
+              href: azure-vm-create-listing.md
+            - name: VM-abonnementen maken
+              href: azure-vm-create-plans.md
+            - name: Een previewdoelgroep toevoegen
+              href: azure-vm-create-preview.md
+            - name: Technische assets voor de VM maken
               items:
-                - name: Certificeringsproblemen met virtuele machines
-                  href: partner-center-portal/vm-certification-issues-solutions.md
-                - name: Een technische asset voor een Azure-VM maken
-                  href: partner-center-portal/create-azure-vm-technical-asset.md
-                - name: Veelgestelde vragen over technische assets van Azure-VM
-                  href: partner-center-portal/common-issues-during-vhd-creation.md
-                - name: Virtuele machine geïmplementeerd vanaf VHD testen
-                  href: partner-center-portal/azure-vm-image-certification.md
-                - name: SAS-URI
-                  items:
-                    - name: SAS-URI ophalen
-                      href: partner-center-portal/get-sas-uri.md
-                    - name: Veelgestelde vragen over SAS-URI
-                      href: partner-center-portal/common-sas-uri-issues.md
+                - name: Een VM maken vanaf een goedgekeurde basis
+                  href: azure-vm-create-using-approved-base.md
+                - name: Een VM maken met uw eigen installatiekopie
+                  href: azure-vm-create-using-own-image.md
+                - name: Een VM-installatiekopie testen
+                  href: azure-vm-image-test.md
+                - name: SAS-URI ophalen
+                  href: azure-vm-get-sas-uri.md
+                - name: SAS-foutberichten
+                  href: azure-vm-sas-failure-messages.md
+                - name: Veelgestelde vragen over het maken van een VM
+                  href: azure-vm-create-faq.md
+                - name: Problemen oplossen met VM-certificering
+                  href: azure-vm-create-certification-faq.md
     - name: Adviesservices
       items:
         - name: Een aanbieding voor adviesservices plannen
@@ -329,7 +337,7 @@
     - name: Kantooruren technische ondersteuning en publicatie
       href: 'https://aka.ms/marketplacepublishingofficehours'
     - name: Ondersteuningsopties voor Partner Center
-      href: partner-center-portal/support.md
+      href: support.md
     - name: Aankondigingen van partnercentrum
       href: /partner-center/announcements
     - name: Microsoft-partnercommunity

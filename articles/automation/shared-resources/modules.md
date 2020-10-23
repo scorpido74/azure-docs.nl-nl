@@ -2,25 +2,22 @@
 title: Modules beheren in Azure Automation
 description: In dit artikel leest u hoe u Power shell-modules gebruikt om cmdlets in te scha kelen in runbooks en DSC-resources in DSC-configuraties.
 services: automation
-ms.service: automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 01/31/2020
+ms.subservice: shared-capabilities
+ms.date: 10/22/2020
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 2bf3dda6e3d99b5ed67298343f5238d304df7e2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c940ede63e2a467a29ae56308893d573925d0039
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187367"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458146"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Modules beheren in Azure Automation
 
 Azure Automation gebruikt een aantal Power shell-modules om cmdlets in te scha kelen in runbooks en DSC-resources in DSC-configuraties. Ondersteunde modules zijn:
 
-* [Azure PowerShell AZ. Automation](/powershell/azure/new-azureps-module-az?view=azps-1.1.0).
-* [Azure PowerShell AzureRM. Automation](/powershell/module/azurerm.automation/?view=azurermps-6.13.0).
+* [Azure PowerShell AZ. Automation](/powershell/azure/new-azureps-module-az).
+* [Azure PowerShell AzureRM. Automation](/powershell/module/azurerm.automation/).
 * Andere Power shell-modules.
 * Interne `Orchestrator.AssetManagement.Cmdlets` module.
 * Python 2-modules.
@@ -106,9 +103,9 @@ Azure Automation kunt een aangepaste module importeren om de bijbehorende cmdlet
 
 ## <a name="migrate-to-az-modules"></a>Migreren naar AZ-modules
 
-In deze sectie wordt beschreven hoe u migreert naar de AZ-modules in Automation. Zie [Azure PowerShell migreren van AzureRM naar AZ](/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.7.0)voor meer informatie. 
+In deze sectie wordt beschreven hoe u migreert naar de AZ-modules in Automation. Zie [Azure PowerShell migreren van AzureRM naar AZ](/powershell/azure/migrate-from-azurerm-to-az)voor meer informatie.
 
-Het is niet raadzaam om AzureRM-modules en AZ-modules uit te voeren in hetzelfde Automation-account. Wanneer u zeker weet dat u van AzureRM naar AZ wilt migreren, kunt u het beste volledig door voeren in een volledige migratie. Automation gebruikt vaak sandboxes binnen het Automation-account om op te slaan op de opstart tijden. Als u geen volledige module migratie maakt, kunt u een taak starten die alleen gebruikmaakt van AzureRM modules en vervolgens een andere taak starten die alleen AZ-modules gebruikt. De sandbox loopt binnenkort vast en er wordt een fout bericht weer gegeven met de mede deling dat de modules niet compatibel zijn. Deze situatie resulteert in wille keurige crashes voor een bepaald runbook of bepaalde configuratie. 
+Het is niet raadzaam om AzureRM-modules en AZ-modules uit te voeren in hetzelfde Automation-account. Wanneer u zeker weet dat u van AzureRM naar AZ wilt migreren, kunt u het beste volledig door voeren in een volledige migratie. Automation gebruikt vaak sandboxes binnen het Automation-account om op te slaan op de opstart tijden. Als u geen volledige module migratie maakt, kunt u een taak starten die alleen gebruikmaakt van AzureRM modules en vervolgens een andere taak starten die alleen AZ-modules gebruikt. De sandbox loopt binnenkort vast en er wordt een fout bericht weer gegeven met de mede deling dat de modules niet compatibel zijn. Deze situatie resulteert in wille keurige crashes voor een bepaald runbook of bepaalde configuratie.
 
 >[!NOTE]
 >Wanneer u een nieuw Automation-account maakt, zelfs na migratie naar AZ-modules, worden de AzureRM-modules standaard door Automation geïnstalleerd. U kunt de zelf studie-runbooks nog steeds bijwerken met de AzureRM-cmdlets. U moet deze runbooks echter niet uitvoeren.
@@ -119,27 +116,27 @@ Zorg ervoor dat u alle runbooks en DSC-configuraties zorgvuldig test, in een afz
 
 ### <a name="stop-and-unschedule-all-runbooks-that-use-azurerm-modules"></a>Alle runbooks die gebruikmaken van AzureRM-modules stoppen en de planning ervan opheffen
 
-Om ervoor te zorgen dat u geen bestaande runbooks of DSC-configuraties uitvoert die gebruikmaken van AzureRM-modules, moet u alle betrokken runbooks en configuraties stoppen en de planning ervan opheffen. Zorg er eerst voor dat u elke runbook-of DSC-configuratie en de bijbehorende schema's afzonderlijk bekijkt, om ervoor te zorgen dat u het item indien nodig opnieuw kunt plannen in de toekomst. 
+Om ervoor te zorgen dat u geen bestaande runbooks of DSC-configuraties uitvoert die gebruikmaken van AzureRM-modules, moet u alle betrokken runbooks en configuraties stoppen en de planning ervan opheffen. Zorg er eerst voor dat u elke runbook-of DSC-configuratie en de bijbehorende schema's afzonderlijk bekijkt, om ervoor te zorgen dat u het item indien nodig opnieuw kunt plannen in de toekomst.
 
-Wanneer u klaar bent om uw planningen te verwijderen, kunt u de Azure Portal of de cmdlet [Remove-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/remove-azurermautomationschedule?view=azurermps-6.13.0) gebruiken. Zie [een schema verwijderen](schedules.md#remove-a-schedule).
+Wanneer u klaar bent om uw planningen te verwijderen, kunt u de Azure Portal of de cmdlet [Remove-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/remove-azurermautomationschedule) gebruiken. Zie [een schema verwijderen](schedules.md#remove-a-schedule).
 
 ### <a name="remove-azurerm-modules"></a>AzureRM-modules verwijderen
 
-Het is mogelijk om de AzureRM-modules te verwijderen voordat u de AZ-modules importeert. Als u dit wel doet, kunt u de synchronisatie van broncode beheer onderbreken en ervoor zorgen dat scripts die nog niet zijn gepland, mislukken. Als u besluit de modules te verwijderen, raadpleegt u [AzureRM verwijderen](/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.8.0#uninstall-azurerm).
+Het is mogelijk om de AzureRM-modules te verwijderen voordat u de AZ-modules importeert. Als u dit wel doet, kunt u de synchronisatie van broncode beheer onderbreken en ervoor zorgen dat scripts die nog niet zijn gepland, mislukken. Als u besluit de modules te verwijderen, raadpleegt u [AzureRM verwijderen](/powershell/azure/migrate-from-azurerm-to-az#uninstall-azurerm).
 
 ### <a name="import-az-modules"></a>Importeren AZ-modules
 
 Wanneer u een AZ-module importeert in uw Automation-account, wordt de module niet automatisch geïmporteerd in de Power shell-sessie die door runbooks wordt gebruikt. Modules worden in de volgende situaties geïmporteerd in de Power shell-sessie:
 
 * Wanneer een runbook een cmdlet aanroept vanuit een module.
-* Wanneer een runbook de module expliciet importeert met de cmdlet [import-module](/powershell/module/microsoft.powershell.core/import-module?view=powershell-7) .
+* Wanneer een runbook de module expliciet importeert met de cmdlet [import-module](/powershell/module/microsoft.powershell.core/import-module) .
 * Wanneer een runbook een andere afhankelijke module importeert.
 
 U kunt de AZ-modules in de Azure Portal importeren. Vergeet niet om alleen de AZ-modules te importeren die u nodig hebt, niet de volledige AZ. Automation-module. Omdat [AZ. accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) een afhankelijkheid voor de andere AZ-modules zijn, moet u deze module vóór andere importeren.
 
-1. Ga naar het Automation-account en selecteer **modules**onder **gedeelde resources**. 
+1. Ga naar het Automation-account en selecteer **modules**onder **gedeelde resources**.
 2. Selecteer **Bladeren in Galerie**.  
-3. Voer in de zoek balk de module naam in (bijvoorbeeld `Az.Accounts` ). 
+3. Voer in de zoek balk de module naam in (bijvoorbeeld `Az.Accounts` ).
 4. Selecteer op de pagina Power shell-module **importeren** om de module te importeren in uw Automation-account.
 
     ![Scherm opname van het importeren van modules in uw Automation-account](../media/modules/import-module.png)
@@ -150,25 +147,36 @@ U kunt deze import bewerking ook uitvoeren via de [PowerShell Gallery](https://w
 
 ### <a name="test-your-runbooks"></a>Uw runbooks testen
 
-Nadat u de AZ-modules in het Automation-account hebt geïmporteerd, kunt u beginnen met het bewerken van uw runbooks en DSC-configuraties om de nieuwe modules te gebruiken. Een van de manieren om de wijziging van een runbook te testen voor het gebruik van de nieuwe cmdlets, is met behulp `Enable-AzureRmAlias -Scope Process` van de opdracht aan het begin van het runbook. Door deze opdracht aan uw runbook toe te voegen, kan het script zonder wijzigingen worden uitgevoerd. 
+Nadat u de AZ-modules in het Automation-account hebt geïmporteerd, kunt u beginnen met het bewerken van uw runbooks en DSC-configuraties om de nieuwe modules te gebruiken. Een van de manieren om de wijziging van een runbook te testen voor het gebruik van de nieuwe cmdlets, is met behulp `Enable-AzureRmAlias -Scope Process` van de opdracht aan het begin van het runbook. Door deze opdracht aan uw runbook toe te voegen, kan het script zonder wijzigingen worden uitgevoerd.
 
 ## <a name="author-modules"></a>Modules schrijven
 
-U wordt aangeraden de overwegingen in deze sectie te volgen wanneer u een aangepaste Power shell-module ontwerpt voor gebruik in Azure Automation. Als u de module wilt voorbereiden voor importeren, moet u Mini maal een psd1-, psm1-of Power shell-module **. dll** -bestand maken met dezelfde naam als de module map. Vervolgens moet u de map module zo instellen dat Azure Automation deze als één bestand kunt importeren. Het **zip** -pakket moet dezelfde naam hebben als de map in de module. 
+U wordt aangeraden de overwegingen in deze sectie te volgen wanneer u een aangepaste Power shell-module ontwerpt voor gebruik in Azure Automation. Als u de module wilt voorbereiden voor importeren, moet u ten minste een. psd1-,. psm1-of Power shell-module **. dll** -bestand maken met dezelfde naam als de module map. Vervolgens moet u de map module zo instellen dat Azure Automation deze als één bestand kunt importeren. Het **zip** -pakket moet dezelfde naam hebben als de map in de module.
 
-Zie [een Power shell-script module schrijven](/powershell/scripting/developer/module/how-to-write-a-powershell-script-module?view=powershell-7)voor meer informatie over het ontwerpen van een Power shell-module.
+Zie [een Power shell-script module schrijven](/powershell/scripting/developer/module/how-to-write-a-powershell-script-module)voor meer informatie over het ontwerpen van een Power shell-module.
 
 ### <a name="version-folder"></a>Versie map
 
-Neem geen versie-map op in het **zip** -pakket voor uw module. Dit probleem is minder belang rijk voor runbooks, maar veroorzaakt een probleem met de service State Configuration (DSC). Azure Automation maakt de map versie automatisch wanneer de module wordt gedistribueerd naar knoop punten die worden beheerd door de status configuratie. Als er een versie map bestaat, kunt u een van de twee exemplaren beëindigen. Hier volgt een voor beeld van een mapstructuur voor een DSC-module:
+Met de side-by-side module versie beheer van Power shell kunt u meer dan één versie van een module in Power shell gebruiken. Dit kan handig zijn als u oudere scripts hebt die zijn getest en alleen werken met een bepaalde versie van een Power shell-module, maar voor andere scripts een nieuwere versie van dezelfde Power shell-module nodig is.
+
+Als u Power shell-modules wilt maken zodat deze meerdere versies bevatten, maakt u de map module en maakt u vervolgens een map in deze module map voor elke versie van de module die u wilt kunnen Toep assen. In het volgende voor beeld biedt een module met de naam *TestModule* twee versies: 1.0.0 en 2.0.0.
+
+```dos
+TestModule
+   1.0.0
+   2.0.0
+```
+
+Kopieer in elk van de versie mappen uw Power shell. psm1-,. psd1-of Power shell-module **. dll** -bestanden waaruit een module in de betreffende versie map is. De module map zo instellen dat Azure Automation deze als één ZIP-bestand kunt importeren. Tijdens Automation wordt alleen de hoogste versie van de module geïmporteerd, als het module pakket naast elkaar aanwezige versies van de module bevat, allemaal beschikbaar voor gebruik in uw runbooks of DSC-configuraties.  
+
+Hoewel Automation modules ondersteunt die naast elkaar worden gebruikt binnen hetzelfde pakket, biedt het geen ondersteuning voor het gebruik van meerdere versies van een module over het importeren van module pakketten. U importeert bijvoorbeeld **module A**, die versies 1 en 2 in uw Automation-account bevat. Later kunt u **module A** bijwerken met versie 3 en 4, wanneer u importeert in uw Automation-account, zijn alleen versie 3 en 4 bruikbaar in RUNBOOKS of DSC-configuraties. Als u wilt dat alle versies 1, 2, 3 en 4 beschikbaar zijn, moet het zip-bestand versie 1, 2, 3 en 4 bevatten.
+
+Als u verschillende versies van dezelfde module tussen runbooks wilt gebruiken, moet u de versie die u in uw runbook wilt gebruiken, altijd declareren met de `Import-Module` cmdlet en de para meter toevoegen `-RequiredVersion <version>` . Zelfs als de versie die u wilt gebruiken de meest recente versie is. Dit komt doordat runbook-taken in dezelfde sandbox kunnen worden uitgevoerd. Als de sandbox al expliciet een module van een bepaald versie nummer heeft geladen, omdat een eerdere taak in die sandbox dit zou doen, wordt de meest recente versie van de module niet automatisch geladen in toekomstige taken in die sandbox. Dit komt omdat er al een versie van is geladen in de sandbox.
+
+Voor een DSC-resource gebruikt u de volgende opdracht om een bepaalde versie op te geven:
 
 ```powershell
-myModule
-  - DSCResources
-    - myResourceFolder
-      myResourceModule.psm1
-      myResourceSchema.mof
-  myModuleManifest.psd1
+Import-DscResource -ModuleName <ModuleName> -ModuleVersion <version>
 ```
 
 ### <a name="help-information"></a>Help-informatie
@@ -219,7 +227,7 @@ Neem een samen vatting, beschrijving en Help-URI op voor elke cmdlet in uw modul
 
 ### <a name="connection-type"></a>Type verbinding
 
-Als de module verbinding maakt met een externe service, definieert u een verbindings type met behulp van een [aangepaste integratie module](#custom-modules). Elke cmdlet in de module moet een exemplaar van dat verbindings type (verbindings object) accepteren als een para meter. Gebruikers wijzen alle para meters van de verbindings Asset toe aan de bijbehorende para meters telkens wanneer ze een cmdlet aanroepen. 
+Als de module verbinding maakt met een externe service, definieert u een verbindings type met behulp van een [aangepaste integratie module](#custom-modules). Elke cmdlet in de module moet een exemplaar van dat verbindings type (verbindings object) accepteren als een para meter. Gebruikers wijzen alle para meters van de verbindings Asset toe aan de bijbehorende para meters telkens wanneer ze een cmdlet aanroepen.
 
 ![Gebruik een aangepaste verbinding in het Azure Portal](../media/modules/connection-create-new.png)
 
@@ -289,11 +297,11 @@ Alle cmdlets in de module stateless maken. Meerdere runbook-taken kunnen tegelij
 
 ### <a name="module-dependency"></a>Module afhankelijkheid
 
-Zorg ervoor dat de module volledig is opgenomen in een pakket dat met Xcopy kan worden gekopieerd. Automatiserings modules worden gedistribueerd naar de Automation-sandboxes wanneer runbooks worden uitgevoerd. De modules moeten onafhankelijk van de host werken waarop ze worden uitgevoerd. 
+Zorg ervoor dat de module volledig is opgenomen in een pakket dat met Xcopy kan worden gekopieerd. Automatiserings modules worden gedistribueerd naar de Automation-sandboxes wanneer runbooks worden uitgevoerd. De modules moeten onafhankelijk van de host werken waarop ze worden uitgevoerd.
 
-U moet een module pakket kunnen opwaarderen en verplaatsen, en dit als normaal laten functioneren wanneer het wordt geïmporteerd in de Power shell-omgeving van een andere host. Als u dit wilt doen, moet u ervoor zorgen dat de module niet afhankelijk is van bestanden buiten de module-map die is ingepakt wanneer de module in Automation wordt geïmporteerd. 
+U moet een module pakket kunnen opwaarderen en verplaatsen, en dit als normaal laten functioneren wanneer het wordt geïmporteerd in de Power shell-omgeving van een andere host. Als u dit wilt doen, moet u ervoor zorgen dat de module niet afhankelijk is van bestanden buiten de module-map die is ingepakt wanneer de module in Automation wordt geïmporteerd.
 
-Uw module moet niet afhankelijk zijn van unieke register instellingen op een host. Voor beelden zijn de instellingen die worden gemaakt wanneer een product wordt geïnstalleerd. 
+Uw module moet niet afhankelijk zijn van unieke register instellingen op een host. Voor beelden zijn de instellingen die worden gemaakt wanneer een product wordt geïnstalleerd.
 
 ### <a name="module-file-paths"></a>Bestands paden van module
 
@@ -301,7 +309,7 @@ Zorg ervoor dat alle bestanden in de module paden hebben die minder dan 140 teke
 
 ## <a name="import-modules"></a>Modules importeren
 
-In deze sectie worden verschillende manieren gedefinieerd waarop u een module kunt importeren in uw Automation-account. 
+In deze sectie worden verschillende manieren gedefinieerd waarop u een module kunt importeren in uw Automation-account.
 
 ### <a name="import-modules-in-the-azure-portal"></a>Modules importeren in de Azure Portal
 
@@ -309,13 +317,13 @@ Een module importeren in de Azure Portal:
 
 1. Ga naar uw Automation-account.
 2. Onder **gedeelde bronnen**selecteert u **modules**.
-3. Selecteer **een module toevoegen**. 
+3. Selecteer **een module toevoegen**.
 4. Selecteer het **zip** -bestand dat de module bevat.
 5. Selecteer **OK** om te beginnen met het importeren van het proces.
 
 ### <a name="import-modules-by-using-powershell"></a>Modules importeren met behulp van Power shell
 
-U kunt de cmdlet [New-AzAutomationModule](/powershell/module/az.automation/new-azautomationmodule?view=azps-3.7.0) gebruiken om een module te importeren in uw Automation-account. De cmdlet maakt een URL voor een module. zip-pakket.
+U kunt de cmdlet [New-AzAutomationModule](/powershell/module/az.automation/new-azautomationmodule) gebruiken om een module te importeren in uw Automation-account. De cmdlet maakt een URL voor een module. zip-pakket.
 
 ```azurepowershell-interactive
 New-AzAutomationModule -Name <ModuleName> -ContentLinkUri <ModuleUri> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName>
@@ -358,8 +366,8 @@ Als u problemen ondervindt met een module, of als u een eerdere versie van een m
 
 Een module verwijderen in de Azure Portal:
 
-1. Ga naar uw Automation-account. Onder **gedeelde bronnen**selecteert u **modules**. 
-2. Selecteer de module die u wilt verwijderen. 
+1. Ga naar uw Automation-account. Onder **gedeelde bronnen**selecteert u **modules**.
+2. Selecteer de module die u wilt verwijderen.
 3. Selecteer op de pagina module de optie **verwijderen**. Als deze module een van de [standaard modules](#default-modules)is, wordt deze teruggedraaid naar de versie die bestond tijdens het maken van het Automation-account.
 
 ### <a name="delete-modules-by-using-powershell"></a>Modules verwijderen met behulp van Power shell
@@ -372,5 +380,6 @@ Remove-AzAutomationModule -Name <moduleName> -AutomationAccountName <automationA
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [aan de slag met Azure PowerShell](/powershell/azure/get-started-azureps?view=azps-3.7.0)voor meer informatie over het gebruik van Azure PowerShell modules.
-* Zie [een Windows Power shell-module schrijven](/powershell/scripting/developer/module/writing-a-windows-powershell-module?view=powershell-7)voor meer informatie over het maken van Power shell-modules.
+* Zie [aan de slag met Azure PowerShell](/powershell/azure/get-started-azureps)voor meer informatie over het gebruik van Azure PowerShell modules.
+
+* Zie [een Windows Power shell-module schrijven](/powershell/scripting/developer/module/writing-a-windows-powershell-module)voor meer informatie over het maken van Power shell-modules.

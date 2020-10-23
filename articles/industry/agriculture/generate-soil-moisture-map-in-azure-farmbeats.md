@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: a2115e9c1601c86cce8857c10baf12b91cc2b997
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2887e7c5fd875942c3d19391267ddbb9b73ccfec
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75482567"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165550"
 ---
 # <a name="generate-soil-moisture-heatmap"></a>Bodem vocht heatmap genereren
 
@@ -54,7 +54,7 @@ Zodra u uw sensor account hebt gekoppeld aan Azure FarmBeats, moet u de bodem se
 2.  Selecteer **MyFarm**  >  **apparaten toevoegen**.
 3.  Het venster **apparaten toevoegen** wordt weer gegeven. Selecteer een apparaat dat is gekoppeld aan de bodem sensoren voor uw farm.
 
-    ![Een Farm Beats-project](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
+    ![Scherm opname van het venster apparaten toevoegen.](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
 
 4. Selecteer **apparaten toevoegen**.     
 
@@ -70,7 +70,7 @@ Deze stap bestaat uit het maken van een taak of een langlopende bewerking waarme
 6.  Voer in de **meting** **bodem vochtigheid selecteren** de meting in die u wilt gebruiken voor de kaart.
     Als u de sensor meting wilt vinden, selecteert u in **Sens oren**een aarde vocht sensor. Gebruik bij **sensor eigenschappen**de waarde voor de **meting naam** .
 
-    ![Een Farm Beats-project](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
+    ![Scherm opname van het vocht scherm van de bodem.](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
 
 
 7.  Selecteer **Maps genereren**.

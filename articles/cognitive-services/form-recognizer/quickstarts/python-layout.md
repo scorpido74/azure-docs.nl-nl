@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 9f136248b93283b02824ead7f34886a056ae0a33
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 72420019ead1ae47054ae62197d8cc310063a6b9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91762056"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969769"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>Quickstart: Tekst- en indelingsgegevens extraheren met behulp van de Form Recognizer REST API en Python
 
@@ -27,7 +27,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 U hebt het volgende nodig om deze quickstart te voltooien:
 - [Python](https://www.python.org/downloads/) moet zijn geïnstalleerd (als u het voorbeeld lokaal wilt uitvoeren).
-- Een formulierdocument. U kunt een afbeelding downloaden uit de [set met voorbeeldgegevens](https://go.microsoft.com/fwlink/?linkid=2090451) voor deze quickstart.
+- Een formulierdocument. U kunt voor deze quickstart een afbeelding downloaden van de [voorbeeldgegevensverzameling](https://go.microsoft.com/fwlink/?linkid=2090451) (download *sample_data.zip* en pak het uit).
 
 > [!NOTE]
 > In deze quickstart wordt een lokaal opgeslagen document gebruikt. Zie de [referentiedocumentatie](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeLayoutAsync) voor meer informatie over het gebruik van externe bestanden die worden geopend via URL.

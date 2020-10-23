@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 10/22/2020
 ms.author: aahi
-ms.openlocfilehash: 3cd6febfc774b214a8c1ae8553e6c127c4f452fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3b2a9db688104c168017863910745427a3a68f9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319075"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425803"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>Batch processing Kit voor spraak containers
 
@@ -75,9 +75,8 @@ De batch-client kan dynamisch detecteren of een eind punt niet beschikbaar is (b
 > [!NOTE] 
 > * In dit voor beeld wordt dezelfde directory ( `/my_nfs` ) gebruikt voor het configuratie bestand en de invoer, uitvoer en Logboeken. U kunt voor deze mappen gehoste of NBS-gekoppelde directory's gebruiken.
 > * Als de client wordt uitgevoerd met, `–h` worden de beschik bare opdracht regel parameters en de bijbehorende standaard waarden weer geven. 
+> * De batch verwerkings container wordt alleen ondersteund in Linux.
 
-
-#### <a name="linux"></a>[Linux](#tab/linux)
 Gebruik de opdracht docker `run` om de container te starten. Hiermee start u een interactieve shell in de container.
 
 ```Docker
@@ -95,17 +94,6 @@ De batch-client en-container uitvoeren in één opdracht:
 ```Docker
 docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
 ```
-
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-De batch-client en-container uitvoeren in één opdracht:
-
-```Docker
-docker run --rm -ti -v   c:\my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config  /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config
-
-```
-
----
 
 
 De client wordt gestart. Als een audio bestand tijdens een vorige uitvoering al is getranscribeerd, wordt het bestand automatisch door de client overs Laan. Bestanden worden verzonden met een automatische nieuwe poging als er tijdelijke fouten optreden en u kunt onderscheid maken tussen de fouten die u wilt voor de client om opnieuw te proberen. Bij een transcriptie-fout gaat de client verder met transcriptie en kan het opnieuw worden geprobeerd zonder de voortgang te verliezen.  

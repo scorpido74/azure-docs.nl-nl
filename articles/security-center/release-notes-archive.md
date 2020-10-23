@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: 09b23e9951c6da597b82d2e012a57f2c93410a5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d156887416fb9a587c9690c3b275229e91f1dbe
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289800"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339795"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Wilt u archiveren wat er nieuw is in Azure Security Center?
 
@@ -28,6 +28,50 @@ Op deze pagina vindt u informatie over:
 - Nieuwe functies
 - Opgeloste fouten
 - Afgeschafte functionaliteit
+
+
+## <a name="april-2020"></a>April 2020
+
+De updates in april zijn onder meer:
+- [Dynamische nalevingspakketten zijn nu algemeen beschikbaar](#dynamic-compliance-packages-are-now-generally-available)
+- [Identiteitsaanbevelingen nu opgenomen in de gratis laag van Azure Security Center](#identity-recommendations-now-included-in-azure-security-center-free-tier)
+
+
+### <a name="dynamic-compliance-packages-are-now-generally-available"></a>Dynamische nalevingspakketten zijn nu algemeen beschikbaar
+
+Het dashboard voor naleving van regelgeving van Azure Security Center bevat nu **dynamische nalevingspakketten** (nu algemeen beschikbaar) om aanvullende regelgevende en bedrijfstakstandaarden bij te houden.
+
+Dynamische nalevingspakketten kunnen worden toegevoegd aan uw abonnement of beheergroep via de pagina met beveiligingsbeleid van Security Center. Wanneer u een standaard of benchmark hebt geïntroduceerd, wordt de standaard weergegeven in het dashboard voor naleving van regelgeving met alle gekoppelde nalevingsgegevens die zijn gekoppeld als evaluaties. Er kan een overzichtsrapport voor alle geïntroduceerde standaarden worden gedownload.
+
+U kunt nu standaarden toevoegen zoals:
+
+- **NIST SP 800-53 R4**
+- **SWIFT CSP CSCF-v2020**
+- **UK OFFICIAL en UK NHS**
+- **Canada Federal PBMM**
+- **Azure CIS 1.1.0 (nieuw)** (een meer volledige weergave van Azure CIS 1.1.0)
+
+Daarnaast hebben we onlangs de **Azure Security-benchmark** toegevoegd, de door Microsoft ontworpen, voor Azure specifieke richtlijnen voor aanbevolen procedures voor beveiliging en naleving op basis van algemene nalevingskaders. Er worden extra standaarden ondersteund in het dashboard zodra deze beschikbaar komen.  
+ 
+Meer informatie over het [aanpassen van de set standaarden in uw dashboard voor naleving van regelgeving](update-regulatory-compliance-packages.md).
+
+
+### <a name="identity-recommendations-now-included-in-azure-security-center-free-tier"></a>Identiteitsaanbevelingen nu opgenomen in de gratis laag van Azure Security Center
+
+Beveiligingsaanbevelingen voor identiteit en toegang in de gratis laag van Azure Security Center zijn nu algemeen beschikbaar. Dit maakt deel uit van de inspanningen om de CSPM-functies (Cloud Security Posture Management) gratis te maken. Tot nu toe zijn deze aanbevelingen alleen beschikbaar in de prijscategorie Standaard.
+
+Voorbeelden van aanbevelingen voor identiteit en toegang zijn onder meer:
+
+- 'Meervoudige verificatie moet zijn ingeschakeld voor accounts met eigenaarsmachtigingen voor uw abonnement.'
+- 'Er moeten maximaal drie eigenaren worden aangewezen voor uw abonnement.'
+- 'Afgeschafte accounts moeten worden verwijderd uit uw abonnement.'
+
+Als u abonnementen hebt in de gratis laag, worden de beveiligingsscores ervan beïnvloed door deze wijziging omdat ze nooit zijn geëvalueerd op hun identiteits- en toegangsbeveiliging.
+
+Meer informatie over [aanbevelingen voor identiteit en toegang](recommendations-reference.md#recs-identity).
+
+Meer informatie over [bewaking van identiteit en toegang](security-center-identity-access.md).
+
 
 
 ## <a name="march-2020"></a>Maart 2020
@@ -49,7 +93,7 @@ Elk beveiligings programma bevat meerdere werk stromen voor reactie op incidente
 
 Zie [werk stroom automatisering](workflow-automation.md)voor meer informatie over de mogelijkheden voor automatische en hand matige Security Center voor het uitvoeren van uw werk stromen.
 
-Meer informatie over [het maken van Logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
+Meer informatie over [het maken van Logic apps](../logic-apps/logic-apps-overview.md).
 
 
 ### <a name="integration-of-azure-security-center-with-windows-admin-center"></a>Integratie van Azure Security Center met Windows-beheer centrum
@@ -170,7 +214,7 @@ Vandaag introduceren we een nieuwe mogelijkheid in Security Center waarmee klant
 
 Zie [werk stroom automatisering](workflow-automation.md)voor meer informatie over de mogelijkheden voor automatische en hand matige Security Center voor het uitvoeren van uw werk stromen.
 
-Zie [Azure Logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)voor meer informatie over het maken van Logic apps.
+Zie [Azure Logic apps](../logic-apps/logic-apps-overview.md)voor meer informatie over het maken van Logic apps.
 
 
 ### <a name="quick-fix-for-bulk-resources-generally-available"></a>Snelle oplossing voor bulk bronnen algemeen beschikbaar
@@ -226,9 +270,9 @@ Meer [informatie over de evaluatie van beveiligings problemen voor uw Azure-virt
 
 De ondersteuning van Azure Security Center voor beveiliging tegen bedreigingen en evaluatie van beveiligings problemen voor SQL-Db's op IaaS Vm's is nu beschikbaar als preview-versie.
 
-[Evaluatie van beveiligingsproblemen](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment) is een eenvoudig te configureren service waarmee u potentiële zwakke plekken in de beveiliging van de database kunt detecteren, volgen en verhelpen. Het biedt inzicht in uw beveiligings postuur als onderdeel van een beveiligde Azure-Score en bevat de stappen voor het oplossen van beveiligings problemen en het verbeteren van uw data base-Fortifications.
+[Evaluatie van beveiligingsproblemen](../azure-sql/database/sql-vulnerability-assessment.md) is een eenvoudig te configureren service waarmee u potentiële zwakke plekken in de beveiliging van de database kunt detecteren, volgen en verhelpen. Het biedt inzicht in uw beveiligings postuur als onderdeel van een beveiligde Azure-Score en bevat de stappen voor het oplossen van beveiligings problemen en het verbeteren van uw data base-Fortifications.
 
-[Geavanceerde bedreigingen beveiliging](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview) detecteert afwijkende activiteiten die een ongebruikelijke en potentieel schadelijke pogingen om toegang te krijgen tot uw SQL-Server of deze misbruiken. Het controleert uw data base voortdurend op verdachte activiteiten en biedt actie gerichte beveiligings waarschuwingen voor afwijkende database toegangs patronen. Deze waarschuwingen bieden informatie over verdachte activiteiten en aanbevolen acties voor het onderzoeken en oplossen van de dreiging.
+[Geavanceerde bedreigingen beveiliging](../azure-sql/database/threat-detection-overview.md) detecteert afwijkende activiteiten die een ongebruikelijke en potentieel schadelijke pogingen om toegang te krijgen tot uw SQL-Server of deze misbruiken. Het controleert uw data base voortdurend op verdachte activiteiten en biedt actie gerichte beveiligings waarschuwingen voor afwijkende database toegangs patronen. Deze waarschuwingen bieden informatie over verdachte activiteiten en aanbevolen acties voor het onderzoeken en oplossen van de dreiging.
 
 
 ### <a name="support-for-custom-policies-preview"></a>Ondersteuning voor aangepast beleid (preview-versie)
@@ -302,7 +346,7 @@ Wanneer u JIT voor uw virtuele machines inschakelt, kunt u een beleid maken dat 
 
 Aanvragen worden vastgelegd in het Azure-activiteiten logboek, zodat u de toegang eenvoudig kunt bewaken en controleren. De just-in-time pagina helpt u ook snel bestaande Vm's te identificeren waarvoor JIT is ingeschakeld en Vm's waarvoor JIT wordt aanbevolen.
 
-Meer [informatie over Azure firewall](https://docs.microsoft.com/azure/firewall/overview).
+Meer [informatie over Azure firewall](../firewall/overview.md).
 
 
 ### <a name="single-click-remediation-to-boost-your-security-posture-preview"></a>Eén Klik op herbemiddeling om uw beveiligings postuur te verbeteren (preview-versie)

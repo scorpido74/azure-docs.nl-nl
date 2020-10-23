@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 764a2263587a477eb506edec1e0f661d0ca7ae31
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 999888b12f10c07f7d42f14289e88030f9542a36
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971605"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340815"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Validatie van waarschuwingen in Azure Security Center
 In dit document leest u hoe u kunt controleren of uw systeem op de juiste manier is geconfigureerd voor waarschuwingen van Azure Security Center.
@@ -36,7 +36,7 @@ Nadat Security Center agent op uw computer is geïnstalleerd, voert u de volgend
 1. Wacht 5 tot 10 minuten en open Security Center. Er moet een waarschuwing worden weer gegeven.
 
 > [!NOTE]
-> Wanneer u deze test waarschuwing voor Windows bekijkt **, moet u**controleren of de controle van de veld **argumenten is ingeschakeld** . Als deze **False**is, moet u controle van opdracht regel argumenten inschakelen. Gebruik de volgende opdracht om deze functie in te scha kelen:
+> Wanneer u deze test waarschuwing voor Windows bekijkt **, moet u**controleren of de controle van de veld **argumenten is ingeschakeld** . Als deze **False**is, moet u controle van opdracht regel argumenten inschakelen. Gebruik de volgende opdracht om dit in te schakelen: 
 >
 >```reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system\Audit" /f /v "ProcessCreationIncludeCmdLine_Enabled"```
 
@@ -65,7 +65,7 @@ Zie [Inleiding tot Azure Defender voor Kubernetes](defender-for-kubernetes-intro
 ## <a name="next-steps"></a>Volgende stappen
 In dit artikel hebben we aandacht besteed aan het valideren van waarschuwingen. Raadpleeg de volgende artikelen als u meer over dit onderwerp wilt weten:
 
-* [Azure Key Vault detectie van dreigingen in Azure Security Center valideren](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336)
+* [Azure Key Vault Threat Detection in Azure Security Center](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336)
 * [Beveiligings waarschuwingen beheren en erop reageren in azure Security Center](security-center-managing-and-responding-alerts.md) -meer informatie over het beheren van waarschuwingen en het reageren op beveiligings incidenten in Security Center.
 * [Beveiligingsstatus controleren in Azure Security Center](security-center-monitoring.md): meer informatie over het controleren van de status van uw Azure-resources.
-* [Beveiligings waarschuwingen in azure Security Center](security-center-alerts-type.md) -meer informatie over de verschillende typen beveiligings waarschuwingen.
+* [Beveiligings waarschuwingen in azure Security Center](./security-center-alerts-overview.md) -meer informatie over de verschillende typen beveiligings waarschuwingen.

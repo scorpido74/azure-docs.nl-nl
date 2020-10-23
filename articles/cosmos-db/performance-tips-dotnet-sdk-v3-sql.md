@@ -4,15 +4,15 @@ description: Meer informatie over client configuratie opties voor het verbeteren
 author: j82w
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/16/2020
+ms.date: 10/13/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: f8e610531eaf3e7e5dbee9c40c88683a05029303
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c869f80eba5a6bdff4b952c62b0d964401f904d2
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802987"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277304"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tips voor betere prestaties van Azure Cosmos DB en .NET
 
@@ -67,32 +67,7 @@ Als u op hoge doorvoer niveaus test of op tarieven die groter zijn dan 50.000 aa
 
 **Verbindings beleid: modus directe verbinding gebruiken**
 
-Hoe een client verbinding maakt met Azure Cosmos DB heeft belang rijke gevolgen voor de prestaties, met name voor de waargenomen latentie aan de client zijde. Er zijn twee belang rijke configuratie-instellingen beschikbaar voor het configureren van het beleid voor client verbindingen: de verbindings *modus* en het verbindings *protocol*. De twee beschik bare verbindings modi zijn:
-
-   * Directe modus (standaard)
-
-     Directe modus ondersteunt connectiviteit via het TCP-protocol en is de standaard connectiviteits modus als u gebruikmaakt van de [SDK van micro soft. Azure. Cosmos/. net v3](https://github.com/Azure/azure-cosmos-dotnet-v3). Directe modus biedt betere prestaties en vereist minder netwerk hops dan de gateway modus.
-
-   * Gatewaymodus
-      
-     Als uw toepassing wordt uitgevoerd in een bedrijfs netwerk met strikte firewall beperkingen, is de gateway modus de beste keuze, omdat deze de standaard HTTPS-poort en één eind punt gebruikt. 
-     
-     De verhoudingen van de prestaties zijn echter wel dat de gateway modus een extra netwerk-hop omvat telkens wanneer gegevens worden gelezen vanuit of geschreven naar Azure Cosmos DB. De directe modus biedt dus betere prestaties omdat er minder netwerk-hops zijn. We raden ook de verbindings modus voor de gateway aan wanneer u toepassingen uitvoert in omgevingen met een beperkt aantal socket verbindingen.
-
-     Wanneer u de SDK in Azure Functions gebruikt, met name in het [verbruiks abonnement](../azure-functions/functions-scale.md#consumption-plan), moet u rekening houden met de huidige [limieten voor verbindingen](../azure-functions/manage-connections.md). In dat geval kan de gateway modus beter zijn als u ook met andere op HTTP gebaseerde clients in uw Azure Functions-toepassing werkt.
-     
-Wanneer u het TCP-protocol in directe modus gebruikt, moet u, naast de gateway poorten, ervoor zorgen dat het poort bereik van 10000 tot en met 20000 open is, omdat Azure Cosmos DB dynamische TCP-poorten gebruikt. Wanneer u de directe modus op [particuliere eind punten](./how-to-configure-private-endpoints.md)gebruikt, moet u het volledige aantal TCP-poorten van 0 tot en met 65535 openen. De poorten zijn standaard geopend voor de standaard configuratie van de Azure VM. Als deze poorten niet zijn geopend en u TCP probeert te gebruiken, ontvangt u de fout "503-Service niet beschikbaar". 
-
-De volgende tabel toont de connectiviteits modi die beschikbaar zijn voor verschillende Api's en de service poorten die worden gebruikt voor elke API:
-
-|Verbindingsmodus  |Ondersteund protocol  |Ondersteunde Sdk's  |API/service poort  |
-|---------|---------|---------|---------|
-|Gateway  |   HTTPS    |  Alle Sdk's    |   SQL (443), MongoDB (10250, 10255, 10256), Table (443), Cassandra (10350), Graph (443) <br><br> Poort 10250 wordt toegewezen aan een standaard Azure Cosmos DB-API voor MongoDB-instantie zonder geo-replicatie, en poorten 10255 en 10256 worden toegewezen aan het exemplaar met geo-replicatie.   |
-|Direct    |     TCP    |  .NET SDK    | Wanneer u open bare/service-eind punten gebruikt: poorten in het bereik 10000 tot en met 20000<br><br>Wanneer u privé-eind punten gebruikt: poorten in het bereik 0 tot en met 65535 |
-
-Azure Cosmos DB biedt een eenvoudig open, REST-programmeer model via HTTPS. Daarnaast biedt het een efficiënt TCP-protocol, dat ook wordt doorzocht in het communicatie model en dat beschikbaar is via de .NET-client-SDK. Het TCP-protocol maakt gebruik van Transport Layer Security (TLS) voor initiële verificatie en het versleutelen van verkeer. Gebruik, indien mogelijk, het TCP-protocol voor de beste prestaties.
-
-Voor SDK v3 configureert u de verbindings modus wanneer u het exemplaar maakt `CosmosClient` in `CosmosClientOptions` . Houd er rekening mee dat de directe modus de standaard instelling is.
+De standaard verbindings modus voor .NET v3 SDK is direct. U configureert de verbindings modus wanneer u het `CosmosClient` exemplaar maakt in `CosmosClientOptions` .  Zie het artikel [connectiviteits modi](sql-sdk-connection-modes.md) voor meer informatie over de verschillende connectiviteits opties.
 
 ```csharp
 string connectionString = "<your-account-connection-string>";
@@ -102,10 +77,6 @@ new CosmosClientOptions
     ConnectionMode = ConnectionMode.Gateway // ConnectionMode.Direct is the default
 });
 ```
-
-Omdat TCP alleen wordt ondersteund in de directe modus, als u de gateway modus gebruikt, wordt het HTTPS-protocol altijd gebruikt voor communicatie met de gateway.
-
-:::image type="content" source="./media/performance-tips/connection-policy.png" alt-text="Verbinding maken met Azure Cosmos DB met verschillende verbindings modi en protocollen." border="false":::
 
 **Tijdelijke poortuitputting**
 
@@ -126,7 +97,7 @@ Als dat mogelijk is, plaatst u toepassingen die Azure Cosmos DB aanroepen in dez
 
 U kunt de laagst mogelijke latentie verkrijgen door ervoor te zorgen dat de aanroepende toepassing zich in dezelfde Azure-regio bevindt als het ingerichte Azure Cosmos DB-eind punt. Zie [Azure-regio's](https://azure.microsoft.com/regions/#services)voor een lijst met beschik bare regio's.
 
-:::image type="content" source="./media/performance-tips/same-region.png" alt-text="Verbinding maken met Azure Cosmos DB met verschillende verbindings modi en protocollen." border="false":::
+:::image type="content" source="./media/performance-tips/same-region.png" alt-text="Termijnen-clients in dezelfde regio." border="false":::
 
    <a id="increase-threads"></a>
 
@@ -163,7 +134,7 @@ Wanneer u aan Azure Functions werkt, moeten instanties ook de bestaande [richt l
 Voor workloads met zware nettoladingen maken stelt `EnableContentResponseOnWrite` u de aanvraag optie in op `false` . De service zal de gemaakte of bijgewerkte resource niet langer naar de SDK retour neren. Normaal gesp roken is het niet nodig om de service te retour neren, omdat de toepassing het object heeft dat wordt gemaakt. De header waarden zijn nog steeds toegankelijk, zoals aanvragen in rekening gebracht. Het uitschakelen van het inhouds antwoord kan helpen de prestaties te verbeteren, omdat de SDK niet langer geheugen hoeft toe te wijzen of de hoofd tekst van de reactie te serialiseren. Het vermindert ook het gebruik van de netwerk bandbreedte om de prestaties te verbeteren.  
 
 ```csharp
-ItemRequestOption requestOptions = new ItemRequestOptions() { EnableContentResponseOnWrite = false };
+ItemRequestOptions requestOptions = new ItemRequestOptions() { EnableContentResponseOnWrite = false };
 ItemResponse<Book> itemResponse = await this.container.CreateItemAsync<Book>(book, new PartitionKey(book.pk), requestOptions);
 // Resource will be null
 itemResponse.Resource
@@ -287,4 +258,4 @@ De aanvraag kosten (dat wil zeggen, de aanvraag verwerkings kosten) van een opge
 ## <a name="next-steps"></a>Volgende stappen
 Zie [prestaties en schalen testen met Azure Cosmos DB](performance-testing.md)voor een voorbeeld toepassing die wordt gebruikt om Azure Cosmos DB te evalueren voor scenario's met hoge prestaties op een aantal client computers.
 
-Zie [partitioneren en schalen in azure Cosmos DB](partition-data.md)voor meer informatie over het ontwerpen van uw toepassing voor schaal baarheid en hoge prestaties.
+Zie [partitioneren en schalen in azure Cosmos DB](partitioning-overview.md)voor meer informatie over het ontwerpen van uw toepassing voor schaal baarheid en hoge prestaties.

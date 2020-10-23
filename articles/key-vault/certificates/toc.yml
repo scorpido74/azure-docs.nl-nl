@@ -37,6 +37,8 @@
       href: create-certificate.md
     - name: Een aanvraag voor certificaatondertekening maken
       href: create-certificate-signing-request.md
+    - name: Toegangsbeheer voor certificaten
+      href: certificate-access-control.md
 - name: Instructiegidsen
   items:
     - name: Key Vault integreren met DigiCert CA

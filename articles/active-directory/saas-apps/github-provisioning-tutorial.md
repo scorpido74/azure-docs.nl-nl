@@ -2,20 +2,20 @@
 title: 'Zelf studie: gebruikers inrichten voor GitHub-Azure AD'
 description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op GitHub.
 services: active-directory
-author: ArvindHarinder1
+author: Zhchia
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: article
-ms.date: 03/27/2019
-ms.author: arvinh
-ms.openlocfilehash: 847c69a18a73d67b9b994e72686a4073ddd6d27f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.author: Zhchia
+ms.openlocfilehash: b9b7a82d611743f2ba76e20f47670771e2e38904
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857531"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92448959"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Zelf studie: GitHub configureren voor automatische gebruikers inrichting
 
@@ -28,7 +28,7 @@ In het scenario dat in deze zelfstudie wordt beschreven, wordt ervan uitgegaan d
 * Een Azure Active Directory-Tenant
 * Een GitHub-organisatie, gemaakt in [GitHub Enterprise Cloud](https://help.github.com/articles/github-s-products/#github-enterprise), waarvoor een [GitHub Enterprise-abonnement](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations) vereist is
 * Een gebruikers account in GitHub met beheerders machtigingen voor de organisatie
-* [SAML geconfigureerd voor de GitHub Enter prise-Cloud organisatie](https://docs.microsoft.com/azure/active-directory/saas-apps/github-tutorial)
+* [SAML geconfigureerd voor de GitHub Enter prise-Cloud organisatie](./github-tutorial.md)
 * Zorg ervoor dat OAuth-toegang is ingesteld voor uw organisatie, zoals [hier](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization) wordt beschreven
 * SCIM inrichten voor één organisatie wordt alleen ondersteund wanneer SSO is ingeschakeld op organisatie niveau
 

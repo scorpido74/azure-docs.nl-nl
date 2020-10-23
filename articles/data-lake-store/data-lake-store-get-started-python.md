@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: devx-track-python
-ms.openlocfilehash: 57414828394e7f241cd33b7d56190a3ce9a7eab2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35e71b80c6f47bb13f7a2b490b493b0cb42acf04
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87875997"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103506"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-python"></a>Account beheer bewerkingen op Azure Data Lake Storage Gen1 met behulp van python
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ Als u wilt werken met Data Lake Storage Gen1 met behulp van python, moet u drie 
 
 * Module `azure-mgmt-resource`, die Azure-modules bevat voor Active Directory enzovoort.
 * De `azure-mgmt-datalake-store` module, die de Azure data Lake Storage gen1 account beheer bewerkingen bevat. Zie voor meer informatie over deze module, de [referentie voor Azure data Lake Storage gen1 management module](/python/api/azure-mgmt-datalake-store/).
-* De `azure-datalake-store` module, die de Azure data Lake Storage gen1 bestandssysteem bewerkingen bevat. Zie voor meer informatie over deze module [Azure-datalake-Store module Reference](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core/).
+* De `azure-datalake-store` module, die de Azure data Lake Storage gen1 bestandssysteem bewerkingen bevat. Zie voor meer informatie over deze module [Azure-datalake-Store module Reference](/python/api/azure-datalake-store/azure.datalake.store.core/).
 
 Gebruik de volgende opdrachten om de modules te installeren.
 
@@ -136,5 +136,5 @@ adlsAcctClient.account.delete(adlsAccountName)
 
 ## <a name="see-also"></a>Zie ook
 
-* [Naslag informatie over Azure-datalake-Store python (File System)](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core)
+* [Naslag informatie over Azure-datalake-Store python (File System)](/python/api/azure-datalake-store/azure.datalake.store.core)
 * [Open source Big Data-toepassingen die compatibel zijn met Azure Data Lake Storage Gen1](data-lake-store-compatible-oss-other-applications.md)

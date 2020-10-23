@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 09/08/2020
+ms.date: 10/19/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 245b7c63b3c459d545dfd39fe162df1ee4f816f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e54f153738d232eaddff8b0fc499a763581ca726
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90031038"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277444"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Meld u aan en start apps vanuit de portal mijn apps
 
@@ -42,7 +42,7 @@ U kunt in de portal **mijn apps** een van de volgende webbrowsers openen:
 
 U kunt de portal mijn apps openen en gebruiken op uw computer of vanuit de mobiele versie van de Edge-browser op een iOS-of Android-apparaat.
 
-![Pagina apps in de portal mijn apps](media/my-apps-portal/my-apps-portal-apps-page.png)
+![Pagina apps in de portal mijn apps](media/my-apps-portal/my-apps-home.png)
 
 ## <a name="access-and-use-the-my-apps-portal-on-your-computer"></a>De portal mijn apps op uw computer openen en gebruiken
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/05/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: bf9a2232a04b929d716d3b2412f1b2c666b29f62
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: e1df230a49ca5483d0ab091da11530786c829ca8
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767286"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042640"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>Quickstart: Verkrijg een token en roep Microsoft Graph-API aan met behulp van de id van de console-app
 
@@ -73,15 +73,13 @@ Voor deze quickstart is [.NET Core 3.1](https://www.microsoft.com/net/download/d
 
 > [!div renderon="docs"]
 > [Download het Visual Studio-project](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
-
-> [!div renderon="docs"]
-> > [!NOTE]
-> > U kunt het opgegeven project uitvoeren in Visual Studio of Visual Studio voor Mac
+>
+> U kunt het opgegeven project uitvoeren in Visual Studio of Visual Studio voor Mac.
 
 
 > [!div class="sxs-lookup" renderon="portal"]
 > Voer het project uit met Visual Studio 2019.
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [!div class="sxs-lookup" renderon="portal" id="autoupdate" class="nextstepaction"]
 > [Het codevoorbeeld downloaden](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]

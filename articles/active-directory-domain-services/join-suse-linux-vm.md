@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.author: joflore
-ms.openlocfilehash: 5d89f1a3d6028afb3450e0112a6081c9c706775b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 607d3bc8eca3bd969f0f47ca95923040fb22591e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962459"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275869"
 ---
 # <a name="join-a-suse-linux-enterprise-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Een SUSE Linux Enter prise-virtuele machine toevoegen aan een Azure Active Directory Domain Services beheerd domein
 
@@ -165,7 +165,7 @@ Voer de volgende stappen uit om lid te worden van het beheerde domein met behulp
 
 1. Als u de UID-en GID-bereiken voor de Samba-gebruikers en-groepen wilt wijzigen, selecteert u *Geavanceerde instellingen*.
 
-1. Configureer NTP-tijd synchronisatie voor uw beheerde domein door de *configuratie van NTP*te selecteren. Voer de IP-adressen in van het beheerde domein. Deze IP-adressen worden weer gegeven in het venster *Eigenschappen* in de Azure portal voor uw beheerde domein, zoals *10.0.2.4* en *10.0.2.5*.
+1. Configureer tijd synchronisatie van Network Time Protocol (NTP) voor uw beheerde domein door de *configuratie van NTP*te selecteren. Voer de IP-adressen in van het beheerde domein. Deze IP-adressen worden weer gegeven in het venster *Eigenschappen* in de Azure portal voor uw beheerde domein, zoals *10.0.2.4* en *10.0.2.5*.
 
 1. Selecteer **OK** en bevestig de domein deelname wanneer u hierom wordt gevraagd.
 
@@ -174,6 +174,127 @@ Voer de volgende stappen uit om lid te worden van het beheerde domein met behulp
     ![Voor beeld van een scherm opname van het verificatie dialoogvenster wanneer u een SLE-VM toevoegt aan het beheerde domein](./media/join-suse-linux-vm/domain-join-authentication-prompt.png)
 
 Nadat u lid bent geworden van het beheerde domein, kunt u zich vanaf uw werk station aanmelden met behulp van de weer gave Manager van uw bureau blad of de-console.
+
+## <a name="join-vm-to-the-managed-domain-using-winbind-from-the-yast-command-line-interface"></a>Virtuele machine toevoegen aan het beheerde domein met behulp van winbind van de YaST-opdracht regel interface
+
+Om lid te worden van het beheerde domein met behulp van **winbind** en de *YaST-opdracht regel interface*:
+
+* Lid worden van het domein:
+
+  ```console
+  sudo yast samba-client joindomain domain=aaddscontoso.com user=<admin> password=<admin password> machine=<(optional) machine account>
+  ```
+
+## <a name="join-vm-to-the-managed-domain-using-winbind-from-the-terminal"></a>Virtuele machine toevoegen aan het beheerde domein met behulp van winbind van de Terminal
+
+Om lid te worden van het beheerde domein met behulp van **winbind** en de * `samba net` opdracht*:
+
+1. Installeer de Kerberos-client en Samba-winbind:
+
+   ```console
+   sudo zypper in krb5-client samba-winbind
+   ```
+
+2. Bewerk de configuratie bestanden:
+
+   * /etc/samba/smb.conf
+   
+     ```ini
+     [global]
+         workgroup = AADDSCONTOSO
+         usershare allow guests = NO #disallow guests from sharing
+         idmap config * : backend = tdb
+         idmap config * : range = 1000000-1999999
+         idmap config AADDSCONTOSO : backend = rid
+         idmap config AADDSCONTOSO : range = 5000000-5999999
+         kerberos method = secrets and keytab
+         realm = AADDSCONTOSO.COM
+         security = ADS
+         template homedir = /home/%D/%U
+         template shell = /bin/bash
+         winbind offline logon = yes
+         winbind refresh tickets = yes
+     ```
+
+   * /etc/krb5.conf
+   
+     ```ini
+     [libdefaults]
+         default_realm = AADDSCONTOSO.COM
+         clockskew = 300
+     [realms]
+         AADDSCONTOSO.COM = {
+             kdc = PDC.AADDSCONTOSO.COM
+             default_domain = AADDSCONTOSO.COM
+             admin_server = PDC.AADDSCONTOSO.COM
+         }
+     [domain_realm]
+         .aaddscontoso.com = AADDSCONTOSO.COM
+     [appdefaults]
+         pam = {
+             ticket_lifetime = 1d
+             renew_lifetime = 1d
+             forwardable = true
+             proxiable = false
+             minimum_uid = 1
+         }
+     ```
+
+   * /etc/security/pam_winbind. conf
+   
+     ```ini
+     [global]
+         cached_login = yes
+         krb5_auth = yes
+         krb5_ccache_type = FILE
+         warn_pwd_expire = 14
+     ```
+
+   * /etc/nsswitch.conf
+   
+     ```ini
+     passwd: compat winbind
+     group: compat winbind
+     ```
+
+3. Controleer of de datum en tijd in azure AD en Linux synchroon zijn. U kunt dit doen door de Azure AD-server toe te voegen aan de NTP-service:
+   
+   1. Voeg de volgende regel toe aan/etc/ntp.conf:
+     
+      ```console
+      server aaddscontoso.com
+      ```
+
+   1. Start de NTP-service opnieuw:
+     
+      ```console
+      sudo systemctl restart ntpd
+      ```
+
+4. Lid worden van het domein:
+
+   ```console
+   sudo net ads join -U Administrator%Mypassword
+   ```
+
+5. Schakel winbind in als een aanmeldings bron in de PAM-module voor pluggable verificatie modules:
+
+   ```console
+   pam-config --add --winbind
+   ```
+
+6. Automatisch maken van basis mappen inschakelen zodat gebruikers zich kunnen aanmelden:
+
+   ```console
+   pam-config -a --mkhomedir
+   ```
+
+7. Start de winbind-service en schakel deze in:
+
+   ```console
+   sudo systemctl enable winbind
+   sudo systemctl start winbind
+   ```
 
 ## <a name="allow-password-authentication-for-ssh"></a>Wachtwoord verificatie voor SSH toestaan
 

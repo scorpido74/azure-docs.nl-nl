@@ -3,12 +3,12 @@ title: Een klant onboarden in Azure Lighthouse
 description: Meer informatie over hoe u een klant kunt opsturen naar Azure Lighthouse, zodat de resources toegankelijk zijn en kunnen worden beheerd via uw eigen Tenant met behulp van Azure delegated resource management.
 ms.date: 09/24/2020
 ms.topic: how-to
-ms.openlocfilehash: 6902fb787b14c4443e28852b9aaf2533da9b49d3
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: b5a6d60d10b2cee7f26ae405ed95b980f423b42e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873210"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426342"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Een klant onboarden in Azure Lighthouse
 
@@ -62,7 +62,7 @@ az account show
 
 ## <a name="define-roles-and-permissions"></a>Rollen en machtigingen definiëren
 
-Als service provider wilt u mogelijk meerdere taken uitvoeren voor één klant, waarbij verschillende toegangs rechten voor verschillende bereiken zijn vereist. U kunt zoveel autorisaties definiëren als u nodig hebt om de juiste [functies op basis van op rollen gebaseerde toegangs beheer (RBAC)](../../role-based-access-control/built-in-roles.md) toe te wijzen aan gebruikers in uw Tenant.
+Als service provider wilt u mogelijk meerdere taken uitvoeren voor één klant, waarbij verschillende toegangs rechten voor verschillende bereiken zijn vereist. U kunt zoveel autorisaties definiëren als u nodig hebt om de juiste [ingebouwde rollen van Azure](../../role-based-access-control/built-in-roles.md) toe te wijzen aan gebruikers in uw Tenant.
 
 Om het beheer te vereenvoudigen, kunt u het beste Azure AD-gebruikers groepen gebruiken voor elke rol. Dit biedt u de flexibiliteit om afzonderlijke gebruikers toe te voegen aan of te verwijderen uit de groep die toegang heeft, zodat u het onboarding-proces niet hoeft te herhalen om gebruikers wijzigingen door te voeren. U kunt rollen toewijzen aan een service-principal die nuttig kan zijn voor automatiserings scenario's.
 
@@ -242,18 +242,18 @@ New-AzSubscriptionDeployment -Name <deploymentName> `
 # Log in first with az login if you're not using Cloud Shell
 
 # Deploy Azure Resource Manager template using template and parameter file locally
-az deployment create --name <deploymentName> \
-                     --location <AzureRegion> \
-                     --template-file <pathToTemplateFile> \
-                     --parameters <parameters/parameterFile> \
-                     --verbose
+az deployment sub create --name <deploymentName> \
+                         --location <AzureRegion> \
+                         --template-file <pathToTemplateFile> \
+                         --parameters <parameters/parameterFile> \
+                         --verbose
 
 # Deploy external Azure Resource Manager template, with local parameter file
-az deployment create --name <deploymentName> \
-                     --location <AzureRegion> \
-                     --template-uri <templateUri> \
-                     --parameters <parameterFile> \
-                     --verbose
+az deployment sub create --name <deploymentName> \
+                         --location <AzureRegion> \
+                         --template-uri <templateUri> \
+                         --parameters <parameterFile> \
+                         --verbose
 ```
 
 ## <a name="confirm-successful-onboarding"></a>Geslaagde onboarding bevestigen

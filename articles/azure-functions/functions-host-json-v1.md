@@ -3,12 +3,12 @@ title: host.jsbij verwijzing voor Azure Functions 1. x
 description: Referentie documentatie voor de Azure Functions host.jsin het bestand met de V1-runtime.
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.openlocfilehash: 36d028d09c94ae28e77404297bd576f5e20404c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32848c725d5c99e3814e86447d604839502054c0
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81757513"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167714"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>host.jsbij verwijzing voor Azure Functions 1. x
 
@@ -211,7 +211,7 @@ Configuratie-instellingen voor [http-triggers en-bindingen](functions-bindings-h
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|dynamicThrottlesEnabled|onjuist|Als deze instelling is ingeschakeld, wordt door de aanvraag verwerkings pijplijn regel matig de systeem prestatie meter items gecontroleerd, zoals verbindingen/threads/processen/geheugen/CPU/etc. als een van deze prestatie meter items een ingebouwde hoge drempel waarde (80%) heeft, worden aanvragen geweigerd met een 429 ' te druk ' te allen tijde, totdat de teller (s) op normale niveaus terugkeren.|
+|dynamicThrottlesEnabled|false|Als deze instelling is ingeschakeld, wordt door de aanvraag verwerkings pijplijn regel matig de systeem prestatie meter items gecontroleerd, zoals verbindingen/threads/processen/geheugen/CPU/etc. als een van deze prestatie meter items een ingebouwde hoge drempel waarde (80%) heeft, worden aanvragen geweigerd met een 429 ' te druk ' te allen tijde, totdat de teller (s) op normale niveaus terugkeren.|
 |maxConcurrentRequests|niet-gebonden ( `-1` )|Het maximum aantal HTTP-functies dat parallel wordt uitgevoerd. Op die manier kunt u gelijktijdigheid beheren, waardoor het resource gebruik kan worden beheerd. Stel dat u een HTTP-functie hebt die gebruikmaakt van veel systeem bronnen (geheugen/CPU/sockets), zodat er problemen ontstaan wanneer gelijktijdigheid te hoog is. Het is ook mogelijk dat u een functie hebt waarmee uitgaande aanvragen voor een service van derden worden uitgevoerd. deze aanroepen moeten een beperkt aantal zijn. In dergelijke gevallen kan het Toep assen van een beperking hier helpen.|
 |maxOutstandingRequests|niet-gebonden ( `-1` )|Het maximum aantal openstaande aanvragen dat op een bepaald moment wordt bewaard. Deze limiet omvat aanvragen die in de wachtrij zijn geplaatst, maar die nog niet zijn gestart, evenals de uitvoeringen die worden uitgevoerd. Alle binnenkomende aanvragen die deze limiet overschrijden, worden geweigerd met een antwoord van 429 ' bezet '. Hiermee kunnen aanroepers op tijd gebaseerde strategieën voor nieuwe pogingen gebruiken en kunt u ook de maximum latentie van aanvragen beheren. Hiermee beheert u alleen de wachtrij die zich in het uitvoerings traject van de Script Host voordoet. Andere wacht rijen, zoals de ASP.NET-aanvraag wachtrij, blijven van kracht en worden niet beïnvloed door deze instelling.|
 |routePrefix|api|Het route voorvoegsel dat van toepassing is op alle routes. Gebruik een lege teken reeks om het standaard voorvoegsel te verwijderen. |
@@ -230,7 +230,7 @@ Als u een opslag account deelt in meerdere functie-apps, moet u ervoor zorgen da
 
 ## <a name="logger"></a>logger
 
-Hiermee wordt gefilterd op Logboeken die zijn geschreven door een [ILogger-object](functions-monitoring.md#write-logs-in-c-functions) of [context. log](functions-monitoring.md#write-logs-in-javascript-functions).
+Hiermee wordt gefilterd op Logboeken die zijn geschreven door een [ILogger](functions-dotnet-class-library.md#ilogger) -object of [context. log](functions-reference-node.md#contextlog-method).
 
 ```json
 {
@@ -340,7 +340,7 @@ Configuratie-instellingen voor het gedrag van Singleton-vergren deling. Zie [git
 
 *Versie 1.x*
 
-Configuratie-instellingen voor logboeken die u maakt met behulp van een- `TraceWriter` object. Zie [C#-logboek registratie](functions-reference-csharp.md#logging) en [Node.js logboek registratie](functions-reference-node.md#writing-trace-output-to-the-console).
+Configuratie-instellingen voor logboeken die u maakt met behulp van een- `TraceWriter` object. Zie [C#-logboek registratie] voor meer informatie.
 
 ```json
 {

@@ -4,12 +4,12 @@ description: In dit artikel wordt uitgelegd hoe u een Service Fabric toepassing 
 ms.topic: conceptual
 ms.date: 8/5/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 61eba8b7285c2a015ee40d48bc4a73850b412576
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee040916ae1ce6ac931abc1fc07021b08cdbf895
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89075185"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309061"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>Upgrade van toepassing Service Fabric met behulp van Power shell
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ Een bewaakte toepassings upgrade kan worden uitgevoerd met behulp van de beheerd
 Met Service Fabric bewaakte rolling upgrades kan de toepassings beheerder het status evaluatie beleid configureren dat Service Fabric gebruikt om te bepalen of de toepassing in orde is. Daarnaast kan de beheerder de actie configureren die moet worden uitgevoerd wanneer de status evaluatie mislukt (bijvoorbeeld door een automatische terugdraai bewerking uit te voeren). In deze sectie wordt een bewaakte upgrade door lopen voor een van de SDK-voor beelden die gebruikmaken van Power shell. 
 
 > [!NOTE]
-> [ApplicationParameter](https://docs.microsoft.com/dotnet/api/system.fabric.description.applicationdescription.applicationparameters?view=azure-dotnet#System_Fabric_Description_ApplicationDescription_ApplicationParameters)s blijven niet behouden in een toepassings upgrade. Als u de huidige toepassings parameters wilt behouden, moet de gebruiker eerst de para meters ophalen en deze door geven aan de aanroep van de upgrade-API zoals hieronder wordt weer gegeven:
+> [ApplicationParameter](/dotnet/api/system.fabric.description.applicationdescription.applicationparameters?view=azure-dotnet#System_Fabric_Description_ApplicationDescription_ApplicationParameters)s blijven niet behouden in een toepassings upgrade. Als u de huidige toepassings parameters wilt behouden, moet de gebruiker eerst de para meters ophalen en deze door geven aan de aanroep van de upgrade-API zoals hieronder wordt weer gegeven:
 ```powershell
 $myApplication = Get-ServiceFabricApplication -ApplicationName fabric:/myApplication
 $appParamCollection = $myApplication.ApplicationParameters
@@ -149,4 +149,3 @@ Maak uw toepassings upgrades compatibel door te leren hoe u [gegevens serialisat
 Meer informatie over het gebruik van geavanceerde functionaliteit bij het upgraden van uw toepassing door te verwijzen naar [Geavanceerde onderwerpen](service-fabric-application-upgrade-advanced.md).
 
 Corrigeer veelvoorkomende problemen in toepassings upgrades door te verwijzen naar de stappen in [Troubleshooting Application upgrades](service-fabric-application-upgrade-troubleshooting.md).
-

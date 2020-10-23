@@ -13,12 +13,12 @@ ms.custom:
 - 'role: System Architecture'
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: cde9d8614883168c3fbb3ab8219cdbef6087c9d0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aaf803d463e03f2de7814fed4b20a0b4312fa1ef
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87428971"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148833"
 ---
 # <a name="what-is-azure-iot-hub"></a>Wat is Azure IoT Hub?
 
@@ -40,7 +40,7 @@ Met IoT Hub beschikt u over een beveiligd communicatiekanaal dat uw apparaten ku
 
 * U hebt volledige controle over de toegang van apparaten en u kunt de verbindingen beheren op apparaatniveau.
 
-* De [IoT Hub Device Provisioning Service](https://docs.microsoft.com/azure/iot-dps/) zorgt ervoor dat apparaten automatisch worden ingericht met de juiste IoT-hub wanneer het apparaat voor het eerst wordt opgestart.
+* De [IoT Hub Device Provisioning Service](../iot-dps/index.yml) zorgt ervoor dat apparaten automatisch worden ingericht met de juiste IoT-hub wanneer het apparaat voor het eerst wordt opgestart.
 
 * Verschillende verificatietypen ondersteunen allerlei mogelijkheden voor apparaten:
 
@@ -64,13 +64,13 @@ De ingebouwde functionaliteit voor het routeren van berichten biedt u de flexibi
 
 U kunt IoT Hub integreren met andere Azure-services om zo complete, end-to-end-oplossingen te bouwen. Enkele voorbeelden:
 
-* Gebruik [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/) om op een betrouwbare, veilige en schaalbare manier snel te reageren op kritieke gebeurtenissen.
+* Gebruik [Azure Event Grid](../event-grid/index.yml) om op een betrouwbare, veilige en schaalbare manier snel te reageren op kritieke gebeurtenissen.
 
-* Gebruik [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) voor het automatiseren van bedrijfsprocessen.
+* Gebruik [Azure Logic Apps](../logic-apps/index.yml) voor het automatiseren van bedrijfsprocessen.
 
 * Gebruik [Azure Machine Learning](iot-hub-weather-forecast-machine-learning.md) om machine learning en AI-modellen toe te voegen aan uw oplossing.
 
-* Gebruik [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) voor het in realtime uitvoeren van analytische berekeningen op de gegevens die door uw apparaten worden gestreamd.
+* Gebruik [Azure Stream Analytics](../stream-analytics/index.yml) voor het in realtime uitvoeren van analytische berekeningen op de gegevens die door uw apparaten worden gestreamd.
 
 ## <a name="configure-and-control-your-devices"></a>Uw apparaten configureren en beheren
 
@@ -88,7 +88,7 @@ Er geldt een [SLA (Service Level Agreement) voor IoT-Hub](https://azure.microsof
 
 ## <a name="connect-your-devices"></a>Uw apparaten verbinden
 
-Gebruik de bibliotheken uit de [apparaat-SDK van Azure IoT](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) om toepassingen te bouwen die worden uitgevoerd op uw apparaten en die communiceren met IoT Hub. Voorbeelden van ondersteunde platforms zijn diverse Linux-distributies, Windows en realtime-besturingssystemen. Enkele ondersteunde talen:
+Gebruik de bibliotheken uit de [apparaat-SDK van Azure IoT](./iot-hub-devguide-sdks.md) om toepassingen te bouwen die worden uitgevoerd op uw apparaten en die communiceren met IoT Hub. Voorbeelden van ondersteunde platforms zijn diverse Linux-distributies, Windows en realtime-besturingssystemen. Enkele ondersteunde talen:
 
 * C
 * C#
@@ -108,7 +108,7 @@ Als uw oplossing de apparaatbibliotheken niet kan gebruiken, kunnen apparaten he
 
 Als uw oplossing geen van de ondersteunde protocollen kan gebruiken, kunt u IoT Hub uitbreiden voor ondersteuning van aangepaste protocollen:
 
-* Gebruik [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) om een veldgateway te maken waarmee u aan de rand protocolomzetting kunt uitvoeren.
+* Gebruik [Azure IoT Edge](../iot-edge/index.yml) om een veldgateway te maken waarmee u aan de rand protocolomzetting kunt uitvoeren.
 
 * Pas de [protocolgateway van Azure IoT](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md) aan om protocolomzetting uit te voeren in de cloud.
 

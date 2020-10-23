@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/17/2020
+ms.date: 10/20/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: d9f7778d1dda159f3ab0c4548912370c85f94eff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfbef5ce3ba7675aff88df654a5ba6572c38adbe
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441879"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440724"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>De Azure Import/Export-service gebruiken voor het exporteren van gegevens uit Azure Blob-opslag
 
@@ -36,6 +36,8 @@ U moet het volgende doen:
     - [Maak een DHL-account](http://www.dhl-usa.com/en/express/shipping/open_account.html).
 
 ## <a name="step-1-create-an-export-job"></a>Stap 1: een export taak maken
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Voer de volgende stappen uit om een export taak te maken in de Azure Portal.
 
@@ -99,6 +101,83 @@ Voer de volgende stappen uit om een export taak te maken in de Azure Portal.
         > De schijven altijd verzenden naar het Data Center dat wordt vermeld in de Azure Portal. Als de schijven naar het verkeerde Data Center worden verzonden, wordt de taak niet verwerkt.
 
     - Klik op **OK** om het maken van de export taak te volt ooien.
+
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+
+Gebruik de volgende stappen om een export taak te maken in de Azure Portal.
+
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../../includes/azure-cli-prepare-your-environment-h3.md)]
+
+### <a name="create-a-job"></a>Een taak maken
+
+1. Gebruik de opdracht [AZ extension add](/cli/azure/extension#az_extension_add) om de extensie [AZ import-export](/cli/azure/ext/import-export/import-export) toe te voegen:
+
+    ```azurecli
+    az extension add --name import-export
+    ```
+
+1. Als u een lijst wilt weer geven van de locaties waar u schijven kunt ontvangen, gebruikt u de opdracht [AZ import-export location](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_list) :
+
+    ```azurecli
+    az import-export location list
+    ```
+
+1. Voer de volgende opdracht [AZ import-export Create](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_create) uit om een export taak te maken die gebruikmaakt van uw bestaande opslag account:
+
+    ```azurecli
+    az import-export create \
+        --resource-group myierg \
+        --name Myexportjob1 \
+        --location "West US" \
+        --backup-drive-manifest true \
+        --diagnostics-path waimportexport \
+        --export blob-path=/ \
+        --type Export \
+        --log-level Verbose \
+        --shipping-information recipient-name="Microsoft Azure Import/Export Service" \
+            street-address1="3020 Coronado" city="Santa Clara" state-or-province=CA postal-code=98054 \
+            country-or-region=USA phone=4083527600 \
+        --return-address recipient-name="Gus Poland" street-address1="1020 Enterprise way" \
+            city=Sunnyvale country-or-region=USA state-or-province=CA postal-code=94089 \
+            email=gus@contoso.com phone=4085555555" \
+        --storage-account myssdocsstorage
+    ```
+
+    > [!TIP]
+    > In plaats van een e-mail adres voor één gebruiker op te geven, moet u een groeps-e-mail opgeven. Dit zorgt ervoor dat u meldingen ontvangt, zelfs als een beheerder deze verlaat.
+
+   Met deze taak worden alle blobs in uw opslag account geëxporteerd. U kunt een BLOB voor exporteren opgeven door deze waarde voor **--exporteren**te vervangen:
+
+    ```azurecli
+    --export blob-path=$root/logo.bmp
+    ```
+
+   Deze parameter waarde exporteert de blob met de naam *logo.bmp* in de hoofd container.
+
+   U kunt ook alle blobs in een container selecteren met behulp van een voor voegsel. Vervang deze waarde voor **--export**:
+
+    ```azurecli
+    blob-path-prefix=/myiecontainer
+    ```
+
+   Zie voor [beelden van geldige BLOB-paden](#examples-of-valid-blob-paths)voor meer informatie.
+
+   > [!NOTE]
+   > Als de blob die moet worden geëxporteerd, wordt gebruikt tijdens het kopiëren van de gegevens, neemt Azure import/export-service een moment opname van de BLOB en kopieert de moment opname.
+
+1. Gebruik de opdracht [AZ import-export List](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_list) om alle taken voor de resource groep myierg te bekijken:
+
+    ```azurecli
+    az import-export list --resource-group myierg
+    ```
+
+1. Voer de opdracht [AZ import-export update](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_update) uit om uw taak bij te werken of uw taak te annuleren:
+
+    ```azurecli
+    az import-export update --resource-group myierg --name MyIEjob1 --cancel-requested true
+    ```
+
+---
 
 <!--## (Optional) Step 2: -->
 

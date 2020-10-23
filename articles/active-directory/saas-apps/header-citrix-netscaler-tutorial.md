@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 48fedf7f3a73ce7fde60a1df80d971a5d7f88dd7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 73eb6938f4b43c204ab8bc91217e4828454e222d
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540577"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944208"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-header-based-authentication"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Citrix NetScaler (headergebaseerde verificatie)
 
@@ -392,7 +392,7 @@ Ga als volgt te werk om een herschrijfbeleid te binden aan een virtuele server m
 
 1. In het deelvenster **Taakverdelende virtuele server** onder **Geavanceerde instellingen** selecteert u **Beleidsregels**. Alle beleidsregels die voor uw NetScaler-exemplaar zijn geconfigureerd, worden in de lijst weergegeven.
  
-    ![Citrix NetScaler-configuratie - Deelvenster Taakverdelende virtuele server](./media/header-citrix-netscaler-tutorial/header05.png)
+    ![Schermopname van het tabblad Configuratie, met de velden Naam, Actie en Expressie gemarkeerd en de knop Maken geselecteerd.](./media/header-citrix-netscaler-tutorial/header05.png)
 
     ![Citrix NetScaler-configuratie - Deelvenster Taakverdelende virtuele server](./media/header-citrix-netscaler-tutorial/header06.png)
 

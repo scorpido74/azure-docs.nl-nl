@@ -7,12 +7,12 @@ ms.subservice: billing
 ms.topic: article
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 345535ae52b9a271bcee5ff7a2b651af144624f1
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b4d6502e49fdd30a68188a1e580a1c137984c89f
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684708"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132377"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>Facturering van abonnementen controleren met behulp van REST-API's
 
@@ -32,7 +32,7 @@ Authorization: Bearer
 
 De parameter `{subscriptionID}` is vereist. Hiermee wordt het doelabonnement geïdentificeerd.
 
-De parameter `{billingPeriod}` is vereist. Hiermee wordt een [actuele factureringsperiode](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) opgegeven.
+De parameter `{billingPeriod}` is vereist. Hiermee wordt een [actuele factureringsperiode](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) opgegeven.
 
 De parameters `${startDate}` en `${endDate}` zijn vereist voor dit voorbeeld, maar zijn optioneel voor het eindpunt. Hiermee wordt het datumbereik opgegeven als tekenreeksen in de notatie jjjj-mm-dd (voorbeelden: `'20180501'` en `'20180615'`).
 
@@ -41,7 +41,7 @@ De volgende headers zijn vereist:
 |Aanvraagheader|Beschrijving|
 |--------------------|-----------------|
 |*Content-Type:*|Vereist. Ingesteld op `application/json`.|
-|*Authorization:*|Vereist. Ingesteld op een geldig `Bearer` [toegangstoken](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
+|*Authorization:*|Vereist. Ingesteld op een geldig `Bearer` [toegangstoken](/rest/api/azure/#authorization-code-grant-interactive-clients). |
 
 ## <a name="response"></a>Antwoord
 
@@ -85,7 +85,7 @@ Elk item in **waarde** vertegenwoordigt een detail over het gebruik van een serv
 |**meterDetails** | Gedetailleerde informatie over het gebruik. |
 |**nextLink**| Als deze instelling is ingesteld, wordt er een URL opgegeven voor de volgende pagina met details. Leeg wanneer de pagina de laatste is. |
 
-Dit voorbeeld is afgekort. Zie [Gebruiksdetails voor lijst](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#usagedetailslistforbillingperiod-legacy) voor een volledige beschrijving van elk antwoordveld.
+Dit voorbeeld is afgekort. Zie [Gebruiksdetails voor lijst](/rest/api/consumption/usagedetails/list#usagedetailslistforbillingperiod-legacy) voor een volledige beschrijving van elk antwoordveld.
 
 Andere statuscodes wijzen op een fout. In deze gevallen wordt in het antwoordobject uitgelegd waarom de aanvraag is mislukt.
 
@@ -101,6 +101,6 @@ Andere statuscodes wijzen op een fout. In deze gevallen wordt in het antwoordobj
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-- Bekijk [Overzicht van Enterprise Reporting](https://docs.microsoft.com/azure/billing/billing-enterprise-api)
-- Onderzoek [REST API voor Enterprise-facturering](https://docs.microsoft.com/rest/api/billing/)
-- [Aan de slag gaan met Azure REST API](https://docs.microsoft.com/rest/api/azure/)
+- Bekijk [Overzicht van Enterprise Reporting](./enterprise-api.md)
+- Onderzoek [REST API voor Enterprise-facturering](/rest/api/billing/)
+- [Aan de slag gaan met Azure REST API](/rest/api/azure/)

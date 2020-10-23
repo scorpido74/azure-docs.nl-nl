@@ -4,12 +4,12 @@ description: Leer hoe u een migratie zonder agent voor VMware-VM's uitvoert met 
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 37181246a20044f16414735e2247fa90fc36433b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e263306cf18dfebe4b73f8d940b8eb5c99ed16f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530519"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310639"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware-VM's migreren naar Azure (zonder agent)
 
@@ -36,8 +36,8 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Voordat u aan deze zelfstudie begint, dient u eerst:
 
-1. [Voltooi de eerste zelfstudie](tutorial-prepare-vmware.md) om Azure en VMware voor te bereiden voor migratie.
-2. U wordt aangeraden de tweede zelfstudie voor het [evalueren van VMware-VM’s](tutorial-assess-vmware.md) te voltooien voordat u de VM’s migreert naar Azure, maar dit is niet verplicht. 
+1. [Voltooi de eerste zelfstudie](./tutorial-discover-vmware.md) om Azure en VMware voor te bereiden voor migratie.
+2. U wordt aangeraden de tweede zelfstudie voor het [evalueren van VMware-VM’s](./tutorial-assess-vmware-azure-vm.md) te voltooien voordat u de VM’s migreert naar Azure, maar dit is niet verplicht. 
 
 
 ## <a name="add-the-azure-migrate-server-migration-tool"></a>Het hulpprogramma Azure Migrate: Server Migration toevoegen
@@ -59,7 +59,7 @@ Als u nog geen Azure Migrate-project hebt ingesteld, [doet u dit](how-to-add-too
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>Het Azure Migrate-apparaat instellen
 
-Met Azure Migrate: Server Migration wordt een lichtgewicht VMWare-VM-apparaat uitgevoerd dat wordt gebruikt voor ontdekking, evaluatie, en migratie zonder agent voor VMWare-VM’s. Als u de [zelfstudie voor evaluatie](tutorial-assess-vmware.md) hebt gevolgd, hebt u het apparaat al ingesteld. Als u dit nog niet hebt gedaan, stelt het apparaat nu in met behulp van een van deze methoden:
+Met Azure Migrate: Server Migration wordt een lichtgewicht VMWare-VM-apparaat uitgevoerd dat wordt gebruikt voor ontdekking, evaluatie, en migratie zonder agent voor VMWare-VM’s. Als u de [zelfstudie voor evaluatie](./tutorial-assess-vmware-azure-vm.md) hebt gevolgd, hebt u het apparaat al ingesteld. Als u dit nog niet hebt gedaan, stelt het apparaat nu in met behulp van een van deze methoden:
 
 - **OVA-sjabloon**: [Instellen](how-to-set-up-appliance-vmware.md) op een VMware-VM met behulp van een gedownloade OVA-sjabloon.
 - **Script**: [Instellen](deploy-appliance-script.md) op een VMware-VM of fysieke machine met behulp van een PowerShell-installatiescript. Deze methode moet worden gebruikt als u een VM niet kunt instellen met behulp van een OVA-sjabloon, of als u zich in Azure Government bevindt.
@@ -210,7 +210,7 @@ Nadat u hebt geverifieerd dat de testmigratie naar verwachting werkt, kunt u de 
     - Houd workloads continu beschikbaar door Azure VM‘s naar een secundaire regio te repliceren met Site Recovery. [Meer informatie](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - Voor betere beveiliging:
     - Vergrendel en beperk de toegang van binnenkomend verkeer met [Just-in-time-beheer van Azure Security Center](../security-center/security-center-just-in-time.md).
-    - Beperk het netwerkverkeer naar beheereindpunten met [Netwerkbeveiligingsgroepen](../virtual-network/security-overview.md).
+    - Beperk het netwerkverkeer naar beheereindpunten met [Netwerkbeveiligingsgroepen](../virtual-network/network-security-groups-overview.md).
     - Implementeer [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) om schijven te beveiligen en gegevens te beschermen tegen diefstal en onbevoegde toegang.
     - Lees meer informatie over [IaaS-resources beveiligen](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/) en bezoek het [Azure Security Center](https://azure.microsoft.com/services/security-center/).
 - Voor controle en beheer:

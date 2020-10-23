@@ -1,18 +1,16 @@
 ---
 title: Azure Data Lake-hulpprogramma's voor Visual Studio Code gebruiken
 description: Meer informatie over het gebruik van Azure Data Lake-Hulpprogram Ma's voor Visual Studio code voor het maken, testen en uitvoeren van U-SQL-scripts.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: how-to
 ms.date: 02/09/2018
-ms.openlocfilehash: b554869864ff71fb31b6c4e2b891fd42c4a380b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7da5454581e0e414dc832d4fcec50277f3b7f40
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87126479"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221244"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>Azure Data Lake-hulpprogramma's voor Visual Studio Code gebruiken
 
@@ -146,7 +144,7 @@ Azure Data Lake-Hulpprogram Ma's ondersteunt meerdere aangepaste codes. Zie [U-S
 
 ## <a name="work-with-assemblies"></a>Werken met assembly's
 
-Zie voor meer informatie over het ontwikkelen van assembly's [U-SQL-Assembly's ontwikkelen voor Azure data Lake Analytics taken](data-lake-analytics-u-sql-develop-assemblies.md).
+Zie voor meer informatie over het ontwikkelen van assembly's [U-SQL-Assembly's ontwikkelen voor Azure data Lake Analytics taken]().
 
 U kunt Data Lake-Hulpprogram Ma's gebruiken om aangepaste code-assembly's te registreren in de Data Lake Analytics catalogus.
 

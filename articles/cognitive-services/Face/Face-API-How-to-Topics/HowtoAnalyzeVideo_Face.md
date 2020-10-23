@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f9d9fa461291b2fe72e9d69928163bb54e9e1be0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 730946a0c581be4697c0f45c8bdeb1d38f0ca23d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91303808"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856385"
 ---
 # <a name="example-how-to-analyze-videos-in-real-time"></a>Voorbeeld: video's in realtime analyseren
 
@@ -79,13 +79,13 @@ In ons uiteindelijke systeem met producers en consumers hebben we een producer-t
 ```csharp
 // Queue that will contain the API call tasks. 
 var taskQueue = new BlockingCollection<Task<ResultWrapper>>();
-     
+     
 // Producer thread. 
 while (true)
 {
     // Grab a frame. 
     Frame f = GrabFrame();
- 
+ 
     // Decide whether to analyze the frame. 
     if (ShouldAnalyze(f))
     {
@@ -119,10 +119,10 @@ while (true)
 {
     // Get the oldest task. 
     Task<ResultWrapper> analysisTask = taskQueue.Take();
- 
+ 
     // Await until the task is completed. 
     var output = await analysisTask;
-     
+     
     // Consume the exception or result. 
     if (output.Exception != null)
     {
@@ -145,52 +145,7 @@ De bibliotheek bevat de klasse FrameGrabber, waarmee het hierboven beschreven sy
 
 Ter illustratie van enkele van de mogelijkheden, zijn er twee voorbeeld-apps die gebruikmaken van de bibliotheek. De eerste is een eenvoudige console-app, waarvan u hieronder een vereenvoudigde versie ziet. De app legt frames van de standaardwebcam vast en verzendt deze naar de Face-service voor gezichtsherkenning.
 
-```csharp
-using System;
-using VideoFrameAnalyzer;
-using Microsoft.ProjectOxford.Face;
-using Microsoft.ProjectOxford.Face.Contract;
-     
-namespace VideoFrameConsoleApplication
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            // Create grabber, with analysis type Face[]. 
-            FrameGrabber<Face[]> grabber = new FrameGrabber<Face[]>();
-            
-            // Create Face Client. Insert your Face API key here.
-            private readonly IFaceClient faceClient = new FaceClient(
-            new ApiKeyServiceClientCredentials("<subscription key>"),
-            new System.Net.Http.DelegatingHandler[] { });
-
-            // Set up our Face API call.
-            grabber.AnalysisFunction = async frame => return await faceClient.DetectAsync(frame.Image.ToMemoryStream(".jpg"));
-
-            // Set up a listener for when we receive a new result from an API call. 
-            grabber.NewResultAvailable += (s, e) =>
-            {
-                if (e.Analysis != null)
-                    Console.WriteLine("New result received for frame acquired at {0}. {1} faces detected", e.Frame.Metadata.Timestamp, e.Analysis.Length);
-            };
-            
-            // Tell grabber to call the Face API every 3 seconds.
-            grabber.TriggerAnalysisOnInterval(TimeSpan.FromMilliseconds(3000));
-
-            // Start running.
-            grabber.StartProcessingCameraAsync().Wait();
-
-            // Wait for keypress to stop
-            Console.WriteLine("Press any key to stop...");
-            Console.ReadKey();
-            
-            // Stop, blocking until done.
-            grabber.StopProcessingAsync().Wait();
-        }
-    }
-}
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/analyze.cs":::
 
 De tweede voorbeeld-app is iets interessanter, en stelt u in staat om te kiezen welke API u wilt aanroepen voor de videoframes. Aan de linkerkant toont de app een voorbeeld van de live-video en aan de rechterkant ziet u het meest recente API-resultaat als overlay over het bijbehorende frame.
 
@@ -208,7 +163,7 @@ Als u met dit voorbeeld aan de slag wilt, volgt u deze stappen:
    - [Face](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace) Nadat de resources zijn geïmplementeerd, klikt u op **Ga naar resource** om uw sleutel en eindpunt te verzamelen voor elke resource. 
 3. Kloon de GitHub-opslagplaats [Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/).
 4. Open het voorbeeld in Visual Studio, bouw de voorbeeldtoepassingen en voer ze uit:
-    - Voor BasicConsoleSample is de Face-sleutel rechtstreeks in  [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs) in code vastgelegd.
+    - De Face-sleutel voor BasicConsoleSample is in code vastgelegd in [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs).
     - Voor LiveCameraSample moeten de sleutels worden ingevoerd in het instellingenvenster van de app. De sleutels worden als gebruikersgegevens gehandhaafd tussen sessies.
         
 
@@ -218,7 +173,7 @@ Wanneer u klaar om te gaan integreren, **verwijst u vanuit uw eigen projecten na
 
 In deze handleiding hebt u geleerd hoe u bijna in realtime analyses van live-videostreams kunt uitvoeren met behulp van de Face-, Computer Vision- en Emotion-API's en hoe u onze voorbeeldcode kunt gebruiken om aan de slag te gaan.
 
-U kunt feedback en suggesties achterlaten in de [GitHub-opslagplaats](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/). Voor meer uitgebreide API-feedback kunt u terecht op onze  [UserVoice-site](https://cognitive.uservoice.com/).
+U kunt feedback en suggesties achterlaten in de [GitHub-opslagplaats](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/). Voor meer uitgebreide API-feedback kunt u terecht op onze [UserVoice-site](https://cognitive.uservoice.com/).
 
 ## <a name="related-topics"></a>Verwante onderwerpen
 - [Gezichten in een afbeelding detecteren](HowtoDetectFacesinImage.md)

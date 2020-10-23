@@ -3,12 +3,12 @@ title: Serviceproviders weergeven en beheren
 description: Klanten kunnen de pagina service providers in het Azure Portal gebruiken om informatie over service providers, aanbiedingen van providers en gedelegeerde resources weer te geven.
 ms.date: 10/12/2020
 ms.topic: how-to
-ms.openlocfilehash: ecbeb7f5b6fccb7b66043cf57aa5f48674c6fe8b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e94a9fd6562a9fa8bc0f2d84cce477e7907a1e48
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974393"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371100"
 ---
 # <a name="view-and-manage-service-providers"></a>Serviceproviders weergeven en beheren
 
@@ -78,7 +78,7 @@ Klanten willen mogelijk inzicht krijgen in de abonnementen en/of resource groepe
 
 We bieden een [Azure Policy ingebouwde beleids definitie](../../governance/policy/samples/built-in-policies.md#lighthouse) voor het [controleren van de overdracht van scopes naar een beheer Tenant](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/Lighthouse_Delegations_Audit.json). U kunt dit beleid toewijzen aan een beheer groep die alle abonnementen bevat die u wilt controleren. Wanneer u controleert op naleving van dit beleid, worden alle gedelegeerde abonnementen en/of resource groepen (binnen de beheer groep waaraan het beleid is toegewezen) weer gegeven in een niet-compatibele status. U kunt vervolgens de resultaten bekijken en controleren of er geen onverwachte delegaties zijn.
 
-Met een andere [ingebouwde beleids definitie](../../governance/policy/samples/built-in-policies.md#lighthouse) kunt u [delegaties beperken tot specifieke beheer tenants](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Lighthouse/AllowCertainManagingTenantIds_Deny.json). Dit beleid kan op dezelfde manier worden toegepast op een beheer groep die alle abonnementen bevat waarvoor u de delegaties wilt beperken. Nadat het beleid is geïmplementeerd, worden pogingen om een abonnement te delegeren naar een Tenant die u opgeeft, geweigerd.
+Met een andere [ingebouwde beleids definitie](../../governance/policy/samples/built-in-policies.md#lighthouse) kunt u [delegaties beperken tot specifieke beheer tenants](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/AllowCertainManagingTenantIds_Deny.json). Dit beleid kan op dezelfde manier worden toegepast op een beheer groep die alle abonnementen bevat waarvoor u de delegaties wilt beperken. Nadat het beleid is geïmplementeerd, worden pogingen om een abonnement te delegeren naar een Tenant die u opgeeft, geweigerd.
 
 Zie [Quick Start: een beleids toewijzing maken](../../governance/policy/assign-policy-portal.md)voor meer informatie over het toewijzen van een beleid en het weer geven van de resultaten van de nalevings status.
 

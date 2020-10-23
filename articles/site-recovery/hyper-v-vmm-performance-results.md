@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 3edd182e335bc679d95d7be64f45b617a9f54c1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c8219214e7053dcf6b119f6cd5dc97daaa355f7
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73663176"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327634"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>Test resultaten voor Hyper-V-replicatie naar een secundaire site
 
@@ -47,7 +47,7 @@ Dit is wat we in de test fase hebben gedaan:
 * Hyper-V replica maakt gebruik van de door het systeem opgeslagen geheugen cache om de belasting van IOPS voor het bijhouden van nummers te minimaliseren. Er worden in het geheugen schrijf bewerkingen naar de VHDX opgeslagen en deze worden in het logboek bestand geplaatst voordat het logboek naar de herstel site wordt verzonden. Het leegmaken van de schijf gebeurt ook als de schrijf bewerkingen een vooraf vastgestelde limiet bereiken.
 * In de onderstaande afbeelding ziet u de overhead van de stabiele status IOPS voor replicatie. We kunnen zien dat de belasting van IOPS als gevolg van replicatie ongeveer 5% is. Dit is zeer laag.
 
-  ![Primaire resultaten](./media/hyper-v-vmm-performance-results/IC744913.png)
+  ![Grafiek met de stabiele status IOPS-overhead voor replicatie.](./media/hyper-v-vmm-performance-results/IC744913.png)
 
 Hyper-V replica gebruikt geheugen op de primaire server om de schijf prestaties te optimaliseren. Zoals in de volgende grafiek wordt weer gegeven, is de geheugen overhead op alle servers in het primaire cluster rand nummer. De weer gegeven geheugen overhead is het percentage geheugen dat wordt gebruikt door replicatie, vergeleken met het totale geïnstalleerde geheugen op de Hyper-V-Server.
 
@@ -55,20 +55,20 @@ Hyper-V replica gebruikt geheugen op de primaire server om de schijf prestaties 
 
 De Hyper-V-replica heeft een minimale CPU-overhead. Zoals weer gegeven in de grafiek, ligt de overhead van de replicatie binnen het bereik van 2-3%.
 
-![Primaire resultaten](./media/hyper-v-vmm-performance-results/IC744915.png)
+![De grafiek die de overhead van de replicatie weergeeft, bevindt zich in het bereik van 2-3%.](./media/hyper-v-vmm-performance-results/IC744915.png)
 
 ## <a name="secondary-server-performance"></a>Secundaire server prestaties
 
 Hyper-V replica maakt gebruik van een kleine hoeveelheid geheugen op de herstel server om het aantal opslag bewerkingen te optimaliseren. De grafiek bevat een samen vatting van het geheugen gebruik op de herstel server. De weer gegeven geheugen overhead is het percentage geheugen dat wordt gebruikt door replicatie, vergeleken met het totale geïnstalleerde geheugen op de Hyper-V-Server.
 
-![Secundaire resultaten](./media/hyper-v-vmm-performance-results/IC744916.png)
+![Grafiek met een samen vatting van het geheugen gebruik op de herstel server.](./media/hyper-v-vmm-performance-results/IC744916.png)
 
 De hoeveelheid I/O-bewerkingen op de herstel site is een functie van het aantal schrijf bewerkingen op de primaire site. Laten we eens kijken naar de totale I/O-bewerkingen op de herstel site in vergelijking met de totale I/O-bewerkingen en schrijf bewerkingen op de primaire site. In de grafieken ziet u dat het totale aantal IOPS op de herstel site
 
 * Ongeveer 1,5 keer de schrijf-IOPS op de primaire.
 * Rond 37% van het totale aantal IOPS op de primaire site.
 
-![Secundaire resultaten](./media/hyper-v-vmm-performance-results/IC744917.png)
+![Grafiek met een vergelijking van IOPS op primaire en secundaire sites.](./media/hyper-v-vmm-performance-results/IC744917.png)
 
 ![Secundaire resultaten](./media/hyper-v-vmm-performance-results/IC744918.png)
 
@@ -106,7 +106,7 @@ De resultaten laten duidelijk zien dat Site Recovery, gekoppeld aan Hyper-V repl
 
 ![Primaire hardwarevereisten](./media/hyper-v-vmm-performance-results/IC744922.png)
 
-| server | RAM | Modelleren | Processor | Aantal processors | NIC | Software |
+| Server | RAM | Modelleren | Processor | Aantal processors | NIC | Software |
 | --- | --- | --- | --- | --- | --- | --- |
 | Hyper-V-servers in het cluster: <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128<br />ESTLAB-HOST25 heeft 256 |Dell™ PowerEdge™ R820 |Intel (R) Xeon (R) CPU E5-4620 0 \@ 2.20 GHz |4 |I Gbps x 4 |Windows Server Data Center 2012 R2 (x64) + Hyper-V-rol |
 | VMM-server |2 | | |2 |1 Gbps |Windows Server-Data Base 2012 R2 (x64) + VMM 2012 R2 |
@@ -118,7 +118,7 @@ De resultaten laten duidelijk zien dat Site Recovery, gekoppeld aan Hyper-V repl
 
 ![Primaire hardware-specificatie](./media/hyper-v-vmm-performance-results/IC744923.png)
 
-| server | RAM | Modelleren | Processor | Aantal processors | NIC | Software |
+| Server | RAM | Modelleren | Processor | Aantal processors | NIC | Software |
 | --- | --- | --- | --- | --- | --- | --- |
 | Hyper-V-servers in het cluster: <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |Dell™ PowerEdge™ R720 |Intel (R) Xeon (R) CPU E5-2630 0 \@ 2.30 GHz |2 |I Gbps x 4 |Windows Server Data Center 2012 R2 (x64) + Hyper-V-rol |
 | ESTLAB-HOST17 |128 |Dell™ PowerEdge™ R820 |Intel (R) Xeon (R) CPU E5-4620 0 \@ 2.20 GHz |4 | |Windows Server Data Center 2012 R2 (x64) + Hyper-V-rol |

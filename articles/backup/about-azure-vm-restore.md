@@ -3,12 +3,12 @@ title: Over het herstel proces van de virtuele Azure-machine
 description: Meer informatie over hoe de Azure Backup-service virtuele Azure-machines herstelt
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: f9e81c4fa40e5a1d984c163ffa5f37d8092f9032
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67af1ed193c289358f929953bc3caa5d04ef7e09
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90985333"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171771"
 ---
 # <a name="about-azure-vm-restore"></a>Over Azure-VM herstellen
 
@@ -32,13 +32,13 @@ In dit artikel wordt beschreven hoe de [Azure backup-service](./backup-overview.
 - **Beschik baarheid (replicatie typen)**: Azure Backup biedt twee typen replicatie om uw opslag/gegevens Maxi maal beschikbaar te stellen:
   - Met [lokaal redundante opslag LRS](../storage/common/storage-redundancy.md#locally-redundant-storage) worden uw gegevens drie keer gerepliceerd (er worden drie kopieën gemaakt van uw gegevens) in een opslagschaaleenheid in een datacenter. Alle kopieën van de gegevens komen binnen dezelfde regio voor. LRS is een goedkope optie voor het beschermen van uw gegevens tegen lokale hardwarefouten.
   - [Geografisch redundante opslag (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) is de standaardinstelling en is de replicatieoptie die wordt aanbevolen. Met GRS worden uw gegevens gerepliceerd naar een secundaire regio (honderden kilometers verwijderd van de primaire locatie van de brongegevens). GRS is duurder dan LRS, maar biedt een hoger duurzaamheidsniveau voor uw gegevens, zelfs in geval van een regionale onderbreking.
-  - [Zone-redundante opslag (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) repliceert uw gegevens in [beschikbaarheidszones](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones), waarbij gegevenslocatie en gegevenstolerantie in dezelfde regio worden gegarandeerd. ZRS heeft geen downtime. Zodat er in ZRS een back-up gemaakt kan worden van uw kritieke werkbelastingen, waarvoor [gegevenslocatie](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/) vereist is en waarbij geen sprake van downtime mag zijn.
+  - [Zone-redundante opslag (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) repliceert uw gegevens in [beschikbaarheidszones](../availability-zones/az-overview.md#availability-zones), waarbij gegevenslocatie en gegevenstolerantie in dezelfde regio worden gegarandeerd. ZRS heeft geen downtime. Zodat er in ZRS een back-up gemaakt kan worden van uw kritieke werkbelastingen, waarvoor [gegevenslocatie](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/) vereist is en waarbij geen sprake van downtime mag zijn.
 
 - **Cross-Region Restore (CRR)**: als u een van de [Opties](./backup-azure-arm-restore-vms.md#restore-options)voor het terugzetten van meerdere regio's (CRR) hebt, kunt u virtuele Azure-machines herstellen in een secundaire regio, een [Azure-gekoppelde regio](../best-practices-availability-paired-regions.md#what-are-paired-regions).
 
-## <a name="restore-scenarios"></a>Scenario's herstellen
+## <a name="restore-scenarios"></a>Herstelscenario's
 
-![Scenario's herstellen ](./media/about-azure-vm-restore/recovery-scenarios.png)
+![Herstelscenario's ](./media/about-azure-vm-restore/recovery-scenarios.png)
 
 | **Scenario**                                                 | **Wat is er gebeurd**                                             | **Wanneer gebruiken**                                              |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |

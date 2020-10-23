@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/08/2020
-ms.openlocfilehash: 2f4e0728a863521f772f4d1c9531b07f427bfb3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5888f2c432757b3139306df12711353859ead9e1
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595075"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101899"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Broncode beheer in Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -162,6 +162,8 @@ In het deel venster configuratie worden de volgende instellingen voor de GitHub-
 - GitHub Enter prise met een oudere versie dan 2.14.0 werkt niet in de micro soft Edge-browser.
 
 - GitHub-integratie met de Data Factory Visual authoring-hulpprogram ma's werkt alleen in de algemeen beschik bare versie van Data Factory.
+
+- Azure Data Factory biedt geen ondersteuning voor GitHub-organisatie accounts
 
 - Er kunnen Maxi maal 1.000 entiteiten per resource type (zoals pijp lijnen en gegevens sets) worden opgehaald uit één GitHub-vertakking. Als deze limiet is bereikt, wordt u geadviseerd om uw resources te splitsen in afzonderlijke fabrieken. Deze beperking is niet van Azure DevOps git.
 

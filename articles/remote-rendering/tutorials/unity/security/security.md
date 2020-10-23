@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 07374debf8d660d8f1c32788db3d218da611d539
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 200d23f390c9c22af90099e1e136c832287aa10d
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91650473"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207526"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Zelfstudie: Azure Remote Rendering en modelopslag beveiligen
 
@@ -188,11 +188,11 @@ We hebben nog een 'wachtwoord', AccountKey (accountsleutel), dat uit de lokale t
 
 ## <a name="azure-active-directory-azure-ad-authentication"></a>Azure Active Directory-verificatie (Azure AD)
 
-Met AAD-verificatie kunt u bepalen welke personen of groepen op een meer bewaakte manier gebruikmaken van ARR. ARR bevat ingebouwde ondersteuning voor het accepteren van [toegangstokens](https://docs.microsoft.com/azure/active-directory/develop/access-tokens) in plaats van een accountsleutel te gebruiken. U kunt toegangstokens beschouwen als een tijdgebonden, gebruikersspecifieke sleutel, waarmee alleen bepaalde onderdelen van de specifieke resource worden ontgrendeld waarvoor deze zijn aangevraagd.
+Met AAD-verificatie kunt u bepalen welke personen of groepen op een meer bewaakte manier gebruikmaken van ARR. ARR bevat ingebouwde ondersteuning voor het accepteren van [toegangstokens](../../../../active-directory/develop/access-tokens.md) in plaats van een accountsleutel te gebruiken. U kunt toegangstokens beschouwen als een tijdgebonden, gebruikersspecifieke sleutel, waarmee alleen bepaalde onderdelen van de specifieke resource worden ontgrendeld waarvoor deze zijn aangevraagd.
 
 Het script **RemoteRenderingCoordinator** bevat een gemachtigde met de naam **ARRCredentialGetter**. Deze bevat een methode die een **AzureFrontendAccountInfo**-object retourneert. Dit object wordt gebruikt om het externe sessiebeheer te configureren. We kunnen een andere methode toewijzen aan **ARRCredentialGetter**, zodat we een Azure-aanmeldingsstroom kunnen gebruiken om een **AzureFrontendAccountInfo**-object te genereren dat een Azure-toegangstoken bevat. Dit toegangstoken is uniek voor de gebruiker die zich aanmeldt.
 
-1. Volg de [Instructies: Verificatie configureren - Verificatie voor geïmplementeerde toepassingen](../../../how-tos/authentication.md#authentication-for-deployed-applications). Volg de specifieke instructies in de documentatie voor Azure Spatial Anchors voor [gebruikersverificatie van Azure AD](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp#azure-ad-user-authentication). Dit omvat het registreren van een nieuwe Azure Active Directory-toepassing en het configureren van toegang tot uw ARR-exemplaar.
+1. Volg de [Instructies: Verificatie configureren - Verificatie voor geïmplementeerde toepassingen](../../../how-tos/authentication.md#authentication-for-deployed-applications). Volg de specifieke instructies in de documentatie voor Azure Spatial Anchors voor [gebruikersverificatie van Azure AD](../../../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-user-authentication). Dit omvat het registreren van een nieuwe Azure Active Directory-toepassing en het configureren van toegang tot uw ARR-exemplaar.
 1. Nadat u de nieuwe AAD-toepassing hebt geconfigureerd, controleert u of uw AAD-toepassing eruitziet zoals in de volgende afbeeldingen:
 
     **AAD-toepassing -> Verificatie** ![App-verificatie](./media/app-authentication-public.png)
@@ -361,7 +361,7 @@ Aan de Azure-zijde is alles gereed. Nu moet u de code aanpassen om verbinding te
 
 Met de code wordt eerst geprobeerd het token op de achtergrond op te halen met behulp van **AquireTokenSilent**. Dit lukt als de gebruiker deze toepassing eerder heeft geverifieerd. Als het niet lukt, moet u een methode gebruiken waarbij meer interactie van de gebruiker vereist is.
 
-Voor deze code gebruiken we de [apparaatcodestroom](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-device-code) om een toegangstoken te verkrijgen. Met deze stroom kunnen gebruikers zich op een computer of mobiel apparaat aanmelden bij hun Azure-account en moet het resulterende token worden teruggestuurd naar de toepassing HoloLens.
+Voor deze code gebruiken we de [apparaatcodestroom](../../../../active-directory/develop/v2-oauth2-device-code.md) om een toegangstoken te verkrijgen. Met deze stroom kunnen gebruikers zich op een computer of mobiel apparaat aanmelden bij hun Azure-account en moet het resulterende token worden teruggestuurd naar de toepassing HoloLens.
 
 Het belangrijkste deel van deze klasse vanuit het perspectief van ARR is deze regel:
 

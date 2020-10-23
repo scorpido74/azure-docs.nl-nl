@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/08/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 646b95e7e106b8657f8aeec2426b88cd6da20357
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f54139bc22ef85b016aabd2512bdf030efee91c
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90885651"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088581"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-spring-cloud-app"></a>Zelfstudie: Een beheerde identiteit gebruiken om Key Vault te koppelen met een Azure Spring Cloud-app
 
@@ -25,7 +25,7 @@ Met Azure Key Vault kunt u veilig de toegang tot tokens, wachtwoorden, certifica
 ## <a name="prerequisites"></a>Vereisten
 
 * [Aanmelden voor een Azure-abonnement](https://azure.microsoft.com/free/)
-* [Azure CLI-versie 2.0.67 of hoger installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)
+* [Azure CLI-versie 2.0.67 of hoger installeren](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)
 * [Maven 3.0 of hoger installeren](https://maven.apache.org/download.cgi)
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
@@ -167,7 +167,7 @@ Deze app heeft toegang om geheimen uit Azure Key Vault op te halen. De starter-a
 
 ## <a name="build-sample-spring-boot-app-with-java-sdk"></a>Voorbeeld van Spring Boot-app bouwen met Java SDK
 
-Met dit voorbeeld kunt u geheimen van Azure Key Vault instellen en ophalen. De [Azure Key Vault Secret-clientbibliotheek voor Java](https://docs.microsoft.com/java/api/overview/azure/security-keyvault-secrets-readme?view=azure-java-stablelibrary&preserve-view=true) biedt ondersteuning voor Azure Active Directory-tokenverificatie in de Azure SDK. Deze bevat een reeks **TokenCredential**-implementaties die kunnen worden gebruikt om Azure SDK-clients te bouwen ter ondersteuning van AAD-tokenverificatie.
+Met dit voorbeeld kunt u geheimen van Azure Key Vault instellen en ophalen. De [Azure Key Vault Secret-clientbibliotheek voor Java](/java/api/overview/azure/security-keyvault-secrets-readme?preserve-view=true&view=azure-java-stablelibrary) biedt ondersteuning voor Azure Active Directory-tokenverificatie in de Azure SDK. Deze bevat een reeks **TokenCredential**-implementaties die kunnen worden gebruikt om Azure SDK-clients te bouwen ter ondersteuning van AAD-tokenverificatie.
 
 Met de Azure Key Vault Secret-clientbibliotheek kunt u op een veilige manier tokens, wachtwoorden, API-sleutels en andere geheimen opslaan en de toegang daartoe beheren. De bibliotheek biedt bewerkingen voor het maken, ophalen, bijwerken, verwijderen, opschonen, het maken en herstellen van back-ups en het weergeven van de geheimen en de bijbehorende versies.
 
@@ -191,7 +191,7 @@ Met de Azure Key Vault Secret-clientbibliotheek kunt u op een veilige manier tok
     azure.keyvault.uri=https://<your-keyvault-name>.vault.azure.net
     ```
 
-3. Neem [ManagedIdentityCredentialBuilder](https://docs.microsoft.com/java/api/com.azure.identity.managedidentitycredentialbuilder?view=azure-java-stable&preserve-view=true) op om een token van Azure Active Directory en [SecretClientBuilder](https://docs.microsoft.com/java/api/com.azure.security.keyvault.secrets.secretclientbuilder?view=azure-java-stable&preserve-view=true) op te halen om geheimen uit Key Vault in uw code in te stellen of te verkrijgen.
+3. Neem [ManagedIdentityCredentialBuilder](/java/api/com.azure.identity.managedidentitycredentialbuilder?preserve-view=true&view=azure-java-stable) op om een token van Azure Active Directory en [SecretClientBuilder](/java/api/com.azure.security.keyvault.secrets.secretclientbuilder?preserve-view=true&view=azure-java-stable) op te halen om geheimen uit Key Vault in uw code in te stellen of te verkrijgen.
 
     Bekijk het voorbeeld van [MainController.java](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/blob/master/managed-identity-keyvault/src/main/java/com/microsoft/azure/MainController.java#L28) van het gekloonde voorbeeldproject.
 
@@ -230,7 +230,6 @@ Met de Azure Key Vault Secret-clientbibliotheek kunt u op een veilige manier tok
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Toegang tot de Storage-blob met een beheerde identiteit in een Azure Spring Cloud](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/managed-identity-storage-blob)
-* [Door het systeem toegewezen beheerde identiteit inschakelen voor de Azure Spring Cloud-toepassing](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-howto-enable-system-assigned-managed-identity)
+* [Door het systeem toegewezen beheerde identiteit inschakelen voor de Azure Spring Cloud-toepassing](./spring-cloud-howto-enable-system-assigned-managed-identity.md)
 * [Meer informatie over beheerde identiteiten voor Azure-resources](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
-* [Azure Spring Cloud verifiëren met Key Vault in GitHub Actions](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-github-actions-key-vault)
-
+* [Azure Spring Cloud verifiëren met Key Vault in GitHub Actions](./spring-cloud-github-actions-key-vault.md)

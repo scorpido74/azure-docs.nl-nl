@@ -8,18 +8,18 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: b713977d811411ea2ccd7dfa22c7757321ecd7aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 015b3fb116c4eb16e4280e2f71873e88dccff278
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91712286"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92344029"
 ---
-# <a name="create-automatic-responses-to-alerts-and-recommendations-with-workflow-automation"></a>Automatische reacties op waarschuwingen en aanbevelingen maken met werk stroom automatisering
+# <a name="create-automatic-responses-to-alerts-and-recommendations-with-workflow-automation"></a>Automatische reacties op waarschuwingen en aanbevelingen maken met werkstroomautomatisering
 
 Elk beveiligings programma bevat meerdere werk stromen voor reactie op incidenten. Deze processen kunnen het melden van relevante belanghebbenden, het starten van een wijzigings beheer proces en het Toep assen van specifieke herbemiddelings stappen zijn. Beveiligings experts raden u aan zo veel mogelijk stappen van deze procedures te automatiseren. Automation vermindert de overhead. Het kan ook de beveiliging verbeteren door ervoor te zorgen dat de proces stappen snel, consistent en volgens uw vooraf gedefinieerde vereisten worden uitgevoerd.
 
-In dit artikel wordt de functie werk stroom automatisering van Azure Security Center beschreven. Deze functie kan Logic Apps activeren over beveiligings waarschuwingen en aanbevelingen. U kunt bijvoorbeeld Security Center een e-mail bericht verzenden wanneer er een waarschuwing wordt weer gegeven. U leert ook hoe u Logic Apps maakt met behulp van [Azure Logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
+In dit artikel wordt de functie werk stroom automatisering van Azure Security Center beschreven. Deze functie kan Logic Apps activeren over beveiligings waarschuwingen en aanbevelingen. U kunt bijvoorbeeld Security Center een e-mail bericht verzenden wanneer er een waarschuwing wordt weer gegeven. U leert ook hoe u Logic Apps maakt met behulp van [Azure Logic apps](../logic-apps/logic-apps-overview.md).
 
 > [!NOTE]
 > Als u eerder de weer gave Playbooks (preview) op de zijbalk hebt gebruikt, kunt u dezelfde functies vinden in combi natie met de uitgebreide functionaliteit op de pagina nieuwe werk stroom automatisering.
@@ -32,7 +32,7 @@ In dit artikel wordt de functie werk stroom automatisering van Azure Security Ce
 |----|:----|
 |Releasestatus:|Algemeen verkrijgbaar (GA)|
 |Prijzen:|Gratis|
-|Vereiste rollen en machtigingen:|De rol of **eigenaar** van de **beveiligings beheerder** voor de resource groep<br>Moet ook schrijf machtigingen hebben voor de doel resource<br><br>Als u met Azure Logic Apps werk stromen wilt werken, moet u ook over de volgende Logic Apps-rollen/-machtigingen beschikken:<br> - De machtigingen voor de [logische app-operator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) zijn vereist of de toegang tot de logische app wordt gelezen/geactiveerd (deze rol kan geen Logic apps maken of bewerken; alleen bestaande *uitvoeren* )<br> - De Inzender machtigingen van de [logische app](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) zijn vereist voor het maken en wijzigen van logische apps<br>Als u logische app-connectors wilt gebruiken, hebt u mogelijk aanvullende referenties nodig om u aan te melden bij hun respectieve services (bijvoorbeeld uw exemplaren van Outlook/teams/toegestane vertraging)|
+|Vereiste rollen en machtigingen:|De rol of **eigenaar** van de **beveiligings beheerder** voor de resource groep<br>Moet ook schrijf machtigingen hebben voor de doel resource<br><br>Als u met Azure Logic Apps werk stromen wilt werken, moet u ook over de volgende Logic Apps-rollen/-machtigingen beschikken:<br> - De machtigingen voor de [logische app-operator](../role-based-access-control/built-in-roles.md#logic-app-operator) zijn vereist of de toegang tot de logische app wordt gelezen/geactiveerd (deze rol kan geen Logic apps maken of bewerken; alleen bestaande *uitvoeren* )<br> - De Inzender machtigingen van de [logische app](../role-based-access-control/built-in-roles.md#logic-app-contributor) zijn vereist voor het maken en wijzigen van logische apps<br>Als u logische app-connectors wilt gebruiken, hebt u mogelijk aanvullende referenties nodig om u aan te melden bij hun respectieve services (bijvoorbeeld uw exemplaren van Outlook/teams/toegestane vertraging)|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Commerciële clouds<br>![Ja](./media/icons/yes-icon.png) Nationaal/onafhankelijk (Overheid van de VS, China, andere overheden)|
 |||
 
@@ -101,9 +101,9 @@ In dit artikel hebt u geleerd hoe u Logic Apps maakt, hoe u de uitvoering ervan 
 
 Zie voor verwante materiaal: 
 
-- [De module Microsoft Learn voor het automatiseren van een beveiligings antwoord met werk stroom automatisering](https://docs.microsoft.com/learn/modules/resolve-threats-with-azure-security-center/)
+- [De module Microsoft Learn voor het automatiseren van een beveiligings antwoord met werk stroom automatisering](/learn/modules/resolve-threats-with-azure-security-center/)
 - [Aanbevelingen voor beveiliging in Azure Security Center](security-center-recommendations.md)
 - [Beveiligingswaarschuwingen in Azure Security Center](security-center-alerts-overview.md)
-- [Over Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)
-- [Logic Apps-connectors](https://docs.microsoft.com/connectors/)
-- [Schema's van werk stroom automatiserings gegevens typen](https://aka.ms/ASCAutomationSchemas)
+- [Over Azure Logic Apps](../logic-apps/logic-apps-overview.md)
+- [Logic Apps-connectors](/connectors/)
+- [Schema's van gegevenstypen van werkstroomautomatisering](https://aka.ms/ASCAutomationSchemas)

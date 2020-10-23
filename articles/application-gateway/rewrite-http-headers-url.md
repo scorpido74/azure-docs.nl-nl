@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: surmb
-ms.openlocfilehash: 2ee34e1a7959aafa5db949b443fd58cca58719c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93af3183ae9e969d14a35ce4e365d48895ef4e79
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87281188"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216671"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>HTTP-headers en URL opnieuw schrijven met Application Gateway
 
@@ -50,7 +50,7 @@ Met de mogelijkheid tot het herschrijven van URL'S in Application Gateway kunt u
 
 Zie [hier](rewrite-url-portal.md)voor meer informatie over het herschrijven van een URL met Application Gateway met behulp van Azure Portal.
 
-![afbeelding](./media/rewrite-http-headers-url/url-rewrite-overview.png)
+![Diagram met een beschrijving van het proces voor het herschrijven van een URL met Application Gateway.](./media/rewrite-http-headers-url/url-rewrite-overview.png)
 
 >[!NOTE]
 > De functie voor het herschrijven van URL'S is in Preview en is alleen beschikbaar voor Standard_v2 en WAF_v2 SKU van Application Gateway. Het wordt niet aanbevolen voor gebruik in een productie omgeving. Zie hier voor meer informatie over het [gebruik van voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)beelden.

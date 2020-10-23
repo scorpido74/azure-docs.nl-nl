@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
-ms.openlocfilehash: ec0e62297e6eee995fc571589d450176c81f8aac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 240018381a3139a6378141d78514e43ae469de5d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88192827"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92146304"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Beveiliging in Azure Data Lake Storage Gen1
 
@@ -31,7 +31,7 @@ Verificatie is het proces waarmee de identiteit van een gebruiker wordt geverifi
 Elk Azure-abonnement kan worden gekoppeld aan een exemplaar van Azure Active Directory. Alleen gebruikers en service-identiteiten die in uw Azure Active Directory-service zijn gedefinieerd, hebben toegang tot uw Data Lake Storage Gen1-account met behulp van de Azure Portal, opdracht regel Programma's of client toepassingen die uw organisatie bouwt met behulp van de Data Lake Storage Gen1 SDK. De belangrijkste voor delen van het gebruik van Azure Active Directory als een gecentraliseerd toegangs beheer mechanisme zijn:
 
 * Vereenvoudigd beheer van identiteits levenscyclus. De identiteit van een gebruiker of een service (een Service-Principal-identiteit) kan snel worden gemaakt en snel worden ingetrokken door simpelweg het account in de map te verwijderen of uit te scha kelen.
-* Multi-factor Authentication. [Multi-factor Authentication](../active-directory/authentication/multi-factor-authentication.md) biedt een extra beveiligingslaag voor gebruikers aanmeldingen en trans acties.
+* Multi-factor Authentication. [Multi-factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) biedt een extra beveiligingslaag voor gebruikers aanmeldingen en trans acties.
 * Verificatie van elke client via een standaard open protocol, zoals OAuth of OpenID Connect.
 * Federatie met ondernemings Directory Services en Cloud-id-providers.
 
@@ -42,7 +42,7 @@ Nadat Azure Active Directory een gebruiker verifieert, zodat de gebruiker toegan
 * [Op rollen gebaseerd toegangs beheer voor Azure (Azure RBAC)](../role-based-access-control/overview.md) voor account beheer
 * POSIX-ACL voor toegang tot gegevens in de Store
 
-### <a name="rbac-for-account-management"></a>RBAC voor account beheer
+### <a name="azure-rbac-for-account-management"></a>Azure RBAC voor account beheer
 
 Standaard worden vier basis rollen gedefinieerd voor Data Lake Storage Gen1. Met de functies kunnen verschillende bewerkingen worden uitgevoerd op een Data Lake Storage Gen1 account via de Azure Portal, Power shell-cmdlets en REST-Api's. De rollen eigenaar en Inzender kunnen diverse beheer functies op het account uitvoeren. U kunt de rol van lezer toewijzen aan gebruikers die alleen account beheer gegevens weer geven.
 

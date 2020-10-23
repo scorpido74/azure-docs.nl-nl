@@ -8,12 +8,12 @@ ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 05a469dbeb093c41b45be278aec42cc930223c72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc140553cbca2347678c376cc9420cfddef22b07
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89002173"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428052"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Ontwerphandleiding voor Azure Table Storage-tabel: schaalbare en krachtige tabellen
 
@@ -52,7 +52,7 @@ In het volgende voor beeld ziet u een eenvoudig tabel ontwerp voor het opslaan v
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Don</td>
@@ -72,7 +72,7 @@ In het volgende voor beeld ziet u een eenvoudig tabel ontwerp voor het opslaan v
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Jun</td>
@@ -109,7 +109,7 @@ In het volgende voor beeld ziet u een eenvoudig tabel ontwerp voor het opslaan v
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Ken</td>
@@ -476,7 +476,7 @@ Meerdere exemplaren van elke entiteit opslaan door gebruik te maken van verschil
 #### <a name="context-and-problem"></a>Context en probleem
 Met tabel opslag worden entiteiten automatisch geïndexeerd met behulp van de- `PartitionKey` en- `RowKey` waarden. Hiermee kan een client toepassing een entiteit efficiënt ophalen met behulp van deze waarden. Als u bijvoorbeeld de volgende tabel structuur gebruikt, kan een client toepassing een punt query gebruiken om een afzonderlijke werknemers entiteit op te halen met behulp van de afdelings naam en de werk nemer-ID (de `PartitionKey` `RowKey` waarden en). Een client kan ook entiteiten ophalen die zijn gesorteerd op werk nemer-ID binnen elke afdeling.  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE09.png" alt-text="Afbeelding van een afdelings entiteit en een werknemers entiteit":::[9]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE09.png" alt-text="Afbeelding van een afdelings entiteit en een werknemers entiteit"::: 9,4
 
 Als u ook een werknemers entiteit wilt kunnen vinden op basis van de waarde van een andere eigenschap, zoals e-mail adres, moet u een minder efficiënte partitie Scan gebruiken om een overeenkomst te vinden. Dit komt doordat tabel opslag geen secundaire indexen biedt. Daarnaast is er geen optie voor het aanvragen van een lijst met werk nemers die in een andere volg orde zijn gesorteerd dan `RowKey` volg orde.  
 
@@ -1126,7 +1126,7 @@ Table Storage is een *schema-less Table-* archief. Dit betekent dat een enkele t
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1146,7 +1146,7 @@ Table Storage is een *schema-less Table-* archief. Dit betekent dat een enkele t
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1183,7 +1183,7 @@ Table Storage is een *schema-less Table-* archief. Dit betekent dat een enkele t
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1219,7 +1219,7 @@ Elke entiteit moet nog steeds `PartitionKey` , `RowKey` , en `Timestamp` waarden
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Werknemer</td>
@@ -1241,7 +1241,7 @@ Elke entiteit moet nog steeds `PartitionKey` , `RowKey` , en `Timestamp` waarden
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Werknemer</td>
@@ -1282,7 +1282,7 @@ Elke entiteit moet nog steeds `PartitionKey` , `RowKey` , en `Timestamp` waarden
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Werknemer</td>

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 800c1742b49fce7e1adf8c3ca22181cfb7d0a085
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9aed5f282ff7b5d573a6f8511f2fc4dbfd27135d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565504"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371814"
 ---
 # <a name="delete-a-group-using-azure-active-directory"></a>Een groep verwijderen met Azure Active Directory
 U kunt een Azure Active Directory-groep (Azure AD) om een aantal redenen verwijderen, maar dit komt meestal doordat:
@@ -48,4 +48,4 @@ U kunt een Azure Active Directory-groep (Azure AD) om een aantal redenen verwijd
 
 - Als u een groep per ongeluk verwijdert, kunt u deze opnieuw maken. Zie [een basis groep maken en leden toevoegen](active-directory-groups-create-azure-portal.md)voor meer informatie.
 
-- Als u per ongeluk een Microsoft 365 groep verwijdert, kunt u deze mogelijk herstellen. Zie [een verwijderde Office 365-groep herstellen](../users-groups-roles/groups-restore-deleted.md)voor meer informatie.
+- Als u per ongeluk een Microsoft 365 groep verwijdert, kunt u deze mogelijk herstellen. Zie [een verwijderde Office 365-groep herstellen](../enterprise-users/groups-restore-deleted.md)voor meer informatie.

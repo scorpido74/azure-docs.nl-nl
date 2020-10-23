@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 2dc802166b605ad7853c0910f1bab2a51f1f7297
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac7666f4c4e68d24499f9c097dc9bd021d270355
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91574140"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370692"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Gegevens beveiligen die zijn opgeslagen in Azure Data Lake Storage Gen1
-Het beveiligen van gegevens in Azure Data Lake Storage Gen1 is een benadering van drie stappen.  Op rollen gebaseerd toegangs beheer (RBAC) en toegangs beheer lijsten (Acl's) moet zijn ingesteld om de toegang tot gegevens voor gebruikers en beveiligings groepen volledig in te scha kelen.
+Het beveiligen van gegevens in Azure Data Lake Storage Gen1 is een benadering van drie stappen.  Zowel op rollen gebaseerd toegangs beheer (Azure RBAC) en toegangs beheer lijsten (Acl's) van Azure moeten worden ingesteld om toegang tot gegevens voor gebruikers en beveiligings groepen volledig in te scha kelen.
 
 1. Begin met het maken van beveiligings groepen in Azure Active Directory (Azure AD). Deze beveiligings groepen worden gebruikt voor het implementeren van op rollen gebaseerd toegangs beheer (Azure RBAC) van Azure in de Azure Portal. Zie [Azure RBAC](../role-based-access-control/role-assignments-portal.md)voor meer informatie.
 2. Wijs de Azure AD-beveiligings groepen toe aan het Data Lake Storage Gen1-account. Hiermee beheert u de toegang tot het Data Lake Storage Gen1-account vanuit de portal-en beheer bewerkingen van de portal of Api's.
@@ -39,7 +39,7 @@ Voordat u met deze zelfstudie begint, moet u het volgende hebben of hebben gedaa
 Zie [beveiligings groepen beheren in azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)voor instructies over het maken van Azure AD-beveiligings groepen en het toevoegen van gebruikers aan de groep.
 
 > [!NOTE] 
-> U kunt zowel gebruikers als andere groepen toevoegen aan een groep in azure AD met behulp van de Azure Portal. Als u een Service-Principal wilt toevoegen aan een groep, gebruikt u echter [de Power shell-module van Azure AD](../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md).
+> U kunt zowel gebruikers als andere groepen toevoegen aan een groep in azure AD met behulp van de Azure Portal. Als u een Service-Principal wilt toevoegen aan een groep, gebruikt u echter [de Power shell-module van Azure AD](../active-directory/enterprise-users/groups-settings-v2-cmdlets.md).
 > 
 > ```powershell
 > # Get the desired group and service principal and identify the correct object IDs
@@ -68,7 +68,7 @@ Wanneer u gebruikers of beveiligings groepen toewijst aan Data Lake Storage Gen1
     Voor gegevens bewerkingen worden de afzonderlijke bestandssysteem machtigingen gedefinieerd wat gebruikers kunnen doen. Daarom kan een gebruiker met een rol van lezer alleen de beheer instellingen weer geven die zijn gekoppeld aan het account, maar kunnen ze gegevens lezen en schrijven op basis van bestandssysteem machtigingen die eraan zijn toegewezen. Data Lake Storage Gen1 machtigingen voor bestands systemen worden beschreven in [beveiligings groep als Acl's toewijzen aan het Azure data Lake Storage gen1 bestands systeem](#filepermissions).
 
     > [!IMPORTANT]
-    > Alleen de rol **eigenaar** maakt automatisch toegang tot het bestands systeem mogelijk. De **Inzender**, **lezer**en alle andere rollen hebben acl's nodig om elk niveau van toegang tot mappen en bestanden in te scha kelen.  De rol van **eigenaar** biedt bestands-en mapmachtigingen voor Super gebruikers die niet kunnen worden overschreven via acl's. Zie voor meer informatie over hoe RBAC-beleid is toegewezen aan gegevens toegang [RBAC voor account beheer](data-lake-store-security-overview.md#rbac-for-account-management).
+    > Alleen de rol **eigenaar** maakt automatisch toegang tot het bestands systeem mogelijk. De **Inzender**, **lezer**en alle andere rollen hebben acl's nodig om elk niveau van toegang tot mappen en bestanden in te scha kelen.  De rol van **eigenaar** biedt bestands-en mapmachtigingen voor Super gebruikers die niet kunnen worden overschreven via acl's. Zie voor meer informatie over hoe Azure RBAC-beleid wordt toegewezen aan gegevens toegang [Azure RBAC voor account beheer](data-lake-store-security-overview.md#azure-rbac-for-account-management).
 
 4. Als u een groep/gebruiker wilt toevoegen die niet wordt weer gegeven op de Blade **machtigingen toevoegen** , kunt u ze uitnodigen door hun e-mail adres te typen in het tekstvak **selecteren** en deze vervolgens te selecteren in de lijst.
    

@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1708b3b8777b32aac7c160a1084235ba1b2eda13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7baa851943db3e8c691b50c2cb5446a2adbbccc
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89658359"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457988"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Naadloze eenmalige aanmelding met Azure Active Directory
 
@@ -64,18 +64,20 @@ Naadloze SSO kan worden gecombineerd met de aanmeldings methoden voor [wachtwoor
 | OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
 |Windows 10|Ja\*|Ja|Ja|Ja\*\*\*|N.v.t.
-|Windows 8.1|Ja\*|N.v.t.|Ja|Ja\*\*\*|N.v.t.
-|Windows 8|Ja\*|N.v.t.|Ja|Ja\*\*\*|N.v.t.
-|Windows 7|Ja\*|N.v.t.|Ja|Ja\*\*\*|N.v.t.
+|Windows 8.1|Klikt\*|Klikt\*\*\*|Ja|Ja\*\*\*|N.v.t.
+|Windows 8|Klikt\*|N.v.t.|Ja|Ja\*\*\*|N.v.t.
+|Windows 7|Klikt\*|N.v.t.|Ja|Ja\*\*\*|N.v.t.
 |Windows Server 2012 R2 of hoger|Klikt\*\*|N.v.t.|Ja|Ja\*\*\*|N.v.t.
 |Mac OS X|N.v.t.|N.v.t.|Ja\*\*\*|Ja\*\*\*|Ja\*\*\*
 
 
-\*Vereist Internet Explorer versie 10 of hoger
+\*Vereist Internet Explorer versie 10 of hoger.
 
-\*\*Vereist Internet Explorer versie 10 of hoger. Uitgebreide beveiligde modus uitschakelen
+\*\*Vereist Internet Explorer versie 10 of hoger. Uitgebreide beveiligde modus uitschakelen.
 
-\*\*\*Vereist [aanvullende configuratie](how-to-connect-sso-quick-start.md#browser-considerations)
+\*\*\*Vereist [aanvullende configuratie](how-to-connect-sso-quick-start.md#browser-considerations).
+
+\*\*\*\*Vereist micro soft Edge versie 77 of hoger.
 
 >[!NOTE]
 >Voor Windows 10 is het aanbeveling om [Azure AD samen](../devices/concept-azure-ad-join.md) te gebruiken voor de optimale ervaring voor eenmalige aanmelding met Azure AD.

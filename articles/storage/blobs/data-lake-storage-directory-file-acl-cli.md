@@ -10,16 +10,16 @@ ms.date: 05/18/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6140260b75580270b365e59358d97e0a54c7b4a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22d048b15cc097cd8a24e5ed57bbe4d5a6183e2f
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87503936"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131595"
 ---
 # <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Azure CLI gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2
 
-In dit artikel wordt beschreven hoe u de [Azure Command-Line interface (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) gebruikt voor het maken en beheren van mappen, bestanden en machtigingen in opslag accounts met een hiërarchische naam ruimte. 
+In dit artikel wordt beschreven hoe u de [Azure Command-Line interface (CLI)](https://docs.microsoft.com/cli/azure/) gebruikt voor het maken en beheren van mappen, bestanden en machtigingen in opslag accounts met een hiërarchische naam ruimte. 
 
 Voor [beelden](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)  |  [Feedback geven](https://github.com/Azure/azure-cli-extensions/issues)
 
@@ -32,14 +32,14 @@ Voor [beelden](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/c
 
 ## <a name="ensure-that-you-have-the-correct-version-of-azure-cli-installed"></a>Controleer of u de juiste versie van Azure CLI hebt geïnstalleerd
 
-1. Open de [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)of open een opdracht console toepassing zoals Windows Power shell als u de Azure cli lokaal hebt [geïnstalleerd](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) .
+1. Open de [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview)of open een opdracht console toepassing zoals Windows Power shell als u de Azure cli lokaal hebt [geïnstalleerd](https://docs.microsoft.com/cli/azure/install-azure-cli) .
 
 2. Controleer of de versie van de Azure CLI die is geïnstalleerd `2.6.0` of hoger is met behulp van de volgende opdracht.
 
    ```azurecli
     az --version
    ```
-   Als uw versie van Azure CLI lager is dan `2.6.0` , installeert u een nieuwere versie. Raadpleeg [De Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+   Als uw versie van Azure CLI lager is dan `2.6.0` , installeert u een nieuwere versie. Raadpleeg [De Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="connect-to-the-account"></a>Verbinding maken met het account
 
@@ -216,7 +216,7 @@ In dit voor beeld wordt een bestand met de naam `my-file.txt`
 az storage fs file delete -p my-directory/my-file.txt -f my-file-system  --account-name mystorageaccount --auth-mode login 
 ```
 
-## <a name="manage-permissions"></a>Machtigingen beheren
+## <a name="manage-access-control-lists-acls"></a>Toegangs beheer lijsten (Acl's) beheren
 
 U kunt toegangs machtigingen van mappen en bestanden ophalen, instellen en bijwerken.
 
@@ -273,7 +273,7 @@ az storage fs access set --acl "user::rw-,group::rw-,other::-wx" -p my-directory
 
 In de volgende afbeelding ziet u de uitvoer na het instellen van de ACL van een bestand.
 
-![ACL-uitvoer ophalen](./media/data-lake-storage-directory-file-acl-cli/set-acl-file.png)
+![ACL-uitvoer 2 ophalen](./media/data-lake-storage-directory-file-acl-cli/set-acl-file.png)
 
 In dit voor beeld hebben de gebruiker die eigenaar is en de groep die eigenaar is alleen lees-en schrijf machtigingen. Alle andere gebruikers hebben machtigingen voor schrijven en uitvoeren. Zie [toegangs beheer in azure data Lake Storage Gen2](data-lake-storage-access-control.md)voor meer informatie over toegangs beheer lijsten.
 

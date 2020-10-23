@@ -3,14 +3,23 @@ title: Azure Red Hat open Shift v3. x configureren met Azure Monitor voor contai
 description: In dit artikel wordt beschreven hoe u de bewaking van een Kubernetes-cluster configureert met Azure Monitor die worden gehost op Azure Red Hat open Shift versie 3 en hoger.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 4e1770944fa1917bc94dfbf1a3daa0708593e356
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 1186056559d6497b2b48cb3533a0967d6d61f38e
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994566"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216365"
 ---
-# <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Azure Red Hat open Shift v3 configureren met Azure Monitor voor containers 
+# <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Azure Red Hat open Shift v3 configureren met Azure Monitor voor containers
+
+>[!IMPORTANT]
+> Azure Red Hat open Shift 3,11 wordt in juni 2022.
+>
+> Vanaf oktober 2020 kunt u geen nieuwe 3,11-clusters meer maken.
+> Bestaande 3,11-clusters blijven actief tot juni 2022, maar worden na die datum niet meer ondersteund.
+>
+> Volg deze hand leiding voor het [maken van een Azure Red Hat open Shift 4-cluster](https://docs.microsoft.com/azure/openshift/tutorial-create-cluster).
+> Als u specifieke vragen hebt, [kunt u contact met ons](mailto:aro-feedback@microsoft.com)opnemen.
 
 Azure Monitor voor containers biedt uitgebreide bewakings ervaring voor de Azure Kubernetes-service (AKS) en AKS-engine clusters. In dit artikel wordt beschreven hoe u de bewaking kunt inschakelen van Kubernetes-clusters die worden gehost op [Azure Red Hat open Shift](../../openshift/intro-openshift.md) versie 3 en de meest recente ondersteunde versie van versie 3, om een vergelijk bare bewakings ervaring te krijgen.
 
@@ -159,7 +168,7 @@ Voer de volgende stappen uit om de bewaking in te scha kelen van een Azure Red H
 
 ### <a name="from-the-azure-portal"></a>Vanuit Azure Portal
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Selecteer in het menu Azure Portal of op de start pagina **Azure monitor**. Selecteer in de sectie **insightss** de optie **containers**.
 

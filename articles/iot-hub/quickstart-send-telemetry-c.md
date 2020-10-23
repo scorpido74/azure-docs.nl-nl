@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: Cloud Development'
 ms.date: 04/10/2019
 ms.author: wesmc
-ms.openlocfilehash: ecc3c4e97ea533f19e570db21eceb6f759969a8f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1decb3e9915f0595afb05b46be8ba9fae836081d
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87317940"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150648"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>Quickstart: Telemetrie vanaf een apparaat verzenden naar een IoT-hub en lezen met een back-endtoepassing (C)
 
@@ -96,7 +96,7 @@ In deze snelstart bereidt u een ontwikkelomgeving voor die wordt gebruikt om de 
     cmake ..
     ```
 
-    Als `cmake` uw C++-compiler niet kan vinden, kunnen er opbouwfouten optreden tijdens het uitvoeren van de bovenstaande opdracht. Als dit gebeurt, voert u deze opdracht uit bij de [Visual Studio-opdrachtprompt](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs). 
+    Als `cmake` uw C++-compiler niet kan vinden, kunnen er opbouwfouten optreden tijdens het uitvoeren van de bovenstaande opdracht. Als dit gebeurt, voert u deze opdracht uit bij de [Visual Studio-opdrachtprompt](/dotnet/framework/tools/developer-command-prompt-for-vs). 
 
     Zodra het bouwen is voltooid, zijn de laatste paar uitvoerregels vergelijkbaar met de volgende uitvoer:
 
@@ -120,7 +120,7 @@ In deze snelstart bereidt u een ontwikkelomgeving voor die wordt gebruikt om de 
 
 ## <a name="register-a-device"></a>Een apparaat registreren
 
-Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan maken. In deze sectie gebruikt u Azure Cloud Shell met de [IoT-extensie](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) om een gesimuleerd apparaat te registreren.
+Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan maken. In deze sectie gebruikt u Azure Cloud Shell met de [IoT-extensie](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) om een gesimuleerd apparaat te registreren.
 
 1. Voer de volgende opdrachten uit in Azure Cloud Shell om de apparaat-id te maken.
 
@@ -189,7 +189,7 @@ De toepassing voor het gesimuleerde apparaat maakt verbinding met een apparaatsp
 
 ## <a name="read-the-telemetry-from-your-hub"></a>De telemetrie van uw hub lezen
 
-In deze sectie gebruikt u Azure Cloud Shell met de [IoT-extensie](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) voor het bewaken van de apparaatberichten die door het gesimuleerde apparaat worden verzonden.
+In deze sectie gebruikt u Azure Cloud Shell met de [IoT-extensie](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) voor het bewaken van de apparaatberichten die door het gesimuleerde apparaat worden verzonden.
 
 1. Voer met de Azure Cloud Shell de volgende opdracht uit om te verbinden en berichten te lezen uit uw IoT-hub:
 

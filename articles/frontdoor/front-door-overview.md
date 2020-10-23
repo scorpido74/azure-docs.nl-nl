@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2020
 ms.author: duau
-ms.openlocfilehash: e5b8e5059d4d7df8d7061698ea29d7a6785236f9
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: ef7870363940a0db4ff09ae9ebd82eedb0e60495
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825646"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282274"
 ---
 # <a name="what-is-azure-front-door"></a>Wat is Azure Front Door?
 
@@ -32,11 +32,11 @@ Front Door werkt in Laag 7 (HTTP/HTTPS-laag) met anycast-protocol met split-TCP 
 >[!NOTE]
 > Azure biedt een pakket volledig beheerde oplossingen voor taakverdeling voor uw scenario's. 
 > * Als u op zoek bent naar een internationale routering op basis van DNS en u voldoet **niet** aan de vereisten voor beëindiging van het TLS-protocol (Transport Layer Security), ('SSL-offload') of aanvragen per HTTP/HTTPS-aanvraag, verwerking via de toepassingslaag, raadpleegt u [Traffic Manager](../traffic-manager/traffic-manager-overview.md). 
-> * Als u de taken wilt verdelen tussen uw servers in een regio op de toepassingslaag, raadpleegt u [Application Gateway](../application-gateway/application-gateway-introduction.md)
+> * Als u de taken wilt verdelen tussen uw servers in een regio op de toepassingslaag, raadpleegt u [Application Gateway](../application-gateway/overview.md)
 > * Raadpleeg [Load Balancer](../load-balancer/load-balancer-overview.md) voor taakverdeling in de netwerklaag. 
 > 
 > Uw end-to-end scenario 's kunnen eventueel profiteren van een combinatie van deze oplossingen.
-> Zie [Opties voor taakverdeling in Azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview) voor een vergelijking van de opties voor taakverdeling van Azure.
+> Zie [Opties voor taakverdeling in Azure](/azure/architecture/guide/technology-choices/load-balancing-overview) voor een vergelijking van de opties voor taakverdeling van Azure.
 
 ## <a name="why-use-azure-front-door"></a>Waarom zou ik Azure Front Door gebruiken?
 

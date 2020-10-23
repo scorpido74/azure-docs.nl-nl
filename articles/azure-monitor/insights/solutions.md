@@ -5,13 +5,14 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/07/2020
-ms.openlocfilehash: d509862fe4dafff174ee03c3b5cc887fa9d9ff22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/16/2020
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c64e01253652ea3b49ad6221f161bb78f499b6ed
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90085991"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150529"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Bewakings oplossingen in Azure Monitor
 
@@ -36,7 +37,7 @@ Bewakings oplossingen kunnen meerdere typen Azure-resources bevatten en u kunt a
 
 Gebruik de volgende procedure om de bewakings oplossingen weer te geven die in uw abonnement zijn geïnstalleerd.
 
-1. Ga naar de [Azure Portal](https://ms.portal.azure.com). Zoek en selecteer **oplossingen**.
+1. Ga naar [Azure Portal](https://ms.portal.azure.com). Zoek en selecteer **oplossingen**.
 1. Oplossingen die in al uw werk ruimten zijn geïnstalleerd, worden weer gegeven. De naam van de oplossing wordt gevolgd door de naam van de werk ruimte waarin deze is geïnstalleerd.
 1. Gebruik de vervolg keuzelijsten aan de bovenkant van het scherm om te filteren op abonnement of resource groep.
 
@@ -59,6 +60,21 @@ az monitor log-analytics solution list --subscription MySubscription
 
 # List all log-analytics solutions in a resource group
 az monitor log-analytics solution list --resource-group MyResourceGroup
+```
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Gebruik de cmdlet [Get-AzMonitorLogAnalyticsSolution](/powershell/module/az.monitoringsolutions/get-azmonitorloganalyticssolution) om de bewakings oplossingen weer te geven die in uw abonnement zijn geïnstalleerd. Voordat u deze opdrachten uitvoert, volgt u de vereisten voor het [installeren van een bewakings oplossing](#install-a-monitoring-solution).
+
+```azurepowershell-interactive
+# List all log-analytics solutions in the current subscription.
+Get-AzMonitorLogAnalyticsSolution
+
+# List all log-analytics solutions for a specific subscription
+Get-AzMonitorLogAnalyticsSolution -SubscriptionId 00000000-0000-0000-0000-000000000000
+
+# List all log-analytics solutions in a resource group
+Get-AzMonitorLogAnalyticsSolution -ResourceGroupName MyResourceGroup
 ```
 
 * * *
@@ -151,6 +167,54 @@ az monitor log-analytics solution create --resource-group MyResourceGroup \
                                            Microsoft.OperationalInsights/workspaces/{WorkspaceName}"
 ```
 
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+### <a name="prepare-your-environment"></a>Uw omgeving voorbereiden
+
+1. Azure PowerShell installeren
+
+   U moet [Azure PowerShell installeren](/powershell/azure/install-az-ps) voordat u Azure PowerShell-verwijzings opdrachten uitvoert. Als u wilt, kunt u ook Azure Cloud Shell gebruiken om de stappen in dit artikel uit te voeren. Azure Cloud Shell is een interactieve shell-omgeving die u via uw browser gebruikt. Start Cloud Shell met een van de volgende methoden:
+
+   - Open Cloud Shell door naar te gaan [https://shell.azure.com](https://shell.azure.com)
+
+   - Selecteer de knop **Cloud shell** in de menu balk in de rechter bovenhoek van de [Azure Portal](https://portal.azure.com)
+
+   > [!IMPORTANT]
+   > Hoewel de Power shell-module **AZ. MonitoringSolutions** in preview is, moet u deze afzonderlijk installeren met behulp van de `Install-Module` cmdlet. Nadat deze Power shell-module algemeen beschikbaar is, maakt deze deel uit van toekomstige AZ Power shell-module releases en is deze standaard beschikbaar in Azure Cloud Shell.
+
+   ```azurepowershell-interactive
+   Install-Module -Name Az.MonitoringSolutions
+   ```
+
+1. Meld u aan.
+
+   Als u een lokale installatie van Power shell gebruikt, meldt u zich aan met de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) . Volg de stappen die worden weer gegeven in Power shell om het verificatie proces te volt ooien.
+
+   ```azurepowershell
+   Connect-AzAccount
+   ```
+
+### <a name="install-a-solution-with-azure-powershell"></a>Een oplossing met Azure PowerShell installeren
+
+Wanneer u een oplossing installeert, moet u een [log Analytics-werk ruimte](../platform/manage-access.md) selecteren waarin de oplossing wordt geïnstalleerd en waar de gegevens worden verzameld. Met Azure PowerShell beheert u werk ruimten met behulp van de cmdlets in de Power shell-module [AZ. MonitoringSolutions](/powershell/module/az.monitoringsolutions) . Volg het proces dat wordt beschreven in [log Analytics werk ruimte en het Automation-account](#log-analytics-workspace-and-automation-account) om een werk ruimte en een account te koppelen.
+
+Gebruik de cmdlet [New-AzMonitorLogAnalyticsSolution](/powershell/module/az.monitoringsolutions/new-azmonitorloganalyticssolution) om een bewakings oplossing te installeren. Para meters tussen vier Kante haken zijn optioneel.
+
+```azurepowershell
+New-AzMonitorLogAnalyticsSolution -ResourceGroupName <string> -Type <string> -Location <string>
+-WorkspaceResourceId <string> [-SubscriptionId <string>] [-Tag <hashtable>]
+[-DefaultProfile <psobject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+[-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <uri>] [-ProxyCredential <pscredential>]
+[-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+In het volgende voor beeld wordt een bewaking log Analytics-oplossing voor de log Analytics-werk ruimte gemaakt.
+
+```azurepowershell-interactive
+$workspace = Get-AzOperationalInsightsWorkspace -ResourceGroupName MyResourceGroup -Name WorkspaceName
+New-AzMonitorLogAnalyticsSolution -Type Containers -ResourceGroupName MyResourceGroup -Location $workspace.Location -WorkspaceResourceId $workspace.ResourceId
+```
+
 * * *
 
 ## <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics-werk ruimte en Automation-account
@@ -185,6 +249,14 @@ az monitor log-analytics solution delete --name
                                          --resource-group
                                          [--no-wait]
                                          [--yes]
+```
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Als u een geïnstalleerde oplossing met behulp van Azure PowerShell wilt verwijderen, gebruikt u de cmdlet [Remove-AzMonitorLogAnalyticsSolution](/powershell/module/az.monitoringsolutions/remove-azmonitorloganalyticssolution) .
+
+```azurepowershell-interactive
+Remove-AzMonitorLogAnalyticsSolution  -ResourceGroupName MyResourceGroup -Name WorkspaceName
 ```
 
 * * *

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6115ca375c3e5bf2be3335fe2231628ec7bf309f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09dddad24794491b53a11f7b0e4347f43f11598b
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267734"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440481"
 ---
 # <a name="scenario-any-to-any"></a>Scenario: any-to-any
 
@@ -22,14 +22,14 @@ Wanneer u werkt met virtuele WAN-hub routering, zijn er heel veel beschik bare s
 
 ## <a name="design"></a><a name="design"></a>Ontwerp
 
-Om erachter te komen hoeveel route tabellen nodig zijn in een virtueel WAN-scenario, kunt u een verbindings matrix maken waarbij elke cel aangeeft of een bron (rij) kan communiceren met een doel (kolom). De connectiviteits matrix in dit scenario is trivial, maar we hebben deze opgenomen zodat deze consistent zijn met andere scenario's.
+Om erachter te komen hoeveel route tabellen nodig zijn in een virtueel WAN-scenario, kunt u een verbindings matrix maken waarbij elke cel aangeeft of een bron (rij) kan communiceren met een doel (kolom).
 
 | Van |   Tot |  *VNets* | *Vertakkingen* |
 | -------------- | -------- | ---------- | ---|
-| VNets     | &#8594;|      X     |     X    |
-| Vertakkingen   | &#8594;|    X     |     X    |
+| VNets     | &#8594;| Direct | Direct |
+| Vertakkingen   | &#8594;| Direct  | Direct |
 
-In elk van de cellen in de vorige tabel wordt beschreven of een virtuele WAN-verbinding (de ' aan '-zijde van de stroom, de rijkoppen in de tabel) een doel voorvoegsel (de ' aan '-zijde van de stroom, de kolom koppen in de tabel cursief) voor een specifieke verkeers stroom, waarbij een ' X ' betekent dat de connectiviteit wordt verschaft door Virtual WAN.
+Elk van de cellen in de vorige tabel beschrijft of een virtuele WAN-verbinding (de ' aan '-zijde van de stroom, de rijkoppen) communiceert met een voor voegsel van de bestemming (de ' aan ' kant van de stroom, de kolom koppen cursief). In dit scenario zijn er geen firewalls of virtuele netwerk apparaten, waardoor communicatie rechtstreeks via Virtual WAN (dus het woord ' direct ' in de tabel) wordt uitgevoerd.
 
 Aangezien alle verbindingen van zowel VNets als filialen (VPN, ExpressRoute en gebruikers VPN) dezelfde connectiviteits vereisten hebben, is er één route tabel vereist. Als gevolg hiervan worden alle verbindingen gekoppeld en door gegeven aan dezelfde route tabel, de standaard route tabel:
 

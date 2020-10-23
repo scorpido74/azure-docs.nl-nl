@@ -3,12 +3,12 @@ title: Evaluaties van Azure VM in Azure Migrate server-evaluatie
 description: Meer informatie over evaluaties in Azure Migrate server-evaluatie
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 4020df3ef77e4b8ae0618108f539322092b93079
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d08e3c1c0035ee2bb56ee54f1ffb7ffb439d61b6
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275520"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319321"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vms"></a>Overzicht van server evaluatie (migreren naar Azure Vm's)
 
@@ -54,7 +54,7 @@ Als u een Azure Migrate apparaat implementeert om on-premises servers te detecte
 
 Nadat het apparaat machine Discovery heeft gestart, kunt u computers die u wilt beoordelen in een groep verzamelen en een evaluatie uitvoeren voor de groep met een evaluatie type van **Azure VM**.
 
-Volg de zelf studies voor [VMware](tutorial-prepare-vmware.md)-, [Hyper-V-](tutorial-prepare-hyper-v.md)of [fysieke servers](tutorial-prepare-physical.md) om deze stappen uit te proberen.
+Volg de zelf studies voor [VMware](./tutorial-discover-vmware.md)-, [Hyper-V-](./tutorial-discover-hyper-v.md)of [fysieke servers](./tutorial-discover-physical.md) om deze stappen uit te proberen.
 
 ## <a name="how-do-i-assess-with-imported-data"></a>Hoe kan ik evalueren met geïmporteerde gegevens?
 
@@ -173,7 +173,7 @@ Windows Server 2012 R2 en alle SP's | Azure biedt volledige ondersteuning. | Ger
 Windows Server 2012 en alle SP's | Azure biedt volledige ondersteuning. | Gereed voor Azure.
 Windows Server 2008 R2 met alle SPs | Azure biedt volledige ondersteuning.| Gereed voor Azure.
 Windows Server 2008 (32-bits en 64-bits) | Azure biedt volledige ondersteuning. | Gereed voor Azure.
-Windows Server 2003 en Windows Server 2003 R2 | Deze besturings systemen hebben hun end-of-support-datums door lopen en hebben een [aangepaste ondersteunings overeenkomst (CSA)](https://aka.ms/WSosstatement) nodig voor ondersteuning in Azure. | Voorwaardelijk gereed voor Azure. Overweeg het besturings systeem te upgraden voordat u naar Azure migreert.
+Windows Server 2003 en Windows Server 2003 R2 | Deze besturings systemen hebben hun end-of-support-datums door lopen en hebben een [aangepaste ondersteunings overeenkomst (CSA)](/troubleshoot/azure/virtual-machines/server-software-support) nodig voor ondersteuning in Azure. | Voorwaardelijk gereed voor Azure. Overweeg het besturings systeem te upgraden voordat u naar Azure migreert.
 Windows 2000, Windows 98, Windows 95, Windows NT, Windows 3,1 en MS-DOS | Deze besturings systemen hebben hun end-of-support-datums door gegeven. De machine kan worden gestart in azure, maar Azure biedt geen ondersteuning voor het besturings systeem. | Voorwaardelijk gereed voor Azure. Het is raadzaam om het besturings systeem bij te werken voordat u naar Azure migreert.
 Windows 7, Windows 8 en Windows 10 | Azure biedt alleen ondersteuning voor een [Visual Studio-abonnement.](../virtual-machines/windows/client-images.md) | Voorwaardelijk gereed voor Azure.
 Windows 10 Pro | Azure biedt ondersteuning met [multitenant-hostingrechten.](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md) | Voorwaardelijk gereed voor Azure.
@@ -297,6 +297,6 @@ De kosten worden weer gegeven in de valuta die is opgegeven in de instellingen v
 
 [Bekijk](best-practices-assessment.md) de aanbevolen procedures voor het maken van evaluaties. 
 
-- Meer informatie over het uitvoeren van evaluaties voor [virtuele VMware-machines](tutorial-prepare-vmware.md), [virtuele Hyper-V-machines](tutorial-prepare-hyper-v.md)en [fysieke servers](tutorial-prepare-physical.md).
-- Meer informatie over het beoordelen van servers [die zijn geïmporteerd met een CSV-bestand](tutorial-assess-import.md).
+- Meer informatie over het uitvoeren van evaluaties voor [virtuele VMware-machines](./tutorial-discover-vmware.md), [virtuele Hyper-V-machines](./tutorial-discover-hyper-v.md)en [fysieke servers](./tutorial-discover-physical.md).
+- Meer informatie over het beoordelen van servers [die zijn geïmporteerd met een CSV-bestand](./tutorial-discover-import.md).
 - Meer informatie over het instellen van de [visualisatie van afhankelijkheden](concepts-dependency-visualization.md).

@@ -3,19 +3,19 @@ title: Distributie op Azure VMware-oplossing implementeren
 description: Meer informatie over het implementeren van VMware horizon op de Azure VMware-oplossing.
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: 9f8951c1c346eb15ac981b99a4dbf1541f3e3eed
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 6a466aea5cbdf4452a2c46b455932042d920c3b9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078881"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369009"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Distributie op Azure VMware-oplossing implementeren 
 
 >[!NOTE]
->Dit document is gericht op het VMware horizon-product. Dit is vroeger bekend als Horizony 7 voordat de product naam verandert van Horizon 7 naar horizon. Horizon is een andere oplossing dan een horizon-Cloud op Azure, hoewel er een aantal gedeelde onderdelen zijn. De belangrijkste voor delen van de Azure VMware-oplossing zijn een eenvoudigere schaal methode en het beheer van VMware Cloud Foundation is geïntegreerd in de Azure Portal.
+>Dit document is gericht op het VMware-horizon product, voorheen bekend als horizon-7. Horizon is een andere oplossing dan een horizon-Cloud op Azure, hoewel er een aantal gedeelde onderdelen zijn. De belangrijkste voor delen van de Azure VMware-oplossing zijn een meer eenvoudige grootte methode en de integratie van VMware Cloud Foundation Management in de Azure Portal.
 
-[VMware Horizon](https://www.vmware.com/products/horizon.html)® is een virtueel bureau blad-en toepassings platform dat wordt uitgevoerd in het Data Center en biedt eenvoudig en gecentraliseerd beheer. Het levert virtuele Bureau bladen en toepassingen aan eind gebruikers op elk apparaat, waar dan ook. Met horizon kunt u verbindingen maken en brokeren met virtuele Windows-Bureau bladen, virtuele Linux-Bureau bladen, door Extern bureaublad server (RDS) gehoste toepassingen, Desk tops en fysieke machines.
+[VMware-Horizon](https://www.vmware.com/products/horizon.html)®, een virtueel bureau blad-en toepassings platform, wordt uitgevoerd in het Data Center en biedt eenvoudig en gecentraliseerd beheer. Het levert virtuele Bureau bladen en toepassingen op elk apparaat, waar dan ook. Met horizon kunt u verbindingen maken en brokeren met virtuele Windows-en Linux-Bureau bladen, op Extern bureaublad server (RDS) gehoste toepassingen, Desk tops en fysieke machines.
 
 Hier Best Eden we aandacht aan het implementeren van Horizon in azure VMware-oplossing. Voor algemene informatie over VMware horizon raadpleegt u de horizon productie documentatie:
 
@@ -27,20 +27,20 @@ Hier Best Eden we aandacht aan het implementeren van Horizon in azure VMware-opl
 
 Met de inleiding over de Azure VMware-oplossing zijn er nu twee VDI-oplossingen (Virtual Desktop Infrastructure) op het Azure-platform. In het volgende diagram vindt u een overzicht van de belangrijkste verschillen op hoog niveau.
 
-:::image type="content" source="media/horizon/difference-horizon-azure-vmware-solution-horizon-cloud-azure.png" alt-text="De verschillen tussen de periode van de Azure VMware-oplossing en de horizon-Cloud op Azure" border="false":::
+:::image type="content" source="media/horizon/difference-horizon-azure-vmware-solution-horizon-cloud-azure.png" alt-text="Horizon in azure VMware-oplossing en horizon-Cloud op Azure" border="false":::
 
 Horizon 2006 en latere versies op de regel van de horizon-versie 8 bieden ondersteuning voor zowel on-premises implementatie als implementatie van Azure VMware-oplossingen. Er zijn een paar van de functies die on-premises maar niet in de Azure VMware-oplossing worden ondersteund. Aanvullende producten in het Horizon-ecosysteem worden ook ondersteund. Zie [pariteit en interoperabiliteit van functies](https://kb.vmware.com/s/article/80850)voor voor meer informatie.
 
 ## <a name="deploy-horizon-in-a-hybrid-cloud"></a>Een periode implementeren in een hybride Cloud
 
-U kunt horizon in een hybride cloud omgeving implementeren wanneer u pod-architectuur (CPA) van de Cloud gebruikt om on-premises data centers en Azure-data centers te verbinden. CPA wordt doorgaans gebruikt om uw implementatie te verg Roten, een hybride Cloud te bouwen en redundantie te bieden voor bedrijfs continuïteit en herstel na nood gevallen. Zie voor een uitgebreide bespreking van de richt lijnen voor de continuïteit van VMware-horizon, [bestaande horizon-7-omgevingen uitbreiden](https://techzone.vmware.com/resource/business-continuity-vmware-horizon#_Toc41650874).
+U kunt horizon in een hybride cloud omgeving implementeren wanneer u pod-architectuur (CPA) van de Cloud gebruikt om on-premises en Azure-data centers te verbinden. CPA schaalt uw implementatie, bouwt een hybride Cloud en biedt redundantie voor bedrijfs continuïteit en herstel na nood gevallen.  Zie voor meer informatie [bestaande horizon-7-omgevingen uitbreiden](https://techzone.vmware.com/resource/business-continuity-vmware-horizon#_Toc41650874).
 
 >[!IMPORTANT]
 >CPA is geen uitgerekte implementatie. elke horizon Pod is DISTINCT en alle verbindings servers die deel uitmaken van elk van de afzonderlijke peulen, moeten zich op één locatie bevinden en op hetzelfde broadcast-domein worden uitgevoerd vanuit een netwerk perspectief.
 
-Net zoals on-premises of persoonlijk Data Center, kan horizon worden geïmplementeerd in een privécloud van Azure VMware-oplossingen. In de volgende secties worden de belangrijkste verschillen besproken in de implementatie van Horizon-premises en de Azure VMware-oplossing.
+Net zoals on-premises of persoonlijk Data Center, kan horizon worden geïmplementeerd in een privécloud van Azure VMware-oplossingen. We bespreken belang rijke verschillen in de implementatie van Horizon-premises en de Azure VMware-oplossing in de volgende secties.
 
-De privécloud van Azure is conceptueel hetzelfde als de VMware-SDDC, een term die meestal in de horizon-documentatie wordt gebruikt. In de rest van dit document worden de voor waarden van de Azure Private Cloud en de VMware SDDC-uitwisselbaar gebruikt.
+De privécloud van Azure is conceptueel hetzelfde als de VMware-SDDC, een term die meestal in de horizon-documentatie wordt gebruikt. De rest van dit document maakt gebruik van de termen Azure Private Cloud en VMware SDDC-uitwisselbaar.
 
 De horizon-Cloud connector is vereist voor Horizon-Azure VMware-oplossing voor het beheren van abonnements licenties. Cloud connector kan worden geïmplementeerd in azure Virtual Network naast de andere horizon-verbinding servers.
 
@@ -67,13 +67,13 @@ Klanten moeten de rol van Cloud beheerder gebruiken, die een beperkt aantal vCen
 
 ## <a name="horizon-on-azure-vmware-solution-deployment-architecture"></a>Distributie architectuur van de Azure VMware-oplossing
 
-Een typische horizon architectuur ontwerp maakt gebruik van een pod-en blokkerings strategie. Een blok is één vCenter, terwijl meerdere blokken gecombineerd een pod maken. Een horizon-Pod is een organisatie-eenheid, bepaald door de limieten voor Horizon taal schalen. Elke horizon-Pod heeft een afzonderlijke beheer Portal, en daarom is een standaard ontwerp procedure het aantal peulen te minimaliseren.
+Een typische horizon architectuur ontwerp maakt gebruik van een pod-en blokkerings strategie. Een blok is één vCenter, terwijl meerdere blokken gecombineerd een pod maken. Een horizon-Pod is een organisatie-eenheid, bepaald door de limieten voor Horizon taal schalen. Elke horizon-Pod heeft een afzonderlijke beheer Portal, waardoor een standaard ontwerp praktijk het aantal peulen zo klein mogelijk maakt.
 
 Elke Cloud heeft een eigen schema voor netwerk connectiviteit. In combi natie met VMware SDDC Networking/NSX Edge biedt de Azure VMware-oplossing voor netwerk connectiviteit unieke vereisten voor het implementeren van Horizon land dat verschilt van on-premises.
 
-Elke Azure Private Cloud/SDDC is geschikt voor het afhandelen van 4.000-bureau blad-of app-sessies, waarbij het volgende van toepassing is:
+Elke Azure Private Cloud en SDDC kunnen 4.000-bureaublad-of toepassings sessies afhandelen, aangenomen:
 
-* Het werk belasting verkeer wordt uitgelijnd met dat van het LoginVSI-taak werknemers profiel.
+* Het werk belasting verkeer wordt uitgelijnd met het LoginVSI-taak werknemers profiel.
 
 * Alleen protocol verkeer wordt beschouwd, geen gebruikers gegevens.
 
@@ -82,23 +82,23 @@ Elke Azure Private Cloud/SDDC is geschikt voor het afhandelen van 4.000-bureau b
 >[!NOTE]
 >Uw werkbelasting profiel en de behoeften kunnen afwijken en daarom kunnen de resultaten variëren op basis van uw use-case. Volumes met gebruikers gegevens kunnen de schaal limieten in de context van uw werk belasting verlagen. Grootte en plan uw implementatie dienovereenkomstig. Zie de richt lijnen voor het aanpassen van de [grootte van Azure VMware Solution-hosts voor Horizon-implementaties](#size-azure-vmware-solution-hosts-for-horizon-deployments) voor meer informatie.
 
-Gezien de maximum limiet voor Azure Private Cloud/SDDC, raden we u aan een implementatie architectuur te gebruiken waarin de horizon-verbindings servers en VMware Unified Access gateways (UAGs) worden uitgevoerd binnen de Azure-Virtual Network. Hierdoor worden alle Azure Private Cloud-SDDC in een blok omgezet. Op die manier maximaliseert u de schaal baarheid van de horizon op de Azure VMware-oplossing.
+Op basis van de limiet van Azure Private Cloud en SDDC is het raadzaam een implementatie architectuur te gebruiken waarin de horizon-verbindings servers en VMware Unified Access gateways (UAGs) worden uitgevoerd binnen de Azure-Virtual Network. Hiermee worden elke Azure-privécloud en SDDC in een blok omgezet. Maximaliseer vervolgens de schaal baarheid van de periode die wordt uitgevoerd op de Azure VMware-oplossing.
 
 De verbinding van Azure Virtual Network met Azure private clouds/SDDCs moet worden geconfigureerd met ExpressRoute FastPath. In het volgende diagram ziet u een eenvoudige implementatie van Horizon pod.
 
-:::image type="content" source="media/horizon/horizon-pod-deployment-expresspath-fast-path.png" alt-text="De verschillen tussen de periode van de Azure VMware-oplossing en de horizon-Cloud op Azure" border="false":::
+:::image type="content" source="media/horizon/horizon-pod-deployment-expresspath-fast-path.png" alt-text="Horizon in azure VMware-oplossing en horizon-Cloud op Azure" border="false":::
 
 ## <a name="network-connectivity-to-scale-horizon-on-azure-vmware-solution"></a>Netwerk connectiviteit voor schaal horizon op Azure VMware-oplossing
 
-In deze sectie wordt de netwerk architectuur op hoog niveau voor het schalen van Horizon taal op Azure VMware-oplossingen beschreven met enkele veelvoorkomende implementatie voorbeelden. De focus is hier specifiek op essentiële netwerk elementen.
+In deze sectie wordt de netwerk architectuur op hoog niveau beschreven met enkele veelvoorkomende implementatie voorbeelden, waarmee u de schaal van de Azure VMware-oplossing horizon keurig kunt schalen. De focus is specifiek op essentiële netwerk elementen. 
 
 ### <a name="single-horizon-pod-on-azure-vmware-solution"></a>Enkelvoudige pod op de Azure VMware-oplossing
 
-:::image type="content" source="media/horizon/single-horizon-pod-azure-vmware-solution.png" alt-text="De verschillen tussen de periode van de Azure VMware-oplossing en de horizon-Cloud op Azure" border="false":::
+:::image type="content" source="media/horizon/single-horizon-pod-azure-vmware-solution.png" alt-text="Horizon in azure VMware-oplossing en horizon-Cloud op Azure" border="false":::
 
-Eén horizon Pod is het meest rechtse implementatie scenario. In dit voor beeld kiest u dat u slechts één Horizon pod in de regio VS Oost wilt implementeren. Omdat elke privécloud/SDDC wordt geschat om ongeveer het verkeer van 4.000-bureaublad sessies te verwerken, kunt u de implementatie van Maxi maal drie privé Clouds/SDDCs plannen.
+Eén horizon Pod is het meest rechtse implementatie scenario omdat u slechts één Horizon pod in de regio VS Oost implementeert.  Omdat elke privécloud en SDDC wordt geschat voor het afhandelen van 4.000-bureaublad sessies, implementeert u de maximale grootte van pod.  U kunt de implementatie van Maxi maal drie privé Clouds/SDDCs plannen.
 
-Daarom kunt u in dit voor beeld, in combi natie met de virtuele machines van de horizon infrastructuur (Vm's) die zijn geïmplementeerd in azure Virtual Network, de 12.000-sessies per horizon-pod bereiken op basis van uw werk belasting en gegevens behoeften. De verbinding tussen elke privécloud en SDDC met Azure Virtual Network is ExpressRoute snel pad, zodat er geen Oost-West-verkeer tussen persoonlijke Clouds nodig is.
+Met de horizon-VM-machines (Vm's) die zijn geïmplementeerd in azure Virtual Network, kunt u de 12.000-sessies per pod bereiken. De verbinding tussen elke privécloud en SDDC met Azure Virtual Network is ExpressRoute snel pad.  Er is geen Oost-West-verkeer tussen persoonlijke Clouds nodig. 
 
 Voor beelden van belang rijke hypo Thesen voor dit basis implementatie zijn:
 
@@ -106,27 +106,27 @@ Voor beelden van belang rijke hypo Thesen voor dit basis implementatie zijn:
 
 * Eind gebruikers maken verbinding met hun virtuele Bureau bladen via internet (versus verbinding maken via een on-premises Data Center).
 
-In dit eenvoudige voor beeld kunt u uw AD-domein controller in azure Virtual Network koppelen met uw on-premises Active Directory via VPN of een ExpressRoute-circuit.
+U verbindt uw AD-domein controller in azure Virtual Network met uw on-premises AD via een VPN-of ExpressRoute-circuit.
 
-Een variant in het basis voorbeeld dat wordt besproken, is mogelijk om connectiviteit te ondersteunen voor on-premises resources. Dit kunnen gebruikers zijn die toegang hebben tot Desk tops en virtueel-bureaublad toepassings verkeer genereren of verbinding maken met een on-premises horizon pod met behulp van CPA.
+Een variant op het eenvoudige voor beeld is mogelijk om connectiviteit te ondersteunen voor on-premises resources. Gebruikers hebben bijvoorbeeld toegang tot Bureau bladen en genereren het verkeer van een virtueel-bureaublad toepassing of maken verbinding met een on-premises horizon pod met behulp van CPA.
 
-In het onderstaande diagram ziet u hoe u dit kunt doen.Als u uw bedrijfs netwerk wilt verbinden met de Azure-Virtual Network, hebt u een ExpressRoute nodig.U moet ook een verbinding maken tussen uw bedrijfs netwerk en elk van de privécloud-SDDCs met behulp van Global Reach, waarmee de verbinding van de SDDC met de ExpressRoute-en on-premises resources mogelijk is.
+In het diagram ziet u hoe connectiviteit voor on-premises resources wordt ondersteund. Als u verbinding wilt maken met het bedrijfs netwerk met Azure Virtual Network, hebt u een ExpressRoute-circuit nodig.  U moet ook verbinding maken met uw bedrijfs netwerk met elk van de privécloud en SDDCs met behulp van ExpressRoute Global Reach.  Hiermee kan de verbinding van de SDDC met het ExpressRoute-circuit en on-premises resources. 
 
-:::image type="content" source="media/horizon/connect-corporate-network-azure-virtual-network.png" alt-text="De verschillen tussen de periode van de Azure VMware-oplossing en de horizon-Cloud op Azure" border="false":::
+:::image type="content" source="media/horizon/connect-corporate-network-azure-virtual-network.png" alt-text="Horizon in azure VMware-oplossing en horizon-Cloud op Azure" border="false":::
 
 ### <a name="multiple-horizon-pods-on-azure-vmware-solution-across-multiple-regions"></a>Meerdere horizon-peulen voor Azure VMware-oplossing in meerdere regio's
 
-Voor een ander horizon pod-voor beeld bekijken we een voor beeld waarin het schalen van de schaal over meerdere peulen wordt weer gegeven.In dit voor beeld implementeert u twee verschillende regio's en federeren ze met behulp van CPA.De netwerk configuratie is vergelijkbaar met het vorige voor beeld, met een aantal aanvullende cross-regionale koppelingen. 
+Een ander scenario is horizon taal schalen over meerdere peulen.  In dit scenario implementeert u twee Horizons-peul in twee verschillende regio's en vergelijkt u ze met CPA. Dit is vergelijkbaar met de netwerk configuratie in het vorige voor beeld, maar met een aantal aanvullende cross-regionale koppelingen. 
 
-U moet de Azure-Virtual Network in elke regio verbinden met de privécloud/SDDCs in de andere regio, waardoor de horizon-verbindings servers die deel uitmaken van de CPA-Federatie, verbinding kunnen maken met alle Bureau bladen onder beheer.Door extra persoonlijke Clouds/SDDCs toe te voegen aan deze configuratie kunt u in totaal 24.000-sessies schalen. 
+U verbindt de Azure-Virtual Network in elke regio met de persoonlijke Clouds/SDDCs in de andere regio. Het maakt het mogelijk dat het onderdeel van de CPA-Federatie verbinding maakt met alle Bureau bladen onder beheer. Door extra persoonlijke Clouds/SDDCs toe te voegen aan deze configuratie kunt u in totaal 24.000-sessies schalen. 
 
-Hoewel in dit voor beeld meerdere regio's worden weer gegeven, is hetzelfde principe van toepassing als u twee verschillende Horizons wilt implementeren in dezelfde regio. Houd er rekening mee dat u ervoor moet zorgen dat de tweede horizon pod wordt geïmplementeerd in een *afzonderlijke Azure-Virtual Network*.Ten slotte, op dezelfde manier als in het vorige voor beeld van één Pod, kunt u uw bedrijfs netwerk en on-premises pod koppelen aan dit voor beeld van een multi-pod/regio met behulp van klant ExpressRoute en Global Reach.
+Dezelfde principes zijn van toepassing als u twee Horizons-peulen in dezelfde regio implementeert.  Zorg ervoor dat u de tweede horizon pod implementeert in een *afzonderlijke Azure-Virtual Network*. Net als bij het single pod-voor beeld kunt u uw bedrijfs netwerk en on-premises pod verbinding laten maken met dit voor beeld van een multi-pod/regio met behulp van ExpressRoute en Global Reach. 
 
-:::image type="content" source="media/horizon/multiple-horizon-pod-azure-vmware-solution.png" alt-text="De verschillen tussen de periode van de Azure VMware-oplossing en de horizon-Cloud op Azure" border="false":::
+:::image type="content" source="media/horizon/multiple-horizon-pod-azure-vmware-solution.png" alt-text="Horizon in azure VMware-oplossing en horizon-Cloud op Azure" border="false":::
 
 ## <a name="size-azure-vmware-solution-hosts-for-horizon-deployments"></a>Grootte van Azure VMware Solution-hosts voor Horizon-implementaties 
 
-De schaal methodologie van een host die wordt uitgevoerd in de Azure VMware-oplossing is eenvoudiger dan horizon-premises, omdat het exemplaar van de Azure VMware Solution host is gestandaardiseerd. Nauw keuriger grootte van de host helpt bij het bepalen van het aantal hosts dat nodig is voor de ondersteuning van uw VDI-vereisten en is een centrale manier om de kosten per Desktop te bepalen.
+De schaal methodologie van de horizon op een host die wordt uitgevoerd in de Azure VMware-oplossing is eenvoudiger dan horizon-premises.  Dat komt doordat de host van de Azure VMware-oplossing is gestandaardiseerd.  Nauw keurige host-grootte helpt bij het bepalen van het aantal hosts dat nodig is voor de ondersteuning van uw VDI-vereisten.  Het is een centrale oplossing om de kosten per Desktop te bepalen.
 
 ### <a name="azure-vmware-solution-host-instance"></a>Azure VMware Solution host-instantie
 
@@ -146,7 +146,7 @@ De schaal methodologie van een host die wordt uitgevoerd in de Azure VMware-oplo
 
 ### <a name="horizon-sizing-inputs"></a>Invoer van Horizon formaat
 
-Bekijk het volgende voor uw geplande workload:
+U moet voor uw geplande workload het volgende verzamelen:
 
 * Aantal gelijktijdige Bureau bladen
 
@@ -156,13 +156,13 @@ Bekijk het volgende voor uw geplande workload:
 
 * Vereiste opslag per Desktop
 
-Over het algemeen zijn VDI-implementaties ofwel CPU-of RAM-geheugen, aangezien deze factoren de grootte van de host bepalen. Laten we het volgende voor beeld volgen voor een LoginVSI van de werk belasting, gevalideerd met prestatie tests:
+Over het algemeen zijn VDI-implementaties ofwel CPU-of RAM-geheugen, waarmee de grootte van de host wordt bepaald. Laten we het volgende voor beeld volgen voor een LoginVSI van de werk belasting, gevalideerd met prestatie tests:
 
 * 2.000 gelijktijdige Desktop implementatie
 
 * 2vCPU per bureau blad.
 
-* 4 GB vRAM per bureau blad.
+* 4-GB vRAM per bureau blad.
 
 * 50 GB aan opslag per Desktop
 
@@ -173,7 +173,7 @@ In dit voor beeld wordt het totale aantal hosts gemeten tot 18, wat resulteert i
 
 ## <a name="horizon-on-azure-vmware-solution-licensing"></a>Horizonal op Azure VMware-oplossings licenties 
 
-Er zijn vier onderdelen voor de totale kosten van het uitvoeren van een Azure VMware-oplossing. 
+Er zijn vier onderdelen voor de totale kosten van het uitvoeren van een Azure VMware-oplossing. 
 
 ### <a name="azure-vmware-solution-capacity-cost"></a>Capaciteits kosten van Azure VMware-oplossing
 
@@ -189,13 +189,13 @@ Er zijn twee beschik bare licenties voor gebruik met de Azure VMware-oplossing. 
 
 Als er slechts een distributie op Azure VMware-oplossing voor de nabije toekomst wordt geïmplementeerd, gebruikt u de licentie voor het gebruik van een horizon-abonnement.
 
-Als u beide horizon op de Azure VMware-oplossing en on-premises implementeert, net als bij een gebruiks aanvraag voor herstel na nood gevallen, kiest u de licentie voor een Horizonal universele abonnement. De universele licentie is een hogere prijs omdat deze een vSphere-licentie bevat voor on-premises implementatie.
+Als het is geïmplementeerd in de Azure VMware-oplossing en on-premises, net als bij een gebruiks aanvraag voor herstel na nood gevallen, kiest u de licentie voor een Horizonal universele abonnement. Het bevat een vSphere-licentie voor on-premises implementatie, zodat deze een hogere prijs heeft.
 
 Werk samen met uw VMware EUC-verkoop team om de Cloud kosten te bepalen op basis van uw behoeften.
 
 ### <a name="cost-of-the-horizon-infrastructure-vms-on-azure-virtual-network"></a>Kosten van de VM-Vm's in azure Virtual Network
 
-Op basis van de standaard implementatie architectuur bestaan de VM-Vm's uit de verbindings servers, UAGs, app-volume managers en worden geïmplementeerd in de Azure-Virtual Network van de klant. Extra Azure native instanties zijn vereist ter ondersteuning van de services voor hoge Beschik baarheid (HA), micro soft SQL of micro soft Active Directory (AD) in Azure. Hier volgt een lijst met Azure-exemplaren op basis van een voor beeld van een implementatie van 2.000-desktop. 
+Op basis van de architectuur van de standaard implementatie, bestaan de Vm's van de horizon-infra structuur uit verbindings servers, UAGs, app-volume managers. Ze worden geïmplementeerd in de Azure-Virtual Network van de klant. Extra Azure native instanties zijn vereist ter ondersteuning van de services voor hoge Beschik baarheid (HA), micro soft SQL of micro soft Active Directory (AD) in Azure. De tabel geeft een overzicht van de Azure-exemplaren op basis van een voor beeld van een implementatie van 2.000-desktop. 
 
 >[!NOTE]
 >Als u storingen wilt kunnen afhandelen, implementeert u een andere server dan is vereist voor het aantal verbindingen (n + 1). Het mini maal aanbevolen aantal exemplaren van de verbindings server, het UAG-en app-volume beheer is 2, en het vereiste aantal zal toenemen op basis van de hoeveelheid gebruikers die de omgeving ondersteunt.  Eén verbindings server ondersteunt Maxi maal 4.000 sessies, hoewel 2.000 wordt aanbevolen als best practice. Maxi maal zeven verbindings servers worden ondersteund per pod met een aanbeveling van 12.000 actieve sessies in totaal per pod. Zie het Knowledge Base-artikel VMware horizon-KB- [formaat limieten en aanbevelingen](https://kb.vmware.com/s/article/2150348)voor de meest actuele aantallen.
@@ -210,4 +210,4 @@ Op basis van de standaard implementatie architectuur bestaan de VM-Vm's uit de v
 | MS-SQL Database                  | D4sv3          | 2       | *Optie voor het gebruik van SQL service op Azure*     |
 | Windows-bestands share               | D4sv3          |         | *Optioneel*                               |
 
-De kosten voor de VM van de infra structuur zijn \$ 0,36 per gebruiker per maand voor de 2.000-desktop implementatie in bovenstaand voor beeld. In dit voor beeld wordt gebruikgemaakt van de prijzen voor US Oost Azure instance vanaf juni 2020. Uw prijzen kunnen variëren, afhankelijk van de regio, opties geselecteerd en timing.
+De kosten voor de VM van de infra structuur zijn \$ 0,36 per gebruiker per maand voor de 2.000-desktop implementatie in bovenstaand voor beeld. In dit voor beeld wordt de prijs van juni 2020 van het US Oost Azure-exemplaar gebruikt. Uw prijzen kunnen variëren, afhankelijk van de regio, opties geselecteerd en timing.

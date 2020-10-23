@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: aa33319f146ac57ab4d253696c94308a43b5db2e
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 50a0fe0fa5dece41ac9e343d5a8939e8d9dc634e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019610"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426888"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Veelgestelde vragen over Media Services v3
 
@@ -34,7 +34,7 @@ Als uw video eerder is geüpload naar het Media Services-account met behulp van 
 
 ### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Wat Azure-rollen kunnen acties uitvoeren op Azure Media Services resources? 
 
-Zie [op rollen gebaseerd toegangs beheer (RBAC) voor Media Services accounts](rbac-overview.md).
+Zie [op rollen gebaseerd toegangs beheer voor Azure (Azure RBAC) voor Media Services accounts](rbac-overview.md).
 
 ### <a name="how-do-i-stream-to-apple-ios-devices"></a>Hoe kan ik streamen naar Apple iOS-apparaten?
 

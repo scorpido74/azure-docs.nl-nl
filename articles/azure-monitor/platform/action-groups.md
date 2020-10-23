@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 534e78018d19ff496dc4d2b3b54a3d0b3c46cf0f
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: f65707d80461385c28369e75a294865e03f8c662
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093749"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367734"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Actiegroepen maken en beheren in de Azure-portal
 Een actie groep is een verzameling voor keuren voor meldingen die zijn gedefinieerd door de eigenaar van een Azure-abonnement. Azure Monitor-en Service Health-waarschuwingen gebruiken actie groepen om gebruikers te laten weten dat een waarschuwing is geactiveerd. Verschillende waarschuwingen kunnen dezelfde actie groep of verschillende actie groepen gebruiken, afhankelijk van de vereisten van de gebruiker. U kunt Maxi maal 2.000 actie groepen in een abonnement configureren.
@@ -67,7 +67,7 @@ Geef onder **Exemplaardetails** het volgende op:
 
     c. **Details**: Voer een e-mail adres, telefoon nummer, enzovoort in op basis van het geselecteerde meldings type.
     
-    d. **Algemeen waarschuwings schema**: u kunt ervoor kiezen om het [algemene waarschuwings schema](https://aka.ms/commonAlertSchemaDocs)in te scha kelen. Dit biedt het voor deel van het gebruik van een single Extensible en Unified alert Payload in alle waarschuwings Services in azure monitor.
+    d. **Algemeen waarschuwings schema**: u kunt ervoor kiezen om het [algemene waarschuwings schema](./alerts-common-schema.md)in te scha kelen. Dit biedt het voor deel van het gebruik van een single Extensible en Unified alert Payload in alle waarschuwings Services in azure monitor.
 
     ![Het tabblad meldingen](./media/action-groups/action-group-2-notifications.png)
     
@@ -83,7 +83,7 @@ Geef onder **Exemplaardetails** het volgende op:
 
     c. **Details**: Voer een webhook-URI, een Azure-app, ITSM-verbinding of een Automation-runbook in op basis van het actie type. Geef voor ITSM-actie ook **werk item** en andere velden op die nodig zijn voor het ITSM-hulp programma.
     
-    d. **Algemeen waarschuwings schema**: u kunt ervoor kiezen om het [algemene waarschuwings schema](https://aka.ms/commonAlertSchemaDocs)in te scha kelen. Dit biedt het voor deel van het gebruik van een single Extensible en Unified alert Payload in alle waarschuwings Services in azure monitor.
+    d. **Algemeen waarschuwings schema**: u kunt ervoor kiezen om het [algemene waarschuwings schema](./alerts-common-schema.md)in te scha kelen. Dit biedt het voor deel van het gebruik van een single Extensible en Unified alert Payload in alle waarschuwings Services in azure monitor.
     
     ![Het tabblad acties](./media/action-groups/action-group-3-actions.png)
 
@@ -157,7 +157,7 @@ Met de actie groepen webhook kunt u gebruikmaken van Azure Active Directory om d
 2. Schakel actie groepen in voor het gebruik van uw Azure AD-toepassing.
 
     > [!NOTE]
-    > U moet lid zijn van de [rol Azure AD-toepassings beheerder](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles) om dit script uit te voeren.
+    > U moet lid zijn van de [rol Azure AD-toepassings beheerder](../../active-directory/roles/permissions-reference.md#available-roles) om dit script uit te voeren.
     
     - Wijzig de Connect-AzureAD aanroep van het Power shell-script om uw Azure AD-Tenant-ID te gebruiken.
     - Wijzig de variabele van het Power shell-script $myAzureADApplicationObjectId om de object-ID van uw Azure AD-toepassing te gebruiken.
@@ -321,4 +321,3 @@ Het gebruik van de **service tag** voor ActionGroup helpt bij het minimaliseren 
 * Meer informatie over de [frequentie limiet](./alerts-rate-limiting.md) voor waarschuwingen.
 * Een [overzicht van waarschuwingen voor het activiteitenlogboek](./alerts-overview.md) en meer informatie over het ontvangen van waarschuwingen.  
 * Meer informatie over het [configureren van waarschuwingen wanneer een service status melding wordt geplaatst](../../service-health/alerts-activity-log-service-notifications-portal.md).
-

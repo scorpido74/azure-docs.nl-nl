@@ -3,12 +3,12 @@ title: Meer informatie over Azure Service Fabric
 description: Meer informatie over de belangrijkste concepten en belang rijke gebieden van Azure Service Fabric. Biedt een uitgebreid overzicht van Service Fabric en hoe u micro Services maakt.
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: d09d774ed32c98222b71423ca733f1b4294957ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6cbc99b56df18448add47a70b42742aa8dabbeb5
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836697"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461495"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Wilt u meer informatie over Service Fabric?
 Azure Service Fabric is een gedistribueerde systemen platform waarmee u gemakkelijk pakket, implementeren en beheren van schaalbare en betrouwbare microservices.  Service Fabric heeft echter een grote surface area, maar er is veel te leren.  In dit artikel vindt u een samen vatting van Service Fabric en worden de belangrijkste concepten, programmeer modellen, toepassings levenscyclus, testen, clusters en status controle beschreven. Lees het [overzicht](service-fabric-overview.md) en [Wat zijn micro Services?](service-fabric-overview-microservices.md) voor een inleiding en hoe service Fabric kan worden gebruikt om micro services te maken. Dit artikel bevat geen uitgebreide inhouds lijst, maar bevat een koppeling naar overzicht en aan de slag-artikelen voor elk gebied van Service Fabric. 
@@ -51,7 +51,7 @@ In het volgende diagram ziet u de relatie tussen toepassingen en service-exempla
 
 De replica's van elke partitie worden verdeeld over de knoop punten van het cluster, waardoor de status van de naam van de service kan worden [geschaald](service-fabric-concepts-scalability.md). Naarmate de behoeften van de gegevens groeien, worden de partities verg root en Service Fabric worden partities op verschillende knoop punten opnieuw gebalanceerd om efficiënt gebruik te maken van hardwarebronnen. Als u nieuwe knoop punten aan het cluster toevoegt, worden de partitie replica's door Service Fabric opnieuw gebalanceerd over het verhoogde aantal knoop punten. De algehele prestaties van toepassingen verbeteren en conflicten voor toegang tot het geheugen neemt af. Als de knoop punten in het cluster niet efficiënt worden gebruikt, kunt u het aantal knoop punten in het cluster verlagen. Service Fabric opnieuw, worden de partitie replica's op het verkleinde aantal knoop punten opnieuw verdeeld om het gebruik van de hardware op elk knoop punt beter te maken.
 
-Binnen een partitie hebben stateless benoemde services instanties terwijl stateful benoemde services replica's hebben. Meestal hebben stateless benoemde services slechts één partitie, omdat ze geen interne status hebben. De partitie-exemplaren bieden [Beschik baarheid](service-fabric-availability-services.md). Als één exemplaar mislukt, blijven andere instanties normaal functioneren en maakt Service Fabric vervolgens een nieuw exemplaar. Stateful benoemde services behouden hun status in replica's en elke partitie heeft een eigen replicaset. Lees-en schrijf bewerkingen worden uitgevoerd op één replica (de primaire). Wijzigingen in de status van schrijf bewerkingen worden gerepliceerd naar meerdere andere replica's (actieve secundaire zones genoemd). Als een replica mislukt, Service Fabric een nieuwe replica bouwt van de bestaande replica's.
+Binnen een partitie hebben stateless benoemde services instanties terwijl stateful benoemde services replica's hebben. Normaal gesp roken hebben stateless benoemde services slechts één partitie, omdat ze geen interne status hebben, hoewel [er uitzonde ringen zijn](https://docs.microsoft.com/azure/service-fabric/service-fabric-concepts-partitioning#partition-service-fabric-stateless-services). De partitie-exemplaren bieden [Beschik baarheid](service-fabric-availability-services.md). Als één exemplaar mislukt, blijven andere instanties normaal functioneren en maakt Service Fabric vervolgens een nieuw exemplaar. Stateful benoemde services behouden hun status in replica's en elke partitie heeft een eigen replicaset. Lees-en schrijf bewerkingen worden uitgevoerd op één replica (de primaire). Wijzigingen in de status van schrijf bewerkingen worden gerepliceerd naar meerdere andere replica's (actieve secundaire zones genoemd). Als een replica mislukt, Service Fabric een nieuwe replica bouwt van de bestaande replica's.
 
 ## <a name="stateless-and-stateful-microservices-for-service-fabric"></a>Staatloze en stateful microservices voor Service Fabric
 Met Service Fabric kunt u toepassingen bouwen die uit microservices of containers bestaan. Staatloze microservices (zoals protocolgateways en webproxy's) handhaven buiten een aanvraag en de reactie erop van de service geen veranderlijke status. Azure Cloud Services-werkrollen zijn een voorbeeld van een staatloze service. Stateful microservices (zoals gebruikersaccounts, databases, apparaten, winkelwagentjes en wachtrijen) handhaven een veranderlijke, gezaghebbende status, buiten de aanvraag en de reactie erop. De huidige toepassingen op internetschaal bestaan uit een combinatie van staatloze en stateful microservices. 
@@ -189,7 +189,7 @@ Er zijn meerdere producten beschikbaar die deze drie gebieden beslaan, en u kunt
 * Meer informatie over het [bewaken en diagnosticeren van services](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md). 
 * Meer informatie over [het testen van uw apps en services](service-fabric-testability-overview.md).
 * Meer informatie over het [beheren en organiseren van cluster resources](service-fabric-cluster-resource-manager-introduction.md).
-* Bekijk de Service Fabric-voor [beelden](https://aka.ms/servicefabricsamples).
+* Bekijk de Service Fabric-voor [beelden](/samples/browse/?products=azure).
 * Meer informatie over [service Fabric ondersteunings opties](service-fabric-support.md).
 * Lees het [Team blog](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) voor artikelen en aankondigingen.
 

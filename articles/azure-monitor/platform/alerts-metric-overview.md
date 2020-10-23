@@ -4,12 +4,12 @@ description: Bekijk een overzicht van wat u met metrische waarschuwingen kunt do
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 78ec5ff3fc87ef29d25e439b7d4c69bb3a10f3a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3581c1f1660527bfbf2ae598349e30001962b1b4
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578067"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342175"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Begrijpen hoe metrische waarschuwingen werken in Azure Monitor
 
@@ -74,7 +74,7 @@ Stel dat u een App Service abonnement hebt voor uw website. U het CPU-gebruik wi
 - Doel resource: myAppServicePlan
 - Metriek: percentage CPU
 - Voorwaarde type: statisch
-- Dimensies
+- Afmetingen
   - Instantie = InstanceName1, InstanceName2
 - Tijd aggregatie: gemiddeld
 - Period: in de afgelopen 5 minuten
@@ -89,7 +89,7 @@ Stel dat u een web-app hebt die een enorme vraag ziet, en u moet meer exemplaren
 - Doel resource: myAppServicePlan
 - Metriek: percentage CPU
 - Voorwaarde type: statisch
-- Dimensies
+- Afmetingen
   - Instantie = *
 - Tijd aggregatie: gemiddeld
 - Period: in de afgelopen 5 minuten
@@ -106,7 +106,7 @@ Stel dat u een web-app hebt met veel instanties en u niet weet wat de meest gesc
 - Doel resource: myAppServicePlan
 - Metriek: percentage CPU
 - Voorwaarde type: dynamisch
-- Dimensies
+- Afmetingen
   - Instantie = *
 - Tijd aggregatie: gemiddeld
 - Period: in de afgelopen 5 minuten
@@ -166,7 +166,7 @@ Het maken van metrische waarschuwings regels waarmee meerdere resources worden b
 
 ## <a name="typical-latency"></a>Normale latentie
 
-Voor metrische waarschuwingen krijgt u doorgaans binnen vijf minuten een melding als u de frequentie van de waarschuwings regel instelt op 1 min. In het geval van een zware belasting voor meldings systemen ziet u mogelijk een langere latentie.
+Voor metrische waarschuwingen krijgt u doorgaans binnen vijf minuten een melding als u de frequentie van de waarschuwingsregel instelt op één minuut. In het geval van een zware belasting voor meldingssystemen krijgt u mogelijk te maken met een langere latentie.
 
 ## <a name="supported-resource-types-for-metric-alerts"></a>Ondersteunde resource typen voor metrische waarschuwingen
 
@@ -179,4 +179,5 @@ In dit [artikel](./alerts-metric-near-real-time.md#metrics-and-dimensions-suppor
 - [Meer informatie over het implementeren van metrische waarschuwingen met behulp van Azure Resource Manager sjablonen](./alerts-metric-create-templates.md)
 - [Meer informatie over actie groepen](action-groups.md)
 - [Meer informatie over het type voor waarde van dynamische drempel waarden](alerts-dynamic-thresholds.md)
+- [Meer informatie over het oplossen van problemen met metrische waarschuwingen](alerts-troubleshoot-metric.md)
 

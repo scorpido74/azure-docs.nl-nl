@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.openlocfilehash: 6831cb3f39c25eb69d16300156f456980cf57fa0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/13/2020
+ms.openlocfilehash: e4e680ea55988f7b3446bf72c8e800bcc51eb537
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88604821"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282045"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Aanvraageenheden in Azure Cosmos DB
 
@@ -38,42 +38,50 @@ Het type Azure Cosmos-account dat u gebruikt, bepaalt de manier waarop het verbr
 
 Houd rekening met de volgende factoren wanneer u een schatting maakt van het aantal dat door uw workload verbruikt.
 
-* **Itemgrootte**: Als de grootte van een item toeneemt, neemt ook het aantal verbruikte RU's om het item te lezen of schrijven toe.
+- **Itemgrootte**: Als de grootte van een item toeneemt, neemt ook het aantal verbruikte RU's om het item te lezen of schrijven toe.
 
-* **Itemindexing**: Elk item wordt standaard automatisch geïndexeerd. Er worden minder RU's verbruikt als u ervoor kiest bepaalde items in een container niet te indexeren.
+- **Itemindexing**: Elk item wordt standaard automatisch geïndexeerd. Er worden minder RU's verbruikt als u ervoor kiest bepaalde items in een container niet te indexeren.
 
-* **Het aantal itemeigenschappen**: Ervan uitgaande dat alle eigenschappen de standaardindexering hebben, wordt het aantal verbruikte RU's om een item te schrijven, groter naarmate het aantal itemeigenschappen toeneemt.
+- **Het aantal itemeigenschappen**: Ervan uitgaande dat alle eigenschappen de standaardindexering hebben, wordt het aantal verbruikte RU's om een item te schrijven, groter naarmate het aantal itemeigenschappen toeneemt.
 
-* **Geïndexeerde eigenschappen**: Een indexbeleid voor elke container bepaalt welke eigenschappen standaard worden geïndexeerd. Beperk het aantal geïndexeerde eigenschappen om het RU-verbruik voor schrijfbewerkingen te verlagen.
+- **Geïndexeerde eigenschappen**: Een indexbeleid voor elke container bepaalt welke eigenschappen standaard worden geïndexeerd. Beperk het aantal geïndexeerde eigenschappen om het RU-verbruik voor schrijfbewerkingen te verlagen.
 
-* **Gegevens consistentie**: de sterke en gebonden consistentie niveaus voor veroudering worden ongeveer twee keer meer gebruikt tijdens het uitvoeren van Lees bewerkingen in vergelijking met die van andere beperkte consistentie niveaus.
+- **Gegevens consistentie**: de sterke en gebonden consistentie niveaus voor veroudering worden ongeveer twee keer meer gebruikt tijdens het uitvoeren van Lees bewerkingen in vergelijking met die van andere beperkte consistentie niveaus.
 
-* **Type Lees bewerkingen**: punt besparingen zijn aanzienlijk minder RUs dan query's.
+- **Type Lees bewerkingen**: punt besparingen zijn aanzienlijk minder RUs dan query's.
 
-* **Querypatronen**: De complexiteit van een query beïnvloedt het aantal verbruikte RU's voor een bewerking. Factoren die invloed hebben op de kosten van querybewerkingen: 
-    
-    - Het aantal queryresultaten
-    - Het aantal predicaten
-    - De aard van de predicaten
-    - Het aantal door de gebruiker gedefinieerde functies
-    - De grootte van de brongegevens
-    - De grootte van de resultatenset
-    - Projecties
+- **Querypatronen**: De complexiteit van een query beïnvloedt het aantal verbruikte RU's voor een bewerking. Factoren die invloed hebben op de kosten van querybewerkingen: 
 
-  In Azure Cosmos DB wordt gegarandeerd dat dezelfde query op dezelfde gegevens altijd hetzelfde aantal RU's kost bij elke herhaalde uitvoering.
+  - Het aantal queryresultaten
+  - Het aantal predicaten
+  - De aard van de predicaten
+  - Het aantal door de gebruiker gedefinieerde functies
+  - De grootte van de brongegevens
+  - De grootte van de resultatenset
+  - Projecties
 
-* **Script gebruik**: net als bij query's, worden voor opgeslagen procedures en triggers RUs gebruikt op basis van de complexiteit van de bewerkingen die worden uitgevoerd. Controleer tijdens het ontwikkelen van uw toepassing de [aanvraagkostenheader](optimize-cost-queries.md#evaluate-request-unit-charge-for-a-query) om meer inzicht te krijgen in hoeveel RU-capaciteit elke bewerking verbruikt.
+  Dezelfde query op dezelfde gegevens kost altijd hetzelfde aantal RUs bij herhaalde uitvoeringen.
+
+- **Script gebruik**: net als bij query's, worden voor opgeslagen procedures en triggers RUs gebruikt op basis van de complexiteit van de bewerkingen die worden uitgevoerd. Controleer tijdens het ontwikkelen van uw toepassing de [aanvraagkostenheader](optimize-cost-queries.md#evaluate-request-unit-charge-for-a-query) om meer inzicht te krijgen in hoeveel RU-capaciteit elke bewerking verbruikt.
+
+## <a name="request-units-and-multiple-regions"></a>Aanvraag eenheden en meerdere regio's
+
+Als u *' r '* Rus inricht in een Cosmos-container (of-data base), zorgt Cosmos DB ervoor dat *' r '* Rus beschikbaar is in *elke* regio die aan uw Cosmos-account is gekoppeld. U kunt RUs niet selectief toewijzen aan een bepaalde regio. Het RUs-aanbod dat is ingericht voor een Cosmos-container (of-data base) wordt ingericht in alle regio's die zijn gekoppeld aan uw Cosmos-account.
+
+Ervan uitgaande dat een Cosmos-container is geconfigureerd met *' R '* RUs en dat er *N* -regio's zijn gekoppeld aan het Cosmos-account, het totale RUs-totaal beschikbaar op de container = *R* x *N*.
+
+Uw keuze van [consistentie model](consistency-levels.md) is ook van invloed op de door voer. U kunt ongeveer 2x Lees doorvoer bereiken voor de minder consistente consistentie niveaus (zoals een *sessie*, *consistent voor voegsel* en *uiteindelijke* consistentie) in vergelijking met sterkere consistentie niveaus (bijvoorbeeld *gebonden veroudering* of *sterke* consistentie).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het [inrichten van de door Voer voor Azure Cosmos-containers en-data bases](set-throughput.md).
-* Meer informatie over [serverloze op Azure Cosmos DB](serverless.md).
-* Meer informatie over [logische partities](partition-data.md).
-* Meer informatie over het [wereld wijd schalen van ingerichte door Voer](scaling-throughput.md).
-* Meer informatie over het [inrichten van de door Voer voor een Azure Cosmos-container](how-to-provision-container-throughput.md).
-* Meer informatie over het [inrichten van de door Voer voor een Azure Cosmos-data base](how-to-provision-database-throughput.md).
-* Meer informatie over [het vinden van de kosten voor aanvraag eenheden voor een bewerking](find-request-unit-charge.md).
-* Meer informatie over het [optimaliseren van ingerichte doorvoer kosten in azure Cosmos DB](optimize-cost-throughput.md).
-* Meer informatie over het [optimaliseren van de kosten voor lezen en schrijven in azure Cosmos DB](optimize-cost-reads-writes.md).
-* Meer informatie over het [optimaliseren van query kosten in azure Cosmos DB](optimize-cost-queries.md).
-* Meer informatie over het [gebruik van metrische gegevens voor het bewaken van de door Voer](use-metrics.md).
+- Meer informatie over het [inrichten van de door Voer voor Azure Cosmos-containers en-data bases](set-throughput.md).
+- Meer informatie over [serverloze op Azure Cosmos DB](serverless.md).
+- Meer informatie over [logische partities](partition-data.md).
+- Meer informatie over het [wereld wijd schalen van ingerichte door Voer](scaling-throughput.md).
+- Meer informatie over het [inrichten van de door Voer voor een Azure Cosmos-container](how-to-provision-container-throughput.md).
+- Meer informatie over het [inrichten van de door Voer voor een Azure Cosmos-data base](how-to-provision-database-throughput.md).
+- Meer informatie over [het vinden van de kosten voor aanvraag eenheden voor een bewerking](find-request-unit-charge.md).
+- Meer informatie over het [optimaliseren van ingerichte doorvoer kosten in azure Cosmos DB](optimize-cost-throughput.md).
+- Meer informatie over het [optimaliseren van de kosten voor lezen en schrijven in azure Cosmos DB](optimize-cost-reads-writes.md).
+- Meer informatie over het [optimaliseren van query kosten in azure Cosmos DB](optimize-cost-queries.md).
+- Meer informatie over het [gebruik van metrische gegevens voor het bewaken van de door Voer](use-metrics.md).

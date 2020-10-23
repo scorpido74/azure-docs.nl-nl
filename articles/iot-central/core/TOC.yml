@@ -62,7 +62,7 @@
         - name: Een regel maken
           href: tutorial-create-telemetry-rules.md
         - name: De IoT Central-API's verkennen
-          href: 'https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/'
+          href: /learn/modules/manage-iot-central-apps-with-rest-api/
 - name: Concepten
   items:
     - name: Architectuur
@@ -184,7 +184,7 @@
 - name: Resources
   items:
     - name: Opties voor ondersteuning en hulp
-      href: /azure/iot-fundamentals/iot-support-help
+      href: ../../iot-fundamentals/iot-support-help.md
     - name: Toepassingssjablonen uit de branche
       items:
         - name: Retail
@@ -198,32 +198,32 @@
     - name: Azure IoT-services
       items:
         - name: IoT Hub
-          href: /azure/iot-hub
+          href: ../../iot-hub/index.yml
         - name: IoT Hub Device Provisioning Service
-          href: /azure/iot-dps
+          href: ../../iot-dps/index.yml
         - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+          href: /microsoft-iot-central/
         - name: IoT Edge
-          href: /azure/iot-edge
+          href: ../../iot-edge/index.yml
         - name: IoT-oplossingsversnellers
-          href: /azure/iot-accelerators
+          href: ../../iot-accelerators/index.yml
         - name: IoT Plug en Play
-          href: /azure/iot-pnp
+          href: ../../iot-pnp/index.yml
         - name: Azure Maps
-          href: /azure/azure-maps
+          href: ../../azure-maps/index.yml
         - name: Time Series Insights
-          href: /azure/time-series-insights
+          href: ../../time-series-insights/index.yml
     - name: SDK's voor Azure IoT
       items:
         - name: IoT Service-SDK's
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+          href: ../../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks
         - name: IoT Device-SDK's
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
+          href: ../../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks
     - name: Naslaginformatie over de IoT Central-API
-      href: 'https://docs.microsoft.com/rest/api/iotcentral/'
+      href: /rest/api/iotcentral/
     - name: Aanvragen van klantgegevens
       href: iot-central-customer-data-requests.md
     - name: Ondersteunde browsers
       href: iot-central-supported-browsers.md
     - name: Azure IoT Central (verouderde sjablonen)
-      href: 'https://docs.microsoft.com/previous-versions/azure/iot-central/core/overview-iot-central'
+      href: /previous-versions/azure/iot-central/core/overview-iot-central

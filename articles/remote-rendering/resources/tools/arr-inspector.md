@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/09/2020
 ms.topic: article
-ms.openlocfilehash: e3acfc15b0c12822e48009bef4aabadac701fb2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ee9d39db130c76f683ca1f4d1ff64f9ed86d97e
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80680074"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204738"
 ---
 # <a name="the-arrinspector-inspection-tool"></a>Het inspectiehulpprogramma ArrInspector
 
@@ -29,7 +29,7 @@ Als de app die `ConnectToArrInspectorAsync` wordt aangeroepen, al wordt uitgevoe
 
 Als de app wordt uitgevoerd op een HoloLens:
 
-1. Open de HoloLens met behulp van de [Windows-portal voor apparaten](https://docs.microsoft.com/windows/mixed-reality/using-the-windows-device-portal).
+1. Open de HoloLens met behulp van de [Windows-portal voor apparaten](/windows/mixed-reality/using-the-windows-device-portal).
 1. Ga naar *System > bestanden Verkenner*.
 1. Navigeer naar *gebruikers mappen \\ LocalAppData \\ [your_app] \\ AC \\ temp*.
 1. Bespaar *StartArrInspector.html* op uw PC.

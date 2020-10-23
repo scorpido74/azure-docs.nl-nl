@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 22fcee69c32388c764434bedac04465bbc3e28cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef0462b849210bc9b6963ab25e7a216c978f0568
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801321"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281062"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Kosten voor ingerichte doorvoer optimaliseren in Azure Cosmos DB
 
@@ -26,7 +26,7 @@ U kunt doorvoer inrichten in databases of containers, en elke strategie kan help
 
 * Als u de door Voer inricht voor een Data Base, kunnen alle containers, bijvoorbeeld verzamelingen/tabellen/grafieken binnen die data base, de door Voer delen op basis van de belasting. De door Voer die is gereserveerd op database niveau, wordt ongelijk gedeeld, afhankelijk van de werk belasting voor een specifieke set containers.
 
-* Als u de door Voer voor een container inricht, wordt de door Voer gegarandeerd voor die container, ondersteund door de SLA. De keuze van een logische partitie sleutel is van cruciaal belang voor een gelijkmatige verdeling van de belasting over alle logische partities van een container. Zie artikelen [partitioneren](partitioning-overview.md) en [horizon taal schalen](partition-data.md) voor meer informatie.
+* Als u de door Voer voor een container inricht, wordt de door Voer gegarandeerd voor die container, ondersteund door de SLA. De keuze van een logische partitie sleutel is van cruciaal belang voor een gelijkmatige verdeling van de belasting over alle logische partities van een container. Zie artikelen [partitioneren](partitioning-overview.md) en [horizon taal schalen](partitioning-overview.md) voor meer informatie.
 
 Hier volgen enkele richt lijnen voor het kiezen van een ingerichte doorvoer strategie:
 

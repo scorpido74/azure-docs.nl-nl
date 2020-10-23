@@ -11,19 +11,19 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 027a816e846996aa7c61a1747327128f9a0feed0
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 01126a1ca8590d02d0cd0aa1c8554b34161dbac5
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079204"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426279"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Wat is er nieuw in Azure SQL Database & SQL Managed instance?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Dit artikel bevat een overzicht van Azure SQL Database en Azure SQL Managed instance-functies die momenteel beschikbaar zijn in de open bare preview. Zie [SQL Database & SQL Managed instance service updates](https://azure.microsoft.com/updates/?product=sql-database)voor SQL database en de updates en verbeteringen van SQL Managed instance. Zie [service-updates](https://azure.microsoft.com/updates)voor updates en verbeteringen voor andere Azure-Services.
 
-## <a name="whats-new"></a>Wat is nieuw?
+## <a name="whats-new"></a>Wat is er nieuw?
 
 Documentatie voor Azure SQL Database en Azure SQL Managed instance is in afzonderlijke secties gesplitst. We hebben ook bijgewerkt hoe we verwijzen naar een beheerd exemplaar van *Azure SQL database beheerde* instantie naar *Azure SQL Managed*instance.
 
@@ -100,7 +100,7 @@ De volgende functies zijn ingeschakeld in het implementatie model voor SQL-behee
 |---------|---------|---------|---------|
 |[Gedistribueerde trans acties kunnen worden uitgevoerd nadat het beheerde exemplaar is verwijderd uit de vertrouwens groep van de server](#distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group)|Okt 2020|Heeft tijdelijke oplossing||
 |[Gedistribueerde trans acties kunnen niet worden uitgevoerd nadat de bewerking voor het schalen van het beheerde exemplaar](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|Okt 2020|Heeft tijdelijke oplossing||
-|[Bulk Insert](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql) in Azure SQL en de `BACKUP` / `RESTORE` instructie in het beheerde exemplaar kunnen de Azure AD-identiteit voor het beheren van de verificatie bij Azure Storage niet gebruiken|Sep 2020|Heeft tijdelijke oplossing||
+|[Bulk Insert](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql) / De [OpenRowSet](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15) in Azure SQL en de `BACKUP` / `RESTORE` instructie in het beheerde exemplaar kunnen de Azure AD-identiteit voor het beheren van de verificatie bij Azure Storage niet gebruiken|Sep 2020|Heeft tijdelijke oplossing||
 |[Service-Principal heeft geen toegang tot Azure AD en Azure](#service-principal-cannot-access-azure-ad-and-akv)|Aug 2020|Heeft tijdelijke oplossing||
 |[Hand matige back-up herstellen zonder CONTROLESOM kan mislukken](#restoring-manual-backup-without-checksum-might-fail)|Mei 2020|Opgelost|Juni 2020|
 |[Agent reageert niet meer wanneer u bestaande taken wijzigt, uitschakelt of inschakelt](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|Mei 2020|Opgelost|Juni 2020|
@@ -139,7 +139,7 @@ Door bewerkingen voor het schalen van beheerde instanties die de service tier of
 
 ### <a name="bulk-insert-and-backuprestore-statements-cannot-use-managed-identity-to-access-azure-storage"></a>Met de instructies voor BULK INSERT en BACKUP/Restore kan geen beheerde identiteit worden gebruikt voor toegang tot Azure Storage
 
-De instructie BULK INSERT kan niet `DATABASE SCOPED CREDENTIAL` met beheerde identiteit worden gebruikt voor verificatie bij Azure Storage. U kunt dit probleem omzeilen door te scha kelen naar verificatie van de hand tekening voor gedeelde toegang. Het volgende voor beeld werkt niet voor Azure SQL (zowel het Data Base-als het beheerde exemplaar):
+Bulk Insert-, BACKUP-en Restore-instructies en de functie OPENROWSET kunnen niet worden gebruikt `DATABASE SCOPED CREDENTIAL` met beheerde identiteit om te verifiëren bij Azure Storage. U kunt dit probleem omzeilen door te scha kelen naar verificatie van de hand tekening voor gedeelde toegang. Het volgende voor beeld werkt niet voor Azure SQL (zowel het Data Base-als het beheerde exemplaar):
 
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Identity';

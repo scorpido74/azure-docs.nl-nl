@@ -13,12 +13,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-java
-ms.openlocfilehash: f4e5880a39d6ad299fd6e7f29bd0e3aefadc3bcd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 763b9e05adc07c02265dbb511c073b42df44ea95
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91446893"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146864"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>Cloud-naar-apparaat-berichten verzenden met IoT Hub (Java)
 
@@ -51,7 +51,7 @@ Aan het einde van deze zelf studie voert u twee Java Console-apps uit:
 
 * Een volledige werkende versie van het [verzenden van telemetrie van een apparaat naar een IOT hub](quickstart-send-telemetry-java.md) -Snelstartgids of het [configureren van bericht routering met IOT hub](tutorial-routing.md) zelf studie.
 
-* [Java SE Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). Zorg ervoor dat u **Java 8** selecteert onder **lange termijn ondersteuning** om down loads voor JDK 8 te downloaden.
+* [Java SE Development Kit 8](/java/azure/jdk/?view=azure-java-stable). Zorg ervoor dat u **Java 8** selecteert onder **lange termijn ondersteuning** om down loads voor JDK 8 te downloaden.
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 

@@ -1,18 +1,18 @@
 ---
 title: Herstel van online back-ups en gegevens op aanvraag in Azure Cosmos DB
-description: In dit artikel wordt beschreven hoe automatische back-ups en gegevens herstel op aanvraag werken, hoe u een back-upinterval en retentie in Azure Cosmos DB kunt configureren.
+description: In dit artikel wordt beschreven hoe automatische back-ups, herstel op aanvraag gegevens werken, het interval voor back-up en retentie configureren, hoe contact personen kunnen worden ondersteund voor een gegevens herstel in Azure Cosmos DB.
 author: kanshiG
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 08/24/2020
+ms.topic: how-to
+ms.date: 10/13/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 0db34a615c9d92401e760c702feb0dbbf13ce01d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c506d66c101c2770cffb8cc8d105b2f841c539a
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803871"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279475"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Herstel van online back-ups en gegevens op aanvraag in Azure Cosmos DB
 
@@ -34,15 +34,7 @@ Met Azure Cosmos DB, niet alleen uw gegevens, maar ook de back-ups van uw gegeve
 
 * De back-ups worden gemaakt zonder dat dit van invloed is op de prestaties of Beschik baarheid van uw toepassing. Azure Cosmos DB voert gegevens back-ups op de achtergrond uit zonder enige extra ingerichte door Voer (RUs) te gebruiken of de prestaties en beschik baarheid van uw data base te beïnvloeden.
 
-## <a name="options-to-manage-your-own-backups"></a>Opties voor het beheren van uw eigen back-ups
-
-Met Azure Cosmos DB SQL-API-accounts kunt u ook uw eigen back-ups onderhouden met behulp van een van de volgende benaderingen:
-
-* Gebruik [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) om gegevens regel matig te verplaatsen naar een opslag van uw keuze.
-
-* Gebruik Azure Cosmos DB [Change feed](change-feed.md) om gegevens periodiek te lezen voor volledige back-ups of voor incrementele wijzigingen en sla deze op in uw eigen opslag.
-
-## <a name="modify-the-backup-interval-and-retention-period"></a>Het back-upinterval en de Bewaar periode wijzigen
+## <a name="modify-the-backup-interval-and-retention-period"></a><a id="configure-backup-interval-retention"></a>Het back-upinterval en de Bewaar periode wijzigen
 
 Azure Cosmos DB maakt automatisch een volledige back-up van uw gegevens voor elke 4 uur en op elk gewenst moment worden de meest recente twee back-ups opgeslagen. Deze configuratie is de standaard optie en wordt aangeboden zonder dat er extra kosten in rekening worden gebracht. U kunt het standaard interval voor back-ups en de Bewaar periode wijzigen tijdens het maken van het Azure Cosmos-account of nadat het account is gemaakt. De back-upconfiguratie wordt ingesteld op het niveau van het Azure Cosmos-account en u moet deze voor elk account configureren. Nadat u de back-upopties voor een account hebt geconfigureerd, wordt deze toegepast op alle containers in dat account. U kunt de back-upopties momenteel alleen wijzigen in Azure Portal.
 
@@ -65,7 +57,32 @@ Als u de opties voor back-up configureert tijdens het maken van het account, kun
 
 :::image type="content" source="./media/online-backup-and-restore/configure-periodic-continuous-backup-policy.png" alt-text="Periodieke volledige back-ups van alle Cosmos DB entiteiten in GRS Azure Storage" border="true":::
 
-## <a name="restore-data-from-an-online-backup"></a>Gegevens herstellen vanuit een online back-up
+## <a name="request-data-restore-from-a-backup"></a>Gegevens terugzetten vanuit een back-up opvragen
+
+Als u per ongeluk uw data base of container verwijdert, kunt u [een ondersteunings ticket indienen](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) of [de ondersteuning van Azure aanroepen](https://azure.microsoft.com/support/options/) om de gegevens van automatische online back-ups te herstellen. Ondersteuning voor Azure is alleen beschikbaar voor geselecteerde abonnementen, zoals **Standard**, **Developer**en abonnementen hoger dan die. Ondersteuning voor Azure is niet beschikbaar voor het **Basic** -abonnement. Zie de pagina [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/) voor meer informatie over verschillende ondersteunings abonnementen.
+
+Als u een specifieke moment opname van de back-up wilt herstellen, moet Azure Cosmos DB de gegevens beschikbaar hebben voor de duur van de back-upcyclus voor die moment opname.
+U moet de volgende gegevens hebben voordat u een herstel bewerking kunt aanvragen:
+
+* Uw abonnement-ID gereed is.
+
+* Op basis van de manier waarop uw gegevens per ongeluk zijn verwijderd of gewijzigd, moet u voor bereidingen treffen voor aanvullende informatie. Het is raadzaam dat u de informatie die u voor het eerst beschikbaar hebt, hebt om de back-and-Case zo klein mogelijk te houden.
+
+* Als het volledige Azure Cosmos DB account wordt verwijderd, moet u de naam van het verwijderde account opgeven. Als u een ander account met dezelfde naam als het verwijderde account maakt, deelt u dit met het ondersteunings team, omdat het u helpt om het juiste account te bepalen. Het is raadzaam om verschillende ondersteunings tickets voor elk verwijderd account te bestand, omdat het de Verwar ring voor de status van herstellen minimaliseert.
+
+* Als een of meer data bases worden verwijderd, moet u het Azure Cosmos-account opgeven, evenals de namen van de Azure Cosmos-data bases en opgeven of er een nieuwe Data Base met dezelfde naam bestaat.
+
+* Als een of meer containers worden verwijderd, moet u de naam van het Azure Cosmos-account, de database namen en de container namen opgeven. En geef op of er een container met dezelfde naam bestaat.
+
+* Als u uw gegevens per ongeluk hebt verwijderd of beschadigd, neemt u binnen 8 uur contact op met [Azure-ondersteuning](https://azure.microsoft.com/support/options/) , zodat het Azure Cosmos DB team u kan helpen bij het herstellen van de gegevens van de back-ups. **Voordat u een ondersteunings aanvraag voor het herstellen van de gegevens maakt, moet u [de retentie van de back-up voor uw account verg Roten](#configure-backup-interval-retention) tot ten minste zeven dagen. Het is het beste om uw Bewaar periode binnen 8 uur na deze gebeurtenis te verg Roten.** Op deze manier kan het ondersteunings team van Azure Cosmos DB voldoende tijd hebben om uw account te herstellen.
+
+Naast de naam van het Azure Cosmos-account, database namen, container namen, moet u het tijdstip opgeven waarop de gegevens kunnen worden teruggezet. Het is belang rijk om zo nauw keurig mogelijk te zijn om ons te helpen bij het bepalen van de beste beschik bare back-ups op dat moment. **Het is ook belang rijk om de tijd op te geven in UTC.**
+
+In de volgende scherm afbeelding ziet u hoe u een ondersteunings aanvraag voor een container (verzameling/grafiek/tabel) kunt maken om gegevens te herstellen met behulp van Azure Portal. Geef aanvullende informatie op, zoals het type gegevens, het doel van de herstel tijd, het tijdstip waarop de gegevens zijn verwijderd om ons te helpen bij het bepalen van de prioriteit van de aanvraag.
+
+:::image type="content" source="./media/online-backup-and-restore/backup-support-request-portal.png" alt-text="Periodieke volledige back-ups van alle Cosmos DB entiteiten in GRS Azure Storage":::
+
+## <a name="considerations-for-restoring-the-data-from-a-backup"></a>Overwegingen voor het herstellen van de gegevens van een back-up
 
 U kunt uw gegevens per ongeluk verwijderen of wijzigen in een van de volgende scenario's:  
 
@@ -85,38 +102,48 @@ Wanneer u per ongeluk een Azure Cosmos-account verwijdert, kunnen we de gegevens
 
 Wanneer u per ongeluk een Azure Cosmos-data base verwijdert, kunnen we de gehele data base of een subset van de containers in die data base herstellen. Het is ook mogelijk om specifieke containers in data bases te selecteren en deze terug te zetten naar een nieuw Azure Cosmos-account.
 
-Wanneer u per ongeluk een of meer items in een container verwijdert of wijzigt (het geval van gegevens beschadiging), moet u de tijd opgeven waarop u wilt herstellen. Tijd is belang rijk als er gegevens beschadigd zijn. Omdat de container Live is, wordt de back-up nog steeds uitgevoerd, dus als u na de Bewaar periode blijft (de standaard instelling is acht uur), worden de back-ups overschreven. **Als u wilt voor komen dat de back-up wordt overschreven, verhoogt u de retentie van de back-up voor uw account tot ten minste zeven dagen. Het is het beste om uw Bewaar periode binnen 8 uur na de beschadiging van de gegevens te verg Roten.**
+Wanneer u per ongeluk een of meer items in een container verwijdert of wijzigt (het geval van gegevens beschadiging), moet u de tijd opgeven waarop u wilt herstellen. Tijd is belang rijk als er gegevens beschadigd zijn. Omdat de container Live is, wordt de back-up nog steeds uitgevoerd, dus als u na de Bewaar periode blijft (de standaard instelling is acht uur), worden de back-ups overschreven. Als u wilt voor komen dat de back-up wordt overschreven, verhoogt u de retentie van de back-up voor uw account tot ten minste zeven dagen. Het is het beste om uw Bewaar periode binnen 8 uur na de beschadiging van de gegevens te verg Roten.
 
 Als u uw gegevens per ongeluk hebt verwijderd of beschadigd, neemt u binnen 8 uur contact op met [Azure-ondersteuning](https://azure.microsoft.com/support/options/) , zodat het Azure Cosmos DB team u kan helpen bij het herstellen van de gegevens van de back-ups. Op deze manier kan het ondersteunings team van Azure Cosmos DB voldoende tijd hebben om uw account te herstellen.
 
 > [!NOTE]
 > Nadat u de gegevens hebt hersteld, worden niet alle bron functies of-instellingen overgedragen naar het herstelde account. De volgende instellingen worden niet overgedragen naar het nieuwe account:
-
 > * VNET-toegangs beheer lijsten
 > * Opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies
 > * Instellingen voor meerdere regio's  
 
 Als u de door Voer inricht op database niveau, gebeurt het back-up-en herstel proces in dit geval op het hele database niveau en niet op het niveau van de afzonderlijke containers. In dergelijke gevallen kunt u geen subset van containers selecteren die u wilt herstellen.
 
-## <a name="migrate-data-to-the-original-account"></a>Gegevens migreren naar het oorspronkelijke account
+## <a name="options-to-manage-your-own-backups"></a>Opties voor het beheren van uw eigen back-ups
 
-Het belangrijkste doel van het terugzetten van gegevens is het herstellen van de gegevens die u per ongeluk hebt verwijderd of gewijzigd. Daarom raden we u aan eerst de inhoud van de herstelde gegevens te controleren om er zeker van te zijn dat deze bevat wat u verwacht. Later kunt u de gegevens opnieuw naar het primaire account migreren. Hoewel het mogelijk is om het herstelde account te gebruiken als uw nieuwe actieve account, is dit niet de aanbevolen optie als u werk belastingen voor productie hebt.  
+Met Azure Cosmos DB SQL-API-accounts kunt u ook uw eigen back-ups onderhouden met behulp van een van de volgende benaderingen:
 
-Hier volgen verschillende manieren om gegevens terug te migreren naar het oorspronkelijke Azure Cosmos-account:
+* Gebruik [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) om gegevens regel matig te verplaatsen naar een opslag van uw keuze.
+
+* Gebruik Azure Cosmos DB [Change feed](change-feed.md) om gegevens periodiek te lezen voor volledige back-ups of voor incrementele wijzigingen en sla deze op in uw eigen opslag.
+
+## <a name="post-restore-actions"></a>Acties na herstel
+
+Het belangrijkste doel van het terugzetten van gegevens is het herstellen van de gegevens die u per ongeluk hebt verwijderd of gewijzigd. Daarom raden we u aan eerst de inhoud van de herstelde gegevens te controleren om er zeker van te zijn dat deze bevat wat u verwacht. Als alles er goed uitziet, kunt u de gegevens opnieuw naar het primaire account migreren. Hoewel het mogelijk is om het herstelde account te gebruiken als uw nieuwe actieve account, is dit niet de aanbevolen optie als u werk belastingen voor productie hebt. 
+
+Nadat u de gegevens hebt hersteld, ontvangt u een melding over de naam van het nieuwe account (meestal in de indeling `<original-name>-restored1` ) en het tijdstip waarop het account is hersteld. Het herstelde account heeft dezelfde ingerichte door Voer, het indexerings beleid en het bevindt zich in dezelfde regio als het oorspronkelijke account. Een gebruiker die de abonnements beheerder of co-beheerder is, kan het herstelde account zien.
+
+### <a name="migrate-data-to-the-original-account"></a>Gegevens migreren naar het oorspronkelijke account
+
+Hier volgen verschillende manieren om gegevens terug te migreren naar het oorspronkelijke account:
 
 * Gebruik het [Azure Cosmos DB hulp programma voor gegevens migratie](import-data.md).
 * Gebruik de [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md).
 * Gebruik de [wijzigings feed](change-feed.md) in azure Cosmos db.
 * U kunt uw eigen aangepaste code schrijven.
 
-Zorg ervoor dat u de herstelde accounts verwijdert zodra u uw gegevens hebt gemigreerd, omdat er lopende kosten in rekening worden gebracht.
+U wordt aangeraden de container of data base onmiddellijk na het migreren van de gegevens te verwijderen. Als u de herstelde data bases of containers niet verwijdert, worden er kosten in rekening gebracht voor aanvraag eenheden, opslag en uitgaand verkeer.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Hierna vindt u informatie over het herstellen van gegevens uit een Azure Cosmos-account of over het migreren van gegevens naar een Azure Cosmos-account
 
 * Neem contact op met de ondersteuning van Azure, maak [een ticket van de Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om een herstel aanvraag te doen.
-* [Gegevens herstellen vanuit een Azure Cosmos-account](how-to-backup-and-restore.md)
 * [Gebruik Cosmos DB Change feed](change-feed.md) om gegevens naar Azure Cosmos DB te verplaatsen.
 * [Gebruik Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) om gegevens te verplaatsen naar Azure Cosmos db.
 

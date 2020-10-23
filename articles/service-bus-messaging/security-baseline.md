@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0f433c33f50506309e88b7ffa2c8aaf498fb3613
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e844904f236e9d81404a3481af9349ac8881085
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761155"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310439"
 ---
 # <a name="azure-security-baseline-for-service-bus"></a>Azure-beveiligings basislijn voor Service Bus
 
@@ -62,7 +62,7 @@ Gebruik Azure Security Center en volg aanbevelingen voor netwerk beveiliging om 
 
 - [DDoS-beveiliging configureren](../virtual-network/manage-ddos-protection.md)
 
-- [Geïntegreerde bedreigings informatie Azure Security Center](/azure/security-center/security-center-alerts-service-layer)
+- [Geïntegreerde bedreigings informatie Azure Security Center](../security-center/azure-defender.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -111,7 +111,7 @@ U kunt ook aangepaste beleids definities maken als de ingebouwde definities niet
 
 - [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-- [Ingebouwd beleid voor Azure voor Service Bus naam ruimte](/azure/service-bus-messaging/policy-samples#azure-service-bus-messaging)
+- [Ingebouwd beleid voor Azure voor Service Bus naam ruimte](./policy-reference.md#azure-service-bus-messaging)
 
 - [Voor beelden Azure Policy voor netwerken](../governance/policy/samples/built-in-policies.md#network)
 
@@ -129,7 +129,7 @@ Gebruik een van de ingebouwde Azure-beleids definities die betrekking hebben op 
 
 U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties op resources te zoeken of uit te voeren. 
 
-- [Tags maken en gebruiken](/azure/azure-resource-manager/resource-group-using-tags) 
+- [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md) 
 
 - [Een Virtual Network maken](../virtual-network/quick-create-portal.md) 
 
@@ -143,7 +143,7 @@ U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties
 
 **Hulp**: Azure-activiteiten logboek gebruiken om netwerk resource configuraties te bewaken en wijzigingen te detecteren voor netwerk bronnen die betrekking hebben op Azure service bus. Maak waarschuwingen in Azure Monitor die worden geactiveerd wanneer er wijzigingen in kritieke netwerk bronnen plaatsvinden.
 
-- [Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen](/azure/azure-monitor/platform/activity-log-view)
+- [Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [Waarschuwingen maken in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -177,7 +177,7 @@ U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties
 
 - [Diagnostische instellingen inschakelen voor Azure Service Bus](service-bus-diagnostic-logs.md)
 
-- [Diagnostische instellingen voor Azure-activiteiten logboek inschakelen](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Diagnostische instellingen voor Azure-activiteiten logboek inschakelen](../azure-monitor/platform/activity-log.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -231,9 +231,9 @@ U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties
 
 - [Ingebouwde rollen voor Azure Service Bus](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)
 
-- [Een directory-rol verkrijgen in azure AD met Power shell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0) 
+- [Een directory-rol verkrijgen in azure AD met Power shell](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0) 
 
-- [Leden van een directory-rol in azure AD ophalen met Power shell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [Leden van een directory-rol in azure AD ophalen met Power shell](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure Security Center bewaking**: Ja
 
@@ -311,7 +311,7 @@ U kunt ook aangepaste beleids definities maken als de ingebouwde definities niet
 
 **Hulp**: gebruik Azure Active Directory beveiligings rapporten en-bewaking om te detecteren wanneer verdachte of onveilige activiteiten in de omgeving worden uitgevoerd. Gebruik Azure Security Center om identiteits-en toegangs activiteiten te bewaken.
 
-- [Azure AD-gebruikers identificeren die zijn gemarkeerd voor Risk ante activiteiten](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [Azure AD-gebruikers identificeren die zijn gemarkeerd voor Risk ante activiteiten](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Identiteits-en toegangs activiteiten van gebruikers controleren in Azure Security Center](../security-center/security-center-identity-access.md)
 
@@ -347,7 +347,7 @@ U kunt ook aangepaste beleids definities maken als de ingebouwde definities niet
 
 U kunt de gedeelde toegangs handtekening van de Service Bus naam ruimte echter op een andere regel laten draaien.
 
-- [Meer informatie over Azure AD-rapportage](/azure/active-directory/reports-monitoring/)
+- [Meer informatie over Azure AD-rapportage](../active-directory/reports-monitoring/index.yml)
 
 - [Beoordelingen over Azure Identity Access gebruiken](../active-directory/governance/access-reviews-overview.md)
 
@@ -363,7 +363,7 @@ U kunt de gedeelde toegangs handtekening van de Service Bus naam ruimte echter o
 
 U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-gebruikers accounts te maken en de audit logboeken en aanmeldings logboeken te verzenden naar een Log Analytics-werk ruimte. In Azure Monitor kunt u vervolgens de gewenste logboek waarschuwingen configureren voor bepaalde acties die in de logboeken optreden.
 
-- [Azure-activiteiten logboeken integreren in Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure-activiteiten logboeken integreren in Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Toegang tot Service Bus resources autoriseren met behulp van Azure Active Directory](authenticate-application.md)
 
@@ -375,7 +375,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 **Hulp**: gebruik de functies voor identiteits beveiliging en risico detectie van Azure Active Directory om automatische antwoorden te configureren op gedetecteerde verdachte acties die betrekking hebben op uw service bus-resources. Schakel automatische antwoorden via Azure Sentinel in om de beveiligings reacties van uw organisatie te implementeren.
 
-- [Risk ante aanmeldingen voor Azure AD weer geven](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Risk ante aanmeldingen voor Azure AD weer geven](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Risico beleid voor identiteits beveiliging configureren en inschakelen](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -403,7 +403,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 **Hulp**: Gebruik labels op resources die betrekking hebben op uw service bus voor het bijhouden van Azure-resources die gevoelige informatie opslaan of verwerken.
 
-- [Tags maken en gebruiken](/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -413,11 +413,11 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 **Richt lijnen**: afzonderlijke abonnementen en beheer groepen implementeren voor ontwikkeling, testen en productie. Service Bus naam ruimten moeten worden gescheiden door virtuele netwerken met persoonlijke eind punten die op de juiste wijze zijn geconfigureerd en gelabeld.
 
-- [Aanvullende Azure-abonnementen maken](/azure/billing/billing-create-subscription)
+- [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
 
-- [Beheergroepen maken](/azure/governance/management-groups/create)
+- [Beheergroepen maken](../governance/management-groups/create-management-group-portal.md)
 
-- [Tags maken en gebruiken](/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 - [Een Virtual Network maken](../virtual-network/quick-create-portal.md)
 
@@ -437,7 +437,7 @@ Micro soft beheert de onderliggende infra structuur voor Azure Service Bus en he
 
 - [Toegang tot Azure Service Bus naam ruimten toestaan via persoonlijke eind punten](private-link-service.md)
 
-- [Meer informatie over netwerk beveiligings groepen en service Tags](/azure/virtual-network/security-overview)
+- [Meer informatie over netwerk beveiligings groepen en service Tags](../virtual-network/network-security-groups-overview.md)
 
 - [Informatie over beveiliging van klanten in azure](../security/fundamentals/protection-customer-data.md)
 
@@ -507,7 +507,7 @@ Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt mic
 
 - [Query's maken met Azure resource Graph](../governance/resource-graph/first-query-portal.md)
 
-- [Uw Azure-abonnementen weer geven](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Uw Azure-abonnementen weer geven](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
 - [Meer informatie over Azure RBAC](../role-based-access-control/overview.md)
 
@@ -527,11 +527,11 @@ Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt mic
 
 **Richt lijnen**: Gebruik labels, beheer groepen en afzonderlijke abonnementen, waar nodig, om Azure service bus naam ruimten en gerelateerde resources te organiseren en bij te houden. Sluit de inventaris regel matig af en zorg ervoor dat niet-geautoriseerde resources tijdig worden verwijderd uit het abonnement.
 
-- [Aanvullende Azure-abonnementen maken](/azure/billing/billing-create-subscription)
+- [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
 
-- [Beheergroepen maken](/azure/governance/management-groups/create)
+- [Beheergroepen maken](../governance/management-groups/create-management-group-portal.md)
 
-- [Tags maken en gebruiken](/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -574,7 +574,7 @@ U kunt ook aangepaste beleids definities maken als de ingebouwde definities niet
 
 - [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-- [Een specifiek resource type weigeren met Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
+- [Een specifiek resource type weigeren met Azure Policy](../governance/policy/samples/index.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -603,9 +603,9 @@ U kunt ook aangepaste beleids definities maken als de ingebouwde definities niet
 
 Gebruik Azure Policy aliassen in de naam ruimte ' micro soft. ServiceBus ' om aangepaste beleids regels te maken om configuraties te controleren of af te dwingen.
 
-- [Ingebouwde beleids regels voor Azure voor Service Bus ](/azure/service-bus-messaging/policy-samples)
+- [Ingebouwde beleids regels voor Azure voor Service Bus ](./policy-reference.md)
 
-- [Beschik bare Azure Policy aliassen weer geven](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [Beschik bare Azure Policy aliassen weer geven](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 - [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
@@ -653,7 +653,7 @@ Gebruik Azure Policy aliassen in de naam ruimte ' micro soft. ServiceBus ' om aa
 
 - [Door de klant beheerde sleutels voor Service Bus configureren](configure-customer-managed-key.md)
 
-- [Een Key Vault maken](/azure/key-vault/quick-create-portal)
+- [Een Key Vault maken](../key-vault/secrets/quick-create-portal.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -731,7 +731,7 @@ Zorg voor regel matige automatische back-ups van uw Key Vault geheimen met de vo
 
 - [Door de klant beheerde sleutels configureren voor het versleutelen van Azure Service Bus gegevens in rust](configure-customer-managed-key.md)
 
-- [Sleutel kluis sleutels herstellen in azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Sleutel kluis sleutels herstellen in azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -741,7 +741,7 @@ Zorg voor regel matige automatische back-ups van uw Key Vault geheimen met de vo
 
 **Hulp**: Schakel zacht verwijderen in Key Vault in om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering. Azure Service Bus moet door de klant beheerde sleutels worden verwijderd en niet zijn geconfigureerd.
 
-- [Zacht verwijderen inschakelen in Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Zacht verwijderen inschakelen in Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 - [Een sleutel kluis met sleutels instellen](../event-hubs/configure-customer-managed-key.md)
 
@@ -775,7 +775,7 @@ Markeer bovendien abonnementen met tags en maak een naamgevings systeem voor het
 
 - [Beveiligingswaarschuwingen in Azure Security Center](../security-center/security-center-alerts-overview.md) 
 
-- [Labels gebruiken om uw Azure-resources te organiseren](/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags gebruiken om Azure-resources te organiseren](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -843,5 +843,5 @@ Gebruik de functie werk stroom automatisering Azure Security Center om automatis
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de [Azure Security-Bench Mark](/azure/security/benchmarks/overview)
-- Meer informatie over [Azure-beveiligings basislijnen](/azure/security/benchmarks/security-baselines-overview)
+- Zie de [Azure Security-Bench Mark](../security/benchmarks/overview.md)
+- Meer informatie over [Azure-beveiligings basislijnen](../security/benchmarks/security-baselines-overview.md)

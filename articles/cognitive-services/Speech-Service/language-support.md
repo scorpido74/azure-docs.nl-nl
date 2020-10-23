@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 3b449913c9d1abbbec84f0ff77f7a1c1bc5321bf
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6f484277ee940c63888fff068739598dd553b515
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048454"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440890"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Taal-en spraak ondersteuning voor de spraak service
 
@@ -139,10 +139,10 @@ Zie [regio's](regions.md#standard-and-neural-voices)voor meer informatie over re
 |Landinstelling  | Taal            | Geslacht | Spraak naam | Stijl ondersteuning |
 |--|--|--|--|--|
 | `ar-EG` | Arabisch (Egypte) | Vrouw | `ar-EG-SalmaNeural` | Algemeen |
-| `ar-SA` | Arabisch (Saudi-Arabië) | Vrouw | `ar-SA-ZariyahNeural` | Algemeen |
+| `ar-SA` | Arabisch (Saoedi-Arabië) | Vrouw | `ar-SA-ZariyahNeural` | Algemeen |
 | `bg-BG` <sup>Nieuw</sup> | Bulgaars (Bulgary) | Vrouw | `bg-BG-KalinaNeural` | Algemeen |
 | `ca-ES` | Catalaans (Spanje) | Vrouw | `ca-ES-AlbaNeural` | Algemeen |
-| `cs-CZ` <sup>Nieuw</sup> | Tsjechisch (Tsjechisch)  | Vrouw | `cs-CZ-VlastaNeural` | Algemeen |
+| `cs-CZ` <sup>Nieuw</sup> | Tsjechisch (Tsjechisch) | Vrouw | `cs-CZ-VlastaNeural` | Algemeen |
 | `da-DK` | Deens (Denemarken) | Vrouw | `da-DK-ChristelNeural` | Algemeen |
 | `de-AT` <sup>Nieuw</sup> | Duits (Oostenrijk) | Vrouw | `de-AT-IngridNeural` | Algemeen |
 | `de-CH` <sup>Nieuw</sup> | Duits (Zwitserland) | Vrouw | `de-CH-LeniNeural` | Algemeen |
@@ -150,12 +150,12 @@ Zie [regio's](regions.md#standard-and-neural-voices)voor meer informatie over re
 | `de-DE` <sup>Nieuw</sup> | Duits (Duitsland) | Man | `de-DE-ConradNeural` | Algemeen |
 | `el-GR` <sup>Nieuw</sup> | Grieks (Griekenland) | Vrouw | `el-GR-AthinaNeural` | Algemeen |
 | `en-AU` | Engels (Australië) | Vrouw | `en-AU-NatashaNeural` | Algemeen |
-| `en-AU` <sup>Nieuw</sup> | Australië (Australië) | Man | `en-AU-WilliamNeural` | Algemeen |
+| `en-AU` <sup>Nieuw</sup> | Engels (Australië) | Man | `en-AU-WilliamNeural` | Algemeen |
 | `en-CA` | Engels (Canada) | Vrouw | `en-CA-ClaraNeural` | Algemeen |
-| `en-GB` | Engels (Verenigd Konink rijk) | Vrouw | `en-GB-LibbyNeural` | Algemeen |
-| `en-GB` | Engels (Verenigd Konink rijk) | Vrouw | `en-GB-MiaNeural` | Algemeen |
+| `en-GB` | Engels (Verenigd Koninkrijk) | Vrouw | `en-GB-LibbyNeural` | Algemeen |
+| `en-GB` | Engels (Verenigd Koninkrijk) | Vrouw | `en-GB-MiaNeural` | Algemeen |
 | `en-GB` <sup>Nieuw</sup> | Engels (Verenigd Koninkrijk) | Man | `en-GB-RyanNeural` | Algemeen |
-| `en-IE` <sup>Nieuw</sup> | Ierse Engels (Ierland) | Vrouw | `en-IE-EmilyNeural` | Algemeen |
+| `en-IE` <sup>Nieuw</sup> | Engels (Ierland) | Vrouw | `en-IE-EmilyNeural` | Algemeen |
 | `en-IN` | Engels (India) | Vrouw | `en-IN-NeerjaNeural` | Algemeen |
 | `en-US` | Engels (Verenigde Staten) | Vrouw | `en-US-AriaNeural` | Algemeen, meerdere spraak stijlen beschikbaar |
 | `en-US` | Engels (Verenigde Staten) | Man | `en-US-GuyNeural` | Algemeen |
@@ -168,13 +168,13 @@ Zie [regio's](regions.md#standard-and-neural-voices)voor meer informatie over re
 | `fr-CA` | Frans (Canada) | Vrouw | `fr-CA-SylvieNeural` | Algemeen |
 | `fr-CA` <sup>Nieuw</sup> | Frans (Canada) | Man | `fr-CA-JeanNeural` | Algemeen |
 | `fr-CH` <sup>Nieuw</sup> | Frans (Zwitserland) | Vrouw | `fr-CH-ArianeNeural` | Algemeen |
-| `fr-FR` | Frans (Frank rijk) | Vrouw | `fr-FR-DeniseNeural` | Algemeen |
+| `fr-FR` | Frans (Frankrijk) | Vrouw | `fr-FR-DeniseNeural` | Algemeen |
 | `fr-FR` <sup>Nieuw</sup> | Frans (Frankrijk) | Man | `fr-FR-HenriNeural` | Algemeen |
-| `he-IL` <sup>Nieuw</sup> | Hebreeuws (Isareal) | Vrouw | `he-IL-HilaNeural` | Algemeen |
+| `he-IL` <sup>Nieuw</sup> | Hebreeuws (Israël) | Vrouw | `he-IL-HilaNeural` | Algemeen |
 | `hi-IN` | Hindi (India) | Vrouw | `hi-IN-SwaraNeural` | Algemeen |
 | `hr-HR` <sup>Nieuw</sup> | Kroatisch (Kroatië) | Vrouw | `hr-HR-GabrijelaNeural` | Algemeen |
 | `hu-HU` <sup>Nieuw</sup> | Hongaars (Hongarije) | Vrouw | `hu-HU-NoemiNeural` | Algemeen |
-| `id-ID` <sup>Nieuw</sup> | Bahasa Indonesisch (Indonesië) | Man | `id-ID-ArdiNeural` | Algemeen |
+| `id-ID` <sup>Nieuw</sup> | Indonesisch (Indonesië) | Man | `id-ID-ArdiNeural` | Algemeen |
 | `it-IT` | Italiaans (Italië) | Vrouw | `it-IT-ElsaNeural` | Algemeen |
 | `it-IT` <sup>Nieuw</sup> | Italiaans (Italië) | Vrouw | `it-IT-IsabellaNeural` | Algemeen |
 | `it-IT` <sup>Nieuw</sup> | Italiaans (Italië) | Man | `it-IT-DiegoNeural` | Algemeen |
@@ -187,7 +187,7 @@ Zie [regio's](regions.md#standard-and-neural-voices)voor meer informatie over re
 | `nl-NL` | Nederlands (Nederland) | Vrouw | `nl-NL-ColetteNeural` | Algemeen |
 | `pl-PL` | Pools (Polen) | Vrouw | `pl-PL-ZofiaNeural` | Algemeen |
 | `pt-BR` | Portugees (Brazilië) | Vrouw | `pt-BR-FranciscaNeural` | Algemeen, meerdere spraak stijlen beschikbaar |
-| `pt-BR` <sup>Nieuw</sup> | Braziliaans-Portugees (Brazilië) | Man | `pt-BR-AntonioNeural` | Algemeen |
+| `pt-BR` <sup>Nieuw</sup> | Portugees (Brazilië) | Man | `pt-BR-AntonioNeural` | Algemeen |
 | `pt-PT` | Portugees (Portugal) | Vrouw | `pt-PT-FernandaNeural` | Algemeen |
 | `ro-RO` <sup>Nieuw</sup> | Roemeens (Roemenië) | Vrouw | `ro-RO-AlinaNeural` | Algemeen |
 | `ru-RU` | Russisch (Rusland) | Vrouw | `ru-RU-DariyaNeural` | Algemeen |
@@ -196,7 +196,7 @@ Zie [regio's](regions.md#standard-and-neural-voices)voor meer informatie over re
 | `sv-SE` | Zweeds (Zweden) | Vrouw | `sv-SE-HilleviNeural` | Algemeen |
 | `ta-IN` <sup>Nieuw</sup> | Tamil (India) | Vrouw | `ta-IN-PallaviNeural` | Algemeen |
 | `te-IN` <sup>Nieuw</sup> | Telugu (India) | Vrouw | `te-IN-ShrutiNeural` | Algemeen |
-| `th-TH` | Thais (Thai land) | Vrouw | `th-TH-AcharaNeural` | Algemeen |
+| `th-TH` | Thai (Thailand) | Vrouw | `th-TH-AcharaNeural` | Algemeen |
 | `th-TH` <sup>Nieuw</sup> | Thai (Thailand) | Vrouw | `th-TH-PremwadeeNeural` | Algemeen |
 | `tr-TR` | Turks (Turkije) | Vrouw | `tr-TR-EmelNeural` | Algemeen |
 | `vi-VN` <sup>Nieuw</sup> | Vietnamees (Vietnam) | Vrouw | `vi-VN-HoaiMyNeural` | Algemeen |
@@ -206,7 +206,6 @@ Zie [regio's](regions.md#standard-and-neural-voices)voor meer informatie over re
 | `zh-CN` | Mandarijn (vereenvoudigd Chinees, China) | Man | `zh-CN-YunyeNeural` | Geoptimaliseerd voor het opnemen van tekst in een verhaal |
 | `zh-HK` | Kantonees (traditioneel Chinees, Hongkong) | Vrouw | `zh-HK-HiuGaaiNeural` | Algemeen |
 | `zh-TW` | Mandarijn (traditioneel Chinees, Taiwan) | Vrouw | `zh-TW-HsiaoYuNeural` | Algemeen |
-
 
 > [!IMPORTANT]
 > De `en-US-JessaNeural` stem is gewijzigd in `en-US-AriaNeural` . Als u ' Jessa ' eerder gebruikt, converteer dan naar ' Aria '.
@@ -397,7 +396,7 @@ De API voor **spraak omzetting** ondersteunt verschillende talen voor conversie 
 
 Raadpleeg de volgende tabel voor ondersteunde talen voor de verschillende Speaker Recognition-Api's. Zie het [overzicht](speaker-recognition-overview.md) voor meer informatie over speaker Recognition.
 
-| Landinstelling | Taal | Tekstafhankelijke verificatie | Tekstonafhankelijke verificatie | Tekst onafhankelijke identificatie |
+| Landinstelling | Taal | Tekstafhankelijke verificatie | Tekstonafhankelijke verificatie | Tekstonafhankelijke identificatie |
 |----|----|----|----|----|
 | en-US | Engels (VS) | ja | ja | ja |
 |zh-CN    |Chinees (Mandarijn, vereenvoudigd)|    n.v.t.|    ja|    ja|

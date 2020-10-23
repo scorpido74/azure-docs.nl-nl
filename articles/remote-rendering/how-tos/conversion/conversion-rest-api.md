@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 5c638b434ceb31b57689b11971f48eb322b94726
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 341d24e73c9e07bb3155535d98a88145643c1692
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87985611"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201780"
 ---
 # <a name="use-the-model-conversion-rest-api"></a>De REST API voor modelconversie gebruiken
 
@@ -54,7 +54,7 @@ Retourneert de ID van de actieve conversie, verpakt in een JSON-document. De vel
 #### <a name="request-body"></a>Aanvraagbody
 
 > [!NOTE]
-> Alles onder `input.folderPath` wordt opgehaald om de conversie uit te voeren op Azure. Als `input.folderPath` niet wordt opgegeven, wordt de volledige inhoud van de container opgehaald. Alle blobs en mappen die worden opgehaald, moeten [geldige Windows-bestands namen](https://docs.microsoft.com/windows/win32/fileio/naming-a-file#naming-conventions)hebben.
+> Alles onder `input.folderPath` wordt opgehaald om de conversie uit te voeren op Azure. Als `input.folderPath` niet wordt opgegeven, wordt de volledige inhoud van de container opgehaald. Alle blobs en mappen die worden opgehaald, moeten [geldige Windows-bestands namen](/windows/win32/fileio/naming-a-file#naming-conventions)hebben.
 
 ```json
 {
@@ -91,7 +91,7 @@ De aanvraag tekst is hetzelfde als in de bovenstaande REST-aanroep maken, maar d
 > Deze SAS URI-tokens zijn de query teken reeksen en niet de volledige URI. 
 
 > [!NOTE]
-> Alles onder `input.folderPath` wordt opgehaald om de conversie uit te voeren op Azure. Als `input.folderPath` niet wordt opgegeven, wordt de volledige inhoud van de container opgehaald. Alle blobs en mappen die worden opgehaald, moeten [geldige Windows-bestands namen](https://docs.microsoft.com/windows/win32/fileio/naming-a-file#naming-conventions)hebben.
+> Alles onder `input.folderPath` wordt opgehaald om de conversie uit te voeren op Azure. Als `input.folderPath` niet wordt opgegeven, wordt de volledige inhoud van de container opgehaald. Alle blobs en mappen die worden opgehaald, moeten [geldige Windows-bestands namen](/windows/win32/fileio/naming-a-file#naming-conventions)hebben.
 
 ```json
 {

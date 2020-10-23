@@ -386,7 +386,7 @@
       items:
         - name: Overzicht
           href: security-overview.md
-        - name: Op rollen gebaseerd toegangsbeheer
+        - name: Op rollen gebaseerd toegangsbeheer voor Azure
           href: backup-rbac-rs-vault.md
         - name: Voorlopig verwijderen
           items:
@@ -406,8 +406,6 @@
           href: backup-encryption.md
         - name: Versleuteling met door de klant beheerde sleutels
           href: encryption-at-rest-with-cmk.md
-        - name: Ingebouwde beveiligingsmaatregelen
-          href: backup-security-controls.md
         - name: Besturingselementen voor beveiliging van Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md

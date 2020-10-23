@@ -4,12 +4,12 @@ description: Toepassings prestatie bewaking voor Java-toepassingen die worden ui
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 9b90f8b9336111438b4b832d557d448470959255
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36f2add41457d1d82b0efd6c6804496018c85225
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537654"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215260"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Configuratie opties-Java zelfstandige agent voor Azure Monitor Application Insights
 
@@ -164,9 +164,10 @@ Als u bepaalde JMX-metrische gegevens hebt die u wilt vastleggen:
 }
 ```
 
-U kunt de JMX-metrische gegevens ook instellen met behulp van de omgevings variabele `APPLICATIONINSIGHTS_JMX_METRICS` .
+De waarden voor de numerieke en Booleaanse JMX-metriek worden ondersteund. Booleaanse JMX-metrische gegevens worden toegewezen aan `0` voor onwaar en `1` voor waar.
 
-De inhoud van deze omgevings variabele moet JSON-gegevens zijn die overeenkomen met de bovenstaande structuur, bijvoorbeeld `[{"objectName": "java.lang:type=Runtime", "attribute": "Uptime", "display": "JVM uptime (millis)"}, {"objectName": "java.lang:type=MemoryPool,name=Metaspace", "attribute": "Usage.used", "display": "MetaSpace Used"}]`
+[//]: # "Opmerking: APPLICATIONINSIGHTS_JMX_METRICS hier niet te documenteren"
+[//]: # "JSON embedded in env var is rommelf en moet alleen worden gedocumenteerd voor het scenarioloze koppeling"
 
 ## <a name="micrometer-including-metrics-from-spring-boot-actuator"></a>Micrometer (inclusief metrische gegevens van de lente-boot-klep)
 

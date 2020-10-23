@@ -7,12 +7,12 @@ services: web-application-firewall
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: rimansdo
-ms.openlocfilehash: 937f220980d602b755b6329da4d93df0e4b372ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 564af59c473d5c3f55bef059905500496adf060c
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86224057"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165907"
 ---
 # <a name="azure-web-application-firewall-and-azure-policy"></a>Azure Web Application firewall en Azure Policy
 
@@ -44,7 +44,7 @@ Er zijn verschillende ingebouwde Azure-beleids regels voor het beheren van WAF-r
 3.  Selecteer op de pagina Toewijzingen het pictogram **beleid** aan de bovenkant.
 
 [!div class="mx-imgBorder"]
-![Azure Web Application Firewall](../media/waf-azure-policy/assign-policy.png)
+![Scherm opname van het tabblad basis beginselen op de pagina beleid toewijzen.](../media/waf-azure-policy/assign-policy.png)
 
 4.  Werk op het tabblad basis beginselen van beleid toewijzen de volgende velden bij:
     1.  **Bereik**: Selecteer wat Azure-abonnementen en-resource groepen moeten worden beïnvloed door de Azure Policy.
@@ -52,7 +52,7 @@ Er zijn verschillende ingebouwde Azure-beleids regels voor het beheren van WAF-r
     3.  **Beleids definitie**: selecteer de Azure Policy die u wilt Toep assen op het bereik met uitsluitingen. Typ ' Web Application Firewall ' in de zoek balk om de relevante Web Application firewall-Azure Policy te kiezen.
 
 [!div class="mx-imgBorder"]
-![Azure Web Application Firewall](../media/waf-azure-policy/policy-listing.png)
+![Scherm opname van de beschik bare beleids definities.](../media/waf-azure-policy/policy-listing.png)
 
 
 5.  Selecteer het tabblad **para meters** en werk de beleids parameters bij. Als u verder wilt verduidelijken wat de para meter doet, houdt u de muis aanwijzer boven het info pictogram naast de parameter naam voor verdere uitleg.

@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 12fb644430d4bfd6444c6bbf09d37b4662ca6fd1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 610112f9374f2ca39a8df4b849aeda4abf965e57
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87810102"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097419"
 ---
 # <a name="quickstart-create-a-xamarin-ios-app-with-azure-spatial-anchors"></a>Quickstart: Een Xamarin iOS-app maken met Azure Spatial Anchors
 
@@ -33,7 +33,7 @@ U leert het volgende:
 Zorg ervoor dat u over het volgende beschikt om deze snelstart te voltooien:
 - Een Mac met macOS High Sierra (10.13) of hoger met:
   - De meest recente versie van Xcode en iOS SDK die is geïnstalleerd vanuit de [App Store](https://itunes.apple.com/us/app/xcode/id497799835?mt=12).
-  - Een up-to-date versie van <a href="https://docs.microsoft.com/visualstudio/mac/installation?view=vsmac-2019" target="_blank">Visual Studio voor Mac 8.1+</a>.
+  - Een up-to-date versie van <a href="/visualstudio/mac/installation?view=vsmac-2019" target="_blank">Visual Studio voor Mac 8.1+</a>.
   - <a href="https://git-scm.com/download/mac" target="_blank">Git voor macOS</a>.
   - <a href="https://git-lfs.github.com/">Git LFS</a>.
 

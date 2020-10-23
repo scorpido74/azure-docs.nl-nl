@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: 8dfc1471955a6d10199a078922151ff3aeda4294
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17daef18d87c4b5c906694ab1394694b32b6b130
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88929483"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164857"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Werken met Azure Functions Core Tools
 
@@ -166,7 +166,7 @@ func init MyFunctionProj
 ```
 
 >[!IMPORTANT]
-> Java maakt gebruik van een Maven-archetype om het lokale functions-project te maken, samen met uw eerste HTTP-geactiveerde functie. Gebruik de volgende opdracht om uw Java-project te maken: `mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype` . Zie de [opdracht regel Quick](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)start voor een voor beeld van het gebruik van de Maven-archetype.  
+> Java maakt gebruik van een Maven-archetype om het lokale functions-project te maken, samen met uw eerste HTTP-geactiveerde functie. Gebruik de volgende opdracht om uw Java-project te maken: `mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype` . Zie de [opdracht regel Quick](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)start voor een voor beeld van het gebruik van de Maven-archetype.  
 
 Wanneer u een project naam opgeeft, wordt een nieuwe map met die naam gemaakt en geïnitialiseerd. Anders wordt de huidige map geïnitialiseerd.  
 In versie 3. x/2. x, wanneer u de opdracht uitvoert, moet u een runtime voor uw project kiezen. 
@@ -230,9 +230,9 @@ Zie [Azure functions bindings uitbreidingen registreren](functions-bindings-regi
 
 Deze instellingen worden standaard niet automatisch gemigreerd wanneer het project wordt gepubliceerd naar Azure. Gebruik de `--publish-local-settings` Switch [Wanneer u publiceert](#publish) om ervoor te zorgen dat deze instellingen worden toegevoegd aan de functie-app in Azure. Houd er rekening mee dat waarden in **Connections Tring** nooit worden gepubliceerd.
 
-De waarden van de functie-app-instellingen kunnen ook in uw code worden gelezen als omgevings variabelen. Zie de sectie omgevings variabelen van deze taalspecifieke naslag onderwerpen voor meer informatie:
+De instellingen van de functie-app kunnen in uw code ook worden gelezen als omgevingsvariabelen. Raadpleeg het gedeelte Omgevingsvariabelen van deze taalspecifieke referentie-onderwerpen voor meer informatie:
 
-* [Vooraf gecompileerde C#](functions-dotnet-class-library.md#environment-variables)
+* [C# vooraf gecompileerd](functions-dotnet-class-library.md#environment-variables)
 * [C#-script (.csx)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
@@ -574,15 +574,11 @@ De aanbevolen manier om de uitvoering van uw functies te controleren is door te 
 
 ### <a name="application-insights-integration"></a>Integratie van Application Insights
 
-Application Insights integratie moet worden ingeschakeld wanneer u de functie-app in azure maakt. Als uw functie-app om een bepaalde reden niet is verbonden met een Application Insights-exemplaar, is het eenvoudig om deze integratie uit te voeren in de Azure Portal. 
-
-[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
+Application Insights integratie moet worden ingeschakeld wanneer u de functie-app in azure maakt. Als uw functie-app om een bepaalde reden niet is verbonden met een Application Insights-exemplaar, is het eenvoudig om deze integratie uit te voeren in de Azure Portal. Zie [Application Insights-integratie inschakelen](configure-monitoring.md#enable-application-insights-integration)voor meer informatie.
 
 ### <a name="enable-streaming-logs"></a>Streaming-logboeken inschakelen
 
 U kunt een stroom weer geven van de logboek bestanden die worden gegenereerd door uw functies in een opdracht regel sessie op uw lokale computer. 
-
-#### <a name="native-streaming-logs"></a>Systeem eigen streaming-logboeken
 
 [!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
 

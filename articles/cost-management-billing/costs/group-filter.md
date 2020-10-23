@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 82e542eafe1578a969c4348fe7562ba1da106e2c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: ac9828ca61009eb3ee39412169b2b454b9ecbd00
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683399"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131867"
 ---
 # <a name="group-and-filter-options-in-cost-analysis"></a>Groeperings- en filteropties in kostenanalyse
 
@@ -49,10 +49,10 @@ De volgende tabel bevat een aantal van de meest gebruikte groeperings- en filter
 | **Servicenaam** of **metercategorie** | Kosten opsplitsen per Azure-service. | Aankopen en het gebruik van Marketplace worden weergegeven als **Niet van toepassing** of **Niet-toegewezen**. |
 | **Servicelaag** of **Subcategorie van de meter** | Kosten opsplitsen per subclassificatie van de Azure-gebruiksmeter. | Aankopen en het gebruik van Marketplace worden weergegeven als **Niet van toepassing** of **Niet-toegewezen**. |
 | **Abonnement** | Kosten opsplitsen per Azure-abonnement en gekoppeld AWS-account. | Aankopen en tenantresources worden mogelijk als **Niet van toepassing** weergegeven. |
-| **Tag** | Kosten opsplitsen per tagwaarde voor een specifieke tagsleutel. | Tags zijn niet beschikbaar voor: aankopen, tenantresources die niet zijn gekoppeld aan abonnementen, abonnementsresources die niet zijn geïmplementeerd naar een resourcegroep, of klassieke resources. Sommige services bevatten geen tags in gebruiksgegevens. Meer informatie over de [ondersteuning voor tags voor elk resourcetype](https://docs.microsoft.com/azure/azure-resource-manager/management/tag-support). |
+| **Tag** | Kosten opsplitsen per tagwaarde voor een specifieke tagsleutel. | Tags zijn niet beschikbaar voor: aankopen, tenantresources die niet zijn gekoppeld aan abonnementen, abonnementsresources die niet zijn geïmplementeerd naar een resourcegroep, of klassieke resources. Sommige services bevatten geen tags in gebruiksgegevens. Meer informatie over de [ondersteuning voor tags voor elk resourcetype](../../azure-resource-manager/management/tag-support.md). |
 
 Zie [Meer informatie over de gebruiksvoorwaarden in uw bestand voor Azure-gebruik en -kosten](../understand/understand-usage.md) voor meer informatie over de gebruiksvoorwaarden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Beginnen met kosten analyseren](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis).
+- [Beginnen met kosten analyseren](./quick-acm-cost-analysis.md).

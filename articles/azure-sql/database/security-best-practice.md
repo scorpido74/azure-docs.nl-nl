@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: e418e64fe9fbe98fbd8da4e75a81c05d5e3d118d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f1ebbbfed3b3a39e43986a385be87d65d70b175
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90885173"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92427267"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Playbook voor het adresseren van algemene beveiligings vereisten met Azure SQL Database en Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -236,7 +236,7 @@ Wijs alleen de benodigde [machtigingen](https://docs.microsoft.com/sql/relationa
        - [ALTER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql)
        - [SERVER FUNCTIE WIJZIGEN](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql)
     1. Wijs vervolgens machtigingen toe aan rollen.
-       - [GRANT](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql)
+       - [Geef](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql)
   - Zorg ervoor dat u geen gebruikers toewijst aan overbodige rollen.
 
 - In Azure Resource Manager:
@@ -791,12 +791,14 @@ De meeste beveiligings standaarden zijn van toepassing op de beschik baarheid va
 
 - Azure biedt ingebouwde, hoge Beschik baarheid [met SQL database en SQL Managed instance](high-availability-sla.md)
 
-- De laag Bedrijfskritiek bevat failover-groepen, zones voor meerdere Beschik baarheid, volledige en differentiële logboek back-ups en herstel naar een bepaald tijdstip, back-ups die standaard zijn ingeschakeld:  
-  - [Redundante configuratie met hoge Beschik baarheid-zone](high-availability-sla.md#zone-redundant-configuration)
+- De laag Bedrijfskritiek bevat failover-groepen, volledige en differentiële logboek back-ups en herstel van back-ups op tijdstippen die standaard zijn ingeschakeld:  
   - [Automatische back-ups](automated-backups-overview.md)
   - [Een Data Base herstellen met behulp van geautomatiseerde back-ups van data bases-herstel punt in tijd](recovery-using-backups.md#point-in-time-restore)
 
-- Aanvullende functies voor bedrijfs continuïteit, zoals groepen voor automatische failover in verschillende Azure geografische gebieden, kunnen worden geconfigureerd zoals hier wordt beschreven: [overzicht van bedrijfs continuïteit](business-continuity-high-availability-disaster-recover-hadr-overview.md)
+- Aanvullende functies voor bedrijfs continuïteit, zoals de zone redundante configuratie en automatische failover-groepen in verschillende Azure geografische gebieden kunnen worden geconfigureerd: 
+    - [Redundante configuratie met hoge Beschik baarheid-zone voor Premium-& Bedrijfskritiek service lagen](high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability)
+    - [Redundante configuratie met hoge Beschik baarheid-zone voor Algemeen servicelaag](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)
+    - [Overzicht van bedrijfs continuïteit](business-continuity-high-availability-disaster-recover-hadr-overview.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 

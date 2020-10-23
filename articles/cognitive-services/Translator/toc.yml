@@ -4,7 +4,7 @@
   items:
     - name: Wat is Translator?
       href: translator-info-overview.md
-    - name: Snelstartgids
+    - name: Snelstart
       href: quickstart-translator.md
     - name: Taalondersteuning
       href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
@@ -84,6 +84,8 @@
           href: request-limits.md
     - name: Resources
       items:
+        - name: Opties voor ondersteuning en hulp
+          href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context
         - name: Codevoorbeelden op GitHub
           href: 'https://aka.ms/TranslatorGitHub'
         - name: Veelgestelde vragen
@@ -94,8 +96,6 @@
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
         - name: Naleving
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
 - name: Custom Translator
   items:
     - name: Overzicht
@@ -148,6 +148,8 @@
           href: custom-translator/unsupported-language-deployments.md
     - name: Resources
       items:
+        - name: Opties voor ondersteuning en hulp
+          href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context
         - name: Woordenlijst
           href: custom-translator/glossary.md
         - name: Veelgestelde vragen
@@ -158,5 +160,3 @@
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
         - name: Versleuteling
           href: translator-encryption-of-data-at-rest.md
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'

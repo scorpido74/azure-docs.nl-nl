@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 02/06/2020
+ms.date: 10/19/2020
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: d1059bae047774864868fbe90df50a877f9a3869
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d27e5b22fc0e24850a8c454ef1f07e77341ac15a
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798054"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282533"
 ---
 # <a name="use-collections-in-the-my-apps-portal"></a>Verzamelingen gebruiken in de portal Mijn apps
 
@@ -32,7 +32,7 @@ Verzamelingen zijn verschillende app-weergaven die u in de portal **Mijn apps** 
 
 In de lijst met verzamelingen in de portal **Mijn apps** wordt standaard de verzameling **Alle apps** getoond, die elke app bevat waartoe u toegang hebt:
 
-![Pagina Alle apps in de portal Mijn apps](media/my-applications-portal-workspaces/my-apps-all.png)
+![Pagina Alle apps in de portal Mijn apps](media/my-applications-portal-workspaces/my-apps-all-apps.png)
 
 Alle andere verzamelingen die in deze lijst worden weergeven, zijn door uw beheerder gemaakt en met u gedeeld. U kunt een van deze verzamelingen kiezen om een reeks apps met een groter bereik te kunnen zien, zoals *Ondersteuning* in het volgende voorbeeld:
 

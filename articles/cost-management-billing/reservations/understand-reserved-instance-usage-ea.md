@@ -9,12 +9,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 20a9fb6a158134ffc18dc5bbb7eddd34d2b79562
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6e51363ff2f3782b77288f9dc1fcb8e59e9ffe0c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682005"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151785"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Reserveringskosten en gebruiksgegevens voor Enterprise Agreement opvragen
 
@@ -55,7 +55,7 @@ Er zijn aanpassingen doorgevoerd in andere gegevens die beschikbaar zijn voor Az
 - Term: 12 of 36 maanden.
 - RINormalizationRatio: beschikbaar onder AdditionalInfo. Dit is de verhouding waarmee de reservering wordt toegepast op de gebruiksrecord. Als flexibiliteit van instantiegrootte is ingeschakeld voor uw reservering, kan dit van toepassing zijn op andere grootten. De waarde toont de verhouding waarmee de reservering is toegepast voor de gebruiksrecord.
 
-[Zie de velddefinitie](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#definitions)
+[Zie de velddefinitie](/rest/api/consumption/usagedetails/list#definitions)
 
 ## <a name="get-azure-consumption-and-reservation-usage-data-using-api"></a>Gebruiks- en reserveringsgegevens van Azure opvragen met een API
 
@@ -71,7 +71,7 @@ Hier ziet u een voorbeeld van een aanroep naar de API voor gebruiksgegevens:
 https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-05-01&amp;$filter={filter}
 ```
 
-Zie het artikel over [de API voor gebruiksgegevens](https://docs.microsoft.com/rest/api/consumption/usagedetails/list) voor meer informatie over {enrollmentId} en {billingPeriodId}.
+Zie het artikel over [de API voor gebruiksgegevens](/rest/api/consumption/usagedetails/list) voor meer informatie over {enrollmentId} en {billingPeriodId}.
 
 De informatie in de onderstaande tabel over metrische gegevens en filters kan helpen bij het oplossen van veelvoorkomende reserveringsproblemen.
 

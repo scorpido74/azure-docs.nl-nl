@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75081c218536d17798d1ffa788f79130211f72d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: acd2f49f009a8bd71d8cfc9f442e579bb1ad396b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89318424"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371882"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory-implementatieplannen
 Zoekt u end-to-end-richt lijnen voor het implementeren van Azure Active Directory (Azure AD)-mogelijkheden? Met Azure AD-implementatie plannen kunt u de bedrijfs waarde, plannings overwegingen en operationele procedures door lopen die nodig zijn om algemene Azure AD-mogelijkheden te implementeren.
@@ -54,7 +54,7 @@ Met een pilot kunt u testen met een kleine groep voordat u een mogelijkheid voor
 
 In uw eerste golf, richt IT, bruikbaarheid en andere geschikte gebruikers die kunnen testen en feedback geven. Deze feedback moet worden gebruikt om de communicatie en instructies die u naar uw gebruikers verzendt verder te ontwikkelen en om inzicht te krijgen in de soorten problemen die uw ondersteunings medewerkers kunnen zien. 
 
-Het uitbreiden van de implementatie naar grotere groepen gebruikers moet worden uitgevoerd door het bereik van de doel groep (en) te verg Roten. Dit kan worden gedaan via een [dynamisch groepslid maatschap](../users-groups-roles/groups-dynamic-membership.md)of door gebruikers hand matig toe te voegen aan de doel groep (en).
+Het uitbreiden van de implementatie naar grotere groepen gebruikers moet worden uitgevoerd door het bereik van de doel groep (en) te verg Roten. Dit kan worden gedaan via een [dynamisch groepslid maatschap](../enterprise-users/groups-dynamic-membership.md)of door gebruikers hand matig toe te voegen aan de doel groep (en).
 
 
 ## <a name="deploy-authentication"></a>Verificatie implementeren

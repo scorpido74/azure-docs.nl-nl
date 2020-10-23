@@ -9,12 +9,12 @@ ms.tgt_pltfrm: arduino
 ms.date: 12/19/2018
 ms.author: liydu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 412a3e78006d263858ff0e28af52cf11bf44c7bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be26c6fe03dac9b9ff9dbff4a2bdce391ec0837e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89004337"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147873"
 ---
 # <a name="use-iot-devkit-az3166-with-azure-functions-and-cognitive-services-to-make-a-language-translator"></a>IoT DevKit AZ3166 met Azure Functions en Cognitive Services gebruiken om een taal vertaler te maken
 
@@ -26,7 +26,7 @@ In dit artikel leert u hoe u IoT DevKit als een taal conversie maakt met behulp 
 
 Voer eerst de volgende taken uit om de stappen in deze zelf studie uit te voeren:
 
-* Bereid uw DevKit voor door de stappen in [Connect IOT DEVKIT AZ3166 te volgen op Azure IOT hub in de Cloud](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started).
+* Bereid uw DevKit voor door de stappen in [Connect IOT DEVKIT AZ3166 te volgen op Azure IOT hub in de Cloud](./iot-hub-arduino-iot-devkit-az3166-get-started.md).
 
 ## <a name="create-azure-cognitive-service"></a>Een Azure cognitieve service maken
 
@@ -152,4 +152,4 @@ U hebt geleerd hoe u de IoT DevKit als een vertaler kunt gebruiken met behulp va
 Ga naar de andere zelf studies voor meer informatie over:
 
 > [!div class="nextstepaction"]
-> [Een verbinding maken tussen IoT DevKit AZ3166 en de oplossings versneller voor externe controle van Azure IoT](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring)
+> [Een verbinding maken tussen IoT DevKit AZ3166 en de oplossings versneller voor externe controle van Azure IoT](./iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring.md)

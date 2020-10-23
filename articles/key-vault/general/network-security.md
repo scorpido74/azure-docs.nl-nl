@@ -7,19 +7,63 @@ manager: ravijan
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
-ms.date: 09/14/2020
+ms.date: 10/01/2020
 ms.author: sudbalas
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: bc25a2ada3052689bc9dc4585c238fe19cb2a341
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: c375defe5fd8356d64879a65d6f09f40ea30271d
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90087389"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042467"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Azure Key Vault-firewalls en virtuele netwerken configureren
 
-In dit artikel vindt u stapsgewijze instructies voor het configureren van Azure Key Vault-firewalls en virtuele netwerken om de toegang tot uw sleutelkluis te beperken. Met de [service-eindpunten van het virtuele netwerk voor Key Vault](overview-vnet-service-endpoints.md) kunt u de toegang tot een opgegeven virtueel netwerk en een aantal IPv4-adresbereiken (internetprotocol versie 4) beperken.
+Dit artikel bevat richtlijnen voor het configureren van de Azure Key Vault-firewall. In dit document worden de verschillende configuraties voor de Key Vault-firewall in detail beschreven en vindt u stapsgewijze instructies voor het configureren van Azure Key Vault om met andere toepassingen en Azure-Services te werken.
+
+## <a name="firewall-settings"></a>Firewallinstellingen
+
+Deze sectie gaat over de verschillende manieren waarop de Azure Key Vault-firewall kan worden geconfigureerd.
+
+### <a name="key-vault-firewall-disabled-default"></a>Key Vault-firewall uitgeschakeld (standaard)
+
+Wanneer u een nieuwe sleutel kluis maakt, wordt de Azure Key Vault-firewall standaard uitgeschakeld. Alle toepassingen en Azure-services hebben toegang tot de sleutelkluis en verzenden aanvragen naar de sleutelkluis. Dat betekent echter niet dat elke gebruiker bewerkingen kan uitvoeren op uw sleutelkluis. De sleutelkluis beperkt nog wel de toegang tot geheimen, sleutels en certificaten die in de sleutelkluis zijn opgeslagen door Azure Active Directory-verificatie en toegangsbeleidmachtigingen te vereisen. Meer informatie over sleutelkluisverificatie vindt u in [dit document](https://docs.microsoft.com/azure/key-vault/general/authentication-fundamentals) over de basisprincipes van de sleutelkluisverificatie.
+
+### <a name="key-vault-firewall-enabled-trusted-services-only"></a>Key Vault-firewall ingeschakeld (alleen vertrouwde services)
+
+Wanneer u de Key Vault-firewall inschakelt, krijgt u de optie om vertrouwde Microsoft-services toe te staan deze firewall over te slaan. De lijst met vertrouwde services bevat niet elke Azure-service. Zo bevindt Azure DevOps zich niet in de lijst met vertrouwde services. **Dit betekent niet dat services die niet worden weergegeven in de lijst met vertrouwde services niet worden vertrouwd of onveilig zijn.** De lijst met vertrouwde services bevat services waarbij Microsoft alle code beheert die op de service wordt uitgevoerd. Omdat gebruikers aangepaste code kunnen schrijven in Azure-services zoals Azure DevOps, biedt Microsoft geen optie om een algemene goedkeuring voor de service te maken. Bovendien betekent het feit dat een service op de lijst met vertrouwde services staat, niet dat deze in alle scenario's is toegestaan.
+
+Als u wilt bepalen of een service die u wilt gebruiken, zich in de lijst met vertrouwde services bevindt, raadpleegt u [dit document](https://docs.microsoft.com/azure/key-vault/general/overview-vnet-service-endpoints#trusted-services).
+
+### <a name="key-vault-firewall-enabled-ipv4-addresses-and-ranges---static-ips"></a>Key Vault Firewall ingeschakeld (IPv4-adressen en -bereiken - vaste IP-adressen)
+
+Als u een bepaalde service wilt toestaan om toegang te krijgen tot de sleutelkluis via de firewall van Key Vault, kunt u het IP-adres ervan toevoegen aan de acceptatielijst van de sleutelkluis. Deze configuratie is het meest geschikt voor services die gebruikmaken van vaste IP-adressen of bekende bereiken.
+
+Als u een IP-adres of bereik van een Azure-resource, zoals een web-app of logische app, wilt toestaan, voert u de volgende stappen uit.
+
+1. Aanmelden bij Azure Portal
+1. Selecteer de resource (specifiek exemplaar van de service)
+1. Klik op de blade 'Eigenschappen' onder 'Instellingen'
+1. Zoek het veld 'IP-adres'.
+1. Kopieer deze waarde of dit bereik en voer het in in de acceptatielijst van de sleutelkluis.
+
+Als u een hele Azure-service wilt doorlaten door de Key Vault-firewall, gebruikt u [deze](https://www.microsoft.com/download/details.aspx?id=41653) lijst met openbaar gedocumenteerde IP-adressen voor Azure-datacenters. Zoek de IP-adressen die zijn gekoppeld aan de service die u wilt gebruiken in de gewenste regio en voeg deze IP-adressen toe aan de firewall van de sleutelkluis met behulp van de bovenstaande stappen.
+
+### <a name="key-vault-firewall-enabled-virtual-networks---dynamic-ips"></a>Key Vault Firewall ingeschakeld (virtuele netwerken - dynamische IP-adressen)
+
+Als u een Azure-resource zoals een virtuele machine wilt toelaten via de sleutelkluis, kunt u mogelijk geen vaste IP-adressen gebruiken, en u wilt mogelijk niet alle IP-adressen voor Azure Virtual Machines toegang geven tot uw sleutelkluis.
+
+In dit geval moet u de resource in een virtueel netwerk maken en vervolgens verkeer van het specifieke virtuele netwerk en subnet toestaan om toegang te krijgen tot uw sleutelkluis. Volg de volgende stappen om dit te doen.
+
+1. Aanmelden bij Azure Portal
+1. Selecteer de sleutelkluis die u wilt configureren
+1. Selecteer de blade 'Netwerken'
+1. Selecteer '+Bestaand virtueel netwerk toevoegen'
+1. Selecteer het virtuele netwerk en subnet dat u wilt toelaten door de firewall van de sleutelkluis.
+
+### <a name="key-vault-firewall-enabled-private-link"></a>Key Vault Firewall ingeschakeld (Private Link)
+
+Zie het document [hier](https://docs.microsoft.com/azure/key-vault/general/private-link-service)als u wilt weten hoe u een verbinding met een privékoppeling kunt configureren in uw sleutelkluis.
 
 > [!IMPORTANT]
 > Als de firewallregels van kracht zijn, kunnen gebruikers alleen Key Vault-[gegevenslaagbewerkingen](secure-your-key-vault.md#data-plane-access-control) uitvoeren wanneer hun aanvragen afkomstig zijn van toegestane virtuele netwerken of IPv4-adresbereiken. Dit is tevens van toepassing voor toegang tot Key Vault vanuit Azure Portal. Hoewel gebruikers kunnen bladeren naar een sleutelkluis van Azure Portal, kunnen ze mogelijk geen sleutels, geheimen of certificaten weergeven als hun clientcomputer niet in de lijst met toegestane clients staat. Dit is ook van invloed op de Key Vault-kiezer door andere Azure-Services. Gebruikers zien mogelijk een lijst met sleutelkluizen, maar geen lijst met sleutels als firewallregels hun clientcomputer weigeren.

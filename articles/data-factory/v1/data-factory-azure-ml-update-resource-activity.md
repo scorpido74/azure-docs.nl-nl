@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: bed66ab8f3dc3db47b94070cbbeb64fb91163f8c
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: d0dd7f71c21e223203fb0e695ba3139eaea0aa81
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014457"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368822"
 ---
 # <a name="updating-azure-machine-learning-studio-classic-models-using-update-resource-activity"></a>Azure Machine Learning Studio-modellen (klassiek) bijwerken met resource activiteit bijwerken
 
@@ -44,7 +44,7 @@ Na verloop van tijd moeten de voorspellende modellen in de Azure Machine Learnin
 1. Maak een experiment in [Azure machine learning Studio (klassiek)](https://studio.azureml.net).
 2. Wanneer u tevreden bent met het model, gebruikt u Azure Machine Learning Studio (klassiek) voor het publiceren van webservices voor zowel het **trainings experiment** als het scoren/**voorspellende experiment**.
 
-In de volgende tabel worden de webservices beschreven die in dit voor beeld worden gebruikt.  Zie [Software modellen opnieuw trainen machine learning Studio (klassiek)](../../machine-learning/studio/retrain-machine-learning-model.md) voor meer informatie.
+In de volgende tabel worden de webservices beschreven die in dit voor beeld worden gebruikt.  Zie [Software modellen opnieuw trainen Azure machine learning Studio (klassiek)](../../machine-learning/studio/retrain-machine-learning-model.md) voor meer informatie.
 
 - **Training-webservice** : ontvangt trainings gegevens en produceert getrainde modellen. De uitvoer van het opnieuw trainen is een. ilearner-bestand in een Azure Blob-opslag. Het **standaard eindpunt** wordt automatisch voor u gemaakt wanneer u het trainings experiment als een webservice publiceert. U kunt meer eind punten maken, maar in het voor beeld wordt alleen het standaard eindpunt gebruikt.
 - **Scores-webservice** : ontvangt voor beelden zonder gelabeld gegevens en maakt voor spellingen. De uitvoer van voor spellingen kan verschillende vormen hebben, zoals een CSV-bestand of rijen in Azure SQL Database, afhankelijk van de configuratie van het experiment. Het standaard eindpunt wordt automatisch voor u gemaakt wanneer u het voorspellende experiment als een webservice publiceert. 

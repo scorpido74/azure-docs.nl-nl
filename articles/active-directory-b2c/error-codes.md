@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/02/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0122fa43c9d99c01797e3523748e4f31b4b7469a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6ae806b7666d83652e6b82bac16d89f2f9ce7aa
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91664848"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215430"
 ---
 # <a name="error-codes-azure-active-directory-b2c"></a>Fout codes: Azure Active Directory B2C
 
@@ -61,6 +61,7 @@ De volgende fouten kunnen worden geretourneerd door de Azure Active Directory B2
 | `AADB2C90055` | In het bereik {0} dat is opgegeven in de aanvraag, moet een resource worden opgegeven, zoals https://example.com/calendar.read . |
 | `AADB2C90057` | De opgegeven toepassing is niet geconfigureerd om de OAuth-impliciete stroom toe te staan. |
 | `AADB2C90058` | De opgegeven toepassing is niet geconfigureerd om open bare clients toe te staan. |
+| `AADB2C99059` | De opgegeven aanvraag moet een code_challenge bevatten. Vereist voor apps met één pagina die gebruikmaken van de autorisatie code stroom.| 
 | `AADB2C90067` | De omleidings-URI van de post afmelding {0} heeft een ongeldige indeling. Geef een op https gebaseerde URL op zoals ' https://example.com/return ' of voor native-clients gebruik de IETF native client URI ' urn: IETF: WG: OAuth: 2.0: OOB '. |
 | `AADB2C90068` | De gegeven toepassing met de ID {0} ' ' is niet geldig voor deze service. Gebruik een toepassing die is gemaakt via de B2C-Portal en probeer het opnieuw. |
 | `AADB2C90075` | De claim uitwisseling ' {0} ' die is opgegeven in stap ' {1} ' heeft een HTTP-fout melding met de code ' {2} ' en de reden ' {3} ' geretourneerd. |

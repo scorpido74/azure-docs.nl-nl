@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 025b9b7e503f38a111bd158f17b7fbeec5b23579
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 51baa26cf78846bd0a719b8b86056e2ea8176155
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684980"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131085"
 ---
 # <a name="create-and-manage-azure-cost-allocation-rules-preview"></a>Azure-regels voor kostentoewijzing maken en beheren (preview-versie)
 
@@ -58,16 +58,16 @@ Wanneer kosten worden gedistribueerd op basis van de berekeningskosten, opslagko
 
 Wanneer kosten evenredig worden verdeeld over de totale kosten, wordt het evenredige percentage toegewezen door de som of de totale kosten van de geselecteerde doelen voor de huidige factureringsmaand.
 
-:::image type="content" source="./media/allocate-costs/cost-distribution.png" alt-text="Voorbeeld van een toewijzingspercentage" lightbox="./media/allocate-costs/cost-distribution.png" :::
+:::image type="content" source="./media/allocate-costs/cost-distribution.png" alt-text="Voorbeeld van het maken van een regelnaam" lightbox="./media/allocate-costs/cost-distribution.png" :::
 
 Eenmaal ingesteld, staan ​​de vooraf ingevulde percentages vast. Ze worden gebruikt voor alle actieve toewijzingen. De percentages worden alleen gewijzigd wanneer de regel handmatig wordt bijgewerkt.
 
 1. Selecteer een van de volgende opties in de lijst **Percentage vooraf aanvullen tot**.
     - **Gelijkmatig verdelen**: elk van de doelen ontvangt een gelijk percentage van de totale kosten.
     - **Totale kosten**: maakt een verhouding die evenredig is met de doelen op basis van de totale kosten. De verhouding wordt gebruikt om de kosten van de geselecteerde bronnen te verdelen.
-    - **Berekeningskosten**: maakt een verhouding tot de doelen op basis van hun Azure-berekeningskosten (resourcetypen in de [Microsoft.Compute](https://docs.microsoft.com/azure/templates/microsoft.compute/allversions)-naamruimte. De verhouding wordt gebruikt om de kosten te verdelen over de geselecteerde bronnen.
-    - **Opslagkosten**: maakt een verhouding die evenredig is met de doelen op basis van hun kosten voor Azure Storage (resourcetypen in de [Microsoft.Storage](https://docs.microsoft.com/azure/templates/microsoft.storage/allversions)-naamruimte). De verhouding wordt gebruikt om de kosten van de geselecteerde bronnen te verdelen.
-    - **Netwerkkosten**: maakt een verhouding die evenredig is met de doelen op basis van hun netwerkkosten voor Azure (resourcetypen in de [Microsoft.Network](https://docs.microsoft.com/azure/templates/microsoft.network/allversions)-naamruimte). De verhouding wordt gebruikt om de kosten van de geselecteerde bronnen te verdelen.
+    - **Berekeningskosten**: maakt een verhouding tot de doelen op basis van hun Azure-berekeningskosten (resourcetypen in de [Microsoft.Compute](/azure/templates/microsoft.compute/allversions)-naamruimte. De verhouding wordt gebruikt om de kosten te verdelen over de geselecteerde bronnen.
+    - **Opslagkosten**: maakt een verhouding die evenredig is met de doelen op basis van hun kosten voor Azure Storage (resourcetypen in de [Microsoft.Storage](/azure/templates/microsoft.storage/allversions)-naamruimte). De verhouding wordt gebruikt om de kosten van de geselecteerde bronnen te verdelen.
+    - **Netwerkkosten**: maakt een verhouding die evenredig is met de doelen op basis van hun netwerkkosten voor Azure (resourcetypen in de [Microsoft.Network](/azure/templates/microsoft.network/allversions)-naamruimte). De verhouding wordt gebruikt om de kosten van de geselecteerde bronnen te verdelen.
     - **Aangepast**: hiermee kan handmatig een geheel getalpercentage worden opgegeven. Het opgegeven totaal moet gelijk zijn aan 100%.
 1. Wanneer de regel is geconfigureerd, selecteert u **Maken**.
 
@@ -84,7 +84,7 @@ Als de kostentoewijzingsregel actief is, worden de kosten van de geselecteerde b
 
 U bekijkt de impact van de toewijzingsregel in de kostenanalyse. Ga in de Azure-portal naar [Abonnementen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Selecteer een abonnement in de lijst die is gericht op een actieve kostentoewijzingsregel. Selecteer vervolgens **Kostenanalyse** in het menu. Selecteer in kostenanalyse **Groeperen op** en selecteer vervolgens **Kostentoewijzing**. In de resulterende weergave ziet u een snelle kostenanalyse die door het abonnement is gegenereerd. De kosten die aan het abonnement zijn toegewezen, worden ook weergegeven, zoals in de volgende afbeelding.
 
-:::image type="content" source="./media/allocate-costs/cost-breakdown.png" alt-text="Voorbeeld van kostenuitsplitsing" lightbox="./media/allocate-costs/cost-breakdown.png" :::
+:::image type="content" source="./media/allocate-costs/cost-breakdown.png" alt-text="Voorbeeld van het maken van een regelnaam" lightbox="./media/allocate-costs/cost-breakdown.png" :::
 
 ### <a name="view-cost-allocation-for-a-resource-group"></a>Kostentoewijzing voor een resourcegroep weergeven
 
@@ -94,7 +94,7 @@ Gebruik een soortgelijk proces voor de impact van een kostentoewijzingsregel voo
 
 Navigeer in Azure Portal naar **Kostenbeheer en facturering** > **Kostenbeheer** > **Kostenanalyse**. Selecteer in Kostenanalyse **Filter toevoegen**. Selecteer **Tag**, kies de tagsleutel en tagwaarden waaraan kosten zijn toegewezen.
 
-:::image type="content" source="./media/allocate-costs/tagged-costs.png" alt-text="Voorbeeld van kosten voor items met tags" lightbox="./media/allocate-costs/tagged-costs.png" :::
+:::image type="content" source="./media/allocate-costs/tagged-costs.png" alt-text="Voorbeeld van het maken van een regelnaam" lightbox="./media/allocate-costs/tagged-costs.png" :::
 
 ## <a name="edit-an-existing-cost-allocation-rule"></a>Een bestaande regel voor kostentoewijzing bewerken
 
@@ -112,10 +112,10 @@ Op dit moment wordt kostentoewijzing ondersteund in Cost Management voor kostena
 De volgende items worden momenteel niet ondersteund door de openbare preview van kostentoewijzing:
 
 - Geplande [export](tutorial-export-acm-data.md)
-- Gegevens die worden weergegeven door de API [Gebruiksdetails](https://docs.microsoft.com/rest/api/consumption/usagedetails/list)
+- Gegevens die worden weergegeven door de API [Gebruiksdetails](/rest/api/consumption/usagedetails/list)
 - Gebied voor factureringsabonnementen
 - [Cost Management Power BI-app](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp)
-- [Power BI Desktop-connector](https://docs.microsoft.com/power-bi/connect-data/desktop-connect-azure-cost-management)
+- [Power BI Desktop-connector](/power-bi/connect-data/desktop-connect-azure-cost-management)
 
 ### <a name="are-costs-factored-into-budgets-and-forecast-views"></a>Worden kosten in rekening gebracht voor budgetten en prognoseweergaven?
 <a name="budgets-forecast"></a>
@@ -144,5 +144,5 @@ Regels die overlappende bronnen of overlappende doelen hebben, worden niet aanbe
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Toewijzingsregels maken of bijwerken met behulp van de [Rest API voor kostentoewijzing](https://go.microsoft.com/fwlink/?linkid=2135004)
+- Toewijzingsregels maken of bijwerken met behulp van de [Rest API voor kostentoewijzing](/rest/api/cost-management/costallocationrules)
 - Meer informatie over [hoe u uw cloudinvesteringen kunt optimaliseren met Azure Cost Management](cost-mgt-best-practices.md)

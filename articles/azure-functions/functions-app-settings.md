@@ -3,12 +3,12 @@ title: Naslaginformatie over app-instellingen voor Azure Functions
 description: Referentie documentatie voor de Azure Functions app-instellingen of omgevings variabelen.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: b17db828aeb19c3347c0db4babf0eee2b9d5f280
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d22ab643fb4ed7eae477c8f77d9621266d9146be
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589297"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165760"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Naslaginformatie over app-instellingen voor Azure Functions
 
@@ -23,7 +23,7 @@ Er zijn andere globale configuratie opties in de [host.jsop](functions-host-json
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
-De instrumentatie sleutel voor Application Insights. Gebruik alleen een van `APPINSIGHTS_INSTRUMENTATIONKEY` of `APPLICATIONINSIGHTS_CONNECTION_STRING` . Zie [Monitor Azure Functions](functions-monitoring.md) (Azure Functions bewaken) voor meer informatie. 
+De instrumentatie sleutel voor Application Insights. Gebruik alleen een van `APPINSIGHTS_INSTRUMENTATIONKEY` of `APPLICATIONINSIGHTS_CONNECTION_STRING` . Als Application Insights in een soevereine Cloud wordt uitgevoerd, gebruikt u `APPLICATIONINSIGHTS_CONNECTION_STRING` . Zie [How to configure Monitoring for Azure functions](configure-monitoring.md)voor meer informatie. 
 
 |Sleutel|Voorbeeldwaarde|
 |---|------------|
@@ -31,7 +31,12 @@ De instrumentatie sleutel voor Application Insights. Gebruik alleen een van `APP
 
 ## <a name="applicationinsights_connection_string"></a>APPLICATIONINSIGHTS_CONNECTION_STRING
 
-De connection string voor Application Insights. Gebruik `APPLICATIONINSIGHTS_CONNECTION_STRING` in plaats van `APPINSIGHTS_INSTRUMENTATIONKEY` wanneer uw functie-app de toegevoegde aanpassingen moet worden ondersteund met behulp van de Connection String. Zie [verbindings reeksen](../azure-monitor/app/sdk-connection-string.md)voor meer informatie. 
+De connection string voor Application Insights. Gebruik `APPLICATIONINSIGHTS_CONNECTION_STRING` in plaats van `APPINSIGHTS_INSTRUMENTATIONKEY` in de volgende gevallen:
+
++ Wanneer uw functie-app de toegevoegde aanpassingen vereist die worden ondersteund met behulp van de connection string. 
++ Wanneer uw Application Insights-exemplaar wordt uitgevoerd in een soevereine Cloud, waarvoor een aangepast eind punt nodig is.
+
+Zie [verbindings reeksen](../azure-monitor/app/sdk-connection-string.md)voor meer informatie. 
 
 |Sleutel|Voorbeeldwaarde|
 |---|------------|
@@ -44,7 +49,7 @@ Standaard gebruiken [functies proxy's](functions-proxies.md) een snelkoppeling v
 |Sleutel|Waarde|Beschrijving|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|Aanroepen met een back-end-URL die verwijst naar een functie in de lokale functie-app, worden niet rechtstreeks naar de functie verzonden. In plaats daarvan worden de aanvragen teruggestuurd naar de HTTP-frontend voor de functie-app.|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|onjuist|Aanroepen met een back-end-URL die verwijst naar een functie in de lokale functie-app, worden direct naar de functie doorgestuurd. Dit is de standaardwaarde. |
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|Aanroepen met een back-end-URL die verwijst naar een functie in de lokale functie-app, worden direct naar de functie doorgestuurd. Dit is de standaardwaarde. |
 
 ## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
 
@@ -53,7 +58,7 @@ Met deze instelling bepaalt u of de tekens `%2F` worden gedecodeerd als slashes 
 |Sleutel|Waarde|Beschrijving|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|Routerings parameters met gecodeerde slashes worden gedecodeerd. |
-|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|onjuist|Alle route parameters worden ongewijzigd door gegeven, wat het standaard gedrag is. |
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|Alle route parameters worden ongewijzigd door gegeven, wat het standaard gedrag is. |
 
 Denk bijvoorbeeld na over het proxies.jsbestand voor een functie-app in het `myfunction.com` domein.
 
@@ -126,7 +131,7 @@ Hiermee geeft u de opslag plaats of provider op die moet worden gebruikt voor sl
 
 |Sleutel|Voorbeeldwaarde|
 |---|------------|
-|AzureWebJobsSecretStorageType|Files|
+|AzureWebJobsSecretStorageType|Bestanden|
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
@@ -204,7 +209,7 @@ Zie [aangepaste afhankelijkheden](functions-reference-python.md#remote-build-wit
 
 _Deze instelling is momenteel beschikbaar als preview-versie._  
 
-Met deze instelling bepaalt u de logboek registratie van de Azure Functions Scale-controller. Zie [Scale-controller logboeken](functions-monitoring.md#scale-controller-logs-preview)voor meer informatie.
+Met deze instelling bepaalt u de logboek registratie van de Azure Functions Scale-controller. Zie [Scale-controller logboeken](functions-monitoring.md#scale-controller-logs)voor meer informatie.
 
 |Sleutel|Voorbeeldwaarde|
 |-|-|
@@ -264,7 +269,7 @@ Geldige waarden zijn ofwel een URL die wordt omgezet in de locatie van een imple
 
 Hiermee stelt u de tijd zone voor de functie-app in. 
 
-|Sleutel|OS|Voorbeeldwaarde|
+|Sleutel|Besturingssysteem|Voorbeeldwaarde|
 |---|--|------------|
 |\_tijd \_ zone van website|Windows|Eastern (standaard tijd)|
 |\_tijd \_ zone van website|Linux|America/New_York|

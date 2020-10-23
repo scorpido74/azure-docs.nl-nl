@@ -4,12 +4,12 @@ description: Dit artikel laat u zien hoe u de toegang tot Event Hubs-resources k
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: f0cdf37963e40d871ad1079e9ccd5d0eb61fa2c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5d52b82ad6bbcb8dc7c028d3eba25a584590840
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91270097"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332430"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Toegang tot Event Hubs resources verifiëren met behulp van Shared Access signatures (SAS)
 Shared Access Signature (SAS) biedt u gedetailleerde controle over het type toegang dat u verleent aan de clients die de Shared Access Signature hebben. Hier volgen enkele van de besturings elementen die u in een SAS kunt instellen: 
@@ -222,7 +222,7 @@ Voor het verifiëren van back-end-toepassingen die gebruikmaken van de gegevens 
 Zie de volgende artikelen:
 
 - [Autoriseren met SAS](authenticate-shared-access-signature.md)
-- [Autoriseren met behulp van Role-Base Access Control (RBAC)](authenticate-shared-access-signature.md)
+- [Autoriseren met behulp van Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](authenticate-shared-access-signature.md)
 - [Meer informatie over Event Hubs](event-hubs-about.md)
 
 Raadpleeg de volgende verwante artikelen:

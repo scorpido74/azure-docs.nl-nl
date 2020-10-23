@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviwer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: d234a121ee8f36389c79228d69a11d9fe999eb5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a966579e1acc02f1479c41520dcbbc58d420647c
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444772"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164513"
 ---
 # <a name="configure-always-encrypted-by-using-the-windows-certificate-store"></a>Always Encrypted configureren met behulp van het Windows-certificaat archief
 
@@ -97,7 +97,7 @@ SSMS biedt een wizard waarmee u Always Encrypted eenvoudig kunt configureren doo
 1. Vouw **data bases**  >  **Clinic**-  >  **tabellen**uit.
 2. Klik met de rechter muisknop op de tabel **patiënten** en selecteer **kolommen versleutelen** om de wizard always encrypted te openen:
 
-    ![Kolommen versleutelen](./media/always-encrypted-certificate-store-configure/encrypt-columns.png)
+    ![Scherm opname van de versleutelings Colunns... menu optie in de tabel patiënten.](./media/always-encrypted-certificate-store-configure/encrypt-columns.png)
 
 De wizard Always Encrypted bevat de volgende secties: **kolom selectie**, **configuratie van de hoofd sleutel** (CMK), **validatie**en **samen vatting**.
 
@@ -149,7 +149,7 @@ Nu Always Encrypted is ingesteld, kunt u een toepassing bouwen waarmee de versle
 1. Open Visual Studio en maak een nieuwe C#-console toepassing. Zorg ervoor dat uw project is ingesteld op **.NET Framework 4,6** of hoger.
 2. Geef het project de naam **AlwaysEncryptedConsoleApp** en klik op **OK**.
 
-![Nieuwe console toepassing](./media/always-encrypted-certificate-store-configure/console-app.png)
+![Scherm afbeelding met het nieuwe benoemde AlwaysEncryptedConsoleApp-project.](./media/always-encrypted-certificate-store-configure/console-app.png)
 
 ## <a name="modify-your-connection-string-to-enable-always-encrypted"></a>Wijzig uw connection string om Always Encrypted in te scha kelen
 
@@ -510,7 +510,7 @@ SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
 
 U kunt zien dat de versleutelde kolommen geen lees bare gegevens bevatten.
 
-   ![Nieuwe console toepassing](./media/always-encrypted-certificate-store-configure/ssms-encrypted.png)
+   ![Scherm opname met de versleutelde gegevens in de versleutelde kolommen.](./media/always-encrypted-certificate-store-configure/ssms-encrypted.png)
 
 Als u SSMS wilt gebruiken om toegang te krijgen tot de Lees bare gegevens, kunt u de para meter voor **kolom versleutelings instelling = ingeschakeld** toevoegen aan de verbinding.
 
@@ -518,7 +518,7 @@ Als u SSMS wilt gebruiken om toegang te krijgen tot de Lees bare gegevens, kunt 
 2. Klik op **Connect**  >  **Data base-engine** verbinden om het venster **verbinding maken met server** te openen en klik vervolgens op **Opties**.
 3. Klik op **extra verbindings parameters** en type **kolom versleutelings instelling = ingeschakeld**.
 
-    ![Nieuwe console toepassing](./media/always-encrypted-certificate-store-configure/ssms-connection-parameter.png)
+    ![Scherm opname van het tabblad Extra verbindings parameters met kolom versleutelings instelling = ingeschakeld in het vak.](./media/always-encrypted-certificate-store-configure/ssms-connection-parameter.png)
 4. Voer de volgende query uit op de **Clinic** -data base.
 
     ```tsql

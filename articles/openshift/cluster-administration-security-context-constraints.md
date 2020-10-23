@@ -7,14 +7,20 @@ ms.author: b-trconn
 ms.service: container-service
 ms.topic: article
 ms.date: 09/25/2019
-ms.openlocfilehash: 24163adcec889e9eedc2362ff1f01f00257a98f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb5c568f056a99187a0e7a78a6f89b206f2d8dec
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80063176"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220241"
 ---
-# <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>Beveiligings context beperkingen beheren in azure Red Hat open Shift 
+# <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>Beveiligings context beperkingen beheren in azure Red Hat open Shift
+
+> [!IMPORTANT]
+> Azure Red Hat open Shift 3,11 wordt 30 juni 2022 buiten gebruik gesteld. Ondersteuning voor het maken van nieuwe Azure Red Hat open Shift 3,11-clusters loopt voort tot en met 30 november 2020. Na de buiten gebruiks telling worden de resterende Azure Red Hat open Shift 3,11-clusters afgesloten om beveiligings problemen te voor komen.
+> 
+> Volg deze hand leiding voor het [maken van een Azure Red Hat open Shift 4-cluster](tutorial-create-cluster.md).
+> Als u specifieke vragen hebt, [kunt u contact met ons](mailto:arofeedback@microsoft.com)opnemen.
 
 Met SCCs (Security context constraints) kunnen cluster beheerders machtigingen voor een Peul beheren. Zie de [architectuur documentatie voor SCCs voor](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html)meer informatie over dit API-type. U kunt SCCs in uw exemplaar als normale API-objecten beheren door gebruik te maken van de CLI.
 

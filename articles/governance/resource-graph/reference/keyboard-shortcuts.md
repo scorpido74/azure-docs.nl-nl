@@ -1,15 +1,15 @@
 ---
 title: Sneltoetsen in de Azure Portal voor Azure resource Graph Explorer
 description: Azure resource Graph Explorer in de Azure Portal ondersteunt sneltoetsen waarmee u acties kunt uitvoeren en navigeren.
-ms.date: 08/25/2020
+ms.date: 10/21/2020
 ms.topic: reference
 ms.custom: accessibility
-ms.openlocfilehash: 02471a6efc4ac4d002ca641b792c1c721ffeb3f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fdb53e079adf2f65180c15ab93da4f8343e3bab5
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89146433"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340118"
 ---
 # <a name="keyboard-shortcuts-for-azure-resource-graph-explorer"></a>Sneltoetsen voor Azure resource Graph Explorer
 
@@ -24,7 +24,7 @@ In dit artikel vindt u een overzicht van de sneltoetsen die worden gebruikt op d
 |Inspringing verg Roten |<kbd>CTRL</kbd> + <kbd>]</kbd> |<kbd>Cmd</kbd> + <kbd>]</kbd> |
 |De regel omlaag verplaatsen |<kbd>Alt</kbd> + <kbd>↓</kbd> |<kbd>Optie</kbd> + <kbd>↓</kbd> |
 |De regel omhoog verplaatsen |<kbd>Alt</kbd> + <kbd>↑</kbd> |<kbd>Optie</kbd> + <kbd>↑</kbd> |
-|Vervangen |<kbd>CTRL</kbd> + <kbd>F</kbd> |<kbd>Cmd</kbd> + <kbd>Alt</kbd> + <kbd>F</kbd> |
+|Vervangen |<kbd>CTRL</kbd> + <kbd>H</kbd> |<kbd>Cmd</kbd> + <kbd>H</kbd> |
 |Alles selecteren |<kbd>CTRL</kbd> + <kbd>Een</kbd> |<kbd>Cmd</kbd> + <kbd>Een</kbd> |
 |Omlaag selecteren |<kbd>SHIFT</kbd> + <kbd>↓</kbd> |<kbd>SHIFT</kbd> + <kbd>↓</kbd> |
 |Rechts selecteren |<kbd>SHIFT</kbd> + <kbd>→</kbd> |<kbd>SHIFT</kbd> + <kbd>→</kbd> |

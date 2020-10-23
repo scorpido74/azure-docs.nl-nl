@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: caaf8e25cdf43602fda8fc72caf7d16b7b56c06a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc9da659e7e55e8b15071f957d6a51e3b4673244
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361888"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427571"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>Een webservice beheren via de portal voor webservices van Azure Machine Learning Studio (klassiek)
 
@@ -44,7 +44,7 @@ Als de gebruiker niet over de juiste machtigingen beschikt voor toegang tot reso
 
 Zie [een Azure machine learning Studio (klassieke) werk ruimte maken en delen](create-workspace.md)voor meer informatie over het maken van een werk ruimte.
 
-Zie [toegang beheren met RBAC en de Azure Portal](../../role-based-access-control/role-assignments-portal.md)voor meer informatie over het instellen van toegangs machtigingen.
+Zie [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure Portal](../../role-based-access-control/role-assignments-portal.md)voor meer informatie over het instellen van toegangs machtigingen.
 
 
 ## <a name="manage-new-web-services"></a>Nieuwe webservices beheren

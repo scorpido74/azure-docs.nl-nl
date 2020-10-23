@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: ab9b7fa330964f7db8393334dd8f209efd75573d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1edbaf394a4abd36e47843a6f419eb9d62f08d7
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611274"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340305"
 ---
 # <a name="add-storage-targets"></a>Opslagdoelen toevoegen
 
@@ -74,9 +74,9 @@ Wanneer u klaar bent, klikt u op **OK** om het opslag doel toe te voegen.
 
 ### <a name="add-the-access-control-roles-to-your-account"></a>De toegangs beheer rollen toevoegen aan uw account
 
-Azure HPC cache maakt gebruik van [Azure RBAC (op rollen gebaseerd toegangs beheer)](https://docs.microsoft.com/azure/role-based-access-control/index) voor het machtigen van de cache service voor toegang tot uw opslag account voor Azure Blob Storage-doelen.
+Azure HPC cache maakt gebruik van [Azure RBAC (op rollen gebaseerd toegangs beheer)](../role-based-access-control/index.yml) voor het machtigen van de cache service voor toegang tot uw opslag account voor Azure Blob Storage-doelen.
 
-De eigenaar van het opslag account moet expliciet de Inzender rollen voor het [opslag account](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) en de [blobgegevens](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) voor de gebruiker ' HPC-cache resource provider ' toevoegen.
+De eigenaar van het opslag account moet expliciet de Inzender rollen voor het [opslag account](../role-based-access-control/built-in-roles.md#storage-account-contributor) en de [blobgegevens](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) voor de gebruiker ' HPC-cache resource provider ' toevoegen.
 
 U kunt dit vooraf doen, of door te klikken op een koppeling op de pagina waar u een Blob-opslag doel toevoegt. Houd er rekening mee dat het Maxi maal vijf minuten kan duren voordat de rolinstellingen zijn door gegeven via de Azure-omgeving. u moet dus een paar minuten wachten nadat u de rollen hebt toegevoegd voordat u een opslag doel maakt.
 
@@ -140,7 +140,7 @@ Naast de para meters voor de standaard resource groep en de cache naam moet u de
 
 * ``--virtual-namespace-path`` -Het pad naar de client voor dit opslag doel instellen. Plaats paden tussen aanhalings tekens. Raadpleeg [de geaggregeerde naam ruimte plannen](hpc-cache-namespace.md) voor meer informatie over de functie virtuele naam ruimte.
 
-Voorbeeldopdracht:
+Voor beeld opdracht:
 
 ```azurecli
 az hpc-cache blob-storage-target add --resource-group "hpc-cache-group" \
@@ -248,7 +248,7 @@ Geef naast de cache naam en cache resource groep deze waarden op:
 
   Lees de [geaggregeerde naam ruimte configureren](hpc-cache-namespace.md) voor meer informatie over de functie virtuele naam ruimte.
 
-Voorbeeldopdracht:
+Voor beeld opdracht:
 
 ```azurecli
 

@@ -1,25 +1,25 @@
 ---
 title: Toegang tot de IP-bereiken van de Indexeer functie toestaan
 titleSuffix: Azure Cognitive Search
-description: Instructies voor het instellen van IP-firewall regels zodat Indexeer functies toegang kunnen hebben.
+description: Configureer IP-firewall regels om gegevens toegang door een Azure Cognitive Search Indexeer functie toe te staan.
 manager: nitinme
 author: arv100kri
 ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/07/2020
-ms.openlocfilehash: f485569caef285601d1dce7acd116f13675da83a
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 10/14/2020
+ms.openlocfilehash: 0be69b72cc068d017202b0694e24fb4573172dba
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950190"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101389"
 ---
-# <a name="setting-up-ip-firewall-rules-to-enable-indexer-access"></a>IP-firewall regels instellen om toegang tot de Indexeer functie in te scha kelen
+# <a name="configure-ip-firewall-rules-to-allow-indexer-connections-azure-cognitive-search"></a>IP-firewall regels configureren om Indexeer functie verbindingen toe te staan (Azure Cognitive Search)
 
 IP-firewall regels voor Azure-resources, zoals opslag accounts, Cosmos DB accounts en Azure SQL-servers, staan alleen verkeer toe die afkomstig zijn van specifieke IP-bereiken tot toegang tot gegevens.
 
-In dit artikel wordt beschreven hoe u de IP-regels via Azure Portal kunt configureren voor een opslag account, zodat Azure Cognitive Search Indexeer functies de gegevens veilig kunnen benaderen. Hoewel deze hand leiding specifiek is voor opslag, kan deze rechtstreeks worden vertaald naar andere Azure-resources die ook IP-firewall regels bieden voor het beveiligen van de toegang tot gegevens.
+In dit artikel wordt beschreven hoe u de IP-regels via Azure Portal kunt configureren voor een opslag account, zodat Azure Cognitive Search Indexeer functies de gegevens veilig kunnen benaderen. Hoewel de aanpak specifiek is voor Azure Storage, werkt de benadering ook voor andere Azure-resources die gebruikmaken van IP-firewall regels voor het beveiligen van de toegang tot gegevens.
 
 > [!NOTE]
 > De IP-firewall regels voor het opslag account zijn alleen effectief als het opslag account en de zoek service zich in verschillende regio's bevinden. Als uw installatie dit niet toestaat, raden we u aan de [optie voor uitzonde ringen voor vertrouwde services](search-indexer-howto-access-trusted-service-exception.md)te gebruiken.
@@ -30,7 +30,7 @@ Verkrijg de Fully Qualified Domain Name (FQDN) van uw zoek service. Dit ziet er 
 
    ![FQDN van service verkrijgen](media\search-indexer-howto-secure-access\search-service-portal.png "FQDN van service verkrijgen")
 
-Het IP-adres van de zoek service kan worden verkregen door een `nslookup` (of een `ping` ) van de FQDN uit te voeren. Dit is een van de IP-adressen die moeten worden toegevoegd aan de firewall regels.
+Het IP-adres van de zoek service kan worden verkregen door een `nslookup` (of een `ping` ) van de FQDN uit te voeren. In het onderstaande voor beeld voegt u ' 10.50.10.50 ' toe aan een regel voor binnenkomende verbindingen op de Azure Storage firewall.
 
 ```azurepowershell
 
@@ -45,6 +45,8 @@ Aliases:  contoso.search.windows.net
 ```
 
 ## <a name="get-the-ip-address-ranges-for-azurecognitivesearch-service-tag"></a>De IP-adresbereiken ophalen voor de servicetag ' AzureCognitiveSearch '
+
+Extra IP-adressen worden gebruikt voor aanvragen die afkomstig zijn uit de [multi tenant Execution Environment](search-indexer-securing-resources.md#indexer-execution-environment)van de Indexeer functie. U kunt dit IP-adres bereik ophalen uit de servicetag.
 
 De IP-adresbereiken voor de servicetag `AzureCognitiveSearch` kunnen worden verkregen via de [detectie-API (preview)](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) of het [JSON-bestand](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)dat kan worden gedownload.
 
@@ -75,20 +77,18 @@ Voor/32 IP-adressen verwijdert u de '/32 ' (52.253.133.74/32-> 52.253.133.74), k
 
 ## <a name="add-the-ip-address-ranges-to-ip-firewall-rules"></a>De IP-adresbereiken toevoegen aan IP-firewall regels
 
-De eenvoudigste manier om IP-adresbereiken toe te voegen aan de firewall regel van een opslag account is via de Azure Portal. Zoek het opslag account op de portal en ga naar het tabblad**firewalls en virtuele netwerken**.
+De eenvoudigste manier om IP-adresbereiken toe te voegen aan de firewall regel van een opslag account is via de Azure Portal. Zoek het opslag account op de portal en navigeer naar het tabblad **firewalls en virtuele netwerken** .
 
    ![Firewall en virtuele netwerken](media\search-indexer-howto-secure-access\storage-firewall.png "Firewall en virtuele netwerken")
 
-Voeg de drie IP-adressen toe die eerder zijn verkregen (1 voor de Search-service-IP, 2 voor de servicetag `AzureCognitiveSearch` ) in het adres bereik en klik op**Opslaan**.
+Voeg de drie IP-adressen toe die eerder zijn verkregen (1 voor de Search-service-IP, 2 voor de servicetag `AzureCognitiveSearch` ) in het adres bereik en selecteer **Opslaan**.
 
    ![Firewall-IP-regels](media\search-indexer-howto-secure-access\storage-firewall-ip.png "Firewall-IP-regels")
 
-De firewall regels nemen 5-10 minuten in beslag, waarna de Indexeer functies de gegevens in het opslag account kunnen openen.
+De firewall regels nemen 5-10 minuten in beslag, waarna de Indexeer functies toegang moeten hebben tot de gegevens in het opslag account.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u weet hoe u de twee sets met IP-adressen kunt ophalen voor het toestaan van toegang voor indexen, gebruikt u de volgende koppelingen om de IP-firewall regels voor een aantal algemene gegevens bronnen bij te werken.
-
 - [Azure Storage firewalls configureren](../storage/common/storage-network-security.md)
-- [IP-Firewall configureren voor CosmosDB](../cosmos-db/firewall-support.md)
-- [IP-Firewall configureren voor Azure SQL Server](../azure-sql/database/firewall-configure.md)
+- [IP-Firewall configureren voor Cosmos DB](../cosmos-db/firewall-support.md)
+- [IP-Firewall voor Azure SQL Server configureren](../azure-sql/database/firewall-configure.md)

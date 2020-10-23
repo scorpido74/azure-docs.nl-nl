@@ -1,30 +1,30 @@
 ---
-title: RU/s voor een database en verzameling bijwerken voor MongoDB API voor Azure Cosmos DB
-description: RU/s voor een database en verzameling bijwerken voor MongoDB API voor Azure Cosmos DB
+title: Azure CLI-scripts voor doorvoerbewerkingen (RU/s) voor Azure Cosmos DB API for MongoDB-resources
+description: Azure CLI-scripts voor doorvoerbewerkingen (RU/s) voor Azure Cosmos DB API for MongoDB-resources
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: sample
-ms.date: 07/29/2020
-ms.openlocfilehash: 6f3bd23f11abf0e72dc4b7affe54ada42e0cf712
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.date: 10/07/2020
+ms.openlocfilehash: 785f77df117b8072f6b8970287f4051795d07167
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432176"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91838619"
 ---
-# <a name="update-rus-for-a-database-and-collection-for-mongodb-api-for-azure-cosmos-db-using-azure-cli"></a>RU/s voor een database en verzameling bijwerken voor MongoDB API voor Azure Cosmos DB met behulp van Azure CLI
+# <a name="throughput-rus-operations-with-azure-cli-for-a-database-or-graph-for-azure-cosmos-db-api-for-mongodb"></a>Doorvoerbewerkingen (RU/s) met Azure CLI voor een database of grafiek voor Azure Cosmos DB API for MongoDB
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit onderwerp gebruikmaken van Azure CLI versie 2.9.1 of hoger. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit onderwerp gebruikmaken van Azure CLI versie 2.12.1 of hoger. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
-Met dit script maakt u een database met gedeelde doorvoer en een verzameling met toegewezen doorvoer voor Azure Cosmos DB voor de MongoDB API. Vervolgens wordt de doorvoer voor zowel de database als de verzameling bijgewerkt.
+Met dit script maakt u een MongoDB-database met gedeelde doorvoer en een MongoDB-verzameling met toegewezen doorvoer, waarna de doorvoer voor beiden wordt bijgewerkt. Met het script wordt de migratie van standaarddoorvoer naar doorvoer met automatische schaalaanpassing uitgevoerd en de waarde van doorvoer met automatische schaalaanpassing gelezen nadat de migratie is voltooid.
 
-[!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/mongodb/throughput.sh "Update RU/s for an Azure Cosmos DB MongoDB API database and collection.")]
+[!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/mongodb/throughput.sh "Throughput operations for Azure Cosmos DB API for MongoDB.")]
 
 ## <a name="clean-up-deployment"></a>Opschonen van implementatie
 
@@ -46,6 +46,8 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 | [az cosmosdb mongodb collection create](/cli/azure/cosmosdb/mongodb/collection#az-cosmosdb-mongodb-collection-create) | Hiermee maakt u een Azure Cosmos MongoDB API-verzameling. |
 | [az cosmosdb mongodb database throughput update](/cli/azure/cosmosdb/mongodb/database/throughput#az-cosmosdb-mongodb-database-throughput-update) | RU's bijwerken voor een Azure Cosmos MongoDB API-database. |
 | [az cosmosdb mongodb collection throughput update](/cli/azure/cosmosdb/mongodb/collection/throughput#az-cosmosdb-mongodb-collection-throughput-update) | RU's bijwerken voor een Azure Cosmos MongoDB API-verzameling. |
+| [az cosmosdb mongodb database throughput migrate](/cli/azure/cosmosdb/mongodb/database/throughput#az-cosmosdb-mongodb-database-throughput-migrate) | Migratie doorvoer voor een database. |
+| [az cosmosdb mongodb collection throughput migrate](/cli/azure/cosmosdb/mongodb/collection/throughput#az-cosmosdb-mongodb-collection-throughput-migrate) | Migratie doorvoer voor een verzameling. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 
 ## <a name="next-steps"></a>Volgende stappen

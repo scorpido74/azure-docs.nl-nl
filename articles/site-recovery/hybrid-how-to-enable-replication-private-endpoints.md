@@ -6,12 +6,12 @@ ms.author: harshacs
 ms.service: site-recovery
 ms.topic: article
 ms.date: 07/14/2020
-ms.openlocfilehash: 3d15f4039da85dfa926e7bc9ab96b2c48965d5f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f23efa8d0439422fef685480ed270dce6e78a204
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89658798"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366850"
 ---
 # <a name="replicate-on-premises-machines-by-using-private-endpoints"></a>On-premises machines repliceren met behulp van privé-eind punten
 
@@ -123,7 +123,7 @@ U kunt een persoonlijk eind punt gebruiken om te Azure Storage. Het maken van pr
 > [!NOTE]
 > Privé-eind punten voor opslag kunnen alleen worden gemaakt voor Algemeen v2-opslag accounts. Zie prijzen voor Azure- [pagina-blobs](https://azure.microsoft.com/pricing/details/storage/page-blobs/)voor prijs informatie.
 
-Volg de [richt lijnen voor het maken van](../private-link/create-private-endpoint-storage-portal.md#create-your-private-endpoint) een opslag account met een persoonlijk eind punt voor het maken van persoonlijke opslag. Zorg ervoor dat u **Ja** selecteert onder **integreren met privé-DNS-zone**. Selecteer een bestaande DNS-zone of maak een nieuwe.
+Volg de [richt lijnen voor het maken van](../private-link/tutorial-private-endpoint-storage-portal.md#create-storage-account-with-a-private-endpoint) een opslag account met een persoonlijk eind punt voor het maken van persoonlijke opslag. Zorg ervoor dat u **Ja** selecteert onder **integreren met privé-DNS-zone**. Selecteer een bestaande DNS-zone of maak een nieuwe.
 
 ### <a name="grant-required-permissions-to-the-vault"></a>De vereiste machtigingen voor de kluis verlenen
 

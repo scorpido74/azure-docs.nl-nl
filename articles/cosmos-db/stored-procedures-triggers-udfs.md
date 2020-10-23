@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 5fc74c554cbb283bc6bbfee737ef98e59dd4b0ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af17e37e5acb1e3552dd92b82eaf8d6397e4bc5e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82509666"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279902"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies
 
@@ -24,7 +24,7 @@ Door opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies
 
 * **Procedurele logica:** Java script als een programmeer taal op hoog niveau die een uitgebreide en bekende interface biedt voor het expressiseren van bedrijfs logica. U kunt een reeks complexe bewerkingen uitvoeren op de gegevens.
 
-* **Atomische trans acties:** Azure Cosmos DB garandeert dat de database bewerkingen die worden uitgevoerd binnen één opgeslagen procedure of een trigger, atomisch zijn. Met deze Atomic-functionaliteit kunt u gerelateerde bewerkingen combi neren in één batch, zodat alle bewerkingen slagen of geen van deze acties slagen.
+* **Atomische trans acties:** Azure Cosmos DB database bewerkingen die worden uitgevoerd binnen één opgeslagen procedure of een trigger, zijn atomisch. Met deze Atomic-functionaliteit kunt u gerelateerde bewerkingen combi neren in één batch, zodat alle bewerkingen slagen of geen van deze acties slagen.
 
 * **Prestaties:** De JSON-gegevens zijn intrinsiek toegewezen aan het taal type systeem van Java script. Deze toewijzing biedt een aantal optimalisaties zoals een luie materialisatie van JSON-documenten in de buffer groep en maakt ze beschikbaar op aanvraag voor de code die wordt uitgevoerd. Er zijn andere prestatie voordelen verbonden aan het verzenden van bedrijfs logica naar de-data base, waaronder:
 
@@ -55,7 +55,7 @@ In Azure Cosmos DB wordt Java Script runtime gehost in de data base-engine. Daar
 
 ### <a name="scope-of-a-transaction"></a>Bereik van een trans actie
 
-Opgeslagen procedures zijn gekoppeld aan een Azure Cosmos-container en de uitvoering van de opgeslagen procedure is afgestemd op een logische partitie sleutel. Opgeslagen procedures moeten een logische partitie sleutel waarde bevatten tijdens de uitvoering waarmee de logische partitie voor het bereik van de trans actie wordt gedefinieerd. Zie [Azure Cosmos DB partitioning](partition-data.md) -artikel voor meer informatie.
+Opgeslagen procedures zijn gekoppeld aan een Azure Cosmos-container en de uitvoering van de opgeslagen procedure is afgestemd op een logische partitie sleutel. Opgeslagen procedures moeten een logische partitie sleutel waarde bevatten tijdens de uitvoering waarmee de logische partitie voor het bereik van de trans actie wordt gedefinieerd. Zie [Azure Cosmos DB partitioning](partitioning-overview.md) -artikel voor meer informatie.
 
 ### <a name="commit-and-rollback"></a>Door voeren en terugdraaien
 

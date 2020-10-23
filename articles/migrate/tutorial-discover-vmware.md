@@ -4,12 +4,12 @@ description: Meer informatie over het detecteren van on-premises virtuele VMware
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: f39ad3cbc357575f735b963346c8a8b0cc95e7c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3e8f61c898b08cc0638597e77fd3260cb4593b2
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442218"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311286"
 ---
 # <a name="tutorial-discover-vmware-vms-with-server-assessment"></a>Zelfstudie: Virtuele VMware-machines detecteren met Serverevaluatie
 
@@ -238,7 +238,7 @@ Het apparaat voor de eerste keer instellen.
    
    Aanmelden met een pincode wordt niet ondersteund.
 3. Nadat u zich hebt aangemeld, gaat u terug naar de web-app. 
-4. Als het Azure-gebruikersaccount dat wordt gebruikt voor logboekregistratie de juiste [machtigingen ](tutorial-prepare-vmware.md#prepare-azure) heeft voor de Azure-resources die tijdens het genereren van de sleutel zijn gemaakt, wordt de registratie van het apparaat gestart.
+4. Als het Azure-gebruikersaccount dat wordt gebruikt voor logboekregistratie de juiste machtigingen  heeft voor de Azure-resources die tijdens het genereren van de sleutel zijn gemaakt, wordt de registratie van het apparaat gestart.
 1. Nadat het apparaat is geregistreerd, kunt u de registratiedetails zien door op **Details weergeven** te klikken.
 
 
@@ -248,7 +248,7 @@ Het apparaat voor de eerste keer instellen.
 Het apparaat moet verbinding maken met vCenter Server om de configuratie- en prestatiegegevens van de virtuele machines te detecteren.
 
 1. In **Stap 1: Geef referenties voor vCenter Server op**, klik op **Referenties toevoegen** om een beschrijvende naam voor de referenties op te geven, voeg een **gebruikersnaam** en een **wachtwoord** toe voor het VCenter Server-account dat door het apparaat wordt gebruikt voor het detecteren van VM's op de instantie van vCenter Server.
-    - U moet een account met de vereiste machtigingen hebben ingesteld in de [vorige zelfstudie](tutorial-prepare-vmware.md#set-up-permissions-for-assessment).
+    - U moet een account met de vereiste machtigingen hebben ingesteld in de vorige zelfstudie.
     - Als u het detectiebereik wilt beperken tot specifieke VMware-objecten (vCenter Server-datacenters, clusters, een map met clusters, hosts, een map met hosts of afzonderlijke VM's), raadpleegt u de instructies in [dit artikel](set-discovery-scope.md) om het account dat wordt gebruikt door Azure Migrate te begrenzen.
 1. In **Stap 2: vCenter Server-gegevens opgeven**, klikt u op **Detectiebron toevoegen** om de beschrijvende naam voor referenties te selecteren in de vervolgkeuzelijst en geeft u het **IP-adres/FQDN** van de vCenter Server-instantie op. U kunt **Poort** op 443 laten staan (de standaardinstelling) of een aangepaste poort opgeven waarop vCenter Server luistert en op **Opslaan** klikken.
 1. Wanneer u op Opslaan klikt, probeert het apparaat de verbinding met vCenter Server te valideren met de opgegeven referenties en wordt de **validatiestatus** in de tabel weergegeven voor het IP-adres of de FQDN van vCenter Server.
@@ -268,5 +268,5 @@ Detectie werkt als volgt:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [VMware-VM's evalueren](tutorial-assess-vmware.md) voor migratie naar virtuele Azure-machines.
+- [VMware-VM's evalueren](./tutorial-assess-vmware-azure-vm.md) voor migratie naar virtuele Azure-machines.
 - [De gegevens controleren ](migrate-appliance.md#collected-data---vmware) die door het apparaat worden verzameld tijdens de detectie.

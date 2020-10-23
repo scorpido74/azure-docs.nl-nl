@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: mayg
-ms.openlocfilehash: 901f4a9d4fd53f665c3d078f5e463dcde2af1882
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef4baa4be7f6058ca704f8f499c47099de7c1a85
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654868"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372086"
 ---
 # <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analyseer het Deployment Planner rapport voor VMware-nood herstel naar Azure
 
@@ -102,7 +102,7 @@ Dit is het totale aantal kerngeheugens dat moet worden ingesteld vóór failover
 ![Vereiste aantal Azure-kerngeheugens in de implementatieplanner](media/site-recovery-vmware-deployment-planner-analyze-report/required-cores-v2a.png)
 
 ### <a name="required-on-premises-infrastructure"></a>Vereiste on-premises infrastructuur
-Het totale aantal configuratieservers en aanvullende processervers dat moet worden geconfigureerd voor het beveiligen van alle compatibele virtuele machines. Afhankelijk van de ondersteunde [aanbevelingen voor de configuratieserver](https://aka.ms/asr-v2a-on-prem-components), kan het hulpprogramma extra servers aanbevelen. De aanbeveling wordt gebaseerd op wat het grootst is: het gegevensverloop per dag of het maximum aantal beveiligde virtuele machines (uitgaande van gemiddeld drie schijven per virtuele machine), ongeacht wat het eerste wordt bereikt op de configuratieserver of de aanvullende processerver. De details van het totale verloop per dag en het totale aantal beveiligde schijven vindt u in de sectie Samenvatting van on-premises.
+Het totale aantal configuratieservers en aanvullende processervers dat moet worden geconfigureerd voor het beveiligen van alle compatibele virtuele machines. Afhankelijk van de ondersteunde [aanbevelingen voor de configuratieserver](/en-in/azure/site-recovery/site-recovery-plan-capacity-vmware#size-recommendations-for-the-configuration-server), kan het hulpprogramma extra servers aanbevelen. De aanbeveling wordt gebaseerd op wat het grootst is: het gegevensverloop per dag of het maximum aantal beveiligde virtuele machines (uitgaande van gemiddeld drie schijven per virtuele machine), ongeacht wat het eerste wordt bereikt op de configuratieserver of de aanvullende processerver. De details van het totale verloop per dag en het totale aantal beveiligde schijven vindt u in de sectie Samenvatting van on-premises.
 
 ![Vereiste on-premises infrastructuur in de implementatieplanner](media/site-recovery-vmware-deployment-planner-analyze-report/required-on-premises-components-v2a.png)
 
@@ -165,7 +165,7 @@ Het is mogelijk dat u om wat voor reden dan ook niet meer dan x Mbps bandbreedte
 
 **Type logboek opslag account**: alle replicatie logboeken worden opgeslagen in een standaard-opslag account.
 
-**Voorgesteld voor voegsel voor opslag account**: het voorgestelde voor voegsel met drie tekens dat kan worden gebruikt voor het benoemen van het cache-opslag account. U kunt uw eigen voorvoegsel gebruiken, maar de suggestie van het hulpprogramma volgt de [naamgevingsregels voor partities voor opslagaccounts](https://aka.ms/storage-performance-checklist).
+**Voorgesteld voor voegsel voor opslag account**: het voorgestelde voor voegsel met drie tekens dat kan worden gebruikt voor het benoemen van het cache-opslag account. U kunt uw eigen voorvoegsel gebruiken, maar de suggestie van het hulpprogramma volgt de [naamgevingsregels voor partities voor opslagaccounts](/en-in/azure/storage/blobs/storage-performance-checklist).
 
 **Voorgestelde naam van het logboek account**: de naam van het opslag account na het toevoegen van het voorgestelde voor voegsel. Vervang de naam tussen de punthaken (< en >) door uw aangepaste invoer.
 
@@ -178,7 +178,7 @@ Het is mogelijk dat u om wat voor reden dan ook niet meer dan x Mbps bandbreedte
 
 **VM-naam**: de naam of het IP-adres van de virtuele machine dat wordt gebruikt in het bestand dat is opgegeven voor VMListFile wanneer een rapport wordt gegenereerd. Deze kolom bevat ook de schijven (VMDK's) die aan de virtuele machines zijn gekoppeld. Om onderscheid te maken tussen virtuele machines van vCenter met dubbele namen of IP-adressen, bevatten de namen de naam van de ESXi-host. De vermelde ESXi-host is de host waar de virtuele machine werd geplaatst op het moment van detectie door het hulpprogramma tijdens de profileringsperiode.
 
-**VM-compatibiliteit**: de mogelijke waarden zijn **Ja** en **Ja\***. **Ja** \* is voor instanties waarin de virtuele machine geschikt is voor [Premium-ssd's](../virtual-machines/disks-types.md). Het hoge geprofileerde verloop of de IOPS-schijf komt overeen met categorie P20 of P30, maar de grootte van de schijf zorgt ervoor dat P10 of P20 wordt toegewezen. Het opslagaccount bepaalt aan welk schijftype voor Premium Storage een schijf wordt toegewezen, op basis van de grootte. Bijvoorbeeld:
+**VM-compatibiliteit**: waarden zijn **Ja** en **Ja \* *_. _* ja** \* is voor exemplaren waarin de virtuele machine geschikt is voor [Premium-ssd's](../virtual-machines/disks-types.md). Het hoge geprofileerde verloop of de IOPS-schijf komt overeen met categorie P20 of P30, maar de grootte van de schijf zorgt ervoor dat P10 of P20 wordt toegewezen. Het opslagaccount bepaalt aan welk schijftype voor Premium Storage een schijf wordt toegewezen, op basis van de grootte. Bijvoorbeeld:
 * <128 GB is een P10.
 * 128 GB tot 256 GB is een P15
 * 256 GB tot 512 GB is een P20.
@@ -219,7 +219,7 @@ Als bijvoorbeeld de eigenschappen van de werk belasting van een schijf in de cat
 
 **VM-naam**: de naam of het IP-adres van de virtuele machine dat wordt gebruikt in het bestand dat is opgegeven voor VMListFile wanneer een rapport wordt gegenereerd. Deze kolom bevat ook de VMDK's die aan de virtuele machines zijn gekoppeld. Om onderscheid te maken tussen virtuele machines van vCenter met dubbele namen of IP-adressen, bevatten de namen de naam van de ESXi-host. De vermelde ESXi-host is de host waar de virtuele machine werd geplaatst op het moment van detectie door het hulpprogramma tijdens de profileringsperiode.
 
-**VM-compatibiliteit**: geeft aan waarom de virtuele machine niet compatibel is voor gebruik met Site Recovery. De redenen worden voor elke niet-compatibele schijf van de virtuele machine beschreven. Op basis van gepubliceerde [opslaglimieten](https://aka.ms/azure-storage-scalbility-performance) kan dit een van de volgende redenen zijn:
+**VM-compatibiliteit**: geeft aan waarom de virtuele machine niet compatibel is voor gebruik met Site Recovery. De redenen worden voor elke niet-compatibele schijf van de virtuele machine beschreven. Op basis van gepubliceerde [opslaglimieten](/en-in/azure/storage/common/scalability-targets-standard-account) kan dit een van de volgende redenen zijn:
 
 * Verkeerde grootte van de gegevens schijf of onjuiste grootte van de besturingssysteem schijf. [Controleer](vmware-physical-azure-support-matrix.md#azure-vm-requirements) de ondersteunings limieten. 
 * Totale grootte van virtuele machine (replicatie + TFO) overschrijdt de ondersteunde limiet voor opslagaccounts (35 TB). Dit probleem treedt meestal op wanneer één schijf in de virtuele machine een prestatiekenmerk heeft dat groter is dan de maximaal ondersteunde limieten voor Standard-opslag van Azure of Site Recovery. De virtuele machine komt dan in aanmerking voor Premium Storage. De maximaal ondersteunde grootte van een Premium Storage-account is echter 35 TB en één beveiligde virtuele machine kan niet worden beveiligd via meerdere opslagaccounts. Houd er ook rekening mee dat bij het uitvoeren van een testfailover op een beveiligde virtuele machine, deze wordt uitgevoerd in het opslagaccount waarin ook de replicatie plaatsvindt. Stel in dit geval 2 x de grootte van de schijf in om replicatie mogelijk te maken en het testen van failover parallel uit te voeren.

@@ -3,12 +3,12 @@ title: Back-ups maken van SQL Server naar Azure als een DPM-workload
 description: Een inleiding tot het maken van back-ups van SQL Server-data bases met behulp van de Azure Backup-Service
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 85cb84ac376abbf0ead13e64c4dff7c8b916aac5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8130990f86311221ae6d097137a66a6e9b81be73
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91254581"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218082"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Back-ups maken van SQL Server naar Azure als een DPM-workload
 
@@ -23,7 +23,8 @@ Een back-up maken van een SQL Server Data Base naar Azure en deze herstellen van
 1. De data base herstellen vanuit Azure.
 
 >[!NOTE]
->DPM 2019 UR2 ondersteunt SQL Server failover cluster instances (FCI) met behulp van gedeelde cluster volumes (CSV).
+>DPM 2019 UR2 ondersteunt SQL Server failover cluster instances (FCI) met behulp van gedeelde cluster volumes (CSV).<br><br>
+>De beveiliging van [SQL Server failover-cluster exemplaar met opslagruimten direct op Azure](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure)  en [SQL Server failovercluster met gedeelde schijven van Azure](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure) wordt ondersteund met deze functie. De DPM-server moet worden geïmplementeerd in de virtuele machine van Azure om het SQL FCI-exemplaar te beveiligen dat is geïmplementeerd op virtuele machines van Azure. 
 
 ## <a name="prerequisites-and-limitations"></a>Vereisten en beperkingen
 

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.custom: devx-track-java
 ms.author: lcozzens
-ms.openlocfilehash: e3bc26b8f4d66c95f6f777af06d71172a4b882b9
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: dd2305e13322540e9e30223f200baed9919d1840
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767636"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075396"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Quickstart: Een Java Spring-app maken met Azure App Configuration
 
@@ -25,7 +25,7 @@ In deze quickstart neemt u Azure App Configuration op in een Java Spring-console
 ## <a name="prerequisites"></a>Vereisten
 
 - Azure-abonnement: [u kunt een gratis abonnement nemen](https://azure.microsoft.com/free/)
-- Een ondersteunde [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk) met versie 8.
+- Een ondersteunde [Java Development Kit (JDK)](/java/azure/jdk) met versie 8.
 - [Apache Maven](https://maven.apache.org/download.cgi) versie 3.0 of hoger.
 
 ## <a name="create-an-app-configuration-store"></a>Een App Configuration-archief maken
@@ -188,7 +188,7 @@ Gebruik de [Spring Initializr](https://start.spring.io/) om een nieuw Spring Boo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u een nieuw app-configuratiearchief gemaakt en deze gebruikt met een Java Spring-app. Zie [Spring op Azure](https://docs.microsoft.com/java/azure/spring-framework/) voor meer informatie. Ga door naar de volgende zelfstudie voor meer informatie over het configureren van uw Java Spring-app om configuratie-instellingen dynamisch te vernieuwen.
+In deze quickstart hebt u een nieuw app-configuratiearchief gemaakt en deze gebruikt met een Java Spring-app. Zie [Spring op Azure](/java/azure/spring-framework/) voor meer informatie. Ga door naar de volgende zelfstudie voor meer informatie over het configureren van uw Java Spring-app om configuratie-instellingen dynamisch te vernieuwen.
 
 > [!div class="nextstepaction"]
 > [Dynamische configuratie inschakelen](./enable-dynamic-configuration-java-spring-app.md)

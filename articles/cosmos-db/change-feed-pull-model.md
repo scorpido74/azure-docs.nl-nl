@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b056c12f51c6e36a806f2bba0f5efe9ea9498798
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59f1231e2edf3277898ff57d8e6f8da42ee057ca
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90015633"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276984"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>Pull-model voor feed wijzigen in Azure Cosmos DB
 
@@ -112,7 +112,7 @@ Hier volgt een voor beeld waarin wordt getoond hoe u een lijst met bereiken voor
 IReadOnlyList<FeedRange> ranges = await container.GetFeedRangesAsync();
 ```
 
-Wanneer u een lijst met FeedRanges voor uw container ontvangt, krijgt u één `FeedRange` per [fysieke partitie](partition-data.md#physical-partitions).
+Wanneer u een lijst met FeedRanges voor uw container ontvangt, krijgt u één `FeedRange` per [fysieke partitie](partitioning-overview.md#physical-partitions).
 
 Met behulp `FeedRange` van een kunt u vervolgens een `FeedIterator` parallelliseren maken om de verwerking van de wijzigings feed op meerdere computers of threads te verwerken. In tegens telling tot het vorige voor beeld waarin wordt uitgelegd hoe `FeedIterator` u een voor de volledige container of een enkele partitie sleutel kunt verkrijgen, gebruikt u FeedRanges om meerdere FeedIterators te verkrijgen waarmee de wijziging in de feed parallel kan worden verwerkt.
 

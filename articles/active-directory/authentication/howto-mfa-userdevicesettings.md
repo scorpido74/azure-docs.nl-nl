@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 10/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7705792e58a50371a11d0b733b36ffa325681045
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2006422d3516aa67076233b0b4b9d3e7c58a7232
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968630"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166506"
 ---
 # <a name="manage-user-settings-for-azure-multi-factor-authentication"></a>Gebruikers instellingen voor Azure Multi-Factor Authentication beheren
 
@@ -36,8 +36,8 @@ Als u de rol *authenticatie beheerder* hebt toegewezen, kunt u vereisen dat gebr
       > De momenteel geregistreerde verificatie methoden van de gebruiker worden niet verwijderd wanneer een beheerder opnieuw moet worden geregistreerd voor MFA. Nadat een gebruiker zich opnieuw heeft geregistreerd voor MFA, raden we u aan hun beveiligings gegevens te controleren en eventuele eerder geregistreerde authenticatie methoden te verwijderen die niet meer bruikbaar zijn.
    
    - Met **MFA-sessies intrekken** worden de MFA-sessies van de gebruiker gewist en moeten ze MFA de volgende keer dat het beleid op het apparaat wordt vereist, worden uitgevoerd.
-
-   ![Verificatie methoden beheren vanuit de Azure Portal](./media/howto-mfa-userdevicesettings/manage-authentication-methods-in-azure.png)
+   
+    :::image type="content" source="media/howto-mfa-userdevicesettings/manage-authentication-methods-in-azure.png" alt-text="Verificatie methoden beheren vanuit de Azure Portal":::
 
 ## <a name="delete-users-existing-app-passwords"></a>Bestaande app-wacht woorden van gebruikers verwijderen
 

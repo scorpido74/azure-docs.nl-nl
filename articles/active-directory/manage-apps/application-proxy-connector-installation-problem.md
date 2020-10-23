@@ -1,37 +1,32 @@
 ---
-title: Probleem bij het installeren van de agent connector voor de toepassings proxy | Microsoft Docs
-description: Problemen oplossen die u mogelijk ondervindt bij het installeren van de agent connector van de toepassings proxy
+title: Probleem bij het installeren van de connector voor de toepassingsproxyagent
+description: Problemen oplossen die u mogelijk ondervindt bij het installeren van de agent connector voor toepassings proxy voor Azure Active Directory.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/21/2018
 ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 602ca070bcaefd20585681e409ab85e9d455160a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7babe23426cafe01cadc7a5557f91896aa9bbae4
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764686"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108198"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Probleem bij het installeren van de connector voor de toepassingsproxyagent
 
-Micro soft AAD Application proxy connector is een intern domein onderdeel dat uitgaande verbindingen gebruikt om verbinding te maken tussen het eind punt in de cloud dat beschikbaar is voor het interne domein.
+Microsoft Azure Active Directory Application proxy connector is een intern domein onderdeel dat uitgaande verbindingen gebruikt om verbinding te maken met het eind punt beschik bare Cloud naar het interne domein.
 
 ## <a name="general-problem-areas-with-connector-installation"></a>Algemene probleem gebieden met installatie van connector
 
 Wanneer de installatie van een connector mislukt, is de hoofd oorzaak meestal een van de volgende gebieden:
 
-1.  **Connectiviteit** : om een geslaagde installatie te volt ooien, moet de nieuwe connector de eigenschappen van de vertrouwens relatie in de toekomst registreren en instellen. Dit wordt gedaan door verbinding te maken met de service voor de AAD-toepassings proxy.
+1.  **Connectiviteit** : om een geslaagde installatie te volt ooien, moet de nieuwe connector de eigenschappen van de vertrouwens relatie in de toekomst registreren en instellen. Dit doet u door verbinding te maken met de Azure Active Directory-toepassingsproxy Cloud service.
 
 2.  Het maken van een **vertrouwens relatie** : de nieuwe connector maakt een zelfondertekend certificaat en registreert zich bij de Cloud service.
 
@@ -42,7 +37,7 @@ Wanneer de installatie van een connector mislukt, is de hoofd oorzaak meestal ee
 
 ## <a name="verify-connectivity-to-the-cloud-application-proxy-service-and-microsoft-login-page"></a>Controleer de verbinding met de Cloud toepassings proxy-service en de micro soft-aanmeldings pagina
 
-**Doel stelling:** Controleer of de connector computer verbinding kan maken met het registratie-eind punt van de AAD-toepassings proxy en de aanmeldings pagina van micro soft.
+**Doel stelling:** Controleer of de connector computer verbinding kan maken met het eind punt van de toepassings proxy en de aanmeldings pagina van micro soft.
 
 1.  Voer op de connector server een poort test uit met behulp van [Telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) of een ander hulp programma voor poort testen om te controleren of de poorten 443 en 80 zijn geopend.
 
@@ -67,7 +62,7 @@ Wanneer de installatie van een connector mislukt, is de hoofd oorzaak meestal ee
 
 **Het client certificaat verifiëren:**
 
-Controleer de vinger afdruk van het huidige client certificaat. Het certificaat archief bevindt zich in de%ProgramData%\microsoft\Microsoft AAD-toepassings proxy Connector\Config\TrustSettings.xml
+Controleer de vinger afdruk van het huidige client certificaat. Het certificaat archief kan worden gevonden in `%ProgramData%\microsoft\Microsoft AAD Application Proxy Connector\Config\TrustSettings.xml` .
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -79,23 +74,17 @@ Controleer de vinger afdruk van het huidige client certificaat. Het certificaat 
 </ConnectorTrustSettingsFile>
 ```
 
-Hier volgen de mogelijke waarden voor **IsInUserStore** en betekenissen:
+De mogelijke **IsInUserStore** waarden zijn **True** en **False**. Als de waarde **True** is, wordt het automatisch verlengde certificaat opgeslagen in de persoonlijke container in het certificaat archief van de netwerk service. De waarde **False** betekent dat het client certificaat is gemaakt tijdens de installatie of registratie die is gestart door Register-AppProxyConnector opdracht en dat het is opgeslagen in de persoonlijke container in het certificaat archief van de lokale computer.
 
-- **Onwaar** : het client certificaat is gemaakt tijdens de installatie of de registratie die is gestart door Register-AppProxyConnector opdracht. Het wordt opgeslagen in de persoonlijke container in het certificaat archief van de lokale computer. 
-
-Volg de stappen om het certificaat te verifiëren:
-
-1. Voer **certlm. msc** uit
-2. Vouw in de beheer console de persoonlijke container uit en klik op certificaten
-3. Zoek het certificaat dat is uitgegeven door **connectorregistrationca.msappproxy.net**
-
-- **waar** : het automatisch verlengde certificaat wordt opgeslagen in de persoonlijke container in het certificaat archief van de netwerk service. 
-
-Volg de stappen om het certificaat te verifiëren:
-
+Als de waarde **True**is, volgt u deze stappen om het certificaat te verifiëren:
 1. [PsTools.zip](https://docs.microsoft.com/sysinternals/downloads/pstools) downloaden
 2. Extraheer [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec) uit het pakket en voer **PsExec-i-u ' NT Authority\Network service ' uit cmd.exe** uit vanaf een opdracht prompt met verhoogde bevoegdheid.
 3. **Certmgr. msc** uitvoeren in de zojuist verschenen opdracht prompt
+4. Vouw in de beheer console de persoonlijke container uit en klik op certificaten
+5. Zoek het certificaat dat is uitgegeven door **connectorregistrationca.msappproxy.net**
+
+Als de waarde **False**is, volgt u deze stappen om het certificaat te verifiëren:
+1. Voer **certlm. msc** uit
 2. Vouw in de beheer console de persoonlijke container uit en klik op certificaten
 3. Zoek het certificaat dat is uitgegeven door **connectorregistrationca.msappproxy.net**
 

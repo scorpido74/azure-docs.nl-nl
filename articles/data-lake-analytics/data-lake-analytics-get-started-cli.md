@@ -6,12 +6,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 06/18/2017
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: be7f9d66a10f3f0f4a1ae0f9e28e226f268a7f7c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9123ca6a1bfa90737bb1ce83ee365d1ecf514e1f
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87497440"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220989"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli"></a>Aan de slag met Azure Data Lake Analytics met Azure CLI
 
@@ -104,11 +104,11 @@ az dls fs upload --account "<Data Lake Store Account Name>" --source-path "<Sour
 az dls fs list --account "<Data Lake Store Account Name>" --path "<Path>"
 ```
 
-Data Lake Analytics heeft ook toegang tot Azure Blob-opslag.  Zie [De Azure CLI gebruiken met Azure Storage](../storage/common/storage-azure-cli.md) voor informatie over het uploaden van gegevens naar Azure Blob-opslag.
+Data Lake Analytics heeft ook toegang tot Azure Blob-opslag.  Zie [De Azure CLI gebruiken met Azure Storage](../storage/blobs/storage-quickstart-blobs-cli.md) voor informatie over het uploaden van gegevens naar Azure Blob-opslag.
 
 ## <a name="submit-data-lake-analytics-jobs"></a>Data Lake Analytics-taken verzenden
 
-Data Lake Analytics-taken worden geschreven in de U-SQL-taal. Zie [Aan de slag met de U-SQL-taal](data-lake-analytics-u-sql-get-started.md) en [Naslaginformatie voor de U-SQL-taal](https://docs.microsoft.com/u-sql/) voor meer informatie over U-SQL.
+Data Lake Analytics-taken worden geschreven in de U-SQL-taal. Zie [Aan de slag met de U-SQL-taal](data-lake-analytics-u-sql-get-started.md) en [Naslaginformatie voor de U-SQL-taal](/u-sql/) voor meer informatie over U-SQL.
 
 ### <a name="to-create-a-data-lake-analytics-job-script"></a>Een Data Lake Analytics-taakscript maken
 

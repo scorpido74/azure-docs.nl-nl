@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 66e280f20109967f029a14e368fdb0aeea269aad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db85892115f345039353cd90eeedbe809eb6ae67
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536610"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425580"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>Gegevens repliceren naar Azure Database for MariaDB
 
@@ -34,8 +34,8 @@ De [*MySQL-systeem database*](https://mariadb.com/kb/en/library/the-mysql-databa
 - Elke tabel moet een primaire sleutel hebben.
 - De bron server moet de InnoDB-engine gebruiken.
 - De gebruiker moet machtigingen hebben voor het configureren van binaire logboek registratie en het maken van nieuwe gebruikers op de bron server.
-- Als SSL is ingeschakeld op de bron server, moet u ervoor zorgen dat het SSL-CA-certificaat dat is opgegeven voor het domein, is opgenomen in de `mariadb.az_replication_change_master` opgeslagen procedure. Raadpleeg de volgende [voor beelden](https://docs.microsoft.com/azure/mariadb/howto-data-in-replication#link-the-master-and-replica-servers-to-start-data-in-replication) en de `master_ssl_ca` para meter.
-- Zorg ervoor dat het IP-adres van de bron server is toegevoegd aan de firewall regels van de Azure Database for MariaDB replica-server. Firewallregels bijwerken met de [Azure-portal](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-portal) of [Azure CLI](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-cli).
+- Als SSL is ingeschakeld op de bron server, moet u ervoor zorgen dat het SSL-CA-certificaat dat is opgegeven voor het domein, is opgenomen in de `mariadb.az_replication_change_master` opgeslagen procedure. Raadpleeg de volgende [voor beelden](howto-data-in-replication.md#link-the-source-and-replica-servers-to-start-data-in-replication) en de `master_ssl_ca` para meter.
+- Zorg ervoor dat het IP-adres van de bron server is toegevoegd aan de firewall regels van de Azure Database for MariaDB replica-server. Firewallregels bijwerken met de [Azure-portal](howto-manage-firewall-portal.md) of [Azure CLI](howto-manage-firewall-cli.md).
 - Zorg ervoor dat de computer die de bron server host, zowel binnenkomend als uitgaand verkeer op poort 3306 toestaat.
 - Controleer of de bron server een **openbaar IP-adres**heeft, of de DNS openbaar toegankelijk is of een Fully QUALIFIED domain name (FQDN) heeft.
 

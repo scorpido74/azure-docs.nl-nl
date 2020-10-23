@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/12/2020
 ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 806505e5ac9c9b3dcf53624a1151961b0db45ef9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0eb4f8a7994e7c1d04013e9c9cf92e604ef6a1a7
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972506"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424454"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Een Azure Machine Learning omgeving voor het afwijzen van interferentie beveiligen met virtuele netwerken
 
@@ -42,12 +42,12 @@ In dit artikel leert u hoe u de volgende bronnen voor het afwijzen van een virtu
 
 + Een bestaand virtueel netwerk en subnet voor gebruik met uw reken resources.
 
-+ Als u resources wilt implementeren in een virtueel netwerk of subnet, moet uw gebruikers account over machtigingen beschikken voor de volgende acties in op rollen gebaseerde toegangs beheer (RBAC) van Azure:
++ Als u resources wilt implementeren in een virtueel netwerk of subnet, moet uw gebruikers account over machtigingen beschikken voor de volgende acties in azure op rollen gebaseerd toegangs beheer (Azure RBAC):
 
     - ' Micro soft. Network/virtualNetworks/lid/Action ' op de virtuele netwerk resource.
     - ' Micro soft. Network/virtualNetworks/subnet/lid/Action ' op de bron van het subnet.
 
-    Zie voor meer informatie over RBAC met netwerken de [ingebouwde rollen voor netwerken](/azure/role-based-access-control/built-in-roles#networking)
+    Zie voor meer informatie over Azure RBAC met netwerken de [ingebouwde rollen voor netwerken](/azure/role-based-access-control/built-in-roles#networking)
 
 <a id="aksvnet"></a>
 
@@ -119,11 +119,11 @@ Wanneer het maken van het proces is voltooid, kunt u het decoderen of model lere
 
 Er zijn twee benaderingen voor het isoleren van verkeer van en naar het AKS-cluster naar het virtuele netwerk:
 
-* __Persoonlijk AKS-cluster__: deze benadering maakt gebruik van een persoonlijke Azure-koppeling voor het maken van een persoonlijk eind punt voor het AKS-cluster binnen het VNet.
-* __Interne AKS Load Balancer__: met deze aanpak configureert u de Load Balancer voor het cluster om een intern IP-adres in het VNet te gebruiken.
+* __Persoonlijk AKS-cluster__: deze benadering maakt gebruik van een persoonlijke Azure-koppeling om de communicatie met het cluster te beveiligen voor implementatie-en beheer bewerkingen.
+* __Interne AKS Load Balancer__: met deze aanpak configureert u het eind punt voor uw implementaties naar AKS voor het gebruik van een privé-IP-adres in het virtuele netwerk.
 
 > [!WARNING]
-> Beide configuraties zijn verschillende manieren om hetzelfde doel te krijgen (het beveiligen van verkeer naar het AKS-cluster binnen het VNet). **Gebruik een van de twee, maar niet beide**.
+> **Gebruik een privé-AKS of interne Load Balancer, maar niet beide**.
 
 ### <a name="private-aks-cluster"></a>Persoonlijk AKS-cluster
 

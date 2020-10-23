@@ -5,14 +5,14 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
-ms.date: 10/11/2019
+ms.date: 10/20/2020
 ms.author: rohink
-ms.openlocfilehash: 52bf9e061eb57c7ce6ea698b7468b5ba5e11b4e8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d298dfd5f3ad0beb56a511c124bab056ca25fd27
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "78244988"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310056"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>Snelstart: Een privé-DNS-zone in Azure maken met behulp van de Azure-portal
 
@@ -20,15 +20,7 @@ In deze quickstart wordt stapsgewijs beschreven hoe u uw eerste privé-DNS-zone 
 
 Een DNS-zone wordt gebruikt om de DNS-records voor een bepaald domein te hosten. Als u uw domein wilt hosten in Azure DNS, moet u een DNS-zone maken voor die domeinnaam. Alle DNS-records voor uw domein worden vervolgens gemaakt binnen deze DNS-zone. Als u een privé-DNS-zone wilt publiceren naar uw virtuele netwerk, geeft u de lijst met virtuele netwerken op die records in de zone mogen omzetten.  Deze worden *gekoppelde* virtuele netwerken genoemd. Als automatische registratie is ingeschakeld, werkt Azure DNS ook de zonerecords bij wanneer er een virtuele machine wordt gemaakt, het IP-adres ervan wordt gewijzigd of deze wordt verwijderd.
 
-In deze snelstart leert u de volgende zaken:
-
-> [!div class="checklist"]
-> * Een privé-DNS-zone maken
-> * Een virtueel netwerk maken
-> * Het virtuele netwerk koppelen
-> * Virtuele testmachines maken
-> * Een extra DNS-record maken
-> * De privézone testen
+## <a name="prerequisites"></a>Vereisten
 
 Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -74,7 +66,7 @@ In deze sectie moet u de volgende parameters in de stappen vervangen door onders
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
-## <a name="link-the-virtual-network"></a>Link the virtual network
+## <a name="link-the-virtual-network"></a>Het virtuele netwerk koppelen
 
 U maakt een koppeling met een virtueel netwerk om de privé-DNS-zone aan een virtueel netwerk te koppelen.
 
@@ -180,7 +172,7 @@ Herhaal voor myVM02.
    PS C:\>
    ```
 
-## <a name="delete-all-resources"></a>Alle resources verwijderen
+## <a name="clean-up-resources"></a>Resources opschonen
 
 Verwijder de resourcegroep **MyAzureResourceGroup**, als u deze niet meer nodig hebt om de resources die u in deze quickstart hebt gemaakt te verwijderen.
 

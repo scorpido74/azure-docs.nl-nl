@@ -1,14 +1,14 @@
 ---
-title: Levering van gebeurtenissen met beheerde service-identiteit
+title: Gebeurtenis levering, beheerde service-identiteit en persoonlijke koppeling
 description: In dit artikel wordt beschreven hoe u de beheerde service-identiteit voor een Azure Event grid-onderwerp inschakelt. Gebruik dit om gebeurtenissen door te sturen naar ondersteunde bestemmingen.
 ms.topic: how-to
-ms.date: 07/07/2020
-ms.openlocfilehash: 7eaa3ddd43cc68a99ad7c2bab66630f30d4960c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/22/2020
+ms.openlocfilehash: 434a2e36ead0d210b7edf64d104243f6643ac019
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87534240"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460917"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>Gebeurtenis levering met een beheerde identiteit
 In dit artikel wordt beschreven hoe u een [beheerde service-identiteit](../active-directory/managed-identities-azure-resources/overview.md) voor Azure Event grid-onderwerpen of-domeinen inschakelt. Gebruik dit om gebeurtenissen door te sturen naar ondersteunde bestemmingen, zoals Service Bus-wacht rijen en-onderwerpen, Event hubs en opslag accounts.
@@ -18,15 +18,18 @@ Hier volgen de stappen die in dit artikel worden besproken:
 1. Voeg de identiteit toe aan een geschikte rol (bijvoorbeeld Service Bus verzender van gegevens) op de bestemming (bijvoorbeeld een Service Bus wachtrij).
 1. Wanneer u gebeurtenis abonnementen maakt, moet u het gebruik van de identiteit inschakelen voor het leveren van gebeurtenissen aan de bestemming. 
 
+> [!NOTE]
+> Het is momenteel niet mogelijk om gebeurtenissen te leveren met behulp van [persoonlijke eind punten](../private-link/private-endpoint-overview.md). Zie de sectie [Private endpoints](#private-endpoints) aan het einde van dit artikel voor meer informatie. 
+
 ## <a name="create-a-topic-or-domain-with-an-identity"></a>Een onderwerp of domein maken met een identiteit
 Laten we eerst eens kijken hoe u een onderwerp of een domein met een door een systeem beheerde identiteit maakt.
 
-### <a name="use-the-azure-portal"></a>Azure Portal gebruiken
+### <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
 U kunt de door het systeem toegewezen identiteit inschakelen voor een onderwerp of domein terwijl u deze maakt in de Azure Portal. De volgende afbeelding laat zien hoe u een door een systeem beheerde identiteit voor een onderwerp inschakelt. In principe selecteert u de optie **systeem toegewezen identiteit inschakelen** op de pagina **Geavanceerd** van de wizard voor het maken van het onderwerp. U ziet deze optie ook op de pagina **Geavanceerd** van de wizard voor het maken van het domein. 
 
 ![Identiteit inschakelen tijdens het maken van een onderwerp](./media/managed-service-identity/create-topic-identity.png)
 
-### <a name="use-the-azure-cli"></a>Azure CLI gebruiken
+### <a name="use-the-azure-cli"></a>De Azure CLI gebruiken
 U kunt ook de Azure CLI gebruiken om een onderwerp of domein te maken met een door het systeem toegewezen identiteit. Gebruik de `az eventgrid topic create` opdracht met de `--identity` para meter ingesteld op `systemassigned` . Als u geen waarde voor deze para meter opgeeft, wordt de standaard waarde `noidentity` gebruikt. 
 
 ```azurecli-interactive
@@ -39,7 +42,7 @@ Op dezelfde manier kunt u de `az eventgrid domain create` opdracht gebruiken om 
 ## <a name="enable-an-identity-for-an-existing-topic-or-domain"></a>Een identiteit voor een bestaand onderwerp of domein inschakelen
 In de vorige sectie hebt u geleerd hoe u een door het systeem beheerde identiteit inschakelt tijdens het maken van een onderwerp of een domein. In deze sectie leert u hoe u een door het systeem beheerde identiteit voor een bestaand onderwerp of domein inschakelt. 
 
-### <a name="use-the-azure-portal"></a>Azure Portal gebruiken
+### <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
 De volgende procedure laat zien hoe u een door het systeem beheerde identiteit voor een onderwerp inschakelt. De stappen voor het inschakelen van een identiteit voor een domein zijn vergelijkbaar. 
 
 1. Ga naar de [Azure Portal](https://portal.azure.com).
@@ -53,7 +56,7 @@ De volgende procedure laat zien hoe u een door het systeem beheerde identiteit v
 
 U kunt soort gelijke stappen gebruiken om een identiteit in te scha kelen voor een event grid-domein.
 
-### <a name="use-the-azure-cli"></a>Azure CLI gebruiken
+### <a name="use-the-azure-cli"></a>De Azure CLI gebruiken
 Gebruik de `az eventgrid topic update` opdracht met `--identity` ingesteld op `systemassigned` om de door het systeem toegewezen identiteit in te scha kelen voor een bestaand onderwerp. Als u de identiteit wilt uitschakelen, geeft u `noidentity` de waarde op. 
 
 ```azurecli-interactive
@@ -78,7 +81,7 @@ Op dit moment ondersteunt Azure Event grid onderwerpen of domeinen die zijn geco
 ## <a name="add-an-identity-to-azure-roles-on-destinations"></a>Een identiteit toevoegen aan Azure-rollen op bestemmingen
 In deze sectie wordt beschreven hoe u de identiteit voor uw onderwerp of domein toevoegt aan een Azure-rol. 
 
-### <a name="use-the-azure-portal"></a>Azure Portal gebruiken
+### <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
 U kunt de Azure Portal gebruiken om het onderwerp of de domein-id toe te wijzen aan een geschikte rol, zodat het onderwerp of het domein gebeurtenissen naar de bestemming kan door sturen. 
 
 In het volgende voor beeld wordt een beheerde identiteit voor een event grid-onderwerp met de naam **msitesttopic** toegevoegd aan de rol voor het **verzenden van Azure Service Bus gegevens** voor een service bus naam ruimte die een wachtrij of onderwerp-resource bevat. Wanneer u aan de rol op het niveau van de naam ruimte toevoegt, kan het onderwerp gebeurtenissen door sturen naar alle entiteiten in de naam ruimte. 
@@ -93,7 +96,7 @@ In het volgende voor beeld wordt een beheerde identiteit voor een event grid-ond
 
 De stappen zijn vergelijkbaar voor het toevoegen van een identiteit aan andere rollen die in de tabel worden genoemd. 
 
-### <a name="use-the-azure-cli"></a>Azure CLI gebruiken
+### <a name="use-the-azure-cli"></a>De Azure CLI gebruiken
 In het voor beeld in deze sectie wordt beschreven hoe u de Azure CLI gebruikt om een identiteit toe te voegen aan een Azure-rol. De voorbeeld opdrachten zijn voor Event grid-onderwerpen. De opdrachten voor Event grid-domeinen zijn vergelijkbaar. 
 
 #### <a name="get-the-principal-id-for-the-topics-system-identity"></a>De principal-ID voor de systeem identiteit van het onderwerp ophalen 
@@ -137,7 +140,7 @@ az role assignment create --role "$role" --assignee "$topic_pid" --scope "$sbust
 ## <a name="create-event-subscriptions-that-use-an-identity"></a>Gebeurtenis abonnementen maken die gebruikmaken van een identiteit
 Nadat u een onderwerp of een domein hebt met een door het systeem beheerde identiteit en de identiteit hebt toegevoegd aan de juiste rol op de bestemming, kunt u abonnementen maken die gebruikmaken van de identiteit. 
 
-### <a name="use-the-azure-portal"></a>Azure Portal gebruiken
+### <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
 Wanneer u een gebeurtenis abonnement maakt, ziet u een optie om het gebruik van een door het systeem toegewezen identiteit voor een eind punt in de sectie **EINDPUNT Details** in te scha kelen. 
 
 ![Identiteit inschakelen tijdens het maken van een gebeurtenis abonnement voor een Service Bus wachtrij](./media/managed-service-identity/service-bus-queue-subscription-identity.png)
@@ -279,6 +282,12 @@ az eventgrid event-subscription create
     -n $sa_esname 
 ```
 
+## <a name="private-endpoints"></a>Privé-eindpunten
+Het is momenteel niet mogelijk om gebeurtenissen te leveren met behulp van [persoonlijke eind punten](../private-link/private-endpoint-overview.md). Dat wil zeggen dat er geen ondersteuning is als u strikte vereisten voor netwerk isolatie hebt waarbij het verkeer van de geleverde gebeurtenissen de privé-IP-ruimte niet mag verlaten. 
+
+Als uw vereisten echter een veilige manier hebben om gebeurtenissen te verzenden met behulp van een versleuteld kanaal en een bekende identiteit van de afzender (in dit geval Event Grid) met behulp van open bare IP-ruimte, kunt u gebeurtenissen leveren aan Event Hubs-, Service Bus-of Azure Storage-service met behulp van een Azure Event grid-onderwerp of een domein met door het systeem beheerde identiteit die is geconfigureerd Vervolgens kunt u een persoonlijke koppeling gebruiken die is geconfigureerd in Azure Functions of uw webhook die is geïmplementeerd in uw virtuele netwerk om gebeurtenissen op te halen. Zie het voor beeld: [verbinding maken met privé-eind punten met Azure functions.](/samples/azure-samples/azure-functions-private-endpoints/connect-to-private-endpoints-with-azure-functions/).
+
+Onder deze configuratie gaat het verkeer via het open bare IP/Internet van Event Grid naar Event Hubs, Service Bus of Azure Storage, maar kan het kanaal worden versleuteld en wordt een beheerde identiteit van Event Grid gebruikt. Als u uw Azure Functions of webhook die is geïmplementeerd in uw virtuele netwerk configureert om gebruik te maken van een Event Hubs, Service Bus of Azure Storage via een persoonlijke koppeling, blijft die sectie van het verkeer duidelijk binnen Azure.
 
 
 ## <a name="next-steps"></a>Volgende stappen

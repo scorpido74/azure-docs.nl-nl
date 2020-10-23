@@ -6,12 +6,12 @@ ms.author: robb
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: d7d9f55bbd3d8060670008f321a77b2a28376e47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bb44b7133e5644991d7413f4f824a8b55ffdd75
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87849016"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108368"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Een klassieke waarschuwing voor metrische gegevens maken met een Resource Manager-sjabloon
 
@@ -400,6 +400,5 @@ Een waarschuwing voor een resource manager-sjabloon is het vaakst handig bij het
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Meer informatie over waarschuwingen](alerts-overview.md)
-* [Diagnostische instellingen toevoegen](./diagnostic-settings-template.md) aan uw Resource Manager-sjabloon
+* [Diagnostische instellingen toevoegen](../samples/resource-manager-diagnostic-settings.md) aan uw Resource Manager-sjabloon
 * Zie [micro soft. Insights/alertrules-](/azure/templates/microsoft.insights/alertrules) sjabloon Naslag informatie voor de JSON-syntaxis en-eigenschappen.
-

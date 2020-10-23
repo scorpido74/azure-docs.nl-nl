@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: robinsh
-ms.openlocfilehash: c54853717f7e0b234df013e5aee575682d0d3d97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 370ea2f16632ae18142f0770742e5a52d3cabae0
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75429157"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151649"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Een Azure IoT hub klonen naar een andere regio
 
@@ -385,7 +385,7 @@ De portal valideert nu uw sjabloon en implementeert uw gekloonde hub. Als u rout
 
 Nu u uw kloon actief hebt, moet u alle apparaten van de oorspronkelijke hub kopiëren naar de kloon. 
 
-Er zijn meerdere manieren om dit te bereiken. U hebt de [Device Provisioning Service (DPS)](/azure/iot-dps/about-iot-dps)al gebruikt om de apparaten in te richten, of u hebt er geen gedaan. Als u dit hebt gedaan, is dit niet lastig. Als dat niet het geval is, kan dit zeer gecompliceerd zijn. 
+Er zijn meerdere manieren om dit te bereiken. U hebt de [Device Provisioning Service (DPS)](../iot-dps/about-iot-dps.md)al gebruikt om de apparaten in te richten, of u hebt er geen gedaan. Als u dit hebt gedaan, is dit niet lastig. Als dat niet het geval is, kan dit zeer gecompliceerd zijn. 
 
 Als u DPS niet hebt gebruikt voor het inrichten van uw apparaten, kunt u de volgende sectie overs Laan en beginnen met het [gebruik van importeren/exporteren om de apparaten te verplaatsen naar de nieuwe hub](#using-import-export-to-move-the-devices-to-the-new-hub).
 
@@ -601,4 +601,4 @@ Raadpleeg de volgende artikelen voor meer informatie over het IoT Hub en de ontw
 
 * [Overzicht van IoT Hub Apparaatbeheer](iot-hub-device-management-overview.md)
 
-* Als u de voorbeeld toepassing wilt implementeren, raadpleegt u de [.net core-toepassings implementatie](https://docs.microsoft.com/dotnet/core/deploying/index).
+* Als u de voorbeeld toepassing wilt implementeren, raadpleegt u de [.net core-toepassings implementatie](/dotnet/core/deploying/index).

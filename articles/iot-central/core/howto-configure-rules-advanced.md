@@ -7,12 +7,12 @@ ms.date: 05/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 037598212773ca75abbdd086fe0577e0660f2218
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 257855b4f7b1fae56ed8d6a063acfb0588da9b6a
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398575"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123317"
 ---
 # <a name="use-workflows-to-integrate-your-azure-iot-central-application-with-other-cloud-services"></a>Werk stromen gebruiken om uw Azure IoT Central-toepassing te integreren met andere Cloud Services
 
@@ -32,7 +32,7 @@ Als u de stappen in deze hand leiding wilt uitvoeren, hebt u een actief Azure-ab
 Voor het instellen van de oplossing is een versie 3-IoT Central toepassing vereist. Zie [over uw toepassing](./howto-get-app-info.md)voor meer informatie over het controleren van de versie van uw toepassing. Zie [een Azure IOT Central-toepassing maken](./quick-deploy-iot-central.md)voor meer informatie over het maken van een IOT Central-toepassing.
 
 > [!NOTE]
-> Als u een IoT Central toepassing van versie 2 gebruikt, raadpleegt u [werk stromen bouwen met de IOT Central-connector in azure Logic apps](https://docs.microsoft.com/previous-versions/azure/iot-central/core/howto-build-azure-logic-apps) op de documentatie site van de vorige versie en de Azure IOT Central v2-connector gebruiken
+> Als u een IoT Central toepassing van versie 2 gebruikt, raadpleegt u [werk stromen bouwen met de IOT Central-connector in azure Logic apps](/previous-versions/azure/iot-central/core/howto-build-azure-logic-apps) op de documentatie site van de vorige versie en de Azure IOT Central v2-connector gebruiken
 
 ## <a name="trigger-a-workflow-from-a-rule"></a>Een werk stroom activeren vanuit een regel
 

@@ -4,12 +4,12 @@ description: Meer informatie over het inschakelen van bewaking van een Azure Kub
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.custom: devx-track-terraform
-ms.openlocfilehash: d283ac43b466140045c8acaaf7ba7bb1e490b835
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: b5f1a4880bba099b00a4f3af87649f3eaa9cb884
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994517"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165397"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Bewaking van het cluster van Azure Kubernetes service (AKS) inschakelen dat al is geïmplementeerd
 
@@ -132,12 +132,10 @@ Ga als volgt te werk om bewaking rechtstreeks vanuit een van uw AKS-clusters in 
 2. Begin met het typen van **containers**in de lijst met resources.  De lijst filters op basis van uw invoer.
 
 3. Selecteer **Kubernetes Services**.
+    
+4. Selecteer in de lijst met Kubernetes Services een service.
 
-    ![De koppeling Kubernetes Services](./media/container-insights-onboard/portal-search-containers-01.png)
-
-4. Selecteer een container in de lijst met containers.
-
-5. Selecteer op de container overzicht pagina **containers controleren**.
+5. Selecteer op de pagina overzicht van Kubernetes-service de optie **bewaking-Insights**.
 
 6. Als u een bestaande Log Analytics-werk ruimte hebt in hetzelfde abonnement als het cluster, selecteert u in de vervolg keuzelijst de pagina **onboarding to Azure monitor voor containers** .
     De lijst preselecteert de standaard werkruimte en de locatie waar de AKS-container in het abonnement is geïmplementeerd.

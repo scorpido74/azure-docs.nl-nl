@@ -9,21 +9,17 @@
 - name: Snelstartgidsen
   expanded: true
   items:
-    - name: Azure-API implementeren voor FHIR - Portal
-      href: fhir-paas-portal-quickstart.md
-    - name: Azure-API implementeren voor FHIR - PowerShell
-      href: fhir-paas-powershell-quickstart.md
-    - name: Azure-API implementeren voor FHIR - CLI
-      href: fhir-paas-cli-quickstart.md
-    - name: Azure API for FHIR implementeren - ARM-sjabloon
-      href: fhir-paas-arm-template-quickstart.md
-      displayName: deploy azure resource manager template
-    - name: FHIR-server implementeren voor Azure - Portal
-      href: fhir-oss-portal-quickstart.md
-    - name: FHIR-server implementeren voor Azure - PowerShell
-      href: fhir-oss-powershell-quickstart.md
-    - name: FHIR-server implementeren voor Azure - CLI
-      href: fhir-oss-cli-quickstart.md
+    - name: Azure API for FHIR implementeren
+      expanded: false
+      items:
+        - name: Portal gebruiken
+          href: fhir-paas-portal-quickstart.md
+        - name: PowerShell gebruiken
+          href: fhir-paas-powershell-quickstart.md
+        - name: CLI gebruiken
+          href: fhir-paas-cli-quickstart.md
+        - name: ARM-sjabloon gebruiken
+          href: fhir-paas-arm-template-quickstart.md
     - name: Azure IoT Connector for FHIR (preview) implementeren - Portal
       href: iot-fhir-portal-quickstart.md
 - name: Zelfstudies
@@ -93,6 +89,8 @@
       href: find-identity-object-ids.md
     - name: Diagnostische logboekregistratie inschakelen in Azure API for FHIR®
       href: enable-diagnostic-logging.md
+    - name: Metrische gegevens over Azure IoT Connector for FHIR (preview) exporteren via diagnostische instellingen
+      href: iot-metrics-diagnostics-export.md
     - name: Een token verkrijgen voor Azure-API voor FHIR - CLI
       href: get-healthcare-apis-access-token-cli.md
     - name: Fouten oplossen in Azure IoT Connector for FHIR (preview)

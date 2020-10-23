@@ -9,13 +9,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
-ms.date: 10/08/2020
-ms.openlocfilehash: 6bcc4ac5561a8bdb721018aa05bf2376579b627b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.date: 10/22/2020
+ms.openlocfilehash: c4ea7609c343532f17144e388be7583eab427eee
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079656"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440447"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Beheerde identiteiten gebruiken met Azure Machine Learning (preview-versie)
 
@@ -29,7 +29,6 @@ In dit artikel leert u hoe u beheerde identiteiten kunt gebruiken voor het volge
 
  * Configureer en gebruik ACR voor uw Azure Machine Learning-werk ruimte zonder beheer gebruikers toegang tot ACR te hoeven inschakelen.
  * Krijg toegang tot een persoonlijke ACR voor uw werk ruimte, zodat u basis afbeeldingen kunt ophalen voor training of demijnen.
- * Toegang tot gegevens sets voor training door beheerde identiteiten te gebruiken in plaats van toegangs sleutels voor opslag.
 
 > [!IMPORTANT]
 > Beheerde identiteiten gebruiken om de toegang tot resources te beheren met Azure Machine Learning is momenteel beschikbaar als preview-versie. De Preview-functionaliteit wordt verstrekt "as-is", zonder garanties van ondersteuning of service level agreement. Zie de [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie.
@@ -222,31 +221,6 @@ identity.client_id="<UAI client ID>”
 env.docker.base_image_registry.registry_identity=identity
 env.docker.base_image = "my-acr.azurecr.io/my-repo/my-image:latest"
 ```
-
-## <a name="access-training-data"></a>Trainings gegevens openen
-
-Zodra u een machine learning Compute-Cluster met beheerde identiteit hebt gemaakt zoals eerder is beschreven, kunt u deze identiteit gebruiken om toegang te krijgen tot trainings gegevens zonder de sleutel van een opslag account. U kunt voor dit scenario een door het systeem of de gebruiker toegewezen beheerde identiteit gebruiken.
-
-### <a name="grant-compute-managed-identity-access-to-storage-account"></a>Toegang tot de beheerde identiteit van Compute verlenen aan het opslag account
-
-[Verleen de beheerde identiteit een rol van lezer](https://docs.microsoft.com/azure/storage/common/storage-auth-aad#assign-azure-roles-for-access-rights) op het opslag account waarin u uw trainings gegevens opslaat.
-
-### <a name="register-data-store-with-workspace"></a>Gegevens archief registreren met werk ruimte
-
-Nadat u de beheerde identiteit hebt toegewezen, kunt u een gegevens archief maken zonder opslag referenties op te geven.
-
-```python
-from azureml.core import Datastore
-
-blob_dstore = Datastore.register_azure_blob_container(workspace=workspace,
-                                                      datastore_name='my-datastore',
-                                                      container_name='my-container',
-                                                      account_name='my-storage-account')
-```
-
-### <a name="submit-training-run"></a>Trainingsuitvoering verzenden
-
-Wanneer u een trainings uitvoering met het gegevens archief verzendt, gebruikt de machine learning Compute de beheerde identiteit voor toegang tot gegevens.
 
 ## <a name="use-docker-images-for-inference"></a>Docker-installatie kopieën gebruiken voor demijnen
 

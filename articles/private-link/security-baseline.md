@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 654fc453f0b4167ae91afcab811de321925c6bf5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f9e4fd2f7f55f916743074b57f89788c0d32f7d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89614654"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427489"
 ---
 # <a name="azure-security-baseline-for-azure-private-link"></a>Azure-beveiligings basislijn voor persoonlijke Azure-koppeling
 
@@ -268,7 +268,7 @@ Gegevens opnemen in azure Sentinel voor verder onderzoek.
 
 Beperk het toegangs niveau voor uw Azure-resources met uw toepassingen en bedrijfs omgevingen op basis van bedrijfs vereisten. 
 
-Toegang tot Azure-resources beheren via Azure Active Directory op rollen gebaseerd toegangs beheer.
+Toegang tot Azure-resources beheren via Azure op rollen gebaseerd toegangs beheer (Azure RBAC).
 
 - [Aanvullende Azure-abonnementen maken](/azure/billing/billing-create-subscription)
 
@@ -292,7 +292,7 @@ Volg Security Center aanbevelingen voor het versleutelen van de rest en de versl
 
 **Verantwoordelijkheid**: gedeeld
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: op rollen gebaseerd toegangs beheer gebruiken voor het beheren van de toegang tot bronnen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
 **Richt lijnen**: gebruik Azure op rollen gebaseerd toegangs beheer (Azure RBAC) voor het beheren van de toegang tot gegevens en resources, en gebruik anders service-specifieke methoden voor toegangs beheer.
 
@@ -634,7 +634,7 @@ De klant is verantwoordelijk voor het herbemiddeling van waarschuwingen op basis
 
 - [Beveiligingswaarschuwingen in Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-- [Labels gebruiken om uw Azure-resources te organiseren](/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags gebruiken om Azure-resources te organiseren](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center bewaking**: Ja
 

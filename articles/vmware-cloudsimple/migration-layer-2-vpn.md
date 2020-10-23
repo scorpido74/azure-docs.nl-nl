@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a530a6f656f37657a198af85d93d5404ac88d0e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f524bf6af66d44bc13b7c0957de7977968cbef28
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83651020"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427252"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Workloads migreren met behulp van uitgerekte netwerken van Laag 2
 
@@ -118,7 +118,7 @@ De volgende stappen laten zien hoe u de logische router-ID van de Tier0 DR-route
 
 3. Open een SSH-sessie met het IP-adres van het beheer van de Edge-VM. Voer de ```get logical-router``` opdracht uit met de gebruikers naam **beheerder** en het wacht woord **CloudSimple 123!**.
 
-    ![logische-router uitvoer ophalen](media/l2vpn-fetch03.png)
+    ![Scherm opname waarin een open SSH-sessie wordt weer gegeven.](media/l2vpn-fetch03.png)
 
 4. Als u geen vermelding ' DR-provider-LR ' ziet, voert u de volgende stappen uit.
 
@@ -132,7 +132,7 @@ De volgende stappen laten zien hoe u de logische router-ID van de Tier0 DR-route
 
 7. Voer de `get logical-router` opdracht opnieuw uit op de SSH-sessie van de Edge-VM. De UUID van de logische router ' DR-provider-LR ' wordt weer gegeven. Noteer de UUID die is vereist bij het configureren van de L2VPN.
 
-    ![logische-router uitvoer ophalen](media/l2vpn-fetch06.png)
+    ![Scherm opname van de UUID van de logische router.](media/l2vpn-fetch06.png)
 
 ## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>De ID van de logische switch ophalen die nodig is voor L2VPN
 
@@ -430,7 +430,7 @@ Voordat u implementeert, controleert u of uw on-premises firewall regels binnenk
 
 2. Ga naar de map met alle uitgepakte bestanden. Selecteer alle vmdk's (NSX-l2t-client-large. MF en NSX-l2t-client-large. OVF voor grote toestel grootte of NSX-l2t-client-xlarge. MF en NSX-l2t-client-Xlarge. OVF voor extra groot formaat van het apparaat). Klik op **Volgende**.
 
-    ![Sjabloon selecteren ](media/l2vpn-deploy-client02.png) sjabloon selecteren ![](media/l2vpn-deploy-client03.png)
+    ![Selecteer ](media/l2vpn-deploy-client02.png) ![ de scherm afbeelding van de sjabloon waarin de geselecteerde vmdk's-bestanden worden weer gegeven.](media/l2vpn-deploy-client03.png)
 
 3. Voer een naam in voor de zelfstandige NSX-T-client en klik op **volgende**.
 

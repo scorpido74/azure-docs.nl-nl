@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 09/24/2020
 ms.author: jlian
-ms.openlocfilehash: 6c562f7a5d9c7c02c737898821eef5ee5271eea4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb6e4b2b10b6b44a544416ad5d57808c7ad4d83f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613897"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427854"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Ondersteuning voor virtuele netwerken IoT Hub met persoonlijke koppelingen en beheerde identiteit
 
@@ -170,7 +170,7 @@ Betrouw bare micro soft-functie voor eerste partij uitzonde ringen is gratis. Ko
 
 ### <a name="egress-connectivity-to-storage-account-endpoints-for-routing"></a>De connectiviteit met de eind punten van het opslag account voor route ring
 
-IoT Hub kunt berichten routeren naar een opslag account van de klant. Uw IoT Hub moet een [beheerde identiteit](#turn-on-managed-identity-for-iot-hub)hebben om de routerings functionaliteit toegang te geven tot een opslag account terwijl er firewall beperkingen zijn ingesteld. Nadat een beheerde identiteit is ingericht, volgt u de onderstaande stappen om RBAC-machtigingen te geven aan de resource-identiteit van uw hub om toegang te krijgen tot uw opslag account.
+IoT Hub kunt berichten routeren naar een opslag account van de klant. Uw IoT Hub moet een [beheerde identiteit](#turn-on-managed-identity-for-iot-hub)hebben om de routerings functionaliteit toegang te geven tot een opslag account terwijl er firewall beperkingen zijn ingesteld. Nadat een beheerde identiteit is ingericht, volgt u de onderstaande stappen om Azure RBAC-machtigingen te verlenen aan de resource-identiteit van uw hub om toegang te krijgen tot uw opslag account.
 
 1. Navigeer in het Azure Portal naar het tabblad **toegangs beheer (IAM)** van uw opslag account en klik op **toevoegen** onder de sectie **een roltoewijzing toevoegen** .
 
@@ -188,7 +188,7 @@ Nu is uw aangepaste opslag eindpunt ingesteld voor het gebruik van de door het s
 
 ### <a name="egress-connectivity-to-event-hubs-endpoints-for-routing"></a>Connectiviteit met Event hubs-eind punten voor route ring
 
-IoT Hub kunnen worden geconfigureerd voor het routeren van berichten naar een event hubs-naam ruimte die eigendom is van een klant. Uw IoT Hub moet een beheerde identiteit hebben om de routerings functionaliteit in staat te stellen om toegang te krijgen tot een event hubs-resource terwijl er firewall beperkingen zijn ingesteld. Nadat een beheerde identiteit is gemaakt, volgt u de onderstaande stappen om RBAC-machtigingen te geven aan de resource-identiteit van uw hub om toegang te krijgen tot uw event hubs.
+IoT Hub kunnen worden geconfigureerd voor het routeren van berichten naar een event hubs-naam ruimte die eigendom is van een klant. Uw IoT Hub moet een beheerde identiteit hebben om de routerings functionaliteit in staat te stellen om toegang te krijgen tot een event hubs-resource terwijl er firewall beperkingen zijn ingesteld. Nadat een beheerde identiteit is gemaakt, volgt u de onderstaande stappen om Azure RBAC-machtigingen te verlenen aan de resource-identiteit van uw hub om toegang te krijgen tot uw event hubs.
 
 1. Ga in het Azure Portal naar uw **iam-tabblad (Event hubs Access Control)** en klik op **toevoegen** onder de sectie **een roltoewijzing toevoegen** .
 
@@ -206,7 +206,7 @@ Uw aangepaste Event hubs-eind punt is ingesteld voor het gebruik van de door het
 
 ### <a name="egress-connectivity-to-service-bus-endpoints-for-routing"></a>Connectiviteit met Service Bus-eind punten voor route ring
 
-IoT Hub kunnen worden geconfigureerd voor het routeren van berichten naar een service bus-naam ruimte die eigendom is van een klant. Uw IoT Hub moet een beheerde identiteit hebben om de routerings functionaliteit toegang te geven tot een service bus-resource terwijl er firewall beperkingen zijn ingesteld. Nadat een beheerde identiteit is ingericht, volgt u de onderstaande stappen om RBAC-machtigingen te geven aan de resource-identiteit van uw hub om toegang te krijgen tot uw service bus.
+IoT Hub kunnen worden geconfigureerd voor het routeren van berichten naar een service bus-naam ruimte die eigendom is van een klant. Uw IoT Hub moet een beheerde identiteit hebben om de routerings functionaliteit toegang te geven tot een service bus-resource terwijl er firewall beperkingen zijn ingesteld. Nadat een beheerde identiteit is ingericht, volgt u de onderstaande stappen om Azure RBAC-machtigingen te verlenen aan de resource-identiteit van uw hub om toegang te krijgen tot uw service bus.
 
 1. Navigeer in het Azure Portal naar het tabblad **toegangs beheer (IAM)** van de service bus en klik op **toevoegen** onder de sectie **een roltoewijzing toevoegen** .
 
@@ -224,7 +224,7 @@ Nu het aangepaste service bus-eind punt is ingesteld voor het gebruik van de doo
 
 ### <a name="egress-connectivity-to-storage-accounts-for-file-upload"></a>De connectiviteit met opslag accounts voor het uploaden van bestanden
 
-Met de functie voor het uploaden van bestanden van IoT Hub kunnen apparaten bestanden uploaden naar een opslag account van de klant. Als u wilt toestaan dat het bestand kan worden geüpload, moeten zowel apparaten als IoT Hub verbinding hebben met het opslag account. Als er firewall beperkingen zijn ingesteld op het opslag account, moeten uw apparaten gebruikmaken van het mechanisme van het ondersteunde opslag account (inclusief [particuliere eind punten](../private-link/create-private-endpoint-storage-portal.md), [service-eind punten](../virtual-network/virtual-network-service-endpoints-overview.md)of [directe firewall configuratie](../storage/common/storage-network-security.md)) om verbinding te kunnen maken. Als er firewall beperkingen zijn ingesteld op het opslag account, moet IoT Hub worden geconfigureerd voor toegang tot de opslag bron via de uitzonde ring vertrouwde micro soft-Services. Voor dit doel moet uw IoT Hub een beheerde identiteit hebben. Nadat een beheerde identiteit is ingericht, volgt u de onderstaande stappen om RBAC-machtigingen te geven aan de resource-identiteit van uw hub om toegang te krijgen tot uw opslag account.
+Met de functie voor het uploaden van bestanden van IoT Hub kunnen apparaten bestanden uploaden naar een opslag account van de klant. Als u wilt toestaan dat het bestand kan worden geüpload, moeten zowel apparaten als IoT Hub verbinding hebben met het opslag account. Als er firewall beperkingen zijn ingesteld op het opslag account, moeten uw apparaten gebruikmaken van het mechanisme van het ondersteunde opslag account (inclusief [particuliere eind punten](../private-link/tutorial-private-endpoint-storage-portal.md), [service-eind punten](../virtual-network/virtual-network-service-endpoints-overview.md)of [directe firewall configuratie](../storage/common/storage-network-security.md)) om verbinding te kunnen maken. Als er firewall beperkingen zijn ingesteld op het opslag account, moet IoT Hub worden geconfigureerd voor toegang tot de opslag bron via de uitzonde ring vertrouwde micro soft-Services. Voor dit doel moet uw IoT Hub een beheerde identiteit hebben. Nadat een beheerde identiteit is ingericht, volgt u de onderstaande stappen om Azure RBAC-machtigingen te verlenen aan de resource-identiteit van uw hub om toegang te krijgen tot uw opslag account.
 
 [!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
@@ -244,7 +244,7 @@ Nu uw opslag eindpunt voor het uploaden van bestanden is ingesteld voor het gebr
 
 IoT Hub ondersteunt de functionaliteit voor het [importeren/exporteren](./iot-hub-bulk-identity-mgmt.md) van informatie over apparaten in bulk van/naar een door de klant verschafte opslag-blob. Als u de functie voor bulk import/export wilt gebruiken, moeten zowel apparaten als IoT Hub verbinding hebben met het opslag account.
 
-Deze functionaliteit vereist connectiviteit van IoT Hub naar het opslag account. Als u toegang wilt krijgen tot een service bus-resource terwijl er firewall beperkingen zijn ingesteld, moet uw IoT Hub een beheerde identiteit hebben. Nadat een beheerde identiteit is ingericht, volgt u de onderstaande stappen om RBAC-machtigingen te geven aan de resource-identiteit van uw hub om toegang te krijgen tot uw service bus.
+Deze functionaliteit vereist connectiviteit van IoT Hub naar het opslag account. Als u toegang wilt krijgen tot een service bus-resource terwijl er firewall beperkingen zijn ingesteld, moet uw IoT Hub een beheerde identiteit hebben. Nadat een beheerde identiteit is ingericht, volgt u de onderstaande stappen om Azure RBAC-machtigingen te verlenen aan de resource-identiteit van uw hub om toegang te krijgen tot uw service bus.
 
 1. Navigeer in het Azure Portal naar het tabblad **toegangs beheer (IAM)** van uw opslag account en klik op **toevoegen** onder de sectie **een roltoewijzing toevoegen** .
 
@@ -252,7 +252,7 @@ Deze functionaliteit vereist connectiviteit van IoT Hub naar het opslag account.
 
 3. Ga naar het tabblad **firewalls en virtuele netwerken** in uw opslag account en schakel de optie **toegang via geselecteerde netwerken toestaan** in. Schakel onder de lijst **uitzonde ringen** het selectie vakje in voor **vertrouwde micro soft-Services toegang geven tot dit opslag account**. Klik op de knop **Opslaan**.
 
-U kunt nu de Azure IoT REST-Api's gebruiken voor het [maken van import-export taken](https://docs.microsoft.com/rest/api/iothub/service/jobs/getimportexportjobs) voor informatie over het gebruik van de functie voor bulksgewijs importeren/exporteren. U moet de `storageAuthenticationType="identityBased"` in de hoofd tekst van de aanvraag opgeven en `inputBlobContainerUri="https://..."` de `outputBlobContainerUri="https://..."` invoer-en uitvoer-url's van uw opslag account gebruiken.
+U kunt nu de Azure IoT REST-Api's gebruiken voor het [maken van import-export taken](/rest/api/iothub/service/jobs/getimportexportjobs) voor informatie over het gebruik van de functie voor bulksgewijs importeren/exporteren. U moet de `storageAuthenticationType="identityBased"` in de hoofd tekst van de aanvraag opgeven en `inputBlobContainerUri="https://..."` de `outputBlobContainerUri="https://..."` invoer-en uitvoer-url's van uw opslag account gebruiken.
 
 Azure IoT Hub Sdk's ondersteunen deze functionaliteit ook in het register beheer van de service-client. Het volgende code fragment laat zien hoe u een import-of export taak initieert in met behulp van de C#-SDK.
 
@@ -295,4 +295,4 @@ Gebruik de onderstaande koppelingen voor meer informatie over IoT Hub-functies:
 
 * [Berichtroutering](./iot-hub-devguide-messages-d2c.md)
 * [Bestand uploaden](./iot-hub-devguide-file-upload.md)
-* [Bulksgewijs importeren/exporteren van apparaten](./iot-hub-bulk-identity-mgmt.md) 
+* [Bulksgewijs importeren/exporteren van apparaten](./iot-hub-bulk-identity-mgmt.md)

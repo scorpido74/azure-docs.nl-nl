@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: c80ed02e137ea092bae1346260dba71cd417bed9
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: feb7be6ad5dbd0dfbd04b05836842d0476780d40
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688926"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151533"
 ---
 # <a name="save-costs-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>Bespaar op zegelkosten voor Azure App Service Isolated met gereserveerde capaciteit
 
@@ -39,7 +39,7 @@ Koop Windows-zegelreserveringen als u een of meer Windows-werkrollen op de zegel
 
 ## <a name="buy-isolated-stamp-reserved-capacity"></a>Gereserveerde capaciteit voor Isolated-zegels kopen
 
-U kunt gereserveerde capaciteit voor Isolated-zegels kopen in [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D). Betaal [vooraf of per maand](monthly-payments-reservations.md) voor de reservering. Als u gereserveerde capaciteit wilt kopen, moet u de eigenaarsrol hebben voor ten minste één Enterprise-abonnement of een afzonderlijk abonnement met tarieven voor betalen per gebruik.
+U kunt gereserveerde capaciteit voor Isolated-zegels kopen in [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D). Betaal [vooraf of per maand](./prepare-buy-reservation.md) voor de reservering. Als u gereserveerde capaciteit wilt kopen, moet u de eigenaarsrol hebben voor ten minste één Enterprise-abonnement of een afzonderlijk abonnement met tarieven voor betalen per gebruik.
 
 - Voor Enterprise-abonnementen moet de optie **Gereserveerde instanties toevoegen** zijn ingeschakeld in [EA Portal](https://ea.azure.com/). Als de instelling is uitgeschakeld, moet u een EA-beheerder zijn.
 - Voor het programma Cloud Solution Provider (CSP) kunnen alleen beheerders of verkoopmedewerkers gereserveerde Azure Synapse Analytics-capaciteit kopen.

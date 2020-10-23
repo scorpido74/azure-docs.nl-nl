@@ -1,22 +1,20 @@
 ---
 title: Fout opsporing voor C#-code voor Azure Data Lake U-SQL-taken
 description: In dit artikel wordt beschreven hoe u fouten opspoort voor een U-SQL-vertex met Azure Data Lake-Hulpprogram Ma's voor Visual Studio.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
 ms.topic: how-to
 ms.date: 11/30/2017
-ms.openlocfilehash: ca6fe4ad35e59472e8cf8f3b8476417e01c2668f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db1d57e3904087bc5cb3711b23cfe6bcf18c3455
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87131868"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218014"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Fout opsporing voor door de gebruiker gedefinieerde C#-code voor mislukte U-SQL-taken
 
-U-SQL biedt een uitbreidings model met C#. In U-SQL-scripts is het eenvoudig om C#-functies aan te roepen en analyse functies uit te voeren die SQL-achtige declaratieve taal niet ondersteunt. Zie voor meer informatie over de U-SQL-uitbrei ding [u-SQL-programmeer gids](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-u-sql-programmability-guide#use-user-defined-functions-udf). 
+U-SQL biedt een uitbreidings model met C#. In U-SQL-scripts is het eenvoudig om C#-functies aan te roepen en analyse functies uit te voeren die SQL-achtige declaratieve taal niet ondersteunt. Zie voor meer informatie over de U-SQL-uitbrei ding [u-SQL-programmeer gids](./data-lake-analytics-u-sql-programmability-guide.md#use-user-defined-functions-udf). 
 
 In de praktijk is het mogelijk dat alle code fouten opsporen, maar het is lastig om een gedistribueerde taak met aangepaste code in de cloud te debuggen met beperkte logboek bestanden. [Azure data Lake-Hulpprogram ma's voor Visual Studio](https://aka.ms/adltoolsvs) biedt een functie met de naam fout: **vertex debug**, waarmee u de fouten die zich in uw aangepaste code kunnen voordoen, gemakkelijker kunt opsporen. Wanneer U-SQL-taak mislukt, wordt de fout status door de service gehandhaafd en helpt u bij het downloaden van de Cloud fout omgeving naar de lokale computer voor fout opsporing. De lokale down load legt de gehele cloud omgeving vast, inclusief alle invoer gegevens en gebruikers code.
 

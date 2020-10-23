@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/10/2019
+ms.date: 10/15/2020
 ms.author: erhopf
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: b47fd90a3fc92234d95ddc9d9f4f14b5af67d757
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f63c97fd23d56ff508de8d5953eefac6b15ae1aa
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88926642"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097062"
 ---
 In deze gids ontdekt u hoe u de [Speech-SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) kunt installeren voor .NET Framework (Windows). Als u enkel de pakketnaam nodig hebt om zelf aan de slag te gaan, voer dan `Install-Package Microsoft.CognitiveServices.Speech` uit in de NuGet-console.
 

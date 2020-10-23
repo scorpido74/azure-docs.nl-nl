@@ -1,39 +1,39 @@
 ---
-title: Gegevens in Azure Blob-opslag beheren en zoeken met Blob-index (preview)
+title: Azure Blob-gegevens beheren en vinden met Blob index Tags (preview)
 description: Meer informatie over het gebruik van BLOB-index Tags voor het categoriseren, beheren en opvragen van blob-objecten.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 09/17/2020
+ms.date: 10/19/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.reviewer: hux
+ms.reviewer: klaasl
 ms.custom: references_regions
-ms.openlocfilehash: db23d3b5c532a1539936b51222345c98679c554c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f1ea67605be3aee6257c293aea3db617d885645
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91817528"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370250"
 ---
-# <a name="manage-and-find-azure-blob-data-with-blob-index-preview"></a>Azure Blob-gegevens beheren en zoeken met Blob-index (preview)
+# <a name="manage-and-find-azure-blob-data-with-blob-index-tags-preview"></a>Azure Blob-gegevens beheren en vinden met Blob index Tags (preview)
 
-Als gegevens sets groter en groter worden, kan het zoeken naar een specifiek object in een gegevens zee lastig en frustrerend zijn. BLOB index biedt mogelijkheden voor gegevens beheer en-detectie met behulp van sleutel kenmerken van index Tags, waarmee u objecten kunt categoriseren en zoeken binnen één container of in alle containers in uw opslag account. Later, als de vereisten van gegevens wijzigingen, kunnen objecten dynamisch worden gecategoriseerd door de index Tags bij te werken terwijl de huidige container organisatie nog in-place is. Het gebruik van BLOB-index kan de ontwikkeling vereenvoudigen door het samen voegen van uw blobgegevens en de bijbehorende index kenmerken voor dezelfde service. bieden u de mogelijkheid om efficiënte en schaal bare toepassingen te bouwen met systeem eigen functies.
+Als gegevens sets groter worden, kan het zoeken naar een specifiek object in een gegevens zee lastig zijn. BLOB-index Tags bieden mogelijkheden voor gegevens beheer en-detectie door gebruik te maken van kenmerken van index Tags met sleutel waarden. U kunt objecten categoriseren en zoeken binnen één container of in alle containers in uw opslag account. Als de gegevens vereisten veranderen, kunnen objecten dynamisch worden gecategoriseerd door hun index Tags bij te werken. Objecten kunnen in-place blijven met de huidige container organisatie.
 
-Met Blob index kunt u:
+Met Blob index Tags kunt u het volgende doen:
 
-- Uw blobs dynamisch categoriseren met index Tags voor sleutel waarden voor gegevens beheer
-- Snel specifieke gecodeerde blobs vinden in één container of een hele opslag account
+- Uw blobs dynamisch categoriseren met index Tags voor sleutel waarden
+- Snel specifieke gecodeerde blobs vinden in een hele opslag account
 - Voorwaardelijk gedrag voor BLOB-Api's opgeven op basis van de evaluatie van index Tags
-- Gebruik index Tags voor geavanceerde besturings elementen op BLOB-platform functies zoals [levenscyclus beheer](storage-lifecycle-management-concepts.md)
+- Index Tags gebruiken voor geavanceerde besturings elementen voor functies zoals het beheer van de [BLOB-levens cyclus](storage-lifecycle-management-concepts.md)
 
-Denk na over het scenario waarin u miljoenen blobs in uw opslag account hebt geschreven en die toegankelijk zijn voor veel verschillende toepassingen. U wilt alle gerelateerde gegevens uit één project zoeken, maar u weet niet wat het bereik is omdat de gegevens kunnen worden verdeeld over meerdere containers met verschillende regels voor de naamgeving van blobs. U weet echter dat uw toepassingen alle gegevens uploaden met tags op basis van hun respectievelijke project en beschrijving. In plaats van miljoenen blobs te doorzoeken en namen en eigenschappen te vergelijken, kunt u gewoon gebruiken `Project = Contoso` als detectie criterium. Met Blob-index worden alle containers in het hele opslag account gefilterd, zodat u alleen de set van 50 blobs uit kunt vinden en retour neren `Project = Contoso` .
+Houd rekening met een scenario waarin u miljoenen blobs in uw opslag account hebt, die toegankelijk zijn voor veel verschillende toepassingen. U wilt alle gerelateerde gegevens uit één project zoeken. U weet niet wat het bereik is omdat de gegevens kunnen worden verdeeld over meerdere containers met verschillende naam conventies. Uw toepassingen uploaden echter alle gegevens met tags op basis van het project. In plaats van miljoenen blobs te doorzoeken en namen en eigenschappen te vergelijken, kunt u gebruiken `Project = Contoso` als detectie criterium. Met Blob-index worden alle containers in het hele opslag account gefilterd, zodat u alleen de set van 50 blobs uit kunt vinden en retour neren `Project = Contoso` .
 
-Zie [BLOB-index gebruiken om gegevens te beheren en te zoeken](storage-blob-index-how-to.md)om aan de slag te gaan met voor beelden van het gebruik van BLOB-index.
+Zie [BLOB-index Tags gebruiken om gegevens te beheren en te zoeken](storage-blob-index-how-to.md)om aan de slag te gaan met voor beelden van het gebruik van BLOB-index.
 
 ## <a name="blob-index-tags-and-data-management"></a>Labels en gegevens beheer voor BLOB-indexen
 
-Container-en BLOB-naam voor voegsels zijn eendimensionale categorisatie voor uw opgeslagen gegevens. Met Blob index kunt u nu meerdere dimensies categoriseren voor al uw [BLOB-gegevens typen (blok, toevoegen of pagina)](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) met toegepaste kenmerk Tags. Deze multi-dimensionale categorisatie wordt systeem eigen geïndexeerd en beschikbaar gemaakt zodat u snel uw gegevens kunt opvragen en zoeken.
+Container-en BLOB-naam voorvoegsels zijn eendimensionale categorisaties. Met Blob-index Tags kunt u multi-dimensionale categorisatie voor [BLOB-gegevens typen (blok keren, toevoegen of pagina)](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs). Multi-dimensionale categorisatie is systeem eigen geïndexeerd door Azure Blob Storage zodat u uw gegevens snel kunt vinden.
 
 Houd rekening met de volgende vijf blobs in uw opslag account:
 
@@ -44,13 +44,16 @@ Houd rekening met de volgende vijf blobs in uw opslag account:
 - *Logboeken/2020/01/01/logfile.txt*
 
 
-Deze blobs zijn momenteel gescheiden met behulp van een voor voegsel van de *container/virtuele map/BLOB-naam*. Met Blob index kunt u een index label kenmerk van `Project = Contoso` op deze vijf blobs instellen om ze samen te categoriseren en daarbij hun huidige voorvoegsel organisatie te behouden. Dit elimineert de nood zaak om gegevens te verplaatsen door de mogelijkheid om gegevens te filteren en te zoeken met behulp van de multi-dimensionale index van het opslag platform.
+Deze blobs worden gescheiden met behulp van een voor voegsel van de naam van de *container/virtuele map/BLOB*. U kunt een index label kenmerk van `Project = Contoso` op deze vijf blobs instellen om ze samen te categoriseren en daarbij hun huidige voorvoegsel organisatie te onderhouden. Door index tags toe te voegen, hoeft u geen gegevens te verplaatsen door de mogelijkheid om gegevens te filteren en te zoeken met behulp van de index.
 
 ## <a name="setting-blob-index-tags"></a>Labels voor BLOB-index instellen
 
-BLOB-index Tags zijn sleutel-waardeparen die kunnen worden toegepast op nieuwe of bestaande objecten in uw opslag account. U kunt de index Tags tijdens het upload proces opgeven met behulp van de PutBlob-, Putblock List-of CopyBlob-bewerkingen en de optionele x-MS-Tags-header. Als u al blobs in uw opslag account hebt, kunt u SetBlobTags aanroepen met een opgemaakt XML-document waarin de kenmerken van de BLOB-index code worden opgegeven in de hoofd tekst van de aanvraag.
+BLOB-index Tags zijn sleutel-waardeparen die kunnen worden toegepast op nieuwe of bestaande objecten in uw opslag account. U kunt index Tags tijdens het upload proces opgeven met behulp van [put-BLOB](/rest/api/storageservices/put-blob), [blokkerings lijst plaatsen](/rest/api/storageservices/put-block-list)of BLOB-bewerkingen [kopiëren](/rest/api/storageservices/copy-blob) en de optionele `x-ms-tags` koptekst. Als u al blobs in uw opslag account hebt, roept u de [set BLOB-Tags](/rest/api/storageservices/set-blob-tags) aan die een opgemaakt XML-document door geven met de index Tags in de hoofd tekst van de aanvraag.
 
-Bekijk de volgende voor beelden van tags die kunnen worden ingesteld
+> [!IMPORTANT]
+> Het instellen van BLOB-index Tags kan worden uitgevoerd door de eigenaar van de [opslag-BLOB](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) en door iedereen met een Shared Access Signature die gemachtigd is om toegang te krijgen tot de labels van de BLOB (de `t` SAS-machtiging).
+>
+> Daarnaast kunnen RBAC-gebruikers met de `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` machtiging deze bewerking uitvoeren.
 
 U kunt één tag op uw BLOB Toep assen om te beschrijven wanneer de verwerking van uw gegevens is voltooid.
 
@@ -63,14 +66,15 @@ U kunt meerdere labels op uw BLOB Toep assen om de gegevens beter te beschrijven
 > "Status" = ' niet verwerkt '  
 > "Priority" = "01"
 
-Als u de bestaande kenmerken van de index code wilt wijzigen, moet u eerst de bestaande label kenmerken ophalen, de label kenmerken wijzigen en vervangen door de SetBlobTags-bewerking. Als u alle index Tags uit de BLOB wilt verwijderen, roept u de SetBlobTags-bewerking aan zonder dat er label kenmerken zijn opgegeven. Als blob-index Tags zijn een subresource voor de inhoud van de BLOB-gegevens, wordt door SetBlobTags geen onderliggende inhoud gewijzigd en wordt de laatste wijzigings tijd of eTag (entiteits code) van de BLOB niet gewijzigd. U kunt index Tags maken of wijzigen voor alle huidige basis-blobs en eerdere versies. Labels op moment opnamen of zachte verwijderde blobs kunnen echter niet worden gewijzigd.
+Als u de bestaande kenmerken van de index code wilt wijzigen, haalt u de bestaande label kenmerken op, wijzigt u de code kenmerken en vervangt u door de bewerking [BLOB Tags instellen](/rest/api/storageservices/set-blob-tags) . Als u alle index Tags uit de BLOB wilt verwijderen, roept u de `Set Blob Tags` bewerking aan zonder label kenmerken opgegeven. Als blob-index Tags zijn een subresource voor de inhoud van de BLOB-gegevens, worden `Set Blob Tags` onderliggende inhoud niet gewijzigd en wordt de laatste wijzigings tijd of eTag van de BLOB niet gewijzigd. U kunt index Tags maken of wijzigen voor alle huidige basis-blobs en eerdere versies. Tags op moment opnamen of zachte verwijderde blobs kunnen echter niet worden gewijzigd.
 
 De volgende limieten gelden voor BLOB-index Tags:
+
 - Elke Blob kan Maxi maal 10 BLOB-index Tags hebben
-- Label sleutels moeten tussen 1 en 128 tekens lang zijn
-- Label waarden moeten tussen de 0 en 256 tekens lang zijn
+- Tags sleutels moeten tussen de 1 en 128 tekens lang zijn
+- Label waarden moeten tussen 0 en 256 tekens lang zijn
 - Code sleutels en waarden zijn hoofdletter gevoelig
-- Code sleutels en waarden bieden alleen ondersteuning voor teken reeks gegevens typen. getallen, datums, tijden of speciale tekens worden opgeslagen als teken reeksen
+- Code sleutels en waarden bieden alleen ondersteuning voor teken reeks gegevens typen. Getallen, datums, tijden of speciale tekens worden opgeslagen als teken reeksen
 - Code sleutels en waarden moeten voldoen aan de volgende naamgevings regels:
   - Alfanumerieke tekens:
     - **a** t/m **z** (kleine letters)
@@ -80,79 +84,94 @@ De volgende limieten gelden voor BLOB-index Tags:
 
 ## <a name="getting-and-listing-blob-index-tags"></a>Labels voor BLOB-indexen ophalen en weer geven
 
-BLOB-index Tags worden naast de BLOB-gegevens opgeslagen als subbron en kunnen onafhankelijk van de onderliggende BLOB-gegevens inhoud worden opgehaald. Eenmaal ingesteld kunnen de BLOB-index Tags voor één BLOB direct worden opgehaald en gecontroleerd met de bewerking GetBlobTags. De bewerking ListBlobs met `include:tags` para meter retourneert ook alle blobs in een container, samen met de toegepaste labels van de BLOB-index.
+BLOB-index Tags worden opgeslagen als subresource naast de blobgegevens en kunnen onafhankelijk van de onderliggende BLOB-gegevens inhoud worden opgehaald. BLOB-index Tags voor één BLOB kunnen worden opgehaald met de bewerking [BLOB-labels ophalen](/rest/api/storageservices/get-blob-tags) . Met de bewerking [lijst-blobs](/rest/api/storageservices/list-blobs) met de `include:tags` para meter worden ook alle blobs in een container en de bijbehorende BLOB-index Tags geretourneerd.
 
-Voor alle blobs met ten minste één BLOB-index label wordt het aantal x-MS-Tags geretourneerd in de ListBlobs-, GetBlob-en GetBlobProperties-bewerkingen, waarmee het aantal BLOB-index Tags dat in de BLOB bestaat, wordt aangegeven.
+> [!IMPORTANT]
+> Het ophalen en weer geven van BLOB-index Tags kan worden uitgevoerd door de eigenaar van de gegevens van de [opslag-BLOB](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) en door iedereen met een Shared Access Signature die gemachtigd is om toegang te krijgen tot de labels van de BLOB (de `t` SAS-machtiging).
+>
+> Daarnaast kunnen RBAC-gebruikers met de `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read` machtiging deze bewerking uitvoeren.
+
+Voor alle blobs met ten minste één BLOB-index label `x-ms-tag-count` wordt de geretourneerd in de [lijst blobs](/rest/api/storageservices/list-blobs), [ophalen BLOB](/rest/api/storageservices/get-blob)en [Eigenschappen van BLOB](/rest/api/storageservices/get-blob-properties) -bewerkingen ophalen, waarmee het aantal index Tags op de BLOB wordt aangegeven.
 
 ## <a name="finding-data-using-blob-index-tags"></a>Gegevens zoeken met behulp van BLOB-index Tags
 
-Als er BLOB-index Tags zijn ingesteld op uw blobs, worden deze sleutel/waarde-kenmerken door de indexerings engine beschikbaar gemaakt in een multi-dimensionale index. Terwijl de index Tags op de BLOB bestaan en direct kunnen worden opgehaald, kan het enige tijd duren voordat de BLOB-index is bijgewerkt met de vernieuwde index label kenmerken. Zodra de BLOB-index is bijgewerkt, kunt u nu profiteren van de systeem eigen query-en detectie mogelijkheden die worden geboden door Blob Storage.
+Met de indexerings engine worden uw sleutel waarden kenmerken in een multi-dimensionale index weer gegeven. Nadat u de index Tags hebt ingesteld, bestaan deze in de BLOB en kunnen deze direct worden opgehaald. Het kan enige tijd duren voordat de BLOB-index wordt bijgewerkt. Nadat de BLOB-index is bijgewerkt, kunt u de systeem eigen query-en detectie mogelijkheden van Blob Storage gebruiken.
 
-Met de bewerking FindBlobsByTags kunt u een gefilterde retourset van blobs ophalen waarvan de index Tags overeenkomen met een bepaalde BLOB-index query-expressie. BLOB-index ondersteunt filteren op alle containers in uw opslag account of u kunt het filteren op slechts één container bereiken. Omdat alle sleutels en waarden van de BLOB-index code teken reeksen zijn, gebruiken de ondersteunde relationele Opera tors een lexografische die wordt gesorteerd op de index label waarden.
+Met de bewerking [blobs per Tags zoeken](/rest/api/storageservices/find-blobs-by-tags) kunt u een gefilterde set blobs ophalen waarvan de index Tags overeenkomen met een bepaalde query-expressie. `Find Blobs by Tags` ondersteunt filteren op alle containers in uw opslag account of u kunt het filteren op slechts één container bereiken. Omdat alle index code sleutels en-waarden teken reeksen zijn, gebruiken relationele Opera tors een lexografische-sortering.
+
+> [!IMPORTANT]
+> Het zoeken van gegevens met behulp van BLOB-index Tags kan worden uitgevoerd door de eigenaar van de gegevens van de [opslag-BLOB](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) en door iedereen met een Shared Access Signature die gemachtigd is om blobs te vinden op basis van tags (de `f` SAS-machtiging).
+>
+> Daarnaast kunnen RBAC-gebruikers met de `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` machtiging deze bewerking uitvoeren.
 
 De volgende criteria zijn van toepassing op filtering van BLOB-index:
+
 - Code sleutels moeten tussen dubbele aanhalings tekens worden geplaatst (")
 - Label waarden en container namen moeten tussen enkele aanhalings tekens worden geplaatst (')
-- Het teken @ mag alleen worden gefilterd op een specifieke container naam (bijvoorbeeld @container = containerName)
+- Het teken @ mag alleen worden gefilterd op een specifieke container naam (bijvoorbeeld `@container = 'ContainerName'` )
 - Filters worden toegepast met lexografische sorteren op teken reeksen
-- Dezelfde gevarieerde bereik bewerkingen op dezelfde sleutel zijn ongeldig (bijvoorbeeld ' positie ' > ' 10 ' en ' rangs >= ' 15 ')
+- Identieke bereik bewerkingen met dezelfde sleutel zijn ongeldig (bijvoorbeeld `"Rank" > '10' AND "Rank" >= '15'` )
 - Als u REST gebruikt voor het maken van een filter expressie, moeten de tekens URI-code ring zijn
 
-In de onderstaande tabel ziet u alle geldige Opera tors voor FindBlobsByTags:
+In de onderstaande tabel ziet u alle geldige Opera tors voor `Find Blobs by Tags` :
 
 |  Operator  |  Beschrijving  | Voorbeeld |
 |------------|---------------|---------|
-|     =      |     Is gelijk aan     | "Status" = ' wordt uitgevoerd ' |
-|     >      |  Groter dan | "Datum" > ' 2018-06-18 ' |
-|     >=     |  Groter dan of gelijk aan | "Priority" >= ' 5 ' |
-|     <      |  Kleiner dan   | ' Leeftijd ' < ' 32 ' |
-|     <=     |  Kleiner dan of gelijk aan  | ' Bedrijf ' <= ' Contoso ' |
-|    AND     |  Logische en  | ' Positie ' >= ' 010 ' en ' Rank ' < ' 100 ' |
-| @container | Bereik naar een specifieke container | @container = ' videofiles ' en ' status ' = ' gereed ' |
+|     =      |     Is gelijk aan     | `"Status" = 'In Progress'` |
+|     >      |  Groter dan | `"Date" > '2018-06-18'` |
+|     >=     |  Groter dan of gelijk aan | `"Priority" >= '5'` |
+|     <      |  Kleiner dan   | `"Age" < '32'` |
+|     <=     |  Kleiner dan of gelijk aan  | `"Company" <= 'Contoso'` |
+|    AND     |  Logische en  | `"Rank" >= '010' AND "Rank" < '100'` |
+| @container | Bereik naar een specifieke container | `@container = 'videofiles' AND "status" = 'done'` |
 
 > [!NOTE]
 > Zorg dat u bekend bent met lexicographical-volg orde bij het instellen en uitvoeren van query's op Tags.
+>
 > - Getallen worden vóór letters gesorteerd. Getallen worden gesorteerd op basis van het eerste cijfer.
 > - Hoofd letters worden gesorteerd vóór kleine letters.
 > - Symbolen zijn niet standaard. Sommige symbolen worden vóór numerieke waarden gesorteerd. Andere symbolen worden vóór of na letters gesorteerd.
 
 ## <a name="conditional-blob-operations-with-blob-index-tags"></a>Voorwaardelijke BLOB-bewerkingen met Blob index Tags
-In REST versies 2019-10-10 en hoger ondersteunen de meeste [BLOB service-api's](https://docs.microsoft.com/rest/api/storageservices/operations-on-blobs) nu een voorwaardelijke header, x-MS-if-Tags, zodat de bewerking alleen kan worden uitgevoerd als aan de opgegeven voor waarde voor de BLOB-index is voldaan. Als niet aan de voor waarde wordt voldaan, krijgt u `error 412: The condition specified using HTTP conditional header(s) is not met` .
 
-De header x-MS-if-Tags kan worden gecombineerd met de andere bestaande HTTP-voorwaardelijke headers (if-match, if-none-match, enz.).  Als er meerdere voorwaardelijke headers in een aanvraag worden gegeven, moeten ze allemaal de waarde True evalueren voordat de bewerking kan worden voltooid.  Alle voorwaardelijke headers worden in feite gecombineerd met logische en.
+In REST versies 2019-10-10 en hoger ondersteunen de meeste [BLOB service-api's](/rest/api/storageservices/operations-on-blobs) nu een voorwaardelijke header, `x-ms-if-tags` waardoor de bewerking alleen slaagt als aan de opgegeven voor waarde voor de BLOB-index is voldaan. Als niet aan de voor waarde wordt voldaan, krijgt u `error 412: The condition specified using HTTP conditional header(s) is not met` .
 
-In de onderstaande tabel ziet u alle geldige Opera tors voor voorwaardelijke bewerkingen:
+De `x-ms-if-tags` header kan worden gecombineerd met de andere bestaande HTTP-voorwaardelijke headers (if-match, if-none-match, enzovoort). Als er meerdere voorwaardelijke headers in een aanvraag worden gegeven, moeten ze allemaal de waarde True evalueren voordat de bewerking kan worden voltooid. Alle voorwaardelijke headers worden in feite gecombineerd met logische en.
+
+De onderstaande tabel bevat de geldige Opera tors voor voorwaardelijke bewerkingen:
 
 |  Operator  |  Beschrijving  | Voorbeeld |
 |------------|---------------|---------|
-|     =      |     Is gelijk aan     | "Status" = ' wordt uitgevoerd ' |
-|     <>     |   Is niet gelijk aan   | "Status"  <>  voltooid  |
-|     >      |  Groter dan | "Datum" > ' 2018-06-18 ' |
-|     >=     |  Groter dan of gelijk aan | "Priority" >= ' 5 ' |
-|     <      |  Kleiner dan   | ' Leeftijd ' < ' 32 ' |
-|     <=     |  Kleiner dan of gelijk aan  | ' Bedrijf ' <= ' Contoso ' |
-|    AND     |  Logische en  | ' Positie ' >= ' 010 ' en ' Rank ' < ' 100 ' |
-|     OF     | Logische of   | "Status" = ' done ' of ' Priority ' >= ' 05 ' |
+|     =      |     Is gelijk aan     | `"Status" = 'In Progress'` |
+|     <>     |   Is niet gelijk aan   | `"Status" <> 'Done'` |
+|     >      |  Groter dan | `"Date" > '2018-06-18'` |
+|     >=     |  Groter dan of gelijk aan | `"Priority" >= '5'` |
+|     <      |  Kleiner dan   | `"Age" < '32'` |
+|     <=     |  Kleiner dan of gelijk aan  | `"Company" <= 'Contoso'` |
+|    AND     |  Logische en  | `"Rank" >= '010' AND "Rank" < '100'` |
+|     OF     | Logische of   | `"Status" = 'Done' OR "Priority" >= '05'` |
 
 > [!NOTE]
-> Er zijn twee extra Opera Tors, niet gelijk aan en logische of, die zijn toegestaan in de header Conditional x-MS-if-Tags voor een BLOB-bewerking, maar die niet aanwezig zijn in de FindBlobsByTags-bewerking.
+> Er zijn twee extra Opera Tors, niet gelijk aan en logische of, die zijn toegestaan in de voorwaardelijke `x-ms-if-tags` koptekst voor BLOB-bewerkingen, maar die niet aanwezig zijn in de `Find Blobs by Tags` bewerking.
 
 ## <a name="platform-integrations-with-blob-index-tags"></a>Platform integraties met Blob index Tags
 
-Met de labels van BLOB-indexen kunt u niet alleen uw blobgegevens categoriseren, beheren en zoeken, maar ook integraties met andere Blob service functies, zoals [levenscyclus beheer](storage-lifecycle-management-concepts.md).
+Met Blob-index Tags kunt u niet alleen uw blobgegevens categoriseren, beheren en zoeken, maar ook integratie met andere Blob Storage functies, zoals [levenscyclus beheer](storage-lifecycle-management-concepts.md).
 
 ### <a name="lifecycle-management"></a>Levenscyclus beheer
 
-Met het nieuwe blobIndexMatch als een regel filter in levenscyclus beheer kunt u gegevens verplaatsen naar koele lagen of gegevens verwijderen op basis van de index Tags die zijn toegepast op uw blobs. Zo kunt u nauw keuriger in uw regels en alleen gegevens verplaatsen of verwijderen als ze overeenkomen met de opgegeven label criteria.
+Met het `blobIndexMatch` filter als regel in levenscyclus beheer kunt u gegevens verplaatsen naar koele lagen of gegevens verwijderen op basis van de index Tags die zijn toegepast op uw blobs. U kunt nauw keuriger in uw regels en alleen blobs verplaatsen of verwijderen als ze overeenkomen met de opgegeven label criteria.
 
-U kunt een overeenkomende BLOB-index instellen als een zelfstandig filter dat is ingesteld in een levenscyclus regel om acties op gelabelde gegevens toe te passen. U kunt ook een voor voegsel combi neren en een BLOB-index die overeenkomt met meer specifieke gegevens sets. Het Toep assen van meerdere filters op een levenscyclus regel is een logische en-bewerking, zodat de actie alleen van toepassing is als alle filter criteria overeenkomen.
+U kunt een overeenkomende BLOB-index instellen als een zelfstandig filter dat is ingesteld in een levenscyclus regel om acties op gelabelde gegevens toe te passen. U kunt ook een voor voegsel en een BLOB-index combi neren zodat deze overeenkomen met meer specifieke gegevens sets. Het opgeven van meerdere filters in een levenscyclus regel is van toepassing op een logische en-bewerking. De actie is alleen van toepassing als *alle* filter criteria overeenkomen.
 
-De volgende voor beeld-levenscyclus beheer regel is van toepassing op blok-blobs in de container ' videofiles ' en lagen van blobs om opslag alleen te archiveren als de gegevens overeenkomen met de criteria van de BLOB-index code van ```"Status" = 'Processed' AND "Source" == 'RAW'``` .
+De volgende voor beeld-levenscyclus beheer regel is van toepassing op blok-blobs in een container met de naam *videofiles*. De regel lagen blobs om opslag alleen te archiveren als de gegevens overeenkomen met de criteria van de BLOB-index codes van `"Status" == 'Processed' AND "Source" == 'RAW'` .
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
+
 ![Voor beeld van een overeenkomende regel voor een BLOB-index voor levenscyclus beheer in Azure Portal](media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png)
 
 # <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
     "rules": [
@@ -193,127 +212,143 @@ De volgende voor beeld-levenscyclus beheer regel is van toepassing op blok-blobs
     ]
 }
 ```
+
 ---
 
 ## <a name="permissions-and-authorization"></a>Machtigingen en autorisatie
 
-U kunt toegang tot de BLOB-index toestaan met een van de volgende methoden:
+U kunt toegang tot BLOB-index Tags toestaan met een van de volgende benaderingen:
 
-- Door Azure RBAC (op rollen gebaseerd toegangs beheer) te gebruiken om machtigingen te verlenen aan een Azure Active Directory (Azure AD)-beveiligingsprincipal. Micro soft raadt u aan Azure AD te gebruiken voor superieure beveiliging en gebruiks gemak. Zie [toegang tot blobs en wacht rijen toestaan met Azure Active Directory](../common/storage-auth-aad.md)voor meer informatie over het gebruik van Azure AD met Blob-bewerkingen.
-- Door gebruik te maken van een Shared Access Signature (SAS) voor het delegeren van toegang tot de BLOB-index. Zie voor meer informatie over gedeelde toegangs handtekeningen [beperkte toegang verlenen tot Azure storage-resources met behulp van Shared Access signatures (SAS)](../common/storage-sas-overview.md).
-- Door de toegangs sleutels voor het account te gebruiken om bewerkingen met gedeelde sleutel te autoriseren. Zie [autoriseren met gedeelde sleutel](/rest/api/storageservices/authorize-with-shared-key)voor meer informatie.
+- Azure RBAC (op rollen gebaseerd toegangs beheer) gebruiken om machtigingen te verlenen aan een Azure Active Directory (Azure AD)-beveiligingsprincipal. Gebruik Azure AD voor superieure beveiliging en gebruiks gemak. Zie [toegang tot blobs en wacht rijen toestaan met Azure Active Directory](../common/storage-auth-aad.md)voor meer informatie over het gebruik van Azure AD met Blob-bewerkingen.
+- Een Shared Access Signature (SAS) gebruiken om de toegang tot de BLOB-index te delegeren. Zie voor meer informatie over gedeelde toegangs handtekeningen [beperkte toegang verlenen tot Azure storage-resources met behulp van Shared Access signatures (SAS)](../common/storage-sas-overview.md).
+- De toegangs sleutels voor het account gebruiken om bewerkingen met gedeelde sleutel te autoriseren. Zie [autoriseren met gedeelde sleutel](/rest/api/storageservices/authorize-with-shared-key)voor meer informatie.
 
 BLOB-index Tags zijn een subresource voor de BLOB-gegevens. Een gebruiker met machtigingen of een SAS-token om blobs te lezen of te schrijven heeft mogelijk geen toegang tot de index Tags van de blob.
 
 ### <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
+
 Aanroepers die gebruikmaken van een [Azure AD-identiteit](../common/storage-auth-aad.md) kunnen de volgende machtigingen krijgen voor het werken met Blob-index Tags.
 
-|   BLOB-bewerkingen  |  Azure RBAC-actie   |
-|--------------------|----------------|
-| Blobs zoeken op labels | Micro soft. Storage/Storage accounts/blobServices/containers/blobs/filter/actie |
-| BLOB-Tags instellen      | Micro soft. Storage/Storage accounts/blobServices/containers/blobs/Tags/schrijven |
-| BLOB-labels ophalen      | Micro soft. Storage/Storage accounts/blobServices/containers/blobs/tags/lezen |
+| Bewerkingen van BLOB-index Tags                                          | Azure RBAC-actie                                                             |
+|--------------------------------------------------------------------|-------------------------------------------------------------------------------|
+| [BLOB-Tags instellen](/rest/api/storageservices/set-blob-tags)           | Micro soft. Storage/Storage accounts/blobServices/containers/blobs/Tags/schrijven    |
+| [BLOB-labels ophalen](/rest/api/storageservices/get-blob-tags)           | Micro soft. Storage/Storage accounts/blobServices/containers/blobs/tags/lezen     |
+| [Blobs zoeken op labels](/rest/api/storageservices/find-blobs-by-tags) | Micro soft. Storage/Storage accounts/blobServices/containers/blobs/filter/actie |
 
-Aanvullende machtigingen die gescheiden zijn van de onderliggende BLOB-gegevens, zijn vereist voor het uitvoeren van de labels. De rol van de eigenaar van de opslag-BLOB wordt aan al deze drie machtigingen verleend. De gegevens lezer van de opslag-BLOB krijgt de alleen blobs zoeken op labels en de machtigingen voor BLOB-labels ophalen.
+Aanvullende machtigingen, gescheiden van de onderliggende BLOB-gegevens, zijn vereist voor bewerkingen voor index Tags. De rol [opslag-BLOB-gegevens eigenaar](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) wordt machtigingen verleend voor alle drie de bewerkingen van de BLOB-index Tags. Er worden alleen machtigingen voor en bewerkingen verleend aan de [gegevens lezer](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) van de opslag-BLOB `Find Blobs by Tags` `Get Blob Tags` .
 
 ### <a name="sas-permissions"></a>SAS-machtigingen
-Aanroepers die gebruikmaken van een [Shared Access Signature (SAS),](../common/storage-sas-overview.md) kunnen machtigingen met een bereik krijgen voor het uitvoeren van BLOB-Tags.
+
+Aanroepers die gebruikmaken van een [Shared Access Signature (SAS),](../common/storage-sas-overview.md) kunnen machtigingen met een bereik krijgen voor het uitvoeren van BLOB-index Tags.
 
 #### <a name="blob-sas"></a>BLOB SAS
-De volgende machtigingen kunnen worden verleend in een Blob service SAS om toegang tot BLOB-index tags toe te staan. Alleen lees-en schrijf machtigingen voor de BLOB zijn voldoende om de index Tags te kunnen lezen of schrijven.
 
-|  Machtiging  |  URI-symbool  | Toegestane bewerkingen |
-|--------------|--------------|--------------------|
-|  Index Tags  |      t      | BLOB-index Tags voor een BLOB ophalen en instellen |
+De volgende machtigingen kunnen worden verleend in een BLOB-SAS om toegang tot BLOB-index tags toe te staan. Lees-en schrijf machtigingen van blobs zijn alleen voldoende om de index Tags te mogen lezen of schrijven.
+
+| Machtiging | URI-symbool | Toegestane bewerkingen                |
+|------------|------------|-----------------------------------|
+| Index Tags |     t      | Index Tags voor een BLOB ophalen en instellen |
 
 #### <a name="container-sas"></a>Container SAS
-De volgende machtigingen kunnen worden verleend in container service-SA'S om filteren op BLOB-tags toe te staan.  De machtiging voor de BLOB-lijst is niet voldoende om filter-blobs toe te staan op index Tags.
 
-|  Machtiging  |  URI-symbool  | Toegestane bewerkingen |
-|--------------|--------------|--------------------|
-| Index Tags   |      f      | Blobs met Blob-index Tags zoeken |
+De volgende machtigingen kunnen worden verleend in een container-SAS om filteren op BLOB-tags toe te staan. De `Blob List` machtiging is niet genoeg om filter-blobs toe te staan op index Tags.
+
+| Machtiging | URI-symbool | Toegestane bewerkingen         |
+|------------|------------|----------------------------|
+| Index Tags |     f      | Blobs met index Tags zoeken |
 
 ## <a name="choosing-between-metadata-and-blob-index-tags"></a>Kiezen tussen de meta gegevens-en BLOB-index Tags
-Zowel BLOB index Tags als meta gegevens bieden de mogelijkheid om wille keurige, door de gebruiker gedefinieerde sleutel/waarde op te slaan naast een BLOB-resource. Beide kunnen worden opgehaald en direct worden ingesteld, zonder de inhoud van de BLOB te retour neren of te wijzigen. Het is mogelijk om meta gegevens en index Tags te gebruiken.
 
-Er worden echter alleen BLOB index Tags automatisch geïndexeerd en query's gemaakt door de systeem eigen BLOB-service. Meta gegevens kunnen niet zelf worden geïndexeerd en er wordt een query uitgevoerd, tenzij u een afzonderlijke service, zoals [Azure Search](../../search/search-blob-ai-integration.md), gebruikt. BLOB index Tags hebben ook extra machtigingen voor lezen/filteren en schrijven die gescheiden zijn van de onderliggende BLOB-gegevens. Meta gegevens gebruiken dezelfde machtigingen als de BLOB en worden geretourneerd als HTTP-headers in de GetBlob-of GetBlobProperties-bewerkingen. BLOB-index Tags worden op rest versleuteld met een door [micro soft beheerde sleutel](../common/storage-service-encryption.md) , terwijl meta gegevens worden versleuteld met dezelfde versleutelings sleutel die is opgegeven voor BLOB-gegevens.
+Zowel BLOB index Tags als meta gegevens bieden de mogelijkheid om wille keurige, door de gebruiker gedefinieerde sleutel waarden op te slaan naast een BLOB-resource. Beide kunnen worden opgehaald en direct worden ingesteld, zonder de inhoud van de BLOB te retour neren of te wijzigen. Het is mogelijk om meta gegevens en index Tags te gebruiken.
+
+Alleen index Tags worden automatisch geïndexeerd en doorzoekbaar gemaakt door de systeem eigen Blob Storage-service. Meta gegevens kunnen niet systeem eigen worden geïndexeerd of doorzocht. U moet een afzonderlijke service gebruiken, zoals [Azure Search](../../search/search-blob-ai-integration.md). BLOB-index Tags hebben extra machtigingen voor lezen, filteren en schrijven die gescheiden zijn van de onderliggende BLOB-gegevens. Meta gegevens gebruiken dezelfde machtigingen als de BLOB en worden geretourneerd als HTTP-headers door de bewerkingen [Get BLOB](/rest/api/storageservices/get-blob) en [Eigenschappen van BLOB ophalen](/rest/api/storageservices/get-blob-properties) . BLOB index Tags worden op rest versleuteld met een door [micro soft beheerde sleutel](../common/storage-service-encryption.md). Meta gegevens worden op rest versleuteld met behulp van dezelfde versleutelings sleutel die is opgegeven voor BLOB-gegevens.
 
 De volgende tabel bevat een overzicht van de verschillen tussen de index Tags voor meta gegevens en blob:
 
 |              |   Metagegevens   |   Index Tags voor BLOB  |
 |--------------|--------------|--------------------|
-| **Limieten**      | Geen numerieke limiet; totaal 8 KB; niet hoofdletter gevoelig | 10 labels per BLOB Max; 768 bytes per tag; hoofdletter gevoelig |
-| **Updates**    | Niet toegestaan op de archief laag; SetBlobMetadata vervangt alle bestaande meta gegevens; SetBlobMetadata wijzigt de laatst gewijzigde-tijd van de BLOB | Toegestaan voor alle toegangs lagen. SetBlobTags vervangt alle bestaande tags. SetBlobTags wijzigt de laatste wijzigings tijd van de BLOB niet |
-| **Storage**     | Opgeslagen met de BLOB-gegevens | Subresource voor de BLOB-gegevens |
-| **& Query's indexeren** | N/A systeem eigen; moet een afzonderlijke service gebruiken, zoals Azure Search | Ja, systeem eigen indexering en query functies ingebouwd in Blob Storage |
+| **Limieten**      | Geen numerieke limiet, 8 KB totaal, hoofdletter gevoelig | 10 Tags per BLOB Max, 768 bytes per tag, hoofdletter gevoelig |
+| **Updates**    | Niet toegestaan op de archief laag, `Set Blob Metadata` vervangt alle bestaande meta gegevens, `Set Blob Metadata` wijzigt de laatste wijzigings tijd van de BLOB | Voor alle toegangs lagen is toegestaan, worden `Set Blob Tags` alle bestaande tags vervangen, `Set Blob Tags` wordt de laatste wijziging van de BLOB niet gewijzigd |
+| **Storage**     | Opgeslagen met de BLOB-gegevens | Subresource van de BLOB-gegevens |
+| **& Query's indexeren** | Moet een afzonderlijke service gebruiken, zoals Azure Search | Indexerings-en query functies die zijn ingebouwd in Blob Storage |
 | **Versleuteling** | Versleuteld op rest met dezelfde versleutelings sleutel die wordt gebruikt voor BLOB-gegevens | Versleuteld op rest met een door micro soft beheerde versleutelings sleutel |
 | **Prijzen** | De grootte van meta gegevens is opgenomen in de opslag kosten voor een BLOB | Vaste kosten per index code |
-| **Antwoord voor koptekst** | Meta gegevens die zijn geretourneerd als headers in GetBlob en GetBlobProperties | TagCount geretourneerd in GetBlob of GetBlobProperties; Tags die alleen worden geretourneerd in GetBlobTags en ListBlobs |
-| **Machtigingen**  | Lees-of schrijf machtigingen voor BLOB-gegevens worden uitgebreid naar meta gegevens | Er zijn aanvullende machtigingen vereist voor het lezen/filteren of schrijven van Tags |
+| **Antwoord voor koptekst** | Meta gegevens die als kopteksten zijn geretourneerd in `Get Blob` en `Get Blob Properties` | Het aantal labels dat `Get Blob` is geretourneerd door of `Get Blob Properties` , tags die alleen worden geretourneerd door `Get Blob Tags` en `List Blobs` |
+| **Machtigingen**  | Lees-of schrijf machtigingen voor BLOB-gegevens worden uitgebreid naar meta gegevens | Er zijn aanvullende machtigingen vereist voor het lezen, filteren of schrijven van index Tags |
 | **Naamgeving** | Namen van meta gegevens moeten voldoen aan de naamgevings regels voor C#-id's | BLOB index Tags bieden ondersteuning voor een groter aantal alfanumerieke tekens |
 
 ## <a name="pricing"></a>Prijzen
-Prijzen voor BLOB-indexen zijn momenteel beschikbaar als open bare preview-versie en kunnen worden gewijzigd voor algemene Beschik baarheid. Klanten betalen voor het totale aantal BLOB-index Tags binnen een opslag account, gemiddeld over de maand. Er zijn geen kosten voor de indexerings engine. Aanvragen voor SetBlobTags, GetBlobTags en FindBlobsByTags worden in rekening gebracht op basis van hun respectieve bewerkings typen. Zie [prijzen voor blok-BLOB voor meer informatie](https://azure.microsoft.com/pricing/details/storage/blobs/).
+
+Prijzen voor BLOB-index zijn beschikbaar in open bare preview-versie en kunnen worden gewijzigd voor algemene Beschik baarheid. Er worden kosten in rekening gebracht voor het gemiddelde maandelijkse aantal index Tags in een opslag account. Er zijn geen kosten voor de indexerings engine. Aanvragen voor `Set Blob Tags` , `Get Blob Tags` en `Find Blobs by Tags` worden in rekening gebracht op basis van hun respectieve bewerkings typen. Zie [prijzen voor blok-BLOB voor meer informatie](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 ## <a name="regional-availability-and-storage-account-support"></a>Regionale Beschik baarheid en ondersteuning voor opslag accounts
 
-BLOB-index is momenteel alleen beschikbaar voor Algemeen v2-accounts (GPv2) met een hiërarchische naam ruimte (HNS) is uitgeschakeld. Algemeen-accounts (GPV1) worden niet ondersteund, maar u kunt een upgrade uitvoeren voor een GPv1-account naar een GPv2-account. Zie [overzicht van Azure Storage-account](../common/storage-account-overview.md)voor meer informatie over opslag accounts.
+BLOB-index Tags zijn alleen beschikbaar voor Algemeen v2-accounts (GPv2) met een hiërarchische naam ruimte (HNS) is uitgeschakeld. Algemeen-accounts (GPV1) worden niet ondersteund, maar u kunt een upgrade uitvoeren voor een GPv1-account naar een GPv2-account.
 
-In de open bare preview-versie is Blob index momenteel alleen beschikbaar in de volgende regio's selecteren:
+Index Tags worden niet ondersteund voor Premium Storage-accounts. Zie [overzicht van Azure Storage-account](../common/storage-account-overview.md)voor meer informatie over opslag accounts.
+
+In de open bare preview zijn BLOB index Tags alleen beschikbaar in de volgende regio's:
+
 - Canada - midden
 - Canada - oost
 - Frankrijk - centraal
 - Frankrijk - zuid
 
-Zie [BLOB-index gebruiken om gegevens te beheren en te zoeken](storage-blob-index-how-to.md)om aan de slag te gaan.
+Zie [BLOB-index Tags gebruiken om gegevens te beheren en te zoeken](storage-blob-index-how-to.md)om aan de slag te gaan.
 
 > [!IMPORTANT]
-> Zie de sectie voor waarden in dit artikel. Als u zich wilt inschrijven voor de preview, registreert u uw abonnement voordat u de BLOB-index in uw opslag accounts kunt gebruiken.
+> U moet uw abonnement registreren voordat u de preview-versie van de BLOB-index in uw opslag accounts kunt gebruiken. Zie de sectie [voor waarden en bekende problemen](#conditions-and-known-issues) in dit artikel.
 
 ### <a name="register-your-subscription-preview"></a>Uw abonnement registreren (preview-versie)
-Omdat de BLOB-index alleen in open bare preview is, moet u uw abonnement registreren voordat u de functie kunt gebruiken. Voer de volgende Power shell-of CLI-opdrachten uit om een aanvraag in te dienen.
+
+Omdat de labels van de BLOB-index alleen in de open bare preview zijn, moet u uw abonnement registreren voordat u de functie kunt gebruiken. Voer de volgende Power shell-of CLI-opdrachten uit om een aanvraag in te dienen.
 
 #### <a name="register-by-using-powershell"></a>Registreren met behulp van Power shell
+
 ```powershell
 Register-AzProviderFeature -FeatureName BlobIndex -ProviderNamespace Microsoft.Storage
 Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 ```
 
 #### <a name="register-by-using-azure-cli"></a>Registreren met behulp van Azure CLI
+
 ```azurecli
 az feature register --namespace Microsoft.Storage --name BlobIndex
 az provider register --namespace 'Microsoft.Storage'
 ```
 
-## <a name="conditions-and-known-issues-preview"></a>Voor waarden en bekende problemen (preview-versie)
-In deze sectie worden bekende problemen en voor waarden in de huidige open bare preview van BLOB-index beschreven. Net als bij de meeste previews mag deze functie niet worden gebruikt voor werk belastingen van de productie, totdat het het gedrag bereikt dat kan veranderen.
+## <a name="conditions-and-known-issues"></a>Voor waarden en bekende problemen
+
+In deze sectie worden bekende problemen en voor waarden voor de open bare preview van BLOB-index Tags beschreven. Deze functie mag niet worden gebruikt voor productie werkbelastingen totdat de algemene Beschik baarheid (GA) is bereikt. Dit kan veranderen.
 
 - Voor de preview moet u eerst uw abonnement registreren voordat u de BLOB-index voor uw opslag account in de preview-regio's kunt gebruiken.
-- Alleen GPv2-accounts worden momenteel ondersteund in de preview-versie. BLOB-, BlockBlobStorage-en HNS-DataLake Gen2-accounts worden momenteel niet ondersteund door de BLOB-index. GPv1-accounts worden niet ondersteund.
-- Als u pagina-blobs met index Tags uploadt, blijven de tags op dit moment behouden. U moet de tags instellen na het uploaden van een pagina-blob.
-- Wanneer het bereik van het filter is beperkt tot één container, @container kan de eigenschap alleen worden door gegeven als alle index Tags in de filter expressie gelijkheids controles zijn (Key = waarde).
-- Wanneer u de operator Range gebruikt met de voor waarde, kunt u alleen dezelfde index code sleutel naam opgeven (leeftijd > ' 013 ' en leeftijd < ' 100 ').
-- Versie beheer en BLOB-index worden momenteel niet ondersteund. BLOB-index Tags blijven behouden voor versies, maar worden momenteel niet door gegeven aan de BLOB-index engine.
-- Failover van account wordt momenteel niet ondersteund. De BLOB-index wordt mogelijk niet goed bijgewerkt na een failover.
-- Levenscyclus beheer ondersteunt momenteel alleen gelijkheids controles met overeenkomende BLOB-index.
-- CopyBlob kopieert geen blob-index Tags van de bron-BLOB naar de nieuwe doel-blob. U kunt de labels opgeven die u wilt Toep assen op de doel-BLOB tijdens de Kopieer bewerking.
-- CopyBlob (asynchroon kopiëren) vanuit een ander opslag account met toegepaste labels op de doel-BLOB zorgt er momenteel voor dat de BLOB-index engine de BLOB en de bijbehorende tags in de Filterset niet retourneert. Het is raadzaam om CopyBlob van URL (Sync Copy) te gebruiken in de tijdelijke oplossing.
-- Tags blijven behouden bij het maken van moment opnamen. het promo veren van een moment opname wordt momenteel niet ondersteund en kan resulteren in een lege tag-set.
+- Alleen GPv2-accounts worden ondersteund in preview. BLOB-, BlockBlobStorage-en HNS-DataLake Gen2-accounts worden niet ondersteund. GPv1-accounts worden niet ondersteund.
+- Als u pagina-blobs met index Tags uploadt, blijven de Tags verloren. Stel de Tags na het uploaden van een pagina-Blob in.
+- Wanneer het bereik van het filter is beperkt tot één container, `@container` kan de eigenschap alleen worden door gegeven als alle index Tags in de filter expressie gelijkheids controles zijn (Key = waarde).
+- Wanneer u de operator Range gebruikt met de `AND` voor waarde, kunt u alleen dezelfde index code sleutel naam ( `"Age" > '013' AND "Age" < '100'` ) opgeven.
+- Versie beheer en BLOB-index worden niet ondersteund. BLOB-index Tags blijven behouden voor versies, maar worden niet door gegeven aan de BLOB-index engine.
+- Failover van account wordt niet ondersteund. De BLOB-index wordt mogelijk niet goed bijgewerkt na een failover.
+- Levenscyclus beheer ondersteunt alleen gelijkheids controles met overeenkomende BLOB-index.
+- `Copy Blob` kopieert geen blob-index Tags van de bron-BLOB naar de nieuwe doel-blob. U kunt de labels opgeven die u wilt Toep assen op de doel-BLOB tijdens de Kopieer bewerking.
+- `Copy Blob` (Asynchroon kopiëren) vanuit een ander opslag account met toegepaste labels op de doel-BLOB zorgt ervoor dat de BLOB-index engine de BLOB en de bijbehorende labels in de Filterset niet retourneert. Gebruik `Copy Blob` van URL (gesynchroniseerde kopie).
+- Tags blijven behouden bij het maken van moment opnamen. Het promo veren van een moment opname wordt echter niet ondersteund en kan resulteren in een lege tag-set.
 
 ## <a name="faq"></a>Veelgestelde vragen
 
-### <a name="can-blob-index-help-me-filter-and-query-content-inside-my-blobs"></a>Kan de BLOB-index Help me filteren en inhoud in mijn blobs doorzoeken?
-Nee, index Tags van blobs kunnen u helpen bij het vinden van de blobs die u zoekt. Als u in uw blobs wilt zoeken, gebruikt u query versnelling of Azure Search.
+**Kan de BLOB-index Help me filteren en inhoud in mijn blobs doorzoeken?**
 
-### <a name="are-there-any-special-considerations-regarding-blob-index-tag-values"></a>Zijn er speciale overwegingen met betrekking tot de waarden van BLOB-index Tags?
-BLOB-index Tags bieden alleen ondersteuning voor teken reeks gegevens typen en query's retour neren resultaten met lexicographical-volg orde. Voor getallen wordt het aanbevolen om het nummer in te vullen. Voor datum en tijd is het raadzaam om op te slaan als een ISO 8601-compatibele indeling.
+Nee, als u in uw blobgegevens wilt zoeken, gebruikt u query versnelling of Azure Search.
 
-### <a name="are-blob-index-tags-and-azure-resource-manager-tags-related"></a>Zijn er labels voor BLOB-indexen en Azure Resource Manager labels?
-Nee, Resource Manager-Labels helpen beheer vlak resources zoals abonnementen, resource groepen en opslag accounts te organiseren. BLOB-index Tags bieden object beheer en detectie op gegevens vlak bronnen zoals blobs in een opslag account.
+**Zijn er vereisten voor index label waarden?**
+
+BLOB-index Tags bieden alleen ondersteuning voor teken reeks gegevens typen en query's retour neren resultaten met lexicographical-volg orde. Voor getallen is het pad nul. Voor datums en tijden slaat u op als een ISO 8601-compatibele indeling.
+
+**Zijn er labels voor BLOB-indexen en Azure Resource Manager labels?**
+
+Nee, Resource Manager-Labels helpen beheer vlak resources zoals abonnementen, resource groepen en opslag accounts te organiseren. Index Tags bieden het beheer en detectie van blobs op het gegevens vlak.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [BLOB-index gebruiken om gegevens te beheren en te zoeken](storage-blob-index-how-to.md)voor een voor beeld van het gebruik van BLOB-index.
+Zie [BLOB-index gebruiken om gegevens te beheren en te zoeken](storage-blob-index-how-to.md)voor een voor beeld van het gebruik van een BLOB-index.
 
 Meer informatie over [levenscyclus beheer](storage-lifecycle-management-concepts.md) en het instellen van een regel met overeenkomende BLOB-index.
-

@@ -8,10 +8,10 @@ ms.topic: include
 ms.date: 12/11/2018
 ms.author: cherylmc
 ms.openlocfilehash: 31ccf14c82f6248c74d6af932fe9e338d26d2747
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67175897"
 ---
 Op elke clientcomputer die u verbindt met een VNet via een punt-naar-site-verbinding, moet een clientcertificaat zijn geïnstalleerd. U genereert het clientcertificaat op basis van het basiscertificaat en installeert het clientcertificaat op elke clientcomputer. Als u geen geldig clientcertificaat hebt geïnstalleerd en de client probeert verbinding te maken met het VNet, mislukt de verificatie.
@@ -20,15 +20,15 @@ U kunt een uniek certificaat genereren voor elke client of hetzelfde certificaat
 
 U kunt clientcertificaten genereren op de volgende manieren:
 
-- **Ondernemings certificaat:**
+- **Commercieel certificaat**
 
-  - Als u een oplossing voor een bedrijfs certificaat gebruikt, genereert u een client certificaat met de indelings *naam \@ *van de algemene naam waarde yourdomain.com. Gebruik deze indeling in plaats van de indeling *domeinnaam\gebruikersnaam*.
+  - Als u een commerciële certificeringsoplossing gebruikt, genereert u een clientcertificaat met de algemene indeling voor de naamwaarde *naam\@uwdomein.com*. Gebruik deze indeling in plaats van de indeling *domeinnaam\gebruikersnaam*.
   - Zorg ervoor dat het clientcertificaat dat u verleent, is gebaseerd op de certificaatsjabloon voor *Gebruiker met Clientverificatie* als het eerste item in de lijst. U kunt het certificaat controleren door op het clientcertificaat te dubbelklikken en **Enhanced Key Usage ** (Uitgebreid sleutelgebruik) weer te geven op het tabblad **Details**.
 
-- **Zelfondertekend basis certificaat:** Volg de stappen in een van de volgende P2S-certificaat artikelen zodat de client certificaten die u maakt, compatibel zijn met uw P2S-verbindingen. De stappen in deze artikelen zijn bedoeld om een compatibel clientcertificaat te maken: 
+- **Zelfondertekend basiscertificaat**: Volg de stappen in een van de volgende artikelen over P2S-certificaten zodat de clientcertificaten die u maakt compatibel zijn met P2S-verbindingen. De stappen in deze artikelen zijn bedoeld om een compatibel clientcertificaat te maken: 
 
   * [Instructies voor Windows 10 PowerShell](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientcert): bij deze instructies zijn Windows 10 en PowerShell vereist voor het genereren van certificaten. De gegenereerde certificaten kunnen worden geïnstalleerd op alle ondersteunde P2S-clients.
-  * [Makecert instructies](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md): gebruik makecert als u geen toegang hebt tot een Windows 10-computer voor het genereren van certificaten. MakeCert is inmiddels afgeschaft, maar u kunt het nog wel gebruiken om certificaten te genereren. U kunt de gegenereerde certificaten installeren op alle ondersteunde P2S-clients.
+  * [Instructies voor MakeCert](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md): Gebruik MakeCert als u geen toegang hebt tot een Windows 10-computer voor het genereren van certificaten. MakeCert is inmiddels afgeschaft, maar u kunt het nog wel gebruiken om certificaten te genereren. U kunt de gegenereerde certificaten installeren op alle ondersteunde P2S-clients.
   * [Instructies voor Linux](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-linux.md)
 
   Als u een clientcertificaat genereert op basis van een zelfondertekend basiscertificaat, wordt het certificaat automatisch geïnstalleerd op de computer die u hebt gebruikt om het certificaat te genereren. Als u een clientcertificaat op een andere clientcomputer wilt installeren, moet u het certificaat samen met de gehele certificaatketen exporteren als PFX-bestand. Hiermee maakt u een PFX-bestand met alle gegevens van het basiscertificaat die nodig zijn voor de verificatie van de client. 

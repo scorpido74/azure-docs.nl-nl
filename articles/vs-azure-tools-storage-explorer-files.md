@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: fe3a8ab5b43c41b7e9f79f92de674515377fa9ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e87e3d59fec354ca3590a79accb45a74172793b
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60456608"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167879"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>Opslagverkenner gebruiken met Azure File Storage
 
@@ -73,7 +73,7 @@ Volg de volgende stappen om de inhoud van een bestandsshare weer te geven binnen
 
 1. U ziet de inhoud van de bestandsshare in het hoofdvenster.
     
-    ![De inhoud van de share](media/vs-azure-tools-storage-explorer-files/image5.png)
+    ![Scherm opname van het hoofd venster voor een bestands share in Storage Explorer de inhoud van de share wordt weer gegeven.](media/vs-azure-tools-storage-explorer-files/image5.png)
 
 ## <a name="delete-a-file-share"></a>Een bestandsshare verwijderen
 
@@ -117,7 +117,7 @@ In de volgende stappen ziet u hoe u een bestandsshare van het ene opslagaccount 
 
 ## <a name="get-the-sas-for-a-file-share"></a>De SAS voor een bestandsshare ophalen
 
-Een [SAS (Shared Access Signature; handtekening voor gedeelde toegang)](https://docs.microsoft.com//azure/storage/storage-dotnet-shared-access-signature-part-1) biedt gedelegeerde toegang tot bronnen in uw opslagaccount. Dit betekent dat u een client gedurende de opgegeven periode een beperkte set machtigingen kunt verlenen voor objecten in uw opslagaccount, zonder dat u hiervoor de toegangssleutels voor het account hoeft te delen.
+Een [Shared Access Signature (SAS)](https://docs.microsoft.com//azure/storage/storage-dotnet-shared-access-signature-part-1) biedt gedelegeerde toegang tot resources in uw opslag account. Dit betekent dat u een client gedurende de opgegeven periode een beperkte set machtigingen kunt verlenen voor objecten in uw opslagaccount, zonder dat u hiervoor de toegangssleutels voor het account hoeft te delen.
 
 Voer de volgende stappen uit om een SAS te maken voor een bestandsshare:
 
@@ -191,7 +191,7 @@ De volgende stappen laten zien hoe u de bestanden (en mappen) in een bestandssha
 
 1.  U ziet de inhoud van de bestandsshare in het hoofdvenster.
 
-    ![De inhoud van de share](media/vs-azure-tools-storage-explorer-files/image17.png)
+    ![Scherm opname van het hoofd venster voor de bestands share myazurefileshare in Storage Explorer, waarin de inhoud van de share met de eerste geselecteerde map wordt weer gegeven.](media/vs-azure-tools-storage-explorer-files/image17.png)
 
 1.  U ziet de inhoud van de bestandsshare in het hoofdvenster.
 

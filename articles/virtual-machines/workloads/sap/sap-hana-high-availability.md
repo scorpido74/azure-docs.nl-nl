@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/08/2020
+ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 1efa00962e63274c2cc02c8758725e5b11d70a9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9efdbb32683c9a244226012bd2d4bfcab6046678
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89567823"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151163"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Hoge Beschik baarheid van SAP HANA op virtuele machines van Azure op SUSE Linux Enterprise Server
 
@@ -133,6 +133,13 @@ Voer de volgende stappen uit om de sjabloon te implementeren:
    - Gebruik een SLES4SAP-installatie kopie in de Azure-galerie die wordt ondersteund voor SAP HANA op het VM-type dat u hebt geselecteerd.
    - Selecteer de beschikbaarheidsset die u hebt gemaakt in stap 3. 
 1. Voeg gegevens schijven toe.
+
+> [!IMPORTANT]
+> Zwevend IP wordt niet ondersteund voor een secundaire IP-configuratie in een NIC in scenario's voor taak verdeling. Zie beperkingen voor [Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations)voor meer informatie. Als u een extra IP-adres voor de virtuele machine nodig hebt, implementeert u een tweede NIC.   
+
+> [!Note]
+> Wanneer Vm's zonder open bare IP-adressen in de back-endadresgroep van intern (geen openbaar IP-adres load balancer) worden geplaatst, is er geen uitgaande Internet verbinding, tenzij er aanvullende configuratie wordt uitgevoerd om route ring naar open bare eind punten toe te staan. Zie [connectiviteit van open bare eind punten voor virtual machines met behulp van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid voor SAP](./high-availability-guide-standard-load-balancer-outbound-connections.md)voor meer informatie over het bezorgen van uitgaande verbindingen.  
+
 1. Als u standaard load balancer gebruikt, volgt u deze configuratie stappen:
    1. Maak eerst een front-end-IP-adres groep:
    
@@ -168,9 +175,6 @@ Voer de volgende stappen uit om de sjabloon te implementeren:
       1. Verhoog de **time-out voor inactiviteit** tot 30 minuten.
       1. Zorg ervoor dat u **zwevende IP-adressen inschakelt**.
       1. Selecteer **OK**.
-
-   > [!Note]
-   > Wanneer Vm's zonder open bare IP-adressen in de back-endadresgroep van intern (geen openbaar IP-adres load balancer) worden geplaatst, is er geen uitgaande Internet verbinding, tenzij er aanvullende configuratie wordt uitgevoerd om route ring naar open bare eind punten toe te staan. Zie [connectiviteit van open bare eind punten voor virtual machines met behulp van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid voor SAP](./high-availability-guide-standard-load-balancer-outbound-connections.md)voor meer informatie over het bezorgen van uitgaande verbindingen.  
 
 1. Als uw scenario gebruikmaakt van basis load balancer, volgt u deze configuratie stappen:
    1. Maak eerst een front-end-IP-adres groep:

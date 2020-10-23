@@ -8,20 +8,20 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 04/22/2020
 ms.author: memildin
-ms.openlocfilehash: db042a6112944e1c825177506782758d0a96b390
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab9be4b14ca51b56ec0a52147b409a56f87cf302
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448397"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341886"
 ---
-# <a name="using-custom-security-policies"></a>Aangepaste beveiligings beleidsregels gebruiken
+# <a name="using-custom-security-policies"></a>Aangepast beveiligingsbeleid gebruiken
 
 Azure Security Center beveiligings aanbevelingen worden gegenereerd om uw systemen en omgeving te beveiligen. Deze aanbevelingen zijn gebaseerd op de best practices van de branche, die zijn opgenomen in het algemene standaard beveiligings beleid dat aan alle klanten wordt verstrekt. Ze kunnen ook afkomstig zijn van de kennis van de branche-en regelgevings normen van Security Center.
 
 Met deze functie kunt u uw eigen *aangepaste* initiatieven toevoegen. U ontvangt dan aanbevelingen als uw omgeving niet voldoet aan het beleid dat u maakt. Alle aangepaste initiatieven die u maakt, worden naast de ingebouwde initiatieven weer gegeven in het dash board voor nalevings vereisten, zoals beschreven in de zelf studie [uw naleving van regelgeving verbeteren](security-center-compliance-dashboard.md).
 
-Zoals beschreven in [de Azure Policy-documentatie](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location), moet u, wanneer u een locatie opgeeft voor uw aangepaste initiatief, een beheer groep of een abonnement zijn. 
+Zoals beschreven in [de Azure Policy-documentatie](../governance/policy/concepts/definition-structure.md#definition-location), moet u, wanneer u een locatie opgeeft voor uw aangepaste initiatief, een beheer groep of een abonnement zijn. 
 
 ## <a name="to-add-a-custom-initiative-to-your-subscription"></a>Een aangepast initiatief toevoegen aan uw abonnement 
 
@@ -136,7 +136,7 @@ Hieronder ziet u een voor beeld van een aangepast beleid met de eigenschap meta 
 }
   ```
 
-Voor een ander voor beeld van het gebruik van de eigenschap Security Center raadpleegt u [deze sectie van de rest API-documentatie](https://docs.microsoft.com/rest/api/securitycenter/assessmentsmetadata/createinsubscription#examples).
+Voor een ander voor beeld van het gebruik van de eigenschap Security Center raadpleegt u [deze sectie van de rest API-documentatie](/rest/api/securitycenter/assessmentsmetadata/createinsubscription#examples).
 
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -146,4 +146,4 @@ In dit artikel hebt u geleerd hoe u een aangepast beveiligings beleid maakt.
 Raadpleeg de volgende artikelen voor meer gerelateerde materialen: 
 
 - [Het overzicht van beveiligings beleid](tutorial-security-policy.md)
-- [Een lijst met ingebouwde beveiligings beleidsregels](security-center-policy-definitions.md)
+- [Een lijst met ingebouwde beveiligings beleidsregels](./policy-reference.md)

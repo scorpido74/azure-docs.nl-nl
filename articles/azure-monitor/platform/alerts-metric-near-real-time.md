@@ -7,12 +7,12 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 9/30/2020
 ms.subservice: alerts
-ms.openlocfilehash: 96f0cda9bdf6a17adb4d8d50b63ef5588e52f700
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d99e37171f2fb5b86bee897caca55c3e8782f92e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578101"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108810"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Ondersteunde resources voor metrische waarschuwingen in Azure Monitor
 
@@ -46,10 +46,10 @@ Hier volgt de volledige lijst met metrische gegevens bronnen van Azure monitor d
 |Micro soft. ClassicStorage/Storage accounts/queueServices | Ja | Nee | |
 |Micro soft. ClassicStorage/Storage accounts/tableServices | Ja | Nee | |
 |Micro soft. CognitiveServices/accounts | Ja | Nee | [Cognitive Services](./metrics-supported.md#microsoftcognitiveservicesaccounts) |
-|Microsoft.Compute/virtualMachines | Ja | Ja<sup>1</sup> | [Virtual Machines](./metrics-supported.md#microsoftcomputevirtualmachines) |
+|Microsoft.Compute/virtualMachines | Yes | Ja<sup>1</sup> | [Virtual Machines](./metrics-supported.md#microsoftcomputevirtualmachines) |
 |Microsoft.Compute/virtualMachineScaleSets | Ja | Nee |[Schaal sets voor virtuele machines](./metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
 |Micro soft. ContainerInstance/containerGroups | Ja| Nee | [Containergroepen](./metrics-supported.md#microsoftcontainerinstancecontainergroups) |
-|Micro soft. ContainerRegistry/registers | Nee | Nee | [Container registers](./metrics-supported.md#microsoftcontainerregistryregistries) |
+|Micro soft. ContainerRegistry/registers | Nee | Nee | [Containerregisters](./metrics-supported.md#microsoftcontainerregistryregistries) |
 |Micro soft. container service/managedClusters | Ja | Nee | [Beheerde clusters](./metrics-supported.md#microsoftcontainerservicemanagedclusters) |
 |Micro soft. DataBoxEdge/dataBoxEdgeDevices | Ja | Ja | [Data Box](./metrics-supported.md#microsoftdataboxedgedataboxedgedevices) |
 |Micro soft. DataFactory/datafactories| Ja| Nee | [Gegevens fabrieken v1](./metrics-supported.md#microsoftdatafactorydatafactories) |
@@ -85,7 +85,7 @@ Hier volgt de volledige lijst met metrische gegevens bronnen van Azure monitor d
 |Micro soft. Network/applicationGateways | Ja | Nee | [Toepassings gateways](./metrics-supported.md#microsoftnetworkapplicationgateways) |
 |Micro soft. Network/azurefirewalls | Ja | Nee | [Firewalls](./metrics-supported.md#microsoftnetworkazurefirewalls) |
 |Microsoft.Network/dnsZones | Nee | Nee | [DNS-zones](./metrics-supported.md#microsoftnetworkdnszones) |
-|Microsoft.Network/expressRouteCircuits | N.v.t. | Nee |[Express Route-circuits](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
+|Microsoft.Network/expressRouteCircuits | N.v.t. | No |[Express Route-circuits](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
 |Micro soft. Network/loadBalancers (alleen voor standaard-Sku's)| Ja| Nee | [Load balancers](./metrics-supported.md#microsoftnetworkloadbalancers) |
 |Micro soft. Network/natGateways| Nee | Nee | |
 |Micro soft. Network/privateEndpoints| Nee | Nee | |
@@ -119,7 +119,7 @@ Hier volgt de volledige lijst met metrische gegevens bronnen van Azure monitor d
 ## <a name="payload-schema"></a>Payload-schema
 
 > [!NOTE]
-> U kunt ook het [schema common alert](https://aka.ms/commonAlertSchemaDocs)gebruiken. Dit biedt het voor deel van het gebruik van een enkele uitbreid bare en Unified payload van waarschuwingen voor alle waarschuwings services in azure monitor voor uw webhook-integraties. [Meer informatie over de algemene schema definities voor waarschuwingen.](https://aka.ms/commonAlertSchemaDefinitions)
+> U kunt ook het [schema common alert](./alerts-common-schema.md)gebruiken. Dit biedt het voor deel van het gebruik van een enkele uitbreid bare en Unified payload van waarschuwingen voor alle waarschuwings services in azure monitor voor uw webhook-integraties. [Meer informatie over de algemene schema definities voor waarschuwingen.](./alerts-common-schema-definitions.md)
 
 
 De POST-bewerking bevat de volgende JSON-nettolading en het schema voor alle nabije nieuwere metrische waarschuwingen wanneer een passende geconfigureerde [actie groep](./action-groups.md) wordt gebruikt:
@@ -180,4 +180,3 @@ De POST-bewerking bevat de volgende JSON-nettolading en het schema voor alle nab
 * Meer informatie over de nieuwe [meldings ervaring](./alerts-overview.md).
 * Meer informatie over [logboek waarschuwingen in azure](./alerts-unified-log.md).
 * Meer informatie over [waarschuwingen in azure](./alerts-overview.md).
-

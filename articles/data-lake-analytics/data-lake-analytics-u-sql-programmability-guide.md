@@ -1,18 +1,16 @@
 ---
 title: Programmeer handleiding voor U-SQL voor Azure Data Lake
 description: Meer informatie over de set met Services in Azure Data Lake Analytics waarmee u een big data platform in de cloud kunt maken.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: how-to
 ms.date: 06/30/2017
-ms.openlocfilehash: 1c22aa9fb91b0a86704b95586afc1779023e85b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a0e914b5f36d58ec3aab24099c8b3787f0cf648
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87288937"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215447"
 ---
 # <a name="u-sql-programmability-guide"></a>Programmeer handleiding voor U-SQL
 
@@ -121,7 +119,7 @@ De volgende code laat zien hoe u naar een assembly verwijst:
 REFERENCE ASSEMBLY MyDB.[MyAssembly];
 ```
 
-Raadpleeg de [instructies van de assembly-registratie](https://blogs.msdn.microsoft.com/azuredatalake/2016/08/26/how-to-register-u-sql-assemblies-in-your-u-sql-catalog/) voor meer informatie over dit onderwerp.
+Raadpleeg de [instructies van de assembly-registratie](/archive/blogs/azuredatalake/how-to-register-u-sql-assemblies-in-your-u-sql-catalog) voor meer informatie over dit onderwerp.
 
 
 ### <a name="use-assembly-versioning"></a>Assembly versie beheer gebruiken

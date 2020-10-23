@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: b7d05cd394453ff7c3a40b80a4cd6c850b86ee21
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 7cc9e8a1cf51d57bf10523174179b5a9f2ef6e97
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070364"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363688"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Implementatie van een automatische gebruikersinrichting plannen
 
@@ -139,13 +139,13 @@ Communicatie is van cruciaal belang voor het slagen van een nieuwe service. Comm
 
 We raden u aan de initiële configuratie van automatische gebruikers inrichting in een test omgeving met een kleine subset van gebruikers te maken voordat u deze naar alle gebruikers in productie kunt schalen. Zie [Aanbevolen procedures](../fundamentals/active-directory-deployment-plans.md#best-practices-for-a-pilot) voor het uitvoeren van een pilot.
 
-#### <a name="best-practices-for-a-pilot"></a>Aanbevolen procedures voor een pilot  
+#### <a name="best-practices-for-a-pilot"></a>Aanbevolen procedures voor een pilot  
 
 Met een pilot kunt u testen met een kleine groep voordat u een mogelijkheid voor iedereen implementeert. Zorg ervoor dat als onderdeel van uw test, elke use-case binnen uw organisatie grondig wordt getest.
 
 In uw eerste golf, richt IT, bruikbaarheid en andere geschikte gebruikers die kunnen testen en feedback geven. Gebruik deze feedback om de communicatie en instructies die u naar uw gebruikers verzendt verder te ontwikkelen en om inzicht te krijgen in de soorten problemen die uw ondersteunings medewerkers kunnen zien.
 
-Breid de implementatie uit voor grotere groepen gebruikers door het bereik van de doel groep (en) te verg Roten. Dit kan worden gedaan via een [dynamisch groepslid maatschap](../users-groups-roles/groups-dynamic-membership.md)of door gebruikers hand matig toe te voegen aan de doel groep (en).
+Breid de implementatie uit voor grotere groepen gebruikers door het bereik van de doel groep (en) te verg Roten. Dit kan worden gedaan via een [dynamisch groepslid maatschap](../enterprise-users/groups-dynamic-membership.md)of door gebruikers hand matig toe te voegen aan de doel groep (en).
 
 ## <a name="plan-application-connections-and-administration"></a>Toepassings verbindingen en-beheer plannen
 
@@ -308,7 +308,7 @@ Raadpleeg de volgende koppelingen voor het oplossen van problemen die kunnen opt
 
 ### <a name="helpful-documentation"></a>Nuttige documentatie
 
-* [Expressies schrijven voor kenmerk toewijzingen](../app-provisioning/functions-for-customizing-application-data.md)
+* [Expressies schrijven voor kenmerktoewijzingen](../app-provisioning/functions-for-customizing-application-data.md)
 
 * [Overzicht van Azure AD-synchronisatie-API](/graph/api/resources/synchronization-overview)
 

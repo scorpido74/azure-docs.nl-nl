@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 6036ff86c430422556ed4f7e1bc80fe122ed0a30
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9eee16c1ba207eb35633d7ec1a7167300d40d662
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552553"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941008"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-n2f---expense-reports"></a>Zelfstudie: Azure Active Directory-integratie met N2F - Onkostendeclaratie
 
@@ -99,11 +99,11 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met N2F - Onko
 
 4. Als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren, hoeft u in de sectie **Standaard SAML-configuratie** geen stappen uit te voeren omdat de app al vooraf is geïntegreerd met Azure.
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij N2F - Onkostendeclaratie](common/preintegrated.png)
+    ![Schermopname van de op SAML gebaseerde aanmeldingspagina met de Basic SAML-configuratie.](common/preintegrated.png)
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij N2F - Onkostendeclaratie](common/metadata-upload-additional-signon.png)
+    ![Schermopname van de pagina Integraties waar u een Eenmalige aanmelding van Azure kunt toevoegen.](common/metadata-upload-additional-signon.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL: `https://www.n2f.com/app/`
 
@@ -127,23 +127,23 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met N2F - Onko
 
 2. Klik op **Instellingen** en selecteer **Geavanceerde instellingen** in het vervolgkeuzemenu.
 
-    ![N2F - Onkostendeclaratie Configuratie](./media/n2f-expensereports-tutorial/configure1.png)
+    ![Schermopname met Geavanceerde instellingen geselecteerd.](./media/n2f-expensereports-tutorial/configure1.png)
 
 3. Selecteer het tabblad **Accountinstellingen**.
 
-    ![N2F - Onkostendeclaratie Configuratie](./media/n2f-expensereports-tutorial/configure2.png)
+    ![Schermopname met Accountinstellingen geselecteerd.](./media/n2f-expensereports-tutorial/configure2.png)
 
 4. Selecteer **Verificatie** en selecteer vervolgens het tabblad **+ Een verificatiemethode toevoegen**.
 
-    ![N2F - Onkostendeclaratie Configuratie](./media/n2f-expensereports-tutorial/configure3.png)
+    ![Schermopname van de accountinstelling Verificatie waar u een verificatiemethode kunt instellen.](./media/n2f-expensereports-tutorial/configure3.png)
 
 5. Selecteer **SAML Microsoft Office 365** als verificatiemethode.
 
-    ![N2F - Onkostendeclaratie Configuratie](./media/n2f-expensereports-tutorial/configure4.png)
+    ![Schermopname van Verificatiemethode met SAML Microsoft Office 365 geselecteerd.](./media/n2f-expensereports-tutorial/configure4.png)
 
 6. Voer in de sectie **Verificatiemethode** de volgende stappen uit:
 
-    ![N2F - Onkostendeclaratie Configuratie](./media/n2f-expensereports-tutorial/configure5.png)
+    ![Schermopname van Verificatiemethode, waarin u de beschreven waarden kunt invoeren.](./media/n2f-expensereports-tutorial/configure5.png)
 
     a. Plak in het tekstvak **Entiteits-id** de waarde van de **Azure AD-id** die u uit de Azure-portal hebt gekopieerd.
 
@@ -212,19 +212,19 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij N2F - Onkostendecla
 
 2. Klik op **Instellingen** en selecteer **Geavanceerde instellingen** in het vervolgkeuzemenu.
 
-    ![N2F - Onkostendeclaratie Gebruiker toevoegen](./media/n2f-expensereports-tutorial/configure1.png)
+    ![Schermopname met Geavanceerde instellingen geselecteerd.](./media/n2f-expensereports-tutorial/configure1.png)
 
 3. Selecteer het tabblad **Gebruikers** in het linkernavigatievenster.
 
-    ![N2F - Onkostendeclaratie Configuratie](./media/n2f-expensereports-tutorial/user1.png)
+    ![Schermopname met Gebruikers geselecteerd.](./media/n2f-expensereports-tutorial/user1.png)
 
 4. Selecteer het tabblad **+ Nieuwe gebruiker**.
 
-    ![N2F - Onkostendeclaratie Configuratie](./media/n2f-expensereports-tutorial/user2.png)
+    ![Schermopname van de optie Nieuwe gebruiker.](./media/n2f-expensereports-tutorial/user2.png)
 
 5. Voer in de sectie **Gebruiker** de volgende stappen uit:
 
-    ![N2F - Onkostendeclaratie Configuratie](./media/n2f-expensereports-tutorial/user3.png)
+    ![Schermopname van de sectie waarin u de beschreven waarden kunt invoeren.](./media/n2f-expensereports-tutorial/user3.png)
 
     a. Voer in het tekstvak **E-mailadres** het e-mailadres in van de gebruiker, bijvoorbeeld **brittasimon\@contoso.com**.
 

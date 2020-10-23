@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: c29b864fb3a547599f32c00c9e8c27cbdb0e0a92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb7619500cc142eca52ca0a1a6e0b670e6b8f51a
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89459603"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425480"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>Queue Storage gebruiken met Ruby
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -29,14 +29,14 @@ De gedekte scenario's zijn het **Invoegen**, **inspecteren**, **ophalen**en **ve
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-ruby-application"></a>Een ruby-toepassing maken
-Maak een ruby-toepassing. Zie [een ruby-app maken in app service in Linux](https://docs.microsoft.com/azure/app-service/quickstart-ruby)voor instructies.
+Maak een ruby-toepassing. Zie [een ruby-app maken in app service in Linux](/azure/app-service/quickstart-ruby)voor instructies.
 
 ## <a name="configure-your-application-to-access-storage"></a>Uw toepassing configureren voor toegang tot opslag
 Als u Azure Storage wilt gebruiken, moet u het ruby Azure-pakket downloaden en gebruiken. Dit omvat een aantal gebruiks vriendelijke bibliotheken die communiceren met de opslag REST-services.
 
 ### <a name="use-rubygems-to-obtain-the-package"></a>RubyGems gebruiken om het pakket te verkrijgen
 1. Gebruik een opdrachtregelinterface zoals **PowerShell** (Windows), **Terminal** (Mac) of **Bash** (Unix).
-2. Typ ' Gem installatie van Azure ' in het opdracht venster om de Gem en afhankelijkheden te installeren.
+2. Typ 'gem install azure' in het opdrachtvenster om de gem en afhankelijkheden te installeren.
 
 ### <a name="import-the-package"></a>Het pakket importeren
 Gebruik uw favoriete tekst editor en voeg het volgende toe aan de bovenkant van het ruby-bestand waar u opslag wilt gebruiken:
@@ -151,7 +151,7 @@ azure_queue_service.delete_queue("test-queue")
 ## <a name="next-steps"></a>Volgende stappen
 Nu u de basis principes van wachtrij opslag hebt geleerd, volgt u deze koppelingen voor meer informatie over complexere opslag taken.
 
-* Ga naar de blog van het [Azure Storage-team](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)
+* Ga naar de blog van het [Azure Storage-team](/archive/blogs/windowsazurestorage/)
 * Ga naar de [Azure SDK voor ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) -opslag plaats op github
 
 Voor een vergelijking tussen de Azure Queue-service die in dit artikel wordt besproken en Azure Service Bus wachtrijen die worden beschreven in het artikel [over het gebruik van service bus wachtrijen](https://azure.microsoft.com/develop/ruby/how-to-guides/service-bus-queues/) , raadpleegt u [Azure-wacht rijen en service bus wacht rijen-vergeleken en daarentegen](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 54f99f2f8708fca9c02950a8886a2a9b976a93dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a9286ff15834fafe4a69907836ce1abd17abca6
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440674"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168066"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Problemen met grafieken met metrische gegevens oplossen
 
@@ -79,16 +79,16 @@ Dit probleem kan optreden wanneer uw dashboard is gemaakt met een metriek die la
 ## <a name="chart-shows-dashed-line"></a>Grafiek toont streepjes lijn
 
 Voor grafieken van Azure-metrieken wordt gestreepte lijn stijl gebruikt om aan te geven dat er een ontbrekende waarde is (ook wel ' null-waarde ' genoemd) tussen twee bekende tijdgebonden gegevens punten. Als u bijvoorbeeld in de tijd kiezer hebt gekozen voor ' 1 minuut ' tijd granulatie, maar de metriek is gerapporteerd op 07:26, 07:27, 07:29 en 07:30 (Let op een minuut tussen de tweede en derde gegevens punten), dan wordt een stippel lijn verbonden met 07:27 en 07:29 en wordt er verbinding gemaakt met alle andere gegevens punten. De onderbroken lijn wordt op nul gezet wanneer de metriek **aantal** en **Sum** -aggregatie gebruikt. Voor de **gemiddeld**, **min** of **Max** aggregaties verbindt de streepjes lijn twee dichtstbijzijnde gegevens punten. Als er gegevens ontbreken aan de meest rechtse of linkse kant van de grafiek, wordt de stippellijn uitgebreid in de richting van het ontbrekende gegevenspunt.
-  ![afbeelding van metrische gegevens](./media/metrics-troubleshoot/missing-data-point-line-chart.png)
+  ![Scherm afbeelding die laat zien hoe de onderbroken lijn wordt weer gegeven als de gegevens aan de rechter kant of de linkerkant van de grafiek ontbreken, wordt uitgebreid naar de richting van het ontbrekende gegevens punt.](./media/metrics-troubleshoot/missing-data-point-line-chart.png)
 
-**Oplossing:** Dit gedrag is inherent aan het ontwerp. Dit is handig voor het identificeren van ontbrekende gegevenspunten. Het lijn diagram is een superieure keuze voor het visualiseren van trends van metrische gegevens met hoge dichtheid, maar is mogelijk moeilijk te interpreteren voor metrische gegevens met sparse-waarden, met name wanneer u met de tijd korrels een rol geeft. De stippellijn vergemakkelijkt het lezen van deze grafieken, maar als uw grafiek nog steeds niet duidelijk is, kunt u overwegen uw metrische gegevens weer te geven met een ander grafiektype. Bijvoorbeeld, een spreidings grafiek diagram voor dezelfde metrische informatie laat elke keer duidelijk zien door een punt te visualiseren als er een waarde is en het gegevens punt wordt overgeslagen wanneer de waarde ontbreekt: ![ metrische afbeelding](./media/metrics-troubleshoot/missing-data-point-scatter-chart.png)
+**Oplossing:** Dit gedrag is inherent aan het ontwerp. Dit is handig voor het identificeren van ontbrekende gegevenspunten. Het lijn diagram is een superieure keuze voor het visualiseren van trends van metrische gegevens met hoge dichtheid, maar is mogelijk moeilijk te interpreteren voor metrische gegevens met sparse-waarden, met name wanneer u met de tijd korrels een rol geeft. De stippellijn vergemakkelijkt het lezen van deze grafieken, maar als uw grafiek nog steeds niet duidelijk is, kunt u overwegen uw metrische gegevens weer te geven met een ander grafiektype. Bijvoorbeeld, een spreidings grafiek diagram voor dezelfde metrische informatie laat elke keer duidelijk zien door een punt te visualiseren wanneer er sprake is van een waarde en overs laan van het gegevens punt wanneer de waarde ontbreekt: ![ scherm afbeelding die de menu optie spreidings diagram markeert.](./media/metrics-troubleshoot/missing-data-point-scatter-chart.png)
 
    > [!NOTE]
    > Als u nog steeds liever een lijndiagram gebruikt voor uw metrische gegevens, kan het verplaatsen van de muis over de grafiek helpen om de tijdgranulatie weer te geven door het markeren van het gegevenspunt op de locatie van de muisaanwijzer.
 
 ## <a name="chart-shows-unexpected-drop-in-values"></a>Diagram toont onverwachte waarden voor neerzetten
 
-In veel gevallen is de waargenomen daling van de metrische waarden een verkeerde interpretatie van de gegevens die in de grafiek worden weergegeven. U kunt worden misleid door een daling van optellingen of aantallen wanneer de grafiek de meest recente minuten toont omdat de laatste punten van metrische gegevens nog niet zijn ontvangen of verwerkt door Azure. Afhankelijk van de service kan de latentie van de verwerking van metrische gegevens enkele minuten bedragen. Voor grafieken die een recent tijd bereik met een granulatie van 1 of 5 minuten tonen, wordt de waarde in de laatste paar minuten meer duidelijker: ![ metrische afbeelding](./media/metrics-troubleshoot/drop-in-values.png)
+In veel gevallen is de waargenomen daling van de metrische waarden een verkeerde interpretatie van de gegevens die in de grafiek worden weergegeven. U kunt worden misleid door een daling van optellingen of aantallen wanneer de grafiek de meest recente minuten toont omdat de laatste punten van metrische gegevens nog niet zijn ontvangen of verwerkt door Azure. Afhankelijk van de service kan de latentie van de verwerking van metrische gegevens enkele minuten bedragen. Voor grafieken die een recent tijd bereik met een granulatie van 1 of 5 minuten weer geven, wordt de waarde in de laatste paar minuten meer duidelijker: ![ scherm afbeelding waarin de waarde in de afgelopen paar minuten wordt weer gegeven.](./media/metrics-troubleshoot/drop-in-values.png)
 
 **Oplossing:** Dit gedrag is inherent aan het ontwerp. Wij vinden dat het direct weergeven van ontvangen gegevens zinvol is, zelfs wanneer het *gedeeltelijke* of *onvolledige* gegevens betreft. U kunt zo namelijk sneller belangrijke conclusies trekken en meteen met uw onderzoek beginnen. In het geval van een metrische waarde die bijvoorbeeld het aantal storingen aangeeft, kunt u aan een gedeeltelijke waarde X al zien dat er ten minste X storingen zijn opgetreden in een bepaalde minuut. U kunt het probleem dan meteen gaan onderzoeken, in plaats van te wachten op het exacte aantal storingen dat zich heeft voorgedaan, wat misschien ook niet zo belangrijk is. De grafiek wordt bijgewerkt zodra we de volledige set gegevens ontvangen, maar op dat moment kunnen er ook weer nieuwe onvolledige gegevenspunten van meer recente minuten worden weergeven.
 

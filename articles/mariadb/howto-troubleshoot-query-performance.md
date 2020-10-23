@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: ca9a74763715c5c68526ff3213a14d2148f5ad30
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae3637eb5e9f6f70d0f53d7b1cb97bd348c114bc
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83834302"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424424"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>UITLEGGEN hoe u de prestaties van query's in Azure Database for MariaDB kunt bepalen
 **Uitleg** is een handig hulp programma voor het optimaliseren van query's. De instructie uitleg kan worden gebruikt om informatie op te halen over hoe SQL-instructies worden uitgevoerd. In de volgende uitvoer ziet u een voor beeld van de uitvoering van een uitleg-instructie.
@@ -54,10 +54,10 @@ possible_keys: id
 ```
 
 In de nieuwe uitleg ziet u dat MariaDB nu gebruikmaakt van een index om het aantal rijen te beperken tot 1, die op zijn beurt de zoek tijd aanzienlijk verkort.
- 
+ 
 ## <a name="covering-index"></a>Bedekte index
 Een bedekte index bestaat uit alle kolommen van een query in de index om het ophalen van waarden uit gegevens tabellen te verminderen. Hier volgt een voor beeld in de volgende **Group by** -instructie.
- 
+ 
 ```sql
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
 *************************** 1. row ***************************
@@ -76,10 +76,10 @@ possible_keys: NULL
 ```
 
 Zoals u kunt zien in de uitvoer, worden er door MariaDB geen indexen gebruikt, omdat er geen geschikte indexen beschikbaar zijn. Er wordt ook *gebruikgemaakt van tijdelijke; Het gebruik van bestanden sorteren*, wat betekent dat MariaDB een tijdelijke tabel maakt om te voldoen aan de component **Group by** .
- 
+ 
 Het maken van een index op kolom **C2** heeft alleen geen verschil en MariaDB moet nog steeds een tijdelijke tabel maken:
 
-```sql 
+```sql 
 mysql> ALTER TABLE tb1 ADD KEY (c2);
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
 *************************** 1. row ***************************
@@ -99,7 +99,7 @@ possible_keys: NULL
 
 In dit geval kan een **gedekte index** op zowel **C1** als **C2** worden gemaakt, waarbij de waarde **C2**direct in de index wordt toegevoegd om verdere gegevens zoekactie te elimineren.
 
-```sql 
+```sql 
 mysql> ALTER TABLE tb1 ADD KEY covered(c1,c2);
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
 *************************** 1. row ***************************
@@ -120,7 +120,7 @@ possible_keys: covered
 Zoals hierboven wordt weer gegeven, gebruikt MariaDB nu de gedekte index en vermijdt u het maken van een tijdelijke tabel. 
 
 ## <a name="combined-index"></a>Gecombineerde index
-Een gecombineerde index bevat waarden uit meerdere kolommen en kan worden beschouwd als een matrix van rijen die zijn gesorteerd door het samen voegen van de waarden van de geïndexeerde kolommen.Deze methode kan nuttig zijn in een **Group by** -instructie.
+Een gecombineerde index bevat waarden uit meerdere kolommen en kan worden beschouwd als een matrix van rijen die zijn gesorteerd door het samen voegen van de waarden van de geïndexeerde kolommen. Deze methode kan nuttig zijn in een **Group by** -instructie.
 
 ```sql
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
@@ -141,7 +141,7 @@ possible_keys: NULL
 
 MariaDB voert een *Bestands Sorteer* bewerking uit die tamelijk langzaam is, vooral wanneer het een groot aantal rijen moet sorteren. Als u deze query wilt optimaliseren, kunt u een gecombineerde index maken op beide kolommen die worden gesorteerd.
 
-```sql 
+```sql 
 mysql> ALTER TABLE tb1 ADD KEY my_sort2 (c1, c2);
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
 *************************** 1. row ***************************
@@ -160,10 +160,10 @@ possible_keys: NULL
 ```
 
 In de uitleg ziet u nu dat MariaDB een gecombineerde index kan gebruiken om extra Sorteer bewerkingen te voor komen omdat de index al is gesorteerd.
- 
+ 
 ## <a name="conclusion"></a>Conclusie
- 
+ 
 Door gebruik te maken van uitleg en verschillende typen indexen kunnen de prestaties aanzienlijk toenemen. Het gebruik van een index voor de tabel betekent niet noodzakelijkerwijs dat MariaDB dit voor uw query's zou kunnen gebruiken. Valideer uw hypo theses altijd met uitleg en Optimaliseer uw query's met behulp van indexen.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Ga naar [micro soft Q&een vraag pagina](https://docs.microsoft.com/answers/topics/azure-database-mariadb.html) of [stack overflow](https://stackoverflow.com/questions/tagged/azure-database-mariadb)als u op zoek bent naar peer antwoorden op uw vragen of als u een nieuwe vraag/antwoord wilt plaatsen.
+- Ga naar [micro soft Q&een vraag pagina](/answers/topics/azure-database-mariadb.html) of [stack overflow](https://stackoverflow.com/questions/tagged/azure-database-mariadb)als u op zoek bent naar peer antwoorden op uw vragen of als u een nieuwe vraag/antwoord wilt plaatsen.

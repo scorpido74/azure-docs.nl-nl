@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 author: markjbrown
 ms.author: mjbrown
-ms.openlocfilehash: e8786c2d6e93c18a5bf9856a5555d6b528f842c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a50de7154bd768f5cc4c25062ec3ce05c0f37328
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75441223"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279854"
 ---
 # <a name="create-a-synthetic-partition-key"></a>Een synthetische partitiesleutel maken
 
@@ -58,7 +58,7 @@ Met deze strategie worden de schrijf bewerkingen gelijkmatig verdeeld over de wa
 
 Meer informatie over het partitioneren concept vindt u in de volgende artikelen:
 
-* Meer informatie over [logische partities](partition-data.md).
+* Meer informatie over [logische partities](partitioning-overview.md).
 * Meer informatie over het [inrichten van de door Voer voor Azure Cosmos-containers en-data bases](set-throughput.md).
 * Meer informatie over het [inrichten van de door Voer voor een Azure Cosmos-container](how-to-provision-container-throughput.md).
 * Meer informatie over het [inrichten van de door Voer voor een Azure Cosmos-data base](how-to-provision-database-throughput.md).

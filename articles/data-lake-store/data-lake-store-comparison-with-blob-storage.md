@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 170f20cbd3405ea6af8aef5650e4dd7ebeaeef7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77ac3c0809c08719d77457c59ef311ad43ef99cd
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89458209"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108334"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Azure Data Lake Storage Gen1 en Azure Blob Storage vergelijken
 
@@ -26,11 +26,11 @@ De tabel in dit artikel bevat een overzicht van de verschillen tussen Azure Data
 | Belangrijkste concepten |Data Lake Storage Gen1 account bevat mappen, die op zijn beurt gegevens bevat die als bestanden zijn opgeslagen |Het opslag account heeft containers, die op zijn beurt gegevens hebben in de vorm van blobs |
 | Structuur |Hiërarchisch bestands systeem |Object archief met platte naam ruimte |
 | API |REST API via HTTPS |REST API via HTTP/HTTPS |
-| API aan server zijde |[WebHDFS-compatibele REST API](https://msdn.microsoft.com/library/azure/mt693424.aspx) |[Azure Blob Storage REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx) |
+| API aan server zijde |[WebHDFS-compatibele REST API](/rest/api/datalakestore/) |[Azure Blob Storage REST API](/rest/api/storageservices/Blob-Service-REST-API) |
 | Hadoop File System-client |Ja |Ja |
-| Gegevens bewerkingen-verificatie |Op basis van [Azure Active Directory-identiteiten](../active-directory/develop/authentication-scenarios.md) |Op basis van gedeelde geheimen- [account toegangs sleutels](../storage/common/storage-account-keys-manage.md) en [Shared Access Signature sleutels](../storage/common/storage-dotnet-shared-access-signature-part-1.md). |
+| Gegevens bewerkingen-verificatie |Op basis van [Azure Active Directory-identiteiten](../active-directory/develop/authentication-vs-authorization.md) |Op basis van gedeelde geheimen- [account toegangs sleutels](../storage/common/storage-account-keys-manage.md) en [Shared Access Signature sleutels](../storage/common/storage-sas-overview.md). |
 | Gegevens bewerkingen-verificatie Protocol |[OpenID connect verbinding maken](https://openid.net/connect/). Aanroepen moeten een geldige JWT (JSON Web token) bevatten die is uitgegeven door Azure Active Directory.|Op hash gebaseerde Message Authentication Code (HMAC). Aanroepen moeten een SHA-256-Hash met base64-code ring hebben via een deel van de HTTP-aanvraag. |
-| Gegevens bewerkingen-autorisatie |POSIX-Access Control lijsten (Acl's).  Acl's op basis van Azure Active Directory-identiteiten kunnen worden ingesteld op het niveau van bestanden en mappen. |Voor autorisatie op account niveau: gebruik [account toegangs sleutels](../storage/common/storage-account-keys-manage.md)<br>Voor account-, container-of BLOB-autorisatie-gebruik [Shared Access Signature sleutels](../storage/common/storage-dotnet-shared-access-signature-part-1.md) |
+| Gegevens bewerkingen-autorisatie |POSIX-Access Control lijsten (Acl's).  Acl's op basis van Azure Active Directory-identiteiten kunnen worden ingesteld op het niveau van bestanden en mappen. |Voor autorisatie op account niveau: gebruik [account toegangs sleutels](../storage/common/storage-account-keys-manage.md)<br>Voor account-, container-of BLOB-autorisatie-gebruik [Shared Access Signature sleutels](../storage/common/storage-sas-overview.md) |
 | Gegevens bewerkingen-controleren |Beschikken. Zie [hier](data-lake-store-diagnostic-logs.md) voor meer informatie. |Beschikbaar |
 | Versleutelen van gegevens in rust |<ul><li>Transparant, aan de server zijde</li> <ul><li>Met door service beheerde sleutels</li><li>Met door de klant beheerde sleutels in azure-sleutel kluis</li></ul></ul> |<ul><li>Transparant, aan de server zijde</li> <ul><li>Met door service beheerde sleutels</li><li>Met door de klant beheerde sleutels in azure-sleutel kluis (preview-versie)</li></ul><li>Clientversleuteling</li></ul> |
 | Beheer bewerkingen (bijvoorbeeld account maken) |[Op rollen gebaseerd toegangs beheer voor Azure (Azure RBAC)](../role-based-access-control/overview.md) voor account beheer |[Op rollen gebaseerd toegangs beheer voor Azure (Azure RBAC)](../role-based-access-control/overview.md) voor account beheer |

@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: GitOps gebruiken voor een Azure Arc-cluster configuratie (preview-versie)
 keywords: GitOps, Kubernetes, K8s, azure, Arc, Azure Kubernetes service, containers
-ms.openlocfilehash: c00ed30c9a7424d083bf076c64cf008e0480bb2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a8839c2463494ba0e165bf9e1a5d22245fac8df
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714183"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371253"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Configuraties implementeren met behulp van GitOps op het Kubernetes-cluster waarvoor Arc is ingeschakeld (preview)
 
@@ -98,17 +98,16 @@ Dit zijn de ondersteunde scenario's voor de waarde van de para meter---Repositor
 
 | Scenario | Indeling | Beschrijving |
 | ------------- | ------------- | ------------- |
-| Privé GitHub opslag plaats-SSH | git@github.com:username/repo | SSH-sleutel paar gegenereerd door stroom.  Gebruiker moet de open bare sleutel toevoegen aan het GitHub-account als Deploy-sleutel. |
-| Open bare GitHub-opslag plaats | `http://github.com/username/repo` of git://github.com/username/repo   | Openbaar Git-opslag plaats  |
+| Openbaar Git-opslag plaats | http [s]://Server/repo.git of git://server/repo.git   | Openbaar Git-opslag plaats  |
+| Privé Git opslag plaats – SSH-sleutels-gemaakt op basis van stromen | SSH://[user@] Server/opslag plaats. git of [user@] server: opslag plaats. git | De open bare sleutel die wordt gegenereerd door stroom moet worden toegevoegd aan het gebruikers account of opslag plaats in uw Git-service provider. [Hier](#apply-configuration-from-a-private-git-repository) vindt u meer informatie |
 
-Deze scenario's worden nog ondersteund door stroom, maar niet door sourceControlConfiguration. 
+Deze scenario's worden ondersteund door stroom, maar nog niet door sourceControlConfiguration.
 
 | Scenario | Indeling | Beschrijving |
 | ------------- | ------------- | ------------- |
-| Privé GitHub opslag plaats-HTTPS | `https://github.com/username/repo` | Er wordt geen SSH-sleutel paar gegenereerd door stroom.  [Instructies](https://docs.fluxcd.io/en/1.17.0/guides/use-git-https.html) |
-| Privé Git-host | user@githost:path/to/repo | [Instructies](https://docs.fluxcd.io/en/1.18.0/guides/use-private-git-host.html) |
-| Privé GitHub opslag plaats-SSH (uw eigen sleutel meenemen) | git@github.com:username/repo | [Uw eigen SSH-sleutel paar gebruiken](https://docs.fluxcd.io/en/1.17.0/guides/provide-own-ssh-key.html) |
-
+| Privé Git opslag plaats-HTTPS | https://server/repo.git | Binnenkort beschikbaar (biedt ondersteuning voor gebruikers naam/wacht woord, gebruikers naam/token, certificaat) |
+| Privé Git opslag plaats-SSH: door de gebruiker verschafte sleutels | SSH://[user@] Server/opslag plaats. git of [user@] server: opslag plaats. git | Binnenkort beschikbaar |
+| Privé Git-host – SSH – aangepaste known_hosts | SSH://[user@] Server/opslag plaats. git of [user@] server: opslag plaats. git | Binnenkort beschikbaar |
 
 #### <a name="additional-parameters"></a>Aanvullende para meters
 
@@ -225,7 +224,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 **De open bare sleutel toevoegen als een Deploy-sleutel voor de Git-opslag plaats**
 
-1. Open GitHub, navigeer naar uw Fork, naar **instellingen**en **Implementeer sleutels**
+1. Open GitHub, navigeer naar uw opslag plaats, naar **instellingen**en **Implementeer sleutels**
 2. Klik op  **Deploy-sleutel toevoegen**
 3. Een titel opgeven
 4. **Schrijf toegang toestaan** inschakelen

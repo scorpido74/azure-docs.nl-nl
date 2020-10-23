@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 08/17/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8c9e6462beb48e3326de3c2348b73053f717e032
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: e94ced70ad17286612328884d03d4d1253b7818b
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91441265"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096535"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>Zelfstudie: Stapsgewijze instructies voor het maken van een nieuwe HoloLens Unity-app met behulp van Azure Spatial Anchors
 
@@ -25,7 +25,7 @@ Het volgende moet zijn geïnstalleerd om deze zelfstudie te voltooien:
 
 1. Een Windows-computer waarop <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> is geïnstalleerd met de workload **Universeel Windows-platform-ontwikkeling** en het onderdeel **Windows 10 SDK (10.0.18362.0 of later)** en <a href="https://git-scm.com/download/win" target="_blank">Git voor Windows</a>.
 2. De [C++/WinRT Visual Studio Extension (VSIX)](https://aka.ms/cppwinrt/vsix) voor Visual Studio moet worden geïnstalleerd vanuit de [Visual Studio Marketplace](https://marketplace.visualstudio.com/).
-3. Een HoloLens-apparaat waarvoor de [ontwikkelaarsmodus](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) is ingeschakeld. Dit artikel vereist een HoloLens-apparaat met de [Update voor Windows van 10 oktober 2018](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018 ) (ook wel bekend als RS5). Als u wilt bijwerken naar de nieuwste release op HoloLens, opent u de app **Instellingen**, gaat u naar **Bijwerken en beveiliging** en selecteert u vervolgens de knop **Controleren op updates**.
+3. Een HoloLens-apparaat waarvoor de [ontwikkelaarsmodus](/windows/mixed-reality/using-visual-studio) is ingeschakeld. Voor dit artikel is een HoloLens-apparaat met de [Update voor Windows van 10 mei 2020](/windows/mixed-reality/whats-new/release-notes-may-2020) nodig. Als u wilt bijwerken naar de nieuwste release op HoloLens, opent u de app **Instellingen**, gaat u naar **Bijwerken en beveiliging** en selecteert u vervolgens de knop **Controleren op updates**.
 
 ## <a name="getting-started"></a>Aan de slag
 
@@ -89,7 +89,7 @@ We moeten onze Unity-app configureren zodat deze een detailweergave in plaats va
 U hebt nu een bol-prefab in uw deelvenster **Project**.
 
 ## <a name="trying-it-out"></a>Het uitproberen
-Als u wilt testen of alles werkt, bouwt u uw app in **Unity** en implementeert u deze vanuit **Visual Studio**. Volg hoofdstuk 6 van de [**MR-basis beginselen 100: Aan de slag met Unity**-cursus](https://docs.microsoft.com/windows/mixed-reality/holograms-100#chapter-6---build-and-deploy-to-device-from-visual-studio) om dit te doen. U moet nu het startscherm van Unity zien en vervolgens een duidelijke weergave.
+Als u wilt testen of alles werkt, bouwt u uw app in **Unity** en implementeert u deze vanuit **Visual Studio**. Volg hoofdstuk 6 van de [**MR-basis beginselen 100: Aan de slag met Unity**-cursus](/windows/mixed-reality/holograms-100#chapter-6---build-and-deploy-to-device-from-visual-studio) om dit te doen. U moet nu het startscherm van Unity zien en vervolgens een duidelijke weergave.
 
 ## <a name="place-an-object-in-the-real-world"></a>Een object in het echt plaatsen
 We gaan een object maken en plaatsen met behulp van uw app. Open de Visual Studio-oplossing die we hebben gemaakt toen we [onze app hebben geïmplementeerd](#trying-it-out).
@@ -208,7 +208,7 @@ Ten slotte gaan we alles aan elkaar koppelen. Voeg de volgende code toe aan de m
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=320-397&highlight=26-77)]
 
-Voer uw app nog een keer uit vanuit **Visual Studio**. Beweeg uw hoofd en tik vervolgens in de lucht om uw bol te plaatsen. Zodra er voldoende frames zijn, verandert de bol in geel en wordt het uploaden naar de cloud gestart. Zodra het uploaden is voltooid, wordt de bol blauw. U kunt desgewenst ook het [Uitvoervenster](https://docs.microsoft.com/visualstudio/ide/reference/output-window) gebruiken tijdens de foutopsporing in **Visual Studio** om de logboekberichten te controleren die uw app verzendt. Zorg ervoor dat u de `Debug`-configuratie van uw app vanuit Visual Studio implementeert, zodat u de logboekberichten kunt bekijken. U kunt `RecommendedForCreateProgress` bekijken en zodra het uploaden is voltooid, kunt u de anker-id zien die door de cloud is geretourneerd.
+Voer uw app nog een keer uit vanuit **Visual Studio**. Beweeg uw hoofd en tik vervolgens in de lucht om uw bol te plaatsen. Zodra er voldoende frames zijn, verandert de bol in geel en wordt het uploaden naar de cloud gestart. Zodra het uploaden is voltooid, wordt de bol blauw. U kunt desgewenst ook het [Uitvoervenster](/visualstudio/ide/reference/output-window) gebruiken tijdens de foutopsporing in **Visual Studio** om de logboekberichten te controleren die uw app verzendt. Zorg ervoor dat u de `Debug`-configuratie van uw app vanuit Visual Studio implementeert, zodat u de logboekberichten kunt bekijken. U kunt `RecommendedForCreateProgress` bekijken en zodra het uploaden is voltooid, kunt u de anker-id zien die door de cloud is geretourneerd.
 
 > [!NOTE]
 > Als u de melding 'DllNotFoundException: Kan DLL 'AzureSpatialAnchors' niet laden: De opgegeven module is niet gevonden." ontvangt, moet u uw oplossing opnieuw **Opschonen** en **Bouwen**.

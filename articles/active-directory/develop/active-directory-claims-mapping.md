@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 4fca84c8e5aa562572792968d0438a61be5ab91b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c300faf33f57518d26f82234bdff94a37235cd66
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601466"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275797"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Procedure: claims aanpassen die worden verzonden in tokens voor een specifieke app in een Tenant (preview-versie)
 
@@ -322,7 +322,7 @@ Het ID-element identificeert welke eigenschap van de bron de waarde voor de clai
 | Gebruiker | othermail | Andere E-mail |
 | Gebruiker | country | Land/regio |
 | Gebruiker | city | Plaats |
-| Gebruiker | staat | Status |
+| Gebruiker | staat | Staat |
 | Gebruiker | jobtitle | Functie |
 | Gebruiker | employeeid | Werknemers-id |
 | Gebruiker | facsimiletelephonenumber | Telefoon nummer Fax |
@@ -419,7 +419,7 @@ Op basis van de gekozen methode wordt een set invoer en uitvoer verwacht. Defini
 
 ### <a name="custom-signing-key"></a>Aangepaste handtekening sleutel
 
-Een aangepaste ondertekeningssleutel moet worden toegewezen aan het Service-Principal-object om een claim toewijzings beleid van kracht te laten worden. Dit zorgt ervoor dat de bevestiging van tokens door de maker van het beleid voor claim toewijzing is gewijzigd en dat toepassingen worden beschermd tegen beleids regels voor claim toewijzing die door kwaad aardige Actors zijn gemaakt. Als u een aangepaste ondertekeningssleutel wilt toevoegen, kunt u de cmdlet Azure PowerShell gebruiken `new-azureadapplicationkeycredential` om een symmetrische sleutel referentie voor uw toepassings object te maken. Zie [New-AzureADApplicationKeyCredential](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)voor meer informatie over deze Azure PowerShell-cmdlet.
+Een aangepaste ondertekeningssleutel moet worden toegewezen aan het Service-Principal-object om een claim toewijzings beleid van kracht te laten worden. Dit zorgt ervoor dat de bevestiging van tokens door de maker van het beleid voor claim toewijzing is gewijzigd en dat toepassingen worden beschermd tegen beleids regels voor claim toewijzing die door kwaad aardige Actors zijn gemaakt. Als u een aangepaste ondertekeningssleutel wilt toevoegen, kunt u de cmdlet Azure PowerShell gebruiken [`New-AzureADApplicationKeyCredential`](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential) om een certificaat sleutel referentie voor uw toepassings object te maken.
 
 Apps waarvoor claim toewijzing is ingeschakeld, moeten hun token handtekening sleutels valideren door `appid={client_id}` toe te voegen aan hun [OpenID Connect Connect-aanvragen voor meta gegevens](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document). Hieronder ziet u de indeling van het OpenID Connect Connect-meta gegevens document dat u moet gebruiken:
 
@@ -531,7 +531,7 @@ In dit voor beeld maakt u een beleid dat een aangepaste claim ' JoinedData ' uit
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 - Zie [How to: claims aanpassen die zijn uitgegeven in het SAML-token voor zakelijke toepassingen voor](active-directory-saml-claims-customization.md) meer informatie over het aanpassen van claims die zijn uitgegeven in het SAML-token via de Azure Portal.
 - Zie voor meer informatie over extensie kenmerken de [kenmerken van Directory-schema-extensies gebruiken in claims](active-directory-schema-extensions.md).

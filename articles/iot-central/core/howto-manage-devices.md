@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.custom: contperfq2
-ms.openlocfilehash: 1782982c75e502ea8df70818a134b5b009188959
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbe3bedb188b563bb29ad1aa6e6e53e3039f1d51
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850095"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170343"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Apparaten beheren in uw Azure IoT Central-toepassing
 
@@ -60,7 +60,7 @@ Een apparaat toevoegen aan uw Azure IoT Central-toepassing:
 
 Als u een groot aantal apparaten wilt verbinden met uw toepassing, kunt u apparaten bulksgewijs importeren uit een CSV-bestand. Het CSV-bestand moet de volgende kolommen en kopteksten hebben:
 
-* **IOTC_DeviceID** -de apparaat-id moet allemaal kleine letters zijn.
+* **IOTC_DeviceID** -de apparaat-id mag letters, cijfers en het `-` teken bevatten.
 * **IOTC_DeviceName** : deze kolom is optioneel.
 
 Apparaten in uw toepassing bulksgewijs registreren:

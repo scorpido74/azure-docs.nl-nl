@@ -8,14 +8,14 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 73b1ba5e93ad82498938055db50abb665849f442
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be2aa75fb7c532d48188493b2ed09adc8b141b6a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449005"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340016"
 ---
-# <a name="understanding-just-in-time-jit-vm-access"></a>Meer informatie over just-in-time-VM-toegang
+# <a name="understanding-just-in-time-jit-vm-access"></a>Meer informatie over just-in-time-toegang (JIT) voor VM's
 
 Op deze pagina worden de principes van de toegang tot de VM-functie just-in-time (JIT) van Azure Security Center en de logica achter de aanbeveling uitgelegd.
 
@@ -40,14 +40,14 @@ Azure Security Center biedt JIT om deze dilemma op te lossen. Met JIT kunt u het
 
 ## <a name="how-jit-operates-with-network-security-groups-and-azure-firewall"></a>Hoe JIT werkt met netwerk beveiligings groepen en Azure Firewall
 
-Wanneer u just-in-time-VM-toegang inschakelt, kunt u de poorten op de VM selecteren waarop binnenkomend verkeer wordt geblokkeerd. Security Center zorgt ervoor dat de regels voor het weigeren van binnenkomend verkeer voor de geselecteerde poorten bestaan in de [netwerk beveiligings groep](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) (NSG) en [Azure firewall regels](https://docs.microsoft.com/azure/firewall/rule-processing). Deze regels beperken de toegang tot de beheer poorten van uw Azure-Vm's en beschermen ze tegen aanvallen. 
+Wanneer u just-in-time-VM-toegang inschakelt, kunt u de poorten op de VM selecteren waarop binnenkomend verkeer wordt geblokkeerd. Security Center zorgt ervoor dat de regels voor het weigeren van binnenkomend verkeer voor de geselecteerde poorten bestaan in de [netwerk beveiligings groep](../virtual-network/network-security-groups-overview.md#security-rules) (NSG) en [Azure firewall regels](../firewall/rule-processing.md). Deze regels beperken de toegang tot de beheer poorten van uw Azure-Vm's en beschermen ze tegen aanvallen. 
 
 Als er al andere regels bestaan voor de geselecteerde poorten, hebben die bestaande regels voor rang op de nieuwe regels ' alle inkomende verkeer weigeren '. Als er geen bestaande regels zijn op de geselecteerde poorten, hebben de nieuwe regels de hoogste prioriteit in de NSG en Azure Firewall.
 
-Wanneer een gebruiker toegang tot een virtuele machine vraagt, controleert Security Center of de gebruiker [op rollen gebaseerde toegangs beheer (Azure RBAC)-](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) machtigingen voor die VM heeft. Als de aanvraag is goedgekeurd, Security Center configureert de Nsg's en Azure Firewall om binnenkomend verkeer naar de geselecteerde poorten van het betreffende IP-adres (of bereik) toe te staan voor de opgegeven tijd. Nadat de tijd is verstreken, wordt de Nsg's door Security Center teruggezet naar de vorige status. Verbindingen die al zijn gemaakt, worden niet onderbroken.
+Wanneer een gebruiker toegang tot een virtuele machine vraagt, controleert Security Center of de gebruiker [op rollen gebaseerde toegangs beheer (Azure RBAC)-](../role-based-access-control/role-assignments-portal.md) machtigingen voor die VM heeft. Als de aanvraag is goedgekeurd, Security Center configureert de Nsg's en Azure Firewall om binnenkomend verkeer naar de geselecteerde poorten van het betreffende IP-adres (of bereik) toe te staan voor de opgegeven tijd. Nadat de tijd is verstreken, wordt de Nsg's door Security Center teruggezet naar de vorige status. Verbindingen die al zijn gemaakt, worden niet onderbroken.
 
 > [!NOTE]
-> JIT ondersteunt geen Vm's die worden beveiligd door Azure-firewalls die worden beheerd door [Azure firewall Manager](https://docs.microsoft.com/azure/firewall-manager/overview).
+> JIT ondersteunt geen Vm's die worden beveiligd door Azure-firewalls die worden beheerd door [Azure firewall Manager](../firewall-manager/overview.md).
 
 
 

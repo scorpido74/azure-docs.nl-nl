@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 6/15/2019
 ms.author: rohink
-ms.openlocfilehash: 76b19cfb3c00a26d81eab81f67d8e156a520f377
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: baa03e9a9bbbc7f8eefc1e0ba57a0a8b18da6e29
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77121716"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328756"
 ---
 # <a name="azure-dns-faq"></a>Veelgestelde vragen over Azure DNS
 
@@ -24,7 +24,7 @@ De Domain Name System (DNS) zet een website of service naam om in het IP-adres. 
 
 DNS-domeinen in Azure DNS worden gehost op het globale Azure-netwerk van DNS-naam servers. Dit systeem gebruikt Anycast-netwerken zodat elke DNS-query wordt beantwoord door de dichtstbijzijnde beschik bare DNS-server. Azure DNS biedt snelle prestaties en hoge Beschik baarheid voor uw domein.
 
-Azure DNS is gebaseerd op Azure Resource Manager. Azure DNS voor delen van Resource Manager-functies, zoals op rollen gebaseerd toegangs beheer, audit logboeken en resource vergrendeling. U kunt domeinen en records beheren via de Azure Portal, Azure PowerShell-cmdlets en de platformoverschrijdende Azure CLI. Toepassingen waarvoor automatisch DNS-beheer is vereist, kunnen worden geïntegreerd met de service via de REST API en Sdk's.
+Azure DNS is gebaseerd op Azure Resource Manager. Azure DNS voor delen van Resource Manager-functies, zoals Azure op rollen gebaseerd toegangs beheer, controle logboeken en resource vergrendeling. U kunt domeinen en records beheren via de Azure Portal, Azure PowerShell-cmdlets en de platformoverschrijdende Azure CLI. Toepassingen waarvoor automatisch DNS-beheer is vereist, kunnen worden geïntegreerd met de service via de REST API en Sdk's.
 
 ### <a name="how-much-does-azure-dns-cost"></a>Hoeveel kost het Azure DNS?
 
@@ -177,7 +177,7 @@ Wijzigingen in bestaande DNS-records kunnen wat langer duren. Deze worden doorga
 
 ### <a name="how-can-i-protect-my-dns-zones-against-accidental-deletion"></a>Hoe kan ik mijn DNS-zones beveiligen tegen onbedoeld verwijderen?
 
-Azure DNS wordt beheerd met behulp van Azure Resource Manager. Azure DNS voor delen van de functies voor toegangs beheer die Azure Resource Manager biedt. Op rollen gebaseerd toegangs beheer bepaalt welke gebruikers lees-of schrijf toegang hebben tot DNS-zones en-record sets. Bron vergrendelingen voor komen onopzettelijke wijzigingen of verwijdering van DNS-zones en-record sets.
+Azure DNS wordt beheerd met behulp van Azure Resource Manager. Azure DNS voor delen van de functies voor toegangs beheer die Azure Resource Manager biedt. Toegangs beheer op basis van rollen kan worden gebruikt om te bepalen welke gebruikers lees-of schrijf toegang hebben tot DNS-zones en-record sets. Bron vergrendelingen voor komen onopzettelijke wijzigingen of verwijdering van DNS-zones en-record sets.
 
 Zie [DNS-zones en-records beveiligen](dns-protect-zones-recordsets.md)voor meer informatie.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 432ca72a667caa9c2a78b08396884d957b4c650b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: da0e042664d6ca90c53b83bb38770a97d4e97498
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547100"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850726"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jive"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Jive
 
@@ -140,7 +140,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik in het menu bovenaan op **SAML**.
 
-    ![Eenmalige aanmelding aan app-zijde configureren](./media/jive-tutorial/tutorial_jive_002.png)
+    ![Schermopname van het tabblad SAML met Ingeschakeld geselecteerd.](./media/jive-tutorial/tutorial_jive_002.png)
 
     a. Selecteer op het tabblad **Algemeen** de optie **Ingeschakeld**.
 
@@ -148,7 +148,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Ga naar het tabblad **IDP-METAGEGEVENS**.
 
-    ![Eenmalige aanmelding aan app-zijde configureren](./media/jive-tutorial/tutorial_jive_003.png)
+    ![Schermopname van het geselecteerde SAML-tabblad IDP-METAGEGEVENS.](./media/jive-tutorial/tutorial_jive_003.png)
 
     a. Kopieer de inhoud van het gedownloade XML-bestand met metagegevens, en plak deze vervolgens in het tekstvak **Uw IDP-metagegevens (Identity Provider)** .
 
@@ -156,7 +156,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Selecteer het tabblad **TOEWIJZING VAN GEBRUIKERSKENMERK**.
 
-    ![Eenmalige aanmelding aan app-zijde configureren](./media/jive-tutorial/tutorial_jive_004.png)
+    ![Schermopname van het SAML-tabblad met TOEWIJZING VAN GEBRUIKERSKENMERK geselecteerd.](./media/jive-tutorial/tutorial_jive_004.png)
 
     a. Kopieer en plak de kenmerknaam van de waarde **mail** in het tekstvak **E-mail**.
 

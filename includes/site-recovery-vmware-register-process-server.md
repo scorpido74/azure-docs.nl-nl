@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 04/28/2019
 ms.author: raynew
 ms.openlocfilehash: 088cd5447b1f96dbf172b5918c29e4f3293289a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67534616"
 ---
-1. Stel een Verbinding met extern bureaublad in op de computer waarop de proces server wordt uitgevoerd. 
-2. Voer cspsconfigtool.exe uit om het hulp programma voor configuratie van Azure Site Recovery proces server te starten.
-    - Het hulp programma wordt automatisch gestart bij de eerste keer dat u zich aanmeldt bij de proces server.
-    - Als deze niet automatisch wordt geopend, klikt u op de snelkoppeling op het bureau blad.
+1. Stel een verbinding via Extern bureaublad in op de computer waarop de processerver wordt uitgevoerd. 
+2. Voer cspsconfigtool.exe uit om het hulpprogramma voor de configuratie van de processerver van Azure Site Recovery te starten.
+    - Het hulpprogramma wordt de eerste keer dat u zich aanmeldt bij de processerver, automatisch gestart.
+    - Als het niet automatisch wordt geopend, klikt u op de snelkoppeling op het bureaublad.
 
-3. Geef in **FQDN of IP van de configuratie server**de naam of het IP-adres op van de configuratie server waarmee de proces server moet worden geregistreerd.
-4. Zorg ervoor dat in de **Configuratie server poort**443 is opgegeven. Dit is de poort waarop de configuratie server luistert naar aanvragen.
-5. Geef bij **wachtwoordzin voor verbinding**de wachtwoordzin op die u hebt opgegeven bij het instellen van de configuratie server. De wachtwoordzin zoeken:
-    -  Ga op de configuratie server naar de installatiemap van Site Recovery **\home\svssystems\bin \* *:
+3. Geef in **Configuration server FQDN or IP** de naam of het IP-adres van de configuratieserver op waarmee de processerver moet worden geregistreerd.
+4. Controleer in **Configuration Server Port** of 443 is opgegeven. Dit is de poort waarop de configuratieserver naar aanvragen luistert.
+5. Geef in **Connection Passphrase** de wachtwoordzin op die u hebt opgegeven bij het instellen van de configuratieserver. U kunt de wachtwoordzin als volgt vinden:
+    -  Ga op de configuratieserver naar de installatiemap van Site Recovery * *\home\svssystems\bin\** :
     ```
     cd %ProgramData%\ASR\home\svsystems\bin
     ```
@@ -28,9 +28,9 @@ ms.locfileid: "67534616"
     genpassphrase.exe -n
     ```
 
-6. In **gegevensoverdracht poort**, tenzij u een aangepaste poort hebt opgegeven, wijzigt u de standaard waarde.
+6. In **Data Transfer Port** laat u de standaardwaarde staan, tenzij u een aangepaste poort hebt opgegeven.
 
-7. Klik op **Opslaan** de instellingen opslaan en registreer de proces server.
+7. Klik op **Save** om de instellingen op te slaan en registreer de processerver.
 
     
-    ![De proces server registreren](./media/site-recovery-vmware-register-process-server/register-ps.png)
+    ![Processerver registreren](./media/site-recovery-vmware-register-process-server/register-ps.png)

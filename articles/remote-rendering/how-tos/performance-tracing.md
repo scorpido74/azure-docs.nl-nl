@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 12/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2a10558e76a6e9af7c7571dc4ba3d063ce3e2286
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d4ce68bdda5fbc3dfdb7396141289a58dab5bd1
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84021157"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204092"
 ---
 # <a name="create-client-side-performance-traces"></a>Prestatietracering aan de clientzijde maken
 
@@ -24,7 +24,7 @@ Als u niet bekend bent met de Windows :::no-loc text="performance tracing"::: -f
 
 ### <a name="installation"></a>Installatie
 
-De toepassingen die worden gebruikt voor tracering met ARR zijn hulpprogram ma's voor algemeen gebruik die kunnen worden gebruikt voor alle Windows-ontwikkel aars. Ze worden via de [Windows-prestatie Toolkit](https://docs.microsoft.com/windows-hardware/test/wpt/)verschaft. Als u deze Toolkit wilt downloaden, downloadt u de [Windows Assessment and Deployment Kit](https://docs.microsoft.com/windows-hardware/get-started/adk-install).
+De toepassingen die worden gebruikt voor tracering met ARR zijn hulpprogram ma's voor algemeen gebruik die kunnen worden gebruikt voor alle Windows-ontwikkel aars. Ze worden via de [Windows-prestatie Toolkit](/windows-hardware/test/wpt/)verschaft. Als u deze Toolkit wilt downloaden, downloadt u de [Windows Assessment and Deployment Kit](/windows-hardware/get-started/adk-install).
 
 ### <a name="terminology"></a>Terminologie
 
@@ -35,13 +35,13 @@ Wanneer u zoekt naar informatie over prestatie traceringen, zult u onvermijdelij
 * `WPR`
 * `WPA`
 
-**Etw** staat voor [ **E**ventilator **T**-race voor **W**Windows](https://docs.microsoft.com/windows/win32/etw/about-event-tracing). Het is gewoon de naam van de overkoepelend voor de efficiënte tracering faciliteit op kernelniveau die is ingebouwd in Windows. Het wordt *gebeurtenis* tracering genoemd, omdat toepassingen die ondersteuning bieden voor etw, gebeurtenissen kunnen verzenden naar logboek acties die kunnen helpen bij het volgen van prestatie problemen. Standaard verzendt het besturings systeem al gebeurtenissen voor zaken als schijf toegang, taak switches en dergelijke. Toepassingen zoals ARR verzenden bovendien aangepaste gebeurtenissen, bijvoorbeeld het geval van verwijderde frames, netwerk vertraging, enzovoort.
+**Etw** staat voor [ **E**ventilator **T**-race voor **W**Windows](/windows/win32/etw/about-event-tracing). Het is gewoon de naam van de overkoepelend voor de efficiënte tracering faciliteit op kernelniveau die is ingebouwd in Windows. Het wordt *gebeurtenis* tracering genoemd, omdat toepassingen die ondersteuning bieden voor etw, gebeurtenissen kunnen verzenden naar logboek acties die kunnen helpen bij het volgen van prestatie problemen. Standaard verzendt het besturings systeem al gebeurtenissen voor zaken als schijf toegang, taak switches en dergelijke. Toepassingen zoals ARR verzenden bovendien aangepaste gebeurtenissen, bijvoorbeeld het geval van verwijderde frames, netwerk vertraging, enzovoort.
 
 **ETL** staat voor **E**ventilator **T**race **L**ogging. Dit betekent gewoon dat een tracering is verzameld (vastgelegd) en wordt daarom doorgaans gebruikt als de bestands extensie voor bestanden die de tracerings gegevens opslaan. Als u een tracering volgt, hebt u meestal een \* ETL-bestand.
 
-De **aanvraag staat voor** [ **W**Windows **P**erformance **R**ecorder](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) en is de naam van de toepassing die de registratie van gebeurtenis traceringen start en stopt. Voor het aanmeldingen wordt een profiel bestand ( \* . wprp) gebruikt dat de exacte gebeurtenissen configureert die moeten worden geregistreerd. Een dergelijk `wprp` bestand wordt meegeleverd met de ARR-SDK. Bij het uitvoeren van traceringen op een desktop computer, kunt u direct op de slag starten. Wanneer u een tracering op de HoloLens uitvoert, gaat u doorgaans door de webinterface.
+De **aanvraag staat voor** [ **W**Windows **P**erformance **R**ecorder](/windows-hardware/test/wpt/windows-performance-recorder) en is de naam van de toepassing die de registratie van gebeurtenis traceringen start en stopt. Voor het aanmeldingen wordt een profiel bestand ( \* . wprp) gebruikt dat de exacte gebeurtenissen configureert die moeten worden geregistreerd. Een dergelijk `wprp` bestand wordt meegeleverd met de ARR-SDK. Bij het uitvoeren van traceringen op een desktop computer, kunt u direct op de slag starten. Wanneer u een tracering op de HoloLens uitvoert, gaat u doorgaans door de webinterface.
 
-**WPA** staat voor [ **W**Windows **P**erformance **A**nalyzer](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-analyzer) en is de naam van de GUI-toepassing die wordt gebruikt voor \* het openen van. etl-bestanden en SIFT door de gegevens om prestatie problemen te identificeren. Met WPA kunt u gegevens sorteren op verschillende criteria, de gegevens op verschillende manieren weer geven, meer informatie bekijken en gegevens correleren.
+**WPA** staat voor [ **W**Windows **P**erformance **A**nalyzer](/windows-hardware/test/wpt/windows-performance-analyzer) en is de naam van de GUI-toepassing die wordt gebruikt voor \* het openen van. etl-bestanden en SIFT door de gegevens om prestatie problemen te identificeren. Met WPA kunt u gegevens sorteren op verschillende criteria, de gegevens op verschillende manieren weer geven, meer informatie bekijken en gegevens correleren.
 
 U kunt ETL-traceringen maken op elk Windows-apparaat (lokale PC, HoloLens, Cloud Server, enzovoort), ze worden meestal opgeslagen op schijf en geanalyseerd met WPA op een desktop-PC. ETL-bestanden kunnen naar andere ontwikkel aars worden verzonden om ze te laten zien. Houd er rekening mee dat gevoelige informatie, zoals bestands paden en IP-adressen, in ETL-traceringen kan worden vastgelegd. U kunt ETW op twee manieren gebruiken: voor het vastleggen van traceringen of voor het analyseren van traceringen. Registratie traceringen zijn recht vooruit en vereisen een minimale installatie. Voor het analyseren van traceringen voor de andere kant is een goede uitleg vereist van zowel het WPA-hulp programma als het probleem dat u onderzoekt. Algemeen materiaal voor Learning WPA vindt u hieronder en richt lijnen voor het interpreteren van ARR-specifieke traceringen.
 
@@ -51,7 +51,7 @@ Als u problemen met ARR-prestaties wilt identificeren, kunt u het beste rechtstr
 
 ### <a name="wpr-configuration"></a>Configuratie van de aanaan
 
-1. Start de [:::no-loc text="Windows Performance Recorder":::](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) vanuit het *menu Start*.
+1. Start de [:::no-loc text="Windows Performance Recorder":::](/windows-hardware/test/wpt/windows-performance-recorder) vanuit het *menu Start*.
 1. **Meer opties** uitbreiden
 1. Klik op **profielen toevoegen...**
 1. Selecteer het bestand *AzureRemoteRenderingNetworkProfiling. wprp*. U kunt dit bestand vinden in de ARR SDK onder *tools/ETLProfiles*.
@@ -95,7 +95,7 @@ U hebt nu een ETL-bestand dat u rechtstreeks kunt openen in WPA of naar iemand a
 
 Windows Performance Analyzer is het standaard programma voor het openen van ETL-bestanden en het controleren van de traceringen. Een uitleg hoe WPA werkt buiten het bereik van dit artikel. Bekijk de volgende bronnen om aan de slag te gaan:
 
-* Bekijk de [inleidende Video's](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-analyzer) voor een eerste overzicht.
+* Bekijk de [inleidende Video's](/windows-hardware/test/wpt/windows-performance-analyzer) voor een eerste overzicht.
 * WPA zelf bevat een tabblad *aan de slag* , waarin algemene stappen worden uitgelegd. Bekijk de beschik bare onderwerpen. Met name bij ' gegevens weer geven ' krijgt u een snelle inleiding hoe u grafieken voor specifieke gegevens kunt maken.
 * Er is een uitstekende informatie [over deze website](https://randomascii.wordpress.com/2015/09/24/etw-central/), maar dit is niet alle relevant voor beginners.
 

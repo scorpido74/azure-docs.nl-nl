@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 31d12466186bb7f66197218fbb9675888a35fef3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 110fc658ffc3b72de91bbf1c9562f3efeecaf55b
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88272770"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342413"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Het vFXT-cluster implementeren
 
@@ -64,7 +64,7 @@ Vul de volgende informatie in:
 
 * **Controller gebruikers naam** : Stel de hoofdmap in voor de cluster controller-VM.
 
-* **Verificatie type** : Kies voor het maken van verbinding met de controller een wacht woord of een open bare SSH-sleutel verificatie. De open bare SSH-sleutel methode wordt aanbevolen; meer informatie [over het maken en gebruiken van SSH-sleutels](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) als u hulp nodig hebt.
+* **Verificatie type** : Kies voor het maken van verbinding met de controller een wacht woord of een open bare SSH-sleutel verificatie. De open bare SSH-sleutel methode wordt aanbevolen; meer informatie [over het maken en gebruiken van SSH-sleutels](../virtual-machines/linux/ssh-from-windows.md) als u hulp nodig hebt.
 
 * **Wacht woord** of **open bare SSH-sleutel** : afhankelijk van het verificatie type dat u hebt geselecteerd, moet u een open bare RSA-sleutel of een wacht woord in de volgende velden opgeven. Deze referentie wordt gebruikt met de gebruikers naam die u eerder hebt ingesteld.
 

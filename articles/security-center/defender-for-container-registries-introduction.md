@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 12264a79ee5428e98d6cf7d37bef6706295e68dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c504ebdec524390d9deb22088979199f80e4f13
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448375"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275959"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Inleiding tot Azure Defender voor containerregisters
 
@@ -66,7 +66,7 @@ Security Center filtert en classificeert de resultaten van de scanner. Wanneer e
 
 ### <a name="can-i-get-the-scan-results-via-rest-api"></a>Kan ik de scanresultaten verkrijgen via REST API?
 Ja. De resultaten staan onder [Subevaluaties REST API](/rest/api/securitycenter/subassessments/list/). U kunt ook gebruikmaken van Azure Resource Graph (ARG), de Kusto-achtige API voor al uw resources: een query kan een specifieke scan ophalen.
- 
+
 ### <a name="what-registry-types-are-scanned-what-types-are-billed"></a>Welke registertypen worden gescand? Welke typen worden gefactureerd?
 Zie [Beschikbaarheid](defender-for-container-registries-usage.md#availability)voor een lijst met de typen containerregisters die worden ondersteund door Azure Defender voor containerregisters.
 

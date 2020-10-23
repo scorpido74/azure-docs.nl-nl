@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 1cd0c3f48d4dc79294b3ebf9907ac18d23794830
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4de3ec79b94969e45553857f1179a1104e090347
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91804194"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276100"
 ---
 # <a name="pagination-in-azure-cosmos-db"></a>Paginering in Azure Cosmos DB
 
@@ -21,7 +21,7 @@ In Azure Cosmos DB kunnen query's meerdere pagina's met resultaten bevatten. In 
 
 Soms worden query resultaten verdeeld over meerdere pagina's. De resultaten van elke pagina worden gegenereerd door een afzonderlijke query-uitvoering. Wanneer query resultaten niet in één uitvoering kunnen worden geretourneerd, worden de resultaten door Azure Cosmos DB automatisch in meerdere pagina's gesplitst.
 
-U kunt het maximum aantal items opgeven dat door een query wordt geretourneerd door de in te stellen `MaxItemCount` . De `MaxItemCount` is opgegeven per aanvraag en garandeert dat de query-engine het aantal items of minder heeft geretourneerd. U kunt instellen `MaxItemCount` op `-1` Als u geen limiet wilt plaatsen voor het aantal resultaten per query uitvoering.
+U kunt het maximum aantal items opgeven dat door een query wordt geretourneerd door de in te stellen `MaxItemCount` . De `MaxItemCount` is opgegeven per aanvraag en geeft aan dat de query-engine dat aantal items of minder heeft geretourneerd. U kunt instellen `MaxItemCount` op `-1` Als u geen limiet wilt plaatsen voor het aantal resultaten per query uitvoering.
 
 Daarnaast zijn er andere redenen waarom de query-engine mogelijk query resultaten in meerdere pagina's moet splitsen. Deze omvatten:
 

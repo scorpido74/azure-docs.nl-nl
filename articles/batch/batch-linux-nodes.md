@@ -4,12 +4,12 @@ description: Meer informatie over het verwerken van uw parallelle Compute-werk b
 ms.topic: how-to
 ms.date: 06/01/2018
 ms.custom: H1Hack27Feb2017, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 6cd8a13d67c1ce169e6c9300f7ee017fd3a59d96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9cbf7dcb5b0f6f43b4fc5d69127e817dceea650e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89146331"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108062"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Linux-reken knooppunten inrichten in batch-Pools
 
@@ -25,7 +25,7 @@ Wanneer u een pool van reken knooppunten in batch maakt, hebt u twee opties waar
 
 **Cloud Services-configuratie** biedt *alleen* Windows rekenknooppunten. Beschik bare groottes van reken knooppunten worden weer gegeven in [grootten voor Cloud Services](../cloud-services/cloud-services-sizes-specs.md)en beschik bare besturings systemen worden vermeld in de [Azure Guest OS releases en SDK Compatibility Matrix](../cloud-services/cloud-services-guestos-update-matrix.md). Wanneer u een pool maakt die Azure-Cloud Services knooppunten bevat, geeft u de knooppunt grootte en de besturingssysteem familie op, die in de eerder genoemde artikelen worden beschreven. Voor Pools van Windows-reken knooppunten wordt Cloud Services het meest gebruikt.
 
-**Virtuele-machine configuratie** voorziet in zowel Linux-als Windows-installatie kopieën voor reken knooppunten. Beschik bare grootten van reken knooppunten worden weer gegeven in [grootten voor virtuele machines in azure](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux) en [grootten voor virtuele machines in azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows). Wanneer u een pool maakt die virtuele-machine configuratie knooppunten bevat, moet u de grootte van de knoop punten, de verwijzing naar de installatie kopie van de virtuele machine en de SKU van de batch-knooppunt agent opgeven die op de knoop punten moet worden geïnstalleerd.
+**Virtuele-machine configuratie** voorziet in zowel Linux-als Windows-installatie kopieën voor reken knooppunten. Beschik bare grootten van reken knooppunten worden weer gegeven in [grootten voor virtuele machines in azure](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) (Linux) en [grootten voor virtuele machines in azure](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) (Windows). Wanneer u een pool maakt die virtuele-machine configuratie knooppunten bevat, moet u de grootte van de knoop punten, de verwijzing naar de installatie kopie van de virtuele machine en de SKU van de batch-knooppunt agent opgeven die op de knoop punten moet worden geïnstalleerd.
 
 ### <a name="virtual-machine-image-reference"></a>Naslag informatie voor installatie kopieën van virtuele machines
 

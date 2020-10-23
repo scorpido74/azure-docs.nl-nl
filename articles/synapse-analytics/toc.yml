@@ -40,10 +40,10 @@
       href: quickstart-create-workspace.md
     - name: Een Synapse-werkruimte maken met de Azure CLI
       href: quickstart-create-workspace-cli.md
+    - name: Een Synapse-werkruimte maken met Azure PowerShell
+      href: quickstart-create-workspace-powershell.md
     - name: Implementeren met een sjabloon
       href: quickstart-deployment-template-workspaces.md
-    - name: Synapse Studio gebruiken
-      href: quickstart-synapse-studio.md
     - name: Een Power BI-werkruimte koppelen
       href: quickstart-power-bi.md
     - name: Pools maken
@@ -388,7 +388,7 @@
           items:
             - name: Wizard om modellen te beoordelen voor SQL-pools
               href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
-            - name: Een regressie-experiment uitvoeren met Azure AutoML (beoordelen in DW)
+            - name: Een regressie-experiment uitvoeren met Azure AutoML
               href: ./spark/apache-spark-azure-machine-learning-tutorial.md
     - name: 'Integratie van hulpprogramma''s (AI, ETL, BI)'
       items:
@@ -482,7 +482,11 @@
               href: ../cosmos-db/configure-synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Verbinding maken met Azure Synapse Link voor Cosmos DB
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
-            - name: Een query uitvoeren op analytische opslag in Azure Cosmos DB met Apache Spark voor Azure Synapse Analytics
+            - name: Power BI en serverloze SQL-pool gebruiken om Azure Cosmos DB te analyseren
+              href: ../cosmos-db/synapse-link-power-bi.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Query uitvoeren op Azure Cosmos DB-gegevens met serverloze SQL-pool
+              href: ./sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Query's uitvoeren op de analytische opslag van Azure Cosmos DB met Apache Spark
               href: ./synapse-link/how-to-query-analytical-store-spark.md
             - name: Gegevens kopiëren van Synapse Link naar een SQL-pool met Apache Spark
               href: ./synapse-link/how-to-copy-to-sql-pool.md
@@ -921,7 +925,7 @@
       href: 'https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/preview/synapse@v43.3.0+incompatible'
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.synapse?view=azure-dotnet-preview
-    - name: PowerShell
+    - name: Azure PowerShell
       href: /powershell/module/az.synapse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: REST-API’s
       href: /rest/api/synapse/

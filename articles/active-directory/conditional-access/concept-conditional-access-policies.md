@@ -5,26 +5,45 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a79b046170a5a3f3574895490aa649fd02da082
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5361460f7816dd4a3b2b53deecd9d360f98ad1d3
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016124"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145364"
 ---
 # <a name="building-a-conditional-access-policy"></a>Beleid voor voorwaardelijke toegang bouwen
 
 Zoals beschreven in het artikel [Wat is voorwaardelijke toegang](overview.md), is een beleid voor voorwaardelijke toegang een instructie if-then, van **toewijzingen** en **toegangs beheer**. Een beleid voor voorwaardelijke toegang brengt signalen samen, om beslissingen te nemen en organisatie beleid af te dwingen.
 
-Hoe maakt een organisatie dit beleid? Wat is vereist?
+Hoe maakt een organisatie dit beleid? Wat is vereist? Hoe worden deze toegepast?
 
 ![Voorwaardelijke toegang (signalen + beslissingen + afdwinging = beleid)](./media/concept-conditional-access-policies/conditional-access-signal-decision-enforcement.png)
+
+Er kunnen op elk moment meerdere beleids regels voor voorwaardelijke toegang van toepassing zijn op een afzonderlijke gebruiker. In dit geval moet aan alle beleids regels worden voldaan. Als voor het ene beleid bijvoorbeeld multi-factor Authentication (MFA) is vereist en er voor een andere beleids regel een compatibel apparaat is vereist, moet u MFA volt ooien en een compatibel apparaat gebruiken. Alle toewijzingen zijn logisch **ANDed**. Als u meer dan één toewijzing hebt geconfigureerd, moeten aan alle toewijzingen worden voldaan om een beleid te activeren.
+
+Alle beleids regels worden in twee fasen afgedwongen:
+
+- Fase 1: sessie details verzamelen 
+   - Details van de sessie verzamelen, zoals de netwerk locatie en de apparaat-id die nodig is voor de beleids evaluatie. 
+   - Fase 1 van de beleids evaluatie vindt plaats voor ingeschakelde beleids regels en beleids regels in de [modus alleen rapport](concept-conditional-access-report-only.md).
+- Fase 2: afdwingen 
+   - Gebruik de sessie details die in fase 1 zijn verzameld om te bepalen of er niet is voldaan aan de vereisten. 
+   - Als er een beleid is geconfigureerd voor het blok keren van de toegang, wordt afdwinging door de blok kering van het besturings element geblokkeerd en wordt de gebruiker geblokkeerd. 
+   - De gebruiker wordt gevraagd aanvullende vereisten voor de toekennings controle uit te voeren die tijdens fase 1 in de volgende volg orde niet aan het beleid zijn voldaan:  
+      - Multi-Factor Authentication 
+      - Goedgekeurde client-app/beveiligings beleid voor apps 
+      - Beheerd apparaat (compatibel of hybride Azure AD-deelname) 
+      - Gebruiksvoorwaarden 
+      - Aangepaste besturingselementen  
+   - Als aan alle machtigings besturings elementen is voldaan, kunt u de sessie besturings elementen Toep assen (app afgedwongen, Microsoft Cloud App Security en levens duur van het token) 
+   - Fase 2 van de beleids evaluatie wordt uitgevoerd voor alle ingeschakelde beleids regels. 
 
 ## <a name="assignments"></a>Toewijzingen
 
@@ -115,7 +134,7 @@ Beheerders kunnen ervoor kiezen om een van de vorige besturings elementen of all
 Een beleid voor voorwaardelijke toegang moet mini maal het volgende bevatten om af te dwingen:
 
 - De **naam** van het beleid.
-- **Toewijzingen**
+- **Sneltoetsen**
    - **Gebruikers en/of groepen** waarop het beleid moet worden toegepast.
    - **Cloud-apps of-acties** waarop het beleid moet worden toegepast.
 - **Besturingselementen voor toegang**

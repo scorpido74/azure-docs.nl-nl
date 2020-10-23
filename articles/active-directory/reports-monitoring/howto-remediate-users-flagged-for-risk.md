@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08305b6aec7dcd5906f4316767c4c512d3a0535e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23bd7a26bc6215f50a2860ab4aac84f1b46301f5
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90600497"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92308949"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Gebruikers herstellen voor wie wordt aangegeven dat ze risico lopen in de Azure Active Directory-portal
 
@@ -60,7 +60,7 @@ Om toegang te krijgen tot de gebruikers die zijn **gemarkeerd voor risico** rapp
 Onderneem de volgende acties om de betreffende accounts te herstellen en uw omgeving te beveiligen:
 
 1.  [Controleer de juiste gegevens](https://aka.ms/MFAValid) voor multi-factor Authentication en self-service voor het opnieuw instellen van wacht woorden. 
-2.  [Schakel multi-factor Authentication in](https://aka.ms/MFAuth) voor alle gebruikers. 
+2.  [Schakel multi-factor Authentication in](/microsoft-365/admin/security-and-compliance/set-up-multi-factor-authentication) voor alle gebruikers. 
 3.  Gebruik dit [herstel script](https://aka.ms/remediate) voor elk betrokken account om automatisch de volgende stappen uit te voeren: 
 
     a. Wacht woord opnieuw instellen om het account te beveiligen en actieve sessies te beëindigen.
@@ -85,8 +85,8 @@ Onderneem de volgende acties om de betreffende accounts te herstellen en uw omge
 
 Daarnaast dient u:
 
-- Lees en implementeer deze [richt lijnen voor het adresseren van ongebruikelijke activiteiten](https://aka.ms/fixaccount). 
-- [Schakel de controle pijplijn](https://aka.ms/improvesecurity) in om u te helpen bij het analyseren van de activiteit in uw Tenant. Zodra het controle archief is voltooid, wordt het gevuld met activiteiten Logboeken. Op dit moment kunt u ook gebruikmaken van de [Zoek-en onderzoek resource van het beveiligings-en nalevings centrum](https://aka.ms/sccsearch). 
+- Lees en implementeer deze [richt lijnen voor het adresseren van ongebruikelijke activiteiten](/archive/blogs/office365security/how-to-fix-a-compromised-hacked-microsoft-office-365-account). 
+- [Schakel de controle pijplijn](/archive/blogs/office365security/using-office-365-activity-data-to-improve-your-cybersecurity-stance-and-capability) in om u te helpen bij het analyseren van de activiteit in uw Tenant. Zodra het controle archief is voltooid, wordt het gevuld met activiteiten Logboeken. Op dit moment kunt u ook gebruikmaken van de [Zoek-en onderzoek resource van het beveiligings-en nalevings centrum](https://aka.ms/sccsearch). 
 - Bekijk voor alle postvakken de machtigingen voor gemachtigden en de regels voor het doorsturen van e-mail. U kunt dit [PowerShell-script](https://aka.ms/delegateforwardrules) gebruiken om deze taak uit te voeren. 
 
 ## <a name="next-steps"></a>Volgende stappen

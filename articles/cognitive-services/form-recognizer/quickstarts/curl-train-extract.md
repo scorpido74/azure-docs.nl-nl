@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: pafarley
-ms.openlocfilehash: b0532007ff03cd9dcf253824a1158fd0b8661120
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 82b44c00b0ee4160a4baf6ad6cca7a97350d6239
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91760458"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970942"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Quickstart: Een Form Recognizer-model trainen en formuliergegevens extraheren met behulp van de REST API met cURL
 
@@ -26,7 +26,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Voor het voltooien van deze quickstart hebt u het volgende nodig:
 - [cURL](https://curl.haxx.se/windows/) moet zijn geïnstalleerd.
-- Een set van minimaal zes formulieren van hetzelfde type. U gebruikt vijf ervan om het model te trainen en vervolgens test u het met het zesde formulier. Uw formulieren kunnen uit verschillende bestandstypen bestaan, maar moeten van hetzelfde type zijn als het document. U kunt voor deze quickstart een [set voorbeeldgegevens](https://go.microsoft.com/fwlink/?linkid=2090451) gebruiken. Upload de trainingsbestanden naar de hoofdmap van een Blob Storage-container in een Azure Storage-account met een standaardprestatielaag. U kunt de testbestanden in een afzonderlijke map plaatsen.
+- Een set van minimaal zes formulieren van hetzelfde type. U gebruikt vijf ervan om het model te trainen en vervolgens test u het met het zesde formulier. Uw formulieren kunnen uit verschillende bestandstypen bestaan, maar moeten van hetzelfde type zijn als het document. U kunt een [voorbeeldgegevensverzameling](https://go.microsoft.com/fwlink/?linkid=2090451) gebruiken voor deze quickstart (download en extraheer *sample_data.zip*). Upload de trainingsbestanden naar de hoofdmap van een Blob Storage-container in een Azure Storage-account met een standaardprestatielaag. U kunt de testbestanden in een afzonderlijke map plaatsen.
 
 ## <a name="create-a-form-recognizer-resource"></a>Een Form Recognizer-resource maken
 

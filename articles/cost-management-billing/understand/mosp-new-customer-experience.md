@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: banders
-ms.openlocfilehash: fce0ca7df3851aa0e96b6ee630a4a1b0b85eb070
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 0b3cf0c705048d37d422d62b77dc7d94c5ae13bd
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371739"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149392"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>Aan de slag met uw bijgewerkte Azure-factureringsaccount
 
@@ -104,8 +104,8 @@ Als u API’s voor kostenbeheer of facturering gebruikt voor het uitvoeren van q
 
 |API | Wijzigingen  |
 |---------|---------|
-|[Factureringsaccounts - Weergeven](https://docs.microsoft.com/rest/api/billing/2019-10-01-preview/billingaccounts/list) | In de API ‘Factureringsaccounts - Weergeven’ heeft uw oude factureringsaccount **MicrosoftOnlineServiceProgram** als agreementType. Uw nieuwe factureringsaccount heeft **MicrosoftCustomerAgreement** als agreementType. Als u een afhankelijkheid van agreementType opneemt, werk deze dan bij. |
-|[Facturen - Weergeven per factureringsabonnement](https://docs.microsoft.com/rest/api/billing/2019-10-01-preview/invoices/listbybillingsubscription)     | Deze API retourneert alleen facturen die waren gegenereerd voordat uw account werd bijgewerkt. U moet de API [Facturen - Weergeven per factureringsaccount](https://docs.microsoft.com/rest/api/billing/2019-10-01-preview/invoices/listbybillingaccount) gebruiken om facturen op te halen die in uw nieuwe factureringsaccount worden gegenereerd. |
+|[Factureringsaccounts - Weergeven](/rest/api/billing/2019-10-01-preview/billingaccounts/list) | In de API ‘Factureringsaccounts - Weergeven’ heeft uw oude factureringsaccount **MicrosoftOnlineServiceProgram** als agreementType. Uw nieuwe factureringsaccount heeft **MicrosoftCustomerAgreement** als agreementType. Als u een afhankelijkheid van agreementType opneemt, werk deze dan bij. |
+|[Facturen - Weergeven per factureringsabonnement](/rest/api/billing/2019-10-01-preview/invoices/listbybillingsubscription)     | Deze API retourneert alleen facturen die waren gegenereerd voordat uw account werd bijgewerkt. U moet de API [Facturen - Weergeven per factureringsaccount](/rest/api/billing/2019-10-01-preview/invoices/listbybillingaccount) gebruiken om facturen op te halen die in uw nieuwe factureringsaccount worden gegenereerd. |
 
 ## <a name="additional-information"></a>Aanvullende informatie
 

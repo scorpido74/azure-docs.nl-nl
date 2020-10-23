@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: c46d977b6ce4eaa62aefc6874ce2b855a4711670
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efca190f3dad1c0a323aa56ffd68b8b2597b5862
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317509"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370216"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Problemen met Azure AD-connectiviteit oplossen
 In dit artikel wordt uitgelegd hoe connectiviteit tussen Azure AD Connect en Azure AD werkt en hoe u verbindings problemen kunt oplossen. Deze problemen worden hoogstwaarschijnlijk gezien in een omgeving met een proxy server.
@@ -186,7 +186,7 @@ De verificatie is voltooid, maar er is een verificatie probleem opgetreden in az
 </div>
 
 ### <a name="azure-ad-global-admin-role-needed"></a>Globale beheerdersrol van Azure AD vereist
-De verificatie van de gebruiker is voltooid. Aan de gebruiker is echter geen globale beheerdersrol toegewezen. Zo [kunt u de rol van globale beheerder toewijzen](../users-groups-roles/directory-assign-admin-roles.md) aan de gebruiker.
+De verificatie van de gebruiker is voltooid. Aan de gebruiker is echter geen globale beheerdersrol toegewezen. Zo [kunt u de rol van globale beheerder toewijzen](../roles/permissions-reference.md) aan de gebruiker.
 
 <div id="privileged-identity-management">
 <!--

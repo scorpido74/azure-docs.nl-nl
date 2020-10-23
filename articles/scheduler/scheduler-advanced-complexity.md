@@ -9,12 +9,12 @@ ms.reviewer: klam, estfan
 ms.suite: infrastructure-services
 ms.topic: article
 ms.date: 11/14/2018
-ms.openlocfilehash: b85932bf0d4fd080afadef2bc28d6a218b2d627a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a74240e3f116121c0aaddd11c186e6e674ea26a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78898591"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368176"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>Geavanceerde schema's en herhalingen maken voor taken in azure scheduler
 
@@ -54,11 +54,11 @@ In dit artikel worden deze scenario's later uitvoerig beschreven.
 
 Voer de volgende stappen uit om een basis schema te maken met de [Azure scheduler rest API](/rest/api/scheduler):
 
-1. Registreer uw Azure-abonnement bij een resource provider met behulp van de [registratie bewerking-Resource Manager rest API](https://docs.microsoft.com/rest/api/resources/providers). De provider naam voor de Azure Scheduler-service is **micro soft. scheduler**. 
+1. Registreer uw Azure-abonnement bij een resource provider met behulp van de [registratie bewerking-Resource Manager rest API](/rest/api/resources/providers). De provider naam voor de Azure Scheduler-service is **micro soft. scheduler**. 
 
-1. Maak een taak verzameling met behulp van de [bewerking voor het maken of bijwerken van taak verzamelingen](https://docs.microsoft.com/rest/api/scheduler/jobcollections) in de planner rest API. 
+1. Maak een taak verzameling met behulp van de [bewerking voor het maken of bijwerken van taak verzamelingen](/rest/api/scheduler/jobcollections) in de planner rest API. 
 
-1. Een taak maken met behulp van de [bewerking voor het maken of bijwerken van taken](https://docs.microsoft.com/rest/api/scheduler/jobs/createorupdate). 
+1. Een taak maken met behulp van de [bewerking voor het maken of bijwerken van taken](/rest/api/scheduler/jobs/createorupdate). 
 
 ## <a name="job-schema-elements"></a>Taak schema-elementen
 
@@ -68,7 +68,7 @@ Deze tabel bevat een overzicht op hoog niveau voor de belangrijkste JSON-element
 |---------|----------|-------------|
 | **startTime** | Nee | Een DateTime-teken reeks waarde in [ISO 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601) die aangeeft wanneer de taak voor het eerst in een basis schema wordt gestart. <p>Voor complexe schema's wordt de taak niet eerder gestart dan **StartTime**. | 
 | **optreden** | Nee | De regels voor het terugkeer patroon voor wanneer de taak wordt uitgevoerd. Het object **recurrence** ondersteunt deze elementen: **frequentie**, **interval**, **planning**, **aantal**en **EndTime**. <p>Als u het element **recurrence** gebruikt, moet u ook het element **Frequency** gebruiken, terwijl andere **terugkeer** elementen optioneel zijn. |
-| **ingang** | Ja, wanneer u **terugkeer patroon** gebruikt | De tijds eenheid tussen exemplaren en ondersteunt deze waarden: ' minute ', ' hour ', ' Day ', ' week ', ' month ' en ' Year ' | 
+| **frequency** | Ja, wanneer u **terugkeer patroon** gebruikt | De tijds eenheid tussen exemplaren en ondersteunt deze waarden: ' minute ', ' hour ', ' Day ', ' week ', ' month ' en ' Year ' | 
 | **bereik** | Nee | Een positief geheel getal dat het aantal tijds eenheden tussen exemplaren bepaalt op basis van de **frequentie**. <p>Als **interval** bijvoorbeeld 10 is en de **frequentie** is ' week ', wordt de taak elke 10 weken herhaald. <p>Dit is het hoogste aantal intervallen voor elke frequentie: <p>-18 maanden <br>-78 weken <br>-548 dagen <br>-Voor uren en minuten is het bereik 1 <= <*interval*> <= 1000. | 
 | **planning** | Nee | Hiermee worden wijzigingen in het terugkeer patroon gedefinieerd op basis van de opgegeven minutes-tekens, uur-tekens, dagen van de week en dagen van de maand | 
 | **aantal** | Nee | Een positief geheel getal dat het aantal keren opgeeft dat de taak wordt uitgevoerd voordat wordt voltooid. <p>Als bijvoorbeeld een dagelijkse taak het **aantal** heeft ingesteld op 7 en de begin datum maandag is, wordt de taak uitgevoerd op zondag. Als de begin datum al is verstreken, wordt de eerste uitvoering berekend op basis van de aanmaak tijd. <p>Zonder **EndTime** of **Count**wordt de taak oneindig uitgevoerd. U kunt niet zowel **Count** als **EndTime** in dezelfde taak gebruiken, maar de regel die het eerst eindigt, wordt gehonoreerd. | 

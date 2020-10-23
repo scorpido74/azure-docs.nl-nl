@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
-ms.openlocfilehash: 6258baf37d00d35da3b7c95519caabdfcaa34b2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed5768e89482d32bb140e9ba7064de2d20809892
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88192643"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148717"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>Optimalisatie van grote bestanden downloaden met Azure CDN
 
@@ -44,10 +44,10 @@ Nadat het segment bij de CDN-rand arriveert, wordt het in de cache opgeslagen en
 
 Zie [RFC 7233](https://tools.ietf.org/html/rfc7233)voor meer informatie over de aanvraag voor byte bereik.
 
-De CDN slaat de segmenten op wanneer ze worden ontvangen. Het hele bestand hoeft niet in de cache te worden opgeslagen in de CDN-cache. Volgende aanvragen voor het bestand of de byte bereik worden aangeboden vanuit de CDN-cache. Als niet alle segmenten in de cache zijn opgeslagen in het CDN, wordt prefetch gebruikt om segmenten van de oorsprong aan te vragen. Deze optimalisatie is afhankelijk van de mogelijkheid van de oorspronkelijke server om aanvragen voor byte bereik te ondersteunen; Als de oorspronkelijke server geen aanvragen voor byte bereik ondersteunt, is deze optimalisatie niet effectief. 
+De CDN slaat de segmenten op wanneer ze worden ontvangen. Het hele bestand hoeft niet in de cache te worden opgeslagen in de CDN-cache. Volgende aanvragen voor het bestand of de byte bereik worden aangeboden vanuit de CDN-cache. Als niet alle segmenten in de cache zijn opgeslagen in het CDN, wordt prefetch gebruikt om segmenten van de oorsprong aan te vragen. Deze optimalisatie is afhankelijk van de mogelijkheid van de oorspronkelijke server om aanvragen voor byte bereik te ondersteunen; Als de oorspronkelijke server geen aanvragen voor byte bereik ondersteunt, zullen aanvragen om gegevens te downloaden die groter zijn dan de grootte van 8mb, mislukken. 
 
 ### <a name="conditions-for-large-file-optimization"></a>Voor waarden voor de optimalisatie van grote bestanden
-De functies voor de optimalisatie van grote bestanden voor **Azure CDN standaard van micro soft** zijn standaard ingeschakeld wanneer u het optimalisatie type algemene Internet levering gebruikt. Er zijn geen limieten voor de maximale bestands grootte.
+Er zijn geen limieten voor de maximale bestands grootte.
 
 
 ## <a name="optimize-for-delivery-of-large-files-with-azure-cdn-from-verizon"></a>Optimaliseer voor het leveren van grote bestanden met Azure CDN van Verizon

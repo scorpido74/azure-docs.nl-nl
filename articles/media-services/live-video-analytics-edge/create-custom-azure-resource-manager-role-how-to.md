@@ -3,12 +3,12 @@ title: Aangepaste Azure Resource Manager rol maken en toewijzen aan Service-Prin
 description: Dit artikel bevat richt lijnen voor het maken van aangepaste Azure Resource Manager-rollen en het toewijzen van de service-principal voor live video Analytics op IoT Edge met behulp van Azure CLI.
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: a780ecbbf2530b15984c596281c4aa7e4f5dd520
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40bf0f60a718d512e02481d977b8208112ed1a55
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90526575"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425732"
 ---
 # <a name="create-custom-azure-resource-manager-role-and-assign-to-service-principal"></a>Aangepaste Azure Resource Manager rol maken en toewijzen aan Service-Principal
 
@@ -230,7 +230,7 @@ Zoek naar de "roleDefinitionName" en controleer of de waarde ervan is ingesteld 
 
 Hiermee wordt bevestigd dat de aangepaste gebruikersrol is gekoppeld aan de service-principal die wordt gebruikt voor de toepassing.
 
-### <a name="test-the-service-principal-rbac"></a>De Service-Principal RBAC testen  
+### <a name="test-the-service-principal-access-control"></a>De Service-Principal Access Control testen
 
 1. Meld u aan met behulp van de Service-Principal. Daarom hebben we 3 stukjes informatie nodig voor de Azure Active Directory om ons het juiste toegangs token te geven dat we kunnen verkrijgen van de uitvoer van de stap [Service-Principal maken](#create-service-principal) :
     1. AadClientID 

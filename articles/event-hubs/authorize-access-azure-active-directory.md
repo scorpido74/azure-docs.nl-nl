@@ -3,15 +3,15 @@ title: Toegang autoriseren met behulp van Azure Active Directory
 description: In dit artikel vindt u informatie over het verlenen van toegang tot Event Hubs-resources met behulp van Azure Active Directory.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 48d2bc1aa3389459077bb7b8df0ac63ce1e1a438
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f69c3e5136ab47de4683cc65c32054d067dde13
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91566258"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332396"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Toegang tot Event Hubs resources autoriseren met behulp van Azure Active Directory
-Azure Event Hubs ondersteunt het gebruik van Azure Active Directory (Azure AD) om aanvragen voor Event Hubs bronnen goed te keuren. Met Azure AD kunt u gebruikmaken van op rollen gebaseerd toegangs beheer (RBAC) om machtigingen toe te kennen aan een beveiligingsprincipal, die een gebruiker of een service-principal van de toepassing is. Zie [informatie over de verschillende rollen](../role-based-access-control/overview.md)voor meer informatie over rollen en roltoewijzingen.
+Azure Event Hubs ondersteunt het gebruik van Azure Active Directory (Azure AD) om aanvragen voor Event Hubs bronnen goed te keuren. Met Azure AD kunt u Azure RBAC (op rollen gebaseerd toegangs beheer) gebruiken om machtigingen te verlenen aan een beveiligingsprincipal, die een gebruiker of een service-principal van de toepassing is. Zie [informatie over de verschillende rollen](../role-based-access-control/overview.md)voor meer informatie over rollen en roltoewijzingen.
 
 ## <a name="overview"></a>Overzicht
 Wanneer een beveiligingsprincipal (een gebruiker of een toepassing) probeert toegang te krijgen tot een Event Hubs resource, moet de aanvraag worden geautoriseerd. Met Azure AD is toegang tot een resource een proces dat uit twee stappen bestaat. 
@@ -39,7 +39,7 @@ Azure biedt de volgende ingebouwde rollen van Azure voor het machtigen van toega
 | [Afzender van Azure Event Hubs gegevens](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender) | Gebruik deze rol om de toegang tot Event Hubs resources te verlenen. |
 | [Gegevens ontvanger van Azure Event Hubs](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver) | Gebruik deze rol om de verbruiks-en ontvangst toegang tot Event Hubs resources te verlenen. |
 
-Zie [schema register rollen](schema-registry-overview.md#role-based-access-control)voor ingebouwde rollen in het schema register.
+Zie [schema register rollen](schema-registry-overview.md#azure-role-based-access-control)voor ingebouwde rollen in het schema register.
 
 ## <a name="resource-scope"></a>Resourcebereik 
 Voordat u een Azure-rol toewijst een beveiligingsprincipal, moet u het toegangsbereik bepalen dat de beveiligingsprincipal moet hebben. Uit best practices blijkt dat het het beste is om het nauwst mogelijke bereik toe te wijzen.
@@ -73,7 +73,7 @@ Zie voor meer informatie over hoe ingebouwde rollen worden gedefinieerd [begrijp
 
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over het toewijzen van een ingebouwde Azure-rol aan een beveiligingsprincipal. Zie [toegang tot Event hubs resources verifiëren met behulp van Azure Active Directory](authenticate-application.md).
-- Meer informatie [over het maken van aangepaste rollen met RBAC](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/CustomRole).
+- Meer informatie [over het maken van aangepaste rollen met Azure RBAC](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/CustomRole).
 - Meer informatie [over het gebruik van Azure Active Directory met eh](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/AzureEventHubsSDK)
 
 Raadpleeg de volgende verwante artikelen:

@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: 1d21c7ed93ac2ce2ab61282707d57fbf43e0b71a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 110d4a3219b4898fa6f138e29f1112d7134f674c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81261071"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340084"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Metrische waarschuwingen met dynamische drempel waarden in Azure Monitor
 
@@ -98,7 +98,7 @@ Voor bestaande resources met voldoende metrische gegevens kunnen dynamische drem
 
 ## <a name="dynamic-thresholds-best-practices"></a>Aanbevolen procedures voor dynamische drempel waarden
 
-Dynamische drempel waarden kunnen worden toegepast op elk platform of aangepaste metrische gegevens in Azure Monitor en is ook afgestemd op de algemene metrische gegevens van de toepassing en de infra structuur.
+Dynamische drempel waarden kunnen worden toegepast op de meeste platformen en aangepaste metrische gegevens in Azure Monitor en is ook afgestemd op de algemene metrische gegevens van de toepassing en infra structuur.
 De volgende items zijn aanbevolen procedures voor het configureren van waarschuwingen voor sommige van deze metrische gegevens met behulp van dynamische drempel waarden.
 
 ### <a name="dynamic-thresholds-on-virtual-machine-cpu-percentage-metrics"></a>Dynamische drempel waarden voor metrische gegevens van CPU-percentage van virtuele machine

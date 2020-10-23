@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 5c3f87620c8a2a2d2438d7a5630541c0f76f9f17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e0a11ef72698d749349cce8dd7eff73e5284a86
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575568"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122463"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>Zelf studie: export volgorde voor Azure Data Box maken (preview)
 
@@ -164,7 +164,7 @@ Als u **XML-bestand gebruiken**selecteert, kunt u specifieke containers en blobs
 2. Selecteer **+ container** om een container te maken.
     ![Scherm afbeelding van de sectie containers.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-02.png)
 
-3. Voeg op het tabblad **nieuwe container** die aan de rechter kant van de Azure Portal, een naam voor de container toe. De naam moet een kleine letter zijn en u kunt cijfers en streepjes '-' bevatten. Selecteer vervolgens het **niveau Public Access** in de vervolg keuzelijst. U wordt aangeraden **particuliere (niet-anonieme toegang)** te kiezen om te voor komen dat anderen toegang krijgen tot uw gegevens. Zie [toegangs machtigingen voor containers](../storage/blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs)voor meer informatie over toegangs niveaus voor containers.
+3. Voeg op het tabblad **nieuwe container** die aan de rechter kant van de Azure Portal, een naam voor de container toe. De naam moet een kleine letter zijn en u kunt cijfers en streepjes '-' bevatten. Selecteer vervolgens het **niveau Public Access** in de vervolg keuzelijst. U wordt aangeraden **particuliere (niet-anonieme toegang)** te kiezen om te voor komen dat anderen toegang krijgen tot uw gegevens. Zie [toegangs machtigingen voor containers](../storage/blobs/anonymous-read-access-configure.md#set-the-public-access-level-for-a-container)voor meer informatie over toegangs niveaus voor containers.
 
    ![Scherm afbeelding van het tabblad nieuwe container met de optie privé (geen anonieme toegang) geselecteerd.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-04.png)
 

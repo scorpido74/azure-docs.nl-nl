@@ -3,12 +3,12 @@ title: Back-ups maken van virtuele Azure-machines in een Recovery Services kluis
 description: Hierin wordt beschreven hoe u back-ups maakt van virtuele Azure-machines in een Recovery Services kluis met behulp van de Azure Backup
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 28cc995afc131e747314032c1363f73531e6915c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6fe2f629742e15e62dfc13106e92623a4b45add
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986500"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172746"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Back-ups maken van virtuele Azure-machines in een Recovery Services kluis
 
@@ -37,6 +37,8 @@ Daarnaast zijn er een aantal dingen die u in bepaalde omstandigheden mogelijk mo
 
 * **Installeer de VM-agent op de VM**: Azure backup maakt back-ups van virtuele Azure-machines door een uitbrei ding te installeren in de Azure VM-agent die op de computer wordt uitgevoerd. Als uw virtuele machine is gemaakt op basis van een installatie kopie van Azure Marketplace, wordt de agent geïnstalleerd en uitgevoerd. Als u een aangepaste VM maakt of een on-premises machine migreert, moet u [de agent mogelijk hand matig installeren](#install-the-vm-agent).
 
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
+
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
 ### <a name="modify-storage-replication"></a>Opslag replicatie wijzigen
@@ -45,7 +47,7 @@ Standaard gebruiken kluizen de [geo-redundante opslag (GRS)](../storage/common/s
 
 * Als de kluis uw primaire back-upmechanisme is, raden we u aan GRS te gebruiken.
 * U kunt [lokaal redundante opslag (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) gebruiken voor een goedkopere optie.
-* [Zone-redundante opslag (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) repliceert uw gegevens in [beschikbaarheidszones](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones), waarbij gegevenslocatie en gegevenstolerantie in dezelfde regio worden gegarandeerd.
+* [Zone-redundante opslag (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) repliceert uw gegevens in [beschikbaarheidszones](../availability-zones/az-overview.md#availability-zones), waarbij gegevenslocatie en gegevenstolerantie in dezelfde regio worden gegarandeerd.
 
 Wijzig het type opslag replicatie als volgt:
 
@@ -147,7 +149,7 @@ De **overdracht van gegevens naar de kluis** fase kan meerdere dagen duren, afha
 
 De taak status kan variëren, afhankelijk van de volgende scenario's:
 
-**Snapshot** | **Gegevens overdragen aan de kluis** | **Taak status**
+**Momentopname** | **Gegevens overdragen aan de kluis** | **Taak status**
 --- | --- | ---
 Voltooid | Actief | Actief
 Voltooid | Overgeslagen | Voltooid

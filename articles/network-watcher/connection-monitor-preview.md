@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 31733abc945fe7c751f786649fb05b753a7c243d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80934dca73d7f8a205c62a49c418828cab1820e7
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91408818"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123729"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>Bewaking van netwerk connectiviteit met verbindings monitor (preview-versie)
 
@@ -143,9 +143,7 @@ Verbindings monitors hebben de volgende schaal limieten:
 * Maximum aantal verbindings monitors per abonnement per regio: 100
 * Maximum aantal test groepen per verbindings monitor: 20
 * Maximum aantal bronnen en bestemmingen per verbindings monitor: 100
-* Maximum aantal test configuraties per verbindings monitor: 
-    * 20 via ARMClient
-    * 2 via de Azure Portal
+* Maximum aantal test configuraties per verbindings monitor: 20
 
 ## <a name="analyze-monitoring-data-and-set-alerts"></a>Bewakings gegevens analyseren en waarschuwingen instellen
 
@@ -273,7 +271,7 @@ In verbindings monitors die zijn gemaakt vóór de ervaring van de verbindings m
 
 Wanneer u metrische gegevens gebruikt, stelt u het resource type in als micro soft. Network/networkWatchers/connectionMonitors
 
-| Gegevens | Weergavenaam | Eenheid | Aggregatietype | Beschrijving | Dimensies |
+| Gegevens | Weergavenaam | Eenheid | Aggregatietype | Beschrijving | Afmetingen |
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent | % Tests mislukt | Percentage | Average | Het percentage van de connectiviteits controle tests is mislukt. | Geen dimensies |
 | AverageRoundtripMs | Gem. retour tijd (MS) | Milliseconden | Average | Gemiddelde netwerk-RTT voor connectiviteits controle tests die zijn verzonden tussen de bron en de bestemming. |             Geen dimensies |

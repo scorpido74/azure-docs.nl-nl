@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: e8de33e7417ab6421792d341474c320a5f63423b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50abfec19295f80fa79864fedb31eadd31dd4d69
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803820"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203667"
 ---
 # <a name="troubleshoot"></a>Problemen oplossen
 
@@ -88,7 +88,7 @@ De video kwaliteit kan worden aangetast door netwerk kwaliteit of de ontbrekende
 
 ## <a name="video-recorded-with-mrc-does-not-reflect-the-quality-of-the-live-experience"></a>Video die is opgenomen in MRC weerspiegelt niet de kwaliteit van de Live-ervaring
 
-Een video kan worden vastgelegd op HoloLens via [Mixed Reality Capture (MRC)](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers). De resulterende video heeft echter een slechterere kwaliteit dan de Live-ervaring om twee redenen:
+Een video kan worden vastgelegd op HoloLens via [Mixed Reality Capture (MRC)](/windows/mixed-reality/mixed-reality-capture-for-developers). De resulterende video heeft echter een slechterere kwaliteit dan de Live-ervaring om twee redenen:
 * De video weergave snelheid wordt beperkt tot 30 Hz, in tegens telling tot 60 Hz.
 * De video-installatie kopieën worden niet door de verwerkings stap voor het [vertraagd](../overview/features/late-stage-reprojection.md) verwerken van taken uitgevoerd, dus de video lijkt choppier te zijn.
 

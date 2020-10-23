@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: a74d9347d0050a2970e698ae616eb09fe32bdc5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b86d0c189bcf0687a703f2338188df2090feaf0
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86135452"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368023"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Capaciteit en schaling plannen voor nood herstel van VMware naar Azure
 
@@ -20,7 +20,7 @@ Gebruik dit artikel om capaciteit en schaal baarheid te plannen wanneer u on-pre
 
 ## <a name="how-do-i-start-capacity-planning"></a>Hoe kan ik u de capaciteits planning te plannen?
 
-Als u meer wilt weten over Azure Site Recovery infrastructuur vereisten, verzamelt u informatie over uw replicatie omgeving door [Azure site Recovery Deployment planner](https://aka.ms/asr-deployment-planner-doc) voor VMware-replicatie uit te voeren. Zie voor meer informatie [over Site Recovery Deployment planner voor VMware naar Azure](site-recovery-deployment-planner.md). 
+Als u meer wilt weten over Azure Site Recovery infrastructuur vereisten, verzamelt u informatie over uw replicatie omgeving door [Azure site Recovery Deployment planner](./site-recovery-deployment-planner.md) voor VMware-replicatie uit te voeren. Zie voor meer informatie [over Site Recovery Deployment planner voor VMware naar Azure](site-recovery-deployment-planner.md). 
 
 Site Recovery Deployment Planner biedt een rapport met volledige informatie over compatibele en niet-compatibele Vm's, schijven per VM en gegevens verloop per schijf. Het hulp programma geeft ook een overzicht van de vereisten voor de netwerk bandbreedte om te voldoen aan de doel-RPO en de Azure-infra structuur die is vereist voor een succes volle replicatie en testfailover.
 

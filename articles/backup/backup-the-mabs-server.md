@@ -1,16 +1,16 @@
 ---
-title: Back-up maken van de MABS-server
+title: Een back-up maken van de MABS-server
 description: Meer informatie over het maken van een back-up van de Microsoft Azure Backup-Server (MABS).
 ms.topic: conceptual
 ms.date: 09/24/2020
-ms.openlocfilehash: de62f0f57273ad7bd77df917d909627819165adb
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 81a6ee005e15b1d7ab7b11a938b8ab14143818f4
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946706"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172116"
 ---
-# <a name="back-up-the-mabs-server"></a>Back-up maken van de MABS-server
+# <a name="back-up-the-mabs-server"></a>Een back-up maken van de MABS-server
 
 Om ervoor te zorgen dat gegevens kunnen worden hersteld als Microsoft Azure Backup Server (MABS) mislukt, hebt u een strategie nodig voor het maken van een back-up van de MABS-server. Als er geen back-up van wordt gemaakt, moet u deze hand matig opnieuw bouwen na een storing en kunnen herstel punten op basis van schijven niet worden hersteld. U kunt back-ups maken van MABS-servers door een back-up te maken van de MABS-data base.
 
@@ -184,9 +184,9 @@ Als de MABS-server nog steeds operationeel is en de opslag groep intact is (zoal
 
 U kunt een back-up maken van de MABS-Data Base op een lokale schijf met een eigen SQL Server back-up, onafhankelijk van MABS.
 
-- Bekijk een [overzicht](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases) van de back-up van SQL Server.
+- Bekijk een [overzicht](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases) van de back-up van SQL Server.
 
-- [Meer informatie](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service) over back-ups maken van SQL Server naar de cloud.
+- [Meer informatie](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service) over back-ups maken van SQL Server naar de cloud.
 
 ## <a name="back-up-to-a-share-protected-by-mabs"></a>Back-up maken naar een share die wordt beveiligd door MABS
 
@@ -238,9 +238,9 @@ Deze back-upoptie gebruikt systeem eigen SQL om een back-up te maken van de MABS
 
 U kunt een back-up maken van de MABS-Data Base op dezelfde manier als andere SQL Server-data bases met SQL Server systeem eigen back-up.
 
-- Bekijk een [overzicht](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases) van de back-up van SQL Server.
+- Bekijk een [overzicht](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases) van de back-up van SQL Server.
 
-- [Meer informatie](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service) over back-ups maken van SQL Server naar de cloud.
+- [Meer informatie](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service) over back-ups maken van SQL Server naar de cloud.
 
 ### <a name="recover-the-mabs-database"></a>De MABS-data base herstellen
 

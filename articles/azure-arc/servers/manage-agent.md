@@ -1,14 +1,14 @@
 ---
 title: De agent voor Azure Arc-servers beheren
 description: In dit artikel worden de verschillende beheer taken beschreven die u normaal gesp roken uitvoert tijdens de levens cyclus van de computer agent die verbonden is met Azure Arc ingeschakeld.
-ms.date: 09/09/2020
+ms.date: 10/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5161bd097809f1feb6f84b07e07c63d06d0a9c94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 184b0425b956232b4485047cafb00a7ced21c7dd
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91254989"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371423"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>De verbonden machine agent beheren en onderhouden
 
@@ -138,7 +138,7 @@ Acties van de [yum](https://access.redhat.com/articles/yum-cheat-sheet) -opdrach
     zypper update
     ```
 
-Acties van de [Zypper](https://en.opensuse.org/Portal:Zypper) -opdracht, zoals het installeren en verwijderen van pakketten, worden geregistreerd in het `/var/log/zypper.log` logboek bestand. 
+Acties van de [Zypper](https://en.opensuse.org/Portal:Zypper) -opdracht, zoals het installeren en verwijderen van pakketten, worden geregistreerd in het `/var/log/zypper.log` logboek bestand.
 
 ## <a name="about-the-azcmagent-tool"></a>Over het hulp programma Azcmagent
 
@@ -148,9 +148,11 @@ Het hulp programma Azcmagent (Azcmagent.exe) wordt gebruikt voor het configurere
 
 * De verbinding met de computer met Azure Arc **verbreken**
 
-* **Opnieuw verbinding maken** : om opnieuw verbinding te maken met een niet-verbonden machine met Azure Arc
+* De agent status **weer geven en** de bijbehorende configuratie-eigenschappen (naam van de resource groep, abonnements-id, versie enzovoort), die u kan helpen bij het oplossen van een probleem met de agent. Neem de `-j` para meter op om de resultaten in JSON-indeling uit te voeren.
 
-* De agent status **weer geven en** de bijbehorende configuratie-eigenschappen (naam van de resource groep, abonnements-id, versie enzovoort), die u kan helpen bij het oplossen van een probleem met de agent.
+* **Logboeken** : maakt een zip-bestand in de huidige map met logboeken die u kan helpen bij het oplossen van problemen.
+
+* **Versie** : toont de versie van de verbonden machine agent.
 
 * **-h of--Help** : toont beschik bare opdracht regel parameters
 
@@ -158,7 +160,7 @@ Het hulp programma Azcmagent (Azcmagent.exe) wordt gebruikt voor het configurere
 
 * **-v of-uitgebreid** -uitgebreide logboek registratie inschakelen
 
-U kunt een **verbinding maken**, de verbinding **verbreken**en hand matig **opnieuw verbinding maken** terwijl u zich interactief aanmeldt, of automatiseren met dezelfde service-principal die u hebt gebruikt om meerdere agents uit te voeren of met een [toegangs token](../../active-directory/develop/access-tokens.md)van het micro soft Identity platform. Raadpleeg het volgende [artikel](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) om een service-principal te maken als u geen Service-Principal hebt gebruikt om de machine te registreren met servers die geschikt zijn voor Azure Arc.
+U kunt hand matig **verbinding maken** en de verbinding **verbreken** terwijl u zich interactief aanmeldt, of automatiseren met dezelfde service-principal die u hebt gebruikt om meerdere agents uit te voeren of met een [toegangs token](../../active-directory/develop/access-tokens.md)van het micro soft Identity platform. Raadpleeg het volgende [artikel](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) om een service-principal te maken als u geen Service-Principal hebt gebruikt om de machine te registreren met servers die geschikt zijn voor Azure Arc.
 
 >[!NOTE]
 >U moet toegangs machtigingen voor het *hoofd* hebben op Linux-machines om **azcmagent**uit te voeren.
@@ -198,28 +200,7 @@ Als u de verbinding wilt verbreken met een toegangs token, voert u de volgende o
 
 Voer de volgende opdracht uit als u de verbinding wilt verbreken met de referenties die zijn toegevoegd aan een verhoogde bevoegdheid (interactief):
 
-`azcmagent disconnect --tenant-id <tenantID>`
-
-### <a name="reconnect"></a>Opnieuw verbinden
-
-> [!WARNING]
-> De `reconnect` opdracht is afgeschaft en mag niet worden gebruikt. De opdracht wordt verwijderd in een toekomstige agent versie en bestaande agents kunnen de aanvraag voor opnieuw verbinden niet volt ooien. Verbreek [disconnect](#disconnect) de verbinding met uw machine in plaats daarvan opnieuw [verbinding te maken](#connect) .
-
-Met deze para meter wordt de reeds geregistreerde of verbonden computer opnieuw verbonden met servers met Azure Arc ingeschakeld. Dit kan nodig zijn als de machine is uitgeschakeld, ten minste 45 dagen voordat het certificaat verloopt. Deze para meter gebruikt de beschik bare verificatie opties om nieuwe referenties op te halen die overeenkomen met de Azure Resource Manager bron van deze computer.
-
-Voor deze opdracht zijn hogere bevoegdheden vereist dan de [met Azure verbonden computer](agent-overview.md#required-permissions) voorbereidings functie.
-
-Als u opnieuw verbinding wilt maken met behulp van een Service-Principal, voert u de volgende opdracht uit:
-
-`azcmagent reconnect --service-principal-id <serviceprincipalAppID> --service-principal-secret <serviceprincipalPassword> --tenant-id <tenantID>`
-
-Als u opnieuw verbinding wilt maken met behulp van een toegangs token, voert u de volgende opdracht uit:
-
-`azcmagent reconnect --access-token <accessToken>`
-
-Voer de volgende opdracht uit om opnieuw verbinding te maken met uw referenties met verhoogde bevoegdheden (interactief):
-
-`azcmagent reconnect --tenant-id <tenantID>`
+`azcmagent disconnect`
 
 ## <a name="remove-the-agent"></a>De agent verwijderen
 
@@ -344,4 +325,4 @@ sudo azcmagent_proxy remove
 
 * Meer informatie over het beheren van uw machine met [Azure Policy](../../governance/policy/overview.md), voor zaken als VM- [gast configuratie](../../governance/policy/concepts/guest-configuration.md), moet u controleren of de computer rapporteert aan de verwachte log Analytics-werk ruimte, de bewaking inschakelen met [Azure monitor met vm's](../../azure-monitor/insights/vminsights-enable-policy.md)en nog veel meer.
 
-* Meer informatie over de [log Analytics-agent](../../azure-monitor/platform/log-analytics-agent.md). De Log Analytics-agent voor Windows en Linux is vereist wanneer u bewakings gegevens van het besturings systeem en werk belasting wilt verzamelen, deze wilt beheren met Automation-runbooks of-functies zoals Updatebeheer, of om andere Azure-Services zoals [Azure Security Center](../../security-center/security-center-intro.md)te gebruiken.
+* Meer informatie over de [log Analytics-agent](../../azure-monitor/platform/log-analytics-agent.md). De Log Analytics-agent voor Windows en Linux is vereist wanneer u bewakings gegevens van het besturings systeem en werk belasting wilt verzamelen, deze wilt beheren met Automation-runbooks of-functies zoals Updatebeheer, of om andere Azure-Services zoals [Azure Security Center](../../security-center/security-center-introduction.md)te gebruiken.

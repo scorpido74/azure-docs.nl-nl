@@ -8,12 +8,12 @@ ms.author: sandeepu
 author: sandeeppujar
 ms.date: 04/30/2020
 ms.custom: device-developer
-ms.openlocfilehash: 34b767a2cc48c94fdb5c2db032321b9254bf4ce2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 770f6e56a669ab2d9b425a7a2879eeef5d37377b
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90017690"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123420"
 ---
 # <a name="connect-an-azure-sphere-device-to-your-azure-iot-central-application"></a>Een Azure Sphere-apparaat toevoegen aan uw Azure IoT Central-toepassing
 
@@ -21,7 +21,7 @@ ms.locfileid: "90017690"
 
 In dit artikel wordt beschreven hoe u een Azure Sphere apparaat (DevKit) verbindt met een Azure IoT Central-toepassing.
 
-Azure Sphere is een beveiligd, hoogwaardig toepassingsplatform met ingebouwde communicatie- en beveiligingsfuncties voor apparaten die met internet zijn verbonden. Het bevat een beveiligde, verbonden, Crossover microcontroller-eenheid (MCU), een aangepast Linux-besturings systeem op hoog niveau (OS) en een cloud-gebaseerde beveiligings service die continue, Hernieuw bare beveiliging biedt. Zie [Wat is Azure Sphere?](https://docs.microsoft.com/azure-sphere/product-overview/what-is-azure-sphere)voor meer informatie.
+Azure Sphere is een beveiligd, hoogwaardig toepassingsplatform met ingebouwde communicatie- en beveiligingsfuncties voor apparaten die met internet zijn verbonden. Het bevat een beveiligde, verbonden, Crossover microcontroller-eenheid (MCU), een aangepast Linux-besturings systeem op hoog niveau (OS) en een cloud-gebaseerde beveiligings service die continue, Hernieuw bare beveiliging biedt. Zie [Wat is Azure Sphere?](/azure-sphere/product-overview/what-is-azure-sphere)voor meer informatie.
 
 [Azure Sphere Development Kits](https://azure.microsoft.com/services/azure-sphere/get-started/) bieden alles wat u nodig hebt om te beginnen met het maken van prototypen en het ontwikkelen van Azure Sphere toepassingen. Azure IoT Central met Azure Sphere biedt een end-to-end stack voor een IoT-oplossing. Azure Sphere biedt de ondersteuning van het apparaat en IoT Central als een ' Zero-code ' beheerd IoT-toepassings platform.
 
@@ -38,7 +38,7 @@ U hebt de volgende resources nodig om de stappen in dit artikel uit te voeren:
 
 - Een Azure IoT Central-toepassing.
 - Visual Studio 2019, versie 16,4 of hoger.
-- Een [Azure Sphere MT3620 Development Kit van Seeed Studios](https://docs.microsoft.com/azure-sphere/hardware/mt3620-reference-board-design).
+- Een [Azure Sphere MT3620 Development Kit van Seeed Studios](/azure-sphere/hardware/mt3620-reference-board-design).
 
 > [!NOTE]
 > Als u nog geen fysiek apparaat hebt, gaat u na de stap eerste stap naar de laatste sectie om een gesimuleerd apparaat te proberen.

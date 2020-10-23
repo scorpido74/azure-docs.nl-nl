@@ -9,16 +9,16 @@ ms.author: magoedte
 ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ddd41756f0e373e3bf627a88f441512fe0db91b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ecd4330381db1f63a40e9ba5ff63108c6fa78fe
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187231"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205605"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>Problemen met Wijzigingen bijhouden en inventaris oplossen
 
-In dit artikel wordt beschreven hoe u problemen met Azure Automation Wijzigingen bijhouden en voorraad problemen oplost en oplost. Zie [overzicht van wijzigingen bijhouden en inventaris](../change-tracking.md)voor algemene informatie over wijzigingen bijhouden en inventarisatie.
+In dit artikel wordt beschreven hoe u problemen met Azure Automation Wijzigingen bijhouden en voorraad problemen oplost en oplost. Zie [overzicht van wijzigingen bijhouden en inventaris](../change-tracking/overview.md)voor algemene informatie over wijzigingen bijhouden en inventarisatie.
 
 ## <a name="windows"></a>Windows
 
@@ -108,11 +108,11 @@ Zie [probleem: u ziet geen Linux-gegevens](../../azure-monitor/platform/agent-li
 
 ##### <a name="log-analytics-agent-for-linux-not-configured-correctly"></a>Log Analytics-agent voor Linux is niet juist geconfigureerd
 
-De Log Analytics-agent voor Linux is mogelijk niet juist geconfigureerd voor de logboek-en opdracht regel-uitvoer verzameling met behulp van het hulp programma OMS-logboek verzamelaar. Zie [overzicht van wijzigingen bijhouden en inventarisatie](../change-tracking.md).
+De Log Analytics-agent voor Linux is mogelijk niet juist geconfigureerd voor de logboek-en opdracht regel-uitvoer verzameling met behulp van het hulp programma OMS-logboek verzamelaar. Zie [overzicht van wijzigingen bijhouden en inventarisatie](../change-tracking/overview.md).
 
 ##### <a name="fim-conflicts"></a>FIM-conflicten
 
-De FIM-functie van Azure Security Center kan de integriteit van uw Linux-bestanden onjuist valideren. Controleer of FIM operationeel is en correct is geconfigureerd voor Linux-bestands bewaking. Zie [overzicht van wijzigingen bijhouden en inventarisatie](../change-tracking.md).
+De FIM-functie van Azure Security Center kan de integriteit van uw Linux-bestanden onjuist valideren. Controleer of FIM operationeel is en correct is geconfigureerd voor Linux-bestands bewaking. Zie [overzicht van wijzigingen bijhouden en inventarisatie](../change-tracking/overview.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

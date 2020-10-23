@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: c580dd26c64a27b88b4416e85da101b78782013e
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: ee5a88dfcc3b4ab29cd3ad8c5ff7c4701d1fced6
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076977"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339710"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Besturings elementen voor adaptieve toepassingen gebruiken om de kwets bare Opper vlakken van uw computers te verminderen
 
@@ -52,7 +52,7 @@ Door lijsten met bekende veilige toepassingen te definiëren en waarschuwingen t
 |----|:----|
 |Releasestatus:|Algemeen verkrijgbaar (GA)|
 |Prijzen:|[Azure Defender voor servers](defender-for-servers-introduction.md) is vereist|
-|Ondersteunde machines:|![Ja ](./media/icons/yes-icon.png) Azure-en niet-Azure-machines met Windows en Linux<br>![Ja ](./media/icons/yes-icon.png) [Azure Arc](https://docs.microsoft.com/azure/azure-arc/) -machines|
+|Ondersteunde machines:|![Ja ](./media/icons/yes-icon.png) Azure-en niet-Azure-machines met Windows en Linux<br>![Ja ](./media/icons/yes-icon.png) [Azure Arc](../azure-arc/index.yml) -machines|
 |Vereiste rollen en machtigingen:|**Beveiligings lezers** en **lezers** rollen kunnen zowel groepen als de lijsten met bekende veilige toepassingen weer geven<br>**Inzender** -en **beveiligings beheerders** rollen kunnen zowel groepen bewerken als de lijsten met bekende veilige toepassingen|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Commerciële clouds<br>![Ja](./media/icons/yes-icon.png) Nationaal/onafhankelijk (Overheid van de VS, China, andere overheden)|
 |||
@@ -85,7 +85,7 @@ Selecteer de aanbeveling of open de pagina adaptieve toepassings besturings elem
     - **Geen aanbeveling** : machines zonder een gedefinieerde lijst met toegestane toepassingen en die de functie niet ondersteunen. Uw computer kan om de volgende redenen op dit tabblad staan:
       - Er ontbreekt een Log Analytics agent
       - De Log Analytics-agent verzendt geen gebeurtenissen
-      - Het is een Windows-computer met een reeds bestaand [AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview) -beleid ingeschakeld door ofwel een GPO ofwel een lokaal beveiligings beleid
+      - Het is een Windows-computer met een reeds bestaand [AppLocker](/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview) -beleid ingeschakeld door ofwel een GPO ofwel een lokaal beveiligings beleid
 
       > [!TIP]
       > Security Center moet ten minste twee weken aan gegevens hebben om de unieke aanbevelingen per groep machines te definiëren. Computers die onlangs zijn gemaakt of die deel uitmaken van abonnementen die alleen recent zijn ingeschakeld met Azure Defender, worden weer gegeven op het tabblad **geen aanbeveling** .
@@ -224,7 +224,7 @@ Wanneer u een machine van de ene naar de andere groep verplaatst, wordt het toep
 
 Als u de besturings elementen voor adaptieve toepassingen programmatisch wilt beheren, gebruikt u onze REST API. 
 
-De volledige API-documentatie is [hier](https://docs.microsoft.com/rest/api/securitycenter/adaptiveapplicationcontrols).
+De volledige API-documentatie is [hier](/rest/api/securitycenter/adaptiveapplicationcontrols).
 
 Enkele van de functies die beschikbaar zijn via de REST API:
 
@@ -245,5 +245,5 @@ Enkele van de functies die beschikbaar zijn via de REST API:
 ## <a name="next-steps"></a>Volgende stappen
 In dit document hebt u geleerd hoe u adaptief toepassings beheer in Azure Security Center kunt gebruiken om lijst toestaan te definiëren van toepassingen die worden uitgevoerd op uw Azure-en niet-Azure-machines. Zie voor meer informatie over enkele van de andere functies van de Cloud beveiliging van een andere Security Center.
 
-* [Meer informatie over just-in-time-VM-toegang](just-in-time-explained.md)
+* [Meer informatie over just-in-time-toegang (JIT) voor VM's](just-in-time-explained.md)
 * [Uw Azure Kubernetes-clusters beveiligen](defender-for-kubernetes-introduction.md)

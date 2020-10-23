@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/10/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6e90e9c2ebbc6ba05e5778f618a5c3de02adf3ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2b622372c881997fd77a83feb8f6c393504900b
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542356"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428298"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-powershell"></a>Lees replica's maken en beheren in Azure Database for MariaDB met behulp van Power shell
 
@@ -26,14 +26,14 @@ U kunt met behulp van Power shell Lees replica's maken en beheren.
 
 U hebt het volgende nodig om deze hand leiding te volt ooien:
 
-- De [AZ Power shell-module](https://docs.microsoft.com/powershell/azure/install-az-ps) die lokaal is geïnstalleerd of [Azure Cloud shell](https://shell.azure.com/) in de browser
+- De [AZ Power shell-module](/powershell/azure/install-az-ps) die lokaal is geïnstalleerd of [Azure Cloud shell](https://shell.azure.com/) in de browser
 - Een [Azure database for MariaDB server](quickstart-create-mariadb-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
 > Hoewel de PowerShell-module Az.MariaDb in preview is, moet u deze afzonderlijk van de Az-module van PowerShell installeren met behulp van de volgende opdracht: `Install-Module -Name Az.MariaDb -AllowPrerelease`.
 > Zodra de PowerShell-module Az.MariaDb algemeen beschikbaar is, wordt het onderdeel van toekomstige releases van Az PowerShell en is de module systeemeigen beschikbaar vanuit Azure Cloud Shell.
 
-Als u Power shell lokaal wilt gebruiken, maakt u verbinding met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) .
+Als u Power shell lokaal wilt gebruiken, maakt u verbinding met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -54,9 +54,9 @@ Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 Voor de `New-AzMariaDbServerReplica` opdracht zijn de volgende para meters vereist:
 
-| Instelling | Voorbeeldwaarde | Beschrijving  |
+| Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
-| ResourceGroupName |  myResourceGroup |  De resource groep waar de replica-server is gemaakt.  |
+| ResourceGroupName |  myResourceGroup |  De resource groep waar de replica-server is gemaakt.  |
 | Naam | mydemoreplicaserver | De naam van de nieuwe replica server die wordt gemaakt. |
 
 Gebruik de **locatie** parameter om een lees replica te maken. In het volgende voor beeld wordt een replica gemaakt in de regio **VS-West** .
@@ -83,9 +83,9 @@ Get-AzMariaDReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 
 Voor de `Get-AzMariaDReplica` opdracht zijn de volgende para meters vereist:
 
-| Instelling | Voorbeeldwaarde | Beschrijving  |
+| Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
-| ResourceGroupName |  myResourceGroup |  De resource groep waar de replica-server wordt gemaakt.  |
+| ResourceGroupName |  myResourceGroup |  De resource groep waar de replica-server wordt gemaakt.  |
 | ServerName | mydemoserver | De naam of ID van de bron server. |
 
 ### <a name="delete-a-replica-server"></a>Een replica server verwijderen

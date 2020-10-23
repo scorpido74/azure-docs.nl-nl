@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 08/28/2020
-ms.openlocfilehash: 5aa760c661fd596c55693edd537ca7820c7d7f58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: adc3b4542b6eba0cc0df7d93ac2cabbf7c1c144a
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89489898"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216586"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>Zelfstudie: Gegevens delen met Azure Data Share  
 
@@ -33,7 +33,7 @@ In deze zelfstudie leert u het volgende:
 
 ### <a name="share-from-a-storage-account"></a>Delen vanaf een opslagaccount:
 
-* Een Azure Storage-account: U kunt een gratis [Azure Storage-account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) aanmaken als u nog niet een hebt
+* Een Azure Storage-account: U kunt een gratis [Azure Storage-account](../storage/common/storage-account-create.md) aanmaken als u nog niet een hebt
 * Machtiging om naar het opslagaccount te schrijven, aanwezig in *Microsoft.Storage/storageAccounts/write*. Deze machtiging maakt onderdeel uit van de rol Inzender.
 * Machtiging om roltoewijzing toe te voegen aan het opslagaccount, aanwezig in *Microsoft.Authorization/role assignments/write*. Deze machtiging maakt onderdeel uit van de rol Eigenaar. 
 
@@ -141,4 +141,4 @@ Uw Azure-gegevensshare is nu gemaakt en de ontvanger van uw gegevensshare kan nu
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u geleerd hoe u een Azure-gegevensshare maakt en ontvangers uitnodigt. Voor meer informatie over hoe een gegevensgebruiker een gegevensshare kan accepteren en ontvangen, gaat u door naar de zelfstudie voor het [accepteren en ontvangen van gegevens](subscribe-to-data-share.md). 
+In deze zelfstudie hebt u geleerd hoe u een Azure-gegevensshare maakt en ontvangers uitnodigt. Voor meer informatie over hoe een gegevensgebruiker een gegevensshare kan accepteren en ontvangen, gaat u door naar de zelfstudie voor het [accepteren en ontvangen van gegevens](subscribe-to-data-share.md).

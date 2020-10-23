@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 815dc0a90d79323fb88c98867b5540105a6fa8cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90b7b6aebfce1c37bef76d371d829048d755e39e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91356193"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147276"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Verbindingsgebeurtenissen voor het apparaat aanvragen bij Azure IoT Hub met behulp van Azure Cosmos DB
 
@@ -29,7 +29,7 @@ Het Volg nummer is een teken reeks representatie van een hexadecimaal getal. U k
 
 * Een verzameling in uw data base. Zie [een verzameling toevoegen](../cosmos-db/create-sql-api-java.md#add-a-container) voor een overzicht. Wanneer u uw verzameling maakt, gebruikt u `/id` voor de partitie sleutel.
 
-* Een IoT Hub in Azure. Als u nog geen hub hebt gemaakt, leest u [Get started with IoT Hub](iot-hub-csharp-csharp-getstarted.md) (Aan de slag met IoT Hub) voor stapsgewijze instructies.
+* Een IoT Hub in Azure. Als u nog geen hub hebt gemaakt, leest u [Get started with IoT Hub](./quickstart-send-telemetry-dotnet.md) (Aan de slag met IoT Hub) voor stapsgewijze instructies.
 
 ## <a name="create-a-stored-procedure"></a>Een opgeslagen procedure maken
 
@@ -335,7 +335,7 @@ U kunt de resultaten van de uitgevoerde opgeslagen procedure bekijken in uw Cosm
 
 ## <a name="use-the-azure-cli"></a>Azure CLI gebruiken
 
-In plaats van de [Azure Portal](https://portal.azure.com)te gebruiken, kunt u de IOT hub stappen volt ooien met behulp van de Azure cli. Zie de Azure CLI-pagina's voor het [maken van een gebeurtenisabonnement](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) en het [maken van een IoT-apparaat](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) voor meer informatie.
+In plaats van de [Azure Portal](https://portal.azure.com)te gebruiken, kunt u de IOT hub stappen volt ooien met behulp van de Azure cli. Zie de Azure CLI-pagina's voor het [maken van een gebeurtenisabonnement](/cli/azure/eventgrid/event-subscription) en het [maken van een IoT-apparaat](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) voor meer informatie.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -361,7 +361,7 @@ Als u het werk aan uw logische app wilt behouden, kunt u de app uitschakelen in 
 
 7. Selecteer **Verwijderen**.
 
-Als u een Azure Cosmos DB account uit de Azure Portal wilt verwijderen, klikt u met de rechter muisknop op de naam van het account en klikt u op **account verwijderen**. Zie de gedetailleerde instructies voor [het verwijderen van een Azure Cosmos DB-account](https://docs.microsoft.com/azure/cosmos-db/manage-account).
+Als u een Azure Cosmos DB account uit de Azure Portal wilt verwijderen, klikt u met de rechter muisknop op de naam van het account en klikt u op **account verwijderen**. Zie de gedetailleerde instructies voor [het verwijderen van een Azure Cosmos DB-account](../cosmos-db/how-to-manage-database-account.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

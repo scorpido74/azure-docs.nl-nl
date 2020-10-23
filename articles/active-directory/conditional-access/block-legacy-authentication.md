@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 08/07/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca9f4e290c5dad45e5bf87439ebcd1c88a7c540f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c3107be1c36f1c15a1bcb27c5e0dcf851cfb946
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90602000"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145531"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Procedure: verouderde verificatie naar Azure AD blok keren met voorwaardelijke toegang   
 
@@ -37,10 +37,7 @@ Als uw omgeving klaar is om verouderde verificatie te blok keren om de beveiligi
 
 ## <a name="prerequisites"></a>Vereisten
 
-In dit artikel wordt ervan uitgegaan dat u bekend bent met: 
-
-- De [basis concepten](overview.md) van voorwaardelijke toegang tot Azure AD 
-- De [Aanbevolen procedures](best-practices.md) voor het configureren van beleid voor voorwaardelijke toegang in de Azure Portal
+In dit artikel wordt ervan uitgegaan dat u bekend bent met de [basis concepten](overview.md) van voorwaardelijke toegang tot Azure AD.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 

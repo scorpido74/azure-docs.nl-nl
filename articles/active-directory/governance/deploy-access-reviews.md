@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51983e52643d587fc497a1a67fcb0cd29dbb7f17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f3e825f908ffe475b05a5e6748d9505e7283b50
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91306562"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362696"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Implementatie van Azure Active Directory Access beoordelingen plannen
 
@@ -87,7 +87,7 @@ Bedenk wat uw organisatie nodig heeft om de strategie voor het implementeren van
 
 ### <a name="engage-the-right-stakeholders"></a>De juiste belanghebbenden benaderen
 
-Wanneer technologie projecten mislukken, worden ze doorgaans als gevolg van niet-overeenkomende verwachtingen voor impact, resultaten en verantwoordelijkheden. Als u deze problemen wilt voor komen, moet [u ervoor zorgen dat u de juiste belanghebbenden gebruikt](https://aka.ms/deploymentplans) en dat de project rollen duidelijk zijn.
+Wanneer technologie projecten mislukken, worden ze doorgaans als gevolg van niet-overeenkomende verwachtingen voor impact, resultaten en verantwoordelijkheden. Als u deze problemen wilt voor komen, moet [u ervoor zorgen dat u de juiste belanghebbenden gebruikt](../fundamentals/active-directory-deployment-plans.md) en dat de project rollen duidelijk zijn.
 
 Voor toegangs beoordelingen neemt u waarschijnlijk vertegenwoordigers uit de volgende teams binnen uw organisatie:
 
@@ -182,7 +182,7 @@ Typische doelen voor controle zijn onder andere:
 
 * Groepslid [maatschap](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) (gesynchroniseerd met Azure AD of gemaakt in azure ad of Microsoft 365, inclusief micro soft teams).
 
-* [Toegangs pakket](/azure/active-directory/governance/entitlement-management-overview) waarmee resources (groepen, apps en sites) in één pakket worden gegroepeerd om de toegang te beheren.
+* [Toegangs pakket](./entitlement-management-overview.md) waarmee resources (groepen, apps en sites) in één pakket worden gegroepeerd om de toegang te beheren.
 
 * [Azure AD-rollen en Azure-resource rollen](../privileged-identity-management/pim-resource-roles-assign-roles.md) zoals gedefinieerd in privileged Identity Management.
 
@@ -198,7 +198,7 @@ De administratieve rol die vereist is voor het maken, beheren of lezen van een t
 | Toegangs pakket| Hoofdbeheerder<p>Maker van het toegangs pakket| Alleen globale beheerder |
 
 
-Zie [machtigingen voor beheerdersrol in azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)voor meer informatie.
+Zie [machtigingen voor beheerdersrol in azure Active Directory](../roles/permissions-reference.md)voor meer informatie.
 
 ### <a name="who-will-review-the-access-to-the-resource"></a>Wie gaat de toegang tot de resource bekijken?
 
@@ -343,7 +343,7 @@ U kunt [Azure AD-toegangs beoordelingen gebruiken voor het beheren van gebruiker
 
 ### <a name="review-external-users-group-memberships"></a>Groepslid maatschappen van externe gebruiker controleren
 
-Als u hand matig werk wilt minimaliseren en mogelijke fouten wilt oplossen, kunt u het beste [dynamische groepen](../users-groups-roles/groups-create-rule.md) gebruiken om groepslid maatschap toe te wijzen op basis van de kenmerken van een gebruiker. Mogelijk wilt u een of meer dynamische groepen maken voor externe gebruikers. De interne sponsor kan optreden als revisor voor lidmaatschap van de groep. 
+Als u hand matig werk wilt minimaliseren en mogelijke fouten wilt oplossen, kunt u het beste [dynamische groepen](../enterprise-users/groups-create-rule.md) gebruiken om groepslid maatschap toe te wijzen op basis van de kenmerken van een gebruiker. Mogelijk wilt u een of meer dynamische groepen maken voor externe gebruikers. De interne sponsor kan optreden als revisor voor lidmaatschap van de groep. 
 
 Opmerking: externe gebruikers die uit een groep worden verwijderd als gevolg van een toegangs beoordeling, worden niet verwijderd uit de Tenant. 
 
@@ -389,7 +389,7 @@ Toegangs beoordelingen kunnen gelden voor de leden van een groep of voor gebruik
 
 ## <a name="plan-review-of-azure-ad-and-azure-resource-roles"></a>De beoordeling van Azure AD-en Azure-resource rollen plannen
 
-[Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) vereenvoudigt de manier waarop bedrijven bevoorrechte toegang tot resources in azure AD beheren. Hierdoor blijft de lijst met geprivilegieerde rollen, zowel in [Azure AD](../users-groups-roles/directory-assign-admin-roles.md) als [Azure-bronnen](../../role-based-access-control/built-in-roles.md) , veel kleiner en wordt de algehele beveiliging van de Directory verhoogd.
+[Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) vereenvoudigt de manier waarop bedrijven bevoorrechte toegang tot resources in azure AD beheren. Hierdoor blijft de lijst met geprivilegieerde rollen, zowel in [Azure AD](../roles/permissions-reference.md) als [Azure-bronnen](../../role-based-access-control/built-in-roles.md) , veel kleiner en wordt de algehele beveiliging van de Directory verhoogd.
 
 Met toegangs beoordelingen kunnen revisoren worden verklaard of gebruikers nog steeds een rol moeten hebben. Net als bij toegangs Beoordelingen voor toegangs pakketten worden Beoordelingen voor Azure AD-rollen en Azure-resources geïntegreerd in de gebruikers ervaring van de PIM-beheerder. We raden u aan om regel matig de volgende roltoewijzingen te controleren:
 
@@ -448,7 +448,7 @@ Om het risico te verminderen dat is gekoppeld aan verouderde roltoewijzingen, mo
 
 ![Scherm opname van de lijst ' lidmaatschap controleren ' van Azure A D-rollen.](./media/deploy-access-review/8-review-azure-ad-roles-picker.png)
 
-Volg de instructies in de onderstaande koppelingen:
+Volg de instructies via de onderstaande links:
 
 | Artikelen met procedures | Beschrijving |
 | - | - |
@@ -463,7 +463,7 @@ Om het risico te verminderen dat is gekoppeld aan verouderde roltoewijzingen, mo
 
 ![Azure AD-rollen controleren](./media/deploy-access-review/9-review-azure-roles-picker.png)
 
-Volg de instructies in de onderstaande koppelingen:
+Volg de instructies via de onderstaande links:
 
 | Artikelen met procedures| Beschrijving |
 | - | -|
@@ -518,4 +518,3 @@ Meer informatie over de onderstaande verwante technologieën.
 * [Wat is het beheer van rechten van Azure AD?](entitlement-management-overview.md)
 
 * [Wat is Azure AD Privileged Identity Management?](../privileged-identity-management/pim-configure.md)
-

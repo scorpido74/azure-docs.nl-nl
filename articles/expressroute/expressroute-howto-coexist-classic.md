@@ -8,12 +8,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: duau
-ms.openlocfilehash: 4cc96a8183e07a17ae880549cdc2b8bdca516322
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70407d726b697dd6c4dfb6777cf6c445092d3b73
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91651493"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206322"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>Gelijktijdige ExpressRoute- en site-to-site-verbindingen configureren (klassiek)
 > [!div class="op_single_selector"]
@@ -85,7 +85,7 @@ Er zijn twee sets met procedures waaruit u kunt kiezen om verbindingen te config
 Deze procedure helpt u bij het maken van een VNet en site-naar-site- en ExpressRoute-verbindingen die naast elkaar kunnen worden gebruikt.
 
 1. U moet de meest recente versie van de Azure PowerShell-cmdlets installeren. Zie [How to install and configure Azure PowerShell](/powershell/azure/) (Azure PowerShell installeren en configureren) voor meer informatie over het installeren van de PowerShell-cmdlets. Houd er rekening mee dat de cmdlets die u voor deze configuratie gebruikt, mogelijk enigszins afwijken van de cmdlets waarmee u bekend bent. Zorg ervoor dat u de cmdlets gebruikt die in deze instructies worden vermeld. 
-2. Maak een schema voor het virtuele netwerk. Zie [Azure Virtual Network-configuratieschema](https://msdn.microsoft.com/library/azure/jj157100.aspx) voor meer informatie over het configuratieschema.
+2. Maak een schema voor het virtuele netwerk. Zie [Azure Virtual Network-configuratieschema](/previous-versions/azure/reference/jj157100(v=azure.100)) voor meer informatie over het configuratieschema.
    
     Wanneer u uw schema maakt, moet u de volgende waarden gebruiken:
    
@@ -229,7 +229,7 @@ Als het gatewaysubnet /27 of groter is en het virtuele netwerk is verbonden via 
 4. Bewerk het schema van het netwerkconfiguratiebestand zodanig dat het gatewaysubnet /27 of een kortere voorvoegsel (zoals /26 of /25) is. Zie het volgende voorbeeld 
    
    > [!NOTE]
-   > Als u in uw virtuele netwerk niet voldoende IP-adressen over hebt om het gatewaysubnet te vergroten, moet u meer IP-adresruimte toevoegen. Zie [Azure Virtual Network-configuratieschema](https://msdn.microsoft.com/library/azure/jj157100.aspx) voor meer informatie over het configuratieschema.
+   > Als u in uw virtuele netwerk niet voldoende IP-adressen over hebt om het gatewaysubnet te vergroten, moet u meer IP-adresruimte toevoegen. Zie [Azure Virtual Network-configuratieschema](/previous-versions/azure/reference/jj157100(v=azure.100)) voor meer informatie over het configuratieschema.
    > 
    > 
    
@@ -252,5 +252,4 @@ Als het gatewaysubnet /27 of groter is en het virtuele netwerk is verbonden via 
 6. U hebt op dit moment een VNet zonder gateways. Als u nieuwe gateways wilt maken en uw verbindingen wilt voltooien, kunt u doorgaan met [Stap 4 - Een ExpressRoute-gateway maken](#gw). Deze stap vindt u in de voorgaande reeks stappen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Voor meer informatie over ExpressRoute raadpleegt u de [Veelgestelde vragen over ExpressRoute](expressroute-faqs.md)
-
+Zie de [Veelgestelde vragen over ExpressRoute](expressroute-faqs.md) voor meer informatie over ExpressRoute.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: d2355b26fc6a946e47a3d2c135b7c23729b186c7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1f7ff20dbdd0dac5b56d0f746733b14dfe44803e
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554642"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940634"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moconavi"></a>Zelfstudie: Azure Active Directory-integratie met moconavi
 
@@ -191,15 +191,15 @@ In deze sectie gaat u in moconavi een gebruiker maken met de naam Britta Simon. 
 
 3. Klik op de knop **Verbindingsinstellingen**.
 
-    ![Eenmalige aanmelding testen](./media/moconavi-tutorial/testing1.png)
+    ![Schermopname van moconavi met de knop Verbindingsinstellingen.](./media/moconavi-tutorial/testing1.png)
 
 4. Voer `https://mcs-admin.moconavi.biz/gateway` in bij het tekstvak **Verbinding maken met URL** en klik vervolgens op de knop **Gereed**.
 
-    ![Eenmalige aanmelding testen](./media/moconavi-tutorial/testing2.png)
+    ![Schermopname van de knop Verbinding maken met URL en Gereed.](./media/moconavi-tutorial/testing2.png)
 
 5. Voer op de volgende pagina in onderstaande schermopname de volgende stappen uit:
 
-    ![Eenmalige aanmelding testen](./media/moconavi-tutorial/testing3.png)
+    ![Schermopname van de moconavi-pagina waarin u de beschreven waarden kunt invoeren.](./media/moconavi-tutorial/testing3.png)
 
     a. Voer **Invoerverificatiesleutel**:`azureAD` in bij het tekstvak **Invoerverificatiesleutel**.
 
@@ -209,11 +209,11 @@ In deze sectie gaat u in moconavi een gebruiker maken met de naam Britta Simon. 
 
 6. Voer uw Azure AD-wachtwoord in bij het tekstvak **Wachtwoord** en klik vervolgens op de knop **Aanmelden**.
 
-    ![Eenmalige aanmelding testen](./media/moconavi-tutorial/testing4.png)
+    ![Schermopname die laat zien waar u uw Azure AD-wachtwoord invoert.](./media/moconavi-tutorial/testing4.png)
 
 7. De Azure AD-verificatie slaagt wanneer het menu wordt weergegeven.
 
-    ![Eenmalige aanmelding testen](./media/moconavi-tutorial/testing5.png)
+    ![Schermopname met het Telefoon-pictogram in moconavi.](./media/moconavi-tutorial/testing5.png)
 
 ## <a name="additional-resources"></a>Aanvullende resources
 

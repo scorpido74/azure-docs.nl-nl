@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: 268455e582e54dfa8eb73fe81eaad19f453e303b
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: bc0286dc509acd4afba7f1660b65e49b25378496
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057889"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371748"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Wat is SQL Data Sync voor Azure?
 
@@ -81,7 +81,7 @@ Gegevens synchronisatie is niet de aanbevolen oplossing voor de volgende scenari
 | | Gegevens synchroniseren | Transactionele replicatie |
 |---|---|---|
 | **Voordelen** | -Actief-actief ondersteuning<br/>-Bi-richting tussen on-premises en Azure SQL Database | -Laagste latentie<br/>-Transactionele consistentie<br/>-Bestaande topologie na migratie opnieuw gebruiken <br/>-Ondersteuning voor Azure SQL Managed instance |
-| **Nadelen** | -5 minuten of meer latentie<br/>-Geen transactionele consistentie<br/>-Hogere gevolgen voor de prestaties | -Kan niet publiceren vanaf Azure SQL Database <br/>-Hoge onderhouds kosten |
+| **Nadelen** | -minimum frequentie van 5 minuten tussen synchronisaties<br/>-Geen transactionele consistentie<br/>-Hogere gevolgen voor de prestaties | -Kan niet publiceren vanaf Azure SQL Database <br/>-Hoge onderhouds kosten |
 
 ## <a name="get-started"></a>Aan de slag 
 
@@ -109,7 +109,7 @@ Gegevens synchronisatie is niet de aanbevolen oplossing voor de volgende scenari
 
 Omdat de gegevens synchronisatie op basis van een trigger is gebaseerd, is de transactionele consistentie niet gegarandeerd. Micro soft garandeert dat alle wijzigingen uiteindelijk worden doorgevoerd en dat gegevens synchronisatie geen gegevens verlies veroorzaakt.
 
-### <a name="performance-impact"></a>Invloed op prestaties
+### <a name="performance-impact"></a>Invloed op de prestaties
 
 Bij de gegevens synchronisatie worden de triggers invoegen, bijwerken en verwijderen gebruikt om wijzigingen bij te houden. Hiermee maakt u tabellen in de gebruikers database voor het bijhouden van wijzigingen. Deze activiteiten voor het bijhouden van wijzigingen hebben gevolgen voor de werk belasting van uw data base. Evalueer uw servicelaag en voer zo nodig een upgrade uit.
 
@@ -135,6 +135,7 @@ Het inrichten en verwijderen van de inrichting tijdens het maken van een synchro
 - Een primaire sleutel kan niet de volgende gegevens typen bevatten: sql_variant, binary, varbinary, image en XML.
 - Wees voorzichtig wanneer u de volgende gegevens typen als primaire sleutel gebruikt, omdat de ondersteunde precisie alleen geldt voor de tweede: time, datetime, DATETIME2, date time offset.
 - De namen van objecten (data bases, tabellen en kolommen) mogen niet de periode van het afdruk bare teken (.), het linker vier Kante haakje ([) of de rechter rechte haak (]) bevatten.
+- De naam van een tabel mag geen afdruk bare tekens bevatten:! " # $ % ' ( ) * + -
 - Azure Active Directory-verificatie wordt niet ondersteund.
 - Als er tabellen met dezelfde naam maar een ander schema zijn (bijvoorbeeld dbo. klanten en Sales. klanten), kan slechts één van de tabellen worden toegevoegd aan de synchronisatie.
 - Kolommen met User-Defined gegevens typen worden niet ondersteund
@@ -165,7 +166,7 @@ Met gegevens synchronisatie kunnen alleen-lezen of door het systeem gegenereerde
 | Tabellen in een synchronisatie groep                                          | 500                    | Meerdere synchronisatie groepen maken |
 | Kolommen in een tabel in een synchronisatie groep                              | 1000                   |                             |
 | Grootte van gegevensrij in een tabel                                        | 24 MB                  |                             |
-| Mini maal synchronisatie-interval                                           | 5 minuten              |                             |
+| Interval voor minimale synchronisatie frequentie                                 | 5 minuten              |                             |
 
 > [!NOTE]
 > Er kunnen Maxi maal 30 eind punten in één synchronisatie groep bestaan als er slechts één synchronisatie groep is. Als er meer dan één synchronisatie groep is, kan het totale aantal eind punten voor alle synchronisatie groepen niet meer dan 30 zijn. Als een Data Base deel uitmaakt van meerdere synchronisatie groepen, wordt deze als meerdere eind punten geteld, niet een.
@@ -250,7 +251,7 @@ Moet u het schema van een data base in een synchronisatie groep bijwerken? Wijzi
 - [De replicatie van schema wijzigingen automatiseren met SQL Data Sync in azure](../../sql-database/sql-database-update-sync-schema.md)
 - [PowerShell gebruiken voor het bijwerken van het synchronisatieschema in een bestaande synchronisatiegroep](scripts/update-sync-schema-in-sync-group.md)
 
-### <a name="monitor-and-troubleshoot"></a>Bewaken en problemen oplossen
+### <a name="monitor-and-troubleshoot"></a>Controleren en problemen oplossen
 
 Wordt SQL Data Sync als verwachting uitgevoerd? Raadpleeg de volgende artikelen voor informatie over het bewaken van activiteiten en het oplossen van problemen:
 

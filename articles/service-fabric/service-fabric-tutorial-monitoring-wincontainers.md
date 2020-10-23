@@ -3,18 +3,17 @@ title: Windows-containers bewaken en diagnosticeren
 description: In deze zelfstudie configureert u Azure Monitor-logboeken voor bewaking en diagnose van Windows-containers voor Azure Service Fabric.
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 6a3a5211864c4cbadc03bbc77bfef2204f6c2ccf
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: cf14cce631a505a951ec4d9c0955431b9a98527e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244800"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91840673"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-azure-monitor-logs"></a>Zelfstudie: Windows-containers in Service Fabric bewaken met behulp van Azure Monitor-logboeken
 
-Dit is deel drie van een zelfstudie. U wordt begeleid bij het instellen van Azure Monitor-logboeken voor het bewaken van uw Windows-containers die in Service Fabric worden georganiseerd.
+Dit is deel drie van een zelfstudie. U wordt begeleid bij het configureren van Azure Monitor-logboeken voor het bewaken van uw Windows-containers die in Service Fabric worden georganiseerd.
 
 In deze zelfstudie leert u het volgende:
 
@@ -186,19 +185,17 @@ Als u de Container-oplossing in uw werkruimte wilt instellen, zoekt u naar *Cont
 
 ![Containers-oplossing toevoegen](./media/service-fabric-tutorial-monitoring-wincontainers/containers-solution.png)
 
-Als u er door de *Log Analytics-werkruimte* om wordt gevraagd, selecteert u de werkruimte die in uw resourcegroep is gemaakt en klikt u op **Maken**. Hierdoor wordt een *Containerbewakingsoplossing* aan uw werkruimte toegevoegd en wordt automatisch het verzamelen van Docker-logboeken en -statistieken met de Log Analytics-agent gestart. 
+Als u er door de *Log Analytics-werkruimte* om wordt gevraagd, selecteert u de werkruimte die in uw resourcegroep is gemaakt en selecteert u **Maken**. Hierdoor wordt een *Containerbewakingsoplossing* aan uw werkruimte toegevoegd en wordt het verzamelen van Docker-logboeken en -statistieken met de Log Analytics-agent gestart.
 
-Ga terug naar uw *resourcegroep*, waar u nu de pas toegevoegde bewakingsoplossing moet kunnen zien. Als u erin klikt, moet op de startpagina het aantal containerinstallatiekopieën dat wordt uitgevoerd, worden weergegeven.
+Ga terug naar uw *resourcegroep*, waar u nu de pas toegevoegde bewakingsoplossing moet kunnen zien. Als u dit selecteert, moet op de startpagina het aantal containerinstallatiekopieën dat wordt uitgevoerd, worden weergegeven.
 
 *Houd er rekening mee dat er 5 exemplaren van de fabrikam-container uit [deel 2](service-fabric-host-app-in-a-container.md) van de zelfstudie zijn uitgevoerd*
 
 ![Startpagina containeroplossing](./media/service-fabric-tutorial-monitoring-wincontainers/solution-landing.png)
 
-Als u op **Container Monitor Solution** klikt, komt u terecht op een dashboard met meer details. Hier kunt u door meerdere panelen schuiven en query's in Azure Monitor-logboeken uitvoeren.
+Als u **Container Monitor Solution** selecteert, komt u terecht op een dashboard met meer details. Hier kunt u door meerdere panelen schuiven en query's in Azure Monitor-logboeken uitvoeren.
 
-*Vanaf september 2017 wordt de oplossing af en toe bijgewerkt. Negeer eventuele foutmeldingen over Kubernetes-gebeurtenissen, terwijl meerdere orchestrators in dezelfde oplossing worden geïntegreerd.*
-
-Aangezien de agent docker-logboeken ophaalt, worden *stdout* en *stderr* standaard weergegeven. Als u naar rechts schuift, ziet u de voorraad, de status en de metrische gegevens met betrekking tot containerinstallatiekopieën. Ook ziet u query's die u kunt uitvoeren voor meer nuttige gegevens.
+Aangezien de agent docker-logboeken ophaalt, worden *stdout* en *stderr* standaard weergegeven. Als u horizontaal schuift, ziet u de voorraad, de status en de metrische gegevens met betrekking tot containerinstallatiekopieën. Ook ziet u query's die u kunt uitvoeren voor meer nuttige gegevens.
 
 ![Dashboard Containeroplossing](./media/service-fabric-tutorial-monitoring-wincontainers/container-metrics.png)
 
@@ -208,12 +205,12 @@ Als u op een van deze panelen klikt, komt u terecht bij de Kusto-query die de we
 
 ## <a name="configure-log-analytics-agent-to-pick-up-performance-counters"></a>Log Analytics-agent configureren voor het ophalen van prestatiemeteritems
 
-Een ander voordeel van het gebruik van de Log Analytics-agent is de mogelijkheid om de prestatiemeteritems te wijzigen die u wilt ophalen via de Log Analytics-gebruikersinterface. U hoeft dan de Azure diagnoseagent niet te configureren en geen op een Resource Manager-sjabloon gebaseerde upgrade uit te voeren. Als u dit wilt doen, klikt u op **OMS-werkruimte** op de startpagina van uw Container Monitoring- of Service Fabric-oplossing.
+Een ander voordeel van het gebruik van de Log Analytics-agent is de mogelijkheid om de prestatiemeteritems te wijzigen die u wilt ophalen via de Log Analytics-gebruikersinterface. U hoeft dan de Azure diagnoseagent niet te configureren en geen op een Resource Manager-sjabloon gebaseerde upgrade uit te voeren. Als u dit wilt doen, selecteert u **OMS-werkruimte** op de startpagina van uw Container Monitoring- of Service Fabric-oplossing.
 
 Hierna komt u terecht in de Log Analytics-werkruimte, waar u uw oplossingen kunt zien, aangepaste dashboards kunt maken en de Log Analytics-agent kunt configureren. 
-* Klik op **Geavanceerde instellingen** om het menu Geavanceerde instellingen te openen.
-* Klik op **Verbonden bronnen** > **Windows Servers** om te controleren of er *5 Windows-computers verbonden* zijn.
-* Klik op **Gegevens** > **Windows-prestatiemeteritems** om nieuwe prestatiemeteritems te zoeken en toe te voegen. Hier ziet u een lijst met aanbevelingen van Azure Monitor-logboeken voor prestatiemeteritems die u kunt verzamelen, evenals de optie om andere tellers te zoeken. Controleer of de tellers **Processor(_Total)\% Processor Time** en **Memory(*)\Available MBytes** worden verzameld.
+* Selecteer **Geavanceerde instellingen** om het menu Geavanceerde instellingen te openen.
+* Selecteer **Verbonden bronnen** > **Windows Servers** om te controleren of er *5 Windows-computers verbonden* zijn.
+* Selecteer **Gegevens** > **Windows-prestatiemeteritems** om nieuwe prestatiemeteritems te zoeken en toe te voegen. Hier ziet u een lijst met aanbevelingen van Azure Monitor-logboeken voor prestatiemeteritems die u kunt verzamelen, evenals de optie om andere tellers te zoeken. Controleer of de tellers **Processor(_Total)\% Processor Time** en **Memory(*)\Available MBytes** worden verzameld.
 
 **vernieuwt** u binnen enkele minuten de containerbewakingsoplossing en komen de gegevens van *Computerprestaties* binnen. Hierdoor krijgt u inzicht in het gebruik van uw resources. U kunt deze metrische gegevens ook gebruiken om de juiste beslissingen te maken over het schalen van het cluster of om te bevestigen dat een cluster de belasting op de juiste wijze verdeelt.
 
@@ -230,9 +227,9 @@ In deze zelfstudie heeft u het volgende geleerd:
 > * Een Log Analytics-werkruimte gebruiken om logboeken te bekijken en te doorzoeken vanuit uw containers en knooppunten
 > * De Log Analytics-agent configureren om metrische gegevens uit containers en knooppunten te halen
 
-Nu u bewaking hebt ingesteld voor uw containertoepassing, kunt u het volgende doen:
+Nu u bewaking hebt geconfigureerd voor uw containertoepassing, kunt u:
 
-* De Azure Monitor-logboeken instellen voor een Linux-cluster, volgens soortgelijke stappen als hierboven. Raadpleeg [Deze sjabloon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeType-Secure-OMS) om wijzigingen in de Resource Manager-sjabloon aan te brengen.
+* De Azure Monitor-logboeken configureren voor een Linux-cluster, volgens soortgelijke stappen als in deze zelfstudie. Raadpleeg [Deze sjabloon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeType-Secure-OMS) om wijzigingen in de Resource Manager-sjabloon aan te brengen.
 * Azure Monitor-logboeken configureren om [automatische waarschuwingen](../azure-monitor/platform/alerts-overview.md) in te stellen voor detectie en diagnostiek.
 * De lijst met [aanbevolen prestatiemeteritems](service-fabric-diagnostics-event-generation-perf.md) van Service Fabric onderzoeken om deze voor uw clusters te configureren.
 * Vertrouwd raken met de functies [zoeken in logboeken en query's uitvoeren](../azure-monitor/log-query/log-query-overview.md) die als onderdeel van Azure Monitor-logboeken worden aangeboden.

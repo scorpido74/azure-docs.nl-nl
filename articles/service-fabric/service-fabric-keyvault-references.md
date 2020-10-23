@@ -3,12 +3,12 @@ title: Azure-Service Fabric-Service Fabric toepassing sleutel kluis verwijzingen
 description: In dit artikel wordt uitgelegd hoe u de KeyVaultReference-ondersteuning van service Fabric gebruikt voor toepassings geheimen.
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: c4de6ae17ae728e1dbadbd6d6e2d94c0e1471112
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2221bb3e8e3ee3181b2cff70107dccc203954cf
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91261138"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313795"
 ---
 # <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>KeyVaultReference-ondersteuning voor Service Fabric toepassingen (preview)
 
@@ -18,7 +18,7 @@ Een veelvoorkomende uitdaging bij het bouwen van Cloud toepassingen is het veili
 > Het gebruik van deze preview-functie wordt niet aanbevolen in productie omgevingen.
 
 > [!NOTE]
-> De preview-functie voor de sleutel kluis referentie ondersteunt alleen [versie](https://docs.microsoft.com/azure/key-vault/general/about-keys-secrets-certificates#objects-identifiers-and-versioning) -geheimen. Geheimen zonder versie worden niet ondersteund.
+> De preview-functie voor de sleutel kluis referentie ondersteunt alleen [versie](../key-vault/general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning) -geheimen. Geheimen zonder versie worden niet ondersteund.
 
 ## <a name="prerequisites"></a>Vereisten
 

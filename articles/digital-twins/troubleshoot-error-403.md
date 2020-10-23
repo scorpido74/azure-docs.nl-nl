@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: bc4fbbc265bef00be27c890c3f090a49591dc415
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1c3ad9aa034e6eace5323dd80c5275699a6e728
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90562737"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331495"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>Service aanvraag mislukt. Status: 403 (verboden)
 
@@ -25,13 +25,13 @@ Deze fout kan optreden bij veel typen service aanvragen waarvoor verificatie is 
 
 ### <a name="cause-1"></a>Oorzaak #1
 
-Deze fout geeft meestal aan dat uw RBAC-machtigingen (op rollen gebaseerd toegangs beheer) voor de service niet juist zijn ingesteld. Voor veel acties voor een Azure Digital Apparaatdubbels-exemplaar moet u de rol *Azure Digital Apparaatdubbels Owner (preview)* hebben **voor het exemplaar dat u wilt beheren**. 
+Deze fout geeft meestal aan dat uw op rollen gebaseerd toegangs beheer voor Azure (Azure RBAC) voor de service niet juist is ingesteld. Voor veel acties voor een Azure Digital Apparaatdubbels-exemplaar moet u de rol *Azure Digital Apparaatdubbels Owner (preview)* hebben **voor het exemplaar dat u wilt beheren**. 
 
 ### <a name="cause-2"></a>Oorzaak #2
 
-Als u een client-app gebruikt om te communiceren met Azure Digital Apparaatdubbels, kan deze fout optreden omdat uw [Azure Active Directory (Azure AD)-app-](../active-directory/fundamentals/active-directory-whatis.md) registratie geen machtigingen heeft ingesteld voor de Azure Digital apparaatdubbels-service.
+Als u een client-app gebruikt om te communiceren met Azure Digital Apparaatdubbels die wordt geverifieerd met een [app-registratie](how-to-create-app-registration.md), kan deze fout optreden omdat uw app-registratie geen machtigingen heeft ingesteld voor de Azure Digital apparaatdubbels-service.
 
-Voor de app-registratie is vereist dat er toegangs machtigingen zijn geconfigureerd voor de Azure Digital Apparaatdubbels-Api's. Wanneer uw client-app vervolgens wordt geverifieerd op basis van de app-registratie, worden de machtigingen verleend die de app-registratie heeft geconfigureerd.
+De app-registratie moet toegangs machtigingen hebben die zijn geconfigureerd voor de Azure Digital Apparaatdubbels-Api's. Wanneer uw client-app vervolgens wordt geverifieerd op basis van de app-registratie, worden de machtigingen verleend die de app-registratie heeft geconfigureerd.
 
 ## <a name="solutions"></a>Oplossingen
 
@@ -59,23 +59,33 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 
 Voor meer informatie over deze functie vereiste en het toewijzings proces, zie de [sectie *toegangs machtigingen van uw gebruiker instellen* ](how-to-set-up-instance-CLI.md#set-up-user-access-permissions) voor *instructies: een exemplaar en authenticatie instellen (CLI of portal)*.
 
-Als u deze roltoewijzing al hebt en nog steeds het 403-probleem ondervindt, gaat u verder met de volgende oplossing.
+Als u deze roltoewijzing al hebt *en* u een Azure AD-App-registratie gebruikt om een client-app te verifiëren, kunt u door gaan met de volgende oplossing als deze oplossing het 403-probleem niet heeft opgelost.
 
 ### <a name="solution-2"></a>#2 oplossing
 
-De tweede oplossing is om te controleren of de Azure AD-App-registratie machtigingen heeft die zijn geconfigureerd voor de Azure Digital Apparaatdubbels-service. Als deze niet is geconfigureerd, stelt u deze in op.
+Als u een Azure AD-App-registratie gebruikt om een client-app te verifiëren, is de tweede mogelijke oplossing om te controleren of de app-registratie machtigingen heeft die zijn geconfigureerd voor de Azure Digital Apparaatdubbels-service. Als deze niet zijn geconfigureerd, stelt u deze in op.
 
 #### <a name="check-current-setup"></a>Huidige instellingen controleren
 
-[!INCLUDE [digital-twins-setup-verify-app-registration-1.md](../../includes/digital-twins-setup-verify-app-registration-1.md)]
+Als u wilt controleren of de machtigingen juist zijn geconfigureerd, gaat u naar de [pagina overzicht van Azure AD-App-registratie](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) in de Azure Portal. U kunt deze pagina zelf openen door naar *app-registraties* te zoeken in de zoek balk van de portal.
+
+Ga naar het tabblad *alle toepassingen* om alle app-registraties weer te geven die zijn gemaakt in uw abonnement.
+
+U ziet nu de app-registratie die u zojuist hebt gemaakt in de lijst. Selecteer deze om de details ervan te openen.
+
+:::image type="content" source="media/troubleshoot-error-403/app-registrations.png" alt-text="App-registraties pagina in de Azure Portal":::
 
 Controleer eerst of de instellingen voor de Azure Digital Apparaatdubbels-machtigingen correct zijn ingesteld voor de registratie. Als u dit wilt doen, selecteert u *manifest* in de menu balk om de manifest code van de app-registratie weer te geven. Ga naar de onderkant van het code venster en zoek deze velden onder `requiredResourceAccess` . De waarden moeten overeenkomen met die in de onderstaande scherm afbeelding:
 
-[!INCLUDE [digital-twins-setup-verify-app-registration-2.md](../../includes/digital-twins-setup-verify-app-registration-2.md)]
+:::image type="content" source="media/troubleshoot-error-403/verify-manifest.png" alt-text="App-registraties pagina in de Azure Portal":::
+
+Selecteer vervolgens *API-machtigingen* in de menu balk om te controleren of deze app-registratie Lees-en schrijf machtigingen voor Azure Digital apparaatdubbels bevat. U ziet een item als volgt:
+
+:::image type="content" source="media/troubleshoot-error-403/verify-api-permissions.png" alt-text="App-registraties pagina in de Azure Portal":::
 
 #### <a name="fix-issues"></a>Problemen oplossen
 
-Als een van deze voor beeld anders lijkt dan beschreven, volgt u de instructies voor het instellen van een app-registratie in het [gedeelte *toegangs machtigingen instellen voor client toepassingen* ](how-to-set-up-instance-cli.md#set-up-access-permissions-for-client-applications) van *How-to: een instantie en authenticatie instellen (CLI of portal)*.
+Als een van deze problemen anders lijkt dan wordt beschreven, volgt u de instructies voor het instellen van een app-registratie in een [*procedure: een app-registratie maken*](how-to-create-app-registration.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

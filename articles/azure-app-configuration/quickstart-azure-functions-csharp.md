@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: b62bf900e3e7859437b10b7b45801ee0dc575282
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 24620351cdd831ec5079e1f37726b2aa65339205
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767767"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075855"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Quickstart: Een Azure Functions-app maken met Azure App Configuration
 
@@ -120,7 +120,7 @@ In deze quickstart neemt u de service Azure App Configuration op in een Azure Fu
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u een nieuw App Configuration-archief gemaakt en dit via de [provider App Configuration](https://go.microsoft.com/fwlink/?linkid=2074664) gebruikt met een Azure Functions-app. Ga door naar de volgende zelfstudie voor meer informatie over het configureren van uw Azure Functions-app om configuratie-instellingen dynamisch te vernieuwen.
+In deze quickstart hebt u een nieuw App Configuration-archief gemaakt en dit via de [provider App Configuration](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration) gebruikt met een Azure Functions-app. Ga door naar de volgende zelfstudie voor meer informatie over het configureren van uw Azure Functions-app om configuratie-instellingen dynamisch te vernieuwen.
 
 > [!div class="nextstepaction"]
 > [Dynamische configuratie inschakelen](./enable-dynamic-configuration-azure-functions-csharp.md)

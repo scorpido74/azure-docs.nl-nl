@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: 94c668e7ffaff81fed9c2e511bc38239069fa43e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc4d1b852b0a498de0834731b2b1cd1225b9748b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87305207"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107773"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Computers zonder Internet toegang verbinden met behulp van de Log Analytics-gateway in Azure Monitor
 
@@ -206,7 +206,7 @@ Zie [Network Load Balancing](/windows-server/networking/technologies/network-loa
 Zie [Wat is Azure Load Balancer?](../../load-balancer/load-balancer-overview.md)voor meer informatie over het ontwerpen en implementeren van een Azure Load Balancer. Als u een basis load balancer wilt implementeren, volgt u de stappen die worden beschreven in deze [Quick](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) start, met uitzonde ring van de stappen die worden beschreven in de sectie **back-endservers maken**.   
 
 > [!NOTE]
-> Voor het configureren van de Azure Load Balancer met behulp van de **basis-SKU**, moeten virtuele Azure-machines deel uitmaken van een beschikbaarheidsset. Zie [de beschik baarheid van virtuele Windows-machines beheren in azure](../../virtual-machines/windows/manage-availability.md)voor meer informatie over beschikbaarheids sets. Als u bestaande virtuele machines wilt toevoegen aan een beschikbaarheidsset, raadpleegt u [Azure Resource Manager-beschikbaarheidsset voor Vm's instellen](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4).
+> Voor het configureren van de Azure Load Balancer met behulp van de **basis-SKU**, moeten virtuele Azure-machines deel uitmaken van een beschikbaarheidsset. Zie [de beschik baarheid van virtuele Windows-machines beheren in azure](../../virtual-machines/manage-availability.md)voor meer informatie over beschikbaarheids sets. Als u bestaande virtuele machines wilt toevoegen aan een beschikbaarheidsset, raadpleegt u [Azure Resource Manager-beschikbaarheidsset voor Vm's instellen](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4).
 > 
 
 Nadat de load balancer is gemaakt, moet er een back-end-pool worden gemaakt die verkeer naar een of meer Gateway servers distribueert. Volg de stappen die worden beschreven in de sectie Quick Start-artikel [resources maken voor de Load Balancer](../../load-balancer/quickstart-load-balancer-standard-public-portal.md).  
@@ -389,4 +389,3 @@ Als u hulp wilt krijgen, selecteert u het pictogram vraag teken in de rechter bo
 ## <a name="next-steps"></a>Volgende stappen
 
 [Voeg gegevens bronnen](./agent-data-sources.md) toe om gegevens te verzamelen van verbonden bronnen en sla de gegevens op in uw log Analytics-werk ruimte.
-

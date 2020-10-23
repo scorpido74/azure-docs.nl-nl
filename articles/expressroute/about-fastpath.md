@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: duau
-ms.openlocfilehash: bf600d835e177ce51870ed2a8894adcd667e3901
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c44e6c6a7a9af4edc2c711b17ec50aa2bf62c98
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89398049"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202444"
 ---
 # <a name="about-expressroute-fastpath"></a>Over ExpressRoute FastPath
 
@@ -41,7 +41,7 @@ Hoewel FastPath de meeste configuraties ondersteunt, biedt het geen ondersteunin
 
 * VNet-peering: als u andere virtuele netwerken hebt die zijn gekoppeld aan ExpressRoute, wordt het netwerk verkeer van uw on-premises netwerk naar de andere virtuele netwerken (d.w.z. de zogenaamde "spoke" VNets) naar de virtuele netwerk gateway verzonden. De tijdelijke oplossing is om alle virtuele netwerken rechtstreeks aan het ExpressRoute-circuit te koppelen.
 
-* Basis Load Balancer: als u een intern interne load balancer in uw virtuele netwerk implementeert of als de Azure PaaS-service die u in uw virtuele netwerk implementeert, gebruikmaakt van een Basic interne load balancer, wordt het netwerk verkeer van uw on-premises netwerk naar de virtuele IP-adressen die worden gehost op de basis load balancer, verzonden naar de gateway van het virtuele netwerk. De oplossing is het bijwerken van de basis load balancer naar een [standaard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview).
+* Basis Load Balancer: als u een intern interne load balancer in uw virtuele netwerk implementeert of als de Azure PaaS-service die u in uw virtuele netwerk implementeert, gebruikmaakt van een Basic interne load balancer, wordt het netwerk verkeer van uw on-premises netwerk naar de virtuele IP-adressen die worden gehost op de basis load balancer, verzonden naar de gateway van het virtuele netwerk. De oplossing is het bijwerken van de basis load balancer naar een [standaard Load Balancer](../load-balancer/load-balancer-overview.md).
 
 * Privé-koppeling: als u vanuit uw on-premises netwerk verbinding maakt met een [persoonlijk eind punt](../private-link/private-link-overview.md) in uw virtuele netwerk, wordt de verbinding via de gateway van het virtuele netwerk door lopen.
  

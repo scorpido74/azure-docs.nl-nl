@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 3b5698c782b691dd8ae91913115db184fc83a2eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0dfa137e42d60246ce8f5281f002d5ca567c2ae
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91756616"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427537"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Een Azure Machine Learning Compute-exemplaar maken en beheren
 
@@ -109,9 +109,9 @@ U kunt ook een reken instantie met een [Azure Resource Manager sjabloon](https:/
 
 Als beheerder kunt u een compute-instantie maken namens een gegevens wetenschapper en de instantie hieraan toewijzen met:
 * [Azure Resource Manager sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance).  Zie [identiteits object-Id's zoeken voor verificatie configuratie](../healthcare-apis/find-identity-object-ids.md)voor meer informatie over het vinden van de TenantID en ObjectID die nodig zijn in deze sjabloon.  U kunt deze waarden ook vinden in de Azure Active Directory Portal.
-* REST-API
+* REST API
 
-De gegevens wetenschapper u het Compute-exemplaar maakt voor de behoeften van [Azure op rollen gebaseerde toegangs beheer (RBAC)-](../role-based-access-control/overview.md) machtigingen: 
+De gegevens wetenschapper u het Compute-exemplaar maakt voor de behoeften van [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../role-based-access-control/overview.md) : 
 * *Micro soft. MachineLearningServices/werk ruimten/berekeningen/starten/actie*
 * *Micro soft. MachineLearningServices/werk ruimten/berekeningen/stoppen/actie*
 * *Micro soft. MachineLearningServices/werk ruimten/berekeningen/opnieuw opstarten/actie*
@@ -226,9 +226,9 @@ Voor elk reken exemplaar in uw werk ruimte die u hebt gemaakt (of die u voor u h
 
 ---
 
-Met [RBAC](/azure/role-based-access-control/overview) kunt u bepalen welke gebruikers in de werk ruimte een reken instantie kunnen maken, verwijderen, starten, stoppen en opnieuw starten. Alle gebruikers in de rol Inzender en eigenaar van de werk ruimte kunnen reken instanties maken, verwijderen, starten, stoppen en opnieuw starten in de werk ruimte. Maar alleen de maker van een specifiek reken exemplaar of de gebruiker die is toegewezen als deze namens hen is gemaakt, heeft toegang tot Jupyter, Jjupyterlab en RStudio op die reken instantie. Een reken instantie is toegewezen aan één gebruiker met hoofd toegang en kan worden terminal in via Jupyter/Jjupyterlab/RStudio. Reken instantie heeft aanmelding voor één gebruiker en alle acties gebruiken de identiteit van die gebruiker voor RBAC en de toewijzing van experimenten. SSH-toegang wordt beheerd via het mechanisme voor open bare/persoonlijke sleutels.
+Met [Azure RBAC](/azure/role-based-access-control/overview) kunt u bepalen welke gebruikers in de werk ruimte een reken instantie kunnen maken, verwijderen, starten, stoppen en opnieuw starten. Alle gebruikers in de rol Inzender en eigenaar van de werk ruimte kunnen reken instanties maken, verwijderen, starten, stoppen en opnieuw starten in de werk ruimte. Maar alleen de maker van een specifiek reken exemplaar of de gebruiker die is toegewezen als deze namens hen is gemaakt, heeft toegang tot Jupyter, Jjupyterlab en RStudio op die reken instantie. Een reken instantie is toegewezen aan één gebruiker met hoofd toegang en kan worden terminal in via Jupyter/Jjupyterlab/RStudio. Reken instantie heeft aanmelding voor één gebruiker en alle acties gebruiken de identiteit van die gebruiker voor Azure RBAC en de toewijzing van experimenten. SSH-toegang wordt beheerd via het mechanisme voor open bare/persoonlijke sleutels.
 
-Deze acties kunnen worden beheerd door RBAC:
+Deze acties kunnen worden beheerd door Azure RBAC:
 * *Micro soft. MachineLearningServices/werk ruimten/reken-en lees bewerkingen*
 * *Micro soft. MachineLearningServices/werk ruimten/reken kracht/schrijven*
 * *Micro soft. MachineLearningServices/werk ruimten/berekenen/verwijderen*
@@ -256,6 +256,7 @@ U kunt pakketten rechtstreeks installeren in Jupyter Notebook of RStudio:
 * Python: Voeg een installatie code toe en voer deze uit in een Jupyter Notebook-cel.
 
 U kunt ook installeren vanuit een Terminal venster. Installeer Python-pakketten in de **Python 3,6-AzureML-** omgeving.  R-pakketten installeren in de **R** -omgeving.
+% PIP en% Conda Magic functions installeert pakketten automatisch in de kernel die momenteel wordt uitgevoerd in de Jupyter-notebook sessie.
 
 ## <a name="add-new-kernels"></a>Nieuwe kernels toevoegen
 

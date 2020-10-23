@@ -2,17 +2,17 @@
 title: Zelfstudie - De Azure Batch-clientbibliotheek voor Node.js gebruiken
 description: Leer de basisconcepten van Azure Batch en bouw een eenvoudige oplossing met behulp van Node.js.
 ms.topic: tutorial
-ms.date: 05/22/2017
-ms.openlocfilehash: 4cecd25346d868dfb27deb9f768342ab2e72ade9
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.date: 10/08/2020
+ms.openlocfilehash: 33ca65421802cdbe31497f3a19ba5992961daa12
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780181"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850605"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Aan de slag met de Batch-SDK voor Node.js
 
-Ontdek de basis voor het bouwen van een Batch-client in Node.js met behulp van de [Azure Batch Node.js-SDK](/javascript/api/overview/azure/batch). Er wordt een stapsgewijze benadering gebruikt om inzicht te krijgen in een scenario voor een Batch-toepassing. Daarna wordt de toepassing met een Node.js-client ingesteld.  
+Ontdek de basis voor het bouwen van een Batch-client in Node.js met behulp van de [Azure Batch Node.js-SDK](/javascript/api/overview/azure/batch). Er wordt een stapsgewijze benadering gebruikt om inzicht te krijgen in een scenario voor een Batch-toepassing. Daarna wordt de toepassing met een Node.js-client ingesteld.
 
 ## <a name="prerequisites"></a>Vereisten
 In dit artikel wordt ervan uitgegaan dat u praktische kennis hebt van Node.js en vertrouwd bent met Linux. Er wordt ook van uitgegaan dat u een Azure-account hebt ingesteld met toegangsrechten voor het maken van Batch- en Storage-services.
@@ -174,7 +174,7 @@ var cloudPool = batch_client.pool.get(poolid,function(error,result,request,respo
         {
             if(error.statusCode==404)
             {
-                console.log("Pool not found yet returned 404...");    
+                console.log("Pool not found yet returned 404...");
 
             }
             else
@@ -241,7 +241,7 @@ Hieronder staat een voorbeeldresultaatobject dat is geretourneerd door de functi
   targetDedicated: 4,
   enableAutoScale: false,
   enableInterNodeCommunication: false,
-  maxTasksPerNode: 1,
+  taskSlotsPerNode: 1,
   taskSchedulingPolicy: { nodeFillType: 'Spread' } }
 ```
 
@@ -252,7 +252,7 @@ Een Azure Batch-taak is een logische groep vergelijkbare taken. In dit scenario 
 Deze taken worden gelijktijdig uitgevoerd en op verschillende knooppunten geïmplementeerd, of ingedeeld door de Azure Batch-service.
 
 > [!Tip]
-> U kunt de eigenschap [maxTasksPerNode](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) gebruiken om aan te geven hoeveel taken maximaal tegelijk mogen worden uitgevoerd op één knooppunt.
+> U kunt de eigenschap [taskSlotsPerNode](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) gebruiken om aan te geven hoeveel taken maximaal tegelijk mogen worden uitgevoerd op één knooppunt.
 >
 >
 
@@ -317,7 +317,7 @@ Als u vier containers hebt (con1, con2, con3 en con4) staat in de volgende code 
 ```nodejs
 // storing container names in an array
 var container_list = ["con1","con2","con3","con4"]
-    container_list.forEach(function(val,index){           
+    container_list.forEach(function(val,index){
 
            var container_name = val;
            var taskID = container_name + "_process";
@@ -325,7 +325,7 @@ var container_list = ["con1","con2","con3","con4"]
            var task = batch_client.task.add(poolid,task_config,function(error,result){
                 if(error != null)
                 {
-                    console.log(error.response);     
+                    console.log(error.response);
                 }
                 else
                 {
@@ -339,7 +339,7 @@ var container_list = ["con1","con2","con3","con4"]
     });
 ```
 
-Met de code worden meerdere taken aan de pool toegevoegd. Alle taken worden uitgevoerd op een knooppunt in de pool gemaakte VM's. Als het aantal taken het aantal VM's in een pool overschrijdt, of als de eigenschap maxTasksPerNode wordt overschreven, wordt er gewacht tot een aanvullend knooppunt beschikbaar is gemaakt. Azure Batch deelt alles automatisch in.
+Met de code worden meerdere taken aan de pool toegevoegd. Alle taken worden uitgevoerd op een knooppunt in de pool gemaakte VM's. Als het aantal taken het aantal VM's in een pool overschrijdt, of als de eigenschap taskSlotsPerNode wordt overschreven, wordt er gewacht tot een aanvullend knooppunt beschikbaar is gemaakt. Azure Batch deelt alles automatisch in.
 
 De portal biedt een gedetailleerd overzicht van de taken en de taakstatus. U kunt ook de lijst- en ophaalfuncties in de Azure Node-SDK gebruiken. U vindt meer informatie in de documentatie ([koppeling](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Job.html)).
 

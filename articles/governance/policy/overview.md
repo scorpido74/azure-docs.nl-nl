@@ -1,14 +1,14 @@
 ---
 title: Overzicht van Azure-beleid
 description: Azure Policy is een service in Azure die u gebruikt om beleidsdefinities in uw Azure-omgeving te maken, toe te wijzen en te beheren.
-ms.date: 09/22/2020
+ms.date: 10/05/2020
 ms.topic: overview
-ms.openlocfilehash: 596e52cca2be2a347c26502434048053a8b4684c
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 54dce519bfaa8c42afa967fc5c0579f31986aefb
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91538953"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873911"
 ---
 # <a name="what-is-azure-policy"></a>Wat is Azure Policy?
 
@@ -72,16 +72,16 @@ Azure Policy heeft diverse machtigingen, oftewel bewerkingen, in twee verschille
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
 - [Microsoft.PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-Veel ingebouwde rollen wijzen machtigingen toe aan Azure Policy-resources. De rol **Inzender voor resourcebeleid** bevat de meeste Azure Policy-bewerkingen. Degene met de rol **Eigenaar** heeft volledige rechten. Zowel **Inzender** als **Lezer** heeft toegang tot alle _lees_bewerkingen in Azure Policy. Met **Inzender** kunnen resourceherstelacties worden geactiveerd, maar kunnen er geen definities of toewijzingen worden _gemaakt_.
+Veel ingebouwde rollen wijzen machtigingen toe aan Azure Policy-resources. De rol **Inzender voor resourcebeleid** bevat de meeste Azure Policy-bewerkingen. Degene met de rol **Eigenaar** heeft volledige rechten. Zowel **Inzender** als **Lezer** heeft toegang tot alle _lees_bewerkingen in Azure Policy. Met **Inzender** kunnen resourceherstelacties worden geactiveerd, maar kunnen er geen definities of toewijzingen worden _gemaakt_. De rol **Beheerder van gebruikerstoegang** is vereist om de benodigde machtigingen voor de beheerde identiteit van **deployIfNotExists**- of **modify**-toewijzingen te verlenen.
 
 Als geen van de ingebouwde rollen de vereiste machtigingen heeft, maakt u een [aangepaste rol](../../role-based-access-control/custom-roles.md).
 
 > [!NOTE]
-> Voor de beheerde identiteit van de beleidstoewijzing **deployIfNotExists** zijn voldoende machtigingen nodig om resources te maken of bij te werken die zijn opgenomen in de sjabloon. Zie [Beleidsdefinities voor herstel configureren](./how-to/remediate-resources.md#configure-policy-definition) voor meer informatie.
+> Voor de beheerde identiteit van een **deployIfNotExists**- of **modify**-beleidstoewijzing zijn voldoende machtigingen nodig om resources te maken of bij te werken. Zie [Beleidsdefinities voor herstel configureren](./how-to/remediate-resources.md#configure-policy-definition) voor meer informatie.
 
 ### <a name="resources-covered-by-azure-policy"></a>Resources die worden gedekt door Azure Policy
 
-Azure Policy evalueert alle resources in Azure. Voor bepaalde resourceproviders, zoals [Gastconfiguratie](./concepts/guest-configuration.md), [Azure Kubernetes Service](../../aks/intro-kubernetes.md) en [Azure Key Vault](../../key-vault/general/overview.md), is er een uitgebreidere integratie voor het beheren van instellingen en objecten. Zie [Modi van resourceproviders](./concepts/definition-structure.md) voor meer informatie.
+Azure Policy evalueert alle resources in Azure en met ingeschakelde Arc. Voor bepaalde resourceproviders, zoals [Gastconfiguratie](./concepts/guest-configuration.md), [Azure Kubernetes Service](../../aks/intro-kubernetes.md) en [Azure Key Vault](../../key-vault/general/overview.md), is er een uitgebreidere integratie voor het beheren van instellingen en objecten. Zie [Modi van resourceproviders](./concepts/definition-structure.md) voor meer informatie.
 
 ### <a name="recommendations-for-managing-policies"></a>Aanbevelingen voor het beheren van beleid
 
@@ -112,7 +112,6 @@ In Azure Policy wordt een aantal ingebouwde beleidsregels geboden dat standaard 
 - **Toegestane locaties** (Weigeren): Hiermee beperkt u de beschikbare locaties voor nieuwe resources. Het bijbehorende effect wordt gebruikt om uw geografisch nalevingsvereisten af te dwingen.
 - **Toegestane SKU's van virtuele machines** (Weigeren): Hiermee wordt een set SKU's voor virtuele machines gespecificeerd die u kunt implementeren.
 - **Een tag toevoegen aan resources** (Wijzigen): Hiermee wordt een vereiste tag met bijbehorende standaardwaarde toegepast als de tag niet is opgegeven tijdens de implementatieaanvraag.
-- **Tag met standaardwaarde toevoegen** (Toevoegen): Hiermee wordt een vereiste tag met de bijbehorende waarde afgedwongen in een resource.
 - **Niet toegestane resourcetypen** (Weigeren): Hiermee voorkomt u dat een lijst met resourcetypen wordt geïmplementeerd.
 
 Als u deze beleidsdefinities (zowel de ingebouwde als de aangepaste) wilt implementeren, dient u ze eerst toe te wijzen. U kunt elk van deze typen beleid toewijzen via Azure Portal, PowerShell of Azure CLI.

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 19b65554801a22954499219e43ed021a7cc8c121
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7a143f99eca73e0620e24ac5d93141ddb7d99e6
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89258432"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215957"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Overzicht van tokens in Azure Active Directory B2C
 
@@ -31,7 +31,7 @@ De volgende tokens worden gebruikt in communicatie met Azure AD B2C:
 
 - *Id-token* : een JWT die claims bevat die u kunt gebruiken om gebruikers in uw toepassing te identificeren. Dit token wordt veilig verzonden in HTTP-aanvragen voor communicatie tussen twee onderdelen van dezelfde toepassing of service. U kunt de claims in een ID-token gebruiken zoals u dat wilt. Ze worden vaak gebruikt voor het weer geven van account gegevens of het maken van beslissingen voor toegangs beheer in een toepassing. ID-tokens zijn ondertekend, maar niet versleuteld. Wanneer uw toepassing of API een ID-token ontvangt, moet de hand tekening worden gevalideerd om aan te tonen dat het token authentiek is. Uw toepassing of API moet ook een aantal claims in het token valideren om er zeker van te zijn dat deze geldig is. Afhankelijk van de scenario vereisten kunnen de claims die door een toepassing worden gevalideerd, verschillen, maar moet uw toepassing enkele algemene claim validaties uitvoeren in elk scenario.
 - *Toegangs token* : een JWT die claims bevat die u kunt gebruiken om de verleende machtigingen voor uw api's te identificeren. Toegangs tokens zijn ondertekend, maar ze zijn niet versleuteld. Toegangs tokens worden gebruikt om toegang te bieden tot Api's en resource servers.  Wanneer uw API een toegangs token ontvangt, moet deze de hand tekening valideren om te bewijzen dat het token authentiek is. Uw API moet ook een aantal claims in het token valideren om er zeker van te zijn dat deze geldig is. Afhankelijk van de scenario vereisten kunnen de claims die door een toepassing worden gevalideerd, verschillen, maar moet uw toepassing enkele algemene claim validaties uitvoeren in elk scenario.
-- Vernieuwings tokens *vernieuwen* tokens worden gebruikt om nieuwe id-tokens en toegangs tokens in een OAuth 2,0-stroom te verkrijgen. Ze bieden uw toepassing lange termijn toegang tot resources namens gebruikers zonder dat hiervoor interactie met deze gebruikers nodig is. Vernieuwings tokens zijn dekkend voor uw toepassing. Ze worden uitgegeven door Azure AD B2C en kunnen alleen worden geïnspecteerd en geïnterpreteerd door Azure AD B2C. Ze zijn lange tijd, maar uw toepassing mag niet worden geschreven met de verwachting dat een vernieuwings token voor een bepaalde periode wordt verlengd. Vernieuwings tokens kunnen om verschillende redenen ongeldig worden gemaakt. De enige manier om ervoor te zorgen dat uw toepassing weet of een vernieuwings token geldig is, is door een token aanvraag in te Azure AD B2C. Wanneer u een vernieuwings token inwisselt voor een nieuw token, ontvangt u een nieuw vernieuwings token in het token antwoord. Sla het nieuwe vernieuwings token op. Het vervangt het vernieuwings token dat u eerder in de aanvraag hebt gebruikt. Met deze actie kan worden gegarandeerd dat de vernieuwings tokens zo lang mogelijk geldig blijven.
+- Vernieuwings tokens *vernieuwen* tokens worden gebruikt om nieuwe id-tokens en toegangs tokens in een OAuth 2,0-stroom te verkrijgen. Ze bieden uw toepassing lange termijn toegang tot resources namens gebruikers zonder dat hiervoor interactie met deze gebruikers nodig is. Vernieuwings tokens zijn dekkend voor uw toepassing. Ze worden uitgegeven door Azure AD B2C en kunnen alleen worden geïnspecteerd en geïnterpreteerd door Azure AD B2C. Ze zijn lange tijd, maar uw toepassing mag niet worden geschreven met de verwachting dat een vernieuwings token voor een bepaalde periode wordt verlengd. Vernieuwings tokens kunnen om verschillende redenen ongeldig worden gemaakt. De enige manier om ervoor te zorgen dat uw toepassing weet of een vernieuwings token geldig is, is door een token aanvraag in te Azure AD B2C. Wanneer u een vernieuwings token inwisselt voor een nieuw token, ontvangt u een nieuw vernieuwings token in het token antwoord. Sla het nieuwe vernieuwings token op. Het vervangt het vernieuwings token dat u eerder in de aanvraag hebt gebruikt. Met deze actie kan worden gegarandeerd dat de vernieuwings tokens zo lang mogelijk geldig blijven. Houd er rekening mee dat toepassingen met één pagina die gebruikmaken van de autorisatie code stroom met PKCE altijd een vernieuwings token van 24 uur hebben. Meer [informatie over de beveiligings implicaties van vernieuwings tokens in de browser](../active-directory/develop/reference-third-party-cookies-spas.md#security-implications-of-refresh-tokens-in-the-browser).
 
 ## <a name="endpoints"></a>Eindpunten
 

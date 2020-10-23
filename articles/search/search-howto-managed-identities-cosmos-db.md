@@ -9,18 +9,19 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: fc12978e59ecc3ebcc58d4070fa057f9a53fda58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d2185509631bf03717e418e485cfcaad1e21c63
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275282"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102690"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity"></a>Een Indexeer functie verbinding met een Cosmos DB-Data Base instellen met behulp van een beheerde identiteit
 
 Op deze pagina wordt beschreven hoe u een Indexeer functie verbinding kunt instellen met een Azure Cosmos DB-Data Base met behulp van een beheerde identiteit in plaats van referenties op te geven in het gegevens bron object connection string.
 
 Voor meer informatie over deze functie kunt u het beste inzicht krijgen in wat een indexer is en hoe u een Indexeer functie instelt voor uw gegevens bron. Meer informatie vindt u op de volgende koppelingen:
+
 * [Overzicht van de indexeerfunctie](search-indexer-overview.md)
 * [Indexeerfunctie voor Azure Cosmos DB](search-howto-index-cosmosdb.md)
 
@@ -143,9 +144,8 @@ Als u vindt dat u geen gegevens van Cosmos DB kunt indexeren, moet u rekening ho
 
 1. Als u onlangs uw Cosmos DB-account sleutels hebt gedraaid, moet u tot 15 minuten wachten totdat de beheerde identiteit connection string werkt.
 
-1. Controleer of voor het Cosmos DB-account de toegang is beperkt tot het selecteren van netwerken. Als dit het geval is, raadpleegt u de [Indexeer functie toegang tot gegevens bronnen met behulp van Azure-netwerk beveiligings functies](search-indexer-securing-resources.md).
+1. Controleer of voor het Cosmos DB-account de toegang is beperkt tot het selecteren van netwerken. Als dit het geval is, raadpleegt u de toegang tot de [Indexeer functie voor inhoud die wordt beveiligd door Azure-netwerk beveiligings functies](search-indexer-securing-resources.md).
 
-## <a name="see-also"></a>Zie ook
+## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over Cosmos DB Indexeer functies:
 * [Indexeerfunctie voor Azure Cosmos DB](search-howto-index-cosmosdb.md)

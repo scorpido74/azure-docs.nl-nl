@@ -1,30 +1,30 @@
 ---
-title: RU/s bijwerken voor een Cassandra-keyspace en -tabel voor Azure Cosmos DB
-description: RU/s bijwerken voor een Cassandra-keyspace en -tabel voor Azure Cosmos DB
+title: Azure CLI-scripts voor doorvoerbewerkingen (RU/s) voor Azure Cosmos DB Cassandra API-resources
+description: Azure CLI-scripts voor doorvoerbewerkingen (RU/s) voor Azure Cosmos DB Cassandra API-resources
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: sample
-ms.date: 07/29/2020
-ms.openlocfilehash: c0026202e8f110123a7360a5fda521947ed8e9ee
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.date: 10/07/2020
+ms.openlocfilehash: 09ea092afcfee6223330b1ad887d73ea2f78db59
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803630"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91843019"
 ---
-# <a name="update-rus-for-a-cassandra-keyspace-and-table-using-azure-cli"></a>RU/s bijwerken voor een Cassandra-keyspace en -tabel met behulp van Azure CLI
+# <a name="throughput-rus-operations-with-azure-cli-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>Doorvoerbewerkingen (RU/s) met Azure CLI voor een keyspace of tabel voor Azure Cosmos DB - Cassandra-API
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit onderwerp gebruikmaken van Azure CLI versie 2.9.1 of hoger. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit onderwerp gebruikmaken van Azure CLI versie 2.12.1 of hoger. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
-Met dit script wordt een Cassandra-keyspace gemaakt met gedeelde doorvoer en een Cassandra-tabel met toegewezen doorvoer, waarna de doorvoer voor zowel de ruimte als de tabel wordt bijgewerkt.
+Met dit script wordt een Cassandra-keyspace gemaakt met gedeelde doorvoer en een Cassandra-tabel met toegewezen doorvoer, waarna de doorvoer voor zowel de ruimte als de tabel wordt bijgewerkt. Met het script wordt de migratie van standaarddoorvoer naar doorvoer met automatische schaalaanpassing uitgevoerd en de waarde van doorvoer met automatische schaalaanpassing gelezen nadat de migratie is voltooid.
 
-[!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/cassandra/throughput.sh "Update RU/s for Cassandra keyspace and table.")]
+[!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/cassandra/throughput.sh "Throughput operations for Cassandra keyspace and table.")]
 
 ## <a name="clean-up-deployment"></a>Opschonen van implementatie
 
@@ -44,8 +44,10 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Hiermee wordt een Azure Cosmos DB-account gemaakt. |
 | [az cosmosdb cassandra keyspace create](/cli/azure/cosmosdb/cassandra/keyspace#az-cosmosdb-cassandra-keyspace-create) | Hiermee maakt u een Azure Cosmos Cassandra-keyspace. |
 | [az cosmosdb cassandra table create](/cli/azure/cosmosdb/cassandra/table#az-cosmosdb-cassandra-table-create) | Hiermee maakt u een Azure Cosmos Cassandra-tabel. |
-| [az cosmosdb cassandra keyspace throughput update](/cli/azure/cosmosdb/cassandra/keyspace/throughput?view=azure-cli-latest&preserve-view=true#az-cosmosdb-cassandra-keyspace-throughput-update) | RU/s voor een Azure Cosmos Cassandra-keyspace bijwerken. |
+| [az cosmosdb cassandra keyspace throughput update](/cli/azure/cosmosdb/cassandra/keyspace/throughput#az-cosmosdb-cassandra-keyspace-throughput-update) | RU/s voor een Azure Cosmos Cassandra-keyspace bijwerken. |
 | [az cosmosdb cassandra table throughput update](/cli/azure/cosmosdb/cassandra/table/throughput#az-cosmosdb-cassandra-table-throughput-update) | RU/s voor een Azure Cosmos Cassandra-tabel bijwerken. |
+| [az cosmosdb cassandra keyspace throughput migrate](/cli/azure/cosmosdb/cassandra/keyspace/throughput#az_cosmosdb_cassandra_keyspace_throughput_migrate) | Doorvoer migreren voor een Azure Cosmos Cassandra-keyspace. |
+| [az cosmosdb cassandra table throughput migrate](/cli/azure/cosmosdb/cassandra/table/throughput#az_cosmosdb_cassandra_table_throughput_migrate) | Doorvoer migreren voor een Azure Cosmos Cassandra-tabel. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 
 ## <a name="next-steps"></a>Volgende stappen

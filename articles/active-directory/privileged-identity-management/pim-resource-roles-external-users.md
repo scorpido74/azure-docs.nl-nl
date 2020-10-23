@@ -15,12 +15,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 763441d023e4a707c6a1edc09abfb6d8e5525723
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4e2e18f3bb9d1c972d805a60493897d605921e4
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88782733"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92365524"
 ---
 # <a name="invite-guest-users-and-assign-azure-resource-roles-in-privileged-identity-management"></a>Gast gebruikers uitnodigen en Azure-resource rollen toewijzen in Privileged Identity Management
 
@@ -67,7 +67,7 @@ Om ervoor te zorgen dat u gasten kunt uitnodigen voor uw organisatie, moet u de 
 
 Met Privileged Identity Management kunt u een gast uitnodigen en deze in aanmerking komen voor een Azure-resource functie.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/) met een gebruiker die lid is van de rol [privileged Role Administrator](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) of [user Administrator](../users-groups-roles/directory-assign-admin-roles.md#user-administrator) .
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/) met een gebruiker die lid is van de rol [privileged Role Administrator](../roles/permissions-reference.md#privileged-role-administrator) of [user Administrator](../roles/permissions-reference.md#user-administrator) .
 
 1. Open **Azure AD privileged Identity Management**.
 

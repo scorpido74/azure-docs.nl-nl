@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d44964b5aed55e2ee70d18e6be5d632b652956e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78ff0440fa83b6bd002cdf4256dc066342b1b390
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90976259"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424755"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>Scenario: verkeer routeren via een NVA
 
@@ -41,16 +41,16 @@ De volgende verbindings matrix bevat een overzicht van de stromen die in dit sce
 
 | Van             | Aan:|   *NVA-spokes*|*NVA VNets*|*Niet-NVA-VNets*|*Vertakkingen*|
 |---|---|---|---|---|---|
-| **NVA-spokes**   | &#8594; | 0/0 UDR  |  Peering |   0/0 UDR    |  0/0 UDR  |
-| **NVA VNets**    | &#8594; |   Statisch |      X   |        X     |      X    |
-| **Niet-NVA-VNets**| &#8594; |   Statisch |      X   |        X     |      X    |
-| **Vertakkingen**     | &#8594; |   Statisch |      X   |        X     |      X    |
+| **NVA-spokes**   | &#8594; | Meer dan NVA VNet | Peering | Meer dan NVA VNet | Meer dan NVA VNet |
+| **NVA VNets**    | &#8594; | Peering | Direct | Direct | Direct |
+| **Niet-NVA-VNets**| &#8594; | Meer dan NVA VNet | Direct | Direct | Direct |
+| **Vertakkingen**     | &#8594; | Meer dan NVA VNet | Direct | Direct | Direct |
 
-Elk van de cellen in de verbindings matrix beschrijft of een virtuele WAN-verbinding (de ' aan ' kant van de stroom, de rijkoppen in de tabel) een bestemmings voorvoegsel (de ' aan '-zijde van de stroom, de kolom koppen in de tabel cursief) voor een specifieke verkeers stroom leert. Een ' X ' betekent dat de connectiviteit systeem eigen wordt ondersteund door Virtual WAN, en ' static ' betekent dat de connectiviteit wordt verschaft door Virtual WAN met statische routes. Overweeg de volgende:
+Elk van de cellen in de verbindings matrix beschrijft hoe een VNet of vertakking (de ' van ' kant van de stroom, de rijkoppen in de tabel) communiceert met een doel-VNet of vertakking (de ' aan ' kant van de stroom, de kolom koppen in cursief in de tabel). ' Direct ' betekent dat de connectiviteit systeem eigen wordt ondersteund door Virtual WAN, ' peering ' betekent dat de connectiviteit wordt verschaft door een User-Defined route in het VNet, "via NVA VNet" betekent dat de connectiviteit de NVA implementeert die in het NVA VNet is geïmplementeerd. Overweeg de volgende:
 
 * NVA-spokes worden niet beheerd door virtuele WAN. Als gevolg hiervan worden de mechanismen waarmee ze zullen communiceren met andere VNets of vertakkingen door de gebruiker onderhouden. Connectiviteit met het NVA VNet wordt gegeven door een VNet-peering en een standaard route naar 0.0.0.0/0 die verwijst naar de NVA als volgende hop moet verbinding met internet hebben, andere spokes en vertakkingen
 * NVA VNets kent hun eigen NVA-spokes, maar niet over NVA-spokes die zijn verbonden met andere NVA VNets. In tabel 1 is VNet 2 bijvoorbeeld van de VNet 5 en VNet 6, maar niet over andere spokes, zoals VNet 7 en VNet 8. Er is een statische route vereist om andere voor voegsels van spokes te injecteren in NVA VNets
-* Daarnaast hebben vertakkingen en niet-NVA VNets geen NVA-spoke, omdat NVA spokes geen verbinding hebben met VWAN hubs. Als gevolg hiervan zijn er ook statische routes nodig.
+* Daarnaast hebben vertakkingen en niet-NVA VNets geen NVA-spoke, omdat NVA spokes geen verbinding hebben met virtuele WAN-hubs. Als gevolg hiervan zijn er ook statische routes nodig.
 
 Als rekening wordt gehouden met de NVA-spokes worden niet beheerd door virtuele WAN, worden in alle andere rijen hetzelfde connectiviteits patroon weer gegeven. Als gevolg hiervan wordt een enkele route tabel (de standaard instelling):
 

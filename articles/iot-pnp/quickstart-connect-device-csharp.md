@@ -7,18 +7,18 @@ ms.date: 07/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: d1deac1c7932a8f3cec06d9c264ba401f7f1341d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: da1ac77ad2716abf964c835634d049895fe88654
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91577030"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044544"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-running-on-windows-to-iot-hub-c"></a>Quickstart: Een voorbeeld van een IoT Plug and Play-apparaattoepassing die in Windows wordt uitgevoerd, verbinden met IoT Hub (C#)
 
 [!INCLUDE [iot-pnp-quickstarts-device-selector.md](../../includes/iot-pnp-quickstarts-device-selector.md)]
 
-In deze quickstart ziet u hoe u een voorbeeld van een IoT Plug and Play-apparaattoepassing maakt, hoe u de toepassing verbindt met uw IoT-hub en hoe u het hulpprogramma Azure IoT Explorer gebruikt om de telemetrie weer te geven die wordt verzonden. De voorbeeldtoepassing wordt geschreven in CSharp en is inbegrepen in de Azure IoT device-SDK voor C#. Een ontwikkelaar van oplossingen kan het hulpprogramma Azure IoT Explorer gebruiken om inzicht te krijgen in de mogelijkheden van een IoT Plug and Play-apparaat zonder apparaatcode weer te geven.
+In deze quickstart ziet u hoe u een voorbeeld van een IoT Plug and Play-apparaattoepassing maakt, hoe u de toepassing verbindt met uw IoT-hub en hoe u het hulpprogramma Azure IoT Explorer gebruikt om de telemetrie weer te geven die wordt verzonden. De voorbeeldtoepassing wordt geschreven in C# en is inbegrepen in de Azure IoT Samples for C#. Een ontwikkelaar van oplossingen kan het hulpprogramma Azure IoT Explorer gebruiken om inzicht te krijgen in de mogelijkheden van een IoT Plug and Play-apparaat zonder apparaatcode weer te geven.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -31,9 +31,9 @@ Als u deze quickstart in Windows wilt uitvoeren, moet de volgende software op uw
 
 ## <a name="download-the-code"></a>De code downloaden
 
-In deze quickstart bereidt u een ontwikkelomgeving voor die kan worden gebruikt voor het klonen en compileren van de Azure IoT Hub Device C#-SDK.
+In deze quickstart bereidt u een ontwikkelomgeving voor die kan worden gebruikt voor het klonen en compileren van de opslagplaats Azure IoT Samples for C#.
 
-Open een opdrachtprompt in de map van uw keuze. Voer de volgende opdracht uit om de GitHub-opslagplaats [Microsoft Azure IoT Samples for .NET](https://github.com/Azure-Samples/azure-iot-samples-csharp) te klonen naar deze locatie:
+Open een opdrachtprompt in de map van uw keuze. Voer de volgende opdracht uit om de GitHub-opslagplaats [Microsoft Azure IoT Samples for c# (.NET)](https://github.com/Azure-Samples/azure-iot-samples-csharp) te klonen naar deze locatie:
 
 ```cmd
 git clone  https://github.com/Azure-Samples/azure-iot-samples-csharp.git
@@ -113,4 +113,4 @@ DateTime since = JsonConvert.DeserializeObject<DateTime>(request.DataAsJson);
 In deze quickstart hebt u geleerd hoe u een IoT Plug and Play-apparaat kunt verbinden met een IoT-hub. Als u meer wilt weten over het bouwen van een oplossing die samenwerkt met uw IoT Plug en Play-apparaten, leest u:
 
 > [!div class="nextstepaction"]
-> [Uitleg: Verbinding maken en werken met een apparaat](howto-develop-solution.md)
+> [Uitleg: Verbinding maken en werken met een apparaat](./quickstart-service-node.md)

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 8ac47937650d766a159c53f7390a8f1e355a28c2
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 5001864bd80917aef6d8631fe2b5097b22afbe03
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074801"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125778"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB prijs Categorieën
 
@@ -39,7 +39,7 @@ Nadat u een server hebt gemaakt, kunt u het aantal vCores en de prijs categorie 
 
 Reken bronnen worden weer gegeven als vCores, die de logische CPU van de onderliggende hardware vertegenwoordigen. Logische Cpu's van de vijfde generatie zijn gebaseerd op Intel E5-2673 v4 (Broadwell) 2,3-GHz processors.
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Opslag
 
 De opslag ruimte die u inricht, is de hoeveelheid opslag capaciteit die beschikbaar is voor uw Azure Database for MariaDB-server. De opslag wordt gebruikt voor de database bestanden, tijdelijke bestanden, transactie logboeken en de MariaDB-server Logboeken. De totale hoeveelheid opslag ruimte die u hebt ingericht, definieert ook de I/O-capaciteit die beschikbaar is voor uw server.
 
@@ -71,7 +71,7 @@ We verg Roten de opslag limieten in onze lagen van Algemeen en geoptimaliseerd v
 | IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Maxi maal 20.000 IOPS| 3 IOPS/GB<br/>Min. 100 IOPS<br/>Maxi maal 20.000 IOPS |
 
 > [!IMPORTANT]
-> Grote opslag is momenteel beschikbaar in de open bare preview in de volgende regio's: VS-Oost, VS-Oost 2, VS-midden, VS-West, Noord-Centraal VS, Zuid-Centraal VS, Europa-noord, Europa-west, UK-zuid, UK-west, Zuidoost-Azië, Azië-oost, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Australië-oost, Australië-Oost, Canada-oost en Canada-centraal.
+> Grote opslag ruimte bevindt zich momenteel in de open bare preview in de volgende regio's: VS-Oost, VS-Oost 2, Brazilië-zuid, VS-West, VS-Noord-Centraal, Zuid-Centraal VS, Europa-noord, Europa-west, UK-zuid, UK-west, Zuidoost-Azië, Azië-oost, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Australië-oost, Australië-Zuid-Oost, Canada-oost en Canada-centraal.
 >
 > Alle andere regio's ondersteunen Maxi maal 4 TB opslag ruimte en Maxi maal 6000 IOPS.
 >

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.openlocfilehash: d4a478c402346e33a4f27ff2a363de75285b435b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7a0da85aeba1a9736884a6b8b345efd3f0a8544c
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543836"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996548"
 ---
 # <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>Zelfstudie: Oracle Cloud Infrastructure-console integreren met Azure Active Directory
 
@@ -101,7 +101,7 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 1. De Oracle Cloud Infrastructure-console-toepassing verwacht SAML-asserties in een specifieke indeling. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op het pictogram **Bewerken** om het dialoogvenster gebruikerskenmerken te openen.
 
-   ![image](common/edit-attribute.png)
+   ![Schermopname van het dialoogvenster Gebruikerskenmerken, met rechtsboven het pictogram Bewerken geselecteerd.](common/edit-attribute.png)
 
 1. Bovendien verwacht de Oracle Cloud Infrastructure-console-toepassing nog enkele kenmerken die als SAML-antwoord moeten worden doorgestuurd. Voer in het gedeelte **Gebruikerskenmerken en -claims** in het dialoogvenster **Groepsclaims (preview)** de volgende stappen uit:
 
@@ -111,9 +111,9 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
  
    1. Klik op **Opslaan**.
 
-      ![image](./media/oracle-cloud-tutorial/config07.png)
+      ![Schermopname van de sectie Gebruikerskenmerken en claims, met de pictogrammen Bewerken gemarkeerd voor Waarde voor naam-id en Groepen die zijn geretourneerd.](./media/oracle-cloud-tutorial/config07.png)
     
-      ![image](./media/oracle-cloud-tutorial/config11.png)
+      ![Schermopname van het dialoogvenster Gebruikersclaims beheren, met Persistent en de knop Opslaan geselecteerd.](./media/oracle-cloud-tutorial/config11.png)
 
    1. Klik op de **pen** naast **Groepen die zijn geretourneerd in claim**.
 
@@ -173,15 +173,15 @@ In dit gedeelte gaat u B.Simon toestemming geven voor gebruik van eenmalige aanm
 
 1. Klik aan de linkerkant van het menu en klik op **Identiteit** en ga vervolgens naar **Federatie**.
 
-   ![Configuratie](./media/oracle-cloud-tutorial/config01.png)
+   ![Schermopname van Oracle Cloud Infrastructure-console, met Identiteit en Federatie geselecteerd in het menu linksboven.](./media/oracle-cloud-tutorial/config01.png)
 
 1. Sla het **metagegevensbestand van de service provider op** door te klikken op de link **Dit document downloaden** en upload het naar het gedeelte **Basisconfiguratie van SAML** van Azure Portal en klik vervolgens op **Id-provider toevoegen**.
 
-   ![Configuratie](./media/oracle-cloud-tutorial/config02.png)
+   ![Schermopname waarin in het linkermenu Federatie is geselecteerd, en waarin de knop Id-provider toevoegen en de actie Dit documenten downloaden zijn geselecteerd.](./media/oracle-cloud-tutorial/config02.png)
 
 1. Voer de volgende stappen uit in het pop-upvenster **Nieuwe id-provider**:
 
-   ![Configuratie](./media/oracle-cloud-tutorial/config03.png)
+   ![Schermopname van de pop-up Identiteitsprovider toevoegen.](./media/oracle-cloud-tutorial/config03.png)
 
    1. Voer in het tekstvak **NAAM** uw naam in.
 
@@ -193,7 +193,7 @@ In dit gedeelte gaat u B.Simon toestemming geven voor gebruik van eenmalige aanm
 
    1. Klik op **Doorgaan** en voer in de sectie **Id-provider bewerken** de volgende stappen uit:
 
-      ![Configuratie](./media/oracle-cloud-tutorial/config09.png)
+      ![Schermopname van de sectie Id-provider bewerken, met Id-providergroep, OCI-groep, Toewijzen toevoegen, en de knop Verzenden gemarkeerd.](./media/oracle-cloud-tutorial/config09.png)
 
    1. De **IDENTITY PROVIDER GROUP** moet worden geselecteerd als Aangepaste groep. De GROEP-ID moet de GUID van de groep uit Azure Active Directory zijn. De groep moet worden toegewezen aan de overeenkomstige groep in het veld **OCI-GROEP**.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: 02e78969ce30f109f16309075b040b06c773b0dd
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 575c139a3b417eb9429695d3ea6be26bf5625de5
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946214"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371066"
 ---
 # <a name="monitor-identity-and-access"></a>Identiteit en toegang bewaken
 
@@ -30,7 +30,7 @@ Door de activiteiten en configuratie-instellingen die betrekking hebben op ident
 
 Azure Security Center heeft twee specifieke beveiligings controles om ervoor te zorgen dat u voldoet aan de identiteits-en beveiligings vereisten van uw organisatie: 
 
- - **Toegang en machtigingen beheren** : we raden u aan het [toegangs model voor de minimale bevoegdheid te gebruiken](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) en ervoor te zorgen dat u uw gebruikers alleen de toegang verleent die nodig zijn om hun taken uit te voeren. Dit besturings element bevat ook aanbevelingen voor het implementeren van [op rollen gebaseerd toegangs beheer (RBAC)](../role-based-access-control/overview.md) om toegang tot uw resources te beheren.
+ - **Toegang en machtigingen beheren** : we raden u aan het [toegangs model voor de minimale bevoegdheid te gebruiken](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) en ervoor te zorgen dat u uw gebruikers alleen de toegang verleent die nodig zijn om hun taken uit te voeren. Dit besturings element bevat ook aanbevelingen voor het implementeren van [op rollen gebaseerd toegangs beheer (RBAC)](../role-based-access-control/overview.md) om toegang tot uw resources te beheren.
  
  - **Schakel MFA** in als u [MFA](https://www.microsoft.com/security/business/identity/mfa) hebt ingeschakeld, uw accounts veilig zijn en gebruikers nog steeds kunnen worden geverifieerd bij vrijwel elke toepassing met eenmalige aanmelding.
 
@@ -56,7 +56,7 @@ Er zijn enkele beperkingen ten aanzien van de identiteits-en toegangs beveiligin
 
 ## <a name="multi-factor-authentication-mfa-and-azure-active-directory"></a>Multi-factor Authentication (MFA) en Azure Active Directory 
 
-Voor het inschakelen van MFA zijn [Tenant machtigingen voor Azure Active Directory (AD)](../active-directory/users-groups-roles/directory-assign-admin-roles.md)vereist.
+Voor het inschakelen van MFA zijn [Tenant machtigingen voor Azure Active Directory (AD)](../active-directory/roles/permissions-reference.md)vereist.
 
 - Als u een Premium-editie van AD hebt, schakelt u MFA in met behulp van [voorwaardelijke toegang](../active-directory/conditional-access/concept-conditional-access-policy-common.md).
 - Als u de gratis versie van AD gebruikt, schakelt u de **standaard instellingen voor beveiliging** in, zoals beschreven in [Azure Active Directory documentatie](../active-directory/fundamentals/concept-fundamentals-security-defaults.md).
@@ -84,7 +84,7 @@ Als u wilt zien voor welke accounts geen MFA is ingeschakeld, gebruikt u de volg
     > De accounts worden weer gegeven als object-Id's in plaats van account namen om de privacy van de account houders te beveiligen.
 
 > [!TIP]
-> U kunt ook de evaluaties van de methode REST API van Security Center gebruiken [-ophalen](https://docs.microsoft.com/rest/api/securitycenter/assessments/get).
+> U kunt ook de evaluaties van de methode REST API van Security Center gebruiken [-ophalen](/rest/api/securitycenter/assessments/get).
 
 
 ## <a name="next-steps"></a>Volgende stappen

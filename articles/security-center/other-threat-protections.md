@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 09/15/2020
 ms.author: memildin
-ms.openlocfilehash: 377c68cd2f0b0c132fc690cb03d7c3c5694bb52e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63b93db314701d281f3f4fff195671f43cdb9dbc
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91438910"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340883"
 ---
 # <a name="additional-threat-protections-in-azure-security-center"></a>Extra bedreigingsbeveiliging in Azure Security Center
 Naast de ingebouwde [Azure Defender-beveiligingsmethoden](azure-defender.md) biedt Azure Security Center de volgende mogelijkheden voor bedreigingsbeveiliging.
@@ -90,7 +90,7 @@ Van DDoS-aanvallen (Distributed Denial of service) is het bekend dat ze eenvoudi
 
 Met een DDoS-aanval wordt geprobeerd de resources van een toepassing uit te putten, waardoor de toepassing niet meer beschikbaar is voor legitieme gebruikers. DDoS-aanvallen kunnen worden gericht op elk eindpunt dat kan worden bereikt via internet.
 
-U kunt zich tegen DDoS-aanvallen beschermen door een licentie voor Azure DDoS Protection aan te schaffen en ervoor te zorgen dat u de aanbevolen procedures voor het ontwerpen van toepassingen volgt. DDoS Protection biedt verschillende servicelagen. Zie het [Overzicht van Azure DDoS Protection](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview) voor meer informatie.
+U kunt zich tegen DDoS-aanvallen beschermen door een licentie voor Azure DDoS Protection aan te schaffen en ervoor te zorgen dat u de aanbevolen procedures voor het ontwerpen van toepassingen volgt. DDoS Protection biedt verschillende servicelagen. Zie het [Overzicht van Azure DDoS Protection](../virtual-network/ddos-protection-overview.md) voor meer informatie.
 
 Zie de [Referentietabel met waarschuwingen](alerts-reference.md#alerts-azureddos) voor een lijst met waarschuwingen voor Azure DDoS Protection.
 

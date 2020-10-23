@@ -80,6 +80,10 @@
           href: redirect-overview.md
         - name: HTTP-headers en URL opnieuw schrijven
           href: rewrite-http-headers-url.md
+    - name: Beveiliging
+      items:
+        - name: Beveiligingsbasislijn
+          href: security-baseline.md
     - name: SSL
       items:
         - name: SSL-beëindiging en end-to-end-SSL

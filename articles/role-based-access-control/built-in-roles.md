@@ -9,18 +9,18 @@ author: rolyon
 ms.author: rolyon
 ms.date: 09/22/2020
 ms.custom: generated
-ms.openlocfilehash: f5d5b4f801dd406518a6ba516bf2e38e01cb96ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8db16ba415e609827f6b775840f153489702ecca
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275265"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370556"
 ---
 # <a name="azure-built-in-roles"></a>Ingebouwde Azure-rollen
 
 [Toegangs beheer op basis van rollen (Azure RBAC) van](overview.md) Azure heeft verschillende ingebouwde rollen van Azure die u kunt toewijzen aan gebruikers, groepen, service-principals en beheerde identiteiten. Roltoewijzingen zijn de manier waarop u de toegang tot Azure-resources beheert. Als de ingebouwde rollen niet voldoen aan de specifieke behoeften van uw organisatie, kunt u uw eigen [aangepaste Azure-rollen](custom-roles.md) maken.
 
-Dit artikel bevat een overzicht van de ingebouwde rollen van Azure, die altijd in ontwikkeling zijn. Gebruik de lijst met [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) of [AZ Role definition](/cli/azure/role/definition#az-role-definition-list)om de nieuwste rollen op te halen. Als u op zoek bent naar beheerders rollen voor Azure Active Directory (Azure AD), raadpleegt u [machtigingen voor beheerdersrol in azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
+Dit artikel bevat een overzicht van de ingebouwde rollen van Azure, die altijd in ontwikkeling zijn. Gebruik de lijst met [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) of [AZ Role definition](/cli/azure/role/definition#az-role-definition-list)om de nieuwste rollen op te halen. Als u op zoek bent naar beheerders rollen voor Azure Active Directory (Azure AD), raadpleegt u [machtigingen voor beheerdersrol in azure Active Directory](../active-directory/roles/permissions-reference.md).
 
 De volgende tabel bevat een korte beschrijving en de unieke ID van elke ingebouwde rol. Klik op de naam van de rol om de lijst met `Actions` ,, `NotActions` `DataActions` en `NotDataActions` voor elke rol weer te geven. Zie [begrippen van Azure-functies begrijpen](role-definitions.md)voor informatie over wat deze acties betekenen en hoe deze van toepassing zijn op het beheer-en gegevens abonnement.
 
@@ -121,7 +121,7 @@ De volgende tabel bevat een korte beschrijving en de unieke ID van elke ingebouw
 > | [Inzender Cognitive Services](#cognitive-services-contributor) | Hiermee kunt u sleutels van Cognitive Services maken, lezen, bijwerken, verwijderen en beheren. | 25fbc0a9-bd7c-42a3-aa1a-3b75d497ee68 |
 > | [Cognitive Services gegevens lezer (preview-versie)](#cognitive-services-data-reader-preview) | Hiermee kunt u Cognitive Services gegevens lezen. | b59867f0-fa02-499b-be73-45a86b5b3e1c |
 > | [Cognitive Services gebruiker](#cognitive-services-user) | Hiermee kunt u de sleutels van Cognitive Services lezen en weer geven. | a97b65f3-24c7-4388-baec-2e87135dc908 |
-> | **Gemengde realiteit** |  |  |
+> | **Mixed reality** |  |  |
 > | [Externe rendering-beheerder](#remote-rendering-administrator) | Biedt gebruikers de mogelijkheid om de mogelijkheden voor het omzetten van sessies, rendering en diagnose te beheren voor externe rendering in azure | 3df8b902-2a6f-47c7-8cc5-360e9b272a7e |
 > | [Client voor externe Rendering](#remote-rendering-client) | Biedt gebruikers de mogelijkheid om sessie, rendering en diagnose te beheren voor de externe rendering van Azure. | d39065c4-c120-43c9-ab0a-63eed9795f0a |
 > | [Inzender voor ruimtelijke ankers](#spatial-anchors-account-contributor) | Hiermee kunt u ruimtelijke ankers in uw account beheren, maar niet verwijderen | 8bbe83f1-e2a6-4df7-8cb4-4e04d4e5c827 |
@@ -7252,7 +7252,7 @@ Met kunt u nieuwe Labs maken onder uw Azure Lab-accounts. [Meer informatie](../l
 }
 ```
 
-## <a name="monitor"></a>Monitor
+## <a name="monitor"></a>Controleren
 
 
 ### <a name="application-insights-component-contributor"></a>Inzender voor Application Insights onderdelen

@@ -1,31 +1,29 @@
 ---
 title: Zelfstandig cluster opschonen
-description: In deze zelfstudie leert u hoe u AWS- of Azure-resources kunt opschonen in uw zelfstandige Service Fabric-cluster.
-author: dkkapur
+description: In deze zelfstudie leert u hoe u AWS- of Azure-resources voor uw zelfstandige Service Fabric-cluster kunt verwijderen.
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: bfb23ca5f5eb9540491fbd05efdfd6997db15e6b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 0d46e9068a311594f779411c3ccee2b408febb3f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "75639017"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842883"
 ---
 # <a name="tutorial-clean-up-your-standalone-cluster"></a>Zelfstudie: Zelfstandig cluster opschonen
 
-Zelfstandige Service Fabric-clusters bieden u de mogelijkheid om uw eigen omgeving te kiezen en een cluster te maken als onderdeel van de benadering "Elk besturingssysteem, elke cloud" die we in Service Fabric hanteren. In deze reeks zelfstudies maakt u een zelfstandig cluster dat in AWS of Azure wordt gehost. Vervolgens installeert u een toepassing in het cluster.
+Zelfstandige Service Fabric-clusters geven u de optie uw eigen omgeving voor het hosten van Service Fabric te kiezen. In deze reeks zelfstudies maakt u een zelfstandig cluster dat in AWS of Azure wordt gehost. Vervolgens implementeert u een toepassing in het cluster.
 
-Deze zelfstudie is deel vier een serie. In dit deel van de reeks wordt uitgelegd hoe u de AWS- of Azure-resources kunt opschonen die u hebt gemaakt voor het hosten van uw Service Fabric-cluster.
+Deze zelfstudie is deel vier een serie. In dit deel van de reeks wordt uitgelegd hoe u de AWS- of Azure-resources kunt verwijderen die u hebt gemaakt voor het hosten van uw Service Fabric-cluster.
 
-In deel vier van de serie leert u het volgende:
+In dit artikel leert u:
 
 > [!div class="checklist"]
-> * Service Fabric-cluster opschonen
-> * Uw AWS- of Azure-resources opschonen
+> * Een Service Fabric-cluster verwijderen
+> * Uw AWS- of Azure-resources verwijderen
 
-## <a name="clean-up-service-fabric-cluster"></a>Service Fabric-cluster opschonen
+## <a name="remove-a-service-fabric-cluster"></a>Een Service Fabric-cluster verwijderen
 
 1. Ga met behulp van RDP naar de VM die u hebt gebruikt voor de installatie van Service Fabric.
 2. Open PowerShell.
@@ -36,7 +34,7 @@ In deel vier van de serie leert u het volgende:
   .\RemoveServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json
   ```
 
-5. Voer `Y` in als dat wordt gevraagd. Als de opdracht is gelukt, ziet de uitvoer er als volgt uit, maar dan met uw eigen IP-adressen:
+5. Voer `Y` in wanneer u daarom wordt gevraagd. Als de opdracht is gelukt, ziet de uitvoer er als volgt uit (maar dan met uw eigen IP-adressen):
 
   ```powershell
   Best Practices Analyzer completed successfully.
@@ -49,23 +47,23 @@ In deel vier van de serie leert u het volgende:
   The cluster is successfully removed.
   ```
 
-## <a name="clean-up-aws-resources"></a>AWS-resources opschonen
+## <a name="delete-aws-resources"></a>AWS-resources verwijderen
 
 1. Meld u aan bij uw AWS-account.
 2. Ga naar de EC2-console.
 3. Selecteer de drie knooppunten die u hebt gemaakt in deel een van de zelfstudie.
-4. Klik op **Actions** > **Instance State** > **Terminate**.
+4. Selecteer **Actions** > **Instance State** > **Terminate**.
 
-## <a name="clean-up-azure-resources"></a>Azure-resources opschonen
+## <a name="delete-azure-resources"></a>Azure-resources verwijderen
 
 1. Meld u aan bij Azure Portal.
 2. Ga naar de sectie **Virtual Machines**.
 3. Schakel de selectievakjes in bij de drie knooppunten die u hebt gemaakt in deel een van de zelfstudie.
-4. Klik op **Verwijderen**.
+4. Selecteer **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deel vier van de reeks hebt u geleerd hoe u de resources opschoont die zijn gemaakt in eerdere stappen.
+In deze zelfstudie hebt u geleerd hoe u de resources kunt verwijderen die u in de vorige stappen hebt gemaakt.
 
 > [!div class="checklist"]
 > * Uw resources opschonen

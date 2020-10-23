@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: fa45ece76499b50694d366ed2dcdd57cc1e0c7dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: caeff5be83e02948baab4ecbcf05630eacff74df
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91312093"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459370"
 ---
 # <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>Zelf studie: Jive configureren voor automatische gebruikers inrichting
 
@@ -35,7 +35,7 @@ Azure Active Directory gebruikt een concept met de naam 'toewijzingen' om te bep
 
 Voordat u de inrichtings service configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in azure AD de gebruikers vertegenwoordigen die toegang nodig hebben tot uw Jive-app. Nadat u hebt besloten, kunt u deze gebruikers toewijzen aan uw Jive-app door de volgende instructies te volgen:
 
-[Een gebruiker of groep toewijzen aan een bedrijfs-app](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-jive"></a>Belang rijke tips voor het toewijzen van gebruikers aan Jive
 

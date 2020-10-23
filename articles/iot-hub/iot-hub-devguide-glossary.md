@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 2b7a81357cc6ee2608d2acd3051dcac3e5d0e07e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7765e077638c85c0cefe394a10cc22fe2b0b757
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87023463"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147780"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Woorden lijst met IoT Hub voor waarden
 
@@ -28,19 +28,19 @@ In dit artikel vindt u een aantal algemene termen die in de IoT Hub-artikelen wo
 
 ## <a name="automatic-device-management"></a>Automatisch apparaatbeheer
 
-Automatische Apparaatbeheer in azure IoT Hub automatiseert veel van de herhaalde en complexe taken van het beheer van grote apparaat vloots in de hele levens cyclus. Met automatisch Apparaatbeheer kunt u een set apparaten op basis van hun eigenschappen richten, een gewenste configuratie definiëren en apparaten IoT Hub bijwerken wanneer deze binnen het bereik vallen.  Bestaat uit [automatische configuraties van apparaten](iot-hub-auto-device-config.md) en [IOT Edge automatische implementaties](../iot-edge/how-to-deploy-at-scale.md).
+Automatische Apparaatbeheer in azure IoT Hub automatiseert veel van de herhaalde en complexe taken van het beheer van grote apparaat vloots in de hele levens cyclus. Met automatisch Apparaatbeheer kunt u een set apparaten op basis van hun eigenschappen richten, een gewenste configuratie definiëren en apparaten IoT Hub bijwerken wanneer deze binnen het bereik vallen.  Bestaat uit [automatische configuraties van apparaten](./iot-hub-automatic-device-management.md) en [IOT Edge automatische implementaties](../iot-edge/how-to-deploy-at-scale.md).
 
 ## <a name="automatic-device-configuration"></a>Automatische apparaatconfiguratie
 
-De back-end van de oplossing kan [automatische hardwareconfiguraties](iot-hub-auto-device-config.md) gebruiken om de gewenste eigenschappen toe te wijzen aan een set [apparaatdubbels](#device-twin) en de status van het rapport met behulp van systeem metrieken en aangepaste metrische gegevens. 
+De back-end van de oplossing kan [automatische hardwareconfiguraties](./iot-hub-automatic-device-management.md) gebruiken om de gewenste eigenschappen toe te wijzen aan een set [apparaatdubbels](#device-twin) en de status van het rapport met behulp van systeem metrieken en aangepaste metrische gegevens. 
 
 ## <a name="azure-classic-cli"></a>Klassieke versie van Azure CLI
 
-De [klassieke Azure-cli](../cli-install-nodejs.md) is een platformoverschrijdende, open-source, op shell gebaseerd, opdracht hulpprogramma voor het maken en beheren van resources in Microsoft Azure. Deze versie van de CLI moet alleen voor klassieke implementaties worden gebruikt.
+De [klassieke Azure-cli](/cli/azure/install-classic-cli) is een platformoverschrijdende, open-source, op shell gebaseerd, opdracht hulpprogramma voor het maken en beheren van resources in Microsoft Azure. Deze versie van de CLI moet alleen voor klassieke implementaties worden gebruikt.
 
 ## <a name="azure-cli"></a>Azure CLI
 
-De [Azure cli](https://docs.microsoft.com/cli/azure/install-az-cli2) is een platformoverschrijdende, open-source, op shell gebaseerd, opdracht hulpprogramma voor het maken en beheren van resources in Microsoft Azure.
+De [Azure cli](/cli/azure/install-az-cli2) is een platformoverschrijdende, open-source, op shell gebaseerd, opdracht hulpprogramma voor het maken en beheren van resources in Microsoft Azure.
 
 ## <a name="azure-iot-device-sdks"></a>Sdk's van Azure IoT-apparaat
 
@@ -72,7 +72,7 @@ De [Microsoft Azure-Portal](https://portal.azure.com) is een centrale locatie wa
 
 ## <a name="azure-service-bus"></a>Azure Service Bus
 
-[Service Bus](../service-bus/index.md) biedt communicatie via de Cloud met Enter prise Messa ging en door gegeven communicatie waarmee u on-premises oplossingen kunt verbinden met de Cloud. Sommige IoT Hub-zelf studies maken gebruik van Service Bus [wacht rijen](../service-bus-messaging/service-bus-messaging-overview.md).
+[Service Bus](../service-bus-messaging/index.yml) biedt communicatie via de Cloud met Enter prise Messa ging en door gegeven communicatie waarmee u on-premises oplossingen kunt verbinden met de Cloud. Sommige IoT Hub-zelf studies maken gebruik van Service Bus [wacht rijen](../service-bus-messaging/service-bus-messaging-overview.md).
 
 ## <a name="azure-storage"></a>Azure Storage
 
@@ -96,7 +96,7 @@ Verwijst naar berichten die vanuit een IoT-hub naar een verbonden apparaat worde
 
 ## <a name="configuration"></a>Configuratie
 
-In de context van [automatische apparaatconfiguratie](iot-hub-auto-device-config.md), definieert een configuratie binnen IOT hub de gewenste configuratie voor een set apparaten apparaatdubbels en biedt een set metrische gegevens om de status en de voortgang te rapporteren.
+In de context van [automatische apparaatconfiguratie](./iot-hub-automatic-device-management.md), definieert een configuratie binnen IOT hub de gewenste configuratie voor een set apparaten apparaatdubbels en biedt een set metrische gegevens om de status en de voortgang te rapporteren.
 
 ## <a name="connection-string"></a>Verbindingsreeks
 
@@ -164,7 +164,7 @@ Met [IOT hub](#iot-hub) kunt u veelgebruikte patronen voor Apparaatbeheer maken,
 
 ## <a name="device-rest-api"></a>Apparaat REST API
 
-U kunt het [apparaat rest API](https://docs.microsoft.com/rest/api/iothub/device) van een apparaat gebruiken om apparaat-naar-Cloud-berichten te verzenden naar een IOT-hub en [Cloud-naar-apparaat-](#cloud-to-device) berichten van een IOT-hub te ontvangen. Normaal gesp roken moet u een van de [apparaat-sdk's](#azure-iot-device-sdks) van het hogere niveau gebruiken, zoals wordt weer gegeven in de IOT hub zelf studies.
+U kunt het [apparaat rest API](/rest/api/iothub/device) van een apparaat gebruiken om apparaat-naar-Cloud-berichten te verzenden naar een IOT-hub en [Cloud-naar-apparaat-](#cloud-to-device) berichten van een IOT-hub te ontvangen. Normaal gesp roken moet u een van de [apparaat-sdk's](#azure-iot-device-sdks) van het hogere niveau gebruiken, zoals wordt weer gegeven in de IOT hub zelf studies.
 
 ## <a name="device-provisioning"></a>Apparaat inrichten
 
@@ -184,7 +184,7 @@ Een IoT-hub biedt meerdere [eind punten](iot-hub-devguide-endpoints.md) die uw a
 
 ## <a name="event-hubs-service"></a>Event Hubs-service
 
-[Event hubs](../event-hubs/event-hubs-what-is-event-hubs.md) is een zeer schaal bare service voor gegevens ingang die miljoenen gebeurtenissen per seconde kan opnemen. Met deze service kunt u de enorme hoeveel heden gegevens verwerken en analyseren die door uw verbonden apparaten en toepassingen worden geproduceerd. Zie [vergelijking van azure IOT hub en azure Event hubs](iot-hub-compare-event-hubs.md)voor een vergelijking met de IOT hub-service.
+[Event hubs](../event-hubs/event-hubs-about.md) is een zeer schaal bare service voor gegevens ingang die miljoenen gebeurtenissen per seconde kan opnemen. Met deze service kunt u de enorme hoeveel heden gegevens verwerken en analyseren die door uw verbonden apparaten en toepassingen worden geproduceerd. Zie [vergelijking van azure IOT hub en azure Event hubs](iot-hub-compare-event-hubs.md)voor een vergelijking met de IOT hub-service.
 
 ## <a name="event-hub-compatible-endpoint"></a>Event hub-compatibel eind punt
 
@@ -226,7 +226,7 @@ De [IOT hub query taal](iot-hub-devguide-query-language.md) is een SQL-achtige t
 
 ## <a name="iot-hub-resource-rest-api"></a>IoT Hub resource REST API
 
-U kunt de [IOT hub Resource rest API](https://docs.microsoft.com/rest/api/iothub/iothubresource) gebruiken voor het beheren van de IOT-hubs in uw [Azure-abonnement](#subscription) voor het uitvoeren van bewerkingen, zoals het maken, bijwerken en verwijderen van hubs.
+U kunt de [IOT hub Resource rest API](/rest/api/iothub/iothubresource) gebruiken voor het beheren van de IOT-hubs in uw [Azure-abonnement](#subscription) voor het uitvoeren van bewerkingen, zoals het maken, bijwerken en verwijderen van hubs.
 
 ## <a name="iot-solution-accelerators"></a>IoT-oplossingsversnellers
 
@@ -304,7 +304,7 @@ SASL PLAIN is een protocol dat het AMQP-protocol gebruikt voor het overdragen va
 
 ## <a name="service-rest-api"></a>Service REST API
 
-U kunt de [Service rest API](https://docs.microsoft.com/rest/api/iothub/service/configuration) van de back-end van de oplossing gebruiken om uw apparaten te beheren. Met de API kunt u dubbele eigenschappen van het [apparaat](#device-twin) ophalen en bijwerken, [direct methoden](#direct-method)aanroepen en [taken](#job)plannen. Normaal gesp roken moet u een van de high-level [service-sdk's](#azure-iot-service-sdks) gebruiken, zoals weer gegeven in de IOT hub zelf studies.
+U kunt de [Service rest API](/rest/api/iothub/service/configuration) van de back-end van de oplossing gebruiken om uw apparaten te beheren. Met de API kunt u dubbele eigenschappen van het [apparaat](#device-twin) ophalen en bijwerken, [direct methoden](#direct-method)aanroepen en [taken](#job)plannen. Normaal gesp roken moet u een van de high-level [service-sdk's](#azure-iot-service-sdks) gebruiken, zoals weer gegeven in de IOT hub zelf studies.
 
 ## <a name="shared-access-signature"></a>Shared Access Signature
 

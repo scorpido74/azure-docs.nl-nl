@@ -5,13 +5,13 @@ author: lfittl-msft
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: 4fd16e9dcf9f0b75b48311adf3e9282adbce2a25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 9424a56eeda5750afc00dd996be957e67850c30c
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708710"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426676"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL-één server bewaken en afstemmen
 Het bewaken van gegevens over uw servers helpt u bij het oplossen en optimaliseren van uw werk belasting. Azure Database for PostgreSQL biedt verschillende bewakings opties om inzicht te krijgen in het gedrag van uw server.
@@ -55,28 +55,12 @@ De functie voor [prestatie aanbevelingen](concepts-performance-recommendations.m
 
 ## <a name="planned-maintenance-notification"></a>Melding over gepland onderhoud
 
-Met **geplande onderhouds meldingen** kunt u waarschuwingen ontvangen voor gepland onderhoud op uw Azure database for PostgreSQL-één server. Deze meldingen zijn geïntegreerd met [het geplande onderhoud van service Health](../service-health/overview.md) en bieden u de mogelijkheid om het geplande onderhoud voor uw abonnementen op één plek weer te geven. Het helpt ook om de melding te schalen naar de juiste doel groep voor verschillende resource groepen, omdat u mogelijk verschillende contact personen hebt die verantwoordelijk zijn voor verschillende resources. U ontvangt de melding over het komende onderhoud van 72 uur vóór de gebeurtenis.
+Met [geplande onderhouds meldingen](./concepts-planned-maintenance-notification.md) kunt u waarschuwingen ontvangen voor gepland onderhoud op uw Azure database for PostgreSQL-één server. Deze meldingen zijn geïntegreerd met [het geplande onderhoud van service Health](../service-health/overview.md) en bieden u de mogelijkheid om het geplande onderhoud voor uw abonnementen op één plek weer te geven. Het helpt ook om de melding te schalen naar de juiste doel groep voor verschillende resource groepen, omdat u mogelijk verschillende contact personen hebt die verantwoordelijk zijn voor verschillende resources. U ontvangt de melding over het komende onderhoud van 72 uur vóór de gebeurtenis.
 
-> [!Note]
-> Elke keer dat er wordt gewaarschuwd voor **gepland onderhouds melding** 72 uur voor alle gebeurtenissen. In het geval van essentiële of beveiligings patches kunnen meldingen echter dichter bij het evenement worden verzonden of worden wegge laten.
-
-### <a name="to-receive-planned-maintenance-notification"></a>Een melding over gepland onderhoud ontvangen
-
-1. Selecteer in de [portal](https://portal.azure.com) **service Health**.
-2. Selecteer in de sectie **waarschuwingen** **Health Alerts**.
-3. Selecteer **+ service Health alert toevoegen** en vul de velden in.
-4. Vul de vereiste velden in. 
-5. Kies het **gebeurtenis type**, selecteer **gepland onderhoud** of **Alles selecteren**
-6. Geef in **actie groepen** op hoe u de waarschuwing wilt ontvangen (ontvang een e-mail, Activeer een logische app, enz.)  
-7. Zorg ervoor dat regel inschakelen bij maken is ingesteld op Ja.
-8. Selecteer **waarschuwings regel maken** om uw waarschuwing te volt ooien
-
-Zie [waarschuwingen voor activiteiten logboek maken voor service meldingen](../service-health/alerts-activity-log-service-notifications.md)voor gedetailleerde stappen voor het maken van **service Health-waarschuwingen**.
-
-> [!IMPORTANT]
-> Geplande onderhouds meldingen zijn momenteel beschikbaar als preview-versie in alle regio's **, behalve** voor West-Centraal VS
+Meer informatie over het instellen van meldingen in het document [geplande onderhouds meldingen](./concepts-planned-maintenance-notification.md) .
 
 ## <a name="next-steps"></a>Volgende stappen
 - Zie [waarschuwingen instellen](howto-alert-on-metric.md) voor hulp bij het maken van een waarschuwing op metrische gegevens.
-- Zie het [overzicht van Azure-metrische](../monitoring-and-diagnostics/monitoring-overview-metrics.md)gegevens voor meer informatie over het openen en exporteren van metrische gegevens met behulp van de Azure Portal, rest API of cli.
+- Zie het [overzicht van Azure-metrische](../monitoring-and-diagnostics/monitoring-overview-metrics.md) gegevens voor meer informatie over het openen en exporteren van metrische gegevens met behulp van de Azure Portal, rest API of cli.
 - Lees onze blog [voor de aanbevolen procedures voor het bewaken van uw server](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-postgresql-monitoring/).
+- Meer informatie over [geplande onderhouds meldingen](./concepts-planned-maintenance-notification.md) in azure database for PostgreSQL-één server.

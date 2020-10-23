@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2cc2f954f4255c00b7c3549ab5d33d71b240fb70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 980ba86a9916e13dd2ac7639bd06d3ab8546d2f1
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86507665"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424690"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Optimaliseer uw CloudSimple-Privécloud voor het installeren van Oracle RAC
 
@@ -46,7 +46,7 @@ In het volgende voor beeld worden de schijven gebruikt die in de onderstaande ta
 
 | Schijf                                      | Doel                                       | Gedeelde schijf |
 |-------------------------------------------|-----------------------------------------------|-------------|
-| OS                                        | Besturingssysteemschijf                         | Nee          |
+| Besturingssysteem                                        | Besturingssysteemschijf                         | Nee          |
 | YRASTER                                      | Installatie locatie voor Oracle grid software     | Nee          |
 | ENDDATABASE                                  | Installatie locatie voor Oracle data base-software | Nee          |
 | ORAHOME                                   | Basis locatie voor binaire bestanden van Oracle-data base    | Nee          |
@@ -79,7 +79,7 @@ Elke Oracle-virtuele machine is geconfigureerd met meerdere schijven voor het ho
 * Delen is ingesteld op **geen delen**.
 * Redundantie wordt gedefinieerd op de opslag met behulp van vSAN-beleid.  
 
-![Configuratie van Oracle RAC Data Disk-groep](media/oracle-vm-os-disks.png)
+![Diagram waarin de fysieke configuratie van de Oracle RAC-besturingssysteem schijf wordt weer gegeven.](media/oracle-vm-os-disks.png)
 
 ### <a name="data-disk-configuration"></a>Configuratie van de gegevens schijf
 
@@ -148,7 +148,7 @@ De snelle herstel ruimte (FRA) is het bestands systeem dat wordt beheerd door de
 * De schijven moeten worden geconfigureerd als een ASM-schijf groep.  
 * ASM-redundantie is ingesteld op **externe** redundantie.
 
-![Configuratie van de stemmings schijf groep van Oracle RAC](media/oracle-vm-fra-disks.png)
+![Diagram waarin de configuratie van de stem van de groep van Oracle RAC wordt weer gegeven.](media/oracle-vm-fra-disks.png)
 
 ## <a name="deploy-cloudsimple-private-cloud-vsphere-cluster"></a>CloudSimple Private Cloud vSphere-cluster implementeren
 
@@ -220,7 +220,7 @@ Oracle gebruikt een gedeelde schijf voor het opslaan van de gegevens, het regist
 9. Geef **multi-Writer**op voor delen.
 10. Selecteer voor het knoop punt van het virtuele apparaat de nieuwe SCSI-controller die is gemaakt in stap 2.
 
-    ![Schijven maken op de eerste VM](media/oracle-rac-new-hard-disk.png)
+    ![Scherm opname van de velden die nodig zijn voor het maken van schijven op de eerste VM.](media/oracle-rac-new-hard-disk.png)
 
 Herhaal stap 2 tot en met 10 voor alle nieuwe schijven die nodig zijn voor de Oracle-gegevens, logboeken en opnieuw uitvoeren van logboek bestanden.
 
@@ -259,7 +259,7 @@ Regels voor affiniteit tussen de virtuele machine en de host zorgen ervoor dat d
 13. Selecteer de hostgroep die u hebt gemaakt.
 14. Klik op **OK** om de regel te maken.
 
-## <a name="references"></a>Referenties
+## <a name="references"></a>Verwijzingen
 
 * [Over vSAN-beleid](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-08911FD3-2462-4C1C-AE81-0D4DBC8F7990.html)
 * [VMware multi-Writer-kenmerk voor gedeelde Vmdk's](https://docs.vmware.com/en/VMware-Cloud-on-AWS/solutions/VMware-Cloud-on-AWS.df6735f8b729fee463802083d46fdc75/GUID-A7642A82B3D6C5F7806DB40A3F2766D9.html)

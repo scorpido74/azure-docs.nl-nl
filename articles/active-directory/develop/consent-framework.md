@@ -9,16 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/30/2018
+ms.date: 10/21/2020
 ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
-ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: e9780332ad6279deef63910c7e6ba95e1ccf43bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74321bc75fa760727e7896f47cdfc5b2929047e5
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706129"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366085"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Raamwerk Azure Active Directory-toestemming
 
@@ -50,7 +49,7 @@ In de volgende stappen ziet u hoe de bestemmings ervaring werkt voor zowel de on
 
 1. Nadat de gebruiker toestemming verleent, wordt er een autorisatie code geretourneerd naar uw toepassing, die wordt ingewisseld om een toegangs token en een vernieuwings token te verkrijgen. Zie [OAuth 2,0 Authorization code flow](v2-oauth2-auth-code-flow.md)(Engelstalig) voor meer informatie over deze stroom.
 
-1. Beheerders kunnen toestemming geven voor de gedelegeerde machtigingen van een toepassing voor alle gebruikers in de tenant. Toestemming van de beheerder voor komt dat het dialoog venster voor toestemming wordt weer gegeven voor elke gebruiker in de Tenant en kan worden uitgevoerd in de [Azure Portal](https://portal.azure.com) door gebruikers met de rol Administrator. Zie [Administrator role permissions in azure AD](../users-groups-roles/directory-assign-admin-roles.md)(Engelstalig) voor meer informatie over welke beheerders rollen toestemming kunnen geven voor gedelegeerde machtigingen.
+1. Beheerders kunnen toestemming geven voor de gedelegeerde machtigingen van een toepassing voor alle gebruikers in de tenant. Toestemming van de beheerder voor komt dat het dialoog venster voor toestemming wordt weer gegeven voor elke gebruiker in de Tenant en kan worden uitgevoerd in de [Azure Portal](https://portal.azure.com) door gebruikers met de rol Administrator. Zie [Administrator role permissions in azure AD](../roles/permissions-reference.md)(Engelstalig) voor meer informatie over welke beheerders rollen toestemming kunnen geven voor gedelegeerde machtigingen.
 
     **Toestemming geven aan de gedelegeerde machtigingen van een app**
 
@@ -64,5 +63,4 @@ In de volgende stappen ziet u hoe de bestemmings ervaring werkt voor zowel de on
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [een app converteren naar multi tenant](howto-convert-app-to-be-multi-tenant.md)
-* Meer informatie over [hoe toestemming wordt ondersteund op de OAuth 2,0-protocol laag tijdens de autorisatie code toekenning stroom.](../azuread-dev/v1-protocols-oauth-code.md#request-an-authorization-code)
+Zie [een app converteren naar multi tenant](howto-convert-app-to-be-multi-tenant.md)

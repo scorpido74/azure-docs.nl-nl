@@ -16,12 +16,12 @@ ms.custom:
 - 'Role: Operations'
 - devx-track-js
 - devx-track-csharp
-ms.openlocfilehash: c7ad38dc43280164fc9dbca5d5f2381e613dc1ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dbe277c7451b02887ec5657b1a183fcd001d134e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91281331"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148293"
 ---
 # <a name="control-access-to-iot-hub"></a>Toegang tot IoT Hub regelen
 
@@ -454,7 +454,7 @@ Hier volgen de belangrijkste stappen van het patroon van de token service:
 4. Het apparaat/de module gebruikt het token rechtstreeks met de IoT-hub.
 
 > [!NOTE]
-> U kunt de .NET-klasse [SharedAccessSignatureBuilder](https://msdn.microsoft.com/library/microsoft.azure.devices.common.security.sharedaccesssignaturebuilder.aspx) of de Java-klasse [IotHubServiceSasToken](/java/api/com.microsoft.azure.sdk.iot.service.auth.iothubservicesastoken) gebruiken om een token in uw token service te maken.
+> U kunt de .NET-klasse [SharedAccessSignatureBuilder](/dotnet/api/microsoft.azure.devices.common.security.sharedaccesssignaturebuilder) of de Java-klasse [IotHubServiceSasToken](/java/api/com.microsoft.azure.sdk.iot.service.auth.iothubservicesastoken) gebruiken om een token in uw token service te maken.
 
 De token service kan de verval datum van het token naar wens instellen. Wanneer het token verloopt, wordt de verbinding met het apparaat/de module door de IoT-hub. Vervolgens moet het apparaat/de module een nieuw token aanvragen bij de token service. Een korte verloop tijd verhoogt de belasting van het apparaat/de module en de token service.
 
@@ -472,7 +472,7 @@ In de volgende onderwerpen vindt u meer informatie over het beheren van de toega
 
 De volgende tabel bevat de machtigingen die u kunt gebruiken om de toegang tot uw IoT-hub te beheren.
 
-| Machtiging | Notities |
+| Machtiging | Opmerkingen |
 | --- | --- |
 | **RegistryRead** |Hiermee wordt lees toegang verleend aan het identiteits register. Zie [identiteits register](iot-hub-devguide-identity-registry.md)voor meer informatie. <br/>Deze machtiging wordt gebruikt door de Cloud Services van de back-end. |
 | **RegistryReadWrite** |Hiermee wordt lees-en schrijf toegang verleend aan het identiteits register. Zie [identiteits register](iot-hub-devguide-identity-registry.md)voor meer informatie. <br/>Deze machtiging wordt gebruikt door de Cloud Services van de back-end. |

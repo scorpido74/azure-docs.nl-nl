@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 06/06/2020
+ms.date: 10/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: references_regions
-ms.openlocfilehash: f8c6f7daecd38babaa4f2961d04a6cd4c3b4dbed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9cb7a97b3f57ee7ac10babc53ee2263d51838777
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840554"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309682"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: Beschik baarheid van regio's & gegevens locatie
 
@@ -59,6 +59,14 @@ De volgende landen/regio's worden toegevoegd aan de lijst. U kunt nu nog steeds 
 
 > Argentinië, Australië, Brazilië, Chili, Colombia, Ecuador, Irak, Nieuw-Zeeland, Paraguay, Peru, Uruguay en Venezuela.
 
+## <a name="remote-profile-solution"></a>Oplossing voor externe profielen
+
+Met Azure AD B2C [aangepast beleid](custom-policy-overview.md)kunt u integreren met [rest API-services](custom-policy-rest-api-intro.md), waarmee u gebruikers profielen opslaat en leest vanuit een externe data base (zoals een marketing database, een CRM-systeem of een line-of-Business-toepassing).  
+- Tijdens het bewerken van de registratie en het profiel kunt Azure AD B2C een aangepaste REST API aanroepen om het gebruikers profiel te behouden voor de externe gegevens bron. De referenties van de gebruiker worden opgeslagen in Azure AD B2C Directory. 
+- Bij het aanmelden, na de verificatie van referenties met een lokaal of sociaal account, roept Azure AD B2C de REST API aan, waarmee de unieke id van de gebruiker wordt verzonden als een primaire sleutel van de gebruiker (e-mail adres of objectId). Met de REST API worden de gegevens van de externe data base gelezen en wordt het gebruikers profiel geretourneerd.  
+
+Nadat u zich hebt aangemeld, het profiel hebt bewerkt of het aanmelden is voltooid, bevat Azure AD B2C het gebruikers profiel in het toegangs token dat wordt geretourneerd naar de toepassing. Zie voor meer informatie de Azure AD B2C van de [voorbeeld oplossing voor externe profielen](https://github.com/azure-ad-b2c/samples/tree/master/policies/remote-profile) in github.
+
 ## <a name="preview-tenant"></a>Preview-Tenant
 
 Als u een B2C-Tenant hebt gemaakt tijdens de preview-periode van Azure AD B2C's, is het waarschijnlijk dat uw **Tenant type** **een preview-Tenant**bevat.
@@ -70,3 +78,7 @@ Als dit het geval is, moet u uw Tenant alleen gebruiken voor ontwikkelings-en te
 Er zijn bekende problemen bij het verwijderen van een preview B2C-Tenant en het maken van een B2C-Tenant met dezelfde domein naam. *U moet een B2C-Tenant met een productie schaal maken met een andere domein naam*.
 
 ![Scherm opname van een Tenant type, als preview-Tenant.](./media/data-residency/preview-b2c-tenant.png)
+
+## <a name="next-steps"></a>Volgende stappen
+
+- [Een Azure AD B2C-Tenant maken](tutorial-create-tenant.md).

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 1a7502a77f8dca526c95e92302f0ca0a06a1dd32
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0cc9fd5836371a925be531de773ea9c2e276c0eb
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90970449"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127349"
 ---
 # <a name="build-energy-solutions-with-iot-central"></a>Oplossingen voor de energiesector bouwen met IoT Central 
 
@@ -66,6 +66,6 @@ Nadat u de app hebt geïmplementeerd, ziet u de gesimuleerde zonnepaneelgegevens
 ## <a name="next-steps"></a>Volgende stappen
 U begint als volgt met het maken van een energie-oplossing:
 * Maak gratis toepassingssjablonen: [slimme meter-app](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring), [zonnepanneel-app](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring)
-* Meer informatie over [concepten voor bewakings-apps voor slimme meters](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-smart-meter-app)
-* Meer informatie over [concepten voor bewakings-apps voor zonnepanelen](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-solar-panel-app)
-* Meer informatie over het [IoT Central-platform](https://docs.microsoft.com/azure/iot-central/)
+* Meer informatie over [concepten voor bewakings-apps voor slimme meters](./concept-iot-central-smart-meter-app.md)
+* Meer informatie over [concepten voor bewakings-apps voor zonnepanelen](./concept-iot-central-solar-panel-app.md)
+* Meer informatie over het [IoT Central-platform](../index.yml)

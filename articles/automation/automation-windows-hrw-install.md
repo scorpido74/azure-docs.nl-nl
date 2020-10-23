@@ -3,14 +3,14 @@ title: Een Windows-Hybrid Runbook Worker implementeren in Azure Automation
 description: In dit artikel wordt uitgelegd hoe u een Hybrid Runbook Worker implementeert die u kunt gebruiken om runbooks uit te voeren op Windows-computers in uw lokale Data Center of in de cloud omgeving.
 services: automation
 ms.subservice: process-automation
-ms.date: 08/20/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 74657743d14b9365f66ed3373592b708a07e11dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a03d14fa272f5f86af1caf0ce9537bbb186d13cc
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88660509"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204514"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Een Windows-Hybrid Runbook Worker implementeren
 
@@ -28,7 +28,7 @@ De functie Hybrid Runbook Worker is afhankelijk van een Azure Monitor Log Analyt
 
 Als u geen Azure Monitor Log Analytics-werk ruimte hebt, raadpleegt u de [ontwerp richtlijnen voor Azure monitor logboek](../azure-monitor/platform/design-logs-deployment.md) voordat u de werk ruimte maakt.
 
-Als u een werk ruimte hebt, maar deze niet is gekoppeld aan uw Automation-account en u een automatiserings functie inschakelt, voegt u functionaliteit toe voor Azure Automation, inclusief ondersteuning voor de Hybrid Runbook Worker. Wanneer u een van de Azure Automation functies in uw Log Analytics-werk ruimte, met name [updatebeheer](update-management/update-mgmt-overview.md) of [Wijzigingen bijhouden en inventaris](change-tracking.md), inschakelt, worden de werk onderdelen automatisch naar de agent computer gepusht.
+Als u een werk ruimte hebt, maar deze niet is gekoppeld aan uw Automation-account en u een automatiserings functie inschakelt, voegt u functionaliteit toe voor Azure Automation, inclusief ondersteuning voor de Hybrid Runbook Worker. Wanneer u een van de Azure Automation functies in uw Log Analytics-werk ruimte, met name [updatebeheer](update-management/update-mgmt-overview.md) of [Wijzigingen bijhouden en inventaris](change-tracking/overview.md), inschakelt, worden de werk onderdelen automatisch naar de agent computer gepusht.
 
 > [!NOTE]
 > Als Updatebeheer-of Wijzigingen bijhouden-en inventaris functie wordt ingeschakeld, ondersteunt Azure Automation alleen bepaalde regio's voor het koppelen van een Log Analytics-werk ruimte en een Automation-account. Zie [Regio's toewijzen voor Automation-account en Log Analytics-werkruimte](how-to/region-mappings.md) voor een lijst van alle ondersteunde toewijzingsparen. Lees de prijs informatie voor [Azure](https://azure.microsoft.com/pricing/details/automation/) voor Azure Automation voordat u een van deze functies inschakelt.
@@ -175,7 +175,7 @@ Heartbeat
 
 In de zoek resultaten ziet u heartbeat-records voor de machine, waarmee wordt aangegeven dat deze is verbonden en dat er wordt gerapporteerd aan de service. Standaard stuurt elke agent een heartbeat-record naar de toegewezen werk ruimte. Gebruik de volgende stappen om de installatie van de agent en de installatie te volt ooien.
 
-1. Schakel de functie in om de agent computer toe te voegen. Zie voor Updatebeheer-en Azure-Vm's [updatebeheer inschakelen vanuit een Automation-account](update-management/update-mgmt-enable-automation-account.md), updatebeheer in te [scha kelen door te bladeren door de Azure Portal](update-management/update-mgmt-enable-portal.md), [updatebeheer in te scha kelen vanuit een Runbook](update-management/update-mgmt-enable-runbook.md)of [updatebeheer in te scha kelen vanaf een Azure-VM](update-management/update-mgmt-enable-vm.md). Voor Wijzigingen bijhouden-en Azure-Vm's raadpleegt u [Azure Vm's inschakelen](automation-enable-changes-from-auto-acct.md#enable-azure-vms)en voor virtuele machines die niet van Azure zijn, Zie [machines inschakelen in de werk ruimte](automation-enable-changes-from-auto-acct.md#enable-machines-in-the-workspace).
+1. Schakel de functie in om de agent computer toe te voegen. Zie voor Updatebeheer-en Azure-Vm's [updatebeheer inschakelen vanuit een Automation-account](update-management/update-mgmt-enable-automation-account.md), updatebeheer in te [scha kelen door te bladeren door de Azure Portal](update-management/update-mgmt-enable-portal.md), [updatebeheer in te scha kelen vanuit een Runbook](update-management/update-mgmt-enable-runbook.md)of [updatebeheer in te scha kelen vanaf een Azure-VM](update-management/update-mgmt-enable-vm.md). Voor Wijzigingen bijhouden-en Azure-Vm's raadpleegt u [Azure Vm's inschakelen](change-tracking/enable-from-automation-account.md#enable-azure-vms)en voor virtuele machines die niet van Azure zijn, Zie [machines inschakelen in de werk ruimte](change-tracking/enable-from-automation-account.md#enable-machines-in-the-workspace).
 
 2. Als u de versie van de Hybrid Runbook Worker wilt bevestigen, bladert u naar `C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\` de submap **versie** .
 
@@ -214,7 +214,7 @@ Runbooks kunnen gebruikmaken van de activiteiten en cmdlets die zijn gedefinieer
 
 Omdat het primaire doel van de Hybrid Runbook Worker is om lokale bronnen te beheren, moet u waarschijnlijk de modules installeren die deze bronnen ondersteunen, met name de `PowerShellGet` module. Zie [Windows Power shell](/powershell/scripting/developer/windows-powershell)voor meer informatie over het installeren van Windows Power shell-modules.
 
-Modules die zijn geïnstalleerd, moeten zich bevinden in een locatie waarnaar wordt verwezen door de `PSModulePath` omgevings variabele, zodat de Hybrid worker deze automatisch kan importeren. Zie [Installing modules in PSModulePath](/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7)(Engelstalig) voor meer informatie.
+Modules die zijn geïnstalleerd, moeten zich bevinden in een locatie waarnaar wordt verwezen door de `PSModulePath` omgevings variabele, zodat de Hybrid worker deze automatisch kan importeren. Zie [Installing modules in PSModulePath](/powershell/scripting/developer/module/installing-a-powershell-module)(Engelstalig) voor meer informatie.
 
 ## <a name="remove-the-hybrid-runbook-worker-from-an-on-premises-windows-machine"></a><a name="remove-windows-hybrid-runbook-worker"></a>De Hybrid Runbook Worker verwijderen van een on-premises Windows-computer
 

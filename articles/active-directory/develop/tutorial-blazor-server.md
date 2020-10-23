@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: 42aa51fdd3b0da5a0d438ba46b39bada159aeba6
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 429d0b9c3a118061d713484a7db3aca376a24d04
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91611468"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873180"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>Zelfstudie: Een Blazor Server-app maken die gebruikmaakt van het Microsoft-identiteitsplatform voor verificatie
 
@@ -84,7 +84,7 @@ Ga in uw browser naar `https://localhost:5001` en meld u aan met een Azure AD-ge
 
 ## <a name="retrieving-data-from-microsoft-graph"></a>Gegevens ophalen uit Microsoft Graph
 
-[Microsoft Graph](/graph/overview) biedt een reeks API's die toegang bieden tot de Microsoft 365-gegevens van uw gebruikers. Door gebruik te maken van het Microsoft-identiteitsplatform als identiteitsprovider voor uw app krijgt u eenvoudig toegang tot deze gegevens, omdat Microsoft Graph rechtstreekse ondersteuning biedt voor de tokens die zijn uitgegeven door het Microsoft-identiteitsplatform. In deze sectie voegt u code om de e-mails van ingelogde gebruikers weer te geven op de pagina 'gegevens ophalen' van de toepassing.
+[Microsoft Graph](/graph/overview) biedt een reeks API's die toegang bieden tot de Microsoft 365-gegevens van uw gebruikers. Door gebruik te maken van het Microsoft-identiteitsplatform als identiteitsprovider voor uw app krijgt u eenvoudig toegang tot deze gegevens, omdat Microsoft Graph rechtstreekse ondersteuning biedt voor de tokens die zijn uitgegeven door het Microsoft-identiteitsplatform. In deze sectie voegt u code toe om de e-mails van ingelogde gebruikers weer te geven op de pagina 'gegevens ophalen' van de toepassing.
 
 Voordat u begint, moet u zich afmelden bij uw app, aangezien u wijzigingen aanbrengt in de vereiste machtigingen en uw huidige token daarvoor niet werkt. Als u dat nog niet hebt gedaan, voert u de app opnieuw uit en selecteert u **Afmelden** voordat u de onderstaande code bijwerkt.
 

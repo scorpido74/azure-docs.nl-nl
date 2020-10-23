@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 69a47820d2afaf24f413aabf2c59a40c032070c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e1a9a644e3ec4690dbb1f536dd15db995b56cf12
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89231381"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331716"
 ---
 # <a name="azure-security-baseline-for-expressroute"></a>Azure-beveiligings basislijn voor ExpressRoute
 
 De Azure Security Baseline voor ExpressRoute bevat aanbevelingen waarmee u de beveiligings-postuur van uw implementatie kunt verbeteren.
 
-De basis lijn voor deze service wordt opgehaald uit de [Azure Security Bench Mark-versie 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview), die aanbevelingen biedt over hoe u uw cloud oplossingen kunt beveiligen in azure met onze richt lijnen voor best practices.
+De basis lijn voor deze service wordt opgehaald uit de [Azure Security Bench Mark-versie 1,0](../security/benchmarks/overview.md), die aanbevelingen biedt over hoe u uw cloud oplossingen kunt beveiligen in azure met onze richt lijnen voor best practices.
 
-Zie het [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)voor meer informatie.
+Zie het [overzicht van Azure Security-basis lijnen](../security/benchmarks/security-baselines-overview.md)voor meer informatie.
 
 ## <a name="network-security"></a>Netwerkbeveiliging
 
-*Zie [beveiligings beheer: netwerk beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)voor meer informatie.*
+*Zie [beveiligings beheer: netwerk beveiliging](../security/benchmarks/security-control-network-security.md)voor meer informatie.*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Azure-resources in virtuele netwerken beveiligen
 
@@ -38,7 +38,7 @@ Zie het [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/a
 
 **Richt lijnen**: niet van toepassing; Wanneer u werkt met Gateway-subnetten, moet u geen netwerk beveiligings groep (NSG) koppelen aan het subnet van de gateway. Het koppelen van een netwerk beveiligings groep aan dit subnet kan ertoe leiden dat uw Virtual Network gateway (VPN, ExpressRoute-gateway) niet meer werkt zoals verwacht.
 
-* [Meer informatie over Azure ExpressRoute gateway-vereisten](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#requirements)
+* [Meer informatie over Azure ExpressRoute gateway-vereisten](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#requirements)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -56,9 +56,9 @@ Zie het [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/a
 
 **Richt lijnen**: niet van toepassing; de Expressroutes waaraan van elke klant zijn opgenomen in hun eigen routerings domeinen en worden in hun eigen virtuele netwerk getunneld. Hoewel Expressroutes waaraan zijn geïsoleerd, voor extra beveiliging van andere resources die hetzelfde virtuele netwerk delen, kunt u DDoS Protection Standard inschakelen voor beveiliging tegen DDoS-aanvallen.
 
-* [Meer informatie over beveiligings controles voor Azure ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-security-controls)
+* [Meer informatie over beveiligings controles voor Azure ExpressRoute](./expressroute-security-controls.md)
 
-* [DDoS-beveiliging configureren](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+* [DDoS-beveiliging configureren](../virtual-network/manage-ddos-protection.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -76,7 +76,7 @@ Zie het [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/a
 
 **Richt lijnen**: niet van toepassing; de Expressroutes waaraan van elke klant zijn opgenomen in hun eigen routerings domeinen en worden in hun eigen virtuele netwerk getunneld.
 
-* [Meer informatie over beveiligings controles voor Azure ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-security-controls)
+* [Meer informatie over beveiligings controles voor Azure ExpressRoute](./expressroute-security-controls.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -102,7 +102,7 @@ Zie het [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/a
 
 **Richt lijnen**: standaard beveiligings configuraties voor Azure ExpressRoute definiëren en implementeren met Azure Policy. Gebruik Azure Policy aliassen in de naam ruimte ' micro soft. netwerk ' om aangepaste beleids regels te maken om de netwerk configuratie van uw ExpressRoute te controleren of af te dwingen.
 
-* [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -116,7 +116,7 @@ Gebruik een van de ingebouwde Azure Policy definities die betrekking hebben op l
 
 U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties op te zoeken of uit te voeren op resources.
 
-* [Labels gebruiken om uw Azure-resources te organiseren](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Tags gebruiken om Azure-resources te organiseren](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -126,11 +126,11 @@ U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties
 
 **Hulp**: Azure-activiteiten logboek gebruiken om netwerk resource configuraties te bewaken en wijzigingen te detecteren voor netwerk bronnen die betrekking hebben op uw ExpressRoute-verbindingen. Maak waarschuwingen in Azure Monitor die worden geactiveerd wanneer er wijzigingen in kritieke resources plaatsvinden.
 
-* [Controle inschakelen in azure Sentinel](https://docs.microsoft.com/azure/sentinel/resources)
+* [Controle inschakelen in azure Sentinel](../sentinel/resources.md)
 
-* [Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+* [Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-* [Waarschuwingen maken in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Waarschuwingen maken in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -138,7 +138,7 @@ U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties
 
 ## <a name="logging-and-monitoring"></a>Logboekregistratie en bewaking
 
-*Zie voor meer informatie [beveiligings beheer: logboek registratie en controle](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*Zie voor meer informatie [beveiligings beheer: logboek registratie en controle](../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: goedgekeurde tijd synchronisatie bronnen gebruiken
 
@@ -152,7 +152,7 @@ U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties
 
 **Hulp**: Schakel Diagnostische instellingen voor Azure-activiteiten logboek in en verzend de logboeken naar een log Analytics-werk ruimte, een Azure Event hub of een Azure-opslag account voor archivering. Activiteiten logboeken bieden inzicht in de bewerkingen die zijn uitgevoerd op uw Azure ExpressRoute-resources op het niveau van het besturings vlak. Met Azure-activiteiten logboek gegevens kunt u de ' What, wie en wanneer ' bepalen voor schrijf bewerkingen (PUT, POST, DELETE) die zijn uitgevoerd op het niveau van het besturings element van uw ExpressRoute-resources.
 
-* [Diagnostische instellingen voor Azure-activiteiten logboek inschakelen](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+* [Diagnostische instellingen voor Azure-activiteiten logboek inschakelen](../azure-monitor/platform/activity-log.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -162,7 +162,7 @@ U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties
 
 **Hulp**: Schakel Diagnostische instellingen voor Azure-activiteiten logboek in en verzend de logboeken naar een log Analytics-werk ruimte, een Azure Event hub of een Azure-opslag account voor archivering. Activiteiten logboeken bieden inzicht in de bewerkingen die zijn uitgevoerd op uw Azure ExpressRoute-resources op het niveau van het besturings vlak. Met Azure-activiteiten logboek gegevens kunt u de ' What, wie en wanneer ' bepalen voor schrijf bewerkingen (PUT, POST, DELETE) die zijn uitgevoerd op het niveau van het besturings element van uw ExpressRoute-resources.
 
-* [Diagnostische instellingen voor Azure-activiteiten logboek inschakelen](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+* [Diagnostische instellingen voor Azure-activiteiten logboek inschakelen](../azure-monitor/platform/activity-log.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -180,7 +180,7 @@ U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties
 
 **Richt lijnen**: stel in azure monitor de Bewaar periode voor logboek registratie In voor log Analytics werk ruimten die zijn gekoppeld aan uw Azure ExpressRoute-resources op basis van de nalevings voorschriften van uw organisatie.
 
-* [Para meters voor het bewaren van Logboeken instellen](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+* [Para meters voor het bewaren van Logboeken instellen](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -190,9 +190,9 @@ U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties
 
 **Hulp**: Schakel Diagnostische instellingen voor Azure-activiteiten logboek in en verzend de logboeken naar een log Analytics-werk ruimte. Voer query's uit in Log Analytics om zoek termen te zoeken, trends te identificeren, patronen te analyseren en veel andere inzichten te bieden op basis van de activiteiten logboek gegevens die mogelijk zijn verzameld voor Azure ExpressRoute.
 
-* [Diagnostische instellingen voor Azure-activiteiten logboek inschakelen](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+* [Diagnostische instellingen voor Azure-activiteiten logboek inschakelen](../azure-monitor/platform/activity-log.md)
 
-* [Azure-activiteiten logboeken verzamelen en analyseren in Log Analytics werk ruimte in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-collect)
+* [Azure-activiteiten logboeken verzamelen en analyseren in Log Analytics werk ruimte in Azure Monitor](../azure-monitor/platform/activity-log.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -202,7 +202,7 @@ U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties
 
 **Richt lijnen**: u kunt configureren voor het ontvangen van waarschuwingen op basis van metrische gegevens en activiteiten logboeken die betrekking hebben op uw Azure ExpressRoute-resources. Met Azure Monitor kunt u een waarschuwing configureren voor het verzenden van een e-mail melding, het aanroepen van een webhook of het aanroepen van een Azure Logic-app.
 
-* [Bewaking en waarschuwingen in ExpressRoute begrijpen](https://docs.microsoft.com/azure/expressroute/expressroute-monitoring-metrics-alerts)
+* [Bewaking en waarschuwingen in ExpressRoute begrijpen](./expressroute-monitoring-metrics-alerts.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -234,7 +234,7 @@ U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties
 
 ## <a name="identity-and-access-control"></a>Identiteits- en toegangsbeheer
 
-*Zie [beveiligings beheer: identiteits-en toegangs beheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)voor meer informatie.*
+*Zie [beveiligings beheer: identiteits-en toegangs beheer](../security/benchmarks/security-control-identity-access-control.md)voor meer informatie.*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: een inventaris van beheerders accounts onderhouden
 
@@ -242,11 +242,11 @@ U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties
 
 U kunt het deel venster identiteits-en toegangs beheer (IAM) in de Azure Portal voor uw abonnement gebruiken om toegangs beheer op basis van rollen (Azure RBAC) te configureren. De rollen worden toegepast op gebruikers, groepen, service-principals en beheerde identiteiten in Active Directory.
 
-Daarnaast kunnen partners die gebruikmaken van de ExpressRoute partner Resource Manager-API Role-Based Access Control Toep assen op de expressRouteCrossConnection-resource. Met deze besturings elementen kunt u machtigingen definiëren waarvoor gebruikers accounts de expressRouteCrossConnection-resource kunnen wijzigen en peering-configuraties toevoegen/bijwerken/verwijderen.
+Daarnaast kunnen partners die gebruikmaken van de ExpressRoute partner Resource Manager-API op rollen gebaseerd toegangs beheer Toep assen op de expressRouteCrossConnection-resource. Met deze besturings elementen kunt u machtigingen definiëren waarvoor gebruikers accounts de expressRouteCrossConnection-resource kunnen wijzigen en peering-configuraties toevoegen/bijwerken/verwijderen.
 
-* [Meer informatie over Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Meer informatie over Azure RBAC](../role-based-access-control/overview.md)
 
-* [Gebruik Azure RBAC in de ExpressRoute-partner Resource Manager-API](https://docs.microsoft.com/azure/expressroute/cross-connections-api-development)
+* [Gebruik Azure RBAC in de ExpressRoute-partner Resource Manager-API](./cross-connections-api-development.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -269,9 +269,9 @@ Daarnaast kunt u aanbevelingen van Azure Security Center of ingebouwde Azure-bel
 - Afgeschafte accounts met eigenaarsmachtigingen moeten worden verwijderd uit uw abonnement
 - Externe accounts met eigenaarsmachtigingen moeten worden verwijderd uit uw abonnement
 
-* [Azure Security Center gebruiken om identiteit en toegang te bewaken (preview)](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Azure Security Center gebruiken om identiteit en toegang te bewaken (preview)](../security-center/security-center-identity-access.md)
 
-* [Azure Policy gebruiken](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy gebruiken](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -289,9 +289,9 @@ Daarnaast kunt u aanbevelingen van Azure Security Center of ingebouwde Azure-bel
 
 **Hulp**: schakel Azure Active Directory multi-factor Authentication in en volg de aanbevelingen voor Azure Security Center identiteits-en toegangs beheer.
 
-* [MFA inschakelen in azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [MFA inschakelen in azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
-* [Identiteit en toegang bewaken in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Identiteit en toegang bewaken in Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -301,9 +301,9 @@ Daarnaast kunt u aanbevelingen van Azure Security Center of ingebouwde Azure-bel
 
 **Richt lijnen**: gebruik een privileged Access Workstation (Paw) met Azure multi-factor Authentication (MFA) ingeschakeld om u aan te melden en uw Azure Sentinel-gerelateerde resources te configureren.
 
-* [Privileged Access Workstations](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Privileged Access Workstations](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-* [Planning van een cloudgebaseerde Azure Multi-Factor Authentication-implementatie](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Planning van een cloudgebaseerde Azure Multi-Factor Authentication-implementatie](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -315,9 +315,9 @@ Daarnaast kunt u aanbevelingen van Azure Security Center of ingebouwde Azure-bel
 
 Daarnaast kunt u met Azure AD-risico detectie waarschuwingen en rapporten bekijken over Risk ante gebruikers gedrag.
 
-* [Privileged Identity Management implementeren (PIM)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+* [Privileged Identity Management implementeren (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [Meer informatie over Azure AD-risico detectie](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+* [Meer informatie over Azure AD-risico detectie](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -327,7 +327,7 @@ Daarnaast kunt u met Azure AD-risico detectie waarschuwingen en rapporten bekijk
 
 **Hulp**: gebruik benoemde locaties voor voorwaardelijke toegang om alleen toegang toe te staan tot de Azure Portal vanuit specifieke logische groepen met IP-adresbereiken of landen/regio's.
 
-* [Benoemde locaties configureren in azure](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Benoemde locaties configureren in azure](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -337,7 +337,7 @@ Daarnaast kunt u met Azure AD-risico detectie waarschuwingen en rapporten bekijk
 
 **Hulp**: gebruik Azure Active Directory (AD) als centraal verificatie-en autorisatie systeem voor uw onderverklikker instanties van Azure. Azure AD beveiligt gegevens door gebruik te maken van sterke versleuteling voor gegevens in rust en onderweg. Azure AD bevat ook zouten, hashes en veilige gebruikers referenties.
 
-* [Een Azure AD-exemplaar maken en configureren](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+* [Een Azure AD-exemplaar maken en configureren](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -347,9 +347,9 @@ Daarnaast kunt u met Azure AD-risico detectie waarschuwingen en rapporten bekijk
 
 **Hulp**: Azure Active Directory (AD) bevat logboeken waarmee u verouderde accounts kunt detecteren. Daarnaast kunt u Azure Identity Access revisies gebruiken om groepslid maatschappen en de toegang tot bedrijfs toepassingen en roltoewijzingen op efficiënte wijze te beheren. Gebruikers toegang kan regel matig worden gecontroleerd om ervoor te zorgen dat alleen de juiste gebruikers toegang hebben.
 
-* [Meer informatie over Azure AD-rapportage](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+* [Meer informatie over Azure AD-rapportage](../active-directory/reports-monitoring/index.yml)
 
-* [Beoordelingen over Azure Identity Access gebruiken](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [Beoordelingen over Azure Identity Access gebruiken](../active-directory/governance/access-reviews-overview.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -363,9 +363,9 @@ U hebt toegang tot de Azure AD-aanmeldings activiteit, de controle-en risico geb
 
 U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-gebruikers accounts te maken en de audit logboeken en aanmeldings logboeken te verzenden naar een Log Analytics-werk ruimte. U kunt de gewenste logboek waarschuwingen configureren in Log Analytics.
 
-* [Azure-activiteiten logboeken integreren in Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [Azure-activiteiten logboeken integreren in Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [Azure-Sentinel aan de trein](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure-Sentinel aan de trein](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -375,11 +375,11 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 **Richt lijnen**: voor de afwijking van het aanmeldings gedrag van accounts op het besturings vlak (bijvoorbeeld Azure Portal), gebruikt u de functies Azure AD Identity Protection en risico detectie om automatische antwoorden te configureren op gedetecteerde verdachte acties die betrekking hebben op gebruikers identiteiten. U kunt ook gegevens opnemen in azure Sentinel voor verder onderzoek.
 
-* [Hoe kan ik een Risk ante aanmelding van Azure AD weer geven?](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [Hoe kan ik een Risk ante aanmelding van Azure AD weer geven?](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Risico beleid voor identiteits beveiliging configureren en inschakelen](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [Risico beleid voor identiteits beveiliging configureren en inschakelen](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [Azure-Sentinel onboarden](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure-Sentinel onboarden](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -389,7 +389,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 **Richt lijnen**: niet van toepassing; Klanten-lockbox wordt niet ondersteund voor Azure ExpressRoute.
 
-* [Lijst met door Klanten-lockbox ondersteunde services](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+* [Lijst met door Klanten-lockbox ondersteunde services](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -397,13 +397,13 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 ## <a name="data-protection"></a>Gegevensbeveiliging
 
-*Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
+*Zie [beveiligings beheer: gegevens beveiliging](../security/benchmarks/security-control-data-protection.md)voor meer informatie.*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: een inventaris van gevoelige informatie onderhouden
 
 **Hulp**: Tags gebruiken om Azure-resources te helpen bij het bijhouden of verwerken van gevoelige informatie.
 
-* [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -413,9 +413,9 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 **Richt lijnen**: afzonderlijke abonnementen en/of beheer groepen implementeren voor ontwikkeling, testen en productie.
 
-* [Aanvullende Azure-abonnementen maken](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
 
-* [Beheergroepen maken](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Beheergroepen maken](../governance/management-groups/create-management-group-portal.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -425,7 +425,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 **Hulp**: micro soft beheert de onderliggende infra structuur voor Azure ExpressRoute-circuits en gerelateerde resources en heeft strikte controles geïmplementeerd om verlies of bloot stelling van klant gegevens te voor komen.
 
-* [Informatie over beveiliging van klanten in azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Informatie over beveiliging van klanten in azure](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -435,7 +435,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 **Richt lijnen**: IPSec is een IETF Standard. De gegevens worden versleuteld op het niveau van de Internet Protocol (IP) of netwerklaag 3. U kunt IPsec gebruiken voor het versleutelen van een end-to-end-verbinding tussen uw on-premises netwerk en uw virtuele netwerk (VNET) in Azure.
 
-* [Site-naar-site-IPSEC configureren via ExpressRoute](https://docs.microsoft.com/azure/expressroute/site-to-site-vpn-over-microsoft-peering)
+* [Site-naar-site-IPSEC configureren via ExpressRoute](./site-to-site-vpn-over-microsoft-peering.md)
 
 Site-naar-site-IPSEC configureren via ExpressRoute: https://docs.microsoft.com/azure/expressroute/site-to-site-vpn-over-microsoft-peering
 
@@ -447,7 +447,7 @@ Site-naar-site-IPSEC configureren via ExpressRoute: https://docs.microsoft.com/a
 
 **Richt lijnen**: niet van toepassing; De klant gegevens worden niet opgeslagen met Azure ExpressRoute.
 
-* [Meer informatie over beveiligings controles voor Azure ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-security-controls)
+* [Meer informatie over beveiligings controles voor Azure ExpressRoute](./expressroute-security-controls.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -457,15 +457,15 @@ Site-naar-site-IPSEC configureren via ExpressRoute: https://docs.microsoft.com/a
 
 **Richt lijnen**: u kunt het deel venster identiteits-en toegangs beheer (IAM) in de Azure portal voor uw abonnement gebruiken om op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC) te configureren. De rollen worden toegepast op gebruikers, groepen, service-principals en beheerde identiteiten in Active Directory. U kunt ingebouwde rollen of aangepaste rollen gebruiken voor individuen en groepen.
 
-Azure ExpressRoute heeft ook de eigenaar van circuits en circuit gebruikers rollen. Circuit gebruikers zijn eigen aren van virtuele netwerk gateways die zich niet in hetzelfde abonnement bevinden als het ExpressRoute-circuit. De eigenaar van het circuit heeft de bevoegdheid om autorisaties op elk gewenst moment te wijzigen en in te trekken. Het intrekken van een autorisatie resulteert in alle koppelings verbindingen die worden verwijderd uit het abonnement waarvan de toegang is ingetrokken. Circuit gebruikers kunnen autorisaties inwisselen (één autorisatie per virtueel netwerk).
+Azure ExpressRoute heeft ook de eigenaar van circuits en circuit gebruikers rollen. Circuit gebruikers zijn eigen aren van virtuele netwerk gateways die zich niet in hetzelfde abonnement bevinden als het ExpressRoute-circuit. De circuiteigenaar heeft de bevoegdheid om autorisaties op elk gewenst moment te wijzigen en in te trekken. Het intrekken van een autorisatie heeft tot gevolg dat alle koppelingsverbindingen uit het abonnement waarvan de toegangsrechten zijn ingetrokken, worden verwijderd. Circuitgebruikers kunnen autorisaties inwisselen (één autorisatie per virtueel netwerk).
 
-Daarnaast kunnen partners die gebruikmaken van de ExpressRoute partner Resource Manager-API Role-Based Access Control Toep assen op de expressRouteCrossConnection-resource. Met deze besturings elementen kunt u machtigingen definiëren waarvoor gebruikers accounts de expressRouteCrossConnection-resource kunnen wijzigen en peering-configuraties toevoegen/bijwerken/verwijderen.
+Daarnaast kunnen partners die gebruikmaken van de ExpressRoute partner Resource Manager-API op rollen gebaseerd toegangs beheer Toep assen op de expressRouteCrossConnection-resource. Met deze besturings elementen kunt u machtigingen definiëren waarvoor gebruikers accounts de expressRouteCrossConnection-resource kunnen wijzigen en peering-configuraties toevoegen/bijwerken/verwijderen.
 
-* [Meer informatie over Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Meer informatie over Azure RBAC](../role-based-access-control/overview.md)
 
-* [Gebruik Azure RBAC in de ExpressRoute-partner Resource Manager-API](https://docs.microsoft.com/azure/expressroute/cross-connections-api-development)
+* [Gebruik Azure RBAC in de ExpressRoute-partner Resource Manager-API](./cross-connections-api-development.md)
 
-* [Beheerders rollen in ExpressRoute begrijpen](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager#connect-a-vnet-to-a-circuit---different-subscription)
+* [Beheerders rollen in ExpressRoute begrijpen](./expressroute-howto-linkvnet-portal-resource-manager.md#connect-a-vnet-to-a-circuit---different-subscription)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -475,7 +475,7 @@ Daarnaast kunnen partners die gebruikmaken van de ExpressRoute partner Resource 
 
 **Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor reken resources. Micro soft beheert de onderliggende infra structuur voor Azure Sentinel en heeft strikte controles geïmplementeerd om verlies of bloot stelling van klant gegevens te voor komen.
 
-* [Azure-klant gegevens beveiliging](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure-klant gegevens beveiliging](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -485,11 +485,11 @@ Daarnaast kunnen partners die gebruikmaken van de ExpressRoute partner Resource 
 
 **Richt lijnen**: MACsec is een IEEE-standaard. De gegevens worden versleuteld op het MAC-niveau (Media Access Control) of netwerklaag 2. U kunt MACsec gebruiken om de fysieke koppelingen tussen uw netwerk apparaten en de netwerk apparaten van micro soft te versleutelen wanneer u via ExpressRoute direct verbinding maakt met micro soft. MACsec is standaard uitgeschakeld op ExpressRoute direct-poorten. U brengt uw eigen MACsec-sleutel voor versleuteling en slaat deze op in Azure Key Vault. U bepaalt wanneer u de sleutel wilt draaien.
 
-* [Informatie over Point-to-Point-versleuteling in azure ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-about-encryption)
+* [Informatie over Point-to-Point-versleuteling in azure ExpressRoute](./expressroute-about-encryption.md)
 
-* [MACsec configureren op ExpressRoute direct-poorten](https://docs.microsoft.com/azure/expressroute/expressroute-howto-macsec)
+* [MACsec configureren op ExpressRoute direct-poorten](./expressroute-howto-macsec.md)
 
-* [Azure-beveiligings basislijn voor Key Vault](https://docs.microsoft.com/azure/key-vault/general/security-baseline)
+* [Azure-beveiligings basislijn voor Key Vault](../key-vault/general/security-baseline.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -499,7 +499,7 @@ Daarnaast kunnen partners die gebruikmaken van de ExpressRoute partner Resource 
 
 **Hulp**: gebruik Azure monitor met het Azure-activiteiten logboek om waarschuwingen te maken wanneer wijzigingen worden aangebracht in productie-exemplaren van Azure ExpressRoute en andere essentiële of gerelateerde resources.
 
-* [Waarschuwingen maken voor gebeurtenissen in het Azure-activiteiten logboek](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Waarschuwingen maken voor gebeurtenissen in het Azure-activiteiten logboek](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -507,7 +507,7 @@ Daarnaast kunnen partners die gebruikmaken van de ExpressRoute partner Resource 
 
 ## <a name="vulnerability-management"></a>Beheer van beveiligingsproblemen
 
-*Zie [beveiligings beheer: beveiligingslek beheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)voor meer informatie.*
+*Zie [beveiligings beheer: beveiligingslek beheer](../security/benchmarks/security-control-vulnerability-management.md)voor meer informatie.*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatische hulpprogram ma's voor het scannen van beveiligings problemen uitvoeren
 
@@ -551,7 +551,7 @@ Daarnaast kunnen partners die gebruikmaken van de ExpressRoute partner Resource 
 
 ## <a name="inventory-and-asset-management"></a>Inventarisatie en asset-management
 
-*Zie voor meer informatie [beveiligings beheer: inventarisatie en activa beheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Zie voor meer informatie [beveiligings beheer: inventarisatie en activa beheer](../security/benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6,1: automatische Asset-detectie oplossing gebruiken
 
@@ -559,11 +559,11 @@ Daarnaast kunnen partners die gebruikmaken van de ExpressRoute partner Resource 
 
 Hoewel klassieke Azure-resources kunnen worden gedetecteerd via resource grafiek, is het raadzaam om Azure Resource Manager resources te maken en te gebruiken.
 
-* [Query's maken met Azure resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Query's maken met Azure resource Graph](../governance/resource-graph/first-query-portal.md)
 
-* [Uw Azure-abonnementen weer geven](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Uw Azure-abonnementen weer geven](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-* [Meer informatie over Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Meer informatie over Azure RBAC](../role-based-access-control/overview.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -573,7 +573,7 @@ Hoewel klassieke Azure-resources kunnen worden gedetecteerd via resource grafiek
 
 **Richt lijnen**: Tags Toep assen op Azure-resources die meta gegevens geven om ze logisch in een taxonomie te organiseren.
 
-* [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -587,11 +587,11 @@ Gebruik Azure Policy bovendien om beperkingen te leggen voor het type resources 
 - Niet toegestane resourcetypen
 - Toegestane brontypen
 
-* [Aanvullende Azure-abonnementen maken](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
 
-* [Beheergroepen maken](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Beheergroepen maken](../governance/management-groups/create-management-group-portal.md)
 
-* [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -611,9 +611,9 @@ Gebruik Azure Policy bovendien om beperkingen te leggen voor het type resources 
 
 Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen hun abonnement (en). Zorg ervoor dat alle Azure-resources die aanwezig zijn in de omgeving, zijn goedgekeurd.
 
-* [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-* [Query's maken met Azure resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Query's maken met Azure resource Graph](../governance/resource-graph/first-query-portal.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -649,9 +649,9 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen h
 - Niet toegestane resourcetypen
 - Toegestane brontypen
 
-* [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-* [Een specifiek resource type weigeren met Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+* [Een specifiek resource type weigeren met Azure Policy](../governance/policy/samples/index.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -669,7 +669,7 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen h
 
 **Hulp**bij het configureren van voorwaardelijke toegang van Azure om gebruikers de mogelijkheid te bieden om te communiceren met Azure Resource Manager door ' blok toegang ' te configureren voor de app Microsoft Azure management.
 
-* [Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te blok keren](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te blok keren](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -693,15 +693,15 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen h
 
 ## <a name="secure-configuration"></a>Veilige configuratie
 
-*Zie [beveiligings beheer: beveiligde configuratie](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)voor meer informatie.*
+*Zie [beveiligings beheer: beveiligde configuratie](../security/benchmarks/security-control-secure-configuration.md)voor meer informatie.*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: veilige configuraties instellen voor alle Azure-resources
 
 **Richt lijnen**: standaard beveiligings configuraties voor Azure ExpressRoute definiëren en implementeren met Azure Policy. Gebruik Azure Policy aliassen in de naam ruimte ' micro soft. netwerk ' om aangepaste beleids regels te maken om de netwerk configuratie van uw ExpressRoute te controleren of af te dwingen.
 
-* [Beschik bare Azure Policy aliassen weer geven](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Beschik bare Azure Policy aliassen weer geven](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-* [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -719,9 +719,9 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen h
 
 **Hulp**: gebruik Azure Policy [deny] en [implementeren indien niet aanwezig] voor het afdwingen van beveiligde instellingen voor uw Azure-resources.
 
-* [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy effecten begrijpen](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [Azure Policy effecten begrijpen](../governance/policy/concepts/effects.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -739,9 +739,9 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen h
 
 **Richt lijnen**: als u aangepaste Azure Policy definities gebruikt, kunt u Azure DevOps of Azure opslag plaatsen gebruiken om uw code veilig op te slaan en te beheren.
 
-* [Code opslaan in azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Code opslaan in azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-* [Documentatie voor Azure opslag plaatsen](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+* [Documentatie voor Azure opslag plaatsen](/azure/devops/repos/index?view=azure-devops)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -759,9 +759,9 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen h
 
 **Richt lijnen**: standaard beveiligings configuraties voor Azure ExpressRoute definiëren en implementeren met Azure Policy. Gebruik Azure Policy aliassen in de naam ruimte ' micro soft. netwerk ' om aangepaste beleids regels te maken om de netwerk configuratie van uw ExpressRoute te controleren of af te dwingen.
 
-* [Beschik bare Azure Policy aliassen weer geven](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Beschik bare Azure Policy aliassen weer geven](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-* [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -779,7 +779,7 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen h
 
 **Hulp**: gebruik ingebouwde Azure Policy definities en Azure Policy aliassen in de naam ruimte ' micro soft. Network ' om aangepaste beleids regels te maken om systeem configuraties te Signa lering, te controleren en af te dwingen. Gebruik Azure Policy [audit], [deny] en [implementeren indien niet aanwezig] om automatisch configuraties af te dwingen voor uw Azure-resources.
 
-* [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -797,7 +797,7 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen h
 
 **Richt lijnen**: u kunt MACsec gebruiken om de fysieke koppelingen tussen uw netwerk apparaten en de netwerk apparaten van micro soft te versleutelen wanneer u via ExpressRoute direct verbinding maakt met micro soft. MACsec is standaard uitgeschakeld op ExpressRoute direct-poorten. U brengt uw eigen MACsec-sleutel voor versleuteling en slaat deze op in Azure Key Vault. U bepaalt wanneer u de sleutel wilt draaien.
 
-* [Een Key Vault-exemplaar maken om MACsec geheimen op te slaan in een nieuwe resource groep](https://docs.microsoft.com/azure/expressroute/expressroute-howto-macsec)
+* [Een Key Vault-exemplaar maken om MACsec geheimen op te slaan in een nieuwe resource groep](./expressroute-howto-macsec.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -807,7 +807,7 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen h
 
 **Richt lijnen**: niet van toepassing; Azure ExpressRoute-verbindingen en-bronnen maken geen gebruik van beheerde identiteiten.
 
-* [Azure-Services die beheerde identiteiten ondersteunen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)
+* [Azure-Services die beheerde identiteiten ondersteunen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -825,7 +825,7 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen h
 
 ## <a name="malware-defense"></a>Beveiliging tegen malware
 
-*Zie [beveiligings beheer: verdediging tegen malware](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)voor meer informatie.*
+*Zie [beveiligings beheer: verdediging tegen malware](../security/benchmarks/security-control-malware-defense.md)voor meer informatie.*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: centraal beheerde anti-malware-software gebruiken
 
@@ -855,13 +855,13 @@ Het is uw verantwoordelijkheid om vooraf te scannen op inhoud die wordt geüploa
 
 ## <a name="data-recovery"></a>Gegevensherstel
 
-*Zie [beveiligings beheer: gegevens herstel](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)voor meer informatie.*
+*Zie [beveiligings beheer: gegevens herstel](../security/benchmarks/security-control-data-recovery.md)voor meer informatie.*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: controleren op regel matige automatische back-ups
 
 **Richt lijnen**: niet van toepassing; De klant gegevens worden niet opgeslagen met Azure ExpressRoute.
 
-* [Meer informatie over beveiligings controles voor Azure ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-security-controls)
+* [Meer informatie over beveiligings controles voor Azure ExpressRoute](./expressroute-security-controls.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -871,7 +871,7 @@ Het is uw verantwoordelijkheid om vooraf te scannen op inhoud die wordt geüploa
 
 **Richt lijnen**: als u Azure Key Vault gebruikt om uw MACsec-geheimen op te slaan, moet u regel matig automatische back-ups van uw sleutels maken.
 
-* [Back-ups maken van Key Vault sleutels](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
+* [Back-ups maken van Key Vault sleutels](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -881,9 +881,9 @@ Het is uw verantwoordelijkheid om vooraf te scannen op inhoud die wordt geüploa
 
 **Richt lijnen**: het herstellen van een back-up van door de klant beheerde sleutels testen.
 
-* [Sleutel kluis sleutels herstellen in azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Sleutel kluis sleutels herstellen in azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
-* [De connectiviteit van Azure ExpressRoute-circuits testen na het configureren van MACsec](https://docs.microsoft.com/azure/expressroute/expressroute-howto-macsec)
+* [De connectiviteit van Azure ExpressRoute-circuits testen na het configureren van MACsec](./expressroute-howto-macsec.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -893,7 +893,7 @@ Het is uw verantwoordelijkheid om vooraf te scannen op inhoud die wordt geüploa
 
 **Hulp**: Schakel Soft-Delete in Key Vault in om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.
 
-* [Soft-Delete in Key Vault inschakelen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+* [Soft-Delete in Key Vault inschakelen](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -901,13 +901,13 @@ Het is uw verantwoordelijkheid om vooraf te scannen op inhoud die wordt geüploa
 
 ## <a name="incident-response"></a>Reageren op incidenten
 
-*Zie voor meer informatie [beveiligings beheer: reactie op incidenten](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*Zie voor meer informatie [beveiligings beheer: reactie op incidenten](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: een hand leiding voor reactie op incidenten maken
 
 **Hulp**: een antwoord gids voor incidenten maken voor uw organisatie. Zorg ervoor dat er schriftelijke incidenten abonnementen zijn die alle werk rollen definiëren, evenals fasen van incident handling/management van detectie tot een beoordeling van het incident.
 
-* [Werk stroom automatisering configureren in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
+* [Werk stroom automatisering configureren in Azure Security Center](../security-center/security-center-planning-and-operations-guide.md)
 
 * [Richt lijnen voor het bouwen van uw eigen beveiligings incident antwoord proces](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -943,7 +943,7 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 **Hulp**: contact gegevens van beveiligings incidenten worden door micro soft gebruikt om contact met u op te nemen als het micro soft Security Response Center (MSRC) detecteert dat de gegevens van de klant zijn geopend door een onrecht matige of niet-gemachtigde partij. Bekijk incidenten na het feit om te controleren of de problemen zijn opgelost.
 
-* [De Azure Security Center Security-contact persoon instellen](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [De Azure Security Center Security-contact persoon instellen](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -953,9 +953,9 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 **Richt lijnen**: uw Azure Security Center waarschuwingen en aanbevelingen exporteren met de functie continue export. Met doorlopend exporteren kunt u waarschuwingen en aanbevelingen hand matig of op een doorlopende manier exporteren. U kunt de Azure Security Center Data Connector gebruiken om de Sentinel van waarschuwingen te streamen.
 
-* [Continue export configureren](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [Continue export configureren](../security-center/continuous-export.md)
 
-* [Waarschuwingen streamen naar Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [Waarschuwingen streamen naar Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -965,7 +965,7 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 **Hulp**: gebruik de functie werk stroom automatisering in azure Security Center om automatisch reacties te activeren via ' Logic apps ' in beveiligings waarschuwingen en aanbevelingen.
 
-* [Werk stroom automatisering en Logic Apps configureren](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [Werk stroom automatisering en Logic Apps configureren](../security-center/workflow-automation.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -973,7 +973,7 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetratietests en Red Team-oefeningen
 
-*Zie voor meer informatie [Security Control: Indringings tests en Red team-oefeningen](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Zie voor meer informatie [Security Control: Indringings tests en Red team-oefeningen](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: voert regel matig indringings tests van uw Azure-resources uit en zorgt voor herbemiddeling van alle essentiële beveiligings resultaten
 
@@ -987,5 +987,5 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de [Azure Security-Bench Mark](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- Meer informatie over [Azure-beveiligings basislijnen](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- Zie de [Azure Security-Bench Mark](../security/benchmarks/overview.md)
+- Meer informatie over [Azure-beveiligings basislijnen](../security/benchmarks/security-baselines-overview.md)

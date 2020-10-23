@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: jeedes
-ms.openlocfilehash: 0ebcb746e10ae910c695e52fb053fc5d0b316e70
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8958e16ef4b1b7033fa0757e2a70eb053896b143
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543904"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996567"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-opsgenie"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met OpsGenie
 
@@ -133,15 +133,15 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 3. Als u eenmalige aanmelding wilt inschakelen, selecteert u **Ingeschakeld**.
    
-    ![OpsGenie-instellingen](./media/opsgenie-tutorial/tutorial-opsgenie-07.png) 
+    ![Schermopname van het selectievakje Ingeschakeld geselecteerd.](./media/opsgenie-tutorial/tutorial-opsgenie-07.png) 
 
 4. Klik in de sectie **Provider** op het tabblad **Azure Active Directory**.
    
-    ![OpsGenie-instellingen](./media/opsgenie-tutorial/tutorial-opsgenie-08.png) 
+    ![Schermopname van de sectie Provider met het tabblad Azure Active Directory geselecteerd.](./media/opsgenie-tutorial/tutorial-opsgenie-08.png) 
 
 5. Voer de volgende stappen uit op de dialoogpagina Azure Active Directory:
    
-    ![OpsGenie-instellingen](./media/opsgenie-tutorial/tutorial-opsgenie-09.png)
+    ![Schermopname van de sectie Eenmalige aanmelding met de schakeloptie Eenmalige aanmelding inschakelen, het SAML 2.0-eindpunt en de metagegevens-URL.](./media/opsgenie-tutorial/tutorial-opsgenie-09.png)
     
     a. Kopieer de waarde van **App-ID URL** en plak deze in het tekstvak **ID (Entiteits-ID)** in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
@@ -169,7 +169,7 @@ Het doel van dit gedeelte is het maken van een gebruiker met de naam B.Simon in 
 
 4. Voer in het dialoogvenster **Add User** de volgende stappen uit:
    
-    ![OpsGenie-instellingen](./media/opsgenie-tutorial/tutorial-opsgenie-11.png)
+    ![Schermopname van het dialoogvenster Add User (Gebruiker toevoegen) met de tekstvakken Email (E-mail) en Full name (Volledige naam) gemarkeerd en de knop Save (Opslaan) geselecteerd.](./media/opsgenie-tutorial/tutorial-opsgenie-11.png)
    
     a. Typ in het tekstvak **E-mail** het e-mailadres van B. Simon dat is geregistreerd in Azure Active Directory.
    

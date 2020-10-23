@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0a368e54c940ff580b7e8f49dd108fafddde5b17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 315183040515110a6a21afcd00e12d1b12313170
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441475"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341835"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Veelgestelde vragen: vragen over het verzamelen van gegevens, agents en werk ruimten
 
@@ -43,7 +43,7 @@ Zie [Security Center prijzen](https://azure.microsoft.com/pricing/details/securi
 
 ## <a name="what-is-the-log-analytics-agent"></a>Wat is de Log Analytics-agent?
 
-Azure Security Center is afhankelijk van de [log Analytics agent](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent) -dit is dezelfde agent die wordt gebruikt door de Azure Monitor-service om te controleren op beveiligings problemen en bedreigingen. 
+Azure Security Center is afhankelijk van de [log Analytics agent](../azure-monitor/platform/log-analytics-agent.md) -dit is dezelfde agent die wordt gebruikt door de Azure Monitor-service om te controleren op beveiligings problemen en bedreigingen. 
 
 De agent wordt soms ook wel micro soft Monitoring Agent (of ' MMA ' genoemd). 
 
@@ -66,7 +66,7 @@ Windows-of Linux IaaS-Vm's komen in aanmerking als:
 
 - De uitbrei ding voor de Log Analytics agent is momenteel niet geïnstalleerd op de virtuele machine.
 - De virtuele machine wordt uitgevoerd.
-- De Windows-of Linux [Azure virtual machine-agent](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) is geïnstalleerd.
+- De Windows-of Linux [Azure virtual machine-agent](../virtual-machines/extensions/agent-windows.md) is geïnstalleerd.
 - De virtuele machine wordt niet gebruikt als een apparaat zoals Web Application Firewall of een firewall van de volgende generatie.
 
 
@@ -88,7 +88,7 @@ De locatie van de standaardwerk ruimte is afhankelijk van uw Azure-regio:
 
 ## <a name="what-data-is-collected-by-the-log-analytics-agent"></a>Welke gegevens worden verzameld door de Log Analytics-agent?
 
-Zie [wat wordt bewaakt door Azure monitor?](https://docs.microsoft.com/azure/azure-monitor/monitor-reference#azure-services)voor een volledige lijst van de toepassingen en services die door de agent worden bewaakt.
+Zie [wat wordt bewaakt door Azure monitor?](../azure-monitor/monitor-reference.md#azure-services)voor een volledige lijst van de toepassingen en services die door de agent worden bewaakt.
 
 > [!IMPORTANT]
 > Houd er rekening mee dat voor sommige services, zoals Azure Firewall, als u logboek registratie hebt ingeschakeld en een intensieve-bron hebt gekozen voor aanmelding (bijvoorbeeld door het logboek in te stellen op *uitgebreid*), u mogelijk belang rijke gevolgen voor uw log Analytics werkruimte opslag nodig hebt. 

@@ -1,14 +1,14 @@
 ---
 title: Beheerervaring in meerdere tenants
 description: Azure delegated Resource Management maakt een cross-Tenant beheer mogelijk.
-ms.date: 10/12/2020
+ms.date: 10/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7b2476d58cdfe057a94c52b40af7694abc7b263f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5443c3b5a34cd493e0956f2a0d6ed7d6fecd603d
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970636"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460662"
 ---
 # <a name="cross-tenant-management-experiences"></a>Beheerervaring in meerdere tenants
 
@@ -70,6 +70,10 @@ De meeste taken en services kunnen worden uitgevoerd op gedelegeerde resources i
 - Gebruik de [back-upverkenner](../../backup/monitor-azure-backup-with-backup-explorer.md) voor het weer geven van operationele gegevens van back-upitems (inclusief Azure-resources die nog niet zijn geconfigureerd voor back-up) en controle-informatie (taken en waarschuwingen) voor gedelegeerde abonnementen. Backup Explorer is momenteel alleen beschikbaar voor Azure VM-gegevens.
 - Gebruik [back-uprapporten](../../backup/configure-reports.md) over gedelegeerde abonnementen om historische trends bij te houden, het verbruik van back-ups te analyseren en back-ups te controleren en te herstellen.
 
+[Azure-blauw drukken](../../governance/blueprints/index.yml):
+
+- Azure-blauw drukken gebruiken om de implementatie van resource sjablonen en andere artefacten te organiseren (hiervoor is [extra toegang](https://www.wesleyhaakman.org/preparing-azure-lighthouse-customer-subscriptions-for-azure-blueprints/) vereist om het abonnement van de klant voor te bereiden)
+
 [Azure Cost Management en facturering](../../cost-management-billing/index.yml):
 
 - Van de beheer-Tenant kunnen CSP-partners de kosten voor het gebruik van de belasting (niet inclusief aankopen) bekijken, beheren en analyseren voor klanten die zich onder het Azure-abonnement bevinden. De kosten zijn gebaseerd op de retail tarieven en de Azure RBAC-toegang (op rollen gebaseerd toegangs beheer) die de partner heeft voor het abonnement van de klant.
@@ -77,6 +81,10 @@ De meeste taken en services kunnen worden uitgevoerd op gedelegeerde resources i
 [Azure Kubernetes service (AKS)](../../aks/index.yml):
 
 - Gehoste Kubernetes-omgevingen beheren en toepassingen in containers implementeren en beheren binnen de tenants van de klant
+
+[Azure migrate](../../migrate/index.yml):
+
+- Migratie projecten maken in de Tenant van de klant en Vm's migreren
 
 [Azure monitor](../../azure-monitor/index.yml):
 
@@ -156,7 +164,7 @@ Ondersteunings aanvragen:
 Houd bij alle scenario's rekening met de volgende beperkingen:
 
 - Aanvragen die door Azure Resource Manager worden verwerkt, kunnen worden uitgevoerd met behulp van Azure Lighthouse. De bewerkings-Uri's voor deze aanvragen beginnen met `https://management.azure.com` . Aanvragen die worden verwerkt door een exemplaar van een resource type (zoals Key Vault geheimen toegang of toegang tot opslag gegevens), worden echter niet ondersteund met Azure Lighthouse. De bewerkings-Uri's voor deze aanvragen beginnen meestal met een adres dat uniek is voor uw exemplaar, zoals `https://myaccount.blob.core.windows.net` of `https://mykeyvault.vault.azure.net/` . De laatste is ook gegevens bewerkingen in plaats van beheer bewerkingen.
-- Roltoewijzingen moeten gebruikmaken [van ingebouwde rollen](../../role-based-access-control/built-in-roles.md)op basis van op rollen gebaseerd toegangs beheer (RBAC). Alle ingebouwde rollen worden momenteel ondersteund met Azure delegated resource management, met uitzonde ring van eigenaar of ingebouwde rollen met [`DataActions`](../../role-based-access-control/role-definitions.md#dataactions) machtiging. De rol beheerder van gebruikers toegang wordt alleen ondersteund voor beperkt gebruik bij het [toewijzen van rollen aan beheerde identiteiten](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant).  Aangepaste rollen en [beheerders rollen voor klassieke abonnementen](../../role-based-access-control/classic-administrators.md) worden niet ondersteund.
+- Roltoewijzingen moeten gebruikmaken [van ingebouwde rollen van Azure](../../role-based-access-control/built-in-roles.md). Alle ingebouwde rollen worden momenteel ondersteund met Azure delegated resource management, met uitzonde ring van eigenaar of ingebouwde rollen met [`DataActions`](../../role-based-access-control/role-definitions.md#dataactions) machtiging. De rol beheerder van gebruikers toegang wordt alleen ondersteund voor beperkt gebruik bij het [toewijzen van rollen aan beheerde identiteiten](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant).  Aangepaste rollen en [beheerders rollen voor klassieke abonnementen](../../role-based-access-control/classic-administrators.md) worden niet ondersteund.
 - Hoewel u abonnementen kunt opdoen die gebruikmaken van Azure Databricks, kunnen gebruikers in de Tenant beheren Azure Databricks werk ruimten op dit moment niet starten.
 - Hoewel u abonnementen en resource groepen met resource vergrendelingen kunt uitvoeren, worden deze vergren delingen niet voor komen dat door gebruikers in de Tenant beheren de acties worden uitgevoerd. [Weiger toewijzingen](../../role-based-access-control/deny-assignments.md) die door het systeem beheerde bronnen beveiligen, zoals die zijn gemaakt door door Azure beheerde toepassingen of Azure-blauw drukken (door het systeem toegewezen weigerings toewijzingen), voor komen dat gebruikers in de Tenant beheren op deze resources. op dit moment kunnen gebruikers in de Tenant van de klant echter geen eigen weigerings toewijzingen maken (toegewezen weigerings toewijzingen).
 

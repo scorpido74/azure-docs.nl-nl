@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 729150188e918d4964f8abe729c66032d8e6c9c0
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 4dd22427038bc7c4052ee714c3ec3ce45d7a1837
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689147"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132819"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Uw investeringen in de cloud optimaliseren met Azure Cost Management
 
@@ -126,7 +126,7 @@ Zie de [Azure-prijscalculator](https://azure.microsoft.com/pricing/calculator) v
 
 Azure Migrate is een service die de huidige workloads van uw organisatie in on-premises datacenters evalueert. Het biedt u inzicht in wat u mogelijk nodig hebt van een Azure-vervangingsoplossing. Eerst analyseert Migrate uw on-premises machines om te bepalen of migratie haalbaar is. Vervolgens wordt de VM-grootte in Azure aanbevolen om de prestaties te maximaliseren. Ten slotte maakt het een schatting van de kosten voor een oplossing op basis van Azure.
 
-Zie [Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-services-overview) voor meer informatie.
+Zie [Azure Migrate](../../migrate/migrate-services-overview.md) voor meer informatie.
 
 ## <a name="analyze-and-manage-your-costs"></a>Uw kosten analyseren en beheren
 

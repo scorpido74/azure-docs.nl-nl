@@ -3,12 +3,12 @@ title: Persoonlijke koppeling instellen
 description: Stel een persoonlijk eind punt in op een container register en Schakel toegang in via een persoonlijke koppeling in een lokaal virtueel netwerk. Toegang voor persoonlijke koppelingen is een functie van de laag Premium-Service.
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: 793003edea853922f78b36f0dc1a6e35205cdadb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6bea4b2a6bedeac9dd0ff36631ba46adf4be4f8f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743638"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148480"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>Persoonlijke verbinding maken met een Azure container Registry met behulp van een persoonlijke Azure-koppeling
 
@@ -375,7 +375,7 @@ az acr private-endpoint-connection list \
   --registry-name $REGISTRY_NAME 
 ```
 
-Wanneer u een verbinding met een privé-eind punt instelt met behulp van de stappen in dit artikel, accepteert het REGI ster automatisch verbindingen van clients en services met RBAC-machtigingen voor het REGI ster. U kunt het eind punt zo instellen dat hand matige goed keuring van verbindingen is vereist. Zie [een particuliere-eindpunt verbinding beheren](../private-link/manage-private-endpoint.md)voor meer informatie over het goed keuren en afwijzen van privé-eindpunt verbindingen.
+Wanneer u een verbinding met een privé-eind punt instelt met behulp van de stappen in dit artikel, accepteert het REGI ster automatisch verbindingen van clients en services met Azure RBAC-machtigingen voor het REGI ster. U kunt het eind punt zo instellen dat hand matige goed keuring van verbindingen is vereist. Zie [een particuliere-eindpunt verbinding beheren](../private-link/manage-private-endpoint.md)voor meer informatie over het goed keuren en afwijzen van privé-eindpunt verbindingen.
 
 ## <a name="add-zone-records-for-replicas"></a>Zone records voor replica's toevoegen
 

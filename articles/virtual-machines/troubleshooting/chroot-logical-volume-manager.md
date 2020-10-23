@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
-ms.openlocfilehash: 98514bad6a04e0c3058faf3133fc44333039ce53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 390443874ea63a8661ef8baea627015fcf679719
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361463"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167913"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Problemen met een virtuele Linux-machine oplossen wanneer er geen toegang is tot de Azure-seriële console en de schijf indeling gebruikmaakt van LVM (Logical Volume Manager)
 
@@ -71,7 +71,7 @@ Voer de opdracht **lsblk** uit om de LVMs van de betrokken VM te bekijken
 
 `lsblk`
 
-![Lsblk uitvoeren](./media/chroot-logical-volume-manager/lsblk-output-mounted.png)
+![Scherm opname van de uitvoer van de lsblk-opdracht.](./media/chroot-logical-volume-manager/lsblk-output-mounted.png)
 
 
 Controleer of de LVMs van de betrokken VM worden weer gegeven.
@@ -198,11 +198,11 @@ Nu opnieuw toegang tot de **chroot** -omgeving door uit te voeren
 
 Alle LVs moeten worden weer gegeven als gekoppelde partities
 
-![Geavanceerd](./media/chroot-logical-volume-manager/chroot-all-mounts.png)
+![Scherm opname van de LVs weer gegeven als gekoppelde partities.](./media/chroot-logical-volume-manager/chroot-all-mounts.png)
 
 De geïnstalleerde **kernel** doorzoeken
 
-![Geavanceerd](./media/chroot-logical-volume-manager/rpm-kernel.png)
+![Scherm afbeelding die laat zien hoe u een query op de geïnstalleerde kernel uitvoert.](./media/chroot-logical-volume-manager/rpm-kernel.png)
 
 Verwijder, indien nodig, de **kernel** 
  ![ geavanceerde kernel](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)

@@ -1,14 +1,14 @@
 ---
 title: 'Quickstart: Een gedeelde query maken met Azure CLI'
 description: In deze quickstart volgt u de stappen om de Resource Graph-extensie voor Azure CLI in te schakelen en een gedeelde query te maken.
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: c888cee5899c45747db1775ffdfbc0d0c78e00c7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: daaa0dc4039c37094330148f839fadf7b4013276
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91667517"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057192"
 ---
 # <a name="quickstart-create-a-resource-graph-shared-query-using-azure-cli"></a>Quickstart: Een gedeelde Resource Graph-query maken met Azure CLI
 
@@ -84,7 +84,7 @@ Nu de Azure CLI-extensie is toegevoegd aan uw gewenste omgeving, kunt u een gede
    ```
 
 1. Voer de gedeelde query uit in Azure CLI met de `{{shared-query-uri}}`-syntaxis in een opdracht [az graph query](/cli/azure/ext/resource-graph/graph#ext-resource-graph-az-graph-query).
-   Kopieer eerst het `id`-veld uit de resultaten van de `show`-opdracht hierboven. Vervang de `shared-query-uri`-tekst in het voorbeeld door de waarde uit het veld `id`, maar laat de omliggende tekens `{{` en `}}` staan.
+   Kopieer eerst het `id`-veld uit de resultaten van de vorige `show`-opdracht. Vervang de `shared-query-uri`-tekst in het voorbeeld door de waarde uit het veld `id`, maar laat de omliggende tekens `{{` en `}}` staan.
 
    ```azurecli-interactive
    # Run a Azure Resource Graph shared query

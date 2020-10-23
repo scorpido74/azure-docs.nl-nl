@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/10/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 31031462d9904e3554c19f47bc82f87746443693
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0015868f6b53c2903b83795839e2dbcffd09ce4
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371718"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92116683"
 ---
 De volgende tabellen bevatten quota en limieten die specifiek zijn voor [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). Zie [Prijzen voor Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/) voor prijsinformatie over Event Hubs.
 
@@ -71,7 +71,7 @@ De Event Hubs Dedicated-aanbieding wordt gefactureerd tegen een vaste maandelijk
 | Grootte in bytes per schema | 1 MB |   
 | Aantal eigenschappen per schemagroep | 1024 |
 | Grootte in bytes per groepeigenschapssleutel | 256 | 
-| Grootte in bytes per groepeigenschapssleutel | 1024 | 
+| Grootte in bytes per groepeigenschapswaarde | 1024 | 
 
 
 #### <a name="limits-that-are-different-for-standard-and-dedicated-tiers"></a>Limieten die anders zijn voor **standard** en **toegewezen**-lagen 

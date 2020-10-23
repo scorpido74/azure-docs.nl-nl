@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: b0c23955248a3468ee6bd624ebf7281bc6c3c961
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ab4b4e0ab7d0474dc4fe7692cfe3c46835095f45
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319602"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873741"
 ---
-# <a name="migrate-from-bing-maps-to-azure-maps"></a>Migrate van Bing Maps naar Azure Maps
+# <a name="tutorial---migrate-from-bing-maps-to-azure-maps"></a>Zelfstudie: migreren van Bing Kaarten naar Azure Maps
 
 In deze handleiding vindt u informatie over het migreren van web-, mobiele en servertoepassingen van Bing Maps naar het Azure Maps-platform. Deze handleiding bevat vergelijkende codevoorbeelden, suggesties voor migratie en best practices voor migratie naar Azure Maps.
 

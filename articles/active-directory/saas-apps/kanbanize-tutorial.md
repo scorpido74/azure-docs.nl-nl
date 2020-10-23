@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/09/2019
 ms.author: jeedes
-ms.openlocfilehash: 686a186650bfe4066533b0f086c080b5ffb14eb6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: af68100d0064187931ede43916d1ab3258baea38
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546828"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850707"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kanbanize"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Kanbanize
 
@@ -153,7 +153,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 5. Klik op de pagina met het beheervenster links van het menu op **Integraties** en schakel vervolgens **Eenmalige aanmelding** in.
 
-    ![Kanbanize-integraties](./media/kanbanize-tutorial/tutorial-kanbanize-admin.png)
+    ![Schermopname van het deelvenster Beheer met Integratie geselecteerd.](./media/kanbanize-tutorial/tutorial-kanbanize-admin.png)
 
 6. Klik in de sectie Integraties op **CONFIGUREREN** om de pagina **Eenmalige aanmelding** te openen.
 
@@ -161,7 +161,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 7. Voer op de pagina **Integratie van eenmalige aanmelding**  onder **Configuraties** de volgende stappen uit:
 
-    ![Kanbanize-integraties](./media/kanbanize-tutorial/tutorial-kanbanize-save.png)
+    ![Schermopname met de pagina Integratie van eenmalige aanmelding waarop u de waarden voor deze stap invoert.](./media/kanbanize-tutorial/tutorial-kanbanize-save.png)
 
     a. Plak in het tekstvak **Idp-entiteits-id** de waarde van **Azure AD-id** die u hebt gekopieerd uit Azure Portal.
 

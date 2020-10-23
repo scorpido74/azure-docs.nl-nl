@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/06/2020
 ms.author: cynthn
 ms.reviewer: olayemio
-ms.openlocfilehash: bf4a1feb91a1ac4b0bca0d6afdbac41a8be3aa4f
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 35edcfb4bdb0715245f4a3190fb22638b1162429
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92049748"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370981"
 ---
 # <a name="create-a-managed-disk-from-an-image-version"></a>Een beheerde schijf maken op basis van een installatie kopie versie
 
@@ -23,10 +23,10 @@ Als dat het geval is, kunt u een beheerde schijf maken op basis van een installa
 
 ## <a name="cli"></a>CLI
 
-Stel de `source` variabele in op de id van de installatie kopie en gebruik [AZ Disk Create](/cli/azure/disk.md#az_disk_create) om de beheerde schijf te maken. 
+Stel de `source` variabele in op de id van de installatie kopie en gebruik [AZ Disk Create](/cli/azure/disk#az_disk_create) om de beheerde schijf te maken. 
 
 
-U kunt een lijst met installatie kopieën weer geven met behulp van de [lijst met AZ sig-installatie kopieën](/cli/azure/sig/image-version.md#az_sig_image_version_list). In dit voor beeld zoeken we naar alle installatie kopieën die deel uitmaken van de definitie van de *myImageDefinition* -installatie kopie in de galerie met installatie kopieën van *myGallery* .
+U kunt een lijst met installatie kopieën weer geven met behulp van de [lijst met AZ sig-installatie kopieën](/cli/azure/sig/image-version#az_sig_image_version_list). In dit voor beeld zoeken we naar alle installatie kopieën die deel uitmaken van de definitie van de *myImageDefinition* -installatie kopie in de galerie met installatie kopieën van *myGallery* .
 
 ```azurecli-interactive
 az sig image-version list \

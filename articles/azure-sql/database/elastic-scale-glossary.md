@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 9c229fe6c1ccc7e2ce8e4f46ece51f315c8b7a90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 166e365a4ead8ad6d0f7e543c081161ebff5f027
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362611"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330458"
 ---
 # <a name="elastic-database-tools-glossary"></a>Woorden lijst voor Elastic Database-hulpprogram ma's
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,7 +41,7 @@ Deze voor waarden worden gebruikt in het [toevoegen van een Shard met Elastic da
 
 **Multi tenant** en **single-tenant**: hier ziet u een Data Base met één Tenant en een multi tenant-Data Base:
 
-![Single-en multi tenant-data bases](./media/elastic-scale-glossary/multi-single-simple.png)
+![Scherm opname van een Data Base met één Tenant en een Data Base met meerdere tenants.](./media/elastic-scale-glossary/multi-single-simple.png)
 
 Hier volgt een representatie van **Shard** single-en multi tenant-data bases. 
 

@@ -193,29 +193,33 @@
         - name: Wijzigingen bijhouden en inventaris
           items:
             - name: Overzicht
-              href: change-tracking.md
+              href: change-tracking/overview.md
             - name: Regio's voor gekoppelde Log Analytics-werkruimte ondersteunen
               href: how-to/region-mappings.md
             - name: Inschakelen
               items:
-                - name: Wijzigingen bijhouden en inventaris inschakelen via Azure Portal
-                  href: automation-enable-changes-from-browse.md
-                - name: Wijzigingen bijhouden en inventaris inschakelen vanaf een virtuele Azure-machine
-                  href: automation-enable-changes-from-vm.md
-                - name: Wijzigingen bijhouden en inventaris inschakelen vanuit een Automation-account
-                  href: automation-enable-changes-from-auto-acct.md
-                - name: Wijzigingen bijhouden en inventaris inschakelen vanuit een runbook
-                  href: automation-enable-changes-from-runbook.md
+                - name: Inschakelen vanaf de Azure-portal
+                  href: change-tracking/enable-from-portal.md
+                - name: Inschakelen vanaf een Azure-VM
+                  href: change-tracking/enable-from-vm.md
+                - name: Inschakelen vanaf een Automation-account
+                  href: change-tracking/enable-from-automation-account.md
+                - name: Inschakelen vanaf een runbook
+                  href: change-tracking/enable-from-runbook.md
             - name: Wijzigingen bijhouden en inventaris beheren
-              href: change-tracking-file-contents.md
+              href: change-tracking/manage-change-tracking.md
             - name: Een inventarisverzameling beheren vanuit VM's
-              href: automation-vm-inventory.md
+              href: change-tracking/manage-inventory-vms.md
             - name: Werken met scopeconfiguraties
-              href: automation-scope-configurations-change-tracking.md
-            - name: De werkruimte ontkoppelen van het Automation-account
-              href: automation-unlink-workspace-change-tracking.md
-            - name: VM's verwijderen uit Wijzigingen bijhouden en inventaris
-              href: automation-remove-vms-from-change-tracking.md
+              href: change-tracking/manage-scope-configurations.md
+            - name: Waarschuwingen configureren
+              href: change-tracking/configure-alerts.md
+            - name: Uitschakelen
+              items:
+                - name: Wijzigingen bijhouden en inventaris verwijderen
+                  href: change-tracking/remove-feature.md
+                - name: VM's verwijderen uit Wijzigingen bijhouden en inventaris
+                  href: change-tracking/remove-vms-from-change-tracking.md
             - name: Problemen oplossen
               items:
                 - name: Problemen met VM-implementatie oplossen
@@ -239,49 +243,49 @@
     - name: Updatebeheer
       items:
         - name: Overzicht
-          href: update-management/update-mgmt-overview.md
+          href: update-management/overview.md
         - name: Ondersteunde regio's voor gekoppelde Log Analytics-werkruimte
           href: how-to/region-mappings.md
         - name: Inschakelen
           items:
-            - name: Updatebeheer inschakelen met behulp van Azure Resource Manager-sjabloon
-              href: update-management/update-mgmt-enable-template.md
-            - name: Updatebeheer inschakelen via Azure Portal
-              href: update-management/update-mgmt-enable-portal.md
-            - name: Updatebeheer inschakelen vanaf een virtuele Azure-machine
-              href: update-management/update-mgmt-enable-vm.md
-            - name: Updatebeheer inschakelen vanaf een Automation-account
-              href: update-management/update-mgmt-enable-automation-account.md
-            - name: Updatebeheer inschakelen vanuit een runbook
-              href: update-management/update-mgmt-enable-runbook.md
+            - name: Inschakelen met Azure Resource Manager-sjabloon
+              href: update-management/enable-from-template.md
+            - name: Inschakelen vanaf de Azure-portal
+              href: update-management/enable-from-portal.md
+            - name: Inschakelen vanaf een Azure-VM
+              href: update-management/enable-from-vm.md
+            - name: Inschakelen vanaf een Automation-account
+              href: update-management/enable-from-automation-account.md
+            - name: Inschakelen vanaf een runbook
+              href: update-management/enable-from-runbook.md
         - name: Updates beheren voor uw VM's
           items:
             - name: Aan de slag
-              href: update-management/update-mgmt-manage-updates-for-vm.md
+              href: update-management/manage-updates-for-vm.md
             - name: Naleving evalueren
-              href: update-management/update-mgmt-view-update-assessments.md
+              href: update-management/view-update-assessments.md
             - name: Updates implementeren en status beoordelen
-              href: update-management/update-mgmt-deploy-updates.md
+              href: update-management/deploy-updates.md
             - name: 'Scripts voorafgaand aan de back-up en scripts die erop volgen, gebruiken'
-              href: update-management/update-mgmt-pre-post-scripts.md
+              href: update-management/pre-post-scripts.md
             - name: Waarschuwingen configureren
-              href: update-management/update-mgmt-configure-alerts.md
+              href: update-management/configure-alerts.md
         - name: Integreren met Configuration Manager
-          href: update-management/update-mgmt-mecmintegration.md
+          href: update-management/mecmintegration.md
         - name: Windows Update-client configureren
-          href: update-management/update-mgmt-configure-wuagent.md
+          href: update-management/configure-wuagent.md
         - name: Dynamische groepen gebruiken
-          href: update-management/update-mgmt-groups.md
+          href: update-management/configure-groups.md
         - name: Query's uitvoeren op Updatebeheer-logboeken
-          href: update-management/update-mgmt-query-logs.md
+          href: update-management/query-logs.md
         - name: Werken met scopeconfiguraties
-          href: update-management/update-mgmt-scope-configuration.md
+          href: update-management/scope-configuration.md
         - name: Uitschakelen
           items:
             - name: Updatebeheer verwijderen
-              href: update-management/update-mgmt-remove-feature.md
+              href: update-management/remove-feature.md
             - name: VM's verwijderen uit Updatebeheer
-              href: update-management/update-mgmt-remove-vms.md
+              href: update-management/remove-vms.md
         - name: Problemen oplossen
           items:
             - name: Problemen met implementatie van functies oplossen

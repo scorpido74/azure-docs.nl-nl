@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f8a8f76ce7d46c0a44dd86ef1490c1c74a7992a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0f45a1481661aa350815560d795ab7411f99545
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979501"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317832"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Algemene scenario's in het beheer van rechten van Azure AD
 
@@ -154,7 +154,7 @@ Er zijn verschillende manieren waarop u het rechten beheer voor uw organisatie k
 
 ## <a name="programmatic-administration"></a>Programmatisch beheer
 
-U kunt ook toegangs pakketten, catalogi, beleids regels, aanvragen en toewijzingen beheren met Microsoft Graph.  Een gebruiker in een geschikte rol met een toepassing die de gedelegeerde machtiging heeft, `EntitlementManagement.ReadWrite.All` kan de [rechten beheer-API](https://docs.microsoft.com/graph/tutorial-access-package-api?view=graph-rest-beta )aanroepen.
+U kunt ook toegangs pakketten, catalogi, beleids regels, aanvragen en toewijzingen beheren met Microsoft Graph.  Een gebruiker in een geschikte rol met een toepassing die de gedelegeerde machtiging heeft, `EntitlementManagement.ReadWrite.All` kan de [rechten beheer-API](/graph/tutorial-access-package-api?view=graph-rest-beta)aanroepen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

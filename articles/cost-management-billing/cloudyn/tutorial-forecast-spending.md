@@ -10,12 +10,12 @@ ms.subservice: cloudyn
 ms.custom: seodec18
 ms.reviewer: benshy
 ROBOTS: NOINDEX
-ms.openlocfilehash: 309582464d85923823b3779338f288bfb5519c6f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 70a5a4bf6981aa115c923559112d3533eebf3086
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687838"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132173"
 ---
 # <a name="tutorial-forecast-future-spending"></a>Zelfstudie: Toekomstige uitgaven voorspellen
 
@@ -70,4 +70,4 @@ In deze zelfstudie heeft u het volgende geleerd:
 Ga naar de volgende zelfstudie als u wilt leren hoe u kosten kunt beheren met kostentoewijzing en showback-rapporten.
 
 > [!div class="nextstepaction"]
-> [Kosten beheren met kostentoewijzing en showback-rapporten](../../cost-management/tutorial-manage-costs.md)
+> [Kosten beheren met kostentoewijzing en showback-rapporten](./tutorial-manage-costs.md)

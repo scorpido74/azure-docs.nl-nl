@@ -39,7 +39,7 @@
       href: use-prediction-api.md
     - name: Smart Labeler gebruiken
       href: suggested-tags.md
-    - name: Op rollen gebaseerd toegangsbeheer
+    - name: Op rollen gebaseerd toegangsbeheer voor Azure
       href: role-based-access-control.md
     - name: Exportmodellen
       items:
@@ -81,6 +81,8 @@
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction'
 - name: Resources
   items:
+    - name: Opties voor ondersteuning en hulp
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/custom-vision-service/context/context
     - name: Voorbeelden
       href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=vision'
     - name: Limieten en quota

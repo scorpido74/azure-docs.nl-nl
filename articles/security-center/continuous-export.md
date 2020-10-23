@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: memildin
-ms.openlocfilehash: 8b27c3d0982e945fcabc6e7748646ea2ee1a4184
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: ffc74e05d6cbe7722b9bf293c1a1e75a7de1b879
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945269"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342056"
 ---
 # <a name="continuously-export-security-alerts-and-recommendations"></a>Voortdurend beveiligings waarschuwingen en aanbevelingen exporteren
 
@@ -76,11 +76,11 @@ De onderstaande stappen zijn nodig om een doorlopende export naar Log Analytics 
 1. Kies in het gebied export doel de locatie waar u de gegevens wilt opslaan. Gegevens kunnen worden opgeslagen in een doel voor een ander abonnement (bijvoorbeeld op een centraal Event hub-exemplaar of een centrale Log Analytics-werk ruimte).
 1. Selecteer **Opslaan**.
 
-### <a name="use-the-rest-api"></a>[**REST-API gebruiken**](#tab/rest-api)
+### <a name="use-the-rest-api"></a>[**De REST API gebruiken**](#tab/rest-api)
 
 ### <a name="configure-continuous-export-using-the-rest-api"></a>Continue export configureren met behulp van de REST API
 
-Continue export kan worden geconfigureerd en beheerd via de API voor Azure Security Center [Automation](https://docs.microsoft.com/rest/api/securitycenter/automations). Gebruik deze API om regels te maken of bij te werken voor het exporteren naar een van de volgende mogelijke bestemmingen:
+Continue export kan worden geconfigureerd en beheerd via de API voor Azure Security Center [Automation](/rest/api/securitycenter/automations). Gebruik deze API om regels te maken of bij te werken voor het exporteren naar een van de volgende mogelijke bestemmingen:
 
 - Azure Event Hub
 - Log Analytics-werkruimte
@@ -97,7 +97,7 @@ De API biedt extra functionaliteit die niet beschikbaar is via de Azure Portal, 
     > [!TIP]
     > Als u meerdere export configuraties hebt ingesteld met behulp van de API of als u alleen API-only-para meters hebt gebruikt, worden deze extra functies niet weer gegeven in de gebruikers interface van Security Center. In plaats daarvan wordt er een banner met de melding dat er andere configuraties bestaan.
 
-Meer informatie over de automatiserings-API vindt u in de [documentatie van rest API](https://docs.microsoft.com/rest/api/securitycenter/automations).
+Meer informatie over de automatiserings-API vindt u in de [documentatie van rest API](/rest/api/securitycenter/automations).
 
 
 
@@ -163,7 +163,7 @@ Als u de gebeurtenis schema's van de geëxporteerde gegevens typen wilt weer gev
 
 ##  <a name="view-exported-alerts-and-recommendations-in-azure-monitor"></a>Geëxporteerde waarschuwingen en aanbevelingen in Azure Monitor weer geven
 
-In sommige gevallen kunt u ervoor kiezen om de geëxporteerde beveiligings waarschuwingen en/of aanbevelingen in [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)weer te geven. 
+In sommige gevallen kunt u ervoor kiezen om de geëxporteerde beveiligings waarschuwingen en/of aanbevelingen in [Azure monitor](../azure-monitor/platform/alerts-overview.md)weer te geven. 
 
 Azure Monitor biedt een uniforme waarschuwings ervaring voor verschillende Azure-waarschuwingen, waaronder diagnostisch logboeken, metrische waarschuwingen en aangepaste waarschuwingen op basis van Log Analytics werkruimte query's.
 
@@ -173,13 +173,13 @@ Als u waarschuwingen en aanbevelingen van Security Center in Azure Monitor wilt 
 
     ![Pagina waarschuwingen van Azure Monitor](./media/continuous-export/azure-monitor-alerts.png)
 
-1. Configureer op de pagina regel maken uw nieuwe regel (op dezelfde manier als u een [waarschuwings regel voor het logboek configureert in azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)):
+1. Configureer op de pagina regel maken uw nieuwe regel (op dezelfde manier als u een [waarschuwings regel voor het logboek configureert in azure monitor](../azure-monitor/platform/alerts-unified-log.md)):
 
     * Selecteer voor **resource**de log Analytics werk ruimte waarnaar u beveiligings waarschuwingen en aanbevelingen hebt geëxporteerd.
 
     * Selecteer **Condition**voor voor waarde **aangepaste logboek zoekopdracht**. Configureer op de pagina die wordt weer gegeven, de query, de lookback periode en de frequentie periode. In de zoek query kunt u *SecurityAlert* of *SecurityRecommendation* typen om een query uit te voeren op de gegevens typen die Security Center doorlopend exporteren naar wanneer u de functie continue export naar log Analytics inschakelt. 
     
-    * U kunt desgewenst de [actie groep](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) configureren die u wilt activeren. Actie groepen kunnen e-mail verzenden, ITSM tickets, webhooks en meer activeren.
+    * U kunt desgewenst de [actie groep](../azure-monitor/platform/action-groups.md) configureren die u wilt activeren. Actie groepen kunnen e-mail verzenden, ITSM tickets, webhooks en meer activeren.
     ![Waarschuwings regel Azure Monitor](./media/continuous-export/azure-monitor-alert-rule.png)
 
 U ziet nu nieuwe Azure Security Center waarschuwingen of aanbevelingen (afhankelijk van de geconfigureerde regels voor continue export en de voor waarde die u in uw Azure Monitor waarschuwings regel hebt opgegeven) in Azure Monitor waarschuwingen, waarbij automatisch een actie groep wordt geactiveerd (indien opgegeven).
@@ -214,7 +214,7 @@ In dit artikel hebt u geleerd hoe u continue export van uw aanbevelingen en waar
 Raadpleeg de volgende documentatie voor gerelateerde materialen: 
 
 - Meer informatie over [werk stroom automatiserings sjablonen](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation).
-- [Documentatie over Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/)
-- [Documentatie voor Azure Sentinel](https://docs.microsoft.com/azure/sentinel/)
-- [Azure Monitor-documentatie](https://docs.microsoft.com/azure/azure-monitor/)
+- [Documentatie over Azure Event Hubs](../event-hubs/index.yml)
+- [Documentatie voor Azure Sentinel](../sentinel/index.yml)
+- [Azure Monitor-documentatie](../azure-monitor/index.yml)
 - [Schema's voor het exporteren van gegevens typen](https://aka.ms/ASCAutomationSchemas)

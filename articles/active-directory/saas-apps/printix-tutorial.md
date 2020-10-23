@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.openlocfilehash: e9bc7969c5fee83944dab7cb35832f82b57c5595
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de4962326a06080ff2bf81954cf85d3b6bbfefd5
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552340"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104781"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-printix"></a>Zelf studie: integratie Azure Active Directory met Printix
 
@@ -61,19 +61,19 @@ Als u de integratie van Printix in azure AD wilt configureren, moet u Printix ui
 
 1. Navigeer naar **bedrijfs toepassingen**. Ga vervolgens naar **alle toepassingen**.
 
-    ![Toepassingen][2]
+    ![Scherm afbeelding toont de Azure Portal Enter prise-toepassingen geselecteerd onder beheren, waarbij alle toepassingen zijn geselecteerd.][2]
     
 1. Als u de nieuwe toepassing wilt toevoegen, klikt u op de knop **Nieuwe toepassing** boven aan het dialoogvenster.
 
-    ![Toepassingen][3]
+    ![In de scherm opname wordt de geselecteerde toepassing weer gegeven.][3]
 
 1. Typ **Printix**in het zoekvak.
 
-    ![Een Azure AD-testgebruiker maken](./media/printix-tutorial/tutorial_printix_search.png)
+    ![In de scherm opname wordt gezocht naar Printix in het dialoog venster toevoegen vanuit de galerie.](./media/printix-tutorial/tutorial_printix_search.png)
 
 1. Selecteer in het deel venster resultaten **Printix**en klik vervolgens op knop **toevoegen** om de toepassing toe te voegen.
 
-    ![Een Azure AD-testgebruiker maken](./media/printix-tutorial/tutorial_printix_addfromgallery.png)
+    ![In de scherm afbeelding wordt de optie Printix geselecteerd.](./media/printix-tutorial/tutorial_printix_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Eenmalige aanmelding voor Azure AD configureren en testen
 In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met Printix op basis van een test gebruiker met de naam ' Julia Simon '.
@@ -98,15 +98,15 @@ In deze sectie schakelt u eenmalige aanmelding voor Azure AD in de Azure Portal 
 
 1. Klik in het Azure Portal op de pagina **Printix** toepassings integratie op **eenmalige aanmelding**.
 
-    ![Eenmalige aanmelding configureren][4]
+    ![Scherm opname toont eenmalige aanmelding geselecteerd onder beheren in de Azure Portal.][4]
 
 1. Selecteer in het dialoog venster **eenmalige aanmelding** de optie **modus** als op **SAML gebaseerde aanmelding** om eenmalige aanmelding in te scha kelen.
  
-    ![Eenmalige aanmelding configureren](./media/printix-tutorial/tutorial_printix_samlbase.png)
+    ![Scherm opname toont de op SAML gebaseerde aanmeldings modus geselecteerd.](./media/printix-tutorial/tutorial_printix_samlbase.png)
 
 1. Voer de volgende stappen uit in de sectie **Printix domein en url's** :
 
-    ![Eenmalige aanmelding configureren](./media/printix-tutorial/tutorial_printix_url.png)
+    ![Scherm afbeelding toont de sectie Printix domein en Url's, waar u een U R L voor aanmelden kunt opgeven.](./media/printix-tutorial/tutorial_printix_url.png)
 
     Typ in het tekstvak **Aanmeldings-URL** een URL met het volgende patroon: `https://<subdomain>.printix.net`
 
@@ -115,33 +115,33 @@ In deze sectie schakelt u eenmalige aanmelding voor Azure AD in de Azure Portal 
  
 1. Klik in de sectie **SAML-handtekening certificaat** op **meta gegevens-XML** en sla het bestand met meta gegevens op uw computer op.
 
-    ![Eenmalige aanmelding configureren](./media/printix-tutorial/tutorial_printix_certificate.png) 
+    ![Scherm afbeelding toont het deel venster SAML-handtekening certificaat waarin u een certificaat kunt downloaden.](./media/printix-tutorial/tutorial_printix_certificate.png) 
 
 1. Klik op de knop **Save**.
 
-    ![Eenmalige aanmelding configureren](./media/printix-tutorial/tutorial_general_400.png)
+    ![Schermopname toont de knop 'Opslaan'.](./media/printix-tutorial/tutorial_general_400.png)
 
 1. Meld u aan bij uw Printix-Tenant als beheerder.
 
 1. Klik in het menu aan de bovenkant op het pictogram in de rechter bovenhoek en selecteer '**verificatie**'.
    
-    ![Eenmalige aanmelding configureren](./media/printix-tutorial/tutorial_printix_06.png)
+    ![Scherm afbeelding toont de verificatie die is geselecteerd in het menu.](./media/printix-tutorial/tutorial_printix_06.png)
 
 1. Selecteer op het tabblad **installatie** de optie **Azure/Office 365-verificatie inschakelen**
    
-    ![Eenmalige aanmelding configureren](./media/printix-tutorial/tutorial_printix_07.png)
+    ![In de scherm afbeelding ziet u de Printix.net-pagina waar u Azure/Office 365-verificatie inschakelen kunt selecteren.](./media/printix-tutorial/tutorial_printix_07.png)
 
 1. Op het tabblad **Azure** voert u de URL voor de federatieve meta gegevens in op het tekstvak van het**federatieve meta gegevens document**. 
 
     Koppel het XML-bestand met meta gegevens dat u hebt gedownload van Azure AD naar het [Printix-ondersteunings team](mailto:support@printix.net). Vervolgens uploaden ze het XML-bestand en geven ze een URL voor federatieve meta gegevens.
    
-    ![Eenmalige aanmelding configureren](./media/printix-tutorial/tutorial_printix_08.png)
+    ![Scherm afbeelding toont de pagina Printix.net waar u een document met federatieve meta gegevens kunt opgeven.](./media/printix-tutorial/tutorial_printix_08.png)
    
 1. Klik op de knop**testen**en klik op de knop**OK**als de test is geslaagd.
    
      De pagina Azure Active Directory wordt weer gegeven nadat u op de knop **testen** hebt geklikt. ' De test is voltooid ' houdt in dat na het invoeren van de referenties van uw Azure-test account een bericht wordt weer gegeven met de tekst ' instellingen getest OK '. Klik vervolgens op de knop **OK** .
    
-    ![Eenmalige aanmelding configureren](./media/printix-tutorial/tutorial_printix_09.png)
+    ![Scherm afbeelding toont de resultaten van de test.](./media/printix-tutorial/tutorial_printix_09.png)
 
 1. Klik op de knop **Opslaan** op de pagina**verificatie**.
 
@@ -159,19 +159,19 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
 1. Klik in het **Azure Portal**, in het navigatie deel venster aan de linkerkant op **Azure Active Directory** pictogram.
 
-    ![Een Azure AD-testgebruiker maken](./media/printix-tutorial/create_aaduser_01.png) 
+    ![Scherm afbeelding toont een naam en gebruikers naam die moeten worden gemaakt.](./media/printix-tutorial/create_aaduser_01.png) 
 
 1. Als u de lijst met gebruikers wilt weer geven, gaat u naar **gebruikers en groepen** en klikt u op **alle gebruikers**.
     
-    ![Een Azure AD-testgebruiker maken](./media/printix-tutorial/create_aaduser_02.png) 
+    ![Scherm afbeelding toont het pictogram van Azure A D in het Azure Portal.](./media/printix-tutorial/create_aaduser_02.png) 
 
 1. Klik boven in het dialoog venster op **toevoegen** om het dialoog venster **gebruiker** te openen.
  
-    ![Een Azure AD-testgebruiker maken](./media/printix-tutorial/create_aaduser_03.png) 
+    ![Scherm afbeelding toont gebruikers en groepen die zijn geselecteerd in het menu beheren, met alle geselecteerde gebruikers.](./media/printix-tutorial/create_aaduser_03.png) 
 
 1. Voer de volgende stappen uit op de pagina **gebruikers** dialoogvenster:
  
-    ![Een Azure AD-testgebruiker maken](./media/printix-tutorial/create_aaduser_04.png) 
+    ![Scherm afbeelding toont het dialoog venster van de gebruiker waarin u de waarden kunt invoeren die worden beschreven.](./media/printix-tutorial/create_aaduser_04.png) 
 
     a. Typ **BrittaSimon**in het tekstvak **naam** .
 
@@ -195,25 +195,25 @@ Er is geen actie-item voor u in deze sectie. Er wordt een nieuwe gebruiker gemaa
 
 In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Printix.
 
-![Gebruiker toewijzen][200] 
+![Scherm afbeelding toont een gebruiker met standaard toegang.][200] 
 
 **Voer de volgende stappen uit om Julia Simon toe te wijzen aan Printix:**
 
 1. Open in de Azure Portal de weer gave toepassingen en navigeer vervolgens naar de mapweergave en ga naar **bedrijfs toepassingen** en klik vervolgens op **alle toepassingen**.
 
-    ![Gebruiker toewijzen][201] 
+    ![Scherm opname toont bedrijfs toepassingen die zijn geselecteerd onder beheren, waarbij alle toepassingen zijn geselecteerd.][201] 
 
 1. Selecteer in de lijst toepassingen de optie **Printix**.
 
-    ![Eenmalige aanmelding configureren](./media/printix-tutorial/tutorial_printix_app.png) 
+    ![Scherm afbeelding toont de lijst met toepassingen waarin u Printix kunt selecteren.](./media/printix-tutorial/tutorial_printix_app.png) 
 
 1. Klik in het menu aan de linkerkant op **gebruikers en groepen**.
 
-    ![Gebruiker toewijzen][202] 
+    ![Scherm afbeelding toont gebruikers en groepen die zijn geselecteerd in het menu beheren.][202] 
 
 1. Klik op de knop **Add**. Selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
-    ![Gebruiker toewijzen][203]
+    ![Scherm afbeelding toont de knop toevoegen en de pagina toewijzing toevoegen waar u gebruikers en groepen kunt selecteren.][203]
 
 1. Selecteer in het dialoog venster **gebruikers en groepen** de optie **Julia Simon** in de lijst gebruikers.
 

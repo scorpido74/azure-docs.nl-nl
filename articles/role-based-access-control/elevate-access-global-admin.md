@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 06/09/2020
 ms.author: rolyon
-ms.openlocfilehash: 343f6b7a78ca98615d512d31d7ac1c10d9de8f10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e57e495d34a265b5e0691106996206029656c5a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88799329"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371117"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Toegang verhogen om alle Azure-abonnementen en beheergroepen te beheren
 
@@ -33,7 +33,7 @@ Als u een globale beheerder bent, is het mogelijk dat u de volgende acties wilt 
 
 ## <a name="how-does-elevated-access-work"></a>Hoe werkt de toegang met verhoogde bevoegdheden?
 
-Azure AD en Azure-resources worden onafhankelijk van elkaar beveiligd. Dat wil zeggen dat Azure AD-roltoewijzingen geen toegang verlenen tot Azure-resources en Azure-roltoewijzingen geen toegang verlenen tot Azure AD. Als u echter een [globale beheerder](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) in azure AD bent, kunt u uzelf toegang tot alle Azure-abonnementen en-beheer groepen in uw directory toewijzen. Gebruik deze mogelijkheid als u geen toegang hebt tot Azure-abonnements resources, zoals virtuele machines of opslag accounts, en u uw globale beheerders bevoegdheden wilt gebruiken om toegang te krijgen tot deze resources.
+Azure AD en Azure-resources worden onafhankelijk van elkaar beveiligd. Dat wil zeggen dat Azure AD-roltoewijzingen geen toegang verlenen tot Azure-resources en Azure-roltoewijzingen geen toegang verlenen tot Azure AD. Als u echter een [globale beheerder](../active-directory/roles/permissions-reference.md#company-administrator-permissions) in azure AD bent, kunt u uzelf toegang tot alle Azure-abonnementen en-beheer groepen in uw directory toewijzen. Gebruik deze mogelijkheid als u geen toegang hebt tot Azure-abonnements resources, zoals virtuele machines of opslag accounts, en u uw globale beheerders bevoegdheden wilt gebruiken om toegang te krijgen tot deze resources.
 
 Wanneer u de toegang uitbreidt, krijgt u de rol [beheerder voor gebruikers toegang](built-in-roles.md#user-access-administrator) toegewezen in Azure in het hoofd bereik ( `/` ).Hiermee kunt u alle resources weer geven en toegang toewijzen in een abonnement of beheer groep in de Directory. U kunt de toewijzingen van beheerders rollen voor gebruikers toegang verwijderen met Azure PowerShell, Azure CLI of de REST API.
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 11/21/2019
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b2f9a6e13fdc39ab18a2056fab15982aa9fb0e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab9d544cc205d2971b2097110d8c36c5d85fa1fd
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88948161"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144990"
 ---
 # <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>Procedure: MFA vereisen voor toegang vanaf niet-vertrouwde netwerken met voorwaardelijke toegang   
 
@@ -26,10 +26,7 @@ In dit artikel vindt u de informatie die u nodig hebt om een beleid voor voorwaa
 
 ## <a name="prerequisites"></a>Vereisten
 
-In dit artikel wordt ervan uitgegaan dat u bekend bent met: 
-
-- De [basis concepten](overview.md) van voorwaardelijke toegang tot Azure AD 
-- De [Aanbevolen procedures](best-practices.md) voor het configureren van beleid voor voorwaardelijke toegang in de Azure Portal
+In dit artikel wordt ervan uitgegaan dat u bekend bent met de [basis concepten](overview.md) van voorwaardelijke toegang. 
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
@@ -65,7 +62,7 @@ In plaats van te bepalen welke locaties niet worden vertrouwd, kunt u het volgen
 
 ## <a name="policy-deployment"></a>Implementatie van beleid
 
-Met de aanpak die in dit artikel wordt beschreven, kunt u nu een beleid voor voorwaardelijke toegang configureren voor niet-vertrouwde locaties. Om ervoor te zorgen dat uw beleid werkt zoals verwacht, is het aanbevolen best practice het te testen voordat u het in productie neemt. In het ideale geval gebruikt u een test Tenant om te controleren of uw nieuwe beleid werkt zoals bedoeld. Zie [een nieuw beleid implementeren](best-practices.md#how-should-you-deploy-a-new-policy)voor meer informatie. 
+Met de aanpak die in dit artikel wordt beschreven, kunt u nu een beleid voor voorwaardelijke toegang configureren voor niet-vertrouwde locaties. Om ervoor te zorgen dat uw beleid werkt zoals verwacht, is het aanbevolen best practice het te testen voordat u het in productie neemt. In het ideale geval gebruikt u een test Tenant om te controleren of uw nieuwe beleid werkt zoals bedoeld.
 
 ## <a name="next-steps"></a>Volgende stappen
 

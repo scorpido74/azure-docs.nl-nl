@@ -7,18 +7,18 @@ ms.topic: overview
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: b03bedd9abbe59ed3bc1b0ec1439aa27af57e6da
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 159851f5b1ca38cc34da785b39229a6a91e1e4dd
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91758894"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090689"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Wat is Azure Spring Cloud?
 
 Met Azure Spring Cloud kunt u eenvoudig microservicetoepassingen op basis van Spring Boot implementeren in Azure zonder codewijzigingen.  Azure Spring Cloud beheert de infrastructuur van Spring Cloud-toepassingen, zodat ontwikkelaars zich kunnen richten op hun code.  Spring Cloud biedt levenscyclusbeheer met uitgebreide bewaking en diagnose, configuratiebeheer, servicedetectie, CI/CD-integratie, blue-green implementaties, en meer.
 
-Azure Spring Cloud ondersteunt [Spring Boot](https://spring.io/projects/spring-boot)-apps van Java en [Steeltoe](https://steeltoe.io/)-apps van ASP.NET Core. Ondersteuning van Steeltoe wordt momenteel aangeboden als openbare preview. Met openbare preview-aanbiedingen kunt u voorafgaand aan de officiële release met nieuwe functies experimenteren.  Openbare preview-functies en -services zijn niet bedoeld voor gebruik in productie.  Zie de [Veelgestelde vragen](https://azure.microsoft.com/support/faq/) of een dien een [ondersteuningsaanvraag](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) in voor meer informatie.
+Azure Spring Cloud ondersteunt [Spring Boot](https://spring.io/projects/spring-boot)-apps van Java en [Steeltoe](https://steeltoe.io/)-apps van ASP.NET Core. Ondersteuning van Steeltoe wordt momenteel aangeboden als openbare preview. Met openbare preview-aanbiedingen kunt u voorafgaand aan de officiële release met nieuwe functies experimenteren.  Openbare preview-functies en -services zijn niet bedoeld voor gebruik in productie.  Zie de [Veelgestelde vragen](https://azure.microsoft.com/support/faq/) of een dien een [ondersteuningsaanvraag](../azure-portal/supportability/how-to-create-azure-support-request.md) in voor meer informatie.
 
 Als onderdeel van het Azure-ecosysteem kan Azure Spring Cloud eenvoudig worden verbonden met Azure-services, waaronder opslag, databases, bewaking en meer.
 

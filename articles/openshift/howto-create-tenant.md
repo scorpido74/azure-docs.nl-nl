@@ -6,16 +6,22 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 775aa44043e9c8900bd0c040ab603736314ea34e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e949f1ac5259ba35772ce98c2ee88e5ea66c2d84
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89469980"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221159"
 ---
 # <a name="create-an-azure-ad-tenant-for-azure-red-hat-openshift"></a>Een Azure AD-Tenant maken voor Azure Red Hat open Shift
 
-Voor Microsoft Azure Red Hat open Shift is een [Azure Active Directory (Azure AD)](../active-directory/develop/quickstart-create-new-tenant.md) -Tenant vereist waarin u uw cluster kunt maken. Een *Tenant* is een toegewezen exemplaar van Azure AD dat een organisatie of app-ontwikkelaar ontvangt wanneer ze een relatie met micro soft maken door zich aan te melden voor Azure, Microsoft Intune of Microsoft 365. Elke Azure AD-Tenant is uniek en los van andere Azure AD-tenants en heeft zijn eigen werk-en school identiteiten en app-registraties.
+> [!IMPORTANT]
+> Azure Red Hat open Shift 3,11 wordt 30 juni 2022 buiten gebruik gesteld. Ondersteuning voor het maken van nieuwe Azure Red Hat open Shift 3,11-clusters loopt voort tot en met 30 november 2020. Na de buiten gebruiks telling worden de resterende Azure Red Hat open Shift 3,11-clusters afgesloten om beveiligings problemen te voor komen.
+> 
+> Volg deze hand leiding voor het [maken van een Azure Red Hat open Shift 4-cluster](tutorial-create-cluster.md).
+> Als u specifieke vragen hebt, [kunt u contact met ons](mailto:arofeedback@microsoft.com)opnemen.
+
+Voor Microsoft Azure Red Hat open Shift is een [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) -Tenant vereist waarin u uw cluster kunt maken. Een *Tenant* is een toegewezen exemplaar van Azure AD dat een organisatie of app-ontwikkelaar ontvangt wanneer ze een relatie met micro soft maken door zich aan te melden voor Azure, Microsoft Intune of Microsoft 365. Elke Azure AD-Tenant is uniek en los van andere Azure AD-tenants en heeft zijn eigen werk-en school identiteiten en app-registraties.
 
 Als u nog geen Azure AD-Tenant hebt, volgt u deze instructies om er een te maken.
 

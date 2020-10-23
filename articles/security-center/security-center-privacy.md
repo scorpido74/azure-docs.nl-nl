@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: bf715d872fab421de30ebcb146a1981a7d008738
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e270185550fac5a06d800d74d5fcd751aceb25d
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80585977"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342226"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Gebruikersgegevens beheren in Azure Security Center
 Dit artikel bevat informatie over hoe u de gebruikers gegevens in Azure Security Center kunt beheren. Het beheren van gebruikers gegevens omvat de mogelijkheid om gegevens te openen, te verwijderen of te exporteren.
@@ -87,7 +87,7 @@ Een account beheerder kan de waarschuwings details exporteren door:
   GET https://<endpoint>/subscriptions/{subscriptionId}/providers/microsoft.Security/alerts?api-version={api-version}
   ```
 
-Zie [beveiligings waarschuwingen ophalen (verzameling ophalen)](https://msdn.microsoft.com/library/mt704050.aspx)voor meer informatie.
+Zie [beveiligings waarschuwingen ophalen (verzameling ophalen)](/previous-versions/azure/reference/mt704050(v=azure.100))voor meer informatie.
 
 ## <a name="restricting-the-use-of-personal-data-for-profiling-or-marketing-without-consent"></a>Het gebruik van persoonlijke gegevens voor profile ring of marketing beperken zonder toestemming
 Een Security Center gebruiker kan ervoor kiezen om u af te melden door hun [beveiligings contact gegevens](security-center-provide-security-contact-details.md)te verwijderen.

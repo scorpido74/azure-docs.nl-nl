@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 3eae423763d2d4a05b33e4e1d4b6e9e087a47ba3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 989b41d4fc55241a5fa75a0eed9ea8f4ebaeee67
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88521542"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856820"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-signalfx"></a>Zelfstudie: Eenmalige aanmelding via Azure Active Directory integreren met SignalFx
 
@@ -159,7 +159,7 @@ Bekijk de volgende informatie over het testen van eenmalige aanmelding, evenals 
         * Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 * De SignalFx-toepassing kan worden geopend vanuit het toegangsvenster of via een aangepaste aanmeldingspagina die aan de organisatie is toegewezen. De testgebruiker moet de integratie testen vanaf een van deze locaties.
-    * De testgebruiker kan de referenties gebruiken die eerder in dit proces zijn gemaakt voor **b.simon@contoso.com** .
+    * De testgebruiker kan de referenties gebruiken die eerder in dit proces zijn gemaakt voor **b.simon\@contoso.com**.
 
 ### <a name="first-time-logins"></a>De eerste keer aanmelden
 

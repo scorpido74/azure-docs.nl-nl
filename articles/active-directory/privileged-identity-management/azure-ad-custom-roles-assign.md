@@ -16,18 +16,18 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d14023065005977334a9f399a61acfde3b6ba9f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75e004980ada23a616b57e3c7eb1afb241e09598
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87413150"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371644"
 ---
 # <a name="assign-an-azure-ad-custom-role-in-privileged-identity-management"></a>Een aangepaste Azure AD-rol toewijzen in Privileged Identity Management
 
 In dit artikel leest u hoe u Privileged Identity Management (PIM) kunt gebruiken voor het maken van just-in-time-en tijdgebonden toewijzing aan aangepaste rollen die zijn gemaakt voor het beheren van toepassingen in de beheer ervaring van Azure Active Directory (Azure AD).
 
-- Zie [aangepaste beheerders rollen in azure Active Directory (preview)](../users-groups-roles/roles-custom-overview.md)voor meer informatie over het maken van aangepaste rollen voor het delegeren van toepassings beheer in azure AD.
+- Zie [aangepaste beheerders rollen in azure Active Directory (preview)](../roles/custom-overview.md)voor meer informatie over het maken van aangepaste rollen voor het delegeren van toepassings beheer in azure AD.
 - Als u nog geen Privileged Identity Management hebt gebruikt, kunt u aan de slag [met privileged Identity Management](pim-getting-started.md)meer informatie.
 - Voor informatie over het verlenen van een andere beheerder toegang tot het beheren van Privileged Identity Management raadpleegt u [toegang verlenen aan andere beheerders om privileged Identity Management te beheren](pim-how-to-give-access-to-pim.md).
 
@@ -83,4 +83,4 @@ Als u de roltoewijzing wilt controleren, selecteert u in een openstaande rol de 
 - [Een aangepaste Azure AD-rol activeren](azure-ad-custom-roles-assign.md)
 - [Een aangepaste gebruikersrol toewijzing van Azure AD verwijderen of bijwerken](azure-ad-custom-roles-update-remove.md)
 - [Een aangepaste functie toewijzing voor Azure AD configureren](azure-ad-custom-roles-configure.md)
-- [Roldefinities in azure AD](../users-groups-roles/directory-assign-admin-roles.md)
+- [Roldefinities in azure AD](../roles/permissions-reference.md)

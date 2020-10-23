@@ -9,12 +9,12 @@ ms.subservice: keys
 ms.topic: quickstart
 ms.date: 03/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4ebd3cc605b396f72d063f3fc506df9020ec3a5f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3cea28fa278bb699a7fb5aaa0c79bf1e71f59ac1
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87061013"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940494"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-azure-powershell"></a>Quickstart: Een sleutel instellen in Azure Key Vault en daaruit ophalen met behulp van Azure PowerShell
 
@@ -69,7 +69,7 @@ Typ de onderstaande opdrachten om een aangeroepen **ExampleKey** te maken:
 Add-AzKeyVaultKey -VaultName 'Contoso-Vault2' -Name 'ExampleKey' -Destination 'Software'
 ```
 
-U kunt nu naar deze sleutel die u aan Azure Key Vault hebt toegevoegd, verwijzen met behulp van de URI ervan. Gebruik **https://Contoso-Vault2.vault.azure.net/keys/ExampleKey** om de huidige versie op te halen. 
+U kunt nu naar deze sleutel die u aan Azure Key Vault hebt toegevoegd, verwijzen met behulp van de URI ervan. Gebruik **'https://Contoso-Vault2.vault.azure.net/keys/ExampleKey '** om de huidige versie op te halen. 
 
 Een eerder opgeslagen sleutel weergeven:
 

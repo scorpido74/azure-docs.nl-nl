@@ -3,12 +3,12 @@ title: Kubernetes bewaking met Azure Monitor voor containers | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u de prestaties van een Kubernetes-cluster kunt weer geven en analyseren met Azure Monitor voor containers.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 5d267715ed9748c69c33bbd7bc5af0db7b118502
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: de61e8e5b2716a3ca212a0a830a4d48b8bd2c3ef
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994757"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368754"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Uw Kubernetes-cluster prestaties bewaken met Azure Monitor voor containers
 
@@ -290,6 +290,10 @@ De pictogrammen in het veld status geven de online statussen aan, zoals wordt be
 | ![Laatste gemelde status pictogram](./media/container-insights-analyze/containers-grey-icon.png) | De laatste keer dat er een melding werd uitgevoerd, maar heeft niet meer dan 30 minuten gereageerd|
 | ![Pictogram voor beëindigde status](./media/container-insights-analyze/containers-terminated-icon.png) | Gestopt of stoppen is mislukt|
 | ![Pictogram mislukte status](./media/container-insights-analyze/containers-failed-icon.png) | Mislukte status |
+
+## <a name="monitor-and-visualize-network-configurations"></a>Netwerk configuraties bewaken en visualiseren
+Azure Network Policy Manager bevat informatieve Prometheus-metrische gegevens die u in staat stellen om uw netwerk configuraties te bewaken en beter te begrijpen. Het biedt ingebouwde visualisaties in de Azure Portal of Grafana Labs. Zie [netwerk configuraties bewaken en visualiseren met Azure NPM](../../virtual-network/kubernetes-network-policies.md#monitor-and-visualize-network-configurations-with-azure-npm)voor meer informatie.
+
 
 ## <a name="workbooks"></a>Werkmappen
 

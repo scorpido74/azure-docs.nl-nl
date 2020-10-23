@@ -4,12 +4,12 @@ description: Aanbevelingen voor het beveiligen van installatie kopieën en gehei
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: f49f115e10326887cf4d23406437467256b7df2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 898bdf77bf4b6636e78f5d735fc8650da4fde2b8
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87922231"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148662"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Beveiligings overwegingen voor Azure Container Instances
 
@@ -34,7 +34,7 @@ Een openbaar beschik bare container installatie kopie biedt geen garantie voor b
 
 Profiteer van oplossingen om container installatie kopieën in een persoonlijk REGI ster te scannen en mogelijke beveiligings problemen te identificeren. Het is belang rijk om inzicht te krijgen in de diepte van de detectie van bedreigingen die de verschillende oplossingen bieden.
 
-Azure Container Registry kan bijvoorbeeld optioneel worden [geïntegreerd met Azure Security Center](../security-center/azure-container-registry-integration.md) , zodat alle Linux-installatie kopieën die naar een REGI ster zijn gepusht, automatisch worden gescand. De geïntegreerde Qualys scanner van Azure Security Center detecteert beveiligings lekken van de installatie kopie, classificeert deze en biedt richt lijnen voor herstel.
+Azure Container Registry kan bijvoorbeeld optioneel worden [geïntegreerd met Azure Security Center](../security-center/defender-for-container-registries-introduction.md) , zodat alle Linux-installatie kopieën die naar een REGI ster zijn gepusht, automatisch worden gescand. De geïntegreerde Qualys scanner van Azure Security Center detecteert beveiligings lekken van de installatie kopie, classificeert deze en biedt richt lijnen voor herstel.
 
 De beveiligings bewaking en oplossingen voor het scannen van afbeeldingen, zoals [Twistlock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview) en de licht [blauwe beveiliging](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) , zijn ook beschikbaar via Azure Marketplace.  
 
@@ -138,7 +138,7 @@ Bewaak uw resource activiteit, zoals bestanden, netwerk en andere bronnen die uw
 
 Behoud een nauw keurige controle spoor van beheerders toegang tot uw container ecosysteem, met inbegrip van uw Kubernetes-cluster, container register en container installatie kopieën. Deze logboeken kunnen nood zakelijk zijn voor controle doeleinden en kunnen worden gebruikt als forensische-materiaal na een beveiligings incident. Azure-oplossingen omvatten:
 
-* [Integratie van de Azure Kubernetes-service met Azure Security Center](../security-center/azure-kubernetes-service-integration.md) om de beveiligings configuratie van de cluster omgeving te controleren en aanbevelingen voor beveiliging te genereren
+* [Integratie van de Azure Kubernetes-service met Azure Security Center](../security-center/defender-for-kubernetes-introduction.md) om de beveiligings configuratie van de cluster omgeving te controleren en aanbevelingen voor beveiliging te genereren
 * [Azure container bewakings oplossing](../azure-monitor/insights/containers.md)
 * Resource logboeken voor [Azure container instances](container-instances-log-analytics.md) en [Azure container Registry](../container-registry/container-registry-diagnostics-audit-logs.md)
 

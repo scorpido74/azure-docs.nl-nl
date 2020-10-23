@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 53a224f53f0270166ce75e718e670780730a10c8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2e772dc39374b178743a6c8b93e6b48e62b1e2ed
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543649"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995962"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-paylocity"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Paylocity
 
@@ -106,7 +106,7 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 1. Ga naar de pagina **Eenmalige aanmelding met SAML instellen** en klik in de sectie **SAML-handtekeningcertificaat** op het pictogram **Bewerken**.
 
-    ![SAML-handtekeningcertificaat bewerken](./media/paylocity-tutorial/edit-samlassertion.png)
+    ![Schermopname van het SAML-handtekeningcertificaat met de actie Downloaden voor XML-bestand met federatieve metagegevens geselecteerd.](./media/paylocity-tutorial/edit-samlassertion.png)
 
 1. Selecteer **Optie voor ondertekening** voor **SAML-antwoord en -assertie ondertekenen** en klik op **Opslaan**.
 

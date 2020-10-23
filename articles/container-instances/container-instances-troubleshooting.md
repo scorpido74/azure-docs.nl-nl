@@ -4,12 +4,12 @@ description: Meer informatie over het oplossen van veelvoorkomende problemen wan
 ms.topic: article
 ms.date: 06/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 46d3ad6afb1761ca9503676ad2176482b7e4530e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b31f29cdc9cd15ebf3ba88769095bfd0ef2628d2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260746"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148618"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Veelvoorkomende problemen in Azure Container Instances oplossen
 
@@ -198,7 +198,7 @@ Na het maken van de eerste keer is het mogelijk dat Windows-containers tot 30 se
 
 ### <a name="cannot-connect-to-underlying-docker-api-or-run-privileged-containers"></a>Kan geen verbinding maken met de onderliggende docker-API of er worden geprivilegieerde containers uitgevoerd
 
-Azure Container Instances biedt geen rechtstreekse toegang tot de onderliggende infra structuur die als host fungeert voor container groepen. Dit geldt ook voor toegang tot de docker-API die wordt uitgevoerd op de host van de container en het uitvoeren van geprivilegieerde containers. Als u docker-interactie nodig hebt, raadpleegt u de [rest-referentie documentatie](https://aka.ms/aci/rest) om te zien wat de ACI API ondersteunt. Als er iets ontbreekt, dient u een aanvraag in te dienen bij de forums over de [ACI-feedback](https://aka.ms/aci/feedback).
+Azure Container Instances biedt geen rechtstreekse toegang tot de onderliggende infra structuur die als host fungeert voor container groepen. Dit geldt ook voor toegang tot de docker-API die wordt uitgevoerd op de host van de container en het uitvoeren van geprivilegieerde containers. Als u docker-interactie nodig hebt, raadpleegt u de [rest-referentie documentatie](/rest/api/container-instances/) om te zien wat de ACI API ondersteunt. Als er iets ontbreekt, dient u een aanvraag in te dienen bij de forums over de [ACI-feedback](https://aka.ms/aci/feedback).
 
 ### <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>Het IP-adres van de containergroep is mogelijk niet toegankelijk vanwege niet-overeenkomende poorten
 

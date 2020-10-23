@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 71207509f20c80cf85311cba7b647aaca0a49e42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68f30079d85e2064b92718c65b38dbb5069d810b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88192814"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101644"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Richt lijnen voor het afstemmen van de prestaties voor Storm op HDInsight en Azure Data Lake Storage Gen1
 
@@ -22,8 +22,8 @@ Begrijp de factoren die u moet overwegen wanneer u de prestaties van een Azure S
 * **Een Azure-abonnement**. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
 * **Een Azure data Lake Storage gen1-account**. Zie [aan de slag met Azure data Lake Storage gen1](data-lake-store-get-started-portal.md)voor instructies over het maken van een account.
 * **Een Azure HDInsight-cluster** met toegang tot een Data Lake Storage gen1-account. Zie [een HDInsight-cluster met data Lake Storage gen1 maken](data-lake-store-hdinsight-hadoop-use-portal.md). Zorg ervoor dat Extern bureaublad voor het cluster is ingeschakeld.
-* **Een storm-cluster wordt uitgevoerd op Data Lake Storage gen1**. Zie [Storm op HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview)voor meer informatie.
-* **Richt lijnen voor het afstemmen van de prestaties van data Lake Storage gen1**.  Zie [Data Lake Storage gen1 richt lijnen voor het afstemmen van prestaties](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)voor algemene concepten.  
+* **Een storm-cluster wordt uitgevoerd op Data Lake Storage gen1**. Zie [Storm op HDInsight](../hdinsight/storm/apache-storm-overview.md)voor meer informatie.
+* **Richt lijnen voor het afstemmen van de prestaties van data Lake Storage gen1**.  Zie [Data Lake Storage gen1 richt lijnen voor het afstemmen van prestaties](./data-lake-store-performance-tuning-guidance.md)voor algemene concepten.  
 
 ## <a name="tune-the-parallelism-of-the-topology"></a>De parallellisme van de topologie afstemmen
 
@@ -130,6 +130,6 @@ Als u wilt controleren of u een beperking krijgt, schakelt u de logboek registra
 2. Bewaak de Storm-topologie logboeken op worker-knoop punten (onder/var/log/Storm/worker-Artifacts/ &lt; &gt; / &lt; -topologie poort &gt; /Worker.log) voor data Lake Storage gen1 beperkings uitzonderingen.
 
 ## <a name="next-steps"></a>Volgende stappen
-In [deze blog](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)kunt u naar aanvullende prestaties afstemmen voor Storm.
+In [deze blog](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)kunt u naar aanvullende prestaties afstemmen voor Storm.
 
 Voor een extra voor beeld dat wordt uitgevoerd, raadpleegt u [dit op github](https://github.com/hdinsight/storm-performance-automation).

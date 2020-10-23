@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 8e91a611084d201e6609f7e203eaa08c81e19a00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: caaab07200a8631935a2b5d5368a0c16ea9a60c5
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569999"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320220"
 ---
 # <a name="troubleshooting-postgresql-hyperscale-server-groups"></a>Problemen met PostgreSQL grootschalige-Server groepen oplossen
 In dit artikel worden enkele technieken beschreven die u kunt gebruiken om problemen met uw server groep op te lossen. Naast dit artikel kunt u lezen hoe u [Kibana](monitor-grafana-kibana.md) kunt gebruiken om de logboeken te doorzoeken of [Grafana](monitor-grafana-kibana.md) te gebruiken om metrische gegevens over uw server groep te visualiseren. 
@@ -51,13 +51,13 @@ Laten we bijvoorbeeld een oplossing voor een PostgreSQL grootschalige-Server gro
 
 ### <a name="install-tools"></a>Hulpprogramma's installeren
 
-Installeer Azure Data Studio `kubectl` en `azdata` op de client computer die u gebruikt om het notitie blok in azure Data Studio uit te voeren. Volg hiervoor de instructies op [client Hulpprogramma's installeren](install-client-tools.md) .
+Installeer Azure Data Studio `kubectl` en [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] op de client computer die u gebruikt om het notitie blok in azure Data Studio uit te voeren. Volg hiervoor de instructies op [client Hulpprogramma's installeren](install-client-tools.md) .
 
 ### <a name="update-the-path-environment-variable"></a>De omgevings variabele PATH bijwerken
 
 Zorg ervoor dat deze hulpprogram ma's vanaf elke locatie op deze client computer kunnen worden aangeroepen. Werk bijvoorbeeld op een Windows-client computer de omgevings variabele PATH systeem bij en voeg de map toe waarin u kubectl hebt geïnstalleerd.
 
-### <a name="sign-in-with-azdata"></a>Meld u aan met `azdata`
+### <a name="sign-in-with-azure-data-cli-azdata"></a>Meld u aan met [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
 Meld u aan bij uw Arc-gegevens controller van deze client computer en voordat u Azure Data Studio start. U kunt dit doen door een opdracht als volgt uit te voeren:
 

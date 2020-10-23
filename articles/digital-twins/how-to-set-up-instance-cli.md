@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0dfc86503f1b3aa648cb8c7cefe14fbd123f1459
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 081eb10166ff681990af15110829030176efa3fa
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047502"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207764"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Een Azure Digital Apparaatdubbels-exemplaar en-authenticatie (CLI) instellen
 
@@ -24,7 +24,9 @@ Deze versie van dit artikel doorloopt deze stappen hand matig, één voor één,
 * Als u deze stappen hand matig wilt door lopen met behulp van de Azure Portal, raadpleegt u de portal versie van dit artikel: [*instructies: een exemplaar en verificatie instellen (Portal)*](how-to-set-up-instance-portal.md).
 * Als u via een automatische installatie wilt uitvoeren met behulp van een voor beeld van een implementatie script, raadpleegt u de script versie van dit artikel: [*instructies: een exemplaar en authenticatie instellen (script)*](how-to-set-up-instance-scripted.md).
 
-[!INCLUDE [digital-twins-setup-steps-prereq.md](../../includes/digital-twins-setup-steps-prereq.md)]
+[!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
+[!INCLUDE [digital-twins-setup-permissions.md](../../includes/digital-twins-setup-permissions.md)]
+
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="set-up-cloud-shell-session"></a>Een Cloud Shell-sessie instellen
@@ -86,67 +88,7 @@ Het resultaat van deze opdracht is een gegenereerde informatie over de roltoewij
 
 [!INCLUDE [digital-twins-setup-verify-role-assignment.md](../../includes/digital-twins-setup-verify-role-assignment.md)]
 
-U hebt nu een Azure Digital Apparaatdubbels-exemplaar klaar om te gaan, en u hebt machtigingen toegewezen om het te beheren. Vervolgens stelt u de machtigingen voor een client-app in om deze te openen.
-
-## <a name="set-up-access-permissions-for-client-applications"></a>Toegangs machtigingen voor client toepassingen instellen
-
-[!INCLUDE [digital-twins-setup-app-registration.md](../../includes/digital-twins-setup-app-registration.md)]
-
-Als u een app-registratie wilt maken, moet u de resource-Id's voor de Azure Digital Apparaatdubbels-Api's en de basislijn machtigingen voor de API opgeven.
-
-Maak een nieuw bestand in uw werkmap en voer het volgende JSON-fragment in om deze details te configureren: 
-
-```json
-[{
-    "resourceAppId": "0b07f429-9f4b-4714-9392-cc5e8e80c8b0",
-    "resourceAccess": [
-     {
-       "id": "4589bd03-58cb-4e6c-b17f-b580e39652f8",
-       "type": "Scope"
-     }
-    ]
-}]
-``` 
-
-Sla dit bestand _** op alsmanifest.jsop**_.
-
-> [!NOTE] 
-> Er zijn enkele locaties waar een ' vriendelijke ', lees bare teken reeks `https://digitaltwins.azure.net` kan worden gebruikt voor de app-id van de Azure Digital apparaatdubbels-bron in plaats van de GUID `0b07f429-9f4b-4714-9392-cc5e8e80c8b0` . Zo kunnen bijvoorbeeld veel voor beelden in deze documentatieset authenticatie gebruiken met de MSAL-bibliotheek, en de beschrijvende teken reeks kan hiervoor worden gebruikt. Tijdens deze stap voor het maken van de app-registratie is de GUID-vorm van de ID echter vereist, zoals hierboven wordt weer gegeven. 
-
-Vervolgens uploadt u dit bestand naar Cloud Shell. Klik in het venster Cloud Shell op het pictogram bestanden uploaden/downloaden en kies uploaden.
-
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Opdrachtvenster met het maken van een resource groep en een Azure Digital Apparaatdubbels-exemplaar":::
-Ga naar de *manifest.js* die u zojuist hebt gemaakt en klik op openen.
-
-Voer vervolgens de volgende opdracht uit om een app-registratie te maken met de antwoord-URL van een *open bare client/systeem eigen (mobile & bureau blad)* `http://localhost` . Vervang tijdelijke aanduidingen naar behoefte:
-
-```azurecli
-az ad app create --display-name <name-for-your-app-registration> --native-app --required-resource-accesses manifest.json --reply-url http://localhost
-```
-
-Hier volgt een fragment van de uitvoer van deze opdracht, met informatie over de registratie die u hebt gemaakt:
-
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/new-app-registration.png" alt-text="Opdrachtvenster met het maken van een resource groep en een Azure Digital Apparaatdubbels-exemplaar":::
-
-### <a name="verify-success"></a>Controleren geslaagd
-
-[!INCLUDE [digital-twins-setup-verify-app-registration-1.md](../../includes/digital-twins-setup-verify-app-registration-1.md)]
-
-Controleer vervolgens of de instellingen van uw geüploade *manifest.jsop* de juiste wijze zijn ingesteld voor de registratie. Als u dit wilt doen, selecteert u *manifest* in de menu balk om de manifest code van de app-registratie weer te geven. Ga naar de onderkant van het code venster en zoek naar de velden van uw *manifest.js* onder `requiredResourceAccess` :
-
-[!INCLUDE [digital-twins-setup-verify-app-registration-2.md](../../includes/digital-twins-setup-verify-app-registration-2.md)]
-
-### <a name="collect-important-values"></a>Belang rijke waarden verzamelen
-
-Selecteer vervolgens *overzicht* in de menu balk om de details van de app-registratie te bekijken:
-
-:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="Opdrachtvenster met het maken van een resource groep en een Azure Digital Apparaatdubbels-exemplaar":::
-
-Noteer de ID van de *toepassings* -id en de *Directory (Tenant)* die op **de** pagina wordt weer gegeven. Deze waarden zijn later nodig om [een client-app te verifiëren tegen de Azure Digital apparaatdubbels-api's](how-to-authenticate-client.md). Als u niet de persoon bent die code gaat schrijven voor dergelijke toepassingen, moet u deze waarden delen met de persoon die het gaat doen.
-
-### <a name="other-possible-steps-for-your-organization"></a>Andere mogelijke stappen voor uw organisatie
-
-[!INCLUDE [digital-twins-setup-additional-requirements.md](../../includes/digital-twins-setup-additional-requirements.md)]
+U hebt nu een Azure Digital Apparaatdubbels-exemplaar klaar om te gaan, en u hebt machtigingen toegewezen om het te beheren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -154,5 +96,5 @@ Test afzonderlijke REST API-aanroepen voor uw exemplaar met behulp van de Azure 
 * [AZ DT-referentie](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)
 * [*Instructies: De Azure Digital Twins-CLI gebruiken*](how-to-use-cli.md)
 
-U kunt ook zien hoe u uw client toepassing verbindt met uw instantie door de verificatie code van de client-app te schrijven:
+U kunt ook zien hoe u een client toepassing verbindt met uw exemplaar met verificatie code:
 * [*Instructies: app-verificatie code schrijven*](how-to-authenticate-client.md)

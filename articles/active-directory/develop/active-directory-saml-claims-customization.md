@@ -13,12 +13,12 @@ ms.date: 10/22/2019
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 5de505ff9573fb186ca2bbe4f5bd6783022eb3ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90efdd560735a112c2a4c5eb5740f211b587a241
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89421455"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275763"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Procedure: claims aanpassen die zijn uitgegeven in het SAML-token voor zakelijke toepassingen
 
@@ -56,7 +56,7 @@ U kunt een van de volgende opties selecteren in de vervolg keuzelijst **Kies naa
 
 | NameID-indeling | Beschrijving |
 |---------------|-------------|
-| **Prijs** | Micro soft Identity platform gebruikt de standaard indeling voor de bron. |
+| **Standaard** | Micro soft Identity platform gebruikt de standaard indeling voor de bron. |
 | **Permanent** | Micro soft Identity platform gebruikt persistent als de NameID-indeling. |
 | **EmailAddress** | Micro soft Identity platform gebruikt EmailAddress als NameID-indeling. |
 | **Niet opgegeven** | Het micro soft Identity-platform wordt niet opgegeven als de NameID-indeling. |
@@ -70,7 +70,7 @@ Selecteer de gewenste bron voor de `NameIdentifier` claim (of NameID). U kunt ki
 
 | Naam | Beschrijving |
 |------|-------------|
-| E-mail | Het e-mailadres van de gebruiker |
+| Email | Het e-mailadres van de gebruiker |
 | userprincipalName | UPN (User Principal Name) van de gebruiker |
 | onpremisessamaccount | SAM-account naam die is gesynchroniseerd vanuit on-premises Azure AD |
 | id | Objectid van de gebruiker in azure AD |
@@ -167,7 +167,7 @@ Een claim voorwaarde toevoegen:
 3. Selecteer de groep (en) waarvan de gebruiker deel moet uitmaken. U kunt Maxi maal 50 unieke groepen selecteren voor alle claims voor een bepaalde toepassing. 
 4. Selecteer de **bron** waar de claim de waarde gaat ophalen. U kunt een gebruikers kenmerk selecteren in de vervolg keuzelijst bron kenmerk of een trans formatie Toep assen op het kenmerk gebruiker voordat u het als een claim verzendt.
 
-De volg orde waarin u de voor waarden toevoegt, is belang rijk. Azure AD evalueert de voor waarden van boven naar beneden om te beslissen welke waarde moet worden opgegeven in de claim. 
+De volg orde waarin u de voor waarden toevoegt, is belang rijk. Azure AD evalueert de voor waarden van boven naar beneden om te beslissen welke waarde moet worden opgegeven in de claim. De laatste waarde die overeenkomt met de expressie wordt verzonden in de claim.
 
 Zo is Julia Simon een gast gebruiker in de contoso-Tenant. Ze maakt deel uit van een andere organisatie die ook gebruikmaakt van Azure AD. Op basis van de onderstaande configuratie voor de fabrikam-toepassing, wanneer Julia zich probeert aan te melden bij Fabrikam, worden de voor waarden als volgt geëvalueerd door het micro soft Identity-platform.
 

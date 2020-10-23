@@ -16,12 +16,12 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a68d7574d16485c378f6066a652471d52fa0c30
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 595cf2c1dbc105634d33b426c67e5123b9751e6e
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319976"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457959"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect-synchronisatie: filtering configureren
 Met behulp van filteren kunt u bepalen welke objecten in Azure Active Directory (Azure AD) uit uw on-premises map worden weer gegeven. Bij de standaard configuratie worden alle objecten in alle domeinen in de geconfigureerde forests gebruikt. In het algemeen is dit de aanbevolen configuratie. Gebruikers die Microsoft 365 werk belastingen, zoals Exchange Online en Skype voor bedrijven, profiteren van een volledige algemene adres lijst zodat ze een e-mail kunnen verzenden en iedereen kan bellen. Met de standaard configuratie zouden ze dezelfde ervaring hebben als bij een on-premises implementatie van Exchange of Lync.
@@ -127,7 +127,7 @@ Voer de volgende stappen uit om het domein filter in te stellen:
 3.  Selecteer **synchronisatie opties aanpassen** en klik op **volgende**.
 4.  Voer uw Azure AD-referenties in
 5.  Klik in het scherm **verbonden directory's** op **volgende**.
-6.  Klik op de **pagina domein en OE filteren** op **vernieuwen**.  Nieuwe domeinen worden nu weer gegeven en verwijderde domeinen verdwijnen.
+6.  Klik op de **pagina domein en OE filteren** op **vernieuwen**.  Nieuwe domeinen worden nu weer gegeven, en verwijderde domeinen verdwijnen.
    ![Partities](./media/how-to-connect-sync-configure-filtering/update2.png)  
 
 ### <a name="update-the-run-profiles"></a>De uitvoerings profielen bijwerken

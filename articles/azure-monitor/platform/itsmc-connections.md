@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: 9d037fa0faa1419e4cd1b600eea1b3b3eb0a29c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9db20fd357a50a92384b3c3f483f8d75b67b3e2
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90058764"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427359"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM-producten/-services verbinden met IT-servicebeheerconnector
 Dit artikel bevat informatie over het configureren van de verbinding tussen uw ITSM-product/-service en de IT Service Management-connector (ITSMC) in Log Analytics om uw werk items centraal te beheren. Zie [overzicht](./itsmc-overview.md)voor meer informatie over ITSMC.
@@ -44,7 +44,8 @@ Zorg ervoor dat aan de volgende vereisten wordt voldaan:
 
 > [!NOTE]
 > 
-> ITSM-connector kan alleen verbinding maken met ServiceNow-exemplaren op basis van de Cloud. On-premises ServiceNow-instanties worden momenteel niet ondersteund.
+> - ITSM-connector kan alleen verbinding maken met ServiceNow-exemplaren op basis van de Cloud. On-premises ServiceNow-instanties worden momenteel niet ondersteund.
+> - Als u aangepaste sjablonen wilt gebruiken als onderdeel van de acties, moet de para meter "ProjectionType" in de sjabloon SCSM worden toegewezen aan "IncidentManagement! System. WorkItem. incident. ProjectionType "
 
 ### <a name="connection-procedure"></a>Verbindings procedure
 
@@ -213,6 +214,8 @@ Zorg ervoor dat aan de volgende vereisten wordt voldaan:
 > 3. Klik op toegang intrekken en vervolgens op intrekken.
 
 - Installeer de gebruikers-app voor micro soft Log Analytics Integration (ServiceNow-app). [Meer informatie](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
+> [!NOTE]
+> ITSMC ondersteunt alleen de officiële gebruikers-app voor de integratie van micro soft Log Analytics die wordt gedownload uit ServiceNow Store. ITSMC bieden geen ondersteuning voor code opname in ServiceNow-zijde of de toepassing die geen deel uitmaakt van de officiële ServiceNow-oplossing. 
 - Maak een gebruikersrol voor integratie voor de app van de gebruiker geïnstalleerd. [Hier](#create-integration-user-role-in-servicenow-app)vindt u informatie over het maken van de gebruikersrol integratie.
 
 ### <a name="connection-procedure"></a>**Verbindings procedure**

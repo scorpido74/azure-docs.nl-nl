@@ -3,12 +3,12 @@ title: Gebeurtenis Azure Batch groep maken
 description: Verwijzing voor de gebeurtenis batch-pool Create die wordt verzonden zodra een pool is gemaakt. De inhoud van het logboek bevat algemene informatie over de groep.
 ms.topic: reference
 ms.date: 10/08/2020
-ms.openlocfilehash: dea0e04fa506274e645ba7a578039a0d6f021043
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db7440df4303857d4c4a6533bc06b5f248c75da3
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850945"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102945"
 ---
 # <a name="pool-create-event"></a>Gebeurtenis pool maken
 
@@ -53,7 +53,7 @@ ms.locfileid: "91850945"
 |-------------|----------|-----------|
 |`id`|Tekenreeks|De ID van de pool.|
 |`displayName`|Tekenreeks|De weergave naam van de pool.|
-|`vmSize`|Tekenreeks|De grootte van de virtuele machines in de groep. Alle virtuele machines in een groep hebben dezelfde grootte. <br/><br/> Zie [grootten voor Cloud Services](../cloud-services/cloud-services-sizes-specs.md)voor informatie over de beschik bare grootten van virtuele machines voor Cloud Services Pools (Pools die zijn gemaakt met cloudServiceConfiguration). Batch ondersteunt alle Cloud Services VM-grootten behalve `ExtraSmall` .<br/><br/> Zie [grootten voor virtual machines](../virtual-machines/linux/sizes.md?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json) (Linux) of [grootten voor virtual machines](../virtual-machines/windows/sizes.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json) (Windows) voor meer informatie over de beschik bare VM-grootten voor Pools met installatie kopieën van de virtual machines Marketplace (Pools die zijn gemaakt met virtualMachineConfiguration). Batch ondersteunt alle Azure VM-groottes met uitzondering van `STANDARD_A0` en die met Premium Storage (de serie `STANDARD_GS`, `STANDARD_DS` en `STANDARD_DSV2`).|
+|`vmSize`|Tekenreeks|De grootte van de virtuele machines in de groep. Alle virtuele machines in een groep hebben dezelfde grootte. <br/><br/> Zie [grootten voor Cloud Services](../cloud-services/cloud-services-sizes-specs.md)voor informatie over de beschik bare grootten van virtuele machines voor Cloud Services Pools (Pools die zijn gemaakt met cloudServiceConfiguration). Batch ondersteunt alle Cloud Services VM-grootten behalve `ExtraSmall` .<br/><br/> Zie [grootten voor virtual machines](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) (Linux) of [grootten voor virtual machines](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) (Windows) voor meer informatie over de beschik bare VM-grootten voor Pools met installatie kopieën van de virtual machines Marketplace (Pools die zijn gemaakt met virtualMachineConfiguration). Batch ondersteunt alle Azure VM-groottes met uitzondering van `STANDARD_A0` en die met Premium Storage (de serie `STANDARD_GS`, `STANDARD_DS` en `STANDARD_DSV2`).|
 |`imageType`|Tekenreeks|De implementatie methode voor de installatie kopie. Ondersteunde waarden zijn `virtualMachineConfiguration` of `cloudServiceConfiguration`|
 |[`cloudServiceConfiguration`](#bk_csconf)|Complex type|De Cloud service configuratie voor de groep.|
 |[`virtualMachineConfiguration`](#bk_vmconf)|Complex type|De virtuele-machine configuratie voor de groep.|
@@ -95,7 +95,7 @@ ms.locfileid: "91850945"
 
 |Elementnaam|Type|Notities|
 |------------------|----------|-----------|
-|`enableAutomaticUpdates`|Booleaans|Hiermee wordt aangegeven of de virtuele machine is ingeschakeld voor automatische updates. Als deze eigenschap niet is opgegeven, is de standaard waarde True.|
+|`enableAutomaticUpdates`|Boolean|Hiermee wordt aangegeven of de virtuele machine is ingeschakeld voor automatische updates. Als deze eigenschap niet is opgegeven, is de standaard waarde True.|
 
 ###  <a name="networkconfiguration"></a><a name="bk_netconf"></a> networkConfiguration
 

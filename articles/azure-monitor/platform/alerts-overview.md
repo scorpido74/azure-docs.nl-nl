@@ -4,12 +4,12 @@ description: Overzicht van waarschuwingen in Azure. Waarschuwingen, klassieke wa
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: f58175d105e1dd36d58fbe4d8b68109810797b2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e71f048a0a96323552b426663a235ed66fa2ef87
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317137"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108793"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Overzicht van waarschuwingen in Microsoft Azure 
 
@@ -84,7 +84,7 @@ De volgende waarschuwings statussen worden ondersteund.
 
 De *waarschuwings status* is verschillend en onafhankelijk van de *monitor voorwaarde*. De waarschuwings status wordt ingesteld door de gebruiker. De bewakings voorwaarde is ingesteld door het systeem. Wanneer een waarschuwing wordt geactiveerd, wordt de controle voorwaarde van de waarschuwing ingesteld op *' geactiveerd '* en wanneer de onderliggende voor waarde die de waarschuwing heeft veroorzaakt, is gewist, wordt de monitor voorwaarde ingesteld op *' opgelost '*. 
 
-De status van de waarschuwing wordt niet gewijzigd totdat de gebruiker deze wijzigt. Meer informatie [over het wijzigen van de status van uw waarschuwingen en slimme groepen](https://aka.ms/managing-alert-smart-group-states).
+De status van de waarschuwing wordt niet gewijzigd totdat de gebruiker deze wijzigt. Meer informatie [over het wijzigen van de status van uw waarschuwingen en slimme groepen](./alerts-managing-alert-states.md?toc=%252fazure%252fazure-monitor%252ftoc.json).
 
 ## <a name="alerts-experience"></a>Waarschuwings ervaring 
 De pagina standaard waarschuwingen bevat een samen vatting van waarschuwingen die binnen een bepaald tijds bereik zijn gemaakt. Hier worden de totale waarschuwingen voor elke ernst weer gegeven, met kolommen die het totale aantal waarschuwingen in elke status voor elke Ernst identificeren. Selecteer een van de mogelijke ernst om de pagina [alle waarschuwingen](#all-alerts-page) te openen, gefilterd op die ernst.
@@ -181,7 +181,7 @@ Voor het gebruik en het beheer van waarschuwings instanties moet de gebruiker be
 
 Mogelijk wilt u programmatisch een query uitvoeren op waarschuwingen die zijn gegenereerd op basis van uw abonnement. Query's kunnen bestaan uit het maken van aangepaste weer gaven buiten de Azure Portal, of om uw waarschuwingen te analyseren om patronen en trends te identificeren.
 
-U kunt een query uitvoeren voor waarschuwingen die zijn gegenereerd op basis van uw abonnementen door gebruik te maken van de [Waarschuwingenbeheer rest API](https://aka.ms/alert-management-api) of door gebruik te maken van de [Azure resource Graph](../../governance/resource-graph/overview.md) en de [rest API voor resources](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources).
+U kunt een query uitvoeren voor waarschuwingen die zijn gegenereerd op basis van uw abonnementen door gebruik te maken van de [Waarschuwingenbeheer rest API](/rest/api/monitor/alertsmanagement/alerts) of door gebruik te maken van de [Azure resource Graph](../../governance/resource-graph/overview.md) en de [rest API voor resources](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources).
 
 Met de resource grafiek REST API voor resources kunt u op schaal een query uitvoeren op waarschuwings exemplaren. Resource grafiek wordt aanbevolen wanneer u waarschuwingen moet beheren die worden gegenereerd over veel abonnementen. 
 
@@ -200,16 +200,16 @@ U kunt ook het resultaat van deze resource grafiek query weer geven in de portal
 
 U kunt een query uitvoeren op de waarschuwingen voor hun [essentiële](alerts-common-schema-definitions.md#essentials) velden.
 
-Gebruik de [Waarschuwingenbeheer rest API](https://aka.ms/alert-management-api) om meer informatie te krijgen over specifieke waarschuwingen, met inbegrip van de context velden van de [waarschuwing](alerts-common-schema-definitions.md#alert-context) .
+Gebruik de [Waarschuwingenbeheer rest API](/rest/api/monitor/alertsmanagement/alerts) om meer informatie te krijgen over specifieke waarschuwingen, met inbegrip van de context velden van de [waarschuwing](alerts-common-schema-definitions.md#alert-context) .
 
 ## <a name="smart-groups"></a>Slimme groepen
 
-Slimme groepen zijn aggregaties van waarschuwingen op basis van machine learning-algoritmen, wat kan bijdragen aan waarschuwings lawaai en hulp bij het oplossen van problemen. Meer [informatie over slimme groepen](https://aka.ms/smart-groups) en [het beheren van uw slimme groepen](https://aka.ms/managing-smart-groups).
+Slimme groepen zijn aggregaties van waarschuwingen op basis van machine learning-algoritmen, wat kan bijdragen aan waarschuwings lawaai en hulp bij het oplossen van problemen. Meer [informatie over slimme groepen](./alerts-smartgroups-overview.md?toc=%252fazure%252fazure-monitor%252ftoc.json) en [het beheren van uw slimme groepen](./alerts-managing-smart-groups.md?toc=%252fazure%252fazure-monitor%252ftoc.json).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Meer informatie over slimme groepen](https://aka.ms/smart-groups)
+- [Meer informatie over slimme groepen](./alerts-smartgroups-overview.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
 - [Meer informatie over actie groepen](./action-groups.md)
-- [Uw waarschuwings instanties in azure beheren](https://aka.ms/managing-alert-instances)
-- [Slimme groepen beheren](https://aka.ms/managing-smart-groups)
+- [Uw waarschuwings instanties in azure beheren](./alerts-managing-alert-instances.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
+- [Slimme groepen beheren](./alerts-managing-smart-groups.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
 - [Meer informatie over prijzen voor Azure-abonnementen](https://azure.microsoft.com/pricing/details/monitor/)

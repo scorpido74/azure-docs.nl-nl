@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/02/2020
+ms.date: 10/21/2020
 ms.author: cherylmc
-ms.openlocfilehash: c0313c74b046d4c93c8625eab8659df392041059
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e39884f6d62fc43943f892aed0dac650a01d6c40
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89419806"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92419895"
 ---
 # <a name="reset-a-vpn-gateway"></a>Een VPN-gateway opnieuw instellen
 
@@ -40,15 +40,11 @@ Controleer de volgende items voordat u de gateway opnieuw instelt:
 
 ## <a name="azure-portal"></a><a name="portal"></a>Azure Portal
 
-U kunt een resource manager VPN-gateway opnieuw instellen met behulp van de Azure Portal. Als u een klassieke Gateway opnieuw wilt instellen, raadpleegt u de [Power shell](#resetclassic) -stappen.
+U kunt een resource manager VPN-gateway opnieuw instellen met behulp van de Azure Portal. Als u een klassieke Gateway opnieuw wilt instellen, raadpleegt u de Power shell-stappen voor het [klassieke implementatie model](#resetclassic).
 
 ### <a name="resource-manager-deployment-model"></a>Resource Manager-implementatiemodel
 
-1. Open de [Azure Portal](https://portal.azure.com) en navigeer naar de gateway van het Resource Manager-virtuele netwerk die u opnieuw wilt instellen.
-2. Klik op de Blade voor de gateway van het virtuele netwerk op opnieuw instellen.
-
-   ![VPN Gateway Blade opnieuw instellen](./media/vpn-gateway-howto-reset-gateway/reset-vpn-gateway-portal.png)
-3. Klik op de Blade opnieuw instellen op de knop **opnieuw instellen** .
+[!INCLUDE [portal steps](../../includes/vpn-gateway-reset-gw-portal-include.md)]
 
 ## <a name="powershell"></a><a name="ps"></a>PowerShell
 
@@ -69,7 +65,7 @@ Wanneer u een retour resultaat ontvangt, kunt u aannemen dat de gateway opnieuw 
 
 ### <a name="classic-deployment-model"></a><a name="resetclassic"></a>Klassiek implementatiemodel
 
-De cmdlet voor het opnieuw instellen van een gateway is **Reset-azurevnetgateway gebruikt**. De Azure PowerShell-cmdlets voor service management moeten lokaal op uw bureau blad zijn geïnstalleerd. U kunt Azure Cloud Shell niet gebruiken. Zorg ervoor dat u beschikt over de nieuwste versie van de [Power shell-cmdlets voor Service Management (SM)](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0#azure-service-management-cmdlets)voordat u de herstel bewerking uitvoert. Wanneer u deze opdracht gebruikt, moet u ervoor zorgen dat u de volledige naam van het virtuele netwerk gebruikt. Klassieke VNets die zijn gemaakt met behulp van de portal hebben een lange naam die vereist is voor Power shell. U kunt de lange naam weer geven met behulp van Get-AzureVNetConfig-ExportToFile C:\Myfoldername\NetworkConfig.xml.
+De cmdlet voor het opnieuw instellen van een gateway is **Reset-azurevnetgateway gebruikt**. De Azure PowerShell-cmdlets voor service management moeten lokaal op uw bureau blad zijn geïnstalleerd. U kunt Azure Cloud Shell niet gebruiken. Zorg ervoor dat u beschikt over de nieuwste versie van de [Power shell-cmdlets voor Service Management (SM)](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps#azure-service-management-cmdlets)voordat u de herstel bewerking uitvoert. Wanneer u deze opdracht gebruikt, moet u ervoor zorgen dat u de volledige naam van het virtuele netwerk gebruikt. Klassieke VNets die zijn gemaakt met behulp van de portal hebben een lange naam die vereist is voor Power shell. U kunt de lange naam weer geven met behulp van Get-AzureVNetConfig-ExportToFile C:\Myfoldername\NetworkConfig.xml.
 
 In het volgende voor beeld wordt de gateway opnieuw ingesteld voor een virtueel netwerk met de naam ' Group TestRG1 TestVNet1 ' (die in de portal wordt weer gegeven als gewoon ' TestVNet1 '):
 

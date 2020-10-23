@@ -1,20 +1,19 @@
 ---
 title: Meer informatie over de parser Digital Apparaatdubbels model | Microsoft Docs
-description: Meer informatie over het gebruik van de DTDL-parser voor het valideren van modellen
+description: Als ontwikkelaar leert u hoe u de DTDL-parser kunt gebruiken om modellen te valideren.
 author: rido-min
 ms.author: rmpablos
-ms.date: 04/29/2020
+ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-manager: peterpr
-ms.openlocfilehash: 20c4452a32c791f33e08c883d8cec89a345ab188
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d68abe8548dac3306228683e4b6ce8935a248ebc
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87352285"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331784"
 ---
 # <a name="understand-the-digital-twins-model-parser"></a>Meer informatie over de Digital Twins Model Parser
 
@@ -28,9 +27,12 @@ De parser is beschikbaar in NuGet.org met de ID: [micro soft. Azure. DigitalTwin
 dotnet add package Microsoft.Azure.DigitalTwins.Parser
 ```
 
+> [!NOTE]
+> Op het moment van schrijven is de parser-versie `3.12.5` .
+
 ## <a name="use-the-parser-to-validate-a-model"></a>De parser gebruiken om een model te valideren
 
-Het model dat u wilt valideren, bestaat mogelijk uit een of meer interfaces die worden beschreven in JSON-bestanden. U kunt de parser gebruiken om alle bestanden in een bepaalde map te laden en de parser te gebruiken om alle bestanden als geheel te valideren, inclusief eventuele verwijzingen tussen de bestanden:
+Een model kan bestaan uit een of meer interfaces die worden beschreven in JSON-bestanden. U kunt de parser gebruiken om alle bestanden in een bepaalde map te laden en de parser te gebruiken om alle bestanden als geheel te valideren, inclusief eventuele verwijzingen tussen de bestanden:
 
 1. Een maken `IEnumerable<string>` met een lijst met alle model inhoud:
 
@@ -57,18 +59,20 @@ Het model dat u wilt valideren, bestaat mogelijk uit een of meer interfaces die 
     IReadOnlyDictionary<Dtmi, DTEntityInfo> parseResult = await modelParser.ParseAsync(modelJson);
     ```
 
-1. Controleren op validatie fouten. Als de parser fouten vindt, wordt er een `AggregateException` met een lijst met gedetailleerde fout berichten weer geven:
+1. Controleren op validatie fouten. Als de parser fouten vindt, wordt een `ParsingException` met een lijst met fouten gegenereerd:
 
     ```csharp
     try
     {
         IReadOnlyDictionary<Dtmi, DTEntityInfo> parseResult = await modelParser.ParseAsync(modelJson);
     }
-    catch (AggregateException ae)
+    catch (ParsingException pex)
     {
-        foreach (var e in ae.InnerExceptions)
+        Console.WriteLine(pex.Message);
+        foreach (var err in pex.Errors)
         {
-            Console.WriteLine(e.Message);
+            Console.WriteLine(err.PrimaryID);
+            Console.WriteLine(err.Message);
         }
     }
     ```
@@ -76,19 +80,10 @@ Het model dat u wilt valideren, bestaat mogelijk uit een of meer interfaces die 
 1. Inspecteer de `Model` . Als de validatie is geslaagd, kunt u de model parser-API gebruiken om het model te controleren. Het volgende code fragment laat zien hoe u door alle geparseerde modellen herhaalt en de bestaande eigenschappen weergeeft:
 
     ```csharp
-    foreach (var m in parseResult)
+    foreach (var item in parseResult)
     {
-        Console.WriteLine(m.Key);
-        foreach (var item in m.Value.AsEnumerable<DTEntityInfo>())
-        {
-            var p = item as DTInterfaceInfo;
-            if (p!=null)
-            {
-                Console.WriteLine($"\t{p.Id}");
-                Console.WriteLine($"\t{p.Description.FirstOrDefault()}");
-            }
-            Console.WriteLine("--------------");
-        }
+        Console.WriteLine($"\t{item.Key}");
+        Console.WriteLine($"\t{item.Value.DisplayName?.Values.FirstOrDefault()}");
     }
     ```
 

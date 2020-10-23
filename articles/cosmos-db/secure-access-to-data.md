@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 30444523bfc26fc0f4eb410957bcc9ee46aff725
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 574592d4434b9d8c49086b82bab0b8775fb67e03
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760866"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371729"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Beveiligde toegang tot gegevens in Azure Cosmos DB
 
@@ -29,20 +29,7 @@ Azure Cosmos DB gebruikt twee typen sleutels om gebruikers te verifiëren en toe
 
 ## <a name="primary-keys"></a>Primaire sleutels
 
-Primaire sleutels bieden toegang tot alle beheer resources voor het database account. Primaire sleutels:
-
-- Toegang bieden tot accounts, data bases, gebruikers en machtigingen. 
-- Kan niet worden gebruikt om nauw keurige toegang tot containers en documenten te bieden.
-- Worden gemaakt tijdens het maken van een account.
-- Kan op elk gewenst moment opnieuw worden gegenereerd.
-
-Elk account bestaat uit twee primaire sleutels: een primaire sleutel en secundaire sleutel. Het doel van dubbele sleutels is dat u de sleutel opnieuw kunt genereren of sleutels moet voorzien van een continue toegang tot uw account en gegevens.
-
-Naast de twee primaire sleutels voor het Cosmos DB-account, zijn er twee alleen-lezen sleutels. Deze alleen-lezen sleutels staan alleen lees bewerkingen voor het account toe. Alleen-lezen sleutels bieden geen toegang tot het lezen van machtigings bronnen.
-
-Primaire sleutels primair, secundair, alleen lezen en lezen/schrijven kunnen worden opgehaald en opnieuw worden gegenereerd met behulp van de Azure Portal. Zie [toegangs sleutels weer geven, kopiëren en opnieuw genereren](manage-with-cli.md#regenerate-account-key)voor instructies.
-
-:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-portal.png" alt-text="Toegangs beheer (IAM) in de Azure Portal-demonstring NoSQL data base Security":::
+Primaire sleutels bieden toegang tot alle beheer resources voor het database account. Elk account bestaat uit twee primaire sleutels: een primaire sleutel en secundaire sleutel. Het doel van dubbele sleutels is dat u de sleutel opnieuw kunt genereren of sleutels moet voorzien van een continue toegang tot uw account en gegevens. Zie het artikel over de [Data Base-beveiliging](database-security.md#primary-keys) voor meer informatie over primaire sleutels.
 
 ### <a name="key-rotation"></a>Sleutel rotatie<a id="key-rotation"></a>
 
@@ -51,10 +38,10 @@ Het proces voor het draaien van uw primaire sleutel is eenvoudig.
 1. Navigeer naar het Azure Portal om uw secundaire sleutel op te halen.
 2. Vervang uw primaire sleutel door de secundaire sleutel in uw toepassing. Zorg ervoor dat alle Cosmos DB-clients in alle implementaties onmiddellijk opnieuw worden opgestart en dat deze de bijgewerkte sleutel gaan gebruiken.
 3. De primaire sleutel in de Azure Portal draaien.
-4. Valideer of de nieuwe primaire sleutel geschikt is voor alle resources. Het proces voor het draaien van sleutels kan een waarde van minder dan een minuut tot uur duren, afhankelijk van de grootte van het Cosmos DB-account.
+4. Valideer of de nieuwe primaire sleutel geschikt is voor alle resources. Het proces voor het draaien van sleutels kan van minder dan een minuut tot uren duren, afhankelijk van de grootte van het Cosmos DB-account.
 5. Vervang de secundaire sleutel door de nieuwe primaire sleutel.
 
-:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png" alt-text="Toegangs beheer (IAM) in de Azure Portal-demonstring NoSQL data base Security" border="false":::
+:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png" alt-text="Rotatie van primaire sleutel in de Azure Portal-demonstring NoSQL data base Security" border="false":::
 
 ### <a name="code-sample-to-use-a-primary-key"></a>Code voorbeeld voor het gebruik van een primaire sleutel
 
@@ -102,7 +89,7 @@ Hier volgt een typisch ontwerp patroon waarbij bron tokens kunnen worden aangevr
 7. De telefoon-app kan het bron token blijven gebruiken voor rechtstreekse toegang tot Cosmos DB resources met de machtigingen die zijn gedefinieerd door het bron token en voor het interval dat is toegestaan door het bron token.
 8. Wanneer het bron token verloopt, ontvangen volgende aanvragen een ongeautoriseerde uitzonde ring van 401.  Op dit moment brengt de telefoon-app de identiteit opnieuw tot stand en wordt er een nieuw bron token aangevraagd.
 
-    :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Toegangs beheer (IAM) in de Azure Portal-demonstring NoSQL data base Security" border="false":::
+    :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Rotatie van primaire sleutel in de Azure Portal-demonstring NoSQL data base Security" border="false":::
 
 Het genereren en beheren van bron tokens worden verwerkt door de systeem eigen Cosmos DB-client bibliotheken. Als u echter REST gebruikt, moet u de aanvraag-en verificatie headers maken. Zie [Access Control op Cosmos DB resources](/rest/api/cosmos-db/access-control-on-cosmosdb-resources) of de bron code voor onze [.net SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/Authorization/AuthorizationHelper.cs) of [Node.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts)voor meer informatie over het maken van verificatie headers voor rest.
 

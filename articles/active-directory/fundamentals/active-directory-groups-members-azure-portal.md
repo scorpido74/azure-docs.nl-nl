@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbb7b7da4ed5268e66260e48d6367bbe02f0845a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af5a85bad1e7b2a6bf645084d6b78f77e6c0d8b2
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87797573"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371831"
 ---
 # <a name="add-or-remove-group-members-using-azure-active-directory"></a>Groeps leden toevoegen of verwijderen met Azure Active Directory
 Met Azure Active Directory kunt u groeps leden toevoegen en verwijderen.
@@ -61,6 +61,6 @@ Met Azure Active Directory kunt u groeps leden toevoegen en verwijderen.
 
 - [Toegang tot resources met behulp van groepen beheren](active-directory-manage-groups.md)
 
-- [Dynamische regels voor gebruikers in een groep beheren](../users-groups-roles/groups-create-rule.md)
+- [Dynamische regels voor gebruikers in een groep beheren](../enterprise-users/groups-create-rule.md)
 
 - [Een Azure-abonnement aan Azure Active Directory koppelen of toevoegen](active-directory-how-subscriptions-associated-directory.md)

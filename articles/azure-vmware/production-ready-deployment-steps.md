@@ -3,12 +3,12 @@ title: De implementatie van Azure VMware Solution plannen
 description: In dit artikel vindt u een overzicht van de implementatiewerkstroom voor Azure VMware Solution.  Het uiteindelijke resultaat is een omgeving die gereed is om virtuele machines te maken en te migreren.
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: e279f14406d464171f0879d85cc33f9844d22ec3
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: fe1396c8f256ba8374208febad2afe03a453e5f5
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91802205"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055083"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>De implementatie van Azure VMware Solution plannen
 
@@ -104,7 +104,7 @@ Om toegang te krijgen tot uw Azure VMware Solution-privécloud, moet het Express
 Het ExpressRoute-circuit van Azure VMware Solution maakt verbinding met een ExpressRoute-gateway in het Azure Virtual Network dat u in deze stap definieert.  
 
 >[!IMPORTANT]
->Als u een bestaand virtueel netwerk kiest, moet u er een selecteren dat geen bestaand gateway-subnet heeft.  
+>U kunt een bestaande ExpressRoute-gateway gebruiken om verbinding te maken met Azure VMware Solution zolang u de limiet van vier ExpressRoute-circuits per virtueel netwerk niet overschrijdt.  Om toegang te krijgen tot Azure VMware Solution on-premises via ExpressRoute, moet u beschikken over ExpressRoute Global Reach, omdat de ExpressRoute-gateway geen transitieve routering biedt tussen de verbonden circuits.  
 
 Als u het ExpressRoute-circuit van Azure VMware Solution wilt verbinden met een bestaande ExpressRoute-gateway, dan kunt u dit doen na de implementatie.  
 

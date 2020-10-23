@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 2c4b6377d28339b0b4953cd908f4964b64dab4fe
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 880100c3d67dfe10aacf10ed5bb57dec6e2c2a83
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873095"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217062"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>Privé-eind punten gebruiken voor Azure-web-app
 
@@ -91,7 +91,7 @@ De naam omzetting is bijvoorbeeld:
 
 |Naam |Type |Waarde |Opmerkingen |
 |-----|-----|------|-------|
-|mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
+|mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|<--Azure maakt deze vermelding in azure Public DNS om de app service naar de privatelink te wijzen en deze wordt beheerd door ons|
 |mywebapp.privatelink.azurewebsites.net|A|10.10.10.8|<: u beheert deze vermelding in uw DNS-systeem om te verwijzen naar het IP-adres van uw particuliere eind punt|
 
 Na deze DNS-configuratie kunt u uw web-app privé bereiken met de standaard naam mywebappname.azurewebsites.net. U moet deze naam gebruiken omdat het standaard certificaat is uitgegeven voor *. azurewebsites.net.

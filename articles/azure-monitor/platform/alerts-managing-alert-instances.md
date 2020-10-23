@@ -4,16 +4,16 @@ description: Waarschuwings instanties in azure beheren
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 1910b3b474012365e8117f584379b2b29f8ce3de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82905cba5f391365ada13f4e5df5ad139f4c121e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77667615"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102867"
 ---
 # <a name="manage-alert-instances-with-unified-alerts"></a>Waarschuwings instanties met Unified Alerts beheren
 
-Met de [geïntegreerde ervaring voor waarschuwingen](https://aka.ms/azure-alerts-overview) in azure monitor kunt u al uw verschillende soorten waarschuwingen in azure zien. Dit omvat meerdere abonnementen, in één deel venster. In dit artikel wordt beschreven hoe u uw waarschuwings instanties kunt weer geven en hoe u specifieke waarschuwings instanties vindt voor het oplossen van problemen.
+Met de [geïntegreerde ervaring voor waarschuwingen](./alerts-overview.md) in azure monitor kunt u al uw verschillende soorten waarschuwingen in azure zien. Dit omvat meerdere abonnementen, in één deel venster. In dit artikel wordt beschreven hoe u uw waarschuwings instanties kunt weer geven en hoe u specifieke waarschuwings instanties vindt voor het oplossen van problemen.
 
 > [!NOTE]
 > U hebt alleen toegang tot waarschuwingen die in de afgelopen 30 dagen zijn gegenereerd.
@@ -54,5 +54,4 @@ Naast de filters die beschikbaar zijn op de vorige pagina, kunt u ook filteren o
 
 Als u een waarschuwings instantie selecteert, wordt de pagina **waarschuwings Details** geopend, zodat u meer informatie over dat specifieke waarschuwings exemplaar kunt zien.   
 
-![Scherm afbeelding van de pagina met waarschuwings Details](media/alerts-managing-alert-instances/alert-details.jpg)  
-
+![Scherm afbeelding van de pagina met waarschuwings Details](media/alerts-managing-alert-instances/alert-details.jpg)

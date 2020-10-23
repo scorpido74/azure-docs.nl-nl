@@ -8,12 +8,12 @@ ms.date: 05/28/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 11940a43438b72eb8a2e9391d56806744c4c27fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50dbca7e32548380c6dbf338260b98ce59cda715
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86527809"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122412"
 ---
 # <a name="prevent-accidental-deletion-of-azure-file-shares"></a>Onopzettelijke verwijdering van Azure-bestands shares voor komen
 
@@ -37,7 +37,7 @@ Zacht verwijderen voor Azure-bestands shares (preview) is beschikbaar op alle op
 
 ### <a name="enabling-or-disabling-soft-delete"></a>Voorlopig verwijderen in-of uitschakelen
 
-Voorlopig verwijderen voor bestands shares is ingeschakeld op het niveau van het opslag account, waardoor de instellingen voor voorlopig verwijderen van toepassing zijn op alle bestands shares in een opslag account. U kunt voorlopig verwijderen op elk gewenst moment in-of uitschakelen. Wanneer u een nieuw opslag account maakt, is de tijdelijke verwijdering voor bestands shares standaard uitgeschakeld. Voorlopig verwijderen is ook standaard uitgeschakeld voor bestaande opslag accounts. Als u [Azure file share-back-up](../../backup/azure-file-share-backup-overview.md) voor een Azure-bestands share hebt geconfigureerd, wordt er automatisch een tijdelijke verwijdering voor Azure-bestands shares ingeschakeld op het opslag account van die share.
+Voorlopig verwijderen voor bestands shares is ingeschakeld op het niveau van het opslag account, waardoor de instellingen voor voorlopig verwijderen van toepassing zijn op alle bestands shares in een opslag account. U kunt voorlopig verwijderen op elk gewenst moment in-of uitschakelen. Wanneer u een nieuw opslag account maakt, wordt er standaard een tijdelijke verwijdering voor bestands shares uitgeschakeld terwijl de functie in open bare preview is. Zodra de functie voor voorlopig verwijderen algemeen beschikbaar wordt, wordt deze standaard ingeschakeld. Voorlopig verwijderen blijft standaard uitgeschakeld voor bestaande opslag accounts. Als u [Azure file share-back-up](../../backup/azure-file-share-backup-overview.md) voor een Azure-bestands share hebt geconfigureerd, wordt er automatisch een tijdelijke verwijdering voor Azure-bestands shares ingeschakeld op het opslag account van die share.
 
 Als u de optie voor het tijdelijk verwijderen van bestands shares inschakelt, verwijdert u enkele bestands shares en schakelt u de optie voorlopig verwijderen uit. als de shares zijn opgeslagen in die periode, kunt u deze bestands shares nog steeds openen en herstellen. Wanneer u voorlopig verwijderen inschakelt, moet u ook de Bewaar periode configureren.
 

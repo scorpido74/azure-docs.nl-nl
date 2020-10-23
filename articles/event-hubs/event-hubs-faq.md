@@ -3,12 +3,12 @@ title: Veelgestelde vragen-Azure Event Hubs | Microsoft Docs
 description: In dit artikel vindt u een lijst met veelgestelde vragen over Azure Event Hubs en de antwoorden hiervan.
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: 65b6fd40c66ec055a5b80ccea9d2dd9ba1510d54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c58f67fed880b8aad60ff1a46a587dcf514102e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91729097"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424184"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Veelgestelde vragen over Event Hubs
 
@@ -132,7 +132,7 @@ Boots trap. servers = {uw. Event hubs. FQDN}: 9093-aanvraag. time-out. MS = 6000
 
 Voorbeeld:
 
-Boots trap. servers = dummynamespace. servicebus. Windows. net: 9093 Request. time-out. MS = 60000 Security. Protocol = SASL_SSL sasl. mechanisme = PLAIN sasl.jaas.config= org. apache. Kafka. common. Security. Plain. PlainLoginModule vereist username = "$ConnectionString" Password = "endpoint = SB://dummynamespace.servicebus.Windows.net/; SharedAccessKeyName = DummyAccessKeyName; SharedAccessKey = 5dOntTRytoC24opYThisAsit3is2B + OGY1US/fuL3ly = ";
+Boots trap. servers = dummynamespace. servicebus. Windows. net: 9093 Request. time-out. MS = 60000 Security. Protocol = SASL_SSL sasl. mechanisme = PLAIN sasl.jaas.config= org. apache. Kafka. common. Security. Plain. PlainLoginModule vereist username = "$ConnectionString" Password = "endpoint = SB://dummynamespace.servicebus.Windows.net/; SharedAccessKeyName = DummyAccessKeyName; SharedAccessKey = XXXXXXXXXXXXXXXXXXXXX ";
 
 Opmerking: als sasl.jaas.config geen ondersteunde configuratie in uw Framework is, zoekt u de configuraties die worden gebruikt om de gebruikers naam en het wacht woord van SASL in te stellen en gebruikt u deze in plaats daarvan. Stel de gebruikers naam in op $ConnectionString en het wacht woord voor uw Event Hubs connection string.
 
@@ -206,9 +206,9 @@ U maakt een Event Hubs toegewezen cluster door een [ondersteunings aanvraag voor
 ## <a name="best-practices"></a>Aanbevolen procedures
 
 ### <a name="how-many-partitions-do-i-need"></a>Hoeveel partities heb ik nodig?
-Het aantal partities wordt opgegeven bij het maken en moet tussen 2 en 32 liggen. Het aantal partities kan niet worden gewijzigd. Houd daarom rekening met de lange termijn bij het instellen van het aantal partities. Partities zijn een mechanisme voor gegevensordening. Ze hebben betrekking op de mate van downstreamparallelheid die is vereist bij het gebruik van toepassingen. Het aantal partities in een Event Hub houdt rechtstreeks verband met het aantal verwachte gelijktijdige lezers. Zie [partities](event-hubs-features.md#partitions)voor meer informatie over partities.
+Het aantal partities wordt opgegeven bij het maken en moet tussen 1 en 32. Het aantal partities kan niet worden gewijzigd. Houd daarom rekening met de lange termijn bij het instellen van het aantal partities. Partities zijn een mechanisme voor gegevensordening. Ze hebben betrekking op de mate van downstreamparallelheid die is vereist bij het gebruik van toepassingen. Het aantal partities in een Event Hub houdt rechtstreeks verband met het aantal verwachte gelijktijdige lezers. Zie [partities](event-hubs-features.md#partitions)voor meer informatie over partities.
 
-Het is raadzaam om de waarde in te stellen op het hoogst mogelijke niveau: 32, op het moment dat deze wordt gemaakt. Houd er rekening mee dat er meer dan één partitie heeft als gevolg dat er gebeurtenissen worden verzonden naar meerdere partities zonder de volg orde te behouden, tenzij u afzenders configureert om alleen te verzenden naar één enkele partitie van de 32, waardoor de resterende 31 partities overbodig zijn. In het eerste geval moet u gebeurtenissen lezen in alle 32-partities. In het laatste geval zijn er geen extra kosten in rekening van de extra configuratie die u moet maken op de host van de gebeurtenis processor.
+Het is raadzaam deze op het moment van maken in te stellen op de hoogste waarde: 32. Houd er rekening mee dat als u meer dan één partitie hebt, dit ertoe leidt dat gebeurtenissen in meerdere partities worden verzonden zonder de volgorde aan te houden, tenzij u verzenders zo configureert dat deze één partitie uit 32 verzenden. Maar daardoor zijn de overige 31 overbodig. In het eerste geval moet u gebeurtenissen lezen in alle 32-partities. In het laatste geval zijn er geen extra kosten in rekening van de extra configuratie die u moet maken op de host van de gebeurtenis processor.
 
 Event Hubs is ontworpen om één partitie lezer per Consumer groep toe te staan. In de meeste gevallen is de standaard instelling van vier partities voldoende. Als u van plan bent uw gebeurtenis verwerking te schalen, kunt u overwegen extra partities toe te voegen. Er is geen specifieke doorvoer limiet voor een partitie, maar de geaggregeerde door Voer in uw naam ruimte wordt beperkt door het aantal doorvoer eenheden. Als u het aantal doorvoer eenheden in uw naam ruimte verhoogt, wilt u mogelijk extra partities toestaan dat gelijktijdige lezers hun eigen maximale door Voer kunnen verzorgen.
 
@@ -252,7 +252,7 @@ Capture maakt gebruik van een opslag account dat u opgeeft wanneer het is ingesc
 
 Zie [quota's](event-hubs-quotas.md)voor een lijst met alle Event hubs quota's.
 
-## <a name="troubleshooting"></a>Problemen oplossen
+## <a name="troubleshooting"></a>Probleemoplossing
 
 ### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Waarom kan ik geen naam ruimte maken nadat ik deze heb verwijderd uit een ander abonnement? 
 Wanneer u een naam ruimte uit een abonnement verwijdert, wacht u vier uur voordat u deze opnieuw maakt met dezelfde naam in een ander abonnement. Anders wordt het volgende fout bericht weer gegeven: `Namespace already exists` . 
@@ -274,9 +274,9 @@ Voor meer informatie over onze SLA gaat u naar de pagina [Service Level Agreemen
 ## <a name="azure-stack-hub"></a>Azure Stack Hub
 
 ### <a name="how-can-i-target-a-specific-version-of-azure-storage-sdk-when-using-azure-blob-storage-as-a-checkpoint-store"></a>Hoe kan ik een specifieke versie van Azure Storage SDK richten bij het gebruik van Azure Blob Storage als controlepunt opslag?
-Als u deze code op Azure Stack hub uitvoert, treden er runtime-fouten op tenzij u een specifieke opslag-API-versie aanwijst. Dat komt doordat de Event Hubs SDK de meest recente beschik bare Azure Storage API gebruikt die beschikbaar is in Azure en niet beschikbaar is op uw Azure Stack hub-platform. Azure Stack hub ondersteunt mogelijk een andere versie van de opslag-BLOB-SDK dan die doorgaans beschikbaar is op Azure. Als u Azure-blog opslag gebruikt als controlepunt opslag, controleert u de [versie van de ondersteunde Azure Storage-API voor uw Azure stack hub-build](/azure-stack/user/azure-stack-acs-differences?#api-version) en richt u deze versie in uw code. 
+Als u deze code op Azure Stack Hub uitvoert, treden er runtimefouten op tenzij u zich richt op een specifieke versie van de Storage-API. Dat komt doordat de Event Hubs-SDK de meest recente Azure Storage-API gebruikt die beschikbaar is in Azure maar die niet beschikbaar is op uw Azure Stack Hub-platform. Azure Stack Hub biedt mogelijk ondersteuning voor een andere versie van de Storage Blob-SDK dan de versies die doorgaans in Azure beschikbaar zijn. Als u Azure Blob-opslag gebruikt als controlepuntopslag, controleert u de [ondersteunde versie van de Azure Storage-API voor uw build van Azure Stack Hub](/azure-stack/user/azure-stack-acs-differences?#api-version) en stelt u die versie in uw code als doel in. 
 
-Als u bijvoorbeeld werkt met Azure Stack hub versie 2005, is de hoogste beschik bare versie van de opslag service versie 2019-02-02. De Event Hubs SDK-client bibliotheek maakt standaard gebruik van de hoogste beschik bare versie op Azure (2019-07-07 op het moment van de release van de SDK). In dit geval moet u, naast de volgende stappen in deze sectie, ook code toevoegen om de API-versie 2019-02-02 van de Storage-service te richten. Zie de volgende voor beelden voor C#, Java, python en Java script/type script voor een voor beeld van het richten op een specifieke opslag-API-versie.  
+Als u bijvoorbeeld op Azure Stack Hub versie 2005 uitvoert, is de hoogste beschikbare versie van de Storage-service versie 2019-02-02. De Event Hubs-SDK-clientbibliotheek maakt standaard gebruik van de hoogste beschikbare versie op Azure (2019-07-07 op het moment van de release van de SDK). In dit geval moet u naast de volgende stappen in deze sectie ook code toevoegen om de API-versie van de Storage-service te richten op 2019-02-02. Zie de volgende voor beelden voor C#, Java, python en Java script/type script voor een voor beeld van het richten op een specifieke opslag-API-versie.  
 
 Zie de volgende voor beelden op GitHub voor een voor beeld van het richten op een specifieke opslag-API-versie van uw code: 
 

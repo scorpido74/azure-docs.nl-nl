@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5e15dfec049197fa056cbd55fd839b3eb93be77c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b32f16d170df9963960862bc82aef1a4baf13896
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530366"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104441"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus bindingen voor Azure Functions
 
@@ -41,7 +41,7 @@ Voor het werken met de trigger en bindingen moet u verwijzen naar het juiste pak
 [NuGet-pakket]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus/
 [core tools]: ./functions-run-local.md
 [uitbreidings bundel]: ./functions-bindings-register.md#extension-bundles
-[Uw extensies bijwerken]: ./install-update-binding-extensions-manual.md
+[Uw extensies bijwerken]: ./functions-bindings-register.md
 [Extensie van Azure-Hulpprogram Ma's]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
 ### <a name="functions-1x"></a>Functions 1.x

@@ -1,6 +1,6 @@
 ---
-title: Contactgegevens voor beveiliging in Azure Security Center opgeven | Microsoft Docs
-description: In dit document wordt beschreven hoe u de contactgegevens voor beveiliging in Azure Security Center kunt opgeven.
+title: E-mailmeldingen voor waarschuwingen van Azure Security Center configureren
+description: Meer informatie over het afstemmen van de typen e-mailberichten voor beveiligingswaarschuwingen die worden verzonden door Azure Security Center.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,20 +11,23 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/11/2020
+ms.date: 10/07/2020
 ms.author: memildin
-ms.openlocfilehash: aa35d1325e339af515c8bfc052d1af524b464e09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac50b17826f9f3d06d01d3cce9704094fddf1b1d
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91446013"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945614"
 ---
-# <a name="set-up-email-notifications-for-security-alerts"></a>E-mailmeldingen voor beveiligingswaarschuwingen instellen 
+# <a name="configure-email-notifications-for-security-alerts"></a>E-mailmeldingen voor beveiligingswaarschuwingen configureren 
 
-Als u er zeker van wilt zijn dat de juiste mensen in uw organisatie op de hoogte worden gesteld van beveiligingswaarschuwingen in uw omgeving, voert u de betreffende e-mailadressen in op de instellingenpagina **E-mailmeldingen**.
+Beveiligingswaarschuwingen moeten de juiste personen in uw organisatie bereiken. Standaard worden e-mailberichten door Security Center verzonden naar de eigenaren als er een waarschuwing met een hoge urgentie is geactiveerd voor hun abonnement. Op deze pagina wordt uitgelegd hoe u deze meldingen kunt aanpassen.
 
-Bij het instellen van uw meldingen kunt u de e-mails configureren voor verzending naar specifieke personen of naar iedereen met een specifieke Azure-rol voor een abonnement. 
+Als u uw eigen voorkeuren voor e-mailmeldingen wilt definiëren, kunt u die kiezen op de instellingspagina **E-mailmeldingen** van Azure Security Center:
+
+- ***Wie* moet worden gewaarschuwd**: e-mailberichten kunnen worden verzonden naar geselecteerde personen of naar iedereen met een specifieke Azure-rol voor een abonnement. 
+- ***Waarover* moeten ze worden gewaarschuwd**: wijzig de ernstniveaus van meldingen die door Security Center moeten worden verzonden.
 
 Security Center beperkt het aantal uitgaande e-mails om te voorkomen dat waarschuwingen niet meer serieus worden genomen. Security Center verzendt voor elk abonnement:
 
@@ -32,9 +35,8 @@ Security Center beperkt het aantal uitgaande e-mails om te voorkomen dat waarsch
 - maximaal **twee** e-mails per dag voor waarschuwingen met een **gemiddeld ernstniveau**
 - maximaal **één** e-mail per dag voor waarschuwingen met een **laag ernstniveau**
 
-
 :::image type="content" source="./media/security-center-provide-security-contacts/email-notification-settings.png" alt-text="De details van de contactpersoon configureren die e-mails over beveiligingswaarschuwingen ontvangt." :::
-
+ 
 ## <a name="availability"></a>Beschikbaarheid
 
 |Aspect|Details|
@@ -42,27 +44,27 @@ Security Center beperkt het aantal uitgaande e-mails om te voorkomen dat waarsch
 |Releasestatus:|Algemeen verkrijgbaar (GA)|
 |Prijzen:|Gratis|
 |Vereiste rollen en machtigingen:|**Beveiligingsbeheerder**<br>**Abonnementeigenaar** |
-|Clouds:|![Ja](./media/icons/yes-icon.png) Commerciële clouds<br>![Ja](./media/icons/yes-icon.png) US Gov (gedeeltelijk)<br>![Nee](./media/icons/no-icon.png) China Gov, Other Gov|
+|Clouds:|![Ja](./media/icons/yes-icon.png) Commerciële clouds<br>![Ja](./media/icons/yes-icon.png) Nationaal/onafhankelijk (Overheid van de VS, China, andere overheden)|
 |||
 
 
-## <a name="set-up-email-notifications-for-alerts"></a>E-mailmeldingen voor waarschuwingen instellen <a name="email"></a>
+## <a name="customize-the-security-alerts-email-notifications"></a>E-mailmeldingen voor beveiligingswaarschuwingen aanpassen<a name="email"></a>
 
 U kunt e-mailmeldingen verzenden naar individuele personen of naar alle gebruikers met specifieke Azure-rollen.
 
 1. Selecteer in het gebied **Prijzen en instellingen** van Security Center het relevante abonnement en selecteer **E-mailmailmeldingen**.
 
-1. De ontvangers voor uw meldingen definiëren:
+1. Definieer de ontvangers voor uw meldingen met een van de volgende opties, of beide:
 
     - Selecteer in de vervolgkeuzelijst een van de beschikbare rollen.
-    - En/of voer specifieke e-mailadressen in, gescheiden door komma's. U kunt een onbeperkt aantal e-mailadressen invoeren.
+    - Voer specifieke e-mailadressen in, gescheiden door komma's. U kunt een onbeperkt aantal e-mailadressen invoeren.
 
 1. Als u de contactgegevens voor beveiliging wilt toepassen op uw abonnement, selecteert u **Opslaan**.
 
 
-## <a name="see-also"></a>Zie tevens
-Zie de volgende onderwerpen voor meer informatie over beveiligingswaarschuwingen:
+## <a name="see-also"></a>Zie ook
+Zie de volgende pagina's voor meer informatie over beveiligingswaarschuwingen:
 
-* [Beveiligingswaarschuwingen: een referentiegids](alerts-reference.md) -- Meer informatie over de beveiligingswaarschuwingen die u kunt zien in de module Threat Protection van Azure Security Center
-* [Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center](security-center-managing-and-responding-alerts.md) -- Meer informatie over hoe u beveiligingswaarschuwingen kunt beheren en erop kunt reageren
-* [Werkstroomautomatisering](workflow-automation.md) -- Automatiseren van reacties op waarschuwingen met aangepaste meldingslogica
+- [Beveiligingswaarschuwingen: een referentiegids](alerts-reference.md): meer informatie over de beveiligingswaarschuwingen die u kunt zien in de module Threat Protection van Azure Security Center
+- [Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center](security-center-managing-and-responding-alerts.md): meer informatie over hoe u beveiligingswaarschuwingen kunt beheren en erop kunt reageren
+- [Werkstroomautomatisering](workflow-automation.md): automatiseren van reacties op waarschuwingen met aangepaste meldingslogica

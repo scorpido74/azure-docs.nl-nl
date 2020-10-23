@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het maken en configureren va
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: c659efad7f0eaf5793e1fd608eb522964df7befd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7e7509f18e7511cd60099a70785b4e2c890afad
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981484"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171634"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Een Recovery Services kluis maken en configureren
 
@@ -35,7 +35,7 @@ Azure Backup beheert automatisch de opslag voor de kluis. U moet opgeven hoe die
    - Als u Azure als een primair eind punt voor back-upopslag gebruikt, wordt u aangeraden de standaard **geo-redundante** instelling te gebruiken.
    - Als Azure niet uw primaire eindpunt is voor back-upopslag, kiest u **Lokaal redundant**, zodat u de kosten voor Azure-opslag verlaagt.
    - Meer informatie over [geo](../storage/common/storage-redundancy.md#geo-redundant-storage) en [lokale](../storage/common/storage-redundancy.md#locally-redundant-storage) redundantie.
-   - Als u de beschik baarheid van gegevens zonder downtime in een regio nodig hebt, moet u de gegevens locatie garanderen en vervolgens [zone-redundante opslag](https://docs.microsoft.com/azure/storage/common/storage-redundancy#zone-redundant-storage)kiezen.
+   - Als u de beschik baarheid van gegevens zonder downtime in een regio nodig hebt, moet u de gegevens locatie garanderen en vervolgens [zone-redundante opslag](../storage/common/storage-redundancy.md#zone-redundant-storage)kiezen.
 
 >[!NOTE]
 >De instellingen voor de opslag replicatie voor de kluis zijn niet relevant voor een back-up van Azure file share, omdat de huidige oplossing moment opname is en er geen gegevens worden overgebracht naar de kluis. Moment opnamen worden opgeslagen in hetzelfde opslag account als de back-up van de bestands share.

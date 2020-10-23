@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere,asteen
-ms.openlocfilehash: 0cd20d7a11bcffe9937537e3681199757a52bee5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d99f0021ee53e972dacfdadb3e488498a3fc4ad0
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89181711"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372460"
 ---
 # <a name="how-to-use-self-service-application-access"></a>Toegang tot Self-service toepassingen gebruiken
 
@@ -67,4 +67,4 @@ Deze goed keuringen ondersteunen alleen één goedkeurings werk stromen, wat bet
 -   Als de toegang van selfservice toepassingen onlangs is geconfigureerd, probeert u zich na een paar minuten opnieuw aan te melden bij mijn apps van de gebruiker en te controleren of de wijzigingen in de self-service toegang zijn verschenen.
 
 ## <a name="next-steps"></a>Volgende stappen
-[Azure Active Directory instellen voor groepsbeheer met self-service](../users-groups-roles/groups-self-service-management.md)
+[Azure Active Directory instellen voor groepsbeheer met self-service](../enterprise-users/groups-self-service-management.md)

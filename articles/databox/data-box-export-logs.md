@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 1d924e96cfc287060107f541e44980295eb24745
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01eb35a60a6d51b5742d8fedd2ee0631aa86c924
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87494482"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147945"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-export-orders"></a>Tracering en logboek registratie voor uw Azure Data Box en Azure Data Box Heavy het exporteren van orders
 
@@ -25,7 +25,7 @@ In de volgende tabel ziet u een overzicht van de stappen voor de Data Box-export
 
 | Fase van de export volgorde Data Box       | Hulp programma voor het volgen en controleren                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
-| Order maken               | [Toegangs beheer voor de order instellen via RBAC](#set-up-access-control-on-the-order) <br> [Uitgebreide logboek inschakelen in de volg orde](#enable-verbose-log-in-the-order)                                                    |
+| Order maken               | [Toegangs beheer voor de order instellen via Azure RBAC](#set-up-access-control-on-the-order) <br> [Uitgebreide logboek inschakelen in de volg orde](#enable-verbose-log-in-the-order)                                                    |
 | Order verwerkt            | [De volg orde volgen](#track-the-order) <ul><li> Azure Portal </li><li> Vervoerders website </li><li>E-mailmeldingen</ul> |
 | Apparaat instellen              | De toegang tot de referenties van het apparaat is geregistreerd in [activiteiten logboeken](#query-activity-logs-during-setup)              |
 | Gegevens kopiëren van apparaat        | [Kopieer logboeken controleren](#copy-log) <br> [Uitgebreide logboeken controleren](#verbose-log) voordat u gegevens kopieert            |
@@ -46,7 +46,7 @@ Als u de toegang tot een order wilt beperken, kunt u het volgende doen:
 - Wijs een rol op een order niveau toe. De gebruiker heeft alleen die machtigingen zoals gedefinieerd door de rollen om te communiceren met die specifieke Data Box order alleen en niets anders.
 - Wijs een rol toe op het niveau van de resource groep, de gebruiker heeft toegang tot alle Data Box orders binnen een resource groep.
 
-Zie [Aanbevolen procedures voor Azure RBAC](../role-based-access-control/best-practices.md)voor meer informatie over aanbevolen RBAC-gebruik.
+Zie [Aanbevolen procedures voor Azure RBAC](../role-based-access-control/best-practices.md)voor meer informatie over het aanbevolen gebruik van Azure RBAC.
 
 ## <a name="enable-verbose-log-in-the-order"></a>Uitgebreide logboek inschakelen in de volg orde
 

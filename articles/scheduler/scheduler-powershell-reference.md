@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
-ms.openlocfilehash: 5b82dba923db16e96cc0884b629723c4e8496c3a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ccc9f709348d961e49bced00946658a6997837c0
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87080902"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368108"
 ---
 # <a name="powershell-cmdlets-reference-for-azure-scheduler"></a>Naslag informatie over Power shell-cmdlets voor Azure scheduler
 
@@ -22,7 +22,7 @@ ms.locfileid: "87080902"
 >
 > Scheduler is niet meer beschikbaar in de Azure Portal, maar de [rest API](/rest/api/scheduler) en [Azure scheduler Power shell-cmdlets](scheduler-powershell-reference.md) blijven op dit moment beschikbaar, zodat u uw taken en taak verzamelingen kunt beheren.
 
-U kunt Power shell-cmdlets gebruiken om scripts te schrijven voor het maken en beheren van scheduler-taken en-taak verzamelingen. In dit artikel vindt u een overzicht van de belangrijkste Power shell-cmdlets voor Azure scheduler met koppelingen naar de bijbehorende referentie artikelen. Zie [Azure PowerShell installeren en configureren voor meer informatie over](/powershell/azure/)het installeren van Azure PowerShell voor uw Azure-abonnement. Zie [Using Azure PowerShell with Azure Resource Manager](../powershell-azure-resource-manager.md)(Engelstalig) voor meer informatie over [Azure Resource Manager-cmdlets](/powershell/azure/).
+U kunt Power shell-cmdlets gebruiken om scripts te schrijven voor het maken en beheren van scheduler-taken en-taak verzamelingen. In dit artikel vindt u een overzicht van de belangrijkste Power shell-cmdlets voor Azure scheduler met koppelingen naar de bijbehorende referentie artikelen. Zie [Azure PowerShell installeren en configureren voor meer informatie over](/powershell/azure/)het installeren van Azure PowerShell voor uw Azure-abonnement. Zie [Using Azure PowerShell with Azure Resource Manager](../azure-resource-manager/management/manage-resources-powershell.md)(Engelstalig) voor meer informatie over [Azure Resource Manager-cmdlets](/powershell/azure/).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

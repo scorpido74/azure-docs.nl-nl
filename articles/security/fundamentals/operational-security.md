@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: b6e5a22a073a2a61db4a630388fee886e2f4ed26
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5decd3e222af11c402cbff4585532a0cf22282e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87543330"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168049"
 ---
 # <a name="azure-operational-security"></a>Operationele Azure-beveiliging
 ## <a name="introduction"></a>Inleiding
@@ -81,7 +81,7 @@ De kern functionaliteit van Azure Monitor Logboeken wordt verschaft door een set
 Met deze methode kunt u gegevens uit verschillende bronnen consolideren, zodat u gegevens uit uw Azure-Services kunt combi neren met uw bestaande on-premises omgeving. De methode maakt ook een duidelijk onderscheid tussen het verzamelen van gegevens en het bewerken hiervan. Zo zijn alle bewerkingen beschikbaar voor alle soorten gegevens.
 
 
-![Azure Monitor-logboeken](./media/operational-security/azure-operational-security-fig2.png)
+![Diagram waarin de gegevens consolidatie van verschillende bronnen wordt weer gegeven, zodat u gegevens uit uw Azure-Services kunt combi neren met uw bestaande on-premises omgeving.](./media/operational-security/azure-operational-security-fig2.png)
 
 De Azure Monitor-service beheert uw gegevens op basis van de Cloud veilig door de volgende methoden te gebruiken:
 -   gegevens scheiding
@@ -128,7 +128,7 @@ In Security Center definieert u de beleidsregels op grond van de beveiligingsver
 Beleids regels die zijn ingeschakeld in het abonnements niveau, worden automatisch door gegeven aan alle resource groepen binnen het abonnement, zoals wordt weer gegeven in het diagram aan de rechter kant:
 
 
-### <a name="data-collection"></a>Gegevensverzameling
+### <a name="data-collection"></a>Gegevens verzamelen
 
 Met Security Center worden gegevens van uw virtuele machines (VM's) verzameld om de beveiligingsstatus van de VM's te beoordelen, aanbevelingen voor beveiliging te geven en u te waarschuwen bij bedreigingen. Wanneer u voor het eerst toegang Security Center, wordt gegevens verzameling ingeschakeld op alle virtuele machines in uw abonnement. Gegevensverzameling wordt aanbevolen, maar u kunt gegevensverzameling indien gewenst ook uitschakelen in het Security Center-beleid.
 

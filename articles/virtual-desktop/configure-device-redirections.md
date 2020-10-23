@@ -6,14 +6,14 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f3441d7c7f42c58928bb97c945e7b1e7673f7afa
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 00a3c1d0a2a905e6435b811d5f2611c16a5de502
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876984"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328876"
 ---
-# <a name="configure-device-redirections"></a>Apparaatomleiding configureren
+# <a name="configure-device-redirections"></a>Apparaatomleidingen configureren
 
 Met het configureren van apparaatomleiding voor uw Windows Virtual Desktop-omgeving kunt u printers, USB-apparaten, micro telefoons en andere rand apparatuur in de externe sessie gebruiken. Voor sommige omleidingen van apparaten zijn wijzigingen in de eigenschappen van Remote Desktop Protocol (RDP) en groepsbeleid-instellingen nodig.
 
@@ -50,7 +50,10 @@ Stel de volgende RDP-eigenschap in voor het configureren van camera omleiding:
 - `camerastoredirect:s:*` alle camera's worden omgeleid.
 - `camerastoredirect:s:` schakelt de omleiding van de camera uit.
 
-U kunt ook specifieke camera's omleiden met een door punt komma's gescheiden lijst met KSCATEGORY_VIDEO_CAMERA interfaces, zoals `camerastoredirect:s:\?\usb#vid_0bda&pid_58b0&mi` .
+>[!NOTE]
+>Zelfs als de `camerastoredirect:s:` eigenschap is uitgeschakeld, kunnen lokale camera's worden omgeleid via de `devicestoredirect:s:` eigenschap. Voor het volledig uitschakelen van de omleidings voor de camera `camerastoredirect:s:` en `devicestoredirect:s:` het instellen of definiëren van een deel verzameling van Plug en Play-apparaten die geen camera bevatten.
+
+U kunt ook specifieke camera's omleiden met een door punt komma's gescheiden lijst met KSCATEGORY_VIDEO_CAMERA interfaces, zoals `camerastoredirect:s:\?\usb#vid_0bda&pid_58b0&mi` . 
 
 ### <a name="clipboard-redirection"></a>Klembord omleiding
 

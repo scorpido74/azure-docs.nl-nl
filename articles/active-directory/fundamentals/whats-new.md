@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c16008ac4a328f93669179ccca783efb9ef092a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 37dc60fd14eb26ab4c8f5a867b97369a066b743b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91773502"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362753"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Wat is er nieuw in Azure Active Directory?
 
@@ -84,7 +84,7 @@ Azure AD Connect Cloud Provisioning open bare preview-functies vernieuwt twee be
  
 Wanneer IT-beheerders of eind gebruikers BitLocker-herstel sleutel (s) hebben gelezen waartoe ze toegang hebben, wordt door Azure Active Directory nu een audit logboek gegenereerd waarin wordt vastgelegd wie de herstel sleutel heeft geopend. Dezelfde controle bevat details van het apparaat waaraan de BitLocker-sleutel is gekoppeld.
 
-Eind gebruikers [hebben via mijn account toegang tot hun herstel sleutels](../user-help/my-account-portal-devices-page.md#view-a-bitlocker-key). IT-beheerders hebben toegang tot herstel sleutels via de [API van de BitLocker-herstel sleutel in bèta](https://docs.microsoft.com/graph/api/resources/bitlockerrecoverykey?view=graph-rest-beta,) of via de Azure AD-Portal. Zie [BitLocker-sleutels weer geven of kopiëren in de Azure AD-Portal](../devices/device-management-azure-portal.md#view-or-copy-bitlocker-keys)voor meer informatie.
+Eind gebruikers [hebben via mijn account toegang tot hun herstel sleutels](../user-help/my-account-portal-devices-page.md#view-a-bitlocker-key). IT-beheerders hebben toegang tot herstel sleutels via de [API van de BitLocker-herstel sleutel in bèta](/graph/api/resources/bitlockerrecoverykey?view=graph-rest-beta) of via de Azure AD-Portal. Zie [BitLocker-sleutels weer geven of kopiëren in de Azure AD-Portal](../devices/device-management-azure-portal.md#view-or-copy-bitlocker-keys)voor meer informatie.
 
 ---
 
@@ -94,7 +94,7 @@ Eind gebruikers [hebben via mijn account toegang tot hun herstel sleutels](../us
 **Service categorie:** RBAC  
 **Product mogelijkheden:** Access Control
  
-Gebruikers met de rol [teams van apparaten](../users-groups-roles/directory-assign-admin-roles.md#teams-devices-administrator) kunnen [teams, gecertificeerde apparaten](https://www.microsoft.com/microsoft-365/microsoft-teams/across-devices/devices) beheren vanuit het beheer centrum teams. 
+Gebruikers met de rol [teams van apparaten](../roles/permissions-reference.md#teams-devices-administrator) kunnen [teams, gecertificeerde apparaten](https://www.microsoft.com/microsoft-365/microsoft-teams/across-devices/devices) beheren vanuit het beheer centrum teams. 
 
 Met deze rol kan de gebruiker alle apparaten in één oogopslag weer geven, met de mogelijkheid om apparaten te zoeken en te filteren. De gebruiker kan ook de details van elk apparaat controleren, inclusief het aangemelde account en het merk en model van het apparaat. De gebruiker kan de instellingen op het apparaat wijzigen en de software versies bijwerken. Deze rol verleent geen machtigingen om de activiteit teams te controleren en de kwaliteit van het apparaat aan te roepen.
  
@@ -146,7 +146,7 @@ De Azure AD-Portal is bijgewerkt, zodat u gebruikers gemakkelijker kunt vinden o
 - Nieuwe sorteer mogelijkheden voor eigenschappen zoals naam, user principal name en verwijderings datum.
 - Een nieuw totaal aantal gebruikers dat wordt bijgewerkt met Zoek opdrachten of filters.
 
-Zie [verbeteringen voor gebruikers beheer (preview) in azure Active Directory](../users-groups-roles/users-search-enhanced.md)voor meer informatie.
+Zie [verbeteringen voor gebruikers beheer (preview) in azure Active Directory](../enterprise-users/users-search-enhanced.md)voor meer informatie.
 
 ---
 
@@ -255,7 +255,7 @@ In deze preview kunnen klanten scha kelen tussen de bestaande ervaring en de nie
 
 Er zijn machtigingen op mapniveau bijgewerkt voor gast gebruikers. Met deze machtigingen kunnen beheerders aanvullende beperkingen en besturings elementen vereisen voor toegang tot externe gast gebruikers. Beheerders kunnen nu aanvullende beperkingen voor de toegang van externe gasten toevoegen aan het profiel en de lidmaatschaps gegevens van gebruikers en groepen. Met deze open bare preview-functie kunnen klanten externe gebruikers toegang op schaal beheren door groepslid maatschappen te maken, met inbegrip van het beperken van gast gebruikers om lidmaatschappen te zien van de groep (en) waarin ze zich bevinden.
 
-Zie [beperkte gast toegangs machtigingen](../users-groups-roles/users-restrict-guest-permissions.md) en [gebruikers standaard machtigingen](./users-default-permissions.md)voor meer informatie.
+Zie [beperkte gast toegangs machtigingen](../enterprise-users/users-restrict-guest-permissions.md) en [gebruikers standaard machtigingen](./users-default-permissions.md)voor meer informatie.
  
 ---
 
@@ -358,7 +358,7 @@ Voorheen kunnen aangepaste open ID Connect-providers alleen worden toegevoegd of
 **Service categorie:** Azure AD-rollen  
 **Product mogelijkheden:** Access Control
 
-U kunt nu Azure AD ingebouwde rollen toewijzen aan Cloud groepen met deze nieuwe functie. U kunt bijvoorbeeld de share point-beheerdersrol toewijzen aan Contoso_SharePoint_Admins groep. U kunt ook PIM gebruiken om de groep een in aanmerking komend lid van de rol te maken, in plaats van permanente toegang toe te kennen. Zie [Cloud groepen gebruiken om roltoewijzingen te beheren in azure Active Directory (preview)](../users-groups-roles/roles-groups-concept.md)voor meer informatie over het configureren van deze functie.
+U kunt nu Azure AD ingebouwde rollen toewijzen aan Cloud groepen met deze nieuwe functie. U kunt bijvoorbeeld de share point-beheerdersrol toewijzen aan Contoso_SharePoint_Admins groep. U kunt ook PIM gebruiken om de groep een in aanmerking komend lid van de rol te maken, in plaats van permanente toegang toe te kennen. Zie [Cloud groepen gebruiken om roltoewijzingen te beheren in azure Active Directory (preview)](../roles/groups-concept.md)voor meer informatie over het configureren van deze functie.
  
 ---
 
@@ -368,7 +368,7 @@ U kunt nu Azure AD ingebouwde rollen toewijzen aan Cloud groepen met deze nieuwe
 **Service categorie:** Azure AD-rollen  
 **Product mogelijkheden:** Access Control
  
-Gebruikers in de rol inzichten bedrijfs leider hebben toegang tot een set Dash boards en inzichten via de [M365 Insights-toepassing](https://www.microsoft.com/microsoft-365/partners/workplaceanalytics). Dit omvat volledige toegang tot alle Dash boards en weer gegeven inzicht in de functionaliteit voor het verkennen van gegevens. Gebruikers met deze rol hebben echter geen toegang tot de configuratie-instellingen van het product. Dit is de verantwoordelijkheid van de rol Insights-beheerder. Zie [machtigingen voor beheerdersrol in azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md#insights-business-leader) voor meer informatie over deze rol.
+Gebruikers in de rol inzichten bedrijfs leider hebben toegang tot een set Dash boards en inzichten via de [M365 Insights-toepassing](https://www.microsoft.com/microsoft-365/partners/workplaceanalytics). Dit omvat volledige toegang tot alle Dash boards en weer gegeven inzicht in de functionaliteit voor het verkennen van gegevens. Gebruikers met deze rol hebben echter geen toegang tot de configuratie-instellingen van het product. Dit is de verantwoordelijkheid van de rol Insights-beheerder. Zie [machtigingen voor beheerdersrol in azure Active Directory](../roles/permissions-reference.md#insights-business-leader) voor meer informatie over deze rol.
  
 ---
 
@@ -378,7 +378,7 @@ Gebruikers in de rol inzichten bedrijfs leider hebben toegang tot een set Dash b
 **Service categorie:** Azure AD-rollen  
 **Product mogelijkheden:** Access Control
  
-Gebruikers met de rol inzichten beheerder hebben toegang tot de volledige set beheer mogelijkheden in de [M365 Insights-toepassing](https://www.microsoft.com/microsoft-365/partners/workplaceanalytics). Een gebruiker met deze rol kan Directory gegevens lezen, service status controleren, bestands ondersteuning en toegang tot de aspecten van de Insights-beheerders instellingen. Zie [machtigingen voor beheerdersrol in azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md#insights-administrator) voor meer informatie over deze rol.
+Gebruikers met de rol inzichten beheerder hebben toegang tot de volledige set beheer mogelijkheden in de [M365 Insights-toepassing](https://www.microsoft.com/microsoft-365/partners/workplaceanalytics). Een gebruiker met deze rol kan Directory gegevens lezen, service status controleren, bestands ondersteuning en toegang tot de aspecten van de Insights-beheerders instellingen. Zie [machtigingen voor beheerdersrol in azure Active Directory](../roles/permissions-reference.md#insights-administrator) voor meer informatie over deze rol.
  
 --- 
 
@@ -412,7 +412,7 @@ Er is een hotfixcombinatiepakket [(build 4.6.263.0)](https://support.microsoft.c
  
 Met de GA-versie van de voor waarde client-apps in voorwaardelijke toegang wordt nieuw beleid nu standaard toegepast op alle client toepassingen. Dit omvat verouderde verificatie-clients. Bestaande beleids regels blijven ongewijzigd, maar de wissel knop *Ja/Nee* wordt verwijderd uit bestaande beleids regels om eenvoudig te zien welke client-apps door het beleid worden toegepast. 
 
-Wanneer u een nieuw beleid maakt, moet u ervoor zorgen dat u gebruikers en service accounts uitsluit die nog steeds gebruikmaken van verouderde verificatie; Als u dit niet doet, worden ze geblokkeerd. [Meer informatie](https://aka.ms/caclientapps).
+Wanneer u een nieuw beleid maakt, moet u ervoor zorgen dat u gebruikers en service accounts uitsluit die nog steeds gebruikmaken van verouderde verificatie; Als u dit niet doet, worden ze geblokkeerd. [Meer informatie](../conditional-access/concept-conditional-access-conditions.md).
  
 ---
 
@@ -528,7 +528,7 @@ Zie [gebruikers stroom versies in azure Active Directory B2C](../../active-direc
  
 In juli 2020 zijn de volgende 55 nieuwe toepassingen toegevoegd aan de app-galerie met Federatie ondersteuning:
 
-[Clap Your handen](http://www.rmit.com.ar/), [Appreiz](https://microsoftteams.appreiz.com/), [Inextor kluis](https://inexto.com/inexto-suite/inextor), [Beekast](https://my.beekast.com/), [Templafy OpenID Connect Connect](https://app.templafy.com/), [PeterConnects receptie](https://msteams.peterconnects.com/), [AlohaCloud](https://appfusions.alohacloud.com/auth), [Control Tower](https://bpm.tnxcorp.com/sso/microsoft), [Cocoom](https://start.cocoom.com/), [munten constructie Cloud](https://sso.coinsconstructioncloud.com/#login/), [Medxnote MT](https://task.teamsmain.medx.im/authorization), [Reflekt](https://reflekt.konsolute.com/login), [terugdraaien](https://app.reverscore.net/access), [MyCompanyArchive](https://login.mycompanyarchive.com/), [GReminders](https://app.greminders.com/o365-oauth), [Titanfile](../saas-apps/titanfile-tutorial.md), [Wootric](../saas-apps/wootric-tutorial.md), [SolarWinds Orion](https://support.solarwinds.com/SuccessCenter/s/orion-platform?language=en_US),  [OpenText Directory Services](../saas-apps/opentext-directory-services-tutorial.md), [Datasite](../saas-apps/datasite-tutorial.md), [BlogIn](../saas-apps/blogin-tutorial.md), [IntSights](../saas-apps/intsights-tutorial.md), [kpifire](../saas-apps/kpifire-tutorial.md), [Textline](../saas-apps/textline-tutorial.md), [Cloud Academy-SSO](../saas-apps/cloud-academy-sso-tutorial.md), [communautair Spark](../saas-apps/community-spark-tutorial.md), [Chatwork](../saas-apps/chatwork-tutorial.md), [CloudSign](../saas-apps/cloudsign-tutorial.md), [C3M Cloud Control](../saas-apps/c3m-cloud-control-tutorial.md), [SmartHR](https://smarthr.jp/), [NumlyEngage™](../saas-apps/numlyengage-tutorial.md), [Michigan data hub eenmalige aanmelding](../saas-apps/michigan-data-hub-single-sign-on-tutorial.md), [uitgang](../saas-apps/egress-tutorial.md), [SendSafely](../saas-apps/sendsafely-tutorial.md), [Eletive](https://app.eletive.com/), [rechter Cyber beveiliging ADI](https://right-hand.ai/), [Fyde Enter prise-verificatie](https://enterprise.fyde.com/), [Verme](../saas-apps/verme-tutorial.md), [lenses.io](../saas-apps/lensesio-tutorial.md), [Momenta](../saas-apps/momenta-tutorial.md), [conrise](https://app.uprise.co/sign-in), [Q](https://q.moduleq.com/login), [CloudCords](../saas-apps/cloudcords-tutorial.md), [Tellme bot](https://tellme365liteweb.azurewebsites.net/), [inspireren](https://app.inspiresoftware.com/), [Maverics Identity Orchestrator SAML connector](https://www.strata.io/identity-fabric/), [Smartschool (school beheersysteem)](https://smart-schoolapp.com/frmLoginForm), [Zepto-intelligent keurige](https://user.zepto-ai.com/signin), [Studi.ly](https://studi.ly/), [Trackplan](http://www.trackplanfm.com/), [Skedda](../saas-apps/skedda-tutorial.md), [WhosOnLocation](../saas-apps/whos-on-location-tutorial.md), [Coggle](../saas-apps/coggle-tutorial.md), [Kemp Kemp](https://kemptechnologies.com/cloud-load-balancer/), [BrowserStack eenmalige aanmelding](../saas-apps/browserstack-single-sign-on-tutorial.md)
+[Clap Your handen](http://www.rmit.com.ar/), [Appreiz](https://microsoftteams.appreiz.com/), [Inextor kluis](https://inexto.com/inexto-suite/inextor), [Beekast](https://my.beekast.com/), [Templafy OpenID Connect Connect](https://app.templafy.com/), [PeterConnects receptie](https://msteams.peterconnects.com/), [AlohaCloud](https://appfusions.alohacloud.com/auth), [Control Tower](https://bpm.tnxcorp.com/sso/microsoft), [Cocoom](https://start.cocoom.com/), [munten constructie Cloud](https://sso.coinsconstructioncloud.com/#login/), [Medxnote MT](https://task.teamsmain.medx.im/authorization), [Reflekt](https://reflekt.konsolute.com/login), [terugdraaien](https://app.reverscore.net/access), [MyCompanyArchive](https://login.mycompanyarchive.com/), [GReminders](https://app.greminders.com/o365-oauth), [Titanfile](../saas-apps/titanfile-tutorial.md), [Wootric](../saas-apps/wootric-tutorial.md), [SolarWinds Orion](https://support.solarwinds.com/SuccessCenter/s/orion-platform?language=en_US),  [OpenText Directory Services](../saas-apps/opentext-directory-services-tutorial.md), [Datasite](../saas-apps/datasite-tutorial.md), [BlogIn](../saas-apps/blogin-tutorial.md), [IntSights](../saas-apps/intsights-tutorial.md), [kpifire](../saas-apps/kpifire-tutorial.md), [Textline](../saas-apps/textline-tutorial.md), [Cloud Academy-SSO](../saas-apps/cloud-academy-sso-tutorial.md), [communautair Spark](../saas-apps/community-spark-tutorial.md), [Chatwork](../saas-apps/chatwork-tutorial.md), [CloudSign](../saas-apps/cloudsign-tutorial.md), [C3M Cloud Control](../saas-apps/c3m-cloud-control-tutorial.md), [SmartHR](https://smarthr.jp/), [NumlyEngage™](../saas-apps/numlyengage-tutorial.md), [Michigan data hub eenmalige aanmelding](../saas-apps/michigan-data-hub-single-sign-on-tutorial.md), [uitgang](../saas-apps/egress-tutorial.md), [SendSafely](../saas-apps/sendsafely-tutorial.md), [Eletive](https://app.eletive.com/), [rechter Cyber beveiliging ADI](https://right-hand.ai/), [Fyde Enter prise-verificatie](https://enterprise.fyde.com/), [Verme](../saas-apps/verme-tutorial.md), [lenses.io](../saas-apps/lensesio-tutorial.md), [Momenta](../saas-apps/momenta-tutorial.md), [conrise](https://app.uprise.co/sign-in), [Q](https://q.moduleq.com/login), [CloudCords](../saas-apps/cloudcords-tutorial.md), [Tellme bot](https://tellme365liteweb.azurewebsites.net/), [inspireren](https://app.inspiresoftware.com/), [Maverics Identity Orchestrator SAML connector](https://www.strata.io/identity-fabric/), [Smartschool (school beheersysteem)](https://smartschoolz.com/login), [Zepto-intelligent keurige](https://user.zepto-ai.com/signin), [Studi.ly](https://studi.ly/), [Trackplan](http://www.trackplanfm.com/), [Skedda](../saas-apps/skedda-tutorial.md), [WhosOnLocation](../saas-apps/whos-on-location-tutorial.md), [Coggle](../saas-apps/coggle-tutorial.md), [Kemp Kemp](https://kemptechnologies.com/cloud-load-balancer/), [BrowserStack eenmalige aanmelding](../saas-apps/browserstack-single-sign-on-tutorial.md)
 
 U kunt hier ook de documentatie van alle toepassingen vinden https://aka.ms/AppsTutorial
 
@@ -554,7 +554,7 @@ Voor meer informatie over hoe u uw organisatie beter kunt beveiligen met behulp 
 **Service categorie:** Azure AD-rollen  
 **Product mogelijkheden:** Access Control
  
-U kunt nu roltoewijzingen weer geven voor alle bereiken voor een rol in het tabblad ' rollen en beheerders ' in de Azure AD-Portal. U kunt ook de roltoewijzingen voor elke rol naar een CSV-bestand downloaden. Zie [beheerders rollen weer geven en toewijzen in azure Active Directory](../users-groups-roles/directory-manage-roles-portal.md)voor hulp bij het weer geven en toevoegen van roltoewijzingen.
+U kunt nu roltoewijzingen weer geven voor alle bereiken voor een rol in het tabblad ' rollen en beheerders ' in de Azure AD-Portal. U kunt ook de roltoewijzingen voor elke rol naar een CSV-bestand downloaden. Zie [beheerders rollen weer geven en toewijzen in azure Active Directory](../roles/manage-roles-portal.md)voor hulp bij het weer geven en toevoegen van roltoewijzingen.
  
 ---
 
@@ -703,7 +703,7 @@ De riskyUsers-en riskDetections-Microsoft Graph Api's zijn nu algemeen beschikba
 
 U kunt nu gevoeligheids labels maken en de label instellingen gebruiken om beleid toe te passen op Microsoft 365 groepen, waaronder privacy (openbaar of privé) en beleid voor externe gebruikers toegang. U kunt een label met het privacybeleid persoonlijk maken en beleid voor externe gebruikers toegang om gast gebruikers niet toe te staan. Wanneer een gebruiker dit label toepast op een groep, is de groep privé en kunnen gast gebruikers niet aan de groep worden toegevoegd. 
 
-Gevoeligheids labels zijn belang rijk voor het beveiligen van uw bedrijfs kritieke gegevens en u kunt op een compatibele en veilige manier groepen op schaal beheren. Zie voor hulp bij het gebruik van gevoeligheids labels de [labels voor gevoeligheid toewijzen aan Microsoft 365 groepen in azure Active Directory (preview)](../users-groups-roles/groups-assign-sensitivity-labels.md).
+Gevoeligheids labels zijn belang rijk voor het beveiligen van uw bedrijfs kritieke gegevens en u kunt op een compatibele en veilige manier groepen op schaal beheren. Zie voor hulp bij het gebruik van gevoeligheids labels de [labels voor gevoeligheid toewijzen aan Microsoft 365 groepen in azure Active Directory (preview)](../enterprise-users/groups-assign-sensitivity-labels.md).
  
 ---
 
@@ -805,7 +805,7 @@ E-mail meldingen worden verzonden vanaf het volgende adres: azure-noreply@micros
 **Product mogelijkheden:** Gebruikers verificatie
  
 
-Op dit moment kunnen gebruikers die zich in domeinen bevinden in azure AD, maar die niet zijn gesynchroniseerd met de Tenant, geen toegang krijgen tot teams. Vanaf het einde van juni kan deze nieuwe functionaliteit dit doen door de bestaande registratie functie voor geverifieerde e-mail uit te breiden. Hierdoor kunnen gebruikers die zich aanmelden bij een federatieve IdP, maar die nog geen gebruikers object hebben in azure ID, een gebruikers object automatisch maken en worden geverifieerd voor teams. Hun gebruikers object wordt als ' self-service registreren ' gemarkeerd. Dit is een uitbrei ding van de bestaande mogelijkheid om e-mail berichten te laten verifiëren die gebruikers in beheerde domeinen kunnen uitvoeren en kunnen worden beheerd met dezelfde vlag. Deze wijziging wordt tijdens de volgende twee maanden voltooid. Kijk [hier](../users-groups-roles/directory-self-service-signup.md)voor documentatie-updates.
+Op dit moment kunnen gebruikers die zich in domeinen bevinden in azure AD, maar die niet zijn gesynchroniseerd met de Tenant, geen toegang krijgen tot teams. Vanaf het einde van juni kan deze nieuwe functionaliteit dit doen door de bestaande registratie functie voor geverifieerde e-mail uit te breiden. Hierdoor kunnen gebruikers die zich aanmelden bij een federatieve IdP, maar die nog geen gebruikers object hebben in azure ID, een gebruikers object automatisch maken en worden geverifieerd voor teams. Hun gebruikers object wordt als ' self-service registreren ' gemarkeerd. Dit is een uitbrei ding van de bestaande mogelijkheid om e-mail berichten te laten verifiëren die gebruikers in beheerde domeinen kunnen uitvoeren en kunnen worden beheerd met dezelfde vlag. Deze wijziging wordt tijdens de volgende twee maanden voltooid. Kijk [hier](../enterprise-users/directory-self-service-signup.md)voor documentatie-updates.
  
 ---
 
@@ -853,7 +853,7 @@ Als het oorspronkelijke SAML-aanmeldings token een andere indeling heeft gebruik
 **Service categorie:** Azure AD-Cloud inrichting  
 **Product mogelijkheden:** Beheer van identiteits levenscyclus
  
-IT-beheerders kunnen beginnen met het gebruik van de nieuwe rol hybride beheerder als de minst privileged Role voor het instellen van Azure ADConnect Cloud provisioning. Met deze nieuwe rol hoeft u niet langer de rol van globale beheerder te gebruiken voor het instellen en configureren van Cloud inrichting. [Meer informatie](../users-groups-roles/roles-delegate-by-task.md#connect).
+IT-beheerders kunnen beginnen met het gebruik van de nieuwe rol hybride beheerder als de minst privileged Role voor het instellen van Azure ADConnect Cloud provisioning. Met deze nieuwe rol hoeft u niet langer de rol van globale beheerder te gebruiken voor het instellen en configureren van Cloud inrichting. [Meer informatie](../roles/delegate-by-task.md#connect).
  
 ---
 
@@ -978,7 +978,7 @@ De groeps claims die in een token zijn uitgegeven, kunnen nu worden beperkt tot 
 **Service categorie:** App-inrichting  
 **Product mogelijkheden:** Beheer van identiteits levenscyclus
  
-We hebben de app voor het terugschrijven van werk dagen uitgebreid om nu write-back van telefoon nummer en mobiele nummer kenmerken te ondersteunen. Naast e-mail en gebruikers naam kunt u nu de werk stroom voor het terugschrijven van werk dagen configureren voor het door sturen van telefoon nummer waarden van Azure AD naar workday. Raadpleeg voor meer informatie over het configureren van telefoon nummer terugschrijven de hand leiding voor het [terugschrijven van workday](https://aka.ms/WorkdayWriteback) -apps. 
+We hebben de app voor het terugschrijven van werk dagen uitgebreid om nu write-back van telefoon nummer en mobiele nummer kenmerken te ondersteunen. Naast e-mail en gebruikers naam kunt u nu de werk stroom voor het terugschrijven van werk dagen configureren voor het door sturen van telefoon nummer waarden van Azure AD naar workday. Raadpleeg voor meer informatie over het configureren van telefoon nummer terugschrijven de hand leiding voor het [terugschrijven van workday](../saas-apps/workday-writeback-tutorial.md) -apps. 
 
 ---
 
@@ -1025,7 +1025,7 @@ U kunt de nieuwe ervaring bereiken door te navigeren door de Azure AD B2C-servic
 
 De Azure AD B2C App-registraties-ervaring is gebaseerd op de [ervaring](https://developer.microsoft.com/identity/blogs/new-app-registrations-experience-is-now-generally-available/) voor de registratie van algemene apps voor Azure AD-tenants, maar is afgestemd op Azure AD B2C. De verouderde-ervaring voor toepassingen wordt in de toekomst afgeschaft.
 
-Ga naar [de nieuwe app registratie-ervaring voor Azure AD B2C](https://aka.ms/b2cappregtraining)voor meer informatie.
+Ga naar [de nieuwe app registratie-ervaring voor Azure AD B2C](../../active-directory-b2c/app-registrations-training-guide.md)voor meer informatie.
 
 ---
 
@@ -1051,7 +1051,7 @@ De gecombineerde registratie-ervaring voor Multi-Factor Authentication (MFA) en 
 
 **Product mogelijkheden:** Beveiliging van identiteits beveiliging &
 
-Evaluatie van doorlopende toegang is een nieuwe beveiligings functie die bijna in realtime beleids handhaving mogelijk maakt voor relying party's die Azure AD-toegangs tokens gebruiken wanneer er gebeurtenissen optreden in azure AD (zoals het verwijderen van een gebruikers account). Deze functie wordt eerst geïmplementeerd voor teams en Outlook-clients. Lees onze [blog](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933) en de  [documentatie](./concept-fundamentals-continuous-access-evaluation.md)voor meer informatie.
+Evaluatie van doorlopende toegang is een nieuwe beveiligings functie die bijna in realtime beleids handhaving mogelijk maakt voor relying party's die Azure AD-toegangs tokens gebruiken wanneer er gebeurtenissen optreden in azure AD (zoals het verwijderen van een gebruikers account). Deze functie wordt eerst geïmplementeerd voor teams en Outlook-clients. Lees onze [blog](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933) en de  [documentatie](../conditional-access/concept-continuous-access-evaluation.md)voor meer informatie.
 
 ---
 
@@ -1127,7 +1127,7 @@ In april 2020 hebben we deze 31 nieuwe apps met federatieve ondersteuning toegev
 
 [SincroPool apps](https://www.sincropool.com/), [SmartDB](https://hibiki.dreamarts.co.jp/smartdb/trial/), [float](../saas-apps/float-tutorial.md), [LMS365](https://lms.365.systems/), [IWT inkoop Suite](../saas-apps/iwt-procurement-suite-tutorial.md) [Lunni](https://lunni.fi/), [EasySSO voor Jira](../saas-apps/easysso-for-jira-tutorial.md), [Virtual Training Academy](https://vta.c3p.ca/app/en/openid?authenticate_with=microsoft), [Meraki dash board](../saas-apps/meraki-dashboard-tutorial.md), [Microsoft 365](https://app.mover.io/login)-overschakeling, [spreker](https://speakerengage.com/login.php), [honestly](../saas-apps/honestly-tutorial.md), [Ally](../saas-apps/ally-tutorial.md), [DutyFlow](https://app.dutyflow.nl/), [AlertMedia](../saas-apps/alertmedia-tutorial.md), [gr8 mensen](../saas-apps/gr8-people-tutorial.md), [Pendo](../saas-apps/pendo-tutorial.md), [HighGround](../saas-apps/highground-tutorial.md), [harmonie](../saas-apps/harmony-tutorial.md), [Timetabling oplossingen](../saas-apps/timetabling-solutions-tutorial.md), [SynchroNet Klik](../saas-apps/synchronet-click-tutorial.md), [Empower](https://www.made-in-office.com/en/), [veertig](../saas-apps/fortes-change-cloud-tutorial.md) [, litmus,](../saas-apps/litmus-tutorial.md), [GroupTalk](https://recorder.grouptalk.com/), [Frontify](../saas-apps/frontify-tutorial.md), [MongoDb Cloud](../saas-apps/mongodb-cloud-tutorial.md), [TickitLMS leren](../saas-apps/tickitlms-learn-tutorial.md), [Coco](https://hexaware.com/partnerships-and-alliances/digital-transformation-using-microsoft-azure/), [Nitro productiviteits pakket](../saas-apps/nitro-productivity-suite-tutorial.md) , [Trend Micro Web Security (TMWS)](https://review.docs.microsoft.com/azure/active-directory/saas-apps/trend-micro-tutorial)
 
-Zie voor meer informatie over de apps [SaaS-toepassings integratie met Azure Active Directory](https://aka.ms/appstutorial). Zie [uw toepassing weer geven in de galerie van Azure Active Directory toepassingen](https://aka.ms/azureadapprequest)voor meer informatie over het weer geven van uw toepassing in de app-galerie van Azure AD.
+Zie voor meer informatie over de apps [SaaS-toepassings integratie met Azure Active Directory](../saas-apps/tutorial-list.md). Zie [uw toepassing weer geven in de galerie van Azure Active Directory toepassingen](../azuread-dev/howto-app-gallery-listing.md)voor meer informatie over het weer geven van uw toepassing in de app-galerie van Azure AD.
 
 ---
 
@@ -1211,7 +1211,7 @@ Met beheer eenheden kan een centrale beheerder:
 - Een rol met beheerders machtigingen alleen toewijzen via Azure AD-gebruikers in een beheer eenheid
 - Vul de beheer eenheden met gebruikers en groepen in als dat nodig is
 
-Zie beheer [eenheden beheren in azure Active Directory (preview)](https://aka.ms/AdminUnitsDocs)voor meer informatie.
+Zie beheer [eenheden beheren in azure Active Directory (preview)](../users-groups-roles/directory-administrative-units.md)voor meer informatie.
 
 ---
 
@@ -1225,7 +1225,7 @@ Zie beheer [eenheden beheren in azure Active Directory (preview)](https://aka.ms
 
 **Printer beheerder**: gebruikers met deze rol kunnen printers registreren en alle aspecten van alle printer configuraties in de micro soft-oplossing voor universele afdrukken beheren, met inbegrip van de instellingen voor de universele afdruk connector. Ze kunnen toestemming geven voor alle gedelegeerde afdruk machtigings aanvragen. Printer beheerders hebben ook toegang tot het afdrukken van rapporten. 
 
-**Printer technicus**: gebruikers met deze rol kunnen printers registreren en printer status beheren in de micro soft Universal Print-oplossing. Ze kunnen ook alle connector gegevens lezen. Belangrijkste taken een printer technicus kan geen gebruikers machtigingen voor printers instellen en printers delen. [Meer informatie.](../users-groups-roles/directory-assign-admin-roles.md#printer-administrator)
+**Printer technicus**: gebruikers met deze rol kunnen printers registreren en printer status beheren in de micro soft Universal Print-oplossing. Ze kunnen ook alle connector gegevens lezen. Belangrijkste taken een printer technicus kan geen gebruikers machtigingen voor printers instellen en printers delen. [Meer informatie.](../roles/permissions-reference.md#printer-administrator)
 
 ---
 
@@ -1237,7 +1237,7 @@ Zie beheer [eenheden beheren in azure Active Directory (preview)](https://aka.ms
 
 **Product mogelijkheden:** Access Control
 
-Gebruikers met deze rol kunnen services en instellingen met betrekking tot het inschakelen van hybride identiteit in azure AD inschakelen, configureren en beheren. Deze rol biedt de mogelijkheid om Azure AD te configureren voor een van de drie ondersteunde verificatie methoden&#8212;wacht woord-hash synchronisatie (PHS), Pass-Through-verificatie (PTA) of Federatie (AD FS of externe Federatie provider) &#8212;en een gerelateerde on-premises infra structuur te implementeren om deze in te scha kelen. On-premises infra structuur omvat het inrichten en PTA agents. Deze rol biedt de mogelijkheid om naadloze single Sign-On (S-SSO) in te scha kelen om naadloze verificatie mogelijk te maken op niet-Windows 10-apparaten of niet-Windows Server 2016-computers. Daarnaast biedt deze rol de mogelijkheid om aanmeldings logboeken te bekijken en de status en analyse te openen voor het bewaken en oplossen van problemen. [Meer informatie.](../users-groups-roles/directory-assign-admin-roles.md#hybrid-identity-administrator)
+Gebruikers met deze rol kunnen services en instellingen met betrekking tot het inschakelen van hybride identiteit in azure AD inschakelen, configureren en beheren. Deze rol biedt de mogelijkheid om Azure AD te configureren voor een van de drie ondersteunde verificatie methoden&#8212;wacht woord-hash synchronisatie (PHS), Pass-Through-verificatie (PTA) of Federatie (AD FS of externe Federatie provider) &#8212;en een gerelateerde on-premises infra structuur te implementeren om deze in te scha kelen. On-premises infra structuur omvat het inrichten en PTA agents. Deze rol biedt de mogelijkheid om naadloze single Sign-On (S-SSO) in te scha kelen om naadloze verificatie mogelijk te maken op niet-Windows 10-apparaten of niet-Windows Server 2016-computers. Daarnaast biedt deze rol de mogelijkheid om aanmeldings logboeken te bekijken en de status en analyse te openen voor het bewaken en oplossen van problemen. [Meer informatie.](../roles/permissions-reference.md#hybrid-identity-administrator)
 
 ---
 
@@ -1249,7 +1249,7 @@ Gebruikers met deze rol kunnen services en instellingen met betrekking tot het i
 
 **Product mogelijkheden:** Access Control
 
-Gebruikers met deze rol kunnen aanbevelingen van de netwerk architectuur beoordelen van micro soft die zijn gebaseerd op telemetrie van het netwerk vanaf hun gebruikers locaties. De netwerk prestaties voor Microsoft 365 zijn gebaseerd op een zorgvuldige netwerk verbindings architectuur van de Enter prise-klant. Dit is doorgaans een gebruikersspecifieke locatie. Deze rol maakt het mogelijk om de gedetecteerde gebruikers locaties en configuratie van de netwerk parameters voor die locaties te bewerken, zodat de telemetriegegevens en ontwerp aanbevelingen kunnen worden verbeterd. [Meer informatie.](../users-groups-roles/directory-assign-admin-roles.md#network-administrator)
+Gebruikers met deze rol kunnen aanbevelingen van de netwerk architectuur beoordelen van micro soft die zijn gebaseerd op telemetrie van het netwerk vanaf hun gebruikers locaties. De netwerk prestaties voor Microsoft 365 zijn gebaseerd op een zorgvuldige netwerk verbindings architectuur van de Enter prise-klant. Dit is doorgaans een gebruikersspecifieke locatie. Deze rol maakt het mogelijk om de gedetecteerde gebruikers locaties en configuratie van de netwerk parameters voor die locaties te bewerken, zodat de telemetriegegevens en ontwerp aanbevelingen kunnen worden verbeterd. [Meer informatie.](../roles/permissions-reference.md#network-administrator)
 
 ---
 
@@ -1267,10 +1267,10 @@ U kunt ook lijsten van Azure AD-resources downloaden vanuit de Azure AD-beheer P
 
 Voor meer informatie raadpleegt u het volgende:
 
-- [Gebruikers maken](../users-groups-roles/users-bulk-add.md) of [gast gebruikers uitnodigen](../external-identities/tutorial-bulk-invite.md)
-- [Gebruikers verwijderen](../users-groups-roles/users-bulk-delete.md) of [Verwijderde gebruikers herstellen](../users-groups-roles/users-bulk-restore.md)
-- [Lijst met gebruikers downloaden](../users-groups-roles/users-bulk-download.md) of [lijst met groepen downloaden](../users-groups-roles/groups-bulk-download.md)
-- [Leden toevoegen (importeren)](../users-groups-roles/groups-bulk-import-members.md) of [leden verwijderen](../users-groups-roles/groups-bulk-remove-members.md) of de [lijst met leden](../users-groups-roles/groups-bulk-download-members.md) voor een groep downloaden
+- [Gebruikers maken](../enterprise-users/users-bulk-add.md) of [gast gebruikers uitnodigen](../external-identities/tutorial-bulk-invite.md)
+- [Gebruikers verwijderen](../enterprise-users/users-bulk-delete.md) of [Verwijderde gebruikers herstellen](../enterprise-users/users-bulk-restore.md)
+- [Lijst met gebruikers downloaden](../enterprise-users/users-bulk-download.md) of [lijst met groepen downloaden](../enterprise-users/groups-bulk-download.md)
+- [Leden toevoegen (importeren)](../enterprise-users/groups-bulk-import-members.md) of [leden verwijderen](../enterprise-users/groups-bulk-remove-members.md) of de [lijst met leden](../enterprise-users/groups-bulk-download-members.md) voor een groep downloaden
 
 ---
 
@@ -1282,7 +1282,7 @@ Voor meer informatie raadpleegt u het volgende:
 
 **Product mogelijkheden:**
 
-Mijn personeel stelt Firstline-managers, zoals een Store Manager, in staat om ervoor te zorgen dat hun mede werkers toegang hebben tot hun Azure AD-accounts. In plaats van te vertrouwen op een Central-Help Desk kunnen organisaties algemene taken, zoals het opnieuw instellen van wacht woorden of het wijzigen van telefoon nummers, overdragen aan een Firstline Manager. Met mijn mede werkers kunnen gebruikers die geen toegang hebben tot hun account, in slechts enkele klikken toegang krijgen, zonder dat er een helpdesk medewerker of IT-personeel nodig is. Zie voor meer informatie het [beheren van uw gebruikers met mijn personeel (preview)](https://aka.ms/MyStaffAdminDocs) en het [delegeren van gebruikers beheer met mijn personeel (preview)](https://aka.ms/MyStaffUserDocs).
+Mijn personeel stelt Firstline-managers, zoals een Store Manager, in staat om ervoor te zorgen dat hun mede werkers toegang hebben tot hun Azure AD-accounts. In plaats van te vertrouwen op een Central-Help Desk kunnen organisaties algemene taken, zoals het opnieuw instellen van wacht woorden of het wijzigen van telefoon nummers, overdragen aan een Firstline Manager. Met mijn mede werkers kunnen gebruikers die geen toegang hebben tot hun account, in slechts enkele klikken toegang krijgen, zonder dat er een helpdesk medewerker of IT-personeel nodig is. Zie voor meer informatie het [beheren van uw gebruikers met mijn personeel (preview)](../users-groups-roles/my-staff-configure.md) en het [delegeren van gebruikers beheer met mijn personeel (preview)](../user-help/my-staff-team-manager.md).
 
 ---
 
@@ -1350,7 +1350,7 @@ Onze inrichtings ervaring is vernieuwd om een beter gerichtere beheer weergave t
 
 Azure Active Directory (Azure AD) biedt nu de mogelijkheid om dynamische groeps regels te valideren. Op het tabblad **regels valideren** kunt u uw dynamische regel valideren op basis van voor beelden van groeps leden om te bevestigen dat de regel werkt zoals verwacht. Bij het maken of bijwerken van dynamische groeps regels willen beheerders weten of een gebruiker of een apparaat lid is van de groep. Dit helpt u te evalueren of een gebruiker of apparaat voldoet aan de regel criteria en hulp bij het oplossen van problemen wanneer het lidmaatschap niet wordt verwacht.
 
-Zie [een dynamische regel voor groepslid maatschap valideren (preview)](../users-groups-roles/groups-dynamic-rule-validation.md)voor meer informatie.
+Zie [een dynamische regel voor groepslid maatschap valideren (preview)](../enterprise-users/groups-dynamic-rule-validation.md)voor meer informatie.
 
 ---
 

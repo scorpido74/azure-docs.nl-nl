@@ -5,15 +5,15 @@ author: anfeldma-ms
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: how-to
-ms.date: 07/08/2020
+ms.date: 10/13/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: a014038996ae2846d059551b565feedd8de560a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8735bf721ec85dcd556582f7fd887dd82b55a35d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88258310"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369978"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Tips voor betere prestaties van Azure Cosmos DB Java SDK v4
 
@@ -38,14 +38,7 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
 * **Verbindings modus: directe modus gebruiken**
 <a id="direct-connection"></a>
     
-    Hoe een client verbinding maakt met Azure Cosmos DB heeft belang rijke gevolgen voor de prestaties, met name op het gebied van latentie aan de client zijde. De verbindings modus is een belang rijke configuratie-instelling die beschikbaar is voor het configureren van de client. Voor Azure Cosmos DB Java SDK v4 zijn de twee beschik bare verbindings modi:  
-
-    * Directe modus (standaard)      
-    * Gatewaymodus
-
-    Deze verbindings modi hebben in wezen de voor waarde dat de route die het data-vlak vraagt, het document leest en schrijft van uw client computer naar partities in de Azure Cosmos DB back-end. De doorgaans directe modus is de voorkeurs optie voor de beste prestaties. Hiermee kan uw client TCP-verbindingen rechtstreeks openen op partities in de Azure Cosmos DB back-end en aanvragen *direct*verzenden zonder tussen komst. In de gateway modus worden aanvragen van uw client daarentegen doorgestuurd naar een zogenaamde ' gateway '-server in de Azure Cosmos DB front-end, die op zijn beurt uw aanvragen naar de juiste partitie (s) in de Azure Cosmos DB back-end uitschakelt. Als uw toepassing wordt uitgevoerd in een bedrijfs netwerk met strikte firewall beperkingen, is de gateway modus de beste keuze, omdat deze gebruikmaakt van de standaard HTTPS-poort en een enkel eind punt. De verhoudingen van de prestaties zijn echter wel dat de gateway modus een extra netwerkhop (client naar gateway plus gateway naar partitie) omvat elke keer dat gegevens worden gelezen of geschreven naar Azure Cosmos DB. Als gevolg hiervan biedt de directe modus betere prestaties vanwege minder netwerk-hops.
-
-    De verbindings modus voor gegevens vlak aanvragen wordt geconfigureerd in de Azure Cosmos DB client builder met behulp van de methoden *directMode ()* of *gatewayMode ()* , zoals hieronder wordt weer gegeven. Voor het configureren van een beide modus met standaard instellingen roept u een van beide methoden aan zonder argumenten. Als dat niet het geval is, geeft u een instantie van de klasse configuratie-instellingen als het argument (*DirectConnectionConfig* voor *directMode ()*,  *GatewayConnectionConfig* voor *gatewayMode ()*.)
+    De standaard verbindings modus van Java SDK is direct. U kunt de verbindings modus configureren in de client builder met behulp van de methoden *directMode ()* of *gatewayMode ()* , zoals hieronder wordt weer gegeven. Voor het configureren van een beide modus met standaard instellingen roept u een van beide methoden aan zonder argumenten. Als dat niet het geval is, geeft u een instantie van de klasse configuratie-instellingen als het argument (*DirectConnectionConfig* voor *directMode ()*,  *GatewayConnectionConfig* voor *gatewayMode ()*.). Zie het artikel [connectiviteits modi](sql-sdk-connection-modes.md) voor meer informatie over de verschillende connectiviteits opties.
     
     ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java V4 SDK
 
@@ -155,49 +148,49 @@ Raadpleeg de [Windows](https://docs.microsoft.com/azure/virtual-network/create-v
 
     In Azure Cosmos DB Java SDK v4 is de directe modus de beste keuze om de database prestaties te verbeteren met de meeste werk belastingen. 
 
-    * ***Overzicht van directe modus***
+    * ***Overzicht van de directe modus**_
 
         :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Afbeelding van het verbindings beleid voor Azure Cosmos DB" border="false":::
 
-        De architectuur aan de client zijde die in directe modus wordt gebruikt, maakt voorspel bare netwerk gebruik en multiplex toegang tot Azure Cosmos DB replica's mogelijk. In het bovenstaande diagram ziet u hoe directe modus client aanvragen naar replica's in de Cosmos DB back-end stuurt. De architectuur van de directe modus wijst Maxi maal 10 **kanalen** aan de client zijde per database replica toe. Een kanaal is een TCP-verbinding voorafgegaan door een aanvraag buffer, die 30 aanvragen diep is. De kanalen die deel uitmaken van een replica, worden dynamisch toegewezen naar behoefte aan het **service-eind punt**van de replica. Wanneer de gebruiker een aanvraag uitgeeft in de directe modus, stuurt de **TransportClient** de aanvraag naar het juiste service-eind punt op basis van de partitie sleutel. De **aanvraag wachtrij** buffers aanvragen vóór het service-eind punt.
+        De architectuur aan de client zijde die in directe modus wordt gebruikt, maakt voorspel bare netwerk gebruik en multiplex toegang tot Azure Cosmos DB replica's mogelijk. In het bovenstaande diagram ziet u hoe directe modus client aanvragen naar replica's in de Cosmos DB back-end stuurt. De architectuur van de directe modus wijst Maxi maal 10 _*kanalen** toe aan de client zijde per database replica. Een kanaal is een TCP-verbinding voorafgegaan door een aanvraag buffer, die 30 aanvragen diep is. De kanalen die deel uitmaken van een replica, worden dynamisch toegewezen naar behoefte aan het **service-eind punt**van de replica. Wanneer de gebruiker een aanvraag uitgeeft in de directe modus, stuurt de **TransportClient** de aanvraag naar het juiste service-eind punt op basis van de partitie sleutel. De **aanvraag wachtrij** buffers aanvragen vóór het service-eind punt.
 
-    * ***Configuratie opties voor directe modus***
+    * ***Configuratie opties voor directe modus**_
 
-        Als niet-standaard gedrag van directe modus gewenst is, maakt u een *DirectConnectionConfig* -exemplaar en past u de eigenschappen aan en geeft u vervolgens de aangepaste eigenschaps instantie door aan de methode *directMode ()* in de Azure Cosmos DB client builder.
+        Als niet-standaard gedrag van de directe modus gewenst is, maakt u een _DirectConnectionConfig *-exemplaar en past u de eigenschappen aan. vervolgens geeft u het aangepaste eigenschaps exemplaar door met de methode *directMode ()* in de Azure Cosmos DB client builder.
 
         Deze configuratie-instellingen bepalen het gedrag van de onderliggende direct-modus architectuur die hierboven wordt beschreven.
 
         Als eerste stap gebruikt u de volgende aanbevolen configuratie-instellingen hieronder. Deze *DirectConnectionConfig* opties zijn geavanceerde configuratie-instellingen die op onverwachte manieren van invloed kunnen zijn op de prestaties van de SDK. gebruikers wordt aangeraden ze te wijzigen, tenzij ze duidelijk weten wat de voor afwegingen zijn en wat absoluut nood zakelijk is. Neem contact op met het [Azure Cosmos DB team](mailto:CosmosDBPerformanceSupport@service.microsoft.com) als u problemen ondervindt in dit onderwerp.
 
-        | Configuratie optie       | Standaard    |
-        | :------------------:       | :-----:    |
-        | idleConnectionTimeout      | "PT1M"     |
-        | maxConnectionsPerEndpoint  | "PT0S"     |
-        | connectTimeout             | "PT1M10S"  |
-        | idleEndpointTimeout        | 8388608    |
-        | maxRequestsPerConnection   | 10         |
+        | Configuratie optie       | Standaard   |
+        | :------------------:       | :-----:   |
+        | idleConnectionTimeout      | "PT0"     |
+        | maxConnectionsPerEndpoint  | "130"     |
+        | connectTimeout             | "PT5S"    |
+        | idleEndpointTimeout        | PT1H    |
+        | maxRequestsPerConnection   | 30      |
 
 * **Parallelle query's voor gepartitioneerde verzamelingen afstemmen**
 
     Azure Cosmos DB Java SDK v4 ondersteunt parallelle query's, waarmee u parallel een gepartitioneerde verzameling kunt uitvoeren. Zie [code voorbeelden](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples) met betrekking tot het werken met Azure Cosmos DB Java SDK v4 voor meer informatie. Parallelle query's zijn ontworpen om de latentie en door Voer van query's te verbeteren ten opzichte van hun serieel equivalent.
 
-    * ***SetMaxDegreeOfParallelism afstemmen\:***
+    * ***SetMaxDegreeOfParallelism \: afstemmen** _
     
         Parallelle query's werken door meerdere partities parallel te doorzoeken. Gegevens uit een afzonderlijke gepartitioneerde verzameling worden echter serieel opgehaald ten opzichte van de query. Gebruik setMaxDegreeOfParallelism daarom om het aantal partities in te stellen dat de maximale kans heeft om de meest uitvoering van de query te bereiken, mits alle andere systeem omstandigheden hetzelfde blijven. Als u het aantal partities niet weet, kunt u setMaxDegreeOfParallelism gebruiken om een hoog nummer in te stellen en het systeem kiest het minimum (aantal partities, door de gebruiker opgegeven invoer) als de maximale mate van parallelle uitvoering.
 
         Het is belang rijk te weten dat parallelle query's de beste voor delen opleveren als de gegevens gelijkmatig worden verdeeld over alle partities met betrekking tot de query. Als de gepartitioneerde verzameling zodanig is gepartitioneerd dat alle of een meerderheid van de gegevens die door een query zijn geretourneerd, in een paar partities is geconcentreerd (één partitie in het ergste geval), wordt de prestaties van de query door deze partities beïnvloed.
 
-    * ***SetMaxBufferedItemCount afstemmen\:***
+    _ ***Afstemmen \: setMaxBufferedItemCount**_
     
-        Parallelle query is ontworpen om de resultaten vooraf op te halen terwijl de huidige batch met resultaten door de client wordt verwerkt. Het vooraf ophalen helpt bij de algehele latentie verbetering van een query. setMaxBufferedItemCount beperkt het aantal vooraf opgehaalde resultaten. Als u setMaxBufferedItemCount instelt op het verwachte aantal geretourneerde resultaten (of een hoger getal), kan de query het maximale voor deel van het vooraf ophalen van het bericht ontvangen.
+        Parallel query is designed to pre-fetch results while the current batch of results is being processed by the client. The pre-fetching helps in overall latency improvement of a query. setMaxBufferedItemCount limits the number of pre-fetched results. Setting setMaxBufferedItemCount to the expected number of results returned (or a higher number) enables the query to receive maximum benefit from pre-fetching.
 
-        Het vooraf ophalen van werkt op dezelfde manier, onafhankelijk van de MaxDegreeOfParallelism en er is één buffer voor de gegevens van alle partities.
+        Pre-fetching works the same way irrespective of the MaxDegreeOfParallelism, and there is a single buffer for the data from all partitions.
 
-* **Uw client opschalen-workload**
+_ **Uw client opschalen-workload**
 
-    Als u test op hoog doorvoer niveau, kan de client toepassing het knel punt worden als gevolg van de machine die de CPU of het netwerk gebruik afgetopteert. Als u dit punt bereikt, kunt u het Azure Cosmos DB-account nog verder pushen door uw client toepassingen op meerdere servers te schalen.
+    If you are testing at high throughput levels, the client application may become the bottleneck due to the machine capping out on CPU or network utilization. If you reach this point, you can continue to push the Azure Cosmos DB account further by scaling out your client applications across multiple servers.
 
-    Een goede vuist regel is niet groter dan >50% CPU-gebruik op een bepaalde server om latentie laag te blijven.
+    A good rule of thumb is not to exceed >50% CPU utilization on any given server, to keep latency low.
 
    <a id="tune-page-size"></a>
 
@@ -238,19 +231,19 @@ Raadpleeg de [Windows](https://docs.microsoft.com/azure/virtual-network/create-v
 
     U kunt het beste om een aantal redenen logboek registratie toevoegen aan een thread die hoge door Voer van aanvragen genereert. Als uw doel is de ingerichte door Voer van een container volledig te verzadigen met aanvragen die door deze thread worden gegenereerd, kunnen logboek registratie optimalisaties de prestaties aanzienlijk verbeteren.
 
-    * ***Een async-logboek registratie configureren***
+    * ***Een asynchrone logboek registratie configureren**_
 
         De latentie van een synchrone logboek registratie per definitie in de berekening van de totale latentie van de thread voor het genereren van een aanvraag. Een asynchrone logger, zoals [log4j2](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Flogging.apache.org%2Flog4j%2Flog4j-2.3%2Fmanual%2Fasync.html&data=02%7C01%7CCosmosDBPerformanceInternal%40service.microsoft.com%7C36fd15dea8384bfe9b6b08d7c0cf2113%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637189868158267433&sdata=%2B9xfJ%2BWE%2F0CyKRPu9AmXkUrT3d3uNA9GdmwvalV3EOg%3D&reserved=0) , wordt aangeraden om logboek registratie overhead van uw hoogwaardige toepassings threads te loskoppelen.
 
-    * ***Logboek registratie van Netty uitschakelen***
+    _ ***Logboek registratie van Netty uitschakelen**_
 
-        Logboek registratie van de Netty-bibliotheek is intensieve en moet worden uitgeschakeld (de configuratie kan niet worden onderdrukt) om extra CPU-kosten te voor komen. Als u zich niet in de foutopsporingsmodus bevindt, schakelt u de logboek registratie van Netty uit. Als u dus log4j gebruikt om de extra CPU-kosten te verwijderen die zijn gemaakt door ``org.apache.log4j.Category.callAppenders()`` van Netty, voegt u de volgende regel toe aan de code basis:
+        Netty library logging is chatty and needs to be turned off (suppressing sign in the configuration may not be enough) to avoid additional CPU costs. If you are not in debugging mode, disable netty's logging altogether. So if you are using log4j to remove the additional CPU costs incurred by ``org.apache.log4j.Category.callAppenders()`` from netty add the following line to your codebase:
 
         ```java
         org.apache.log4j.Logger.getLogger("io.netty").setLevel(org.apache.log4j.Level.OFF);
         ```
 
- * **Bron limiet voor open files van besturings systeem**
+ **Bron limiet voor open files van het besturings systeem**
  
     Voor sommige Linux-systemen (zoals Red Hat) geldt een bovengrens voor het aantal geopende bestanden en dus het totale aantal verbindingen. Voer de volgende handelingen uit om de huidige limieten te bekijken:
 
@@ -372,4 +365,4 @@ Raadpleeg de [Windows](https://docs.microsoft.com/azure/virtual-network/create-v
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [partitioneren en schalen in azure Cosmos DB](partition-data.md)voor meer informatie over het ontwerpen van uw toepassing voor schaal baarheid en hoge prestaties.
+Zie [partitioneren en schalen in azure Cosmos DB](partitioning-overview.md)voor meer informatie over het ontwerpen van uw toepassing voor schaal baarheid en hoge prestaties.

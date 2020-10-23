@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 02/03/2020
+ms.date: 10/19/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: f5804819e3a7a63120fa8c64d8df27b16608ece1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2774750b61ce92b3b34f6a5cbd961e4faa7d3e7
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798071"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277494"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>Uw groeps gegevens bijwerken op de portal mijn apps
 
-U kunt uw werk-of school account gebruiken met de portal van **mijn apps** op het web, om een aantal Cloud-apps in uw organisatie weer te geven en te starten, om een aantal van uw profiel-en account gegevens bij te werken, om uw **groeps** gegevens te bekijken en **toegangs beoordelingen** uit te voeren voor uw apps en groepen. Als u geen toegang hebt tot de portal **mijn apps** , moet u contact opnemen met de Help Desk voor toestemming.
+U kunt uw werk-of school account gebruiken met de portal op het web van **mijn apps** om veel van de Cloud-apps op basis van uw organisatie te bekijken en te starten, om een aantal van uw profiel-en account gegevens bij te werken, om uw **groeps** gegevens te bekijken en **toegangs beoordelingen** uit te voeren voor uw apps en groepen. Als u geen toegang hebt tot de portal **mijn apps** , moet u contact opnemen met de Help Desk voor toestemming.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
@@ -44,13 +44,11 @@ Als uw beheerder u toestemming heeft gegeven om de tegel **groepen** weer te gev
 
     De pagina **apps** wordt weer gegeven, met alle Cloud-apps die eigendom zijn van uw organisatie en die u kunt gebruiken.
 
-    ![Pagina apps in de portal mijn apps](media/my-apps-portal/my-apps-portal-apps-page-groups-tile.png)
+    ![Pagina apps in de portal mijn apps](media/my-apps-portal-end-user-groups/my-apps-home-large.png)
 
-3. Selecteer de tegel **groepen** om uw gegevens over de groep te bekijken.
+3. Ga naar het menu **mijn apps** en selecteer **Mijn groepen** om uw informatie over de groep te bekijken.
 
-    ![Pagina groepen met zowel de groep in eigendom als](media/my-apps-portal/my-apps-portal-groups-page.png)
-
-4. Op basis van uw machtigingen kunt u de pagina **groepen** gebruiken voor het volgende:
+4. Op basis van uw machtigingen kunt u de pagina **Mijn groepen** gebruiken voor het volgende:
 
     - **Controleer de groepen waarvan u eigenaar bent.** Bekijk informatie over groepen waarvan u de eigenaar bent binnen uw organisatie vanuit het gebied **mijn eigen groep** . Als u een specifieke groeps naam selecteert, krijgt u meer informatie over de groep, zoals het groeps type, het aantal leden, het lid worden van het beleid en de lijst met actieve leden.
 

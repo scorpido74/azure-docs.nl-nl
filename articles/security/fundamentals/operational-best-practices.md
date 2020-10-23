@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 5696bd167010ae81249eeac3134b79d3d5307288
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 2c949447635ccdf4cf36acec43a09c1104b9fdd4
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91943863"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280024"
 ---
 # <a name="azure-operational-security-best-practices"></a>Best practices voor Azure Operational Security
 Dit artikel bevat een reeks operationele aanbevolen procedures voor het beveiligen van uw gegevens, toepassingen en andere assets in Azure.
@@ -53,7 +53,7 @@ Zorg ervoor dat uw beveiligings team meldingen van Azure-incidenten ontvangt van
 In de Azure-inschrijvings Portal kunt u ervoor zorgen dat de contact gegevens van de beheerder gegevens bevatten over de beveiliging. De contact gegevens zijn een e-mail adres en telefoon nummer.
 
 ## <a name="organize-azure-subscriptions-into-management-groups"></a>Azure-abonnementen organiseren in beheer groepen
-Als uw organisatie veel abonnementen heeft, wilt u mogelijk de toegang, het beleid en de naleving voor die abonnementen op efficiënte wijze beheren. [Azure-beheer groepen](/azure/governance/management-groups/create) bieden een niveau van bereik dat hoger is dan abonnementen. U kunt abonnementen in containers met de naam beheer groepen organiseren en uw governance-voor waarden Toep assen op de-beheer groepen. Alle abonnementen in een beheergroep nemen automatisch de voorwaarden over die op de beheergroep zijn toegepast.
+Als uw organisatie veel abonnementen heeft, wilt u mogelijk de toegang, het beleid en de naleving voor die abonnementen op efficiënte wijze beheren. [Azure-beheer groepen](/azure/governance/management-groups/create) bieden een niveau van bereik dat hoger is dan abonnementen. U ordent abonnementen in containers die beheergroepen worden genoemd en u en past uw governancevoorwaarden toe op de beheergroepen. Alle abonnementen in een beheergroep nemen automatisch de voorwaarden over die op de beheergroep zijn toegepast.
 
 U kunt een flexibele structuur van beheer groepen en abonnementen bouwen in een directory. Elke map krijgt één beheer groep op het hoogste niveau met de naam de hoofd beheer groep. Deze hoofdbeheergroep is zo in de hiërarchie ingebouwd dat alle beheergroepen en abonnementen hierin zijn opgevouwen. Met de hoofd beheer groep kunnen globale beleids regels en Azure-roltoewijzingen op mapniveau worden toegepast.
 
@@ -122,7 +122,7 @@ Met de beveiligde Score, die is gebaseerd op de besturings elementen Center voor
 **Details**: gebruik [Azure monitor om gegevens te verzamelen en te exporteren](/azure/azure-monitor/overview#integrate-and-export-data). Deze procedure is essentieel voor het inschakelen van het onderzoek van beveiligings incidenten en het online bewaren van Logboeken is beperkt. Zie [verbinding maken met gegevens bronnen](../../sentinel/connect-data-sources.md)als u Azure Sentinel gebruikt.
 
 **Best Practice**: Versnel uw onderzoek en jacht processen en verminder fout-positieven door de functies voor het detecteren van eind punten te integreren in uw aanvals onderzoek.   
-**Details**: [Schakel micro soft Defender ATP-integratie in](../../security-center/security-center-wdatp.md#enable-microsoft-defender-atp-integration) via uw Security Center-beveiligings beleid. Overweeg het gebruik van Azure Sentinel voor het beletten van dreigingen en reacties op incidenten.
+**Details**: [inschakelen van micro soft Defender voor endpoint integration](../../security-center/security-center-wdatp.md#enabling-the-microsoft-defender-for-endpoint-integration) via uw Security Center-beveiligings beleid. Overweeg het gebruik van Azure Sentinel voor het beletten van dreigingen en reacties op incidenten.
 
 ## <a name="monitor-end-to-end-scenario-based-network-monitoring"></a>End-to-end op scenario's gebaseerde netwerk bewaking bewaken
 Klanten bouwen een end-to-end netwerk in azure door netwerk bronnen te combi neren, zoals een virtueel netwerk, ExpressRoute, Application Gateway en load balancers. Bewaking is beschikbaar op elk van de netwerk bronnen.

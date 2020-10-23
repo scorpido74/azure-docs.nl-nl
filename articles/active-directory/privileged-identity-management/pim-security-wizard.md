@@ -14,12 +14,12 @@ ms.date: 09/01/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff5d15ef66b597fdf56fefe90f35cbf122bb093f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4662e9fb537a93cb87c554e319256e2eca40d2e7
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91534434"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372426"
 ---
 # <a name="discovery-and-insights-preview-for-azure-ad-roles-formerly-security-wizard"></a>Detectie en inzichten (preview) voor Azure AD-rollen (voorheen beveiligings wizard)
 
@@ -29,13 +29,13 @@ Als u in uw Azure Active Directory (Azure AD)-organisatie met Privileged Identit
 
 Voordat uw organisatie begint met Privileged Identity Management, zijn alle roltoewijzingen permanent. Gebruikers zijn altijd in hun toegewezen rollen, zelfs wanneer ze hun bevoegdheden niet nodig hebben. Detectie en inzichten (preview), waarmee de voormalige beveiligings wizard wordt vervangen, toont u een lijst met geprivilegieerde rollen en het aantal gebruikers dat momenteel deel uitmaakt van deze rollen. U kunt de toewijzingen voor een rol weer geven om meer te weten te komen over de toegewezen gebruikers als een of meer hiervan niet bekend zijn.
 
-: heavy_check_mark: **micro soft raadt** u aan twee afbreek glazen-accounts te blijven die permanent zijn toegewezen aan de rol van globale beheerder. Zorg ervoor dat deze accounts niet hetzelfde multi-factor Authentication-mechanisme vereisen als uw normale beheerders accounts om u aan te melden, zoals beschreven in [accounts voor nood toegang beheren in azure AD](../users-groups-roles/directory-emergency-access.md).
+: heavy_check_mark: **micro soft raadt** u aan twee afbreek glazen-accounts te blijven die permanent zijn toegewezen aan de rol van globale beheerder. Zorg ervoor dat deze accounts niet hetzelfde multi-factor Authentication-mechanisme vereisen als uw normale beheerders accounts om u aan te melden, zoals beschreven in [accounts voor nood toegang beheren in azure AD](../roles/security-emergency-access.md).
 
 Zorg er ook voor dat de roltoewijzingen permanent blijven als een gebruiker een Microsoft-account heeft (met andere woorden, een account dat wordt gebruikt om u aan te melden bij micro soft-services zoals Skype of Outlook.com). Als u multi-factor Authentication nodig hebt voor een gebruiker met een Microsoft-account voor het activeren van een roltoewijzing, wordt de gebruiker vergrendeld.
 
 ## <a name="open-discovery-and-insights-preview"></a>Detectie en inzichten openen (preview-versie)
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. Open **Azure AD privileged Identity Management**.
 

@@ -1,30 +1,30 @@
 ---
-title: RU/s bijwerken voor een Gremlin-database en -grafiek voor Azure Cosmos DB
-description: RU/s bijwerken voor een Gremlin-database en -grafiek voor Azure Cosmos DB
+title: Azure CLI-scripts voor doorvoerbewerkingen (RU/s) voor Azure Cosmos DB Gremlin-API-resources
+description: Azure CLI-scripts voor doorvoerbewerkingen (RU/s) voor Azure Cosmos DB Gremlin-API-resources
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: sample
-ms.date: 07/29/2020
-ms.openlocfilehash: 4774f5b4e74a963a5a4a07873305c79e2e7019f4
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.date: 10/07/2020
+ms.openlocfilehash: 3e4b912d086065f28c56fd4af309d373b811a8ec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432186"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91838622"
 ---
-# <a name="update-rus-for-a-gremlin-database-and-graph-for-azure-cosmos-db-using-azure-cli"></a>RU/s bijwerken voor een Gremlin-database en -grafiek voor Azure Cosmos DB met behulp van Azure CLI
+# <a name="throughput-rus-operations-with-azure-cli-for-a-database-or-graph-for-azure-cosmos-db---gremlin-api"></a>Doorvoerbewerkingen (RU/s) met Azure CLI voor een database of grafiek voor Azure Cosmos DB - Gremlin-API
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit onderwerp gebruikmaken van Azure CLI versie 2.9.1 of hoger. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit onderwerp gebruikmaken van Azure CLI versie 2.12.1 of hoger. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
-Met dit script maakt u een Gremlin-database met gedeelde doorvoer en een Gremlin-grafiek met toegewezen doorvoer, waarna de doorvoer voor zowel de database als de grafiek wordt bijgewerkt.
+Met dit script maakt u een Gremlin-database met gedeelde doorvoer en een Gremlin-grafiek met toegewezen doorvoer, waarna de doorvoer voor zowel de database als de grafiek wordt bijgewerkt. Met het script wordt de migratie van standaarddoorvoer naar doorvoer met automatische schaalaanpassing uitgevoerd en de waarde van doorvoer met automatische schaalaanpassing gelezen nadat de migratie is voltooid.
 
-[!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/gremlin/throughput.sh "Update RU/s for a Gremlin database and graph.")]
+[!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/gremlin/throughput.sh "Throughput operations for a Gremlin database and graph.")]
 
 ## <a name="clean-up-deployment"></a>Opschonen van implementatie
 
@@ -46,6 +46,8 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 | [az cosmosdb gremlin graph create](/cli/azure/cosmosdb/gremlin/graph#az-cosmosdb-gremlin-graph-create) | Hiermee maakt u een Azure Cosmos Gremlin-grafiek. |
 | [az cosmosdb gremlin database throughput update](/cli/azure/cosmosdb/gremlin/database/throughput#az-cosmosdb-gremlin-database-throughput-update) | RU/s bijwerken voor een Azure Cosmos Gremlin-database. |
 | [az cosmosdb gremlin graph throughput update](/cli/azure/cosmosdb/gremlin/graph/throughput#az-cosmosdb-gremlin-graph-throughput-update) | RU/s bijwerken voor een Azure Cosmos Gremlin-grafiek. |
+| [az cosmosdb gremlin database throughput migrate](/cli/azure/cosmosdb/gremlin/database/throughput#az_cosmosdb_gremlin_database_throughput_migrate) | Doorvoer migreren voor een Azure Cosmos Gremlin-database. |
+| [az cosmosdb gremlin graph throughput migrate](/cli/azure/cosmosdb/gremlin/graph/throughput#az_cosmosdb_gremlin_graph_throughput_migrate) | Doorvoer migreren voor een Azure Cosmos Gremlin-grafiek. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 
 ## <a name="next-steps"></a>Volgende stappen

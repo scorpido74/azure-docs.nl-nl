@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 4a2bd9b7240033df47f57dc3432ce50819d8754b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 62d6d5527cd917304e4c8bc0c4740f4edb772218
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544023"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939168"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-user-authentication"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Netskope-gebruikersverificatie
 
@@ -136,15 +136,15 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik op het tabblad **Active Platform**.
 
-    ![Configuratie van Netskope-gebruikersverificatie](./media/netskope-user-authentication-tutorial/user1.png)
+    ![Schermopname met de optie Actief platform geselecteerd in Instellingen.](./media/netskope-user-authentication-tutorial/user1.png)
 
 1. Schuif omlaag naar **FORWARD PROXY** en selecteer **SAML**.
 
-    ![Configuratie van Netskope-gebruikersverificatie](./media/netskope-user-authentication-tutorial/config-saml.png)
+    ![Schermopname met SAML geselecteerd in Actief platform.](./media/netskope-user-authentication-tutorial/config-saml.png)
 
 1. Voer in het dialoogvenster **SAML Settings** de volgende stappen uit:
 
-    ![Configuratie van Netskope-gebruikersverificatie](./media/netskope-user-authentication-tutorial/configure-copyurls.png)
+    ![Schermopname van SAML-instellingen, waarin u de beschreven waarden kunt invoeren.](./media/netskope-user-authentication-tutorial/configure-copyurls.png)
 
     a. Kopieer de waarde van **SAML-entiteits-id** en plak deze in het tekstvak **Id** in de sectie **Standaard SAML-configuratie** in Azure Portal.
 
@@ -152,11 +152,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik op **ACCOUNT TOEVOEGEN**.
 
-    ![Configuratie van Netskope-gebruikersverificatie](./media/netskope-user-authentication-tutorial/config-addaccount.png)
+    ![Schermopname van ACCOUNT TOEVOEGEN geselecteerd in het deelvenster SAML.](./media/netskope-user-authentication-tutorial/config-addaccount.png)
 
 1. Voer op de pagina **SAML-account toevoegen** de volgende stappen uit:
 
-    ![Configuratie van Netskope-gebruikersverificatie](./media/netskope-user-authentication-tutorial/config-settings1.png)
+    ![Schermopname van SAML-account toevoegen waar u de beschreven waarden kunt invoeren.](./media/netskope-user-authentication-tutorial/config-settings1.png)
 
     a. Geef in het tekstvak **NAME** de naam op, bijvoorbeeld Azure AD.
 
@@ -174,23 +174,23 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik in het linkernavigatievenster op het tabblad **Settings**.
 
-    ![Gebruiker voor Netskope-gebruikersverificatie maken](./media/netskope-user-authentication-tutorial/config-settings.png)
+    ![Schermopname met Instelling geselecteerd.](./media/netskope-user-authentication-tutorial/config-settings.png)
 
 1. Klik op het tabblad **Active Platform**.
 
-    ![Gebruiker voor Netskope-gebruikersverificatie maken](./media/netskope-user-authentication-tutorial/user1.png)
+    ![Schermopname met de optie Actief platform geselecteerd in Instellingen.](./media/netskope-user-authentication-tutorial/user1.png)
 
 1. Klik op het tabblad **Users**.
 
-    ![Gebruiker voor Netskope-gebruikersverificatie maken](./media/netskope-user-authentication-tutorial/add-user.png)
+    ![Schermopname met Gebruikers geselecteerd in Actief platform.](./media/netskope-user-authentication-tutorial/add-user.png)
 
 1. Klik op **ADD USERS**.
 
-    ![Gebruiker voor Netskope-gebruikersverificatie maken](./media/netskope-user-authentication-tutorial/user-add.png)
+    ![Schermopname met het dialoogvenster Gebruikers waarin u GEBRUIKERS TOEVOEGEN kunt selecteren.](./media/netskope-user-authentication-tutorial/user-add.png)
 
 1. Voer het e-mailadres van de gebruiker in die u wilt toevoegen en klik op **ADD**.
 
-    ![Gebruiker voor Netskope-gebruikersverificatie maken](./media/netskope-user-authentication-tutorial/add-user-popup.png)
+    ![Schermopname van Gebruikers toevoegen waarin u een lijst met gebruikers kunt invoeren.](./media/netskope-user-authentication-tutorial/add-user-popup.png)
 
 ## <a name="test-sso"></a>Eenmalige aanmelding testen
 

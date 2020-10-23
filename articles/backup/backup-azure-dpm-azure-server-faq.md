@@ -4,12 +4,12 @@ description: In dit artikel vindt u antwoorden op veelgestelde vragen over de Mi
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.openlocfilehash: d0a5c1b5800bbc626453ba8896dc706a0cd5bfd4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd974181c78586f915dad6cc6ed39d9255a1456b
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324940"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172583"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure Backup Server en DPM: veelgestelde vragen
 
@@ -39,7 +39,7 @@ Voor de DPM-servers met gegevens bronnen die zijn beveiligd met de Cloud (met be
 
 ### <a name="are-there-recommendations-for-configuring-exclusions-for-antivirus-software"></a>Zijn er aanbevelingen voor het configureren van uitsluitingen voor antivirus software?
 
-Ja, u kunt het beste antivirus uitsluiting configureren. Zie [antivirus software uitvoeren op de DPM-server](https://docs.microsoft.com/system-center/dpm/run-antivirus-server)voor uitsluitingen voor dpm. Zie [Configure Anti Virus for MABS server](backup-azure-mabs-troubleshoot.md#configure-antivirus-for-mabs-server)(Engelstalig) voor uitsluitingen voor MABS.
+Ja, u kunt het beste antivirus uitsluiting configureren. Zie [antivirus software uitvoeren op de DPM-server](/system-center/dpm/run-antivirus-server)voor uitsluitingen voor dpm. Zie [Configure Anti Virus for MABS server](backup-azure-mabs-troubleshoot.md#configure-antivirus-for-mabs-server)(Engelstalig) voor uitsluitingen voor MABS.
 
 ## <a name="vmware-and-hyper-v-backup"></a>VMware en Hyper-V-back-up
 

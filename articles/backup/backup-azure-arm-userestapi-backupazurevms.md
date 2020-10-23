@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het configureren, initiëren
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 42af6ae69699be7eefac0aca2bcd22b1e25720b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ba22c51c7a6c26a232ed20aec21fc83d2c54b37
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89506624"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171450"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Maak een back-up van een Azure-VM met behulp van Azure Backup via REST API
 
@@ -437,7 +437,7 @@ Als er al een back-up van de virtuele machine van Azure wordt gemaakt, kunt u de
 > [!IMPORTANT]
 > De bovenstaande hoofd tekst van de aanvraag is altijd de laatste kopie van de gegevens schijven die moeten worden uitgesloten of opgenomen. Hiermee wordt de vorige configuratie niet *toegevoegd* . Bijvoorbeeld: als u de beveiliging voor het eerst bijwerkt als ' gegevens schijf 1 uitsluiten ' en vervolgens herhalen met ' gegevens schijf 2 uitsluiten ', *wordt alleen gegevens schijf 2 uitgesloten* in de volgende back-ups en gegevens schijf 1 worden opgenomen. Dit is altijd de laatste lijst die wordt opgenomen/uitgesloten in de volgende back-ups.
 
-Als u de huidige lijst met schijven die zijn uitgesloten of opgenomen, wilt ophalen, moet u de informatie over beveiligde items ophalen, zoals [hier](https://docs.microsoft.com/rest/api/backup/protecteditems/get)wordt vermeld. In het antwoord wordt de lijst met gegevens schijf-Lun's verstrekt en wordt aangegeven of deze zijn opgenomen of uitgesloten.
+Als u de huidige lijst met schijven die zijn uitgesloten of opgenomen, wilt ophalen, moet u de informatie over beveiligde items ophalen, zoals [hier](/rest/api/backup/protecteditems/get)wordt vermeld. In het antwoord wordt de lijst met gegevens schijf-Lun's verstrekt en wordt aangegeven of deze zijn opgenomen of uitgesloten.
 
 ### <a name="stop-protection-but-retain-existing-data"></a>Beveiliging stoppen, maar bestaande gegevens behouden
 

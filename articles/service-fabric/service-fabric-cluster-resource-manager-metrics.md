@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3cb22bc2cd032e51dcdb7429e2c0684c578b0870
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a7dedea2937c9cafb4216da3628aa1360ad6993
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89005646"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173009"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Resource gebruik beheren en laden in Service Fabric met metrische gegevens
 *Metrische gegevens* zijn de resources die door uw services worden aangehouden en die worden geboden door de knoop punten in het cluster. Een metriek is alles wat u wilt beheren om de prestaties van uw services te verbeteren of te controleren. U kunt bijvoorbeeld het geheugen verbruik bekijken om te weten of uw service overbelast is. Een ander gebruik is om te bepalen of de service elders kan worden verplaatst, waarbij geheugen minder beperkt is om betere prestaties te krijgen.
@@ -138,12 +138,13 @@ Nu gaan we elk van deze instellingen uitvoeriger bekijken en praten over het ged
 ## <a name="load"></a>Laden
 Het hele punt voor het definiëren van metrische gegevens is dat sommige werk belasting aangeeft. *Laden* is het gedeelte van een bepaalde metriek dat door een service-exemplaar of replica op een bepaald knoop punt wordt verbruikt. De belasting kan op bijna elk gewenst moment worden geconfigureerd. Bijvoorbeeld:
 
-  - De belasting kan worden gedefinieerd wanneer een service wordt gemaakt. Dit wordt _standaard laden_genoemd.
-  - De metrische gegevens, met inbegrip van de standaard belasting, voor een service kunnen worden bijgewerkt nadat de service is gemaakt. Dit wordt het _bijwerken van een service_genoemd. 
-  - De belasting voor een bepaalde partitie kan opnieuw worden ingesteld op de standaard waarden voor die service. Dit wordt het _opnieuw instellen van de partitie belasting_genoemd.
-  - De belasting kan tijdens runtime dynamisch worden gerapporteerd voor een per service object. Dit wordt _rapportage belasting_genoemd. 
-  
-Al deze strategieën kunnen gedurende de levens duur worden gebruikt binnen dezelfde service. 
+  - De belasting kan worden gedefinieerd wanneer een service wordt gemaakt. Dit type belasting configuratie heet _standaard belasting_.
+  - De metrische gegevens, met inbegrip van de standaard belasting, voor een service kunnen worden bijgewerkt nadat de service is gemaakt. Deze metrische update wordt uitgevoerd door _een service_bij te werken.
+  - De belasting voor een bepaalde partitie kan opnieuw worden ingesteld op de standaard waarden voor die service. Deze metrische update heet het _opnieuw instellen_van het laden van de partitie.
+  - De belasting kan worden gerapporteerd per service object, op dynamische wijze tijdens runtime. Deze metrische update wordt _rapportage belasting_genoemd.
+  - Het laden van replica's of instanties van partities kan ook worden bijgewerkt door belasting waarden te rapporteren via een infra structuur-API-aanroep. Deze metrische update wordt _rapportage belasting genoemd voor een partitie_.
+
+Al deze strategieën kunnen gedurende de levens duur worden gebruikt binnen dezelfde service.
 
 ## <a name="default-load"></a>Standaard belasting
 *Standaard belasting* is de mate waarin elk Service object (stateless exemplaar of stateful replica) van deze service wordt gebruikt. Het cluster resource manager gebruikt dit nummer voor de belasting van het Service object totdat het andere informatie ontvangt, zoals een dynamisch laad rapport. Voor eenvoudigere Services is de standaard belasting een statische definitie. De standaard belasting wordt nooit bijgewerkt en wordt gebruikt voor de levens duur van de service. Standaard belastingen zijn geschikt voor scenario's met eenvoudige capaciteits planning waarbij bepaalde hoeveel heden resources zijn toegewezen aan verschillende werk belastingen en niet worden gewijzigd.
@@ -175,6 +176,67 @@ this.Partition.ReportLoad(new List<LoadMetric> { new LoadMetric("CurrentConnecti
 ```
 
 Een service kan rapporteren over de metrische gegevens die tijdens de aanmaak zijn gedefinieerd. Als een service rapporten laadt voor een metriek die niet is geconfigureerd voor gebruik, Service Fabric dat rapport negeren. Als er andere metrische gegevens worden gerapporteerd op hetzelfde moment dat geldig is, worden deze rapporten geaccepteerd. Met Service code kunnen alle metrische gegevens worden gemeten en gerapporteerd, en kunnen Opera tors de metrische configuratie opgeven die moet worden gebruikt zonder dat de service code hoeft te worden gewijzigd. 
+
+## <a name="reporting-load-for-a-partition"></a>Rapportage belasting voor een partitie
+In de vorige sectie wordt beschreven hoe service replica's of exemplaren het rapport zelf laden. Er is een extra optie om de belasting dynamisch te rapporteren met FabricClient. Wanneer u de belasting voor een partitie rapporteert, kunt u voor meerdere partities tegelijk rapporteren.
+
+Deze rapporten worden op dezelfde manier gebruikt als laad rapporten die afkomstig zijn van de replica's of instanties zelf. De gerapporteerde waarden zijn geldig totdat nieuwe laad waarden worden gerapporteerd, hetzij door de replica of het exemplaar, hetzij door een nieuwe laad waarde voor een partitie te rapporteren.
+
+Met deze API zijn er meerdere manieren om de belasting in het cluster bij te werken:
+
+  - Een stateful service-partitie kan de primaire replica taak bijwerken.
+  - Zowel stateless als stateful Services kunnen de belasting van alle secundaire replica's of exemplaren bijwerken.
+  - Zowel stateless als stateful Services kunnen de belasting van een specifieke replica of exemplaar op een knoop punt bijwerken.
+
+Het is ook mogelijk om elk van deze updates per partitie tegelijkertijd te combi neren.
+
+Het bijwerken van belasting voor meerdere partities is mogelijk met één API-aanroep, in dat geval bevat de uitvoer een antwoord per partitie. Als partitie-update niet wordt toegepast om een of andere reden, worden updates voor die partitie overgeslagen en wordt de bijbehorende fout code voor een doel partitie gegeven:
+
+  - PartitionNotFound-de opgegeven partitie-ID bestaat niet.
+  - ReconfigurationPending: de partitie wordt momenteel opnieuw geconfigureerd.
+  - InvalidForStatelessServices-er is een poging gedaan om de belasting van een primaire replica te wijzigen voor een partitie die deel uitmaakt van een stateless service.
+  - ReplicaDoesNotExist: de secundaire replica of het exemplaar bestaat niet op een opgegeven knoop punt.
+  - InvalidOperation: het bijwerken van de belasting voor een partitie die deel uitmaakt van de systeem toepassing of het bijwerken van de voorspelde belasting is niet ingeschakeld.
+
+Als sommige van deze fouten worden geretourneerd, kunt u de invoer voor een specifieke partitie bijwerken en de update opnieuw proberen voor een specifieke partitie.
+
+Code:
+
+```csharp
+Guid partitionId = Guid.Parse("53df3d7f-5471-403b-b736-bde6ad584f42");
+string metricName0 = "CustomMetricName0";
+List<MetricLoadDescription> newPrimaryReplicaLoads = new List<MetricLoadDescription>()
+{
+    new MetricLoadDescription(metricName0, 100)
+};
+
+string nodeName0 = "NodeName0";
+List<MetricLoadDescription> newSpecificSecondaryReplicaLoads = new List<MetricLoadDescription>()
+{
+    new MetricLoadDescription(metricName0, 200)
+};
+
+OperationResult<UpdatePartitionLoadResultList> updatePartitionLoadResults =
+    await this.FabricClient.UpdatePartitionLoadAsync(
+        new UpdatePartitionLoadQueryDescription
+        {
+            PartitionMetricLoadDescriptionList = new List<PartitionMetricLoadDescription>()
+            {
+                new PartitionMetricLoadDescription(
+                    partitionId,
+                    newPrimaryReplicaLoads,
+                    new List<MetricLoadDescription>(),
+                    new List<ReplicaMetricLoadDescription>()
+                    {
+                        new ReplicaMetricLoadDescription(nodeName0, newSpecificSecondaryReplicaLoads)
+                    })
+            }
+        },
+        this.Timeout,
+        cancellationToken);
+```
+
+In dit voor beeld voert u een update uit van de laatst gemelde belasting voor een partitie _53df3d7f-5471-403b-b736-bde6ad584f42_. De primaire replica belasting voor een metrische _CustomMetricName0_ wordt bijgewerkt met de waarde 100. Tegelijkertijd wordt de belasting voor dezelfde metriek voor een specifieke secundaire replica op het knoop punt _NodeName0_bijgewerkt met de waarde 200.
 
 ### <a name="updating-a-services-metric-configuration"></a>De metrische configuratie van een service bijwerken
 De lijst met metrische gegevens die aan de service zijn gekoppeld en de eigenschappen van deze metrische gegevens kunnen dynamisch worden bijgewerkt terwijl de service actief is. Dit maakt experimenteren en flexibiliteit mogelijk. Enkele voor beelden van wanneer dit nuttig is:

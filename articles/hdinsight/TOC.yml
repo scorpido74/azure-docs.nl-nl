@@ -647,6 +647,8 @@
               href: ./kafka/apache-kafka-auto-create-topics.md
             - name: Apache Kafka gebruiken met IoT Hub
               href: ./kafka/apache-kafka-connector-iot-hub.md
+            - name: Samenkomend schemaregister
+              href: ./kafka/schema-registry.md
             - name: Streaming-pijplijnen maken
               items:
                 - name: 'Apache Spark, Apache Kafka en Azure Cosmos DB'
@@ -845,6 +847,8 @@
               href: ./hdinsight-troubleshoot-hive.md
             - name: Apache Hive-logboeken nemen de hele schijfruimte van het hoofdknooppunt in
               href: ./interactive-query/interactive-query-troubleshoot-hive-logs-diskspace-full-headnodes.md
+            - name: Beveiligingsopties voor Hive
+              href: ./interactive-query/hdinsight-security-options-for-hive.md
 - name: ML Services
   items:
     - name: Overzicht
@@ -954,6 +958,8 @@
           href: ./domain-joined/apache-domain-joined-architecture.md
         - name: HDInsight-architectuur voor virtueel netwerk
           href: ./hdinsight-virtual-network-architecture.md
+        - name: Private Link
+          href: ./hdinsight-private-link.md
         - name: Transport Layer Security
           href: ./transport-layer-security.md
         - name: VNETs plannen voor HDInsight

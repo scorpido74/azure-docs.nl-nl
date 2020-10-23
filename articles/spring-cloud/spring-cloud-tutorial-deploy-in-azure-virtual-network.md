@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 979ecf77fe53238dfd377c5fd2baf394de985c2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1a6a99285e54338b0020aad63fef2944ce3469d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892888"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088666"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>Zelfstudie: Azure Spring Cloud implementeren in een virtueel Azure-netwerk (VNet-injectie)
 
@@ -27,7 +27,7 @@ De implementatie maakt het volgende mogelijk:
 * Klanten kunnen de inkomende en uitgaande netwerkcommunicatie voor Azure Spring Cloud beheren
 
 ## <a name="prerequisites"></a>Vereisten
-U moet de Azure Spring Cloud-resourceprovider `Microsoft.AppPlatform` registreren volgens de instructies voor het [registreren van een resourceprovider in Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal) of door de volgende Azure CLI-opdracht uit te voeren:
+U moet de Azure Spring Cloud-resourceprovider `Microsoft.AppPlatform` registreren volgens de instructies voor het [registreren van een resourceprovider in Azure Portal](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) of door de volgende Azure CLI-opdracht uit te voeren:
 
 ```azurecli
 az provider register --namespace Microsoft.AppPlatform

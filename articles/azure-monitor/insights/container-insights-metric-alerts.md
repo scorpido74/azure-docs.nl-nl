@@ -2,13 +2,13 @@
 title: Metrische waarschuwingen van Azure Monitor voor containers
 description: In dit artikel worden de aanbevolen metrische waarschuwingen weer gegeven die beschikbaar zijn via Azure Monitor voor containers in de open bare preview.
 ms.topic: conceptual
-ms.date: 09/24/2020
-ms.openlocfilehash: 83394faf3d7296522151b815bddd910d47e45d24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/09/2020
+ms.openlocfilehash: 7d9e6cb9a89dfe65777f8bcf507186e24d38a422
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619947"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92308645"
 ---
 # <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>Aanbevolen metrische waarschuwingen (preview) van Azure Monitor voor containers
 
@@ -45,6 +45,7 @@ Azure Monitor voor containers bevatten de volgende metrische waarschuwingen voor
 |Gemiddelde geheugen% van de container werkset |Hiermee berekent u het gemiddelde aantal werkset geheugen dat per container wordt gebruikt.|Wanneer het geheugen gebruik van de gemiddelde werkset per container groter is dan 95%. |
 |Gemiddeld CPU-gebruik (percentage) |Berekent het gemiddelde CPU-verbruik per knoop punt. |Als gemiddeld CPU-gebruik van het knoop punt groter is dan 80% |
 |Gemiddeld schijf gebruik% |Berekent het gemiddelde schijf gebruik voor een knoop punt.|Wanneer het schijf gebruik voor een knoop punt groter is dan 80%. |
+|Gemiddeld gebruik van het permanente volume% |Berekent het gemiddelde HW-gebruik per pod. |Wanneer het gemiddelde HW-gebruik per pod groter is dan 80%.|
 |Gemiddelde werkset geheugen% |Berekent het gemiddelde werkset geheugen voor een knoop punt. |Wanneer de gemiddelde werkset geheugen voor een knoop punt groter is dan 80%. |
 |Aantal containers opnieuw starten |Hiermee wordt het aantal opnieuw te starten containers berekend. | Wanneer het opnieuw opstarten van de container groter is dan 0. |
 |Aantal mislukte pod |Hiermee wordt berekend of een pod de status Mislukt heeft.|Wanneer een aantal peulen de status mislukt groter dan 0 is. |
@@ -75,6 +76,8 @@ De volgende metrische gegevens op basis van een waarschuwing hebben unieke gedra
 
 * *cpuExceededPercentage*-, *MemoryRssExceededPercentage*-en *memoryWorkingSetExceededPercentage* -metrische gegevens worden verzonden wanneer de waarden van de CPU, het geheugen en de geheugen werkset de geconfigureerde drempel waarde overschrijden (de standaard drempel waarde is 95%). Deze drempel waarden zijn exclusief de drempel waarde voor waarschuwings voorwaarden die is opgegeven voor de bijbehorende waarschuwings regel. Als u deze metrische gegevens wilt verzamelen en wilt analyseren vanuit [Metrics Explorer](../platform/metrics-getting-started.md), raden we u aan om de drempel waarde te configureren op een lager niveau dan uw waarschuwings drempel. De configuratie voor de verzamelings instellingen voor de drempel waarden voor het resource gebruik van een container kan worden overschreven in het ConfigMaps-bestand onder de sectie `[alertable_metrics_configuration_settings.container_resource_utilization_thresholds]` . Zie de sectie [waarschuwingen over metrische gegevens ConfigMaps configureren](#configure-alertable-metrics-in-configmaps) voor meer informatie over het configureren van uw ConfigMap-configuratie bestand.
 
+* *pvUsageExceededPercentage* metric wordt verzonden wanneer het gebruiks percentage van het permanente volume de geconfigureerde drempel waarde overschrijdt (de standaard drempel waarde is 60%). Deze drempel waarde is exclusief de drempel waarde voor waarschuwings voorwaarden die is opgegeven voor de bijbehorende waarschuwings regel. Als u deze metrische gegevens wilt verzamelen en wilt analyseren vanuit [Metrics Explorer](../platform/metrics-getting-started.md), raden we u aan om de drempel waarde te configureren op een lager niveau dan uw waarschuwings drempel. De configuratie met betrekking tot de verzamelings instellingen voor drempel waarden voor permanente volume gebruik kan worden overschreven in het ConfigMaps-bestand onder de sectie `[alertable_metrics_configuration_settings.pv_utilization_thresholds]` . Zie de sectie [waarschuwingen over metrische gegevens ConfigMaps configureren](#configure-alertable-metrics-in-configmaps) voor meer informatie over het configureren van uw ConfigMap-configuratie bestand. Verzameling van gegevens over het permanente volume met claims in de *uitvoeren-* naam ruimte worden standaard uitgesloten. Gebruik de sectie in het ConfigMap-bestand om de verzameling in deze naam ruimte in te scha kelen `[metric_collection_settings.collect_kube_system_pv_metrics]` . Zie [instellingen voor metrische verzameling](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-agent-config#metric-collection-settings) voor meer informatie.
+
 ## <a name="metrics-collected"></a>Verzamelde metrische gegevens
 
 De volgende metrische gegevens worden ingeschakeld en verzameld, tenzij anders aangegeven, als onderdeel van deze functie:
@@ -97,6 +100,7 @@ De volgende metrische gegevens worden ingeschakeld en verzameld, tenzij anders a
 |Inzichten. container/containers |cpuExceededPercentage |Percentage CPU-gebruik voor containers die de door de gebruiker geconfigureerde drempel waarde overschrijden (standaard is 95,0) op container naam, controller naam, Kubernetes naam ruimte, Pod naam.<br> Monsters  |
 |Inzichten. container/containers |memoryRssExceededPercentage |Percentage geheugen-RSS voor containers die Configureer bare drempel waarde voor gebruikers overschrijden (standaard is 95,0) op container naam, controller naam, Kubernetes naam ruimte, Pod naam.|
 |Inzichten. container/containers |memoryWorkingSetExceededPercentage |Percentage geheugen werkset voor containers die Configureer bare drempel waarde voor gebruikers overschrijden (standaard is 95,0) op container naam, naam van de controller, Kubernetes naam ruimte, Pod naam.|
+|Inzichten. container/persistentvolumes |pvUsageExceededPercentage |Percentage van het HW-gebruik voor permanente volumes die de door de gebruiker geconfigureerde drempel waarde overschrijden (standaard is 60,0) door de claim naam, de naam ruimte, de volume naam, de pod-naam en de naam van het knoop punt.
 
 ## <a name="enable-alert-rules"></a>Waarschuwings regels inschakelen
 
@@ -106,7 +110,7 @@ Volg deze stappen om de metrische waarschuwingen in Azure Monitor van de Azure P
 
 In deze sectie wordt beschreven hoe u Azure Monitor voor de metrische waarschuwing voor containers (preview) inschakelt vanuit de Azure Portal.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 2. Toegang tot de Azure Monitor voor de functie waarschuwing voor metrische gegevens van containers (preview) is rechtstreeks beschikbaar vanuit een AKS-cluster door **inzichten** te selecteren in het linkerdeel venster van de Azure Portal.
 
@@ -207,29 +211,40 @@ Als u waarschuwingen wilt weer geven die zijn gemaakt voor de ingeschakelde rege
 
 ## <a name="configure-alertable-metrics-in-configmaps"></a>Waarschuwings gegevens configureren in ConfigMaps
 
-Voer de volgende stappen uit om uw ConfigMap-configuratie bestand te configureren om de standaard drempel waarden voor container resource gebruik te overschrijven. Deze stappen zijn alleen van toepassing op de volgende waarschuw bare metrische gegevens.
+Voer de volgende stappen uit om het configuratie bestand van uw ConfigMap te configureren om de standaard drempel waarden voor gebruik te overschrijven. Deze stappen zijn alleen van toepassing op de volgende beschik bare metrische gegevens:
 
 * *cpuExceededPercentage*
 * *memoryRssExceededPercentage*
 * *memoryWorkingSetExceededPercentage*
+* *pvUsageExceededPercentage*
 
-1. Bewerk het ConfigMap yaml-bestand onder de sectie `[alertable_metrics_configuration_settings.container_resource_utilization_thresholds]` .
+1. Bewerk het ConfigMap YAML-bestand onder de sectie `[alertable_metrics_configuration_settings.container_resource_utilization_thresholds]` of `[alertable_metrics_configuration_settings.pv_utilization_thresholds]` .
 
-2. Configureer het ConfigMap-bestand met behulp van het volgende voor beeld om de drempel waarde voor *cpuExceededPercentage* te wijzigen in 90% en te beginnen met het verzamelen van deze metriek wanneer die drempel wordt bereikt en overschreden.
+   - Configureer het ConfigMap-bestand met behulp van het volgende voor beeld om de drempel waarde voor *cpuExceededPercentage* te wijzigen in 90% en te beginnen met het verzamelen van deze metrische waarde wanneer die drempel is bereikt en overschreden:
 
-    ```
-    container_cpu_threshold_percentage = 90.0
-    # Threshold for container memoryRss, metric will be sent only when memory rss exceeds or becomes equal to the following percentage
-    container_memory_rss_threshold_percentage = 95.0
-    # Threshold for container memoryWorkingSet, metric will be sent only when memory working set exceeds or becomes equal to the following percentage
-    container_memory_working_set_threshold_percentage = 95.0
-    ```
+     ```
+     [alertable_metrics_configuration_settings.container_resource_utilization_thresholds]
+         # Threshold for container cpu, metric will be sent only when cpu utilization exceeds or becomes equal to the following percentage
+         container_cpu_threshold_percentage = 90.0
+         # Threshold for container memoryRss, metric will be sent only when memory rss exceeds or becomes equal to the following percentage
+         container_memory_rss_threshold_percentage = 95.0
+         # Threshold for container memoryWorkingSet, metric will be sent only when memory working set exceeds or becomes equal to the following percentage
+         container_memory_working_set_threshold_percentage = 95.0
+     ```
 
-3. Voer de volgende kubectl-opdracht uit: `kubectl apply -f <configmap_yaml_file.yaml>` .
+   - Configureer het ConfigMap-bestand met behulp van het volgende voor beeld om de drempel waarde voor *pvUsageExceededPercentage* te wijzigen in 80% en te beginnen met het verzamelen van deze metrische waarde wanneer die drempel is bereikt en overschreden:
+
+     ```
+     [alertable_metrics_configuration_settings.pv_utilization_thresholds]
+         # Threshold for persistent volume usage bytes, metric will be sent only when persistent volume utilization exceeds or becomes equal to the following percentage
+         pv_usage_threshold_percentage = 80.0
+     ```
+
+2. Voer de volgende kubectl-opdracht uit: `kubectl apply -f <configmap_yaml_file.yaml>` .
 
     Bijvoorbeeld: `kubectl apply -f container-azm-ms-agentconfig.yaml`.
 
-Het kan een paar minuten duren voordat de configuratie wijziging is doorgevoerd en alle omsagent in het cluster opnieuw worden opgestart. Het opnieuw opstarten is een rolling start voor alle omsagent-peulen, niet allemaal tegelijk opnieuw opstarten. Wanneer het opnieuw opstarten is voltooid, wordt een bericht weer gegeven dat er ongeveer als volgt uitziet en het resultaat bevat: `configmap "container-azm-ms-agentconfig" created` .
+Het kan een paar minuten duren voordat de configuratie wijziging is doorgevoerd en alle omsagent in het cluster opnieuw worden opgestart. Het opnieuw opstarten is een rolling start voor alle omsagent-peulen; ze worden niet op hetzelfde moment opnieuw opgestart. Wanneer het opnieuw opstarten is voltooid, wordt een bericht weer gegeven dat lijkt op het volgende voor beeld en het resultaat bevat: `configmap "container-azm-ms-agentconfig" created` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

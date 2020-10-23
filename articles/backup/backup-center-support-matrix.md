@@ -3,12 +3,12 @@ title: Ondersteunings matrix voor Back-upcentrum
 description: Dit artikel bevat een overzicht van de scenario's die Back-upcentrum ondersteunt voor elk type werk belasting
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: 8effc2514abf1cac55abc28b625b869810536baf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40582ddc1187082230e2887edcd24b3716811be2
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995436"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173986"
 ---
 # <a name="support-matrix-for-backup-center"></a>Ondersteunings matrix voor Back-upcentrum
 
@@ -22,13 +22,13 @@ Back-upcentrum biedt ondernemingen één enkel deel venster voor het [bepalen, b
 | Bewaking | Alle back-upinstanties weer geven | <li> Virtuele Azure-machine <br><br> <li> Azure Database for PostgreSQL server | Hetzelfde als hierboven |
 | Bewaking | Alle back-upbeleid weer geven | <li> Virtuele Azure-machine <br><br> <li> Azure Database for PostgreSQL server | Hetzelfde als hierboven |
 | Bewaking | Alle kluizen weer geven | <li> Virtuele Azure-machine <br><br> <li> Azure Database for PostgreSQL server | Hetzelfde als hierboven |
-| Acties | Back-up configureren | <li> Virtuele Azure-machine <br><br> <li> Azure Database for PostgreSQL server | Raadpleeg de ondersteunings matrices voor [Azure VM backup](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas) en [Azure database for PostgreSQL Server Backup](backup-azure-database-postgresql.md#support-matrix) |
-| Acties | Back-upexemplaar herstellen | <li> Virtuele Azure-machine <br><br> <li> Azure Database for PostgreSQL server | Raadpleeg de ondersteunings matrices voor [Azure VM backup](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas) en [Azure database for PostgreSQL Server Backup](backup-azure-database-postgresql.md#support-matrix) |
-| Acties | Kluis maken | <li> Virtuele Azure-machine <br><br> <li> Azure Database for PostgreSQL server | Raadpleeg de ondersteunings matrices voor [Recovery Services kluis](https://docs.microsoft.com/azure/backup/backup-support-matrix#vault-support) |
-| Acties | Back-upbeleid maken | <li> Virtuele Azure-machine <br><br> <li> Azure Database for PostgreSQL server | Raadpleeg de ondersteunings matrices voor [Recovery Services kluis](https://docs.microsoft.com/azure/backup/backup-support-matrix#vault-support) |
-| Acties | Back-up op aanvraag uitvoeren voor een back-upexemplaar | <li> Virtuele Azure-machine <br><br> <li> Azure Database for PostgreSQL server | Raadpleeg de ondersteunings matrices voor [Azure VM backup](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas) en [Azure database for PostgreSQL Server Backup](backup-azure-database-postgresql.md#support-matrix) |
-| Acties | Back-up stoppen voor een back-upexemplaar | <li> Virtuele Azure-machine <br><br> <li> Azure Database for PostgreSQL server | Raadpleeg de ondersteunings matrices voor [Azure VM backup](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas) en [Azure database for PostgreSQL Server Backup](backup-azure-database-postgresql.md#support-matrix) |
-| Inzichten | Back-uprapporten weer geven | <li> Virtuele Azure-machine <br><br> <li> SQL in virtuele machine van Azure <br><br> <li> SAP HANA op de virtuele machine van Azure <br><br> <li> Azure Files <br><br> <li> System Center Data Protection Manager <br><br> <li> Azure Backup-Agent (MARS) <br><br> <li> Azure Backup-server (MABS) | Raadpleeg [ondersteunde scenario's voor back-uprapporten](https://docs.microsoft.com/azure/backup/configure-reports#supported-scenarios) |
+| Acties | Back-up configureren | <li> Virtuele Azure-machine <br><br> <li> Azure Database for PostgreSQL server | Raadpleeg de ondersteunings matrices voor [Azure VM backup](./backup-support-matrix-iaas.md) en [Azure database for PostgreSQL Server Backup](backup-azure-database-postgresql.md#support-matrix) |
+| Acties | Back-upexemplaar herstellen | <li> Virtuele Azure-machine <br><br> <li> Azure Database for PostgreSQL server | Raadpleeg de ondersteunings matrices voor [Azure VM backup](./backup-support-matrix-iaas.md) en [Azure database for PostgreSQL Server Backup](backup-azure-database-postgresql.md#support-matrix) |
+| Acties | Kluis maken | <li> Virtuele Azure-machine <br><br> <li> Azure Database for PostgreSQL server | Raadpleeg de ondersteunings matrices voor [Recovery Services kluis](./backup-support-matrix.md#vault-support) |
+| Acties | Back-upbeleid maken | <li> Virtuele Azure-machine <br><br> <li> Azure Database for PostgreSQL server | Raadpleeg de ondersteunings matrices voor [Recovery Services kluis](./backup-support-matrix.md#vault-support) |
+| Acties | Back-up op aanvraag uitvoeren voor een back-upexemplaar | <li> Virtuele Azure-machine <br><br> <li> Azure Database for PostgreSQL server | Raadpleeg de ondersteunings matrices voor [Azure VM backup](./backup-support-matrix-iaas.md) en [Azure database for PostgreSQL Server Backup](backup-azure-database-postgresql.md#support-matrix) |
+| Acties | Back-up stoppen voor een back-upexemplaar | <li> Virtuele Azure-machine <br><br> <li> Azure Database for PostgreSQL server | Raadpleeg de ondersteunings matrices voor [Azure VM backup](./backup-support-matrix-iaas.md) en [Azure database for PostgreSQL Server Backup](backup-azure-database-postgresql.md#support-matrix) |
+| Inzichten | Back-uprapporten weer geven | <li> Virtuele Azure-machine <br><br> <li> SQL in virtuele machine van Azure <br><br> <li> SAP HANA op de virtuele machine van Azure <br><br> <li> Azure Files <br><br> <li> System Center Data Protection Manager <br><br> <li> Azure Backup-Agent (MARS) <br><br> <li> Azure Backup-server (MABS) | Raadpleeg [ondersteunde scenario's voor back-uprapporten](./configure-reports.md#supported-scenarios) |
 | Beheer | Ingebouwd en aangepaste Azure-beleid weer geven en toewijzen onder categorie back-up | N.v.t. | N.v.t. |
 | Beheer | Gegevens bronnen weer geven die niet zijn geconfigureerd voor back-up | <li> Virtuele Azure-machine <br><br> <li> Azure Database for PostgreSQL server | N.v.t. |
 
@@ -42,6 +42,6 @@ Back-upcentrum biedt ondernemingen één enkel deel venster voor het [bepalen, b
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Raadpleeg de ondersteunings matrix voor Azure Backup](https://docs.microsoft.com/azure/backup/backup-support-matrix)
-* [De ondersteunings matrix voor Azure VM backup bekijken](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas)
+* [Raadpleeg de ondersteunings matrix voor Azure Backup](./backup-support-matrix.md)
+* [De ondersteunings matrix voor Azure VM backup bekijken](./backup-support-matrix-iaas.md)
 * [De ondersteunings matrix voor Azure Database for PostgreSQL Server back-up bekijken](backup-azure-database-postgresql.md#support-matrix)

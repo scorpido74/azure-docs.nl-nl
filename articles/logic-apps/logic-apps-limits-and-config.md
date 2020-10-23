@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 10/02/2020
-ms.openlocfilehash: 0705336056ff7c60afddd866b5c65694098a32db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/09/2020
+ms.openlocfilehash: 05881791d495770167b271e20de173e6679f39d9
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744063"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440651"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informatie over limieten en configuratie voor Azure Logic Apps
 
@@ -41,32 +41,37 @@ Dit zijn de limieten voor een definitie van een enkele logische app:
 
 <a name="run-duration-retention-limits"></a>
 
-## <a name="run-duration-and-retention-limits"></a>Limieten voor uitvoeringsduur en bewaarperiode
+## <a name="run-duration-and-retention-history-limits"></a>Limieten voor uitvoerings duur en bewaar periode
 
 Dit zijn de limieten voor het uitvoeren van een enkele logische app:
 
-| Naam | Limiet voor meerdere tenants | Limiet voor de integratie service omgeving | Notities |
+| Naam | Limiet voor meerdere tenants | Limiet voor de integratie service omgeving | Opmerkingen |
 |------|--------------------|---------------------------------------|-------|
-| Uitvoeringsduur | 90 dagen | 366 dagen | De uitvoerings duur wordt berekend met behulp van de begin tijd van de uitvoering en de limiet die *tijdens het begin tijdstip* wordt opgegeven door de werk stroom instelling, de Bewaar periode voor de [**geschiedenis in dagen**](#change-duration). <p><p>Zie de duur van de [uitvoering wijzigen](#change-duration)als u de standaard limiet wilt wijzigen, 90 dagen. |
-| Bewaar periode in opslag uitvoeren | 90 dagen | 366 dagen | De retentie van de run wordt berekend met behulp van de begin tijd van de uitvoering en de limiet die is opgegeven *op het huidige tijdstip* door de werk stroom instelling, de Bewaar periode voor de [**geschiedenis in dagen uitvoeren**](#change-retention). Of een uitvoering is voltooid of een time-out heeft, de retentie berekening maakt altijd gebruik van de begin tijd van de uitvoering. Wanneer de duur van een uitvoering de *huidige* Bewaar limiet overschrijdt, wordt de uitvoering uit de geschiedenis van de uitvoeringen verwijderd. <p><p>Als u deze instelling wijzigt, wordt de huidige limiet altijd gebruikt voor het berekenen van de Bewaar periode, ongeacht de vorige limiet. Als u bijvoorbeeld de Bewaar limiet van 90 dagen tot 30 dagen vermindert, wordt een run die 60 dagen oud is verwijderd uit de geschiedenis van de uitvoeringen. Als u de retentie periode van 30 dagen tot 60 dagen verhoogt, wordt een run die 20 dagen oud is, in de geschiedenis van de uitvoering van een andere 40 dagen bewaard. <p><p>Als u de standaard limiet wilt wijzigen, 90 dagen, raadpleegt u [retentie voor het uitvoeren van wijzigingen in de opslag](#change-retention). |
+| Uitvoeringsduur | 90 dagen | 366 dagen | De uitvoerings duur wordt berekend op basis van de begin tijd van de uitvoering. |
+| Bewaar periode voor geschiedenis in opslag | 90 dagen | 366 dagen | Als de duur van een uitvoering de huidige Bewaar limiet voor de uitvoerings geschiedenis overschrijdt, wordt de uitvoering verwijderd uit de uitvoerings geschiedenis in de opslag. Of de uitvoering is voltooid of er een time-out optreedt, de retentie van de uitvoerings geschiedenis wordt altijd berekend met behulp van de begin tijd van de uitvoering en de huidige limiet die is opgegeven in de werk stroom instelling, de [**Bewaar periode voor de geschiedenis in dagen**](#change-retention). Ongeacht de vorige limiet wordt de huidige limiet altijd gebruikt voor het berekenen van de Bewaar periode. <p><p>Als u de standaard limiet wilt wijzigen en meer informatie wilt, raadpleegt u de [Bewaar periode voor de uitvoerings geschiedenis wijzigen in de opslag](#change-retention). Als u de maximum limiet wilt verhogen, [neemt u contact op met het Logic apps team](mailto://logicappsemail@microsoft.com) voor hulp bij uw vereisten. |
 | Mini maal terugkeer patroon | 1 seconde | 1 seconde ||
 | Maximum interval van terugkeer patroon | 500 dagen | 500 dagen ||
 |||||
 
-<a name="change-duration"></a>
 <a name="change-retention"></a>
 
-### <a name="change-run-duration-and-run-retention-in-storage"></a>De uitvoerings duur wijzigen en de retentie in de opslag uitvoeren
+### <a name="change-run-history-retention-in-storage"></a>Bewaar periode voor uitvoerings geschiedenis in opslag wijzigen
 
-Voer de volgende stappen uit om de standaard limiet voor de uitvoerings duur te wijzigen en retentie in de opslag uit te voeren. Als u de maximum limiet wilt verhogen, [neemt u contact op met het Logic apps team](mailto://logicappsemail@microsoft.com) voor hulp bij uw vereisten.
+Als u de standaard limiet voor het bewaren van uitvoerings geschiedenis in de opslag wilt wijzigen, voert u de volgende stappen uit.
 
-> [!NOTE]
-> Voor logische apps in azure met meerdere tenants is de standaard limiet van 90 dagen gelijk aan de maximum limiet. U kunt deze waarde alleen verlagen.
-> Voor Logic apps in een integratie service omgeving kunt u de standaard limiet van 90 dagen verlagen of verhogen.
+* Voor logische apps in azure met meerdere tenants is de standaard limiet van 90 dagen gelijk aan de maximum limiet. U kunt deze waarde alleen verlagen.
 
-1. Ga naar de [Azure Portal](https://portal.azure.com). Zoek en selecteer **Logic apps**in het zoekvak van de portal.
+* Voor Logic apps in een integratie service omgeving kunt u de standaard limiet van 90 dagen verlagen of verhogen.
 
-1. Selecteer en open vervolgens uw logische app in de ontwerp functie voor logische apps.
+Stel dat u de limiet voor het bewaren van 90 dagen tot 30 dagen hebt beperkt. Een 60-daagse-oude uitvoering wordt verwijderd uit de uitvoerings geschiedenis. Als u de retentie periode van 30 dagen tot 60 dagen verhoogt, blijft de uitvoering van 20 dagen oud in de geschiedenis van de uitvoeringen voor een andere 40-dag. 
+
+
+> [!IMPORTANT]
+> Om te voor komen dat de uitvoerings geschiedenis verloren gaat, moet u ervoor zorgen dat de Bewaar limiet *altijd* hoger is dan de langst mogelijke duur van de uitvoering. Als dat niet het geval is, gaat de uitvoerings geschiedenis verloren.
+
+1. Zoek en selecteer **Logic apps**in het zoekvak [Azure Portal](https://portal.azure.com) .
+
+1. Zoek en selecteer uw logische app. Open uw logische app in de ontwerp functie voor logische apps.
 
 1. Selecteer **werk stroom instellingen**in het menu van de logische app.
 
@@ -142,7 +147,7 @@ Dit zijn de limieten voor één uitgaande of inkomende HTTP-oproep:
 
 Sommige connector bewerkingen maken asynchrone aanroepen of Luis teren naar webhook-aanvragen, zodat de time-out voor deze bewerkingen mogelijk langer is dan deze limieten. Zie de technische Details voor de specifieke connector en ook [werk stroom triggers en acties](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)voor meer informatie.
 
-| Naam | Limiet voor meerdere tenants | Limiet voor de integratie service omgeving | Notities |
+| Naam | Limiet voor meerdere tenants | Limiet voor de integratie service omgeving | Opmerkingen |
 |------|--------------------|---------------------------------------|-------|
 | Uitgaande aanvraag | 120 seconden <br>(2 minuten) | 240 seconden <br>(4 minuten) | Voor beelden van uitgaande aanvragen zijn aanroepen van HTTP-triggers. <p><p>**Tip**: gebruik een [asynchroon polling-patroon](../logic-apps/logic-apps-create-api-app.md#async-pattern) of een [until-lus](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)voor het uitvoeren van bewerkingen die langer worden uitgevoerd. Als u de time-outlimieten wilt omzeilen wanneer u een andere logische app aanroept die een [aanroepbaar eind punt](logic-apps-http-endpoint.md)heeft, kunt u in plaats daarvan de ingebouwde Azure Logic apps actie gebruiken, die u kunt vinden in de connector kiezer onder **ingebouwde**. |
 | Inkomende aanvraag | 120 seconden <br>(2 minuten) | 240 seconden <br>(4 minuten) | Voor beelden van inkomende aanvragen zijn oproepen die worden ontvangen door de aanvraag triggers en webhook-triggers. <p><p>**Opmerking**: voor de oorspronkelijke beller om het antwoord te krijgen, moeten alle stappen in het antwoord binnen de limiet worden voltooid, tenzij u een andere logische app als geneste werk stroom aanroept. Zie [Logic apps aanroepen, activeren of nesten](../logic-apps/logic-apps-http-endpoint.md)voor meer informatie. |
@@ -152,7 +157,7 @@ Sommige connector bewerkingen maken asynchrone aanroepen of Luis teren naar webh
 
 #### <a name="message-size"></a>Berichtgrootte
 
-| Naam | Limiet voor meerdere tenants | Limiet voor de integratie service omgeving | Notities |
+| Naam | Limiet voor meerdere tenants | Limiet voor de integratie service omgeving | Opmerkingen |
 |------|--------------------|---------------------------------------|-------|
 | Berichtgrootte | 100 MB | 200 MB | Zie [grote berichten verwerken met Chunking](../logic-apps/logic-apps-handle-large-messages.md)om deze limiet te omzeilen. Sommige connectors en Api's ondersteunen echter mogelijk geen Chunking of zelfs de standaard limiet. <p><p>-Connectors zoals AS2, X12 en EDIFACT hebben hun eigen [B2B-bericht limieten](#b2b-protocol-limits). <br>-ISE-connectors maken gebruik van de ISE-limiet, niet de limieten voor niet-ISE-connectors. |
 | Bericht grootte met Chunking | 1 GB | 5 GB | Deze limiet geldt voor acties die systeem eigen ondersteuning bieden voor Chunking of waarmee u Chunking in de runtime configuratie kunt inschakelen. <p><p>Als u een ISE gebruikt, wordt deze limiet door de Logic Apps-Engine ondersteund, maar de connectors hebben hun eigen segment beperking tot de limiet van de engine. Zie de [API-naslag informatie voor de Azure Blob Storage-connector](/connectors/azureblob/). Zie [grote berichten afhandelen met Chunking](../logic-apps/logic-apps-handle-large-messages.md)voor meer informatie over segmenteren. |
@@ -160,7 +165,7 @@ Sommige connector bewerkingen maken asynchrone aanroepen of Luis teren naar webh
 
 #### <a name="character-limits"></a>Teken limieten
 
-| Naam | Notities |
+| Naam | Opmerkingen |
 |------|-------|
 | Limiet voor evaluatie van expressie | 131.072 tekens | De `@concat()` , `@base64()` , `@string()` expressies mogen niet langer zijn dan deze limiet. |
 | Maximum aantal tekens van aanvraag-URL | 16.384 tekens |
@@ -195,7 +200,7 @@ Dit zijn de limieten voor een logische app die begint met een trigger voor aanvr
 
 Dit zijn de limieten voor aangepaste connectors die u kunt maken op basis van web-Api's.
 
-| Naam | Limiet voor meerdere tenants | Limiet voor de integratie service omgeving | Notities |
+| Naam | Limiet voor meerdere tenants | Limiet voor de integratie service omgeving | Opmerkingen |
 |------|--------------------|---------------------------------------|-------|
 | Aantal aangepaste connectors | 1000 per Azure-abonnement | 1000 per Azure-abonnement ||
 | Aantal aanvragen per minuut voor een aangepaste connector | 500 aanvragen per minuut per verbinding | 2.000 aanvragen per minuut per *aangepaste connector* ||
@@ -267,7 +272,7 @@ Zie [Logic apps prijzen](https://azure.microsoft.com/pricing/details/logic-apps/
 
 ### <a name="throughput-limits"></a>Doorvoerlimieten
 
-| Runtime-eind punt | Gratis | Basic | Standard | Notities |
+| Runtime-eind punt | Gratis | Basic | Standard | Opmerkingen |
 |------------------|------|-------|----------|-------|
 | Lees aanroepen per 5 minuten | 3000 | 30.000 | 60.000 | Deze limiet is van toepassing op aanroepen die de onbewerkte invoer en uitvoer ophalen uit de uitvoerings geschiedenis van een logische app. U kunt de werk belasting naar meerdere accounts distribueren als dat nodig is. |
 | Aanroepen starten per 5 minuten | 3000 | 30.000 | 45.000 | U kunt de werk belasting naar meerdere accounts distribueren als dat nodig is. |
@@ -281,7 +286,7 @@ Zie [Logic apps prijzen](https://azure.microsoft.com/pricing/details/logic-apps/
 
 Dit zijn de limieten voor de bericht grootte die van toepassing zijn op B2B-protocollen:
 
-| Naam | Limiet voor meerdere tenants | Limiet voor de integratie service omgeving | Notities |
+| Naam | Limiet voor meerdere tenants | Limiet voor de integratie service omgeving | Opmerkingen |
 |------|--------------------|---------------------------------------|-------|
 | AS2 | v2-100 MB<br>v1-25 MB | v2-200 MB <br>v1-25 MB | Van toepassing op decoderen en coderen |
 | X12 | 50 MB | 50 MB | Van toepassing op decoderen en coderen |
@@ -346,10 +351,11 @@ In deze sectie worden alleen de inkomende IP-adressen voor de Azure Logic Apps-s
 | Central US | 13.67.236.76, 40.77.111.254, 40.77.31.87, 104.43.243.39 |
 | Azië - oost | 168.63.200.173, 13.75.89.159, 23.97.68.172, 40.83.98.194 |
 | VS - oost | 137.135.106.54, 40.117.99.79, 40.117.100.228, 137.116.126.165 |
-| VS - oost 2 | 40.84.25.234, 40.79.44.7, 40.84.59.136, 40.70.27.253 |
+| US - oost 2 | 40.84.25.234, 40.79.44.7, 40.84.59.136, 40.70.27.253 |
 | Frankrijk - centraal | 52.143.162.83, 20.188.33.169, 52.143.156.55, 52.143.158.203 |
 | Frankrijk - zuid | 52.136.131.145, 52.136.129.121, 52.136.130.89, 52.136.131.4 |
 | Duitsland - noord | 51.116.211.29, 51.116.208.132, 51.116.208.37, 51.116.208.64 |
+| Duitsland - west-centraal | 51.116.168.222, 51.116.171.209, 51.116.233.40, 51.116.175.0 |
 | Japan East | 13.71.146.140, 13.78.84.187, 13.78.62.130, 13.78.43.164 |
 | Japan - west | 40.74.140.173, 40.74.81.13, 40.74.85.215, 40.74.68.85 |
 | Korea - centraal | 52.231.14.182, 52.231.103.142, 52.231.39.29, 52.231.14.42 |
@@ -409,10 +415,11 @@ In deze sectie vindt u de uitgaande IP-adressen voor de Azure Logic Apps-service
 | Central US | 13.67.236.125, 104.208.25.27, 40.122.170.198, 40.113.218.230, 23.100.86.139, 23.100.87.24, 23.100.87.56, 23.100.82.16 | 13.89.171.80 - 13.89.171.95, 40.122.49.51, 52.173.245.164, 52.173.241.27, 40.77.68.110, 13.89.178.64 - 13.89.178.95 |
 | Azië - oost | 13.75.94.173, 40.83.127.19, 52.175.33.254, 40.83.73.39, 65.52.175.34, 40.83.77.208, 40.83.100.69, 40.83.75.165 | 13.75.36.64 - 13.75.36.79, 23.99.116.181, 52.175.23.169, 13.75.110.131, 104.214.164.0 - 104.214.164.31 |
 | VS - oost | 13.92.98.111, 40.121.91.41, 40.114.82.191, 23.101.139.153, 23.100.29.190, 23.101.136.201, 104.45.153.81, 23.101.132.208 | 40.71.11.80 - 40.71.11.95, 40.71.249.205, 40.114.40.132, 40.71.249.139, 52.188.157.160, 40.71.15.160 - 40.71.15.191 |
-| VS - oost 2 | 40.84.30.147, 104.208.155.200, 104.208.158.174, 104.208.140.40, 40.70.131.151, 40.70.29.214, 40.70.26.154, 40.70.27.236 | 40.70.146.208 - 40.70.146.223, 52.232.188.154, 104.208.233.100, 104.209.247.23, 52.225.129.144, 40.65.220.25, 40.70.151.96 - 40.70.151.127 |
+| US - oost 2 | 40.84.30.147, 104.208.155.200, 104.208.158.174, 104.208.140.40, 40.70.131.151, 40.70.29.214, 40.70.26.154, 40.70.27.236 | 40.70.146.208 - 40.70.146.223, 52.232.188.154, 104.208.233.100, 104.209.247.23, 52.225.129.144, 40.65.220.25, 40.70.151.96 - 40.70.151.127 |
 | Frankrijk - centraal | 52.143.164.80, 52.143.164.15, 40.89.186.30, 20.188.39.105, 40.89.191.161, 40.89.188.169, 40.89.186.28, 40.89.190.104 | 40.79.130.208 - 40.79.130.223, 40.89.135.2, 40.89.186.239, 40.79.148.96 - 40.79.148.127 |
 | Frankrijk - zuid | 52.136.132.40, 52.136.129.89, 52.136.131.155, 52.136.133.62, 52.136.139.225, 52.136.130.144, 52.136.140.226, 52.136.129.51 | 40.79.178.240 - 40.79.178.255, 52.136.133.184, 52.136.142.154, 40.79.180.224 - 40.79.180.255 |
 | Duitsland - noord | 51.116.211.168, 51.116.208.165, 51.116.208.175, 51.116.208.192, 51.116.208.200, 51.116.208.222, 51.116.208.217, 51.116.208.51 | 51.116.211.212, 51.116.60.192 - 51.116.60.223, 51.116.59.16 - 51.116.60.31 |
+| Duitsland - west-centraal | 51.116.233.35, 51.116.171.49, 51.116.233.33, 51.116.233.22, 51.116.168.104, 51.116.175.17, 51.116.233.87, 51.116.175.51 | 51.116.236.78, 51.116.158.96 - 51.116.158.127, 51.116.155.80 - 51.116.155.95 |
 | Japan East | 13.71.158.3, 13.73.4.207, 13.71.158.120, 13.78.18.168, 13.78.35.229, 13.78.42.223, 13.78.21.155, 13.78.20.232 | 13.71.153.19, 13.78.108.0 - 13.78.108.15, 40.115.186.96, 13.73.21.230, 40.79.189.64 - 40.79.189.95 |
 | Japan - west | 40.74.140.4, 104.214.137.243, 138.91.26.45, 40.74.64.207, 40.74.76.213, 40.74.77.205, 40.74.74.21, 40.74.68.85 | 40.74.100.224 - 40.74.100.239, 40.74.130.77, 104.215.61.248, 104.215.27.24, 40.80.180.64 - 40.80.180.95 |
 | Korea - centraal | 52.231.14.11, 52.231.14.219, 52.231.15.6, 52.231.10.111, 52.231.14.223, 52.231.77.107, 52.231.8.175, 52.231.9.39 | 52.231.18.208 - 52.231.18.223, 52.141.36.214, 52.141.1.104, 20.44.29.64 - 20.44.29.95 |

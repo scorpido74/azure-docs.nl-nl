@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9a8f572189afaa726f7e01f5e0bbb73340face8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee0c5093fc1dab69e0502b8ed1efe42fa63f1eb9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89657221"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363722"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Een Azure Active Directory self-service voor het opnieuw instellen van wacht woorden plannen
 
@@ -313,7 +313,7 @@ Azure AD kan extra informatie over uw SSPR-prestaties bieden via audits en rappo
 U kunt vooraf gemaakte rapporten op Azure Portal gebruiken om de prestaties van de SSPR te meten. Als u een juiste licentie hebt, kunt u ook aangepaste query's maken. Zie [rapportage opties voor Azure AD-wachtwoord beheer](./howto-sspr-reporting.md) voor meer informatie.
 
 > [!NOTE]
->  U moet [een globale beheerder](../users-groups-roles/directory-assign-admin-roles.md)zijn en u moet zich aanmelden om deze gegevens te verzamelen voor uw organisatie. Als u zich wilt aanmelden, moet u ten minste één keer naar het tabblad rapportage of de audit Logboeken in azure Portal. Tot die toe worden de gegevens niet verzameld voor uw organisatie.
+>  U moet [een globale beheerder](../roles/permissions-reference.md)zijn en u moet zich aanmelden om deze gegevens te verzamelen voor uw organisatie. Als u zich wilt aanmelden, moet u ten minste één keer naar het tabblad rapportage of de audit Logboeken in azure Portal. Tot die toe worden de gegevens niet verzameld voor uw organisatie.
 
 Audit logboeken voor registratie en het opnieuw instellen van wacht woorden zijn 30 dagen beschikbaar. Als de beveiligings controle binnen uw bedrijf een langere retentie vereist, moeten de logboeken worden geëxporteerd en gebruikt in een SIEM-hulp programma zoals [Azure Sentinel](../../sentinel/connect-azure-active-directory.md), Splunk of ArcSight.
 

@@ -7,12 +7,13 @@ ms.date: 08/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 9a93602327b5c5294d6c17c1804c04c6603dcf37
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.custom: device-developer
+ms.openlocfilehash: c2af331304decd7955892ef4911d1644518f57b8
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999875"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427886"
 ---
 # <a name="how-to-connect-devices-with-x509-certificates-using-nodejs-device-sdk-for-iot-central-application"></a>Apparaten verbinden met X. 509-certificaten met Node.js apparaat-SDK voor IoT Central toepassing
 
@@ -50,12 +51,15 @@ In deze sectie gebruikt u een X. 509-certificaat om een apparaat te verbinden me
     npm install
     ```
 
-1. Een basis certificaat maken en vervolgens een certificaat voor een apparaat afleiden door het script uit te voeren. Zorg ervoor dat u alleen kleine letters en afbreek streepjes gebruikt voor certificaat naam:
+1. Een basis certificaat maken en vervolgens een certificaat voor een apparaat afleiden door het script uit te voeren:
 
     ```cmd/sh
     node create_test_cert.js root mytestrootcert
     node create_test_cert.js device mytestdevice mytestrootcert
     ```
+
+    > [!TIP]
+    > Een apparaat-ID mag letters, cijfers en het `-` teken bevatten.
 
 Met deze opdrachten worden drie bestanden voor de hoofdmap en het certificaat van het apparaat geproduceerd
 

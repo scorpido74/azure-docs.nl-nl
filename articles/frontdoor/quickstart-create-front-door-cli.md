@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/21/2020
 ms.author: duau
-ms.openlocfilehash: 6aa960837a3bfc7f8a04ca1f554fb10d635c2ea2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a24c0fdb244f87dbf281bcf59b5e1986a215142a
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91348020"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275631"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-cli"></a>Quickstart: Een Front Door maken voor een wereldwijde webtoepassing met hoge beschikbaarheid met Azure CLI
 
@@ -46,7 +46,7 @@ In Azure kunt u verwante resources toewijzen aan een resourcegroep. U kunt een b
 
 Voor deze quickstart hebt u twee resourcegroepen nodig. Een in *VS - centraal* en de tweede in *VS - zuid-centraal*.
 
-Maak een resourcegroep maken met [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create&preserve-view=true):
+Maak een resourcegroep maken met [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create&preserve-view=true):
 
 ```azurecli-interactive
 az group create \
@@ -68,7 +68,7 @@ Als u nog geen web-app hebt, voert u het volgende script uit om twee voorbeelden
 
 Voordat u de web-apps kunt maken, hebt u twee App Service-abonnementen nodig, een in *VS - centraal* en de tweede in *VS - zuid-centraal*.
 
-Maak App Service-abonnementen met de opdracht [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create&preserve-view=true):
+Maak App Service-abonnementen met de opdracht [az appservice plan create](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create&preserve-view=true):
 
 ```azurecli-interactive
 az appservice plan create \
@@ -84,7 +84,7 @@ az appservice plan create \
 
 Als u de volgende opdrachten uitvoert, wordt in de vorige stap een web-app gemaakt in elk van de App Service-abonnementen. Web-app-namen moeten wereldwijd uniek zijn.
 
-Een web-app maken met [az webapp create](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az_webapp_create&preserve-view=true):
+Een web-app maken met [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create&preserve-view=true):
 
 ```azurecli-interactive
 az webapp create \
@@ -104,7 +104,7 @@ Noteer de standaardhostnaam van elke web-app, zodat u de backend-adressen kunt d
 
 Maak een eenvoudige Front Door met de standaardinstellingen voor taakverdeling, statustest en routeringsregels door de volgende stappen uit te voeren:
 
-Front Door maken met [az network front-door create](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door?view=azure-cli-latest#ext_front_door_az_network_front_door_create&preserve-view=true):
+Front Door maken met [az network front-door create](/cli/azure/ext/front-door/network/front-door?view=azure-cli-latest#ext_front_door_az_network_front_door_create&preserve-view=true):
 
 ```azurecli-interactive
 az network front-door create \
@@ -134,7 +134,7 @@ Open een webbrowser en voer de hostnaam in via de opdrachten. De Front Door stuu
 
 Wanneer u de resources die u met de Front Door hebt gemaakt niet meer nodig hebt, verwijdert u beide resourcegroepen. Wanneer u de resourcegroep verwijdert, verwijdert u ook de Front Door en alle resources die hieraan zijn gerelateerd. 
 
-Gebruik [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az_group_delete&preserve-view=true) om de resourcegroep te verwijderen:
+Gebruik [az group delete](/cli/azure/group?view=azure-cli-latest#az_group_delete&preserve-view=true) om de resourcegroep te verwijderen:
 
 ```azurecli-interactive
 az group delete \

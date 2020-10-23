@@ -28,6 +28,7 @@
     - name: Statische HTML-site
       href: quickstart-html.md
     - name: ARM-sjabloon
+      displayName: Resource Manager
       href: quickstart-arm-template.md
     - name: Aangepaste container
       href: quickstart-custom-container.md

@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10c396c4e4b4eac83f08ae0cbbe565f8621688a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 646bd2b6a8e22698e6fbcb44d2442e921c7850a5
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91354969"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441501"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Problemen oplossen Azure Active Directory B2B-samen werking
 
@@ -93,11 +93,11 @@ Een gebruiker met een gast account kan zich niet aanmelden en ontvangt het volge
 
 De gebruiker heeft een Azure-gebruikers account en is een virale Tenant die is verlaten of onbeheerd. Daarnaast zijn er geen globale of bedrijfs beheerders in de Tenant.
 
-Om dit probleem op te lossen, moet u de afgebroken Tenant overnemen. Raadpleeg een niet-  [beheerde Directory als beheerder in azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover). U moet ook toegang krijgen tot de Internet gerichte DNS voor het betreffende domein achtervoegsel om direct bewijs te geven dat u de controle hebt over de naam ruimte. Nadat de Tenant naar een beheerde status is geretourneerd, kunt u met de klant bespreken of de gebruikers-en geverifieerde domein naam de beste optie is voor hun organisatie.
+Om dit probleem op te lossen, moet u de afgebroken Tenant overnemen. Raadpleeg een niet-  [beheerde Directory als beheerder in azure Active Directory](../users-groups-roles/domains-admin-takeover.md). U moet ook toegang krijgen tot de Internet gerichte DNS voor het betreffende domein achtervoegsel om direct bewijs te geven dat u de controle hebt over de naam ruimte. Nadat de Tenant naar een beheerde status is geretourneerd, kunt u met de klant bespreken of de gebruikers-en geverifieerde domein naam de beste optie is voor hun organisatie.
 
 ## <a name="a-guest-user-with-a-just-in-time-or-viral-tenant-is-unable-to-reset-their-password"></a>Een gast gebruiker met een just-in-time-of virus-Tenant kan het wacht woord niet opnieuw instellen
 
-Als de identiteits Tenant een just-in-time (JIT) of virale Tenant is (wat betekent dat het een afzonderlijke, niet-beheerde Azure-Tenant is), kan alleen de gast gebruiker het wacht woord opnieuw instellen. Soms neemt een organisatie het [beheer van virale tenants over](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover) die worden gemaakt wanneer werk nemers hun werk-e-mail adressen gebruiken om zich aan te melden voor services. Nadat de organisatie een virale Tenant heeft overgenomen, kan alleen een beheerder in die organisatie het wacht woord van de gebruiker opnieuw instellen of SSPR inschakelen. Als dat nodig is, kunt u, als de uitnodigende organisatie, het gast gebruikers account uit uw Directory verwijderen en een uitnodiging opnieuw verzenden.
+Als de identiteits Tenant een just-in-time (JIT) of virale Tenant is (wat betekent dat het een afzonderlijke, niet-beheerde Azure-Tenant is), kan alleen de gast gebruiker het wacht woord opnieuw instellen. Soms neemt een organisatie het [beheer van virale tenants over](../users-groups-roles/domains-admin-takeover.md) die worden gemaakt wanneer werk nemers hun werk-e-mail adressen gebruiken om zich aan te melden voor services. Nadat de organisatie een virale Tenant heeft overgenomen, kan alleen een beheerder in die organisatie het wacht woord van de gebruiker opnieuw instellen of SSPR inschakelen. Als dat nodig is, kunt u, als de uitnodigende organisatie, het gast gebruikers account uit uw Directory verwijderen en een uitnodiging opnieuw verzenden.
 
 ## <a name="a-guest-user-is-unable-to-use-the-azuread-powershell-v1-module"></a>Een gast gebruiker kan de AzureAD Power shell v1-module niet gebruiken
 
@@ -105,7 +105,7 @@ Met ingang van 18 november 2019 kunnen gast gebruikers in uw directory (gedefini
 
 ## <a name="in-an-azure-us-government-tenant-i-cant-invite-a-b2b-collaboration-guest-user"></a>In een Azure US Government-Tenant kan ik geen gast gebruiker voor B2B-samen werking uitnodigen
 
-Binnen de Azure-Cloud voor de Amerikaanse overheid wordt B2B-samen werking momenteel alleen ondersteund tussen tenants die zich in de cloud van Azure Amerikaanse overheid bevinden en die allebei ondersteuning bieden voor B2B-samen werking. Als u een gebruiker uitnodigt in een Tenant die geen deel uitmaakt van de Azure-Cloud voor de Amerikaanse overheid of die geen ondersteuning biedt voor B2B-samen werking, krijgt u een fout melding. Zie [Azure Active Directory Premium P1 en P2-variaties](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2)voor meer informatie en beperkingen.
+Binnen de Azure-Cloud voor de Amerikaanse overheid wordt B2B-samen werking momenteel alleen ondersteund tussen tenants die zich in de cloud van Azure Amerikaanse overheid bevinden en die allebei ondersteuning bieden voor B2B-samen werking. Als u een gebruiker uitnodigt in een Tenant die geen deel uitmaakt van de Azure-Cloud voor de Amerikaanse overheid of die geen ondersteuning biedt voor B2B-samen werking, krijgt u een fout melding. Zie [Azure Active Directory Premium P1 en P2-variaties](../../azure-government/compare-azure-government-global-azure.md#azure-active-directory-premium-p1-and-p2)voor meer informatie en beperkingen.
 
 ## <a name="i-receive-the-error-that-azure-ad-cannot-find-the-aad-extensions-app-in-my-tenant"></a>Ik krijg de fout melding dat Azure AD de Aad-Extensions niet kan vinden-app in mijn Tenant
 
@@ -123,4 +123,4 @@ U ziet nu de herstelde app in de Azure Portal.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Ondersteuning voor B2B-samen werking verkrijgen](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto)
+[Ondersteuning voor B2B-samen werking verkrijgen](../fundamentals/active-directory-troubleshooting-support-howto.md)

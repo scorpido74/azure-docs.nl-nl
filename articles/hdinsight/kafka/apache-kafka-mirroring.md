@@ -8,16 +8,19 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 278fbdf7010fe7b14488bb021ab8a366393ad512
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4a2be6719fdaaa9dc859df21cc030478e474210
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087359"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428238"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>MirrorMaker gebruiken om Apache Kafka-onderwerpen te repliceren met Kafka in HDInsight
 
 Meer informatie over het gebruik van de functie spiegeling van Apache Kafka om onderwerpen te repliceren naar een secundair cluster. Spiegeling kan worden uitgevoerd als een doorlopend proces of worden gebruikt als een methode voor het migreren van gegevens van het ene naar het andere cluster.
+
+> [!NOTE]
+> Dit artikel bevat verwijzingen naar de term *white list*, een term die micro soft niet meer gebruikt. Wanneer de periode van de software wordt verwijderd, worden deze uit dit artikel verwijderd.
 
 In dit voor beeld wordt spiegeling gebruikt voor het repliceren van onderwerpen tussen twee HDInsight-clusters. Beide clusters bevinden zich in verschillende virtuele netwerken in verschillende data centers.
 
@@ -73,7 +76,7 @@ Deze architectuur bevat twee clusters in verschillende resource groepen en virtu
 
 1. Twee nieuwe Kafka-clusters maken:
 
-    | Clusternaam | Resource Group | Virtual Network | Opslagaccount |
+    | Clusternaam | Resourcegroep | Virtual Network | Opslagaccount |
     |---|---|---|---|
     | Kafka-primair-cluster | Kafka-primair-RG | Kafka-primair-vnet | kafkaprimarystorage |
     | Kafka-secundair-cluster | Kafka-secundair-RG | Kafka-secundair-vnet | kafkasecondarystorage |

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 10/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 849057ab1ccde2e0771f0c1cd52ea399ffe4cea7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: cdc0dea825cb32275a2ada3a49d7d622180aa468
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964686"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166625"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>Gebruikers configureren en inschakelen voor verificatie op basis van SMS met behulp van Azure Active Directory (preview)
 
@@ -96,13 +96,17 @@ Wanneer een telefoon nummer is ingesteld voor SMS-Sign, is het ook beschikbaar v
 1. Zoek en selecteer de optie **Azure Active Directory**.
 1. Selecteer in het navigatie menu aan de linkerkant van het Azure Active Directory venster **gebruikers**.
 1. Selecteer de gebruiker die u hebt ingeschakeld voor verificatie op basis van SMS in de vorige sectie, zoals *Contoso-gebruiker*, en selecteer vervolgens **verificatie methoden**.
-1. Voer het telefoon nummer van de gebruiker in, met inbegrip van de land code, zoals *+ 1 xxxxxxxxx*. De Azure Portal valideert het telefoon nummer in de juiste indeling.
+1. Selecteer **+ verificatie methode toevoegen**en kies in de vervolg keuzelijst *methode kiezen* de optie **telefoon nummer**.
 
-    ![Een telefoon nummer instellen voor een gebruiker in de Azure Portal voor gebruik met verificatie op basis van SMS](./media/howto-authentication-sms-signin/set-user-phone-number.png)
+    Voer het telefoon nummer van de gebruiker in, met inbegrip van de land code, zoals *+ 1 xxxxxxxxx*. De Azure Portal valideert het telefoon nummer in de juiste indeling.
+
+    Ga vervolgens naar de vervolg keuzelijst *telefoon type* en selecteer *mobiele*, *alternatieve mobiele apparaten*of *andere* als dat nodig is.
+
+    :::image type="content" source="media/howto-authentication-sms-signin/set-user-phone-number.png" alt-text="Een telefoon nummer instellen voor een gebruiker in de Azure Portal voor gebruik met verificatie op basis van SMS":::
 
     Het telefoon nummer moet uniek zijn in uw Tenant. Als u hetzelfde telefoon nummer voor meerdere gebruikers probeert te gebruiken, wordt er een fout bericht weer gegeven.
 
-1. Selecteer **Opslaan**om het telefoon nummer toe te passen op het account van een gebruiker.
+1. Selecteer **toevoegen**om het telefoon nummer toe te passen op het account van een gebruiker.
 
 Wanneer het is ingericht, wordt er een vinkje weer gegeven voor *SMS-aanmelding ingeschakeld*.
 

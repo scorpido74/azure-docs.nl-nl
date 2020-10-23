@@ -1,14 +1,14 @@
 ---
 title: 'Zelfstudie: Een aangepaste beleidsdefinitie maken'
 description: In deze zelfstudie maakt u een aangepaste beleidsdefinitie voor Azure Policy om aangepaste bedrijfsregels af te dwingen voor uw Azure-resources.
-ms.date: 06/16/2020
+ms.date: 10/05/2020
 ms.topic: tutorial
-ms.openlocfilehash: 72282cbc5ed1877cf3f61b792235e8dc2f72fffe
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 24058a2c8428d306c5e53a73393b0d98785831cf
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649831"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876291"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Zelfstudie: Een aangepaste beleidsdefinitie maken
 
@@ -66,12 +66,15 @@ De [VS Code-extensie](../how-to/extension-for-vscode.md#search-for-and-view-reso
 
 ### <a name="arm-templates"></a>ARM-sjablonen
 
-Er zijn verschillende manieren om te kijken naar een [Resource Manager-sjabloon](../../../azure-resource-manager/templates/template-tutorial-use-template-reference.md) die de eigenschap bevat die u wilt beheren.
+Er zijn verschillende manieren om te kijken naar een [ARM](../../../azure-resource-manager/templates/template-tutorial-use-template-reference.md) die de eigenschap bevat die u wilt beheren.
 
 #### <a name="existing-resource-in-the-portal"></a>Bestaande resource in de portal
 
 De eenvoudigste manier om eigenschappen te vinden is een bestaande resource van hetzelfde type te bekijken. Resources die al zijn geconfigureerd met de instelling die u wilt afdwingen, bevatten ook de waarde waarmee moet worden vergeleken.
 Bekijk de pagina **Sjabloon exporteren** (onder **Instellingen**) in de Azure-portal voor die specifieke resource.
+
+> [!WARNING]
+> De ARM-sjabloon die is geëxporteerd door Azure Portal kan niet direct worden gekoppeld aan de `deployment` eigenschap voor een ARM-sjabloon in een [deployIfNotExists](../concepts/effects.md#deployifnotexists)-beleidsdefinitie.
 
 :::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="Schermopname van de pagina Sjabloon exporteren van een bestaande resource in de Azure-portal." border="false":::
 

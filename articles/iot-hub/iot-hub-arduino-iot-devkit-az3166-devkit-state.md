@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
-ms.openlocfilehash: 0d8e10a18436b0b52820dd0bf15ad0b2de969b79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c43c8a0b9fdf30b5ce5ae6ecbf123b563099ff6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87337939"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148785"
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
 
@@ -28,7 +28,7 @@ U kunt dit voor beeld gebruiken om de MXChip IoT DevKit WiFi-gegevens en sensor 
 
 ## <a name="what-you-need"></a>Wat u nodig hebt
 
-- Stel uw ontwikkel omgeving in door de aan de slag- [hand leiding](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)te volgen.
+- Stel uw ontwikkel omgeving in door de aan de slag- [hand leiding](./iot-hub-arduino-iot-devkit-az3166-get-started.md)te volgen.
 
 - Typ in het GitBash-Terminal venster (of een andere Git-opdracht regel Interface) de volgende opdrachten:
 
@@ -114,4 +114,4 @@ U hebt het volgende geleerd:
 - Verbind een MXChip IoT DevKit-apparaat met uw Azure IoT-oplossing voor externe controle.
 - Gebruik de Azure IoT-functie voor apparaatdubbels om de kleur van de RGB-LED van DevKit te bedenken en te beheren.
 
-Hier volgt de voorgestelde volgende stap: [overzicht van de Azure IOT-oplossing voor externe controle](https://docs.microsoft.com/azure/iot-suite/)
+Hier volgt de voorgestelde volgende stap: [overzicht van de Azure IOT-oplossing voor externe controle](/azure/iot-suite/)

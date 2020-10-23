@@ -9,19 +9,19 @@ ms.date: 02/01/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 1aca39a7ff162aa3c42fdb3ca5999c71091ec02e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67175768"
 ---
- Als u de Azure Cloud Shell gebruikt, meldt u zich automatisch aan bij uw Azure-account nadat u op ' proberen ' hebt geklikt. Als u zich lokaal wilt aanmelden, opent u de Power shell-console met verhoogde bevoegdheden en voert u de cmdlet uit om verbinding te maken.
+ Als u Azure Cloud Shell gebruikt, wordt u automatisch aangemeld bij uw Azure-account nadat u op Probeer het nu hebt geklikt. Als u zich lokaal wil aanmelden, opent u de PowerShell-console met verhoogde rechten en voert u de cmdlet uit om verbinding te maken.
 
 ```azurepowershell
 Connect-AzAccount
 ```
 
-Als u meer dan één abonnement hebt, kunt u een lijst met uw Azure-abonnementen ophalen.
+Als u meer dan één abonnement hebt, haalt u een lijst met uw abonnementen op.
 
 ```azurepowershell-interactive
 Get-AzSubscription

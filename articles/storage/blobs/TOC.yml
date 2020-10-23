@@ -686,11 +686,10 @@
           items:
             - name: Aanbevelingen voor beveiliging
               href: security-recommendations.md
-            - name: Toegangsbeheer (mappen en bestanden)
+            - name: Toegangsbeheermodel
+              href: data-lake-storage-access-control-model.md
+            - name: Toegangsbeheerlijsten
               href: data-lake-storage-access-control.md
-            - name: Besturingselementen voor beveiliging van Azure Policy
-              displayName: 'regulatory, compliance, standards, domains'
-              href: ./security-controls-policy.md
         - name: Compatibiliteit
           items:
             - name: Toegang met meerdere protocollen

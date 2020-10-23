@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: cf7a3ff478100c892e59e98c91e9605c88bdc667
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f584ba1021e9cc66454e3aebd7f51b34e72885f5
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89438820"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369179"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory-version-1"></a>Reken omgevingen die worden ondersteund door Azure Data Factory versie 1
 > [!NOTE]
@@ -30,7 +30,7 @@ De volgende tabel bevat een lijst met reken omgevingen die worden ondersteund do
 | ---------------------------------------- | ---------------------------------------- |
 | [Azure hdinsight-cluster op aanvraag](#azure-hdinsight-on-demand-linked-service) of [uw eigen HDInsight-cluster](#azure-hdinsight-linked-service) | [DotNet](data-factory-use-custom-activities.md), [Hive](data-factory-hive-activity.md), [Pig](data-factory-pig-activity.md), [MapReduce](data-factory-map-reduce.md), [Hadoop-streaming](data-factory-hadoop-streaming-activity.md) |
 | [Azure Batch](#azure-batch-linked-service) | [DotNet](data-factory-use-custom-activities.md) |
-| [Azure Machine Learning](#azure-machine-learning-linked-service) | [Machine Learning-activiteiten: batchuitvoering en resources bijwerken](data-factory-azure-ml-batch-execution-activity.md) |
+| [Azure Machine Learning Studio (klassiek)](#azure-machine-learning-studio-classic-linked-service) | [Studio-activiteiten (klassiek): batch uitvoering en resource bijwerken](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
 | [Azure SQL](#azure-sql-linked-service), [Azure Synapse Analytics](#azure-synapse-analytics-linked-service), [SQL Server](#sql-server-linked-service) | [Opgeslagen procedureactiviteit](data-factory-stored-proc-activity.md) |
 
@@ -230,7 +230,7 @@ Dit type configuratie wordt ondersteund voor de volgende reken omgevingen:
 
 * Azure HDInsight
 * Azure Batch
-* Azure Machine Learning
+* Azure Machine Learning Studio (klassiek)
 * Azure Data Lake Analytics
 * Azure SQL Database, Azure Synapse Analytics (voorheen SQL Data Warehouse), SQL Server
 
@@ -311,8 +311,8 @@ Een andere optie is om het **batchUri** -eind punt op te geven. Bijvoorbeeld:
 | poolName          | De naam van de groep Vm's.    | Ja      |
 | linkedServiceName | De naam van de gekoppelde opslag service die is gekoppeld aan deze batch gekoppelde service. Deze gekoppelde service wordt gebruikt voor tijdelijke bestanden die nodig zijn om de activiteit uit te voeren en om uitvoerings logboeken voor de activiteit op te slaan. | Ja      |
 
-## <a name="azure-machine-learning-linked-service"></a>Azure Machine Learning gekoppelde service
-U kunt een Machine Learning gekoppelde service maken om een Machine Learning batch Score-eind punt te registreren bij een data factory.
+## <a name="azure-machine-learning-studio-classic-linked-service"></a>Gekoppelde service Azure Machine Learning Studio (klassiek)
+U kunt een gekoppelde Azure Machine Learning Studio-Service (klassiek) maken om een studio (klassiek) batch Score-eind punt te registreren voor een data factory.
 
 ### <a name="example"></a>Voorbeeld
 

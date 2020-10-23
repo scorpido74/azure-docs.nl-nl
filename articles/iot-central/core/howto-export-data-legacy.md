@@ -7,12 +7,12 @@ ms.author: viviali
 ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 5d8f3bc0978cc67edbaee29198c78b41d1d08a32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 812fd0c10b63cfe469a10a99069f201fcc2cc658
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90974420"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126734"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-legacy"></a>IoT-gegevens exporteren naar Cloud bestemmingen met behulp van gegevens export (verouderd)
 
@@ -63,7 +63,7 @@ Wanneer u Service Bus als een export bestemming kiest, moeten de wacht rijen en 
 
 Als u geen bestaand Azure Storage-account hebt om naar te exporteren, voert u de volgende stappen uit:
 
-1. Maak een [Nieuw opslag account in de Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Meer informatie over het maken van nieuwe [Azure Blob Storage-accounts](https://aka.ms/blobdocscreatestorageaccount) of [Azure data Lake Storage v2-opslag accounts](../../storage/blobs/data-lake-storage-quickstart-create-account.md). Gegevens export kan alleen gegevens schrijven naar opslag accounts die ondersteuning bieden voor blok-blobs. De volgende lijst bevat de bekende compatibele opslag account typen:
+1. Maak een [Nieuw opslag account in de Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Meer informatie over het maken van nieuwe [Azure Blob Storage-accounts](../../storage/blobs/storage-quickstart-blobs-portal.md) of [Azure data Lake Storage v2-opslag accounts](../../storage/common/storage-account-create.md). Gegevens export kan alleen gegevens schrijven naar opslag accounts die ondersteuning bieden voor blok-blobs. De volgende lijst bevat de bekende compatibele opslag account typen:
 
     |Prestatie niveau|Accounttype|
     |-|-|
@@ -156,7 +156,7 @@ In het volgende voor beeld wordt een bericht weer gegeven dat is ontvangen van e
 
 Dit bericht bevat niet de apparaat-ID van het verzendende apparaat.
 
-Als u de apparaat-ID uit de bericht gegevens in een Azure Stream Analytics query wilt ophalen, gebruikt u de functie [GetMetadataPropertyValue](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue) . Zie de query in [Azure IOT Central uitbreiden met aangepaste regels met behulp van stream Analytics, Azure functions en SendGrid](./howto-create-custom-rules.md)voor een voor beeld.
+Als u de apparaat-ID uit de bericht gegevens in een Azure Stream Analytics query wilt ophalen, gebruikt u de functie [GetMetadataPropertyValue](/stream-analytics-query/getmetadatapropertyvalue) . Zie de query in [Azure IOT Central uitbreiden met aangepaste regels met behulp van stream Analytics, Azure functions en SendGrid](./howto-create-custom-rules.md)voor een voor beeld.
 
 Gebruik [systemProperties](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/structured-streaming-eventhubs-integration.md)om de apparaat-id op te halen in een Azure Databricks of Apache Spark werk ruimte. Zie de Databricks-werk ruimte in [Azure IOT Central uitbreiden met aangepaste analyses met behulp van Azure Databricks](./howto-create-custom-analytics.md)voor een voor beeld.
 
@@ -557,7 +557,7 @@ In dit voor beeld wordt een bericht weer gegeven met apparaat-en eigenschappen g
 
 Als u een bestaande gegevens export in uw preview-toepassing hebt met de *apparaten* en de streams voor *apparaat-sjablonen* ingeschakeld, werkt u de export op **30 juni 2020**bij. Deze vereiste geldt voor export naar Azure Blob Storage, Azure Event Hubs en Azure Service Bus.
 
-Vanaf 3 februari 2020 heeft alle nieuwe exports in toepassingen met apparaten en apparaatinstellingen ingeschakeld de hierboven beschreven gegevens indeling. Alle exports die vóór deze datum zijn gemaakt, blijven op de oude gegevens indeling tot en met 30 juni 2020, op het moment dat deze exports automatisch worden gemigreerd naar de nieuwe gegevens indeling. De nieuwe gegevens indeling komt overeen met het [apparaat](https://docs.microsoft.com/rest/api/iotcentral/devices/get), de [apparaat-eigenschap](https://docs.microsoft.com/rest/api/iotcentral/devices/getproperties), de eigenschap van de [apparaat-Cloud](https://docs.microsoft.com/rest/api/iotcentral/devices/getcloudproperties)en de object [sjabloon](https://docs.microsoft.com/rest/api/iotcentral/devicetemplates/get) objecten in de IOT Central open bare API.
+Vanaf 3 februari 2020 heeft alle nieuwe exports in toepassingen met apparaten en apparaatinstellingen ingeschakeld de hierboven beschreven gegevens indeling. Alle exports die vóór deze datum zijn gemaakt, blijven op de oude gegevens indeling tot en met 30 juni 2020, op het moment dat deze exports automatisch worden gemigreerd naar de nieuwe gegevens indeling. De nieuwe gegevens indeling komt overeen met het [apparaat](/rest/api/iotcentral/devices/get), de [apparaat-eigenschap](/rest/api/iotcentral/devices/getproperties), de eigenschap van de [apparaat-Cloud](/rest/api/iotcentral/devices/getcloudproperties)en de object [sjabloon](/rest/api/iotcentral/devicetemplates/get) objecten in de IOT Central open bare API.
 
 Voor **apparaten**zijn er belang rijke verschillen tussen de oude gegevens indeling en de nieuwe gegevens indeling:
 - `@id` voor het apparaat wordt verwijderd, `deviceId` wordt de naam gewijzigd in `id` 

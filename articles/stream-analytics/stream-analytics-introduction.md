@@ -7,13 +7,13 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
-ms.date: 07/6/2020
-ms.openlocfilehash: c6c878aa0e4a9d5caa22f7cd94c438f22a81d2ab
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/9/2020
+ms.openlocfilehash: 10ffe7c2544be2bf2c09ae39f323b1e643063d27
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90881875"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91892877"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Wat is Azure Stream Analytics?
 
@@ -43,33 +43,32 @@ In de volgende afbeelding wordt getoond hoe gegevens naar Stream Analytics worde
 
 ## <a name="key-capabilities-and-benefits"></a>Belangrijkste mogelijkheden en voordelen
 
-Azure Stream Analytics is gebruiksvriendelijk, flexibel, betrouwbaar en schaalbaar tot elke taakgrootte. Het is beschikbaar in meerdere Azure-regio's. In de volgende afbeelding worden de belangrijkste mogelijkheden van Azure Stream Analytics getoond:
-
-![Belangrijkste mogelijkheden van Azure Stream Analytics](./media/stream-analytics-introduction/stream-analytics-key-capabilities.png)
+Azure Stream Analytics is gebruiksvriendelijk, flexibel, betrouwbaar en schaalbaar tot elke taakgrootte. Het is beschikbaar in meerdere Azure-regio's en kan worden uitgevoerd op IoT Edge of Azure Stack.
 
 ## <a name="ease-of-getting-started"></a>Eenvoudig aan de slag
 
 Met Azure Stream Analytics kunt u zo beginnen. Met slecht een paar klikken maakt u verbinding met meerdere bronnen en sinks om een end-to-endpijplijn te maken. Stream Analytics kan verbinding maken met [Azure Event Hubs](/azure/event-hubs/) en [Azure IoT Hub](/azure/iot-hub/) voor opname van streamgegevens, en met de [Azure Blob-opslag](/azure/storage/common/storage-introduction) voor opname van historische gegevens. Taakinvoer kan ook bestaan uit statische referentiegegevens van de Azure Blob-opslag of [SQL-database](stream-analytics-use-reference-data.md#azure-sql-database) die u met deze verwijzingsgegevens kunt samenvoegen om opzoekbewerkingen uit te voeren.
 
-Stream Analytics kan taakuitvoer omleiden naar talloze opslagsystemen, bijvoorbeeld [Azure Blob-opslag](/azure/storage/common/storage-introduction), [Azure SQL Database](/azure/sql-database/), [Azure Data Lake Stores](/azure/data-lake-store/) en [Azure Cosmos DB](/azure/cosmos-db/introduction). U kunt batch-analyses uitvoeren op opgeslagen uitvoer met HDInsight of u kunt de uitvoer verzenden naar een andere service, zoals Event Hubs voor verbruik, of naar [Power BI](https://docs.microsoft.com/power-bi/) voor realtime visualisatie.
+Stream Analytics kan taakuitvoer omleiden naar talloze opslagsystemen, bijvoorbeeld [Azure Blob-opslag](/azure/storage/common/storage-introduction), [Azure SQL Database](/azure/sql-database/), [Azure Data Lake Stores](/azure/data-lake-store/) en [Azure Cosmos DB](/azure/cosmos-db/introduction). U kunt ook batchanalyses uitvoeren op streamuitvoeren met Azure Synapse Analytics of HDInsight, of u kunt de uitvoer naar een andere service verzenden, zoals Event Hubs voor verbruik of [Power BI](https://docs.microsoft.com/power-bi/) voor realtime visualisatie.
 
 Zie [Uitvoer van Azure Stream Analytics begrijpen](stream-analytics-define-outputs.md) voor een volledige lijst met Stream Analytics-uitvoer.
 
 ## <a name="programmer-productivity"></a>Productiviteit van programmeurs
 
-Azure Stream Analytics maakt gebruik van een eenvoudige, op SQL gebaseerde querytaal die is uitgebreid met krachtige, tijdelijke beperkingen voor het analyseren van gegevens in beweging. Voor het definiëren van taaktransformaties gebruikt u een eenvoudige, declaratieve [Stream Analytics-querytaal](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) waarmee u complexe, tijdelijke query’s en analyses kunt schrijven met behulp van SQL-constructs. Omdat de querytaal van Stream Analytics is consistent met SQL. Als u bekend bent met SQL, is dat voldoende om taken te kunnen maken. U kunt ook taken maken met ontwikkelaarstalen als Azure PowerShell, [Stream Analytics Visual Studio tools](stream-analytics-tools-for-visual-studio-install.md), de [Stream Analytics Visual Studio Code-extensie](quick-create-visual-studio-code.md) of Azure Resource Manager-sjablonen. Met ontwikkelaarstalen kunt u offline transformatiequery’s ontwikkelen en de [CI/CD-pijplijn](stream-analytics-tools-for-visual-studio-cicd.md) gebruiken om taken bij Azure in te dienen.
+Azure Stream Analytics maakt gebruik van een SQL-querytaal die is uitgebreid met krachtige, tijdelijke beperkingen voor het analyseren van gegevens in beweging. U kunt ook taken maken met ontwikkelaarstalen als Azure PowerShell, Azure CLI, [Stream Analytics Visual Studio tools](stream-analytics-tools-for-visual-studio-install.md), de [Stream Analytics Visual Studio Code-extensie](quick-create-visual-studio-code.md) of Azure Resource Manager-sjablonen. Met ontwikkelaarstalen kunt u offline transformatiequery's ontwikkelen en de [CI/CD-pijplijn](stream-analytics-tools-for-visual-studio-cicd.md) gebruiken om taken bij Azure in te dienen.
 
-De querytaal van Stream Analytics biedt een breed spectrum aan functies voor het analyseren en verwerken van streaming gegevens. Deze querytaal ondersteunt eenvoudige gegevensbewerking, -samenvoeging en analysefuncties, [georuimtelijke functies](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-geospatial-functions), [patroonherkenning](https://docs.microsoft.com/stream-analytics-query/match-recognize-stream-analytics) en [anomaliedetectie](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-machine-learning-anomaly-detection). U kunt query’s in de portal bewerken en ze testen met voorbeeldgegevens die uit een livestream worden opgehaald.
+Met de Stream Analytics-querytaal kunt u CEP (verwerking van complexe gebeurtenissen) uitvoeren door een breed scala aan functies te bieden voor het analyseren van streaming-gegevens. Deze querytaal ondersteunt eenvoudige gegevensbewerking, -samenvoeging en analysefuncties, [georuimtelijke functies](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-geospatial-functions), [patroonherkenning](https://docs.microsoft.com/stream-analytics-query/match-recognize-stream-analytics) en [anomaliedetectie](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-machine-learning-anomaly-detection). U kunt query's in de portal bewerken of uw ontwikkelhulpprogramma's gebruiken en ze testen met voorbeeldgegevens die uit een livestream worden opgehaald.
 
 U kunt de mogelijkheden van de querytaal uitbreiden door extra functie te definiëren en aan te roepen. In Azure Machine Learning kunt u functieaanroepen definiëren om gebruik te kunnen maken van Azure Machine Learning-oplossingen en door gebruikers gedefinieerde JavaScript- of C#-functies (UDF’s) of door gebruikers gedefinieerde aggregaten te integreren voor het uitvoeren van complexe berekeningen als onderdeel van een Stream Analytics-query.
 
 ## <a name="fully-managed"></a>Volledig beheerd
 
-Azure Stream Analytics is een volledige beheerde (PaaS) aanbieding in Azure. U moet geen hardware inrichten, clusters beheren om uw taken uit te voeren of besturingssystemen of software bij te werken. Azure Stream Analytics beheert uw taak volledig, zodat u zicht kunt richten op uw bedrijfslogica en niet op de infrastructuur.
+Azure Stream Analytics is een volledig beheerde (PaaS) aanbieding in Azure. U hoeft geen hardware of infrastructuur in te richten, het besturingssysteem of de software bij te werken. Azure Stream Analytics beheert uw taak volledig, zodat u zicht kunt richten op uw bedrijfslogica en niet op de infrastructuur.
+
 
 ## <a name="run-in-the-cloud-or-on-the-intelligent-edge"></a>In de cloud of op de intelligente rand uitvoeren
 
-Azure Stream Analytics kan in de cloud worden uitgevoerd voor grootschalige analysetaken, of op IoT Edge worden uitgevoerd voor analyses met een zeer lage latentie. Azure Stream Analytics maakt gebruik van dezelfde tools en querytaal in zowel de cloud als op de intelligente Edge, zodat ontwikkelaars ware hybride architecturen kunnen bouwen voor het verwerken van streams. 
+Azure Stream Analytics kan in de cloud worden uitgevoerd voor grootschalige analysetaken, of op IoT Edge of Azure Stack worden uitgevoerd voor analyses met een zeer lage latentie. Azure Stream Analytics maakt gebruik van dezelfde tools en querytaal in zowel de cloud als op de intelligente Edge, zodat ontwikkelaars ware hybride architecturen kunnen bouwen voor het verwerken van streams. 
 
 ## <a name="low-total-cost-of-ownership"></a>Lage total cost of ownership
 
@@ -89,7 +88,7 @@ Als een beheerde service garandeert Stream Analytics een beschikbaarheid op minu
 
 ### <a name="security"></a>Beveiliging
 
-Wat betreft beveiliging, versleutelt Azure Stream Analytics alle inkomende en uitgaande communicatie en biedt ondersteuning voor TLS 1.2. Ingebouwde controlepunten zijn eveneens versleuteld. Stream Analytics slaat de binnenkomende gegevens niet op omdat alle verwerking in het geheugen gebeurt.
+Wat betreft beveiliging, versleutelt Azure Stream Analytics alle inkomende en uitgaande communicatie en biedt ondersteuning voor TLS 1.2. Ingebouwde controlepunten zijn eveneens versleuteld. Stream Analytics slaat de binnenkomende gegevens niet op omdat alle verwerking in het geheugen gebeurt. Stream Analytics biedt ook ondersteuning voor Azure Virtual Networks (VNET) bij het uitvoeren van een taak in een [Stream Analytics-cluster](https://docs.microsoft.com/azure/stream-analytics/cluster-overview).
 
 ### <a name="compliance"></a>Naleving
 

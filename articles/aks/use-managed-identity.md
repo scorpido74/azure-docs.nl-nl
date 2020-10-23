@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 07/17/2020
 ms.author: thomasge
-ms.openlocfilehash: 836a5a003268a98dd8e63eed9bfdba741abcf4ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20e255958cbd90aaddf060e42d7627c1e1ebec88
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397042"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371457"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Beheerde identiteiten gebruiken in azure Kubernetes service
 
@@ -30,7 +30,7 @@ U moet de volgende bron hebben geïnstalleerd:
 * Bestaande AKS-clusters kunnen niet worden gemigreerd naar beheerde identiteiten.
 * Tijdens de **upgrade** bewerkingen van het cluster is de beheerde identiteit tijdelijk niet beschikbaar.
 * Tenants verplaatsen/migreren van beheerde identiteits clusters worden niet ondersteund.
-* Als het cluster is `aad-pod-identity` ingeschakeld, wijzigt NMI (node Managed Identity) het knoop punt ' iptables ' om aanroepen naar het eind punt van de meta gegevens van het Azure-exemplaar te onderscheppen. Deze configuratie houdt in dat elke aanvraag voor het eind punt van de meta gegevens wordt onderschept door NMI, zelfs als de pod niet wordt gebruikt `aad-pod-identity` . AzurePodIdentityException CRD kan zodanig worden geconfigureerd `aad-pod-identity` dat alle aanvragen voor het eind punt van de meta gegevens die afkomstig zijn van een pod die overeenkomt met de labels die zijn gedefinieerd in CRD, via een proxy moeten worden gewaarschuwd zonder enige verwerking in NMI. Het systeem van het `kubernetes.azure.com/managedby: aks` label in de naam ruimte _uitvoeren_ moet worden uitgesloten in `aad-pod-identity` door de AzurePodIdentityException CRD te configureren. Zie [Aad-pod-Identity voor een specifieke Pod of toepassing uitschakelen](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md)voor meer informatie.
+* Als het cluster is `aad-pod-identity` ingeschakeld, wijzigt NMI (node Managed Identity) het knoop punt ' iptables ' om aanroepen naar het eind punt van de meta gegevens van het Azure-exemplaar te onderscheppen. Deze configuratie houdt in dat elke aanvraag voor het eind punt van de meta gegevens wordt onderschept door NMI, zelfs als de pod niet wordt gebruikt `aad-pod-identity` . AzurePodIdentityException CRD kan zodanig worden geconfigureerd `aad-pod-identity` dat alle aanvragen voor het eind punt van de meta gegevens die afkomstig zijn van een pod die overeenkomt met de labels die zijn gedefinieerd in CRD, via een proxy moeten worden gewaarschuwd zonder enige verwerking in NMI. Het systeem van het `kubernetes.azure.com/managedby: aks` label in de naam ruimte _uitvoeren_ moet worden uitgesloten in `aad-pod-identity` door de AzurePodIdentityException CRD te configureren. Zie [Aad-pod-Identity voor een specifieke Pod of toepassing uitschakelen](https://azure.github.io/aad-pod-identity/docs/configure/application_exception)voor meer informatie.
   Als u een uitzonde ring wilt configureren, installeert u de YAML van de [Mic-uitzonde ring](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml).
 
 ## <a name="summary-of-managed-identities"></a>Samen vatting van beheerde identiteiten
@@ -41,17 +41,17 @@ AKS maakt gebruik van verschillende beheerde identiteiten voor ingebouwde servic
 |----------------------------|-----------|----------|
 | Besturingsvlak | niet zichtbaar | Gebruikt door AKS voor beheerde netwerk bronnen, waaronder binnenloads voor binnenkomend verkeer en AKS beheerde open bare Ip's | Rol Inzender voor knooppunt resource groep | Preview
 | Kubelet | AKS-cluster naam-agent pool | Verificatie met Azure Container Registry (ACR) | N.V.T. (voor kubernetes v 1.15 +) | Momenteel niet ondersteund
-| Invoeg toepassing | AzureNPM | Geen identiteit vereist | NA | Nee
-| Invoeg toepassing | AzureCNI netwerk bewaking | Geen identiteit vereist | NA | Nee
-| Invoeg toepassing | azurepolicy (gate keeper) | Geen identiteit vereist | NA | Nee
-| Invoeg toepassing | azurepolicy | Geen identiteit vereist | NA | Nee
-| Invoeg toepassing | Calico | Geen identiteit vereist | NA | Nee
-| Invoeg toepassing | Dashboard | Geen identiteit vereist | NA | Nee
+| Invoeg toepassing | AzureNPM | Geen identiteit vereist | N.v.t. | Nee
+| Invoeg toepassing | AzureCNI netwerk bewaking | Geen identiteit vereist | N.v.t. | Nee
+| Invoeg toepassing | azurepolicy (gate keeper) | Geen identiteit vereist | N.v.t. | Nee
+| Invoeg toepassing | azurepolicy | Geen identiteit vereist | N.v.t. | Nee
+| Invoeg toepassing | Calico | Geen identiteit vereist | N.v.t. | Nee
+| Invoeg toepassing | Dashboard | Geen identiteit vereist | N.v.t. | Nee
 | Invoeg toepassing | HTTPApplicationRouting | Hiermee worden de vereiste netwerk bronnen beheerd | Rol van lezer voor knooppunt resource groep, rol Inzender voor DNS-zone | Nee
 | Invoeg toepassing | Ingangs toepassings gateway | Hiermee worden de vereiste netwerk bronnen beheerd| Rol Inzender voor knooppunt resource groep | Nee
 | Invoeg toepassing | omsagent | Wordt gebruikt om AKS-metrische gegevens naar Azure Monitor te verzenden | Rol van uitgever voor metrische gegevens controleren | Nee
 | Invoeg toepassing | Virtual-Node (ACIConnector) | Beheert vereiste netwerk bronnen voor Azure Container Instances (ACI) | Rol Inzender voor knooppunt resource groep | Nee
-| OSS-project | Aad-pod-identiteit | Hiermee kunnen toepassingen veilig toegang krijgen tot Cloud bronnen met Azure Active Directory (AAD) | NA | Stappen voor het verlenen van machtigingen op https://github.com/Azure/aad-pod-identity#role-assignment .
+| OSS-project | Aad-pod-identiteit | Hiermee kunnen toepassingen veilig toegang krijgen tot Cloud bronnen met Azure Active Directory (AAD) | N.v.t. | Stappen voor het verlenen van machtigingen op https://github.com/Azure/aad-pod-identity#role-assignment .
 
 ## <a name="create-an-aks-cluster-with-managed-identities"></a>Een AKS-cluster maken met beheerde identiteiten
 

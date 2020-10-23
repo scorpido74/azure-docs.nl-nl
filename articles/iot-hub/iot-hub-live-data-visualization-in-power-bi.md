@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 6/08/2020
 ms.author: robinsh
-ms.openlocfilehash: ed429d2f584da20439b0cb0eedcf4742b9ae4599
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d10d0202e9e4c813cffe6373acfb5200ebb3266
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84634390"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146780"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Real-time sensor gegevens visualiseren vanuit Azure IoT Hub met behulp van Power BI
 
@@ -140,9 +140,9 @@ Selecteer in de taak stream Analytics **overzicht** **en selecteer**  >  **nu**s
 
 ## <a name="create-and-publish-a-power-bi-report-to-visualize-the-data"></a>Een Power BI rapport maken en publiceren om de gegevens te visualiseren
 
-De volgende stappen laten zien hoe u een rapport maakt en publiceert met behulp van de Power BI-service. U kunt deze stappen met een bepaalde wijziging volgen, als u het ' nieuwe uiterlijk ' wilt gebruiken in Power BI. Zie [het nieuwe uiterlijk van de Power bi-service](https://docs.microsoft.com/power-bi/consumer/service-new-look)als u meer wilt weten over de verschillen en hoe u in het nieuwe uiterlijk kunt navigeren.
+De volgende stappen laten zien hoe u een rapport maakt en publiceert met behulp van de Power BI-service. U kunt deze stappen met een bepaalde wijziging volgen, als u het ' nieuwe uiterlijk ' wilt gebruiken in Power BI. Zie [het nieuwe uiterlijk van de Power bi-service](/power-bi/consumer/service-new-look)als u meer wilt weten over de verschillen en hoe u in het nieuwe uiterlijk kunt navigeren.
 
-1. Zorg ervoor dat de voorbeeld toepassing wordt uitgevoerd op het apparaat. Als dat niet het geval is, raadpleegt u de zelf studies onder [het instellen van uw apparaat](https://docs.microsoft.com/azure/iot-hub/iot-hub-raspberry-pi-kit-node-get-started).
+1. Zorg ervoor dat de voorbeeld toepassing wordt uitgevoerd op het apparaat. Als dat niet het geval is, raadpleegt u de zelf studies onder [het instellen van uw apparaat](./iot-hub-raspberry-pi-kit-node-get-started.md).
 
 2. Meld u aan bij uw [Power BI](https://powerbi.microsoft.com/en-us/)-account.
 

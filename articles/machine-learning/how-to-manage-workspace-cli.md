@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: cb6c49ce779fe8b1e764471c31b392e31d6572ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd6fc3ee88d63c1d933d3405437ec1bf49e0432e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631202"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426358"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Een werk ruimte maken voor Azure Machine Learning met Azure CLI
 
@@ -359,7 +359,7 @@ Als u een werk ruimte wilt delen met een andere gebruiker in uw abonnement, gebr
 az ml workspace share -w <workspace-name> -g <resource-group-name> --user <user> --role <role>
 ```
 
-Zie [gebruikers en rollen beheren](how-to-assign-roles.md)voor meer informatie over op rollen gebaseerd toegangs beheer (RBAC) met Azure machine learning.
+Zie [gebruikers en rollen beheren](how-to-assign-roles.md)voor meer informatie over toegangs beheer op basis van rollen (Azure RBAC) met Azure machine learning.
 
 Zie voor meer informatie de documentatie bij [AZ ml-werkruimte share](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-share) .
 
@@ -394,7 +394,7 @@ az group delete -g <resource-group-name>
 
 Zie voor meer informatie de documentatie voor het verwijderen van de [werk ruimte AZ ml](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-delete) .
 
-## <a name="troubleshooting"></a>Problemen oplossen
+## <a name="troubleshooting"></a>Probleemoplossing
 
 ### <a name="resource-provider-errors"></a>Fouten van de resource provider
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 16ee5fb59741d57f47083a0c5db852872ceb91d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9630919b71afd0219a2e82a86e0f89106e8a0ac2
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89296087"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424066"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>Azure-beveiligings basislijn voor Logic Apps
 
@@ -24,7 +24,7 @@ Zie [overzicht van Azure Security-basis lijnen](../security/benchmarks/security-
 
 ## <a name="network-security"></a>Netwerkbeveiliging
 
-*Zie [Azure Security Bench Mark: Network Security](/azure/security/benchmarks/security-control-network-security)(Engelstalig) voor meer informatie.*
+*Zie [Azure Security Bench Mark: Network Security](../security/benchmarks/security-control-network-security.md)(Engelstalig) voor meer informatie.*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Azure-resources in virtuele netwerken beveiligen
 
@@ -102,7 +102,7 @@ Gebruik Azure Security Center adaptieve netwerk beveiliging om NSG-configuraties
 
 - [Azure Firewall implementeren](../firewall/tutorial-firewall-deploy-portal.md)
 
-- [Meer informatie over Azure Security Center geïntegreerde bedreigings informatie](/azure/security-center/security-center-alerts-service-layer)
+- [Meer informatie over Azure Security Center geïntegreerde bedreigings informatie](../security-center/azure-defender.md)
 
 - [Meer informatie over Azure Security Center adaptieve netwerk beveiliging](../security-center/security-center-adaptive-network-hardening.md)
 
@@ -182,7 +182,7 @@ Implementeer de door u gewenste firewall oplossing op elk van de netwerk grenzen
 
 - De DDoS Protection-standaard moet zijn ingeschakeld
 
-U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure Resource Manager sjablonen, op rollen gebaseerd toegangs beheer (RBAC) en beleids regels, op te lossen in één definitie van een blauw druk. Pas de blauw druk toe op nieuwe abonnementen en omgevingen en Verfijn de controle en het beheer via versies.
+U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure Resource Manager sjablonen, Toegangs beheer op basis van rollen (Azure RBAC) en beleids regels, in één blauw definitie te verpakken. Pas de blauw druk toe op nieuwe abonnementen en omgevingen en Verfijn de controle en het beheer via versies.
 
 - [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
@@ -200,13 +200,13 @@ Gebruik een van de ingebouwde Azure Policy definities die betrekking hebben op l
 
 U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties op resources te zoeken of uit te voeren.
 
-- [Tags maken en gebruiken](/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 - [Een Virtual Network maken](../virtual-network/quick-create-portal.md)
 
 - [Een NSG maken met een beveiligings configuratie](../virtual-network/tutorial-filter-network-traffic.md)
 
-- [Lijst met Azure Policy definities voor Logic Apps](/azure/logic-apps/policy-samples)
+- [Lijst met Azure Policy definities voor Logic Apps](./policy-reference.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -216,7 +216,7 @@ U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties
 
 **Hulp**: gebruik het Azure-activiteiten logboek om netwerk resource configuraties te bewaken en wijzigingen te detecteren voor netwerk bronnen die betrekking hebben op uw Azure Logic apps exemplaren. Maak waarschuwingen in Azure Monitor die worden geactiveerd wanneer er wijzigingen in kritieke netwerk bronnen plaatsvinden.
 
-- [Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen](/azure/azure-monitor/platform/activity-log-view)
+- [Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [Waarschuwingen maken in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -226,7 +226,7 @@ U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties
 
 ## <a name="logging-and-monitoring"></a>Logboekregistratie en bewaking
 
-*Zie [Azure Security Bench Mark: Logging and monitoring](/azure/security/benchmarks/security-control-logging-monitoring)(Engelstalig) voor meer informatie.*
+*Zie [Azure Security Bench Mark: Logging and monitoring](../security/benchmarks/security-control-logging-monitoring.md)(Engelstalig) voor meer informatie.*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: goedgekeurde tijd synchronisatie bronnen gebruiken
 
@@ -242,7 +242,7 @@ U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties
 
 U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derden. 
 
-- [Diagnostische instellingen voor Azure-activiteiten logboek inschakelen](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Diagnostische instellingen voor Azure-activiteiten logboek inschakelen](../azure-monitor/platform/activity-log.md)
 
 - [Azure Monitor logboeken instellen en diagnostische gegevens verzamelen voor Azure Logic Apps](monitor-logic-apps-log-analytics.md)
 
@@ -258,7 +258,7 @@ U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derde
 
 U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derden. 
 
-- [Diagnostische instellingen voor Azure-activiteiten logboek inschakelen](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Diagnostische instellingen voor Azure-activiteiten logboek inschakelen](../azure-monitor/platform/activity-log.md)
 
 - [Azure Monitor logboeken instellen en diagnostische gegevens verzamelen voor Azure Logic Apps](monitor-logic-apps-log-analytics.md)
 
@@ -300,9 +300,9 @@ U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derde
 
 - [Azure Monitor logboeken instellen en diagnostische gegevens verzamelen voor Azure Logic Apps](monitor-logic-apps-log-analytics.md)
 
-- [Diagnostische instellingen voor Azure-activiteiten logboek inschakelen](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Diagnostische instellingen voor Azure-activiteiten logboek inschakelen](../azure-monitor/platform/activity-log.md)
 
-- [Azure-activiteiten Logboeken in Log Analytics in Azure Monitor verzamelen en analyseren](/azure/azure-monitor/platform/activity-log-collect)
+- [Azure-activiteiten Logboeken in Log Analytics in Azure Monitor verzamelen en analyseren](../azure-monitor/platform/activity-log.md)
 
 - [Azure-Sentinel onboarden](../sentinel/quickstart-onboard.md) 
 
@@ -352,7 +352,7 @@ U kunt ook gegevens naar Azure-Sentinel inschakelen en op het bord zetten.
 
 ## <a name="identity-and-access-control"></a>Identiteits- en toegangsbeheer
 
-*Zie [Azure Security Bench Mark: identiteits-en toegangs beheer](/azure/security/benchmarks/security-control-identity-access-control)voor meer informatie.*
+*Zie [Azure Security Bench Mark: identiteits-en toegangs beheer](../security/benchmarks/security-control-identity-access-control.md)voor meer informatie.*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: een inventaris van beheerders accounts onderhouden
 
@@ -362,11 +362,11 @@ Om toegang te krijgen tot andere bronnen die worden beveiligd door Azure Active 
 
 Elk aanvraag eindpunt op een logische app heeft een Shared Access Signature (SAS) in de URL van het eind punt. Als u de eind punt-URL voor een op aanvragen gebaseerde trigger met andere partijen deelt, kunt u Url's voor terugbellen genereren die specifieke sleutels gebruiken en verloop datums hebben. Op die manier kunt u sleutels naadloos draaien of de toegang beperken tot het activeren van uw logische app op basis van een specifieke tijds duur.
 
-- [Een directory-rol verkrijgen in azure AD met Power shell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [Een directory-rol verkrijgen in azure AD met Power shell](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
 - [Toegang tot Azure-bronnen verifiëren door beheerde identiteiten te gebruiken in Azure Logic Apps](create-managed-service-identity.md)
 
-- [Leden van een directory-rol in azure AD ophalen met Power shell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [Leden van een directory-rol in azure AD ophalen met Power shell](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 - [Toegang en gegevens beveiligen in Azure Logic Apps met behulp van SAS](logic-apps-securing-a-logic-app.md#sas)
 
@@ -460,7 +460,7 @@ Daarnaast kunt u met Azure AD-risico detectie waarschuwingen en rapporten bekijk
 
 - [Privileged Identity Management implementeren (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [Meer informatie over Azure AD-risico detectie](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Meer informatie over Azure AD-risico detectie](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -508,7 +508,7 @@ Azure Logic Apps ondersteunt zowel door het systeem toegewezen als door de gebru
 
 **Hulp**: Azure Active Directory (AD) bevat logboeken waarmee u verouderde accounts kunt detecteren. Daarnaast kunt u Azure Identity Access revisies gebruiken om groepslid maatschappen en de toegang tot bedrijfs toepassingen en roltoewijzingen op efficiënte wijze te beheren. Gebruikers toegang kan regel matig worden gecontroleerd om ervoor te zorgen dat alleen de juiste gebruikers toegang hebben. 
 
-- [Meer informatie over Azure AD-rapportage](/azure/active-directory/reports-monitoring/)
+- [Meer informatie over Azure AD-rapportage](../active-directory/reports-monitoring/index.yml)
 
 - [Beoordelingen over Azure Identity Access gebruiken](../active-directory/governance/access-reviews-overview.md)
 
@@ -524,7 +524,7 @@ U hebt toegang tot de Azure AD-aanmeldings activiteit, de controle-en risico geb
 
 U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-gebruikers accounts te maken en de audit logboeken en aanmeldings logboeken te verzenden naar een Log Analytics-werk ruimte. U kunt de gewenste logboek waarschuwingen configureren in Log Analytics.
 
-- [Azure-activiteiten logboeken integreren in Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure-activiteiten logboeken integreren in Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Azure-Sentinel aan de trein](../sentinel/quickstart-onboard.md)
 
@@ -536,7 +536,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 **Richt lijnen**: Azure AD-functies voor risico-en identiteits beveiliging gebruiken om automatische antwoorden te configureren op gedetecteerde verdachte acties die betrekking hebben op gebruikers identiteiten. U kunt ook gegevens opnemen in azure Sentinel voor verder onderzoek. 
 
-- [Risk ante aanmeldingen voor Azure AD weer geven](/azure/active-directory/reports-monitoring/concept-risky-sign-ins) 
+- [Risk ante aanmeldingen voor Azure AD weer geven](../active-directory/identity-protection/overview-identity-protection.md) 
 
 - [Risico beleid voor identiteits beveiliging configureren en inschakelen](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md) 
 
@@ -558,13 +558,13 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 ## <a name="data-protection"></a>Gegevensbeveiliging
 
-*Zie [Azure Security Bench Mark: Data Protection](/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
+*Zie [Azure Security Bench Mark: Data Protection](../security/benchmarks/security-control-data-protection.md)voor meer informatie.*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: een inventaris van gevoelige informatie onderhouden
 
 **Hulp**: Tags gebruiken om Azure-resources te helpen bij het bijhouden of verwerken van gevoelige informatie.
 
-- [Tags maken en gebruiken](/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -578,17 +578,17 @@ Voor Logic apps die directe toegang tot resources in een virtueel Azure-netwerk 
 
 Wanneer u uw ISE maakt, kunt u kiezen of u interne of Externe toegangs punten wilt gebruiken. Uw selectie bepaalt of aanvragen of webhooks worden geactiveerd op Logic apps in uw ISE kan aanroepen ontvangen van buiten uw virtuele netwerk.
 
-Daarnaast kunt u isolatie implementeren met afzonderlijke abonnementen en beheer groepen voor afzonderlijke beveiligings domeinen, zoals omgevings type en gegevens gevoeligheids niveau. U kunt het toegangs niveau voor uw Azure-resources beperken die worden vereist door uw toepassingen en bedrijfs omgevingen. U kunt de toegang tot Azure-resources beheren via Azure Active Directory op rollen gebaseerd toegangs beheer.
+Daarnaast kunt u isolatie implementeren met afzonderlijke abonnementen en beheer groepen voor afzonderlijke beveiligings domeinen, zoals omgevings type en gegevens gevoeligheids niveau. U kunt het toegangs niveau voor uw Azure-resources beperken die worden vereist door uw toepassingen en bedrijfs omgevingen. U kunt de toegang tot Azure-resources beheren via Azure op rollen gebaseerd toegangs beheer (Azure RBAC).
 
 - [Connectors voor Logic Apps](../connectors/apis-list.md)
 
 - [Toegang tot Azure Virtual Network resources vanuit Azure Logic Apps met behulp van integratie service omgevingen (ISEs)](connect-virtual-network-vnet-isolated-environment-overview.md)
 
-- [Aanvullende Azure-abonnementen maken](/azure/billing/billing-create-subscription) 
+- [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md) 
 
-- [Beheergroepen maken](/azure/governance/management-groups/create) 
+- [Beheergroepen maken](../governance/management-groups/create-management-group-portal.md) 
 
-- [Tags maken en gebruiken](/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -644,9 +644,9 @@ Micro soft beheert de onderliggende infra structuur voor Azure Logic Apps en hee
 
 **Verantwoordelijkheid**: gedeeld
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: op rollen gebaseerd toegangs beheer gebruiken voor het beheren van de toegang tot bronnen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
-**Hulp**: u kunt alleen specifieke gebruikers of groepen toestaan specifieke taken uit te voeren, zoals het beheren, bewerken en weer geven van logische apps. Als u de machtigingen wilt beheren, gebruikt u Azure Role-Based Access Control (RBAC) zodat u aangepaste of ingebouwde rollen kunt toewijzen aan de leden van uw Azure-abonnement:
+**Hulp**: u kunt alleen specifieke gebruikers of groepen toestaan specifieke taken uit te voeren, zoals het beheren, bewerken en weer geven van logische apps. Als u de machtigingen wilt beheren, gebruikt u Azure RBAC (op rollen gebaseerd toegangs beheer), zodat u aangepaste of ingebouwde rollen kunt toewijzen aan de leden van uw Azure-abonnement:
 
 - Inzender van Logic apps: Hiermee kunt u logische apps beheren, maar u kunt de toegang niet wijzigen.
 - Logische app-operator: Hiermee kunt u logische apps lezen, inschakelen en uitschakelen, maar u kunt ze niet bewerken of bijwerken.
@@ -693,7 +693,7 @@ Wanneer u een Integration service Environment (ISE) maakt voor het hosten van uw
 
 ## <a name="vulnerability-management"></a>Beheer van beveiligingsproblemen
 
-*Zie voor meer informatie de [Azure Security Bench Mark: beveiligingslek beheer](/azure/security/benchmarks/security-control-vulnerability-management).*
+*Zie voor meer informatie de [Azure Security Bench Mark: beveiligingslek beheer](../security/benchmarks/security-control-vulnerability-management.md).*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatische hulpprogram ma's voor het scannen van beveiligings problemen uitvoeren
 
@@ -737,7 +737,7 @@ Wanneer u een Integration service Environment (ISE) maakt voor het hosten van uw
 
 ## <a name="inventory-and-asset-management"></a>Inventarisatie en asset-management
 
-*Zie [Azure Security Bench Mark: Inventory and Asset Management](/azure/security/benchmarks/security-control-inventory-asset-management)voor meer informatie.*
+*Zie [Azure Security Bench Mark: Inventory and Asset Management](../security/benchmarks/security-control-inventory-asset-management.md)voor meer informatie.*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6,1: automatische Asset-detectie oplossing gebruiken
 
@@ -747,7 +747,7 @@ Hoewel klassieke Azure-resources kunnen worden gedetecteerd via resource grafiek
 
 - [Query's maken met Azure resource Graph](../governance/resource-graph/first-query-portal.md)
 
-- [Uw Azure-abonnementen weer geven](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Uw Azure-abonnementen weer geven](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
 - [Meer informatie over Azure RBAC](../role-based-access-control/overview.md)
 
@@ -759,7 +759,7 @@ Hoewel klassieke Azure-resources kunnen worden gedetecteerd via resource grafiek
 
 **Richt lijnen**: Tags Toep assen op Azure-resources die meta gegevens geven om ze logisch in een taxonomie te organiseren.
 
-- [Tags maken en gebruiken](/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -774,11 +774,11 @@ Gebruik Azure Policy bovendien om beperkingen te leggen voor het type resources 
 - Niet toegestane resourcetypen
 - Toegestane brontypen
 
-- [Aanvullende Azure-abonnementen maken](/azure/billing/billing-create-subscription)
+- [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
 
-- [Beheergroepen maken](/azure/governance/management-groups/create)
+- [Beheergroepen maken](../governance/management-groups/create-management-group-portal.md)
 
-- [Tags maken en gebruiken](/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -847,7 +847,7 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen h
 
 - [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-- [Een specifiek resource type weigeren met Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
+- [Een specifiek resource type weigeren met Azure Policy](../governance/policy/samples/index.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -883,15 +883,15 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen h
 
 **Hulp**: resources die betrekking hebben op uw Logic apps die vereist zijn voor bedrijfs activiteiten, maar die een hoger risico voor de organisatie kunnen opleveren, moeten worden geïsoleerd in een eigen virtuele machine en/of virtueel netwerk en voldoende zijn beveiligd met een Azure firewall of netwerk beveiligings groep.
 
-Logic Apps die vereist zijn voor bedrijfs activiteiten, maar een groter risico kunnen opleveren voor de organisatie, moeten waar mogelijk worden geïsoleerd via afzonderlijke resource groepen met specifieke machtigingen en RBAC-grenzen.
+Logic Apps die vereist zijn voor bedrijfs activiteiten, maar een groter risico kunnen opleveren voor de organisatie, moeten waar mogelijk worden geïsoleerd via afzonderlijke resource groepen met specifieke machtigingen en Azure RBAC-grenzen.
 
 - [Een virtueel netwerk maken](../virtual-network/quick-create-portal.md) 
 
 - [Een NSG maken met een beveiligings configuratie](../virtual-network/tutorial-filter-network-traffic.md)
 
-- [Beheergroepen maken](/azure/governance/management-groups/create) 
+- [Beheergroepen maken](../governance/management-groups/create-management-group-portal.md) 
 
-- [Toegang tot Logic Apps beveiligen via RBAC](logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
+- [Toegang tot Logic Apps beveiligen via Azure RBAC](logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -899,7 +899,7 @@ Logic Apps die vereist zijn voor bedrijfs activiteiten, maar een groter risico k
 
 ## <a name="secure-configuration"></a>Veilige configuratie
 
-*Zie [Azure Security Bench Mark: Secure Configuration](/azure/security/benchmarks/security-control-secure-configuration)(Engelstalig) voor meer informatie.*
+*Zie [Azure Security Bench Mark: Secure Configuration](../security/benchmarks/security-control-secure-configuration.md)(Engelstalig) voor meer informatie.*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: veilige configuraties instellen voor alle Azure-resources
 
@@ -909,7 +909,7 @@ Daarnaast heeft Azure Resource Manager de mogelijkheid om de sjabloon in JavaScr
 
 Gebruik ook beveiligde para meters voor het beveiligen van gevoelige gegevens en geheimen.
 
-- [Beschik bare Azure Policy aliassen weer geven](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [Beschik bare Azure Policy aliassen weer geven](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 - [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
@@ -979,9 +979,9 @@ Zorg er ook voor dat u gegevens in de uitvoerings geschiedenis beveiligt met beh
 
 Daarnaast heeft Azure Resource Manager de mogelijkheid om de sjabloon in JavaScript Object Notation (JSON) te exporteren, die moet worden gecontroleerd om ervoor te zorgen dat de configuraties voldoen aan de beveiligings vereisten voor uw organisatie.
 
-- [Code opslaan in azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Code opslaan in azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-- [Documentatie voor Azure opslag plaatsen](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Documentatie voor Azure opslag plaatsen](/azure/devops/repos/index?view=azure-devops)
 
 - [Eén en meerdere resources exporteren naar een sjabloon in Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -1092,7 +1092,7 @@ U kunt referentie scanner ook implementeren om referenties in code te identifice
 
 ## <a name="malware-defense"></a>Beveiliging tegen malware
 
-*Zie voor meer informatie de [Azure Security Bench Mark: beveiliging tegen schadelijke software](/azure/security/benchmarks/security-control-malware-defense).*
+*Zie voor meer informatie de [Azure Security Bench Mark: beveiliging tegen schadelijke software](../security/benchmarks/security-control-malware-defense.md).*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: centraal beheerde anti-malware-software gebruiken
 
@@ -1112,7 +1112,7 @@ Gebruik Azure Security Center bedreigings detectie voor gegevens Services om mal
 
 - [Meer informatie over micro soft anti-malware voor Azure Cloud Services en Virtual Machines](../security/fundamentals/antimalware.md)
 
-- [Meer informatie over de detectie van bedreigingen van Azure Security Center voor gegevens Services](/azure/security-center/security-center-alerts-data-services)
+- [Meer informatie over de detectie van bedreigingen van Azure Security Center voor gegevens Services](../security-center/azure-defender.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1128,7 +1128,7 @@ Gebruik Azure Security Center bedreigings detectie voor gegevens Services om mal
 
 ## <a name="data-recovery"></a>Gegevensherstel
 
-*Zie [Azure Security Bench Mark: Data Recovery](/azure/security/benchmarks/security-control-data-recovery)(Engelstalig) voor meer informatie.*
+*Zie [Azure Security Bench Mark: Data Recovery](../security/benchmarks/security-control-data-recovery.md)(Engelstalig) voor meer informatie.*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: zorg voor regel matige automatische back-ups
 
@@ -1178,7 +1178,7 @@ Het herstellen van een back-up van door de klant beheerde sleutels testen. Houd 
 
 - [Door de klant beheerde sleutels instellen om gegevens in rust te versleutelen voor integratie service omgevingen (ISEs) in Azure Logic Apps](customer-managed-keys-integration-service-environment.md)
 
-- [Sleutel kluis sleutels herstellen in azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Sleutel kluis sleutels herstellen in azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1196,7 +1196,7 @@ Schakel Soft-Delete in en verwijder de beveiliging in Key Vault om sleutels te b
 
 - [Door de klant beheerde sleutels instellen om gegevens in rust te versleutelen voor integratie service omgevingen (ISEs) in Azure Logic Apps](customer-managed-keys-integration-service-environment.md)
 
-- [Soft-Delete inschakelen en beveiliging opschonen in Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Soft-Delete inschakelen en beveiliging opschonen in Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center bewaking**: Ja
 
@@ -1204,7 +1204,7 @@ Schakel Soft-Delete in en verwijder de beveiliging in Key Vault om sleutels te b
 
 ## <a name="incident-response"></a>Reageren op incidenten
 
-*Zie [Azure Security Bench Mark: Incident Response](/azure/security/benchmarks/security-control-incident-response)(Engelstalig) voor meer informatie.*
+*Zie [Azure Security Bench Mark: Incident Response](../security/benchmarks/security-control-incident-response.md)(Engelstalig) voor meer informatie.*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: een hand leiding voor reactie op incidenten maken
 
@@ -1228,7 +1228,7 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 - [Beveiligingswaarschuwingen in Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-- [Labels gebruiken om uw Azure-resources te organiseren](/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags gebruiken om Azure-resources te organiseren](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1278,7 +1278,7 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetratietests en Red Team-oefeningen
 
-*Zie [Azure Security Bench Mark: Indringings tests en rode team oefeningen](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)voor meer informatie.*
+*Zie [Azure Security Bench Mark: Indringings tests en rode team oefeningen](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)voor meer informatie.*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: voert regel matig indringings tests van uw Azure-resources uit en zorgt voor herbemiddeling van alle essentiële beveiligings resultaten
 
@@ -1294,5 +1294,5 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de [Azure Security-Bench Mark](/azure/security/benchmarks/overview)
-- Meer informatie over [Azure-beveiligings basislijnen](/azure/security/benchmarks/security-baselines-overview)
+- Zie de [Azure Security-Bench Mark](../security/benchmarks/overview.md)
+- Meer informatie over [Azure-beveiligings basislijnen](../security/benchmarks/security-baselines-overview.md)

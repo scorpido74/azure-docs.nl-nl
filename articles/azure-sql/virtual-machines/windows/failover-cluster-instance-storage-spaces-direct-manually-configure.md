@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 3cc579615a69b659bc1a4736984f0b3dcd6edb6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a0b40b91aad388cb42222ead8da4f2bd91947ee
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272522"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165233"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>Een FCI maken met Opslagruimten Direct (SQL Server op Azure Vm's)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -57,7 +57,7 @@ Voordat u de instructies in dit artikel hebt voltooid, hebt u het volgende nodig
 - Een Azure-abonnement. Ga [gratis](https://azure.microsoft.com/free/)aan de slag. 
 - [Twee of meer voor bereide virtuele Windows Azure-machines](failover-cluster-instance-prepare-vm.md) in een [beschikbaarheidsset](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set).
 - Een account met machtigingen voor het maken van objecten op zowel virtuele Azure-machines als in Active Directory.
-- De meest recente versie van [Power shell](/powershell/azure/install-az-ps?view=azps-4.2.0). 
+- De meest recente versie van [Power shell](/powershell/azure/install-az-ps). 
 
 
 ## <a name="add-the-windows-cluster-feature"></a>De Windows-cluster functie toevoegen
@@ -233,7 +233,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>Connectiviteit configureren 
 
-Als u verkeer op de juiste manier wilt door sturen naar het huidige primaire knoop punt, configureert u de connectiviteits optie die geschikt is voor uw omgeving. U kunt een [Azure-Load Balancer](hadr-vnn-azure-load-balancer-configure.md) maken of u kunt in plaats daarvan een voor beeld bekijken van de functie voor [gedistribueerde netwerk naam](hadr-distributed-network-name-dnn-configure.md) als u SQL Server 2019 en Windows Server 2016 (of hoger) gebruikt. 
+Als u verkeer op de juiste manier wilt door sturen naar het huidige primaire knoop punt, configureert u de connectiviteits optie die geschikt is voor uw omgeving. U kunt een [Azure Load Balancer](failover-cluster-instance-vnn-azure-load-balancer-configure.md) maken of als u SQL Server 2019 Cu2 (of hoger) en Windows Server 2016 (of hoger) gebruikt, kunt u in plaats daarvan de functie [gedistribueerde netwerk naam](failover-cluster-instance-distributed-network-name-dnn-configure.md) gebruiken. 
 
 ## <a name="limitations"></a>Beperkingen
 
@@ -243,12 +243,12 @@ Als u verkeer op de juiste manier wilt door sturen naar het huidige primaire kno
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u dit nog niet hebt gedaan, configureert u de connectiviteit met uw FCI met de naam van een [virtueel netwerk en een Azure Load Balancer](hadr-vnn-azure-load-balancer-configure.md) of [gedistribueerde netwerk naam (DNN)](hadr-distributed-network-name-dnn-configure.md). 
+Als u dit nog niet hebt gedaan, configureert u de connectiviteit met uw FCI met de naam van een [virtueel netwerk en een Azure Load Balancer](failover-cluster-instance-vnn-azure-load-balancer-configure.md) of [gedistribueerde netwerk naam (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md). 
 
 Als Opslagruimten Direct niet de juiste FCI-opslag oplossing voor u is, kunt u overwegen om uw FCI te maken met behulp van [gedeelde Azure-schijven](failover-cluster-instance-azure-shared-disks-manually-configure.md) of [Premium-bestands shares](failover-cluster-instance-premium-file-share-manually-configure.md) . 
 
 Zie voor meer informatie een overzicht van [FCI met SQL Server op Azure vm's](failover-cluster-instance-overview.md) en [Aanbevolen procedures voor cluster configuratie](hadr-cluster-best-practices.md). 
 
 Zie voor meer informatie: 
-- [Windows-cluster technologieën](/windows-server/failover-clustering/failover-clustering-overview)   
-- [Failover-cluster exemplaren SQL Server](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Windows-clustertechnologieën](/windows-server/failover-clustering/failover-clustering-overview)   
+- [Instanties van een SQL Server-failovercluster](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

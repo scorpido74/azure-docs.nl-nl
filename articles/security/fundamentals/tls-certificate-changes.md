@@ -9,24 +9,24 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: cbc79261035ef0f8671b9e43e1332ad68d1c9d39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c183c906644d5d672b97642b1b072a2a08a70973
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91654136"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203752"
 ---
-# <a name="azure-tls-certificate-changes"></a>Wijzigingen in azure TLS-certificaat  
+# <a name="azure-tls-certificate-changes"></a>Wijzigingen in Azure TLS-certificaat  
 
 Microsoft werkt Azure-services bij om TLS-certificaten te gebruiken van een andere set basis-CA's (certificeringsinstanties). Deze wijziging wordt doorgevoerd omdat de huidige CA-certificaten niet voldoen aan een van de forumbasislijnvereisten voor CA's/browsers.
 
 ## <a name="when-will-this-change-happen"></a>Wanneer vindt deze wijziging plaats?
 
-- [Azure Active Directory](/azure/active-directory) (Azure AD)-Services begon met deze overgang op 7 juli 2020.
+- Deze transitie is op 7 juli 2020 begonnen in [Azure AD](/azure/active-directory)-services (Active Directory).
 - Alle nieuw gemaakte Azure TLS/SSL-eindpunten bevatten bijgewerkte certificaten die zijn gekoppeld aan de nieuwe basis-CA's.
-- Bestaande Azure-eindpunten worden vanaf 13 augustus 2020 gefaseerd overgezet. Dit wordt op 26 oktober 2020 voltooid.
+- De bestaande Azure-eind punten zullen vanaf 13 augustus 2020 op een gefaseerde manier worden overgezet.
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) en [DPS](/azure/iot-dps/) blijven in de Baltimore CyberTrust Root CA, maar de tussenliggende CA's veranderen. [Klik hier voor meer informatie](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456).
-- [Azure Storage](/azure/storage) bevindt zich op de basis-CA Baltimore Cyber Trust, maar de tussenliggende certificerings instantie verandert. [Klik hier voor meer informatie](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518).
+- [Azure Storage](/azure/storage) blijft aanwezig in de basis-CA van Baltimore CyberTrust, maar de tussenliggende CA's veranderen. [Klik hier voor meer informatie](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518).
 
 > [!IMPORTANT]
 > Klanten moeten hun toepassing(en) mogelijk bijwerken na deze wijziging om verbindingsfouten te voorkomen wanneer ze proberen verbinding te maken met Azure-services.
@@ -52,24 +52,24 @@ TLS-certificaten die worden gebruikt voor Azure-services, worden gekoppeld aan d
 
 ## <a name="when-can-i-retire-the-old-intermediate-thumbprint"></a>Wanneer kan ik de oude tussenliggende vingerafdruk buiten gebruik stellen?
 
-De huidige CA-certificaten worden *niet* ingetrokken tot 15 februari 2021. Na deze datum kunt u de oude vingerafdrukken uit uw code verwijderen.
+De huidige CA-certificaten worden *niet* pas ingetrokken op 15 februari 2021. Na deze datum kunt u de oude vingerafdrukken uit uw code verwijderen.
 
 Als deze datum wordt gewijzigd, ontvangt u een melding over de nieuwe intrekkingsdatum.
 
-## <a name="will-this-change-affect-me"></a>Is dit van invloed op mijn wijzigingen? 
+## <a name="will-this-change-affect-me"></a>Heeft deze wijziging gevolgen voor mij? 
 
 We verwachten dat **de meeste Azure-klanten niet** worden beïnvloed.  Uw toepassing kan echter worden beïnvloed als expliciet een lijst met geaccepteerde CA's is opgegeven voor de toepassing. Dit wordt certificaatkoppeling genoemd.
 
 Hier zijn enkele manieren om vast te stellen of uw toepassing wordt beïnvloed:
 
-- Bekijk uw broncode voor de vingerafdruk, de algemene naam, en andere certificaateigenschappen van de Microsoft IT TLS-CA's die u [hier](https://www.microsoft.com/pki/mscorp/cps/default.htm) kunt vinden. Als er een overeenkomst is, heeft dit gevolgen voor de toepassing. Als u dit probleem wilt oplossen, werkt u de broncode bij met de nieuwe CA's. Zorg er als best practice voor dat Ca's kunnen worden toegevoegd of bewerkt op korte termijn. Industriële voor Schriften vereisen dat CA-certificaten binnen zeven dagen worden vervangen en daarom moeten klanten die vertrouwen op vastmaken, snel reageren.
+- Bekijk uw broncode voor de vingerafdruk, de algemene naam, en andere certificaateigenschappen van de Microsoft IT TLS-CA's die u [hier](https://www.microsoft.com/pki/mscorp/cps/default.htm) kunt vinden. Als er een overeenkomst is, heeft dit gevolgen voor de toepassing. Als u dit probleem wilt oplossen, werkt u de broncode bij met de nieuwe CA's. Als best practice kunt u ervoor zorgen dat CA's op korte termijnen worden toegevoegd of bewerkt. Regelgeving vanuit de branche vereist dat CA-certificaten binnen zeven dagen worden vervangen, en daarom moeten klanten die afhankelijk zijn van koppeling, snel reageren.
 
 - Als u een toepassing hebt die integreert met Azure-API's of andere Azure-services, en u niet zeker weet of de toepassing gebruikmaakt van certificaatkoppeling, neemt u contact op met de leverancier.
 
 - Voor verschillende besturingssystemen en taalruntimes die communiceren met Azure-services, zijn mogelijk extra stappen vereist om de certificaatketen juist te bouwen met deze nieuwe basis-CA's.
-    - **Linux**: voor veel distributies moet u ca's toevoegen aan/etc/ssl/certs. Raadpleeg de documentatie van de distributie voor specifieke instructies.
+    - **Linux**: Voor veel distributies moet u de CA's toevoegen aan /etc/ssl/certs. Raadpleeg de documentatie van de distributie voor specifieke instructies.
     - **Java**: Controleer of het Java-sleutelarchief de CA's bevat die hierboven worden vermeld.
-    - **Windows die wordt uitgevoerd in omgevingen zonder verbinding**: voor systemen met een niet-verbonden omgeving moeten de nieuwe hoofd mappen worden toegevoegd aan het archief met vertrouwde basis certificerings instanties en worden de tussenliggende bronnen toegevoegd aan het archief met tussenliggende certificerings instanties.
+    - **Windows uitgevoerd in omgevingen zonder verbinding**: Voor systemen die worden uitgevoerd in omgevingen zonder verbinding, moeten de nieuwe basis-CA's worden toegevoegd aan het archief Vertrouwde basiscertificeringsinstanties, en de tussenliggende CA's aan het archief Tussenliggende certificeringsinstanties.
     - **Android**: Raadpleeg de documentatie voor uw apparaat en versie van Android.
     - **Andere hardwareapparaten, met name IoT**: Neem contact op met de fabrikant van het apparaat.
 

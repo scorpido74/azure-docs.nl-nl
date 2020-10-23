@@ -5,16 +5,16 @@ services: synapse-analytics
 author: saveenr
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: workspace
 ms.date: 09/03/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 04bbab477f20ec25ccb0e975dad2b30a511346d2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9780a2adb60c690abda6880157252aaa0c562f18
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91667755"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171778"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>Quickstart: Een Synapse-werkruimte maken
 In deze quickstart wordt stapsgewijs beschreven hoe u een Azure Synapse-werkruimte maakt met Azure Portal.

@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: c15724643fb3c8c74d3afe58509822c56d2d17f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b0cd8245b6d8298ae1d99e2dbe1e8457a40dc7d6
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91821946"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330407"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Naslag Gids voor schema's voor trigger-en actie typen in Azure Logic Apps
 
@@ -826,8 +826,8 @@ Hier volgen enkele veelgebruikte actie typen:
 | [**Koppelen**](#join-action) | Hiermee maakt u een teken reeks van alle items in een matrix en scheidt u deze items met een opgegeven scheidings teken. | 
 | [**JSON parseren**](#parse-json-action) | Maakt gebruikers vriendelijke tokens van eigenschappen in JSON-inhoud. U kunt vervolgens naar die eigenschappen verwijzen door de tokens in uw logische app op te nemen. | 
 | [**Query’s uitvoeren**](#query-action) | Maakt een matrix van items in een andere matrix op basis van een voor waarde of filter. | 
-| [**Beantwoord**](#response-action) | Hiermee wordt een reactie op een binnenkomende oproep of aanvraag gemaakt. | 
-| [**Uitgeschakeld**](#select-action) | Hiermee maakt u een matrix met JSON-objecten door items van een andere matrix te transformeren op basis van de opgegeven kaart. | 
+| [**Antwoord**](#response-action) | Hiermee wordt een reactie op een binnenkomende oproep of aanvraag gemaakt. | 
+| [**Selecteer**](#select-action) | Hiermee maakt u een matrix met JSON-objecten door items van een andere matrix te transformeren op basis van de opgegeven kaart. | 
 | [**Tabel**](#table-action) | Hiermee maakt u een CSV-of HTML-tabel op basis van een matrix. | 
 | [**Terminate**](#terminate-action) | Stopt een actief actieve werk stroom. | 
 | [**Bewerking**](#wait-action) | Hiermee wordt uw werk stroom onderbroken voor een opgegeven duur of tot de opgegeven datum en tijd. | 
@@ -854,7 +854,7 @@ Met deze acties kunt u de uitvoering van werk stromen beheren en andere acties t
 |-------------|-------------| 
 | [**ForEach**](#foreach-action) | Voer dezelfde acties uit in een lus voor elk item in een matrix. | 
 | [**If**](#if-action) | Acties uitvoeren op basis van het feit of de opgegeven voor waarde waar of onwaar is. | 
-| [**Ligt**](#scope-action) | Acties uitvoeren op basis van de groeps status uit een reeks acties. | 
+| [**Bereik**](#scope-action) | Acties uitvoeren op basis van de groeps status uit een reeks acties. | 
 | [**/Tijdnotatie**](#switch-action) | Acties worden ingedeeld in gevallen waarin waarden van expressies, objecten of tokens overeenkomen met de waarden die elke case heeft opgegeven. | 
 | [**Totdat**](#until-action) | Acties uitvoeren in een lus tot de opgegeven voor waarde waar is. | 
 |||  
@@ -2308,6 +2308,9 @@ Deze lus-actie bevat acties die worden uitgevoerd tot de opgegeven voor waarde w
 | <*loop-aantal*> | Geheel getal | De limiet voor het aantal lussen dat de actie kan worden uitgevoerd. Zie [limieten en configuratie voor Azure Logic apps](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)voor meer informatie over de standaard limiet en maximum limiet. | 
 | <*loop-time-out*> | Tekenreeks | De limiet voor het langste tijdstip waarop de lus kan worden uitgevoerd. De standaard `timeout` waarde is `PT1H` , de vereiste [ISO 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601). |
 |||| 
+
+> [!NOTE]
+> Als de expressie afhankelijk is van de uitvoer van een wille keurige actie binnen de lus until, controleert u of u een fout hebt die het resultaat is van die actie.
 
 *Voorbeeld*
 

@@ -7,12 +7,12 @@ ms.date: 01/27/2020
 ms.topic: how-to
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 7fd04428edc28315e714b9e81af0bea0e9344e52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7486cee351880dc0465a43b1259a5f07ef31c77b
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763802"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173300"
 ---
 # <a name="quota-increase-requests"></a>Aanvragen voor quotumverhoging
 
@@ -22,6 +22,9 @@ De eerste laag is de totale regionale Vcpu's limiet voor alle VM-reeksen. De twe
 U kunt een toename van de Vcpu's-quotum limiet voor de VM-serie aanvragen van Azure Portal. Een toename in het quotum van de VM-reeks verhoogt automatisch de totale regionale Vcpu's limiet met hetzelfde bedrag.
 
 Wanneer een nieuw abonnement wordt gemaakt, is de standaard regionale Vcpu's mogelijk niet gelijk aan de som van de standaard vCPU-quota voor alle afzonderlijke VM-reeksen. Dit feit kan resulteren in een abonnement met voldoende quota voor elke afzonderlijke VM-reeks die u wilt implementeren. Het kan voldoende quotum voor het totale regionale Vcpu's voor alle implementaties hebben. In dit geval moet u een aanvraag indienen om de limiet voor de totale regionale Vcpu's expliciet te verhogen. De totale limiet van de regionale Vcpu's kan niet groter zijn dan de som van goedgekeurde quota voor alle VM-reeksen voor de regio.
+
+> [!NOTE]
+> Als u de limiet of het quotum boven de standaard limiet wilt verhogen, kunt u gratis [een online klant ondersteuning-aanvraag openen](https://docs.microsoft.com/azure/azure-resource-manager/templates/error-resource-quota#solution).
 
 Zie voor meer informatie over quota's [vCPU quota's voor virtuele machines](../../virtual-machines/windows/quotas.md) en [Azure-abonnement en service limieten, quota's en beperkingen](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 

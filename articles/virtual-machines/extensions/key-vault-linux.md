@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e10336b9c817c71026c167144a190b2ed6b4ab6d
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: fa6f569a1a857c09f1e7d1173a5948b1747c05ed
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070262"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124358"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Extensie van de virtuele machine Key Vault voor Linux
 
@@ -87,13 +87,13 @@ De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de 
 
 | Naam | Waarde/voor beeld | Gegevenstype |
 | ---- | ---- | ---- |
-| apiVersion | 2019-07-01 | date |
+| apiVersion | 2019-07-01 | datum |
 | publisher | Microsoft.Azure.KeyVault | tekenreeks |
 | type | KeyVaultForLinux | tekenreeks |
 | typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | tekenreeks |
 | Naam certificaat archief | Het wordt genegeerd op Linux | tekenreeks |
-| linkOnRenewal | onjuist | booleaans |
+| linkOnRenewal | false | booleaans |
 | certificateStoreLocation  | /var/lib/waagent/Microsoft.Azure.KeyVault | tekenreeks |
 | requiredInitialSync | true | booleaans |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | teken reeks matrix
@@ -222,6 +222,11 @@ Houd rekening met de volgende beperkingen/vereisten:
 
 Gegevens over de status van uitbreidings implementaties kunnen worden opgehaald uit de Azure Portal en met behulp van de Azure PowerShell. Als u de implementatie status van extensies voor een bepaalde virtuele machine wilt bekijken, voert u de volgende opdracht uit met behulp van de Azure PowerShell.
 
+### <a name="frequently-asked-questions"></a>Veelgestelde vragen
+
+* Is er een limiet voor het aantal observedCertificates dat u kunt instellen?
+  Nee, Key Vault VM-extensie heeft geen limiet voor het aantal observedCertificates.
+  
 ## <a name="azure-powershell"></a>Azure PowerShell
 ```powershell
 Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>

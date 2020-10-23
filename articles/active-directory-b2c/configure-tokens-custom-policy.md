@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/07/2020
+ms.date: 10/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9f3cd5c3280308f6da15a52361857fa02567d595
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e72bd04bb41537546191b8ceb320c0722bd10146
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88505458"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340288"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>SSO en het aanpassen van tokens beheren met aangepaste beleids regels in Azure Active Directory B2C
 
@@ -87,6 +87,48 @@ De volgende waarden zijn ingesteld in het vorige voor beeld:
     ```xml
     <OutputClaim ClaimTypeReferenceId="sub" />
     ```
+
+> [!NOTE]
+> Toepassingen met één pagina die gebruikmaken van de autorisatie code stroom met PKCE, hebben altijd een vernieuwings token van 24 uur. Meer [informatie over de beveiligings implicaties van vernieuwings tokens in de browser](../active-directory/develop/reference-third-party-cookies-spas.md#security-implications-of-refresh-tokens-in-the-browser).
+
+## <a name="provide-optional-claims-to-your-app"></a>Optionele claims voor uw app opgeven
+
+Het [technische profiel](relyingparty.md#technicalprofile) uitvoer claims van het Relying Party beleid zijn waarden die worden geretourneerd naar een toepassing. Bij het toevoegen van uitvoer claims worden de claims in het token uitgegeven na een geslaagde gebruikers reis en verzonden naar de toepassing. Wijzig het technische profiel element in het gedeelte Relying Party om de gewenste claims toe te voegen als een uitvoer claim.
+
+1. Open uw aangepaste beleids bestand. Bijvoorbeeld SignUpOrSignin.xml.
+1. Zoek het element OutputClaims. Voeg de output claim toe die u wilt opnemen in het token. 
+1. De uitvoer claim kenmerken instellen. 
+
+In het volgende voor beeld wordt de `accountBalance` claim toegevoegd. De claim accountBalance wordt als een saldo verzonden naar de toepassing. 
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="OpenIdConnect" />
+    <OutputClaims>
+      <OutputClaim ClaimTypeReferenceId="displayName" />
+      <OutputClaim ClaimTypeReferenceId="givenName" />
+      <OutputClaim ClaimTypeReferenceId="surname" />
+      <OutputClaim ClaimTypeReferenceId="email" />
+      <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+      <OutputClaim ClaimTypeReferenceId="identityProvider" />
+      <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
+      <!--Add the optional claims here-->
+      <OutputClaim ClaimTypeReferenceId="accountBalance" DefaultValue="" PartnerClaimType="balance" />
+    </OutputClaims>
+    <SubjectNamingInfo ClaimType="sub" />
+  </TechnicalProfile>
+</RelyingParty>
+```
+
+Het output claim-element bevat de volgende kenmerken:
+
+  - **ClaimTypeReferenceId** : de id van een claim type dat al is gedefinieerd in de sectie [ClaimsSchema](claimsschema.md) in het beleids bestand of het bovenliggende beleids bestand.
+  - **PartnerClaimType** -Hiermee kunt u de naam van de claim in het token wijzigen. 
+  - **DefaultValue** : een standaard waarde. U kunt de standaard waarde ook instellen op een [claim resolver](claim-resolver-overview.md), zoals een Tenant-id.
+  - **AlwaysUseDefaultValue** : het gebruik van de standaard waarde afdwingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

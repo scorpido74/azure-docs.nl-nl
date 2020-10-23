@@ -9,24 +9,23 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: bbed5899a860f3ba8ac7047a283966536f6c8a87
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ee267bda44cde77cf5d3434cd75eecaf34bd5264
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328612"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978846"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Quickstart: Uw eerste IoT Edge-module implementeren op een virtueel Linux-apparaat
 
 Probeer Azure IoT Edge uit in deze quickstart door containercode te implementeren op een virtueel Linux IoT Edge-apparaat. Met IoT Edge kunt u code op uw apparaten op afstand beheren zodat u meer van uw workloads naar de rand kunt verzenden. Voor deze quickstart kunt u het beste een virtuele machine van Azure voor uw IoT Edge-apparaat gebruiken, zodat u snel een testmachine kunt maken waarop de IoT Edge-service is geïnstalleerd en deze kunt verwijderen wanneer u klaar bent.
 
 In deze snelstart leert u de volgende zaken:
-> [!div class="checklist"]
->
-> * Een IoT Hub maken.
-> * Een IoT Edge-apparaat registreren in uw IoT-hub.
-> * De IoT Edge-runtime op uw virtuele apparaat installeren en starten.
-> * Op afstand een module implementeren op een IoT Edge-apparaat.
+
+* Een IoT Hub maken.
+* Een IoT Edge-apparaat registreren in uw IoT-hub.
+* De IoT Edge-runtime op uw virtuele apparaat installeren en starten.
+* Op afstand een module implementeren op een IoT Edge-apparaat.
 
 ![Diagram - Snelstartarchitectuur voor apparaat en cloud](./media/quickstart-linux/install-edge-full.png)
 
@@ -110,7 +109,7 @@ Tijdens de installatie van de runtime geeft u een apparaatverbindingsreeks op. D
 
 ### <a name="deploy-the-iot-edge-device"></a>Het IoT Edge-apparaat implementeren
 
-In deze sectie wordt een Azure Resource Manager-sjabloon gebruikt om een nieuwe virtuele machine te maken en de IoT Edge-runtime hierop te installeren. Als u in plaats daarvan uw eigen Linux-apparaat wilt gebruiken, kunt u de installatiestappen in [De Azure IoT Edge-runtime op Linux installeren](how-to-install-iot-edge-linux.md) volgen en vervolgens terugkeren naar deze quickstart.
+In deze sectie wordt een Azure Resource Manager-sjabloon gebruikt om een nieuwe virtuele machine te maken en de IoT Edge-runtime hierop te installeren. Als u in plaats daarvan uw eigen Linux-apparaat wilt gebruiken, kunt u de installatiestappen in [De Azure IoT Edge-runtime installeren](how-to-install-iot-edge.md) volgen en vervolgens terugkeren naar deze quickstart.
 
 Gebruik de volgende CLI-opdracht om uw IoT Edge-apparaat te maken op basis van de vooraf gemaakte sjabloon [iotedge-vm-deploy](https://github.com/Azure/iotedge-vm-deploy).
 

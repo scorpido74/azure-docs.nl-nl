@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 947dd125cf9c5f5874eed380b3d69cff11509e31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b598494500124ca4a70e8e2d7bfef023fbf7d498
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82187242"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328773"
 ---
 # <a name="azure-data-lake-storage-gen1-overview-in-hdinsight"></a>Azure Data Lake Storage Gen1 overzicht in HDInsight
 
@@ -27,13 +27,13 @@ De belangrijkste mogelijkheden van Data Lake Storage Gen1 zijn:
 
 ## <a name="compatibility-with-hadoop"></a>Compatibiliteit met Hadoop
 
-Data Lake Storage Gen1 is een Apache Hadoop bestands systeem dat compatibel is met HDFS-en Hadoop-omgeving.  HDInsight-toepassingen of-services die gebruikmaken van de WebHDFS-API kunnen eenvoudig worden geïntegreerd met Data Lake Storage Gen1. Data Lake Storage Gen1 biedt ook een WebHDFS-compatibele REST-interface voor toepassingen.
+Data Lake Storage Gen1 is een Apache Hadoop bestands systeem dat compatibel is met HDFS-en Hadoop-omgeving.  HDInsight-toepassingen of-services die gebruikmaken van de WebHDFS-API kunnen eenvoudig worden geïntegreerd met Data Lake Storage Gen1. Data Lake Storage Gen1 bevat ook een met WebHDFS compatibele REST-interface voor toepassingen.
 
 Gegevens die zijn opgeslagen in Data Lake Storage Gen1 kunnen eenvoudig worden geanalyseerd met behulp van Hadoop analytic-frameworks. Frameworks zoals MapReduce of Hive. Azure HDInsight-clusters kunnen worden ingericht en geconfigureerd om rechtstreeks toegang te krijgen tot gegevens die zijn opgeslagen in Data Lake Storage Gen1.
 
 ## <a name="unlimited-storage-petabyte-files"></a>Onbeperkte opslag, bestanden ter grootte van petabytes
 
-Data Lake Storage Gen1 biedt onbeperkte opslag en is geschikt voor het opslaan van verschillende soorten gegevens voor analyse. Er gelden geen limieten voor account grootten of bestands grootten. Of de hoeveelheid gegevens die kan worden opgeslagen in een Data Lake. Afzonderlijke bestanden variëren van grootte van kilo bytes tot PETA bytes, waardoor Data Lake Storage Gen1 een fantastische keuze maakt om elk type gegevens op te slaan. Gegevens worden opgeslagen blijvend door meerdere kopieën te maken. En er zijn geen limieten voor hoe lang de gegevens kunnen worden opgeslagen in de data Lake.
+Data Lake Storage Gen1 biedt onbeperkte opslag en is geschikt voor het opslaan van verschillende soorten gegevens voor analyse. Er gelden geen limieten voor account grootten of bestands grootten. Of de hoeveelheid gegevens die kan worden opgeslagen in een Data Lake. Afzonderlijke bestanden variëren van grootte van kilo bytes tot PETA bytes, waardoor Data Lake Storage Gen1 een fantastische keuze maakt om elk type gegevens op te slaan. Gegevens worden blijvend opgeslagen door er meerdere kopieën van te maken. En er zijn geen limieten voor hoe lang de gegevens kunnen worden opgeslagen in de data Lake.
 
 ## <a name="performance-tuning-for-big-data-analytics"></a>Prestaties afstemmen voor big data Analytics
 
@@ -41,15 +41,15 @@ Data Lake Storage Gen1 is ontworpen voor analyse systemen. Systemen die een enor
 
 ## <a name="readiness-for-enterprise-highly-available-and-secure"></a>Gereed voor Enter prise: Maxi maal beschikbaar en veilig
 
-Data Lake Storage Gen1 biedt een industrie standaard Beschik baarheid en betrouw baarheid. Gegevensassets worden opgeslagen blijvend: de beveiliging van redundante kopieën tegen onverwachte fouten. Ondernemingen kunnen Data Lake Storage Gen1 in hun oplossingen gebruiken als een belang rijk onderdeel van hun bestaande gegevens platform.
+Data Lake Storage Gen1 biedt beschikbaarheid en betrouwbaarheid conform industriestandaarden. Gegevensassets worden opgeslagen blijvend: de beveiliging van redundante kopieën tegen onverwachte fouten. Ondernemingen kunnen Data Lake Storage Gen1 in hun oplossingen gebruiken als een belang rijk onderdeel van hun bestaande gegevens platform.
 
-Data Lake Storage Gen1 biedt ook beveiliging op ondernemings niveau voor opgeslagen gegevens. Zie [gegevens beveiligen in azure data Lake Storage gen1](#data-security-in-data-lake-storage-gen1)voor meer informatie.
+Data Lake Storage Gen1 biedt ook beveiliging op ondernemings niveau voor opgeslagen gegevens. Zie voor meer informatie [Gegevens beveiligen in Azure Data Lake Storage Gen1](#data-security-in-data-lake-storage-gen1).
 
 ## <a name="flexible-data-structures"></a>Flexibele gegevens structuren
 
 Data Lake Storage Gen1 kunnen alle gegevens in de oorspronkelijke indeling opslaan, op voor waarde dat dit zo is, zonder dat hiervoor eerdere trans formaties zijn vereist. Data Lake Storage Gen1 hoeft geen schema te worden gedefinieerd voordat de gegevens worden geladen. Het afzonderlijke analytische Framework interpreteert de gegevens en definieert een schema op het moment van de analyse. Data Lake Storage Gen1 kan gestructureerde gegevens verwerken. En semigestructureerde en ongestructureerde gegevens.
 
-Data Lake Storage Gen1 containers voor gegevens zijn in wezen mappen en bestanden. U werkt met de opgeslagen gegevens met behulp van Sdk's, het Azure Portal en Azure PowerShell. Gegevens die in de Store worden geplaatst met deze interfaces en containers, kunnen elk gegevens type opslaan. Data Lake Storage Gen1 voert geen speciale verwerking van gegevens uit op basis van het gegevens type.
+Containers voor gegevens van Data Lake Storage Gen1 zijn eigenlijk mappen en bestanden. U werkt met de opgeslagen gegevens met behulp van Sdk's, het Azure Portal en Azure PowerShell. Gegevens die in de Store worden geplaatst met deze interfaces en containers, kunnen elk gegevens type opslaan. Data Lake Storage Gen1 voert geen speciale verwerking van gegevens uit op basis van het gegevens type.
 
 ## <a name="data-security-in-data-lake-storage-gen1"></a>Gegevens beveiliging in Data Lake Storage Gen1
 
@@ -57,9 +57,9 @@ Data Lake Storage Gen1 gebruikt Azure Active Directory voor verificatie en maakt
 
 | **Functie** | **Beschrijving** |
 | --- | --- |
-| Verificatie |Data Lake Storage Gen1 integreert met Azure Active Directory (Azure AD) voor identiteits-en toegangs beheer voor alle gegevens die zijn opgeslagen in Data Lake Storage Gen1. Vanwege de integratie Data Lake Storage Gen1 de voor delen van alle Azure AD-functies. Deze functies omvatten: multi-factor Authentication, voorwaardelijke toegang en op rollen gebaseerd toegangs beheer. Ook bewaking van toepassings gebruik, beveiligings bewaking en waarschuwingen, enzovoort. Data Lake Storage Gen1 ondersteunt het OAuth 2,0-protocol voor verificatie binnen de REST-interface. Bekijk [verificatie binnen Azure data Lake Storage gen1 met behulp van Azure Active Directory](../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md)|
+| Verificatie |Data Lake Storage Gen1 integreert met Azure Active Directory (Azure AD) voor identiteits-en toegangs beheer voor alle gegevens die zijn opgeslagen in Data Lake Storage Gen1. Vanwege de integratie Data Lake Storage Gen1 de voor delen van alle Azure AD-functies. Deze functies omvatten: multi-factor Authentication, voorwaardelijke toegang en op rollen gebaseerd toegangs beheer op basis van Azure. Ook bewaking van toepassings gebruik, beveiligings bewaking en waarschuwingen, enzovoort. Data Lake Storage Gen1 ondersteunt het OAuth 2.0-protocol voor verificatie in de REST-interface. Bekijk [verificatie binnen Azure data Lake Storage gen1 met behulp van Azure Active Directory](../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md)|
 | Toegangsbeheer |Data Lake Storage Gen1 biedt toegangs beheer door de machtigingen voor POSIX-stijlen te ondersteunen die door het WebHDFS-protocol worden weer gegeven. ACL's kunnen worden ingeschakeld voor de hoofdmap, submappen en afzonderlijke bestanden. Zie [toegangs beheer in data Lake Storage gen1](../data-lake-store/data-lake-store-access-control.md)voor meer informatie over de werking van acl's in de context van data Lake Storage gen1. |
-| Versleuteling |Data Lake Storage Gen1 biedt ook versleuteling voor gegevens die in het account zijn opgeslagen. U geeft de versleutelings instellingen op tijdens het maken van een Data Lake Storage Gen1-account. U kunt ervoor kiezen om uw gegevens te versleutelen of te kiezen voor geen versleuteling. Zie [versleuteling in data Lake Storage gen1](../data-lake-store/data-lake-store-encryption.md)voor meer informatie. Zie [aan de slag met Azure data Lake Storage gen1 met behulp van de Azure Portal](../data-lake-store/data-lake-store-get-started-portal.md)voor instructies over het bieden van een configuratie met betrekking tot versleuteling. |
+| Versleuteling |Data Lake Storage Gen1 biedt ook versleuteling voor gegevens die in het account zijn opgeslagen. U geeft de versleutelingsinstellingen op tijdens het maken van een Data Lake Storage Gen1-account. U kunt ervoor kiezen de gegevens te versleutelen of niet te versleutelen. Zie [Versleuteling in Data Lake Storage Gen1](../data-lake-store/data-lake-store-encryption.md) voor meer informatie. Zie [aan de slag met Azure data Lake Storage gen1 met behulp van de Azure Portal](../data-lake-store/data-lake-store-get-started-portal.md)voor instructies over het bieden van een configuratie met betrekking tot versleuteling. |
 
 Zie [gegevens beveiligen die zijn opgeslagen in azure data Lake Storage gen1](../data-lake-store/data-lake-store-secure-data.md)voor meer informatie over het beveiligen van gegevens in data Lake Storage gen1.
 

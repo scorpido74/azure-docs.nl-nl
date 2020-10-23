@@ -1,14 +1,14 @@
 ---
 title: Nieuwe beleidstoewijzing met portal
 description: In deze quickstart gebruikt u Azure Portal om een Azure Policy-toewijzing te maken om niet-compatibele resources te identificeren.
-ms.date: 08/17/2020
+ms.date: 10/05/2020
 ms.topic: quickstart
-ms.openlocfilehash: 956ec05b5a7fac862eeea86cf96a2db37f1c0536
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 51ca2f9e5d3f3df9304804ba3da2c5c5ceb0c19b
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651978"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91875305"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Een beleidstoewijzing maken om niet-conforme resources te identificeren.
 
@@ -58,7 +58,7 @@ In deze snelstart maakt u een beleidstoewijzing en wijst u de beleidsdefinitie _
 1. De **Toewijzingsnaam** wordt automatisch ingevuld met de naam van het beleid dat u hebt geselecteerd, maar u kunt dit wijzigen. In dit geval gebruiken we _Controleren van virtuele machines die geen beheerde schijven gebruiken_. U kunt ook een optionele **Beschrijving** opgeven. De beschrijving bevat details over deze beleidstoewijzing.
    **Toegewezen door** wordt automatisch gevuld op basis van de persoon die is aangemeld. Dit veld is optioneel, dus u kunt aangepaste waarden invoeren.
 
-1. Laat **Beheerde identiteit maken** uitgeschakeld. Deze optie _moet_ worden ingeschakeld wanneer het beleid of initiatief een beleidsregel bevat met het effect [deployIfNotExists](./concepts/effects.md#deployifnotexists). Omdat het beleid dat voor deze zelfstudie wordt gebruikt deze regel niet bevat, laat u deze optie uitgeschakeld. Zie [Beheerde identiteiten](../../active-directory/managed-identities-azure-resources/overview.md) en [Hoe herstelbeveiliging werkt](./how-to/remediate-resources.md#how-remediation-security-works) voor meer informatie.
+1. Laat **Beheerde identiteit maken** uitgeschakeld. Dit vak _moet_ worden ingeschakeld wanneer het beleid of initiatief beleid bevat met het effect [deployIfNotExists](./concepts/effects.md#deployifnotexists) of [modify](./concepts/effects.md#modify). Omdat het beleid dat voor deze zelfstudie wordt gebruikt deze regel niet bevat, laat u deze optie uitgeschakeld. Zie [Beheerde identiteiten](../../active-directory/managed-identities-azure-resources/overview.md) en [Hoe herstelbeveiliging werkt](./how-to/remediate-resources.md#how-remediation-security-works) voor meer informatie.
 
 1. Selecteer **Toewijzen**.
 
@@ -74,15 +74,15 @@ Als er bestaande resources zijn die niet conform deze nieuwe toewijzing zijn, wo
 
 Als een voorwaarde wordt geëvalueerd ten opzichte van uw bestaande resources en deze waar blijkt te zijn, worden deze resources gemarkeerd als niet-compatibel met het beleid. In de volgende tabel ziet u hoe verschillende beleidsacties werken met de evaluatie van voorwaarden voor de resulterende nalevingsstatus. U kunt de evaluatielogica niet zien in Azure Portal, maar de resultaten voor de nalevingsstatus worden wel weergegeven. Het resultaat voor de nalevingsstatus is compatibel of niet-compatibel.
 
-| **Resourcestatus** | **Effect** | **Beleidsevaluatie** | **Nalevingsstatus** |
+| Resourcestatus | Effect | Beleidsevaluatie | Nalevingsstatus |
 | --- | --- | --- | --- |
-| Bestaat | Weigeren, Controleren, Toevoegen\*, DeployIfNotExist\*, AuditIfNotExist\* | True | Niet-compatibel |
-| Bestaat | Weigeren, Controleren, Toevoegen\*, DeployIfNotExist\*, AuditIfNotExist\* | False | Compatibel |
-| Nieuw | Controleren, AuditIfNotExist\* | True | Niet-compatibel |
-| Nieuw | Controleren, AuditIfNotExist\* | False | Compatibel |
+| Nieuw of bijgewerkt | Controleren, wijzigen, AuditIfNotExist | True | Niet-compatibel |
+| Nieuw of bijgewerkt | Controleren, wijzigen, AuditIfNotExist | False | Compatibel |
+| Bestaat | Weigeren, Controleren, Toevoegen, Wijzigen, DeployIfNotExist, AuditIfNotExist | True | Niet-compatibel |
+| Bestaat | Weigeren, Controleren, Toevoegen, Wijzigen, DeployIfNotExist, AuditIfNotExist | False | Compatibel |
 
-\*Voor de acties Toevoegen, DeployIfNotExist en AuditIfNotExist moet de IF-instructie TRUE zijn.
-De acties vereisen ook dat de bestaansvoorwaarde FALSE is om niet-compatibel te zijn. Indien TRUE, activeert de IF-voorwaarde de evaluatie van de bestaansvoorwaarde voor de gerelateerde resources.
+> [!NOTE]
+> Voor de effecten DeployIfNotExist en AuditIfNotExist moet de IF-instructie TRUE en de bestaansvoorwaarde FALSE zijn om niet-compatibel te zijn. Indien TRUE, activeert de IF-voorwaarde de evaluatie van de bestaansvoorwaarde voor de gerelateerde resources.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

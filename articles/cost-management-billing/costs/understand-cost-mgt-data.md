@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
-ms.openlocfilehash: 904ea7a50e4546d2721a9e701c78b6b77ed2d43a
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a9ec5fd7d6e93d4413e86b5c9433cb6c0c9b59a1
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683178"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132309"
 ---
 # <a name="understand-cost-management-data"></a>Inzicht in gegevens van Cost Management
 
@@ -110,7 +110,7 @@ Azure Cost Management ontvangt tags als onderdeel van elke gebruiksrecord die do
 
 - Tags moeten rechtstreeks worden toegepast op resources en worden niet impliciet overgenomen van de bovenliggende resourcegroep.
 - Resourcetags worden alleen ondersteund voor resources die zijn geïmplementeerd voor resourcegroepen.
-- Sommige geïmplementeerde resources bieden mogelijk geen ondersteuning voor tags of bevatten geen tags in gebruiksgegevens. Zie [Tags-ondersteuning voor Azure-resources](../../azure-resource-manager/tag-support.md).
+- Sommige geïmplementeerde resources bieden mogelijk geen ondersteuning voor tags of bevatten geen tags in gebruiksgegevens. Zie [Tags-ondersteuning voor Azure-resources](../../azure-resource-manager/management/tag-support.md).
 - Resourcetags worden alleen opgenomen in gebruiksgegevens terwijl de tag wordt toegepast: tags worden niet toegepast op historische gegevens.
 - Resourcetags zijn pas beschikbaar in Cost Management als de gegevens zijn vernieuwd. Zie [Updates en retentie voor kosten- en gebruiksgegevens](#cost-and-usage-data-updates-and-retention).
 - Resourcetags zijn alleen beschikbaar in Cost Management wanneer de resource actief is of wordt uitgevoerd en gebruiksrecords produceert (dus niet wanneer de toewijzing van een virtuele machine ongedaan wordt gemaakt).
@@ -121,7 +121,7 @@ Als een specifieke tag niet wordt weergegeven in Cost Management, ga dan het vol
 
 - Is de tag rechtstreeks toegepast op de resource?
 - Is de tag meer dan 24 uur geleden toegepast? Zie [Updates en retentie voor kosten- en gebruiksgegevens](#cost-and-usage-data-updates-and-retention)
-- Ondersteunt het resourcetype tags? De volgende resourcetypen bieden geen ondersteuning voor tags in gebruiksgegevens vanaf 1 december 2019. Zie [Tagsondersteuning voor Azure-resources](../../azure-resource-manager/tag-support.md) voor een volledige lijst van wat er wordt ondersteund.
+- Ondersteunt het resourcetype tags? De volgende resourcetypen bieden geen ondersteuning voor tags in gebruiksgegevens vanaf 1 december 2019. Zie [Tagsondersteuning voor Azure-resources](../../azure-resource-manager/management/tag-support.md) voor een volledige lijst van wat er wordt ondersteund.
     - Azure Active Directory B2C
     - Azure Bastion
     - Azure-firewalls
@@ -185,4 +185,4 @@ Historische gegevens voor aanbiedingen die zijn gebaseerd op tegoeden en vooraf 
 
 ## <a name="see-also"></a>Zie ook
 
-- Als u de eerste quickstart voor Cost Management nog niet hebt voltooid, leest u die op [Kosten analyseren](../../cost-management/quick-acm-cost-analysis.md).
+- Als u de eerste quickstart voor Cost Management nog niet hebt voltooid, leest u die op [Kosten analyseren](./quick-acm-cost-analysis.md).

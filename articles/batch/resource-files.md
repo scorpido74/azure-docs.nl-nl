@@ -3,12 +3,12 @@ title: Bron bestanden maken en gebruiken
 description: Meer informatie over het maken van batch-resource bestanden uit verschillende invoer bronnen. In dit artikel worden enkele algemene methoden beschreven voor het maken en plaatsen van deze op een virtuele machine.
 ms.date: 03/18/2020
 ms.topic: how-to
-ms.openlocfilehash: 22c0220d08660402bef3fd4aaf0add6adc12a295
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84a5e9780b4fa0abfec5b736e04d385f14716873
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230939"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109286"
 ---
 # <a name="creating-and-using-resource-files"></a>Bron bestanden maken en gebruiken
 
@@ -61,7 +61,7 @@ string containerSasUrl = String.Format("{0}{1}", container.Uri, sasToken);
 ResourceFile inputFile = ResourceFile.FromStorageContainerUrl(containerSasUrl);
 ```
 
-Een alternatief voor het genereren van een SAS-URL is het inschakelen van anonieme, open bare Lees toegang tot een container en de bijbehorende blobs in Azure Blob-opslag. Door dit te doen, kunt u alleen-lezen toegang verlenen aan deze resources zonder uw account sleutel te delen en zonder een SAS te hoeven gebruiken. Open bare Lees toegang wordt doorgaans gebruikt voor scenario's waarin u wilt dat bepaalde blobs altijd beschikbaar zijn voor anonieme lees toegang. Als dit scenario tegemoetkomt aan uw oplossing, raadpleegt u het artikel [anonieme toegang tot blobs](../storage/blobs/storage-manage-access-to-resources.md) voor meer informatie over het beheren van toegang tot uw BLOB-gegevens.
+Een alternatief voor het genereren van een SAS-URL is het inschakelen van anonieme, open bare Lees toegang tot een container en de bijbehorende blobs in Azure Blob-opslag. Door dit te doen, kunt u alleen-lezen toegang verlenen aan deze resources zonder uw account sleutel te delen en zonder een SAS te hoeven gebruiken. Open bare Lees toegang wordt doorgaans gebruikt voor scenario's waarin u wilt dat bepaalde blobs altijd beschikbaar zijn voor anonieme lees toegang. Als dit scenario tegemoetkomt aan uw oplossing, raadpleegt u het artikel [anonieme toegang tot blobs](../storage/blobs/anonymous-read-access-configure.md) voor meer informatie over het beheren van toegang tot uw BLOB-gegevens.
 
 ### <a name="storage-container-name"></a>Naam van opslag container
 

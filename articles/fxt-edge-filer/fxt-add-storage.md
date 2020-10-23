@@ -6,42 +6,43 @@ ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 3f736942627d088e3a639f89bef5438714c2608b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d10c6c1ce440b2ffe964dc78379ef3ab108e78e
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79239215"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217521"
 ---
-# <a name="tutorial-add-back-end-storage-and-configure-the-virtual-namespace"></a>Zelfstudie: Back-endopslag toevoegen en de virtuele naamruimte configureren 
+# <a name="tutorial-add-back-end-storage-and-configure-the-virtual-namespace"></a>Zelfstudie: Back-endopslag toevoegen en de virtuele naamruimte configureren
 
-In deze zelfstudie wordt uitgelegd hoe u back-endopslag kunt toevoegen voor uw cache en hoe u het clientgerichte virtuele bestandssysteem kunt instellen. 
+In deze zelfstudie wordt uitgelegd hoe u back-endopslag kunt toevoegen voor uw cache en hoe u het clientgerichte virtuele bestandssysteem kunt instellen.
 
-Het cluster maakt verbinding met back-endsystemen om toegang te krijgen tot de gegevens waar clients om vragen en om wijzigingen permanenter op te slaan dan in de cache. 
+Het cluster maakt verbinding met back-endsystemen om toegang te krijgen tot de gegevens waar clients om vragen en om wijzigingen permanenter op te slaan dan in de cache.
 
-De naamruimte is het clientgerichte pseudo-bestandssysteem waarmee u back-endopslag kunt verwisselen zonder dat er aan de clientzijde werkstromen worden gewijzigd. 
+De naamruimte is het clientgerichte pseudo-bestandssysteem waarmee u back-endopslag kunt verwisselen zonder dat er aan de clientzijde werkstromen worden gewijzigd.
 
-In deze zelfstudie leert u: 
+In deze zelfstudie leert u:
 
 > [!div class="checklist"]
-> * Back-endopslag toevoegen aan het Azure FXT Edge Filer-cluster 
+>
+> * Back-endopslag toevoegen aan het Azure FXT Edge Filer-cluster
 > * Het clientgerichte pad voor opslag definiëren
 
 ## <a name="about-back-end-storage"></a>Over back-endopslag
 
 Het Azure FXT Edge Filer-cluster maakt gebruik van een *kern-filer*definitie om een back-endopslagsysteem te koppelen aan het FXT-cluster.
 
-Azure FXT Edge Filer is compatibel met verschillende populaire NAS-hardwaresystemen en kan lege containers van Azure Blob of andere cloudopslag gebruiken. 
+Azure FXT Edge Filer is compatibel met verschillende populaire NAS-hardwaresystemen en kan lege containers van Azure Blob of andere cloudopslag gebruiken.
 
 Cloudopslagcontainers moeten leeg zijn wanneer ze worden toegevoegd, zodat het FXT-besturingssysteem alle gegevens op het cloudopslagvolume volledig kan beheren. U kunt de bestaande gegevens naar de cloudcontainer verplaatsen nadat u de container als een kern-filer aan het cluster hebt toegevoegd.
 
 Gebruik het configuratiescherm om een kern-filer aan uw systeem toe te voegen.
 
 > [!NOTE]
-> 
+>
 > Als u Amazon AWS of Google Cloudopslag wilt gebruiken, moet u een FlashCloud<sup>TM</sup>-functielicentie installeren. Neem contact op met uw Microsoft-vertegenwoordiger voor een licentiecode en volg de instructies in de verouderde configuratiehandleiding voor [Het toevoegen of verwijderen van functielicenties](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/install_licenses.html#install-licenses).
-> 
-> Ondersteuning voor Azure Blob-opslag is opgenomen in de softwarelicentie van Azure FXT Edge Filer. 
+>
+> Ondersteuning voor Azure Blob-opslag is opgenomen in de softwarelicentie van Azure FXT Edge Filer.
 
 Lees deze gedeeltes van de Handleiding voor clusterconfiguratie voor meer informatie over het toevoegen van kern-filers:
 
@@ -59,7 +60,7 @@ Definieer een kern-filer door te klikken op de knop **Maken** op de instellingsp
 
 ![Klik op de knop maken boven de lijst met kern-filers op de pagina Kern-filers beheren](media/fxt-cluster-config/create-core-filer-button.png)
 
-De wizard **Nieuwe kern-filer toevoegen** begeleidt u stapsgewijs door het proces van het maken van een kern-filer die is gekoppeld aan uw back-endopslag. De Handleiding voor clusterconfiguratie bevat stapsgewijze beschrijvingen van het proces, dat anders is dan dat van NFS/NAS-opslag en Cloudopslag (links hierboven). 
+De wizard **Nieuwe kern-filer toevoegen** begeleidt u stapsgewijs door het proces van het maken van een kern-filer die is gekoppeld aan uw back-endopslag. De Handleiding voor clusterconfiguratie bevat stapsgewijze beschrijvingen van het proces, dat anders is dan dat van NFS/NAS-opslag en Cloudopslag (links hierboven).
 
 Subtaken zijn onder andere:
 
@@ -71,15 +72,15 @@ Subtaken zijn onder andere:
 
 * Geef voor NAS-kern-filers de Fully Qualified Domain Name (FQDN) of het IP-adres op. FQDN wordt aanbevolen voor alle kern-filers en is vereist voor SMB-toegang.
 
-* Selecteer een cache-beleid: de tweede pagina van de wizard bevat een lijst met de beschikbare cache-beleidsregels voor de nieuwe kern-filer. Lees voor meer informatie het [gedeelte over cache-beleid uit de Handleiding voor clusterconfiguratie](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_manage_cache_policies.html). 
+* Selecteer een cache-beleid: de tweede pagina van de wizard bevat een lijst met de beschikbare cache-beleidsregels voor de nieuwe kern-filer. Lees voor meer informatie het [gedeelte over cache-beleid uit de Handleiding voor clusterconfiguratie](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_manage_cache_policies.html).
 
   ![Tweede pagina van de wizard voor een nieuwe kern-filer voor hardware NAS. De vervolgkeuzelijst cache-beleid is geopend, met verschillende uitgeschakelde opties en drie geldige cachebeleidsopties (bypass, opslaan in cache lezen en opslaan in cache lezen/schrijven).](media/fxt-cluster-config/new-nas-choose-cache-policy.png)
 
 * Voor cloudopslag moet u de cloudservice en toegangsreferenties opgeven, naast andere parameters. Lees voor meer informatie [Cloudservice en -protocol](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html#cloud-service-and-protocol) in de Handleiding voor clusterconfiguratie.
 
-  ![Informatie over cloud-kern-filers in de wizard Nieuwe kern-filer](media/fxt-cluster-config/new-core-filer-cloud3.png) 
+  ![Informatie over cloud-kern-filers in de wizard Nieuwe kern-filer](media/fxt-cluster-config/new-core-filer-cloud3.png)
   
-  Als u de aanmeldingsgegevens voor cloudtoegang voor dit cluster al hebt toegevoegd, worden ze weergegeven in de lijst. Aanmeldingsgegevens bijwerken en toevoegen op de instellingspagina **Cluster** > **aanmeldingsgegevens cloud**. 
+  Als u de aanmeldingsgegevens voor cloudtoegang voor dit cluster al hebt toegevoegd, worden ze weergegeven in de lijst. Aanmeldingsgegevens bijwerken en toevoegen op de instellingspagina **Cluster** > **aanmeldingsgegevens cloud**.
 
 Nadat u alle vereiste instellingen in de wizard hebt ingevuld, klikt u op de knop **Filer toevoegen** om de wijziging in te dienen.
 
@@ -91,14 +92,14 @@ In de kern-filer in deze schermopname ontbreekt een vserver. U moet de kern-file
 
 ## <a name="configure-the-namespace"></a>De naamruimte configureren
 
-Het Azure FXT Edge Filer-cluster maakt een virtueel bestandssysteem met de naam *clusternaamruimte* dat de clienttoegang tot gegevens die zijn opgeslagen op verschillende back-endsystemen vereenvoudigt. Omdat clients bestanden aanvragen via een virtueel pad, kunnen opslagsystemen worden toegevoegd of vervangen zonder dat de werkstroom van de client hoeft te worden gewijzigd. 
+Het Azure FXT Edge Filer-cluster maakt een virtueel bestandssysteem met de naam *clusternaamruimte* dat de clienttoegang tot gegevens die zijn opgeslagen op verschillende back-endsystemen vereenvoudigt. Omdat clients bestanden aanvragen via een virtueel pad, kunnen opslagsystemen worden toegevoegd of vervangen zonder dat de werkstroom van de client hoeft te worden gewijzigd.
 
-Met de clusternaamruimte kunt u ook cloud- en NAS-opslagsystemen in een vergelijkbare bestandsstructuur presenteren. 
+Met de clusternaamruimte kunt u ook cloud- en NAS-opslagsystemen in een vergelijkbare bestandsstructuur presenteren.
 
-De vservers van het cluster behouden de naamruimte en het leveren van inhoud aan clients. Er zijn twee stappen voor het maken van de clusternaamruimte: 
+De vservers van het cluster behouden de naamruimte en het leveren van inhoud aan clients. Er zijn twee stappen voor het maken van de clusternaamruimte:
 
-1. Een vserver maken 
-1. Verbindingen instellen tussen de back-endopslagsystemen en de clientgerichte bestandssysteempaden 
+1. Een vserver maken
+1. Verbindingen instellen tussen de back-endopslagsystemen en de clientgerichte bestandssysteempaden
 
 ### <a name="create-a-vserver"></a>Een vserver maken
 
@@ -109,7 +110,7 @@ VServers zijn virtuele bestandsservers die bepalen hoe gegevens stromen tussen d
 * VServers dwingen bestandstoegangsbeheer af, waaronder exportbeleid van kern-filers en gebruikersverificatiesystemen
 * VServers bieden SMB-infrastructuur
 
-Lees voordat u begint met het configureren van een cluster-vserver de bijbehorende documentatie en neem contact op met uw Microsoft-vertegenwoordiger voor meer informatie over naamruimte en vservers. Als u VLAN'S gebruikt, [maak deze](fxt-configure-network.md#adjust-network-settings) dan voordat u de vserver maakt. 
+Lees voordat u begint met het configureren van een cluster-vserver de bijbehorende documentatie en neem contact op met uw Microsoft-vertegenwoordiger voor meer informatie over naamruimte en vservers. Als u VLAN'S gebruikt, [maak deze](fxt-configure-network.md#adjust-network-settings) dan voordat u de vserver maakt.
 
 In deze secties van de Handleiding voor clusterconfiguratie vindt u meer informatie over de functies FXT-vserver en Globale naamruimte:
 
@@ -117,7 +118,7 @@ In deze secties van de Handleiding voor clusterconfiguratie vindt u meer informa
 * [Een Globale naamruimte gebruiken](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gns_overview.html)
 * [Een VServer maken](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vserver_manage.html#creating-a-vserver)
 
-U hebt ten minste één vserver nodig voor uw cluster. 
+U hebt ten minste één vserver nodig voor uw cluster.
 
 U heeft de volgende gegevens nodig om een nieuwe vserver te maken:
 
@@ -129,7 +130,7 @@ U heeft de volgende gegevens nodig om een nieuwe vserver te maken:
 
 * Als uw netwerk VLAN's heeft, welk VLAN moet dan worden gebruikt voor deze vserver
 
-Gebruik de instellingspagina **VServer** >  **VServers beheren** om een nieuwe vserver te maken. Lees voor meer informatie [Een VServer maken](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vserver_manage.html#creating-a-vserver) in de Handleiding voor clusterconfiguratie. 
+Gebruik de instellingspagina **VServer** >  **VServers beheren** om een nieuwe vserver te maken. Lees voor meer informatie [Een VServer maken](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vserver_manage.html#creating-a-vserver) in de Handleiding voor clusterconfiguratie.
 
 ![pop-upvenster voor het maken van een nieuwe vserver](media/fxt-cluster-config/new-vserver.png)
 
@@ -154,7 +155,6 @@ Gebruik eerst de pagina **VServer** > **Exportregels** om nieuwe regels toe te v
 Gebruik vervolgens de pagina **VServer** > **Exportbeleid** om het aangepaste beleid toe te passen op de exports van uw kern-filer wanneer deze wordt geopend via die vserver.
 
 Lees het artikel [Beheren van toegang tot kern-filer-exports](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/export_rules_overview.html) uit de Handleiding voor clusterconfiguratie voor meer informatie.
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

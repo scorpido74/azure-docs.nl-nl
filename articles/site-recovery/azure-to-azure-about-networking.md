@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: 622f0d66f2c8a9f7cf0539d14499897acf7b68e6
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: b9fdaf8a0791570ecee402442c5faefe2f70a22b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096331"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370437"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Over netwerken in nood herstel voor Azure VM
 
@@ -29,7 +29,7 @@ Meer informatie over hoe Site Recovery herstel na nood gevallen biedt voor [dit 
 
 In het volgende diagram ziet u een typische Azure-omgeving, voor toepassingen die worden uitgevoerd op virtuele Azure-machines:
 
-![klant-omgeving](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
+![Diagram waarin een typische Azure-omgeving wordt weer gegeven voor toepassingen die worden uitgevoerd op virtuele Azure-machines.](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
 
 Als u Azure ExpressRoute of een VPN-verbinding van uw on-premises netwerk naar Azure gebruikt, is de omgeving als volgt:
 
@@ -41,8 +41,8 @@ Normaal gesp roken worden netwerken beveiligd met firewalls en netwerk beveiligi
 > Het gebruik van een geverifieerde proxy voor het beheren van de netwerk verbinding wordt niet ondersteund door Site Recovery en de replicatie kan niet worden ingeschakeld.
 
 >[!NOTE]
-> Filteren op basis van IP-adressen mag niet worden uitgevoerd om de uitgaande verbinding te beheren.
-> Azure Site Recovery IP-adressen mogen niet worden toegevoegd aan de Azure-routerings tabel om de uitgaande verbinding te beheren.
+>- Filteren op basis van IP-adressen mag niet worden uitgevoerd om de uitgaande verbinding te beheren.
+>- Azure Site Recovery IP-adressen mogen niet worden toegevoegd aan de Azure-routerings tabel om de uitgaande verbinding te beheren.
 
 ## <a name="outbound-connectivity-for-urls"></a>Uitgaande connectiviteit voor URL's
 
@@ -62,9 +62,9 @@ login.microsoftonline.com | Vereist voor autorisatie en verificatie voor de Url'
 Wanneer u NSG gebruikt om de uitgaande connectiviteit te beheren, moeten deze service tags worden toegestaan.
 
 - Voor de opslag accounts in de bron regio:
-    - Maak een NSG-regel op basis van een [opslag service label](../virtual-network/security-overview.md#service-tags) voor de bron regio.
+    - Maak een NSG-regel op basis van een [opslag service label](../virtual-network/network-security-groups-overview.md#service-tags) voor de bron regio.
     - Sta deze adressen toe zodat gegevens kunnen worden geschreven naar het cache-opslag account van de VM.
-- Een op NSG [(Aad)-service codes](../virtual-network/security-overview.md#service-tags) gebaseerde regel voor Azure Active Directory het maken van toegang tot alle IP-adressen die overeenkomen met Aad toestaan
+- Een op NSG [(Aad)-service codes](../virtual-network/network-security-groups-overview.md#service-tags) gebaseerde regel voor Azure Active Directory het maken van toegang tot alle IP-adressen die overeenkomen met Aad toestaan
 - Maak een NSG-regel op basis van EventsHub-service voor de doel regio, waarmee toegang tot Site Recovery bewaking kan worden uitgevoerd.
 - Maak een NSG-regel op basis van AzureSiteRecovery-service voor het toestaan van toegang tot Site Recovery-service in een wille keurige regio.
 - Maak een NSG-regel op basis van AzureKeyVault-service. Dit is alleen vereist voor het inschakelen van replicatie van virtuele machines met ADE via de portal.

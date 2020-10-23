@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 34036388ce9243c082cf79eb4be9251957eafc01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd6a907ce855fbb7c1ef96236766beef9b25b2ac
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400463"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428367"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>Azure-beveiligingsbasislijn voor Key Vault
 
@@ -516,7 +516,7 @@ Ondersteunde services en scenario's in algemene Beschik baarheid: https://docs.m
 
 **Verantwoordelijkheid**: niet van toepassing
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 *Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -566,7 +566,9 @@ Azure Key Vault logboek registratie: https://docs.microsoft.com/azure/key-vault/
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: alle gevoelige gegevens in de overdracht versleutelen
 
-**Richt lijnen**: al het verkeer dat moet worden Azure Key Vault voor de toegang tot verificatie, beheer en gegevenslaag, is versleuteld en gaat over https: poort 443. (Er is echter af en toe HTTP [poort 80] verkeer voor CRL.) 
+**Richt lijnen**: al het verkeer dat moet worden Azure Key Vault voor de toegang tot verificatie, beheer en gegevenslaag, is versleuteld en gaat over https: poort 443. (Er is echter af en toe HTTP [poort 80] verkeer voor CRL.) Azure Key Vault blijven TLS 1,1-en TLS 1,0-gegevens worden opgenomen. Gegevens kunnen worden beperkt tot TLS 1,2 via configuratie aan de client zijde.
+
+
 
 Toegang tot Azure Key Vault achter een firewall: https://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall
 

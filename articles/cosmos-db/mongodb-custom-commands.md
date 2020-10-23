@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 05/28/2020
 ms.author: jasonh
 ms.custom: devx-track-js
-ms.openlocfilehash: a40be5212fb1335482ec5011d24c8eaf5f3d9a00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39f116139d68f2382085dbbab5e862d0c621ad2e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409676"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282451"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Gebruik MongoDB-extensie opdrachten voor het beheren van gegevens die zijn opgeslagen in de API van Azure Cosmos DB voor MongoDB 
 
-Het volgende document bevat de aangepaste actie opdrachten die specifiek zijn voor de API van Azure Cosmos DB voor MongoDB. Deze opdrachten kunnen worden gebruikt om database resources te maken en te verkrijgen die specifiek zijn voor het [Azure Cosmos DB capaciteits model](databases-containers-items.md).
+Het volgende document bevat de aangepaste actie opdrachten die specifiek zijn voor de API van Azure Cosmos DB voor MongoDB. Deze opdrachten kunnen worden gebruikt om database resources te maken en te verkrijgen die specifiek zijn voor het [Azure Cosmos DB capaciteits model](account-databases-containers-items.md).
 
 Met de API van de Azure Cosmos DB voor MongoDB kunt u profiteren van de voor delen Cosmos DB zoals wereld wijde distributie, automatische sharding, hoge Beschik baarheid, latentie garanties, Automatische versleuteling op rest, back-ups en nog veel meer, terwijl uw investeringen in uw MongoDB-app behouden blijven. U kunt communiceren met de API van de Azure Cosmos DB voor MongoDB door gebruik te maken van de open-source [MongoDb-client Stuur Programma's](https://docs.mongodb.org/ecosystem/drivers). De API van Azure Cosmos DB voor MongoDB maakt het gebruik van bestaande client Stuur Programma's mogelijk door te voldoen aan het [MongoDb wire-protocol](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
 
@@ -26,7 +26,7 @@ De API van Azure Cosmos DB voor MongoDB is compatibel met MongoDB Server versie 
 
 De volgende extensie opdrachten bieden de mogelijkheid om Azure Cosmos DB-specifieke resources te maken en te wijzigen via database aanvragen:
 
-* [Database maken](#create-database)
+* [Data base maken](#create-database)
 * [Data base bijwerken](#update-database)
 * [Data base ophalen](#get-database)
 * [Verzameling maken](#create-collection)

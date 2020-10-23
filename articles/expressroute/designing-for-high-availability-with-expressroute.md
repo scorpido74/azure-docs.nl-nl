@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: duau
-ms.openlocfilehash: d6e63ad5781b0b8d6f46aee1cb88373721bb9dfc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3602c3944e8731263fbb55f024c276783950329f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89397896"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92202358"
 ---
 # <a name="designing-for-high-availability-with-expressroute"></a>Ontwerpen voor hoge Beschik baarheid met ExpressRoute
 
@@ -54,7 +54,7 @@ Als u de primaire en secundaire verbindingen van een ExpressRoute-circuit in de 
 
 Micro soft-peering is ontworpen voor communicatie tussen open bare eind punten. On-premises privé-eind punten zijn dus netwerk adressen vertaald (gecommuniceerd) met het open bare IP-adres van de klant of het partner netwerk voordat ze communiceren via micro soft-peering. Ervan uitgaande dat u de primaire en secundaire verbindingen in de modus actief-actief gebruikt, waar en hoe u NAT een invloed heeft op hoe snel u een fout in een van de ExpressRoute-verbindingen herstelt. Er worden twee verschillende NAT-opties geïllustreerd in de volgende afbeelding:
 
-[![3D]][3]
+[![3]][3]
 
 In de optie 1 wordt NAT toegepast na het splitsen van het verkeer tussen de primaire en secundaire verbindingen van de ExpressRoute. Om aan de stateful-vereisten van NAT te voldoen, worden onafhankelijke NAT-Pools gebruikt tussen de primaire en secundaire apparaten, zodat het retour verkeer zou aankomen op hetzelfde edge-apparaat via de stroom egressed.
 
@@ -93,12 +93,8 @@ Zie [ontwerpen voor herstel na nood gevallen met persoonlijke ExpressRoute-peeri
 
 
 <!--Link References-->
-[zone redundant vgw]: https://docs.microsoft.com/azure/vpn-gateway/about-zone-redundant-vnet-gateways
-[conf zone redundant vgw]: https://docs.microsoft.com/azure/vpn-gateway/create-zone-redundant-vnet-gateway
-[Configure Global Reach]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-set-global-reach
-[BFD]: https://docs.microsoft.com/azure/expressroute/expressroute-bfd
-[DR]: https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering
-
-
-
-
+[zone redundant vgw]: ../vpn-gateway/about-zone-redundant-vnet-gateways.md
+[conf zone redundant vgw]: ../vpn-gateway/create-zone-redundant-vnet-gateway.md
+[Configure Global Reach]: ./expressroute-howto-set-global-reach.md
+[BFD]: ./expressroute-bfd.md
+[DR]: ./designing-for-disaster-recovery-with-expressroute-privatepeering.md

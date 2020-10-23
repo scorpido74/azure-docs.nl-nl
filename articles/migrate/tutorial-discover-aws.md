@@ -4,12 +4,12 @@ description: Informatie over het detecteren van AWS-exemplaren met Azure Migrate
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: e48d123a9317d35cd2bb8e38a29d23cae3b75eb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b837ae89831024b169782fe9ae1a062677a4b45b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275452"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311282"
 ---
 # <a name="tutorial-discover-aws-instances-with-server-assessment"></a>Zelfstudie: AWS-exemplaren detecteren met Serverevaluatie
 
@@ -224,7 +224,7 @@ Het apparaat voor de eerste keer instellen.
    
    Aanmelden met een pincode wordt niet ondersteund.
 3. Nadat u zich hebt aangemeld, gaat u terug naar de web-app. 
-4. Als het Azure-gebruikersaccount dat wordt gebruikt voor logboekregistratie de juiste [machtigingen ](tutorial-prepare-physical.md) heeft voor de Azure-resources die tijdens het genereren van de sleutel zijn gemaakt, wordt de registratie van het apparaat gestart.
+4. Als het Azure-gebruikersaccount dat wordt gebruikt voor logboekregistratie de juiste [machtigingen ](./tutorial-discover-physical.md) heeft voor de Azure-resources die tijdens het genereren van de sleutel zijn gemaakt, wordt de registratie van het apparaat gestart.
 1. Nadat het apparaat is geregistreerd, kunt u de registratiedetails zien door op **Details weergeven** te klikken.
 
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 178c54b9726f21775603d67cb0911237aa4caf01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f91928812dd2f9f850b5e4c3af16ce5c82608e05
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601361"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371049"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Naslag Gids voor verificatie beheer van Azure Active Directory
 
@@ -42,13 +42,13 @@ Voor het beheren van Azure Active Directory is de continue uitvoering van belang
 | Sorteren en onderzoek gebruikers die zijn gemarkeerd voor risico-en kwets bare rapporten van Azure AD Identity Protection | InfoSec Operations-team |
 
 > [!NOTE]
-> Voor Azure AD Identity Protection is een Azure AD Premium P2-licentie vereist. Zie de [Algemeen beschik bare functies van de Azure ad free en Azure AD Premium edities vergelijken](https://azure.microsoft.com/pricing/details/active-directory/)om de juiste licentie voor uw vereisten te vinden.
+> Voor Azure AD Identity Protection is een Azure AD Premium P2-licentie vereist. Zie de [Algemeen beschik bare functies van de Azure ad free en Azure AD Premium edities vergelijken](https://azure.microsoft.com/pricing/details/active-directory/)om de juiste licentie voor uw vereisten te vinden.
 
 Wanneer u uw lijst bekijkt, moet u mogelijk een eigenaar toewijzen voor taken waarvoor een eigenaar ontbreekt of het eigendom van taken met eigen aars aanpassen die niet zijn afgestemd op de bovenstaande aanbevelingen.
 
 #### <a name="owner-recommended-reading"></a>Door eigenaar aanbevolen lezen
 
-- [Beheerdersrollen toewijzen in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)
+- [Beheerdersrollen toewijzen in Azure Active Directory](../roles/permissions-reference.md)
 - [Governance in Azure](../../governance/index.yml)
 
 ## <a name="credentials-management"></a>Referentiebeheer
@@ -119,7 +119,7 @@ Federatieve authenticatie met geïntegreerde Windows-verificatie (IWA) of naadlo
 
 ### <a name="device-trust-access-policies"></a>Toegangs beleid voor vertrouwens relaties van apparaten
 
-Net als een gebruiker in uw organisatie is een apparaat een kernidentiteit die u wilt beveiligen. U kunt de apparaat-id gebruiken om uw resources altijd en overal te beschermen.Het verifiëren van het apparaat en de accounting voor het vertrouwens type verbetert uw beveiligings postuur en-bruikbaarheid door:
+Net als een gebruiker in uw organisatie is een apparaat een kernidentiteit die u wilt beveiligen. U kunt de apparaat-id gebruiken om uw resources altijd en overal te beschermen. Het verifiëren van het apparaat en de accounting voor het vertrouwens type verbetert uw beveiligings postuur en-bruikbaarheid door:
 
 - Vermijd wrijving, bijvoorbeeld met MFA, wanneer het apparaat wordt vertrouwd
 - Toegang vanaf niet-vertrouwde apparaten blok keren
@@ -128,7 +128,7 @@ Net als een gebruiker in uw organisatie is een apparaat een kernidentiteit die u
 U kunt dit doel doen door de apparaat-id's te halen en te beheren in azure AD met behulp van een van de volgende methoden:
 
 - Organisaties kunnen [Microsoft intune](/intune/what-is-intune) gebruiken om het apparaat te beheren en nalevings beleid af te dwingen, de status van het apparaat te bevestigen en beleids regels voor voorwaardelijke toegang in te stellen op basis van het feit of het apparaat compatibel is. Microsoft Intune kunt iOS-apparaten, Mac-Bureau bladen (via JAMF-integratie), Windows-Bureau bladen (systeem eigen gebruik van Mobile Device Management voor Windows 10 en co-beheer met micro soft endpoint Configuration Manager) en mobiele Android-apparaten beheren.
-- [Hybride Azure AD join](../devices/hybrid-azuread-join-managed-domains.md) biedt beheer met groeps beleid of micro soft Endpoint-Configuration Manager in een omgeving met Active Directory computers die lid zijn van een domein. Organisaties kunnen een beheerde omgeving implementeren via PHS of PTA met naadloze SSO. Door uw apparaten naar Azure AD te brengen, wordt de gebruikers productiviteit via eenmalige aanmelding in uw Cloud en on-premises resources gemaximaliseerd, terwijl u de toegang tot uw Cloud en on-premises resources met [voorwaardelijke toegang](../conditional-access/overview.md)   tegelijk kunt beveiligen.
+- [Hybride Azure AD join](../devices/hybrid-azuread-join-managed-domains.md) biedt beheer met groeps beleid of micro soft Endpoint-Configuration Manager in een omgeving met Active Directory computers die lid zijn van een domein. Organisaties kunnen een beheerde omgeving implementeren via PHS of PTA met naadloze SSO. Door uw apparaten naar Azure AD te brengen, wordt de gebruikers productiviteit via eenmalige aanmelding in uw Cloud en on-premises resources gemaximaliseerd, terwijl u de toegang tot uw Cloud en on-premises resources met [voorwaardelijke toegang](../conditional-access/overview.md) tegelijk kunt beveiligen.
 
 Als u Windows-apparaten die lid zijn van een domein die niet zijn geregistreerd in de Cloud, of Windows-apparaten die lid zijn van het domein die zijn geregistreerd in de Cloud, maar geen beleid voor voorwaardelijke toegang, moet u de niet-geregistreerde apparaten registreren en in beide gevallen [hybride Azure AD join gebruiken als een besturings element](../conditional-access/require-managed-devices.md) in uw beleid voor voorwaardelijke toegang.
 
@@ -177,7 +177,7 @@ Het [migreren van apps van AD FS naar Azure AD](../manage-apps/migrate-adfs-apps
 
 ### <a name="assign-users-to-applications"></a>Gebruikers toewijzen aan toepassingen
 
-[Het toewijzen van gebruikers aan toepassingen is het](../manage-apps/assign-user-or-group-access-portal.md) meest geschikt voor het gebruik van groepen, omdat ze een grotere flexibiliteit en mogelijkheid bieden om op schaal te beheren. De voor delen van het gebruik van groepen zijn onder andere [op kenmerken gebaseerd dynamisch groepslid maatschap](../users-groups-roles/groups-dynamic-membership.md) en [overdracht naar app-eigen aren](../fundamentals/active-directory-accessmanagement-managing-group-owners.md). Daarom raden we u aan de volgende acties uit te voeren om het beheer op schaal te verbeteren als u al groepen gebruikt en beheert:
+[Het toewijzen van gebruikers aan toepassingen is het](../manage-apps/assign-user-or-group-access-portal.md) meest geschikt voor het gebruik van groepen, omdat ze een grotere flexibiliteit en mogelijkheid bieden om op schaal te beheren. De voor delen van het gebruik van groepen zijn onder andere [op kenmerken gebaseerd dynamisch groepslid maatschap](../enterprise-users/groups-dynamic-membership.md) en [overdracht naar app-eigen aren](../fundamentals/active-directory-accessmanagement-managing-group-owners.md). Daarom raden we u aan de volgende acties uit te voeren om het beheer op schaal te verbeteren als u al groepen gebruikt en beheert:
 
 - Delegeer groeps beheer en bestuur aan eigen aars van toepassingen.
 - Self-service toegang tot de toepassing toestaan.
@@ -189,8 +189,8 @@ Als u daarentegen toepassingen vindt die aan afzonderlijke gebruikers zijn toege
 #### <a name="assign-users-to-applications-recommended-reading"></a>Gebruikers toewijzen aan toepassingen aanbevolen te lezen
 
 - [Gebruikers en groepen toewijzen aan een toepassing in Azure Active Directory](../manage-apps/assign-user-or-group-access-portal.md)
-- [Machtigingen voor app-registratie in Azure Active Directory delegeren](../users-groups-roles/roles-delegate-app-roles.md)
-- [Dynamische lidmaatschapsregels voor groepen in Azure Active Directory](../users-groups-roles/groups-dynamic-membership.md)
+- [Machtigingen voor app-registratie in Azure Active Directory delegeren](../roles/delegate-app-roles.md)
+- [Dynamische lidmaatschapsregels voor groepen in Azure Active Directory](../enterprise-users/groups-dynamic-membership.md)
 
 ## <a name="access-policies"></a>Toegangsbeleid
 
@@ -248,7 +248,7 @@ Voorwaardelijke toegang is een essentieel hulp programma voor het verbeteren van
 - Gebruik beleids regels voor voorwaardelijke toegang om [MFA te implementeren](../conditional-access/plan-conditional-access.md)in plaats van een **MFA per gebruiker** te gebruiken
 - Beschikken over een kleine set kern beleidsregels die van toepassing kunnen zijn op meerdere toepassingen
 - Lege uitzonderings groepen definiëren en toevoegen aan het beleid om een uitzonderings strategie te hebben
-- Planning voor [afbreek glazen](../users-groups-roles/directory-admin-roles-secure.md#break-glass-what-to-do-in-an-emergency) accounts zonder MFA-besturings elementen
+- Planning voor [afbreek glazen](../roles/security-planning.md#break-glass-what-to-do-in-an-emergency) accounts zonder MFA-besturings elementen
 - Zorg voor een consistente ervaring op het Microsoft 365-client toepassingen, bijvoorbeeld teams, OneDrive, Outlook, enzovoort.) door dezelfde set besturings elementen te implementeren voor services zoals Exchange Online en share point online
 - Toewijzing aan beleid moet worden geïmplementeerd via groepen, niet voor personen
 - Voer regel matig beoordelingen uit van de uitzonderings groepen die worden gebruikt in beleid om het aantal tijd gebruikers te beperken dat de beveiligings postuur. Als u Azure AD P2 hebt, kunt u toegangs beoordelingen gebruiken om het proces te automatiseren
@@ -347,7 +347,7 @@ Hieronder ziet u de gebruikers-en groeps instellingen die kunnen worden vergrend
 - [Toepassingen integreren met Azure Active Directory](../develop/quickstart-register-app.md)
 - [Apps, machtigingen en toestemming in Azure Active Directory.](../develop/quickstart-register-app.md)
 - [Groepen gebruiken voor het beheren van de toegang tot resources in Azure Active Directory](./active-directory-manage-groups.md)
-- [Toegangs beheer voor selfservice toepassingen instellen in Azure Active Directory](../users-groups-roles/groups-self-service-management.md)
+- [Toegangs beheer voor selfservice toepassingen instellen in Azure Active Directory](../enterprise-users/groups-self-service-management.md)
 
 ### <a name="traffic-from-unexpected-locations"></a>Verkeer van onverwachte locaties
 

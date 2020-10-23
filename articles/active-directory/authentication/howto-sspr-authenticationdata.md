@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 07/17/2020
+ms.date: 10/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cba2517f536c9044ad15c628c793529f93b988ce
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ed2366884f53eafe89800e7ae60a6a560dc292b4
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966488"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164993"
 ---
 # <a name="pre-populate-user-authentication-contact-information-for-azure-active-directory-self-service-password-reset-sspr"></a>Contact gegevens van gebruikers verificatie vooraf invullen voor Azure Active Directory self-service voor wachtwoord herstel (SSPR)
 
@@ -48,16 +48,14 @@ Nadat een gebruiker zijn of haar mobiele telefoon nummer heeft geverifieerd, wor
 
 ## <a name="authentication-contact-info"></a>Contact gegevens voor verificatie
 
-Op de pagina **verificatie methoden** voor een Azure AD-gebruiker in de Azure Portal, kan een globale beheerder de contact gegevens voor de verificatie hand matig instellen, zoals wordt weer gegeven in de volgende voorbeeld scherm afbeelding:
+Op de pagina **verificatie methoden** voor een Azure AD-gebruiker in de Azure Portal, kan een globale beheerder de contact gegevens voor de verificatie hand matig instellen. U kunt bestaande methoden bekijken onder het gedeelte *bruikbare verificatie methoden* of op **+ verificatie methoden toevoegen**, zoals wordt weer gegeven in de volgende voorbeeld scherm afbeelding:
 
-![Contact gegevens voor verificatie voor een gebruiker in azure AD][Contact]
+:::image type="content" source="media/howto-sspr-authenticationdata/user-authentication-contact-info.png" alt-text="Verificatie methoden beheren vanuit de Azure Portal":::
 
 De volgende overwegingen zijn van toepassing op deze contact gegevens voor verificatie:
 
 * Als het veld *telefoon* is ingevuld en *mobiele telefoon* is ingeschakeld in het SSPR-beleid, ziet de gebruiker dat nummer op de registratie pagina voor het opnieuw instellen van het wacht woord en tijdens de werk stroom voor het opnieuw instellen van wacht woorden.
-* Het veld *alternatief telefoon nummer* wordt niet gebruikt voor het opnieuw instellen van wacht woorden.
 * Als het veld *e-mail* is ingevuld en *e-mail adres* is ingeschakeld in het SSPR-beleid, ziet de gebruiker dat e-mail bericht op de registratie pagina voor het opnieuw instellen van het wacht woord en tijdens de werk stroom voor wacht woord opnieuw instellen.
-* Als het veld *alternatief e-mail* gevuld is en *e-mail adres* is ingeschakeld in het SSPR-beleid, ziet de gebruiker dat e-mail bericht niet op de registratie pagina voor het opnieuw instellen van het wacht woord, maar ze worden weer geven tijdens de werk stroom voor wacht woord opnieuw instellen.
 
 ## <a name="security-questions-and-answers"></a>Beveiligings vragen en-antwoorden
 
@@ -169,5 +167,3 @@ Wanneer de contact gegevens van de verificatie vooraf zijn ingevuld voor gebruik
 
 > [!div class="nextstepaction"]
 > [Selfservice voor wachtwoord herstel van Azure AD inschakelen](tutorial-enable-sspr.md)
-
-[Contact]: ./media/howto-sspr-authenticationdata/user-authentication-contact-info.png "Globale beheerders kunnen de contact gegevens voor verificatie van een gebruiker wijzigen"

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: 237565a7b72c3317e2c443f86965634ed7c9942c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f4dd6d67d60603ed6cad7056cff4bb07dcb1c2e5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336892"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149376"
 ---
 # <a name="about-transferring-billing-ownership-for-an-azure-subscription"></a>De eigendom van facturering voor een Azure-abonnement overdragen
 
@@ -63,7 +63,7 @@ De onderstaande typen abonnementen kunnen in Azure Portal worden overgedragen. M
 
 ## <a name="resources-transferred-with-subscriptions"></a>Resources overgedragen met abonnementen
 
-Alle resources zoals VM's, schijven en websites worden overgedragen naar het nieuwe account. Als u echter een abonnement overdraagt naar een account in een andere Azure AD-tenant, worden de [beheerdersrollen](../manage/add-change-subscription-administrator.md) en [Azure-roltoewijzingen](../../role-based-access-control/role-assignments-portal.md) voor het abonnement niet overgedragen. Bovendien worden [app-registraties](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) en andere tenantspecifieke services niet overgedragen met het abonnement.
+Alle resources zoals VM's, schijven en websites worden overgedragen naar het nieuwe account. Als u echter een abonnement overdraagt naar een account in een andere Azure AD-tenant, worden de [beheerdersrollen](../manage/add-change-subscription-administrator.md) en [Azure-roltoewijzingen](../../role-based-access-control/role-assignments-portal.md) voor het abonnement niet overgedragen. Bovendien worden [app-registraties](../../active-directory/develop/quickstart-register-app.md) en andere tenantspecifieke services niet overgedragen met het abonnement.
 
 ## <a name="transfer-account-ownership-to-another-countryregion"></a>Accounteigendom overdragen naar een ander land of andere regio
 
@@ -99,7 +99,7 @@ U kunt de gebruikers die Azure-roltoewijzingen hebben om toegang te krijgen tot 
 Zelfs als de [Azure-roltoewijzingen](../../role-based-access-control/role-assignments-portal.md) tijdens de overdracht worden verwijderd, hebben gebruikers in het account van de oorspronkelijke eigenaar mogelijk nog toegang tot het abonnement via andere beveiligingsmechanismen, waaronder:
 
 * Beheercertificaten die de gebruiker beheerdersrechten verlenen voor de abonnementsresources. Zie [Een beheercertificaat voor Azure maken en uploaden](../../cloud-services/cloud-services-certs-create.md) voor meer informatie.
-* Toegangssleutels voor services zoals Storage. Zie [Over Azure-opslagaccounts](../../storage/common/storage-create-storage-account.md) voor meer informatie.
+* Toegangssleutels voor services zoals Storage. Zie [Over Azure-opslagaccounts](../../storage/common/storage-account-create.md) voor meer informatie.
 * Referenties voor externe toegang voor services zoals Azure Virtual Machines.
 
 Als ontvangers de toegang tot hun resources willen beperken, moeten ze overwegen om de geheimen bij te werken die zijn gekoppeld aan de service. De meeste resources kunnen worden bijgewerkt. Meld u aan bij [Azure Portal](https://portal.azure.com) en selecteer in het Hub-menu **Alle resources**. Selecteer vervolgens de resource. Selecteer **Instellingen** op de resourcepagina. Daar kunt u bestaande geheimen weergeven en bijwerken.

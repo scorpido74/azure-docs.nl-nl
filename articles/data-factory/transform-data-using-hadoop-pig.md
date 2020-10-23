@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
-ms.openlocfilehash: 54eff77daa7e69c39e9ec5d6f326f2f64c9fcafb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b6f75204f64f892f80abb4890796551bffd22a7
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83849226"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368958"
 ---
 # <a name="transform-data-using-hadoop-pig-activity-in-azure-data-factory"></a>Gegevens transformeren met behulp van Hadoop Pig-activiteit in Azure Data Factory
 
@@ -80,5 +80,5 @@ Raadpleeg de volgende artikelen waarin wordt uitgelegd hoe u gegevens op andere 
 * [Hadoop streaming-activiteit](transform-data-using-hadoop-streaming.md)
 * [Spark-activiteit](transform-data-using-spark.md)
 * [Aangepaste .NET-activiteit](transform-data-using-dotnet-custom-activity.md)
-* [Activiteit voor batch uitvoering Machine Learning](transform-data-using-machine-learning.md)
+* [Activiteit voor het uitvoeren van Azure Machine Learning Studio (klassiek)](transform-data-using-machine-learning.md)
 * [Opgeslagen procedure activiteit](transform-data-using-stored-procedure.md)

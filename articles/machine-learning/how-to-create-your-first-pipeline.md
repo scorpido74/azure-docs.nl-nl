@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: sgilley
 ms.author: nilsp
 author: NilsPohlmann
-ms.date: 8/14/2020
+ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 9bfec8c1da0581fa7f17dd671358218f22c877c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6cbda4067e98c16ea26f3436b5f65e696549462
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708472"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370301"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>machine learning-pijp lijnen maken en uitvoeren met Azure Machine Learning SDK
 
@@ -30,7 +30,7 @@ De ML pijp lijnen die u maakt, zijn zichtbaar voor de leden van uw Azure Machine
 
 ML-pijp lijnen worden uitgevoerd op Compute-doelen (Zie [Wat zijn Compute-doelen in azure machine learning](https://docs.microsoft.com/azure/machine-learning/concept-compute-target)). Pijp lijnen kunnen gegevens van en naar ondersteunde [Azure Storage](https://docs.microsoft.com/azure/storage/) locaties lezen en schrijven.
 
-Als u geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree).
+Als u geen Azure-abonnement hebt, maak dan een gratis account voordat u begint. Probeer de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -251,6 +251,18 @@ from azureml.pipeline.core import Pipeline
 pipeline1 = Pipeline(workspace=ws, steps=[compare_models])
 ```
 
+### <a name="how-python-environments-work-with-pipeline-parameters"></a>Hoe python-omgevingen werken met pijplijn parameters
+
+Zoals eerder besproken in [de omgeving van de trainings uitvoering configureren](#configure-the-training-runs-environment), worden de omgevings status-en python-bibliotheek afhankelijkheden opgegeven met behulp van een- `Environment` object. Over het algemeen kunt u een bestaand item opgeven `Environment` door te verwijzen naar de naam en eventueel een versie:
+
+```python
+aml_run_config = RunConfiguration()
+aml_run_config.environment.name = 'MyEnvironment'
+aml_run_config.environment.version = '1.0'
+```
+
+Als u echter `PipelineParameter` objecten wilt gebruiken voor het dynamisch instellen van variabelen tijdens runtime voor uw pijplijn stappen, kunt u deze techniek niet gebruiken om te verwijzen naar een bestaande `Environment` . Als u objecten wilt gebruiken `PipelineParameter` , moet u in plaats daarvan het `environment` veld van de `RunConfiguration` aan een object instellen `Environment` . Het is uw verantwoordelijkheid om ervoor te zorgen dat een `Environment` van de afhankelijkheden op externe Python-pakketten correct is ingesteld.
+
 ### <a name="use-a-dataset"></a>Een gegevensset gebruiken 
 
 Gegevens sets die zijn gemaakt op basis van Azure Blob-opslag, Azure Files, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database en Azure Database for PostgreSQL kunnen worden gebruikt als invoer voor elke pijplijn stap. U kunt een uitvoer schrijven naar een [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py&preserve-view=true), [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py&preserve-view=true)of als u gegevens wilt schrijven naar een specifieke Data Store- [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true). 
@@ -337,6 +349,8 @@ Wanneer u een pijp lijn voor het eerst uitvoert, Azure Machine Learning:
 ![Diagram van het uitvoeren van een experiment als een pijp lijn](./media/how-to-create-your-first-pipeline/run_an_experiment_as_a_pipeline.png)
 
 Zie voor meer informatie de referentie over de experimentele [klasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py&preserve-view=true) .
+
+## <a name="use-pipeline-parameters-for-arguments-that-change-at-inference-time"></a>Pijplijn parameters gebruiken voor argumenten die tijdens de inschakel tijd veranderen
 
 ## <a name="view-results-of-a-pipeline"></a>Resultaten van een pijp lijn weer geven
 

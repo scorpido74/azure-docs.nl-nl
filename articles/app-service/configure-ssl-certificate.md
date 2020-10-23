@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: c8ede3c4a186b4b24d56651deb8172fdcde8e5ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3201870d2d738a867f89166904d668b5596cbcdf
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89420877"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149072"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Een TLS/SSL-certificaat toevoegen in Azure App Service
 
@@ -145,8 +145,8 @@ Klik op de pagina **Key Vault-status** op **Key Vault-opslagplaats** om een nieu
 | Resourcegroep | U wordt aangeraden dezelfde resourcegroep te selecteren als uw App Service-certificaat. |
 | Locatie | Selecteer dezelfde locatie als uw App Service-app. |
 | Prijscategorie | Zie [Prijzen van Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/) voor meer informatie. |
-| Toegangsbeleid| Hiermee worden de toepassingen en de toegestane toegang tot de kluisresources gedefinieerd. U kunt dit later configureren door de stappen te volgen in [Een Key Vault-toegangsbeleid toewijzen](/azure/key-vault/general/assign-access-policy-portal). |
-| Toegang tot virtueel netwerk | Beperk de toegang tot de kluis tot bepaalde virtuele Azure-netwerken. U kunt de toegang later configureren door de stappen bij [Azure Key Vault-firewalls en virtuele netwerken configureren](/azure/key-vault/general/network-security) te volgen |
+| Toegangsbeleid| Hiermee worden de toepassingen en de toegestane toegang tot de kluisresources gedefinieerd. U kunt dit later configureren door de stappen te volgen in [Een Key Vault-toegangsbeleid toewijzen](../key-vault/general/assign-access-policy-portal.md). |
+| Toegang tot virtueel netwerk | Beperk de toegang tot de kluis tot bepaalde virtuele Azure-netwerken. U kunt de toegang later configureren door de stappen bij [Azure Key Vault-firewalls en virtuele netwerken configureren](../key-vault/general/network-security.md) te volgen |
 
 Nadat u de kluis hebt geselecteerd, sluit u de pagina **Key Vault-opslagplaats**. Bij de optie **Stap 1: opslaan** wordt met het groene vinkje aangegeven dat er geen problemen zijn. Houd de pagina geopend voor de volgende stap.
 
@@ -189,7 +189,7 @@ Wanneer de bewerking is voltooid, ziet u het certificaat in de lijst **Certifica
 Als u Azure Key Vault gebruikt om uw certificaten te beheren, kunt u een PKCS12-certificaat vanuit Key Vault in App Service importeren mits het [voldoet aan de vereisten](#private-certificate-requirements).
 
 ### <a name="authorize-app-service-to-read-from-the-vault"></a>App Service machtigen voor leestoegang tot de kluis
-Standaard heeft de App Service-resourceprovider geen toegang tot Key Vault. Als u Key Vault voor een certificaatimplementatie wilt gebruiken, moet u [de resourceprovider machtigen voor leestoegang tot Key Vault](../key-vault/general/group-permissions-for-apps.md#grant-access-to-your-key-vault). 
+Standaard heeft de App Service-resourceprovider geen toegang tot Key Vault. Als u Key Vault voor een certificaatimplementatie wilt gebruiken, moet u [de resourceprovider machtigen voor leestoegang tot Key Vault](../key-vault/general/assign-access-policy-cli.md). 
 
 `abfa0a7c-a6b6-4736-8310-5855508787cd` is de naam van de service-principal voor de App Service-resourceprovider. Deze is hetzelfde voor alle Azure-abonnementen. Voor een Azure Government-cloudomgeving moet u `6a02c803-dafd-4136-b4c3-5a6f318b4714` gebruiken als naam van de service-principal voor de resourceprovider.
 
@@ -378,11 +378,11 @@ U kunt nu het App Service-certificaat verwijderen. Selecteer **Overzicht** > **V
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
-[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
 
 ## <a name="more-resources"></a>Meer bronnen
 

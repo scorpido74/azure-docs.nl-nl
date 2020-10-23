@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 55269b45159210eec2ec7a6dd8eaea661ff13ebd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9da725c433ad5d6233fd164d256692ca407714fc
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760303"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206449"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>Upload facturerings gegevens naar Azure en Bekijk deze in de Azure Portal
 
@@ -30,7 +30,7 @@ In de toekomst zijn er twee modi waarin u uw Azure Arc-gegevens Services kunt ui
 - **Indirect verbonden** : er is geen rechtstreekse verbinding met Azure. Gegevens worden alleen verzonden naar Azure via een export-en upload proces. Alle Azure Arc Data Services-implementaties werken in deze modus vandaag nog in de preview-versie.
 - **Direct verbonden** -in deze modus is er een afhankelijkheid van de Azure Arc enabled Kubernetes-service om een directe verbinding te bieden tussen Azure en het Kubernetes-cluster waarop de Azure-Arc-gegevens services worden uitgevoerd. Hiermee worden meer mogelijkheden ingeschakeld en kunt u ook de Azure Portal en de Azure CLI gebruiken voor het beheren van uw gegevens services van Azure Arc, net zoals u uw gegevens Services beheert in azure PaaS.  Deze connectiviteits modus is nog niet beschikbaar in de preview-versie, maar binnenkort wel.
 
-U vindt meer informatie over het verschil tussen de [connectiviteits modi](https://docs.microsoft.com/azure/azure-arc/data/connectivity).
+U vindt meer informatie over het verschil tussen de [connectiviteits modi](./connectivity.md).
 
 In de indirect verbonden modus worden facturerings gegevens periodiek vanuit de Azure-Arc-gegevens controller naar een beveiligd bestand geëxporteerd en vervolgens geüpload naar Azure en verwerkt.  In de aanstaande, direct verbonden modus worden de facturerings gegevens automatisch ongeveer 1/uur verzonden naar Azure om een nabije real-time weer gave te geven van de kosten van uw services. Het proces voor het exporteren en uploaden van de gegevens in de indirect verbonden modus kan ook worden geautomatiseerd met behulp van scripts of we kunnen een service bouwen die deze voor u zal doen.
 
@@ -117,7 +117,7 @@ Volg deze stappen om facturerings gegevens weer te geven in de Azure Portal:
 1. Klik op de knop **kosten per resource** aan de bovenkant van de weer gave.
 1. Zorg ervoor dat uw bereik is ingesteld op het abonnement waarin uw gegevens service resources zijn gemaakt.
 1. Selecteer **kosten per resource** in de vervolg keuzelijst weer geven naast de scope selector aan de bovenkant van de weer gave.
-1. Zorg ervoor dat het datum filter is ingesteld op **deze maand** of een ander tijds bereik dat duidelijk is op basis van de timing van de gegevens service resources die u hebt gemaakt.
+1. Zorg ervoor dat het datum filter is ingesteld op **deze maand** of een ander tijds bereik dat duidelijk wordt gezien de timing van het moment waarop u uw gegevens service bronnen hebt gemaakt.
 1. Klik op **filter toevoegen** om een filter toe te voegen op **resource type**  =  `microsoft.azuredata/<data service type>` Als u wilt filteren op slechts één type gegevens service van Azure Arc ingeschakeld.
 1. Er wordt nu een lijst weer geven met alle resources die zijn gemaakt en geüpload naar Azure. Omdat de facturerings meter $0 is, zult u zien dat de kosten altijd $0 zijn.
 
@@ -135,11 +135,11 @@ U kunt ook regel matig **gedetailleerde** gebruiks-en facturerings gegevens expo
 
 Volg deze stappen om een export taak voor facturering in te stellen:
 
-1. Klik op exporteren aan de linkerkant.
-1. Klik op Toevoegen.
+1. Klik op **exporteren** aan de linkerkant.
+1. Klik op **Add**.
 1. Voer een naam en een export frequentie in en klik op volgende.
-1. Kies of u een nieuw opslag account wilt maken of een nieuwe wilt maken en vul het formulier in om het opslag account, de container en het mappad op te geven waarnaar u de facturerings gegevens bestanden wilt exporteren en klik op volgende.
-1. Klik op Maken.
+1. Kies of u een nieuw opslag account wilt maken of een bestaand wilt gebruiken en vul het formulier in om het opslag account, de container en het mappad op te geven waarnaar u de facturerings gegevens bestanden wilt exporteren en klik op volgende.
+1. Klik op **Maken**.
 
 De export bestanden van de facturerings gegevens zijn ongeveer 4 uur beschikbaar en worden geëxporteerd volgens het schema dat u hebt opgegeven bij het maken van de export taak voor facturering.
 
@@ -156,7 +156,7 @@ U kunt de facturerings gegevens bestanden in de Azure Portal valideren.
 5. Klik op de container die u hebt opgegeven bij het maken van de export taak voor facturering hierboven.
 6. Klik op de map die u hebt opgegeven bij het maken van de export taak voor facturering hierboven.
 7. Zoom in op de gegenereerde mappen en bestanden en klik op een van de gegenereerde CSV-bestanden.
-8. Klik op de knop downloaden, waarmee het bestand wordt opgeslagen in de lokale map met Down loads.
+8. Klik op de knop **downloaden** , waarmee het bestand wordt opgeslagen in de lokale map met Down loads.
 9. Open het bestand met behulp van een CSV-bestands viewer zoals Excel.
 10. De resultaten filteren om alleen de rijen met het **resource type**weer te geven  =  `Microsoft.AzureData/<data service resource type` .
 11. U ziet het aantal uren dat het exemplaar is gebruikt in de huidige periode van 24 uur in de kolom UsageQuantity.

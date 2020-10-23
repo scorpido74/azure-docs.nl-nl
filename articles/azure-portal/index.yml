@@ -12,12 +12,12 @@ metadata:
   author: mblythe
   ms.author: mblythe
   ms.date: 08/05/2020
-  ms.openlocfilehash: f45fc98073dcc6eeee10c691fe9f93860e0fb654
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 4a491a2924af90afc43ddb4aa097f9967c8f156a
+  ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "88212084"
+  ms.lasthandoff: 10/15/2020
+  ms.locfileid: "92089278"
 landingContent:
 - title: Over de Azure-portal
   linkLists:
@@ -43,13 +43,13 @@ landingContent:
     links:
     - text: Lijst met veilige Azure-portal-URL's maken
       url: azure-portal-safelist-urls.md
-    - text: Toegangsbeheer op basis van rollen voor dashboards
+    - text: Op rollen gebaseerd toegangsbeheer in Azure voor dashboards
       url: azure-portal-dashboard-share-access.md
   - linkListType: learn
     links:
     - text: Resources beheren in Azure
       url: /learn/paths/manage-resources-in-azure/
-    - text: Azure-resources beveiligen met op rollen gebaseerd toegangsbeheer (RBAC)
+    - text: Uw Azure-resources beveiligen met op rollen gebaseerd toegangsbeheer in Azure (Azure RBAC)
       url: /learn//modules/secure-azure-resources-with-rbac/
 - title: Aan de slag
   linkLists:

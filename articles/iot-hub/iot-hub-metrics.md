@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jlian
-ms.openlocfilehash: c448d7e5a5e0bea29063930bed3a59a0461b8cf5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49ecf753b1dd547eab251222a6c2709d96e9c89b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91767617"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146523"
 ---
 <!--for build: for each metric, if you understand what it is, it's ok. otw add more info.  -->
 # <a name="understand-iot-hub-metrics"></a>IoT Hub metrische gegevens begrijpen
@@ -44,7 +44,7 @@ Metrische gegevens zijn standaard ingeschakeld. U kunt IoT Hub metrische gegeven
 
 IoT Hub biedt diverse metrische gegevens om u een overzicht te geven van de status van uw hub en het totale aantal verbonden apparaten. U kunt informatie uit meerdere metrische gegevens combi neren om een grotere afbeelding van de status van de IoT-hub te tekenen. In de volgende tabel worden de metrische gegevens voor elke IoT-hub beschreven en wordt uitgelegd hoe elke metriek de algehele status van de IoT-hub heeft.
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Afmetingen|
 |---|---|---|---|---|---|
 |RoutingDeliveries | Bezorgings pogingen routeren (preview) | Aantal | Totaal |Dit is de metrische gegevens van de route ring. Gebruik de dimensies om de leverings status voor een bepaald eind punt of voor een specifieke routerings bron te identificeren.| ResourceID<br>Resultaat,<br>RoutingSource,<br>EndpointType,<br>FailureReasonCategory,<br>EndpointName<br>*Meer informatie over dimensies [**vindt u hier**](#dimensions)*. |
 |RoutingDeliveryLatency| Routerings latentie (preview-versie) | Milliseconden | Average |Dit is de metrische gegevens van de bezorgings latentie van de route ring. Gebruik de dimensies om de latentie voor een bepaald eind punt of voor een specifieke routerings bron te identificeren.| ResourceID<br>RoutingSource,<br>EndpointType,<br>EndpointName<br>*Meer informatie over dimensies [**vindt u hier**](#dimensions)*.|
@@ -115,7 +115,7 @@ IoT Hub biedt diverse metrische gegevens om u een overzicht te geven van de stat
 |connectedDeviceCount|Verbonden apparaten (preview-versie)|Aantal|Average|Aantal apparaten dat is verbonden met uw IoT-hub|Geen|
 |configuraties|Metrische configuratie gegevens|Aantal|Totaal|Het totale aantal ruwe verwerkingen dat is uitgevoerd voor apparaatconfiguratie en IoT Edge implementatie op een set doel apparaten. Dit omvat ook het aantal bewerkingen dat het apparaat dubbel of de module heeft gewijzigd vanwege deze configuraties.|Geen|
 
-### <a name="dimensions"></a>Dimensies
+### <a name="dimensions"></a>Afmetingen
 Met dimensies kunt u meer informatie over de metrische gegevens vaststellen. Sommige para meters voor route ring bieden informatie per eind punt. De volgende tabel bevat mogelijke waarden voor deze dimensies.
 
 |Dimensie|Waarden|
@@ -139,4 +139,4 @@ Zie voor meer informatie over de mogelijkheden van IoT Hub:
 
 * [Ontwikkelaars handleiding IoT Hub](iot-hub-devguide.md)
 
-* [AI implementeren op Edge-apparaten met Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [AI implementeren op Edge-apparaten met Azure IoT Edge](../iot-edge/quickstart-linux.md)

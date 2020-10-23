@@ -3,12 +3,12 @@ title: Offline back-up met Azure Data Box voor DPM en MABS
 description: U kunt Azure Data Box gebruiken om de eerste back-upgegevens offline van DPM en MABS te maken.
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 2fd8a137abf8b76d1587894bfa3fe8447e0d646b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80b3977a9fb886b90c3d48d54f4cda1abfd77df9
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91271491"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172222"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>Offline seeding met behulp van Azure Data Box voor DPM en MABS (preview)
 
@@ -18,7 +18,7 @@ ms.locfileid: "91271491"
 
 In dit artikel wordt uitgelegd hoe u Azure Data Box kunt gebruiken om de eerste back-upgegevens offline te brengen vanuit DPM en MABS naar een Azure Recovery Services-kluis.
 
-U kunt [Azure data Box](https://docs.microsoft.com/azure/databox/data-box-overview) gebruiken om uw grote initiële DPM/MABS-back-ups offline te brengen (zonder het netwerk te gebruiken) naar een Recovery Services kluis. Dit proces bespaart tijd en netwerk bandbreedte, waardoor een grote hoeveelheid back-upgegevens online kan worden verplaatst via een netwerk met een hoge latentie. Deze functie is momenteel beschikbaar als preview-product.
+U kunt [Azure data Box](../databox/data-box-overview.md) gebruiken om uw grote initiële DPM/MABS-back-ups offline te brengen (zonder het netwerk te gebruiken) naar een Recovery Services kluis. Dit proces bespaart tijd en netwerk bandbreedte, waardoor een grote hoeveelheid back-upgegevens online kan worden verplaatst via een netwerk met een hoge latentie. Deze functie is momenteel beschikbaar als preview-product.
 
 Offline back-up op basis van Azure Data Box biedt twee verschillende voor delen ten opzichte van [offline back-ups op basis van de Azure import/export-service](backup-azure-backup-server-import-export.md):
 
@@ -39,8 +39,8 @@ De volgende Data Box Sku's worden ondersteund:
 
 | Grootte van back-upgegevens (na compressie per MARS) \* per server | Ondersteund Azure Data Box SKU |
 | --- | --- |
-| \<= 7,2 TB | [Azure Data Box Disk](https://docs.microsoft.com/azure/databox/data-box-disk-overview) |
-| > 7,2 TB en <= 80 TB\*\* | [Azure Data Box (100 TB)](https://docs.microsoft.com/azure/databox/data-box-overview) |
+| \<= 7,2 TB | [Azure Data Box Disk](../databox/data-box-disk-overview.md) |
+| > 7,2 TB en <= 80 TB\*\* | [Azure Data Box (100 TB)](../databox/data-box-overview.md) |
 
 \*Typische compressie tarieven variëren tussen 10-20% <br>
 \*\*Neem contact op met [SystemCenterFeedback@microsoft.com](mailto:SystemCenterFeedback@microsoft.com) Als u verwacht dat u meer dan 80 TB aan initiële back-upgegevens voor één gegevens bron hebt.
@@ -64,7 +64,7 @@ Zorg ervoor dat:
 
 ### <a name="order-and-receive-the-data-box-device"></a>Bestel en ontvang het Data Box apparaat
 
-Zorg ervoor dat de vereiste Data Box-apparaten de status *bezorgd* hebben voordat u offline back-ups gaat activeren. Bekijk de [grootte van back-upgegevens en ondersteunde data Box sku's](#backup-data-size-and-supported-data-box-skus) om de meest geschikte SKU voor uw vereiste te best Ellen. Volg de stappen in [dit artikel](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-ordered) om uw data Box-apparaten te best Ellen en te ontvangen.
+Zorg ervoor dat de vereiste Data Box-apparaten de status *bezorgd* hebben voordat u offline back-ups gaat activeren. Bekijk de [grootte van back-upgegevens en ondersteunde data Box sku's](#backup-data-size-and-supported-data-box-skus) om de meest geschikte SKU voor uw vereiste te best Ellen. Volg de stappen in [dit artikel](../databox/data-box-disk-deploy-ordered.md) om uw data Box-apparaten te best Ellen en te ontvangen.
 
 > [!IMPORTANT]
 > Selecteer *BlobStorage* voor het **soort account**niet. Voor de DPM-MABS-server is een account vereist dat pagina-blobs ondersteunt. dit wordt niet ondersteund wanneer *BlobStorage* is geselecteerd. Selecteer  **opslag v2 (algemeen gebruik v2)** als het **soort account** bij het maken van het doel opslag account voor uw Azure data Box-taak.
@@ -77,14 +77,14 @@ Wanneer u het Azure Data Box apparaat hebt ontvangen, moet u, afhankelijk van de
 
 ### <a name="setup-azure-data-box-disk"></a>Azure Data Box schijf instellen
 
-Als u een of meer Azure Data Box schijven hebt besteld (Maxi maal 8 TB elk), volgt u de stappen die [hier](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-set-up) worden beschreven om uw data Box schijf uit te pakken, te verbinden en te ontgrendelen.
+Als u een of meer Azure Data Box schijven hebt besteld (Maxi maal 8 TB elk), volgt u de stappen die [hier](../databox/data-box-disk-deploy-set-up.md) worden beschreven om uw data Box schijf uit te pakken, te verbinden en te ontgrendelen.
 
 > [!NOTE]
 > Het is mogelijk dat de DPM-MABS-server geen USB-poort heeft. In een dergelijk scenario kunt u uw Azure Data Box-schijf aansluiten op een andere server/client en de hoofdmap van het apparaat beschikbaar maken als een netwerk share.
 
 ## <a name="setup-azure-data-box"></a>Azure Data Box instellen
 
-Als u een Azure Data Box (tot 100 TB) hebt besteld, volgt u de stappen die [hier](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up) worden beschreven om uw data box in te stellen.
+Als u een Azure Data Box (tot 100 TB) hebt besteld, volgt u de stappen die [hier](../databox/data-box-deploy-set-up.md) worden beschreven om uw data box in te stellen.
 
 ### <a name="mount-your-azure-data-box-as-local-system"></a>Uw Azure Data Box als lokaal systeem koppelen
 
@@ -100,7 +100,7 @@ Geef een alternatieve bron op: *Wim: D: \Sources\Install.Wim: 4*
    ```
 
 4. Het opdracht venster dat wordt geopend als gevolg van de bovenstaande opdracht bevindt zich in de context van het lokale systeem. Gebruik dit opdracht venster voor het uitvoeren van stappen voor het koppelen van de Azure page BLOB-share als een netwerk station op uw Windows-Server.
-5. Volg de onderstaande [stappen om](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-nfs#connect-to-data-box) uw DPM/MABS-server te verbinden met het data Box-apparaat via NFS en voer de volgende opdracht uit op de opdracht prompt van het lokale systeem om de share Azure-pagina-blobs te koppelen:
+5. Volg de onderstaande [stappen om](../databox/data-box-deploy-copy-data-via-nfs.md#connect-to-data-box) uw DPM/MABS-server te verbinden met het data Box-apparaat via NFS en voer de volgende opdracht uit op de opdracht prompt van het lokale systeem om de share Azure-pagina-blobs te koppelen:
 
     ```cmd
     mount -o nolock \\<DeviceIPAddres>\<StorageAccountName_PageBlob X:
@@ -110,7 +110,7 @@ Geef een alternatieve bron op: *Wim: D: \Sources\Install.Wim: 4*
 
 ## <a name="transfer-initial-backup-data-to-azure-data-box-devices"></a>Initiële back-upgegevens overdragen naar Azure Data Box-apparaten
 
-1. Volg op uw DPM-MABS-server de stappen voor het [maken van een nieuwe beveiligings groep](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups). Als u een online beveiliging toevoegt aan de bestaande beveiligings groep, klikt u met de rechter muisknop op de bestaande beveiligings groep en selecteert u **online beveiliging toevoegen** en beginnen bij **stap 8**.
+1. Volg op uw DPM-MABS-server de stappen voor het [maken van een nieuwe beveiligings groep](/system-center/dpm/create-dpm-protection-groups). Als u een online beveiliging toevoegt aan de bestaande beveiligings groep, klikt u met de rechter muisknop op de bestaande beveiligings groep en selecteert u **online beveiliging toevoegen** en beginnen bij **stap 8**.
 2. Geef op de pagina **groeps leden selecteren** de computers en bronnen op waarvan u een back-up wilt maken.
 3. Geef op de pagina **methode voor gegevens beveiliging selecteren** op hoe u back-ups voor de korte en de lange termijn wilt afhandelen. Zorg ervoor dat ik kies voor **online beveiliging.**
 
@@ -163,7 +163,7 @@ Geef een alternatieve bron op: *Wim: D: \Sources\Install.Wim: 4*
     > ![USB-station](./media/offline-backup-azure-data-box-dpm-mabs/usb-drive.png)
     >
     > Als het pad van de schijf `\\mydomain\myserver\disk1\` en *Disk1* bijvoorbeeld een map bevat met de naam *PageBlob*, is het pad dat moet worden gegeven in de wizard DPM/MABS server `\\mydomain\myserver\disk1\` .
-    > Als u [een Azure Data Box 100 TB-apparaat hebt ingesteld](https://docs.microsoft.com/azure/backup/offline-backup-azure-data-box#setup-azure-data-box), geeft u het volgende op als het netwerkpad naar het apparaat `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob` .
+    > Als u [een Azure Data Box 100 TB-apparaat hebt ingesteld](./offline-backup-azure-data-box.md#set-up-azure-data-box), geeft u het volgende op als het netwerkpad naar het apparaat `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob` .
 
 15. Selecteer **Next**. Controleer uw instellingen op de pagina **samen vatting** en selecteer **groep maken**.
 
@@ -193,8 +193,8 @@ Geef een alternatieve bron op: *Wim: D: \Sources\Install.Wim: 4*
 
 Volg deze stappen wanneer de back-up van de gegevens naar de Azure Data Box Disk is voltooid.
 
-- Volg de stappen in [dit artikel](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-picked-up) om de Azure data Box schijf naar Azure te verzenden. Als u een apparaat met Azure Data Box 100-TB hebt gebruikt, volgt u [deze stappen](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up) om de Azure data box naar Azure te verzenden.
-- [Controleer de data Box taak](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-upload-verify) in de Azure Portal. Zodra de Azure Data Box taak is *voltooid*, verplaatst de DPM-MABS-server de gegevens automatisch van het opslag account naar de Recovery Services kluis op het moment van de volgende geplande back-up. Als een herstel punt is gemaakt, wordt de back-uptaak als *voltooid* gemarkeerd.
+- Volg de stappen in [dit artikel](../databox/data-box-disk-deploy-picked-up.md) om de Azure data Box schijf naar Azure te verzenden. Als u een apparaat met Azure Data Box 100-TB hebt gebruikt, volgt u [deze stappen](../databox/data-box-deploy-picked-up.md) om de Azure data box naar Azure te verzenden.
+- [Controleer de data Box taak](../databox/data-box-disk-deploy-upload-verify.md) in de Azure Portal. Zodra de Azure Data Box taak is *voltooid*, verplaatst de DPM-MABS-server de gegevens automatisch van het opslag account naar de Recovery Services kluis op het moment van de volgende geplande back-up. Als een herstel punt is gemaakt, wordt de back-uptaak als *voltooid* gemarkeerd.
 
   > [!NOTE]
   > De DPM-MABS-server activeert de back-ups op de tijden die zijn gepland tijdens het maken van de beveiligings groep. Met deze taken wordt echter *gewacht tot de Azure data Box taak is voltooid* tot het moment waarop de taak is voltooid.

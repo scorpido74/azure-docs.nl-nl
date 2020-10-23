@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: asrastog
-ms.openlocfilehash: 871a4c7d99fc44cf9868f19e41560e6e7a2e22f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84be56ae372f8a902b12c06f9ce93c1f7210dc5b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84793322"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150586"
 ---
 # <a name="troubleshooting-message-routing"></a>Problemen met bericht routering oplossen
 
@@ -42,7 +42,7 @@ Alle [IOT hub metrische gegevens](iot-hub-devguide-endpoints.md) met betrekking 
 Bekijk de **routes** [Diagnostische logboeken](iot-hub-monitor-resource-health.md#routes) voor meer informatie over de route ring en eindpunt [bewerkingen](#operation-names) , of Identificeer fouten en relevante [fout code](#common-error-codes) om het probleem verder te begrijpen. De bewerkings naam **RouteEvaluationError** in het logboek geeft bijvoorbeeld aan dat de route niet kan worden geëvalueerd vanwege een probleem met de bericht indeling. Gebruik de tips voor de namen van de specifieke [bewerkingen](#operation-names) om het probleem te verhelpen. Wanneer een gebeurtenis wordt geregistreerd als een fout, bevat het logboek ook meer informatie over waarom de evaluatie is mislukt. Als de naam van de bewerking bijvoorbeeld **EndpointUnhealthy**is, geeft de [fout codes](#common-error-codes) 403004 aan dat er onvoldoende ruimte is op het eind punt.
 
 #### <a name="the-health-of-the-endpoint"></a>De status van het eind punt
-Gebruik de REST API [eind punt status ophalen](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) om de [status van de eind punten op te](iot-hub-devguide-endpoints.md#custom-endpoints) halen. De API *Get endpoint Health* bevat ook informatie over de laatste keer dat een bericht is verzonden naar het eind punt, de [laatste bekende fout](#last-known-errors-for-iot-hub-routing-endpoints), de laatste bekende fout tijd en de laatste keer dat een verzend poging is gedaan voor dit eind punt. Gebruik de mogelijke beperking die is opgegeven voor de specifieke [Laatst bekende fout](#last-known-errors-for-iot-hub-routing-endpoints).
+Gebruik de REST API [eind punt status ophalen](/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) om de [status van de eind punten op te](iot-hub-devguide-endpoints.md#custom-endpoints) halen. De API *Get endpoint Health* bevat ook informatie over de laatste keer dat een bericht is verzonden naar het eind punt, de [laatste bekende fout](#last-known-errors-for-iot-hub-routing-endpoints), de laatste bekende fout tijd en de laatste keer dat een verzend poging is gedaan voor dit eind punt. Gebruik de mogelijke beperking die is opgegeven voor de specifieke [Laatst bekende fout](#last-known-errors-for-iot-hub-routing-endpoints).
 
 ### <a name="i-suddenly-stopped-getting-messages-at-the-built-in-endpoint"></a>Ik heb plotseling gestopt met het ophalen van berichten op het ingebouwde eind punt
 
@@ -52,9 +52,9 @@ Analyseer het volgende om dit probleem op te lossen.
 Zodra een route is gemaakt, stopt de gegevens stroom naar het ingebouwde eind punt, tenzij er een route naar dat eind punt wordt gemaakt. Om ervoor te zorgen dat berichten blijven stromen naar het ingebouwde eind punt als er een nieuwe route wordt toegevoegd, configureert u een route naar het eind punt *gebeurtenissen* . 
 
 #### <a name="was-the-fallback-route-disabled"></a>Is de terugval route uitgeschakeld?
-De terugval route verzendt alle berichten die niet voldoen aan de query voorwaarden voor een van de bestaande routes naar de [ingebouwde Event hubs](iot-hub-devguide-messages-read-builtin.md) (berichten/gebeurtenissen) die compatibel zijn met [Event hubs](https://docs.microsoft.com/azure/event-hubs/). Als bericht routering is ingeschakeld, kunt u de mogelijkheid om de terugval route te gebruiken in te scha kelen. Als er geen routes naar het ingebouwde eind punt en een terugval route zijn ingeschakeld, worden alleen berichten die niet overeenkomen met de query voorwaarden op routes, verzonden naar het ingebouwde eind punt. Als alle bestaande routes worden verwijderd, moet er ook een terugval route worden ingeschakeld om alle gegevens bij het ingebouwde eind punt te ontvangen.
+De terugval route verzendt alle berichten die niet voldoen aan de query voorwaarden voor een van de bestaande routes naar de [ingebouwde Event hubs](iot-hub-devguide-messages-read-builtin.md) (berichten/gebeurtenissen) die compatibel zijn met [Event hubs](../event-hubs/index.yml). Als bericht routering is ingeschakeld, kunt u de mogelijkheid om de terugval route te gebruiken in te scha kelen. Als er geen routes naar het ingebouwde eind punt en een terugval route zijn ingeschakeld, worden alleen berichten die niet overeenkomen met de query voorwaarden op routes, verzonden naar het ingebouwde eind punt. Als alle bestaande routes worden verwijderd, moet er ook een terugval route worden ingeschakeld om alle gegevens bij het ingebouwde eind punt te ontvangen.
 
-U kunt de terugval route in-of uitschakelen op de Blade voor de Azure Portal->bericht routering. U kunt Azure Resource Manager ook gebruiken voor [FallbackRouteProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) om een aangepast eind punt voor terugval route te gebruiken.
+U kunt de terugval route in-of uitschakelen op de Blade voor de Azure Portal->bericht routering. U kunt Azure Resource Manager ook gebruiken voor [FallbackRouteProperties](/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) om een aangepast eind punt voor terugval route te gebruiken.
 
 ## <a name="last-known-errors-for-iot-hub-routing-endpoints"></a>Laatste bekende fouten voor IoT Hub Routing-eind punten
 

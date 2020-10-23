@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: d368c938e805164b70c7d3a22f9229b5efd89dde
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 29eb99d9e009d58c44be8f9d2e5d9fa01d117092
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045395"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092950"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>Quickstart: Apps bouwen en implementeren in Azure Spring Cloud
 
@@ -187,10 +187,10 @@ Voordat u implementeert met behulp van Azure CLI of Maven, voltooit u eerst de v
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [JDK 8 installeren](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)
+* [JDK 8 installeren](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)
 * [Aanmelden voor een Azure-abonnement](https://azure.microsoft.com/free/)
-* (Optioneel) [De Azure CLI versie 2.0.67 of hoger installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) en de Azure Spring Cloud-extensie installeren met de opdracht: `az extension add --name spring-cloud`
-* (Optioneel) [De Azure-toolkit voor IntelliJ installeren](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) en [aanmelden](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
+* (Optioneel) [De Azure CLI versie 2.0.67 of hoger installeren](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) en de Azure Spring Cloud-extensie installeren met de opdracht: `az extension add --name spring-cloud`
+* (Optioneel) [De Azure-toolkit voor IntelliJ installeren](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) en [aanmelden](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
 
 ## <a name="deployment-procedures"></a>Implementatieprocedures
 
@@ -304,7 +304,7 @@ We hebben een manier nodig om via een webbrowser toegang te krijgen tot de toepa
     ![Project importeren](media/spring-cloud-intellij-howto/revision-import-project-1.png)
 
 ### <a name="deploy-gateway-app-to-azure-spring-cloud"></a>Gateway-app implementeren in Azure Spring Cloud
-Als u wilt implementeren in Azure, moet u zich met uw Azure-account aanmelden bij de Azure-toolkit voor IntelliJ, en uw abonnement kiezen. Zie [Installatie en aanmelding](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in) voor meer informatie over aanmelden.
+Als u wilt implementeren in Azure, moet u zich met uw Azure-account aanmelden bij de Azure-toolkit voor IntelliJ, en uw abonnement kiezen. Zie [Installatie en aanmelding](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in) voor meer informatie over aanmelden.
 
 1. Klik met de rechtermuisknop op uw project in de projectverkenner van IntelliJ en selecteer **Azure** -> **Implementeren in Azure Spring Cloud**.
 
@@ -313,7 +313,7 @@ Als u wilt implementeren in Azure, moet u zich met uw Azure-account aanmelden bi
 1. Voeg in het veld **Naam** het achtervoegsel *:gateway* toe aan de bestaande **Naam**.
 1. Selecteer in het tekstvak **Artefact** de optie *com.piggymetrics:gateway:1.0-SNAPSHOT*.
 1. Controleer uw abonnement in het tekstvak **Abonnement**.
-1. Selecteer in het tekstvak **Spring Cloud** het exemplaar van Azure Spring Cloud dat u hebt gemaakt in [Azure Spring Cloud-exemplaar inrichten](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-provision-service-instance).
+1. Selecteer in het tekstvak **Spring Cloud** het exemplaar van Azure Spring Cloud dat u hebt gemaakt in [Azure Spring Cloud-exemplaar inrichten](./spring-cloud-quickstart-provision-service-instance.md).
 1. Stel **Openbaar eindpunt** in op *Inschakelen*.
 1. Selecteer in het tekstvak **App:** de optie **App maken...** .
 1. Voer *gateway* in en klik vervolgens op **OK**.

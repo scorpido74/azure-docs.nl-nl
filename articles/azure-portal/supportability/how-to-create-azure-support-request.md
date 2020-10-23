@@ -9,12 +9,12 @@ ms.service: azure-supportability
 ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: mblythe
-ms.openlocfilehash: 0831cc40c7d6b25e1db78c84a7adfa644497d486
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: f937b03b2f838f69f56a4b132d0ea7a7e298b532
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091437"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372120"
 ---
 # <a name="create-an-azure-support-request"></a>Een Azure-ondersteuningsaanvraag maken
 
@@ -41,7 +41,7 @@ U krijgt hulp en **ondersteuning** in de Azure Portal. Deze is beschikbaar via h
 
 ### <a name="azure-role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer voor Azure
 
-Als u een ondersteunings aanvraag wilt maken, moet u [eigenaar](../../role-based-access-control/built-in-roles.md#owner)of [bijdrager](../../role-based-access-control/built-in-roles.md#contributor) zijn of worden toegewezen aan de rol [Inzender voor ondersteunings aanvragen](../../role-based-access-control/built-in-roles.md#support-request-contributor) op abonnements niveau. Als u een ondersteunings aanvraag wilt maken zonder abonnement, bijvoorbeeld een Azure Active Directory scenario, moet u een [beheerder](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)zijn.
+Als u een ondersteunings aanvraag wilt maken, moet u [eigenaar](../../role-based-access-control/built-in-roles.md#owner)of [bijdrager](../../role-based-access-control/built-in-roles.md#contributor) zijn of worden toegewezen aan de rol [Inzender voor ondersteunings aanvragen](../../role-based-access-control/built-in-roles.md#support-request-contributor) op abonnements niveau. Als u een ondersteunings aanvraag wilt maken zonder abonnement, bijvoorbeeld een Azure Active Directory scenario, moet u een [beheerder](../../active-directory/roles/permissions-reference.md)zijn.
 
 ### <a name="go-to-help--support-from-the-global-header"></a>Ga naar Help en ondersteuning vanuit de Global header
 

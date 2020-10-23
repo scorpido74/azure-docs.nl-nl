@@ -5,28 +5,28 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: 967fdae49f904f6c1cb450b637a8dbc5c481b135
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3d6e21b45bccbdaeeee350bac79be680783eb24
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776881"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147529"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>Samen werken met andere auteurs en editors
 
-Samen werken met andere auteurs en editors met op rollen gebaseerd toegangs beheer (RBAC) die zijn geplaatst op uw QnA Maker bron.
+Werk samen met andere auteurs en editors met behulp van Azure RBAC (op rollen gebaseerd toegangs beheer) dat op uw QnA Maker-resource is geplaatst.
 
 ## <a name="access-is-provided-on-the-qna-maker-resource"></a>De toegang wordt tot de QnA Maker resource verschaft
 
 Alle machtigingen worden bepaald door de machtigingen die op de QnA Maker bron worden geplaatst. Deze machtigingen worden uitgelijnd op lees-, schrijf-, publicatie-en volledige toegang.
 
-Deze RBAC-functie omvat:
-* Azure Active Directory (AAD) is 100% achterwaarts compatibel met verificatie op basis van sleutels voor eigen aren en inzenders. Klanten kunnen verificatie op basis van een sleutel of op RBAC gebaseerde verificatie gebruiken in hun aanvragen.
+Deze Azure RBAC-functie omvat:
+* Azure Active Directory (AAD) is 100% achterwaarts compatibel met verificatie op basis van sleutels voor eigen aren en inzenders. Klanten kunnen verificatie op basis van een sleutel of op basis van op Azure RBAC gebaseerde verificatie gebruiken in hun aanvragen.
 * U kunt snel auteurs en editors toevoegen aan alle kennis grondslagen in de resource, omdat het besturings element op het niveau van de resource staat en niet op het niveau van de Knowledge Base.
 
 ## <a name="access-is-provided-by-a-defined-role"></a>De toegang wordt verkregen door een gedefinieerde rol
 
-[!INCLUDE [RBAC permissions table](../includes/role-based-access-control.md)]
+[!INCLUDE [Azure RBAC permissions table](../includes/role-based-access-control.md)]
 
 ## <a name="authentication-flow"></a>Verificatiestroom
 

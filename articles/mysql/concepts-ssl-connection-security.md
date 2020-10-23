@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: 6807f3d4ef0596b4dbb51f6bc8c0348901e78d0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2969c963b491e4b08a0959d548e43ba11276d28a
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91439940"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126546"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mysql"></a>SSL/TLS-connectiviteit in Azure Database for MySQL
 
@@ -20,8 +20,11 @@ Azure Database for MySQL ondersteunt het verbinden van uw database server met cl
 > [!NOTE]
 > Het bijwerken `require_secure_transport` van de waarde van de server parameter heeft geen invloed op het gedrag van de MySQL-service. Gebruik de functies voor het afdwingen van SSL en TLS die in dit artikel worden beschreven om verbindingen met uw data base te beveiligen.
 
+>[!NOTE]
+> Op basis van de feedback van klanten hebben we de afschaffing van het basis certificaat uitgebreid voor onze bestaande Baltimore basis certificerings instantie van 15 februari 2021 (02/15/2021).
+
 > [!IMPORTANT] 
-> Het SSL-basis certificaat is ingesteld op verlopen vanaf oktober 26, 2020 (10/26/2020). Werk uw toepassing bij om het [nieuwe certificaat](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)te gebruiken. Zie [geplande certificaat updates](concepts-certificate-rotation.md) voor meer informatie.
+> Het SSL-basis certificaat is ingesteld op verlopen vanaf 15 februari 2021 (02/15/2021). Werk uw toepassing bij om het [nieuwe certificaat](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)te gebruiken. Zie [geplande certificaat updates](concepts-certificate-rotation.md) voor meer informatie.
 
 ## <a name="ssl-default-settings"></a>Standaard instellingen voor SSL
 

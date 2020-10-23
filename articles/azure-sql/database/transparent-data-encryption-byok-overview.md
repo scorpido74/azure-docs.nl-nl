@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 4e17af8289c68ded282a9c4a9ca2d400d31ca30d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b89b8cc58cb48770b9b42036f8b834cc1bf11b8b
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90602666"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441127"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL Transparent Data Encryption met door de klant beheerde sleutels
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -32,7 +32,7 @@ Voor Azure SQL Database en Azure Synapse Analytics wordt de TDE-Protector ingest
 > Voor degenen die gebruikmaken van service-beheerde TDE die willen beginnen met door de klant beheerde TDE, blijft de gegevens versleuteld tijdens het proces van overschakeling en wordt er geen downtime of hercodering van de database bestanden weer gegeven. Wanneer u overschakelt van een door een service beheerde sleutel naar een door de klant beheerde sleutel, hoeft u de DEK alleen opnieuw te versleutelen, wat een snelle en online bewerking is.
 
 > [!NOTE]
-> Om Azure SQL-klanten te voorzien van twee lagen versleuteling van gegevens in rust, wordt infrastructuur versleuteling (met AES-256-versleutelings algoritme) met door het platform beheerde sleutels geïmplementeerd. Dit biedt een toevoeging van de versleutelings laag en de TDE met door de klant beheerde sleutels, die al beschikbaar zijn. Klanten moeten op dit moment toegang vragen tot deze mogelijkheid. Als u geïnteresseerd bent in deze mogelijkheid, neemt u contact op met AzureSQLDoubleEncryptionAtRest@service.microsoft.com .
+> Om Azure SQL-klanten te voorzien van twee lagen versleuteling van gegevens in rust, wordt infrastructuur versleuteling (met AES-256-versleutelings algoritme) met door het platform beheerde sleutels geïmplementeerd. Dit biedt een toevoeging van de versleutelings laag en de TDE met door de klant beheerde sleutels, die al beschikbaar zijn. Voor Azure SQL Database en het beheerde exemplaar worden alle data bases, met inbegrip van de hoofd database en andere systeem databases, versleuteld wanneer infrastructuur versleuteling is ingeschakeld. Klanten moeten op dit moment toegang vragen tot deze mogelijkheid. Als u geïnteresseerd bent in deze mogelijkheid, neemt u contact op met AzureSQLDoubleEncryptionAtRest@service.microsoft.com .
 
 ## <a name="benefits-of-the-customer-managed-tde"></a>Voor delen van de door de klant beheerde TDE
 

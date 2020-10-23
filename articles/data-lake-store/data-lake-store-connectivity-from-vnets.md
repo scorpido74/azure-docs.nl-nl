@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/31/2018
 ms.author: elsung
-ms.openlocfilehash: 0fa836ea31793d9177ad6e838ddea1516bf51733
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e319cf9dfc01546607e20572c5bf4930fd974c75
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88191392"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104033"
 ---
 # <a name="access-azure-data-lake-storage-gen1-from-vms-within-an-azure-vnet"></a>Toegang tot Azure Data Lake Storage Gen1 van Vm's binnen een Azure-VNET
 Azure Data Lake Storage Gen1 is een PaaS-service die wordt uitgevoerd op open bare Internet-IP-adressen. Elke server die verbinding kan maken met het open bare Internet kan meestal ook verbinding maken met Azure Data Lake Storage Gen1-eind punten. Standaard hebben alle virtuele machines in azure VNETs toegang tot internet en kunnen ze dus toegang krijgen tot Azure Data Lake Storage Gen1. Het is echter mogelijk om Vm's in een VNET zo te configureren dat ze geen toegang tot internet hebben. Voor dergelijke Vm's is de toegang tot Azure Data Lake Storage Gen1 ook beperkt. Het blok keren van open bare Internet toegang voor Vm's in azure VNETs kan worden uitgevoerd met behulp van een van de volgende methoden:
@@ -46,7 +46,7 @@ Aliases:  mydatastore.azuredatalakestore.net
 
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-nsg"></a>Connectiviteit van Vm's die zijn beperkt met behulp van NSG inschakelen
-Wanneer een NSG-regel wordt gebruikt om de toegang tot internet te blok keren, kunt u een andere NSG maken waarmee toegang tot het IP-adres van Data Lake Storage Gen1 is toegestaan. Zie [overzicht van netwerk beveiligings groepen](../virtual-network/security-overview.md)voor meer informatie over NSG-regels. Zie [een netwerk beveiligings groep maken](../virtual-network/tutorial-filter-network-traffic.md)voor instructies over het maken van nsg's.
+Wanneer een NSG-regel wordt gebruikt om de toegang tot internet te blok keren, kunt u een andere NSG maken waarmee toegang tot het IP-adres van Data Lake Storage Gen1 is toegestaan. Zie [overzicht van netwerk beveiligings groepen](../virtual-network/network-security-groups-overview.md)voor meer informatie over NSG-regels. Zie [een netwerk beveiligings groep maken](../virtual-network/tutorial-filter-network-traffic.md)voor instructies over het maken van nsg's.
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-udr-or-expressroute"></a>Connectiviteit van Vm's beperken met behulp van UDR of ExpressRoute
 Wanneer routes, ofwel Udr's of BGP-exchangeed routes, worden gebruikt om de toegang tot internet te blok keren, moet een speciale route worden geconfigureerd zodat Vm's in dergelijke subnetten toegang hebben tot Data Lake Storage Gen1-eind punten. Zie door de [gebruiker gedefinieerde routes Overview](../virtual-network/virtual-networks-udr-overview.md)(Engelstalig) voor meer informatie. Zie [Udr's maken in Resource Manager](../virtual-network/tutorial-create-route-table-powershell.md)voor instructies voor het maken van udr's.
@@ -57,4 +57,3 @@ Wanneer een ExpressRoute-circuit is geconfigureerd, hebben de on-premises server
 ## <a name="see-also"></a>Zie ook
 * [Overzicht van Azure Data Lake Storage Gen1](data-lake-store-overview.md)
 * [Gegevens beveiligen die zijn opgeslagen in Azure Data Lake Storage Gen1](data-lake-store-security-overview.md)
-

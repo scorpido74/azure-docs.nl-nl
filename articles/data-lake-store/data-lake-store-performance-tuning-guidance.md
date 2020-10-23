@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: d18440b27d9429a2638a58be40e1ec583b9a85ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9a589b43490613834a810a68636c426e45c2656
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88190239"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332515"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>Azure Data Lake Storage Gen1 voor prestaties afstemmen
 
@@ -25,7 +25,7 @@ Data Lake Storage Gen1 kan worden geschaald om de benodigde door Voer voor alle 
 
 Bij het opnemen van gegevens van een bron systeem naar Data Lake Storage Gen1, is het belang rijk om te overwegen dat de bron-hardware, de bron netwerkhardware en de netwerk verbinding met Data Lake Storage Gen1 de knel punt kunnen zijn.
 
-![Prestaties Data Lake Storage Gen1](./media/data-lake-store-performance-tuning-guidance/bottleneck.png)
+![Diagram dat laat zien dat de bron-hardware, de bron netwerkhardware en de netwerk verbinding met Data Lake Storage Gen1 het knel punt kunnen zijn.](./media/data-lake-store-performance-tuning-guidance/bottleneck.png)
 
 Het is belang rijk om ervoor te zorgen dat de verplaatsing van gegevens niet wordt beïnvloed door deze factoren.
 
@@ -39,15 +39,15 @@ De netwerk verbinding tussen de bron gegevens en Data Lake Storage Gen1 kan soms
 
 ### <a name="configure-data-ingestion-tools-for-maximum-parallelization"></a>Hulp middelen voor gegevens opname configureren voor maximale parallel Lise ring
 
-Nadat u de bron-en netwerk connectiviteit knelpunten hebt opgelost, bent u klaar om uw opname hulpprogramma's te configureren. De volgende tabel bevat een overzicht van de belangrijkste instellingen voor verschillende veelgebruikte hulpprogram ma's voor opname en biedt gedetailleerde artikelen voor het afstemmen van de prestaties. Ga naar dit [artikel](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-data-scenarios)voor meer informatie over welk hulp programma u moet gebruiken voor uw scenario.
+Nadat u de bron-en netwerk connectiviteit knelpunten hebt opgelost, bent u klaar om uw opname hulpprogramma's te configureren. De volgende tabel bevat een overzicht van de belangrijkste instellingen voor verschillende veelgebruikte hulpprogram ma's voor opname en biedt gedetailleerde artikelen voor het afstemmen van de prestaties. Ga naar dit [artikel](./data-lake-store-data-scenarios.md)voor meer informatie over welk hulp programma u moet gebruiken voor uw scenario.
 
 | Hulpprogramma          | Instellingen | Meer Details                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
-| PowerShell       | PerFileThreadCount, ConcurrentFileCount | [Koppeling](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-powershell) |
-| AdlCopy    | Azure Data Lake Analytics eenheden | [Koppeling](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)         |
-| DistCp            | -m (Mapper) | [Koppeling](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-wasb-distcp#performance-considerations-while-using-distcp)                             |
+| PowerShell       | PerFileThreadCount, ConcurrentFileCount | [Koppeling](./data-lake-store-get-started-powershell.md) |
+| AdlCopy    | Azure Data Lake Analytics eenheden | [Koppeling](./data-lake-store-copy-data-azure-storage-blob.md#performance-considerations-for-using-adlcopy)         |
+| DistCp            | -m (Mapper) | [Koppeling](./data-lake-store-copy-data-wasb-distcp.md#performance-considerations-while-using-distcp)                             |
 | Azure Data Factory| parallelCopies | [Koppeling](../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | FS. Azure. Block. size,-m (Mapper) | [Koppeling](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
+| Sqoop           | FS. Azure. Block. size,-m (Mapper) | [Koppeling](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>De structuur van uw gegevensset instellen
 
@@ -100,7 +100,7 @@ Er zijn drie lagen in een HDInsight-cluster die kunnen worden afgestemd om het a
 
 **Voer het cluster uit met meer knoop punten en/of grotere Vm's.** Een groter cluster biedt u de mogelijkheid om meer GARENs-containers uit te voeren, zoals wordt weer gegeven in de onderstaande afbeelding.
 
-![Prestaties Data Lake Storage Gen1](./media/data-lake-store-performance-tuning-guidance/VM.png)
+![Diagram waarin het gebruik van meer GARENs in de andere houders wordt weer gegeven.](./media/data-lake-store-performance-tuning-guidance/VM.png)
 
 **Gebruik Vm's met meer netwerk bandbreedte.** De hoeveelheid netwerk bandbreedte kan een knel punt zijn als er minder netwerk bandbreedte is dan Data Lake Storage Gen1 door voer. Verschillende Vm's hebben een verschillende grootte voor de netwerk bandbreedte. Kies een VM-type met de grootst mogelijke netwerk bandbreedte.
 
@@ -108,7 +108,7 @@ Er zijn drie lagen in een HDInsight-cluster die kunnen worden afgestemd om het a
 
 **Gebruik kleinere garen-containers.** Verklein de grootte van elke garen container om meer containers te maken met dezelfde hoeveelheid resources.
 
-![Prestaties Data Lake Storage Gen1](./media/data-lake-store-performance-tuning-guidance/small-containers.png)
+![Diagram waarin het gebruik van kleinere garen containers wordt weer gegeven.](./media/data-lake-store-performance-tuning-guidance/small-containers.png)
 
 Afhankelijk van uw werk belasting, wordt er altijd een minimale grootte van een garen container vereist. Als u te klein een container kiest, worden uw taken uitgevoerd in plaats van geheugen. Een garen mag doorgaans niet kleiner zijn dan 1 GB. Het is gebruikelijk om 3 GB GARENs-containers te zien. Voor sommige workloads hebt u mogelijk grotere GARENs nodig.
 
@@ -118,7 +118,7 @@ Afhankelijk van uw werk belasting, wordt er altijd een minimale grootte van een 
 
 **Alle beschik bare containers gebruiken.** Stel in hoeveel taken gelijk of groter dan het aantal beschik bare containers moeten zijn, zodat alle resources worden gebruikt.
 
-![Prestaties Data Lake Storage Gen1](./media/data-lake-store-performance-tuning-guidance/use-containers.png)
+![Diagram waarin het gebruik van alle beschik bare containers wordt weer gegeven.](./media/data-lake-store-performance-tuning-guidance/use-containers.png)
 
 **Mislukte taken zijn kostbaar.** Als elke taak een grote hoeveelheid gegevens kan verwerken, resulteert het mislukken van een taak in een dure nieuwe poging. Daarom is het beter om meer taken te maken, die elk een kleine hoeveelheid gegevens verwerken.
 

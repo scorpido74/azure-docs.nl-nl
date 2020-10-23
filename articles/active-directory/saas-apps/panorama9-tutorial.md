@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 7bf3afef81c70355326ed9341f2dd8a39d542b54
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1e2cb00f4b8228b3587930fc5b237d308c532c8c
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554104"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996076"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panorama9"></a>Zelfstudie: Azure Active Directory-integratie met Panorama9
 
@@ -210,7 +210,7 @@ In het geval van Panorama9 wordt het inrichten handmatig uitgevoerd.
 
 2. Klik in het menu bovenaan op **Beheren** en klik vervolgens op **Users**.
    
-    ![Gebruikers](./media/panorama9-tutorial/ic790027.png "Gebruikers")
+    ![Schermopname met de tabbladen 'Manage' en 'Users' geselecteerd.](./media/panorama9-tutorial/ic790027.png "Gebruikers")
 
 3. Klik op **+** in de sectie Gebruikers om een nieuwe gebruiker toe te voegen.
 

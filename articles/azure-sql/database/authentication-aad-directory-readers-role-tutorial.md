@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: d6c447deedbdcc4f2439fc069f368db88b3560b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88483b29c8951f8e3f38f7cdc5bbdfb80eeca2b1
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91278019"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370114"
 ---
 # <a name="tutorial-assign-directory-readers-role-to-an-azure-ad-group-and-manage-role-assignments"></a>Zelfstudie: De rol van Directory Readers toewijzen aan een Azure AD-groep en roltoewijzingen beheren
 
@@ -23,9 +23,9 @@ ms.locfileid: "91278019"
 > [!NOTE]
 > De rol **Directory Readers** toewijzen aan een groep in dit artikel is in de **openbare preview**. 
 
-Dit artikel helpt u bij het maken van een groep in Azure Active Directory (Azure AD) en het toewijzen van de rol [**Directory Readers**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) aan die groep. Met de machtiging Directory Readers kunnen de groepseigenaren extra leden toevoegen aan de groep, zoals een [beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) of [Azure SQL Database](sql-database-paas-overview.md), [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) en [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md). Hierdoor is geen [Globale beheerder](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) of [Beheerder met bevoorrechte rol](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) nodig om de rol Directory Readers rechtstreeks toe te wijzen voor elke logische serveridentiteit van Azure SQL in de tenant.
+Dit artikel helpt u bij het maken van een groep in Azure Active Directory (Azure AD) en het toewijzen van de rol [**Directory Readers**](../../active-directory/roles/permissions-reference.md#directory-readers) aan die groep. Met de machtiging Directory Readers kunnen de groepseigenaren extra leden toevoegen aan de groep, zoals een [beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) of [Azure SQL Database](sql-database-paas-overview.md), [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) en [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md). Hierdoor is geen [Globale beheerder](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) of [Beheerder met bevoorrechte rol](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) nodig om de rol Directory Readers rechtstreeks toe te wijzen voor elke logische serveridentiteit van Azure SQL in de tenant.
 
-In deze zelfstudie wordt de functie gebruikt die is geïntroduceerd in [Cloudgroepen gebruiken om roltoewijzingen te beheren in Azure Active Directory (preview)](../../active-directory/users-groups-roles/roles-groups-concept.md). 
+In deze zelfstudie wordt de functie gebruikt die is geïntroduceerd in [Cloudgroepen gebruiken om roltoewijzingen te beheren in Azure Active Directory (preview)](../../active-directory/roles/groups-concept.md). 
 
 Zie [De rol Directory Readers in Azure Active Directory voor Azure SQL](authentication-aad-directory-readers-role.md) voor meer informatie over de voordelen van het toewijzen van de rol Directory Readers aan een Azure AD-groep voor Azure SQL.
 
@@ -38,7 +38,7 @@ Zie [De rol Directory Readers in Azure Active Directory voor Azure SQL](authenti
 
 ### <a name="create-a-new-group-and-assign-owners-and-role"></a>Een nieuwe groep maken en eigenaren en rollen toewijzen
 
-1. Voor deze eerste installatie is een gebruiker vereist met de machtiging [Globale beheerder](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) of [Beheerder met bevoorrechte rol](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator).
+1. Voor deze eerste installatie is een gebruiker vereist met de machtiging [Globale beheerder](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) of [Beheerder met bevoorrechte rol](../../active-directory/roles/permissions-reference.md#privileged-role-administrator).
 1. Laat de gemachtigde gebruiker zich aanmelden bij de [Azure-portal](https://portal.azure.com).
 1. Ga naar de **Azure Active Directory**-resource. Ga onder **Beheerd** naar **Groepen**. Selecteer **Nieuwe groep** om een nieuwe groep te maken.
 1. Selecteer **Beveiliging** als groepstype en vul de rest van de velden in. Zorg ervoor dat de instelling **Azure AD-rollen kunnen worden toegewezen aan de groep (preview)** is ingesteld op **Ja**. Wijs vervolgens de Azure AD-rol **Directory Readers** toe aan de groep.
@@ -94,7 +94,7 @@ Het is niet vereist de rol **Directory Readers** toe te wijzen aan de serveriden
 ## <a name="directory-readers-role-assignment-using-powershell"></a>Toewijzing van rol Directory Readers met behulp van PowerShell
 
 > [!IMPORTANT]
-> Voor deze eerste stappen is een [Globale beheerder](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) of [Beheerder met bevoorrechte rol](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) nodig. Naast PowerShell biedt Azure AD Microsoft Graph API om [Een groep te maken waaraan rollen kunnen worden toegewezen in Azure AD](../../active-directory/users-groups-roles/roles-groups-create-eligible.md#using-microsoft-graph-api).
+> Voor deze eerste stappen is een [Globale beheerder](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) of [Beheerder met bevoorrechte rol](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) nodig. Naast PowerShell biedt Azure AD Microsoft Graph API om [Een groep te maken waaraan rollen kunnen worden toegewezen in Azure AD](../../active-directory/roles/groups-create-eligible.md#using-microsoft-graph-api).
 
 1. Download de Azure AD Preview PowerShell-module met de volgende opdrachten. U moet PowerShell mogelijk uitvoeren als beheerder.
 

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 50dbbe3a6a1af1e73cdf1ee7f5bd3a63cf2f6a50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9304936f746b82b59550d62e8b60a9e0035d188
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87498800"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147929"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-import-order"></a>Tracering en logboek registratie voor uw Azure Data Box en Azure Data Box Heavy import volgorde
 
@@ -23,7 +23,7 @@ De volgende tabel bevat een samen vatting van de Data Box-of Data Box Heavy stap
 
 | Fase van Data Box import volgorde       | Hulp programma voor het volgen en controleren                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
-| Order maken               | [Toegangs beheer voor de order instellen via RBAC](#set-up-access-control-on-the-order)                                                    |
+| Order maken               | [Toegangs beheer voor de order instellen via Azure RBAC](#set-up-access-control-on-the-order)                                                    |
 | Order verwerkt            | [De volg orde volgen](#track-the-order) <ul><li> Azure Portal </li><li> Vervoerders website </li><li>E-mailmeldingen</ul> |
 | Apparaat instellen              | De toegang tot de referenties van het apparaat is geregistreerd in [activiteiten logboeken](#query-activity-logs-during-setup)                                              |
 | Gegevens kopiëren naar apparaat        | [ *error.xml* bestanden](#view-error-log-during-data-copy) voor het kopiëren van gegevens weer geven                                                             |
@@ -47,7 +47,7 @@ Als u de toegang tot een order wilt beperken, kunt u het volgende doen:
 - Wijs een rol op een order niveau toe. De gebruiker heeft alleen die machtigingen zoals gedefinieerd door de rollen om te communiceren met die specifieke Data Box order alleen en niets anders.
 - Wijs een rol toe op het niveau van de resource groep, de gebruiker heeft toegang tot alle Data Box orders binnen een resource groep.
 
-Zie [Aanbevolen procedures voor Azure RBAC](../role-based-access-control/best-practices.md)voor meer informatie over aanbevolen RBAC-gebruik.
+Zie [Aanbevolen procedures voor Azure RBAC](../role-based-access-control/best-practices.md)voor meer informatie over het aanbevolen gebruik van Azure RBAC.
 
 ## <a name="track-the-order"></a>De bestelling volgen
 

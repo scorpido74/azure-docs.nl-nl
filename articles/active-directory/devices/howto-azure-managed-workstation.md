@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 841bc3ae4fbddb376ea4da8141bf4df3f895c4dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a56cd23494f65b1c74e44868496855c6e4a32bf7
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269553"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92365813"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>Een beveiligd, door Azure beheerd werk station implementeren
 
@@ -35,7 +35,7 @@ Selecteer een profiel voordat u de oplossing implementeert. U kunt meerdere prof
 | Door intune beheerde | Ja | Ja | Ja | Ja | Ja | Ja |
 | Apparaat-Azure AD geregistreerd | Ja |  |  |  |  | |   |
 | Apparaat-Azure AD toegevoegd |   | Ja | Ja | Ja | Ja | Ja |
-| Basis lijn voor beveiliging van intune toegepast |   | Ja <br> Intensievere | Ja <br> (HighSecurity) | Ja <br> (NCSC) | Ja <br> Gesteld | NA |
+| Basis lijn voor beveiliging van intune toegepast |   | Ja <br> Intensievere | Ja <br> (HighSecurity) | Ja <br> (NCSC) | Ja <br> Gesteld | N.v.t. |
 | Hardware voldoet aan de veilige Windows 10-standaarden |   | Ja | Ja | Ja | Ja | Ja |
 | Micro soft Defender ATP is ingeschakeld |   | Ja  | Ja | Ja | Ja | Ja |
 | Beheer rechten verwijderen |   |   | Ja  | Ja | Ja | Ja |
@@ -51,11 +51,11 @@ Selecteer een profiel voordat u de oplossing implementeert. U kunt meerdere prof
 
 Voor de concepten die in deze hand leiding worden behandeld, wordt ervan uitgegaan dat u Microsoft 365 Enterprise E5 of een vergelijk bare SKU hebt. Enkele van de aanbevelingen in deze hand leiding kunnen worden geïmplementeerd met lagere Sku's. Zie [Microsoft 365 Enterprise Licensing](https://www.microsoft.com/licensing/product-licensing/microsoft-365-enterprise)voor meer informatie.
 
-U kunt het inrichten van licenties automatiseren door op [groepen gebaseerde licentie verlening](../users-groups-roles/licensing-groups-assign.md) te nemen voor uw gebruikers.
+U kunt het inrichten van licenties automatiseren door op [groepen gebaseerde licentie verlening](../enterprise-users/licensing-groups-assign.md) te nemen voor uw gebruikers.
 
 ## <a name="azure-active-directory-configuration"></a>Azure Active Directory configuratie
 
-Azure Active Directory (Azure AD) beheert gebruikers, groepen en apparaten voor uw beheerders werkstations. Identiteits Services en-functies inschakelen met een [Administrator-account](../users-groups-roles/directory-assign-admin-roles.md).
+Azure Active Directory (Azure AD) beheert gebruikers, groepen en apparaten voor uw beheerders werkstations. Identiteits Services en-functies inschakelen met een [Administrator-account](../roles/permissions-reference.md).
 
 Wanneer u het beveiligde werk station Administrator-account maakt, wordt het account beschikbaar gesteld aan uw huidige werk station. Zorg ervoor dat u een bekend veilig apparaat gebruikt om deze eerste configuratie en alle globale configuratie uit te voeren. Als u de bloot stelling van aanvallen voor de eerste keer wilt beperken, kunt u overwegen de [richt lijnen te volgen om malware-infecties te voor komen](/windows/security/threat-protection/intelligence/prevent-malware-infection).
 
@@ -77,7 +77,7 @@ Vervolgens maakt u twee groepen: werk Station gebruikers en Workstation apparate
 
 Blader in het Azure Portal naar **Azure Active Directory**  >  **groepen**  >  **nieuwe groep**.
 
-1. Voor de werk Station-gebruikers groep wilt u mogelijk [licentie verlening op basis](../users-groups-roles/licensing-groups-assign.md) van een groep configureren om het inrichten van licenties voor gebruikers te automatiseren.
+1. Voor de werk Station-gebruikers groep wilt u mogelijk [licentie verlening op basis](../enterprise-users/licensing-groups-assign.md) van een groep configureren om het inrichten van licenties voor gebruikers te automatiseren.
 1. Voer voor de groep werk Station gebruikers het volgende in:
 
    * **Groeps type** -beveiliging
@@ -131,7 +131,7 @@ Met deze stappen kunt u apparaten beheren met intune. Zie voor meer informatie d
 
 #### <a name="azure-ad-conditional-access"></a>Voorwaardelijke toegang van Azure AD
 
-Voorwaardelijke toegang van Azure AD kan helpen om geprivilegieerde beheer taken te beperken tot compatibele apparaten. Vooraf gedefinieerde leden van de groep **beveiligde werk Station-gebruikers** zijn vereist om multi-factor Authentication uit te voeren wanneer ze zich aanmelden bij Cloud toepassingen. Een best practice is het uitsluiten van toegangs accounts voor nood gevallen van het beleid. Zie [accounts voor nood toegang beheren in azure AD](../users-groups-roles/directory-emergency-access.md)voor meer informatie.
+Voorwaardelijke toegang van Azure AD kan helpen om geprivilegieerde beheer taken te beperken tot compatibele apparaten. Vooraf gedefinieerde leden van de groep **beveiligde werk Station-gebruikers** zijn vereist om multi-factor Authentication uit te voeren wanneer ze zich aanmelden bij Cloud toepassingen. Een best practice is het uitsluiten van toegangs accounts voor nood gevallen van het beleid. Zie [accounts voor nood toegang beheren in azure AD](../roles/security-emergency-access.md)voor meer informatie.
 
 ## <a name="intune-configuration"></a>InTune-configuratie
 
@@ -308,7 +308,7 @@ Mogelijk moet u Windows 32-bits Apps of andere apps installeren waarvan de imple
 
 ### <a name="conditional-access-only-allowing-secured-workstation-ability-to-access-azure-portal"></a>Voorwaardelijke toegang alleen toestaan dat beveiligde werk stations toegang krijgen Azure Portal
 
-Azure AD biedt de mogelijkheid om te beheren en te beperken wie en wat toegang heeft tot uw Azure-cloud Beheer Portal. Als u [voorwaardelijke toegang](../conditional-access/overview.md) inschakelt, kunt u ervoor zorgen dat alleen uw beveiligde werk station bronnen kan beheren of wijzigen. Het is essentieel dat bij het implementeren van deze functie, als de functionaliteit voor [nood toegang](../users-groups-roles/directory-emergency-access.md) alleen kan of moet worden gebruikt voor extreme gevallen en het account dat wordt beheerd via beleid.
+Azure AD biedt de mogelijkheid om te beheren en te beperken wie en wat toegang heeft tot uw Azure-cloud Beheer Portal. Als u [voorwaardelijke toegang](../conditional-access/overview.md) inschakelt, kunt u ervoor zorgen dat alleen uw beveiligde werk station bronnen kan beheren of wijzigen. Het is essentieel dat bij het implementeren van deze functie, als de functionaliteit voor [nood toegang](../roles/security-emergency-access.md) alleen kan of moet worden gebruikt voor extreme gevallen en het account dat wordt beheerd via beleid.
 
 > [!NOTE]
 > U moet een gebruikers groep maken en uw nood gebruiker toevoegen waarmee het beleid voor voorwaardelijke toegang kan worden omzeild. In ons voor beeld hebben we een beveiligings groep met de naam **Emergency BreakGlass**

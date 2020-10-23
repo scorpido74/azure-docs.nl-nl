@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 4e8813647211e0adbfe43a45ae0d19dc12a4a165
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cdbddfc84b3f71576cfd0299f2babec859b4ef1f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936098"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311052"
 ---
 # <a name="set-the-database-engine-settings-for-azure-arc-enabled-postgresql-hyperscale"></a>De database-engine-instellingen voor PostgreSQL Hyperscale met Azure Arc instellen
 
@@ -37,7 +37,7 @@ In dit document worden de stappen beschreven voor het instellen van de instellin
 > - `ssl`
 > - `wal_level`
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Syntaxis
 
 De algemene indeling van de opdracht voor het configureren van de instellingen van de data base-engine is:
 
@@ -45,9 +45,9 @@ De algemene indeling van de opdracht voor het configureren van de instellingen v
 azdata arc postgres server edit -n <server group name>, [{--engine-settings, -e}] [{--replace-engine-settings, --re}] {'<parameter name>=<parameter value>, ...'}
 ```
 
-## <a name="show-the-current-custom-values-of-the-parameters-settings"></a>De huidige aangepaste waarden van de parameter instellingen weer geven
+## <a name="show-current-custom-values"></a>Huidige aangepaste waarden weer geven
 
-## <a name="with-azdata-cli-command"></a>Met azdata CLI-opdracht
+### <a name="with-azure-data-cli-azdata-command"></a>Met [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] opdracht
 
 ```console
 azdata arc postgres server show -n <server group name>
@@ -74,77 +74,77 @@ engine": {
 ...
 ```
 
-## <a name="with-kubectl-command"></a>Met de opdracht kubectl
+### <a name="with-kubectl-command"></a>Met de opdracht kubectl
 
 Volg de onderstaande stappen.
 
-### <a name="1-retrieve-the-kind-of-custom-resource-definition-for-your-server-group"></a>1. het type aangepaste resource definitie voor uw server groep ophalen
+1. Het type aangepaste resource definitie voor uw server groep ophalen
 
-Voer het volgende uit:
+   Voer het volgende uit:
 
-```console
-azdata arc postgres server show -n <server group name>
-```
+   ```console
+   azdata arc postgres server show -n <server group name>
+   ```
 
-Bijvoorbeeld:
+   Bijvoorbeeld:
 
-```console
-azdata arc postgres server show -n postgres01
-```
+   ```console
+   azdata arc postgres server show -n postgres01
+   ```
 
-Met deze opdracht wordt de specificatie van de Server groep geretourneerd waarin u de para meters ziet die u hebt ingesteld. Als er geen engine\settings-sectie is, betekent dit dat alle para meters worden uitgevoerd op de standaard waarde:
+   Met deze opdracht wordt de specificatie van de Server groep geretourneerd waarin u de para meters ziet die u hebt ingesteld. Als er geen engine\settings-sectie is, betekent dit dat alle para meters worden uitgevoerd op de standaard waarde:
 
-```
-> {
-  >"apiVersion": "arcdata.microsoft.com/v1alpha1",
-  >"**kind**": "**postgresql-12**",
-  >"metadata": {
-    >"creationTimestamp": "2020-08-25T14:32:23Z",
-    >"generation": 1,
-    >"name": "postgres01",
-    >"namespace": "arc",
-```
+   ```output
+   > {
+     >"apiVersion": "arcdata.microsoft.com/v1alpha1",
+     >"**kind**": "**postgresql-12**",
+     >"metadata": {
+       >"creationTimestamp": "2020-08-25T14:32:23Z",
+       >"generation": 1,
+       >"name": "postgres01",
+       >"namespace": "arc",  
+   ```
 
-Zoek in dit veld ' kind ' en stel de waarde in, bijvoorbeeld: `postgresql-12` .
+   Zoek in de resultaten van de uitvoer naar het veld `kind` en stel de waarde in, bijvoorbeeld: `postgresql-12` .
 
-### <a name="2-describe-the-kubernetes-custom-resource-corresponding-to-your-server-group"></a>2. Beschrijf de aangepaste Kubernetes-resource die overeenkomt met uw server groep 
+2. Beschrijf de aangepaste Kubernetes-resource die overeenkomt met uw server groep 
 
-De algemene indeling van de opdracht is:
+   De algemene indeling van de opdracht is:
 
-```console
-kubectl describe <kind of the custom resource> <server group name> -n <namespace name>
-```
+   ```console
+   kubectl describe <kind of the custom resource> <server group name> -n <namespace name>
+   ```
 
-Bijvoorbeeld:
+   Bijvoorbeeld:
 
-```console
-kubectl describe postgresql-12 postgres01
-```
+   ```console
+   kubectl describe postgresql-12 postgres01
+   ```
 
-Als er aangepaste waarden zijn ingesteld voor de engine-instellingen, worden deze geretourneerd. Bijvoorbeeld:
+   Als er aangepaste waarden zijn ingesteld voor de engine-instellingen, worden deze geretourneerd. Bijvoorbeeld:
 
-```console
-Engine:
-...
+   ```output
+   Engine:
+   ...
     Settings:
       Default:
         autovacuum_vacuum_threshold:  65
-```
+   ```
 
-Als u geen aangepaste waarden voor een van de engine-instellingen hebt ingesteld, is de sectie Engine-instellingen van de resultatenset leeg, zoals:
+   Als u geen aangepaste waarden hebt ingesteld voor een van de engine-instellingen, is de sectie Engine-instellingen van de `resultset` is leeg, zoals:
 
-```console
-Engine:
-...
-    Settings:
-      Default:
-```
+   ```output
+   Engine:
+   ...
+       Settings:
+         Default:
+   ```
 
-## <a name="set-custom-values-for-the-engine-settings"></a>Aangepaste waarden instellen voor de engine-instellingen
+## <a name="set-custom-values-for-engine-settings"></a>Aangepaste waarden voor Engine-instellingen instellen
 
 Met de onderstaande opdrachten stelt u de para meters van het coördinator knooppunt en de worker-knoop punten van uw PostgreSQL grootschalige in op dezelfde waarden. Het is nog niet mogelijk om para meters per rol in uw server groep in te stellen. Dat wil zeggen dat het nog niet mogelijk is om een bepaalde para meter te configureren voor een specifiek op het coördinator knooppunt en een andere waarde voor de worker-knoop punten.
 
-## <a name="set-a-single-parameter"></a>Een enkele para meter instellen
+### <a name="set-a-single-parameter"></a>Een enkele para meter instellen
 
 ```console
 azdata arc server edit -n <server group name> -e <parameter name>=<parameter value>
@@ -156,7 +156,7 @@ Bijvoorbeeld:
 azdata arc postgres server edit -n postgres01 -e shared_buffers=8MB
 ```
 
-## <a name="set-multiple-parameters-with-a-single-command"></a>Meerdere para meters instellen met één opdracht
+### <a name="set-multiple-parameters-with-a-single-command"></a>Meerdere para meters instellen met één opdracht
 
 ```console
 azdata arc postgres server edit -n <server group name> -e '<parameter name>=<parameter value>, <parameter name>=<parameter value>,...'
@@ -168,7 +168,7 @@ Bijvoorbeeld:
 azdata arc postgres server edit -n postgres01 -e 'shared_buffers=8MB, max_connections=50'
 ```
 
-## <a name="reset-a-parameter-to-its-default-value"></a>Een para meter opnieuw instellen op de standaard waarde
+### <a name="reset-a-parameter-to-its-default-value"></a>Een para meter opnieuw instellen op de standaard waarde
 
 Als u een para meter wilt instellen op de standaard waarde, stelt u deze in zonder een waarde op te geven. 
 
@@ -178,7 +178,7 @@ Bijvoorbeeld:
 azdata arc postgres server edit -n postgres01 -e shared_buffers=
 ```
 
-## <a name="reset-all-parameters-to-their-default-values"></a>Alle para meters opnieuw instellen op de standaard waarden
+### <a name="reset-all-parameters-to-their-default-values"></a>Alle para meters opnieuw instellen op de standaard waarden
 
 ```console
 azdata arc postgres server edit -n <server group name> -e '' -re
@@ -213,8 +213,6 @@ Bijvoorbeeld:
 ```console
 azdata arc postgres server edit -n postgres01 -e 'search_path = "$user"'
 ```
-
-
 
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over [uitschalen (werk knooppunten toevoegen)](scale-out-postgresql-hyperscale-server-group.md) voor uw server groep

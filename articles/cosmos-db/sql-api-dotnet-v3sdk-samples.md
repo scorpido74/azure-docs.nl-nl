@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 10/07/2019
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 66cf408799b37de1160ec3a76ee11ff1ffbb770b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe31e67168c4eaf6fe94c056a96fdf695ea94fe4
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801406"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279997"
 ---
 # <a name="azure-cosmos-dbnet-v3-sdk-microsoftazurecosmos-examples-for-the-sql-api"></a>Azure Cosmos DB: voorbeelden van .NET V3 SDK (Microsoft.Azure.Cosmos) voor de SQL API
 
@@ -54,7 +54,7 @@ Een Azure-abonnement of gratis Cosmos DB-proefaccount
 
 ## <a name="database-examples"></a>Voorbeelden voor databases
 
-In de methode [RunDatabaseDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/DatabaseManagement/Program.cs#L65-L91) van het voorbeeldproject *DatabaseManagement* ziet u hoe de volgende taken worden uitgevoerd. Zie [Werken met databases, containers en items](databases-containers-items.md) voor meer informatie over de Azure Cosmos-databases voordat u de volgende voorbeelden uitvoert.
+In de methode [RunDatabaseDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/DatabaseManagement/Program.cs#L65-L91) van het voorbeeldproject *DatabaseManagement* ziet u hoe de volgende taken worden uitgevoerd. Zie [Werken met databases, containers en items](account-databases-containers-items.md) voor meer informatie over de Azure Cosmos-databases voordat u de volgende voorbeelden uitvoert.
 
 | Taak | API-verwijzing |
 | --- | --- |
@@ -65,7 +65,7 @@ In de methode [RunDatabaseDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/
 
 ## <a name="container-examples"></a>Voorbeelden van containers
 
-In de methode [RunContainerDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ContainerManagement/Program.cs#L69-L89) van het voorbeeldproject *ContainerManagement* ziet u hoe de volgende taken worden uitgevoerd. Zie [Werken met databases, containers en items](databases-containers-items.md) voor meer informatie over Azure Cosmos-containers voordat u de volgende voorbeelden uitvoert.
+In de methode [RunContainerDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ContainerManagement/Program.cs#L69-L89) van het voorbeeldproject *ContainerManagement* ziet u hoe de volgende taken worden uitgevoerd. Zie [Werken met databases, containers en items](account-databases-containers-items.md) voor meer informatie over Azure Cosmos-containers voordat u de volgende voorbeelden uitvoert.
 
 | Taak | API-verwijzing |
 | --- | --- |
@@ -78,7 +78,7 @@ In de methode [RunContainerDemo](https://github.com/Azure/azure-cosmos-dotnet-v3
 
 ## <a name="item-examples"></a>Voorbeelden van items
 
-In de methode [RunItemsDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L119-L130) van het voorbeeldproject *ItemManagement* ziet u hoe de volgende taken worden uitgevoerd. Zie [Werken met databases, containers en items](databases-containers-items.md) voor meer informatie over Azure Cosmos-items voordat u de volgende voorbeelden uitvoert.
+In de methode [RunItemsDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L119-L130) van het voorbeeldproject *ItemManagement* ziet u hoe de volgende taken worden uitgevoerd. Zie [Werken met databases, containers en items](account-databases-containers-items.md) voor meer informatie over Azure Cosmos-items voordat u de volgende voorbeelden uitvoert.
 
 | Taak | API-verwijzing |
 | --- | --- |

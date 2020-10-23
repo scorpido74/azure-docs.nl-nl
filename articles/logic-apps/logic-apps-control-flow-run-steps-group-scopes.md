@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: 1ee8c7eabd33ad2d8773d55041fcdf54a7dd489b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95b5cc191ac6857bf8e1b09e70b22d928473fe03
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575007"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314848"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Acties uitvoeren op basis van de groeps status met behulp van scopes in Azure Logic Apps
 
@@ -31,7 +31,7 @@ Als u het voor beeld in dit artikel wilt volgen, hebt u de volgende items nodig:
 
 * Een e-mail account van een e-mail provider die door Logic Apps wordt ondersteund. In dit voor beeld wordt Outlook.com gebruikt. Als u een andere provider gebruikt, blijft de algemene stroom hetzelfde, maar uw gebruikers interface ziet er anders uit.
 
-* Een Bing Maps-sleutel. Als u deze sleutel wilt ophalen, raadpleegt u <a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">een Bing Maps-sleutel ophalen</a>.
+* Een Bing Maps-sleutel. Als u deze sleutel wilt ophalen, raadpleegt u <a href="/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key" target="_blank">een Bing Maps-sleutel ophalen</a>.
 
 * Basis kennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 

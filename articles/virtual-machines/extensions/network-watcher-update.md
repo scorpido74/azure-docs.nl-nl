@@ -1,6 +1,6 @@
 ---
 title: De Network Watcher-extensie bijwerken naar de nieuwste versie
-description: Meer informatie over het bijwerken van Network Watcher-uitbrei ding naar de nieuwste versie
+description: Meer informatie over hoe u de Azure Network Watcher-extensie bijwerkt naar de nieuwste versie.
 services: virtual-machines-windows
 documentationcenter: ''
 author: damendo
@@ -12,58 +12,70 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 09/23/2020
 ms.author: damendo
-ms.openlocfilehash: fd3fff2d438bbf804e35f04db0cfae15eea5e782
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 640b148dc22aa87592a6adcfca99c8ed35731934
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973336"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220584"
 ---
-# <a name="how-to-update-the-network-watcher-extension-to-the-latest-the-version"></a>De Network Watcher-extensie bijwerken naar de nieuwste versie 
+# <a name="update-the-network-watcher-extension-to-the-latest-version"></a>De Network Watcher-extensie bijwerken naar de nieuwste versie
 
 ## <a name="overview"></a>Overzicht
 
-[Azure Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) is een bewakings-, diagnose-en analyse service voor netwerk prestaties waarmee Azure-netwerken kunnen worden bewaakt. De extensie van de virtuele machine van Network Watcher agent is een vereiste voor het vastleggen van netwerk verkeer op aanvraag en andere geavanceerde functionaliteit op virtuele machines van Azure. De uitbrei ding Network Watcher wordt gebruikt door functies als verbindings monitor, verbindings monitor (preview), verbindings problemen oplossen en pakket opname.   
+[Azure Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) is een netwerk prestatie bewaking, diagnose en analyse service waarmee Azure-netwerken worden bewaakt. De extensie van de Network Watcher agent virtuele machine (VM) is een vereiste voor het vastleggen van netwerk verkeer op aanvraag en het gebruik van andere geavanceerde functionaliteit op Azure-Vm's. De uitbrei ding Network Watcher wordt gebruikt door functies als verbindings monitor, verbindings monitor (preview), verbindings problemen oplossen en pakket opname.
 
 ## <a name="prerequisites"></a>Vereisten
-In dit document wordt ervan uitgegaan dat u de extensie Network Watcher hebt geïnstalleerd in uw virtuele machine en instructies wilt geven voor het bijwerken van deze naar de nieuwste versie. 
+
+In dit artikel wordt ervan uitgegaan dat u de extensie Network Watcher hebt geïnstalleerd in uw VM.
 
 ## <a name="latest-version"></a>Nieuwste versie
+
 De meest recente versie van de uitbrei ding van de Network Watcher is momenteel `1.4.1654.1` .
 
-## <a name="updating-your-extension"></a>Uw extensie bijwerken 
+## <a name="update-your-extension"></a>Uw extensie bijwerken
 
-### <a name="check-your-extension-version"></a>Controleer de versie van de extensie  
+Als u uw uitbrei ding wilt bijwerken, moet u de extensie versie weten.
 
-**De Azure Portal gebruiken**
+### <a name="check-your-extension-version"></a>Controleer de versie van de extensie
 
-1. Ga naar de Blade extensies van de virtuele machine in de Azure Portal.   
-2. Klik op de extensie ' AzureNetworkWatcher ' om het deel venster met details weer te geven.  
-3. Zoek het versie nummer in het veld ' versie '.  
+U kunt de extensie versie controleren met behulp van de Azure Portal, de Azure CLI of Power shell.
 
-**Azure CLI gebruiken** Voer de onderstaande opdracht uit vanaf een Azure CLI-prompt.   
+#### <a name="usetheazureportal"></a>De Azure Portal gebruiken
+
+1. Ga naar het deel venster **uitbrei dingen** van de virtuele machine in de Azure Portal.
+1. Selecteer de **AzureNetworkWatcher** -extensie om het deel venster met details weer te geven.
+1. Zoek het versie nummer in het veld **versie** .  
+
+#### <a name="use-the-azure-cli"></a>Azure CLI gebruiken
+
+Voer de volgende opdracht uit vanaf een Azure CLI-prompt:
 
 ```azurecli
-az vm extension list --resource-group  <ResourceGroupName> --vm-name <VMName>
+az vm get-instance-view --resource-group  "SampleRG" --name "Sample-VM"
 ```
+Zoek **' AzureNetworkWatcherExtension '** in de uitvoer op en Identificeer het versie nummer in het veld *' TypeHandlerVersion '* in de uitvoer.  Opmerking: informatie over de uitbrei ding wordt meerdere keren weer gegeven in de JSON-uitvoer. Bekijk het blok ' uitbrei dingen ' en controleer het volledige versie nummer van de uitbrei ding. 
 
-Zoek de uitbrei ding AzureNetworkWatcher in de uitvoer en Identificeer het versie nummer in het veld ' TypeHandlerVersion ' in de uitvoer.  
+U ziet iets zoals hieronder: ![ Azure cli-scherm afbeelding](./media/network-watcher/azure-cli-screenshot.png)
 
+#### <a name="usepowershell"></a>Power shell gebruiken
 
-**Power shell gebruiken** Voer de volgende opdrachten uit vanuit een Power shell-prompt:   
+Voer de volgende opdrachten uit vanuit een Power shell-prompt:
 
 ```powershell
-Get-AzVMExtension -ResourceGroupName <ResourceGroupName> -VMName <VMName>  
+Get-AzVM -ResourceGroupName "SampleRG" -Name "Sample-VM" -Status
 ```
+Zoek naar de Azure Network Watcher-extensie in de uitvoer en zoek het versie nummer op uit het veld *' TypeHandlerVersion '* in de uitvoer.   
 
-Zoek de uitbrei ding AzureNetworkWatcher in de uitvoer en Identificeer het versie nummer in het veld ' TypeHandlerVersion ' in de uitvoer.   
-
+U ziet iets zoals hieronder: ![ Power shell-scherm afbeelding](./media/network-watcher/powershell-screenshot.png)
 
 ### <a name="update-your-extension"></a>Uw extensie bijwerken
 
-Als uw versie lager is dan `1.4.1654.1` (de huidige meest recente versie), werkt u de extensie bij met een van de volgende opties. 
+Als uw versie eerder is dan `1.4.1654.1` , de huidige meest recente versie, moet u de uitbrei ding bijwerken met behulp van een van de volgende opties.
 
-**Optie 1: Power shell gebruiken**
+#### <a name="option-1-use-powershell"></a>Optie 1: Power shell gebruiken
+
+Voer de volgende opdrachten uit:
 
 ```powershell
 #Linux command
@@ -73,10 +85,28 @@ Set-AzVMExtension `  -ResourceGroupName "myResourceGroup1" `  -Location "WestUS"
 Set-AzVMExtension `  -ResourceGroupName "myResourceGroup1" `  -Location "WestUS" `  -VMName "myVM1" `  -Name "AzureNetworkWatcherExtension" `  -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows"   
 ```
 
+Als dat niet werkt. Verwijder de uitbrei ding en installeer deze opnieuw met behulp van de onderstaande stappen. Hiermee wordt automatisch de meest recente versie toegevoegd.
 
-**Optie 2: Azure CLI gebruiken**  
+De uitbrei ding verwijderen 
 
-Upgrade afdwingen 
+```powershell
+#Same command for Linux and Windows
+Remove-AzVMExtension -ResourceGroupName "SampleRG" -VMName "Sample-VM" -Name "AzureNetworkWatcherExtension"
+``` 
+
+De extensie opnieuw installeren
+
+```powershell
+#Linux command
+Set-AzVMExtension -ResourceGroupName "SampleRG" -Location "centralus" -VMName "Sample-VM" -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentLinux" -typeHandlerVersion "1.4"
+
+#Windows command
+Set-AzVMExtension -ResourceGroupName "SampleRG" -Location "centralus" -VMName "Sample-VM" -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows" -typeHandlerVersion "1.4"
+```
+
+#### <a name="option-2-use-the-azure-cli"></a>Optie 2: de Azure CLI gebruiken
+
+Een upgrade afdwingen.
 
 ```azurecli
 #Linux command
@@ -86,9 +116,9 @@ az vm extension set --resource-group "myResourceGroup1" --vm-name "myVM1" --name
 az vm extension set --resource-group "myResourceGroup1" --vm-name "myVM1" --name "NetworkWatcherAgentWindows" --publisher "Microsoft.Azure.NetworkWatcher" --force-update
 ```
 
-Als dat niet werkt. Verwijder de uitbrei ding en installeer deze opnieuw met behulp van de onderstaande stappen. Hiermee wordt automatisch de meest recente versie toegevoegd. 
+Als dat niet werkt, verwijdert u de uitbrei ding en installeert u deze opnieuw en volgt u deze stappen om automatisch de meest recente versie toe te voegen.
 
-De uitbrei ding verwijderen 
+Verwijder de extensie.
 
 ```azurecli
 #Same for Linux and Windows
@@ -96,7 +126,7 @@ az vm extension delete --resource-group "myResourceGroup1" --vm-name "myVM1" -n 
 
 ```
 
-De extensie opnieuw installeren
+Installeer de extensie opnieuw.
 
 ```azurecli
 #Linux command
@@ -107,11 +137,10 @@ az vm extension set --resource-group "DALANDEMO" --vm-name "Linux-01" --name "Ne
 
 ```
 
-**Optie 3: uw Vm's opnieuw opstarten**
+#### <a name="option-3-reboot-your-vms"></a>Optie 3: uw Vm's opnieuw opstarten
 
-Als u de automatische upgrade hebt ingesteld op True voor de NetworkWatcher-extensie. Als u de VM opnieuw opstart, installeert u de nieuwste extensie.
-
+Als u de automatische upgrade hebt ingesteld op True voor de extensie Network Watcher, start u de VM-installatie opnieuw op naar de nieuwste extensie.
 
 ## <a name="support"></a>Ondersteuning
 
-Als u op elk gewenst moment meer hulp nodig hebt, kunt u de documentatie voor de Network Watcher-extensie ([Linux](./network-watcher-linux.md), [Windows](./network-watcher-windows.md)) raadplegen of contact opnemen met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/forums/). U kunt ook een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer ondersteuning verkrijgen. Lees de [Veelgestelde vragen over ondersteuning voor Microsoft Azure](https://azure.microsoft.com/support/faq/)voor meer informatie over het gebruik van Azure-ondersteuning.
+Als u op elk moment meer hulp nodig hebt, raadpleegt u de documentatie voor de Network Watcher-extensie voor [Linux](./network-watcher-linux.md) of [Windows](./network-watcher-windows.md). U kunt ook contact opnemen met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/forums/). U kunt ook een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/)en selecteer **ondersteuning verkrijgen**. Lees de [Veelgestelde vragen over ondersteuning voor Microsoft Azure](https://azure.microsoft.com/support/faq/)voor meer informatie over het gebruik van Azure-ondersteuning.

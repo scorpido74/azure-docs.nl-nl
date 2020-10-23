@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 151bc87bd5674a61b8652adfa70634318c405240
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4c5000adb2339d3fd0f828781a60f75c75894b5
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839602"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168593"
 ---
 # <a name="sampling-in-application-insights"></a>Steekproeven in Application Insights
 
@@ -212,7 +212,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 ### <a name="configuring-adaptive-sampling-for-azure-functions"></a>Adaptieve steek proeven configureren voor Azure Functions
 
-Volg de instructies op [Deze pagina](../../azure-functions/functions-monitoring.md#configure-sampling) om adaptieve steek proeven te configureren voor apps die worden uitgevoerd in azure functions.
+Volg de instructies op [Deze pagina](../../azure-functions/configure-monitoring.md#configure-sampling) om adaptieve steek proeven te configureren voor apps die worden uitgevoerd in azure functions.
 
 ## <a name="fixed-rate-sampling"></a>Steek proeven met een vaste frequentie
 

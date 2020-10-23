@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db68528a810ebc9cd61b205dd5167396d75db7f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de255836cb269f5077a417a203e136f9e903f05d
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613982"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441671"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>Een API-connector toevoegen aan een gebruikers stroom
 
@@ -44,7 +44,7 @@ Als u een [API-connector](api-connectors-overview.md)wilt gebruiken, maakt u eer
 > Voorheen moest u configureren welke gebruikers kenmerken moeten worden verzonden naar de API (' claims to send ') en welke gebruikers kenmerken moeten worden geaccepteerd van de API (' claims to receive '). Nu worden alle gebruikers kenmerken standaard verzonden als ze een waarde hebben en elk gebruikers kenmerk kan worden geretourneerd door de API in een vervolg-antwoord.
 
 ## <a name="the-request-sent-to-your-api"></a>De aanvraag die naar uw API wordt verzonden
-Een API-connector resultatenset als een **http post-** aanvraag, waarbij gebruikers kenmerken (' claims ') worden verzonden als sleutel-waardeparen in een JSON-hoofd tekst. Kenmerken worden op dezelfde manier geserialiseerd als [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/user#properties) gebruikers eigenschappen. 
+Een API-connector resultatenset als een **http post-** aanvraag, waarbij gebruikers kenmerken (' claims ') worden verzonden als sleutel-waardeparen in een JSON-hoofd tekst. Kenmerken worden op dezelfde manier geserialiseerd als [Microsoft Graph](/graph/api/resources/user#properties) gebruikers eigenschappen. 
 
 **Voorbeeldaanvraag**
 ```http
@@ -85,7 +85,7 @@ Daarnaast wordt de **gebruikers interface land instellingen (' ui_locales ')** s
 > Als een claim voor verzenden geen waarde heeft op het moment dat het API-eind punt wordt aangeroepen, wordt de claim niet verzonden naar de API. Uw API moet worden ontworpen om expliciet te controleren op de verwachte waarde.
 
 > [!TIP] 
-> [**identiteiten (' Identities ')**](https://docs.microsoft.com/graph/api/resources/objectidentity) en het **e-mail adres (' e-mail ')** kunnen worden gebruikt door uw API om een gebruiker te identificeren voordat ze een account in uw Tenant hebben. De claim ' Identities ' wordt verzonden wanneer een gebruiker zich verifieert met een id-provider zoals Google of Facebook. e-mail bericht wordt altijd verzonden.
+> [**identiteiten (' Identities ')**](/graph/api/resources/objectidentity) en het **e-mail adres (' e-mail ')** kunnen worden gebruikt door uw API om een gebruiker te identificeren voordat ze een account in uw Tenant hebben. De claim ' Identities ' wordt verzonden wanneer een gebruiker zich verifieert met een id-provider zoals Google of Facebook. e-mail bericht wordt altijd verzonden.
 
 ## <a name="enable-the-api-connector-in-a-user-flow"></a>De API-connector inschakelen in een gebruikers stroom
 
@@ -106,7 +106,7 @@ Volg deze stappen om een API-connector toe te voegen aan een self-service voor h
 
 ## <a name="after-signing-in-with-an-identity-provider"></a>Nadat u zich hebt aangemeld met een id-provider
 
-Een API-connector in deze stap van het registratie proces wordt direct geactiveerd nadat de gebruiker zich bij een id-provider (Google, Facebook, Azure AD) heeft geverifieerd. Deze stap gaat vooraf aan de ***pagina kenmerk verzameling***. Dit is het formulier dat wordt weer gegeven aan de gebruiker om gebruikers kenmerken te verzamelen. 
+Een API-connector in deze stap van het registratie proces wordt direct geactiveerd nadat de gebruiker zich bij een id-provider (Google, Facebook, Azure AD) heeft geverifieerd. Deze stap gaat vooraf aan de *-*_kenmerk verzamelings pagina_*_. Dit is het formulier dat wordt weer gegeven aan de gebruiker om gebruikers kenmerken te verzamelen. 
 
 <!-- The following are examples of API connector scenarios you may enable at this step:
 - Use the email or federated identity that the user provided to look up claims in an existing system. Return these claims from the existing system, pre-fill the attribute collection page, and make them available to return in the token.
@@ -248,7 +248,7 @@ Content-type: application/json
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | versie                                            | Tekenreeks            | Ja      | De versie van de API.                                                                                                                                                                                                                                                                |
 | actie                                             | Tekenreeks            | Ja      | Waarde moet zijn `Continue` .                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | Nee       | Waarden kunnen worden opgeslagen in de map als ze zijn geselecteerd als een **claim om te ontvangen** in de API-connector configuratie en **gebruikers kenmerken** voor een gebruikers stroom. Waarden kunnen worden geretourneerd in het token als deze zijn geselecteerd als een **toepassings claim**.                                              |
+| \<builtInUserAttribute>                            | \<attribute-type> | Nee       | Waarden kunnen worden opgeslagen in de map als ze zijn geselecteerd als een _*claim om * te ontvangen*in de API-connector configuratie en **gebruikers kenmerken** voor een gebruikers stroom. Waarden kunnen worden geretourneerd in het token als deze zijn geselecteerd als een **toepassings claim**.                                              |
 | \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Nee       | De geretourneerde claim hoeft niet te bevatten `_<extensions-app-id>_` . Waarden worden opgeslagen in de map als deze zijn geselecteerd als een **claim om te ontvangen** in de API-connector configuratie en het **gebruikers kenmerk** voor een gebruikers stroom. Aangepaste kenmerken kunnen niet terug worden verzonden in het token. |
 
 ### <a name="example-of-a-blocking-response"></a>Voor beeld van een blokkerend antwoord

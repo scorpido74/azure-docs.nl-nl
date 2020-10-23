@@ -11,12 +11,13 @@ ms.workload: identity
 ms.date: 05/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 5fdce791ba8848b93a8457f3738392b1f5f15508
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: contperfq2
+ms.openlocfilehash: c9d8bf42d8856ffcf7bb0247172f6c0fd49600e0
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801797"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424646"
 ---
 # <a name="how-provisioning-works"></a>Hoe inrichting werkt
 
@@ -65,15 +66,15 @@ Voor uitgaande levering vanuit Azure AD naar een SaaS-toepassing is afhankelijkh
 
 * **Groepen.** Met een Azure AD Premium-licentie abonnement kunt u groepen gebruiken om toegang te verlenen aan een SaaS-toepassing. Wanneer het inrichtings bereik is ingesteld op **alleen toegewezen gebruikers en groepen synchroniseren**, wordt door de Azure AD-inrichtings service gebruikers ingericht of ongedaan gemaakt op basis van het feit of ze lid zijn van een groep die is toegewezen aan de toepassing. Het groeps object zelf is alleen ingericht als de toepassing groeps objecten ondersteunt. Zorg ervoor dat de eigenschap "SecurityEnabled" is ingesteld op "True" voor groepen die zijn toegewezen aan uw toepassing.
 
-* **Dynamische groepen.** De Azure AD User Provisioning-Service kan gebruikers in [dynamische groepen](../users-groups-roles/groups-create-rule.md)lezen en inrichten. Houd deze aanvullende opmerkingen en aanbevelingen in acht:
+* **Dynamische groepen.** De Azure AD User Provisioning-Service kan gebruikers in [dynamische groepen](../enterprise-users/groups-create-rule.md)lezen en inrichten. Houd deze aanvullende opmerkingen en aanbevelingen in acht:
 
   * Dynamische groepen kunnen invloed hebben op de prestaties van end-to-end-inrichting van Azure AD naar SaaS-toepassingen.
 
-  * Hoe snel een gebruiker in een dynamische groep wordt ingericht of ongedaan gemaakt in een SaaS-toepassing, is afhankelijk van de snelheid waarmee de dynamische groep lidmaatschaps wijzigingen kan evalueren. Zie [verwerkings status controleren voor een lidmaatschaps regel](../users-groups-roles/groups-create-rule.md)voor meer informatie over het controleren van de verwerkings status van een dynamische groep.
+  * Hoe snel een gebruiker in een dynamische groep wordt ingericht of ongedaan gemaakt in een SaaS-toepassing, is afhankelijk van de snelheid waarmee de dynamische groep lidmaatschaps wijzigingen kan evalueren. Zie [verwerkings status controleren voor een lidmaatschaps regel](../enterprise-users/groups-create-rule.md)voor meer informatie over het controleren van de verwerkings status van een dynamische groep.
 
   * Wanneer een gebruiker het lidmaatschap van de dynamische groep kwijtraakt, wordt dit beschouwd als een niet-ingerichte gebeurtenis. Houd rekening met dit scenario bij het maken van regels voor dynamische groepen.
 
-* **Geneste groepen.** De Azure AD User Provisioning-Service kan geen gebruikers in geneste groepen lezen of inrichten. De service kan alleen gebruikers lezen en inrichten die onmiddellijk lid zijn van een expliciet toegewezen groep. Deze beperking van ' groeps toewijzingen voor toepassingen ' is ook van invloed op eenmalige aanmelding (Zie [een groep gebruiken voor het beheren van toegang tot SaaS-toepassingen](../users-groups-roles/groups-saasapps.md)). In plaats daarvan moet u de groepen die de gebruikers moeten inrichten, rechtstreeks toewijzen of een ander [bereik](define-conditional-rules-for-provisioning-user-accounts.md) geven.
+* **Geneste groepen.** De Azure AD User Provisioning-Service kan geen gebruikers in geneste groepen lezen of inrichten. De service kan alleen gebruikers lezen en inrichten die onmiddellijk lid zijn van een expliciet toegewezen groep. Deze beperking van ' groeps toewijzingen voor toepassingen ' is ook van invloed op eenmalige aanmelding (Zie [een groep gebruiken voor het beheren van toegang tot SaaS-toepassingen](../enterprise-users/groups-saasapps.md)). In plaats daarvan moet u de groepen die de gebruikers moeten inrichten, rechtstreeks toewijzen of een ander [bereik](define-conditional-rules-for-provisioning-user-accounts.md) geven.
 
 ### <a name="attribute-based-scoping"></a>Op kenmerken gebaseerde Scope 
 
@@ -179,17 +180,21 @@ Zorg ervoor dat u het selectie vakje voor updates hebt ingeschakeld.
 
 Zorg ervoor dat u de toewijzing voor *actief* hebt voor uw toepassing. Als u een toepassing uit de app-Galerie gebruikt, kan de toewijzing iets anders zijn. Zorg ervoor dat u de standaard-en uitgaande Box-toewijzing gebruikt voor galerie toepassingen.
 
+:::image type="content" source="./media/how-provisioning-works/disable-user.png" alt-text="Een gebruiker uitschakelen" lightbox="./media/how-provisioning-works/disable-user.png":::
+
 
 **Uw toepassing configureren voor het verwijderen van een gebruiker**
 
 In de volgende scenario's wordt een uitschakelen of verwijderen geactiveerd: 
 * Een gebruiker wordt zacht verwijderd in azure AD (verzonden naar de Prullenbak/AccountEnabled eigenschap ingesteld op false).
-    30 dagen nadat een gebruiker is verwijderd in azure AD, worden deze permanent verwijderd uit de Tenant. Op dit moment wordt door de inrichtings service een Verwijder aanvraag verzonden om de gebruiker permanent te verwijderen uit de toepassing. Op elk gewenst moment in het 30-daagse venster kunt u [een gebruiker permanent hand matig verwijderen](../fundamentals/active-directory-users-restore.md), waardoor een aanvraag voor verwijderen naar de toepassing wordt verzonden.
+    30 dagen nadat een gebruiker is verwijderd in azure AD, worden deze permanent verwijderd uit de Tenant. Op dit moment wordt door de inrichtings service een Verwijder aanvraag verzonden om de gebruiker permanent te verwijderen uit de toepassing. Op elk gewenst moment in het 30-daagse venster kunt u [een gebruiker permanent hand matig verwijderen](../fundamentals/active-directory-users-restore.md), waardoor een aanvraag voor verwijderen naar de toepassing wordt verzonden.
 * Een gebruiker wordt definitief verwijderd uit de Prullenbak in azure AD.
 * Een gebruiker is niet toegewezen vanuit een app.
 * Een gebruiker gaat van binnen bereik tot buiten bereik (geeft geen bereik filter meer toe).
-    
-De Azure AD-inrichtings service laadt standaard gebruikers die buiten het bereik vallen, of schakelt deze uit. Als u dit standaard gedrag wilt overschrijven, kunt u een markering instellen om [verwijderingen buiten het bereik over te slaan.](skip-out-of-scope-deletions.md)
+
+:::image type="content" source="./media/how-provisioning-works/delete-user.png" alt-text="Een gebruiker uitschakelen" lightbox="./media/how-provisioning-works/delete-user.png":::
+
+De Azure AD-inrichtings service laadt standaard gebruikers die buiten het bereik vallen, of schakelt deze uit. Als u dit standaard gedrag wilt overschrijven, kunt u een markering instellen om [verwijderingen buiten het bereik over te slaan.](skip-out-of-scope-deletions.md)
 
 Als een van de bovenstaande vier gebeurtenissen optreedt en de doel toepassing geen tijdelijke verwijderingen ondersteunt, wordt door de inrichtings service een Verwijder aanvraag verzonden om de gebruiker definitief uit de app te verwijderen.
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 411fa207323a9bff6cfcc3b17769203c444dd844
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0dba5f96d90304418d7ebd297419c1f36244f868
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388677"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363926"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Aangepaste beleids regels implementeren met Azure-pijp lijnen
 
@@ -33,7 +33,7 @@ Er zijn drie primaire stappen vereist om Azure-pijp lijnen in te scha kelen voor
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Azure AD B2C Tenant](tutorial-create-tenant.md)en referenties voor een gebruiker in de directory met de [B2C IEF Policy](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator) beheerdersrol
+* [Azure AD B2C Tenant](tutorial-create-tenant.md)en referenties voor een gebruiker in de directory met de [B2C IEF Policy](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator) beheerdersrol
 * [Aangepast beleid](custom-policy-get-started.md) dat is geüpload naar uw Tenant
 * De [beheer-app](microsoft-graph-get-started.md) die is geregistreerd in uw Tenant met het Microsoft Graph API-machtigings *beleid. readwrite. TrustFramework*
 * [Azure-pijp lijn](https://azure.microsoft.com/services/devops/pipelines/)en toegang tot een [Azure DevOps Services-project][devops-create-project]
@@ -151,7 +151,7 @@ Voeg vervolgens een taak toe om een beleids bestand te implementeren.
     * **Taak versie**: 2. *
     * **Weergave naam**: de naam van het beleid dat met deze taak moet worden geüpload. Bijvoorbeeld *B2C_1A_TrustFrameworkBase*.
     * **Type**: bestandspad
-    * **Scriptpad**: Selecteer het weglatings teken (***...***), navigeer naar de map *scripts* en selecteer vervolgens het *DeployToB2C.ps1* bestand.
+    * **Scriptpad**: Selecteer het weglatings teken (**_..._* _), navigeer naar de map _Scripts * en selecteer vervolgens het *DeployToB2C.ps1* bestand.
     * **Opmerkingen**
 
         Voer de volgende waarden in voor **argumenten**. Vervang door `{alias-name}` de alias die u in de vorige sectie hebt opgegeven.

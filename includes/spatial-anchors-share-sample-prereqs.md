@@ -4,20 +4,24 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 07/31/2020
 ms.author: rgarcia
-ms.openlocfilehash: c4a03f2701b94821cfc8c1f6d585b1a87ee8bfea
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9e085c122c196de735cae26a4ea2f04b2da73899
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91358757"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971342"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
-Het volgende moet zijn geïnstalleerd om deze zelfstudie te voltooien:
+Voordat u met deze zelfstudie begint, moet aan de volgende vereisten worden voldaan:
 
-* het [Overzicht Azure Spatial Anchors](../articles/spatial-anchors/overview.md) hebt doorgelezen.
-* Voer een van de [quickstarts van 5 minuten](../articles/spatial-anchors/index.yml) uit en zorg ervoor dat u voldoet aan alle vereisten die worden vermeld in de gekozen quickstart. **Opmerking:** In de quickstarts voor Android/NDK en iOS/SWIFT worden de functies die in deze zelfstudie worden uitgelegd, momenteel niet getoond.
-* over de basiskennis voor <a href="https://developers.google.com/ar/discover/" target="_blank">ARCore</a> beschikt als u Android wilt gebruiken of voor <a href="https://developer.apple.com/arkit/" target="_blank">ARKit</a> als u iOS wilt gebruiken.
-* Een Windows-computer waarop <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> of hoger is geïnstalleerd met de werkbelasting **ASP.NET- en webontwikkeling**.
+* U hebt [Overzicht Azure Spatial Anchors](../articles/spatial-anchors/overview.md) doorgelezen.
+* U hebt een van de [Quickstarts van 5 minuten](../articles/spatial-anchors/index.yml) voltooid. 
+  > [!NOTE]
+  > In de quickstarts voor Android/NDK en iOS/SWIFT worden de functies die in deze zelfstudie worden uitgelegd, momenteel niet getoond.
+* U hebt een basiskennis van een van de volgende:
+  *  <a href="https://developers.google.com/ar/discover/" target="_blank">ARCore</a> als u Android gebruikt.
+  *  <a href="https://developer.apple.com/arkit/" target="_blank">ARKit</a> als u iOS gebruikt.
+* Een Windows-computer met <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> of hoger en de werkbelasting **ASP.NET- en webontwikkeling**.
 * De [.NET Core 3.1-SDK](https://dotnet.microsoft.com/download).
-* Een of meer apparaten (HoloLens, HoloLens 2, iOS of Android) waarop een app zal worden geïmplementeerd en uitgevoerd.
+* Een of meer van de volgende apparaten waarop een app zal worden geïmplementeerd en uitgevoerd: HoloLens, HoloLens 2, iOS, or Android.

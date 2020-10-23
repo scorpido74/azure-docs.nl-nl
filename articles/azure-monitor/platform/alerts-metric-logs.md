@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.subservice: alerts
-ms.openlocfilehash: 7085dd601499004a91fc77a9181f0b097d0b543a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23ebb513e55e6b61f608354ae1cb3bf3864a54ae
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87446173"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108844"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Metrische waarschuwingen maken voor logboeken in Azure Monitor
 
@@ -62,7 +62,7 @@ Voordat de metriek wordt vastgelegd voor logboeken die zijn verzameld op Log Ana
 
  Metrische waarschuwingen kunnen worden gemaakt en beheerd met behulp van de Azure Portal, Resource Manager-sjablonen, REST API, Power shell en Azure CLI. Aangezien metrische waarschuwingen voor logboeken een variant van metrische waarschuwingen zijn: zodra de vereisten zijn uitgevoerd, kunnen er metrische waarschuwingen voor logboeken worden gemaakt voor de opgegeven Log Analytics-werk ruimte. Alle kenmerken en functies van [metrische waarschuwingen](./alerts-metric-near-real-time.md) zijn ook van toepassing op metrische waarschuwingen voor Logboeken. inclusief Payload-schema, toepasselijke quotum limieten en gefactureerde prijzen.
 
-Zie [metrische waarschuwingen maken en beheren](https://aka.ms/createmetricalert)voor stapsgewijze Details en voor beelden. In het bijzonder, voor metrische waarschuwingen voor logboeken, volgt u de instructies voor het beheren van metrische waarschuwingen en zorgt u voor het volgende:
+Zie [metrische waarschuwingen maken en beheren](./alerts-metric.md)voor stapsgewijze Details en voor beelden. In het bijzonder, voor metrische waarschuwingen voor logboeken, volgt u de instructies voor het beheren van metrische waarschuwingen en zorgt u voor het volgende:
 
 - Doel voor metrische waarschuwing is een geldige *log Analytics-werk ruimte*
 - Het signaal dat is gekozen voor de metrische waarschuwing voor de geselecteerde *log Analytics werk ruimte* is van het type **metric**
@@ -690,4 +690,3 @@ az group deployment create --resource-group myRG --template-file metricfromLogsA
 - Meer informatie over de [metrische waarschuwingen](alerts-metric.md).
 - Meer informatie over [logboek waarschuwingen in azure](./alerts-unified-log.md).
 - Meer informatie over [waarschuwingen in azure](alerts-overview.md).
-

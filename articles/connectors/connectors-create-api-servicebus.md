@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 10/12/2020
+ms.date: 10/22/2020
 tags: connectors
-ms.openlocfilehash: 5834a1927fda71faa924e14265fb7f82034887de
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: b6276ff940d8b156a671cb5386ce53ede30dd879
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996353"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426651"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Berichten uitwisselen in de Cloud met behulp van Azure Logic Apps en Azure Service Bus
 
@@ -60,7 +60,7 @@ Controleer of uw logische app machtigingen heeft om toegang te krijgen tot uw Se
       ![Service Bus naam ruimte connection string kopiëren](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
 
    > [!TIP]
-   > Als u wilt controleren of uw connection string is gekoppeld aan uw Service Bus naam ruimte of een bericht entiteit, zoals een wachtrij, zoekt u de connection string voor de `EntityPath`   para meter. Als u deze para meter vindt, is de connection string voor een specifieke entiteit en is de juiste teken reeks niet geschikt voor gebruik met uw logische app.
+   > Als u wilt controleren of uw connection string is gekoppeld aan uw Service Bus naam ruimte of een bericht entiteit, zoals een wachtrij, zoekt u de connection string voor de `EntityPath` para meter. Als u deze para meter vindt, is de connection string voor een specifieke entiteit en is de juiste teken reeks niet geschikt voor gebruik met uw logische app.
 
 ## <a name="add-service-bus-trigger"></a>Service Bus trigger toevoegen
 
@@ -68,18 +68,22 @@ Controleer of uw logische app machtigingen heeft om toegang te krijgen tot uw Se
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en open uw lege logische app in de ontwerp functie voor logische apps.
 
-1. Voer in het zoekvak ' Azure service bus ' in als uw filter. Selecteer de gewenste trigger in de lijst met triggers.
+1. Voer in het zoekvak van de portal in `azure service bus` . Selecteer de gewenste trigger in de lijst met triggers die wordt weer gegeven.
 
    Als u bijvoorbeeld uw logische app wilt activeren wanneer een nieuw item wordt verzonden naar een Service Bus wachtrij, selecteert u de trigger **Wanneer een bericht wordt ontvangen in een wachtrij (automatisch volt ooien)** .
 
    ![Service Bus trigger selecteren](./media/connectors-create-api-azure-service-bus/select-service-bus-trigger.png)
 
-   Alle Service Bus triggers zijn *lange polling* triggers. Deze beschrijving betekent dat wanneer de trigger wordt geactiveerd, de trigger alle berichten verwerkt en vervolgens 30 seconden wacht totdat er meer berichten worden weer gegeven in de wachtrij of het onderwerp. Als er gedurende 30 seconden geen berichten worden weer gegeven, wordt de trigger wordt uitgevoerd. Anders wordt het lezen van berichten voortgezet totdat de wachtrij of het onderwerp leeg is. De volgende trigger poll is gebaseerd op het interval van het terugkeer patroon dat is opgegeven in de eigenschappen van de trigger.
+   Hier volgen enkele aandachtspunten voor het gebruik van een Service Bus trigger:
 
-   Sommige triggers, zoals het **tijdstip waarop een of meer berichten binnenkomen in een wachtrij (automatisch volt ooien)** , kunnen een of meer berichten retour neren. Wanneer deze triggers worden geactiveerd, retour neren ze tussen één en het aantal berichten dat is opgegeven door de eigenschap **maximum aantal berichten** van de trigger.
+   * Alle Service Bus triggers zijn *lange polling* triggers. Deze beschrijving betekent dat wanneer de trigger wordt geactiveerd, de trigger alle berichten verwerkt en vervolgens 30 seconden wacht totdat er meer berichten worden weer gegeven in de wachtrij of het onderwerp. Als er gedurende 30 seconden geen berichten worden weer gegeven, wordt de trigger wordt uitgevoerd. Anders wordt het lezen van berichten voortgezet totdat de wachtrij of het onderwerp leeg is. De volgende trigger poll is gebaseerd op het interval van het terugkeer patroon dat is opgegeven in de eigenschappen van de trigger.
 
-    > [!NOTE]
-    > Met de trigger voor automatisch aanvullen wordt automatisch een bericht voltooid, maar de voltooiing vindt alleen plaats bij de volgende aanroep van Service Bus. Dit gedrag kan van invloed zijn op het ontwerp van uw logische app. Vermijd het wijzigen van de gelijktijdigheid van de trigger voor automatisch aanvullen, omdat deze wijziging kan leiden tot dubbele berichten als de logische app een vertraagde status krijgt. Het wijzigen van het gelijktijdigheids beheer heeft de volgende voor waarden: beperkte triggers worden overgeslagen met de `WorkflowRunInProgress` code, de voltooiings bewerking vindt niet plaats en de volgende trigger wordt uitgevoerd na het polling-interval. U moet de vergrendelings duur van de service bus instellen op een waarde die langer is dan het polling-interval. Ondanks deze instelling kan het bericht echter nog steeds niet worden voltooid als uw logische app in een vertragings status bij het volgende polling-interval blijft.
+   * Sommige triggers, zoals het **tijdstip waarop een of meer berichten binnenkomen in een wachtrij (automatisch volt ooien)** , kunnen een of meer berichten retour neren. Wanneer deze triggers worden geactiveerd, retour neren ze tussen één en het aantal berichten dat is opgegeven door de eigenschap **maximum aantal berichten** van de trigger.
+
+     > [!NOTE]
+     > Met de trigger voor automatisch aanvullen wordt automatisch een bericht voltooid, maar de voltooiing vindt alleen plaats bij de volgende aanroep van Service Bus. Dit gedrag kan van invloed zijn op het ontwerp van uw logische app. Vermijd het wijzigen van de gelijktijdigheid van de trigger voor automatisch aanvullen, omdat deze wijziging kan leiden tot dubbele berichten als de logische app een vertraagde status krijgt. Het wijzigen van het gelijktijdigheids beheer heeft de volgende voor waarden: beperkte triggers worden overgeslagen met de `WorkflowRunInProgress` code, de voltooiings bewerking vindt niet plaats en de volgende trigger wordt uitgevoerd na het polling-interval. U moet de vergrendelings duur van de service bus instellen op een waarde die langer is dan het polling-interval. Ondanks deze instelling kan het bericht echter nog steeds niet worden voltooid als uw logische app in een vertragings status bij het volgende polling-interval blijft.
+
+   * Als u [de gelijktijdigheids instelling](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) voor een service bus trigger inschakelt, is de standaard waarde voor de `maximumWaitingRuns` eigenschap 10. Op basis van de vergrendelings duur van de Service Bus entiteit en de uitvoerings duur voor uw logische app-exemplaar, kan deze standaard waarde te groot zijn en kan de uitzonde ring ' vergren delen verloren ' veroorzaken. U kunt de optimale waarde voor uw scenario vinden door te testen met een waarde van 1 of 2 voor de `maximumWaitingRuns` eigenschap. Zie de limiet voor het uitvoeren van een [wacht](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)tijd wijzigen voor het wijzigen van de maximum waarde voor de wacht tijd.
 
 1. Als uw trigger voor de eerste keer verbinding maakt met uw Service Bus-naam ruimte, voert u de volgende stappen uit wanneer de ontwerp functie voor logische apps u om verbindings informatie vraagt.
 
@@ -113,13 +117,13 @@ Controleer of uw logische app machtigingen heeft om toegang te krijgen tot uw Se
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en open uw logische app in de ontwerp functie voor logische apps.
+1. Open in de [Azure Portal](https://portal.azure.com)uw logische app in de ontwerp functie voor logische apps.
 
 1. Selecteer **nieuwe stap**onder de stap waar u een actie wilt toevoegen.
 
    Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. Selecteer het plus teken ( **+** ) dat wordt weer gegeven en selecteer **een actie toevoegen**.
 
-1. Onder **Kies een actie**, voert u in het zoekvak ' Azure service bus ' in als uw filter. Selecteer in de lijst acties de gewenste actie. 
+1. Voer in het zoekvak onder **Kies een actie** `azure service bus` in. Selecteer de gewenste actie in de lijst met acties die wordt weer gegeven. 
 
    Selecteer voor dit voor beeld de actie **bericht verzenden** .
 

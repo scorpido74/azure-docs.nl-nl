@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 5892fd732a1e66b2b7dd4c1031cabfcbcc768c6d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ea0887dd1d28bb958b27813df7f4c7a221470bac
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326147"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088751"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Een bestaand aangepast domein toewijzen aan Azure Spring Cloud
 
@@ -26,11 +26,55 @@ Certificaten versleutelen webverkeer. Deze TLS/SSL-certificaten kunnen worden op
 * Een toepassing die is geïmplementeerd in Azure Spring Cloud (Zie [Snelstart: Start een bestaande Azure Spring Cloud-toepassing met behulp van het Azure- portal](spring-cloud-quickstart.md)of gebruik een bestaande app).
 * Een domeinnaam met toegang hebt tot het DNS-register voor uw domeinprovider zoals GoDaddy.
 * Een persoonlijk certificaat (dat wil zeggen uw zelfondertekende certificaat) van een externe provider. Het certificaat moet overeenkomen met het domein.
-* Een geïmplementeerd exemplaar van [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* Een geïmplementeerd exemplaar van [Azure Key Vault](../key-vault/general/overview.md)
 
-## <a name="import-certificate"></a>Certificaat importeren 
+## <a name="import-certificate"></a>Certificaat importeren
+### <a name="prepare-your-certificate-file-in-pfx-optional"></a>U certificaatbestand voorbereiden in PFX (optioneel)
+Azure Key Vault-ondersteuning voor het importeren van een privécertificaat in de PEM- en PFX-indeling. Als het PEM-bestand dat u hebt verkregen van de certificaatprovider, niet werkt in onderstaande sectie: [Sla het certificaat op in Key Vault](#save-certificate-in-key-vault), volg de stappen hier om een PFX voor Azure Key Vault te genereren.
+
+#### <a name="merge-intermediate-certificates"></a>Tussenliggende certificaten samenvoegen
+
+Als uw certificeringsinstantie meerdere certificaten in de certificaatketen geeft, moet u de certificaten in de juiste volgorde samenvoegen.
+
+U doet dit door elk certificaat dat u hebt ontvangen in een teksteditor te openen.
+
+Maak een bestand voor het samengevoegde certificaat met de naam _mergedcertificate.crt_. Kopieer de inhoud van elk certificaat in dit bestand in een teksteditor. De volgorde van uw certificaten moet de volgorde in de certificaatketen volgen, beginnend met uw certificaat en eindigend met het hoofdcertificaat. Het lijkt op het volgende voorbeeld:
+
+```
+-----BEGIN CERTIFICATE-----
+<your entire Base64 encoded SSL certificate>
+-----END CERTIFICATE-----
+
+-----BEGIN CERTIFICATE-----
+<The entire Base64 encoded intermediate certificate 1>
+-----END CERTIFICATE-----
+
+-----BEGIN CERTIFICATE-----
+<The entire Base64 encoded intermediate certificate 2>
+-----END CERTIFICATE-----
+
+-----BEGIN CERTIFICATE-----
+<The entire Base64 encoded root certificate>
+-----END CERTIFICATE-----
+```
+
+#### <a name="export-certificate-to-pfx"></a>Certificaat naar PFX exporteren
+
+Exporteer uw samengevoegde TLS/SSL-certificaat met de persoonlijke sleutel die met uw certificaataanvraag is gegenereerd.
+
+Als u de certificaataanvraag met OpenSSL hebt gegenereerd, hebt u een bestand met een persoonlijke sleutel gemaakt. Voer de volgende opdracht uit om uw certificaat naar PFX te exporteren. Vervang de tijdelijke aanduidingen _&lt;private-key-file>_ en _&lt;merged-certificate-file>_ door de paden naar uw persoonlijke sleutel en uw bestand met samengevoegde certificaten.
+
+```bash
+openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-certificate-file>
+```
+
+Wanneer u daarom wordt gevraagd, geeft u een wachtwoord voor export op. U gebruikt dit wachtwoord later wanneer u uw TLS/SSL-certificaat uploadt naar Azure Key Vault.
+
+Als u IIS of _Certreq.exe_ hebt gebruikt voor het genereren van uw certificaataanvraag, installeert u het certificaat op uw lokale computer en [exporteert u het certificaat naar PFX](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754329(v=ws.11)).
+
+### <a name="save-certificate-in-key-vault"></a>Certificaat opslaan in Key Vault
 Voor de procedure voor het importeren van een certificaat moet het PEM-of PFX-bestand op een schijf staan en moet u de persoonlijke sleutel hebben. 
-
+#### <a name="portal"></a>[Portal](#tab/Azure-portal)
 Uw certificaat uploaden naar de sleutelkluis:
 1. Ga naar uw sleutelkluis-exemplaar.
 1. Klik op **Certificaten** in het linkernavigatievenster.
@@ -42,7 +86,17 @@ Uw certificaat uploaden naar de sleutelkluis:
 
     ![Certificaat 1 importeren](./media/custom-dns-tutorial/import-certificate-a.png)
 
-Azure Spring Cloud toegang verlenen tot uw sleutelkluis voordat u het certificaat importeert:
+#### <a name="cli"></a>[CLI](#tab/Azure-CLI)
+
+```azurecli
+az keyvault certificate import --file <path to .pfx file> --name <certificate name> --vault-name <key vault name> --password <export password>
+```
+---
+
+### <a name="grant-azure-spring-cloud-access-to-your-key-vault"></a>Azure Spring Cloud toegang verlenen tot uw sleutelkluis
+
+U moet Azure Spring Cloud toegang verlenen tot uw sleutelkluis voordat u het certificaat importeert:
+#### <a name="portal"></a>[Portal](#tab/Azure-portal)
 1. Ga naar uw sleutelkluis-exemplaar.
 1. Klik op **Toegangsbeleid** in het linkernavigatievenster.
 1. Klik in het bovenste menu op **Toegangsbeleid toevoegen**.
@@ -54,50 +108,41 @@ Azure Spring Cloud toegang verlenen tot uw sleutelkluis voordat u het certificaa
 
 ![Certificaat 2 importeren](./media/custom-dns-tutorial/import-certificate-b.png)
 
-Of u kunt de Azure CLI gebruiken om Azure Spring Cloud toegang te verlenen tot de sleutelkluis.
+#### <a name="cli"></a>[CLI](#tab/Azure-CLI)
 
-Haal de object-id op via de volgende opdracht.
+Verleen Azure Spring Cloud toegang tot de sleutelkluis, vervang `<key vault resource group>` en `<key vault name>` in de volgende opdracht.
 ```
-az ad sp show --id <service principal id> --query objectId
-```
-
-Verleen Azure Spring Cloud toegang tot de sleutelkluis, vervang de object-id in de volgende opdracht.
-```
-az keyvault set-policy -g <key vault resource group> -n <key vault name>  --object-id <object id> --certificate-permissions get list
+az keyvault set-policy -g <key vault resource group> -n <key vault name>  --object-id 938df8e2-2b9d-40b1-940c-c75c33494239 --certificate-permissions get list --secret-permissions get list
 ``` 
+---
 
-Om een certificaat importeren naar Azure Spring Cloud:
+### <a name="import-certificate-to-azure-spring-cloud"></a>Certificaat importeren in Azure Spring Cloud
+#### <a name="portal"></a>[Portal](#tab/Azure-portal)
 1. Ga naar uw service-exemplaar. 
 1. Selecteer **TLS/SSL-instellingen**vanuit het navigatiedeelvenster aan de linkerkant van uw app.
 1. Klik vervolgens op **Key Vault-certificaat importeren**.
 
     ![Certificaat importeren](./media/custom-dns-tutorial/import-certificate.png)
 
-U kunt ook de Azure CLI gebruiken om het certificaat te importeren:
+1. Wanneer u uw certificaat hebt geïmporteerd, ziet u dit in de lijst met **Persoonlijke sleutelcertificaten**.
+
+    ![Certificaat met een persoonlijke sleutel](./media/custom-dns-tutorial/key-certificates.png)
+
+#### <a name="cli"></a>[CLI](#tab/Azure-CLI)
 
 ```
 az spring-cloud certificate add --name <cert name> --vault-uri <key vault uri> --vault-certificate-name <key vault cert name>
 ```
 
-> [!IMPORTANT] 
-> Zorgt dat u Azure Spring Cloud toegang verleent tot uw sleutelkluis voordat u de vorige opdracht certificaat importeren uitvoert. Als u dat nog niet hebt gedaan, kunt u de volgende opdracht uitvoeren om de toegangsrechten te verlenen.
-
-```
-az keyvault set-policy -g <key vault resource group> -n <key vault name>  --object-id 938df8e2-2b9d-40b1-940c-c75c33494239 --certificate-permissions get list
-``` 
-
-Wanneer u uw certificaat hebt geïmporteerd, ziet u dit in de lijst met **Persoonlijke sleutelcertificaten**.
-
-![Certificaat met een persoonlijke sleutel](./media/custom-dns-tutorial/key-certificates.png)
-
-U kunt ook de Azure CLI gebruiken om een lijst met certificaten weer te geven:
+Een lijst met geïmporteerde certificaten weergeven:
 
 ```
 az spring-cloud certificate list --resource-group <resource group name> --service <service name>
 ```
+---
 
 > [!IMPORTANT] 
-> Als u een aangepast domein met dit certificaat wilt beveiligen, moet u het certificaat nog steeds binden aan een specifiek domein. Volg de stappen in dit document onder de kop **SSL-binding toevoegen**.
+> Als u een aangepast domein met dit certificaat wilt beveiligen, moet u het certificaat nog steeds binden aan een specifiek domein. Volg de stappen in deze sectie: [SSL-binding toevoegen](#add-ssl-binding).
 
 ## <a name="add-custom-domain"></a>Aangepast domein toevoegen
 U kunt een CNAME-record gebruiken om een aangepaste DNS-naam toe te wijzen aan Azure Spring Cloud. 
@@ -113,6 +158,7 @@ Ga naar uw DNS-provider en voeg een CNAME-record toe om uw domein toe te wijzen 
 ## <a name="map-your-custom-domain-to-azure-spring-cloud-app"></a>Uw aangepaste domein toewijzen aan Azure Spring Cloud-app
 Als u geen toepassing in Azure Spring Cloud hebt, volgt u de instructies in [Snelstart: Start een bestaande Azure Spring Cloud-toepassing met behulp van het Azure- portal](https://review.docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-portal?branch=master).
 
+#### <a name="portal"></a>[Portal](#tab/Azure-portal)
 Ga naar de toepassingspagina.
 
 1. Selecteer **Aangepast domein**.
@@ -126,34 +172,38 @@ Ga naar de toepassingspagina.
 
     ![Aangepast domein toevoegen](./media/custom-dns-tutorial/add-custom-domain.png)
 
-U kunt ook de Azure CLI gebruiken om een aangepast domein toe te voegen:
-```
-az spring-cloud app custom-domain bind --domain-name <domain name> --app <app name> --resource-group <resource group name> --service <service name>
-```
-
 Eén app kan meerdere domeinen hebben, maar één domein kan slechts aan één app worden toegewezen. Wanneer u uw aangepaste domein hebt toegewezen aan de app, ziet u dit in de tabel aangepast domein.
 
 ![Aangepast domeintabel](./media/custom-dns-tutorial/custom-domain-table.png)
 
-U kunt ook de Azure CLI gebruiken om een lijst met aangepaste domeinen weer te geven:
+#### <a name="cli"></a>[CLI](#tab/Azure-CLI)
+```
+az spring-cloud app custom-domain bind --domain-name <domain name> --app <app name> --resource-group <resource group name> --service <service name>
+```
+
+De lijst met aangepaste domeinen weergeven:
 ```
 az spring-cloud app custom-domain list --app <app name> --resource-group <resource group name> --service <service name>
 ```
+---
 
 > [!NOTE]
 > Een **Niet beveiligd** label voor uw aangepaste domein betekent dat het nog niet is gebonden aan een SSL-certificaat. Een HTTPS-aanvraag van een browser naar uw aangepaste domein krijgt een fout of waarschuwing.
 
 ## <a name="add-ssl-binding"></a>SSL-binding toevoegen
+
+#### <a name="portal"></a>[Portal](#tab/Azure-portal)
 Selecteer in de tabel aangepast domein **SSL-binding toevoegen** zoals in de vorige afbeelding wordt weergegeven.  
 1. Selecteer uw **Certificaat** of importeer het.
 1. Klik op **Opslaan**.
 
     ![SSL-binding toevoegen 1](./media/custom-dns-tutorial/add-ssl-binding.png)
 
-U kunt ook de Azure CLI gebruiken om **SSL- binding toe te voegen**:
+#### <a name="cli"></a>[CLI](#tab/Azure-CLI)
 ```
-az spring-cloud app custom-domain update --domain-name <domain name> --certificate <cert name> --app <app name> 
+az spring-cloud app custom-domain update --domain-name <domain name> --certificate <cert name> --app <app name> --resource-group <resource group name> --service <service name>
 ```
+---
 
 Nadat u een SSL-binding hebt toegevoegd, is de status van het domein beveiligd: **In orde**. 
 
@@ -161,20 +211,19 @@ Nadat u een SSL-binding hebt toegevoegd, is de status van het domein beveiligd: 
 
 ## <a name="enforce-https"></a>HTTPS afdwingen
 Standaard kan iedereen nog steeds toegang krijgen tot uw app met behulp van HTTP, maar u kunt alle HTTP-aanvragen omleiden naar de HTTPS-poort.
-
+#### <a name="portal"></a>[Portal](#tab/Azure-portal)
 Selecteer in het linkernavigatievenster van de app-pagina **Aangepaste domein**. Stel vervolgens op **Alleen HTTPS**, in op *Waar*.
 
 ![SSL-binding toevoegen 3](./media/custom-dns-tutorial/enforce-http.png)
 
-U kunt ook de Azure CLI gebruiken om HTTPS af te dwingen:
+#### <a name="cli"></a>[CLI](#tab/Azure-CLI)
 ```
-az spring-cloud app custom-domain update --domain-name <domain name> --certificate <cert name> --app <app name> --resource-group <resource group name> --service <service name>
+az spring-cloud app update -n <app name> --resource-group <resource group name> --service <service name> --https-only
 ```
-
+---
 Wanneer de bewerking is voltooid, gaat u naar een van de HTTPS-URL's die naar uw app verwijzen. Houd er rekening mee dat HTTP-URL's niet werken.
 
 ## <a name="see-also"></a>Zie ook
-* [Wat is Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
-* [Certificaat importeren](https://docs.microsoft.com/azure/key-vault/certificate-scenarios#import-a-certificate)
-* [Uw Spring Cloud-app starten met behulp van de Azure CLI](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli)
-
+* [Wat is Azure Key Vault?](../key-vault/general/overview.md)
+* [Certificaat importeren](../key-vault/certificates/certificate-scenarios.md#import-a-certificate)
+* [Uw Spring Cloud-app starten met behulp van de Azure CLI](./spring-cloud-quickstart.md)

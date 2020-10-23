@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a26581b61a4b99bd11f48a3d431a1bb85148d66b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3248085a0719628bcf7fe42253156d9652b86cd
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89393425"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148623"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>Azure-beveiligings basislijn voor Container Instances
 
@@ -73,7 +73,7 @@ Zie het [overzicht van Azure Security-basis lijnen](../security/benchmarks/secur
 
 * [Azure Firewall implementeren](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Meer informatie over Azure Security Center geïntegreerde bedreigings informatie](../security-center/threat-protection.md)
+* [Meer informatie over Azure Security Center geïntegreerde bedreigings informatie](../security-center/azure-defender.md)
 
 * [Meer informatie over Azure Security Center adaptieve netwerk beveiliging](../security-center/security-center-adaptive-network-hardening.md)
 
@@ -143,7 +143,7 @@ U kunt ook toepassings beveiligings groepen gebruiken om complexe beveiligings c
 
 * [Service Tags begrijpen en gebruiken](../virtual-network/service-tags-overview.md) 
 
-* [Toepassings beveiligings groepen begrijpen en gebruiken](../virtual-network/security-overview.md#application-security-groups)
+* [Toepassings beveiligings groepen begrijpen en gebruiken](../virtual-network/network-security-groups-overview.md#application-security-groups)
 
 * [Implementeren in een virtueel netwerk-Azure Container Instances](./container-instances-vnet.md)
 
@@ -159,7 +159,7 @@ U kunt ook toepassings beveiligings groepen gebruiken om complexe beveiligings c
 
 * [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-* [Voor beelden Azure Policy voor netwerken](/azure/governance/policy/samples/#network)
+* [Voor beelden Azure Policy voor netwerken](../governance/policy/samples/built-in-policies.md#network)
 
 * [Een Azure Blueprint maken](../governance/blueprints/create-blueprint-portal.md)
 
@@ -498,7 +498,7 @@ Tags en versie container installatie kopieën om te helpen bij het volgen van in
 
 * [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
 
-* [Beheer groepen maken](../governance/management-groups/create.md)
+* [Beheer groepen maken](../governance/management-groups/create-management-group-portal.md)
 
 * [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
@@ -613,7 +613,7 @@ Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt mic
 
 * [Beveiligings overwegingen voor Azure Container Instances](./container-instances-image-security.md)
 
-* [Integratie met Security Center Azure Container Registry](../security-center/azure-container-registry-integration.md)
+* [Integratie met Security Center Azure Container Registry](../security-center/defender-for-container-registries-introduction.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -652,7 +652,7 @@ Gebruik een aangepaste of externe oplossing voor het patchen van container insta
 
 * [Beveiligings overwegingen voor Azure Container Instances](./container-instances-image-security.md)
 
-* [Integratie met Security Center Azure Container Registry](../security-center/azure-container-registry-integration.md)
+* [Integratie met Security Center Azure Container Registry](../security-center/defender-for-container-registries-introduction.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -664,7 +664,7 @@ Gebruik een aangepaste of externe oplossing voor het patchen van container insta
 
 * [Beveiligings overwegingen voor Azure Container Instances](./container-instances-image-security.md)
 
-* [Integratie met Security Center Azure Container Registry](../security-center/azure-container-registry-integration.md)
+* [Integratie met Security Center Azure Container Registry](../security-center/defender-for-container-registries-introduction.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -707,7 +707,7 @@ Hoewel klassieke Azure-resources kunnen worden gedetecteerd via resource grafiek
 
 * [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
 
-* [Beheergroepen maken](../governance/management-groups/create.md)
+* [Beheergroepen maken](../governance/management-groups/create-management-group-portal.md)
 
 * [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
@@ -755,7 +755,7 @@ Bewaak Azure Container Instances logboeken voor afwijkend gedrag en controleer r
 * [Aangepaste query's uitvoeren in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
 
 * [Beveiligings overwegingen voor Azure Container Instances](./container-instances-image-security.md)
-* [Integratie met Security Center Azure Container Registry](../security-center/azure-container-registry-integration.md)
+* [Integratie met Security Center Azure Container Registry](../security-center/defender-for-container-registries-introduction.md)
 
 
 
@@ -789,7 +789,7 @@ Bewaak Azure Container Instances logboeken voor afwijkend gedrag en controleer r
 
 * [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-* [Een specifiek resource type weigeren met Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
+* [Een specifiek resource type weigeren met Azure Policy](../governance/policy/samples/index.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -825,7 +825,7 @@ Toegang tot Azure Container Instances resources beheren en controleren met behul
 
 * [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
 
-* [Beheer groepen maken](../governance/management-groups/create.md)
+* [Beheer groepen maken](../governance/management-groups/create-management-group-portal.md)
 
 * [Implementeren in een virtueel netwerk-Azure Container Instances](./container-instances-vnet.md)
 
@@ -900,7 +900,7 @@ Gebruik een aangepaste of externe oplossing voor het patchen van container insta
 
 * [Container controle en controle van beveiligings aanbevelingen voor Azure Container Instances](./container-instances-image-security.md)
 
-* [Integratie met Security Center Azure Container Registry](../security-center/azure-container-registry-integration.md)
+* [Integratie met Security Center Azure Container Registry](../security-center/defender-for-container-registries-introduction.md)
 * [Over updates van de basis installatie kopie voor Azure Container Registry taken](../container-registry/container-registry-tasks-base-images.md)
 
 
@@ -1105,7 +1105,7 @@ U kunt optioneel back-ups maken van container installatie kopieën door te impor
 
 **Hulp**: u kunt Soft-Delete in azure Key Vault inschakelen om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.
 
-* [Soft-Delete in Key Vault inschakelen](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+* [Soft-Delete in Key Vault inschakelen](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 

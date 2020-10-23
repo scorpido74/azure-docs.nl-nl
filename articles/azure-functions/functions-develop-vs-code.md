@@ -4,12 +4,12 @@ description: Meer informatie over het ontwikkelen en testen van Azure Functions 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
-ms.openlocfilehash: 610c80dc5552eae4f2ad8442fa11b85f2eab35eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c851f5284b87f224932b027fd10ce720327639c2
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88206737"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167896"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Azure Functions ontwikkelen met Visual Studio Code
 
@@ -187,7 +187,7 @@ Met Visual Studio code kunt u bindingen toevoegen aan uw function.jsop bestand d
 
 Hieronder volgen enkele voor beelden van prompts voor het definiëren van een nieuwe opslag-uitvoer binding:
 
-| Vraag | Waarde | Beschrijving |
+| Prompt | Waarde | Beschrijving |
 | -------- | ----- | ----------- |
 | **Bindingsrichting selecteren** | `out` | De binding is een uitvoerbinding. |
 | **Binding met richting selecteren** | `Azure Queue Storage` | De binding is een Azure Storage-wachtrijbinding. |
@@ -245,13 +245,13 @@ Met de volgende stappen publiceert u uw project naar een nieuwe functie-app die 
 
     ![Instellingen voor functie-app](./media/functions-develop-vs-code/function-app-publish-project.png)
 
-1. Als u niet bent aangemeld, wordt u gevraagd u **aan te melden bij Azure**. U kunt ook **een gratis Azure-account maken**. Nadat u zich hebt aangemeld vanuit de browser, gaat u terug naar Visual Studio code.
+1. Als u niet bent aangemeld, wordt u gevraagd om u **aan te melden bij Azure**. U kunt ook **een gratis Azure-account maken**. Nadat u zich hebt aangemeld vanuit de browser, gaat u terug naar Visual Studio code.
 
 1. Als u meerdere abonnementen hebt, **selecteert u een abonnement** voor de functie-app en selecteert u **+ nieuwe functie-app maken in Azure... _Geavanceerd_**. Met deze _Geavanceerde_ optie hebt u meer controle over de resources die u in azure maakt. 
 
 1. Voer de volgende gegevens in om deze informatie op te geven:
 
-    | Vraag | Waarde | Beschrijving |
+    | Prompt | Waarde | Beschrijving |
     | ------ | ----- | ----------- |
     | Functie-app in azure selecteren | Nieuwe functie-app in azure maken | Typ bij de volgende prompt een wereld wijd unieke naam die uw nieuwe functie-app identificeert en selecteer vervolgens ENTER. Geldige tekens voor de naam van en functie-app zijn `a-z`, `0-9` en `-`. |
     | Selecteer een besturings systeem | Windows | De functie-app wordt uitgevoerd in Windows. |
@@ -297,7 +297,7 @@ Als u uw functions-project lokaal wilt uitvoeren, moet u aan deze aanvullende ve
     | Taal | Vereiste |
     | -------- | --------- |
     | **C#** | [C#-extensie](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)<br/>[.NET Core CLI-hulpprogramma's](/dotnet/core/tools/?tabs=netcore2x)   |
-    | **Java** | [Fout opsporing voor Java-extensie](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3 of hoger](https://maven.apache.org/) |
+    | **Java** | [Fout opsporing voor Java-extensie](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)<br/>[Maven 3 of hoger](https://maven.apache.org/) |
     | **JavaScript** | [Node.js](https://nodejs.org/)<sup>*</sup> |  
     | **Python** | [Python-extensie](https://marketplace.visualstudio.com/items?itemName=ms-python.python)<br/>[Python 3.6.8](https://www.python.org/downloads/) aanbevolen|
 
@@ -337,7 +337,7 @@ Waarden in **Connections Tring** worden nooit gepubliceerd.
 
 De waarden van de functie-toepassings instellingen kunnen ook in uw code worden gelezen als omgevings variabelen. Zie de secties omgevings variabelen van deze taalspecifieke referentie-artikelen voor meer informatie:
 
-* [Vooraf gecompileerde C#](functions-dotnet-class-library.md#environment-variables)
+* [C# vooraf gecompileerd](functions-dotnet-class-library.md#environment-variables)
 * [C#-script (.csx)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
@@ -384,15 +384,13 @@ Zie [streaming-logboeken](functions-monitoring.md#streaming-logs)voor meer infor
 [!INCLUDE [functions-enable-log-stream-vs-code](../../includes/functions-enable-log-stream-vs-code.md)]
 
 > [!NOTE]
-> Streaming-logboeken bieden ondersteuning voor slechts één exemplaar van de functions-host. Wanneer de functie is geschaald naar meerdere instanties, worden gegevens uit andere instanties niet weer gegeven in de logboek stroom. [Live Metrics stream](../azure-monitor/app/live-stream.md) in Application Insights ondersteunt meerdere instanties. Daarnaast is streaming Analytics in vrijwel real time gebaseerd op de [voorbeeld gegevens](functions-monitoring.md#configure-sampling).
+> Streaming-logboeken bieden ondersteuning voor slechts één exemplaar van de functions-host. Wanneer de functie is geschaald naar meerdere instanties, worden gegevens uit andere instanties niet weer gegeven in de logboek stroom. [Live Metrics stream](../azure-monitor/app/live-stream.md) in Application Insights ondersteunt meerdere instanties. Daarnaast is streaming Analytics in vrijwel real time gebaseerd op de [voorbeeld gegevens](configure-monitoring.md#configure-sampling).
 
 ### <a name="application-insights"></a>Application Insights
 
-We raden u aan de uitvoering van uw functies te bewaken door uw functie-app te integreren met Application Insights. Wanneer u een functie-app maakt in de Azure Portal, wordt deze integratie standaard uitgevoerd. Wanneer u de functie-app tijdens het publiceren van Visual Studio maakt, moet u Application Insights zelf integreren.
+We raden u aan de uitvoering van uw functies te bewaken door uw functie-app te integreren met Application Insights. Wanneer u een functie-app maakt in de Azure Portal, wordt deze integratie standaard uitgevoerd. Wanneer u de functie-app tijdens het publiceren van Visual Studio maakt, moet u Application Insights zelf integreren. Zie [Application Insights-integratie inschakelen](configure-monitoring.md#enable-application-insights-integration)voor meer informatie.
 
-[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
-
-Zie [Azure functions bewaken](functions-monitoring.md)voor meer informatie.
+Zie [Azure functions bewaken](functions-monitoring.md)voor meer informatie over het bewaken van Application Insights.
 
 ## <a name="c-script-projects"></a>C- \# script projecten
 

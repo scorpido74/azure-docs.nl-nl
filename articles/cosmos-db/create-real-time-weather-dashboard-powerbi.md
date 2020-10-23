@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 681929928e6e6b28c7950c8aeeadc8b181491f46
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f44a8d82ea2588abad6855fd8eaf7aed34256d87
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91804126"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370760"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>Maak een realtime-dash board met behulp van Azure Cosmos DB en Power BI
 
@@ -46,7 +46,7 @@ Azure Analysis Services biedt een volledig beheerd platform als een service die 
 
 ### <a name="ingest-weather-data-into-azure-cosmos-db"></a>Weer gegevens opnemen in Azure Cosmos DB
 
-Stel een opname pijplijn in om [weer gegevens](https://catalog.data.gov/dataset/local-weather-archive) naar Azure Cosmos DB te laden. U kunt een Azure Data Factory-taak [(ADF)](../data-factory/connector-azure-cosmos-db.md) instellen om periodiek de meest recente weer gegevens in azure Cosmos DB te laden met behulp van de HTTP-bron en Cosmos DB sink.
+Stel een opname pijplijn in om [weer gegevens](https://catalog.data.gov/dataset/local-weather-archive/resource/c28974a2-fc83-4722-8977-9a701323f729) naar Azure Cosmos DB te laden. U kunt een Azure Data Factory-taak [(ADF)](../data-factory/connector-azure-cosmos-db.md) instellen om periodiek de meest recente weer gegevens in azure Cosmos DB te laden met behulp van de HTTP-bron en Cosmos DB sink.
 
 
 ### <a name="connect-power-bi-to-azure-cosmos-db"></a>Power BI verbinden met Azure Cosmos DB
@@ -63,7 +63,7 @@ Stel een opname pijplijn in om [weer gegevens](https://catalog.data.gov/dataset/
    Afhankelijk van welke kolom en welk gegevens type aanwezig zijn in de bron-gegevensset, kunt u de velden Range Start en RangeEnd dienovereenkomstig wijzigen
 
    
-   |Eigenschap  |Gegevenstype  |Filter  |
+   |Eigenschap  |Gegevenstype  |Filteren  |
    |---------|---------|---------|
    |_ts     |   Numeriek      |  [_ts] > duration. TotalSeconds (Range Start-#datetime (1970, 1, 1, 0, 0, 0)) en [_ts] < duration. TotalSeconds (RangeEnd-#datetime (1970, 1, 1, 0, 0, 0))       |
    |Datum (bijvoorbeeld:-2019-08-19)     |   Tekenreeks      | [Document. date] > DateTime. ToText (Range Start, "JJJJ-MM-DD") en [document. date] < DateTime. ToText (RangeEnd, "JJJJ-MM-DD")        |
@@ -87,7 +87,7 @@ Stel een opname pijplijn in om [weer gegevens](https://catalog.data.gov/dataset/
 
 ### <a name="ingest-weather-data-into-azure-cosmos-db"></a>Weer gegevens opnemen in Azure Cosmos DB 
 
-Stel een opname pijplijn in om [weer gegevens](https://catalog.data.gov/dataset/local-weather-archive) naar Azure Cosmos DB te laden. U kunt een Azure Data Factory-taak (ADF) instellen om periodiek de meest recente weer gegevens in Azure Cosmos DB te laden met behulp van de HTTP-bron en Cosmos DB sink.
+Stel een opname pijplijn in om [weer gegevens](https://catalog.data.gov/dataset/local-weather-archive/resource/c28974a2-fc83-4722-8977-9a701323f729) naar Azure Cosmos DB te laden. U kunt een Azure Data Factory-taak (ADF) instellen om periodiek de meest recente weer gegevens in Azure Cosmos DB te laden met behulp van de HTTP-bron en Cosmos DB sink.
 
 ### <a name="connect-azure-analysis-services-to-azure-cosmos-account"></a>Azure Analysis Services verbinden met een Azure Cosmos-account
 

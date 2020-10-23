@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: b7f9a83a3972ed0a5a635826b40e15c437da16b8
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: ab414b877bd2d098c6e340267ff579fb58aec9d9
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540367"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097317"
 ---
 # <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>Quickstart: Een Xamarin Android-app maken met Azure Spatial Anchors
 
@@ -37,10 +37,10 @@ Zorg ervoor dat u over het volgende beschikt om deze snelstart te voltooien:
     - <a href="https://git-scm.com/download/win" target="_blank">Git voor Windows</a>.
     - <a href="https://git-lfs.github.com/">Git LFS</a>.
   - Als u macOS gebruikt:
-    - Een up-to-date versie van <a href="https://docs.microsoft.com/visualstudio/mac/installation?view=vsmac-2019" target="_blank">Visual Studio voor Mac 8.1+</a>.
+    - Een up-to-date versie van <a href="/visualstudio/mac/installation?view=vsmac-2019" target="_blank">Visual Studio voor Mac 8.1+</a>.
     - <a href="https://git-scm.com/download/mac" target="_blank">Git voor macOS</a>.
     - <a href="https://git-lfs.github.com/">Git LFS</a>.
-- De nieuwste versie van Xamarin. Android is geïnstalleerd en wordt uitgevoerd op het platform van uw keuze. Raadpleeg de handeling [Xamarin.Android installeren](https://docs.microsoft.com/xamarin/android/get-started/installation/index) voor een handleiding voor het installeren van Xamarin.Android.
+- De nieuwste versie van Xamarin. Android is geïnstalleerd en wordt uitgevoerd op het platform van uw keuze. Raadpleeg de handeling [Xamarin.Android installeren](/xamarin/android/get-started/installation/index) voor een handleiding voor het installeren van Xamarin.Android.
 - Een <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">door een ontwikkelaar geactiveerd</a> en <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">voor ARCore geschikt</a> Android-apparaat.
   - Er zijn mogelijk extra apparaatstuurprogramma's vereist om uw computer te laten communiceren met uw Android-apparaat. Klik [hier](https://developer.android.com/studio/run/device.html) voor meer informatie.
 - Uw app moet gericht zijn op ARCore **1.8**.

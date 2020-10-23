@@ -125,6 +125,8 @@
       href: ../../web-application-firewall/security-baseline.md
     - name: Basislijn voor batch-beveiliging
       href: ../../batch/security-baseline.md
+    - name: Cloud Shell-beveiligingsbasislijn
+      href: ../../cloud-shell/security-baseline.md
     - name: Cognitive Services-beveiligingsbasislijn
       href: ../../cognitive-services/security-baseline.md
     - name: Container Instances-beveiligingsbasislijn

@@ -10,18 +10,18 @@ ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 62a6bb807f01fd19a92c3dc4edf797171dd5ebc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8083d42d9ce79bcf31e3875f2ff5d5f06970a7ff
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91713407"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131510"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Power shell gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2
 
 In dit artikel leest u hoe u Power shell gebruikt voor het maken en beheren van mappen, bestanden en machtigingen in opslag accounts met een hiërarchische naam ruimte (HNS) ingeschakeld. 
 
-[Naslag informatie](https://docs.microsoft.com/powershell/module/Az.Storage/?view=azps-4.5.0)  |  Toewijzing van gen1 [naar Gen2](#gen1-gen2-map)  |  [Feedback geven](https://github.com/Azure/azure-powershell/issues)
+[Naslag informatie](https://docs.microsoft.com/powershell/module/Az.Storage/)  |  Toewijzing van gen1 [naar Gen2](#gen1-gen2-map)  |  [Feedback geven](https://github.com/Azure/azure-powershell/issues)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -31,7 +31,7 @@ In dit artikel leest u hoe u Power shell gebruikt voor het maken en beheren van 
 > * .NET Framework is 4.7.2 of hoger geïnstalleerd. Zie [.NET Framework downloaden](https://dotnet.microsoft.com/download/dotnet-framework).
 > * Power shell-versie `5.1` of hoger.
 
-## <a name="install-the-powershell-module"></a>De Power shell-module installeren
+## <a name="install-the-powershell-module"></a>De PowerShell-module installeren
 
 1. Controleer of de versie van Power shell die is geïnstalleerd, `5.1` of hoger is met behulp van de volgende opdracht.    
 
@@ -39,7 +39,7 @@ In dit artikel leest u hoe u Power shell gebruikt voor het maken en beheren van 
    echo $PSVersionTable.PSVersion.ToString() 
    ```
     
-   Zie [bestaande Windows Power shell upgraden](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell) voor informatie over het bijwerken van uw versie van Power shell
+   Zie [bestaande Windows Power shell upgraden](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell) voor informatie over het bijwerken van uw versie van Power shell
     
 2. Installeer **AZ. Storage** -module.
 
@@ -47,7 +47,7 @@ In dit artikel leest u hoe u Power shell gebruikt voor het maken en beheren van 
    Install-Module Az.Storage -Repository PSGallery -Force  
    ```
 
-   Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0) voor meer informatie over het installeren van Power shell-modules.
+   Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps) voor meer informatie over het installeren van Power shell-modules.
 
 ## <a name="connect-to-the-account"></a>Verbinding maken met het account
 
@@ -266,9 +266,9 @@ Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $file
 
 U kunt de `-Force` para meter gebruiken om het bestand zonder prompt te verwijderen.
 
-## <a name="manage-access-permissions"></a>Toegangs machtigingen beheren
+## <a name="manage-access-control-lists-acls"></a>Toegangs beheer lijsten (Acl's) beheren
 
-U kunt toegangs machtigingen van mappen en bestanden ophalen, instellen en bijwerken. Deze machtigingen worden vastgelegd in toegangs beheer lijsten (Acl's).
+U kunt toegangs machtigingen van mappen en bestanden ophalen, instellen en bijwerken.
 
 > [!NOTE]
 > Als u Azure Active Directory (Azure AD) gebruikt om opdrachten te autoriseren, moet u ervoor zorgen dat aan uw beveiligingsprincipal de [rol van BLOB-gegevens eigenaar voor opslag](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)is toegewezen. Zie voor meer informatie over hoe ACL-machtigingen worden toegepast en de gevolgen van het wijzigen van  [toegangs beheer in azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
@@ -400,7 +400,7 @@ U kunt Acl's recursief toevoegen, bijwerken en verwijderen voor de bestaande ond
 
 In de volgende tabel ziet u hoe de cmdlets die worden gebruikt voor Data Lake Storage Gen1 worden toegewezen aan de cmdlets voor Data Lake Storage Gen2.
 
-|Data Lake Storage Gen1-cmdlet| Data Lake Storage Gen2-cmdlet| Notities |
+|Data Lake Storage Gen1-cmdlet| Data Lake Storage Gen2-cmdlet| Opmerkingen |
 |--------|---------|-----|
 |Get-AzDataLakeStoreChildItem|Get-AzDataLakeGen2ChildItem|Standaard worden in de cmdlet Get-AzDataLakeGen2ChildItem alleen de onderliggende items van het eerste niveau weer gegeven. Met de para meter-recursief worden onderliggende items recursief weer gegeven. |
 |Get-AzDataLakeStoreItem<br>Get-AzDataLakeStoreItemAclEntry<br>Get-AzDataLakeStoreItemOwner<br>Get-AzDataLakeStoreItemPermission|Get-AzDataLakeGen2Item|De uitvoer items van de cmdlet Get-AzDataLakeGen2Item hebben de volgende eigenschappen: ACL, eigenaar, groep, machtiging.|

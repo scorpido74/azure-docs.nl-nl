@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: 292e446d5b713a43f77ee5e579d7e6dd5905ff69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ce048ea8c9a4414b1c9f049569251c39d931c9a
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448532"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174158"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Azure Log Analytics-werk ruimte verwijderen en herstellen
 
@@ -112,6 +112,9 @@ U moet ten minste *log Analytics Inzender* machtigingen hebben om een werk ruimt
 * Als er een fout bericht wordt weer gegeven, *is de naam van de werk ruimte al in gebruik* of *conflict* bij het maken van een werk ruimte, kan dit sinds:
   * De naam van de werk ruimte is niet beschikbaar en wordt gebruikt door iemand in uw organisatie of door een andere klant.
   * De werk ruimte is in de afgelopen 14 dagen verwijderd en de naam is gereserveerd voor de tijdelijke periode voor het verwijderen. Volg deze stappen om de werk ruimte eerst te herstellen en permanent verwijderen uit te voeren om de tijdelijke verwijdering te onderdrukken en uw werk ruimte permanent te verwijderen om een nieuwe werk ruimte met dezelfde naam te maken.<br>
-     1. [Herstel](#recover-workspace) uw werk ruimte.
-     2. Uw werk ruimte [permanent verwijderen](#permanent-workspace-delete) .
-     3. Maak een nieuwe werk ruimte met dezelfde naam voor de werk ruimte.
+    1. [Herstel](#recover-workspace) uw werk ruimte.
+    2. Uw werk ruimte [permanent verwijderen](#permanent-workspace-delete) .
+    3. Maak een nieuwe werk ruimte met dezelfde naam voor de werk ruimte.
+* Als er een 204-respons code wordt weer gegeven waarin de *resource niet wordt gevonden*, wordt de oorzaak mogelijk opeenvolgend geprobeerd de bewerking werk ruimte verwijderen te gebruiken. 204 is een leeg antwoord. Dit betekent meestal dat de resource niet bestaat, zodat de verwijdering is voltooid zonder dat u iets hoeft te doen.
+  Nadat de aanroep voor het verwijderen is voltooid, kunt u de werk ruimte herstellen en de permanente Verwijder bewerking volt ooien in een van de methoden die u eerder hebt voorgesteld.
+

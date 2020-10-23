@@ -8,12 +8,12 @@ ms.date: 05/05/2020
 ms.topic: conceptual
 ms.service: digital-twins
 services: digital-twins
-ms.openlocfilehash: 60aa6ed3f1b66d88d05751fdee2444120705f8d2
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 9942056e59a46c61b4e9da32aab191d4b72db968
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047689"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461756"
 ---
 # <a name="azure-digital-twins-customer-data-request-features"></a>Azure Digital Apparaatdubbels-functies voor klant gegevens aanvragen
 
@@ -25,7 +25,7 @@ De digitale representaties genaamd *Digital apparaatdubbels* in azure Digital ap
 
 Veel van de digitale apparaatdubbels in azure Digital Apparaatdubbels vertegenwoordigen niet rechtstreeks persoonlijke entiteiten. typische objecten die worden weer gegeven, kunnen bijvoorbeeld een kantoor kamer of een fabrieks basis zijn. Gebruikers kunnen bijvoorbeeld een aantal entiteiten beschouwen als persoonlijk identificeerbaar, en kunnen hun eigen activa of inventaris tracerings methoden hand haven die digitale apparaatdubbels koppelen aan individuen. Met Azure Digital Apparaatdubbels worden alle gegevens die zijn gekoppeld aan digitale apparaatdubbels, beheerd en opgeslagen alsof deze persoons gegevens zijn.
 
-Om persoons gegevens weer te geven, te exporteren en te verwijderen waarnaar kan worden verwezen in een aanvraag voor een gegevens onderwerp, kan een Azure Digital Apparaatdubbels-beheerder de [**Azure Portal**](https://portal.azure.com/) gebruiken voor gebruikers en rollen, of de [**Azure Digital Apparaatdubbels rest-api's**](how-to-use-apis-sdks.md) voor digitale apparaatdubbels. De Azure Portal-en REST-Api's bieden verschillende methoden voor gebruikers om dergelijke verzoeken van gegevens te verwerken.
+Om persoons gegevens weer te geven, te exporteren en te verwijderen waarnaar kan worden verwezen in een aanvraag voor een gegevens onderwerp, kan een Azure Digital Apparaatdubbels-beheerder de [**Azure Portal**](https://portal.azure.com/) gebruiken voor gebruikers en rollen, of de [**Azure Digital Apparaatdubbels rest-api's**](/rest/api/azure-digitaltwins/) voor digitale apparaatdubbels. De Azure Portal-en REST-Api's bieden verschillende methoden voor gebruikers om dergelijke verzoeken van gegevens te verwerken.
 
 ## <a name="identifying-customer-data"></a>Klant gegevens identificeren
 

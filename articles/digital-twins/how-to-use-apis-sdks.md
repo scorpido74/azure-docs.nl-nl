@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bfeafdea149cd41ea35562c2ff4b9e67a99b95d0
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 0fe56a8173a4cfe8836a078a62c7bc9015c83324
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058519"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461257"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>De Azure Digital Twins-API's en -SDK's gebruiken
 
@@ -42,10 +42,10 @@ U kunt ook beheer vlak-Api's uitoefenen door interactie met Azure Digital Appara
 ## <a name="overview-data-plane-apis"></a>Overzicht: gegevens vlak-Api's
 
 De data vlak-Api's zijn de Azure Digital Apparaatdubbels-Api's die worden gebruikt voor het beheren van de elementen in uw Azure Digital Apparaatdubbels-exemplaar. Ze omvatten bewerkingen zoals het maken van routes, het uploaden van modellen, het maken van relaties en het beheren van apparaatdubbels. Ze kunnen breed worden onderverdeeld in de volgende categorieën:
-* **DigitalTwinsModels** : de categorie DigitalTwinsModels bevat api's voor het beheren van de [modellen](concepts-models.md) in een Azure Digital apparaatdubbels-exemplaar. Beheer activiteiten zijn onder andere het uploaden, valideren, ophalen en verwijderen van modellen die zijn gemaakt in DTDL.
+* **DigitalTwinModels** : de categorie DigitalTwinModels bevat api's voor het beheren van de [modellen](concepts-models.md) in een Azure Digital apparaatdubbels-exemplaar. Beheer activiteiten zijn onder andere het uploaden, valideren, ophalen en verwijderen van modellen die zijn gemaakt in DTDL.
 * **DigitalTwins** : de categorie DigitalTwins bevat de api's waarmee ontwikkel aars [digitale apparaatdubbels](concepts-twins-graph.md) en hun relaties kunnen maken, wijzigen en verwijderen in een Azure Digital apparaatdubbels-exemplaar.
 * **Query** : de query categorie stelt ontwikkel aars in staat om [sets van digitale apparaatdubbels te vinden in de dubbele grafiek over de](how-to-query-graph.md) relaties.
-* **EventRoutes** : de categorie EventRoutes bevat api's voor het door [sturen van gegevens](concepts-route-events.md), via het systeem en naar downstream-Services.
+* **Gebeurtenis routes** : de categorie gebeurtenis routes bevat api's voor het door [sturen van gegevens](concepts-route-events.md), via het systeem en naar downstream-Services.
 
 De meest recente versie van de data vlak-API voor open bare preview is _**2020-10-31**_.
 
@@ -56,14 +56,15 @@ De data-vlak-Api's gebruiken:
 * U kunt de **.NET-SDK (C#)** gebruiken. De .NET SDK gebruiken...
    - u kunt het pakket bekijken en toevoegen vanuit NuGet: [Azure. DigitalTwins. core](https://www.nuget.org/packages/Azure.DigitalTwins.Core). 
    - u vindt de SDK-bron, met inbegrip van een map met voor beelden, in GitHub: [Azure IOT Digital apparaatdubbels-client bibliotheek voor .net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). 
-   - u kunt de [SDK-referentie documentatie](/dotnet/api/overview/azure/digitaltwins?preserve-view=true&view=azure-dotnet-preview)raadplegen.
+   - u kunt de [SDK-referentie documentatie](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview)raadplegen.
    - u kunt gedetailleerde informatie en voor beelden van gebruik bekijken door door te gaan naar de sectie [.net (C#) SDK (Data-vlieg tuig)](#net-c-sdk-data-plane) van dit artikel.
-* U kunt de **Java script** -SDK gebruiken. De Java script-SDK gebruiken...
-   - u kunt het pakket weer geven en installeren vanuit NPM: [Azure Azure Digital apparaatdubbels-client bibliotheek voor Java script](https://www.npmjs.com/package/@azure/digital-twins/v/1.0.0-preview.1).
-   - u kunt de [SDK-referentie documentatie](/javascript/api/@azure/digital-twins/?preserve-view=true&view=azure-node-latest)raadplegen.
 * U kunt de **Java** -SDK gebruiken. De Java-SDK gebruiken...
    - u kunt het pakket weer geven en installeren vanuit maven: [`com.azure:azure-digitaltwins-core`](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0-beta.1/jar)
+   - de SDK-bron is te vinden in GitHub: [Azure IOT Digital apparaatdubbels-client bibliotheek voor Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
    - u kunt de [SDK-referentie documentatie](/java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-preview) bekijken
+* U kunt de **Java script** -SDK gebruiken. De Java script-SDK gebruiken...
+   - u kunt het pakket weer geven en installeren vanuit NPM: [Azure Azure Digital apparaatdubbels-client bibliotheek voor Java script](https://www.npmjs.com/package/@azure/digital-twins).
+   - u kunt de [SDK-referentie documentatie](/javascript/api/@azure/digital-twins/?preserve-view=true&view=azure-node-latest)raadplegen.
 * U kunt een SDK voor een andere taal genereren met behulp van auto rest. Volg de instructies in [*How to: aangepaste sdk's voor Azure Digital Apparaatdubbels maken met auto rest*](how-to-create-custom-sdks.md).
 
 U kunt ook datum vlak-Api's uitoefenen door interactie met Azure Digital Apparaatdubbels via de [cli](how-to-use-cli.md).
@@ -95,8 +96,9 @@ Verificatie voor de service:
 
 ```csharp
 // Authenticate against the service and create a client
-var credentials = new InteractiveBrowserCredential(tenantId, clientId);
-DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credentials);
+string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>";
+var credential = new DefaultAzureCredential();
+DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
 ```
 
 Upload een model en lijst modellen:

@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f2e17e99208d076d05132638b5161a284b73986f
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 764e0262c8a26511c55740aa1797b5ec9b59cc8e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018624"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150138"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Een app integreren met een virtueel Azure-netwerk
 
-In dit artikel wordt de functie Azure App Service VNet-integratie beschreven en wordt uitgelegd hoe u deze kunt instellen met apps in [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714). Met [Azure Virtual Network][VNETOverview] (VNets) kunt u veel van uw Azure-resources in een niet-Internet routeerbaar netwerk plaatsen. Met de VNet-integratie functie kunnen uw apps toegang krijgen tot bronnen in of via een VNet. Met VNet-integratie kunnen uw apps niet privé worden geopend.
+In dit artikel wordt de functie Azure App Service VNet-integratie beschreven en wordt uitgelegd hoe u deze kunt instellen met apps in [Azure app service](./overview.md). Met [Azure Virtual Network][VNETOverview] (VNets) kunt u veel van uw Azure-resources in een niet-Internet routeerbaar netwerk plaatsen. Met de VNet-integratie functie kunnen uw apps toegang krijgen tot bronnen in of via een VNet. Met VNet-integratie kunnen uw apps niet privé worden geopend.
 
 Azure App Service heeft twee varianten van de VNet-integratie functie:
 

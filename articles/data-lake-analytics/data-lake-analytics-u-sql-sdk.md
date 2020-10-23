@@ -1,18 +1,17 @@
 ---
 title: U-SQL-taken lokaal uitvoeren-Azure Data Lake U-SQL-SDK
 description: Meer informatie over het lokaal uitvoeren en testen van U-SQL-taken met behulp van de opdracht regel en de programmeer interfaces op uw lokale werk station.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 author: yanacai
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 03/01/2017
-ms.openlocfilehash: daf72fcf7baba289b4145d06d878c8a7232f1c6a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8fb60e62a63bfc4562f19d483dc84c99c37676b0
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132412"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215532"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>U-SQL uitvoeren en testen met Azure Data Lake U-SQL SDK
 
@@ -143,15 +142,15 @@ Hier volgen enkele optionele argumenten voor **uitvoeren**:
 
 |Argument|Standaardwaarde|Beschrijving|
 |--------|-------------|-----------|
-|-CodeBehind|False|Het script heeft. cs-code achter|
+|-CodeBehind|Niet waar|Het script heeft. cs-code achter|
 |-CppSDK| |CppSDK Directory|
 |-Data root| Omgevings variabele data root|Data root voor lokale uitvoering, standaard ingesteld op de omgevings variabele LOCALRUN_DATAROOT|
 |-MessageOut| |Berichten op de console naar een bestand dumpen|
 |-Parallel|1|Het plan uitvoeren met de opgegeven parallellisme|
 |-Verwijzingen| |Lijst met paden naar extra referentie-assembly's of gegevens bestanden van code achter, gescheiden door '; '|
-|-UdoRedirect|False|Udo assembly-omleidings configuratie genereren|
+|-UdoRedirect|Niet waar|Udo assembly-omleidings configuratie genereren|
 |-UseDatabase|model|Te gebruiken Data Base voor code achter de tijdelijke assembly registratie|
-|-Verbose|False|Gedetailleerde uitvoer van runtime weer geven|
+|-Verbose|Niet waar|Gedetailleerde uitvoer van runtime weer geven|
 |-WorkDir|Huidige map|Map voor het gebruik en uitvoer van het Compileer programma|
 |-RunScopeCEP|0|Te gebruiken ScopeCEP-modus|
 |-ScopeCEPTempPath|temp|Tijdelijk pad dat moet worden gebruikt voor het streamen van gegevens|

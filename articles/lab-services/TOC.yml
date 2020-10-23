@@ -65,7 +65,7 @@
             - name: VM-pool beheren
               href: how-to-manage-vm-pool-within-teams.md
             - name: Labs verwijderen
-              href: how-to-get-started-create-lab-within-teams.md#deleting-classroom-labs
+              href: how-to-delete-lab-within-teams.md
             - name: Schema's en instellingen
               href: how-to-create-schedules-within-teams.md
             - name: Een VM openen (studentweergave)

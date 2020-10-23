@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 6e34e0ef9035882a32ff46222686db4a948d7997
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77a6ec54495b394c597f6d6b4ddb5f5fe3285550
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85957457"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107467"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Mogelijkheden voor Azure Batch Rendering
 
@@ -75,7 +75,7 @@ Arnold 2017-opdracht regel|kick.exe|ARNOLD_2017_EXEC|
 
 Net als bij andere werk belastingen kunnen de systeem vereisten voor het renderen van toepassingen verschillen en de prestatie vereisten verschillen voor taken en projecten.  Een groot aantal verschillende VM-families is beschikbaar in azure, afhankelijk van uw vereisten: de laagste kosten, de beste prijs/prestaties, de beste prestaties, enzovoort.
 Sommige rendering-toepassingen, zoals Arnold, zijn gebaseerd op een CPU. andere, zoals V-Ray en overvloei cycli, kunnen Cpu's en/of Gpu's gebruiken.
-[Zie VM-typen en-grootten](../virtual-machines/windows/sizes.md)voor een beschrijving van de beschik bare VM-families en VM-grootten.
+[Zie VM-typen en-grootten](../virtual-machines/sizes.md)voor een beschrijving van de beschik bare VM-families en VM-grootten.
 
 ### <a name="low-priority-vms"></a>Virtuele machines met lage prioriteit
 

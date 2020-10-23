@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: d7b94da2f922e7dba8c165dcf9d1e906855f6dfb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 731e4306575a8bd5f63dd47ca213a0e52a21487b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294237"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151238"
 ---
 # <a name="azure-signalr-service-authentication"></a>verificatie van Azure SignalR Service
 
@@ -48,7 +48,7 @@ U hebt het volgende nodig om deze zelfstudie te voltooien:
 * Een account op [GitHub](https://github.com/)
 * [Git](https://git-scm.com/)
 * [.NET Core-SDK](https://www.microsoft.com/net/download/windows)
-* [Azure Cloud Shell geconfigureerd](https://docs.microsoft.com/azure/cloud-shell/quickstart)
+* [Azure Cloud Shell geconfigureerd](../cloud-shell/quickstart.md)
 * Download of kloon het [Azure SignalR-voorbeeld](https://github.com/aspnet/AzureSignalR-samples) in de GitHub-opslagplaats.
 
 ## <a name="create-an-oauth-app"></a>Een OAuth-app maken
@@ -388,7 +388,7 @@ In dit gedeelte gaat u echte verificatie inschakelen door het kenmerk `Authorize
 
 ## <a name="deploy-the-app-to-azure"></a>De app implementeren in Azure
 
-In deze sectie gebruikt u de Azure-opdracht regel interface (CLI) van de Azure Cloud Shell om een nieuwe web-app te maken in [Azure app service](https://docs.microsoft.com/azure/app-service/) om uw ASP.NET-toepassing in azure te hosten. De web-app wordt geconfigureerd voor het gebruik van een lokale Git-implementatie. De web-app wordt daarnaast geconfigureerd met de verbindingsreeks voor SignalR, geheimen van de GitHub OAuth-app en een implementatiegebruiker.
+In deze sectie gebruikt u de Azure-opdracht regel interface (CLI) van de Azure Cloud Shell om een nieuwe web-app te maken in [Azure app service](../app-service/index.yml) om uw ASP.NET-toepassing in azure te hosten. De web-app wordt geconfigureerd voor het gebruik van een lokale Git-implementatie. De web-app wordt daarnaast geconfigureerd met de verbindingsreeks voor SignalR, geheimen van de GitHub OAuth-app en een implementatiegebruiker.
 
 In de stappen in dit gedeelte wordt de extensie *signalr* voor de Azure CLI gebruikt. Voer de volgende opdracht uit om de extensie *signalr* voor Azure CLI te installeren:
 

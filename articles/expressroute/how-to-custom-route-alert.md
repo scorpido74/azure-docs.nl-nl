@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: 67591e9227ff32e81b973c181da2c1374f0ded47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a960150d68cf2f939e206321a20d98b0e4080313
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766662"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371491"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Aangepaste waarschuwingen configureren voor het bewaken van aangekondigde routes
 
@@ -42,7 +42,7 @@ Controleer voordat u met de configuratie begint of u aan de volgende criteria he
 
 * U bent bekend met [Azure Logic apps](../logic-apps/logic-apps-overview.md).
 
-* U bent bekend met het gebruik van Azure PowerShell. Azure PowerShell is vereist voor het verzamelen van de netwerk voorvoegsels in de ExpressRoute-gateway. Zie de [Azure PowerShell documentatie](https://docs.microsoft.com/powershell/azure/?view=azps-4.1.0)voor meer informatie over Azure PowerShell in het algemeen.
+* U bent bekend met het gebruik van Azure PowerShell. Azure PowerShell is vereist voor het verzamelen van de netwerk voorvoegsels in de ExpressRoute-gateway. Zie de [Azure PowerShell documentatie](/powershell/azure/?view=azps-4.1.0)voor meer informatie over Azure PowerShell in het algemeen.
 
 ### <a name="notes-and-limitations"></a><a name="limitations"></a>Opmerkingen en beperkingen
 
@@ -58,7 +58,7 @@ Wanneer u in de Azure Portal een Automation-account maakt, wordt automatisch een
 
 * Hiermee maakt u een Service-Principal-account voor de toepassing in azure AD.
 
-* Wijst zichzelf de rol Inzender (RBAC) toe aan het Azure-abonnement dat wordt gebruikt. Deze rol beheert Azure Resource Manager resources met runbooks.
+* Wijst zichzelf de rol Inzender (Azure RBAC) toe aan het Azure-abonnement dat wordt gebruikt. Deze rol beheert Azure Resource Manager resources met runbooks.
 
 U hebt bevoegdheden en machtigingen nodig om een Automation-account te maken. Zie [machtigingen die zijn vereist voor het maken van een Automation-account](../automation/automation-create-standalone-account.md#permissions-required-to-create-an-automation-account)voor meer informatie.
 
@@ -70,7 +70,7 @@ Een Automation-account maken met de machtiging uitvoeren als. Zie [een Azure Aut
 
 ### <a name="2-assign-the-run-as-account-a-role"></a><a name="about"></a>2. Wijs het run as-account toe aan een rol
 
-Standaard wordt de rol **Inzender** toegewezen aan de service-principal die wordt gebruikt door het **Run as** -account. U kunt de standaard rol laten toewijzen aan de Service-Principal, of u kunt machtigingen beperken door een [ingebouwde rol](../role-based-access-control/built-in-roles.md) (bijvoorbeeld lezer) of een [aangepaste rol](../active-directory/users-groups-roles/roles-create-custom.md)toe te wijzen.
+Standaard wordt de rol **Inzender** toegewezen aan de service-principal die wordt gebruikt door het **Run as** -account. U kunt de standaard rol laten toewijzen aan de Service-Principal, of u kunt machtigingen beperken door een [ingebouwde rol](../role-based-access-control/built-in-roles.md) (bijvoorbeeld lezer) of een [aangepaste rol](../active-directory/roles/custom-create.md)toe te wijzen.
 
  Gebruik de volgende stappen om te bepalen welke rol u wilt toewijzen aan de service-principal die wordt gebruikt door uw uitvoeren als-account:
 
@@ -257,7 +257,7 @@ Wanneer u het Power shell-script uitvoert, wordt een lijst met waarden verzameld
 
 * Waarschuwings bericht voor een uitgebreide beschrijving van de status (OK, waarschuwing, waarschuwing)
 
-Het Power shell-script converteert de verzamelde gegevens naar een JSON-uitvoer. Het runbook maakt gebruik van de Power shell [-cmdlet write-output](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Write-Output?)  als uitvoer stroom voor het communiceren van informatie naar de client.
+Het Power shell-script converteert de verzamelde gegevens naar een JSON-uitvoer. Het runbook maakt gebruik van de Power shell [-cmdlet write-output](/powershell/module/Microsoft.PowerShell.Utility/Write-Output)  als uitvoer stroom voor het communiceren van informatie naar de client.
 
 ### <a name="4-validate-the-runbook"></a><a name="validate"></a>4. het runbook valideren
 

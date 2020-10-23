@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 10/07/2020
+ms.date: 10/16/2020
 ms.author: aahi
-ms.openlocfilehash: f79152dbfa5a0576cd13484f9b3704eaed3901ea
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: a85c129dd11e587a0714e92c850315101df103f0
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015921"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166179"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Wat is er nieuw in de Text Analytics-API?
 
@@ -25,6 +25,7 @@ De Text Analytics-API wordt doorlopend bijgewerkt. In dit artikel vindt u inform
 
 * Hindi-ondersteuning voor Sentimentanalyse v3. x, te beginnen met model versie `2020-04-01` . 
 * Model versie `2020-09-01` voor het v3/languages-eind punt, waarmee verbeterde taal detectie en nauw keurigere verbeteringen worden toegevoegd.
+* V3 Beschik baarheid in Centraal-India en UAE-noord.
 
 ## <a name="september-2020"></a>September 2020
 
@@ -180,7 +181,7 @@ Er zijn nu extra entiteits typen beschikbaar in de open bare preview-service van
     * Organisatie
     * Leeftijd als subtype onder hoeveelheid
     * Datum als een subtype onder DateTime
-    * Email 
+    * E-mail 
     * Telefoon nummer (alleen VS)
     * URL
     * IP-adres

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/28/2019
 ms.author: jeedes
-ms.openlocfilehash: eecd7281c925fa26ade3aa140df310e69f3385c8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 123b85905a5c56949a0c1d35bb1e37215ed8097c
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554707"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940715"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mixpanel"></a>Zelfstudie: Azure Active Directory-integratie met Mixpanel
 
@@ -130,15 +130,15 @@ Voor het configureren van eenmalige aanmelding bij Azure Active Directory met Mi
 
 3. Klik op het tabblad **Access security** en klik vervolgens op **Change settings**.
    
-    ![Mixpanel-instellingen](./media/mixpanel-tutorial/tutorial_mixpanel_08.png) 
+    ![Schermopname van het tabblad Access security waar u instellingen kunt wijzigen.](./media/mixpanel-tutorial/tutorial_mixpanel_08.png) 
 
 4. Klik in het dialoogvenster **Change your certificate** op **Choose file** om uw gedownloade certificaat te uploaden en klik vervolgens op **NEXT**.
    
-    ![Mixpanel-instellingen](./media/mixpanel-tutorial/tutorial_mixpanel_09.png) 
+    ![Schermopname van het dialoogvenster 'Change your certificate' (Uw certificaat wijzigen), waarin u een certificaatbestand kunt kiezen.](./media/mixpanel-tutorial/tutorial_mixpanel_09.png) 
 
 5.  Plak in het tekstvak Authentication URL op de pagina **Change your authentication URL** de waarde van de **aanmeldings-URL** die u hebt gekopieerd uit de Azure-portal en klik vervolgens op **NEXT**.
    
-    ![Mixpanel-instellingen](./media/mixpanel-tutorial/tutorial_mixpanel_10.png) 
+    ![Schermopname van het deelvenster 'Change your authentication URL' (Uw verificatie-URL wijzigen), waar u uw aanmeldings-URL kunt kopiëren.](./media/mixpanel-tutorial/tutorial_mixpanel_10.png) 
 
 6. Klik op **Gereed**.
 
@@ -205,7 +205,7 @@ Het doel van deze sectie is het maken van een gebruiker met de naam Britta Simon
 
 4. Typ in het tekstvak **team member** het e-mailadres van Britta van Azure.
    
-    ![Mixpanel-instellingen](./media/mixpanel-tutorial/tutorial_mixpanel_11.png) 
+    ![Schermopname van het tabblad Team waar u een adres voor een uitnodiging toevoegt.](./media/mixpanel-tutorial/tutorial_mixpanel_11.png) 
 
 5. Klik op **Uitnodigen**. 
 

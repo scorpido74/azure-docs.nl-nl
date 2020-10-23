@@ -10,12 +10,12 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 6a63df282cadf86668e69d2422a6c791e86010b6
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: b25ac36bc0b424a9d6f76b37b532e52dc56e19e3
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767146"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048216"
 ---
 # <a name="plan-your-telephony-and-sms-solution"></a>Uw oplossing voor telefonie en sms plannen
 
@@ -74,7 +74,9 @@ In de volgende tabel ziet u waar u verschillende soorten telefoonnummers kunt ve
 
 ## <a name="azure-subscriptions-eligibility"></a>Geschiktheid Azure-abonnementen
 
-Als u een telefoonnummer wilt verkrijgen, moet u een betaald Azure-abonnement hebben. Telefoonnummers kunnen niet worden verkregen voor proefaccounts. 
+Als u een telefoonnummer wilt verkrijgen, moet u een betaald Azure-abonnement hebben. Telefoonnummers kunnen niet worden verkregen voor proefaccounts of via gratis Azure-tegoeden. 
+
+Op dit moment is de beschikbaarheid van telefoonnummers beperkt tot Azure-abonnementen met een factureringsadres in de Verenigde Staten.
 
 ## <a name="next-steps"></a>Volgende stappen
 

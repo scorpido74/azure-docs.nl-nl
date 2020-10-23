@@ -5,16 +5,16 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/23/2020
 ms.topic: how-to
-ms.openlocfilehash: 180af30f57a8123b6e90cc8b11848b92b3c86db1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd69710b6e4404a76d3cca385b6c07ea7c1f3f5c
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802171"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201814"
 ---
 # <a name="use-holographic-remoting-and-remote-rendering-in-unity"></a>Holographic Remoting en Remote Rendering gebruiken in Unity
 
-[Holographic Remoting](https://docs.microsoft.com/windows/mixed-reality/holographic-remoting-player) en de externe rendering van Azure sluiten elkaar wederzijds uit binnen één toepassing. Als zodanig is [Unit Play-modus](https://docs.microsoft.com/windows/mixed-reality/unity-play-mode) ook niet beschikbaar.
+[Holographic Remoting](/windows/mixed-reality/holographic-remoting-player) en de externe rendering van Azure sluiten elkaar wederzijds uit binnen één toepassing. Als zodanig is [Unit Play-modus](/windows/mixed-reality/unity-play-mode) ook niet beschikbaar.
 
 Voor elke uitvoering van Unity editor kan slechts een van de twee worden gebruikt. Als u het andere item wilt gebruiken, moet u eerst de eenheid opnieuw opstarten.
 

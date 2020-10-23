@@ -7,15 +7,15 @@ ms.assetid: 51cd331a-a3fa-438f-90ef-385e755e50d5
 ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 9a41c5912ec285094c1f47540caf3744ddd4d469
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dd67ff4f7346daf7a590ab4fb45a32d227f1c3e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88958323"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147550"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>Problemen met HTTP-fouten van "502 ongeldige gateway" en "503-Service niet beschikbaar" in Azure App Service
-"502 ongeldige gateway" en "503-Service niet beschikbaar" zijn veelvoorkomende fouten in uw app die wordt gehost in [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714). Dit artikel helpt u bij het oplossen van deze fouten.
+"502 ongeldige gateway" en "503-Service niet beschikbaar" zijn veelvoorkomende fouten in uw app die wordt gehost in [Azure app service](./overview.md). Dit artikel helpt u bij het oplossen van deze fouten.
 
 Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN Azure en de stack overflow-forums](https://azure.microsoft.com/support/forums/). U kunt ook een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en klik op **Ontvang ondersteuning**.
 

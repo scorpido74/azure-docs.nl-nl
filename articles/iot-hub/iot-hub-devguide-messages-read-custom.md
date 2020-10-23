@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: e5e92c40cef15e99431dc9652820c71e87935f67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8aebb5b6f6a3ac53bc49fd1d2f75de88667865fb
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "61244341"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147647"
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>Bericht routes en aangepaste eind punten voor apparaat-naar-Cloud-berichten gebruiken
 
@@ -46,7 +46,7 @@ Zie voor meer informatie over het lezen van aangepaste eind punten:
 
 * Lezen van [Azure Storage-containers](../storage/blobs/storage-blobs-introduction.md).
 
-* Lezen van [Event hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md).
+* Lezen van [Event hubs](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md).
 
 * Lezen van [service bus-wacht rijen](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
 

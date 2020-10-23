@@ -75,6 +75,8 @@
       items:
         - name: Angular
           href: tutorial-v2-angular.md
+        - name: Blazor WebAssembly
+          href: tutorial-blazor-webassembly.md
         - name: JavaScript - Verificatiecodestroom
           href: tutorial-v2-javascript-auth-code.md
         - name: JavaScript - Impliciete stroom
@@ -123,6 +125,9 @@
       href: authentication-flows-app-scenarios.md
     - name: Best practices voor identiteitsplatform
       href: identity-platform-integration-checklist.md
+    - name: Mobiele SSO (eenmalige aanmelding)
+      href: mobile-sso-support-overview.md
+      displayName: 'android, ios'
     - name: Toepassingsscenario's
       displayName: App scenarios
       items:
@@ -291,10 +296,8 @@
           items:
             - name: Accounts en tenantprofielen
               href: accounts-overview.md
-            - name: Machtigingsagenten
-              href: authorization-agents.md
-            - name: Brokered auth
-              href: brokered-auth.md
+            - name: Eenmalige aanmelding met MSAL Android
+              href: msal-android-single-sign-on.md
             - name: Integreren met Azure AD B2C
               href: msal-android-b2c.md
             - name: Migreren naar MSAL.Android

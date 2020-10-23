@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 1cfe27fd5c63bc4c1436982212b91e07f54aedb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 231b6ffa3730721d4e44ecb15c2fc58591b80178
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85801917"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314818"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Problemen met Azure Load Balancer oplossen
 
@@ -30,6 +30,12 @@ Wanneer de Load Balancer verbinding niet beschikbaar is, zijn de meest voorkomen
 - Vm's achter de Load Balancer reageren niet op het verkeer op de geconfigureerde poort
 
 Wanneer de externe clients naar de back-end-Vm's via de load balancer gaan, wordt het IP-adres van de clients voor de communicatie gebruikt. Zorg ervoor dat het IP-adres van de clients wordt toegevoegd aan de acceptatie lijst NSG. 
+
+## <a name="symptom-no-outbound-connectivity-from-standard-internal-load-balancers-ilb"></a>Symptoom: geen uitgaande verbinding van standaard interne load balancers (ILB)
+
+**Validatie en oplossing**
+
+Standaard ILBs zijn **standaard veilig**. Basis-ILBs die verbinding maken met Internet via een *verborgen* openbaar IP-adres. Dit is niet kunt voor productie werkbelastingen omdat het IP-adres niet statisch of vergrendeld is via Nsg's waarvan u de eigenaar bent. Als u onlangs van een Basic-ILB hebt overgezet naar een standaard-ILB, moet u een openbaar IP-adres maken via een [uitgaande alleen](egress-only.md) -configuratie die het IP-adres vergrendelt via nsg's. 
 
 ## <a name="symptom-vms-behind-the-load-balancer-are-not-responding-to-health-probes"></a>Symptoom: Vm's achter de Load Balancer reageren niet op status controles
 Voor de back-endservers die deel uitmaken van de load balancerset, moeten ze de controle van de test door geven. Zie [informatie over Load Balancer probe](load-balancer-custom-probe-overview.md)(Engelstalig) voor meer informatie over status controles. 
@@ -151,6 +157,17 @@ Als u besluit een ondersteunings aanvraag te openen, verzamelt u de volgende inf
 - Gebruik Psping van een van de back-end-Vm's binnen het VNet om de test poort reactie te testen (bijvoorbeeld: Psping 10.0.0.4:3389) en de resultaten op te nemen. 
 - Als er geen antwoord wordt ontvangen in deze ping-tests, voert u een gelijktijdige Netsh-tracering uit op de back-end-VM en de VNet-test-VM terwijl u PsPing uitvoert en stopt u de Netsh-tracering. 
  
+## <a name="symptom-load-balancer-in-failed-state"></a>Symptoom: Load Balancer met de status mislukt 
+
+**Oplossing**
+
+- Wanneer u de resource met de status mislukt hebt geïdentificeerd, gaat u naar [Azure resource Explorer](https://resources.azure.com/) en identificeert u de resource in deze status. 
+- Werk de wissel knop in de rechter bovenhoek bij om te lezen/schrijven.
+- Klik op bewerken voor de resource met de status mislukt.
+- Klik op PUT gevolgd door GET om ervoor te zorgen dat de inrichtings status is bijgewerkt naar geslaagd.
+- U kunt vervolgens door gaan met andere acties als de resource de status Mislukt heeft.
+
+
 ## <a name="next-steps"></a>Volgende stappen
 
 Als de voor gaande stappen het probleem niet oplossen, opent u een [ondersteunings ticket](https://azure.microsoft.com/support/options/).

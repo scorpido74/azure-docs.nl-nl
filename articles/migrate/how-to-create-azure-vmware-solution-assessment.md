@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: rajosh
-ms.openlocfilehash: 89dc962c73a6446afc79eec2a0fcfd5c0e32e84e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 834fd32d17c4a5ff112dd11a331a59336d7cbcb7
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576707"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315259"
 ---
 # <a name="create-an-azure-vmware-solution-avs-assessment"></a>Een evaluatie van een Azure VMware-oplossing (AVS) maken
 
@@ -24,7 +24,7 @@ In dit artikel wordt beschreven hoe u een evaluatie van een Azure VMware-oplossi
 - Zorg ervoor dat u een Azure Migrate project hebt [gemaakt](how-to-add-tool-first-time.md) .
 - Als u al een project hebt gemaakt, moet u ervoor zorgen dat u het Azure Migrate: Server Assessment Tool hebt [toegevoegd](how-to-assess.md) .
 - Als u een beoordeling wilt maken, moet u een Azure Migrate apparaat voor [VMware](how-to-set-up-appliance-vmware.md)instellen, dat de on-premises machines detecteert en de meta gegevens en prestaties naar Azure migrate verzendt: Server Assessment. [Meer informatie](migrate-appliance.md).
-- U kunt [de meta gegevens van de server ook importeren](tutorial-assess-import.md) in CSV-indeling (door komma's gescheiden waarden).
+- U kunt [de meta gegevens van de server ook importeren](./tutorial-discover-import.md) in CSV-indeling (door komma's gescheiden waarden).
 
 
 ## <a name="azure-vmware-solution-avs-assessment-overview"></a>Overzicht van evaluatie van Azure VMware-oplossing (AVS)

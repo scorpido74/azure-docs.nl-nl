@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: 95d892bf7a0c0e395289d4a5535cd9b6b789b055
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62f78ed9063d4736e541dda2b1763ffded8eab5d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88565924"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371474"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Toegang tot Azure-bronnen verifiëren door beheerde identiteiten te gebruiken in Azure Logic Apps
 
@@ -35,7 +35,7 @@ In dit artikel wordt beschreven hoe u beide soorten beheerde identiteiten instel
 
 * Een Azure-account en -abonnement. Als u nog geen abonnement hebt, [meld u dan aan voor een gratis Azure-account](https://azure.microsoft.com/free/). Zowel de beheerde identiteit als de Azure-doel resource waarvoor u toegang nodig hebt, moeten hetzelfde Azure-abonnement gebruiken.
 
-* Als u een beheerde identiteit toegang wilt geven tot een Azure-resource, moet u een rol toevoegen aan de doel resource voor die identiteit. Om rollen toe te voegen, hebt u [Azure AD-beheerders machtigingen](../active-directory/users-groups-roles/directory-assign-admin-roles.md) nodig waarmee rollen kunnen worden toegewezen aan identiteiten in de bijbehorende Azure AD-Tenant.
+* Als u een beheerde identiteit toegang wilt geven tot een Azure-resource, moet u een rol toevoegen aan de doel resource voor die identiteit. Om rollen toe te voegen, hebt u [Azure AD-beheerders machtigingen](../active-directory/roles/permissions-reference.md) nodig waarmee rollen kunnen worden toegewezen aan identiteiten in de bijbehorende Azure AD-Tenant.
 
 * De doel-Azure-resource waartoe u toegang wilt krijgen. Op deze resource voegt u een rol toe voor de beheerde identiteit, waarmee de logische app de toegang tot de doel bron kan verifiëren.
 
@@ -301,7 +301,7 @@ Voordat u de beheerde identiteit van de logische app voor verificatie kunt gebru
    ![Selecteer > functie toewijzing toevoegen.](./media/create-managed-service-identity/add-role-to-resource.png)
 
    > [!TIP]
-   > Als de optie **roltoewijzing toevoegen** is uitgeschakeld, hebt u waarschijnlijk niet de juiste machtigingen. Zie [Administrator role permissions](../active-directory/users-groups-roles/directory-assign-admin-roles.md)(Engelstalig) in azure Active Directory voor meer informatie over de machtigingen waarmee u rollen voor resources kunt beheren.
+   > Als de optie **roltoewijzing toevoegen** is uitgeschakeld, hebt u waarschijnlijk niet de juiste machtigingen. Zie [Administrator role permissions](../active-directory/roles/permissions-reference.md)(Engelstalig) in azure Active Directory voor meer informatie over de machtigingen waarmee u rollen voor resources kunt beheren.
 
 1. Selecteer onder roltoewijzing **toevoegen**een **rol** die uw identiteit de benodigde toegang tot de doel resource geeft.
 
@@ -462,7 +462,7 @@ In de Azure Portal verwijdert u eerst de toegang van de identiteit tot [uw doel 
 1. Selecteer in de lijst rollen de beheerde identiteiten die u wilt verwijderen. Selecteer **verwijderen**op de werk balk.
 
    > [!TIP]
-   > Als de optie **verwijderen** is uitgeschakeld, hebt u waarschijnlijk niet de juiste machtigingen. Zie [Administrator role permissions](../active-directory/users-groups-roles/directory-assign-admin-roles.md)(Engelstalig) in azure Active Directory voor meer informatie over de machtigingen waarmee u rollen voor resources kunt beheren.
+   > Als de optie **verwijderen** is uitgeschakeld, hebt u waarschijnlijk niet de juiste machtigingen. Zie [Administrator role permissions](../active-directory/roles/permissions-reference.md)(Engelstalig) in azure Active Directory voor meer informatie over de machtigingen waarmee u rollen voor resources kunt beheren.
 
 De beheerde identiteit wordt nu verwijderd en heeft geen toegang meer tot de doel resource.
 

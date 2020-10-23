@@ -4,12 +4,12 @@ description: Een korte inleiding in de Batch-opdrachten in Azure CLI voor het be
 ms.topic: how-to
 ms.date: 07/24/2018
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 92d5e60f549855b39185564f7f6d2902b765cf76
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: bee25d9b8985f1627a5cfc05bfb336b83be60f74
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055508"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144755"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Batch-resources beheren met Azure CLI
 
@@ -79,7 +79,7 @@ Er zijn twee mogelijkheden voor verificatie van uw Batch-account:
     
     Wanneer u zich interactief aanmeldt bij Azure, zoals beschreven in de vorige sectie, worden uw referenties in de cache opgeslagen, zodat de Azure CLI u met behulp van deze zelfde referenties kan aanmelden bij uw Batch-account. Als u zich aanmeldt bij Azure met behulp van een service-principal, worden deze referenties ook gebruikt voor aanmelding bij uw Batch-account.
 
-    Een voordeel van Azure AD is de ondersteuning voor toegangsbeheer op basis van rollen (RBAC). Met RBAC is de toegang van gebruikers afhankelijk van hun rol, in plaats van of ze wel of niet over de accountsleutels beschikken. In plaats van account sleutels te beheren, kunt u Azure-rollen beheren en toegang en verificatie van Azure AD toestaan.  
+    Een voor deel van Azure AD is dat het Azure op rollen gebaseerd toegangs beheer (Azure RBAC) biedt. Met Azure RBAC is de toegang van een gebruiker afhankelijk van hun toegewezen rol, in plaats van of ze beschikken over de account sleutels. In plaats van account sleutels te beheren, kunt u Azure-rollen beheren en toegang en verificatie van Azure AD toestaan.  
 
      Als u zich via Azure AD wilt aanmelden bij uw Batch-account, gebruikt u de opdracht [az batch account login](/cli/azure/batch/account#az-batch-account-login): 
 

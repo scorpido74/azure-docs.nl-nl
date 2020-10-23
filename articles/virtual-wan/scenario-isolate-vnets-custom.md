@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 12bc99d24472780f87a6b2a83befdbbf12944860
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca1ee8418bc08d70a031d81a15dc1b4ace2f1a3a
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267717"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461818"
 ---
 # <a name="scenario-custom-isolation-for-vnets"></a>Scenario: aangepaste isolatie voor VNets
 
@@ -25,11 +25,11 @@ Als u wilt weten hoeveel route tabellen er nodig zijn, kunt u een verbindings ma
 
 | Van | Aan:| *Blue VNets* | *Rode VNets* | *Vertakkingen*|
 |---|---|---|---|---|
-| **Blue VNets** |   &#8594;|      X        |               |       X      |
-| **Rode VNets**  |   &#8594;|              |       X       |       X      |
-| **Vertakkingen**   |   &#8594;|     X        |       X       |       X      |
+| **Blue VNets** |   &#8594;|   Direct     |           |  Direct |
+| **Rode VNets**  |   &#8594;|              |   Direct  |  Direct |
+| **Vertakkingen**   |   &#8594;|   Direct     |   Direct  |  Direct |
 
-In elk van de cellen in de vorige tabel wordt beschreven of een virtuele WAN-verbinding (de ' aan '-zijde van de stroom, de rijkoppen in de tabel) een doel voorvoegsel (de ' aan '-zijde van de stroom, de kolom koppen in de tabel cursief) voor een specifieke verkeers stroom, waarbij een ' X ' betekent dat de connectiviteit wordt verschaft door Virtual WAN.
+Elk van de cellen in de vorige tabel beschrijft of een virtuele WAN-verbinding (de ' aan ' kant van de stroom, de rijkoppen) communiceert met een bestemming (de ' aan '-zijde van de stroom, de kolom koppen cursief). In dit scenario zijn er geen firewalls of virtuele netwerk apparaten, waardoor communicatie rechtstreeks via Virtual WAN (dus het woord ' direct ' in de tabel) verloopt.
 
 Het aantal verschillende rijtypen is het aantal route tabellen dat in dit scenario nodig is. In dit geval zijn er drie route route tabellen die we **RT_BLUE** en **RT_RED** aanroepen voor de virtuele netwerken, en de **standaard** voor de vertakkingen. Houd er rekening mee dat de branches altijd moeten worden gekoppeld aan de standaard routerings tabel.
 

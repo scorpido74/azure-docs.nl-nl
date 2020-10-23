@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 05/26/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: qna maker, chatbots met weinig code, gesprekken met meerdere paden
-ms.openlocfilehash: fe46fadc6d3f5a74c95faeec6b7759f18e843f7d
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 6a5ea51086e3ab532966c9cea9eb866334494bba
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776779"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874421"
 ---
 # <a name="what-is-qna-maker"></a>Wat is QnA Maker?
 
@@ -83,9 +83,9 @@ QnA Maker biedt creatie, training en publicatie samen met samenwerkingsmachtigin
 
 We bieden quickstarts in de populairste programmeertalen, die zijn ontworpen om u de basisontwerppatronen te leren en waarmee u in minder dan tien minuten code kunt uitvoeren. Zie de volgende lijst voor de quickstart voor elke functie.
 
-* [Aan de slag met de LUIS-clientbibliotheek](../quickstarts/quickstart-sdk.md)
-* [Aan de slag met de LUIS-portal](../quickstarts/create-publish-knowledge-base.md)
-* [Aan de slag met de LUIS REST API's](../quickstarts/quickstart-rest-curl.md)
+* [Aan de slag met QnA Maker-clientbibliotheek](../quickstarts/quickstart-sdk.md)
+* [Aan de slag met QnA Maker-portal](../quickstarts/create-publish-knowledge-base.md)
+* [Aan de slag met QnA Maker REST API's](../quickstarts/quickstart-rest-curl.md)
 
 
 ## <a name="next-steps"></a>Volgende stappen

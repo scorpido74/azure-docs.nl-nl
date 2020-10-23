@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: fc3f3fb0b6bb67239d6c1952d3e128076ce45aaf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13467a51b2a06dbc0ca0ec5eadd139fde8b82ad0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85857189"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103489"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>Account beheer bewerkingen op Azure Data Lake Storage Gen1 met behulp van REST API
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ Er zijn twee benaderingen voor verificatie met Azure Active Directory.
 
 
 ## <a name="create-a-data-lake-storage-gen1-account"></a>Een Data Lake Storage Gen1-account maken
-Deze bewerking is gebaseerd op de REST-API-aanroep die [hier](https://docs.microsoft.com/rest/api/datalakestore/accounts/create) wordt gedefinieerd.
+Deze bewerking is gebaseerd op de REST-API-aanroep die [hier](/rest/api/datalakestore/accounts/create) wordt gedefinieerd.
 
 Gebruik de volgende cURL-opdracht: Vervang door **\<yourstoragegen1name>** de naam van uw data Lake Storage gen1.
 
@@ -57,7 +57,7 @@ Vervang \<`REDACTED`\> in de bovenstaande opdracht door het verificatietoken dat
 ```
 
 ## <a name="delete-a-data-lake-storage-gen1-account"></a>Een Data Lake Storage Gen1 account verwijderen
-Deze bewerking is gebaseerd op de REST-API-aanroep die [hier](https://docs.microsoft.com/rest/api/datalakestore/accounts/delete) wordt gedefinieerd.
+Deze bewerking is gebaseerd op de REST-API-aanroep die [hier](/rest/api/datalakestore/accounts/delete) wordt gedefinieerd.
 
 Gebruik de volgende krul opdracht om een Data Lake Storage Gen1 account te verwijderen. Vervang door **\<yourstoragegen1name>** de naam van uw data Lake Storage gen1-account.
 
@@ -77,6 +77,5 @@ HTTP/1.1 200 OK
 * [Bestandssysteem bewerkingen op Data Lake Storage gen1 met behulp van rest API](data-lake-store-data-operations-rest-api.md).
 
 ## <a name="see-also"></a>Zie ook
-* [Naslag informatie over Azure Data Lake Storage Gen1 REST API](https://docs.microsoft.com/rest/api/datalakestore/)
+* [Naslag informatie over Azure Data Lake Storage Gen1 REST API](/rest/api/datalakestore/)
 * [Open source Big Data-toepassingen die compatibel zijn met Azure Data Lake Storage Gen1](data-lake-store-compatible-oss-other-applications.md)
-

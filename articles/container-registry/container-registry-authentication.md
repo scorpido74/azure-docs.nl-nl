@@ -3,12 +3,12 @@ title: Opties voor register verificatie
 description: Verificatie opties voor een persoonlijk Azure container Registry, met inbegrip van het aanmelden met een Azure Active Directory identiteit, het gebruik van service-principals en het gebruik van optionele beheerders referenties.
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 1747dfa0664778283d0cea06940ea95982c269a2
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 5315c11e0f1e2c859384e3783ae4be5d709adb42
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048012"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148554"
 ---
 # <a name="authenticate-with-an-azure-container-registry"></a>Verifiëren met een Azure container Registry
 
@@ -20,7 +20,7 @@ De aanbevolen manieren zijn verificatie naar een REGI ster rechtstreeks via [afz
 
 De volgende tabel bevat een lijst met beschik bare verificatie methoden en typische scenario's. Zie gekoppelde inhoud voor meer informatie.
 
-| Methode                               | Verificatie uitvoeren                                           | Scenario's                                                            | Toegangsbeheer op basis van rollen (RBAC)                             | Beperkingen                                |
+| Methode                               | Verificatie uitvoeren                                           | Scenario's                                                            | Azure RBAC (op rollen gebaseerd toegangsbeheer van Azure)                             | Beperkingen                                |
 |---------------------------------------|-------------------------------------------------------|---------------------------------------------------------------------|----------------------------------|--------------------------------------------|
 | [Individuele AD-identiteit](#individual-login-with-azure-ad)                | `az acr login` in azure CLI                             | Interactieve push/pull door ontwikkel aars, testers                                    | Ja                              | AD-token moet elke 3 uur worden vernieuwd     |
 | [AD-Service-Principal](#service-principal)                  | `docker login`<br/><br/>`az acr login` in azure CLI<br/><br/> Aanmeldings instellingen voor het REGI ster in Api's of hulpprogram ma's<br/><br/> [Kubernetes pull Secret](container-registry-auth-kubernetes.md)                                           | Push installatie zonder toezicht van CI/CD-pijp lijn<br/><br/> Pull-bewerking zonder toezicht naar Azure of externe services  | Ja                              | Standaard verval van het SP-wacht woord is 1 jaar       |                                                           

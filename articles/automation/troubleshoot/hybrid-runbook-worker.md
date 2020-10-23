@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4fcd3d143cf2dbb529a8c9c78a769165621e2e89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1386dd820b10b63862ddab38c441f251bea1d83d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400414"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428395"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Problemen met Hybrid Runbook Worker oplossen
 
@@ -46,7 +46,7 @@ Hier volgen enkele mogelijke oorzaken:
 
 #### <a name="resolution"></a>Oplossing
 
-Controleer of de computer uitgaande toegang heeft tot ***. Azure-Automation.net** op poort 443.
+Controleer of de computer uitgaande toegang heeft tot ** \* . Azure-Automation.net** op poort 443.
 
 Computers die de Hybrid Runbook Worker uitvoeren, moeten voldoen aan de minimale hardwarevereisten voordat de werk nemer is geconfigureerd voor het hosten van deze functie. Runbooks en het achtergrond proces dat door ze worden gebruikt, kunnen ertoe leiden dat het systeem wordt overtreden en er vertragingen of time-outs optreden in een runbook-taak.
 
@@ -226,7 +226,7 @@ In het gebeurtenis logboek van de **toepassing en het service servicelogboeken\o
 
 #### <a name="cause"></a>Oorzaak
 
-Dit probleem kan worden veroorzaakt door uw proxy of netwerk firewall die communicatie met Microsoft Azure blokkeert. Controleer of de computer uitgaande toegang heeft tot ***. Azure-Automation.net** op poort 443.
+Dit probleem kan worden veroorzaakt door uw proxy of netwerk firewall die communicatie met Microsoft Azure blokkeert. Controleer of de computer uitgaande toegang heeft tot ** \* . Azure-Automation.net** op poort 443.
 
 #### <a name="resolution"></a>Oplossing
 
@@ -293,7 +293,7 @@ Remove-Item -Path 'C:\Program Files\Microsoft Monitoring Agent\Agent\Health Serv
 Start-Service -Name HealthService
 ```
 
-### <a name="scenario-you-cant-add-a-hybrid-runbook-worker"></a><a name="already-registered"></a>Scenario: u kunt geen Hybrid Runbook Worker toevoegen
+### <a name="scenario-you-cant-add-a-windows-hybrid-runbook-worker"></a><a name="already-registered"></a>Scenario: u kunt geen Windows-Hybrid Runbook Worker toevoegen
 
 #### <a name="issue"></a>Probleem
 
@@ -312,6 +312,46 @@ Dit probleem kan optreden als de computer al is geregistreerd met een ander Auto
 U kunt dit probleem oplossen door de volgende register sleutel te verwijderen, opnieuw op te starten `HealthService` en de `Add-HybridRunbookWorker` cmdlet opnieuw te proberen.
 
 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\HybridRunbookWorker`
+
+### <a name="scenario-you-cant-add-a-linux-hybrid-runbook-worker"></a><a name="already-registered"></a>Scenario: u kunt geen Linux-Hybrid Runbook Worker toevoegen
+
+#### <a name="issue"></a>Probleem
+
+Het volgende bericht wordt weer gegeven wanneer u probeert een Hybrid Runbook Worker toe te voegen met behulp van het `sudo python /opt/microsoft/omsconfig/.../onboarding.py --register` python-script:
+
+```error
+Unable to register, an existing worker was found. Please deregister any existing worker and try again.
+```
+
+Daarnaast probeert u de registratie van een Hybrid Runbook Worker ongedaan te maken met behulp van het `sudo python /opt/microsoft/omsconfig/.../onboarding.py --deregister` python-script:
+
+```error
+Failed to deregister worker. [response_status=404]
+```
+
+#### <a name="cause"></a>Oorzaak
+
+Dit probleem kan optreden als de computer al is geregistreerd met een ander Automation-account, als de Azure Hybrid Worker-groep is verwijderd of als u probeert de Hybrid Runbook Worker opnieuw toe te voegen nadat u deze van een computer hebt verwijderd.
+
+#### <a name="resolution"></a>Oplossing
+
+Ga als volgt te werk om het probleem op te lossen:
+
+1. Verwijder de agent `sudo sh onboard_agent.sh --purge` .
+
+1. Voer deze opdrachten uit:
+
+   ```
+   sudo mv -f /home/nxautomation/state/worker.conf /home/nxautomation/state/worker.conf_old
+   sudo mv -f /home/nxautomation/state/worker_diy.crt /home/nxautomation/state/worker_diy.crt_old
+   sudo mv -f /home/nxautomation/state/worker_diy.key /home/nxautomation/state/worker_diy.key_old
+   ```
+
+1. De agent opnieuw onboarden `sudo sh onboard_agent.sh -w <workspace id> -s <workspace key> -d opinsights.azure.com` .
+
+1. Wacht totdat de map is `/opt/microsoft/omsconfig/modules/nxOMSAutomationWorker` gevuld.
+
+1. Probeer het `sudo python /opt/microsoft/omsconfig/.../onboarding.py --register` python-script opnieuw uit.
 
 ## <a name="next-steps"></a>Volgende stappen
 

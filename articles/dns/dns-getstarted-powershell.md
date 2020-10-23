@@ -6,15 +6,15 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
-ms.date: 3/11/2019
+ms.date: 10/20/2020
 ms.author: rohink
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7361f58247019584d7fb3d60cdd7f76b2e62a212
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: f2563c33d02490732f73fcf9d1a78f548ec2d3e2
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91355462"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282224"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-powershell"></a>Snelstart: Een Azure DNS-zone en -record maken met behulp van Azure PowerShell
 
@@ -26,9 +26,12 @@ Een DNS-zone wordt gebruikt om de DNS-records voor een bepaald domein te hosten.
 
 Azure DNS ondersteunt ook het maken van persoonlijke domeinen. Zie [Aan de slag met privézones in Azure DNS met behulp van PowerShell](private-dns-getstarted-powershell.md) voor stapsgewijze instructies over het maken van uw eerste DNS-privézone en -record.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+## <a name="prerequisites"></a>Vereisten
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+- Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- Azure PowerShell lokaal geïnstalleerd of Azure Cloud Shell
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-the-resource-group"></a>De resourcegroep maken
 
@@ -94,7 +97,7 @@ Nu u een testzone hebt met daarin een DNS-record, kunt u de naamomzetting testen
 
 De hostnaam **www\.contoso.xyz** wordt overeenkomstig uw configuratie omgezet in **10.10.10.10**. Met dit resultaat wordt gecontroleerd of de naamomzetting juist werkt.
 
-## <a name="delete-all-resources"></a>Alle resources verwijderen
+## <a name="clean-up-resources"></a>Resources opschonen
 
 Als u ze niet langer nodig hebt, kunt u alle resources die u in deze snelstartgids hebt gemaakt verwijderen door de resourcegroep te verwijderen:
 

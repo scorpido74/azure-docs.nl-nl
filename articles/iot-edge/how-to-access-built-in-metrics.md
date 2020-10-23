@@ -9,25 +9,25 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: df904e183d3f77751d86d0cefab5423d753f146b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 7924b06b9056a53fa9861fcd0df516845662b34b
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979578"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341563"
 ---
-# <a name="access-built-in-metrics"></a>Toegang tot ingebouwde metrische gegevens
+# <a name="access-built-in-metrics"></a>Ingebouwde metrische gegevens openen
 
 De IoT Edge runtime-onderdelen, IoT Edge hub en IoT Edge agent, produceren ingebouwde metrische gegevens in de [Prometheus Exposition-indeling](https://prometheus.io/docs/instrumenting/exposition_formats/). U kunt op afstand toegang krijgen tot deze gegevens om de status van een IoT Edge apparaat te controleren en te begrijpen.
 
-Vanaf de release-1.0.10 worden metrische gegevens standaard automatisch beschikbaar gesteld op **poort 9600** van de **EdgeHub** -en **edgeAgent** -modules ( `http://edgeHub:9600/metrics` en `http://edgeAgent:9600/metics` ). Deze poorten zijn standaard niet toegewezen aan de host.
+Vanaf de release-1.0.10 worden metrische gegevens standaard automatisch beschikbaar gesteld op **poort 9600** van de **EdgeHub** -en **edgeAgent** -modules ( `http://edgeHub:9600/metrics` en `http://edgeAgent:9600/metrics` ). Deze poorten zijn standaard niet toegewezen aan de host.
 
 Toegang tot metrische gegevens van de host door de metrische poort van de module weer te geven en toe te wijzen `createOptions` . In het volgende voor beeld wordt de standaard poort voor metrische gegevens toegewezen aan poort 9601 op de host:
 
 ```
 {
   "ExposedPorts": {
-    "9600/tcp": {},
+    "9600/tcp": {}
   },
   "HostConfig": {
     "PortBindings": {

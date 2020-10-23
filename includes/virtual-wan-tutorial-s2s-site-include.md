@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 06/23/2020
+ms.date: 10/08/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ba69b94514a0c1b59001011a64a4fb28e5e4a827
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 7bb4974620323de45fd621ae2ed73d3655244d8b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90606596"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856709"
 ---
 1. Selecteer **VPN-sites** in het onderdeel **Connectiviteit** op de portaalpagina voor uw virtuele WAN om de pagina voor VPN-sites te openen.
 2. Op de pagina **VPN sites** klikt u op **+Site maken**.
@@ -26,6 +26,10 @@ ms.locfileid: "90606596"
     * **Leverancier van het apparaat** - de naam van de leverancier van het VPN-apparaat (bijvoorbeeld: Citrix, Cisco, Barracuda). Hierdoor krijgt het Azure-team meer inzicht in uw omgeving, zodat het makkelijker wordt om later aanvullende optimalisatiemogelijkheden toe te voegen of u te helpen bij het oplossen van problemen.
     * **Border Gateway Protocol**: als u dit inschakelt, wordt BGP ingeschakeld voor alle verbindingen van de site. Uiteindelijk moet u de BGP-gegevens voor elke koppeling van de VPN-site instellen in de sectie koppelingen. BGP configureren op een virtuele WAN staat gelijk aan BGP configureren op de VPN-gateway van een virtueel Azure-netwerk. Het adres van uw on-premises BGP-peer mag niet gelijk zijn aan het openbare IP-adres van uw VPN-apparaat of het de VNet-adresruimte van de VPN-site. Gebruik een ander IP-adres op het VPN-apparaat voor uw BGP-peer-IP. Dit kan een adres zijn dat is toegewezen aan de loopback-interface op het apparaat. Geef dit adres op in de bijbehorende VPN-site die de locatie vertegenwoordigt. Zie [Over BGP met Azure VPN-gateway](../articles/vpn-gateway/vpn-gateway-bgp-overview.md) voor BGP-vereisten. U kunt altijd een VPN-verbinding bewerken om de BGP-parameters bij te werken (Peering-IP op de koppeling en het AS-nummer) zodra de BGP-instelling voor de VPN-site is ingeschakeld.
     * **Privié-adresruimte** - de IP-adresruimte op uw on-premises site. Verkeer dat bestemd is voor deze adresruimte wordt doorgestuurd naar uw lokale site. Dit is vereist wanneer BGP niet is ingeschakeld voor de site.
+    
+      >[!NOTE]
+      >Als u de adresruimte bewerkt nadat u de site hebt gemaakt (bijvoorbeeld als u een extra adresruimte toevoegt), kan het 8-10 minuten duren om de efficiënte routes bij te werken terwijl de onderdelen opnieuw worden gemaakt.
+      >
     * **Hubs**: de hub waarmee u de site wilt verbinden. Een site kan alleen worden verbonden met hubs die een VPN-gateway hebben. Als u een hub niet ziet, maak dan eerst een VPN-gateway in die hub.
 4. Selecteer **koppelingen** om informatie over de fysieke koppelingen op de vertakking toe te voegen. Als u een CPE-apparaat van een Virtual WAN-partner heeft, vraag dan bij hen na of deze informatie wordt uitgewisseld met Azure als onderdeel van de upload van informatie over de vertakking die is ingesteld in hun systemen.
 

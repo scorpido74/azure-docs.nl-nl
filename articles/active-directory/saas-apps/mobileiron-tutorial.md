@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 45ad613fd250f905dd1cd5e14b5c8aeb42896a51
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: edfd14d979b84061690410f3da9e29ba07899654
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554633"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940970"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>Zelfstudie: Azure Active Directory-integratie met MobileIron
 
@@ -99,7 +99,7 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD te configurere
 
 4. Voer in het gedeelte **Standaard SAML-configuratie** de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Gegevens van domein en URL's voor eenmalige aanmelding van MobileIron](common/idp-intiated.png)
+    ![Schermopname die de Standaard SAML-configuratie toont, waar u de id en URL kunt invoeren en vervolgens Opslaan selecteert.](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://www.mobileiron.com/<key>`
 
@@ -107,7 +107,7 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD te configurere
 
     c. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Gegevens van domein en URL's voor eenmalige aanmelding van MobileIron](common/metadata-upload-additional-signon.png)
+    ![Schermopname die Extra URL's instellen toont, waar u een aanmeldings-URL kunt invoeren.](common/metadata-upload-additional-signon.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<host>.mobileiron.com/user/login.html`
 
@@ -124,11 +124,11 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD te configurere
 
 2. Ga naar **Admin** > **Identity** en selecteer de optie **AAD** in de vervolgkeuzelijst **Info on Cloud IDP Setup**.
 
-    ![Eenmalige aanmelding configureren](./media/mobileiron-tutorial/tutorial_mobileiron_admin.png)
+    ![Schermopname toont het beheertabblad van de MobileIron-site, met Identity geselecteerd.](./media/mobileiron-tutorial/tutorial_mobileiron_admin.png)
 
 3. Kopieer de waarden van **Key** en **Host** en plak deze in de sectie **Standaard SAML-configuratie** in de Azure-portal om de URL's te voltooien.
 
-    ![Eenmalige aanmelding configureren](./media/mobileiron-tutorial/key.png)
+    ![Schermopname toont de optie Setting Up SAML met een sleutel en hostwaarde.](./media/mobileiron-tutorial/key.png)
 
 4. Klik in het veld **Export Metadata file from AAD and Import to MobileIron Cloud** op **Choose File** om de metagegevens die u hebt gedownload uit de Azure-portal te uploaden. Klik op **Done** als het uploaden is voltooid.
 

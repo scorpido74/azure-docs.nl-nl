@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0580614468d4003b3640fd4df08ff02f3a1c8476
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04cb48a3ff84a67995c1a920a323fa568a67cdf3
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021065"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203242"
 ---
 # <a name="tutorial-refining-materials-lighting-and-effects"></a>Zelfstudie: Materialen, belichting en effecten verfijnen
 
@@ -32,7 +32,7 @@ In deze zelfstudie leert u het volgende:
 
 Het bieden van visuele feedback aan de gebruiker is een belangrijk onderdeel van de gebruikerservaring in elke toepassing. Azure Remote Rendering biedt methoden voor visuele feedback via [Hiërarchische statusoverschrijvingen](../../../overview/features/override-hierarchical-state.md). De hiërarchische statusoverschrijvingen worden geïmplementeerd met onderdelen die zijn gekoppeld aan lokale exemplaren van modellen. We hebben geleerd hoe u deze lokale exemplaren maakt in [De externe objectgrafiek synchroniseren in de Unity-hiërarchie](../manipulate-models/manipulate-models.md#synchronizing-the-remote-object-graph-into-the-unity-hierarchy).
 
-Eerst maken we een wrapper om het onderdeel [**HierarchicalStateOverrideComponent**](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent). **HierarchicalStateOverrideComponent** is het lokale script waarmee de overschrijvingen op de externe entiteit worden beheerd. De [**zelfstudie Assets**](../custom-models/custom-models.md#import-assets-used-by-this-tutorial) bevat een abstracte basisklasse met de naam **BaseEntityOverrideController**, die we uitbreiden om de wrapper te maken.
+Eerst maken we een wrapper om het onderdeel [**HierarchicalStateOverrideComponent**](/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent). **HierarchicalStateOverrideComponent** is het lokale script waarmee de overschrijvingen op de externe entiteit worden beheerd. De [**zelfstudie Assets**](../custom-models/custom-models.md#import-assets-used-by-this-tutorial) bevat een abstracte basisklasse met de naam **BaseEntityOverrideController**, die we uitbreiden om de wrapper te maken.
 
 1. Maak een nieuw script met de naam **EntityOverrideController** en vervang de inhoud door de volgende code:
 

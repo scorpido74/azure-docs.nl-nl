@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 6b091406b15db036007ba6a11049ee63ffe99cf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1836e6fc1c29e74bceba62bbeb40ce9cc5831895
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616888"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147433"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continue integratie en levering in Azure Data Factory
 
@@ -656,7 +656,7 @@ Als u gebruik wilt maken van Git-integratie met uw data factory en een CI/CD-pij
     - Data Factory-entiteiten zijn afhankelijk van elkaar. Triggers zijn bijvoorbeeld afhankelijk van pijp lijnen, en pijp lijnen zijn afhankelijk van gegevens sets en andere pijp lijnen. Selectief publiceren van een subset van bronnen kan leiden tot onverwacht gedrag en fouten.
     - In zeldzame gevallen wanneer u selectief publiceren nodig hebt, kunt u overwegen om een hotfix te gebruiken. Zie [hotfix production environment](#hotfix-production-environment)(Engelstalig) voor meer informatie.
 
-- Het Azure Data Factory team adviseert geen RBAC-besturings elementen toe te wijzen aan afzonderlijke entiteiten (pijp lijnen, gegevens sets, enzovoort) in een data factory. Als een ontwikkelaar bijvoorbeeld toegang heeft tot een pijp lijn of een gegevensset, moeten ze toegang hebben tot alle pijp lijnen of gegevens sets in de data factory. Als u van mening bent dat u veel RBAC-rollen wilt implementeren in een data factory, raadpleegt u de implementatie van een tweede data factory.
+- Het Azure Data Factory team adviseert geen Azure RBAC-besturings elementen toe te wijzen aan afzonderlijke entiteiten (pijp lijnen, gegevens sets, enzovoort) in een data factory. Als een ontwikkelaar bijvoorbeeld toegang heeft tot een pijp lijn of een gegevensset, moeten ze toegang hebben tot alle pijp lijnen of gegevens sets in de data factory. Als u van mening bent dat u veel Azure-rollen moet implementeren in een data factory, raadpleegt u de implementatie van een tweede data factory.
 
 -   U kunt niet publiceren vanuit privé-filialen.
 
@@ -675,7 +675,7 @@ Bij het uitvoeren van een script na de implementatie moet u in het veld **script
 
 `-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $false -deleteDeployment $true`
 
-![Azure PowerShell taak](media/continuous-integration-deployment/continuous-integration-image11.png)
+![Azure PowerShell-taak](media/continuous-integration-deployment/continuous-integration-image11.png)
 
 Dit is het script dat kan worden gebruikt voor de voorafgaande en na de implementatie. IT-accounts voor verwijderde resources en resource verwijzingen.
 

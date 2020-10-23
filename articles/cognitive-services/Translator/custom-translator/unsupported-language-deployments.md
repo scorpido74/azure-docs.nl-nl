@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/24/2019
 ms.author: swmachan
-ms.openlocfilehash: 3c5c74fc853b5a2425a58e1704aad43350cba212
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5918adfb6724c984f4a59fda802e2f4c5cde7c1
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85964682"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221193"
 ---
 # <a name="unsupported-language-deployments"></a>Implementaties in niet-ondersteunde talen
 
@@ -35,11 +35,11 @@ Om ervoor te zorgen dat uw modellen kandidaten zijn voor implementatie, moeten z
 ## <a name="process"></a>Proces
 Zodra u modellen van de hub hebt gemigreerd die kandidaten zijn voor implementatie, kunt u deze vinden door naar de pagina **instellingen** voor uw werk ruimte te gaan en naar het einde van de pagina te schuiven, waar u een **niet-ondersteunde sectie training voor Translator hub** ziet.  Deze sectie wordt alleen weer gegeven als u projecten hebt die voldoen aan de hierboven vermelde vereisten.
 
-![Migreren vanaf hub](media/unsupported-language-deployments/unsupported-translator-hub-trainings.jpg)
+![Scherm opname van de sectie met niet-ondersteunde training voor Translator hub.](media/unsupported-language-deployments/unsupported-translator-hub-trainings.jpg)
 
 Op de **niet-ondersteunde pagina training voor Translator hub** bevat het tabblad niet- **aangevraagde opleidingen** modellen die in aanmerking komen voor implementatie.  Selecteer de modellen die u wilt implementeren en dien een aanvraag in.   Vóór de implementatie deadline van 30 april kunt u net zoveel modellen selecteren als u wilt voor de implementatie.
  
-![Migreren vanaf hub](media/unsupported-language-deployments/unsupported-translator-hub-trainings-list.jpg)
+![Scherm opname van het tabblad niet-aangevraagde opleidingen.](media/unsupported-language-deployments/unsupported-translator-hub-trainings-list.jpg)
 
 Na verzen ding is het model niet meer beschikbaar op het tabblad niet- **aangevraagde opleidingen** en wordt het niet meer weer gegeven op het tabblad **aangevraagde opleidingen** .  U kunt uw aangevraagde trainingen op elk gewenst moment weer geven.
 

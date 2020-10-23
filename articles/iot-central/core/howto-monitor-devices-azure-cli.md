@@ -9,12 +9,12 @@ ms.service: iot-central
 ms.custom: devx-track-azurecli, device-developer
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 276513e41b1595180acb0a596b236428032d87a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b266def0dbe81542714fc6d47986f3cde8235dd0
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90015973"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122957"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Apparaatconnectiviteit bewaken met Azure CLI
 
@@ -22,11 +22,11 @@ ms.locfileid: "90015973"
 
 Gebruik de Azure CLI IoT-extensie om berichten te bekijken die uw apparaten naar IoT Central verzenden en wijzigingen in het apparaat te observeren. U kunt dit hulp programma gebruiken om de connectiviteit van apparaten op te sporen en te controleren op problemen met de toegang tot de Cloud of apparaten die niet reageren op twee wijzigingen.
 
-[Bezoek de naslag informatie voor Azure CLI-extensies voor meer informatie](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/central?view=azure-cli-latest)
+[Bezoek de naslag informatie voor Azure CLI-extensies voor meer informatie](/cli/azure/ext/azure-iot/iot/central?view=azure-cli-latest)
 
 ## <a name="prerequisites"></a>Vereisten
 
-+ Azure CLI is geïnstalleerd en versie 2.7.0 of hoger. Controleer de versie van uw Azure CLI door uit te voeren `az --version` . Meer informatie over het installeren en bijwerken van de [Azure cli-documenten](https://docs.microsoft.com/cli/azure/install-azure-cli)
++ Azure CLI is geïnstalleerd en versie 2.7.0 of hoger. Controleer de versie van uw Azure CLI door uit te voeren `az --version` . Meer informatie over het installeren en bijwerken van de [Azure cli-documenten](/cli/azure/install-azure-cli)
 + Een werk-of school account in azure, toegevoegd als een gebruiker in een IoT Central-toepassing.
 
 ## <a name="install-the-iot-central-extension"></a>De IoT Central-extensie installeren

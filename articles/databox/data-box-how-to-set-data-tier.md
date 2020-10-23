@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: a68793d893d8eb8de681eb438de39afc212370c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80c4d8a70454c007ac45f588e59c03ef45f10933
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84608703"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125061"
 ---
 # <a name="use-azure-data-box-or-azure-data-box-heavy-to-send-data-to-appropriate-azure-storage-blob-tier"></a>Azure Data Box of Azure Data Box Heavy gebruiken om gegevens te verzenden naar de juiste Azure Storage BLOB-laag
 
@@ -29,11 +29,11 @@ Azure Storage biedt drie verschillende lagen voor het opslaan van gegevens op de
 
 De cool Storage-laag is voor zelden gebruikte gegevens die gedurende mini maal 30 dagen moeten worden opgeslagen. De opslag kosten voor de laag koud zijn lager dan die van de Hot Storage-laag, maar de kosten voor gegevens toegang zijn hoog wanneer ze worden vergeleken met de warme laag.
 
-De Azure-archief laag is offline en biedt de laagste opslag kosten, maar ook de hoogste toegangs kosten. Deze laag is bedoeld voor gegevens die gedurende mini maal 180 dagen in archief opslag bewaard blijven. Ga voor meer informatie over elk van deze lagen en het prijs model naar [vergelijking van de opslag lagen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers).
+De Azure-archief laag is offline en biedt de laagste opslag kosten, maar ook de hoogste toegangs kosten. Deze laag is bedoeld voor gegevens die gedurende mini maal 180 dagen in archief opslag bewaard blijven. Ga voor meer informatie over elk van deze lagen en het prijs model naar [vergelijking van de opslag lagen](../storage/blobs/storage-blob-storage-tiers.md).
 
 De gegevens van de Data Box of Data Box Heavy worden geüpload naar een opslaglaag die is gekoppeld aan het opslag account. Wanneer u een opslag account maakt, kunt u de toegangs laag als dynamisch of koud opgeven. Afhankelijk van het toegangs patroon van uw werk belasting en kosten, kunt u deze gegevens van de standaard laag naar een andere opslaglaag verplaatsen.
 
-U kunt de opslag gegevens van uw objecten alleen in Blob Storage-of Algemeen v2-accounts (GPv2) laag lagen. General Purpose v1 (GPv1)-accounts bieden geen ondersteuning voor opslaglagen. Als u de juiste opslaglaag voor uw gegevens wilt kiezen, raadpleegt u de overwegingen voor [Azure Blob Storage: Premium, warme, cool en archief opslag lagen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers).
+U kunt de opslag gegevens van uw objecten alleen in Blob Storage-of Algemeen v2-accounts (GPv2) laag lagen. General Purpose v1 (GPv1)-accounts bieden geen ondersteuning voor opslaglagen. Als u de juiste opslaglaag voor uw gegevens wilt kiezen, raadpleegt u de overwegingen voor [Azure Blob Storage: Premium, warme, cool en archief opslag lagen](../storage/blobs/storage-blob-storage-tiers.md).
 
 ## <a name="set-a-default-blob-tier"></a>Een standaardblob-laag instellen
 
@@ -41,13 +41,13 @@ De standaardlaag van de BLOB wordt opgegeven wanneer het opslag account wordt ge
 
 De lagen kunnen niet worden opgegeven als u een nieuw account probeert te maken bij het best Ellen van een Data Box of Data Box Heavy. Nadat het account is gemaakt, kunt u het account in de portal wijzigen om de standaardlaag voor toegang in te stellen.
 
-U kunt ook eerst een opslag account maken met het opgegeven kenmerk van de toegangs laag. Wanneer u de Data Box of Data Box Heavy order maakt, selecteert u het bestaande opslag account. Ga voor meer informatie over het instellen van de standaardlaag BLOB tijdens het maken van een opslag account naar [een opslag account maken in azure Portal](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=portal).
+U kunt ook eerst een opslag account maken met het opgegeven kenmerk van de toegangs laag. Wanneer u de Data Box of Data Box Heavy order maakt, selecteert u het bestaande opslag account. Ga voor meer informatie over het instellen van de standaardlaag BLOB tijdens het maken van een opslag account naar [een opslag account maken in azure Portal](../storage/common/storage-account-create.md?tabs=portal).
 
 ## <a name="move-data-to-a-non-default-tier"></a>Gegevens naar een niet-standaard-laag verplaatsen
 
 Zodra de gegevens van Data Box apparaat naar de laag standaard worden geüpload, kunt u de gegevens naar een andere laag verplaatsen. Er zijn twee manieren om deze gegevens te verplaatsen naar een niet-standaard-laag.
 
-- **Levenscyclus beheer voor Azure Blob-opslag** : u kunt een op beleid gebaseerde aanpak gebruiken om gegevens automatisch te trapsgewijs of te laten verlopen aan het einde van de levens cyclus. Ga voor meer informatie naar [beheer van de levens cyclus van Azure Blob-opslag](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts).
+- **Levenscyclus beheer voor Azure Blob-opslag** : u kunt een op beleid gebaseerde aanpak gebruiken om gegevens automatisch te trapsgewijs of te laten verlopen aan het einde van de levens cyclus. Ga voor meer informatie naar [beheer van de levens cyclus van Azure Blob-opslag](../storage/blobs/storage-lifecycle-management-concepts.md).
 - **Scripts** : u kunt een script methode gebruiken via Azure PowerShell om laag niveau op blobniveau in te scha kelen. U kunt de bewerking aanroepen `SetBlobTier` om de laag in te stellen op de blob.
 
 ## <a name="use-azure-powershell-to-set-the-blob-tier"></a>Azure PowerShell gebruiken om de BLOB-laag in te stellen
@@ -116,5 +116,4 @@ In de volgende stappen wordt beschreven hoe u de BLOB-laag kunt instellen op arc
 
 ## <a name="next-steps"></a>Volgende stappen
 
--  Meer informatie over het oplossen [van veelvoorkomende scenario's voor gegevenslaagingen met levenscyclus beleid](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts#examples)
-
+-  Meer informatie over het oplossen [van veelvoorkomende scenario's voor gegevenslaagingen met levenscyclus beleid](../storage/blobs/storage-lifecycle-management-concepts.md#examples)

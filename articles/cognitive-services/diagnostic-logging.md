@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 06/14/2019
 ms.author: erhopf
-ms.openlocfilehash: 539a35f170b2ee0c94762a30ed9376ca4a416210
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9660aa3923964392f1789570d26dd825e0fef350
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "71827899"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143188"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>Diagnostische logboek registratie inschakelen voor Azure Cognitive Services
 
@@ -24,7 +24,7 @@ Deze hand leiding bevat stapsgewijze instructies voor het inschakelen van diagno
 
 Als u diagnostische logboek registratie wilt inschakelen, moet u uw logboek gegevens ergens opslaan. In deze zelf studie wordt gebruikgemaakt van Azure Storage en Log Analytics.
 
-* [Azure Storage](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-archive-diagnostic-logs) : behoudt Diagnostische logboeken voor beleids controle, statische analyse of back-up. Het opslag account hoeft zich niet in hetzelfde abonnement te betreden als de resource waarmee logboeken worden verzonden, zolang de gebruiker die de instelling configureert de juiste RBAC-toegang heeft tot beide abonnementen.
+* [Azure Storage](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-archive-diagnostic-logs) : behoudt Diagnostische logboeken voor beleids controle, statische analyse of back-up. Het opslag account hoeft zich niet in hetzelfde abonnement te betreden als de resource waarmee logboeken worden verzonden, zolang de gebruiker die de instelling configureert de juiste toegang tot Azure RBAC heeft voor beide abonnementen.
 * [Log Analytics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics) : een flexibel hulp programma voor logboek zoeken en analyse waarmee onbewerkte logboeken kunnen worden geanalyseerd die door een Azure-resource zijn gegenereerd.
 
 > [!NOTE]

@@ -1,15 +1,15 @@
 ---
 title: Ingebouwde beleidsdefinities voor Azure Event Hubs
 description: Overzicht van de ingebouwde Azure Policy-beleidsdefinities voor Azure Event Hubs. Deze ingebouwde beleidsdefinities bieden algemene benaderingen voor het beheren van uw Azure-resources.
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: da5d9be9e7684e3f3ab83856f2477824d9239f04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6525d1a2ea474fadd9257b5583b910127cd31634
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819134"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318423"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-event-hubs"></a>Ingebouwde Azure Policy-definities voor Azure Event Hubs
 

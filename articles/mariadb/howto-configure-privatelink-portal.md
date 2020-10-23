@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 6c96c4803293db9d9bacfc43f0de2f7803e6c41c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da54917d21d468f96b8e72ac362e030570fabaee
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836476"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426024"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-portal"></a>Een persoonlijke koppeling voor Azure Database for MariaDB maken en beheren met behulp van portal
 
@@ -251,7 +251,7 @@ Wanneer u klaar bent met het persoonlijke eind punt, de MariaDB-server en de vir
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze procedure hebt u een VM gemaakt in een virtueel netwerk, een Azure Database for MariaDB en een persoonlijk eind punt voor persoonlijke toegang. U hebt verbinding gemaakt met één virtuele machine via internet en deze wordt veilig door gegeven aan de MariaDB-server met behulp van een persoonlijke koppeling. Zie [Wat is Azure private endpoint](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)? voor meer informatie over privé-eind punten.
+In deze procedure hebt u een VM gemaakt in een virtueel netwerk, een Azure Database for MariaDB en een persoonlijk eind punt voor persoonlijke toegang. U hebt verbinding gemaakt met één virtuele machine via internet en deze wordt veilig door gegeven aan de MariaDB-server met behulp van een persoonlijke koppeling. Zie [Wat is Azure private endpoint](../private-link/private-endpoint-overview.md)? voor meer informatie over privé-eind punten.
 
 <!-- Link references, to text, Within this same GitHub repo. -->
 [resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

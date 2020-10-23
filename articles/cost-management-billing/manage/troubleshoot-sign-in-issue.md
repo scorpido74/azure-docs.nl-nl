@@ -10,19 +10,19 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 08/20/2020
 ms.author: v-miegge
-ms.openlocfilehash: 3ee600cb72d06781f87c8f68640576afa50cea06
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2e9b14fa264f3286134913e3c279c4400ce5bcc3
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686493"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132326"
 ---
 # <a name="troubleshoot-azure-subscription-sign-in-issues"></a>Aanmeldingsproblemen voor Azure-abonnementen oplossen
 
 Deze handleiding helpt bij het oplossen van problemen waardoor u zich niet kunt aanmelden bij Azure Portal of het Azure-accountcentrum.
 
 > [!NOTE]
-> Als u problemen ondervindt bij het aanmelden voor een nieuw Azure-account, raadpleegt u [Problemen met de registratie van Azure-abonnementen oplossen](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-azure-sign-up).
+> Als u problemen ondervindt bij het aanmelden voor een nieuw Azure-account, raadpleegt u [Problemen met de registratie van Azure-abonnementen oplossen](./troubleshoot-azure-sign-up.md).
 
 ## <a name="page-hangs-in-the-loading-status"></a>De pagina blijft hangen tijdens het laden
 
@@ -66,7 +66,7 @@ Dit probleem treedt op als u de verkeerde map hebt geselecteerd of als uw accoun
 Dit probleem oplossen:
 
 - Controleer of de juiste Azure-map is geselecteerd door in de rechterbovenhoek uw account te selecteren.
-- Als de juiste Azure-map is geselecteerd maar u nog steeds het foutbericht ontvangt, moet uw account worden [toegevoegd als eigenaar](https://docs.microsoft.com/azure/cost-management-billing/manage/add-change-subscription-administrator).
+- Als de juiste Azure-map is geselecteerd maar u nog steeds het foutbericht ontvangt, moet uw account worden [toegevoegd als eigenaar](./add-change-subscription-administrator.md).
 
 **Scenario 2:** U ziet het probleem bij het aanmelden bij het [Azure-accountcentrum](https://account.windowsazure.com/Subscriptions)
 
@@ -80,11 +80,11 @@ Controleer of het account dat u gebruikt de accountbeheerder is. Voer de volgend
 
 Andere artikelen met probleemoplossingen voor Azure Billing en abonnementen
 
-- [Geweigerde kaart](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card)
-- [Registratieproblemen voor abonnementen](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-azure-sign-up)
-- [Geen abonnementen gevonden](https://docs.microsoft.com/azure/cost-management-billing/manage/no-subscriptions-found)
-- [Weergave voor bedrijfskosten is uitgeschakeld](https://docs.microsoft.com/azure/cost-management-billing/manage/enterprise-mgmt-grp-troubleshoot-cost-view)
-- [Documentatie voor Azure Billing](https://docs.microsoft.com/azure/cost-management-billing/)
+- [Geweigerde kaart](./troubleshoot-declined-card.md)
+- [Registratieproblemen voor abonnementen](./troubleshoot-azure-sign-up.md)
+- [Geen abonnementen gevonden](./no-subscriptions-found.md)
+- [Weergave voor bedrijfskosten is uitgeschakeld](./enterprise-mgmt-grp-troubleshoot-cost-view.md)
+- [Documentatie voor Azure Billing](../index.yml)
 
 ## <a name="contact-us-for-help"></a>Contact met ons opnemen voor ondersteuning
 

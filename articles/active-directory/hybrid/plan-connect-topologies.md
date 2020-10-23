@@ -16,12 +16,12 @@ ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7616ceed812b21f471609d95f59a0d0270dd7f52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d3f8e9441064a5d2d1372e3f177534b8dfefb93
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89658510"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359829"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologieën voor Azure AD Connect
 In dit artikel worden verschillende topologieën voor on-premises en Azure Active Directory (Azure AD) beschreven die gebruikmaken van Azure AD Connect Sync als de oplossing voor sleutel integratie. Dit artikel bevat zowel ondersteunde als niet-ondersteunde configuraties.
@@ -31,14 +31,14 @@ Hier ziet u de legenda voor afbeeldingen in het artikel:
 
 | Beschrijving | Symbool |
 | --- | --- |
-| On-premises Active Directory-forest |![On-premises Active Directory-forest](./media/plan-connect-topologies/LegendAD1.png) |
-| On-premises Active Directory met gefilterde import |![Active Directory met gefilterde import](./media/plan-connect-topologies/LegendAD2.png) |
-| Azure AD Connect synchronisatie server |![Azure AD Connect synchronisatie server](./media/plan-connect-topologies/LegendSync1.png) |
-| "Faserings modus van Azure AD Connect-server" |!["Faserings modus van Azure AD Connect-server"](./media/plan-connect-topologies/LegendSync2.png) |
-| GALSync met Forefront Identity Manager (FIM) 2010 of Microsoft Identity Manager (MIM) 2016 |![GALSync met FIM 2010 of MIM 2016](./media/plan-connect-topologies/LegendSync3.png) |
-| Azure AD Connect-synchronisatie server, gedetailleerd |![Azure AD Connect-synchronisatie server, gedetailleerd](./media/plan-connect-topologies/LegendSync4.png) |
-| Azure AD |![Azure Active Directory](./media/plan-connect-topologies/LegendAAD.png) |
-| Niet-ondersteund scenario |![Niet-ondersteund scenario](./media/plan-connect-topologies/LegendUnsupported.png) |
+| On-premises Active Directory-forest |![On-premises Active Directory-forest](./media/plan-connect-topologies/legendad1.png) |
+| On-premises Active Directory met gefilterde import |![Active Directory met gefilterde import](./media/plan-connect-topologies/legendad2.png) |
+| Azure AD Connect synchronisatie server |![Azure AD Connect synchronisatie server](./media/plan-connect-topologies/legendsync1.png) |
+| "Faserings modus van Azure AD Connect-server" |!["Faserings modus van Azure AD Connect-server"](./media/plan-connect-topologies/legendsync2.png) |
+| GALSync met Forefront Identity Manager (FIM) 2010 of Microsoft Identity Manager (MIM) 2016 |![GALSync met FIM 2010 of MIM 2016](./media/plan-connect-topologies/legendsync3.png) |
+| Azure AD Connect-synchronisatie server, gedetailleerd |![Azure AD Connect-synchronisatie server, gedetailleerd](./media/plan-connect-topologies/legendsync4.png) |
+| Azure AD |![Azure Active Directory](./media/plan-connect-topologies/legendaad.png) |
+| Niet-ondersteund scenario |![Niet-ondersteund scenario](./media/plan-connect-topologies/legendunsupported.png) |
 
 
 > [!IMPORTANT]
@@ -46,17 +46,17 @@ Hier ziet u de legenda voor afbeeldingen in het artikel:
 
 
 ## <a name="single-forest-single-azure-ad-tenant"></a>Eén forest, één Azure AD-Tenant
-![Topologie voor één forest en één Tenant](./media/plan-connect-topologies/SingleForestSingleDirectory.png)
+![Topologie voor één forest en één Tenant](./media/plan-connect-topologies/singleforestsingledirectory.png)
 
 De meest voorkomende topologie is één on-premises forest met een of meer domeinen en één Azure AD-Tenant. Voor Azure AD-verificatie wordt wachtwoord hash-synchronisatie gebruikt. De snelle installatie van Azure AD Connect ondersteunt alleen deze topologie.
 
 ### <a name="single-forest-multiple-sync-servers-to-one-azure-ad-tenant"></a>Eén forest, meerdere synchronisatie servers naar één Azure AD-Tenant
-![Niet-ondersteunde, gefilterde topologie voor één forest](./media/plan-connect-topologies/SingleForestFilteredUnsupported.png)
+![Niet-ondersteunde, gefilterde topologie voor één forest](./media/plan-connect-topologies/singleforestfilteredunsupported.png)
 
 Meerdere Azure AD Connect-synchronisatie servers die zijn verbonden met dezelfde Azure AD-Tenant, worden niet ondersteund, met uitzonde ring van een [staging-server](#staging-server). Het wordt niet ondersteund, zelfs niet als deze servers zijn geconfigureerd om te synchroniseren met een groep objecten die elkaar uitsluiten. Mogelijk hebt u deze topologie gezien als u niet alle domeinen in het forest kunt bereiken vanaf één server, of als u de belasting over meerdere servers wilt verdelen.
 
 ## <a name="multiple-forests-single-azure-ad-tenant"></a>Meerdere forests, één Azure AD-Tenant
-![Topologie voor meerdere forests en één Tenant](./media/plan-connect-topologies/MultiForestSingleDirectory.png)
+![Topologie voor meerdere forests en één Tenant](./media/plan-connect-topologies/multiforestsingledirectory.png)
 
 Veel organisaties hebben omgevingen met meerdere on-premises Active Directory forests. Er zijn verschillende redenen om meer dan één on-premises Active Directory forest te hebben. Typische voor beelden zijn ontwerpen met account-resource bossen en het resultaat van een fusie of overname.
 
@@ -81,16 +81,16 @@ Als uw omgeving niet met deze hypo Thesen overeenkomt, gebeurt het volgende:
 U kunt meer informatie vinden over [de standaard configuratie](concept-azure-ad-connect-sync-default-configuration.md).
 
 ### <a name="multiple-forests-multiple-sync-servers-to-one-azure-ad-tenant"></a>Meerdere forests, meerdere synchronisatie servers naar één Azure AD-Tenant
-![Niet-ondersteunde topologie voor meerdere forests en meerdere synchronisatie servers](./media/plan-connect-topologies/MultiForestMultiSyncUnsupported.png)
+![Niet-ondersteunde topologie voor meerdere forests en meerdere synchronisatie servers](./media/plan-connect-topologies/multiforestmultisyncunsupported.png)
 
 Het is niet mogelijk om meer dan één Azure AD Connect synchronisatie server die is verbonden met één Azure AD-Tenant. De uitzonde ring is het gebruik van een [staging-server](#staging-server).
 
 Deze topologie wijkt af van de volgende in dat **meerdere synchronisatie servers** die zijn verbonden met één Azure AD-Tenant, niet worden ondersteund.
 
 ### <a name="multiple-forests-single-sync-server-users-are-represented-in-only-one-directory"></a>Meerdere forests, één synchronisatie server, gebruikers worden in slechts één map weer gegeven
-![Optie voor het weer geven van gebruikers in alle directory's](./media/plan-connect-topologies/MultiForestUsersOnce.png)
+![Optie voor het weer geven van gebruikers in alle directory's](./media/plan-connect-topologies/multiforestusersonce.png)
 
-![Voors telling van meerdere forests en afzonderlijke topologieën](./media/plan-connect-topologies/MultiForestSeparateTopologies.png)
+![Voors telling van meerdere forests en afzonderlijke topologieën](./media/plan-connect-topologies/multiforestseparatetopologies.png)
 
 In deze omgeving worden alle on-premises forests beschouwd als afzonderlijke entiteiten. Er is geen gebruiker aanwezig in een ander forest. Elk forest heeft een eigen Exchange-organisatie en er is geen GALSync tussen de forests. Deze topologie kan de situatie zijn na een fusie/aanschaf of in een organisatie waar elke bedrijfs eenheid onafhankelijk van elkaar werkt. Deze forests bevinden zich in dezelfde organisatie in azure AD en worden weer gegeven met een uniforme GAL. In de voor gaande afbeelding wordt elk object in elk forest één keer weer gegeven in het omgekeerde en samengevoegd in de doel-Azure AD-Tenant.
 
@@ -98,9 +98,9 @@ In deze omgeving worden alle on-premises forests beschouwd als afzonderlijke ent
 Algemene voor al deze scenario's is dat distributie-en beveiligings groepen een combi natie van gebruikers, contact personen en refererende beveiligings-principals (FSPs) kunnen bevatten. FSPs worden in Active Directory Domain Services (AD DS) gebruikt om leden van andere forests in een beveiligings groep weer te geven. Alle FSPs worden omgezet in het echte object in azure AD.
 
 ### <a name="multiple-forests-full-mesh-with-optional-galsync"></a>Meerdere forests: volledig net met optionele GALSync
-![Optie voor het gebruik van het kenmerk mail voor het vergelijken wanneer gebruikers identiteiten in meerdere directory's bestaan](./media/plan-connect-topologies/MultiForestUsersMail.png)
+![Optie voor het gebruik van het kenmerk mail voor het vergelijken wanneer gebruikers identiteiten in meerdere directory's bestaan](./media/plan-connect-topologies/multiforestusersmail.png)
 
-![Volledige mesh-topologie voor meerdere forests](./media/plan-connect-topologies/MultiForestFullMesh.png)
+![Volledige mesh-topologie voor meerdere forests](./media/plan-connect-topologies/multiforestfullmesh.png)
 
 Met een volledige mesh-topologie kunnen gebruikers en bronnen in elk forest worden geplaatst. Doorgaans zijn er twee richtings vertrouwensrelaties tussen de forests.
 
@@ -109,9 +109,9 @@ Als Exchange aanwezig is in meer dan één forest, is er mogelijk een on-premise
 In dit scenario worden identiteits objecten gekoppeld via het kenmerk mail. Een gebruiker die een postvak in het ene forest heeft, wordt gekoppeld aan de contact personen in de andere forests.
 
 ### <a name="multiple-forests-account-resource-forest"></a>Meerdere forests: account-bron-forest
-![Optie voor het gebruik van de ObjectSID-en msExchMasterAccountSID-kenmerken voor het vergelijken van identiteiten in meerdere directory's](./media/plan-connect-topologies/MultiForestUsersObjectSID.png)
+![Optie voor het gebruik van de ObjectSID-en msExchMasterAccountSID-kenmerken voor het vergelijken van identiteiten in meerdere directory's](./media/plan-connect-topologies/multiforestusersobjectsid.png)
 
-![Account-resource forest-topologie voor meerdere forests](./media/plan-connect-topologies/MultiForestAccountResource.png)
+![Account-resource forest-topologie voor meerdere forests](./media/plan-connect-topologies/multiforestaccountresource.png)
 
 In een account-resource forest-topologie hebt u een of meer *account* -forests met actieve gebruikers accounts. U hebt ook een of meer *bron* -forests met uitgeschakelde accounts.
 
@@ -128,7 +128,7 @@ Sommige Microsoft 365 werk belastingen hebben bepaalde beperkingen op ondersteun
 Als u een grotere organisatie bent, kunt u overwegen om de [Microsoft 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) -functie te gebruiken. Hiermee kunt u definiëren in welke Data Center-regio de resources van de gebruiker zich bevinden.
 
 ## <a name="staging-server"></a>Staging-server
-![Faserings server in een topologie](./media/plan-connect-topologies/MultiForestStaging.png)
+![Faserings server in een topologie](./media/plan-connect-topologies/multiforeststaging.png)
 
 Azure AD Connect ondersteunt het installeren van een tweede server in de *faserings modus*. Een server in deze modus leest gegevens van alle verbonden directory's, maar schrijft niets naar verbonden directory's. Er wordt gebruikgemaakt van de normale synchronisatie cyclus en daarom is er een bijgewerkte kopie van de identiteits gegevens.
 
@@ -142,14 +142,14 @@ Het is mogelijk om meer dan één staging-server te hebben wanneer u meerdere ba
 
 ## <a name="multiple-azure-ad-tenants"></a>Meerdere Azure AD-tenants
 We raden u aan één Tenant in azure AD te hebben voor een organisatie.
-Zie het artikel beheer [eenheden in azure AD](../users-groups-roles/directory-administrative-units.md)voordat u meerdere Azure AD-tenants wilt gebruiken. Het behandelt veelvoorkomende scenario's waarin u één Tenant kunt gebruiken.
+Zie het artikel beheer [eenheden in azure AD](../roles/administrative-units.md)voordat u meerdere Azure AD-tenants wilt gebruiken. Het behandelt veelvoorkomende scenario's waarin u één Tenant kunt gebruiken.
 
-![Topologie voor meerdere forests en meerdere tenants](./media/plan-connect-topologies/MultiForestMultiDirectory.png)
+![Topologie voor meerdere forests en meerdere tenants](./media/plan-connect-topologies/multiforestmultidirectory.png)
 
 Er is een 1:1-relatie tussen een Azure AD Connect synchronisatie server en een Azure AD-Tenant. Voor elke Azure AD-Tenant hebt u een Azure AD Connect synchronisatie server geïnstalleerd. De Azure AD-Tenant instanties worden door het ontwerp geïsoleerd. Dat wil zeggen dat gebruikers in een Tenant geen gebruikers kunnen zien in de andere Tenant. Als u deze schei ding wilt, is dit een ondersteunde configuratie. Als dat niet het geval is, moet u één Azure AD-Tenant model gebruiken.
 
 ### <a name="each-object-only-once-in-an-azure-ad-tenant"></a>Elk object slechts eenmaal in een Azure AD-Tenant
-![Gefilterde topologie voor één forest](./media/plan-connect-topologies/SingleForestFiltered.png)
+![Gefilterde topologie voor één forest](./media/plan-connect-topologies/singleforestfiltered.png)
 
 In deze topologie is een Azure AD Connect synchronisatie server verbonden met elke Azure AD-Tenant. De Azure AD Connect-synchronisatie servers moeten zodanig worden geconfigureerd dat ze worden gefilterd, zodat elk een set objecten bevat die gelijktijdig kunnen worden gebruikt. U kunt bijvoorbeeld elke server voor een bepaald domein of een bepaalde organisatie-eenheid bereiken.
 
@@ -161,7 +161,10 @@ Een DNS-domein kan in slechts één Azure AD-Tenant worden geregistreerd. De Upn
 
 Deze topologie heeft de volgende beperkingen op andere ondersteunde scenario's:
 
-* Slechts een van de Azure AD-tenants kan een Exchange Hybrid inschakelen met het on-premises Active Directory exemplaar.
+* Voor een maximum van 5 Azure Active Directory tenants kan Exchange Hybrid zijn met het on-premises Active Directory exemplaar. Dit scenario wordt beschreven in [Update van de wizard hybride configuratie van September 2020](https://techcommunity.microsoft.com/t5/exchange-team-blog/september-2020-hybrid-configuration-wizard-update/ba-p/1687698).
+* De Exchange-server die de hybride configuratie wizard uitvoert, moet 2016 CU18 of 2019 CU7 of hoger zijn.
+* Elk Azure AD Connect exemplaar moet worden uitgevoerd op een computer die lid is van een domein.
+* Azure AD Connect moet worden geconfigureerd met behulp van de optie voor filteren van domein/OE om gebruikers uit uw on-premises adres lijst te filteren. Met deze optie zorgt u ervoor dat gebruikers alleen in één online Exchange-Tenant worden weer gegeven.
 * Windows 10-apparaten kunnen worden gekoppeld aan één Azure AD-Tenant.
 * De optie voor eenmalige aanmelding (SSO) voor wachtwoord hash-synchronisatie en Pass Through-verificatie kan worden gebruikt met slechts één Azure AD-Tenant.
 
@@ -171,7 +174,7 @@ De vereiste voor een wederzijds exclusieve verzameling objecten is ook van toepa
 * Write-back van apparaat.
 
 ### <a name="each-object-multiple-times-in-an-azure-ad-tenant"></a>Elk object meerdere keren in een Azure AD-Tenant
-![Niet-ondersteunde topologie voor één forest en meerdere tenants](./media/plan-connect-topologies/SingleForestMultiDirectoryUnsupported.png) ![Niet-ondersteunde topologie voor één forest en meerdere connectors](./media/plan-connect-topologies/SingleForestMultiConnectorsUnsupported.png)
+![Niet-ondersteunde topologie voor één forest en meerdere tenants](./media/plan-connect-topologies/singleforestmultidirectoryunsupported.png) ![Niet-ondersteunde topologie voor één forest en meerdere connectors](./media/plan-connect-topologies/singleforestmulticonnectorsunsupported.png)
 
 Deze taken worden niet ondersteund:
 
@@ -180,7 +183,7 @@ Deze taken worden niet ondersteund:
 * Wijzig Azure AD Connect synchronisatie om verbinding te maken met meerdere Azure AD-tenants.
 
 ### <a name="galsync-by-using-writeback"></a>GALSync met behulp van write-back
-![Niet-ondersteunde topologie voor meerdere forests en meerdere directory's, met GALSync focussen op Azure AD](./media/plan-connect-topologies/MultiForestMultiDirectoryGALSync1Unsupported.png) ![Niet-ondersteunde topologie voor meerdere forests en meerdere directory's, waarbij GALSync zich richt op on-premises Active Directory](./media/plan-connect-topologies/MultiForestMultiDirectoryGALSync2Unsupported.png)
+![Niet-ondersteunde topologie voor meerdere forests en meerdere directory's, met GALSync focussen op Azure AD](./media/plan-connect-topologies/multiforestmultidirectorygalsync1unsupported.png) ![Niet-ondersteunde topologie voor meerdere forests en meerdere directory's, waarbij GALSync zich richt op on-premises Active Directory](./media/plan-connect-topologies/multiforestmultidirectorygalsync2unsupported.png)
 
 Azure AD-tenants worden door het ontwerp geïsoleerd. Deze taken worden niet ondersteund:
 
@@ -188,7 +191,7 @@ Azure AD-tenants worden door het ontwerp geïsoleerd. Deze taken worden niet ond
 * Exporteer gebruikers als contact personen naar een andere on-premises Active Directory instantie met behulp van Azure AD Connect-synchronisatie.
 
 ### <a name="galsync-with-on-premises-sync-server"></a>GALSync met on-premises synchronisatie server
-![GALSync in een topologie voor meerdere forests en meerdere directory's](./media/plan-connect-topologies/MultiForestMultiDirectoryGALSync.png)
+![GALSync in een topologie voor meerdere forests en meerdere directory's](./media/plan-connect-topologies/multiforestmultidirectorygalsync.png)
 
 U kunt FIM 2010 of MIM 2016 on-premises gebruiken voor het synchroniseren van gebruikers (via GALSync) tussen twee Exchange-organisaties. De gebruikers in de ene organisatie worden weer gegeven als vreemde gebruikers/contact personen in de andere organisatie. Deze verschillende on-premises Active Directory instanties kunnen vervolgens worden gesynchroniseerd met hun eigen Azure AD-tenants.
 

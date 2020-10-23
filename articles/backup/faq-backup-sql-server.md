@@ -4,12 +4,12 @@ description: Vind antwoorden op veelgestelde vragen over het maken van back-ups 
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 6abfdb09fe16272e870fff517359759968417f79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89316770dc137bff031e6268db5ece156edd4f25
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91461220"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172373"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Veelgestelde vragen over SQL Server-data bases die worden uitgevoerd op een back-up van Azure VM
 
@@ -104,7 +104,7 @@ Een Data Base die u [aan een niet-beveiligd exemplaar toevoegt](backup-sql-serve
   
 ## <a name="can-i-protect-databases-that-have-tde-transparent-data-encryption-turned-on-and-will-the-database-stay-encrypted-through-the-entire-backup-process"></a>Kan ik data bases beveiligen waarvoor TDE (Transparent Data Encryption) is ingeschakeld en de data base wordt versleuteld met het hele back-upproces?
 
-Ja, Azure Backup ondersteunt back-ups van SQL Server-data bases of-server waarop TDE is ingeschakeld. Backup ondersteunt [TDe](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) met sleutels die worden beheerd door Azure, of met door de klant beheerde sleutels (BYOK).  Backup voert geen SQL-versleuteling uit als onderdeel van het back-upproces zodat de data base versleuteld blijft wanneer er een back-up wordt gemaakt.
+Ja, Azure Backup ondersteunt back-ups van SQL Server-data bases of-server waarop TDE is ingeschakeld. Backup ondersteunt [TDe](/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) met sleutels die worden beheerd door Azure, of met door de klant beheerde sleutels (BYOK).  Backup voert geen SQL-versleuteling uit als onderdeel van het back-upproces zodat de data base versleuteld blijft wanneer er een back-up wordt gemaakt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

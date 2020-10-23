@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: c8ab6f51daf18802b83508a3e1bbd5af3ee59799
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 50180984423b7c6d2921234a3502495016c4df5c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336899"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150106"
 ---
 # <a name="plan-to-manage-azure-costs"></a>Plannen om Azure-kosten te beheren
 
@@ -24,7 +24,7 @@ Dit artikel helpt u aan de slag te gaan met het plannen voor het beheren van uw 
 - Ontvang geschatte kosten voordat u services toevoegt met behulp van de [prijscalculator](https://azure.microsoft.com/pricing/calculator/), het prijzenoverzicht voor Azure of bij het toevoegen van services in de Azure-portal.
 - Bewaak kosten met [budgetten](../costs/tutorial-acm-create-budgets.md), [meldingen](../costs/cost-mgt-alerts-monitor-usage-spending.md) en [kostenanalyses](../costs/quick-acm-cost-analysis.md).
 - Controleer de kosten op uw factuur door deze te vergelijken met [gedetailleerde gebruiksgegevensbestanden](../manage/download-azure-invoice-daily-usage-date.md).
-- Integreer facturerings- en kostengegevens met uw eigen rapportagesysteem met behulp van de [Billing](https://docs.microsoft.com/rest/api/billing/)- en [Consumption](https://docs.microsoft.com/rest/api/consumption/)-API's.
+- Integreer facturerings- en kostengegevens met uw eigen rapportagesysteem met behulp van de [Billing](/rest/api/billing/)- en [Consumption](/rest/api/consumption/)-API's.
 - Gebruik aanvullende bronnen en hulpprogramma's voor Enterprise Agreement- (EA), Cloud Solution Provider- (CSP) en Azure Sponsorship-klanten.
 - Maak [gratis gebruik van een aantal populaire Azure-services gedurende 12 maanden](../manage/create-free-services.md) die beschikbaar zijn bij het [gratis Azure-account](https://azure.microsoft.com/free/). Naast de aanbevelingen die hieronder worden vermeld, zie [Voorkomen dat u moet betalen voor een gratis account](../manage/avoid-charges-free-account.md).
 
@@ -125,7 +125,7 @@ Lees de zelfstudie [Kosten optimaliseren op basis van aanbevelingen](../costs/tu
 
 ## <a name="integrate-with-billing-and-consumption-apis"></a>Integreren met de API's voor facturerings- en verbruiksgegevens
 
-Gebruik de Azure [Billing](https://docs.microsoft.com/rest/api/billing/)- en [Consumption](https://docs.microsoft.com/rest/api/consumption/)-API's om programmatisch facturerings-en kostengegevens op te halen. Gebruik zowel de RateCard-API als de gebruik-API om uw gefactureerde gebruik op te halen. Zie [Inzicht verkrijgen in het gebruik van Microsoft Azure-resources](../manage/usage-rate-card-overview.md)voor meer informatie.
+Gebruik de Azure [Billing](/rest/api/billing/)- en [Consumption](/rest/api/consumption/)-API's om programmatisch facturerings-en kostengegevens op te halen. Gebruik zowel de RateCard-API als de gebruik-API om uw gefactureerde gebruik op te halen. Zie [Inzicht verkrijgen in het gebruik van Microsoft Azure-resources](../manage/usage-rate-card-overview.md)voor meer informatie.
 
 ## <a name="additional-resources-and-special-cases"></a><a name="other-offers"></a> Aanvullende resources en speciale gevallen
 

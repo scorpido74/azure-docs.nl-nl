@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
-ms.openlocfilehash: c8fc0393e0961b46fbb8031d735f27e9ad785031
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eadc976270888499be1ed01040cc4ff00632e8e4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60318438"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142274"
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>Uploads van IoT Hub-bestanden configureren met Power shell
 
@@ -23,15 +23,15 @@ Als u de [functie voor het uploaden van bestanden in IOT hub](iot-hub-devguide-f
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
+U hebt het volgende nodig om deze zelfstudie af te ronden:
 
 * Een actief Azure-account. Als u geen account hebt, kunt u in slechts een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.
 
-* [Azure PowerShell-cmdlets](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+* [Azure PowerShell-cmdlets](/powershell/azure/install-Az-ps).
 
-* Een Azure IoT hub. Als u geen IoT-hub hebt, kunt u de [cmdlet New-AzIoTHub](https://docs.microsoft.com/powershell/module/az.iothub/new-aziothub) gebruiken om er een te maken of de portal te gebruiken om [een IOT-hub te maken](iot-hub-create-through-portal.md).
+* Een Azure IoT hub. Als u geen IoT-hub hebt, kunt u de [cmdlet New-AzIoTHub](/powershell/module/az.iothub/new-aziothub) gebruiken om er een te maken of de portal te gebruiken om [een IOT-hub te maken](iot-hub-create-through-portal.md).
 
-* Een Azure Storage-account. Als u geen Azure Storage-account hebt, kunt u de [Azure Storage Power shell-cmdlets](https://docs.microsoft.com/powershell/module/az.storage/) gebruiken om er een te maken of de portal te gebruiken voor het [maken van een opslag account](../storage/common/storage-create-storage-account.md)
+* Een Azure Storage-account. Als u geen Azure Storage-account hebt, kunt u de [Azure Storage Power shell-cmdlets](/powershell/module/az.storage/) gebruiken om er een te maken of de portal te gebruiken voor het [maken van een opslag account](../storage/common/storage-account-create.md)
 
 ## <a name="sign-in-and-set-your-azure-account"></a>Meld u aan en stel uw Azure-account in
 
@@ -136,5 +136,5 @@ Volg deze koppelingen voor meer informatie over het beheren van Azure IoT Hub:
 Zie voor meer informatie over de mogelijkheden van IoT Hub:
 
 * [Ontwikkelaars handleiding IoT Hub](iot-hub-devguide.md)
-* [AI implementeren op Edge-apparaten met Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [AI implementeren op Edge-apparaten met Azure IoT Edge](../iot-edge/quickstart-linux.md)
 * [Beveilig uw IoT-oplossing vanaf de grond](../iot-fundamentals/iot-security-ground-up.md)

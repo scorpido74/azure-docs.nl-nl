@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 04/13/2020
 ms.author: v-umha
-ms.openlocfilehash: 1665c535d4b1fb6190ee5736b688b402f8b4a541
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bdd59d078da1df021b7e23ec858ba7305f72cfa1
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81683897"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164207"
 ---
 # <a name="disaster-recovery-for-farmbeats"></a>Herstel na nood geval voor FarmBeats
 
@@ -45,18 +45,18 @@ U kunt een failover initiëren en de opgeslagen gegevens herstellen waarvoor elk
 Kopieer de toegangs sleutel van de herstelde Cosmos DB en werk de nieuwe FarmBeats Datahub-Key Vault bij.
 
 
-  ![Herstel na noodgevallen](./media/disaster-recovery-for-farmbeats/key-vault-secrets.png)
+  ![Scherm afbeelding waarin wordt uitgelegd waar u de kopie van de toegangs toets wilt ophalen.](./media/disaster-recovery-for-farmbeats/key-vault-secrets.png)
 
 > [!NOTE]
 > Kopieer de URL van de herstelde Cosmos DB en werk deze bij in de nieuwe FarmBeats-Datahub App Service-configuratie. U kunt nu Cosmos DB-account verwijderen in de nieuwe FarmBeats-implementatie.
 
-  ![Herstel na noodgevallen](./media/disaster-recovery-for-farmbeats/configuration.png)
+  ![Scherm afbeelding die laat zien waar u de URL van de herstelde Cosmos DB kopieert.](./media/disaster-recovery-for-farmbeats/configuration.png)
 
 ### <a name="configure-storage-account"></a>Opslag account configureren
 
 Kopieer de toegangs sleutel van het herstelde opslag account en werk het bij in de nieuwe FarmBeats Datahub Key Vault.
 
-![Herstel na noodgevallen](./media/disaster-recovery-for-farmbeats/key-vault-7-secrets.png)
+![Scherm opname van de locatie waar de toegangs sleutel van het herstelde opslag account moet worden gekopieerd.](./media/disaster-recovery-for-farmbeats/key-vault-7-secrets.png)
 
 >[!NOTE]
 > Zorg ervoor dat u de naam van het opslag account bijwerkt in het nieuwe FarmBeats batch-configuratie bestand voor de VM.

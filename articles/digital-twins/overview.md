@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: ea08843dc73ed7603181eee1cf36495fda82b8d4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7ff1e2f00b20344fc19d797ed5bafdfbc2113b66
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89003844"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044663"
 ---
 # <a name="what-is-azure-digital-twins"></a>Wat is Azure Digital Twins?
 
@@ -38,13 +38,13 @@ Modellen worden gedefinieerd in een JSON-achtige taal met de naam [Digital Twins
 * Modellen definiëren semantische **relaties** tussen uw entiteiten, zodat u uw apparaatdubbels kunt verbinden in een kennisgrafiek die de interacties aangeeft. U kunt de modellen zien als een zelfstandig naamwoord in een beschrijving van uw wereld en de relaties als werkwoorden.
 * U kunt apparaatdubbels ook specialiseren met behulp van een modelovername. Een model kan informatie overnemen van een ander model.
 
-DTDL wordt gebruikt voor gegevensmodellen in andere Azure IoT-services, waaronder [IoT-Plug en Play (PnP)](../iot-pnp/overview-iot-plug-and-play.md) en [Time Series Insights (TSI)](../time-series-insights/time-series-insights-update-overview.md). Zo kunt u ervoor zorgen dat uw Azure Digital Twins-oplossing met andere onderdelen van het Azure-ecosysteem is verbonden en compatibel is.
+DTDL wordt gebruikt voor gegevensmodellen in andere Azure IoT-services, waaronder [IoT-Plug en Play (PnP)](../iot-pnp/overview-iot-plug-and-play.md) en [Time Series Insights (TSI)](../time-series-insights/overview-what-is-tsi.md). Zo kunt u ervoor zorgen dat uw Azure Digital Twins-oplossing met andere onderdelen van het Azure-ecosysteem is verbonden en compatibel is.
 
 ### <a name="live-execution-environment"></a>Live uitvoeringsomgeving
 
 Digitale modellen in Azure Digital Twins zijn live, actuele weergaven van de echte wereld. Met de relaties in uw aangepaste DTDL-modellen verbindt u apparaatdubbels met een **live grafiek** die uw omgeving weergeeft.
 
-U kunt een visualisatie van uw Azure Digital Twins-grafiek bekijken met behulp van een voorbeeldtoepassing, [**Azure Digital Twins-verkenner**](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/).
+U kunt een visualisatie van uw Azure Digital Twins-grafiek bekijken met behulp van een voorbeeldtoepassing, [**Azure Digital Twins-verkenner**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/).
 
 Hier ziet u hoe de voorbeeldvisualisatie eruitziet:
 
@@ -84,7 +84,7 @@ Een volledige oplossing met Azure Digital Twins kan de volgende onderdelen bevat
 * Een of meer client-apps die de Azure Digital Twins-instantie aansturen door modellen te configureren, een topologie te maken en inzichten te halen uit de dubbele grafiek.
 * Een of meer externe rekenresources voor het verwerken van gebeurtenissen die zijn gegenereerd door Azure Digital Twins of verbonden gegevensbronnen, zoals apparaten. Een veelgebruikte manier om rekenresources te leveren is via [Azure Functions](../azure-functions/functions-overview.md).
 * Een IoT-hub om mogelijkheden voor apparaatbeheer en IoT-gegevensstromen te bieden.
-* Downstreamservices voor het afhandelen van taken zoals werkstroomintegratie (zoals [Logic Apps](../logic-apps/logic-apps-overview.md), koude opslag, integratie van tijdreeksen of analyse. 
+* Downstreamservices voor het afhandelen van taken als werkstroomintegratie (zoals [Logic Apps](../logic-apps/logic-apps-overview.md), koude opslag, integratie van tijdreeksen of analyse).
 
 In de volgende grafiek ziet u waar Azure Digital Twins zich bevindt in de context van een grotere Azure IoT-oplossing.
 

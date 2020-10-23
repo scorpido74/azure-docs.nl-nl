@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: bd5eea6d97ca5ff20622c651b2c6ee75f9014d55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86a512ea0e07f5eb2ce00ff27427139c5221d229
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317173"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164819"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Ontwikkelaarshandleiding voor Azure Functions Javascript
 
@@ -290,49 +290,17 @@ context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
 context.log(message)
 ```
 
-Hiermee kunt u naar de streaming-functie Logboeken schrijven op het standaard tracerings niveau. Op `context.log` zijn aanvullende logboek registratie methoden beschikbaar waarmee u functie Logboeken kunt schrijven op andere tracerings niveaus:
+Hiermee kunt u schrijven naar de streaming-functie Logboeken op het standaard tracerings niveau, met andere registratie niveaus beschikbaar. Traceer logboek registratie wordt gedetailleerd beschreven in de volgende sectie. 
 
+## <a name="write-trace-output-to-logs"></a>Uitvoer van tracering naar Logboeken schrijven
 
-| Methode                 | Beschrijving                                |
-| ---------------------- | ------------------------------------------ |
-| **fout (_bericht_)**   | Schrijft naar logboek registratie op fout niveau of lager.   |
-| **Warning (_bericht_)**    | Schrijft naar logboek registratie op waarschuwings niveau of lager. |
-| **info (_bericht_)**    | Schrijft naar logboek registratie op info niveau of lager.    |
-| **uitgebreid (_bericht_)** | Schrijft naar uitgebreide logboek registratie.           |
+In functies gebruikt u de `context.log` methoden om tracerings uitvoer naar de logboeken en de-console te schrijven. Wanneer u belt `context.log()` , wordt uw bericht naar de logboeken geschreven op het niveau van de standaard tracering. Dit is het tracerings niveau _info_ . Functies kunnen worden geïntegreerd met Azure-toepassing Insights om uw functie-app-logboeken beter vast te leggen. Application Insights, onderdeel van Azure Monitor, biedt voorzieningen voor verzameling, visuele rendering en analyse van de telemetrie van de toepassing en uw traceer uitvoer. Zie [bewaking Azure functions](functions-monitoring.md)voor meer informatie.
 
-In het volgende voor beeld wordt een logboek op het tracerings niveau waarschuwing geschreven:
+In het volgende voor beeld wordt een logboek op het tracerings niveau info geschreven, met inbegrip van de aanroep-ID:
 
 ```javascript
-context.log.warn("Something has happened."); 
+context.log("Something has happened. " + context.invocationId); 
 ```
-
-U kunt [de drempel waarde tracerings niveau voor logboek registratie configureren](#configure-the-trace-level-for-console-logging) in de host.jsvoor het bestand. Zie voor meer informatie over het schrijven van Logboeken [trace-uitvoer](#writing-trace-output-to-the-console) .
-
-Lees de [controle Azure functions](functions-monitoring.md) voor meer informatie over het weer geven en opvragen van functie Logboeken.
-
-## <a name="writing-trace-output-to-the-console"></a>Tracerings uitvoer naar de console schrijven 
-
-In functies gebruikt u de `context.log` methoden om tracerings uitvoer naar de-console te schrijven. In functions v2. x worden trace-uitvoer met `console.log` het functie-app niveau vastgelegd. Dit betekent dat de uitvoer van `console.log` niet is gebonden aan een specifieke functie aanroep en niet wordt weer gegeven in de logboeken van een specifieke functie. Ze worden echter door gegeven aan Application Insights. In functions v1. x kunt u niet gebruiken `console.log` om te schrijven naar de-console.
-
-Wanneer u belt `context.log()` , wordt uw bericht naar de-console geschreven op het niveau van de standaard tracering. Dit is het tracerings niveau _info_ . Met de volgende code wordt naar de-console op het tracerings niveau info geschreven:
-
-```javascript
-context.log({hello: 'world'});  
-```
-
-Deze code is gelijk aan de bovenstaande code:
-
-```javascript
-context.log.info({hello: 'world'});  
-```
-
-Deze code schrijft naar de-console op fout niveau:
-
-```javascript
-context.log.error("An error has occurred.");  
-```
-
-Omdat de _fout_ het hoogste traceer niveau is, wordt deze tracering naar de uitvoer op alle tracerings niveaus geschreven zolang logboek registratie is ingeschakeld.
 
 Alle `context.log` methoden ondersteunen dezelfde parameter indeling die wordt ondersteund door de methode Node.js [util. Format](https://nodejs.org/api/util.html#util_util_format_format). Bekijk de volgende code, waarmee functie Logboeken worden geschreven met behulp van het standaard tracerings niveau:
 
@@ -348,9 +316,39 @@ context.log('Node.js HTTP trigger function processed a request. RequestUri=%s', 
 context.log('Request Headers = ', JSON.stringify(req.headers));
 ```
 
-### <a name="configure-the-trace-level-for-console-logging"></a>Het tracerings niveau voor console logboek registratie configureren
+> [!NOTE]  
+> Gebruik niet `console.log` om tracerings uitvoer te schrijven. Omdat uitvoer van `console.log` wordt vastgelegd op het niveau van de functie-app, is deze niet gekoppeld aan een specifieke functie aanroep en wordt niet weer gegeven in de logboeken van een specifieke functie. Versie 1. x van de functions-runtime biedt ook geen ondersteuning `console.log` voor het gebruik van om naar de-console te schrijven.
 
-Met de functie 1. x kunt u het tracerings niveau van de drempel waarde voor het schrijven naar de-console definiëren, zodat u gemakkelijk kunt bepalen hoe traceringen naar de console worden geschreven vanuit uw functie. Als u de drempel waarde wilt instellen voor alle traceringen die naar de-console worden geschreven, gebruikt u de `tracing.consoleLevel` eigenschap in de host.jsvoor het bestand. Deze instelling is van toepassing op alle functies in uw functie-app. In het volgende voor beeld wordt de drempel voor tracering ingesteld om uitgebreide logboek registratie in te scha kelen:
+### <a name="trace-levels"></a>Tracerings niveaus
+
+Naast het standaard niveau zijn de volgende logboek registratie methoden beschikbaar waarmee u functie Logboeken op specifieke tracerings niveaus kunt schrijven.
+
+| Methode                 | Beschrijving                                |
+| ---------------------- | ------------------------------------------ |
+| **fout (_bericht_)**   | Hiermee wordt een gebeurtenis op fout niveau naar de logboeken geschreven.   |
+| **Warning (_bericht_)**    | Hiermee wordt een gebeurtenis op waarschuwings niveau naar de logboeken geschreven. |
+| **info (_bericht_)**    | Schrijft naar logboek registratie op info niveau of lager.    |
+| **uitgebreid (_bericht_)** | Schrijft naar uitgebreide logboek registratie.           |
+
+In het volgende voor beeld wordt hetzelfde logboek op het tracerings niveau waarschuwing geschreven, in plaats van het info niveau:
+
+```javascript
+context.log.warn("Something has happened. " + context.invocationId); 
+```
+
+Omdat de _fout_ het hoogste traceer niveau is, wordt deze tracering naar de uitvoer op alle tracerings niveaus geschreven zolang logboek registratie is ingeschakeld.
+
+### <a name="configure-the-trace-level-for-logging"></a>Het tracerings niveau voor logboek registratie configureren
+
+Met functies kunt u het tracerings niveau voor drempel waarden definiëren voor het schrijven naar de logboeken of de-console. De specifieke drempel waarden zijn afhankelijk van uw versie van de functions-runtime.
+
+# <a name="v2x"></a>[v2. x +](#tab/v2)
+
+Als u de drempel waarde voor traceringen die naar de logboeken worden geschreven, wilt instellen, gebruikt u de `logging.logLevel` eigenschap in de host.jsin het bestand. Met dit JSON-object kunt u een standaard drempel definiëren voor alle functies in uw functie-app. Daarnaast kunt u specifieke drempel waarden voor afzonderlijke functies definiëren. Zie [How to configure Monitoring for Azure functions voor](configure-monitoring.md)meer informatie.
+
+# <a name="v1x"></a>[v1. x](#tab/v1)
+
+Als u de drempel waarde wilt instellen voor alle traceringen die worden geschreven naar Logboeken en de-console, gebruikt u de `tracing.consoleLevel` eigenschap in de host.jsin het bestand. Deze instelling is van toepassing op alle functies in uw functie-app. In het volgende voor beeld wordt de drempel voor tracering ingesteld om uitgebreide logboek registratie in te scha kelen:
 
 ```json
 {
@@ -360,7 +358,65 @@ Met de functie 1. x kunt u het tracerings niveau van de drempel waarde voor het 
 }  
 ```
 
-De waarden van **consoleLevel** komen overeen met de namen van de `context.log` methoden. Als u alle traceer logboek registratie wilt uitschakelen voor de-console, stelt u **consoleLevel** in op _uit_. Zie [host.jsop referentie](functions-host-json-v1.md)voor meer informatie.
+De waarden van **consoleLevel** komen overeen met de namen van de `context.log` methoden. Als u alle traceer logboek registratie wilt uitschakelen voor de-console, stelt u **consoleLevel** in op _uit_. Zie voor meer informatie de [ referentie overhost.jsop v1. x](functions-host-json-v1.md).
+
+---
+
+### <a name="log-custom-telemetry"></a>Aangepaste telemetrie vastleggen in logboek
+
+Standaard schrijft functies uitvoer als traceringen naar Application Insights. Voor meer controle kunt u in plaats daarvan de [Application Insights Node.js SDK](https://github.com/microsoft/applicationinsights-node.js) gebruiken om aangepaste telemetriegegevens naar uw Application Insights-exemplaar te verzenden. 
+
+# <a name="v2x"></a>[v2. x +](#tab/v2)
+
+```javascript
+const appInsights = require("applicationinsights");
+appInsights.setup();
+const client = appInsights.defaultClient;
+
+module.exports = function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+
+    // Use this with 'tagOverrides' to correlate custom telemetry to the parent function invocation.
+    var operationIdOverride = {"ai.operation.id":context.traceContext.traceparent};
+
+    client.trackEvent({name: "my custom event", tagOverrides:operationIdOverride, properties: {customProperty2: "custom property value"}});
+    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride});
+    client.trackMetric({name: "custom metric", value: 3, tagOverrides:operationIdOverride});
+    client.trackTrace({message: "trace message", tagOverrides:operationIdOverride});
+    client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL", tagOverrides:operationIdOverride});
+    client.trackRequest({name:"GET /customers", url:"http://myserver/customers", duration:309, resultCode:200, success:true, tagOverrides:operationIdOverride});
+
+    context.done();
+};
+```
+
+# <a name="v1x"></a>[v1. x](#tab/v1)
+
+```javascript
+const appInsights = require("applicationinsights");
+appInsights.setup();
+const client = appInsights.defaultClient;
+
+module.exports = function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+
+    // Use this with 'tagOverrides' to correlate custom telemetry to the parent function invocation.
+    var operationIdOverride = {"ai.operation.id":context.operationId};
+
+    client.trackEvent({name: "my custom event", tagOverrides:operationIdOverride, properties: {customProperty2: "custom property value"}});
+    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride});
+    client.trackMetric({name: "custom metric", value: 3, tagOverrides:operationIdOverride});
+    client.trackTrace({message: "trace message", tagOverrides:operationIdOverride});
+    client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL", tagOverrides:operationIdOverride});
+    client.trackRequest({name:"GET /customers", url:"http://myserver/customers", duration:309, resultCode:200, success:true, tagOverrides:operationIdOverride});
+
+    context.done();
+};
+```
+
+---
+
+`tagOverrides`Met de para meter wordt de `operation_Id` aanroep-id van de functie ingesteld. Met deze instelling kunt u alle automatisch gegenereerde en aangepaste telemetrie voor een bepaalde functie aanroep correleren.
 
 ## <a name="http-triggers-and-bindings"></a>HTTP-triggers en-bindingen
 

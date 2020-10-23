@@ -1,18 +1,16 @@
 ---
 title: Fouten opsporen in U-SQL-taken-Azure Data Lake-Hulpprogram Ma's voor Visual Studio code
 description: Meer informatie over het gebruik van Azure Data Lake-Hulpprogram Ma's voor Visual Studio code om U-SQL-taken lokaal uit te voeren en fouten op te sporen.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: how-to
 ms.date: 07/14/2017
-ms.openlocfilehash: 4b8285281119121b509c62b11bf48a5f70a9f0f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef32372cbaa70f7bca609c2ed1db118f33237e2b
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87125697"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216195"
 ---
 # <a name="run-u-sql-and-debug-locally-in-visual-studio-code"></a>U-SQL en lokaal fouten opsporen in Visual Studio code
 In dit artikel wordt beschreven hoe U U-SQL-taken uitvoert op een lokale ontwikkel computer om de vroege code fasen te versnellen of om code lokaal te debuggen in Visual Studio code. Zie [Azure data Lake-Hulpprogram ma's voor Visual Studio code gebruiken](data-lake-analytics-data-lake-tools-for-vscode.md)voor instructies over het Azure data Lake-hulp programma voor Visual Studio code.
@@ -87,4 +85,4 @@ Volg de onderstaande stappen om lokaal fout opsporing uit te voeren:
 * [Aan de slag met Data Lake Analytics met behulp van Power shell](data-lake-analytics-get-started-powershell.md)
 * [Aan de slag met Data Lake Analytics met behulp van de Azure Portal](data-lake-analytics-get-started-portal.md)
 * [Data Lake-Hulpprogram Ma's voor Visual Studio gebruiken voor het ontwikkelen van U-SQL-toepassingen](data-lake-analytics-data-lake-tools-get-started.md)
-* [Data Lake Analytics-catalogus (U-SQL) gebruiken](data-lake-analytics-use-u-sql-catalog.md)
+* [Data Lake Analytics-catalogus (U-SQL) gebruiken](./data-lake-analytics-u-sql-get-started.md)

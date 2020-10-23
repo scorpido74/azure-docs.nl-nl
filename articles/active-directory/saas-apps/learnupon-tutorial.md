@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 9541f2c5f8ee1aac45b6f659547a3ee34c093181
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 47ecf00b608121271e98ca5abbbd5e69ca811fd2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535132"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91858214"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>Zelfstudie: Azure Active Directory-integratie met LearnUpon
 
@@ -130,15 +130,15 @@ Voer de volgende stappen uit om Azure AD-eenmalige aanmelding te configureren vo
 
 1. Klik op het tabblad **Settings** (instellingen).
 
-    ![Eenmalige aanmelding configureren](./media/learnupon-tutorial/tutorial_learnupon_06.png)
+    ![Schermopname van het instellingentabblad.](./media/learnupon-tutorial/tutorial_learnupon_06.png)
 
 1. Klik op **Single Sign On - SAML** en vervolgens op **General Settings** om de SAML-instellingen te configureren.
    
-    ![Eenmalige aanmelding configureren](./media/learnupon-tutorial/tutorial_learnupon_07.png) 
+    ![Schermopname van Single Sign On - SAML geselecteerd met General Settings (Algemene instellingen) geselecteerd.](./media/learnupon-tutorial/tutorial_learnupon_07.png) 
 
 1. Voer in de sectie **General Settings** de volgende stappen uit:
    
-    ![Eenmalige aanmelding configureren](./media/learnupon-tutorial/tutorial_learnupon_08.png)  
+    ![Schermopname van de sectie General Settings (Algemene instellingen) waarin u de beschreven waarden kunt invoeren.](./media/learnupon-tutorial/tutorial_learnupon_08.png)  
   
     a. Selecteer **Ingeschakeld**.
 
@@ -158,7 +158,7 @@ Voer de volgende stappen uit om Azure AD-eenmalige aanmelding te configureren vo
 
 1. Klik op **User Settings** en voer de volgende stappen uit:
 
-     ![Eenmalige aanmelding configureren](./media/learnupon-tutorial/tutorial_learnupon_11.png)  
+     ![Schermopname van de sectie User Settings (Gebruikersinstellingen) waarin u de beschreven waarden kunt invoeren.](./media/learnupon-tutorial/tutorial_learnupon_11.png)  
 
     a. Typ in het tekstvak **First Name Identifier Format** de waarde die aangeeft waar de voornaam van de gebruiker zich in uw SAML-assertie bevindt, bijvoorbeeld `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
   

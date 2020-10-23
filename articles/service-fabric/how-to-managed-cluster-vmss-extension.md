@@ -3,18 +3,18 @@ title: Een extensie voor virtuele-machine schaal sets toevoegen aan een Service 
 description: U gaat als volgt te werk om een extensie van een virtuele-machine schaalset toe te voegen een Service Fabric beheerd cluster knooppunt type
 ms.topic: article
 ms.date: 09/28/2020
-ms.openlocfilehash: 10487bad4fce41c68b4e2cb90c311b986d709eee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be51a03494c90ba91cddb383b62b2477fabc8fc3
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91410304"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309283"
 ---
 # <a name="add-a-virtual-machine-scale-set-extension-to-a-service-fabric-managed-cluster-node-type-preview"></a>Een extensie voor virtuele-machine schaal sets toevoegen aan een Service Fabric beheerd cluster knooppunt type (preview)
 
 Elk knooppunt type in een door Service Fabric beheerd cluster wordt ondersteund door een schaalset voor virtuele machines. Hiermee kunt u [uitbrei dingen voor virtuele-machine schaal sets](../virtual-machines/extensions/overview.md) toevoegen aan uw service Fabric beheerde cluster knooppunt typen.
 
-Met de Power shell [-opdracht add-AzServiceFabricManagedNodeTypeVMExtension](https://docs.microsoft.com/powershell/module/az.servicefabric/add-azservicefabricmanagednodetypevmextension?view=azps-4.7.0&preserve-view=true) kunt u een extensie voor virtuele-machine schaal sets toevoegen aan een knooppunt type.
+Met de Power shell [-opdracht add-AzServiceFabricManagedNodeTypeVMExtension](/powershell/module/az.servicefabric/add-azservicefabricmanagednodetypevmextension?preserve-view=true&view=azps-4.7.0) kunt u een extensie voor virtuele-machine schaal sets toevoegen aan een knooppunt type.
 
 U kunt ook een virtuele-machine Scale set-extensie hebben op een Service Fabric beheerd cluster knooppunt type in uw Azure Resource Manager sjabloon, bijvoorbeeld:
 
@@ -51,7 +51,7 @@ U kunt ook een virtuele-machine Scale set-extensie hebben op een Service Fabric 
 }
 ```
 
-Zie voor meer informatie over het configureren van Service Fabric beheerde cluster knooppunt typen het [knoop punt type beheerd cluster](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2020-01-01-preview/managedclusters/nodetypes).
+Zie voor meer informatie over het configureren van Service Fabric beheerde cluster knooppunt typen het [knoop punt type beheerd cluster](/azure/templates/microsoft.servicefabric/2020-01-01-preview/managedclusters/nodetypes).
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/16/2020
+ms.date: 10/21/2020
 ms.author: cherylmc
-ms.openlocfilehash: 18367ec163511fac2e90cc5dd0dd0ad6b091afc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94ad0a05dafe2c405b1b9cb62242675aa54c4432
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90976225"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424334"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Over VPN Gateway configuratie-instellingen
 
@@ -53,11 +53,11 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 ### <a name="configure-a-gateway-sku"></a>Een gateway-SKU configureren
 
-#### <a name="azure-portal"></a>Azure Portal
+**Azure Portal**
 
 Als u de Azure Portal gebruikt om een virtuele netwerk gateway van Resource Manager te maken, kunt u de gateway-SKU selecteren met behulp van de vervolg keuzelijst. De opties die u opgeeft, komen overeen met het gateway type en het VPN-type dat u selecteert.
 
-#### <a name="powershell"></a>PowerShell
+**PowerShell**
 
 In het volgende Power shell-voor beeld wordt de `-GatewaySku` as-VpnGw1 opgegeven. Wanneer u Power shell gebruikt om een gateway te maken, moet u eerst de IP-configuratie maken en vervolgens een variabele gebruiken om ernaar te verwijzen. In dit voor beeld is de configuratie variabele $gwipconfig.
 
@@ -67,7 +67,7 @@ New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 -GatewayType Vpn -VpnType RouteBased
 ```
 
-#### <a name="azure-cli"></a>Azure CLI
+**Azure-CLI**
 
 ```azurecli
 az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWPIP --resource-group TestRG1 --vnet VNet1 --gateway-type Vpn --vpn-type RouteBased --sku VpnGw1 --no-wait
@@ -82,6 +82,12 @@ Als u een VPN-gateway hebt en u een andere gateway-SKU wilt gebruiken, moet u de
 3. U **kunt** de grootte van de sku's Basic/Standard/high performance niet wijzigen in VpnGw-sku's. U moet in plaats daarvan [overschakelen](#change) naar de nieuwe sku's.
 
 #### <a name="to-resize-a-gateway"></a><a name="resizegwsku"></a>Het formaat van een gateway wijzigen
+
+**Azure-portal**
+
+[!INCLUDE [Resize a SKU - portal](../../includes/vpn-gateway-resize-gw-portal-include.md)]
+
+**PowerShell**
 
 [!INCLUDE [Resize a SKU](../../includes/vpn-gateway-gwsku-resize-include.md)]
 
@@ -167,7 +173,7 @@ Soms moet u de instellingen van de lokale netwerk gateway wijzigen. Wanneer u bi
 
 Zie de volgende pagina's voor aanvullende technische bronnen en specifieke syntaxis vereisten bij het gebruik van REST Api's, Power shell-cmdlets of Azure CLI voor VPN Gateway configuraties:
 
-| **Klassieke** | **Resource Manager** |
+| **Klassiek** | **Resource Manager** |
 | --- | --- |
 | [PowerShell](/powershell/module/az.network/#networking) |[PowerShell](/powershell/module/az.network#vpn) |
 | [REST API](https://msdn.microsoft.com/library/jj154113) |[REST API](/rest/api/network/virtualnetworkgateways) |

@@ -3,12 +3,12 @@ title: Onbestelbare letter en beleid voor opnieuw proberen-Azure Event Grid
 description: Hierin wordt beschreven hoe u de bezorgings opties voor gebeurtenissen kunt aanpassen voor Event Grid. Stel een bestemming voor onbestelbare berichten in en geef op hoe lang de levering moet worden herhaald.
 ms.topic: conceptual
 ms.date: 07/20/2020
-ms.openlocfilehash: e780ddd5c49b1a2cced10a1907d25784b0285f01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d8cd74ccfb77bcec45d06071a4f46fb2a640cf8
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91261801"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460934"
 ---
 # <a name="set-dead-letter-location-and-retry-policy"></a>Locatie van onbestelbare letters en beleid voor opnieuw proberen instellen
 
@@ -17,7 +17,7 @@ Bij het maken van een gebeurtenis abonnement kunt u de instellingen voor gebeurt
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!NOTE]
-> Zie voor meer informatie over het bezorgen van berichten, nieuwe pogingen en het onbestelbare bericht, het conceptuele artikel: [Event grid aflevering van berichten en probeer het opnieuw]().
+> Zie voor meer informatie over het bezorgen van berichten, nieuwe pogingen en het onbestelbare bericht, het conceptuele artikel: [Event grid aflevering van berichten en probeer het opnieuw](delivery-and-retry.md).
 
 ## <a name="set-dead-letter-location"></a>Locatie van onbestelbare letter instellen
 

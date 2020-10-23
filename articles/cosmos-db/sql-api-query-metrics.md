@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ec98d194921cd9a7eced06ccee20a3375e8c8a82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f43a335e6490858828fb2efcaa8436dcb6f3d250
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89008689"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280523"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Queryprestaties afstemmen met Azure Cosmos DB
 
@@ -26,7 +26,7 @@ Azure Cosmos DB biedt een [SQL-API voor het opvragen van gegevens](how-to-sql-qu
 
 ## <a name="about-sql-query-execution"></a>SQL-query uitvoering
 
-In Azure Cosmos DB slaat u gegevens op in containers, die kunnen worden uitgebreid naar elke [opslag grootte of door Voer van aanvraag](partition-data.md). Azure Cosmos DB naadloze schaal baarheid van gegevens over fysieke partities onder de kaften om de gegevens groei te verwerken of de ingerichte door voer te verg Roten. U kunt SQL-query's verzenden naar een container met behulp van de REST API of een van de ondersteunde [SQL-sdk's](sql-api-sdk-dotnet.md).
+In Azure Cosmos DB slaat u gegevens op in containers, die kunnen worden uitgebreid naar elke [opslag grootte of door Voer van aanvraag](partitioning-overview.md). Azure Cosmos DB naadloze schaal baarheid van gegevens over fysieke partities onder de kaften om de gegevens groei te verwerken of de ingerichte door voer te verg Roten. U kunt SQL-query's verzenden naar een container met behulp van de REST API of een van de ondersteunde [SQL-sdk's](sql-api-sdk-dotnet.md).
 
 Een kort overzicht van partitionering: u definieert een partitie sleutel zoals ' City ', die bepaalt hoe de gegevens over fysieke partities worden verdeeld. Gegevens die horen bij een enkele partitie sleutel (bijvoorbeeld ' City ' = = ' Seattle '), worden opgeslagen in een fysieke partitie, maar doorgaans heeft één fysieke partitie meerdere partitie sleutels. Wanneer een partitie de opslag grootte bereikt, splitst de service de partitie naadloos op in twee nieuwe partities en deelt de partitie sleutel gelijkmatig over deze partities. Omdat partities tijdelijk zijn, gebruiken de Api's een abstractie van een ' partitie sleutel bereik ', waarmee de bereiken van partitie sleutel-hashes worden aangeduid. 
 
@@ -163,7 +163,7 @@ Met Azure Cosmos DB worden query's doorgaans in de volgende volg orde uitgevoerd
 
 Query's waarbij alle partities moeten worden geraadpleegd, hebben een hogere latentie nodig en kunnen meer dan RUs gebruiken. Omdat elke partitie automatische indexering heeft voor alle eigenschappen, kan de query in dit geval efficiënt vanuit de index worden bediend. U kunt query's met behulp van de opties van de parallelle schijf sneller beslaan.
 
-Zie [partitioneren in azure Cosmos DB](partition-data.md)voor meer informatie over partitioneren en partitie sleutels.
+Zie [partitioneren in azure Cosmos DB](partitioning-overview.md)voor meer informatie over partitioneren en partitie sleutels.
 
 ### <a name="sdk-and-query-options"></a>SDK-en query opties
 Bekijk [prestatie tips](performance-tips.md) en [prestatie tests](performance-testing.md) voor het verkrijgen van de beste prestaties aan de client zijde van Azure Cosmos db. Dit geldt ook voor het gebruik van de nieuwste Sdk's, het configureren van platformspecifieke configuraties zoals het standaard aantal verbindingen, de frequentie van de garbagecollection en het gebruik van de opties voor de licht gewicht connectiviteit zoals direct/TCP. 

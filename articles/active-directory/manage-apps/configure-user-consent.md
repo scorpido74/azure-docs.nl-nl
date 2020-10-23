@@ -11,12 +11,13 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: cff2af745e9b79f573aba02e0a9baefe4a5e45a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: contperfq2
+ms.openlocfilehash: c1c0c3038c687b7f91d3c75d8c4c9589c5e245a3
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819264"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427637"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Configureren hoe eindgebruikers toestemming geven voor toepassingen
 
@@ -47,7 +48,7 @@ Als u kiest welke app-machtigings beleid van toepassing is voor alle gebruikers,
 
 Instellingen voor gebruikers toestemming configureren via de Azure Portal:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als [globale beheerder](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als [globale beheerder](../roles/permissions-reference.md#global-administrator--company-administrator).
 1. Selecteer **Azure Active Directory**  >  toestemming van**bedrijfs toepassingen**  >  **en machtigingen**  >  **instellingen voor gebruikers toestemming**.
 1. Selecteer onder **toestemming van de gebruiker voor toepassingen**de instelling van de toestemming die u wilt configureren voor alle gebruikers.
 1. Selecteer **Opslaan** om uw instellingen op te slaan.

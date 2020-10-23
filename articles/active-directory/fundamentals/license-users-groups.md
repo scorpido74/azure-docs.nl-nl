@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7473da6289d4b871ae77f18fab4c00cebcb55d98
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 50e0fe1cf3bb628c40e774423e45ea88d6ab78a5
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977011"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359710"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Licenties toewijzen of verwijderen in de Azure Active Directory Portal
 
@@ -144,10 +144,10 @@ U kunt een licentie verwijderen van de Azure AD-gebruikers pagina van een gebrui
 
 Nadat u uw licenties hebt toegewezen, kunt u de volgende processen uitvoeren:
 
-- [Problemen met licentie toewijzing identificeren en oplossen](../users-groups-roles/licensing-groups-resolve-problems.md)
+- [Problemen met licentie toewijzing identificeren en oplossen](../enterprise-users/licensing-groups-resolve-problems.md)
 
-- [Gebruikers met een licentie aan een groep toevoegen voor licentie verlening](../users-groups-roles/licensing-groups-migrate-users.md)
+- [Gebruikers met een licentie aan een groep toevoegen voor licentie verlening](../enterprise-users/licensing-groups-migrate-users.md)
 
-- [Scenario's, beperkingen en bekende problemen met behulp van groepen voor het beheren van licenties in Azure Active Directory](../users-groups-roles/licensing-group-advanced.md)
+- [Scenario's, beperkingen en bekende problemen met behulp van groepen voor het beheren van licenties in Azure Active Directory](../enterprise-users/licensing-group-advanced.md)
 
 - [Profiel gegevens toevoegen of wijzigen](active-directory-users-profile-azure-portal.md)

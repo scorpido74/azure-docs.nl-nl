@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 4df4f7e1db880a38f647e8e384cbfb29b70954ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9647de255b749e064b94f57c9067aaff7dc3cb7
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187248"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219442"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS Integration Runtime gepland starten en stoppen
 
@@ -136,7 +136,7 @@ Als u een derde trigger maakt die gepland is om dagelijks om middernacht te word
     1. Voer bij **Server naam** ** &lt; de naam van uw server in &gt; . database.Windows.net**.
     2. Selecteer **opties >>**.
     3. Selecteer **SSISDB**om **verbinding te maken met de data base**.
-    4. Selecteer **Verbinding maken**. 
+    4. Selecteer **Verbinden**. 
     5. Vouw **Integration Services Catalogs**  ->  **SSISDB** uit > uw map-> **projecten** : > uw SSIS-project->- **pakketten**. 
     6. Klik met de rechter muisknop op het opgegeven SSIS-pakket om uit te voeren en selecteer **rapporten**  ->  **standaard rapporten**  ->  **alle uitvoeringen**. 
     7. Controleer of de toepassing is uitgevoerd. 
@@ -149,7 +149,7 @@ Nu uw pijp lijnen werken zoals verwacht, kunt u triggers maken om ze uit te voer
 
 1. Selecteer op de werk balk pijp lijn de optie **trigger** en selecteer **Nieuw/bewerken**. 
 
-   ![Trigger-> nieuw/bewerken](./media/how-to-schedule-azure-ssis-integration-runtime/trigger-new-menu.png)
+   ![Scherm afbeelding van de optie trigger-> nieuw/bewerken.](./media/how-to-schedule-azure-ssis-integration-runtime/trigger-new-menu.png)
 
 2. Selecteer **+ Nieuw**in het deel venster **triggers toevoegen** .
 
@@ -220,7 +220,7 @@ Als u nog geen Azure Automation-account hebt, maakt u er een door de instructies
 2. Meld u aan bij de [Azure-portal](https://portal.azure.com/).    
 3. Selecteer **Nieuw** in het menu links, selecteer **controle en beheer**en selecteer **Automation**. 
 
-   ![New-> Controle en beheer-> Automation](./media/how-to-schedule-azure-ssis-integration-runtime/new-automation.png)
+   ![Scherm afbeelding die de Controle en beheer > Automation-optie markeert.](./media/how-to-schedule-azure-ssis-integration-runtime/new-automation.png)
     
 2. Voer de volgende acties uit in het deel venster **Automation-account toevoegen** .
 
@@ -262,7 +262,7 @@ De volgende sectie bevat stappen voor het maken van een Power shell-runbook. Het
 
 1. Ga naar het tabblad **Runbooks** en selecteer **+ een runbook toevoegen** op de werk balk. 
 
-   ![Een runbook-knop toevoegen](./media/how-to-schedule-azure-ssis-integration-runtime/runbooks-window.png)
+   ![Scherm afbeelding met de knop + een runbook toevoegen.](./media/how-to-schedule-azure-ssis-integration-runtime/runbooks-window.png)
    
 2. Selecteer **een nieuw Runbook maken** en voer de volgende acties uit: 
 
@@ -345,7 +345,7 @@ De volgende sectie bevat stappen voor het maken van een Power shell-runbook. Het
    
 6. Selecteer in het venster taak de optie **uitvoer** tegel. Wacht in het uitvoer venster op het bericht **# # # # # voltooide # #** # # # nadat het # # # # # wordt weer gegeven als # **#**# # #. Het starten van Azure-SSIS IR duurt ongeveer 20 minuten. **Taak** venster sluiten en teruggaan naar het **Runbook** -venster.
 
-   ![Azure SSIS-IR-gestart](./media/how-to-schedule-azure-ssis-integration-runtime/start-completed.png)
+   ![Scherm afbeelding waarmee de uitvoer tegel wordt gemarkeerd.](./media/how-to-schedule-azure-ssis-integration-runtime/start-completed.png)
     
 7. Herhaal de vorige twee stappen met **stoppen** als waarde voor de **bewerking**. Start uw runbook opnieuw door te klikken op de knop **Start** op de werk balk. Voer de naam van uw resource groep, ADF en Azure-SSIS IR in. Voer bij **bewerking** **Stop**in. Wacht in het uitvoer venster op het bericht **# # # # # voltooide # #** # # # nadat je # # # # # **Stop # #**# # # hebt gestopt. Het stoppen van Azure-SSIS IR duurt niet zo lang als het wordt gestart. **Taak** venster sluiten en teruggaan naar het **Runbook** -venster.
 
@@ -373,7 +373,7 @@ In de vorige sectie hebt u uw Azure Automation runbook gemaakt waarmee u Azure-S
     
 3. Schakel over naar **para meters en voer het tabblad instellingen uit** . Geef de naam van uw resource groep, ADF en Azure-SSIS IR op. Voer voor **bewerking** **Start** in en selecteer **OK**. Selecteer **OK** om de pagina planning op **schema** van uw runbook weer te geven. 
 
-   ![Plannen voor het staren van de Azure SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/start-schedule.png)
+   ![Scherm afbeelding die het bewerkings veld markeert.](./media/how-to-schedule-azure-ssis-integration-runtime/start-schedule.png)
     
 4. Herhaal de vorige twee stappen om een planning te maken met de naam **Stop IR Daily**. Voer een tijd in die ten minste 30 minuten na de tijd die u hebt opgegeven voor het **dagelijkse begin** van de IR. Voer bij **bewerking** **Stop** in en selecteer **OK**. Selecteer **OK** om de pagina planning op **schema** van uw runbook weer te geven. 
 

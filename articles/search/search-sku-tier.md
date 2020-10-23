@@ -1,23 +1,23 @@
 ---
-title: Een prijs categorie of SKU kiezen
+title: Een prijs categorie kiezen
 titleSuffix: Azure Cognitive Search
-description: "Azure Cognitive Search kan in de volgende Sku's worden ingericht: gratis, basis en standaard, en standaard is beschikbaar in verschillende resource configuraties en capaciteits niveaus."
+description: 'Azure Cognitive Search kan worden ingericht in de volgende lagen: gratis, basis en standaard, en standaard is beschikbaar in verschillende resource configuraties en capaciteits niveaus.'
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/14/2020
-ms.openlocfilehash: 0b0ff0abe438b2be3602b10d1c449901ef916901
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 10/14/2020
+ms.openlocfilehash: 0acd0d1d463280cddc8c1f4bb389a056d474ea38
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948082"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101270"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Een prijs categorie kiezen voor Azure Cognitive Search
 
-Wanneer u een Azure Cognitive Search-service maakt, [wordt er een resource gemaakt op basis](search-create-service-portal.md) van een prijs categorie (of SKU) die is vastgesteld voor de levens duur van de service. Lagen zijn onder meer gratis, Basic, Standard en opslag geoptimaliseerd. De geoptimaliseerde standaard-en opslag ruimte zijn beschikbaar met verschillende configuraties en capaciteit.
+Wanneer u een Azure Cognitive Search-service maakt, [wordt er een resource gemaakt op basis](search-create-service-portal.md) van een prijs categorie die is vastgesteld voor de levens duur van de service. Lagen zijn onder meer gratis, Basic, Standard en opslag geoptimaliseerd. De geoptimaliseerde standaard-en opslag ruimte zijn beschikbaar met verschillende configuraties en capaciteit.
 
 De meeste klanten beginnen met de gratis laag zodat ze de service kunnen evalueren. Na de evaluatie is het gebruikelijk om een tweede service te maken in een van de hogere lagen voor ontwikkelings-en productie-implementaties.
 
@@ -27,15 +27,15 @@ In de volgende tabel worden de functie beperkingen voor de laag beschreven.
 
 | Functie | Beperkingen |
 |---------|-------------|
-| [Indexeer functies](search-indexer-overview.md) | Indexeer functies zijn niet beschikbaar op S3 HD. |
+| [Indexeer functies](search-indexer-overview.md) | Indexeer functies zijn niet beschikbaar op S3 HD.  |
 | [AI-verrijking](search-security-manage-encryption-keys.md) | Wordt uitgevoerd op de gratis laag, maar wordt niet aanbevolen. |
 | [Door de klant beheerde versleutelingssleutels](search-security-manage-encryption-keys.md) | Niet beschikbaar in de gratis laag. |
 | [Toegang tot IP-firewall](service-configure-firewall.md) | Niet beschikbaar in de gratis laag. |
-| [Integratie met persoonlijke Azure-koppeling](service-create-private-endpoint.md) | Niet beschikbaar in de gratis laag. |
+| [Persoonlijk eind punt (integratie met persoonlijke Azure-koppeling)](service-create-private-endpoint.md) | Voor inkomende verbindingen met een zoek service, niet beschikbaar in de gratis laag. Voor uitgaande verbindingen door Indexeer functies aan andere Azure-resources, niet beschikbaar op Free of S3 HD. Voor Indexeer functies die gebruikmaken van vaardig heden, niet beschikbaar op Free, Basic, S1 of S3 HD.|
 
 De meeste functies zijn beschikbaar op elke laag, inclusief gratis, maar bron-intensieve functies werken mogelijk niet goed, tenzij u voldoende capaciteit hebt. [AI-verrijking](cognitive-search-concept-intro.md) heeft bijvoorbeeld langlopende vaardig heden waarvoor een time-out optreedt op een gratis service, tenzij de gegevensset klein is.
 
-## <a name="tiers-skus"></a>Lagen (Sku's)
+## <a name="tiers"></a>Lagen
 
 De lagen worden onderscheiden door:
 
@@ -158,7 +158,7 @@ Als u de grootte van een index wilt bepalen, moet u er [een maken](search-what-i
 Voor zoeken in volledige tekst is de primaire gegevens structuur een [omgekeerde index](https://en.wikipedia.org/wiki/Inverted_index) structuur, die andere kenmerken heeft dan de bron gegevens. Voor een omgekeerde index worden de grootte en complexiteit bepaald door de inhoud, niet noodzakelijkerwijs door de hoeveelheid gegevens die u in de feed invoert. Een grote gegevens bron met hoge redundantie kan resulteren in een kleinere index dan een kleinere gegevensset die zeer variabele inhoud bevat. Het is dus zelden mogelijk de index grootte af te leiden op basis van de grootte van de oorspronkelijke gegevensset.
 
 > [!NOTE] 
-> Hoewel de toekomstige behoeften voor indices en opslag in de toekomst kunnen worden geschat, is het een goed idee om te doen. Als de capaciteit van een laag te laag wordt, moet u een nieuwe service inrichten op een hogere laag en vervolgens [uw indexen opnieuw laden](search-howto-reindex.md). Er is geen in-place upgrade van een service van de ene SKU naar een andere.
+> Hoewel de toekomstige behoeften voor indices en opslag in de toekomst kunnen worden geschat, is het een goed idee om te doen. Als de capaciteit van een laag te laag wordt, moet u een nieuwe service inrichten op een hogere laag en vervolgens [uw indexen opnieuw laden](search-howto-reindex.md). Er is geen in-place upgrade van een service van de ene laag naar de andere.
 >
 
 ### <a name="estimate-with-the-free-tier"></a>Een schatting maken van de gratis laag

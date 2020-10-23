@@ -8,12 +8,12 @@ ms.date: 09/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 6b7d670f5e38968fa6592e323ede075abf687435
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 404f435e321e53694807a627121d84f6cbf6724d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939014"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359676"
 ---
 # <a name="performance-tiers-for-managed-disks-preview"></a>Prestatie lagen voor beheerde schijven (preview-versie)
 
@@ -52,9 +52,9 @@ Zie [prijzen voor beheerde schijven](https://azure.microsoft.com/pricing/details
 ## <a name="restrictions"></a>Beperkingen
 
 - Deze functie wordt momenteel alleen ondersteund voor Premium-Ssd's.
-- U moet de schijf loskoppelen van een actieve virtuele machine voordat u de laag van de schijf kunt wijzigen.
+- U moet de toewijzing van de virtuele machine ongedaan maken of de schijf loskoppelen van een actieve virtuele machine voordat u de laag van de schijf kunt wijzigen.
 - Het gebruik van de P60-, P70-en P80-prestatie lagen is beperkt tot schijven van 4.096 GiB of hoger.
-- De prestatie-laag van een schijf kan slechts eenmaal per 24 uur worden gewijzigd.
+- De prestatie-laag van een schijf kan slechts eenmaal per 24 uur worden gedowngraded.
 
 ## <a name="regional-availability"></a>Regionale beschikbaarheid
 

@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: dbe37e8a5cba18254cff1dc5d0fff4d5b9bc783d
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 0d6d543e1f7d68f1312b6531b798cf7f9a0cf3b8
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372609"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048505"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Snelstart - Een voorbeeld van een Azure Digital Twins-scenario verkennen met behulp van ADT Explorer
 
 Met Azure Digital Twins kunt u live modellen van uw echte omgevingen maken en gebruiken. Dit wordt gedaan door afzonderlijke elementen te modelleren als **digitale tweelingen** en deze vervolgens te verbinden tot een kennis**graaf** die kan reageren op live gebeurtenissen en waaruit gegevens kunnen worden opgevraagd.
 
-In deze quickstart verkent u een vooraf gebouwde Azure Digital Twins-graaf, met behulp van een voorbeeldtoepassing genaamd [**Azure Digital Twins (ADT) Explorer**](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Met ADT Explorer kunt u een scenario uploaden, visuele weergaven van uw tweelingen en graaf bekijken, en andere beheeractiviteiten uitvoeren via een visuele ervaring op basis van een browser.
+In deze quickstart verkent u een vooraf gebouwde Azure Digital Twins-graaf, met behulp van een voorbeeldtoepassing genaamd [**Azure Digital Twins (ADT) Explorer**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Met ADT Explorer kunt u een digitale weergave van een omgeving uploaden, visuele installatiekopieën bekijken van de tweelingen en graaf die zijn gemaakt om de omgeving in Azure Digital Twins te vertegenwoordigen en andere beheeractiviteiten uitvoeren middels een browsergebaseerde visuele ervaring.
 
 De quickstart bevat de volgende hoofdstappen:
 
@@ -38,8 +38,8 @@ U hebt een Azure-abonnement nodig om deze quickstart te voltooien. Als u er nog 
 U moet ook **Node.js** op uw computer hebben. U kunt de nieuwste versie verkrijgen via deze link: [Node.js](https://nodejs.org/).
 
 Tenslotte moet u ook twee voorbeelden downloaden om te gebruiken tijdens de snelstart:
-* De voorbeeldtoepassing **ADT Explorer**. Dit voorbeeld bevat de hoofd-app die u in de quickstart gebruikt om een Azure Digital Twins-scenario te laden en te verkennen. Ga hierheen om de app te downloaden: [Azure Digital Twins (ADT) Explorer](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Klik op de knop *ZIP downloaden* om een *.zip*-bestand met deze voorbeeldcode naar uw machine te downloaden als _**Azure_Digital_Twins__ADT__explorer.zip**_. Pak de map uit en extraheer de bestanden.
-* Het **Azure Digital Twins-voorbeeldscenario**. Dit bevat een vooraf gebouwde Azure Digital Twins-graaf die u in ADT Explorer laadt om mee te werken. Ga hierheen om het scenario te downloaden: [Azure Digital Twins-voorbeelden](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples). Klik op de knop *ZIP downloaden* om een *.zip*-bestand met deze voorbeeldcode naar uw machine te downloaden. Hiermee wordt een .zip-folder gedownload naar uw machine als **Azure_Digital_Twins_samples.zip**. Pak de map uit en extraheer de bestanden.
+* De voorbeeldtoepassing **ADT Explorer**. Dit voorbeeld bevat de hoofd-app die u in de quickstart gebruikt om een Azure Digital Twins-scenario te laden en te verkennen. Ga hierheen om de app te downloaden: [Azure Digital Twins (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Klik op de knop *Download ZIP* om een *.zip*-bestand met deze voorbeeldcode naar uw machine te downloaden. Hiermee wordt een .ZIP-map gedownload naar uw computer als _**Azure_Digital_Twins_samples.zip**_. Pak de map uit en extraheer de bestanden.
+* Het **Azure Digital Twins-voorbeeldscenario**. Dit bevat een vooraf gebouwde Azure Digital Twins-graaf die u in ADT Explorer laadt om mee te werken. Ga hierheen om het scenario te downloaden: [Azure Digital Twins-voorbeelden](/samples/azure-samples/digital-twins-samples/digital-twins-samples). Klik op de knop *Download ZIP* om een *.zip*-bestand met deze voorbeeldcode naar uw machine te downloaden. Hiermee wordt een .ZIP-map gedownload naar uw computer als _**Azure_Digital_Twins_samples.zip**_. Pak de map uit en extraheer de bestanden.
 
 ## <a name="set-up-azure-digital-twins-and-adt-explorer"></a>Azure Digital Twins en ADT Explorer instellen
 
@@ -307,7 +307,7 @@ In deze quickstart hebt u een exemplaar van Azure Digital Twins gemaakt, gekoppe
 Vervolgens hebt u de graaf verkend door...
 1. Een query te gebruiken om een vraag over het scenario te beantwoorden.
 2. Een eigenschap van een digitale tweeling te bewerken.
-    * De query opnieuw uit te voeren om te zien hoe het antwoord is veranderd als gevolg van uw update.
+3. De query opnieuw uit te voeren om te zien hoe het antwoord is veranderd als gevolg van uw update.
 
 De intentie van deze oefening is te demonstreren hoe u de Azure Digital Twins-graaf kunt gebruiken om vragen over uw omgeving te beantwoorden terwijl de omgeving blijft veranderen. 
 

@@ -11,12 +11,12 @@ ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 6a8f39ae5d73bade2c86a7e15efe75956c2aed24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6452d1c5c9792e8d021838635686e8621629ff2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327562"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146679"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Real-time sensor gegevens visualiseren vanuit uw Azure IoT hub in een webtoepassing
 
@@ -60,7 +60,7 @@ az extension add --name azure-iot
 
 ## <a name="add-a-consumer-group-to-your-iot-hub"></a>Een Consumer groep toevoegen aan uw IoT-hub
 
-[Consumenten groepen](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#event-consumers) bieden onafhankelijke weer gaven in de gebeurtenis stroom die apps en Azure-Services in staat stellen gegevens onafhankelijk van hetzelfde Event hub-eind punt te gebruiken. In deze sectie voegt u een Consumer groep toe aan het ingebouwde eind punt van uw IoT-hub die door de web-app wordt gebruikt om gegevens te lezen.
+[Consumenten groepen](../event-hubs/event-hubs-features.md#event-consumers) bieden onafhankelijke weer gaven in de gebeurtenis stroom die apps en Azure-Services in staat stellen gegevens onafhankelijk van hetzelfde Event hub-eind punt te gebruiken. In deze sectie voegt u een Consumer groep toe aan het ingebouwde eind punt van uw IoT-hub die door de web-app wordt gebruikt om gegevens te lezen.
 
 Voer de volgende opdracht uit om een Consumer groep toe te voegen aan het ingebouwde eind punt van uw IoT-hub:
 
@@ -156,11 +156,11 @@ U ziet ook de uitvoer in de-console waarin de berichten worden weer gegeven die 
 
 ## <a name="host-the-web-app-in-app-service"></a>De web-app in App Service hosten
 
-De [functie Web apps van Azure app service](https://docs.microsoft.com/azure/app-service/overview) biedt een platform as a Service (PaaS) voor het hosten van webtoepassingen. Webtoepassingen die worden gehost in Azure App Service, kunnen profiteren van krachtige functies van Azure, zoals extra beveiliging, taak verdeling en schaal baarheid, evenals Azure-en partner DevOps oplossingen zoals continue implementatie, pakket beheer, enzovoort. Azure App Service ondersteunt webtoepassingen die in veel populaire talen zijn ontwikkeld en die zijn geïmplementeerd in de Windows-of Linux-infra structuur.
+De [functie Web apps van Azure app service](../app-service/overview.md) biedt een platform as a Service (PaaS) voor het hosten van webtoepassingen. Webtoepassingen die worden gehost in Azure App Service, kunnen profiteren van krachtige functies van Azure, zoals extra beveiliging, taak verdeling en schaal baarheid, evenals Azure-en partner DevOps oplossingen zoals continue implementatie, pakket beheer, enzovoort. Azure App Service ondersteunt webtoepassingen die in veel populaire talen zijn ontwikkeld en die zijn geïmplementeerd in de Windows-of Linux-infra structuur.
 
-In deze sectie maakt u een web-app in App Service en implementeert u uw code hiervoor met behulp van Azure CLI-opdrachten. U vindt informatie over de opdrachten die worden gebruikt in de [AZ webapp](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest) -documentatie. Voordat u begint, moet u ervoor zorgen dat u de stappen hebt voltooid om [een resource groep toe te voegen aan uw IOT-hub](#add-a-consumer-group-to-your-iot-hub), [een service connection string te krijgen voor uw IOT-hub](#get-a-service-connection-string-for-your-iot-hub)en [de web-app te downloaden van github](#download-the-web-app-from-github).
+In deze sectie maakt u een web-app in App Service en implementeert u uw code hiervoor met behulp van Azure CLI-opdrachten. U vindt informatie over de opdrachten die worden gebruikt in de [AZ webapp](/cli/azure/webapp?view=azure-cli-latest) -documentatie. Voordat u begint, moet u ervoor zorgen dat u de stappen hebt voltooid om [een resource groep toe te voegen aan uw IOT-hub](#add-a-consumer-group-to-your-iot-hub), [een service connection string te krijgen voor uw IOT-hub](#get-a-service-connection-string-for-your-iot-hub)en [de web-app te downloaden van github](#download-the-web-app-from-github).
 
-1. Een [app service plan](https://docs.microsoft.com/azure/app-service/overview-hosting-plans) definieert een set reken resources voor een app die wordt gehost in app service om uit te voeren. In deze zelf studie gebruiken we de laag voor ontwikkel aars/gratis om de web-app te hosten. Met de gratis laag wordt uw web-app uitgevoerd op gedeelde Windows-resources met andere App Service-apps, waaronder apps van andere klanten. Azure biedt ook App Service plannen voor het implementeren van web-apps op Linux-reken resources. U kunt deze stap overs Laan als u al een App Service plan hebt dat u wilt gebruiken.
+1. Een [app service plan](../app-service/overview-hosting-plans.md) definieert een set reken resources voor een app die wordt gehost in app service om uit te voeren. In deze zelf studie gebruiken we de laag voor ontwikkel aars/gratis om de web-app te hosten. Met de gratis laag wordt uw web-app uitgevoerd op gedeelde Windows-resources met andere App Service-apps, waaronder apps van andere klanten. Azure biedt ook App Service plannen voor het implementeren van web-apps op Linux-reken resources. U kunt deze stap overs Laan als u al een App Service plan hebt dat u wilt gebruiken.
 
    Voer de volgende opdracht uit om een App Service plan te maken met behulp van de gratis laag van Windows. Gebruik dezelfde resource groep als uw IoT-hub. De naam van uw service abonnement kan bestaan uit hoofd letters, cijfers en afbreek streepjes.
 
@@ -187,7 +187,7 @@ In deze sectie maakt u een web-app in App Service en implementeert u uw code hie
    az webapp update -n <your web app name> -g <your resource group name> --https-only true
    ```
 
-5. Als u de code wilt implementeren in App Service, gebruikt u de [referenties voor implementatie op gebruikers niveau](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials). De referenties voor implementatie op gebruikers niveau verschillen van uw Azure-referenties en worden gebruikt voor git lokale en FTP-implementaties naar een web-app. Eenmaal ingesteld zijn ze geldig voor al uw App Service-apps in alle abonnementen in uw Azure-account. Als u eerder implementatie referenties op gebruikers niveau hebt ingesteld, kunt u deze gebruiken.
+5. Als u de code wilt implementeren in App Service, gebruikt u de [referenties voor implementatie op gebruikers niveau](../app-service/deploy-configure-credentials.md). De referenties voor implementatie op gebruikers niveau verschillen van uw Azure-referenties en worden gebruikt voor git lokale en FTP-implementaties naar een web-app. Eenmaal ingesteld zijn ze geldig voor al uw App Service-apps in alle abonnementen in uw Azure-account. Als u eerder implementatie referenties op gebruikers niveau hebt ingesteld, kunt u deze gebruiken.
 
    Als u geen implementatie referenties op gebruikers niveau hebt ingesteld of als u het wacht woord niet meer weet, voert u de volgende opdracht uit. De gebruikers naam van uw implementatie moet uniek zijn binnen Azure en mag niet het symbool @ bevatten voor lokale Git-pushes. Voer uw nieuwe wacht woord in en bevestig dit wanneer u hierom wordt gevraagd. Het wachtwoord moet ten minste acht tekens lang zijn en minimaal twee van de volgende drie typen elementen bevatten: letters, cijfers en symbolen.
 

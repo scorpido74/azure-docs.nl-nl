@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 522d29505d7d10f5f6d97136f270f07a63053d19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8159d83624cdd474d91030d5376a3db447beffe1
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88271104"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342345"
 ---
 # <a name="get-help-with-your-system"></a>Hulp vragen bij uw systeem
 
@@ -57,4 +57,4 @@ Volg deze stappen om ervoor te zorgen dat uw ondersteunings ticket is gelabeld m
 
 ## <a name="request-a-quota-increase"></a>Een quotum verhoging aanvragen
 
-Lees [quotum voor het vFXT-cluster](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster) voor meer informatie over de onderdelen die nodig zijn voor het implementeren van de avere VFXT voor Azure. U kunt [een quotum verhoging aanvragen](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) van de Azure Portal.
+Lees [quotum voor het vFXT-cluster](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster) voor meer informatie over de onderdelen die nodig zijn voor het implementeren van de avere VFXT voor Azure. U kunt [een quotum verhoging aanvragen](../azure-portal/supportability/resource-manager-core-quotas-request.md) van de Azure Portal.

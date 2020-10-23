@@ -9,12 +9,12 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: f687923f1185d848c2c4f2f40d949c71a7743d65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e2443014f6788504a11784945078187a5a72de4
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936722"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311132"
 ---
 # <a name="configure-azure-arc-enabled-sql-managed-instance"></a>Door Azure Arc ingeschakeld SQL Managed instance configureren
 
@@ -22,11 +22,11 @@ In dit artikel wordt uitgelegd hoe u Azure Arc enabled SQL Managed Instance kunt
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="configure-resources-for-azure-arc-enabled-sql-managed-instance"></a>Resources configureren voor Azure Arc enabled SQL Managed instance
+## <a name="configure-resources"></a>Resources configureren
 
-### <a name="configure-using-azdata"></a>Configureren met behulp van azdata
+### <a name="configure-using-azure-data-cli-azdata"></a>Configureren met [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
-U kunt de configuratie van Azure Arc enabled SQL Managed instances bewerken met de `azdata` cli. Voer de volgende opdracht uit om configuratie opties te bekijken. 
+U kunt de configuratie van Azure Arc enabled SQL Managed instances bewerken met de [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] . Voer de volgende opdracht uit om configuratie opties te bekijken. 
 
 ```
 azdata arc sql mi edit --help

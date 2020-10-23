@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurecli
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a63944dfb9a22f30451793d367650f03b8aa2c1f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e6146809363681ed73f3d63ccf43ba49044ccc28
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87483821"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940579"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-cli"></a>Quickstart: Een certificaat uit Azure Key Vault instellen en ophalen met behulp van de Azure CLI
 
@@ -74,7 +74,7 @@ Typ de onderstaande opdrachten om een zelfondertekend certificaat te maken met h
 az keyvault certificate create --vault-name "Contoso-Vault2" -n ExampleCertificate -p "$(az keyvault certificate get-default-policy)"
 ```
 
-U kunt nu verwijzen naar dit certificaat dat u aan Azure Key Vault hebt toegevoegd met behulp van de bijbehorende URI. Gebruik **https://Contoso-Vault2.vault.azure.net/certificates/ExampleCertificate** om de huidige versie op te halen. 
+U kunt nu verwijzen naar dit certificaat dat u aan Azure Key Vault hebt toegevoegd met behulp van de bijbehorende URI. Gebruik **'https://Contoso-Vault2.vault.azure.net/certificates/ExampleCertificate '** om de huidige versie op te halen. 
 
 Een eerder opgeslagen certificaat weergeven:
 

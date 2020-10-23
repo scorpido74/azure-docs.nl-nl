@@ -12,16 +12,16 @@ ms.date: 12/09/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv, marsma
 ms.custom: aaddev
-ms.openlocfilehash: 23ab8c5092a546a7b66b93900c6c083ac8e84394
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3a631a80e7ac5eed3c3239cb79e35b87c70ab1b0
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88117767"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055457"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Evolutie van het Microsoft Identity Platform
 
-Het Microsoft Identity Platform bouwt voort op het ontwikkelaarsplatform van Azure Active Directory (Azure AD). Met het Microsoft-identiteitsplatform kunnen ontwikkelaars toepassingen maken die gebruikers aanmelden en waarmee tokens worden opgehaald voor het aanroepen van API's, zoals Microsoft Graph, of API's die door ontwikkelaars zijn gemaakt. Het bevat een verificatieservice, open source-bibliotheken, mogelijkheden voor toepassingsregistratie en -configuratie (via een ontwikkelaarsportal en toepassings-API), volledige ontwikkelaarsdocumentatie, quickstart-voorbeelden, zelfstudies, handleidingen en andere inhoud voor ontwikkelaars. Het Microsoft Identity Platform biedt ondersteuning voor standaardprotocollen als OAuth 2.0 en OpenID Connect.
+Het [Microsoft Identity Platform](../develop/index.yml) bouwt voort op het ontwikkelaarsplatform van Azure Active Directory (Azure AD). Met het Microsoft-identiteitsplatform kunnen ontwikkelaars toepassingen maken die gebruikers aanmelden en waarmee tokens worden opgehaald voor het aanroepen van API's, zoals Microsoft Graph, of API's die door ontwikkelaars zijn gemaakt. Het bevat een verificatieservice, open source-bibliotheken, mogelijkheden voor toepassingsregistratie en -configuratie (via een ontwikkelaarsportal en toepassings-API), volledige ontwikkelaarsdocumentatie, quickstart-voorbeelden, zelfstudies, handleidingen en andere inhoud voor ontwikkelaars. Het Microsoft Identity Platform biedt ondersteuning voor standaardprotocollen als OAuth 2.0 en OpenID Connect.
 
 Veel ontwikkelaars hebben hiervoor gewerkt met het Azure AD v1.0 voor het verifiëren van werk- en schoolaccounts (ingericht door Azure AD), door tokens aan te vragen van het Azure AD v1.0-eindpunt en gebruik te maken van Azure AD Authentication Library (ADAL), Azure Portal voor de registratie en configuratie van toepassingen, en de Microsoft Graph API voor het programmatisch configureren van toepassingen.
 
@@ -49,7 +49,7 @@ De ervaring voor **[App-registraties](https://go.microsoft.com/fwlink/?linkid=20
 
 Voor integratie met Azure AD B2C (bij het verifiëren van sociale of lokale identiteiten) moet u uw toepassing registreren in een Azure AD B2C-tenant. Deze ervaring maakt ook deel uit van het Azure-portal.
 
-Gebruik de [Toepassings-API](/graph/api/resources/application?view=graph-rest-1.0) om uw toepassingen die zijn geïntegreerd met het Microsoft-identiteitsplatform te configureren om alle Microsoft-identiteiten te verifiëren.
+Gebruik de [Toepassings-API](/graph/api/resources/application) om uw toepassingen die zijn geïntegreerd met het Microsoft-identiteitsplatform te configureren om alle Microsoft-identiteiten te verifiëren.
 
 ### <a name="msal-libraries"></a>MSAL-bibliotheken
 
@@ -57,15 +57,10 @@ U kunt de MSAL-bibliotheek gebruiken om toepassingen te bouwen die alle Microsof
 
 U kunt ook de MSAL-bibliotheken gebruiken om uw toepassing te integreren met Azure AD B2C.
 
-Bibliotheken aan de serverzijde om webapps en web-API's te bouwen zijn algemeen beschikbaar: [ASP.NET](/aspnet/overview) en [ASP.NET Core](/aspnet/core/?view=aspnetcore-2.2)
+### <a name="microsoft-identity-platform-endpoint"></a>Eindpunt van het Microsoft Identity Platform
 
-### <a name="microsoft-identity-platform-endpoint"></a>Eindpunt van het Microsoft-identiteitsplatform
-
-Het eindpunt van het Microsoft-identiteitsplatform (v2.0) is nu OIDC-gecertificeerd. Het werkt met de Microsoft Authentication Libraries (MSAL) of met andere bibliotheken die voldoen aan de normen. Het implementeert door mensen leesbare bereiken, conform de sectornormen.
+Het eindpunt van het Microsoft Identity Platform (v2.0) is OIDC-gecertificeerd. Het werkt met de Microsoft Authentication Libraries (MSAL) of met andere bibliotheken die voldoen aan de normen. Het implementeert door mensen leesbare bereiken, conform de sectornormen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over v1.0 en v2.0.
-
-* Overzicht van het [Microsoft-identiteitsplatform (v2.0)](../develop/v2-overview.md)
-* Overzicht van [Azure Active Directory voor ontwikkelaars (v1.0)](v1-overview.md)
+Meer informatie vindt u in de [documentatie over het Microsoft Identity Platform](../develop/index.yml).

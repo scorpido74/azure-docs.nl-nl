@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 100be6a4376883a4f2a91b1efd172242c1d19e19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 899c64e818896cde18e955d6abd82594734c4b57
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80878388"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368159"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Concepten, terminologie en entiteiten in Azure Scheduler
 
@@ -40,7 +40,7 @@ Op hoog niveau maakt de REST API van de Scheduler deze bewerkingen voor het behe
 
 ### <a name="job-management"></a>Taakbeheer
 
-Biedt ondersteuning voor bewerkingen voor het maken en bewerken van jobs. Alle jobs moeten behoren tot een bestaande jobverzameling. Er wordt er dus niet impliciet een gemaakt. Zie [Scheduler REST API - Jobs](https://docs.microsoft.com/rest/api/scheduler/jobs) voor meer informatie. Hier is het URI-adres voor deze bewerkingen:
+Biedt ondersteuning voor bewerkingen voor het maken en bewerken van jobs. Alle jobs moeten behoren tot een bestaande jobverzameling. Er wordt er dus niet impliciet een gemaakt. Zie [Scheduler REST API - Jobs](/rest/api/scheduler/jobs) voor meer informatie. Hier is het URI-adres voor deze bewerkingen:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}
@@ -48,7 +48,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 ### <a name="job-collection-management"></a>Beheer van jobverzameling
 
-Ondersteunt bewerkingen voor het maken en bewerken van jobs en jobverzamelingen, die worden toegewezen aan quota en gedeelde instellingen. Quota specificeren bijvoorbeeld het maximum aantal jobs en het kleinste terugkeerpatroon. Zie [Scheduler REST API - Job Collections](https://docs.microsoft.com/rest/api/scheduler/jobcollections) (Scheduler REST API - Jobverzamelingen) voor meer informatie. Hier is het URI-adres voor deze bewerkingen:
+Ondersteunt bewerkingen voor het maken en bewerken van jobs en jobverzamelingen, die worden toegewezen aan quota en gedeelde instellingen. Quota specificeren bijvoorbeeld het maximum aantal jobs en het kleinste terugkeerpatroon. Zie [Scheduler REST API - Job Collections](/rest/api/scheduler/jobcollections) (Scheduler REST API - Jobverzamelingen) voor meer informatie. Hier is het URI-adres voor deze bewerkingen:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}
@@ -56,7 +56,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 ### <a name="job-history-management"></a>Beheer van jobgeschiedenis
 
-Biedt ondersteuning voor de GET-bewerking voor het ophalen van een geschiedenis van 60 dagen van uitgevoerde jobs, bijvoorbeeld de verstreken tijd van jobs en de resultaten van het uitvoeren van jobs. Omvat ondersteuning voor querytekenreeksparameters om te filteren op basis van toestand en status. Zie [Scheduler REST API - Jobs - List Job History](https://docs.microsoft.com/rest/api/scheduler/jobs/listjobhistory) (Scheduler REST API - Jobs - Lijst met jobgeschiedenissen) voor meer informatie. Hier is het URI-adres voor deze bewerking:
+Biedt ondersteuning voor de GET-bewerking voor het ophalen van een geschiedenis van 60 dagen van uitgevoerde jobs, bijvoorbeeld de verstreken tijd van jobs en de resultaten van het uitvoeren van jobs. Omvat ondersteuning voor querytekenreeksparameters om te filteren op basis van toestand en status. Zie [Scheduler REST API - Jobs - List Job History](/rest/api/scheduler/jobs/listjobhistory) (Scheduler REST API - Jobs - Lijst met jobgeschiedenissen) voor meer informatie. Hier is het URI-adres voor deze bewerking:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history
@@ -214,7 +214,7 @@ Hier volgt een voorbeeld van een Service Bus-onderwerpactie:
 },
 ```
 
-Zie [Autoriseren met Shared Access Signatures](../storage/common/storage-dotnet-shared-access-signature-part-1.md) voor meer informatie over SAS-tokens (Shared Access Signature).
+Zie [Autoriseren met Shared Access Signatures](../storage/common/storage-sas-overview.md) voor meer informatie over SAS-tokens (Shared Access Signature).
 
 <a name="error-action"></a>
 
@@ -248,7 +248,7 @@ Een job wordt herhaald als de JSON-definitie van de job het object **recurrence*
 
 | Eigenschap | Vereist | Waarde | Beschrijving | 
 |----------|----------|-------|-------------| 
-| **ingang** | Ja, als **recurrence** wordt gebruikt | Minuut, Uur, Dag, Week, Maand, Jaar | De tijdseenheid tussen de opgetreden gevallen | 
+| **frequency** | Ja, als **recurrence** wordt gebruikt | Minuut, Uur, Dag, Week, Maand, Jaar | De tijdseenheid tussen de opgetreden gevallen | 
 | **bereik** | Nee | 1 tot en met 1000 | Een positief geheel getal dat het aantal tijdseenheden tussen de opgetreden gevallen bepaalt op basis van **frequency** | 
 | **planning** | Nee | Varieert | De details voor complexere en geavanceerdere schema's. Zie **hours**, **minutes**, **weekDays**, **months** en **monthDays** | 
 | **loopt** | Nee | 1 tot 24 | Een matrix met de uuraanduidingen voor wanneer de job moet worden uitgevoerd | 

@@ -3,12 +3,12 @@ title: Gebeurtenis domeinen in Azure Event Grid
 description: In dit artikel wordt beschreven hoe u gebeurtenis domeinen gebruikt voor het beheren van de stroom van aangepaste gebeurtenissen naar uw verschillende zakelijke organisaties, klanten of toepassingen.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 02529ba770e636021cf9cec4ed555247e1c63d8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b313784cd006087f3c2f1354053540cc9224782
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86114360"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328824"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Informatie over gebeurtenis domeinen voor het beheren van Event Grid onderwerpen
 
@@ -37,13 +37,13 @@ Het biedt u ook een enkel eind punt, waarmee u alle evenementen van uw klant kun
 
 ## <a name="access-management"></a>Toegangsbeheer
 
-Met een domein krijgt u een nauw keurige autorisatie en verificatie controle voor elk onderwerp via het op rollen gebaseerde toegangs beheer (RBAC). U kunt deze rollen gebruiken om elke Tenant in uw toepassing te beperken tot alleen de onderwerpen waaraan u hen toegang wilt verlenen.
+Met een domein krijgt u een nauw keurige autorisatie en verificatie controle voor elk onderwerp via Azure op rollen gebaseerd toegangs beheer (Azure RBAC). U kunt deze rollen gebruiken om elke Tenant in uw toepassing te beperken tot alleen de onderwerpen waaraan u hen toegang wilt verlenen.
 
-RBAC in gebeurtenis domeinen werkt op dezelfde manier als [Managed Access Control](security-authorization.md) werkt in de rest van Event grid en Azure. Gebruik RBAC om aangepaste roldefinities in gebeurtenis domeinen te maken en af te dwingen.
+Azure RBAC in gebeurtenis domeinen werkt op dezelfde manier als [Managed Access Control](security-authorization.md) werkt in de rest van Event grid en Azure. Gebruik Azure RBAC om aangepaste roldefinities in gebeurtenis domeinen te maken en af te dwingen.
 
 ### <a name="built-in-roles"></a>Ingebouwde rollen
 
-Event Grid heeft twee ingebouwde roldefinities om RBAC gemakkelijker te maken voor het werken met gebeurtenis domeinen. Deze rollen zijn **EventGrid EventSubscription Inzender (preview)** en **EventGrid EventSubscription Reader (preview)**. U wijst deze rollen toe aan gebruikers die zich moeten abonneren op onderwerpen in uw gebeurtenis domein. U bereikt de roltoewijzing alleen voor het onderwerp dat gebruikers moeten abonneren op.
+Event Grid heeft twee ingebouwde roldefinities om Azure RBAC gemakkelijker te maken voor het werken met gebeurtenis domeinen. Deze rollen zijn **EventGrid EventSubscription Inzender (preview)** en **EventGrid EventSubscription Reader (preview)**. U wijst deze rollen toe aan gebruikers die zich moeten abonneren op onderwerpen in uw gebeurtenis domein. U bereikt de roltoewijzing alleen voor het onderwerp dat gebruikers moeten abonneren op.
 
 Zie [ingebouwde rollen voor Event grid](security-authorization.md#built-in-roles)voor meer informatie over deze rollen.
 

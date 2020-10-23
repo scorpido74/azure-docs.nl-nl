@@ -9,12 +9,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 06/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d99d211ec48a507b205c4cef21618054c11aec9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4c8d1101bd83b580c010132dd70284b78569392
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86224856"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124218"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Aan de slag gaan met Key Vault-certificaten
 De volgende scenario's schetsen verschillende van de primaire gebruiks mogelijkheden van de certificaat beheer service van Key Vault, met inbegrip van de extra stappen voor het maken van uw eerste certificaat in uw sleutel kluis.
@@ -37,7 +37,7 @@ Certificaten bestaan uit drie gerelateerde resources die aan elkaar zijn gekoppe
 
 **Stap 1** -providers van certificerings instanties  
 -   Als IT-beheerder, PKI-beheerder of iedereen die accounts beheert met Ca's, voor een bepaald bedrijf (bijvoorbeeld Contoso) is een vereiste voor het gebruik van Key Vault-certificaten.  
-    De volgende certificerings instanties zijn de huidige partner providers met Key Vault:  
+    De volgende Ca's zijn de huidige partner providers met Key Vault. Klik [hier](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate#partnered-ca-providers) voor meer informatie   
     -   DigiCert-Key Vault biedt OV TLS/SSL-certificaten met DigiCert.  
     -   GlobalSign-Key Vault biedt OV TLS/SSL-certificaten met GlobalSign.  
 

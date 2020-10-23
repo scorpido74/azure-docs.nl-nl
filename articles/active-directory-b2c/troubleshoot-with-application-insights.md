@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 10/12/2020
+ms.date: 10/16/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ddc0dc433a5d8c09c692e6304647fb391694e8c8
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 1628d78c9d1e4db1f59982d696dcc886646fe604
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993171"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132054"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Azure Active Directory B2C-logboeken met Application Insights verzamelen
 
@@ -26,13 +26,13 @@ In dit artikel worden de stappen beschreven voor het verzamelen van logboeken va
 De gedetailleerde activiteiten logboeken die hier worden beschreven, moeten **alleen** worden ingeschakeld tijdens de ontwikkeling van uw aangepaste beleids regels.
 
 > [!WARNING]
-> Schakel de ontwikkelings modus niet in voor productie. In Logboeken worden alle claims verzameld die worden verzonden naar en van id-providers. U bent als ontwikkelaar verantwoordelijk voor alle persoons gegevens die in uw Application Insights-logboeken worden verzameld. Deze gedetailleerde logboeken worden alleen verzameld wanneer het beleid in de **ontwikkelaars modus**wordt geplaatst.
+> Stel de to niet `DeploymentMode` `Developer` in in productie omgevingen. In Logboeken worden alle claims verzameld die worden verzonden naar en van id-providers. U bent als ontwikkelaar verantwoordelijk voor alle persoons gegevens die in uw Application Insights-logboeken worden verzameld. Deze gedetailleerde logboeken worden alleen verzameld wanneer het beleid in de **ontwikkelaars modus**wordt geplaatst.
 
 ## <a name="set-up-application-insights"></a>Application Insights instellen
 
 Als u er nog geen hebt, maakt u een instantie van Application Insights in uw abonnement.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het filter **Directory + abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure-abonnement bevat (niet uw Azure AD B2C Directory).
 1. Selecteer **een resource maken** in het navigatie menu aan de linkerkant.
 1. Zoek en selecteer **Application Insights**en selecteer vervolgens **maken**.
@@ -58,7 +58,7 @@ Als u er nog geen hebt, maakt u een instantie van Application Insights in uw abo
     <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
     ```
 
-    * `DeveloperMode="true"` vertelt ApplicationInsights om de telemetrie te versnellen door de verwerkings pijplijn. Goed voor ontwikkeling, maar beperkt op hoge volumes.
+    * `DeveloperMode="true"` vertelt ApplicationInsights om de telemetrie te versnellen door de verwerkings pijplijn. Goed voor ontwikkeling, maar beperkt op hoge volumes. Stel in productie de in `DeveloperMode` op `false` .
     * `ClientEnabled="true"` Hiermee wordt het ApplicationInsights-client script verzonden voor het bijhouden van de pagina weergave en fouten aan de client zijde. U kunt deze weer geven in de tabel **browserTimings** in de Application Insights Portal. Als u deze instelling inschakelt `ClientEnabled= "true"` , voegt u Application Insights toe aan uw pagina script en krijgt u een tijds duur van het laden van pagina's en Ajax-aanroepen, tellingen, Details van browser uitzonderingen en Ajax-fouten, en het aantal gebruikers en sessies. Dit veld is **optioneel**en is standaard ingesteld op `false` .
     * `ServerEnabled="true"` Hiermee wordt de bestaande UserJourneyRecorder-JSON als aangepaste gebeurtenis verzonden naar Application Insights.
 
@@ -102,6 +102,31 @@ Hier volgt een lijst met query's die u kunt gebruiken om de logboeken weer te ge
 De invoer kan lang zijn. Exporteren naar CSV voor een betere blik.
 
 Zie [overzicht van logboek query's in azure monitor](../azure-monitor/log-query/log-query-overview.md)voor meer informatie over het uitvoeren van query's.
+
+## <a name="configure-application-insights-in-production"></a>Application Insights in productie configureren
+
+Als u de prestaties van uw productie omgeving en betere gebruikers ervaring wilt verbeteren, is het belang rijk dat u uw beleid configureert om berichten te negeren die niet belang rijk zijn. Gebruik de volgende configuratie om alleen kritieke fout berichten naar uw Application Insights te verzenden. 
+
+1. Stel het `DeploymentMode` kenmerk van de [TrustFrameworkPolicy](trustframeworkpolicy.md) in op `Production` . 
+
+   ```xml
+   <TrustFrameworkPolicy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06" PolicySchemaVersion="0.3.0.0"
+   TenantId="yourtenant.onmicrosoft.com"
+   PolicyId="B2C_1A_signup_signin"
+   PublicPolicyUri="http://yourtenant.onmicrosoft.com/B2C_1A_signup_signin"
+   DeploymentMode="Production"
+   UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights">
+   ```
+
+1. Stel de `DeveloperMode` [JourneyInsights](relyingparty.md#journeyinsights) in op `false` .
+
+   ```xml
+   <UserJourneyBehaviors>
+     <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="false" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
+   </UserJourneyBehaviors>
+   ```
+   
+1. Upload en test uw beleid.
 
 ## <a name="next-steps"></a>Volgende stappen
 

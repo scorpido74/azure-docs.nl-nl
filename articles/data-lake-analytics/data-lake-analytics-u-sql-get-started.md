@@ -1,18 +1,16 @@
 ---
 title: Aan de slag met U-SQL-taal in Azure Data Lake Analytics
 description: Meer informatie over de basis principes van de U-SQL-taal in Azure Data Lake Analytics. Schrijf uw eerste query met behulp van variabelen naar extra gegevens uit bestanden, Transformeer de rijenset en Verzamel gegevens.
-services: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 06/23/2017
-ms.openlocfilehash: 6f2af2eed8aa01f35e1813bcd910f3ea22e2a335
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5920f2b5823e568d56d13107200eb0025a654db0
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87128842"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219918"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Aan de slag met U-SQL in Azure Data Lake Analytics
 
@@ -21,7 +19,7 @@ U-SQL is een taal die declaratieve SQL combineert met dwingende C#, zodat u gege
 ## <a name="learning-resources"></a>Trainingsmateriaal
 
 * De [u-SQL-zelf studie](https://aka.ms/usqltutorial) biedt een begeleide walkthrough van de meeste u-SQL-taal. Dit document wordt aanbevolen om te lezen voor alle ontwikkel aars die U-SQL willen leren kennen.
-* Zie de naslag informatie voor de [u-SQL](https://docs.microsoft.com/u-sql/)-taal voor gedetailleerde gegevens over de **u-SQL-taal syntaxis**.
+* Zie de naslag informatie voor de [u-SQL](/u-sql/)-taal voor gedetailleerde gegevens over de **u-SQL-taal syntaxis**.
 * Zie voor meer informatie over de **u-SQL-ontwerp filosofie**de Visual Studio blog post [Inleiding U-SQL – een taal die het verwerken van Big data eenvoudig maakt](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/).
 
 ## <a name="prerequisites"></a>Vereisten

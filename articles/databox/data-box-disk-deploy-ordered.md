@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: de481abd82b4fc7dd2eae3763f82b8dd96cc14a9
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: c83e46932e8d2a28d8503fe3fb6514988c364d97
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266522"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125266"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>Zelfstudie: Een Azure Data Box Disk bestellen
 
@@ -49,7 +49,7 @@ Zorg voordat u begint voor het volgende:
 Meld u aan bij:
 
 * Azure Portal bij deze URL: https://portal.azure.com om Data Box Disk te bestellen.
-* Of de Azure Government-portal op deze URL: https://portal.azure.us. Ga naar [Verbinding maken met Azure Government met behulp van de portal](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal) voor meer informatie.
+* Of de Azure Government-portal op deze URL: https://portal.azure.us. Ga naar [Verbinding maken met Azure Government met behulp van de portal](../azure-government/documentation-government-get-started-connect-with-portal.md) voor meer informatie.
 
 Voer de volgende stappen uit om Data Box Disk te bestellen.
 
@@ -72,7 +72,7 @@ Voer de volgende stappen uit om Data Box Disk te bestellen.
   
 4. Selecteer **Data Box Disk**. De maximumcapaciteit van de oplossing voor één bestelling van 5 schijven is 35 TB. U kunt meerdere bestellingen doen voor grotere gegevensgrootten.
 
-     ![De optie Data Box Disk selecteren](media/data-box-disk-deploy-ordered/select-data-box-sku-zoom.png)
+     ![Optie 2 voor Data Box Disk selecteren](media/data-box-disk-deploy-ordered/select-data-box-sku-zoom.png)
 
 5. Voer in **Bestellen** de **Orderdetails** in. Voer de volgende informatie in of selecteer deze.
 
@@ -83,7 +83,7 @@ Voer de volgende stappen uit om Data Box Disk te bestellen.
     |Doel-Azure-regio| Selecteer een regio voor uw opslagaccount.<br> Momenteel worden opslagaccounts in alle regio's in de VS, West- en Noord-Europa, Canada en Australië ondersteund. |
     |Geschatte gegevensgrootte in TB| Voer een schatting in TB in. <br>Op basis van de gegevensgrootte stuurt Microsoft u het juiste aantal SSD-schijven van 8 TB (7 TB aan bruikbare capaciteit). <br>De maximale bruikbare capaciteit van 5 schijven is 35 TB. |
     |Wachtwoordsleutel voor schijf| Geef de wachtwoordsleutel voor schijf op als u het selectievakje **Aangepaste sleutel gebruiken in plaats van door Azure gegenereerde sleutel** inschakelt. <br> Geef een alfanumerieke sleutel tussen 12 tot 32 tekens lang op met ten minste één numeriek en één speciaal teken. Alleen de speciale tekens `@?_+` zijn toegestaan. <br> U kunt deze optie overslaan en de door Azure gegenereerde wachtwoordsleutel gebruiken om uw schijven te ontgrendelen.|
-    |Opslaglocatie     | Kies een opslagaccount, beheerde schijven of beide. <br> Selecteer een opslagaccount in de gefilterde lijst van een bestaand opslagaccount, gebaseerd op de opgegeven Azure-regio. Data Box Disk kan worden gekoppeld aan maximaal 1 opslagaccount. <br> U kunt ook een nieuw account van het type **Algemeen gebruik v1**, **Algemeen gebruik v2** of **Blob-opslag** maken. <br>Opslagaccounts met virtuele netwerken worden ondersteund. Als u wilt dat de Data Box-service kan werken met beveiligde opslagaccounts, schakelt u in de firewallinstellingen van het opslagaccount de vertrouwde services in. Zie [Azure Data Box toevoegen als een vertrouwde service](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) voor meer informatie.|
+    |Opslaglocatie     | Kies een opslagaccount, beheerde schijven of beide. <br> Selecteer een opslagaccount in de gefilterde lijst van een bestaand opslagaccount, gebaseerd op de opgegeven Azure-regio. Data Box Disk kan worden gekoppeld aan maximaal 1 opslagaccount. <br> U kunt ook een nieuw account van het type **Algemeen gebruik v1**, **Algemeen gebruik v2** of **Blob-opslag** maken. <br>Opslagaccounts met virtuele netwerken worden ondersteund. Als u wilt dat de Data Box-service kan werken met beveiligde opslagaccounts, schakelt u in de firewallinstellingen van het opslagaccount de vertrouwde services in. Zie [Azure Data Box toevoegen als een vertrouwde service](../storage/common/storage-network-security.md#exceptions) voor meer informatie.|
 
     Als u een opslagaccount selecteert als de opslaglocatie, ziet u het volgende scherm:
 

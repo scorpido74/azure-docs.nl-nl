@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 33d52f871de75a7f7d34016b040e44d6f1623fd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89da6935d85628b5ce4ff762ad31d3f280682921
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70101264"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424244"
 ---
 # <a name="disaster-recovery-principles"></a>Principes voor herstel na nood gevallen
 
@@ -68,7 +68,7 @@ De volgende stap is dat u het tweede SAP HANA-exemplaar installeert op de HANA-e
 - Stop de zojuist geïnstalleerde SAP HANA-instantie op de HANA-eenheid voor grote instanties in de Azure-regio.
 - Ontkoppel deze PRD-volumes en neem contact op met SAP HANA op Azure Service Management. De volumes kunnen niet worden gekoppeld aan de eenheid omdat deze niet toegankelijk zijn terwijl het doel van de opslag replicatie is.  
 
-![Installatie stap van DR voordat een replicatie wordt ingesteld](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start3.PNG)
+![Diagram waarin de replicatie relatie wordt weer gegeven tussen de PRD-volumes in de Azure-regio productie en de PRD-volumes in de Azure-regio.](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start3.PNG)
 
 Met het operations-team wordt de replicatie relatie tot stand gebracht tussen de PRD-volumes in de Azure-regio productie en de PRD-volumes in de Azure-regio.
 

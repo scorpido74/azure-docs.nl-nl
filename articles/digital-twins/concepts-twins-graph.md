@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 5821a1d1f6713ef39d7475fb004164e7c0fd71ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c41ffcd552cddf981c2ed54d1d78c7cb2e8698c5
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87062067"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440826"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Meer informatie over digitale apparaatdubbels en hun twee grafieken
 
@@ -39,45 +39,21 @@ Het resultaat van dit proces is een set knoop punten (de Digital apparaatdubbels
 
 ## <a name="create-with-the-apis"></a>Maken met de Api's
 
-In deze sectie ziet u hoe u digitale apparaatdubbels en relaties van een client toepassing maakt. Het bevat .NET-code voorbeelden die gebruikmaken van de [DigitalTwins-api's](how-to-use-apis-sdks.md), om aanvullende context te bieden over wat er in elk van deze concepten gaat.
+In deze sectie ziet u hoe u digitale apparaatdubbels en relaties van een client toepassing maakt. Het bevat .NET-code voorbeelden die gebruikmaken van de [DigitalTwins-api's](/rest/api/digital-twins/dataplane/twins), om aanvullende context te bieden over wat er in elk van deze concepten gaat.
 
 ### <a name="create-digital-twins"></a>Digitale tweelingen maken
 
-Hieronder vindt u een code fragment van de clientcode die gebruikmaakt van de [DigitalTwins-api's](how-to-use-apis-sdks.md) voor het instantiëren van een dubbele van het type *kamer*.
+Hieronder vindt u een code fragment van de clientcode die gebruikmaakt van de [DigitalTwins-api's](/rest/api/digital-twins/dataplane/twins) voor het instantiëren van een dubbele van het type *kamer*.
 
 In de huidige preview van Azure Digital Apparaatdubbels moeten alle eigenschappen van een dubbele instantie worden geïnitialiseerd voordat de dubbele kan worden gemaakt. Dit doet u door een JSON-document te maken dat de nood zakelijke initialisatie waarden levert.
 
-```csharp
-public Task<boolean> CreateRoom(string id, double temperature, double humidity) 
-{
-    // Define the model for the twin to be created
-    Dictionary<string, object> meta = new Dictionary<string, object>()
-    {
-      { "$model", "dtmi:com:contoso:Room;2" }
-    };
-    // Initialize the twin properties
-    Dictionary<string, object> initData = new Dictionary<string, object>()
-    {
-      { "$metadata", meta },
-      { "Temperature", temperature},
-      { "Humidity", humidity},
-    };
-    try
-    {
-      await client.DigitalTwins.AddAsync(id, initData);
-      return true;
-    }
-    catch (ErrorResponseException e)
-    {
-      Console.WriteLine($"*** Error creating twin {id}: {e.Response.StatusCode}");
-      return false;
-    }
-}
-```
+[!INCLUDE [Azure Digital Twins code: create twin](../../includes/digital-twins-code-create-twin.md)]
+
+U kunt ook een helper-klasse met de naam gebruiken `BasicDigitalTwin` om eigenschaps velden in een ' twee ' object direct sneller op te slaan als alternatief voor het gebruik van een woorden lijst. Zie voor meer informatie over de Help-klasse en voor beelden van het gebruik van het artikel [*een digitale dubbele sectie maken*](how-to-manage-twin.md#create-a-digital-twin) van *How-to: Manage Digital apparaatdubbels*.
 
 ### <a name="create-relationships"></a>Relaties maken
 
-Hier volgt een voor beeld van een client code die gebruikmaakt van de [DigitalTwins-api's](how-to-use-apis-sdks.md) voor het bouwen van een relatie tussen een van de twee *basis*typen, *GroundFloor* en een *kamer*type digitale dubbele naam *Cafe*.
+Hier volgt een voor beeld van een client code die gebruikmaakt van de [DigitalTwins-api's](/rest/api/digital-twins/dataplane/twins) voor het bouwen van een relatie tussen een van de twee *basis*typen, *GroundFloor* en een *kamer*type digitale dubbele naam *Cafe*.
 
 ```csharp
 // Create Twins, using functions similar to the previous sample

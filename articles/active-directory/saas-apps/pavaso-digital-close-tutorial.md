@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 4ef4515b7ecee3ea814d9a34d3bf3c217d551934
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 31e05e45713100c321440d63fe51586204d07231
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543743"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996065"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pavaso-digital-close"></a>Zelfstudie: Azure Active Directory-integratie met Pavaso Digital Close
 
@@ -99,7 +99,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met [toepassingsnaam], m
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Pavaso Digital Close](common/idp-intiated.png)
+    ![Schermopname van 'Standaard SAM -configuratie' met de tekstvakken 'Id' en 'Antwoord-URL' gemarkeerd en de actie 'Opslaan' geselecteerd.](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<SUBDOMAIN>.pavaso.com/AuthServices`
 

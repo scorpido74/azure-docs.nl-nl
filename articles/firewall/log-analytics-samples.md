@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 09/11/2020
 ms.author: victorh
-ms.openlocfilehash: 5acbc1f3b8c5519c22105f05219ab2cef5c15892
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d4ed76e849385c4edecb7bd97d58087c8e5b4b3
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90023870"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132785"
 ---
 # <a name="azure-monitor-logs-for-azure-firewall"></a>Azure Monitor logboeken voor Azure Firewall
 
@@ -170,11 +170,11 @@ AzureDiagnostics
 
 In de volgende logboek voorbeelden worden de gegevens weer gegeven die zijn opgenomen in een logboek vermelding.
 
-![logboek vermelding één](media/log-analytics-samples/log1.png)
+:::image type="content" source="media/log-analytics-samples/log1.png" alt-text="Scherm opname van een logboek vermelding. Meerdere waarden zijn zichtbaar, zoals een tijds tempel, een protocol, een poort nummer, een actie, een regel verzameling en een regel." border="false":::
 
-![logboek vermelding twee ](media/log-analytics-samples/log2.png)
+:::image type="content" source="media/log-analytics-samples/log2.png" alt-text="Scherm opname van een logboek vermelding. Meerdere waarden zijn zichtbaar, zoals een tijds tempel, een protocol, een poort nummer, een actie, een regel verzameling en een regel." border="false":::
 
-![logboek vermelding drie](media/log-analytics-samples/log3.png)
+:::image type="content" source="media/log-analytics-samples/log3.png" alt-text="Scherm opname van een logboek vermelding. Meerdere waarden zijn zichtbaar, zoals een tijds tempel, een protocol, een poort nummer, een actie, een regel verzameling en een regel." border="false":::
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie [zelf studie: Azure firewall logboeken en metrische gegevens controleren](tutorial-diagnostics.md)voor meer informatie over Azure firewall bewaking en diagnostische gegevens.

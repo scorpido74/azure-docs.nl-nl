@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
-ms.openlocfilehash: c14a519be112e61ed7055debe7a1a454e465bd9b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c006e38d30e4e32645024a8c307a18767e8a1090
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549089"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941055"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mimecast-personal-portal"></a>Zelfstudie: Azure Active Directory-integratie met Mimecast Personal Portal voor eenmalige aanmelding
 
@@ -155,23 +155,23 @@ In dit gedeelte gaat u B.Simon toestemming geven voor gebruik van eenmalige aanm
 
 1. Ga naar **Administration** > **Services** > **Applications**.
 
-    ![Mimecast Personal Portal configureren](./media/mimecast-personal-portal-tutorial/services.png)
+    ![Schermopname van het Mimecast-venster met Applications geselecteerd.](./media/mimecast-personal-portal-tutorial/services.png)
 
 1. Klik op het tabblad **Authentication Profiles**.
     
-    ![Mimecast Personal Portal configureren](./media/mimecast-personal-portal-tutorial/authentication-profiles.png)
+    ![Schermopname van het tabblad Application met Authentication Profiles geselecteerd.](./media/mimecast-personal-portal-tutorial/authentication-profiles.png)
 
 1. Klik op het tabblad **New Authentication Profile**.
 
-    ![Mimecast Personal Portal configureren](./media/mimecast-personal-portal-tutorial/new-authenticatio-profile.png)
+    ![Schermopname met New Authentication Profile geselecteerd.](./media/mimecast-personal-portal-tutorial/new-authenticatio-profile.png)
 
 1. Geef een geldige beschrijving op in het tekstvak **Description** en schakel het selectievakje **Enforce SAML Authentication for Mimecast Personal Portal** in.
 
-    ![Mimecast Personal Portal configureren](./media/mimecast-personal-portal-tutorial/selecting-personal-portal.png)
+    ![Schermopname met New Authentication Profile geselecteerd.](./media/mimecast-personal-portal-tutorial/selecting-personal-portal.png)
 
 1. Voer de volgende stappen uit op de pagina **SAML Configuration for Mimecast Personal Portal**:
 
-    ![Mimecast Personal Portal configureren](./media/mimecast-personal-portal-tutorial/sso-settings.png)
+    ![Schermopname laat zien waar u Enforce SAML Authentication for Administration Console selecteert.](./media/mimecast-personal-portal-tutorial/sso-settings.png)
 
     a. Selecteer bij **Provider** **Azure Active Directory** in de vervolgkeuzelijst.
 
@@ -189,19 +189,19 @@ In dit gedeelte gaat u B.Simon toestemming geven voor gebruik van eenmalige aanm
 
 1. Ga naar **Administration** > **Directories** > **Internal Directories**.
 
-    ![Mimecast Personal Portal configureren](./media/mimecast-personal-portal-tutorial/internal-directories.png)
+    ![Schermopname van de pagina SAML Configuration for Mimecast Personal Portal waar u de beschreven waarden kunt invoeren.](./media/mimecast-personal-portal-tutorial/internal-directories.png)
 
 1. Selecteer uw domein als het domein hieronder wordt vermeld, of maak een nieuw domein door op **New Domain** te klikken.
 
-    ![Mimecast Personal Portal configureren](./media/mimecast-personal-portal-tutorial/domain-name.png)
+    ![Schermopname van het Mimecast-venster met Internal Directories geselecteerd.](./media/mimecast-personal-portal-tutorial/domain-name.png)
 
 1. Klik op het tabblad **New Address**.
 
-    ![Mimecast Personal Portal configureren](./media/mimecast-personal-portal-tutorial/new-address.png)
+    ![Schermopname van het geselecteerde domein.](./media/mimecast-personal-portal-tutorial/new-address.png)
 
 1. Geef de vereiste gebruikersgegevens op de volgende pagina op:
 
-    ![Mimecast Personal Portal configureren](./media/mimecast-personal-portal-tutorial/user-information.png)
+    ![Schermopname van de pagina waarin u de beschreven waarden kunt invoeren.](./media/mimecast-personal-portal-tutorial/user-information.png)
 
     a. Voer in het tekstvak **Email Address** het e-mailadres van de gebruiker in, bijvoorbeeld `B.Simon@yourdomainname.com`.
 
@@ -215,7 +215,7 @@ In dit gedeelte gaat u B.Simon toestemming geven voor gebruik van eenmalige aanm
 
     f. Als u rollen aan de gebruiker wilt toewijzen, klikt u op **Role Edit** en wijst u de vereiste rol toe aan de gebruiker volgens de vereisten van uw organisatie.
 
-    ![Mimecast Personal Portal configureren](./media/mimecast-personal-portal-tutorial/assign-role.png)
+    ![Schermopname van Address Settings waar u Role Edit kunt selecteren.](./media/mimecast-personal-portal-tutorial/assign-role.png)
 
 
 ## <a name="test-sso"></a>Eenmalige aanmelding testen 

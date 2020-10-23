@@ -4,27 +4,27 @@ description: Meer informatie over het identificeren, vaststellen en oplossen van
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 09/12/2020
+ms.date: 10/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: a6833f9d59eca4c2f0b49dd70684ade900226aba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d17ce5b3409d8b6bb24d42c2857ba22699e1364
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089986"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277169"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Query-problemen bij het gebruik van Azure Cosmos DB oplossen
 
-In dit artikel wordt een algemene aanbevolen benadering besproken voor het oplossen van problemen met query's in Azure Cosmos DB. Hoewel u geen rekening moet houden met de stappen die in dit artikel worden beschreven, wordt een volledige bescherming tegen mogelijke query problemen opgenomen, maar hier zijn de meest voorkomende tips voor het verbeteren van de prestaties. Gebruik dit artikel als uitgangspunt voor het oplossen van problemen met trage of dure query's in de Azure Cosmos DB core-API (SQL). U kunt ook [diagnostische logboeken](cosmosdb-monitor-resource-logs.md) gebruiken om te bepalen welke query's langzaam zijn of welke query's aanzienlijke hoeveelheden doorvoer gebruiken.
+In dit artikel wordt een algemene aanbevolen benadering besproken voor het oplossen van problemen met query's in Azure Cosmos DB. Hoewel u geen rekening moet houden met de stappen die in dit artikel worden beschreven, wordt een volledige bescherming tegen mogelijke query problemen opgenomen, maar hier zijn de meest voorkomende tips voor het verbeteren van de prestaties. Gebruik dit artikel als uitgangspunt voor het oplossen van problemen met trage of dure query's in de Azure Cosmos DB core-API (SQL). U kunt ook [diagnostische logboeken](cosmosdb-monitor-resource-logs.md) gebruiken om te bepalen welke query's langzaam zijn of welke query's aanzienlijke hoeveelheden doorvoer gebruiken. Als u de API van Azure Cosmos DB gebruikt voor MongoDB, Azure Cosmos DB gebruikt u [de API voor MongoDb voor het oplossen van query's](mongodb-troubleshoot-query.md) .
 
-U kunt query optimalisaties in het Azure Cosmos DB breed categoriseren:
+Query optimalisaties in Azure Cosmos DB zijn breed ingedeeld als volgt:
 
 - Optimalisaties die de kosten voor de aanvraag eenheid (RU) van de query verminderen
 - Optimalisaties die alleen de latentie verminderen
 
-Als u de RU-kosten van een query reduceert, verkleint u de latentie ook bijna zeker.
+Als u de RU-kosten van een query reduceert, vermindert u doorgaans ook de latentie.
 
 In dit artikel vindt u voor beelden die u opnieuw kunt maken met behulp van de [voedings gegevensset](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json).
 
@@ -191,7 +191,7 @@ Bijgewerkt indexerings beleid:
 
 **Ru-kosten:** 2,98 RUs
 
-U kunt op elk gewenst moment eigenschappen toevoegen aan het indexerings beleid, zonder dat dit van invloed is op schrijf Beschik baarheid of-prestaties. Als u een nieuwe eigenschap aan de index toevoegt, zullen query's die gebruikmaken van de eigenschap onmiddellijk de nieuwe beschik bare index gebruiken. De query maakt gebruik van de nieuwe index terwijl deze wordt gebouwd. Daarom kunnen query resultaten inconsistent zijn terwijl het opnieuw opbouwen van de index actief is. Als een nieuwe eigenschap is geïndexeerd, worden query's waarbij alleen bestaande indexen worden gebruikt, niet beïnvloed tijdens het opnieuw opbouwen van de index. U kunt de voortgang van de [index transformatie volgen](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3).
+U kunt op elk gewenst moment eigenschappen toevoegen aan het indexerings beleid, zonder dat dit van invloed is op de beschik baarheid voor schrijven of lezen. U kunt de voortgang van de [index transformatie volgen](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3).
 
 ### <a name="understand-which-system-functions-use-the-index"></a>Begrijpen welke systeem functies de index gebruiken
 
@@ -469,7 +469,7 @@ Hier volgt de relevante samengestelde index:
 
 ## <a name="optimizations-that-reduce-query-latency"></a>Optimalisaties die de latentie van query's beperken
 
-In veel gevallen kunnen de RU-kosten acceptabel zijn wanneer de latentie van de query nog te hoog is. De volgende secties geven een overzicht van tips voor het verminderen van de latentie van query's. Als u dezelfde query meerdere keren op dezelfde gegevensset uitvoert, heeft elke keer dezelfde RU-kosten. Maar de query latentie kan verschillen tussen de uitvoering van query's.
+In veel gevallen kunnen de RU-kosten acceptabel zijn wanneer de latentie van de query nog te hoog is. De volgende secties geven een overzicht van tips voor het verminderen van de latentie van query's. Als u dezelfde query meerdere keren op dezelfde gegevensset uitvoert, heeft het normaal gesp roken elke keer dezelfde RU-kosten. Maar de query latentie kan verschillen tussen de uitvoering van query's.
 
 ### <a name="improve-proximity"></a>Proximity verhogen
 

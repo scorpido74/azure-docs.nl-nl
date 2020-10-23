@@ -2,13 +2,13 @@
 title: Azure Lab Services-beheerders handleiding | Microsoft Docs
 description: Deze hand leiding helpt beheerders die Lab-accounts maken en beheren met behulp van Azure Lab Services.
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: ad3bc110d93efb5b735f77fb8a0b2af9e4f9a7cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/20/2020
+ms.openlocfilehash: a39ee2cc57c8fc1497c3798759bd40d1ed2976e3
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85444145"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425303"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services-beheerders handleiding
 IT-beheerders die de cloud resources van een universiteit beheren, zijn doorgaans verantwoordelijk voor het instellen van het lab-account voor hun school. Zodra een Lab-account is ingesteld, maken beheerders of docenten klassikale Labs in het lab-account. Dit artikel bevat een overzicht op hoog niveau van de betrokken Azure-resources en de richt lijnen voor het maken van deze.
@@ -144,11 +144,11 @@ De locatie waar een leslokaal Lab zich bevindt, is afhankelijk van de volgende f
     > [!NOTE]
     > Wanneer een Lab-account is gekoppeld aan een VNet, wordt de instelling voor het kiezen van Lab- **Maker voor de optie Lab-locatie toestaan** uitgeschakeld. Meer informatie over deze instelling vindt u in het artikel: [Lab Creator toestaan om de locatie voor het lab te kiezen](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location).
     
-  - **Geen VNet is peered ***en*** Lab-makers mogen de locatie van het lab niet kiezen**
+  - * * Er zijn geen VNet-peered **_en_*_ Lab-makers mogen geen lab-location_ kiezen.
   
     Als er **geen** VNet is dat is gekoppeld aan het lab-account *en* [Lab-makers mogen de Lab-locatie **niet** kiezen](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location), worden er automatisch leslokaal Labs gemaakt in een regio die de beschik bare VM-capaciteit heeft.  Met name Azure Lab Services zoekt naar Beschik baarheid in [regio's die zich binnen dezelfde geografie bevinden als het lab-account](https://azure.microsoft.com/global-infrastructure/regions).
 
-  - **Geen VNet is peered ***en*** Lab-makers mogen de locatie van het lab kiezen**
+  - * * Er zijn geen VNet-peered **_en_*_ Lab-makers mogen de test omgeving kiezen location_ *
        
     Als er **geen** VNet-peered en [Lab-makers zijn toegestaan om de Lab-locatie te kiezen](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location), zijn de locaties die kunnen worden geselecteerd door de Lab-Maker gebaseerd op de beschik bare capaciteit.
 
@@ -171,14 +171,14 @@ Wanneer beheerders of Lab-makers een leslokaal Lab maken, kunnen ze kiezen uit d
 | Normaal | <ul><li>4 kernen</li><li>7 GB RAM-GEHEUGEN</li> | [Standard_A4_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Deze grootte is het meest geschikt voor relationele data bases, caching in het geheugen en analyse. |
 | Gemiddeld (geneste virtualisatie) | <ul><li>4 kernen</li><li>16 GB RAM-GEHEUGEN</li></ul> | [Standard_D4s_v3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#dsv3-series) | Deze grootte is het meest geschikt voor relationele data bases, caching in het geheugen en analyse.
 | Groot | <ul><li>8 kernen</li><li>16 GB RAM-GEHEUGEN</li></ul>  | [Standard_A8_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series) | Deze grootte is het meest geschikt voor toepassingen die snellere Cpu's nodig hebben, betere prestaties van de lokale schijf, grote data bases, grote geheugen caches.  Deze grootte biedt ook ondersteuning voor geneste virtualisatie. |
-| Groot (geneste virtualisatie) | <ul><li>8 kernen</li><li>16 GB RAM-GEHEUGEN</li></ul>  | [Standard_A8_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series) | Deze grootte is het meest geschikt voor toepassingen die snellere Cpu's nodig hebben, betere prestaties van de lokale schijf, grote data bases, grote geheugen caches. |
+| Groot (geneste virtualisatie) | <ul><li>8 kernen</li><li>32 GB RAM</li></ul>  | [Standard_D8s_v3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#dsv3-series) | Deze grootte is het meest geschikt voor toepassingen die snellere Cpu's nodig hebben, betere prestaties van de lokale schijf, grote data bases, grote geheugen caches. |
 | Kleine GPU (visualisatie) | <ul><li>6 kernen</li><li>56 GB RAM-GEHEUGEN</li>  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | Deze grootte is het meest geschikt voor externe visualisatie, streaming, games, code ring met behulp van frameworks zoals OpenGL en DirectX. |
 | Kleine GPU (Compute) | <ul><li>6 kernen</li><li>56 GB RAM-GEHEUGEN</li></ul>  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Deze grootte is het meest geschikt voor computer-intensieve toepassingen, zoals kunst matige intelligentie en diep gaande lessen. |
 | Gemiddelde GPU (visualisatie) | <ul><li>12 kernen</li><li>112 GB RAM-GEHEUGEN</li></ul>  | [Standard_NV12](https://docs.microsoft.com/azure/virtual-machines/nv-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Deze grootte is het meest geschikt voor externe visualisatie, streaming, games, code ring met behulp van frameworks zoals OpenGL en DirectX. |
 
 ## <a name="manage-identity"></a>Identiteit beheren
 
-Met behulp [van het op rollen gebaseerd toegangs beheer van Azure](https://docs.microsoft.com/azure/role-based-access-control/overview)kunnen de volgende rollen worden toegewezen om toegang te geven tot Lab-accounts en klassikale Labs:
+Met behulp [van Azure RBAC (op rollen gebaseerd toegangs beheer)](https://docs.microsoft.com/azure/role-based-access-control/overview)kunnen de volgende rollen worden toegewezen om toegang te geven tot Lab-accounts en klassikale Labs:
 
 - **Labeigenaar**
 

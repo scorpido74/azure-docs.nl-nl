@@ -13,22 +13,23 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4020f47184e141a69586fc958f641547d7bde94d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8634efa1e8e5ab8a3b962b711ec8dfcdac4e6ced
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89482795"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164564"
 ---
-# <a name="configure-an-availability-group-for-sql-server-on-azure-vm-azure-portal---preview"></a>Een beschikbaarheids groep configureren voor SQL Server op Azure VM (Azure Portal-preview)
+# <a name="use-azure-portal-to-configure-an-availability-group-preview-for-sql-server-on-azure-vm"></a>Azure Portal gebruiken om een beschikbaarheids groep te configureren voor SQL Server op een Azure VM 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 In dit artikel wordt beschreven hoe u de [Azure Portal](https://portal.azure.com) gebruikt voor het configureren van een beschikbaarheids groep voor SQL Server op Azure-vm's. 
 
 Gebruik de Azure Portal voor het maken van een nieuw cluster of het onboarden van een bestaand cluster, en maak vervolgens de beschikbaarheids groep, listener en interne load balancer. 
 
-   > [!NOTE]
-   > Deze functie is momenteel beschikbaar als preview-versie en wordt geïmplementeerd, zodat de gewenste regio niet meer wordt weer gegeven. 
+Deze functie is momenteel beschikbaar als preview-product. 
+
+In dit artikel wordt gebruikgemaakt van de Azure Portal voor het configureren van de omgeving voor de beschikbaarheids groep. Dit is ook mogelijk met [Power shell of de Azure-cli](availability-group-az-commandline-configure.md), [Azure Quick](availability-group-quickstart-template-configure.md)start-sjablonen of ook [hand matig](availability-group-manually-configure-tutorial.md) . 
 
 
 ## <a name="prerequisites"></a>Vereisten
@@ -177,7 +178,7 @@ U kunt **meer Replica's toevoegen** aan de beschikbaarheids groep, **de listener
 
 ## <a name="remove-cluster"></a>Cluster verwijderen
 
-Verwijder alle SQL Server-Vm's uit het cluster om deze te vernietigen en verwijder vervolgens de meta gegevens van het cluster van de resource provider van de SQL-VM. U kunt dit doen met behulp van de nieuwste versie van de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) of Power shell. 
+Verwijder alle SQL Server-Vm's uit het cluster om deze te vernietigen en verwijder vervolgens de meta gegevens van het cluster van de resource provider van de SQL-VM. U kunt dit doen met behulp van de nieuwste versie van de [Azure cli](/cli/azure/install-azure-cli) of Power shell. 
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 

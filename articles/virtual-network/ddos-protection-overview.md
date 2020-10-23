@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: 50b0324be8da8024dcbda140eff062f3ff712225
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 087964ab64c94d5dfe223ce4e47355784003b627
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371181"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173348"
 ---
-# <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Protection standaard overzicht
+# <a name="azure-ddos-protection-standard-overview"></a>Overzicht van Azure DDoS Protection Standard
 
 DDoS-aanvallen (Distributed Denial of Service-aanvallen) vormen een van de grootste beschikbaarheids- en beveiligingsproblemen voor klanten die hun toepassingen verplaatsen naar de cloud. Met een DDoS-aanval wordt geprobeerd de resources van een toepassing uit te putten, waardoor de toepassing niet meer beschikbaar is voor legitieme gebruikers. DDoS-aanvallen kunnen worden gericht op elk eindpunt dat openbaar bereikbaar is via internet.
 
@@ -26,7 +26,7 @@ Azure DDoS Protection, in combi natie met aanbevolen procedures voor het ontwerp
 
 DDoS Protection Standard is eenvoudig in te scha kelen en vereist geen wijzigingen in de toepassing. Beveiligingsbeleid is afgestemd door middel van specifieke controle van verkeer en algoritmen voor machine learning. Beleids regels worden toegepast op open bare IP-adressen die zijn gekoppeld aan resources die zijn geïmplementeerd in virtuele netwerken, zoals Azure Load Balancer, Azure-toepassing gateway en Azure Service Fabric instances, maar deze beveiliging is niet van toepassing op App Service omgevingen.Realtime-telemetrie is beschikbaar via Azure Monitor weergaven tijdens een aanval en voor geschiedenis. Uitgebreide aanvals beperkings analyse zijn beschikbaar via Diagnostische instellingen. U kunt de beveiliging van de toepassingslaag toevoegen via de [Azure-toepassing gateway Web Application firewall](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) of door een firewall van een derde partij te installeren vanuit Azure Marketplace. Beveiliging is beschikbaar voor IPv4-en IPv6 Azure [open bare IP-adressen](virtual-network-public-ip-address.md).
 
-![DDoS Protection Basic versus standaard](./media/ddos-protection-overview/ddoscomparison.png)
+![DDoS Protection Basic versus standaard](./media/ddos-protection-overview/ddosfeatures.png)
 
 Azure DDoS Protection slaat geen klant gegevens op.
 
@@ -41,8 +41,6 @@ DDoS Protection Standard kan de volgende typen aanvallen beperken:
 DDoS Protection Standard beveiligt bronnen in een virtueel netwerk, met inbegrip van open bare IP-adressen die zijn gekoppeld aan virtuele machines, load balancers en toepassings gateways. Wanneer de Application Gateway Web Application Firewall, of een Web Application Firewall van derden die in een virtueel netwerk met een openbaar IP-adres is geïmplementeerd, kan DDoS Protection Standard de mogelijkheid bieden om een volledige laag 3 te maken voor de beperking van laag 7.
 
 ## <a name="ddos-protection-standard-features"></a>DDoS Protection standaard functies
-
-![DDoS-functionaliteit](./media/ddos-protection-overview/ddosfeatures.png)
 
 DDoS Protection standaard functies zijn:
 

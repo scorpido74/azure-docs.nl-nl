@@ -92,8 +92,6 @@
       href: terms-of-use.md
     - name: Aanmeldingsfrequentie en besturingselementen voor browserpersistentie
       href: howto-conditional-access-session-lifetime.md
-    - name: Aanbevolen procedures
-      href: best-practices.md
     - name: Problemen oplossen
       items:
         - name: Problemen met aanmelden oplossen

@@ -1,5 +1,5 @@
 ---
-title: Een FCI maken met gedeelde Azure-schijven (preview-versie)
+title: Een FCI maken met gedeelde Azure-schijven
 description: Gebruik gedeelde Azure-schijven voor het maken van een FCI (failover cluster instance) met SQL Server op Azure Virtual Machines.
 services: virtual-machines
 documentationCenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 6e32f183709aca8a78f8448f2d6e6b63a77f2133
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e1c14dc2917185ab4a9237cf0b873b5ad609738e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272647"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168236"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Een FCI maken met gedeelde Azure-schijven (SQL Server op virtuele machines van Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,7 +35,7 @@ Voordat u de instructies in dit artikel hebt voltooid, hebt u het volgende nodig
 - Een Azure-abonnement. Ga [gratis](https://azure.microsoft.com/free/)aan de slag. 
 - [Twee of meer virtuele Windows Azure-machines](failover-cluster-instance-prepare-vm.md). [Beschikbaarheids sets](../../../virtual-machines/windows/tutorial-availability-sets.md) en [proximity placement groups](../../../virtual-machines/windows/co-location.md#proximity-placement-groups) (PPGs) worden beide ondersteund. Als u een PPG gebruikt, moeten alle knoop punten zich in dezelfde groep bevinden.
 - Een account met machtigingen voor het maken van objecten op zowel virtuele Azure-machines als in Active Directory.
-- De meest recente versie van [Power shell](/powershell/azure/install-az-ps?view=azps-4.2.0). 
+- De meest recente versie van [Power shell](/powershell/azure/install-az-ps). 
 
 
 ## <a name="add-azure-shared-disk"></a>Gedeelde Azure-schijf toevoegen
@@ -213,7 +213,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>Connectiviteit configureren 
 
-Als u verkeer op de juiste manier wilt door sturen naar het huidige primaire knoop punt, configureert u de connectiviteits optie die geschikt is voor uw omgeving. U kunt een [Azure-Load Balancer](hadr-vnn-azure-load-balancer-configure.md) maken of, als u SQL Server 2019 Cu2 + en Windows Server 2016 (of hoger) gebruikt, kunt u in plaats daarvan een voor beeld van de functie voor [gedistribueerde netwerk naam](hadr-distributed-network-name-dnn-configure.md) bekijken. 
+Als u verkeer op de juiste manier wilt door sturen naar het huidige primaire knoop punt, configureert u de connectiviteits optie die geschikt is voor uw omgeving. U kunt een [Azure Load Balancer](failover-cluster-instance-vnn-azure-load-balancer-configure.md) maken of als u SQL Server 2019 Cu2 (of hoger) en Windows Server 2016 (of hoger) gebruikt, kunt u in plaats daarvan de functie [gedistribueerde netwerk naam](failover-cluster-instance-distributed-network-name-dnn-configure.md) gebruiken. 
 
 ## <a name="limitations"></a>Beperkingen
 
@@ -221,12 +221,13 @@ Als u verkeer op de juiste manier wilt door sturen naar het huidige primaire kno
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u dit nog niet hebt gedaan, configureert u de connectiviteit met uw FCI met de naam van een [virtueel netwerk en een Azure Load Balancer](hadr-vnn-azure-load-balancer-configure.md) of [gedistribueerde netwerk naam (DNN)](hadr-distributed-network-name-dnn-configure.md). 
+Als u dit nog niet hebt gedaan, configureert u de connectiviteit met uw FCI met de naam van een [virtueel netwerk en een Azure Load Balancer](failover-cluster-instance-vnn-azure-load-balancer-configure.md) of [gedistribueerde netwerk naam (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md). 
+
 
 Als gedeelde Azure-schijven niet de juiste FCI-opslag oplossing voor u zijn, kunt u overwegen om uw FCI te maken met behulp van [Premium-bestands shares](failover-cluster-instance-premium-file-share-manually-configure.md) of [opslagruimten direct](failover-cluster-instance-storage-spaces-direct-manually-configure.md) in plaats daarvan. 
 
 Zie voor meer informatie een overzicht van [FCI met SQL Server op Azure vm's](failover-cluster-instance-overview.md) en [Aanbevolen procedures voor cluster configuratie](hadr-cluster-best-practices.md).
 
 Zie voor meer informatie: 
-- [Windows-cluster technologieën](/windows-server/failover-clustering/failover-clustering-overview)   
-- [Failover-cluster exemplaren SQL Server](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Windows-clustertechnologieën](/windows-server/failover-clustering/failover-clustering-overview)   
+- [Instanties van een SQL Server-failovercluster](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

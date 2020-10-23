@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 10/10/2020
 ms.author: alkohli
-ms.openlocfilehash: c841c96326f636e16f3b4f86fcb88a0962011c0f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8957d8982a3bfe1da2811dc10d0c3e77a72fc288
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976828"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367598"
 ---
 # <a name="azure-key-vault-integration-with-azure-stack-edge"></a>Integratie met Azure Stack Edge Azure Key Vault 
 
@@ -22,7 +22,7 @@ Azure Key Vault is geïntegreerd met Azure Stack Edge-resource voor geheim behee
 
 ## <a name="about-key-vault-and-azure-stack-edge"></a>Over sleutel kluis en Azure Stack Edge
 
-Azure Key Vault Cloud service wordt gebruikt om de toegang tot tokens, wacht woorden, certificaten, API-sleutels en andere geheimen veilig op te slaan en te beheren. Key Vault maakt het eenvoudig om de versleutelings sleutels te maken en te beheren die worden gebruikt voor het versleutelen van uw gegevens. 
+Azure Key Vault Cloud service wordt gebruikt om de toegang tot tokens, wacht woorden, certificaten, API-sleutels en andere geheimen veilig op te slaan en te beheren. Key Vault maakt het eenvoudig om de versleutelings sleutels te maken en te beheren die worden gebruikt voor het versleutelen van uw gegevens. Zie de [prijzen voor Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/)voor meer informatie over toegestane trans acties en bijbehorende kosten.
 
 Voor Azure Stack Edge-service is een van de gebruikte geheimen de Channel Integrity Key (CIK). Met deze sleutel kunt u uw geheimen versleutelen. Met de integratie van de sleutel kluis wordt de CIK veilig opgeslagen in de sleutel kluis. Zie Secure [Store Secrets and keys](../key-vault/general/overview.md#securely-store-secrets-and-keys)(Engelstalig) voor meer informatie.
 
@@ -44,6 +44,8 @@ Er wordt een sleutel kluis gemaakt voor Azure Stack Edge-resource tijdens het ge
 - U kunt ervoor kiezen de standaard sleutel naam te accepteren of een aangepaste naam op te geven voor de sleutel kluis. De naam van de sleutel kluis moet 3 tot 24 tekens lang zijn. U kunt geen sleutel kluis gebruiken die al in gebruik is. <!--The MSI is then used to authenticate to key vault to retrieve secrets.--> 
 
     ![MSI gemaakt tijdens het maken van Azure Stack rand bronnen](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png)
+
+- Als u naar de Azure-sleutel kluis wilt bladeren, gaat u naar de **Eigenschappen** in uw Azure stack Edge-resource en selecteert u de naam van de sleutel kluis. 
 
 - Een resource vergrendeling is ingeschakeld op de sleutel kluis om onbedoelde verwijdering te voor komen. Er is ook een voorlopig verwijderen ingeschakeld op de sleutel kluis waarmee de sleutel kluis binnen 90 dagen kan worden hersteld als er een ongeluk is verwijderd. Zie [Azure Key Vault overzicht van voorlopig verwijderen](../key-vault/general/soft-delete-overview.md) voor meer informatie
 

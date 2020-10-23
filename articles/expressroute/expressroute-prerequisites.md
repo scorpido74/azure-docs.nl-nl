@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: duau
-ms.openlocfilehash: 87c8a7523222afd3ae4daeb8fb5824025e693cd1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fad1bca18d16ac3b6a654a3c289d0a14e3cd2e2
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569625"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204789"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>Vereisten en controlelijst voor ExpressRoute
 Als u ExpressRoute wilt gebruiken om verbinding te maken met Microsoft Cloud-services, moet u controleren of er is voldaan aan de vereisten die in de volgende secties worden genoemd.
@@ -34,14 +34,14 @@ Als u ExpressRoute wilt gebruiken om verbinding te maken met Microsoft Cloud-ser
 * **Routering**: afhankelijk van hoe u verbinding maakt met de Microsoft Cloud, moet u of uw provider de BGP-sessies voor [routeringsdomeinen](expressroute-circuit-peerings.md) instellen en beheren. Sommige Ethernet-connectiviteitsproviders of cloudexchange-providers bieden BGP-beheer aan als extra service.
 * **NAT**: Microsoft accepteert alleen openbare IP-adressen via Microsoft-peering. Als u privé IP-adressen in uw on-premises netwerk gebruikt, moet u of uw provider de privé IP-adressen [met behulp van de NAT](expressroute-nat.md) vertalen naar openbare IP-adressen.
 * **QoS**: Skype voor Bedrijven heeft verschillende services (zoals spraak, video, tekst) die allemaal een andere QoS-behandeling vereisen. U en uw provider moeten de [QoS-vereisten](expressroute-qos.md) volgen.
-* **Netwerkbeveiliging**: overweeg [netwerkbeveiliging](../best-practices-network-security.md) als u via ExpressRoute verbinding maakt met de Microsoft Cloud.
+* **Netwerkbeveiliging**: overweeg [netwerkbeveiliging](/azure/cloud-adoption-framework/reference/networking-vdc) als u via ExpressRoute verbinding maakt met de Microsoft Cloud.
 
 ## <a name="microsoft-365"></a>Microsoft 365
 Als u Microsoft 365 op ExpressRoute wilt inschakelen, raadpleegt u de volgende documenten voor meer informatie over Microsoft 365 vereisten.
 
 * [Azure-ExpressRoute voor Microsoft 365](/microsoft-365/enterprise/azure-expressroute)
 * [Route ring met ExpressRoute voor Microsoft 365](/microsoft-365/enterprise/routing-with-expressroute)
-* [Hoge beschikbaarheid en failover met ExpressRoute](https://aka.ms/erhighavailability)
+* [Hoge beschikbaarheid en failover met ExpressRoute](/microsoft-365/enterprise/network-planning-with-expressroute)
 * [Microsoft 365 Url's en IP-adresbereiken](/microsoft-365/enterprise/urls-and-ip-address-ranges)
 * [Netwerk planning en prestaties afstemmen voor Microsoft 365](/microsoft-365/enterprise/network-planning-and-performance)
 * [Netwerk-en migratie planning voor Microsoft 365](/microsoft-365/enterprise/network-and-migration-planning)

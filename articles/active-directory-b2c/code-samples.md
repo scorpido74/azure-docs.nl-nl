@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 76cacbea3f98f65e290cb2722062127d2264e171
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 63a79df8e540e88d0f1e3f4c5b8d339ff03c877f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91664831"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91854287"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C: codevoorbeelden
 
@@ -54,3 +54,15 @@ In de volgende tabellen ziet u koppelingen naar voorbeelden voor toepassingen, w
 | Voorbeeld | Beschrijving |
 |--------| ----------- |
 | [saml-sp-tester](https://github.com/azure-ad-b2c/saml-sp-tester/tree/master/source-code) | De SAML-testtoepassing voor het testen van Azure AD B2C is geconfigureerd om te fungeren als SAML-id-provider. |
+
+## <a name="api-connectors"></a>API-connectors
+
+De volgende tabellen bieden koppelingen naar codevoorbeelden voor het gebruik van web-API's in uw gebruikersstroom met behulp van [API-connectors](api-connectors-overview.md).
+
+## <a name="api-connector-azure-function-quickstarts"></a>Quickstarts voor API-connectors in Azure Function
+
+| Voorbeeld                                                                                                                          | Beschrijving                                                                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [.NET Core](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-api-connector-azure-function-validate) | Dit .NET Core Azure Function-voorbeeld laat zien hoe u aanmeldingen kunt beperken tot specifieke e-maildomeinen en door de gebruiker verstrekte informatie kunt valideren. |
+| [Node.js](https://github.com/Azure-Samples/active-directory-nodejs-external-identities-api-connector-azure-function-validate)   | Dit Azure Function-voorbeeld voor Node.js laat zien hoe u aanmeldingen kunt beperken tot specifieke e-maildomeinen en door de gebruiker verstrekte informatie kunt valideren.  |
+| [Python](https://github.com/Azure-Samples/active-directory-python-external-identities-api-connector-azure-function-validate)    | Dit Azure Function-voorbeeld voor Python laat zien hoe u aanmeldingen kunt beperken tot specifieke e-maildomeinen en door de gebruiker verstrekte informatie kunt valideren.    |

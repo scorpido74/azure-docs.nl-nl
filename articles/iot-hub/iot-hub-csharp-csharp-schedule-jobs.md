@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
-ms.openlocfilehash: d99cc571394ad7a9c85fb7367c672f96a7302362
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0391afe5562238f488fde7e50d914c46a5c32944
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018498"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142464"
 ---
 # <a name="schedule-and-broadcast-jobs-net"></a>Taken plannen en uitzenden (.NET)
 
@@ -261,7 +261,7 @@ In deze sectie maakt u een .NET-console-app (met C#) die gebruikmaakt van taken 
     ```
 
     > [!NOTE]
-    > Zie [IOT hub query language (Engelstalig](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language)) voor meer informatie over de syntaxis van query's.
+    > Zie [IOT hub query language (Engelstalig](./iot-hub-devguide-query-language.md)) voor meer informatie over de syntaxis van query's.
     >
 
 1. Voeg tot slot de volgende regels toe aan de methode **Main**:
@@ -311,4 +311,4 @@ In deze zelf studie hebt u een taak gebruikt voor het plannen van een directe me
 
 * Lees [zelf studie: instructies voor het uitvoeren van een firmware-update](tutorial-firmware-update.md)om door te gaan met IOT hub en patronen voor Apparaatbeheer, zoals extern via de Air firmware-update.
 
-* Zie aan de slag [met IOT Edge](../iot-edge/tutorial-simulate-device-linux.md)voor meer informatie over het implementeren van AI naar edge-apparaten met Azure IOT Edge.
+* Zie aan de slag [met IOT Edge](../iot-edge/quickstart-linux.md)voor meer informatie over het implementeren van AI naar edge-apparaten met Azure IOT Edge.

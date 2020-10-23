@@ -8,12 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: bc6d4a60c3db6b2537a0f300562db1df5e249b43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0b85164042ef8ba0dda5f83dbfe49f585a11f7c
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91716138"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102639"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Azure Data Lake Storage migreren van gen1 naar Gen2
 
@@ -122,7 +122,7 @@ Laten we eens kijken naar elk patroon.
  
 ### <a name="lift-and-shift-pattern"></a>Patroon voor lift en verschuiving
 
-Dit is het eenvoudigste patroon.
+Dit is het eenvoudigste patroon. 
 
 1. Alle schrijf bewerkingen naar gen1 stoppen.
 
@@ -131,6 +131,8 @@ Dit is het eenvoudigste patroon.
 3. Het opnemen van bewerkingen en workloads naar Gen2.
 
 4. Gen1 uit bedrijf nemen.
+
+Bekijk onze voorbeeld code voor het lift-en Shift-patroon in ons voor beeld van lift-en [SHIFT-migratie](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift%20and%20Shift/README.md).
 
 > [!div class="mx-imgBorder"]
 > ![patroon voor lift en verschuiving](./media/data-lake-storage-migrate-gen1-to-gen2/lift-and-shift.png)
@@ -153,6 +155,9 @@ Dit is het eenvoudigste patroon.
 
 4. Gen1 uit bedrijf nemen.
 
+Bekijk onze voorbeeld code voor het incrementele Kopieer patroon in het voor [beeld van een incrementele kopie migratie](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Incremental/README.md).
+
+
 > [!div class="mx-imgBorder"]
 > ![Patroon voor incrementeel kopiëren](./media/data-lake-storage-migrate-gen1-to-gen2/incremental-copy.png)
 
@@ -174,6 +179,8 @@ Dit is het eenvoudigste patroon.
 
 4. Alle schrijf bewerkingen naar gen1 stoppen en vervolgens gen1 uit bedrijf nemen.
 
+Bekijk onze voorbeeld code voor het dubbele pijplijn patroon in ons voor beeld van een [dubbele pijp lijn migratie](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Dual%20pipeline/README.md).
+
 > [!div class="mx-imgBorder"]
 > ![Patroon met dubbele pijp lijn](./media/data-lake-storage-migrate-gen1-to-gen2/dual-pipeline.png)
 
@@ -192,6 +199,8 @@ Dit is het eenvoudigste patroon.
 3. Wanneer alle verplaatsingen zijn voltooid, stopt u alle schrijf bewerkingen naar gen1 en schakelt u bidirectionele replicatie uit.
 
 4. Gen1 uit bedrijf nemen.
+
+Bekijk onze voorbeeld code voor het bidirectionele synchronisatie patroon in het voor [beeld van een bidirectionele synchronisatie migratie](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/README.md).
 
 > [!div class="mx-imgBorder"]
 > ![Bidirectioneel patroon](./media/data-lake-storage-migrate-gen1-to-gen2/bidirectional-sync.png)

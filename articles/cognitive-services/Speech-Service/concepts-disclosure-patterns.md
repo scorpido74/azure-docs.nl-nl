@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.author: angle
-ms.openlocfilehash: 3e7d8ee2b156a30b11cda79798a8af8a8ecf4f64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: shlo
+ms.openlocfilehash: 7df082cd5044f142d8d5900ec1fff6c182262bd9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74776619"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425120"
 ---
 # <a name="disclosure-design-patterns"></a>Ontwerppatronen van openbaarmakingen
 Nu u&#39;dat u het juiste [niveau van openbaar making](concepts-disclosure-guidelines.md#disclosure-assessment) hebt vastgesteld voor uw synthetische spraak ervaring,&#39;een goede tijd om mogelijke ontwerp patronen te verkennen.
@@ -184,7 +184,7 @@ Houd rekening met de verschillende modi van interacties van uw ervaring bij het 
 
 De openbaar making kan impliciet worden gerealiseerd door nauw keurige verwachtingen in te stellen voor de mogelijkheden van de digitale assistent. Geef voorbeeld opdrachten op, zodat gebruikers kunnen leren omgaan met de digitale assistent en context contextuele hulp kunnen bieden om meer te weten te komen over de synthetische stem tijdens de eerste fasen van de ervaring.
 
-![Visuele hints en feedback](media/responsible-ai/disclosure-patterns/capability-disclosure.png)<br/>
+![Voor beeld van standaard reacties op een gesprek dat u kunt bevragen.](media/responsible-ai/disclosure-patterns/capability-disclosure.png)<br/>
 
 ### <a name="conversational-transparency"></a>Spreek transparantie
 

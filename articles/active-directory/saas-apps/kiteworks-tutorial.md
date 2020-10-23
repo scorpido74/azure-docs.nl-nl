@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
-ms.openlocfilehash: ae504a7dcd6f598c13b5fabffaca4ec6ec067e4b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7cb6a9691e1b3186e6493b4ae0b62857fb03f38c
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549922"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944002"
 ---
 # <a name="tutorial-integrate-kiteworks-with-azure-active-directory"></a>Zelfstudie: Kiteworks integreren met Azure Active Directory
 
@@ -100,11 +100,11 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 1. Klik in de werkbalk bovenaan op **Settings** (Instellingen).
 
-    ![Eenmalige aanmelding configureren](./media/kiteworks-tutorial/tutorial_kiteworks_06.png)
+    ![Schermopname waarin het pictogram 'Settings' op de werkbalk is geselecteerd.](./media/kiteworks-tutorial/tutorial_kiteworks_06.png)
 
 1. Klik in de sectie **Verificatie en autorisatie** op **Eenmalige aanmelding instellen**.
 
-    ![Eenmalige aanmelding configureren](./media/kiteworks-tutorial/tutorial_kiteworks_07.png)
+    ![Schermopname met de instelling 'SSO Setup' geselecteerd in de sectie 'Verificatie en autorisatie'.](./media/kiteworks-tutorial/tutorial_kiteworks_07.png)
 
 1. Voer op de pagina Eenmalige aanmelding instellen de volgende stappen uit:
 

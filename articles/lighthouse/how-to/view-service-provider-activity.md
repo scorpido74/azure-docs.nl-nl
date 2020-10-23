@@ -3,19 +3,19 @@ title: Activiteit van serviceprovider bekijken
 description: Klanten kunnen vastgelegde activiteiten weer geven om acties te bekijken die door service providers worden uitgevoerd via het beheer van gedelegeerde resources van Azure.
 ms.date: 10/12/2020
 ms.topic: how-to
-ms.openlocfilehash: 8ec9d49de953a0fed3a5afc669e9297148aadf32
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 56c8b88274909aa55e19a4b364aaa3ace2a0c26d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974308"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371083"
 ---
 # <a name="view-service-provider-activity"></a>Activiteit van serviceprovider bekijken
 
 Klanten met gedelegeerde abonnementen voor [Azure Lighthouse](../overview.md) kunnen [Azure-activiteiten logboek gegevens weer geven](../../azure-monitor/platform/platform-logs-overview.md) om alle uitgevoerde acties weer te geven. Dit biedt klanten volledige zicht baarheid van de activiteiten die service providers uitvoeren via [Azure delegated resource management](../concepts/azure-delegated-resource-management.md), samen met bewerkingen die worden uitgevoerd door gebruikers binnen de eigen Azure Active Directory (Azure AD)-Tenant van de klant.
 
 > [!TIP]
-> We bieden ook Azure Policy ingebouwde beleids definities om de [overdracht te beperken tot specifieke beheer tenants](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Lighthouse/AllowCertainManagingTenantIds_Deny.json) en om [de overdracht van scopes naar een beheer Tenant te controleren](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/Lighthouse_Delegations_Audit.json). Zie [audit delegaties in uw omgeving](view-manage-service-providers.md#audit-delegations-in-your-environment)voor meer informatie.
+> We bieden ook Azure Policy ingebouwde beleids definities om de [overdracht te beperken tot specifieke beheer tenants](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/AllowCertainManagingTenantIds_Deny.json) en om [de overdracht van scopes naar een beheer Tenant te controleren](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/Lighthouse_Delegations_Audit.json). Zie [audit delegaties in uw omgeving](view-manage-service-providers.md#audit-delegations-in-your-environment)voor meer informatie.
 
 ## <a name="view-activity-log-data"></a>Gegevens van activiteitenlogboek weergeven
 

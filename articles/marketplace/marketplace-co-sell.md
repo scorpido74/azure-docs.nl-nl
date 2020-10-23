@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
-ms.date: 09/23/2020
-ms.openlocfilehash: f0996ba6cd914043ad31500934141ad8770a1c50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/19/2020
+ms.openlocfilehash: 96df9610f0da94cfe7d3a82fc8ef72aeb539b2d0
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268720"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207701"
 ---
 # <a name="co-sell-partner-engagement"></a>Betrokkenheid van partner bij collectieve verkoop
 
@@ -35,7 +35,7 @@ Aanbiedingen die de **gemotiveerd-status van Azure IP-co-sell bereiken,** profit
 
 * De kosten voor Marketplace-service zijn gereduceerd van 20% tot 10%. Deze korting is van toepassing op uw IaaS-of SaaS-aanbieding die wordt verkocht via de commerciële Marketplace. Bekijk de [beperkte service kosten](marketplace-commercial-transaction-capabilities-and-considerations.md#reduced-service-fee) voor meer informatie.
 * Cloud Solution Provider (CSP)-partners ontvangen een stimulans van 10% om uw IaaS of SaaS-aanbieding te verkopen. Meer informatie over het CSP-programma op het [Cloud Solution Provider-programma](cloud-solution-providers.md).
-* Verkoop van uw aanbieding via commerciële Marketplace draagt bij aan de verplichtingen van Azure-verbruik van klanten. In aanmerking komende klanten zien dat de aanbieding is gemarkeerd als **' Azure-voor deel kwalificeren '** in azure Portal. Zie het voor [deel van Azure-verbruiks toezeg ging](azure-consumption-commitment-benefit.md) voor meer informatie.
+* Verkoop van uw aanbieding via commerciële Marketplace draagt bij aan de verplichtingen van Azure-verbruik van klanten. In aanmerking komende klanten zien de aanbieding als **' in aanmerking komende Azure-voor delen '** in azure Portal. Zie het voor [deel van Azure-verbruiks toezeg ging](azure-consumption-commitment-benefit.md) voor meer informatie.
 * Aanbiedingen die **Azure IP gemotiveerd** of **Business Applications co-sell gemotiveerd-** status kunnen behalen, ontvangen de badge **' preferente oplossingen '** in de winkel. De badge profileert de kwaliteit, prestaties en mogelijkheid van een aanbieding om klant behoeften in een bepaalde branche verticaal of oplossings gebied aan te pakken. Meer informatie vindt u op de [Aanbevolen oplossingen in Microsoft AppSource en Azure Marketplace](preferred-solutions.md).
 
 ## <a name="co-sell-publishing-steps-and-requirements"></a>Publicatie stappen en-vereisten samen verkopen
@@ -45,7 +45,7 @@ De volgende tabel bevat de stappen en vereisten om uw Marketplace te laten profi
 |Stap    |Type aanbieding    |Vereisten    |Mede koop status    |
 |----    |-------------    |------------    |---------------   |
 |<ol start=1><li> Maak een account in partner centrum en publiceer uw aanbieding in de commerciële Marketplace.</li>|Alles|<li>De aanbieding voldoet aan de publicatie vereisten voor commerciële Marketplace.</li><li>U hebt een volledig zakelijk profiel in Partner Center.</li>|Niet gereed|
-|<ol start=2><li>Het vereiste co-sell-materiaal verzenden.</li>|IP-aanbiedingen met de optie *voor* [gezamenlijk verkopen in het partner centrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)|[Vereiste materialen uploaden in het partner centrum](#how-to-submit-co-sell-materials-in-partner-center): <ul><li>Verkoop contact voor elk begunstigd land.</li><li>Stuk lijst: klant één pager, klant presentatie Deck (optioneel), URL voor de start pagina van de oplossing, de URL van het sociaal-media kanaal of een andere (bijvoorbeeld een casestudy).|Klaar voor samen verkopen|
+|<ol start=2><li>Het vereiste co-sell-materiaal verzenden.</li>|IP-aanbiedingen met de optie *voor* [gezamenlijk verkopen in het partner centrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)|[Vereiste materialen uploaden in het partner centrum](#how-to-submit-co-sell-materials-in-partner-center)|Klaar voor samen verkopen|
 ||IP-aanbiedingen *zonder* [co-sell optie in partner centrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)|<li>Vraag om te [werken met een Cloud specialist om de](https://partner.microsoft.com/campaigns/ced-nomination-form/) vereiste co-sell-documentatie te verschaffen.|Klaar voor samen verkopen|
 ||Adviesservices|<li>Vraag om te [werken met een Cloud specialist om de](https://partner.microsoft.com/campaigns/ced-nomination-form/) vereiste co-sell-documentatie te verschaffen.</li><li>Actieve Gold-competentie.</li>|Klaar voor samen verkopen|
 |<ol start=3><li>Kom in aanmerking voor IP-co-sell-prikkels</li>|Azure-toepassingen, Azure-containers, IoT Edge modules, SaaS, Vm's|Nadat u klaar bent met verkopen, zijn er twee aanvullende vereisten: <ul> Vereiste 1: behaalt u het volgende:<ul><li>*Op organisatie niveau: Mini* maal $100.000 USD van de verbruikte omzet van Azure gedurende de periode van 12 maanden.</li><li>*Op het niveau van de aanbieding:* cumulatieve Marketplace gefactureerde omzet van $100.000 USD.</li></ul><br>Vereiste 2: meer dan 50% van de infra structuur van uw aanbieding moet worden uitgevoerd op Azure:<ul><li>IP-aanbiedingen *met* de [optie voor co-sell in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell): Upload een architectuur diagram met uw documenten voor samen werken in het partner centrum voor beoordeling.</li><li>IP-aanbiedingen *zonder* [co-sell optie in partner centrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell): Upload een architectuur diagram naar OCP gtm.|Azure IP-gemotiveerd verkopen|
@@ -63,15 +63,19 @@ Start uw directe verkoop traject rechtstreeks in het partner centrum volgens ond
 
 1. Selecteer in het menu aan de linkerkant **co-sell with micro soft**.
 
-    [![In deze afbeelding ziet u de locatie van het tabblad samen met micro soft.](./media/co-sell/co-sell-with-microsoft-tab.png)](./media/co-sell/co-sell-with-microsoft-tab.png#lightbox)
+    :::image type="content" source="media/co-sell/co-sell-with-microsoft-tab.png" alt-text="In deze afbeelding ziet u de locatie van het tabblad samen met micro soft.":::
 
-1. Geef details op over uw aanbieding en upload onderpand in het gedeelte **documenten** . Micro soft-verkopers gebruiken deze informatie om uw aanbieding te adviseren en te verkopen.
+1. Geef de details van de algemene vermelding op om micro soft-verkopers te helpen uw aanbieding snel te sorteren en te ontdekken in de sectie **aanbieding** . (*Vereist: alle velden.*)
+
+    :::image type="content" source="media/co-sell/co-sell-listing-section.png" alt-text="In deze afbeelding ziet u de locatie van het tabblad samen met micro soft.":::  
+
+1. Geef details op over uw aanbieding en upload onderpand in het gedeelte **documenten** . Micro soft-verkopers gebruiken deze informatie om uw aanbieding te adviseren en te verkopen. (*Vereist: klant één semafoon en presentatie deck van de klant.*)
+
+    :::image type="content" source="media/co-sell/co-sell-documents-section.png" alt-text="In deze afbeelding ziet u de locatie van het tabblad samen met micro soft.":::
  
-   [![Deze afbeelding toont de sectie documenten op het tabblad samen verkopen.](./media/co-sell/co-sell-documents-section.png)](./media/co-sell/co-sell-documents-section.png#lightbox)
+1. Upload verkoop contactpersoongegevens in het gedeelte **contact personen** . Micro soft-verkopers kunnen contact personen bereiken om meer informatie over uw aanbieding aan te vragen. (*Vereist: een contact persoon voor elke geografie waarin uw aanbieding beschikbaar wordt gesteld.*)
 
-1. Upload verkoop contactpersoongegevens in het gedeelte **contact personen** . Micro soft-verkopers kunnen contact personen bereiken om meer informatie over uw aanbieding aan te vragen.
-
-     [![Deze afbeelding toont de sectie contact personen op het tabblad samen verkopen.](./media/co-sell/co-sell-contacts-section.png)](./media/co-sell/co-sell-contacts-section.png#lightbox)
+    :::image type="content" source="media/co-sell/co-sell-contacts-section.png" alt-text="In deze afbeelding ziet u de locatie van het tabblad samen met micro soft.":::
 
 1. Sla het concept op voordat u doorgaat.
 1. Nadat u alle vereiste delen van de aanbieding hebt voltooid, kunt u deze voor beoordeling en publicatie indienen. Selecteer in de rechter bovenhoek de optie **controleren en publiceren**. Bekijk de details van de aanbieding en selecteer vervolgens **publiceren**.

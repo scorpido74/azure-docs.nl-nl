@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/20/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 27fe1a41365d96a4179f8c659b63dc22c7b9fc93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8d898d3825fa40cbfd13337067c24cf14f9a544
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78184245"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102014"
 ---
 # <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>Microsoft Graph bewerkingen die beschikbaar zijn voor Azure AD B2C
 
@@ -33,6 +33,15 @@ Elke koppeling in de volgende secties is gericht op de corresponderende pagina b
 - [Een gebruiker verwijderen](https://docs.microsoft.com/graph/api/user-delete)
 
 Zie voor meer informatie over het beheren van Azure AD B2C gebruikers accounts met de Microsoft Graph-API [Azure AD B2C gebruikers accounts beheren met Microsoft Graph](manage-user-accounts-graph-api.md).
+
+## <a name="user-phone-number-management"></a>Telefoon nummer beheer gebruiker
+
+- [Add](https://docs.microsoft.com/graph/api/authentication-post-phonemethods)
+- [Toevoegen](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-get)
+- [Bijwerken](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-update)
+- [Verwijderen](https://docs.microsoft.com/graph/api/phoneauthenticationmethod-delete)
+
+Zie [B2C authentication methods](https://docs.microsoft.com/graph/api/resources/b2cauthenticationmethodspolicy)(Engelstalig) voor meer informatie over het beheren van het telefoon nummer van de gebruiker met de Microsoft Graph-API.
 
 ## <a name="identity-providers-user-flow"></a>Id-providers (gebruikers stroom)
 
@@ -98,7 +107,7 @@ De resource op het hoogste niveau voor beleids sleutels in de Microsoft Graph-AP
 
 - [Uitbrei ding-eigenschappen weer geven](https://docs.microsoft.com/graph/api/application-list-extensionproperty)
 
-Azure AD B2C biedt een map die aangepaste kenmerken van 100 kan bevatten per gebruiker. Voor gebruikers stromen worden deze extensie-eigenschappen [beheerd met behulp van de Azure Portal](custom-policy-custom-attributes.md). Voor aangepaste beleids regels maakt Azure AD B2C de eigenschap voor u de eerste keer dat het beleid een waarde naar de extensie-eigenschap schrijft.
+Azure AD B2C biedt een directory die 100 aangepaste kenmerken per gebruiker kan bevatten. Voor gebruikers stromen worden deze extensie-eigenschappen [beheerd met behulp van de Azure Portal](custom-policy-custom-attributes.md). Azure AD B2C maakt voor aangepaste beleids regels de eigenschap voor u, de eerste keer dat het beleid een waarde naar de extensie-eigenschap schrijft.
 
 ## <a name="audit-logs"></a>Auditlogboeken
 

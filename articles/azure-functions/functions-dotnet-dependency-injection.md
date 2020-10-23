@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.date: 08/15/2020
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: f535a27e3afadaf8eefc41c5f1a8ab6c02d24c04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee2e7dc577e000878884655c0ed5f4bcb1aabab5
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715943"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167692"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Afhankelijkheidsinjectie gebruiken in .NET Azure Functions
 
@@ -131,8 +131,8 @@ Als u uw eigen registratie provider nodig hebt, moet u een aangepast type regist
 Application Insights wordt automatisch toegevoegd door Azure Functions.
 
 > [!WARNING]
-> - Voeg niets toe `AddApplicationInsightsTelemetry()` aan de services-verzameling omdat hiermee services worden geregistreerd die conflicteren met services die worden meegeleverd door de omgeving.
-> - Registreer uw eigen functies niet `TelemetryConfiguration` of `TelemetryClient` Als u de ingebouwde Application Insights functionaliteit gebruikt. Als u uw eigen exemplaar moet configureren `TelemetryClient` , maakt u er een via het geïnjecteerde, `TelemetryConfiguration` zoals wordt weer gegeven in de [monitor Azure functions](./functions-monitoring.md#version-2x-and-later-2).
+> - Voeg geen toevoegen `AddApplicationInsightsTelemetry()` aan de services-verzameling, waarmee services worden geregistreerd die conflicteren met services die worden meegeleverd door de omgeving.
+> - Registreer uw eigen `TelemetryConfiguration` functie niet of `TelemetryClient` Als u de ingebouwde Application Insights functionaliteit gebruikt. Als u uw eigen exemplaar moet configureren `TelemetryClient` , maakt u er een via het geïnjecteerde, `TelemetryConfiguration` zoals wordt weer gegeven in de [logboek aangepaste telemetrie in C#-functies](functions-dotnet-class-library.md?tabs=v2%2Ccmd#log-custom-telemetry-in-c-functions).
 
 ### <a name="iloggert-and-iloggerfactory"></a>ILogger <T> en ILoggerFactory
 
@@ -287,7 +287,7 @@ namespace MyNamespace
 }
 ```
 
-Configuratie providers toevoegen aan de `ConfigurationBuilder` eigenschap van `IFunctionsConfigurationBuilder` . Zie [configuratie in ASP.net core](/aspnet/core/fundamentals/configuration/?view=aspnetcore-3.1#configuration-providers)voor meer informatie over het gebruik van configuratie providers.
+Configuratie providers toevoegen aan de `ConfigurationBuilder` eigenschap van `IFunctionsConfigurationBuilder` . Zie [configuratie in ASP.net core](/aspnet/core/fundamentals/configuration/#configuration-providers)voor meer informatie over het gebruik van configuratie providers.
 
 A `FunctionsHostBuilderContext` wordt verkregen van `IFunctionsConfigurationBuilder.GetContext()` . Gebruik deze context om de huidige omgevings naam op te halen en de locatie van de configuratie bestanden in de map van de functie-app op te lossen.
 

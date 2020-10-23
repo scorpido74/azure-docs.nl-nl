@@ -12,18 +12,18 @@ ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: af1e47c61977d0bc5d03f8cdb87393ed2014e736
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 0e0ca8a787145fb40087a2d99be85607404eebfa
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072302"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152129"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reageren op IoT Hub gebeurtenissen met behulp van Event Grid om acties te activeren
 
 Azure IoT Hub kan worden geïntegreerd met Azure Event Grid zodat u gebeurtenismeldingen kunt verzenden naar andere services en downstreamprocessen kunt activeren. Configureer uw zakelijke toepassingen om op IoT Hub-gebeurtenissen te letten zodat u op een betrouwbare, schaalbare en veilige manier op kritieke gebeurtenissen kunt reageren.U kunt bijvoorbeeld een toepassing maken waarmee een database wordt bijgewerkt, een orderticket wordt gemaakt en een e-mailmelding wordt bezorgd wanneer een nieuw IoT-apparaat wordt geregistreerd bij uw IoT-hub.
 
-[Azure Event grid](../event-grid/overview.md) is een volledig beheerde service voor gebeurtenis routering die gebruikmaakt van een model voor publiceren en abonneren. Event Grid heeft ingebouwde ondersteuning voor Azure-Services, zoals [Azure functions](../azure-functions/functions-overview.md) en [Azure Logic apps](../logic-apps/logic-apps-what-are-logic-apps.md), en kan gebeurtenis waarschuwingen leveren aan niet-Azure-Services met behulp van webhooks. Zie [Een inleiding tot Azure Event Grid](../event-grid/overview.md) voor een volledige lijst met gebeurtenisverwerkers die Event Grid ondersteunt.
+[Azure Event grid](../event-grid/overview.md) is een volledig beheerde service voor gebeurtenis routering die gebruikmaakt van een model voor publiceren en abonneren. Event Grid heeft ingebouwde ondersteuning voor Azure-Services, zoals [Azure functions](../azure-functions/functions-overview.md) en [Azure Logic apps](../logic-apps/logic-apps-overview.md), en kan gebeurtenis waarschuwingen leveren aan niet-Azure-Services met behulp van webhooks. Zie [Een inleiding tot Azure Event Grid](../event-grid/overview.md) voor een volledige lijst met gebeurtenisverwerkers die Event Grid ondersteunt.
 
 ![Azure Event Grid architectuur](./media/iot-hub-event-grid/event-grid-functional-model.png)
 
@@ -184,13 +184,13 @@ Het onderwerp van IoT-gebeurtenissen maakt gebruik van de volgende indeling:
 devices/{deviceId}
 ```
 
-Met Event Grid kunt u ook kenmerken van elke gebeurtenis filteren, met inbegrip van de gegevens inhoud. Zo kunt u kiezen welke gebeurtenissen op basis van de inhoud van het telemetrie-bericht worden geleverd. Zie [Geavanceerde filters](../event-grid/event-filtering.md#advanced-filtering) om voor beelden te bekijken. Voor het filteren van de hoofd tekst van de telemetrie-berichten moet u het content type instellen op **Application/JSON** en ContentEncoding naar **UTF-8** in de eigenschappen van het bericht [systeem](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties). Beide eigenschappen zijn niet hoofdletter gevoelig.
+Met Event Grid kunt u ook kenmerken van elke gebeurtenis filteren, met inbegrip van de gegevens inhoud. Zo kunt u kiezen welke gebeurtenissen op basis van de inhoud van het telemetrie-bericht worden geleverd. Zie [Geavanceerde filters](../event-grid/event-filtering.md#advanced-filtering) om voor beelden te bekijken. Voor het filteren van de hoofd tekst van de telemetrie-berichten moet u het content type instellen op **Application/JSON** en ContentEncoding naar **UTF-8** in de eigenschappen van het bericht [systeem](./iot-hub-devguide-routing-query-syntax.md#system-properties). Beide eigenschappen zijn niet hoofdletter gevoelig.
 
 Voor niet-telemetrie-gebeurtenissen zoals DeviceConnected, DeviceDisconnected, DeviceCreated en DeviceDeleted kan de Event Grid-filtering worden gebruikt bij het maken van het abonnement. Voor telemetrie-gebeurtenissen kunnen gebruikers naast het filteren in Event Grid ook filteren op apparaatdubbels, bericht eigenschappen en hoofd tekst via de routerings query voor berichten. 
 
 Wanneer u zich abonneert op telemetrie-gebeurtenissen via Event Grid, maakt IoT Hub een standaard bericht route voor het verzenden van het gegevens bron type van de apparaat berichten naar Event Grid. Zie [IOT hub Message Routing](iot-hub-devguide-messages-d2c.md)(Engelstalig) voor meer informatie over het routeren van berichten. Deze route wordt weer gegeven in de portal onder IoT Hub > bericht routering. Er wordt slechts één route naar Event Grid gemaakt, ongeacht het aantal voor beeld-abonnementen dat voor telemetrie-gebeurtenissen is gemaakt. Als u bijvoorbeeld verschillende abonnementen met verschillende filters nodig hebt, kunt u de operator OR gebruiken in deze query's op dezelfde route. Het maken en verwijderen van de route wordt beheerd via het abonnement op telemetrie-gebeurtenissen via Event Grid. U kunt geen route naar Event Grid maken of verwijderen met behulp van IoT Hub-bericht routering.
 
-Als u berichten wilt filteren voordat telemetriegegevens worden verzonden, kunt u uw [routerings query](iot-hub-devguide-routing-query-syntax.md)bijwerken. De routerings query kan alleen worden toegepast op de bericht tekst als de hoofd tekst JSON is. U moet ook het content type instellen op **Application/JSON** en ContentEncoding naar **UTF-8** in de [Eigenschappen](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)van het bericht systeem.
+Als u berichten wilt filteren voordat telemetriegegevens worden verzonden, kunt u uw [routerings query](iot-hub-devguide-routing-query-syntax.md)bijwerken. De routerings query kan alleen worden toegepast op de bericht tekst als de hoofd tekst JSON is. U moet ook het content type instellen op **Application/JSON** en ContentEncoding naar **UTF-8** in de [Eigenschappen](./iot-hub-devguide-routing-query-syntax.md#system-properties)van het bericht systeem.
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>Beperkingen voor gebeurtenissen bij verbinden van apparaat en verbreken van verbinding van apparaat
 

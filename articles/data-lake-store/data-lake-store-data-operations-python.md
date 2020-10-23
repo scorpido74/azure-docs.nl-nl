@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: devx-track-python
-ms.openlocfilehash: 5cbf75ef2d9f0c1a65179e6a423b59f9763ce72b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ca455a802b180163579f67104a61f455dd54f94
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87872239"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109218"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-python"></a>Bestandssysteem bewerkingen op Azure Data Lake Storage Gen1 met behulp van python
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ Als u wilt werken met Data Lake Storage Gen1 met behulp van python, moet u drie 
 
 * Module `azure-mgmt-resource`, die Azure-modules bevat voor Active Directory enzovoort.
 * De `azure-mgmt-datalake-store` module, die de Azure data Lake Storage gen1 account beheer bewerkingen bevat. Zie voor meer informatie over deze module de [Naslag Gids voor Azure-beheer-datalake-Store-module](/python/api/azure-mgmt-datalake-store/).
-* De `azure-datalake-store` module, die de Azure data Lake Storage gen1 bestandssysteem bewerkingen bevat. Zie de naslag informatie voor de [module File-System van Azure-datalake-Store](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core/).
+* De `azure-datalake-store` module, die de Azure data Lake Storage gen1 bestandssysteem bewerkingen bevat. Zie de naslag informatie voor de [module File-System van Azure-datalake-Store](/python/api/azure-datalake-store/azure.datalake.store.core/).
 
 Gebruik de volgende opdrachten om de modules te installeren.
 
@@ -110,7 +110,7 @@ adlsFileSystemClient = core.AzureDLFileSystem(adlCreds, store_name=adlsAccountNa
 adlsFileSystemClient.mkdir('/mysampledirectory')
 ```
 
-## <a name="upload-a-file"></a>Een bestand uploaden
+## <a name="upload-a-file"></a>Bestand uploaden
 
 ```python
 ## Upload a file
@@ -137,5 +137,5 @@ adlsFileSystemClient.rm('/mysampledirectory', recursive=True)
 
 ## <a name="see-also"></a>Zie ook
 
-* [Naslag informatie over Azure Data Lake Storage Gen1 python (bestands systeem)](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core)
+* [Naslag informatie over Azure Data Lake Storage Gen1 python (bestands systeem)](/python/api/azure-datalake-store/azure.datalake.store.core)
 * [Open source Big Data-toepassingen die compatibel zijn met Azure Data Lake Storage Gen1](data-lake-store-compatible-oss-other-applications.md)

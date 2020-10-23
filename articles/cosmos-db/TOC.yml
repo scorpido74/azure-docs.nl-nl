@@ -86,7 +86,7 @@
     - name: Azure CLI
       href: cli-samples.md
     - name: Azure Resource Manager
-      href: resource-manager-samples.md
+      href: templates-samples-sql.md
 - name: Concepten
   items:
     - name: NoSQL-databases versus relationele databases
@@ -99,31 +99,17 @@
         - name: Consistentieniveaus
           displayName: 'session, consistency prefix, strong, eventual, bounded staleness'
           href: consistency-levels.md
-        - name: Het juiste consistentieniveau kiezen
-          displayName: 'session, consistency prefix, strong, eventual, bounded staleness'
-          href: consistency-levels-choosing.md
-        - name: Consistentieniveaus en Azure Cosmos DB-API's
-          href: consistency-levels-across-apis.md
-        - name: 'Compromissen tussen consistentie, beschikbaarheid en prestaties'
-          href: consistency-levels-tradeoffs.md
         - name: Hoge beschikbaarheid
           href: high-availability.md
-        - name: Wereldwijd schalen van ingerichte doorvoer
-          displayName: 'request units, RUs, RU'
-          href: scaling-throughput.md
         - name: Conflicttypen en oplossingsbeleid
           displayName: 'last write wins, custom, multi-region writes, multi-master'
           href: conflict-resolution-policies.md
         - name: Wereldwijde distributie - achter de schermen
           href: global-dist-under-the-hood.md
-        - name: Regionale aanwezigheid
-          href: regional-presence.md
     - name: Partitionering
       items:
-        - name: Overzicht van partitionering
-          href: partitioning-overview.md
         - name: Partitionering en horizontaal schalen
-          href: partition-data.md
+          href: partitioning-overview.md
         - name: Synthetische partitiesleutel
           href: synthetic-partition-keys.md
     - name: Capaciteit
@@ -389,6 +375,9 @@
                     - name: LTRIM
                       displayName: 'LTRIM, left trim, built-in functions'
                       href: sql-query-ltrim.md
+                    - name: REGEXMATCH
+                      displayName: 'REGEXMATCH, built-in functions'
+                      href: sql-query-regexmatch.md
                     - name: REPLACE
                       displayName: 'REPLACE, built-in functions'
                       href: sql-query-replace.md
@@ -486,13 +475,11 @@
         - name: LINQ naar SQL
           displayName: 'linq, .NET'
           href: sql-query-linq-to-sql.md
-    - name: Werken met een Azure Cosmos-account
-      href: account-overview.md
+    - name: Azure Cosmos DB-resourcemodel
+      displayName: 'collection, document'
+      href: account-databases-containers-items.md
     - name: Containers en items
       items:
-        - name: 'Werken met databases, containers en items'
-          displayName: 'collection, document'
-          href: databases-containers-items.md
         - name: Documentgegevens modelleren
           displayName: document
           href: modeling-data.md
@@ -564,12 +551,11 @@
         - name: Kosten voor ingerichte doorvoer optimaliseren
           displayName: 'request units, RUs, RU'
           href: optimize-cost-throughput.md
-        - name: Query-kosten optimaliseren
-          href: optimize-cost-queries.md
+        - name: Aanvraagkosten optimaliseren
+          displayName: 'request, cost, read, write, query, queries, RUs, RU'
+          href: optimize-cost-reads-writes.md
         - name: Opslagkosten optimaliseren
           href: optimize-cost-storage.md
-        - name: Kosten voor lees- en schrijfbewerkingen optimaliseren
-          href: optimize-cost-reads-writes.md
         - name: Kosten voor meerdere regio's optimaliseren
           href: optimize-cost-regions.md
         - name: Kosten voor ontwikkeling/testen optimaliseren
@@ -586,11 +572,6 @@
         - name: Gegevenstoegang beveiligen
           displayName: 'primary key, resource token, users, roles'
           href: secure-access-to-data.md
-        - name: IP-firewall
-          href: firewall-support.md
-        - name: Toegang van virtuele netwerken
-          displayName: service endpoint
-          href: vnet-service-endpoint.md
         - name: Servicetags
           href: ../virtual-network/service-tags-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Op rollen gebaseerd toegangsbeheer
@@ -605,8 +586,6 @@
           href: security-baseline.md
     - name: Gereedheid voor bedrijven
       items:
-        - name: Online back-ups maken en on-demand herstellen
-          href: online-backup-and-restore.md
         - name: Naleving
           href: compliance.md
         - name: Ondersteuning voor Azure Policy
@@ -663,6 +642,8 @@
               href: cassandra-partitioning.md
             - name: Secundaire indexen
               href: cassandra-secondary-index.md
+            - name: Consistentieniveaus toewijzen
+              href: cassandra-consistency.md
         - name: Instructiegidsen
           items:
             - name: Migreren naar Cassandra-API
@@ -675,6 +656,14 @@
                   href: cassandra-migrate-cosmos-db-blitzz.md
             - name: Feed wijzigen
               href: cassandra-change-feed.md
+            - name: Een container maken - Cassandra-API
+              href: how-to-create-container-cassandra.md
+            - name: Doorvoer inrichten - Cassandra-API
+              displayName: 'request units, RUs, RU, collection level'
+              href: how-to-provision-throughput-cassandra.md
+            - name: Kosten voor aanvraageenheid zoeken
+              displayName: 'request units, RUs, RU, charge, consumption'
+              href: find-request-unit-charge-cassandra.md
             - name: Spring-gegevens opslaan en beheren
               href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: Cassandra en Spark
@@ -700,12 +689,12 @@
                 - name: Tabelgegevens kopiëren
                   href: cassandra-spark-table-copy-ops.md
             - name: Beheren met behulp van Resource Manager-sjablonen
-              href: manage-cassandra-with-resource-manager.md
+              href: templates-samples-cassandra.md
               displayName: ARM
             - name: Beheren met PowerShell
-              href: powershell-samples.md
+              href: powershell-samples-cassandra.md
             - name: Beheren met behulp van Azure CLI
-              href: cli-samples.md
+              href: cli-samples-cassandra.md
     - name: MongoDB-API
       items:
         - name: Overzicht
@@ -760,6 +749,8 @@
               href: mongodb-feature-support.md
             - name: Veelgestelde vragen
               href: mongodb-api-faq.md
+            - name: Consistentieniveaus toewijzen
+              href: mongodb-consistency.md
         - name: Instructiegidsen
           items:
             - name: Migreren naar MongoDB-API
@@ -793,18 +784,28 @@
               href: mongodb-change-streams.md
             - name: Gegevensindexering beheren
               href: mongodb-indexing.md
+            - name: Een container maken - MongoDB-API
+              href: how-to-create-container-mongodb.md
+            - name: Doorvoer inrichten - MongoDB-API
+              displayName: 'request units, RUs, RU, collection level'
+              href: how-to-provision-throughput-mongodb.md
+            - name: Kosten voor aanvraageenheid zoeken
+              displayName: 'request units, RUs, RU, charge, consumption'
+              href: find-request-unit-charge-mongodb.md
+            - name: Prestatieproblemen van query's oplossen
+              href: mongodb-troubleshoot-query.md
             - name: Spring-gegevens opslaan en beheren
               href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: Extensieopdrachten voor MongoDB
               href: mongodb-custom-commands.md
               displayName: custom commands
             - name: Beheren met behulp van Resource Manager-sjablonen
-              href: manage-mongodb-with-resource-manager.md
+              href: templates-samples-mongodb.md
               displayName: ARM
             - name: Beheren met PowerShell
-              href: powershell-samples.md
+              href: powershell-samples-mongodb.md
             - name: Beheren met behulp van Azure CLI
-              href: cli-samples.md
+              href: cli-samples-mongodb.md
             - name: Algemene problemen
               href: mongodb-troubleshoot.md
     - name: Gremlin-API
@@ -838,6 +839,10 @@
           items:
             - name: Veelgestelde vragen
               href: gremlin-api-faq.md
+            - name: Antwoordheaders
+              href: gremlin-headers.md
+            - name: Limieten
+              href: gremlin-limits.md
         - name: Instructiegidsen
           items:
             - name: Grafiekgegevens modelleren
@@ -848,6 +853,14 @@
               href: bulk-executor-graph-dotnet.md
             - name: Gremlin-query's optimaliseren
               href: graph-execution-profile.md
+            - name: Een container maken - Gremlin-API
+              href: how-to-create-container-gremlin.md
+            - name: Doorvoer inrichten - Gremlin-API
+              displayName: 'request units, RUs, RU, collection level'
+              href: how-to-provision-throughput-gremlin.md
+            - name: Kosten voor aanvraageenheid zoeken
+              displayName: 'request units, RUs, RU, charge, consumption'
+              href: find-request-unit-charge-gremlin.md
             - name: Resourcetokens gebruiken
               href: how-to-use-resource-tokens-gremlin.md
             - name: Regionale eindpunten gebruiken
@@ -859,12 +872,12 @@
             - name: Spring-gegevens opslaan en beheren
               href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: Beheren met behulp van Resource Manager-sjablonen
-              href: manage-gremlin-with-resource-manager.md
+              href: templates-samples-gremlin.md
               displayName: ARM
             - name: Beheren met PowerShell
-              href: powershell-samples.md
+              href: powershell-samples-gremlin.md
             - name: Beheren met behulp van Azure CLI
-              href: cli-samples.md
+              href: cli-samples-gremlin.md
         - name: Naslaginformatie
           items:
             - name: Antwoordheaders
@@ -927,15 +940,20 @@
           items:
             - name: Apps bouwen met de Table-API
               href: table-support.md
+            - name: Een container maken - Table-API
+              href: how-to-create-container-table.md
+            - name: Kosten voor aanvraageenheid zoeken
+              displayName: 'request units, RUs, RU, charge, consumption'
+              href: find-request-unit-charge-table.md
             - name: Ontwerpoverzicht voor Table Storage
               href: table-storage-design-guide.md
             - name: Beheren met behulp van Resource Manager-sjablonen
-              href: manage-table-with-resource-manager.md
+              href: templates-samples-table.md
               displayName: ARM
             - name: Beheren met PowerShell
-              href: powershell-samples.md
+              href: powershell-samples-table.md
             - name: Beheren met behulp van Azure CLI
-              href: cli-samples.md
+              href: cli-samples-table.md
         - name: Naslaginformatie
           items:
             - name: .NET
@@ -971,7 +989,7 @@
         - name: Azure CLI gebruiken
           href: manage-with-cli.md
         - name: Met behulp van Resource Manager-sjablonen
-          href: manage-sql-with-resource-manager.md
+          href: manage-with-templates.md
           displayName: ARM
         - name: Schakelen tussen regio's
           href: how-to-move-regions.md
@@ -1018,7 +1036,7 @@
               href: storage-explorer.md
             - name: Werken met gegevens in Azure Cosmos Explorer
               href: data-explorer.md
-        - name: Een container maken
+        - name: Een container maken - SQL-API
           href: how-to-create-container.md
         - name: Een container maken met een grote partitiesleutel
           href: large-partition-keys.md
@@ -1038,6 +1056,8 @@
           href: how-to-define-unique-keys.md
     - name: Prestaties
       items:
+        - name: Connectiviteitsmodi
+          href: sql-sdk-connection-modes.md
         - name: Query’s uitvoeren
           items:
             - name: Metrische gegevens voer query-uitvoering ophalen
@@ -1102,16 +1122,12 @@
               href: troubleshoot-java-async-sdk.md
     - name: Feed wijzigen
       items:
-        - name: Azure Cosmos DB-triggerlogboeken
-          href: how-to-configure-cosmos-db-trigger-logs.md
-        - name: Verbindingsbeleid voor Azure Cosmos DB-triggers
-          href: how-to-configure-cosmos-db-trigger-connection-policy.md
+        - name: Geavanceerde configuratie van Azure Cosmos DB-trigger
+          href: how-to-configure-cosmos-db-trigger.md
         - name: Meerdere Azure Cosmos DB-triggers
           href: how-to-create-multiple-cosmos-db-triggers.md
         - name: Problemen met Azure Cosmos DB-triggers oplossen
           href: troubleshoot-changefeed-functions.md
-        - name: Starttijd van verwerker van wijzigingenfeed
-          href: how-to-configure-change-feed-start-time.md
         - name: De wijzigingenfeedschatting gebruiken
           href: how-to-use-change-feed-estimator.md
         - name: Migreren van processorbibliotheek voor wijzigingenfeed
@@ -1180,8 +1196,8 @@
           href: how-to-setup-cmk.md
     - name: Gereedheid voor bedrijven
       items:
-        - name: Gegevens herstellen vanaf back-up
-          href: how-to-backup-and-restore.md
+        - name: Online back-ups maken en on-demand herstellen
+          href: online-backup-and-restore.md
         - name: Verhoging van quotum aanvragen
           href: create-support-request-quota-increase.md
     - name: Controleren

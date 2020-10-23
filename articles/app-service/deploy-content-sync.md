@@ -6,15 +6,15 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 693e552c8743b435fac6fda9d5ab023be5d9adeb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 880edff95bb548ec5328c543a542ea5dfcfc362f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86221133"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150295"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>Inhoud vanuit een Cloud-map synchroniseren met Azure App Service
-In dit artikel wordt beschreven hoe u uw inhoud synchroniseert met [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714) vanuit Dropbox en OneDrive. 
+In dit artikel wordt beschreven hoe u uw inhoud synchroniseert met [Azure app service](./overview.md) vanuit Dropbox en OneDrive. 
 
 De implementatie van inhoud op aanvraag wordt mogelijk gemaakt door de App Service [kudu-implementatie-engine](https://github.com/projectkudu/kudu/wiki). U kunt werken met uw app-code en-inhoud in een aangewezen Cloud-map en vervolgens synchroniseren met App Service met één klik op een knop. Inhouds synchronisatie maakt gebruik van de kudu-buildserver. 
 

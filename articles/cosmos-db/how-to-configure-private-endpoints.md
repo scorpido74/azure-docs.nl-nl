@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: thweiss
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: dd1a59c2e6b0656233174c53b08ab013ce73d0f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9821e53abcdf95c6cf235cb9d39cd310fcfb66f
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334426"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279713"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Een persoonlijke Azure-koppeling configureren voor een Azure Cosmos-account
 
@@ -684,7 +684,7 @@ Als u de DNS-records niet opschoont, kunnen er onverwachte problemen met het geg
 
 Raadpleeg de volgende artikelen voor meer informatie over Azure Cosmos DB beveiligings functies:
 
-* Zie [firewall ondersteuning](firewall-support.md)als u een firewall wilt configureren voor Azure Cosmos db.
+* Zie [firewall ondersteuning](how-to-configure-firewall.md)als u een firewall wilt configureren voor Azure Cosmos db.
 
 * Zie [toegang vanaf virtuele netwerken configureren](how-to-configure-vnet-service-endpoint.md)voor meer informatie over het configureren van een service-eind punt voor een virtueel netwerk voor uw Azure Cosmos-account.
 

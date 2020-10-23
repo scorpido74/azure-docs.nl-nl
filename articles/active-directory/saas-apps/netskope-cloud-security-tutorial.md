@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/31/2019
 ms.author: jeedes
-ms.openlocfilehash: daef8a91c2f31379ebf50d1e8ec66d0b33ebb2cc
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 081c61610c4134917ffa90cf45fb096f3df4bcbe
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88534809"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939236"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-administrator-console"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Netskope Administrator Console
 
@@ -148,19 +148,19 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik in het linkernavigatievenster op het tabblad **Settings**.
 
-    ![Configuratie van Netskope Administrator Console](./media/netskope-cloud-security-tutorial/config-settings.png)
+    ![Schermopname met Settings (Instellingen) geselecteerd in het navigatievenster.](./media/netskope-cloud-security-tutorial/config-settings.png)
 
 1. Klik op het tabblad **Administration**.
 
-    ![Configuratie van Netskope Administrator Console](./media/netskope-cloud-security-tutorial/config-administration.png)
+    ![Schermopname met Administration (Beheer) geselecteerd vanuit Settings (Instellingen).](./media/netskope-cloud-security-tutorial/config-administration.png)
 
 1. Klik op het tabblad **SSO**.
 
-    ![Configuratie van Netskope Administrator Console](./media/netskope-cloud-security-tutorial/config-sso.png)
+    ![Schermopname met SSO (Eenmalige aanmelding) geselecteerd in Administration (Beheer).](./media/netskope-cloud-security-tutorial/config-sso.png)
 
 1. Voer in de sectie **Network Settings** de volgende stappen uit:
     
-    ![Configuratie van Netskope Administrator Console](./media/netskope-cloud-security-tutorial/config-pasteurls.png)
+    ![Schermopname van Network Settings (Netwerkinstellingen), waarin u de beschreven waarden kunt invoeren.](./media/netskope-cloud-security-tutorial/config-pasteurls.png)
 
     a. Kopieer de waarde van **Assertion Consumer Service URL** en plak deze in het tekstvak **Antwoord-URL** in de sectie **Standaard SAML-configuratie** in Azure Portal.
 
@@ -168,11 +168,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik op **EDIT SETTINGS** onder de sectie **SSO/SLO Settings**.
 
-    ![Configuratie van Netskope Administrator Console](./media/netskope-cloud-security-tutorial/config-editsettings.png)
+    ![Schermopname van SSO/SLO Settings waar u EDIT SETTINGS kunt selecteren.](./media/netskope-cloud-security-tutorial/config-editsettings.png)
 
 1. Voer in het pop-upvenster **Settings** de volgende stappen uit:
 
-    ![Configuratie van Netskope Administrator Console](./media/netskope-cloud-security-tutorial/configuration.png)
+    ![Schermopname van het dialoogvenster Settings waar u de beschreven waarden kunt invoeren.](./media/netskope-cloud-security-tutorial/configuration.png)
 
     a. Selecteer **Enable SSO**.
 
@@ -194,23 +194,23 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik in het linkernavigatievenster op het tabblad **Settings**.
 
-    ![Gebruiker maken in Netskope Administrator Console](./media/netskope-cloud-security-tutorial/config-settings.png)
+    ![Schermopname met Settings geselecteerd.](./media/netskope-cloud-security-tutorial/config-settings.png)
 
 1. Klik op het tabblad **Active Platform**.
 
-    ![Gebruiker maken in Netskope Administrator Console](./media/netskope-cloud-security-tutorial/user1.png)
+    ![Schermopname met Active Platform (Actief platform) geselecteerd vanuit Settings.](./media/netskope-cloud-security-tutorial/user1.png)
 
 1. Klik op het tabblad **Users**.
 
-    ![Gebruiker maken in Netskope Administrator Console](./media/netskope-cloud-security-tutorial/add-user.png)
+    ![Schermopname met Users (Gebruikers) geselecteerd vanuit Active Platform.](./media/netskope-cloud-security-tutorial/add-user.png)
 
 1. Klik op **ADD USERS**.
 
-    ![Gebruiker maken in Netskope Administrator Console](./media/netskope-cloud-security-tutorial/user-add.png)
+    ![Schermopname van het dialoogvenster Users, waar u ADD USERS kunt selecteren.](./media/netskope-cloud-security-tutorial/user-add.png)
 
 1. Voer het e-mailadres van de gebruiker in die u wilt toevoegen en klik op **ADD**.
 
-    ![Gebruiker maken in Netskope Administrator Console](./media/netskope-cloud-security-tutorial/add-user-popup.png)
+    ![Schermopname van Add Users (Gebruikers toevoegen) waarin u een lijst met gebruikers kunt invoeren.](./media/netskope-cloud-security-tutorial/add-user-popup.png)
 
 ## <a name="test-sso"></a>Eenmalige aanmelding testen
 

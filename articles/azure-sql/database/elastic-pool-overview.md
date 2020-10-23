@@ -11,14 +11,14 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, sstein
 ms.date: 07/28/2020
-ms.openlocfilehash: 7be0b5f2688198da8926f2039f60bf9ba592e2f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b76af2c6c949f2591cee880a1991c6f240806a2
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330781"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107892"
 ---
-# <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>Elastische Pools helpen u bij het beheren en schalen van meerdere data bases in Azure SQL Database
+# <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>Meerdere databases in Azure SQL Database beheren en schalen met elastische pools
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Azure SQL Database elastische Pools zijn een eenvoudige, rendabele oplossing voor het beheren en schalen van meerdere data bases met verschillende en onvoorspelbare gebruiks vereisten. De data bases in een elastische pool bevinden zich op één server en delen een aantal resources met een ingestelde prijs. Met elastische groepen in Azure SQL Database kunnen SaaS-ontwikkelaars de prijsprestaties voor een groep databases binnen een voorgeschreven budget optimaliseren en flexibele prestaties voor elke database leveren.
@@ -56,7 +56,7 @@ De volgende afbeelding toont een voorbeeld van een database die doorgaans weinig
 
    ![een individuele database die geschikt is voor een groep](./media/elastic-pool-overview/one-database.png)
 
-Gedurende de geïllustreerde periode van vijf minuten piekt DB1 tot 90 DTU's, maar het gemiddelde gebruik is nog geen vijf DTU's. Een S3-reken grootte is vereist voor het uitvoeren van deze werk belasting in één data base, maar hiermee blijven de meeste resources ongebruikt tijdens peri Oden met een lage activiteit.
+De grafiek illustreert het DTU-gebruik gedurende een periode van 1 uur van 12:00 tot 1:00 waarbij elk gegevens punt 1 minuut granulatie heeft. Bij 12:10 DB1 pieken tot 90 Dtu's, maar het totale gemiddelde gebruik is minder dan vijf Dtu's. Een S3-reken grootte is vereist voor het uitvoeren van deze werk belasting in één data base, maar hiermee blijven de meeste resources ongebruikt tijdens peri Oden met een lage activiteit.
 
 Met een groep kunnen deze ongebruikte DTU’s worden gedeeld met meerdere databases, wat de benodigde DTU's en de totale kosten vermindert.
 

@@ -3,12 +3,12 @@ title: Een inhouds bibliotheek maken voor het implementeren van Vm's in azure VM
 description: Maak een inhouds bibliotheek voor het implementeren van een virtuele machine in een privécloud van Azure VMware-oplossing.
 ms.topic: how-to
 ms.date: 09/21/2020
-ms.openlocfilehash: 3a1b0a091dcdf9a225b4bf91ec83f542c2310285
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57db8ac4da8eef826d85feb11680c9c87823ee36
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575814"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461682"
 ---
 # <a name="create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>Een inhouds bibliotheek maken voor het implementeren van Vm's in azure VMware-oplossing
 
@@ -92,7 +92,7 @@ Nu de inhoudsbibliotheek is gemaakt, kunt u een ISO-installatiekopie toevoegen o
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u van plan bent een Hybrid Cloud Extension (HCX) te gebruiken om VM-workloads naar uw privécloud te migreren, gebruikt u de [HCX voor Azure VMware Solution installeren](tutorial-deploy-vmware-hcx.md).
+Als u van plan bent VMware HCX te gebruiken om VM-workloads naar uw privécloud te migreren, gebruikt u de procedure [VMware HCX implementeren en configureren](tutorial-deploy-vmware-hcx.md) .
 
 <!-- LINKS - external-->
 

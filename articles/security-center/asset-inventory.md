@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/22/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 98e4a5097f1ebd26c54d1e0de9bda7ca2055c320
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: d15d73b0f2b87b8e6f66c7bd4e7fb34f6b06e1a0
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950734"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341920"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>Verken en beheer uw resources met hulpprogramma's voor assetvoorraad en -beheer
 
@@ -68,22 +68,22 @@ De pagina inventarisatie bevat de volgende hulpprogram ma's:
     ![Export opties van de inventaris](./media/asset-inventory/inventory-export-options.png)
 
     > [!TIP]
-    > De KQL-documentatie biedt een Data Base met een aantal voorbeeld gegevens in combi natie met enkele eenvoudige query's om het ' gevoel ' voor de taal te krijgen. [Meer informatie vindt u in deze KQL-zelf studie](https://docs.microsoft.com/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer).
+    > De KQL-documentatie biedt een Data Base met een aantal voorbeeld gegevens in combi natie met enkele eenvoudige query's om het ' gevoel ' voor de taal te krijgen. [Meer informatie vindt u in deze KQL-zelf studie](/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer).
 
 - **Asset Management-opties** : inventaris biedt u de mogelijkheid om complexe detectie query's uit te voeren. Wanneer u de resources hebt gevonden die overeenkomen met uw query's, biedt de inventarisatie snelkoppelingen voor bewerkingen, zoals:
 
     - Tags toewijzen aan de gefilterde resources: Selecteer de selectie vakjes naast de resources die u wilt labelen.
     - Nieuwe servers onboarden naar Security Center: gebruik de werkbalk knop **niet-Azure-servers toevoegen** .
-    - Werk belastingen automatiseren met Azure Logic Apps: gebruik de knop **trigger Logic app** om een logische app uit te voeren op een of meer resources. Uw logische apps moeten vooraf worden voor bereid en accepteren het relevante trigger type (HTTP-aanvraag). Meer [informatie over Logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
+    - Werk belastingen automatiseren met Azure Logic Apps: gebruik de knop **trigger Logic app** om een logische app uit te voeren op een of meer resources. Uw logische apps moeten vooraf worden voor bereid en accepteren het relevante trigger type (HTTP-aanvraag). Meer [informatie over Logic apps](../logic-apps/logic-apps-overview.md).
 
 
 ## <a name="how-does-asset-inventory-work"></a>Hoe werkt Asset Inventory?
 
-Asset Inventory maakt gebruik van [Azure resource Graph (ARG)](https://docs.microsoft.com/azure/governance/resource-graph/), een Azure-service die de mogelijkheid biedt om de postuur gegevens van Security Center te doorzoeken op meerdere abonnementen.
+Asset Inventory maakt gebruik van [Azure resource Graph (ARG)](../governance/resource-graph/index.yml), een Azure-service die de mogelijkheid biedt om de postuur gegevens van Security Center te doorzoeken op meerdere abonnementen.
 
 ARG is ontworpen om efficiënte bronnen te verkennen met de mogelijkheid om op schaal te zoeken.
 
-Met behulp van de [Kusto-query taal (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/)kan de inventaris van de activa snel dieper inzicht verkrijgen door kruis verwijzingen naar ASC-gegevens met andere bron eigenschappen.
+Met behulp van de [Kusto-query taal (KQL)](/azure/data-explorer/kusto/query/)kan de inventaris van de activa snel dieper inzicht verkrijgen door kruis verwijzingen naar ASC-gegevens met andere bron eigenschappen.
 
 
 ## <a name="how-to-use-asset-inventory"></a>Inventarisatie van activa gebruiken
@@ -156,5 +156,5 @@ In dit artikel wordt de pagina Asset Inventory van Azure Security Center beschre
 
 Zie de volgende pagina's voor meer informatie over gerelateerde hulpprogram ma's:
 
-- [Azure-resource grafiek (ARG)](https://docs.microsoft.com/azure/governance/resource-graph/)
-- [Kusto-querytaal (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/)
+- [Azure-resource grafiek (ARG)](../governance/resource-graph/index.yml)
+- [Kusto-querytaal (KQL)](/azure/data-explorer/kusto/query/)

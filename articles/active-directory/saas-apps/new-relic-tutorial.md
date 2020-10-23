@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 19a471b9339828250baa190b1de57c86eb22b30c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c8d24d0b71ce537b81ee729109b398042c3b60c5
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554459"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940953"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic-by-account"></a>Zelfstudie: Integratie van eenmalige aanmelding (SSO) van Azure Active Directory met New Relic by Account
 
@@ -134,7 +134,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 2. Klik in het menu bovenaan op **Accountinstellingen**.
    
-    ![Accountinstellingen](./media/new-relic-tutorial/ic797036.png "Accountinstellingen")
+    ![Schermopname van de welkomstpagina met Accountinstellingen geselecteerd.](./media/new-relic-tutorial/ic797036.png "Accountinstellingen")
 
 3. Klik op het tabblad **Security and authentication** en klik vervolgens op het tabblad **Single sign on**.
    
@@ -158,11 +158,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 2. Klik in het menu bovenaan op **Accountinstellingen**.
    
-    ![Accountinstellingen](./media/new-relic-tutorial/ic797040.png "Accountinstellingen")
+    ![Schermopname met Accountinstellingen geselecteerd in de welkomstpagina.](./media/new-relic-tutorial/ic797040.png "Accountinstellingen")
 
 3. Klik in het linkernavigatievenster op **Account**, klik op **Summary** en klik vervolgens op **Add user**.
    
-    ![Accountinstellingen](./media/new-relic-tutorial/ic797041.png "Accountinstellingen")
+    ![Schermopname van het deelvenster Samenvatting, waar u Gebruiker toevoegen kunt selecteren.](./media/new-relic-tutorial/ic797041.png "Accountinstellingen")
 
 4. Voer in het dialoogvenster **Active users** de volgende stappen uit:
    

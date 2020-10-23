@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 6d19027cfd406f81d31696c5cd2c1a235574e400
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa7d252246ed37160ba2a5cfcd90557df1375bc3
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577830"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461529"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender voor SQL-servers op computers 
 
@@ -49,13 +49,13 @@ Beide worden hieronder beschreven.
 ### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>Stap 1. Richt de Log Analytics-agent in op de host van uw SQL-Server:
 
 - **SQL Server op de Azure-VM** : als uw SQL-machine wordt gehost op een Azure-VM, kunt u [de log Analytics agent automatisch inrichten](security-center-enable-data-collection.md#workspace-configuration). U kunt ook de hand matige procedure volgen voor [het Onboarden van uw Azure stack-vm's](quickstart-onboard-machines.md#onboard-your-azure-stack-vms).
-- **SQL Server op Azure Arc** : als uw SQL Server wordt gehost op een [Azure Arc](https://docs.microsoft.com/azure/azure-arc/) -computer, kunt u de log Analytics agent implementeren met behulp van de Security Center aanbeveling ' Log Analytics agent moet worden geïnstalleerd op uw op Windows gebaseerde Azure Arc-computers (preview) '. U kunt ook de hand matige procedure volgen in de [Azure Arc-documentatie](https://docs.microsoft.com/azure/azure-arc/servers/manage-vm-extensions#enable-extensions-from-the-portal).
+- **SQL Server op Azure Arc** : als uw SQL Server wordt beheerd door [Azure Arc](../azure-arc/index.yml) -servers, kunt u de log Analytics agent implementeren met behulp van de Security Center aanbeveling ' Log Analytics agent moet worden geïnstalleerd op uw op Windows gebaseerde Azure-Arc-machines (preview) '. U kunt ook de installatie methoden volgen die worden beschreven in de [Azure Arc-documentatie](../azure-arc/servers/manage-vm-extensions.md).
 
 - **SQL Server on-premises** : als uw SQL Server wordt gehost op een on-premises Windows-machine zonder Azure Arc, hebt u twee opties om deze te verbinden met Azure:
     
-    - **Azure-Arc implementeren** : u kunt een Windows-machine verbinden met Security Center. Azure Arc biedt echter een diep gaande integratie in *al* uw Azure-omgeving. Als u Azure Arc hebt ingesteld, ziet u de pagina **SQL Server – Azure Arc** in de portal en worden uw beveiligings waarschuwingen weer gegeven op een specifiek tabblad **beveiliging** op die pagina. De eerste en aanbevolen optie is om [Azure Arc op de host in te stellen](https://docs.microsoft.com/azure/azure-arc/servers/onboard-portal#install-and-validate-the-agent-on-windows) en de instructies voor **SQL Server op Azure Arc**te volgen.
+    - **Azure-Arc implementeren** : u kunt een Windows-machine verbinden met Security Center. Azure Arc biedt echter een diep gaande integratie in *al* uw Azure-omgeving. Als u Azure Arc hebt ingesteld, ziet u de pagina **SQL Server – Azure Arc** in de portal en worden uw beveiligings waarschuwingen weer gegeven op een specifiek tabblad **beveiliging** op die pagina. De eerste en aanbevolen optie is om [Azure Arc op de host in te stellen](../azure-arc/servers/onboard-portal.md#install-and-validate-the-agent-on-windows) en de instructies voor **SQL Server op Azure Arc**te volgen.
         
-    - **De Windows-machine verbinden zonder Azure Arc** : als u ervoor kiest om verbinding te maken met een SQL Server die wordt uitgevoerd op een Windows-computer zonder Azure Arc te gebruiken, volgt u de instructies in [Windows-computers verbinden met Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows).
+    - **De Windows-machine verbinden zonder Azure Arc** : als u ervoor kiest om verbinding te maken met een SQL Server die wordt uitgevoerd op een Windows-computer zonder Azure Arc te gebruiken, volgt u de instructies in [Windows-computers verbinden met Azure monitor](../azure-monitor/platform/agent-windows.md).
 
 
 ### <a name="step-2-enable-the-optional-plan-in-security-centers-pricing-and-settings-page"></a>Stap 2. Schakel het optionele abonnement in op de pagina prijzen en instellingen van Security Center:
@@ -75,7 +75,7 @@ Beide worden hieronder beschreven.
     Het plan wordt ingeschakeld op alle SQL-servers die zijn verbonden met de geselecteerde werk ruimte. De beveiliging is volledig actief na de eerste keer opnieuw opstarten van de SQL Server-instantie.
 
     >[!TIP] 
-    > Als u een nieuwe werk ruimte wilt maken, volgt u de instructies in [een log Analytics-werk ruimte maken](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
+    > Als u een nieuwe werk ruimte wilt maken, volgt u de instructies in [een log Analytics-werk ruimte maken](../azure-monitor/learn/quick-create-workspace.md).
 
 
 1. U kunt ook e-mail meldingen configureren voor beveiligings waarschuwingen. 
@@ -118,7 +118,7 @@ Azure Defender-waarschuwingen zijn beschikbaar op de pagina waarschuwingen van S
 
 1. Waarschuwingen zijn zodanig ontworpen dat ze zich op zichzelf bevinden, met gedetailleerde stappen voor herbemiddeling en informatie over onderzoek. U kunt verder onderzoeken door andere Azure Security Center en Azure-Sentinel-mogelijkheden te gebruiken voor een bredere weer gave:
 
-    * Schakel de controle functie van SQL Server in voor verdere onderzoeken. Als u een Azure Sentinel-gebruiker bent, kunt u de SQL-controle logboeken uploaden van de gebeurtenissen van het Windows-beveiligings logboek naar Sentinel en een rijke onderzoek ervaring hebben. [Meer informatie over het controleren van SQL Server](https://docs.microsoft.com/sql/relational-databases/security/auditing/create-a-server-audit-and-server-audit-specification?view=sql-server-ver15).
+    * Schakel de controle functie van SQL Server in voor verdere onderzoeken. Als u een Azure Sentinel-gebruiker bent, kunt u de SQL-controle logboeken uploaden van de gebeurtenissen van het Windows-beveiligings logboek naar Sentinel en een rijke onderzoek ervaring hebben. [Meer informatie over het controleren van SQL Server](/sql/relational-databases/security/auditing/create-a-server-audit-and-server-audit-specification?preserve-view=true&view=sql-server-ver15).
     * Gebruik de aanbevelingen van Security Center voor de hostmachine die in elke waarschuwing worden aangegeven om uw beveiligings postuur te verbeteren. Hierdoor worden de Risico's van toekomstige aanvallen verminderd. 
 
     Meer [informatie over het beheren van en reageren op waarschuwingen](security-center-managing-and-responding-alerts.md).
@@ -130,5 +130,5 @@ Zie het volgende artikel voor verwante materialen:
 
 - [Beveiligings waarschuwingen voor SQL Database en Azure Synapse Analytics (voorheen SQL Data Warehouse)](alerts-reference.md#alerts-sql-db-and-warehouse)
 - [E-mailmeldingen voor beveiligingswaarschuwingen instellen](security-center-provide-security-contact-details.md)
-- [Meer informatie over Azure Sentinel](https://docs.microsoft.com/azure/sentinel/)
-- [Gegevens beveiligings pakket van Azure Security Center](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
+- [Meer informatie over Azure Sentinel](../sentinel/index.yml)
+- [Gegevens beveiligings pakket van Azure Security Center](../azure-sql/database/azure-defender-for-sql.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 2312befa5fe534cc2042b7586755ac5322d036db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66bce573be5a31641bdff809b8e9a79b617a703a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601300"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370998"
 ---
 # <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Naslag Gids voor identiteits-en toegangs beheer van Azure Active Directory
 
@@ -45,7 +45,7 @@ Wanneer u uw lijst bekijkt, moet u mogelijk een eigenaar toewijzen voor taken wa
 
 #### <a name="assigning-owners-recommended-reading"></a>Eigen aren toewijzen aanbevolen lezen
 
-- [Beheerdersrollen toewijzen in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)
+- [Beheerdersrollen toewijzen in Azure Active Directory](../roles/permissions-reference.md)
 - [Governance in Azure](../../governance/index.yml)
 
 ## <a name="on-premises-identity-synchronization"></a>Synchronisatie van on-premises identiteiten
@@ -157,13 +157,13 @@ Gebruik de volgende richt lijnen om service plannen te definiëren voor gebruike
 - Optioneel kan een kenmerk worden gedefinieerd om de pakketten voor gebruikers in op te slaan.
 
 > [!IMPORTANT]
-> Op groep gebaseerde licentie verlening in azure AD introduceert het concept van gebruikers met een licentie fout status. Als u eventuele licentie fouten ziet, moet u de problemen met de licentie toewijzing onmiddellijk [identificeren en oplossen](../users-groups-roles/licensing-groups-resolve-problems.md) .
+> Op groep gebaseerde licentie verlening in azure AD introduceert het concept van gebruikers met een licentie fout status. Als u eventuele licentie fouten ziet, moet u de problemen met de licentie toewijzing onmiddellijk [identificeren en oplossen](../enterprise-users/licensing-groups-resolve-problems.md) .
 
 ![Er wordt automatisch een scherm opname van een computer scherm beschrijving gegenereerd](./media/active-directory-ops-guide/active-directory-ops-img2.png)
 
 #### <a name="lifecycle-management"></a>Levenscyclus beheer
 
-Als u momenteel een hulp programma gebruikt, zoals [Microsoft Identity Manager](/microsoft-identity-manager/) of een systeem van derden, dat afhankelijk is van een on-premises infra structuur, raden we u aan de toewijzing te offloaden van het bestaande hulp programma, op groepen gebaseerde licentie verlening te implementeren en een groeps levenscyclus beheer te definiëren op basis van [groepen](../users-groups-roles/licensing-group-advanced.md#use-group-based-licensing-with-dynamic-groups). Als uw bestaande proces geen rekening houdt met nieuwe werk nemers of werk nemers die de organisatie verlaten, moet u ook op groep gebaseerde licentie verlening implementeren op basis van dynamische groepen en de levens cyclus van groepslid maatschappen definiëren. Ten slotte, als op groepen gebaseerde licentie verlening is geïmplementeerd op on-premises groepen die geen levenscyclus beheer hebben, kunt u overwegen Cloud groepen te gebruiken voor het inschakelen van mogelijkheden zoals gedelegeerd eigendom of dynamisch lidmaatschap van een kenmerk.
+Als u momenteel een hulp programma gebruikt, zoals [Microsoft Identity Manager](/microsoft-identity-manager/) of een systeem van derden, dat afhankelijk is van een on-premises infra structuur, raden we u aan de toewijzing te offloaden van het bestaande hulp programma, op groepen gebaseerde licentie verlening te implementeren en een groeps levenscyclus beheer te definiëren op basis van [groepen](../enterprise-users/licensing-group-advanced.md#use-group-based-licensing-with-dynamic-groups). Als uw bestaande proces geen rekening houdt met nieuwe werk nemers of werk nemers die de organisatie verlaten, moet u ook op groep gebaseerde licentie verlening implementeren op basis van dynamische groepen en de levens cyclus van groepslid maatschappen definiëren. Ten slotte, als op groepen gebaseerde licentie verlening is geïmplementeerd op on-premises groepen die geen levenscyclus beheer hebben, kunt u overwegen Cloud groepen te gebruiken voor het inschakelen van mogelijkheden zoals gedelegeerd eigendom of dynamisch lidmaatschap van een kenmerk.
 
 ### <a name="assignment-of-apps-with-all-users-group"></a>Toewijzing van apps met de groep alle gebruikers
 

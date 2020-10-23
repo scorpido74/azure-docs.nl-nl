@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 58db7dcade7567d632fb405b31c4ff7bdbc6e71a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 399f81a5246633912d1e17a13492e404119e362f
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90018966"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282060"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Wijzigingenfeed in Azure Cosmos DB lezen
 
@@ -39,7 +39,7 @@ Het gebruik van een push model is de eenvoudigste manier om de wijzigings feed t
 
 ### <a name="azure-functions"></a>Azure Functions
 
-Azure Functions is de eenvoudigste optie als u zojuist aan de slag gaat met het wijzigen van de feed. Als gevolg van de eenvoud is het ook de aanbevolen optie voor het gebruik van de meeste cases voor wijzigings invoer. Wanneer u een Azure Functions trigger voor Azure Cosmos DB maakt, selecteert u de container om verbinding te maken en wordt de functie Azure geactiveerd wanneer er een wijziging in de container optreedt. Omdat Azure Functions de Change feed-processor achter de schermen gebruikt, wordt parallelizes automatisch gewijzigd in de [partities](partition-data.md)van de container.
+Azure Functions is de eenvoudigste optie als u zojuist aan de slag gaat met het wijzigen van de feed. Als gevolg van de eenvoud is het ook de aanbevolen optie voor het gebruik van de meeste cases voor wijzigings invoer. Wanneer u een Azure Functions trigger voor Azure Cosmos DB maakt, selecteert u de container om verbinding te maken en wordt de functie Azure geactiveerd wanneer er een wijziging in de container optreedt. Omdat Azure Functions de Change feed-processor achter de schermen gebruikt, wordt parallelizes automatisch gewijzigd in de [partities](partitioning-overview.md)van de container.
 
 Ontwikkelen met Azure Functions is een eenvoudige ervaring en kan sneller zijn dan de implementatie van de Change feed-processor zelf. Triggers kunnen worden gemaakt met behulp van de Azure Functions portal of programmatisch met behulp van Sdk's. Visual Studio en VS code bieden ondersteuning voor het schrijven van Azure Functions, en u kunt zelfs de Azure Functions CLI gebruiken voor het ontwikkelen van meerdere platforms. U kunt de code op uw bureau blad schrijven en fouten opsporen en de functie vervolgens met één klik implementeren. Zie [serverloze database Computing met Azure functions](serverless-computing-database.md) en [gebruik change feed met Azure functions](change-feed-functions.md) artikelen voor meer informatie.
 

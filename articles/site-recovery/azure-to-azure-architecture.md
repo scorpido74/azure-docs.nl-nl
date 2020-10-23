@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 57435e703395928c4619b7c9c6bf8614269f58a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3e00c3832f243ec0190023116bbfdeaaad86c94
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825420"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370420"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architectuur voor herstel na noodgevallen van Azure naar Azure
 
@@ -96,13 +96,13 @@ In de volgende tabel worden verschillende soorten consistentie beschreven.
 
 ### <a name="crash-consistent"></a>Crash-consistent
 
-**Beschrijving** | **Details** | **Aanbeveling**
+**Deschription** (Beschrijving) | **Details** | **Aanbeveling**
 --- | --- | ---
 Een crash consistente moment opname legt gegevens vast die zich op de schijf bevonden toen de moment opname werd gemaakt. Het bevat niets in het geheugen.<br/><br/> Het bevat het equivalent van de gegevens op de schijf die aanwezig zouden zijn als de virtuele machine is vastgelopen of het netsnoer van de server is opgehaald op het moment dat de moment opname werd gemaakt.<br/><br/> Een crash consistent garandeert geen gegevens consistentie voor het besturings systeem of voor apps op de virtuele machine. | Met Site Recovery worden standaard crash consistente herstel punten in elke vijf minuten gemaakt. Deze instelling kan niet worden gewijzigd.<br/><br/>  | Vandaag kunnen de meeste apps goed worden hersteld met crash-consistente punten.<br/><br/> Crash-consistente herstel punten zijn doorgaans voldoende voor de replicatie van besturings systemen en apps, zoals DHCP-servers en afdruk servers.
 
 ### <a name="app-consistent"></a>App-consistent
 
-**Beschrijving** | **Details** | **Aanbeveling**
+**Deschription** (Beschrijving) | **Details** | **Aanbeveling**
 --- | --- | ---
 App-consistente herstel punten worden gemaakt op basis van app-consistente moment opnamen.<br/><br/> Een app-consistente moment opname bevat alle informatie in een crash consistente moment opname, plus alle gegevens in het geheugen en trans acties die worden uitgevoerd. | App-consistente moment opnamen gebruiken de Volume Shadow Copy Service (VSS):<br/><br/>   1) Azure Site Recovery maakt gebruik van de methode Copy only backup (VSS_BT_COPY) waarbij de back-uptijd en het Volg nummer van het transactie logboek van micro soft SQL niet worden gewijzigd </br></br> 2) als er een moment opname wordt gestart, voert VSS een Kopieer bewerking voor het schrijven van de schijf uit op het volume.<br/><br/>   3) voordat de koeien wordt uitgevoerd, informeert VSS elke app op de computer die de geheugenresidente gegevens op schijf moet leegmaken.<br/><br/>   4) vervolgens kan de app back-up/herstel na nood gevallen (in dit geval Site Recovery) de momentopname gegevens lezen en door gaan. | App-consistente moment opnamen worden gemaakt op basis van de frequentie die u opgeeft. Deze frequentie moet altijd kleiner zijn dan de instelling voor het bewaren van herstel punten. Als u bijvoorbeeld de herstel punten behoudt met de standaard instelling van 24 uur, stelt u de frequentie in op minder dan 24 uur.<br/><br/>Ze zijn ingewik kelder en nemen meer tijd in beslag dan crash-consistente moment opnamen.<br/><br/> Ze zijn van invloed op de prestaties van apps die worden uitgevoerd op een virtuele machine die is ingeschakeld voor replicatie. 
 
@@ -167,11 +167,11 @@ HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met Azur
 
 #### <a name="control-access-with-nsg-rules"></a>Toegang beheren met NSG-regels
 
-Als u de connectiviteit van de virtuele machine beheert door netwerk verkeer van en naar Azure-netwerken/-subnetten te filteren met [NSG-regels](../virtual-network/security-overview.md), moet u rekening houden met de volgende vereisten:
+Als u de connectiviteit van de virtuele machine beheert door netwerk verkeer van en naar Azure-netwerken/-subnetten te filteren met [NSG-regels](../virtual-network/network-security-groups-overview.md), moet u rekening houden met de volgende vereisten:
 
 - NSG-regels voor de Azure-bron regio moeten uitgaande toegang toestaan voor replicatie verkeer.
 - We raden u aan regels te maken in een test omgeving voordat u ze in productie neemt.
-- Gebruik [service Tags](../virtual-network/security-overview.md#service-tags) in plaats van afzonderlijke IP-adressen toe te staan.
+- Gebruik [service Tags](../virtual-network/network-security-groups-overview.md#service-tags) in plaats van afzonderlijke IP-adressen toe te staan.
     - Service Tags vertegenwoordigen een groep IP-adres voorvoegsels die samen worden verzameld om de complexiteit bij het maken van beveiligings regels te minimaliseren.
     - Micro soft werkt automatisch service tags na verloop van tijd bij. 
  

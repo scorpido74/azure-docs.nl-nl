@@ -5,21 +5,21 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: how-to
-ms.openlocfilehash: 8f3b144a7790c3122d59d27183b3037998ddadd1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc325fdf68c5afbb122f9e77c5509a6a8053a12e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85565851"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427462"
 ---
 # <a name="configure-authentication"></a>Verificatie configureren
 
-Azure remote rendering maakt gebruik van hetzelfde authenticatie mechanisme als [Azure spatiale ankers (ASA)](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp). Clients moeten *een* van de volgende opties instellen om de rest-api's te kunnen aanroepen:
+Azure remote rendering maakt gebruik van hetzelfde authenticatie mechanisme als [Azure spatiale ankers (ASA)](../../spatial-anchors/concepts/authentication.md?tabs=csharp). Clients moeten *een* van de volgende opties instellen om de rest-api's te kunnen aanroepen:
 
 * **AccountKey**: kan worden verkregen op het tabblad sleutels voor het externe rendering-account op de Azure Portal. Account sleutels worden alleen aanbevolen voor ontwikkeling/prototypen.
     ![Account-id](./media/azure-account-primary-key.png)
 
-* **AuthenticationToken**: is een Azure AD-token, dat kan worden verkregen met behulp van de [MSAL-bibliotheek](https://docs.microsoft.com/azure/active-directory/develop/msal-overview). Er zijn meerdere stromen beschikbaar om gebruikers referenties te accepteren en deze referenties te gebruiken voor het verkrijgen van een toegangs token.
+* **AuthenticationToken**: is een Azure AD-token, dat kan worden verkregen met behulp van de [MSAL-bibliotheek](../../active-directory/develop/msal-overview.md). Er zijn meerdere stromen beschikbaar om gebruikers referenties te accepteren en deze referenties te gebruiken voor het verkrijgen van een toegangs token.
 
 * **MRAccessToken**: is een Mr-token dat kan worden verkregen door de Azure Mixed Reality-beveiligings token service (STS). Opgehaald uit het `https://sts.mixedreality.azure.com` eind punt met behulp van een rest-aanroep die vergelijkbaar is met de onderstaande aanroep:
 
@@ -44,11 +44,11 @@ Azure remote rendering maakt gebruik van hetzelfde authenticatie mechanisme als 
 
 Account sleutels worden aanbevolen voor snel prototypen, tijdens de ontwikkeling. Het is raadzaam om uw toepassing niet naar productie te verzenden met behulp van een Inge sloten account sleutel. De aanbevolen methode is om een Azure AD-verificatie methode op basis van gebruikers of service te gebruiken.
 
- Azure AD-verificatie wordt beschreven in het gedeelte [Azure AD-gebruikers verificatie](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp#azure-ad-user-authentication) van de [Azure spatiale ankers (ASA)-](https://docs.microsoft.com/azure/spatial-anchors/) service.
+ Azure AD-verificatie wordt beschreven in het gedeelte [Azure AD-gebruikers verificatie](../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-user-authentication) van de [Azure spatiale ankers (ASA)-](../../spatial-anchors/index.yml) service.
 
  Zie voor meer informatie de [zelf studie: Azure remote rendering en model Storage-Azure Active Directory-verificatie beveiligen](../tutorials/unity/security/security.md#azure-active-directory-azure-ad-authentication)
 
-## <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
+## <a name="azure-role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer voor Azure
 
 Gebruik de volgende rollen bij het verlenen van toegang op basis van rollen om het toegangs niveau voor uw service te bepalen:
 

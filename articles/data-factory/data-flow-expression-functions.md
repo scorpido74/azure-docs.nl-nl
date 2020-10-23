@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/06/2020
-ms.openlocfilehash: ab7ed95ba4b9a4fa6f0bafb78ea80a2d4acac71d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5645bd37ec466619a4093d767db1c846b90a4365
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827890"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281419"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Gegevens transformatie expressies in gegevens stroom toewijzen
 
@@ -155,7 +155,7 @@ Retourneert de eerste not null-waarde uit een set invoer waarden. Alle invoer wa
 ___
 ### <code>collect</code>
 <code><b>collect(<i>&lt;value1&gt;</i> : any) => array</b></code><br/><br/>
-Verzamelt alle waarden van de expressie in de geaggregeerde groep naar een matrix. Structuren kunnen tijdens dit proces worden verzameld en getransformeerd naar alternatieve structuren. Het aantal items is gelijk aan het aantal rijen in die groep en kan Null-waarden bevatten. Het aantal verzamelde items moet klein zijn.  
+Verzamelt alle waarden van de expressie in de geaggregeerde groep in een matrix. Structuren kunnen tijdens dit proces worden verzameld en getransformeerd naar alternatieve structuren. Het aantal items is gelijk aan het aantal rijen in die groep en kan Null-waarden bevatten. Het aantal verzamelde items moet klein zijn.  
 * ``collect(salesPerson)``
 * ``collect(firstName + lastName))``
 * ``collect(@(name = salesPerson, sales = salesAmount) )``
@@ -682,7 +682,7 @@ ___
 * ``rpad('dumbo', 4, '-') -> 'dumb'``  
 * ``rpad('dumbo', 8, '<>') -> 'dumbo<><'``  ___
 ### <code>rtrim</code>
-<code><b>rtrim(<i>&lt;string to trim&gt;</i> : string, [<i>&lt;trim characters&gt;</i> : string]) => string</b></met code><BR/><BR/> rechts wordt een teken reeks van voorloop tekens verkleind. Als de tweede para meter niet is opgegeven, wordt witruimte verkleind. Anders wordt het teken dat is opgegeven in de second parameter.  
+<code><b>rtrim(<i>&lt;string to trim&gt;</i> : string, [<i>&lt;trim characters&gt;</i> : string]) => string</b></met code><BR/><BR/> rechts wordt een reeks afsluitende tekens verkleind. Als de tweede para meter niet is opgegeven, wordt witruimte verkleind. Anders wordt het teken dat is opgegeven in de second parameter.  
 * ``rtrim('  dumbo  ') -> '  dumbo'``  
 * ``rtrim('!--!du!mbo!', '-!') -> '!--!du!mbo'``  
 ___
@@ -1524,7 +1524,7 @@ Right pads the string by the supplied padding until it is of a certain length. I
 ___
 ### <code>rtrim</code>
 <code><b>rtrim(<i>&lt;string to trim&gt;</i> : string, [<i>&lt;trim characters&gt;</i> : string]) => string</b></code><br/><br/>
-Right trims a string of leading characters. If second parameter is unspecified, it trims whitespace. Else it trims any character specified in the second parameter.  
+Right trims a string of trailing characters. If second parameter is unspecified, it trims whitespace. Else it trims any character specified in the second parameter.  
 * ``rtrim('  dumbo  ') -> '  dumbo'``  
 * ``rtrim('!--!du!mbo!', '-!') -> '!--!du!mbo'``  
 ___

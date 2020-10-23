@@ -16,12 +16,12 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 870c9c91e285988cdc1fb294b3fc9b3270de7483
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a891830d876bfa99d29087278dd5b870ae7e2866
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85361901"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368380"
 ---
 # <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>Azure-roltoewijzingen toevoegen of verwijderen voor externe gast gebruikers met behulp van de Azure Portal
 
@@ -183,7 +183,7 @@ Gast gebruikers hebben beperkte mapmachtigingen. Gast gebruikers kunnen bijvoorb
 
 ![Gast gebruiker kan niet bladeren naar gebruikers in een map](./media/role-assignments-external-users/directory-no-users.png)
 
-Als een gast gebruiker in de Directory extra bevoegdheden nodig heeft, kunt u een directory-rol toewijzen aan de gast gebruiker. Als u wilt dat een gast gebruiker volledige lees toegang heeft tot uw adres lijst, kunt u de gast gebruiker toevoegen aan de rol van [adreslijst lezers](../active-directory/users-groups-roles/directory-assign-admin-roles.md) in azure AD. Zie [machtigingen verlenen aan gebruikers van partner organisaties in uw Azure Active Directory-Tenant](../active-directory/b2b/add-guest-to-role.md)voor meer informatie.
+Als een gast gebruiker in de Directory extra bevoegdheden nodig heeft, kunt u een directory-rol toewijzen aan de gast gebruiker. Als u wilt dat een gast gebruiker volledige lees toegang heeft tot uw adres lijst, kunt u de gast gebruiker toevoegen aan de rol van [adreslijst lezers](../active-directory/roles/permissions-reference.md) in azure AD. Zie [machtigingen verlenen aan gebruikers van partner organisaties in uw Azure Active Directory-Tenant](../active-directory/b2b/add-guest-to-role.md)voor meer informatie.
 
 ![Rol van adreslijst lezers toewijzen](./media/role-assignments-external-users/directory-roles.png)
 
@@ -193,11 +193,11 @@ Gast gebruikers hebben beperkte mapmachtigingen. Zelfs als een gast [gebruiker e
 
 ![Gast gebruiker kan niet bladeren in beveiligings-principals om rollen toe te wijzen](./media/role-assignments-external-users/directory-no-browse.png)
 
-Als de gast gebruiker de exacte aanmeldings naam van iemand in de Directory kent, kunnen ze toegang verlenen. Als u wilt dat een gast gebruiker volledige lees toegang heeft tot uw adres lijst, kunt u de gast gebruiker toevoegen aan de rol van [adreslijst lezers](../active-directory/users-groups-roles/directory-assign-admin-roles.md) in azure AD. Zie [machtigingen verlenen aan gebruikers van partner organisaties in uw Azure Active Directory-Tenant](../active-directory/b2b/add-guest-to-role.md)voor meer informatie.
+Als de gast gebruiker de exacte aanmeldings naam van iemand in de Directory kent, kunnen ze toegang verlenen. Als u wilt dat een gast gebruiker volledige lees toegang heeft tot uw adres lijst, kunt u de gast gebruiker toevoegen aan de rol van [adreslijst lezers](../active-directory/roles/permissions-reference.md) in azure AD. Zie [machtigingen verlenen aan gebruikers van partner organisaties in uw Azure Active Directory-Tenant](../active-directory/b2b/add-guest-to-role.md)voor meer informatie.
 
 ### <a name="guest-user-cannot-register-applications-or-create-service-principals"></a>Gast gebruiker kan toepassingen niet registreren of service-principals maken
 
-Gast gebruikers hebben beperkte mapmachtigingen. Als een gast gebruiker toepassingen kan registreren of service-principals moet maken, kunt u de gast gebruiker toevoegen aan de rol van [toepassings ontwikkelaar](../active-directory/users-groups-roles/directory-assign-admin-roles.md) in azure AD. Zie [machtigingen verlenen aan gebruikers van partner organisaties in uw Azure Active Directory-Tenant](../active-directory/b2b/add-guest-to-role.md)voor meer informatie.
+Gast gebruikers hebben beperkte mapmachtigingen. Als een gast gebruiker toepassingen kan registreren of service-principals moet maken, kunt u de gast gebruiker toevoegen aan de rol van [toepassings ontwikkelaar](../active-directory/roles/permissions-reference.md) in azure AD. Zie [machtigingen verlenen aan gebruikers van partner organisaties in uw Azure Active Directory-Tenant](../active-directory/b2b/add-guest-to-role.md)voor meer informatie.
 
 ![Gast gebruiker kan geen toepassingen registreren](./media/role-assignments-external-users/directory-access-denied.png)
 

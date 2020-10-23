@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/24/2020
 ms.author: robinsh
 ms.custom: mvc, subject-armqs
-ms.openlocfilehash: 4112e8aae485e229beb16d21e90280750e1465e1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7c53d720aef029d79d95cacd558c3bf9d35b4af6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89462663"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148914"
 ---
 # <a name="quickstart-deploy-an-azure-iot-hub-and-a-storage-account-using-an-arm-template"></a>Quickstart: Een Azure IoT Hub en een opslagaccount implementeren met een ARM-sjabloon
 
@@ -46,7 +46,7 @@ In deze sectie vindt u de stappen om de sjabloon te implementeren, een virtueel 
 
     [![Implementeren in Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-iothub-auto-route-messages%2Fazuredeploy.json)
 
-1. Download de [IoT C#-voorbeelden](https://docs.microsoft.com/samples/azure-samples/azure-iot-samples-csharp/azure-iot-samples-for-csharp-net/) en pak ze uit.
+1. Download de [IoT C#-voorbeelden](/samples/azure-samples/azure-iot-samples-csharp/azure-iot-samples-for-csharp-net/) en pak ze uit.
 
 1. Open een opdrachtvenster en ga naar de map waarin u de IoT C#-voorbeelden hebt uitgepakt. Zoek de map met het bestand arm-read-write.csproj. In dit opdrachtvenster maakt u de omgevingsvariabelen. Meld u aan bij de [Azure Portal](https://portal.azure.com ) om de sleutels op te halen. Selecteer **Resourcegroepen** en selecteer vervolgens de resourcegroep die u voor deze quickstart hebt gemaakt.
 
@@ -134,4 +134,4 @@ Als u de resources wilt verwijderen die tijdens deze quickstart zijn toegevoegd,
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: uw eerste ARM-sjabloon maken en implementeren](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [Zelfstudie: uw eerste ARM-sjabloon maken en implementeren](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 6282e159a537eb3b9bf5d9a44c7498f3f1db0019
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 032f35fcf5ff661f5a0bfb59be191ffae93272a0
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550705"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944442"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-happyfox"></a>Zelfstudie: Azure Active Directory-integratie met HappyFox
 
@@ -132,19 +132,19 @@ Voer de volgende stappen uit als u eenmalige aanmelding bij Azure Active Directo
 
 2. Navigeer naar **Beheren**, klik op het tabblad **Integraties**.
 
-    ![Eenmalige aanmelding configureren](./media/happyfox-tutorial/header.png) 
+    ![Schermopname van de pagina Beheren met het tabblad Integraties geselecteerd.](./media/happyfox-tutorial/header.png) 
 
 3. Klik in het tabblad Integraties op **Configureren** onder **SAML-integratie** om de instellingen voor eenmalige aanmelding te openen.
 
-    ![Eenmalige aanmelding configureren](./media/happyfox-tutorial/configure.png)
+    ![Schermopname van de instelling SAML-integratie met de actie Configureren geselecteerd.](./media/happyfox-tutorial/configure.png)
 
 4. Plak in de sectie voor SAML-configuratie de **Aanmeldings-URL** die u hebt gekopieerd vanuit de Azure-portal naar het tekstvak **Doel-URL voor eenmalige aanmelding**.
 
-    ![Eenmalige aanmelding configureren](./media/happyfox-tutorial/targeturl.png)
+    ![Schermopname van de sectie SAML-configuratie met het tekstvak Doel-URL voor eenmalige aanmelding gemarkeerd.](./media/happyfox-tutorial/targeturl.png)
 
 5. Open het certificaat dat u heeft gedownload vanuit de Azure-portal in Kladblok en plak de inhoud in de sectie **IdP-handtekening**.
 
-    ![Eenmalige aanmelding configureren](./media/happyfox-tutorial/cert.png)
+    ![Schermopname met de sectie IdP-handtekening gemarkeerd.](./media/happyfox-tutorial/cert.png)
 
 6. Klik op de knop **Instellingen opslaan**.
 

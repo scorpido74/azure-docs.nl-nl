@@ -4,19 +4,19 @@ description: Beheer van Azure Cosmos DB core-API-resources met behulp van Power 
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 10/07/2020
+ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 652c546c5a38543e89f7a3b5ab8bc036c8d80911
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4147b9a3a5f0a249366431a4e43f924e89f9075
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840877"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281495"
 ---
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-using-powershell"></a>Azure Cosmos DB core-API-resources (SQL) beheren met Power shell
 
-In de volgende hand leiding wordt beschreven hoe u Power shell gebruikt voor het uitvoeren van scripts en het automatiseren van het beheer van Azure Cosmos DB core-API-resources, waaronder het Cosmos-account, de data base, de container en de door voer.
+In de volgende hand leiding wordt beschreven hoe u Power shell gebruikt voor het uitvoeren van scripts en het automatiseren van het beheer van Azure Cosmos DB core-API-resources, waaronder het Cosmos-account, de data base, de container en de door voer. Voor Power shell-cmdlets voor andere Api's Zie [Power shell-voor beelden voor Cassandra](powershell-samples-cassandra.md), [Power shell-voor beelden voor MongoDb API](powershell-samples-mongodb.md), [Power shell-voor beelden voor Gremlin](powershell-samples-gremlin.md), [Power shell-voor beelden voor tabel](powershell-samples-table.md)
 
 > [!NOTE]
 > De voorbeelden in dit artikel maken gebruik van beheer-cmdlets voor [AZ. CosmosDB](/powershell/module/az.cosmosdb). Zie de referentiepagina van [Az.CosmosDB](/powershell/module/az.cosmosdb) API voor de nieuwste wijzigingen.

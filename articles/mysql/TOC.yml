@@ -85,6 +85,8 @@
               href: connect-cpp.md
             - name: Aan de slag
               href: connect-go.md
+            - name: GitHub Actions
+              href: quickstart-mysql-github-actions.md
     - name: Zelfstudies
       items:
         - name: Een database ontwerpen

@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba1fc856ee9093b628bd86b9847f8fc70b7189c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d14c9330977296630ee58bc2b508f4304472044c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87552897"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366357"
 ---
 # <a name="conditional-access-users-and-groups"></a>Voorwaardelijke toegang: gebruikers en groepen
 
-Een beleid voor voorwaardelijke toegang moet een gebruikers toewijzing bevatten als een van de signalen in het besluit proces. Gebruikers kunnen worden opgenomen in of uitgesloten van het beleid voor voorwaardelijke toegang. 
+Een beleid voor voorwaardelijke toegang moet een gebruikers toewijzing bevatten als een van de signalen in het besluit proces. Gebruikers kunnen worden opgenomen in of uitgesloten van het beleid voor voorwaardelijke toegang. Azure Active Directory evalueert alle beleids regels en zorgt ervoor dat aan alle vereisten wordt voldaan voordat toegang wordt verleend aan de gebruiker.
 
 ![Gebruiker als signaal in de beslissingen van voorwaardelijke toegang](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups.png)
 
@@ -46,13 +46,13 @@ De volgende opties zijn beschikbaar voor opname bij het maken van beleid voor vo
 > Als gebruikers of groepen lid zijn van meer dan 2048 groepen, kan hun toegang worden geblokkeerd. Deze limiet is van toepassing op het directe en geneste groepslid maatschap.
 
 > [!WARNING]
-> Het beleid voor voorwaardelijke toegang biedt geen ondersteuning voor gebruikers die zijn toegewezen aan een directory-rol [binnen een administratieve eenheid](../users-groups-roles/roles-admin-units-assign-roles.md) of Directory-rollen die rechtstreeks aan een object zijn gekoppeld, zoals via [aangepaste rollen](../users-groups-roles/roles-create-custom.md).
+> Het beleid voor voorwaardelijke toegang biedt geen ondersteuning voor gebruikers die zijn toegewezen aan een directory-rol [binnen een administratieve eenheid](../roles/admin-units-assign-roles.md) of Directory-rollen die rechtstreeks aan een object zijn gekoppeld, zoals via [aangepaste rollen](../roles/custom-create.md).
 
 ## <a name="exclude-users"></a>Gebruikers uitsluiten
 
 Wanneer organisaties een gebruiker of groep opnemen en uitsluiten, wordt de gebruiker of groep uitgesloten van het beleid, omdat een actie uitsluiten een insluiting in het beleid overschrijft. Uitsluitingen worden vaak gebruikt voor nood toegang of verlopende glazen accounts. Meer informatie over accounts voor toegang in nood gevallen en waarom ze belang rijk zijn, vindt u in de volgende artikelen: 
 
-* [Accounts voor nood toegang beheren in azure AD](../users-groups-roles/directory-emergency-access.md)
+* [Accounts voor nood toegang beheren in azure AD](../roles/security-emergency-access.md)
 * [Maak een flexibele toegangs beheer strategie met Azure Active Directory](../authentication/concept-resilient-controls.md)
 
 De volgende opties zijn beschikbaar om uit te sluiten bij het maken van een beleid voor voorwaardelijke toegang.
@@ -73,6 +73,8 @@ Om te voor komen dat een beheerder zichzelf kan vergren delen bij het maken van 
 Het beleid biedt standaard een optie om de huidige gebruiker uit te sluiten van het beleid, maar deze standaard instelling kan worden overschreven door de beheerder zoals wordt weer gegeven in de volgende afbeelding. 
 
 ![Waarschuwing, niet zelf vergren delen.](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups-lockout-warning.png)
+
+[Wat moet ik doen als ik de Azure Portal vergrendeld?](troubleshoot-conditional-access.md#what-to-do-if-you-are-locked-out-of-the-azure-portal)
 
 ## <a name="next-steps"></a>Volgende stappen
 

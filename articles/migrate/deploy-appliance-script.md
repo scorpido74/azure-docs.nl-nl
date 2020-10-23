@@ -3,12 +3,12 @@ title: Een Azure Migrate apparaat instellen met een script
 description: Meer informatie over het instellen van een Azure Migrate apparaat met een script
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: 6b0637019e40308cf40dcdbb4dc78512a8aa91e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4f92d787ea2a72dd534e514e27fa1a5defef39c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91438919"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317335"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>Een apparaat met een script instellen
 
@@ -16,7 +16,7 @@ Volg dit artikel om een [Azure migrate apparaat](./migrate-appliance-architectur
 
 U kunt het apparaat voor VMware-en Hyper-V-machines implementeren met behulp van een script of een sjabloon gebruiken die u van de Azure Portal downloadt. Het gebruik van een script is handig als u geen virtuele machine kunt maken met behulp van de gedownloade sjabloon.
 
-- Als u een sjabloon wilt gebruiken, volgt u de zelf studies voor [VMware](tutorial-prepare-vmware.md) of [Hyper-V](tutorial-prepare-hyper-v.md).
+- Als u een sjabloon wilt gebruiken, volgt u de zelf studies voor [VMware](./tutorial-discover-vmware.md) of [Hyper-V](./tutorial-discover-hyper-v.md).
 - Als u een apparaat wilt instellen voor fysieke servers, kunt u alleen een script gebruiken. Volg [dit artikel](how-to-set-up-appliance-physical.md).
 - Als u een apparaat in een Azure Government Cloud wilt instellen, volgt u [dit artikel](deploy-appliance-script-government.md).
 

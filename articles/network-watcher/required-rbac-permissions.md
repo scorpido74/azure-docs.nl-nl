@@ -1,5 +1,5 @@
 ---
-title: RBAC-machtigingen die zijn vereist voor het gebruik van mogelijkheden
+title: Azure RBAC-machtigingen die zijn vereist voor het gebruik van mogelijkheden
 titleSuffix: Azure Network Watcher
 description: Meer informatie over op rollen gebaseerde toegangs beheer machtigingen van Azure zijn vereist om met Network Watcher mogelijkheden te werken.
 services: network-watcher
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: damendo
-ms.openlocfilehash: de345578b2cade18d126a113937f2eede8e8157e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e048729aa1d37a63678451525f8f37612c8c464
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87497304"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426755"
 ---
-# <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Op rollen gebaseerde toegangs beheer machtigingen die zijn vereist voor het gebruik van Network Watcher mogelijkheden
+# <a name="azure-role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Op rollen gebaseerde toegangs beheer machtigingen voor Azure die zijn vereist voor het gebruik van Network Watcher mogelijkheden
 
 Met op rollen gebaseerd toegangs beheer (Azure RBAC) van Azure kunt u alleen de specifieke acties toewijzen aan leden van uw organisatie die ze nodig hebben om hun toegewezen verantwoordelijkheden te volt ooien. Als u Network Watcher mogelijkheden wilt gebruiken, moet het account waarmee u zich aanmeldt bij Azure met, worden toegewezen aan de ingebouwde rollen [eigenaar](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#owner), [bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#contributor)of [netwerk bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#network-contributor) of worden toegewezen aan een [aangepaste rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) waaraan de acties worden toegewezen die worden vermeld voor elke Network Watcher functionaliteit in de volgende secties. Zie [Wat is Network Watcher?](network-watcher-monitoring-overview.md)voor meer informatie over de mogelijkheden van Network Watcher.
 

@@ -11,19 +11,19 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6adf7e6c5abbba3c018f9a03b5167aec7537c704
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b820b8b9606795709d03414fa14ec29a1b5c519
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87908427"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441552"
 ---
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>Dynamische groepen en Azure Active Directory B2B-samen werking
 
 ## <a name="what-are-dynamic-groups"></a>Wat zijn dynamische groepen?
-Dynamische configuratie van het lidmaatschap van de beveiligings groep voor Azure Active Directory (Azure AD) is beschikbaar in [de Azure Portal](https://portal.azure.com). Beheerders kunnen regels instellen voor het invullen van groepen die zijn gemaakt in azure AD op basis van gebruikers kenmerken (zoals User type, afdeling of land/regio). Leden kunnen automatisch worden toegevoegd aan of verwijderd uit een beveiligings groep op basis van hun kenmerken. Deze groepen kunnen toegang bieden tot toepassingen of cloud resources (share point-sites, documenten) en licenties toewijzen aan leden. Lees meer over dynamische groepen in [toegewezen groepen in azure Active Directory](../active-directory-accessmanagement-dedicated-groups.md).
+Dynamische configuratie van het lidmaatschap van de beveiligings groep voor Azure Active Directory (Azure AD) is beschikbaar in [de Azure Portal](https://portal.azure.com). Beheerders kunnen regels instellen voor het invullen van groepen die zijn gemaakt in azure AD op basis van gebruikers kenmerken (zoals User type, afdeling of land/regio). Leden kunnen automatisch worden toegevoegd aan of verwijderd uit een beveiligings groep op basis van hun kenmerken. Deze groepen kunnen toegang bieden tot toepassingen of cloud resources (share point-sites, documenten) en licenties toewijzen aan leden. Lees meer over dynamische groepen in [toegewezen groepen in azure Active Directory](../fundamentals/active-directory-groups-create-azure-portal.md).
 
-De juiste [Azure AD Premium P1 of P2-licentie](https://azure.microsoft.com/pricing/details/active-directory/) is vereist voor het maken en gebruiken van dynamische groepen. Meer informatie vindt u in het artikel op [kenmerken gebaseerde regels maken voor dynamisch groepslid maatschap in azure Active Directory](../users-groups-roles/groups-dynamic-membership.md).
+De juiste [Azure AD Premium P1 of P2-licentie](https://azure.microsoft.com/pricing/details/active-directory/) is vereist voor het maken en gebruiken van dynamische groepen. Meer informatie vindt u in het artikel op [kenmerken gebaseerde regels maken voor dynamisch groepslid maatschap in azure Active Directory](../enterprise-users/groups-dynamic-membership.md).
 
 ## <a name="creating-an-all-users-dynamic-group"></a>Een dynamische groep ' alle gebruikers ' maken
 U kunt een groep met alle gebruikers binnen een Tenant maken met behulp van een lidmaatschaps regel. Wanneer gebruikers in de toekomst worden toegevoegd of verwijderd uit de Tenant, wordt het lidmaatschap van de groep automatisch aangepast.
@@ -76,4 +76,3 @@ In de volgende afbeelding ziet u de syntaxis van de regel voor een dynamische gr
 - [Eigenschappen van gebruikers van B2B-samenwerking](user-properties.md)
 - [Een B2B-samenwerkings gebruiker toevoegen aan een rol](add-guest-to-role.md)
 - [Voorwaardelijke toegang voor B2B-samenwerkings gebruikers](conditional-access.md)
-

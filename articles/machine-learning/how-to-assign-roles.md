@@ -1,7 +1,7 @@
 ---
 title: Rollen in uw werk ruimte beheren
 titleSuffix: Azure Machine Learning
-description: Meer informatie over toegang tot een Azure Machine Learning-werk ruimte met behulp van op rollen gebaseerd toegangs beheer (RBAC).
+description: Meer informatie over toegang tot een Azure Machine Learning-werk ruimte met behulp van Azure RBAC (op rollen gebaseerd toegangs beheer).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: a9259e287c75a3a39ad1d4e701638f38b4512ee0
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e15092ee767e6840f190027b0a35af3ce07e8ba9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966403"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425639"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>De toegang tot een Azure Machine Learning-werkruimte beheren
 
@@ -34,9 +34,9 @@ Een Azure Machine Learning-werkruimte is een Azure-resource. Net als andere Azur
 | **Aangepaste rol** | Hiermee kunt u de toegang tot specifieke besturings elementen of gegevenslaag bewerkingen in een werk ruimte aanpassen. Bijvoorbeeld het verzenden van een run, het maken van een compute, het implementeren van een model of het registreren van een gegevensset. |
 
 > [!IMPORTANT]
-> De toegang tot rollen kan worden beperkt tot meerdere niveaus in Azure. Bijvoorbeeld: iemand met een eigenaar van de gebruikers toegang tot een werk ruimte heeft geen eigenaars toegang tot de resource groep die de werk ruimte bevat. Zie [How RBAC werkt](/azure/role-based-access-control/overview#how-rbac-works)voor meer informatie.
+> De toegang tot rollen kan worden beperkt tot meerdere niveaus in Azure. Bijvoorbeeld: iemand met een eigenaar van de gebruikers toegang tot een werk ruimte heeft geen eigenaars toegang tot de resource groep die de werk ruimte bevat. Zie [hoe Azure RBAC werkt](/azure/role-based-access-control/overview#how-azure-rbac-works)voor meer informatie.
 
-Zie [ingebouwde rollen voor Azure](/azure/role-based-access-control/built-in-roles)voor meer informatie over specifieke ingebouwde rollen.
+Zie [ingebouwde rollen van Azure](/azure/role-based-access-control/built-in-roles)voor meer informatie over specifieke ingebouwde rollen.
 
 ## <a name="manage-workspace-access"></a>Toegang tot de werk ruimte beheren
 
@@ -432,13 +432,13 @@ Hier volgen enkele dingen waarvan u op de hoogte moet zijn terwijl u Azure RBAC 
     - "Micro soft. Network/virtualNetworks/lid/Action" voor de VNet-resource.
     - ' Micro soft. Network/virtualNetworks/subnet/lid/Action ' op de bron van het subnet.
     
-    Zie voor meer informatie over RBAC met netwerken de [ingebouwde rollen voor netwerken](/azure/role-based-access-control/built-in-roles#networking).
+    Zie voor meer informatie over Azure RBAC met netwerken de [ingebouwde rollen voor netwerken](/azure/role-based-access-control/built-in-roles#networking).
 
 - Het kan soms tot 1 uur duren voordat de nieuwe roltoewijzingen van kracht worden via de cache machtigingen in de stack.
 
 ### <a name="q-what-permissions-do-i-need-to-use-a-user-assigned-managed-identity-with-my-amlcompute-clusters"></a>V. Welke machtigingen heb ik nodig om een door de gebruiker toegewezen beheerde identiteit te gebruiken met mijn Amlcompute-clusters?
 
-Als u een door de gebruiker toegewezen identiteit op Amlcompute-clusters wilt toewijzen, moet u schrijf machtigingen hebben om Compute te maken en de [rol Managed Identity-operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator)hebben. Lees voor meer informatie over RBAC met beheerde identiteiten [hoe u de door de gebruiker toegewezen identiteit beheert](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)
+Als u een door de gebruiker toegewezen identiteit op Amlcompute-clusters wilt toewijzen, moet u schrijf machtigingen hebben om Compute te maken en de [rol Managed Identity-operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator)hebben. Lees voor meer informatie over Azure RBAC met beheerde identiteiten [hoe u een door de gebruiker toegewezen identiteit beheert](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)
 
 
 ### <a name="q-do-we-support-role-based-access-control-on-the-studio-portal"></a>V. Bieden we ondersteuning voor op rollen gebaseerd toegangs beheer op de Studio Portal?

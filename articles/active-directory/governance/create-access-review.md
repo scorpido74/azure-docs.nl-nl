@@ -15,12 +15,12 @@ ms.date: 09/15/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02d1c40c26dd6b6992d8df85a986b4157a22226a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b87af4a08c5a796d96d853ca63e50e335b9731fb
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90602928"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362770"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Een toegangs beoordeling maken voor groepen en toepassingen in azure AD-toegangs beoordelingen
 
@@ -164,6 +164,7 @@ Als gasten als revisoren zijn toegewezen en ze de uitnodiging niet hebben geacce
 |Automatisch gecontroleerd | Er zijn beslissingen vastgelegd door het systeem voor alle gebruikers die niet zijn gecontroleerd. Beoordeling is gereed om verder te gaan met het **Toep assen van de toepassing** als automatisch Toep assen is ingeschakeld. |
 |Aanvragen | Er is geen wijziging in de toegang voor gebruikers die zijn goedgekeurd. |
 |Toegepast | Geweigerde gebruikers, indien van toepassing, zijn verwijderd uit de resource of map. |
+|Mislukt | Controle kan niet worden uitgevoerd. Deze fout kan betrekking hebben op het verwijderen van de Tenant, een wijziging in licenties of andere interne Tenant wijzigingen. |
 
 ## <a name="create-reviews-via-apis"></a>Beoordelingen maken via Api's
 

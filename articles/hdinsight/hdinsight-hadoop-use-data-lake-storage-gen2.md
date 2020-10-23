@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 4ef53b2249f8ce57255c13126c9310f1c889d64f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0675f77acbdecfe74634a6734b83c5b74019b8ab
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855052"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332022"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure Data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters
 
@@ -42,13 +42,13 @@ Gebruik de volgende koppelingen voor gedetailleerde instructies over het maken v
 
 ### <a name="what-kinds-of-permissions-does-data-lake-storage-gen2-support"></a>Welke soorten machtigingen ondersteunt Data Lake Storage Gen2?
 
-Data Lake Storage Gen2 maakt gebruik van een model voor toegangs beheer dat zowel op rollen gebaseerde toegangs beheer (RBAC) als POSIX-achtige Acl's (Access Control List) ondersteunt. Data Lake Storage Gen1 ondersteunt alleen toegangs beheer lijsten voor het beheren van de toegang tot gegevens.
+Data Lake Storage Gen2 gebruikt een model voor toegangs beheer dat zowel op rollen gebaseerd toegangs beheer (Azure RBAC) als POSIX-achtige Acl's (toegangs beheer lijsten) ondersteunt. Data Lake Storage Gen1 ondersteunt alleen toegangs beheer lijsten voor het beheren van de toegang tot gegevens.
 
-RBAC gebruikt roltoewijzingen voor het effectief Toep assen van machtigingen sets voor gebruikers, groepen en service-principals voor Azure-resources. Normaal gesp roken zijn deze Azure-resources beperkt tot resources op het hoogste niveau (bijvoorbeeld Azure Blob Storage-accounts). Voor Azure Blob-opslag, en ook Data Lake Storage Gen2, is dit mechanisme uitgebreid naar de bestands systeem bron.
+Azure RBAC gebruikt roltoewijzingen voor het effectief Toep assen van machtigingen sets voor gebruikers, groepen en service-principals voor Azure-resources. Normaal gesp roken zijn deze Azure-resources beperkt tot resources op het hoogste niveau (bijvoorbeeld Azure Blob Storage-accounts). Voor Azure Blob-opslag, en ook Data Lake Storage Gen2, is dit mechanisme uitgebreid naar de bestands systeem bron.
 
-Zie voor meer informatie over bestands machtigingen met RBAC [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../storage/blobs/data-lake-storage-access-control.md#azure-role-based-access-control-rbac).
+Zie voor meer informatie over bestands machtigingen met Azure RBAC [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../storage/blobs/data-lake-storage-access-control-model.md#role-based-access-control).
 
-Zie [toegangs beheer lijsten voor bestanden en mappen](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)voor meer informatie over bestands machtigingen met acl's.
+Zie [toegangs beheer lijsten voor bestanden en mappen](../storage/blobs/data-lake-storage-access-control.md)voor meer informatie over bestands machtigingen met acl's.
 
 ### <a name="how-do-i-control-access-to-my-data-in-data-lake-storage-gen2"></a>Hoe kan ik de toegang tot mijn gegevens in Data Lake Storage Gen2 beheren?
 

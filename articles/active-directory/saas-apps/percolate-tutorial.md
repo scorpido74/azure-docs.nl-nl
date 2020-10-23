@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: deb64aa0c344e818b5fd85ca1a161293fd35d6f6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: be9f2163813d1dc52a593c110fa4cef9b561614e
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553978"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995409"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-percolate"></a>Zelfstudie: Azure Active Directory-integratie met Percolate
 
@@ -103,7 +103,7 @@ Voer deze stappen uit om eenmalige aanmelding van Azure AD met Percolate te conf
 
 5. Als u de toepassing in de door SP geïnitieerde modus wilt configureren, selecteert u **Extra URL's instellen** en typt u **https://percolate.com/app/login** in het vak **Aanmeldings-URL**:
 
-   ![Domein- en URL-gegevens voor eenmalige aanmelding bij Percolate](common/metadata-upload-additional-signon.png)
+   ![Schermopname met 'Extra URL's instellen' geselecteerd met het tekstvak 'Aanmeldings-URL' gemarkeerd.](common/metadata-upload-additional-signon.png)
 6. Selecteer op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** het pictogram **Kopiëren** om de **App-URL voor federatieve metagegevens** te kopiëren. Sla deze URL op.
 
     ![De App-URL voor federatieve metagegevens kopiëren](common/copy-metadataurl.png)
@@ -184,7 +184,7 @@ In deze sectie stelt u Britta Simon in staat gebruik te maken van eenmalige aanm
 
 3. Selecteer in het linkerdeelvenster **Gebruikers en groepen**:
 
-    ![Gebruikers en groepen selecteren](common/users-groups-blade.png)
+    ![Schermopname met 'Gebruikers en groepen' in het linkerdeelvenster geselecteerd.](common/users-groups-blade.png)
 
 4. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 07/11/2019
 ms.author: duau
-ms.openlocfilehash: 731101b1a8236e20a9af07f1bbf5a7b70d53c0ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f35f1d390762d3f83176d7b36db8959dc5ed0157
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653380"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204874"
 ---
 # <a name="optimize-expressroute-routing"></a>ExpressRoute-routering optimaliseren
 Als u meerdere ExpressRoute-circuits hebt, hebt u meer dan één pad om verbinding te maken met Microsoft. Dat betekent dat suboptimale routering kan plaatsvinden, met andere woorden, dat verkeer soms een langer pad aflegt om Microsoft te bereiken en Microsoft om uw netwerk te bereiken. Hoe langer het netwerkpad, hoe groter de latentie. Latentie heeft een directe invloed op toepassingsprestaties en gebruikerservaring. In dit artikel wordt dit probleem geïllustreerd en wordt uitgelegd hoe u routering optimaliseert met behulp van de standaardrouteringstechnologieën.
@@ -64,7 +64,7 @@ Om routering te optimaliseren voor de gebruikers op beide kantoren, moet u weten
 >
 
 ## <a name="suboptimal-routing-from-microsoft-to-customer"></a>Suboptimale routering van Microsoft naar de klant
-Hier volgt nog een voorbeeld waarin verbindingen van Microsoft een langer pad afleggen om uw netwerk te bereiken. In dit geval maakt u gebruik van on-premises Exchange-servers en Exchange Online in een [hybride omgeving](https://technet.microsoft.com/library/jj200581%28v=exchg.150%29.aspx). Uw kantoren zijn verbonden met een WAN. U adverteert de voorvoegsels van uw on-premises servers in beide kantoren aan Microsoft door middel van de twee ExpressRoute-circuits. Voor bijvoorbeeld postvakmigratie start Exchange Online verbindingen met de on-premises servers. Helaas wordt de verbinding met uw kantoor in Los Angeles omgeleid naar het ExpressRoute-circuit in US - oost, waarna deze het gehele continent doorkruist om weer aan de westkust uit te komen. De oorzaak van het probleem is vergelijkbaar met die in het eerste voorbeeld. Zonder aanwijzingen weet het Microsoft-netwerk niet welk klantvoorvoegsel zich dichter bij US - oost bevindt en welk dichter bij US - west. Dus soms wordt het verkeerde pad naar uw kantoor in Los Angeles gekozen.
+Hier volgt nog een voorbeeld waarin verbindingen van Microsoft een langer pad afleggen om uw netwerk te bereiken. In dit geval maakt u gebruik van on-premises Exchange-servers en Exchange Online in een [hybride omgeving](/exchange/exchange-hybrid). Uw kantoren zijn verbonden met een WAN. U adverteert de voorvoegsels van uw on-premises servers in beide kantoren aan Microsoft door middel van de twee ExpressRoute-circuits. Voor bijvoorbeeld postvakmigratie start Exchange Online verbindingen met de on-premises servers. Helaas wordt de verbinding met uw kantoor in Los Angeles omgeleid naar het ExpressRoute-circuit in US - oost, waarna deze het gehele continent doorkruist om weer aan de westkust uit te komen. De oorzaak van het probleem is vergelijkbaar met die in het eerste voorbeeld. Zonder aanwijzingen weet het Microsoft-netwerk niet welk klantvoorvoegsel zich dichter bij US - oost bevindt en welk dichter bij US - west. Dus soms wordt het verkeerde pad naar uw kantoor in Los Angeles gekozen.
 
 ![Probleem ExpressRoute casus 2: Suboptimale routering van Microsoft naar de klant](./media/expressroute-optimize-routing/expressroute-case2-problem.png)
 

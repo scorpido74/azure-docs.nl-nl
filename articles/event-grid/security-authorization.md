@@ -3,16 +3,18 @@ title: Beveiliging en verificatie Azure Event Grid
 description: Beschrijving van Azure Event Grid en de concepten ervan.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 09317b310a5934d27b82d265ec7f9b276135f882
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a1e4af17c2f4335ed26490bfc2408c66f4aee6b
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119086"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328722"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>Toegang tot Event Grid-resources autoriseren
-Met Azure Event Grid kunt u het toegangs niveau dat aan verschillende gebruikers wordt gegeven, beheren om verschillende beheer bewerkingen uit te voeren, zoals abonnementen op lijst gebeurtenissen, nieuwe maken en sleutels genereren. Event Grid maakt gebruik van het op rollen gebaseerd toegangs beheer (RBAC) van Azure.
+Met Azure Event Grid kunt u het toegangs niveau dat aan verschillende gebruikers wordt gegeven, beheren om verschillende **beheer bewerkingen** uit te voeren, zoals abonnementen op lijst gebeurtenissen, nieuwe maken en sleutels genereren. Event Grid maakt gebruik van Azure op rollen gebaseerd toegangs beheer (Azure RBAC).
 
+> [!NOTE]
+> EventGrid biedt geen ondersteuning voor Azure RBAC voor het publiceren van gebeurtenissen naar Event Grid onderwerpen of domeinen. Gebruik een Shared Access Signature SAS-sleutel of-token om clients te verifiëren die gebeurtenissen publiceren. Zie [Publishing-clients verifiëren](security-authenticate-publishing-clients.md)voor meer informatie. 
 
 ## <a name="operation-types"></a>Bewerkings typen
 

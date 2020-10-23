@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: c0d3ece75d15ae07091f613348389f845ec74ef7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9dae3b1adc1f7fecf6a34fc51d2a35bf4c98ea65
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89262495"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425914"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Toegang tot de API van Azure Media Services met Azure Active Directory-verificatie 
 
@@ -29,7 +29,7 @@ ms.locfileid: "89262495"
 
 De Azure Media Services-API is een REST API. U kunt deze gebruiken om bewerkingen uit te voeren op media bronnen met behulp van een REST API of door beschik bare client-Sdk's te gebruiken. Azure Media Services biedt een Media Services client-SDK voor Microsoft .NET. Om te worden geautoriseerd voor toegang tot Media Services-resources en de API van Media Services, moet u eerst worden geverifieerd. 
 
-Media Services ondersteunt [Azure Active Directory (op Azure AD) gebaseerde verificatie](../../active-directory/fundamentals/active-directory-whatis.md). De Azure media REST-service vereist dat de gebruiker of toepassing die de REST API aanvragen maakt, de rol **Inzender** of **eigenaar** heeft om toegang te krijgen tot de resources. Zie [aan de slag met Role-Based Access Control in de Azure Portal](../../role-based-access-control/overview.md)voor meer informatie.  
+Media Services ondersteunt [Azure Active Directory (op Azure AD) gebaseerde verificatie](../../active-directory/fundamentals/active-directory-whatis.md). De Azure media REST-service vereist dat de gebruiker of toepassing die de REST API aanvragen maakt, de rol **Inzender** of **eigenaar** heeft om toegang te krijgen tot de resources. Zie [Wat is Azure Role-based Access Control (Azure RBAC)](../../role-based-access-control/overview.md)voor meer informatie.  
 
 Dit document bevat een overzicht van de manier waarop u toegang hebt tot de Media Services-API met behulp van REST-of .NET-Api's.
 
@@ -141,7 +141,7 @@ Zie [Azure AD-verificatie gebruiken om toegang te krijgen tot Azure Media Servic
 
 Als u de Media Services .NET-client-SDK niet gebruikt, moet u hand matig een Azure AD-token aanvraag maken met behulp van para meters die worden beschreven in stap 1. Zie [de Azure AD-verificatie bibliotheek gebruiken om het Azure AD-token op te halen](../../active-directory/azuread-dev/active-directory-authentication-libraries.md)voor meer informatie.
 
-## <a name="troubleshooting"></a>Problemen oplossen
+## <a name="troubleshooting"></a>Probleemoplossing
 
 Uitzonde ring: de externe server heeft een fout geretourneerd: (401) niet toegestaan.
 
@@ -153,7 +153,7 @@ De volgende artikelen zijn overzichten van de concepten van Azure AD-verificatie
 
 - [Verificatie scenario's die worden behandeld door Azure AD](../../active-directory/develop/authentication-vs-authorization.md)
 - [Een toepassing toevoegen, bijwerken of verwijderen in azure AD](../../active-directory/develop/quickstart-register-app.md)
-- [Role-Based Access Control configureren en beheren met behulp van Power shell](../../role-based-access-control/role-assignments-powershell.md)
+- [Azure-roltoewijzingen toevoegen of verwijderen met behulp van Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 

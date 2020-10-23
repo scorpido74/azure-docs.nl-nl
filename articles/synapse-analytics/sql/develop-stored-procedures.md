@@ -10,16 +10,16 @@ ms.subservice: sql
 ms.date: 09/23/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: f2046614f3665a699d02c76210676fb32f99fc73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2089a6895a34c74de9d3e14beaa3807bbb1b6e6b
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288916"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279080"
 ---
 # <a name="use-stored-procedures-in-synapse-sql"></a>Opgeslagen procedures in Synapse SQL gebruiken
 
-Tips voor het implementeren van opgeslagen procedures in Synapse SQL pool (Data Warehouse) voor het ontwikkelen van oplossingen.
+Tips voor het implementeren van opgeslagen procedures in Synapse SQL pool voor het ontwikkelen van oplossingen.
 
 ## <a name="what-to-expect"></a>Wat u kunt verwachten
 
@@ -181,7 +181,7 @@ EXEC clean_up 'mytest'  -- This call is nest level 1
 
 ## <a name="insertexecute"></a>INSERT..EXESCHATTIGE
 
-Met Synapse SQL kunt u de resultatenset van een opgeslagen procedure niet gebruiken met een instructie INSERT. Er is een alternatieve benadering die u kunt gebruiken. Zie het artikel over [tijdelijke tabellen](develop-tables-temporary.md)voor een voor beeld.
+Met Synapse SQL kunt u de resultatenset van een opgeslagen procedure niet gebruiken met een instructie INSERT. Er is een alternatieve benadering die u kunt gebruiken. Zie het artikel over [tijdelijke tabellen](develop-tables-temporary.md) voor de ingerichte Synapse SQL-groep voor een voor beeld.
 
 ## <a name="limitations"></a>Beperkingen
 

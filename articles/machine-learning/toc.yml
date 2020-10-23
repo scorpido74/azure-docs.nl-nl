@@ -89,6 +89,9 @@
     - name: Jupyter Notebooks
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
+    - name: Voorbeeldopslagplaats
+      displayName: 'example, examples, jupyter, python, notebook, github'
+      href: 'https://github.com/Azure/azureml-examples'
     - name: Voorbeelden en gegevenssets van Designer
       displayName: 'example, examples, studio, pipelines, data sets, modules'
       href: samples-designer.md
@@ -152,13 +155,31 @@
       href: concept-onnx.md
     - name: Machine learning-pijplijnen
       href: concept-ml-pipelines.md
-    - name: Gereedheid en beveiliging voor bedrijven
+    - name: Beveiliging
       items:
         - name: Overzicht van Enterprise-beveiliging
           displayName: authorization authentication encryption aad azure active directory
           href: concept-enterprise-security.md
         - name: Beveiligingsbasislijn
           href: security-baseline.md
+    - name: Verantwoordelijke ML
+      items:
+        - name: Overzicht van verantwoordelijke ML
+          displayName: 'responsible,ml'
+          href: concept-responsible-ml.md
+        - name: Interpreteerbaarheid van modellen
+          displayName: explainability
+          href: how-to-machine-learning-interpretability.md
+        - name: Eerlijkheid in Machine Learning
+          displayName: fairness
+          href: concept-fairness-ml.md
+        - name: Differentiële privacy
+          displayName: 'differential,privacy'
+          href: concept-differential-privacy.md
+- name: Instructiegidsen
+  items:
+    - name: Beveiliging
+      items:
         - name: Identiteits- en toegangsbeheer
           items:
             - name: Verificatie instellen
@@ -212,22 +233,6 @@
         - name: Naleving controleren en beheren
           href: how-to-integrate-azure-policy.md
           displayName: policy
-    - name: Verantwoordelijke ML
-      items:
-        - name: Overzicht van verantwoordelijke ML
-          displayName: 'responsible,ml'
-          href: concept-responsible-ml.md
-        - name: Interpreteerbaarheid van modellen
-          displayName: explainability
-          href: how-to-machine-learning-interpretability.md
-        - name: Eerlijkheid in Machine Learning
-          displayName: fairness
-          href: concept-fairness-ml.md
-        - name: Differentiële privacy
-          displayName: 'differential,privacy'
-          href: concept-differential-privacy.md
-- name: Instructiegidsen
-  items:
     - name: Werkruimten maken en beheren
       items:
         - name: Azure Portal gebruiken
@@ -515,9 +520,6 @@
           href: how-to-debug-pipelines.md
         - name: Pijplijngegevens registreren in Application Insights
           href: how-to-log-pipelines-application-insights.md
-        - name: Parallelle uitvoerstap gebruiken
-          displayName: score scoring batch consume pipeline parallelrunstep inference
-          href: how-to-use-parallel-run-step.md
         - name: Fouten in parallelle uitvoerstap opsporen en oplossen
           displayName: debug_batch consume pipeline parallelrunstep inference
           href: how-to-debug-parallel-run-step.md

@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Meer informatie over het oplossen van veelvoorkomende problemen bij het inschakelen en gebruiken van Azure dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, servicemesh, servicemeshroutering, kubectl, k8s '
-ms.openlocfilehash: 5d8bf69d456bca2a88b8aa2031d5ef0ba20f7c30
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 42551443fb5af1bd3f783c33f708b231eea68907
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979116"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364164"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Problemen met Azure dev Spaces oplossen
 
@@ -278,7 +278,7 @@ Bij het uitvoeren van een service met Azure-ontwikkel ruimten in een AKS-cluster
 
 De services Azure dev Spaces worden uitgevoerd op uw cluster. Gebruik de beheerde identiteit van het cluster om te communiceren met de back-upservers van Azure dev buiten het cluster. Wanneer de beheerde identiteit Pod is geïnstalleerd, worden er netwerk regels geconfigureerd op de knoop punten van uw cluster om alle aanroepen voor beheerde identiteits referenties om te leiden naar een [NMI-daemon (node Managed Identity) die op het cluster is geïnstalleerd](https://github.com/Azure/aad-pod-identity#node-managed-identity). Deze NMI-Daemonset identificeert de aanroepende pod en zorgt ervoor dat Pod is gelabeld om toegang te krijgen tot de aangevraagde beheerde identiteit. Azure dev Spaces kunnen niet detecteren of pod beheerde identiteit is geïnstalleerd op een cluster, waardoor de benodigde configuratie niet kan worden uitgevoerd om Azure dev Spaces-Services toegang te geven tot de beheerde identiteit van het cluster. Omdat de Azure dev Spaces-Services niet zijn geconfigureerd voor toegang tot de beheerde identiteit van het cluster, staat de NMI-Daemonset niet toe dat ze een Azure AD-token voor de beheerde identiteit verkrijgen en niet kunnen communiceren met Azure dev Spaces back-upservices.
 
-Om dit probleem op te lossen, past u een [AzurePodIdentityException](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md) toe voor de *azds-injecter-webhook* en updatet u het gehele instrument door Azure dev Spaces om toegang te krijgen tot de beheerde identiteit.
+Om dit probleem op te lossen, past u een [AzurePodIdentityException](https://azure.github.io/aad-pod-identity/docs/configure/application_exception) toe voor de *azds-injecter-webhook* en updatet u het gehele instrument door Azure dev Spaces om toegang te krijgen tot de beheerde identiteit.
 
 Maak een bestand met de naam *webhookException. yaml* en kopieer de volgende YAML-definitie:
 

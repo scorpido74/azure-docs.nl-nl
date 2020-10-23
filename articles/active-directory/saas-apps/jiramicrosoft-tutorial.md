@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 99f29f884997fbdd4761a5aa2d1f3a8bc15aa797
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: d55f461205ceecad098319d7b4b41c175390abfd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88891586"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850507"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Zelfstudie: Integratie van eenmalige aanmelding (SSO) van Azure Active Directory met Confluence SAML SSO by Microsoft
 
@@ -156,11 +156,11 @@ In dit gedeelte geeft u B.Simon toestemming voor gebruik van eenmalige aanmeldin
 
 2. Wijs het tandwiel aan met de muisaanwijzer en klik op **Add-ons**.
 
-    ![Eenmalige aanmelding configureren](./media/jiramicrosoft-tutorial/addon1.png)
+    ![Schermopname met Add-ons (Invoegtoepassingen) geselecteerd in het menu Instellingen.](./media/jiramicrosoft-tutorial/addon1.png)
 
 3. Download de invoegtoepassing uit het [Microsoft Downloadcentrum](https://www.microsoft.com/download/details.aspx?id=56506). Upload de invoegtoepassing van Microsoft handmatig via het menu **Upload add-on**. Het downloaden van invoegtoepassingen valt onder de [Microsoft-serviceovereenkomst](https://www.microsoft.com/servicesagreement/).
 
-    ![Eenmalige aanmelding configureren](./media/jiramicrosoft-tutorial/addon12.png)
+    ![Schermopname van Manage add-ons (Invoegtoepassingen beheren) met de koppeling Upload add-on (Invoegtoepassing uploaden) uitgelicht.](./media/jiramicrosoft-tutorial/addon12.png)
 
 4. Voer de volgende stappen uit voor het uitvoeren van het omgekeerde-proxyscenario of load balancer-scenario van JIRA:
 
@@ -171,19 +171,19 @@ In dit gedeelte geeft u B.Simon toestemming voor gebruik van eenmalige aanmeldin
 
     `scheme="https" proxyName="<subdomain.domain.com>" proxyPort="<proxy_port>" secure="true"`
 
-    ![Eenmalige aanmelding configureren](./media/jiramicrosoft-tutorial/reverseproxy1.png)
+    ![Schermopname van het bestand server.xml in een editor met de nieuwe toegevoegde regel.](./media/jiramicrosoft-tutorial/reverseproxy1.png)
 
     b. Wijzig **Base URL** in **System Settings** overeenkomstig de proxy/load balancer.
 
-    ![Eenmalige aanmelding configureren](./media/jiramicrosoft-tutorial/reverseproxy2.png)
+    ![Schermopname van de beheerinstellingen waar u de basis-URL kunt wijzigen.](./media/jiramicrosoft-tutorial/reverseproxy2.png)
 
 5. Zodra de invoegtoepassing is geïnstalleerd, wordt deze weergegeven bij **User Installed** in de sectie **Manage add-ons**. Klik op **Configure** om de nieuwe invoegtoepassing te configureren.
 
-    ![Eenmalige aanmelding configureren](./media/jiramicrosoft-tutorial/addon14.png)
+    ![Schermopname van de sectie SAML Single Sign-on for Jira van Azure AD met Configure geselecteerd.](./media/jiramicrosoft-tutorial/addon14.png)
 
 6. Voer de volgende stappen uit op de configuratiepagina:
 
-    ![Eenmalige aanmelding configureren](./media/jiramicrosoft-tutorial/addon54.png)
+    ![Schermopname van de configuratiepagina voor eenmalige aanmelding van Microsoft Azure Active Directory voor Jira.](./media/jiramicrosoft-tutorial/addon54.png)
 
     > [!TIP]
     > Zorg ervoor dat er maar één certificaat is toegewezen aan de app, zodat er geen fout optreedt bij het omzetten van de metagegevens. Als er meerdere certificaten zijn, krijgt de beheerder een foutmelding bij het omzetten van de metagegevens.
@@ -230,19 +230,19 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij de on-premises serv
 
 2. Wijs het tandwiel aan met de muisaanwijzer en klik op **User management**.
 
-    ![Werknemer toevoegen](./media/jiramicrosoft-tutorial/user1.png)
+    ![Schermopname met 'User management' (Gebruikersbeheer) geselecteerd in het menu 'Settings' (Instellingen).](./media/jiramicrosoft-tutorial/user1.png)
 
 3. U wordt omgeleid naar de toegangspagina voor beheerders. Voer uw **wachtwoord** in en klik op de knop **Bevestigen**.
 
-    ![Werknemer toevoegen](./media/jiramicrosoft-tutorial/user2.png)
+    ![Schermopname van de toegangspagina voor beheerders waar u uw referenties invoert.](./media/jiramicrosoft-tutorial/user2.png)
 
 4. Onder de tabbladsectie **Gebruikersbeheer** klikt u op **Gebruiker maken**.
 
-    ![Werknemer toevoegen](./media/jiramicrosoft-tutorial/user3.png) 
+    ![Schermopname van het tabblad Gebruikersbeheer met de optie Gebruiker maken.](./media/jiramicrosoft-tutorial/user3.png) 
 
 5. Op de pagina **Nieuwe gebruiker maken** voert u de volgende stappen uit:
 
-    ![Werknemer toevoegen](./media/jiramicrosoft-tutorial/user4.png) 
+    ![Schermopname met het dialoogvenster Nieuwe gebruiker maken waar u de gegevens voor deze stap kunt invoeren.](./media/jiramicrosoft-tutorial/user4.png) 
 
     a. Typ in het tekstvak **Email address** het e-mailadres van de gebruiker, bijvoorbeeld B.simon@contoso.com.
 

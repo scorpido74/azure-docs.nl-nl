@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 87d26e18ff97416ff8cb0eda08f7beb81005c627
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: d18962e097358b8e80ac93b4d8419f7cd4f77ee0
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015699"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426816"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Release opmerkingen bij Azure Media Services v3
 
@@ -335,9 +335,9 @@ De volgende verbeteringen zijn geïntroduceerd:
 
 Het nieuwe object **transform** vereenvoudigt het coderings model. Met het nieuwe object kunt u eenvoudig sjabloon en voor instellingen voor het maken en delen van coderings bronnen beheren. 
 
-#### <a name="azure-active-directory-authentication-and-rbac"></a>Azure Active Directory-verificatie en RBAC
+#### <a name="azure-active-directory-authentication-and-azure-rbac"></a>Azure Active Directory-verificatie en Azure RBAC
 
-Met Azure AD-verificatie en Role-Based Access Control (RBAC) kunt u beveiligde trans formaties, LiveEvents, beleids regels voor inhouds sleutels of activa op rol of gebruikers in azure AD inschakelen.
+Azure AD-verificatie en Azure op rollen gebaseerd toegangs beheer (Azure RBAC) bieden veilige trans formaties, LiveEvents, beleids regels voor inhouds sleutels of activa op rol of gebruikers in azure AD.
 
 #### <a name="client-sdks"></a>Client-SDK 's  
 

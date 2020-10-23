@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/08/2020
 ms.author: juliako
-ms.openlocfilehash: 405533aad8247350d45cc53009abe6b58a511264
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24b41a77985cac13e829d69ff77a4bf14fb40389
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83005932"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371372"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Een Video Indexer-account maken dat is verbonden met Azure
 
@@ -33,7 +33,7 @@ Als u van een *proef versie* overgaat naar een *betaalde* video indexer account,
 
 * Een Azure Active Directory-domein (Azure AD).
 
-    Als u geen Azure AD-domein hebt, maakt u dit domein met uw Azure-abonnement. Zie [aangepaste domein namen beheren in uw Azure AD](../../active-directory/users-groups-roles/domains-manage.md) voor meer informatie.
+    Als u geen Azure AD-domein hebt, maakt u dit domein met uw Azure-abonnement. Zie [aangepaste domein namen beheren in uw Azure AD](../../active-directory/enterprise-users/domains-manage.md) voor meer informatie.
 
 * Een gebruiker in uw Azure AD-domein met een rol van **toepassings beheerder** . U gebruikt dit lid wanneer u uw Video Indexer-account verbindt met Azure.
 
@@ -47,7 +47,7 @@ Als u van een *proef versie* overgaat naar een *betaalde* video indexer account,
 
     U gebruikt dit lid wanneer u uw Video Indexer-account verbindt met Azure.
 
-    Deze gebruiker moet lid zijn van uw Azure-abonnement met ofwel een rol van **eigenaar** , ofwel beheerder rollen voor **Inzender** en **gebruikers toegang** . Een gebruiker kan twee maal worden toegevoegd met twee rollen. Eenmaal met Inzender en eenmaal met beheerder voor gebruikers toegang.
+    Deze gebruiker moet lid zijn van uw Azure-abonnement met ofwel een rol van **eigenaar** , ofwel beheerder rollen voor **Inzender** en **gebruikers toegang** . Een gebruiker kan twee maal worden toegevoegd met twee rollen. Eenmaal met Inzender en eenmaal met beheerder voor gebruikers toegang. Zie [de toegang tot een gebruiker tot Azure-resources weer geven](https://docs.microsoft.com/azure/role-based-access-control/check-access)voor meer informatie.
 
     ![Toegangs beheer](./media/create-account/access-control-iam.png)
 

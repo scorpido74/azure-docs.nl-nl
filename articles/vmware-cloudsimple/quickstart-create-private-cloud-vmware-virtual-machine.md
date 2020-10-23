@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 32ac78c6bc613daf04fc98c03044699f387f290d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd67a5a7f1bf665333e06c66f73c7f18727a3e12
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88140850"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427765"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>Virtuele VMware-machines maken in uw Privécloud
 
@@ -58,37 +58,37 @@ Als u toegang wilt krijgen tot vCenter, start u vanuit de CloudSimple-Portal. Kl
 1. Klik in vCenter op het pictogram **hosts en clusters** .
 
 2. Klik met de rechter muisknop op **workload** en selecteer **nieuwe virtuele machine**.
-    ![Nieuwe VM](media/vcvm01.png)
+    ![Scherm opname van de menu optie voor de nieuwe virtuele machine.](media/vcvm01.png)
 
 3. Selecteer **nieuwe virtuele machine maken** en klik op **volgende**.
-    ![Nieuwe VM](media/vcvm02.png)
+    ![Scherm afbeelding die de optie nieuwe virtuele machine maken markeert.](media/vcvm02.png)
 
 4. Geef de machine een naam, selecteer de locatie **van de VM van de werk belasting** en klik op **volgende**.
-    ![Nieuwe VM](media/vcvm03.png)
+    ![Scherm opname van de optie werk belasting Vm's.](media/vcvm03.png)
 
 5. Selecteer de **werk belasting** Compute resource en klik op **volgende**.
-    ![Nieuwe VM](media/vcvm04.png)
+    ![Scherm afbeelding die de reken resource van de werk belasting markeert.](media/vcvm04.png)
 
 6. Selecteer **vsanDatastore** en klik op **volgende**.
-    ![Nieuwe VM](media/vcvm05.png)
+    ![Scherm afbeelding die de vsanDatastore-optie markeert.](media/vcvm05.png)
 
 7. Behoud de standaard selectie van de ESXi 6,5-compatibiliteit en klik op **volgende**.
-    ![Nieuwe VM](media/vcvm06.png)
+    ![Scherm afbeelding met de geselecteerde compatibiliteits optie voor ESXi 6,5.](media/vcvm06.png)
 
 8. Selecteer het gast besturingssysteem van de ISO voor de virtuele machine die u maakt en klik op **volgende**.
-    ![Nieuwe VM](media/vcvm07.png)
+    ![Scherm afbeelding die laat zien hoe u het guese-besturings systeem van de ISO selecteert voor de virtuele machine.](media/vcvm07.png)
 
 9. Selecteer de opties voor harde schijf en netwerk. Selecteer **ISO-bestand Data Store**voor nieuwe cd/dvd-stations.  Als u verkeer van het open bare IP-adres naar deze VM wilt toestaan, selecteert u het netwerk als **VM-1**.
-    ![Nieuwe VM](media/vcvm08.png)
+    ![Scherm opname van de locatie waar u het ISO-bestand Data Store selecteert.](media/vcvm08.png)
 
 10. Er wordt een selectie venster geopend. Selecteer het bestand dat u eerder hebt geüpload naar de map Iso's en templates en klik op **OK**.
     ![Nieuwe VM](media/vcvm10.png)
 
 11. Controleer de instellingen en klik op **OK** om de virtuele machine te maken.
-    ![Nieuwe VM](media/vcvm11.png)
+    ![Scherm afbeelding die laat zien waar u de instellingen bekijkt.](media/vcvm11.png)
 
 De VM wordt nu toegevoegd aan de werk belasting reken resources en is klaar voor gebruik. 
-![Nieuwe VM](media/vcvm12.png)
+![Scherm opname van de virtuele machine die is toegevoegd aan de werk belasting reken resources.](media/vcvm12.png)
 
 De basis installatie is nu voltooid. U kunt uw Privécloud op dezelfde manier gebruiken als uw on-premises VM-infra structuur.
 

@@ -4,12 +4,12 @@ description: Meer informatie over standaard Azure Batch quota's, limieten en bep
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4c13df8b537d701400a22cd2871e7f8362f02455
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ca08d43f07633b58cf6f7067c1a8fcd58350678
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84417273"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107535"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Quota en limieten voor Batch-service
 
@@ -125,7 +125,7 @@ Zodra u uw ondersteunings aanvraag hebt ingediend, neemt de ondersteuning van Az
 
 Batch-Pools in de virtuele-machine configuratie die is geïmplementeerd in een virtueel Azure-netwerk, worden automatisch extra Azure-netwerk resources toegewezen. De volgende resources zijn nodig voor elk 50 pool-knoop punten in een virtueel netwerk:
 
-- Eén [netwerk beveiligings groep](../virtual-network/security-overview.md#network-security-groups)
+- Eén [netwerk beveiligings groep](../virtual-network/network-security-groups-overview.md#network-security-groups)
 - Eén [openbaar IP-adres](../virtual-network/public-ip-addresses.md)
 - Een [Load Balancer](../load-balancer/load-balancer-overview.md)
 

@@ -2,65 +2,71 @@
 title: DHCP maken en beheren
 description: In dit artikel wordt uitgelegd hoe u DHCP beheert in azure VMware-oplossing.
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 2c059918f57b7f01058a031f1bf281b243855661
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/22/2020
+ms.openlocfilehash: cb74ed4474cc14081e59142f2f60915fccd47559
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332828"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461053"
 ---
-# <a name="how-to-create-and-manage-dhcp-in-azure-vmware-solution"></a>DHCP in azure VMWare-oplossing maken en beheren
+# <a name="how-to-create-and-manage-dhcp-in-azure-vmware-solution"></a>DHCP in azure VMware-oplossing maken en beheren
 
-NSX-T biedt de mogelijkheid om DHCP te configureren voor uw privécloud. Als u van plan bent NSX-T te gebruiken om uw DHCP-server te hosten, raadpleegt u [DHCP-server maken](#create-dhcp-server). Als u een externe DHCP-server van derden in uw netwerk hebt en u aanvragen wilt door sturen naar die DHCP-server, raadpleegt u [DHCP Relay-service maken](#create-dhcp-relay-service).
+NSX-T biedt de mogelijkheid om DHCP te configureren voor uw privécloud. Als u NSX-T gebruikt voor het hosten van uw DHCP-server, raadpleegt u [DHCP-server maken](#create-dhcp-server). Zie anders de [DHCP Relay-service maken](#create-dhcp-relay-service)als u een externe DHCP-server van derden in uw netwerk hebt.
 
 ## <a name="create-dhcp-server"></a>DHCP-server maken
 
 Gebruik de volgende stappen om een DHCP-server te configureren op NSX-T.
 
-In NSX Manager gaat u naar het tabblad **netwerken** en selecteert u **DHCP** onder **IP-beheer**. Selecteer de knop **server toevoegen** . Geef vervolgens de server naam en het IP-adres van de server op. Wanneer u klaar bent, selecteert u **Opslaan**.
+1. Ga in NSX Manager naar het tabblad **netwerken** en selecteer **DHCP**. 
+1. Selecteer **server toevoegen** en geef vervolgens de server naam en het IP-adres op. 
+1. Selecteer **Opslaan**.
 
 :::image type="content" source="./media/manage-dhcp/dhcp-server-settings.png" alt-text="DHCP-server toevoegen" border="true":::
 
 ### <a name="connect-dhcp-server-to-the-tier-1-gateway"></a>De DHCP-server verbinden met de laag-1-gateway.
 
-1. Selecteer **laag 1-gateways**, de gateway en selecteer vervolgens **bewerken** .
+1. Selecteer **laag 1-gateways**, de gateway uit de lijst en selecteer vervolgens **bewerken**.
 
    :::image type="content" source="./media/manage-dhcp/edit-tier-1-gateway.png" alt-text="DHCP-server toevoegen" border="true":::
 
-1. Een subnet toevoegen door **geen IP-toewijzings reeks** te selecteren
+1. Selecteer **geen IP-toewijzings set** om een subnet toe te voegen.
 
    :::image type="content" source="./media/manage-dhcp/add-subnet.png" alt-text="DHCP-server toevoegen" border="true":::
 
-1. Selecteer op het volgende scherm de optie **DHCP local server** in de vervolg keuzelijst **type** . Voor **DHCP-server**selecteert u **standaard DHCP** en selecteert u **Opslaan**.
+1. Selecteer de **lokale DHCP-server** voor het **type**. 
+1. Selecteer **standaard DHCP** voor de **DHCP-server** en selecteer vervolgens **Opslaan**.
 
-   :::image type="content" source="./media/manage-dhcp/set-ip-address-management.png" alt-text="DHCP-server toevoegen" border="true":::
 
-1. Selecteer **Opslaan**in het venster **Tier-1-gateway** . Op het volgende scherm ziet u de **wijzigingen**die zijn opgeslagen en selecteert u sluiten om de **bewerking** te volt ooien.
+1. Selecteer **Opslaan**in het venster **Tier-1-gateway** . 
+1. Selecteer **sluiten** om de bewerking te volt ooien.
 
 ### <a name="add-a-network-segment"></a>Een netwerk segment toevoegen
 
 Wanneer u de DHCP-server hebt gemaakt, moet u er netwerk segmenten aan toevoegen.
 
-1. Selecteer in NSX-T het tabblad **netwerken** en selecteer **segmenten** onder **connectiviteit**. Selecteer **segment toevoegen**. Noem het segment en de verbinding met de gateway van de laag 1. Selecteer vervolgens **subnetten instellen** om een nieuw subnet te configureren. 
+1. Selecteer in NSX-T het tabblad **netwerken** en selecteer **segmenten** onder **connectiviteit**. 
+1. Selecteer **segment toevoegen** en noem het segment en de verbinding met de gateway van de laag 1. 
+1. Selecteer **subnetten instellen** om een nieuw subnet te configureren. 
 
    :::image type="content" source="./media/manage-dhcp/add-segment.png" alt-text="DHCP-server toevoegen" border="true":::
 
-1. Selecteer in het venster **subnetten instellen** de optie **subnet toevoegen**. Voer het IP-adres van de gateway en het DHCP-bereik in en selecteer **toevoegen** en vervolgens **Toep assen**
+1. Selecteer in het venster **subnetten instellen** de optie **subnet toevoegen**. 
+1. Voer het IP-adres van de gateway en het DHCP-bereik in en selecteer **toevoegen** en vervolgens **Toep assen**
 
-   :::image type="content" source="./media/manage-dhcp/add-subnet-segment.png" alt-text="DHCP-server toevoegen" border="true":::
-
-1. Wanneer u klaar bent, selecteert u **Opslaan** om het toevoegen van een netwerk segment te volt ooien.
-
-   :::image type="content" source="./media/manage-dhcp/segments-complete.png" alt-text="DHCP-server toevoegen" border="true":::
+1. Selecteer **Opslaan** om het nieuwe netwerk segment toe te voegen.
 
 ## <a name="create-dhcp-relay-service"></a>DHCP Relay-service maken
 
-1. Selecteer in het venster NXT-T het tabblad **netwerken** en selecteer **DHCP**in het vak **IP-beheer**. Selecteer **server toevoegen**. Kies DHCP-Relay voor het **server type** en voer de server naam en het IP-adres voor de relay-server in. Selecteer **Opslaan** om uw wijzigingen op te slaan.
+1. Selecteer het tabblad **netwerken** en selecteer **DHCP**in het vak **IP-beheer**. 
+1. Selecteer **server toevoegen**. 
+1. Selecteer DHCP-Relay voor het **server type** en voer de server naam en het IP-adres voor de relay-server in. 
+1. Selecteer **Opslaan**.
 
    :::image type="content" source="./media/manage-dhcp/create-dhcp-relay.png" alt-text="DHCP-server toevoegen" border="true":::
 
-1. Selecteer **laag-1 gateways** onder **connectiviteit**. Selecteer de verticale beletsel tekens op de laag-1-gateway en kies **bewerken**.
+1. Selecteer **laag-1 gateways** onder **connectiviteit**. 
+1. Selecteer de verticale beletsel tekens op de laag-1-gateway en selecteer **bewerken**.
 
    :::image type="content" source="./media/manage-dhcp/edit-tier-1-gateway-relay.png" alt-text="DHCP-server toevoegen" border="true":::
 
@@ -68,27 +74,32 @@ Wanneer u de DHCP-server hebt gemaakt, moet u er netwerk segmenten aan toevoegen
 
    :::image type="content" source="./media/manage-dhcp/edit-ip-address-allocation.png" alt-text="DHCP-server toevoegen" border="true":::
 
-1. Selecteer in het dialoog venster, bij **type**, **DHCP relay-server**. Selecteer uw DHCP-doorstuur server in de vervolg keuzelijst **DHCP Relay** . Als u klaar bent, selecteert u **Opslaan**
+1. Selecteer de **DHCP relay-server** voor het **type**.
+1. Selecteer de DHCP relay-server voor **DHCP-Relay**. 
+1. Selecteer **Opslaan**.
 
-   :::image type="content" source="./media/manage-dhcp/set-ip-address-management-relay.png" alt-text="DHCP-server toevoegen" border="true":::
 
-## <a name="specify-a-dhcp-range-ip-on-segment"></a>Een IP-adres voor het DHCP-bereik opgeven in het segment
+## <a name="specify-a-dhcp-range-ip-on-a-segment"></a>Een IP-adres van een DHCP-bereik opgeven in een segment
 
 > [!NOTE]
 > Deze configuratie is vereist voor het realiseren van DHCP-Relay-functionaliteit op het DHCP-client segment. 
 
-1. Onder **connectiviteit**selecteert u **segmenten**. Selecteer de verticale ellipsen en selecteer **bewerken**. Als u een nieuw segment wilt toevoegen, kunt u in plaats daarvan **segment toevoegen** selecteren om een nieuw segment te maken.
+1. Onder **connectiviteit**selecteert u **segmenten**. 
+1. Selecteer de verticale ellipsen en selecteer **bewerken**. 
 
-   :::image type="content" source="./media/manage-dhcp/edit-segments.png" alt-text="DHCP-server toevoegen" border="true":::
+   >[!TIP]
+   >Als u een nieuw segment wilt toevoegen, selecteert u **segment toevoegen**.
 
-1. Voeg details over het segment toe. Selecteer de waarde onder **subnetten** of **Stel subnetten** in om het subnet toe te voegen of te wijzigen.
+1. Voeg details over het segment toe. 
+1. Selecteer de waarde onder **subnetten instellen** om het subnet toe te voegen of te wijzigen.
 
    :::image type="content" source="./media/manage-dhcp/network-segments.png" alt-text="DHCP-server toevoegen" border="true":::
 
-1. Selecteer de verticale ellipsen en kies **bewerken**. Als u een nieuw subnet wilt maken, selecteert u **subnet toevoegen** om een gateway te maken en een DHCP-bereik te configureren. Geef het bereik van de IP-adres groep **op en selecteer Toep assen**en selecteer vervolgens **Opslaan** .
+1. Selecteer de verticale ellipsen en kies **bewerken**. Als u een nieuw subnet wilt maken, selecteert u **subnet toevoegen** om een gateway te maken en een DHCP-bereik te configureren. 
+1. Geef het bereik van de IP-adres groep **op en selecteer Toep assen**en selecteer vervolgens **Opslaan** .
 
    :::image type="content" source="./media/manage-dhcp/edit-subnet.png" alt-text="DHCP-server toevoegen" border="true":::
 
-1. Er is nu een DHCP-Server groep toegewezen aan het segment.
+   Er wordt een DHCP-Server groep toegewezen aan het segment.
 
    :::image type="content" source="./media/manage-dhcp/assigned-to-segment.png" alt-text="DHCP-server toevoegen" border="true":::

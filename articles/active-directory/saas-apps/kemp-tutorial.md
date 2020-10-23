@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 68869d464df01d3cc89493c64d66511b4a6f369d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 37b21a5e9e2839fba24b3dcc861fc7c42bdb4547
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299992"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945206"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-kemp-loadmaster-azure-ad-integration"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Kemp LoadMaster Azure AD Integration
 
@@ -145,7 +145,7 @@ In deze sectie geeft u B. Simon toestemming om eenmalige aanmelding van Azure te
 
 1. Geef de parameters voor de virtuele service op.
 
-    ![Webserver voor Kemp LoadMaster Azure AD Integration](./media/kemp-tutorial/kemp-1.png)
+    ![Schermopname van de pagina Geef de parameters voor de virtuele service op, met voorbeeldwaarden in de vakken.](./media/kemp-tutorial/kemp-1.png)
 
     a. Virtueel adres
     
@@ -161,7 +161,7 @@ In deze sectie geeft u B. Simon toestemming om eenmalige aanmelding van Azure te
 
 1. Geef de parameters voor de echte server op.
     
-    ![Webserver voor Kemp LoadMaster Azure AD Integration](./media/kemp-tutorial/kemp-2.png)
+    ![Schermopname van de pagina Geef de parameters voor de echte server op, met voorbeeldwaarden in de vakken.](./media/kemp-tutorial/kemp-2.png)
 
     a. Selecteer Allow Remote Addresses
     
@@ -203,7 +203,7 @@ In deze sectie geeft u B. Simon toestemming om eenmalige aanmelding van Azure te
 
 1. Klik op SSL-eigenschappen (die werkt op laag 7).
     
-    ![Webserver voor Kemp LoadMaster Azure AD Integration](./media/kemp-tutorial/kemp-3.png)
+    ![Schermopname van de sectie SSL-eigenschappen, met SSL-versnelling ingeschakeld en een voorbeeldcertificaat geselecteerd.](./media/kemp-tutorial/kemp-3.png)
     
     a. Klik in SSL Acceleration op Enabled.
     
@@ -222,7 +222,7 @@ Ga naar de webconsole voor Kemp LoadMaster Azure AD Integration
 
 1. Click onder Certificates and Authority op Intermediate Certificates.
 
-    ![Webserver voor Kemp LoadMaster Azure AD Integration](./media/kemp-tutorial/kemp-6.png)
+    ![Schermopname van de sectie Momenteel geïnstalleerde tussenliggende certificaten, met een voorbeeldcertificaat geselecteerd.](./media/kemp-tutorial/kemp-6.png)
 
     a. Click in Add a new Intermediate Certificate op Choose file.
     
@@ -238,7 +238,7 @@ Ga naar de webconsole voor Kemp LoadMaster Azure AD Integration
  
 Ga onder Virtual Services naar Manage SSO.
 
-   ![Webserver voor Kemp LoadMaster Azure AD Integration](./media/kemp-tutorial/kemp-7.png)
+   ![Schermopname van de pagina SSO beheren.](./media/kemp-tutorial/kemp-7.png)
    
    a. Click onder Add new Client Side Configuration op Add nadat u deze een naam hebt gegeven.
 
@@ -268,7 +268,7 @@ Ga als volgt te werk in de webconsole voor Kemp LoadMaster Azure AD Integration
 
 1. Klik op Modify en ga naar ESP Options.
     
-    ![Webserver voor Kemp LoadMaster Azure AD Integration](./media/kemp-tutorial/kemp-8.png)
+    ![Schermopname van de pagina Services weergeven/wijzigen, met de secties ESP-opties en Echte servers uitgevouwen.](./media/kemp-tutorial/kemp-8.png)
 
     a. Klik op Enable ESP.
     
@@ -286,7 +286,7 @@ Blader naar de URL van de toepassing
 
 U ziet de aanmeldingspagina voor tenants in plaats van eerder niet-geverifieerde toegang. 
 
-![Webserver voor Kemp LoadMaster Azure AD Integration](./media/kemp-tutorial/kemp-9.png)
+![Schermopname van de tenantpagina Aanmelden.](./media/kemp-tutorial/kemp-9.png)
 
 ## <a name="configuring-kerberos-based-authentication"></a>Verificatie op basis van Kerberos configureren 
  
@@ -294,7 +294,7 @@ U ziet de aanmeldingspagina voor tenants in plaats van eerder niet-geverifieerde
 
 1. Maak een gebruikersaccount (in dit voorbeeld AppDelegation).
     
-    ![Webserver voor Kemp LoadMaster Azure AD Integration](./media/kemp-tutorial/kemp-10.png)
+    ![Schermopname van het venster KCD-gebruikers, met het tabblad Account geselecteerd.](./media/kemp-tutorial/kemp-10.png)
 
 
     a. Selecteer het tabblad Kenmerkeditor.
@@ -311,7 +311,7 @@ U ziet de aanmeldingspagina voor tenants in plaats van eerder niet-geverifieerde
 
 1. Selecteer het tabblad Delegering.
 
-    ![Webserver voor Kemp LoadMaster Azure AD Integration](./media/kemp-tutorial/kemp-11.png)
+    ![Schermopname van het venster KCD-gebruikers, met het tabblad Delegering geselecteerd.](./media/kemp-tutorial/kemp-11.png)
 
     a. Selecteer Deze gebruiker mag alleen aan opgegeven services delegeren.
 
@@ -332,7 +332,7 @@ U ziet de aanmeldingspagina voor tenants in plaats van eerder niet-geverifieerde
 
 Ga naar de Kemp LoadMaster Azure AD Integration-webconsole > Virtual Services > Manage SSO.
 
-![Webserver voor Kemp LoadMaster Azure AD Integration](./media/kemp-tutorial/kemp-12.png)
+![Schermopname van de pagina SSO beheren - Domein beheren.](./media/kemp-tutorial/kemp-12.png)
 
 a. Navigeer naar configuraties voor eenmalige aanmelding aan de serverzijde.
 

@@ -3,12 +3,12 @@ title: Inzicht in periodieke back-upconfiguratie
 description: Gebruik Service Fabric periodieke functie voor back-up en herstel om periodieke back-ups te configureren van uw betrouw bare stateful Services of Reliable Actors.
 ms.topic: article
 ms.date: 2/01/2019
-ms.openlocfilehash: 852e430a9183d92e13536fd6499f3d1404985455
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 633b13104ecc1697685f49a42b2a9c76b43b81d0
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91538616"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205690"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Informatie over periodieke back-upconfiguratie in azure Service Fabric
 
@@ -23,6 +23,9 @@ Het configureren van periodieke back-ups van uw betrouw bare stateful Services o
 Een back-upbeleid bestaat uit de volgende configuraties:
 
 * **Gegevens verlies automatisch herstellen**: Hiermee geeft u op of herstellen automatisch moet worden geactiveerd met de meest recente beschik bare back-up voor het geval de partitie een gegevens verlies gebeurtenis ondervindt.
+> [!NOTE]
+> U kunt het beste geen automatisch herstel instellen in productie clusters
+>
 
 * **Maximale incrementele back-ups**: Hiermee definieert u het maximum aantal incrementele back-ups dat moet worden gemaakt tussen twee volledige back-ups. Maximale incrementele back-ups geven de bovengrens aan. Er kan een volledige back-up worden gemaakt voordat het opgegeven aantal incrementele back-ups in een van de volgende voor waarden is voltooid
 
@@ -86,6 +89,9 @@ Een back-upbeleid bestaat uit de volgende configuraties:
             "ContainerName": "BackupContainer"
         }
         ```
+> [!NOTE]
+> Backup Restore-service werkt niet met v1 Azure Storage
+>
 
     2. **Bestands share**: dit opslag type moet worden geselecteerd voor _zelfstandige_ clusters wanneer het nodig is om gegevens back-up on-premises op te slaan. Voor de beschrijving voor dit opslag type is het pad van de bestands share vereist waar de back-ups moeten worden geüpload. Toegang tot de bestands share kan worden geconfigureerd met een van de volgende opties:
         1. _Geïntegreerde Windows-verificatie_, waarbij de toegang tot de bestands share wordt gegeven aan alle computers die deel uitmaken van het service Fabric cluster. In dit geval stelt u de volgende velden in voor het configureren van een back-upopslag op basis van een _Bestands share_ .
@@ -129,6 +135,10 @@ Een back-upbeleid bestaat uit de volgende configuraties:
 
 ## <a name="enable-periodic-backup"></a>Periodieke back-up inschakelen
 Nadat u het back-upbeleid hebt gedefinieerd om te voldoen aan de vereisten voor gegevens back-ups, moet het back-upbeleid op de juiste manier zijn gekoppeld aan een _toepassing_, of _service_of een _partitie_.
+
+> [!NOTE]
+> Zorg ervoor dat er geen toepassings upgrades worden uitgevoerd voordat u back-ups inschakelt
+>
 
 ### <a name="hierarchical-propagation-of-backup-policy"></a>Hiërarchische doorgifte van het back-upbeleid
 In Service Fabric is de relatie tussen de toepassing, de service en de partities hiërarchisch zoals uitgelegd in het [toepassings model](./service-fabric-application-model.md). Het back-upbeleid kan worden gekoppeld aan een _toepassing_, _service_of een _partitie_ in de hiërarchie. Het back-upbeleid wordt hiërarchisch door gegeven aan het volgende niveau. Ervan uitgaande dat er slechts één back-upbeleid is gemaakt en gekoppeld aan een _toepassing_, worden alle stateful partities die deel uitmaken van alle _betrouw bare stateful Services_ en _reliable actors_ van de _toepassing_ , met behulp van het back-upbeleid, gemaakt. Of als het back-upbeleid is gekoppeld aan een _betrouw bare stateful service_, wordt er een back-up van alle partities gemaakt met behulp van het back-upbeleid.
@@ -186,6 +196,9 @@ Back-upbeleid kan worden uitgeschakeld wanneer er geen back-up van gegevens nodi
         "CleanBackup": true 
     }
     ```
+> [!NOTE]
+> Zorg ervoor dat er geen toepassings upgrades worden uitgevoerd voordat u back-up uitschakelt.
+>
 
 ## <a name="suspend--resume-backup"></a>Back-up onderbreken & hervatten
 Bepaalde situatie kan leiden tot tijdelijke onderbreking van periodieke back-ups van gegevens. Afhankelijk van de vereiste kan het onderbreken van de back-upapi in een dergelijke situatie worden gebruikt bij een _toepassing_, _service_of _partitie_. De regel voor periodieke back-ups is transitief over de substructuur van de hiërarchie van de toepassing vanaf het punt waarop deze wordt toegepast. 
@@ -213,6 +226,10 @@ Hoewel uitschakelen kan alleen worden aangeroepen op een niveau dat eerder was i
 De service partitie kan gegevens verliezen vanwege onverwachte fouten. Bijvoorbeeld: de schijf voor twee van de drie replica's voor een partitie (met inbegrip van de primaire replica) wordt beschadigd of gewist.
 
 Wanneer Service Fabric detecteert dat de partitie zich in gegevens verlies bevindt, roept deze de `OnDataLossAsync` Interface methode op de partitie aan en verwacht de partitie dat de vereiste actie moet worden ondernomen om verlies van gegevens te voor komen. Als in dit geval het effectief back-upbeleid op de partitie is `AutoRestoreOnDataLoss` ingesteld op ingeschakeld, `true` wordt de herstel bewerking automatisch geactiveerd met de meest recente beschik bare back-up voor deze partitie.
+
+> [!NOTE]
+> U kunt het beste geen automatisch herstel instellen in productie clusters
+>
 
 ## <a name="get-backup-configuration"></a>Back-upconfiguratie ophalen
 Er worden afzonderlijke Api's beschikbaar gesteld om informatie over de back-upconfiguratie op te halen voor een _toepassings_-, _service_-en _partitie_ bereik. [Back-Upconfiguratiegegevens voor toepassingen](/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo)ophalen, [configuratie gegevens van service back-up ophalen](/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo)en [configuratie gegevens voor partitie back-ups ophalen](/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo) deze api's respectievelijk zijn. Deze Api's retour neren voornamelijk het toepasselijke back-upbeleid, het bereik waarop het back-upbeleid wordt toegepast en Details van de back-upblokkering. Hieronder vindt u een korte beschrijving van de geretourneerde resultaten van deze Api's.

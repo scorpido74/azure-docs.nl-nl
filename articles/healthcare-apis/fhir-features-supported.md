@@ -7,13 +7,13 @@ ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
-ms.author: matjazl
-ms.openlocfilehash: afb4026a7865f2cc8f831d8d1d7b1d332014d310
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: cavoeg
+ms.openlocfilehash: 609bd01e8dcb0e9202d1d9dbe1d1fc1a01cac550
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90007567"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368278"
 ---
 # <a name="features"></a>Functies
 
@@ -37,31 +37,31 @@ Eerdere versies die momenteel worden ondersteund, zijn onder andere: `3.0.2`
 | verzenden                          | Nee        | Nee        | Nee        |                                                     |
 | delete                         | Ja       | Ja       | Ja       |                                                     |
 | verwijderen (voorwaardelijk)           | Nee        | Nee        | Nee        |                                                     |
+| geschiedenis                        | Ja       | Ja       | Ja       |                                                     |
 | maken                         | Ja       | Ja       | Ja       | Ondersteuning voor zowel POST/PUT                               |
-| maken (voorwaardelijk)           | Ja       | Ja       | Ja       |                                                     |
+| maken (voorwaardelijk)           | Ja       | Ja       | Ja       | Probleem [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
 | zoeken                         | Gedeeltelijk   | Gedeeltelijk   | Gedeeltelijk   | Zie hieronder                                           |
 | geketende zoek opdracht                 | Nee        | Ja       | Nee        |                                           |
 | geketende zoek opdracht omkeren         | Nee        | Nee        | Nee        |                                            |
 | mogelijkheden                   | Ja       | Ja       | Ja       |                                                     |
 | batch                          | Ja       | Ja       | Ja       |                                                     |
 | trans actie                    | Nee        | Ja       | Nee        |                                                     |
-| geschiedenis                        | Ja       | Ja       | Ja       |                                                     |
 | haalt                         | Gedeeltelijk   | Gedeeltelijk   | Gedeeltelijk   | `self` en `next` worden ondersteund                     |
 | schakels                 | Nee        | Nee        | Nee        |                                                     |
 
-## <a name="search"></a>Zoeken
+## <a name="search"></a>Search
 
 Alle typen zoek parameters worden ondersteund. 
 
 | Type zoek parameter | Ondersteund-PaaS | Ondersteund-OSS (SQL) | Ondersteund-OSS (Cosmos DB) | Opmerking |
 |-----------------------|-----------|-----------|-----------|---------|
-| Getal                | Ja       | Ja       | Ja       |         |
+| Aantal                | Ja       | Ja       | Ja       |         |
 | Datum/datum/tijd         | Ja       | Ja       | Ja       |         |
 | Tekenreeks                | Ja       | Ja       | Ja       |         |
 | Token                 | Ja       | Ja       | Ja       |         |
 | Naslaginformatie             | Ja       | Ja       | Ja       |         |
 | Composite             | Ja       | Ja       | Ja       |         |
-| Hoeveelheid              | Ja       | Ja       | Ja       |         |
+| Aantal              | Ja       | Ja       | Ja       |         |
 | URI                   | Ja       | Ja       | Ja       |         |
 | Specifiek               | Nee        | Nee        | Nee        |         |
 
@@ -94,28 +94,30 @@ Alle typen zoek parameters worden ondersteund.
 | `_has`                  | Nee        | Nee        | Nee        |         |
 | `_type`                 | Ja       | Ja       | Ja       |         |
 | `_query`                | Nee        | Nee        | Nee        |         |
-
-| Zoek bewerkingen       | Ondersteund-PaaS | Ondersteund-OSS (SQL) | Ondersteund-OSS (Cosmos DB) | Opmerking |
-|-------------------------|-----------|-----------|-----------|---------|
 | `_filter`               | Nee        | Nee        | Nee        |         |
+
+| Zoek resultaat parameters | Ondersteund-PaaS | Ondersteund-OSS (SQL) | Ondersteund-OSS (Cosmos DB) | Opmerking |
+|-------------------------|-----------|-----------|-----------|---------|
 | `_sort`                 | Gedeeltelijk        | Gedeeltelijk   | Gedeeltelijk        |   `_sort=_lastUpdated` wordt ondersteund       |
-| `_score`                | Nee        | Nee        | Nee        |         |
-| `_count`                | Ja       | Ja       | Ja       |         |
-| `_summary`              | Gedeeltelijk   | Gedeeltelijk   | Gedeeltelijk   | `_summary=count` wordt ondersteund |
+| `_count`                | Ja       | Ja       | Ja       | `_count` is beperkt tot 100 tekens. Als deze waarde hoger is dan 100, wordt alleen 100 geretourneerd en wordt er een waarschuwing in de bundel geretourneerd. |
 | `_include`              | Nee        | Ja       | Nee        |         |
 | `_revinclude`           | Nee        | Ja       | Nee        | Opgenomen items zijn beperkt tot 100. |
+| `_summary`              | Gedeeltelijk   | Gedeeltelijk   | Gedeeltelijk   | `_summary=count` wordt ondersteund |
+| `_total`                | Gedeeltelijk   | Gedeeltelijk   | Gedeeltelijk   | _total = niet en _total = nauw keurig      |
+| `_elements`             | Ja       | Ja       | Ja       |         |
 | `_contained`            | Nee        | Nee        | Nee        |         |
-| `_elements`             | Ja        | Ja        | Ja        |         |
+| `containedType`         | Nee        | Nee        | Nee        |         |
+| `_score`                | Nee        | Nee        | Nee        |         |
 
 ## <a name="extended-operations"></a>Uitgebreide bewerkingen
 
 Alle bewerkingen die worden ondersteund om de REST-API uit te breiden.
 
 | Type zoek parameter | Ondersteund-PaaS | Ondersteund-OSS (SQL) | Ondersteund-OSS (Cosmos DB) | Opmerking |
-|-----------------------|-----------|-----------|-----------|---------|
-| $export (heel systeem)                | Ja       | Ja       | Ja       |         |
-| Patiënt/$export         | Ja       | Ja       | Ja       |         |
-| Groep/$export               | Ja       | Ja       | Ja       |         |
+|------------------------|-----------|-----------|-----------|---------|
+| $export (heel systeem) | Ja       | Ja       | Ja       |         |
+| Patiënt/$export        | Ja       | Ja       | Ja       |         |
+| Groep/$export          | Ja       | Ja       | Ja       |         |
 
 ## <a name="persistence"></a>Persistentie
 

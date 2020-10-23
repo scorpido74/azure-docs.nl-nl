@@ -10,15 +10,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/18/2020
+ms.date: 07/18/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: fd6894ea90dc6cb3cc721438ba73a94b43c36a5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 863ab9b600b81006cdeb670811c61ed961e8c623
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983700"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170263"
 ---
 # <a name="virtual-network-service-tags"></a>Service tags van virtueel netwerk
 <a name="network-service-tags"></a>
@@ -46,7 +46,7 @@ Service Tags geven standaard de bereiken weer voor de hele Cloud. Sommige servic
 | **ApiManagement** | Beheer verkeer voor Azure API Management-specifieke implementaties. <br/><br/>*Opmerking:* Deze tag vertegenwoordigt het Azure API Management service-eind punt voor besturings vlak per regio. Hierdoor kunnen klanten beheer bewerkingen uitvoeren op de Api's, bewerkingen, beleids regels, NamedValues die zijn geconfigureerd voor de API Management service.  | Inkomend | Ja | Ja |
 | **ApplicationInsightsAvailability** | Beschik baarheid van Application Insights. | Inkomend | Nee | Nee |
 | **AppConfiguration** | App-configuratie. | Uitgaand | Nee | Nee |
-| **AppService**    | Azure App Service. Deze tag wordt aanbevolen voor uitgaande beveiligings regels voor front-ends van webtoepassingen. | Uitgaand | Ja | Ja |
+| **AppService**    | Azure App Service. Deze tag wordt aanbevolen voor uitgaande beveiligings regels voor web apps en functie-apps.  | Uitgaand | Ja | Ja |
 | **AppServiceManagement** | Beheer verkeer voor implementaties die zijn toegewezen aan App Service Environment. | Beide | Nee | Ja |
 | **AzureActiveDirectory** | Azure Active Directory. | Uitgaand | Nee | Ja |
 | **AzureActiveDirectoryDomainServices** | Beheer verkeer voor implementaties die zijn toegewezen aan Azure Active Directory Domain Services. | Beide | Nee | Ja |

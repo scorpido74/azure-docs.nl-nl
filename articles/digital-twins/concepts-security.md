@@ -7,24 +7,24 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 9b9fae8f32f9d7ffeee53df8e5a888394572cbd7
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 0b99b9034dc382552d292cef95a3790bb27eba89
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015001"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331750"
 ---
 # <a name="secure-azure-digital-twins"></a>Azure Digital Apparaatdubbels beveiligen
 
-Voor de beveiliging biedt Azure Digital Apparaatdubbels nauw keurige toegangs controle over specifieke gegevens, resources en acties in uw implementatie. Dit wordt gedaan via een gedetailleerde beheer strategie voor rollen en machtigingen die **op rollen gebaseerd toegangs beheer (RBAC)** wordt genoemd. Meer informatie over de algemene principes van RBAC voor Azure vindt u [hier](../role-based-access-control/overview.md).
+Voor de beveiliging biedt Azure Digital Apparaatdubbels nauw keurige toegangs controle over specifieke gegevens, resources en acties in uw implementatie. Dit wordt gedaan door middel van een gedetailleerde beheer strategie voor rollen en machtigingen die **Azure op rollen gebaseerd toegangs beheer (Azure RBAC)** wordt genoemd. Meer informatie over de algemene principes van Azure RBAC vindt u [hier](../role-based-access-control/overview.md).
 
 Azure Digital Apparaatdubbels biedt ook ondersteuning voor versleuteling van gegevens in rust.
 
-## <a name="granting-permissions-with-rbac"></a>Machtigingen verlenen met RBAC
+## <a name="granting-permissions-with-azure-rbac"></a>Machtigingen verlenen met Azure RBAC
 
-RBAC wordt geleverd aan Azure Digital Apparaatdubbels via integratie met [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD).
+Azure RBAC wordt geleverd aan Azure Digital Apparaatdubbels via integratie met [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD).
 
-U kunt RBAC gebruiken om machtigingen te verlenen aan een *beveiligingsprincipal*, die een gebruiker, een groep of een Application Service-Principal kan zijn. De beveiligingsprincipal wordt geverifieerd door Azure AD en ontvangt een OAuth 2,0-token als resultaat. Dit token kan worden gebruikt voor het autoriseren van een toegangs aanvraag aan een Azure Digital Apparaatdubbels-exemplaar.
+U kunt Azure RBAC gebruiken om machtigingen toe te kennen aan een *beveiligingsprincipal*, die een gebruiker, een groep of een Application Service-Principal kan zijn. De beveiligingsprincipal wordt geverifieerd door Azure AD en ontvangt een OAuth 2,0-token als resultaat. Dit token kan worden gebruikt voor het autoriseren van een toegangs aanvraag aan een Azure Digital Apparaatdubbels-exemplaar.
 
 ### <a name="authentication-and-authorization"></a>Verificatie en autorisatie
 
@@ -57,7 +57,7 @@ Azure biedt de onderstaande ingebouwde Azure-rollen voor het verlenen van toegan
 Zie voor meer informatie over hoe ingebouwde rollen worden gedefinieerd [*begrijpen functie definities*](../role-based-access-control/role-definitions.md) in de documentatie van Azure RBAC. Zie [*aangepaste rollen in azure*](../role-based-access-control/custom-roles.md)voor meer informatie over het maken van aangepaste Azure-rollen.
 
 U kunt rollen op twee manieren toewijzen:
-* via het deel venster toegangs beheer (IAM) voor Azure Digital Apparaatdubbels in de Azure Portal (Zie [*roltoewijzingen toevoegen of verwijderen met behulp van Azure RBAC en de Azure Portal*](../role-based-access-control/role-assignments-portal.md))
+* via het deel venster toegangs beheer (IAM) voor Azure Digital Apparaatdubbels in de Azure Portal (Zie [*Azure-roltoewijzingen toevoegen of verwijderen met de Azure Portal*](../role-based-access-control/role-assignments-portal.md))
 * via CLI-opdrachten om een rol toe te voegen of te verwijderen
 
 Voor meer gedetailleerde stappen over hoe u dit doet, kunt u het uitproberen in de zelf studie over Azure Digital Apparaatdubbels [*: verbinding maken met een end-to-end oplossing*](tutorial-end-to-end.md).
@@ -95,4 +95,4 @@ U kunt dit probleem op een van de volgende manieren oplossen:
 
 * Bekijk hoe u met deze concepten communiceert vanuit de code van de client toepassing in [*How-to: app-verificatie code schrijven*](how-to-authenticate-client.md).
 
-* Lees meer over [RBAC voor Azure](../role-based-access-control/overview.md).
+* Meer informatie over [Azure RBAC](../role-based-access-control/overview.md).

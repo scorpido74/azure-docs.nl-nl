@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 04e21e4bcd56506ba27730ebc1f9b0db8dc39615
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0899132f308c7069395738140b35b138571483d
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88509647"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220853"
 ---
 # <a name="view-system-test-results"></a>Testresultaten voor systeem weergeven
 
@@ -70,12 +70,12 @@ Een implementatie aanvragen:
 
 2. Voor een goed opgeleid model wordt de knop implementeren weer gegeven als deze niet is geïmplementeerd.
 
-    ![Model implementeren](media/how-to/how-to-deploy-model.png)
+    ![Scherm opname van de knop implementeren voor het implementeren van een model.](media/how-to/how-to-deploy-model.png)
 
 3.  Klik op implementeren.
 4.  Selecteer **geïmplementeerd** voor de regio (s) waar u het model wilt implementeren en klik op opslaan. U kunt **geïmplementeerde** voor meerdere regio's selecteren.
 
-    ![Model implementeren](media/how-to/how-to-deploy-model-regions.png)
+    ![Scherm afbeelding die laat zien waar u een model kunt implementeren of uitzetten.](media/how-to/how-to-deploy-model-regions.png)
 
 5.  U kunt de status van uw model weer geven in de kolom Status.
 
@@ -90,7 +90,7 @@ Implementatie-instellingen bijwerken:
 
 2. Voor een correct geïmplementeerd model wordt een knop **bijwerken** weer gegeven.
 
-    ![Model implementeren](media/how-to/how-to-update-undeploy-model.png)
+    ![Scherm opname van de knop bijwerken voor het bijwerken van de implementatie-instellingen.](media/how-to/how-to-update-undeploy-model.png)
 
 3.  Selecteer **Update**.
 4.  Selecteer **geïmplementeerd** of niet- **geïmplementeerd** voor de regio's waar u uw model wilt implementeren of niet wilt implementeren en klik vervolgens op **Opslaan**.

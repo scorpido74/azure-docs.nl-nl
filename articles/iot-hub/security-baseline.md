@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 31a3bfbc174ca9c4c46005a26cde65db1ff74b65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49496dbf1355ceee7619d93bcb0676892b7a212d
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906923"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150569"
 ---
 # <a name="azure-security-baseline-for-azure-iot-hub"></a>Azure-beveiligings basislijn voor Azure IoT Hub
 
@@ -33,9 +33,9 @@ Het is raadzaam om de verbinding met uw Azure-resources (inclusief Azure IoT Hub
 Open de poorten op uw apparaten zo min tot Maxi maal om ongewenste toegang te voor komen. Daarnaast bouwt u mechanismen op om het apparaat te voor komen of fysiek te knoeien.
 
 - [Ondersteuning voor IoT Virtual Networks](virtual-network-support.md)
-- [best practice voor partij netwerken](https://docs.microsoft.com/azure/iot-fundamentals/security-recommendations?context=azure/iot-hub/rc/rc#networking)
+- [best practice voor partij netwerken](../iot-fundamentals/security-recommendations.md?context=azure%252fiot-hub%252frc%252frc#networking)
 - [Overzicht van persoonlijke Azure-koppelingen](../private-link/private-link-overview.md)
-- [Azure-netwerk beveiligings groep](../virtual-network/security-overview.md)
+- [Azure-netwerk beveiligings groep](../virtual-network/network-security-groups-overview.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -75,7 +75,7 @@ Azure DDoS Protection Basic is al ingeschakeld en beschikbaar voor geen extra ko
 
 - [Azure DDoS Protection Basic beheren](../virtual-network/ddos-protection-overview.md)
 
-- [Bescherming tegen bedreiging in Azure Security Center](../security-center/threat-protection.md)
+- [Bescherming tegen bedreiging in Azure Security Center](../security-center/azure-defender.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -138,7 +138,7 @@ Implementeer de door u gewenste firewall oplossing op elk van de netwerk grenzen
 
 **Richt lijnen**: Gebruik labels voor netwerk bronnen die zijn gekoppeld aan uw Azure IOT hub-implementatie om ze logisch in een taxonomie te organiseren.
 
-- [Tags maken en gebruiken](/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -148,7 +148,7 @@ Implementeer de door u gewenste firewall oplossing op elk van de netwerk grenzen
 
 **Hulp**: Azure-activiteiten logboek gebruiken om netwerk resource configuraties te bewaken en wijzigingen te detecteren voor netwerk bronnen die betrekking hebben op Azure IOT hub. Maak waarschuwingen in Azure Monitor die worden geactiveerd wanneer er wijzigingen in kritieke netwerk bronnen plaatsvinden.
 
-- [Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen](/azure/azure-monitor/platform/activity-log-view)
+- [Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [Waarschuwingen maken in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -274,9 +274,9 @@ U kunt ook gegevens in-en inschakelen voor Azure Sentinel of een SIEM van derden
 
 **Richt lijnen**: met Azure op rollen gebaseerd toegangs beheer (Azure RBAC) kunt u de toegang tot Azure IOT hub beheren via roltoewijzingen. U kunt deze rollen toewijzen aan gebruikers, groeperingen van service-principals en beheerde identiteiten. Er zijn vooraf gedefinieerde ingebouwde rollen voor bepaalde resources, en deze rollen kunnen worden geïnventariseerd of opgevraagd via hulpprogram ma's als Azure CLI, of Azure PowerShell, of de Azure Portal. 
 
-- [Een directory-rol verkrijgen in azure AD met Power shell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [Een directory-rol verkrijgen in azure AD met Power shell](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-- [Leden van een directory-rol in azure AD ophalen met Power shell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [Leden van een directory-rol in azure AD ophalen met Power shell](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure Security Center bewaking**: Ja
 
@@ -296,7 +296,7 @@ U kunt ook gegevens in-en inschakelen voor Azure Sentinel of een SIEM van derden
 
 U kunt ook Just-in-time-toegang tot beheerders accounts inschakelen met behulp van Azure AD Privileged Identity Management en Azure Resource Manager.
 
-- [Meer informatie over Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
+- [Meer informatie over Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
 **Azure Security Center bewaking**: Ja
 
@@ -340,7 +340,7 @@ U kunt ook Just-in-time-toegang tot beheerders accounts inschakelen met behulp v
 
 **Hulp**: gebruik Azure Active Directory beveiligings rapporten en-bewaking om te detecteren wanneer verdachte of onveilige activiteiten in de omgeving worden uitgevoerd. Gebruik Azure Security Center om identiteits-en toegangs activiteiten te bewaken.
 
-- [Azure AD-gebruikers identificeren die zijn gemarkeerd voor Risk ante activiteiten](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [Azure AD-gebruikers identificeren die zijn gemarkeerd voor Risk ante activiteiten](../active-directory/identity-protection/overview-identity-protection.md)
 - [Identiteits-en toegangs activiteiten van gebruikers controleren in Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Azure Security Center bewaking**: Ja
@@ -376,9 +376,9 @@ Voor toegang via het apparaat en de service gebruikt IoT Hub beveiligings tokens
 
 Gebruik Azure AD Privileged Identity Management (PIM) voor het genereren van Logboeken en waarschuwingen wanneer verdachte of onveilige activiteiten in de omgeving worden uitgevoerd.
 
-- [Meer informatie over Azure AD-rapportage](/azure/active-directory/reports-monitoring/)
+- [Meer informatie over Azure AD-rapportage](../active-directory/reports-monitoring/index.yml)
 - [Azure AD-identiteits-en toegangs beoordelingen gebruiken](../active-directory/governance/access-reviews-overview.md)
-- [Azure AD Privileged Identity Management implementeren (PIM)](/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+- [Azure AD Privileged Identity Management implementeren (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -392,7 +392,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 Gebruiker Azure Monitor Diagnostische logboeken voor het bewaken van niet-geautoriseerde Verbindings pogingen in de categorie verbindingen.
 
-- [Azure-activiteiten logboeken integreren met Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure-activiteiten logboeken integreren met Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Diagnostische logboeken configureren voor IoT hub](iot-hub-monitor-resource-health.md)
 
@@ -404,7 +404,7 @@ Gebruiker Azure Monitor Diagnostische logboeken voor het bewaken van niet-geauto
 
 **Hulp**: gebruik Azure AD Identity Protection functies om automatische antwoorden te configureren op gedetecteerde verdachte acties met betrekking tot gebruikers identiteiten. U kunt ook gegevens opnemen in azure Sentinel voor verder onderzoek.
   
-- [ Risk ante aanmeldingen voor Azure AD weer geven](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [ Risk ante aanmeldingen voor Azure AD weer geven](../active-directory/identity-protection/overview-identity-protection.md)
   
 - [ Risico beleid voor identiteits beveiliging configureren en inschakelen](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
   
@@ -430,7 +430,7 @@ Gebruiker Azure Monitor Diagnostische logboeken voor het bewaken van niet-geauto
 
 **Hulp**: Tags gebruiken om Azure-resources te helpen bij het bijhouden of verwerken van gevoelige informatie.
  
-- [ Tags maken en gebruiken](/azure/azure-resource-manager/resource-group-using-tags)
+- [ Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -440,9 +440,9 @@ Gebruiker Azure Monitor Diagnostische logboeken voor het bewaken van niet-geauto
 
 **Richt lijnen**: isolatie implementeren met afzonderlijke abonnementen en beheer groepen voor afzonderlijke beveiligings domeinen, zoals omgevings type en gegevens gevoeligheids niveau. U kunt het toegangs niveau voor uw Azure-resources beperken die worden vereist door uw toepassingen en bedrijfs omgevingen. U kunt de toegang tot Azure-resources beheren via Azure RBAC.
   
-- [ Aanvullende Azure-abonnementen maken](/azure/billing/billing-create-subscription)
-- [ Beheer groepen maken](/azure/governance/management-groups/create)
-- [ Tags maken en gebruiken](/azure/azure-resource-manager/resource-group-using-tags)
+- [ Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
+- [ Beheer groepen maken](../governance/management-groups/create-management-group-portal.md)
+- [ Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -593,7 +593,7 @@ Azure IoT Hub zorgt voor versleuteling van gegevens in rust en in transit omdat 
 
 **Richt lijnen**: Tags Toep assen op Azure-resources (niet alle resources ondersteunen Tags, maar de meeste taken) om ze logisch in een taxonomie te organiseren.
 
-- [Tags maken en gebruiken](/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -603,11 +603,11 @@ Azure IoT Hub zorgt voor versleuteling van gegevens in rust en in transit omdat 
 
 **Richt lijnen**: Gebruik labels, beheer groepen en afzonderlijke abonnementen, indien van toepassing, om assets te organiseren en bij te houden. Sluit de inventaris regel matig af en zorg ervoor dat niet-geautoriseerde resources tijdig worden verwijderd uit het abonnement.
   
-- [ Aanvullende Azure-abonnementen maken](/azure/billing/billing-create-subscription)
+- [ Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
   
-- [ Beheer groepen maken](/azure/governance/management-groups/create)
+- [ Beheer groepen maken](../governance/management-groups/create-management-group-portal.md)
   
-- [ Tags maken en gebruiken](/azure/azure-resource-manager/resource-group-using-tags)
+- [ Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -725,7 +725,7 @@ Azure Resource Manager kunt de sjabloon in JavaScript Object Notation (JSON) exp
 
 U kunt ook de aanbevelingen van Azure Security Center gebruiken als een veilige configuratie basislijn voor uw Azure-resources.
 
-- [Beschik bare Azure Policy aliassen weer geven](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [Beschik bare Azure Policy aliassen weer geven](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 - [Zelfstudie: Beleidsregels voor het afdwingen van naleving maken en beheren](../governance/policy/tutorials/create-and-manage.md)
 
@@ -769,8 +769,8 @@ U kunt ook de aanbevelingen van Azure Security Center gebruiken als een veilige 
 
 **Richt lijnen**: als u aangepaste Azure Policy definities gebruikt voor uw Azure IOT hub of gerelateerde resources, gebruikt u Azure opslag plaatsen om uw code veilig op te slaan en te beheren.
 
-- [Code opslaan in azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
-- [Documentatie voor Azure opslag plaatsen](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Code opslaan in azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Documentatie voor Azure opslag plaatsen](/azure/devops/repos/index?view=azure-devops)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -830,8 +830,8 @@ Gebruik beheerde identiteiten in combi natie met Azure Key Vault om het geheime 
 - [IoT Hub beveiligings tokens](../iot-fundamentals/iot-security-deployment.md#iot-hub-security-tokens)
 - [Beheerde identiteiten voor IoT Hub gebruiken](virtual-network-support.md#turn-on-managed-identity-for-iot-hub)
 
-- [Een sleutel kluis maken](/azure/key-vault/quick-create-portal)
-- [Key Vault verificatie bieden met een beheerde identiteit](/azure/key-vault/managed-identity)
+- [Een sleutel kluis maken](../key-vault/secrets/quick-create-portal.md)
+- [Key Vault verificatie bieden met een beheerde identiteit](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -940,7 +940,7 @@ Periodiek gegevens herstel van inhoud in back-up uitvoeren. Zorg ervoor dat u ee
  
  
 - [Meer informatie over Azure RBAC](../role-based-access-control/overview.md)
-- [Zacht verwijderen voor Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Zacht verwijderen voor Azure Blob Storage](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -973,7 +973,7 @@ Periodiek gegevens herstel van inhoud in back-up uitvoeren. Zorg ervoor dat u ee
   
 - [ Beveiligings waarschuwingen in Azure Security Center](../security-center/security-center-alerts-overview.md)
   
-- [ Tags gebruiken om uw Azure-resources te organiseren](/azure/azure-resource-manager/resource-group-using-tags)
+- [ Tags gebruiken om uw Azure-resources te organiseren](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -1039,5 +1039,5 @@ Periodiek gegevens herstel van inhoud in back-up uitvoeren. Zorg ervoor dat u ee
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de [Azure Security-Bench Mark](/azure/security/benchmarks/overview)
-- Meer informatie over [Azure-beveiligings basislijnen](/azure/security/benchmarks/security-baselines-overview)
+- Zie de [Azure Security-Bench Mark](../security/benchmarks/overview.md)
+- Meer informatie over [Azure-beveiligings basislijnen](../security/benchmarks/security-baselines-overview.md)

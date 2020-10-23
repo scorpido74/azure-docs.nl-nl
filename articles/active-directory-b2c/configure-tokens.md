@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/07/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 49a5ff61e5f7a17005561e0729a9b0fcb0f954d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67bc9d6b35d4841999721a00592a6bbe23bff10f
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85389561"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340220"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Tokens configureren in Azure Active Directory B2C
 
@@ -41,6 +41,9 @@ U kunt de levens duur van het token configureren voor elke gebruikers stroom.
 
 8. Klik op **Opslaan**.
 
+> [!NOTE]
+> Toepassingen met één pagina die gebruikmaken van de autorisatie code stroom met PKCE, hebben altijd een vernieuwings token van 24 uur. Meer [informatie over de beveiligings implicaties van vernieuwings tokens in de browser](../active-directory/develop/reference-third-party-cookies-spas.md#security-implications-of-refresh-tokens-in-the-browser).
+
 ## <a name="configure-jwt-token-compatibility"></a>JWT-token compatibiliteit configureren
 
 1. Selecteer **gebruikers stromen (beleid)**.
@@ -51,6 +54,17 @@ U kunt de levens duur van het token configureren voor elke gebruikers stroom.
     ![Instellingen voor token compatibiliteit van eigenschappen in de Azure Portal](./media/configure-tokens/token-compatibility.png)
 
 5. Klik op **Opslaan**.
+
+## <a name="provide-optional-claims-to-your-app"></a>Optionele claims voor uw app opgeven
+
+De toepassings claims zijn waarden die worden geretourneerd naar de toepassing. Werk de stroom van de gebruiker bij zodat deze de gewenste claims bevat.
+
+1. Selecteer **gebruikers stromen (beleid)**.
+1. Open de gebruikers stroom die u eerder hebt gemaakt.
+1. Selecteer **Toepassingsclaims**.
+1. Kies de claims en kenmerken die u wilt terugsturen naar uw toepassing.
+1. Klik op **Opslaan**.
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

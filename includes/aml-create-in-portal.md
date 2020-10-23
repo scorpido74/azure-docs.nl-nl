@@ -9,41 +9,41 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 11/04/2019
-ms.openlocfilehash: 8ccd3e6129f4a061eacf83a1f4e70174c697480f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: f5f132d257e30cd8f4fa1153087bf0df2f0f5b2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73633643"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91841837"
 ---
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/) met behulp van de referenties voor uw Azure-abonnement.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/) met behulp van de referenties van uw Azure-abonnement.
 
-1. Selecteer in de linkerbovenhoek van Azure Portal **+ een resource maken**.
+1. Selecteer in de linkerbovenhoek van de Azure-portal **+ Een resource maken**.
 
-    ![Een nieuwe resource maken](media/aml-create-in-portal/create-workspace.gif)
+    ![Schermopname met de optie Een resource maken.](media/aml-create-in-portal/create-workspace.gif)
 
-1. Gebruik de zoek balk om **machine learning**te vinden.
+1. Gebruik de zoekbalk om **Machine Learning** te vinden.
 
-1. Selecteer **machine learning**.
+1. Selecteer **Machine Learning**.
 
-1. Selecteer in het deel venster **machine learning** de optie **maken** om te beginnen.
+1. Selecteer **Maken** in het deelvenster **Machine Learning** om te beginnen.
 
-1. Geef de volgende informatie op om uw nieuwe werk ruimte te configureren:
+1. Geef de volgende gegevens op om uw nieuwe werkruimte te configureren:
 
-   Veld|Beschrijving 
+   Veld|Beschrijving
    ---|---
-   Naam van de werkruimte |Voer een unieke naam in die uw werk ruimte identificeert. In dit voor beeld gebruiken we **docs-WS**. De namen moeten uniek zijn in de resource groep. Gebruik een naam die gemakkelijk kan worden ingetrokken en om onderscheid te maken tussen werk ruimten die door anderen zijn gemaakt.  
+   Werkruimtenaam |Voer een unieke naam in die uw werkruimte aanduidt. In dit voorbeeld gebruiken we **docs-ws**. Namen moeten uniek zijn binnen de resourcegroep. Gebruik een naam die gemakkelijk te onthouden is en te onderscheiden is van door anderen gemaakte werkruimten.
    Abonnement |Selecteer het Azure-abonnement dat u wilt gebruiken.
-   Resourcegroep | Gebruik een bestaande resourcegroep in uw abonnement of voer een naam in om een nieuwe resourcegroep te maken. Een resource groep bevat gerelateerde resources voor een Azure-oplossing. In dit voor beeld gebruiken we **docs-AML**. 
-   Locatie | Selecteer de locatie die het dichtst bij uw gebruikers ligt en de gegevens bronnen om uw werk ruimte te maken.
-   Werkruimte editie | Selecteer **Basic** als het werkruimte type voor deze zelf studie. Het type werk ruimte (Basic & Enter prise) bepaalt de functies waartoe u toegang hebt en de prijzen. Alles in deze zelf studie kan worden uitgevoerd met een Basic-of ENTER prise-werk ruimte.
+   Resourcegroep | Gebruik een bestaande resourcegroep in uw abonnement of voer een naam in om een nieuwe resourcegroep te maken. Een resourcegroep bevat gerelateerde resources voor een Azure-oplossing. In dit voorbeeld gebruiken we **docs-aml**. 
+   Locatie | Selecteer de locatie die zich het dichtst bij uw gebruikers en de gegevensresources bevindt om uw werkruimte te maken.
+   Werkruimte-editie | Selecteer **Basic** als het type werkruimte voor deze zelfstudie. Het werkruimtetype bepaalt de functies waartoe u toegang hebt en de prijzen. Alles in deze zelfstudie kan worden uitgevoerd met een Basic- of Enterprise-werkruimte.
 
-1. Nadat u klaar bent met het configureren van de werk ruimte, selecteert u **controleren + maken**. 
+1. Nadat u klaar bent met het configureren van de werkruimte, selecteert u **Beoordelen en maken**.
 
-   > [!Warning] 
-   > Het kan enkele minuten duren om uw werk ruimte in de cloud te maken.
+   > [!Warning]
+   > Het kan enkele minuten duren om uw werkruimte in de cloud te maken.
 
-   Wanneer het proces is voltooid, wordt een bericht over een geslaagde implementatie weer gegeven. 
+   Wanneer het proces is voltooid, wordt er een bericht weergegeven dat de implementatie is geslaagd.
  
- 1. Als u de nieuwe werk ruimte wilt weer geven, selecteert u **Ga naar resource**.
+ 1. Selecteer **Ga naar resource** om de nieuwe werkruimte te bekijken.
 

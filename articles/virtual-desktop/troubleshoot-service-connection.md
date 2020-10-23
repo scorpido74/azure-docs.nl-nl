@@ -3,15 +3,15 @@ title: Problemen met de service verbinding oplossen Windows virtueel bureau blad
 description: Problemen oplossen tijdens het instellen van service verbindingen in een Windows Virtual Desktop-Tenant omgeving.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 09/14/2020
+ms.date: 10/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5eb5602b8330906311df4a0d1f59bc5e5130237e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a9eb99ae7af88e77fa597fa92ff8e6278c307e6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089901"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108946"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows Virtual Desktop service-verbindingen
 
@@ -45,6 +45,13 @@ Een gebruiker kan Extern bureaublad-clients starten en kan worden geverifieerd, 
 Deze fout treedt meestal op nadat een gebruiker zijn of haar abonnement van een Azure AD-Tenant naar een andere heeft verplaatst. Als gevolg hiervan verliest de service het bijhouden van hun gebruikers toewijzingen, omdat deze nog steeds zijn gekoppeld aan de oude Azure AD-Tenant.
 
 Om dit probleem op te lossen, moet u de gebruikers opnieuw toewijzen aan hun app-groepen.
+
+Dit kan ook gebeuren als een CSP-provider het abonnement heeft gemaakt en vervolgens is overgezet naar de klant. U kunt dit probleem oplossen door de resource provider opnieuw te registreren.
+
+1. Meld u aan bij Azure Portal.
+2. Ga naar het **abonnement**en selecteer vervolgens uw abonnement.
+3. Selecteer **resource provider**in het menu aan de linkerkant van de pagina.
+4. Zoek en selecteer **micro soft. DesktopVirtualization**en selecteer **opnieuw registreren**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

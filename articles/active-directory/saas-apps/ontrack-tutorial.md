@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 14cb0d70e1c5ce2be0cf810e8a24d9bc596eeb6f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b2d244fa6ea42a85483b3067cf58fc9384a86dee
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544057"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996579"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ontrack"></a>Zelfstudie: Azure Active Directory-integratie met OnTrack
 
@@ -118,7 +118,7 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD met OnTrack t
 
 5. In de Ontrack-toepassing worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op het pictogram **Bewerken** om het dialoogvenster **Gebruikerskenmerken** te openen.
 
-    ![image](common/edit-attribute.png)
+    ![Schermopname met het dialoogvenster 'Gebruikerskenmerken' met de knop 'Bewerken' rechtsboven geselecteerd.](common/edit-attribute.png)
 
 6. Bovendien verwacht de OnTrack-toepassing nog enkele kenmerken die als SAML-antwoord moeten worden doorgestuurd. In de sectie **Gebruikersclaims** in het dialoogvenster **Gebruikerskenmerken** voert u de volgende stappen uit om het kenmerk van het SAML-token toe te voegen zoals wordt weergegeven in de onderstaande tabel:
 
@@ -132,7 +132,7 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD met OnTrack t
 
     a. Klik op **Nieuwe claim toevoegen** om het dialoogvenster **Gebruikersclaims beheren** te openen.
 
-    ![image](common/new-save-attribute.png)
+    ![Schermopname van het dialoogvenster 'Gebruikersclaims' met de acties 'Nieuwe claim toevoegen' en 'Opslaan' geselecteerd.](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 

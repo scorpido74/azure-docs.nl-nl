@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 072e885ec1c618229141dea477cd598d8db34ce7
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: e66d5c4dd4fc1c6c641da975b0ac2254f459642a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91756743"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976926"
 ---
 # <a name="quickstart-handle-sms-events"></a>Quickstart: SMS-gebeurtenissen verwerken
 
@@ -86,19 +86,19 @@ Selecteer vervolgens **Selectie bevestigen**.
 Om gebeurtenistriggers te bekijken, moeten we allereerst gebeurtenissen genereren.
 
 - `SMS Received`-gebeurtenissen worden gegenereerd wanneer het Communication Services-telefoonnummer een sms-bericht ontvangt. Als u een gebeurtenis wilt activeren, stuurt u een bericht van uw telefoon naar het telefoonnummer dat is gekoppeld aan uw Communication Services-resource.
-- `SMS Delivery Report Received`-gebeurtenissen worden gegenereerd wanneer u een sms naar een gebruikers stuurt via een Communication Services-telefoonnummer. Als u een gebeurtenis wilt activeren, moet u `Delivery Report` inschakelen in de opties van het verstuurde [sms-bericht](../telephony-sms/send.md). Probeer een bericht naar uw telefoon te sturen met `Delivery Report`. Voor het voltooien van deze actie worden kosten van een paar dollarcent of minder in rekening gebracht bij uw Azure-account.
+- `SMS Delivery Report Received`-gebeurtenissen worden gegenereerd wanneer u een sms naar een gebruikers stuurt via een Communication Services-telefoonnummer. Als u een gebeurtenis wilt activeren, moet u `Delivery Report` inschakelen in de opties van het [verstuurde sms-bericht](../telephony-sms/send.md). Probeer een bericht naar uw telefoon te sturen met `Delivery Report`. Voor het voltooien van deze actie worden kosten van een paar dollarcent of minder in rekening gebracht bij uw Azure-account.
 
 Bekijk de volledige lijst [door Azure Communication Services ondersteunde gebeurtenissen](../../concepts/event-handling.md).
 
 ### <a name="receiving-sms-events"></a>SMS-gebeurtenissen ontvangen
 
-Nadat u een van de bovenstaande acties hebt voltooid, ziet u dat `SMS Received`- en `SMS Delivery Report Received`-gebeurtenissen naar uw eindpunt worden gestuurd. Deze gebeurtenissen worden weergegeven in het [Azure Event Grid Viewer-voorbeeld](https://docs.microsoft.com/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/) dat we in het begin hebben ingesteld. U kunt op het oogpictogram naast de gebeurtenis klikken om de hele payload te bekijken. De gebeurtenis ziet er als volgt uit:
+Nadat u een van de bovenstaande acties hebt voltooid, ziet u dat de gebeurtenissen `SMS Received` en `SMS Delivery Report Received` naar uw eindpunt worden gestuurd. Deze gebeurtenissen worden weergegeven in het [Azure Event Grid Viewer-voorbeeld](https://docs.microsoft.com/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/) dat we in het begin hebben ingesteld. U kunt op het oogpictogram naast de gebeurtenis klikken om de hele payload te bekijken. Gebeurtenissen zien er als volgt uit:
 
 :::image type="content" source="./media/handle-sms-events/sms-received.png" alt-text="Schermopname met de selectie van het gebeurtenisabonnement binnen de gebeurtenispagina van een resource.":::
 
 :::image type="content" source="./media/handle-sms-events/sms-delivery-report-received.png" alt-text="Schermopname met de selectie van het gebeurtenisabonnement binnen de gebeurtenispagina van een resource.":::
 
-Meer informatie over de [gebeurtenisschema's en andere gebeurtenisconcepten](../../concepts/event-handling.md)
+Meer informatie over de [gebeurtenisschema's en andere gebeurtenisconcepten](../../concepts/event-handling.md).
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

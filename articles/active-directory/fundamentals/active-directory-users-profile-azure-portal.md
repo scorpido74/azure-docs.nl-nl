@@ -12,12 +12,12 @@ ms.date: 04/11/2019
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63b716aa22954af51a9eb53a0d04a8299d348c71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27896bac6f5436fb6717e4bc1ab0a1f9381904ad
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87797234"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370913"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>De profielgegevens van een gebruiker toevoegen of bijwerken met behulp van Azure Active Directory
 Gebruikers profiel gegevens toevoegen, met inbegrip van een profiel afbeelding, specifieke informatie over de taak en enkele instellingen met behulp van Azure Active Directory (Azure AD). Voor meer informatie over het toevoegen van nieuwe gebruikers raadpleegt [u gebruikers toevoegen of verwijderen in azure Active Directory](add-users-azure-active-directory.md).
@@ -66,4 +66,4 @@ Nadat u de profielen van uw gebruikers hebt bijgewerkt, kunt u de volgende basis
 
 - [Een basisgroep maken en leden toevoegen](active-directory-groups-create-azure-portal.md)
 
-U kunt ook andere gebruikers beheer taken uitvoeren, zoals het toewijzen van gemachtigden, het gebruiken van beleid en het delen van gebruikers accounts. Zie [Azure Active Directory-documentatie voor gebruikers beheer](../users-groups-roles/index.yml)voor meer informatie over andere beschik bare acties.
+U kunt ook andere gebruikers beheer taken uitvoeren, zoals het toewijzen van gemachtigden, het gebruiken van beleid en het delen van gebruikers accounts. Zie [Azure Active Directory-documentatie voor gebruikers beheer](../enterprise-users/index.yml)voor meer informatie over andere beschik bare acties.

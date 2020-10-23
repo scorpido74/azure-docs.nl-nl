@@ -3,12 +3,12 @@ title: Azure Stack Vm's repliceren naar Azure met behulp van Azure Site Recovery
 description: Meer informatie over het instellen van herstel na nood gevallen voor Azure voor Azure Stack Vm's met de Azure Site Recovery-service.
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: a7e58f5b24786169c9d0c989b79a14c4115acca8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36e11bfe5354644f9ef6603ffe20cb2e86074323
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448978"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370522"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Virtuele Azure-machines repliceren naar Azure
 
@@ -186,7 +186,7 @@ Installeer nu de configuratie server:
 > [!NOTE]
 > De configuratie server kan ook worden geïnstalleerd vanaf de opdracht regel. [Meer informatie](physical-manage-configuration-server.md#install-from-the-command-line).
 >
-> Het duurt 15 minuten of langer voordat de accountnaam wordt weergegeven in de portal. Selecteer **Configuratieservers** > ***servernaam*** > **Server vernieuwen** om direct bij te werken.
+> Het duurt 15 minuten of langer voordat de accountnaam wordt weergegeven in de portal. Als u onmiddellijk wilt bijwerken, selecteert u **configuratie servers**  >  **_Server naam_*_ > _* server vernieuwen**.
 
 ## <a name="step-4-set-up-the-target-environment"></a>Stap 4: de doel omgeving instellen
 
@@ -314,7 +314,7 @@ Voer een failover als volgt uit:
 
 ### <a name="fail-back-to-azure-stack"></a>Failback naar Azure Stack
 
-Als uw primaire site weer actief is, kunt u een failback uitvoeren van Azure naar Azure Stack. Volg hiervoor de stappen die [hier](https://docs.microsoft.com/azure-stack/operator/site-recovery-failback?view=azs-2005)worden beschreven.
+Als uw primaire site weer actief is, kunt u een failback uitvoeren van Azure naar Azure Stack. Volg hiervoor de stappen die [hier](/azure-stack/operator/site-recovery-failback?view=azs-2005)worden beschreven.
 
 ## <a name="conclusion"></a>Conclusie
 
@@ -323,4 +323,3 @@ In dit artikel worden Azure Stack Vm's gerepliceerd naar Azure. Met replicatie o
 ## <a name="next-steps"></a>Volgende stappen
 
 Nadat de failover is uitgevoerd, kunt u de virtuele machine opnieuw beveiligen en deze opnieuw repliceren naar Azure om dit te doen. Herhaal de stappen in dit artikel.
-

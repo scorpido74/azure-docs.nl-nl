@@ -6,18 +6,18 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 20add4859b272b6d121666cde9c56296119d41e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80bc77de30073b2872412f907251b1aad7e334d3
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836527"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425634"
 ---
 # <a name="private-link-for-azure-database-for-mariadb"></a>Persoonlijke koppeling voor Azure Database for MariaDB
 
 Met persoonlijke koppeling kunt u privé-eind punten maken voor Azure Database for MariaDB en dus Azure-Services binnen uw privé Virtual Network (VNet). Met het persoonlijke eind punt wordt een privé-IP-adres weer gegeven dat u kunt gebruiken om verbinding te maken met uw Azure Database for MariaDB database server net als elke andere resource in het VNet.
 
-Raadpleeg de [documentatie](https://docs.microsoft.com/azure/private-link/index)van de privé-koppeling voor een lijst met PaaS-services die ondersteuning bieden voor persoonlijke koppelings functionaliteit. Een persoonlijk eind punt is een privé-IP-adres binnen een specifiek [VNet](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) en subnet.
+Raadpleeg de [documentatie](../private-link/index.yml)van de privé-koppeling voor een lijst met PaaS-services die ondersteuning bieden voor persoonlijke koppelings functionaliteit. Een persoonlijk eind punt is een privé-IP-adres binnen een specifiek [VNet](../virtual-network/virtual-networks-overview.md) en subnet.
 
 > [!NOTE]
 > De functie voor persoonlijke koppelingen is alleen beschikbaar voor Azure Database for MariaDB servers in de prijs Categorieën Algemeen of geoptimaliseerd voor geheugen. Zorg ervoor dat de database server zich in een van deze prijs categorieën bevindt.
@@ -28,7 +28,7 @@ Gegevens die worden gefilterd in Azure Database for MariaDB, zijn wanneer een ge
 
 Overweeg een scenario met een gebruiker die MariaDB workbench in een Azure-VM gebruikt en verbinding maakt met een Azure Database for MariaDB-exemplaar. Dit MariaDB-exemplaar bevindt zich in het VS-West-Data Center. In het onderstaande voor beeld ziet u hoe u de toegang tot de open bare eind punten op Azure Database for MariaDB met behulp van besturings elementen voor netwerk toegang kunt beperken.
 
-* Schakel alle Azure-service verkeer uit voor Azure Database for MariaDB via het open bare eind punt door de instelling Azure-Services toestaan in te scha kelen. Zorg ervoor dat er geen IP-adressen of bereiken toegang hebben tot de server via [firewall regels](https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules) of [virtuele netwerk service-eind punten](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet).
+* Schakel alle Azure-service verkeer uit voor Azure Database for MariaDB via het open bare eind punt door de instelling Azure-Services toestaan in te scha kelen. Zorg ervoor dat er geen IP-adressen of bereiken toegang hebben tot de server via [firewall regels](concepts-firewall-rules.md) of [virtuele netwerk service-eind punten](concepts-data-access-security-vnet.md).
 
 * Alleen verkeer naar het Azure Database for MariaDB toestaan met behulp van het privé-IP-adres van de virtuele machine. Zie de artikelen over [Service-eindpunt](concepts-data-access-security-vnet.md) en [VNet-firewallregels](howto-manage-vnet-portal.md)voor meer informatie.
 
@@ -45,7 +45,7 @@ Met persoonlijke koppeling kunt u nu netwerk toegangs beheer instellen, zoals Ns
 
 Wanneer u verbinding maakt met het open bare eind punt vanaf de on-premises machines, moet uw IP-adres worden toegevoegd aan de op IP gebaseerde firewall met behulp van een firewall regel op server niveau. Hoewel dit model goed werkt voor het toestaan van toegang tot afzonderlijke computers voor ontwikkel- of testwerkbelastingen, is het moeilijk te beheren in een productieomgeving.
 
-Met persoonlijke koppeling kunt u cross-premises toegang tot het privé-eind punt inschakelen met behulp van [Express route](https://azure.microsoft.com/services/expressroute/) (er), persoonlijke peering of [VPN-tunnel](https://docs.microsoft.com/azure/vpn-gateway/). Ze kunnen vervolgens alle toegang uitschakelen via het open bare eind punt en de op IP gebaseerde firewall niet gebruiken.
+Met persoonlijke koppeling kunt u cross-premises toegang tot het privé-eind punt inschakelen met behulp van [Express route](https://azure.microsoft.com/services/expressroute/) (er), persoonlijke peering of [VPN-tunnel](../vpn-gateway/index.yml). Ze kunnen vervolgens alle toegang uitschakelen via het open bare eind punt en de op IP gebaseerde firewall niet gebruiken.
 
 > [!NOTE]
 > In sommige gevallen bevinden de Azure Database for MariaDB en het VNet-subnet zich in verschillende abonnementen. In deze gevallen moet u ervoor zorgen dat u de volgende configuraties hebt:
@@ -57,8 +57,8 @@ Met persoonlijke koppeling kunt u cross-premises toegang tot het privé-eind pun
 
 Privé-eind punten zijn vereist om een persoonlijke koppeling in te scha kelen. U kunt dit doen met behulp van de volgende hand leidingen.
 
-* [Azure-portal](https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-portal)
-* [CLI](https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-cli)
+* [Azure Portal](howto-configure-privatelink-portal.md)
+* [CLI](howto-configure-privatelink-cli.md)
 
 ### <a name="approval-process"></a>Goedkeuringsproces
 
@@ -90,17 +90,17 @@ Clients kunnen verbinding maken met het persoonlijke eind punt van hetzelfde VNe
 ![het overzicht van het persoonlijke eind punt selecteren](media/concepts-data-access-and-security-private-link/show-private-link-overview.png)
 
 ### <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>Verbinding maken vanaf een Azure VM in een Peered Virtual Network (VNet)
-Configureer [VNet-peering](https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-powershell) om verbinding te maken met de Azure database for MariaDB van een Azure-vm in een gekoppeld VNet.
+Configureer [VNet-peering](../virtual-network/tutorial-connect-virtual-networks-powershell.md) om verbinding te maken met de Azure database for MariaDB van een Azure-vm in een gekoppeld VNet.
 
 ### <a name="connecting-from-an-azure-vm-in-vnet-to-vnet-environment"></a>Verbinding maken vanaf een Azure VM in VNet-naar-VNet-omgeving
-Configureer de [vnet-naar-VNet VPN-gateway verbinding](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal) om verbinding te maken met een Azure database for MariaDB van een Azure-vm in een andere regio of een ander abonnement.
+Configureer de [vnet-naar-VNet VPN-gateway verbinding](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) om verbinding te maken met een Azure database for MariaDB van een Azure-vm in een andere regio of een ander abonnement.
 
 ### <a name="connecting-from-an-on-premises-environment-over-vpn"></a>Verbinding maken vanuit een on-premises omgeving via VPN
 Als u verbinding wilt maken vanuit een on-premises omgeving met de Azure Database for MariaDB, kiest en implementeert u een van de volgende opties:
 
-* [Punt-naar-site-verbinding](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
-* [Site-naar-site-VPN-verbinding](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell)
-* [ExpressRoute-circuit](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager)
+* [Punt-naar-site-verbinding](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
+* [Site-naar-site-VPN-verbinding](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
+* [ExpressRoute-circuit](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)
 
 ## <a name="private-link-combined-with-firewall-rules"></a>Privé koppeling gecombineerd met firewall regels
 
@@ -129,11 +129,11 @@ Zie voor meer informatie over het instellen van de **toegang van open bare netwe
 
 Raadpleeg de volgende artikelen voor meer informatie over Azure Database for MariaDB beveiligings functies:
 
-* Zie [firewall ondersteuning](https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules)als u een firewall wilt configureren voor Azure database for MariaDB.
+* Zie [firewall ondersteuning](concepts-firewall-rules.md)als u een firewall wilt configureren voor Azure database for MariaDB.
 
-* Zie [toegang vanaf virtuele netwerken configureren](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)voor meer informatie over het configureren van een service-eind punt voor een virtueel netwerk voor uw Azure database for MariaDB.
+* Zie [toegang vanaf virtuele netwerken configureren](concepts-data-access-security-vnet.md)voor meer informatie over het configureren van een service-eind punt voor een virtueel netwerk voor uw Azure database for MariaDB.
 
-* Zie [Azure database for MariaDB Connectivity Architecture](https://docs.microsoft.com/azure/MariaDB/concepts-connectivity-architecture) (Engelstalig) voor een overzicht van Azure database for MariaDB connectiviteit
+* Zie [Azure database for MariaDB Connectivity Architecture](concepts-connectivity-architecture.md) (Engelstalig) voor een overzicht van Azure database for MariaDB connectiviteit
 
 <!-- Link references, to text, Within this same GitHub repo. -->
 [resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

@@ -1,14 +1,14 @@
 ---
 title: 'Patroon: Effecten van een beleidsdefinitie'
 description: Dit Azure Policy-patroon biedt een voorbeeld van het gebruik van de verschillende effecten van een beleidsdefinitie.
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: sample
-ms.openlocfilehash: 9c7e7689aa837a2dba0992112df3cd36ac9affe6
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: f1da9bd153707db35c07ed3c176542797a694d7a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85565734"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073033"
 ---
 # <a name="azure-policy-pattern-effects"></a>Azure Policy-patroon: effecten
 
@@ -24,7 +24,7 @@ Met deze beleidsdefinitie controleert u of de tag die in de parameter **tagName*
 
 :::code language="json" source="~/policy-templates/patterns/pattern-effect-details-1.json" range="40-50":::
 
-Voor het effect **aanpassen** is het **policyRule.then.details**-blok vereist waarmee **roleDefinitionIds** en **operations** worden gedefinieerd. Aan de hand van deze parameters weet Azure Policy welke rollen nodig zijn om de tag toe te voegen en de resource te herstellen en welke bewerking voor **aanpassen** moet worden uitgevoerd. In dit voorbeeld bestaat de **bewerking** uit _toevoegen_ en worden de parameters gebruikt om de tag en de waarde daarvan in te stellen.
+Voor het effect **aanpassen** is het **policyRule.then.details**-blok vereist waarmee **roleDefinitionIds** en **operations** worden gedefinieerd. Aan de hand van deze parameters weet Azure Policy welke rollen nodig zijn om de tag toe te voegen en de resource te herstellen en welke bewerking voor **aanpassen** moet worden gebruikt. In dit voorbeeld worden de _bewerking_ **add** en de parameters gebruikt om de tag en de waarde daarvan in te stellen.
 
 ## <a name="sample-2-complex-effect"></a>Voorbeeld 2: Complex effect
 

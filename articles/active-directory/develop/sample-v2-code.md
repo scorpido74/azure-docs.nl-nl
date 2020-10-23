@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: sample
 ms.workload: identity
-ms.date: 06/01/2020
+ms.date: 10/21/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 948eea168b071813cf20e03d3a0744a824fd4c8c
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: e4327d8426a5dc1668993efd418c3f21624d407d
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91773889"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327651"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Codevoorbeelden voor Microsoft identity platform (v2.0-eindpunt)
 
@@ -27,9 +27,6 @@ U kunt Microsoft identity platform gebruiken voor het volgende:
 - Een toegangstoken vereisen voor toegang tot een beveiligde web-API.
 
 Dit artikel bevat een korte beschrijving van en koppelingen naar voorbeelden voor het Microsoft identity platform-eindpunt. Deze voorbeelden laten zien hoe het werkt en bevatten ook codefragmenten die u kunt gebruiken in uw toepassingen. Op de pagina met codevoorbeelden vindt u gedetailleerde leesmij-onderwerpen om u te helpen bij de vereisten, installatie en configuratie. Opmerkingen in de code helpen u de kritieke secties te begrijpen.
-
-> [!NOTE]
-> Als u geïnteresseerd bent in v1.0-voorbeelden, raadpleegt u [Azure AD-codevoorbeelden (v1.0-eindpunt)](../azuread-dev/sample-v1-code.md).
 
 Zie [App-typen voor het Microsoft identity platform-eindpunt](v2-app-types.md) voor meer informatie over het basisscenario voor elk type voorbeeld.
 
@@ -142,5 +139,4 @@ Zie de [voorbeelden en zelfstudies van de Microsoft Graph-community](https://git
 
 ## <a name="see-also"></a>Zie ook
 
-- [Ontwikkelaarshandleiding voor Azure Active Directory (v1.0)](../azuread-dev/v1-overview.md)
-- [Conceptuele en naslaginformatie over de Microsoft Graph API](/graph/use-the-api?context=graph%2fapi%2fbeta&view=graph-rest-beta)
+[Conceptuele en naslaginformatie over de Microsoft Graph API](/graph/use-the-api?context=graph%2fapi%2fbeta&view=graph-rest-beta)

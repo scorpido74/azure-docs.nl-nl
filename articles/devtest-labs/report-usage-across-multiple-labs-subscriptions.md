@@ -3,16 +3,16 @@ title: Azure DevTest Labs gebruik in meerdere Labs en abonnementen
 description: Meer informatie over het rapporteren van Azure DevTest Labs gebruik over meerdere Labs en abonnementen.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 1d2663113e929145308f5a5712b968f3551668c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9640dc3fd74095a737f382994201dc5610af921a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87287283"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152207"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>Rapport Azure DevTest Labs gebruik in meerdere Labs en abonnementen
 
-De meeste grote organisaties willen het resource gebruik volgen om effectiever te zijn met deze resources door trends en uitschieters in het gebruik te visualiseren. Op basis van resource gebruik kunnen de Lab-eigen aren of-managers de Labs aanpassen om het [resource gebruik en de kosten te verbeteren](../cost-management-billing/manage/getting-started.md). In Azure DevTest Labs kunt u het resource gebruik per Lab downloaden zodat een diep gaande historisch inzicht in de gebruiks patronen kan worden weer geven. Deze gebruiks patronen kunnen helpen bij het lokaliseren van wijzigingen om de efficiëntie te verbeteren. De meeste ondernemingen willen zowel het individuele Lab-gebruik als het algehele gebruik over [meerdere Labs en abonnementen](/azure/architecture/cloud-adoption/decision-guides/subscriptions/). 
+De meeste grote organisaties willen het resource gebruik volgen om effectiever te zijn met deze resources door trends en uitschieters in het gebruik te visualiseren. Op basis van resource gebruik kunnen de Lab-eigen aren of-managers de Labs aanpassen om het [resource gebruik en de kosten te verbeteren](../cost-management-billing/cost-management-billing-overview.md). In Azure DevTest Labs kunt u het resource gebruik per Lab downloaden zodat een diep gaande historisch inzicht in de gebruiks patronen kan worden weer geven. Deze gebruiks patronen kunnen helpen bij het lokaliseren van wijzigingen om de efficiëntie te verbeteren. De meeste ondernemingen willen zowel het individuele Lab-gebruik als het algehele gebruik over [meerdere Labs en abonnementen](/azure/architecture/cloud-adoption/decision-guides/subscriptions/). 
 
 In dit artikel wordt beschreven hoe u gegevens over resource gebruik kunt afhandelen in meerdere Labs en abonnementen.
 

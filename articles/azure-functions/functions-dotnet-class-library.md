@@ -4,12 +4,12 @@ description: Meer informatie over het ontwikkelen van Azure Functions met C#.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 23b0961c369c21f50d9a873678a1c910385e6a91
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19edfaf7998632ed1ebb48ff4ad36468669732ae
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88206207"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167743"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Naslaginformatie over Azure Functions C# voor ontwikkelaars
 
@@ -164,18 +164,7 @@ De *function.jsvoor* het genereren van bestanden wordt uitgevoerd door de [micro
 
 Hetzelfde pakket wordt gebruikt voor versie 1. x en 2. x van de functions-runtime. Het doel raamwerk is een onderscheid tussen een 1. x-project en een 2. x-project. Hier vindt u de relevante delen van *. csproj* -bestanden, met verschillende doel raamwerken en hetzelfde `Sdk` pakket:
 
-**Functions 1.x**
-
-```xml
-<PropertyGroup>
-  <TargetFramework>net461</TargetFramework>
-</PropertyGroup>
-<ItemGroup>
-  <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.8" />
-</ItemGroup>
-```
-
-**Functions 2.x**
+# <a name="v2x"></a>[v2. x +](#tab/v2)
 
 ```xml
 <PropertyGroup>
@@ -186,6 +175,19 @@ Hetzelfde pakket wordt gebruikt voor versie 1. x en 2. x van de functions-runtim
   <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.8" />
 </ItemGroup>
 ```
+
+# <a name="v1x"></a>[v1. x](#tab/v1)
+
+```xml
+<PropertyGroup>
+  <TargetFramework>net461</TargetFramework>
+</PropertyGroup>
+<ItemGroup>
+  <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.8" />
+</ItemGroup>
+```
+---
+
 
 Onder de `Sdk` pakket afhankelijkheden zijn triggers en bindingen. Een 1. x-project verwijst naar 1. x-triggers en-bindingen, omdat de triggers en bindingen het .NET Framework doel hebben, terwijl 2. x-triggers en-bindingen .NET core hebben.
 
@@ -259,25 +261,6 @@ public static class ICollectorExample
 }
 ```
 
-## <a name="logging"></a>Logboekregistratie
-
-Als u de uitvoer wilt registreren in de streaming-Logboeken in C#, neemt u een argument van het type [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger)op. U wordt aangeraden deze naam `log` te noemen, zoals in het volgende voor beeld:  
-
-```csharp
-public static class SimpleExample
-{
-    [FunctionName("QueueTrigger")]
-    public static void Run(
-        [QueueTrigger("myqueue-items")] string myQueueItem, 
-        ILogger log)
-    {
-        log.LogInformation($"C# function processed: {myQueueItem}");
-    }
-} 
-```
-
-Vermijd het gebruik `Console.Write` van in azure functions. Zie [Logboeken schrijven in C#-functies](functions-monitoring.md#write-logs-in-c-functions) in het artikel **monitor Azure functions** voor meer informatie.
-
 ## <a name="async"></a>Async
 
 Als u een functie [asynchroon](/dotnet/csharp/programming-guide/concepts/async/)wilt maken, gebruikt u het `async` tref woord en retourneert u een `Task` object.
@@ -327,6 +310,237 @@ public static class CancellationTokenExample
     }
 }
 ```
+
+## <a name="logging"></a>Logboekregistratie
+
+In de functie code kunt u uitvoer schrijven naar logboeken die als traceringen worden weer gegeven in Application Insights. De aanbevolen manier om naar de logboeken te schrijven, is door een para meter van het type [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger)op te neemt. Dit is meestal een naam `log` . Versie 1. x van de functions runtime gebruikt `TraceWriter` , die ook naar Application Insights schrijft, maar geen ondersteuning biedt voor gestructureerde logboek registratie. Gebruik niet `Console.Write` om uw logboeken te schrijven, omdat deze gegevens niet worden vastgelegd door Application Insights. 
+
+### <a name="ilogger"></a>ILogger
+
+Neem in de functie definitie een [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) -para meter op die [gestructureerde logboek registratie](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)ondersteunt.
+
+Met een `ILogger` -object roept u `Log<level>` [uitbreidings methoden aan op ILogger](/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) om logboeken te maken. Met de volgende code worden `Information` Logboeken geschreven met de categorie `Function.<YOUR_FUNCTION_NAME>.User.` :
+
+```cs
+public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger logger)
+{
+    logger.LogInformation("Request for item with key={itemKey}.", id);
+```
+
+### <a name="structured-logging"></a>Gestructureerde logboek registratie
+
+De volg orde van tijdelijke aanduidingen, niet de namen, bepaalt welke para meters worden gebruikt in het logboek bericht. Stel dat u de volgende code hebt:
+
+```csharp
+string partitionKey = "partitionKey";
+string rowKey = "rowKey";
+logger.LogInformation("partitionKey={partitionKey}, rowKey={rowKey}", partitionKey, rowKey);
+```
+
+Als u dezelfde bericht teken reeks behoudt en de volg orde van de para meters omkeert, zouden de resulterende bericht tekst de waarden op de verkeerde plaatsen zouden hebben.
+
+Tijdelijke aanduidingen worden op deze manier verwerkt, zodat u gestructureerde logboek registratie kunt uitvoeren. Application Insights slaat de parameter naam/waarde-paren en de bericht teken reeks op. Het resultaat is dat de bericht argumenten worden velden waarop u kunt zoeken.
+
+Als de aanroep van de traceer methode lijkt op het vorige voor beeld, kunt u het veld opvragen `customDimensions.prop__rowKey` . Het `prop__` voor voegsel wordt toegevoegd om ervoor te zorgen dat er geen conflicten zijn tussen velden die door de runtime worden toegevoegd en de velden die door de functie code worden toegevoegd.
+
+U kunt ook een query uitvoeren op de oorspronkelijke bericht teken reeks door te verwijzen naar het veld `customDimensions.prop__{OriginalFormat}` .  
+
+Hier volgt een voor beeld van een JSON-weer gave van `customDimensions` gegevens:
+
+```json
+{
+  "customDimensions": {
+    "prop__{OriginalFormat}":"C# Queue trigger function processed: {message}",
+    "Category":"Function",
+    "LogLevel":"Information",
+    "prop__message":"c9519cbf-b1e6-4b9b-bf24-cb7d10b1bb89"
+  }
+}
+```
+
+## <a name="log-custom-telemetry-in-c-functions"></a>Aangepaste telemetrie voor logboeken in C#-functies
+
+Er is een functie-specifieke versie van de Application Insights SDK waarmee u aangepaste telemetriegegevens van uw functies kunt verzenden naar Application Insights: [micro soft. Azure. webjobs. Logging. ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights). Gebruik de volgende opdracht vanaf de opdracht prompt om dit pakket te installeren:
+
+# <a name="command"></a>[Opdracht](#tab/cmd)
+
+```cmd
+dotnet add package Microsoft.Azure.WebJobs.Logging.ApplicationInsights --version <VERSION>
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -Version <VERSION>
+```
+
+---
+
+Vervang in deze opdracht door `<VERSION>` een versie van dit pakket die de geïnstalleerde versie van [micro soft. Azure. webjobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs/)ondersteunt. 
+
+In de volgende C#-voor beelden wordt de [aangepaste telemetrie-API](../azure-monitor/app/api-custom-events-metrics.md)gebruikt. Het voor beeld is voor een .NET-klassebibliotheek, maar de Application Insights code is hetzelfde voor het C#-script.
+
+# <a name="v2x"></a>[v2. x +](#tab/v2)
+
+Versie 2. x en latere versies van de runtime gebruiken nieuwere functies in Application Insights om telemetrie automatisch te correleren met de huidige bewerking. U hoeft de bewerking `Id` , of velden, niet hand matig in te stellen `ParentId` `Name` .
+
+```cs
+using System;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.DataContracts;
+using Microsoft.ApplicationInsights.Extensibility;
+using System.Linq;
+
+namespace functionapp0915
+{
+    public class HttpTrigger2
+    {
+        private readonly TelemetryClient telemetryClient;
+
+        /// Using dependency injection will guarantee that you use the same configuration for telemetry collected automatically and manually.
+        public HttpTrigger2(TelemetryConfiguration telemetryConfiguration)
+        {
+            this.telemetryClient = new TelemetryClient(telemetryConfiguration);
+        }
+
+        [FunctionName("HttpTrigger2")]
+        public Task<IActionResult> Run(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)]
+            HttpRequest req, ExecutionContext context, ILogger log)
+        {
+            log.LogInformation("C# HTTP trigger function processed a request.");
+            DateTime start = DateTime.UtcNow;
+
+            // Parse query parameter
+            string name = req.Query
+                .FirstOrDefault(q => string.Compare(q.Key, "name", true) == 0)
+                .Value;
+
+            // Write an event to the customEvents table.
+            var evt = new EventTelemetry("Function called");
+            evt.Context.User.Id = name;
+            this.telemetryClient.TrackEvent(evt);
+
+            // Generate a custom metric, in this case let's use ContentLength.
+            this.telemetryClient.GetMetric("contentLength").TrackValue(req.ContentLength);
+
+            // Log a custom dependency in the dependencies table.
+            var dependency = new DependencyTelemetry
+            {
+                Name = "GET api/planets/1/",
+                Target = "swapi.co",
+                Data = "https://swapi.co/api/planets/1/",
+                Timestamp = start,
+                Duration = DateTime.UtcNow - start,
+                Success = true
+            };
+            dependency.Context.User.Id = name;
+            this.telemetryClient.TrackDependency(dependency);
+
+            return Task.FromResult<IActionResult>(new OkResult());
+        }
+    }
+}
+```
+
+In dit voor beeld worden de aangepaste metrische gegevens geaggregeerd door de host voordat ze worden verzonden naar de tabel customMetrics. Zie de [GetMetric](../azure-monitor/app/api-custom-events-metrics.md#getmetric) -documentatie in Application Insights voor meer informatie. 
+
+Wanneer u lokaal uitvoert, moet u de `APPINSIGHTS_INSTRUMENTATIONKEY` instelling, met de Application Insights sleutel, toevoegen aan de [local.settings.jsin](functions-run-local.md#local-settings-file) het bestand.
+
+
+# <a name="v1x"></a>[v1. x](#tab/v1)
+
+```cs
+using System;
+using System.Net;
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.DataContracts;
+using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.Azure.WebJobs;
+using System.Net.Http;
+using System.Threading.Tasks;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.Extensions.Logging;
+using System.Linq;
+
+namespace functionapp0915
+{
+    public static class HttpTrigger2
+    {
+        private static string key = TelemetryConfiguration.Active.InstrumentationKey = 
+            System.Environment.GetEnvironmentVariable(
+                "APPINSIGHTS_INSTRUMENTATIONKEY", EnvironmentVariableTarget.Process);
+
+        private static TelemetryClient telemetryClient = 
+            new TelemetryClient() { InstrumentationKey = key };
+
+        [FunctionName("HttpTrigger2")]
+        public static async Task<HttpResponseMessage> Run(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]
+            HttpRequestMessage req, ExecutionContext context, ILogger log)
+        {
+            log.LogInformation("C# HTTP trigger function processed a request.");
+            DateTime start = DateTime.UtcNow;
+
+            // Parse query parameter
+            string name = req.GetQueryNameValuePairs()
+                .FirstOrDefault(q => string.Compare(q.Key, "name", true) == 0)
+                .Value;
+
+            // Get request body
+            dynamic data = await req.Content.ReadAsAsync<object>();
+
+            // Set name to query string or body data
+            name = name ?? data?.name;
+         
+            // Track an Event
+            var evt = new EventTelemetry("Function called");
+            UpdateTelemetryContext(evt.Context, context, name);
+            telemetryClient.TrackEvent(evt);
+            
+            // Track a Metric
+            var metric = new MetricTelemetry("Test Metric", DateTime.Now.Millisecond);
+            UpdateTelemetryContext(metric.Context, context, name);
+            telemetryClient.TrackMetric(metric);
+            
+            // Track a Dependency
+            var dependency = new DependencyTelemetry
+                {
+                    Name = "GET api/planets/1/",
+                    Target = "swapi.co",
+                    Data = "https://swapi.co/api/planets/1/",
+                    Timestamp = start,
+                    Duration = DateTime.UtcNow - start,
+                    Success = true
+                };
+            UpdateTelemetryContext(dependency.Context, context, name);
+            telemetryClient.TrackDependency(dependency);
+        }
+        
+        // Correlate all telemetry with the current Function invocation
+        private static void UpdateTelemetryContext(TelemetryContext context, ExecutionContext functionContext, string userName)
+        {
+            context.Operation.Id = functionContext.InvocationId.ToString();
+            context.Operation.ParentId = functionContext.InvocationId.ToString();
+            context.Operation.Name = functionContext.FunctionName;
+            context.User.Id = userName;
+        }
+    }    
+}
+```
+---
+
+`TrackRequest`U kunt niet bellen of `StartOperation<RequestTelemetry>` omdat er dubbele aanvragen voor een functie aanroep worden weer geven.  Met de functie runtime worden aanvragen automatisch bijgehouden.
+
+Niet instellen `telemetryClient.Context.Operation.Id` . Deze globale instelling veroorzaakt een onjuiste correlatie wanneer er meerdere functies tegelijkertijd worden uitgevoerd. Maak in plaats daarvan een nieuwe telemetrie-instantie ( `DependencyTelemetry` , `EventTelemetry` ) en wijzig de bijbehorende `Context` eigenschap. Geef vervolgens de telemetrie-instantie door aan de overeenkomstige `Track` methode op `TelemetryClient` ( `TrackDependency()` , `TrackEvent()` , `TrackMetric()` ). Deze methode zorgt ervoor dat de telemetrie de juiste correlatie details heeft voor de huidige functie aanroep.
+
 
 ## <a name="environment-variables"></a>Omgevingsvariabelen
 

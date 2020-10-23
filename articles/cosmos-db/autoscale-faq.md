@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/10/2020
-ms.openlocfilehash: bc8e5baa92f507c9abb9bc6b5305773010803f01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5905471dad5cf4e2e8191894af52c503c23e9036
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567584"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277977"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Veelgestelde vragen over het automatisch schalen van ingerichte door Voer in Azure Cosmos DB
 
@@ -125,7 +125,7 @@ Stel dat u een container voor automatisch schalen hebt met 400 – 4000 RU/s:
 - Uur 1: T = 2: de container begint met het ophalen van aanvragen, waarbij 1000 RU in 1 seconde wordt gebruikt. Er zijn ook 200 RUs-waarde voor TTL die moet plaatsvinden. De factureer bare RU/s is nog steeds 1000 RU/s. Ongeacht wanneer de TTLs zich voordoet, heeft dit geen invloed op de logica voor automatisch schalen schalen.
 
 ### <a name="what-is-the-mapping-between-the-max-rus-and-physical-partitions"></a>Wat is de toewijzing tussen de Max RU/s en fysieke partities?
-Wanneer u voor het eerst het maximum aantal RU/s selecteert, wordt Azure Cosmos DB ingericht: max. RU/s/10.000 RU/s = aantal fysieke partities. Elke [fysieke partitie](partition-data.md#physical-partitions) kan maxi maal 10.000 ru/s en 50 GB aan opslag ondersteunen. Wanneer de grootte van de opslag groeit, neemt Azure Cosmos DB automatisch de partities op om meer fysieke partities toe te voegen om de opslag toename te verwerken of om het maximum aantal RU/s te verhogen als [de opslag de bijbehorende limiet overschrijdt](#what-is-the-storage-limit-associated-with-each-max-rus-option). 
+Wanneer u voor het eerst het maximum aantal RU/s selecteert, wordt Azure Cosmos DB ingericht: max. RU/s/10.000 RU/s = aantal fysieke partities. Elke [fysieke partitie](partitioning-overview.md#physical-partitions) kan maxi maal 10.000 ru/s en 50 GB aan opslag ondersteunen. Wanneer de grootte van de opslag groeit, neemt Azure Cosmos DB automatisch de partities op om meer fysieke partities toe te voegen om de opslag toename te verwerken of om het maximum aantal RU/s te verhogen als [de opslag de bijbehorende limiet overschrijdt](#what-is-the-storage-limit-associated-with-each-max-rus-option). 
 
 Het maximum aantal RU/s van de data base of container wordt gelijkmatig verdeeld over alle fysieke partities. De totale door Voer van elke fysieke partitie kan worden geschaald naar is: Max RU/s data base of container/# fysieke partities. 
 
@@ -147,5 +147,5 @@ Als u bijvoorbeeld de optie Max-doorvoer capaciteit 20.000 RU/s selecteert en 20
 
 * Meer informatie over het [inschakelen van automatisch schalen op een Azure Cosmos DB-Data Base of-container](how-to-provision-autoscale-throughput.md).
 * Meer informatie over de [voor delen van ingerichte door Voer met automatisch schalen](provision-throughput-autoscale.md#benefits-of-autoscale).
-* Meer informatie over [logische en fysieke partities](partition-data.md).
+* Meer informatie over [logische en fysieke partities](partitioning-overview.md).
                         

@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 4ef19b1fc8f0d503f1a35c60afd1faec2a548ca4
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5cb4e3dd4145319361a2494ee346c0d2696edf45
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681988"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148307"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-mysql"></a>Hoe reserveringskorting wordt toegepast op Azure Database for MySQL
 
@@ -30,7 +30,7 @@ De korting op gereserveerde capaciteit voor Azure Database for MySQL wordt op uu
 
 In de volgende voorbeelden ziet u hoe de korting voor de gereserveerde capaciteit voor Azure Database for MySQL wordt toegepast, afhankelijk van hoeveel kernen u hebt aangeschaft en wanneer deze worden uitgevoerd.
 
-* **Voorbeeld 1**: U koopt een gereserveerde capaciteit voor Azure Database for MySQL voor acht vCores. Als u een Azure Database for MySQL-server met 16 vCores uitvoert die met de rest van de reserveringskenmerken overeenkomt, betaalt u voor 8 vCores van uw MySQL-serverrekengebruik de prijs per gebruik en krijgt u op de andere 8 vCores een uur lang reserveringskorting.</br>
+**Voorbeeld 1**: U koopt een gereserveerde capaciteit voor Azure Database for MySQL voor acht vCores. Als u een Azure Database for MySQL-server met 16 vCores uitvoert die met de rest van de reserveringskenmerken overeenkomt, betaalt u voor 8 vCores van uw MySQL-serverrekengebruik de prijs per gebruik en krijgt u op de andere 8 vCores een uur lang reserveringskorting.</br>
 
 Voor de rest van deze voorbeelden wordt ervan uitgegaan dat u gereserveerde capaciteit voor Azure Database for MySQL met 16 vCores koopt en dat de rest van de reserveringskenmerken overeenkomen met de actieve MySQL-servers.
 
@@ -40,7 +40,7 @@ Voor de rest van deze voorbeelden wordt ervan uitgegaan dat u gereserveerde capa
 
 * **Voorbeeld 4**: U voert van 13.00 tot 13.45 uur een Azure Database for MySQL-server met 16 vCores uit. Van 13.30 tot 14.00 uur voert u nog een Azure Database for MySQL-server met 16 vCores uit. Voor de overlapping van 15 minuten wordt de prijs voor betalen per gebruik in rekening gebracht. De reserveringskorting geldt voor het rekengebruik voor de rest van de tijd.
 
-Raadpleeg [Meer informatie over Azure-reserveringsgebruik](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) voor meer informatie over en inzicht in hoe uw Azure-reserveringen worden toegepast in uw gebruiksrapporten voor facturering.
+Raadpleeg [Meer informatie over Azure-reserveringsgebruik](./understand-reserved-instance-usage-ea.md) voor meer informatie over en inzicht in hoe uw Azure-reserveringen worden toegepast in uw gebruiksrapporten voor facturering.
 
 ## <a name="next-steps"></a>Volgende stappen
 

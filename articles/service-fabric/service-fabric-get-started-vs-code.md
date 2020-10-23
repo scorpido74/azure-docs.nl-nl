@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.custom: devx-track-js
-ms.openlocfilehash: a2ac8a84b4df4a241665e7f4269803908733ca82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a655199d854462285ca98a2d8f454c483c061f99
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91249906"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316658"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric voor Visual Studio code
 
@@ -42,7 +42,7 @@ De volgende vereiste onderdelen moeten worden geïnstalleerd in alle omgevingen.
 
 De volgende vereiste onderdelen moeten worden geïnstalleerd voor Java-ontwikkeling:
 
-* [Java SDK](https://aka.ms/azure-jdks) (versie 1,8)
+* [Java SDK](/azure/developer/java/fundamentals/java-jdk-long-term-support) (versie 1,8)
 * [Gradle](https://gradle.org/install/)
 * [Fout opsporing voor Java versus code-uitbrei ding](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug) Nodig voor fout opsporing van Java-Services. Fout opsporing van Java-Services wordt alleen ondersteund in Linux. U kunt dit doen door te klikken op het pictogram extensies in de **activiteiten balk** in VS code en te zoeken naar de uitbrei ding of via de VS code Marketplace.
 
@@ -56,7 +56,7 @@ De volgende vereiste onderdelen moeten worden geïnstalleerd voor .NET core/C#-o
 1. Open VS Code.
 2. Klik op het pictogram uitbrei dingen in de **activiteiten balk** aan de linkerkant van VS code. Zoek naar "Service Fabric". Klik op **installeren** voor de uitbrei ding service Fabric reliable Services.
 
-## <a name="commands"></a>Opdracht
+## <a name="commands"></a>Opdrachten
 De uitbrei ding Service Fabric Reliable Services voor VS code biedt een groot aantal opdrachten waarmee ontwikkel aars Service Fabric projecten kunnen maken en implementeren. U kunt opdrachten vanuit het **opdracht palet** aanroepen door op, op de `(Ctrl + Shift + p)` opdracht naam in de invoer balk te drukken en de gewenste opdracht te selecteren in de lijst prompt. 
 
 * Service Fabric: toepassing maken 

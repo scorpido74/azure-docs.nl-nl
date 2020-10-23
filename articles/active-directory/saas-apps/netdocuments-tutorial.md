@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 245818b60647539c7fff7c45dcecdc6840153fb5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 536fcab8cdfea4846cc1122fa56c939f525388f4
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549038"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938471"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>Zelfstudie: Eenmalige aanmelding (SSO) van Azure Active Directory integreren met NetDocuments
 
@@ -136,7 +136,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 3. Selecteer **Beveiligingscentrum**.
    
-    ![Opslagplaats](./media/netdocuments-tutorial/security-center.png "Beveiligingscentrum")
+    ![Schermopname met Security Center geselecteerd in Juridische documenten.](./media/netdocuments-tutorial/security-center.png "Beveiligingscentrum")
 
 4. Selecteer **Geavanceerde verificatie**.
     
@@ -166,7 +166,7 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij NetDocuments, moete
 
 3. Selecteer **Gebruikers en groepen**.
    
-    ![Opslagplaats](./media/netdocuments-tutorial/users-groups.png "Opslagplaats")
+    ![Schermopname met Gebruikers en groepen geselecteerd in Juridische documenten.](./media/netdocuments-tutorial/users-groups.png "Opslagplaats")
 
 4. Typ in het tekstvak **E-mailadres** het e-mailadres van een geldig Azure Active Directory-account dat u wilt inrichten en klik vervolgens op **Gebruiker toevoegen**.
    

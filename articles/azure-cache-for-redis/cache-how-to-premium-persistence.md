@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: fbfd384787d35317a4e45c4f91cf8a3ad4ba5a61
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 9927d4780ea015502151188b61c50ddbd2656819
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "92000021"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339540"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Gegevens persistentie configureren voor een Premium Azure-cache voor redis
 In dit artikel vindt u informatie over het configureren van persistentie in een Premium Azure-cache voor een redis-exemplaar via de Azure Portal. Azure cache voor redis heeft verschillende cache aanbiedingen, die flexibiliteit bieden bij het kiezen van de cache grootte en-functies, inclusief functies van de Premium-laag, zoals clustering, persistentie en ondersteuning voor virtuele netwerken. 
@@ -32,7 +32,7 @@ Met persistentie worden redis-gegevens naar een Azure Storage-account geschreven
 > 
 > 
 
-1. Als u een Premium-cache wilt maken, meldt u zich aan bij de [Azure Portal](https://portal.azure.com) en selecteert u **een resource maken**. U kunt caches niet alleen in Azure Portal maken. U kunt ze ook maken met Resource Manager-sjablonen, PowerShell of Azure CLI. Zie [Create a cache](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)(Engelstalig) voor meer informatie over het maken van een Azure-cache voor redis.
+1. Als u een Premium-cache wilt maken, meldt u zich aan bij de [Azure Portal](https://portal.azure.com) en selecteert u **een resource maken**. U kunt caches niet alleen in Azure Portal maken. U kunt ze ook maken met Resource Manager-sjablonen, PowerShell of Azure CLI. Zie [Een cache maken](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache) voor meer informatie over het maken van een Azure Cache voor Redis.
 
     :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="Resource maken.":::
    
@@ -63,7 +63,7 @@ Met persistentie worden redis-gegevens naar een Azure Storage-account geschreven
    | Instelling      | Voorgestelde waarde  | Beschrijving |
    | ------------ |  ------- | -------------------------------------------------- |
    | **Back-upfrequentie** | Vervolg keuzelijst en selecteer een back-upinterval, met de volgende opties: **15 minuten**, **30 minuten**, **60 minuten**, **6 uur**, **12 uur**en **24 uur**. | Dit interval begint met tellen nadat de vorige back-upbewerking is voltooid en wanneer wordt gewacht tot een nieuwe back-up wordt gestart. | 
-   | **Opslagaccount** | Vervolg keuzelijst en selecteer uw opslag account. | U moet een opslag account in dezelfde regio kiezen als de cache en een **Premium Storage** account wordt aanbevolen omdat Premium Storage een hogere door Voer heeft.  | 
+   | **Opslagaccount** | Vervolg keuzelijst en selecteer uw opslag account. | U moet een opslag account in dezelfde regio en hetzelfde abonnement als de cache kiezen en een **Premium Storage** account wordt aanbevolen omdat Premium Storage een hogere door Voer heeft.  | 
    | **Opslagsleutel** | En kies de **primaire** of **secundaire sleutel** die u wilt gebruiken. | Als de opslag sleutel voor uw persistentie account opnieuw wordt gegenereerd, moet u de gewenste sleutel opnieuw configureren in de vervolg keuzelijst **opslag sleutel** . | 
 
     De eerste back-up wordt gestart zodra het interval voor de back-upfrequentie is verstreken.
@@ -72,9 +72,9 @@ Met persistentie worden redis-gegevens naar een Azure Storage-account geschreven
    
    | Instelling      | Voorgestelde waarde  | Beschrijving |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **Eerste opslag account** | Vervolg keuzelijst en selecteer uw opslag account. | Dit opslag account moet zich in dezelfde regio bevinden als de cache en een **Premium Storage** -account wordt aanbevolen omdat Premium Storage een hogere door Voer heeft. | 
+   | **Eerste opslag account** | Vervolg keuzelijst en selecteer uw opslag account. | Dit opslag account moet zich in dezelfde regio en hetzelfde abonnement bevinden als de cache, en een **Premium Storage** -account wordt aanbevolen omdat Premium Storage een hogere door Voer heeft. | 
    | **Eerste opslag sleutel** | En kies de **primaire** of **secundaire sleutel** die u wilt gebruiken. | Als de opslag sleutel voor uw persistentie account opnieuw wordt gegenereerd, moet u de gewenste sleutel opnieuw configureren in de vervolg keuzelijst **opslag sleutel** . | 
-   | **Tweede opslag account** | Beschrijving En kies de **primaire** of **secundaire sleutel** die u wilt gebruiken. | U kunt optioneel een extra opslag account configureren. Als er een tweede opslag account is geconfigureerd, worden de schrijf bewerkingen naar de replica cache naar dit tweede opslag account geschreven. | 
+   | **Tweede opslag account** | Beschrijving Vervolg keuzelijst en selecteer uw secundaire opslag account. | U kunt optioneel een extra opslag account configureren. Als er een tweede opslag account is geconfigureerd, worden de schrijf bewerkingen naar de replica cache naar dit tweede opslag account geschreven. | 
    | **Tweede opslag sleutel** | Beschrijving En kies de **primaire** of **secundaire sleutel** die u wilt gebruiken. | Als de opslag sleutel voor uw persistentie account opnieuw wordt gegenereerd, moet u de gewenste sleutel opnieuw configureren in de vervolg keuzelijst **opslag sleutel** . | 
 
     Wanneer AOF-persistentie is ingeschakeld, worden schrijf bewerkingen naar de cache opgeslagen in het toegewezen opslag account (of de accounts als u een tweede opslag account hebt geconfigureerd). In het geval van een onherstelbare fout die zowel de primaire als de replica cache inneemt, wordt het opgeslagen AOF-logboek gebruikt om de cache opnieuw op te bouwen.
@@ -83,11 +83,11 @@ Met persistentie worden redis-gegevens naar een Azure Storage-account geschreven
 
 11. Voer desgewenst in het tabblad **Tags** de naam en waarde in om de resource te categoriseren. 
 
-12. Selecteer  **Beoordelen + maken**. Het tabblad Beoordelen + maken wordt weergegeven, waar uw configuratie wordt gevalideerd in Azure.
+12. Selecteer **Controleren + maken**. Het tabblad Beoordelen + maken wordt weergegeven, waar uw configuratie wordt gevalideerd in Azure.
 
 13. Selecteer **Maken** nadat het groene bericht Validatie geslaagd verschijnt.
 
-Het duurt even voor de cache is gemaakt. U kunt de voortgang bekijken op de  **overzichtspagina**  van Azure Cache voor Redis. Wanneer  **Status** wordt weergegeven als  **Wordt uitgevoerd**, is de cache klaar voor gebruik. 
+Het duurt even voor de cache is gemaakt. U kunt de voortgang bekijken op de **overzichtspagina** van Azure Cache voor Redis. Als u bij **Status** **Wordt uitgevoerd** ziet staan, kunt u de cache gebruiken. 
 
 ## <a name="persistence-faq"></a>Veelgestelde vragen over persistentie
 De volgende lijst bevat antwoorden op veelgestelde vragen over Azure cache voor redis persistentie.
@@ -96,6 +96,7 @@ De volgende lijst bevat antwoorden op veelgestelde vragen over Azure cache voor 
 * [Kan ik AOF en RDB-persistentie op hetzelfde moment inschakelen?](#can-i-enable-aof-and-rdb-persistence-at-the-same-time)
 * [Welk persistentie model moet ik kiezen?](#which-persistence-model-should-i-choose)
 * [Wat gebeurt er als u een andere grootte hebt geschaald en een back-up wordt hersteld die is gemaakt vóór de schaal bewerking?](#what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation)
+* [Kan ik hetzelfde opslag account gebruiken voor persistentie over twee verschillende caches?](#can-i-use-the-same-storage-account-for-persistence-across-two-different-caches)
 
 
 ### <a name="rdb-persistence"></a>RDB-persistentie
@@ -135,6 +136,9 @@ Voor zowel RDB-als AOF-persistentie:
 * Als u naar een grotere grootte hebt geschaald, is er geen impact.
 * Als u naar een kleinere grootte hebt geschaald en u een aangepaste [Data Base](cache-configure.md#databases) -instelling hebt die groter is dan de limiet voor de [Data Base](cache-configure.md#databases) voor de nieuwe grootte, worden de gegevens in die data bases niet hersteld. Zie voor meer informatie [de instelling mijn aangepaste data bases wordt beïnvloed tijdens het schalen?](cache-how-to-scale.md#is-my-custom-databases-setting-affected-during-scaling)
 * Als u naar een kleinere grootte hebt geschaald en er onvoldoende ruimte is in de kleinere grootte om alle gegevens van de laatste back-up te bewaren, worden de sleutels tijdens het herstel proces verwijderd, meestal met behulp van het verwijderings beleid voor [AllKeys-LRU](https://redis.io/topics/lru-cache) .
+
+### <a name="can-i-use-the-same-storage-account-for-persistence-across-two-different-caches"></a>Kan ik hetzelfde opslag account gebruiken voor persistentie over twee verschillende caches?
+Ja, u kunt hetzelfde opslag account gebruiken voor persistentie over twee verschillende caches
 
 ### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>Kan ik de frequentie van de RDB-back-up wijzigen nadat ik de cache heb gemaakt?
 Ja, u kunt de back-upfrequentie voor RDB-persistentie op de Blade **gegevens persistentie** wijzigen. Zie redis-persistentie configureren voor instructies.

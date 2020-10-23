@@ -1,17 +1,17 @@
 ---
-title: De juiste doorvoer aanbieding kiezen in Azure Cosmos DB
+title: Kiezen tussen hand matig en automatisch schalen op Azure Cosmos DB
 description: Meer informatie over het kiezen van een standaard (hand matige) ingerichte door Voer en het automatisch schalen van ingerichte door Voer voor uw werk belasting.
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: dech
-ms.openlocfilehash: fbe17d75ad809c54939624b1409e281b2f62a037
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0365238fd70e2e098e5a228ee71d5b9e0e584c71
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88605203"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279774"
 ---
 # <a name="how-to-choose-between-standard-manual-and-autoscale-provisioned-throughput"></a>Kiezen tussen standaard (hand matig) en ingerichte door Voer voor automatisch schalen 
 
@@ -54,17 +54,82 @@ Als u een bestaande toepassing hebt die gebruikmaakt van Standard (hand matig) i
 
 Zoek eerst de metrische gegevens over het verbruik van de [genormaliseerde aanvraag eenheid](monitor-normalized-request-units.md#view-the-normalized-request-unit-consumption-metric) van uw data base of container. Genormaliseerd gebruik is een meting van de hoeveelheid die momenteel gebruikmaakt van de ingerichte door Voer van Standard (hand matig). Hoe dichter het getal is tot 100%, hoe meer u volledig gebruikt voor uw ingerichte RU/s. Meer [informatie](monitor-normalized-request-units.md#view-the-normalized-request-unit-consumption-metric) over de metrische gegevens.
 
-Bepaal vervolgens hoe het genormaliseerde gebruik in de loop van de tijd verschilt. Als u ziet dat het genormaliseerde gebruik variabel of onvoorspelbaar is, kunt u de functie voor automatisch schalen inschakelen voor uw data base of container. Als het daarentegen stabiel en voorspelbaar is, kunt u het beste overblijven op standaard (hand matig) ingerichte door voer. 
+Bepaal vervolgens hoe het genormaliseerde gebruik in de loop van de tijd verschilt. Het hoogste genormaliseerde gebruik voor elk uur zoeken. Bereken vervolgens het gemiddelde genormaliseerde gebruik over alle uren. Als u ziet dat uw gemiddelde gebruik kleiner is dan 66%, kunt u de functie voor automatisch schalen inschakelen voor uw data base of container. Als het gemiddelde gebruik daarentegen groter is dan 66%, is het raadzaam om de ingerichte door Voer van Standard (hand matig) te blijven gebruiken.
+
+> [!TIP]
+> Als uw account is geconfigureerd voor het gebruik van meerdere regio's schrijven en meer dan één regio heeft, is de frequentie per 100 RU/s hetzelfde voor zowel hand matig als automatisch schalen. Dit betekent dat het inschakelen van automatisch schalen geen extra kosten in rekening gebracht, ongeacht het gebruik. Als gevolg hiervan wordt het altijd aanbevolen om automatisch schalen met meerdere regio's te gebruiken wanneer u meer dan één regio hebt, om te kunnen profiteren van de besparingen die alleen gelden voor de RU/s waarmee uw toepassing wordt geschaald. Als u meerdere regio's schrijft en één regio, gebruikt u het gemiddelde gebruik om te bepalen of automatisch schalen resulteert in kosten besparingen. 
+
+#### <a name="examples"></a>Voorbeelden
+
+Laten we eens kijken naar twee verschillende voor beelden van werk belastingen en analyseren als ze geschikt zijn voor de door Voer van hand matig of automatisch schalen. Ter illustratie van de algemene aanpak worden er drie uren in rekening gebracht om het kosten verschil te bepalen tussen het gebruik van hand matig en automatisch schalen. Voor werk belastingen wordt aanbevolen om 7 tot 30 dagen aan geschiedenis (of langer indien beschikbaar) te gebruiken om een patroon van RU/s-gebruik te maken.
+
+> [!NOTE]
+> Alle voor beelden in dit document zijn gebaseerd op de prijs van een Azure Cosmos-account dat is geïmplementeerd in een niet-overheids regio in de Verenigde Staten. De prijzen en berekening variëren afhankelijk van de regio die u gebruikt. Zie de pagina met [prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) voor Azure Cosmos DB voor de meest recente prijs informatie.
+
+Veronderstellingen:
+- Stel dat we op dit moment hand matige door Voer van 30.000 RU/s hebben. 
+- Onze regio is geconfigureerd met schrijf bewerkingen met één regio, met één regio. Als we meerdere regio's hadden, zouden we de kosten per uur vermenigvuldigen met het aantal regio's.
+- Gebruik open bare prijs tarieven voor hand matig ($0,008 USD per 100 RU/s per uur) en de door Voer ($0,012 USD per 100 RU/s per uur) in een schrijf account in één regio. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) voor meer informatie. 
+
+#### <a name="example-1-variable-workload-autoscale-recommended"></a>Voor beeld 1: variabele workload (automatisch schalen aanbevolen)
+
+Eerst kijken we naar het genormaliseerde RU-verbruik. Deze workload heeft variabele verkeer, met een genormaliseerd RU-verbruik van 6% tot 100%. Er zijn incidentele pieken tot 100% die moeilijk te voors pellen zijn, maar veel uren met een laag gebruik. 
+
+:::image type="content" source="media/how-to-choose-offer/variable-workload_use_autoscale.png" alt-text="Workload met variabel verkeer-genormaliseerd RU-verbruik tussen 6% en 100% voor alle uren":::
+
+Laten we de kosten vergelijken van het inrichten van 30.000 RU/s hand matige door Voer, versus het instellen van de maximale grootte van RU/s in 30.000 (schalen tussen 3000-30.000 RU/s). 
+
+Nu gaan we de geschiedenis analyseren. Stel dat we gebruikmaken van het gebruik dat wordt beschreven in de volgende tabel. Het gemiddelde gebruik in deze drie uur is 39%. Omdat het genormaliseerde RU-verbruik gemiddeld tot minder dan 66% bedraagt, worden we bespaard met automatisch schalen. 
+
+Houd er rekening mee dat in uur 1, wanneer er sprake is van 6%, de functie voor automatisch schalen RU/s voor 10% van het maximum aantal RU/s bevat. Dit is het minimum per uur. Hoewel de kosten voor automatisch schalen hoger kunnen zijn dan de hand matige door Voer in bepaalde uren, zolang het gemiddelde gebruik kleiner is dan 66% voor alle uren, zal automatisch schalen goed koper zijn.
+
+|  | Gebruik |Gefactureerd automatisch schalen RU/s  |Optie 1: hand matig 30.000 RU/s  | Optie 2: automatisch schalen tussen 3000-30.000 RU/s |
+|---------|---------|---------|---------|---------|
+|Uur 1  | 6%  |     3000  |  30.000 * 0,008/100 = $2,40        |   3000 * 0,012/100 = $0,36      |
+|Uur 2  | 100%  |     30.000    |  30.000 * 0,008/100 = $2,40       |  30.000 * 0,012/100 = $3,60      |
+|Uur 3 |  9  |     3300    |  30.000 * 0,008/100 = $2,40       |    3300 * 0,012/100 = $0,40     |
+|**Totaal**   |  |        |  $7,20       |    $4,36 (39% besparing)    |
+
+#### <a name="example-2-steady-workload-manual-throughput-recommended"></a>Voor beeld 2: een constante werk belasting (hand matige door Voer aanbevolen)
+
+Deze workload heeft gestage verkeer, met een genormaliseerd RU-verbruik van 72% tot 100%. Met 30.000 RU/s, dit betekent dat we tussen 21.600 en 30.000 RU/s gebruiken.
+
+:::image type="content" source="media/how-to-choose-offer/steady_workload_use_manual_throughput.png" alt-text="Workload met variabel verkeer-genormaliseerd RU-verbruik tussen 6% en 100% voor alle uren":::
+
+Laten we de kosten vergelijken van het inrichten van 30.000 RU/s hand matige door Voer, versus het instellen van de maximale grootte van RU/s in 30.000 (schalen tussen 3000-30.000 RU/s).
+
+Stel dat we de gebruiks geschiedenis hebben zoals beschreven in de tabel. Ons gemiddelde gebruik in deze drie uur is 88%. Omdat het genormaliseerde gebruik van RU gemiddeld groter is dan 66%, worden er gegevens opgeslagen met hand matige door voer.
+
+Over het algemeen geldt dat als het gemiddelde gebruik voor alle 730 uur in een maand groter is dan 66%, de gegevens worden opgeslagen met behulp van hand matige door voer. 
+
+|  | Gebruik |Gefactureerd automatisch schalen RU/s  |Optie 1: hand matig 30.000 RU/s  | Optie 2: automatisch schalen tussen 3000-30.000 RU/s |
+|---------|---------|---------|---------|---------|
+|Uur 1  | 72%  |     21.600   |  30.000 * 0,008/100 = $2,40        |   21600 * 0,012/100 = $2,59      |
+|Uur 2  | 93%  |     28.000    |  30.000 * 0,008/100 = $2,40       |  28.000 * 0,012/100 = $3,36       |
+|Uur 3 |  100%  |     30.000    |  30.000 * 0,008/100 = $2,40       |    30.000 * 0,012/100 = $3,60     |
+|**Totaal**   |  |        |  $7,20       |    $9,55     |
 
 > [!TIP]
 > Met de standaard-door Voer (hand matig) kunt u de genormaliseerde metrische gegevens over gebruik gebruiken om een schatting te maken van de werkelijke RU/s die u kunt gebruiken als u overschakelt naar automatisch schalen. Het genormaliseerde gebruik op een bepaald moment vermenigvuldigen met de momenteel ingerichte (hand matig) RU/s. Als u bijvoorbeeld 5000 RU/s hebt ingericht en het genormaliseerde gebruik 90% is, is het gebruik van de RU/s 0,9 * 5000 = 4500 RU/s. Als u ziet dat het verkeers patroon variabel is, maar u zich boven of onder de inrichting bevindt, kunt u automatisch schalen inschakelen en de instelling maximum aantal RU/s voor automatisch schalen dienovereenkomstig wijzigen.
+
+#### <a name="how-to-calculate-average-utilization"></a>Gemiddeld gebruik berekenen
+Automatisch schalen van facturen voor de hoogste RU/s tot in een uur. Bij het analyseren van het genormaliseerde RU-verbruik in de loop van de tijd is het belang rijk om het hoogste gebruik per uur te gebruiken bij het berekenen van het gemiddelde. 
+
+Berekenen van het gemiddelde van het hoogste gebruik over alle uren:
+1. Stel de **aggregatie** in op de metriek van het Noramlized ru-verbruik op **Max**.
+1. Selecteer de **tijd granulatie** tot 1 uur.
+1. Navigeer naar **grafiek opties**.
+1. Selecteer de optie staaf diagram. 
+1. Selecteer onder **delen**de optie **downloaden naar Excel** . Bereken in het gegenereerde werk blad het gemiddelde gebruik over alle uren. 
+
+:::image type="content" source="media/how-to-choose-offer/variable-workload-highest-util-by-hour.png" alt-text="Workload met variabel verkeer-genormaliseerd RU-verbruik tussen 6% en 100% voor alle uren":::
 
 ## <a name="measure-and-monitor-your-usage"></a>Uw gebruik meten en bewaken
 Nadat u het type door Voer hebt gekozen, moet u de toepassing na verloop van tijd controleren en zo nodig wijzigingen aanbrengen. 
 
 Wanneer u automatisch schalen gebruikt, gebruikt u Azure Monitor om het ingerichte maximum aantal RU/s voor automatische schaal baarheid te bekijken (**maximale door Voer voor automatisch schalen**) en de ru/s waarmee het systeem op dit moment is geschaald (**ingerichte door Voer**). Hieronder ziet u een voor beeld van een variabele of onvoorspelbare werk belasting met automatisch schalen. Opmerking: wanneer er geen verkeer is, wordt de RU/s door het systeem geschaald naar het minimum van 10% van het maximum aantal RU/s, in dit geval 5000 RU/s en 50.000 RU/s. 
 
-:::image type="content" source="media/how-to-choose-offer/autoscale-metrics-azure-monitor.png" alt-text="Voor beeld van een workload met automatisch schalen":::
+:::image type="content" source="media/how-to-choose-offer/autoscale-metrics-azure-monitor.png" alt-text="Workload met variabel verkeer-genormaliseerd RU-verbruik tussen 6% en 100% voor alle uren":::
 
 > [!NOTE]
 > Wanneer u standaard (hand matig) ingerichte door Voer gebruikt, verwijst de **ingerichte doorvoer** metriek naar wat u als gebruiker hebt ingesteld. Wanneer u de door Voer van automatisch schalen gebruikt, verwijst deze waarde naar de RU/s waarop het systeem momenteel is geschaald.

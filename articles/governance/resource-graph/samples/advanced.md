@@ -1,14 +1,14 @@
 ---
 title: Voorbeelden van geavanceerde query's
 description: Gebruik Azure Resource Graph voor het uitvoeren van enkele geavanceerde query's, waaronder het werken met kolommen, het opvragen van alle gebruikte tags en het vinden van resources met behulp van reguliere expressies.
-ms.date: 08/13/2020
+ms.date: 10/14/2020
 ms.topic: sample
-ms.openlocfilehash: 8463880189a76f299ce5552fff2b7bccddfa8dec
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: dff4b06cc5cf4385820c7f6251efaae792d9c22d
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425291"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057141"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Geavanceerde queryvoorbeelden van Resource Graph
 
@@ -625,9 +625,7 @@ Search-AzGraph -Query "GuestConfigurationResources | extend vmid = split(propert
 
 ## <a name="query-details-of-guest-configuration-assignment-reports"></a><a name="query-gcreports"></a>Query uitvoeren op de details van rapporten van gastconfiguratietoewijzingen
 
-Rapport weergeven van details van de [reden voor toewijzing van gastconfiguratie](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration).
-In het onderstaande voorbeeld retourneert de query alleen resultaten waarbij de naam van de gasttoewijzing `installed_application_linux` is en de uitvoer de tekenreeks `Python` bevat om alle Linux-computers te vermelden waarin een pakket is geïnstalleerd met inbegrip van de naam **Python**.
-Als u de naleving van alle computers voor een specifieke toewijzing wilt opvragen, verwijdert u de tweede `where`-component.
+Rapport weergeven van details van de [reden voor toewijzing van gastconfiguratie](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration). In het volgende voorbeeld retourneert de query alleen resultaten waarbij de naam van de gasttoewijzing `installed_application_linux` is en de uitvoer de tekenreeks `Python` bevat om alle Linux-computers te vermelden waarin een pakket is geïnstalleerd met inbegrip van de naam **Python**. Als u de naleving van alle computers voor een specifieke toewijzing wilt opvragen, verwijdert u de tweede `where`-component.
 
 ```kusto
 GuestConfigurationResources
@@ -666,8 +664,7 @@ Search-AzGraph -Query "GuestConfigurationResources | extend vmid = split(propert
 
 ## <a name="find-all-reasons-a-machine-is-non-compliant-for-guest-configuration-assignments"></a><a name="query-gcmachinedetails"></a>Alle redenen zoeken waarom een computer niet geschikt is voor gastconfiguratietoewijzingen
 
-Geef alle [redenen voor toewijzingen van gastconfiguraties](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration) voor een specifieke computer weer.
-Verwijder de eerste `where`-component om ook controles toe te voegen waarbij de computer compatibel is.
+Geef alle [redenen voor toewijzingen van gastconfiguraties](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration) voor een specifieke computer weer. Verwijder de eerste `where`-component om ook controles toe te voegen waarbij de computer compatibel is.
 
 ```kusto
 GuestConfigurationResources

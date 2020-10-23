@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 09144c4c35ab911b60931849807123608f2c3cdd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc06f7c75e27d831994b97b97f3d20bb34c3a6c5
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85847475"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167930"
 ---
 # <a name="manage-farms"></a>Een boerderij beheren
 
@@ -25,7 +25,7 @@ Voer de volgende stappen uit:
 
     Hier volgt een voor beeld van de afbeelding:
 
-    ![Een Farm Beats-project](./media/create-farms-in-azure-farmbeats/create-farm-main-page-1.png)
+    ![Scherm opname van de pagina farms.](./media/create-farms-in-azure-farmbeats/create-farm-main-page-1.png)
 
 
 2. Selecteer **farm maken** en geef **naam**, **bijsnijds** en **adres**op.
@@ -33,14 +33,14 @@ Voer de volgende stappen uit:
 
 Dit zijn de twee manieren om een farm grens te definiëren:
 
-1. **Op kaart markeren**: gebruik het kaart beheer programma om de grens van de farm te tekenen en te markeren. Als u de grenzen wilt markeren,  ![ project Farm maten ](./media/create-farms-in-azure-farmbeats/pencil-icon-1.png) en markeert u de exacte grenzen.
+1. **Op kaart markeren**: gebruik het kaart beheer programma om de grens van de farm te tekenen en te markeren. Als u de grenzen wilt markeren, ziet u een  ![ scherm afbeelding met het potlood pictogram voor het tekenen van grenzen op de kaart ](./media/create-farms-in-azure-farmbeats/pencil-icon-1.png) en markeert u de exacte grenzen.
 
-    ![Een Farm Beats-project](./media/create-farms-in-azure-farmbeats/create-farm-mark-on-map-1.png)
+    ![Scherm opname van de getekende grenzen op een kaart.](./media/create-farms-in-azure-farmbeats/create-farm-mark-on-map-1.png)
 
 2. **Geojson-code plakken**: de geojson is een indeling voor het coderen van geografische gegevens structuren, met behulp van JavaScript object NOTATION (JSON). Met deze optie wordt een tekstvak weer gegeven waarin een geojson-teken reeks kan worden ingevoerd om de grenzen van de farm te markeren. U kunt ook geojson-code maken op basis van GeoJSON.io.
 Gebruik de knop Info om de informatie te vullen.
 
-    ![Een Farm Beats-project](./media/create-farms-in-azure-farmbeats/create-new-farm-1.png)
+    ![Scherm afbeelding die de optie geojson-code plakken markeert in het scherm farm maken.](./media/create-farms-in-azure-farmbeats/create-new-farm-1.png)
 
 3.  Selecteer **verzenden** om een farm te maken. Er wordt een nieuwe farm gemaakt en weer gegeven op de pagina **Farms** .
 
@@ -71,7 +71,7 @@ Op de pagina **Farms** wordt een lijst met gemaakte Farms weer gegeven. Gebruik 
 1.  Selecteer een farm in de lijst om de farm gegevens te verwijderen.
 2.  Selecteer **farm verwijderen** om de farm te verwijderen.
 
-    ![Een Farm Beats-project](./media/create-farms-in-azure-farmbeats/delete-farm-1.png)
+    ![Scherm opname van de weer gave farm verwijderen en markeert de knop verwijderen.](./media/create-farms-in-azure-farmbeats/delete-farm-1.png)
 
     > [!NOTE]
     > Wanneer u een farm verwijdert, worden de apparaten en toewijzingen die zijn gekoppeld aan de farm niet verwijderd. Alle farm gegevens die aan het apparaat en de kaarten zijn gekoppeld, zijn niet relevant. U kunt door gaan met het weer geven van apparaten, telemetrie en kaarten van de FarmBeats-service.

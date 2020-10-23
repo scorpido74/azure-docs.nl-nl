@@ -44,8 +44,6 @@
         - name: Azure Defender voor SQL
           displayName: database
           href: defender-for-sql-introduction.md
-        - name: Azure Defender voor IoT
-          href: defender-for-iot-introduction.md
         - name: Azure Defender voor Key Vault
           displayName: 'KV, akv'
           href: defender-for-key-vault-introduction.md
@@ -191,6 +189,9 @@
             - name: Just-in-time-toegang beheren
               displayName: 'jit, management'
               href: security-center-just-in-time.md
+        - name: Geïntegreerde Microsoft Defender voor eindpuntlicentie gebruiken
+          displayName: 'ATP, mdatp, wdatp'
+          href: security-center-wdatp.md
         - name: Adaptieve toepassingsregelaars beheren
           href: security-center-adaptive-application.md
         - name: Bewaking van bestandsintegriteit gebruiken
@@ -201,8 +202,6 @@
               href: security-center-file-integrity-monitoring-baselines.md
         - name: Adaptieve netwerkbeveiliging beheren
           href: security-center-adaptive-network-hardening.md
-        - name: Microsoft Defender ATP integreren
-          href: security-center-wdatp.md
         - name: Docker-hosts verharden
           displayName: containers
           href: harden-docker-hosts.md
@@ -254,7 +253,7 @@
 - name: Naslaginformatie
   items:
     - name: REST-API’s
-      href: 'https://docs.microsoft.com/rest/api/securitycenter/'
+      href: /rest/api/securitycenter/
     - name: Veelgestelde vragen over Azure Security Center
       items:
         - name: Algemene vragen
@@ -282,9 +281,9 @@
     - name: Gebruikersgegevens beheren
       href: security-center-privacy.md
     - name: Documentatie voor Azure Defender voor IoT
-      href: 'https://docs.microsoft.com/azure/asc-for-iot/'
+      href: /azure/asc-for-iot/
     - name: Documentatie over beveiliging in Azure
-      href: /azure/security/
+      href: ../security/index.yml
     - name: Azure-updates
       href: 'https://azure.microsoft.com/updates/?category=security-identity'
     - name: Roadmap naar gereedheid

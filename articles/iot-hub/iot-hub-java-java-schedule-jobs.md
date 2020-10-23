@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: mqtt, devx-track-java
-ms.openlocfilehash: c1cac67d79363ce25fb55d73cc3d8c42ea901fb1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36092e0bb7d0249837d2eaa7898e9231ecb5f5a9
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87325080"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146992"
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>Taken plannen en uitzenden (Java)
 
@@ -54,7 +54,7 @@ Aan het einde van deze zelf studie hebt u een app voor het maken van een Java-Co
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Java SE Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). Zorg ervoor dat u **Java 8** selecteert onder **lange termijn ondersteuning** om down loads voor JDK 8 te downloaden.
+* [Java SE Development Kit 8](/java/azure/jdk/?view=azure-java-stable). Zorg ervoor dat u **Java 8** selecteert onder **lange termijn ondersteuning** om down loads voor JDK 8 te downloaden.
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 

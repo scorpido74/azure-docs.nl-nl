@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: f42d6c8015061406958bdc16473dc0f042d3143a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5eff13c9ec672937258cf35274d2f5f7bc66f18
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272494"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164241"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>Virtuele machines voorbereiden voor een FCI (SQL Server op Azure-Vm's)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -88,7 +88,7 @@ Nadat u de registratie van de resource provider ongedaan hebt gemaakt, kunt u SQ
 1. Als u een van de op SQL Server gebaseerde installatie kopieën voor virtuele machines gebruikt, verwijdert u het SQL Server-exemplaar:
 
    1. Klik in **Program ma's en onderdelen**met de rechter muisknop op **Microsoft SQL Server 201_ (64-bits)** en selecteer **verwijderen/wijzigen**.
-   1. Selecteer **verwijderen**.
+   1. Selecteer **Verwijderen**.
    1. Selecteer het standaard exemplaar.
    1. Verwijder alle functies onder **Data Base Engine-Services**. Verwijder niets onder **gedeelde onderdelen**. U ziet iets als de volgende scherm afbeelding:
 
@@ -101,14 +101,14 @@ Nadat u de registratie van de resource provider ongedaan hebt gemaakt, kunt u SQ
 
 Open op elke virtuele machine de Windows Firewall TCP-poort die SQL Server gebruikt. Dit is standaard poort 1433. Maar u kunt de SQL Server poort wijzigen op een VM-implementatie van Azure, dus open de poort die SQL Server gebruikt in uw omgeving. Deze poort wordt automatisch geopend op SQL Server installatie kopieën die vanuit Azure Marketplace worden geïmplementeerd. 
 
-Als u een [Load Balancer](hadr-vnn-azure-load-balancer-configure.md)gebruikt, moet u ook de poort openen die door de Health probe wordt gebruikt. Dit is standaard poort 59999. Maar dit kan elke TCP-poort zijn die u opgeeft wanneer u de load balancer maakt. 
+Als u een [Load Balancer](failover-cluster-instance-vnn-azure-load-balancer-configure.md)gebruikt, moet u ook de poort openen die door de Health probe wordt gebruikt. Dit is standaard poort 59999. Maar dit kan elke TCP-poort zijn die u opgeeft wanneer u de load balancer maakt. 
 
 Deze tabel bevat informatie over de poorten die u mogelijk moet openen, afhankelijk van uw FCI-configuratie: 
 
-   | Doel | Poort | Notities
+   | Doel | Poort | Opmerkingen
    | ------ | ------ | ------
    | SQL Server | TCP 1433 | Normale poort voor standaard exemplaren van SQL Server. Als u een installatie kopie uit de galerie hebt gebruikt, wordt deze poort automatisch geopend. </br> </br> **Gebruikt door**: alle FCI-configuraties. |
-   | Statustest | TCP 59999 | Een open TCP-poort. Configureer de load balancer [Health probe](hadr-vnn-azure-load-balancer-configure.md#configure-health-probe) en het cluster om deze poort te gebruiken. </br> </br> **Gebruikt door**: FCI met Load Balancer. |
+   | Statustest | TCP 59999 | Een open TCP-poort. Configureer de load balancer [Health probe](failover-cluster-instance-vnn-azure-load-balancer-configure.md#configure-health-probe) en het cluster om deze poort te gebruiken. </br> </br> **Gebruikt door**: FCI met Load Balancer. |
    | Bestandsshare | UDP 445 | Poort die door de bestands share service wordt gebruikt. </br> </br> **Gebruikt door**: FCI met Premium-bestands share. |
 
 ## <a name="join-the-domain"></a>Aan domein toevoegen
@@ -132,5 +132,5 @@ Kies een van de volgende hand leidingen voor het configureren van de FCI-omgevin
 Zie voor meer informatie een overzicht van [FCI met SQL Server op Azure-vm's](failover-cluster-instance-overview.md) en [ondersteunde HADR-configuraties](hadr-cluster-best-practices.md). 
 
 Zie voor meer informatie: 
-- [Windows-cluster technologieën](/windows-server/failover-clustering/failover-clustering-overview)   
-- [Failover-cluster exemplaren SQL Server](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Windows-clustertechnologieën](/windows-server/failover-clustering/failover-clustering-overview)   
+- [Instanties van een SQL Server-failovercluster](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8549fba2071ce98b206b3babe073137817aa3145
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b1f53226b82a5342efda8665b6a366a3a7fd310
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91252830"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461410"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Eind punten en routes beheren in azure Digital Apparaatdubbels (Portal)
 
@@ -22,7 +22,7 @@ In azure Digital Apparaatdubbels kunt u [gebeurtenis meldingen](how-to-interpret
 
 Dit artikel begeleidt u bij het maken van eind punten en routes met behulp van de [Azure Portal](https://portal.azure.com).
 
-U kunt ook eind punten en routes beheren met de [EventRoutes-api's](how-to-use-apis-sdks.md), de [.NET-SDK (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)of de [Azure Digital apparaatdubbels cli](how-to-use-cli.md). Voor een versie van dit artikel die gebruikmaakt van deze mechanismen in plaats van de portal, Zie [*How to: Manage endpoints and routes (api's en CLI)*](how-to-manage-routes-apis-cli.md).
+U kunt ook eind punten en routes beheren met de [gebeurtenis routes api's](/rest/api/digital-twins/dataplane/eventroutes), de [.NET-SDK (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)of de [Azure Digital apparaatdubbels cli](how-to-use-cli.md). Voor een versie van dit artikel die gebruikmaakt van deze mechanismen in plaats van de portal, Zie [*How to: Manage endpoints and routes (api's en CLI)*](how-to-manage-routes-apis-cli.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -72,7 +72,7 @@ U kunt ook het eind punt weer geven dat weer is gemaakt op de pagina *eind punte
 
 Als het maken van het eind punt mislukt, Bekijk dan het fout bericht en probeer het over enkele minuten opnieuw.
 
-Het onderwerp Event grid is nu beschikbaar als een eind punt in azure Digital Apparaatdubbels, onder de naam die is opgegeven in het veld _naam_ . Normaal gesp roken gebruikt u die naam als het doel van een **gebeurtenis route**, die u [later in dit artikel](#event-routes)gaat maken.
+Het onderwerp Event grid is nu beschikbaar als een eind punt in azure Digital Apparaatdubbels, onder de naam die is opgegeven in het veld _naam_ . Normaal gesp roken gebruikt u die naam als het doel van een **gebeurtenis route**, die u [later in dit artikel](#create-an-event-route)gaat maken.
 
 ### <a name="create-an-event-hubs-endpoint"></a>Een Event Hubs-eind punt maken
 
@@ -94,7 +94,7 @@ U kunt controleren of het eind punt is gemaakt door het meldings pictogram in de
 
 Als het maken van het eind punt mislukt, Bekijk dan het fout bericht en probeer het over enkele minuten opnieuw.
 
-De Event hub is nu beschikbaar als een eind punt in azure Digital Apparaatdubbels, onder de naam die is opgegeven in het veld _naam_ . Normaal gesp roken gebruikt u die naam als het doel van een **gebeurtenis route**, die u [later in dit artikel](#event-routes)gaat maken.
+De Event hub is nu beschikbaar als een eind punt in azure Digital Apparaatdubbels, onder de naam die is opgegeven in het veld _naam_ . Normaal gesp roken gebruikt u die naam als het doel van een **gebeurtenis route**, die u [later in dit artikel](#create-an-event-route)gaat maken.
 
 ### <a name="create-a-service-bus-endpoint"></a>Een Service Bus-eind punt maken
 
@@ -116,9 +116,17 @@ U kunt controleren of het eind punt is gemaakt door het meldings pictogram in de
 
 Als het maken van het eind punt mislukt, Bekijk dan het fout bericht en probeer het over enkele minuten opnieuw.
 
-Het Service Bus onderwerp is nu beschikbaar als een eind punt in azure Digital Apparaatdubbels, onder de naam die is opgegeven in het veld _naam_ . Normaal gesp roken gebruikt u die naam als het doel van een **gebeurtenis route**, die u [later in dit artikel](#event-routes)gaat maken.
+Het Service Bus onderwerp is nu beschikbaar als een eind punt in azure Digital Apparaatdubbels, onder de naam die is opgegeven in het veld _naam_ . Normaal gesp roken gebruikt u die naam als het doel van een **gebeurtenis route**, die u [later in dit artikel](#create-an-event-route)gaat maken.
 
-## <a name="event-routes"></a>Gebeurtenisroutes
+### <a name="create-an-endpoint-with-dead-lettering"></a>Een eind punt maken met onbestelbare berichten
+
+Wanneer een eind punt een gebeurtenis binnen een bepaalde tijds periode niet kan leveren of nadat de gebeurtenis een bepaald aantal keren is geprobeerd, kan de gebeurtenis worden verzonden naar een opslag account. Dit proces wordt **onbestelbare berichten**genoemd.
+
+Als u een eind punt wilt maken waarvoor onbestelbare berichten zijn ingeschakeld, moet u de [arm-api's](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) gebruiken om uw eind punt te maken, in plaats van de Azure Portal.
+
+Zie de [*api's en CLI*](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering) -versie van dit artikel voor instructies over hoe u dit doet met de api's.
+
+## <a name="create-an-event-route"></a>Een gebeurtenis route maken
 
 Als u gegevens daad werkelijk van Azure Digital Apparaatdubbels naar een eind punt wilt verzenden, moet u een **gebeurtenis route**definiëren. Met deze routes kunnen ontwikkel aars de gebeurtenis stroom, in het systeem en op downstream-Services, interactiviteit. Lees meer over gebeurtenis routes in [*concepten: route ring van Azure Digital apparaatdubbels-gebeurtenissen*](concepts-route-events.md).
 
@@ -127,7 +135,7 @@ Voor **waarde: u**moet eind punten maken zoals eerder in dit artikel wordt besch
 >[!NOTE]
 >Als u onlangs uw eind punten hebt geïmplementeerd, controleert u of de implementatie is voltooid **voordat** u deze voor een nieuwe gebeurtenis route probeert te gebruiken. Als u de route niet kunt instellen omdat de eind punten niet gereed zijn, wacht u een paar minuten en probeert u het opnieuw.
 
-### <a name="create-an-event-route"></a>Een gebeurtenis route maken 
+### <a name="creation-steps-with-the-azure-portal"></a>Stappen voor het maken van de Azure Portal
 
 Een definitie van een gebeurtenis route bevat deze elementen:
 * De naam van de route die u wilt gebruiken
@@ -153,7 +161,7 @@ Als u de route wilt inschakelen, moet u ook **een gebeurtenis route filter** van
 
 Wanneer u klaar bent, klikt u op de knop _Opslaan_ om uw gebeurtenis route te maken.
 
-### <a name="filter-events"></a>Gebeurtenissen filteren
+## <a name="filter-events"></a>Gebeurtenissen filteren
 
 Zoals hierboven beschreven, hebben routes een **filter** veld. Als de filter waarde voor uw route is `false` , worden er geen gebeurtenissen naar uw eind punt verzonden. 
 
@@ -161,7 +169,6 @@ Nadat het minimale filter van `true` is ingeschakeld, ontvangen eind punten dive
 * Telemetrie die wordt geactiveerd door [Digital apparaatdubbels](concepts-twins-graph.md) met de Azure Digital APPARAATDUBBELS Service API
 * Dubbele eigenschaps wijzigings meldingen, die worden geactiveerd bij wijzigingen in de eigenschappen voor elke dubbele in het Azure Digital Apparaatdubbels-exemplaar
 * Levenscyclus gebeurtenissen, die worden geactiveerd wanneer apparaatdubbels of relaties worden gemaakt of verwijderd
-* Model wijzigings gebeurtenissen, die worden geactiveerd wanneer [modellen](concepts-models.md) die zijn geconfigureerd in een Azure Digital apparaatdubbels-exemplaar worden toegevoegd of verwijderd
 
 U kunt de typen gebeurtenissen die worden verzonden beperken door een specifiek filter te definiëren.
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: c8bc9e844687c85255be972011eba03e9c38de48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3910b6ffcce6c5bc4a8d565071c4b07db9e3ff63
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89488300"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279027"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Naslag Gids voor het gebruik van functies in expressies voor Azure Logic Apps en energie automatisering
 
@@ -214,7 +214,7 @@ Zie de [Alfabetische lijst](../logic-apps/workflow-definition-language-functions
 | [add](../logic-apps/workflow-definition-language-functions-reference.md#add) | Het resultaat van het toevoegen van twee getallen retour neren. |
 | [div](../logic-apps/workflow-definition-language-functions-reference.md#div) | Retourneert het resultaat van het delen van twee getallen. |
 | [aantal](../logic-apps/workflow-definition-language-functions-reference.md#max) | Retourneert de hoogste waarde van een reeks getallen of een matrix. |
-| [min.](../logic-apps/workflow-definition-language-functions-reference.md#min) | Retourneert de laagste waarde van een reeks getallen of een matrix. |
+| [Haal](../logic-apps/workflow-definition-language-functions-reference.md#min) | Retourneert de laagste waarde van een reeks getallen of een matrix. |
 | [mod](../logic-apps/workflow-definition-language-functions-reference.md#mod) | Retourneert de rest van het delen van twee getallen. |
 | [mul](../logic-apps/workflow-definition-language-functions-reference.md#mul) | Retourneert het product van het vermenigvuldigen van twee getallen. |
 | [ASELECT](../logic-apps/workflow-definition-language-functions-reference.md#rand) | Retourneert een wille keurig geheel getal uit een opgegeven bereik. |
@@ -1922,7 +1922,7 @@ float('<value>')
 
 | Retourwaarde | Type | Beschrijving |
 | ------------ | ---- | ----------- |
-| <*float-waarde*> | Float | Het drijvende-komma getal voor de opgegeven teken reeks |
+| <*float-waarde*> | Drijvendekommagetal | Het drijvende-komma getal voor de opgegeven teken reeks |
 ||||
 
 *Voorbeeld*
@@ -4767,7 +4767,21 @@ xpath('<xml>', '<xpath>')
 
 Stel dat u deze `'items'` XML-teken reeks hebt: 
 
-`"<?xml version="1.0"?> <produce> <item> <name>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
+```xml
+<?xml version="1.0"?>
+<produce>
+  <item>
+    <name>Gala</name>
+    <type>apple</type>
+    <count>20</count>
+  </item>
+  <item>
+    <name>Honeycrisp</name>
+    <type>apple</type>
+    <count>10</count>
+  </item>
+</produce>
+```
 
 In dit voor beeld worden de XPath-expressie door gegeven, `'/produce/item/name'` om te zoeken naar de knoop punten die overeenkomen met het `<name></name>` knoop punt in de `'items'` XML-teken reeks en wordt een matrix met deze knooppunt waarden geretourneerd:
 
@@ -4799,7 +4813,21 @@ Dit is het resultaat: `Honeycrisp`
 
 In dit voor beeld ziet u dat uw `items` XML-teken reeks ook de kenmerken bevat `expired='true'` en `expired='false'` :
 
-`"<?xml version="1.0"?> <produce> <item> <name expired='true'>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name expired='false'>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
+```xml
+<?xml version="1.0"?>
+<produce>
+  <item>
+    <name expired='true'>Gala</name>
+    <type>apple</type>
+    <count>20</count>
+  </item>
+  <item>
+    <name expired='false'>Honeycrisp</name>
+    <type>apple</type>
+    <count>10</count>
+  </item>
+</produce>
+```
 
 In dit voor beeld wordt de XPath-expressie door gegeven `'//name[@expired]'` om alle `name` elementen te zoeken die het `expired` kenmerk hebben:
 
@@ -4811,7 +4839,21 @@ Dit is het resultaat: `[ Gala, Honeycrisp ]`
 
 Stel dat uw `items` XML-teken reeks in dit voor beeld alleen dit kenmerk bevat `expired = 'true'` :
 
-`"<?xml version="1.0"?> <produce> <item> <name expired='true'>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
+```xml
+<?xml version="1.0"?>
+<produce>
+  <item>
+    <name expired='true'>Gala</name>
+    <type>apple</type>
+    <count>20</count>
+  </item>
+  <item>
+    <name>Honeycrisp</name>
+    <type>apple</type>
+    <count>10</count>
+  </item>
+</produce>
+```
 
 In dit voor beeld wordt de XPath-expressie door gegeven `'//name[@expired = 'true']'` om alle `name` elementen te zoeken die het kenmerk hebben `expired = 'true'` :
 
@@ -4826,7 +4868,21 @@ In dit voor beeld bevat uw `items` XML-teken reeks ook deze kenmerken:
 * `expired='true' price='12'`
 * `expired='false' price='40'`
 
-`"<?xml version="1.0"?> <produce> <item> <name expired='true' price='12'>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name expired='false' price='40'>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
+```xml
+<?xml version="1.0"?>
+<produce>
+  <item>
+    <name expired='true' price='12'>Gala</name>
+    <type>apple</type>
+    <count>20</count>
+  </item>
+  <item>
+    <name expired='false' price='40'>Honeycrisp</name>
+    <type>apple</type>
+    <count>10</count>
+  </item>
+</produce>
+```
 
 In dit voor beeld wordt de XPath-expressie door gegeven `'//name[price>35]'` om alle `name` elementen te vinden die het `price > 35` volgende hebben:
 
@@ -4838,7 +4894,21 @@ Dit is het resultaat: `Honeycrisp`
 
 In dit voor beeld is uw `items` XML-teken reeks hetzelfde als in voor beeld 1:
 
-`"<?xml version="1.0"?> <produce> <item> <name>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
+```xml
+<?xml version="1.0"?>
+<produce>
+  <item>
+    <name>Gala</name>
+    <type>apple</type>
+    <count>20</count>
+  </item>
+  <item>
+    <name>Honeycrisp</name>
+    <type>apple</type>
+    <count>10</count>
+  </item>
+</produce>
+```
 
 In dit voor beeld worden knoop punten gevonden die overeenkomen met het `<count></count>` knoop punt en worden deze knooppunt waarden toegevoegd met de `sum()` functie:
 
@@ -4850,7 +4920,9 @@ Dit is het resultaat: `30`
 
 In dit voor beeld geldt dat u deze XML-teken reeks hebt, die de XML-document naam ruimte bevat `xmlns="http://contoso.com"` :
 
-`"<?xml version="1.0"?> <file xmlns="http://contoso.com"> <location>Paris</location> </file>"`
+```xml
+<?xml version="1.0"?><file xmlns="http://contoso.com"><location>Paris</location></file>
+```
 
 Deze expressies gebruiken ofwel een XPath-expressie `/*[name()="file"]/*[name()="location"]` of `/*[local-name()="file" and namespace-uri()="http://contoso.com"]/*[local-name()="location"]` , om knoop punten te vinden die overeenkomen met het `<location></location>` knoop punt. In deze voor beelden ziet u de syntaxis die u gebruikt in de Logic app Designer of in de expressie-editor:
 

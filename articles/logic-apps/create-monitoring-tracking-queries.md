@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: cb1af437fc663fcb95c768ec295862209a26064e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1f575d9d588ccd99523c6b6d5d2ceba6369dc3d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87090396"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309917"
 ---
 # <a name="view-and-create-queries-for-monitoring-and-tracking-in-azure-monitor-logs-for-azure-logic-apps"></a>Query's weer geven en maken voor het controleren en bijhouden van Azure Monitor logboeken voor Azure Logic Apps
 
-U kunt de onderliggende query's weer geven die de resultaten genereren uit [Azure monitor logboeken](../azure-monitor/log-query/log-query-overview.md) en query's maken waarmee de resultaten worden gefilterd op basis van uw specifieke criteria. U kunt bijvoorbeeld berichten vinden op basis van een specifiek uitwisselings controle nummer. Query's gebruiken de [Kusto-query taal](https://aka.ms/LogAnalyticsLanguageReference), die u kunt bewerken als u andere resultaten wilt weer geven. Zie [Azure monitor-logboek query's](../azure-monitor/log-query/query-language.md)voor meer informatie.
+U kunt de onderliggende query's weer geven die de resultaten genereren uit [Azure monitor logboeken](../azure-monitor/log-query/log-query-overview.md) en query's maken waarmee de resultaten worden gefilterd op basis van uw specifieke criteria. U kunt bijvoorbeeld berichten vinden op basis van een specifiek uitwisselings controle nummer. Query's gebruiken de [Kusto-query taal](/azure/data-explorer/kusto/query/), die u kunt bewerken als u andere resultaten wilt weer geven. Zie [Azure monitor-logboek query's](/azure/data-explorer/kusto/query/)voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -59,7 +59,7 @@ Als u resultaten wilt zoeken of filteren op basis van specifieke eigenschappen o
 
      ![Beginnen met vooraf gemaakte query's voor de oplossing Logische apps B2B](./media/create-monitoring-tracking-queries/b2b-prebuilt-queries.png)
 
-   * Als u een lege query wilt starten, typt u in de query-editor de [Kusto-query taal](../azure-monitor/log-query/query-language.md) voor uw query.
+   * Als u een lege query wilt starten, typt u in de query-editor de [Kusto-query taal](/azure/data-explorer/kusto/query/) voor uw query.
 
      ![Beginnen met lege query](./media/create-monitoring-tracking-queries/create-query-from-blank.png)
 

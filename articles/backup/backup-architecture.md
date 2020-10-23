@@ -3,12 +3,12 @@ title: Overzicht van de architectuur
 description: Hierin wordt een overzicht gegeven van de architectuur, onderdelen en processen die door de Azure Backup-service worden gebruikt.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 6f95e8f6edaef61a7c5971a46ed4bff1a34e3dbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5d4c881244ddae41ba4c706812bd7b8274a374e
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613999"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173274"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architectuur en onderdelen van Azure Backup
 
@@ -45,7 +45,7 @@ Kluizen hebben de volgende kenmerken:
 - U geeft op hoe gegevens in de kluis worden gerepliceerd voor redundantie:
   - **Lokaal redundante opslag (LRS)**: als u wilt beveiligen tegen fouten in een Data Center, kunt u LRS gebruiken. LRS repliceert gegevens naar een opslag schaal eenheid. [Meer informatie](../storage/common/storage-redundancy.md#locally-redundant-storage).
   - **Geografisch redundante opslag (GRS)**: als u wilt beveiligen tegen regionale storingen, kunt u GRS gebruiken. GRS repliceert uw gegevens naar een secundaire regio. [Meer informatie](../storage/common/storage-redundancy.md#geo-redundant-storage).
-  - **Zone-redundante opslag (ZRS)**: repliceert uw gegevens in [beschikbaarheids zones](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones), waarbij de gegevens locatie en tolerantie in dezelfde regio worden gegarandeerd. [Meer informatie](../storage/common/storage-redundancy.md#zone-redundant-storage)
+  - **Zone-redundante opslag (ZRS)**: repliceert uw gegevens in [beschikbaarheids zones](../availability-zones/az-overview.md#availability-zones), waarbij de gegevens locatie en tolerantie in dezelfde regio worden gegarandeerd. [Meer informatie](../storage/common/storage-redundancy.md#zone-redundant-storage)
   - Recovery Services kluizen gebruiken standaard GRS.
 
 Recovery Services kluizen hebben de volgende extra functies:

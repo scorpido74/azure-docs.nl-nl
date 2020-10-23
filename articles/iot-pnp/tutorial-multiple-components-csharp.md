@@ -7,12 +7,12 @@ ms.date: 07/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: f6f87ed4ba74c3f7750e56d4bb8473cf4b1a4341
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 72b85388bf80a6ed2b9617b606940c243c5711f1
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575381"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945529"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-multiple-component-device-application-running-on-windows-to-iot-hub-c"></a>Zelfstudie: Een IoT Plug and Play-apparaattoepassing met meerdere onderdelen die in Windows wordt uitgevoerd, verbinden met IoT Hub (C#)
 
@@ -33,7 +33,7 @@ Om deze zelfstudie in Windows te voltooien, installeert u de volgende software i
 
 Als u klaar bent met [Quickstart: Verbind een voorbeeld van een IoT Plug en Play-apparaat-app die in Windows wordt uitgevoerd met IoT Hub (C#)](quickstart-connect-device-csharp.md). U hebt de opslagplaats al gekloond.
 
-Kloon de voorbeelden uit de GitHub-opslagplaats van de Microsoft Azure IoT-SDK voor .NET. Open een opdrachtprompt in de map van uw keuze. Voer de volgende opdracht uit om de GitHub-opslagplaats voor de [Microsoft Azure IoT-voorbeelden voor .NET](https://github.com/Azure-Samples/azure-iot-samples-csharp) te klonen:
+Kloon de voorbeelden uit de GitHub-opslagplaats met Azure IoT-voorbeelden voor C#. Open een opdrachtprompt in de map van uw keuze. Voer de volgende opdracht uit om de GitHub-opslagplaats voor de [Microsoft Azure IoT-voorbeelden voor .NET](https://github.com/Azure-Samples/azure-iot-samples-csharp) te klonen:
 
 ```cmd
 git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git

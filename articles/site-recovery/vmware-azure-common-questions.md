@@ -3,12 +3,12 @@ title: Veelgestelde vragen over VMware-nood herstel met Azure Site Recovery
 description: Krijg antwoorden op veelgestelde vragen over herstel na nood gevallen van on-premises virtuele VMware-machines naar Azure met behulp van Azure Site Recovery.
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1d61b8556038959f6acab447fc0510830b1dd943
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 421a96255e7dbbec723122fb3920dcc27da72670
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89054968"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359795"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Algemene vragen over replicatie van VMware naar Azure
 
@@ -75,7 +75,7 @@ Site Recovery is gecertificeerd voor ISO 27001:2013 en 27018, HIPAA en DPA. Het 
 
 Gebruik de [prijs calculator](https://aka.ms/asr_pricing_calculator) om kosten te ramen tijdens het gebruik van site Recovery.
 
-Voor een gedetailleerde schatting van de kosten voert u het hulp programma Deployment planner voor [VMware](https://aka.ms/siterecovery_deployment_planner) uit en gebruikt u het [rapport kosten raming](https://aka.ms/asr_DP_costreport).
+Voor een gedetailleerde schatting van de kosten voert u het hulp programma Deployment planner voor [VMware](./site-recovery-deployment-planner.md) uit en gebruikt u het [rapport kosten raming](./site-recovery-vmware-deployment-planner-cost-estimation.md).
 
 ### <a name="is-there-any-difference-in-cost-between-replicating-to-storage-or-directly-to-managed-disks"></a>Is er sprake van een verschil in kosten tussen replicatie naar opslag of rechtstreeks naar Managed disks?
 
@@ -114,7 +114,7 @@ Site Recovery repliceert on-premises virtuele VMware-machines en fysieke servers
 
 Nee. Vanaf maart 2019 kunt u in de Azure Portal alleen repliceren naar Azure Managed disks.
 
-De replicatie van nieuwe Vm's naar een opslag account is alleen beschikbaar via Power shell ([AZ. Recovery Services module versie 1.4.5](https://www.powershellgallery.com/packages/Az.RecoveryServices/1.4.5)) of de rest API (versie 2018-01-10 of 2016-08-10). [Meer informatie over](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell) het instellen van replicatie met behulp van de Power shell-opdrachten.
+De replicatie van nieuwe Vm's naar een opslag account is alleen beschikbaar via Power shell ([AZ. Recovery Services module versie 1.4.5](https://www.powershellgallery.com/packages/Az.RecoveryServices/1.4.5)) of de rest API (versie 2018-01-10 of 2016-08-10). [Meer informatie over](./vmware-azure-disaster-recovery-powershell.md) het instellen van replicatie met behulp van de Power shell-opdrachten.
 
 ### <a name="what-are-the-benefits-of-replicating-to-managed-disks"></a>Wat zijn de voor delen van repliceren naar Managed disks?
 
@@ -190,7 +190,7 @@ Site Recovery worden elke vijf minuten crash-consistente herstel punten gegenere
 
 ### <a name="my-version-of-the-mobility-services-agent-or-configuration-server-is-old-and-my-upgrade-failed-what-do-i-do"></a>Mijn versie van de Mobility Services-agent of configuratie server is verouderd en mijn upgrade is mislukt. Wat moet ik doen?
 
-Site Recovery volgt het ondersteunings model N-4. Meer [informatie](https://aka.ms/asr_support_statement) over het uitvoeren van een upgrade van zeer oudere versies.
+Site Recovery volgt het ondersteunings model N-4. Meer [informatie](./service-updates-how-to.md#support-statement-for-azure-site-recovery) over het uitvoeren van een upgrade van zeer oudere versies.
 
 ### <a name="where-can-i-find-the-release-notes-and-update-rollups-for-azure-site-recovery"></a>Waar vind ik de release opmerkingen en update pakketten voor Azure Site Recovery?
 
@@ -198,11 +198,11 @@ Site Recovery volgt het ondersteunings model N-4. Meer [informatie](https://aka.
 
 ### <a name="where-can-i-find-upgrade-information-for-disaster-recovery-to-azure"></a>Waar vind ik upgrade-informatie voor herstel na nood gevallen naar Azure?
 
-[Meer informatie over upgraden](https://aka.ms/asr_vmware_upgrades).
+[Meer informatie over upgraden](./service-updates-how-to.md#vmware-vmphysical-server-disaster-recovery-to-azure).
 
 ## <a name="do-i-need-to-reboot-source-machines-for-each-upgrade"></a>Moet ik de bron machines voor elke upgrade opnieuw opstarten?
 
-Opnieuw opstarten wordt aanbevolen, maar niet verplicht voor elke upgrade. [Meer informatie](https://aka.ms/asr_vmware_upgrades).
+Opnieuw opstarten wordt aanbevolen, maar niet verplicht voor elke upgrade. [Meer informatie](./service-updates-how-to.md#reboot-after-mobility-service-upgrade).
 
 ## <a name="configuration-server"></a>Configuratieserver
 
@@ -246,7 +246,7 @@ Hoewel het mogelijk is, moet de virtuele machine van Azure waarop de configurati
 
 - U vindt de meest recente update-informatie op de [pagina met Azure-updates](https://azure.microsoft.com/updates/?product=site-recovery).
 - U kunt de meest recente versie downloaden via de portal. Of u kunt de nieuwste versie van de configuratie server rechtstreeks downloaden vanuit het [micro soft Download centrum](https://aka.ms/asrconfigurationserver).
-- Als uw versie meer dan vier versies ouder is dan de huidige versie, raadpleegt u de [ondersteunings verklaring](https://aka.ms/asr_support_statement) voor upgrade richtlijnen.
+- Als uw versie meer dan vier versies ouder is dan de huidige versie, raadpleegt u de [ondersteunings verklaring](./service-updates-how-to.md#support-statement-for-azure-site-recovery) voor upgrade richtlijnen.
 
 ### <a name="should-i-back-up-the-configuration-server"></a>Moet ik een back-up maken van de configuratie server?
 

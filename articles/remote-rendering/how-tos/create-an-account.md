@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 7a4e6d80d80441a1b94c1fb2bd8f82f247235fe3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8169b277dfae918e86ac493259325ff84d0b6a4e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318089"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427486"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>Een Azure Remote Rendering-account maken
 
@@ -101,7 +101,7 @@ De andere vervolg keuzelijsten worden geselecteerd als in de eerste stap.
 
 Als u alle drie de rollen hebt toegevoegd, heeft uw Azure remote rendering-account toegang tot uw opslag account via door het systeem toegewezen beheerde service-identiteiten.
 > [!IMPORTANT]
-> Azure-roltoewijzingen worden in de cache opgeslagen door Azure Storage. er kan dus een vertraging van Maxi maal 30 minuten optreden wanneer u toegang verleent aan uw externe rendering-account en wanneer het kan worden gebruikt om toegang te krijgen tot uw opslag account. Zie de [documentatie voor toegangs beheer op basis van rollen](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting#role-assignment-changes-are-not-being-detected) voor meer informatie.
+> Azure-roltoewijzingen worden in de cache opgeslagen door Azure Storage. er kan dus een vertraging van Maxi maal 30 minuten optreden wanneer u toegang verleent aan uw externe rendering-account en wanneer het kan worden gebruikt om toegang te krijgen tot uw opslag account. Zie de [documentatie voor Azure op rollen gebaseerde toegangs beheer (Azure RBAC)](../../role-based-access-control/troubleshooting.md#role-assignment-changes-are-not-being-detected) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

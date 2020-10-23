@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 553652832f3f4ce84a0a141455551e4977215184
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 32db8396a687428c668a9b8a4213b50986614083
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684419"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150133"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Selfserviceopties voor inruilen en retourneren voor Azure Reservations
 
@@ -21,7 +21,7 @@ Azure-reserveringen bieden flexibiliteit om te voldoen aan uw evoluerende behoef
 De selfserviceoptie voor inwisselen en annuleren is niet beschikbaar voor Enterprise Agreement-klanten van de Amerikaanse overheid. Andere abonnementstypen voor de Amerikaanse overheid, zoals Betalen per gebruik en CSP, (Cloud Solution Provider) worden wel ondersteund.
 
 > [!NOTE]
-> - **U moet eigenaarsrechten voor de reserveringsorder hebben om een bestaande reservering in te wisselen of er een restitutie voor te krijgen.** U kunt [Gebruikers toevoegen of wijzigen die een reservering kunnen beheren](https://docs.microsoft.com/azure/cost-management-billing/reservations/manage-reserved-vm-instance#add-or-change-users-who-can-manage-a-reservation).
+> - **U moet eigenaarsrechten voor de reserveringsorder hebben om een bestaande reservering in te wisselen of er een restitutie voor te krijgen.** U kunt [Gebruikers toevoegen of wijzigen die een reservering kunnen beheren](./manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
 > - Microsoft brengt momenteel geen kosten in rekening voor vroegtijdige beëindiging voor restitutie van reserveringen. Mogelijk worden in de toekomst wel kosten voor restituties in rekening gebracht. Momenteel staat er geen datum voor het inschakelen van de kosten gepland.
 
 ## <a name="how-to-exchange-or-refund-an-existing-reservation"></a>Een bestaande reservering inwisselen of restitueren

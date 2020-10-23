@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: f6fd8169c587e928da9946d74335ddc758889144
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 208c9b4172719b876766f0c4d07a17caa24bfd63
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273140"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310957"
 ---
 # <a name="create-data-controller-in-azure-data-studio"></a>Gegevens controller maken in Azure Data Studio
 
@@ -25,7 +25,7 @@ U kunt een gegevens controller maken met behulp van Azure Data Studio via de imp
 ## <a name="prerequisites"></a>Vereisten
 
 - U hebt toegang tot een Kubernetes-cluster nodig en het kubeconfig-bestand moet zijn geconfigureerd om te verwijzen naar het Kubernetes-cluster waarnaar u wilt implementeren.
-- U moet [de client hulpprogramma's installeren](install-client-tools.md) , met inbegrip van **Azure Data Studio** de Azure Data Studio extensies **Azure Arc** en **Azure data cli**.
+- U moet [de client hulpprogramma's installeren](install-client-tools.md) , met inbegrip van **Azure Data Studio** de uitbrei dingen van de Azure Data Studio **Azure-Arc** en **[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]** .
 - U moet zich aanmelden bij Azure in Azure Data Studio.  Ga hiervoor als volgt te werk: Typ CTRL/Command + SHIFT + P om het opdracht tekst venster te openen en typ **Azure**.  Kies **Azure: Meld u aan**.   In het deel venster klikt u op het pictogram + in de rechter bovenhoek om een Azure-account toe te voegen.
 
 ## <a name="use-the-deployment-wizard-to-create-azure-arc-data-controller"></a>Gebruik de implementatie wizard om een Azure Arc-gegevens controller te maken

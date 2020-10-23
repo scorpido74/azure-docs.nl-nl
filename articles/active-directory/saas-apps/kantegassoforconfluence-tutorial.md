@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: bef0b2d0387b82140e9874f837d9464408d78090
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 05fd1fc23afc72174f5454c805dd59a6eb2e9714
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546962"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945978"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-confluence"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Kantega SSO voor Confluence
 
@@ -99,7 +99,7 @@ Als u eenmalige aanmelding van Azure AD wilt configureren voor Kantega SSO voor 
 
 4. In het gedeelte **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Kantega SSO voor Confluence](common/idp-intiated.png)
+    ![Schermopname van de sectie 'Standaard SAML-configuratie' met de velden 'Id' en 'Antwoord-URL' gemarkeerd en de knop 'Opslaan' geselecteerd.](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
@@ -134,47 +134,47 @@ Als u eenmalige aanmelding van Azure AD wilt configureren voor Kantega SSO voor 
 
 1. Wijs het tandwiel aan met de muisaanwijzer en klik op **Add-ons**.
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforconfluence-tutorial/addon1.png)
+    ![Schermopname waarin het menupictogram 'Tandwiel' en 'Invoegtoepassingen' geselecteerd worden weergegeven.](./media/kantegassoforconfluence-tutorial/addon1.png)
 
 1. Op het tabblad **ATLASSIAN MARKETPLACE** klikt u op **Nieuwe invoegtoepassingen zoeken**.
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforconfluence-tutorial/addon.png)
+    ![Schermopname van het tabblad 'ATTLASSIAN MARKETPLACE' met 'Nieuwe invoegtoepassingen zoeken' geselecteerd.](./media/kantegassoforconfluence-tutorial/addon.png)
 
 1. Zoek **Kantega SSO voor Confluence (SAML en Kerberos)** en klik op de knop **Installeren** om de nieuwe SAML-invoegtoepassing te installeren.
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforconfluence-tutorial/addon2.png)
+    ![Schermopname waarin de pagina 'Nieuwe invoegtoepassingen zoeken' wordt weergegeven met 'Kantega SSO voor Confluence SAML Kerberos' in het zoekvak en de knop 'Installeren' geselecteerd.](./media/kantegassoforconfluence-tutorial/addon2.png)
 
 1. De installatie van de invoegtoepassing wordt gestart.
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforconfluence-tutorial/addon3.png)
+    ![Schermopname van het scherm 'Installeren' van de invoegtoepassing.](./media/kantegassoforconfluence-tutorial/addon3.png)
 
 1. Nadat de installatie is voltooid. Klik op **Sluiten**.
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforconfluence-tutorial/addon33.png)
+    ![Schermopname van het scherm 'Geïnstalleerd en klaar voor gebruik' en de actie 'Sluiten' geselecteerd.](./media/kantegassoforconfluence-tutorial/addon33.png)
 
 1. Klik op **Beheren**.
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforconfluence-tutorial/addon34.png)
+    ![Schermopname waarin de invoegtoepassing 'Eenmalige aanmelding voor Kantega met Kerberos en SAML' wordt weergegeven met de knop 'Beheren' geselecteerd.](./media/kantegassoforconfluence-tutorial/addon34.png)
 
 1. Klik op **Configure** om de nieuwe invoegtoepassing te configureren.
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforconfluence-tutorial/addon35.png)
+    ![Schermopname waarin de pagina 'Kantega Eenmalige aanmelding met Kerberos en SAML' wordt weergegeven met de knop 'Configureren' geselecteerd.](./media/kantegassoforconfluence-tutorial/addon35.png)
 
 1. Deze nieuwe invoegtoepassing is ook terug te vinden op het tabblad **GEBRUIKERS EN BEVEILIGING**.
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforconfluence-tutorial/addon36.png)
+    ![Schermopname van het tabblad 'GEBRUIKERS & BEVEILIGING' met de actie 'Eenmalige aanmelding voor Kantega' geselecteerd.](./media/kantegassoforconfluence-tutorial/addon36.png)
 
 1. In het gedeelte **SAML**. Selecteer **Azure Active Directory (Azure AD)** in de vervolgkeuzelijst **Id-provider toevoegen**.
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforconfluence-tutorial/addon4.png)
+    ![Schermopname van de sectie 'SAML' met 'Id-provider toevoegen' en 'Azure Active Directory (Azure AD)' geselecteerd.](./media/kantegassoforconfluence-tutorial/addon4.png)
 
 1. Selecteer als abonnementsniveau de optie **Basic**.
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforconfluence-tutorial/addon5.png)
+    ![Schermopname van de sectie 'Azure AD voorbereiden' met 'Basic' geselecteerd.](./media/kantegassoforconfluence-tutorial/addon5.png)
 
 1. Voer de volgende stappen uit in het gedeelte **App-eigenschappen**:
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforconfluence-tutorial/addon6.png)
+    ![Schermopname van de sectie 'App-eigenschappen' met het veld 'App ID URL' en 'Kopiëren' gemarkeerd en de knop 'Volgende' geselecteerd.](./media/kantegassoforconfluence-tutorial/addon6.png)
 
     a. Kopieer de waarde voor de **app-id-URI** en gebruik deze als **id, antwoord-URL en aanmeldings-URL** in het gedeelte **Standaard SAML-configuratie** in Azure Portal.
 
@@ -182,7 +182,7 @@ Als u eenmalige aanmelding van Azure AD wilt configureren voor Kantega SSO voor 
 
 1. Voer de volgende stappen uit in het gedeelte **Metagegevens importeren**: 
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforconfluence-tutorial/addon7.png)
+    ![Schermopname van de sectie 'Importeren metagegevens' met 'Metagegevensbestand op mijn computer' geselecteerd.](./media/kantegassoforconfluence-tutorial/addon7.png)
 
     a. Selecteer **Metadata file on my computer** en upload het metagegevensbestand dat u vanuit Azure Portal hebt gedownload.
 
@@ -190,7 +190,7 @@ Als u eenmalige aanmelding van Azure AD wilt configureren voor Kantega SSO voor 
 
 1. Voer de volgende stappen uit op in het gedeelte **Name and SSO location**:
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforconfluence-tutorial/addon8.png)
+    ![Schermopname van de 'Naam en SSO-locatie', waarbij het tekstvak 'Naam van de id-provider' is gemarkeerd en de knop 'Volgende' is geselecteerd.](./media/kantegassoforconfluence-tutorial/addon8.png)
 
     a. In het tekstvak **Identity provider name** (bijvoorbeeld Azure AD) voegt u de naam van de id-provider toe.
 
@@ -198,11 +198,11 @@ Als u eenmalige aanmelding van Azure AD wilt configureren voor Kantega SSO voor 
 
 1. Controleer het handtekeningcertificaat en klik op **Volgende**.
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforconfluence-tutorial/addon9.png)
+    ![Schermopname van de sectie 'Handtekeningverificatie' met de knop 'Volgende' geselecteerd.](./media/kantegassoforconfluence-tutorial/addon9.png)
 
 1. Voer de volgende stappen uit in de sectie **Confluence user accounts**:
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforconfluence-tutorial/addon10.png)
+    ![Schermopname van de sectie 'Confluence-gebruikersaccounts' met de optie 'Gebruikers maken in de interne map van Confluence indien nodig' en de knop 'Volgende' geselecteerd.](./media/kantegassoforconfluence-tutorial/addon10.png)
 
     a. Selecteer **Create users in Confluence's internal Directory if needed** en voer de juiste naam van de groep voor gebruikers in (dit kunnen meerdere aantallen groepen zijn, gescheiden door komma's).
 
@@ -210,11 +210,11 @@ Als u eenmalige aanmelding van Azure AD wilt configureren voor Kantega SSO voor 
 
 1. Klik op **Voltooien**.
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforconfluence-tutorial/addon11.png)
+    ![Schermopname van de pagina 'Samenvatting' met de knop 'Voltooien' geselecteerd.](./media/kantegassoforconfluence-tutorial/addon11.png)
 
 1. Voer in het gedeelte **Known domains for Azure AD** de volgende stappen uit: 
 
-    ![Eenmalige aanmelding configureren](./media/kantegassoforconfluence-tutorial/addon12.png)
+    ![Schermopname van de pagina 'Bekende domeinen voor Azure AD' met het tekstvak 'Bekende domeinen' gemarkeerd en de knop 'Opslaan' geselecteerd.](./media/kantegassoforconfluence-tutorial/addon12.png)
 
     a. Selecteer **Known domains** in het linkerdeelvenster van de pagina.
 
@@ -283,7 +283,7 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Confluence, moeten 
 
 1. Wijs het tandwiel aan met de muisaanwijzer en klik op **User management**.
 
-    ![Werknemer toevoegen](./media/kantegassoforconfluence-tutorial/user1.png)
+    ![Schermopname met het pictogram 'Tandwiel' en 'Gebruikersbeheer' geselecteerd.](./media/kantegassoforconfluence-tutorial/user1.png)
 
 1. Klik onder de sectie Users op het tabblad **Add Users**. Voer de volgende stappen uit in het dialoogvenster **Add a User**:
 

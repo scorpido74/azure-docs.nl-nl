@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 4564019f540d0dd08c8e0b2827b4a6b7df9c2cf0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b963e0b4797af8269b87f704edca231f000c9372
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543972"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996691"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>Zelfstudie: Integratie van Azure Active Directory met Optimizely
 
@@ -110,7 +110,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD wilt config
 
 5. In de Optimizely-toepassing worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op het pictogram **Bewerken** om het dialoogvenster **Gebruikerskenmerken** te openen.
 
-    ![image](common/edit-attribute.png)
+    ![Schermopname met het dialoogvenster Gebruikerskenmerken met de knop Bewerken rechtsboven geselecteerd.](common/edit-attribute.png)
 
 6. Bovendien verwacht de Optimizely-toepassing nog enkele kenmerken die als SAML-antwoord moeten worden doorgestuurd. In de sectie **Gebruikersclaims** in het dialoogvenster **Gebruikerskenmerken** voert u de volgende stappen uit om het kenmerk van het SAML-token toe te voegen zoals wordt weergegeven in de onderstaande tabel:
 
@@ -120,7 +120,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD wilt config
     
     a. Klik op **Nieuwe claim toevoegen** om het dialoogvenster **Gebruikersclaims beheren** te openen.
 
-    ![image](common/new-save-attribute.png)
+    ![Schermopname met het dialoogvenster Gebruikersclaims met de acties 'Nieuwe claim toevoegen' en 'Opslaan' gemarkeerd.](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
@@ -164,7 +164,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD wilt config
 
 4. Klik op accountnaam in de rechterbovenhoek en klik vervolgens **Account Settings**.
 
-    ![Eenmalige aanmelding van Azure AD](./media/optimizely-tutorial/tutorial_optimizely_09.png)
+    ![Schermopname van de geselecteerde accountnaam in de rechter bovenhoek, met de optie accountinstellingen geselecteerd in het menu.](./media/optimizely-tutorial/tutorial_optimizely_09.png)
 
 5. Schakel op het tabblad Account het selectievakje **Enable SSO** onder Single Sign On in het gedeelte **Overview** in.
   
@@ -231,7 +231,7 @@ In deze sectie maakt u een gebruiker met de naam Britta Simon in Optimizely.
 
 2. Om een nieuwe samenwerker aan het project toe te voegen, klikt u op **New Collaborator**.
    
-    ![Een Azure AD-testgebruiker maken](./media/optimizely-tutorial/create_aaduser_10.png)
+    ![Schermopname met de pagina Optimalisatie op basis van het tabblad Samenwerkers en de knop Nieuwe samenwerker geselecteerd.](./media/optimizely-tutorial/create_aaduser_10.png)
 
 3. Vul het e-mailadres in en wijs een rol toe. Klik op **Uitnodigen**.
 

@@ -4,12 +4,12 @@ description: Hierin wordt een overzicht gegeven van de ondersteunings instelling
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.custom: references_regions
-ms.openlocfilehash: 5126159f2f9e5761b5f6a073972935101bc03210
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: b189eceb6b5a7f2e508387c0b91b238ff5fcb088
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946345"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174059"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Ondersteunings matrix voor SQL Server back-up in virtuele machines van Azure
 
@@ -41,7 +41,7 @@ U kunt Azure Backup gebruiken om een back-up te maken van SQL Server-data bases 
 * Alle back-uptypen (volledig/differentieel/logboek) en herstel modellen (eenvoudig/volledig of bulksgewijs geregistreerd) worden ondersteund.
 * Volledige en alleen-kopiëren volledige back-uptypen worden ondersteund voor **alleen-lezen** data bases.
 * Native compressie van SQL wordt ondersteund als dit expliciet door de gebruiker in het back-upbeleid is ingeschakeld. Azure Backup onderdrukking standaard instellingen op exemplaar niveau met de compressie-NO_COMPRESSION-component, afhankelijk van de waarde van dit besturings element, zoals ingesteld door de gebruiker.
-* TDE-database back-up wordt ondersteund. Als u een met TDE versleutelde data base wilt herstellen naar een andere SQL Server, moet u [het certificaat eerst herstellen naar de doel server](https://docs.microsoft.com/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server). Back-upcompressie voor TDE-data bases voor SQL Server 2016 en nieuwere versies is beschikbaar, maar bij lagere overdrachts grootte, zoals [hier](https://techcommunity.microsoft.com/t5/sql-server/backup-compression-for-tde-enabled-databases-important-fixes-in/ba-p/385593)wordt uitgelegd.
+* TDE-database back-up wordt ondersteund. Als u een met TDE versleutelde data base wilt herstellen naar een andere SQL Server, moet u [het certificaat eerst herstellen naar de doel server](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server). Back-upcompressie voor TDE-data bases voor SQL Server 2016 en nieuwere versies is beschikbaar, maar bij lagere overdrachts grootte, zoals [hier](https://techcommunity.microsoft.com/t5/sql-server/backup-compression-for-tde-enabled-databases-important-fixes-in/ba-p/385593)wordt uitgelegd.
 * Back-up-en herstel bewerkingen voor spiegel databases en database momentopnamen worden niet ondersteund.
 * SQL Server **-FCI (failover cluster instance)** wordt niet ondersteund.
 * Het gebruik van meerdere back-upoplossingen om een back-up te maken van uw zelfstandige SQL Server exemplaar of de beschikbaarheids groep SQL always kan leiden tot back-upfouten. Dit wordt onthouden. Als u een back-up maakt van twee knoop punten van een beschikbaarheids groep met dezelfde of een andere oplossing, kan dit ook leiden tot back-upfouten.

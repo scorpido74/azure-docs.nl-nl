@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 5b3db919056f24ad8b46c9925c044453e671d99f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e664055893bbdef0f7090811b8a160a1b8a4a1fd
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84219168"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124045"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>Zelfstudie: De gegevenskopieerservice gebruiken om gegevens direct op te nemen in Azure Data Box (preview)
 
@@ -71,7 +71,7 @@ U moet een taak maken als u gegevens wilt kopiëren met behulp van de gegevensko
     |**Doelopslagaccount**    |Selecteer in de lijst het doelopslagaccount waarnaar u de gegevens wilt uploaden.         |
     |**Doeltype**       |Selecteer het doelopslagtype in de lijst: **Blok-blob**, **pagina-blob** of **Azure Files**.        |
     |**Doelcontainer/-share**    |Voer de naam in van de container of share waarnaar u gegevens wilt uploaden in uw doelopslagaccount. De naam kan een sharenaam of een containernaam zijn. Gebruik bijvoorbeeld `myshare` of `mycontainer`. U kunt de naam ook invoeren in de indeling `sharename\directory_name` of `containername\virtual_directory_name`.        |
-    |**Bestanden kopiëren die overeenkomen met het patroon**    | U kunt het bestandsnaampatroon invoeren op de volgende twee manieren:<ul><li>**Met jokertekenexpressies:** Alleen `*` en `?` worden ondersteund in expressies met jokertekens. De expressie `*.vhd` bijvoorbeeld komt overeen met alle bestanden die de extensie `.vhd` hebben. En zo komt `*.dl?` overeen met alle bestanden die de extensie `.dl` hebben of die beginnen met `.dl`, zoals `.dll`. En zo komt `*foo` overeen met alle bestanden waarvan de bestandsnaam eindigt op `foo`.<br>U kunt de expressie met jokertekens rechtstreeks invoeren in het veld. Standaard wordt de waarde die u in het veld invoert, beschouwd als een expressie met jokertekens.</li><li>**Met reguliere expressies:** Op POSIX gebaseerde reguliere expressies worden ondersteund. De reguliere expressie `.*\.vhd` bijvoorbeeld komt overeen met alle bestanden die de extensie `.vhd` hebben. Voor reguliere expressies geeft u het `<pattern>` rechtstreeks op als `regex(<pattern>)`. Voor meer informatie over reguliere expressies gaat u naar [Regular expression language - a quick reference](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) (Reguliere expressies - een snelzoekgids).</li><ul>|
+    |**Bestanden kopiëren die overeenkomen met het patroon**    | U kunt het bestandsnaampatroon invoeren op de volgende twee manieren:<ul><li>**Met jokertekenexpressies:** Alleen `*` en `?` worden ondersteund in expressies met jokertekens. De expressie `*.vhd` bijvoorbeeld komt overeen met alle bestanden die de extensie `.vhd` hebben. En zo komt `*.dl?` overeen met alle bestanden die de extensie `.dl` hebben of die beginnen met `.dl`, zoals `.dll`. En zo komt `*foo` overeen met alle bestanden waarvan de bestandsnaam eindigt op `foo`.<br>U kunt de expressie met jokertekens rechtstreeks invoeren in het veld. Standaard wordt de waarde die u in het veld invoert, beschouwd als een expressie met jokertekens.</li><li>**Met reguliere expressies:** Op POSIX gebaseerde reguliere expressies worden ondersteund. De reguliere expressie `.*\.vhd` bijvoorbeeld komt overeen met alle bestanden die de extensie `.vhd` hebben. Voor reguliere expressies geeft u het `<pattern>` rechtstreeks op als `regex(<pattern>)`. Voor meer informatie over reguliere expressies gaat u naar [Regular expression language - a quick reference](/dotnet/standard/base-types/regular-expression-language-quick-reference) (Reguliere expressies - een snelzoekgids).</li><ul>|
     |**Bestandsoptimalisatie**              |Als deze functie is ingeschakeld, worden bestanden die kleiner zijn dan 1 MB tijdens de opname verpakt. Dit verpakken versnelt het kopiëren van gegevens voor kleine bestanden. Het bespaart ook aanzienlijk veel tijd wanneer het aantal bestanden veel groter is dan het aantal directory’s.        |
  
 4. Selecteer **Starten**. De invoer wordt gevalideerd en als de validatie is geslaagd, wordt de taak gestart. Het kan enkele minuten duren voordat de taak start.

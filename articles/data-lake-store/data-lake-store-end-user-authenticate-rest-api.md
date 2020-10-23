@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 84e85e6e817972b8ec0bee0e8b441b3585d2d9dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 462cd06c9da3b1f0a57c293d52c59181372b709b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85984848"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103744"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Verificatie door eind gebruikers met Azure Data Lake Storage Gen1 met behulp van REST API
 > [!div class="op_single_selector"]
@@ -82,11 +82,10 @@ In dit scenario wordt de gebruiker via de toepassing gevraagd om zich te melden 
          -F refresh_token=<REFRESH-TOKEN>
     ```
 
-Zie [De stroom voor autorisatiecodetoekenning](https://msdn.microsoft.com/library/azure/dn645542.aspx) voor meer informatie over interactieve gebruikersverificatie.
+Zie [De stroom voor autorisatiecodetoekenning](/previous-versions/azure/dn645542(v=azure.100)) voor meer informatie over interactieve gebruikersverificatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 In dit artikel hebt u geleerd hoe u service-naar-service-verificatie kunt gebruiken om te verifiëren met Azure Data Lake Storage Gen1 met behulp van REST API. U kunt nu de volgende artikelen bekijken om te praten over het gebruik van de REST API om met Azure Data Lake Storage Gen1 te werken.
 
 * [Account beheer bewerkingen op Data Lake Storage Gen1 met behulp van REST API](data-lake-store-get-started-rest-api.md)
 * [Gegevens bewerkingen op Data Lake Storage Gen1 met behulp van REST API](data-lake-store-data-operations-rest-api.md)
-

@@ -3,12 +3,12 @@ title: Problemen met aanmelding bij REGI ster oplossen
 description: Symptomen, oorzaken en oplossingen voor veelvoorkomende problemen bij het aanmelden bij een Azure container Registry
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: d5071a1e759d26ce43d2eb5d9b8215781d813d33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7bac49a79d32af3a0e533f4c4e3431c62b82172
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253351"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148447"
 ---
 # <a name="troubleshoot-registry-login"></a>Problemen met register aanmelding oplossen
 
@@ -95,7 +95,7 @@ Gerelateerde koppelingen:
 
 ### <a name="confirm-credentials-are-authorized-to-access-registry"></a>Bevestigen dat referenties zijn geautoriseerd voor toegang tot het REGI ster
 
-Bevestig de register machtigingen die zijn gekoppeld aan de referenties, zoals de `AcrPull` RBAC-rol voor het ophalen van installatie kopieën uit het REGI ster of de `AcrPush` rol voor het pushen van installatie kopieën. 
+Bevestig de register machtigingen die zijn gekoppeld aan de referenties, zoals de `AcrPull` Azure-rol voor het ophalen van installatie kopieën uit het REGI ster of de `AcrPush` rol voor het pushen van installatie kopieën. 
 
 Voor toegang tot een REGI ster in de portal of het register beheer met de Azure CLI is ten minste de `Reader` rol vereist om Azure Resource Manager bewerkingen uit te voeren.
 
@@ -103,7 +103,7 @@ U of een register eigenaar moet voldoende bevoegdheden hebben in het abonnement 
 
 Gerelateerde koppelingen:
 
-* [RBAC-rollen en-machtigingen-Azure Container Registry](container-registry-roles.md)
+* [Azure-rollen en-machtigingen-Azure Container Registry](container-registry-roles.md)
 * [Aanmelden met een token uit de opslag plaats](container-registry-repository-scoped-permissions.md)
 * [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure-portal](../role-based-access-control/role-assignments-portal.md)
 * [Gebruik de portal voor het maken van een Azure AD-toepassing en service-principal die toegang hebben tot resources](../active-directory/develop/howto-create-service-principal-portal.md)
@@ -142,7 +142,5 @@ Als u uw probleem hier niet kunt oplossen, raadpleegt u de volgende opties.
   * [Problemen met het netwerk oplossen met het REGI ster](container-registry-troubleshoot-access.md)
   * [Problemen met registerprestaties oplossen](container-registry-troubleshoot-performance.md)
 * Opties voor [Community-ondersteuning](https://azure.microsoft.com/support/community/)
-* [Microsoft Q&A](https://docs.microsoft.com/answers/products/)
+* [Microsoft Q&A](/answers/products/)
 * [Open een ondersteunings ticket](https://azure.microsoft.com/support/create-ticket/) op basis van de gegevens die u verstrekt, een snelle diagnose kan worden uitgevoerd voor verificatie fouten in uw REGI ster
-
-

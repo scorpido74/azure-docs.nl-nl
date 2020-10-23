@@ -9,14 +9,14 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 35fb8adaa5f7c0fff1c6d967f0136736b8071ce4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2f5b87fe313f7d152a80a35671bc7e0da3bb7c7
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91260152"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341546"
 ---
-# <a name="secure-your-synapse-workspace-preview"></a>Uw Synapse-werk ruimte beveiligen (preview-versie)
+# <a name="secure-your-synapse-workspace-preview"></a>Uw Synapse-werk ruimte beveiligen (preview-versie) 
 
 In dit artikel leert u hoe u rollen en toegangs beheer kunt gebruiken om activiteiten en toegang tot gegevens te beheren. Door deze instructies te volgen, is toegangs beheer in azure Synapse Analytics vereenvoudigd. U hoeft alleen maar gebruikers toe te voegen aan of te verwijderen uit een van de drie beveiligings groepen.
 
@@ -31,7 +31,7 @@ Als u een Synapse-werk ruimte (preview-versie) wilt beveiligen, volgt u een patr
   - Apache Spark voor Azure Synapse Analytics-beheerder
 - Toegangs beheer voor gegevens in Azure Data Lake Storage gen 2 (ADLSGEN2).
 - Toegangs beheer voor Synapse SQL-en Spark-data bases
-
+- 
 ## <a name="steps-to-secure-a-synapse-workspace"></a>Stappen voor het beveiligen van een Synapse-werk ruimte
 
 In dit document worden standaard namen gebruikt om de instructies te vereenvoudigen. Vervang deze door een of meer namen van uw keuze.
@@ -71,11 +71,12 @@ Identificeer deze informatie over uw opslag:
 
 ## <a name="step-3-create-and-configure-your-synapse-workspace"></a>STAP 3: uw Synapse-werk ruimte maken en configureren
 
-Maak in het Azure Portal een Synapse-werk ruimte:
+ Maak in het Azure Portal een Synapse-werk ruimte:
 
+- Selecteer uw abonnement
+- Selecteer uw resource groep-u moet toegang hebben tot een resource groep waarvoor u de rol van **eigenaar** hebt gekregen.
 - De werk ruimte een naam WS1
-- Kies STG1 voor het opslag account
-- Kies CNT1 voor de container die wordt gebruikt als het "Bestands systeem".
+- Kies STG1 voor het opslag account-. Kies CNT1 voor de container die wordt gebruikt als het "Bestands systeem".
 - Open WS1 in Synapse Studio
 - Selecteer **beheren**  >  **Access Control** de beveiligings groepen toe te wijzen aan de volgende Synapse-rollen.
   - **WS1 \_ WSAdmins** toewijzen aan Synapse-werkruimte beheerders
@@ -112,7 +113,7 @@ Hoewel u gebruikers hand matig aan Synapse-rollen kunt toewijzen, worden de item
 
 Gebruikers in elke rol moeten de volgende stappen uitvoeren:
 
-| Getal | Stap | Werkruimtebeheerders | Spark-beheerders | SQL-Administrators |
+| Aantal | Stap | Werkruimtebeheerders | Spark-beheerders | SQL-Administrators |
 | --- | --- | --- | --- | --- |
 | 1 | Een Parquet-bestand uploaden naar CNT1 | JA | JA | JA |
 | 2 | Het Parquet-bestand lezen met behulp van SQL op aanvraag | JA | NO | JA |

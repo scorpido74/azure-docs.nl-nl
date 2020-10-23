@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 8c94109746545a1f7ff33534ca3ec54f55357281
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 00ef6cf6d4149f139876cb0c2d845133ba00157c
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316031"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127503"
 ---
 # <a name="azure-iot-central---solar-panel-app-architecture"></a>Azure IoT Central: architectuur van de zonnepaneel-app
 
@@ -29,7 +29,7 @@ Deze architectuur bestaat uit de volgende onderdelen. Voor sommige toepassingen 
 
 ## <a name="solar-panels-and-connectivity"></a>Zonnepanelen en connectiviteit 
 
-Zonnepanelen zijn een van de belangrijkste bronnen van duurzame energie. Afhankelijk van het type zonnepaneel en de opstelling, kunt u deze verbinden met behulp van gateways of andere tussenliggende apparaten en eigen systemen. Mogelijk moet u een IoT Central-apparaatbrug bouwen om apparaten aan te sluiten die niet rechtstreeks kunnen worden verbonden. De IoT Central-apparaatbrug is een opensource-oplossing. De volledige details vindt u [hier](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge). 
+Zonnepanelen zijn een van de belangrijkste bronnen van duurzame energie. Afhankelijk van het type zonnepaneel en de opstelling, kunt u deze verbinden met behulp van gateways of andere tussenliggende apparaten en eigen systemen. Mogelijk moet u een IoT Central-apparaatbrug bouwen om apparaten aan te sluiten die niet rechtstreeks kunnen worden verbonden. De IoT Central-apparaatbrug is een opensource-oplossing. De volledige details vindt u [hier](../core/howto-build-iotc-device-bridge.md). 
 
 
 
@@ -43,4 +43,4 @@ Het IoT Central-platform biedt twee uitbreidingsopties: Continue gegevensexport 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Nu u kennis hebt genomen van de architectuur, kunt u [gratis een zonnepaneel-app maken](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring)
-* Zie [Overzicht van IoT Central](https://docs.microsoft.com/azure/iot-central/) voor meer informatie over IoT Central
+* Zie [Overzicht van IoT Central](../index.yml) voor meer informatie over IoT Central

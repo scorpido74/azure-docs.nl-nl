@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 10/16/2020
 ms.author: jingwang
-ms.openlocfilehash: ac6540dfd86430aab518b145ed391d1d6283219e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c491a0b5e4c4fc517368c5947fa6181201a5b5fd
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91276574"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127264"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Tekst indeling met scheidings tekens in Azure Data Factory
 
@@ -34,8 +34,8 @@ Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een v
 | location         | Locatie-instellingen van bestand (en). Elke connector op basis van bestanden heeft een eigen locatie type en ondersteunde eigenschappen onder `location` .  | Ja      |
 | columnDelimiter  | De teken (s) die worden gebruikt voor het scheiden van kolommen in een bestand. <br>De standaard waarde is **een `,` komma **. Wanneer het kolom scheidings teken is gedefinieerd als lege reeks, wat betekent dat er geen scheidings teken is, wordt de hele regel als één kolom beschouwd.<br>Kolom scheidings teken is op dit moment alleen toegestaan voor de toewijzing van gegevens stromen, maar niet voor het kopiëren van een activiteit.  | Nee       |
 | rowDelimiter     | Het afzonderlijke teken of ' \r\n ' die wordt gebruikt om rijen in een bestand te scheiden. <br>De standaard waarde is een van de volgende waarden **voor lezen: ["\r\n", "\r", "\n"]** en **"\n" of "\r\n" bij** het toewijzen van gegevens stroom en de Kopieer activiteit respectievelijk. <br>Als het scheidings teken van de rij is ingesteld op geen scheidings teken (lege reeks), moet het kolom scheidings teken worden ingesteld als geen scheidings teken (lege teken reeks), wat betekent dat de gehele inhoud als één waarde wordt behandeld.<br>Op dit moment wordt het rijnummer als lege teken reeks alleen ondersteund voor het toewijzen van gegevens stroom, maar niet voor het kopiëren van de activiteit. | Nee       |
-| quoteChar        | De kolom waarden voor één teken om te citeren als deze kolom scheidings tekens bevat. <br>De standaard waarde is **dubbele aanhalings tekens** `"` . <br>Voor het toewijzen van gegevens stroom `quoteChar` kan geen lege teken reeks zijn. <br>Voor kopieer activiteit, als `quoteChar` is gedefinieerd als lege teken reeks, betekent dit dat er geen aanhalings tekens en kolom waarde is opgenomen, en `escapeChar` wordt gebruikt om het scheidings teken van de kolom en zichzelf te escapenen. | Nee       |
-| escapeChar       | Het enkele teken om aanhalings tekens binnen een waarde in de offerte op te lossen.<br>De standaard waarde is **back `\` slash **. <br>Voor het toewijzen van gegevens stroom `escapeChar` kan geen lege teken reeks zijn. <br/>Voor kopieer activiteit geldt `escapeChar` dat als is gedefinieerd als lege teken reeks, de `quoteChar` moet worden ingesteld als een lege teken reeks, in dat geval dat alle kolom waarden geen scheidings tekens bevatten. | Nee       |
+| quoteChar        | De kolom waarden voor één teken om te citeren als deze kolom scheidings tekens bevat. <br>De standaard waarde is **dubbele aanhalings tekens** `"` . <br>Als `quoteChar` is gedefinieerd als een lege teken reeks, betekent dit dat er geen aanhalings tekens en kolom waarde is opgenomen, en `escapeChar` wordt gebruikt om het scheidings teken van de kolom en zichzelf te verescapenen. | Nee       |
+| escapeChar       | Het enkele teken om aanhalings tekens binnen een waarde in de offerte op te lossen.<br>De standaard waarde is **back `\` slash **. <br>Wanneer `escapeChar` is gedefinieerd als lege teken reeks, `quoteChar` moet de waarde ook worden ingesteld als een lege teken reeks, in dat geval dat alle kolom waarden geen scheidings tekens bevatten. | Nee       |
 | firstRowAsHeader | Hiermee wordt aangegeven of de eerste rij moet worden behandeld/gemaakt als een kopregel met namen van kolommen.<br>Toegestane waarden zijn **True** en **False** (standaard).<br>Als de eerste rij als koptekst onwaar is, notitie UI-gegevens voorbeeld en de uitvoer van opzoek activiteiten automatisch genereren van kolom namen als Prop_ {n} (vanaf 0), is voor kopieer activiteit [expliciet toewijzing](copy-activity-schema-and-type-mapping.md#explicit-mapping) van bron aan Sink vereist en worden kolommen op rang telwoord gesorteerd (vanaf 1), en worden er kolommen met de naam weer gegeven als Column_ {n} (vanaf 1).  | Nee       |
 | nullValue        | Hiermee wordt de teken reeks representatie van een null-waarde opgegeven. <br>De standaard waarde is een **lege teken reeks**. | Nee       |
 | encodingName     | Het coderings type dat wordt gebruikt voor het lezen/schrijven van test bestanden. <br>Toegestane waarden zijn als volgt: ' UTF-8 ', ' UTF-16 ', ' UTF-16BE ', ' UTF-32 ', ' UTF-32BE ', ' VS-ASCII ', ' UTF-7 ', ' BIG5 ', ' EUC-JP ', ' EUC-KR ', ' GB2312 "," GB18030 "," JOHAB "," SHIFT-JIS "," CP875 "," CP866 "," IBM00858 "," IBM037 "," IBM273 "," IBM437 "," IBM500 "," IBM737 "," IBM775 "," IBM850 "," IBM852 "," IBM855 "," IBM857 "," IBM860 "," IBM861 ', ' IBM863 ', ' IBM864 ', ' IBM865 ', ' IBM869 ', ' IBM870 ', ' IBM01140 ', ' IBM01141 ', ' IBM01142 ', ' IBM01143 ', ' IBM01144 ', IBM01145 "," IBM01146 "," IBM01147 "," IBM01148 "," IBM01149 "," ISO-2022-JP "," ISO-2022-KR "," ISO-8859-1 "," ISO-8859-2 "," ISO-8859-3 "," ISO-8859-4 "," ISO-8859-5 "," ISO-8859-6 "," ISO-8859-7 "," ISO-8859-8 "," ISO-8859-9 "," ISO-8859-13 " , "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", "WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255", "WINDOWS-1256", "WINDOWS-1257", "WINDOWS-1258".<br>Opmerking toewijzing gegevens stroom ondersteunt geen UTF-7-code ring. | Nee       |

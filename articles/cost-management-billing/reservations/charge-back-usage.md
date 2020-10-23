@@ -7,18 +7,18 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 4387a1aa5b22c9808f36364b71f89a71736958b8
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: aba6ea467788c51d179ef9377243efb6035b6f98
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689470"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148357"
 ---
 # <a name="charge-back-azure-reservation-costs"></a>Azure-reserveringskosten terugstorten
 
 Enterprise Enrollment-factureringslezers en factureringslezers van een Microsoft-klantovereenkomst kunnen afgeschreven kostengegevens voor reserveringen weergeven. Ze kunnen deze kostengegevens gebruiken om de monetaire waarde voor een abonnement, resourcegroep, resource of een tag terug te storten aan hun partners. In afgeschreven gegevens zijn de effectieve prijs de evenredige reserveringskosten per uur. De kosten zijn de totale kosten voor reserveringsgebruik door de resource op die dag.
 
-Gebruikers met een individueel abonnement kunnen de afgeschreven kostengegevens bekijken in hun gebruiksbestand. Wanneer een resource een reserveringskorting krijgt, bevat het gedeelte *AdditionalInfo* in het gebruiksbestand de reserveringsdetails. Zie [Gebruiksgegevens downloaden vanuit Azure Portal](https://docs.microsoft.com/azure/cost-management-billing/understand/download-azure-daily-usage#download-usage-from-the-azure-portal-csv) voor meer informatie.
+Gebruikers met een individueel abonnement kunnen de afgeschreven kostengegevens bekijken in hun gebruiksbestand. Wanneer een resource een reserveringskorting krijgt, bevat het gedeelte *AdditionalInfo* in het gebruiksbestand de reserveringsdetails. Zie [Gebruiksgegevens downloaden vanuit Azure Portal](../understand/download-azure-daily-usage.md#download-usage-from-the-azure-portal-csv) voor meer informatie.
 
 ## <a name="get-reservation-charge-back-data-for-chargeback"></a>Gegevens over terugstorting van reserveringskosten weergeven
 

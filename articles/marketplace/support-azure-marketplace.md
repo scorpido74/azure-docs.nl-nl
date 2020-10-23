@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: 741bea5129e5fa9660e198a74e23f0ef6c67dc23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b74f3ecdc048b6468906fb46a848d27cd1f23b9
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329751"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275419"
 ---
 # <a name="support-for-the-microsoft-commercial-marketplace"></a>Ondersteuning voor micro soft Commercial Marketplace
 
@@ -45,6 +45,6 @@ Open een ticket met ondersteuning voor micro soft [Marketplace-Uitgever](https:/
 ## <a name="next-steps"></a>Volgende stappen
 
 * Ga naar de [pagina met Publisher-hand leiding voor commerciële Marketplace](index.yml).
-* Meer informatie over [ondersteuning voor het programma voor commerciële Marketplace in het partner centrum](partner-center-portal/support.md).
+* Meer informatie over [ondersteuning voor het programma voor commerciële Marketplace in het partner centrum](support.md).
 
 ---

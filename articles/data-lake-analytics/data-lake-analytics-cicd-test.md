@@ -1,21 +1,18 @@
 ---
 title: Uw Azure Data Lake Analytics code testen
 description: Meer informatie over het toevoegen van test cases voor de U-SQL-en uitgebreide C#-code voor Azure Data Lake Analytics.
-services: data-lake-analytics
 author: liudan66
 ms.author: liud
 ms.reviewer: jasonh
-ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
 ms.topic: how-to
-ms.workload: big-data
 ms.date: 08/30/2019
-ms.openlocfilehash: 44426598daf1808ef0aee233968b04d2dc7c165f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7310c67ef20a4134d4f613ea969c96802958bf62
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87129913"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219204"
 ---
 # <a name="test-your-azure-data-lake-analytics-code"></a>Uw Azure Data Lake Analytics-code testen
 
@@ -112,7 +109,7 @@ Nadat u het project hebt gemaakt, **Test**selecteert u test Verkenner van  >  **
 
 ## <a name="run-test-cases-in-azure-pipelines"></a>Test cases uitvoeren in azure-pijp lijnen<a name="run-test-cases-in-azure-devops"></a>
 
-Zowel **U-SQL-script test projecten** als **c# Udo test-projecten** nemen c#-eenheids test projecten over. Met de [Visual Studio-test taak](https://docs.microsoft.com/azure/devops/pipelines/test/getting-started-with-continuous-testing?view=vsts) in azure-pijp lijnen kunnen deze test cases worden uitgevoerd.
+Zowel **U-SQL-script test projecten** als **c# Udo test-projecten** nemen c#-eenheids test projecten over. Met de [Visual Studio-test taak](/azure/devops/pipelines/test/getting-started-with-continuous-testing) in azure-pijp lijnen kunnen deze test cases worden uitgevoerd.
 
 ### <a name="run-u-sql-test-cases-in-azure-pipelines"></a>U-SQL-test cases uitvoeren in azure-pijp lijnen
 

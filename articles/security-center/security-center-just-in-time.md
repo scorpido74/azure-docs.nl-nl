@@ -8,14 +8,14 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 4a709527c0de2e092bcca2bbd9bc596aa0eb4cc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6091ccbb64ec880224e861e1b8ee2bd39363385c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440728"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342379"
 ---
-# <a name="secure-your-management-ports-with-just-in-time-access"></a>Beveilig uw beheer poorten met Just-in-time-toegang
+# <a name="secure-your-management-ports-with-just-in-time-access"></a>Beheerpoorten beveiligen met just-in-time-toegang
 
 Vergrendel inkomend verkeer naar uw Azure-Virtual Machines met Azure Security Center de VM-toegangs functie (just-in-time) van de virtuele machine. Dit vermindert het risico op aanvallen en biedt eenvoudige toegang wanneer u verbinding moet maken met een virtuele machine.
 
@@ -35,7 +35,7 @@ Op deze pagina leert u hoe u JIT kunt toevoegen in uw beveiligings programma. U 
 |----|:----|
 |Releasestatus:|Algemeen verkrijgbaar (GA)|
 |Prijzen:|[Azure Defender voor servers](defender-for-servers-introduction.md) is vereist|
-|Ondersteunde Vm's:|![Ja ](./media/icons/yes-icon.png) virtuele machines die via Azure Resource Manager worden geïmplementeerd.<br>![Er zijn geen ](./media/icons/no-icon.png) vm's geïmplementeerd met klassieke implementatie modellen. Meer [informatie over deze implementatie modellen](../azure-resource-manager/management/deployment-models.md).<br>![Geen ](./media/icons/no-icon.png) vm's die worden beveiligd door Azure-firewalls die worden beheerd door [Azure firewall Manager](https://docs.microsoft.com/azure/firewall-manager/overview)|
+|Ondersteunde Vm's:|![Ja ](./media/icons/yes-icon.png) virtuele machines die via Azure Resource Manager worden geïmplementeerd.<br>![Er zijn geen ](./media/icons/no-icon.png) vm's geïmplementeerd met klassieke implementatie modellen. Meer [informatie over deze implementatie modellen](../azure-resource-manager/management/deployment-models.md).<br>![Geen ](./media/icons/no-icon.png) vm's die worden beveiligd door Azure-firewalls die worden beheerd door [Azure firewall Manager](../firewall-manager/overview.md)|
 |Vereiste rollen en machtigingen:|Met de rollen **lezer** en **SECURITYREADER** kunnen de JIT-status en-para meters worden weer gegeven.<br>Als u aangepaste rollen wilt maken die met JIT kunnen werken, raadpleegt u de [machtigingen die nodig zijn voor het configureren en gebruiken van JIT?](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit).<br>Gebruik het [script set-JitLeastPrivilegedRole](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role) op de pagina's van de Security Center github-Community om een rol met een beperkte bevoegdheid te maken voor gebruikers die JIT-toegang moeten aanvragen voor een virtuele machine en geen andere JIT-bewerkingen kunnen uitvoeren.|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Commerciële clouds<br>![Ja](./media/icons/yes-icon.png) Nationaal/onafhankelijk (Overheid van de VS, China, andere overheden)|
 |||
@@ -164,7 +164,7 @@ U kunt JIT inschakelen op een virtuele machine op de pagina's van de virtuele Az
 
 ### <a name="powershell"></a>[**PowerShell**](#tab/jit-config-powershell)
 
-### <a name="enable-jit-on-your-vms-using-powershell"></a>JIT inschakelen op uw Vm's met behulp van Power shell
+### <a name="enable-jit-on-your-vms-using-powershell"></a>JIT inschakelen op uw VM's met behulp van PowerShell
 
 Gebruik de officiële Azure Security Center Power shell-cmdlet om just-in-time-VM-toegang vanuit Power shell in te scha kelen `Set-AzJitNetworkAccessPolicy` .
 
@@ -215,7 +215,7 @@ Met de volgende Power shell-opdrachten maakt u deze JIT-configuratie:
 
 De just-in-time VM-toegangs functie kan worden gebruikt via de Azure Security Center-API. Gebruik deze API om informatie over geconfigureerde Vm's op te halen, nieuwe toe te voegen, toegang aan te vragen voor een virtuele machine en nog veel meer. 
 
-Meer informatie vindt u in [JIT-netwerk toegangs beleid](https://docs.microsoft.com/rest/api/securitycenter/jitnetworkaccesspolicies).
+Meer informatie vindt u in [JIT-netwerk toegangs beleid](/rest/api/securitycenter/jitnetworkaccesspolicies).
 
 
 --- 
@@ -290,7 +290,7 @@ Toegang aanvragen via Azure virtual machines:
 
 ### <a name="powershell"></a>[**PowerShell**](#tab/jit-request-powershell)
 
-### <a name="request-access-to-a-jit-enabled-vm-using-powershell"></a>Toegang aanvragen tot een virtuele machine met JIT-functionaliteit met behulp van Power shell
+### <a name="request-access-to-a-jit-enabled-vm-using-powershell"></a>Toegang aanvragen tot een VM met JIT-functionaliteit
 
 In het volgende voor beeld ziet u een just-in-time-toegangs aanvraag voor een virtuele machine naar een specifieke virtuele machine waarvoor poort 22 is aangevraagd voor het openen van een specifiek IP-adres en voor een specifieke hoeveelheid tijd:
 
@@ -319,7 +319,7 @@ Voer het volgende uit in Power shell:
     Start-AzJitNetworkAccessPolicy -ResourceId "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Security/locations/LOCATION/jitNetworkAccessPolicies/default" -VirtualMachine $JitPolicyArr
     ```
 
-Meer informatie vindt u in de documentatie van de [Power shell-cmdlet](https://docs.microsoft.com/powershell/scripting/developer/cmdlet/cmdlet-overview).
+Meer informatie vindt u in de documentatie van de [Power shell-cmdlet](/powershell/scripting/developer/cmdlet/cmdlet-overview).
 
 
 
@@ -329,7 +329,7 @@ Meer informatie vindt u in de documentatie van de [Power shell-cmdlet](https://d
 
 De just-in-time VM-toegangs functie kan worden gebruikt via de Azure Security Center-API. Gebruik deze API om informatie over geconfigureerde Vm's op te halen, nieuwe toe te voegen, toegang aan te vragen voor een virtuele machine en nog veel meer. 
 
-Meer informatie vindt u in [JIT-netwerk toegangs beleid](https://docs.microsoft.com/rest/api/securitycenter/jitnetworkaccesspolicies).
+Meer informatie vindt u in [JIT-netwerk toegangs beleid](/rest/api/securitycenter/jitnetworkaccesspolicies).
 
 ---
 

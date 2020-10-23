@@ -2,90 +2,100 @@
 title: Resource Manager-sjablonen implementeren met behulp van GitHub-acties
 description: Hierin wordt beschreven hoe u Azure Resource Manager-sjablonen implementeert met behulp van GitHub-acties.
 ms.topic: conceptual
-ms.date: 07/02/2020
-ms.custom: github-actions-azure
-ms.openlocfilehash: cea099088005fa91e1b3e9a793105df4796a66ee
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.date: 10/13/2020
+ms.custom: github-actions-azure,subject-armqs
+ms.openlocfilehash: f982ecd208dfd30757050df48c783718ed2b917a
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018573"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282841"
 ---
 # <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>Azure Resource Manager sjablonen implementeren met behulp van GitHub-acties
 
-Met [github acties](https://help.github.com/en/actions) kunt u aangepaste werk stromen voor het ontwikkelen van software ontwikkeling direct in uw github-opslag plaats maken waar de sjablonen van uw Azure Resource Manager (arm) worden opgeslagen. Een [werk stroom](https://help.github.com/actions/reference/workflow-syntax-for-github-actions) wordt gedefinieerd door een yaml-bestand. Werk stromen hebben een of meer taken met elke taak die een set stappen bevat waarmee afzonderlijke taken worden uitgevoerd. Stappen kunnen opdrachten uitvoeren of een actie gebruiken. U kunt uw eigen acties maken of acties die worden gedeeld door de [github-Community](https://github.com/marketplace?type=actions) en deze indien nodig aanpassen. In dit artikel wordt beschreven hoe u [Azure cli-actie](https://github.com/marketplace/actions/azure-cli-action) gebruikt om Resource Manager-sjablonen te implementeren.
+[Github-acties](https://help.github.com/actions/getting-started-with-github-actions/about-github-actions) is een reeks functies in github voor het automatiseren van uw werk stromen voor software ontwikkeling op dezelfde locatie waar u code opslaat en samen werken aan pull-aanvragen en-problemen.
 
-De actie Azure CLI heeft twee afhankelijke acties:
-
-- **[Afhandeling](https://github.com/marketplace/actions/checkout)**: Bekijk de opslag plaats zodat de werk stroom toegang heeft tot de opgegeven resource manager-sjabloon.
-- **[Azure-aanmelding](https://github.com/marketplace/actions/azure-login)**: Meld u aan met uw Azure-referenties
-
-Een basis werk stroom voor het implementeren van een resource manager-sjabloon kan uit drie stappen bestaan:
-
-1. Bekijk een sjabloon bestand.
-2. Meld u aan bij Azure.
-3. Een resource manager-sjabloon implementeren
+Gebruik de [actie Azure Resource Manager sjabloon implementeren](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template) om de implementatie van een resource manager-sjabloon naar Azure te automatiseren. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt een GitHub-opslag plaats nodig om uw Resource Manager-sjablonen en uw werk stroom bestanden op te slaan. Zie [een nieuwe opslag plaats maken](https://help.github.com/en/enterprise/2.14/user/articles/creating-a-new-repository)om er een te maken.
+- Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- Een GitHub-account. Als u er nog geen hebt, kunt u zich [gratis](https://github.com/join)aanmelden.  
+    - Een GitHub-opslag plaats voor het opslaan van uw Resource Manager-sjablonen en uw werk stroom bestanden. Zie [een nieuwe opslag plaats maken](https://help.github.com/en/enterprise/2.14/user/articles/creating-a-new-repository)om er een te maken.
 
-## <a name="configure-deployment-credentials"></a>Implementatiereferenties configureren
 
-De actie Azure-aanmelding maakt gebruik van een service-principal voor verificatie bij Azure. Voor de principal van een CI/CD-werk stroom is doorgaans het ingebouwde contributor-recht nodig om Azure-resources te kunnen implementeren.
+## <a name="workflow-file-overview"></a>Overzicht van werk stroom bestand
 
-Het volgende Azure CLI-script laat zien hoe u een Azure-Service-Principal genereert met Inzender machtigingen voor een Azure-resource groep. Deze resource groep is de locatie waar de werk stroom de resources implementeert die zijn gedefinieerd in de Resource Manager-sjabloon.
+Een werk stroom wordt gedefinieerd door een YAML-bestand (. yml) in het `/.github/workflows/` pad in uw opslag plaats. Deze definitie bevat de verschillende stappen en para meters die deel uitmaken van de werk stroom.
 
-```azurecli
-$projectName="[EnterAProjectName]"
-$location="centralus"
-$resourceGroupName="${projectName}rg"
-$appName="http://${projectName}"
-$scope=$(az group create --name $resourceGroupName --location $location --query 'id')
-az ad sp create-for-rbac --name $appName --role Contributor --scopes $scope --sdk-auth
+Het bestand heeft twee secties:
+
+|Sectie  |Taken  |
+|---------|---------|
+|**Verificatie** | 1. Definieer een service-principal. <br /> 2. Maak een GitHub-geheim. |
+|**Implementeren** | 1. Implementeer de Resource Manager-sjabloon. |
+
+## <a name="generate-deployment-credentials"></a>Implementatie referenties genereren
+
+
+U kunt een [Service-Principal](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) maken met de opdracht [AZ AD SP create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) in de [Azure cli](/cli/azure/). Voer deze opdracht uit met [Azure Cloud shell](https://shell.azure.com/) in het Azure portal of door de knop **try it** te selecteren.
+
+Maak een resource groep als u deze nog niet hebt. 
+
+```azurecli-interactive
+    az group create -n {MyResourceGroup}
 ```
 
-Pas de waarde van **$projectName** en **$Location** in het script aan. De naam van de resourcegroep is de naam van het project, maar met **rg** eraan toegevoegd. U moet de naam van de resource groep opgeven in uw werk stroom.
+Vervang de tijdelijke aanduiding door `myApp` de naam van uw toepassing. 
 
-Het script voert een JSON-object uit dat er ongeveer als volgt uitziet:
-
-```json
-{
-   "clientId": "<GUID>",
-   "clientSecret": "<GUID>",
-   "subscriptionId": "<GUID>",
-   "tenantId": "<GUID>",
-   (...)
-}
+```azurecli-interactive
+   az ad sp create-for-rbac --name {myApp} --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{MyResourceGroup} --sdk-auth
 ```
 
-Kopieer de JSON-uitvoer en sla deze op als een GitHub-geheim in uw GitHub-opslag plaats. Zie het [vereiste](#prerequisites) als u nog geen opslag plaats hebt.
+In het bovenstaande voor beeld vervangt u de tijdelijke aanduidingen door de abonnements-ID en de naam van de resource groep. De uitvoer is een JSON-object met de roltoewijzings referenties die toegang bieden tot uw App Service-app, vergelijkbaar met hieronder. Kopieer dit JSON-object voor later. U hebt de secties alleen nodig met de `clientId` waarden,, `clientSecret` `subscriptionId` en `tenantId` . 
 
-1. Selecteer in uw GitHub-opslag plaats het tabblad **instellingen** .
-1. Selecteer **geheimen** in het menu links.
-1. Voer de volgende waarden in:
+```output 
+  {
+    "clientId": "<GUID>",
+    "clientSecret": "<GUID>",
+    "subscriptionId": "<GUID>",
+    "tenantId": "<GUID>",
+    (...)
+  }
+```
 
-    - **Naam**: AZURE_CREDENTIALS
-    - **Waarde**: (plak de JSON-uitvoer)
-1. Selecteer **geheim toevoegen**.
+> [!IMPORTANT]
+> Het is altijd een goed idee om minimale toegang te verlenen. Het bereik in het vorige voor beeld is beperkt tot de resource groep.
 
-U moet de geheime naam opgeven in de werk stroom.
+
+
+## <a name="configure-the-github-secrets"></a>De GitHub-geheimen configureren
+
+U moet geheimen maken voor uw Azure-referenties, resource groep en abonnementen. 
+
+1. In [github](https://github.com/), bladert u in uw opslag plaats.
+
+1. Selecteer **instellingen > geheimen > nieuw geheim**.
+
+1. Plak de volledige JSON-uitvoer van de Azure CLI-opdracht in het veld waarde Value van het geheim. Geef het geheim de naam `AZURE_CREDENTIALS` .
+
+1. Maak nog een geheim met de naam `AZURE_RG` . Voeg de naam van uw resource groep toe aan het veld waarde van het geheim (bijvoorbeeld: `myResourceGroup` ). 
+
+1. Maak een aanvullend geheim met de naam `AZURE_SUBSCRIPTION` . Voeg uw abonnements-ID toe aan het veld waarde van het geheim (bijvoorbeeld: `90fd3f9d-4c61-432d-99ba-1273f236afa2` ). 
 
 ## <a name="add-resource-manager-template"></a>Resource Manager-sjabloon toevoegen
 
-Voeg een resource manager-sjabloon toe aan de GitHub-opslag plaats. Als u er nog geen hebt, kunt u de volgende sjabloon gebruiken. Met de sjabloon wordt een opslag account gemaakt.
+Voeg een resource manager-sjabloon toe aan uw GitHub-opslag plaats. Met deze sjabloon maakt u een opslag account.
 
 ```url
 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-U kunt het bestand plaatsen op een wille keurige plaats in de opslag plaats. In het workflow-voor beeld in de volgende sectie wordt ervan uitgegaan dat het sjabloon bestand de naam **azuredeploy.js**heeft en het is opgeslagen in een map met de naam **sjablonen** in de hoofdmap van uw opslag plaats.
+U kunt het bestand plaatsen op een wille keurige plaats in de opslag plaats. In het workflow-voor beeld in de volgende sectie wordt ervan uitgegaan dat het sjabloon bestand de naam **azuredeploy.js**heeft en het is opgeslagen in de hoofdmap van uw opslag plaats.
 
 ## <a name="create-workflow"></a>Werk stroom maken
 
 Het werk stroom bestand moet worden opgeslagen in de map **. github/werk stromen** in de hoofdmap van uw opslag plaats. De extensie van een werk stroom bestand kan **. yml** of **. yaml**.
-
-U kunt een werk stroom bestand maken en het bestand vervolgens pushen/uploaden naar de opslag plaats of de volgende procedure gebruiken:
 
 1. Selecteer in de GitHub-opslag plaats **acties** in het bovenste menu.
 1. Selecteer **nieuwe werk stroom**.
@@ -94,51 +104,40 @@ U kunt een werk stroom bestand maken en het bestand vervolgens pushen/uploaden n
 1. Vervang de inhoud van het yml-bestand door het volgende:
 
     ```yml
-    name: Deploy ARM Template
-
-    on:
-      push:
-        branches:
-          - master
-        paths:
-          - ".github/workflows/deployStorageAccount.yml"
-          - "templates/azuredeploy.json"
-
+    on: [push]
+    name: Azure ARM
     jobs:
-      deploy-storage-account-template:
+      build-and-deploy:
         runs-on: ubuntu-latest
         steps:
-          - name: Checkout source code
-            uses: actions/checkout@master
 
-          - name: Login to Azure
-            uses: azure/login@v1
-            with:
-              creds: ${{ secrets.AZURE_CREDENTIALS }}
+          # Checkout code
+        - uses: actions/checkout@master
 
-
-          - name: Deploy ARM Template
-            uses: azure/CLI@v1
-            with:
-              inlineScript: |
-                az deployment group create --resource-group myResourceGroup --template-file ./templates/azuredeploy.json
+          # Log into Azure
+        - uses: azure/login@v1
+          with:
+            creds: ${{ secrets.AZURE_CREDENTIALS }}
+     
+          # Deploy ARM template
+        - name: Run ARM deploy
+          uses: azure/arm-deploy@v1
+          with:
+            subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
+            resourceGroupName: ${{ secrets.AZURE_RG }}
+            template: ./azuredeploy.json
+            parameters: storageAccountType=Standard_LRS 
+        
+          # output containerName variable from template
+        - run: echo ${{ steps.deploy.outputs.containerName }}
     ```
+    > [!NOTE]
+    > U kunt in plaats daarvan een JSON-indelings parameter bestand opgeven in de actie ARM implementeren (bijvoorbeeld: `.azuredeploy.parameters.json` ).  
 
-    Het werk stroom bestand heeft drie secties:
+    De eerste sectie van het werk stroom bestand bevat:
 
     - **naam**: de naam van de werk stroom.
     - **op**: de naam van de GitHub-gebeurtenissen die de werk stroom activeren. De werk stroom wordt geactiveerd wanneer er sprake is van een push gebeurtenis in de hoofd vertakking, waardoor ten minste één van de opgegeven bestanden wordt gewijzigd. De twee bestanden zijn het werk stroom bestand en het sjabloon bestand.
-
-        > [!IMPORTANT]
-        > Controleer of de twee bestanden en hun bijbehorende paden overeenkomen.
-    - **taken**: een uitvoering van een werk stroom bestaat uit een of meer taken. Er is slechts één taak met de naam **Deploy-Storage-account-Temp late**.  Deze taak bestaat uit drie stappen:
-
-        - **Bron code voor uitchecken**.
-        - **Meld u aan bij Azure**.
-
-            > [!IMPORTANT]
-            > Controleer of de geheime naam overeenkomt met wat u hebt opgeslagen in uw opslag plaats. Zie [implementatie referenties configureren](#configure-deployment-credentials).
-        - **Arm-sjabloon implementeren**. Vervang de waarde van **resourceGroupName**.  Als u het Azure CLI-script in [implementatie referenties configureren](#configure-deployment-credentials)hebt gebruikt, is de naam van de gegenereerde resource groep de naam van het project waaraan **RG** is toegevoegd. Controleer de waarde van **templateLocation**.
 
 1. Selecteer **door voeren starten**.
 1. Selecteer **rechtstreeks door voeren naar de hoofd vertakking**.
@@ -148,11 +147,15 @@ Omdat de werk stroom zo is geconfigureerd dat deze wordt geactiveerd door het we
 
 ## <a name="check-workflow-status"></a>Werk stroom status controleren
 
-1. Selecteer het tabblad **acties** . Er wordt een **deployStorageAccount. yml** -werk stroom voor maken weer gegeven. Het duurt 1-2 minuten om de werk stroom uit te voeren.
+1. Selecteer het tabblad **acties** . Er wordt een **deployStorageAccount. yml** -werk stroom weer gegeven. Het duurt 1-2 minuten om de werk stroom uit te voeren.
 1. Selecteer de werk stroom om deze te openen.
-1. Selecteer **Deploy-Storage-account-Temp late** (taak naam) in het menu links. De taak naam wordt gedefinieerd in de werk stroom.
-1. Selecteer **arm-sjabloon implementeren** (stap naam) om deze uit te vouwen. U ziet het REST API-antwoord.
+1. Selecteer **arm implementeren** in het menu om de implementatie te controleren.
+
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Als uw resource groep en opslag plaats niet meer nodig zijn, moet u de resources opschonen die u hebt geïmplementeerd door de resource groep en de GitHub-opslag plaats te verwijderen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [zelf studie: uw eerste arm-sjabloon maken en implementeren](template-tutorial-create-first-template.md)voor een stapsgewijze zelf studie waarin u door het proces van het maken van een sjabloon wordt geleid.
+> [!div class="nextstepaction"]
+> [Uw eerste ARM-sjabloon maken](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)

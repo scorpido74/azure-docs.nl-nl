@@ -3,19 +3,19 @@ title: 'Quickstart: Metrics Advisor-webportal'
 titleSuffix: Azure Cognitive Services
 description: Meer informatie over het gebruik van de Metrics Advisor-webportal.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: quickstart
 ms.date: 09/30/2020
-ms.author: aahi
-ms.openlocfilehash: 004685a50e2413c29528ad3aca08a0150843a8aa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.author: mbullwin
+ms.openlocfilehash: 0afd8fab6072e1563d2b2f277e8a53b56a8161c2
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91631360"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048233"
 ---
 # <a name="quickstart-monitor-your-first-metric-using-the-web-portal"></a>Quickstart: Uw eerste metrische gegevens controleren met behulp van de webportal
 
@@ -41,7 +41,7 @@ Dit document maakt gebruik van een SQL-voorbeelddatabase voor het maken van uw e
 
 ## <a name="sign-in-to-your-workspace"></a>Aanmelden bij uw werkruimte
 
-Nadat de resource is geïmplementeerd, meldt u zich aan bij de [Metrics Advisor-portal](https://go.microsoft.com/fwlink/?linkid=2143774). Selecteer uw werkruimte om te beginnen met het bewaken van uw metrische gegevens. 
+Nadat de resource is gemaakt, meldt u zich aan bij de [Metrics Advisor-portal](https://go.microsoft.com/fwlink/?linkid=2143774). Selecteer uw werkruimte om te beginnen met het bewaken van uw metrische gegevens. 
  
 Op dit moment kunt u één Metrics Advisor-resource maken voor elke beschikbare regio. U kunt op elk gewenst moment schakelen tussen werkruimten in de Metrics Advisor-portal.
 

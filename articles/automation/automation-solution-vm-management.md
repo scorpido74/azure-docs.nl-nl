@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 236b4f47894db8aa8880b7535b6ee0921802a31c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3210aa5ae2ff94ba2c7dda673fbb60847c4dfd0b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317358"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372154"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Overzicht van VM's buiten bedrijfsuren starten/stoppen
 
@@ -55,31 +55,31 @@ Als u Vm's wilt inschakelen voor de functie VM's buiten bedrijfsuren starten/sto
 
 | Machtiging | Bereik|
 | --- | --- |
-| Micro soft. Automation/automationAccounts/lezen | Resource Group |
-| Micro soft. Automation/automationAccounts/Varia bles/-schrijven | Resource Group |
-| Micro soft. Automation/automationAccounts/schedules/write | Resource Group |
-| Micro soft. Automation/automationAccounts/runbooks/schrijven | Resource Group |
-| Micro soft. Automation/automationAccounts/Connections/write | Resource Group |
-| Micro soft. Automation/automationAccounts/certificaten/schrijven | Resource Group |
-| Micro soft. Automation/automationAccounts/modules/schrijven | Resource Group |
-| Micro soft. Automation/automationAccounts/modules/lezen | Resource Group |
-| Micro soft. Automation/automationAccounts/jobSchedules/write | Resource Group |
-| Micro soft. Automation/automationAccounts/Jobs/schrijven | Resource Group |
-| Micro soft. Automation/automationAccounts/Jobs/lezen | Resource Group |
-| Micro soft. OperationsManagement/oplossingen/schrijven | Resource Group |
-| Micro soft. OperationalInsights/werk ruimten/* | Resource Group |
-| Micro soft. Insights/diagnosticSettings/schrijven | Resource Group |
-| Micro soft. Insights/ActionGroups/schrijven | Resource Group |
-| Micro soft. Insights/ActionGroups/lezen | Resource Group |
-| Micro soft. resources/abonnementen/resourceGroups/lezen | Resource Group |
-| Micro soft. resources/implementaties/* | Resource Group |
+| Micro soft. Automation/automationAccounts/lezen | Resourcegroep |
+| Micro soft. Automation/automationAccounts/Varia bles/-schrijven | Resourcegroep |
+| Micro soft. Automation/automationAccounts/schedules/write | Resourcegroep |
+| Micro soft. Automation/automationAccounts/runbooks/schrijven | Resourcegroep |
+| Micro soft. Automation/automationAccounts/Connections/write | Resourcegroep |
+| Micro soft. Automation/automationAccounts/certificaten/schrijven | Resourcegroep |
+| Micro soft. Automation/automationAccounts/modules/schrijven | Resourcegroep |
+| Micro soft. Automation/automationAccounts/modules/lezen | Resourcegroep |
+| Micro soft. Automation/automationAccounts/jobSchedules/write | Resourcegroep |
+| Micro soft. Automation/automationAccounts/Jobs/schrijven | Resourcegroep |
+| Micro soft. Automation/automationAccounts/Jobs/lezen | Resourcegroep |
+| Micro soft. OperationsManagement/oplossingen/schrijven | Resourcegroep |
+| Micro soft. OperationalInsights/werk ruimten/* | Resourcegroep |
+| Micro soft. Insights/diagnosticSettings/schrijven | Resourcegroep |
+| Micro soft. Insights/ActionGroups/schrijven | Resourcegroep |
+| Micro soft. Insights/ActionGroups/lezen | Resourcegroep |
+| Micro soft. resources/abonnementen/resourceGroups/lezen | Resourcegroep |
+| Micro soft. resources/implementaties/* | Resourcegroep |
 
 ### <a name="permissions-for-new-automation-account-and-new-log-analytics-workspace"></a>Machtigingen voor het nieuwe Automation-account en de nieuwe Log Analytics-werk ruimte
 
 U kunt Vm's voor de VM's buiten bedrijfsuren starten/stoppen-functie inschakelen met behulp van een nieuw Automation-account en Log Analytics werk ruimte. In dit geval hebt u de machtigingen die zijn gedefinieerd in de voor gaande sectie en de machtigingen die in deze sectie zijn gedefinieerd. U hebt ook de volgende rollen nodig:
 
 - Co-Administrator op het abonnement. Deze rol is vereist voor het maken van het klassieke uitvoeren als-account als u klassieke Vm's wilt beheren. [Klassieke uitvoeren als-accounts](automation-create-standalone-account.md#create-a-classic-run-as-account) worden niet meer standaard gemaakt.
-- Lidmaatschap van de functie voor ontwikkel aars van [Azure AD](../active-directory/users-groups-roles/directory-assign-admin-roles.md) -toepassingen. Zie [machtigingen voor het configureren van run as-accounts](manage-runas-account.md#permissions)voor meer informatie over het configureren van uitvoeren als-accounts.
+- Lidmaatschap van de functie voor ontwikkel aars van [Azure AD](../active-directory/roles/permissions-reference.md) -toepassingen. Zie [machtigingen voor het configureren van run as-accounts](manage-runas-account.md#permissions)voor meer informatie over het configureren van uitvoeren als-accounts.
 - Inzender voor het abonnement of de volgende machtigingen.
 
 | Machtiging |Bereik|
@@ -88,10 +88,10 @@ U kunt Vm's voor de VM's buiten bedrijfsuren starten/stoppen-functie inschakelen
 | Micro soft. Authorization/permissions/Read |Abonnement|
 | Micro soft. Authorization/roleAssignments/lezen | Abonnement |
 | Microsoft.Authorization/roleAssignments/write | Abonnement |
-| Micro soft. Authorization/roleAssignments/verwijderen | Abonnement || Micro soft. Automation/automationAccounts/Connections/Read | Resource Group |
-| Micro soft. Automation/automationAccounts/certificaten/lezen | Resource Group |
-| Micro soft. Automation/automationAccounts/schrijven | Resource Group |
-| Micro soft. OperationalInsights/werk ruimten/schrijven | Resource Group |
+| Micro soft. Authorization/roleAssignments/verwijderen | Abonnement || Micro soft. Automation/automationAccounts/Connections/Read | Resourcegroep |
+| Micro soft. Automation/automationAccounts/certificaten/lezen | Resourcegroep |
+| Micro soft. Automation/automationAccounts/schrijven | Resourcegroep |
+| Micro soft. OperationalInsights/werk ruimten/schrijven | Resourcegroep |
 
 ## <a name="components"></a>Onderdelen
 
@@ -154,16 +154,16 @@ In alle scenario's, de variabelen `External_Start_ResourceGroupNames` ,  `Extern
 
 ### <a name="schedules"></a>Schema's
 
-De volgende tabel bevat een overzicht van de standaard schema's die zijn gemaakt in uw Automation-account.U kunt ze wijzigen of uw eigen aangepaste schema's maken.Standaard zijn alle schema's uitgeschakeld, met uitzonde ring van de **Scheduled_StartVM** -en **Scheduled_StopVM** -schema's.
+De volgende tabel bevat een overzicht van de standaard schema's die zijn gemaakt in uw Automation-account. U kunt ze wijzigen of uw eigen aangepaste schema's maken. Standaard zijn alle schema's uitgeschakeld, met uitzonde ring van de **Scheduled_StartVM** -en **Scheduled_StopVM** -schema's.
 
 Schakel niet alle schema's in, omdat dit mogelijk overlappende plannings acties kan maken. U kunt het beste bepalen welke optimalisaties u wilt uitvoeren en ze dienovereenkomstig aanpassen. Zie de voorbeeld scenario's in de sectie Overzicht voor meer informatie.
 
 |Schema naam | Frequency | Beschrijving|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | Om de 8 uur | Voert het **AutoStop_CreateAlert_Parent** runbook uit om de 8 uur, waardoor de op virtuele machines gebaseerde waarden in `External_Start_ResourceGroupNames` , `External_Stop_ResourceGroupNames` en variabelen op zijn beurt worden gestopt `External_ExcludeVMNames` . U kunt ook een door komma's gescheiden lijst met Vm's opgeven met behulp van de `VMList` para meter.|
-|Scheduled_StopVM | Door de gebruiker gedefinieerd, dagelijks | Voert het **ScheduledStopStart_Parent** runbook uit met een para meter van `Stop` elke dag op de opgegeven tijd.Stopt automatisch alle virtuele machines die voldoen aan de regels die zijn gedefinieerd door variabele assets.Schakel de planning **StartVM**.|
-|Scheduled_StartVM | Door de gebruiker gedefinieerd, dagelijks | Voert het **ScheduledStopStart_Parent** runbook uit met een parameter waarde van `Start` elke dag op de opgegeven tijd. Alle Vm's die voldoen aan de regels die zijn gedefinieerd door variabele assets, worden automatisch gestart.Schakel de planning **StopVM**.|
-|Sequenced-StopVM | 1:00 uur (UTC), elke vrijdag | Voert het **Sequenced_StopStop_Parent** runbook uit met een parameter waarde van `Stop` elke vrijdag op de opgegeven tijd.Opeenvolgend (oplopend) stopt alle virtuele machines met een tag van **SequenceStop** die zijn gedefinieerd door de juiste variabelen. Zie [Runbooks](#runbooks)voor meer informatie over label waarden en activa variabelen.Schakel het gerelateerde schema in, **Sequenced-StartVM**.|
+|Scheduled_StopVM | Door de gebruiker gedefinieerd, dagelijks | Voert het **ScheduledStopStart_Parent** runbook uit met een para meter van `Stop` elke dag op de opgegeven tijd. Stopt automatisch alle virtuele machines die voldoen aan de regels die zijn gedefinieerd door variabele assets. Schakel de planning **StartVM**.|
+|Scheduled_StartVM | Door de gebruiker gedefinieerd, dagelijks | Voert het **ScheduledStopStart_Parent** runbook uit met een parameter waarde van `Start` elke dag op de opgegeven tijd. Alle Vm's die voldoen aan de regels die zijn gedefinieerd door variabele assets, worden automatisch gestart. Schakel de planning **StopVM**.|
+|Sequenced-StopVM | 1:00 uur (UTC), elke vrijdag | Voert het **Sequenced_StopStop_Parent** runbook uit met een parameter waarde van `Stop` elke vrijdag op de opgegeven tijd. Opeenvolgend (oplopend) stopt alle virtuele machines met een tag van **SequenceStop** die zijn gedefinieerd door de juiste variabelen. Zie [Runbooks](#runbooks)voor meer informatie over label waarden en activa variabelen. Schakel het gerelateerde schema in, **Sequenced-StartVM**.|
 |Sequenced-StartVM | 1:00 uur (UTC), elke maandag | Voert het **SequencedStopStart_Parent** runbook uit met een parameter waarde van `Start` elke maandag op de opgegeven tijd. Na elkaar (aflopend) worden alle virtuele machines gestart met een tag van **SequenceStart** dat is gedefinieerd door de juiste variabelen. Zie [Runbooks](#runbooks)voor meer informatie over label waarden en variabele assets. Schakel het gerelateerde schema in, **Sequenced-StopVM**.
 
 ## <a name="use-the-feature-with-classic-vms"></a>De functie gebruiken met klassieke Vm's

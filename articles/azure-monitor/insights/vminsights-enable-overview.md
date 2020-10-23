@@ -6,12 +6,13 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/27/2020
-ms.openlocfilehash: 4041b824d099edbefcc45c68163257ca69ddf7de
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.custom: references_regions
+ms.openlocfilehash: b903fda9a64233b4906941167ca7fd5819a0316b
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995688"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164479"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Overzicht Azure Monitor voor VM's inschakelen
 
@@ -37,30 +38,42 @@ Voordat u begint, moet u ervoor zorgen dat u de informatie in de volgende sectie
 >[!NOTE]
 >De volgende informatie die in deze sectie wordt beschreven, is ook van toepassing op de [servicetoewijzing oplossing](service-map.md).  
 
-### <a name="log-analytics"></a>Log Analytics
+### <a name="log-analytics-workspace"></a>Log Analytics-werkruimte
 
 Azure Monitor voor VM's ondersteunt een Log Analytics-werk ruimte in de volgende regio's:
 
-- VS - west-centraal
-- VS - west
-- West US 2
-- South Central US
-- VS - oost
-- VS - oost 2
-- Central US
-- VS - noord-centraal
-- US Gov AZ
-- US Gov VA
-- Canada - midden
-- Verenigd Koninkrijk Zuid
-- Europa - noord
-- Europa -west
-- Azië - oost
-- Azië - zuidoost
-- India - centraal
-- Japan East
-- Australië - oost
-- Australië - zuidoost
+- Afrika
+  - Zuid-Afrika - noord
+- Azië en Stille Oceaan
+  - Azië - oost
+  - Azië - zuidoost
+- Australië
+  - Australië - oost
+  - Australië - zuidoost
+- Azure Government
+  - US Gov AZ
+  - US Gov VA
+- Canada
+  - Canada - midden
+- Europa
+  - Europa - noord
+  - Europa -west
+- India
+  - India - centraal
+- Japan
+  - Japan - oost
+- Verenigd Koninkrijk
+  - Verenigd Koninkrijk Zuid
+- Verenigde Staten
+  - Central US
+  - VS - oost
+  - VS - oost 2
+  - VS - noord-centraal
+  - VS - zuid-centraal
+  - VS - west-centraal
+  - VS - west
+  - VS - west 2
+
 
 >[!NOTE]
 >U kunt virtuele Azure-machines bewaken in elke regio. De Vm's zijn niet beperkt tot de regio's die worden ondersteund door de Log Analytics-werk ruimte.

@@ -3,7 +3,7 @@ title: 'Zelfstudie: Een Python Django-app met Postgres implementeren'
 description: Een Python-web-app maken met een PostgreSQL-database en deze implementeren naar Azure. Deze zelfstudie gebruikt het Django-framework en de app wordt gehost op Azure App Service op Linux.
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 09/22/2020
+ms.date: 10/09/2020
 ms.custom:
 - mvc
 - seodec18
@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: a630387a41b6def67141a423249c3347ff034e2e
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: e171ce1ab7d2b9d4a78399ee639945bde16b71ca
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91369617"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019406"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Zelfstudie: Een Django-web-app implementeren met PostgreSQL in Azure App Service
 
@@ -114,7 +114,7 @@ Het voorbeeld is ook aangepast om te worden uitgevoerd in een productie-omgeving
 - Productie-instellingen bevinden zich in het bestand *azuresite/production.py*. De ontwikkelingsgegevens bevinden zich in *azuresite/settings.py*.
 - De app gebruikt productie-instellingen wanneer de `DJANGO_ENV`-omgevingsvariabele is ingesteld op 'productie'. Verderop in de zelfstudie maakt u deze omgevingsvariabele samen met andere die worden gebruikt voor de configuratie van de PostgreSQL-database.
 
-Deze wijzigingen dienen specifiek om Django uit te voeren in een productieomgeving en zijn niet uniek voor App Service. Zie de sectie [Controlelijst voor Django-implementatie](https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/) voor meer informatie.
+Deze wijzigingen dienen specifiek om Django uit te voeren in een productieomgeving en zijn niet uniek voor App Service. Zie de sectie [Controlelijst voor Django-implementatie](https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/) voor meer informatie. Zie ook [Productie-instellingen voor Django op Azure](configure-language-python.md#production-settings-for-django-apps) voor meer informatie over een aantal van de wijzigingen.
 
 [Ondervindt u problemen? Laat het ons weten.](https://aka.ms/DjangoCLITutorialHelp)
 
@@ -134,19 +134,19 @@ Als de `az`-opdracht niet wordt herkend, controleert u of de Azure CLI is geïns
 Maak vervolgens de Postgres-database in Azure met de opdracht [`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up):
 
 ```azurecli
-az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --sku-name B_Gen5_1 --server-name <postgre-server-name> --database-name pollsdb --admin-user <admin-username> --admin-password <admin-password> --ssl-enforcement Enabled
+az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --sku-name B_Gen5_1 --server-name <postgres-server-name> --database-name pollsdb --admin-user <admin-username> --admin-password <admin-password> --ssl-enforcement Enabled
 ```
 
-- Vervang *\<postgres-server-name>* door een naam die overal in Azure uniek is (het servereindpunt is `https://<postgres-server-name>.postgres.database.azure.com`). Het is handig om een combinatie van uw bedrijfsnaam en een andere unieke waarde te gebruiken.
+- Vervang *\<postgres-server-name>* door een naam die overal in Azure uniek is (het servereindpunt wordt `https://<postgres-server-name>.postgres.database.azure.com`). Het is handig om een combinatie van uw bedrijfsnaam en een andere unieke waarde te gebruiken.
 - Geef voor *\<admin-username>* en *\<admin-password>* referenties op om een gebruiker met beheerdersrechten te maken voor deze Postgres-server.
 - De [prijscategorie](../postgresql/concepts-pricing-tiers.md) B_Gen5_1 (Basic, Gen5, 1 kern) die hier wordt gebruikt, is de voordeligste. Laat voor productiedatabases het argument `--sku-name` weg om de prijscategorie GP_Gen5_2 (Algemeen gebruik, Gen 5, 2 kernen) te gebruiken.
 
 Deze opdracht voert de volgende acties uit, dit kan enkele minuten duren:
 
 - Er wordt een [resourcegroep](../azure-resource-manager/management/overview.md#terminology) gemaakt met de naam `DjangoPostgres-tutorial-rg`, als deze nog niet bestaat.
-- Er wordt een Postgres-server gemaakt.
-- Er wordt een standaard beheerdersaccount met een unieke gebruikersnaam en wachtwoord gemaakt. (Gebruik de argumenten `--admin-user` en `--admin-password` met de opdracht `az postgres up` om uw eigen referenties op te geven.)
-- Er wordt een `pollsdb`-database gemaakt.
+- Maak een Postgres-server die een naam krijgt door het argument `--server-name`.
+- Maak een beheerdersaccount met behulp van de argumenten `--admin-user` en `--admin-password`. U kunt deze argumenten weglaten om ervoor te zorgen dat de opdracht unieke referenties voor u genereert.
+- Maak een `pollsdb`-database zoals benoemd door het argument `--database-name`.
 - Er wordt toegang verleend vanaf uw lokale IP-adres.
 - Er wordt toegang verleend vanuit Azure-services.
 - Maak een databasegebruiker met toegang tot de `pollsdb`-database.
@@ -203,17 +203,19 @@ Na een geslaagde implementatie genereert de opdracht JSON-uitvoer, zoals in het 
 
 Nu de code is geïmplementeerd naar App Service, is de volgende stap om de app te verbinden met de Postgres-database in Azure.
 
-De code van de app verwacht om database-informatie te vinden in een aantal omgevingsvariabelen. Om omgevingsvariabelen in te stellen in App Service, maakt u 'app-instellingen' met de opdracht [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set).
+De code van de app verwacht database-informatie te vinden in vier omgevingsvariabelen genaamd `DBHOST`, `DBNAME`, `DBUSER` en `DBPASS`. Als u productie-instellingen wilt gebruiken, moet u ook de omgevingsvariabele `DJANGO_ENV` instellen op `production`.
+
+Om omgevingsvariabelen in te stellen in App Service, maakt u 'app-instellingen' met de volgende opdracht [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set).
 
 ```azurecli
-az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<postgres-server-name>.postgres.database.azure.com" DBNAME="pollsdb" DBUSER="<username>@<postgres-server-name>" DBPASS="<password>"
+az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<postgres-server-name>" DBNAME="pollsdb" DBUSER="<username>" DBPASS="<password>"
 ```
 
-- Vervang *\<postgres-server-name>* door de naam die u eerder hebt gebruikt met de opdracht `az postgres up`.
-- Vervang *\<username>* en *\<password>* door de referenties die de opdracht eveneens voor u heeft gegenereerd. Het argument `DBUSER` moet de vorm `<username>@<postgres-server-name>` hebben.
-- De resourcegroep en de naam van de app worden opgehaald uit de cachewaarden in het bestand *. azure/config*.
-- De opdracht maakt instellingen met de naam `DJANGO_ENV`, `DBHOST`, `DBNAME`, `DBUSER` en `DBPASS` zoals verwacht door de app-code.
-- In uw Python-code opent u deze instellingen als omgevingsvariabelen met instructies zoals `os.environ.get('DJANGO_ENV')`. Zie [Omgevingsvariabelen openen](configure-language-python.md#access-environment-variables) voor meer informatie.
+- Vervang *\<postgres-server-name>* door de naam die u eerder hebt gebruikt met de opdracht `az postgres up`. De code in *azuresite/production.py* voegt automatisch `.postgres.database.azure.com` toe om de volledige Postgres-server-URL te maken.
+- Vervang *\<username>* en *\<password>* door de beheerdersreferenties die u hebt gebruikt in combinatie met de eerdere `az postgres up`-opdracht of die `az postgres up` voor u heeft gegenereerd. De code in *azuresite/production.py* bouwt automatisch de volledige Postgres-gebruikersnaam op van `DBUSER` en `DBHOST`.
+- De resourcegroep en de namen van de app worden opgehaald uit de cachewaarden in het bestand *.azure/config*.
+
+In uw Python-code opent u deze instellingen als omgevingsvariabelen met instructies zoals `os.environ.get('DJANGO_ENV')`. Zie [Omgevingsvariabelen openen](configure-language-python.md#access-environment-variables) voor meer informatie.
 
 [Ondervindt u problemen? Laat het ons weten.](https://aka.ms/DjangoCLITutorialHelp)
 
@@ -230,6 +232,8 @@ Django-databasemigraties zorgen ervoor dat het schema in de PostgreSQL van de Az
     Vervang `<app-name>` door de naam die u eerder hebt gebruikt in de opdracht `az webapp up`.
 
     U kunt in macOS en Linux ook verbinding maken met een SSH-sessie met de opdracht [`az webapp ssh`](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az_webapp_ssh).
+
+    Als u geen verbinding kunt maken met de SSH-sessie, kan de app zelf niet worden gestart. [Raadpleeg de diagnostische logboeken](#stream-diagnostic-logs) voor meer informatie. Als u de benodigde app-instellingen in de vorige sectie bijvoorbeeld niet hebt gemaakt, wordt in de logboeken `KeyError: 'DBNAME'` aangegeven.
 
 1. Voer in de SSH-sessie de volgende opdrachten uit (u kunt opdrachten plakken met **CTRL**+**Shift**+**V**):
 
@@ -249,7 +253,7 @@ Django-databasemigraties zorgen ervoor dat het schema in de PostgreSQL van de Az
     # Create the super user (follow prompts)
     python manage.py createsuperuser
     ```
-    
+
 1. De `createsuperuser`-opdracht vraagt u om de referenties van de super gebruiker op te geven. Gebruik voor deze zelfstudie de standaard gebruikersnaam `root`, druk op **Enter** voor het e-mailadres om het leeg te laten en voer `Pollsdb1` in bij het wachtwoord.
 
 1. Als er een foutmelding wordt weer geven dat de database is vergrendeld, zorg er dan voor dat u de `az webapp settings`-opdracht hebt uitgevoerd in de vorige sectie. Zonder deze instellingen kan de migratie-opdracht niet communiceren met de database, wat resulteert in de fout.
@@ -259,6 +263,10 @@ Django-databasemigraties zorgen ervoor dat het schema in de PostgreSQL van de Az
 ### <a name="create-a-poll-question-in-the-app"></a>Een poll-vraag maken in de app
 
 1. Open de URL `http://<app-name>.azurewebsites.net` in een browser. De app zou het bericht 'Er zijn geen polls beschikbaar' moeten weergeven, omdat er nog geen specifieke polls in de database zitten.
+
+    Als u 'Toepassingsfout' ziet, is het waarschijnlijk dat u de vereiste instellingen niet hebt gemaakt in de vorige stap, [Omgevingsvariabelen configureren om verbinding te maken met de database](#configure-environment-variables-to-connect-the-database), of dat deze waarde fouten bevat. Voer de opdracht `az webapp config appsettings list` uit om de instellingen te controleren. U kunt ook [de diagnostische logboeken controleren](#stream-diagnostic-logs) om specifieke fouten te bekijken tijdens het opstarten van de app. Als u de instellingen bijvoorbeeld niet hebt gemaakt, wordt de fout `KeyError: 'DBNAME'` weergegeven in de logboeken.
+
+    Nadat u de instellingen hebt bijgewerkt om eventuele fouten te corrigeren, geeft u de app een minuut om opnieuw op te starten en vernieuwt u vervolgens de browser.
 
 1. Blader naar `http://<app-name>.azurewebsites.net/admin`. Meld u aan met de beheerdersreferenties uit het vorige onderdeel (`root` en `Pollsdb1`). Selecteer onder **Polls** **Toevoegen** naast **Vragen** en maak een poll-vraag met enkele antwoordmogelijkheden.
 
@@ -403,7 +411,7 @@ python manage.py migrate
 
 ### <a name="review-app-in-production"></a>Apps in productie controleren
 
-Ga naar `http://<app-name>.azurewebsites.net` en test de app opnieuw in productie. (Aangezien u enkel de lengte van een databaseveld heeft gewijzigd, wordt de wijziging pas zichtbaar wanneer u een langer antwoord invoert tijdens het maken van een vraag.)
+Ga naar `http://<app-name>.azurewebsites.net` en test de app opnieuw in productie. (Aangezien u enkel de lengte van een databaseveld hebt gewijzigd, wordt de wijziging pas zichtbaar wanneer u een langer antwoord invoert tijdens het maken van een vraag.)
 
 [Ondervindt u problemen? Laat het ons weten.](https://aka.ms/DjangoCLITutorialHelp)
 
@@ -446,7 +454,7 @@ Het portal laat standaard de pagina **Overzicht** van uw app zien; hier vindt u 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u de app wilt behouden of wilt doorgaan naar de volgende zelfstudie, sla dit dan over en ga naar [Volgende stappen](#next-steps). Zo niet, dan kunt u de resourcegroep die u gemaakt hebt voor deze zelfstudie verwijderen om doorlopende kosten te vermijden:
+Als u de app wilt behouden of wilt doorgaan naar de extra zelfstudies, sla dit dan over en ga naar [Volgende stappen](#next-steps). Zo niet, dan kunt u de resourcegroep die u gemaakt hebt voor deze zelfstudie verwijderen om doorlopende kosten te vermijden:
 
 ```azurecli
 az group delete --no-wait

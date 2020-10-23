@@ -10,12 +10,12 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 736d80c4bcfe31a499b84bb24c1c377e69e84218
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 65b31bd39c85ea9073bb9415b9829df12b7d9e35
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976008"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171580"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Een Java-app voor Azure App Service configureren
 
@@ -691,6 +691,10 @@ Om te bevestigen dat de gegevens bron is toegevoegd aan de JBoss-server, SSH in 
 Met App Service kunnen gebruikers de primaire versie van de JVM kiezen, zoals Java 8 of Java 11, evenals de secundaire versie, zoals 1.8.0 _232 of 11.0.5. U kunt er ook voor kiezen om de secundaire versie automatisch te laten bijwerken wanneer nieuwe secundaire versies beschikbaar worden. In de meeste gevallen moeten productie sites vastgemaakte secundaire JVM-versies gebruiken. Hiermee voor komt u dat er unnanticipated storingen optreden tijdens het automatisch bijwerken van de secundaire versie.
 
 Als u ervoor kiest om de secundaire versie vast te maken, moet u de secundaire versie van JVM regel matig bijwerken op de site. Om ervoor te zorgen dat uw toepassing wordt uitgevoerd op de nieuwere secundaire versie, maakt u een faserings sleuf en verhoogt u de secundaire versie op de staging-site. Nadat u hebt gecontroleerd of de toepassing correct wordt uitgevoerd op de nieuwe secundaire versie, kunt u de fase ring en productie-sleuven wisselen.
+
+## <a name="jboss-eap-hardware-options"></a>Opties voor JBoss EAP-hardware
+
+JBoss EAP is alleen beschikbaar op de opties Premium en geïsoleerd. Klanten die een JBoss EAP-site hebben gemaakt in een gratis, gedeeld, basis of Standard-laag tijdens de open bare preview, moeten omhoog schalen naar de laag voor Premium of geïsoleerd om onverwacht gedrag te voor komen.
 
 ## <a name="java-runtime-statement-of-support"></a>Java runtime-instructie van ondersteuning
 

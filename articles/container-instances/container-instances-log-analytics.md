@@ -3,12 +3,12 @@ title: Resource logboeken verzamelen & analyseren
 description: Meer informatie over het verzenden van resource logboeken en gebeurtenis gegevens van container groepen in Azure Container Instances naar Azure Monitor-logboeken
 ms.topic: article
 ms.date: 07/13/2020
-ms.openlocfilehash: b39cf31dc28ece7d4e4f938dae21a4fbf6a1a832
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b110ba46bdcf2741e5f16845f28fe8305bcee1a1
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566667"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148641"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Logboek registratie van container groepen en instanties met Azure Monitor-logboeken
 
@@ -169,7 +169,7 @@ Voor informatie over het bewaken van CPU- en geheugenresources van containerinst
 
 <!-- LINKS - External -->
 [fluentd]: https://hub.docker.com/r/fluent/fluentd/
-[query_lang]: https://aka.ms/LogAnalyticsLanguage
+[query_lang]: /azure/data-explorer/
 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create

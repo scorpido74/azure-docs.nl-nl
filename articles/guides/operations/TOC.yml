@@ -32,32 +32,32 @@
               href: ../../site-recovery/azure-to-azure-quickstart.md
     - name: Zelfstudies
       items:
-        - name: Virtual Machines
+        - name: Virtuele machines
           items:
             - name: Een virtuele Windows-machine maken/beheren
               href: ../../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
             - name: Virtuele Linux-machines maken/beheren
               href: ../../virtual-machines/linux/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
             - name: Jenkins CI/CD Pipeline
-              href: ../../jenkins/tutorial-jenkins-github-docker-cicd.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+              href: /azure/developer/jenkins/pipeline-with-github-and-docker?toc=%252fazure%252fguides%252foperations%252ftoc.json
             - name: Taakverdelingen maken voor virtuele machines
               href: ../../virtual-machines/linux/tutorial-load-balancer.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
             - name: Azure Resource Manager-sjablonen maken
-              href: ../../resource-group-authoring-templates.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+              href: ../../azure-resource-manager/templates/template-syntax.md?toc=%252fazure%252fguides%252foperations%252ftoc.json
             - name: Back-ups van VM's maken op schaal
               href: ../../backup/tutorial-backup-vm-at-scale.md
     - name: Handleidingen
       items:
         - name: Uw Azure-factuur en de dagelijkse gebruiksgegevens downloaden
-          href: ../../billing/billing-download-azure-invoice-daily-usage-date.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+          href: ../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md?toc=%252fazure%252fguides%252foperations%252ftoc.json
     - name: Resources
       items:
         - name: Azure-productcatalogus
-          href: 'https://docs.microsoft.com/azure/#pivot=products'
+          href: ../../index.yml
         - name: Azure-roadmap
           href: 'https://azure.microsoft.com/roadmap/'
         - name: Prijscalculator
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: Overzicht van Microsoft Azure Portal
           href: 'https://azure.microsoft.com/documentation/articles/azure-portal-overview/'
-    - name: Referenties
+    - name: Verwijzingen

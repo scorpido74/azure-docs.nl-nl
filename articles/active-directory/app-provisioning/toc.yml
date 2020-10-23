@@ -5,6 +5,8 @@
   items:
     - name: Wat is toepassingsinrichting?
       href: user-provisioning.md
+    - name: Wat is er nieuw in Docs?
+      href: whats-new-docs.md
 - name: Zelfstudies
   expanded: true
   items:

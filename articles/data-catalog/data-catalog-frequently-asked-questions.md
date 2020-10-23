@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 3af8a7de7dad3ce20d4f0247892bca83f06c9d22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f893f8e2ec03681697f15cd85685d4c99b13de6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397297"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151957"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Veelgestelde vragen over Azure Data Catalog
 In dit artikel vindt u antwoorden op veelgestelde vragen met betrekking tot de Azure Data Catalog-service.
@@ -87,7 +87,7 @@ De specifieke eigenschappen verschillen van de gegevens bron tot de gegevens bro
 >
 
 > [!NOTE]
-> Voor gegevens bronnen, zoals SQL Server Analysis Services die een eigenschap van de klasse **Description** hebben, haalt het hulp programma voor het registreren van Data Catalog gegevens die eigenschaps waarde uit. Voor *on-premises* SQL Server relationele data bases die geen eigenschap topklasse **Description** hebben, haalt het Data Catalog hulp programma voor gegevens bron registratie de waarde uit de uitgebreide eigenschap **ms_description** voor objecten en kolommen. Deze eigenschap wordt niet ondersteund voor SQL Azure. Zie voor meer informatie [uitgebreide eigenschappen gebruiken voor database objecten](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx).
+> Voor gegevens bronnen, zoals SQL Server Analysis Services die een eigenschap van de klasse **Description** hebben, haalt het hulp programma voor het registreren van Data Catalog gegevens die eigenschaps waarde uit. Voor *on-premises* SQL Server relationele data bases die geen eigenschap topklasse **Description** hebben, haalt het Data Catalog hulp programma voor gegevens bron registratie de waarde uit de uitgebreide eigenschap **ms_description** voor objecten en kolommen. Deze eigenschap wordt niet ondersteund voor SQL Azure. Zie voor meer informatie [uitgebreide eigenschappen gebruiken voor database objecten](/previous-versions/sql/sql-server-2008-r2/ms190243(v=sql.105)).
 >
 >
 
@@ -122,7 +122,7 @@ Data Catalog is een Cloud service die kan samen werken met zowel Cloud-als on-pr
 ## <a name="can-i-extract-more-or-richer-metadata-from-the-data-sources-i-register"></a>Kan ik meer of rijkere meta gegevens ophalen uit de gegevens bronnen die ik registreer?
 We werken actief om de mogelijkheden van Data Catalog uit te breiden. Als u extra meta gegevens wilt ophalen uit de gegevens bron tijdens de registratie, kunt u deze Voorst Ellen (of stem ermee in als deze al is voorgesteld) in het [Data Catalog op de Azure feedback forums](https://feedback.azure.com/forums/906052-data-catalog). 
 
-Als u meta gegevens van kolommen, voor beelden of gegevens profielen wilt toevoegen voor gegevens bronnen waarin deze meta gegevens niet worden geëxtraheerd door het hulp programma voor gegevens bron registratie, kunt u de Data Catalog-API gebruiken om deze meta gegevens toe te voegen. Zie [Azure Data Catalog rest API](https://docs.microsoft.com/rest/api/datacatalog/)voor meer informatie.
+Als u meta gegevens van kolommen, voor beelden of gegevens profielen wilt toevoegen voor gegevens bronnen waarin deze meta gegevens niet worden geëxtraheerd door het hulp programma voor gegevens bron registratie, kunt u de Data Catalog-API gebruiken om deze meta gegevens toe te voegen. Zie [Azure Data Catalog rest API](/rest/api/datacatalog/)voor meer informatie.
 
 ## <a name="how-do-i-restrict-the-visibility-of-registered-data-assets-so-that-only-certain-people-can-discover-them"></a>Hoe kan ik de zicht baarheid van geregistreerde gegevensassets beperken, zodat alleen bepaalde personen deze kunnen ontdekken?
 Selecteer de gegevensassets in de Data Catalog en klik vervolgens op de knop **eigenaar worden** . Eigen aren van gegevensassets in Data Catalog kunnen de zichtbaarheids instellingen wijzigen zodat alle gebruikers de eigendoms activa kunnen detecteren of de zicht baarheid kunnen beperken tot specifieke gebruikers. Zie gegevensassets [beheren in azure Data Catalog](data-catalog-how-to-manage.md)voor meer informatie.

@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
-ms.openlocfilehash: 7b4a622de142fd44b64015c8238f44dafc34ce72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69f0a20bdcba23d947e3d1b573c1a359da245161
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86133693"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369417"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Herstel na nood geval instellen voor een implementatie van SAP NetWeaver met meerdere lagen
 
@@ -39,11 +39,11 @@ Voordat u begint, moet u ervoor zorgen dat u weet hoe u de volgende taken moet u
 
 U kunt Site Recovery gebruiken voor het implementeren van een oplossing voor herstel na nood geval in de volgende scenario's:
 * U hebt SAP-systemen die worden uitgevoerd in een Azure-Data Center en u repliceert ze naar een ander Azure-Data Center (Azure-naar-Azure-nood herstel). 
-   Zie [Azure-to-Azure-replicatie architectuur](https://aka.ms/asr-a2a-architecture)voor meer informatie.
+   Zie [Azure-to-Azure-replicatie architectuur](./azure-to-azure-architecture.md)voor meer informatie.
 * U hebt SAP-systemen die on-premises op VMware-servers (of fysieke) worden uitgevoerd. U repliceert ook de SAP-systemen naar een nood herstel site in een Azure-Data Center (nood herstel van VMware naar Azure). 
-   Voor dit scenario zijn enkele extra onderdelen vereist. Zie voor meer informatie [VMware-naar-Azure-replicatie architectuur](https://aka.ms/asr-v2a-architecture).
+   Voor dit scenario zijn enkele extra onderdelen vereist. Zie voor meer informatie [VMware-naar-Azure-replicatie architectuur](./vmware-azure-architecture.md).
 * U hebt SAP-systemen die worden uitgevoerd op Hyper-V on-premises. U repliceert ook de SAP-systemen naar een nood herstel site in een Azure-Data Center (Hyper-V-naar-Azure-nood herstel).
-   Voor dit scenario zijn enkele extra onderdelen vereist. Zie voor meer informatie [Hyper-V-naar-Azure-replicatie architectuur](https://aka.ms/asr-h2a-architecture).
+   Voor dit scenario zijn enkele extra onderdelen vereist. Zie voor meer informatie [Hyper-V-naar-Azure-replicatie architectuur](./hyper-v-azure-architecture.md).
 
 In dit artikel gebruiken we een scenario voor herstel na nood gevallen van **Azure naar Azure** . In het scenario wordt de SAP-functionaliteit voor herstel na nood gevallen van Site Recovery beschreven. Omdat Site Recovery replicatie niet specifiek is voor een toepassing, wordt verwacht dat het proces dat wordt beschreven ook van toepassing is op andere scenario's.
 

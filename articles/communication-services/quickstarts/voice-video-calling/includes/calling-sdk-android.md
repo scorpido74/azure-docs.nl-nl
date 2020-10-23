@@ -4,18 +4,18 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 368c594352b59f7ec6d04b12ca44e0cd492dc907
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 99a038b23eb0978b6e1d8a65b061c2f744852def
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92082247"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126791"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 - Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 
 - Een geïmplementeerde Communication Services-resource. [Een Communication Services maken](../../create-communication-resource.md).
-- A `User Access Token` om de aanroep-client in te scha kelen. Voor meer informatie over [het verkrijgen van een `User Access Token` ](../../access-tokens.md)
+- Een `User Access Token` om de aanroepende client in te schakelen. Voor meer informatie over het [verkrijgen van een `User Access Token`](../../access-tokens.md)
 - Optioneel: Voltooi de Snelstartgids om aan de [slag te gaan met het toevoegen van een oproep aan uw toepassing](../getting-started-with-calling.md)
 
 ## <a name="setting-up"></a>Instellen
@@ -143,8 +143,8 @@ Mobiele push meldingen zijn de pop-upmeldingen die u op mobiele apparaten ziet. 
 
 ### <a name="prerequisites"></a>Vereisten
 
-U kunt deze sectie volt ooien door een Firebase-account te maken en Cloud Messa ging (FCM) in te scha kelen. Zorg ervoor dat Firebase Cloud Messa ging is verbonden met een Azure notification hub-exemplaar (ANH). Zie [verbinding maken tussen Firebase en Azure](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started) voor instructies.
-In deze sectie wordt ook ervan uitgegaan dat u Android Studio versie 3,6 of hoger gebruikt om uw toepassing te bouwen.
+Een Firebase-account dat is ingesteld met Cloud Messa ging (FCM) ingeschakeld en met uw Firebase Cloud Messa ging-service verbonden met een Azure notification hub-exemplaar. Zie [communicatie Services-meldingen](https://docs.microsoft.com/azure/communication-services/concepts/notifications) voor meer informatie.
+Daarnaast wordt door de zelf studie aangenomen dat u Android Studio versie 3,6 of hoger gebruikt om uw toepassing te bouwen.
 
 Er is een set machtigingen vereist voor de Android-toepassing om meldings berichten te kunnen ontvangen van Firebase Cloud Messa ging. Voeg in uw `AndroidManifest.xml` bestand de volgende machtigingen toe na het * manifest<... >* of onder het *</application>* label
 
@@ -195,21 +195,21 @@ Voeg dit fragment toe om het token op te halen:
                     @Override
                     public void onComplete(@NonNull Task<InstanceIdResult> task) {
                         if (!task.isSuccessful()) {
-                            Log.w(TAG, "getInstanceId failed", task.getException());
+                            Log.w("PushNotification", "getInstanceId failed", task.getException());
                             return;
                         }
 
                         // Get new Instance ID token
                         String deviceToken = task.getResult().getToken();
                         // Log
-                        Log.d(TAG, "Device Registration token retrieved successfully");
+                        Log.d("PushNotification", "Device Registration token retrieved successfully");
                     }
                 });
 ```
 Registreer het token voor apparaatregistratie met de aanroepende Services-client bibliotheek voor push meldingen voor inkomende oproepen:
 
 ```java
-String deviceRegistrationToken = "some_token";
+String deviceRegistrationToken = "<Device Token from previous section>";
 try {
     callAgent.registerPushNotification(deviceRegistrationToken).get();
 }
@@ -226,16 +226,16 @@ Als u de payload van Firebase Cloud Messa ging wilt verkrijgen, begint u met het
 
 ```java
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
-    private java.util.Map<String, String> pushNotificationMessageData;
+    private java.util.Map<String, String> pushNotificationMessageDataFromFCM;
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         // Check if message contains a notification payload.
         if (remoteMessage.getNotification() != null) {
-            Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
+            Log.d("PushNotification", "Message Notification Body: " + remoteMessage.getNotification().getBody());
         }
         else {
-            pushNotificationMessageData = serializeDictionaryAsJson(remoteMessage.getData());
+            pushNotificationMessageDataFromFCM = remoteMessage.getData();
         }
     }
 }
@@ -252,10 +252,9 @@ Voeg de volgende service definitie toe aan het `AndroidManifest.xml` bestand in 
         </service>
 ```
 
-Zodra de payload is opgehaald, kan deze worden door gegeven aan de communicatie Services-client bibliotheek om te worden verwerkt door de `handlePushNotification` methode aan te roepen voor een `CallAgent` exemplaar.
+- Zodra de payload is opgehaald, kan deze worden door gegeven aan de *communicatie Services* -client bibliotheek die moet worden verwerkt door de methode *handlePushNotification* aan te roepen voor een *CallAgent* -exemplaar. Er `CallAgent` wordt een exemplaar gemaakt door de `createCallAgent(...)` methode aan te roepen voor de `CallClient` klasse.
 
 ```java
-java.util.Map<String, String> pushNotificationMessageDataFromFCM = remoteMessage.getData();
 try {
     callAgent.handlePushNotification(pushNotificationMessageDataFromFCM).get();
 }

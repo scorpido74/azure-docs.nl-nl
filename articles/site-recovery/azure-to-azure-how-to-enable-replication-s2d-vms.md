@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 0b4f18c32639ceb2084febe210a8cfd4c423a0cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f438fadb73f7e3bd25cd7ab9aef0bc46285e30e2
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86135750"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424826"
 ---
 # <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>Virtuele Azure-machines met Opslagruimten Direct repliceren naar een andere regio
 
@@ -49,12 +49,12 @@ Onder diagram ziet u een Azure VM-failovercluster met twee knoop punten die gebr
 1. Replicatie beleid met toepassings consistentie selecteren * (alleen ondersteuning voor crash consistentie is beschikbaar)
 1. De replicatie inschakelen
 
-   ![storagespacesdirect-beveiliging](./media/azure-to-azure-how-to-enable-replication-s2d-vms/multivmgroup.png)
+   ![Scherm afbeelding die laat zien waar u de replicatie-instellingen configureert.](./media/azure-to-azure-how-to-enable-replication-s2d-vms/multivmgroup.png)
 
 2. Ga naar gerepliceerde items en u kunt de status van de virtuele machine bekijken.
 3. De virtuele machines worden beveiligd en worden ook weer gegeven als onderdeel van de multi-VM-consistentie groep.
 
-   ![storagespacesdirect-beveiliging](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacesdirectgroup.PNG)
+   ![Scherm opname van de virtuele machines die worden beveiligd en een deel van een consistentie groep met meerdere VM'S.](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacesdirectgroup.PNG)
 
 ## <a name="creating-a-recovery-plan"></a>Een herstel plan maken
 Een herstel plan ondersteunt het sequentiëren van verschillende lagen in een toepassing met meerdere lagen tijdens een failover. Met sequentiëren kunt u de consistentie van toepassingen onderhouden. Wanneer u een herstel plan voor een webtoepassing met meerdere lagen maakt, voert u de stappen uit die worden beschreven in [een herstel plan maken met behulp van site Recovery](site-recovery-create-recovery-plans.md).

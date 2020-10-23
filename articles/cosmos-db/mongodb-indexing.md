@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 08/07/2020
+ms.date: 10/21/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: abd6d6379fba1efac20255ca97e66e6b2d7e72ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f7114188a7a996ee80346ec48a51f0cce8bba54
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324405"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425037"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Indexering beheren in de API van Azure Cosmos DB voor MongoDB
 
@@ -22,7 +22,7 @@ Azure Cosmos DB-API voor MongoDB maakt gebruik van de belangrijkste mogelijkhede
 
 ## <a name="indexing-for-mongodb-server-version-36"></a>Indexering voor MongoDB-Server versie 3,6
 
-De API van Azure Cosmos DB voor MongoDB-Server versie 3,6 indexeert automatisch het `_id` veld dat niet kan worden verwijderd. De unieke waarde van het veld wordt automatisch afgedwongen `_id` per Shard-sleutel. In Azure Cosmos DB API voor MongoDB, sharding en indexering, zijn afzonderlijke concepten. U hoeft uw Shard-sleutel niet te indexeren. Net als bij een andere eigenschap in uw document, wordt u echter aangeraden de Shard-sleutel te indexeren als deze eigenschap een gemeen schappelijk filter is in uw query's.
+De API van Azure Cosmos DB voor MongoDB-Server versie 3,6 indexeert automatisch het `_id` veld dat niet kan worden verwijderd. De unieke waarde van het veld wordt automatisch afgedwongen `_id` per Shard-sleutel. In Azure Cosmos DB API voor MongoDB, sharding en indexering, zijn afzonderlijke concepten. U hoeft uw Shard-sleutel niet te indexeren. Maar net als bij een andere eigenschap in uw document, wordt u aangeraden de Shard-sleutel te indexeren als deze eigenschap een gemeen schappelijk filter is in uw query's.
 
 Als u extra velden wilt indexeren, past u de opdrachten voor MongoDB-indexbeheer toe. Net als in MongoDB indexeert Azure Cosmos DB-API voor MongoDB automatisch het `_id` veld. Dit standaard indexeringsbeleid wijkt af van de Azure Cosmos DB SQL-API, waarmee standaard alle velden worden geïndexeerd.
 
@@ -40,7 +40,10 @@ Bij een query worden meerdere enkelvoudige veld indexen gebruikt, waar beschikba
 
 ### <a name="compound-indexes-mongodb-server-version-36"></a>Samengestelde indexen (MongoDB Server versie 3,6)
 
-Azure Cosmos DB-API voor MongoDB ondersteunt samengestelde indexen voor accounts die gebruikmaken van versie 3,6 wire protocol. U kunt Maxi maal acht velden in een samengestelde index toevoegen. **In tegens telling tot in MongoDB moet u alleen een samengestelde index maken als uw query efficiënt moet worden gesorteerd op meerdere velden tegelijk.** Voor query's met meerdere filters die niet hoeven te worden gesorteerd, maakt u meerdere enkelvoudige veld indexen in plaats van één samengestelde index.
+Azure Cosmos DB-API voor MongoDB ondersteunt samengestelde indexen voor accounts die gebruikmaken van versie 3,6 wire protocol. U kunt Maxi maal acht velden in een samengestelde index toevoegen. In tegens telling tot in MongoDB moet u alleen een samengestelde index maken als uw query efficiënt moet worden gesorteerd op meerdere velden tegelijk. Voor query's met meerdere filters die niet hoeven te worden gesorteerd, maakt u meerdere enkelvoudige veld indexen in plaats van één samengestelde index. 
+
+> [!NOTE]
+> U kunt geen samengestelde indexen maken voor geneste eigenschappen of matrices.
 
 Met de volgende opdracht maakt u een samengestelde index voor de velden `name` en `age` :
 
@@ -59,7 +62,7 @@ De volg orde van de paden in de samengestelde index moet echter exact overeenkom
 `db.coll.find().sort({age:1,name:1})`
 
 > [!NOTE]
-> U kunt geen samengestelde indexen maken voor geneste eigenschappen of matrices.
+> Samengestelde indexen worden alleen gebruikt in query's die de resultaten sorteren. Voor query's met meerdere filters die niet hoeven te worden gesorteerd, maakt u Multipe enkelvoudige veld indexen.
 
 ### <a name="multikey-indexes"></a>MultiKey-indexen
 
@@ -75,7 +78,7 @@ Hier volgt een voor beeld van het maken van een georuimtelijke index op het `loc
 
 ### <a name="text-indexes"></a>Tekst indexen
 
-De API van Azure Cosmos DB voor MongoDB biedt momenteel geen ondersteuning voor tekst indexen. Voor tekst zoekopdracht query's op teken reeksen moet u [Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb) -integratie met Azure Cosmos DB gebruiken.
+De API van Azure Cosmos DB voor MongoDB biedt momenteel geen ondersteuning voor tekst indexen. Voor tekst zoekopdracht query's op teken reeksen moet u [Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb) -integratie met Azure Cosmos DB gebruiken. 
 
 ## <a name="wildcard-indexes"></a>Joker teken indexen
 
@@ -131,7 +134,10 @@ Hier kunt u een Joker teken index maken voor alle velden:
 
 `db.coll.createIndex( { "$**" : 1 } )`
 
-Wanneer u de ontwikkeling begint, is het handig om een Joker teken index te maken voor alle velden. Naarmate er meer eigenschappen in een document worden geïndexeerd, worden de kosten voor de aanvraag eenheid (RU) voor het schrijven en bijwerken van het document verhoogd. Als u een schrijf bare werk belasting hebt, moet u er dus voor kiezen om de paden afzonderlijk te indexeren, in tegens telling tot het gebruik van Joker teken indexen.
+> [!NOTE]
+> Als u net begint met de ontwikkeling, raden we u **ten zeerste** aan om te beginnen met een Joker teken index voor alle velden. Dit kan de ontwikkeling vereenvoudigen en zo eenvoudiger query's optimaliseren.
+
+Documenten met veel velden kunnen een hoge aanvraag eenheid (RU) in rekening brengen voor schrijf bewerkingen en updates. Als u een schrijf bare werk belasting hebt, moet u er dus voor kiezen om de paden afzonderlijk te indexeren, in tegens telling tot het gebruik van Joker teken indexen.
 
 ### <a name="limitations"></a>Beperkingen
 
@@ -324,7 +330,7 @@ Ongeacht de waarde die is opgegeven voor de eigenschap **achtergrond** index, wo
 
 Er is geen invloed op de Lees Beschik baarheid bij het toevoegen van een nieuwe index. Met query's worden alleen nieuwe indexen gebruikt wanneer de index transformatie is voltooid. Tijdens de index transformatie zal de query-engine bestaande indexen blijven gebruiken. u ziet dan vergelijk bare Lees prestaties tijdens de indexerings transformatie om te zien wat u hebt gezien voordat de index wijziging werd geïnitieerd. Bij het toevoegen van nieuwe indexen is er ook geen risico van onvolledige of inconsistente query resultaten.
 
-Bij het verwijderen van indexen en het direct uitvoeren van query's zijn de filters op de verwijderde indexen mogelijk inconsistent en onvolledig, totdat de index transformatie is voltooid. Als u indexen verwijdert, garandeert de query-engine geen consistente of volledige resultaten wanneer query's filteren op deze onlangs verwijderde indexen. De meeste ontwikkel aars verwijderen geen indexen en proberen deze vervolgens onmiddellijk te doorzoeken, zodat deze situatie in de praktijk niet waarschijnlijk is.
+Bij het verwijderen van indexen en het direct uitvoeren van query's zijn de filters op de verwijderde indexen mogelijk inconsistent en onvolledig, totdat de index transformatie is voltooid. Als u indexen verwijdert, biedt de query-engine geen consistente of volledige resultaten wanneer query's filteren op deze onlangs verwijderde indexen. De meeste ontwikkel aars verwijderen geen indexen en proberen deze vervolgens onmiddellijk te doorzoeken, zodat deze situatie in de praktijk niet waarschijnlijk is.
 
 > [!NOTE]
 > U kunt de voortgang van de [index bijhouden](#track-index-progress).
@@ -335,7 +341,7 @@ Op dit moment kunt u alleen unieke indexen maken als de verzameling geen documen
 
 ## <a name="indexing-for-mongodb-version-32"></a>Indexeren voor MongoDB-versie 3,2
 
-Beschik bare indexerings functies en standaard waarden zijn anders voor Azure Cosmos-accounts die compatibel zijn met versie 3,2 van het MongoDB wire-protocol. U kunt [de versie van uw account controleren](mongodb-feature-support-36.md#protocol-support). U kunt een upgrade uitvoeren naar de 3,6-versie door een [ondersteunings aanvraag](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)in te dienen.
+Beschik bare indexerings functies en standaard waarden zijn anders voor Azure Cosmos-accounts die compatibel zijn met versie 3,2 van het MongoDB wire-protocol. U kunt [de versie van uw account controleren](mongodb-feature-support-36.md#protocol-support) en [upgraden naar versie 3,6](mongodb-version-upgrade.md).
 
 Als u versie 3,2 gebruikt, geeft deze sectie een overzicht van de belangrijkste verschillen met versie 3,6.
 
@@ -352,11 +358,11 @@ Nadat u de standaard indexen hebt verwijderd, kunt u meer indexen toevoegen zoal
 
 ### <a name="compound-indexes-version-32"></a>Samengestelde indexen (versie 3,2)
 
-Samengestelde indexen bevatten verwijzingen naar meerdere velden van een document. Als u een samengestelde index wilt maken, moet u een upgrade uitvoeren naar versie 3,6 door een [ondersteunings aanvraag](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)in te dienen.
+Samengestelde indexen bevatten verwijzingen naar meerdere velden van een document. Als u een samengestelde index wilt maken, moet u een [upgrade uitvoeren naar versie 3,6](mongodb-version-upgrade.md).
 
 ### <a name="wildcard-indexes-version-32"></a>Joker tekens-indexen (versie 3,2)
 
-Als u een Joker teken index wilt maken, moet u een upgrade uitvoeren naar versie 3,6 door een [ondersteunings aanvraag](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)in te dienen.
+Als u een Joker teken index wilt maken, [moet u een upgrade uitvoeren naar versie 3,6](mongodb-version-upgrade.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

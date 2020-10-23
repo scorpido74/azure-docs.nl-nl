@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 83cc1b2fd0936d814e4a31714fecfdea7ccce988
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f107741dc3e601d0a46c295932a745c99dadb96d
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89225663"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328073"
 ---
 # <a name="azure-security-baseline-for-azure-dns"></a>Azure-beveiligings basislijn voor Azure DNS
 
@@ -102,7 +102,7 @@ In Azure DNS bestaat de rol Inzender voor DNS-zones, evenals zone niveau en reco
 
 - [Leden van een directory-rol in azure AD ophalen met Power shell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
-- [Meer informatie over Azure RBAC in Azure DNS](dns-protect-zones-recordsets.md#role-based-access-control)
+- [Meer informatie over Azure RBAC in Azure DNS](dns-protect-zones-recordsets.md#azure-role-based-access-control)
 
 **Azure Security Center bewaking**: Ja
 
@@ -260,13 +260,13 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 ### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
-**Hulp**: azure Role-Based Access Control (Azure RBAC) maakt verfijnd toegangs beheer mogelijk voor Azure-gebruikers,-groepen en-resources. Met Azure RBAC kunt u het toegangs niveau verlenen dat gebruikers nodig hebben. 
+**Richt lijnen**: op rollen gebaseerd toegangs beheer van Azure (Azure RBAC) maakt het verfijnen van toegang voor Azure-gebruikers,-groepen en-bronnen mogelijk. Met Azure RBAC kunt u het toegangs niveau verlenen dat gebruikers nodig hebben. 
 
 In Azure DNS bestaat de rol Inzender voor DNS-zones, evenals zone niveau en record sets Azure RBAC. Het is ook mogelijk om uw eigen aangepaste Azure-rollen te bouwen om nauw keurigere controle te leveren.
 
 - [Azure RBAC configureren](../role-based-access-control/role-assignments-portal.md)
 
-- [Meer informatie over Azure RBAC in Azure DNS](dns-protect-zones-recordsets.md#role-based-access-control)
+- [Meer informatie over Azure RBAC in Azure DNS](dns-protect-zones-recordsets.md#azure-role-based-access-control)
 
 - [Meer informatie over Azure RBAC in azure Privé-DNS](dns-protect-private-zones-recordsets.md)
 
@@ -494,7 +494,7 @@ Markeer bovendien abonnementen met tags en maak een naamgevings systeem voor het
 
 - [Beveiligingswaarschuwingen in Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-- [Labels gebruiken om uw Azure-resources te organiseren](/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags gebruiken om Azure-resources te organiseren](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center bewaking**: Ja
 

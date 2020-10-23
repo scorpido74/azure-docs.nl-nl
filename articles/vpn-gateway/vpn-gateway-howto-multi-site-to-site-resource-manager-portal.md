@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.openlocfilehash: ec2516010768eded939b0ffa44c197f102c7766b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 10/22/2020
 ms.locfileid: "89401194"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>Een site-naar-site-verbinding met een VNet toevoegen met een bestaande VPN-gateway verbinding
@@ -62,7 +62,7 @@ Controleer de volgende items:
      ![Verbindings pagina toevoegen](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "Verbindings pagina toevoegen")<br>
 
 ## <a name="part-2---add-a-local-network-gateway"></a><a name="part2"></a>Deel 2: een lokale netwerk gateway toevoegen
-1. Klik op **lokale netwerk gateway** ***Kies een lokale netwerk gateway***. Hiermee opent u de pagina **lokale netwerk gateway kiezen** .
+1. Klik op **lokale netwerk gateway** ** _Kies een lokale netwerk gateway_*_. Hiermee opent u de pagina _* lokale netwerk gateway kiezen** .
    
     ![Lokale netwerk gateway kiezen](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/chooselng.png "Lokale netwerk gateway kiezen")<br>
 2. Klik op **nieuwe maken** om de pagina **lokale netwerk gateway maken** te openen.

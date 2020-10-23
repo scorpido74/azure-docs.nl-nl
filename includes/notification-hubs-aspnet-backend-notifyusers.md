@@ -9,10 +9,10 @@ ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 3db9811322d27ab287fa568eeeffcb5f4d57bdf7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86530165"
 ---
 ## <a name="create-the-webapi-project"></a>Het WebAPI-project maken
@@ -28,9 +28,9 @@ Maak de nieuwe ASP.NET WebAPI-back-end door de volgende acties uit te voeren:
 > [!IMPORTANT]
 > Als u Visual Studio 2015 of eerder gebruikt, moet u voordat u deze zelfstudie begint controleren of u de meest recente versie van NuGet Package Manager voor Visual Studio hebt geïnstalleerd.
 >
->Start Visual Studio om dit te controleren. Selecteer in het menu **extra** de optie **extensies en updates**. Zoek naar **NuGet Package Manager** in uw versie van Visual Studio en controleer of u de meest recente versie hebt. Als uw versie niet de nieuwste versie is, verwijdert u deze en installeert u NuGet Package Manager.
+>Start Visual Studio om dit te controleren. Selecteer **Extensies en updates** in het menu **Extra**. Zoek naar **NuGet Package Manager** in uw versie van Visual Studio en controleer of u de meest recente versie hebt. Als uw versie niet de nieuwste versie is, verwijdert u deze en installeert u NuGet Package Manager.
 
-![Scherm afbeelding van het dialoog venster extensies en updates met het pakket NuGet pakket beheren voor Visual Studios package gemarkeerd.][B4]
+![Schermopname van het dialoogvenster Extensies en updates met NuGet-pakketbeheer voor het Visual Studio-pakket gemarkeerd.][B4]
 
 > [!NOTE]
 > Controleer of u de Visual Studio [Azure SDK](https://azure.microsoft.com/downloads/) voor website-implementatie hebt geïnstalleerd.
@@ -59,7 +59,7 @@ Maak de nieuwe ASP.NET WebAPI-back-end door de volgende acties uit te voeren:
 
     ![Het venster Microsoft Azure Web App configureren][B5]
 
-    Als u deze pagina voor het configureren van het app service-abonnement niet ziet, gaat u verder met de zelf studie. U kunt deze configureren terwijl u de app later publiceert. 
+    Als u deze pagina voor het configureren van het App Service-plan niet ziet, gaat u door met de zelfstudie. U kunt het configureren en de app later publiceren. 
 
 ## <a name="authenticate-clients-to-the-webapi-backend"></a>Clients verifiëren bij de WebAPI-back-end
 
@@ -186,7 +186,7 @@ In deze sectie voegen we een nieuwe controller toe aan de WebAPI-back-end om aan
     }
     ```
     > [!IMPORTANT]
-    > Voer de **naam** en het **DefaultFullSharedAccessSignature** van uw hub in voordat u verder gaat. 
+    > Voer de **naam** en de **DefaultListenSharedAccessSignature** van uw hub in voordat u verdergaat. 
     
 7. Maak vervolgens een nieuwe controller met de naam **RegisterController**. Klik in Solution Explorer met de rechtermuisknop op de map **Controllers** en selecteer achtereenvolgens **Toevoegen** en **Controller**.
 
@@ -329,11 +329,11 @@ In deze sectie voegt u een nieuwe domeincontroller toe die clientapparaten een m
     using System.Threading.Tasks;
     using System.Web;
     ```
-3. Voeg de volgende methode toe aan de klasse **Notifications controller** :
+3. Voeg de volgende methode toe aan de klasse **NotificationsController**:
 
     Met deze code wordt een meldingstype verzonden die is gebaseerd op de `pns`-parameter (Platform Notification Service, PNS). De waarde van `to_tag` wordt gebruikt om de tag *gebruikersnaam* in te stellen in het bericht. Deze tag moet overeenkomen met een gebruikersnaamtag van een actieve notification hub-registratie. Het meldingsbericht wordt opgehaald uit de hoofdtekst van de POST-aanvraag en geformatteerd voor de doel-PNS.
 
-    Afhankelijk van de PNS die uw ondersteunde apparaten gebruiken om meldingen te ontvangen, worden de meldingen met verschillende indelingen ondersteund. Bijvoorbeeld op Windows-apparaten kunt u een [pop-upmelding met WNS](https://msdn.microsoft.com/library/windows/apps/br230849.aspx) gebruiken die niet rechtstreeks wordt ondersteund door een andere PNS. In een dergelijk geval moet uw back-end de melding in een ondersteunde melding indelen voor de PNS van apparaten die u wilt ondersteunen. Gebruik vervolgens de juiste API voor verzenden in de [NotificationHubClient-klasse](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.notificationhubclient_methods.aspx).
+    Afhankelijk van de PNS die uw ondersteunde apparaten gebruiken om meldingen te ontvangen, worden de meldingen met verschillende indelingen ondersteund. Bijvoorbeeld op Windows-apparaten kunt u een [pop-upmelding met WNS](https://msdn.microsoft.com/library/windows/apps/br230849.aspx) gebruiken die niet rechtstreeks wordt ondersteund door een andere PNS. In een dergelijk geval moet uw back-end de melding in een ondersteunde melding indelen voor de PNS van apparaten die u wilt ondersteunen. Gebruik vervolgens de juiste API voor verzending in de [NotificationHubClient-klasse](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.notificationhubclient_methods.aspx).
 
     ```csharp
     public async Task<HttpResponseMessage> Post(string pns, [FromBody]string message, string to_tag)
@@ -390,7 +390,7 @@ U gaat de app nu implementeren op een Azure-website zodat deze toegankelijk is v
 
     ![De tegel Microsoft Azure App Service][B15]
 
-3. Selecteer uw Azure-account in het venster **App Service maken**. Selecteer **type**  >  **Web-app**wijzigen. Houd de standaard **Web App-naam** en selecteer het **Abonnement**, de **Resourcegroep** en het **App Service-plan**.
+3. Selecteer uw Azure-account in het venster **App Service maken**. Selecteer **Type wijzigen** > **Web App**. Houd de standaard **Web App-naam** en selecteer het **Abonnement**, de **Resourcegroep** en het **App Service-plan**.
 
 4. Selecteer **Maken**.
 

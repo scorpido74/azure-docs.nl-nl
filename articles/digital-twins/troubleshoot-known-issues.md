@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 6f57f801f2270819d4a67a49590f5ba61b32afcb
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 8bcbe395f78d3e4e9a6f7f615edc61eaa04347cf
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047638"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311684"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Bekende problemen in azure Digital Apparaatdubbels
 
@@ -19,7 +19,7 @@ Dit artikel bevat informatie over bekende problemen met Azure Digital Apparaatdu
 
 ## <a name="400-client-error-bad-request-in-cloud-shell"></a>"400-client fout: ongeldige aanvraag" in Cloud Shell
 
-Opdrachten in Cloud Shell kunnen af en toe mislukken met de fout ' 400-client fout: ongeldige aanvraag voor URL: http://localhost:50342/oauth2/token ' gevolgd door de volledige Stack tracering.
+Opdrachten in Cloud Shell op *https://shell.azure.com* een regel matig uitvoeren mislukt met de fout ' 400-client fout: ongeldige aanvraag voor URL: http://localhost:50342/oauth2/token ', gevolgd door de volledige Stack tracering.
 
 Voor Azure Digital Apparaatdubbels is dit van invloed op de volgende opdracht groepen:
 * `az dt route`
@@ -30,7 +30,11 @@ Voor Azure Digital Apparaatdubbels is dit van invloed op de volgende opdracht gr
 
 U kunt dit oplossen door de opdracht opnieuw `az login` uit te voeren in Cloud shell en volgende aanmeldings stappen te volt ooien. Daarna kunt u de opdracht opnieuw uitvoeren.
 
-Een alternatieve oplossing is om [de Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest) op uw computer te installeren, zodat u Azure cli-opdrachten lokaal kunt uitvoeren. Dit probleem treedt niet op bij de lokale CLI.
+U kunt ook het deel venster Cloud Shell in de Azure Portal openen en de Cloud Shell werk van daaruit volt ooien:
+
+:::image type="content" source="media/includes/portal-cloud-shell.png" alt-text="Weer gave van de Azure Portal met het pictogram Cloud Shell gemarkeerd en de Cloud Shell weer gegeven onder aan het portal venster":::
+
+Ten slotte is het mogelijk om [de Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest) op uw computer te installeren, zodat u Azure cli-opdrachten lokaal kunt uitvoeren. Dit probleem treedt niet op bij de lokale CLI.
 
 ### <a name="possible-causes"></a>Mogelijke oorzaken
 

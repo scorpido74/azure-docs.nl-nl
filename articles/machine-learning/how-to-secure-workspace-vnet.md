@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 5d34fe403e0af4bc871ba176d0fa755650c26292
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3001b8829660f2891cb051269026bf7100a8f938
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776036"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460989"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Een Azure Machine Learning-werk ruimte beveiligen met virtuele netwerken
 
@@ -43,12 +43,12 @@ In dit artikel leert u hoe u de volgende werk ruimte-resources in een virtueel n
 
 + Een bestaand virtueel netwerk en subnet voor gebruik met uw reken resources.
 
-+ Als u resources wilt implementeren in een virtueel netwerk of subnet, moet uw gebruikers account over machtigingen beschikken voor de volgende acties in op rollen gebaseerde toegangs beheer (RBAC) van Azure:
++ Als u resources wilt implementeren in een virtueel netwerk of subnet, moet uw gebruikers account over machtigingen beschikken voor de volgende acties in azure op rollen gebaseerd toegangs beheer (Azure RBAC):
 
     - ' Micro soft. Network/virtualNetworks/lid/Action ' op de virtuele netwerk resource.
     - ' Micro soft. Network/virtualNetworks/subnet/lid/Action ' op de bron van het subnet.
 
-    Zie voor meer informatie over RBAC met netwerken de [ingebouwde rollen voor netwerken](/azure/role-based-access-control/built-in-roles#networking)
+    Zie voor meer informatie over Azure RBAC met netwerken de [ingebouwde rollen voor netwerken](/azure/role-based-access-control/built-in-roles#networking)
 
 
 ## <a name="secure-the-workspace-with-private-endpoint"></a>De werk ruimte beveiligen met een persoonlijk eind punt
@@ -148,7 +148,7 @@ De syntaxis voor het overs laan van de validatie van de gegevensset is vergelijk
 - JSON 
 - Parquet
 - SQL
-- File
+- Bestand
 
 Met de volgende code wordt een nieuwe JSON-gegevensset en-sets gemaakt `validate=False` .
 
@@ -197,7 +197,7 @@ Als aan deze vereisten wordt voldaan, gebruikt u de volgende stappen om Azure Co
 
 1. Zoek de naam van de Azure Container Registry voor uw werk ruimte met behulp van een van de volgende methoden:
 
-    __Azure-portal__
+    __Azure Portal__
 
     Vanuit het gedeelte Overzicht van uw werk ruimte koppelt de __register__ waarde aan de Azure container Registry.
 
@@ -281,6 +281,13 @@ Als aan deze vereisten wordt voldaan, gebruikt u de volgende stappen om Azure Co
     ]
     }
     ```
+
+    Met deze sjabloon maakt u een _persoonlijk eind punt_ voor netwerk toegang vanuit de werk ruimte naar uw ACR. In de onderstaande scherm afbeelding ziet u een voor beeld van dit persoonlijke eind punt.
+
+    :::image type="content" source="media/how-to-secure-workspace-vnet/acr-private-endpoint.png" alt-text="Azure Container Registry voor de werk ruimte":::
+
+    > [!IMPORTANT]
+    > Verwijder dit eind punt niet. Als u deze per ongeluk verwijdert, kunt u de sjabloon in deze stap opnieuw Toep assen om een nieuwe te maken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

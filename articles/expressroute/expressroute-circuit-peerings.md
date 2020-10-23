@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: 072eeb0bee0d0441549d2edad448f3b1c85a28a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87fed1d2ac4f5fa85c01d7af10bec10c1412744f
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566497"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202341"
 ---
 # <a name="expressroute-circuits-and-peering"></a>ExpressRoute-circuits en peering
 
@@ -70,7 +70,7 @@ Voor elke peering zijn afzonderlijke BGP-sessies vereist (één paar voor elk ty
 
 ## <a name="expressroute-health"></a><a name="health"></a>ExpressRoute-status
 
-ExpressRoute-circuits kunnen worden bewaakt voor Beschik baarheid, connectiviteit met VNets en bandbreedte gebruik met behulp van [Netwerkprestatiemeter](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM).
+ExpressRoute-circuits kunnen worden bewaakt voor Beschik baarheid, connectiviteit met VNets en bandbreedte gebruik met behulp van [Netwerkprestatiemeter](../networking/network-monitoring-overview.md) (NPM).
 
 NPM bewaakt de status van persoonlijke Azure-peering en micro soft-peering. Bekijk onze [post](https://azure.microsoft.com/blog/monitoring-of-azure-expressroute-in-preview/) voor meer informatie.
 

@@ -1,6 +1,6 @@
 ---
-title: Op rollen gebaseerd toegangs beheer voor Media Services accounts-Azure | Microsoft Docs
-description: In dit artikel vindt u informatie over op rollen gebaseerd toegangs beheer (RBAC) voor Azure Media Services accounts.
+title: Toegangs beheer op basis van rollen voor Azure voor Media Services-accounts-Azure | Microsoft Docs
+description: In dit artikel wordt het toegangs beheer op basis van rollen (Azure RBAC) voor Azure Media Services-accounts beschreven.
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: d6bc37a8aaddfb48e6d06eb46d9c1648e815b5ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8fba3db14c2a950dd230a4721841b4baa9f64636
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89289236"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426798"
 ---
-# <a name="role-based-access-control-rbac-for-media-services-accounts"></a>Op rollen gebaseerd toegangs beheer (RBAC) voor Media Services accounts
+# <a name="azure-role-based-access-control-azure-rbac-for-media-services-accounts"></a>Op rollen gebaseerd toegangs beheer voor Azure (Azure RBAC) voor Media Services accounts
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
@@ -27,7 +27,7 @@ Op dit moment worden door Azure Media Services geen aangepaste rollen gedefiniee
 
 ## <a name="design-principles"></a>Ontwerpprincipes
 
-Een van de belangrijkste principes van de API v3 is het beter beveiligen van de API. V3-Api's retour neren geen geheimen of referenties voor **Get** -of **List** -bewerkingen. De sleutels zijn altijd null, leeg of opgeschoond uit het antwoord. De gebruiker moet een afzonderlijke actie methode aanroepen om geheimen of referenties op te halen. De rol van **lezer** kan geen bewerkingen aanroepen zoals Asset. ListContainerSas, StreamingLocator. ListContentKeys, ContentKeyPolicies. GetPolicyPropertiesWithSecrets. Door afzonderlijke acties te ondernemen kunt u, indien gewenst, meer gedetailleerde RBAC-beveiligings machtigingen instellen in een aangepaste rol.
+Een van de belangrijkste principes van de API v3 is het beter beveiligen van de API. V3-Api's retour neren geen geheimen of referenties voor **Get** -of **List** -bewerkingen. De sleutels zijn altijd null, leeg of opgeschoond uit het antwoord. De gebruiker moet een afzonderlijke actie methode aanroepen om geheimen of referenties op te halen. De rol van **lezer** kan geen bewerkingen aanroepen zoals Asset. ListContainerSas, StreamingLocator. ListContentKeys, ContentKeyPolicies. GetPolicyPropertiesWithSecrets. Door afzonderlijke acties uit te stellen, kunt u, indien gewenst, meer gedetailleerde Azure RBAC-beveiligings machtigingen instellen in een aangepaste rol.
 
 Ga als volgt te werk om de bewerkingen weer te geven Media Services ondersteunt:
 
@@ -42,9 +42,9 @@ In het artikel [ingebouwde roldefinities](../../role-based-access-control/built-
 
 Raadpleeg de volgende artikelen voor meer informatie:
 
-- [Klassieke abonnements beheerders rollen, Azure-rollen en Azure AD-beheerders rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [Klassieke abonnementsbeheerdersrollen, Azure-rollen en Azure AD-rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 - [Wat is Azure RBAC (toegangsbeheer op basis van rollen)?](../../role-based-access-control/overview.md)
-- [RBAC gebruiken om toegang te beheren](../../role-based-access-control/role-assignments-rest.md)
+- [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de REST API](../../role-based-access-control/role-assignments-rest.md)
 - [Bewerkingen voor de resource provider Media Services](../../role-based-access-control/resource-provider-operations.md#microsoftmedia)
 
 ## <a name="next-steps"></a>Volgende stappen

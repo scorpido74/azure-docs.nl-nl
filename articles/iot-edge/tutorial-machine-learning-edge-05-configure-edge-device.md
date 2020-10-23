@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp
-ms.openlocfilehash: d7ff9efcedc1a6a5f92555a62e429be0431f2098
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 2245bd970e93595358e95465bcc815ddaf2ef821
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448517"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974546"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Zelfstudie: een IoT Edge-apparaat configureren
 
@@ -96,7 +96,7 @@ Om onze certificaten veilig op te slaan en ze toegankelijk te maken vanaf meerde
 
 Om een Azure IoT Edge-apparaat te verbinden met een IoT-hub, maken we eerst een identiteit voor het apparaat in de hub. We nemen de verbindingsreeks van de apparaat-id in de cloud en gebruiken die om de runtime op ons IoT Edge-apparaat te configureren. Zodra een geconfigureerd apparaat verbinding maakt met de hub, kunnen we modules implementeren en berichten verzenden. We kunnen ook de configuratie van het fysieke IoT Edge-apparaat wijzigen door de bijbehorende apparaat-id in IoT hub aan te passen.
 
-Voor deze zelfstudie maken we de nieuwe apparaat-id met behulp van Visual Studio Code. U kunt deze stappen ook uitvoeren met [Azure Portal](how-to-register-device.md#register-in-the-azure-portal) of de [Azure CLI](how-to-register-device.md#register-with-the-azure-cli).
+Voor deze zelfstudie maken we de nieuwe apparaat-id met behulp van Visual Studio Code. U kunt deze stappen ook uitvoeren met de Azure-portal of de Azure CLI.
 
 1. Open Visual Studio Code op uw ontwikkelcomputer.
 
@@ -294,12 +294,9 @@ Vervolgens gaan we de certificaten en de hostnaam bijwerken door het bestand con
     ```bash
     journalctl -u iotedge --no-pager --no-full
     ```
-
 ## <a name="next-steps"></a>Volgende stappen
 
 We hebben een Azure-VM geconfigureerd als een transparante gateway van Azure IoT Edge. We hebben eerst testcertificaten gegenereerd die we daarna hebben geüpload naar Azure Key Vault. Vervolgens hebben we een script en een Resource Manager-sjabloon gebruikt om de VM te implementeren met de installatiekopie Ubuntu Server 16.04 LTS + Azure IoT Edge runtime van Azure Marketplace. Met de VM actief hebben we via SSH verbinding gemaakt, ons aangemeld bij Azure en certificaten gedownload uit Key Vault. De configuratie van de IoT Edge-runtime hebben we hier en daar aangepast door het bestand config.yaml bij te werken.
-
-Meer informatie kunt u vinden in [How an IoT Edge device can be used as a gateway](iot-edge-as-gateway.md) (Hoe een IoT Edge-apparaat kan worden gebruikt als een gateway) en [Configure an IoT Edge device to act as a transparent gateway](how-to-create-transparent-gateway.md) (Een IoT Edge-apparaat configureren om te fungeren als een transparante gateway).
 
 Ga verder naar het volgende artikel om IoT Edge-modules te maken.
 

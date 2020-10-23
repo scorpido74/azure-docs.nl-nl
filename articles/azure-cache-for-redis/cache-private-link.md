@@ -5,13 +5,13 @@ author: curib
 ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: e2c071ff9cf020f99e990e670cfb29cca3c1ebbc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/14/2020
+ms.openlocfilehash: 93a21b627acfb127c98ead465ebeadc8a472bdfd
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91838650"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122701"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure-cache voor redis met persoonlijke Azure-koppeling (open bare preview)
 In dit artikel leert u hoe u een virtueel netwerk en een Azure-cache maakt voor een redis-exemplaar met een persoonlijk eind punt met behulp van de Azure Portal. U leert ook hoe u een persoonlijk eind punt kunt toevoegen aan een bestaand Azure-cache geheugen voor redis-instantie.
@@ -21,8 +21,9 @@ Persoonlijk Azure-eind punt is een netwerk interface waarmee u privé en veilig 
 ## <a name="prerequisites"></a>Vereisten
 * Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
 
-> [!NOTE]
+> [!IMPORTANT]
 > Als u persoonlijke eind punten wilt gebruiken, moet uw Azure-cache voor redis-exemplaar zijn gemaakt na 28 juli 2020.
+> Momenteel wordt geo-replicatie, firewall regels, ondersteuning voor de portal console, meerdere eind punten per geclusterde cache, persistentie naar Firewall en door VNet geïnjecteerde caches niet ondersteund. 
 >
 >
 
@@ -109,6 +110,23 @@ Volg deze stappen om een cache-exemplaar te maken.
 
 Het duurt even voor de cache is gemaakt. U kunt de voortgang bekijken op de  **overzichtspagina**  van Azure Cache voor Redis. Wanneer  **Status** wordt weergegeven als  **Wordt uitgevoerd**, is de cache klaar voor gebruik. 
     
+> [!IMPORTANT]
+> 
+> Er is een `publicNetworkAccess` vlag die `Enabled` standaard is. 
+> Deze vlag is bedoeld om u in staat te stellen zowel open bare als privé-eind punten toegang te geven tot de cache als deze is ingesteld op `Enabled` . Als deze eigenschap is ingesteld op `Disabled` , is toegang tot privé-eind punten alleen toegestaan. U kunt de waarde instellen op `Disabled` met de volgende patch-aanvraag.
+> ```http
+> PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Cache/Redis/{cache}?api-version=2020-06-01
+> {    "properties": {
+>        "publicNetworkAccess":"Disabled"
+>    }
+> }
+> ```
+>
+
+> [!IMPORTANT]
+> 
+> Als u verbinding wilt maken met een geclusterde cache, `publicNetworkAccess` moet deze worden ingesteld op `Disabled` en kan er slechts één particuliere eindpunt verbinding zijn. 
+>
 
 ## <a name="create-a-private-endpoint-with-an-existing-azure-cache-for-redis-instance"></a>Een persoonlijk eind punt maken met een bestaand Azure-cache geheugen voor redis-exemplaar 
 

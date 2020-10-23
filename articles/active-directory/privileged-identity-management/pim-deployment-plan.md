@@ -14,12 +14,12 @@ ms.date: 08/27/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bfe0fee14ed463e265dc4e7e4177c702b051c81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c9ba7217dfc167a06a1fea389cfc40a5e1251ca
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89050196"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367802"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management implementeren (PIM)
 
@@ -58,7 +58,7 @@ Deze sectie bevat een overzicht van de plannings doeleinden van de relevante del
 
 ## <a name="roles-that-can-be-managed-by-pim"></a>Rollen die kunnen worden beheerd door PIM
 
-**Azure AD-functies** bevinden zich allemaal in azure Active Directory (zoals globale beheerder, Exchange-beheerder en beveiligings beheerder). Meer informatie over de rollen en hun functionaliteit vindt u in de [beheerders bevoegdheden in azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md). Zie [minst geprivilegieerde rollen per taak](../users-groups-roles/roles-delegate-by-task.md)voor hulp bij het bepalen van de rollen die aan uw beheerders worden toegewezen.
+**Azure AD-functies** bevinden zich allemaal in azure Active Directory (zoals globale beheerder, Exchange-beheerder en beveiligings beheerder). Meer informatie over de rollen en hun functionaliteit vindt u in de [beheerders bevoegdheden in azure Active Directory](../roles/permissions-reference.md). Zie [minst geprivilegieerde rollen per taak](../roles/delegate-by-task.md)voor hulp bij het bepalen van de rollen die aan uw beheerders worden toegewezen.
 
 **Azure-rollen** zijn rollen die zijn gekoppeld aan een Azure-resource, resource groep,-abonnement of-beheer groep. U kunt PIM gebruiken om just-in-time toegang te bieden tot ingebouwde Azure-rollen zoals owner, gebruikers toegangs beheer en Inzender, en ook om [aangepaste rollen](../../role-based-access-control/custom-roles.md). Zie voor meer informatie over Azure-rollen [toegangs beheer op basis van rollen](../../role-based-access-control/overview.md).
 
@@ -111,7 +111,7 @@ Voor Azure AD-rollen is het gebruikelijk voor organisaties om de rol van globale
 
 Volg deze stappen voor het implementeren van het principe van minimale bevoegdheden voor uw Azure AD-rollen.
 
-1. Inzicht in de granulatie van de rollen door de [beschik bare Azure AD-beheerders rollen](../users-groups-roles/directory-assign-admin-roles.md#available-roles)te lezen en begrijpen. U en uw team moeten ook verwijzen naar [beheerders rollen per identiteits taak in azure AD](../users-groups-roles/roles-delegate-by-task.md), waarin de minst privileged Role voor specifieke taken wordt uitgelegd.
+1. Inzicht in de granulatie van de rollen door de [beschik bare Azure AD-beheerders rollen](../roles/permissions-reference.md#available-roles)te lezen en begrijpen. U en uw team moeten ook verwijzen naar [beheerders rollen per identiteits taak in azure AD](../roles/delegate-by-task.md), waarin de minst privileged Role voor specifieke taken wordt uitgelegd.
 
 1. Lijst met geprivilegieerde rollen in uw organisatie. U kunt de Privileged Identity Management [detectie en inzichten (preview)](pim-security-wizard.md) gebruiken om de bloot stelling te verminderen.
 
@@ -200,11 +200,11 @@ Of een rol moet worden toegewezen aan een groep in plaats van aan afzonderlijke 
 
 #### <a name="many-users-are-assigned-to-a-role"></a>Er zijn veel gebruikers toegewezen aan een rol
 
-Bijhouden wie aan een rol is toegewezen en hun toewijzingen beheren op basis van het moment dat deze hand matig worden uitgevoerd. Als u een groep aan een rol wilt toewijzen, maakt u eerst [een rol](../users-groups-roles/roles-groups-create-eligible.md) die kan worden toegewezen en wijst u de groep vervolgens toe aan een functie die in aanmerking komt voor een rol. Deze actie is van kracht voor iedereen in de groep tot hetzelfde activerings proces als afzonderlijke gebruikers die in aanmerking komen voor verhoging van de rol. Groeps leden activeren hun toewijzingen voor de groep afzonderlijk met behulp van het Privileged Identity Management activerings aanvraag en goedkeurings proces. De groep is niet geactiveerd, alleen het groepslid maatschap van de gebruiker.
+Bijhouden wie aan een rol is toegewezen en hun toewijzingen beheren op basis van het moment dat deze hand matig worden uitgevoerd. Als u een groep aan een rol wilt toewijzen, maakt u eerst [een rol](../roles/groups-create-eligible.md) die kan worden toegewezen en wijst u de groep vervolgens toe aan een functie die in aanmerking komt voor een rol. Deze actie is van kracht voor iedereen in de groep tot hetzelfde activerings proces als afzonderlijke gebruikers die in aanmerking komen voor verhoging van de rol. Groeps leden activeren hun toewijzingen voor de groep afzonderlijk met behulp van het Privileged Identity Management activerings aanvraag en goedkeurings proces. De groep is niet geactiveerd, alleen het groepslid maatschap van de gebruiker.
 
 #### <a name="you-want-to-delegate-assigning-the-role"></a>U de toewijzing van de rol wilt delegeren
 
-Een groeps eigenaar kan lidmaatschap voor een groep beheren. Voor functie-toewijs bare groepen van Azure AD kunnen alleen de beheerder van de bevoegde rol, de globale beheerder en de groeps eigenaren groepslid maatschap beheren. Door nieuwe leden toe te voegen aan de groep, krijgt het lid toegang tot de rollen waaraan de groep wordt toegewezen, ongeacht of de toewijzing in aanmerking komt of actief is. Gebruik groeps eigenaren om het beheer van groepslid maatschappen voor een toegewezen rol te delegeren om het vereiste aantal bevoegdheden te verminderen. Zie [een door een functie toewijs bare groep maken in azure AD](../users-groups-roles/roles-groups-create-eligible.md)voor meer informatie over het toewijzen van een eigenaar aan een groep bij het maken van de groep.
+Een groeps eigenaar kan lidmaatschap voor een groep beheren. Voor functie-toewijs bare groepen van Azure AD kunnen alleen de beheerder van de bevoegde rol, de globale beheerder en de groeps eigenaren groepslid maatschap beheren. Door nieuwe leden toe te voegen aan de groep, krijgt het lid toegang tot de rollen waaraan de groep wordt toegewezen, ongeacht of de toewijzing in aanmerking komt of actief is. Gebruik groeps eigenaren om het beheer van groepslid maatschappen voor een toegewezen rol te delegeren om het vereiste aantal bevoegdheden te verminderen. Zie [een door een functie toewijs bare groep maken in azure AD](../roles/groups-create-eligible.md)voor meer informatie over het toewijzen van een eigenaar aan een groep bij het maken van de groep.
 
 > [!TIP]
 > : heavy_check_mark: **micro soft raadt** u aan om Azure AD Role-toewijs bare groepen onder beheer te brengen door privileged Identity Management. Nadat een door een functie toewijs bare groep onder beheer van PIM wordt geplaatst, wordt dit een groep met uitgebreide toegang genoemd. Gebruik PIM om groeps eigenaren verplicht te stellen hun roltoewijzing te activeren voordat ze groepslid maatschap kunnen beheren. Zie voor meer informatie over het aanbrengen van groepen onder PIM-beheer, [privileged Access groups (preview) in privileged Identity Management](groups-discover-groups.md).
@@ -214,7 +214,7 @@ Een groeps eigenaar kan lidmaatschap voor een groep beheren. Voor functie-toewij
 Wanneer u de lijst met rollen die door Privileged Identity Management moeten worden beheerd, hebt vastgesteld, moet u bepalen welke gebruikers de in aanmerking komende rol en de permanent actieve rol moeten krijgen. Permanente actieve rollen zijn de normale rollen die worden toegewezen via Azure Active Directory en Azure-resources, terwijl in aanmerking komende rollen alleen kunnen worden toegewezen in Privileged Identity Management.
 
 > [!TIP]
-> : heavy_check_mark: **micro soft raadt** u aan om permanent actieve toewijzingen te hebben voor zowel Azure AD-rollen als Azure-rollen, met uitzonde ring van de aanbevolen [toegangs accounts voor afbreek glazen](../users-groups-roles/directory-emergency-access.md), die de permanente globale beheerdersrol moeten hebben.
+> : heavy_check_mark: **micro soft raadt** u aan om permanent actieve toewijzingen te hebben voor zowel Azure AD-rollen als Azure-rollen, met uitzonde ring van de aanbevolen [toegangs accounts voor afbreek glazen](../roles/security-emergency-access.md), die de permanente globale beheerdersrol moeten hebben.
 
 Hoewel we de permanente beheerder aanraden, is het soms moeilijk voor organisaties om dit meteen te bereiken. Hier volgen enkele dingen die u moet overwegen bij het nemen van deze beslissing:
 
@@ -340,7 +340,7 @@ Als Privileged Identity Management niet naar wens werkt in de productie omgeving
 
 #### <a name="azure-ad-roles"></a>Azure AD-rollen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Open **Azure AD privileged Identity Management**.
 1. Selecteer **Azure AD-rollen** en selecteer vervolgens **rollen**.
 1. Voor elke rol die u hebt geconfigureerd, selecteert u het weglatings teken (**...**) voor alle gebruikers met een in aanmerking komende toewijzing.
@@ -348,7 +348,7 @@ Als Privileged Identity Management niet naar wens werkt in de productie omgeving
 
 #### <a name="azure-roles"></a>Azure-rollen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Open **Azure AD privileged Identity Management**.
 1. Selecteer **Azure-resources** en selecteer vervolgens een abonnement of resource die u wilt terugzetten.
 1. Selecteer **Rollen**.
@@ -363,7 +363,7 @@ Het implementeren van Privileged Identity Management in productie is een belang 
 
 Zie [beveiligings waarschuwingen](pim-how-to-configure-security-alerts.md#security-alerts)voor meer informatie over het gebruik van de ingebouwde waarschuwings functionaliteit van privileged Identity Management om uw organisatie te beschermen. Deze waarschuwingen omvatten: beheerders die geen geprivilegieerde rollen gebruiken, de rollen worden toegewezen buiten Privileged Identity Management, worden de rollen te vaak geactiveerd. Als u uw organisatie volledig wilt beveiligen, moet u de lijst met waarschuwingen regel matig door lopen en de problemen oplossen. U kunt uw waarschuwingen op de volgende manier weer geven en herstellen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Open **Azure AD privileged Identity Management**.
 1. Selecteer **Azure AD-rollen** en selecteer vervolgens **waarschuwingen**.
 

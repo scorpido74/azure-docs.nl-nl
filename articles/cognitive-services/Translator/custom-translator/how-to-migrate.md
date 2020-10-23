@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 5334168081ea18650bd6afd2411e076952e08749
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 449d57579b802191434cda3e63e103e5f3ef4bc5
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86537983"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220870"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Hub-werk ruimte en projecten migreren naar een aangepaste vertaler
 
@@ -55,7 +55,7 @@ Een project migreren:
 
 3. Klik op de koppeling migreren voor het juiste project.
 
-    ![Migreren vanaf hub](media/how-to/how-to-migrate-from-hub.png)
+    ![Scherm afbeelding waarmee de knop voor het migreren van het geselecteerde project wordt gemarkeerd.](media/how-to/how-to-migrate-from-hub.png)
 
 4. Wanneer u op de koppeling migreren klikt, krijgt u een formulier waarmee u het volgende kunt doen:
    * Geef de werk ruimte op die u wilt overdragen naar het aangepaste conversie programma
@@ -76,7 +76,7 @@ Een werk ruimte migreren:
 
 3. Klik op de pagina instellingen op werk ruimte gegevens migreren naar aangepaste vertaler.
 
-    ![Migreren vanaf hub](media/how-to/how-to-migrate-workspace-from-hub.png)
+    ![Scherm afbeelding van de optie voor het migreren van werkruimte gegevens naar een aangepaste Translator.](media/how-to/how-to-migrate-workspace-from-hub.png)
 
 4. Selecteer op de volgende pagina een van deze twee opties:
 

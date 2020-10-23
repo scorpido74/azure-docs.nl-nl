@@ -8,15 +8,15 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: 891cd651278906c6ff4b24d91342c612c67604de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b28d75e6526f27fd0076244ec32848dbf20e91e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596559"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424771"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Stream Analytics uitvoer naar Azure Cosmos DB  
-Azure Stream Analytics kan gericht zijn op [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) voor json-uitvoer, waardoor gegevens worden gearchiveerd en query's met lage latentie worden uitgevoerd op ONgestructureerde JSON-gegevens. Dit document bevat enkele aanbevolen procedures voor het implementeren van deze configuratie.
+Azure Stream Analytics kan gericht zijn op [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) voor json-uitvoer, waardoor gegevens worden gearchiveerd en query's met lage latentie worden uitgevoerd op ONgestructureerde JSON-gegevens. Dit document bevat enkele aanbevolen procedures voor het implementeren van deze configuratie. Het is raadzaam om uw taak in te stellen op compatibiliteits niveau 1,2 wanneer u Azure Cosmos DB als uitvoer gebruikt.
 
 Als u niet bekend bent met Azure Cosmos DB, raadpleegt u de [Azure Cosmos DB documentatie](https://docs.microsoft.com/azure/cosmos-db/) om aan de slag te gaan. 
 
@@ -137,3 +137,17 @@ Als er een tijdelijke fout is opgetreden, wordt de service niet beschik baarheid
 - NotFound (HTTP-fout code 404)
 - Verboden (HTTP-fout code 403)
 - Onjuiste aanvraag (HTTP-fout code 400)
+
+## <a name="common-issues"></a>Algemene problemen
+
+1. Een unieke index beperking wordt toegevoegd aan de verzameling en de uitvoer gegevens van Stream Analytics schenden deze beperking. Zorg ervoor dat de uitvoer gegevens van Stream Analytics niet overtreden op unieke beperkingen of verwijder de beperkingen. Zie [beperkingen voor unieke sleutels in azure Cosmos DB](../cosmos-db/unique-keys.md)voor meer informatie.
+
+2. De `PartitionKey` kolom bestaat niet.
+
+3. De `Id` kolom bestaat niet.
+
+## <a name="next-steps"></a>Volgende stappen
+
+* [Meer informatie over de uitvoer van Azure Stream Analytics](stream-analytics-define-outputs.md) 
+* [Azure Stream Analytics uitvoer naar Azure SQL Database](stream-analytics-sql-output-perf.md)
+* [Aangepaste BLOB-uitvoer partitioneren Azure Stream Analytics](stream-analytics-custom-path-patterns-blob-storage-output.md)

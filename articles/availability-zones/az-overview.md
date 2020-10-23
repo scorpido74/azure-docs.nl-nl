@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 5178bf6955203c6a5625b941dd0102f2f4458abc
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 771635baa3c49c07d0d796cf6ef3be7b870de3e1
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078371"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425431"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Regio's en beschikbaarheidszones in Azure
 
@@ -112,7 +112,7 @@ Zoals eerder vermeld, classificeert Azure Services in drie categorieën: basis, 
 > | Service Bus | Azure Functions | Data Box Heavy |
 > | Service Fabric | Azure HPC Cache | Data Catalog |
 > | Virtuele-machineschaalsets | Azure IoT Hub | Data Factory: Data Factory v1 |
-> | Virtuele machines | Azure Kubernetes Service (AKS) | Data Lake Analytics |
+> | Virtual Machines | Azure Kubernetes Service (AKS) | Data Lake Analytics |
 > | Virtual Machines: Av2-Series | Azure Machine Learning | Azure Machine Learning Studio (klassiek)|
 > | Virtual Machines: Bs-Series | Azure Private Link | Microsoft Genomics |
 > | Virtual Machines: DSv2-Series | Azure Red Hat OpenShift | Remote Rendering |
@@ -170,10 +170,10 @@ Er zijn geen extra kosten verbonden aan het implementeren van virtuele machines 
 - [Een virtuele machine maken](../virtual-machines/windows/create-portal-availability-zone.md)
 - [Een beheerde schijf toevoegen met Power shell](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
 - [Een door een zone redundante schaalset voor virtuele machines maken](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
-- [Taak verdeling van virtuele machines in zones met behulp van een Standard Load Balancer met een zone-redundante front-end](../load-balancer/quickstart-load-balancer-standard-public-cli.md)
-- [Taak verdeling van Vm's binnen een zone met behulp van een Standard Load Balancer met een zonegebonden-front-end](../load-balancer/quickstart-load-balancer-standard-public-cli.md)
-- [Zone-redundante opslag](../storage/common/storage-redundancy.md)
-- [SQL Database](../azure-sql/database/high-availability-sla.md#zone-redundant-configuration)
+- [Taak verdeling van virtuele machines in zones met behulp van een Standard Load Balancer met een zone-redundante front-end](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
+- [Taak verdeling van Vm's binnen een zone met behulp van een Standard Load Balancer met een zonegebonden-front-end](../load-balancer/load-balancer-standard-public-zonal-cli.md)
+- [Zone-redundante opslag](../storage/common/storage-redundancy-zrs.md)
+- [SQL Database laag voor algemeen gebruik](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)
 - [Geo-noodherstel Event Hubs](../event-hubs/event-hubs-geo-dr.md#availability-zones)
 - [Geo-noodherstel Service Bus](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)
 - [Een zone-redundante virtuele netwerkgateway maken](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
@@ -185,4 +185,4 @@ Er zijn geen extra kosten verbonden aan het implementeren van virtuele machines 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Regio's die ondersteuning bieden voor Beschikbaarheidszones in azure](az-region.md)
-- [Quick Start-sjablonen](https://aka.ms/azqs)
+- [Snelstartsjablonen](https://aka.ms/azqs)

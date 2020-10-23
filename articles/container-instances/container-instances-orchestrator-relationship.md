@@ -4,12 +4,12 @@ description: Begrijp hoe Azure container instances met container Orchestrator we
 ms.topic: article
 ms.date: 04/15/2019
 ms.custom: mvc
-ms.openlocfilehash: f3f8693d1a9a12e7c35d126ab3e3ca53448e5e40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7faeecfcc3a1d006cc923b48339a1242a0b9e9b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74533665"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148596"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure Container Instances en container Orchestrator
 
@@ -54,7 +54,7 @@ In plaats van het aantal virtuele machines in uw cluster te schalen en vervolgen
 
 Als u werk belastingen van toepassingen snel wilt schalen in een [Azure Kubernetes service](../aks/intro-kubernetes.md) -cluster (AKS), kunt u *virtuele knoop punten* die dynamisch zijn gemaakt, gebruiken in azure container instances. Virtuele knoop punten scha kelen netwerk communicatie in tussen de peulen die worden uitgevoerd in ACI en het AKS-cluster. 
 
-Virtuele knoop punten ondersteunen momenteel Linux-container exemplaren. Ga aan de slag met virtuele knoop punten met behulp van [Azure cli](https://go.microsoft.com/fwlink/?linkid=2047538) of [Azure Portal](https://go.microsoft.com/fwlink/?linkid=2047545).
+Virtuele knoop punten ondersteunen momenteel Linux-container exemplaren. Ga aan de slag met virtuele knoop punten met behulp van [Azure cli](../aks/virtual-nodes-cli.md) of [Azure Portal](../aks/virtual-nodes-portal.md).
 
 Virtuele knoop punten gebruiken het open-source [virtuele-Kubelet][aci-connector-k8s] om de Kubernetes- [Kubelet][kubelet-doc] te simuleren door te registreren als een knoop punt met onbeperkte capaciteit. De virtuele-Kubelet verzendt het maken van een [peul][pod-doc] als container groepen in azure container instances.
 

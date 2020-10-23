@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 5748ff87e94daef80b140e015371eb7a334fffac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bcd232a3242b0341bfc81fa9785f76b0d3bd90cb
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361480"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369451"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>De configuratieserver beheren voor herstel na noodgeval van VMware-VM/fysieke server
 
@@ -169,12 +169,12 @@ U voert update pakketten uit om de configuratie server bij te werken. Updates ku
 - Als u 9,7, 9,8, 9,9 of 9,10 uitvoert, kunt u rechtstreeks upgraden naar 9,11.
 - Als u 9,6 of eerder uitvoert en u een upgrade naar 9,11 wilt uitvoeren, moet u eerst een upgrade uitvoeren naar versie 9,7. vóór 9,11.
 
-Zie [hier](https://aka.ms/asr_support_statement)voor gedetailleerde richt lijnen voor de ondersteunings verklaring van Azure site Recovery-onderdelen.
-Koppelingen naar update pakketten voor het uitvoeren van een upgrade naar alle versies van de configuratie server zijn [hier](https://aka.ms/asr_update_rollups)beschikbaar.
+Zie [hier](./service-updates-how-to.md#support-statement-for-azure-site-recovery)voor gedetailleerde richt lijnen voor de ondersteunings verklaring van Azure site Recovery-onderdelen.
+Koppelingen naar update pakketten voor het uitvoeren van een upgrade naar alle versies van de configuratie server zijn [hier](./service-updates-how-to.md#links-to-currently-supported-update-rollups)beschikbaar.
 
 > [!IMPORTANT]
 > Bij elke nieuwe versie ' N ' van een Azure Site Recovery onderdeel dat is uitgebracht, worden alle versies onder N-4 als niet meer ondersteund. Het is altijd verstandig om te upgraden naar de meest recente beschik bare versie.</br>
-> Zie [hier](https://aka.ms/asr_support_statement)voor gedetailleerde richt lijnen voor de ondersteunings verklaring van Azure site Recovery-onderdelen.
+> Zie [hier](./service-updates-how-to.md#support-statement-for-azure-site-recovery)voor gedetailleerde richt lijnen voor de ondersteunings verklaring van Azure site Recovery-onderdelen.
 
 Voer als volgt een upgrade uit voor de server:
 
@@ -192,7 +192,7 @@ Voer als volgt een upgrade uit voor de server:
     ![Bijwerken](./media/vmware-azure-manage-configuration-server/update3.png)
 
 7. Klik op **volt ooien** om het installatie programma te sluiten.
-8. Raadpleeg onze [upgrade-richt lijnen](https://aka.ms/asr_vmware_upgrades)om de rest van de site Recovery onderdelen bij te werken.
+8. Raadpleeg onze [upgrade-richt lijnen](./service-updates-how-to.md#vmware-vmphysical-server-disaster-recovery-to-azure)om de rest van de site Recovery onderdelen bij te werken.
 
 ## <a name="upgrade-configuration-serverprocess-server-from-the-command-line"></a>Upgrade van de configuratie server of proces server vanaf de opdracht regel
 

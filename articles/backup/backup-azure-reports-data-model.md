@@ -3,12 +3,12 @@ title: Gegevens model voor diagnostische gebeurtenissen van Azure Backup
 description: Dit gegevens model is een verwijzing naar de resource-specifieke modus voor het verzenden van diagnostische gebeurtenissen naar Log Analytics (LA).
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: c2c5d37596be104c4b1dc7e865586a4728a27bae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52c5c0694ed59aea20453ae7a2bd3209d76df433
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569595"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173965"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Gegevens model voor diagnostische gebeurtenissen van Azure Backup
 
@@ -55,7 +55,7 @@ Deze tabel bevat informatie over de belangrijkste back-upentiteiten, zoals kluiz
 | ResourceGroupName                 | Tekst          | De resource groep van de resource (bijvoorbeeld Recovery Services kluis) voor de gegevens die worden verzameld |
 | SchemaVersion                     | Tekst          | Dit veld geeft de huidige versie van het schema aan. Het is **v2** |
 | SecondaryBackupProtectionState    | Tekst          | Of secundaire beveiliging is ingeschakeld voor het back-upitem  |
-| Status                             | Tekst          | Status van het object voor het back-upitem. Bijvoorbeeld actief, verwijderd |
+| Staat                             | Tekst          | Status van het object voor het back-upitem. Bijvoorbeeld actief, verwijderd |
 | StorageReplicationType            | Tekst          | Type opslag replicatie voor de kluis. Bijvoorbeeld georedundant |
 | SubscriptionId                    | Tekst          | De abonnements-id van de resource (bijvoorbeeld Recovery Services kluis) waarvoor gegevens worden verzameld |
 | VaultName                         | Tekst          | Naam van de kluis                                            |
@@ -78,17 +78,17 @@ Deze tabel bevat details over velden die betrekking hebben op waarschuwingen.
 | AlertRaisedOn                  | Tekst          | Het type entiteit waarop de waarschuwing is opgetreden                        |
 | AlertSeverity                  | Tekst          | Ernst van de waarschuwing. Bijvoorbeeld kritiek                 |
 | AlertStatus                    | Tekst          | De status van de waarschuwing. Bijvoorbeeld: Active                     |
-| AlertTimeToResolveInMinutes    | Getal        | De tijd die nodig is om een waarschuwing op te lossen. Leeg voor actieve waarschuwingen.     |
+| AlertTimeToResolveInMinutes    | Aantal        | De tijd die nodig is om een waarschuwing op te lossen. Leeg voor actieve waarschuwingen.     |
 | AlertType                      | Tekst          | Type waarschuwing. Bijvoorbeeld back-up                           |
 | AlertUniqueId                  | Tekst          | De unieke id van de gegenereerde waarschuwing                    |
 | BackupItemUniqueId             | Tekst          | De unieke id van het back-upitem dat aan de waarschuwing is gekoppeld |
 | BackupManagementServerUniqueId | Tekst          | Veld voor het identificeren van de back-upbeheerserver waarop het back-upitem is beveiligd, indien van toepassing |
 | BackupManagementType           | Tekst          | Provider type voor het uitvoeren van een back-uptaak van de server, bijvoorbeeld IaaSVM, FileFolder |
-| CountOfAlertsConsolidated      | Getal        | Aantal waarschuwingen dat is geconsolideerd als het een geconsolideerde waarschuwing is  |
+| CountOfAlertsConsolidated      | Aantal        | Aantal waarschuwingen dat is geconsolideerd als het een geconsolideerde waarschuwing is  |
 | ProtectedContainerUniqueId     | Tekst          | De unieke id van de beveiligde server die is gekoppeld aan de waarschuwing |
 | RecommendedAction              | Tekst          | Aanbevolen actie om de waarschuwing op te lossen                      |
 | SchemaVersion                  | Tekst          | Huidige versie van het schema, bijvoorbeeld **v2**            |
-| Status                          | Tekst          | Huidige status van het waarschuwings object, bijvoorbeeld actief, verwijderd |
+| Staat                          | Tekst          | Huidige status van het waarschuwings object, bijvoorbeeld actief, verwijderd |
 | StorageUniqueId                | Tekst          | Unieke ID die wordt gebruikt voor het identificeren van de opslag entiteit                |
 | VaultUniqueId                  | Tekst          | Unieke ID die wordt gebruikt om de kluis te identificeren die is gerelateerd aan de waarschuwing    |
 | SourceSystem                   | Tekst          | Bron systeem van de huidige gegevens-Azure                    |
@@ -108,7 +108,7 @@ Deze tabel bevat basis velden die betrekking hebben op een beveiligd exemplaar.
 | ProtectedContainerUniqueId     | Tekst          | Unieke ID voor het identificeren van de beveiligde container waarop de taak wordt uitgevoerd |
 | ProtectedInstanceCount         | Tekst          | Aantal beveiligde instanties voor het bijbehorende back-upitem of de beveiligde container op die datum-tijd |
 | SchemaVersion                  | Tekst          | Huidige versie van het schema, bijvoorbeeld **v2**            |
-| Status                          | Tekst          | Status van het object voor het back-upitem, bijvoorbeeld actief, verwijderd |
+| Staat                          | Tekst          | Status van het object voor het back-upitem, bijvoorbeeld actief, verwijderd |
 | VaultUniqueId                  | Tekst          | De unieke id van de beveiligde kluis die is gekoppeld aan het beveiligde exemplaar |
 | SourceSystem                   | Tekst          | Bron systeem van de huidige gegevens-Azure                    |
 
@@ -125,8 +125,8 @@ Deze tabel bevat details over projectgerelateerde velden.
 | BackupItemUniqueId             | Tekst          | Unieke ID die wordt gebruikt om het back-upitem te identificeren dat is gerelateerd aan de opslag entiteit |
 | BackupManagementServerUniqueId | Tekst          | Unieke ID die wordt gebruikt om de back-upbeheerserver te identificeren die betrekking heeft op de opslag entiteit |
 | BackupManagementType           | Tekst          | Provider type voor het uitvoeren van back-ups, bijvoorbeeld IaaSVM, FileFolder waartoe deze taak behoort |
-| DataTransferredInMB            | Getal        | Gegevens die worden overgebracht in MB voor deze taak                          |
-| JobDurationInSecs              | Getal        | Totale taak duur in seconden                                |
+| DataTransferredInMB            | Aantal        | Gegevens die worden overgebracht in MB voor deze taak                          |
+| JobDurationInSecs              | Aantal        | Totale taak duur in seconden                                |
 | JobFailureCode                 | Tekst          | De teken reeks voor de fout code omdat de taak fout is opgetreden    |
 | JobOperation                   | Tekst          | Bewerking waarvoor de taak wordt uitgevoerd bijvoorbeeld back-ups maken, herstellen, back-up configureren |
 | JobOperationSubType            | Tekst          | Subtype van de taak bewerking. Bijvoorbeeld ' Log ', in het geval van een logboek back-uptaak |
@@ -139,7 +139,7 @@ Deze tabel bevat details over projectgerelateerde velden.
 | RecoveryJobLocation            | Tekst          | De locatie waar het herstel punt dat wordt hersteld is opgeslagen |
 | RecoveryLocationType           | Tekst          | Type van de herstel locatie                                |
 | SchemaVersion                  | Tekst          | Huidige versie van het schema, bijvoorbeeld **v2**            |
-| Status                          | Tekst          | Huidige status van het taak object, bijvoorbeeld actief, verwijderd |
+| Staat                          | Tekst          | Huidige status van het taak object, bijvoorbeeld actief, verwijderd |
 | VaultUniqueId                  | Tekst          | De unieke id van de beveiligde kluis die is gekoppeld aan de taak |
 | SourceSystem                   | Tekst          | Bron systeem van de huidige gegevens-Azure                    |
 
@@ -177,7 +177,7 @@ Deze tabel bevat details over velden die betrekking hebben op het beleid.
 | RetentionDuration               | Tekst           | Bewaar periode voor geconfigureerde back-ups                    |
 | RetentionType                   | Tekst           | Type Bewaar periode                                            |
 | SchemaVersion                   | Tekst           | Dit veld geeft de huidige versie van het schema aan. Dit is **v2** |
-| Status                           | Tekst           | Huidige status van het beleids object. Bijvoorbeeld actief, verwijderd |
+| Staat                           | Tekst           | Huidige status van het beleids object. Bijvoorbeeld actief, verwijderd |
 | SynchronisationFrequencyPerDay  | Geheel getal   | Aantal keren per dag dat een back-up van een bestand wordt gesynchroniseerd voor SC DPM en MABS |
 | VaultUniqueId                   | Tekst           | De unieke ID van de kluis waartoe dit beleid behoort          |
 | WeeklyRetentionDaysOfTheWeek    | Tekst           | Dagen van de week geselecteerd voor een wekelijkse Bewaar periode               |
@@ -207,9 +207,9 @@ Deze tabel bevat details over velden die betrekking hebben op opslag.
 | PreferredWorkloadOnVolume      | Tekst          | De werk belasting waarvoor dit volume de voorkeurs opslag is      |
 | ProtectedContainerUniqueId     | Tekst          | De unieke id van de beveiligde container die is gekoppeld aan het back-upitem |
 | SchemaVersion                  | Tekst          | De versie van het schema. Bijvoorbeeld **v2**                   |
-| Status                          | Tekst          | Status van het object voor het back-upitem. Bijvoorbeeld actief, verwijderd |
-| StorageAllocatedInMBs          | Getal        | Grootte van de opslag die wordt toegewezen door het bijbehorende back-upitem in de bijbehorende opslag van het type schijf |
-| StorageConsumedInMBs           | Getal        | Grootte van de opslag die wordt gebruikt door het bijbehorende back-upitem in de bijbehorende opslag |
+| Staat                          | Tekst          | Status van het object voor het back-upitem. Bijvoorbeeld actief, verwijderd |
+| StorageAllocatedInMBs          | Aantal        | Grootte van de opslag die wordt toegewezen door het bijbehorende back-upitem in de bijbehorende opslag van het type schijf |
+| StorageConsumedInMBs           | Aantal        | Grootte van de opslag die wordt gebruikt door het bijbehorende back-upitem in de bijbehorende opslag |
 | StorageName                    | Tekst          | De naam van de opslag entiteit. Bijvoorbeeld E:\                      |
 | StorageTotalSizeInGBs          | Tekst          | Totale grootte van de opslag, in GB, die wordt verbruikt door de opslag entiteit     |
 | Para                    | Tekst          | Type opslag, bijvoorbeeld Cloud, volume, schijf             |
@@ -239,7 +239,7 @@ Elke record in de bovenstaande tabellen heeft een bijbehorende **bewerkings naam
 | AddonAzureBackupPolicy | Beleid |  Vertegenwoordigt een record met alle details van een back-up-en bewaar beleid. Bijvoorbeeld ID, naam, Bewaar instellingen, enzovoort. |
 | AddonAzureBackupPolicy | PolicyAssociation | Vertegenwoordigt een toewijzing tussen een back-upitem en het toegepaste back-upbeleid. |   
 
-Vaak moet u lid zijn van verschillende tabellen, evenals de verschillende sets records die deel uitmaken van dezelfde tabel (gedifferentieerd op bewerkings naam) om alle velden op te halen die nodig zijn voor de analyse. Raadpleeg de [voorbeeld query's](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor#sample-kusto-queries) om aan de slag te gaan. 
+Vaak moet u lid zijn van verschillende tabellen, evenals de verschillende sets records die deel uitmaken van dezelfde tabel (gedifferentieerd op bewerkings naam) om alle velden op te halen die nodig zijn voor de analyse. Raadpleeg de [voorbeeld query's](./backup-azure-monitoring-use-azuremonitor.md#sample-kusto-queries) om aan de slag te gaan. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

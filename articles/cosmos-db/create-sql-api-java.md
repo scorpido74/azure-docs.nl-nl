@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/22/2020
 ms.author: anfeldma
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: c8f93548443b043f26bdb3bd7d7d38e6efb39852
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4678ab34de169a8406f0d73b63906152ef1185f0
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334494"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281910"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Quickstart: Een Java-app bouwen om Azure Cosmos DB SQL API-gegevens te beheren
 
@@ -45,9 +45,9 @@ In deze quickstart maakt en beheert u een SQL API-account van Azure Cosmos DB vi
 
 *De structuur van een Cosmos DB-account.* Ongeacht de API- of programmeer taal, bevat een Cosmos DB-*account* nul of meer *databases*, een *database* (DB) bevat nul of meer *containers* en een *container* bevat nul of meer items, zoals in het onderstaande diagram wordt weer gegeven:
 
-:::image type="content" source="./media/databases-containers-items/cosmos-entities.png" alt-text="Entiteiten van Azure Cosmos-account" border="false":::
+:::image type="content" source="./media/account-databases-containers-items/cosmos-entities.png" alt-text="Entiteiten van Azure Cosmos-account" border="false":::
 
-Vind [hier](databases-containers-items.md) meer informatie over databases, containers en items. Enkele belangrijke eigenschappen worden op het niveau van de container gedefinieerd, onder andere *ingerichte doorvoer* en *partitiesleutel*. 
+Vind [hier](account-databases-containers-items.md) meer informatie over databases, containers en items. Enkele belangrijke eigenschappen worden op het niveau van de container gedefinieerd, onder andere *ingerichte doorvoer* en *partitiesleutel*. 
 
 De ingerichte doorvoer wordt gemeten in de aanvraageenheden (*RU’s*) die een monetaire prijs hebben en die een substantiële bepaling van de bedrijfskosten van het account zijn. Ingerichte doorvoer kan worden geselecteerd bij granulatie op basis van een container of nauwkeurigheid per database, maar de specificatie voor doorvoer op containerniveau verdient doorgaans de voorkeur. U kunt [hier](set-throughput.md) meer lezen over het inrichten van de doorvoer.
 

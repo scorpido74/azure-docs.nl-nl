@@ -7,12 +7,12 @@ ms.service: firewall-manager
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: victorh
-ms.openlocfilehash: c290904c9f4bc7dba70dad9351dc45b676e0c236
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ba683e3d616f52854f1055dab9b9fe2d389116a
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88893685"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331733"
 ---
 # <a name="use-azure-firewall-policy-to-define-a-rule-hierarchy"></a>Azure Firewall-beleid gebruiken om een regel hiërarchie te definiëren
 
@@ -21,7 +21,7 @@ Beveiligings beheerders moeten firewalls beheren en ervoor zorgen dat wordt vold
 Met Azure Firewall-beleid kunt u een regel hiërarchie definiëren en naleving afdwingen:
 
 - Voorziet in een hiërarchische structuur voor het bedekken van een centraal basis beleid boven op een onderliggend toepassings team beleid. Het basis beleid heeft een hogere prioriteit en wordt uitgevoerd vóór het onderliggende beleid.
-- Gebruik een aangepaste RBAC-definitie (op rollen gebaseerd toegangs beheer) om te voor komen dat onbedoeld basis beleid wordt verwijderd en om selectieve toegang te bieden tot regel verzamelings groepen binnen een abonnement of resource groep. 
+- Gebruik een aangepaste functie definitie van Azure om te voor komen dat er onbedoeld basis beleid wordt verwijderd en geef selectieve toegang tot regel verzamelings groepen binnen een abonnement of resource groep op. 
 
 ## <a name="solution-overview"></a>Oplossingenoverzicht
 
@@ -153,7 +153,7 @@ Herhaal deze procedure voor het andere firewall beleid.
 
 ### <a name="summary"></a>Samenvatting
 
-Het firewall beleid met aangepaste RBAC biedt nu selectieve toegang tot de verzamelings groepen met firewall beleidsregels.
+Het firewall beleid met aangepaste rollen biedt nu selectieve toegang tot de verzamelings groepen firewall beleidsregel.
 
 Gebruikers hebben geen machtigingen voor het volgende:
 - Verwijder het Azure Firewall-of firewall-beleid.

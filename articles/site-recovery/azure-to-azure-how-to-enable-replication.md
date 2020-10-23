@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
-ms.openlocfilehash: 3a1ac6dd940ea5d31adae45a435c5425497362b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe5feed4bb6f9b84a3f161692310922f7a6d2f00
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86135777"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424788"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>Virtuele Azure-machines repliceren naar een andere Azure-regio
 
@@ -36,10 +36,10 @@ Schakel replicatie in. Bij deze procedure wordt ervan uitgegaan dat de primaire 
    - **Bron abonnement**: het abonnement waartoe de bron-vm's behoren. Dit kan elk abonnement zijn binnen dezelfde Azure Active Directory-tenant waar uw Recovery Services-kluis zich bevindt.
    - **Resource groep**: de resource groep waartoe de virtuele bron machine behoort. Alle virtuele machines onder de geselecteerde resource groep worden in de volgende stap weer gegeven voor beveiliging.
 
-     ![Replicatie inschakelen](./media/site-recovery-replicate-azure-to-azure/enabledrwizard1.png)
+     ![Scherm opname van de velden die nodig zijn voor het configureren van de replicatie.](./media/site-recovery-replicate-azure-to-azure/enabledrwizard1.png)
 
 3. Klik in **Virtual Machines > virtuele machines selecteren**op elke virtuele machine die u wilt repliceren en selecteer deze. U kunt alleen machines selecteren waarvoor replicatie kan worden ingeschakeld. Klik vervolgens op **OK**.
-    ![Replicatie inschakelen](./media/site-recovery-replicate-azure-to-azure/virtualmachine_selection.png)
+    ![Scherm afbeelding van waaruit u virtuele machines selecteert.](./media/site-recovery-replicate-azure-to-azure/virtualmachine_selection.png)
 
 4. In **instellingen**kunt u de instellingen van de doel site eventueel configureren:
 
@@ -101,7 +101,7 @@ U kunt de standaard doel instellingen wijzigen die door Site Recovery worden geb
     - In de **beschikbaarheidsset**kunt u instellingen voor beschikbaarheids sets toevoegen aan de VM als deze deel uitmaken van een beschikbaarheidsset in de bron regio.
     - Selecteer in **doel opslag accounts**het account dat u wilt gebruiken.
 
-        ![Replicatie inschakelen](./media/site-recovery-replicate-azure-to-azure/customize.PNG)
+        ![Scherm afbeelding die laat zien hoe u de instellingen voor het doel abonnement kunt aanpassen.](./media/site-recovery-replicate-azure-to-azure/customize.PNG)
 3. Klik op **aanpassen:** als u de replicatie-instellingen wilt wijzigen.
 4. In **multi-VM-consistentie**selecteert u de virtuele machines die u samen wilt repliceren.
     - Alle machines in een replicatiegroep hebben gedeelde crash-consistente en app-consistente herstelpunten bij een failover.
@@ -111,7 +111,7 @@ U kunt de standaard doel instellingen wijzigen die door Site Recovery worden geb
     - Als u multi-VM-consistentie inschakelt, communiceren machines in de replicatiegroep met elkaar via poort 20004.
     - Zorg ervoor dat er geen firewall apparaat is die de interne communicatie tussen de Vm's via poort 20004 blokkeert.
     - Als u wilt dat Linux-Vm's deel uitmaken van een replicatie groep, zorgt u ervoor dat het uitgaande verkeer op poort 20004 hand matig wordt geopend volgens de richt lijnen voor de specifieke Linux-versie.
-![Replicatie inschakelen](./media/site-recovery-replicate-azure-to-azure/multivmsettings.PNG)
+![Scherm opname van de instellingen voor de consistentie van meerdere VM'S.](./media/site-recovery-replicate-azure-to-azure/multivmsettings.PNG)
 
 5. Klik op **doel resource maken**  >  **replicatie inschakelen**.
 6. Nadat de Vm's zijn ingeschakeld voor replicatie, kunt u de status van de VM controleren onder **gerepliceerde items**

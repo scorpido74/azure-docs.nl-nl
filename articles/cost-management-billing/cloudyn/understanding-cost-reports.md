@@ -10,12 +10,12 @@ ms.subservice: cloudyn
 ms.reviewer: benshy
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9f42359cc843a934cf1258576d13eec8af2279cc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9afe34097d005daeedf46fbaf30b37e53a8e3658
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687651"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132037"
 ---
 # <a name="understanding-cloudyn-cost-management-reports"></a>Inzicht in Cloudyn-rapporten voor kostenbeheer
 
@@ -205,5 +205,5 @@ Klik vanuit een weergegeven rapport op **Acties** en selecteer vervolgens **Alle
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de rapporten die zijn opgenomen in Cloudyn op [Use Cloudyn reports](../../cost-management/use-reports.md) (Cloudyn-rapporten gebruiken).
-- Meer informatie over het gebruik van rapporten voor het maken van [dashboards](../../cost-management/dashboards.md).
+- Meer informatie over de rapporten die zijn opgenomen in Cloudyn op [Use Cloudyn reports](./use-reports.md) (Cloudyn-rapporten gebruiken).
+- Meer informatie over het gebruik van rapporten voor het maken van [dashboards](./dashboards.md).

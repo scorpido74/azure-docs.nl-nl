@@ -4,12 +4,12 @@ description: Meer informatie over het inschakelen en weer geven van de logboeken
 services: container-service
 ms.topic: article
 ms.date: 10/14/2020
-ms.openlocfilehash: 79ed9308488725d9be0c839bbd04b6783bbbd85a
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 1089cb4ea52efaa545478ced053a921728a894ef
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076382"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368448"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Logboeken van Kubernetes-hoofdknooppunten inschakelen en controleren in AKS (Azure Kubernetes Service)
 
@@ -37,9 +37,11 @@ Azure Monitor-logboeken worden in de Azure Portal ingeschakeld en beheerd. Als u
 
 Naast de vermeldingen die door Kubernetes zijn geschreven, bevatten de audit logboeken van uw project ook vermeldingen van AKS.
 
-Audit logboeken worden vastgelegd in twee categorieën, *uitvoeren-audit-admin* en *uitvoeren-audit*. De categorie *uitvoeren* bevat alle controle logboek gegevens voor elke controle gebeurtenis, zoals *Get*, *List*, *Create*, *Update*, *Delete*, *patch*en *post*.
+Audit logboeken worden vastgelegd in drie categorieën: *uitvoeren-audit*, *uitvoeren-audit-admin*en *Guard*.
 
-De categorie *uitvoeren-audit-admin* is een subset van de *uitvoeren-audit* logboek categorie. *uitvoeren-audit-admin* vermindert het aantal logboeken aanzienlijk door het uitsluiten van de controle gebeurtenissen *ophalen* en *weer geven* uit het logboek.
+- De categorie *uitvoeren* bevat alle controle logboek gegevens voor elke controle gebeurtenis, zoals *Get*, *List*, *Create*, *Update*, *Delete*, *patch*en *post*.
+- De categorie *uitvoeren-audit-admin* is een subset van de *uitvoeren-audit* logboek categorie. *uitvoeren-audit-admin* vermindert het aantal logboeken aanzienlijk door het uitsluiten van de controle gebeurtenissen *ophalen* en *weer geven* uit het logboek.
+- De categorie *Guard* beheert Azure AD en Azure RBAC-controles. Voor beheerde Azure AD: token in, gegevens van de gebruiker. Voor Azure RBAC: toegangs beoordelingen in en uit.
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>Een test pod plannen op het AKS-cluster
 
@@ -75,7 +77,7 @@ pod/nginx created
 
 ## <a name="view-collected-logs"></a>Verzamelde logboeken weer geven
 
-Het kan enkele minuten duren voordat de diagnostische logboeken zijn ingeschakeld en worden weer gegeven.
+Het kan tot tien minuten duren voordat de diagnostische logboeken zijn ingeschakeld en worden weer gegeven.
 
 > [!NOTE]
 > Als u alle controle logboek gegevens voor naleving of andere doel einden nodig hebt, verzamelt en slaat u deze op in goedkope opslag, zoals Blob Storage. Gebruik de *uitvoeren-audit-admin-* logboek categorie voor het verzamelen en opslaan van een zinvolle set audit logboek gegevens voor controle-en waarschuwings doeleinden.

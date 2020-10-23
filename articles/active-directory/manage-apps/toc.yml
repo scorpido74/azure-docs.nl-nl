@@ -7,6 +7,8 @@
       href: what-is-application-management.md
     - name: Wat is eenmalige aanmelding?
       href: what-is-single-sign-on.md
+    - name: Wat is er nieuw in Docs?
+      href: whats-new-docs.md
 - name: Snelstartgidsen
   expanded: true
   items:
@@ -61,6 +63,8 @@
           href: plan-sso-deployment.md
         - name: Opties voor eenmalige aanmelding
           href: sso-options.md
+        - name: Op OIDC gebaseerde SSO
+          href: configure-oidc-single-sign-on.md
         - name: Op SAML gebaseerde SSO
           href: configure-saml-single-sign-on.md
         - name: Eenmalige aanmelding op basis van een wachtwoord
@@ -218,6 +222,8 @@
           href: troubleshoot-password-based-sso.md
         - name: Problemen met eenmalige aanmelding op basis van SAML oplossen
           href: troubleshoot-saml-based-sso.md
+        - name: Fouten opsporen in eenmalige aanmelding op basis van SAML
+          href: debug-saml-sso-issues.md
         - name: Problemen met aanmelden van gebruikers oplossen
           items:
             - name: Onverwacht instemmingsprompt
@@ -230,12 +236,8 @@
               href: application-sign-in-problem-application-error.md
             - name: Probleem met aanmelden bij een Microsoft-app
               href: application-sign-in-problem-first-party-microsoft.md
-            - name: Probleem met federatieve eenmalige aanmelding - niet-galerie-app
-              href: application-sign-in-problem-federated-sso-non-gallery.md
-            - name: Probleem met federatieve eenmalige aanmelding - galerie-app
+            - name: Probleem met eenmalige aanmelding
               href: application-sign-in-problem-federated-sso-gallery.md
-            - name: Probleem met zelfontwikkelde app
-              href: application-sign-in-problem-custom-dev.md
         - name: Problemen met on-premises apps oplossen
           items:
             - name: Probleemoplossing toepassingsproxy

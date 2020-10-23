@@ -7,12 +7,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.openlocfilehash: 5751223697638128d86675badf7ec15abc36ef4e
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 5dccf8a11691ed02d50b88afc481ec0612fe15b9
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932376"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143600"
 ---
 # <a name="workbook-parameters"></a>Werkmap parameters
 
@@ -81,5 +81,5 @@ Gebruik de `Previews` sectie in het deel venster _para meter bewerken_ om de uit
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Ga](workbooks-visualizations.md) voor meer informatie over werkmappen veel uitgebreide visualisaties opties.
+* [Ga](./workbooks-overview.md#visualizations) voor meer informatie over werkmappen veel uitgebreide visualisaties opties.
 * De toegang tot uw werkmap resources [beheren](workbooks-access-control.md) en delen.

@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0126c5348a2acaebea0400a94ca0a1d14a1bf6ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c1734af799ee473d6ba75fe2e8ab8429afa51d0
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90707540"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318200"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Een nieuw toegangs pakket maken in het beheer van rechten van Azure AD
 
@@ -57,7 +57,7 @@ Dit zijn de stappen op hoog niveau voor het maken van een nieuw toegangs pakket.
 
 **Vereiste rol:** globale beheerder, gebruikersbeheerder, cataloguseigenaar of toegangspakketbeheerder
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Klik op **Azure Active Directory** en vervolgens op **Identity Governance**.
 
@@ -135,11 +135,11 @@ Op het tabblad **controleren en maken** kunt u uw instellingen controleren en co
 
 U kunt ook een toegangs pakket maken met behulp van Microsoft Graph.  Een gebruiker in een geschikte rol met een toepassing die de gedelegeerde machtiging heeft, `EntitlementManagement.ReadWrite.All` kan de API aanroepen naar
 
-1. [Vermeld de accessPackageResources in de catalogus](https://docs.microsoft.com/graph/api/accesspackagecatalog-list?view=graph-rest-beta&tabs=http) en [Maak een accessPackageResourceRequest](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta&tabs=http) voor alle resources die nog niet in de catalogus staan.
-1. [Vermeld de accessPackageResourceRoles](https://docs.microsoft.com/graph/api/accesspackage-list-accesspackageresourcerolescopes?view=graph-rest-beta&tabs=http) van elke accessPackageResource in een accessPackageCatalog. Deze lijst met rollen wordt vervolgens gebruikt voor het selecteren van een rol, wanneer u vervolgens een accessPackageResourceRoleScope maakt.
-1. [Een AccessPackage maken](https://docs.microsoft.com/graph/tutorial-access-package-api?view=graph-rest-beta).
-1. [Een AccessPackageAssignmentPolicy maken](https://docs.microsoft.com/graph/api/accesspackageassignmentpolicy-post?view=graph-rest-beta&tabs=http).
-1. [Maak een accessPackageResourceRoleScope](https://docs.microsoft.com/graph/api/accesspackage-post-accesspackageresourcerolescopes?view=graph-rest-beta&tabs=http) voor elke resource functie die nodig is in het toegangs pakket.
+1. [Vermeld de accessPackageResources in de catalogus](/graph/api/accesspackagecatalog-list?tabs=http&view=graph-rest-beta) en [Maak een accessPackageResourceRequest](/graph/api/accesspackageresourcerequest-post?tabs=http&view=graph-rest-beta) voor alle resources die nog niet in de catalogus staan.
+1. [Vermeld de accessPackageResourceRoles](/graph/api/accesspackage-list-accesspackageresourcerolescopes?tabs=http&view=graph-rest-beta) van elke accessPackageResource in een accessPackageCatalog. Deze lijst met rollen wordt vervolgens gebruikt voor het selecteren van een rol, wanneer u vervolgens een accessPackageResourceRoleScope maakt.
+1. [Een AccessPackage maken](/graph/tutorial-access-package-api?view=graph-rest-beta).
+1. [Een AccessPackageAssignmentPolicy maken](/graph/api/accesspackageassignmentpolicy-post?tabs=http&view=graph-rest-beta).
+1. [Maak een accessPackageResourceRoleScope](/graph/api/accesspackage-post-accesspackageresourcerolescopes?tabs=http&view=graph-rest-beta) voor elke resource functie die nodig is in het toegangs pakket.
 
 ## <a name="next-steps"></a>Volgende stappen
 

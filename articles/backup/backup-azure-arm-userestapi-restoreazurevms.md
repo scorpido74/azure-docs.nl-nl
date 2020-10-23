@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het beheren van herstel bewe
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: ad60436d82ccc8049a4509ba5bf1e244bee150ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 260c78af39c46e493ebb79c26ff1c55153a41c1d
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89506674"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174019"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Virtuele Azure-machines herstellen met behulp van REST API
 
@@ -122,7 +122,7 @@ Nadat u het [relevante herstel punt](#select-recovery-point)hebt geselecteerd, g
 ***Alle herstel bewerkingen voor het back-upitem worden uitgevoerd met dezelfde *bericht* -API. Alleen de hoofd tekst van de aanvraag wordt gewijzigd met de herstel scenario's.***
 
 > [!IMPORTANT]
-> [Hier](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-options)worden alle details van de verschillende opties voor terugzetten en de bijbehorende afhankelijkheden beschreven. Controleer voordat u doorgaat met het activeren van deze bewerkingen.
+> [Hier](./backup-azure-arm-restore-vms.md#restore-options)worden alle details van de verschillende opties voor terugzetten en de bijbehorende afhankelijkheden beschreven. Controleer voordat u doorgaat met het activeren van deze bewerkingen.
 
 Het activeren van herstel bewerkingen is een *post* -aanvraag. Raadpleeg de [rest API trigger herstellen](/rest/api/backup/restores/trigger)voor meer informatie over de API.
 
@@ -246,7 +246,7 @@ De volgende aanvraag hoofdtekst definieert eigenschappen die vereist zijn om een
 
 ### <a name="restore-disks-selectively"></a>Schijven selectief herstellen
 
-Als u [selectief back-ups](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup)maakt van schijven, wordt de huidige lijst met back-upschijven weer gegeven in de [herstel punt samenvatting](#select-recovery-point) en het [gedetailleerde antwoord](https://docs.microsoft.com/rest/api/backup/recoverypoints/get). U kunt ook selectieve schijven herstellen en meer informatie vindt u [hier](selective-disk-backup-restore.md#selective-disk-restore). Als u een schijf selectief wilt herstellen uit de lijst met back-upschijven, zoekt u het LUN van de schijf vanaf het herstel punt antwoord en voegt u de eigenschap **restoreDiskLunList** toe aan de [bovenstaande aanvraag tekst](#example-request) , zoals hieronder wordt weer gegeven.
+Als u [selectief back-ups](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup)maakt van schijven, wordt de huidige lijst met back-upschijven weer gegeven in de [herstel punt samenvatting](#select-recovery-point) en het [gedetailleerde antwoord](/rest/api/backup/recoverypoints/get). U kunt ook selectieve schijven herstellen en meer informatie vindt u [hier](selective-disk-backup-restore.md#selective-disk-restore). Als u een schijf selectief wilt herstellen uit de lijst met back-upschijven, zoekt u het LUN van de schijf vanaf het herstel punt antwoord en voegt u de eigenschap **restoreDiskLunList** toe aan de [bovenstaande aanvraag tekst](#example-request) , zoals hieronder wordt weer gegeven.
 
 ```json
 {

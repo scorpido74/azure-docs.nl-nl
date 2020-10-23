@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/12/2020
+ms.date: 10/16/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c580e44cc827de46c7464ba5f316e6c515de2940
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b3dc49e3e2d8492882507918a59edb0b9da41fcf
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977983"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167250"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>Een SAP ASCS/SCS-exemplaar op een Windows-failovercluster clusteren met behulp van een gedeelde cluster schijf in azure
 
@@ -49,6 +49,9 @@ Het Azure-Cloud platform biedt geen optie voor het configureren van virtuele IP-
 De Azure Load Balancer-service biedt een *interne Load Balancer* voor Azure. Met de interne load balancer bereiken clients het cluster via het virtuele IP-adres van het cluster. 
 
 Implementeer de interne load balancer in de resource groep die de cluster knooppunten bevat. Configureer vervolgens alle benodigde regels voor het door sturen van poorten met behulp van de test poorten van de interne load balancer. Clients kunnen verbinding maken via de naam van de virtuele host. De DNS-server zet het IP-adres van het cluster op en de interne load balancer verwerkt poort door sturen naar het actieve knoop punt van het cluster.
+
+> [!IMPORTANT]
+> Zwevend IP wordt niet ondersteund voor een secundaire IP-configuratie in een NIC in scenario's voor taak verdeling. Zie beperkingen voor [Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations)voor meer informatie. Als u een extra IP-adres voor de virtuele machine nodig hebt, implementeert u een tweede NIC.  
 
 ![Afbeelding 1: configuratie van Windows Failover Clustering in azure zonder een gedeelde schijf][sap-ha-guide-figure-1001]
 

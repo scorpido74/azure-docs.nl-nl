@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 8/12/2020
 ms.author: shants
-ms.openlocfilehash: d1705456c316a29aede537e67dee74b6231ff22b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14c7c3deb60c50fe71cf52959e342a3dcf2afc94
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460574"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151549"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>Geplande onderhouds meldingen verwerken
 
@@ -25,7 +25,7 @@ Van tijd tot tijd voert Azure updates uit om de betrouwbaarheid, prestaties en v
 
 Gepland onderhoud waarvoor opnieuw opstarten is vereist, wordt gepland in golven. Elke golf heeft een ander bereik (regio's).
 
-- Een golf begint met een melding aan klanten. Standaard wordt er een melding verzonden naar de service beheerder en mede beheerders. U kunt meer ontvangers en bericht opties toevoegen, zoals e-mail, SMS en webhooks, met behulp van [waarschuwingen voor activiteiten logboeken](../service-health/alerts-activity-log-service-notifications-portal.md).  
+- Een golf begint met een melding aan klanten. Standaard wordt de melding verzonden naar de abonnements beheerder en mede beheerders. U kunt meer ontvangers en bericht opties toevoegen, zoals e-mail, SMS en webhooks, met behulp van [waarschuwingen voor activiteiten logboeken](../service-health/alerts-activity-log-service-notifications-portal.md).  
 - Zodra een melding wordt weer gegeven, wordt er een *self-service venster* beschikbaar gemaakt. Tijdens dit venster kunt u een query uitvoeren op de virtuele machines die worden beïnvloed en onderhoud starten op basis van uw eigen plannings behoeften. Het venster voor selfservice Services is doorgaans ongeveer 35 dagen.
 - Na het self-service venster begint een *gepland onderhouds venster* . Op een bepaald moment tijdens dit venster plant Azure en past het vereiste onderhoud toe op uw virtuele machine. 
 
@@ -80,7 +80,7 @@ Zie [Beschik baarheid voor virtuele machines in azure](availability.md)voor meer
 
 **V: Hoe kan ik ontvang een melding over gepland onderhoud?**
 
-**A:** Een geplande onderhouds Golf wordt gestart door een planning in te stellen voor een of meer Azure-regio's. Binnenkort daarna wordt er een e-mail melding verzonden naar de service beheerders (één e-mail per abonnement). Aanvullende kanalen en ontvangers voor deze melding kunnen worden geconfigureerd met behulp van waarschuwingen voor activiteiten Logboeken. Als u een virtuele machine implementeert in een regio waar gepland onderhoud al is gepland, wordt de melding niet weer gegeven, maar moet u de onderhouds status van de VM controleren.
+**A:** Een geplande onderhouds Golf wordt gestart door een planning in te stellen voor een of meer Azure-regio's. Binnenkort na, wordt een e-mail melding verzonden naar de abonnements beheerder en mede beheerders (één e-mail per abonnement). Aanvullende kanalen en ontvangers voor deze melding kunnen worden geconfigureerd met behulp van waarschuwingen voor activiteiten Logboeken. Als u een virtuele machine implementeert in een regio waar gepland onderhoud al is gepland, wordt de melding niet weer gegeven, maar moet u de onderhouds status van de VM controleren.
 
 **V: Ik zie geen indicatie van gepland onderhoud in de portal, Power shell of CLI. Wat is er aan de hand?**
 

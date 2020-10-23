@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: duau
-ms.openlocfilehash: 5671be5e54a9bb789e349a4da6d0f1809807d974
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 608d6c87442821e904fde16c6b75841fe792e3f0
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401415"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206285"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Overstappen van openbare peering op Microsoft-peering
 
@@ -31,7 +31,7 @@ Als u verbinding wilt maken met micro soft-peering, moet u NAT instellen en behe
 > [!Warning]
 > De NAT IP-adresgroep die wordt geadverteerd aan Microsoft mag niet worden geadverteerd op internet. Dit verbreekt de connectiviteit met andere Microsoft-services.
 
-Raadpleeg [asymmetrische route ring met meerdere netwerk paden](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing) voor voor behoud van asymmetrische route ring voordat u micro soft-peering configureert.
+Raadpleeg [asymmetrische route ring met meerdere netwerk paden](./expressroute-asymmetric-routing.md) voor voor behoud van asymmetrische route ring voordat u micro soft-peering configureert.
 
 * Als u gebruikmaakt van open bare peering en momenteel IP-netwerk regels voor open bare IP-adressen gebruikt voor toegang tot [Azure Storage](../storage/common/storage-network-security.md) of [Azure SQL database](../azure-sql/database/vnet-service-endpoint-rule-overview.md), moet u ervoor zorgen dat de NAT IP-adres groep die is geconfigureerd met micro soft-peering, is opgenomen in de lijst met open bare IP-adressen voor het Azure-opslag account of het Azure SQL-account.<br>
 * Als u wilt overschakelen naar micro soft-peering zonder downtime, volgt u de stappen in dit artikel in de volg orde waarin ze worden weer gegeven.
@@ -46,7 +46,7 @@ Als de laag 3 door u wordt beheerd, is de volgende informatie vereist voordat u 
 * Een /30-subnet voor de secundaire koppeling. Dit moet een geldig openbaar IPv4-voorvoegsel zijn waarvan u eigenaar bent en dat is geregistreerd in een RIR/IRR. Vanuit dit subnet wijst u het eerste bebruikbaar bare IP-adres toe aan uw router, aangezien micro soft gebruikmaakt van het tweede bebruikbaarde IP voor de router.<br>
 * Een geldige VLAN-id waarop u deze peering wilt instellen. Controleer of er geen andere peering in het circuit is die dezelfde VLAN-id gebruikt. Voor zowel primaire als secundaire koppelingen moet u dezelfde VLAN-ID gebruiken.<br>
 * AS-nummer voor peering. U kunt 2-bytes en 4-bytes AS-nummers gebruiken.<br>
-* Geadverteerde voorvoegsels: u moet een lijst verstrekken van alle voorvoegsels die u via de BGP-sessie wilt adverteren. Alleen openbare IP-adresvoorvoegsels worden geaccepteerd. Als u van plan bent een aantal voor voegsels te verzenden, kunt u een door komma's gescheiden lijst verzenden. Deze voorvoegsels moeten voor u zijn geregistreerd in een RIR/IRR.<br>
+* Geadverteerde voorvoegsels: u moet een lijst verstrekken van alle voorvoegsels die u via de BGP-sessie wilt adverteren. Alleen openbare IP-adresvoorvoegsels worden geaccepteerd. U kunt een met komma's gescheiden lijst verzenden als u een set voorvoegsels wilt verzenden. Deze voorvoegsels moeten voor u zijn geregistreerd in een RIR/IRR.<br>
 * Naam van routeringsregister: u kunt het RIR/IRR opgeven waarbij het AS-nummer en de voorvoegsels zijn geregistreerd.
 
 * **Optioneel** : klant-ASN: als u voor voegsels adverteert die niet zijn geregistreerd voor het peering als-nummer, kunt u het as-nummer opgeven waarop ze zijn geregistreerd.<br>

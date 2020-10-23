@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: kgremban
-ms.openlocfilehash: 3a02459f5b92aa7d708c29c737ed9428ed14215a
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 7ab62b04f8bea76c7efb587665f87ccaf123da24
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045683"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108997"
 ---
 # <a name="install-or-uninstall-the-azure-iot-edge-runtime"></a>De runtime van Azure IoT Edge installeren of verwijderen
 
@@ -83,6 +83,12 @@ IoT Edge met Linux-containers kan worden uitgevoerd op elke versie van Windows d
 Azure IoT Edge is afhankelijk van een met [OCI compatibele](https://www.opencontainers.org/) container engine. Zorg ervoor dat uw apparaat ondersteuning biedt voor containers.
 
 Als u IoT Edge installeert op een virtuele machine, schakelt u geneste virtualisatie in en wijst u ten minste 2 GB geheugen toe. Voor virtuele machines van de 2e generatie is geneste virtualisatie standaard ingeschakeld. Voor VMware is er een wissel knop om de functie op uw virtuele machine in te scha kelen.
+
+Als u IoT Edge installeert op een IoT core-apparaat, gebruikt u de volgende opdracht in een [externe Power shell-sessie](/windows/iot-core/connect-your-device/powershell) om te controleren of Windows-containers op uw apparaat worden ondersteund:
+
+```powershell
+Get-Service vmcompute
+```
 
 ---
 
@@ -160,6 +166,9 @@ Als de versie die u wilt installeren niet wordt weer gegeven, volgt u de install
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
+>[!TIP]
+>Voor IoT core-apparaten raden we u aan om de installatie opdrachten uit te voeren met een externe Power shell-sessie. Zie [using Power shell for Windows IOT](/windows/iot-core/connect-your-device/powershell)(Engelstalig) voor meer informatie.
+
 1. Voer PowerShell uit als beheerder.
 
    Gebruik een AMD64-sessie van Power shell, niet Power shell (x86). Als u niet zeker weet welk sessie type u gebruikt, voert u de volgende opdracht uit:
@@ -186,7 +195,7 @@ Als de versie die u wilt installeren niet wordt weer gegeven, volgt u de install
    Deploy-IoTEdge -ContainerOs Linux
    ```
 
-3. Op dit punt wordt u mogelijk gevraagd om opnieuw op te starten. Als dit het geval is, start u het apparaat nu opnieuw op.
+3. Op dit moment kunnen IoT-kern apparaten automatisch opnieuw worden opgestart. Windows 10-of Windows Server-apparaten vragen u mogelijk om opnieuw op te starten. Als dit het geval is, start u het apparaat nu opnieuw op.
 
 Wanneer u IoT Edge op een apparaat installeert, kunt u extra para meters gebruiken om het proces te wijzigen, met inbegrip van:
 
@@ -321,6 +330,8 @@ Als u de IoT Edge-installatie wilt verwijderen van uw Windows-apparaat, gebruikt
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
 Uninstall-IoTEdge
 ```
+
+De `Uninstall-IoTEdge` opdracht werkt niet in Windows IOT core. Als u IoT Edge wilt verwijderen, moet u uw Windows IoT Core-installatie kopie opnieuw implementeren.
 
 Voor meer informatie over verwijderings opties gebruikt u de opdracht `Get-Help Uninstall-IoTEdge -full` .
 

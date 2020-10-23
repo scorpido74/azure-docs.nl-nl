@@ -13,19 +13,21 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6c591bfa911663503b3e8a9101910034c91a8251
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78414e26836d1547fe195a0a7844b6a98bb0dfc8
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91298776"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168253"
 ---
-# <a name="configure-an-availability-group-for-sql-server-on-azure-vm-powershell--az-cli"></a>Een beschikbaarheids groep configureren voor SQL Server op Azure VM (Power shell & AZ CLI)
+# <a name="use-powershell-or-az-cli-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Power shell of AZ CLI gebruiken voor het configureren van een beschikbaarheids groep voor SQL Server op Azure VM 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-In dit artikel wordt beschreven hoe u [Power shell](/powershell/scripting/install/installing-powershell) of de [Azure cli](/cli/azure/sql/vm?view=azure-cli-latest/) gebruikt om een Windows-failovercluster te implementeren, SQL Server vm's toe te voegen aan het cluster en de interne Load Balancer en listener te maken voor een always on-beschikbaarheids groep. 
+In dit artikel wordt beschreven hoe u [Power shell](/powershell/scripting/install/installing-powershell) of de [Azure cli](/cli/azure/sql/vm) gebruikt om een Windows-failovercluster te implementeren, SQL Server vm's toe te voegen aan het cluster en de interne Load Balancer en listener te maken voor een always on-beschikbaarheids groep. 
 
 De implementatie van de beschikbaarheids groep wordt nog steeds hand matig uitgevoerd via SQL Server Management Studio (SSMS) of Transact-SQL (T-SQL). 
+
+Hoewel in dit artikel Power shell en de AZ CLI worden gebruikt voor het configureren van de omgeving voor de beschikbaarheids groep, is het ook mogelijk om dit te doen vanuit de [Azure Portal](availability-group-azure-portal-configure.md), met behulp van [Azure Quick](availability-group-quickstart-template-configure.md)start-sjablonen of ook [hand matig](availability-group-manually-configure-tutorial.md) . 
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -62,7 +64,7 @@ az storage account create -n <name> -g <resource group name> -l <region> `
 ```
 
 >[!TIP]
-> Mogelijk wordt de fout weer geven `az sql: 'vm' is not in the 'az sql' command group` Als u een verouderde versie van de Azure cli gebruikt. Down load de [nieuwste versie van Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) om deze fout te verhelpen.
+> Mogelijk wordt de fout weer geven `az sql: 'vm' is not in the 'az sql' command group` Als u een verouderde versie van de Azure cli gebruikt. Down load de [nieuwste versie van Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli-windows) om deze fout te verhelpen.
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -82,7 +84,7 @@ New-AzStorageAccount -ResourceGroupName <resource group name> -Name <name> `
 
 ## <a name="define-cluster-metadata"></a>Meta gegevens van het cluster definiëren
 
-De opdracht groep Azure CLI [AZ SQL VM Group](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest) beheert de meta gegevens van de WSFC-service (Windows Server failover cluster) die als host fungeert voor de beschikbaarheids groep. De meta gegevens van het cluster omvatten de Active Directory domein, cluster accounts, opslag accounts die moeten worden gebruikt als de cloudwitness en SQL Server versie. Gebruik [AZ SQL VM Group Create](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest#az-sql-vm-group-create) om de meta gegevens voor WSFC te definiëren, zodat wanneer de eerste SQL Server virtuele machine wordt toegevoegd, het cluster wordt gemaakt zoals gedefinieerd. 
+De opdracht groep Azure CLI [AZ SQL VM Group](https://docs.microsoft.com/cli/azure/sql/vm/group) beheert de meta gegevens van de WSFC-service (Windows Server failover cluster) die als host fungeert voor de beschikbaarheids groep. De meta gegevens van het cluster omvatten de Active Directory domein, cluster accounts, opslag accounts die moeten worden gebruikt als de cloudwitness en SQL Server versie. Gebruik [AZ SQL VM Group Create](https://docs.microsoft.com/cli/azure/sql/vm/group#az-sql-vm-group-create) om de meta gegevens voor WSFC te definiëren, zodat wanneer de eerste SQL Server virtuele machine wordt toegevoegd, het cluster wordt gemaakt zoals gedefinieerd. 
 
 Het volgende code fragment definieert de meta gegevens voor het cluster:
 
@@ -127,7 +129,7 @@ $group = New-AzSqlVMGroup -Name <name> -Location <regio>
 
 ## <a name="add-vms-to-the-cluster"></a>Vm's toevoegen aan het cluster
 
-Als u de eerste SQL Server VM toevoegt aan het cluster, wordt het cluster gemaakt. Met de opdracht [AZ SQL VM add-to-Group](https://docs.microsoft.com/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-add-to-group) maakt u het cluster met de naam die u eerder hebt opgegeven, installeert u de cluster functie op de SQL Server-vm's en voegt u deze toe aan het cluster. Met het volgende gebruik van de `az sql vm add-to-group` opdracht voegt u meer SQL Server vm's toe aan het zojuist gemaakte cluster. 
+Als u de eerste SQL Server VM toevoegt aan het cluster, wordt het cluster gemaakt. Met de opdracht [AZ SQL VM add-to-Group](https://docs.microsoft.com/cli/azure/sql/vm#az-sql-vm-add-to-group) maakt u het cluster met de naam die u eerder hebt opgegeven, installeert u de cluster functie op de SQL Server-vm's en voegt u deze toe aan het cluster. Met het volgende gebruik van de `az sql vm add-to-group` opdracht voegt u meer SQL Server vm's toe aan het zojuist gemaakte cluster. 
 
 Met het volgende code fragment wordt het cluster gemaakt en wordt de eerste SQL Server VM hieraan toegevoegd: 
 
@@ -204,6 +206,8 @@ Maak de beschikbaarheids groep hand matig zoals u dat gewoonlijk zou doen met be
 
 ## <a name="create-internal-load-balancer"></a>Interne load balancer maken
 
+[!INCLUDE [sql-ag-use-dnn-listener](../../includes/sql-ag-use-dnn-listener.md)]
+
 Voor de always on-beschikbaarheids groep-listener is een intern exemplaar van Azure Load Balancer vereist. De interne load balancer biedt een ' zwevend ' IP-adres voor de beschikbaarheids groep-listener die snellere failover en opnieuw verbinden mogelijk maakt. Als de SQL Server Vm's in een beschikbaarheids groep deel uitmaken van dezelfde beschikbaarheidsset, kunt u een basis load balancer gebruiken. Anders moet u een standaard load balancer gebruiken.  
 
 > [!NOTE]
@@ -240,7 +244,7 @@ New-AzLoadBalancer -name sqlILB -ResourceGroupName <resource group name> `
 
 ## <a name="create-listener"></a>Listener maken
 
-Nadat u de beschikbaarheids groep hand matig hebt gemaakt, kunt u de listener maken met behulp van [AZ SQL VM AG-listener](/cli/azure/sql/vm/group/ag-listener?view=azure-cli-latest#az-sql-vm-group-ag-listener-create). 
+Nadat u de beschikbaarheids groep hand matig hebt gemaakt, kunt u de listener maken met behulp van [AZ SQL VM AG-listener](/cli/azure/sql/vm/group/ag-listener#az-sql-vm-group-ag-listener-create). 
 
 De *resource-id* van het subnet is de waarde van `/subnets/<subnetname>` toegevoegd aan de resource-id van de virtuele netwerk resource. De resource-ID van het subnet identificeren:
    1. Ga naar de resource groep in de [Azure Portal](https://portal.azure.com). 
@@ -294,7 +298,7 @@ New-AzAvailabilityGroupListener -Name <listener name> -ResourceGroupName <resour
 ---
 
 ## <a name="modify-number-of-replicas"></a>Aantal replica's wijzigen 
-Er is een toegevoegde laag complexiteit wanneer u een beschikbaarheids groep implementeert voor SQL Server Vm's die worden gehost in Azure. De resource provider en de virtuele-machine groep beheren nu de resources. Als u replica's toevoegt aan of verwijdert uit de beschikbaarheids groep, is er een extra stap voor het bijwerken van de meta gegevens van de listener met informatie over de SQL Server Vm's. Wanneer u het aantal replica's in de beschikbaarheids groep wijzigt, moet u ook de opdracht [AZ SQL VM Group AG-listener update](/cli/azure/sql/vm/group/ag-listener?view=azure-cli-2018-03-01-hybrid#az-sql-vm-group-ag-listener-update) gebruiken om de listener bij te werken met de meta gegevens van de SQL Server vm's. 
+Er is een toegevoegde laag complexiteit wanneer u een beschikbaarheids groep implementeert voor SQL Server Vm's die worden gehost in Azure. De resource provider en de virtuele-machine groep beheren nu de resources. Als u replica's toevoegt aan of verwijdert uit de beschikbaarheids groep, is er een extra stap voor het bijwerken van de meta gegevens van de listener met informatie over de SQL Server Vm's. Wanneer u het aantal replica's in de beschikbaarheids groep wijzigt, moet u ook de opdracht [AZ SQL VM Group AG-listener update](/cli/azure/sql/vm/group/ag-listener#az-sql-vm-group-ag-listener-update) gebruiken om de listener bij te werken met de meta gegevens van de SQL Server vm's. 
 
 
 ### <a name="add-a-replica"></a>Een replica toevoegen

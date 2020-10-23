@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 371afbd9380ed1ecf28d0b26e2b4c5cd16ae6317
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 66a17b61fef652160dc6d4a02bf330adbf0c7362
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044068"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425693"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Opzoek activiteit in Azure Data Factory
 
@@ -60,7 +60,7 @@ Naam | Beschrijving | Type | Vereist?
 ---- | ----------- | ---- | --------
 sets | Bevat de referentie voor de gegevensset voor de zoek actie. Details ophalen uit de sectie **Eigenschappen van gegevensset** in elk bijbehorend connector artikel. | Sleutel/waarde-paar | Ja
 source | Bevat eigenschappen van een gegevensset, hetzelfde als de bron van de Kopieer activiteit. Details ophalen uit de sectie **Eigenschappen van Kopieer activiteit** in elk bijbehorende connector-artikel. | Sleutel/waarde-paar | Ja
-firstRowOnly | Geeft aan of alleen de eerste rij of alle rijen worden geretourneerd. | Boolean | Nee. De standaardwaarde is `true`.
+firstRowOnly | Geeft aan of alleen de eerste rij of alle rijen worden geretourneerd. | Booleaans | Nee. De standaardwaarde is `true`.
 
 > [!NOTE]
 > 
@@ -72,7 +72,7 @@ firstRowOnly | Geeft aan of alleen de eerste rij of alle rijen worden geretourne
 
 Het Zoek resultaat wordt geretourneerd in de `output` sectie van het resultaat van de uitvoering van de activiteit.
 
-* **Wanneer `firstRowOnly` is ingesteld op `true` (standaard)**, is de uitvoer indeling zoals wordt weer gegeven in de volgende code. Het Zoek resultaat bevindt zich onder een vaste `firstRow` sleutel. Gebruik het patroon van om het resultaat in de volgende activiteit te gebruiken  `@{activity('LookupActivity').output.firstRow.table` .
+* **Wanneer `firstRowOnly` is ingesteld op `true` (standaard)**, is de uitvoer indeling zoals wordt weer gegeven in de volgende code. Het Zoek resultaat bevindt zich onder een vaste `firstRow` sleutel. Gebruik het patroon van om het resultaat in de volgende activiteit te gebruiken  `@{activity('LookupActivity').output.firstRow.table}` .
 
     ```json
     {

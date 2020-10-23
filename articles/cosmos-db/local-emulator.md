@@ -7,12 +7,12 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/22/2020
 ms.custom: devx-track-csharp, contperfq1
-ms.openlocfilehash: 64da8084ec8d40e17a0005f2e70486c7d51bf640
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e846f00388ce21690729f62592c86b73cc42c3f3
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627586"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173787"
 ---
 # <a name="install-and-use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>De Azure Cosmos-emulator installeren en gebruiken voor lokale ontwikkeling en tests
 
@@ -243,7 +243,7 @@ Gebruik de volgende stappen om de emulator te gebruiken in Linux-of macOS-omgevi
 1. Start vanaf de Windows-VM de Azure Cosmos-emulator vanaf de opdracht regel met behulp van de volgende opties. Voor meer informatie over de para meters die worden ondersteund door de opdracht regel, raadpleegt u de [emulator opdracht regel hulpprogramma Naslag informatie](emulator-command-line-parameters.md):
 
    ```bash
-   Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM +4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
+   Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
    ```
 
 1. Ten slotte moet u het certificaat vertrouwens proces oplossen tussen de toepassing die wordt uitgevoerd op de Linux-of Mac-omgeving en de emulator. U kunt een van de volgende twee opties gebruiken om het certificaat op te lossen:

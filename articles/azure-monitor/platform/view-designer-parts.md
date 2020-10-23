@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2018
-ms.openlocfilehash: 1e674bf157d55c9b5f7cf49e8df5e17acb99ee3a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b670cafa4d643e37fae068a4c0033fc97a96ccd
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86539394"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92166587"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Naslag Gids voor het weer geven van visualisatie onderdelen van designer in Azure Monitor
 Met behulp van View designer in Azure Monitor kunt u verschillende aangepaste weer gaven maken in de Azure Portal die u kan helpen bij het visualiseren van gegevens in uw Log Analytics-werk ruimte. Dit artikel bevat een Naslag Gids voor de instellingen voor de visualisatie onderdelen die beschikbaar zijn in uw aangepaste weer gaven.
@@ -44,7 +44,7 @@ In de volgende secties worden de tegel typen en de bijbehorende eigenschappen ui
 ## <a name="list-of-queries-part"></a>Lijst met query onderdelen
 In de lijst met onderdeel query's wordt een lijst met logboek query's weer gegeven. U kunt elke query selecteren om de resultaten weer te geven. De weer gave bevat standaard één query en u kunt **+ query** selecteren om extra query's toe te voegen.
 
-![Lijst met query weergave](media/view-designer-parts/view-list-queries.png)
+![Scherm afbeelding van het visualisatie deel van de lijst met query's in de ontwerp functie voor weer gaven van Azure Monitor.](media/view-designer-parts/view-list-queries.png)
 
 | Instelling | Beschrijving |
 |:--- |:--- |
@@ -60,7 +60,7 @@ In de lijst met onderdeel query's wordt een lijst met logboek query's weer gegev
 ## <a name="number-and-list-part"></a>Nummer en lijst onderdeel
 In de koptekst wordt één getal weer gegeven dat een aantal records uit een logboek query weergeeft. In de lijst worden de tien belangrijkste resultaten van een query weer gegeven, met een grafiek die de relatieve waarde van een numerieke kolom aangeeft of de wijziging in de loop van de tijd.
 
-![Lijst met query weergave](media/view-designer-parts/view-number-list.png)
+![Scherm opname van het aantal en de weer gave van visualisatie onderdelen in de ontwerp functie voor de Azure Monitor weergave.](media/view-designer-parts/view-number-list.png)
 
 | Instelling | Beschrijving |
 |:--- |:--- |
@@ -81,7 +81,7 @@ In de koptekst wordt één getal weer gegeven dat een aantal records uit een log
 | Naam en waarde scheidings teken |Het scheidings teken voor één teken dat moet worden gebruikt voor het parseren van de eigenschap text in meerdere waarden. Zie [common Settings](#sparklines)(Engelstalig) voor meer informatie. |
 | Navigatie door klikken | Actie die wordt uitgevoerd wanneer u op een item in de lijst klikt.  Zie [common Settings](#click-through-navigation)(Engelstalig) voor meer informatie. |
 | **List** |**> kolom titels** |
-| Name |De tekst die boven aan de eerste kolom wordt weer gegeven. |
+| Naam |De tekst die boven aan de eerste kolom wordt weer gegeven. |
 | Waarde |De tekst die boven aan de tweede kolom wordt weer gegeven. |
 | **List** |**> drempel waarden** |
 | Drempel waarden inschakelen |Selecteer deze koppeling om drempels in te scha kelen. Zie [common Settings](#thresholds)(Engelstalig) voor meer informatie. |
@@ -112,7 +112,7 @@ De header heeft twee getallen die een telling van records uit afzonderlijke logb
 | Naam en waarde scheidings teken |Het scheidings teken voor één teken dat moet worden gebruikt voor het parseren van de eigenschap text in meerdere waarden. Zie [common Settings](#sparklines)(Engelstalig) voor meer informatie. |
 | Navigatie door klikken | Actie die wordt uitgevoerd wanneer u op een item in de lijst klikt.  Zie [common Settings](#click-through-navigation)(Engelstalig) voor meer informatie. |
 | **List** |**> kolom titels** |
-| Name |De tekst die boven aan de eerste kolom wordt weer gegeven. |
+| Naam |De tekst die boven aan de eerste kolom wordt weer gegeven. |
 | Waarde |De tekst die boven aan de tweede kolom wordt weer gegeven. |
 | **List** |**> drempel waarden** |
 | Drempel waarden inschakelen |Selecteer deze koppeling om drempels in te scha kelen. Zie [common Settings](#thresholds)(Engelstalig) voor meer informatie. |
@@ -153,7 +153,7 @@ In de koptekst wordt één getal weer gegeven dat een kolom waarde in een logboe
 | Naam en waarde scheidings teken |Het scheidings teken voor één teken dat moet worden gebruikt voor het parseren van de eigenschap text in meerdere waarden. Zie [common Settings](#sparklines)(Engelstalig) voor meer informatie. |
 | Navigatie door klikken | Actie die wordt uitgevoerd wanneer u op een item in de lijst klikt.  Zie [common Settings](#click-through-navigation)(Engelstalig) voor meer informatie. |
 | **List** |**> kolom titels** |
-| Name |De tekst die boven aan de eerste kolom wordt weer gegeven. |
+| Naam |De tekst die boven aan de eerste kolom wordt weer gegeven. |
 | Waarde |De tekst die boven aan de tweede kolom wordt weer gegeven. |
 | **List** |**> drempel waarden** |
 | Drempel waarden inschakelen |Selecteer deze koppeling om drempels in te scha kelen. Zie [common Settings](#thresholds)(Engelstalig) voor meer informatie. |
@@ -185,7 +185,7 @@ In de koptekst worden de resultaten van twee logboek query's gedurende een bepaa
 | Bewerking |De bewerking die moet worden uitgevoerd voor de sparkline. Zie [common Settings](#sparklines)(Engelstalig) voor meer informatie. |
 | Navigatie door klikken | Actie die wordt uitgevoerd wanneer u op een item in de lijst klikt.  Zie [common Settings](#click-through-navigation)(Engelstalig) voor meer informatie. |
 | **List** |**> kolom titels** |
-| Name |De tekst die boven aan de eerste kolom wordt weer gegeven. |
+| Naam |De tekst die boven aan de eerste kolom wordt weer gegeven. |
 | Waarde |De tekst die boven aan de tweede kolom wordt weer gegeven. |
 | **List** |**> drempel waarden** |
 | Drempel waarden inschakelen |Selecteer deze koppeling om drempels in te scha kelen. Zie [common Settings](#thresholds)(Engelstalig) voor meer informatie. |
@@ -246,7 +246,7 @@ In de koptekst wordt een lijn diagram met meerdere reeksen uit een logboek query
 | Naam en waarde scheidings teken |Het scheidings teken voor één teken dat moet worden gebruikt voor het parseren van de eigenschap text in meerdere waarden. Zie [common Settings](#sparklines)(Engelstalig) voor meer informatie. |
 | Navigatie door klikken | Actie die wordt uitgevoerd wanneer u op een item in de lijst klikt.  Zie [common Settings](#click-through-navigation)(Engelstalig) voor meer informatie. |
 | **List** |**> kolom titels** |
-| Name |De tekst die boven aan de eerste kolom wordt weer gegeven. |
+| Naam |De tekst die boven aan de eerste kolom wordt weer gegeven. |
 | Waarde |De tekst die boven aan de tweede kolom wordt weer gegeven. |
 | **List** |**> drempel waarden** |
 | Drempel waarden inschakelen |Selecteer deze koppeling om drempels in te scha kelen. Zie [common Settings](#thresholds)(Engelstalig) voor meer informatie. |
@@ -282,7 +282,7 @@ In de koptekst wordt een lijn diagram met meerdere reeksen uit een logboek query
 | Naam en waarde scheidings teken |Het scheidings teken voor één teken dat moet worden gebruikt voor het parseren van de eigenschap text in meerdere waarden. Zie [common Settings](#sparklines)(Engelstalig) voor meer informatie. |
 | Navigatie door klikken | Actie die wordt uitgevoerd wanneer u op een item in de lijst klikt.  Zie [common Settings](#click-through-navigation)(Engelstalig) voor meer informatie. |
 | **List** |**> kolom titels** |
-| Name |De tekst die boven aan de eerste kolom wordt weer gegeven. |
+| Naam |De tekst die boven aan de eerste kolom wordt weer gegeven. |
 | Waarde |De tekst die boven aan de tweede kolom wordt weer gegeven. |
 | **List** |**> drempel waarden** |
 | Drempel waarden inschakelen |Selecteer deze koppeling om drempels in te scha kelen. Zie [common Settings](#thresholds)(Engelstalig) voor meer informatie. |
@@ -352,7 +352,7 @@ De volgende tabel beschrijft de instellingen voor drempel waarden:
 | Instelling | Beschrijving |
 |:--- |:--- |
 | Drempel waarden inschakelen |Selecteer deze koppeling om een kleur pictogram aan de linkerkant van elke waarde weer te geven. Het pictogram geeft de status van de waarde aan ten opzichte van de opgegeven drempel waarden. |
-| Name |De naam van de drempel waarde. |
+| Naam |De naam van de drempel waarde. |
 | Drempelwaarde |De waarde voor de drempelwaarde. De status van elk lijst item wordt ingesteld op de kleur van de hoogste drempel waarde die wordt overschreden door de waarde van het item. Als er geen drempel waarden worden overschreden, wordt een standaard kleur gebruikt. |
 | Kleur |De kleur die de drempel waarde aangeeft. |
 

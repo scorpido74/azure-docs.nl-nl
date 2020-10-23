@@ -1,19 +1,19 @@
 ---
 title: Een persoonlijk eind punt maken voor een beveiligde verbinding
 titleSuffix: Azure Cognitive Search
-description: Een persoonlijk eind punt in een virtueel netwerk instellen voor een beveiligde verbinding met een Azure Cognitive Search-service
+description: Stel een persoonlijk eind punt in een virtueel netwerk in voor een beveiligde verbinding met een Azure Cognitive Search-service.
 manager: nitinme
 author: mrcarter8
 ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.openlocfilehash: 0cfa7b63d1ce9dd4d9b40cd0eedac247f9c56437
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/19/2020
+ms.openlocfilehash: bbbc79a129ec3140ea6d286cbdce0165e2f6ae7b
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935752"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280400"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Een persoonlijk eind punt maken voor een beveiligde verbinding met Azure Cognitive Search
 
@@ -152,10 +152,16 @@ In deze sectie maakt u een nieuwe Azure Cognitive Search-service met een persoon
     | Binnenkomende poorten selecteren | Selecteer **HTTP** en **RDP**.|
     ||
 
+   > [!NOTE]
+   > IPv4-adressen kunnen worden uitgedrukt in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) -indeling. Vermijd het IP-bereik dat is gereserveerd voor particuliere netwerken, zoals beschreven in [RFC 1918](https://tools.ietf.org/html/rfc1918):
+   >
+   > - `10.0.0.0 - 10.255.255.255  (10/8 prefix)`
+   > - `172.16.0.0 - 172.31.255.255  (172.16/12 prefix)`
+   > - `192.168.0.0 - 192.168.255.255 (192.168/16 prefix)`
+
 1. Selecteer **Controleren + maken**. De pagina **Beoordelen en maken** wordt weergegeven, waar uw configuratie wordt gevalideerd in Azure.
 
 1. Als u het bericht **Validatie geslaagd** ziet, selecteert u **Maken**. 
-
 
 ## <a name="connect-to-the-vm"></a>Verbinding maken met de virtuele machine
 
@@ -181,7 +187,6 @@ Down load en maak vervolgens als volgt verbinding met de VM- *myVm* :
 1. Er wordt mogelijk een certificaatwaarschuwing weergegeven tijdens het aanmelden. Als er een certificaatwaarschuwing wordt weergegeven, selecteert u **Ja** of **Doorgaan**.
 
 1. Wanneer het VM-bureaublad wordt weergegeven, minimaliseert u het om terug te gaan naar het lokale bureaublad.  
-
 
 ## <a name="test-connections"></a>Verbindingen testen
 

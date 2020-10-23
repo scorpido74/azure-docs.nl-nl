@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d8a1b2192784c26ed17b31be262b22efbf935d84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36d3fdbe05a4fac63415e34aea879a9ef576b725
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89225601"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127094"
 ---
 # <a name="azure-security-baseline-for-azure-data-box"></a>Azure-beveiligings basislijn voor Azure Data Box
 
 De Azure-beveiligings basislijn voor Azure Data Box bevat aanbevelingen waarmee u de beveiligings postuur van uw implementatie kunt verbeteren.
 
-De basis lijn voor deze service wordt opgehaald uit de [Azure Security Bench Mark-versie 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview), die aanbevelingen biedt over hoe u uw cloud oplossingen kunt beveiligen in azure met onze richt lijnen voor best practices.
+De basis lijn voor deze service wordt opgehaald uit de [Azure Security Bench Mark-versie 1,0](../security/benchmarks/overview.md), die aanbevelingen biedt over hoe u uw cloud oplossingen kunt beveiligen in azure met onze richt lijnen voor best practices.
 
-Zie het [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)voor meer informatie.
+Zie het [overzicht van Azure Security-basis lijnen](../security/benchmarks/security-baselines-overview.md)voor meer informatie.
 
 ## <a name="network-security"></a>Netwerkbeveiliging
 
-*Zie [beveiligings beheer: netwerk beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)voor meer informatie.*
+*Zie [beveiligings beheer: netwerk beveiliging](../security/benchmarks/security-control-network-security.md)voor meer informatie.*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Azure-resources in virtuele netwerken beveiligen
 
@@ -70,9 +70,9 @@ Zie het [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/a
 
 **Richt lijnen**: richt lijnen: de eind punten die worden gebruikt door Azure data box worden allemaal beheerd door micro soft. U bent verantwoordelijk voor alle extra besturings elementen die u wilt implementeren op uw on-premises systemen.
 
-* [Inzicht in Azure Data Box beveiliging](https://docs.microsoft.com/azure/databox/data-box-security)
+* [Inzicht in Azure Data Box beveiliging](./data-box-security.md)
 
-* [Poort gegevens voor Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-system-requirements#port-requirements)
+* [Poort gegevens voor Azure Data Box](./data-box-system-requirements.md#port-requirements)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -120,7 +120,7 @@ Zie het [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/a
 
 ## <a name="logging-and-monitoring"></a>Logboekregistratie en bewaking
 
-*Zie voor meer informatie [beveiligings beheer: logboek registratie en controle](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*Zie voor meer informatie [beveiligings beheer: logboek registratie en controle](../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: goedgekeurde tijd synchronisatie bronnen gebruiken
 
@@ -134,7 +134,7 @@ Zie het [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/a
 
 **Richt lijnen**: voor elke stap in uw data Box order, kunt u meerdere acties ondernemen om de toegang tot de order te beheren, de gebeurtenissen te controleren, de volg orde bij te houden en de verschillende logboeken te interpreteren die worden gegenereerd.
 
-* [Informatie over bijhouden en vastleggen van gebeurtenissen voor uw Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-logs)
+* [Informatie over bijhouden en vastleggen van gebeurtenissen voor uw Azure Data Box](./data-box-logs.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -144,7 +144,7 @@ Zie het [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/a
 
 **Richt lijnen**: voor elke stap in uw data Box order, kunt u meerdere acties ondernemen om de toegang tot de order te beheren, de gebeurtenissen te controleren, de volg orde bij te houden en de verschillende logboeken te interpreteren die worden gegenereerd.
 
-* [Informatie over bijhouden en vastleggen van gebeurtenissen voor uw Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-logs)
+* [Informatie over bijhouden en vastleggen van gebeurtenissen voor uw Azure Data Box](./data-box-logs.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -170,7 +170,7 @@ Zie het [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/a
 
 **Richt lijnen**: voor elke stap in uw data Box order, kunt u meerdere acties ondernemen om de toegang tot de order te beheren, de gebeurtenissen te controleren, de volg orde bij te houden en de verschillende logboeken te interpreteren die worden gegenereerd.
 
-* [Informatie over bijhouden en vastleggen van gebeurtenissen voor uw Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-logs)
+* [Informatie over bijhouden en vastleggen van gebeurtenissen voor uw Azure Data Box](./data-box-logs.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -180,7 +180,7 @@ Zie het [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/a
 
 **Richt lijnen**: voor elke stap in uw data Box order, kunt u meerdere acties ondernemen om de toegang tot de order te beheren, de gebeurtenissen te controleren, de volg orde bij te houden en de verschillende logboeken te interpreteren die worden gegenereerd.
 
-* [Informatie over bijhouden en vastleggen van gebeurtenissen voor uw Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-logs)
+* [Informatie over bijhouden en vastleggen van gebeurtenissen voor uw Azure Data Box](./data-box-logs.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -212,17 +212,17 @@ Zie het [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/a
 
 ## <a name="identity-and-access-control"></a>Identiteits- en toegangsbeheer
 
-*Zie [beveiligings beheer: identiteits-en toegangs beheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)voor meer informatie.*
+*Zie [beveiligings beheer: identiteits-en toegangs beheer](../security/benchmarks/security-control-identity-access-control.md)voor meer informatie.*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: een inventaris van beheerders accounts onderhouden
 
 **Richt lijnen**: Houd een inventarisatie bij van de gebruikers accounts met beheerders toegang tot uw Azure data box. U kunt het deel venster identiteits-en toegangs beheer (IAM) in de Azure Portal voor uw abonnement gebruiken om toegangs beheer op basis van rollen (Azure RBAC) te configureren. De rollen worden toegepast op gebruikers, groepen, service-principals en beheerde identiteiten in Active Directory. u kunt bepalen wie toegang heeft tot uw bestelling wanneer de order voor het eerst wordt gemaakt. Stel Azure-rollen in verschillende bereiken in om de toegang tot de Data Box order te beheren. Een Azure-rol bepaalt het type toegang – lezen/schrijven, alleen-lezen, lezen-schrijven naar een subset van bewerkingen.
 
-* [Informatie over aangepaste rollen](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
+* [Informatie over aangepaste rollen](../role-based-access-control/custom-roles.md)
 
-* [Azure RBAC voor werkmappen configureren](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)
+* [Azure RBAC voor werkmappen configureren](../sentinel/quickstart-get-visibility.md)
 
-* [Meer informatie over het instellen van toegangs beheer voor de order](https://docs.microsoft.com/azure/databox/data-box-logs#set-up-access-control-on-the-order)
+* [Meer informatie over het instellen van toegangs beheer voor de order](./data-box-logs.md#set-up-access-control-on-the-order)
 
 **Azure Security Center bewaking**: Nee
 
@@ -245,9 +245,9 @@ Daarnaast kunt u aanbevelingen van Azure Security Center of ingebouwde Azure-bel
 - Afgeschafte accounts met eigenaarsmachtigingen moeten worden verwijderd uit uw abonnement
 - Externe accounts met eigenaarsmachtigingen moeten worden verwijderd uit uw abonnement
 
-* [Azure Security Center gebruiken om identiteit en toegang te bewaken (preview)](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Azure Security Center gebruiken om identiteit en toegang te bewaken (preview)](../security-center/security-center-identity-access.md)
 
-* [Azure Policy gebruiken](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy gebruiken](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -273,9 +273,9 @@ Daarnaast kunt u aanbevelingen van Azure Security Center of ingebouwde Azure-bel
 
 **Hulp**: gebruik een privileged Access-werk station (Paw) met Azure multi-factor Authentication (MFA) ingeschakeld om u aan te melden en uw Azure data Box orders te configureren.
 
-* [Privileged Access Workstations](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Privileged Access Workstations](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-* [Planning van een cloudgebaseerde Azure Multi-Factor Authentication-implementatie](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Planning van een cloudgebaseerde Azure Multi-Factor Authentication-implementatie](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -287,9 +287,9 @@ Daarnaast kunt u aanbevelingen van Azure Security Center of ingebouwde Azure-bel
 
 Daarnaast kunt u met Azure AD-risico detectie waarschuwingen en rapporten bekijken over Risk ante gebruikers gedrag.
 
-* [Privileged Identity Management implementeren (PIM)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+* [Privileged Identity Management implementeren (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [Meer informatie over Azure AD-risico detectie](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+* [Meer informatie over Azure AD-risico detectie](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -299,7 +299,7 @@ Daarnaast kunt u met Azure AD-risico detectie waarschuwingen en rapporten bekijk
 
 **Hulp**: gebruik benoemde locaties voor voorwaardelijke toegang om alleen toegang toe te staan tot de Azure Portal vanuit specifieke logische groepen met IP-adresbereiken of landen/regio's.
 
-* [Benoemde locaties configureren in azure](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Benoemde locaties configureren in azure](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -309,7 +309,7 @@ Daarnaast kunt u met Azure AD-risico detectie waarschuwingen en rapporten bekijk
 
 **Hulp**: gebruik Azure Active Directory (AD) als centraal verificatie-en autorisatie systeem, indien van toepassing. Azure AD beveiligt gegevens door gebruik te maken van sterke versleuteling voor gegevens in rust en onderweg. Azure AD bevat ook zouten, hashes en veilige gebruikers referenties.
 
-* [Een Azure AD-exemplaar maken en configureren](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+* [Een Azure AD-exemplaar maken en configureren](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -321,9 +321,9 @@ Daarnaast kunt u met Azure AD-risico detectie waarschuwingen en rapporten bekijk
 
 Voor het Data Box apparaat wordt dit niet in realtime ondersteund. U kunt de logboeken aan het einde van de taak bekijken.
 
-* [Meer informatie over Azure AD-rapportage](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+* [Meer informatie over Azure AD-rapportage](../active-directory/reports-monitoring/index.yml)
 
-* [Beoordelingen over Azure Identity Access gebruiken](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [Beoordelingen over Azure Identity Access gebruiken](../active-directory/governance/access-reviews-overview.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -339,9 +339,9 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 Azure Data Box Service logboeken worden niet in Log Analytics werk ruimte geschreven.
 
-* [Azure-activiteiten logboeken integreren in Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [Azure-activiteiten logboeken integreren in Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [Azure-Sentinel aan de trein](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure-Sentinel aan de trein](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -351,11 +351,11 @@ Azure Data Box Service logboeken worden niet in Log Analytics werk ruimte geschr
 
 **Richt lijnen**: voor de afwijking van het aanmeldings gedrag van accounts op het besturings vlak (bijvoorbeeld Azure Portal), gebruikt u de functies Azure AD Identity Protection en risico detectie om automatische antwoorden te configureren op gedetecteerde verdachte acties die betrekking hebben op gebruikers identiteiten. U kunt ook gegevens opnemen in azure Sentinel voor verder onderzoek.
 
-* [Hoe kan ik een Risk ante aanmelding van Azure AD weer geven?](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [Hoe kan ik een Risk ante aanmelding van Azure AD weer geven?](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Risico beleid voor identiteits beveiliging configureren en inschakelen](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [Risico beleid voor identiteits beveiliging configureren en inschakelen](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [Azure-Sentinel onboarden](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure-Sentinel onboarden](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -365,7 +365,7 @@ Azure Data Box Service logboeken worden niet in Log Analytics werk ruimte geschr
 
 **Hulp**: klanten-lockbox wordt momenteel niet ondersteund voor Azure data box.
 
-* [Lijst met door Klanten-lockbox ondersteunde services](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+* [Lijst met door Klanten-lockbox ondersteunde services](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -373,7 +373,7 @@ Azure Data Box Service logboeken worden niet in Log Analytics werk ruimte geschr
 
 ## <a name="data-protection"></a>Gegevensbeveiliging
 
-*Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
+*Zie [beveiligings beheer: gegevens beveiliging](../security/benchmarks/security-control-data-protection.md)voor meer informatie.*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: een inventaris van gevoelige informatie onderhouden
 
@@ -389,7 +389,7 @@ Azure Data Box Service logboeken worden niet in Log Analytics werk ruimte geschr
 
 Tijdens het uploaden van gegevens naar Azure zijn het Data Box apparaat en de service die wordt gebruikt om de gegevens te uploaden, geïsoleerd.
 
-* [Aan de slag met Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal)
+* [Aan de slag met Azure Data Box](./data-box-quickstart-portal.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -399,7 +399,7 @@ Tijdens het uploaden van gegevens naar Azure zijn het Data Box apparaat en de se
 
 **Hulp**: micro soft beheert de onderliggende infra structuur voor Azure data box en heeft strikte controles geïmplementeerd om verlies of bloot stelling van klant gegevens te voor komen. Wanneer Data Box zich op de site van de klant bevindt, volgt u aanbevolen procedures om ervoor te zorgen dat de overdracht van gevoelige gegevens wordt beveiligd.
 
-* [Informatie over beveiliging van klanten in azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Informatie over beveiliging van klanten in azure](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -409,9 +409,9 @@ Tijdens het uploaden van gegevens naar Azure zijn het Data Box apparaat en de se
 
 **Hulp**: micro soft beheert de onderliggende infra structuur voor Azure data box en heeft strikte controles geïmplementeerd om verlies of bloot stelling van klant gegevens te voor komen. Wanneer Data Box zich op de site van de klant bevindt, volgt u aanbevolen procedures om ervoor te zorgen dat de overdracht van gevoelige gegevens wordt beveiligd.
 
-* [Gegevens migratie in Azure Data Box begrijpen](https://docs.microsoft.com/azure/databox/data-box-faq)
+* [Gegevens migratie in Azure Data Box begrijpen](./data-box-faq.md)
 
-* [Overzicht van Data Box beveiliging](https://docs.microsoft.com/azure/databox/data-box-security)
+* [Overzicht van Data Box beveiliging](./data-box-security.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -421,7 +421,7 @@ Tijdens het uploaden van gegevens naar Azure zijn het Data Box apparaat en de se
 
 **Hulp**: momenteel niet beschikbaar; de functies voor gegevens identificatie, classificatie en verlies preventie zijn nog niet beschikbaar voor Azure Data Box. micro soft beheert de onderliggende infra structuur voor Azure Data Box en heeft strikte controles geïmplementeerd om verlies of bloot stelling van klant gegevens te voor komen.
 
-* [Informatie over beveiliging van klanten in azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Informatie over beveiliging van klanten in azure](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -431,9 +431,9 @@ Tijdens het uploaden van gegevens naar Azure zijn het Data Box apparaat en de se
 
 **Hulp**: Zorg ervoor dat u eigenaar of Inzender toegang tot het abonnement hebt om een Data Box order te maken. U kunt ook Data Box lezer en Data Box Inzender rollen op het niveau van de resource definiëren.
 
-* [Meer informatie over het aan de slag gaan met Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal)
+* [Meer informatie over het aan de slag gaan met Azure Data Box](./data-box-quickstart-portal.md)
 
-* [Meer informatie over het instellen van toegangs beheer](https://docs.microsoft.com/azure/databox/data-box-logs#set-up-access-control-on-the-order)
+* [Meer informatie over het instellen van toegangs beheer](./data-box-logs.md#set-up-access-control-on-the-order)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -443,7 +443,7 @@ Tijdens het uploaden van gegevens naar Azure zijn het Data Box apparaat en de se
 
 **Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor reken resources. Micro soft beheert de onderliggende infra structuur voor Azure Data Box en heeft strikte controles geïmplementeerd om verlies of bloot stelling van klant gegevens te voor komen.
 
-* [Azure-klant gegevens beveiliging](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure-klant gegevens beveiliging](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -455,9 +455,9 @@ Tijdens het uploaden van gegevens naar Azure zijn het Data Box apparaat en de se
 
 Azure Data Box implementeert AES 256-bits versleuteling voor Data-at-rest. Daarnaast beveiligt Azure Data Box de ontgrendelings sleutel van het apparaat (ook wel apparaatwachtwoord genoemd) dat wordt gebruikt om het apparaat te vergren delen via een versleutelings sleutel. De ontgrendelings sleutel voor een apparaat voor een Data Box order wordt standaard versleuteld met een door micro soft beheerde sleutel. Voor extra controle over de ontgrendelings sleutel van het apparaat kunt u ook een door de klant beheerde sleutel opgeven. Door de klant beheerde sleutels moeten worden gemaakt en opgeslagen in een Azure Key Vault.
 
-* [Informatie over Data Box gegevens bescherming](https://docs.microsoft.com/azure/databox/data-box-security)
+* [Informatie over Data Box gegevens bescherming](./data-box-security.md)
 
-* [Door de klant beheerde sleutels gebruiken in Azure Key Vault voor Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-customer-managed-encryption-key-portal)
+* [Door de klant beheerde sleutels gebruiken in Azure Key Vault voor Azure Data Box](./data-box-customer-managed-encryption-key-portal.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -467,7 +467,7 @@ Azure Data Box implementeert AES 256-bits versleuteling voor Data-at-rest. Daarn
 
 **Hulp**: gebruik Azure monitor met het Azure-activiteiten logboek om waarschuwingen te maken voor wanneer er wijzigingen worden aangebracht in azure data box en andere kritieke of gerelateerde resources.
 
-* [Waarschuwingen maken voor gebeurtenissen in het Azure-activiteiten logboek](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Waarschuwingen maken voor gebeurtenissen in het Azure-activiteiten logboek](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -475,7 +475,7 @@ Azure Data Box implementeert AES 256-bits versleuteling voor Data-at-rest. Daarn
 
 ## <a name="vulnerability-management"></a>Beheer van beveiligingsproblemen
 
-*Zie [beveiligings beheer: beveiligingslek beheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)voor meer informatie.*
+*Zie [beveiligings beheer: beveiligingslek beheer](../security/benchmarks/security-control-vulnerability-management.md)voor meer informatie.*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatische hulpprogram ma's voor het scannen van beveiligings problemen uitvoeren
 
@@ -519,7 +519,7 @@ Azure Data Box implementeert AES 256-bits versleuteling voor Data-at-rest. Daarn
 
 ## <a name="inventory-and-asset-management"></a>Inventarisatie en asset-management
 
-*Zie voor meer informatie [beveiligings beheer: inventarisatie en activa beheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Zie voor meer informatie [beveiligings beheer: inventarisatie en activa beheer](../security/benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6,1: automatische Asset-detectie oplossing gebruiken
 
@@ -605,7 +605,7 @@ Azure Data Box implementeert AES 256-bits versleuteling voor Data-at-rest. Daarn
 
 **Hulp**bij het configureren van voorwaardelijke toegang van Azure om gebruikers de mogelijkheid te bieden om te communiceren met Azure Resource Manager door ' blok toegang ' te configureren voor de app Microsoft Azure management.
 
-* [Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te blok keren](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te blok keren](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -629,7 +629,7 @@ Azure Data Box implementeert AES 256-bits versleuteling voor Data-at-rest. Daarn
 
 ## <a name="secure-configuration"></a>Veilige configuratie
 
-*Zie [beveiligings beheer: beveiligde configuratie](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)voor meer informatie.*
+*Zie [beveiligings beheer: beveiligde configuratie](../security/benchmarks/security-control-secure-configuration.md)voor meer informatie.*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: veilige configuraties instellen voor alle Azure-resources
 
@@ -715,7 +715,7 @@ Azure Data Box implementeert AES 256-bits versleuteling voor Data-at-rest. Daarn
 
 **Hulp**: door de klant beheerde sleutels moeten worden gemaakt en opgeslagen in een Azure Key Vault.
 
-* [Door de klant beheerde sleutels gebruiken in Azure Key Vault voor Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-customer-managed-encryption-key-portal)
+* [Door de klant beheerde sleutels gebruiken in Azure Key Vault voor Azure Data Box](./data-box-customer-managed-encryption-key-portal.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -725,7 +725,7 @@ Azure Data Box implementeert AES 256-bits versleuteling voor Data-at-rest. Daarn
 
 **Richt lijnen**: niet van toepassing; Azure Data Box maakt geen gebruik van beheerde identiteiten.
 
-* [Azure-Services die beheerde identiteiten ondersteunen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)
+* [Azure-Services die beheerde identiteiten ondersteunen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -743,7 +743,7 @@ Azure Data Box implementeert AES 256-bits versleuteling voor Data-at-rest. Daarn
 
 ## <a name="malware-defense"></a>Beveiliging tegen malware
 
-*Zie [beveiligings beheer: verdediging tegen malware](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)voor meer informatie.*
+*Zie [beveiligings beheer: verdediging tegen malware](../security/benchmarks/security-control-malware-defense.md)voor meer informatie.*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: centraal beheerde anti-malware-software gebruiken
 
@@ -773,7 +773,7 @@ Het is uw verantwoordelijkheid om vooraf te scannen op inhoud die wordt geüploa
 
 ## <a name="data-recovery"></a>Gegevensherstel
 
-*Zie [beveiligings beheer: gegevens herstel](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)voor meer informatie.*
+*Zie [beveiligings beheer: gegevens herstel](../security/benchmarks/security-control-data-recovery.md)voor meer informatie.*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: controleren op regel matige automatische back-ups
 
@@ -809,7 +809,7 @@ Het is uw verantwoordelijkheid om vooraf te scannen op inhoud die wordt geüploa
 
 ## <a name="incident-response"></a>Reageren op incidenten
 
-*Zie voor meer informatie [beveiligings beheer: reactie op incidenten](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*Zie voor meer informatie [beveiligings beheer: reactie op incidenten](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: een hand leiding voor reactie op incidenten maken
 
@@ -831,9 +831,9 @@ Het is uw verantwoordelijkheid om vooraf te scannen op inhoud die wordt geüploa
 
 Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld productie, niet-productie) met behulp van tags en maak een naamgevings systeem om Azure-resources duidelijk te identificeren en te categoriseren, met name voor de verwerking van gevoelige gegevens. Het is uw verantwoordelijkheid om prioriteit te geven aan het herstel van waarschuwingen op basis van de ernst van de Azure-resources en-omgeving waar het incident heeft plaatsgevonden.
 
-* [Beveiligingswaarschuwingen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+* [Beveiligingswaarschuwingen in Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-* [Labels gebruiken om uw Azure-resources te organiseren](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Labels gebruiken om uw Azure-resources te organiseren](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -853,7 +853,7 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 **Hulp**: contact gegevens van beveiligings incidenten worden door micro soft gebruikt om contact met u op te nemen als het micro soft Security Response Center (MSRC) detecteert dat uw gegevens zijn geopend door een onrecht matige of niet-gemachtigde partij. Bekijk incidenten na het feit om te controleren of de problemen zijn opgelost.
 
-* [De Azure Security Center Security-contact persoon instellen](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [De Azure Security Center Security-contact persoon instellen](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -863,9 +863,9 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 **Hulp**: exporteer uw Azure Security Center waarschuwingen en aanbevelingen met behulp van de functie continue export om Risico's voor Azure-resources te identificeren. Met doorlopend exporteren kunt u waarschuwingen en aanbevelingen hand matig of op een doorlopende manier exporteren. U kunt de Azure Security Center Data Connector gebruiken om de waarschuwingen naar Azure Sentinel te streamen.
 
-* [Continue export configureren](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [Continue export configureren](../security-center/continuous-export.md)
 
-* [Waarschuwingen streamen naar Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [Waarschuwingen streamen naar Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -875,7 +875,7 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 **Hulp**: gebruik de functie werk stroom automatisering in azure Security Center om automatisch reacties te activeren via ' Logic apps ' in beveiligings waarschuwingen en aanbevelingen voor het beveiligen van uw Azure-resources.
 
-* [Werk stroom automatisering en Logic Apps configureren](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [Werk stroom automatisering en Logic Apps configureren](../security-center/workflow-automation.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -883,7 +883,7 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetratietests en Red Team-oefeningen
 
-*Zie voor meer informatie [Security Control: Indringings tests en Red team-oefeningen](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Zie voor meer informatie [Security Control: Indringings tests en Red team-oefeningen](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: voert regel matig indringings tests van uw Azure-resources uit en zorgt voor herbemiddeling van alle essentiële beveiligings resultaten
 
@@ -899,5 +899,5 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de [Azure Security-Bench Mark](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- Meer informatie over [Azure-beveiligings basislijnen](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- Zie de [Azure Security-Bench Mark](../security/benchmarks/overview.md)
+- Meer informatie over [Azure-beveiligings basislijnen](../security/benchmarks/security-baselines-overview.md)

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/18/2019
 ms.author: yelevin
-ms.openlocfilehash: f75731fab9a238ffcac2e620235c9d8c5da97549
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 0e7d790fa9c5d4052ddb1e20defed1d1cc457a2e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053487"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91840197"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>Zelfstudie: Geautomatiseerde bedreigingsreacties instellen in Azure Sentinel
 
@@ -72,7 +72,7 @@ Volg deze stappen om een nieuw beveiligingsplaybook te maken in Azure Sentinel:
 
 5. Selecteer in de [**Logic app Designer**](../logic-apps/logic-apps-overview.md) de sjabloon die u wilt gebruiken. Als u een sjabloon selecteert waarvoor referenties nodig zijn, dan moet u deze opgeven. U kunt ook een nieuw playbook maken vanaf nul. Selecteer **Lege logische app**. 
 
-   ![Ontwerper van logische app](./media/tutorial-respond-threats-playbook/playbook-template.png)
+   ![Schermopname van het deelvenster Lege logische app.](./media/tutorial-respond-threats-playbook/playbook-template.png)
 
 6. U wordt naar de Logic App Designer geleid, waar u een nieuwe app kunt maken of het sjabloon kunt bewerken. Voor meer informatie over een playbook maken met [Logic Apps](../logic-apps/logic-apps-create-logic-apps-from-templates.md).
 

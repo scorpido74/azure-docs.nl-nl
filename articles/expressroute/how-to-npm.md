@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: duau
-ms.openlocfilehash: 7810afffd5da6d46439ff27ddb3f5b0aafdc2341
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8127a60a4685a615bc07e21a1efb4dd216c5b8c
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981321"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201049"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Netwerkprestatiemeter configureren voor ExpressRoute
 
@@ -54,7 +54,7 @@ Maak een werk ruimte in het abonnement met de VNets-koppeling naar de ExpressRou
 1. Selecteer in de [Azure Portal](https://portal.azure.com)het abonnement waaraan de VNETs is gekoppeld aan uw ExpressRoute-circuit. Zoek vervolgens in de lijst met Services op de **Marketplace** naar ' Netwerkprestatiemeter '. Klik in het retour venster om de pagina **Netwerkprestatiemeter** te openen.
 
    >[!NOTE]
-   >U kunt een nieuwe werk ruimte maken of een bestaande werk ruimte gebruiken. Als u een bestaande werk ruimte wilt gebruiken, moet u ervoor zorgen dat de werk ruimte is gemigreerd naar de nieuwe query taal. [Meer informatie...](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search-upgrade)
+   >U kunt een nieuwe werk ruimte maken of een bestaande werk ruimte gebruiken. Als u een bestaande werk ruimte wilt gebruiken, moet u ervoor zorgen dat de werk ruimte is gemigreerd naar de nieuwe query taal. [Meer informatie...](../azure-monitor/log-query/log-query-overview.md)
    >
 
    ![portal](./media/how-to-npm/3.png)<br><br>
@@ -92,7 +92,7 @@ Maak een werk ruimte in het abonnement met de VNets-koppeling naar de ExpressRou
 U wordt aangeraden ten minste twee agents te installeren aan elke kant van de ExpressRoute-verbinding voor redundantie (bijvoorbeeld on-premises, Azure VNETs). De agent moet worden geïnstalleerd op een Windows-Server (2008 SP1 of hoger). Het bewaken van ExpressRoute-circuits met Windows Desktop OS en Linux-besturings systeem wordt niet ondersteund. Gebruik de volgende stappen om agents te installeren:
    
   >[!NOTE]
-  >Door SCOM gepushte agents (inclusief [MMA](https://technet.microsoft.com/library/dn465154(v=sc.12).aspx)) kunnen hun locatie mogelijk niet consistent detecteren als ze worden gehost in Azure. U wordt aangeraden deze agents in azure VNETs niet te gebruiken om ExpressRoute te controleren.
+  >Door SCOM gepushte agents (inclusief [MMA](/previous-versions/system-center/system-center-2012-R2/dn465154(v=sc.12))) kunnen hun locatie mogelijk niet consistent detecteren als ze worden gehost in Azure. U wordt aangeraden deze agents in azure VNETs niet te gebruiken om ExpressRoute te controleren.
   >
 
 1. Voer **Setup** uit om de agent te installeren op elke server die u wilt gebruiken voor het controleren van ExpressRoute. De server die u voor bewaking gebruikt, kan een virtuele machine of een on-premises computer zijn en moet toegang hebben tot internet. U moet ten minste één on-premises agent installeren en één agent op elk netwerk segment dat u wilt bewaken in Azure.
@@ -118,7 +118,7 @@ U wordt aangeraden ten minste twee agents te installeren aan elke kant van de Ex
 
 ### <a name="23-configure-proxy-settings-optional"></a><a name="proxy"></a>2,3: proxy-instellingen configureren (optioneel)
 
-Als u een webproxy gebruikt voor toegang tot internet, gebruikt u de volgende stappen om proxy-instellingen te configureren voor de micro soft monitoring agent. Voer de volgende stappen uit voor elke server. Als er veel servers zijn die u moet configureren, is het wellicht eenvoudiger om een script te gebruiken om dit proces te automatiseren. Als dit het geval is, raadpleegt [u proxy-instellingen voor de micro soft monitoring agent configureren met een script](../log-analytics/log-analytics-windows-agent.md).
+Als u een webproxy gebruikt voor toegang tot internet, gebruikt u de volgende stappen om proxy-instellingen te configureren voor de micro soft monitoring agent. Voer de volgende stappen uit voor elke server. Als er veel servers zijn die u moet configureren, is het wellicht eenvoudiger om een script te gebruiken om dit proces te automatiseren. Als dit het geval is, raadpleegt [u proxy-instellingen voor de micro soft monitoring agent configureren met een script](../azure-monitor/platform/agent-windows.md).
 
 Proxy-instellingen voor de micro soft monitoring agent configureren met behulp van het configuratie scherm:
 
@@ -161,7 +161,7 @@ Open een Power shell-venster met beheerders bevoegdheden op de agent servers. Vo
 
 Als u agent servers wilt bewaken die zich in azure bevinden, moet u NSG-regels (netwerk beveiligings groep) configureren om TCP-verkeer toe te staan op een poort die door NPM wordt gebruikt voor synthetische trans acties. De standaard poort is 8084. Hiermee kan een bewakings agent die is geïnstalleerd op een virtuele machine van Azure, communiceren met een on-premises bewakings agent.
 
-Zie [netwerk beveiligings groepen](../virtual-network/virtual-networks-create-nsg-arm-portal.md)voor meer informatie over NSG.
+Zie [netwerk beveiligings groepen](../virtual-network/tutorial-filter-network-traffic.md)voor meer informatie over NSG.
 
 >[!NOTE]
 >Zorg ervoor dat u de agents (zowel de on-premises Server Agent als de Azure Server-Agent) hebt geïnstalleerd en het Power shell-script hebt uitgevoerd voordat u doorgaat met deze stap.

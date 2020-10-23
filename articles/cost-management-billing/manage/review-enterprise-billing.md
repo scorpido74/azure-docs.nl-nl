@@ -7,12 +7,12 @@ ms.subservice: enterprise
 ms.topic: article
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 652348d5feb7e382287c91536f1479f9aec126e1
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 777c8549d79f820c1847e711969919df128cebd3
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031803"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132411"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>Facturering van Enterprise-enrollment controleren met behulp van REST API's
 
@@ -37,9 +37,9 @@ De volgende headers zijn vereist:
 |Aanvraagheader|Beschrijving|  
 |--------------------|-----------------|  
 |*Content-Type:*|Vereist. Ingesteld op `application/json`.|  
-|*Authorization:*|Vereist. Ingesteld op een geldige `Bearer` [API-sleutel](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
+|*Authorization:*|Vereist. Ingesteld op een geldige `Bearer` [API-sleutel](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
 
-In dit voorbeeld ziet u een synchrone aanroep waarmee details voor de huidige factureringscyclus worden geretourneerd. Uit prestatieoverwegingen retourneren synchrone aanroepen informatie over de afgelopen maand.  U kunt de [API ook asynchroon aanroepen](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) om gegevens te retourneren voor 36 maanden.
+In dit voorbeeld ziet u een synchrone aanroep waarmee details voor de huidige factureringscyclus worden geretourneerd. Uit prestatieoverwegingen retourneren synchrone aanroepen informatie over de afgelopen maand.  U kunt de [API ook asynchroon aanroepen](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) om gegevens te retourneren voor 36 maanden.
 
 
 ## <a name="response"></a>Antwoord  
@@ -90,9 +90,9 @@ De volgende headers zijn vereist:
 |Aanvraagheader|Beschrijving|  
 |--------------------|-----------------|  
 |*Content-Type:*|Vereist. Ingesteld op `application/json`.|  
-|*Authorization:*|Vereist. Ingesteld op een geldige `Bearer` [API-sleutel](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
+|*Authorization:*|Vereist. Ingesteld op een geldige `Bearer` [API-sleutel](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
 
-In dit voorbeeld ziet u een synchrone aanroep waarmee details voor de huidige factureringscyclus worden geretourneerd. Uit prestatieoverwegingen retourneren synchrone aanroepen informatie over de afgelopen maand.  U kunt de [API ook asynchroon aanroepen](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) om gegevens te retourneren voor 36 maanden.
+In dit voorbeeld ziet u een synchrone aanroep waarmee details voor de huidige factureringscyclus worden geretourneerd. Uit prestatieoverwegingen retourneren synchrone aanroepen informatie over de afgelopen maand.  U kunt de [API ook asynchroon aanroepen](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) om gegevens te retourneren voor 36 maanden.
 
 ### <a name="response"></a>Antwoord  
 
@@ -146,9 +146,9 @@ De volgende headers zijn vereist:
 |Aanvraagheader|Beschrijving|  
 |--------------------|-----------------|  
 |*Content-Type:*|Vereist. Ingesteld op `application/json`.|  
-|*Authorization:*|Vereist. Ingesteld op een geldige `Bearer` [API-sleutel](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
+|*Authorization:*|Vereist. Ingesteld op een geldige `Bearer` [API-sleutel](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
 
-In dit voorbeeld ziet u een synchrone aanroep waarmee details voor de huidige factureringscyclus worden geretourneerd. Uit prestatieoverwegingen retourneren synchrone aanroepen informatie over de afgelopen maand.  U kunt de [API ook asynchroon aanroepen](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) om gegevens te retourneren voor 36 maanden.
+In dit voorbeeld ziet u een synchrone aanroep waarmee details voor de huidige factureringscyclus worden geretourneerd. Uit prestatieoverwegingen retourneren synchrone aanroepen informatie over de afgelopen maand.  U kunt de [API ook asynchroon aanroepen](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) om gegevens te retourneren voor 36 maanden.
 
 ### <a name="response"></a>Antwoord  
 
@@ -183,6 +183,6 @@ In het volgende voorbeeld ziet u de uitvoer van de REST API voor de Enterprise-e
 Dit voorbeeld is ingekort; zie [Get usage details for an enrollment account](/rest/api/consumption/usagedetails/list#enrollmentaccountusagedetailslist-legacy) (Gebruiksgegevens ophalen voor een enrollmentaccount) voor een volledige beschrijving van elk antwoordveld en foutafhandeling.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Bekijk [Overzicht van Enterprise Reporting](https://docs.microsoft.com/azure/billing/billing-enterprise-api)
-- Onderzoek [REST API voor Enterprise-facturering](https://docs.microsoft.com/rest/api/billing/)   
-- [Aan de slag gaan met Azure REST API](https://docs.microsoft.com/rest/api/azure/)   
+- Bekijk [Overzicht van Enterprise Reporting](./enterprise-api.md)
+- Onderzoek [REST API voor Enterprise-facturering](/rest/api/billing/)   
+- [Aan de slag gaan met Azure REST API](/rest/api/azure/)

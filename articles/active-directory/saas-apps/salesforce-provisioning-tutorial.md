@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
-ms.openlocfilehash: a77fa5702b8ab5728f387eae02cc97f997a406a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e22511717b6a86f9e0cf53986152c4d6bab68780
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273293"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101763"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Zelf studie: Sales Force configureren voor het automatisch inrichten van gebruikers
 
@@ -77,15 +77,15 @@ Het doel van deze sectie is het maken van een overzicht van het inschakelen van 
 
 6. Als u uw Sales Force-beveiligings token wilt ophalen, opent u een nieuw tabblad en meldt u zich aan bij hetzelfde Sales Force-beheerders account. Klik in de rechter bovenhoek van de pagina op uw naam en klik vervolgens op **instellingen**.
 
-    ![Automatische gebruikers inrichting inschakelen](./media/salesforce-provisioning-tutorial/sf-my-settings.png "Automatische gebruikers inrichting inschakelen")
+    ![Scherm afbeelding toont de geselecteerde koppeling van de instellingen.](./media/salesforce-provisioning-tutorial/sf-my-settings.png "Automatische gebruikers inrichting inschakelen")
 
 7. Klik in het navigatie deel venster aan de linkerkant op **persoonlijke gegevens** om de gerelateerde sectie uit te vouwen en klik vervolgens op **mijn beveiligings token opnieuw instellen**.
   
-    ![Automatische gebruikers inrichting inschakelen](./media/salesforce-provisioning-tutorial/sf-personal-reset.png "Automatische gebruikers inrichting inschakelen")
+    ![Scherm afbeelding toont het opnieuw instellen van mijn beveiligings token dat is geselecteerd op basis van mijn persoonlijke gegevens.](./media/salesforce-provisioning-tutorial/sf-personal-reset.png "Automatische gebruikers inrichting inschakelen")
 
 8. Klik op de pagina **beveiligings token opnieuw** instellen op de knop **beveiligings token opnieuw instellen** .
 
-    ![Automatische gebruikers inrichting inschakelen](./media/salesforce-provisioning-tutorial/sf-reset-token.png "Automatische gebruikers inrichting inschakelen")
+    ![Scherm afbeelding toont de pagina met de rest-beveiligings token, met verklarende tekst en de optie voor het opnieuw instellen van het beveiligings token](./media/salesforce-provisioning-tutorial/sf-reset-token.png "Automatische gebruikers inrichting inschakelen")
 
 9. Controleer het postvak in van de e-mail die is gekoppeld aan dit beheerders account. Zoek naar een e-mail bericht van Salesforce.com dat het nieuwe beveiligings token bevat.
 

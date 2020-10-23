@@ -1,31 +1,32 @@
 ---
-title: Een container maken in Azure Cosmos DB
-description: Meer informatie over het maken van een container in Azure Cosmos DB met behulp van Azure Portal, .NET, Java, Python, Node.js en andere Sdk's.
+title: Een container maken in Azure Cosmos DB SQL-API
+description: Meer informatie over het maken van een container in Azure Cosmos DB SQL-API met behulp van Azure Portal, .NET, Java, Python, Node.js en andere Sdk's.
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 07/29/2020
+ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 2362326bccd90af997aa9237ec5f14e39ae62c85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 944f36dfbd8468a9f5867757ce32b8da74e235b4
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019994"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279652"
 ---
-# <a name="create-an-azure-cosmos-container"></a>Een Azure Cosmos-container maken
+# <a name="create-a-container-in-azure-cosmos-db-sql-api"></a>Een container maken in Azure Cosmos DB SQL-API
 
-In dit artikel worden de verschillende manieren beschreven om een Azure Cosmos-container (verzameling, tabel of grafiek) te maken met behulp van Azure Portal, Azure CLI, Power shell of ondersteunde Sdk's. In dit artikel ziet u hoe u een container maakt, de partitiesleutel opgeeft en doorvoer inricht.
+In dit artikel worden de verschillende manieren beschreven voor het maken van een container in Azure Cosmos DB SQL-API. U ziet hoe u een container maakt met behulp van de Azure Portal, Azure CLI, Power shell of ondersteunde Sdk's. In dit artikel ziet u hoe u een container maakt, de partitiesleutel opgeeft en doorvoer inricht.
+
+In dit artikel worden de verschillende manieren beschreven voor het maken van een container in Azure Cosmos DB SQL-API. Als u een andere API gebruikt, raadpleegt u [API voor MongoDb](how-to-create-container-mongodb.md), [CASSANDRA-API](how-to-create-container-cassandra.md), [Gremlin API](how-to-create-container-gremlin.md)en [Table-APIe](how-to-create-container-table.md) artikelen om de container te maken.
 
 > [!NOTE]
 > Wanneer u containers maakt, moet u ervoor zorgen dat u niet twee containers maakt met dezelfde naam, maar met een ander hoofdletter gebruik. Dat komt omdat sommige onderdelen van het Azure-platform niet hoofdletter gevoelig zijn. Dit kan leiden tot Verwar ring/botsing van telemetriegegevens en acties op containers met dergelijke namen.
 
-## <a name="create-a-container-using-azure-portal"></a>Een container maken met behulp van de Azure-portal
+## <a name="create-a-container-using-azure-portal"></a><a id="portal-sql"></a>Een container maken met behulp van de Azure-portal
 
-### <a name="sql-api"></a><a id="portal-sql"></a>SQL-API
-
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-sql-api-dotnet.md#create-account)of selecteer een bestaand account.
 
@@ -39,104 +40,17 @@ In dit artikel worden de verschillende manieren beschreven om een Azure Cosmos-c
 
     :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-sql.png" alt-text="Scherm afbeelding van Data Explorer deel venster, met nieuwe container gemarkeerd":::
 
-### <a name="azure-cosmos-db-api-for-mongodb"></a><a id="portal-mongodb"></a>Azure Cosmos DB-API voor MongoDB
+## <a name="create-a-container-using-azure-cli"></a><a id="cli-sql"></a>Een container maken met behulp van Azure CLI
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-
-1. [Maak een nieuw Azure Cosmos-account](create-mongodb-dotnet.md#create-a-database-account)of selecteer een bestaand account.
-
-1. Open het deel venster **Data Explorer** en selecteer **nieuwe container**. Geef de volgende gegevens op:
-
-   * Geef aan of u een nieuwe database maakt of een bestaande database gebruikt.
-   * Voer een container-ID in.
-   * Voer een shardsleutel in.
-   * Geef een door Voer op die moet worden ingericht (bijvoorbeeld 1000 RUs).
-   * Selecteer **OK**.
-
-    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-mongodb.png" alt-text="Scherm afbeelding van Data Explorer deel venster, met nieuwe container gemarkeerd":::
-
-### <a name="cassandra-api"></a><a id="portal-cassandra"></a>Cassandra-API
-
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-
-1. [Maak een nieuw Azure Cosmos-account](create-cassandra-dotnet.md#create-a-database-account)of selecteer een bestaand account.
-
-1. Open het deel venster **Data Explorer** en selecteer **nieuwe tabel**. Geef de volgende gegevens op:
-
-   * Geef aan of u een nieuwe keyspace maakt of een bestaande keyspace gebruikt.
-   * Voer een tabelnaam in.
-   * Voer de eigenschappen in en geef een primaire sleutel op.
-   * Geef een door Voer op die moet worden ingericht (bijvoorbeeld 1000 RUs).
-   * Selecteer **OK**.
-
-    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-cassandra.png" alt-text="Scherm afbeelding van Data Explorer deel venster, met nieuwe container gemarkeerd":::
-
-> [!NOTE]
-> Voor de Cassandra-API wordt de primaire sleutel gebruikt als de partitiesleutel.
-
-### <a name="gremlin-api"></a><a id="portal-gremlin"></a>Gremlin-API
-
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-
-1. [Maak een nieuw Azure Cosmos-account](create-graph-dotnet.md#create-a-database-account)of selecteer een bestaand account.
-
-1. Open het deel venster **Data Explorer** en selecteer **nieuwe grafiek**. Geef de volgende gegevens op:
-
-   * Geef aan of u een nieuwe database maakt of een bestaande database gebruikt.
-   * Voer een grafiek-ID in.
-   * Selecteer **onbeperkte** opslagcapaciteit.
-   * Voer een partitiesleutel in voor hoekpunten.
-   * Geef een door Voer op die moet worden ingericht (bijvoorbeeld 1000 RUs).
-   * Selecteer **OK**.
-
-    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-gremlin.png" alt-text="Scherm afbeelding van Data Explorer deel venster, met nieuwe container gemarkeerd":::
-
-### <a name="table-api"></a><a id="portal-table"></a>Tabel-API
-
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-
-1. [Maak een nieuw Azure Cosmos-account](create-table-dotnet.md#create-a-database-account)of selecteer een bestaand account.
-
-1. Open het deel venster **Data Explorer** en selecteer **nieuwe tabel**. Geef de volgende gegevens op:
-
-   * Voer een tabel-ID in.
-   * Geef een door Voer op die moet worden ingericht (bijvoorbeeld 1000 RUs).
-   * Selecteer **OK**.
-
-    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-table.png" alt-text="Scherm afbeelding van Data Explorer deel venster, met nieuwe container gemarkeerd":::
-
-> [!Note]
-> Voor de Table-API wordt de partitiesleutel opgegeven telkens wanneer u een nieuwe rij toevoegt.
-
-## <a name="create-a-container-using-azure-cli"></a>Een container maken met behulp van Azure CLI<a id="cli-sql"></a><a id="cli-mongodb"></a><a id="cli-cassandra"></a><a id="cli-gremlin"></a><a id="cli-table"></a>
-
-De onderstaande koppelingen laten zien hoe u container bronnen voor Azure Cosmos DB maakt met behulp van Azure CLI.
-
-Zie [Azure CLI-voor beelden voor Azure Cosmos DB](cli-samples.md)voor een overzicht van alle Azure CLI-voor beelden in alle Azure Cosmos DB api's.
-
-* [Een container maken met Azure CLI](manage-with-cli.md#create-a-container)
-* [Een verzameling voor Azure Cosmos DB voor MongoDB-API maken met Azure CLI](./scripts/cli/mongodb/create.md)
-* [Een Cassandra-tabel maken met Azure CLI](./scripts/cli/cassandra/create.md)
-* [Een Gremlin-grafiek maken met Azure CLI](./scripts/cli/gremlin/create.md)
-* [Een Table-API tabel maken met Azure CLI](./scripts/cli/table/create.md)
+[Maak een container met Azure cli](manage-with-cli.md#create-a-container). Zie [Azure CLI-voor beelden voor Azure Cosmos DB](cli-samples.md)voor een overzicht van alle Azure CLI-voor beelden in alle Azure Cosmos DB api's.
 
 ## <a name="create-a-container-using-powershell"></a>Een container maken met behulp van Power shell
 
-De onderstaande koppelingen laten zien hoe u container resources voor Azure Cosmos DB maakt met behulp van Power shell.
+[Maak een container met Power shell](manage-with-powershell.md#create-container). Zie [Power shell](powershell-samples.md) -voor beelden voor een lijst met alle Power shell-voor beelden in alle Azure Cosmos DB api's
 
-Zie [Power shell](powershell-samples.md) -voor beelden voor een lijst met alle Power shell-voor beelden in alle Azure Cosmos DB api's
-
-* [Een container maken met Power shell](manage-with-powershell.md#create-container)
-* [Een verzameling maken voor Azure Cosmos DB voor MongoDB-API met Power shell](./scripts/powershell/mongodb/create.md)
-* [Een Cassandra-tabel maken met Power shell](./scripts/powershell/cassandra/create.md)
-* [Een Gremlin-grafiek maken met Power shell](./scripts/powershell/gremlin/create.md)
-* [Een Table-API tabel maken met Power shell](./scripts/powershell/table/create.md)
-
-## <a name="create-a-container-using-net-sdk"></a>Een container maken met behulp van .NET SDK
+## <a name="create-a-container-using-net-sdk"></a><a id="dotnet-sql"></a>Een container maken met behulp van .NET SDK
 
 Als er een time-outuitzondering optreedt bij het maken van een verzameling, moet u een lees bewerking uitvoeren om te controleren of de verzameling is gemaakt. Met de Lees bewerking wordt een uitzonde ring gegenereerd totdat de bewerking voor het maken van de verzameling is voltooid. Zie de [HTTP-status codes voor Azure Cosmos DB](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) artikel voor een lijst met status codes die door de maak bewerking worden ondersteund.
-
-### <a name="sql-api-and-gremlin-api"></a><a id="dotnet-sql-graph"></a>SQL-API en Gremlin-API
 
 ```csharp
 // Create a container with a partition key and provision 1000 RU/s throughput.
@@ -148,26 +62,6 @@ await client.CreateDocumentCollectionAsync(
     UriFactory.CreateDatabaseUri("myDatabaseName"),
     myCollection,
     new RequestOptions { OfferThroughput = 1000 });
-```
-
-### <a name="azure-cosmos-db-api-for-mongodb"></a><a id="dotnet-mongodb"></a>Azure Cosmos DB-API voor MongoDB
-
-```csharp
-// Create a collection with a partition key by using Mongo Shell:
-db.runCommand( { shardCollection: "myDatabase.myCollection", key: { myShardKey: "hashed" } } )
-```
-
-> [!Note]
-> Het MongoDB-draad protocol begrijpt het concept van [aanvraag eenheden](request-units.md)niet. Als u een nieuwe verzameling wilt maken met een ingerichte door Voer, gebruikt u de Azure Portal-of Cosmos DB Sdk's voor SQL API.
-
-### <a name="cassandra-api"></a><a id="dotnet-cassandra"></a>Cassandra-API
-
-```csharp
-// Create a Cassandra table with a partition/primary key and provision 1000 RU/s throughput.
-session.Execute(CREATE TABLE myKeySpace.myTable(
-    user_id int PRIMARY KEY,
-    firstName text,
-    lastName text) WITH cosmosdb_provisioned_throughput=1000);
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

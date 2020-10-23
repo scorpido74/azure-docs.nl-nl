@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/27/2019
-ms.openlocfilehash: 6edd32f8f3579238d1f08f55ce9fb1528fa5d211
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/20/2020
+ms.openlocfilehash: 5181ceb7d5959436b704202fd3179773c9654679
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417483"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220445"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Gegevens kopiëren van en naar Azure Table Storage met behulp van Azure Data Factory
 
@@ -183,8 +183,8 @@ De volgende eigenschappen worden ondersteund om verificatie van de Shared Access
 
 Houd rekening met de volgende punten wanneer u een URI voor een Shared Access-hand tekening maakt:
 
-- Stel de juiste lees-en schrijf machtigingen voor objecten in op basis van de manier waarop de gekoppelde service (lezen, schrijven, lezen/schrijven) wordt gebruikt in uw data factory.
-- Stel de **verloop tijd** op de juiste wijze in. Zorg ervoor dat de toegang tot opslag objecten niet verloopt binnen de actieve periode van de pijp lijn.
+- Stel de juiste machtigingen voor lezen/schrijven op objecten in op basis van de manier waarop de gekoppelde service (lezen, schrijven, lezen/schrijven) wordt gebruikt in uw data factory.
+- Stel de **verlooptijd** op de juiste wijze in. Zorg ervoor dat de toegang tot opslag objecten niet verloopt binnen de actieve periode van de pijp lijn.
 - De URI moet op het juiste tabel niveau worden gemaakt op basis van de nood zaak.
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
@@ -222,7 +222,7 @@ Als u gegevens wilt kopiëren van en naar de Azure-tabel, stelt u de eigenschap 
 
 Voor gegevens archieven zonder schema, zoals Azure-tabel, wordt het schema door Data Factory op een van de volgende manieren afleiden:
 
-* Als u de kolom toewijzing in de Kopieer activiteit opgeeft, Data Factory gebruik de lijst met kolommen aan de bron zijde om gegevens op te halen. Als in dit geval een rij geen waarde voor een kolom bevat, wordt er een null-waarde voor gegeven.
+* Als u de kolom toewijzing in de Kopieer activiteit opgeeft, gebruikt Data Factory de lijst met kolommen aan de bron zijde om gegevens op te halen. Als in dit geval een rij geen waarde voor een kolom bevat, wordt er een null-waarde voor gegeven.
 * Als u de kolom toewijzing in de Kopieer activiteit niet opgeeft, wordt door Data Factory het schema afleiden door de eerste rij in de gegevens te gebruiken. Als in dit geval de eerste rij niet het volledige schema bevat (bijvoorbeeld sommige kolommen hebben een null-waarde), worden sommige kolommen niet in het resultaat van de Kopieer bewerking gemist.
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
@@ -236,7 +236,7 @@ Als u gegevens wilt kopiëren uit een Azure-tabel, stelt u het bron type in de K
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **AzureTableSource**. |Ja |
-| azureTableSourceQuery |Gebruik de aangepaste Table-opslag query om gegevens te lezen. Zie de voor beelden in de volgende sectie. |Nee |
+| azureTableSourceQuery |Gebruik de aangepaste Table-opslag query om gegevens te lezen.<br/>De bron query is een directe kaart van de `$filter` query optie die wordt ondersteund door Azure Table Storage, meer informatie over de syntaxis van [dit document](https://docs.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-query-options)en de voor beelden in de volgende [sectie met azureTableSourceQuery-voor beelden](#azuretablesourcequery-examples). |Nee |
 | azureTableSourceIgnoreTableNotFound |Hiermee wordt aangegeven of de uitzonde ring van de tabel mag worden toegestaan.<br/>Toegestane waarden zijn **True** en **False** (standaard). |Nee |
 
 ### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery-voor beelden

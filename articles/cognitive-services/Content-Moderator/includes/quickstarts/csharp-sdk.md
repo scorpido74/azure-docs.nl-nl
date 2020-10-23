@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: pafarley
 ms.custom: devx-track-dotnet, cog-serv-seo-aug-2020
-ms.openlocfilehash: 125a823acc79143d9d6556e496f7728c718db089
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cb0d9ff1074ba1a309cf4f5a8cad12f34335e435
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332553"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91989445"
 ---
 Ga aan de slag met de Azure Content Moderator-clientbibliotheek voor .NET. Voer deze stappen uit om het NuGet-pakket te installeren en de voorbeeldcode voor basistaken uit te proberen. 
 
@@ -33,19 +33,24 @@ Gebruik de Content Moderator-clientbibliotheek voor .NET om:
 ## <a name="prerequisites"></a>Vereisten
 
 * Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/cognitive-services/)
-* De huidige versie van [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
+* De [Visual Studio IDE](https://visualstudio.microsoft.com/vs/) of de huidige versie van [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
+* Zodra u een Azure-abonnement hebt, kunt u <a href="https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account"  title="Een [productnaam]-resource maken"  target="_blank">een Content Moderator-resource maken <span class="docon docon-navigate-external x-hidden-focus"></span></a> in de Azure-portal om uw sleutel en eindpunt op te halen. Wacht tot deze is geïmplementeerd en klik op de knop **Naar de resource gaan**.
+    * U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met Content Moderator. Later in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
+    * U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
 
-## <a name="create-a-content-moderator-resource"></a>Een Content Moderator-resource maken
+## <a name="setting-up"></a>Instellen
 
-Azure Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Maak een resource voor Content Moderator met behulp van de [Azure-portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) of [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) op uw lokale machine. U kunt ook het volgende doen:
+### <a name="create-a-new-c-application"></a>Een nieuwe C#-toepassing maken
 
-* Uw resource bekijken in de [Azure-portal](https://portal.azure.com/)
+#### <a name="visual-studio-ide"></a>[Visual Studio IDE](#tab/visual-studio)
 
-Nadat u een sleutel hebt verkregen van uw resource, gaat u [omgevingsvariabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel en de eindpunt-URL, respectievelijk `CONTENT_MODERATOR_SUBSCRIPTION_KEY` en `CONTENT_MODERATOR_ENDPOINT` genaamd.
+Maak met behulp van Visual Studio een nieuwe .NET Core-toepassing. 
 
-## <a name="create-a-new-c-application"></a>Een nieuwe C#-toepassing maken
+### <a name="install-the-client-library"></a>De clientbibliotheek installeren 
 
-Maak een nieuwe .NET Core-toepassing in uw favoriete teksteditor of IDE. 
+Nadat u een nieuw project hebt gemaakt, installeert u de clientbibliotheek door in **Solution Explorer** met de rechtermuisknop op de projectoplossing te klikken en **NuGet-pakketten beheren** te selecteren. Selecteer in de package manager die wordt geopend de optie **Bladeren**, schakel **Prerelease opnemen** in en zoek naar `Microsoft.Azure.CognitiveServices.ContentModerator`. Selecteer versie `2.0.0` en vervolgens **Installeren**. 
+
+#### <a name="cli"></a>[CLI](#tab/cli)
 
 Gebruik in een consolevenster (zoals cmd, PowerShell of Bash) de opdracht `dotnet new` om een nieuwe console-app te maken met de naam `content-moderator-quickstart`. Met deze opdracht maakt u een eenvoudig Hallo wereld-C#-project met één bronbestand: *Program.cs*.
 
@@ -69,18 +74,7 @@ Build succeeded.
 ...
 ```
 
-Open vanuit de projectmap het bestand *Program.cs* in uw favoriete editor of IDE. Voeg de volgende `using` instructies toe:
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_using)]
-
-Maak in de **Program**-klasse variabelen voor de eindpuntlocatie en sleutel van uw resource als omgevingsvariabelen.
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_creds)]
-
-> [!NOTE]
-> Als u de omgevingsvariabelen hebt gemaakt nadat u de toepassing hebt gestart, moet u de editor, IDE of shell waarmee deze wordt uitgevoerd, sluiten en opnieuw openen om toegang te krijgen tot de variabelen.
-
-## <a name="install-the-client-library"></a>De clientbibliotheek installeren
+### <a name="install-the-client-library"></a>De clientbibliotheek installeren 
 
 Installeer in de toepassingsmap de Content Moderator-clientbibliotheek voor .NET met de volgende opdracht:
 
@@ -88,7 +82,35 @@ Installeer in de toepassingsmap de Content Moderator-clientbibliotheek voor .NET
 dotnet add package Microsoft.Azure.CognitiveServices.ContentModerator --version 2.0.0
 ```
 
-Als u de Visual Studio-IDE, gebruikt, is de clientbibliotheek beschikbaar als downloadbaar NuGet-pakket.
+---
+
+> [!TIP]
+> Wilt u het codebestand voor de quickstart in één keer weergeven? Die is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ContentModerator/Program.cs), waar de codevoorbeelden uit deze quickstart zich bevinden.
+
+Open vanuit de projectmap het bestand *Program.cs* in uw favoriete editor of IDE. Voeg de volgende `using` instructies toe:
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_using)]
+
+Maak in de klasse **Programma** variabelen voor de sleutel en het eindpunt van uw resource.
+
+> [!IMPORTANT]
+> Ga naar Azure Portal. Als de Content Moderator-resource die u in de sectie **Vereisten** hebt gemaakt, is geïmplementeerd, klikt u op de knop **Naar de resource gaan** onder **Volgende stappen**. U vindt uw sleutel en eindpunt op de pagina **Sleutel en eindpunt** van de resource, onder **Resourcebeheer**. 
+>
+> Vergeet niet de sleutel uit uw code te verwijderen wanneer u klaar bent, en plaats deze sleutel nooit in het openbaar. Overweeg om voor productie een veilige manier te gebruiken voor het opslaan en openen van uw referenties. Zie het artikel Cognitive Services [Beveiliging](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) voor meer informatie.
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_creds)]
+
+
+Voeg in de methode `main()` van de toepassing aanroepen toe voor de methoden die in deze quickstart worden gebruikt. U gaat deze later maken.
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_client)]
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_textmod_call)]
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_imagemod_call)]
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_review_call)]
+
 
 ## <a name="object-model"></a>Objectmodel
 
@@ -112,9 +134,9 @@ Deze codefragmenten laten zien hoe u de volgende taken kunt uitvoeren met de Con
 
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
-Instantieer in een nieuwe methode clientobjecten met uw eindpunt en sleutel. U hebt niet voor elk scenario een andere client nodig, maar het kan u helpen uw code te organiseren.
+Instantieer in een nieuwe methode clientobjecten met uw eindpunt en sleutel.
 
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_client)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_auth)]
 
 ## <a name="moderate-text"></a>Tekst modereren
 
@@ -129,9 +151,6 @@ Is this a grabage email abcdef@abcd.com, phone: 4255550111, IP: 255.255.255.255,
 Crap is the profanity here. Is this information PII? phone 4255550111
 ```
 
-Voeg in volgende methode-aanroep toe aan uw `Main`-methode:
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_textmod_call)]
 
 Definieer vervolgens de tekstmoderatiemethode ergens in uw **Program**-klasse:
 
@@ -146,7 +165,7 @@ In de volgende code wordt een Content Moderator-client samen met een [ImageModer
 
 ### <a name="get-sample-images"></a>Voorbeeldafbeeldingen ophalen
 
-Definieer uw invoer- en uitvoerbestanden:
+Definieer uw in- en uitvoerbestanden in de hoofdmap van de klasse **Programma**:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_image_vars)]
 
@@ -156,10 +175,6 @@ Maak vervolgens het invoerbestand, *ImageFiles.txt*, in de hoofdmap van uw proje
 https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
 https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 ```
-
-Geef uw invoer- en uitvoerbestanden door aan de volgende methode-aanroep in de `Main`-methode. U definieert deze methode in een latere stap.
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_imagemod_call)]
 
 ### <a name="define-helper-class"></a>Helperklasse definiëren
 
@@ -189,9 +204,7 @@ Zie de handleiding [Image moderation concepts](../../image-moderation-api.md) (c
 
 U kunt de Content Moderator .NET-clientbibliotheek gebruiken om inhoud naar het [beoordelingsprogramma](https://contentmoderator.cognitive.microsoft.com) te sturen zodat menselijke moderators die kunnen beoordelen. Zie de [conceptgids over het beoordelingsprogramma](../../review-tool-user-guide/human-in-the-loop.md) voor meer informatie over het beoordelingsprogramma.
 
-De methode in deze sectie gebruikt de [Reviews](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews?view=azure-dotnet)-klasse om een beoordeling te maken, de id ervan op te halen en de gegevens ervan te controleren na menselijke invoer te hebben gekregen via de webportal van het beoordelingsprogramma. Al deze gegevens worden vastgelegd in een uitvoertekstbestand. Roep de methode aan vanuit uw `Main`-methode:
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_review_call)]
+De methode in deze sectie gebruikt de [Reviews](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews?view=azure-dotnet)-klasse om een beoordeling te maken, de id ervan op te halen en de gegevens ervan te controleren na menselijke invoer te hebben gekregen via de webportal van het beoordelingsprogramma. Al deze gegevens worden vastgelegd in een uitvoertekstbestand. 
 
 ### <a name="get-sample-images"></a>Voorbeeldafbeeldingen ophalen
 
@@ -257,11 +270,19 @@ Als u in dit scenario een callback-eindpunt hebt gebruikt, zou het een gebeurten
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
+#### <a name="visual-studio-ide"></a>[Visual Studio IDE](#tab/visual-studio)
+
+Voer de toepassing uit door boven in het IDE-venster op de knop **Fouten opsporen** te klikken.
+
+#### <a name="cli"></a>[CLI](#tab/cli)
+
 Voer de toepassing op vanuit uw toepassingsmap met de opdracht `dotnet run`.
 
 ```dotnet
-dotnet run 
+dotnet run
 ```
+
+---
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

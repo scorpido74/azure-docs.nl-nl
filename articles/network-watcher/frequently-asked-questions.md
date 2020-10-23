@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: b48aab918b477f5c689a50ca476b0b1336642f0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ba35d91d286cb43a763887d104e21ae0d537c8e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77471853"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424126"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Veelgestelde vragen over Azure Network Watcher
 De [Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) -service biedt een reeks hulpprogram ma's voor het bewaken, diagnosticeren, weer geven van metrische gegevens en het in-of uitschakelen van Logboeken voor bronnen in een virtueel Azure-netwerk. In dit artikel vindt u antwoorden op veelgestelde vragen over de service.
@@ -55,7 +55,7 @@ Ga naar de [pagina met prijzen](https://azure.microsoft.com/pricing/details/netw
 U kunt de nieuwste regionale Beschik baarheid bekijken op de [pagina Beschik baarheid van Azure-service](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher)
 
 ### <a name="which-permissions-are-needed-to-use-network-watcher"></a>Welke machtigingen zijn er nodig om Network Watcher te gebruiken?
-Zie de lijst met [RBAC-machtigingen die zijn vereist voor het gebruik van Network Watcher](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions). Voor het implementeren van resources hebt u Inzender machtigingen nodig voor de NetworkWatcherRG (zie hieronder).
+Zie de lijst met [Azure RBAC-machtigingen die zijn vereist voor het gebruik van Network Watcher](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions). Voor het implementeren van resources hebt u Inzender machtigingen nodig voor de NetworkWatcherRG (zie hieronder).
 
 ### <a name="how-do-i-enable-network-watcher"></a>Hoe kan ik Network Watcher inschakelen?
 De Network Watcher-service wordt [automatisch ingeschakeld](https://azure.microsoft.com/updates/azure-network-watcher-will-be-enabled-by-default-for-subscriptions-containing-virtual-networks/) voor elk abonnement.
@@ -80,6 +80,14 @@ Network Watcher hoeft alleen maar één keer te worden ingeschakeld voor een abo
 
 ### <a name="how-can-i-manage-the-network-watcher-resource"></a>Hoe kan ik de Network Watcher resource beheren? 
 De Network Watcher resource vertegenwoordigt de back-end-service voor Network Watcher en wordt volledig beheerd door Azure. Klanten hoeven deze niet te beheren. Bewerkingen zoals verplaatsen worden niet ondersteund voor de resource. [De resource kan echter worden verwijderd](https://docs.microsoft.com/azure/network-watcher/network-watcher-create#delete-a-network-watcher-in-the-portal). 
+
+## <a name="service-availability-and-redundancy"></a>Beschik baarheid en redundantie van de service 
+
+### <a name="is-the-network-watcher-service-zone-resilient"></a>Is de Network Watcher service zone flexibel? 
+Ja. De Network Watcher-service is standaard zone-flexibel. 
+
+### <a name="how-do-i-configure-the-network-watcher-service-to-be-zone-resilient"></a>Hoe kan ik de Network Watcher-service zo configureren dat deze zone flexibel kan worden? 
+Er is geen klant configuratie nodig om zone tolerantie in te scha kelen. Zone-tolerantie voor Network Watcher resources is standaard beschikbaar en wordt beheerd door de service zelf. 
 
 ## <a name="nsg-flow-logs"></a>NSG-stroom logboeken
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 63f1d1d40d8aff21641f3fa4ee10a289de40800d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 044ee51fb7ff675af0fb97224313c388c4cbeac1
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552593"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371338"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect-or-cloudlink-platform"></a>Zelfstudie: Azure Active Directory-integratie met Mitel MiCloud Connect of CloudLink Platform
 
@@ -112,7 +112,7 @@ Als u MiCloud Connect met eenmalige aanmelding voor Azure AD wilt configureren, 
 
 4. Selecteer in Azure Portal het pictogram **Bewerken** in het gedeelte **Standaard SAML-configuratie**.
    
-    ![image](common/edit-urls.png)
+    ![Schermopname van Eenmalige aanmelding instellen met de SAML-pagina met het pictogram bewerken geselecteerd.](common/edit-urls.png)
 
     Het dialoogvenster Standaard SAML-configuratie verschijnt.
 
@@ -120,7 +120,7 @@ Als u MiCloud Connect met eenmalige aanmelding voor Azure AD wilt configureren, 
 
 6. Kopieer de URL uit het veld **Reply URL (Assertion Consumer Service URL)** in de Mitel Account-portal en plak deze in het veld **Antwoord-URL (URL voor Assertion Consumer Service)** in Azure Portal.
 
-   ![image](./media/mitel-connect-tutorial/mitel-azure-basic-configuration.png)
+   ![Schermopname van de Basic SAML-configuratie in de Azure-portal en de sectie Id-provider instellen in de Mitel Account-portal met lijnen waarmee de relatie er tussen wordt aangegeven.](./media/mitel-connect-tutorial/mitel-azure-basic-configuration.png)
 
 7. In het tekstvak **Aanmeldings-URL** typt u een van de volgende URL's:
 
@@ -134,11 +134,11 @@ Als u MiCloud Connect met eenmalige aanmelding voor Azure AD wilt configureren, 
 
 9. Selecteer in het gedeelte **SAML-handtekeningcertificaat**, op de pagina **Op SAML gebaseerde aanmelding** in Azure Portal, de optie **Downloaden** naast **Certificaat (Base64)** om het **handtekeningcertificaat** te downloaden en op uw computer op te slaan.
 
-    ![image](./media/mitel-connect-tutorial/azure-signing-certificate.png)
+    ![Schermopname van het deelvenster SAML-handtekeningcertificaat waar u een certificaat kunt downloaden.](./media/mitel-connect-tutorial/azure-signing-certificate.png)
 
 10. Open het bestand Handtekeningcertificaat in een teksteditor, kopieer alle gegevens in het bestand en plak de gegevens in het veld **Signing Certificate** in de Mitel Account-portal. 
 
-      ![image](./media/mitel-connect-tutorial/mitel-connect-signing-certificate.png)
+      ![Schermopname van het veld Handtekeningcertificaat.](./media/mitel-connect-tutorial/mitel-connect-signing-certificate.png)
 
 11. In het gedeelte **Mitel Connect instellen**, op de pagina **Op SAML gebaseerde aanmelding** van Azure Portal, gaat u als volgt te werk:
 
@@ -146,7 +146,7 @@ Als u MiCloud Connect met eenmalige aanmelding voor Azure AD wilt configureren, 
 
      1. Kopieer de URL in het veld **Azure AD-id** en plak deze in het veld **Entity ID** in de Mitel Account-portal.
          
-         ![image](./media/mitel-connect-tutorial/mitel-azure-set-up-connect.png)
+         ![Schermopname van de relatie tussen de op SAML gebaseerde aanmeldingspagina van de Azure-portal en de Motel Account-portal.](./media/mitel-connect-tutorial/mitel-azure-set-up-connect.png)
 
 12. Selecteer **Save** in het dialoogvenster **Connect Single Sign-On Settings** in de Mitel Account-portal.
 
@@ -204,7 +204,7 @@ In deze sectie hebt u Britta Simon in staat gesteld gebruik te maken van eenmali
 
 In deze sectie maakt u een gebruiker met de naam Britta Simon voor uw MiCloud Connect-account. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
-Zie het artikel [Adding a User](https://oneview.mitel.com/s/article/Adding-a-User-092815) (Gebruiker toevoegen) in de Mitel Knowledge Base voor meer informatie over het toevoegen van gebruikers in de Mitel Account-portal.
+Zie het artikel [Adding a User](https://shoretelcommunity.force.com/s/article/Adding-Users-092815) (Gebruiker toevoegen) in de Mitel Knowledge Base voor meer informatie over het toevoegen van gebruikers in de Mitel Account-portal.
 
 Maak een gebruiker voor uw MiCloud Connect-account met de volgende gegevens:
 
@@ -241,7 +241,7 @@ Als u het CloudLink-platform wilt configureren om eenmalige aanmelding voor Azur
     
        De pagina **Op SAML gebaseerde aanmelding** wordt geopend, waarin het gedeelte **Standaard SAML-configuratie** wordt weergegeven.
 
-       ![image](./media/mitel-connect-tutorial/mitel-azure-saml-settings.png)
+       ![Schermopname van de op SAML gebaseerde aanmeldingspagina met de Basic SAML-configuratie.](./media/mitel-connect-tutorial/mitel-azure-saml-settings.png)
 
 2. Het configuratiepaneel **Azure AD Single Sign On** in de CloudLink Accounts-portal openen:
 
@@ -251,33 +251,33 @@ Als u het CloudLink-platform wilt configureren om eenmalige aanmelding voor Azur
 
     1. Selecteer het tabblad **3rd party**. Er wordt een lijst met ondersteunde toepassingen van derden weergegeven. Selecteer de knop **Add** die is gekoppeld aan **Azure AD Single Sign On** en selecteer **Done**.
 
-       ![image](./media/mitel-connect-tutorial/mitel-cloudlink-integrations.png)
+       ![Schermopname van de pagina Integraties waar u een Eenmalige aanmelding van Azure kunt toevoegen.](./media/mitel-connect-tutorial/mitel-cloudlink-integrations.png)
 
        **Azure AD Single Sign On** is ingeschakeld voor het klantaccount en wordt toegevoegd aan het gedeelte **Integrations** van de pagina **Account Information** page.   
 
    1. Selecteer **Complete Setup**.
     
-      ![image](./media/mitel-connect-tutorial/mitel-cloudlink-complete-setup.png)
+      ![Schermopname van de optie Volledige installatie voor Eenmalige aanmelding van Azure AD.](./media/mitel-connect-tutorial/mitel-cloudlink-complete-setup.png)
       
       Het configuratiedeelvenster **Azure AD Single Sign On** wordt geopend.
       
-       ![image](./media/mitel-connect-tutorial/mitel-cloudlink-sso-setup.png)
+       ![Schermopname van de configuratie voor Eenmalige aanmelding van Azure AD.](./media/mitel-connect-tutorial/mitel-cloudlink-sso-setup.png)
        
        U wordt aangeraden het selectievakje bij **Enable Mitel Credentials (Optional)** in het gedeelte **Optional Mitel credentials** in te schakelen. Schakel dit selectievakje alleen in als u wilt dat de gebruiker zich niet alleen bij de CloudLink-toepassing aanmeldt via eenmalige aanmelding, maar ook met de Mitel-referenties.
 
 3. Selecteer in Azure Portal, vanaf de pagina **Op SAML gebaseerde aanmelding**, het pictogram **Bewerken** in het gedeelte **Standaard SAML-configuratie**. Het deelvenster **Standaard SAML-configuratie** wordt geopend.
 
-    ![image](./media/mitel-connect-tutorial/mitel-azure-saml-basic.png)
+    ![Schermopname van het deelvenster Basic SAML-configuratie met het pictogram Bewerken geselecteerd.](./media/mitel-connect-tutorial/mitel-azure-saml-basic.png)
  
  4. Kopieer de URL in het veld **Mitel Identifier (Entity ID)** in de CloudLink Accounts-portal en plak deze in het veld **Id (entiteits-id)** in Azure Portal.
 
  5. Kopieer de URL uit het veld **Reply URL (Assertion Consumer Service URL)** in de CloudLink Accounts-portal en plak deze in het veld **Antwoord-URL (URL voor Assertion Consumer Service)** in Azure Portal.  
     
-    ![image](./media/mitel-connect-tutorial/mitel-cloudlink-saml-mapping.png) 
+    ![Schermopname van de relatie tussen pagina's in de CloudLink Accounts-portal en de Azure-portal.](./media/mitel-connect-tutorial/mitel-cloudlink-saml-mapping.png) 
 
  6. In het tekstvak **Aanmeldings-URL** typt u de URL `https://accounts.mitel.io` om de CloudLink Accounts-portal als de Mitel-standaardtoepassing te gebruiken.
      
-     ![image](./media/mitel-connect-tutorial/mitel-cloudlink-sign-on-url.png)
+     ![Schermopname van het tekstvak Aanmelden bij URL.](./media/mitel-connect-tutorial/mitel-cloudlink-sign-on-url.png)
   
      > [!NOTE]
      > De Mitel-standaardtoepassing is de toepassing die wordt geopend wanneer een gebruiker de Mitel Connect-tegel in het toegangsvenster selecteert. Dit is ook de toepassing die wordt geopend als de gebruiker een testinstallatie configureert vanuit Azure AD.
@@ -286,14 +286,14 @@ Als u het CloudLink-platform wilt configureren om eenmalige aanmelding voor Azur
 
 8. Selecteer in het gedeelte **SAML-handtekeningcertificaat**, op de pagina **Op SAML gebaseerde aanmelding** in Azure Portal, de optie **Downloaden** naast **Certificaat (Base64)** om het **handtekeningcertificaat** te downloaden. Sla het certificaat op uw computer op.
   
-    ![image](./media/mitel-connect-tutorial/mitel-cloudlink-save-certificate.png)
+    ![Schermopname van de sectie SAML-handtekeningcertificaat, waar u een Base64-certificaat kunt downloaden.](./media/mitel-connect-tutorial/mitel-cloudlink-save-certificate.png)
 
 9. Open het bestand Handtekeningcertificaat in een teksteditor, kopieer alle gegevens in het bestand en plak de gegevens in het veld **Signing Certificate** in de CloudLink Accounts-portal.  
 
     > [!NOTE]
     > Als u meer dan één certificaat hebt, wordt u aangeraden ze na elkaar te plakken. 
        
-    ![image](./media/mitel-connect-tutorial/mitel-cloudlink-enter-certificate.png)
+    ![Schermopname van Stap twee van de procedure, waar u waarden invult vanuit uw Azure AD-integratie.](./media/mitel-connect-tutorial/mitel-cloudlink-enter-certificate.png)
 
 10. In het gedeelte **Mitel Connect instellen**, op de pagina **Op SAML gebaseerde aanmelding** van Azure Portal, gaat u als volgt te werk:
 
@@ -301,7 +301,7 @@ Als u het CloudLink-platform wilt configureren om eenmalige aanmelding voor Azur
 
      1. Kopieer de URL in het veld **Azure AD-id** en plak deze in het veld **IDP Identifier (Entity ID)** in de CloudLink Accounts-portal.
      
-        ![image](./media/mitel-connect-tutorial/mitel-cloudlink-copy-settings.png)
+        ![Schermopname van de bron voor de waarden die hier worden beschreven in Mintel Connect.](./media/mitel-connect-tutorial/mitel-cloudlink-copy-settings.png)
 
 11. Selecteer **Save** in het deelvenster **Azure AD Single Sign On** in de CloudLink Accounts-portal.
 

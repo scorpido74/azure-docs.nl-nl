@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: c66d3d6fd3ee0bcba01db61183f40cd3ccf3f39d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc2eb7ecb7f0587c065aac1cfb57cfae10b732ac
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797935"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168287"
 ---
 # <a name="troubleshoot-azure-farmbeats"></a>Problemen met Azure FarmBeats oplossen
 
@@ -174,7 +174,7 @@ Dat **wil zeggen**: er zijn andere apparaten aan het apparaat gekoppeld.
 
 Als u al toegang hebt gekregen en deze fout hebt geconstateerd, probeert u het opnieuw door de pagina te vernieuwen. Als de fout zich blijft voordoen, kunt u contact met ons opnemen met het fout bericht/de logboeken.
 
-![Project FarmBeats](./media/troubleshoot-azure-farmbeats/accelerator-troubleshooting-1.png)
+![Scherm opname waarin de autorisatie fout wordt weer gegeven.](./media/troubleshoot-azure-farmbeats/accelerator-troubleshooting-1.png)
 
 ### <a name="accelerator-issues"></a>Problemen met de Accelerator  
 
@@ -285,7 +285,7 @@ Dat **wil zeggen**: als een taak mislukt omdat het maximum aantal verbindingen i
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-in-datahub"></a>Azure Data Factory-taak Logboeken of App Service-logboeken verzamelen in Datahub
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Zoek in **het zoekvak naar de resource** groep FarmBeats Datahub.
 3. Zoek in het dash board van de **resource groep** naar het *datahublogs \* * -opslag account. Bijvoorbeeld *datahublogsmvxmq*.  
 4. Selecteer in de kolom **naam** het opslag account om het dash board van het **opslag account** weer te geven.
@@ -293,11 +293,11 @@ Dat **wil zeggen**: als een taak mislukt omdat het maximum aantal verbindingen i
 6. Selecteer **BLOB-containers**in het linkerdeel venster en selecteer vervolgens **taak-logboeken** voor Azure Data Factory Logboeken of **appinsights-logboeken** voor app service-Logboeken.
 7. Selecteer **downloaden** en down load de logboeken naar een lokale map op uw computer.
 
-    ![Project FarmBeats](./media/troubleshoot-azure-farmbeats/collecting-logs-manually-1.png)
+    ![Scherm opname van de gedownloade logboek bestanden.](./media/troubleshoot-azure-farmbeats/collecting-logs-manually-1.png)
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-for-accelerator"></a>Azure Data Factory-taak Logboeken of App Service logboeken voor de Accelerator verzamelen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Zoek in **het zoekvak naar de resource** groep FarmBeats Accelerator.
 3. Zoek het * \* opslag* account op in het dash board van de **resource groep** . Bijvoorbeeld *storagedop4k \* *.
 4. Selecteer het opslag account in de kolom **naam** om het dash board van het **opslag account** weer te geven.
@@ -327,26 +327,26 @@ Dat **wil zeggen**: als een taak mislukt omdat het maximum aantal verbindingen i
 > [!NOTE]
 > Als u de tags van de services binnen de resource groep wilt weer geven, klikt u op ' kolommen bewerken ' en voegt u ' Tags ' toe aan de weer gave van de resource groep
 
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-1.png" alt-text="Project FarmBeats":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-1.png" alt-text="Scherm afbeelding die de code SKU: Datahub markeert.":::
 
 3. Klik op de pagina overzicht van de Data Factory op **auteur en monitor**. Er wordt een nieuw tabblad geopend in uw browser. Klik op **monitor**
 
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="Project FarmBeats":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="Scherm afbeelding die de code SKU: Datahub markeert.":::
 
 4. Er wordt een lijst met pijplijn uitvoeringen weer geven die deel uitmaken van de weers-taak wordt uitgevoerd. Klik op de taak waarvoor u logboeken wilt verzamelen
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-3.png" alt-text="Project FarmBeats":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-3.png" alt-text="Scherm afbeelding die de code SKU: Datahub markeert.":::
 
 5. Op de overzichts pagina pijplijn ziet u de lijst met uitvoeringen van de activiteit. Noteer de run-Id's van de activiteiten waarvoor u logboeken wilt verzamelen
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-4.png" alt-text="Project FarmBeats":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-4.png" alt-text="Scherm afbeelding die de code SKU: Datahub markeert.":::
 
 6. Ga terug naar de resource groep FarmBeats in Azure Portal en klik op het opslag account met de naam **datahublogs-xxxx**
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-5.png" alt-text="Project FarmBeats":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-5.png" alt-text="Scherm afbeelding die de code SKU: Datahub markeert.":::
 
 7. Klik op **containers**  ->  **adfjobs**. Voer in het zoekvak de taak run-ID in die u in stap 5 hierboven hebt genoteerd.
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-6.png" alt-text="Project FarmBeats":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-6.png" alt-text="Scherm afbeelding die de code SKU: Datahub markeert.":::
 
 8. Het Zoek resultaat bevat de map met de logboeken die betrekking hebben op de taak. Down load de logboeken en verzend het naar farmbeatssupport@microsoft.com voor hulp bij fout opsporing in het probleem.

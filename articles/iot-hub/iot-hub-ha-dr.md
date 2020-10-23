@@ -7,16 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: philmea
-ms.openlocfilehash: d4a5ad36e9d6d71ad88d0b5c56b6079f34483347
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c665e30ed9b284f7c93cf8588b710c9f22457a0a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021424"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151679"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Hoge beschikbaarheid en herstel na noodgevallen van IoT Hub
 
-Als eerste stap voor het implementeren van een robuuste IoT-oplossing, moeten architecten, ontwikkel aars en zakelijke eigen aren de doel stellingen van de uptime definiëren voor de oplossingen die ze bouwen. Deze doel stellingen kunnen voornamelijk worden gedefinieerd op basis van specifieke zakelijke doel stellingen voor elk scenario. In deze context wordt in het artikel [technische richt lijnen voor Azure-bedrijfs continuïteit](https://docs.microsoft.com/azure/architecture/resiliency/) beschreven, waarmee u kunt denken over bedrijfs continuïteit en herstel na nood gevallen. Het document [nood herstel en hoge Beschik baarheid voor Azure-toepassingen](https://docs.microsoft.com/azure/architecture/reliability/disaster-recovery) biedt architectuur richtlijnen voor strategieën voor Azure-toepassingen om hoge beschik BAARHEID (ha) en herstel na nood gevallen (Dr) te kunnen uitvoeren.
+Als eerste stap voor het implementeren van een robuuste IoT-oplossing, moeten architecten, ontwikkel aars en zakelijke eigen aren de doel stellingen van de uptime definiëren voor de oplossingen die ze bouwen. Deze doel stellingen kunnen voornamelijk worden gedefinieerd op basis van specifieke zakelijke doel stellingen voor elk scenario. In deze context wordt in het artikel [technische richt lijnen voor Azure-bedrijfs continuïteit](/azure/architecture/resiliency/) beschreven, waarmee u kunt denken over bedrijfs continuïteit en herstel na nood gevallen. Het document [nood herstel en hoge Beschik baarheid voor Azure-toepassingen](/azure/architecture/reliability/disaster-recovery) biedt architectuur richtlijnen voor strategieën voor Azure-toepassingen om hoge beschik BAARHEID (ha) en herstel na nood gevallen (Dr) te kunnen uitvoeren.
 
 In dit artikel worden de HA-en DR-functies beschreven die specifiek door de IoT Hub-service worden aangeboden. De algemene gebieden die in dit artikel worden besproken, zijn:
 
@@ -64,7 +64,7 @@ Zodra de failoverbewerking voor de IoT-hub is voltooid, worden alle bewerkingen 
 >
 > - Als u Azure Functions of Azure Stream Analytics gebruikt om verbinding te maken met het ingebouwde eind punt van gebeurtenissen, moet u mogelijk **opnieuw opstarten**. Dit komt doordat tijdens de voorafgaande failover geen geldige offset meer geldig zijn.
 >
-> - Bij het door sturen naar de opslag wordt u aangeraden de blobs of bestanden weer te geven en vervolgens te herhalen, om ervoor te zorgen dat alle blobs of bestanden worden gelezen zonder dat er veronderstellingen worden gemaakt van de partitie. Het partitie bereik kan mogelijk worden gewijzigd tijdens een door micro soft geïnitieerde failover of hand matige failover. U kunt de [List blobs API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) gebruiken om de lijst met blobs of de [lijst ADLS Gen2-API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) voor de lijst met bestanden op te sommen. Zie [Azure Storage als een eind punt van een route ring](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint)voor meer informatie.
+> - Bij het door sturen naar de opslag wordt u aangeraden de blobs of bestanden weer te geven en vervolgens te herhalen, om ervoor te zorgen dat alle blobs of bestanden worden gelezen zonder dat er veronderstellingen worden gemaakt van de partitie. Het partitie bereik kan mogelijk worden gewijzigd tijdens een door micro soft geïnitieerde failover of hand matige failover. U kunt de [List blobs API](/rest/api/storageservices/list-blobs) gebruiken om de lijst met blobs of de [lijst ADLS Gen2-API](/rest/api/storageservices/datalakestoragegen2/path/list) voor de lijst met bestanden op te sommen. Zie [Azure Storage als een eind punt van een route ring](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint)voor meer informatie.
 
 ## <a name="microsoft-initiated-failover"></a>Door micro soft geïnitieerde failover
 

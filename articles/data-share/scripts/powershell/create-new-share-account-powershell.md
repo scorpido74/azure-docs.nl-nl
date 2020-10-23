@@ -1,20 +1,17 @@
 ---
-title: 'Power shell-script: nieuw Azure data share-account maken | Microsoft Docs'
+title: 'Power shell-script: nieuw Azure data share-account maken'
 description: Met dit Power shell-script maakt u een nieuw gegevens share-account.
-services: data-share
 author: joannapea
 ms.service: data-share
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
-ms.openlocfilehash: c3852dd5f1d3d3df8a982716ce5dab9426782869
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4608afc16398a4cd1fa47ee1ae2cd4a4489a3f96
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70307270"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221363"
 ---
 # <a name="use-powershell-to-create-a-data-share-account-in-azure"></a>Power shell gebruiken voor het maken van een gegevens share-account in azure
 
@@ -38,11 +35,11 @@ In dit script worden de volgende opdrachten gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzDataShareAccount](/powershell/module/az.datashare/new-azdatashareaccount?view=azps-2.6.0) | Hiermee maakt u een gegevens share-account. |
+| [New-AzDataShareAccount](/powershell/module/az.datashare/new-azdatashareaccount) | Hiermee maakt u een gegevens share-account. |
 |||
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Documentatie over Azure PowerShell](https://docs.microsoft.com/powershell/) voor meer informatie over Azure PowerShell.
+Zie [Documentatie over Azure PowerShell](/powershell/) voor meer informatie over Azure PowerShell.
 
 Aanvullende voor beelden van Power shell-scripts voor Azure data share vindt u in de [Azure data share Power shell](../../samples-powershell.md)-voor beelden.

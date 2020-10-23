@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 595977635937ec5dcf4a45a1d57524c1d3f41a6e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b3be17c672eb918c715602c7576c7d682badd925
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554371"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941001"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nimblex"></a>Zelfstudie: Azure Active Directory-integratie met Nimblex
 
@@ -132,19 +132,19 @@ Voer de volgende stappen uit als u eenmalige aanmelding bij Azure AD wilt config
 
 2. Klik rechtsboven op de pagina op het logo **Instellingen**.
 
-    ![Nimblex-instellingen](./media/nimblex-tutorial/tutorial_nimblex_settings.png)
+    ![Schermopname van het pictogram Instellingen.](./media/nimblex-tutorial/tutorial_nimblex_settings.png)
 
 3. Klik op de pagina **Configuratiescherm** onder de sectie **Beveiliging** op **Eenmalige aanmelding**.
 
-    ![Nimblex-instellingen](./media/nimblex-tutorial/tutorial_nimblex_single.png)
+    ![Schermopname met Eenmalige aanmelding geselecteerd in het menu Beveiliging.](./media/nimblex-tutorial/tutorial_nimblex_single.png)
 
 4. Selecteer op de pagina **Eenmalige aanmelding beheren** uw instantienaam en klik op **Bewerken**.
 
-    ![Nimblex saml](./media/nimblex-tutorial/tutorial_nimblex_saml.png)
+    ![Schermopname van Eenmalige aanmelding beheren waar u Bewerken kunt selecteren.](./media/nimblex-tutorial/tutorial_nimblex_saml.png)
 
 5. Voer op de pagina **SSO-provider** de volgende stappen uit:
 
-    ![Nimblex saml](./media/nimblex-tutorial/tutorial_nimblex_sso.png)
+    ![Schermopname van SSO-provider bewerken, waarin u de beschreven waarden kunt invoeren.](./media/nimblex-tutorial/tutorial_nimblex_sso.png)
 
     a. Voer in het tekstvak **Omschrijving** de instantienaam in.
 

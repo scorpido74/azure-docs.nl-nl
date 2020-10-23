@@ -1,20 +1,17 @@
 ---
-title: 'Power shell-script: Triggers van Azure data share moment opname maken en weer geven | Microsoft Docs'
+title: 'Power shell-script: Triggers voor moment opnamen van Azure data share maken en weer geven'
 description: Met dit Power shell-script worden deel momentopname triggers gemaakt en opgehaald.
-services: data-share
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
-ms.author: joanpo
-ms.openlocfilehash: 31d9754ddd9e9dfd0cca258901a6c8ab2c4a9cdb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05b70641873ab352ca92ac199d99c05b2fe0f4e6
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86497162"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221295"
 ---
 # <a name="use-powershell-to-create-and-share-snapshot-triggers"></a>Power shell gebruiken voor het maken en delen van moment opname triggers
 
@@ -47,12 +44,12 @@ In dit script worden de volgende opdrachten gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzDataShareTrigger](/powershell/module/az.datashare/new-azdatasharetrigger?view=azps-2.6.0) | Een moment opname van een share maken. |
-| [Get-AzDataShareTrigger](/powershell/module/az.datashare/get-azdatasharesynchronizationsetting?view=azps-2.6.0) | Hiermee worden de synchronisatie-instellingen van een synchronisatie van shares opgehaald. |
+| [New-AzDataShareTrigger](/powershell/module/az.datashare/new-azdatasharetrigger) | Een moment opname van een share maken. |
+| [Get-AzDataShareTrigger](/powershell/module/az.datashare/get-azdatasharesynchronizationsetting) | Hiermee worden de synchronisatie-instellingen van een synchronisatie van shares opgehaald. |
 |||
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Documentatie over Azure PowerShell](https://docs.microsoft.com/powershell/) voor meer informatie over Azure PowerShell.
+Zie [Documentatie over Azure PowerShell](/powershell/) voor meer informatie over Azure PowerShell.
 
 Aanvullende voor beelden van Power shell-scripts voor Azure data share vindt u in de [Azure data share Power shell](../../samples-powershell.md)-voor beelden.

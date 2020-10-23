@@ -1,18 +1,18 @@
 ---
-title: Azure-rollen en-machtigingen
+title: Register rollen en-machtigingen
 description: Gebruik op rollen gebaseerd toegangs beheer voor Azure (Azure RBAC) en de functie voor identiteits-en toegangs beheer (IAM) om nauw keurige machtigingen te bieden aan bronnen in een Azure container Registry.
 ms.topic: article
-ms.date: 08/17/2020
-ms.openlocfilehash: b8562d3e33cd49082d4ba4d8567d5f0c816070b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/14/2020
+ms.openlocfilehash: 097ccf89caf63d2a504d072cf04c2b534a57a031
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88661381"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207951"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Rollen en machtigingen Azure Container Registry
 
-De Azure Container Registry-service ondersteunt een aantal [ingebouwde Azure-rollen](../role-based-access-control/built-in-roles.md) die verschillende machtigings niveaus bieden voor een Azure container Registry. Gebruik [Azure RBAC (op rollen gebaseerd toegangs beheer)](../role-based-access-control/index.yml) om specifieke machtigingen toe te wijzen aan gebruikers, service-principals of andere identiteiten die moeten communiceren met een REGI ster. U kunt ook [aangepaste rollen](#custom-roles) met verfijnde machtigingen definiëren voor verschillende bewerkingen in een REGI ster.
+De Azure Container Registry-service ondersteunt een aantal [ingebouwde Azure-rollen](../role-based-access-control/built-in-roles.md) die verschillende machtigings niveaus bieden voor een Azure container Registry. Gebruik Azure [RBAC (op rollen gebaseerd toegangs beheer)](../role-based-access-control/index.yml) om specifieke machtigingen toe te wijzen aan gebruikers, service-principals of andere identiteiten die moeten communiceren met een REGI ster, bijvoorbeeld om container installatie kopieën te halen of te pushen. U kunt ook [aangepaste rollen](#custom-roles) met verfijnde machtigingen definiëren voor verschillende bewerkingen in een REGI ster.
 
 | Rol/machtiging       | [Toegang tot Resource Manager](#access-resource-manager) | [REGI ster maken/verwijderen](#create-and-delete-registry) | [Push-installatie kopie](#push-image) | [Pull-afbeelding](#pull-image) | [Afbeeldings gegevens verwijderen](#delete-image-data) | [Beleid wijzigen](#change-policies) |   [Installatie kopieën ondertekenen](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
@@ -24,13 +24,19 @@ De Azure Container Registry-service ondersteunt een aantal [ingebouwde Azure-rol
 | AcrDelete |  |  |  |  | X |  |  |
 | AcrImageSigner |  |  |  |  |  |  | X |
 
+## <a name="assign-roles"></a>Rollen toewijzen
+
+Zie [stappen voor het toevoegen van een roltoewijzing](../role-based-access-control/role-assignments-steps.md) voor stappen op hoog niveau om een roltoewijzing toe te voegen aan een bestaande gebruiker, groep, Service-Principal of beheerde identiteit. U kunt de Azure Portal, Azure CLI of andere Azure-hulpprogram ma's gebruiken.
+
+Wanneer u een Service-Principal maakt, moet u ook de toegang en machtigingen voor Azure-resources, zoals een container register, configureren. Zie [Azure container Registry verificatie met Service-principals](container-registry-auth-service-principal.md#create-a-service-principal)voor een voorbeeld script met behulp van de Azure cli.
+
 ## <a name="differentiate-users-and-services"></a>Gebruikers en services onderscheiden
 
 Telkens wanneer machtigingen worden toegepast, moet een best practice de meeste beperkte machtigingen voor een persoon of service opgeven voor het uitvoeren van een taak. De volgende machtigingen sets vertegenwoordigen een reeks mogelijkheden die door mensen en headless Services kunnen worden gebruikt.
 
 ### <a name="cicd-solutions"></a>CI/CD-oplossingen
 
-Wanneer `docker build` u opdrachten van CI/cd-oplossingen automatiseert, hebt u `docker push` mogelijkheden nodig. Voor deze headless service scenario's wordt u aangeraden de functie **AcrPush** toe te wijzen. Deze rol, in tegens telling tot de bredere rol **Inzender** , voor komt dat het account andere register bewerkingen uitvoert of Azure Resource Manager.
+Wanneer `docker build` u opdrachten van CI/cd-oplossingen automatiseert, hebt u `docker push` mogelijkheden nodig. Voor deze headless service scenario's wordt u aangeraden de **AcrPush** -rol toe te wijzen. Deze rol, in tegens telling tot de bredere rol **Inzender** , voor komt dat het account andere register bewerkingen uitvoert of Azure Resource Manager.
 
 ### <a name="container-host-nodes"></a>Container knooppunten
 

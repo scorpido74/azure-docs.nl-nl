@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abca66dbe80cecec2320256d8a736408de20b64f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 4bef201cbd14a4de0c785b5f86d534f27bfedb31
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968290"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363705"
 ---
 # <a name="customize-the-user-experience-for-azure-active-directory-self-service-password-reset"></a>De gebruikers ervaring voor Azure Active Directory self-service voor wachtwoord herstel aanpassen
 
@@ -50,7 +50,7 @@ Het e-mail adres van de standaard contact persoon wordt in de volgende volg orde
 
 In alle gevallen worden Maxi maal 100 ontvangers hiervan op de hoogte gebracht.
 
-Zie [beheerders rollen toewijzen in azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)voor meer informatie over de verschillende beheerders rollen en hoe u deze toewijst.
+Zie [beheerders rollen toewijzen in azure Active Directory](../roles/permissions-reference.md)voor meer informatie over de verschillende beheerders rollen en hoe u deze toewijst.
 
 ### <a name="disable-contact-your-administrator-emails"></a>E-mail berichten van contact opnemen met de beheerder uitschakelen
 

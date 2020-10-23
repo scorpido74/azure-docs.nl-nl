@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 9c7182205df8d276bece4758d6d4430864883d32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09ffac4f19d50d9a386110e1b89f8f147652a2cd
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85610639"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132003"
 ---
 # <a name="azure-firewall-dns-settings-preview"></a>DNS-instellingen Azure Firewall (preview-versie)
 
@@ -57,6 +57,7 @@ Als u een DNS-proxy wilt configureren, moet u de instelling van de DNS-servers v
 3. Selecteer **aangepast** onder **DNS-servers**.
 4. Voer het privé IP-adres van de firewall in.
 5. Selecteer **Opslaan**.
+6. Start de virtuele machines die zijn verbonden met het virtuele netwerk opnieuw op, zodat deze de nieuwe DNS-server instellingen krijgen. Vm's blijven hun huidige DNS-instellingen gebruiken totdat ze opnieuw zijn opgestart.
 
 #### <a name="enable-dns-proxy-preview"></a>DNS-proxy inschakelen (preview-versie)
 

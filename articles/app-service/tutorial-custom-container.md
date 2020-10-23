@@ -7,12 +7,12 @@ ms.author: msangapu
 keywords: azure-app-service, web-app, linux, windows, docker, container
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: f4b2aea0a6782b5484b2f6d15066d71990348596
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0cb1aa2d922db96eff21a128eaa60363b37db9d7
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91312053"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152097"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>Aangepaste software naar Azure App Service migreren met een aangepaste container
 
@@ -28,7 +28,7 @@ Vereisten voor het voltooien van deze zelfstudie:
 
 - <a href="https://hub.docker.com/" target="_blank">Registreren voor een Docker Hub-account</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Docker voor Windows installeren</a>.
-- <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Docker instellen voor het uitvoeren van Windows-containers</a>.
+- <a href="/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Docker instellen voor het uitvoeren van Windows-containers</a>.
 - <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019 installeren</a> met de workloads **ASP.NET- en webontwikkeling** en **Azure-ontwikkeling**. Als u Visual Studio 2019 al hebt geïnstalleerd:
     - Installeer de nieuwste updates in Visual Studio door te klikken op **Help** > **Check for Updates**.
     - Voeg de werkbelastingen toe in Visual Studio door te klikken op **Tools** > **Get Tools and Features**.

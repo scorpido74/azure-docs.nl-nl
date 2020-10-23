@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: duau
-ms.openlocfilehash: 5b7af755c9843456c25c8d18b78be48d83b96acd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 208fe9c5bfa20bf5b2daab296af9f955db67a33d
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569608"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204670"
 ---
 # <a name="expressroute-routing-requirements"></a>Routeringsvereisten voor ExpressRoute
 Als u ExpressRoute wilt gebruiken om verbinding te maken met Microsoft Cloud-services, moet u routering instellen en beheren. Sommige connecitiviteitsproviders bieden het instellen en beheren van routering aan als een beheerde service. Neem contact op met uw connectiviteitsprovider om na te gaan of ze deze service leveren. Als dat niet het geval is, moet u voldoen aan de volgende vereisten:
@@ -138,7 +138,7 @@ Standaardroutes zijn alleen toegestaan voor persoonlijke Azure-peeringsessies. I
 * U gebruikt door de gebruiker gedefinieerde routering om internetconnectiviteit toe te staan voor elk subnet dat internetconnectiviteit vereist.
 
 > [!NOTE]
-> Wanneer standaardroutes worden geadverteerd, wordt de activering van Windows- en andere VM-licenties verbroken. Volg [deze](https://docs.microsoft.com/archive/blogs/mast/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling) instructies als u dit wilt omzeilen.
+> Wanneer standaardroutes worden geadverteerd, wordt de activering van Windows- en andere VM-licenties verbroken. Volg [deze](/archive/blogs/mast/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling) instructies als u dit wilt omzeilen.
 > 
 > 
 
@@ -258,6 +258,7 @@ Daarnaast worden voorvoegsels door Microsoft gemarkeerd op basis van de service 
 | Exchange Online |12076:5110 |
 | SharePoint Online |12076:5120 |
 | Skype voor Bedrijven Online |12076:5130 |
+| Azure Active Directory |12076:5160 |
 | Andere online services van Office 365 |12076:5200 |
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 06db7b46d095a79177b80bba6df3d5e9aadad16b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d6b7122963b51619f26b8d02a8be4ad39261afb
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766973"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147691"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub-berichten maken en lezen
 
@@ -24,7 +24,7 @@ IoT Hub definieert een gemeen schappelijke bericht indeling voor alle protocolle
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-IoT Hub implementeert apparaat-naar-Cloud-berichten met behulp van een streaming-berichten patroon. IoT Hub apparaat-naar-Cloud-berichten zijn meer soort gelijke [Event hubs](/azure/event-hubs/) *gebeurtenissen* dan [Service Bus](/azure/service-bus-messaging/) *berichten* dat er een groot aantal gebeurtenissen door de service wordt door gegeven die door meerdere lezers kunnen worden gelezen.
+IoT Hub implementeert apparaat-naar-Cloud-berichten met behulp van een streaming-berichten patroon. IoT Hub apparaat-naar-Cloud-berichten zijn meer soort gelijke [Event hubs](../event-hubs/index.yml) *gebeurtenissen* dan [Service Bus](../service-bus-messaging/index.yml) *berichten* dat er een groot aantal gebeurtenissen door de service wordt door gegeven die door meerdere lezers kunnen worden gelezen.
 
 Een IoT Hub bericht bestaat uit:
 

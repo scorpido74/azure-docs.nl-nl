@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/17/2020
-ms.openlocfilehash: 453821e99f53a90a076ff13f010f2031a055cbf6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e7da02f7dd7e8fb19e031b814624b289730b3ee
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444173"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367717"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>Zelfstudie: Azure AD-gebruikers maken met behulp van Azure AD-toepassingen
 
@@ -65,7 +65,7 @@ In deze zelfstudie leert u het volgende:
     Zie de opdracht [Set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver) voor meer informatie.
 
     > [!IMPORTANT]
-    > Als een Azure AD-identiteit is ingesteld voor de logische Azure SQL-server, moet de machtiging [**Adreslijstlezers**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) zijn verleend aan de identiteit. We doorlopen deze stap in de volgende sectie. **Sla deze stap niet over** aangezien Azure AD-verificatie dan niet meer werkt.
+    > Als een Azure AD-identiteit is ingesteld voor de logische Azure SQL-server, moet de machtiging [**Adreslijstlezers**](../../active-directory/roles/permissions-reference.md#directory-readers) zijn verleend aan de identiteit. We doorlopen deze stap in de volgende sectie. **Sla deze stap niet over** aangezien Azure AD-verificatie dan niet meer werkt.
 
     - Als u in het verleden de opdracht [New-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlserver) met de parameter `AssignIdentity` hebt gebruikt om een nieuwe SQL-server te maken, moet u de opdracht [Set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver) later uitvoeren als een afzonderlijke opdracht om deze eigenschap in te schakelen in Azure Fabric.
 

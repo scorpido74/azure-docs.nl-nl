@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 969294f264e6744e893322864eed85e02c615126
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b503c7494d1b5e1821718fab5577bca88be65169
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87908813"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442283"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Azure Active Directory B2B-samenwerkings gebruikers toevoegen aan de Azure Portal
 
@@ -25,7 +25,7 @@ Als gebruiker aan wie een van de beperkte beheerders rollen is toegewezen, kunt 
 Nadat u een gast gebruiker aan de Directory hebt toegevoegd, kunt u de gast gebruiker een rechtstreekse koppeling sturen naar een gedeelde app, of de gast gebruiker kan klikken op de opname-URL in het e-mail bericht. Zie voor meer informatie over het inwisselings proces [uitnodiging voor B2B-samen werking](redemption-experience.md).
 
 > [!IMPORTANT]
-> Volg de stappen in de [procedure: de privacygegevens van uw organisatie toevoegen in azure Active Directory](https://aka.ms/adprivacystatement) om de URL van de privacyverklaring van uw organisatie toe te voegen. Als onderdeel van de eerste keer dat een uitnodiging wordt inwisseld, moet een uitgenodigde gebruiker toestemming geven om door te gaan. 
+> Volg de stappen in de [procedure: de privacygegevens van uw organisatie toevoegen in azure Active Directory](../fundamentals/active-directory-properties-area.md) om de URL van de privacyverklaring van uw organisatie toe te voegen. Als onderdeel van de eerste keer dat een uitnodiging wordt inwisseld, moet een uitgenodigde gebruiker toestemming geven om door te gaan. 
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -124,4 +124,3 @@ Als een gast gebruiker de uitnodiging nog niet heeft ingewisseld, kunt u de uitn
 
 - Als u wilt weten hoe niet-Azure AD-beheerders B2B-gast gebruikers kunnen toevoegen, raadpleegt u [Hoe kunnen informatie werkers B2B-samenwerkings gebruikers toevoegen?](add-users-information-worker.md)
 - Zie [de elementen van het e-mail bericht uitnodiging voor B2B-samen werking](invitation-email-elements.md)voor meer informatie over de uitnodigings-e-mail.
-

@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het oplossen van fouten die 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 908c7e4bc0ca15d952ef1d4d969c5bf686e0bdc3
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 6da91248c197eae12fbc59f2da8c5294d95117b6
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058111"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173843"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Back-upfouten op virtuele machines van Azure oplossen
 
@@ -129,9 +129,9 @@ Als u wilt controleren, gaat u naar ***systeem-en logboeken toepassings logboeke
 
 Oplossing:
 
-* Controleer op mogelijkheden voor het verdelen van de belasting over de VM-schijven. Hierdoor wordt de belasting van enkele schijven verminderd. U kunt [de limiet voor IOPs controleren door Diagnostische gegevens op opslag niveau in te scha kelen](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics#install-and-run-performance-diagnostics-on-your-vm).
+* Controleer op mogelijkheden voor het verdelen van de belasting over de VM-schijven. Hierdoor wordt de belasting van enkele schijven verminderd. U kunt [de limiet voor IOPs controleren door Diagnostische gegevens op opslag niveau in te scha kelen](../virtual-machines/troubleshooting/performance-diagnostics.md#install-and-run-performance-diagnostics-on-your-vm).
 * Wijzig het back-upbeleid voor het uitvoeren van back-ups tijdens piek uren, wanneer de belasting van de virtuele machine op het laagste niveau is.
-* Voer een upgrade uit voor de Azure-schijven ter ondersteuning van hogere IOPs. [Meer informatie vindt u hier](https://docs.microsoft.com/azure/virtual-machines/disks-types)
+* Voer een upgrade uit voor de Azure-schijven ter ondersteuning van hogere IOPs. [Meer informatie vindt u hier](../virtual-machines/disks-types.md)
 
 ### <a name="extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state"></a>ExtensionFailedVssServiceInBadState - Momentopname bewerking is mislukt omdat de VSS-service (Volume Shadow Copy Service) een ongeldige status heeft
 
@@ -157,15 +157,15 @@ Fout code: UserErrorSkuNotAvailable-fout bericht: het maken van de VM is mislukt
 
 Deze fout treedt op omdat de grootte van de virtuele machine die tijdens de herstel bewerking is geselecteerd, niet wordt ondersteund. <br>
 
-Gebruik de optie [schijven herstellen](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) tijdens de herstel bewerking om dit probleem op te lossen. Gebruik deze schijven om een VM te maken op basis van de lijst met [beschik bare ondersteunde VM-grootten](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-compute-support) met behulp van [Power shell-cmdlets](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks).
+Gebruik de optie [schijven herstellen](./backup-azure-arm-restore-vms.md#restore-disks) tijdens de herstel bewerking om dit probleem op te lossen. Gebruik deze schijven om een VM te maken op basis van de lijst met [beschik bare ondersteunde VM-grootten](./backup-support-matrix-iaas.md#vm-compute-support) met behulp van [Power shell-cmdlets](./backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
 
 ### <a name="usererrormarketplacevmnotsupported---vm-creation-failed-due-to-market-place-purchase-request-being-not-present"></a>Het maken van een UserErrorMarketPlaceVMNotSupported-VM is mislukt omdat de markt plaatsings aanvraag niet aanwezig is
 
 Fout code: UserErrorMarketPlaceVMNotSupported-fout bericht: het maken van de virtuele machine is mislukt omdat de aankoop aanvraag voor de markt plaats niet aanwezig is.
 
-Azure Backup ondersteunt het maken van back-ups en het herstellen van Vm's die beschikbaar zijn in azure Marketplace. Deze fout treedt op wanneer u een virtuele machine probeert te herstellen (met een specifieke instelling voor het abonnement/de uitgever) die niet meer beschikbaar is in azure Marketplace, kunt u [hier meer informatie](https://docs.microsoft.com/legal/marketplace/participation-policy#offering-suspension-and-removal)vinden.
+Azure Backup ondersteunt het maken van back-ups en het herstellen van Vm's die beschikbaar zijn in azure Marketplace. Deze fout treedt op wanneer u een virtuele machine probeert te herstellen (met een specifieke instelling voor het abonnement/de uitgever) die niet meer beschikbaar is in azure Marketplace, kunt u [hier meer informatie](/legal/marketplace/participation-policy#offering-suspension-and-removal)vinden.
 
-* U kunt dit probleem oplossen door de optie [schijven herstellen](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) te gebruiken tijdens de herstel bewerking en vervolgens [Power shell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks) -of [Azure cli](https://docs.microsoft.com/azure/backup/tutorial-restore-disk) -CMDLETS te gebruiken om de virtuele machine te maken met de meest recente Marketplace-informatie die overeenkomt met de virtuele machine.
+* U kunt dit probleem oplossen door de optie [schijven herstellen](./backup-azure-arm-restore-vms.md#restore-disks) te gebruiken tijdens de herstel bewerking en vervolgens [Power shell](./backup-azure-vms-automation.md#create-a-vm-from-restored-disks) -of [Azure cli](./tutorial-restore-disk.md) -CMDLETS te gebruiken om de virtuele machine te maken met de meest recente Marketplace-informatie die overeenkomt met de virtuele machine.
 * Als de uitgever geen Marketplace-informatie heeft, kunt u de gegevens schijven gebruiken om uw gegevens op te halen en kunt u deze koppelen aan een bestaande virtuele machine.
 
 ### <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure-fout bij het parseren van de configuratie voor de back-upextensie
@@ -321,9 +321,19 @@ Als u een Azure Policy hebt dat de [Tags in uw omgeving bepaalt](../governance/p
 
 Als u na het terugzetten de schijven offline hebt gezet, kunt u het volgende doen:
 
-* Controleer of de computer waarop het script wordt uitgevoerd, voldoet aan de vereisten van het besturings systeem. [Meer informatie](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#system-requirements).  
-* Zorg ervoor dat u niet naar dezelfde bron herstelt. u [vindt hier meer informatie](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#original-backed-up-machine-versus-another-machine).
+* Controleer of de computer waarop het script wordt uitgevoerd, voldoet aan de vereisten van het besturings systeem. [Meer informatie](./backup-azure-restore-files-from-vm.md#system-requirements).  
+* Zorg ervoor dat u niet naar dezelfde bron herstelt. u [vindt hier meer informatie](./backup-azure-restore-files-from-vm.md#original-backed-up-machine-versus-another-machine).
 
+### <a name="usererrorinstantrpnotfound---restore-failed-because-the-snapshot-of-the-vm-was-not-found"></a>UserErrorInstantRpNotFound-herstel is mislukt omdat de moment opname van de virtuele machine niet is gevonden
+
+Fout code: UserErrorInstantRpNotFound <br>
+Fout bericht: het herstellen is mislukt omdat de moment opname van de virtuele machine niet is gevonden. De moment opname is verwijderd, controleer.<br>
+
+Deze fout treedt op wanneer u probeert te herstellen vanaf een herstel punt dat niet naar de kluis is overgebracht en is verwijderd in de momentopname fase. 
+<br>
+U kunt dit probleem oplossen door de virtuele machine te herstellen vanaf een ander herstel punt.<br>
+
+#### <a name="common-errors"></a>Algemene fouten 
 | Foutdetails | Tijdelijke oplossing |
 | --- | --- |
 | Het herstellen is mislukt vanwege een interne cloud fout. |<ol><li>De Cloud service waarnaar u wilt herstellen, is geconfigureerd met DNS-instellingen. U kunt het volgende controleren: <br>**$Deployment = Get-AzureDeployment-servicenaam "servicenaam"-sleuf "productie" Get-AzureDns-DnsSettings $Deployment. DnsSettings**.<br>Als het **adres** is geconfigureerd, worden de DNS-instellingen geconfigureerd.<br> <li>De Cloud service waarnaar u wilt herstellen, is geconfigureerd met **ReservedIP**, en bestaande vm's in de Cloud service hebben de status gestopt. U kunt controleren of een Cloud service een IP-adres heeft gereserveerd met behulp van de volgende Power shell-cmdlets: **$Deployment = Get-AzureDeployment-ServiceName "servicenaam"-sleuf "Production" $DEP. ReservedIPName**. <br><li>U probeert een virtuele machine met de volgende speciale netwerk configuraties te herstellen in dezelfde Cloud service: <ul><li>Virtuele machines onder load balancer configuratie, intern en extern.<li>Virtuele machines met meerdere gereserveerde Ip's. <li>Virtuele machines met meerdere Nic's. </ul><li>Selecteer een nieuwe Cloud service in de gebruikers interface of Zie [herstel overwegingen](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) voor vm's met speciale netwerk configuraties.</ol> |

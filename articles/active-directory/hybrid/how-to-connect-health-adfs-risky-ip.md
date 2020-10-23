@@ -16,12 +16,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24f8a60c5b955096f1661877416936b747a16979
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad03942a2200c57475cf8a81d0fb08d475ec6964
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91306392"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458029"
 ---
 # <a name="risky-ip-report-public-preview"></a>Risk ante IP-rapport (open bare preview)
 AD FS klanten kunnen wacht woord verificatie-eind punten beschikbaar stellen aan Internet om verificatie services te bieden aan eind gebruikers die toegang hebben tot SaaS-toepassingen, zoals Microsoft 365. In dat geval kunnen criminelen aanmeldpogingen uitvoeren op uw AD FS-systeem om het wachtwoord van een eindgebruiker te achterhalen en toegang te krijgen tot toepassingsresources. AD FS biedt de extranetfunctionaliteit voor accountvergrendeling om dergelijke aanvallen te voorkomen vanaf AD FS in Windows Server 2012 R2. Als u een lagere versie gebruikt, raden we u ten zeerste aan uw AD FS-systeem naar Windows Server 2016 te upgraden. <br />
@@ -35,7 +35,7 @@ Daarnaast is het mogelijk dat vanaf één IP-adres meerdere aanmeldpogingen voor
 
 > [!NOTE]
 > Om dit rapport te gebruiken, moet u controles voor AD FS hebben ingeschakeld. Ga voor meer informatie naar [Controles voor AD FS inschakelen](how-to-connect-health-agent-install.md#enable-auditing-for-ad-fs). <br />
-> Voor toegang tot de preview-versie is een machtiging als Globale beheerder of [Beveiligingslezer](../../role-based-access-control/built-in-roles.md#security-reader) vereist.  
+> Voor toegang tot de preview-versie is een machtiging als Globale beheerder of [Beveiligingslezer](../../role-based-access-control/built-in-roles.md#security-reader) vereist.  
 > 
 
 ## <a name="what-is-in-the-report"></a>Wat is er in het rapport?
@@ -79,16 +79,16 @@ Met behulp van de functie **Downloaden** kan de volledige lijst met riskante IP-
 Beheerders van het rapport kunnen met de **Meldingsinstellingen** op de hoogte worden gehouden. De e-mailmelding voor riskante IP-adressen is standaard uitgeschakeld. U kunt de melding inschakelen door de knop onder 'E-mailmeldingen ontvangen voor een rapport van IP-adressen waarvoor de drempelwaarden voor mislukte aanmeldingen zijn overschreden' in te schakelen. Net als in de algemene meldingsinstellingen in Connect Health kunt u hier de ontvangerslijst voor Riskant IP-adres-rapporten aanpassen. U kunt ook alle globale beheerders informeren bij het maken van de wijziging. 
 
 ## <a name="configure-threshold-settings"></a>Drempel instellingen configureren
-De drempelwaarde voor waarschuwingen kan via de drempelwaarde-instellingen worden bijgewerkt. De drempelwaarde is in het begin standaard ingesteld in het systeem. Er zijn vier categorieën in de drempelwaarde-instellingen voor Riskant IP-adres-rapporten:
+De drempelwaarde voor waarschuwingen kan via de drempelwaarde-instellingen worden bijgewerkt. De drempelwaarde is in het begin standaard ingesteld in het systeem. De standaard waarden worden hieronder gegeven. Er zijn vier categorieën in de drempelwaarde-instellingen voor Riskant IP-adres-rapporten:
 
 ![Portal voor Azure AD Connect Health](./media/how-to-connect-health-adfs/report4d.png)
 
 | Drempelwaarde-item | Beschrijving |
 | --- | --- |
-| (Slechte U/P + vergrendeling van het extranet) / dag  | Ingestelde drempelwaarde per **dag** voor het rapporteren van de activiteit en het activeren van een melding wanneer het aantal onjuiste wachtwoordpogingen plus het aantal extranetvergrendelingen is overschreden. |
-| (Slechte U/P + vergrendeling van het extranet) / uur | Ingestelde drempelwaarde per **uur** voor het rapporteren van de activiteit en het activeren van een melding wanneer het aantal onjuiste wachtwoordpogingen plus het aantal extranetvergrendelingen is overschreden. |
-| Vergrendeling van het extranet / dag | Ingestelde drempelwaarde per **dag** voor het rapporteren van de activiteit en het activeren van een melding wanneer het aantal extranetvergrendelingen is overschreden. |
-| Vergrendeling van het extranet / uur| Ingestelde drempelwaarde per **uur** voor het rapporteren van de activiteit en het activeren van een melding wanneer het aantal extranetvergrendelingen is overschreden. |
+| (Slechte U/P + vergrendeling van het extranet) / dag  | Ingestelde drempelwaarde per **dag** voor het rapporteren van de activiteit en het activeren van een melding wanneer het aantal onjuiste wachtwoordpogingen plus het aantal extranetvergrendelingen is overschreden. De standaard waarde is 100.|
+| (Slechte U/P + vergrendeling van het extranet) / uur | Ingestelde drempelwaarde per **uur** voor het rapporteren van de activiteit en het activeren van een melding wanneer het aantal onjuiste wachtwoordpogingen plus het aantal extranetvergrendelingen is overschreden. De standaard waarde is 50.|
+| Vergrendeling van het extranet / dag | Ingestelde drempelwaarde per **dag** voor het rapporteren van de activiteit en het activeren van een melding wanneer het aantal extranetvergrendelingen is overschreden. De standaardwaarde is 50.|
+| Vergrendeling van het extranet / uur| Ingestelde drempelwaarde per **uur** voor het rapporteren van de activiteit en het activeren van een melding wanneer het aantal extranetvergrendelingen is overschreden. De standaard waarde is 25|
 
 > [!NOTE]
 > - Een wijziging van de drempelwaarde van het rapport wordt na een uur toegepast. 

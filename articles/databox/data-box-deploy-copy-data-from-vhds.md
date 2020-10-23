@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 9af4de51e94a1be118211e2bb4404926656fedf6
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 28232981d007e7be04d520ec46739408d03d90b4
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91739864"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124010"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>Zelfstudie: Data Box gebruiken om gegevens als beheerde schijven in Azure te importeren
 
@@ -38,7 +38,7 @@ Zorg voordat u begint voor het volgende:
 4. U hebt het volgende gelezen:
 
     - Ondersteunde [grootten voor beheerde schijven in Azure-objectgroottelimieten](data-box-limits.md#azure-object-size-limits).
-    - [Inleiding tot beheerde Azure-schijven](/azure/virtual-machines/windows/managed-disks-overview). 
+    - [Inleiding tot beheerde Azure-schijven](../virtual-machines/managed-disks-overview.md). 
 
 5. U hebt een kopie van de brongegevens onderhouden totdat u hebt bevestigd dat de gegevens met Data Box naar Azure Storage zijn overgebracht.
 
@@ -183,4 +183,3 @@ Ga naar de volgende zelfstudie om te lezen hoe u uw Data Box naar Microsoft verz
 
 > [!div class="nextstepaction"]
 > [Uw Azure Data Box verzenden naar Microsoft](./data-box-deploy-picked-up.md)
-

@@ -97,8 +97,6 @@
               href: howto-v1-enable-sso-android.md
             - name: SSO inschakelen in iOS
               href: howto-v1-enable-sso-ios.md
-            - name: Fouten opsporen van op SAML gebaseerde SSO
-              href: howto-v1-debug-saml-sso-issues.md
         - name: Claims configureren
           items:
             - name: Rolclaims configureren

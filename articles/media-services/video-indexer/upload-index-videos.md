@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 722db99da3c46a4ea1e31ed329a8e3448cc5626b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ea1df2937c6ae771407e4adf839c9ff0fa9f7f5
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268822"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218952"
 ---
 # <a name="upload-and-index-your-videos"></a>Uw video's uploaden en indexeren  
 
@@ -72,15 +72,15 @@ Zie het artikel [invoercontainer/bestandsindelingen](../latest/media-encoder-sta
 > De naam van de video mag niet langer zijn dan 80 tekens.
 
 1. Registreer u op de [Video Indexer](https://www.videoindexer.ai/)-website.
-2. Als u een video wilt uploaden, drukt u op de knop of link **Uploaden**.
+1. Als u een video wilt uploaden, drukt u op de knop of link **Uploaden**.
 
-    ![Uploaden](./media/video-indexer-get-started/video-indexer-upload.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/video-indexer-upload.png" alt-text="Uploaden":::
+1. Zodra uw video is geüpload, start Video Indexer met het indexeren en analyseren van de video.
 
-    Zodra uw video is geüpload, start Video Indexer met het indexeren en analyseren van de video.
-
-    ![Geüpload](./media/video-indexer-get-started/video-indexer-uploaded.png) 
-
-    Wanneer Video Indexer klaar is met analyseren, ontvangt u een melding met een link naar uw video en een korte beschrijving van wat is gevonden in uw video. Bijvoorbeeld: mensen, onderwerpen, OCR's.
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="Uploaden":::
+1. Zodra Video Indexer klaar is met analyseren, ontvangt u een e-mail met een koppeling naar uw video en een korte beschrijving van wat er in uw video is gevonden. Bijvoorbeeld: mensen, onderwerpen, OCR's.
 
 ## <a name="upload-and-index-with-api"></a><a name="apis"></a>Uploaden en indexeren met API
 

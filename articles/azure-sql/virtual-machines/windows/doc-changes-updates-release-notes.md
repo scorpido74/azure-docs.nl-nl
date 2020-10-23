@@ -10,18 +10,24 @@ ms.service: virtual-machines-sql
 ms.topic: reference
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 09/21/2020
-ms.openlocfilehash: 6e2665a413b3d43f7e1b294ebfc390c57d995f29
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: d05b603d3f854d919df43e633449e37301a5e77d
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758639"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168321"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Wijzigingen in de documentatie voor SQL Server op Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Met Azure kunt u een virtuele machine (VM) implementeren met een installatie kopie van SQL Server ingebouwde. In dit artikel vindt u een overzicht van de wijzigingen in de documentatie die zijn gekoppeld aan nieuwe functies en verbeteringen in de recente releases van [SQL Server op Azure virtual machines](https://azure.microsoft.com/services/virtual-machines/sql-server/). 
+
+## <a name="october-2020"></a>Oktober 2020
+
+| Wijzigingen | Details |
+| --- | --- |
+| **DNN voor AG** | U kunt nu een [DNN-listener (Distributed Network name)](availability-group-distributed-network-name-dnn-listener-configure.md) configureren voor SQL Server 2019 CU8 en hoger om de traditionele [VNN-listener](availability-group-overview.md#connectivity)te vervangen, zodat er geen Azure Load Balancer hoeft te worden.   | 
 
 ## <a name="september-2020"></a>September 2020
 

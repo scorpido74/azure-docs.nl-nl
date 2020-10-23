@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/02/2020
-ms.openlocfilehash: ab37fcdb4012394f1c5131a23f7c67063d3d6e37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/20/2020
+ms.openlocfilehash: 66d420a902cbfb56ece75646ee39bbba774b6208
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825764"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92312418"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Overzicht van Azure Monitor agents
 
@@ -60,7 +60,7 @@ Gebruik de Azure Monitor agent als u het volgende moet doen:
 - Gegevens verzenden naar Azure Monitor logboeken en Azure Monitor metrieken voor analyse met Azure Monitor. 
 - Gegevens verzenden naar Azure Storage voor archiveren.
 - Gegevens verzenden naar hulpprogram ma's van derden met behulp van [Azure Event hubs](diagnostics-extension-stream-event-hubs.md).
-- Beheer de beveiliging van uw virtuele machines met behulp van [Azure Security Center](../../security-center/security-center-intro.md)  of [Azure Sentinel](../../sentinel/overview.md). (Niet beschikbaar in de preview-versie.)
+- Beheer de beveiliging van uw virtuele machines met behulp van [Azure Security Center](../../security-center/security-center-introduction.md)  of [Azure Sentinel](../../sentinel/overview.md). (Niet beschikbaar in de preview-versie.)
 
 De beperkingen van de Azure Monitor-agent zijn:
 
@@ -82,7 +82,7 @@ Gebruik de Log Analytics agent als u het volgende moet doen:
 * Gegevens verzenden naar een Log Analytics-werk ruimte om te profiteren van de functies die worden ondersteund door [Azure monitor-logboeken](data-platform-logs.md) , zoals [logboek query's](../log-query/log-query-overview.md).
 * Gebruik [Azure monitor voor VM's](../insights/vminsights-overview.md) waarmee u uw virtuele machines op schaal kunt bewaken en de processen en afhankelijkheden van andere bronnen en externe processen bewaakt.  
 * Beheer de beveiliging van uw virtuele machines met behulp van [Azure Security Center](../../security-center/security-center-intro.md)  of [Azure Sentinel](../../sentinel/overview.md).
-* Gebruik [Azure Automation update beheer](../../automation/update-management/update-mgmt-overview.md), [Azure Automation status configuratie](../../automation/automation-dsc-overview.md)of [Azure Automation wijzigingen bijhouden en inventaris](../../automation/change-tracking.md) om een uitgebreid beheer van uw Azure-vm's te leveren
+* Gebruik [Azure Automation update beheer](../../automation/update-management/update-mgmt-overview.md), [Azure Automation status configuratie](../../automation/automation-dsc-overview.md)of [Azure Automation wijzigingen bijhouden en inventaris](../../automation/change-tracking/overview.md) om een uitgebreid beheer van uw Azure-vm's te leveren
 * Gebruik verschillende [oplossingen](../monitor-reference.md#insights-and-core-solutions) voor het bewaken van een bepaalde service of toepassing.
 
 De beperkingen van de Log Analytics-agent zijn:
@@ -148,9 +148,9 @@ De volgende tabellen geven een lijst van de besturings systemen die worden onder
 | Windows Server 2012 R2                                   | X | X | X | X |
 | Windows Server 2012                                      | X | X | X | X |
 | Windows Server 2008 R2                                   |   | X | X | X |
-| Windows 10 Enterprise<br>(inclusief meerdere sessies) en Pro  | X | X | X | X |
-| Windows 8 Enter prise en Pro                             |   | X | X |   |
-| Windows 7 SP1                                            |   | X | X |   |
+| Windows 10 Enterprise<br>(inclusief meerdere sessies) en Pro<br>(Alleen server scenario's)  | X | X | X | X |
+| Windows 8 Enter prise en Pro<br>(Alleen server scenario's)  |   | X | X |   |
+| Windows 7 SP1<br>(Alleen server scenario's)                 |   | X | X |   |
 
 
 ### <a name="linux"></a>Linux
@@ -162,26 +162,26 @@ De volgende tabellen geven een lijst van de besturings systemen die worden onder
 | CentOS Linux 7                                           | X | X |   | X |
 | CentOS Linux 7,8                                         | X | X | X | X |
 | CentOS Linux 7,6                                         | X | X | X | X |
-| CentOS Linux 6                                           | X | X |   |   |
-| CentOS Linux 6.5 +                                        | X | X |   | X |
+| CentOS Linux 6                                           |   | X |   |   |
+| CentOS Linux 6.5 +                                        |   | X |   | X |
 | Debian 10                                                | X |   |   |   |
 | Debian 9                                                 | X | X | x | X |
 | Debian 8                                                 |   | X | X | X |
 | Debian 7                                                 |   |   |   | X |
 | OpenSUSE 13.1 +                                           |   |   |   | X |
 | Oracle Linux 7                                           | X | X |   | X |
-| Oracle Linux 6                                           | X | X |   |   |
-| Oracle Linux 6.4 +                                        | X | X |   | X |
+| Oracle Linux 6                                           |   | X |   |   |
+| Oracle Linux 6.4 +                                        |   | X |   | X |
 | Red Hat Enterprise Linux Server 8                        |   | X |   |   |
 | Red Hat Enterprise Linux Server 7                        | X | X | X | X |
-| Red Hat Enterprise Linux Server 6                        | X | X | X |   |
-| Red Hat Enterprise Linux Server 6,7 +                     | X | X | X | X |
+| Red Hat Enterprise Linux Server 6                        |   | X | X |   |
+| Red Hat Enterprise Linux Server 6,7 +                     |   | X | X | X |
 | SUSE Linux Enterprise Server 15                          | X | X |   |   |
 | SUSE Linux Enterprise Server 12                          | X | X | X | X |
 | Ubuntu 20,04 LTS                                         |   | X |   |   |
 | Ubuntu 18.04 LTS                                         | X | X | X | X |
 | Ubuntu 16.04 LTS                                         | X | X | X | X |
-| Ubuntu 14,04 LTS                                         | X | X |   | X |
+| Ubuntu 14,04 LTS                                         |   | X |   | X |
 
 
 #### <a name="dependency-agent-linux-kernel-support"></a>Ondersteuning voor Linux-kernel van afhankelijkheids agent
@@ -212,4 +212,3 @@ Meer informatie over elk van de agents vindt u op het volgende:
 - [Overzicht van de Log Analytics-agent](log-analytics-agent.md)
 - [Overzicht van Azure Diagnostics-extensie](diagnostics-extension-overview.md)
 - [Aangepaste metrische gegevens verzamelen voor een virtuele Linux-machine met de InfluxData-Telegraf-agent](collect-custom-metrics-linux-telegraf.md)
-

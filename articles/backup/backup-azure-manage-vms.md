@@ -3,12 +3,12 @@ title: Back-ups van Azure-VM'S beheren en bewaken
 description: Meer informatie over het beheren en bewaken van back-ups van Azure-VM'S met behulp van de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 5a677221f16d00c19ee7083b72540ac7e1bb9cd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2052d80428af89862b5348943b446f1b800ab36f
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89145430"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174088"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Back-ups van Azure-VM'S beheren met Azure Backup-Service
 
@@ -25,11 +25,13 @@ U kunt back-ups beheren met behulp van het dash board en door in te zoomen op af
 
 ![Volledige dashboard weergave met schuif regelaar](./media/backup-azure-manage-vms/bottom-slider.png)
 
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
+
 ## <a name="view-vms-on-the-dashboard"></a>Vm's in het dash board weer geven
 
 Vm's op het kluis dashboard weer geven:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Selecteer in het menu links **Alle services**.
 
     ![Alle services selecteren](./media/backup-azure-manage-vms/select-all-services.png)
@@ -63,7 +65,7 @@ Vm's op het kluis dashboard weer geven:
 
 Een bestaand back-upbeleid wijzigen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/). Open het kluis dashboard.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/). Open het kluis dashboard.
 2. Selecteer in **> back-upbeleid beheren**het back-upbeleid voor het type **Azure virtual machine**.
 3. Selecteer **wijzigen** en wijzig de instellingen.
 
@@ -71,7 +73,7 @@ Een bestaand back-upbeleid wijzigen:
 
 Een back-upbeleid beheren:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/). Open het kluis dashboard.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/). Open het kluis dashboard.
 2. Selecteer op de tegel **Back-upitems** de optie **Azure virtual machine**.
 
     ![De tegel back-upitems openen](./media/backup-azure-manage-vms/azure-virtual-machine.png)

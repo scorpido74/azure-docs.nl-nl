@@ -1,5 +1,5 @@
 ---
-title: Include-bestand
+title: bestand opnemen
 description: bestand opnemen
 services: virtual-machines
 author: cynthn
@@ -9,15 +9,15 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 433e909563602a2ef32b7986959b428c9afaf9f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82788984"
 ---
 | Resource | Beschrijving|
 |----------|------------|
-| **Bron van installatie kopie** | Dit is een resource die kan worden gebruikt voor het maken van een **installatie kopie versie** in een galerie met installatie kopieën. Een installatie kopie bron kan bestaan uit een bestaande virtuele machine van Azure die is [gegeneraliseerde of gespecialiseerde](../articles/virtual-machines/windows/shared-image-galleries.md#generalized-and-specialized-images), een beheerde installatie kopie, een moment opname of een installatie kopie-versie in een andere galerie met installatie kopieën. |
-| **Galerie met installatie kopieën** | Net als de Azure Marketplace is een **afbeeldings galerie** een opslag plaats voor het beheren en delen van installatie kopieën, maar u bepaalt wie toegang heeft. |
-| **Definitie van installatie kopie** | Afbeeldings definities worden in een galerie gemaakt en bevatten informatie over de installatie kopie en vereisten voor het intern gebruik. Dit betekent of de installatie kopie Windows of Linux, release opmerkingen en minimale en maximale geheugen vereisten is. Het is een definitie van een type installatie kopie. |
-| **Versie van installatiekopie** | Een **installatie kopie versie** is wat u gebruikt om een virtuele machine te maken wanneer u een galerie gebruikt. U kunt meerdere versies van een installatie kopie naar behoefte hebben voor uw omgeving. Net als bij een beheerde installatie kopie wordt de versie van de installatie kopie gebruikt voor het maken van nieuwe schijven voor de virtuele machine wanneer u een **installatie kopie** gebruikt voor het maken van een virtuele machine. Installatie kopie versies kunnen meerdere keren worden gebruikt. |
+| **Bron van installatiekopie** | Dit is een resource die kan worden gebruikt om een **versie van een installatiekopie** in een galerie met installatiekopieën te maken. Een bron van een installatiekopie kan een bestaande VM van Azure zijn die [gegeneraliseerd of gespecialiseerd](../articles/virtual-machines/windows/shared-image-galleries.md#generalized-and-specialized-images) is, een beheerde installatiekopie, een momentopname of een versie van een installatiekopie in een andere galerie met installatiekopieën. |
+| **Galerie met installatiekopieën** | Net als Azure Marketplace is een **galerie met installatiekopieën** een opslagplaats voor het beheren en delen van installatiekopieën, maar u bepaalt zelf wie er toegang heeft. |
+| **Definitie van installatiekopie** | Definities van installatiekopieën worden in een galerie gemaakt en bevatten informatie over de installatiekopie en de vereisten voor intern gebruik. Dit houdt ook in of het om een Windows- of Linux-installatiekopie gaat. Daarnaast bevat de definitie releaseopmerkingen en de minimale en maximale geheugenvereisten. Het is een definitie van een type installatiekopie. |
+| **Versie van installatiekopie** | U gebruikt een **versie van een installatiekopie** om een VM te maken wanneer u een galerie gebruikt. U kunt net zo veel versies van een installatiekopie voor uw omgeving gebruiken als u nodig hebt. Net als bij een beheerde installatiekopie, wanneer u een **versie van een installatiekopie** gebruikt om een VM te maken, wordt de versie van de installatiekopie gebruikt voor het maken van nieuwe schijven voor de VM. Versies van installatiekopieën kunnen meerdere keren worden gebruikt. |

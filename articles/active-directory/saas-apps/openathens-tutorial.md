@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: fc60552fadf10dde88c0e6d8c6f46bd25c68cf2f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: da8ae35ce85ca9ffb031511e81270afd8529681d
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543938"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994190"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-openathens"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met OpenAthens
 
@@ -134,15 +134,15 @@ In dit gedeelte geeft u B.Simon toestemming om eenmalige aanmelding van Azure te
 
 1. Selecteer **Connections** in de lijst onder het tabblad **Management**.
 
-    ![Eenmalige aanmelding configureren](./media/openathens-tutorial/tutorial_openathens_application1.png)
+    ![Schermopname van de pagina OpenAthens van de bedrijfssite met Verbindingen geselecteerd op het tabblad Beheer.](./media/openathens-tutorial/tutorial_openathens_application1.png)
 
 1. Selecteer **SAML 1.1/2.0** en selecteer vervolgens de knop **Configure**.
 
-    ![Eenmalige aanmelding configureren](./media/openathens-tutorial/tutorial_openathens_application2.png)
+    ![Schermopname met Type lokaal verificatiesysteem selecteren. dialoogvenster met S A M L 1.1/2.0 en de knop Configureren geselecteerd.](./media/openathens-tutorial/tutorial_openathens_application2.png)
 
 1. Als u de configuratie wilt toevoegen, selecteert u de knop **Browse** om het XML-bestand met metagegevens te uploaden dat u hebt gedownload uit de Azure-portal en selecteert u vervolgens **Add**.
 
-    ![Eenmalige aanmelding configureren](./media/openathens-tutorial/tutorial_openathens_application3.png)
+    ![Schermopname met S A M L-verificatiesysteem toevoegen. dialoogvenster met de actie Bladeren en de knop Toevoegen geselecteerd.](./media/openathens-tutorial/tutorial_openathens_application3.png)
 
 1. Voer de volgende stappen uit op het tabblad **Details**.
 
@@ -164,7 +164,7 @@ In dit gedeelte geeft u B.Simon toestemming om eenmalige aanmelding van Azure te
 
     h. Ga naar het tabblad **</> Relying Party**, kopieer de waarde van **Metadata URL** en open deze URL in de browser om het **XML-bestand met metagegevens van de SP** te downloaden. Upload dit bestand met metagegevensbestand van de serviceprovider naar de sectie **Standaard SAML-configuratie** in Azure AD.
 
-    ![Eenmalige aanmelding configureren](./media/openathens-tutorial/tutorial_openathens_application5.png)
+    ![Schermopname van het tabblad Relying Party geselecteerd en de Metagegevens-U R L gemarkeerd.](./media/openathens-tutorial/tutorial_openathens_application5.png)
 
 ### <a name="create-openathens-test-user"></a>Een testgebruiker maken voor OpenAthens
 

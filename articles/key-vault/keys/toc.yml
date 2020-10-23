@@ -15,6 +15,8 @@
       href: quick-create-portal.md
     - name: Python
       href: quick-create-python.md
+    - name: ARM-sjabloon
+      href: quick-create-template.md
 - name: Zelfstudies
   items:
     - name: Met HSM beveiligde sleutels importeren (overzicht)

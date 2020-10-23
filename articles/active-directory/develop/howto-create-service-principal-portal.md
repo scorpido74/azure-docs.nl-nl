@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: d14e31aa4fbeb2d29137c554f14333e1617c484a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46781edad6ad9290932216b9e9f23a359d25497a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91265898"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366153"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Procedure: Gebruik de portal voor het maken van een Azure AD-toepassing en service-principal die toegang hebben tot resources
 
@@ -45,7 +45,7 @@ U moet over voldoende machtigingen beschikken om een toepassing te registreren b
 1. Selecteer **gebruikers instellingen**in het linkerdeel venster.
 1. Controleer de instelling **app-registraties** . Deze waarde kan alleen worden ingesteld door een beheerder. Als deze instelling is ingesteld op **Ja**, kan elke gebruiker in de Azure AD-Tenant een app registreren.
 
-Als de instelling app-registraties is ingesteld op **Nee**, kunnen alleen gebruikers met een rol beheerder deze typen toepassingen registreren. Bekijk de [beschik bare rollen](../users-groups-roles/directory-assign-admin-roles.md#available-roles) en [rolmachtigingen](../users-groups-roles/directory-assign-admin-roles.md#role-permissions) voor meer informatie over beschik bare beheerders rollen en de specifieke machtigingen in azure AD die aan elke rol worden gegeven. Als aan uw account de gebruikersrol is toegewezen, maar de instelling van de app-registratie is beperkt tot gebruikers met beheerders rechten, vraagt u de beheerder om een van de beheerders rollen toe te wijzen die alle aspecten van app-registraties kunnen maken en beheren, of om gebruikers in staat te stellen apps te registreren.
+Als de instelling app-registraties is ingesteld op **Nee**, kunnen alleen gebruikers met een rol beheerder deze typen toepassingen registreren. Bekijk de [beschik bare rollen](../roles/permissions-reference.md#available-roles) en [rolmachtigingen](../roles/permissions-reference.md#role-permissions) voor meer informatie over beschik bare beheerders rollen en de specifieke machtigingen in azure AD die aan elke rol worden gegeven. Als aan uw account de gebruikersrol is toegewezen, maar de instelling van de app-registratie is beperkt tot gebruikers met beheerders rechten, vraagt u de beheerder om een van de beheerders rollen toe te wijzen die alle aspecten van app-registraties kunnen maken en beheren, of om gebruikers in staat te stellen apps te registreren.
 
 ### <a name="check-azure-subscription-permissions"></a>Azure-abonnements machtigingen controleren
 
@@ -55,7 +55,7 @@ Uw abonnements machtigingen controleren:
 
 1. Zoek en selecteer **abonnementen**of selecteer **abonnementen** op de **Start** pagina.
 
-   ![Zoeken](./media/howto-create-service-principal-portal/select-subscription.png)
+   ![Search](./media/howto-create-service-principal-portal/select-subscription.png)
 
 1. Selecteer het abonnement waarin u de Service-Principal wilt maken.
 

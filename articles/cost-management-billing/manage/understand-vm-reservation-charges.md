@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: dd21faa07426c80bb3a95dbd1b6d4ee93f783881
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: e9ee1d9ff8145051bbbe6b65004f7f358b5fdade
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686442"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132139"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Toepassing van de reserveringskorting op virtuele machines
 
@@ -57,7 +57,7 @@ Wanneer u Windows-VM-instanties uitvoert, wordt de reservering toegepast om de i
 
 ## <a name="discount-can-apply-to-different-sizes"></a>Korting kan van toepassing zijn op verschillende grootten
 
-Wanneer u een gereserveerde VM-instantie aanschaft en **Geoptimaliseerd voor flexibiliteit van instantiegrootte** selecteert, is de kortingsdekking van toepassing op de door u geselecteerde VM-grootte. De dekking kan ook van toepassing zijn op andere VM-grootten die zich in dezelfde flexibiliteitsgroep/-reeks van de instantiegrootte bevinden. Zie [Flexibiliteit van de VM-grootte met gereserveerde VM-instanties](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md) voor meer informatie.
+Wanneer u een gereserveerde VM-instantie aanschaft en **Geoptimaliseerd voor flexibiliteit van instantiegrootte** selecteert, is de kortingsdekking van toepassing op de door u geselecteerde VM-grootte. De dekking kan ook van toepassing zijn op andere VM-grootten die zich in dezelfde flexibiliteitsgroep/-reeks van de instantiegrootte bevinden. Zie [Flexibiliteit van de VM-grootte met gereserveerde VM-instanties](../../virtual-machines/reserved-vm-instance-size-flexibility.md) voor meer informatie.
 
 ## <a name="premium-storage-vms-dont-get-non-premium-discounts"></a>Voor VM’s met Premium-opslag gelden geen niet-premium-kortingen
 

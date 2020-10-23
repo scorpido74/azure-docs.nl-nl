@@ -15,16 +15,16 @@ ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 31a8457b4b1ac069cafbfd9713f15fdad7142d10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e233c7c4eb76e79e73d0c5fc386a9d908f0e35b5
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87445811"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216688"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>Zelfstudie: Wijzigingen bewaken en een virtuele Linux-machine bijwerken in Azure
 
-Met [Wijzigingen bijhouden](../../automation/change-tracking.md) in Azure kunt u gemakkelijk wijzigingen identificeren en met [Updatebeheer](../../automation/update-management/update-mgmt-overview.md) kunt u updates van het besturingssysteem beheren voor uw virtuele Linux-machines in Azure.
+Met [Wijzigingen bijhouden](../../automation/change-tracking/overview.md) in Azure kunt u gemakkelijk wijzigingen identificeren en met [Updatebeheer](../../automation/update-management/overview.md) kunt u updates van het besturingssysteem beheren voor uw virtuele Linux-machines in Azure.
 
 In deze zelfstudie leert u het volgende:
 
@@ -115,10 +115,10 @@ Als u een nieuwe update-implementatie wilt maken, selecteert u **Implementatie v
 | --- | --- |
 | Naam |Unieke naam voor het identificeren van de update-implementatie. |
 |Besturingssysteem| Linux of Windows|
-| Bij te werken groepen |Voor Azure-machines definieert u een query op basis van een combinatie van abonnement, resourcegroepen, locaties en tags om een dynamische groep virtuele Azure-machines te bouwen voor opname in uw implementatie. </br></br>Voor niet-Azure-machines selecteert u een bestaande opgeslagen zoekopdracht om een groep niet-Azure-machines te selecteren die u voor de implementatie wilt opnemen. </br></br>Zie [Dynamische groepen](../../automation/update-management/update-mgmt-groups.md) voor meer informatie|
+| Bij te werken groepen |Voor Azure-machines definieert u een query op basis van een combinatie van abonnement, resourcegroepen, locaties en tags om een dynamische groep virtuele Azure-machines te bouwen voor opname in uw implementatie. </br></br>Voor niet-Azure-machines selecteert u een bestaande opgeslagen zoekopdracht om een groep niet-Azure-machines te selecteren die u voor de implementatie wilt opnemen. </br></br>Zie [Dynamische groepen](../../automation/update-management/configure-groups.md) voor meer informatie|
 | Bij te werken machines |selecteer een opgeslagen zoekopdracht of geïmporteerde groep, of kies Computer in de vervolgkeuzelijst en selecteer de afzonderlijke computers. Als u **Computers** selecteert, wordt de gereedheid van de computer weergegeven in de kolom **GEREEDHEID VOOR UPDATE-AGENT**.</br> Zie [Computergroepen in Azure Monitorlogboeken](../../azure-monitor/platform/computer-groups.md) voor meer informatie over de verschillende manieren waarop u computergroepen kunt maken in Azure Monitor-logboeken |
 |Updateclassificaties|Selecteer alle updateclassificaties die u nodig hebt|
-|Updates opnemen/uitsluiten|Hiermee opent u de pagina **Opnemen/uitsluiten**. Updates die moeten worden opgenomen of uitgesloten, worden op afzonderlijke tabbladen weergegeven. Zie [Een update-implementatie plannen](../../automation/update-management/update-mgmt-deploy-updates.md#schedule-an-update-deployment) voor meer informatie over het verwerken van de opname |
+|Updates opnemen/uitsluiten|Hiermee opent u de pagina **Opnemen/uitsluiten**. Updates die moeten worden opgenomen of uitgesloten, worden op afzonderlijke tabbladen weergegeven. Zie [Een update-implementatie plannen](../../automation/update-management/deploy-updates.md#schedule-an-update-deployment) voor meer informatie over het verwerken van de opname |
 |Instellingen voor planning|Selecteer het tijdstip waarop u wilt beginnen en selecteer Eenmaal, of Terugkerend voor het terugkeerpatroon|
 | Scripts vooraf en scripts achteraf|Selecteer de scripts die vóór en na de implementatie moeten worden uitgevoerd|
 | Onderhoudsvenster |Aantal minuten dat is ingesteld voor updates. De waarde mag niet minder zijn dan dertig minuten en niet meer dan zes uur |

@@ -8,12 +8,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
-ms.openlocfilehash: a187b31657ec2a67c306d817a75150d19a5cf9b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f924cb7462f7f8c9939ec261b7ef200ceb8ea70b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86497179"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109150"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Versleuteling van gegevens in Azure Data Lake Storage Gen1
 
@@ -33,7 +33,7 @@ Gegevens in transit (ook wel gegevens in beweging genoemd) worden ook altijd ver
 
 Versleuteling voor Data Lake Storage Gen1 wordt ingesteld tijdens het maken van het account en is standaard altijd ingeschakeld. U kunt de sleutels zelf beheren of toestaan dat Data Lake Storage Gen1 deze voor u beheert (dit is de standaard instelling).
 
-Zie de [Introductie](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal) voor meer informatie.
+Zie de [Introductie](./data-lake-store-get-started-portal.md) voor meer informatie.
 
 ## <a name="how-encryption-works-in-data-lake-storage-gen1"></a>Hoe versleuteling werkt in Data Lake Storage Gen1
 
@@ -105,7 +105,7 @@ Het volgende diagram illustreert deze concepten:
 
 ## <a name="key-rotation"></a>Sleutelroulatie
 
-Wanneer u door de klant beheerde sleutels gebruikt, kunt u de MEK rouleren. [Zie aan de slag voor](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)meer informatie over het instellen van een Data Lake Storage gen1-account met door de klant beheerde sleutels.
+Wanneer u door de klant beheerde sleutels gebruikt, kunt u de MEK rouleren. [Zie aan de slag voor](./data-lake-store-get-started-portal.md)meer informatie over het instellen van een Data Lake Storage gen1-account met door de klant beheerde sleutels.
 
 ### <a name="prerequisites"></a>Vereisten
 
@@ -115,7 +115,7 @@ Houd er rekening mee dat als u de standaard opties voor versleuteling gebruikt, 
 
 ### <a name="how-to-rotate-the-mek-in-data-lake-storage-gen1"></a>De MEK draaien in Data Lake Storage Gen1
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Blader naar het Key Vault-exemplaar waarin uw sleutels zijn opgeslagen die zijn gekoppeld aan uw Data Lake Storage Gen1-account. Selecteer **Sleutels**.
 
     ![Schermafdruk van Key Vault](./media/data-lake-store-encryption/keyvault.png)
@@ -135,4 +135,4 @@ Houd er rekening mee dat als u de standaard opties voor versleuteling gebruikt, 
 Deze bewerking duurt minder dan twee minuten en er is geen verwachte uitvaltijd vanwege het rouleren van de sleutel. Nadat de bewerking is voltooid, wordt de nieuwe versie van de sleutel gebruikt.
 
 > [!IMPORTANT]
-> Nadat de sleutelroulatiebewerking voltooid is, wordt de oude versie van de sleutel niet meer actief gebruikt voor het versleutelen van uw gegevens.  In zeldzame gevallen van onverwachte fouten waardoor zelfs redundante exemplaren van uw gegevens zijn getroffen, kunnen gegevens echter mogelijk worden hersteld vanuit een back-up waarvoor nog de oude sleutel wordt gebruikt. Bewaar een kopie van de vorige versie van de versleutelingssleutel, om ervoor te zorgen dat uw gegevens in deze zeldzame omstandigheden toegankelijk zijn. Zie [richt lijnen voor herstel na nood gevallen voor gegevens in data Lake Storage gen1](data-lake-store-disaster-recovery-guidance.md) voor aanbevolen procedures voor het plannen van herstel na nood gevallen. 
+> Nadat de sleutelroulatiebewerking voltooid is, wordt de oude versie van de sleutel niet meer actief gebruikt voor het versleutelen van uw gegevens.  In zeldzame gevallen van onverwachte fouten waardoor zelfs redundante exemplaren van uw gegevens zijn getroffen, kunnen gegevens echter mogelijk worden hersteld vanuit een back-up waarvoor nog de oude sleutel wordt gebruikt. Bewaar een kopie van de vorige versie van de versleutelingssleutel, om ervoor te zorgen dat uw gegevens in deze zeldzame omstandigheden toegankelijk zijn. Zie [richt lijnen voor herstel na nood gevallen voor gegevens in data Lake Storage gen1](data-lake-store-disaster-recovery-guidance.md) voor aanbevolen procedures voor het plannen van herstel na nood gevallen.

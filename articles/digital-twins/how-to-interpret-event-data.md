@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 10b74f7b795df2cf8c19d044fce44da3f798af7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22bedcf7921e3c8d4f2566a70515eef3e3b136b6
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88587630"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461019"
 ---
 # <a name="understand-event-data"></a>Informatie over gebeurtenis gegevens
 
@@ -202,7 +202,7 @@ Dit zijn de velden in de hoofd tekst van een melding voor een wijziging van de r
 
 #### <a name="body-details"></a>Details van hoofd tekst
 
-De hoofd tekst is de payload van een relatie, ook in JSON-indeling. Er wordt gebruikgemaakt van dezelfde indeling als een `GET` aanvraag voor een relatie via de [DIGITALTWINS-API](how-to-use-apis-sdks.md). 
+De hoofd tekst is de payload van een relatie, ook in JSON-indeling. Er wordt gebruikgemaakt van dezelfde indeling als een `GET` aanvraag voor een relatie via de [DIGITALTWINS-API](/rest/api/digital-twins/dataplane/twins). 
 
 Als u een relatie bijwerkt, worden de eigenschappen van de relatie gewijzigd. 
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: f43f7894c46a75894eb648f02ec378f3a8b2633d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd9b85f22866c529b66fa6df07bd524516726086
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84628056"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165329"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Gegevens voorbereiden voor Custom Speech
 
@@ -59,7 +59,7 @@ Bestanden moeten worden gegroepeerd op type in een gegevensset en worden geüplo
 
 Als u uw gegevens wilt uploaden, gaat u naar de <a href="https://speech.microsoft.com/customspeech" target="_blank">Custom speech Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. Klik in de portal op **gegevens uploaden** om de wizard te starten en uw eerste gegevensset te maken. U wordt gevraagd een type spraak gegevens voor uw gegevensset te selecteren voordat u uw gegevens kunt uploaden.
 
-![Audio selecteren in de spraak Portal](./media/custom-speech/custom-speech-select-audio.png)
+![Scherm opname van de Audio-Upload optie van de spraak Portal.](./media/custom-speech/custom-speech-select-audio.png)
 
 Elke gegevensset die u uploadt, moet voldoen aan de vereisten voor het gegevens type dat u kiest. Uw gegevens moeten correct zijn geformatteerd voordat ze worden geüpload. Correct opgemaakte gegevens zorgen ervoor dat deze nauw keurig worden verwerkt door de Custom Speech-Service. De vereisten worden weer gegeven in de volgende secties.
 

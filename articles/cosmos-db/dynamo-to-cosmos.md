@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: mansha
-ms.openlocfilehash: cfdeda8ac3957da272ab4c47fb93930c826d55aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 167d1f21a2eb7ea4c685b5bbbb5d8d64fcc1367e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85261865"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278697"
 ---
 # <a name="migrate-your-application-from-amazon-dynamodb-to-azure-cosmos-db"></a>Uw toepassing migreren van Amazon DynamoDB naar Azure Cosmos DB
 
@@ -144,7 +144,7 @@ client_documentDB = new CosmosClient("your connectionstring from the Azure porta
 
 Met Azure Cosmos DB kunt u de volgende opties gebruiken om uw verbinding te optimaliseren:
 
-* **ConnectionMode** : gebruik de modus directe verbinding om verbinding te maken met de gegevens knooppunten in de Azure Cosmos DB-service. Gebruik de gateway modus alleen voor het initialiseren en opslaan van de logische adressen en het vernieuwen van updates. Zie het artikel [connectiviteits modi](performance-tips.md#networking) voor meer informatie.
+* **ConnectionMode** : gebruik de modus directe verbinding om verbinding te maken met de gegevens knooppunten in de Azure Cosmos DB-service. Gebruik de gateway modus alleen voor het initialiseren en opslaan van de logische adressen en het vernieuwen van updates. Zie het artikel [connectiviteits modi](sql-sdk-connection-modes.md) voor meer informatie.
 
 * **ApplicationRegion** : deze optie wordt gebruikt voor het instellen van de gewenste geo-gerepliceerde regio die wordt gebruikt om te communiceren met Azure Cosmos db. Zie het artikel over [globale distributie](distribute-data-globally.md) voor meer informatie.
 

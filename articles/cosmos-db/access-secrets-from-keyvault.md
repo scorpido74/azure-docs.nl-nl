@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 50a9d5e3d3bbb608160ee160c5f1aede8f70e530
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c4f9954977d6c5523bc70586d3b0cbb0328bcd8
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85262664"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278037"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Azure Cosmos-sleutels beveiligen met Azure Key Vault 
 
@@ -94,5 +94,5 @@ Op dezelfde manier kunt u een gebruiker toevoegen voor toegang tot de sleutel kl
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Raadpleeg het artikel over [firewall ondersteuning](firewall-support.md) om een firewall te configureren voor Azure Cosmos db.
-* Zie voor meer informatie over het configureren van het service-eind punt van de virtuele netwerk, [beveiligde toegang via het VNet-service-eindpunt](vnet-service-endpoint.md) artikel
+* Raadpleeg het artikel over [firewall ondersteuning](how-to-configure-firewall.md) om een firewall te configureren voor Azure Cosmos db.
+* Zie voor meer informatie over het configureren van het service-eind punt van de virtuele netwerk, [beveiligde toegang via het VNet-service-eindpunt](how-to-configure-vnet-service-endpoint.md) artikel

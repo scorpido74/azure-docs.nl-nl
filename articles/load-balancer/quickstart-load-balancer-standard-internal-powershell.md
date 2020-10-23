@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/27/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 15609435c7bc099d0ffe40759ea0f323b58a4545
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ee7c1c57c271a6173f4ee978a10ff37526c04c33
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89087545"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047842"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Quickstart: Een interne load balancer maken met Azure PowerShell om taken te verdelen over VM's
 
@@ -1066,8 +1066,8 @@ In deze quickstart hebt u:
 * De load balancer-verkeersregel en de statustest geconfigureerd.
 * De load balancer getest.
 
-Zie [Wat is Azure Load Balancer?](load-balancer-overview.md) en de [veelgestelde vragen over Load Balancer](load-balancer-faqs.md) voor meer informatie over Azure Load Balancer.
-
-* Meer informatie over [Load Balancer en beschikbaarheidszones](load-balancer-standard-availability-zones.md).
+Als u meer informatie wilt over Azure Load Balancer, gaat u naar
+> [!div class="nextstepaction"]
+> [Wat is Azure Load Balancer?](load-balancer-overview.md)
 
 

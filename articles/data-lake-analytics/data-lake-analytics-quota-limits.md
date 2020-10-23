@@ -1,20 +1,18 @@
 ---
 title: Quota en limieten aanpassen in Azure Data Lake Analytics
 description: Meer informatie over het aanpassen en verg Roten van quota's en limieten in Azure Data Lake Analytics-accounts (ADLA).
-services: data-lake-analytics
 ms.service: data-lake-analytics
 author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
-ms.assetid: 49416f38-fcc7-476f-a55e-d67f3f9c1d34
 ms.topic: how-to
 ms.date: 03/15/2018
-ms.openlocfilehash: 0025e35f516543c8fe703daa647ca29ed3fb87e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd032235f286b5db1930e9c9c6d730b5424aa4eb
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87127584"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220836"
 ---
 # <a name="adjust-quotas-and-limits-in-azure-data-lake-analytics"></a>Quota en limieten aanpassen in Azure Data Lake Analytics
 
@@ -27,8 +25,9 @@ Meer informatie over het aanpassen en verhogen van het quotum en de limieten in 
 Als u een zesde ADLA-account maakt, wordt er een fout melding weer geven dat het maximum aantal toegestane Data Lake Analytics accounts (5) in de regio onder de naam van het abonnement is bereikt.
 
 Als u de limiet wilt overschrijden, kunt u de volgende opties proberen:
-* Kies een andere regio indien geschikt
-* Neem contact op met de ondersteuning van Azure door [een ondersteunings ticket te openen](#increase-maximum-quota-limits) om een quotum toename aan te vragen.
+
+- Kies een andere regio indien geschikt
+- Neem contact op met de ondersteuning van Azure door [een ondersteunings ticket te openen](#increase-maximum-quota-limits) om een quotum toename aan te vragen.
 
 ## <a name="default-adla-account-limits"></a>Standaard limieten voor ADLA-accounts
 
@@ -36,8 +35,8 @@ Als u de limiet wilt overschrijden, kunt u de volgende opties proberen:
 
 Dit is het maximum aantal van AUs dat gelijktijdig kan worden uitgevoerd in uw account. Als het totale aantal uitgevoerde AUs voor alle taken deze limiet overschrijdt, worden nieuwere taken in de wachtrij geplaatst. Bijvoorbeeld:
 
-* Als er slechts één taak wordt uitgevoerd met 32 AUs, wanneer u een tweede taak indient, wacht deze in de taak wachtrij totdat de eerste taak is voltooid.
-* Als er al vier taken worden uitgevoerd, wordt er 8 AUs gebruikt, wanneer u een vijfde taak indient die 8 AUs vereist, waarna de taak wachtrij 8 AUs beschikbaar heeft.
+- Als er slechts één taak wordt uitgevoerd met 32 AUs, wanneer u een tweede taak indient, wacht deze in de taak wachtrij totdat de eerste taak is voltooid.
+- Als er al vier taken worden uitgevoerd, wordt er 8 AUs gebruikt, wanneer u een vijfde taak indient die 8 AUs vereist, waarna de taak wachtrij 8 AUs beschikbaar heeft.
 
     ![Azure Data Lake Analytics limieten en quotum pagina](./media/data-lake-analytics-quota-limits/adjust-quota-limits.png)
 
@@ -62,18 +61,21 @@ Meer informatie over Azure-limieten vindt u in de documentatie voor de [specifie
 
 1. Open een ondersteunings aanvraag in Azure Portal.
 
-    ![Pagina Azure Data Lake Analytics Portal](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-help-support.png)
+   ![Azure Data Lake Analytics portal: Help en ondersteuning](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-help-support.png)
 
-    ![Pagina Azure Data Lake Analytics Portal](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request.png)
+   ![Nieuwe ondersteunings aanvraag voor Azure Data Lake Analytics Portal](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request.png)
+
 2. Selecteer het type **quotum**van het probleem.
+
 3. Selecteer uw **abonnement** (zorg ervoor dat het geen ' proef abonnement ' is).
+
 4. Selecteer quotum type **Data Lake Analytics**.
 
-    ![Pagina Azure Data Lake Analytics Portal](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request-basics.png)
+   ![Type quotum voor ondersteunings aanvraag Azure Data Lake Analytics](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request-basics.png)
 
 5. Op de pagina probleem moet u de aangevraagde verhogings limiet uitleggen met **Details** over de reden waarom u deze extra capaciteit nodig hebt.
 
-    ![Pagina Azure Data Lake Analytics Portal](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request-details.png)
+   ![Details van de ondersteunings aanvraag Azure Data Lake Analytics](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request-details.png)
 
 6. Controleer uw contact gegevens en maak de ondersteunings aanvraag.
 
@@ -81,6 +83,6 @@ Micro soft bekijkt uw aanvraag en probeert zo snel mogelijk uw bedrijfs behoefte
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Overzicht van Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
-* [Azure Data Lake Analytics beheren met Azure PowerShell](data-lake-analytics-manage-use-powershell.md)
-* [Azure Data Lake Analytics-taken bewaken en problemen oplossen met Azure Portal](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+- [Overzicht van Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
+- [Azure Data Lake Analytics beheren met Azure PowerShell](data-lake-analytics-manage-use-powershell.md)
+- [Azure Data Lake Analytics-taken bewaken en problemen oplossen met Azure Portal](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)

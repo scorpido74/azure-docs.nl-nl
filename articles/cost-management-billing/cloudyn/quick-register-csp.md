@@ -10,12 +10,12 @@ ms.service: cost-management-billing
 ms.subservice: cloudyn
 ms.reviewer: benshy
 ROBOTS: NOINDEX
-ms.openlocfilehash: 92d4c84cc73ea05f58912549674f76513e3faeb1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1cbdeb09a1f3182aef9dcc6445c5b5e22e2448ff
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985500"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132343"
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>Registreren met het CSP-partnerprogramma en kostengegevens weergeven
 
@@ -29,7 +29,7 @@ Als CSP-partner kunt u zich registreren bij Cloudyn. Uw registratie biedt toegan
 > Alleen directe CSP-partners en indirecte CSP-providers kunnen zich bij Cloudyn registeren.
 >
 > Voor verificatie en toegang tot gegevens is het vereist de Partner Center API te configureren. Een Partner Center Global Administrator-account is nodig voor het inrichten van de API-toegang.
-> Zie [Verbinding maken met de Partner Center API](https://msdn.microsoft.com/library/partnercenter/mt709136.aspx) voor meer informatie.
+> Zie [Verbinding maken met de Partner Center API](/partner-center/develop/set-up-api-access-in-partner-center) voor meer informatie.
 >
 > Indirecte CSP-resellers kan toegang worden gegeven tot Cloudyn nadat hun indirecte CSP-provider zich bij Cloudyn heeft geregistreerd. Indirecte CSP-resellers kunnen vervolgens zorgen dat Azure-klanten en abonnementen toegang hebben tot Cloudyn.
 >

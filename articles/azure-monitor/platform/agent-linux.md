@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 61233173452bb45162c7b254203e0ff2922a9784
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 8b9fac51b5bdab20d7b082945ee594ac76c3e52a
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013743"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332498"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Log Analytics-agent installeren op Linux-computers
 In dit artikel vindt u informatie over het installeren van de Log Analytics-agent op Linux-computers met behulp van de volgende methoden:
@@ -43,9 +43,11 @@ Vanaf versies die na augustus 2018 zijn uitgebracht, maken we de volgende wijzig
 >[!NOTE]
 >Als u gebruikmaakt van een distributie of-versie die momenteel niet wordt ondersteund en niet is afgestemd op ons ondersteunings model, wordt u aangeraden deze opslag plaats te splitsen en te bevestigen dat micro soft support geen ondersteuning biedt voor gevorkeerde agent versies.
 
-### <a name="python-2-requirement"></a>Python 2-vereiste
+### <a name="python-requirement"></a>Python-vereiste
 
- De Log Analytics-agent vereist python 2. Als uw virtuele machine gebruikmaakt van een distributie die niet standaard Python 2 bevat, moet u deze installeren. Met de volgende voorbeeld opdrachten wordt python 2 op verschillende distributies geïnstalleerd.
+Vanaf agent versie 1.13.27 ondersteunt de Linux-agent zowel python 2 als 3. We raden altijd aan de nieuwste agent te gebruiken. 
+
+Als u een oudere versie van de agent gebruikt, moet de virtuele machine standaard Python 2 gebruiken. Als uw virtuele machine gebruikmaakt van een distributie die niet standaard Python 2 bevat, moet u deze installeren. Met de volgende voorbeeld opdrachten wordt python 2 op verschillende distributies geïnstalleerd.
 
  - Red Hat, CentOS, Oracle: `yum install -y python2`
  - Ubuntu, Debian: `apt-get install -y python2`
@@ -71,7 +73,7 @@ De OMS-agent heeft beperkte aanpassings ondersteuning voor Linux.
 De volgende worden momenteel ondersteund: 
 - FIPs
 
-De volgende zijn gepland, maar nog niet ondersteund:
+De volgende overwegingen worden in aanmerking genomen, maar nog niet ondersteund:
 - CIS
 - SELINUX
 

@@ -7,18 +7,18 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: chenyl
-ms.openlocfilehash: a76c9aaabf984723e2b60a7cd42425c9b29c916a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04059ac1feae04cb6fa8b09f7b7077b7e11bac4c
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76710834"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170372"
 ---
 # <a name="how-to-send-events-from-azure-signalr-service-to-event-grid"></a>Gebeurtenissen van Azure SignalR Service naar Event Grid verzenden
 
 Azure Event Grid is een volledig beheerde service voor gebeurtenis routering die uniform gebeurtenis verbruik biedt met behulp van een pub-model. In deze hand leiding gebruikt u de Azure CLI om een Azure signalerings service te maken, u te abonneren op verbindings gebeurtenissen en vervolgens een voor beeld-webtoepassing te implementeren om de gebeurtenissen te ontvangen. Ten slotte kunt u verbinding maken en de verbinding verbreken en de nettolading van de gebeurtenis in de voorbeeld toepassing bekijken.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account][azure-account] aan voordat u begint.
+Als u nog geen Azure-abonnement hebt, maakt u een [gratis account][azure-account] voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -80,7 +80,7 @@ Als u de voor beeld-app wilt implementeren, stelt `SITE_NAME` u een unieke naam 
 ```azurecli-interactive
 SITE_NAME=<your-site-name>
 
-az group deployment create \
+az deployment group create \
     --resource-group $RESOURCE_GROUP_NAME \
     --template-uri "https://raw.githubusercontent.com/Azure-Samples/azure-event-grid-viewer/master/azuredeploy.json" \
     --parameters siteName=$SITE_NAME hostingPlanName=$SITE_NAME-plan

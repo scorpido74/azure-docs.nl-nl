@@ -3,18 +3,18 @@ title: Azure DevTest Labs Veelgestelde vragen | Microsoft Docs
 description: In dit artikel vindt u antwoorden op enkele veelgestelde vragen over Azure DevTest Labs.
 ms.topic: article
 ms.date: 07/17/2020
-ms.openlocfilehash: 3f36b8238ccb69b3b1f14166b522e47d5debe54e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1cbea3628d6c8c1b43766140d201ce46964a60b5
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87289371"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328382"
 ---
 # <a name="azure-devtest-labs-faq"></a>Veelgestelde vragen over Azure DevTest Labs
 Krijg antwoorden op enkele van de meest voorkomende vragen over Azure DevTest Labs.
 
 ## <a name="blog-post"></a>Blog bericht
-Onze DevTest Labs-team blog is vanaf 20 maart 2019 buiten gebruik gesteld. 
+Onze DevTest Labs-team blog is vanaf 20 maart 2019 buiten gebruik gesteld. 
 
 ### <a name="where-can-i-track-feature-updates-from-now-on"></a>Waar kan ik de onderdelen updates nu volgen?
 Vanaf nu gaan we onderdelen updates en informatieve blog berichten plaatsen op de Azure-blog en Azure-updates. Deze blog berichten worden ook op elke gewenst plek gekoppeld aan onze documentatie.
@@ -22,7 +22,7 @@ Vanaf nu gaan we onderdelen updates en informatieve blog berichten plaatsen op d
 Abonneer u op de [DevTest Labs Azure-blog](https://azure.microsoft.com/blog/tag/azure-devtest-labs/) en [DevTest Labs Azure-updates](https://azure.microsoft.com/updates/?product=devtest-lab) om op de hoogte te blijven van nieuwe functies in DevTest Labs.
 
 ### <a name="what-happens-to-the-existing-blog-posts"></a>Wat gebeurt er met de bestaande blog berichten?
-We werken momenteel aan het migreren van bestaande blog berichten (met uitzonde ring van uitval updates) naar onze [DevTest Labs-documentatie](devtest-lab-overview.md). Wanneer de MSDN-blog wordt afgeschaft, wordt deze omgeleid naar het overzicht van de documentatie voor DevTest Labs. Wanneer u de omleiding hebt uitgevoerd, kunt u zoeken naar het artikel dat u zoekt in de titel filteren op. We hebben nog geen berichten gemigreerd, maar moeten aan het einde van deze maand worden gedaan. 
+We werken momenteel aan het migreren van bestaande blog berichten (met uitzonde ring van uitval updates) naar onze [DevTest Labs-documentatie](devtest-lab-overview.md). Wanneer de MSDN-blog wordt afgeschaft, wordt deze omgeleid naar het overzicht van de documentatie voor DevTest Labs. Wanneer u de omleiding hebt uitgevoerd, kunt u zoeken naar het artikel dat u zoekt in de titel filteren op. We hebben nog geen berichten gemigreerd, maar moeten aan het einde van deze maand worden gedaan. 
 
 
 ### <a name="where-do-i-see-outage-updates"></a>Waar kan ik de uitval updates bekijken?
@@ -68,7 +68,7 @@ DevTest Labs is een gratis service. Het maken van Labs en het configureren van b
 ## <a name="security"></a>Beveiliging
 
 ### <a name="what-are-the-different-security-levels-in-devtest-labs"></a>Wat zijn de verschillende beveiligings niveaus in DevTest Labs?
-Beveiligings toegang wordt bepaald door Role-Based Access Control (RBAC). Meer informatie over de werking van Access vindt u in de verschillen tussen een machtiging, een rol en een bereik, zoals gedefinieerd door RBAC.
+Beveiligings toegang wordt bepaald door Azure op rollen gebaseerd toegangs beheer (Azure RBAC). Meer informatie over de werking van Access vindt u in de verschillen tussen een machtiging, een rol en een bereik, zoals gedefinieerd door Azure RBAC.
 
 - **Machtiging**: een machtiging is een gedefinieerde toegang tot een specifieke actie. Een machtiging kan bijvoorbeeld lees toegang zijn tot alle virtuele machines.
 - **Rol**: een rol is een set machtigingen die kan worden gegroepeerd en toegewezen aan een gebruiker. Een gebruiker met de rol eigenaar van abonnement heeft bijvoorbeeld toegang tot alle resources in een abonnement.
@@ -83,7 +83,7 @@ U kunt ook aangepaste rollen maken in DevTest Labs. Zie [gebruikers machtigingen
 
 Omdat scopes hiërarchisch zijn, wanneer een gebruiker machtigingen heeft voor een bepaald bereik, wordt de gebruiker automatisch die machtigingen verleend op elk bereik op lager niveau binnen het bereik. Als een gebruiker bijvoorbeeld de rol van abonnements eigenaar heeft toegewezen, heeft de gebruiker toegang tot alle resources in een abonnement. Deze resources omvatten Vm's, virtuele netwerken en Labs. De eigenaar van een abonnement neemt automatisch de rol van de Lab-eigenaar over. Het tegenovergestelde is echter niet waar. Een Lab-eigenaar heeft toegang tot een lab. Dit is een lager bereik dan het abonnements niveau. Een Lab-eigenaar kan dus geen Vm's, virtuele netwerken of andere bronnen die zich buiten het lab bevinden, kunnen zien.
 
-### <a name="how-do-i-define-role-based-access-control-for-my-devtest-labs-environments-to-ensure-that-it-can-govern-while-developerstest-can-do-their-work"></a>Hoe kan ik op rollen gebaseerd toegangs beheer definiëren voor mijn DevTest Labs-omgevingen om ervoor te zorgen dat IT kan bepalen wanneer ontwikkel aars/test hun werk kunnen doen?
+### <a name="how-do-i-define-azure-role-based-access-control-for-my-devtest-labs-environments-to-ensure-that-it-can-govern-while-developerstest-can-do-their-work"></a>Hoe kan ik op rollen gebaseerd toegangs beheer voor mijn DevTest Labs definiëren om ervoor te zorgen dat IT kan bepalen terwijl ontwikkel aars/tests hun werk kunnen doen?
 Er is een breed patroon, maar de details zijn afhankelijk van uw organisatie.
 
 U moet er alleen voor zorgen dat de gegevens van het project en toepassings teams het benodigde beheer niveau hebben. Normaal gesp roken betekent het dat de centrale IT eigenaar is van het abonnement en dat de kern IT-functies, zoals netwerk configuraties, worden afgehandeld. De set **eigen aars** voor een abonnement moet klein zijn. Deze eigen aren kunnen extra eigen aren benoemen wanneer dit nodig is, of beleids regels op abonnements niveau Toep assen, bijvoorbeeld ' geen openbaar IP-adres '.
@@ -92,7 +92,7 @@ Mogelijk is er een subset van gebruikers die toegang nodig hebben tot meerdere a
 
 De DevTest Labs-resource moet eigendom zijn van eigen aren die dicht bij het project/toepassings team vallen. Dit is omdat ze inzicht hebben in hun vereisten voor machines en de vereiste software. In de meeste organisaties is de eigenaar van deze DevTest Labs resource meestal het project/de ontwikkelings lead. Deze eigenaar kan gebruikers en beleids regels in de test omgeving beheren en alle virtuele machines in de DevTest Labs-omgeving beheren.
 
-De leden van het project/het toepassings team moeten worden toegevoegd aan de rol **DevTest Labs-gebruikers** . Deze gebruikers kunnen virtuele machines maken (op basis van de beleids regels Lab en abonnement op abonnements niveau). Ze kunnen ook hun eigen virtuele machines beheren. Ze kunnen geen virtuele machines beheren die deel uitmaken van andere gebruikers.
+De leden van het project/het toepassings team moeten worden toegevoegd aan de gebruikersrol **DevTest Labs** . Deze gebruikers kunnen virtuele machines maken (op basis van de beleids regels Lab en abonnement op abonnements niveau). Ze kunnen ook hun eigen virtuele machines beheren. Ze kunnen geen virtuele machines beheren die deel uitmaken van andere gebruikers.
 
 Zie voor meer informatie [Azure Enter prise-steigers-documentatie over het beheer van voorgeschreven abonnementen](/azure/architecture/cloud-adoption/appendix/azure-scaffold).
 
@@ -145,7 +145,7 @@ Scenario voor afzonderlijke resource groep:
 -   DevTest Labs maakt een resource groep voor gedeelde IP-computers die tot dezelfde grootte behoren.
 
 Scenario voor een gemeen schappelijke resource groep:
--   Alle virtuele machines zijn in de gemeen schappelijke resource groep die u opgeeft. Meer informatie over [de toewijzing van resource groepen voor het lab](https://aka.ms/RGControl).
+-   Alle virtuele machines zijn in de gemeen schappelijke resource groep die u opgeeft. Meer informatie over [de toewijzing van resource groepen voor het lab](./resource-group-control.md).
 
 ### <a name="how-do-i-maintain-a-naming-convention-across-my-devtest-labs-environment"></a>Hoe kan ik een naamgevings Conventie in mijn DevTest Labs-omgeving behouden?
 U kunt de huidige ondernemings naamgevings conventies uitbreiden naar Azure-bewerkingen en ze consistent maken in de DevTest Labs-omgeving. Wanneer u DevTest Labs implementeert, is het raadzaam om specifiek start beleid te gebruiken. U implementeert dit beleid door een centraal script en JSON-sjabloon om consistentie af te dwingen. Naamgevings beleid kan worden geïmplementeerd via Azure-beleid dat wordt toegepast op het abonnements niveau. Zie Azure Policy-voor [beelden](../governance/policy/samples/index.md)voor json-voor beelden voor Azure Policy.
@@ -200,7 +200,7 @@ Uw bestaande Vm's kopiëren naar DevTest Labs:
 Ja, u kunt meerdere schijven koppelen aan uw Vm's.
 
 ### <a name="are-gen-2-images-supported-by-devtest-labs"></a>Worden gen 2-afbeeldingen ondersteund door DevTest Labs?
-Ja. De DevTest Labs-service ondersteunt [gen 2-installatie kopieën](../virtual-machines/windows/generation-2.md). Als zowel de versies van 1 en Diversen 2 beschikbaar zijn voor een installatie kopie, wordt in DevTest Labs echter alleen de versie 1 van de installatie kopie weer gegeven bij het maken van een virtuele machine. U ziet de installatie kopie als er slechts een versie van gen 2 beschikbaar is. 
+Ja. De DevTest Labs-service ondersteunt [gen 2-installatie kopieën](../virtual-machines/generation-2.md). Als zowel de versies van 1 en Diversen 2 beschikbaar zijn voor een installatie kopie, wordt in DevTest Labs echter alleen de versie 1 van de installatie kopie weer gegeven bij het maken van een virtuele machine. U ziet de installatie kopie als er slechts een versie van gen 2 beschikbaar is. 
 
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>Als ik een installatie kopie van een Windows-besturings systeem wil gebruiken voor mijn tests, moet ik dan een MSDN-abonnement aanschaffen?
 Voer een van de volgende stappen uit om Windows-client installatie kopieën (Windows 7 of een hogere versie) te gebruiken voor het ontwikkelen of testen in Azure:
@@ -277,7 +277,7 @@ Als u het uploaden van VHD-bestanden voor het maken van aangepaste installatie k
 
 Zoeken naar het doel-opslag account dat is gekoppeld aan uw Lab:
 
-1.  Meld u aan bij [Azure Portal](https://portal.azure.com).
+1.  Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2.  Selecteer **resource groepen**in het menu links.
 3.  Zoek en selecteer de resource groep die is gekoppeld aan uw Lab.
 4.  Selecteer een van de opslag accounts onder **overzicht**.

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: fe5c13b8c34d29be9a62717215271c10a48e9ac6
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 312a496a5acda05a6b04a0bb47abb101f4ffcc8e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076892"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107586"
 ---
 # <a name="api-management-policies"></a>API Management-beleidsregels
 Deze sectie bevat een referentie voor het volgende API Management-beleid. Zie [beleid in API Management](api-management-howto-policies.md)voor meer informatie over het toevoegen en configureren van beleid.
@@ -79,7 +79,7 @@ Deze sectie bevat een referentie voor het volgende API Management-beleid. Zie [b
     -   [XML transformeren met behulp van een XSLT](api-management-transformation-policies.md#XSLTransform) : past een XSL-trans formatie toe op XML in de hoofd tekst van de aanvraag of het antwoord.
 - [Integratie beleid voor Dapr](api-management-dapr-policies.md)
     - Een [aanvraag verzenden naar een service](api-management-dapr-policies.md#invoke) : Dapr-runtime wordt gebruikt om te zoeken en te communiceren met een Dapr-micro service.
-    -  [Bericht verzenden naar pub/sub-onderwerp](api-management-dapr-policies.md#pubsub) : maakt gebruik van Dapr runtime om een bericht naar een onderwerp voor publiceren/abonneren te publiceren. publiceren/abonneren/berichten/README. MD) voor meer informatie over het publiceren/abonneren op berichten in Dapr.
+    -  [Bericht verzenden naar pub/sub-onderwerp](api-management-dapr-policies.md#pubsub) : maakt gebruik van Dapr runtime om een bericht te publiceren naar het onderwerp publiceren/abonneren.
     -  [Trigger uitvoer binding](api-management-dapr-policies.md#bind) : maakt gebruik van Dapr runtime om een extern systeem via een uitvoer binding aan te roepen.
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 06/09/2020
+ms.date: 10/16/2020
 ms.author: baselden
 author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ef10f51f058739b0e545d341b77af4313dd9e97
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 0e44cb38435ca86ad7cd4709d5e99f5cf41fcf91
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91992864"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366323"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Een implementatie van voorwaardelijke toegang plannen
 
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) voor analyses van voorwaardelijke toegang (CA)
 
 Micro soft biedt standaard voorwaardelijke beleids regels met de naam [beveiligings standaard instellingen](../fundamentals/concept-fundamentals-security-defaults.md) die een basis beveiligings niveau garanderen. Uw organisatie heeft echter mogelijk meer flexibiliteit nodig dan de standaard instellingen voor de beveiliging. U kunt voorwaardelijke toegang gebruiken voor het aanpassen van de standaard instellingen van de beveiliging met een meer granulariteit en voor het configureren van nieuwe beleids regels die voldoen aan uw vereisten.
 
-## <a name="learn"></a>Leren
+## <a name="learn"></a>Learn
 
 Voordat u begint, moet u weten hoe [voorwaardelijke toegang](overview.md) werkt en wanneer u deze moet gebruiken.
 
@@ -220,7 +220,7 @@ Het maken van een beleid voor elke app is niet efficiënt en leidt tot moeilijk 
 
 ### <a name="set-up-emergency-access-accounts"></a>Accounts voor nood toegang instellen
 
-Als u een beleid hebt geconfigureerd, kan het de organisaties van de Azure Portal vergren delen. Het beperken van de impact van de onbedoelde beheerder vergrendeling door twee of meer [accounts voor toegang tot een nood geval](../users-groups-roles/directory-emergency-access.md) in uw organisatie te maken.
+Als u een beleid hebt geconfigureerd, kan het de organisaties van de Azure Portal vergren delen. Het beperken van de impact van de onbedoelde beheerder vergrendeling door twee of meer [accounts voor toegang tot een nood geval](../roles/security-emergency-access.md) in uw organisatie te maken.
 
 * Maak een gebruikers account dat is toegewezen aan beleids beheer en uitgesloten is van al uw beleids regels.
 
@@ -291,11 +291,7 @@ Met Azure Active Directory kunt u [benoemde locaties](location-condition.md)make
 
 ### <a name="plan-your-policy-deployment"></a>De implementatie van uw beleid plannen
 
-Wanneer nieuwe beleids regels gereed zijn voor uw omgeving, moet u elk beleid door nemen voordat u het uitbrengt om ongewenste resultaten te voor komen. Raadpleeg de volgende documentatie voor meer informatie over hoe beleid wordt toegepast en hoe u problemen kunt voor komen
-
-* [Wat u moet weten](best-practices.md)
-
-* [Wat u moet vermijden](best-practices.md)
+Wanneer nieuwe beleids regels gereed zijn voor uw omgeving, moet u elk beleid door nemen voordat u het uitbrengt om ongewenste resultaten te voor komen.
 
 ## <a name="common-policies"></a>Algemene beleidsregels
 
@@ -462,10 +458,6 @@ Met de voor waarde voor de locatie van een CA-beleid kunt u instellingen voor to
 ### <a name="terms-of-use"></a>Gebruiksvoorwaarden
 
 Voordat u bepaalde Cloud-apps in uw omgeving opent, kunt u toestemming van de gebruikers krijgen door hen de Gebruiksvoorwaarden (gebruiks voorwaarden) te accepteren. Volg deze [Snelstartgids om gebruiks voorwaarden te maken](require-tou.md).
-
-### <a name="classic-policies"></a>Klassiek beleid
-
-In de [Azure Portal](https://portal.azure.com/)kunt u uw CA-beleid vinden onder Azure Active Directory > beveiliging > voorwaardelijke toegang. Uw organisatie heeft mogelijk ook oudere CA-beleids regels die niet op deze pagina zijn gemaakt. Deze beleids regels worden klassieke beleids regels genoemd. U wordt aangeraden [deze klassieke beleids regels te migreren in de Azure Portal](best-practices.md).
 
 ## <a name="troubleshoot-conditional-access"></a>Problemen met voorwaardelijke toegang oplossen
 

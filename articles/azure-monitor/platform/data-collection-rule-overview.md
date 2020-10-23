@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 177b79e0a33f4d43d07da9d0dea26df40e2ef11e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64dfc7400380505c882979e68a3bf0adcb8942a0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88723857"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107960"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Regels voor het verzamelen van gegevens in Azure Monitor (preview-versie)
 Met regels voor gegevens verzameling (DCR) worden gegevens in Azure Monitor gedefinieerd en wordt aangegeven waar de gegevens moeten worden verzonden of opgeslagen. Dit artikel bevat een overzicht van regels voor het verzamelen van gegevens, inclusief de inhoud en structuur en hoe u deze kunt maken en gebruiken.
@@ -40,7 +40,7 @@ In het volgende diagram ziet u de onderdelen van een gegevens verzamelings regel
 ### <a name="data-source-types"></a>Typen gegevensbronnen
 Elke gegevens bron heeft een gegevens bron type. Elk type definieert een unieke set eigenschappen die voor elke gegevens bron moet worden opgegeven. De gegevens bron typen die momenteel beschikbaar zijn, worden weer gegeven in de volgende tabel.
 
-| Gegevens bron type | Beschrijving | 
+| Gegevens bron type | Description | 
 |:---|:---|
 | switch | Gegevens bron op basis van VM-extensie |
 | Performance Counters | Prestatie meter items voor Windows en Linux |
@@ -68,7 +68,7 @@ De volgende tabel bevat de limieten die momenteel van toepassing zijn op elke re
 Er zijn momenteel twee beschik bare methoden voor het maken van een DCR:
 
 - [Gebruik de Azure Portal](data-collection-rule-azure-monitor-agent.md) om een regel voor het verzamelen van gegevens te maken en deze te koppelen aan een of meer virtuele machines.
-- Bewerk de regel voor het verzamelen van gegevens rechtstreeks in JSON en [Verzend deze met behulp van de rest API](https://docs.microsoft.com/rest/api/monitor/datacollectionrules).
+- Bewerk de regel voor het verzamelen van gegevens rechtstreeks in JSON en [Verzend deze met behulp van de rest API](/rest/api/monitor/datacollectionrules).
 
 ## <a name="sample-data-collection-rule"></a>Regel voor het verzamelen van voorbeeld gegevens
 De onderstaande regel voor het verzamelen van gegevens is voor virtuele machines met Azure Management Agent en bevat de volgende details:

@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: d33af7a9c2d48ded84bd675364469dab09a79d3a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56ab5ba93545ffdbfd36850c08eda78cc239f694
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91711297"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207118"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Een Azure Machine Learning-rekencluster maken
 
@@ -51,6 +51,8 @@ Reken clusters kunnen taken veilig uitvoeren in een [virtuele netwerk omgeving](
 * Enkele van de scenario's die in dit document worden vermeld, zijn gemarkeerd als __Preview__. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 * Azure Machine Learning Compute heeft standaard limieten, zoals het aantal kernen dat kan worden toegewezen. Zie voor meer informatie [beheer en aanvragen van quota's voor Azure-resources](how-to-manage-quotas.md).
+
+* Met Azure kunt u _vergren delingen_ op resources plaatsen, zodat ze niet kunnen worden verwijderd of alleen-lezen zijn. __Pas geen resource vergrendeling toe op de resource groep die uw werk ruimte bevat__. Het Toep assen van een vergren deling op de resource groep die uw werk ruimte bevat, voor komt dat er schaal bewerkingen voor Azure ML-reken clusters worden uitgevoerd. Zie [resources vergren delen om onverwachte wijzigingen](../azure-resource-manager/management/lock-resources.md)te voor komen voor meer informatie over het vergren delen van resources.
 
 > [!TIP]
 > Clusters kunnen over het algemeen tot 100 knoop punten worden geschaald zolang u voldoende quota hebt voor het vereiste aantal kernen. Standaard worden clusters ingesteld met communicatie tussen knoop punten die is ingeschakeld tussen de cluster knooppunten voor de ondersteuning van MPI-taken. U kunt uw clusters echter naar duizenden knoop punten schalen door simpelweg [een ondersteunings ticket te verhogen](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)en u aan te vragen om een lijst met uw abonnement of werk ruimte of een specifiek cluster te maken voor het uitschakelen van communicatie tussen knoop punten. 

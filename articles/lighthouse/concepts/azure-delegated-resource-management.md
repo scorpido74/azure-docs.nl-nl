@@ -1,18 +1,18 @@
 ---
 title: Meer informatie over gedelegeerd resourcebeheer
 description: Azure delegated resource management is een belang rijk onderdeel van Azure Lighthouse, zodat service providers gedelegeerde resources op schaal kunnen beheren met flexibiliteit en precisie.
-ms.date: 08/12/2020
+ms.date: 10/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9a499ceda546b7ea5c71cd8c770f1a4b99001b08
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d484e61fc4ab3714eb362b26d64d449890065888
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88163523"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203854"
 ---
 # <a name="azure-delegated-resource-management"></a>Meer informatie over gedelegeerd resourcebeheer
 
-Azure delegated resource management is een van de belangrijkste onderdelen van [Azure Lighthouse](../overview.md). Met Azure delegated resource management kunnen service providers de klant betrokkenheid en de onboarding-ervaring vereenvoudigen, terwijl gedelegeerde resources op schaal worden beheerd met flexibiliteit en precisie.
+Azure delegated resource management is een van de belangrijkste onderdelen van [Azure Lighthouse](../overview.md). Met Azure delegated resource management kunnen service providers de klant betrokkenheid en de onboarding-ervaring vereenvoudigen, terwijl gedelegeerde resources op schaal worden beheerd met flexibiliteit en precisie. Klanten behouden de controle over welke service providers toegang hebben tot hun Tenant, klanten houden controle over wie toegang heeft tot hun Tenant, welke bronnen ze kunnen gebruiken en welke acties er kunnen worden uitgevoerd.
 
 ## <a name="what-is-azure-delegated-resource-management"></a>Wat is Azure delegated resource management?
 
@@ -35,7 +35,8 @@ Op hoog niveau is dit de manier waarop Azure gedelegeerd resource management wer
 2. U geeft deze toegang en de klant op een van de volgende twee manieren een onboarding voor Azure Lighthouse:
    - [Een Azure Marketplace managed service-aanbieding](../how-to/publish-managed-services-offers.md) (privé of openbaar) publiceren die door de klant wordt geaccepteerd
    - [Een Azure Resource Manager-sjabloon implementeren naar de Tenant van de klant](../how-to/onboard-customer.md) voor een of meer specifieke abonnementen of resource groepen
-3. Zodra de klant onboarded is, kunnen geautoriseerde gebruikers zich aanmelden bij uw Tenant beheren en taken uitvoeren voor het opgegeven bereik van de klant, op basis van de toegang die u hebt gedefinieerd.
+
+3. Zodra de klant onboarded is, kunnen geautoriseerde gebruikers zich aanmelden bij uw Tenant beheren en taken uitvoeren voor het opgegeven bereik van de klant, op basis van de toegang die u hebt gedefinieerd. Klanten kunnen de acties van de service provider bekijken en de mogelijkheid hebben om de toegang te verwijderen, indien nodig.
 
 > [!NOTE]
 > U kunt gedelegeerde resources beheren die zich in verschillende [regio's](../../availability-zones/az-overview.md#regions)bevinden. Overdracht van abonnementen over een [nationale Cloud](../../active-directory/develop/authentication-national-cloud.md) en de open bare Azure-Cloud, of over twee afzonderlijke nationale Clouds, wordt echter niet ondersteund.

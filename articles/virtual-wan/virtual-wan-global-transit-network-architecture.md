@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 63a9c3a6c23d78411c04250359dac3c3aacde2ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3a0eaeebbc0659b217051c6e98d67803896f2e1
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212715"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102320"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Wereld wijde doorvoer netwerk architectuur en virtueel WAN
 
@@ -43,7 +43,7 @@ Met Azure Virtual WAN kunt u een wereld wijde doorvoer netwerk architectuur door
 
 **Afbeelding 2: wereld wijd Transit netwerk en virtueel WAN**
 
-In de virtuele WAN-architectuur van Azure worden virtuele WAN-hubs ingericht in azure-regio's, waarmee u uw vertakkingen, VNets en externe gebruikers verbinding kunt laten maken. De fysieke Branch sites zijn verbonden met de hub via Premium ExpressRoute of site-naar-site-Vpn's, VNets zijn verbonden met de hub via VNet-verbindingen en externe gebruikers kunnen rechtstreeks verbinding maken met de hub met behulp van gebruikers VPN (punt-naar-site-Vpn's). Virtual WAN biedt ook ondersteuning voor een VNet-verbinding tussen regio's waarbij een VNet in één regio kan worden verbonden met een virtuele WAN-hub in een andere regio.
+In de virtuele WAN-architectuur van Azure worden virtuele WAN-hubs ingericht in azure-regio's, waarmee u uw vertakkingen, VNets en externe gebruikers verbinding kunt laten maken. De fysieke Branch sites zijn verbonden met de hub via Premium of Standard ExpressRoute of site-naar-site-Vpn's, VNets zijn verbonden met de hub via VNet-verbindingen en externe gebruikers kunnen rechtstreeks verbinding maken met de hub met behulp van gebruikers VPN (punt-naar-site-Vpn's). Virtual WAN biedt ook ondersteuning voor een VNet-verbinding tussen regio's waarbij een VNet in één regio kan worden verbonden met een virtuele WAN-hub in een andere regio.
 
 U kunt een virtueel WAN opzetten door één virtuele WAN-hub te maken in de regio met het grootste aantal spokes (vertakkingen, VNets, gebruikers) en vervolgens de spokes in andere regio's te verbinden met de hub. Dit is een goede optie wanneer een bedrijfs footprint voornamelijk in één regio met een paar externe spokes is.  
   
@@ -87,7 +87,7 @@ Vertakking-naar-VNet is het primaire pad dat door Azure Virtual WAN wordt onders
 
 ### <a name="expressroute-global-reach-and-virtual-wan"></a>ExpressRoute Global Reach en virtuele WAN
 
-ExpressRoute is een privé-en robuuste manier om uw on-premises netwerken te verbinden met de Microsoft Cloud. Virtual WAN ondersteunt verbindingen met Express route-circuits. Voor het verbinden van een vertakkings site met een virtueel WAN met Express route is 1) circuit voor een Global Reach ingeschakeld.
+ExpressRoute is een privé-en robuuste manier om uw on-premises netwerken te verbinden met de Microsoft Cloud. Virtual WAN ondersteunt verbindingen met Express route-circuits. Voor het verbinden van een filiaal site met een virtueel WAN met Express route is 1) circuit (Premium of Standard circuit 2) een Global Reach ingeschakelde locatie.
 
 ExpressRoute Global Reach is een invoeg functie voor ExpressRoute. Met Global Reach kunt u ExpressRoute-circuits samen koppelen om een privé netwerk tussen uw on-premises netwerken te maken. Voor vertakkingen die zijn verbonden met Azure Virtual WAN met ExpressRoute moet de ExpressRoute Global Reach met elkaar communiceren.
 

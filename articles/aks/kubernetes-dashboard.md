@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
-ms.openlocfilehash: 8fda67bea75e973b42aa7f1a9f32be906b1d3e83
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8df913234be1f3e07677520e41b699fe6d503204
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570816"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314507"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Toegang tot het Kubernetes Web dash board in azure Kubernetes service (AKS)
 
@@ -102,7 +102,7 @@ After you choose a method to sign in, the Kubernetes dashboard is displayed. If 
 ## <a name="sign-in-to-the-dashboard-kubernetes-116"></a>Aanmelden bij het dash board (kubernetes 1.16 +)
 
 > [!IMPORTANT]
-> Vanaf [de v-1.10.1 van het Kubernetes-dash board](https://github.com/kubernetes/dashboard/releases/tag/v1.10.1) of Kubernetes v 1.16 + het service account "Kubernetes-dash board" kan niet meer worden gebruikt voor het ophalen van resources vanwege een [beveiligings oplossing in die release](https://github.com/kubernetes/dashboard/pull/3400). Daarom retour neren aanvragen zonder auth-gegevens een niet-geautoriseerde 401-fout. Een Bearer-token dat is opgehaald uit een service account kan nog steeds worden gebruikt in dit [Kubernetes-dash board-voor beeld](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#accessing-the-dashboard-ui), maar dit heeft gevolgen voor de aanmeldings stroom van de dashboard-invoeg toepassing, vergeleken met oudere versies.
+> Vanaf [de v-1.10.1 van het Kubernetes-dash board](https://github.com/kubernetes/dashboard/releases/tag/v1.10.1) of Kubernetes v 1.16 + het service account "Kubernetes-dash board" kan niet meer worden gebruikt voor het ophalen van resources vanwege een [beveiligings oplossing in die release](https://github.com/kubernetes/dashboard/pull/3400). Daarom retour neren aanvragen zonder auth-gegevens een niet- [geautoriseerde 401-fout](https://github.com/Azure/AKS/issues/1573#issuecomment-703040998). Een Bearer-token dat is opgehaald uit een service account kan nog steeds worden gebruikt in dit [Kubernetes-dash board-voor beeld](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#accessing-the-dashboard-ui), maar dit heeft gevolgen voor de aanmeldings stroom van de dashboard-invoeg toepassing, vergeleken met oudere versies.
 >
 >Als u nog steeds een versie van vóór 1,16 uitvoert, kunt u nog steeds machtigingen geven voor het service account ' kubernetes-dash board ', maar dit wordt **niet aanbevolen**:
 > ```console

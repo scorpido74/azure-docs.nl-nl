@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c062b907f1e8a8e0541db0d69c6e24901f3145f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0fe19a1fadd54b7146ccb074d82a68ec259100f2
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268550"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093256"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Zelfstudie: Hybride Azure Active Directory-gekoppelde apparaten handmatig configureren
 
@@ -564,7 +564,7 @@ Hier volgen drie manieren om de status van het apparaat te zoeken en te controle
 ### <a name="using-the-azure-portal"></a>Azure Portal gebruiken
 
 1. Ga naar de apparatenpagina met behulp van een [directe link](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices).
-2. Informatie over het vinden van een apparaat vindt u in [How to manage device identities using the Azure portal](https://docs.microsoft.com/azure/active-directory/devices/device-management-azure-portal#locate-devices) (Apparaat-id's beheren met de Azure-portal).
+2. Informatie over het vinden van een apparaat vindt u in [How to manage device identities using the Azure portal](./device-management-azure-portal.md#manage-devices) (Apparaat-id's beheren met de Azure-portal).
 3. Als er **In behandeling** in de kolom **Geregistreerd** staat, is de hybride Azure AD-koppeling niet voltooid. In federatieve omgevingen kan dit alleen gebeuren als het registreren niet is gelukt en AAD Connect is geconfigureerd voor het synchroniseren van de apparaten.
 4. Als er een **datum/tijd** in de kolom **Geregistreerd** staat, is de hybride Azure AD-koppeling wel voltooid.
 

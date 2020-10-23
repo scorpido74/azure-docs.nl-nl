@@ -4,12 +4,12 @@ description: Registreer en analyseer logboek gebeurtenissen van het diagnostisch
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 265149e8d3cd775974ec690ebffbce92a1b82b2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe2697c73f2a5f3f0b33cfb598f11f39420ed723
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91848684"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108096"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Metrische batches, waarschuwingen en logboeken voor diagnostische evaluatie en bewaking
 
@@ -105,7 +105,7 @@ Volg de onderstaande stappen om een nieuwe diagnostische instelling te maken in 
 6. Selecteer **ServiceLog**, **AllMetrics**of beide.
 7. Selecteer **Opslaan** om de diagnostische instelling te maken.
 
-U kunt ook [verzameling via Azure monitor in de Azure Portal inschakelen](../azure-monitor/platform/diagnostic-settings.md) om Diagnostische instellingen te configureren, met behulp van een [Resource Manager-sjabloon](../azure-monitor/platform/diagnostic-settings-template.md)of met Azure POWERSHELL of de Azure cli. Zie [overzicht van Azure platform-logboeken](../azure-monitor/platform/platform-logs-overview.md)voor meer informatie.
+U kunt ook [verzameling via Azure monitor in de Azure Portal inschakelen](../azure-monitor/platform/diagnostic-settings.md) om Diagnostische instellingen te configureren, met behulp van een [Resource Manager-sjabloon](../azure-monitor/samples/resource-manager-diagnostic-settings.md)of met Azure POWERSHELL of de Azure cli. Zie [overzicht van Azure platform-logboeken](../azure-monitor/platform/platform-logs-overview.md)voor meer informatie.
 
 ### <a name="access-diagnostics-logs-in-storage"></a>Diagnostische logboeken openen in Storage
 

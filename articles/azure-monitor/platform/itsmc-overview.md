@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 0a632e8c57ab57869e4454b0d6a4018de6bd5548
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c163b7325cb4e039ddcfee95a39b82b4cb258b3c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613761"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461291"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Verbinding maken tussen Azure en ITSM-hulpprogramma's met behulp van IT Service Management-connector
 
@@ -65,7 +65,7 @@ Voordat u een verbinding kunt maken, moet u de ITSM-connector-oplossing toevoege
    >[!NOTE]
    >Als onderdeel van de doorlopende overgang van Microsoft Operations Management Suite (OMS) naar Azure Monitor worden OMS-werk ruimten nu aangeduid als Log Analytics.
 
-5. Klik op **Maken**.
+5. Klik op **Create**.
 
 Wanneer de oplossings resource is geïmplementeerd, verschijnt er een melding in de rechter bovenhoek van het venster.
 
@@ -106,6 +106,10 @@ Nadat u uw ITSM-hulp middelen hebt bereid, volgt u de onderstaande stappen om ee
 ## <a name="using-the-solution"></a>De oplossing gebruiken
    U kunt met behulp van de ITSM-connector-oplossing werk items maken van Azure-waarschuwingen, Log Analytics waarschuwingen en Log Analytics logboek records.
 
+## <a name="template-definitions"></a>Sjabloon definities
+   Er zijn typen werk items die sjablonen kunnen gebruiken die zijn gedefinieerd door het ITSM-hulp programma.
+Door sjablonen te gebruiken, kunnen klanten velden definiëren die automatisch worden ingevuld op basis van vaste waarden die zijn gedefinieerd als onderdeel van de actie groep. De definitie van de sjablonen wordt uitgevoerd in het hulp programma ITSM.
+      
 ## <a name="create-itsm-work-items-from-azure-alerts"></a>ITSM-werk items maken op basis van Azure-waarschuwingen
 
 Zodra u uw ITSM-verbinding hebt gemaakt, kunt u een of meer werk items maken in uw ITSM-hulp programma op basis van Azure-waarschuwingen met behulp van de **actie ITSM** in **actie groepen**.
@@ -133,8 +137,10 @@ Gebruik de volgende procedure:
     ![Details van ITSM-actie](media/itsmc-overview/itsm-action-details.png)
 
 6. Selecteer type **werk item** in de vervolg keuzelijst.
-   Kies of u een bestaande sjabloon wilt gebruiken of vul de velden in die vereist zijn voor uw ITSM-product.
-7. Klik op **OK**.
+
+7. Als u de veld velden met vaste waarden wilt invullen, moet u het selectie vakje ' aangepaste sjabloon gebruiken ' selecteren, anders kiest u een bestaande [sjabloon](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions) uit de vervolg keuzelijst en vult u de sjabloon velden met vaste waarden in.
+
+8. Klik op **OK**.
 
 Wanneer u een Azure-waarschuwings regel maakt/bewerkt, gebruikt u een actie groep met een ITSM-actie. Wanneer de waarschuwing wordt geactiveerd, wordt werk item gemaakt/bijgewerkt in het ITSM-hulp programma.
 
@@ -243,7 +249,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 
 | Log Analytics veld | Het veld ServiceNow |
 |:--- |:--- |
-| ServiceDeskId_s| Getal |
+| ServiceDeskId_s| Aantal |
 | IncidentState_s | Status |
 | Urgency_s |Urgentie |
 | Impact_s |Impact|
@@ -255,7 +261,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 | AssignedTo_s | Toegewezen aan  |
 | Category_s | Categorie |
 | Title_s|  Korte beschrijving |
-| Description_s|  Notities |
+| Description_s|  Opmerkingen |
 | CreatedDate_t|  Had |
 | ClosedDate_t| gesloten|
 | ResolvedDate_t|Opgelost|
@@ -265,7 +271,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 
 | Log Analytics | Het veld ServiceNow |
 |:--- |:--- |
-| ServiceDeskId_s| Getal |
+| ServiceDeskId_s| Aantal |
 | CreatedBy_s | Aangevraagd door |
 | ClosedBy_s | Gesloten door |
 | AssignedTo_s | Toegewezen aan  |

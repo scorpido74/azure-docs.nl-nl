@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 9562cff9fd9ed37cbd4fd94c42acd54e6be3b47c
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 48a2f7f6587d22c34e240fb3e784eb980c81b6b3
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094004"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92419851"
 ---
 # <a name="azure-spring-cloud-faq"></a>Veelgestelde vragen over Azure veer Cloud
 
@@ -106,7 +106,7 @@ U kunt de diagnostische instellingen van de lente-Cloud verwijderen met behulp v
 
 ### <a name="which-versions-of-java-runtime-are-supported-in-azure-spring-cloud"></a>Welke versies van Java runtime worden ondersteund in azure lente-Cloud?
 
-Azure lente Cloud biedt ondersteuning voor Java LTS-versies met de meest recente builds, op dit moment 2020, Java 8 build 252 en Java 11 build 7 worden ondersteund. Zie [de JDK voor Azure en Azure stack installeren](/azure/developer/java/fundamentals/java-jdk-install)
+Azure lente Cloud ondersteunt Java LTS-versies met de meest recente builds, die momenteel 2020, Java 8 en Java 11 worden ondersteund. Zie [de JDK voor Azure en Azure stack installeren](/azure/developer/java/fundamentals/java-jdk-install)
 
 ### <a name="who-built-these-java-runtimes"></a>Wie heeft deze Java-Runtimes gemaakt?
 
@@ -191,7 +191,7 @@ Tot 3 december 2022. Zie [.net core-ondersteunings beleid](https://dotnet.micros
 ::: zone-end
 
 
-## <a name="troubleshooting"></a>Problemen oplossen
+## <a name="troubleshooting"></a>Probleemoplossing
 
 ### <a name="what-are-the-impacts-of-service-registry-rarely-unavailable"></a>Wat zijn de gevolgen van het service register zelden niet beschikbaar?
 

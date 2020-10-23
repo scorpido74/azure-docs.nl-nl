@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: d0b9e2301a8bb9990f88db8d4d55ef7f97946174
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 7e971b4afe0719d74c8aa32c5f5103c4be971d9b
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072166"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426445"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Services die beheerde identiteiten voor Azure-resources ondersteunen
 
@@ -41,6 +41,16 @@ Raadpleeg de volgende lijst om de beheerde identiteit voor Azure API Management 
 
 - [Azure Resource Manager-sjabloon](../../api-management/api-management-howto-use-managed-service-identity.md)
 
+### <a name="azure-app-configuration"></a>Azure App Configuration
+
+| Type beheerde identiteit | Alles algemeen beschikbaar<br>Wereld wijde Azure-regio's | Azure Government | Azure Duitsland | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Door het systeem toegewezen | ![Beschikken][check] | ![Beschikken][check] | Niet beschikbaar | Niet beschikbaar |
+| Door de gebruiker toegewezen | ![Beschikken][check] | ![Beschikken][check]  | Niet beschikbaar  | Niet beschikbaar |
+
+Raadpleeg de volgende lijst om de beheerde identiteit voor Azure-app configuratie te configureren (in regio's waar beschikbaar):
+
+- [Azure-CLI](../../azure-app-configuration/overview-managed-identity.md)
 
 ### <a name="azure-app-service"></a>Azure App Service
 

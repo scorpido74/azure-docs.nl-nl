@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: f5f2a9800d3796d217294e757076d6ff706281d1
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 64264028706c1493f687f032a7ec39e69188bd45
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044195"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171923"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>Logboeken ophalen uit IoT Edge-implementaties
 
@@ -370,7 +370,7 @@ az iot hub invoke-module-method --method-name 'GetTaskStatus' -n <hub name> -d <
 '
 ```
 
-In de Azure Portal roept u de methode met de naam van de methode `UploadModuleLogs` en de volgende JSON-nettolading aan nadat u de GUID hebt gevuld met uw gegevens:
+In de Azure Portal roept u de methode met de naam van de methode `GetTaskStatus` en de volgende JSON-nettolading aan nadat u de GUID hebt gevuld met uw gegevens:
 
 ```json
     {
