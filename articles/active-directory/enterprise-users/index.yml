@@ -1,0 +1,71 @@
+### YamlMime:Landing
+title: Documentatie voor Enterprise-gebruikersbeheer - Azure AD
+summary: Azure AD biedt services voor gebruikersbeheer, zoals groepen en licenties, zodat u belangrijke gebruikersbeheertaken snel kunt uitvoeren. Wijs licenties toe, wijs toegang tot toepassingen toe aan groepen of gebruikers, en voeg domeinnamen toe of beheer ze.
+metadata:
+  title: Documentatie voor gebruikers, groepen, licenties en domeinen van Azure Active Directory
+  description: Meer informatie over het gebruik van groepen, domeinnamen en licenties voor het beheren van gebruikersverificatie in uw Azure AD-organisatie.
+  services: active-directory
+  ms.service: active-directory
+  ms.subservice: enterprise-users
+  manager: daveba
+  ms.topic: landing-page
+  ms.date: 10/19/2020
+  author: curtand
+  ms.author: curtand
+  ms.openlocfilehash: 3918c28d9657b077eefd5226be656ab6ad5a7dbf
+  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 10/22/2020
+  ms.locfileid: "92372698"
+landingContent:
+- title: Over Enterprise-gebruikersbeheer
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Gebruikers, groepen, domeinen en licenties
+      url: directory-overview-user-model.md
+    - text: Overzicht van aangepaste rollen
+      url: ../roles/custom-overview.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+  - linkListType: concept
+    links:
+    - text: Organisatieonafhankelijkheid in Azure AD
+      url: licensing-directory-independence.md
+    - text: Toegang beheren met behulp van groepen
+      url: ../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+- title: Aan de slag
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Een gebruiker toevoegen
+      url: ../fundamentals/add-users-azure-active-directory.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+    - text: Verloopbeleid voor groepen instellen
+      url: groups-quickstart-expiration.md
+    - text: Licenties toewijzen aan gebruikers
+      url: ../fundamentals/license-users-groups.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+- title: Azure AD-domeinnamen beheren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Uw aangepaste domeinnaam toevoegen
+      url: ../fundamentals/add-custom-domain.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+    - text: Aangepaste domeinnamen beheren
+      url: domains-manage.md
+- title: Groepen beheren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Een dynamische groep maken
+      url: groups-create-rule.md
+    - text: Groepsinstellingen in PowerShell
+      url: groups-settings-v2-cmdlets.md
+    - text: Een naamgevingsbeleid voor groepen instellen
+      url: groups-naming-policy.md
+- title: Domeinen toevoegen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Een aangepaste domeinnaam toevoegen
+      url: ../fundamentals/add-custom-domain.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+    - text: Aangepaste domeinnamen beheren
+      url: domains-manage.md

@@ -37,6 +37,8 @@
           href: onboard-service-principal.md
         - name: Machines verbinden met Azure Arc met PowerShell DSC
           href: onboard-dsc.md
+        - name: Machines verbinden met Azure Arc met PowerShell
+          href: onboard-powershell.md
     - name: Beheren
       items:
         - name: Azure VM-extensies beheren en gebruiken

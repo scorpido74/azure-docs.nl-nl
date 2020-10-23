@@ -1022,6 +1022,8 @@
           href: insights/container-insights-analyze.md
         - name: GPU-prestaties bewaken
           href: insights/container-insights-gpu-monitoring.md
+        - name: Netwerkconfiguratie bewaken
+          href: ../virtual-network/kubernetes-network-policies.md?toc=/azure/azure-monitor/toc.json#monitor-and-visualize-network-configurations-with-azure-npm
         - name: Implementaties en HPA's bewaken
           href: insights/container-insights-deployment-hpa-metrics.md
         - name: Livegegevens weergeven

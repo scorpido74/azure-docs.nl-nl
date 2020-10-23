@@ -401,6 +401,8 @@
                       href: how-to-custom-commands-send-activity-to-client.md
                     - name: Webeindpunten instellen
                       href: how-to-custom-commands-setup-web-endpoints.md
+                    - name: Uw app met aangepaste opdrachten exporteren als een vaardigheid
+                      href: how-to-custom-commands-integrate-remote-skills.md
                 - name: Implementeren
                   items:
                     - name: Continue implementatie met Azure DevOps
