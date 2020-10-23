@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: d0ee9680a6b1b7c3e145137c73dda84d1a755b06
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a5e4b8bbae67e32a5a0c951de583688836eb014b
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147920"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426392"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Azure HDInsight-clusters beveiligen en isoleren met een persoonlijke koppeling (preview-versie)
 
@@ -59,6 +59,8 @@ Wanneer `privateLink` is ingesteld op *inschakelen*, worden interne [standaard l
 Standaard load balancers bieden niet automatisch de [open bare uitgaande NAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) , zoals Basic load balancers. U moet uw eigen NAT-oplossing opgeven, zoals [Virtual Network NAT](../virtual-network/nat-overview.md) of een [firewall](./hdinsight-restrict-outbound-traffic.md), voor uitgaande afhankelijkheden. Uw HDInsight-cluster moet nog steeds toegang hebben tot de uitgaande afhankelijkheden. Als deze uitgaande afhankelijkheden niet zijn toegestaan, kan het maken van het cluster mislukken.
 
 ### <a name="prepare-your-environment"></a>Uw omgeving voorbereiden
+
+Voor het maken van persoonlijke koppelings Services moet u [netwerk beleid voor de persoonlijke koppelings service expliciet uitschakelen](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy).
 
 In het volgende diagram ziet u een voor beeld van de netwerk configuratie die is vereist voordat u een cluster maakt. In dit voor beeld wordt al het uitgaande verkeer [geforceerd](../firewall/forced-tunneling.md) Azure Firewall met behulp van UDR en moeten de vereiste uitgaande afhankelijkheden "allowed" zijn op de firewall voordat een cluster wordt gemaakt. Voor Enterprise Security Package clusters kan de netwerk verbinding met Azure Active Directory Domain Services worden verschaft door VNet-peering.
 

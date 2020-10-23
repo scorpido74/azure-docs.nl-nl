@@ -1,6 +1,6 @@
 ---
 title: SAML-verificatie met Azure Active Directory
-description: Richt lijnen voor architectuur over het bereiken van dit verificatie patroon
+description: Architectuur richtlijnen voor het bereiken van SAML-verificatie met Azure Active Directory
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05b13e04db8e83a8a10c2d7fe0aea202dfa3b69c
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 1ab14413de1f999747e5b3fb58b505e0a9258a55
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114277"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441212"
 ---
 # <a name="saml-authentication-with-azure-active-directory"></a>SAML-verificatie met Azure Active Directory
 
@@ -37,7 +37,7 @@ U moet een SSO-ervaring (eenmalige aanmelding) bieden voor een Enter prise SAML-
 
 Hoewel een van de belangrijkste voor beelden van SAML-adressen SSO is, met name door SSO uit te breiden tussen beveiligings domeinen, zijn er ook andere use-cases (profielen genoemd). 
 
-![architectuur diagram](./media/authentication-patterns/saml-auth.png)
+![architectuur diagram voor SAML](./media/authentication-patterns/saml-auth.png)
 
 ## <a name="components-of-system"></a>Onderdelen van systeem
 

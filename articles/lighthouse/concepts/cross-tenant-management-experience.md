@@ -1,14 +1,14 @@
 ---
 title: Beheerervaring in meerdere tenants
 description: Azure delegated Resource Management maakt een cross-Tenant beheer mogelijk.
-ms.date: 10/20/2020
+ms.date: 10/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: c9b47dd720271fe782ce9562d2216eca881756ae
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 5443c3b5a34cd493e0956f2a0d6ed7d6fecd603d
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424146"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460662"
 ---
 # <a name="cross-tenant-management-experiences"></a>Beheerervaring in meerdere tenants
 
@@ -81,6 +81,10 @@ De meeste taken en services kunnen worden uitgevoerd op gedelegeerde resources i
 [Azure Kubernetes service (AKS)](../../aks/index.yml):
 
 - Gehoste Kubernetes-omgevingen beheren en toepassingen in containers implementeren en beheren binnen de tenants van de klant
+
+[Azure migrate](../../migrate/index.yml):
+
+- Migratie projecten maken in de Tenant van de klant en Vm's migreren
 
 [Azure monitor](../../azure-monitor/index.yml):
 

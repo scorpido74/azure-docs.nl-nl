@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/27/2017
-ms.openlocfilehash: 50607093dd71184740e972a3c8572630df609453
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f136d0818daca1585de3896305a080ddbabfbe2
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361137"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426921"
 ---
 # <a name="manage-an-azure-machine-learning-studio-classic-workspace"></a>Een Azure Machine Learning Studio-werk ruimte (klassieke) beheren
 
@@ -30,7 +30,7 @@ U kunt Machine Learning Studio (klassieke) werk ruimten in de Azure Portal beher
 
 
 
-## <a name="use-the-azure-portal"></a>Azure Portal gebruiken
+## <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
 
 Een studio-werk ruimte (klassieke) beheren in de Azure Portal:
 
@@ -48,7 +48,7 @@ Gebruik de Machine Learning Web Services-portal om de webservices te beheren die
 > [!NOTE]
 > Als u nieuwe webservices wilt implementeren of beheren, moet u een rol Inzender of beheerder toewijzen aan het abonnement waarop de webservice is geïmplementeerd. Als u een andere gebruiker uitnodigt voor een machine learning studio-werk ruimte, moet u deze toewijzen aan de rol Inzender of beheerder voor het abonnement voordat ze webservices kunnen implementeren of beheren. 
 > 
->Zie [toegang beheren met RBAC en de Azure Portal](../../role-based-access-control/role-assignments-portal.md)voor meer informatie over het instellen van toegangs machtigingen.
+>Zie [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure Portal](../../role-based-access-control/role-assignments-portal.md)voor meer informatie over het instellen van toegangs machtigingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over het [implementeren van machine learning met Azure Resource Manager-sjablonen](deploy-with-resource-manager-template.md). 

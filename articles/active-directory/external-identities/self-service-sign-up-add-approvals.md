@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d664d7cd169593924917bb02a0220e4047eb0cdb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d2ff176d7569f6f67c8f0dd37e0073314a07289
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88165231"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441620"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Een aangepaste goedkeurings werk stroom toevoegen aan self-service registratie
 
@@ -29,7 +29,7 @@ Dit artikel bevat een voor beeld van hoe u kunt integreren met een goedkeurings 
 
 ## <a name="register-an-application-for-your-approval-system"></a>Een toepassing registreren voor uw goedkeurings systeem
 
-U moet uw goedkeurings systeem registreren als een toepassing in uw Azure AD-Tenant, zodat het kan worden geverifieerd met Azure AD en toestemming heeft om gebruikers te maken. Meer informatie over de [basis principes van verificatie en autorisatie voor Microsoft Graph](https://docs.microsoft.com/graph/auth/auth-concepts).
+U moet uw goedkeurings systeem registreren als een toepassing in uw Azure AD-Tenant, zodat het kan worden geverifieerd met Azure AD en toestemming heeft om gebruikers te maken. Meer informatie over de [basis principes van verificatie en autorisatie voor Microsoft Graph](/graph/auth/auth-concepts).
 
 1. Meld u als een Azure AD-administrator aan bij de [Azure Portal](https://portal.azure.com).
 2. Onder **Azure-Services**selecteert u **Azure Active Directory**.
@@ -263,14 +263,14 @@ De `userMessage` in het antwoord wordt weer gegeven voor de gebruiker, bijvoorbe
 
 ## <a name="user-account-creation-after-manual-approval"></a>Gebruikers account maken na hand matige goed keuring
 
-Na het verkrijgen van hand matige goed keuring maakt het aangepaste goedkeurings systeem een [gebruikers](https://docs.microsoft.com/graph/azuread-users-concept-overview) account met behulp van [Microsoft Graph](https://docs.microsoft.com/graph/use-the-api). De manier waarop uw goedkeurings systeem de gebruikers account inricht, is afhankelijk van de ID-provider die door de gebruiker is gebruikt.
+Na het verkrijgen van hand matige goed keuring maakt het aangepaste goedkeurings systeem een [gebruikers](/graph/azuread-users-concept-overview) account met behulp van [Microsoft Graph](/graph/use-the-api). De manier waarop uw goedkeurings systeem de gebruikers account inricht, is afhankelijk van de ID-provider die door de gebruiker is gebruikt.
 
 ### <a name="for-a-federated-google-or-facebook-user"></a>Voor een federatieve Google-of Facebook-gebruiker
 
 > [!IMPORTANT]
 > Het goedkeurings systeem moet expliciet controleren `identities` of `identities[0]` en `identities[0].issuer` aanwezig zijn en gelijk zijn aan `identities[0].issuer` Facebook of Google om deze methode te gebruiken.
 
-Als uw gebruiker zich heeft aangemeld met een Google-of Facebook-account, kunt u de API voor het [maken van gebruikers](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0&tabs=http)gebruiken.
+Als uw gebruiker zich heeft aangemeld met een Google-of Facebook-account, kunt u de API voor het [maken van gebruikers](/graph/api/user-post-users?tabs=http&view=graph-rest-1.0)gebruiken.
 
 1. Met het goedkeurings systeem wordt de HTTP-aanvraag van de gebruikers stroom ontvangen.
 
@@ -330,7 +330,7 @@ Content-type: application/json
 
 ### <a name="for-a-federated-azure-active-directory-user"></a>Voor een federatieve Azure Active Directory gebruiker
 
-Als een gebruiker zich aanmeldt met een federatieve Azure Active Directory account, moet u de [API voor uitnodigingen](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-1.0) gebruiken om de gebruiker te maken en vervolgens de [API voor gebruikers updates](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0) om meer kenmerken aan de gebruiker toe te wijzen.
+Als een gebruiker zich aanmeldt met een federatieve Azure Active Directory account, moet u de [API voor uitnodigingen](/graph/api/invitation-post?view=graph-rest-1.0) gebruiken om de gebruiker te maken en vervolgens de [API voor gebruikers updates](/graph/api/user-update?view=graph-rest-1.0) om meer kenmerken aan de gebruiker toe te wijzen.
 
 1. Het goedkeurings systeem ontvangt de HTTP-aanvraag van de gebruikers stroom.
 
@@ -389,4 +389,4 @@ Content-type: application/json
 ## <a name="next-steps"></a>Volgende stappen
 
 - Ga aan de slag met onze voor [beelden van Azure function Quick](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)start.
-- Het afhandelen [van de self-service registratie voor gast gebruikers met hand matige goed keuring voor beeld](code-samples-self-service-sign-up.md#custom-approval-workflows). 
+- Het afhandelen [van de self-service registratie voor gast gebruikers met hand matige goed keuring voor beeld](code-samples-self-service-sign-up.md#custom-approval-workflows).

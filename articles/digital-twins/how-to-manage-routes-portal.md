@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a2164afef3807a345819a18274eb01f2116de9fd
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 6b1f53226b82a5342efda8665b6a366a3a7fd310
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427959"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461410"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Eind punten en routes beheren in azure Digital Apparaatdubbels (Portal)
 
@@ -22,7 +22,7 @@ In azure Digital Apparaatdubbels kunt u [gebeurtenis meldingen](how-to-interpret
 
 Dit artikel begeleidt u bij het maken van eind punten en routes met behulp van de [Azure Portal](https://portal.azure.com).
 
-U kunt ook eind punten en routes beheren met de [EventRoutes-api's](how-to-use-apis-sdks.md), de [.NET-SDK (C#)](https://www.nuget.org/packages/Azure.DigitalTwins.Core)of de [Azure Digital apparaatdubbels cli](how-to-use-cli.md). Voor een versie van dit artikel die gebruikmaakt van deze mechanismen in plaats van de portal, Zie [*How to: Manage endpoints and routes (api's en CLI)*](how-to-manage-routes-apis-cli.md).
+U kunt ook eind punten en routes beheren met de [gebeurtenis routes api's](/rest/api/digital-twins/dataplane/eventroutes), de [.NET-SDK (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)of de [Azure Digital apparaatdubbels cli](how-to-use-cli.md). Voor een versie van dit artikel die gebruikmaakt van deze mechanismen in plaats van de portal, Zie [*How to: Manage endpoints and routes (api's en CLI)*](how-to-manage-routes-apis-cli.md).
 
 ## <a name="prerequisites"></a>Vereisten
 

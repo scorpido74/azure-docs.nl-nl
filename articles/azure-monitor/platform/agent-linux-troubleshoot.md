@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: c28a3b0f445ca905a882a7ede3fcfed2c1e673a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e87331cb2bbfb11a9d49888462b8be3b55e18118
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91531187"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460866"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Problemen met de Log Analytics-agent voor Linux oplossen 
 
@@ -23,11 +23,41 @@ Als geen van deze stappen voor u werkt, zijn de volgende ondersteunings kanalen 
 * Klanten met ondersteunings overeenkomsten voor Azure kunnen een ondersteunings aanvraag openen [in de Azure Portal](https://manage.windowsazure.com/?getsupport=true).
 * Diagnose OMI-problemen met de [Omi-gids voor probleem oplossing](https://github.com/Microsoft/omi/blob/master/Unix/doc/diagnose-omi-problems.md).
 * Een [github-probleem oplossen](https://github.com/Microsoft/OMS-Agent-for-Linux/issues).
-* Ga naar de Log Analytics feedback pagina om de verzonden ideeën en bugs te bekijken [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) of een nieuwe bestand te openen.  
+* Ga naar de Log Analytics feedback pagina om de verzonden ideeën en bugs te bekijken [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) of een nieuwe bestand te openen. 
+
+## <a name="log-analytics-troubleshooting-tool"></a>Hulp programma voor probleem oplossing Log Analytics
+
+Het hulp programma voor probleem oplossing van Log Analytics agent Linux is een script dat is ontworpen om problemen met de Log Analytics agent te vinden en te onderzoeken. Het wordt bij de installatie automatisch opgenomen in de-agent. Het uitvoeren van het hulp programma moet de eerste stap zijn bij het vaststellen van een probleem.
+
+### <a name="how-to-use"></a>Het gebruik van
+U kunt het hulp programma voor probleem oplossing uitvoeren door de volgende opdracht in een Terminal venster op een computer met de Log Analytics-agent te plakken: `sudo /opt/microsoft/omsagent/bin/troubleshooter`
+
+### <a name="manual-installation"></a>Handmatige installatie
+Het hulp programma voor probleem oplossing wordt automatisch opgenomen bij de installatie van de Log Analytics-agent. Als de installatie echter op enigerlei wijze mislukt, kan deze ook hand matig worden geïnstalleerd door de volgende stappen uit te voeren.
+
+1. Kopieer de probleem Oplosser-bundel naar uw computer: `wget https://raw.github.com/microsoft/OMS-Agent-for-Linux/master/source/code/troubleshooter/omsagent_tst.tar.gz`
+2. De bundel uitpakken: `tar -xzvf omsagent_tst.tar.gz`
+3. Voer de hand matige installatie uit: `sudo ./install_tst`
+
+### <a name="scenarios-covered"></a>Scenario's die worden behandeld
+Hieronder ziet u een lijst met scenario's die worden gecontroleerd door het hulp programma voor probleem oplossing:
+
+1. De agent is beschadigd. heartbeat werkt niet goed
+2. De agent start niet, kan geen verbinding maken met de logboek analyse Services
+3. Syslog-agent werkt niet
+4. De agent heeft een hoog CPU-of geheugen gebruik
+5. Agent met installatie problemen
+6. Aangepaste logboeken van agents werken niet
+7. Agent logboeken verzamelen
+
+Bekijk onze [github-documentatie](https://github.com/microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting-Tool.md)voor meer informatie.
+
+ >[!NOTE]
+ >Voer het hulp programma logboek verzamelaar uit wanneer u een probleem ondervindt. Als u de logboeken in eerste instantie hebt, helpt het ondersteunings team het probleem sneller op te lossen.
 
 ## <a name="important-log-locations-and-log-collector-tool"></a>Belang rijke logboek locaties en logboek verzamelaar-hulp programma
 
- File | Pad
+ Bestand | Pad
  ---- | -----
  Log Analytics agent voor Linux-logboek bestand | `/var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
  Logboek bestand voor configuratie van Log Analytics agent | `/var/opt/microsoft/omsconfig/omsconfig.log`

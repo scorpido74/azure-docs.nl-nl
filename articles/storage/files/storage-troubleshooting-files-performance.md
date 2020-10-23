@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/15/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 7afaa057ecc94cf67d4fd5b041d95210fcf26717
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52615a968ce831a9a5a487f7422ad13bc58ecf6d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90707591"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426474"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Problemen met Azure Files prestaties oplossen
 
@@ -26,7 +26,7 @@ Aanvragen worden beperkt wanneer de limiet voor IOPS, binnenkomend of uitgaand v
 
 Als u wilt controleren of uw share wordt beperkt, kunt u gebruikmaken van de metrische gegevens van Azure in de portal.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Selecteer **alle services** en zoek vervolgens naar **metrische gegevens**.
 
@@ -84,7 +84,7 @@ De client-VM bevindt zich in een andere regio dan de bestands share.
 
 ## <a name="client-unable-to-achieve-maximum-throughput-supported-by-the-network"></a>De client kan geen maximale door voer worden gerealiseerd die door het netwerk wordt ondersteund
 
-Een mogelijke oorzaak hiervan is dat er geen SMB-ondersteuning voor meerdere kanalen is. Azure-bestands shares ondersteunen momenteel alleen één kanaal, dus er is slechts één verbinding tussen de client-VM en de server. Deze enkele verbinding wordt vastgelegd op één kern op de client-VM, zodat de maximale door Voer die uit een virtuele machine kan worden behaald, is gebonden aan één kern.
+Een mogelijke oorzaak hiervan is het ontbreken van SMB-ondersteuning voor meerdere kanalen. Azure-bestands shares ondersteunen momenteel alleen één kanaal, dus er is slechts één verbinding tussen de client-VM en de server. Deze enkele verbinding wordt vastgelegd op één kern op de client-VM, zodat de maximale door Voer die uit een virtuele machine kan worden behaald, is gebonden aan één kern.
 
 ### <a name="workaround"></a>Tijdelijke oplossing
 

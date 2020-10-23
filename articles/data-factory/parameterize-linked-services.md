@@ -6,16 +6,16 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 10/22/2020
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 1bb523c1b5aa595a714930962bbbe4e7e04de517
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: e6c00a0d2b6ff8bbb4ba9e51110e995e93d6b558
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131391"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426961"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Para meters gekoppelde services in Azure Data Factory
 
@@ -32,16 +32,18 @@ Bekijk de volgende video voor een inleiding en demonstratie van zeven minuten vo
 
 > [!VIDEO https://channel9.msdn.com/shows/azure-friday/Parameterize-connections-to-your-data-stores-in-Azure-Data-Factory/player]
 
-## <a name="supported-data-stores"></a>Ondersteunde gegevensarchieven
+## <a name="supported-linked-service-types"></a>Ondersteunde gekoppelde service typen
 
 U kunt elk type gekoppelde service para meters.
-Bij het ontwerpen van een gekoppelde service op de gebruikers interface biedt Data Factory ingebouwde parameterisering-ervaring voor de volgende typen connectors. In de Blade gekoppelde service maken/bewerken kunt u opties voor nieuwe para meters vinden en dynamische inhoud toevoegen.
+Bij het ontwerpen van een gekoppelde service op de gebruikers interface biedt Data Factory ingebouwde parameterisering-ervaring voor de volgende typen gekoppelde services. In de Blade gekoppelde service maken/bewerken kunt u opties voor nieuwe para meters vinden en dynamische inhoud toevoegen.
 
 - Amazon Redshift
 - Amazon S3
 - Azure Cosmos DB (SQL-API)
 - Azure Database for MySQL
+- Azure Databricks
 - Azure SQL Database
+- Azure SQL Managed Instance
 - Azure Synapse Analytics (voorheen SQL DW)
 - MySQL
 - Oracle
@@ -49,7 +51,7 @@ Bij het ontwerpen van een gekoppelde service op de gebruikers interface biedt Da
 - Algemene HTTP
 - Algemene REST
 
-Voor andere typen kunt u de gekoppelde service para meters door de JSON te bewerken in de gebruikers interface:
+Voor andere gekoppelde service typen die zich niet in de bovenstaande lijst bevinden, kunt u de gekoppelde service para meters door de JSON te bewerken in de gebruikers interface:
 
 - In de Blade gekoppelde service maken/bewerken-> vouw ' Geavanceerd ' aan de onderkant uit > Schakel het selectie vakje dynamische inhoud opgeven in JSON-indeling in, > Geef de JSON-nettolading van de gekoppelde service op. 
 - Het is ook mogelijk dat u, nadat u een gekoppelde service zonder parameterisering hebt gemaakt, in [Management hub](author-visually.md#management-hub) -> gekoppelde services-> de specifieke gekoppelde service te vinden-> op ' code ' (knop ' {} ') klikken om de JSON te bewerken. 
