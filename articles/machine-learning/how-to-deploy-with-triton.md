@@ -11,12 +11,12 @@ ms.date: 09/23/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 9a6e2de07921d05e123154f604c3d1b369b3b89d
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 3a3600c4065d331ca1cfc129cd55dd56add21424
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998757"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92428338"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Hoge prestaties met een Triton-inrichtings server (preview-versie) 
 
@@ -30,7 +30,7 @@ Triton is een raam werk dat is *geoptimaliseerd voor*demijnen. Het biedt een bet
 > Het gebruik van Triton voor implementatie vanuit Azure Machine Learning is momenteel beschikbaar als __Preview-versie__. De functionaliteit van de preview-versie wordt mogelijk niet gedekt door de klant ondersteuning. Voor meer informatie raadpleegt [u de aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
 > [!TIP]
-> De code fragmenten in dit document zijn bedoeld als illustratief en er wordt mogelijk geen volledige oplossing weer gegeven. Zie de [end-to-end-voor beelden van Triton in azure machine learning](https://aka.ms/aml-triton-sample)voor werk voorbeeld code.
+> De code fragmenten in dit document zijn bedoeld als illustratief en er wordt mogelijk geen volledige oplossing weer gegeven. Zie de [end-to-end-voor beelden van Triton in azure machine learning](https://github.com/Azure/azureml-examples/tree/main/tutorials)voor werk voorbeeld code.
 
 ## <a name="prerequisites"></a>Vereisten
 

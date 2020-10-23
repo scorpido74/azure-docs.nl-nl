@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/21/2020
-ms.openlocfilehash: 0fd3778d50216e337b872f0a27cb30b04a0219f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 972e4bcfc0eb20903dafc598bad812d0afe98afb
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617217"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428319"
 ---
 # <a name="what-is-azure-sql-database"></a>Wat is Azure SQL Database?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -108,7 +108,7 @@ Met Azure SQL Database kan uw bedrijf blijven werken tijdens onderbrekingen. In 
 
 Bij herstel na noodgeval wordt ervan uitgegaan dat een catastrofale gebeurtenis lokaal zal plaatsvinden, waarbij ergens verder weg een andere computer of set computers met een kopie van uw gegevens beschikbaar blijft. In SQL Server kunt u AlwaysOn-beschikbaarheidsgroepen gebruiken die worden uitgevoerd in de asynchrone modus, om deze mogelijkheid te krijgen. Gebruikers willen vaak niet wachten op een replicatie die zo ver weg plaatsvindt om een transactie door te voeren, waardoor er mogelijk gegevensverlies optreedt bij het uitvoeren van niet-geplande failovers.
 
-Databases in de servicelagen Premium en Bedrijfskritiek [doen al iets vergelijkbaars](high-availability-sla.md#premium-and-business-critical-service-tier-availability) met de synchronisatie van een beschikbaarheidsgroep. Databases in lagere servicelagen bieden redundantie via opslag, door een [ander maar soortgelijk mechanisme](high-availability-sla.md#basic-standard-and-general-purpose-service-tier-availability) te gebruiken. Ingebouwde logica helpt te beschermen tegen een fout op één computer. De functie voor geo-replicatie biedt u de mogelijkheid om te beschermen tegen een noodgeval waarbij een hele regio wordt vernietigd.
+Databases in de servicelagen Premium en Bedrijfskritiek [doen al iets vergelijkbaars](high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability) met de synchronisatie van een beschikbaarheidsgroep. Databases in lagere servicelagen bieden redundantie via opslag, door een [ander maar soortgelijk mechanisme](high-availability-sla.md#basic-standard-and-general-purpose-service-tier-locally-redundant-availability) te gebruiken. Ingebouwde logica helpt te beschermen tegen een fout op één computer. De functie voor geo-replicatie biedt u de mogelijkheid om te beschermen tegen een noodgeval waarbij een hele regio wordt vernietigd.
 
 Azure-beschikbaarheidszones zijn bedoeld als bescherming tegen een storing in één datacentrumgebouw binnen één regio. De functie helpt te beschermen tegen het verlies van stroom of netwerk in een gebouw. In SQL Database plaatst u de verschillende replica’s in verschillende beschikbaarheidszones (verschillende gebouwen, effectief).
 

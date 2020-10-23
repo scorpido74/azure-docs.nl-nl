@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: Netskope-beheer console configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
-description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts naar de Netskope-beheerders console.
+title: 'Zelf studie: Netskope-gebruikers authenticatie configureren voor automatische gebruikers inrichting met Azure Active Directory | Microsoft Docs'
+description: Informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts voor Netskope-gebruikers authenticatie.
 services: active-directory
 author: zchia
 writer: zchia
@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: article
 ms.date: 11/07/2019
 ms.author: Zhchia
-ms.openlocfilehash: b4ac2308eae3466dbb9d68895bca4a4de30fcebc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 173ca296689bbdb8d574930ec2549e82839c47e9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91304921"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428468"
 ---
-# <a name="tutorial-configure-netskope-administrator-console-for-automatic-user-provisioning"></a>Zelf studie: Netskope-beheer console configureren voor automatische gebruikers inrichting
+# <a name="tutorial-configure-netskope-user-authentication-for-automatic-user-provisioning"></a>Zelf studie: Netskope-gebruikers authenticatie configureren voor automatische gebruikers inrichting
 
-Het doel van deze zelf studie is het demonstreren van de stappen die moeten worden uitgevoerd in de Netskope-beheer console en de Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen in Netskope-beheer console.
+Het doel van deze zelf studie is het demonstreren van de stappen die moeten worden uitgevoerd in Netskope-gebruikers authenticatie en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen voor Netskope-gebruikers authenticatie.
 
 > [!NOTE]
 > In deze zelfstudie wordt een connector beschreven die is gebaseerd op de Azure AD-service voor het inrichten van gebruikers. Zie voor belangrijke details over wat deze service doet, hoe het werkt en veelgestelde vragen [Inrichting en ongedaan maken van inrichting van gebruikers automatiseren naar SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md).
@@ -32,49 +32,49 @@ Het doel van deze zelf studie is het demonstreren van de stappen die moeten word
 In het scenario dat in deze zelfstudie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
 
 * Een Azure AD-Tenant
-* [Een Netskope-beheerders console Tenant](https://www.netskope.com/)
-* Een gebruikers account in Netskope Administrator-console met beheerders machtigingen.
+* [Een Netskope-Tenant voor gebruikers authenticatie](https://www.netskope.com/)
+* Een gebruikers account in Netskope-gebruikers verificatie met beheerders machtigingen.
 
-## <a name="assigning-users-to-netskope-administrator-console"></a>Gebruikers toewijzen aan Netskope Administrator-console
+## <a name="assigning-users-to-netskope-user-authentication"></a>Gebruikers toewijzen aan Netskope-gebruikers authenticatie
 
 Azure Active Directory gebruikt een concept met de naam *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
 
-Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u beslissen welke gebruikers en/of groepen in azure AD toegang nodig hebben tot de Netskope-beheerders console. Nadat u hebt besloten, kunt u deze gebruikers en/of groepen toewijzen aan de Netskope Administrator-console door de instructies hier te volgen:
+Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u beslissen welke gebruikers en/of groepen in azure AD toegang nodig hebben tot Netskope-gebruikers authenticatie. Nadat u hebt besloten, kunt u deze gebruikers en/of groepen toewijzen aan Netskope-gebruikers verificatie door de volgende instructies te volgen:
 * [Een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-netskope-administrator-console"></a>Belang rijke tips voor het toewijzen van gebruikers aan de Netskope-beheer console
+## <a name="important-tips-for-assigning-users-to-netskope-user-authentication"></a>Belang rijke tips voor het toewijzen van gebruikers aan Netskope-gebruikers authenticatie
 
-* Het is raadzaam dat er één Azure AD-gebruiker wordt toegewezen aan de Netskope-beheer console om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
+* Het is raadzaam dat er één Azure AD-gebruiker wordt toegewezen aan Netskope-gebruikers authenticatie om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan Netskope Administrator-console, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaardtoegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan Netskope-gebruikers authenticatie, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaard toegang** worden uitgesloten van het inrichten.
 
-## <a name="set-up-netskope-administrator-console-for-provisioning"></a>Netskope Administrator-console instellen voor inrichting
+## <a name="set-up-netskope-user-authentication-for-provisioning"></a>Netskope instellen voor het inrichten van gebruikers verificatie
 
-1. Meld u aan bij de [beheer console van uw Netskope-beheer console](https://netskope.goskope.com/). Navigeer naar **instellingen voor Home->**.
+1. Meld u aan bij uw [Netskope-beheer console voor gebruikers verificatie](https://netskope.goskope.com/). Navigeer naar **instellingen voor Home->**.
 
-    ![Beheer console van Netskope-beheer console](media/netskope-administrator-console-provisioning-tutorial/admin.png)
+    ![Beheer console voor Netskope-gebruikers authenticatie](media/netskope-administrator-console-provisioning-tutorial/admin.png)
 
 2.  Navigeer naar **Hulpprogram ma's**. Ga in het menu **extra** naar **Directory-HULPPROGRAM ma's > scim-integratie**.
 
-    ![Hulpprogram ma's voor Netskope-beheer console](media/netskope-administrator-console-provisioning-tutorial/tools.png)
+    ![Hulpprogram ma's voor Netskope-gebruikers authenticatie](media/netskope-administrator-console-provisioning-tutorial/tools.png)
 
-    ![Netskope-beheer console SCIM toevoegen](media/netskope-administrator-console-provisioning-tutorial/directory.png)
+    ![Netskope-gebruikers verificatie SCIM toevoegen](media/netskope-administrator-console-provisioning-tutorial/directory.png)
 
 3. Schuif omlaag en klik op de knop **token toevoegen** . Geef in het dialoog venster **OAuth-client naam toevoegen** een **client naam** op en klik op de knop **Opslaan** .
 
-    ![Netskope-beheer console-token toevoegen](media/netskope-administrator-console-provisioning-tutorial/add.png)
+    ![Token voor het toevoegen van Netskope-gebruikers authenticatie](media/netskope-administrator-console-provisioning-tutorial/add.png)
 
-    ![CLient naam Netskope-Administrator-console](media/netskope-administrator-console-provisioning-tutorial/clientname.png)
+    ![CLient naam voor Netskope-gebruikers verificatie](media/netskope-administrator-console-provisioning-tutorial/clientname.png)
 
-3.  Kopieer de **URL** van de scim-server en het **token**. Deze waarden worden respectievelijk in de velden Tenant-URL en geheim vermeld op het tabblad inrichten van uw Netskope-beheer console toepassing in de Azure Portal.
+3.  Kopieer de **URL** van de scim-server en het **token**. Deze waarden worden respectievelijk in de velden Tenant-URL en geheim vermeld op het tabblad inrichten van uw Netskope-gebruikers verificatie toepassing in de Azure Portal.
 
-    ![Token Netskope-beheer console maken](media/netskope-administrator-console-provisioning-tutorial/token.png)
+    ![Token voor het maken van Netskope-gebruikers authenticatie](media/netskope-administrator-console-provisioning-tutorial/token.png)
 
-## <a name="add-netskope-administrator-console-from-the-gallery"></a>Netskope Administrator-console toevoegen vanuit de galerie
+## <a name="add-netskope-user-authentication-from-the-gallery"></a>Netskope-gebruikers authenticatie toevoegen vanuit de galerie
 
-Voordat u de Netskope-beheer console configureert voor het automatisch inrichten van gebruikers met Azure AD, moet u de Netskope-beheer console vanuit de Azure AD-toepassings galerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
+Voordat u Netskope-gebruikers authenticatie configureert voor automatische gebruikers inrichting met Azure AD, moet u Netskope-gebruikers authenticatie vanuit de Azure AD-toepassings galerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
 
-**Voer de volgende stappen uit om de Netskope-beheer console toe te voegen vanuit de Azure AD-toepassings galerie:**
+**Voer de volgende stappen uit om Netskope-gebruikers verificatie toe te voegen vanuit de Azure AD-toepassings galerie:**
 
 1. Selecteer in de **[Azure Portal](https://portal.azure.com)** in het navigatie venster links **Azure Active Directory**.
 
@@ -88,29 +88,29 @@ Voordat u de Netskope-beheer console configureert voor het automatisch inrichten
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Voer in het zoekvak **Netskope Administrator-console**in, selecteer **Netskope Administrator console** in het deel venster resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+4. Voer in het zoekvak Netskope- **gebruikers verificatie**in, selecteer **Netskope gebruikers verificatie** in het deel venster resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
-    ![Netskope Administrator-console in de lijst met resultaten](common/search-new-app.png)
+    ![Gebruikers authenticatie Netskope in de lijst met resultaten](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-netskope-administrator-console"></a>Automatische gebruikers inrichting configureren voor de Netskope-beheer console 
+## <a name="configuring-automatic-user-provisioning-to-netskope-user-authentication"></a>Automatische gebruikers inrichting configureren voor Netskope-gebruikers authenticatie 
 
-In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in Netskope-beheer console te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
+In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in Netskope-gebruikers authenticatie te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
 
 > [!TIP]
-> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor de Netskope-beheer console met behulp van de instructies in de [zelf studie Netskope Administrator-console voor eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/saas-apps/netskope-cloud-security-tutorial). Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar aanvullen.
+> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor Netskope-gebruikers authenticatie door de instructies in de [zelf studie voor Netskope-gebruikers verificatie met eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/saas-apps/netskope-cloud-security-tutorial)te volgen. Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar aanvullen.
 
 > [!NOTE]
-> Raadpleeg voor meer informatie over het SCIM-eind punt [van de Netskope](https://docs.google.com/document/d/1n9P_TL98_kd1sx5PAvZL2HS6MQAqkQqd-OSkWAAU6ck/edit#heading=h.prxq74iwdpon)-beheer console.
+> Raadpleeg voor meer informatie [over het scim](https://docs.google.com/document/d/1n9P_TL98_kd1sx5PAvZL2HS6MQAqkQqd-OSkWAAU6ck/edit#heading=h.prxq74iwdpon)-eind punt van Netskope-gebruikers authenticatie.
 
-### <a name="to-configure-automatic-user-provisioning-for-netskope-administrator-console-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor de Netskope-beheer console in azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-netskope-user-authentication-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Netskope-gebruikers verificatie in azure AD:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **Bedrijfstoepassingen** en vervolgens **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer **Netskope Administrator Console** in de lijst met toepassingen.
+2. Selecteer **Netskope-gebruikersverificatie** in de lijst met toepassingen.
 
-    ![De koppeling Netskope Administrator console in de lijst met toepassingen](common/all-applications.png)
+    ![De koppeling voor Netskope-gebruikers authenticatie in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer het tabblad **Inrichten**.
 
@@ -120,7 +120,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Scherm afbeelding van de vervolg keuzelijst voor de inrichtings modus met de automatische optie aangeroepen.](common/provisioning-automatic.png)
 
-5. Selecteer in de sectie **beheerders referenties** de waarde voor de **scim-server-URL** die eerder is opgehaald in de Tenant- **URL**. Voer de **token** waarde in die eerder is opgehaald in het **geheime token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met de Netskope-beheer console. Als de verbinding mislukt, zorgt u ervoor dat het account van de Netskope-beheerders console beheerders machtigingen heeft en probeer het opnieuw.
+5. Selecteer in de sectie **beheerders referenties** de waarde voor de **scim-server-URL** die eerder is opgehaald in de Tenant- **URL**. Voer de **token** waarde in die eerder is opgehaald in het **geheime token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Netskope-gebruikers authenticatie. Als de verbinding mislukt, zorgt u ervoor dat uw Netskope-gebruikers verificatie account beheerders machtigingen heeft en probeer het opnieuw.
 
     ![Tenant-URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -130,29 +130,29 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 7. Klik op **Opslaan**.
 
-8. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met Netskope Administrator-console**.
+8. Selecteer in de sectie **toewijzingen** de optie **synchronisatie Azure Active Directory gebruikers om gebruikers verificatie te Netskope**.
 
-    ![Gebruikers toewijzingen van Netskope-beheer console](media/netskope-administrator-console-provisioning-tutorial/usermappings.png)
+    ![Gebruikers toewijzingen voor Netskope-gebruikers authenticatie](media/netskope-administrator-console-provisioning-tutorial/usermappings.png)
 
-9. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar de Netskope-beheer console in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in Netskope Administrator-console voor update-bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
+9. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Netskope-gebruikers verificatie in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in Netskope-gebruikers authenticatie voor update bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
-    ![Gebruikers kenmerken van Netskope-beheer console](media/netskope-administrator-console-provisioning-tutorial/userattributes.png)
+    ![Gebruikers kenmerken van Netskope-gebruikers authenticatie](media/netskope-administrator-console-provisioning-tutorial/userattributes.png)
 
-10. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groepen synchroniseren met Netskope Administrator-console**.
+10. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groepen synchroniseren om gebruikers verificatie te Netskope**.
 
-    ![Netskope Administrator-console groeps toewijzingen](media/netskope-administrator-console-provisioning-tutorial/groupmappings.png)
+    ![Groeps toewijzingen voor Netskope-gebruikers authenticatie](media/netskope-administrator-console-provisioning-tutorial/groupmappings.png)
 
-11. Controleer de groeps kenmerken die zijn gesynchroniseerd vanuit Azure AD naar de Netskope-beheer console in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen, worden gebruikt voor het vergelijken van de groepen in de Netskope-beheer console voor update bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
+11. Controleer de groeps kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Netskope-gebruikers verificatie in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om de groepen in Netskope-gebruikers authenticatie voor update bewerkingen te vergelijken. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
-    ![Netskope-beheer console-groeps kenmerken](media/netskope-administrator-console-provisioning-tutorial/groupattributes.png)
+    ![Kenmerken van Netskope-gebruikers authenticatie groep](media/netskope-administrator-console-provisioning-tutorial/groupattributes.png)
 
 12. Als u bereikfilters wilt configureren, raadpleegt u de volgende instructies in de [zelfstudie Bereikfilter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Als u de Azure AD-inrichtings service voor Netskope-beheer console wilt inschakelen, wijzigt **u de** **inrichtings status** in in het gedeelte **instellingen** .
+13. Als u de Azure AD-inrichtings service voor Netskope-gebruikers authenticatie wilt inschakelen, **wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
 
     ![Inrichtingsstatus ingeschakeld](common/provisioning-toggle-on.png)
 
-14. Definieer de gebruikers en/of groepen die u wilt inrichten voor de Netskope-beheerders console door de gewenste waarden in het **bereik** te kiezen in de sectie **instellingen** .
+14. Definieer de gebruikers en/of groepen die u wilt inrichten voor Netskope gebruikers verificatie door de gewenste waarden in het **bereik** te kiezen in de sectie **instellingen** .
 
     ![Inrichtingsbereik](common/provisioning-scope.png)
 
@@ -160,7 +160,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Inrichtingsconfiguratie opslaan](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die zijn gedefinieerd onder **Bereik** in de sectie **Instellingen**. De initiële synchronisatie duurt langer dan volgende synchronisaties, die ongeveer om de 40 minuten plaatsvinden zolang de Azure AD-inrichtingsservice wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op de Netskope-beheer console.
+Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die zijn gedefinieerd onder **Bereik** in de sectie **Instellingen**. De initiële synchronisatie duurt langer dan volgende synchronisaties, die ongeveer om de 40 minuten plaatsvinden zolang de Azure AD-inrichtingsservice wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op Netskope-gebruikers authenticatie.
 
 Zie [Rapportage over automatische inrichting van gebruikersaccounts](../app-provisioning/check-status-user-account-provisioning.md) voor informatie over het lezen van de Azure AD-inrichtingslogboeken.
 

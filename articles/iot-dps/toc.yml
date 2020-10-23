@@ -4,7 +4,7 @@
   items:
     - name: Wat is IoT Hub Device Provisioning Service?
       href: about-iot-dps.md
-- name: Snelstartgidsen
+- name: Quickstarts
   expanded: true
   items:
     - name: Een DPS instellen
@@ -21,6 +21,10 @@
           href: quick-create-simulated-device-symm-key.md
         - name: Java
           href: quick-create-simulated-device-symmetric-key-java.md
+        - name: C#
+          href: quick-create-device-symmetric-key-csharp.md
+        - name: Node.js
+          href: quick-create-device-symmetric-key-node.md
         - name: Python
           href: quick-create-device-symmetric-key-python.md
     - name: Een apparaat met een X.509-certificaat inrichten
