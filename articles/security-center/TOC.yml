@@ -131,10 +131,6 @@
           href: security-center-monitoring.md
         - name: Verwijzingenlijst met aanbevelingen
           href: recommendations-reference.md
-        - name: Netwerkresources beschermen
-          href: security-center-network-recommendations.md
-        - name: Identiteit en toegang beveiligen
-          href: security-center-identity-access.md
         - name: Aanbevelingen voor beveiliging beheren
           items:
             - name: Reacties op aanbevelingen automatiseren
@@ -142,6 +138,10 @@
               href: workflow-automation.md
             - name: Een resource uitsluiten van een aanbeveling
               href: exempt-resource.md
+        - name: Netwerkresources beschermen
+          href: security-center-network-recommendations.md
+        - name: Identiteit en toegang beveiligen
+          href: security-center-identity-access.md
     - name: Azure Defender-waarschuwingen
       items:
         - name: Overzicht van Azure Defender-waarschuwingen
@@ -170,7 +170,7 @@
         - name: Scannen op beveiligingsproblemen
           items:
             - name: Geïntegreerde VA-scanner voor machines
-              displayName: 'qualys, vulnerability, arc'
+              displayName: 'qualys, vulnerability, arc, hybrid'
               href: deploy-vulnerability-assessment-vm.md
             - name: Uw VM's scannen met een BYOL VA-oplossing
               displayName: 'qualys, rapid7, vulnerability'
@@ -179,7 +179,7 @@
               displayName: 'qualys, rapid7, vulnerability'
               href: remediate-vulnerability-findings-vm.md
             - name: Specifieke ontdekkingen van beveiligingsproblemen uitschakelen
-              displayName: 'qualys, rapid7, vulnerability'
+              displayName: 'qualys, rapid7'
               href: remediate-vulnerability-findings-vm.md#disable-specific-findings-preview
         - name: Beheerpoorten beveiligen met Just-in-time-toegang voor VM's
           items:
@@ -187,20 +187,24 @@
               displayName: 'jit, management'
               href: just-in-time-explained.md
             - name: Just-in-time-toegang beheren
-              displayName: 'jit, management'
+              displayName: 'jit, management, ports'
               href: security-center-just-in-time.md
         - name: Geïntegreerde Microsoft Defender voor eindpuntlicentie gebruiken
           displayName: 'ATP, mdatp, wdatp'
           href: security-center-wdatp.md
         - name: Adaptieve toepassingsregelaars beheren
+          displayName: 'aac, whitelist, allowlist, reviewgroup'
           href: security-center-adaptive-application.md
         - name: Bewaking van bestandsintegriteit gebruiken
           items:
             - name: Overzicht van bewaking van bestandsintegriteit
+              displayName: 'fim, change'
               href: security-center-file-integrity-monitoring.md
             - name: Basislijnen vergelijken met Bestandsintegriteit controleren
+              displayName: 'fim, change'
               href: security-center-file-integrity-monitoring-baselines.md
         - name: Adaptieve netwerkbeveiliging beheren
+          displayName: anh
           href: security-center-adaptive-network-hardening.md
         - name: Docker-hosts verharden
           displayName: containers

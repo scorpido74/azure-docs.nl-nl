@@ -155,6 +155,8 @@
               href: concepts-infrastructure-double-encryption.md
             - name: Beveiligingsbasislijn
               href: security-baseline.md
+        - name: Gepland onderhoud
+          href: concepts-planned-maintenance-notification.md
         - name: Bedrijfscontinuïteit
           items:
             - name: Inleiding tot bedrijfscontinuïteit

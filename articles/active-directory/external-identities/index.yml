@@ -12,12 +12,12 @@ metadata:
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: bad40c34db9f597320a05f46be92baae6632d93e
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: ecc69f8e2e281b4456861397bdd5af4ba41448e8
+  ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91265609"
+  ms.lasthandoff: 10/23/2020
+  ms.locfileid: "92441756"
 landingContent:
 - title: Over externe identiteiten
   linkLists:
@@ -28,7 +28,7 @@ landingContent:
     - text: Wat is Azure AD B2B-samenwerking? (Engelstalig artikel)
       url: what-is-b2b.md
     - text: Wat is Azure AD B2C-identiteit (business-to-consumer)?
-      url: https://docs.microsoft.com/azure/active-directory-b2c/overview
+      url: ../../active-directory-b2c/overview.md
 - title: Samenwerken met gebruikers buiten uw organisatie (B2B-samenwerking)
   linkLists:
   - linkListType: concept
@@ -54,21 +54,21 @@ landingContent:
   - linkListType: overview
     links:
     - text: Over Azure AD B2C
-      url: https://docs.microsoft.com/azure/active-directory-b2c/overview
+      url: ../../active-directory-b2c/overview.md
     - text: Technisch en functieoverzicht
-      url: https://docs.microsoft.com/azure/active-directory-b2c/technical-overview
+      url: ../../active-directory-b2c/technical-overview.md
     - text: Alle documentatie voor Azure AD B2C bekijken
-      url: https://docs.microsoft.com/azure/active-directory-b2c/
+      url: ../../active-directory-b2c/index.yml
   - linkListType: concept
     links:
     - text: Azure AD B2C-gebruikersflows
-      url: https://docs.microsoft.com/azure/active-directory-b2c/user-flow-overview
+      url: ../../active-directory-b2c/user-flow-overview.md
     - text: Aangepast Azure AD B2C-beleid
-      url: https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview
+      url: ../../active-directory-b2c/custom-policy-overview.md
   - linkListType: tutorial
     links:
     - text: Gebruikersstromen maken in Azure AD B2C
-      url: https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows
+      url: ../../active-directory-b2c/tutorial-create-user-flows.md
 - title: Selfservice gebruikersflows voor B2B-gastgebruikers (preview)
   linkLists:
   - linkListType: overview

@@ -267,7 +267,7 @@
         - name: Toegankelijkheid van Storage Explorer
           href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Queue Storage in Microsoft Q&A
-      href: 'https://docs.microsoft.com/answers/topics/azure-queue-storage.html'
+      href: /answers/topics/azure-queue-storage.html
     - name: Queue Storage in Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-queues'
     - name: Prijzen voor Queue Storage
@@ -309,7 +309,7 @@
             - name: Azure Storage-clientbibliotheek versie 12.x
               href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage'
             - name: 'Blobs, Queues en Files (versie 8)'
-              href: 'https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy'
+              href: /java/api/overview/azure/storage?view=azure-java-legacy
             - name: Azure Storage-clientbibliotheek versie 8.x en lager
               href: 'https://github.com/Azure/azure-storage-java'
         - name: Node.js

@@ -11,16 +11,16 @@ author: msmimart
 manager: celestedg
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d281b0ecd38ebbb76e093fd4f85213da4fc7d713
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 983a803245467145a0b1161a4495e8045759e7ab
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91265783"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442062"
 ---
 # <a name="billing-model-for-azure-ad-external-identities"></a>Facturerings model voor externe Azure AD-identiteiten
 
-Azure Active Directory (Azure AD) prijzen voor externe identiteiten zijn gebaseerd op maandelijkse actieve gebruikers (MAU). Dit is het aantal unieke gebruikers met verificatie activiteiten binnen een kalender maand. Dit facturerings model is van toepassing op zowel de samen werking van Azure AD gast gebruikers (B2B) als [Azure AD B2C tenants](https://docs.microsoft.com/azure/active-directory-b2c/billing). MAU-facturering helpt u kosten te verlagen door een gratis laag en flexibele, voorspel bare prijzen te bieden. In dit artikel vindt u meer informatie over MAU-facturering en het koppelen van uw Azure AD-tenants aan een abonnement.
+Azure Active Directory (Azure AD) prijzen voor externe identiteiten zijn gebaseerd op maandelijkse actieve gebruikers (MAU). Dit is het aantal unieke gebruikers met verificatie activiteiten binnen een kalender maand. Dit facturerings model is van toepassing op zowel de samen werking van Azure AD gast gebruikers (B2B) als [Azure AD B2C tenants](../../active-directory-b2c/billing.md). MAU-facturering helpt u kosten te verlagen door een gratis laag en flexibele, voorspel bare prijzen te bieden. In dit artikel vindt u meer informatie over MAU-facturering en het koppelen van uw Azure AD-tenants aan een abonnement.
 
 > [!IMPORTANT]
 > Dit artikel bevat geen prijs informatie. Zie [Azure Active Directory prijzen](https://azure.microsoft.com/pricing/details/active-directory/)voor de meest recente informatie over het gebruik van facturering en prijzen.
@@ -45,7 +45,7 @@ De prijs categorie die van toepassing is op uw gast gebruikers is gebaseerd op d
 
 Een Azure AD-Tenant moet worden gekoppeld aan een Azure-abonnement voor juiste facturering en toegang tot functies. Als de map nog geen abonnement heeft, kunt u een koppeling maken naar. u hebt de mogelijkheid om er een toe te voegen tijdens dit proces.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met een Azure-account waaraan ten minste de rol [Inzender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) is toegewezen binnen het abonnement of een resource groep binnen het abonnement.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met een Azure-account waaraan ten minste de rol [Inzender](../../role-based-access-control/built-in-roles.md) is toegewezen binnen het abonnement of een resource groep binnen het abonnement.
 
 2. Selecteer de map die u wilt koppelen: Selecteer op de Azure Portal werk balk het pictogram van de map en het **abonnement** en selecteer vervolgens de map.
 

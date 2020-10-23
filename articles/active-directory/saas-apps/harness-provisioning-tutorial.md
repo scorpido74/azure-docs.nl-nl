@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: b78de4769f49954c4d4e860e75818f6485247a17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f8cafc0ec94e9254d42bf6718e796a256d128d4
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91305627"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92445678"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>Zelf studie: harnas configureren voor automatische gebruikers inrichting
 
@@ -45,7 +45,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 * We raden u aan één Azure AD-gebruiker toe te wijzen om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan de harnas, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster **toewijzing** . Gebruikers met de rol *Standaardtoegang* worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan de harnas, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster **toewijzing** . Gebruikers met de rol *Standaard toegang* worden uitgesloten van het inrichten.
 
 ## <a name="set-up-harness-for-provisioning"></a>Harnas instellen voor inrichting
 
@@ -99,7 +99,7 @@ Voordat u een harnas configureert voor het automatisch inrichten van gebruikers 
 In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers of groepen in harnas te maken, bij te werken en uit te scha kelen op basis van gebruikers-of groeps toewijzingen in azure AD.
 
 > [!TIP]
-> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor harnas door de instructies in de [zelf studie eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/saas-apps/harness-tutorial)te volgen. U kunt eenmalige aanmelding configureren, onafhankelijk van het automatisch inrichten van gebruikers, hoewel deze twee functies elkaar aanvullen.
+> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor harnas door de instructies in de [zelf studie eenmalige aanmelding](./harness-tutorial.md)te volgen. U kunt eenmalige aanmelding configureren, onafhankelijk van het automatisch inrichten van gebruikers, hoewel deze twee functies elkaar aanvullen.
 
 > [!NOTE]
 > Zie het artikel over de harnas [API-sleutels](https://docs.harness.io/article/smloyragsm-api-keys) voor meer informatie over het scim-eind punt.

@@ -81,6 +81,8 @@
           href: ./security-controls-policy.md
         - name: Beveiligingsbasislijn
           href: security-baseline.md
+    - name: Gepland onderhoud
+      href: concepts-planned-maintenance-notification.md
     - name: Bedrijfscontinuïteit
       items:
         - name: Inleiding tot bedrijfscontinuïteit
@@ -260,7 +262,7 @@
     - name: Prijzen
       href: 'https://azure.microsoft.com/pricing/details/mariadb/'
     - name: Microsoft Q&A-vragenpagina
-      href: 'https://docs.microsoft.com/answers/topics/azure-database-mariadb.html'
+      href: /answers/topics/azure-database-mariadb.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-database-mariadb'
     - name: Verzoeken om een functie toe te voegen
