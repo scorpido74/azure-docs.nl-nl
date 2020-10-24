@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/14/2019
 ms.author: Zhchia
-ms.openlocfilehash: aa9ed0954cbfa2d83eeed1c70f40beedcf4f44cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ab23183fa42b87dad68da1d7ef9b1a2f6145750
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285913"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514789"
 ---
 # <a name="tutorial-configure-soloinsight-cloudgate-sso-for-automatic-user-provisioning"></a>Zelf studie: Soloinsight-CloudGate SSO configureren voor automatische gebruikers inrichting
 
@@ -46,7 +46,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 * Het is raadzaam dat er één Azure AD-gebruiker wordt toegewezen aan Soloinsight-CloudGate SSO om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan Soloinsight-CloudGate-SSO, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaardtoegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan Soloinsight-CloudGate-SSO, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaard toegang** worden uitgesloten van het inrichten.
 
 ## <a name="set-up-soloinsight-cloudgate-sso-for-provisioning"></a>Soloinsight-CloudGate SSO instellen voor het inrichten
 
@@ -89,7 +89,7 @@ Voordat u Soloinsight-CloudGate SSO configureert voor het automatisch inrichten 
 In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in Soloinsight-CloudGate-SSO te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
 
 > [!TIP]
-> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor Soloinsight-CloudGate SSO, gevolgd door de instructies in de [zelf studie Soloinsight-CLOUDGATE SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/soloinsight-cloudgate-sso-tutorial). Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar in de compliment
+> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor Soloinsight-CloudGate SSO, gevolgd door de instructies in de [zelf studie Soloinsight-CLOUDGATE SSO](./soloinsight-cloudgate-sso-tutorial.md). Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar in de compliment
 
 ### <a name="to-configure-automatic-user-provisioning-for-soloinsight-cloudgate-sso-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Soloinsight-CloudGate-SSO in azure AD:
 
@@ -161,4 +161,3 @@ Zie [Rapportage over automatische inrichting van gebruikersaccounts](../app-prov
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Meer informatie over het controleren van logboeken en het ophalen van rapporten over de inrichtingsactiviteit](../app-provisioning/check-status-user-account-provisioning.md)
-

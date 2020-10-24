@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c34ace92fffee3c135cb05e07f06d885751bbce5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36be61fd65db7ea02a3baec4b519a13231c420ec
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629740"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514438"
 ---
 # <a name="azure-security-baseline-for-virtual-network"></a>Azure-beveiligings basislijn voor Virtual Network
 
@@ -118,7 +118,7 @@ Gebruik toepassings beveiligings groepen om complexe beveiligings configuratie t
 
 Raadpleeg het standaard beleid voor Security Center dat beschik bare beveiligings aanbevelingen bevat die betrekking hebben op uw virtuele netwerken.
 
-Gebruik Azure-blauw drukken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure Resource Manager sjablonen, op rollen gebaseerd toegangs beheer (Azure RBAC) toewijzingen en beleids regels, in één enkele blauw definitie te verpakken. Azure Blueprint kunnen worden toegepast op nieuwe abonnementen voor nauw keurig afgestemde controle en beheer via versie beheer. 
+Gebruik Azure-blauw drukken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure Resource Manager sjablonen, Azure RBAC-toewijzingen (op rollen gebaseerd toegangs beheer) en-beleid, in een enkele blauw definitie te verpakken. Azure Blueprint kunnen worden toegepast op nieuwe abonnementen voor nauw keurig afgestemde controle en beheer via versie beheer. 
 
 - [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
@@ -408,13 +408,13 @@ Daarnaast is "versleuteling standaard" met behulp van MACsec (een IEEE-standaard
 
 **Verantwoordelijkheid**: gedeeld
 
-### <a name="46-use-role-based-access-control-to-manage-access-to-resources"></a>4,6: op rollen gebaseerd toegangs beheer gebruiken voor het beheren van de toegang tot resources 
+### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren 
 
 **Richt lijnen**: gebruik Azure RBAC (op rollen gebaseerd toegangs beheer) om de toegang tot gegevens en resources te beheren. U kunt ook servicespecifieke toegangs beheer methoden gebruiken. 
 
 Kies ingebouwde rollen zoals eigenaar, bijdrager of netwerk bijdrager en wijs de rol toe aan het juiste bereik. U kunt bijvoorbeeld een subset van de mogelijkheden van het virtuele netwerk toewijzen met de specifieke machtigingen die zijn vereist voor virtuele netwerken voor een van deze rollen. 
 
-- [RBAC configureren in azure](../role-based-access-control/role-assignments-portal.md)
+- [Azure RBAC configureren](../role-based-access-control/role-assignments-portal.md)
 
 - [Virtuele netwerken plannen](virtual-network-vnet-plan-design-arm.md#permissions)
 
@@ -754,7 +754,7 @@ Markeer abonnementen (bijvoorbeeld productie of niet-productie) met behulp van t
 
 - [Beveiligings waarschuwingen in Security Center](../security-center/security-center-alerts-overview.md)
 
-- [Labels gebruiken om uw Azure-resources te organiseren](/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags gebruiken om Azure-resources te organiseren](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center bewaking**: Ja
 

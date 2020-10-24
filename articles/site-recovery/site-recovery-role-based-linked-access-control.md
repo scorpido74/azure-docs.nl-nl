@@ -1,21 +1,21 @@
 ---
 title: Toegangs beheer op basis van rollen beheren in Azure Site Recovery
-description: In dit artikel wordt beschreven hoe u op rollen gebaseerd toegangs beheer (RBAC) toepast om Azure Site Recovery toegang te beheren.
+description: In dit artikel wordt beschreven hoe u Azure RBAC (op rollen gebaseerd toegangs beheer) toepast om Azure Site Recovery toegang te beheren.
 ms.service: site-recovery
 ms.date: 04/08/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 95ea8b61b01b17512d99d0316073835326e6d7bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d3e1334f513e8ac587d639758d83ce080c5b4ab9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87927161"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516899"
 ---
-# <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>Site Recovery toegang beheren met op rollen gebaseerd toegangs beheer (RBAC)
+# <a name="manage-site-recovery-access-with-azure-role-based-access-control-azure-rbac"></a>Site Recovery toegang beheren met Azure op rollen gebaseerd toegangs beheer (Azure RBAC)
 
-Met op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC) hebt u verfijnd toegang tot Azure. Met RBAC kunt u verantwoordelijkheden binnen uw team scheiden en alleen specifieke toegangs machtigingen verlenen aan gebruikers als dat nodig is om specifieke taken uit te voeren.
+Met op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC) hebt u verfijnd toegang tot Azure. Met behulp van Azure RBAC kunt u verantwoordelijkheden binnen uw team scheiden en alleen specifieke toegangs machtigingen verlenen aan gebruikers als dat nodig is om specifieke taken uit te voeren.
 
 Azure Site Recovery biedt drie ingebouwde rollen om Site Recovery beheer bewerkingen te beheren. Meer informatie over [ingebouwde rollen van Azure](../role-based-access-control/built-in-roles.md)
 
@@ -66,15 +66,15 @@ Een gebruiker heeft de volgende machtigingen nodig om de replicatie van een nieu
 |  |  | Micro soft. Storage/Storage accounts/listkeys ophalen/Action |
 |  | Klassiek | Micro soft. ClassicStorage/Storage accounts/lezen |
 |  |  | Micro soft. ClassicStorage/Storage accounts/Listkeys ophalen/Action |
-| Resource Group | Resource Manager | Micro soft. resources/implementaties/* |
+| Resourcegroep | Resource Manager | Micro soft. resources/implementaties/* |
 |  |  | Micro soft. resources/abonnementen/resourceGroups/lezen |
 
 Overweeg het gebruik van de [ingebouwde rollen](../role-based-access-control/built-in-roles.md) ' virtual machine contributor ' en ' klassieke virtuele machine contributor ' voor respectievelijk Resource Manager en klassieke implementatie modellen.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../role-based-access-control/role-assignments-portal.md): aan de slag met RBAC in de Azure Portal.
+* [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../role-based-access-control/role-assignments-portal.md): aan de slag met Azure RBAC in de Azure Portal.
 * Meer informatie over het beheren van toegang met:
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure-CLI](../role-based-access-control/role-assignments-cli.md)
   * [REST API](../role-based-access-control/role-assignments-rest.md)
-* [Access Control probleem oplossing op basis van rollen](../role-based-access-control/troubleshooting.md): suggesties ophalen voor het oplossen van veelvoorkomende problemen.
+* [Problemen met Azure RBAC oplossen](../role-based-access-control/troubleshooting.md): suggesties ophalen voor het oplossen van veelvoorkomende problemen.

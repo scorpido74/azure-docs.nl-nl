@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: ec8d277de177942386d9f3becdf329cdff1ca812
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f2ab3c55c5532b76c45a18054fd653dd8fe8137
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797799"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92504071"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referentie-IoT Hub quota's en beperking
 
@@ -30,7 +30,7 @@ Elke IoT-hub is ingericht met een bepaald aantal eenheden in een bepaalde laag. 
 
 De laag bepaalt ook de beperkings limieten die IoT Hub afgedwongen voor alle bewerkingen.
 
-## <a name="iot-plug-and-play"></a>IoT Plug and Play
+## <a name="iot-plug-and-play"></a>IoT Plug en Play
 
 IoT Plug en Play-apparaten verzenden ten minste één telemetrie-bericht voor elke interface, met inbegrip van de hoofdmap, waardoor het aantal berichten dat kan worden meegeteld voor uw bericht quotum kan toenemen.
 
@@ -59,7 +59,7 @@ De volgende tabel geeft de afgedwongen vertragingen weer. Waarden verwijzen naar
 | Maxi maal aantal gelijktijdig verbonden apparaat stromen<sup>1</sup> | 50 | 50 | 50 |
 | Maximale stroom voor gegevens overdracht van apparaatgegevens<sup>1</sup> (samengevoegd volume per dag) | 300 MB | 300 MB | 300 MB |
 
-<sup>1</sup> Deze functie is niet beschikbaar in de laag basis van IoT Hub. Zie [de juiste IOT hub kiezen](iot-hub-scaling.md)voor meer informatie. <br/><sup>2</sup> De grootte van de beperkings meter is 4 KB.
+<sup>1</sup> Deze functie is niet beschikbaar in de laag basis van IoT Hub. Zie [de juiste IOT hub kiezen](iot-hub-scaling.md)voor meer informatie. <br/><sup>2</sup> De grootte van de beperkings meter is 4 KB. Beperking is alleen gebaseerd op de grootte van de aanvraag-nettolading.
 
 ### <a name="throttling-details"></a>Beperkings Details
 

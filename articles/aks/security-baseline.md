@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 303720cf50b5eabf22319e1eeae7423c4f1d94bb
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: a9410215abeb6fdb413866cbff12cf5f826c0fee
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201695"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92504368"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>Azure-beveiligings basislijn voor Azure Kubernetes-service
 
@@ -949,7 +949,7 @@ Gebruik de Azure AD Power shell-module om ad hoc-query's uit te voeren om accoun
 
 De naam ruimte in Kubernetes implementeren om een logische isolatie grens te maken. Gebruik Azure Policy aliassen in de naam ruimte ' micro soft. container service ' om aangepaste beleids regels te maken om de configuratie van uw Azure Kubernetes service (AKS)-instanties te controleren of af te dwingen. 
 
-Bekijk en implementeer aanvullende Kubernetes-functies en overwegingen voor isolatie en multitenancy bevatten de volgende gebieden: planning, netwerken, verificatie/autorisatie en containers. Gebruik ook afzonderlijke abonnementen en/of beheer groepen voor ontwikkeling, testen en productie. Scheid AKS-clusters met virtuele netwerken, subnetten die op de juiste wijze zijn gelabeld en beveiligd met een Web Application firewall (WAF).
+Bekijk en implementeer aanvullende Kubernetes-functies en overwegingen voor isolatie en multitenancy om het volgende toe te voegen: planning, netwerken, verificatie/autorisatie en containers. Gebruik ook afzonderlijke abonnementen en/of beheer groepen voor ontwikkeling, testen en productie. Scheid AKS-clusters met virtuele netwerken, subnetten die op de juiste wijze zijn gelabeld en beveiligd met een Web Application firewall (WAF).
 
 - [Meer informatie over Best Practices for cluster-isolatie in AKS](operator-best-practices-cluster-isolation.md)
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 07bd9353f08e9440e495dfa92c608b4d6f70f5cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b0d2c6c3d70e73be25038c763f05ef572b56ebe
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543979"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515676"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Atlassian Jira en confluence-beheer handleiding voor Azure Active Directory
 
@@ -67,7 +67,7 @@ De invoeg toepassing ondersteunt de volgende versies van Jira en confluence:
 
 * Jira core en software: 6,0 tot 7,12
 * Jira Service Desk: 3.0.0 to 3.5.0
-* JIRA ondersteunt ook 5.2. Klik voor meer informatie op [Microsoft Azure Active Directory-eenmalige aanmelding voor JIRA 5.2](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial)
+* JIRA ondersteunt ook 5.2. Klik voor meer informatie op [Microsoft Azure Active Directory-eenmalige aanmelding voor JIRA 5.2](./jira52microsoft-tutorial.md)
 * Confluence: 5.0 t/m 5.10
 * Confluence: 6.0.1
 * Confluence: 6.1.1
@@ -185,7 +185,7 @@ De invoeg toepassing ondersteunt de volgende versies:
 
 * Jira core en software: 6,0 tot 7,12
 * Jira Service Desk: 3.0.0 to 3.5.0
-* JIRA ondersteunt ook 5.2. Klik voor meer informatie op [Microsoft Azure Active Directory-eenmalige aanmelding voor JIRA 5.2](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial)
+* JIRA ondersteunt ook 5.2. Klik voor meer informatie op [Microsoft Azure Active Directory-eenmalige aanmelding voor JIRA 5.2](./jira52microsoft-tutorial.md)
 * Confluence: 5.0 t/m 5.10
 * Confluence: 6.0.1
 * Confluence: 6.1.1

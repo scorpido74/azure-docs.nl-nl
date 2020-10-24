@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 11/07/2019
 ms.author: Zhchia
-ms.openlocfilehash: 173ca296689bbdb8d574930ec2549e82839c47e9
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 5e71566ea7cd2e8953c84d58128e3380a782ba40
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428468"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516712"
 ---
 # <a name="tutorial-configure-netskope-user-authentication-for-automatic-user-provisioning"></a>Zelf studie: Netskope-gebruikers authenticatie configureren voor automatische gebruikers inrichting
 
@@ -97,7 +97,7 @@ Voordat u Netskope-gebruikers authenticatie configureert voor automatische gebru
 In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in Netskope-gebruikers authenticatie te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
 
 > [!TIP]
-> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor Netskope-gebruikers authenticatie door de instructies in de [zelf studie voor Netskope-gebruikers verificatie met eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/saas-apps/netskope-cloud-security-tutorial)te volgen. Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar aanvullen.
+> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor Netskope-gebruikers authenticatie door de instructies in de [zelf studie voor Netskope-gebruikers verificatie met eenmalige aanmelding](./netskope-cloud-security-tutorial.md)te volgen. Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar aanvullen.
 
 > [!NOTE]
 > Raadpleeg voor meer informatie [over het scim](https://docs.google.com/document/d/1n9P_TL98_kd1sx5PAvZL2HS6MQAqkQqd-OSkWAAU6ck/edit#heading=h.prxq74iwdpon)-eind punt van Netskope-gebruikers authenticatie.
@@ -172,4 +172,3 @@ Zie [Rapportage over automatische inrichting van gebruikersaccounts](../app-prov
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Meer informatie over het controleren van logboeken en het ophalen van rapporten over de inrichtingsactiviteit](../app-provisioning/check-status-user-account-provisioning.md)
-

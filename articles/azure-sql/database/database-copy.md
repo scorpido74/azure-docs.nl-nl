@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: ''
 ms.date: 07/29/2020
-ms.openlocfilehash: a38816f00c0e05c3bde1760e39ba00d745f12a44
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3aaa666ac6b7ddffcf5e0d2f5b62d26bd0f96004
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460951"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516202"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Een transactioneel consistente kopie van een data base in Azure SQL Database kopiëren
 
@@ -67,7 +67,7 @@ Het kopiëren van de data base is een asynchrone bewerking, maar de doel databas
 
 Zie [een Data Base naar een nieuwe server kopiëren](scripts/copy-database-to-new-server-powershell.md)voor een volledig voor beeld Power shell-script.
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myResourceGroup" --dest-server $targetserver `
@@ -108,7 +108,7 @@ Meld u aan bij de hoofd database met de aanmelding van de server beheerder of de
 
 Met deze opdracht kopieert u Database1 naar een nieuwe Data Base met de naam Database2 in een elastische pool met de naam pool1. Afhankelijk van de grootte van uw data base kan het enige tijd duren voordat de Kopieer bewerking is voltooid.
 
-Database1 kan één of gegroepeerde Data Base zijn, maar pool1 moet dezelfde servicelaag zijn als Database1. 
+Database1 kan één of gegroepeerde Data Base zijn. Kopiëren tussen verschillende laag groepen wordt ondersteund, maar sommige kopieën op meerdere lagen kunnen niet worden uitgevoerd. U kunt bijvoorbeeld een enkele of elastische Standard-data base kopiëren naar een groep voor algemene doel einden, maar u kunt geen Standard Elastic data base kopiëren naar een Premium-pool. 
 
    ```sql
    -- execute on the master database to start copying

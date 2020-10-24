@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/07/2020
 ms.author: aschhab
 ms.custom: devx-track-java
-ms.openlocfilehash: 1b07faa5b2540aafafc27a51192d824d4445ce35
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8408dde86d1902cf5b4899c4783c9dd185449ee
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88067151"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515743"
 ---
 # <a name="migrate-existing-java-message-service-jms-20-applications-from-apache-activemq-to-azure-service-bus"></a>Bestaande JMS-toepassingen (Java Message Service 2,0) migreren van Apache ActiveMQ naar Azure Service Bus
 
@@ -62,7 +62,7 @@ Als onderdeel van het migreren en aanpassen van uw client toepassingen om met Az
 
 #### <a name="authentication-and-authorization"></a>Verificatie en autorisatie
 
-Op rollen gebaseerd toegangs beheer (RBAC), ondersteund door Azure Active Directory, is het voorkeurs verificatie mechanisme voor Service Bus. Omdat RBAC of op claims gebaseerde verificatie momenteel niet wordt ondersteund door Apache QPID JMS, moet u echter SAS-sleutels gebruiken voor verificatie.
+Op rollen gebaseerd toegangs beheer van Azure (Azure RBAC), ondersteund door Azure Active Directory, is het voorkeurs verificatie mechanisme voor Service Bus. Omdat Azure RBAC, of op claims gebaseerde verificatie, momenteel niet wordt ondersteund door Apache QPID JMS, moet u echter SAS-sleutels gebruiken voor verificatie.
 
 ## <a name="pre-migration"></a>Premigratie
 
@@ -89,7 +89,7 @@ Service Bus biedt verschillende functies voor beveiliging en hoge Beschik baarhe
   * [Service-eindpunten voor virtueel netwerk](service-bus-service-endpoints.md)
   * [Firewall](service-bus-ip-filtering.md)
   * [Versleuteling aan de service zijde met de door de klant beheerde sleutel (BYOK)](configure-customer-managed-key.md)
-  * [Privé-eindpunten](private-link-service.md)
+  * [Privé-eind punten](private-link-service.md)
   * [Verificatie en autorisatie](service-bus-authentication-and-authorization.md)
 
 ### <a name="monitoring-alerts-and-tracing"></a>Bewaking, waarschuwingen en tracering
@@ -232,7 +232,7 @@ Voeg vervolgens de Service Bus-specifieke eigenschappen toe aan het `application
 azure.servicebus.connection-string=Endpoint=myEndpoint;SharedAccessKeyName=mySharedAccessKeyName;SharedAccessKey=mySharedAccessKey
 ```
 
-##### <a name="replace-activemqconnectionfactory-with-servicebusjmsconnectionfactory"></a>Vervangen `ActiveMQConnectionFactory` door `ServiceBusJmsConnectionFactory`
+##### <a name="replace-activemqconnectionfactory-with-servicebusjmsconnectionfactory"></a>Vervang `ActiveMQConnectionFactory` door `ServiceBusJmsConnectionFactory`
 
 De volgende stap is het vervangen van de instantie van `ActiveMQConnectionFactory` met `ServiceBusJmsConnectionFactory` .
 

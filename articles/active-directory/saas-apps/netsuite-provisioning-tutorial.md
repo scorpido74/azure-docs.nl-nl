@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: bdee884990dfadec444fae919a715c7dc3428f77
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: faf66b9a261fd4e8f63779b3d254de4c44d1d731
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428407"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92513899"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Zelf studie: een NetSuite configureren voor het automatisch inrichten van gebruikers
 
@@ -36,7 +36,7 @@ Azure Active Directory gebruikt een concept met de naam 'toewijzingen' om te bep
 
 Voordat u de inrichtings service configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in azure AD de gebruikers vertegenwoordigen die toegang nodig hebben tot uw NetSuite-app. Nadat u hebt besloten, kunt u deze gebruikers toewijzen aan uw NetSuite-app door de volgende instructies te volgen:
 
-[Een gebruiker of groep toewijzen aan een bedrijfs-app](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-netsuite-oneworld"></a>Belang rijke tips voor het toewijzen van gebruikers aan NetSuite OneWorld
 

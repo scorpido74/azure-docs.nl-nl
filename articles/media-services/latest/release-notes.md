@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 08/31/2020
+ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: d18962e097358b8e80ac93b4d8419f7cd4f77ee0
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 4a741834637900ec0c78105790bac2453d759e2f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426816"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514483"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Release opmerkingen bij Azure Media Services v3
 
@@ -37,6 +37,15 @@ Om u op de hoogte te houden van de nieuwste ontwikkelingen, biedt dit artikel u 
 > U kunt de [Azure Portal](https://portal.azure.com/) gebruiken om v3 [Live-gebeurtenissen](live-events-outputs-concept.md)te beheren, v3- [assets](assets-concept.md) en-taken weer te geven, informatie over het openen van api's te verkrijgen, inhoud te versleutelen. Gebruik voor alle andere beheer taken (bijvoorbeeld trans formaties en taken beheren) de [rest API](/rest/api/media/accountfilters), [cli](/cli/azure/ams)of een van de ondersteunde [sdk's](media-services-apis-overview.md#sdks).
 >
 > Zie voor meer informatie: [de Azure Portal beperkingen voor Media Services v3](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
+
+## <a name="october-2020"></a>Oktober 2020
+
+### <a name="basic-audio-analysis"></a>Basis analyse van audio
+De vooraf ingestelde audio analyse bevat nu een prijs categorie voor de Basic-modus. De nieuwe Basic Audio Analyzer-modus biedt een goedkope optie voor het extra heren van spraak-transcriptie en het opmaken van uitvoer bijschriften en ondertiteling. Deze modus voert spraak-naar-tekst transcriptie en genereert een ondertitelings bestand van VTT. De uitvoer van deze modus bevat een Insights-JSON-bestand met alleen de tref woorden, transcriptie en timing gegevens. Automatische taal detectie en diarization van de spreker zijn niet opgenomen in deze modus. Zie de lijst met [ondersteunde talen.](analyzing-video-audio-files-concept.md#built-in-presets)
+
+Klanten die Indexeer functie v1 en Indexeer functie v2 gebruiken, moeten worden gemigreerd naar de standaard instelling voor de analyse van audio.
+
+Zie [video-en audio bestanden analyseren](analyzing-video-audio-files-concept.md)voor meer informatie over de Basic Audio Analyzer-modus.  Zie [een eenvoudige audio transformatie maken](how-to-create-basic-audio-transform.md)voor meer informatie over het gebruik van de Basic Audio Analyzer-modus met de rest API.
 
 ## <a name="august-2020"></a>Augustus 2020
 

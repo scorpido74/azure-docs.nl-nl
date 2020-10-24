@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 07/16/2020
+ms.date: 10/21/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: df45068ff14d8ac08a17719e4e0338308b504cac
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b6d46dfc348cc518daf2e6af4d5b9677148c3911
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92426097"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503212"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure Machine Learning Studio gebruiken in een virtueel Azure-netwerk
 
@@ -36,7 +36,7 @@ Zie de andere artikelen in deze serie:
 
 
 > [!IMPORTANT]
-> Hoewel het meren deel van Studio werkt met gegevens die zijn opgeslagen in een virtueel netwerk, hebben geïntegreerde notebooks __dit niet__. Geïntegreerde notebooks bieden geen ondersteuning voor het gebruik van opslag die zich in een virtueel netwerk bevindt. In plaats daarvan kunt u Jupyter-notebooks van een reken instantie gebruiken. Zie de sectie [toegang tot gegevens in een reken instantie-notitie blok]() voor meer informatie.
+> Als uw werk ruimte zich in een __soevereine Cloud__bevindt, zoals Azure Government of Azure China 21vianet, bieden geïntegreerde notebooks _geen_ ondersteuning voor het gebruik van opslag die zich in een virtueel netwerk bevindt. In plaats daarvan kunt u Jupyter-notebooks van een reken instantie gebruiken. Zie de sectie [toegang tot gegevens in een reken instantie-notitie blok](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook) voor meer informatie.
 
 
 ## <a name="prerequisites"></a>Vereisten
@@ -127,7 +127,7 @@ De ontwerp functie gebruikt het opslag account dat aan uw werk ruimte is gekoppe
 Een nieuwe standaard opslag voor een pijp lijn instellen:
 
 1. Selecteer in een pijp lijn concept het **tandwiel pictogram instellingen** in de buurt van de titel van de pijp lijn.
-1. Selecteer **standaard gegevens opslag selecteren**.
+1. Selecteer de **Selecteer standaard gegevens opslag**.
 1. Geef een nieuwe gegevens opslag op.
 
 U kunt ook de standaard gegevens opslag per module negeren. Dit geeft u de controle over de opslag locatie voor elke afzonderlijke module.

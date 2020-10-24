@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 15e39eb9f5b8dd3556ea9ff8240bc2c9d252cd31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92b19941f34b9bf5656c9beb188a68d2cf01f674
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73743052"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92504126"
 ---
 # <a name="face-detection-and-attributes"></a>Gezichts detectie en kenmerken
 
@@ -47,7 +47,7 @@ Kenmerken zijn een set functies die optioneel kunnen worden gedetecteerd door de
 * **Geslacht**. Het geschatte geslacht van het opgegeven gezicht. Mogelijke waarden zijn mannelijk, vrouwelijk en geslacht.
 * **Glazen**. Hiermee wordt aangegeven of het opgegeven gezicht bril heeft. Mogelijke waarden zijn glazen, ReadingGlasses, zonnebril en zwem brillen.
 * **Haar**. Het type van het gezicht. Dit kenmerk toont of het haar zichtbaar is, of baldness wordt gedetecteerd en wat haar kleuren zijn gedetecteerd.
-* **Hoofd pose**. De richting van het gezicht in de 3D-ruimte. Dit kenmerk wordt beschreven door de hoeken pitch, roll en yaw in graden. De waardebereiken zijn-90 graden tot 90 graden,-180 graden tot 180 graden en-90 graden tot 90 graden. Zie het volgende diagram voor hoek toewijzingen:
+* **Hoofd pose**. De richting van het gezicht in de 3D-ruimte. Dit kenmerk wordt beschreven door de hoeken pitch, roll en yaw in graden. De waardebereiken zijn-90 graden tot 90 graden,-90 graden tot 90 graden en-90 graden tot 90 graden. Zie het volgende diagram voor hoek toewijzingen:
 
     ![Een kop met de assen pitch, roll en yaw label](../Images/headpose.1.jpg)
 * **Makeup**. Hiermee wordt aangegeven of het gezicht Makeup heeft. Dit kenmerk retourneert een Booleaanse waarde voor eyeMakeup en lipMakeup.
@@ -63,7 +63,7 @@ Kenmerken zijn een set functies die optioneel kunnen worden gedetecteerd door de
 Gebruik de volgende tips om ervoor te zorgen dat uw invoer installatie kopieën de meest nauw keurige detectie resultaten bieden:
 
 * De ondersteunde indelingen voor de invoer afbeeldingen zijn JPEG, PNG, GIF voor het eerste frame en BMP.
-* De grootte van het afbeeldings bestand mag niet groter zijn dan 4 MB.
+* De grootte van het afbeeldings bestand mag niet groter zijn dan 6 MB.
 * Het waarneem bare gezichts grootte bereik is 36 x 36 tot 4096 x 4096 pixels. Gezichten buiten dit bereik worden niet gedetecteerd.
 * Sommige gezichten worden mogelijk niet gedetecteerd vanwege technische problemen. Extreme gezichts hoeken (Head pose) of gezichts bedekking (objecten zoals zonnebril of handen die deel van het gezicht blok keren) kunnen de detectie beïnvloeden. Front-en bijna-frontale gezichten bieden de beste resultaten.
 

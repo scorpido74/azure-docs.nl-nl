@@ -8,19 +8,23 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 10/23/2020
 ms.author: ryanwi
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: 7eb01ccda3c3e13827a8977b8ee0e244aef6b0be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9483fe972cf1a4dce4fb285ced3cb390d0bda725
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613235"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516780"
 ---
 # <a name="how-to-change-the-token-lifetime-defaults-for-a-custom-developed-application"></a>De standaard waarden voor de levens duur van tokens wijzigen voor een aangepaste toepassing
 
 In dit artikel wordt beschreven hoe u Azure AD Power shell gebruikt om een beleid voor levens duur van tokens in te stellen. Met Azure AD Premium kunnen app-ontwikkel aars en Tenant beheerders de levens duur configureren van tokens die zijn uitgegeven voor niet-vertrouwelijke clients. Het token levensduur beleid wordt ingesteld op basis van de Tenant of de bronnen waartoe toegang wordt verkregen.
+
+> [!IMPORTANT]
+> Na 30 januari 2021 kunnen tenants geen vernieuwings-en sessie token levensduur meer configureren en Azure Active Directory stopt de bestaande configuratie van het vernieuwings-en sessie token in beleids regels na die datum. U kunt de levens duur van toegangs tokens na de afschaffing nog steeds configureren. Lees de [levens duur van Configureer bare tokens in azure AD](./active-directory-configurable-token-lifetimes.md)voor meer informatie.
+> Er zijn [mogelijkheden voor verificatie sessie beheer](../conditional-access/howto-conditional-access-session-lifetime.md)geïmplementeerd   in voorwaardelijke toegang tot Azure AD. Met deze nieuwe functie kunt u de levens duur van het vernieuwings token configureren door de aanmeldings frequentie in te stellen.  
 
 Als u een token levensduur beleid wilt instellen, moet u de [Azure AD Power shell-module](https://www.powershellgallery.com/packages/AzureADPreview)downloaden.
 Voer de opdracht **Connect-AzureAD-confirm** uit.

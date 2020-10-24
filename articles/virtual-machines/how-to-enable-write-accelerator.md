@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 2/20/2019
 ms.author: raiye
 ms.subservice: disks
-ms.openlocfilehash: fd0f489bd6109a5dcd6625eb26286e0d40c50c63
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e4f6cefd56c12162b370c78b6df2cd29ece030f1
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962323"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515709"
 ---
 # <a name="enable-write-accelerator"></a>Write Accelerator inschakelen
 
@@ -57,7 +57,7 @@ Er zijn limieten van Azure Premium Storage Vhd's per VM die door Write Accelerat
 | M16 MS, M16s | 2 | 2500 |
 | M8 MS, M8s | 1 | 1250 |
 
-De limieten voor IOPS zijn per VM en *niet* per schijf. Alle Write Accelerator schijven delen dezelfde IOPS-limiet per VM.
+De limieten voor IOPS zijn per VM en *niet* per schijf. Alle Write Accelerator schijven delen dezelfde IOPS-limiet per VM. Gekoppelde schijven kunnen niet groter zijn dan de IOPS-limiet voor schrijf toegang voor een virtuele machine. Een voor beeld: Hoewel de gekoppelde schijven 30.000 IOPS kunnen doen, staat het systeem niet toe dat de schijven groter dan 20.000 IOPS voor M416ms_v2.
 
 ## <a name="enabling-write-accelerator-on-a-specific-disk"></a>Write Accelerator inschakelen op een bepaalde schijf
 
