@@ -3,59 +3,93 @@ title: Resource beschikbaarheid per regio
 description: Beschik baarheid van reken-en geheugen resources voor de Azure Container Instances-service in verschillende Azure-regio's.
 ms.topic: article
 ms.date: 04/27/2020
-ms.openlocfilehash: 97baa5199a1803bd967c0b55c846908ea5a2ddcf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions
+ms.openlocfilehash: 1ed3f50198c0410d9c893fe87523fa214ca03d88
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565426"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521455"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Beschik baarheid van resources voor Azure Container Instances in azure-regio's
 
-In dit artikel vindt u informatie over de beschik baarheid van Azure Container Instances compute, geheugen en opslag resources in azure-regio's en op het doel besturingssysteem. 
+In dit artikel vindt u informatie over de beschik baarheid van Azure Container Instances compute, geheugen en opslag resources in azure-regio's en op het doel besturingssysteem. Zie [beschik bare regio's](https://azure.microsoft.com/regions/services/)voor een algemene lijst met beschik bare regio's voor Azure container instances.
 
-De weer gegeven waarden zijn de Maxi maal beschik bare bronnen per implementatie van een [container groep](container-instances-container-groups.md). Waarden zijn actueel op het moment van publicatie. 
+De weer gegeven waarden zijn de Maxi maal beschik bare bronnen per implementatie van een [container groep](container-instances-container-groups.md). Waarden zijn actueel op het moment van publicatie.
 
 > [!NOTE]
 > Container groepen die zijn gemaakt binnen deze resource limieten, zijn afhankelijk van de beschik baarheid binnen de implementatie regio. Wanneer een regio zwaar wordt belast, kan er een fout optreden bij het implementeren van instanties. Als u een dergelijke implementatie fout wilt verhelpen, implementeert u instanties met lagere bron instellingen of probeert u de implementatie op een later tijdstip of in een andere regio met beschik bare resources.
 
 Zie [quota's en limieten voor Azure container instances](container-instances-quotas.md)voor meer informatie over quota's en andere limieten in uw implementaties.
 
-## <a name="availability---general"></a>Beschik baarheid-algemeen
+## <a name="linux-container-groups"></a>Linux-container groepen
 
-De volgende regio's en maximum resources zijn beschikbaar voor container groepen met Linux en [ondersteunde](container-instances-faq.md#what-windows-base-os-images-are-supported) containers op Windows Server 2016.
+De volgende regio's en maximum resources zijn beschikbaar voor container groepen met Linux-containers in algemene implementaties, Azure-implementaties van [virtuele netwerken](container-instances-vnet.md) en implementaties met [GPU-bronnen](container-instances-gpu.md) (preview).
 
-| Regio's | OS | Maximaal CPU-gebruik | Maxi maal geheugen (GB) | Opslag (GB) |
-| -------- | -- | :---: | :-----------: | :---: |
-| Brazilië-zuid, Canada-centraal, Centraal-India, VS-midden, Azië-oost, VS-Oost, VS-Oost 2, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, India-zuid, UK-zuid, Europa-west, VS-West, VS-West 2 | Linux | 4 | 16 | 50 |
-| Australië-oost, Japan-Oost | Linux | 2 | 8 | 50 |
-| VS - noord-centraal | Linux | 2 | 3,5 | 50 |
-| Brazilië-zuid, Japan-Oost, Europa-west | Windows | 4 | 16 | 20 |
-| VS-Oost, VS-West | Windows | 4 | 14 | 20 |
-| Australië-oost, Canada-centraal, Centraal-India, VS-midden, Azië-oost, VS-Oost 2, Noord-Centraal VS, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, India-zuid, UK-zuid, VS-West 2 | Windows | 2 | 3,5 | 20 |
+> [!IMPORTANT]
+> De maximale bronnen in een regio verschillen afhankelijk van uw implementatie. Een regio kan bijvoorbeeld een andere maximale CPU-en geheugen grootte hebben in een implementatie van een virtueel Azure-netwerk dan voor een algemene implementatie. Dezelfde regio kan ook een andere set maximum waarden hebben voor een implementatie met GPU-resources. Controleer uw implementatie type voordat u de onderstaande tabellen controleert op de maximum waarden in uw regio.
 
-## <a name="availability---windows-server-2019-ltsc-1809-deployments-preview"></a>Beschik baarheid-Windows Server 2019 LTSC, 1809-implementaties (preview)
+| Regio | Maximaal CPU-gebruik | Maxi maal geheugen (GB) | Maximale CPU voor VNET | Max. VNET-geheugen (GB) | Opslag (GB) | GPU-Sku's (preview-versie) |
+| -------- | :---: | :---: | :----: | :-----: | :-------: | :----: |
+| Australië - oost | 4 | 16 | 4 | 16 | 50 | N.v.t. |
+| Brazil South | 4 | 16 | 2 | 8 | 50 | N.v.t. |
+| Canada - midden | 4 | 16 | 4 | 16 | 50 | N.v.t. |
+| India - centraal | 4 | 16 | N.v.t. | N.v.t. | 50 | V100 |
+| Central US | 4 | 16 | 4 | 16 | 50 | N.v.t. |
+| Azië - oost | 4 | 16 | 4 | 16 | 50 | N.v.t. |
+| VS - oost | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
+| US - oost 2 | 4 | 16 | 4 | 16 | 50 | N.v.t. |
+| Japan - oost | 2 | 8 | 4 | 16 | 50 | N.v.t. |
+| Korea - centraal | 4 | 16 | N.v.t. | N.v.t. | 50 | N.v.t. |
+| VS - noord-centraal | 2 | 3,5 | 4 | 16 | 50 | N.v.t. |
+| Europa - noord | 4 | 16 | 4 | 16 | 50 | K80 |
+| South Central US | 4 | 16 | 4 | 16 | 50 | N.v.t. |
+| Azië - zuidoost | 4 | 16 | 4 | 16 | 50 | P100, V100 |
+| India - zuid | 4 | 16 | N.v.t. | N.v.t. | 50 | N.v.t. |
+| Verenigd Koninkrijk Zuid | 4 | 16 | 4 | 16 | 50 | N.v.t. |
+| VS - west-centraal| 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
+| Europa -west | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
+| VS - west | 4 | 16 | 2 | 4 | 16| N.v.t. |
+| West US 2 | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
 
-De volgende regio's en maximum resources zijn beschikbaar voor container groepen met Windows Server 2019-containers (preview).
+De volgende maximum bronnen zijn beschikbaar voor een container groep die is geïmplementeerd met [GPU-bronnen](container-instances-gpu.md) (preview-versie).
 
-| Regio's | OS | Maximaal CPU-gebruik | Maxi maal geheugen (GB) | Opslag (GB) |
-| -------- | -- | :---: | :-----------: | :---: |
-| Australië-oost, Brazilië-zuid, Canada-centraal, Centraal-India, centraal VS, Azië-oost, VS-Oost, Japan-Oost, Noord-Centraal VS, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, India-zuid, UK-zuid, Europa-west | Windows | 4 | 16 | 20 |
-| VS-Oost 2, VS-West 2 | Windows | 2 | 3,5 | 20 |
+| GPU-Sku's | Aantal GPU | Maximaal CPU-gebruik | Maxi maal geheugen (GB) | Opslag (GB) |
+| --- | --- | --- | --- | --- |
+| K80 | 1 | 6 | 56 | 50 |
+| K80 | 2 | 12 | 112 | 50 |
+| K80 | 4 | 24 | 224 | 50 |
+| P100, V100 | 1 | 6 | 112 | 50 |
+| P100, V100 | 2 | 12 | 224 | 50 |
+| P100, V100 | 4 | 24 | 448 | 50 |
 
+## <a name="windows-container-groups"></a>Windows-container groepen
 
-## <a name="availability---virtual-network-deployment"></a>Beschik baarheid-implementatie van virtueel netwerk
+De volgende regio's en maximum resources zijn beschikbaar voor container groepen met [ondersteunde en preview](container-instances-faq.md#what-windows-base-os-images-are-supported) Windows Server-containers.
 
-De volgende regio's en maximum resources zijn beschikbaar voor een container groep die is geïmplementeerd in een [virtueel Azure-netwerk](container-instances-vnet.md).
-
-[!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
-
-## <a name="availability---gpu-resources-preview"></a>Beschik baarheid-GPU-resources (preview-versie)
-
-De volgende regio's en maximum resources zijn beschikbaar voor een container groep die is geïmplementeerd met [GPU-bronnen](container-instances-gpu.md) (preview-versie).
-
-[!INCLUDE [container-instances-gpu-regions](../../includes/container-instances-gpu-regions.md)]
-[!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
+| Regio | Maximale CPU voor Windows Server 2016 | Maximale hoeveelheid geheugen (GB) voor Windows Server 2016 | Windows Server 2019 LTSC maximum CPU | Windows Server 2019 LTSC Max. geheugen (GB) | Opslag (GB) |
+| -------- | :---: | :---: | :----: | :-----: | :-------: |
+| Australië - oost | 2 | 3,5 | 4 | 16 | 20 |
+| Brazil South | 4 | 16 | 4 | 16 | 20 |
+| Canada - midden | 2 | 3,5 | 4 | 16 | 20 |
+| India - centraal | 2 | 3,5 | 4 | 16 | 20 |
+| Central US | 2 | 3,5 | 4 | 16 | 20 |
+| Azië - oost | 2 | 3,5 | 4 | 16 | 20 |
+| VS - oost | 2 | 8 | 4 | 16 | 20 |
+| US - oost 2 | 2 | 3,5 | 2 | 3,5 | 20 |
+| Frankrijk - centraal | 4 | 16 | 4 | 16 | 20 |
+| Japan - oost | 4 | 16 | 4 | 16 | 20 |
+| Korea - centraal | 4 | 16 | 4 | 16 | 20 |
+| VS - noord-centraal | 2 | 3,5 | 4 | 16 | 20 |
+| Europa - noord | 2 | 3,5 | 4 | 16 | 20 |
+| South Central US | 2 | 3,5 | 4 | 16 | 20 |
+| India - zuid | 2 | 3,5 | 4 | 16 | 20 |
+| Azië - zuidoost | 2 | 3,5 | 4 | 16 | 20 |
+| Verenigd Koninkrijk Zuid | 2 | 3,5 | 4 | 16 | 20 |
+| VS - west-centraal | 4 | 16 | 4 | 16 | 20 |
+| Europa -west | 4 | 16 | 4 | 16 | 20 |
+| VS - west | 4 | 14 | N.v.t. | N.v.t. | 20 |
+| West US 2 | 2 | 3,5 | 2 | 3,5 | 20 |
 
 ## <a name="next-steps"></a>Volgende stappen
 

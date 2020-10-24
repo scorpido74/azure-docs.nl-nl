@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 10/12/2020
+ms.date: 10/21/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8ffb2d2f52e1bdfece7fe1bdcd04dcf9b1b600f3
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 708bd1f61da2f3973333f8e68cabdceee0717bee
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077640"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521528"
 ---
 # <a name="connect-to-a-windows-virtual-machine-using-azure-bastion"></a>Verbinding maken met een virtuele Windows-machine met behulp van Azure Bastion
 
@@ -27,13 +27,13 @@ Controleer voordat u begint of u aan de volgende criteria hebt voldaan:
 * Er is al een VNet met de bastion-host geïnstalleerd.
 
    Zorg ervoor dat u een Azure bastion-host hebt ingesteld voor het virtuele netwerk waarin de virtuele machine zich bevindt. Zodra de Bastion-service is ingericht en geïmplementeerd in uw virtuele netwerk, kunt u deze gebruiken om verbinding te maken met elke virtuele machine in het virtuele netwerk. Zie [een bastion-host maken](tutorial-create-host-portal.md#createhost)voor het instellen van een Azure bastion-host.
-* Een virtuele Windows-machine in het virtuele netwerk.
+* Een virtuele Windows-machine in een virtueel netwerk.
 * De volgende vereiste rollen:
-  * De rol van lezer op de virtuele machine.
-  * De rol van lezer op de NIC met het privé IP-adres van de virtuele machine.
-  * De rol van lezer in de Azure Bastion-resource.
-* Poorten: om verbinding te maken met de Windows-VM, moeten de volgende poorten zijn geopend op de Windows-VM:
-  * Binnenkomende poorten: RDP (3389)
+  * De lezerrol op de virtuele machine.
+  * De lezerrol op de NIC met het privé-IP-adres van de virtuele machine.
+  * De rol van Lezer in de Azure Bastion-resource.
+* Poorten: Als u verbinding wilt maken met de Windows-VM, moeten de volgende poorten zijn geopend op uw Windows-VM:
+  * Poorten voor inkomend verkeer: RDP (3389)
 
 ## <a name="connect"></a><a name="rdp"></a>Verbinding maken
 
