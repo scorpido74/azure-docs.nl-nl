@@ -6,18 +6,18 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 84c68125ab7e8256b8ca949a0f4b49c5ccd5162f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b93e3f42c6b635ced7fdca61cb2ffe4f74d19bc
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90884650"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489503"
 ---
 # <a name="private-link-for-azure-database-for-postgresql-single-server"></a>Persoonlijke koppeling voor Azure data base for PostgreSQL-Single-server
 
 Met persoonlijke koppeling kunt u privé-eind punten maken voor Azure Database for PostgreSQL-één server, zodat u Azure-Services binnen uw privé Virtual Network (VNet) brengt. Met het persoonlijke eind punt wordt een privé-IP-adres weer gegeven dat u kunt gebruiken om verbinding te maken met uw database server net als elke andere resource in het VNet.
 
-Raadpleeg de [documentatie](https://docs.microsoft.com/azure/private-link/index)van de privé-koppeling voor een lijst met PaaS-services die ondersteuning bieden voor persoonlijke koppelings functionaliteit. Een persoonlijk eind punt is een privé-IP-adres binnen een specifiek [VNet](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) en subnet.
+Raadpleeg de [documentatie](../private-link/index.yml)van de privé-koppeling voor een lijst met PaaS-services die ondersteuning bieden voor persoonlijke koppelings functionaliteit. Een persoonlijk eind punt is een privé-IP-adres binnen een specifiek [VNet](../virtual-network/virtual-networks-overview.md) en subnet.
 
 > [!NOTE]
 > De functie voor persoonlijke koppelingen is alleen beschikbaar voor Azure Database for PostgreSQL servers in de prijs Categorieën Algemeen of geoptimaliseerd voor geheugen. Zorg ervoor dat de database server zich in een van deze prijs categorieën bevindt.
@@ -28,7 +28,7 @@ Gegevens die worden gefilterd in Azure Database for PostgreSQL één server is w
 
 Overweeg een scenario met een gebruiker die PGAdmin uitvoert in een Azure virtual machine (VM) die verbinding maakt met een Azure Database for PostgreSQL enkele server die in VS West is ingericht. In het onderstaande voor beeld ziet u hoe u de toegang tot de open bare eind punten op Azure Database for PostgreSQL afzonderlijke servers kunt beperken met behulp van besturings elementen voor netwerk toegang.
 
-* Schakel alle Azure-service verkeer uit om één server te Azure Database for PostgreSQL via het open bare eind punt door de instelling *Azure-Services toestaan* in te scha kelen. Zorg ervoor dat er geen IP-adressen of bereiken toegang hebben tot de server via [firewall regels](https://docs.microsoft.com/azure/postgresql/concepts-firewall-rules) of [virtuele netwerk service-eind punten](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-vnet).
+* Schakel alle Azure-service verkeer uit om één server te Azure Database for PostgreSQL via het open bare eind punt door de instelling *Azure-Services toestaan* in te scha kelen. Zorg ervoor dat er geen IP-adressen of bereiken toegang hebben tot de server via [firewall regels](./concepts-firewall-rules.md) of [virtuele netwerk service-eind punten](./concepts-data-access-and-security-vnet.md).
 
 * Alleen verkeer toestaan voor de Azure Database for PostgreSQL één server met behulp van het privé-IP-adres van de virtuele machine. Zie de artikelen over [service-eind punten](concepts-data-access-and-security-vnet.md) en VNet- [firewall regels](howto-manage-vnet-using-portal.md) voor meer informatie.
 
@@ -45,7 +45,7 @@ Met persoonlijke koppeling kunt u nu netwerk toegangs beheer instellen, zoals Ns
 
 Wanneer u verbinding maakt met het open bare eind punt vanaf de on-premises machines, moet uw IP-adres worden toegevoegd aan de op IP gebaseerde firewall met behulp van een firewall regel op server niveau. Hoewel dit model goed werkt voor het toestaan van toegang tot afzonderlijke computers voor ontwikkel- of testwerkbelastingen, is het moeilijk te beheren in een productieomgeving.
 
-Met persoonlijke koppeling kunt u cross-premises toegang tot het privé-eind punt inschakelen met behulp van [Express route](https://azure.microsoft.com/services/expressroute/) (er), persoonlijke peering of [VPN-tunnel](https://docs.microsoft.com/azure/vpn-gateway/). Ze kunnen vervolgens alle toegang uitschakelen via het open bare eind punt en de op IP gebaseerde firewall niet gebruiken.
+Met persoonlijke koppeling kunt u cross-premises toegang tot het privé-eind punt inschakelen met behulp van [Express route](https://azure.microsoft.com/services/expressroute/) (er), persoonlijke peering of [VPN-tunnel](../vpn-gateway/index.yml). Ze kunnen vervolgens alle toegang uitschakelen via het open bare eind punt en de op IP gebaseerde firewall niet gebruiken.
 
 > [!NOTE]
 > In sommige gevallen bevinden de Azure Database for PostgreSQL en het VNet-subnet zich in verschillende abonnementen. In deze gevallen moet u ervoor zorgen dat u de volgende configuraties hebt:
@@ -57,8 +57,8 @@ Met persoonlijke koppeling kunt u cross-premises toegang tot het privé-eind pun
 
 Privé-eind punten zijn vereist om een persoonlijke koppeling in te scha kelen. U kunt dit doen met behulp van de volgende hand leidingen.
 
-* [Azure-portal](https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal)
-* [CLI](https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-cli)
+* [Azure Portal](./howto-configure-privatelink-portal.md)
+* [CLI](./howto-configure-privatelink-cli.md)
 
 ### <a name="approval-process"></a>Goedkeuringsproces
 Zodra de netwerk beheerder het persoonlijke eind punt (PE) heeft gemaakt, kan de PostgreSQL-beheerder de verbinding met het privé-eind punt (PEC) beheren met Azure Database for PostgreSQL. Deze schei ding van taken tussen de netwerk beheerder en de DBA is handig voor het beheer van de Azure Database for PostgreSQL-verbinding. 
@@ -89,17 +89,17 @@ Clients kunnen verbinding maken met het persoonlijke eind punt van hetzelfde VNe
 :::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-overview.png" alt-text="de portal voor het persoonlijke eind punt selecteren":::
 
 ### <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>Verbinding maken vanaf een Azure VM in een Peered Virtual Network (VNet)
-Configureer [VNet-peering](https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-powershell) om verbinding te maken met de Azure database for PostgreSQL-één server van een Azure-vm in een gekoppeld VNet.
+Configureer [VNet-peering](../virtual-network/tutorial-connect-virtual-networks-powershell.md) om verbinding te maken met de Azure database for PostgreSQL-één server van een Azure-vm in een gekoppeld VNet.
 
 ### <a name="connecting-from-an-azure-vm-in-vnet-to-vnet-environment"></a>Verbinding maken vanaf een Azure VM in VNet-naar-VNet-omgeving
-Configureer de [vnet-naar-VNet VPN-gateway verbinding](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal) om verbinding te maken met een Azure database for PostgreSQL-één server van een Azure-vm in een andere regio of een ander abonnement.
+Configureer de [vnet-naar-VNet VPN-gateway verbinding](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) om verbinding te maken met een Azure database for PostgreSQL-één server van een Azure-vm in een andere regio of een ander abonnement.
 
 ### <a name="connecting-from-an-on-premises-environment-over-vpn"></a>Verbinding maken vanuit een on-premises omgeving via VPN
 Als u verbinding wilt maken vanuit een on-premises omgeving naar de Azure Database for PostgreSQL-één server, kiest en implementeert u een van de volgende opties:
 
-* [Punt-naar-site-verbinding](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
-* [Site-naar-site-VPN-verbinding](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell)
-* [ExpressRoute-circuit](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager)
+* [Punt-naar-site-verbinding](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
+* [Site-naar-site-VPN-verbinding](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
+* [ExpressRoute-circuit](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)
 
 ## <a name="private-link-combined-with-firewall-rules"></a>Privé koppeling gecombineerd met firewall regels
 
@@ -128,11 +128,11 @@ Voor informatie over het instellen van de toegang voor het **weigeren van open b
 
 Zie de volgende artikelen voor meer informatie over het Azure Database for PostgreSQL van de beveiligings functies van één server:
 
-* Zie [firewall ondersteuning](https://docs.microsoft.com/azure/postgresql/concepts-firewall-rules)als u een firewall wilt configureren voor Azure database for PostgreSQL één server.
+* Zie [firewall ondersteuning](./concepts-firewall-rules.md)als u een firewall wilt configureren voor Azure database for PostgreSQL één server.
 
-* Zie [toegang vanaf virtuele netwerken configureren](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-vnet)voor meer informatie over het configureren van een service-eind punt voor een virtueel netwerk voor uw Azure database for PostgreSQL één server.
+* Zie [toegang vanaf virtuele netwerken configureren](./concepts-data-access-and-security-vnet.md)voor meer informatie over het configureren van een service-eind punt voor een virtueel netwerk voor uw Azure database for PostgreSQL één server.
 
-* Zie [Azure database for PostgreSQL Connectivity Architecture](https://docs.microsoft.com/azure/postgresql/concepts-connectivity-architecture) (Engelstalig) voor een overzicht van Azure database for PostgreSQL verbinding met één server.
+* Zie [Azure database for PostgreSQL Connectivity Architecture](./concepts-connectivity-architecture.md) (Engelstalig) voor een overzicht van Azure database for PostgreSQL verbinding met één server.
 
 <!-- Link references, to text, Within this same GitHub repo. -->
 [resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

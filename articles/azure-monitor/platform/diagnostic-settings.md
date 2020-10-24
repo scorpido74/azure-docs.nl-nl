@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: fcbce9e7a5b24cbbe695b2ad664137875464b705
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 32ff5a73494bac2cabcb9488f946673435173dd0
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107926"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489435"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Diagnostische instellingen maken om logboeken en metrische gegevens van het platform te verzenden naar verschillende bestemmingen
 [Platform logboeken](platform-logs-overview.md) in azure, met inbegrip van het Azure-activiteiten logboek en de resource logboeken, bieden gedetailleerde diagnostische en controle-informatie voor Azure-resources en het Azure-platform waarvan ze afhankelijk zijn. [Metrische platform gegevens](data-platform-metrics.md) worden standaard verzameld en worden meestal opgeslagen in de data base met Azure monitor gegevens. In dit artikel vindt u informatie over het maken en configureren van diagnostische instellingen voor het verzenden van platform metrieken en platform logboeken naar verschillende bestemmingen.
@@ -43,9 +43,9 @@ In de volgende video vindt u een route ring van platform logboeken met Diagnosti
 ## <a name="destinations"></a>Bestemmingen
 Platform-logboeken en-metrische gegevens kunnen worden verzonden naar de doelen in de volgende tabel. 
 
-| Doel | Description |
+| Doel | Beschrijving |
 |:---|:---|
-| [Log Analytics-werkruimte](design-logs-deployment.md) | Door Logboeken en metrische gegevens naar een Log Analytics-werk ruimte te verzenden, kunt u ze analyseren met andere bewakings informatie die door Azure Monitor wordt verzameld met behulp van krachtige logboek query's en ook om gebruik te maken van andere Azure Monitor functies, zoals waarschuwingen en visualisaties. |
+| [Log Analytics werk ruimte](design-logs-deployment.md) | Door Logboeken en metrische gegevens naar een Log Analytics-werk ruimte te verzenden, kunt u ze analyseren met andere bewakings informatie die door Azure Monitor wordt verzameld met behulp van krachtige logboek query's en ook om gebruik te maken van andere Azure Monitor functies, zoals waarschuwingen en visualisaties. |
 | [Event hubs](../../event-hubs/index.yml) | Door Logboeken en metrische gegevens naar Event Hubs te verzenden, kunt u met externe systemen, zoals Siem's van derden en andere log Analytics-oplossingen.  |
 | [Azure-opslag account](../../storage/blobs/index.yml) | Het archiveren van Logboeken en metrische gegevens naar een Azure-opslag account is handig voor controle, statische analyses of back-ups. Vergeleken met Azure Monitor-logboeken en een Log Analytics-werk ruimte is Azure Storage minder kostbaar en kunnen de logboeken voor onbepaalde tijd worden bewaard.  |
 
@@ -63,6 +63,8 @@ Alle doelen voor de diagnostische instelling moeten worden gemaakt voordat u de 
 > [!NOTE]
 > Azure Data Lake Storage Gen2-accounts worden momenteel niet ondersteund als doel voor diagnostische instellingen, zelfs als ze kunnen worden weergegeven als een geldige optie in de Azure-portal.
 
+> [!NOTE]
+> Azure Monitor (Diagnostische instellingen) hebben geen toegang tot Event Hubs bronnen wanneer virtuele netwerken zijn ingeschakeld. U moet de optie vertrouwde micro soft-services mogen deze firewall instelling overs laan in Event hub inschakelen, zodat de Azure Monitor-service (Diagnostische instellingen) toegang krijgt tot uw Event Hubs-resources. 
 
 
 ## <a name="create-in-azure-portal"></a>Maken in Azure-portal

@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 8bcbe395f78d3e4e9a6f7f615edc61eaa04347cf
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 8f56538470b8a52697e2d5c4154a6a6807a0cfde
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311684"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489010"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Bekende problemen in azure Digital Apparaatdubbels
 
@@ -34,7 +34,7 @@ U kunt ook het deel venster Cloud Shell in de Azure Portal openen en de Cloud Sh
 
 :::image type="content" source="media/includes/portal-cloud-shell.png" alt-text="Weer gave van de Azure Portal met het pictogram Cloud Shell gemarkeerd en de Cloud Shell weer gegeven onder aan het portal venster":::
 
-Ten slotte is het mogelijk om [de Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest) op uw computer te installeren, zodat u Azure cli-opdrachten lokaal kunt uitvoeren. Dit probleem treedt niet op bij de lokale CLI.
+Ten slotte is het mogelijk om [de Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) op uw computer te installeren, zodat u Azure cli-opdrachten lokaal kunt uitvoeren. Dit probleem treedt niet op bij de lokale CLI.
 
 ### <a name="possible-causes"></a>Mogelijke oorzaken
 
@@ -46,7 +46,9 @@ Dit heeft geen invloed op de Azure Digital Apparaatdubbels-opdrachten van de `az
 
 ## <a name="missing-role-assignment-after-scripted-setup"></a>Roltoewijzing ontbreekt na installatie van script
 
-Sommige gebruikers kunnen problemen ondervinden met het toewijzings deel van de functie [*: een exemplaar en verificatie instellen (script)*](how-to-set-up-instance-scripted.md). Het script geeft geen fout aan, maar de rol *Azure Digital Apparaatdubbels Owner (preview)* is niet met succes aan de gebruiker toegewezen. dit probleem heeft gevolgen voor de mogelijkheid om nog andere resources te maken.
+Sommige gebruikers kunnen problemen ondervinden met het toewijzings deel van de functie [*: een exemplaar en verificatie instellen (script)*](how-to-set-up-instance-scripted.md). Het script geeft geen fout aan, maar de rol van de *Azure Digital apparaatdubbels-gegevens eigenaar* is niet aan de gebruiker toegewezen. dit probleem heeft gevolgen voor de mogelijkheid om nog andere resources te maken.
+
+[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
 Als u wilt bepalen of uw roltoewijzing is ingesteld nadat het script is uitgevoerd, volgt u de instructies in de sectie toewijzing van gebruikersrol [*controleren*](how-to-set-up-instance-scripted.md#verify-user-role-assignment) van het artikel Setup. Als uw gebruiker niet met deze rol wordt weer gegeven, is dit van invloed op het probleem.
 
@@ -64,7 +66,7 @@ Voor gebruikers die zijn aangemeld met een persoonlijk [Microsoft-account (MSA)]
 
 ## <a name="issue-with-interactive-browser-authentication"></a>Probleem met interactieve browser verificatie
 
-Wanneer u verificatie code in uw Azure Digital Apparaatdubbels-toepassingen schrijft met versie **1.2.0** van de ** [Azure. Identity](/dotnet/api/azure.identity?view=azure-dotnet) -bibliotheek**, kunnen er problemen optreden met de [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) -methode.
+Wanneer u verificatie code in uw Azure Digital Apparaatdubbels-toepassingen schrijft met versie **1.2.0** van de ** [Azure. Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) -bibliotheek**, kunnen er problemen optreden met de [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) -methode.
 
 Dit is niet de meest recente versie van de bibliotheek. De meest recente versie is **1.2.2**.
 

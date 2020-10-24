@@ -10,12 +10,12 @@ ms.date: 08/26/2020
 ms.author: ramkris
 ms.reviewer: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: a9501df45d598c85f8c694c5d07db4f959615c00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03ef816632b73f46acaf1efdf2ddec28459fc9b8
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90968174"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489333"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Gebruik de BulkExecutor-bibliotheek voor Java om bulkbewerkingen uit te voeren in Azure Cosmos DB
 
@@ -27,7 +27,7 @@ Op dit moment wordt de bibliotheek voor bulksgewijs uitvoering alleen ondersteun
 
 * Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) aan voordat u begint.  
 
-* U kunt [Azure Cosmos DB gratis uitproberen](https://azure.microsoft.com/try/cosmosdb/) zonder Azure-abonnement, gratis en toezeg gingen. U kunt ook de Azure Cosmos DB- [emulator](/azure/cosmos-db/local-emulator) gebruiken met het `https://localhost:8081` eind punt. De primaire sleutel wordt gegeven in [Aanvragen verifiëren](local-emulator.md#authenticate-requests).  
+* U kunt [Azure Cosmos DB gratis uitproberen](https://azure.microsoft.com/try/cosmosdb/) zonder Azure-abonnement, gratis en toezeg gingen. U kunt ook de Azure Cosmos DB- [emulator](./local-emulator.md) gebruiken met het `https://localhost:8081` eind punt. De primaire sleutel wordt gegeven in [Aanvragen verifiëren](local-emulator.md#authenticate-requests).  
 
 * [Java Development Kit (JDK) 1.7 +](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)  
   - Voer op Ubuntu `apt-get install default-jdk` uit om de JDK te installeren.  
@@ -106,7 +106,7 @@ De gekloonde opslag plaats bevat twee voor beelden van ' bulkimport ' en ' Bulku
 
    De importal-methode accepteert de volgende para meters:
  
-   |**Parameter**  |**Beschrijving**  |
+   |**Parameter**  |**Deschription** (Beschrijving)  |
    |---------|---------|
    |isUpsert    |   Een markering om upsert van de documenten in te scha kelen. Als er al een document met de opgegeven ID bestaat, wordt het bijgewerkt.  |
    |disableAutomaticIdGeneration     |   Een markering om het automatisch genereren van ID uit te scha kelen. Deze waarde is standaard ingesteld op True.   |
@@ -114,7 +114,7 @@ De gekloonde opslag plaats bevat twee voor beelden van ' bulkimport ' en ' Bulku
 
    **Definitie van antwoord object voor bulk import** Het resultaat van de API-aanroep voor Bulk Import bevat de volgende Get-methoden:
 
-   |**Parameter**  |**Beschrijving**  |
+   |**Parameter**  |**Deschription** (Beschrijving)  |
    |---------|---------|
    |int getNumberOfDocumentsImported ()  |   Het totale aantal documenten dat is geïmporteerd uit de documenten die zijn geleverd aan de API-aanroep voor bulk import.      |
    |dubbele getTotalRequestUnitsConsumed ()   |  Het totale aantal aanvraag eenheden (RU) dat wordt gebruikt door de API-aanroep voor bulk import.       |
@@ -172,13 +172,13 @@ U kunt bestaande documenten bijwerken met behulp van de BulkUpdateAsync-API. In 
 
    De methode updateAll accepteert de volgende para meters:
 
-   |**Parameter** |**Beschrijving** |
+   |**Parameter** |**Deschription** (Beschrijving) |
    |---------|---------|
    |maxConcurrencyPerPartitionRange   |  De maximale graad van gelijktijdigheid per partitie sleutel bereik. De standaard waarde is 20.  |
  
    **Definitie van antwoord object voor bulk import** Het resultaat van de API-aanroep voor Bulk Import bevat de volgende Get-methoden:
 
-   |**Parameter** |**Beschrijving**  |
+   |**Parameter** |**Deschription** (Beschrijving)  |
    |---------|---------|
    |int getNumberOfDocumentsUpdated ()  |   Het totale aantal documenten dat is bijgewerkt van de documenten die zijn geleverd aan de API-aanroep voor bulksgewijs bijwerken.      |
    |dubbele getTotalRequestUnitsConsumed () |  Het totale aantal aanvraag eenheden (RU) dat wordt gebruikt door de API-aanroep voor bulk updates.       |
@@ -215,5 +215,3 @@ Houd rekening met de volgende punten voor betere prestaties bij het gebruik van 
     
 ## <a name="next-steps"></a>Volgende stappen
 * Zie voor meer informatie over maven-pakket gegevens en release opmerkingen van de Java-bibliotheek voor bulk-uitvoerder[SDK](sql-api-sdk-bulk-executor-java.md).
-
-

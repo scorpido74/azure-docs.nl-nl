@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/16/2020
-ms.openlocfilehash: 8e68bd2d164e3a8de60a9061363b839c4dfd4777
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 886e8cb1c5d86c1a61e65fa8cbd54c022f6c1c6b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87074756"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484811"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>Virtuele netwerken voor Azure HDInsight-clusters maken
 
@@ -28,7 +28,7 @@ Voordat u een van de code voorbeelden in dit artikel uitvoert, hebt u een goed i
 Andere vereisten voor de voor beelden in dit artikel zijn onder andere de volgende items:
 
 * Als u Power shell gebruikt, moet u de [AZ-module](https://docs.microsoft.com/powershell/azure/)installeren.
-* Als u Azure CLI wilt gebruiken en nog niet hebt geïnstalleerd, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* Als u Azure CLI wilt gebruiken en nog niet hebt geïnstalleerd, raadpleegt u [de Azure cli installeren](/cli/azure/install-azure-cli).
 
 > [!IMPORTANT]  
 > Als u op zoek bent naar stapsgewijze instructies voor het verbinden van HDInsight met uw on-premises netwerk met behulp van een Azure Virtual Network, raadpleegt u de [verbinding Hdinsight koppelen aan uw on-premises netwerk](connect-on-premises-network.md) document.

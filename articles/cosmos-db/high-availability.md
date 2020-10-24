@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 85f358d205a4a14874e520efdace5345de837588
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 0bbb0da0ce39aab9fba843dda99b45ea59881ce2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276273"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490540"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Hoe biedt Azure Cosmos DB hoge Beschik baarheid?
 
@@ -58,7 +58,7 @@ Als een wereld wijd gedistribueerde data base biedt Azure Cosmos DB uitgebreide 
 
 Voor zeldzame gevallen van regionale uitval zorgt Azure Cosmos DB ervoor dat uw data base altijd Maxi maal beschikbaar is. De volgende details vastleggen Azure Cosmos DB gedrag tijdens een storing, afhankelijk van de configuratie van uw Azure Cosmos-account:
 
-* Met Azure Cosmos DB voordat een schrijf bewerking wordt bevestigd aan de client, worden de gegevens blijvend vastgelegd door een quorum van replica's binnen de regio die de schrijf bewerkingen accepteert. Zie voor meer informatie [consistentie niveaus en door Voer](consistency-levels-tradeoffs.md#consistency-levels-and-throughput)
+* Met Azure Cosmos DB voordat een schrijf bewerking wordt bevestigd aan de client, worden de gegevens blijvend vastgelegd door een quorum van replica's binnen de regio die de schrijf bewerkingen accepteert. Zie voor meer informatie [consistentie niveaus en door Voer](./consistency-levels.md#consistency-levels-and-throughput)
 
 * Multi-regio-accounts die zijn geconfigureerd met meerdere-schrijf regio's, zijn Maxi maal beschikbaar voor schrijf bewerkingen en lees bewerkingen. Regionale failovers worden gedetecteerd en verwerkt in de Azure Cosmos DB-client. Ze zijn ook onmiddellijk en vereisen geen wijzigingen van de toepassing.
 
@@ -89,7 +89,7 @@ Voor zeldzame gevallen van regionale uitval zorgt Azure Cosmos DB ervoor dat uw 
 
 * Latere leesbewerkingen worden omgeleid naar de herstelde regio zonder dat er wijzigingen in uw toepassingscode nodig zijn. Tijdens zowel de failover als het opnieuw deel nemen aan een eerder mislukte regio, worden Lees consistentie garanties door Azure Cosmos DB door lopen.
 
-* Zelfs in een zeldzame en vervelend-gebeurtenis wanneer de Azure-regio permanent is onherstelbare, is er geen gegevens verlies als uw Azure Cosmos-account met meerdere regio's is geconfigureerd met *sterke* consistentie. In het geval van een permanente onherstelbare-schrijf regio, een Azure Cosmos-account met meerdere regio's dat is geconfigureerd met consistentie van afhankelijkheid, is het venster voor mogelijk gegevens verlies beperkt tot het verouderde venster (*k* of *T*) waarbij K = 100000 updates en T = 5 minuten. Voor sessie, consistent voor voegsel en uiteindelijke consistentie niveaus geldt een maximum van 15 minuten voor het venster van het potentiële gegevens verlies. Zie voor meer informatie over RTO-en RPO-doelen voor Azure Cosmos DB [consistentie niveaus en gegevens duurzaamheid](consistency-levels-tradeoffs.md#rto)
+* Zelfs in een zeldzame en vervelend-gebeurtenis wanneer de Azure-regio permanent is onherstelbare, is er geen gegevens verlies als uw Azure Cosmos-account met meerdere regio's is geconfigureerd met *sterke* consistentie. In het geval van een permanente onherstelbare-schrijf regio, een Azure Cosmos-account met meerdere regio's dat is geconfigureerd met consistentie van afhankelijkheid, is het venster voor mogelijk gegevens verlies beperkt tot het verouderde venster (*k* of *T*) waarbij K = 100000 updates en T = 5 minuten. Voor sessie, consistent voor voegsel en uiteindelijke consistentie niveaus geldt een maximum van 15 minuten voor het venster van het potentiële gegevens verlies. Zie voor meer informatie over RTO-en RPO-doelen voor Azure Cosmos DB [consistentie niveaus en gegevens duurzaamheid](./consistency-levels.md#rto)
 
 ## <a name="availability-zone-support"></a>Ondersteuning voor beschikbaarheids zone
 
@@ -131,7 +131,7 @@ Beschikbaarheidszones kan worden ingeschakeld via:
 
 * [Azure-CLI](manage-with-cli.md#add-or-remove-regions)
 
-* [Azure Resource Manager-sjablonen](manage-sql-with-resource-manager.md)
+* [Azure Resource Manager-sjablonen](./manage-with-templates.md)
 
 ## <a name="building-highly-available-applications"></a>Maxi maal beschik bare toepassingen bouwen
 
@@ -143,15 +143,15 @@ Beschikbaarheidszones kan worden ingeschakeld via:
 
 * Zelfs als uw Azure Cosmos-account Maxi maal beschikbaar is, is uw toepassing mogelijk niet juist ontworpen om Maxi maal beschikbaar te blijven. Als u de end-to-end hoge Beschik baarheid van uw toepassing wilt testen, kunt u als onderdeel van uw toepassing tests of herstel na nood gevallen, de automatische failover voor het account tijdelijk uitschakelen, de [hand matige failover aanroepen met behulp van Power shell, Azure CLI of Azure Portal](how-to-manage-database-account.md#manual-failover)en vervolgens de failover van uw toepassing controleren. Zodra het proces is voltooid, kunt u een failover uitvoeren naar de primaire regio en de automatische failover voor het account herstellen.
 
-* Binnen een wereld wijd gedistribueerde database omgeving is er een rechtstreekse relatie tussen het consistentie niveau en de duurzaamheid van de gegevens in de aanwezigheid van een regionale storing. Wanneer u uw bedrijfs continuïteits plan ontwikkelt, moet u weten wat de Maxi maal toegestane tijd is voordat de toepassing volledig wordt hersteld na een storende gebeurtenis. De tijd die nodig is om een toepassing volledig te herstellen, wordt de beoogde herstel tijd (RTO) genoemd. U moet ook inzicht krijgen in de maximale periode van recente gegevens updates die de toepassing kan afnemen bij het herstellen na een storende gebeurtenis. Deze periode wordt het beoogde herstelpunt (RPO) genoemd. Zie [consistentie niveaus en gegevens duurzaamheid](consistency-levels-tradeoffs.md#rto) voor een overzicht van de RPO en RTO voor Azure Cosmos db.
+* Binnen een wereld wijd gedistribueerde database omgeving is er een rechtstreekse relatie tussen het consistentie niveau en de duurzaamheid van de gegevens in de aanwezigheid van een regionale storing. Wanneer u uw bedrijfs continuïteits plan ontwikkelt, moet u weten wat de Maxi maal toegestane tijd is voordat de toepassing volledig wordt hersteld na een storende gebeurtenis. De tijd die nodig is om een toepassing volledig te herstellen, wordt de beoogde herstel tijd (RTO) genoemd. U moet ook inzicht krijgen in de maximale periode van recente gegevens updates die de toepassing kan afnemen bij het herstellen na een storende gebeurtenis. Deze periode wordt het beoogde herstelpunt (RPO) genoemd. Zie [consistentie niveaus en gegevens duurzaamheid](./consistency-levels.md#rto) voor een overzicht van de RPO en RTO voor Azure Cosmos db.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Daarna kunt u de volgende artikelen lezen:
 
-* [Beschik baarheid en prestaties voor diverse consistentie niveaus](consistency-levels-tradeoffs.md)
+* [Beschik baarheid en prestaties voor diverse consistentie niveaus](./consistency-levels.md)
 
-* [Wereldwijd schalen van ingerichte doorvoer](scaling-throughput.md)
+* [Wereldwijd schalen van ingerichte doorvoer](./request-units.md)
 
 * [Wereldwijde distributie - achter de schermen](global-dist-under-the-hood.md)
 

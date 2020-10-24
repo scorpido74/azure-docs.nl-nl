@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
-ms.openlocfilehash: 1e48b2ff6e469a5f792b64c20631e4bd64fb9fd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2228c99dba2dd99c0afa44457642235e08ac011
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85263541"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480918"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Honderden terabytes aan gegevens migreren naar Azure Cosmos DB 
 
@@ -38,7 +38,7 @@ Veel van deze beperkingen worden vastgesteld voor hulpprogram ma's zoals Azure D
 
 ## <a name="custom-tool-with-bulk-executor-library"></a>Aangepast hulp programma met de bibliotheek voor bulksgewijs uitvoerder 
 
-De uitdagingen die in de bovenstaande sectie worden beschreven, kunnen worden opgelost met behulp van een aangepast hulp programma dat eenvoudig kan worden uitgeschaald over meerdere instanties en dat kan leiden tot tijdelijke storingen. Daarnaast kan het aangepaste hulp programma de migratie op verschillende controle punten onderbreken en hervatten. Azure Cosmos DB biedt al de [bulk](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-overview) -uitvoerder bibliotheek die enkele van deze functies bevat. De bibliotheek bulk-uitvoerder heeft bijvoorbeeld al de functionaliteit voor het afhandelen van tijdelijke fouten en het kan uitschalen van threads in één knoop punt om te verbruiken ongeveer 500 K RUs per knoop punt. De bulk-uitvoerder bibliotheek partitioneert ook de bron-gegevensset in micro batches die onafhankelijk worden uitgevoerd als een vorm van controle punten.  
+De uitdagingen die in de bovenstaande sectie worden beschreven, kunnen worden opgelost met behulp van een aangepast hulp programma dat eenvoudig kan worden uitgeschaald over meerdere instanties en dat kan leiden tot tijdelijke storingen. Daarnaast kan het aangepaste hulp programma de migratie op verschillende controle punten onderbreken en hervatten. Azure Cosmos DB biedt al de [bulk](./bulk-executor-overview.md) -uitvoerder bibliotheek die enkele van deze functies bevat. De bibliotheek bulk-uitvoerder heeft bijvoorbeeld al de functionaliteit voor het afhandelen van tijdelijke fouten en het kan uitschalen van threads in één knoop punt om te verbruiken ongeveer 500 K RUs per knoop punt. De bulk-uitvoerder bibliotheek partitioneert ook de bron-gegevensset in micro batches die onafhankelijk worden uitgevoerd als een vorm van controle punten.  
 
 Het aangepaste hulp programma maakt gebruik van de bibliotheek voor bulk-uitvoerder en biedt ondersteuning voor uitbrei ding op meerdere clients en bij het volgen van fouten tijdens het opname proces. Als u dit hulp programma wilt gebruiken, moeten de bron gegevens worden gepartitioneerd in afzonderlijke bestanden in Azure Data Lake Storage (ADLS) zodat verschillende migratie medewerkers elk bestand kunnen ophalen en opnemen in Azure Cosmos DB. Het aangepaste hulp programma maakt gebruik van een afzonderlijke verzameling, die meta gegevens over de voortgang van de migratie voor elk afzonderlijk bron bestand in ADLS opslaat en eventuele fouten registreert die eraan zijn gekoppeld.  
 
@@ -152,4 +152,4 @@ Hoewel u deze hand leiding kunt volgen om grote gegevens sets naar Azure Cosmos 
 
 * Meer informatie over het uitproberen van de voorbeeld toepassingen die de bulk-uitvoerder bibliotheek in [.net](bulk-executor-dot-net.md) en [Java](bulk-executor-java.md)gebruiken. 
 * De bibliotheek bulk-uitvoerder is geïntegreerd in de Cosmos DB Spark-connector, Zie [Azure Cosmos DB artikel Spark-connector](spark-connector.md) voor meer informatie.  
-* Neem contact op met het product team van Azure Cosmos DB door een ondersteunings ticket te openen onder het probleem type ' algemeen advies ' en ' grote (TB +) ' subtype ' voor meer informatie over grootschalige migraties. 
+* Neem contact op met het product team van Azure Cosmos DB door een ondersteunings ticket te openen onder het probleem type ' algemeen advies ' en ' grote (TB +) ' subtype ' voor meer informatie over grootschalige migraties.

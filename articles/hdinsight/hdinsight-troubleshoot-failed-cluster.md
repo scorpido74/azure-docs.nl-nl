@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: be991b63784a2c72a51bfbdc8506f3b4695ed6c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98e062b159b2df639923cb3cd3aac286f6051016
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75895321"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490897"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Problemen met een trage of niet werkende taak in een HDInsight-cluster oplossen
 
@@ -56,7 +56,7 @@ De Azure Portal kan deze informatie leveren:
 
 ![Gegevens van HDInsight-Azure Portal](./media/hdinsight-troubleshoot-failed-cluster/hdi-azure-portal-info.png)
 
-U kunt ook [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)gebruiken:
+U kunt ook [Azure cli](/cli/azure/)gebruiken:
 
 ```azurecli
 az hdinsight list --resource-group <ResourceGroup>

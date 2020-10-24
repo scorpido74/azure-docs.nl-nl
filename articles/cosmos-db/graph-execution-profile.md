@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 03/27/2019
 ms.author: jasonh
-ms.openlocfilehash: 841d2bcc50b62554fac8643048a3b3534e82dfa3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d34c91cab157fcd51d58521d739fcb081fe03ea
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91408229"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490591"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>De stap met het uitvoeringsprofiel gebruiken om de Gremlin-query's te evalueren
 
@@ -220,8 +220,8 @@ Stel dat de volgende uitvoerings profiel reactie van een **gepartitioneerde graf
 
 De volgende conclusies kunnen worden gemaakt:
 - De query is een enkelvoudige ID-zoek opdracht, omdat de Gremlin-instructie het patroon volgt `g.V('id')` .
-- Beoordelings van de `time` metriek lijkt de latentie van deze query hoog te zijn, omdat het [meer is dan 10 MS voor één punt-Lees bewerking](https://docs.microsoft.com/azure/cosmos-db/introduction#guaranteed-low-latency-at-99th-percentile-worldwide).
-- Als we het object bekijken `storeOps` , kunnen we zien dat de `fanoutFactor` is `5` . Dit betekent dat er [vijf partities](https://docs.microsoft.com/azure/cosmos-db/partition-data) zijn geopend door deze bewerking.
+- Beoordelings van de `time` metriek lijkt de latentie van deze query hoog te zijn, omdat het [meer is dan 10 MS voor één punt-Lees bewerking](./introduction.md#guaranteed-low-latency-at-99th-percentile-worldwide).
+- Als we het object bekijken `storeOps` , kunnen we zien dat de `fanoutFactor` is `5` . Dit betekent dat er [vijf partities](./partitioning-overview.md) zijn geopend door deze bewerking.
 
 Als gevolg van deze analyse kunnen we bepalen dat de eerste query toegang krijgt tot meer partities dan nodig is. Dit kan worden verholpen door de partitie sleutel in de query als een predikaat op te geven. Dit leidt tot minder latentie en minder kosten per query. Meer informatie over [Graph-partitionering](graph-partitioning.md). Een meer optimale query zou zijn `g.V('tt0093640').has('partitionKey', 't1001')` .
 

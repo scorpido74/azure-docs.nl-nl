@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: jasonh
-ms.openlocfilehash: f21aa30de2b2dfcf85e45c7ed4d5c485fe45eed7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6733e0f6447d055da8d349940bc7c7665e003e33
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409694"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475597"
 ---
 # <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>Optimalisatie stappen na de migratie wanneer u de API van Azure Cosmos DB gebruikt voor MongoDB
 
@@ -53,12 +53,12 @@ Als u uw gegevens wereld wijd wilt distribueren, raadpleegt u [gegevens wereld w
 
 ## <a name="set-consistency-level"></a>Consistentie niveau instellen
 
-Azure Cosmos DB biedt vijf goed gedefinieerde [consistentie niveaus](consistency-levels.md). Lees [consistentie niveaus en Azure Cosmos DB api's](consistency-levels-across-apis.md)voor meer informatie over de toewijzing tussen MongoDB en Azure Cosmos DB consistentie niveaus. Het standaard consistentie niveau is het consistentie niveau van de sessie. Het wijzigen van het consistentie niveau is optioneel en u kunt het optimaliseren voor uw app. Consistentie niveau wijzigen met Azure Portal:
+Azure Cosmos DB biedt vijf goed gedefinieerde [consistentie niveaus](consistency-levels.md). Lees [consistentie niveaus en Azure Cosmos DB api's](./consistency-levels.md)voor meer informatie over de toewijzing tussen MongoDB en Azure Cosmos DB consistentie niveaus. Het standaard consistentie niveau is het consistentie niveau van de sessie. Het wijzigen van het consistentie niveau is optioneel en u kunt het optimaliseren voor uw app. Consistentie niveau wijzigen met Azure Portal:
 
 1. Ga naar de **standaard consistentie** -Blade onder instellingen.
 2. Uw [consistentie niveau](consistency-levels.md) selecteren
 
-De meeste gebruikers behouden hun consistentie niveau bij de standaard instelling voor sessie consistentie. Er zijn echter [Beschik baarheid en prestatie afwegingen voor verschillende consistentie niveaus](consistency-levels-tradeoffs.md).
+De meeste gebruikers behouden hun consistentie niveau bij de standaard instelling voor sessie consistentie. Er zijn echter [Beschik baarheid en prestatie afwegingen voor verschillende consistentie niveaus](./consistency-levels.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

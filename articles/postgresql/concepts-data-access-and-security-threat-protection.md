@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: cfe565c45ea6aa0a4bcfecc95b1e1149b17542a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa136a15e4fa034307e16ef50c2b16060c5af0d2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708047"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490200"
 ---
 # <a name="advanced-threat-protection-in-azure-database-for-postgresql---single-server"></a>Geavanceerde beveiliging tegen bedreigingen in Azure Database for PostgreSQL-één server
 
@@ -41,6 +41,6 @@ Advanced Threat Protection voor Azure Database for PostgreSQL detecteert afwijke
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+* Meer informatie over [Azure Security Center](../security-center/security-center-introduction.md)
 * Zie de [pagina met prijzen voor Azure database for PostgreSQL](https://azure.microsoft.com/pricing/details/postgresql/) voor meer informatie over prijzen. 
-* [Azure database for PostgreSQL Advanced Threat Protection](howto-database-threat-protection-portal.md) configureren met behulp van de Azure Portal  
+* [Azure database for PostgreSQL Advanced Threat Protection](howto-database-threat-protection-portal.md) configureren met behulp van de Azure Portal

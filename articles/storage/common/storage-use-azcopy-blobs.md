@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 7ff8f3d18564140b4654b1591eec5c0e1f40b7cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24c850b9a5302fd0ac684df6e6f1cc319118a75d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89077905"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488517"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Gegevens overdragen met AzCopy en Blob Storage
 
@@ -52,7 +52,7 @@ U kunt de azcopy-opdracht [kopiëren](storage-ref-azcopy-copy.md) gebruiken om b
 Deze sectie bevat de volgende voor beelden:
 
 > [!div class="checklist"]
-> * Een bestand uploaden
+> * Bestand uploaden
 > * Een map uploaden
 > * De inhoud van een map uploaden 
 > * Specifieke bestanden uploaden
@@ -67,7 +67,7 @@ Deze sectie bevat de volgende voor beelden:
 > 
 > Zie [Opties](storage-ref-azcopy-copy.md#options)voor een volledige lijst.
 
-### <a name="upload-a-file"></a>Een bestand uploaden
+### <a name="upload-a-file"></a>Bestand uploaden
 
 |    |     |
 |--------|-----------|
@@ -282,7 +282,7 @@ De naam van elk gedownload bestand begint met de versie-ID gevolgd door de naam 
 
 U kunt AzCopy gebruiken om blobs naar andere opslagaccounts te kopiëren. De kopieerbewerking is synchroon, dus wanneer de opdracht wordt geretourneerd, geeft dit aan dat alle bestanden zijn gekopieerd. 
 
-AzCopy maakt gebruik van [server-naar-server-](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) [api's](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url), zodat gegevens rechtstreeks tussen opslag servers worden gekopieerd. Deze Kopieer bewerkingen gebruiken de netwerk bandbreedte van uw computer niet. U kunt de door Voer van deze bewerkingen verhogen door de waarde van de `AZCOPY_CONCURRENCY_VALUE` omgevings variabele in te stellen. Zie de [door Voer optimaliseren](storage-use-azcopy-configure.md#optimize-throughput)voor meer informatie.
+AzCopy maakt gebruik van [server-naar-server-](/rest/api/storageservices/put-block-from-url) [api's](/rest/api/storageservices/put-page-from-url), zodat gegevens rechtstreeks tussen opslag servers worden gekopieerd. Deze Kopieer bewerkingen gebruiken de netwerk bandbreedte van uw computer niet. U kunt de door Voer van deze bewerkingen verhogen door de waarde van de `AZCOPY_CONCURRENCY_VALUE` omgevings variabele in te stellen. Zie de [door Voer optimaliseren](storage-use-azcopy-configure.md#optimize-throughput)voor meer informatie.
 
 > [!NOTE]
 > In dit scenario gelden de volgende beperkingen in de huidige release.
@@ -363,7 +363,7 @@ Met de opdracht [Sync](storage-ref-azcopy-sync.md) worden bestands namen en tijd
 Als u de `--delete-destination` vlag instelt op `true` AzCopy, worden bestanden verwijderd zonder dat u een prompt hoeft op te geven. Als u wilt dat er een prompt wordt weer gegeven voordat AzCopy een bestand verwijdert, stelt u de `--delete-destination` vlag in op `prompt` .
 
 > [!NOTE]
-> Als u onbedoeld verwijderen wilt voor komen, moet u ervoor zorgen dat u de functie voor [voorlopig verwijderen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) inschakelt voordat u de `--delete-destination=prompt|true` vlag gebruikt.
+> Als u onbedoeld verwijderen wilt voor komen, moet u ervoor zorgen dat u de functie voor [voorlopig verwijderen](/azure/storage/blobs/storage-blob-soft-delete) inschakelt voordat u de `--delete-destination=prompt|true` vlag gebruikt.
 
 > [!TIP]
 > U kunt de synchronisatie bewerking aanpassen met behulp van optionele vlaggen. Hier volgen enkele voor beelden.

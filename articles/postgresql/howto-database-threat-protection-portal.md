@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 6aa0a0f798df2fd69d6f69badd0dcbbb92a0cf39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5583e8423f0909936d9e55c6d87593835eded8f7
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708217"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489894"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-postgresql---single-server"></a>Advanced Threat Protection voor Azure Database for PostgreSQL-één server
 
@@ -62,5 +62,5 @@ Klik op **beveiligings waarschuwingen** onder **bedreigings beveiliging** om de 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
-* Zie de [pagina met prijzen voor Azure database for PostgreSQL](https://azure.microsoft.com/pricing/details/postgresql/) voor meer informatie over prijzen.  
+* Meer informatie over [Azure Security Center](../security-center/security-center-introduction.md)
+* Zie de [pagina met prijzen voor Azure database for PostgreSQL](https://azure.microsoft.com/pricing/details/postgresql/) voor meer informatie over prijzen.

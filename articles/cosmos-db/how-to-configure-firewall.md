@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3ad53a90586ccf88c5c74326103997ca0a53cdf9
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: fb97f9ee822c808057139bd25b2e4f43c48a2e48
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279753"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490506"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>IP-firewall in Azure Cosmos DB configureren
 
@@ -22,7 +22,7 @@ Voor het beveiligen van de gegevens die zijn opgeslagen in uw account, ondersteu
 
 Uw Azure Cosmos-account is standaard toegankelijk via internet, zolang de aanvraag vergezeld gaat van een geldig autorisatie token. Voor het configureren van toegangs beheer op basis van IP-beleid, moet de gebruiker de set IP-adressen of IP-adresbereiken in CIDR-formulier (Classloze Inter-Domain Routing) opgeven dat moet worden opgenomen als de lijst met toegestane client-Ip's om toegang te krijgen tot een bepaald Azure Cosmos-account. Zodra deze configuratie is toegepast, ontvangen aanvragen die afkomstig zijn van computers buiten deze toegestane lijst, het antwoord 403 (verboden). Wanneer u IP-firewall gebruikt, is het raadzaam om Azure Portal toegang te geven tot uw account. Toegang is vereist om het gebruik van Data Explorer toe te staan en om de metrische gegevens voor uw account op te halen die worden weer gegeven op de Azure Portal. Wanneer u Data Explorer gebruikt, moet u niet alleen Azure Portal toegang geven tot uw account, maar ook uw firewall instellingen bijwerken om uw huidige IP-adres toe te voegen aan de firewall regels. Houd er rekening mee dat de wijzigingen van de firewall kunnen worden doorgevoerd in 15min.
 
-U kunt op IP gebaseerde firewalls combi neren met toegangs beheer voor subnetten en VNET. Door ze te combi neren, kunt u de toegang tot een bron met een openbaar IP-adres en/of van een specifiek subnet in VNET beperken. Zie [toegang Azure Cosmos DB bronnen vanuit virtuele netwerken](vnet-service-endpoint.md)voor meer informatie over het gebruik van het subnet en op VNET gebaseerd toegangs beheer.
+U kunt op IP gebaseerde firewalls combi neren met toegangs beheer voor subnetten en VNET. Door ze te combi neren, kunt u de toegang tot een bron met een openbaar IP-adres en/of van een specifiek subnet in VNET beperken. Zie [toegang Azure Cosmos DB bronnen vanuit virtuele netwerken](./how-to-configure-vnet-service-endpoint.md)voor meer informatie over het gebruik van het subnet en op VNET gebaseerd toegangs beheer.
 
 Om samen te vatten is het autorisatie token altijd vereist voor toegang tot een Azure Cosmos-account. Als de IP-firewall en de VNET-Access Control lijst (Acl's) niet zijn ingesteld, is het Azure Cosmos-account toegankelijk met het autorisatie token. Nadat de IP-firewall-of VNET-Acl's of beide zijn ingesteld op het Azure Cosmos-account, krijgen alleen aanvragen die afkomstig zijn van de bronnen die u hebt opgegeven (en met het autorisatie token) geldige reacties. 
 
@@ -47,7 +47,7 @@ Als IP-toegangs beheer is ingeschakeld, biedt de Azure Portal de mogelijkheid om
 
 Wanneer u een beleid voor IP-toegangs beheer programmatisch inschakelt, moet u het IP-adres voor de Azure Portal toevoegen aan de eigenschap **ipRangeFilter** om de toegang te behouden. De IP-adressen van de portal zijn:
 
-|Regio|Het IP-adres|
+|Regio|IP-adres|
 |------|----------|
 |Duitsland|51.4.229.218|
 |China|139.217.8.252|
@@ -91,7 +91,7 @@ Wanneer u de Cloud service uitbreidt door rolinstanties toe te voegen, hebben de
 
 ### <a name="requests-from-virtual-machines"></a>Aanvragen van virtuele machines
 
-U kunt ook [virtuele machines](https://azure.microsoft.com/services/virtual-machines/) of [virtuele-machine schaal sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) gebruiken om services van de middelste laag te hosten met behulp van Azure Cosmos db. Als u uw Cosmos DB account zo wilt configureren dat toegang vanaf virtuele machines wordt toegestaan, moet u het open bare IP-adres van de virtuele machine en/of virtuele-machine schaalset configureren als een van de toegestane IP-adressen voor uw Azure Cosmos DB-account door [het beleid voor IP-toegangs beheer te configureren](#configure-ip-policy).
+U kunt ook [virtuele machines](https://azure.microsoft.com/services/virtual-machines/) of [virtuele-machine schaal sets](../virtual-machine-scale-sets/overview.md) gebruiken om services van de middelste laag te hosten met behulp van Azure Cosmos db. Als u uw Cosmos DB account zo wilt configureren dat toegang vanaf virtuele machines wordt toegestaan, moet u het open bare IP-adres van de virtuele machine en/of virtuele-machine schaalset configureren als een van de toegestane IP-adressen voor uw Azure Cosmos DB-account door [het beleid voor IP-toegangs beheer te configureren](#configure-ip-policy).
 
 U kunt IP-adressen voor virtuele machines ophalen in de Azure Portal, zoals wordt weer gegeven in de volgende scherm afbeelding:
 
@@ -105,7 +105,7 @@ Wanneer u uw Azure Cosmos DB-account opent vanaf een computer op internet, moet 
 
 ## <a name="configure-an-ip-firewall-by-using-a-resource-manager-template"></a><a id="configure-ip-firewall-arm"></a>Een IP-Firewall configureren met behulp van een resource manager-sjabloon
 
-Als u toegangs beheer wilt configureren voor uw Azure Cosmos DB-account, zorgt u ervoor dat in de Resource Manager-sjabloon de eigenschap **ipRules** wordt opgegeven met een matrix met toegestane IP-bereiken. Als u IP-firewall configureert voor een al geïmplementeerd Cosmos-account, moet u ervoor zorgen dat de `locations` matrix overeenkomt met wat er momenteel is geïmplementeerd. U kunt de `locations` matrix en andere eigenschappen niet tegelijkertijd wijzigen. Voor meer informatie en voor beelden van Azure Resource Manager sjablonen voor Azure Cosmos DB Zie, [Azure Resource Manager sjablonen voor Azure Cosmos DB](resource-manager-samples.md)
+Als u toegangs beheer wilt configureren voor uw Azure Cosmos DB-account, zorgt u ervoor dat in de Resource Manager-sjabloon de eigenschap **ipRules** wordt opgegeven met een matrix met toegestane IP-bereiken. Als u IP-firewall configureert voor een al geïmplementeerd Cosmos-account, moet u ervoor zorgen dat de `locations` matrix overeenkomt met wat er momenteel is geïmplementeerd. U kunt de `locations` matrix en andere eigenschappen niet tegelijkertijd wijzigen. Voor meer informatie en voor beelden van Azure Resource Manager sjablonen voor Azure Cosmos DB Zie, [Azure Resource Manager sjablonen voor Azure Cosmos DB](./templates-samples-sql.md)
 
 > [!IMPORTANT]
 > De eigenschap **ipRules** is geïntroduceerd met API-versie 2020-04-01. In de vorige versies werd in plaats daarvan een **ipRangeFilter** -eigenschap weer gegeven. Dit is een lijst met door komma's gescheiden IP-adressen.
@@ -221,7 +221,7 @@ Wanneer u Azure Cosmos DB bronnen opent met behulp van Sdk's op computers die zi
 
 ### <a name="source-ips-in-blocked-requests"></a>Bron-IP-adressen in geblokkeerde aanvragen
 
-Schakel diagnostische logboek registratie in voor uw Azure Cosmos DB-account. In deze logboeken worden alle aanvragen en antwoorden weer gegeven. De berichten die betrekking hebben op de firewall worden vastgelegd met een retour code van 403. Door deze berichten te filteren, kunt u de bron-Ip's voor de geblokkeerde aanvragen bekijken. Zie [Azure Cosmos DB diagnostische logboek registratie](logging.md).
+Schakel diagnostische logboek registratie in voor uw Azure Cosmos DB-account. In deze logboeken worden alle aanvragen en antwoorden weer gegeven. De berichten die betrekking hebben op de firewall worden vastgelegd met een retour code van 403. Door deze berichten te filteren, kunt u de bron-Ip's voor de geblokkeerde aanvragen bekijken. Zie [Azure Cosmos DB diagnostische logboek registratie](./monitor-cosmos-db.md).
 
 ### <a name="requests-from-a-subnet-with-a-service-endpoint-for-azure-cosmos-db-enabled"></a>Aanvragen van een subnet met een service-eind punt voor Azure Cosmos DB ingeschakeld
 

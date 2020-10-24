@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 8/13/2020
-ms.openlocfilehash: 5c82c7a3fbe931042c1ae817d2f5b6c9ae6989ff
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: d452070619a8e6284b976ff202d2a86f1ff9312b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427758"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480731"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Back-ups maken en herstellen in Azure Database for MariaDB
 
@@ -44,12 +44,15 @@ De Bewaar periode voor back-ups bepaalt hoe ver terug in de tijd een herstel naa
 - Servers met Maxi maal 4 TB opslag behouden Maxi maal twee volledige back-ups van de data base, alle differentiële back-ups en back-ups van transactie logboeken die zijn uitgevoerd sinds de eerste volledige back-up van de data base.
 -   Servers met Maxi maal 16 TB opslag behouden de volledige database momentopname, alle differentiële moment opnamen en back-ups van transactie Logboeken in de afgelopen 8 dagen.
 
+#### <a name="long-term-retention-of-backups"></a>Langetermijnretentie van back-ups
+Lange termijn retentie van back-ups van meer dan 35 dagen wordt momenteel niet ondersteund door de service. U hebt de mogelijkheid om mysqldump te gebruiken om back-ups te maken en op te slaan voor lange termijn retentie. Ons ondersteunings team heeft een stapsgewijs Blogged- [artikel](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/automate-backups-of-your-azure-database-for-mysql-server-to/ba-p/1791157) om te delen hoe dit kan worden gerealiseerd. 
+
 ### <a name="backup-redundancy-options"></a>Opties voor back-upredundantie
 
 Azure Database for MariaDB biedt de flexibiliteit om te kiezen tussen lokaal redundante of geografisch redundante back-upopslag in de lagen Algemeen en geoptimaliseerd voor geheugen. Wanneer de back-ups worden opgeslagen in geografisch redundante back-upopslag, worden ze niet alleen opgeslagen in de regio waarin uw server wordt gehost, maar worden ook gerepliceerd naar een [gekoppeld Data Center](../best-practices-availability-paired-regions.md). Dit biedt betere beveiliging en de mogelijkheid om uw server in een andere regio te herstellen in het geval van een ramp. De laag basis biedt alleen lokaal redundante back-upopslag.
 
-> [!IMPORTANT]
-> Het configureren van lokaal redundante of geografisch redundante opslag voor back-up is alleen toegestaan tijdens het maken van de server. Zodra de server is ingericht, kunt u de optie voor opslag redundantie van back-ups niet meer wijzigen.
+#### <a name="moving-from-locally-redundant-to-geo-redundant-backup-storage"></a>Verplaatsen van lokaal redundant naar geografisch redundante back-upopslag
+Het configureren van lokaal redundante of geografisch redundante opslag voor back-up is alleen toegestaan tijdens het maken van de server. Zodra de server is ingericht, kunt u de optie voor opslag redundantie van back-ups niet meer wijzigen. Als u uw back-upopslag wilt verplaatsen van lokaal redundante opslag naar geografisch redundante opslag, het maken van een nieuwe server en het migreren van de gegevens met [dump en herstellen](howto-migrate-dump-restore.md) is de enige optie die wordt ondersteund.
 
 ### <a name="backup-storage-cost"></a>Kosten voor back-upopslag
 

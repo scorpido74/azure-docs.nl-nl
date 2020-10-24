@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 7c7109999d478121ba0251de8e7470bc0f38d64c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e807a01f575615967a039d360505a4f090cd1fd
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90984106"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478317"
 ---
 # <a name="performance-tune-with-materialized-views"></a>Prestaties afstemmen met gerealiseerde weer gaven
 
@@ -35,10 +35,10 @@ De meeste vereisten voor een standaard weergave zijn nog steeds van toepassing o
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
 |Definitie weergeven                 | Opgeslagen in SQL-groep.              | Opgeslagen in SQL-groep.
 |Inhoud weergeven                    | Elke keer dat de weer gave wordt gebruikt, gegenereerd.   | Vooraf verwerkt en opgeslagen in SQL-groep tijdens het maken van de weer gave. Bijgewerkt wanneer gegevens worden toegevoegd aan de onderliggende tabellen.
-|Gegevens vernieuwen                    | Altijd bijgewerkt                               | Altijd bijgewerkt
+|Gegevensvernieuwing                    | Altijd bijgewerkt                               | Altijd bijgewerkt
 |Snelheid om weergave gegevens op te halen uit complexe query's     | Langzaam                                         | Snel  
 |Extra opslag ruimte                   | Nee                                           | Ja
-|Syntax                          | WEER GAVE MAKEN                                  | GEREALISEERDE WEER GAVE MAKEN ALS SELECTEREN
+|Syntax                          | CREATE VIEW                                  | GEREALISEERDE WEER GAVE MAKEN ALS SELECTEREN
 
 ## <a name="benefits-of-using-materialized-views"></a>Voor delen van het gebruik van gerealiseerde weer gaven
 
@@ -79,7 +79,7 @@ Ten opzichte van andere afstemmings opties, zoals schalen en statistieken, is he
 
 **U hebt verschillende strategieën voor het distribueren van gegevens nodig voor snellere query prestaties**
 
-De SQL-groep is een gedistribueerd systeem met een enorme parallelle verwerking (MPP).   Gegevens in een SQL-groeps tabel worden verdeeld over 60 knoop punten met een van de drie [distributie strategieën](sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (hash, round_robin of gerepliceerd).  
+Synapse SQL is een systeem voor gedistribueerde query verwerking.  Gegevens in een SQL-tabel worden verdeeld over 60 knoop punten met behulp van een van de drie [distributie strategieën](sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (hash, round_robin of gerepliceerd).   
 
 De gegevens distributie is opgegeven bij de aanmaak tijd van de tabel en blijft ongewijzigd totdat de tabel wordt verwijderd. Gerealiseerde weer gave van een virtuele tabel op schijf ondersteunt hash-en round_robin gegevens distributies.  Gebruikers kunnen een gegevens distributie kiezen die afwijkt van de basis tabellen, maar wel optimaal is voor de prestaties van query's die de weer gaven het meest gebruiken.  
 

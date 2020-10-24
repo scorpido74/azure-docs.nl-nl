@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 3b660875288db1f16f13d58b1538a876e2ff2666
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 7f81e6182209e29e41a21abadbaf05518844d201
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123288"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490166"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Replica's lezen in Azure Database for PostgreSQL-één server
 
@@ -143,7 +143,7 @@ Zodra uw toepassing Lees-en schrijf bewerkingen heeft verwerkt, hebt u de failov
 
 ### <a name="disaster-recovery"></a>Herstel na noodgeval
 
-Wanneer er sprake is van een belang rijke nood geval, zoals een zone-niveau of regionale storingen op beschikbaarheids gebied, kunt u herstel na nood gevallen uitvoeren door uw Lees replica te promo veren. U kunt vanuit de gebruikers interface-Portal naar de server voor het lezen van replica's navigeren. Klik vervolgens op het tabblad Replicatie en u kunt de replica stoppen om deze te promo veren tot een onafhankelijke server. U kunt ook de [Azure cli](https://docs.microsoft.com/cli/azure/postgres/server/replica?view=azure-cli-latest#az_postgres_server_replica_stop) gebruiken om de replica-server te stoppen en te promo veren.
+Wanneer er sprake is van een belang rijke nood geval, zoals een zone-niveau of regionale storingen op beschikbaarheids gebied, kunt u herstel na nood gevallen uitvoeren door uw Lees replica te promo veren. U kunt vanuit de gebruikers interface-Portal naar de server voor het lezen van replica's navigeren. Klik vervolgens op het tabblad Replicatie en u kunt de replica stoppen om deze te promo veren tot een onafhankelijke server. U kunt ook de [Azure cli](/cli/azure/postgres/server/replica#az_postgres_server_replica_stop) gebruiken om de replica-server te stoppen en te promo veren.
 
 ## <a name="considerations"></a>Overwegingen
 

@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 2d781ca7293d4bd95ae62eadc50295ca14c2d381
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9656e6ab608665e325ac5f772e06df9ac296c521
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91314927"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485372"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>Back-ups maken en herstellen in Azure Database for PostgreSQL-grootschalige (Citus)
 
@@ -39,7 +39,7 @@ In Azure Database for PostgreSQL maakt het herstellen van een grootschalige-clus
 
 
 > [!IMPORTANT]
-> Verwijderde grootschalige-clusters (Citus) kunnen niet worden hersteld. Als u het cluster verwijdert, worden alle knoop punten die deel uitmaken van het cluster, verwijderd en kunnen ze niet worden hersteld. Voor het beveiligen van cluster bronnen, na implementatie, van onbedoeld verwijderen of onverwachte wijzigingen, kunnen beheerders gebruikmaken van [beheer vergrendelingen](/azure/azure-resource-manager/management/lock-resources).
+> Verwijderde grootschalige-clusters (Citus) kunnen niet worden hersteld. Als u het cluster verwijdert, worden alle knoop punten die deel uitmaken van het cluster, verwijderd en kunnen ze niet worden hersteld. Voor het beveiligen van cluster bronnen, na implementatie, van onbedoeld verwijderen of onverwachte wijzigingen, kunnen beheerders gebruikmaken van [beheer vergrendelingen](../azure-resource-manager/management/lock-resources.md).
 
 ### <a name="point-in-time-restore-pitr"></a>Herstel naar een bepaald tijdstip (PITR)
 
@@ -65,5 +65,5 @@ Na een herstel na een van beide herstel mechanismen moet u het volgende doen om 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [Azure-beschikbaarheids zones](/azure/availability-zones/az-overview).
-* Stel [voorgestelde waarschuwingen](/azure/postgresql/howto-hyperscale-alert-on-metric#suggested-alerts) in voor grootschalige (Citus)-Server groepen.
+* Meer informatie over [Azure-beschikbaarheids zones](../availability-zones/az-overview.md).
+* Stel [voorgestelde waarschuwingen](./howto-hyperscale-alert-on-metric.md#suggested-alerts) in voor grootschalige (Citus)-Server groepen.

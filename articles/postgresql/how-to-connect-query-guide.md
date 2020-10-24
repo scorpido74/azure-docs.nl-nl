@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mksuni
 ms.author: sumuth
 ms.date: 09/21/2020
-ms.openlocfilehash: 924dbadc07f57e5928ecc63a24bf5e57d6213670
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c6d6a51887d2912da8d6b4e357a1036596d63d5
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935863"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490013"
 ---
 # <a name="connect-and-query-overview-for-azure-database-for-postgresql--single-server"></a>Verbinding maken en query's uitvoeren op een overzicht van Azure data base for PostgreSQL-één server
 
@@ -23,7 +23,7 @@ Het volgende document bevat koppelingen naar voor beelden waarin wordt getoond h
 | Snelstartgids | Beschrijving |
 |---|---|
 |[PgAdmin](https://www.pgadmin.org/)|U kunt pgAdmin gebruiken om verbinding te maken met de server. het vereenvoudigt het maken, onderhouden en gebruiken van database objecten.|
-|[psql in Azure Cloud Shell](quickstart-create-server-database-azure-cli.md#connect-to-the-azure-database-for-postgresql-server-by-using-psql)|In dit artikel wordt beschreven hoe u [**psql**](https://www.postgresql.org/docs/current/static/app-psql.html) uitvoert in [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview) om verbinding te maken met uw server en vervolgens instructies uitvoert om gegevens in de Data Base op te vragen, in te voegen, bij te werken en te verwijderen. U kunt **psql** uitvoeren als dit is geïnstalleerd in uw ontwikkel omgeving|
+|[psql in Azure Cloud Shell](quickstart-create-server-database-azure-cli.md#connect-to-the-azure-database-for-postgresql-server-by-using-psql)|In dit artikel wordt beschreven hoe u [**psql**](https://www.postgresql.org/docs/current/static/app-psql.html) uitvoert in [Azure Cloud shell](../cloud-shell/overview.md) om verbinding te maken met uw server en vervolgens instructies uitvoert om gegevens in de Data Base op te vragen, in te voegen, bij te werken en te verwijderen. U kunt **psql** uitvoeren als dit is geïnstalleerd in uw ontwikkel omgeving|
 |[PostgreSQL met VS code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb)|Met de Azure data base-uitbrei ding voor de VS code (preview) kunt u zowel lokaal als in de Cloud een query uitvoeren op uw PostgreSQL-server, met behulp van plak boeken met uitgebreide IntelliSense. |
 |[PHP](connect-php.md)|In deze Quick Start wordt gedemonstreerd hoe u PHP gebruikt om een programma te maken dat verbinding maakt met een Data Base en hoe u met Data Base-objecten werkt om gegevens op te vragen.|
 |[Java](connect-java.md)|In deze Quick Start wordt gedemonstreerd hoe u Java gebruikt om verbinding te maken met een Data Base en vervolgens met behulp van werk met database objecten query's uitvoert op gegevens.|
@@ -42,10 +42,10 @@ Transport Layer Security (TLS) wordt gebruikt door alle Stuur Programma's die do
 ## <a name="postgresql-extensions"></a>PostgreSQL-extensies
 PostgreSQL biedt de mogelijkheid om de functionaliteit van uw data base uit te breiden met behulp van extensies. Extensies bundelen meerdere SQL-objecten in één pakket dat met één opdracht kan worden geladen in of verwijderd uit uw database. Nadat de gegevens in de database zijn geladen, functioneren de extensies als ingebouwde functies.
 
-- [Post gres 11-extensies](https://docs.microsoft.com/azure/postgresql/concepts-extensions#postgres-11-extensions)
-- [Post gres 10-extensies](https://docs.microsoft.com/azure/postgresql/concepts-extensions#postgres-10-extensions)
-- [Post gres 9,6-extensies](https://docs.microsoft.com/azure/postgresql/concepts-extensions#postgres-96-extensions)
-- [Post gres 9,5-extensies](https://docs.microsoft.com/azure/postgresql/concepts-extensions#postgres-95-extensions)
+- [Post gres 11-extensies](./concepts-extensions.md#postgres-11-extensions)
+- [Post gres 10-extensies](./concepts-extensions.md#postgres-10-extensions)
+- [Post gres 9,6-extensies](./concepts-extensions.md#postgres-96-extensions)
+- [Post gres 9,5-extensies](./concepts-extensions.md#postgres-95-extensions)
 
 Zie [postgresql-extensies gebruiken op één server voor](concepts-extensions.md)meer informatie.
 

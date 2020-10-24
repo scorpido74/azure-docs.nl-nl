@@ -8,12 +8,12 @@ ms.author: jehollan
 ms.custom:
 - references_regions
 - fasttrack-edit
-ms.openlocfilehash: a037c903a72ba79b79c7e6b011fe025aefd7b51d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aaf5cb70e3099d84a54a22fa291f8f3ab9e0daa6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578033"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490744"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions Premium-abonnement
 
@@ -104,7 +104,7 @@ U kunt de plan grootte en maximum waarden in de Azure Portal configureren door d
 U kunt ook de maximale burst-limiet van de Azure CLI verhogen:
 
 ```azurecli-interactive
-az resource update -g <resource_group> -n <premium_plan_name> --set properties.maximumElasticWorkerCount=<desired_max_burst> --resource-type Microsoft.Web/serverfarms 
+az functionapp plan update -g <resource_group> -n <premium_plan_name> --max-burst <desired_max_burst>
 ```
 
 Het minimum voor elk abonnement is ten minste één exemplaar.  Het daad werkelijke minimum aantal exemplaren wordt automatisch geconfigureerd voor u op basis van de altijd gereed te maken exemplaren die worden aangevraagd door apps in het plan.  Als er bijvoorbeeld een aanvraag voor vijf exemplaren van de app altijd gereed is, en app B twee altijd gereede exemplaren in hetzelfde abonnement aanvraagt, wordt de minimale plan grootte berekend als vijf.  App A wordt uitgevoerd op alle 5 en app B wordt alleen uitgevoerd op 2.
@@ -117,7 +117,7 @@ In de meeste gevallen moet deze automatisch berekende minimum voldoende zijn.  H
 Het verhogen van het berekende minimum voor een plan kan worden uitgevoerd met behulp van de Azure CLI.
 
 ```azurecli-interactive
-az resource update -g <resource_group> -n <premium_plan_name> --set sku.capacity=<desired_min_instances> --resource-type Microsoft.Web/serverfarms 
+az functionapp plan update -g <resource_group> -n <premium_plan_name> --min-instances <desired_min_instances>
 ```
 
 ### <a name="available-instance-skus"></a>Beschik bare exemplaar-Sku's
@@ -146,7 +146,7 @@ Bekijk de volledige regionale Beschik baarheid van functies hier: [Azure.com](ht
 |Australië - centraal| 100 | Niet beschikbaar |
 |Australië - centraal 2| 100 | Niet beschikbaar |
 |Australië - oost| 100 | 20 |
-|Australia Southeast | 100 | 20 |
+|Australië - zuidoost | 100 | 20 |
 |Brazil South| 100 | 20 |
 |Canada - midden| 100 | 20 |
 |Central US| 100 | 20 |
@@ -154,10 +154,10 @@ Bekijk de volledige regionale Beschik baarheid van functies hier: [Azure.com](ht
 |China - noord 2| 100 | 20 |
 |Azië - oost| 100 | 20 |
 |VS - oost | 100 | 20 |
-|VS - oost 2| 100 | 20 |
+|US - oost 2| 100 | 20 |
 |Frankrijk - centraal| 100 | 20 |
 |Duitsland - west-centraal| 100 | Niet beschikbaar |
-|Japan East| 100 | 20 |
+|Japan - oost| 100 | 20 |
 |Japan - west| 100 | 20 |
 |Korea - centraal| 100 | 20 |
 |Korea - zuid| Niet beschikbaar | 20 |

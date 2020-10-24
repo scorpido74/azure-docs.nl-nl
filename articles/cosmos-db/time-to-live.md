@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 52885f874f877d9a2fd256d0212ba8693067ea8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2700b18797db3805a081b549605369e73889867b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802927"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476974"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Time to Live (TTL) configureren in Azure Cosmos DB
 
@@ -20,7 +20,7 @@ Met **time to Live** of TTL biedt Azure Cosmos DB de mogelijkheid om automatisch
 
 Het verwijderen van verlopen items is een achtergrond taak die gebruikmaakt van aanvragen voor links op [aanvraag](request-units.md), die aanvraag eenheden zijn die niet zijn verbruikt door gebruikers aanvragen. Zelfs nadat de TTL is verlopen, wordt de verwijdering van gegevens vertraagd als de container is overbelast met aanvragen en als er onvoldoende RU beschikbaar is. Gegevens worden verwijderd wanneer voldoende RUs beschikbaar is om de Verwijder bewerking uit te voeren. Hoewel het verwijderen van gegevens is vertraagd, worden er geen gegevens geretourneerd door query's (door een API) nadat de TTL is verlopen.
 
-> Deze inhoud is gerelateerd aan Azure Cosmos DB transactionele Store-TTL. Klik [hier](https://docs.microsoft.com/azure/cosmos-db/analytical-store-introduction#analytical-ttl)als u op zoek bent naar een ANALITYCAL Store TTL, waarmee NoETL HTAP-scenario's via de [koppeling van Azure Synapse](https://docs.microsoft.com/azure/cosmos-db/synapse-link)worden ingeschakeld.
+> Deze inhoud is gerelateerd aan Azure Cosmos DB transactionele Store-TTL. Klik [hier](./analytical-store-introduction.md#analytical-ttl)als u op zoek bent naar een ANALITYCAL Store TTL, waarmee NoETL HTAP-scenario's via de [koppeling van Azure Synapse](./synapse-link.md)worden ingeschakeld.
 
 ## <a name="time-to-live-for-containers-and-items"></a>Time to Live voor containers en items
 

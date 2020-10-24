@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/02/2019
 ms.author: sngun
-ms.openlocfilehash: 1bda235e5f3f867762457d0dc8214bbadc88059e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7f9573769beb5bf1f6ebe47e6e0a277185ac42b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87084820"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488415"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Met het ODBC-stuur programma verbinding maken met Azure Cosmos DB met behulp van BI Analytics-hulpprogram ma's
 
@@ -145,7 +145,7 @@ U kunt een query uitvoeren op Azure Cosmos DB van SQL Server Management Studio (
 
 1. Maak een systeemgegevens bron zoals beschreven in [stap 2](#connect), met de naam bijvoorbeeld `SDS Name` .
 
-1. [Installeer SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) en maak verbinding met de server. 
+1. [Installeer SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) en maak verbinding met de server. 
 
 1. Maak in de SSMS-query-editor een gekoppeld Server object `DEMOCOSMOS` voor de gegevens bron met de volgende opdrachten. Vervang door `DEMOCOSMOS` de naam van de gekoppelde server en `SDS Name` met de naam van de gegevens bron van uw systeem.
 
@@ -203,7 +203,7 @@ Ga vervolgens als volgt te werk in het venster **weergave definities** :
 
 1. Klik op **Nieuw**, voer een naam in voor de weer gave, bijvoorbeeld EmployeesfromSeattleView, en klik vervolgens op **OK**.
 
-1. Voer in het venster **weer gave bewerken** een Azure Cosmos DB query in. Dit moet een [Azure Cosmos DB SQL-query](how-to-sql-query.md)zijn, bijvoorbeeld `SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Manager FROM c WHERE c.City = "Seattle"` en klik vervolgens op **OK**.
+1. Voer in het venster **weer gave bewerken** een Azure Cosmos DB query in. Dit moet een [Azure Cosmos DB SQL-query](./sql-query-getting-started.md)zijn, bijvoorbeeld `SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Manager FROM c WHERE c.City = "Seattle"` en klik vervolgens op **OK**.
 
     :::image type="content" source="./media/odbc-driver/odbc-driver-create-view-2.png" alt-text="Azure Cosmos DB ODBC-gegevens bron beheerder":::
 

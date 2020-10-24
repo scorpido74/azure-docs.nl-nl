@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: maquaran
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 7a15e5135cd89d7360a1357e3518b1253e80ee65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1c54c2e486f935b3c3ba1b13207caaa67099459
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019518"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490982"
 ---
 # <a name="migrate-from-the-change-feed-processor-library-to-the-azure-cosmos-db-net-v3-sdk"></a>Migreren van de bibliotheek voor het wijzigen van de feed-processor naar de Azure Cosmos DB .NET v3 SDK
 
@@ -23,7 +23,7 @@ In dit artikel worden de vereiste stappen beschreven voor het migreren van de co
 De .NET v3 SDK heeft verschillende belang rijke wijzigingen, de volgende zijn de belangrijkste stappen voor het migreren van uw toepassing:
 
 1. Converteer de `DocumentCollectionInfo` instanties naar `Container` verwijzingen voor de containers bewaakt en leases.
-1. Aanpassingen die worden gebruikt, `WithProcessorOptions` moeten worden bijgewerkt voor gebruik `WithLeaseConfiguration` en `WithPollInterval` voor intervallen, `WithStartTime` [voor begin tijd](how-to-configure-change-feed-start-time.md)en `WithMaxItems` het definiëren van het maximum aantal items.
+1. Aanpassingen die worden gebruikt, `WithProcessorOptions` moeten worden bijgewerkt voor gebruik `WithLeaseConfiguration` en `WithPollInterval` voor intervallen, `WithStartTime` [voor begin tijd](./change-feed-processor.md#starting-time)en `WithMaxItems` het definiëren van het maximum aantal items.
 1. Stel de `processorName` op in op `GetChangeFeedProcessorBuilder` overeenkomen met de waarde die is geconfigureerd op `ChangeFeedProcessorOptions.LeasePrefix` of gebruik `string.Empty` anders.
 1. De wijzigingen worden niet meer geleverd als een `IReadOnlyList<Document>` in plaats daarvan, maar het `IReadOnlyCollection<T>` `T` is een type dat u moet definiëren. er is geen klasse van het basis item meer.
 1. Als u de wijzigingen wilt afhandelen, hebt u geen implementatie meer nodig. in plaats daarvan moet u [een gemachtigde definiëren](change-feed-processor.md#implementing-the-change-feed-processor). De gemachtigde kan een statische functie zijn of, als u de status van de uitvoeringen wilt hand haven, uw eigen klasse maken en een instantie methode door geven als gemachtigde.
@@ -60,4 +60,4 @@ U kunt nu door gaan met meer informatie over het wijzigen van de feed-processor 
 
 * [Overzicht van de processor voor wijzigings invoer](change-feed-processor.md)
 * [De wijzigingenfeedschatting gebruiken](how-to-use-change-feed-estimator.md)
-* [Starttijd van verwerker van wijzigingenfeed](how-to-configure-change-feed-start-time.md)
+* [Starttijd van verwerker van wijzigingenfeed](./change-feed-processor.md#starting-time)

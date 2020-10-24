@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 337a4c1ba3e355c2ba1dd7ea6e34645112d1c7b1
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 73b48f8bcb4ec6facfebfc62d03ee5cd8237f504
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091301"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490795"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>Inleiding tot de kern Azure Storage services
 
@@ -46,7 +46,7 @@ In de volgende tabel worden de bestanden, blobs, schijven, wacht rijen en tabell
 | **Azure Files** |Biedt volledig beheerde Cloud bestands shares waar u overal toegang toe hebt via het industrie standaard SMB-protocol (Server Message Block).<br><br>U kunt Azure-bestands shares koppelen vanuit Cloud-of on-premises implementaties van Windows, Linux en macOS. | U wilt een toepassing "lift en verschuiving" verplaatsen naar de cloud die al gebruikmaakt van de systeem eigen Api's van het systeem voor het delen van gegevens tussen IT en andere toepassingen die worden uitgevoerd in Azure.<br/><br/>U wilt on-premises bestands servers of NAS-apparaten vervangen of aanvullen.<br><br> U wilt hulpprogram ma's voor ontwikkeling en fout opsporing opslaan die toegankelijk moeten zijn vanaf een groot aantal virtuele machines. |
 | **Azure-blobs** | Hiermee kunnen ongestructureerde gegevens worden opgeslagen en geopend op een enorme schaal in blok-blobs.<br/><br/>Biedt ook ondersteuning voor [Azure data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md) voor oplossingen voor enter prise Big Data Analytics. | U wilt dat uw toepassing streaming en wille keurige toegangs scenario's ondersteunt.<br/><br/>U wilt vanaf elke locatie toegang hebben tot toepassings gegevens.<br/><br/>U wilt een Enter prise data Lake bouwen op Azure en big data Analytics uitvoeren. |
 | **Azure-schijven** | Hiermee staat u toe dat gegevens permanent worden opgeslagen en toegankelijk vanaf een gekoppelde virtuele harde schijf. | U wilt ' lift-en Shift-toepassingen die gebruikmaken van systeem eigen Api's voor bestands systemen, om gegevens te lezen en te schrijven naar permanente schijven.<br/><br/>U wilt gegevens opslaan die niet nodig zijn voor toegang tot de virtuele machine waarop de schijf is aangesloten. |
-| **Azure-wachtrijen** | Hiermee wordt asynchrone berichten wachtrij tussen toepassings onderdelen toegestaan. | U wilt toepassings onderdelen loskoppelen en asynchrone berichten gebruiken om onderling te communiceren.<br><br>Voor hulp bij het gebruik van wachtrij opslag versus Service Bus wachtrijen, Zie [opslag wachtrijen en service bus wacht rijen-vergeleken en daarentegen](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted). |
+| **Azure-wachtrijen** | Hiermee wordt asynchrone berichten wachtrij tussen toepassings onderdelen toegestaan. | U wilt toepassings onderdelen loskoppelen en asynchrone berichten gebruiken om onderling te communiceren.<br><br>Voor hulp bij het gebruik van wachtrij opslag versus Service Bus wachtrijen, Zie [opslag wachtrijen en service bus wacht rijen-vergeleken en daarentegen](/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted). |
 | **Azure-tabellen** | Bieden u de mogelijkheid om gestructureerde NoSQL-gegevens op te slaan in de Cloud, met een sleutel/kenmerk opslag met een schemaloos ontwerp. | U wilt flexibele gegevens sets, zoals gebruikers gegevens, opslaan voor webtoepassingen, adres boeken, apparaatgegevens of andere soorten meta gegevens die uw service nodig heeft. <br/><br/>Zie [ontwikkelen met Azure Cosmos DB Table-API en Azure Table Storage](../../cosmos-db/table-support.md)voor meer informatie over het gebruik van tabel opslag versus de Azure Cosmos db table-API. |
 
 ## <a name="blob-storage"></a>Blob Storage
@@ -61,7 +61,7 @@ Blob-opslag is ideaal voor:
 - De opslag van gegevens voor back-up en herstel, herstel na noodgevallen en archivering.
 - De opslag van gegevens voor analyse door een on-premises of in Azure gehoste service.
 
-Objecten in Blob-opslag zijn overal ter wereld toegankelijk via HTTP of HTTPS. Gebruikers of clienttoepassingen hebben toegang tot blobs via URL's, de [REST-API van Azure Storage](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api), [Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage), [Azure CLI](https://docs.microsoft.com/cli/azure/storage) of een Azure Storage-clientbibliotheek. Deze clientbibliotheken zijn beschikbaar voor meerdere talen, waaronder [.NET](/dotnet/api/overview/azure/storage), [Java](https://docs.microsoft.com/java/api/overview/azure/storage), [Node.js](https://azure.github.io/azure-storage-node), [Python](https://azure-storage.readthedocs.io/), [PHP](https://azure.github.io/azure-storage-php/) en [Ruby](https://azure.github.io/azure-storage-ruby).
+Objecten in Blob-opslag zijn overal ter wereld toegankelijk via HTTP of HTTPS. Gebruikers of clienttoepassingen hebben toegang tot blobs via URL's, de [REST-API van Azure Storage](/rest/api/storageservices/blob-service-rest-api), [Azure PowerShell](/powershell/module/azure.storage), [Azure CLI](/cli/azure/storage) of een Azure Storage-clientbibliotheek. Deze clientbibliotheken zijn beschikbaar voor meerdere talen, waaronder [.NET](/dotnet/api/overview/azure/storage), [Java](/java/api/overview/azure/storage), [Node.js](https://azure.github.io/azure-storage-node), [Python](https://azure-storage.readthedocs.io/), [PHP](https://azure.github.io/azure-storage-php/) en [Ruby](https://azure.github.io/azure-storage-ruby).
 
 Zie [Inleiding tot blob-opslag](../blobs/storage-blobs-introduction.md) voor meer informatie over blob-opslag.
 
@@ -113,7 +113,7 @@ Elke aanvraag voor Azure Storage moet worden geautoriseerd. Azure Storage onders
 
 - **Integratie van Azure Active Directory (Azure AD) voor Blob-en wachtrij gegevens.** Azure Storage ondersteunt verificatie en autorisatie met Azure AD voor de BLOB-en Queue-Services via Azure op rollen gebaseerd toegangs beheer (Azure RBAC). Het is raadzaam aanvragen met Azure AD te autoriseren voor superieure beveiliging en gebruiks gemak. Zie [toegang tot Azure-blobs en-wacht rijen toestaan met Azure Active Directory](storage-auth-aad.md)voor meer informatie.
 - **Azure AD-autorisatie via SMB voor Azure Files.** Azure Files ondersteunt autorisatie op basis van een identiteit via SMB (Server Message Block) via Azure Active Directory Domain Services (Azure AD DS) of on-premises Active Directory Domain Services (preview). De Windows-Vm's die zijn gekoppeld aan een domein, hebben toegang tot Azure-bestands shares met Azure AD-referenties. Zie voor meer informatie [overzicht van Azure files verificatie op basis van identiteiten voor SMB-toegang](../files/storage-files-active-directory-overview.md) en [het plannen van een Azure files-implementatie](../files/storage-files-planning.md#identity).
-- **Autorisatie met gedeelde sleutel.** De Azure Storage Blob-, file-, Queue-en Table-Services ondersteunen autorisatie met gedeelde sleutel. Een client die gebruikmaakt van gedeelde sleutel autorisatie, geeft een header door elke aanvraag die is ondertekend met de toegangs sleutel voor het opslag account. Zie [autoriseren met gedeelde sleutel](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)voor meer informatie.
+- **Autorisatie met gedeelde sleutel.** De Azure Storage Blob-, file-, Queue-en Table-Services ondersteunen autorisatie met gedeelde sleutel. Een client die gebruikmaakt van gedeelde sleutel autorisatie, geeft een header door elke aanvraag die is ondertekend met de toegangs sleutel voor het opslag account. Zie [autoriseren met gedeelde sleutel](/rest/api/storageservices/authorize-with-shared-key)voor meer informatie.
 - **Autorisatie met behulp van Shared Access signatures (SAS).** Een Shared Access Signature (SAS) is een teken reeks met een beveiligings token dat kan worden toegevoegd aan de URI voor een opslag resource. Met het beveiligings token worden beperkingen, zoals machtigingen en het toegangs interval ingekapseld. Zie [using Shared Access signatures (SAS) (Engelstalig)](storage-sas-overview.md)voor meer informatie.
 - **Anonieme toegang tot containers en blobs.** Een container en de bijbehorende blobs zijn mogelijk openbaar beschikbaar. Wanneer u opgeeft dat een container of BLOB openbaar is, kan iedereen deze anoniem lezen. Er is geen verificatie vereist. Zie [Anonieme leestoegang tot containers en blobs beheren](../blobs/storage-manage-access-to-resources.md) voor meer informatie.
 
@@ -147,10 +147,10 @@ U kunt toegang krijgen tot bronnen in een opslag account op basis van elke taal 
 
 ### <a name="azure-storage-data-api-and-library-references"></a>Azure Storage-gegevens-API en bibliotheekverwijzingen
 
-- [Azure Storage REST API](https://docs.microsoft.com/rest/api/storageservices/)
-- [Azure Storage-client bibliotheek voor .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
-- [Azure Storage-client bibliotheek voor Java/Android](https://docs.microsoft.com/java/api/overview/azure/storage)
-- [Client bibliotheek Azure Storage voor Node.js](https://docs.microsoft.com/javascript/api/overview/azure/storage-overview)
+- [Azure Storage REST API](/rest/api/storageservices/)
+- [Azure Storage-client bibliotheek voor .NET](/dotnet/api/overview/azure/storage)
+- [Azure Storage-client bibliotheek voor Java/Android](/java/api/overview/azure/storage)
+- [Client bibliotheek Azure Storage voor Node.js](/javascript/api/overview/azure/storage-overview)
 - [Client bibliotheek voor python Azure Storage](https://github.com/Azure/azure-storage-python)
 - [Client bibliotheek voor PHP Azure Storage](https://github.com/Azure/azure-storage-php)
 - [Azure Storage-client bibliotheek voor ruby](https://github.com/Azure/azure-storage-ruby)
@@ -158,19 +158,19 @@ U kunt toegang krijgen tot bronnen in een opslag account op basis van elke taal 
 
 ### <a name="azure-storage-management-api-and-library-references"></a>Azure Storage-beheer-API en bibliotheekverwijzingen
 
-- [REST API van opslagresourceprovider](https://docs.microsoft.com/rest/api/storagerp/)
-- [Clientbibliotheek van opslagresourceprovider voor .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage/management)
+- [REST API van opslagresourceprovider](/rest/api/storagerp/)
+- [Clientbibliotheek van opslagresourceprovider voor .NET](/dotnet/api/overview/azure/storage/management)
 - [REST API van opslagservicebeheer (klassiek)](https://msdn.microsoft.com/library/azure/ee460790.aspx)
 
 ### <a name="azure-storage-data-movement-api-and-library-references"></a>Azure Storage-gegevensverplaatsing-API en bibliotheekverwijzingen
 
-- [REST-API van Storage Import/Export-service](https://docs.microsoft.com/rest/api/storageimportexport/)
+- [REST-API van Storage Import/Export-service](/rest/api/storageimportexport/)
 - [Clientbibliotheek van opslaggegevensverplaatsing voor .NET](/dotnet/api/microsoft.azure.storage.datamovement)
 
 ### <a name="tools-and-utilities"></a>Hulpprogramma's
 
-- [Azure PowerShell-cmdlets voor Storage](https://docs.microsoft.com/powershell/module/az.storage)
-- [Azure CLI-cmdlets voor Storage](https://docs.microsoft.com/cli/azure/storage)
+- [Azure PowerShell-cmdlets voor Storage](/powershell/module/az.storage)
+- [Azure CLI-cmdlets voor Storage](/cli/azure/storage)
 - [Hulp programma AzCopy Command-Line](https://aka.ms/downloadazcopy)
 - [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) is een gratis, zelfstandige app van Microsoft waarmee u visueel met Azure Storage-gegevens kunt werken in Windows, macOS en Linux.
 - [Azure Resource Manager sjablonen voor Azure Storage](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Storage)

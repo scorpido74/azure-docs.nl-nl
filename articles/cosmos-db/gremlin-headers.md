@@ -7,19 +7,19 @@ ms.topic: reference
 ms.date: 09/03/2019
 author: jasonwhowell
 ms.author: jasonh
-ms.openlocfilehash: f39b93058f3f96d37683ec1f3ae3de0f8c1cb786
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b082c89684bc06346fa933aad6be97dc371bc3f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409524"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490574"
 ---
 # <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Gremlin server-antwoord headers Azure Cosmos DB
 In dit artikel worden headers behandeld die de Cosmos DB Gremlin-server retourneert naar de aanroeper bij het uitvoeren van de aanvraag. Deze headers zijn handig voor het oplossen van problemen met de prestaties van aanvragen, het bouwen van een toepassing die zonder benodigde systeemaanpassingen kan worden geïntegreerd met de Cosmos DB-service en het vereenvoudigen van de klantondersteuning.
 
 Houd er rekening mee dat het afhankelijk maken van deze headers u de draag baarheid van uw toepassing beperkt tot andere Gremlin-implementaties. Als resultaat krijgt u een nauwere integratie met Cosmos DB Gremlin. Deze headers zijn geen TinkerPop-standaard.
 
-## <a name="headers"></a>Headers
+## <a name="headers"></a>Kopteksten
 
 | Koptekst | Type | Voorbeeld waarde | Indien opgenomen | Uitleg |
 | --- | --- | --- | --- | --- |
@@ -29,7 +29,7 @@ Houd er rekening mee dat het afhankelijk maken van deze headers u de draag baarh
 | **x-MS-Total-Server-time-MS** | double | 130,512 | Geslaagde en mislukte bewerkingen | De totale tijd, in milliseconden, dat Cosmos DB Gremlin-server het uitvoeren van de volledige navigatie heeft geduurd. Deze header is opgenomen in elke gedeeltelijke reactie. Dit vertegenwoordigt een cumulatieve uitvoerings tijd sinds het begin van de aanvraag. Het laatste antwoord duidt op de totale uitvoerings tijd. Deze header is handig om onderscheid te maken tussen client en server als een bron van latentie. U kunt de doorlopende uitvoerings tijd op de client vergelijken met de waarde van deze header. |
 | **x-ms-status-code** | long | 200 | Geslaagde en mislukte bewerkingen | Kop geeft interne reden aan voor het volt ooien of beëindigen van aanvragen. De toepassing wordt aangeraden de waarde van deze header te bekijken en corrigerende actie te ondernemen. |
 | **x-MS-substatus-code** | long | 1003 | Alleen fout | Cosmos DB is een Data Base met meerdere modellen die zich boven op een uniforme opslaglaag bevindt. Deze header bevat extra inzichten over de fout reden wanneer de fout zich voordoet in de lagere lagen van de stack met hoge Beschik baarheid. Toepassing wordt aangeraden deze koptekst op te slaan en te gebruiken wanneer u contact opneemt met de klant ondersteuning van Cosmos DB. De waarde van deze koptekst is nuttig voor de Cosmos DB-engineer om snel problemen op te lossen. |
-| **x-ms-retry-after-ms** | teken reeks (time span) | "00:00:03.9500000" | Alleen fout | Deze header is een teken reeks representatie van een .NET [time span](https://docs.microsoft.com/dotnet/api/system.timespan) -type. Deze waarde wordt alleen opgenomen in mislukte aanvragen vanwege een overmatige doorvoer uitputting. De toepassing moet na een bepaalde tijd opnieuw door sturen opnieuw worden ingediend. |
+| **x-ms-retry-after-ms** | teken reeks (time span) | "00:00:03.9500000" | Alleen fout | Deze header is een teken reeks representatie van een .NET [time span](/dotnet/api/system.timespan) -type. Deze waarde wordt alleen opgenomen in mislukte aanvragen vanwege een overmatige doorvoer uitputting. De toepassing moet na een bepaalde tijd opnieuw door sturen opnieuw worden ingediend. |
 | **x-ms-activity-id** | teken reeks (GUID) | "A9218E01-3A3A-4716-9636-5BD86B056613" | Geslaagde en mislukte bewerkingen | De header bevat een unieke server-side id van een aanvraag. Aan elke aanvraag wordt een unieke id toegewezen door de server voor het volgen van het doel. Toepassingen moeten activiteit-id's die door de server worden geretourneerd, registreren voor aanvragen waarvoor klanten mogelijk contact willen opnemen met de klant ondersteuning. Cosmos DB ondersteunings medewerkers kunnen specifieke aanvragen voor deze id's vinden in Cosmos DB telemetrie van de service. |
 
 ## <a name="status-codes"></a>Statuscodes

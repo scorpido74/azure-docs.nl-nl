@@ -1,19 +1,19 @@
 ---
 title: Azure Backup voor SQL Server die worden uitgevoerd in azure VM
 description: In dit artikel vindt u informatie over het registreren van Azure Backup in SQL Server die worden uitgevoerd op een virtuele machine van Azure.
-services: backup
 author: dcurwin
 manager: carmonm
-ms.service: backup
+ms.service: virtual-machines
+ms.subservice: extensions
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 84ff3e18cf488f5536d5945d7b8fc8d78882424e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66675f77d480ce8d9f21e5ffb507c475337c9dab
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511174"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490727"
 ---
 # <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>Azure Backup voor SQL Server die worden uitgevoerd in azure VM
 
@@ -85,7 +85,7 @@ In de volgende JSON wordt het schema voor de WorkloadBackup-extensie weer gegeve
 
 ### <a name="property-values"></a>Eigenschaps waarden
 
-Name | Waarde/voor beeld | Gegevenstype
+Naam | Waarde/voor beeld | Gegevenstype
  --- | --- | ---
 landinstelling | nl-nl  |  tekenreeks
 taskId | "1c0ae461-9d3b-418c-a505-bb31dfe2095d"  | tekenreeks

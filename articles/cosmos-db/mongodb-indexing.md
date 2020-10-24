@@ -9,12 +9,12 @@ ms.date: 10/21/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 6f7114188a7a996ee80346ec48a51f0cce8bba54
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 6e084a890dd5c772fbf576ddc50fd26b2d1774f0
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425037"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487378"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Indexering beheren in de API van Azure Cosmos DB voor MongoDB
 
@@ -78,7 +78,7 @@ Hier volgt een voor beeld van het maken van een georuimtelijke index op het `loc
 
 ### <a name="text-indexes"></a>Tekst indexen
 
-De API van Azure Cosmos DB voor MongoDB biedt momenteel geen ondersteuning voor tekst indexen. Voor tekst zoekopdracht query's op teken reeksen moet u [Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb) -integratie met Azure Cosmos DB gebruiken. 
+De API van Azure Cosmos DB voor MongoDB biedt momenteel geen ondersteuning voor tekst indexen. Voor tekst zoekopdracht query's op teken reeksen moet u [Azure Cognitive Search](../search/search-howto-index-cosmosdb.md) -integratie met Azure Cosmos DB gebruiken. 
 
 ## <a name="wildcard-indexes"></a>Joker teken indexen
 

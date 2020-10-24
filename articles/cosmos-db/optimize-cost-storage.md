@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dca046df68b10853752b0de65c48c2b8f83afb31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5af62cd8c110e38ffd2a72ef2441a8e548e1ece
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020895"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475478"
 ---
 # <a name="optimize-storage-cost-in-azure-cosmos-db"></a>De opslag kosten in Azure Cosmos DB optimaliseren
 
@@ -20,7 +20,7 @@ Azure Cosmos DB biedt onbeperkte opslag en door voer. In tegens telling tot door
 
 ## <a name="storage-cost"></a>Opslagkosten
 
-Opslag wordt gefactureerd met de eenheid van GB. Lokale SSD-back-upopslag wordt gebruikt door uw gegevens en indexering. De totale gebruikte opslag ruimte is gelijk aan de opslag die is vereist voor de gegevens en indexen die worden gebruikt in alle regio's waar u Azure Cosmos DB gebruikt. Als u een Azure Cosmos-account globaal in drie regio's repliceert, betaalt u voor de totale opslag kosten in elk van deze drie regio's. Zie [capaciteits planner](https://www.documentdb.com/capacityplanner) voor het maken van een schatting van uw opslag vereiste. De kosten voor opslag in Azure Cosmos DB zijn $0,25 GB per maand, zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) voor de meest recente updates. U kunt waarschuwingen instellen om de opslag te bepalen die wordt gebruikt door de Azure Cosmos-container om uw opslag te bewaken, zie het artikel [monitor Azure Cosmos DB](monitor-accounts.md)).
+Opslag wordt gefactureerd met de eenheid van GB. Lokale SSD-back-upopslag wordt gebruikt door uw gegevens en indexering. De totale gebruikte opslag ruimte is gelijk aan de opslag die is vereist voor de gegevens en indexen die worden gebruikt in alle regio's waar u Azure Cosmos DB gebruikt. Als u een Azure Cosmos-account globaal in drie regio's repliceert, betaalt u voor de totale opslag kosten in elk van deze drie regio's. Zie [capaciteits planner](https://www.documentdb.com/capacityplanner) voor het maken van een schatting van uw opslag vereiste. De kosten voor opslag in Azure Cosmos DB zijn $0,25 GB per maand, zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) voor de meest recente updates. U kunt waarschuwingen instellen om de opslag te bepalen die wordt gebruikt door de Azure Cosmos-container om uw opslag te bewaken, zie het artikel [monitor Azure Cosmos DB](./monitor-cosmos-db.md)).
 
 ## <a name="optimize-cost-with-item-size"></a>Kosten optimaliseren met item grootte
 
@@ -28,7 +28,7 @@ Azure Cosmos DB verwacht dat de grootte van het item 2 MB of minder is voor opti
 
 ## <a name="optimize-cost-with-indexing"></a>Kosten optimaliseren met indexeren
 
-Standaard worden de gegevens automatisch geïndexeerd, waardoor de totale hoeveelheid verbruikte opslag kan worden verg root. U kunt echter aangepast index beleid Toep assen om deze overhead te verminderen. Automatische indexering die niet is afgestemd op het beleid is ongeveer 10-20% van de grootte van het item. Door het verwijderen of aanpassen van het index beleid betaalt u geen extra kosten voor schrijf bewerkingen en hebt u geen extra doorvoer capaciteit nodig. Zie [indexeren in azure Cosmos DB](indexing-policies.md) voor het configureren van aangepaste indexerings beleidsregels. Als u al eerder met relationele data bases hebt gewerkt, kunt u zien dat "alles indexeren" betekent dat de opslag of een hogere versie wordt verdubbeld. In Azure Cosmos DB, in het mediaan geval is het echter veel lager. In Azure Cosmos DB is de opslag overhead van de index meestal laag (10-20%) zelfs bij automatische indexering, omdat deze is ontworpen voor een geringe opslag capaciteit. Door het indexerings beleid te beheren, kunt u het bereik van de index footprint en query prestaties op een meer verfijnde manier beheren.
+Standaard worden de gegevens automatisch geïndexeerd, waardoor de totale hoeveelheid verbruikte opslag kan worden verg root. U kunt echter aangepast index beleid Toep assen om deze overhead te verminderen. Automatische indexering die niet is afgestemd op het beleid is ongeveer 10-20% van de grootte van het item. Door het verwijderen of aanpassen van het index beleid betaalt u geen extra kosten voor schrijf bewerkingen en hebt u geen extra doorvoer capaciteit nodig. Zie [indexeren in azure Cosmos DB](index-policy.md) voor het configureren van aangepaste indexerings beleidsregels. Als u al eerder met relationele data bases hebt gewerkt, kunt u zien dat "alles indexeren" betekent dat de opslag of een hogere versie wordt verdubbeld. In Azure Cosmos DB, in het mediaan geval is het echter veel lager. In Azure Cosmos DB is de opslag overhead van de index meestal laag (10-20%) zelfs bij automatische indexering, omdat deze is ontworpen voor een geringe opslag capaciteit. Door het indexerings beleid te beheren, kunt u het bereik van de index footprint en query prestaties op een meer verfijnde manier beheren.
 
 ## <a name="optimize-cost-with-time-to-live-and-change-feed"></a>Optimaliseer kosten met tijd tot Live en wijzigings invoer
 
@@ -40,7 +40,7 @@ Als u uitgebreide media typen wilt opslaan, bijvoorbeeld Video's, afbeeldingen e
 
 ## <a name="check-storage-consumed"></a>Verbruikte opslag controleren
 
-Om het opslag verbruik van een Azure Cosmos-container te controleren, kunt u een HEAD uitvoeren of aanvragen ophalen voor de container en de `x-ms-request-quota` en de `x-ms-request-usage` kopteksten controleren. Als u werkt met de .NET SDK, kunt u ook de eigenschappen [DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100))en [DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx) gebruiken om de gebruikte opslag ruimte op te halen.
+Om het opslag verbruik van een Azure Cosmos-container te controleren, kunt u een HEAD uitvoeren of aanvragen ophalen voor de container en de `x-ms-request-quota` en de `x-ms-request-usage` kopteksten controleren. Als u werkt met de .NET SDK, kunt u ook de eigenschappen [DocumentSizeQuota](/previous-versions/azure/dn850325(v%3Dazure.100))en [DocumentSizeUsage](/previous-versions/azure/dn850324(v=azure.100)) gebruiken om de gebruikte opslag ruimte op te halen.
 
 ## <a name="using-sdk"></a>SDK gebruiken
 
@@ -59,6 +59,5 @@ Daarna kunt u meer te weten komen over cost Optimization in Azure Cosmos DB met 
 * Meer informatie over [uw Azure Cosmos DB factuur](understand-your-bill.md)
 * Meer informatie over het [optimaliseren van doorvoer kosten](optimize-cost-throughput.md)
 * Meer informatie over [het optimaliseren van de kosten van lees-en schrijf bewerkingen](optimize-cost-reads-writes.md)
-* Meer informatie over [het optimaliseren van de kosten van query's](optimize-cost-queries.md)
+* Meer informatie over [het optimaliseren van de kosten van query's](./optimize-cost-reads-writes.md)
 * Meer informatie over [het optimaliseren van de kosten voor Azure Cosmos-accounts met meerdere regio's](optimize-cost-regions.md)
-

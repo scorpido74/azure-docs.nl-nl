@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 01/26/2017
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 2fa5cfcf0cb6c20a8a0b64651da0b365e12a3d05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be421cc0bb00018b32ee63f2b486c11300627a01
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056319"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488551"
 ---
 # <a name="reviewing-azure-importexport-job-status-with-copy-log-files"></a>De status van een Azure import/export-taak controleren met behulp van Kopieer logboek bestanden
-Wanneer de Microsoft Azure Import/Export-service de stations verwerkt die aan een import-of export taak zijn gekoppeld, worden de logboek bestanden gekopieerd naar het opslag account dat u hebt gebruikt voor het importeren of exporteren van blobs. Het logboek bestand bevat gedetailleerde status informatie over elk bestand dat is geïmporteerd of geëxporteerd. De service retourneert de URL voor elk exemplaar van het logboek bestand wanneer u de status van een voltooide taak doorzoekt. Zie [taak ophalen](https://docs.microsoft.com/rest/api/storageimportexport/Jobs/Get)voor meer informatie.  
+Wanneer de Microsoft Azure Import/Export-service de stations verwerkt die aan een import-of export taak zijn gekoppeld, worden de logboek bestanden gekopieerd naar het opslag account dat u hebt gebruikt voor het importeren of exporteren van blobs. Het logboek bestand bevat gedetailleerde status informatie over elk bestand dat is geïmporteerd of geëxporteerd. De service retourneert de URL voor elk exemplaar van het logboek bestand wanneer u de status van een voltooide taak doorzoekt. Zie [taak ophalen](/rest/api/storageimportexport/Jobs/Get)voor meer informatie.  
 
 ## <a name="example-urls"></a>Voor beeld-Url's
 

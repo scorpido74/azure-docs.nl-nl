@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 5ea5ee2dfe89b36fce78c369100224718eb5864f
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: ddb6bc297a32be856172707a220fe1dfaefb9f6d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278767"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487446"
 ---
 # <a name="distribute-your-data-globally-with-azure-cosmos-db"></a>Gegevens wereldwijd distribueren met Azure Cosmos DB
 
@@ -55,7 +55,6 @@ Meer informatie over globale distributie vindt u in de volgende artikelen:
 * [Regio's toevoegen aan of verwijderen uit uw Azure Cosmos DB-account](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [Een aangepast beleid voor conflict oplossing maken voor SQL-API-accounts](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)
 * [Programmeer bare consistentie modellen in Cosmos DB](consistency-levels.md)
-* [Het juiste consistentie niveau voor uw toepassing kiezen](consistency-levels-choosing.md)
-* [Consistentie niveaus voor Azure Cosmos DB-Api's](consistency-levels-across-apis.md)
-* [Beschik baarheid en prestaties voor diverse consistentie niveaus](consistency-levels-tradeoffs.md)
-
+* [Het juiste consistentie niveau voor uw toepassing kiezen](./consistency-levels.md)
+* [Consistentie niveaus voor Azure Cosmos DB-Api's](./consistency-levels.md)
+* [Beschik baarheid en prestaties voor diverse consistentie niveaus](./consistency-levels.md)

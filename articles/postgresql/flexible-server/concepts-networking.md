@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 38dd103189446e287f3d62d93344ed89a364d238
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4280932787cfb2220dab1da84dca41ca0c40e302
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708778"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485253"
 ---
 # <a name="networking-overview---azure-database-for-postgresql---flexible-server"></a>Overzicht van netwerken-Azure Database for PostgreSQL-flexibele server
 
@@ -72,6 +72,9 @@ Hier volgen enkele concepten die u moet kennen bij het gebruik van virtuele netw
 * Peering-VNets tussen regio's wordt niet ondersteund
 
 Meer informatie over het maken van een flexibele server met persoonlijke toegang (VNet-integratie) in [de Azure Portal](how-to-manage-virtual-network-portal.md) of [de Azure cli](how-to-manage-virtual-network-cli.md).
+
+> [!NOTE]
+> Als u de aangepaste DNS-server gebruikt, moet u een DNS-Forwarder gebruiken om de FQDN van Azure Database for MySQL-flexibele server op te lossen. Raadpleeg [de naam omzetting die gebruikmaakt van uw eigen DNS-server](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) voor meer informatie.
 
 ## <a name="public-access-allowed-ip-addresses"></a>Openbare toegang (toegestane IP-adressen)
 De kenmerken van de open bare toegangs methode zijn onder andere:

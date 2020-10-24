@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 5ce805fb302264a0c3907c006983f9d939a2908e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e190c9f06dc2c662760421b7240eafdf22986b0
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85262069"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491305"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-sql-api-account-using-striim"></a>Gegevens migreren naar Azure Cosmos DB SQL-API-account met behulp van Realtimeplatform
  
@@ -22,13 +22,13 @@ In dit artikel wordt beschreven hoe u Realtimeplatform kunt gebruiken om gegeven
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als u geen [Azure-abonnement](/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing) hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) voordat u begint.
+* Als u geen [Azure-abonnement](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing) hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) voordat u begint.
 
 * Een Oracle-data base die on-premises wordt uitgevoerd met een aantal gegevens.
 
 ## <a name="deploy-the-striim-marketplace-solution"></a>De Realtimeplatform Marketplace-oplossing implementeren
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 1. Selecteer **een resource maken** en zoek naar **realtimeplatform** in azure Marketplace. Selecteer de eerste optie en **Maak**deze.
 
