@@ -3,7 +3,7 @@ title: Azure Media Services verouderde onderdelen | Microsoft Docs
 description: In dit onderwerp worden Azure Media Services oudere onderdelen beschreven.
 services: media-services
 documentationcenter: ''
-author: myoungerman
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2020
-ms.author: v-myoung
-ms.openlocfilehash: d5a10ccc887124b2bc5595d66baad833a32275cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.author: inhenkel
+ms.openlocfilehash: d85cbeb99264b5b730fe585fd39f658e6448467f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90600888"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515760"
 ---
 # <a name="azure-media-services-legacy-components"></a>Azure Media Services verouderde onderdelen
 
@@ -33,17 +33,19 @@ De media processors van *Windows Azure Media Encoder* (WAME) en *Azure Media Enc
 * [Migreren van Windows Azure Media Encoder naar Media Encoder Standard](migrate-windows-azure-media-encoder.md)
 * [Migreren van Azure Media Encoder naar Media Encoder Standard](migrate-azure-media-encoder.md)
 
-De volgende Media Analytics media-processors zijn afgeschaft of binnenkort moeten worden afgeschaft:  
+De volgende Media Analytics media-processors zijn afgeschaft of binnenkort moeten worden afgeschaft:
+
+  
  
-|Naam van mediaprocessor|Buitengebruikstellings datum|Aanvullende opmerkingen|
-|---|---|
-|Azure Media Indexer 2|1 januari, 2020|Deze media processor is vervangen door [Azure Media Services video indexer](../video-indexer/index.yml). Zie [Migrate from Azure media indexer 2 to Azure Media Services video indexer](migrate-indexer-v1-v2.md)voor meer informatie.|
-|[Azure Media Indexer](media-services-index-content.md)|1 maart 2023|Deze media processor wordt vervangen door [Azure Media Services video indexer](../video-indexer/index.yml). Zie [migreren van Azure media indexer naar Azure Media Services video indexer](migrate-indexer-v1-v2.md)voor meer informatie.|
-|Bewegings detectie|1 juni, 2020|Er zijn op dit moment geen vervangings plannen.|
-|Video samenvatting] (Media-Services-video-summarization.md|1 juni, 2020|Er zijn op dit moment geen vervangings plannen.|
-|Video optische teken herkenning|1 juni, 2020|Deze media processor is vervangen door [Azure Media Services video indexer](../video-indexer/index.yml). U kunt ook [Azure Media Services v3 API](../latest/analyzing-video-audio-files-concept.md)gebruiken. <br/>Zie [Azure Media Services v3-voor instellingen en video indexer vergelijken](../video-indexer/compare-video-indexer-with-media-services-presets.md).|
-|Gezichtsherkenning|1 juni, 2020|Deze media processor is vervangen door [Azure Media Services video indexer](../video-indexer/index.yml). U kunt ook [Azure Media Services v3 API](../latest/analyzing-video-audio-files-concept.md)gebruiken. <br/>Zie [Azure Media Services v3-voor instellingen en video indexer vergelijken](../video-indexer/compare-video-indexer-with-media-services-presets.md).|
-|Content Moderator|1 juni, 2020|Deze media processor is vervangen door [Azure Media Services video indexer](../video-indexer/index.yml). U kunt ook [Azure Media Services v3 API](../latest/analyzing-video-audio-files-concept.md)gebruiken. <br/>Zie [Azure Media Services v3-voor instellingen en video indexer vergelijken](../video-indexer/compare-video-indexer-with-media-services-presets.md).|
+| **Naam van mediaprocessor** | **Buitengebruikstellings datum** | **Aanvullende opmerkingen** |
+| --- | --- | ---|
+| Azure Media Indexer 2 | 1 januari, 2020 | Deze media processor wordt vervangen door de [Media Services v3 AudioAnalyzerPreset Basic-modus](../latest/analyzing-video-audio-files-concept.md). Zie [Migrate from Azure media indexer 2 to Azure Media Services video indexer](migrate-indexer-v1-v2.md)voor meer informatie. |
+| Azure Media Indexer | 1 maart 2023 | Deze media processor wordt vervangen door de [Media Services v3 AudioAnalyzerPreset Basic-modus](../latest/analyzing-video-audio-files-concept.md). Zie [Migrate from Azure media indexer 2 to Azure Media Services video indexer](migrate-indexer-v1-v2.md)voor meer informatie. |
+| Bewegings detectie | 1 juni, 2020|Er zijn op dit moment geen vervangings plannen. |
+| Video samenvatting |1 juni, 2020|Er zijn op dit moment geen vervangings plannen.|
+| Video optische teken herkenning | 1 juni, 2020 |Deze media processor is vervangen door [Azure Media Services video indexer](../video-indexer/index.yml). U kunt ook [Azure Media Services v3 API](../latest/analyzing-video-audio-files-concept.md)gebruiken. <br/>Zie [Azure Media Services v3-voor instellingen en video indexer vergelijken](../video-indexer/compare-video-indexer-with-media-services-presets.md). |
+| Gezichtsherkenning | 1 juni, 2020 | Deze media processor is vervangen door [Azure Media Services video indexer](../video-indexer/index.yml). U kunt ook [Azure Media Services v3 API](../latest/analyzing-video-audio-files-concept.md)gebruiken. <br/>Zie [Azure Media Services v3-voor instellingen en video indexer vergelijken](../video-indexer/compare-video-indexer-with-media-services-presets.md). |
+| Content Moderator | 1 juni, 2020 |Deze media processor is vervangen door [Azure Media Services video indexer](../video-indexer/index.yml). U kunt ook [Azure Media Services v3 API](../latest/analyzing-video-audio-files-concept.md)gebruiken. <br/>Zie [Azure Media Services v3-voor instellingen en video indexer vergelijken](../video-indexer/compare-video-indexer-with-media-services-presets.md). |
 
 ## <a name="next-steps"></a>Volgende stappen
 

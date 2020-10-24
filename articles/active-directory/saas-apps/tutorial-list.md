@@ -12,12 +12,12 @@ ms.date: 10/10/2019
 ms.author: jeedes
 ms.custom: it-pro
 ms.reviewer: celested
-ms.openlocfilehash: 14a25559b1eddd4adb58ae2106e8c9e92873ea48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8eeddecbec31ec1bfa73cf956deb4c50809c50e7
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88751254"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521943"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>Tutorials for integrating SaaS applications with Azure Active Directory (Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory)
 
@@ -25,7 +25,7 @@ We hebben een verzameling zelf studies ontwikkeld waarmee u de configuratie kunt
 
 Zie de [Active Directory Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps)voor een lijst met alle SaaS-apps die vooraf zijn geïntegreerd in azure AD.
 
-Gebruik de [toepassings netwerk Portal](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing) om een [scim](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups) -toepassing aan te vragen die moet worden toegevoegd aan de galerie voor automatische inrichting of een SAML/OIDC-toepassing die moet worden toegevoegd aan de galerie voor eenmalige aanmelding.
+Gebruik de [toepassings netwerk Portal](../azuread-dev/howto-app-gallery-listing.md) om een [scim](../app-provisioning/use-scim-to-provision-users-and-groups.md) -toepassing aan te vragen die moet worden toegevoegd aan de galerie voor automatische inrichting of een SAML/OIDC-toepassing die moet worden toegevoegd aan de galerie voor eenmalige aanmelding.
 
 ## <a name="quick-links"></a>Snelkoppelingen
 
@@ -34,7 +34,7 @@ Gebruik de [toepassings netwerk Portal](https://docs.microsoft.com/azure/active-
 | ![logo-Atlassian Cloud](./media/tutorial-list/active-directory-saas-atlassian-cloud-tutorial.png)| [Atlassian Cloud](atlassian-cloud-tutorial.md)| [Atlassian Cloud-gebruikers inrichten](atlassian-cloud-provisioning-tutorial.md)|
 | ![logo-ServiceNow](./media/tutorial-list/active-directory-saas-servicenow-tutorial.png)| [ServiceNow](servicenow-tutorial.md)|[ServiceNow-gebruikers inrichten](servicenow-provisioning-tutorial.md)|
 | ![logo-toegestane vertraging](./media/tutorial-list/active-directory-saas-slack-tutorial.png)| [Slack](slack-tutorial.md)|[Toegestane vertraging-gebruikers inrichting](slack-provisioning-tutorial.md)|
-| ![logo-SuccessFactors](./media/tutorial-list/active-directory-saas-successfactors-tutorial.png)| [SuccessFactors](successfactors-tutorial.md)| [SuccessFactors-gebruikers inrichten](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-successfactors-inbound-provisioning-tutorial) |
+| ![logo-SuccessFactors](./media/tutorial-list/active-directory-saas-successfactors-tutorial.png)| [SuccessFactors](successfactors-tutorial.md)| [SuccessFactors-gebruikers inrichten](./sap-successfactors-inbound-provisioning-tutorial.md) |
 | ![logo-workday](./media/tutorial-list/active-directory-saas-workday-tutorial.png)| [Workday](workday-tutorial.md)| [Werkdag-gebruikers inrichten](workday-inbound-tutorial.md)|
 
 Als u meer zelf studies wilt zoeken, gebruikt u de inhouds opgave aan de linkerkant.
@@ -47,7 +47,7 @@ Als u meer zelf studies wilt zoeken, gebruikt u de inhouds opgave aan de linkerk
 | ![logo-Alibaba Cloud service (rol-SSO)](./media/tutorial-list/active-directory-saas-alibaba-tutorial.png)| [Alibaba Cloud service (functie-basis-SSO)](alibaba-cloud-service-role-based-sso-tutorial.md)| |
 | ![logo-Google Cloud Platform](./media/tutorial-list/active-directory-saas-google-apps-tutorial.png)| [Google Cloud Platform](google-apps-tutorial.md)| [Google Cloud Platform-gebruikers inrichting](google-apps-provisioning-tutorial.md) |
 | ![logo-Sales Force](./media/tutorial-list/active-directory-saas-salesforce-tutorial.png)| [Salesforce](salesforce-tutorial.md)| [Sales Force-gebruikers inrichten](salesforce-provisioning-tutorial.md) |
-| ![logo-SAP-Cloud-identiteits platform](./media/tutorial-list/active-directory-saas-sapboc-tutorial.png)| [SAP Cloud-identiteits platform](saphana-tutorial.md)|[SAP Cloud Identity platform-Provisioning](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial) |
+| ![logo-SAP-Cloud-identiteits platform](./media/tutorial-list/active-directory-saas-sapboc-tutorial.png)| [SAP Cloud-identiteits platform](saphana-tutorial.md)|[SAP Cloud Identity platform-Provisioning](./sap-cloud-platform-identity-authentication-provisioning-tutorial.md) |
 
 ## <a name="oneclick-sso"></a>OneClick SSO
 

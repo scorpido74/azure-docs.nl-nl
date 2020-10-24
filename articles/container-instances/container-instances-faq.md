@@ -5,12 +5,12 @@ author: macolso
 ms.author: macolso
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 1cedfb7464fd97249c5cd3fae73c9290365da6cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4760463a4d71e4c097b082aa6b93d8b339f94ca
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91818486"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516967"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Veelgestelde vragen over Azure Container Instances
 
@@ -61,7 +61,7 @@ Gebruik de kleinste afbeelding die voldoet aan uw vereisten. Voor Linux kunt u e
 
 Dit is echt afhankelijk van uw werk belasting. Start kleine en test prestaties om te zien hoe uw containers doen. [Bewaak het gebruik van CPU-en geheugen bronnen](container-instances-monitor.md)en voeg vervolgens kernen of geheugen toe op basis van het soort processen dat u in de container implementeert.
 
-Zorg ervoor dat u ook de [Beschik baarheid van resources](container-instances-region-availability.md#availability---general) controleert voor de regio die u implementeert in voor de bovengrens op CPU-kernen en geheugen beschikbaar per container groep. 
+Zorg ervoor dat u ook de [Beschik baarheid van resources](container-instances-region-availability.md) controleert voor de regio die u implementeert in voor de bovengrens op CPU-kernen en geheugen beschikbaar per container groep. 
 
 > [!NOTE]
 > Een kleine hoeveelheid resources van een container groep wordt gebruikt door de onderliggende infra structuur van de service. Uw containers hebben toegang tot de meeste, maar niet alle resources die aan de groep zijn toegewezen. Daarom moet u een kleine resource buffer plannen bij het aanvragen van resources voor containers in de groep.
@@ -80,7 +80,7 @@ Nog niet. Dit zijn momenteel de maximum waarden voor een container groep. Neem c
 
 ### <a name="when-will-aci-be-in-a-specific-region"></a>Wanneer neemt de berekenings bevinden zich in een specifieke regio?
 
-De huidige Beschik baarheid van de regio wordt [hier](container-instances-region-availability.md#availability---general)gepubliceerd. Als u een vereiste hebt voor een bepaalde regio, neemt u contact op met de ondersteuning van Azure.
+De huidige Beschik baarheid van de regio wordt [hier](container-instances-region-availability.md)gepubliceerd. Als u een vereiste hebt voor een bepaalde regio, neemt u contact op met de ondersteuning van Azure.
 
 ## <a name="features-and-scenarios"></a>Functies en scenario's
 

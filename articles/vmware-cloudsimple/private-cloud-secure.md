@@ -8,23 +8,23 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c31ebfedeee0fe208f68c190402796b98c73ea1b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 000e43a7861bd155ebbd7175db96dd323731464b
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85829870"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518208"
 ---
 # <a name="how-to-secure-your-private-cloud-environment"></a>Uw persoonlijke cloud omgeving beveiligen
 
 Definieer op rollen gebaseerd toegangs beheer (RBAC) voor de CloudSimple-service, de CloudSimple-Portal en de Privécloud van Azure.  Gebruikers, groepen en rollen voor toegang tot de vCenter van Privécloud zijn opgegeven met VMware SSO.  
 
-## <a name="rbac-for-cloudsimple-service"></a>RBAC voor CloudSimple-service
+## <a name="azure-rbac-for-cloudsimple-service"></a>Azure RBAC voor de CloudSimple-service
 
 Voor het maken van een CloudSimple-service is de rol **Owner** of **Inzender** vereist voor het Azure-abonnement.  Standaard kunnen alle eigen aren en mede werkers een CloudSimple-service maken en toegang krijgen tot CloudSimple-portal voor het maken en beheren van privé-Clouds.  Er kan slechts één CloudSimple-service per regio worden gemaakt.  Volg de onderstaande procedure om de toegang tot specifieke beheerders te beperken.
 
 1. Een CloudSimple-service maken in een nieuwe **resource groep** op Azure Portal
-2. Geef RBAC op voor de resource groep.
+2. Geef Azure RBAC op voor de resource groep.
 3. Knoop punten kopen en dezelfde resource groep gebruiken als de CloudSimple-service
 
 Alleen de gebruikers die de rechten van de rol van **eigenaar** of **Inzender** hebben voor de resource groep, zien de CloudSimple-service en starten de CloudSimple-Portal.

@@ -3,12 +3,12 @@ title: Veelgestelde vragen-Azure Event Hubs | Microsoft Docs
 description: In dit artikel vindt u een lijst met veelgestelde vragen over Azure Event Hubs en de antwoorden hiervan.
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: 511706e0de2737feb259c0ff9529373ab8b6d026
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: c95016064ecc9bbfc091138863c8215feeec50b4
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495228"
+ms.locfileid: "92518021"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Veelgestelde vragen over Event Hubs
 
@@ -42,13 +42,13 @@ Voor meer informatie over prijs categorieën, waaronder Event Hubs Dedicated, ra
 
 Azure Event Hubs is beschikbaar in alle ondersteunde Azure-regio's. Ga voor een lijst naar de pagina [Azure-regio's](https://azure.microsoft.com/regions/) .  
 
-### <a name="can-i-use-a-single-amqp-connection-to-send-and-receive-from-multiple-event-hubs"></a>Kan ik één AMQP-verbinding gebruiken voor het verzenden en ontvangen van meerdere Event hubs?
+### <a name="can-i-use-a-single-advanced-message-queuing-protocol-amqp-connection-to-send-and-receive-from-multiple-event-hubs"></a>Kan ik een enkele Advanced Message Queueing Protocol-verbinding (AMQP) gebruiken voor het verzenden en ontvangen van meerdere Event hubs?
 
 Ja, zolang alle Event hubs zich in dezelfde naam ruimte bevinden.
 
 ### <a name="what-is-the-maximum-retention-period-for-events"></a>Wat is de maximale Bewaar periode voor gebeurtenissen?
 
-Event Hubs Standard-laag ondersteunt momenteel een maximale Bewaar periode van zeven dagen. Event hubs is niet bedoeld als een permanent gegevens archief. Bewaar perioden van meer dan 24 uur zijn bedoeld voor scenario's waarin het handig is om een gebeurtenis stroom opnieuw te spelen in dezelfde systemen. bijvoorbeeld, om een nieuw machine learning model op bestaande gegevens te trainen of te controleren. Als u na zeven dagen een Bewaar periode van berichten nodig hebt, worden de gegevens van uw Event Hub naar het opslag account of het Azure Data Lake service account van uw keuze opgehaald als [Event hubs Capture](event-hubs-capture-overview.md) op uw event hub wordt ingeschakeld. Bij het inschakelen van Capture worden er kosten in rekening gebracht op basis van uw aangeschafte doorvoer eenheden.
+Event Hubs Standard-laag ondersteunt momenteel een maximale Bewaar periode van zeven dagen. Event hubs is niet bedoeld als een permanent gegevens archief. Bewaar perioden van meer dan 24 uur zijn bedoeld voor scenario's waarin het handig is om een gebeurtenis stroom opnieuw te spelen in dezelfde systemen. Bijvoorbeeld, om een nieuw machine learning model op bestaande gegevens te trainen of te controleren. Als u na zeven dagen een Bewaar periode van berichten nodig hebt, worden de gegevens van uw Event Hub naar het opslag account of het Azure Data Lake service account van uw keuze opgehaald als [Event hubs Capture](event-hubs-capture-overview.md) op uw event hub wordt ingeschakeld. Bij het inschakelen van Capture worden er kosten in rekening gebracht op basis van uw aangeschafte doorvoer eenheden.
 
 U kunt de Bewaar periode voor de vastgelegde gegevens in uw opslag account configureren. De functie **levenscyclus beheer** van Azure Storage biedt een uitgebreid beleid op basis van regels voor algemeen gebruik v2-en Blob Storage-accounts. Gebruik het beleid om uw gegevens over te zetten naar de juiste toegangs lagen of verloopt aan het einde van de levens cyclus van de gegevens. Zie [de levens cyclus van Azure Blob-opslag beheren](../storage/blobs/storage-lifecycle-management-concepts.md)voor meer informatie. 
 
@@ -56,12 +56,12 @@ U kunt de Bewaar periode voor de vastgelegde gegevens in uw opslag account confi
 Event Hubs levert uitgebreide metrische gegevens die de status van uw resources [Azure monitor](../azure-monitor/overview.md). Ze kunnen ook de algemene status van de Event Hubs-service alleen beoordelen op het niveau van de naam ruimte, maar ook op het niveau van de entiteit. Meer informatie over welke bewaking wordt aangeboden voor [Azure Event hubs](event-hubs-metrics-azure-monitor.md).
 
 ### <a name="where-does-azure-event-hubs-store-customer-data"></a><a name="in-region-data-residency"></a>Waar worden klant gegevens opgeslagen door Azure Event Hubs?
-Klant gegevens worden opgeslagen in azure Event Hubs. Deze gegevens worden automatisch opgeslagen door Event Hubs in één regio, zodat deze service automatisch voldoet aan de locatie vereisten voor regio's, waaronder die in het [vertrouwens centrum](https://azuredatacentermap.azurewebsites.net/).
+Klant gegevens worden opgeslagen in azure Event Hubs. Deze gegevens worden automatisch opgeslagen door Event Hubs in één regio, zodat deze service automatisch voldoet aan de locatie vereisten voor de regio gegevens, inclusief de items die zijn opgegeven in het [vertrouwens centrum](https://azuredatacentermap.azurewebsites.net/).
 
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Welke poorten moet ik op de firewall openen? 
 U kunt de volgende protocollen gebruiken met Azure Service Bus voor het verzenden en ontvangen van berichten:
 
-- Advanced Message Queuing Protocol (AMQP)
+- AMQP
 - HTTP
 - Apache Kafka
 
@@ -128,12 +128,23 @@ Event Hubs biedt een Kafka-eind punt dat kan worden gebruikt door uw bestaande o
 ### <a name="what-configuration-changes-need-to-be-done-for-my-existing-application-to-talk-to-event-hubs"></a>Welke configuratie wijzigingen moeten worden uitgevoerd voor mijn bestaande toepassing om te praten met Event Hubs?
 Als u verbinding wilt maken met een Event Hub, moet u de configuratie van de Kafka-client bijwerken. Dit doet u door een Event Hubs naam ruimte te maken en de [Connection String](event-hubs-get-connection-string.md)te verkrijgen. Wijzig de Boots trap. servers om de Event Hubs FQDN en de poort te laten verwijzen naar 9093. Werk de sasl.jaas.config om de Kafka-client om te leiden naar uw Event Hubs-eind punt (dit is de connection string die u hebt verkregen), met de juiste verificatie zoals hieronder wordt weer gegeven:
 
-Boots trap. servers = {uw. Event hubs. FQDN}: 9093-aanvraag. time-out. MS = 60000 Security. Protocol = SASL_SSL sasl. mechanisme = PLAIN sasl.jaas.config= org. apache. Kafka. common. Security. Plain. PlainLoginModule vereist username = "$ConnectionString" Password = "{YOUR. Event hubs. Combi. TEKEN reeks} ";
+```properties
+bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093
+request.timeout.ms=60000
+security.protocol=SASL_SSL
+sasl.mechanism=PLAIN
+sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
+```
 
 Voorbeeld:
 
-Boots trap. servers = dummynamespace. servicebus. Windows. net: 9093 Request. time-out. MS = 60000 Security. Protocol = SASL_SSL sasl. mechanisme = PLAIN sasl.jaas.config= org. apache. Kafka. common. Security. Plain. PlainLoginModule vereist username = "$ConnectionString" Password = "endpoint = SB://dummynamespace.servicebus.Windows.net/; SharedAccessKeyName = DummyAccessKeyName; SharedAccessKey = XXXXXXXXXXXXXXXXXXXXX ";
-
+```properties
+bootstrap.servers=dummynamespace.servicebus.windows.net:9093
+request.timeout.ms=60000
+security.protocol=SASL_SSL
+sasl.mechanism=PLAIN
+sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://dummynamespace.servicebus.windows.net/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=XXXXXXXXXXXXXXXXXXXXX";
+```
 Opmerking: als sasl.jaas.config geen ondersteunde configuratie in uw Framework is, zoekt u de configuraties die worden gebruikt om de gebruikers naam en het wacht woord van SASL in te stellen en gebruikt u deze in plaats daarvan. Stel de gebruikers naam in op $ConnectionString en het wacht woord voor uw Event Hubs connection string.
 
 ### <a name="what-is-the-messageevent-size-for-event-hubs"></a>Wat is de bericht/gebeurtenis grootte voor Event Hubs?
@@ -259,9 +270,9 @@ Voor meer informatie over onze SLA gaat u naar de pagina [Service Level Agreemen
 ## <a name="azure-stack-hub"></a>Azure Stack Hub
 
 ### <a name="how-can-i-target-a-specific-version-of-azure-storage-sdk-when-using-azure-blob-storage-as-a-checkpoint-store"></a>Hoe kan ik een specifieke versie van Azure Storage SDK richten bij het gebruik van Azure Blob Storage als controlepunt opslag?
-Als u deze code op Azure Stack Hub uitvoert, treden er runtimefouten op tenzij u zich richt op een specifieke versie van de Storage-API. Dat komt doordat de Event Hubs-SDK de meest recente Azure Storage-API gebruikt die beschikbaar is in Azure maar die niet beschikbaar is op uw Azure Stack Hub-platform. Azure Stack Hub biedt mogelijk ondersteuning voor een andere versie van de Storage Blob-SDK dan de versies die doorgaans in Azure beschikbaar zijn. Als u Azure Blob-opslag gebruikt als controlepuntopslag, controleert u de [ondersteunde versie van de Azure Storage-API voor uw build van Azure Stack Hub](/azure-stack/user/azure-stack-acs-differences?#api-version) en stelt u die versie in uw code als doel in. 
+Als u deze code op Azure Stack Hub uitvoert, treden er runtimefouten op tenzij u zich richt op een specifieke versie van de Storage-API. Dat komt doordat de Event Hubs-SDK de meest recente Azure Storage-API gebruikt die beschikbaar is in Azure maar die niet beschikbaar is op uw Azure Stack Hub-platform. Azure Stack hub ondersteunt mogelijk een andere versie van de Storage BLOB SDK dan die meestal beschikbaar is in Azure. Als u Azure Blob-opslag gebruikt als controlepuntopslag, controleert u de [ondersteunde versie van de Azure Storage-API voor uw build van Azure Stack Hub](/azure-stack/user/azure-stack-acs-differences?#api-version) en stelt u die versie in uw code als doel in. 
 
-Als u bijvoorbeeld op Azure Stack Hub versie 2005 uitvoert, is de hoogste beschikbare versie van de Storage-service versie 2019-02-02. De Event Hubs-SDK-clientbibliotheek maakt standaard gebruik van de hoogste beschikbare versie op Azure (2019-07-07 op het moment van de release van de SDK). In dit geval moet u naast de volgende stappen in deze sectie ook code toevoegen om de API-versie van de Storage-service te richten op 2019-02-02. Zie de volgende voor beelden voor C#, Java, python en Java script/type script voor een voor beeld van het richten op een specifieke opslag-API-versie.  
+Als u bijvoorbeeld werkt met Azure Stack hub versie 2005, is de hoogste beschik bare versie van de opslag service versie 2019-02-02. De Event Hubs-SDK-clientbibliotheek maakt standaard gebruik van de hoogste beschikbare versie op Azure (2019-07-07 op het moment van de release van de SDK). In dit geval moet u naast de volgende stappen in deze sectie ook code toevoegen om de API-versie van de Storage-service te richten op 2019-02-02. Zie de volgende voor beelden voor C#, Java, python en Java script/type script voor een voor beeld van het richten op een specifieke opslag-API-versie.  
 
 Zie de volgende voor beelden op GitHub voor een voor beeld van het richten op een specifieke opslag-API-versie van uw code: 
 

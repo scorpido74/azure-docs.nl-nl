@@ -3,12 +3,12 @@ title: Een nood herstel van virtuele machines volt ooien
 description: In dit artikel wordt beschreven hoe u een nood herstel van virtuele machines kunt uitvoeren met behulp van de Azure VMware-oplossing
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 2ccb6546b9b01255e4a28aed79fd0d3ccbc4516c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3608243600eb5d00dcfe10db5bc6b907ecb9aee8
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91579860"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92508431"
 ---
 # <a name="complete-a-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>Een nood herstel van virtuele machines met Azure VMware-oplossing volt ooien
 
@@ -20,7 +20,7 @@ VMware HCX biedt verschillende bewerkingen die nauw keurig en nauw keuriger kunn
 
 - **Pause** : onderbreek het huidige replicatie beleid dat is gekoppeld aan de geselecteerde VM.
 
-- **Hervatten** : Hiermee wordt het huidige replicatie beleid dat is gekoppeld aan de geselecteerde VM, onderbroken.
+- **Hervatten** : hervat het huidige replicatie beleid dat is gekoppeld aan de geselecteerde VM.
 
 - **Verwijder** -Verwijder het huidige replicatie beleid dat is gekoppeld aan de geselecteerde VM.
 

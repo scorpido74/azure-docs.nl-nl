@@ -3,18 +3,18 @@ title: Verificatie en autorisatie Azure Service Bus | Microsoft Docs
 description: Verifieer apps om te Service Bus met de verificatie van Shared Access Signature (SAS).
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: d5d0ed03c869bd574e4cfaa52ac7b62e8cb7fb98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a71cef6aad973f3c39ef61a8dbab313ebfca44ef
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88066858"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517277"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Vereenvoudigde Service Bus-verificatie en -autorisatie
 Er zijn twee manieren om toegang tot Azure Service Bus-resources te verifiëren en te autoriseren: Azure activity Directory (Azure AD) en Shared Access signatures (SAS). In dit artikel vindt u informatie over het gebruik van deze twee typen beveiligings mechanismen. 
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
-Azure AD-integratie voor Service Bus resources biedt op rollen gebaseerd toegangs beheer (RBAC) voor nauw keurige controle over de toegang van een client tot resources. U kunt op rollen gebaseerd toegangs beheer (RBAC) gebruiken om machtigingen te verlenen aan een beveiligingsprincipal, die een gebruiker, een groep of een Application Service-Principal kan zijn. De beveiligingsprincipal wordt door Azure AD geverifieerd om een OAuth 2,0-token te retour neren. Het token kan worden gebruikt voor het autoriseren van een aanvraag voor toegang tot een Service Bus resource (wachtrij, onderwerp, enz.).
+Azure AD-integratie voor Service Bus resources biedt op rollen gebaseerd toegangs beheer van Azure (Azure RBAC) voor een nauw keurige controle over de toegang van een client tot resources. U kunt Azure RBAC gebruiken om machtigingen toe te kennen aan een beveiligingsprincipal, die een gebruiker, een groep of een Application Service-Principal kan zijn. De beveiligingsprincipal wordt door Azure AD geverifieerd om een OAuth 2,0-token te retour neren. Het token kan worden gebruikt voor het autoriseren van een aanvraag voor toegang tot een Service Bus resource (wachtrij, onderwerp, enz.).
 
 Raadpleeg de volgende artikelen voor meer informatie over verificatie met Azure AD:
 

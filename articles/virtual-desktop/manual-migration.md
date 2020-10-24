@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 74527f57340f850b60dd00dcd054992c423a49c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd292fa6b4f613e0a5f5a80e0cd87675f529baf5
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90039049"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516168"
 ---
 # <a name="migrate-manually-from-windows-virtual-desktop-classic"></a>Hand matig migreren van virtueel bureau blad van Windows (klassiek)
 
@@ -35,7 +35,7 @@ Ondanks de gedoe is het migreren van de klassieke versie nog steeds belang rijk.
 - Virtueel bureau blad van Windows beheren via de Azure Portal.
 - Wijs Azure Active Directory (AD)-gebruikers groepen toe aan toepassings groepen.
 - Gebruik de verbeterde functie Log Analytics om problemen met uw implementatie op te lossen.
-- Gebruik Azure-systeem eigen Role-Based toegangs beheer om beheerders toegang te beheren.
+- Gebruik Azure-systeem eigen op rollen gebaseerd toegangs beheer (Azure RBAC) voor het beheren van beheerders toegang.
 
 ## <a name="when-should-i-migrate"></a>Wanneer moet ik migreren?
 

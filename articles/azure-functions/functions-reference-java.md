@@ -4,12 +4,12 @@ description: Meer informatie over het ontwikkelen van functies met Java.
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java
-ms.openlocfilehash: 346dbb962e05519153537e3edb90763f5fd8da03
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 2dfd00484e84f4b2c31e52392df43bb07a800f73
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996503"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519619"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java-ontwikkelaars handleiding
 
@@ -134,8 +134,6 @@ Dit is de gegenereerde corresponderende `function.json` met de [Azure-functions-
 
 ## <a name="java-versions"></a>Java-versies
 
-_Ondersteuning voor Java 11 is momenteel beschikbaar als preview-versie_
-
 De versie van Java die wordt gebruikt bij het maken van de functie-app waarop functies in Azure worden uitgevoerd, wordt opgegeven in het pom.xml-bestand. De Maven archetype genereert momenteel een pom.xml voor Java 8, die u kunt wijzigen voordat u publiceert. De Java-versie in pom.xml moet overeenkomen met de versie waarop u uw app lokaal hebt ontwikkeld en getest. 
 
 ### <a name="supported-versions"></a>Ondersteunde versies
@@ -144,14 +142,14 @@ In de volgende tabel ziet u de huidige ondersteunde Java-versies voor elke prima
 
 | Functie versie | Java-versies (Windows) | Java-versies (Linux) |
 | ----- | ----- | --- |
-| 3.x | 11 (preview-versie)<br/>8 | 11 (preview-versie)<br/>8 |
+| 3.x | 11 <br/>8 | 11 <br/>8 |
 | 2.x | 8 | n.v.t. |
 
 Tenzij u een Java-versie voor uw implementatie opgeeft, wordt de Maven-archetype standaard ingesteld op Java 8 tijdens de implementatie naar Azure.
 
 ### <a name="specify-the-deployment-version"></a>De implementatie versie opgeven
 
-U kunt de versie van Java beheren die is gericht op de Maven-archetype met behulp van de `-DjavaVersion` para meter. De waarde van deze para meter kan `8` of zijn `11` . Java 11-ondersteuning is momenteel beschikbaar als preview-versie. 
+U kunt de versie van Java beheren die is gericht op de Maven-archetype met behulp van de `-DjavaVersion` para meter. De waarde van deze para meter kan `8` of zijn `11` . 
 
 De Maven archetype genereert een pom.xml dat de opgegeven Java-versie als doel heeft. De volgende elementen in pom.xml geven aan welke Java-versie moet worden gebruikt:
 
@@ -212,7 +210,7 @@ Gebruik het [tabblad toepassings instellingen](functions-how-to-use-azure-functi
 
 U kunt de opdracht [AZ functionapp config appSettings set](/cli/azure/functionapp/config/appsettings) gebruiken om in te stellen `JAVA_OPTS` , zoals in het volgende voor beeld:
 
-#### <a name="consumption-plan"></a>[Verbruiks abonnement](#tab/consumption)
+#### <a name="consumption-plan"></a>[Verbruiksabonnement](#tab/consumption)
 ```azurecli-interactive
 az functionapp config appsettings set \
 --settings "JAVA_OPTS=-Djava.awt.headless=true" \
@@ -506,7 +504,7 @@ public class Function {
 Raadpleeg de volgende bronnen voor meer informatie over het ontwikkelen van Java Azure Functions:
 
 * [Aanbevolen procedures voor Azure Functions](functions-best-practices.md)
-* [Naslag informatie voor Azure Functions ontwikkel aars](functions-reference.md)
+* [Naslaginformatie over Azure Functions voor ontwikkelaars](functions-reference.md)
 * [Azure Functions-triggers en -bindingen](functions-triggers-bindings.md)
 * Lokale ontwikkeling en fout opsporing met [Visual Studio code](https://code.visualstudio.com/docs/java/java-azurefunctions), [IntelliJ](functions-create-maven-intellij.md)en [eclips](functions-create-maven-eclipse.md)
 * [Java-functies voor fout opsporing op afstand met Visual Studio code](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)

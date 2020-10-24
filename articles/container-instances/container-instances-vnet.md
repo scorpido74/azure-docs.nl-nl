@@ -4,12 +4,12 @@ description: Meer informatie over hoe u een container groep implementeert in een
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: e5a31742956c2ba9bd15026f7667c971c20694a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8f61bc74f79c1712c3c662be66384c5ef689eb7
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91303005"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518123"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Containerinstanties implementeren in een virtueel Azure-netwerk
 
@@ -40,7 +40,7 @@ Wanneer u uw eerste container groep met deze methode hebt geïmplementeerd, kunt
 
 ### <a name="example"></a>Voorbeeld
 
-Met de volgende opdracht [AZ container Create][az-container-create] worden de instellingen voor een nieuw virtueel netwerk en subnet opgegeven. Geef de naam op van een resource groep die is gemaakt in een regio waarin implementaties van container groepen in een virtueel netwerk [beschikbaar](container-instances-region-availability.md#availability---virtual-network-deployment)zijn. Met deze opdracht wordt de open bare container micro soft [ACI-HelloWorld][aci-helloworld] met een kleine Node.js webserver met een statische webpagina geïmplementeerd. In de volgende sectie implementeert u een tweede container groep naar hetzelfde subnet en test u de communicatie tussen de twee container exemplaren.
+Met de volgende opdracht [AZ container Create][az-container-create] worden de instellingen voor een nieuw virtueel netwerk en subnet opgegeven. Geef de naam op van een resource groep die is gemaakt in een regio waarin implementaties van container groepen in een virtueel netwerk [beschikbaar](container-instances-region-availability.md)zijn. Met deze opdracht wordt de open bare container micro soft [ACI-HelloWorld][aci-helloworld] met een kleine Node.js webserver met een statische webpagina geïmplementeerd. In de volgende sectie implementeert u een tweede container groep naar hetzelfde subnet en test u de communicatie tussen de twee container exemplaren.
 
 ```azurecli
 az container create \

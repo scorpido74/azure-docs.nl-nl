@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: b1a88398d657e6bc242c7db12f3c0ddc1af828ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a585fa1c3c56d285859171e6b5673fe57beffb3
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935854"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517318"
 ---
 # <a name="indexing-documents-in-azure-data-lake-storage-gen2"></a>Documenten indexeren in Azure Data Lake Storage Gen2
 
@@ -44,7 +44,7 @@ Het indexeren van inhoud in Data Lake Storage Gen2 is identiek aan het indexeren
 
 ## <a name="access-control"></a>Toegangsbeheer
 
-Azure Data Lake Storage Gen2 implementeert een [model voor toegangs beheer](../storage/blobs/data-lake-storage-access-control.md) dat zowel op rollen gebaseerd toegangs beheer (Azure RBAC) als POSIX-achtige acl's (toegangs beheer lijsten) ondersteunt. Wanneer u inhoud indexeert vanuit Data Lake Storage Gen2, haalt Azure Cognitive Search de RBAC-en ACL-gegevens niet uit de inhoud. Als gevolg hiervan worden deze gegevens niet opgenomen in uw Azure Cognitive Search-index.
+Azure Data Lake Storage Gen2 implementeert een [model voor toegangs beheer](../storage/blobs/data-lake-storage-access-control.md) dat zowel op rollen gebaseerd toegangs beheer (Azure RBAC) als POSIX-achtige acl's (toegangs beheer lijsten) ondersteunt. Wanneer u inhoud indexeert vanaf Data Lake Storage Gen2, haalt Azure Cognitive Search de Azure RBAC-en ACL-gegevens niet uit de inhoud. Als gevolg hiervan worden deze gegevens niet opgenomen in uw Azure Cognitive Search-index.
 
 Als het beheren van toegangs beheer voor elk document in de index belang rijk is, is het aan de ontwikkelaar van de toepassing om [beveiligings beperking](./search-security-trimming-for-azure-search.md)te implementeren.
 

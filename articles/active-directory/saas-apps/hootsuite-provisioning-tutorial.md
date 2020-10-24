@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 82cd39fdefef477e3761d8d7ab771301cea962e2
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b81dfec5e8ee828fba202f14967a4583bde32ed3
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92443219"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503756"
 ---
 # <a name="tutorial-configure-hootsuite-for-automatic-user-provisioning"></a>Zelf studie: HootSuite configureren voor automatische gebruikers inrichting
 
@@ -35,7 +35,7 @@ In deze zelf studie worden de stappen beschreven die u moet uitvoeren in zowel H
 In het scenario dat in deze zelfstudie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
 
 * [Een Azure AD-Tenant](../develop/quickstart-create-new-tenant.md) 
-* Een gebruikersaccount in Azure AD met [machtigingen](../users-groups-roles/directory-assign-admin-roles.md) voor het configureren van inrichting (bijvoorbeeld toepassingsbeheerder, cloud-toepassingsbeheerder, toepassingseigenaar of globale beheerder). 
+* Een gebruikers account in azure AD met [toestemming](../users-groups-roles/directory-assign-admin-roles.md) voor het configureren van inrichting (bijvoorbeeld toepassings beheerder, Cloud toepassings beheerder, eigenaar van de toepassing of globale beheerder). 
 * Een gebruikers account met [HootSuite](http://www.hootsuite.com/) die machtigingen voor **leden beheren** heeft voor de organisatie.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Stap 1. Implementatie van de inrichting plannen
@@ -108,18 +108,30 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
    |displayName|Tekenreeks|
    |preferredLanguage|Tekenreeks|
    |timezone|Tekenreeks|
-   |urn: IETF: params: scim: schemas: extensie: HootSuite: 2.0: gebruiker: organizationIds|Tekenreeks|
-   |urn: IETF: params: scim: schemas: extensie: HootSuite: 2.0: gebruiker: teamIds|Tekenreeks|
+   |name.givenName|Tekenreeks|
+   |name.familyName|Tekenreeks|
 
-10. Als u de Azure AD-inrichtings service voor **HootSuite wilt inschakelen, wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
+10. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groepen synchroniseren**.
+
+11. Controleer de groeps kenmerken die zijn gesynchroniseerd vanuit Azure AD naar HootSuite in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen, worden gebruikt om de groepen in HootSuite te vergelijken voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
+
+      |Kenmerk|Type|
+      |---|---|
+      |displayName|Tekenreeks|
+      |externalId|Tekenreeks|
+      |leden|Naslaginformatie|
+
+12. Als u bereikfilters wilt configureren, raadpleegt u de volgende instructies in de [zelfstudie Bereikfilter](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+
+13. Als u de Azure AD-inrichtings service voor **HootSuite wilt inschakelen, wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
 
     ![Inrichtingsstatus ingeschakeld](common/provisioning-toggle-on.png)
 
-11. Definieer de gebruikers en/of groepen die u wilt inrichten voor HootSuite door de gewenste waarden in het **bereik** te kiezen in de sectie **instellingen** .
+14. Definieer de gebruikers en/of groepen die u wilt inrichten voor HootSuite door de gewenste waarden in het **bereik** te kiezen in de sectie **instellingen** .
 
     ![Inrichtingsbereik](common/provisioning-scope.png)
 
-12. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
+15. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
 
     ![Inrichtingsconfiguratie opslaan](common/provisioning-configuration-save.png)
 
@@ -132,6 +144,10 @@ Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende resources om u
 * Controleer de [voortgangsbalk](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) om de status van de inrichtingscyclus weer te geven en te zien of deze al bijna is voltooid
 * Als het configureren van de inrichting een foutieve status lijkt te hebben, wordt de toepassing in quarantaine geplaatst. [Klik hier](../app-provisioning/application-provisioning-quarantine-status.md) voor meer informatie over quarantainestatussen.  
 
+## <a name="change-log"></a>Wijzigingenlogboek
+
+* 10/22/2020-ondersteuning toegevoegd voor gebruikers kenmerken ' name. naam ' en ' name. familie naam '. Aangepaste extensie kenmerken ' organizationIds ' en ' teamIds ' zijn verwijderd voor gebruikers.
+Er is ondersteuning toegevoegd voor groeps kenmerken ' displayName ', ' members ' en ' externalId '.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 

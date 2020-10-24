@@ -4,15 +4,15 @@ description: Meer informatie over het configureren en optimaliseren van de met I
 author: vermagit
 ms.service: virtual-machines
 ms.topic: article
-ms.date: 08/07/2020
+ms.date: 10/23/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 9ecfe1df273834ae38bd6bb94980444f5e34f786
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: a1bfb5988169ba79a6e3e8416804d7d4c896c758
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994821"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516847"
 ---
 # <a name="configure-and-optimize-vms"></a>VM's configureren en optimaliseren
 
@@ -36,11 +36,24 @@ Voor [RDMA-compatibele](../../sizes-hpc.md#rdma-capable-instances), op SR-IOV ge
   Voor met SR-IOV ingeschakelde [RDMA-compatibele vm's](../../sizes-hpc.md#rdma-capable-instances), [CentOS-HPC-versie 7,6 of een latere](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557) versie van VM-installatie kopieën in de Marketplace, zijn geschikt. Deze VM-installatie kopieën worden geoptimaliseerd en vooraf geladen met de OFED-Stuur Programma's voor RDMA en verschillende veelgebruikte MPI-bibliotheken en weten schappelijke computing pakketten. Dit is de eenvoudigste manier om aan de slag te gaan.
 
   Voor beeld van scripts die worden gebruikt bij het maken van de VM-installatie kopieën CentOS-HPC versie 7,6 en hoger van een basis installatie kopie voor CentOS Marketplace, vindt u op de [azhpc-images opslag plaats](https://github.com/Azure/azhpc-images/tree/master/centos).
+  
+  > [!NOTE] 
+  > De nieuwste Azure HPC Marketplace-installatie kopieën hebben Mellanox OFED 5,1 en hoger, die geen ondersteuning bieden voor ConnectX3-Pro InfiniBand-kaarten. Met SR-IOV ingeschakelde VM-grootten van N-serie met FDR InfiniBand (bijvoorbeeld NCv3) kunnen de volgende CentOS van de HPC-VM-installatie kopie worden gebruikt, of ouder:
+  >- Open Logic: CentOS-HPC: 7,6:7.6.2020062900
+  >- Open Logic: CentOS-HPC: 7_6gen2:7.6.2020062901
+  >- Open Logic: CentOS-HPC: 7,7:7.7.2020062600
+  >- Open Logic: CentOS-HPC: 7_7-Gen2:7.7.2020062601
+  >- Open Logic: CentOS-HPC: 8_1:8.1.2020062400
+  >- Open Logic: CentOS-HPC: 8_1-Gen2:8.1.2020062401
+
 
 ### <a name="rhelcentos-vm-images"></a>VM-installatie kopieën van RHEL/CentOS
 Installatie kopieën op basis van niet-HPC-RHEL of CentOS op de Marketplace kunnen worden geconfigureerd voor gebruik op [virtuele machines met RDMA-functionaliteit](../../sizes-hpc.md#rdma-capable-instances)voor SR-IOV. Meer informatie over het [inschakelen van Infiniband](enable-infiniband.md) en het instellen van [mpi](setup-mpi.md) op de vm's.
 
   Voor beeld van scripts die worden gebruikt bij het maken van de VM-installatie kopieën CentOS-HPC versie 7,6 en hoger van een basis installatie kopie voor CentOS Marketplace, vindt u op de [azhpc-images opslag plaats](https://github.com/Azure/azhpc-images/tree/master/centos).
+  
+  > [!NOTE]
+  > Mellanox OFED 5,1 en hoger bieden geen ondersteuning voor ConnectX3-Pro InfiniBand-kaarten op SR-IOV waarvoor VM-grootten van N-serie zijn ingeschakeld met FDR InfiniBand (bijvoorbeeld NCv3). Gebruik LTS Mellanox OFED versie 4.9-0.1.7.0 of ouder op de virtuele machines uit de N-serie met ConnectX3-Pro kaarten. Lees [hier](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed)meer informatie.
 
 ### <a name="ubuntu-vm-images"></a>Ubuntu VM-installatie kopieën
 Ubuntu Server 16,04 LTS, 18,04 LTS en 20,04 LTS VM-installatie kopieën in de Marketplace worden ondersteund voor [virtuele machines](../../sizes-hpc.md#rdma-capable-instances)met SR-IOV en niet-SR-IOV-ondersteuning. Meer informatie over het [inschakelen van Infiniband](enable-infiniband.md) en het instellen van [mpi](setup-mpi.md) op de vm's.

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 60c5051b403d3072292a03c60d7cba95bd0cf1d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 918ba128eca8ebf8b452c0f1126e4b7e611542d8
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91740629"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514466"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>API-sleutels voor een Azure Cognitive Search-service maken en beheren
 
@@ -95,6 +95,6 @@ Leden van de volgende rollen kunnen sleutels weer geven en opnieuw genereren: ei
 
 ## <a name="see-also"></a>Zie ook
 
-+ [Toegangs beheer op basis van rollen in azure Cognitive Search](search-security-rbac.md)
++ [Toegangs beheer op basis van rollen in Azure in azure Cognitive Search](search-security-rbac.md)
 + [Beheren met PowerShell](search-manage-powershell.md) 
 + [Artikel over prestaties en optimalisatie](search-performance-optimization.md)

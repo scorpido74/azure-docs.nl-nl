@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: def394369ebcb8b457d78ad6537830487e8049f7
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 6fd20cd9e3172d6ce80d2c18c2cfa41fcc044929
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277506"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92508026"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Wat is een privé-eindpunt van Azure?
 
@@ -133,15 +133,16 @@ De volgende tabel bevat een lijst met bekende beperkingen bij het gebruik van pr
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Een persoonlijk eind punt maken voor SQL Database met behulp van portal ](create-private-endpoint-portal.md)
-- [Een persoonlijk eind punt maken voor SQL Database met behulp van Power shell ](create-private-endpoint-powershell.md)
-- [Een persoonlijk eind punt maken voor SQL Database met CLI ](create-private-endpoint-cli.md)
-- [Een persoonlijk eind punt maken voor opslag account met behulp van portal ](create-private-endpoint-storage-portal.md)
-- [Een persoonlijk eind punt voor Azure Cosmos-account maken met behulp van portal ](../cosmos-db/how-to-configure-private-endpoints.md)
+- [Een persoonlijk eind punt maken voor SQL Database met behulp van de portal](create-private-endpoint-portal.md)
+- [Een persoonlijk eind punt maken voor SQL Database met behulp van Power shell](create-private-endpoint-powershell.md)
+- [Een persoonlijk eind punt maken voor SQL Database met CLI](create-private-endpoint-cli.md)
+- [Een persoonlijk eind punt voor het opslag account maken met behulp van de portal](create-private-endpoint-storage-portal.md)
+- [Een persoonlijk eind punt voor Azure Cosmos-account maken met behulp van de portal](../cosmos-db/how-to-configure-private-endpoints.md)
 - [Uw eigen persoonlijke koppelings service maken met behulp van Azure PowerShell](create-private-link-service-powershell.md)
-- [Uw eigen persoonlijke koppeling maken voor Azure Database for PostgreSQL-één server met behulp van portal](../postgresql/howto-configure-privatelink-portal.md)
+- [Uw eigen persoonlijke koppeling maken voor Azure Database for PostgreSQL-één server met behulp van de portal](../postgresql/howto-configure-privatelink-portal.md)
 - [Uw eigen persoonlijke koppeling maken voor Azure Database for PostgreSQL-één server met behulp van CLI](../postgresql/howto-configure-privatelink-cli.md)
 - [Uw eigen persoonlijke koppeling maken voor Azure Database for MySQL met behulp van de portal](../mysql/howto-configure-privatelink-portal.md)
 - [Uw eigen persoonlijke koppeling maken voor Azure Database for MySQL met behulp van CLI](../mysql/howto-configure-privatelink-cli.md)
 - [Uw eigen persoonlijke koppeling maken voor Azure Database for MariaDB met behulp van de portal](../mariadb/howto-configure-privatelink-portal.md)
 - [Uw eigen persoonlijke koppeling maken voor Azure Database for MariaDB met behulp van CLI](../mariadb/howto-configure-privatelink-cli.md)
+- [Uw eigen persoonlijke koppeling maken voor Azure Key Vault met behulp van de portal en CLI](../key-vault/general/private-link-service.md)

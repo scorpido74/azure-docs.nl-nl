@@ -13,12 +13,12 @@ ms.date: 05/22/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 095bc5594cf9b6eaf0df7929ea83c25a401793e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 320debcf2b744e949faf7b29dd72ed334fe0feea
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86252110"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503722"
 ---
 # <a name="authentication-vs-authorization"></a>Verificatie versus autorisatie
 
@@ -35,6 +35,8 @@ In dit artikel worden verificatie en autorisatie gedefinieerd en wordt kort besc
 ## <a name="authentication-and-authorization-using-microsoft-identity-platform"></a>Verificatie en autorisatie met behulp van micro soft Identity platform
 
 In plaats van apps te maken die elk eigen gebruikers naam en wacht woord behouden, waardoor een hoge administratieve belasting optreedt wanneer u gebruikers wilt toevoegen aan of verwijderen uit meerdere apps, kunnen apps die verantwoordelijkheid delegeren aan een gecentraliseerde ID-provider.
+
+> [!VIDEO https://www.youtube.com/embed/tkQJSHFsduY]
 
 Azure Active Directory (Azure AD) is een gecentraliseerde ID-provider in de Cloud. Door de verificatie en autorisatie te delegeren, worden scenario's zoals beleids regels voor voorwaardelijke toegang die een gebruiker in een specifieke locatie vereisen, het gebruik van [multi-factor Authentication](../authentication/concept-mfa-howitworks.md) (ook wel twee ledige authenticatie of twee ledige genoemd), en wordt een gebruiker in staat gesteld om zich eenmaal aan te melden bij alle web-apps die dezelfde gecentraliseerde map delen. Deze mogelijkheid wordt **eenmalige aanmelding (SSO)** genoemd.
 

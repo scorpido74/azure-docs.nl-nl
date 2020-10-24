@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 338fe463cec4c44b1ddf019d9ecb435736e46826
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f6786ad8b7a9a635770be378e3efd0716be2428
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91816828"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519653"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure automanage voor virtuele machines
 
@@ -58,7 +58,7 @@ Het is ook belang rijk te weten dat automanage alleen virtuele Windows-machines 
 
 Zie [Azure automanage voor virtual machines best practices](virtual-machines-best-practices.md) voor de volledige lijst met deelnemende Azure-Services, evenals hun ondersteunde configuratie profielen.
 
- U wordt automatisch geadviseerd voor deze deelnemende Services. Ze zijn essentieel voor het technische document van best practices, dat u kunt vinden in ons [Cloud adoptie Framework](https://docs.microsoft.com/azure/cloud-adoption-framework/manage/azure-server-management).
+ U wordt automatisch geadviseerd voor deze deelnemende Services. Ze zijn essentieel voor het technische document van best practices, dat u kunt vinden in ons [Cloud adoptie Framework](/azure/cloud-adoption-framework/manage/azure-server-management).
 
 Voor al deze services worden automatisch de voor-en onderhouds-en berekenings-en berekenings-en herstel bewerking voor het detecteren van drift gedetecteerd.
 

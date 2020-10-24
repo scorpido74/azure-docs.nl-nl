@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: how-to
-ms.date: 04/01/2018
+ms.date: 10/23/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bba8a0898c11cf1af150f4824d9bef5e9e03576e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: bd4d42e1cafa58aaf6a47188c9e86c24ac175047
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370879"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514386"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Een onlangs verwijderde gebruiker herstellen of verwijderen met Azure Active Directory
-Nadat u een gebruiker hebt verwijderd, blijft het account gedurende 30 dagen in een suspend-status. Tijdens deze periode van 30 dagen kan het gebruikers account worden hersteld, samen met alle eigenschappen. Nadat het venster van 30 dagen is verstreken, wordt de gebruiker automatisch en permanent verwijderd.
+Nadat u een gebruiker hebt verwijderd, blijft het account gedurende 30 dagen in een suspend-status. Tijdens deze periode van 30 dagen kan het gebruikers account worden hersteld, samen met alle eigenschappen. Nadat deze periode van 30 dagen is verstreken, wordt het permanente verwijderings proces automatisch gestart.
 
 U kunt uw herstelbare gebruikers weer geven, een verwijderde gebruiker herstellen of een gebruiker permanent verwijderen met Azure Active Directory (Azure AD) in de Azure Portal.
 
@@ -80,7 +80,7 @@ U kunt een gebruiker permanent verwijderen uit uw organisatie zonder de 30 dagen
     ![Gebruikers-pagina verwijderde gebruikers, met de optie gebruiker verwijderen gemarkeerd](media/active-directory-users-restore/users-deleted-users-permanent-delete-user.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-Nadat u uw gebruikers hebt hersteld of verwijderd, kunt u de volgende basis processen uitvoeren:
+Nadat u uw gebruikers hebt teruggezet of verwijderd, kunt u het volgende doen:
 
 - [Gebruikers toevoegen of verwijderen](add-users-azure-active-directory.md)
 

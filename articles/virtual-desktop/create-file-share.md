@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 583384d6f0ec71dc724868db61ee07ead7269607
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aad5ebaf7eef5b404f7849b79694facf1efd01b4
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91287318"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519436"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Een profiel container maken met Azure Files en AD DS
 
@@ -54,7 +54,7 @@ Vervolgens moet u een Azure-bestands share maken.
 
 Een bestandsshare maken:
 
-1. Selecteer **Ga naar resource**.
+1. Selecteer **Naar resource**.
 
 2. Selecteer op de pagina Overzicht **Bestandsshares**.
 
@@ -86,7 +86,7 @@ Als u machtigingen op share niveau wilt configureren, wijst u aan elke gebruiker
 >[!NOTE]
 >De accounts of groepen waaraan u machtigingen toewijst, moeten zijn gemaakt in het domein en zijn gesynchroniseerd met Azure AD. Accounts die zijn gemaakt in Azure AD werken niet.
 
-Machtigingen voor op rollen gebaseerde toegangs beheer (RBAC) toewijzen:
+Machtigingen voor Azure op rollen gebaseerde toegangs beheer (Azure RBAC) toewijzen:
 
 1. Open Azure Portal.
 
@@ -106,7 +106,7 @@ Machtigingen voor op rollen gebaseerde toegangs beheer (RBAC) toewijzen:
 
 ## <a name="assign-users-permissions-on-the-azure-file-share"></a>Gebruikers machtigingen toewijzen aan de Azure-bestands share
 
-Zodra u RBAC-machtigingen hebt toegewezen aan uw gebruikers, moet u de NTFS-machtigingen configureren.
+Zodra u Azure RBAC-machtigingen hebt toegewezen aan uw gebruikers, moet u de NTFS-machtigingen configureren.
 
 U hebt twee dingen van de Azure Portal nodig om aan de slag te gaan:
 

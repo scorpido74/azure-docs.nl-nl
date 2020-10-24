@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: 38986c3f93856981e903ae93ed7788ae01fc6d5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea8881adf39a315df7746dbce14dedcbee18ccf6
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91823589"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521047"
 ---
 # <a name="unpivot-transformation-in-mapping-data-flow"></a>Draai tabel transformatie bij toewijzing van gegevens stroom
 
@@ -28,27 +28,27 @@ Gebruik UNPIVOT in ADF-toewijzings gegevens stroom als een manier om een ongebru
 
 ![Draai tabel transformatie](media/data-flow/unpivot5.png "Draai tabel opties 2")
 
-Stel eerst de kolommen in waarop u wilt groeperen voor de aggregatie van de draai tabel. Stel een of meer kolommen in voor het opheffen van de groep met het plus teken naast de kolom lijst.
+Stel eerst de kolommen in waarop u de groepering wilt opheffen voor uw aggregatie van de draai tabel. Stel een of meer kolommen in voor het opheffen van de groep met het plus teken naast de kolom lijst.
 
 ## <a name="unpivot-key"></a>Depivot-sleutel
 
 ![Draai tabel transformatie](media/data-flow/unpivot6.png "Draai tabel opties 3")
 
-De Pivot-toets is de kolom die ADF van rij naar kolom draait. Standaard wordt elke unieke waarde in de gegevensset voor dit veld naar een kolom gedraaid. U kunt eventueel ook de waarden opgeven uit de gegevensset die u wilt draaien naar kolom waarden.
+De depivot-sleutel is de kolom die ADF van kolom naar rij wordt gedraaid. Standaard wordt elke unieke waarde in de gegevensset voor dit veld naar een rij gedraaid. U kunt eventueel ook de waarden opgeven uit de gegevensset die u wilt draaien naar rijgegevens.
 
 ## <a name="unpivoted-columns"></a>Niet-gedraaide kolommen
 
 ![Draai tabel transformatie](media/data-flow//unpivot7.png "Draai tabel opties 4")
 
-Kies ten slotte de aggregatie die u wilt gebruiken voor de gedraaide waarden en hoe u wilt dat de kolommen worden weer gegeven in de nieuwe uitvoer projectie van de trans formatie.
+Kies ten slotte de kolom naam voor het opslaan van de waarden voor niet-gedraaide kolommen die worden omgezet in rijen.
 
-Beschrijving U kunt een naamgevings patroon met een voor voegsel, Midden en achtervoegsel instellen dat moet worden toegevoegd aan elke nieuwe kolom naam uit de rijwaarden.
+Beschrijving U kunt rijen met Null-waarden verwijderen.
 
-Bijvoorbeeld: het draaien van ' verkoop ' op ' regio ' zou u alleen nieuwe kolom waarden van elke verkoop waarde geven. Bijvoorbeeld: ' 25 ', ' 50 ', ' 1000 ',... Als u echter de waarde voor voor voegsel van ' verkoop ' instelt, wordt ' omzet ' voorafgegaan door de waarden.
+Bijvoorbeeld: SumCost is de kolom naam die u hebt gekozen in het voor beeld dat hierboven is gedeeld.
 
 ![Afbeelding van de kolommen io, Vendor en fruit voor en na een UniPivot-trans formatie met de kolom fruit als de UniPivot-sleutel.](media/data-flow/unpivot3.png)
 
-Als u de rang schikking van de kolom instelt op normaal, worden alle gedraaide kolommen gegroepeerd met de geaggregeerde waarden. Als u de rang schikking van de kolommen instelt op ' zijdelings ', wordt er een alternatief voor de kolom en waarde.
+Als u de rang schikking van de kolom instelt op ' normaal ', worden alle nieuwe niet-gedraaide kolommen van één waarde gegroepeerd. Als u de rang schikking van de kolommen instelt op ' zijdelings ', worden nieuwe niet-gedraaide kolommen gegroepeerd die zijn gegenereerd op basis van een bestaande kolom.
 
 ![Draai tabel transformatie](media/data-flow//unpivot7.png "Draai tabel opties 5")
 

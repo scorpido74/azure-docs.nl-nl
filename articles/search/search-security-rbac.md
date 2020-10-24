@@ -1,26 +1,26 @@
 ---
 title: Azure-rollen instellen voor Azure-beheerders toegang
 titleSuffix: Azure Cognitive Search
-description: Op rollen gebaseerd toegangs beheer (RBAC) in de Azure Portal voor het beheren en delegeren van beheer taken voor Azure Cognitive Search management.
+description: Op rollen gebaseerd toegangs beheer (Azure RBAC) van Azure in de Azure Portal voor het beheren en delegeren van beheer taken voor Azure Cognitive Search management.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/16/2020
-ms.openlocfilehash: 2f9f979e5871a4888978ff14362a7fb0082917d5
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: ee122727100ec0abad0dfe93b9e5f1be0276cb8e
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151193"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519496"
 ---
 # <a name="set-azure-roles-for-administrative-access-to-azure-cognitive-search"></a>Azure-rollen instellen voor beheerders toegang tot Azure Cognitive Search
 
 Azure biedt een [globaal autorisatie model op basis van rollen](../role-based-access-control/role-assignments-portal.md) voor alle services die worden beheerd via de portal-of Resource Manager-api's. De rollen eigenaar, bijdrager en lezer bepalen het *Service beheer* niveau voor Active Directory gebruikers, groepen en beveiligings-principals die aan elke rol zijn toegewezen. 
 
 > [!Note]
-> Er is geen RBAC (op rollen gebaseerd toegangs beheer) voor het beveiligen van inhoud op de service. U kunt een API-sleutel van de beheerder of de query-API-sleutel voor geverifieerde aanvragen voor de service zelf gebruiken. Voor toegang op basis van identiteiten via zoek resultaten kunt u beveiligings filters maken om de resultaten te beperken op basis van identiteit, en documenten te verwijderen waarvoor de aanvrager geen toegang moet hebben. Zie [beveiligings filters](search-security-trimming-for-azure-search.md)voor meer informatie.
+> Er is geen op rollen gebaseerd toegangs beheer voor Azure (Azure RBAC) voor het beveiligen van inhoud op de service. U kunt een API-sleutel van de beheerder of de query-API-sleutel voor geverifieerde aanvragen voor de service zelf gebruiken. Voor toegang op basis van identiteiten via zoek resultaten kunt u beveiligings filters maken om de resultaten te beperken op basis van identiteit, en documenten te verwijderen waarvoor de aanvrager geen toegang moet hebben. Zie [beveiligings filters](search-security-trimming-for-azure-search.md)voor meer informatie.
 
 ## <a name="management-tasks-by-role"></a>Beheer taken per rol
 
@@ -38,22 +38,22 @@ Rollen verlenen geen toegangs rechten voor het service-eind punt. Zoek service b
 
 De volgende tabel bevat een overzicht van de bewerkingen die zijn toegestaan in azure Cognitive Search en met welke sleutel de toegang tot een bepaalde bewerking wordt ontgrendeld.
 
-RBAC-machtigingen zijn van toepassing op Portal bewerkingen en Service beheer (maken, verwijderen of wijzigen van een service of de bijbehorende API-sleutels). API-sleutels worden gemaakt nadat een service bestaat en zijn van toepassing op inhouds bewerkingen op de service. Daarnaast kunt u voor aan inhoud gerelateerde bewerkingen in de portal, zoals het maken of verwijderen van objecten, een RBAC-eigenaar of Inzender communiceren met de service met een geïmpliceerde beheerder API-sleutel.
+Azure RBAC-machtigingen zijn van toepassing op Portal bewerkingen en Service beheer (maken, verwijderen of wijzigen van een service of de bijbehorende API-sleutels). API-sleutels worden gemaakt nadat een service bestaat en zijn van toepassing op inhouds bewerkingen op de service. Daarnaast kunt u voor aan inhoud gerelateerde bewerkingen in de portal, zoals het maken of verwijderen van objecten, een Azure RBAC-eigenaar of Inzender communiceren met de service met een impliciete beheerder API-sleutel.
 
 | Bewerking | Beheerd door |
 |-----------|-------------------------|
-| Een service maken | RBAC-machtigingen: eigenaar of bijdrager |
-| Een service schalen | RBAC-machtigingen: eigenaar of bijdrager|
-| Een service verwijderen | RBAC-machtigingen: eigenaar of bijdrager |
-| Beheer-of query sleutels beheren | RBAC-machtigingen: eigenaar of bijdrager|
-| Service-informatie weer geven in de portal of een beheer-API | RBAC-machtigingen: eigenaar, bijdrager of lezer  |
-| Object informatie en metrische gegevens weer geven in de portal of een beheer-API | RBAC-machtigingen: eigenaar of bijdrager |
-| Objecten op de service maken, wijzigen, verwijderen: <br>Indexen en onderdeel onderdelen (met inbegrip van analyse definities, Score profielen, CORS-opties), Indexeer functies, gegevens bronnen, synoniemen, suggesties | Administrator-code bij gebruik van een API, RBAC-eigenaar of Inzender als de portal wordt gebruikt |
-| Een query op uitvoeren op een index | Beheerder of query sleutel als u gebruikmaakt van een API, RBAC-eigenaar of Inzender als u de portal gebruikt |
-| Systeem informatie over objecten opvragen, zoals het retour neren van statistieken, aantallen en lijsten met objecten | Administrator-code bij gebruik van een API, RBAC-eigenaar of Inzender als de portal wordt gebruikt |
+| Een service maken | Azure RBAC-machtigingen: eigenaar of bijdrager |
+| Een service schalen | Azure RBAC-machtigingen: eigenaar of bijdrager|
+| Een service verwijderen | Azure RBAC-machtigingen: eigenaar of bijdrager |
+| Beheer-of query sleutels beheren | Azure RBAC-machtigingen: eigenaar of bijdrager|
+| Service-informatie weer geven in de portal of een beheer-API | Azure RBAC-machtigingen: eigenaar, bijdrager of lezer  |
+| Object informatie en metrische gegevens weer geven in de portal of een beheer-API | Azure RBAC-machtigingen: eigenaar of bijdrager |
+| Objecten op de service maken, wijzigen, verwijderen: <br>Indexen en onderdeel onderdelen (met inbegrip van analyse definities, Score profielen, CORS-opties), Indexeer functies, gegevens bronnen, synoniemen, suggesties | Beheerder sleutel als u gebruikmaakt van een API, Azure RBAC-eigenaar of Inzender als u de portal gebruikt |
+| Een query op uitvoeren op een index | Beheerder of query sleutel als u gebruikmaakt van een API, Azure RBAC-eigenaar of Inzender als u de portal gebruikt |
+| Systeem informatie over objecten opvragen, zoals het retour neren van statistieken, aantallen en lijsten met objecten | Beheerder sleutel als u gebruikmaakt van een API, Azure RBAC-eigenaar of Inzender als u de portal gebruikt |
 
 ## <a name="next-steps"></a>Volgende stappen
 
 + [Beheren met PowerShell](search-manage-powershell.md) 
 + [Prestaties en optimalisatie in azure Cognitive Search](search-performance-optimization.md)
-+ [Ga aan de slag met Role-Based Access Control in de Azure Portal](../role-based-access-control/overview.md).
++ [Wat is Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../role-based-access-control/overview.md).

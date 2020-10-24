@@ -3,12 +3,12 @@ title: Een toepassing verifiëren voor toegang tot Azure Service Bus entiteiten
 description: Dit artikel bevat informatie over het verifiëren van een toepassing met Azure Active Directory om toegang te krijgen tot Azure Service Bus entiteiten (wacht rijen, onderwerpen, enzovoort)
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: b12f2f294a66159a7035240c361ab93f9f84718e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4e19c0ab26d491ba0b95159e274383431aefaee
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88064822"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518225"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Een toepassing met Azure Active Directory voor toegang tot Azure Service Bus entiteiten verifiëren en autoriseren
 Azure Service Bus ondersteunt het gebruik van Azure Active Directory (Azure AD) voor het machtigen van aanvragen voor het Service Bus van entiteiten (wacht rijen, onderwerpen, abonnementen of filters). Met Azure AD kunt u Azure RBAC (op rollen gebaseerd toegangs beheer) gebruiken om machtigingen te verlenen aan een beveiligingsprincipal, wat een gebruiker, groep of toepassings service-principal kan zijn. Zie [informatie over de verschillende rollen](../role-based-access-control/overview.md)voor meer informatie over rollen en roltoewijzingen.
@@ -131,7 +131,7 @@ Zodra u uw toepassing hebt geregistreerd en de machtiging hebt verleend voor het
 Voor een lijst met scenario's waarvoor het verkrijgen van tokens wordt ondersteund, zie het gedeelte [scenario's](https://aka.ms/msal-net-scenarios) van de [micro soft Authentication Library (MSAL) voor .net github-](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) opslag plaats.
 
 ## <a name="sample-on-github"></a>Voor beeld op GitHub
-Zie het volgende voor beeld op GitHub: [Role-Base Access Control voor service bus](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl). 
+Zie het volgende voor beeld op GitHub: [toegangs beheer op basis van rollen voor service bus](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl). 
 
 Gebruik de optie **client geheim aanmelden** en niet de optie **interactief gebruiker aanmelden** . Wanneer u de optie client geheim gebruikt, wordt er geen pop-upvenster weer gegeven. De toepassing maakt gebruik van de Tenant-ID en App-ID voor authenticatie. 
 

@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 2fb94faacc2bc7d6c3b1e166e617f3f675594cef
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: bcb6e91bba367363385214806077146b1a24fe7b
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101253"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503484"
 ---
 # <a name="indexer-access-to-content-protected-by-azure-network-security-features-azure-cognitive-search"></a>Indexeer toegang tot inhoud die is beveiligd met Azure-netwerk beveiligings functies (Azure Cognitive Search)
 
@@ -46,7 +46,7 @@ Klanten kunnen deze bronnen beveiligen via verschillende netwerk isolatie mechan
 | Azure Functions | Ondersteund | Ondersteund, alleen voor bepaalde lagen van Azure functions |
 
 > [!NOTE]
-> Naast de opties die hierboven worden vermeld, kunnen klanten met netwerk beveiliging Azure Storage accounts gebruikmaken van het feit dat Azure Cognitive Search een [vertrouwde micro soft-service](../storage/common/storage-network-security.md#trusted-microsoft-services)is. Dit betekent dat een specifieke zoek service virtuele netwerk-of IP-beperkingen kan omzeilen voor het opslag account en toegang kan krijgen tot gegevens in het opslag account als het juiste op rollen gebaseerd toegangs beheer is ingeschakeld voor het opslag account. Zie [Indexeer functie verbindingen met behulp van de uitzonde ring voor vertrouwde services](search-indexer-howto-access-trusted-service-exception.md)voor meer informatie. Deze optie kan worden gebruikt in plaats van de IP-beperkings route, in het geval het opslag account of de zoek service niet kan worden verplaatst naar een andere regio.
+> Naast de opties die hierboven worden vermeld, kunnen klanten met netwerk beveiliging Azure Storage accounts gebruikmaken van het feit dat Azure Cognitive Search een [vertrouwde micro soft-service](../storage/common/storage-network-security.md#trusted-microsoft-services)is. Dit betekent dat een specifieke zoek service virtuele netwerk-of IP-beperkingen kan omzeilen voor het opslag account en toegang heeft tot gegevens in het opslag account als het juiste op rollen gebaseerd toegangs beheer is ingeschakeld voor het opslag account. Zie [Indexeer functie verbindingen met behulp van de uitzonde ring voor vertrouwde services](search-indexer-howto-access-trusted-service-exception.md)voor meer informatie. Deze optie kan worden gebruikt in plaats van de IP-beperkings route, in het geval het opslag account of de zoek service niet kan worden verplaatst naar een andere regio.
 
 Houd rekening met de volgende beperkingen bij het kiezen van het mechanisme voor beveiligde toegang dat een Indexeer functie moet gebruiken:
 
@@ -72,7 +72,7 @@ Als de bron waartoe uw Indexeer functie probeert toegang wordt beperkt tot slech
 
 Voor bepaalde gegevens bronnen kan de servicetag zelf rechtstreeks worden gebruikt in plaats van het opsommen van de lijst met IP-bereiken (het IP-adres van de zoek service moet nog steeds expliciet worden gebruikt). Deze gegevens bronnen beperken de toegang door middel van het instellen van een regel voor een [netwerk beveiligings groep](../virtual-network/network-security-groups-overview.md), die systeem eigen ondersteuning biedt voor het toevoegen van een service-tag, in tegens telling tot IP-regels zoals die worden aangeboden door Azure Storage, Cosmos DB, Azure SQL, enzovoort. De gegevens bronnen die de mogelijkheid bieden om de servicetag `AzureCognitiveSearch` direct naast het IP-adres van de zoek service te gebruiken, zijn:
 
-- [SQL Server op virtuele machines in Azure](./search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md#restrict-access-to-the-azure-cognitive-search)
+- [SQL Server op virtuele machines van Azure](./search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md#restrict-access-to-the-azure-cognitive-search)
 
 - [Beheerde SQL-exemplaren](./search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md#verify-nsg-rules)
 
@@ -87,7 +87,7 @@ Deze functionaliteit is alleen beschikbaar in factureer bare Zoek Services, met 
 
 Klanten moeten de bewerking Zoek beheer, de [CreateOrUpdate-API](/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate) op een **gedeelde persoonlijke koppelings bron**, aanroepen om een privé-eindpunt verbinding te maken met hun beveiligde bron (bijvoorbeeld een opslag account). Verkeer dat overgaat op deze (uitgaand) particuliere endpoint-verbinding, is alleen afkomstig van het virtuele netwerk in de zoek service specifieke ' persoonlijke ' uitvoerings omgeving.
 
-Azure Cognitive Search valideert dat aanroepers van deze API RBAC-machtigingen hebben voor het goed keuren van verbindings aanvragen van particuliere eind punten naar de beveiligde bron. Als u bijvoorbeeld een verbinding voor een persoonlijk eind punt met een opslag account met alleen-lezen machtigingen aanvraagt, wordt deze aanroep geweigerd.
+Azure Cognitive Search valideert dat aanroepers van deze API Azure RBAC-machtigingen hebben voor het goed keuren van verbindings aanvragen van particuliere eind punten naar de beveiligde bron. Als u bijvoorbeeld een verbinding voor een persoonlijk eind punt met een opslag account met alleen-lezen machtigingen aanvraagt, wordt deze aanroep geweigerd.
 
 ### <a name="step-2-approve-the-private-endpoint-connection"></a>Stap 2: de verbinding met een privé-eind punt goed keuren
 

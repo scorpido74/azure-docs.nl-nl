@@ -3,7 +3,7 @@ title: Migreren van Indexeer functie v1 en v2 naar Azure Media Services Video In
 description: In dit onderwerp wordt beschreven hoe u migreert van Azure Media Indexer v1 en v2 naar Azure Media Services Video Indexer.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,31 +11,32 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2019
-ms.author: juliako
-ms.openlocfilehash: e6b7c8cbcf6685ca2e781789fc508d005bcb5f88
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.date: 10/21/2020
+ms.author: inhenkel
+ms.openlocfilehash: 330bffebb870635fd473e88a8eadb300eed40b9b
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018896"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518293"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Migreren van Media Indexer en Media Indexer 2 naar Video Indexer
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-De media processor van [Azure media indexer](media-services-index-content.md) media en [Azure media indexer 2 Preview](./legacy-components.md) worden buiten gebruik gesteld. Voor de pensioen datums raadpleegt u dit onderwerp over [oudere onderdelen](legacy-components.md) . [Azure Media Services video indexer](../video-indexer/index.yml) vervangt deze verouderde media processors.
+> [!IMPORTANT]
+> Het wordt aanbevolen dat klanten migreren vanuit Indexeer functie v1 en Indexeer functie v2 naar het gebruik van de [Media Services v3 AudioAnalyzerPreset Basic-modus](../latest/analyzing-video-audio-files-concept.md). De media processor van [Azure media indexer](media-services-index-content.md) media en [Azure media indexer 2 Preview](./legacy-components.md) worden buiten gebruik gesteld. Voor de pensioen datums raadpleegt u dit onderwerp over [oudere onderdelen](legacy-components.md) .
 
 Azure Media Services Video Indexer is gebaseerd op Azure Media Analytics, Azure Cognitive Search, Cognitive Services (zoals de Face-API, micro soft Translator, de Computer Vision-API en Custom Speech Service). Hiermee kunt u inzichten ophalen uit uw video's met Video Indexer-modellen voor audio en video. Zie [video indexer video-en audio modellen](../video-indexer/video-indexer-overview.md)om te zien welke scenario's video indexer kunnen worden gebruikt in, welke functies worden aangeboden en hoe u aan de slag kunt gaan. 
 
 U kunt inzichten uit uw video-en audio bestanden extra heren met behulp van de [Azure Media Services v3 Analyzer-voor instellingen](../latest/analyzing-video-audio-files-concept.md) of rechtstreeks met behulp van de [video indexer-api's](https://api-portal.videoindexer.ai/). Er is momenteel een overlap ping tussen de functies die worden geboden door de Video Indexer Api's en de Media Services v3-Api's.
 
 > [!NOTE]
-> Bekijk het [vergelijkings document](../video-indexer/compare-video-indexer-with-media-services-presets.md)als u wilt weten wanneer u de voor instellingen van Video Indexer versus Media Services Analyzer wilt gebruiken. 
+> Bekijk het [vergelijkings document](../video-indexer/compare-video-indexer-with-media-services-presets.md)om inzicht te krijgen in de verschillen tussen de voor instellingen van Video Indexer versus Media Services Analyzer.
 
 In dit artikel worden de stappen beschreven voor het migreren van Azure Media Indexer en Azure Media Indexer 2 naar Azure Media Services Video Indexer.  
 
-## <a name="migration-options"></a>Migratieopties 
+## <a name="migration-options"></a>Migratieopties
 
 |Als dat nodig is  |dan |
 |---|---|
@@ -48,7 +49,7 @@ In het volgende gedeelte vindt u relevante koppelingen: [Hoe ga ik aan de slag m
 
 ## <a name="getting-started-with-media-services-v3-apis"></a>Aan de slag met Media Services v3-Api's
 
-Met Azure Media Services v3 API kunt u inzichten uit uw video-en audio bestanden ophalen via de [voor instellingen van de Azure Media Services v3 Analyzer](../latest/analyzing-video-audio-files-concept.md). 
+Met Azure Media Services v3 API kunt u inzichten uit uw video-en audio bestanden ophalen via de [voor instellingen van de Azure Media Services v3 Analyzer](../latest/analyzing-video-audio-files-concept.md).
 
 Met **AudioAnalyzerPreset** kunt u meerdere geluids inzichten uit een audio-of video bestand ophalen. De uitvoer bevat een VTT-of TTML-bestand voor de transcripten van de audio en een JSON-bestand (met alle extra audio inzichten). De geluids inzichten bevatten tref woorden, het indexeren van sprekers en de analyse van spraak sentiment. AudioAnalyzerPreset biedt ook ondersteuning voor taal detectie voor specifieke talen. Zie [trans formaties](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)voor gedetailleerde informatie.
 
@@ -69,15 +70,15 @@ Om aan de slag te gaan, gaat u naar:
 
 Zie [Wat is spraak-naar-tekst?](../../cognitive-services/speech-service/speech-to-text.md) voor meer informatie over de tekst-naar-spraak-service en hoe u aan de slag kunt gaan.
 
-## <a name="known-differences-from-deprecated-services"></a>Bekende verschillen van afgeschafte Services 
+## <a name="known-differences-from-deprecated-services"></a>Bekende verschillen van afgeschafte Services
 
 U zult merken dat Video Indexer, Azure Media Services v3 AudioAnalyzerPreset en Cognitive Services speech services-Services betrouwbaarder zijn en betere kwaliteit levert dan de buiten gebruik gestelde Azure Media Indexer 1 en Azure Media Indexer 2-processors.  
 
-Enkele bekende verschillen zijn onder andere: 
+Enkele bekende verschillen zijn onder andere:
 
-* Cognitive Services speech Services biedt geen ondersteuning voor het uitpakken van tref woorden. Video Indexer en Media Services v3 AudioAnalyzerPreset bieden echter een robuustere set sleutel woorden in JSON-bestands indeling. 
+* Cognitive Services speech Services biedt geen ondersteuning voor het uitpakken van tref woorden. Video Indexer en Media Services v3 AudioAnalyzerPreset bieden echter een robuustere set sleutel woorden in JSON-bestands indeling.
 
-## <a name="need-help"></a>Hebt u hulp nodig?
+## <a name="support"></a>Ondersteuning
 
 U kunt een ondersteunings ticket openen door te navigeren naar de [nieuwe ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 

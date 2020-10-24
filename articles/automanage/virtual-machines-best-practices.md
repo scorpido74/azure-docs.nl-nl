@@ -8,17 +8,17 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: dce076da08a7c31d7e2637dd5b8b29c9202ea10e
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 2b8009d6d571a9daf7163d2126b6d52edfc4bfdd
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206404"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521081"
 ---
 # <a name="azure-automanage-for-virtual-machines-best-practices"></a>Aanbevolen procedures voor Azure automanage voor virtuele machines
 
 
-Deze Azure-Services worden automatisch voor u uitgevoerd wanneer u automanage voor virtuele machines gebruikt. Ze zijn essentieel voor het technische document van best practices, dat u kunt vinden in ons [Cloud adoptie Framework](https://docs.microsoft.com/azure/cloud-adoption-framework/manage/azure-server-management).
+Deze Azure-Services worden automatisch voor u uitgevoerd wanneer u automanage voor virtuele machines gebruikt. Ze zijn essentieel voor het technische document van best practices, dat u kunt vinden in ons [Cloud adoptie Framework](/azure/cloud-adoption-framework/manage/azure-server-management).
 
 Voor al deze services worden automatisch de voor bereid, automatisch geconfigureerd, bewaken, controleren en verholpen als er een drift wordt gedetecteerd. Zie [Azure automanage voor virtuele machines voor](automanage-virtual-machines.md)meer informatie over dit proces.
 
@@ -29,7 +29,7 @@ Voor al deze services worden automatisch de voor bereid, automatisch geconfigure
 |-----------|---------------|----------------------|-------------------------|
 |Bewaking van VM Insights    |Azure Monitor voor VM's bewaakt de prestaties en status van uw virtuele machines, met inbegrip van de actieve processen en afhankelijkheden van andere bronnen. [Meer](../azure-monitor/insights/vminsights-overview.md)informatie.    |Aanbevolen procedures voor Azure VM-productie    |Nee    |
 |Backup    |Azure Backup biedt onafhankelijke en geïsoleerde back-ups om bescherming te bieden tegen onbedoelde vernietiging van de gegevens op uw VM's. [Meer](../backup/backup-azure-vms-introduction.md)informatie. De kosten zijn gebaseerd op het aantal en de grootte van virtuele machines die worden beveiligd. [Meer](https://azure.microsoft.com/pricing/details/backup/)informatie.    |Aanbevolen procedures voor Azure VM-productie    |Ja    |
-|Azure Security Center    |Azure Security Center is een systeem voor geïntegreerde infrastructuur beveiliging dat de beveiligings postuur van uw data centers versterkt en geavanceerde bedreigings beveiliging biedt voor uw hybride werk belastingen in de Cloud. [Meer](../security-center/security-center-intro.md)informatie.  Met automatisch beheer configureert u het abonnement waar uw VM zich bevindt in de gratis laag van Azure Security Center. Als uw abonnement al is gestart naar Azure Security Center, wordt dit niet opnieuw geconfigureerd door automatisch beheer.    |Aanbevolen procedures voor Azure VM – productie, aanbevolen procedures voor Azure-VM'S – dev/test    |Nee    |
+|Azure Security Center    |Azure Security Center is een systeem voor geïntegreerde infrastructuur beveiliging dat de beveiligings postuur van uw data centers versterkt en geavanceerde bedreigings beveiliging biedt voor uw hybride werk belastingen in de Cloud. [Meer](../security-center/security-center-introduction.md)informatie.  Met automatisch beheer configureert u het abonnement waar uw VM zich bevindt in de gratis laag van Azure Security Center. Als uw abonnement al is gestart naar Azure Security Center, wordt dit niet opnieuw geconfigureerd door automatisch beheer.    |Aanbevolen procedures voor Azure VM – productie, aanbevolen procedures voor Azure-VM'S – dev/test    |Nee    |
 |Microsoft Antimalware    |Micro soft antimalware voor Azure is een gratis real-time beveiliging waarmee virussen, spyware en andere schadelijke software kunnen worden geïdentificeerd en verwijderd. Er worden waarschuwingen gegenereerd wanneer bekende schadelijke of ongewenste software probeert zichzelf te installeren of uit te voeren op uw Azure-systemen. [Meer](../security/fundamentals/antimalware.md)informatie. |Aanbevolen procedures voor Azure VM – productie, aanbevolen procedures voor Azure-VM'S – dev/test    |Ja    |
 |Updatebeheer    |U kunt Updatebeheer in Azure Automation gebruiken om updates van het besturings systeem voor uw virtuele machines te beheren. U kunt snel de status van beschik bare updates op alle agent computers beoordelen en het proces voor het installeren van vereiste updates voor servers beheren. [Meer](../automation/update-management/update-mgmt-overview.md)informatie.    |Aanbevolen procedures voor Azure VM – productie, aanbevolen procedures voor Azure-VM'S – dev/test    |Nee    |
 |Wijzigingen bijhouden &-inventarisatie    |Wijzigingen bijhouden en Inventaris combineren functies voor het bijhouden van wijzigingen en inventaris, zodat u wijzigingen in de infrastructuur van virtuele machines en servers kunt bijhouden. De service biedt ondersteuning voor het bijhouden van wijzigingen in Services, daemons software, REGI ster en bestanden in uw omgeving om u te helpen bij het vaststellen van ongewenste wijzigingen en het activeren van waarschuwingen. Met inventarisondersteuning kunt u in-guest resources opvragen voor zichtbaarheid van de geïnstalleerde toepassingen en andere configuratie-items.  [Meer](../automation/change-tracking/overview.md)informatie.    |Aanbevolen procedures voor Azure VM – productie, aanbevolen procedures voor Azure-VM'S – dev/test    |Nee    |

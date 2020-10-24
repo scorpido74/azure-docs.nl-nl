@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 09/23/2019
-ms.openlocfilehash: fbf76f846395d6bf0b02828ab1d6ad8b70c97784
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e9f3b7ea3d99de51b9398bda82b690d2c249a1d
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87289342"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520962"
 ---
 # <a name="how-to-migrate-your-account-from-cloud-partner-portal-to-partner-center"></a>Uw account migreren van Cloud Partner-portal naar het partner centrum
 
@@ -81,7 +81,7 @@ Volg de onderstaande instructies voor specifieke informatie over wat u moet doen
     * Voor certificering of hercertificering moet uw app de nieuwste versie van het Business Applications-platform ondersteunen.
     * Zodra uw app is goedgekeurd, ontvangt u een e-mail bericht om terug te keren naar de aanbieding en selecteert u Live maken zodat de aanbieding Live kan worden op Microsoft AppSource.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 Krijg hulp van experts en peers in forums en ontdek Blogs, webinars, Video's, evenementen en meer op [micro soft Dynamics CRM](https://community.dynamics.com/crm?wa=wsignin1.0).
 

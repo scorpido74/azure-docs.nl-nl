@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7604e8519e7ae8db255a0e033ca3df0bb941a845
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df3ae57652737acc2b23cda75ace361f0bb40340
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91626255"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518182"
 ---
 # <a name="azure-security-baseline-for-vpn-gateway"></a>Azure-beveiligings basislijn voor VPN Gateway
 
@@ -178,7 +178,7 @@ U kunt ook gegevens naar Azure-Sentinel inschakelen en op het bord zetten.
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: een inventaris van beheerders accounts onderhouden
 
-**Hulp**: met Azure op rollen gebaseerd toegangs beheer (RBAC) kunt u de toegang tot Azure-resources beheren via roltoewijzingen. U kunt deze rollen toewijzen aan gebruikers, groeperingen van service-principals en beheerde identiteiten. Er zijn vooraf gedefinieerde ingebouwde rollen voor bepaalde resources, en deze rollen kunnen worden geïnventariseerd of opgevraagd via hulpprogram ma's als Azure CLI, Azure PowerShell of de Azure Portal.
+**Richt lijnen**: met Azure op rollen gebaseerd toegangs beheer (Azure RBAC) kunt u de toegang tot Azure-resources beheren via roltoewijzingen. U kunt deze rollen toewijzen aan gebruikers, groeperingen van service-principals en beheerde identiteiten. Er zijn vooraf gedefinieerde ingebouwde rollen voor bepaalde resources, en deze rollen kunnen worden geïnventariseerd of opgevraagd via hulpprogram ma's als Azure CLI, Azure PowerShell of de Azure Portal.
 
 - [Een directory-rol verkrijgen in azure AD met Power shell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0) 
 
@@ -310,7 +310,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: systemen isoleren die gevoelige informatie opslaan of verwerken
 
-**Hulp**: VPN-gateways hebben toegewezen VM-exemplaren voor elk virtueel netwerk van de klant. Implementeer isolatie met behulp van afzonderlijke virtuele netwerken, abonnementen en beheer groepen voor afzonderlijke beveiligings domeinen, zoals omgevings type en gegevens gevoeligheids niveau. U kunt het toegangs niveau voor uw Azure-resources beperken die worden vereist door uw toepassingen en bedrijfs omgevingen. U kunt de toegang tot Azure-resources beheren via Azure Active Directory op rollen gebaseerd toegangs beheer.
+**Hulp**: VPN-gateways hebben toegewezen VM-exemplaren voor elk virtueel netwerk van de klant. Implementeer isolatie met behulp van afzonderlijke virtuele netwerken, abonnementen en beheer groepen voor afzonderlijke beveiligings domeinen, zoals omgevings type en gegevens gevoeligheids niveau. U kunt het toegangs niveau voor uw Azure-resources beperken die worden vereist door uw toepassingen en bedrijfs omgevingen. U kunt de toegang tot Azure-resources beheren via Azure op rollen gebaseerd toegangs beheer (Azure RBAC).
 
 - [Aanvullende Azure-abonnementen maken](/azure/billing/billing-create-subscription)
 
@@ -362,11 +362,11 @@ Volg Azure Security Center aanbevelingen voor versleuteling bij rest en versleut
 
 **Verantwoordelijkheid**: klant
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: op rollen gebaseerd toegangs beheer gebruiken voor het beheren van de toegang tot bronnen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
-**Richt lijnen**: gebruik Azure AD RBAC om de toegang tot gegevens en resources te beheren. anders kunt u gebruikmaken van specifieke methoden voor toegangs beheer van de service. Gebruik ingebouwde op rollen gebaseerde toegangs beheer rollen zoals eigenaar, bijdrager of netwerk bijdrager en wijs de rol vervolgens toe aan het juiste bereik. Wijs specifieke machtigingen toe voor een subset van virtuele netwerk mogelijkheden door een aangepaste rol te maken en de specifieke machtigingen toe te wijzen die vereist zijn voor virtuele netwerken, subnetten, VPN-gateways, netwerk interfaces, netwerk beveiligings groepen en route tabellen naar de rol.
+**Richt lijnen**: gebruik Azure op rollen gebaseerd toegangs beheer (Azure RBAC) voor het beheren van de toegang tot gegevens en resources, en gebruik anders service-specifieke methoden voor toegangs beheer. Gebruik ingebouwde rollen zoals eigenaar, bijdrager of netwerk bijdrager en wijs de rol vervolgens toe aan het juiste bereik. Wijs specifieke machtigingen toe voor een subset van virtuele netwerk mogelijkheden door een aangepaste rol te maken en de specifieke machtigingen toe te wijzen die vereist zijn voor virtuele netwerken, subnetten, VPN-gateways, netwerk interfaces, netwerk beveiligings groepen en route tabellen naar de rol.
 
-- [RBAC configureren in azure](../role-based-access-control/role-assignments-portal.md)
+- [Azure RBAC configureren](../role-based-access-control/role-assignments-portal.md)
 
 - [Virtuele netwerken plannen](../virtual-network/virtual-network-vnet-plan-design-arm.md#permissions)
 
@@ -720,7 +720,7 @@ Markeer bovendien abonnementen met tags en maak een naamgevings systeem voor het
 
 - [Beveiligingswaarschuwingen in Azure Security Center](../security-center/security-center-alerts-overview.md) 
 
-- [Labels gebruiken om uw Azure-resources te organiseren](/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags gebruiken om Azure-resources te organiseren](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center bewaking**: Ja
 
