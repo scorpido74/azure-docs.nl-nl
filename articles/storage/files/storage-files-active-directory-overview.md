@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: be308a91b5b583f96406f10675344ab263150a81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48e9fc4c1efa3517f5de46b7198c868a22331c79
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91716064"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486386"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Overzicht van Azure Files verificatie opties op basis van een identiteit voor SMB-toegang
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -104,7 +104,7 @@ Voor on-premises AD DS-verificatie moet u uw AD-domein controllers en domein ins
 
 In het volgende diagram ziet u on-premises AD DS verificatie voor Azure-bestands shares via SMB. De on-premises AD DS moeten worden gesynchroniseerd met Azure AD met behulp van Azure AD Connect-synchronisatie. Alleen hybride gebruikers in zowel on-premises AD DS als Azure AD kunnen worden geverifieerd en geautoriseerd voor toegang tot de Azure-bestands share. Dit komt omdat de machtiging op share niveau is geconfigureerd op basis van de identiteit die wordt weer gegeven in azure AD, waarbij de machtiging op het niveau van de map/bestand wordt afgedwongen in AD DS. Zorg ervoor dat u de machtigingen correct configureert voor dezelfde hybride gebruiker.
 
-:::image type="content" source="media/storage-files-active-directory-overview/Files-on-premises-AD-DS-Diagram.png" alt-text="Diagram":::
+:::image type="content" source="media/storage-files-active-directory-overview/Files-on-premises-AD-DS-Diagram.png" alt-text="Diagram van on-premises AD DS verificatie voor Azure-bestands shares via SMB.":::
 
 ### <a name="azure-ad-ds"></a>Azure AD DS
 
@@ -116,7 +116,7 @@ Het volgende diagram vertegenwoordigt de werk stroom voor Azure AD DS-verificati
 
 - Ten tweede kunnen alle gebruikers die in azure AD bestaan, worden geverifieerd en geautoriseerd. De gebruiker kan alleen Cloud of Hybrid zijn. De synchronisatie van Azure AD naar Azure AD DS wordt beheerd door het platform zonder dat er gebruikers configuratie is vereist. De client moet echter lid zijn van een domein aan Azure AD DS en kan niet worden opgenomen in azure AD. 
 
-:::image type="content" source="media/storage-files-active-directory-overview/Files-Azure-AD-DS-Diagram.png" alt-text="Diagram":::
+:::image type="content" source="media/storage-files-active-directory-overview/Files-Azure-AD-DS-Diagram.png" alt-text="Diagram van on-premises AD DS verificatie voor Azure-bestands shares via SMB.":::
 
 ### <a name="enable-identity-based-authentication"></a>Verificatie op basis van identiteit inschakelen
 
@@ -147,7 +147,7 @@ Er worden geen extra kosten in rekening gebracht voor het inschakelen van verifi
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende bronnen voor meer informatie over Azure Files en verificatie op basis van identiteit via SMB:
 
-- [Implementatie van Azure Files plannen](storage-files-planning.md)
+- [Een Azure Files-implementatie plannen](storage-files-planning.md)
 - [On-premises Active Directory Domain Services authenticatie inschakelen via SMB voor Azure-bestands shares](storage-files-identity-auth-active-directory-enable.md)
 - [Azure Active Directory Domain Services authenticatie inschakelen op Azure Files](storage-files-identity-auth-active-directory-domain-service-enable.md)
 - [Veelgestelde vragen](storage-files-faq.md)

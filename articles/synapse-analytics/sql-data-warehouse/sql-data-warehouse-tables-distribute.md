@@ -11,18 +11,18 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 98a3b8d30bcb358a0aaa0f7b124b8399a286d6cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 10d37dd5fd9703246913959b9eeec3e1fbc2e913
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85214006"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487004"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-synapse-sql-pool"></a>Richtlijnen voor het ontwerpen van gedistribueerde tabellen in een Synapse SQL-pool
 
 Aanbevelingen voor het ontwerpen van op hash gedistribueerde en Round Robin gedistribueerde tabellen in Synapse SQL-groepen.
 
-In dit artikel wordt ervan uitgegaan dat u bekend bent met de concepten voor gegevens distributie en gegevens verplaatsing in de Synapse SQL-pool.Zie voor meer informatie [Azure Synapse Analytics-architectuur voor enorm parallelle verwerking (MPP)](massively-parallel-processing-mpp-architecture.md).
+In dit artikel wordt ervan uitgegaan dat u bekend bent met de concepten voor gegevens distributie en gegevens verplaatsing in Synapse SQL.  Zie [Azure Synapse Analytics-architectuur](massively-parallel-processing-mpp-architecture.md)voor meer informatie.
 
 ## <a name="what-is-a-distributed-table"></a>Wat is een gedistribueerde tabel?
 
@@ -32,7 +32,7 @@ Een gedistribueerde tabel wordt weer gegeven als één tabel, maar de rijen word
 
 Een andere table-opslag optie is het repliceren van een kleine tabel over alle reken knooppunten. Zie [ontwerp richtlijnen voor gerepliceerde tabellen](design-guidance-for-replicated-tables.md)voor meer informatie. Zie gedistribueerde tabellen in het [overzicht tabellen](sql-data-warehouse-tables-overview.md)om snel te kiezen uit de drie opties.
 
-Als onderdeel van het tabel ontwerp begrijpt u zoveel mogelijk informatie over uw gegevens en de manier waarop de gegevens worden opgevraagd.Denk bijvoorbeeld aan de volgende vragen:
+Als onderdeel van het tabel ontwerp begrijpt u zoveel mogelijk informatie over uw gegevens en de manier waarop de gegevens worden opgevraagd.  Denk bijvoorbeeld aan de volgende vragen:
 
 - Hoe groot is de tabel?
 - Hoe vaak is de tabel vernieuwd?

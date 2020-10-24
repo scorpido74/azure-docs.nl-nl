@@ -8,12 +8,12 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: 0affd1660a88421f6df24bc5ef2e00497dae32a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57d319d54d15b72747da029d365137f5b5bb384c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85119267"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489248"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Geavanceerde bedreigingsbeveiliging voor Azure Cosmos DB (preview-versie)
 
@@ -26,7 +26,7 @@ Beveiligings waarschuwingen worden geactiveerd wanneer afwijkingen in de activit
 > * Advanced Threat Protection voor Azure Cosmos DB is momenteel alleen beschikbaar voor de SQL-API.
 > * Advanced Threat Protection voor Azure Cosmos DB is momenteel niet beschikbaar in azure Government en soevereine Cloud regio's.
 
-Voor een volledige onderzoek van de beveiligings waarschuwingen, is het aanbevolen om [Diagnostische logboek registratie in azure Cosmos db in](https://docs.microsoft.com/azure/cosmos-db/logging)te scha kelen, waarmee bewerkingen op de data base zelf worden geregistreerd, inclusief ruwe bewerkingen op alle documenten, containers en data bases.
+Voor een volledige onderzoek van de beveiligings waarschuwingen, is het aanbevolen om [Diagnostische logboek registratie in azure Cosmos db in](./monitor-cosmos-db.md)te scha kelen, waarmee bewerkingen op de data base zelf worden geregistreerd, inclusief ruwe bewerkingen op alle documenten, containers en data bases.
 
 ## <a name="threat-types"></a>Bedreigingstypen
 
@@ -59,16 +59,16 @@ U kunt geavanceerde beveiliging tegen bedreigingen op verschillende manieren con
 
 Gebruik rest API-opdrachten om de instelling geavanceerde beveiliging tegen bedreigingen te maken, bij te werken of op te halen voor een specifiek Azure Cosmos DB-account.
 
-* [Advanced Threat Protection-maken](https://go.microsoft.com/fwlink/?linkid=2099745)
-* [Advanced Threat Protection-ophalen](https://go.microsoft.com/fwlink/?linkid=2099643)
+* [Advanced Threat Protection-maken](/rest/api/securitycenter/advancedthreatprotection/create)
+* [Advanced Threat Protection-ophalen](/rest/api/securitycenter/advancedthreatprotection/get)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Gebruik de volgende Power shell-cmdlets:
 
-* [Advanced Threat Protection inschakelen](https://go.microsoft.com/fwlink/?linkid=2099607&clcid=0x409)
-* [Geavanceerde beveiliging tegen bedreigingen verkrijgen](https://go.microsoft.com/fwlink/?linkid=2099608&clcid=0x409)
-* [Geavanceerde bedreigings beveiliging uitschakelen](https://go.microsoft.com/fwlink/?linkid=2099709&clcid=0x409)
+* [Advanced Threat Protection inschakelen](/powershell/module/az.security/enable-azsecurityadvancedthreatprotection?viewFallbackFrom=azps-2.4.0)
+* [Geavanceerde beveiliging tegen bedreigingen verkrijgen](/powershell/module/az.security/get-azsecurityadvancedthreatprotection?viewFallbackFrom=azps-2.4.0)
+* [Geavanceerde bedreigings beveiliging uitschakelen](/powershell/module/az.security/disable-azsecurityadvancedthreatprotection?viewFallbackFrom=azps-2.4.0)
 
 ### <a name="arm-template"></a>[ARM-sjabloon](#tab/arm-template)
 
@@ -112,9 +112,9 @@ Er wordt ook een e-mail melding met de waarschuwings Details en aanbevolen actie
 
 ## <a name="cosmos-db-atp-alerts"></a>Cosmos DB ATP-waarschuwingen
 
- Zie de sectie [Cosmos DB-waarschuwingen](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurecosmos) in de Azure Security Center documentatie voor een overzicht van de waarschuwingen die worden gegenereerd bij het controleren van Azure Cosmos DB accounts.
+ Zie de sectie [Cosmos DB-waarschuwingen](../security-center/alerts-reference.md#alerts-azurecosmos) in de Azure Security Center documentatie voor een overzicht van de waarschuwingen die worden gegenereerd bij het controleren van Azure Cosmos DB accounts.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over [Diagnostische logboek registratie in azure Cosmos DB](cosmosdb-monitor-resource-logs.md)
-* Meer informatie over [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+* Meer informatie over [Azure Security Center](../security-center/security-center-introduction.md)

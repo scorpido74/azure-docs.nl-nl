@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-python
-ms.openlocfilehash: 03c8f5acfc10738401f61de099f946c33497d705
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d784e8bfb0841570f63d8433fa74059eb9e22758
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569811"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487735"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB python SDK voor SQL API: release opmerkingen en bronnen
 
@@ -22,25 +22,25 @@ ms.locfileid: "91569811"
 > * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
 > * [.NET SDK v2](sql-api-sdk-dotnet.md)
 > * [.NET Core-SDK v2](sql-api-sdk-dotnet-core.md)
-> * [.NET Change feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
+> * [.NET wijzigingenfeed-SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java-SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java-SDK v2](sql-api-sdk-java.md)
-> * [Lente gegevens v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
 > * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark-connector](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
-> * [REST-resourceprovider](/rest/api/cosmos-db-resource-provider/)
-> * [SQL](sql-api-query-reference.md)
+> * [REST-resource provider](/rest/api/cosmos-db-resource-provider/)
+> * [SQL](./sql-query-getting-started.md)
 > * [Bulk-uitvoerder-.NET v2](sql-api-sdk-bulk-executor-dot-net.md)
-> * [Bulk-uitvoerder-java](sql-api-sdk-bulk-executor-java.md)
+> * [Bulkuitvoerprogramma - Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
 |**SDK downloaden**|[PyPI](https://pypi.org/project/azure-cosmos)|
-|**API-documentatie**|[Naslag documentatie voor python API](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python&preserve-view=true)|
+|**API-documentatie**|[Naslag documentatie voor python API](/python/api/azure-cosmos/?preserve-view=true&view=azure-python)|
 |**SDK-installatie-instructies**|[Installatie-instructies voor python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)|
 |**Aan de slag**|[Aan de slag met de python-SDK](create-sql-api-python.md)|
 |**Huidig ondersteund platform**|[Python 2,7](https://www.python.org/downloads/) en [python 3.5.3 +](https://www.python.org/downloads/)|
@@ -54,7 +54,7 @@ ms.locfileid: "91569811"
 **Nieuwe functies**
 - De mogelijkheid om de TTL voor de analytische opslag in te stellen bij het maken van een nieuwe container is toegevoegd.
 
-**Oplossingen voor oplossingen**
+**Opgeloste fouten**
 - Ondersteuning voor dicteer functies als invoer voor get_client-Api's.
 - Vaste python 2/3-compatibiliteit in query-iterators.
 - Fout in Hint voor vast type (probleem #12570).
@@ -316,18 +316,18 @@ Versie 4.0.0 B1 is de eerste preview van onze inspanningen voor het maken van ee
 
 ## <a name="release--retirement-dates"></a>Uittredings datums &
 
-Micro soft biedt een kennisgeving van ten minste **twaalf maanden** voor het buiten gebruik stellen van een SDK om de overgang naar een nieuwere/ondersteunde versie te versoepelen. Nieuwe functies en functionaliteiten en Optima Lise ringen worden alleen toegevoegd aan de huidige SDK. het wordt daarom aangeraden dat u zo snel mogelijk een upgrade naar de nieuwste SDK-versie uitvoert.
+Micro soft biedt een kennisgeving van ten minste **twaalf maanden** voor het buiten gebruik stellen van een SDK om de overgang naar een nieuwere/ondersteunde versie te versoepelen. Nieuwe functies en functionaliteiten en optimaliseringen worden alleen toegevoegd aan de huidige SDK. Het wordt daarom aangeraden altijd zo snel mogelijk een upgrade naar de nieuwste SDK-versie uit te voeren.
 
 > [!WARNING]
 > Na 31 augustus 2022 worden er bij Azure Cosmos DB geen problemen meer opgelost, worden nieuwe functies toegevoegd en wordt ondersteuning geboden voor versie 1. x of 2. x van de Azure Cosmos DB python SDK voor SQL API. Als u liever geen upgrade uitvoert, worden aanvragen die zijn verzonden vanaf versie 1. x en 2. x van de SDK nog steeds door de Azure Cosmos DB-service geleverd.
 
-| Versie | Release datum | Buitengebruikstellingsdatum |
+| Versie | Releasedatum | Buitengebruikstellingsdatum |
 | --- | --- | --- |
 | [4.0.0](#400) |20 mei 2020 |--- |
 | [3.0.2](#302) |15 november 2018 |--- |
 | [3.0.1](#301) |Okt 04, 2018 |--- |
 | [2.3.3](#233) |Sept 08, 2018 |30 augustus 2020 |
-| [verschijnsel](#232) |08 mei 2018 |30 augustus 2020 |
+| [2.3.2](#232) |08 mei 2018 |30 augustus 2020 |
 | [2.3.1](#231) |21 december 2017 |30 augustus 2020 |
 | [2.3.0](#230) |10 november 2017 |30 augustus 2020 |
 | [2.2.1](#221) |29 sep, 2017 |30 augustus 2020 |
@@ -359,4 +359,4 @@ Micro soft biedt een kennisgeving van ten minste **twaalf maanden** voor het bui
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) service-pagina voor meer informatie over Cosmos db. 
+Zie de servicepagina [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) voor meer informatie over Cosmos DB.

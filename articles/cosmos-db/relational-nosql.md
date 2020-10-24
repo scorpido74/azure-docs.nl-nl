@@ -8,16 +8,16 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 63663d228052934616a59f5d84ff16a6510e46c9
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 613e0dbfc90586475fe0ba9820ede1359a99d3a6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282087"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482210"
 ---
 # <a name="understanding-the-differences-between-nosql-and-relational-databases"></a>Meer informatie over de verschillen tussen NoSQL en relationele data bases
 
-In dit artikel worden enkele van de belangrijkste voor delen van NoSQL-data bases op relationele data bases opgesomd. We bespreken ook enkele uitdagingen bij het werken met NoSQL. Zie het artikel over [het kiezen van het juiste gegevens archief](https://docs.microsoft.com/azure/architecture/guide/technology-choices/data-store-overview)voor een uitgebreid overzicht van de verschillende opgeslagen gegevens archieven.
+In dit artikel worden enkele van de belangrijkste voor delen van NoSQL-data bases op relationele data bases opgesomd. We bespreken ook enkele uitdagingen bij het werken met NoSQL. Zie het artikel over [het kiezen van het juiste gegevens archief](/azure/architecture/guide/technology-choices/data-store-overview)voor een uitgebreid overzicht van de verschillende opgeslagen gegevens archieven.
 
 ## <a name="high-throughput"></a>Hoge doorvoersnelheid
 
@@ -25,7 +25,7 @@ Een van de meest voor de hand liggende uitdagingen bij het onderhouden van een r
 
 In deze scenario's kunnen [gedistribueerde data bases](https://en.wikipedia.org/wiki/Distributed_database) een schaal bare oplossing bieden. Onderhoud kan echter nog steeds een kost bare en tijdrovende oefening zijn. Beheerders moeten mogelijk extra werk doen om ervoor te zorgen dat de gedistribueerde aard van het systeem transparant is. Ze kunnen ook account zijn voor de ' losgekoppelde ' aard van de data base.
 
-[Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/introduction) vereenvoudigt deze uitdagingen door wereld wijd te worden geïmplementeerd in alle Azure-regio's. Partitielay-adresbereiken kunnen dynamisch worden onderverdeeld om de data base naadloos in overeenstemming met de toepassing te verg Roten en tegelijkertijd hoge Beschik baarheid te behouden. Met een verfijnd multitenancy en nauw keurig beheer van de Cloud-systeem eigen resource governance worden [enorme latentie garanties](https://docs.microsoft.com/azure/cosmos-db/consistency-levels-tradeoffs#consistency-levels-and-latency) en voorspel bare prestaties vergemakkelijkt. Partitioneren is volledig beheerd. beheerders hoeven geen code te schrijven of partities te beheren.
+[Azure Cosmos DB](./introduction.md) vereenvoudigt deze uitdagingen door wereld wijd te worden geïmplementeerd in alle Azure-regio's. Partitielay-adresbereiken kunnen dynamisch worden onderverdeeld om de data base naadloos in overeenstemming met de toepassing te verg Roten en tegelijkertijd hoge Beschik baarheid te behouden. Met een verfijnd multitenancy en nauw keurig beheer van de Cloud-systeem eigen resource governance worden [enorme latentie garanties](./consistency-levels.md#consistency-levels-and-latency) en voorspel bare prestaties vergemakkelijkt. Partitioneren is volledig beheerd. beheerders hoeven geen code te schrijven of partities te beheren.
 
 Als uw transactionele volumes een extreem niveau bereiken, zoals veel duizenden trans acties per seconde, moet u rekening houden met een gedistribueerde NoSQL-data base. Overweeg Azure Cosmos DB voor maximale efficiëntie, eenvoudiger onderhoud en gereduceerde total cost of ownership.
 
@@ -37,7 +37,7 @@ Er zijn een groot aantal use-cases waarin trans acties in de data base veel bove
 
 Vandaag verg root de populariteit van document-Style data bases echter aanzienlijk. Deze data bases kunnen worden beschouwd als een herinventarisatie van het hiërarchische model van de data base. dit wordt nu niet belemmerd door problemen met de kosten voor het opslaan van gegevens op schijf. Als gevolg hiervan kan het onderhouden van veel complexe bovenliggende en onderliggende entiteits relaties in een relationele data base nu worden beschouwd als een anti-patroon vergeleken met moderne document georiënteerde benaderingen.
 
-Het ontstaan van [objectgeoriënteerd ontwerpen](https://en.wikipedia.org/wiki/Object-oriented_design)en de [impedantie](https://en.wikipedia.org/wiki/Object-relational_impedance_mismatch) die zich voordoet bij het combi neren van relationele modellen, markeert ook een anti-patroon in relationele data bases voor bepaalde gebruiks situaties. Als gevolg hiervan kan een verborgen, maar vaak aanzienlijke onderhouds kosten optreden. Hoewel [ORM-benaderingen](https://en.wikipedia.org/wiki/Object-relational_mapping) worden verholpen om dit gedeeltelijk te beperken, kunnen document georiënteerde data bases echter nog meer worden samengestuurd met objectgeoriënteerd benaderingen. Met deze benadering worden ontwikkel aars niet gedwongen om te worden doorgevoerd in ORM-Stuur Programma's of bespokee taal specifieke [OO-data base-engines](https://en.wikipedia.org/wiki/Object_database). Als uw gegevens veel bovenliggende en onderliggende relaties en diepe hiërarchie niveaus bevatten, kunt u overwegen om een NoSQL-document database te gebruiken, zoals de [Azure Cosmos DB SQL-API](https://docs.microsoft.com/azure/cosmos-db/introduction).
+Het ontstaan van [objectgeoriënteerd ontwerpen](https://en.wikipedia.org/wiki/Object-oriented_design)en de [impedantie](https://en.wikipedia.org/wiki/Object-relational_impedance_mismatch) die zich voordoet bij het combi neren van relationele modellen, markeert ook een anti-patroon in relationele data bases voor bepaalde gebruiks situaties. Als gevolg hiervan kan een verborgen, maar vaak aanzienlijke onderhouds kosten optreden. Hoewel [ORM-benaderingen](https://en.wikipedia.org/wiki/Object-relational_mapping) worden verholpen om dit gedeeltelijk te beperken, kunnen document georiënteerde data bases echter nog meer worden samengestuurd met objectgeoriënteerd benaderingen. Met deze benadering worden ontwikkel aars niet gedwongen om te worden doorgevoerd in ORM-Stuur Programma's of bespokee taal specifieke [OO-data base-engines](https://en.wikipedia.org/wiki/Object_database). Als uw gegevens veel bovenliggende en onderliggende relaties en diepe hiërarchie niveaus bevatten, kunt u overwegen om een NoSQL-document database te gebruiken, zoals de [Azure Cosmos DB SQL-API](./introduction.md).
 
 :::image type="content" source="./media/relational-or-nosql/order-orderdetails.jpg" alt-text="Back-end":::
 
@@ -47,11 +47,11 @@ Ironically, op basis van hun naam, bieden relationele data bases een minder dan 
 
 Er zijn verschillende vormen van ' netwerk data bases ' opgedeeld tijdens de tijd van relationele data bases, maar net zoals bij hiërarchische data bases, zijn deze systemen moeilijk om populariteit te krijgen. Een trage acceptatie werd veroorzaakt door een gebrek aan use-cases op het moment en opslag inefficiëntie. Vandaag de dag kunnen Graph-data base-engines worden beschouwd als een nieuwe opkomst van het model van de netwerk database. De belangrijkste voor delen van deze systemen zijn dat relaties worden opgeslagen als ' eerste klasse burgers ' in de-data base. Zo kan het passeren van relaties in een constant tijdstip worden uitgevoerd, in plaats van dat er een grotere tijd wordt opgelopen bij elke nieuwe koppeling of elk ander product.
 
-Als u een complex netwerk met relaties in uw Data Base wilt behouden, kunt u een grafiek database, zoals de [Azure Cosmos DB GREMLIN API](https://docs.microsoft.com/azure/cosmos-db/graph-introduction) voor het beheren van deze gegevens, overwegen.
+Als u een complex netwerk met relaties in uw Data Base wilt behouden, kunt u een grafiek database, zoals de [Azure Cosmos DB GREMLIN API](./graph-introduction.md) voor het beheren van deze gegevens, overwegen.
 
 :::image type="content" source="./media/relational-or-nosql/graph.png" alt-text="Back-end":::
 
-Azure Cosmos DB is een database service met meerdere modellen, waarmee een API-projectie voor alle belangrijkste NoSQL-model typen wordt geboden. Kolom-Family, document, grafiek en sleutel waarde. De [Gremlin (Graph)](https://docs.microsoft.com/azure/cosmos-db/gremlin-support) en SQL (core) document API-lagen zijn volledig compatibel. Dit heeft voor delen voor het scha kelen tussen verschillende modellen op het niveau van de programmering. Graph-archieven kunnen worden opgevraagd in termen van zowel ingewikkelde netwerk verkeer als trans acties die zijn gemodelleerd als document records in dezelfde opslag.
+Azure Cosmos DB is een database service met meerdere modellen, waarmee een API-projectie voor alle belangrijkste NoSQL-model typen wordt geboden. Kolom-Family, document, grafiek en sleutel waarde. De [Gremlin (Graph)](./gremlin-support.md) en SQL (core) document API-lagen zijn volledig compatibel. Dit heeft voor delen voor het scha kelen tussen verschillende modellen op het niveau van de programmering. Graph-archieven kunnen worden opgevraagd in termen van zowel ingewikkelde netwerk verkeer als trans acties die zijn gemodelleerd als document records in dezelfde opslag.
 
 ## <a name="fluid-schema"></a>Vloeistof schema
 
@@ -64,8 +64,8 @@ Als u gegevens beheert waarvan de structuren voortdurend worden gewijzigd met ee
 Het micro [Services](https://en.wikipedia.org/wiki/Microservices) -patroon is in de afgelopen jaren aanzienlijk toegenomen. Dit patroon heeft zijn hoofd mappen in [service-georiënteerde architectuur](https://en.wikipedia.org/wiki/Service-oriented_architecture). De niet-feitelijke standaard voor gegevens overdracht in deze moderne micro Services-architecturen is [JSON](https://en.wikipedia.org/wiki/JSON), dat ook het opslag medium is voor de grote meerderheid van document georiënteerde NoSQL-data bases. Dit zorgt ervoor dat NoSQL-document een veel naadlozer voor zowel de persistentie als de synchronisatie (met behulp van [Event sourcing-patronen](https://en.wikipedia.org/wiki/Event-driven_architecture)) in complexe micro service-implementaties kan opslaan. Meer traditionele relationele data bases kunnen veel ingewik kelder zijn om in deze architecturen te onderhouden. Dit wordt veroorzaakt door het grotere aantal trans formatie dat is vereist voor zowel de status als de synchronisatie tussen Api's. Azure Cosmos DB met name heeft een aantal functies waardoor het nog eenvoudiger is voor op JSON gebaseerde micro Services-architecturen dan veel NoSQL-data bases:
 
 * een keuze uit zuivere JSON-gegevens typen
-* een Java script-engine en [query-API](https://docs.microsoft.com/azure/cosmos-db/javascript-query-api) die in de data base is ingebouwd.
-* een geavanceerde [wijzigings feed](https://docs.microsoft.com/azure/cosmos-db/change-feed) waarmee clients zich kunnen abonneren om een melding te ontvangen van wijzigingen in een container.
+* een Java script-engine en [query-API](./javascript-query-api.md) die in de data base is ingebouwd.
+* een geavanceerde [wijzigings feed](./change-feed.md) waarmee clients zich kunnen abonneren om een melding te ontvangen van wijzigingen in een container.
 
 ## <a name="some-challenges-with-nosql-databases"></a>Enkele uitdagingen met NoSQL-data bases
 
@@ -80,13 +80,13 @@ De eerste uitdaging is dat de vuist regel in NoSQL-data bases doorgaans denormal
 
 Een best practice benadering in een NoSQL-document database is dat de categorie naam en label namen rechtstreeks in een ' product document ' worden genormaliseerd. Om ervoor te zorgen dat categorieën, tags en producten synchroon blijven, zijn de ontwerp opties om dit te vergemakkelijken, de complexiteit van onderhoud toegevoegd, omdat de gegevens worden gedupliceerd over meerdere records in het product, in plaats van een eenvoudige update in een ' een-op-veel '-relatie en een koppeling om de gegevens op te halen. 
 
-De afweging is dat lees bewerkingen efficiënter zijn in de gedenormaliseerde record en steeds efficiënter worden naarmate het aantal conceptuele gekoppelde entiteiten toeneemt. Maar net zoals de lees efficiëntie toeneemt met een toenemend aantal gekoppelde entiteiten in een ontnormale record, moet de onderhouds complexiteit van entiteiten ook synchroon blijven. Eén manier om deze afweging te beperken is het maken van een [hybride gegevens model](https://docs.microsoft.com/azure/cosmos-db/modeling-data#hybrid-data-models).
+De afweging is dat lees bewerkingen efficiënter zijn in de gedenormaliseerde record en steeds efficiënter worden naarmate het aantal conceptuele gekoppelde entiteiten toeneemt. Maar net zoals de lees efficiëntie toeneemt met een toenemend aantal gekoppelde entiteiten in een ontnormale record, moet de onderhouds complexiteit van entiteiten ook synchroon blijven. Eén manier om deze afweging te beperken is het maken van een [hybride gegevens model](./modeling-data.md#hybrid-data-models).
 
-Hoewel er meer flexibiliteit beschikbaar is in NoSQL-data bases voor deze trans acties, kunnen er meer ontwerp beslissingen worden genomen. Raadpleeg ons artikel [over het model leren en partitioneren van gegevens op Azure Cosmos DB met behulp van een praktijk voorbeeld](https://docs.microsoft.com/azure/cosmos-db/how-to-model-partition-example), dat een benadering bevat voor het bewaren van [gedenormaliseerde gebruikers gegevens](https://docs.microsoft.com/azure/cosmos-db/how-to-model-partition-example#denormalizing-usernames) , waarbij gebruikers niet alleen in verschillende partities zitten, maar in verschillende containers.
+Hoewel er meer flexibiliteit beschikbaar is in NoSQL-data bases voor deze trans acties, kunnen er meer ontwerp beslissingen worden genomen. Raadpleeg ons artikel [over het model leren en partitioneren van gegevens op Azure Cosmos DB met behulp van een praktijk voorbeeld](./how-to-model-partition-example.md), dat een benadering bevat voor het bewaren van [gedenormaliseerde gebruikers gegevens](./how-to-model-partition-example.md#denormalizing-usernames) , waarbij gebruikers niet alleen in verschillende partities zitten, maar in verschillende containers.
 
 Met betrekking tot sterke consistentie is het vaak nodig dat dit is vereist voor de hele gegevensset. In gevallen waarin dit nodig is, kan het echter een uitdaging zijn in gedistribueerde data bases. Om een sterke consistentie te garanderen, moeten gegevens worden gesynchroniseerd voor alle replica's en regio's voordat clients deze kunnen lezen. Hierdoor kan de latentie van Lees bewerkingen worden verg root.
 
-Daarnaast biedt Azure Cosmos DB meer flexibiliteit dan relationele data bases voor de verschillende trans acties die hier relevant zijn, maar voor kleinschalige implementaties kan deze aanpak meer ontwerp overwegingen toevoegen. Raadpleeg ons artikel over [consistentie, Beschik baarheid en prestaties](https://docs.microsoft.com/azure/cosmos-db/consistency-levels-tradeoffs) voor meer informatie over dit onderwerp.
+Daarnaast biedt Azure Cosmos DB meer flexibiliteit dan relationele data bases voor de verschillende trans acties die hier relevant zijn, maar voor kleinschalige implementaties kan deze aanpak meer ontwerp overwegingen toevoegen. Raadpleeg ons artikel over [consistentie, Beschik baarheid en prestaties](./consistency-levels.md) voor meer informatie over dit onderwerp.
 
 ## <a name="next-steps"></a>Volgende stappen
 

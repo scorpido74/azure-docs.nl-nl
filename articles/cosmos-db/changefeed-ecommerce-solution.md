@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: b1de0fa2e6601e4350b52caea32f8bc379909f85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84a39ade902bd22d67e9b3a7d40b392bfd83dfd3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91356363"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475912"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Azure Cosmos DB Change feed gebruiken om real-time gegevens analyse te visualiseren
 
@@ -50,7 +50,7 @@ Het volgende diagram geeft de gegevens stroom en onderdelen die bij de oplossing
 
 5. **Event hub:** Deze gebeurtenissen worden opgeslagen in de Azure Event hub en verzonden naar [Azure stream Analytics](../stream-analytics/stream-analytics-introduction.md) om verdere analyses uit te voeren.  
 
-6. **Azure stream Analytics:** Azure Stream Analytics definieert query's om de gebeurtenissen te verwerken en realtime gegevens analyse uit te voeren. Deze gegevens worden vervolgens naar [micro soft power bi](https://docs.microsoft.com/power-bi/desktop-what-is-desktop)verzonden.  
+6. **Azure stream Analytics:** Azure Stream Analytics definieert query's om de gebeurtenissen te verwerken en realtime gegevens analyse uit te voeren. Deze gegevens worden vervolgens naar [micro soft power bi](/power-bi/desktop-what-is-desktop)verzonden.  
 
 7. **Power BI:** Power BI wordt gebruikt voor het visualiseren van de gegevens die worden verzonden door Azure Stream Analytics. U kunt een dash board maken om te zien hoe de metrische gegevens in realtime worden gewijzigd.  
 
@@ -395,4 +395,4 @@ Als u de resources wilt verwijderen die u hebt gemaakt tijdens dit lab, gaat u n
 
 ## <a name="next-steps"></a>Volgende stappen 
   
-* Zie [werken met ondersteuning voor wijzigings feeds in azure Cosmos DB](change-feed.md) voor meer informatie over wijzigings invoer. 
+* Zie [werken met ondersteuning voor wijzigings feeds in azure Cosmos DB](change-feed.md) voor meer informatie over wijzigings invoer.

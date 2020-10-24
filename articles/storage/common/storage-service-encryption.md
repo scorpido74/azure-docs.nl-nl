@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 19f0027b506b78ef81f9acc25a94ef9ab74643e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f56da93d0ea0f346e73b34990d8ec4c222bb8813
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90985754"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488568"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage-versleuteling voor inactieve gegevens
 
@@ -30,7 +30,7 @@ Gegevens in een opslag account worden versleuteld, ongeacht de standaardlaag (St
 
 Elke blok-blob, een toevoeg-BLOB of een pagina-blob die na 20 oktober 2017 is geschreven naar Azure Storage, is versleuteld. De blobs die vóór deze datum zijn gemaakt, worden versleuteld met een achtergrond proces. Als u de versleuteling wilt afdwingen van een blob die is gemaakt vóór 20 oktober 2017, kunt u de BLOB herschrijven. Zie [de versleutelings status van een BLOB controleren](../blobs/storage-blob-encryption-status.md)voor meer informatie over het controleren van de versleutelings status van een blob.
 
-Zie [crypto GRAFIE API: Next Generation](https://docs.microsoft.com/windows/desktop/seccng/cng-portal)(Engelstalig) voor meer informatie over de onderliggende cryptografische modules Azure Storage versleuteling.
+Zie [crypto GRAFIE API: Next Generation](/windows/desktop/seccng/cng-portal)(Engelstalig) voor meer informatie over de onderliggende cryptografische modules Azure Storage versleuteling.
 
 Voor informatie over versleuteling en sleutel beheer voor Azure Managed disks, Zie [Server versleuteling van Azure Managed disks](../../virtual-machines/windows/disk-encryption.md) voor Windows-vm's of [versleuteling aan de server zijde van Azure Managed disks](../../virtual-machines/linux/disk-encryption.md) voor Linux-vm's.
 

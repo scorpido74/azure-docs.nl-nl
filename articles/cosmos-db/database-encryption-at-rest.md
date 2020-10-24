@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: fb3dda7a2f33fa76ab78a67f86fb015430c64099
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ceb2b8812b52b1ca2030a0fd0006c9388630c05e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85114772"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487480"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Gegevensversleuteling in Azure Cosmos DB 
 
@@ -46,7 +46,7 @@ A: de sleutels worden beheerd door micro soft.
 A: micro soft heeft een aantal interne richt lijnen voor het draaien van de versleutelings sleutel, die Cosmos DB volgt. De specifieke richt lijnen worden niet gepubliceerd. Micro soft publiceert de [Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl/default.aspx), die wordt beschouwd als een subset van interne richt lijnen en heeft nuttige aanbevolen procedures voor ontwikkel aars.
 
 ### <a name="q-can-i-use-my-own-encryption-keys"></a>V: kan ik mijn eigen versleutelings sleutels gebruiken?
-A: Ja, deze functie is nu beschikbaar voor nieuwe Azure Cosmos DB accounts en dit moet worden gedaan op het moment dat het account wordt gemaakt. Ga naar door de [klant beheerde sleutels](https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk) document voor meer informatie.
+A: Ja, deze functie is nu beschikbaar voor nieuwe Azure Cosmos DB accounts en dit moet worden gedaan op het moment dat het account wordt gemaakt. Ga naar door de [klant beheerde sleutels](./how-to-setup-cmk.md) document voor meer informatie.
 
 ### <a name="q-what-regions-have-encryption-turned-on"></a>V: voor welke regio's is versleuteling ingeschakeld?
 A: voor alle Azure Cosmos DB regio's is versleuteling ingeschakeld voor alle gebruikers gegevens.

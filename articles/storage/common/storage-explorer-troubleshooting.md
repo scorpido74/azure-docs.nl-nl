@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: f24fb6c4d83da0d443702afaf673079363a9ffb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83b71d46c3d6b1612728b2bd81c6acede6d0559b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714449"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488619"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Gids voor probleemoplossing voor Azure Storage Explorer
 
@@ -23,7 +23,7 @@ In deze hand leiding vindt u een overzicht van oplossingen voor problemen die va
 
 ## <a name="azure-rbac-permissions-issues"></a>Problemen met Azure RBAC-machtigingen
 
-Azure [RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) -toegangs beheer op basis van rollen maakt zeer nauw keuriger toegang tot Azure-resources door sets machtigingen te combi neren in _rollen_. Hier volgen enkele strategieën om optimaal gebruik te maken van Azure RBAC in Storage Explorer.
+Azure [RBAC](/azure/role-based-access-control/overview) -toegangs beheer op basis van rollen maakt zeer nauw keuriger toegang tot Azure-resources door sets machtigingen te combi neren in _rollen_. Hier volgen enkele strategieën om optimaal gebruik te maken van Azure RBAC in Storage Explorer.
 
 ### <a name="how-do-i-access-my-resources-in-storage-explorer"></a>Heb ik toegang tot mijn resources in Storage Explorer Hoe kan ik?
 
@@ -65,7 +65,7 @@ Als u toegang wilt krijgen tot BLOB-containers of-wacht rijen, kunt u deze resou
 3. Selecteer het gebruikers account en de Tenant die zijn gekoppeld aan de resource waaraan u wilt koppelen. Klik op Volgende.
 4. Selecteer het resource type, voer de URL in voor de resource en voer een unieke weergave naam in voor de verbinding. Klik op Volgende. Klik op Verbinding maken.
 
-Voor andere resource typen hebben we momenteel geen oplossing met betrekking tot Azure RBAC. Als tijdelijke oplossing kunt u een SAS-URI aanvragen om [aan uw resource te koppelen](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri).
+Voor andere resource typen hebben we momenteel geen oplossing met betrekking tot Azure RBAC. Als tijdelijke oplossing kunt u een SAS-URI aanvragen om [aan uw resource te koppelen](/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri).
 
 ### <a name="recommended-azure-built-in-roles"></a>Aanbevolen ingebouwde rollen van Azure
 
@@ -332,7 +332,7 @@ Voor Storage Explorer moet .NET Core zijn geïnstalleerd op uw systeem. U wordt 
 # <a name="ubuntu-2004"></a>[Ubuntu 20.04](#tab/2004)
 
 1. Down load het bestand Storage Explorer. tar. gz.
-2. Installeer de [.net core runtime](https://docs.microsoft.com/dotnet/core/install/linux):
+2. Installeer de [.net core runtime](/dotnet/core/install/linux):
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
      sudo dpkg -i packages-microsoft-prod.deb; \
@@ -345,7 +345,7 @@ Voor Storage Explorer moet .NET Core zijn geïnstalleerd op uw systeem. U wordt 
 # <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
 
 1. Down load het bestand Storage Explorer. tar. gz.
-2. Installeer de [.net core runtime](https://docs.microsoft.com/dotnet/core/install/linux):
+2. Installeer de [.net core runtime](/dotnet/core/install/linux):
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
      sudo dpkg -i packages-microsoft-prod.deb; \
@@ -358,7 +358,7 @@ Voor Storage Explorer moet .NET Core zijn geïnstalleerd op uw systeem. U wordt 
 # <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
 
 1. Down load het bestand Storage Explorer. tar. gz.
-2. Installeer de [.net core runtime](https://docs.microsoft.com/dotnet/core/install/linux):
+2. Installeer de [.net core runtime](/dotnet/core/install/linux):
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
      sudo dpkg -i packages-microsoft-prod.deb; \

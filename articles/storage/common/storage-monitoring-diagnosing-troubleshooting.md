@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 70234c9bf6be8b9c2fbb5750fa1dba718ac2690d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 43c8f3dc0df41d9322edbe2e0c763de12b787ed6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370471"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479796"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage bewaken, problemen opsporen en oplossen
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -131,7 +131,7 @@ Met metrische gegevens voor opslag worden alleen metrische gegevens over capacit
 >
 >
 
-Zie het blog bericht [over Azure Storage facturering – band breedte, trans acties en capaciteit](https://docs.microsoft.com/archive/blogs/patrick_butler_monterde/azure-storage-understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity)voor hulp bij het schatten van de grootte van verschillende opslag objecten, zoals blobs.
+Zie het blog bericht [over Azure Storage facturering – band breedte, trans acties en capaciteit](/archive/blogs/patrick_butler_monterde/azure-storage-understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity)voor hulp bij het schatten van de grootte van verschillende opslag objecten, zoals blobs.
 
 ### <a name="monitoring-availability"></a><a name="monitoring-availability"></a>Beschikbaarheid bewaken
 U moet de beschik baarheid van de opslag Services in uw opslag account bewaken door de waarde in de kolom **Beschik baarheid** te bewaken in de metrische tabellen per uur of minuut, **$MetricsHourPrimaryTransactionsBlob**, **$MetricsHourPrimaryTransactionsTable**, **$MetricsHourPrimaryTransactionsQueue**, **$MetricsMinutePrimaryTransactionsBlob**, **$MetricsMinutePrimaryTransactionsTable**, **$MetricsMinutePrimaryTransactionsQueue** **$MetricsCapacityBlob.** De kolom **Beschik baarheid** bevat een percentage waarde waarmee de beschik baarheid van de service of de API-bewerking wordt aangegeven die wordt vertegenwoordigd door de rij (de **RowKey** geeft aan of de rij metrische gegevens bevat voor de service als geheel of voor een specifieke API-bewerking).
@@ -362,7 +362,7 @@ De opslag service berekent alleen de metrische **AverageE2ELatency** voor voltoo
 #### <a name="investigating-client-performance-issues"></a>Problemen met client prestaties onderzoeken
 Mogelijke oorzaken voor de client lopen langzaam, zoals een beperkt aantal beschik bare verbindingen of threads, of er is onvoldoende bronnen beschikbaar, zoals CPU, geheugen of netwerk bandbreedte. U kunt het probleem mogelijk oplossen door de client code efficiënter te wijzigen (bijvoorbeeld door asynchrone aanroepen naar de opslag service te gebruiken) of door een grotere virtuele machine te gebruiken (met meer kernen en meer geheugen).
 
-Voor de tabel-en wachtrij Services kan het Nagle-algoritme ook hoge **AverageE2ELatency** veroorzaken ten opzichte van **averageserverlatency aan**: Zie het [algoritme van post Nagle is niet geschikt voor kleine aanvragen](https://docs.microsoft.com/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests)voor meer informatie. U kunt de Nagle-algoritme in code uitschakelen met behulp van de klasse **ServicePointManager** in de naam ruimte **System.net** . U moet dit doen voordat u aanroepen naar de tabel-of wachtrij Services in uw toepassing, omdat dit geen invloed heeft op verbindingen die al zijn geopend. Het volgende voor beeld wordt opgehaald uit de **Application_Start** -methode in een werk rollen.
+Voor de tabel-en wachtrij Services kan het Nagle-algoritme ook hoge **AverageE2ELatency** veroorzaken ten opzichte van **averageserverlatency aan**: Zie het [algoritme van post Nagle is niet geschikt voor kleine aanvragen](/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests)voor meer informatie. U kunt de Nagle-algoritme in code uitschakelen met behulp van de klasse **ServicePointManager** in de naam ruimte **System.net** . U moet dit doen voordat u aanroepen naar de tabel-of wachtrij Services in uw toepassing, omdat dit geen invloed heeft op verbindingen die al zijn geopend. Het volgende voor beeld wordt opgehaald uit de **Application_Start** -methode in een werk rollen.
 
 # <a name="net-v12"></a>[.NET-V12](#tab/dotnet)
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
-ms.openlocfilehash: a0171481b97cff2ea085a80b387bff13590529a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7cc18980d1dddc33ddf98f06de70449dee22e2ac
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905896"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484590"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>Uw MySQL-database migreren naar Azure Database voor MySQL met behulp van dumpen en terugzetten
 
@@ -30,11 +30,15 @@ Als u deze hand leiding wilt door lopen, hebt u het volgende nodig:
 > [!TIP]
 > Als u grote data bases wilt migreren met data base-grootten van meer dan 1 TBs, kunt u overwegen om gebruik te maken van de hulpprogram ma's van de Community zoals **mydumper/myloader** , die ondersteuning bieden voor parallel exporteren en importeren. Meer informatie [over het migreren van grote MySQL-data bases](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/best-practices-for-migrating-large-databases-to-azure-database/ba-p/1362699).
 
-## <a name="common-use-cases-for-dump-and-restore"></a>Veelvoorkomend gebruik: cases voor dump en herstel
-U kunt MySQL-hulpprogram ma's, zoals **mysqldump** en **mysqlpump** , gebruiken om data bases te dumpen en te laden in een Azure MySQL-data base in verschillende algemene scenario's. In andere scenario's kunt u in plaats daarvan de benadering voor [importeren en exporteren](concepts-migrate-import-export.md) gebruiken.
 
-- **Gebruik database dumps wanneer u de gehele data base migreert**. Deze aanbeveling houdt in dat u een grote hoeveelheid MySQL-gegevens verplaatst of wanneer u de service onderbreking voor Live sites of toepassingen wilt minimaliseren.
--  **Database dump gebruiken als alle tabellen in de data base gebruikmaken van de InnoDB-opslag engine**. Azure Database for MySQL ondersteunt alleen de InnoDB-opslag engine en biedt daarom geen ondersteuning voor alternatieve opslag engines. Als uw tabellen zijn geconfigureerd met andere opslag engines, converteert u deze naar de InnoDB-engine-indeling voordat u de migratie naar Azure Database for MySQL.
+## <a name="common-use-cases-for-dump-and-restore"></a>Veelvoorkomend gebruik: cases voor dump en herstel
+
+Meest voorkomende gebruiks voorbeelden zijn:
+
+- **Overstappen van een andere beheerde service provider** : de meeste beheerde service provider biedt mogelijk geen toegang tot het fysieke opslag bestand om veiligheids redenen, dus is logische back-up en herstellen de enige optie om te migreren.
+- **Migratie van on-premises omgeving of virtuele machine** -Azure database for MySQL biedt geen ondersteuning voor het herstellen van fysieke back-ups, waardoor logische back-ups en herstel bewerkingen als enige benadering worden uitgevoerd.
+- **Als u uw back-upopslag verplaatst van lokaal redundant naar geografisch redundante opslag** -Azure database for MySQL kunt het configureren van lokaal redundante of geografisch redundante opslag voor back-up alleen toestaan tijdens het maken van de server. Zodra de server is ingericht, kunt u de optie voor opslag redundantie van back-ups niet meer wijzigen. Als u uw back-upopslag wilt verplaatsen van lokaal redundante opslag naar geo-redundante opslag, is dump en Restore de enige optie. 
+-  **Migratie van alternatieve opslag engines naar InnoDB** -Azure database for MySQL ondersteunt alleen InnoDB-opslag engine en biedt daarom geen ondersteuning voor alternatieve opslag engines. Als uw tabellen zijn geconfigureerd met andere opslag engines, converteert u deze naar de InnoDB-engine-indeling voordat u de migratie naar Azure Database for MySQL.
 
     Als u bijvoorbeeld een WordPress of WebApp met behulp van de MyISAM-tabellen hebt, moet u deze tabellen eerst converteren door de migratie naar de InnoDB-indeling voordat u naar Azure Database for MySQL herstelt. Gebruik de-component `ENGINE=InnoDB` om de engine in te stellen die wordt gebruikt bij het maken van een nieuwe tabel en vervolgens de gegevens over te dragen naar de compatibele tabel vóór de herstel bewerking.
 
@@ -165,3 +169,4 @@ Voor bekende problemen, tips en trucs raden we u aan onze [techcommunity-blog](h
 ## <a name="next-steps"></a>Volgende stappen
 - [Toepassingen verbinden met Azure database for MySQL](./howto-connection-string.md).
 - Zie de [hand leiding voor database migratie](https://aka.ms/datamigration)voor meer informatie over het migreren van data bases naar Azure database for MySQL.
+- Als u grote data bases wilt migreren met data base-grootten van meer dan 1 TBs, kunt u overwegen om gebruik te maken van de hulpprogram ma's van de Community zoals **mydumper/myloader** , die ondersteuning bieden voor parallel exporteren en importeren. Meer informatie [over het migreren van grote MySQL-data bases](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/best-practices-for-migrating-large-databases-to-azure-database/ba-p/1362699).

@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 9390f8a2ab9372927b434ea94d7545c9ec540c58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c2194476dc6e640f9c4b93d564728478de41ef7
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88606266"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475529"
 ---
 # <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>Ontwikkelings- en testkosten optimaliseren in Azure Cosmos DB
 
@@ -28,7 +28,7 @@ Azure Cosmos DB gratis laag maakt het eenvoudig om aan de slag te gaan, uw toepa
 > [!NOTE]
 > De laag gratis is alleen beschikbaar in de ingerichte doorvoer modus.
 
-De gratis laag is voor onbepaalde tijd voor de levens duur van het account en wordt geleverd met alle [voor delen en functies](introduction.md#key-benefits) van een gewoon Azure Cosmos DB account, waaronder onbeperkte opslag en door Voer (ru/s), sla's, hoge Beschik baarheid, kant-en-klare wereld wijde distributie in alle Azure-regio's, en meer. U kunt Maxi maal één gratis laag account per Azure-abonnement hebben en u moet zich aanmelden wanneer u het account maakt. Als u aan de slag wilt gaan, [maakt u een nieuw account in azure Portal met gratis laag ingeschakeld](create-cosmosdb-resources-portal.md) of gebruikt u een [arm-sjabloon](manage-sql-with-resource-manager.md#free-tier). Bekijk de [prijzenpagina](https://azure.microsoft.com/pricing/details/cosmos-db/) voor meer informatie.
+De gratis laag is voor onbepaalde tijd voor de levens duur van het account en wordt geleverd met alle [voor delen en functies](introduction.md#key-benefits) van een gewoon Azure Cosmos DB account, waaronder onbeperkte opslag en door Voer (ru/s), sla's, hoge Beschik baarheid, kant-en-klare wereld wijde distributie in alle Azure-regio's, en meer. U kunt Maxi maal één gratis laag account per Azure-abonnement hebben en u moet zich aanmelden wanneer u het account maakt. Als u aan de slag wilt gaan, [maakt u een nieuw account in azure Portal met gratis laag ingeschakeld](create-cosmosdb-resources-portal.md) of gebruikt u een [arm-sjabloon](./manage-with-templates.md#free-tier). Bekijk de [prijzenpagina](https://azure.microsoft.com/pricing/details/cosmos-db/) voor meer informatie.
 
 ## <a name="try-azure-cosmos-db-for-free"></a>Probeer Azure Cosmos DB gratis uit
 
@@ -57,5 +57,5 @@ U kunt aan de slag met het gebruik van de emulator of de gratis Azure Cosmos DB 
 * Meer informatie over het [optimaliseren van doorvoer kosten](optimize-cost-throughput.md)
 * Meer informatie over het [optimaliseren van opslag kosten](optimize-cost-storage.md)
 * Meer informatie over [het optimaliseren van de kosten van lees-en schrijf bewerkingen](optimize-cost-reads-writes.md)
-* Meer informatie over [het optimaliseren van de kosten van query's](optimize-cost-queries.md)
+* Meer informatie over [het optimaliseren van de kosten van query's](./optimize-cost-reads-writes.md)
 * Meer informatie over [het optimaliseren van de kosten voor Azure Cosmos-accounts met meerdere regio's](optimize-cost-regions.md)

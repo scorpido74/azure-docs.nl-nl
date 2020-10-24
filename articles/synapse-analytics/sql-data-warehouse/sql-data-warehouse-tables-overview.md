@@ -11,12 +11,12 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0138b4dcc547b961f941522abd03cd351d4d3737
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7973c85c7ca8051cae2ab7155dda94bec43ebd59
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89460544"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486936"
 ---
 # <a name="design-tables-in-synapse-sql-pool"></a>Tabellen in Synapse SQL-pool ontwerpen
 
@@ -79,7 +79,7 @@ De SQL-groep ondersteunt het meest gebruikte gegevens type. Zie [gegevens typen 
 
 ## <a name="distributed-tables"></a>Gedistribueerde tabellen
 
-Een fundamenteel onderdeel van de SQL-groep is de manier waarop het kan worden opgeslagen en toegepast op tabellen in [distributies](massively-parallel-processing-mpp-architecture.md#distributions).  De SQL-pool ondersteunt drie methoden voor het distribueren van gegevens: Round-Robin (standaard), hash en gerepliceerd.
+Een fundamenteel onderdeel van Synapse SQL is de manier waarop het kan worden opgeslagen en toegepast op tabellen in [distributies](massively-parallel-processing-mpp-architecture.md#distributions). Synapse SQL ondersteunt drie methoden voor het distribueren van gegevens: Round-Robin (standaard), hash en gerepliceerd.
 
 ### <a name="hash-distributed-tables"></a>Met hash gedistribueerde tabellen
 

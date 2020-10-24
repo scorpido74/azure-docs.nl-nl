@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
-ms.openlocfilehash: 3ab706b9cdf3c071fd5d3ceca732cff6b660db6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 542e4e09949aa3d673f632890bd7ee99adf431d5
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87086554"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487276"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>HDInsight verbinden met uw on-premises netwerk
 
@@ -46,7 +46,7 @@ In het volgende diagram zijn groene lijnen aanvragen voor bronnen die eindigen o
 
 * Een SSH-client. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](./hdinsight-hadoop-linux-use-ssh-unix.md).
 * Als u Power shell gebruikt, hebt u de [AZ-module](https://docs.microsoft.com/powershell/azure/)nodig.
-* Als u Azure CLI wilt gebruiken en u deze nog niet hebt geïnstalleerd, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* Als u Azure CLI wilt gebruiken en u deze nog niet hebt geïnstalleerd, raadpleegt u [de Azure cli installeren](/cli/azure/install-azure-cli).
 
 ## <a name="create-virtual-network-configuration"></a>Configuratie van het virtuele netwerk maken
 
@@ -96,7 +96,7 @@ In deze stappen wordt gebruikgemaakt van de [Azure Portal](https://portal.azure.
     | --- | --- |
     |Virtueel netwerk | Selecteer het virtuele netwerk dat u eerder hebt gemaakt.|
     |Subnet | Selecteer het standaard subnet voor het virtuele netwerk dat u eerder hebt gemaakt. Selecteer __niet__ het subnet dat wordt gebruikt door de VPN-gateway.|
-    |Openbare IP | De automatisch gevulde waarde gebruiken.  |
+    |Openbare IP | Gebruik de waarde die automatisch is ingevuld.  |
 
     ![Instellingen voor virtuele HDInsight-netwerken](./media/connect-on-premises-network/virtual-network-settings.png)
 

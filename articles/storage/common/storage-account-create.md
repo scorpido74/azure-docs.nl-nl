@@ -1,5 +1,5 @@
 ---
-title: Create a storage account
+title: Een opslagaccount maken
 titleSuffix: Azure Storage
 description: Meer informatie over het maken van een opslag account voor het opslaan van blobs, bestanden, wacht rijen en tabellen. Een Azure-opslag account biedt een unieke naam ruimte in Microsoft Azure voor het lezen en schrijven van uw gegevens.
 services: storage
@@ -10,18 +10,18 @@ ms.date: 09/24/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 9b993e5a7c5b3ee2327fe26437414d8ce74f7369
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1cdd04be4b5774944f70e551221a08261aef22d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333576"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488891"
 ---
-# <a name="create-a-storage-account"></a>Create a storage account
+# <a name="create-a-storage-account"></a>Een opslagaccount maken
 
 Een Azure-opslag account bevat al uw Azure Storage gegevens objecten: blobs, bestanden, wacht rijen, tabellen en schijven. Het opslag account biedt een unieke naam ruimte voor uw Azure Storage gegevens die overal ter wereld toegankelijk zijn via HTTP of HTTPS. Gegevens in uw Azure Storage-account zijn duurzaam en Maxi maal beschikbaar, veilig en zeer schaalbaar.
 
-In dit artikel leert u hoe u een opslag account maakt met behulp van de [Azure Portal](https://portal.azure.com/), [Azure POWERSHELL](https://docs.microsoft.com/powershell/azure/), [Azure cli](https://docs.microsoft.com/cli/azure)of een [Azure Resource Manager sjabloon](../../azure-resource-manager/management/overview.md).  
+In dit artikel leert u hoe u een opslag account maakt met behulp van de [Azure Portal](https://portal.azure.com/), [Azure POWERSHELL](/powershell/azure/), [Azure cli](/cli/azure)of een [Azure Resource Manager sjabloon](../../azure-resource-manager/management/overview.md).  
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -45,7 +45,7 @@ Get-InstalledModule -Name "Az"
 
 Als u Azure PowerShell wilt installeren of upgraden, raadpleegt u [Azure PowerShell module installeren](/powershell/azure/install-Az-ps).
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 U kunt u aanmelden bij Azure en Azure CLI-opdrachten uitvoeren. Dit kan op twee manieren:
 
@@ -86,7 +86,7 @@ Meld u aan bij uw Azure-abonnement met de `Connect-AzAccount` opdracht en volg d
 Connect-AzAccount
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Meld u aan bij de [Azure Portal](https://portal.azure.com)om Azure Cloud shell te starten.
 
@@ -102,7 +102,7 @@ N.v.t.
 
 ---
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Een opslagaccount maken
 
 Elk opslagaccount moet behoren tot een Azure-resourcegroep. Een resourcegroep is een logische container voor het groeperen van uw Azure-services. Wanneer u een opslagaccount maakt, kunt u een nieuwe resourcegroep maken of een bestaande resourcegroep gebruiken. In dit artikel wordt beschreven hoe u een nieuwe resource groep maakt.
 
@@ -154,7 +154,7 @@ Als u een v2-opslag account voor algemeen gebruik met een andere replicatie opti
 |Geografisch zone-redundante opslag (GZRS)    |Standard_GZRS         |
 |Leestoegang tot geografische zone-redundante opslag (RA-GZRS)    |Standard_RAGZRS         |
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Gebruik eerst de opdracht [az group create](/cli/azure/group#az_group_create) om een nieuwe resourcegroep te maken met Azure CLI.
 
@@ -246,7 +246,7 @@ Als u het opslag account wilt verwijderen, gebruikt u de opdracht [Remove-AzStor
 Remove-AzStorageAccount -Name <storage-account> -ResourceGroupName <resource-group>
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u het opslag account wilt verwijderen, gebruikt u de opdracht [AZ Storage account delete](/cli/azure/storage/account#az-storage-account-delete) :
 

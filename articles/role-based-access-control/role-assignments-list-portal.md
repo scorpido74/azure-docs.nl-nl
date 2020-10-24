@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 10/16/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 280e5012f7c41a906b5b2e266840ea3c0cc315ba
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a5b019068368f1c0c076f5a1ed157c288bb7169c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151683"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479915"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>Azure-roltoewijzingen weer geven met behulp van de Azure Portal
 
@@ -126,7 +126,7 @@ U kunt roltoewijzingen voor door het systeem toegewezen en door de gebruiker toe
 
     U ziet een lijst met rollen die zijn toegewezen aan de geselecteerde door de gebruiker toegewezen beheerde identiteit in verschillende bereiken, zoals beheer groep, abonnement, resource groep of resource. Deze lijst bevat alle roltoewijzingen waarvoor u lees machtigingen hebt.
 
-    ![Roltoewijzingen voor een door het systeem toegewezen beheerde identiteit](./media/shared/role-assignments-user-assigned.png)
+    ![Scherm afbeelding met roltoewijzingen voor een door de gebruiker toegewezen beheerde identiteit.](./media/shared/role-assignments-user-assigned.png)
 
 1. Als u het abonnement wilt wijzigen, klikt u op de lijst met **abonnementen** .
 
@@ -178,7 +178,7 @@ Volg deze stappen om roltoewijzingen in een bereik te downloaden.
 
     ![Roltoewijzingen als CSV-bestand downloaden](./media/role-assignments-list-portal/download-role-assignments-csv.png)
 
-    ![Roltoewijzingen als CSV-bestand downloaden](./media/role-assignments-list-portal/download-role-assignments-json.png)
+    ![Scherm afbeelding van de gedownloade roltoewijzingen, zoals in de JSON-indeling.](./media/role-assignments-list-portal/download-role-assignments-json.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

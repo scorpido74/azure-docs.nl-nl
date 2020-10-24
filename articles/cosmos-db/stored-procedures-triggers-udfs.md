@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: af17e37e5acb1e3552dd92b82eaf8d6397e4bc5e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: e12bae14ede90a3b93a69d963981f097818e65ab
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279902"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480221"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies
 
@@ -63,7 +63,7 @@ Trans acties zijn systeem eigen geïntegreerd in het Azure Cosmos DB java script
 
 ### <a name="data-consistency"></a>Gegevensconsistentie
 
-Opgeslagen procedures en triggers worden altijd uitgevoerd op de primaire replica van een Azure Cosmos-container. Deze functie zorgt ervoor dat lees bewerkingen van opgeslagen procedures een [sterke consistentie](consistency-levels-tradeoffs.md)bieden. Query's met door de gebruiker gedefinieerde functies kunnen worden uitgevoerd op de primaire of een secundaire replica. Opgeslagen procedures en triggers zijn bedoeld ter ondersteuning van transactionele schrijf bewerkingen. in de richting van alleen-lezen logica wordt het beste geïmplementeerd als logica en query's op toepassings zijde met behulp van de [Azure Cosmos DB SQL API sdk's](sql-api-dotnet-samples.md), helpt u de door Voer van de data base te verzadigen. 
+Opgeslagen procedures en triggers worden altijd uitgevoerd op de primaire replica van een Azure Cosmos-container. Deze functie zorgt ervoor dat lees bewerkingen van opgeslagen procedures een [sterke consistentie](./consistency-levels.md)bieden. Query's met door de gebruiker gedefinieerde functies kunnen worden uitgevoerd op de primaire of een secundaire replica. Opgeslagen procedures en triggers zijn bedoeld ter ondersteuning van transactionele schrijf bewerkingen. in de richting van alleen-lezen logica wordt het beste geïmplementeerd als logica en query's op toepassings zijde met behulp van de [Azure Cosmos DB SQL API sdk's](sql-api-dotnet-samples.md), helpt u de door Voer van de data base te verzadigen. 
 
 > [!TIP]
 > De query's die in een opgeslagen procedure of trigger worden uitgevoerd, zien mogelijk geen wijzigingen in items die door dezelfde script transactie zijn gemaakt. Deze instructie is van toepassing op SQL-query's, zoals `getContent().getCollection.queryDocuments()` , en geïntegreerde taal query's, zoals `getContext().getCollection().filter()` .

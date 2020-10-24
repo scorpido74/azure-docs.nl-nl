@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: mjbrown
-ms.openlocfilehash: 4be23ebf5f29e8256623ca89f69929adb58713f3
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 92266eb59892b68044fa69f548de829398be66dc
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284472"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477110"
 ---
 # <a name="manage-azure-cosmos-db-gremlin-api-resources-using-azure-resource-manager-templates"></a>Azure Cosmos DB Gremlin-API-resources beheren met Azure Resource Manager sjablonen
 
@@ -51,7 +51,7 @@ Met deze sjabloon wordt een Azure Cosmos-account gemaakt voor Gremlin API met ee
 
 Hier volgen enkele aanvullende bronnen:
 
-* [Documentatie voor Azure Resource Manager](/azure/azure-resource-manager/)
+* [Documentatie voor Azure Resource Manager](../azure-resource-manager/index.yml)
 * [Resource provider-schema Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions)
 * [Quick Start-sjablonen Azure Cosmos DB](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
 * [Veelvoorkomende fouten bij Azure Resource Manager implementatie oplossen](../azure-resource-manager/templates/common-deployment-errors.md)

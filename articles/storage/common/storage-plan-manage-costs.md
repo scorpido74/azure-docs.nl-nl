@@ -9,12 +9,12 @@ ms.date: 08/03/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: 75b464c140bfda6c3f3559d3bfdbe1e6bc2e7f24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0f5069ca063f95cb845921c0d716b6c013c9e83
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87760733"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479745"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>Kosten voor Azure Blob Storage plannen en beheren
 
@@ -32,9 +32,9 @@ Gebruik de [prijs calculator van Azure](https://azure.microsoft.com/pricing/calc
 
 3. Kies opties in de vervolg keuzelijst. 
 
-   Wanneer u de waarde van deze vervolg keuzelijsten wijzigt, verandert de kosten raming. Deze schatting wordt weer gegeven in de bovenhoek en onder aan de schatting. 
-    
-   ![Het deel venster kosten bewaken met kosten analyse](media/storage-plan-manage-costs/price-calculator-storage-type.png)
+   Wanneer u de waarde van deze vervolg keuzelijsten wijzigt, verandert de kosten raming. Deze schatting wordt weer gegeven in de bovenhoek en onder aan de schatting.
+
+   ![Scherm opname met uw schatting](media/storage-plan-manage-costs/price-calculator-storage-type.png)
 
    Wanneer u de waarde van de vervolg keuzelijst **type** wijzigt, veranderen ook andere opties die in dit werk blad worden weer gegeven. Gebruik de koppelingen in het gedeelte **meer info** voor meer informatie over wat elke optie betekent en hoe deze opties van invloed zijn op de prijs van bewerkingen die betrekking hebben op opslag. 
 
@@ -56,19 +56,19 @@ In deze sectie vindt u meer informatie over elke optie.
 
 U kunt geld besparen op opslag kosten voor BLOB-gegevens met Azure Storage gereserveerde capaciteit. Azure Storage gereserveerde capaciteit biedt u een korting op capaciteit voor blok-blobs en voor Azure Data Lake Storage Gen2 gegevens in standaard opslag accounts wanneer u een reserve ring voor één of drie jaar doorvoert. Een reserve ring biedt een vaste hoeveelheid opslag capaciteit voor de periode van de reserve ring. Azure Storage gereserveerde capaciteit kan uw capaciteits kosten voor blok-blobs en Azure Data Lake Storage Gen2 gegevens aanzienlijk verminderen. 
 
-Zie [kosten optimaliseren voor Blob Storage met gereserveerde capaciteit](https://docs.microsoft.com/azure/storage/blobs/storage-blob-reserved-capacity)voor meer informatie.
+Zie [kosten optimaliseren voor Blob Storage met gereserveerde capaciteit](/azure/storage/blobs/storage-blob-reserved-capacity)voor meer informatie.
 
 #### <a name="organize-data-into-access-tiers"></a>Gegevens indelen in toegangs lagen
 
 U kunt de kosten verlagen door BLOB-gegevens te plaatsen in de meest rendabele toegangs lagen. U kunt kiezen uit drie lagen die zijn ontworpen om uw kosten te optimaliseren om gegevens te gebruiken. De *warme* laag heeft bijvoorbeeld hogere opslag kosten, maar lagere toegangs kosten. Als u van plan bent om gegevens regel matig te benaderen, is de warme laag mogelijk de meest rendabele keuze. Als u van plan bent om gegevens minder vaak te gebruiken, kan het *koud* of het *Archief* het meest zinvol zijn omdat de kosten van het openen van gegevens worden verhoogd en de kosten voor het opslaan van gegevens worden verminderd.    
 
-Zie [Azure Blob Storage: Hot, cool en Archive Access lagen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal)voor meer informatie.
+Zie [Azure Blob Storage: Hot, cool en Archive Access lagen](/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal)voor meer informatie.
 
 #### <a name="automatically-move-data-between-access-tiers"></a>Gegevens automatisch tussen toegangs lagen verplaatsen
 
 Gebruik levenscyclus beheer beleid om gegevens periodiek te verplaatsen tussen lagen om het geld op te slaan. Met deze beleids regels kunt u gegevens verplaatsen naar met behulp van regels die u opgeeft. U kunt bijvoorbeeld een regel maken waarmee blobs naar de opslaglaag worden verplaatst als deze Blob in 90 dagen niet is gewijzigd. Door beleids regels te maken waarmee de toegangs tier van uw gegevens wordt aangepast, kunt u de minst dure opslag opties voor uw behoeften ontwerpen.
 
-Zie [de Azure Blob-opslag levenscyclus beheren](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) voor meer informatie.
+Zie [de Azure Blob-opslag levenscyclus beheren](/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) voor meer informatie.
 
 ## <a name="create-budgets"></a>Budgetten maken
 
@@ -85,17 +85,17 @@ Wanneer u kosten analyse gebruikt, kunt u de kosten van Azure Storage in grafiek
 
 Azure Storage kosten voor de kosten analyse weer geven:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 2. Open het venster **Cost Management en facturering** , selecteer **kosten beheer** in het menu en selecteer vervolgens **kosten analyse**. U kunt vervolgens het bereik voor een specifiek abonnement wijzigen in de vervolg keuzelijst **bereik** .
 
-   ![Het deel venster kosten bewaken met kosten analyse](./media/storage-plan-manage-costs/cost-analysis-pane.png)
+   ![Scherm opname met bereik](./media/storage-plan-manage-costs/cost-analysis-pane.png)
 
 4. Als u alleen de kosten voor Azure Storage wilt weer geven, selecteert u **filter toevoegen** en selecteert u vervolgens **service naam**. Kies vervolgens **opslag** in de lijst. 
 
    Hier volgt een voor beeld van de kosten voor alleen Azure Storage:
 
-   ![De opslag kosten bewaken met het deel venster kosten analyse](./media/storage-plan-manage-costs/cost-analysis-pane-storage.png)
+   ![Scherm opname van filteren op opslag](./media/storage-plan-manage-costs/cost-analysis-pane-storage.png)
 
 In het vorige voor beeld ziet u de huidige kosten voor de service. De kosten per Azure-regio (locaties) en per resource groep worden ook weer gegeven. U kunt ook andere filters toevoegen (bijvoorbeeld: een filter om de kosten voor specifieke opslag accounts te bekijken).
 

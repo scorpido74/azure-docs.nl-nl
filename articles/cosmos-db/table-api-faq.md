@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: sngun
-ms.openlocfilehash: 65f276662ac4837003c7a7078b6197ba155eadc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77e74a36d7b353d0713a7bf17f7a6341558f0739
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88167586"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484998"
 ---
 # <a name="frequently-asked-questions-about-the-table-api-in-azure-cosmos-db"></a>Veelgestelde vragen over de Table-API in Azure Cosmos DB
 
@@ -97,7 +97,7 @@ U kunt de Azure Portal gebruiken om door de gegevens te bladeren. U kunt ook de 
 
 ### <a name="which-tools-work-with-the-table-api"></a>Welke hulpprogram ma's werken met de Table-API?
 
-U kunt de [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)gebruiken.
+U kunt de [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md)gebruiken.
 
 Hulpprogram ma's met de flexibiliteit om een connection string te maken in de indeling die eerder is opgegeven, kunnen de nieuwe Table-API ondersteunen. Op de pagina [Azure Storage client hulpprogramma's](../storage/common/storage-explorers.md) vindt u een lijst met hulp middelen voor tabellen.
 
@@ -115,7 +115,7 @@ Ja, u kunt verbinding maken door twee afzonderlijke instanties van de CloudTable
 
 ### <a name="how-do-i-migrate-an-existing-azure-table-storage-application-to-this-offering"></a>Hoe kan ik een bestaande Azure Table Storage-toepassing migreren naar deze aanbieding?
 
-[AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) en het [hulp programma voor gegevens migratie van Azure Cosmos DB](import-data.md) worden beide ondersteund.
+[AzCopy](../storage/common/storage-use-azcopy-v10.md) en het [hulp programma voor gegevens migratie van Azure Cosmos DB](import-data.md) worden beide ondersteund.
 
 ### <a name="how-is-expansion-of-the-storage-size-done-for-this-service-if-for-example-i-start-with-n-gb-of-data-and-my-data-will-grow-to-1-tb-over-time"></a>Hoe uitbrei ding van de opslag ruimte die voor deze service wordt uitgevoerd als bijvoorbeeld ik begin met *n* GB aan gegevens en zullen mijn gegevens gedurende een bepaalde periode tot 1 TB groeien?
 
@@ -231,7 +231,7 @@ De .NET-SDK kan worden verzonden in het app.config-bestand:
 
 ### <a name="azure-cosmos-db-as-a-platform-seems-to-have-lot-of-capabilities-such-as-sorting-aggregates-hierarchy-and-other-functionality-will-you-be-adding-these-capabilities-to-the-table-api"></a>Azure Cosmos DB als platform lijkt veel mogelijkheden te hebben, zoals sorteren, aggregaties, hiërarchie en andere functionaliteit. Gaat u deze mogelijkheden toevoegen aan de Table-API?
 
-De Table-API biedt dezelfde query functionaliteit als Azure-tabel opslag. Azure Cosmos DB biedt ook ondersteuning voor sorteren, statistische functies, georuimtelijke query, hiërarchie en een groot aantal ingebouwde functies. Zie [SQL-query's](how-to-sql-query.md)voor meer informatie.
+De Table-API biedt dezelfde query functionaliteit als Azure-tabel opslag. Azure Cosmos DB biedt ook ondersteuning voor sorteren, statistische functies, georuimtelijke query, hiërarchie en een groot aantal ingebouwde functies. Zie [SQL-query's](./sql-query-getting-started.md)voor meer informatie.
 
 ### <a name="when-should-i-change-tablethroughput-for-the-table-api"></a>Wanneer moet ik TableThroughput wijzigen voor de Table-API?
 
@@ -293,7 +293,7 @@ Azure Cosmos DB is een SLA-systeem dat latentie, door Voer, Beschik baarheid en 
 U kunt uw feedback op de volgende manieren delen:
 
 * [Mening van gebruikers](https://feedback.azure.com/forums/263030-azure-cosmos-db)
-* [Microsoft Q&A-vragenpagina](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
+* [Microsoft Q&A-vragenpagina](/answers/topics/azure-cosmos-db.html)
 * [Stack overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack Overflow is het meest geschikt voor het Program meren van vragen. Zorg ervoor dat u de vraag hebt [over het onderwerp](https://stackoverflow.com/help/on-topic) en [Geef zo veel mogelijk details op, zodat u de vraag duidelijk en beantwoord kunt krijgen](https://stackoverflow.com/help/how-to-ask).
 
 ## <a name="next-steps"></a>Volgende stappen

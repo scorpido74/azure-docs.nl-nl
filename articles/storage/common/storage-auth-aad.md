@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: f681a271dcd64468cb471c81496e489f0ce8413f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 391cbbca79560ba57ae2be62accdad8451446227
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91713652"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488721"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Toegang verlenen tot blobs en wacht rijen met behulp van Azure Active Directory
 
@@ -61,7 +61,7 @@ Zie voor meer informatie over hoe ingebouwde rollen worden gedefinieerd voor Azu
 
 ### <a name="access-permissions-for-data-operations"></a>Toegangs machtigingen voor gegevens bewerkingen
 
-Zie voor meer informatie over de vereiste machtigingen voor het aanroepen van specifieke BLOB-of Queue-service bewerkingen [machtigingen voor het aanroepen van BLOB-en wachtrij gegevens bewerkingen](https://docs.microsoft.com/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
+Zie voor meer informatie over de vereiste machtigingen voor het aanroepen van specifieke BLOB-of Queue-service bewerkingen [machtigingen voor het aanroepen van BLOB-en wachtrij gegevens bewerkingen](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
 
 ## <a name="resource-scope"></a>Resourcebereik
 

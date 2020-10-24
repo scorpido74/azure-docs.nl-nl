@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c93508bebdcfce35a89b3d5e2a8abecc7ac84722
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 429883a1bd9bc4df270e6a9f2965087fa3fba2dc
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91280144"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488857"
 ---
 # <a name="storage-account-overview"></a>Overzicht van opslagaccounts
 
@@ -133,7 +133,7 @@ Als uw opslag account voor algemeen gebruik bijvoorbeeld *mystorageaccount*heet,
 - Tabel opslag: `https://*mystorageaccount*.table.core.windows.net`
 - Wachtrij opslag: `https://*mystorageaccount*.queue.core.windows.net`
 - Azure Files: `https://*mystorageaccount*.file.core.windows.net`
-- Azure Data Lake Storage Gen2: `https://*mystorageaccount*.dfs.core.windows.net` (maakt gebruik [van het ABFS-stuur programma dat specifiek is geoptimaliseerd voor Big Data](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction#key-features-of-data-lake-storage-gen2).)
+- Azure Data Lake Storage Gen2: `https://*mystorageaccount*.dfs.core.windows.net` (maakt gebruik [van het ABFS-stuur programma dat specifiek is geoptimaliseerd voor Big Data](/azure/storage/blobs/data-lake-storage-introduction#key-features-of-data-lake-storage-gen2).)
 
 > [!NOTE]
 > Blok-Blob en Blob Storage-accounts bieden alleen het Blob service-eind punt.
@@ -177,7 +177,7 @@ De Azure Storage-bibliotheek voor gegevensverplaatsing voor .NET is gebaseerd op
 
 U kunt een aangepaste toepassing maken om uw gegevens te migreren van een v1-opslag account voor algemeen gebruik naar een Blob Storage-account. Gebruik een van de Azure-client bibliotheken of de Azure Storage services-REST API. Azure Storage biedt uitgebreide clientbibliotheken voor meerdere talen en platforms, zoals  .NET, Java, C++, Node.JS, PHP, Ruby en Python. De clientbibliotheken bieden geavanceerde mogelijkheden, zoals pogingslogica, logboekregistratie en parallelle uploads. U kunt ook rechtstreeks met de REST API ontwikkelen. Deze kan worden aangeroepen in elke taal waarin HTTP-/HTTPS-verzoeken kunnen worden gemaakt.
 
-Zie [Azure Storage Services rest API Reference](https://docs.microsoft.com/rest/api/storageservices/)(Engelstalig) voor meer informatie over de Azure Storage rest API.
+Zie [Azure Storage Services rest API Reference](/rest/api/storageservices/)(Engelstalig) voor meer informatie over de Azure Storage rest API.
 
 > [!IMPORTANT]
 > Blobs die aan de clientzijde zijn versleuteld, bevatten versleutelingsgerelateerde metagegevens die samen met de blob zijn opgeslagen. Als u een blob met versleuteling aan de clientzijde kopieert, zorg er dan voor dat bij het kopiëren de blobmetagegevens behouden blijven, en dan met name de versleutelingsgerelateerde metagegevens. Als u een blob kopieert zonder versleutelingsgerelateerde metagegevens, kan de inhoud van de blob niet meer worden opgehaald. Zie [Azure Storage-versleuteling aan de clientzijde](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) voor meer informatie over versleutelingsgerelateerde metagegevens.

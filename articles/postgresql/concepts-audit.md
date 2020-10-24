@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
-ms.openlocfilehash: efd4cb7c0c5db50729539373938ebccd689dee42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 615297a4bf47d80c9313f011b90d343b7ae680e3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708982"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488041"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Controle logboek registratie in Azure Database for PostgreSQL-één server
 
@@ -88,7 +88,7 @@ Als u snel aan de slag wilt gaan, stelt `pgaudit.log` u in `WRITE` en opent u de
 ## <a name="viewing-audit-logs"></a>Audit logboeken weer geven
 Als u. log-bestanden gebruikt, worden uw audit Logboeken in hetzelfde bestand opgenomen als uw PostgreSQL-fout Logboeken. U kunt logboek bestanden downloaden via de Azure- [Portal](howto-configure-server-logs-in-portal.md) of [cli](howto-configure-server-logs-using-cli.md). 
 
-Als u Azure resource logging gebruikt, is de manier waarop u toegang hebt tot de logboeken afhankelijk van het eind punt dat u kiest. Zie het artikel over het [opslag account voor logboeken](../azure-monitor/platform/resource-logs-collect-storage.md) voor Azure Storage. Zie het artikel [Stream Azure logs](../azure-monitor/platform/resource-logs-stream-event-hubs.md) voor Event hubs.
+Als u Azure resource logging gebruikt, is de manier waarop u toegang hebt tot de logboeken afhankelijk van het eind punt dat u kiest. Zie het artikel over het [opslag account voor logboeken](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) voor Azure Storage. Zie het artikel [Stream Azure logs](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs) voor Event hubs.
 
 Voor Azure Monitor-logboeken worden logboeken verzonden naar de werk ruimte die u hebt geselecteerd. De post gres-Logboeken gebruiken de **AzureDiagnostics** -verzamelings modus, zodat ze kunnen worden opgevraagd vanuit de tabel AzureDiagnostics. De velden in de tabel worden hieronder beschreven. Meer informatie over het uitvoeren van query's en waarschuwingen vindt u in het overzicht van de [Azure monitor-logboeken](../azure-monitor/log-query/log-query-overview.md) .
 

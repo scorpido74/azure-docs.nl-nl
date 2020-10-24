@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 06/26/2020
-ms.openlocfilehash: 71bd250cbfb2642a291d495273c4cd66ebb2c350
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 711d1cfccb6cdfe4a2fcb48a8ada7b33f744c317
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325382"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479082"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Azure SQL Database-en Azure Synapse Analytics-connectiviteits architectuur
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -31,7 +31,7 @@ In dit artikel wordt de architectuur van verschillende onderdelen beschreven die
 
 Het volgende diagram biedt een overzicht van de connectiviteits architectuur op hoog niveau.
 
-![architectuur overzicht](./media/connectivity-architecture/connectivity-overview.png)
+![Diagram met een overzicht van de connectiviteits architectuur op hoog niveau.](./media/connectivity-architecture/connectivity-overview.png)
 
 In de volgende stappen wordt beschreven hoe een verbinding tot stand wordt gebracht Azure SQL Database:
 
@@ -63,7 +63,7 @@ Als u verbinding maakt vanuit Azure, hebben uw verbindingen standaard een verbin
 
 Als u verbinding maakt vanuit buiten Azure, hebben uw verbindingen standaard een verbindings beleid van `Proxy` . Een beleid voor `Proxy` betekent dat de TCP-sessie tot stand is gebracht via de Azure SQL database gateway en dat alle volgende pakketten via de gateway stromen. In het volgende diagram ziet u deze verkeers stroom.
 
-![architectuur overzicht](./media/connectivity-architecture/connectivity-onprem.png)
+![Diagram dat laat zien hoe de TCP-sessie tot stand is gebracht via de Azure SQL Database gateway en dat alle volgende pakketten via de gateway stromen.](./media/connectivity-architecture/connectivity-onprem.png)
 
 > [!IMPORTANT]
 > Daarnaast open TCP-poorten 1434 en 14000-14999 om [verbinding te maken met DAC](https://docs.microsoft.com/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac)
@@ -90,7 +90,7 @@ Meer informatie over hoe verkeer moet worden gemigreerd naar nieuwe gateways in 
 | China - noord 2        | 40.73.50.0         |
 | Azië - oost            | 191.234.2.139, 52.175.33.150, 13.75.32.4 |
 | VS - oost              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
-| VS - oost 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0, 191.239.224.107, 104.208.150.3 |
+| US - oost 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0, 191.239.224.107, 104.208.150.3 |
 | Frankrijk - centraal       | 40.79.137.0, 40.79.129.1 |
 | Duitsland - centraal      | 51.4.144.100       |
 | Duitsland-noord Oost   | 51.5.144.179       |
@@ -98,7 +98,7 @@ Meer informatie over hoe verkeer moet worden gemigreerd naar nieuwe gateways in 
 | India - centraal        | 104.211.96.159     |
 | India - zuid          | 104.211.224.146    |
 | India - west           | 104.211.160.80     |
-| Japan East           | 13.78.61.196, 40.79.184.8, 13.78.106.224, 191.237.240.43, 40.79.192.5 |
+| Japan - oost           | 13.78.61.196, 40.79.184.8, 13.78.106.224, 191.237.240.43, 40.79.192.5 |
 | Japan - west           | 104.214.148.156, 40.74.100.192, 191.238.68.11, 40.74.97.10 |
 | Korea - centraal        | 52.231.32.42       |
 | Korea - zuid          | 52.231.200.86      |

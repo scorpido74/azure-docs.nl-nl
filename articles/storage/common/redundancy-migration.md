@@ -1,5 +1,5 @@
 ---
-title: Wijzigen hoe een opslag account wordt gerepliceerd
+title: Wijzigen hoe een opslagaccount wordt gerepliceerd
 titleSuffix: Azure Storage
 description: Meer informatie over hoe u kunt wijzigen hoe gegevens in een bestaand opslag account worden gerepliceerd.
 services: storage
@@ -11,14 +11,14 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c305292e915e02a1b53eb140ccd052990efbd315
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a16199891c00e2b8133aebebd1eaa6488423896c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827312"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487888"
 ---
-# <a name="change-how-a-storage-account-is-replicated"></a>Wijzigen hoe een opslag account wordt gerepliceerd
+# <a name="change-how-a-storage-account-is-replicated"></a>Wijzigen hoe een opslagaccount wordt gerepliceerd
 
 Azure Storage slaat altijd meerdere kopieën van uw gegevens op, zodat deze beschermd zijn tegen geplande en niet-geplande gebeurtenissen, waaronder tijdelijke hardwarestoringen, netwerk-of energie storingen en enorme natuur rampen. Redundantie zorgt ervoor dat uw opslag account voldoet aan de [Service Level Agreement (Sla) voor Azure Storage,](https://azure.microsoft.com/support/legal/sla/storage/) zelfs in het geval van fouten.
 
@@ -76,7 +76,7 @@ Set-AzStorageAccount -ResourceGroupName <resource_group> `
     -SkuName <sku>
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u de optie voor redundantie voor uw opslag account wilt wijzigen met Azure CLI, roept u de opdracht [AZ Storage account update](/cli/azure/storage/account#az-storage-account-update) aan en geeft u de `--sku` para meter:
 
@@ -144,9 +144,9 @@ Een ondersteunings medewerker neemt contact met u op en geeft u hulp die u nodig
 > [!NOTE]
 > Livemigratie wordt momenteel niet ondersteund voor Premium-bestands shares. Op dit moment worden alleen hand matig gekopieerde of verplaatsen van gegevens ondersteund.
 >
-> GZRS-opslag accounts bieden momenteel geen ondersteuning voor de archief laag. Zie [Azure Blob-opslag: dynamische, koele en archief toegangs lagen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) voor meer informatie.
+> GZRS-opslag accounts bieden momenteel geen ondersteuning voor de archief laag. Zie [Azure Blob-opslag: dynamische, koele en archief toegangs lagen](/azure/storage/blobs/storage-blob-storage-tiers) voor meer informatie.
 >
-> Managed disks zijn alleen beschikbaar voor LRS en kunnen niet worden gemigreerd naar ZRS. U kunt moment opnamen en installatie kopieën opslaan voor Standard SSD Managed disks op standaard HDD-opslag en [kiezen tussen opties voor LRS en ZRS](https://azure.microsoft.com/pricing/details/managed-disks/). Zie [Introduction to Azure Managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets)(Engelstalig) voor meer informatie over de integratie met beschikbaarheids sets.
+> Managed disks zijn alleen beschikbaar voor LRS en kunnen niet worden gemigreerd naar ZRS. U kunt moment opnamen en installatie kopieën opslaan voor Standard SSD Managed disks op standaard HDD-opslag en [kiezen tussen opties voor LRS en ZRS](https://azure.microsoft.com/pricing/details/managed-disks/). Zie [Introduction to Azure Managed disks](/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets)(Engelstalig) voor meer informatie over de integratie met beschikbaarheids sets.
 
 ## <a name="switch-from-zrs-classic"></a>Overschakelen van klassieke ZRS
 
@@ -177,7 +177,7 @@ Als u wilt bijwerken naar ZRS met behulp van Power shell, roept u de volgende op
 Set-AzStorageAccount -ResourceGroupName <resource_group> -AccountName <storage_account> -UpgradeToStorageV2
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u een upgrade wilt uitvoeren naar ZRS met behulp van Azure CLI, roept u de volgende opdracht aan:
 
@@ -200,6 +200,6 @@ Als u uw opslag account migreert van GRS naar LRS, zijn er geen extra kosten, ma
 
 ## <a name="see-also"></a>Zie ook
 
-- [Azure Storage redundantie](storage-redundancy.md)
+- [Azure Storage-redundantie](storage-redundancy.md)
 - [De eigenschap van de laatste synchronisatie tijd voor een opslag account controleren](last-sync-time-get.md)
 - [Geo-redundantie gebruiken om Maxi maal beschik bare toepassingen te ontwerpen](geo-redundant-design.md)

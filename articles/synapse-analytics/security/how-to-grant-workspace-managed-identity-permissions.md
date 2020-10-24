@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5c07943d517f893e67eed5103660a953b508cc87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 08ead12c99ae4919a2daf523065cfe332c644df1
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87535039"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487191"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>Machtigingen verlenen voor beheerde identiteit van werk ruimte (preview-versie)
 
@@ -60,7 +60,7 @@ Als u tijdens het maken van de werk ruimte de *Inzender voor gegevens van blobs*
 
 #### <a name="step-1-navigate-to-the-adls-gen2-storage-account-in-azure-portal"></a>Stap 1: Navigeer naar het ADLS Gen2 Storage-account in Azure Portal
 
-Open in Azure Portal het ADLS Gen2 Storage-account en selecteer **overzicht** in het linkernavigatievenster. U hoeft alleen de rol *Storage BLOB data Inzender* toe te wijzen op het niveau van de container of het bestands systeem. Selecteer **containers**.  
+Open in Azure Portal het ADLS Gen2 Storage-account en selecteer **overzicht** in het linkernavigatievenster. U hoeft alleen de rol *Storage BLOB data Inzender* toe te wijzen op het niveau van de container of het bestands systeem. Selecteer **Containers**.  
 ![Overzicht van ADLS Gen2 Storage-account](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-5.png)
 
 #### <a name="step-2-select-the-container"></a>Stap 2: de container selecteren
@@ -70,7 +70,7 @@ De beheerde identiteit moet gegevens toegang hebben tot de container (bestands s
 
 
 Selecteer diezelfde container of het bestands systeem om de rol van *BLOB voor gegevens opslag* te verlenen aan de beheerde identiteit.
-![Selectie ADLS Gen2 Storage-account container](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-6.png)
+![Scherm opname van de container of het bestands systeem dat u moet selecteren.](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-6.png)
 
 #### <a name="step-3-navigate-to-access-control"></a>Stap 3: Navigeer naar Access Control
 

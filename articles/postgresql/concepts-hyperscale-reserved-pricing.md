@@ -7,33 +7,33 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 06/15/2020
-ms.openlocfilehash: a5ce99927ce4cd2b04b5dd5cb865299b4be84ecb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f662d7e51c49006b191778ef70740ef79173828c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86519793"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487939"
 ---
 # <a name="prepay-for-azure-database-for-postgresql---hyperscale-citus-compute-resources-with-reserved-capacity"></a>Vooruitbetalen voor Azure Database for PostgreSQL-grootschalige (Citus) Compute-resources met gereserveerde capaciteit
 
 Azure Database for PostgreSQL – grootschalige (Citus) helpt u nu bij het besparen van geld door vooraf te betalen voor reken resources vergeleken met prijzen voor betalen per gebruik. Met de gereserveerde capaciteit van grootschalige (Citus) kunt u een periode van één of drie jaar vooraf instellen op de Server groep grootschalige (Citus) om een aanzienlijke korting op de reken kosten te krijgen. Als u de gereserveerde capaciteit van grootschalige (Citus) wilt kopen, moet u de Azure-regio, de reserverings periode en de facturerings frequentie opgeven.
 
 > [!IMPORTANT]
-> Dit artikel heeft betrekking op gereserveerde capaciteit voor Azure Database for PostgreSQL – grootschalige (Citus). Zie voor meer informatie over gereserveerde capaciteit voor Azure Database for PostgreSQL-één server, [vooruitbetalen voor Azure database for PostgreSQL – Single Server Compute-resources met gereserveerde capaciteit](/azure/postgresql/concept-reserved-pricing).
+> Dit artikel heeft betrekking op gereserveerde capaciteit voor Azure Database for PostgreSQL – grootschalige (Citus). Zie voor meer informatie over gereserveerde capaciteit voor Azure Database for PostgreSQL-één server, [vooruitbetalen voor Azure database for PostgreSQL – Single Server Compute-resources met gereserveerde capaciteit](./concept-reserved-pricing.md).
 
 U hoeft de reserve ring niet toe te wijzen aan specifieke grootschalige (Citus)-Server groepen. Een grootschalige-Server groep (Citus) die al wordt uitgevoerd of die nieuw is geïmplementeerd, krijgt automatisch het voor deel van gereserveerde prijzen. Als u een reserve ring aanschaft, betaalt u voor de reken kosten één jaar of drie jaar. Zodra u een reserve ring koopt, worden de kosten voor de grootschalige (Citus) die overeenkomen met de reserverings kenmerken niet meer in rekening gebracht tegen de betalen naar gebruik-tarieven. 
 
 Een reserve ring geldt niet voor software-, netwerk-of opslag kosten die zijn gekoppeld aan de grootschalige (Citus)-Server groepen. Aan het einde van de reserverings termijn verloopt het facturerings voordeel en worden de grootschalige (Citus)-Server groepen gefactureerd op basis van de betalen naar gebruik-prijs. Reserve ringen worden niet verlengd. Zie voor prijs informatie de [grootschalige-aanbieding (Citus) gereserveerde capaciteit van Azure database for PostgreSQL](https://azure.microsoft.com/pricing/details/postgresql/hyperscale-citus/).
 
-U kunt gereserveerde capaciteit van grootschalige (Citus) kopen in de [Azure Portal](https://portal.azure.com/). Betaal [vooraf of per maand](https://docs.microsoft.com/azure/cost-management-billing/reservations/monthly-payments-reservations) voor de reservering. De gereserveerde capaciteit kopen:
+U kunt gereserveerde capaciteit van grootschalige (Citus) kopen in de [Azure Portal](https://portal.azure.com/). Betaal [vooraf of per maand](../cost-management-billing/reservations/prepare-buy-reservation.md) voor de reservering. De gereserveerde capaciteit kopen:
 
 * U moet de rol van eigenaar zijn voor ten minste één Enterprise Agreement (EA) of een afzonderlijk abonnement met betalen naar gebruik-tarieven.
 * Voor Enterprise Agreement-abonnementen moet u **gereserveerde instanties toevoegen** inschakelen in de [EA-Portal](https://ea.azure.com/). Als deze instelling is uitgeschakeld, moet u een Enterprise Agreement beheerder zijn voor het abonnement.
 * Voor het programma Cloud Solution Provider (CSP) kan alleen de beheerder of de verkoop agent grootschalige (Citus) gereserveerde capaciteit kopen.
 
 Zie voor informatie over hoe Enterprise Agreement klanten en betalen per gebruik-klanten in rekening worden gebracht voor reserverings aankopen:
-- [Meer informatie over het gebruik van Azure-reserve ringen voor uw Enterprise Agreement-inschrijving](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
-- [Meer informatie over het gebruik van Azure-reserve ringen voor uw abonnement voor betalen naar gebruik](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)
+- [Meer informatie over het gebruik van Azure-reserve ringen voor uw Enterprise Agreement-inschrijving](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
+- [Meer informatie over het gebruik van Azure-reserve ringen voor uw abonnement voor betalen naar gebruik](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
 
 ## <a name="determine-the-right-server-group-size-before-purchase"></a>De juiste grootte van de Server groep bepalen vóór de aankoop
 
@@ -63,13 +63,13 @@ In de volgende tabel worden de vereiste velden beschreven.
 | Bereik        | Het bereik van de vCore-reserve ring kan betrekking hebben op één abonnement of meerdere abonnementen (gedeeld bereik). Als u **gedeeld**selecteert, wordt de vCore-reserverings korting toegepast op grootschalige (Citus)-Server groepen die worden uitgevoerd in abonnementen binnen uw facturerings context. Voor Enterprise Agreement klanten is de gedeelde Scope de inschrijving en omvat alle abonnementen binnen de inschrijving. Voor betalen per gebruik-klanten is de gedeelde Scope alle abonnementen met betalen per gebruik, gemaakt door de account beheerder. Als u **één abonnement**selecteert, wordt de vCore-reserverings korting toegepast op grootschalige (Citus)-Server groepen in dit abonnement. Als u **één resource groep**selecteert, wordt de reserverings korting toegepast op grootschalige-Server groepen (Citus) in het geselecteerde abonnement en de geselecteerde resource groep in dat abonnement. |
 | Regio       | De Azure-regio die wordt gedekt door de gereserveerde capaciteits reservering Azure Database for PostgreSQL – grootschalige (Citus).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | Termijn         | Eén jaar of drie jaar.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| Hoeveelheid     | De hoeveelheid reken resources die worden aangeschaft binnen de gereserveerde capaciteits reservering grootschalige (Citus). Met name het aantal coördinator-of worker-knoop punten dat is vCores in de geselecteerde Azure-regio die wordt gereserveerd en die de facturerings korting krijgt. Als u bijvoorbeeld (of plant om te worden uitgevoerd) grootschalige (Citus)-Server groepen met de totale reken capaciteit van 64-coördinator knooppunt vCores en 32 worker-knoop punt vCores in de regio VS-Oost, geeft u het aantal op, respectievelijk 64 en 32 voor de coördinator en worker-knoop punten, om het voor deel van alle servers te maximaliseren.                                                                                                                                                                                                                                                     |
+| Aantal     | De hoeveelheid reken resources die worden aangeschaft binnen de gereserveerde capaciteits reservering grootschalige (Citus). Met name het aantal coördinator-of worker-knoop punten dat is vCores in de geselecteerde Azure-regio die wordt gereserveerd en die de facturerings korting krijgt. Als u bijvoorbeeld (of plant om te worden uitgevoerd) grootschalige (Citus)-Server groepen met de totale reken capaciteit van 64-coördinator knooppunt vCores en 32 worker-knoop punt vCores in de regio VS-Oost, geeft u het aantal op, respectievelijk 64 en 32 voor de coördinator en worker-knoop punten, om het voor deel van alle servers te maximaliseren.                                                                                                                                                                                                                                                     |
 
 
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Reserveringen annuleren, ruilen of terugbetalen
 
-Annulering, ruiling of terugbetaling van reserveringen is mogelijk met bepaalde beperkingen. Zie [self-service-uitwisseling en terugbetalingen voor Azure-reserve ringen](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund)voor meer informatie.
+Annulering, ruiling of terugbetaling van reserveringen is mogelijk met bepaalde beperkingen. Zie [self-service-uitwisseling en terugbetalingen voor Azure-reserve ringen](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)voor meer informatie.
 
 ## <a name="vcore-size-flexibility"></a>flexibiliteit van vCore-grootte
 
@@ -85,9 +85,9 @@ De vCore-reserverings korting wordt automatisch toegepast op het aantal grootsch
 
 Raadpleeg de volgende artikelen voor meer informatie over Azure-reserveringen:
 
-* [Wat zijn Azure-reserveringen?](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
-* [Reserveringen beheren](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
-* [Meer informatie over de korting voor Azure-reserve ring](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges)
-* [Het gebruik van de reserve ring begrijpen voor uw abonnement voor betalen naar gebruik](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges-postgresql)
-* [Het gebruik van de reserve ring begrijpen voor uw Enterprise Agreement-inschrijving](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
-* [Azure-reserve ringen in het Partner Center-programma Cloud Solution Provider](https://docs.microsoft.com/partner-center/azure-reservations)
+* [Wat zijn Azure-reserveringen?](../cost-management-billing/reservations/save-compute-costs-reservations.md)
+* [Reserveringen beheren](../cost-management-billing/reservations/manage-reserved-vm-instance.md)
+* [Meer informatie over de korting voor Azure-reserve ring](../cost-management-billing/reservations/understand-reservation-charges.md)
+* [Het gebruik van de reserve ring begrijpen voor uw abonnement voor betalen naar gebruik](../cost-management-billing/reservations/understand-reservation-charges-postgresql.md)
+* [Het gebruik van de reserve ring begrijpen voor uw Enterprise Agreement-inschrijving](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
+* [Azure-reserve ringen in het Partner Center-programma Cloud Solution Provider](/partner-center/azure-reservations)

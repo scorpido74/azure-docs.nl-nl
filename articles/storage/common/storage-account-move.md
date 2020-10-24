@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: a5b9b4c7d3bdd0c68d3a91a39972389e48ed910d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c372dafdbfa5e9cafb208673128038dc23b30f5a
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85515014"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488823"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Een Azure Storage-account naar een andere regio verplaatsen
 
@@ -67,7 +67,7 @@ Een sjabloon exporteren via de Azure-portal:
 
 Een sjabloon exporteren met behulp van Power shell:
 
-1. Meld u aan bij uw Azure-abonnement met de opdracht [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) en volg de instructies op het scherm:
+1. Meld u aan bij uw Azure-abonnement met de opdracht [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) en volg de instructies op het scherm:
 
    ```azurepowershell-interactive
    Connect-AzAccount
@@ -167,7 +167,7 @@ De sjabloon implementeren met behulp van Power shell:
          }]          
     ```
 
-    U kunt regio codes verkrijgen door de opdracht [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) uit te voeren.
+    U kunt regio codes verkrijgen door de opdracht [Get-AzLocation](/powershell/module/az.resources/get-azlocation) uit te voeren.
 
     ```azurepowershell-interactive
     Get-AzLocation | format-table 
@@ -196,7 +196,7 @@ Implementeer de sjabloon om een nieuw opslagaccount te maken in de doelregio.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-1. Vraag de abonnements-ID op waar u het doel-open bare IP-adres wilt implementeren met [Get-AzSubscription](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-2.5.0):
+1. Vraag de abonnements-ID op waar u het doel-open bare IP-adres wilt implementeren met [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription):
 
    ```azurepowershell-interactive
    Get-AzSubscription
@@ -232,14 +232,14 @@ De volgende tabel bevat een overzicht van deze functies en richtlijnen voor het 
 
 ### <a name="move-data-to-the-new-storage-account"></a>Gegevens verplaatsen naar het nieuwe opslagaccount
 
-AzCopy is het voorkeurs programma waarmee u uw gegevens kunt verplaatsen. Deze is geoptimaliseerd voor prestaties.  Een van de manieren waarop het sneller gaat, is gegevens rechtstreeks tussen opslagservers kopiëren, zodat AzCopy niet de netwerkbandbreedte van uw computer gebruikt. Gebruik AzCopy bij de opdrachtregel of als onderdeel van een aangepast script. Raadpleeg [Aan de slag met AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+AzCopy is het voorkeurs programma waarmee u uw gegevens kunt verplaatsen. Deze is geoptimaliseerd voor prestaties.  Een van de manieren waarop het sneller gaat, is gegevens rechtstreeks tussen opslagservers kopiëren, zodat AzCopy niet de netwerkbandbreedte van uw computer gebruikt. Gebruik AzCopy bij de opdrachtregel of als onderdeel van een aangepast script. Raadpleeg [Aan de slag met AzCopy](/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 U kunt Azure Data Factory ook gebruiken om uw gegevens te verplaatsen. Het biedt een intuïtieve gebruikers interface. Als u Azure Data Factory wilt gebruiken, raadpleegt u een van de volgende koppelingen:. 
 
-  - [Gegevens kopiëren naar of uit Azure Blob Storage met behulp van Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
-  - [Gegevens kopiëren naar of vanuit Azure Data Lake Storage Gen2 met behulp van Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-  - [Gegevens kopiëren vanuit of naar Azure File Storage met behulp van Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-file-storage)
-  - [Gegevens kopiëren van en naar Azure Table Storage met behulp van Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-table-storage)
+  - [Gegevens kopiëren naar of uit Azure Blob Storage met behulp van Azure Data Factory](/azure/data-factory/connector-azure-blob-storage)
+  - [Gegevens kopiëren naar of vanuit Azure Data Lake Storage Gen2 met behulp van Azure Data Factory](/azure/data-factory/connector-azure-data-lake-storage)
+  - [Gegevens kopiëren vanuit of naar Azure File Storage met behulp van Azure Data Factory](/azure/data-factory/connector-azure-file-storage)
+  - [Gegevens kopiëren van en naar Azure Table Storage met behulp van Azure Data Factory](/azure/data-factory/connector-azure-table-storage)
 
 ---
 
@@ -273,5 +273,5 @@ Remove-AzStorageAccount -ResourceGroupName  $resourceGroup -AccountName $storage
 In deze zelf studie hebt u een Azure Storage-account verplaatst van de ene regio naar een andere en de bron resources opgeschoond.  Raadpleeg voor meer informatie over het verplaatsen van resources tussen regio's en herstel na nood gevallen in Azure:
 
 
-- [Resources verplaatsen naar een nieuwe resourcegroep of een nieuw abonnement](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [Virtuele Azure-machines verplaatsen naar een andere regio](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [Resources verplaatsen naar een nieuwe resourcegroep of een nieuw abonnement](/azure/azure-resource-manager/resource-group-move-resources)
+- [Virtuele Azure-machines verplaatsen naar een andere regio](/azure/site-recovery/azure-to-azure-tutorial-migrate)

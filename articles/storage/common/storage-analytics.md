@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 9a081a28d4c96e3c38986cbb3c0990bc89c5ab99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe1b685a0209643332d798b875b9e62b02aa02da
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83684481"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488772"
 ---
 # <a name="storage-analytics"></a>Storage Analytics
 
@@ -41,7 +41,7 @@ Als u een Bewaar beleid voor gegevens hebt geconfigureerd, worden er geen kosten
 
 ### <a name="understanding-billable-requests"></a>Informatie over factureer bare aanvragen
 
-Elke aanvraag voor de opslag service van een account is Factureerbaar of niet factureerbaar. Opslaganalyse registreert elke afzonderlijke aanvraag voor een service, met inbegrip van een status bericht dat aangeeft hoe de aanvraag is verwerkt. Op dezelfde manier Opslaganalyse worden metrische gegevens opgeslagen voor zowel een service als de API-bewerkingen van die service, inclusief de percentages en het aantal bepaalde status berichten. Samen kunnen deze functies u helpen bij het analyseren van uw factureer bare aanvragen, het aanbrengen van verbeteringen in uw toepassing en het vaststellen van problemen met aanvragen voor uw services. Zie [Wat is Azure Storage facturering: band breedte, trans acties en capaciteit](https://docs.microsoft.com/archive/blogs/windowsazurestorage/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity)voor meer informatie over facturering.
+Elke aanvraag voor de opslag service van een account is Factureerbaar of niet factureerbaar. Opslaganalyse registreert elke afzonderlijke aanvraag voor een service, met inbegrip van een status bericht dat aangeeft hoe de aanvraag is verwerkt. Op dezelfde manier Opslaganalyse worden metrische gegevens opgeslagen voor zowel een service als de API-bewerkingen van die service, inclusief de percentages en het aantal bepaalde status berichten. Samen kunnen deze functies u helpen bij het analyseren van uw factureer bare aanvragen, het aanbrengen van verbeteringen in uw toepassing en het vaststellen van problemen met aanvragen voor uw services. Zie [Wat is Azure Storage facturering: band breedte, trans acties en capaciteit](/archive/blogs/windowsazurestorage/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity)voor meer informatie over facturering.
 
 Wanneer u Opslaganalyse gegevens bekijkt, kunt u de tabellen in het onderwerp [Opslaganalyse vastgelegde bewerkingen en status berichten](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) gebruiken om te bepalen welke aanvragen Factureerbaar zijn. Vervolgens kunt u uw logboeken en metrische gegevens vergelijken met de status berichten om te zien of er een bepaalde aanvraag in rekening is gebracht. U kunt ook de tabellen in het vorige onderwerp gebruiken om de beschik baarheid voor een opslag service of afzonderlijke API-bewerking te onderzoeken.
 

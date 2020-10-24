@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: 23811f379f8738e3fe9f162e23627d0c3c457621
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 8ae16e6799d1253b8b070d59414beaee3c7ff332
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367496"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479779"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migreren naar gedetailleerde, op rollen gebaseerde toegang voor clusterconfiguraties
 
@@ -112,11 +112,11 @@ Update naar [versie 2.1.0](https://www.nuget.org/packages/Microsoft.Azure.Manage
 
 Update naar [versie 5.0.0](https://www.nuget.org/packages/Microsoft.Azure.Management.HDInsight/5.0.0) of hoger van de HDINSIGHT-SDK voor .net. U kunt minimale code wijzigingen opgeven als u een methode gebruikt die wordt beïnvloed door deze wijzigingen:
 
-- [`ConfigurationOperationsExtensions.Get`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.get?view=azure-dotnet)**retourneert niet langer gevoelige para meters** , zoals opslag sleutels (kern site) of http-referenties (gateway).
-    - Gebruik voorwaarts om alle configuraties, inclusief gevoelige para meters, op te halen [`ConfigurationOperationsExtensions.List`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.list?view=azure-dotnet) .Houd er rekening mee dat gebruikers met de rol ' lezer ' deze methode niet kunnen gebruiken. Dit biedt gedetailleerde controle over welke gebruikers toegang hebben tot gevoelige informatie voor een cluster. 
-    - Als u alleen referenties van de HTTP-gateway wilt ophalen, gebruikt u [`ClusterOperationsExtensions.GetGatewaySettings`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.getgatewaysettings?view=azure-dotnet) . 
-- [`ConfigurationsOperationsExtensions.Update`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.update?view=azure-dotnet) is nu afgeschaft en is vervangen door [`ClusterOperationsExtensions.UpdateGatewaySettings`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.updategatewaysettings?view=azure-dotnet) . 
-- [`ConfigurationsOperationsExtensions.EnableHttp`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.enablehttp?view=azure-dotnet) en [`DisableHttp`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.disablehttp?view=azure-dotnet) zijn nu afgeschaft. HTTP is nu altijd ingeschakeld, zodat deze methoden niet meer nodig zijn.
+- [`ConfigurationOperationsExtensions.Get`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.get?view=azure-dotnet&preserve-view=true)**retourneert niet langer gevoelige para meters** , zoals opslag sleutels (kern site) of http-referenties (gateway).
+    - Gebruik voorwaarts om alle configuraties, inclusief gevoelige para meters, op te halen [`ConfigurationOperationsExtensions.List`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.list?view=azure-dotnet&preserve-view=true) .Houd er rekening mee dat gebruikers met de rol ' lezer ' deze methode niet kunnen gebruiken. Dit biedt gedetailleerde controle over welke gebruikers toegang hebben tot gevoelige informatie voor een cluster. 
+    - Als u alleen referenties van de HTTP-gateway wilt ophalen, gebruikt u [`ClusterOperationsExtensions.GetGatewaySettings`](/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.getgatewaysettings?view=azure-dotnet&preserve-view=true) . 
+- [`ConfigurationsOperationsExtensions.Update`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.update?view=azure-dotnet&preserve-view=true) is nu afgeschaft en is vervangen door [`ClusterOperationsExtensions.UpdateGatewaySettings`](/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.updategatewaysettings?view=azure-dotnet&preserve-view=true) . 
+- [`ConfigurationsOperationsExtensions.EnableHttp`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.enablehttp?view=azure-dotnet&preserve-view=true) en [`DisableHttp`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.disablehttp?view=azure-dotnet&preserve-view=true) zijn nu afgeschaft. HTTP is nu altijd ingeschakeld, zodat deze methoden niet meer nodig zijn.
 
 ### <a name="sdk-for-python"></a>SDK voor Python
 
@@ -193,7 +193,7 @@ Cluster configuraties bevinden zich nu achter een gedetailleerd toegangs beheer 
 
 ### <a name="why-do-i-see-insufficient-privileges-to-complete-the-operation-when-running-the-azure-cli-command-to-assign-the-hdinsight-cluster-operator-role-to-another-user-or-service-principal"></a>Waarom zie ik ' onvoldoende bevoegdheden om de bewerking te volt ooien ' bij het uitvoeren van de Azure CLI-opdracht om de rol van de HDInsight-cluster operator toe te wijzen aan een andere gebruiker of Service-Principal?
 
-Naast de rol van eigenaar moet de gebruiker of service-principal die de opdracht uitvoert, voldoende Azure AD-machtigingen hebben om de object-Id's van de toegewezen persoon op te zoeken. Dit bericht geeft onvoldoende Azure AD-machtigingen aan. Probeer het argument te vervangen `-–assignee` door `–assignee-object-id` en de object-id van de toegewezen gebruiker op te geven als de para meter in plaats van de naam (of de principal-id in het geval van een beheerde identiteit). Zie de sectie optionele para meters van de [toewijzing AZ Role](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) voor meer informatie.
+Naast de rol van eigenaar moet de gebruiker of service-principal die de opdracht uitvoert, voldoende Azure AD-machtigingen hebben om de object-Id's van de toegewezen persoon op te zoeken. Dit bericht geeft onvoldoende Azure AD-machtigingen aan. Probeer het argument te vervangen `-–assignee` door `–assignee-object-id` en de object-id van de toegewezen gebruiker op te geven als de para meter in plaats van de naam (of de principal-id in het geval van een beheerde identiteit). Zie de sectie optionele para meters van de [toewijzing AZ Role](/cli/azure/role/assignment#az-role-assignment-create) voor meer informatie.
 
 Als dit nog steeds niet werkt, neemt u contact op met uw Azure AD-beheerder om de juiste machtigingen te verkrijgen.
 
