@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/07/2019
 ms.author: Zhchia
-ms.openlocfilehash: cd1e9431d7125b405f31cb1ed329e6e264cd247e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 135b780f547ddd8e979899898b9971c4dcf89cee
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285893"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514704"
 ---
 # <a name="tutorial-configure-spaceiq-for-automatic-user-provisioning"></a>Zelf studie: SpaceIQ configureren voor automatische gebruikers inrichting
 
@@ -46,7 +46,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 * U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan SpaceIQ om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan SpaceIQ, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaardtoegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan SpaceIQ, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaard toegang** worden uitgesloten van het inrichten.
 
 ## <a name="set-up-spaceiq-for-provisioning"></a>SpaceIQ instellen voor inrichting
 
@@ -95,7 +95,7 @@ Voordat u SpaceIQ configureert voor het automatisch inrichten van gebruikers met
 In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in SpaceIQ te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
 
 > [!TIP]
-> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor SpaceIQ, gevolgd door de instructies in de [SpaceIQ-zelf studie voor eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/saas-apps/spaceiq-tutorial). Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar in de compliment
+> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor SpaceIQ, gevolgd door de instructies in de [SpaceIQ-zelf studie voor eenmalige aanmelding](./spaceiq-tutorial.md). Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar in de compliment
 
 ### <a name="to-configure-automatic-user-provisioning-for-spaceiq-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor SpaceIQ in azure AD:
 

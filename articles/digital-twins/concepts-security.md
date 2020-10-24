@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: f438f4393538478f2960e709d8e23beb6106510d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 6784ca9dbc32811a02f4454be94d220c634318f5
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485746"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503314"
 ---
 # <a name="secure-azure-digital-twins"></a>Azure Digital Apparaatdubbels beveiligen
 
@@ -20,7 +20,7 @@ Voor de beveiliging biedt Azure Digital Apparaatdubbels nauw keurige toegangs co
 
 Azure Digital Apparaatdubbels biedt ook ondersteuning voor versleuteling van gegevens in rust.
 
-## <a name="granting-permissions-with-azure-rbac"></a>Machtigingen verlenen met Azure RBAC
+## <a name="roles-and-permissions-with-azure-rbac"></a>Rollen en machtigingen met Azure RBAC
 
 Azure RBAC wordt geleverd aan Azure Digital Apparaatdubbels via integratie met [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD).
 
@@ -47,22 +47,32 @@ Met beheerde identiteiten beheert het Azure-platform deze runtime-identiteit. U 
 
 #### <a name="authorization-azure-roles-for-azure-digital-twins"></a>Autorisatie: Azure-functies voor Azure Digital Apparaatdubbels
 
-Azure biedt de onderstaande ingebouwde Azure-rollen voor het verlenen van toegang tot een Azure Digital Apparaatdubbels-resource:
-* *Azure Digital Apparaatdubbels data owner* : gebruik deze rol om volledige toegang te geven tot Azure Digital apparaatdubbels-resources.
-* *Azure Digital Apparaatdubbels data Reader* : gebruik deze functie om alleen-lezen toegang te verlenen aan Azure Digital apparaatdubbels-resources.
+Azure biedt **twee ingebouwde rollen van Azure** voor het verlenen van toegang tot de Azure Digital apparaatdubbels [Data-vlak-api's](how-to-use-apis-sdks.md#overview-data-plane-apis). U kunt op naam of op ID verwijzen naar de rollen:
+
+| Ingebouwde rol | Beschrijving | Id | 
+| --- | --- | --- |
+| Azure Digital Apparaatdubbels-gegevens eigenaar | Biedt volledige toegang tot Azure Digital Apparaatdubbels-bronnen | bcd981a7-7f74-457b-83e1-cceb9e632ffe |
+| Azure Digital Apparaatdubbels-gegevens lezer | Geeft alleen-lezen toegang tot Azure Digital Apparaatdubbels-resources | d57506d4-4c8d-48b1-8587-93c323f6a5a3 |
 
 >[!NOTE]
 > De namen van deze rollen zijn onlangs gewijzigd ten opzichte van hun eerdere namen in de preview-versie:
 > * De *Azure Digital apparaatdubbels-gegevens eigenaar* was voorheen *Azure Digital apparaatdubbels-eigenaar (preview-versie)*.
 > * *Azure Digital Apparaatdubbels data Reader* was voorheen *Azure Digital Apparaatdubbels Reader (preview)*.
 
-Zie voor meer informatie over hoe ingebouwde rollen worden gedefinieerd [*begrijpen functie definities*](../role-based-access-control/role-definitions.md) in de documentatie van Azure RBAC. Zie [*aangepaste rollen in azure*](../role-based-access-control/custom-roles.md)voor meer informatie over het maken van aangepaste Azure-rollen.
-
 U kunt rollen op twee manieren toewijzen:
 * via het deel venster toegangs beheer (IAM) voor Azure Digital Apparaatdubbels in de Azure Portal (Zie [*Azure-roltoewijzingen toevoegen of verwijderen met de Azure Portal*](../role-based-access-control/role-assignments-portal.md))
 * via CLI-opdrachten om een rol toe te voegen of te verwijderen
 
 Voor meer gedetailleerde stappen over hoe u dit doet, kunt u het uitproberen in de zelf studie over Azure Digital Apparaatdubbels [*: verbinding maken met een end-to-end oplossing*](tutorial-end-to-end.md).
+
+Zie voor meer informatie over hoe ingebouwde rollen worden gedefinieerd [*begrijpen functie definities*](../role-based-access-control/role-definitions.md) in de documentatie van Azure RBAC. Zie [*aangepaste rollen in azure*](../role-based-access-control/custom-roles.md)voor meer informatie over het maken van aangepaste Azure-rollen.
+
+##### <a name="automating-roles"></a>Rollen automatiseren
+
+Wanneer u verwijst naar rollen in geautomatiseerde scenario's, is het raadzaam om deze te laten verwijzen door hun **id's** in plaats van hun namen. De namen kunnen veranderen tussen releases, maar de Id's worden niet weer geven, waardoor ze een stabielere referentie hebben in Automation.
+
+> [!TIP]
+> Als u rollen hebt assiging met een cmdlet, zoals `New-AzRoleAssignment` ([verwijzing](/powershell/module/az.resources/new-azroleassignment?view=azps-4.8.0)), kunt u de `-RoleDefinitionId` para meter gebruiken in plaats van een `-RoleDefinitionName` id door te geven in plaats van een naam voor de rol.
 
 ### <a name="permission-scopes"></a>Machtigingsbereiken
 

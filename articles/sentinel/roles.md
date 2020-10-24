@@ -1,6 +1,6 @@
 ---
 title: Machtigingen in azure Sentinel | Microsoft Docs
-description: In dit artikel wordt uitgelegd hoe Azure Sentinel gebruikmaakt van op rollen gebaseerd toegangs beheer om machtigingen toe te wijzen aan gebruikers en de toegestane acties voor elke rol te identificeren.
+description: In dit artikel wordt uitgelegd hoe Azure Sentinel gebruikmaakt van toegangs beheer op basis van rollen om machtigingen toe te wijzen aan gebruikers en de toegestane acties voor elke rol te identificeren.
 services: sentinel
 cloud: na
 documentationcenter: na
@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 3b680dbaead6e94aa955ebc0e0e720281a40389d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0704f076ef7c5d1a39af67d3ec6ec2baece1fda5
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369893"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517298"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Machtigingen in Azure Sentinel
 
 Azure Sentinel maakt gebruik [van Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) om [ingebouwde rollen](../role-based-access-control/built-in-roles.md) te bieden die kunnen worden toegewezen aan gebruikers, groepen en services in Azure.
 
-Gebruik RBAC om rollen binnen uw beveiligings team te maken en toe te wijzen om de juiste toegang tot Azure Sentinel te verlenen. De verschillende rollen bieden een nauw keurige controle over wat gebruikers van Azure Sentinel kunnen zien en doen. Azure-rollen kunnen rechtstreeks worden toegewezen in de Azure Sentinel-werk ruimte (Zie de opmerking hieronder) of in een abonnement of resource groep waartoe de werk ruimte behoort, die door Azure Sentinel wordt overgenomen.
+Gebruik Azure RBAC om rollen binnen uw beveiligings team te maken en toe te wijzen om de juiste toegang tot Azure Sentinel te verlenen. De verschillende rollen bieden een nauw keurige controle over wat gebruikers van Azure Sentinel kunnen zien en doen. Azure-rollen kunnen rechtstreeks worden toegewezen in de Azure Sentinel-werk ruimte (Zie de opmerking hieronder) of in een abonnement of resource groep waartoe de werk ruimte behoort, die door Azure Sentinel wordt overgenomen.
 
 ## <a name="roles-for-working-in-azure-sentinel"></a>Rollen voor het werken in azure-Sentinel
 
@@ -62,7 +62,7 @@ Gebruikers met bepaalde taak vereisten moeten mogelijk aanvullende rollen of spe
 
 - Gast gebruikers die incidenten toewijzen
 
-    Als een gast gebruiker incidenten moet kunnen toewijzen, moet aan de gebruiker naast de rol van Azure Sentinel responder ook de rol van [Directory Reader](../active-directory/roles/permissions-reference.md#directory-readers)worden toegewezen. Houd er rekening mee dat deze rol *geen* Azure RBAC-rol heeft, maar een **Azure Active Directory** rol, en dat reguliere (niet-gast) gebruikers standaard deze rol kunnen toewijzen. 
+    Als een gast gebruiker incidenten moet kunnen toewijzen, moet aan de gebruiker naast de rol van Azure Sentinel responder ook de rol van [Directory Reader](../active-directory/roles/permissions-reference.md#directory-readers)worden toegewezen. Houd er rekening mee dat deze rol *geen* Azure-rol, maar een **Azure Active Directory** rol, en dat normale (niet-gast) gebruikers standaard deze rol kunnen toewijzen. 
 
 Zie de [onderstaande tabel](#roles-and-allowed-actions)voor een vergelijking naast elkaar.
 
@@ -87,11 +87,11 @@ De volgende tabel bevat een overzicht van de rollen en toegestane acties in Azur
 | Azure Sentinel Contributor | -- | &#10003; | &#10003; | &#10003; |
 | Inzender voor Azure Sentinel contributor + Logic apps | &#10003; | &#10003; | &#10003; | &#10003; |
 
-## <a name="custom-roles-and-advanced-rbac"></a>Aangepaste rollen en geavanceerde RBAC
+## <a name="custom-roles-and-advanced-azure-rbac"></a>Aangepaste rollen en geavanceerde Azure RBAC
 
-- Naast of in plaats van met behulp van ingebouwde rollen van Azure, kunt u aangepaste Azure-rollen maken voor Azure Sentinel. Aangepaste Azure-rollen voor Azure Sentinel worden op dezelfde manier gemaakt als bij het maken van andere [aangepaste Azure RBAC](../role-based-access-control/custom-roles-rest.md#create-a-custom-role) -rollen, op basis van [specifieke machtigingen voor Azure Sentinel](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights) en [Azure log Analytics-resources](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights).
+- Naast of in plaats van met behulp van ingebouwde rollen van Azure, kunt u aangepaste Azure-rollen maken voor Azure Sentinel. Aangepaste Azure-rollen voor Azure Sentinel worden op dezelfde manier gemaakt als bij het maken van andere [aangepaste rollen van Azure](../role-based-access-control/custom-roles-rest.md#create-a-custom-role), op basis van [specifieke machtigingen voor Azure Sentinel](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights) en tot [Azure log Analytics-resources](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights).
 
-- U kunt het Log Analytics geavanceerd toegangs beheer op basis van rollen gebruiken voor de gegevens in uw Azure Sentinel-werk ruimte. Dit omvat zowel RBAC op gegevens type als resource gerichte RBAC. Zie [logboek gegevens en-werk ruimten beheren in azure monitor](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions)voor meer informatie over log Analytics rollen.
+- U kunt het Log Analytics geavanceerd toegangs beheer op basis van rollen gebruiken voor de gegevens in uw Azure Sentinel-werk ruimte. Dit omvat zowel op gegevens type gebaseerde Azure RBAC en resource gerichte Azure RBAC. Zie [logboek gegevens en-werk ruimten beheren in azure monitor](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions)voor meer informatie over log Analytics rollen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

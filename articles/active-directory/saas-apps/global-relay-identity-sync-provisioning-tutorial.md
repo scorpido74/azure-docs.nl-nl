@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2020
+ms.date: 10/22/2020
 ms.author: Zhchia
-ms.openlocfilehash: f0e34c8a331c475b103922789a9d1983f1c84cac
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c1e2d64bb30b6451e232c85a5892771157d32928
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92492169"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514381"
 ---
 # <a name="tutorial-configure-global-relay-identity-sync-for-automatic-user-provisioning"></a>Zelf studie: globale relay-identiteits synchronisatie configureren voor automatische gebruikers inrichting
 
@@ -52,7 +52,7 @@ Neem contact op met de vertegenwoordiger van de globale relay-identiteit om de T
 
 ## <a name="step-3-add-global-relay-identity-sync-from-the-azure-ad-application-gallery"></a>Stap 3. Globale relay-identiteits synchronisatie toevoegen vanuit de Azure AD-toepassings galerie
 
-Voeg de globale relay-identiteits synchronisatie toe vanuit de Azure AD-toepassings galerie om het beheer van de inrichting van de globale relay-identiteits synchronisatie te starten. Als u eerder de globale relay-identiteits synchronisatie voor SSO hebt ingesteld, kunt u dezelfde toepassing gebruiken. U wordt echter aangeraden een afzonderlijke app te maken wanneer u de integratie voor het eerst test. Klik [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) voor meer informatie over het toevoegen van een toepassing uit de galerie. 
+Voeg de globale relay-identiteits synchronisatie toe vanuit de Azure AD-toepassings galerie om het beheer van de inrichting van de globale relay-identiteits synchronisatie te starten. Meer informatie over het toevoegen van een toepassing uit [de galerie.](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Stap 4. Definiëren wie u wilt opnemen in het bereik voor inrichting 
 
@@ -63,7 +63,7 @@ Met de Azure AD-inrichtingsservice kunt u bepalen wie worden ingericht op basis 
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-global-relay-identity-sync"></a>Stap 5. Automatische gebruikers inrichting configureren voor synchronisatie van globale relay-identiteit 
 
-In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in TestApp te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
+In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen te maken, bij te werken en uit te scha kelen in globale relay-identiteits synchronisatie-app op basis van gebruikers-en/of groeps toewijzingen in azure AD.
 
 ### <a name="to-configure-automatic-user-provisioning-for-global-relay-identity-sync-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor de synchronisatie van globale relay-identiteiten in azure AD:
 

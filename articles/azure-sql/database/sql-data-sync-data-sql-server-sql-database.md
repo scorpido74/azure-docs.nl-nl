@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: bc0286dc509acd4afba7f1660b65e49b25378496
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 194625ab43dbb161d2b04352d715a44a1328a888
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371748"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503331"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Wat is SQL Data Sync voor Azure?
 
@@ -135,7 +135,7 @@ Het inrichten en verwijderen van de inrichting tijdens het maken van een synchro
 - Een primaire sleutel kan niet de volgende gegevens typen bevatten: sql_variant, binary, varbinary, image en XML.
 - Wees voorzichtig wanneer u de volgende gegevens typen als primaire sleutel gebruikt, omdat de ondersteunde precisie alleen geldt voor de tweede: time, datetime, DATETIME2, date time offset.
 - De namen van objecten (data bases, tabellen en kolommen) mogen niet de periode van het afdruk bare teken (.), het linker vier Kante haakje ([) of de rechter rechte haak (]) bevatten.
-- De naam van een tabel mag geen afdruk bare tekens bevatten:! " # $ % ' ( ) * + -
+- De naam van een tabel mag geen afdruk bare tekens bevatten:! "# $% () * +-spatie
 - Azure Active Directory-verificatie wordt niet ondersteund.
 - Als er tabellen met dezelfde naam maar een ander schema zijn (bijvoorbeeld dbo. klanten en Sales. klanten), kan slechts één van de tabellen worden toegevoegd aan de synchronisatie.
 - Kolommen met User-Defined gegevens typen worden niet ondersteund

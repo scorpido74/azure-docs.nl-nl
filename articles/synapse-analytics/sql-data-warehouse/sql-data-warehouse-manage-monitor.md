@@ -11,12 +11,12 @@ ms.date: 03/24/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: synapse-analytics
-ms.openlocfilehash: 9eb1006bdba6c69136c972359bb13420a04f4180
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70ce0d6aada2b03646500720b0eba980a1f2d8f8
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89048021"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515726"
 ---
 # <a name="monitor-your-azure-synapse-analytics-sql-pool-workload-using-dmvs"></a>De werk belasting van uw Azure Synapse Analytics SQL-groep controleren met behulp van Dmv's
 
@@ -139,7 +139,7 @@ WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
 * Controleer de *total_elapsed_time* kolom om te zien of een bepaalde distributie aanzienlijk langer duurt dan andere.
-* Controleer voor de langlopende distributie de *rows_processed* kolom om te zien of het aantal rijen dat wordt verplaatst van die distributie aanzienlijk groter is dan de andere. Als dit het geval is, kan dit wijzen op het hellen van de onderliggende gegevens.
+* Controleer voor de langlopende distributie de *rows_processed* kolom om te zien of het aantal rijen dat wordt verplaatst van die distributie aanzienlijk groter is dan de andere. Als dit het geval is, kan dit wijzen op het hellen van de onderliggende gegevens. Een van de oorzaken voor het scheef trekken van gegevens wordt gedistribueerd op een kolom met veel NULL-waarden (waarvan alle rijen alle grond in dezelfde distributie hebben). Voorkom langzame query's door distributie te voor komen op deze typen kolommen of door de query te filteren om zo mogelijk NULLen te elimineren. 
 
 Als de query wordt uitgevoerd, kunt u [DBCC PDW_SHOWEXECUTIONPLAN](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) gebruiken om het SQL Server geschatte plan op te halen uit de SQL Server plan cache voor de huidige actieve SQL-stap binnen een bepaalde distributie.
 

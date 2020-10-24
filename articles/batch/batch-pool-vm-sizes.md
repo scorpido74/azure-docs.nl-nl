@@ -2,14 +2,14 @@
 title: VM-grootten kiezen voor Pools
 description: Kiezen uit de beschik bare VM-grootten voor reken knooppunten in Azure Batch Pools
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 10/23/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6dc1b3cf708a6dbaacc87e6c9fc00ae6f0ff3440
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: fd093006a9eb0c9746a19cb5f91b280145ddfb7e
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107501"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517052"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Een VM-grootte voor reken knooppunten in een Azure Batch groep kiezen
 
@@ -31,17 +31,19 @@ Batch-Pools in de virtuele-machine configuratie ondersteunen bijna alle VM-groot
 | Basic A | Alle grootten *behalve* Basic_A0 (a0) |
 | A | Alle grootten *behalve* Standard_A0 |
 | Av2 | Alle grootten |
-| B | Geen |
-| DC | Geen |
+| B | Niet ondersteund |
+| DC | Niet ondersteund |
 | Dv2, DSv2 | Alle grootten |
 | Dv3, Dsv3 | Alle grootten |
 | Dav4<sup>1</sup> | Alle grootten |
 | Dasv4<sup>1</sup> | Alle grootten |
 | Ddv4, Ddsv4 |  Alle grootten |
+| Dv4, Dsv4 | Niet ondersteund |
 | Ev3, Esv3 | Alle grootten, met uitzonde ring van E64is_v3 |
 | Eav4<sup>1</sup> | Alle grootten |
 | Easv4<sup>1</sup> | Alle grootten |
 | Edv4, Edsv4 |  Alle grootten |
+| Ev4, Esv4 | Niet ondersteund |
 | F, FS | Alle grootten |
 | Fsv2 | Alle grootten |
 | G, GS | Alle grootten |
@@ -56,12 +58,13 @@ Batch-Pools in de virtuele-machine configuratie ondersteunen bijna alle VM-groot
 | NC | Alle grootten |
 | NCv2<sup>1</sup> | Alle grootten |
 | NCv3<sup>1</sup> | Alle grootten |
+| NCasT4_v3 | Geen-nog niet beschikbaar |
 | ND<sup>1</sup> | Alle grootten |
 | NDv2<sup>1</sup> | Geen-nog niet beschikbaar |
 | NV | Alle grootten |
 | NVv3<sup>1</sup> | Alle grootten |
-| NVv4 | Geen-nog niet beschikbaar |
-| SAP HANA | Geen |
+| NVv4<sup>1</sup> | Alle grootten |
+| SAP HANA | Niet ondersteund |
 
 <sup>1</sup> deze VM-serie kan worden toegewezen in batch-Pools in de configuratie van de virtuele machine, maar u moet een nieuw batch-account maken en een specifieke [quota verhoging](batch-quota-limit.md#increase-a-quota)aanvragen. Deze beperking wordt verwijderd zodra vCPU quotum per VM-serie volledig wordt ondersteund voor batch-accounts.
 

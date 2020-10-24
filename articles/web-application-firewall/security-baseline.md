@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: edb184fa286eb6212f714c18830540e105ea3305
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5ecfd5e5ff29b2eade4391976947062d6e8f186f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92021176"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516151"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Azure-beveiligings basislijn voor Azure Web Application firewall
 
@@ -355,7 +355,7 @@ Stroom lijn dit proces door Diagnostische instellingen te maken voor gebruikers 
 
 **Richt lijnen**: isolatie implementeren met afzonderlijke abonnementen en beheer groepen voor afzonderlijke beveiligings domeinen, zoals omgevings type en gegevens gevoeligheids niveau, bijvoorbeeld ontwikkelings-, test-en productie omgevingen. 
 
-Toegang tot Azure-resources beheren met Azure Active Directory (Azure AD) op rollen gebaseerd toegangs beheer (Azure RBAC).
+Toegang tot Azure-resources beheren met Azure op rollen gebaseerd toegangs beheer (Azure RBAC).
 
 - [Aanvullende Azure-abonnementen maken](/azure/billing/billing-create-subscription)
 
@@ -379,10 +379,10 @@ Volg Security Center aanbevelingen voor het versleutelen van de rest en de versl
 
 **Verantwoordelijkheid**: gedeeld
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: op rollen gebaseerd toegangs beheer gebruiken voor het beheren van de toegang tot bronnen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
-**Hulp**: toegang tot Azure-resources beheren met Azure Active Directory (Azure AD) op rollen gebaseerd toegangs beheer (Azure RBAC).
-- [RBAC configureren in azure](../role-based-access-control/role-assignments-portal.md)
+**Hulp**: toegang tot Azure-resources beheren met Azure op rollen gebaseerd toegangs beheer (Azure RBAC).
+- [Azure RBAC configureren](../role-based-access-control/role-assignments-portal.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 

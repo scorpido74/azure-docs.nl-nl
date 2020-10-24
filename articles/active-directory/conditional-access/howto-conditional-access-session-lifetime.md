@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 10/16/2020
+ms.date: 10/23/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 817a13080cedc1d737b43bae14a07a7d4a0bd416
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 8d33721a70f0a9d4cfb26516d2f252424cc924f8
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145263"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503807"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Beheer van verificatiesessies met voorwaardelijke toegang configureren
 
@@ -37,7 +37,7 @@ Met de aanmeldings frequentie wordt de tijds periode gedefinieerd voordat een ge
 
 De standaard configuratie van de Azure Active Directory (Azure AD) voor de aanmeldings frequentie van gebruikers is een rollend venster van 90 dagen. Het is vaak een goed idee om gebruikers te vragen om referenties, maar dit kan Backfire: gebruikers die zijn getraind om hun referenties op te geven zonder dat ze dit doen, kunnen ze per ongeluk door geven aan een kwaad aardige referentie prompt.
 
-Het kan erop klinken dat een waarschuwing wordt weer gegeven om te voor komen dat een gebruiker zich opnieuw aanmeldt, op voor waarde dat de sessie wordt ingetrokken door een schending van de IT-beleids regels. Enkele voor beelden zijn (maar niet beperkt tot) het wijzigen van een wacht woord, een niet-compatibel apparaat of het uitschakelen van een account. U kunt [gebruikers sessies ook expliciet intrekken met behulp van Power shell](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). De standaard configuratie van Azure AD wordt niet meer door gebruikers gevraagd om hun referenties op te geven als de beveiligings postuur van hun sessies niet is gewijzigd.
+Het kan erop klinken dat een waarschuwing wordt weer gegeven om te voor komen dat een gebruiker zich opnieuw aanmeldt, op voor waarde dat de sessie wordt ingetrokken door een schending van de IT-beleids regels. Enkele voor beelden zijn (maar niet beperkt tot) het wijzigen van een wacht woord, een niet-compatibel apparaat of het uitschakelen van een account. U kunt [gebruikers sessies ook expliciet intrekken met behulp van Power shell](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0&preserve-view=true). De standaard configuratie van Azure AD wordt niet meer door gebruikers gevraagd om hun referenties op te geven als de beveiligings postuur van hun sessies niet is gewijzigd.
 
 De instelling voor de aanmeldings frequentie werkt met apps waarop OAUTH2 of OIDC-protocollen zijn geïmplementeerd volgens de standaarden. De meeste micro soft-apps voor Windows, Mac en Mobile met inbegrip van de volgende webtoepassingen voldoen aan de instelling.
 
@@ -88,7 +88,7 @@ Met de Azure AD-standaard voor browser sessie persistent kunnen gebruikers op pe
 Voorwaardelijke toegang is een Azure AD Premium mogelijkheid en vereist een Premium-licentie. Zie [Wat is voorwaardelijke toegang in azure Active Directory?](overview.md#license-requirements) voor meer informatie over voorwaardelijke toegang.
 
 > [!WARNING]
-> Als u de configuratie van de [Configureer bare levens duur van tokens](../develop/active-directory-configurable-token-lifetimes.md) gebruikt die momenteel beschikbaar is in de preview-versie, is het niet mogelijk om twee verschillende beleids regels te maken voor dezelfde combi natie van gebruiker of app: een met deze functie en een andere met een Configureer bare levens duur van tokens. Micro soft is van plan de Configureer bare levens duur van het token op 1 mei 2020 te buiten gebruik te stellen en te vervangen door de beheer functie voor de verificatie van voorwaardelijke toegang.  
+> Als u de configuratie van de [Configureer bare levens duur van tokens](../develop/active-directory-configurable-token-lifetimes.md) gebruikt die momenteel beschikbaar is in de preview-versie, is het niet mogelijk om twee verschillende beleids regels te maken voor dezelfde combi natie van gebruiker of app: een met deze functie en een andere met een Configureer bare levens duur van tokens. Micro soft is van plan de Configureer bare levens duur van tokens voor vernieuwings-en sessie token levensduur op 30 januari 2021 aan te trekken en te vervangen door de beheer functie voor de verificatie van de voorwaardelijke toegang.  
 >
 > Voordat u de aanmeldings frequentie inschakelt, moet u ervoor zorgen dat andere instellingen voor opnieuw verifiëren zijn uitgeschakeld in uw Tenant. Als ' MFA op vertrouwde apparaten onthouden ' is ingeschakeld, moet u deze uitschakelen voordat u de aanmeldings frequentie gebruikt. Als u deze twee instellingen samen gebruikt, kan dit ertoe leiden dat gebruikers onverwachts worden gevraagd. Voor meer informatie over het opnieuw verifiëren van de verificatie en de levens duur van de sessie raadpleegt u het artikel, [Optimaliseer de prompts voor herverificatie en de levens duur van sessies voor Azure multi-factor Authentication](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md).
 

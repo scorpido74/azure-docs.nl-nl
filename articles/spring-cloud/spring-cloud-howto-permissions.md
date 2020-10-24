@@ -7,21 +7,21 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 635f1e03596d55101b6158353ed8cdc278212ceb
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: edd9898580c60199b761b24b172a366069f09cb2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92155453"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516185"
 ---
 # <a name="how-to-use-permissions-in-azure-spring-cloud"></a>Machtigingen gebruiken in azure lente Cloud
-In dit artikel wordt beschreven hoe u aangepaste rollen maakt die machtigingen voor Azure lente-cloud resources delegeren. Aangepaste rollen breiden [ingebouwde Azure-rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) uit met verschillende aandelen machtigingen.
+In dit artikel wordt beschreven hoe u aangepaste rollen maakt die machtigingen voor Azure lente-cloud resources delegeren. Aangepaste rollen breiden [ingebouwde rollen van Azure uit](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) met diverse aandelen machtigingen.
 
 De volgende aangepaste rollen worden geïmplementeerd:
 
 * **Rol voor ontwikkel aars**: 
     * Implementeren
-    * Test
+    * Testen
     * Apps opnieuw opstarten
     * Kan Toep assen en wijzigingen aanbrengen in de app-configuraties in de Git-opslag plaats
     * Kan de logboek stroom ophalen

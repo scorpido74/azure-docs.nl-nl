@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 72a2b24ad8e05943f975f0819d8b2a872b0ab829
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5a7f27ff20a4770caea44e73d91001d9785c015
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89229001"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517222"
 ---
 # <a name="azure-security-baseline-for-stream-analytics"></a>Azure-beveiligings basislijn voor Stream Analytics
 
@@ -248,7 +248,7 @@ Zie het [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/a
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3,2: standaard wachtwoorden wijzigen indien van toepassing
 
-**Hulp**: stream Analytics heeft niet het concept standaard wachtwoord als verificatie wordt meegeleverd met Azure Active Directory en beveiligd door op rollen gebaseerd toegangs beheer (RBAC) voor het beheren van de service. Afhankelijk van de injectie stroom Services en uitvoer services moet u de referenties die in de taken zijn geconfigureerd, roteren.
+**Hulp**: stream Analytics heeft niet het concept standaard wachtwoord als verificatie wordt meegeleverd met Azure Active Directory en beveiligd door Azure op rollen gebaseerd toegangs beheer (Azure RBAC) voor het beheren van de service. Afhankelijk van de injectie stroom Services en uitvoer services moet u de referenties die in de taken zijn geconfigureerd, roteren.
 
 * [Aanmeldings referenties voor invoer en uitvoer van een Stream Analytics-taak draaien](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-login-credentials-inputs-outputs)
 
@@ -324,7 +324,7 @@ Zie het [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/a
 
 ### <a name="39-use-azure-active-directory"></a>3,9: Azure Active Directory gebruiken
 
-**Hulp**: gebruik Azure Active Directory (Azure AD) als centrale verificatie-en autorisatie systeem. Azure AD biedt op rollen gebaseerd toegangs beheer (RBAC) voor nauw keurige controle over de toegang van een client tot Stream Analytics-resources.
+**Hulp**: gebruik Azure Active Directory (Azure AD) als centrale verificatie-en autorisatie systeem. Azure AD biedt op rollen gebaseerd toegangs beheer van Azure (Azure RBAC) voor nauw keurige controle over de toegang van een client tot Stream Analytics resources.
 
 * [Een Azure AD-exemplaar maken en configureren](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
@@ -932,7 +932,7 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 * [Beveiligingswaarschuwingen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
 
-* [Labels gebruiken om uw Azure-resources te organiseren](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Tags gebruiken om Azure-resources te organiseren](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center bewaking**: niet van toepassing
 

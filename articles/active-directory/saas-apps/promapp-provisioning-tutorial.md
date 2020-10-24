@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 11/11/2019
 ms.author: Zhchia
-ms.openlocfilehash: b3677b16921c6954f5f99e55af9afeae9c337cce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00adf8f1559d01d6ba17692e1166c93c93fcbf8f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91255774"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516644"
 ---
 # <a name="tutorial-configure-promapp-for-automatic-user-provisioning"></a>Zelf studie: Promapp configureren voor automatische gebruikers inrichting
 
@@ -46,7 +46,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 * U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan Promapp om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan Promapp, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaardtoegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan Promapp, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaard toegang** worden uitgesloten van het inrichten.
 
 ## <a name="setup-promapp-for-provisioning"></a>Promapp instellen voor inrichting
 
@@ -93,7 +93,7 @@ Voordat u Promapp configureert voor het automatisch inrichten van gebruikers met
 In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in Promapp te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
 
 > [!TIP]
-> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor Promapp met behulp van de instructies in de [Promapp-zelf studie voor eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/saas-apps/promapp-tutorial). Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar aanvullen.
+> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor Promapp met behulp van de instructies in de [Promapp-zelf studie voor eenmalige aanmelding](./promapp-tutorial.md). Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar aanvullen.
 
 ### <a name="to-configure-automatic-user-provisioning-for-promapp-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Promapp in azure AD:
 
@@ -157,4 +157,3 @@ Zie [Rapportage over automatische inrichting van gebruikersaccounts](../app-prov
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Meer informatie over het controleren van logboeken en het ophalen van rapporten over de inrichtingsactiviteit](../app-provisioning/check-status-user-account-provisioning.md)
-

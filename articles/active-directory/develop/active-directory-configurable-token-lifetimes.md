@@ -9,23 +9,45 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/29/2020
+ms.date: 10/23/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperfq1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 1410af4d3c1fb9974818e5c4ebc469eee03a314c
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 4accae27dc092a4900e6092c62c7f4978a46668a
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948620"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503773"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Configureer bare levens duur van tokens in micro soft Identity platform (preview-versie)
 
 U kunt de levens duur opgeven van een token dat is uitgegeven door het micro soft Identity-platform. U kunt de levensduur van een token instellen voor alle apps in uw organisatie, voor een multitenanttoepassing (voor meerdere organisaties) of voor een specifieke service-principal in uw organisatie. We bieden momenteel geen ondersteuning voor het configureren van de levens duur van tokens voor [beheerde ID service-principals](../managed-identities-azure-resources/overview.md).
 
 > [!IMPORTANT]
-> Nadat klanten tijdens de preview-periode hebben gehoord, hebben we [verificatie sessie beheer functies](../conditional-access/howto-conditional-access-session-lifetime.md) geïmplementeerd in voorwaardelijke toegang van Azure AD. Met deze nieuwe functie kunt u de levens duur van het vernieuwings token configureren door de aanmeldings frequentie in te stellen. Na 30 mei 2020 kan geen enkele nieuwe Tenant gebruikmaken van het beleid voor de levens duur van tokens voor het configureren van sessie-en vernieuwings tokens. De afschaffing vindt plaats binnen een aantal maanden na dat, wat betekent dat we de bestaande sessie niet meer zullen door lopen en tokens voor vernieuwen worden vernieuwd. U kunt de levens duur van toegangs tokens na de afschaffing nog steeds configureren.
+> Na 30 januari 2021 kunnen tenants geen vernieuwings-en sessie token levensduur meer configureren en Azure Active Directory stopt de bestaande configuratie van het vernieuwings-en sessie token in beleids regels na die datum. U kunt de levens duur van toegangs tokens na de buiten gebruiks telling nog steeds configureren.
+> Er zijn [mogelijkheden voor verificatie sessie beheer](../conditional-access/howto-conditional-access-session-lifetime.md)geïmplementeerd   in voorwaardelijke toegang tot Azure AD. Met deze nieuwe functie kunt u de levens duur van het vernieuwings token configureren door de aanmeldings frequentie in te stellen. Voorwaardelijke toegang is een Azure AD Premium P1-functie en u kunt evalueren of Premium geschikt is voor uw organzation op de [pagina Premium-prijzen](https://azure.microsoft.com/en-us/pricing/details/active-directory/). 
+> 
+> Voor tenants die geen gebruikmaken van verificatie sessie beheer in voorwaardelijke toegang na de datum van beëindiging, kunnen ze verwachten dat Azure AD voldoet aan de standaard configuratie die wordt beschreven in de volgende sectie.
+
+## <a name="configurable-token-lifetime-properties-after-the-retirement"></a>Eigenschappen van Configureer bare token levensduur na het buiten gebruik stellen
+De configuratie van de vernieuwings-en sessie token wordt beïnvloed door de volgende eigenschappen en waarden die respectievelijk zijn ingesteld. Na de buiten gebruiks telling van de configuratie van het vernieuwings-en sessie token voldoet Azure AD alleen aan de standaard waarde die hieronder wordt beschreven, ongeacht of er voor het beleid aangepaste waarden zijn geconfigureerd geconfigureerde aangepaste waarden.  
+
+|Eigenschap   |Teken reeks eigenschap van beleid    |Alleen |Standaard |
+|----------|-----------|------------|------------|
+|Maximum aantal inactieve tijd voor het vernieuwen van token |MaxInactiveTime  |Tokens vernieuwen |90 dagen  |
+|Maximum leeftijd van Single-Factor vernieuwings token  |MaxAgeSingleFactor  |Tokens vernieuwen (voor alle gebruikers)  |Until-ingetrokken  |
+|Maximum leeftijd van multi-factor Refresh-token  |MaxAgeMultiFactor  |Tokens vernieuwen (voor alle gebruikers) |180 dagen  |
+|Maximum leeftijd van Single-Factor sessie token  |MaxAgeSessionSingleFactor |Sessie tokens (permanent en niet permanent)  |Until-ingetrokken |
+|Maximale leeftijds duur multi-factor Session-token  |MaxAgeSessionMultiFactor  |Sessie tokens (permanent en niet permanent)  |180 dagen |
+
+U kunt de cmdlet [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) gebruiken om het token levensduur beleid te identificeren waarvan de eigenschaps waarden verschillen van de standaard instellingen van Azure AD.
+
+Als u meer wilt weten hoe uw beleid wordt gebruikt in uw Tenant, kunt u de cmdlet [Get-AzureADPolicyAppliedObject](/powershell/module/azuread/get-azureadpolicyappliedobject?view=azureadps-2.0-preview&preserve-view=true) gebruiken om te bepalen welke apps en service-principals zijn gekoppeld aan uw beleid. 
+
+Als uw Tenant beleids regels heeft waarmee aangepaste waarden voor de configuratie-eigenschappen voor vernieuwen en sessie tokens worden gedefinieerd, raadt micro soft u aan die beleids regels in bereik bij te werken naar waarden die overeenkomen met de hierboven beschreven standaard waarden. Als er geen wijzigingen worden aangebracht, wordt de standaard waarde door Azure AD automatisch nageleefd.  
+
+## <a name="overview"></a>Overzicht
 
 In azure AD vertegenwoordigt een beleids object een set regels die worden afgedwongen voor afzonderlijke toepassingen of voor alle toepassingen in een organisatie. Elk beleids type heeft een unieke structuur, met een reeks eigenschappen die worden toegepast op objecten waaraan ze zijn toegewezen.
 

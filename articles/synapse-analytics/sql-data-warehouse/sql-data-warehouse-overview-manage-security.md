@@ -11,12 +11,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 06f62fd656357e16396a0458a9afee12dcfa507f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c94924c973a1095a4bebf6231d9853968facc1b2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629366"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516880"
 ---
 # <a name="secure-a-database-in-azure-synapse"></a>Een data base in azure Synapse beveiligen
 
@@ -92,7 +92,7 @@ In het volgende voor beeld wordt lees toegang verleend aan een door de gebruiker
 GRANT SELECT ON SCHEMA::Test to ApplicationUser
 ```
 
-Het beheren van data bases en servers van de Azure Portal of het gebruik van de Azure Resource Manager-API wordt bepaald door de roltoewijzingen van uw portal-gebruikers account. Zie op [rollen gebaseerd toegangs beheer in azure Portal](../../role-based-access-control/role-assignments-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)voor meer informatie.
+Het beheren van data bases en servers van de Azure Portal of het gebruik van de Azure Resource Manager-API wordt bepaald door de roltoewijzingen van uw portal-gebruikers account. Zie [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure-portal](../../role-based-access-control/role-assignments-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) voor meer informatie.
 
 ## <a name="encryption"></a>Versleuteling
 
