@@ -9,12 +9,12 @@ ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.custom: devx-track-java
-ms.openlocfilehash: f90160ba58983414b5421542c6292f4570f1e10a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 708a7139aec7b8d3fe9e5f08df2c5e93b99d0668
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92142850"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476787"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>Problemen oplossen met Azure Cosmos DB Java SDK v4 met SQL API-accounts
 
@@ -46,7 +46,7 @@ Begin met deze lijst:
 Voor de beste prestaties:
 * Zorg ervoor dat de app wordt uitgevoerd in dezelfde regio als uw Azure Cosmos DB-account. 
 * Controleer het CPU-gebruik op de host waarop de app wordt uitgevoerd. Als het CPU-gebruik 50 procent of meer is, voert u uw app uit op een host met een hogere configuratie. U kunt ook de belasting op meer machines distribueren.
-    * Als u uw toepassing uitvoert op de Azure Kubernetes-service, kunt u [Azure monitor gebruiken om het CPU-gebruik te bewaken](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-analyze).
+    * Als u uw toepassing uitvoert op de Azure Kubernetes-service, kunt u [Azure monitor gebruiken om het CPU-gebruik te bewaken](../azure-monitor/insights/container-insights-analyze.md).
 
 #### <a name="connection-throttling"></a>Verbindings beperking
 De verbindings beperking kan worden veroorzaakt door een [verbindings limiet op een hostcomputer of een overschrijding] van een [Azure SNAT-poort].
@@ -62,13 +62,13 @@ Het maximum aantal geopende bestanden dat wordt aangeduid als ' geen bestand ' m
 
 ##### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Uitputting van de poort van Azure SNAT (PAT)
 
-Als uw app is geïmplementeerd op Azure Virtual Machines zonder een openbaar IP-adres, worden de standaard [Azure SNAT-poorten](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports) gebruikt om verbinding te maken met een wille keurig eind punt buiten uw VM. Het aantal verbindingen dat van de virtuele machine naar het Azure Cosmos DB-eind punt is toegestaan, wordt beperkt door de [Azure SNAT-configuratie](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports).
+Als uw app is geïmplementeerd op Azure Virtual Machines zonder een openbaar IP-adres, worden de standaard [Azure SNAT-poorten](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) gebruikt om verbinding te maken met een wille keurig eind punt buiten uw VM. Het aantal verbindingen dat van de virtuele machine naar het Azure Cosmos DB-eind punt is toegestaan, wordt beperkt door de [Azure SNAT-configuratie](../load-balancer/load-balancer-outbound-connections.md#preallocatedports).
 
  Azure SNAT-poorten worden alleen gebruikt als uw virtuele machine een privé-IP-adres heeft en een proces van de virtuele machine probeert verbinding te maken met een openbaar IP-adres. Er zijn twee oplossingen om Azure SNAT-beperking te voor komen:
 
-* Voeg uw Azure Cosmos DB Service-eind punt toe aan het subnet van uw virtuele Azure Virtual Machines-netwerk. Zie [Azure Virtual Network Service-eind punten](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)voor meer informatie. 
+* Voeg uw Azure Cosmos DB Service-eind punt toe aan het subnet van uw virtuele Azure Virtual Machines-netwerk. Zie [Azure Virtual Network Service-eind punten](../virtual-network/virtual-network-service-endpoints-overview.md)voor meer informatie. 
 
-    Wanneer het service-eind punt is ingeschakeld, worden de aanvragen niet langer verzonden vanuit een openbaar IP-adres naar Azure Cosmos DB. In plaats daarvan worden de identiteit van het virtuele netwerk en het subnet verzonden. Deze wijziging kan ertoe leiden dat de firewall wordt neergezet als alleen open bare IP-adressen zijn toegestaan. Als u een firewall gebruikt en u het service-eind punt inschakelt, voegt u een subnet toe aan de firewall door gebruik te maken van [Virtual Network acl's](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl).
+    Wanneer het service-eind punt is ingeschakeld, worden de aanvragen niet langer verzonden vanuit een openbaar IP-adres naar Azure Cosmos DB. In plaats daarvan worden de identiteit van het virtuele netwerk en het subnet verzonden. Deze wijziging kan ertoe leiden dat de firewall wordt neergezet als alleen open bare IP-adressen zijn toegestaan. Als u een firewall gebruikt en u het service-eind punt inschakelt, voegt u een subnet toe aan de firewall door gebruik te maken van [Virtual Network acl's](/previous-versions/azure/virtual-network/virtual-networks-acl).
 * Wijs een openbaar IP-adres toe aan uw Azure-VM.
 
 ##### <a name="cant-reach-the-service---firewall"></a><a name="cant-connect"></a>Kan de service niet bereiken-firewall
@@ -217,5 +217,3 @@ Veel verbindingen met het Azure Cosmos DB-eind punt hebben mogelijk de `CLOSE_WA
 [Enable client SDK logging]: #enable-client-sice-logging
 [Verbindings limiet op een hostcomputer]: #connection-limit-on-host
 [Uitputting van de poort van Azure SNAT (PAT)]: #snat
-
-

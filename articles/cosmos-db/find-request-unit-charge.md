@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: 23f334d28ef5045c68bb84fc0bc34e8f847fe0f9
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: d8c1237b1bf4fac743ad5e70fee857337d9624c4
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281838"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490659"
 ---
 # <a name="find-the-request-unit-charge-for-operations-executed-in-azure-cosmos-db-sql-api"></a>De toeslag voor aanvraag eenheden zoeken voor bewerkingen die zijn uitgevoerd in Azure Cosmos DB SQL-API
 
@@ -25,9 +25,9 @@ In dit artikel worden de verschillende manieren beschreven waarop u het gebruik 
 
 Op dit moment kunt u dit verbruik alleen meten met behulp van de Azure Portal of door de reactie die via een van de Sdk's wordt teruggestuurd via Azure Cosmos DB te controleren. Als u de SQL-API gebruikt, hebt u meerdere opties voor het vinden van het RU-verbruik voor een bewerking in een Azure Cosmos-container.
 
-## <a name="use-the-azure-portal"></a>Azure Portal gebruiken
+## <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-sql-api-dotnet.md#create-account) en voer het in met gegevens of selecteer een bestaand Azure Cosmos-account dat al gegevens bevat.
 
@@ -175,8 +175,8 @@ Zie de volgende artikelen voor meer informatie over het optimaliseren van uw RU-
 
 * [Aanvraageenheden en doorvoer in Azure Cosmos DB](request-units.md)
 * [Kosten voor ingerichte doorvoer optimaliseren in Azure Cosmos DB](optimize-cost-throughput.md)
-* [Kosten van query's optimaliseren in Azure Cosmos DB](optimize-cost-queries.md)
-* [Wereldwijd schalen van ingerichte doorvoer](scaling-throughput.md)
+* [Kosten van query's optimaliseren in Azure Cosmos DB](./optimize-cost-reads-writes.md)
+* [Wereldwijd schalen van ingerichte doorvoer](./request-units.md)
 * [Doorvoer voor containers en databases inrichten](set-throughput.md)
 * [Door Voer voor een container inrichten](how-to-provision-container-throughput.md)
 * [Controleren en fouten opsporen met metrische gegevens in Azure Cosmos DB](use-metrics.md)

@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 26c6f70f92e4c372c0ff6afbcbb3c0bb284e2f6c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bacb7a434cfa04dbdfdaf39d9fd3a0baab5f11a
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91704764"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489809"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-postgresql-using-powershell"></a>Lees replica's maken en beheren in Azure Database for PostgreSQL met behulp van Power shell
 
@@ -26,14 +26,14 @@ U kunt met behulp van Power shell Lees replica's maken en beheren.
 
 U hebt het volgende nodig om deze hand leiding te volt ooien:
 
-- De [AZ Power shell-module](https://docs.microsoft.com/powershell/azure/install-az-ps) die lokaal is geïnstalleerd of [Azure Cloud shell](https://shell.azure.com/) in de browser
+- De [AZ Power shell-module](/powershell/azure/install-az-ps) die lokaal is geïnstalleerd of [Azure Cloud shell](https://shell.azure.com/) in de browser
 - Een [Azure database for postgresql server](quickstart-create-postgresql-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
 > Hoewel de PowerShell-module Az.PostgreSql in preview is, moet u deze afzonderlijk van de PowerShell-module Az installeren met behulp van de volgende opdracht: `Install-Module -Name Az.PostgreSql -AllowPrerelease`.
 > Zodra de PowerShell-module Az.PostgreSql algemeen beschikbaar is, wordt deze onderdeel van toekomstige releases van Az PowerShell en is de module systeemeigen beschikbaar vanuit Azure Cloud Shell.
 
-Als u Power shell lokaal wilt gebruiken, maakt u verbinding met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) .
+Als u Power shell lokaal wilt gebruiken, maakt u verbinding met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -51,9 +51,9 @@ Get-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 Voor de `New-AzPostgreSqlServerReplica` opdracht zijn de volgende para meters vereist:
 
-| Instelling | Voorbeeldwaarde | Beschrijving  |
+| Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
-| ResourceGroupName |  myResourceGroup |  De resource groep waar de replica-server is gemaakt.  |
+| ResourceGroupName |  myResourceGroup |  De resource groep waar de replica-server is gemaakt.  |
 | Naam | mydemoreplicaserver | De naam van de nieuwe replica server die wordt gemaakt. |
 
 Gebruik de **locatie** parameter om een lees replica te maken. In het volgende voor beeld wordt een replica gemaakt in de regio **VS-West** .
@@ -80,9 +80,9 @@ Get-AzMariaDReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 
 Voor de `Get-AzMariaDReplica` opdracht zijn de volgende para meters vereist:
 
-| Instelling | Voorbeeldwaarde | Beschrijving  |
+| Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
-| ResourceGroupName |  myResourceGroup |  De resource groep waar de replica-server wordt gemaakt.  |
+| ResourceGroupName |  myResourceGroup |  De resource groep waar de replica-server wordt gemaakt.  |
 | ServerName | mydemoserver | De naam of ID van de primaire server. |
 
 ### <a name="delete-a-replica-server"></a>Een replica server verwijderen

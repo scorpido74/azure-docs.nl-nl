@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: d0a1826dafd1e6ce6202dc4f29417a1ce100e54f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 345fd486788cfbb69454be488d771d9b4ea394ab
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83195242"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488636"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Door de klant beheerde sleutels gebruiken in Azure Key Vault voor de import/export-service
 
@@ -101,9 +101,9 @@ Als u fouten met betrekking tot de door de klant beheerde sleutel ontvangt, gebr
 |----------------|------------|-----------------|
 | CmkErrorAccessRevoked | De toegang tot de door de klant beheerde sleutel is ingetrokken.                                                       | Ja, controleren of: <ol><li>Sleutel kluis heeft nog steeds de MSI in het toegangs beleid.</li><li>Voor het toegangs beleid zijn de machtigingen ophalen, verpakken en uitpakken ingeschakeld.</li><li>Als de sleutel kluis zich in een VNet achter de firewall bevindt, controleert u of **micro soft Trusted Services toestaan** is ingeschakeld.</li><li>Controleer of de MSI van de taak resource is ingesteld op het `None` gebruik van api's.<br>Zo ja, dan stelt u de waarde weer in op `Identity = SystemAssigned` . Hiermee wordt de identiteit voor de taak resource opnieuw gemaakt.<br>Nadat de nieuwe identiteit is gemaakt, ingeschakeld `Get` , `Wrap` en `Unwrap` machtigingen voor de nieuwe identiteit in het toegangs beleid van de sleutel kluis</li></ol>                                                                                            |
 | CmkErrorKeyDisabled      | De door de klant beheerde sleutel is uitgeschakeld.                                         | Ja, door de sleutel versie in te scha kelen     |
-| CmkErrorKeyNotFound      | De door de klant beheerde sleutel is niet gevonden. | Ja, als de sleutel is verwijderd, maar deze nog steeds binnen de duur van het opschonen valt, met behulp van [sleutel kluis ongedaan maken verwijderen](https://docs.microsoft.com/powershell/module/az.keyvault/undo-azkeyvaultkeyremoval).<br>Hierin <ol><li>Ja, als de klant een back-up van de sleutel heeft gemaakt en deze herstelt.</li><li>Nee, anders.</li></ol>
-| CmkErrorVaultNotFound |Kan de sleutel kluis van de door de klant beheerde sleutel niet vinden. |   Als de sleutel kluis is verwijderd:<ol><li>Ja, als het zich in de duur van de schone beveiliging bevindt, gebruikt u de stappen in [een sleutel kluis herstellen](https://docs.microsoft.com/azure/key-vault/general/soft-delete-powershell#recovering-a-key-vault).</li><li>Nee, als het na de duur van de schone beveiliging valt.</li></ol><br>Als de sleutel kluis is gemigreerd naar een andere Tenant, ja, kan deze worden hersteld met behulp van een van de volgende stappen:<ol><li>Herstel de sleutel kluis terug naar de oude Tenant.</li><li>Stel `Identity = None` in en stel vervolgens de waarde weer in op `Identity = SystemAssigned` . Hiermee wordt de identiteit verwijderd en opnieuw gemaakt zodra de nieuwe identiteit is gemaakt. Inschakelen `Get` , `Wrap` , en `Unwrap` machtigingen voor de nieuwe identiteit in het toegangs beleid van de sleutel kluis.</li></ol>|
+| CmkErrorKeyNotFound      | De door de klant beheerde sleutel is niet gevonden. | Ja, als de sleutel is verwijderd, maar deze nog steeds binnen de duur van het opschonen valt, met behulp van [sleutel kluis ongedaan maken verwijderen](/powershell/module/az.keyvault/undo-azkeyvaultkeyremoval).<br>Hierin <ol><li>Ja, als de klant een back-up van de sleutel heeft gemaakt en deze herstelt.</li><li>Nee, anders.</li></ol>
+| CmkErrorVaultNotFound |Kan de sleutel kluis van de door de klant beheerde sleutel niet vinden. |   Als de sleutel kluis is verwijderd:<ol><li>Ja, als het zich in de duur van de schone beveiliging bevindt, gebruikt u de stappen in [een sleutel kluis herstellen](/azure/key-vault/general/soft-delete-powershell#recovering-a-key-vault).</li><li>Nee, als het na de duur van de schone beveiliging valt.</li></ol><br>Als de sleutel kluis is gemigreerd naar een andere Tenant, ja, kan deze worden hersteld met behulp van een van de volgende stappen:<ol><li>Herstel de sleutel kluis terug naar de oude Tenant.</li><li>Stel `Identity = None` in en stel vervolgens de waarde weer in op `Identity = SystemAssigned` . Hiermee wordt de identiteit verwijderd en opnieuw gemaakt zodra de nieuwe identiteit is gemaakt. Inschakelen `Get` , `Wrap` , en `Unwrap` machtigingen voor de nieuwe identiteit in het toegangs beleid van de sleutel kluis.</li></ol>|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Wat is Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?
+- [Wat is Azure Key Vault](/azure/key-vault/key-vault-overview)?

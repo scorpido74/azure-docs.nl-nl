@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: 5832214b5b0a98249f951915e867db8542c28a71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23e70d8ed17846100d82a5545e9215bce4eee30f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803956"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491339"
 ---
 # <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Azure Cosmos DB Table-API SDK voor python: release opmerkingen en bronnen
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "91803956"
 |   |   |
 |---|---|
 |**SDK downloaden**|[PyPI](https://pypi.python.org/pypi/azure-cosmosdb-table/)|
-|**API-documentatie**|[Naslag documentatie voor python API](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python&preserve-view=true)|
+|**API-documentatie**|[Naslag documentatie voor python API](/python/api/overview/azure/cosmosdb?preserve-view=true&view=azure-python)|
 |**SDK-installatie-instructies**|[Installatie-instructies voor python SDK](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
 |**Bijdragen aan SDK**|[GitHub](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
 |**Huidig ondersteund platform**|[Python 2,7](https://www.python.org/downloads/) of [python 3,3, 3,4, 3,5 of 3,6](https://www.python.org/downloads/)|
@@ -45,13 +45,13 @@ ms.locfileid: "91803956"
 * Voorlopige versie van SDK
 
 ## <a name="release-and-retirement-dates"></a>Release-en pensioen datums
-Micro soft zal ten minste **twaalf maanden** vóór het buiten gebruik stellen van een SDK een melding ontvangen om de overgang naar een nieuwere/ondersteunde versie te versoepelen.
+Microsoft zal ten minste **12 maanden** vóór de buitengebruikstelling van een SDK een melding doen, om de overgang naar een nieuwere/ondersteunde versie te versoepelen.
 
 Nieuwe functies en functionaliteiten en Optima Lise ringen worden alleen toegevoegd aan de huidige SDK. het wordt daarom aangeraden dat u zo snel mogelijk een upgrade naar de nieuwste SDK-versie uitvoert. 
 
 <br/>
 
-| Versie | Release datum | Buitengebruikstellingsdatum |
+| Versie | Releasedatum | Buitengebruikstellingsdatum |
 | --- | --- | --- |
 | [1.0.0](#1.0.0) |15 november 2017 |--- |
 | [0.37.1](#0.37.1) |05 oktober 2017 |--- |
@@ -61,5 +61,4 @@ Nieuwe functies en functionaliteiten en Optima Lise ringen worden alleen toegevo
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Zie ook
-Zie [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) service-pagina voor meer informatie over Cosmos db. 
-
+Zie de servicepagina [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) voor meer informatie over Cosmos DB.

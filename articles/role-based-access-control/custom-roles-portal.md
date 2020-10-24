@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/13/2020
 ms.author: rolyon
-ms.openlocfilehash: 91d2605dddd6107d09e635969f5e5d98c2a02d60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ab6561b1dc0e8b977fc69d259c5f26366f355ce
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511718"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92481326"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Aangepaste Azure-rollen maken of bijwerken met behulp van Azure Portal
 
@@ -331,7 +331,7 @@ Volg deze stappen om uw aangepaste rollen weer te geven.
 
 1. Klik op het weglatings teken (**...**) voor de aangepaste rol die u wilt verwijderen en klik vervolgens op **verwijderen**.
 
-    ![Menu aangepaste rol](./media/custom-roles-portal/delete-menu.png)
+    ![Scherm afbeelding met een lijst met aangepaste rollen die kunnen worden geselecteerd voor verwijdering.](./media/custom-roles-portal/delete-menu.png)
 
     Het kan een paar minuten duren voordat de aangepaste rol volledig is verwijderd.
 

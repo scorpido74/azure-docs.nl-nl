@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/10/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e43f2e9897293cb4d5bc25b6ef95252a28628401
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 2b3433d969611fabe1b12a8dcabfe6e50066a8c1
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279597"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491186"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Consistentieniveaus in Azure Cosmos DB beheren
 
@@ -24,7 +24,7 @@ In dit artikel wordt uitgelegd hoe u consistentieniveaus beheert in Azure Cosmos
 
 Het [standaard consistentie niveau](consistency-levels.md) is het consistentie niveau dat clients standaard gebruiken.
 
-# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Als u het standaardconsistentieniveau wilt weergeven of wijzigen, moet u zich aanmelden bij de Azure-portal. Zoek uw Azure Cosmos-account en open het **standaard consistentie** venster. Selecteer het consistentieniveau dat u als nieuwe standaard wilt gebruiken en selecteer **Opslaan**. De Azure Portal biedt ook een visualisatie van verschillende consistentie niveaus met muziek notities. 
 
@@ -288,7 +288,7 @@ Wat is de uiteindelijke consistentie? Voor het gemiddelde kunnen we verouderde g
 Lees meer informatie over het beheer van gegevensconflicten of ga verder met het volgende sleutelbegrip in Azure Cosmos DB. Zie de volgende artikelen:
 
 * [Consistentie niveaus in Azure Cosmos DB](consistency-levels.md)
-* [Partitionering en gegevensdistributie](partition-data.md)
+* [Partitionering en gegevensdistributie](./partitioning-overview.md)
 * [Conflicten tussen regio 's beheren](how-to-manage-conflicts.md)
 * [Partitionering en gegevensdistributie](partitioning-overview.md)
 * [Consistentie-afwegingen in het moderne ontwerp van gedistribueerde database systemen](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)

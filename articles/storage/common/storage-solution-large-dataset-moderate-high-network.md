@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 900221bd27fe4020a927b3155c91aa8e494ca890
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c88da1c7fba5d7cb51863a580ae420eb6b3298a2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86203842"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491271"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>Gegevensoverdracht voor grote gegevenssets met gemiddelde tot grote netwerkbandbreedte
  
@@ -98,14 +98,14 @@ Als u online gegevens overdracht gebruikt, gebruikt u de tabel in de volgende se
 - [Meer informatie over het overdragen van gegevens met import/export](/azure/storage/common/storage-import-export-data-to-blobs).
 - Begrijpen hoe u
 
-    - [Gegevens overdragen met data Box Disk](https://docs.microsoft.com/azure/databox/data-box-disk-quickstart-portal).
-    - [Gegevens overdragen met data Box](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal).
+    - [Gegevens overdragen met data Box Disk](/azure/databox/data-box-disk-quickstart-portal).
+    - [Gegevens overdragen met data Box](/azure/databox/data-box-quickstart-portal).
 - [Gegevens overdragen met AzCopy](/azure/storage/common/storage-use-azcopy-v10).
 - Meer informatie over:
-    - [Gegevens overdragen met Data Box Gateway](https://docs.microsoft.com/azure/databox-online/data-box-gateway-deploy-add-shares).
-    - [Transformeer gegevens met data Box Edge voordat ze naar Azure worden verzonden](https://docs.microsoft.com/azure/databox-online/data-box-edge-deploy-configure-compute).
-- [Meer informatie over het overdragen van gegevens met Azure Data Factory](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal).
+    - [Gegevens overdragen met Data Box Gateway](/azure/databox-online/data-box-gateway-deploy-add-shares).
+    - [Transformeer gegevens met data Box Edge voordat ze naar Azure worden verzonden](/azure/databox-online/data-box-edge-deploy-configure-compute).
+- [Meer informatie over het overdragen van gegevens met Azure Data Factory](/azure/data-factory/quickstart-create-data-factory-portal).
 - De REST-Api's gebruiken om gegevens over te dragen
 
-    - [In .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
-    - [In Java](https://docs.microsoft.com/java/api/overview/azure/storage)
+    - [In .NET](/dotnet/api/overview/azure/storage)
+    - [In Java](/java/api/overview/azure/storage)

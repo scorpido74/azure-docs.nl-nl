@@ -1,14 +1,14 @@
 ---
 title: VM-extensie inschakelen met Azure Resource Manager sjabloon
 description: In dit artikel wordt beschreven hoe u virtuele-machine uitbreidingen implementeert voor Azure Arc-servers die worden uitgevoerd in hybride Cloud omgevingen met behulp van een Azure Resource Manager sjabloon.
-ms.date: 10/15/2020
+ms.date: 10/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 23cb1e85b9560b7033dc5bdce672ee8718ed326b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 935fa38fbb98622f2da7d2ce9e1d166b12a32e44
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/23/2020
-ms.locfileid: "92462891"
+ms.locfileid: "92491203"
 ---
 # <a name="enable-azure-vm-extensions-by-using-arm-template"></a>Azure VM-extensies inschakelen met ARM-sjabloon
 
@@ -543,7 +543,7 @@ Als u de Power shell DSC-uitbrei ding wilt gebruiken, is het volgende voor beeld
 }
 ```
 
-## <a name="deploy-the-dependency-agent"></a>De afhankelijkheids agent implementeren
+## <a name="deploy-the-dependency-agent-extension"></a>De extensie van de afhankelijkheids agent implementeren
 
 Als u de Azure Monitor dependency agent-extensie wilt gebruiken, is het volgende voor beeld in Windows en Linux opgenomen. Als u niet bekend bent met de afhankelijkheids agent, raadpleegt u [overzicht van Azure monitor agents](../../azure-monitor/platform/agents-overview.md#dependency-agent).
 

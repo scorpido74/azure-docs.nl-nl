@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: alkohli
-ms.openlocfilehash: 4f21e7f64338b7d50ca401081bf73ca0c1a1c88f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a95361dda74c145e435a7e122339fb5945fed0f6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85504300"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491220"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>Gegevensoverdracht voor kleine gegevenssets met weinig tot gemiddelde netwerkbandbreedte
  
@@ -49,7 +49,7 @@ De opties die worden aanbevolen in dit scenario zijn:
 
 De volgende tabel bevat een overzicht van de verschillen in de belangrijkste mogelijkheden.
 
-| Functie | Azure Storage Explorer | Azure Portal | AzCopy<br>Azure PowerShell<br>Azure CLI | Azure Storage REST Api's of Sdk's |
+| Functie | Azure Opslagverkenner | Azure Portal | AzCopy<br>Azure PowerShell<br>Azure CLI | Azure Storage REST Api's of Sdk's |
 |---------|------------------------|--------------|-----------------------------------------|---------------------------------|
 | Beschikbaarheid | Downloaden en installeren <br>Zelfstandig hulp programma | Webgebaseerde hulpprogram ma's voor onderzoek in Azure Portal | Opdracht regel programma |Programmeer bare interfaces in .NET, Java, Python, java script, C++, go, Ruby en PHP |
 | Grafische interface | Ja | Ja | Nee | Nee |
@@ -63,6 +63,6 @@ De volgende tabel bevat een overzicht van de verschillen in de belangrijkste mog
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [overdragen van gegevens met Azure Storage Explorer](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/move-data-to-azure-blob-using-azure-storage-explorer).
-- [Gegevens overdragen met AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
+- Meer informatie over het [overdragen van gegevens met Azure Storage Explorer](/azure/machine-learning/team-data-science-process/move-data-to-azure-blob-using-azure-storage-explorer).
+- [Gegevens overdragen met AzCopy](/azure/storage/common/storage-use-azcopy-v10)
 

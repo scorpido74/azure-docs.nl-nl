@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
-ms.openlocfilehash: d6fabd58baf8fb3dc30c2468efd5bdc8179d5f95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a0aebc727233cdd838f3e1bf8eeb5cd247b9836
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84709195"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489673"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>Reverse DNS lookup zones in Azure DNS
 
@@ -48,7 +48,7 @@ De naam van een IPv4-zone voor reverse lookup is gebaseerd op het IP-bereik dat 
 
 In het volgende voor beeld ziet u hoe u een omgekeerde DNS-zone voor Class C `2.0.192.in-addr.arpa` met de naam in azure DNS maakt via de Azure portal:
 
- ![Het deel venster ' DNS-zone maken ', waarbij de vakken zijn ingevuld](./media/dns-reverse-dns-hosting/figure2.png)
+ ![Scherm afbeelding die laat zien hoe u een omgekeerde DNS-zone van klasse C met de naam 2.0.192.in-addr. arpa in Azure DNS maakt via de Azure Portal.](./media/dns-reverse-dns-hosting/figure2.png)
 
 De locatie van de **resource groep** definieert de locatie voor de resource groep. Dit heeft geen invloed op de DNS-zone. De locatie van de DNS-zone is altijd 'global' en wordt niet weergegeven.
 
@@ -117,7 +117,7 @@ In het volgende voor beeld wordt u begeleid bij het proces van het maken van een
 
 1. Selecteer boven in het deel venster **DNS-zone** de optie **+ Recordset** om het deel venster **recordset toevoegen** te openen.
 
-   ![Knop voor het maken van een recordset](./media/dns-reverse-dns-hosting/figure4.png)
+   ![Scherm opname van het deel venster DNS-zone met een pijl die verwijst naar de knop + record set.](./media/dns-reverse-dns-hosting/figure4.png)
 
 1. De naam van de recordset voor een PTR-record moet de rest van het IPv4-adres in omgekeerde volg orde zijn. 
 
@@ -162,7 +162,7 @@ In het volgende voor beeld wordt het proces voor het maken van een nieuwe PTR-re
 4. Voer bij **domein naam**de FQDN in van de bron die gebruikmaakt van het IP-adres.
 5. Selecteer **OK** onder aan het deel venster om de DNS-record te maken.
 
-![Het deel venster recordset toevoegen, waarbij vakken zijn ingevuld](./media/dns-reverse-dns-hosting/figure7.png)
+![Scherm opname van het deel venster record sets toevoegen met een pijl die verwijst naar de waarde in het veld type.](./media/dns-reverse-dns-hosting/figure7.png)
 
 In de volgende voor beelden ziet u hoe u deze taak kunt uitvoeren met behulp van Power shell of Azure CLI.
 

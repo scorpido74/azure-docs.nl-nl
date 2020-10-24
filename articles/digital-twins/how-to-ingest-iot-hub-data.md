@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0123a89c4ec1c2c70326de1a2f685b08278333ab
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 1fa14c4341c449c32fd6a5f6b3274b057478c01c
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461546"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495825"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>IoT Hub telemetrie opnemen in azure Digital Apparaatdubbels
 
@@ -64,19 +64,15 @@ Het model ziet er als volgt uit:
 
 Als u **dit model wilt uploaden naar uw apparaatdubbels-exemplaar**, opent u de Azure CLI en voert u de volgende opdracht uit:
 
-```azurecli
+```azurecli-interactive
 az dt model create --models '{  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;1",  "@type": "Interface",  "@context": "dtmi:dtdl:context;2",  "contents": [    {      "@type": "Property",      "name": "Temperature",      "schema": "double"    }  ]}' -n {digital_twins_instance_name}
 ```
 
-[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
-
 Vervolgens moet u **een dubbele maken met behulp van dit model**. Gebruik de volgende opdracht om een dubbele en set 0,0 te maken als aanvankelijke temperatuur waarde.
 
-```azurecli
+```azurecli-interactive
 az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{"Temperature": 0.0,}' --dt-name {digital_twins_instance_name}
 ```
-
-[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 
 De uitvoer van een geslaagde, dubbele maken-opdracht moet er als volgt uitzien:
 ```json
@@ -252,9 +248,7 @@ In de end-to-end zelf studie voert u de volgende stappen uit:
 
 Bij het uitvoeren van de bovenstaande Device Simulator wordt de waarde voor de Tempe ratuur van uw digitale-dubbele waarden gewijzigd. Voer in de Azure CLI de volgende opdracht uit om de waarde voor de Tempe ratuur te bekijken.
 
-[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
-
-```azurecli
+```azurecli-interactive
 az dt twin query -q "select * from digitaltwins" -n {digital_twins_instance_name}
 ```
 

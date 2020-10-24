@@ -7,20 +7,20 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: fda40e58231b849f1e63f53f7bb268375ffe7fec
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 2e4a09ba07a5fa5eb3a5af7aa88e092feb3e7efc
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996451"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487973"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL-uitbrei dingen in Azure Database for PostgreSQL – grootschalige (Citus)
 
-PostgreSQL biedt de mogelijkheid om de functionaliteit van uw data base uit te breiden met behulp van extensies. Met uitbrei dingen kunt u meerdere gerelateerde SQL-objecten bundelen in één pakket dat kan worden geladen of verwijderd uit uw data base met één opdracht. Nadat de gegevens in de Data Base zijn geladen, kunnen extensies functioneren als ingebouwde functies. Zie [pakket verwante objecten in een uitbrei ding](https://www.postgresql.org/docs/current/static/extend-extensions.html)voor meer informatie over postgresql-extensies.
+PostgreSQL biedt de mogelijkheid om de functionaliteit van uw data base uit te breiden met behulp van extensies. Met uitbrei dingen kunt u meerdere gerelateerde SQL-objecten bundelen in één pakket dat kan worden geladen of verwijderd uit uw data base met één opdracht. Nadat de gegevens in de Data Base zijn geladen, kunnen extensies functioneren als ingebouwde functies. Zie [pakket verwante objecten in een uitbrei ding](https://www.postgresql.org/docs/current/static/extend-extensions.html)voor meer informatie over postgresql-extensies.
 
 ## <a name="use-postgresql-extensions"></a>PostgreSQL-extensies gebruiken
 
-PostgreSQL-extensies moeten worden geïnstalleerd in uw Data Base voordat u ze kunt gebruiken. Als u een bepaalde extensie wilt installeren, voert u de opdracht [extensie maken](https://www.postgresql.org/docs/current/static/sql-createextension.html)   uit vanuit het psql-hulp programma om de verpakte objecten in uw data base te laden.
+PostgreSQL-extensies moeten worden geïnstalleerd in uw Data Base voordat u ze kunt gebruiken. Als u een bepaalde extensie wilt installeren, voert u de opdracht [extensie maken](https://www.postgresql.org/docs/current/static/sql-createextension.html) uit vanuit het psql-hulp programma om de verpakte objecten in uw data base te laden.
 
 Azure Database for PostgreSQL-grootschalige (Citus) ondersteunt momenteel een subset met sleutel uitbreidingen, zoals hier wordt weer gegeven. Extensies die niet worden vermeld, worden niet ondersteund. U kunt geen eigen uitbrei ding maken met Azure Database for PostgreSQL.
 
@@ -31,7 +31,7 @@ De volgende tabellen geven een lijst van de standaard PostgreSQL-extensies die m
 ### <a name="data-types-extensions"></a>Uitbrei dingen van gegevens typen
 
 > [!div class="mx-tableFixed"]
-> | **Toestelnummer** | **Beschrijving** |
+> | **Toestelnummer** | **Deschription** (Beschrijving) |
 > |---|---|
 > | [citext](https://www.postgresql.org/docs/current/static/citext.html) | Bevat een hoofdletter gevoelig type teken reeks. |
 > | [kubus](https://www.postgresql.org/docs/current/static/cube.html) | Biedt een gegevens type voor multidimensionale kubussen. |
@@ -47,7 +47,7 @@ De volgende tabellen geven een lijst van de standaard PostgreSQL-extensies die m
 ### <a name="full-text-search-extensions"></a>Extensies voor zoeken in volledige tekst
 
 > [!div class="mx-tableFixed"]
-> | **Toestelnummer** | **Beschrijving** |
+> | **Toestelnummer** | **Deschription** (Beschrijving) |
 > |---|---|
 > | [dicteren \_ int](https://www.postgresql.org/docs/current/static/dict-int.html) | Voorziet in een woordenlijst sjabloon voor tekst zoeken voor gehele getallen. |
 > | [dict \_ xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) | Zoek woordenlijst sjabloon voor tekst voor uitgebreide synoniemen verwerking. |
@@ -56,7 +56,7 @@ De volgende tabellen geven een lijst van de standaard PostgreSQL-extensies die m
 ### <a name="functions-extensions"></a>Extensies voor functies
 
 > [!div class="mx-tableFixed"]
-> | **Toestelnummer** | **Beschrijving** |
+> | **Toestelnummer** | **Deschription** (Beschrijving) |
 > |---|---|
 > | [autoinc](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.7) | Functies voor auto incrementele velden. |
 > | [earthdistance](https://www.postgresql.org/docs/current/static/earthdistance.html) | Biedt een manier om grote afstanden te berekenen op het Opper vlak van de aarde. |
@@ -78,7 +78,7 @@ De volgende tabellen geven een lijst van de standaard PostgreSQL-extensies die m
 ### <a name="hyperscale-citus-extensions"></a>Citus-uitbrei dingen (grootschalige)
 
 > [!div class="mx-tableFixed"]
-> | **Toestelnummer** | **Beschrijving** |
+> | **Toestelnummer** | **Deschription** (Beschrijving) |
 > |---|---|
 > | [citus](https://github.com/citusdata/citus) | Gedistribueerde data base Citus. |
 > | Shard- \_ herbalancer | Gegevens in een server groep veilig opnieuw verdelen in geval van toevoeging of verwijdering van knoop punten. |
@@ -86,7 +86,7 @@ De volgende tabellen geven een lijst van de standaard PostgreSQL-extensies die m
 ### <a name="index-types-extensions"></a>Extensies van index typen
 
 > [!div class="mx-tableFixed"]
-> | **Toestelnummer** | **Beschrijving** |
+> | **Toestelnummer** | **Deschription** (Beschrijving) |
 > |---|---|
 > | [bloei](https://www.postgresql.org/docs/current/bloom.html) | Toegangs methode voor bloei-index op basis van een hand tekening bestand. |
 > | [btree \_ eginnen](https://www.postgresql.org/docs/current/static/btree-gin.html) | Biedt een voor beeld van EGINNEN-operator klassen waarmee B-structuur-like-gedrag voor bepaalde gegevens typen kan worden geïmplementeerd. |
@@ -95,14 +95,14 @@ De volgende tabellen geven een lijst van de standaard PostgreSQL-extensies die m
 ### <a name="language-extensions"></a>Taal extensies
 
 > [!div class="mx-tableFixed"]
-> | **Toestelnummer** | **Beschrijving** |
+> | **Toestelnummer** | **Deschription** (Beschrijving) |
 > |---|---|
 > | [plpgsql](https://www.postgresql.org/docs/current/static/plpgsql.html) | Door PL/pgSQL geladen procedure taal. |
 
 ### <a name="miscellaneous-extensions"></a>Diverse uitbrei dingen
 
 > [!div class="mx-tableFixed"]
-> | **Toestelnummer** | **Beschrijving** |
+> | **Toestelnummer** | **Deschription** (Beschrijving) |
 > |---|---|
 > | [adminpack](https://www.postgresql.org/docs/current/adminpack.html) | Beheer functies voor PostgreSQL. |
 > | [amcheck](https://www.postgresql.org/docs/current/amcheck.html) | Functies voor het controleren van relatie-integriteit. |
@@ -128,7 +128,7 @@ De volgende tabellen geven een lijst van de standaard PostgreSQL-extensies die m
 ### <a name="postgis-extensions"></a>PostGIS-extensies
 
 > [!div class="mx-tableFixed"]
-> | **Toestelnummer** | **Beschrijving** |
+> | **Toestelnummer** | **Deschription** (Beschrijving) |
 > |---|---|
 > | [Postgis](https://www.postgis.net/), postgis- \_ topologie, postgis \_ Tiger \_ geocodeer, postgis \_ sfcgal | Ruimtelijke en geografische objecten voor PostgreSQL. |
 > | adres \_ standaardiserer, adresseer \_ \_ data gegevens \_ | Wordt gebruikt om een adres te parseren in onderdeel elementen. Wordt gebruikt ter ondersteuning van de stap voor het normaliseren van het adres voor geocodering. |
@@ -140,7 +140,7 @@ De volgende tabellen geven een lijst van de standaard PostgreSQL-extensies die m
 ## <a name="pg_stat_statements"></a>pg_stat_statements
 De [ \_ \_ uitbrei ding pag. instructies](https://www.postgresql.org/docs/current/pgstatstatements.html) is vooraf geladen op elke Azure database for postgresql-server, zodat u de uitvoerings statistieken van SQL-instructies kunt volgen.
 
-De instelling `pg_stat_statements.track` bepaalt welke instructies worden geteld door de uitbrei ding. De standaard instelling `top` is, wat betekent dat alle instructies die rechtstreeks door clients worden uitgegeven, worden bijgehouden. De twee andere tracking niveaus zijn `none` en `all` . Deze instelling kan worden geconfigureerd als een server parameter via de [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal) of de [Azure cli](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli).
+De instelling `pg_stat_statements.track` bepaalt welke instructies worden geteld door de uitbrei ding. De standaard instelling `top` is, wat betekent dat alle instructies die rechtstreeks door clients worden uitgegeven, worden bijgehouden. De twee andere tracking niveaus zijn `none` en `all` . Deze instelling kan worden geconfigureerd als een server parameter via de [Azure Portal](./howto-configure-server-parameters-using-portal.md) of de [Azure cli](./howto-configure-server-parameters-using-cli.md).
 
 Er is sprake van een afweging tussen de informatie over het uitvoeren van query's pg_stat_statements biedt en het effect op Server prestaties, terwijl elke SQL-instructie wordt geregistreerd. Als u de uitbrei ding pg_stat_statements niet actief gebruikt, wordt u aangeraden `pg_stat_statements.track` om in te stellen op `none` . Sommige bewakings services van derden zijn afhankelijk van pg_stat_statements om query prestaties te kunnen leveren, dus bevestig of dit het geval voor u is.
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: 0b1fdec12b99edc952d24b0b3cc21bad24ec7554
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f787840422e61d6f43081d991ffc3ef28da6976
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569724"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486528"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Verificatie op basis van certificaten voor een Azure AD-identiteit om toegang te krijgen tot sleutels van een Azure Cosmos DB-account
 
@@ -22,13 +22,13 @@ Met verificatie op basis van certificaten kan de clienttoepassing worden geverif
 
 * Installeer de [meest recente versie](/powershell/azure/install-az-ps) van Azure PowerShell.
 
-* Als u geen [Azure-abonnement](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing) hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) voordat u begint.
+* Als u geen [Azure-abonnement](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing) hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) voordat u begint.
 
 ## <a name="register-an-app-in-azure-ad"></a>Een app bij Azure AD registreren
 
 In deze stap maakt u een voor beeld van een webtoepassing in uw Azure AD-account. Deze toepassing wordt later gebruikt voor het lezen van de sleutels uit uw Azure Cosmos DB-account. Gebruik de volgende stappen om een toepassing te registreren: 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 1. Open het deel venster **Active Directory** van Azure, ga naar het deel venster **app-registraties** en selecteer **nieuwe registratie**. 
 
@@ -103,7 +103,7 @@ De bovenstaande opdracht resulteert in de uitvoer die lijkt op de onderstaande s
 
 ## <a name="configure-your-azure-cosmos-account-to-use-the-new-identity"></a>Uw Azure Cosmos-account configureren voor het gebruik van de nieuwe identiteit
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 1. Ga naar uw Azure Cosmos-account en open de Blade **toegangs beheer (IAM)** .
 
@@ -119,7 +119,7 @@ U kunt de op certificaten gebaseerde referentie koppelen aan de client toepassin
 
 In de registratie van de Azure-app voor de client toepassing:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 1. Open het deel venster **Active Directory** van Azure, ga naar het deel venster **app-registraties** en open de voor beeld-app die u in de vorige stap hebt gemaakt. 
 

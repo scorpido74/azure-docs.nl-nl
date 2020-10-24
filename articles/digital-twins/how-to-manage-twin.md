@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ede358cdbe533a32ff99fbd736e171463472e45c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 4945e89232ee9a15b2700dac49ccd829b7a52dac
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461312"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494780"
 ---
 # <a name="manage-digital-twins"></a>Digitale tweelingen beheren
 
@@ -381,6 +381,8 @@ Voor een voor beeld van het verwijderen van alle apparaatdubbels in een keer, do
 
 U kunt het uitvoer bare-code voorbeeld hieronder gebruiken om een dubbele, bijwerkings gegevens te maken en de dubbele te verwijderen. 
 
+### <a name="set-up-the-runnable-sample"></a>Het uitvoer bare-voor beeld instellen
+
 Het fragment maakt gebruik van de [Room.jsop](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json) model definitie uit [*zelf studie: Verken Azure Digital apparaatdubbels met een voor beeld-client-app*](tutorial-command-line-app.md). U kunt deze koppeling gebruiken om rechtstreeks naar het bestand te gaan of dit als onderdeel van het volledige end-to-end- [voorbeeld project te](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)downloaden.
 
 Ga als volgt te werk voordat u het voor beeld uitvoert:
@@ -392,7 +394,12 @@ Ga als volgt te werk voordat u het voor beeld uitvoert:
     dotnet add package Azure.identity
     ```
 
-Voer vervolgens het voor beeld uit.
+U moet ook lokale referenties instellen als u het voor beeld rechtstreeks wilt uitvoeren. In de volgende sectie wordt dit uitgelegd.
+[!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](../../includes/digital-twins-local-credentials-outer.md)]
+
+### <a name="run-the-sample"></a>De voorbeeldtoepassing uitvoeren
+
+Nadat u de bovenstaande stappen hebt voltooid, kunt u de volgende voorbeeld code rechtstreeks uitvoeren.
 
 ```csharp
 using System;
@@ -555,8 +562,6 @@ Hier volgt de console-uitvoer van het bovenstaande programma:
 ## <a name="manage-twins-with-cli"></a>Apparaatdubbels beheren met CLI
 
 Apparaatdubbels kan ook worden beheerd met behulp van de Azure Digital Apparaatdubbels CLI. De opdrachten zijn te vinden in [_How: gebruik de Azure Digital APPARAATDUBBELS cli *](how-to-use-cli.md).
-
-[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 
 ## <a name="view-all-digital-twins"></a>Alle digitale apparaatdubbels weer geven
 

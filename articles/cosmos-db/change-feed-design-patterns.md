@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 6101e80131aca94e44bb4e85ee51fe607f47c10f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebd1c4f71d71ca70f6d10763d538b1877b0c3539
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85118947"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489350"
 ---
 # <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>Ontwerp patronen voor feeds wijzigen in Azure Cosmos DB
 
@@ -52,7 +52,7 @@ Naast het lezen van de wijzigings feed van een Cosmos-container, kunt u ook SQL-
 
 ### <a name="high-availability"></a>Hoge beschikbaarheid
 
-Azure Cosmos DB biedt Maxi maal 99,999% Beschik baarheid voor lezen en schrijven. In tegens telling tot veel bericht wachtrijen kunnen Azure Cosmos DB gegevens gemakkelijk wereld wijd worden gedistribueerd en geconfigureerd met een [RTO (Recovery Time doelstelling)](consistency-levels-tradeoffs.md#rto) van nul.
+Azure Cosmos DB biedt Maxi maal 99,999% Beschik baarheid voor lezen en schrijven. In tegens telling tot veel bericht wachtrijen kunnen Azure Cosmos DB gegevens gemakkelijk wereld wijd worden gedistribueerd en geconfigureerd met een [RTO (Recovery Time doelstelling)](./consistency-levels.md#rto) van nul.
 
 Na het verwerken van items in de wijzigings feed kunt u een gerealiseerde weer gave maken en de geaggregeerde waarden weer in Azure Cosmos DB. Als u Azure Cosmos DB gebruikt voor het bouwen van een spelletje, kunt u bijvoorbeeld Change feed gebruiken om realtime klassementen te implementeren op basis van scores van voltooide games.
 
@@ -73,7 +73,7 @@ Wanneer u [gegevens in partities en containers moet denormaliseren](how-to-model
 
 ## <a name="event-sourcing"></a>Gebeurtenis bronnen
 
-Het [gebeurtenis bronnen patroon](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) omvat het gebruik van een archief alleen toevoegen voor het vastleggen van de volledige reeks acties voor die gegevens. De wijzigings feed van Azure Cosmos DB is een uitstekende keuze als een centrale gegevens opslag in Event sourcing-architecturen waarbij alle gegevens opname wordt gemodelleerd als schrijf bewerkingen (geen updates of verwijderingen). In dit geval is elke schrijf bewerking naar Azure Cosmos DB een ' gebeurtenis '. u hebt dan een volledige record van achterstallige gebeurtenissen in de wijzigings feed. Typisch gebruik van de gebeurtenissen die door het centrale gebeurtenis archief worden gepubliceerd, zijn voor het onderhouden van gerealiseerde weer gaven of voor de integratie met externe systemen. Omdat er geen tijds limiet is voor het bewaren van de wijzigings feed, kunt u alle gebeurtenissen in het verleden herhalen door te lezen vanaf het begin van de wijzigings feed van uw Cosmos-container.
+Het [gebeurtenis bronnen patroon](/azure/architecture/patterns/event-sourcing) omvat het gebruik van een archief alleen toevoegen voor het vastleggen van de volledige reeks acties voor die gegevens. De wijzigings feed van Azure Cosmos DB is een uitstekende keuze als een centrale gegevens opslag in Event sourcing-architecturen waarbij alle gegevens opname wordt gemodelleerd als schrijf bewerkingen (geen updates of verwijderingen). In dit geval is elke schrijf bewerking naar Azure Cosmos DB een ' gebeurtenis '. u hebt dan een volledige record van achterstallige gebeurtenissen in de wijzigings feed. Typisch gebruik van de gebeurtenissen die door het centrale gebeurtenis archief worden gepubliceerd, zijn voor het onderhouden van gerealiseerde weer gaven of voor de integratie met externe systemen. Omdat er geen tijds limiet is voor het bewaren van de wijzigings feed, kunt u alle gebeurtenissen in het verleden herhalen door te lezen vanaf het begin van de wijzigings feed van uw Cosmos-container.
 
 U kunt [meerdere changes-gebruikers abonneren op de wijzigings feed van dezelfde container](how-to-create-multiple-cosmos-db-triggers.md#optimizing-containers-for-multiple-triggers). Afgezien van de ingerichte door Voer van de [lease container](change-feed-processor.md#components-of-the-change-feed-processor) zijn er geen kosten voor het gebruik van de wijzigings feed. De wijzigings feed is beschikbaar in elke container, ongeacht of deze wordt gebruikt.
 

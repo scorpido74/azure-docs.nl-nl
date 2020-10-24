@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a3c37143154a6e701c4308903c46f4e68ac1b604
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3b8dafd6d2347cf7cca4100f577476b8dfdf6c81
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458099"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495767"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Een grafiek van digitale apparaatdubbels beheren met behulp van relaties
 
@@ -221,6 +221,8 @@ await DeleteRelationship(client, srcId, relId);
 
 Het volgende uitvoer bare code fragment maakt gebruik van de relatie bewerkingen uit dit artikel om een dubbele grafiek te maken van digitale apparaatdubbels en relaties.
 
+### <a name="set-up-the-runnable-sample"></a>Het uitvoer bare-voor beeld instellen
+
 Het fragment maakt gebruik van de [*Room.jsop*](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json) en [*Floor.jsop*](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json) model definities uit de [*zelf studie: Verken Azure Digital apparaatdubbels met een voor beeld-client-app*](tutorial-command-line-app.md). U kunt deze koppelingen gebruiken om rechtstreeks naar de bestanden te gaan of ze als onderdeel van het volledige end-to-end- [voorbeeld project te](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)downloaden. 
 
 Ga als volgt te werk voordat u het voor beeld uitvoert:
@@ -232,7 +234,12 @@ Ga als volgt te werk voordat u het voor beeld uitvoert:
     dotnet add package Azure.identity
     ```
 
-Voer vervolgens het voor beeld uit.
+U moet ook lokale referenties instellen als u het voor beeld rechtstreeks wilt uitvoeren. In de volgende sectie wordt dit uitgelegd.
+[!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](../../includes/digital-twins-local-credentials-outer.md)]
+
+### <a name="run-the-sample"></a>De voorbeeldtoepassing uitvoeren
+
+Nadat u de bovenstaande stappen hebt voltooid, kunt u de volgende voorbeeld code rechtstreeks uitvoeren.
 
 ```csharp 
 using System;

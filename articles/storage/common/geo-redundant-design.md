@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a6aed0630acf6ee6624c72831a2cdc88e6c0a91d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c16f8233a2800025a8c6f601e236b86d2fd044fd
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89013058"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480680"
 ---
 # <a name="use-geo-redundancy-to-design-highly-available-applications"></a>Geo-redundantie gebruiken om Maxi maal beschik bare toepassingen te ontwerpen
 
@@ -24,11 +24,11 @@ Een gemeen schappelijke functie van Cloud infrastructuren zoals Azure Storage is
 
 Azure Storage biedt twee opties voor geo-redundante replicatie. Het enige verschil tussen deze twee opties is hoe gegevens worden gerepliceerd in de primaire regio:
 
-* [Geo-zone-redundante opslag (GZRS)](storage-redundancy.md): gegevens worden synchroon gerepliceerd over drie Azure-beschikbaarheids zones in de primaire regio met *zone-redundante opslag (ZRS)* en vervolgens asynchroon gerepliceerd naar de secundaire regio. Voor lees toegang tot gegevens in de secundaire regio schakelt u geo-zone-redundante opslag met lees toegang (RA-GZRS) in.
+* [Geo-zone-redundante opslag (GZRS)](storage-redundancy.md): gegevens worden synchroon gerepliceerd over drie Azure-beschikbaarheids zones in de primaire regio met *zone-redundante opslag (ZRS)* en vervolgens asynchroon gerepliceerd naar de secundaire regio. Voor leestoegang tot gegevens in de secundaire regio schakelt u geografisch zone-redundante opslag met lees toegang (RA-GZRS) in.
 
     Micro soft raadt aan om GZRS/RA-GZRS te gebruiken voor scenario's waarvoor maximale Beschik baarheid en duurzaamheid zijn vereist.
 
-* [Geografisch redundante opslag (GRS)](storage-redundancy.md): gegevens worden synchroon binnen de primaire regio gesynchroniseerd met *lokaal redundante opslag (LRS)* en vervolgens asynchroon gerepliceerd naar de secundaire regio. Voor lees toegang tot gegevens in de secundaire regio schakelt u geografisch redundante opslag met lees toegang (RA-GRS) in.
+* [Geografisch redundante opslag (GRS)](storage-redundancy.md): gegevens worden synchroon binnen de primaire regio gesynchroniseerd met *lokaal redundante opslag (LRS)* en vervolgens asynchroon gerepliceerd naar de secundaire regio. Voor leestoegang tot gegevens in de secundaire regio schakelt u geografisch redundante opslag met leestoegang (RA-GRS) in.
 
 In dit artikel wordt uitgelegd hoe u uw toepassing kunt ontwerpen voor het afhandelen van een storing in de primaire regio. Als de primaire regio niet beschikbaar is, kan uw toepassing worden aangepast om Lees bewerkingen uit te voeren op de secundaire regio. Zorg ervoor dat uw opslag account is geconfigureerd voor RA-GRS of RA-GZRS voordat u aan de slag gaat.
 
@@ -146,7 +146,7 @@ Een andere overweging is hoe u meerdere exemplaren van een toepassing kunt verwe
 
 Er zijn drie belang rijke opties voor het bewaken van de frequentie van nieuwe pogingen in de primaire regio om te bepalen wanneer moet worden overgeschakeld naar de secundaire regio en de toepassing te wijzigen zodat deze wordt uitgevoerd in de modus alleen-lezen.
 
-* Een handler toevoegen [**voor het**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying) [**OperationContext**](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) -object dat u aan uw opslag aanvragen door gegeven. Dit is de methode die wordt weer gegeven in dit artikel en wordt gebruikt in het bijbehorende voor beeld. Deze gebeurtenissen worden geactiveerd wanneer de client een aanvraag opnieuw probeert, zodat u kunt bijhouden hoe vaak de client herstel bare fouten op een primair eind punt tegen komt.
+* Een handler toevoegen [**voor het**](/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying) [**OperationContext**](/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) -object dat u aan uw opslag aanvragen door gegeven. Dit is de methode die wordt weer gegeven in dit artikel en wordt gebruikt in het bijbehorende voor beeld. Deze gebeurtenissen worden geactiveerd wanneer de client een aanvraag opnieuw probeert, zodat u kunt bijhouden hoe vaak de client herstel bare fouten op een primair eind punt tegen komt.
 
     ```csharp
     operationContext.Retrying += (sender, arguments) =>
@@ -157,7 +157,7 @@ Er zijn drie belang rijke opties voor het bewaken van de frequentie van nieuwe p
     };
     ```
 
-* In de methode [**Evaluate**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.iextendedretrypolicy.evaluate) in een aangepast beleid voor opnieuw proberen kunt u aangepaste code uitvoeren wanneer een nieuwe poging plaatsvindt. Naast het vastleggen wanneer een nieuwe poging gebeurt, biedt dit ook de mogelijkheid om het gedrag voor opnieuw proberen aan te passen.
+* In de methode [**Evaluate**](/dotnet/api/microsoft.azure.cosmos.table.iextendedretrypolicy.evaluate) in een aangepast beleid voor opnieuw proberen kunt u aangepaste code uitvoeren wanneer een nieuwe poging plaatsvindt. Naast het vastleggen wanneer een nieuwe poging gebeurt, biedt dit ook de mogelijkheid om het gedrag voor opnieuw proberen aan te passen.
 
     ```csharp
     public RetryInfo Evaluate(RetryContext retryContext,

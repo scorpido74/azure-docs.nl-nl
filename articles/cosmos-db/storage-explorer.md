@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/24/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 938968599f1824416666818a46cc73a1d33c5341
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b5886984d6e3830549e86a7c1ee46cd2483e4b4
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987735"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480595"
 ---
 # <a name="manage-azure-cosmos-db-resources-by-using-azure-storage-explorer"></a>Azure Cosmos DB-resources beheren met Azure Storage Explorer
 
@@ -20,7 +20,7 @@ U kunt Azure Storage Explorer gebruiken om verbinding te maken met Azure Cosmos 
 
 Gebruik hetzelfde hulp programma om uw verschillende Azure-entiteiten op één plek te beheren. U kunt Azure Cosmos DB entiteiten beheren, gegevens bewerken, opgeslagen procedures en triggers bijwerken, samen met andere Azure-entiteiten, zoals opslag-blobs en wacht rijen.
 
-Azure Storage Explorer ondersteunt Cosmos-accounts die zijn geconfigureerd voor SQL-, MongoDB-, Graph-en Table-Api's. Ga naar [Azure Cosmos db in azure Storage Explorer](https://docs.microsoft.com/azure/cosmos-db/storage-explorer) voor meer informatie.
+Azure Storage Explorer ondersteunt Cosmos-accounts die zijn geconfigureerd voor SQL-, MongoDB-, Graph-en Table-Api's. Ga naar [Azure Cosmos db in azure Storage Explorer]() voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -74,7 +74,7 @@ U kunt een connection string gebruiken om verbinding te maken met een Azure Cosm
 
 Gebruik de volgende stappen om verbinding te maken met een Azure Cosmos DB met een emulator. Deze methode biedt alleen ondersteuning voor SQL-accounts.
 
-1. Installeer Cosmos DB emulator en open het. Zie [Cosmos DB emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator)voor informatie over het installeren van de emulator.
+1. Installeer Cosmos DB emulator en open het. Zie [Cosmos DB emulator](./local-emulator.md)voor informatie over het installeren van de emulator.
 
 1. Zoek **lokaal en gekoppeld** in de linker boom structuur, klik met de rechter muisknop op **Cosmos DB accounts**en selecteer vervolgens **verbinding maken met Cosmos DB emulator**.
 
@@ -173,7 +173,7 @@ U kunt met de rechter muisknop op een abonnement in het deel venster Verkenner k
 
 #### <a name="query-for-documents"></a>Query voor documenten
 
-* Als u het document filter wilt bewerken, voert u een [SQL-query](how-to-sql-query.md)in en selecteert u vervolgens **Toep assen**.
+* Als u het document filter wilt bewerken, voert u een [SQL-query](./sql-query-getting-started.md)in en selecteert u vervolgens **Toep assen**.
 
   :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="Scherm afbeelding met het pictogram voor de invoeg toepassing in het linkerdeel venster.":::
 
@@ -353,4 +353,4 @@ Probeer deze suggesties:
 ## <a name="next-steps"></a>Volgende stappen
 
 * Bekijk deze video om te zien hoe u Azure Cosmos DB kunt gebruiken in Azure Storage Explorer: [gebruik Azure Cosmos db in azure Storage Explorer](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be).
-* Meer informatie over Storage Explorer en verbinding maken met meer services vindt u in [Aan de slag met Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
+* Meer informatie over Storage Explorer en verbinding maken met meer services vindt u in [Aan de slag met Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).

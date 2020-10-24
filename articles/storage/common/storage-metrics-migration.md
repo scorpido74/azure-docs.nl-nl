@@ -9,16 +9,16 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: c6a5f69a5a32ed1279b367c93b5246eb77ef0208
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1dc0c7f37dc848ecd361848934cbcc5640afc66
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802834"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490761"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>Overstappen op metrische gegevens in Azure Monitor
 
-Op **31 augustus 2023** worden Opslaganalyse metrische gegevens, ook wel *klassieke metrische gegevens* genoemd, buiten gebruik gesteld. Zie de [officiële aankondiging](https://azure.microsoft.com/updates/azure-storage-classic-metrics-will-be-retired-on-31-august-2023/)voor meer informatie. Als u gebruikmaakt van klassieke metrische gegevens, moet u overstappen op metrische gegevens in Azure Monitor vóór die datum. Dit artikel helpt u bij het maken van de overgang. 
+Op **31 augustus 2023** worden Opslaganalyse metrische gegevens, ook wel *klassieke metrische gegevens* genoemd, buiten gebruik gesteld. Zie de [officiële aankondiging](https://azure.microsoft.com/updates/azure-storage-classic-metrics-will-be-retired-on-31-august-2023/) voor meer informatie. Als u gebruikmaakt van klassieke metrische gegevens, moet u vóór die datum overstappen op metrische gegevens in Azure Monitor. Dit artikel helpt u bij het maken van de overstap. 
 
 ## <a name="steps-to-complete-the-transition"></a>Stappen voor het volt ooien van de overgang
 
@@ -30,12 +30,12 @@ Als u wilt overstappen op metrische gegevens in Azure Monitor, raden we u aan de
 
 3. Bepaal [welke meet waarden in azure monitor](#metrics-mapping-between-old-metrics-and-new-metrics) dezelfde gegevens leveren als de metrische waarden die u momenteel gebruikt. 
    
-4. Maak [grafieken](https://docs.microsoft.com/learn/modules/gather-metrics-blob-storage/2-viewing-blob-metrics-in-azure-portal) of [Dash boards](https://docs.microsoft.com/learn/modules/gather-metrics-blob-storage/4-using-dashboards-in-the-azure-portal) om metrische gegevens weer te geven.
+4. Maak [grafieken](/learn/modules/gather-metrics-blob-storage/2-viewing-blob-metrics-in-azure-portal) of [Dash boards](/learn/modules/gather-metrics-blob-storage/4-using-dashboards-in-the-azure-portal) om metrische gegevens weer te geven.
 
    > [!NOTE]
    > Metrische gegevens in Azure Monitor zijn standaard ingeschakeld, zodat u niets hoeft te doen om het vastleggen van metrische gegevens te starten. U moet echter grafieken of Dash boards maken om deze metrische gegevens weer te geven. 
  
-5. Als u waarschuwings regels hebt gemaakt die zijn gebaseerd op de metrische gegevens voor opslag, kunt u [waarschuwings regels maken](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview) die zijn gebaseerd op metrische gegevens in azure monitor. 
+5. Als u waarschuwings regels hebt gemaakt die zijn gebaseerd op de metrische gegevens voor opslag, kunt u [waarschuwings regels maken](/azure/azure-monitor/platform/alerts-overview) die zijn gebaseerd op metrische gegevens in azure monitor. 
 
 6. Wanneer u al uw metrische gegevens in Azure Monitor kunt zien, kunt u de klassieke logboek registratie uitschakelen. 
 
@@ -53,7 +53,7 @@ Voor de ondersteuning van metrische gegevens bieden klassieke metrische gegevens
 
 Als voor de activiteit in uw account geen metrische gegevens worden geactiveerd, wordt voor de metrische gegevens een waarde van nul (0) weer gegeven in de klassieke metrische gegevens. De metrische gegevens in Azure Monitor worden volledig wegge laten, wat leidt tot schone rapporten. Als er bijvoorbeeld een time-out voor de server wordt gerapporteerd, `ServerTimeoutError` wordt de waarde in de tabel metrische gegevens ingesteld op 0. Azure Monitor retourneert geen gegevens wanneer u een query uitvoert op de waarde metric `Transactions` met dimensie `ResponseType` gelijk aan `ServerTimeoutError` . 
 
-Zie [metrische gegevens in azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics)voor meer informatie over metrische gegevens in azure monitor.
+Zie [metrische gegevens in azure monitor](/azure/azure-monitor/platform/data-platform-metrics)voor meer informatie over metrische gegevens in azure monitor.
 
 <a id="metrics-mapping-between-old-metrics-and-new-metrics"></a>
 
@@ -72,7 +72,7 @@ Zie [metrische gegevens in azure monitor](https://docs.microsoft.com/azure/azure
 > [!NOTE]
 > Er zijn ook verschillende nieuwe capaciteits metrieken die niet beschikbaar waren als klassieke metrische gegevens. Zie [metrische gegevens](../common/monitor-storage-reference.md#metrics)om de volledige lijst weer te geven.
 
-**Metrische gegevens voor transacties**
+**Metrische gegevens van trans actie**
 
 | Klassieke metriek | Metrische waarde in Azure Monitor |
 | ------------------- | ----------------- |

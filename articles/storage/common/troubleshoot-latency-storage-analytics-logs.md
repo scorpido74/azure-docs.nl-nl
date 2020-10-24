@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: common
 services: storage
 tags: ''
-ms.openlocfilehash: efae9cd2a73bf6df89007ac313ca6dfe6efe6ddd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c29fd00a19c930995d748027b2ec04eaa12a5ec
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87075950"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480646"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Problemen met latentie oplossen met behulp van logboeken voor Opslaganalyse
 
@@ -27,7 +27,7 @@ De volgende stappen laten zien hoe u latentie problemen kunt identificeren en op
 
 ## <a name="recommended-steps"></a>Aanbevolen stappen
 
-1. Down load de [Opslaganalyse-logboeken](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging#download-storage-logging-log-data).
+1. Down load de [Opslaganalyse-logboeken](/azure/storage/common/storage-analytics-logging#download-storage-logging-log-data).
 
 2. Gebruik het volgende Power shell-script om de RAW-indelings logboeken te converteren naar tabellaire indeling:
 

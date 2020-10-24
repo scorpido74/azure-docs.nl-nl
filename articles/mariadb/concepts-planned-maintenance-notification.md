@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 9a37baaa80aadcf10f2bb2091a04fccb3fd9b504
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 2ce6959cf025d2e29f0ee3dfb3b29b3eaf5d4221
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428869"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490829"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mariadb"></a>Melding over gepland onderhoud in Azure Database for MariaDB
 
@@ -63,7 +63,7 @@ U kunt de geplande onderhouds melding controleren op Azure Portal of waarschuwin
 
 Zie [waarschuwingen voor activiteiten logboek maken voor service meldingen](../service-health/alerts-activity-log-service-notifications.md)voor gedetailleerde stappen voor het maken van **service Health-waarschuwingen**.
 
-## <a name="can-i-control-or-change-planned-maintenance-for-my-servers-after-i-receive-a-notification-event"></a>Kan ik gepland onderhoud voor mijn servers beheren of wijzigen nadat ik een meldings gebeurtenis heb ontvangen?
+## <a name="can-i-cancel-or-postpone-planned-maintenance"></a>Kan ik gepland onderhoud annuleren of uitstellen?
 
 Er is onderhoud nodig om uw server veilig, stabiel en up-to-date te houden. De geplande onderhouds gebeurtenis kan niet worden geannuleerd of uitgesteld. Zodra de melding is verzonden naar een bepaalde Azure-regio, kunnen de wijzigingen in het patch schema niet worden gemaakt voor een afzonderlijke server in die regio. De patch wordt uitgerold voor de hele regio tegelijk. Azure Database for MariaDB-service is ontworpen voor native Cloud toepassingen waarvoor geen gedetailleerde controle of aanpassing van de service nodig is.
 
