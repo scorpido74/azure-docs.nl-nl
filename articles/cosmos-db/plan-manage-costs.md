@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 7f0a8fcb841399eb910f5f043cc75ddad037ee30
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 278603887fe7d47b4be52b04f9f0864be1a1b75b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88606876"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482244"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>Kosten plannen en beheren voor Azure Cosmos DB
 
@@ -75,17 +75,17 @@ Wanneer u begint met het gebruik van Azure Cosmos DB resources van Azure Portal,
 
 ## <a name="use-budgets-and-cost-alerts"></a>Budgetten en kostenwaarschuwingen gebruiken
 
-U kunt [budgetten](../cost-management/tutorial-acm-create-budgets.md) maken om kosten te beheren en waarschuwingen te maken waarmee belanghebbenden automatisch worden geïnformeerd over afwijkende uitgaven en het risico om teveel uit te geven. Waarschuwingen zijn gebaseerd op de vergelijking tussen uitgaven en drempelwaarden voor budgetten en kosten. Budgetten en waarschuwingen worden gemaakt voor Azure-abonnementen en-resource groepen, dus zijn ze nuttig als onderdeel van een strategie voor de kosten bewaking. Ze kunnen echter beperkte functionaliteit hebben voor het beheren van afzonderlijke Azure-service kosten, zoals de kosten van Azure Cosmos DB, omdat ze zijn ontworpen om de kosten op een hoger niveau bij te houden.
+U kunt [budgetten](../cost-management-billing/costs/tutorial-acm-create-budgets.md) maken om kosten te beheren en waarschuwingen te maken waarmee belanghebbenden automatisch worden geïnformeerd over afwijkende uitgaven en het risico om teveel uit te geven. Waarschuwingen zijn gebaseerd op de vergelijking tussen uitgaven en drempelwaarden voor budgetten en kosten. Budgetten en waarschuwingen worden gemaakt voor Azure-abonnementen en-resource groepen, dus zijn ze nuttig als onderdeel van een strategie voor de kosten bewaking. Ze kunnen echter beperkte functionaliteit hebben voor het beheren van afzonderlijke Azure-service kosten, zoals de kosten van Azure Cosmos DB, omdat ze zijn ontworpen om de kosten op een hoger niveau bij te houden.
 
-Als uw Azure-abonnement een bestedings limiet heeft, voor komt u dat u kunt bestedingen over uw tegoed. Wanneer u Azure-resources maakt en gebruikt, worden uw tegoeden gebruikt. Wanneer u de krediet limiet bereikt, worden de resources die u hebt geïmplementeerd, uitgeschakeld voor de rest van die facturerings periode. U kunt uw krediet limiet niet wijzigen, maar wel verwijderen. Zie [Azure bestedings limiet](../billing/billing-spending-limit.md)voor meer informatie over bestedings limieten.
+Als uw Azure-abonnement een bestedings limiet heeft, voor komt u dat u kunt bestedingen over uw tegoed. Wanneer u Azure-resources maakt en gebruikt, worden uw tegoeden gebruikt. Wanneer u de krediet limiet bereikt, worden de resources die u hebt geïmplementeerd, uitgeschakeld voor de rest van die facturerings periode. U kunt uw krediet limiet niet wijzigen, maar wel verwijderen. Zie [Azure bestedings limiet](../cost-management-billing/manage/spending-limit.md)voor meer informatie over bestedings limieten.
 
 ## <a name="monitor-costs"></a>Kosten bewaken
 
-Als u resources met Azure Cosmos DB gebruikt, worden er kosten in rekening gebracht. De kosten voor de resource gebruiks eenheid variëren per tijds interval (seconden, minuten, uren en dagen) of per aanvraag eenheids gebruik. Zodra het gebruik van Azure Cosmos DB gestart, worden de kosten in rekening gebracht en kunt u ze zien in het deel venster [kosten analyse](../cost-management/quick-acm-cost-analysis.md) in de Azure Portal.
+Als u resources met Azure Cosmos DB gebruikt, worden er kosten in rekening gebracht. De kosten voor de resource gebruiks eenheid variëren per tijds interval (seconden, minuten, uren en dagen) of per aanvraag eenheids gebruik. Zodra het gebruik van Azure Cosmos DB gestart, worden de kosten in rekening gebracht en kunt u ze zien in het deel venster [kosten analyse](../cost-management-billing/costs/quick-acm-cost-analysis.md) in de Azure Portal.
 
 Wanneer u kosten analyse gebruikt, kunt u de kosten voor de Azure Cosmos DB in grafieken en tabellen weer geven voor verschillende tijds intervallen. Enkele voor beelden zijn dag, actueel, voor gaande maand en jaar. U kunt ook kosten weer geven op basis van budgetten en geraamde kosten. Door over te scha kelen naar langere weer gaven kunt u uitgaven trends helpen identificeren en zien waar overuitgave mogelijk is gebeurd. Als u budgetten hebt gemaakt, kunt u ook eenvoudig zien waar ze zijn overschreden. Azure Cosmos DB kosten voor de kosten analyse weer geven:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 1. Open het venster **Cost Management en facturering** , selecteer **kosten beheer** in het menu en selecteer vervolgens **kosten analyse**. U kunt vervolgens het bereik voor een specifiek abonnement wijzigen in de vervolg keuzelijst **bereik** .
 
@@ -103,5 +103,5 @@ Raadpleeg de volgende artikelen voor meer informatie over de werking van prijzen
 
 * [Prijsmodel in Azure Cosmos DB](how-pricing-works.md)
 * [Kosten voor ingerichte doorvoer optimaliseren in Azure Cosmos DB](optimize-cost-throughput.md)
-* [Kosten van query's optimaliseren in Azure Cosmos DB](optimize-cost-queries.md)
+* [Kosten van query's optimaliseren in Azure Cosmos DB](./optimize-cost-reads-writes.md)
 * [De opslag kosten in Azure Cosmos DB optimaliseren](optimize-cost-storage.md)

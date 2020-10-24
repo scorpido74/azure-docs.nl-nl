@@ -6,12 +6,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: af49a7bec68c30e4ded576a8d84eac850eb745f8
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: b8d74f9da62b0f5a596c811efa9f93b55c99f1d7
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331359"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476345"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Gebruikelijke Azure Cosmos DB use cases
 
@@ -28,7 +28,7 @@ Na het lezen van dit artikel kunt u de volgende vragen beantwoorden:
 
 [Azure Cosmos DB](../cosmos-db/introduction.md) is de snelle NoSQL-data base van micro soft met open-api's voor elke schaal. De service is zo ontworpen dat klanten hun door Voer en opslag voor een wille keurig aantal geografische regio's elastisch (en onafhankelijk) kunnen schalen. Azure Cosmos DB is momenteel de eerste wereld wijd gedistribueerde database service in de markt om uitgebreide [service overeenkomsten](https://azure.microsoft.com/support/legal/sla/cosmos-db/) te bieden die de door Voer, latentie, Beschik baarheid en consistentie omvatten.
 
-Azure Cosmos DB is een wereld wijd gedistribueerde, multi-model database die wordt gebruikt in een breed scala aan toepassingen en use cases. Het is een goede keuze voor elke [serverloze](https://azure.com/serverless) toepassing die een lage reactie tijd van milliseconden nodig heeft en snel en wereld wijd moet schalen. Het ondersteunt meerdere gegevens modellen (sleutel-waarde, documenten, grafieken en kolommen) en veel Api's voor gegevens toegang, waaronder [de API van Azure Cosmos DB voor MongoDb](mongodb-introduction.md), [SQL API](documentdb-introduction.md), [Gremlin API](graph-introduction.md)en [Table API](table-introduction.md) native en op een uitbreid bare manier. 
+Azure Cosmos DB is een wereld wijd gedistribueerde, multi-model database die wordt gebruikt in een breed scala aan toepassingen en use cases. Het is een goede keuze voor elke [serverloze](https://azure.com/serverless) toepassing die een lage reactie tijd van milliseconden nodig heeft en snel en wereld wijd moet schalen. Het ondersteunt meerdere gegevens modellen (sleutel-waarde, documenten, grafieken en kolommen) en veel Api's voor gegevens toegang, waaronder [de API van Azure Cosmos DB voor MongoDb](mongodb-introduction.md), [SQL API](./introduction.md), [Gremlin API](graph-introduction.md)en [Table API](table-introduction.md) native en op een uitbreid bare manier. 
 
 Hier volgen enkele kenmerken van Azure Cosmos DB die het geschikt maken voor toepassingen met hoge prestaties en globale visie.
 

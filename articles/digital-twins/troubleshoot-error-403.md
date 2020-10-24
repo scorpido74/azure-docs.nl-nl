@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: d1c3ad9aa034e6eace5323dd80c5275699a6e728
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: d821d6dacc2620988c32e63439ec2e039819e0a5
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331495"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495896"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>Service aanvraag mislukt. Status: 403 (verboden)
 
@@ -25,7 +25,9 @@ Deze fout kan optreden bij veel typen service aanvragen waarvoor verificatie is 
 
 ### <a name="cause-1"></a>Oorzaak #1
 
-Deze fout geeft meestal aan dat uw op rollen gebaseerd toegangs beheer voor Azure (Azure RBAC) voor de service niet juist is ingesteld. Voor veel acties voor een Azure Digital Apparaatdubbels-exemplaar moet u de rol *Azure Digital Apparaatdubbels Owner (preview)* hebben **voor het exemplaar dat u wilt beheren**. 
+Deze fout geeft meestal aan dat uw op rollen gebaseerd toegangs beheer voor Azure (Azure RBAC) voor de service niet juist is ingesteld. Voor veel acties voor een Azure Digital Apparaatdubbels-exemplaar moet u de rol *Azure Digital apparaatdubbels-gegevens eigenaar* hebben **op het exemplaar dat u wilt beheren**. 
+
+[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
 ### <a name="cause-2"></a>Oorzaak #2
 
@@ -37,11 +39,12 @@ De app-registratie moet toegangs machtigingen hebben die zijn geconfigureerd voo
 
 ### <a name="solution-1"></a>#1 oplossing
 
-De eerste oplossing is om te controleren of uw Azure-gebruiker de rol _**Azure Digital Apparaatdubbels Owner (preview)**_ heeft voor het exemplaar dat u wilt beheren. Als u deze functie niet hebt, stelt u deze in.
+De eerste oplossing is om te controleren of uw Azure-gebruiker de rol _**Azure Digital Apparaatdubbels data owner**_ heeft voor het exemplaar dat u wilt beheren. Als u deze functie niet hebt, stelt u deze in.
 
 Houd er rekening mee dat deze rol afwijkt van...
-* de rol van *eigenaar* van het hele Azure-abonnement. De *Azure Digital apparaatdubbels-eigenaar (preview)* is een rol binnen Azure Digital apparaatdubbels en is afgestemd op dit individuele Azure Digital apparaatdubbels-exemplaar.
-* de rol van *eigenaar* in azure Digital apparaatdubbels. Dit zijn twee verschillende Azure Digital Apparaatdubbels management-rollen en de *Azure Digital Apparaatdubbels Owner (preview)* is de rol die tijdens de preview-periode moet worden gebruikt voor beheer.
+* de voormalige naam voor deze rol tijdens de preview-versie, de *Azure Digital apparaatdubbels-eigenaar (preview)* (de rol is hetzelfde, maar de naam is gewijzigd)
+* de rol van *eigenaar* van het hele Azure-abonnement. De *Azure Digital apparaatdubbels-gegevens eigenaar* is een rol binnen Azure Digital apparaatdubbels en is afgestemd op dit individuele Azure Digital apparaatdubbels-exemplaar.
+* de rol van *eigenaar* in azure Digital apparaatdubbels. Dit zijn twee verschillende Azure Digital Apparaatdubbels management-rollen en de *Azure Digital apparaatdubbels-gegevens eigenaar* is de rol die tijdens de preview-periode moet worden gebruikt voor beheer.
 
 #### <a name="check-current-setup"></a>Huidige instellingen controleren
 
@@ -49,12 +52,12 @@ Houd er rekening mee dat deze rol afwijkt van...
 
 #### <a name="fix-issues"></a>Problemen oplossen 
 
-Als u deze roltoewijzing niet hebt, moet iemand met een eigenaar van uw Azure- **abonnement** de volgende opdracht uitvoeren om uw Azure-gebruiker de rol van Azure *Digital Apparaatdubbels Owner (preview)* te geven op de **Azure Digital apparaatdubbels-instantie**. 
+Als u deze roltoewijzing niet hebt, moet iemand met een eigenaar van uw Azure- **abonnement** de volgende opdracht uitvoeren om uw Azure-gebruiker de rol *Azure Digital apparaatdubbels data owner* te geven op de **Azure Digital apparaatdubbels-instantie**. 
 
 Als u een eigenaar van het abonnement bent, kunt u deze opdracht zelf uitvoeren. Als dat niet het geval is, neemt u contact op met een eigenaar om deze opdracht namens u uit te voeren.
 
-```azurecli
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-Azure-AD-email>" --role "Azure Digital Twins Owner (Preview)"
+```azurecli-interactive
+az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-Azure-AD-email>" --role "Azure Digital Twins Data Owner"
 ```
 
 Voor meer informatie over deze functie vereiste en het toewijzings proces, zie de [sectie *toegangs machtigingen van uw gebruiker instellen* ](how-to-set-up-instance-CLI.md#set-up-user-access-permissions) voor *instructies: een exemplaar en authenticatie instellen (CLI of portal)*.

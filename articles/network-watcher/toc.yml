@@ -45,7 +45,7 @@
       href: network-watcher-nsg-flow-logging-overview.md
     - name: Netwerkbeveiligingsgroep weergeven
       href: network-watcher-security-group-view-overview.md
-    - name: Op rollen gebaseerde toegangsmachtigingen
+    - name: Op rollen gebaseerde Azure-toegangsmachtigingen
       href: required-rbac-permissions.md
     - name: Beveiliging
       items:

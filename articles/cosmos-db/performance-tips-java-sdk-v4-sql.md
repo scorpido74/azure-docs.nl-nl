@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 8735bf721ec85dcd556582f7fd887dd82b55a35d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b14910bc37fc8f3d7f105f382de64ae52fd19a47
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369978"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475223"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Tips voor betere prestaties van Azure Cosmos DB Java SDK v4
 
@@ -85,13 +85,13 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
 
 * **Versneld netwerken op uw virtuele Azure-machine inschakelen voor een lagere latentie.**
 
-U kunt het beste de instructies volgen voor het inschakelen van versnelde netwerken in uw [Windows (Klik voor instructies)](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell) of [Linux (Klik voor instructies)](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) Azure VM om de prestaties te maximaliseren.
+U kunt het beste de instructies volgen voor het inschakelen van versnelde netwerken in uw [Windows (Klik voor instructies)](../virtual-network/create-vm-accelerated-networking-powershell.md) of [Linux (Klik voor instructies)](../virtual-network/create-vm-accelerated-networking-cli.md) Azure VM om de prestaties te maximaliseren.
 
 Zonder versneld netwerken kan IO dat transities tussen uw virtuele Azure-machines en andere Azure-resources onnodig worden gerouteerd via een host en een virtuele switch tussen de virtuele machine en de bijbehorende netwerk kaart. Als u de host en de virtuele switch inline in de DataPath verhoogt, wordt de latentie en jitter in het communicatie kanaal ook niet alleen van de CPU-cycli van de virtuele machine. Met versneld netwerken worden de VM-interfaces direct met de NIC zonder tussen personen. alle details van het netwerk beleid die door de host en de virtuele switch worden verwerkt, worden nu verwerkt in hardware op de NIC. de host en de virtuele switch worden overgeslagen. Over het algemeen kunt u een lagere latentie en een hogere door Voer verwachten, evenals een *consistente* latentie en een kleiner CPU-gebruik wanneer u versneld netwerken inschakelt.
 
 Beperkingen: versneld netwerken moeten worden ondersteund op het VM-besturings systeem en kunnen alleen worden ingeschakeld wanneer de virtuele machine wordt gestopt en de toewijzing ongedaan wordt gemaakt. De virtuele machine kan niet worden geïmplementeerd met Azure Resource Manager.
 
-Raadpleeg de [Windows](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell) -en [Linux](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) -instructies voor meer informatie.
+Raadpleeg de [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md) -en [Linux](../virtual-network/create-vm-accelerated-networking-cli.md) -instructies voor meer informatie.
 
 ## <a name="sdk-usage"></a>SDK-gebruik
 * **De meest recente SDK installeren**
@@ -311,7 +311,7 @@ _ **Uw client opschalen-workload**
 
     [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=MigrateIndexingAsync)]
 
-    Zie [Azure Cosmos DB Indexing policies](indexing-policies.md)(Engelstalig) voor meer informatie.
+    Zie [Azure Cosmos DB Indexing policies](index-policy.md)(Engelstalig) voor meer informatie.
 
 ## <a name="throughput"></a>Doorvoer
 <a id="measure-rus"></a>

@@ -10,16 +10,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: d96604cd23f49ff61dce2087fde2c13b8fa2069d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dbbed2ccaa62a99bb54a6d3d2eecf0c644281404
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89483725"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474662"
 ---
 # <a name="design-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>Een polybase data-strategie voor gegevens laden ontwerpen voor Azure Synapse SQL-groep
 
-Traditionele SMP-data warehouses maken gebruik van een proces voor het laden van de gegevens extract, Transform en load (ETL). De Azure SQL-groep is een enorm parallelle verwerkings architectuur (MPP) die gebruikmaakt van de schaal baarheid en flexibiliteit van reken-en opslag resources. U kunt met behulp van een uitpak-, laad-en transformatie proces gebruikmaken van MPP en resources elimineren die nodig zijn om de gegevens te transformeren voordat ze worden geladen.
+Traditionele SMP-data warehouses maken gebruik van een proces voor het laden van de gegevens extract, Transform en load (ETL). De Azure SQL-groep is een enorm parallelle verwerkings architectuur (MPP) die gebruikmaakt van de schaal baarheid en flexibiliteit van reken-en opslag resources. Het gebruik van een proces voor het uitpakken, laden en transformeren (ELT) kan profiteren van de ingebouwde mogelijkheden voor gedistribueerde query verwerking en resources elimineren die nodig zijn om de gegevens te transformeren voordat ze worden geladen.
 
 Hoewel de SQL-groep veel methoden voor het laden ondersteunt, inclusief niet-polybase-opties zoals BCP en SQL BulkCopy-API, is de snelste en meest schaal bare manier om de gegevens te laden via Poly base.  Poly Base is een technologie die toegang heeft tot externe gegevens die zijn opgeslagen in Azure Blob Storage of Azure Data Lake Store via de T-SQL-taal.
 
@@ -69,12 +69,12 @@ Als u exporteert vanaf SQL Server, kunt u het [opdracht regel programma BCP](/sq
 |        tekenreeks         |                           varchar                            |
 |        binair         |                            binair                            |
 |        binair         |                          varbinary                           |
-|       tijdstempel       |                             datum                             |
+|       tijdstempel       |                             date                             |
 |       tijdstempel       |                        smalldatetime                         |
 |       tijdstempel       |                          datetime2                           |
 |       tijdstempel       |                           datum/tijd                           |
 |       tijdstempel       |                             tijd                             |
-|       datum            |                             date                             |
+|       date            |                             date                             |
 |        decimal        |                            decimal                           |
 
 ## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2. Voer de gegevens over naar Azure Blob-opslag of Azure Data Lake Store
@@ -97,7 +97,7 @@ Voordat u gegevens kunt laden, moet u externe tabellen definiëren in uw data wa
 
 Als u externe tabellen definieert, moet u de gegevens bron, de indeling van de tekst bestanden en de tabel definities opgeven. Hieronder vindt u de functies van de T-SQL-syntaxis die u nodig hebt:
 
-- [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [EXTERNE GEGEVENS BRON MAKEN](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 
@@ -112,7 +112,7 @@ De tekst bestanden opmaken:
 
 ## <a name="4-load-the-data-into-sql-pool-staging-tables-using-polybase"></a>4. gegevens in faserings tabellen van SQL-groep laden met poly base
 
-Het is best practice om gegevens in een faserings tabel te laden. Met faserings tabellen kunt u fouten afhandelen zonder de productie tabellen te verstoren. Een faserings tabel biedt u ook de mogelijkheid om de SQL-pool-MPP te gebruiken voor gegevens transformaties voordat u de gegevens in productie tabellen invoegt.
+Het is best practice om gegevens in een faserings tabel te laden. Met faserings tabellen kunt u fouten afhandelen zonder de productie tabellen te verstoren. Een faserings tabel biedt u ook de mogelijkheid om de ingebouwde mogelijkheden van de gedistribueerde query verwerking van SQL-groepen te gebruiken voor gegevens transformaties voordat u de gegevens in productie tabellen invoegt.
 
 ### <a name="options-for-loading-with-polybase"></a>Opties voor het laden met poly base
 

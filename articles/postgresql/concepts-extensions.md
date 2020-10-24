@@ -6,18 +6,18 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.openlocfilehash: f6c73362d554ada6c4845ab8dca2093d3dcbf173
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78395873457f9fe53d45dfbfd94aa9ccdccd614d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707945"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485457"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>PostgreSQL-extensies in Azure Database for PostgreSQL - individuele server
 PostgreSQL biedt de mogelijkheid om de functionaliteit van uw data base uit te breiden met behulp van extensies. Extensies bundelen meerdere SQL-objecten in één pakket dat met één opdracht kan worden geladen in of verwijderd uit uw database. Nadat de gegevens in de database zijn geladen, functioneren de extensies als ingebouwde functies.
 
 ## <a name="how-to-use-postgresql-extensions"></a>PostgreSQL-extensies gebruiken
-PostgreSQL-extensies moeten worden geïnstalleerd in uw Data Base voordat u ze kunt gebruiken. Als u een bepaalde uitbrei ding wilt installeren, voert u de opdracht [extensie maken](https://www.postgresql.org/docs/current/sql-createextension.html)   uit vanuit het hulp programma psql om de verpakte objecten in uw data base te laden.
+PostgreSQL-extensies moeten worden geïnstalleerd in uw Data Base voordat u ze kunt gebruiken. Als u een bepaalde extensie wilt installeren, voert u de opdracht [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html) van het hulpprogramma psql uit om de verpakte objecten in uw database te laden.
 
 Azure Database for PostgreSQL ondersteunt een subset van de sleutel uitbreidingen zoals hieronder wordt weer gegeven. Deze informatie is ook beschikbaar door te worden uitgevoerd `SELECT * FROM pg_available_extensions;` . Uitbrei dingen die niet in de lijst staan, worden niet ondersteund. U kunt geen eigen uitbrei ding maken in Azure Database for PostgreSQL.
 
@@ -26,7 +26,7 @@ Azure Database for PostgreSQL ondersteunt een subset van de sleutel uitbreidinge
 De volgende uitbrei dingen zijn beschikbaar op Azure Database for PostgreSQL servers die post gres-versie 11 hebben. 
 
 > [!div class="mx-tableFixed"]
-> | **Toestelnummer**| **Versie van de extensie** | **Beschrijving** |
+> | **Toestelnummer**| **Versie van de extensie** | **Deschription** (Beschrijving) |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | Wordt gebruikt om een adres te parseren in onderdeel elementen. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Adres van voor beeld van een gegevensset voor de standaardiserer|
@@ -71,7 +71,7 @@ De volgende uitbrei dingen zijn beschikbaar op Azure Database for PostgreSQL ser
 De volgende uitbrei dingen zijn beschikbaar op Azure Database for PostgreSQL servers die post gres versie 10 hebben.
 
 > [!div class="mx-tableFixed"]
-> | **Toestelnummer**| **Versie van de extensie** | **Beschrijving** |
+> | **Toestelnummer**| **Versie van de extensie** | **Deschription** (Beschrijving) |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | Wordt gebruikt om een adres te parseren in onderdeel elementen. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Adres van voor beeld van een gegevensset voor de standaardiserer|
@@ -117,7 +117,7 @@ De volgende uitbrei dingen zijn beschikbaar op Azure Database for PostgreSQL ser
 De volgende uitbrei dingen zijn beschikbaar op Azure Database for PostgreSQL servers met post gres-versie 9,6.
 
 > [!div class="mx-tableFixed"]
-> | **Toestelnummer**| **Versie van de extensie** | **Beschrijving** |
+> | **Toestelnummer**| **Versie van de extensie** | **Deschription** (Beschrijving) |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.2           | Wordt gebruikt om een adres te parseren in onderdeel elementen. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.2           | Adres van voor beeld van een gegevensset voor de standaardiserer|
@@ -163,7 +163,7 @@ De volgende uitbrei dingen zijn beschikbaar op Azure Database for PostgreSQL ser
 De volgende uitbrei dingen zijn beschikbaar op Azure Database for PostgreSQL servers met post gres-versie 9,5.
 
 > [!div class="mx-tableFixed"]
-> | **Toestelnummer**| **Versie van de extensie** | **Beschrijving** |
+> | **Toestelnummer**| **Versie van de extensie** | **Deschription** (Beschrijving) |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.0           | Wordt gebruikt om een adres te parseren in onderdeel elementen. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.0           | Adres van voor beeld van een gegevensset voor de standaardiserer|
@@ -205,7 +205,7 @@ De volgende uitbrei dingen zijn beschikbaar op Azure Database for PostgreSQL ser
 
 ## <a name="pg_stat_statements"></a>pg_stat_statements
 De [uitbrei ding pg_stat_statements](https://www.postgresql.org/docs/current/pgstatstatements.html) is vooraf geladen op elke Azure database for postgresql-server, zodat u de uitvoerings statistieken van SQL-instructies kunt volgen.
-De instelling `pg_stat_statements.track` , die bepaalt welke instructies door de uitbrei ding worden geteld, wordt standaard ingesteld op `top` , wat betekent dat alle instructies die rechtstreeks door clients worden uitgegeven, worden bijgehouden. De twee andere tracking niveaus zijn `none` en `all` . Deze instelling kan worden geconfigureerd als een server parameter via de [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal) of de [Azure cli](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli).
+De instelling `pg_stat_statements.track` , die bepaalt welke instructies door de uitbrei ding worden geteld, wordt standaard ingesteld op `top` , wat betekent dat alle instructies die rechtstreeks door clients worden uitgegeven, worden bijgehouden. De twee andere tracking niveaus zijn `none` en `all` . Deze instelling kan worden geconfigureerd als een server parameter via de [Azure Portal](./howto-configure-server-parameters-using-portal.md) of de [Azure cli](./howto-configure-server-parameters-using-cli.md).
 
 Er is een verhouding tussen de informatie over het uitvoeren van query's pg_stat_statements biedt en de invloed op de prestaties van de server bij het vastleggen van elke SQL-instructie. Als u de extensie pg_stat_statements niet actief gebruikt, wordt u aangeraden `pg_stat_statements.track` om in te stellen op `none` . Houd er rekening mee dat sommige bewakings services van derden afhankelijk zijn van pg_stat_statements voor het leveren van query's met betrekking tot query prestaties, zodat u kunt controleren of dit het geval is voor u of niet.
 

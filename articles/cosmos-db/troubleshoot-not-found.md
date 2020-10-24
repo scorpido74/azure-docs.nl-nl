@@ -7,12 +7,12 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: f32a37d5d08e8b20e59455393c70e4e4d288eb11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83b28c562dca0c20b6f78058f1c7f7def60416ee
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802393"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496086"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-not-found-exceptions"></a>Problemen vaststellen en oplossen Azure Cosmos DB niet-gevonden uitzonde ringen
 De HTTP-statuscode 404 geeft aan dat de resource niet meer bestaat.
@@ -28,7 +28,7 @@ Er zijn meerdere exemplaren van de SDK-client en het lezen is voorgekomen voorda
 
 #### <a name="solution"></a>Oplossing:
 1. De standaard consistentie van het account voor Azure Cosmos DB is sessie consistentie. Wanneer een item wordt gemaakt of bijgewerkt, retourneert het antwoord een sessie token dat kan worden door gegeven tussen SDK-instanties om te garanderen dat de Lees aanvraag wordt gelezen van een replica met die wijziging.
-1. Wijzig het [consistentie niveau](consistency-levels-choosing.md) in een [sterker niveau](consistency-levels-tradeoffs.md).
+1. Wijzig het [consistentie niveau](./consistency-levels.md) in een [sterker niveau](./consistency-levels.md).
 
 ### <a name="invalid-partition-key-and-id-combination"></a>Ongeldige combi natie van partitie sleutel en ID
 De combi natie van de partitie sleutel en-ID is niet geldig.
@@ -37,7 +37,7 @@ De combi natie van de partitie sleutel en-ID is niet geldig.
 Los de toepassings logica op die de onjuiste combi natie veroorzaakt. 
 
 ### <a name="invalid-character-in-an-item-id"></a>Ongeldig teken in een item-ID
-Een item wordt ingevoegd in Azure Cosmos DB met een [ongeldig teken](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.resource.id?view=azure-dotnet&preserve-view=true#remarks) in de item-id.
+Een item wordt ingevoegd in Azure Cosmos DB met een [ongeldig teken](/dotnet/api/microsoft.azure.documents.resource.id?preserve-view=true&view=azure-dotnet#remarks) in de item-id.
 
 #### <a name="solution"></a>Oplossing:
 Wijzig de ID in een andere waarde die geen speciale tekens bevat. Als het wijzigen van de ID geen optie is, kunt u de ID met Base64 coderen om de speciale tekens te escapen.
@@ -79,7 +79,7 @@ while (invalidItemsIterator.HasMoreResults)
 ```
 
 ### <a name="time-to-live-purge"></a>Time to Live opschonen
-De eigenschap [time to Live (TTL)](https://docs.microsoft.com/azure/cosmos-db/time-to-live) van het item is ingesteld. Het item is verwijderd omdat de eigenschap TTL is verlopen.
+De eigenschap [time to Live (TTL)](./time-to-live.md) van het item is ingesteld. Het item is verwijderd omdat de eigenschap TTL is verlopen.
 
 #### <a name="solution"></a>Oplossing:
 Wijzig de eigenschap TTL om te voor komen dat het item wordt leeg gemaakt.
@@ -94,11 +94,11 @@ Wacht totdat het indexeren is gestart of het indexerings beleid heeft gewijzigd.
 De data base of container waarin het item zich bevindt, is verwijderd.
 
 #### <a name="solution"></a>Oplossing:
-1. [Herstel](https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore#backup-retention-period) de bovenliggende resource of maak de resources opnieuw.
+1. [Herstel](./online-backup-and-restore.md#request-data-restore-from-a-backup) de bovenliggende resource of maak de resources opnieuw.
 1. Maak een nieuwe resource om de verwijderde resource te vervangen.
 
 ### <a name="7-containercollection-names-are-case-sensitive"></a>7. namen van containers en verzamelingen zijn hoofdletter gevoelig
-Namen van containers en verzamelingen zijn sesnsitive in Cosmos DB.
+Namen van containers en verzamelingen zijn hoofdletter gevoelig in Cosmos DB.
 
 #### <a name="solution"></a>Oplossing:
 Zorg ervoor dat u de exacte naam gebruikt terwijl u verbinding maakt met Cosmos DB.

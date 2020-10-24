@@ -69,6 +69,8 @@
               href: auth-remote-desktop-gateway.md
             - name: SAML-verificatie
               href: auth-saml.md
+            - name: SSH-verificatie
+              href: auth-ssh.md
             - name: Windows-verificatie - KCD
               href: auth-kcd.md
             - name: Adreslijstsynchronisatie

@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 673480d1b5171e03b701cd2102c7a640aae58ad0
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 3b9a94f7f9f64426374a5ea349b3653d837fc1ac
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893744"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494448"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>Online migratie problemen & beperkingen voor Azure DB voor MySQL met Azure Database Migration Service
 
@@ -32,7 +32,7 @@ Bekende problemen en beperkingen die zijn gekoppeld aan online migraties van MyS
 - Azure Database for MySQL ondersteunt:
   - MySQL-Community-editie
   - InnoDB-engine
-- Migratie van dezelfde versie. Het migreren van MySQL 5,6 naar Azure Database for MySQL 5,7 wordt niet ondersteund.
+- Migratie van dezelfde versie. Het migreren van MySQL 5,6 naar Azure Database for MySQL 5,7 wordt niet ondersteund. Migraties van of naar MySQL 8,0 worden niet ondersteund.
 - Binaire logboek registratie inschakelen in my.ini (Windows) of my. cnf (UNIX)
   - Stel Server_id in op een wille keurig getal dat groter is dan of gelijk is aan 1, bijvoorbeeld Server_id = 1 (alleen voor MySQL 5,6)
   - Log-bin instellen = \<path> (alleen voor MySQL 5,6)
@@ -136,7 +136,7 @@ Wanneer u probeert een online migratie uit te voeren vanaf AWS RDS MySQL naar Az
 
 - In Azure Database Migration Service is de limiet van de data bases die worden gemigreerd in één enkele migratie activiteit vier.
 
-- Azure DMS biedt geen ondersteuning voor de referentiële actie CASCADE, waarmee u een overeenkomende rij in de onderliggende tabel automatisch kunt verwijderen of bijwerken wanneer een rij wordt verwijderd of bijgewerkt in de bovenliggende tabel. Zie de sectie Referentiële acties in de [beperkingen van refererende sleutels](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)van een artikel voor meer informatie. Voor Azure DMS moet u beperkingen voor refererende sleutels in de doel database server weghalen tijdens het laden van gegevens en kunt u geen referentiële acties gebruiken. Als uw werk belasting afhankelijk is van het bijwerken van een gerelateerde onderliggende tabel via deze referentiële actie, raden we u aan om in plaats daarvan een [dump en herstel](https://docs.microsoft.com/azure/mysql/concepts-migrate-dump-restore) uit te voeren. 
+- Azure DMS biedt geen ondersteuning voor de referentiële actie CASCADE, waarmee u een overeenkomende rij in de onderliggende tabel automatisch kunt verwijderen of bijwerken wanneer een rij wordt verwijderd of bijgewerkt in de bovenliggende tabel. Zie de sectie Referentiële acties in het artikel [Beperkingen voor REFERERENDE SLEUTELS](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html) voor meer informatie. Voor Azure DMS moet u beperkingen voor refererende sleutels in de doeldatabaseserver weghalen tijdens het initieel laden van gegevens, en kunt u geen referentiële acties gebruiken. Als uw workload afhankelijk is van het bijwerken van een gerelateerde onderliggende tabel via deze referentiële actie, raden we u aan om in plaats hiervan een [dump en herstel](https://docs.microsoft.com/azure/mysql/concepts-migrate-dump-restore)-bewerking uit te voeren. 
 
 - **Fout:** De Rijgrootte is te groot (> 8126). Het kan helpen om sommige kolommen te wijzigen in tekst of BLOB. In de huidige rij-indeling is het BLOB-voor voegsel van 0 bytes inline opgeslagen.
 

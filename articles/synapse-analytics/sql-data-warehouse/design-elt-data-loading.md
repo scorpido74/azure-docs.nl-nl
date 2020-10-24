@@ -11,18 +11,18 @@ ms.date: 05/13/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: fecdd65ae0dbf9faeb0e74e6446a9deaf8273106
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 2f3433075a1fddf116aae28666feb62473c6dbfb
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075022"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476090"
 ---
 # <a name="data-loading-strategies-for-synapse-sql-pool"></a>Strategieën voor het laden van gegevens voor een Synapse SQL-pool
 
-Traditionele SMP-SQL-Pools gebruiken een proces voor het laden van de gegevens extractie, transformeren en laden (ETL). Synapse SQL-pool, in azure Synapse Analytics, heeft een enorm parallelle verwerkings architectuur (MPP) die gebruikmaakt van de schaal baarheid en flexibiliteit van reken-en opslag resources.
+Traditionele SMP-SQL-Pools gebruiken een proces voor het laden van de gegevens extractie, transformeren en laden (ETL). Synapse SQL, in azure Synapse Analytics, maakt gebruik van een gedistribueerde architectuur voor het verwerken van query's die de schaal baarheid en flexibiliteit van reken-en opslag bronnen benut.
 
-Het gebruik van een proces voor extractie, laden en transformeren (ELT) maakt gebruik van MPP en elimineert de resources die nodig zijn voor gegevens transformatie voordat ze worden geladen.
+Het gebruik van een proces voor extractie, laden en transformeren (ELT) maakt gebruik van ingebouwde functies voor gedistribueerde query verwerking en elimineert de resources die nodig zijn voor gegevens transformatie voordat ze worden geladen.
 
 Hoewel de SQL-groep veel laad methoden ondersteunt, waaronder populaire SQL Server opties zoals [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) en de [SqlBulkCopy-API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json), is de snelste en meest schaal bare manier om gegevens te laden via Poly base externe tabellen en de [instructie Copy](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 

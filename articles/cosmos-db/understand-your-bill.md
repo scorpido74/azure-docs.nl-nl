@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 0161c1599402fff25337549819f94b833142ba06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1b03417b81299ca959670287e252402e994f15a
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567856"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476396"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Meer informatie over uw Azure Cosmos DB-factuur
 
@@ -285,7 +285,7 @@ Uw totale factuur (zonder gereserveerde capaciteit) zou worden (waarbij 30 dagen
 |**Regio**| **Uurtarief per uur op basis van 100 RU/s**|**Eenheden (RU/s)**|**Gefactureerd bedrag (per uur)**| **Gefactureerd bedrag (maandelijks)**|
 |----|----|----|----|----|
 |VS - oost|$0,008 |50 K|$4|$2.880 |
-|Japan East|$0,009 |50 K| $4,50 |$3.240 |
+|Japan - oost|$0,009 |50 K| $4,50 |$3.240 |
 |Totaal|||$8,50|$6.120 |
 
 U kunt in plaats daarvan een gereserveerde capaciteit hebben gekocht. U kunt gereserveerde capaciteit voor 100-K RU/seconde kopen tegen de prijs van $56.064 gedurende één jaar (bij 20% korting) of $6,40 per uur. Bekijk de prijzen voor gereserveerde capaciteit op de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/).  
@@ -299,8 +299,8 @@ Wat u effectief hebt aangeschaft, is een tegoed van $8 per uur, voor 100 K RU pe
 |**Regio**| **Uurtarief per uur op basis van 100 RU/s**|**Eenheden (RU/s)**| **Gefactureerd bedrag (per uur)**| **Gefactureerd bedrag (maandelijks)**|
 |----|----|----|----|----|
 |VS - oost|$0,008 |50 K|$4|$2.880 |
-|Japan East|$0,009 |50 K| $4,50 |$3.240 |
-|||Betalen naar gebruik|$8,50|$6120|
+|Japan - oost|$0,009 |50 K| $4,50 |$3.240 |
+|||Betalen per gebruik|$8,50|$6120|
 |Aangeschafte gereserveerde capaciteit|$0,0064 (20% korting) |100 RU/sec of $8 capaciteit vooraf aangeschaft |-$8|-$5.760 |
 |Netfactuur|||$ 0,50 |$360 |
 
@@ -313,5 +313,5 @@ U kunt nu door gaan met de volgende artikelen voor meer informatie over cost Opt
 * Meer informatie over het [optimaliseren van doorvoer kosten](optimize-cost-throughput.md)
 * Meer informatie over het [optimaliseren van opslag kosten](optimize-cost-storage.md)
 * Meer informatie over [het optimaliseren van de kosten van lees-en schrijf bewerkingen](optimize-cost-reads-writes.md)
-* Meer informatie over [het optimaliseren van de kosten van query's](optimize-cost-queries.md)
+* Meer informatie over [het optimaliseren van de kosten van query's](./optimize-cost-reads-writes.md)
 * Meer informatie over [het optimaliseren van de kosten voor Azure Cosmos-accounts met meerdere regio's](optimize-cost-regions.md)

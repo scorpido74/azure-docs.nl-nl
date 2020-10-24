@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: dfa8227f319a818efee20f26c1f2bebf72ad7cf9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 4b0e0bd38c8bb9ea1d2331a65fc891e157971eef
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367649"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495845"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Azure Digital Apparaatdubbels integreren met de Azure signalerings service
 
@@ -147,7 +147,7 @@ Publiceer vervolgens uw functie in azure, met behulp van de stappen die worden b
 
 1. Voeg ten slotte uw Azure-seingevings **Connection String** van vóór de app-instellingen van de functie toe met behulp van de volgende Azure cli-opdracht. De opdracht kan worden uitgevoerd in [Azure Cloud shell](https://shell.azure.com)of lokaal als u de Azure cli [op uw computer hebt geïnstalleerd](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true):
  
-    ```azurecli
+    ```azurecli-interactive
     az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "AzureSignalRConnectionString=<your-Azure-SignalR-ConnectionString>"
     ```
 
@@ -242,7 +242,7 @@ Met de Azure Cloud Shell of lokale Azure CLI kunt u alle Azure-resources in een 
 > [!IMPORTANT]
 > Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt. De resourcegroep en alle resources daarin worden permanent verwijderd. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. 
 
-```azurecli
+```azurecli-interactive
 az group delete --name <your-resource-group>
 ```
 

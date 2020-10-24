@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: c7e0c9aee1ce6b4a2524ac756673784b63be3b31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb71c5eda66d3d11385577da7142970f4fbcbad2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289766"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474849"
 ---
 # <a name="configure-azure-defender-for-storage"></a>Azure Defender voor opslag configureren
 
@@ -37,7 +37,7 @@ De volgende lijst bevat een overzicht van de beschik baarheid van Azure Defender
 
 - Releasestatus:
   - [Blob Storage](https://azure.microsoft.com/services/storage/blobs/) (algemene Beschik baarheid)
-  - [Azure files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (algemene Beschik baarheid)
+  - [Azure files](/azure/storage/files/storage-files-introduction) (algemene Beschik baarheid)
   - Azure Data Lake Storage Gen2 (algemene Beschik baarheid)
 - Clouds:<br>
     ✔ Commerciële Clouds<br>
@@ -98,16 +98,16 @@ Gebruik een Azure Policy om Azure Defender in te scha kelen voor opslag accounts
 
 Gebruik rest API-opdrachten om de Azure Defender-instelling voor een specifiek opslag account te maken, bij te werken of op te halen.
 
-- [Advanced Threat Protection-maken](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
-- [Advanced Threat Protection-ophalen](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
+- [Advanced Threat Protection-maken](/rest/api/securitycenter/advancedthreatprotection/create)
+- [Advanced Threat Protection-ophalen](/rest/api/securitycenter/advancedthreatprotection/get)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Gebruik de volgende Power shell-cmdlets:
 
-- [Advanced Threat Protection inschakelen](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
-- [Geavanceerde beveiliging tegen bedreigingen verkrijgen](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
-- [Geavanceerde bedreigings beveiliging uitschakelen](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
+- [Advanced Threat Protection inschakelen](/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
+- [Geavanceerde beveiliging tegen bedreigingen verkrijgen](/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
+- [Geavanceerde bedreigings beveiliging uitschakelen](/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
 
 ---
 

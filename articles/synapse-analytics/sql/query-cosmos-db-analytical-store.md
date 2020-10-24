@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3367a20ca5e2dc59880ed66939413606ff83963b
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 99fcdd0232e2991acaceb6838bff0b00c6824dfb
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122718"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474900"
 ---
 # <a name="query-azure-cosmos-db-data-with-serverless-sql-pool-in-azure-synapse-link-preview"></a>Query's uitvoeren op Azure Cosmos DB gegevens met serverloze SQL-groep in azure Synapse-koppeling (preview-versie)
 
@@ -244,7 +244,7 @@ Azure Cosmos DB-accounts van de SQL-API (core) ondersteunen JSON-eigenschaps typ
 
 | Azure Cosmos DB eigenschaps type | SQL-kolom Type |
 | --- | --- |
-| Boolean | bit |
+| Boolean-waarde | bit |
 | Geheel getal | bigint |
 | Decimaal | float |
 | Tekenreeks | varchar (UTF8-database sortering) |
@@ -277,5 +277,6 @@ U kunt suggesties en problemen melden op de [pagina met feedback over Azure Syna
 
 Raadpleeg voor meer informatie de volgende artikelen:
 
+- [Power BI en serverloze Synapse SQL-pool gebruiken met Azure Synapse-koppeling](../../cosmos-db/synapse-link-power-bi.md)
 - [Weer gaven maken en gebruiken in SQL op aanvraag](create-use-views.md) 
 - [Zelf studie over het bouwen van on-demand weer gaven van SQL over Azure Cosmos DB en verbinding maken met Power BI modellen via DirectQuery](./tutorial-data-analyst.md)

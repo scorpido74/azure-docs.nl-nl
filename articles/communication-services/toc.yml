@@ -5,7 +5,7 @@
   items:
     - name: Wat is Azure Communication Services?
       href: overview.md
-- name: Snelstartgidsen
+- name: Quickstarts
   expanded: true
   items:
     - name: Een Communication Services-resource maken
@@ -90,6 +90,8 @@
       href: samples/calling-hero-sample.md
     - name: Hero-voorbeeld van groeps-chat
       href: samples/chat-hero-sample.md
+    - name: Voorbeeld van webaanroepen
+      href: samples/web-calling-sample.md
 - name: Referenties
   items:
     - name: REST API-documentatie

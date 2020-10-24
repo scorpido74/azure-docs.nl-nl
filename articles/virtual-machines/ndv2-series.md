@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 74c8924116cf9b565ea63e3b72a409686a4d725c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ff828024610ce498d40a4039d8116e28366aebb9
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975717"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494428"
 ---
 # <a name="updated-ndv2-series"></a>Bijgewerkte NDv2-serie
 
@@ -37,7 +37,7 @@ De NDv2 is in de praktijk opgebouwd voor zowel reken kundige, intense schaling (
 [Premium Storage caching](premium-storage-performance.md): ondersteund<br>
 [Livemigratie](maintenance-and-updates.md): niet ondersteund<br>
 [Updates](maintenance-and-updates.md)voor het behouden van geheugen: niet ondersteund<br>
-[Ondersteuning](generation-2.md)voor het genereren van vm's: generatie 1<br>
+[Ondersteuning](generation-2.md)voor het genereren van vm's: generatie 2<br>
 InfiniBand: ondersteund<br>
 <br>
 

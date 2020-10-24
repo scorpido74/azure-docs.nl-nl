@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
-ms.openlocfilehash: 075f5fde272d4ee2e932e5f6c1f0e34324c38837
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa9f38b2cefa60a0c3341c1317cf45fbcb735301
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707928"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485440"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>Hoge Beschik baarheid in Azure Database for PostgreSQL-één server
 De Azure Database for PostgreSQL-service met één server biedt een gegarandeerd hoog niveau van Beschik baarheid met de SLA (financieel ondersteunde service level agreement) van [99,99%](https://azure.microsoft.com/support/legal/sla/postgresql) uptime. Azure Database for PostgreSQL biedt een hoge Beschik baarheid tijdens geplande gebeurtenissen, zoals de initated van de gebruiker en ook wanneer niet-geplande gebeurtenissen, zoals onderliggende hardware, software of netwerk fouten, optreden. Azure Database for PostgreSQL kan snel van de meeste kritieke omstandigheden worden hersteld, waardoor er bijna geen toepassings tijd meer is bij het gebruik van deze service.
@@ -24,7 +24,7 @@ Azure Database for PostgreSQL is geschikt voor het uitvoeren van essentiële dat
 | ------------ | ----------- |
 | <b>PostgreSQL-database server | Azure Database for PostgreSQL biedt beveiliging, isolatie, bron beveiligingen en de mogelijkheid om snel opnieuw op te starten voor database servers. Deze mogelijkheden vergemakkelijken bewerkingen zoals schalen en database server herstel na een onderbreking in enkele seconden. <br/> Gegevens wijzigingen in de database server worden meestal uitgevoerd in de context van een database transactie. Alle database wijzigingen worden synchroon vastgelegd in de vorm van write-Ahead Logboeken (WAL) op Azure Storage, dat is gekoppeld aan de database server. Tijdens het database [controlepunt](https://www.postgresql.org/docs/11/sql-checkpoint.html) proces worden gegevens pagina's van het database server geheugen ook naar de opslag leeg gemaakt. |
 | <b>Externe opslag | Alle PostgreSQL fysieke gegevens bestanden en WAL-bestanden worden opgeslagen op Azure Storage, die is ontworpen voor het opslaan van drie kopieën van gegevens binnen een regio om gegevens redundantie, Beschik baarheid en betrouw baarheid te garanderen. De opslaglaag is ook onafhankelijk van de database server. Dit kan binnen een paar seconden worden losgekoppeld van een mislukte database server en opnieuw worden gekoppeld aan een nieuwe database server. Azure Storage doorlopend monitors voor eventuele opslag fouten. Als een blok beschadiging wordt gedetecteerd, wordt dit automatisch opgelost door een nieuwe opslag kopie te instantiëren. |
-| <b>#B0 | De gateway fungeert als een database proxy, stuurt alle client verbindingen naar de database server. |
+| <b>Gateway | De gateway fungeert als een database proxy, stuurt alle client verbindingen naar de database server. |
 
 ## <a name="planned-downtime-mitigation"></a>Geplande downtime van uitval tijd
 Azure Database for PostgreSQL is ontworpen om hoge Beschik baarheid te bieden tijdens geplande downtime. 
@@ -36,12 +36,12 @@ Azure Database for PostgreSQL is ontworpen om hoge Beschik baarheid te bieden ti
 3. Het schalen van opslag ruimte kan zonder uitval tijd worden uitgevoerd. Met externe opslag kunt u na de failover snel loskoppelen/opnieuw koppelen.
 Hier volgen enkele geplande onderhouds scenario's:
 
-| **Scenario** | **Beschrijving**|
+| **Scenario** | **Deschription** (Beschrijving)|
 | ------------ | ----------- |
 | <b>Berekenings schaal omhoog/omlaag | Wanneer de gebruiker de bewerking omhoog/omlaag Compute Scale uitvoert, wordt een nieuwe database server ingericht met behulp van de geschaalde Compute-configuratie. In de oude database server mogen actieve controle punten worden voltooid, worden de client verbindingen geleegd, worden niet-doorgevoerde trans acties geannuleerd en vervolgens afgesloten. De opslag wordt vervolgens losgekoppeld van de oude database server en gekoppeld aan de nieuwe database server. Wanneer de client toepassing de verbinding probeert te maken of probeert een nieuwe verbinding tot stand te brengen, stuurt de gateway de verbindings aanvraag door naar de nieuwe database server.|
 | <b>Opslag ruimte omhoog schalen | Het omhoog schalen van de opslag is een online bewerking en de database server wordt niet onderbroken.|
-| <b>Nieuwe software-implementatie (Azure) | Nieuwe functies implementatie of fout oplossingen worden automatisch uitgevoerd als onderdeel van het geplande onderhoud van de service. Raadpleeg de [documentatie](https://docs.microsoft.com/azure/postgresql/concepts-monitoring#planned-maintenance-notification)voor meer informatie en Controleer ook de [Portal](https://aka.ms/servicehealthpm).|
-| <b>Secundaire versie-upgrades | Azure Database for PostgreSQL worden database servers automatisch aan de secundaire versie door Azure door berekend. Deze treedt op als onderdeel van het geplande onderhoud van de service. Dit leidt tot een korte downtime in seconden en de database server wordt automatisch opnieuw opgestart met de nieuwe secundaire versie. Raadpleeg de [documentatie](https://docs.microsoft.com/azure/postgresql/concepts-monitoring#planned-maintenance-notification)voor meer informatie en Controleer ook de [Portal](https://aka.ms/servicehealthpm).|
+| <b>Nieuwe software-implementatie (Azure) | Nieuwe functies implementatie of fout oplossingen worden automatisch uitgevoerd als onderdeel van het geplande onderhoud van de service. Raadpleeg de [documentatie](./concepts-monitoring.md#planned-maintenance-notification)voor meer informatie en Controleer ook de [Portal](https://aka.ms/servicehealthpm).|
+| <b>Secundaire versie-upgrades | Azure Database for PostgreSQL worden database servers automatisch aan de secundaire versie door Azure door berekend. Deze treedt op als onderdeel van het geplande onderhoud van de service. Dit leidt tot een korte downtime in seconden en de database server wordt automatisch opnieuw opgestart met de nieuwe secundaire versie. Raadpleeg de [documentatie](./concepts-monitoring.md#planned-maintenance-notification)voor meer informatie en Controleer ook de [Portal](https://aka.ms/servicehealthpm).|
 
 
 ##  <a name="unplanned-downtime-mitigation"></a>Ongeplande downtime-beperking
@@ -68,8 +68,8 @@ Hier volgen enkele fout scenario's waarvoor gebruikers actie moet worden herstel
 
 | **Scenario** | **Herstel plan** |
 | ---------- | ---------- |
-| <b> Regio fout | Uitval van een regio is een zeldzame gebeurtenis. Als u echter beveiliging van een regio fout nodig hebt, kunt u een of meer Lees replica's in andere regio's configureren voor herstel na nood gevallen (DR). (Zie [dit artikel](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) over het maken en beheren van Lees replica's voor meer informatie). In het geval van een storing op regio niveau kunt u de Lees replica die is geconfigureerd voor de andere regio hand matig promo veren tot de productie database server. |
-| <b> Logische/gebruikers fouten | Herstel van gebruikers fouten, zoals het per ongeluk verwijderen van tabellen of onjuiste bijgewerkte gegevens, omvat het uitvoeren van een herstel naar een bepaald [tijdstip](https://docs.microsoft.com/azure/postgresql/concepts-backup) (PITR), door de gegevens te herstellen en te herstellen tot het moment dat de fout zich voordeed.<br> <br>  Als u alleen een subset van data bases of specifieke tabellen wilt herstellen in plaats van alle data bases in de database server, kunt u de database server herstellen in een nieuw exemplaar, de tabel (len) exporteren via [pg_dump](https://www.postgresql.org/docs/11/app-pgdump.html)en vervolgens [pg_restore](https://www.postgresql.org/docs/11/app-pgrestore.html) gebruiken om die tabellen te herstellen in uw data base. |
+| <b> Regio fout | Uitval van een regio is een zeldzame gebeurtenis. Als u echter beveiliging van een regio fout nodig hebt, kunt u een of meer Lees replica's in andere regio's configureren voor herstel na nood gevallen (DR). (Zie [dit artikel](./howto-read-replicas-portal.md) over het maken en beheren van Lees replica's voor meer informatie). In het geval van een storing op regio niveau kunt u de Lees replica die is geconfigureerd voor de andere regio hand matig promo veren tot de productie database server. |
+| <b> Logische/gebruikers fouten | Herstel van gebruikers fouten, zoals het per ongeluk verwijderen van tabellen of onjuiste bijgewerkte gegevens, omvat het uitvoeren van een herstel naar een bepaald [tijdstip](./concepts-backup.md) (PITR), door de gegevens te herstellen en te herstellen tot het moment dat de fout zich voordeed.<br> <br>  Als u alleen een subset van data bases of specifieke tabellen wilt herstellen in plaats van alle data bases in de database server, kunt u de database server herstellen in een nieuw exemplaar, de tabel (len) exporteren via [pg_dump](https://www.postgresql.org/docs/11/app-pgdump.html)en vervolgens [pg_restore](https://www.postgresql.org/docs/11/app-pgrestore.html) gebruiken om die tabellen te herstellen in uw data base. |
 
 
 

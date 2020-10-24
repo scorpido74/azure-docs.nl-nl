@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 1e6d0343a68d502fb567f6010b8c8b3043e282a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a058e7a23c36dcaca16c3cce1be1ca826d472bc0
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569489"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476991"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>Totale eigendoms kosten (TCO) met Azure Cosmos DB
 
@@ -40,7 +40,7 @@ Het serverloze inrichtings model van Azure Cosmos DB elimineert de nood zaak om 
 
 * **U betaalt per uur:** Voor grootschalige workloads die op elk gewenst moment moeten worden geschaald, worden er alleen kosten in rekening gebracht op basis van het uur. De werk belastingen voor een toepassing variëren doorgaans per tijdstip van het jaar en door de gegevens die worden opgevraagd. Met Azure Cosmos DB kunt u naar behoefte omhoog of omlaag schalen en betaalt u alleen voor wat u nodig hebt. Met on-premises of door IaaS gehoste systemen, kunt u dit model niet overeenkomen, omdat er geen manier is om de hardware elk uur buiten gebruik te stellen. In dergelijke gevallen kunt u tussen 10 en 14 keer besparen met een gemiddelde van Azure Cosmos DB.
 
-* **U krijgt gratis talloze functies:** In Azure Cosmos DB zijn schrijf werk belastingen aanzienlijk goed koper vergeleken met alternatieve database services. Daarnaast biedt Azure Cosmos DB functies als [automatische indexering](indexing-policies.md), [time to Live (TTL)](time-to-live.md), [wijzigings feed](change-feed.md) en anderen zonder extra kosten, wat betekent dat andere database services doorgaans in rekening worden gebracht.
+* **U krijgt gratis talloze functies:** In Azure Cosmos DB zijn schrijf werk belastingen aanzienlijk goed koper vergeleken met alternatieve database services. Daarnaast biedt Azure Cosmos DB functies als [automatische indexering](index-policy.md), [time to Live (TTL)](time-to-live.md), [wijzigings feed](change-feed.md) en anderen zonder extra kosten, wat betekent dat andere database services doorgaans in rekening worden gebracht.
 
 * **Maakt gebruik van gecombineerde valuta voor diverse werk belastingen:** In tegens telling tot alternatieve aanbiedingen hoeft u in Azure Cosmos DB geen werk belastingen te segmenteren, bijvoorbeeld in lees-en schrijf bewerkingen. Of het inrichten van een door Voer voor een type werk belasting dat lees doorvoer snelheid heeft versus schrijf doorvoer. In Azure Cosmos DB wordt ingerichte door Voer gereserveerd met behulp van een uniforme en genormaliseerde valuta in termen van aanvraag eenheden of RU/sec. Azure Cosmos DB dwingt u geen prioriteit toe aan uw workloads, kunt u de capaciteits planning of het betalen voor elk type capaciteit afzonderlijk toewijzen. Met deze aanpak kunt u eenvoudig dezelfde RU/s uitwisselen tussen verschillende bewerkingen en werkbelasting typen.
 
@@ -63,6 +63,6 @@ Het serverloze inrichtings model van Azure Cosmos DB elimineert de nood zaak om 
 * Meer informatie over het [optimaliseren van doorvoer kosten](optimize-cost-throughput.md)
 * Meer informatie over het [optimaliseren van opslag kosten](optimize-cost-storage.md)
 * Meer informatie over [het optimaliseren van de kosten van lees-en schrijf bewerkingen](optimize-cost-reads-writes.md)
-* Meer informatie over [het optimaliseren van de kosten van query's](optimize-cost-queries.md)
+* Meer informatie over [het optimaliseren van de kosten van query's](./optimize-cost-reads-writes.md)
 * Meer informatie over [het optimaliseren van de kosten van Cosmos-accounts met meerdere regio's](optimize-cost-regions.md)
 * Meer informatie over [de totale kosten van (niet) eigendom van een NoSQL-database Cloud service](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf)

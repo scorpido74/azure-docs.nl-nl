@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 34b4a7395102549dfea6f9d51ef8d1216bacddba
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: ebc0398eeb7679ffd57e0aa5aae642f6303aaa35
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327702"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484607"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>Azure-beveiligings basislijn voor HDInsight
 
@@ -146,9 +146,7 @@ U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties t
 
 Beschik bare Azure Policy aliassen weer geven:
 
-https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
-
-Azure Policy configureren en beheren:
+https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias Azure Policy configureren en beheren:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -346,11 +344,11 @@ Daarnaast kunt u de aanbevelingen van Azure Security Center identiteits-en toega
 
 Een directory-rol verkrijgen in azure AD met Power shell:
 
-https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
+https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole
 
 Leden van een directory-rol in azure AD ophalen met Power shell:
 
-https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
+https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember
 
 Identiteit en toegang controleren met Azure Security Center:
 
@@ -780,7 +778,7 @@ https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 Uw Azure-abonnementen weer geven:
 
-https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription
 
 Meer informatie over Azure RBAC:
 
@@ -942,7 +940,7 @@ Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te
 
 Beschik bare Azure Policy aliassen weer geven:
 
-https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias
 
 Azure Policy configureren en beheren:
 
@@ -990,13 +988,9 @@ https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 **Richt lijnen**: als u aangepaste Azure Policy definities gebruikt, kunt u Azure DevOps of Azure opslag plaatsen gebruiken om uw code veilig op te slaan en te beheren.
 
-Code opslaan in azure DevOps:
+[Code opslaan in azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true)
 
-https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
-
-Documentatie voor Azure opslag plaatsen:
-
-https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+[Documentatie voor Azure opslag plaatsen](/azure/devops/repos/index?view=azure-devops&preserve-view=true)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -1034,13 +1028,9 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Hulp**: gebruik Azure Policy aliassen in de naam ruimte ' micro soft. HDInsight ' om aangepaste beleids regels te maken om de configuratie van uw HDInsight-cluster te controleren of af te dwingen.
 
-Beschik bare Azure Policy aliassen weer geven:
+[Beschik bare Azure Policy aliassen weer geven](/powershell/module/az.resources/get-azpolicyalias)
 
-https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
-
-Azure Policy configureren en beheren:
-
-https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+[Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -1174,7 +1164,7 @@ https://docs.microsoft.com/azure/storage/common/storage-redundancy
 
 Een back-up maken van Key Vault sleutels in Azure:
 
-https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
+https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -1190,7 +1180,7 @@ https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-byok
 
 Sleutel kluis sleutels herstellen in Azure:
 
-https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
+https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 

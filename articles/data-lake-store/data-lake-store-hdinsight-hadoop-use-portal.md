@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 420efd653ef6218b5a1d5a8c70ca268b7185fc30
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 41ba9d9e66fa1d7f622550bde68951573af4bb96
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92103540"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484981"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>Maak HDInsight-clusters met Azure Data Lake Storage Gen1 met behulp van de Azure Portal
 
@@ -45,7 +45,7 @@ In deze sectie maakt u een HDInsight-cluster met Data Lake Storage Gen1 als de s
 
 Een HDInsight-cluster met een Data Lake Storage Gen1 als standaard opslag account maken:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Volg [clusters maken](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md#create-clusters) voor algemene informatie over het maken van HDInsight-clusters.
 3. Selecteer op de Blade **opslag** onder **primair opslag type** **Azure data Lake Storage gen1**en voer de volgende gegevens in:
 
@@ -64,7 +64,7 @@ Met de volgende instructies maakt u een HDInsight-cluster met een Azure Blob Sto
 
 Als u een HDInsight-cluster met Data Lake Storage Gen1 wilt maken als een extra opslag account:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Volg [clusters maken](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md#create-clusters) voor algemene informatie over het maken van HDInsight-clusters.
 3. Selecteer op de Blade **opslag** onder **primair opslag type** **Azure Storage**en voer de volgende gegevens in:
 
@@ -85,18 +85,11 @@ In deze sectie configureert u Data Lake Storage Gen1 toegang vanaf HDInsight-clu
 Vanuit de Azure Portal, kunt u een bestaande Service-Principal gebruiken of een nieuwe maken.
 
 Een service-principal maken op basis van de Azure Portal:
-
-1. Selecteer **Data Lake Store toegang** via de Blade opslag.
-1. Selecteer op de Blade **Data Lake Storage gen1 toegang** de optie **nieuwe maken**.
-1. Selecteer **Service-Principal**en volg de instructies voor het maken van een service-principal.
-1. Down load het certificaat als u het later opnieuw wilt gebruiken. Het downloaden van het certificaat is handig als u dezelfde service-principal wilt gebruiken bij het maken van extra HDInsight-clusters.
-
-    ![Service-Principal toevoegen aan HDInsight-cluster](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.2.png)
-
-1. Selecteer **toegang** om de toegang tot de map te configureren.  Zie [machtigingen voor bestanden configureren](#configure-file-permissions).
+1. Zie [Service-Principal en certificaten maken](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) met behulp van Azure Active Directory.
 
 Een bestaande Service-Principal gebruiken van de Azure Portal:
 
+1. De Service-Principal moet eigenaars machtigingen hebben voor het opslag account. Zie [machtigingen voor de service-principal instellen als eigenaar van het opslag account](#configure-serviceprincipal-permissions).
 1. Selecteer **Data Lake Store toegang**.
 1. Selecteer op de Blade **Data Lake Storage gen1 toegang** de optie **bestaande gebruiken**.
 1. Selecteer **Service-Principal**en selecteer vervolgens een service-principal.
@@ -105,6 +98,10 @@ Een bestaande Service-Principal gebruiken van de Azure Portal:
 [Service-Principal toevoegen aan HDInsight-cluster](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.5.png)
 
 1. Selecteer **toegang** om de toegang tot de map te configureren.  Zie [machtigingen voor bestanden configureren](#configure-file-permissions).
+
+### <a name="set-up-permissions-for-the-service-principal-to-be-owner-on-the-storage-account"></a><a name="configure-serviceprincipal-permissions"></a>Stel de machtigingen voor de Service-Principal in op eigenaar van het opslag account
+1. Klik op de Blade Access Control (IAM) van het opslag account op een roltoewijzing toevoegen. 
+2. Op de Blade een roltoewijzing toevoegen selecteert u rol als eigenaar en selecteert u de SPN en klikt u op opslaan.
 
 ### <a name="configure-file-permissions"></a><a name="configure-file-permissions"></a>Bestands machtigingen configureren
 

@@ -8,16 +8,16 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cb6869aa8bc7ede7d2047abf8eddc98b01f567fa
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 2a7645950fd7a239376f07d6c6f4689c1a3f3da5
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280812"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476311"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Controleren en fouten opsporen met metrische gegevens in Azure Cosmos DB
 
-Azure Cosmos DB biedt metrische gegevens voor doorvoer, opslag, consistentie, beschikbaarheid en latentie. De Azure-portal biedt een geaggregeerde weergave van deze metrische gegevens. U kunt ook metrische gegevens uit Azure Cosmos DB bekijken vanuit de Azure Monitor API. De dimensie waarden voor de metrische gegevens, zoals container naam, zijn niet hoofdletter gevoelig. U moet dus hoofdletter gevoelige vergelijking gebruiken wanneer u teken reeksen vergelijkt met deze dimensie waarden. Zie het artikel [metrische gegevens ophalen uit Azure monitor](cosmos-db-azure-monitor-metrics.md) voor meer informatie over het weer geven van metrische gegevens in azure monitor.
+Azure Cosmos DB biedt metrische gegevens voor doorvoer, opslag, consistentie, beschikbaarheid en latentie. De Azure-portal biedt een geaggregeerde weergave van deze metrische gegevens. U kunt ook metrische gegevens uit Azure Cosmos DB bekijken vanuit de Azure Monitor API. De dimensie waarden voor de metrische gegevens, zoals container naam, zijn niet hoofdletter gevoelig. U moet dus hoofdletter gevoelige vergelijking gebruiken wanneer u teken reeksen vergelijkt met deze dimensie waarden. Zie het artikel [metrische gegevens ophalen uit Azure monitor](./monitor-cosmos-db.md) voor meer informatie over het weer geven van metrische gegevens in azure monitor.
 
 In dit artikel worden algemene gebruikscases beschreven en wordt uitgelegd hoe metrische gegevens in Azure Cosmos DB kunnen worden gebruikt om deze problemen te analyseren en op te lossen. Metrische gegevens worden elke vijf minuten verzameld en gedurende zeven dagen bewaard.
 
@@ -112,6 +112,6 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 U hebt nu geleerd hoe u problemen kunt controleren en opsporen met behulp van de metrische gegevens in de Azure Portal. Lees de volgende artikelen voor meer informatie over het verbeteren van de prestaties van de Data Base:
 
-* Zie het artikel [metrische gegevens ophalen uit Azure monitor](cosmos-db-azure-monitor-metrics.md) voor meer informatie over het weer geven van metrische gegevens in azure monitor. 
+* Zie het artikel [metrische gegevens ophalen uit Azure monitor](./monitor-cosmos-db.md) voor meer informatie over het weer geven van metrische gegevens in azure monitor. 
 * [Prestaties en schaal testen met Azure Cosmos DB](performance-testing.md)
 * [Tips voor betere prestaties van Azure Cosmos DB](performance-tips.md)

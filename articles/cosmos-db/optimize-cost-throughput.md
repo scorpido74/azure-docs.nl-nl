@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ef0462b849210bc9b6963ab25e7a216c978f0568
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: d7d77bdb223e8c3b71ef03febd4081d1f63bd1a3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281062"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475461"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Kosten voor ingerichte doorvoer optimaliseren in Azure Cosmos DB
 
@@ -80,7 +80,7 @@ Met de systeem eigen Sdk's (.NET/.NET core, Java, Node.js en python) wordt dit a
 
 Als u meer dan één client cumulatief op dezelfde manier hebt uitgevoerd, is het standaard aantal nieuwe pogingen, dat momenteel is ingesteld op 9, niet voldoende. In dergelijke gevallen genereert de client een `RequestRateTooLargeException` met de status code 429 naar de toepassing. Het standaard aantal nieuwe pogingen kan worden gewijzigd door de `RetryOptions` in te stellen op het Connection Policy-exemplaar. Standaard `RequestRateTooLargeException` wordt de met de status code 429 geretourneerd na een cumulatieve wacht tijd van 30 seconden als de aanvraag boven het aanvraag aantal blijft. Dit gebeurt zelfs wanneer het huidige aantal nieuwe pogingen kleiner is dan het maximum aantal nieuwe pogingen. Dit is de standaard waarde van 9 of een door de gebruiker gedefinieerd getal. 
 
-[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet&preserve-view=true) is ingesteld op 3. in dit geval, als een aanvraag is beperkt door de gereserveerde door Voer voor de container te overschrijden, wordt de aanvraag bewerking drie keer opnieuw geprobeerd voordat de uitzonde ring voor de toepassing wordt gegenereerd. [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) is ingesteld op 60. in dit geval geldt dat als de cumulatieve wacht tijd voor opnieuw proberen in seconden sinds de eerste aanvraag 60 seconden overschrijdt, de uitzonde ring wordt gegenereerd.
+[MaxRetryAttemptsOnThrottledRequests](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?preserve-view=true&view=azure-dotnet) is ingesteld op 3. in dit geval, als een aanvraag is beperkt door de gereserveerde door Voer voor de container te overschrijden, wordt de aanvraag bewerking drie keer opnieuw geprobeerd voordat de uitzonde ring voor de toepassing wordt gegenereerd. [MaxRetryWaitTimeInSeconds](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) is ingesteld op 60. in dit geval geldt dat als de cumulatieve wacht tijd voor opnieuw proberen in seconden sinds de eerste aanvraag 60 seconden overschrijdt, de uitzonde ring wordt gegenereerd.
 
 ```csharp
 ConnectionPolicy connectionPolicy = new ConnectionPolicy(); 
@@ -112,7 +112,7 @@ Daarnaast kunt u, als u Azure Cosmos DB gebruikt, en u weet dat u niet op bepaal
 
 ## <a name="optimize-by-changing-indexing-policy"></a>Optimaliseren door het indexerings beleid te wijzigen 
 
-Standaard indexeert Azure Cosmos DB automatisch elke eigenschap van elke record. Dit is bedoeld om de ontwikkeling te vereenvoudigen en uitstekende prestaties te garanderen in veel verschillende soorten ad hoc-query's. Als u grote records met duizenden eigenschappen hebt, kunt u de door Voer voor het indexeren van elke eigenschap onbruikbaar maken, met name als u alleen een query uitvoert op 10 of 20 van die eigenschappen. Wanneer u een greep op uw specifieke werk belasting dichterbij komt, kunt u het index beleid afstemmen op onze richt lijnen. Volledige informatie over Azure Cosmos DB indexerings beleid vindt u [hier](indexing-policies.md). 
+Standaard indexeert Azure Cosmos DB automatisch elke eigenschap van elke record. Dit is bedoeld om de ontwikkeling te vereenvoudigen en uitstekende prestaties te garanderen in veel verschillende soorten ad hoc-query's. Als u grote records met duizenden eigenschappen hebt, kunt u de door Voer voor het indexeren van elke eigenschap onbruikbaar maken, met name als u alleen een query uitvoert op 10 of 20 van die eigenschappen. Wanneer u een greep op uw specifieke werk belasting dichterbij komt, kunt u het index beleid afstemmen op onze richt lijnen. Volledige informatie over Azure Cosmos DB indexerings beleid vindt u [hier](index-policy.md). 
 
 ## <a name="monitoring-provisioned-and-consumed-throughput"></a>Beschik bare en geconsumeerde door Voer bewaken 
 
@@ -156,7 +156,7 @@ De volgende stappen helpen u bij het gebruik van Azure Cosmos DB om uw oplossing
 
 1. Als u de ingerichte door Voer voor alle containers en data bases aanzienlijk hebt overbelast, moet u de werk belastingen die zijn ingericht versus gebruikt voor het verfijnen van de workloads controleren.  
 
-2. Een methode voor het schatten van de hoeveelheid gereserveerde door Voer die is vereist door uw toepassing is het vastleggen van de RU-kosten voor aanvraag eenheden die zijn gekoppeld aan het uitvoeren van gang bare bewerkingen voor een representatieve Azure Cosmos-container of-Data Base die wordt gebruikt door uw toepassing. vervolgens wordt een schatting gemaakt van het aantal bewerkingen dat u per seconde moet uitvoeren. Zorg ervoor dat u normale query's en hun gebruik ook bemeett en opneemt. Zie [de kosten van Query's optimaliseren](optimize-cost-queries.md)voor meer informatie over het programmatisch schatten van de kosten van query's via een programma of het gebruik van de portal. 
+2. Een methode voor het schatten van de hoeveelheid gereserveerde door Voer die is vereist door uw toepassing is het vastleggen van de RU-kosten voor aanvraag eenheden die zijn gekoppeld aan het uitvoeren van gang bare bewerkingen voor een representatieve Azure Cosmos-container of-Data Base die wordt gebruikt door uw toepassing. vervolgens wordt een schatting gemaakt van het aantal bewerkingen dat u per seconde moet uitvoeren. Zorg ervoor dat u normale query's en hun gebruik ook bemeett en opneemt. Zie [de kosten van Query's optimaliseren](./optimize-cost-reads-writes.md)voor meer informatie over het programmatisch schatten van de kosten van query's via een programma of het gebruik van de portal. 
 
 3. Een andere manier om bewerkingen en hun kosten in RUs te verkrijgen, is door Azure Monitor-Logboeken in te scha kelen, waarmee u de bewerkings-en tijds duur en de aanvraag kosten kunt opsplitsen. Azure Cosmos DB biedt voor elke bewerking een aanvraag kosten, zodat elke bewerkings kosten kunnen worden opgeslagen in het antwoord en vervolgens worden gebruikt voor analyse. 
 
@@ -182,6 +182,5 @@ Daarna kunt u meer te weten komen over cost Optimization in Azure Cosmos DB met 
 * Meer informatie over [uw Azure Cosmos DB factuur](understand-your-bill.md)
 * Meer informatie over het [optimaliseren van opslag kosten](optimize-cost-storage.md)
 * Meer informatie over [het optimaliseren van de kosten van lees-en schrijf bewerkingen](optimize-cost-reads-writes.md)
-* Meer informatie over [het optimaliseren van de kosten van query's](optimize-cost-queries.md)
+* Meer informatie over [het optimaliseren van de kosten van query's](./optimize-cost-reads-writes.md)
 * Meer informatie over [het optimaliseren van de kosten voor Azure Cosmos-accounts met meerdere regio's](optimize-cost-regions.md)
-

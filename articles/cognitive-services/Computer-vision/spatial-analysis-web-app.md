@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.author: aahi
-ms.openlocfilehash: 8032c3607dd74cddbaa5fd6690a95ebdf218809a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3bc03cf03f8a8e0f2a222ca1089618eaade9485d
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91628191"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496081"
 ---
 # <a name="how-to-deploy-a-people-counting-web-application"></a>Procedure: een web-app voor het tellen van een persoon implementeren
 
@@ -63,14 +63,14 @@ az iot hub device-identity create --hub-name "<IoT Hub Name>" --device-id "<Edge
 
 ### <a name="deploy-the-container-on-azure-iot-edge-on-the-host-computer"></a>De container implementeren op Azure IoT Edge op de hostcomputer
 
-Implementeer de container voor ruimtelijke analyse als een IoT-module op de hostcomputer met behulp van de Azure CLI. Voor het implementatie proces is een manifest bestand voor implementatie vereist waarin de vereiste containers, variabelen en configuraties voor uw implementatie worden beschreven. U vindt een voor beeld van een [implementatie manifest](https://github.com/Azure-Samples/cognitive-services-rest-api-samples/) op github, dat een eenvoudige implementatie configuratie bevat voor de container *met ruimtelijke analyse* . 
+Implementeer de container voor ruimtelijke analyse als een IoT-module op de hostcomputer met behulp van de Azure CLI. Voor het implementatie proces is een manifest bestand voor implementatie vereist waarin de vereiste containers, variabelen en configuraties voor uw implementatie worden beschreven. U vindt een voor beeld [Azure stack Edge-specifiek implementatie manifest](https://github.com/Azure-Samples/cognitive-services-rest-api-samples/) en een [niet-Azure stack Edge-specifiek implementatie manifest](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) op github, dat een eenvoudige implementatie configuratie bevat voor de container *met ruimtelijke analyse* . 
 
 > [!NOTE] 
-> De containers *ruimtelijke analyse-telegrafie* en *ruimtelijke analyse* zijn optioneel. U kunt ervoor kiezen om deze te verwijderen uit de *DeploymentManifest.jsin* het bestand. Raadpleeg het artikel over [telemetrie en probleem oplossing](./spatial-analysis-logging.md) voor meer informatie. U vindt een voor beeld *DeploymentManifest.jsop* bestand [op github](https://go.microsoft.com/fwlink/?linkid=2142179) 
+> De containers *ruimtelijke analyse-telegrafie* en *ruimtelijke analyse* zijn optioneel. U kunt ervoor kiezen om deze te verwijderen uit de *DeploymentManifest.jsin* het bestand. Raadpleeg het artikel over [telemetrie en probleem oplossing](./spatial-analysis-logging.md) voor meer informatie. U kunt twee voorbeeld *DeploymentManifest.jsvinden op* bestanden op github voor een [Azure stack edge-apparaat](https://go.microsoft.com/fwlink/?linkid=2142179) of een andere [desktop computer](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)
 
 ### <a name="set-environment-variables"></a>Omgevingsvariabelen instellen
 
-De meeste **omgevings variabelen** voor de IOT Edge module zijn al ingesteld in het * voor beeldDeploymentManifest.jsvoor* een bestand dat hierboven is gekoppeld. Zoek in het bestand naar de `BILLING_ENDPOINT` `API_KEY` omgevings variabelen en, zoals hieronder wordt weer gegeven. Vervang de waarden door de eind punt-URI en de API-sleutel die u eerder hebt gemaakt. Zorg ervoor dat de waarde van de gebruiksrecht overeenkomst is ingesteld op ' accepteren '. 
+De meeste **omgevings variabelen** voor de IOT Edge module zijn al ingesteld in de voorbeeld *DeploymentManifest.jsop* bestanden die hierboven zijn gekoppeld. Zoek in het bestand naar de `BILLING_ENDPOINT` `API_KEY` omgevings variabelen en, zoals hieronder wordt weer gegeven. Vervang de waarden door de eind punt-URI en de API-sleutel die u eerder hebt gemaakt. Zorg ervoor dat de waarde van de gebruiksrecht overeenkomst is ingesteld op ' accepteren '. 
 
 ```json
 "EULA": { 
@@ -89,7 +89,7 @@ De meeste **omgevings variabelen** voor de IOT Edge module zijn al ingesteld in 
 
 Nu de eerste configuratie van de container met *ruimtelijke analyse* is voltooid, is de volgende stap het configureren van de para meters voor bewerkingen en het toevoegen ervan aan de implementatie. 
 
-De eerste stap is het bijwerken van het voor beeld van het [implementatie manifest](https://go.microsoft.com/fwlink/?linkid=2142179) en het configureren van de operationId voor `cognitiveservices.vision.spatialanalysis-personcount` , zoals hieronder wordt weer gegeven:
+De eerste stap is het bijwerken van het voor beeld-implementatie manifest dat hierboven is gekoppeld en configureer de operationId voor `cognitiveservices.vision.spatialanalysis-personcount` , zoals hieronder wordt weer gegeven:
 
 
 ```json
@@ -107,7 +107,7 @@ De eerste stap is het bijwerken van het voor beeld van het [implementatie manife
 },
 ```
 
-Nadat het [implementatie manifest](https://go.microsoft.com/fwlink/?linkid=2142179) is bijgewerkt, volgt u de instructies van de camera fabrikant voor het installeren van de camera, configureert u de camera-URL en configureert u de gebruikers naam en het wacht woord. 
+Nadat het implementatie manifest is bijgewerkt, volgt u de instructies van de camera fabrikant voor het installeren van de camera, configureert u de camera-URL en configureert u de gebruikers naam en het wacht woord. 
 
 Stel vervolgens `VIDEO_URL` in op de RTSP-URL van de camera en de referenties voor het maken van een verbinding met de camera.
 
@@ -122,7 +122,7 @@ U kunt ook een betrouwbaarheids drempel selecteren voor wanneer gedetecteerde pe
 
 ### <a name="execute-the-deployment"></a>De implementatie uitvoeren
 
-Nu het [implementatie manifest](https://go.microsoft.com/fwlink/?linkid=2142179) is voltooid, gebruikt u deze opdracht in de Azure CLI om de container op de hostcomputer te implementeren als een IOT Edge module.
+Nu het implementatie manifest is voltooid, gebruikt u deze opdracht in de Azure CLI om de container op de hostcomputer te implementeren als een IoT Edge module.
 
 ```azurecli
 az login
@@ -145,7 +145,7 @@ Zoek de *runtime status* in de instellingen van de IOT Edge-module voor de modul
 
 ![Voor beeld van implementatie verificatie](./media/spatial-analysis/deployment-verification.png)
 
-Op dit moment wordt de bewerking uitgevoerd door de container met ruimtelijke analyse. Het verzendt AI Insights voor de `cognitiveservices.vision.spatialanalysis-personcount` bewerking en stuurt deze inzichten als telemetrie naar uw Azure IOT hub-exemplaar. Als u aanvullende camera's wilt configureren, kunt u het [manifest](https://go.microsoft.com/fwlink/?linkid=2142179) bestand van de implementatie bijwerken en de implementatie opnieuw uitvoeren.
+Op dit moment wordt de bewerking uitgevoerd door de container met ruimtelijke analyse. Het verzendt AI Insights voor de `cognitiveservices.vision.spatialanalysis-personcount` bewerking en stuurt deze inzichten als telemetrie naar uw Azure IOT hub-exemplaar. Als u aanvullende camera's wilt configureren, kunt u het manifest bestand van de implementatie bijwerken en de implementatie opnieuw uitvoeren.
 
 ## <a name="person-counting-web-application"></a>De persoon die de webtoepassing telt
 
@@ -156,7 +156,7 @@ Deze persoon die de webtoepassing telt, stelt u in staat om snel een voor beeld-
 Een container formulier van deze app is beschikbaar op de Azure Container Registry. Gebruik de volgende opdracht docker pull om deze te downloaden. Neem contact op met micro soft projectarchon@microsoft.com voor het toegangs token.
 
 ```bash
-docker login rtvsofficial.azurecr.io -u <token name> -p <password>
+docker login rtvsofficial.azurecr.io -u <token name> -p <password>
 docker pull rtvsofficial.azurecr.io/acceleratorapp.personcount:1.0
 ```
 

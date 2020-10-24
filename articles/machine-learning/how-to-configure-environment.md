@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 98bc108af22491c6ea0b64bc2e278b6b32f43a5b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 66008012dd9b3eb6000e96f251d18cf14a9c8dc1
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203089"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495232"
 ---
 # <a name="set-up-a-development-environment-for-azure-machine-learning"></a>Een ontwikkel omgeving instellen voor Azure Machine Learning
 
@@ -139,10 +139,10 @@ Er is niets om te installeren of te configureren voor een reken instantie.
 
 Maak een wille keurig moment in uw Azure Machine Learning-werk ruimte. Geef een naam op en geef een Azure VM-type op. Probeer het nu met deze [zelf studie: omgeving en werk ruimte voor installatie](tutorial-1st-experiment-sdk-setup.md).
 
-Zie [Compute instances](concept-compute-instance.md)voor meer informatie over reken instanties, inclusief het installeren van pakketten.
+Zie [een Azure machine learning Compute-instantie maken en beheren](how-to-create-manage-compute-instance.md)voor meer informatie over reken instanties, waaronder het installeren van pakketten.
 
 > [!TIP]
-> [Stop het reken](tutorial-1st-experiment-bring-data.md#clean-up-resources)proces om te voor komen dat er kosten in rekening worden gebracht voor een ongebruikte Compute-instantie.
+> [Stop het reken](how-to-create-manage-compute-instance.md#manage)proces om te voor komen dat er kosten in rekening worden gebracht voor een ongebruikte Compute-instantie.
 
 Naast een Jupyter Notebook-server en-Jjupyterlab kunt u reken instanties gebruiken in de [functie voor geïntegreerde notebooks in azure machine learning Studio](how-to-run-jupyter-notebooks.md).
 
@@ -169,7 +169,7 @@ De DSVM gebruiken als een ontwikkel omgeving
 
     * Gebruik de Azure Portal voor het maken van een [Ubuntu](data-science-virtual-machine/dsvm-ubuntu-intro.md) -of [Windows](data-science-virtual-machine/provision-vm.md) DSVM.
     * [Maak een DSVM met arm-sjablonen](data-science-virtual-machine/dsvm-tutorial-resource-manager.md).
-    * Azure CLI gebruiken
+    * De Azure CLI gebruiken
 
         Als u een Ubuntu-DSVM wilt maken, gebruikt u de volgende opdracht:
 

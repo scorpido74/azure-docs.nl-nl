@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: e4e680ea55988f7b3446bf72c8e800bcc51eb537
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 556b3915336d0ca9cec8ac67a34778cfb2523cbe
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282045"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475070"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Aanvraageenheden in Azure Cosmos DB
 
@@ -62,7 +62,7 @@ Houd rekening met de volgende factoren wanneer u een schatting maakt van het aan
 
   Dezelfde query op dezelfde gegevens kost altijd hetzelfde aantal RUs bij herhaalde uitvoeringen.
 
-- **Script gebruik**: net als bij query's, worden voor opgeslagen procedures en triggers RUs gebruikt op basis van de complexiteit van de bewerkingen die worden uitgevoerd. Controleer tijdens het ontwikkelen van uw toepassing de [aanvraagkostenheader](optimize-cost-queries.md#evaluate-request-unit-charge-for-a-query) om meer inzicht te krijgen in hoeveel RU-capaciteit elke bewerking verbruikt.
+- **Script gebruik**: net als bij query's, worden voor opgeslagen procedures en triggers RUs gebruikt op basis van de complexiteit van de bewerkingen die worden uitgevoerd. Controleer tijdens het ontwikkelen van uw toepassing de [aanvraagkostenheader](./optimize-cost-reads-writes.md#measuring-the-ru-charge-of-a-request) om meer inzicht te krijgen in hoeveel RU-capaciteit elke bewerking verbruikt.
 
 ## <a name="request-units-and-multiple-regions"></a>Aanvraag eenheden en meerdere regio's
 
@@ -76,12 +76,12 @@ Uw keuze van [consistentie model](consistency-levels.md) is ook van invloed op d
 
 - Meer informatie over het [inrichten van de door Voer voor Azure Cosmos-containers en-data bases](set-throughput.md).
 - Meer informatie over [serverloze op Azure Cosmos DB](serverless.md).
-- Meer informatie over [logische partities](partition-data.md).
-- Meer informatie over het [wereld wijd schalen van ingerichte door Voer](scaling-throughput.md).
+- Meer informatie over [logische partities](./partitioning-overview.md).
+- Meer informatie over het [wereld wijd schalen van ingerichte door Voer]().
 - Meer informatie over het [inrichten van de door Voer voor een Azure Cosmos-container](how-to-provision-container-throughput.md).
 - Meer informatie over het [inrichten van de door Voer voor een Azure Cosmos-data base](how-to-provision-database-throughput.md).
 - Meer informatie over [het vinden van de kosten voor aanvraag eenheden voor een bewerking](find-request-unit-charge.md).
 - Meer informatie over het [optimaliseren van ingerichte doorvoer kosten in azure Cosmos DB](optimize-cost-throughput.md).
 - Meer informatie over het [optimaliseren van de kosten voor lezen en schrijven in azure Cosmos DB](optimize-cost-reads-writes.md).
-- Meer informatie over het [optimaliseren van query kosten in azure Cosmos DB](optimize-cost-queries.md).
+- Meer informatie over het [optimaliseren van query kosten in azure Cosmos DB](./optimize-cost-reads-writes.md).
 - Meer informatie over het [gebruik van metrische gegevens voor het bewaken van de door Voer](use-metrics.md).

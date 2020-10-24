@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/07/2020
+ms.date: 10/23/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: on-premises, docker, container
-ms.openlocfilehash: c26c69a0f6cbf0f9f658d3b7a32cce99319767b4
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 6f04e40b0b2baa496faf8001684304c5df78ec20
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930438"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496137"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Docker-containers voor de speech service-Api's installeren en uitvoeren 
 
@@ -119,7 +119,7 @@ Container installatie kopieën voor spraak zijn beschikbaar in de volgende Conta
 |-----------|------------|
 | Custom Speech-naar-tekst | `mcr.microsoft.com/azure-cognitive-services/speechservices/custom-speech-to-text:latest` |
 
-# <a name="text-to-speech"></a>[Tekst-naar-spraak](#tab/tts)
+# <a name="text-to-speech"></a>[Tekst naar spraak](#tab/tts)
 
 | Container | Opslagplaats |
 |-----------|------------|
@@ -194,7 +194,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/custom-spe
 > [!NOTE]
 > De `locale` en `voice` voor aangepaste spraak containers worden bepaald door het aangepaste model dat door de container is opgenomen.
 
-# <a name="text-to-speech"></a>[Tekst-naar-spraak](#tab/tts)
+# <a name="text-to-speech"></a>[Tekst naar spraak](#tab/tts)
 
 #### <a name="docker-pull-for-the-text-to-speech-container"></a>Docker-pull voor de tekst-naar-spraak-container
 
@@ -392,7 +392,7 @@ Met deze opdracht gebeurt het volgende:
 * Als het aangepaste model eerder is gedownload, `ModelId` wordt de genegeerd.
 * Verwijdert de container automatisch nadat deze is afgesloten. De container installatie kopie is nog steeds beschikbaar op de hostcomputer.
 
-# <a name="text-to-speech"></a>[Tekst-naar-spraak](#tab/tts)
+# <a name="text-to-speech"></a>[Tekst naar spraak](#tab/tts)
 
 Voer de volgende opdracht uit om de standaard *-tekst-naar-spraak-* container uit te voeren `docker run` .
 
@@ -491,6 +491,16 @@ Met deze opdracht gebeurt het volgende:
 * Wijst 1 CPU-kernen en 1 gigabyte (GB) aan geheugen toe.
 * Beschrijft TCP-poort 5003 en wijst een pseudo-TTY voor de container toe.
 * Verwijdert de container automatisch nadat deze is afgesloten. De container installatie kopie is nog steeds beschikbaar op de hostcomputer.
+
+Als u alleen spraak Taaldetectie aanvragen verzendt, moet u de waarde van de speech-client instellen `phraseDetection` op `None` .  
+
+```python
+speech_config.set_service_property(
+      name='speechcontext-phraseDetection.Mode',
+      value='None',
+      channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+   )
+```
 
 Als u deze container wilt uitvoeren met de spraak-naar-tekst-container, kunt u deze [docker-installatie kopie](https://hub.docker.com/r/antsu/on-prem-client)gebruiken. Nadat beide containers zijn gestart, gebruikt u de opdracht docker run om uit te voeren `speech-to-text-with-languagedetection-client` .
 
@@ -680,7 +690,7 @@ In dit artikel hebt u concepten en werk stromen geleerd om spraak containers te 
 * Spraak biedt vier Linux-containers voor docker, die verschillende mogelijkheden inkapselen:
   * *Spraak naar tekst*
   * *Custom Speech-naar-tekst*
-  * *Tekst-naar-spraak*
+  * *Tekst naar spraak*
   * *Aangepaste tekst-naar-spraak*
   * *Tekst-naar-spraak Neural*
   * *Spraak Taaldetectie*

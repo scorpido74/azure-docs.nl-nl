@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 10/12/2020
+ms.date: 10/23/2020
 ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 0eb4f8a7994e7c1d04013e9c9cf92e604ef6a1a7
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: eb7439bc84eaa4bfba58be1059a19ddadfc6a93e
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424454"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496018"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Een Azure Machine Learning omgeving voor het afwijzen van interferentie beveiligen met virtuele netwerken
 
@@ -123,7 +123,7 @@ Er zijn twee benaderingen voor het isoleren van verkeer van en naar het AKS-clus
 * __Interne AKS Load Balancer__: met deze aanpak configureert u het eind punt voor uw implementaties naar AKS voor het gebruik van een privé-IP-adres in het virtuele netwerk.
 
 > [!WARNING]
-> **Gebruik een privé-AKS of interne Load Balancer, maar niet beide**.
+> Interne load balancer werkt niet met een AKS-cluster dat gebruikmaakt van kubenet. Als u een interne load balancer en een persoonlijk AKS-cluster tegelijk wilt gebruiken, configureert u uw particuliere AKS-cluster met Azure container Networking interface (CNI). Zie [Azure cni Networking configureren in de Azure Kubernetes-service](../aks/configure-azure-cni.md)voor meer informatie.
 
 ### <a name="private-aks-cluster"></a>Persoonlijk AKS-cluster
 
@@ -134,7 +134,7 @@ Nadat u het persoonlijke AKS-cluster hebt gemaakt, [koppelt u het cluster aan he
 > [!IMPORTANT]
 > Voordat u een AKS-cluster met persoonlijke koppelingen gebruikt met Azure Machine Learning, moet u een ondersteunings incident openen om deze functionaliteit in te scha kelen. Zie [Quota's beheren en verhogen](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)voor meer informatie.
 
-## <a name="internal-aks-load-balancer"></a>Interne AKS load balancer
+### <a name="internal-aks-load-balancer"></a>Interne AKS load balancer
 
 AKS-implementaties gebruiken standaard een [open bare Load Balancer](../aks/load-balancer-standard.md). In deze sectie leert u hoe u AKS kunt configureren voor het gebruik van een interne load balancer. Een intern (of privé) load balancer wordt gebruikt wanneer alleen privé Ip's zijn toegestaan als frontend. Interne load balancers worden gebruikt voor het verdelen van verkeer binnen een virtueel netwerk
 
@@ -211,7 +211,7 @@ except:
     aks_target.wait_for_completion(show_output = True)
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az ml computetarget create aks -n myaks --load-balancer-type InternalLoadBalancer

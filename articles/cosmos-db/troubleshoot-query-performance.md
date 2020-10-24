@@ -8,12 +8,12 @@ ms.date: 10/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 9d17ce5b3409d8b6bb24d42c2857ba22699e1364
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b7e57656a6749f600d07b679aad6b8c77ac96551
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277169"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476702"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Query-problemen bij het gebruik van Azure Cosmos DB oplossen
 
@@ -191,7 +191,7 @@ Bijgewerkt indexerings beleid:
 
 **Ru-kosten:** 2,98 RUs
 
-U kunt op elk gewenst moment eigenschappen toevoegen aan het indexerings beleid, zonder dat dit van invloed is op de beschik baarheid voor schrijven of lezen. U kunt de voortgang van de [index transformatie volgen](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3).
+U kunt op elk gewenst moment eigenschappen toevoegen aan het indexerings beleid, zonder dat dit van invloed is op de beschik baarheid voor schrijven of lezen. U kunt de voortgang van de [index transformatie volgen](./how-to-manage-indexing-policy.md#dotnet-sdk).
 
 ### <a name="understand-which-system-functions-use-the-index"></a>Begrijpen welke systeem functies de index gebruiken
 
@@ -491,5 +491,5 @@ Query's zijn ontworpen om resultaten vooraf op te halen terwijl de huidige batch
 Raadpleeg de volgende artikelen voor meer informatie over het meten van RUs per query, het ophalen van uitvoerings statistieken voor het afstemmen van uw query's en meer:
 
 * [Metrische gegevens over SQL-query uitvoering ophalen met behulp van .NET SDK](profile-sql-api-query.md)
-* [Queryprestaties afstemmen met Azure Cosmos DB](sql-api-sql-query-metrics.md)
+* [Queryprestaties afstemmen met Azure Cosmos DB](./sql-api-query-metrics.md)
 * [Tips voor betere prestaties voor de .NET-SDK](performance-tips.md)

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2da6fcb82b1ec14d6f57931709321871fa575d38
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 377165c94303a4a44d481009700cdef9169b3d78
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277041"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475801"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Processor voor wijzigingenfeed in Azure Cosmos DB
 
@@ -125,10 +125,10 @@ De Change feed-processor wordt geïnitialiseerd en begint met het lezen van wijz
 
 De Change feed-processor kan worden gehost in elk platform dat ondersteuning biedt voor langlopende processen of taken:
 
-* Een continue uitvoering van [Azure-Webtaak](https://docs.microsoft.com/learn/modules/run-web-app-background-task-with-webjobs/).
-* Een proces op een [virtuele machine van Azure](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs#azure-virtual-machines).
-* Een achtergrond taak in de [Azure Kubernetes-service](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs#azure-kubernetes-service).
-* Een [ASP.net-gehoste service](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services).
+* Een continue uitvoering van [Azure-Webtaak](/learn/modules/run-web-app-background-task-with-webjobs/).
+* Een proces op een [virtuele machine van Azure](/azure/architecture/best-practices/background-jobs#azure-virtual-machines).
+* Een achtergrond taak in de [Azure Kubernetes-service](/azure/architecture/best-practices/background-jobs#azure-kubernetes-service).
+* Een [ASP.net-gehoste service](/aspnet/core/fundamentals/host/hosted-services).
 
 Hoewel de feed-processor in korte Bewaar omgevingen kan worden uitgevoerd, omdat de lease container de status behoudt, zal de opstart cyclus van deze omgevingen vertraging oplopen om de meldingen te ontvangen (als gevolg van de overhead van het starten van de processor telkens wanneer de omgeving wordt gestart).
 
@@ -147,4 +147,4 @@ U kunt nu door gaan met meer informatie over het wijzigen van de feed-processor 
 * [Pull-model voor feed wijzigen](change-feed-pull-model.md)
 * [Migreren vanuit de bibliotheek van de wijzigings feed-processor](how-to-migrate-from-change-feed-library.md)
 * [De wijzigingenfeedschatting gebruiken](how-to-use-change-feed-estimator.md)
-* [Starttijd van verwerker van wijzigingenfeed](how-to-configure-change-feed-start-time.md)
+* [Starttijd van verwerker van wijzigingenfeed](#starting-time)

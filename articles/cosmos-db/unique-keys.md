@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 9f26dc5214222bb7564c0ba2b199adefad056ed5
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: dac2ed3888dcf1d38fc5e2c21611edf8008a07f6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280990"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476362"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Beperkingen voor unieke sleutels in Azure Cosmos DB
 
@@ -43,7 +43,7 @@ U kunt unieke sleutels alleen definiëren wanneer u een Azure Cosmos-container m
 
 * U kunt een bestaande container niet bijwerken om een andere unieke sleutel te gebruiken. Met andere woorden, nadat een container is gemaakt met een uniek sleutel beleid, kan het beleid niet worden gewijzigd.
 
-* Als u een unieke sleutel voor een bestaande container wilt instellen, maakt u een nieuwe container met de beperking voor de unieke sleutel. Gebruik het juiste hulp programma voor gegevens migratie om de gegevens van de bestaande container naar de nieuwe container te verplaatsen. Voor SQL-containers gebruikt u het [hulp programma voor gegevens migratie](import-data.md) om gegevens te verplaatsen. Gebruik [mongoimport.exe of mongorestore.exe](mongodb-migrate.md) om gegevens te verplaatsen voor MongoDb-containers.
+* Als u een unieke sleutel voor een bestaande container wilt instellen, maakt u een nieuwe container met de beperking voor de unieke sleutel. Gebruik het juiste hulp programma voor gegevens migratie om de gegevens van de bestaande container naar de nieuwe container te verplaatsen. Voor SQL-containers gebruikt u het [hulp programma voor gegevens migratie](import-data.md) om gegevens te verplaatsen. Gebruik [mongoimport.exe of mongorestore.exe](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json) om gegevens te verplaatsen voor MongoDb-containers.
 
 * Een uniek sleutel beleid kan Maxi maal 16 padnamen bevatten. De waarden kunnen bijvoorbeeld `/firstName` , `/lastName` en zijn `/address/zipCode` . Elk uniek sleutel beleid kan Maxi maal 10 unieke sleutel beperkingen of combi Naties hebben. De gecombineerde paden voor elke unieke index beperking mogen niet groter zijn dan 60 bytes. In het vorige voor beeld is de voor naam, achternaam en e-mail adres samen één beperking. Deze beperking maakt gebruik van drie van de 16 mogelijke paden.
 
