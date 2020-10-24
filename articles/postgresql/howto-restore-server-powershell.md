@@ -8,12 +8,12 @@ ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cf15898a7077f08ff4ab337cf5ad77ebcd2f3f1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63fffb5998b0b6a245db3f1c8fcf16f2d576936e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708098"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489758"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-postgresql-server-using-powershell"></a>Een back-up van Azure Database for PostgreSQL-server maken en deze terugzetten met behulp van PowerShell
 
@@ -23,14 +23,14 @@ Er wordt regel matig een back-up van Azure Database for PostgreSQL servers gemaa
 
 U hebt het volgende nodig om deze hand leiding te volt ooien:
 
-- De [AZ Power shell-module](https://docs.microsoft.com/powershell/azure/install-az-ps) die lokaal is geïnstalleerd of [Azure Cloud shell](https://shell.azure.com/) in de browser
+- De [AZ Power shell-module](/powershell/azure/install-az-ps) die lokaal is geïnstalleerd of [Azure Cloud shell](https://shell.azure.com/) in de browser
 - Een [Azure database for postgresql server](quickstart-create-postgresql-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
 > Hoewel de PowerShell-module Az.PostgreSql in preview is, moet u deze afzonderlijk van de PowerShell-module Az installeren met behulp van de volgende opdracht: `Install-Module -Name Az.PostgreSql -AllowPrerelease`.
 > Zodra de PowerShell-module Az.PostgreSql algemeen beschikbaar is, wordt deze onderdeel van toekomstige releases van Az PowerShell en is de module systeemeigen beschikbaar vanuit Azure Cloud Shell.
 
-Als u Power shell lokaal wilt gebruiken, maakt u verbinding met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) .
+Als u Power shell lokaal wilt gebruiken, maakt u verbinding met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -75,9 +75,9 @@ Get-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 De para meters set **PointInTimeRestore** van de `Restore-AzPostgreSqlServer` cmdlet vereist de volgende para meters:
 
-| Instelling | Voorgestelde waarde | Beschrijving  |
+| Instelling | Voorgestelde waarde | Beschrijving  |
 | --- | --- | --- |
-| ResourceGroupName |  myResourceGroup |  De resource groep waar de bron server zich bevindt.  |
+| ResourceGroupName |  myResourceGroup |  De resource groep waar de bron server zich bevindt.  |
 | Naam | mydemoserver-restored | De naam van de nieuwe server die door de opdracht restore is gemaakt. |
 | RestorePointInTime | 2020-03-13T13:59:00Z | Selecteer een punt in de tijd om te herstellen. Deze datum en tijd moet binnen de back-upretentieperiode van de bronserver vallen. Gebruik de ISO8601 datum-en tijd notatie. U kunt bijvoorbeeld uw eigen lokale tijd zone gebruiken, zoals **2020-03-13T05:59:00-08:00**. U kunt ook de UTC Zulu-indeling gebruiken, bijvoorbeeld **2018-03-13T13:59:00Z**. |
 | UsePointInTimeRestore | `<SwitchParameter>` | Gebruik de punt-in-time-modus om te herstellen. |
@@ -117,7 +117,7 @@ Get-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 Voor de para meters set **Restore** van de `Restore-AzPostgreSqlServer` cmdlet zijn de volgende para meters vereist:
 
-| Instelling | Voorgestelde waarde | Beschrijving  |
+| Instelling | Voorgestelde waarde | Beschrijving  |
 | --- | --- | --- |
 |ResourceGroupName | myResourceGroup | De naam van de resource groep waartoe de nieuwe server behoort.|
 |Naam | mydemoserver-geoterugzet bewerking | De naam van de nieuwe server. |

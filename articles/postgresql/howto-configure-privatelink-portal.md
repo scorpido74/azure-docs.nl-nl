@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 7d2bdb96485a811ea9b3dde5320084f666508622
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4da1c1e142c5d70bea342fd9513061710228e61d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907492"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489928"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>Een persoonlijke koppeling maken en beheren voor Azure Database for PostgreSQL-één server met behulp van portal
 
@@ -222,7 +222,7 @@ Nadat u **myVm** hebt gemaakt, maakt u hiermee als volgt verbinding via internet
     Address:  10.1.3.4
     ```
 
-3. Test de verbinding van de persoonlijke verbinding voor de PostgreSQL-server met behulp van elke beschik bare client. In het onderstaande voor beeld heb ik [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15) gebruikt om de bewerking uit te voeren.
+3. Test de verbinding van de persoonlijke verbinding voor de PostgreSQL-server met behulp van elke beschik bare client. In het onderstaande voor beeld heb ik [Azure Data Studio](/sql/azure-data-studio/download?view=sql-server-ver15) gebruikt om de bewerking uit te voeren.
 
 4. In **nieuwe verbinding**voert u de volgende gegevens in of selecteert u deze:
 
@@ -252,7 +252,7 @@ Wanneer u klaar bent met het persoonlijke eind punt, de PostgreSQL-server en de 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze procedure maakt u een virtuele machine in een virtueel netwerk, een Azure Database for PostgreSQL-één-server en een persoonlijk eind punt voor persoonlijke toegang. U hebt verbinding gemaakt met één virtuele machine via internet en deze wordt veilig door gegeven aan de PostgreSQL-server met behulp van een persoonlijke koppeling. Zie [Wat is Azure private endpoint](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)? voor meer informatie over privé-eind punten.
+In deze procedure maakt u een virtuele machine in een virtueel netwerk, een Azure Database for PostgreSQL-één-server en een persoonlijk eind punt voor persoonlijke toegang. U hebt verbinding gemaakt met één virtuele machine via internet en deze wordt veilig door gegeven aan de PostgreSQL-server met behulp van een persoonlijke koppeling. Zie [Wat is Azure private endpoint](../private-link/private-endpoint-overview.md)? voor meer informatie over privé-eind punten.
 
 <!-- Link references, to text, Within this same GitHub repo. -->
 [resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

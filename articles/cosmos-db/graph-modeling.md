@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: jasonh
-ms.openlocfilehash: 6526119a8b20a7c60879fe690aefe96159b062a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2176708d3b5371a9bb66a59a7c6c0af56c337e28
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409762"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490625"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Graph data modellering voor Azure Cosmos DB Gremlin-API
 
@@ -37,7 +37,7 @@ Een grafiek database oplossing kan optimaal worden toegepast als de entiteiten e
 
 Als aan de bovenstaande criteria is voldaan, is het waarschijnlijk dat een grafiek database benadering voor delen biedt voor de **complexiteit van query's**, **schaal baarheid van gegevens modellen**en de **prestaties van query's**.
 
-De volgende stap is om te bepalen of de grafiek wordt gebruikt voor analyse-of transactionele doel einden. Als de grafiek moet worden gebruikt voor zware werk belastingen voor reken kracht en gegevens verwerking, is het waard om de [Cosmos DB Spark-connector](https://docs.microsoft.com/azure/cosmos-db/spark-connector) en het gebruik van de [graphx-bibliotheek](https://spark.apache.org/graphx/)te verkennen. 
+De volgende stap is om te bepalen of de grafiek wordt gebruikt voor analyse-of transactionele doel einden. Als de grafiek moet worden gebruikt voor zware werk belastingen voor reken kracht en gegevens verwerking, is het waard om de [Cosmos DB Spark-connector](./spark-connector.md) en het gebruik van de [graphx-bibliotheek](https://spark.apache.org/graphx/)te verkennen. 
 
 ## <a name="how-to-use-graph-objects"></a>Grafiek objecten gebruiken
 

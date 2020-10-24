@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: rohink
-ms.openlocfilehash: 42acbc0d32b3ce5de4befcf112b68f611ad70542
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a27c4519024d6d3d2f3852534619b5f8c2bb5e43
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76937444"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489605"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Metrische gegevens en waarschuwingen Azure DNS
 Azure DNS is een hosting service voor DNS-domeinen die naam omzetting biedt met behulp van de Microsoft Azure-infra structuur. In dit artikel worden metrische gegevens en waarschuwingen voor de Azure DNS-service beschreven.
@@ -57,7 +57,7 @@ Met de metrische gegevens voor het *aantal records sets* wordt het aantal record
 ### <a name="record-set-capacity-utilization"></a>Capaciteits gebruik van record sets
 De metrische gegevens voor het *capaciteits gebruik van de record sets* in azure DNS tonen het percentage van het gebruik van de capaciteit van de record sets voor een DNS-zone. Elke DNS-zone in Azure DNS is onderhevig aan een recordset-limiet die het maximum aantal record sets definieert dat is toegestaan voor de zone (Zie [DNS-limieten](dns-zones-records.md#limits)). In deze metrische gegevens ziet u dus hoe dicht u de limiet van de recordset kunt aangaan. Als u bijvoorbeeld 500-record sets hebt geconfigureerd voor uw DNS-zone en de zone de standaard limiet voor de recordset van 5000 heeft, wordt de waarde van de RecordSetCapacityUtilization weer gegeven als 10% (wordt verkregen door het delen van 500 door 5000). De meet eenheid is **percentage** en het **aggregatie** type is **maximum**. Als u deze metriek wilt weer geven, selecteert u op het tabblad Monitor in het Azure Portal metrische gegevens (preview) Verkenner. Selecteer de DNS-zone in de vervolg keuzelijst bron, selecteer de metrische gegevens voor het capaciteits gebruik van de record instellen en selecteer maximum als de aggregatie. Onder scherm afbeelding ziet u een voor beeld. Zie [Azure Monitor Metrics Explorer](../azure-monitor/platform/metrics-charts.md)voor meer informatie over de metrics Explorere ervaring en grafieken. 
 
-![Aantal record sets](./media/dns-alerts-metrics/dns-metrics-record-set-capacity-uitlization.png)
+![Scherm afbeelding van een voor beeld van het weer geven van metrische gegevens.](./media/dns-alerts-metrics/dns-metrics-record-set-capacity-uitlization.png)
 
 *Afbeelding: de metrische gegevens over het capaciteits gebruik Azure DNS record sets instellen*
 

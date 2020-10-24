@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: 2f7ef27ea5cc19c60e05fddfe4d00cd4ff234bc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b016468d858162123e2796e0d76b83b0a1bbf33
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568043"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480051"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse Link voor Azure Cosmos DB: Use cases voor bijna realtime analyses
 
@@ -118,7 +118,7 @@ Laat ons het voor beeld van een e-commerce-bedrijf CompanyXYZ met wereld wijde b
 
   * Opname door hoge door Voer van zowel batch-& streaming gegevensfeeds met [realtime-indexering](index-policy.md) in transactionele opslag.
 
-  * Azure Cosmos DB transactionele Store biedt drie meer opties dan de twee extreme, sterkste en uiteindelijke consistentie niveaus om de [Beschik baarheid en prestaties te kunnen afnemen](consistency-levels-tradeoffs.md) die het dichtst bij de bedrijfs behoefte zijn.
+  * Azure Cosmos DB transactionele Store biedt drie meer opties dan de twee extreme, sterkste en uiteindelijke consistentie niveaus om de [Beschik baarheid en prestaties te kunnen afnemen](./consistency-levels.md) die het dichtst bij de bedrijfs behoefte zijn.
 
 * De partners van de toeleverings keten van CompanyXYZ hebben zeer schommelende verkeers patronen van honderden tot miljoenen aanvragen/s en daarom moet het voorraadbeheer platform omgaan met onverwachte burstiness in het verkeer.  Voor delen van het gebruik van Azure Cosmos DB:
 

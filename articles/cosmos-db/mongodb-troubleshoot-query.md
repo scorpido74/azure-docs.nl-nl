@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/12/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 615bd423296fb9ed2ee28cab9e362873a30ee7b9
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 7a34b4a3a0f9fe75b5e252f20a8b0924b0ce01d7
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284185"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488381"
 ---
 # <a name="troubleshoot-query-issues-when-using-the-azure-cosmos-db-api-for-mongodb"></a>Problemen met query's oplossen bij het gebruik van de Azure Cosmos DB-API voor MongoDB
 
@@ -116,7 +116,7 @@ De `$explain` uitvoer van de opdracht is lang en bevat gedetailleerde informatie
 | `timeInclusiveMS` | Query wachttijd back-end |
 | `pathsIndexed` | Bevat indexen die de query gebruikt | 
 | `pathsNotIndexed` | Bevat indexen die de query zou kunnen gebruiken, indien beschikbaar | 
-| `shardInformation` | Samen vatting van de query prestaties voor een bepaalde [fysieke partitie](partition-data.md#physical-partitions) | 
+| `shardInformation` | Samen vatting van de query prestaties voor een bepaalde [fysieke partitie](./partitioning-overview.md#physical-partitions) | 
 | `retrievedDocumentCount` | Aantal documenten dat door de query-engine is geladen | 
 | `outputDocumentCount` | Aantal geretourneerde documenten in de query resultaten | 
 | `estimatedDelayFromRateLimitingInMilliseconds` | Geschatte extra latentie van de query vanwege een frequentie beperking | 
@@ -256,7 +256,7 @@ Het indexeren van aanbevolen procedures in de API van Azure Cosmos DB voor Mongo
 
 Met [joker tekens kunnen indexen](mongodb-indexing.md#wildcard-indexes) eenvoudiger worden geïndexeerd. In tegens telling tot in MongoDB kunnen Joker teken indexen meerdere velden in query-predikaten ondersteunen. Er is geen verschil in de query prestaties als u één enkele Joker teken index gebruikt in plaats van een afzonderlijke index voor elke eigenschap te maken. Het toevoegen van een Joker teken index voor alle eigenschappen is de eenvoudigste manier om al uw query's te optimaliseren.
 
-U kunt op elk gewenst moment nieuwe indexen toevoegen, zonder dat dit van invloed is op de beschik baarheid voor schrijven of lezen. U kunt de voortgang van de [index transformatie volgen](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3).
+U kunt op elk gewenst moment nieuwe indexen toevoegen, zonder dat dit van invloed is op de beschik baarheid voor schrijven of lezen. U kunt de voortgang van de [index transformatie volgen](./how-to-manage-indexing-policy.md#dotnet-sdk).
 
 ### <a name="understand-which-aggregation-operations-use-the-index"></a>Begrijpen welke aggregatie bewerkingen de index gebruiken
 

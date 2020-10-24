@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/18/2019
-ms.openlocfilehash: 0a2e69a220f6752e5f0392c345b02967e2e76beb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20045ce914a340ac36e4df8cbd0df38e872a1d38
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86203468"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487327"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Apache Spark Structured streaming gebruiken met Apache Kafka en Azure Cosmos DB
 
@@ -86,7 +86,7 @@ Hoewel u hand matig een Azure Virtual Network-, Kafka-en Spark-cluster kunt make
 
 Het project dat in dit document wordt gebruikt, slaat gegevens op in Cosmos DB. Voordat u de code uitvoert, moet u eerst een _Data Base_ en _verzameling_ maken in uw Cosmos DB-exemplaar. U moet ook het document eindpunt en de _sleutel_ ophalen die wordt gebruikt voor het verifiëren van aanvragen voor Cosmos db.
 
-Een manier om dit te doen is met behulp van de [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest). Met het volgende script wordt een Data Base gemaakt met de naam `kafkadata` en een verzameling met de naam `kafkacollection` . Vervolgens wordt de primaire sleutel geretourneerd.
+Een manier om dit te doen is met behulp van de [Azure cli](/cli/azure/). Met het volgende script wordt een Data Base gemaakt met de naam `kafkadata` en een verzameling met de naam `kafkacollection` . Vervolgens wordt de primaire sleutel geretourneerd.
 
 ```azurecli
 #!/bin/bash

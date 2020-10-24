@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: ebd3893f6443edda276bfb3b1e39ae0fe093acb2
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f6a348ceb30806259035cb71bb4165b736949272
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104101"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480068"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Veelgestelde vragen over Azure Synapse Link voor Azure Cosmos DB
 
@@ -37,13 +37,13 @@ Wanneer Azure Synapse-koppeling is ingeschakeld voor een account met meerdere re
 
 Voor de containers waarop het analytische archief is ingeschakeld, wordt automatische back-up en herstel van uw gegevens in de analytische opslag op dit moment niet ondersteund. 
 
-Wanneer de Synapse-koppeling is ingeschakeld voor een database account, blijven Azure Cosmos DB automatisch [back-ups](https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore) van uw gegevens in het transactionele archief (alleen) van containers maken op het geplande back-upinterval, zoals altijd. Het is belang rijk te weten dat wanneer een container waarop een analytische opslag is ingeschakeld, wordt hersteld naar een nieuw account, de container wordt hersteld met alleen transactionele opslag en er geen analytische opslag is ingeschakeld. 
+Wanneer de Synapse-koppeling is ingeschakeld voor een database account, blijven Azure Cosmos DB automatisch [back-ups](./online-backup-and-restore.md) van uw gegevens in het transactionele archief (alleen) van containers maken op het geplande back-upinterval, zoals altijd. Het is belang rijk te weten dat wanneer een container waarop een analytische opslag is ingeschakeld, wordt hersteld naar een nieuw account, de container wordt hersteld met alleen transactionele opslag en er geen analytische opslag is ingeschakeld. 
 
 ### <a name="can-i-disable-the-azure-synapse-link-feature-for-my-azure-cosmos-db-account"></a>Kan ik de functie Azure Synapse link voor mijn Azure Cosmos DB-account uitschakelen?
 
 Nadat de Synapse Link-functie op accountniveau is ingeschakeld, kunt u deze momenteel niet uitschakelen. Als de Synapse Link-functie is ingeschakeld op accountniveau is dit niet van invloed op de facturering en zijn er geen containers met analytische opslag. 
 
-Als u de mogelijkheid wilt uitschakelen, hebt u twee opties. De eerste is om een nieuw Azure Cosmos DB-account te verwijderen en opnieuw te maken, en zo nodig de gegevens te migreren. De tweede optie is om een ondersteunings ticket te openen om hulp te krijgen bij een gegevens migratie naar een ander account.
+Als u de functie wilt uitschakelen, zijn er twee opties. De eerste is om het Azure Cosmos DB-account te verwijderen en een nieuw account te maken, waarbij u de gegevens eventueel kunt migreren. De tweede optie is om een ondersteuningsticket te openen om hulp te krijgen bij een gegevensmigratie naar een ander account.
 
 ## <a name="azure-cosmos-db-analytical-store"></a>Azure Cosmos DB-analytische archief
 

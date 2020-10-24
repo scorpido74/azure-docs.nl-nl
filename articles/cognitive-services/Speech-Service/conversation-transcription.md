@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: trbye
-ms.openlocfilehash: dcc7721aec067c4de309e3fdd926245a9d240f0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d95525c7dfecd44758c86903ca4a96c2290df52
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81402516"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487773"
 ---
 # <a name="what-is-conversation-transcription-in-meetings-preview"></a>Wat is een conversatie transcriptie in vergaderingen (preview-versie)?
 
@@ -34,9 +34,11 @@ Conversation transcriptie is een oplossing [voor spraak naar tekst](speech-to-te
 > [!NOTE]
 > Hoewel door de conversatie transcriptie geen limiet wordt ingesteld voor het aantal luid sprekers in de ruimte, is deze geoptimaliseerd voor 2-10 sprekers per sessie.
 
-## <a name="use-cases"></a>Gebruiksvoorbeelden
+## <a name="get-started"></a>Aan de slag
 
-### <a name="inclusive-meetings"></a>Inclusieve vergaderingen
+Bekijk de transcriptie [Snelstartgids](how-to-use-conversation-transcription.md) voor realtime gesprek om aan de slag te gaan.
+
+## <a name="use-cases"></a>Gebruiksvoorbeelden
 
 Als u vergaderingen voor iedereen wilt maken, zoals deel nemers die doof en slechthorend zijn, is het belang rijk om transcriptie in realtime te hebben. In de real-time modus van conversaties wordt audio aan de vergadering gestuurd en wordt bepaald wie er moet zeggen, waardoor alle deel nemers aan de vergadering de transcripten kunnen volgen en zonder enige vertraging deel nemen aan de vergadering.
 
@@ -54,6 +56,10 @@ Dit is een overzicht op hoog niveau van de werking van de conversatie transcript
 
 - **Multi Channel audio stream** : Zie de [micro soft speech Device SDK-microfoon](https://aka.ms/cts/microphone)voor informatie over de specificatie en het ontwerp. Raadpleeg voor meer informatie of een Development Kit aanschaffen [micro soft speech Device SDK](https://aka.ms/cts/getsdk)(Engelstalig).
 - Voor **beelden van gebruikers spraak** : conversatie transcriptie moet vóór de conversatie gebruikers profielen hebben. U moet audio-opnames van elke gebruiker verzamelen en vervolgens de opnamen naar de [service Signature generate](https://aka.ms/cts/signaturegenservice) verzenden om de audio te valideren en gebruikers profielen te genereren.
+
+> [!NOTE]
+> Voor beelden van gebruikers spraak zijn optioneel. Zonder deze invoer worden in de transcriptie verschillende sprekers weer gegeven, maar weer gegeven als ' Speaker1 ', ' Speaker2 ', enzovoort, in plaats van te herkennen als vooraf geregistreerde specifieke sprekers namen.
+
 
 ## <a name="real-time-vs-asynchronous"></a>Realtime versus asynchroon
 
@@ -73,9 +79,9 @@ Audio gegevens worden live verwerkt om de luid spreker-id en transcriptie te ret
 
 ## <a name="language-support"></a>Taalondersteuning
 
-Op dit moment ondersteunt de conversatie transcriptie "en-US" en "zh-CN" in de volgende regio's: *centralus* en *EastAsia*. Als u aanvullende ondersteuning voor de land instelling nodig hebt, neemt u contact op met de [transcriptie-functie](mailto:CTSFeatureCrew@microsoft.com)van de conversatie.
+Op dit moment ondersteunt de conversatie transcriptie [alle spraak-naar-tekst talen](language-support.md#speech-to-text) in de volgende regio's:  `centralus` , `eastasia` , `eastus` , `westeurope` . Als u aanvullende ondersteuning voor de land instelling nodig hebt, neemt u contact op met de [transcriptie-functie](mailto:CTSFeatureCrew@microsoft.com)van de conversatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Rekken in realtime transcriberen](how-to-use-conversation-transcription-service.md)
+> [Rekken in realtime transcriberen](how-to-use-conversation-transcription.md)

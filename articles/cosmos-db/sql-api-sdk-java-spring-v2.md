@@ -9,32 +9,32 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: d5a906e12df14c6c3ffec704310bbede742ad841
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15d3b5eb0dfd5eb35b81da1c0c1ef629aa0def63
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760822"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477416"
 ---
 # <a name="spring-data-azure-cosmos-db-v2-for-core-sql-api-release-notes-and-resources"></a>Lente gegevens Azure Cosmos DB v2 voor Core-API (SQL): release opmerkingen en bronnen
 > [!div class="op_single_selector"]
 > * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
 > * [.NET SDK v2](sql-api-sdk-dotnet.md)
 > * [.NET Core-SDK v2](sql-api-sdk-dotnet-core.md)
-> * [.NET Change feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
+> * [.NET wijzigingenfeed-SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java-SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java-SDK v2](sql-api-sdk-java.md)
-> * [Lente gegevens v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
 > * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark-connector](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
-> * [REST-resourceprovider](/rest/api/cosmos-db-resource-provider/)
-> * [SQL](sql-api-query-reference.md)
-> * [Bulk-uitvoerder-.NET v2](sql-api-sdk-bulk-executor-dot-net.md)
-> * [Bulk-uitvoerder-java](sql-api-sdk-bulk-executor-java.md)
+> * [REST-resource provider](/rest/api/cosmos-db-resource-provider/)
+> * [SQL](./sql-query-getting-started.md)
+> * [Bulkuitvoerprogramma - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Bulkuitvoerprogramma - Java](sql-api-sdk-bulk-executor-java.md)
 
  Lente gegevens Azure Cosmos DB versie 2 voor core (SQL) kunnen ontwikkel aars Azure Cosmos DB gebruiken in lente-toepassingen. Lente gegevens Azure Cosmos DB maakt de lente gegevens interface beschikbaar voor het bewerken van data bases en verzamelingen, het werken met documenten en het uitgeven van query's. Zowel synchronisatie-als async-Api's (reactieve) worden ondersteund in hetzelfde maven-artefact. 
 
@@ -48,14 +48,14 @@ U kunt lente gegevens Azure Cosmos DB gebruiken in uw [Azure lente-Cloud](https:
 > Spring Data Azure Cosmos DB ondersteunt alleen de SQL-API.
 >
 > Raadpleeg de volgende artikelen voor informatie over Lente gegevens op andere Azure Cosmos DB-Api's:
-> * [Spring Data voor Apache Cassandra met Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
-> * [Spring Data MongoDB met Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db)
-> * [Spring Data Gremlin met Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
+> * [Spring Data voor Apache Cassandra met Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
+> * [Spring Data MongoDB met Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db)
+> * [Spring Data Gremlin met Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
 >
 > Wilt u snel aan de slag?
 > 1. Installeer de [Mini maal ondersteunde Java-runtime, JDK 8](/java/azure/jdk/?view=azure-java-stable&preserve-view=true), zodat u de SDK kunt gebruiken.
-> 2. Maak een lente data Azure Cosmos DB-app met behulp van de [starter](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db). Eenvoudiger kan niet!
-> 3. Werk met de [lente gegevens Azure Cosmos DB ontwikkelaars handleiding](https://docs.microsoft.com/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb), die de basis Azure Cosmos DB aanvragen doorloopt.
+> 2. Maak een lente data Azure Cosmos DB-app met behulp van de [starter](/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db). Eenvoudiger kan niet!
+> 3. Werk met de [lente gegevens Azure Cosmos DB ontwikkelaars handleiding](/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb), die de basis Azure Cosmos DB aanvragen doorloopt.
 >
 > U kunt snel opvallen van Lente-boot starter-apps met een [lente initialisatie functie](https://start.spring.io/).
 >
@@ -69,9 +69,9 @@ U kunt lente gegevens Azure Cosmos DB gebruiken in uw [Azure lente-Cloud](https:
 |**Bijdragen aan de SDK** | [Lente gegevens Azure Cosmos DB opslag plaats op GitHub](https://github.com/microsoft/spring-data-cosmosdb) | 
 |**Spring boot starter**| [Azure Cosmos DB lente boot starter-client bibliotheek voor Java](https://github.com/MicrosoftDocs/azure-dev-docs/blob/master/articles/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db.md) |
 |**Voor beeld van een app voor een nieuwe TODO met Azure Cosmos DB**| [End-to-end Java-ervaring in App Service Linux (deel 2)](https://github.com/Azure-Samples/e2e-java-experience-in-app-service-linux-part-2) |
-|**Hand leiding voor ontwikkel aars** | [Ontwikkelaarshandleiding voor Spring Data Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb) | 
-|**Starter gebruiken** | [Spring boot starter gebruiken met de Azure Cosmos DB SQL-API](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db) <br> [GitHub opslag plaats voor Azure Cosmos DB Spring boot starter](https://github.com/MicrosoftDocs/azure-dev-docs/blob/master/articles/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db.md) |
-|**Voor beeld met Azure App Service** | [Spring en Azure Cosmos DB met App Service op Linux gebruiken](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-app-with-cosmos-db-on-app-service-linux) <br> [Voor beeld van TODO-app](https://github.com/Azure-Samples/e2e-java-experience-in-app-service-linux-part-2.git) |
+|**Hand leiding voor ontwikkel aars** | [Ontwikkelaarshandleiding voor Spring Data Azure Cosmos DB](/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb) | 
+|**Starter gebruiken** | [Spring boot starter gebruiken met de Azure Cosmos DB SQL-API](/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db) <br> [GitHub opslag plaats voor Azure Cosmos DB Spring boot starter](https://github.com/MicrosoftDocs/azure-dev-docs/blob/master/articles/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db.md) |
+|**Voor beeld met Azure App Service** | [Spring en Azure Cosmos DB met App Service op Linux gebruiken](/azure/developer/java/spring-framework/configure-spring-app-with-cosmos-db-on-app-service-linux) <br> [Voor beeld van TODO-app](https://github.com/Azure-Samples/e2e-java-experience-in-app-service-linux-part-2.git) |
 
 ## <a name="release-history"></a>Release geschiedenis
 

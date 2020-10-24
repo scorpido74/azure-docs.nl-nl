@@ -10,12 +10,12 @@ ms.date: 09/21/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a0ce2c17586e5437047ff27cb67577b0480a83af
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 20ebfc571d72b79b61a61fb633feb63c4cc58fdd
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939338"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488806"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Een token van Azure AD verkrijgen voor het machtigen van aanvragen van een client toepassing
 
@@ -290,6 +290,6 @@ https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Microsoft-identiteitsplatform](https://docs.microsoft.com/azure/active-directory/develop/)
+- [Microsoft-identiteitsplatform](/azure/active-directory/develop/)
 - [Toegangs rechten voor opslag gegevens beheren met Azure RBAC](storage-auth-aad-rbac.md)
 - [Toegang tot blobs en wacht rijen verifiëren met Azure Active Directory en beheerde identiteiten voor Azure-resources](storage-auth-aad-msi.md)

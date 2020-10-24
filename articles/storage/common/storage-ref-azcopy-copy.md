@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 736746cc710e4e22f61edaa7b2dfd1ceef3d90eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3d691692553a8201b3e3eccfaead82a2cbb9ca0
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89645480"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479694"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -292,7 +292,7 @@ Kopieer een subset van buckets met behulp van een Joker teken (*) in de Bucket n
 
 **--S2S-handle-ongeldig-meta gegevens** teken reeks geeft aan hoe ongeldige sleutels voor meta gegevens worden verwerkt. Beschik bare opties: ExcludeIfInvalid, FailIfInvalid, RenameIfInvalid. (standaard `ExcludeIfInvalid` ). (standaard "ExcludeIfInvalid")
 
-**--S2S-pres Erve-Access-tier**   De Access-laag behouden tijdens service to service copy. Raadpleeg [Azure Blob-opslag: dynamische, koude en archief toegangs lagen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) om ervoor te zorgen dat het opslag account van de bestemming ondersteuning biedt voor het instellen van de toegangs laag. In het geval dat het instellen van de toegangs laag niet wordt ondersteund, gebruikt u s2sPreserveAccessTier = False om het kopiëren van de toegangs lagen over te slaan. (standaard `true` ).  (standaard ingesteld op ' True ')
+**--S2S-pres Erve-Access-tier**   De Access-laag behouden tijdens service to service copy. Raadpleeg [Azure Blob-opslag: dynamische, koude en archief toegangs lagen](/azure/storage/blobs/storage-blob-storage-tiers) om ervoor te zorgen dat het opslag account van de bestemming ondersteuning biedt voor het instellen van de toegangs laag. In het geval dat het instellen van de toegangs laag niet wordt ondersteund, gebruikt u s2sPreserveAccessTier = False om het kopiëren van de toegangs lagen over te slaan. (standaard `true` ).  (standaard ingesteld op ' True ')
 
 **--pres Erve-eigenschappen**   Volledige eigenschappen behouden tijdens service to service copy. Voor AWS S3 en Azure file-bron niet-enkelvoudige bestands bronnen retourneert de lijst bewerking geen volledige eigenschappen van objecten en bestanden. Voor het behouden van de volledige eigenschappen moet AzCopy één extra aanvraag per object of bestand verzenden. (standaard instelling waar)
 

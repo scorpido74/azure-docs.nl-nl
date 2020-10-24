@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 08/05/2020
 ms.author: thweiss
-ms.openlocfilehash: 9fa899e0f0de3b263baad7e44ed24d32d735b001
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3a5106fcc7f1b55db22ee13ced34328cc38096d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836506"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486205"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Door de klant beheerde sleutels configureren voor uw Azure Cosmos-account met Azure Key Vault
 
@@ -73,7 +73,7 @@ Als u een bestaand Azure Key Vault exemplaar gebruikt, kunt u controleren of dez
 
    :::image type="content" source="./media/how-to-setup-cmk/portal-akv-keys.png" alt-text="Lagen van versleuteling rondom klant gegevens":::
 
-1. Selecteer **genereren/importeren**, geef een naam op voor de nieuwe sleutel en selecteer een RSA-sleutel grootte. Mini maal 3072 wordt aanbevolen voor de beste beveiliging. Selecteer vervolgens **maken**:
+1. Selecteer **genereren/importeren**, geef een naam op voor de nieuwe sleutel en selecteer een RSA-sleutel grootte. Mini maal 3072 wordt aanbevolen voor de beste beveiliging. Selecteer vervolgens **Maken**:
 
    :::image type="content" source="./media/how-to-setup-cmk/portal-akv-gen.png" alt-text="Lagen van versleuteling rondom klant gegevens":::
 
@@ -279,7 +279,7 @@ Wanneer door de klant beheerde sleutels worden gebruikt, zien de door uw databas
 
 Alle gegevens die zijn opgeslagen in uw Azure Cosmos-account, worden versleuteld met de door de klant beheerde sleutels, met uitzonde ring van de volgende meta gegevens:
 
-- De namen van uw Azure Cosmos DB [accounts, data bases en containers](./account-overview.md#elements-in-an-azure-cosmos-account)
+- De namen van uw Azure Cosmos DB [accounts, data bases en containers](./account-databases-containers-items.md#elements-in-an-azure-cosmos-account)
 
 - De namen van uw [opgeslagen procedures](./stored-procedures-triggers-udfs.md)
 

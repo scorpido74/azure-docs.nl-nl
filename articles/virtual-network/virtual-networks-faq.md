@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: d676d891683cc11dd8c1999c26464373d17e97be
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 71b7217a1a3d79db67e1649ce33d441f0c2c2da2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932019"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489401"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Veelgestelde vragen over virtuele Azure-netwerken (FAQ)
 
@@ -283,7 +283,7 @@ Nee. Adres ruimten mogen niet overlappen om VNet-peering in te scha kelen.
 Er worden geen kosten in rekening gebracht voor het maken van een VNet-peering-verbinding. Gegevens overdracht tussen peering-verbindingen wordt in rekening gebracht. [Hier weer geven](https://azure.microsoft.com/pricing/details/virtual-network/).
 
 ### <a name="is-vnet-peering-traffic-encrypted"></a>Is het VNet-peering verkeer versleuteld?
-Nee. Verkeer tussen bronnen in peered VNets is privé en geïsoleerd. Het blijft volledig op de micro soft-backbone.
+Wanneer Vnet-peering verkeer tussen data centers wordt verplaatst, worden buiten de fysieke grenzen die niet worden beheerd door (of namens micro soft-- [MACsec Data Link Layer encryption](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit) ) gebruikt op de onderliggende netwerkhardware.
 
 ### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>Waarom is mijn peering-verbinding met een *verbroken* status?
 VNet-peering-verbindingen gaan in de status *verbroken* wanneer één VNet-peering koppeling wordt verwijderd. U moet beide koppelingen verwijderen om een succes volle peering-verbinding tot stand te brengen.

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
-ms.openlocfilehash: 6e768c1e938006afd62fc097a80f8ebc3ea0f3e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4a4af81c6a216119ae2e1b0221c06ddc349452f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88115472"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478130"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Inzicht in ervaringen met Azure AD-toepassingtoestemming
 
@@ -65,13 +65,13 @@ Hier volgen de toestemming die een gebruiker kan zien in de scenario's voor alge
     
     2. Gebruikers krijgen de traditionele toestemming prompt te zien.
 
-        ![Vraag om toestemming voor scenario 1B](./media/application-consent-experience/consent_prompt_1b.png)
+        ![Scherm opname van de traditionele toestemming prompt.](./media/application-consent-experience/consent_prompt_1b.png)
 
 2. Personen die toegang hebben tot een app waarvoor ten minste één machtiging is vereist die buiten het bereik van de Autoriteit valt.
     1. Beheerders krijgen dezelfde prompt te zien als 1. deze worden hierboven weer gegeven.
     2. Gebruikers worden geblokkeerd voor het verlenen van toestemming voor de toepassing en ze zullen de beheerder vragen om toegang te krijgen tot de app. 
                 
-        ![Vraag om toestemming voor scenario 1B](./media/application-consent-experience/consent_prompt_2b.png)
+        ![Scherm opname van de toestemming vragen aan de gebruiker om een beheerder te vragen om toegang te krijgen tot de app.](./media/application-consent-experience/consent_prompt_2b.png)
 
 3. Personen die door de beheerder worden genavigeerd of omgeleid naar de stroom van de beheerders toestemming.
     1. Gebruikers met beheerders rechten krijgen de vraag om toestemming van de beheerder. De titel en de machtigings beschrijvingen worden op deze vraag gewijzigd. de wijzigingen markeren het feit dat het accepteren van deze prompt de app toegang geeft tot de aangevraagde gegevens namens de hele Tenant.

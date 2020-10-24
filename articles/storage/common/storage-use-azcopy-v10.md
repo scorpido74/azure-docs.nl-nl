@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 2f5b82f07ecff36ba95917a1f1b347c42ae7e074
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1d25ae127d9a732225859a09622bb057c348e28
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856774"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488483"
 ---
 # <a name="get-started-with-azcopy"></a>Aan de slag met AzCopy
 
@@ -37,7 +37,7 @@ Down load eerst het uitvoer bare bestand van AzCopy V10 toevoegen naar een map o
 Deze bestanden worden gecomprimeerd als een zip-bestand (Windows en Mac) of een tar-bestand (Linux). Raadpleeg de documentatie voor uw Linux-distributie om het tar-bestand in Linux te downloaden en te decomprimeren.
 
 > [!NOTE]
-> Als u gegevens wilt kopiëren van en naar uw [Azure Table Storage](https://docs.microsoft.com/azure/storage/tables/table-storage-overview) -service, installeert u vervolgens [AzCopy versie 7,3](https://aka.ms/downloadazcopynet).
+> Als u gegevens wilt kopiëren van en naar uw [Azure Table Storage](/azure/storage/tables/table-storage-overview) -service, installeert u vervolgens [AzCopy versie 7,3](https://aka.ms/downloadazcopynet).
 
 
 ## <a name="run-azcopy"></a>AzCopy uitvoeren
@@ -80,14 +80,14 @@ Door Azure Active Directory te gebruiken, kunt u eenmaal referenties opgeven in 
 
 Het machtigings niveau dat u nodig hebt, is gebaseerd op de vraag of u bestanden wilt uploaden of gewoon wilt downloaden.
 
-Als u alleen bestanden wilt downloaden, controleert u of de [gegevens lezer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) van de opslag-blob is toegewezen aan uw gebruikers-id, beheerde identiteit of Service-Principal.
+Als u alleen bestanden wilt downloaden, controleert u of de [gegevens lezer](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) van de opslag-blob is toegewezen aan uw gebruikers-id, beheerde identiteit of Service-Principal.
 
 > Gebruikers identiteiten, beheerde identiteiten en service-principals zijn elk type *beveiligings-principal*, dus gebruiken we de term *Security Principal* voor de rest van dit artikel.
 
 Als u bestanden wilt uploaden, controleert u of een van deze rollen is toegewezen aan uw beveiligingsprincipal:
 
-- [Inzender voor Storage Blob-gegevens](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)
-- [Eigenaar van opslagblobgegevens](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
+- [Inzender voor Storage Blob-gegevens](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)
+- [Eigenaar van opslagblobgegevens](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
 
 Deze rollen kunnen worden toegewezen aan uw beveiligingsprincipal in een van deze bereiken:
 
@@ -96,14 +96,14 @@ Deze rollen kunnen worden toegewezen aan uw beveiligingsprincipal in een van dez
 - Resourcegroep
 - Abonnement
 
-Zie [de Azure Portal gebruiken om een Azure-rol toe te wijzen voor toegang tot Blob-en wachtrij gegevens](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)voor meer informatie over het controleren en toewijzen van rollen.
+Zie [de Azure Portal gebruiken om een Azure-rol toe te wijzen voor toegang tot Blob-en wachtrij gegevens](/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)voor meer informatie over het controleren en toewijzen van rollen.
 
 > [!NOTE]
 > Houd er rekening mee dat de toewijzingen van Azure-rollen Maxi maal vijf minuten kunnen worden door gegeven.
 
 U hoeft niet een van deze rollen te hebben toegewezen aan uw beveiligingsprincipal als uw beveiligingsprincipal wordt toegevoegd aan de toegangs beheer lijst (ACL) van de doel container of directory. In de ACL heeft uw beveiligings-principal schrijf machtigingen nodig voor de doel directory, en moet de machtiging voor het uitvoeren van de container en elke bovenliggende map worden uitgevoerd.
 
-Zie [toegangs beheer in azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)voor meer informatie.
+Zie [toegangs beheer in azure data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-access-control)voor meer informatie.
 
 #### <a name="authenticate-a-user-identity"></a>Een gebruikers identiteit verifiëren
 
@@ -137,9 +137,9 @@ Voordat u een script uitvoert, moet u zich ten minste één keer interactief aan
 
 U kunt zich aanmelden bij uw account door gebruik te maken van een client geheim of door het wacht woord te gebruiken van een certificaat dat is gekoppeld aan de app-registratie van uw service-principal.
 
-Zie [How to: de portal gebruiken om een Azure AD-toepassing en Service-Principal te maken die toegang hebben tot resources](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)voor meer informatie over het maken van een service-principal.
+Zie [How to: de portal gebruiken om een Azure AD-toepassing en Service-Principal te maken die toegang hebben tot resources](/azure/active-directory/develop/howto-create-service-principal-portal)voor meer informatie over het maken van een service-principal.
 
-Zie [toepassings-en Service-Principal-objecten in azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) voor meer informatie over service-principals in het algemeen.
+Zie [toepassings-en Service-Principal-objecten in azure Active Directory](/azure/active-directory/develop/app-objects-and-service-principals) voor meer informatie over service-principals in het algemeen.
 
 ##### <a name="using-a-client-secret"></a>Een client geheim gebruiken
 
@@ -169,7 +169,7 @@ Vervang de `<application-id>` tijdelijke aanduiding door de toepassings-id van d
 
 Als u uw eigen referenties voor autorisatie wilt gebruiken, kunt u een certificaat uploaden naar de registratie van uw app en dat certificaat vervolgens gebruiken om u aan te melden.
 
-Naast het uploaden van uw certificaat naar de registratie van uw app, moet u ook een kopie van het certificaat hebben opgeslagen op de machine of VM waarop AzCopy wordt uitgevoerd. Deze kopie van het certificaat moet zich in bestaan. PFX of. PEM-indeling en moet de persoonlijke sleutel bevatten. De persoonlijke sleutel moet met een wacht woord zijn beveiligd. Als u Windows gebruikt en uw certificaat alleen bestaat in een certificaat archief, moet u het certificaat exporteren naar een PFX-bestand (met inbegrip van de persoonlijke sleutel). Zie [export-pfx](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate?view=win10-ps) voor meer informatie.
+Naast het uploaden van uw certificaat naar de registratie van uw app, moet u ook een kopie van het certificaat hebben opgeslagen op de machine of VM waarop AzCopy wordt uitgevoerd. Deze kopie van het certificaat moet zich in bestaan. PFX of. PEM-indeling en moet de persoonlijke sleutel bevatten. De persoonlijke sleutel moet met een wacht woord zijn beveiligd. Als u Windows gebruikt en uw certificaat alleen bestaat in een certificaat archief, moet u het certificaat exporteren naar een PFX-bestand (met inbegrip van de persoonlijke sleutel). Zie [export-pfx](/powershell/module/pkiclient/export-pfxcertificate) voor meer informatie.
 
 Vervolgens stelt u de `AZCOPY_SPA_CERT_PASSWORD` omgevings variabele in op het certificaat wachtwoord.
 
@@ -205,7 +205,7 @@ Zie [beheerde identiteiten voor Azure-resources configureren op een virtuele mac
 
 ##### <a name="using-a-system-wide-managed-identity"></a>Een beheerde identiteit voor het hele systeem gebruiken
 
-Zorg er eerst voor dat u een op het hele systeem beheerde identiteit hebt ingeschakeld op uw VM. Zie door [het systeem toegewezen beheerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity).
+Zorg er eerst voor dat u een op het hele systeem beheerde identiteit hebt ingeschakeld op uw VM. Zie door [het systeem toegewezen beheerde identiteit](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity).
 
 Typ vervolgens in de opdracht console de volgende opdracht en druk vervolgens op ENTER.
 
@@ -215,7 +215,7 @@ azcopy login --identity
 
 ##### <a name="using-a-user-assigned-managed-identity"></a>Een door de gebruiker toegewezen beheerde identiteit gebruiken
 
-Zorg er eerst voor dat u een door de gebruiker toegewezen beheerde identiteit hebt ingeschakeld op de virtuele machine. Zie door de [gebruiker toegewezen beheerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#user-assigned-managed-identity).
+Zorg er eerst voor dat u een door de gebruiker toegewezen beheerde identiteit hebt ingeschakeld op de virtuele machine. Zie door de [gebruiker toegewezen beheerde identiteit](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#user-assigned-managed-identity).
 
 Typ in de opdracht console een van de volgende opdrachten en druk vervolgens op ENTER.
 
@@ -247,7 +247,7 @@ Met dit voor beeld worden gegevens uit een lokale map recursief gekopieerd naar 
 azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/?sv=2018-03-28&ss=bjqt&srt=sco&sp=rwddgcup&se=2019-05-01T05:01:17Z&st=2019-04-30T21:01:17Z&spr=https&sig=MGCXiyEzbtttkr3ewJIh2AR8KrghSy1DGM9ovN734bQF4%3D" --recursive=true
 ```
 
-Zie [using Shared Access signatures (SAS) (Engelstalig)](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)voor meer informatie over SAS-tokens en hoe u er een kunt verkrijgen.
+Zie [using Shared Access signatures (SAS) (Engelstalig)](/azure/storage/common/storage-sas-overview)voor meer informatie over SAS-tokens en hoe u er een kunt verkrijgen.
 
 ## <a name="transfer-files"></a>Bestandsoverdracht
 
@@ -261,7 +261,7 @@ Zie een van deze artikelen om voorbeeld opdrachten te vinden.
 
 - [Gegevens overdragen met AzCopy en Amazon S3-opslag](storage-use-azcopy-s3.md)
 
-- [Gegevens overdragen met AzCopy en Azure Stack Storage](https://docs.microsoft.com/azure-stack/user/azure-stack-storage-transfer#azcopy)
+- [Gegevens overdragen met AzCopy en Azure Stack Storage](/azure-stack/user/azure-stack-storage-transfer#azcopy)
 
 ## <a name="use-azcopy-in-a-script"></a>AzCopy gebruiken in een script
 
@@ -312,9 +312,9 @@ Storage Explorer gebruikt uw account sleutel voor het uitvoeren van bewerkingen,
 
 Als u de vorige versie van AzCopy moet gebruiken, raadpleegt u een van de volgende koppelingen:
 
-- [AzCopy in Windows (v8)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy)
+- [AzCopy in Windows (v8)](/previous-versions/azure/storage/storage-use-azcopy)
 
-- [AzCopy op Linux (V7)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux)
+- [AzCopy op Linux (V7)](/previous-versions/azure/storage/storage-use-azcopy-linux)
 
 ## <a name="configure-optimize-and-troubleshoot-azcopy"></a>Configureren, optimaliseren en problemen oplossen in AzCopy
 

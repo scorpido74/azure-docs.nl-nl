@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 6514b149b057d690d37551bd0489c63852addb1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60b322cc0c1a50df7f8946fa1047bdc58ea92d77
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207504"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488534"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>Gegevensoverdracht voor grote gegevenssets met weinig of geen netwerkbandbreedte
  
@@ -66,6 +66,6 @@ De volgende tabel bevat een overzicht van de verschillen in de belangrijkste mog
 
 - Begrijpen hoe u
 
-    - [Gegevens overdragen met data Box Disk](https://docs.microsoft.com/azure/databox/data-box-disk-quickstart-portal).
-    - [Gegevens overdragen met data Box](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal).
+    - [Gegevens overdragen met data Box Disk](/azure/databox/data-box-disk-quickstart-portal).
+    - [Gegevens overdragen met data Box](/azure/databox/data-box-quickstart-portal).
     - [Gegevens overdragen met import/export](/azure/storage/common/storage-import-export-data-to-blobs).

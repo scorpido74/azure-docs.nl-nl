@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: d485e90036f03c13ad8c9d52781486151009e14c
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 54b58a07e3d6d4b330b6f97ef0f4a7bdd10293da
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284152"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490455"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-cassandra-api"></a>Een container maken in Azure Cosmos DB Cassandra-API
 
@@ -26,7 +26,7 @@ In dit artikel worden de verschillende manieren beschreven voor het maken van ee
 
 ## <a name="create-using-azure-portal"></a><a id="portal-cassandra"></a>Maken met behulp van de Azure-portal
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-cassandra-dotnet.md#create-a-database-account)of selecteer een bestaand account.
 
@@ -68,5 +68,4 @@ Als er een time-outuitzondering optreedt bij het maken van een verzameling, moet
 * [Partitionering in Azure Cosmos DB](partitioning-overview.md)
 * [Aanvraageenheden in Azure Cosmos DB](request-units.md)
 * [Doorvoer voor containers en databases inrichten](set-throughput.md)
-* [Werken met een Azure Cosmos-account](account-overview.md)
-
+* [Werken met een Azure Cosmos-account](./account-databases-containers-items.md)

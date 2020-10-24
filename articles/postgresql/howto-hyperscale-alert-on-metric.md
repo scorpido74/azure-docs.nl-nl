@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 3/16/2020
-ms.openlocfilehash: b5ccd1281e50ca10b8edd7d7567a000b97107901
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b59bcf3f25921a348e9c5f25e83619d8596ebd5
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907429"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489860"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>Gebruik de Azure Portal om waarschuwingen in te stellen voor de Azure Database for PostgreSQL-grootschalige (Citus)
 
@@ -26,9 +26,9 @@ U kunt een waarschuwing configureren om de volgende acties uit te voeren wanneer
 * Een webhook aanroepen.
 
 U kunt informatie over waarschuwings regels configureren en ophalen met behulp van:
-* [Azure-portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
-* [Azure-CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
-* [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
+* [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
+* [Azure Monitor REST API](/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Een waarschuwings regel maken op basis van een metriek van de Azure Portal
 1. Selecteer in de [Azure Portal](https://portal.azure.com/)de Azure database for postgresql server die u wilt bewaken.
@@ -110,4 +110,4 @@ Bewaking van CPU-gebruik is nuttig om een basis lijn voor prestaties te maken. H
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over het [configureren van webhooks in waarschuwingen](../azure-monitor/platform/alerts-webhooks.md).
-* Bekijk een [overzicht van de verzameling metrische gegevens](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) om te controleren of uw service beschikbaar is en reageert.
+* Bekijk een [overzicht van de verzameling metrische gegevens](../azure-monitor/platform/data-platform.md) om te controleren of uw service beschikbaar is en reageert.

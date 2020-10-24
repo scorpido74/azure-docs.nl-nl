@@ -9,12 +9,12 @@ ms.date: 10/08/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 7e7a61247c8f449291fb8ec0b91b7513ee75f6c9
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 96e06e31ae3c963459a0f6b4772147197913b52a
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072489"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488585"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage-firewalls en virtuele netwerken configureren
 
@@ -358,13 +358,13 @@ U kunt IP-netwerk regels voor opslag accounts beheren via de Azure Portal, Power
 
 ## <a name="exceptions"></a>Uitzonderingen
 
-Met netwerk regels kunt u een beveiligde omgeving maken voor verbindingen tussen uw toepassingen en uw gegevens voor de meeste scenario's. Sommige toepassingen zijn echter afhankelijk van Azure-Services die niet uniek kunnen worden geïsoleerd met de regels voor het virtuele netwerk of IP-adres. Maar dergelijke services moeten aan de opslag worden verleend om de functionaliteit van de volledige toepassing mogelijk te maken. In dergelijke situaties kunt u de instelling ***vertrouwde micro soft-Services toestaan...*** gebruiken om dergelijke services toegang te geven tot uw gegevens, Logboeken of analyses.
+Met netwerk regels kunt u een beveiligde omgeving maken voor verbindingen tussen uw toepassingen en uw gegevens voor de meeste scenario's. Sommige toepassingen zijn echter afhankelijk van Azure-Services die niet uniek kunnen worden geïsoleerd met de regels voor het virtuele netwerk of IP-adres. Maar dergelijke services moeten aan de opslag worden verleend om de functionaliteit van de volledige toepassing mogelijk te maken. In dergelijke situaties kunt u gebruikmaken van de **_vertrouwde micro soft-Services toestaan..._* _ instelling om dergelijke services toegang te bieden tot uw gegevens, Logboeken of analyses.
 
 ### <a name="trusted-microsoft-services"></a>Vertrouwde micro soft-Services
 
 Sommige micro soft-services werken vanuit netwerken die niet in uw netwerk regels kunnen worden opgenomen. U kunt een subset van dergelijke vertrouwde micro soft-Services toegang verlenen tot het opslag account, terwijl netwerk regels voor andere apps worden onderhouden. Deze vertrouwde services gebruiken vervolgens sterke verificatie om veilig verbinding te maken met uw opslag account. Er zijn twee modi van vertrouwde toegang ingeschakeld voor micro soft-Services.
 
-- Resources van sommige services, **wanneer deze zijn geregistreerd in uw abonnement**, hebben toegang tot uw opslag account **in hetzelfde abonnement** voor Select-bewerkingen, zoals het schrijven van Logboeken of back-ups.
+- Resources van sommige services, _ * wanneer deze zijn geregistreerd in uw abonnement * *, hebben toegang tot uw opslag account **in hetzelfde abonnement** voor Select-bewerkingen, zoals het schrijven van Logboeken of back-ups.
 - Resources van sommige services kunnen expliciet toegang krijgen tot uw opslag account door **een Azure-rol** toe te wijzen aan de door het systeem toegewezen beheerde identiteit.
 
 
@@ -381,8 +381,8 @@ Wanneer u de instelling **vertrouwde micro soft-Services toestaan...** inschakel
 | Azure HDInsight          | Microsoft.HDInsight        | Richt de oorspronkelijke inhoud in van het standaard bestandssysteem voor een nieuw HDInsight-cluster. [Meer informatie](/azure/hdinsight/hdinsight-hadoop-use-blob-storage). |
 | Azure import-export      | Microsoft.ImportExport     | Hiermee kunt u gegevens importeren voor het Azure Storage of exporteren van gegevens uit Azure Storage met behulp van de Azure Storage import/export-service. [Meer informatie](/azure/storage/common/storage-import-export-service).  |
 | Azure Monitor            | Microsoft.Insights         | Hiermee staat u het schrijven van bewakings gegevens naar een beveiligd opslag account, inclusief bron logboeken, Azure Active Directory aanmeld-en audit logboeken en Microsoft Intune-Logboeken toe. [Meer informatie](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security). |
-| Azure-netwerken         | Microsoft.Network          | U kunt Logboeken voor netwerk verkeer opslaan en analyseren, met inbegrip van de Network Watcher-en Traffic Analytics-Services. [Meer informatie](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview). |
-| Azure Site Recovery      | Micro soft. SiteRecovery     | Schakel replicatie in voor herstel na nood gevallen van virtuele Azure IaaS-machines wanneer u gebruikmaakt van cache-, bron-of doel opslag accounts die gebruikmaken van een firewall.  [Meer informatie](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication). |
+| Azure-netwerken         | Microsoft.Network          | U kunt Logboeken voor netwerk verkeer opslaan en analyseren, met inbegrip van de Network Watcher-en Traffic Analytics-Services. [Meer informatie](/azure/network-watcher/network-watcher-nsg-flow-logging-overview). |
+| Azure Site Recovery      | Micro soft. SiteRecovery     | Schakel replicatie in voor herstel na nood gevallen van virtuele Azure IaaS-machines wanneer u gebruikmaakt van cache-, bron-of doel opslag accounts die gebruikmaken van een firewall.  [Meer informatie](/azure/site-recovery/azure-to-azure-tutorial-enable-replication). |
 
 Met de instelling **vertrouwde micro soft-Services toestaan...** kunt u ook een bepaald exemplaar van de onderstaande services gebruiken om toegang te krijgen tot het opslag account, als u [een Azure-rol expliciet toewijst](storage-auth-aad.md#assign-azure-roles-for-access-rights) aan de door het [systeem toegewezen beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md) voor het bron exemplaar. In dit geval komt het toegangsbereik voor het exemplaar overeen met de Azure-rol die aan de beheerde identiteit is toegewezen.
 
@@ -397,7 +397,7 @@ Met de instelling **vertrouwde micro soft-Services toestaan...** kunt u ook een 
 | Azure Logic Apps               | Microsoft.Logic/workflows              | Hiermee kunnen logische apps toegang krijgen tot opslag accounts. [Meer informatie](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity). |
 | Azure Machine Learning-service | Microsoft.MachineLearningServices      | Geautoriseerde Azure Machine Learning-werk ruimten schrijven experiment-uitvoer, modellen en logboeken naar Blob Storage en lezen de gegevens. [Meer informatie](/azure/machine-learning/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). | 
 | Azure Synapse Analytics (voorheen Azure SQL Data Warehouse)       | Microsoft.Sql                          | Staat het importeren en exporteren van gegevens uit specifieke SQL-data bases toe met behulp van de instructie COPY of poly base. [Meer informatie](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview). |
-| Azure SQL Database       | Microsoft.Sql                          | Staat het [importeren](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver15#f-importing-data-from-a-file-in-azure-blob-storage) van gegevens uit opslag accounts toe en het [schrijven](https://docs.microsoft.com/azure/azure-sql/database/audit-write-storage-account-behind-vnet-firewall) van controle gegevens naar opslag accounts achter de firewall. |
+| Azure SQL Database       | Microsoft.Sql                          | Staat het [importeren](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) van gegevens uit opslag accounts toe en het [schrijven](/azure/azure-sql/database/audit-write-storage-account-behind-vnet-firewall) van controle gegevens naar opslag accounts achter de firewall. |
 | Azure Stream Analytics         | Microsoft.StreamAnalytics             | Hiermee staat u toe dat gegevens van een streaming-taak naar de Blob-opslag worden geschreven. [Meer informatie](/azure/stream-analytics/blob-output-managed-identity). |
 | Azure Synapse Analytics        | Micro soft. Synapse/werk ruimten          | Hiermee schakelt u toegang tot gegevens in Azure Storage van Synapse Analytics. |
 

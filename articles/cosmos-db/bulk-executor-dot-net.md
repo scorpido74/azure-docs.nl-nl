@@ -10,12 +10,12 @@ ms.date: 03/23/2020
 ms.author: ramkris
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b2fb3e2031d5656668b9971fdf357f66824179fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31baad997733c46cf3e9aa8dc92ac0613468f72f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90975884"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489384"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Gebruik de bulk-uitvoerder .NET-bibliotheek voor het uitvoeren van bulk bewerkingen in Azure Cosmos DB
 
@@ -34,7 +34,7 @@ De bibliotheek voor bulk-uitvoering wordt momenteel alleen ondersteund door de A
 
 * Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) aan voordat u begint.
 
-* U kunt [Azure Cosmos DB gratis uitproberen](https://azure.microsoft.com/try/cosmosdb/) zonder Azure-abonnement, gratis en toezeg gingen. U kunt ook de Azure Cosmos DB- [emulator](/azure/cosmos-db/local-emulator) gebruiken met het `https://localhost:8081` eind punt. De primaire sleutel wordt gegeven in [Aanvragen verifiëren](local-emulator.md#authenticate-requests).
+* U kunt [Azure Cosmos DB gratis uitproberen](https://azure.microsoft.com/try/cosmosdb/) zonder Azure-abonnement, gratis en toezeg gingen. U kunt ook de Azure Cosmos DB- [emulator](./local-emulator.md) gebruiken met het `https://localhost:8081` eind punt. De primaire sleutel wordt gegeven in [Aanvragen verifiëren](local-emulator.md#authenticate-requests).
 
 * Maak een Azure Cosmos DB SQL-API-account met behulp van de stappen in het gedeelte [Database account maken](create-sql-api-dotnet.md#create-account) van het artikel .net quick start.
 
@@ -106,7 +106,7 @@ De toepassing ' BulkImportSample ' genereert wille keurige documenten en importe
    ```
    **De methode BulkImportAsync accepteert de volgende para meters:**
    
-   |**Parameter**  |**Beschrijving** |
+   |**Parameter**  |**Deschription** (Beschrijving) |
    |---------|---------|
    |enableUpsert    |   Een markering voor het inschakelen van upsert-bewerkingen op de documenten. Als er al een document met de opgegeven ID bestaat, wordt het bijgewerkt. Deze waarde is standaard ingesteld op ONWAAR.      |
    |disableAutomaticIdGeneration    |    Een markering om het automatisch genereren van ID uit te scha kelen. Deze waarde is standaard ingesteld op True.     |
@@ -116,7 +116,7 @@ De toepassing ' BulkImportSample ' genereert wille keurige documenten en importe
 
    **Definitie van antwoord object voor bulk import** Het resultaat van de API-aanroep voor Bulk Import bevat de volgende kenmerken:
 
-   |**Parameter**  |**Beschrijving**  |
+   |**Parameter**  |**Deschription** (Beschrijving)  |
    |---------|---------|
    |NumberOfDocumentsImported (lang)   |  Het totale aantal documenten dat is geïmporteerd uit de totale hoeveelheid documenten die is geleverd aan de API-aanroep voor bulk import.       |
    |TotalRequestUnitsConsumed (double)   |   Het totale aantal aanvraag eenheden (RU) dat wordt gebruikt door de API-aanroep voor bulk import.      |
@@ -157,7 +157,7 @@ U kunt bestaande documenten bijwerken met behulp van de BulkUpdateAsync-API. In 
    ```  
    **De methode BulkUpdateAsync accepteert de volgende para meters:**
 
-   |**Parameter**  |**Beschrijving** |
+   |**Parameter**  |**Deschription** (Beschrijving) |
    |---------|---------|
    |maxConcurrencyPerPartitionKeyRange    |   De maximale graad van gelijktijdigheid per partitie sleutel bereik. als deze para meter wordt ingesteld op NULL, wordt de tape wisselaar gebruikt voor het gebruik van de standaard waarde (20).   |
    |maxInMemorySortingBatchSize    |    Het maximum aantal update-items dat is opgehaald uit de enumerator voor update-items die zijn door gegeven aan de API-aanroep in elke fase. Voor de sorteer fase in het geheugen die vóór het bulksgewijs bijwerken plaatsvindt, wordt door het instellen van deze para meter op null de standaard minimum waarde (updateItems. Count, 1000000) gebruikt.     |
@@ -165,7 +165,7 @@ U kunt bestaande documenten bijwerken met behulp van de BulkUpdateAsync-API. In 
 
    **Definitie van antwoord object voor bulk update** Het resultaat van de API-aanroep voor bulk updates bevat de volgende kenmerken:
 
-   |**Parameter**  |**Beschrijving** |
+   |**Parameter**  |**Deschription** (Beschrijving) |
    |---------|---------|
    |NumberOfDocumentsUpdated (lang)    |   Het aantal documenten dat is bijgewerkt met de totale hoeveelheid documenten die is geleverd aan de API-aanroep voor bulksgewijs bijwerken.      |
    |TotalRequestUnitsConsumed (double)   |    Het totale aantal aanvraag eenheden (RUs) dat wordt gebruikt door de API-aanroep voor bulk updates.    |

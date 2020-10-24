@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/06/2020
-ms.openlocfilehash: 87feba3bc79e39f1379a25fa55fe0186d5605e4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 524c888bb132405f03af44f9c28198be0ac89370
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085545"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489588"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>Apache Hive query's uitvoeren met Apache Hadoop in HDInsight met behulp van REST
 
@@ -185,7 +185,7 @@ $clusterName
 
 1. Zodra de status van de taak is gewijzigd in **geslaagd**, kunt u de resultaten van de taak ophalen uit Azure Blob-opslag. De `statusdir` para meter die is door gegeven met de query bevat de locatie van het uitvoer bestand, in dit geval `/example/rest` . Dit adres slaat de uitvoer op in de `example/curl` map in de standaard opslag voor clusters.
 
-    U kunt deze bestanden weer geven en downloaden met behulp van de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli). Zie voor meer informatie over het gebruik van de Azure CLI met Azure Storage het document [Azure CLI gebruiken met Azure Storage](https://docs.microsoft.com/azure/storage/storage-azure-cli) .
+    U kunt deze bestanden weer geven en downloaden met behulp van de [Azure cli](/cli/azure/install-azure-cli). Zie voor meer informatie over het gebruik van de Azure CLI met Azure Storage het document [Azure CLI gebruiken met Azure Storage](https://docs.microsoft.com/azure/storage/storage-azure-cli) .
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d750e1f287ff7dfc5259b704355e026011fa872a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19262441df87b96bbb43a010ca47861ec2b236d3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715811"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488755"
 ---
 # <a name="use-powershell-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>Power shell gebruiken om een Azure-rol toe te wijzen voor toegang tot Blob-en wachtrij gegevens
 
@@ -24,7 +24,7 @@ Met Azure Active Directory (Azure AD) worden de toegangs rechten voor beveiligde
 
 Wanneer een Azure-rol is toegewezen aan een Azure AD-beveiligings-principal, verleent Azure toegang tot de resources voor die beveiligings-principal. De toegang kan worden beperkt tot het niveau van het abonnement, de resource groep, het opslag account of een afzonderlijke container of wachtrij. Een beveiligings-principal voor Azure AD kan een gebruiker, een groep, een service-principal van de toepassing of een [beheerde identiteit voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md)zijn.
 
-In dit artikel wordt beschreven hoe u Azure PowerShell kunt gebruiken om ingebouwde rollen van Azure op te geven en ze toe te wijzen aan gebruikers. Zie [overzicht van Azure PowerShell](https://docs.microsoft.com/powershell/azure/)voor meer informatie over het gebruik van Azure PowerShell.
+In dit artikel wordt beschreven hoe u Azure PowerShell kunt gebruiken om ingebouwde rollen van Azure op te geven en ze toe te wijzen aan gebruikers. Zie [overzicht van Azure PowerShell](/powershell/azure/)voor meer informatie over het gebruik van Azure PowerShell.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
-ms.openlocfilehash: 35d81d0076c4b29a8b1399331aa0254178720931
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: fcb6e004c86289e2efa89a988b362e76145a9538
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277816"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490421"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexeren in Azure Cosmos DB - overzicht
 
@@ -144,7 +144,7 @@ Met **ruimtelijke** indexen kunnen efficiënte query's worden uitgevoerd op geor
    SELECT * FROM c WHERE ST_INTERSECTS(c.property, { 'type':'Polygon', 'coordinates': [[ [31.8, -5], [32, -5], [31.8, -5] ]]  })  
    ```
 
-Ruimtelijke indexen kunnen worden gebruikt op correct opgemaakte [GEOjson](geospatial.md) -objecten. Punten, line strings toe, veelhoeken en multiveelhoeken worden momenteel ondersteund.
+Ruimtelijke indexen kunnen worden gebruikt op correct opgemaakte [GEOjson](./sql-query-geospatial-intro.md) -objecten. Punten, line strings toe, veelhoeken en multiveelhoeken worden momenteel ondersteund.
 
 ### <a name="composite-indexes"></a>Samengestelde indexen
 

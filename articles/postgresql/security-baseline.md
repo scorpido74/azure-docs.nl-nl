@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 828be8e790803e53b0434a71fb32a29a4a0c17bc
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: f8aa38cf5d1667e2413f30025b554e379bd76b07
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428066"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478572"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---single-server"></a>Azure-beveiligings basislijn voor Azure Database for PostgreSQL-één server
 
@@ -134,7 +134,7 @@ Opmerking: Azure Database for PostgreSQL gebruikt het service label ' micro soft
 
 - [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-- [Voor beelden Azure Policy voor netwerken](/azure/governance/policy/samples)
+- [Voor beelden Azure Policy voor netwerken](../governance/policy/samples/index.md)
 
 - [Een Azure Blueprint maken](../governance/blueprints/create-blueprint-portal.md)
 
@@ -150,7 +150,7 @@ Gebruik een van de ingebouwde Azure Policy definities met betrekking tot het lab
 
 U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties op resources te zoeken of uit te voeren.
 
-- [Tags maken en gebruiken](/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -160,7 +160,7 @@ U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties
 
 **Hulp**: Azure-activiteiten logboek gebruiken om netwerk resource configuraties te bewaken en wijzigingen te detecteren voor netwerk bronnen die betrekking hebben op uw Azure database for PostgreSQL exemplaren. Maak waarschuwingen in Azure Monitor die worden geactiveerd wanneer er wijzigingen in kritieke netwerk bronnen plaatsvinden.
 
-- [Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen](/azure/azure-monitor/platform/activity-log-view)
+- [Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [Waarschuwingen maken in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -202,7 +202,7 @@ U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties
 
 - [Controle logboeken voor Azure Database for PostgreSQL configureren en openen](concepts-audit.md)
 
-- [Diagnostische instellingen configureren voor het Azure-activiteiten logboek](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Diagnostische instellingen configureren voor het Azure-activiteiten logboek](../azure-monitor/platform/activity-log.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -222,7 +222,7 @@ U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties
 
 - [Para meters voor het bewaren van Logboeken instellen voor Log Analytics-werk ruimten](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Bron logboeken opslaan in een Azure Storage-account](/azure/azure-monitor/platform/resource-logs-collect-storage)
+- [Bron logboeken opslaan in een Azure Storage-account](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -254,7 +254,7 @@ Daarnaast kunt u Server logboeken en diagnostische instellingen voor PostgreSQL 
 
 - [Controle logboeken voor Azure Database for PostgreSQL configureren en openen](concepts-audit.md)
 
-- [Diagnostische instellingen configureren voor het Azure-activiteiten logboek](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Diagnostische instellingen configureren voor het Azure-activiteiten logboek](../azure-monitor/platform/activity-log.md)
 
 - [Azure-Sentinel onboarden](../sentinel/quickstart-onboard.md)
 
@@ -386,7 +386,7 @@ Gebruik Azure AD-risico detecties om waarschuwingen en rapporten weer te geven o
 
 - [Privileged Identity Management implementeren (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [Meer informatie over Azure AD-risico detectie](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Meer informatie over Azure AD-risico detectie](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -420,7 +420,7 @@ Azure AD-referenties kunnen ook worden gebruikt voor beheer op het niveau van he
 
 **Richt lijnen**: raadpleeg de Azure Active Directory-Logboeken om verouderde accounts te detecteren die kunnen worden toegevoegd met Azure database for PostgreSQL beheerders rollen. Daarnaast kunt u Azure Identity Access revisies gebruiken om groepslid maatschappen efficiënt te beheren, toegang te krijgen tot bedrijfs toepassingen die kunnen worden gebruikt voor toegang tot Azure Database for PostgreSQL en roltoewijzingen. Gebruikers toegang moet regel matig worden gecontroleerd, bijvoorbeeld elke 90 dagen, om ervoor te zorgen dat alleen de juiste gebruikers toegang hebben.
 
-- [Meer informatie over Azure AD-rapportage](/azure/active-directory/reports-monitoring/)
+- [Meer informatie over Azure AD-rapportage](../active-directory/reports-monitoring/index.yml)
 
 - [Beoordelingen over Azure Identity Access gebruiken](../active-directory/governance/access-reviews-overview.md)
 
@@ -438,7 +438,7 @@ Azure AD-referenties kunnen ook worden gebruikt voor beheer op het niveau van he
 
 - [Controle logboeken voor Azure Database for PostgreSQL configureren en openen](concepts-audit.md)
 
-- [Azure-activiteiten logboeken integreren in Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure-activiteiten logboeken integreren in Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -456,7 +456,7 @@ U kunt ook logboeken opnemen in azure Sentinel voor verder onderzoek.
 
 - [Overzicht van Azure AD Identity Protection](../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Risk ante aanmeldingen voor Azure AD weer geven](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Risk ante aanmeldingen voor Azure AD weer geven](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Azure-Sentinel onboarden](../sentinel/quickstart-onboard.md)
 
@@ -482,7 +482,7 @@ U kunt ook logboeken opnemen in azure Sentinel voor verder onderzoek.
 
 **Hulp**: Tags gebruiken bij het volgen van Azure database for PostgreSQL instanties of gerelateerde resources die gevoelige informatie opslaan of verwerken.
 
-- [Tags maken en gebruiken](/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -492,9 +492,9 @@ U kunt ook logboeken opnemen in azure Sentinel voor verder onderzoek.
 
 **Richt lijnen**: afzonderlijke abonnementen en/of beheer groepen implementeren voor ontwikkeling, testen en productie. Gebruik een combi natie van persoonlijke koppelingen, service-eind punten en/of firewall regels om netwerk toegang tot uw Azure Database for PostgreSQL-instanties te isoleren en te beperken.
 
-- [Aanvullende Azure-abonnementen maken](/azure/billing/billing-create-subscription)
+- [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
 
-- [Beheergroepen maken](/azure/governance/management-groups/create)
+- [Beheergroepen maken](../governance/management-groups/create-management-group-portal.md)
 
 - [Persoonlijke koppelingen voor Azure Database for PostgreSQL configureren](howto-configure-privatelink-portal.md)
 
@@ -654,7 +654,7 @@ Micro soft voert beveiligings beheer uit op de onderliggende systemen die onders
 
 - [Query's maken met Azure resource Graph](../governance/resource-graph/first-query-portal.md)
 
-- [Uw Azure-abonnementen weer geven](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Uw Azure-abonnementen weer geven](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
 - [Meer informatie over Azure RBAC](../role-based-access-control/overview.md)
 
@@ -666,7 +666,7 @@ Micro soft voert beveiligings beheer uit op de onderliggende systemen die onders
 
 **Richt lijnen**: Labels Toep assen op Azure database for PostgreSQL instanties en andere gerelateerde resources die meta gegevens geven om ze logisch in een taxonomie te organiseren.
 
-- [Tags maken en gebruiken](/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -676,11 +676,11 @@ Micro soft voert beveiligings beheer uit op de onderliggende systemen die onders
 
 **Richt lijnen**: Gebruik labels, beheer groepen en afzonderlijke abonnementen, waar nodig, om Azure database for PostgreSQL instanties en gerelateerde resources te organiseren en bij te houden. Sluit de inventaris regel matig af en zorg ervoor dat niet-geautoriseerde resources tijdig worden verwijderd uit het abonnement.
 
-- [Aanvullende Azure-abonnementen maken](/azure/billing/billing-create-subscription)
+- [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
 
-- [Beheergroepen maken](/azure/governance/management-groups/create)
+- [Beheergroepen maken](../governance/management-groups/create-management-group-portal.md)
 
-- [Tags maken en gebruiken](/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -746,7 +746,7 @@ Daarnaast gebruikt u de resource grafiek van Azure voor het opvragen/detecteren 
 
 - [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-- [Een specifiek resource type weigeren met Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
+- [Een specifiek resource type weigeren met Azure Policy](../governance/policy/samples/index.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -798,7 +798,7 @@ Daarnaast gebruikt u de resource grafiek van Azure voor het opvragen/detecteren 
 
 - Logboekverbindingen moeten zijn ingeschakeld voor PostgreSQL-databaseservers
 
-- [Beschik bare Azure Policy aliassen weer geven](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [Beschik bare Azure Policy aliassen weer geven](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 - [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
@@ -838,9 +838,9 @@ Daarnaast gebruikt u de resource grafiek van Azure voor het opvragen/detecteren 
 
 **Richt lijnen**: als u aangepaste Azure Policy definities gebruikt voor uw Azure database for PostgreSQL instanties en gerelateerde resources, gebruikt u Azure opslag plaatsen om uw code veilig op te slaan en te beheren.
 
-- [Code opslaan in azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Code opslaan in azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-- [Documentatie voor Azure opslag plaatsen](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Documentatie voor Azure opslag plaatsen](/azure/devops/repos/index?view=azure-devops)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -898,7 +898,7 @@ Daarnaast gebruikt u de resource grafiek van Azure voor het opvragen/detecteren 
 
 - [Een Key Vault maken](../key-vault/general/quick-create-portal.md)
 
-- [Key Vault verificatie bieden met een beheerde identiteit](/azure/key-vault/general/managed-identity)
+- [Key Vault verificatie bieden met een beheerde identiteit](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -1106,5 +1106,5 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de [Azure Security-Bench Mark](/azure/security/benchmarks/overview)
-- Meer informatie over [Azure-beveiligings basislijnen](/azure/security/benchmarks/security-baselines-overview)
+- Zie de [Azure Security-Bench Mark](../security/benchmarks/overview.md)
+- Meer informatie over [Azure-beveiligings basislijnen](../security/benchmarks/security-baselines-overview.md)

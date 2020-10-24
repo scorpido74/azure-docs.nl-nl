@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 6978855e9b32a3842e76d02ef543d86cf0673019
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf841da85dc929366991d6aed8f3d400ab3b31cc
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85206645"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489639"
 ---
 # <a name="best-practices-for-synapse-sql-pool-in-azure-synapse-analytics-formerly-sql-dw"></a>Aanbevolen procedures voor Synapse SQL pool in azure Synapse Analytics (voorheen SQL DW)
 
@@ -64,7 +64,7 @@ Zie ook [Invoegen](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-
 
 De SQL-groep ondersteunt het laden en exporteren van gegevens via verschillende hulpprogram ma's, waaronder Azure Data Factory, poly base en BCP.  Voor kleine hoeveelheden gegevens waarbij prestaties niet belangrijk zijn, kunnen al deze toepassingen aan uw vereisten voldoen.  Wanneer u echter grote volumes aan gegevens laadt of exporteert of snelle prestaties vereist zijn, is PolyBase de beste keuze.  
 
-Poly Base is ontworpen om gebruik te maken van de MPP-architectuur (massale parallelle verwerking) en zorgt ervoor dat gegevens sneller worden geladen en geëxporteerd dan andere hulp middelen.  PolyBase-loads kunnen worden uitgevoerd met behulp van CTAS of INSERT INTO.  
+Poly Base is ontworpen om gebruik te maken van gedistribueerde aard van het systeem en zorgt ervoor dat gegevens sneller worden geladen en geëxporteerd dan andere hulp middelen.  PolyBase-loads kunnen worden uitgevoerd met behulp van CTAS of INSERT INTO.   
 
 > [!TIP]
 > Door CTAS te gebruiken, wordt de transactieregistratie geminimaliseerd, waardoor het de snelste manier is om uw gegevens te laden.

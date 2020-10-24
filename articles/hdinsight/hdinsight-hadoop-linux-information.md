@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: c8862398d5c79335e4ed59f4ca42df9abd58965e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b3c694b4d6134f30d04ba8bafee9a6ffabdd959
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856582"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488109"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informatie over het gebruik van HDInsight in Linux
 
@@ -25,7 +25,7 @@ Veel van de stappen in dit document gebruiken de volgende hulpprogram ma's, die 
 
 * [krul](https://curl.haxx.se/) : wordt gebruikt voor communicatie met op internet gebaseerde services.
 * **JQ**, een JSON-processor op de opdracht regel.  Zie [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
-* [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli) : wordt gebruikt voor het extern beheren van Azure-Services.
+* [Azure cli](/cli/azure/install-azure-cli) : wordt gebruikt voor het extern beheren van Azure-Services.
 * **Een SSH-client**. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="users"></a>Gebruikers
@@ -191,7 +191,7 @@ Er zijn verschillende manieren om toegang te krijgen tot gegevens van buiten het
 
 Als u __Azure Blob Storage__gebruikt, raadpleegt u de volgende koppelingen voor manieren waarop u toegang hebt tot uw gegevens:
 
-* [Azure cli](https://docs.microsoft.com/cli/azure/install-az-cli2): Command-Line interface opdrachten voor het werken met Azure. Na de installatie gebruikt u de `az storage` opdracht voor hulp bij het gebruik van opslag of `az storage blob` voor BLOB-specifieke opdrachten.
+* [Azure cli](/cli/azure/install-az-cli2): Command-Line interface opdrachten voor het werken met Azure. Na de installatie gebruikt u de `az storage` opdracht voor hulp bij het gebruik van opslag of `az storage blob` voor BLOB-specifieke opdrachten.
 * [blobxfer.py](https://github.com/Azure/blobxfer): een python-script voor het werken met blobs in azure Storage.
 * Diverse Sdk's:
 

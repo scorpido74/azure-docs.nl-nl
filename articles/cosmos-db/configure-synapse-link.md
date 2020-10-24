@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: dee5a56f309dab8f09a598219f6302c88f4308e7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d3e7eca546adbcac8af882ff4cd5b09d3d643d4c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370709"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489265"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Synapse-koppeling voor Azure Cosmos DB configureren en gebruiken (preview)
 
@@ -225,7 +225,7 @@ U kunt een Synapse SQL serverloze data base en weer gaven maken via de Synapse-k
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sjabloon
 
-Met de [Azure Resource Manager-sjabloon](manage-sql-with-resource-manager.md#azure-cosmos-account-with-analytical-store) wordt een Synapse-koppeling ingeschakeld Azure Cosmos DB account voor de SQL-API. Met deze sjabloon maakt u een core-API-account (SQL) in één regio met een container die is geconfigureerd met analytische TTL ingeschakeld en een optie om de door Voer van hand matig of automatisch schalen te gebruiken. Als u deze sjabloon wilt implementeren, klikt **u op implementeren in azure** op de pagina README.
+Met de [Azure Resource Manager-sjabloon](./manage-with-templates.md#azure-cosmos-account-with-analytical-store) wordt een Synapse-koppeling ingeschakeld Azure Cosmos DB account voor de SQL-API. Met deze sjabloon maakt u een core-API-account (SQL) in één regio met een container die is geconfigureerd met analytische TTL ingeschakeld en een optie om de door Voer van hand matig of automatisch schalen te gebruiken. Als u deze sjabloon wilt implementeren, klikt **u op implementeren in azure** op de pagina README.
 
 ## <a name="getting-started-with-azure-synpase-link---samples"></a><a id="cosmosdb-synapse-link-samples"></a> Aan de slag met Azure Synpase-koppeling-voor beelden
 

@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 07/10/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 20bedf7e48b2e40cd67e33ea024a3ae0a9d305a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9fd828baed5a03cbce5d5327248eb34045ffd6bc
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707537"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489707"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Maak en beheer Lees replica's vanuit Azure CLI, REST API
 
@@ -34,7 +34,7 @@ U kunt met behulp van de Azure CLI Lees replica's maken en beheren.
 
 ### <a name="prerequisites"></a>Vereisten
 
-- [Installeer Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [Installeer Azure CLI 2.0](/cli/azure/install-azure-cli)
 - Een [Azure database for postgresql-server](quickstart-create-server-up-azure-cli.md) als primaire server.
 
 
@@ -60,7 +60,7 @@ U kunt met behulp van de Azure CLI Lees replica's maken en beheren.
 
 ### <a name="create-a-read-replica"></a>Een leesreplica maken
 
-De opdracht [AZ post gres Server replica Create](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-create) vereist de volgende para meters:
+De opdracht [AZ post gres Server replica Create](/cli/azure/postgres/server/replica#az-postgres-server-replica-create) vereist de volgende para meters:
 
 | Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
@@ -91,14 +91,14 @@ Als u de `azure.replication_support` para meter niet op **replica** hebt ingeste
 > Werk de replica-instelling bij naar een gelijke of grotere waarde voordat een primaire server instelling is bijgewerkt naar een nieuwe waarde. Met deze actie wordt de replica zo aangepast dat er wijzigingen in de master worden aangebracht.
 
 ### <a name="list-replicas"></a>Replica's weer geven
-U kunt de lijst met replica's van een primaire server weer geven met de opdracht [AZ post gres Server replica list](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-list) .
+U kunt de lijst met replica's van een primaire server weer geven met de opdracht [AZ post gres Server replica list](/cli/azure/postgres/server/replica#az-postgres-server-replica-list) .
 
 ```azurecli-interactive
 az postgres server replica list --server-name mydemoserver --resource-group myresourcegroup 
 ```
 
 ### <a name="stop-replication-to-a-replica-server"></a>Replicatie naar een replica server stoppen
-U kunt de replicatie tussen een primaire server en een lees replica stoppen met de opdracht [AZ post gres Server replica stop](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-stop) .
+U kunt de replicatie tussen een primaire server en een lees replica stoppen met de opdracht [AZ post gres Server replica stop](/cli/azure/postgres/server/replica#az-postgres-server-replica-stop) .
 
 Nadat u de replicatie naar een primaire server en een lees replica hebt gestopt, kunt u deze niet meer ongedaan maken. De Lees replica wordt een zelfstandige server die zowel lees-als schrijf bewerkingen ondersteunt. De zelfstandige server kan niet opnieuw in een replica worden gemaakt.
 
@@ -107,7 +107,7 @@ az postgres server replica stop --name mydemoserver-replica --resource-group myr
 ```
 
 ### <a name="delete-a-primary-or-replica-server"></a>Een primaire of replica server verwijderen
-Als u een primaire of replica server wilt verwijderen, gebruikt u de opdracht [AZ post gres server delete](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-delete) .
+Als u een primaire of replica server wilt verwijderen, gebruikt u de opdracht [AZ post gres server delete](/cli/azure/postgres/server#az-postgres-server-delete) .
 
 Wanneer u een primaire server verwijdert, wordt replicatie naar alle Lees replica's gestopt. De Lees replica's worden zelfstandige servers die nu zowel lees-als schrijf bewerkingen ondersteunen.
 

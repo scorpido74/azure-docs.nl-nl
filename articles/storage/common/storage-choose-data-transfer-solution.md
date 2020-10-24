@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 0e0bcde44ba28751761b7db3f6d6fcae8f7bd49c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 08f677c23cce6eb840a1caee15dcddf6c8311517
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400538"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488687"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>Een Azure-oplossing voor gegevensoverdracht kiezen
 
@@ -71,15 +71,15 @@ U kunt ook naar uw Azure Storage-account gaan in Azure Portal en de functie voor
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Krijg een inleiding tot Azure Storage Explorer](https://azure.microsoft.com/resources/videos/introduction-to-microsoft-azure-storage-explorer/).
-- [Lees een overzicht van AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10).
+- [Lees een overzicht van AzCopy](/azure/storage/common/storage-use-azcopy-v10).
 - [Quickstart: Blobs uploaden, downloaden en vermelden met PowerShell](../blobs/storage-quickstart-blobs-powershell.md)
 - [Quickstart: Blobs maken, downloaden, uploaden en weergeven met Azure CLI](../blobs/storage-quickstart-blobs-cli.md)
 - Meer informatie over:
 
-    - [Azure data box, Azure data Box disk en Azure data Box Heavy voor offline overdrachten](https://docs.microsoft.com/azure/databox/).
-    - [Azure data Box gateway en Azure stack Edge voor online overdrachten](https://docs.microsoft.com/azure/databox-online/).
-- [Meer informatie over Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-overview).
+    - [Azure data box, Azure data Box disk en Azure data Box Heavy voor offline overdrachten](/azure/databox/).
+    - [Azure data Box gateway en Azure stack Edge voor online overdrachten](/azure/databox-online/).
+- [Meer informatie over Azure Data Factory](/azure/data-factory/copy-activity-overview).
 - De REST-Api's gebruiken om gegevens over te dragen
 
-    - [In .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
-    - [In Java](https://docs.microsoft.com/java/api/overview/azure/storage)
+    - [In .NET](/dotnet/api/overview/azure/storage)
+    - [In Java](/java/api/overview/azure/storage)

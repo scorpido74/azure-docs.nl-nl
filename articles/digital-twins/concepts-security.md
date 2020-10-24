@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 0b99b9034dc382552d292cef95a3790bb27eba89
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: f438f4393538478f2960e709d8e23beb6106510d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331750"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485746"
 ---
 # <a name="secure-azure-digital-twins"></a>Azure Digital Apparaatdubbels beveiligen
 
@@ -48,11 +48,13 @@ Met beheerde identiteiten beheert het Azure-platform deze runtime-identiteit. U 
 #### <a name="authorization-azure-roles-for-azure-digital-twins"></a>Autorisatie: Azure-functies voor Azure Digital Apparaatdubbels
 
 Azure biedt de onderstaande ingebouwde Azure-rollen voor het verlenen van toegang tot een Azure Digital Apparaatdubbels-resource:
-* *Azure Digital apparaatdubbels-eigenaar (preview)* : gebruik deze rol om volledige toegang te geven tot Azure Digital apparaatdubbels-resources.
-* *Azure Digital Apparaatdubbels Reader (preview)* : gebruik deze functie om alleen-lezen toegang te verlenen aan Azure Digital apparaatdubbels-resources.
+* *Azure Digital Apparaatdubbels data owner* : gebruik deze rol om volledige toegang te geven tot Azure Digital apparaatdubbels-resources.
+* *Azure Digital Apparaatdubbels data Reader* : gebruik deze functie om alleen-lezen toegang te verlenen aan Azure Digital apparaatdubbels-resources.
 
-> [!TIP]
-> De rol *Azure Digital Apparaatdubbels Reader (preview)* biedt nu ook ondersteuning voor Browse relaties.
+>[!NOTE]
+> De namen van deze rollen zijn onlangs gewijzigd ten opzichte van hun eerdere namen in de preview-versie:
+> * De *Azure Digital apparaatdubbels-gegevens eigenaar* was voorheen *Azure Digital apparaatdubbels-eigenaar (preview-versie)*.
+> * *Azure Digital Apparaatdubbels data Reader* was voorheen *Azure Digital Apparaatdubbels Reader (preview)*.
 
 Zie voor meer informatie over hoe ingebouwde rollen worden gedefinieerd [*begrijpen functie definities*](../role-based-access-control/role-definitions.md) in de documentatie van Azure RBAC. Zie [*aangepaste rollen in azure*](../role-based-access-control/custom-roles.md)voor meer informatie over het maken van aangepaste Azure-rollen.
 

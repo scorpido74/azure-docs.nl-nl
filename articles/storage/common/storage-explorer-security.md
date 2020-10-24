@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: best-practice
 ms.date: 07/30/2020
 ms.author: cralvord
-ms.openlocfilehash: e3bbe39077cf6d7781f7e11fde044cf272aa83e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b403a960016be3795857ddd5645eb73e53e83bd6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714376"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488602"
 ---
 # <a name="azure-storage-explorer-security-guide"></a>Azure Storage Explorer-beveiligings handleiding
 
@@ -44,13 +44,13 @@ In deze sectie worden de twee op Azure AD gebaseerde technologieën beschreven d
 
 #### <a name="azure-role-based-access-control-azure-rbac"></a>Azure RBAC (op rollen gebaseerd toegangsbeheer van Azure)
 
-[Met Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) beschikt u over een nauw keurig toegangs beheer voor uw Azure-resources. Azure-rollen en-machtigingen kunnen worden beheerd vanuit de Azure Portal.
+[Met Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](/azure/role-based-access-control/overview) beschikt u over een nauw keurig toegangs beheer voor uw Azure-resources. Azure-rollen en-machtigingen kunnen worden beheerd vanuit de Azure Portal.
 
 Storage Explorer biedt ondersteuning voor Azure RBAC-toegang tot opslag accounts, blobs en wacht rijen. Als u toegang tot bestands shares of tabellen nodig hebt, moet u Azure-rollen toewijzen die toestemming geven om de sleutels van een opslag account weer te geven.
 
 #### <a name="access-control-lists-acls"></a>ACL’s (toegangsbeheerlijsten)
 
-Met [toegangs beheer lijsten (acl's)](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control) kunt u toegang tot bestanden en mappen op het niveau van ADLS Gen2 BLOB-containers beheren. U kunt uw Acl's beheren met Storage Explorer.
+Met [toegangs beheer lijsten (acl's)](/azure/storage/blobs/data-lake-storage-access-control) kunt u toegang tot bestanden en mappen op het niveau van ADLS Gen2 BLOB-containers beheren. U kunt uw Acl's beheren met Storage Explorer.
 
 ### <a name="shared-access-signatures-sas"></a>Shared Access Signatures (SAS)
 
@@ -102,4 +102,4 @@ Als u open bare toegang inschakelt voor een BLOB-container, raden we u aan de vo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Aanbevelingen voor beveiliging](https://docs.microsoft.com/azure/storage/blobs/security-recommendations)
+- [Aanbevelingen voor beveiliging](/azure/storage/blobs/security-recommendations)

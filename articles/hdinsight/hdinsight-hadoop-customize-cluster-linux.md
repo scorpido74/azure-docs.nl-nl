@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 09/02/2020
-ms.openlocfilehash: b30a7822511dc6b4c3ae7e852cba49ebff6e24ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23361470fd7b1cdb5b6153580e0240ac2f6c9133
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400854"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490336"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Azure HDInsight-clusters aanpassen met behulp van script acties
 
@@ -207,7 +207,7 @@ Het kan enkele minuten duren voordat het cluster is gemaakt.
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-hdinsight-net-sdk"></a>Een script actie gebruiken tijdens het maken van het cluster vanuit de HDInsight .NET SDK
 
-De HDInsight .NET SDK bevat client bibliotheken waarmee u gemakkelijker kunt werken met HDInsight vanuit een .NET-toepassing. Zie [script acties](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#script-actions)voor een code voorbeeld.
+De HDInsight .NET SDK bevat client bibliotheken waarmee u gemakkelijker kunt werken met HDInsight vanuit een .NET-toepassing. Zie [script acties](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true#script-actions)voor een code voorbeeld.
 
 ## <a name="script-action-to-a-running-cluster"></a>Script actie aan een actief cluster
 
@@ -260,7 +260,7 @@ NodeTypes       : {HeadNode, WorkerNode}
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-the-azure-cli"></a>Een script actie Toep assen op een actief cluster vanuit de Azure CLI
 
-Voordat u begint, moet u ervoor zorgen dat u de Azure CLI installeert en configureert. Zorg ervoor dat u de meest recente versie hebt. Zie [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli)voor meer informatie.
+Voordat u begint, moet u ervoor zorgen dat u de Azure CLI installeert en configureert. Zorg ervoor dat u de meest recente versie hebt. Zie [De Azure CLI installeren](/cli/azure/install-azure-cli) voor meer informatie.
 
 1. Verifiëren bij uw Azure-abonnement:
 
@@ -323,12 +323,12 @@ In het volgende voorbeeld script ziet u hoe u de-cmdlets gebruikt om een script 
 
 | Opdracht | Beschrijving |
 | --- | --- |
-| [`az hdinsight script-action delete`](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-delete) |Hiermee verwijdert u een opgegeven persistente script actie van het cluster. Met deze opdracht worden de acties die door een script worden uitgevoerd, niet ongedaan gemaakt, wordt alleen de persistente vlag verwijderd.|
-|[`az hdinsight script-action execute`](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-execute)|Scriptacties uitvoeren op het opgegeven HDInsight-cluster.|
-| [`az hdinsight script-action list`](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-list) |Een lijst met alle persistente script acties voor het opgegeven cluster. |
-|[`az hdinsight script-action list-execution-history`](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-list-execution-history)|Een lijst met alle scripts voor de uitvoerings geschiedenis van het opgegeven cluster.|
-|[`az hdinsight script-action promote`](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-promote)|Het verhogen van de opgegeven ad-hoc script uitvoer naar een persistent script.|
-|[`az hdinsight script-action show-execution-details`](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-show-execution-details)|Hiermee haalt u de details op voor het uitvoeren van scripts voor de opgegeven script uitvoerings-ID.|
+| [`az hdinsight script-action delete`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-delete) |Hiermee verwijdert u een opgegeven persistente script actie van het cluster. Met deze opdracht worden de acties die door een script worden uitgevoerd, niet ongedaan gemaakt, wordt alleen de persistente vlag verwijderd.|
+|[`az hdinsight script-action execute`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-execute)|Scriptacties uitvoeren op het opgegeven HDInsight-cluster.|
+| [`az hdinsight script-action list`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-list) |Een lijst met alle persistente script acties voor het opgegeven cluster. |
+|[`az hdinsight script-action list-execution-history`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-list-execution-history)|Een lijst met alle scripts voor de uitvoerings geschiedenis van het opgegeven cluster.|
+|[`az hdinsight script-action promote`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-promote)|Het verhogen van de opgegeven ad-hoc script uitvoer naar een persistent script.|
+|[`az hdinsight script-action show-execution-details`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-show-execution-details)|Hiermee haalt u de details op voor het uitvoeren van scripts voor de opgegeven script uitvoerings-ID.|
 
 ### <a name="hdinsight-net-sdk"></a>HDInsight .NET SDK
 

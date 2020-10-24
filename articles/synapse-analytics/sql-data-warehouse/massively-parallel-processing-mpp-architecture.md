@@ -1,6 +1,6 @@
 ---
 title: Architectuur van Azure Synapse Analytics (voorheen SQL DW)
-description: Meer informatie over hoe Azure Synapse Analytics (voorheen SQL DW) enorm parallelle verwerking (MPP) combineert met Azure Storage om hoge prestaties en schaal baarheid te garanderen.
+description: Meer informatie over hoe Azure Synapse Analytics (voorheen SQL DW) gedistribueerde mogelijkheden voor verwerking van query's combineert met Azure Storage om hoge prestaties en schaal baarheid te garanderen.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: cde6cb514b6f87315400b3c40d8b86bcb7ff0adb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1cb49fc33567b13065351a28a557232212c6adc4
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85210963"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479337"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Architectuur van Azure Synapse Analytics (voorheen SQL DW)
 
@@ -33,13 +33,13 @@ Azure Synapse is een oneindige analyseservice die bedrijfsgegevensopslag en big 
 
 > [!VIDEO https://www.youtube.com/embed/PlyQ8yOb8kc]
 
-## <a name="synapse-sql-mpp-architecture-components"></a>Onderdelen van de SQL MPP-architectuur Synapse
+## <a name="synapse-sql-architecture-components"></a>Synapse SQL-architectuur onderdelen
 
 [Synapse SQL](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) maakt gebruik van een scale-out architectuur voor het distribueren van reken kundige verwerking van gegevens over meerdere knoop punten. De schaal eenheid is een abstractie van reken kracht die wordt aangeduid als [Data Warehouse-eenheid](what-is-a-data-warehouse-unit-dwu-cdwu.md). Compute staat los van de opslag, waarmee u de reken kracht onafhankelijk van de gegevens in uw systeem kunt schalen.
 
 ![Synapse SQL-architectuur](./media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
-Synapse SQL maakt gebruik van een architectuur op basis van een knoop punt. Toepassingen maken verbinding met T-SQL-opdrachten en geven ze aan een besturings element knoop punt. Dit is het enige invoer punt voor Synapse SQL. Het controle knooppunt voert de MPP-engine uit, waarmee query's voor parallelle verwerking worden geoptimaliseerd. vervolgens worden bewerkingen aan reken knooppunten door gegeven om hun werk parallel uit te voeren.
+Synapse SQL maakt gebruik van een architectuur op basis van een knoop punt. Toepassingen maken verbinding met T-SQL-opdrachten en geven ze aan een besturings element knoop punt. Dit is het enige invoer punt voor Synapse SQL. Het controle knooppunt fungeert als host voor de gedistribueerde query-engine, waarmee query's voor parallelle verwerking worden geoptimaliseerd. vervolgens worden bewerkingen aan reken knooppunten door gegeven om hun werk parallel uit te voeren.
 
 De rekenknooppunten slaan alle gebruikersgegevens op in Azure Storage en voeren de parallelle query's uit. De DMS (Data Movement Service) is een interne service op systeemniveau die de gegevens naar de knooppunten verplaatst om tegelijkertijd query's te kunnen uitvoeren en nauwkeurige resultaten te retourneren.
 
@@ -60,13 +60,13 @@ Synapse SQL maakt gebruik van Azure Storage om uw gebruikers gegevens veilig te 
 
 ### <a name="control-node"></a>Beheerknooppunt
 
-Het beheerknooppunt is het brein van de architectuur. Het is de front-end met interactie met alle toepassingen en verbindingen. De MPP-engine wordt uitgevoerd op het beheerknooppunt om de parallelle query's te optimaliseren en te coördineren. Wanneer u een T-SQL-query verzendt, transformeert het knoop punt van de controle in query's die parallel worden uitgevoerd op elke distributie.
+Het beheerknooppunt is het brein van de architectuur. Het is de front-end met interactie met alle toepassingen en verbindingen. De gedistribueerde query-engine wordt uitgevoerd op het beheer knooppunt om parallelle query's te optimaliseren en te coördineren. Wanneer u een T-SQL-query verzendt, transformeert het knoop punt van de controle in query's die parallel worden uitgevoerd op elke distributie.
 
 ### <a name="compute-nodes"></a>Rekenknooppunten
 
 De rekenknooppunten leveren de rekenkracht. Distributies worden toegewezen aan reken knooppunten voor verwerking. Wanneer u betaalt voor meer reken bronnen, worden distributies opnieuw toegewezen aan beschik bare reken knooppunten. Het aantal Compute-knoop punten ligt tussen 1 en 60, en wordt bepaald door het service niveau voor Synapse SQL.
 
-Elk Compute-knoop punt heeft een knoop punt-ID die zichtbaar is in systeem weergaven. U kunt de ID van het reken knooppunt zien door te zoeken naar de node_id kolom in systeem weergaven waarvan de namen beginnen met sys.pdw_nodes. Zie [MPP System views](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)(Engelstalig) voor een lijst met deze systeem weergaven.
+Elk Compute-knoop punt heeft een knoop punt-ID die zichtbaar is in systeem weergaven. U kunt de ID van het reken knooppunt zien door te zoeken naar de node_id kolom in systeem weergaven waarvan de namen beginnen met sys.pdw_nodes. Zie [Synapse SQL System views](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)(Engelstalig) voor een lijst met deze systeem weergaven.
 
 ### <a name="data-movement-service"></a>Data Movement Service
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: mjbrown
-ms.openlocfilehash: 6236b34c76ccd9e4688b97e7844cbadf9f515213
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 35bfc45ffffac17a2eca40cb51c2db5d94c140a2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372239"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487463"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Beveiliging in Azure Cosmos DB - overzicht
 
@@ -69,7 +69,7 @@ Laten we een voor een gedetailleerde beschrijving zien.
 |Automatische online back-ups|Voor Azure Cosmos-data bases wordt regel matig een back-up gemaakt en opgeslagen in een geografisch redundante opslag. <br><br>Meer informatie vindt u in [Automatische online back-ups en herstellen met Azure Cosmos DB](online-backup-and-restore.md).|
 |Verwijderde gegevens herstellen|De geautomatiseerde online back-ups kunnen worden gebruikt om gegevens te herstellen die u per ongeluk hebt verwijderd tot meer dan 30 dagen na de gebeurtenis. <br><br>Meer informatie vindt u in [Automatische online back-ups en herstellen met Azure Cosmos DB](online-backup-and-restore.md)|
 |Gevoelige gegevens beveiligen en isoleren|Alle gegevens in de regio's die worden vermeld in wat is er nieuw? is nu op rest versleuteld.<br><br>Persoons gegevens en andere vertrouwelijke gegevens kunnen worden geïsoleerd voor specifieke containers en alleen-lezen toegang, of alleen lees bewerkingen kunnen worden beperkt tot specifieke gebruikers.|
-|Controleren op aanvallen|Met [controle logboek registratie en activiteiten logboeken](logging.md)kunt u uw account controleren op normale en abnormale activiteiten. U kunt weer geven welke bewerkingen zijn uitgevoerd op uw resources, wie de bewerking heeft gestart, wanneer de bewerking plaatsvond, de status van de bewerking en nog veel meer, zoals wordt weer gegeven in de scherm opname die volgt op deze tabel.|
+|Controleren op aanvallen|Met [controle logboek registratie en activiteiten logboeken](./monitor-cosmos-db.md)kunt u uw account controleren op normale en abnormale activiteiten. U kunt weer geven welke bewerkingen zijn uitgevoerd op uw resources, wie de bewerking heeft gestart, wanneer de bewerking plaatsvond, de status van de bewerking en nog veel meer, zoals wordt weer gegeven in de scherm opname die volgt op deze tabel.|
 |Reageren op aanvallen|Wanneer u contact hebt opgenomen met de ondersteuning van Azure om een mogelijke aanval te melden, wordt een respons proces van 5 stappen gestart. Het doel van het proces van vijf stappen is om zo snel mogelijk de normale service beveiliging en-bewerkingen te herstellen nadat een probleem is gedetecteerd en een onderzoek wordt gestart.<br><br>Meer informatie vindt u in [Microsoft Azure Security Response in de Cloud](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91).|
 |Geoomheining|Azure Cosmos DB garandeert dat data governance voor soevereine regio's (bijvoorbeeld Duitsland, China, US Gov).|
 |Beveiligde faciliteiten|Gegevens in Azure Cosmos DB worden opgeslagen op Ssd's in de beveiligde data centers van Azure.<br><br>Meer informatie in [micro soft Global Data Centers](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)|
@@ -104,6 +104,6 @@ Primaire sleutels primair, secundair, alleen lezen en lezen/schrijven kunnen wor
 
 Zie [toegang tot Azure Cosmos DB gegevens beveiligen](secure-access-to-data.md)voor meer informatie over primaire sleutels en bron tokens.
 
-Zie [Azure Cosmos DB Diagnostic logging](logging.md)(Engelstalig) voor meer informatie over controle logboek registratie.
+Zie [Azure Cosmos DB Diagnostic logging](./monitor-cosmos-db.md)(Engelstalig) voor meer informatie over controle logboek registratie.
 
 Zie [Vertrouwenscentrum van Azure](https://azure.microsoft.com/support/trust-center/)voor meer informatie over micro soft-certificeringen.

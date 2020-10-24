@@ -8,12 +8,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: 97d899d73359cc45daf88940b815ed262c3b4766
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d37f1c52157d2038d216873150b1d68e669e3392
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89290834"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487310"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Dubbele versleuteling van Azure HDInsight voor Data-at-rest
 
@@ -127,7 +127,7 @@ Geef tijdens het maken van het cluster de volledige **sleutel-id**op, met inbegr
 
 #### <a name="using-azure-cli"></a>Azure CLI gebruiken
 
-In het volgende voor beeld ziet u hoe u Azure CLI gebruikt om een nieuw Apache Spark-cluster te maken waarvoor schijf versleuteling is ingeschakeld. Zie [Azure cli AZ hdinsight Create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create)voor meer informatie.
+In het volgende voor beeld ziet u hoe u Azure CLI gebruikt om een nieuw Apache Spark-cluster te maken waarvoor schijf versleuteling is ingeschakeld. Zie [Azure cli AZ hdinsight Create](/cli/azure/hdinsight#az-hdinsight-create)voor meer informatie.
 
 ```azurecli
 az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
@@ -365,7 +365,7 @@ Als u de sleutel wilt draaien, hebt u de URL van de basis sleutel kluis nodig. A
 
 #### <a name="using-azure-cli"></a>Azure CLI gebruiken
 
-In het volgende voor beeld ziet u hoe u de schijf versleutelings sleutel voor een bestaand HDInsight-cluster roteert. Zie [Azure cli AZ hdinsight Rotate-Disk-Encryption-Key](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-rotate-disk-encryption-key)voor meer informatie.
+In het volgende voor beeld ziet u hoe u de schijf versleutelings sleutel voor een bestaand HDInsight-cluster roteert. Zie [Azure cli AZ hdinsight Rotate-Disk-Encryption-Key](/cli/azure/hdinsight#az-hdinsight-rotate-disk-encryption-key)voor meer informatie.
 
 ```azurecli
 az hdinsight rotate-disk-encryption-key \
@@ -398,7 +398,7 @@ Als het cluster de toegang tot de sleutel verliest, worden waarschuwingen weer g
 
 **Hoe kan ik het cluster herstellen als de sleutels worden verwijderd?**
 
-Omdat alleen de sleutels "voorlopig verwijderen" worden ondersteund en de sleutels worden hersteld in de sleutel kluis, moet het cluster weer toegang krijgen tot de sleutels. Als u een Azure Key Vault sleutel wilt herstellen, raadpleegt u [Undo-AzKeyVaultKeyRemoval](/powershell/module/az.keyvault/Undo-AzKeyVaultKeyRemoval) of [AZ-sleutel kluis-Key-Recover](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-recover).
+Omdat alleen de sleutels "voorlopig verwijderen" worden ondersteund en de sleutels worden hersteld in de sleutel kluis, moet het cluster weer toegang krijgen tot de sleutels. Als u een Azure Key Vault sleutel wilt herstellen, raadpleegt u [Undo-AzKeyVaultKeyRemoval](/powershell/module/az.keyvault/Undo-AzKeyVaultKeyRemoval) of [AZ-sleutel kluis-Key-Recover](/cli/azure/keyvault/key#az-keyvault-key-recover).
 
 
 **Als een cluster omhoog wordt geschaald, worden door de nieuwe knoop punten naadloos door de klant beheerde sleutels ondersteund?**

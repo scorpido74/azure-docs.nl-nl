@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 06821b62fa05a4fd772b15aa5a57bd1e3de5dbb2
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 7dface648f7bf219d4c66b038af62e3307560650
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329369"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489282"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Service quota's Azure Cosmos DB
 
@@ -144,7 +144,7 @@ Er zijn geen beperkingen voor de nettoladingen van het item, zoals het aantal ei
 
 ## <a name="per-request-limits"></a>Limieten per aanvraag
 
-Azure Cosmos DB ondersteunt [ruwe en query bewerkingen](/rest/api/cosmos-db/) voor resources zoals containers, items en data bases. Het biedt ook ondersteuning voor [transactionele batch-aanvragen](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.transactionalbatch) voor meerdere items met dezelfde partitie sleutel in een container.
+Azure Cosmos DB ondersteunt [ruwe en query bewerkingen](/rest/api/cosmos-db/) voor resources zoals containers, items en data bases. Het biedt ook ondersteuning voor [transactionele batch-aanvragen](/dotnet/api/microsoft.azure.cosmos.transactionalbatch) voor meerdere items met dezelfde partitie sleutel in een container.
 
 | Resource | Standaardlimiet |
 | --- | --- |
@@ -191,7 +191,7 @@ Zie het artikel [automatisch schalen](provision-throughput-autoscale.md#autoscal
 
 ## <a name="sql-query-limits"></a>SQL-query limieten
 
-Cosmos DB biedt ondersteuning voor het uitvoeren van query's op items met [SQL](how-to-sql-query.md). In de volgende tabel worden de beperkingen in query-instructies beschreven, bijvoorbeeld in termen van het aantal componenten of de lengte van de query.
+Cosmos DB biedt ondersteuning voor het uitvoeren van query's op items met [SQL](./sql-query-getting-started.md). In de volgende tabel worden de beperkingen in query-instructies beschreven, bijvoorbeeld in termen van het aantal componenten of de lengte van de query.
 
 | Resource | Standaardlimiet |
 | --- | --- |

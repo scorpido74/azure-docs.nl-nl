@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
-ms.openlocfilehash: 0eaac8ac65b490e1b8de716d79bd36d2f7a7567c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d237d5709f8d2bb47de3e89b0b7103b195376e11
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707656"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489741"
 ---
 # <a name="move-an-azure-database-for-azure-database-for-postgresql---single-server-to-another-region-by-using-the-azure-portal"></a>Een Azure-Data Base voor Azure Database for PostgreSQL-één server naar een andere regio verplaatsen met behulp van de Azure Portal
 
@@ -21,7 +21,7 @@ Er zijn verschillende scenario's voor het verplaatsen van een bestaande Azure Da
 U kunt een Azure Database for PostgreSQL [Kruis regio lezen replica](concepts-read-replicas.md#cross-region-replication) gebruiken om de overgang naar een andere regio te volt ooien. Als u dit wilt doen, maakt u eerst een lees replica in de doel regio. Stop vervolgens de replicatie naar de server voor het lezen van replica's om een zelfstandige server te maken die zowel lees-als schrijf verkeer accepteert. 
 
 > [!NOTE]
-> Dit artikel richt zich op het verplaatsen van uw server naar een andere regio. Als u uw server wilt verplaatsen naar een andere resource groep of een ander abonnement, raadpleegt u het artikel over [verplaatsen](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription) . 
+> Dit artikel richt zich op het verplaatsen van uw server naar een andere regio. Als u uw server wilt verplaatsen naar een andere resource groep of een ander abonnement, raadpleegt u het artikel over [verplaatsen](../azure-resource-manager/management/move-resource-group-and-subscription.md) . 
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -33,7 +33,7 @@ U kunt een Azure Database for PostgreSQL [Kruis regio lezen replica](concepts-re
 
 Gebruik de volgende stappen om de bron server voor te bereiden voor replicatie met behulp van de Azure Portal: 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 1. Selecteer de bestaande Azure Database for PostgreSQL-server die u wilt gebruiken als de bron server. Met deze actie wordt de pagina **overzicht** geopend.
 1. Selecteer in het menu van de server de optie **replicatie**. Als ondersteuning voor Azure-replicatie is ingesteld op ten minste een **replica**, kunt u lees replica's maken. 
 1. Als Azure-replicatie ondersteuning niet is ingesteld op ten minste een **replica**, stelt u deze in. Selecteer **Opslaan**.

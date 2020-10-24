@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
-ms.openlocfilehash: 37f8016e087642ae0a7455e35f3ce18d7229e169
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: cd14ff0688f4230aeedac748ca4b32609bdd2938
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146640"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490319"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>IoT-externe bewaking en meldingen met Azure Logic Apps verbinding maken met uw IoT hub en Postvak
 
@@ -112,7 +112,7 @@ Voeg een aangepast eind punt voor de Service Bus wachtrij toe aan uw IoT-hub en 
 
 1. Selecteer **bericht routering**onder **Messa ging**. Selecteer in het deel venster **bericht routering** het tabblad **aangepaste eind punten** en selecteer vervolgens **+ toevoegen**. Selecteer **Service Bus-wachtrij**in de vervolg keuzelijst.
 
-   ![Een eind punt toevoegen aan uw IoT-hub in de Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/select-iot-hub-custom-endpoint.png)
+   ![Scherm afbeelding die de service bus-wachtrij optie markeert.](media/iot-hub-monitoring-notifications-with-azure-logic-apps/select-iot-hub-custom-endpoint.png)
 
 1. Voer in het deel venster **een service bus-eind punt toevoegen** de volgende gegevens in:
 
@@ -183,7 +183,7 @@ In de voor gaande sectie stelt u uw IoT-hub in voor het routeren van berichten m
 1. Een service bus-verbinding maken.
    1. Geef een naam op voor de verbinding en selecteer uw Service Bus naam ruimte in de lijst. Het volgende scherm wordt geopend.
 
-      ![Een service bus-verbinding maken voor uw logische app in de Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-service-bus-connection-1.png)
+      ![Scherm opname van de optie wanneer een of meer berichten binnenkomen in een wachtrij (automatisch volt ooien).](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-service-bus-connection-1.png)
 
    1. Selecteer het service bus-beleid (RootManageSharedAccessKey). Selecteer vervolgens  **maken**.
 

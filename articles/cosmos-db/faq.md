@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 4bd29ce3bf2cc7cd69f86dbf172d3cd9a2044e79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26794f0d743bc701879a161f69e374340206e5d8
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570365"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488466"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Veelgestelde vragen over verschillende API's in Azure Cosmos DB
 
@@ -70,7 +70,7 @@ U kunt ook de [Azure Cosmos DB-emulator](local-emulator.md) gebruiken om uw toep
 
 Als u een technische vraag wilt stellen, kunt u een bericht plaatsen op een van deze twee vraag-en antwoord forums:
 
-* [Microsoft Q&A-vragenpagina](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
+* [Microsoft Q&A-vragenpagina](/answers/topics/azure-cosmos-db.html)
 * [Stack overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack Overflow is het meest geschikt voor het Program meren van vragen. Zorg ervoor dat u de vraag hebt [over het onderwerp](https://stackoverflow.com/help/on-topic) en [Geef zo veel mogelijk details op, zodat u de vraag duidelijk en beantwoord kunt krijgen](https://stackoverflow.com/help/how-to-ask).
 
 Als u nieuwe functies wilt aanvragen, maakt u een nieuwe aanvraag voor [gebruikers spraak](https://feedback.azure.com/forums/263030-azure-cosmos-db).
@@ -179,7 +179,7 @@ De SQL-API ondersteunt aggregatie met lage latentie op elke schaal via statistis
 
 De SQL API ondersteunt optimistische gelijktijdigheids beheer (OCC) via HTTP-entiteit Tags of ETags. Elke SQL-API-resource heeft een ETag en de ETag wordt ingesteld op de server telkens wanneer een document wordt bijgewerkt. De ETag-kop en de huidige waarde zijn opgenomen in alle antwoord berichten. ETags kan worden gebruikt met de If-Match-header om de server toe te staan om te bepalen of een resource moet worden bijgewerkt. De If-Match waarde is de ETag-waarde die moet worden gecontroleerd. Als de ETag-waarde overeenkomt met de server ETag-waarde, wordt de resource bijgewerkt. Als de ETag niet langer actueel is, wordt de bewerking door de server geweigerd met de respons code ' HTTP 412-voor waarde voor fout '. De client haalt de resource vervolgens opnieuw op om de huidige ETag-waarde voor de resource te verkrijgen. Daarnaast kan ETags worden gebruikt in combi natie met de If-None-Match-header om te bepalen of een resource opnieuw moet worden opgehaald.
 
-Als u optimistische gelijktijdigheid wilt gebruiken in .NET, gebruikt u de [AccessCondition](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.accesscondition.aspx) -klasse. Zie [Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs) in het DocumentManagement-voor beeld op github voor een .net-voor beeld.
+Als u optimistische gelijktijdigheid wilt gebruiken in .NET, gebruikt u de [AccessCondition](/dotnet/api/microsoft.azure.documents.client.accesscondition) -klasse. Zie [Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs) in het DocumentManagement-voor beeld op github voor een .net-voor beeld.
 
 ### <a name="how-do-i-perform-transactions-in-the-sql-api"></a>Hoe kan ik trans acties uit te voeren in de SQL-API?
 
@@ -210,7 +210,7 @@ Dit is een beperking van Java script. Java script maakt gebruik van drijvende-ko
 Het maken van machtigingen met behulp van ResourceTokens is toegestaan op container niveau en de onderliggende items (zoals documenten, bijlagen). Dit betekent dat een poging om een machtiging te maken op de data base of een account niveau momenteel niet is toegestaan.
 
 [azure-portal]: https://portal.azure.com
-[query]: sql-api-sql-query.md
+[query]: ./sql-query-getting-started.md
 
 ## <a name="next-steps"></a>Volgende stappen
 

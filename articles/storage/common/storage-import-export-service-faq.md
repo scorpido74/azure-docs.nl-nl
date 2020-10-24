@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 08c105bd8ae9b5e0667ef5279e6c9484c631bd48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2e50502c8c3e37c5d48359079e2e72c13feea4a
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399037"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487871"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure import/export-service: veelgestelde vragen
 
@@ -132,7 +132,7 @@ Nee. Alle stations zijn versleuteld met BitLocker.
 
 ### <a name="how-can-i-access-data-that-is-imported-by-this-service"></a>Hoe kan ik toegang krijgen tot gegevens die door deze service worden geïmporteerd?
 
-Gebruik de Azure Portal of [Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) om toegang te krijgen tot de gegevens in uw Azure Storage-account.  
+Gebruik de Azure Portal of [Storage Explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer) om toegang te krijgen tot de gegevens in uw Azure Storage-account.  
 
 ### <a name="after-the-import-is-complete-what-does-my-data-look-like-in-the-storage-account-is-my-directory-hierarchy-preserved"></a>Waar worden mijn gegevens weer gegeven in het opslag account nadat het importeren is voltooid? Is mijn Directory-hiërarchie behouden?
 
@@ -144,7 +144,7 @@ Is afhankelijk van. Wanneer u het station voorbereidt, kunt u opgeven of de doel
 
 ### <a name="is-the-waimportexport-tool-compatible-with-32-bit-operating-systems"></a>Is het WAImportExport-hulp programma compatibel met 32-bits besturings systemen?
 
-Nee. Het hulp programma WAImportExport is alleen compatibel met 64-bits Windows-besturings systemen. Ga naar [ondersteunde besturings systemen](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements)voor een volledige lijst met ondersteunde versies van het besturings systeem.
+Nee. Het hulp programma WAImportExport is alleen compatibel met 64-bits Windows-besturings systemen. Ga naar [ondersteunde besturings systemen](/azure/storage/common/storage-import-export-requirements)voor een volledige lijst met ondersteunde versies van het besturings systeem.
 
 ### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Wat is de maximum grootte van een blok-Blob en een pagina-blob die wordt ondersteund door Azure import/export?
 

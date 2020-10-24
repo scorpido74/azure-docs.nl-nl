@@ -8,24 +8,24 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/26/2020
-ms.openlocfilehash: 2c6495454e5ba2449d4b3c74a096681f74610813
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38bf49ba39420aa1edffa13540d61292e23d654b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84699359"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490370"
 ---
 # <a name="manage-azure-hdinsight-clusters-using-azure-cli"></a>Azure HDInsight-clusters beheren met Azure CLI
 
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Meer informatie over het gebruik van [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) voor het beheren van Azure HDInsight-clusters. De Azure-opdrachtregelinterface (CLI) is de platformoverschrijdende opdrachtregelervaring voor het beheren van Azure-resources.
+Meer informatie over het gebruik van [Azure cli](/cli/azure/) voor het beheren van Azure HDInsight-clusters. De Azure-opdrachtregelinterface (CLI) is de platformoverschrijdende opdrachtregelervaring voor het beheren van Azure-resources.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure CLI. Als u de Azure CLI nog niet hebt geïnstalleerd, raadpleegt u [Azure cli installeren voor de](https://docs.microsoft.com/cli/azure/install-azure-cli) stappen.
+* Azure CLI. Als u de Azure CLI nog niet hebt geïnstalleerd, raadpleegt u [Azure cli installeren voor de](/cli/azure/install-azure-cli) stappen.
 
 * Een Apache Hadoop cluster in HDInsight. Zie aan de [slag met HDInsight op Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
@@ -42,7 +42,7 @@ az login
 
 ## <a name="list-clusters"></a>Clusters weergeven
 
-Gebruik [AZ hdinsight List](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-list) om clusters weer te geven. Bewerk de onderstaande opdrachten door `RESOURCE_GROUP_NAME` de naam van de resource groep te vervangen en voer de volgende opdrachten in:
+Gebruik [AZ hdinsight List](/cli/azure/hdinsight#az-hdinsight-list) om clusters weer te geven. Bewerk de onderstaande opdrachten door `RESOURCE_GROUP_NAME` de naam van de resource groep te vervangen en voer de volgende opdrachten in:
 
 ```azurecli-interactive
 # List all clusters in the current subscription
@@ -60,7 +60,7 @@ az hdinsight list --resource-group RESOURCE_GROUP_NAME --query "[].{clusterName:
 
 ## <a name="show-cluster"></a>Cluster weer geven
 
-Gebruik [AZ hdinsight show](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-show) om informatie weer te geven voor een opgegeven cluster. Bewerk de onderstaande opdracht door te vervangen `RESOURCE_GROUP_NAME` , en `CLUSTER_NAME` Voer vervolgens de volgende opdracht uit:
+Gebruik [AZ hdinsight show](/cli/azure/hdinsight#az-hdinsight-show) om informatie weer te geven voor een opgegeven cluster. Bewerk de onderstaande opdracht door te vervangen `RESOURCE_GROUP_NAME` , en `CLUSTER_NAME` Voer vervolgens de volgende opdracht uit:
 
 ```azurecli-interactive
 az hdinsight show --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
@@ -68,7 +68,7 @@ az hdinsight show --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
 
 ## <a name="delete-clusters"></a>Clusters verwijderen
 
-Gebruik [AZ hdinsight delete](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-delete) om een opgegeven cluster te verwijderen. Bewerk de onderstaande opdracht door te vervangen `RESOURCE_GROUP_NAME` , en `CLUSTER_NAME` Voer vervolgens de volgende opdracht uit:
+Gebruik [AZ hdinsight delete](/cli/azure/hdinsight#az-hdinsight-delete) om een opgegeven cluster te verwijderen. Bewerk de onderstaande opdracht door te vervangen `RESOURCE_GROUP_NAME` , en `CLUSTER_NAME` Voer vervolgens de volgende opdracht uit:
 
 ```azurecli-interactive
 az hdinsight delete --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
@@ -82,7 +82,7 @@ az group delete --name RESOURCE_GROUP_NAME
 
 ## <a name="scale-clusters"></a>Clusters schalen
 
-Gebruik [AZ hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) om het formaat van het opgegeven hdinsight-cluster te wijzigen in de opgegeven grootte. Bewerk de onderstaande opdracht door te vervangen `RESOURCE_GROUP_NAME` en door `CLUSTER_NAME` de relevante informatie. Vervang door `WORKERNODE_COUNT` het gewenste aantal worker-knoop punten voor uw cluster. Zie [HDInsight-clusters schalen](./hdinsight-scaling-best-practices.md)voor meer informatie over het schalen van clusters. Voer de opdracht in:
+Gebruik [AZ hdinsight resize](/cli/azure/hdinsight#az-hdinsight-resize) om het formaat van het opgegeven hdinsight-cluster te wijzigen in de opgegeven grootte. Bewerk de onderstaande opdracht door te vervangen `RESOURCE_GROUP_NAME` en door `CLUSTER_NAME` de relevante informatie. Vervang door `WORKERNODE_COUNT` het gewenste aantal worker-knoop punten voor uw cluster. Zie [HDInsight-clusters schalen](./hdinsight-scaling-best-practices.md)voor meer informatie over het schalen van clusters. Voer de opdracht in:
 
 ```azurecli-interactive
 az hdinsight resize --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --workernode-count WORKERNODE_COUNT
@@ -95,4 +95,4 @@ In dit artikel hebt u geleerd hoe u verschillende beheer taken voor HDInsight-cl
 * [Apache Hadoop clusters in HDInsight beheren door gebruik te maken van de Azure Portal](hdinsight-administer-use-portal-linux.md)
 * [HDInsight beheren met behulp van Azure PowerShell](hdinsight-administer-use-powershell.md)
 * [Aan de slag met Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
-* [Aan de slag met de Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)
+* [Aan de slag met de Azure CLI](/cli/azure/get-started-with-azure-cli)

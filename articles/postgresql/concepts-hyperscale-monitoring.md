@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9a6d8843acf27a53e261d9c7180906b15d05cc33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30be9cbba7fe702d12285fe13794290c4820fd53
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91314807"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487990"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL-grootschalige (Citus) bewaken en afstemmen
 
@@ -22,7 +22,7 @@ Het bewaken van gegevens over uw servers helpt u bij het oplossen en optimaliser
 
 Grootschalige (Citus) geeft metrische gegevens voor elk knoop punt in een server groep. De metrische gegevens bieden inzicht in het gedrag van ondersteunende resources. Elke metriek wordt verzonden met een frequentie van één minuut en heeft tot wel 30 dagen aan geschiedenis.
 
-Naast het weer geven van grafieken van de metrische gegevens kunt u waarschuwingen configureren. Zie voor stapsgewijze instructies voor [het instellen van waarschuwingen](howto-hyperscale-alert-on-metric.md).  Andere taken zijn onder andere het instellen van geautomatiseerde acties, het uitvoeren van geavanceerde analyses en het archiveren van geschiedenis. Zie het overzicht van Azure- [metrische](../monitoring-and-diagnostics/monitoring-overview-metrics.md)gegevens voor meer informatie.
+Naast het weer geven van grafieken van de metrische gegevens kunt u waarschuwingen configureren. Zie voor stapsgewijze instructies voor [het instellen van waarschuwingen](howto-hyperscale-alert-on-metric.md).  Andere taken zijn onder andere het instellen van geautomatiseerde acties, het uitvoeren van geavanceerde analyses en het archiveren van geschiedenis. Zie het overzicht van Azure- [metrische](../azure-monitor/platform/data-platform.md)gegevens voor meer informatie.
 
 ### <a name="list-of-metrics"></a>Lijst met metrische gegevens
 

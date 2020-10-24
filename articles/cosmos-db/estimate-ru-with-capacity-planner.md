@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: dech
-ms.openlocfilehash: ec80791f9a43dc45d670442ee7b2d0c67d54f582
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b1edb5bbd3ac6fa415f24670c98cd99ffb74fc6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803395"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488500"
 ---
 # <a name="estimate-rus-using-the-azure-cosmos-db-capacity-planner"></a>Een raming van RU/s met behulp van de Azure Cosmos DB capaciteit planner
 
@@ -21,7 +21,7 @@ Het configureren van uw Azure Cosmos-data bases en containers met de juiste hoev
 
 De capaciteits planner kan in twee modi worden gebruikt.
 
-|**Modus**  |**Beschrijving**  |
+|**Modus**  |**Deschription** (Beschrijving)  |
 |---------|---------|
 |Basic|Geeft een snelle en geschatte kosten van RU/s. In deze modus wordt uitgegaan van de standaard Azure Cosmos DB instellingen voor het indexerings beleid, de consistentie en andere para meters. <br/><br/>Gebruik de basis modus voor een snelle schatting op hoog niveau wanneer u een mogelijke werk belasting evalueert om op Azure Cosmos DB uit te voeren.|
 |Geavanceerd|Biedt een gedetailleerdere versie van RU/s en kosten, met de mogelijkheid om extra instellingen af te stemmen: indexerings beleid, consistentie niveau en andere para meters die van invloed zijn op de kosten en door voer. <br/><br/>Gebruik de geavanceerde modus wanneer u een schatting van RU/s voor een nieuw project hebt of een gedetailleerdere schatting wilt maken. |
@@ -30,7 +30,7 @@ De capaciteits planner kan in twee modi worden gebruikt.
 ## <a name="estimate-provisioned-throughput-and-cost-using-basic-mode"></a>Ingerichte door Voer en kosten ramen met de basis modus
 Als u een snelle schatting wilt maken voor uw werk belasting met behulp van de basis modus, gaat u naar de [capaciteits planner](https://cosmos.azure.com/capacitycalculator/). Voer de volgende para meters in op basis van uw workload: 
 
-|**Invoer**  |**Beschrijving**  |
+|**Invoer**  |**Deschription** (Beschrijving)  |
 |---------|---------|
 |Aantal regio's|Azure Cosmos DB is beschikbaar in alle Azure-regio's. Selecteer het aantal regio's dat vereist is voor uw werk belasting. U kunt elk gewenst aantal regio's koppelen aan uw Cosmos-account. Zie [globale distributie](distribute-data-globally.md) in azure Cosmos DB voor meer informatie.|
 |Schrijfbewerkingen in meerdere regio's|Als u [schrijf bewerkingen met meerdere regio's](distribute-data-globally.md#key-benefits-of-global-distribution)inschakelt, kan uw toepassing lezen en schrijven naar elke Azure-regio. Als u het schrijven van meerdere regio's uitschakelt, kan uw toepassing gegevens naar één regio schrijven. <br/><br/> Schakel schrijf bewerkingen in meerdere regio's in als u verwacht dat u een actieve werk belasting hebt waarbij schrijf bewerkingen met een lage latentie in verschillende regio's vereist zijn. Bijvoorbeeld een IOT-workload waarmee gegevens naar de Data Base worden geschreven op grote volumes in verschillende regio's. <br/><br/> Met meerdere regio's schrijft u gegarandeerd 99,999% Beschik baarheid voor lezen en schrijven. Voor schrijf bewerkingen met meerdere regio's is meer door Voer vereist in vergelijking met de enkele schrijf regio's. Zie [How RUs verschilt voor een artikel met enkele en meerdere schrijf bewerkingen voor](optimize-cost-regions.md) meer informatie.|
@@ -49,13 +49,13 @@ In de geavanceerde modus kunt u meer instellingen opgeven die van invloed zijn o
 
 Nadat u zich hebt aangemeld, ziet u aanvullende velden vergeleken met de velden in de standaard modus. Voer de aanvullende para meters in op basis van uw workload. 
 
-|**Invoer**  |**Beschrijving**  |
+|**Invoer**  |**Deschription** (Beschrijving)  |
 |---------|---------|
 |API|Azure Cosmos DB is een multi-model en een multi-API-service. Voor nieuwe workloads selecteert u de SQL-API (core). |
 |Aantal regio's|Azure Cosmos DB is beschikbaar in alle Azure-regio's. Selecteer het aantal regio's dat vereist is voor uw werk belasting. U kunt elk gewenst aantal regio's koppelen aan uw Cosmos-account. Zie [globale distributie](distribute-data-globally.md) in azure Cosmos DB voor meer informatie.|
 |Schrijfbewerkingen in meerdere regio's|Als u [schrijf bewerkingen met meerdere regio's](distribute-data-globally.md#key-benefits-of-global-distribution)inschakelt, kan uw toepassing lezen en schrijven naar elke Azure-regio. Als u het schrijven van meerdere regio's uitschakelt, kan uw toepassing gegevens naar één regio schrijven. <br/><br/> Schakel schrijf bewerkingen in meerdere regio's in als u verwacht dat u een actieve werk belasting hebt waarbij schrijf bewerkingen met een lage latentie in verschillende regio's vereist zijn. Bijvoorbeeld een IOT-workload waarmee gegevens naar de Data Base worden geschreven op grote volumes in verschillende regio's. <br/><br/> Met meerdere regio's schrijft u gegarandeerd 99,999% Beschik baarheid voor lezen en schrijven. Voor schrijf bewerkingen met meerdere regio's is meer door Voer vereist in vergelijking met de enkele schrijf regio's. Zie [How RUs verschilt voor een artikel met enkele en meerdere schrijf bewerkingen voor](optimize-cost-regions.md) meer informatie.|
 |Standaard consistentie|Azure Cosmos DB ondersteunt vijf consistentie niveaus om ontwikkel aars in staat te stellen de verhouding tussen consistentie, Beschik baarheid en latentie-afwegingen te verdelen. Zie het artikel [consistentie niveaus](consistency-levels.md) voor meer informatie. <br/><br/> Azure Cosmos DB maakt standaard gebruik van sessie consistentie, waardoor u de mogelijkheid biedt om uw eigen schrijf bewerkingen in een sessie te lezen. <br/><br/> Als u een sterke of gebonden verouderd wilt kiezen, moeten dubbele de vereiste RU/s voor lees bewerkingen worden uitgevoerd, vergeleken met sessie, consistent voor voegsel en uiteindelijke consistentie. Sterke consistentie met meerdere regio's schrijven wordt niet ondersteund en wordt automatisch standaard ingesteld op enkelvoudige schrijf bewerkingen met sterke consistentie. |
-|Indexeringsbeleid|Azure Cosmos DB [indexeert standaard alle eigenschappen](index-policy.md) in alle items voor flexibele en efficiënte query's (wijst toe aan het beleid voor **automatische** indexering). <br/><br/> Als u op **uit**klikt, worden geen van de eigenschappen geïndexeerd. Dit resulteert in de laagste RU-kosten voor schrijf bewerkingen. Selecteer beleid **uitschakelen** als u verwacht dat alleen [Lees bewerkingen](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.container.readitemasync?view=azure-dotnet&preserve-view=true) (sleutel waarde opzoeken) en/of schrijf bewerkingen, en geen query's. <br/><br/> Met het aangepaste indexerings beleid kunt u specifieke eigenschappen uit de index opnemen of uitsluiten voor een lagere schrijf doorvoer en opslag. Zie het [Indexing-beleid](index-overview.md) en de voor [beelden van beleids regels](how-to-manage-indexing-policy.md#indexing-policy-examples) voor het indexeren van beleid voor meer informatie.|
+|Indexeringsbeleid|Azure Cosmos DB [indexeert standaard alle eigenschappen](index-policy.md) in alle items voor flexibele en efficiënte query's (wijst toe aan het beleid voor **automatische** indexering). <br/><br/> Als u op **uit**klikt, worden geen van de eigenschappen geïndexeerd. Dit resulteert in de laagste RU-kosten voor schrijf bewerkingen. Selecteer beleid **uitschakelen** als u verwacht dat alleen [Lees bewerkingen](/dotnet/api/microsoft.azure.cosmos.container.readitemasync?preserve-view=true&view=azure-dotnet) (sleutel waarde opzoeken) en/of schrijf bewerkingen, en geen query's. <br/><br/> Met het aangepaste indexerings beleid kunt u specifieke eigenschappen uit de index opnemen of uitsluiten voor een lagere schrijf doorvoer en opslag. Zie het [Indexing-beleid](index-overview.md) en de voor [beelden van beleids regels](how-to-manage-indexing-policy.md#indexing-policy-examples) voor het indexeren van beleid voor meer informatie.|
 |Totaal aantal opgeslagen gegevens (per regio)|Het totale aantal geschatte gegevens dat is opgeslagen in GB in één regio.|
 |Werkbelasting modus|Selecteer **constant** als uw workload-volume een constante is. <br/><br/> Selecteer **variabele** als uw werkbelasting volume na verloop van tijd verandert.  Bijvoorbeeld gedurende een specifieke dag of maand. <br/><br/> De volgende instellingen zijn beschikbaar als u de optie variabele workload kiest:<ul><li>Percentage tijd bij piek: percentage van de tijd in een maand waarin de werk belasting piek (hoogste) door Voer vereist. <br/><br/> Als u bijvoorbeeld een werk belasting hebt met een hoge activiteit tijdens de 9:00-18:00 uur voor werk dagen, is het percentage van de tijd bij piek: 45 uur bij piek/730 uur/maand = ~ 6%.<br/><br/></li><li>Lees bewerkingen per seconde op basis van piek waarde-aantal lees bewerkingen verwacht per seconde bij piek.</li><li>Schrijf bewerkingen/sec per regio op piek: aantal schrijf bewerkingen verwacht per seconde bij piek.</li><li>Lees bewerkingen per seconde voor minder piek: aantal lees bewerkingen dat per seconde wordt verwacht tijdens de piek.</li><li>Schrijf bewerkingen per seconde op piek waarde-aantal schrijf bewerkingen die per seconde worden verwacht tijdens de piek.</li></ul>Met piek-en rustige intervallen kunt u uw kosten optimaliseren door [uw ingerichte door Voer op een programmatische manier](set-throughput.md#update-throughput-on-a-database-or-a-container) omhoog en omlaag te schalen.|
 |Itemgrootte|De grootte van het gegevens item (bijvoorbeeld document), variërend van 1 KB tot 2 MB. <br/><br/>U kunt ook een voor beeld van een **JSON-document uploaden** voor een nauw keuriger schatting.<br/><br/>Als uw werk belasting meerdere typen items bevat (met verschillende JSON-inhoud) in dezelfde container, kunt u meerdere JSON-documenten uploaden en de schatting ophalen. Gebruik de knop **Nieuw item toevoegen** om meerdere voor beeld-JSON-documenten toe te voegen.|
@@ -78,4 +78,3 @@ Als voor uw werk belasting bijvoorbeeld een query is vereist ``SELECT * FROM c W
 * Maak een nieuw [Cosmos-account, een nieuwe data base en een container](create-cosmosdb-resources-portal.md).
 * Meer informatie over het [optimaliseren van ingerichte doorvoer kosten](optimize-cost-throughput.md).
 * Meer informatie over het [optimaliseren van kosten met gereserveerde capaciteit](cosmos-db-reserved-capacity.md).
-

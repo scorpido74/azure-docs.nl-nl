@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/03/2020
-ms.openlocfilehash: 04def98108bf996a8f8cabe0ad36c022011aa533
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf292ccd185ad2c6a85cb6d2f097bb8a7fa9e173
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86080683"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489656"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>HDInsight-clusters maken met behulp van Azure CLI
 
@@ -27,7 +27,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="prerequisites"></a>Vereisten
 
-Azure CLI. Als u de Azure CLI nog niet hebt geïnstalleerd, raadpleegt u [Azure cli installeren voor de](https://docs.microsoft.com/cli/azure/install-azure-cli) stappen.
+Azure CLI. Als u de Azure CLI nog niet hebt geïnstalleerd, raadpleegt u [Azure cli installeren voor de](/cli/azure/install-azure-cli) stappen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -42,7 +42,7 @@ Azure CLI. Als u de Azure CLI nog niet hebt geïnstalleerd, raadpleegt u [Azure 
     # az account set --subscription "SUBSCRIPTIONID"
     ```
 
-2. Stel omgevingsvariabelen in. Het gebruik van variabelen in dit artikel is gebaseerd op bash. Er zijn kleine variaties nodig voor andere omgevingen. Zie [AZ-hdinsight-Create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) voor een volledige lijst met mogelijke para meters voor het maken van een cluster.
+2. Stel omgevingsvariabelen in. Het gebruik van variabelen in dit artikel is gebaseerd op bash. Er zijn kleine variaties nodig voor andere omgevingen. Zie [AZ-hdinsight-Create](/cli/azure/hdinsight#az-hdinsight-create) voor een volledige lijst met mogelijke para meters voor het maken van een cluster.
 
     |Parameter | Beschrijving |
     |---|---|
@@ -68,7 +68,7 @@ Azure CLI. Als u de Azure CLI nog niet hebt geïnstalleerd, raadpleegt u [Azure 
     export componentVersion=Hadoop=2.7
     ```
 
-3. [Maak de resourcegroep](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) door de onderstaande opdracht in te voeren:
+3. [Maak de resourcegroep](/cli/azure/group#az-group-create) door de onderstaande opdracht in te voeren:
 
     ```azurecli-interactive
     az group create \
@@ -78,7 +78,7 @@ Azure CLI. Als u de Azure CLI nog niet hebt geïnstalleerd, raadpleegt u [Azure 
 
     Gebruik de opdracht voor een lijst met geldige locaties `az account list-locations` en gebruik vervolgens een van de locaties van de `name` waarde.
 
-4. [Maak een Azure Storage-account](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) door de onderstaande opdracht in te voeren:
+4. [Maak een Azure Storage-account](/cli/azure/storage/account#az-storage-account-create) door de onderstaande opdracht in te voeren:
 
     ```azurecli-interactive
     # Note: kind BlobStorage is not available as the default storage account.
@@ -91,7 +91,7 @@ Azure CLI. Als u de Azure CLI nog niet hebt geïnstalleerd, raadpleegt u [Azure 
         --sku Standard_LRS
     ```
 
-5. [Pak de primaire sleutel uit het Azure Storage-account](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest#az-storage-account-keys-list) in en sla deze op in een variabele door de onderstaande opdracht in te voeren:
+5. [Pak de primaire sleutel uit het Azure Storage-account](/cli/azure/storage/account/keys#az-storage-account-keys-list) in en sla deze op in een variabele door de onderstaande opdracht in te voeren:
 
     ```azurecli-interactive
     export AZURE_STORAGE_KEY=$(az storage account keys list \
@@ -100,7 +100,7 @@ Azure CLI. Als u de Azure CLI nog niet hebt geïnstalleerd, raadpleegt u [Azure 
         --query [0].value -o tsv)
     ```
 
-6. [Maak een Azure Storage-container](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) door de onderstaande opdracht in te voeren:
+6. [Maak een Azure Storage-container](/cli/azure/storage/container#az-storage-container-create) door de onderstaande opdracht in te voeren:
 
     ```azurecli-interactive
     az storage container create \
@@ -109,7 +109,7 @@ Azure CLI. Als u de Azure CLI nog niet hebt geïnstalleerd, raadpleegt u [Azure 
         --account-name $AZURE_STORAGE_ACCOUNT
     ```
 
-7. [Maak het HDInsight-cluster](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) door de volgende opdracht in te voeren:
+7. [Maak het HDInsight-cluster](/cli/azure/hdinsight#az-hdinsight-create) door de volgende opdracht in te voeren:
 
     ```azurecli-interactive
     az hdinsight create \
