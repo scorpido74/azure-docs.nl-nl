@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 53132cc21b8298f951f2daa979ed433103ad0ac0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e22252ea3e132aee39075d986d7f5a979e14c0a3
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541285"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520231"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Zelf studie: workday configureren voor het automatisch inrichten van gebruikers
 
@@ -39,7 +39,7 @@ De [Azure Active Directory User Provisioning Service](../app-provisioning/user-p
 
 * Opnieuw **inhuren van werk nemers** : wanneer een werk nemer in workday opnieuw wordt ingehuurd, kan het oude account automatisch opnieuw worden geactiveerd of worden ingericht (afhankelijk van uw voor keur) tot Active Directory, Azure Active Directory en optioneel Microsoft 365 en [andere SaaS-toepassingen die worden ondersteund door Azure AD](../app-provisioning/user-provisioning.md).
 
-### <a name="whats-new"></a>Nieuwe functies
+### <a name="whats-new"></a>Nieuw
 In deze sectie worden verbeteringen voor de recente werk dagen van integratie vastgelegd. Voor een lijst met uitgebreide updates, geplande wijzigingen en archieven gaat u naar de pagina [Wat is er nieuw in azure Active Directory?](../fundamentals/whats-new.md) 
 
 * **Kan 2020-de mogelijkheid om telefoon nummers naar workday te terugschrijven:** Naast e-mail en gebruikers naam kunt u nu een telefoon nummer en een mobiel telefoon nummer van Azure AD naar werkdag terugschrijven. Raadpleeg de [zelf studie write-app](workday-writeback-tutorial.md)voor meer informatie.
@@ -311,7 +311,7 @@ In deze sectie vindt u de stappen voor het inrichten van gebruikers accounts van
 Als u een on-premises Active Directory wilt inrichten, moet de inrichtings agent zijn geïnstalleerd op een server met .NET 4.7.1 + Framework en netwerk toegang tot de gewenste Active Directory domein (en).
 
 > [!TIP]
-> U kunt de versie van .NET Framework op uw server controleren met behulp van de instructies die u [hier](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)kunt vinden.
+> U kunt de versie van .NET Framework op uw server controleren met behulp van de instructies die u [hier](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)kunt vinden.
 > Als op de server geen .NET 4.7.1 of hoger is geïnstalleerd, kunt u deze [hier](https://support.microsoft.com/help/4033342/the-net-framework-4-7-1-offline-installer-for-windows)downloaden.  
 
 Zet het installatie programma van de gedownloade agent over naar de server host en volg de onderstaande stappen om de configuratie van de agent te volt ooien.
@@ -410,7 +410,7 @@ In deze stap maken we verbinding met werkdag en Active Directory in de Azure Por
    * **E-mail melding-** Voer uw e-mail adres in en schakel het selectie vakje e-mail verzenden als er een fout is opgetreden in.
 
      > [!NOTE]
-     > De Azure AD-inrichtings service verzendt een e-mail melding als de inrichtings taak een [quarantaine](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) status heeft.
+     > De Azure AD-inrichtings service verzendt een e-mail melding als de inrichtings taak een [quarantaine](../app-provisioning/application-provisioning-quarantine-status.md) status heeft.
 
    * Klik op de knop **verbinding testen** . Als de verbindings test is geslaagd, klikt u bovenaan op de knop **Opslaan** . Als dit mislukt, controleert u of de workday-referenties en de AD-referenties die zijn geconfigureerd voor de installatie van de agent geldig zijn.
 
@@ -497,8 +497,8 @@ In deze sectie configureert u hoe gebruikers gegevens stromen van workday naar A
 | **SelectUniqueValue (toevoegen (" \@ ", samen voegen (".", voor  \[ naam \] , \[ achternaam \] ), "contoso.com"), samen voegen (" \@ ", samen voegen (".", Mid ( \[ FirstName \] , 1, 1), \[ LastName \] ), "contoso.com"), deel nemen (" \@ ", lid (".", Mid ( \[ FirstName \] , 1, 2), \[ LastName \] ), "contoso.com"**   | userPrincipalName     |     | Geschreven bij alleen maken 
 | `Replace(Mid(Replace(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )`      |    sAMAccountName            |     |         Geschreven bij alleen maken |
 | **Switch ( \[ actief \] ,, "0", "True", "1", "false")** |  accountDisabled      |     | + Update maken |
-| **FirstName**   | givenName       |     |    + Update maken |
-| **LastName**   |   sn   |     |  + Update maken |
+| **Voor**   | givenName       |     |    + Update maken |
+| **Naam**   |   sn   |     |  + Update maken |
 | **PreferredNameData**  |  displayName |     |   + Update maken |
 | **Company**         | bedrijf   |     |  + Update maken |
 | **SupervisoryOrganization**  | department  |     |  + Update maken |
@@ -594,7 +594,7 @@ Nee, de oplossing houdt geen cache met gebruikers profielen bij. De Azure AD-inr
 
 #### <a name="does-the-solution-support-assigning-on-premises-ad-groups-to-the-user"></a>Ondersteunt de oplossing de toewijzing van on-premises AD-groepen aan de gebruiker?
 
-Deze functionaliteit wordt momenteel niet ondersteund. De aanbevolen tijdelijke oplossing is om een Power shell-script te implementeren waarmee het Microsoft Graph API-eind punt wordt opgevraagd voor [audit logboek gegevens](https://docs.microsoft.com/graph/api/resources/azure-ad-auditlog-overview?view=graph-rest-beta) en voor het activeren van scenario's zoals groeps toewijzing. Dit Power shell-script kan worden gekoppeld aan een taak planner en wordt geïmplementeerd op hetzelfde vak als de inrichtings agent wordt uitgevoerd.  
+Deze functionaliteit wordt momenteel niet ondersteund. De aanbevolen tijdelijke oplossing is om een Power shell-script te implementeren waarmee het Microsoft Graph API-eind punt wordt opgevraagd voor [audit logboek gegevens](/graph/api/resources/azure-ad-auditlog-overview?view=graph-rest-beta) en voor het activeren van scenario's zoals groeps toewijzing. Dit Power shell-script kan worden gekoppeld aan een taak planner en wordt geïmplementeerd op hetzelfde vak als de inrichtings agent wordt uitgevoerd.  
 
 #### <a name="which-workday-apis-does-the-solution-use-to-query-and-update-workday-worker-profiles"></a>Welke workday-Api's gebruiken de oplossing voor het opvragen en bijwerken van werk profielen voor workday?
 
@@ -679,7 +679,7 @@ Vervang de variabelen [proxy-server] en [proxy-port] door de naam- en poortwaard
 
 #### <a name="how-do-i-ensure-that-the-provisioning-agent-is-able-to-communicate-with-the-azure-ad-tenant-and-no-firewalls-are-blocking-ports-required-by-the-agent"></a>Hoe kan ik ervoor te zorgen dat de inrichtings agent kan communiceren met de Azure AD-Tenant en dat er geen firewalls zijn die vereist zijn voor de agent?
 
-U kunt ook controleren of alle [vereiste poorten](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#open-ports) zijn geopend.
+U kunt ook controleren of alle [vereiste poorten](../manage-apps/application-proxy-add-on-premises-application.md#open-ports) zijn geopend.
 
 #### <a name="can-one-provisioning-agent-be-configured-to-provision-multiple-ad-domains"></a>Kan één inrichtings agent worden geconfigureerd om meerdere AD-domeinen in te richten?
 
@@ -1157,4 +1157,4 @@ Ten aanzien van gegevens retentie, genereert de Azure AD-inrichtings service gee
 * [Meer informatie over het controleren van logboeken en het ophalen van rapporten over de inrichtingsactiviteit](../app-provisioning/check-status-user-account-provisioning.md)
 * [Meer informatie over het configureren van eenmalige aanmelding tussen werk dagen en Azure Active Directory](workday-tutorial.md)
 * [Meer informatie over het integreren van andere SaaS-toepassingen met Azure Active Directory](tutorial-list.md)
-* [Meer informatie over het gebruik van Microsoft Graph-Api's voor het beheren van inrichtings configuraties](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+* [Meer informatie over het gebruik van Microsoft Graph-Api's voor het beheren van inrichtings configuraties](/graph/api/resources/synchronization-overview)

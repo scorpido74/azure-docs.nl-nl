@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: 26644d42e0e51d59c6c28daaba5447a65a43b6a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b5c106c1464ec6d77305b1985cc8dbd51e2b4db
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460638"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519474"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>Beheerde identiteiten gebruiken om toegang te krijgen tot Azure SQL Database vanuit een Azure Stream Analytics-taak (preview-versie)
 
@@ -60,7 +60,7 @@ Nadat u een beheerde identiteit hebt gemaakt, selecteert u een Active Directory 
 
    ![Active Directory beheerder toevoegen](./media/sql-db-output-managed-identity/add-admin.png)
 
-   Op de pagina Active Directory beheer worden alle leden en groepen van uw Active Directory weer gegeven. Gebruikers of groepen die grijs worden weer gegeven, kunnen niet worden geselecteerd, omdat ze niet worden ondersteund als Azure Active Directory-beheerders. Zie de lijst met ondersteunde beheerders in de sectie **Azure Active Directory functies en beperkingen**   van het [gebruik van Azure Active Directory authenticatie voor verificatie met SQL database of Azure Synapse](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations). Op rollen gebaseerd toegangsbeheer (RBAC) is alleen van toepassing op de portal en wordt niet doorgegeven aan SQL Server. De geselecteerde gebruiker of groep is ook de gebruiker die de **Inge sloten database gebruiker** in de volgende sectie kan maken.
+   Op de pagina Active Directory beheer worden alle leden en groepen van uw Active Directory weer gegeven. Gebruikers of groepen die grijs worden weer gegeven, kunnen niet worden geselecteerd, omdat ze niet worden ondersteund als Azure Active Directory-beheerders. Zie de lijst met ondersteunde beheerders in de sectie **Azure Active Directory functies en beperkingen**   van het [gebruik van Azure Active Directory authenticatie voor verificatie met SQL database of Azure Synapse](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations). Azure RBAC (op rollen gebaseerd toegangs beheer) is alleen van toepassing op de portal en wordt niet door gegeven aan SQL Server. De geselecteerde gebruiker of groep is ook de gebruiker die de **Inge sloten database gebruiker** in de volgende sectie kan maken.
 
 1. Selecteer **Opslaan** op de pagina **beheer van Active Directory** . Het proces voor het wijzigen van de beheerder duurt enkele minuten.
 

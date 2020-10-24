@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
-ms.openlocfilehash: c0f05bd9ebd100956cfb7b2b6188e18616368dd0
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 9b6e752f8352db565239aba4a990752b1c397f5f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168474"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517256"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>NVIDIA GPU-Stuur Programma's installeren op Vm's met N-serie waarop Linux wordt uitgevoerd
 
@@ -161,6 +161,23 @@ Implementeer met RDMA geschikte Vm's van de N-serie vanaf een van de installatie
   [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]
 
 * **CentOS op basis van 7,4 HPC** -RDMA-Stuur Programma's en Intel mpi 5,1 zijn geïnstalleerd op de VM.
+
+* **CENTOS HPC** -CENTOS-HPC 7,6 en hoger (voor Sku's waar InfiniBand wordt ondersteund op basis van SR-IOV). Deze installatie kopieën hebben Mellanox OFED-en MPI-bibliotheken die vooraf zijn geïnstalleerd.
+
+> [!NOTE]
+> CX3-Pro kaarten worden alleen ondersteund via LTS-versies van de Mellanox OFED. Gebruik LTS Mellanox OFED-versie (4.9-0.1.7.0) op de virtuele machines uit de N-serie met ConnectX3-Pro kaarten. Zie [Linux-Stuur Programma's](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed)voor meer informatie.
+>
+> Daarnaast hebben enkele van de nieuwste HPC-installatie kopieën van Azure Marketplace OFED 5,1 en hoger, die geen ondersteuning bieden voor ConnectX3-Pro kaarten. Controleer de Mellanox OFED-versie in de HPC-installatie kopie voordat u deze gebruikt op Vm's met ConnectX3-Pro-kaarten.
+>
+> De volgende installatie kopieën zijn de meest recente CentOS-HPC-installatie kopieën die ondersteuning bieden voor ConnectX3-Pro kaarten:
+>
+> - Open Logic: CentOS-HPC: 7,6:7.6.2020062900
+> - Open Logic: CentOS-HPC: 7_6gen2:7.6.2020062901
+> - Open Logic: CentOS-HPC: 7,7:7.7.2020062600
+> - Open Logic: CentOS-HPC: 7_7-Gen2:7.7.2020062601
+> - Open Logic: CentOS-HPC: 8_1:8.1.2020062400
+> - Open Logic: CentOS-HPC: 8_1-Gen2:8.1.2020062401
+>
 
 ## <a name="install-grid-drivers-on-nv-or-nvv3-series-vms"></a>GRID-Stuur Programma's installeren op NV-of NVv3-serie Vm's
 

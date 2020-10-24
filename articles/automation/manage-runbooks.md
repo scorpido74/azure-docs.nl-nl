@@ -3,14 +3,14 @@ title: Runbooks in Azure Automation beheren
 description: In dit artikel leest u hoe u runbooks beheert in Azure Automation.
 services: automation
 ms.subservice: process-automation
-ms.date: 06/10/2020
+ms.date: 10/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 023864e23c0cd23df0de603e76acac651bd2458e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30979f49a48954280942d786af7e7ff592089062
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987575"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521064"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Runbooks in Azure Automation beheren
 
@@ -20,9 +20,8 @@ U kunt een runbook toevoegen aan Azure Automation door ofwel een nieuwe te maken
 
 Een nieuw runbook maken in Azure Automation met behulp van de Azure Portal of Windows Power shell. Zodra het runbook is gemaakt, kunt u het bewerken met behulp van informatie in:
 
-* [Tekst runbook bewerken in Azure Automation](automation-edit-textual-runbook.md) 
+* [Tekst runbook bewerken in Azure Automation](automation-edit-textual-runbook.md)
 * [Meer informatie over belang rijke Windows Power shell-werk stroom concepten voor Automation-runbooks](automation-powershell-workflow.md)
-* [Grafisch ontwerpen in Azure Automation](automation-graphical-authoring-intro.md)
 * [Python 2-pakketten beheren in Azure Automation](python-packages.md)
 
 ### <a name="create-a-runbook-in-the-azure-portal"></a>Een runbook maken in de Azure Portal
@@ -35,7 +34,7 @@ Een nieuw runbook maken in Azure Automation met behulp van de Azure Portal of Wi
 
 ### <a name="create-a-runbook-with-powershell"></a>Een runbook maken met Power shell
 
-Gebruik de cmdlet [New-AzAutomationRunbook](/powershell/module/az.automation/new-azautomationrunbook?view=azps-3.5.0) om een leeg runbook te maken. Gebruik de `Type` para meter om een van de typen runbook op te geven die zijn gedefinieerd voor `New-AzAutomationRunbook` .
+Gebruik de cmdlet [New-AzAutomationRunbook](/powershell/module/az.automation/new-azautomationrunbook) om een leeg runbook te maken. Gebruik de `Type` para meter om een van de typen runbook op te geven die zijn gedefinieerd voor `New-AzAutomationRunbook` .
 
 In het volgende voor beeld ziet u hoe u een nieuw leeg runbook maakt.
 
@@ -77,7 +76,7 @@ U kunt de volgende procedure gebruiken om een script bestand te importeren in Az
 
 ### <a name="import-a-runbook-with-windows-powershell"></a>Een runbook importeren met Windows Power shell
 
-Gebruik de cmdlet [import-AzAutomationRunbook](/powershell/module/az.automation/import-azautomationrunbook?view=azps-3.5.0) om een script bestand te importeren als een concept-runbook. Als het runbook al bestaat, mislukt het importeren tenzij u de `Force` para meter met de cmdlet gebruikt.
+Gebruik de cmdlet [import-AzAutomationRunbook](/powershell/module/az.automation/import-azautomationrunbook) om een script bestand te importeren als een concept-runbook. Als het runbook al bestaat, mislukt het importeren tenzij u de `Force` para meter met de cmdlet gebruikt.
 
 In het volgende voor beeld ziet u hoe u een script bestand importeert in een runbook.
 
@@ -147,7 +146,7 @@ $JobInfo.GetEnumerator() | sort key -Descending | Select-Object -First 1
 
 ## <a name="track-progress"></a>Voortgang bijhouden
 
-Het is een goed idee om uw runbooks te maken die kunnen worden gemigreerd, met logica die opnieuw kan worden gebruikt en eenvoudig opnieuw kan worden gestart. Het bijhouden van de voortgang in een runbook zorgt ervoor dat de runbook-logica correct wordt uitgevoerd als er problemen zijn. 
+Het is een goed idee om uw runbooks te maken die kunnen worden gemigreerd, met logica die opnieuw kan worden gebruikt en eenvoudig opnieuw kan worden gestart. Het bijhouden van de voortgang in een runbook zorgt ervoor dat de runbook-logica correct wordt uitgevoerd als er problemen zijn.
 
 U kunt de voortgang van een runbook volgen met behulp van een externe bron, zoals een opslag account, een Data Base of gedeelde bestanden. Maak logica in uw runbook om eerst de status van de laatste uitgevoerde actie te controleren. Op basis van de resultaten van de controle kan de logica specifieke taken in het runbook overs Laan of voortzetten.
 
@@ -192,35 +191,33 @@ Als uw runbook normaal gesp roken binnen een tijds beperking wordt uitgevoerd, l
 
 ## <a name="work-with-multiple-subscriptions"></a>Met meerdere abonnementen werken
 
-Uw runbook moet kunnen werken met [abonnementen](automation-runbook-execution.md#subscriptions). Als u bijvoorbeeld meerdere abonnementen wilt verwerken, gebruikt het runbook de cmdlet [Disable-AzContextAutosave](/powershell/module/Az.Accounts/Disable-AzContextAutosave?view=azps-3.5.0) . Met deze cmdlet zorgt u ervoor dat de verificatie context niet wordt opgehaald uit een ander runbook dat wordt uitgevoerd in dezelfde sandbox. Het runbook gebruikt ook de `Get-AzContext` cmdlet om de context van de huidige sessie op te halen en deze toe te wijzen aan de variabele `$AzureContext` .
+Uw runbook moet kunnen werken met [abonnementen](automation-runbook-execution.md#subscriptions). Als u bijvoorbeeld meerdere abonnementen wilt verwerken, gebruikt het runbook de cmdlet [Disable-AzContextAutosave](/powershell/module/Az.Accounts/Disable-AzContextAutosave) . Met deze cmdlet zorgt u ervoor dat de verificatie context niet wordt opgehaald uit een ander runbook dat wordt uitgevoerd in dezelfde sandbox. Het runbook gebruikt ook de `Get-AzContext` cmdlet om de context van de huidige sessie op te halen en deze toe te wijzen aan de variabele `$AzureContext` .
 
 ```powershell
-# Ensures that you do not inherit an AzContext in your runbook
-Disable-AzContextAutosave –Scope Process
+Disable-AzContextAutosave -Scope Process
 
 $Conn = Get-AutomationConnection -Name AzureRunAsConnection
-Connect-AzAccount -ServicePrincipal `
+$AzureContext = Connect-AzAccount -ServicePrincipal `
 -Tenant $Conn.TenantID `
 -ApplicationId $Conn.ApplicationID `
--CertificateThumbprint $Conn.CertificateThumbprint
-
-$AzureContext = Get-AzContext
+-CertificateThumbprint $Conn.CertificateThumbprint `
+-Subscription $Conn.SubscriptionId
 
 $ChildRunbookName = 'ChildRunbookDemo'
 $AutomationAccountName = 'myAutomationAccount'
 $ResourceGroupName = 'myResourceGroup'
 
 Start-AzAutomationRunbook `
-    -ResourceGroupName $ResourceGroupName `
-    -AutomationAccountName $AutomationAccountName `
-    -Name $ChildRunbookName `
-    -DefaultProfile $AzureContext
+-ResourceGroupName $ResourceGroupName `
+-AutomationAccountName $AutomationAccountName `
+-Name $ChildRunbookName `
+-DefaultProfile $AzureContext
 ```
 
 ## <a name="work-with-a-custom-script"></a>Werken met een aangepast script
 
 > [!NOTE]
-> U kunt doorgaans geen aangepaste scripts en runbooks uitvoeren op de host waarop een Log Analytics-agent is geïnstalleerd. 
+> U kunt doorgaans geen aangepaste scripts en runbooks uitvoeren op de host waarop een Log Analytics-agent is geïnstalleerd.
 
 Een aangepast script gebruiken:
 
@@ -257,7 +254,7 @@ Wanneer u een nieuw runbook maakt of importeert, moet u het publiceren voordat u
 
 ### <a name="publish-a-runbook-using-powershell"></a>Een runbook publiceren met Power shell
 
-Gebruik de cmdlet [Publish-AzAutomationRunbook](/powershell/module/Az.Automation/Publish-AzAutomationRunbook?view=azps-3.5.0) om uw runbook te publiceren. 
+Gebruik de cmdlet [Publish-AzAutomationRunbook](/powershell/module/Az.Automation/Publish-AzAutomationRunbook) om uw runbook te publiceren. 
 
 ```azurepowershell-interactive
 $automationAccountName =  "AutomationAccount"
@@ -277,7 +274,7 @@ Als uw runbook is gepubliceerd, kunt u het voor de bewerking plannen:
 3. Selecteer **een schema toevoegen**.
 4. Selecteer **een planning aan uw Runbook koppelen**in het deel venster Runbook plannen.
 5. Kies **een nieuw schema maken** in het deel venster planning.
-6. Voer een naam, beschrijving en andere para meters in het deel venster nieuwe planning in. 
+6. Voer een naam, beschrijving en andere para meters in het deel venster nieuwe planning in.
 7. Wanneer de planning is gemaakt, markeert u deze en klikt u op **OK**. Deze moet nu zijn gekoppeld aan uw runbook.
 8. Zoek een e-mail in uw postvak om u te informeren over de status van het runbook.
 
@@ -285,7 +282,7 @@ Als uw runbook is gepubliceerd, kunt u het voor de bewerking plannen:
 
 ### <a name="view-statuses-in-the-azure-portal"></a>Statussen weer geven in de Azure Portal
 
-Details over de verwerking van taken in Azure Automation zijn in [taken](automation-runbook-execution.md#jobs)opgenomen. Wanneer u klaar bent om uw runbook-taken weer te geven, gebruikt u Azure Portal en opent u uw Automation-account. Aan de rechter kant ziet u een overzicht van alle runbook-taken in **taak statistieken**. 
+Details over de verwerking van taken in Azure Automation zijn in [taken](automation-runbook-execution.md#jobs)opgenomen. Wanneer u klaar bent om uw runbook-taken weer te geven, gebruikt u Azure Portal en opent u uw Automation-account. Aan de rechter kant ziet u een overzicht van alle runbook-taken in **taak statistieken**.
 
 ![Taak statistieken tegel](./media/manage-runbooks/automation-account-job-status-summary.png)
 
@@ -305,7 +302,7 @@ U kunt ook samenvattings Details van taken weer geven voor een specifiek runbook
 
 ### <a name="retrieve-job-statuses-using-powershell"></a>Taak statussen ophalen met behulp van Power shell
 
-Gebruik de cmdlet [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0) om de taken op te halen die voor een runbook zijn gemaakt en de details van een bepaalde taak. Als u een runbook start met `Start-AzAutomationRunbook` , wordt de resulterende taak geretourneerd. Gebruik [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.5.0) om taak uitvoer op te halen.
+Gebruik de cmdlet [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob) om de taken op te halen die voor een runbook zijn gemaakt en de details van een bepaalde taak. Als u een runbook start met `Start-AzAutomationRunbook` , wordt de resulterende taak geretourneerd. Gebruik [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput) om taak uitvoer op te halen.
 
 In het volgende voor beeld wordt de laatste taak voor een voor beeld-runbook opgehaald en worden de status, de opgegeven waarden voor de runbook-para meters en de taak uitvoer weer gegeven.
 
@@ -340,6 +337,4 @@ foreach($item in $output)
 
 * Zie [runbook-uitvoering in azure Automation](automation-runbook-execution.md)voor meer informatie over het beheren van runbook.
 * Zie [tekst Runbooks bewerken in azure Automation](automation-edit-textual-runbook.md)om een Power shell-runbook voor te bereiden.
-* Zie [informatie over Power shell-werk stroom voor Azure Automation](automation-powershell-workflow.md)voor hulp bij het schrijven van een Power shell workflow-runbook.
-* Zie [grafische Runbooks ontwerpen in azure Automation](automation-graphical-authoring-intro.md)voor meer informatie over het schrijven van grafische runbooks.
 * Zie problemen met [Runbook oplossen](troubleshoot/runbooks.md)voor informatie over het oplossen van problemen met het uitvoeren van een runbook.

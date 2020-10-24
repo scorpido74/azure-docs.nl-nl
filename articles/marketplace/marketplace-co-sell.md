@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
 ms.date: 10/19/2020
-ms.openlocfilehash: 96df9610f0da94cfe7d3a82fc8ef72aeb539b2d0
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 343a6c92c9d77b5ef589477802015c6346a95ea9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207701"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520983"
 ---
 # <a name="co-sell-partner-engagement"></a>Betrokkenheid van partner bij collectieve verkoop
 
@@ -79,7 +79,16 @@ Start uw directe verkoop traject rechtstreeks in het partner centrum volgens ond
 
 1. Sla het concept op voordat u doorgaat.
 1. Nadat u alle vereiste delen van de aanbieding hebt voltooid, kunt u deze voor beoordeling en publicatie indienen. Selecteer in de rechter bovenhoek de optie **controleren en publiceren**. Bekijk de details van de aanbieding en selecteer vervolgens **publiceren**.
-1. We bekijken de materialen die u hebt geüpload en bepalen of uw aanbieding in aanmerking komt voor het programma voor gezamenlijke verkoop.
+1. Nadat u hebt gecontroleerd of u aan de [criteria voor de co-sell-status](#co-sell-publishing-steps-and-requirements)hebt voldaan, volgt u de onderstaande richt lijnen om uw aanbieding voor co-sell te benoemen:
+    1. **Als u een micro soft partner manager (bijvoorbeeld PDM) hebt:** Neem contact op met uw partner manager voor hulp. Deze begeleidt u bij het aanwijzen van de status van de samen verkoop en de Azure IP Business Applications-gemotiveerd (indien van toepassing).
+    
+    1. **Als u geen micro soft-partner beheerder (bijvoorbeeld PDM) hebt:** [zelf benoemt via de Cloud-activerings Bureau (CED)](https://aka.ms/cednominate). Selecteer in de vervolg keuzelijst ' desired CED Services ' het volgende:
+<ul><ul>
+
+:::image type="content" source="media/co-sell/co-sell-request-review.png" alt-text="In deze afbeelding ziet u de locatie van het tabblad samen met micro soft.":::
+
+De CED neemt contact met u op om het proces te volt ooien.
+</ul></ul>
 
 ## <a name="next-steps"></a>Volgende stappen
 

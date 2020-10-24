@@ -9,16 +9,16 @@ ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 715e09eaf6ca379261d619fe02ad81a69a519d3e
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 5f59f626d9edbf30f61935c026ac965dbbe946f8
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328535"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516916"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Verificatie en autorisatie voor Azure spatiale ankers
 
-In dit artikel vindt u informatie over de verschillende manieren waarop u kunt verifiëren voor Azure spatiale ankers vanuit uw app of webservice. Meer informatie over de manieren waarop u toegangs beheer op basis van rollen kunt gebruiken in Azure Active Directory (Azure AD) om de toegang tot uw spatiale ankers-accounts te beheren.
+In dit artikel vindt u informatie over de verschillende manieren waarop u kunt verifiëren voor Azure spatiale ankers vanuit uw app of webservice. U leert ook hoe u met Azure op rollen gebaseerd toegangs beheer (Azure RBAC) in Azure Active Directory (Azure AD) kunt gebruiken voor het beheren van de toegang tot uw ruimtelijke-ankers accounts.
 
 ## <a name="overview"></a>Overzicht
 
@@ -108,7 +108,7 @@ Voor toepassingen die als doel Azure Active Directory gebruikers worden gebruikt
    1.    Ga in het Azure Portal naar de resource met ruimtelijke ankers.
    2.    Ga naar het tabblad **toegangs beheer (IAM)** .
    3.    Selecteer **Roltoewijzing toevoegen**.
-   1.    [Selecteer een rol](#role-based-access-control).
+   1.    [Selecteer een rol](#azure-role-based-access-control).
    2.    Voer in het vak **selecteren** de namen in van de gebruikers, groepen en/of toepassingen waaraan u toegang wilt toewijzen.
    3.    Selecteer **Opslaan**.
 
@@ -182,7 +182,7 @@ Het Azure AD-toegangs token wordt opgehaald via de [MSAL](../../active-directory
         1.    Ga in het Azure Portal naar de resource met ruimtelijke ankers.
         2.    Ga naar het tabblad **toegangs beheer (IAM)** .
         3.    Selecteer **Roltoewijzing toevoegen**.
-        1.    [Selecteer een rol](#role-based-access-control).
+        1.    [Selecteer een rol](#azure-role-based-access-control).
         2.    Voer in het vak **selecteren** de naam of namen in van de toepassingen waaraan u toegang wilt toewijzen. Als u wilt dat de gebruikers van uw app verschillende rollen hebben voor het ruimtelijke-ankers account, registreert u meerdere toepassingen in azure AD en wijst u hieraan een afzonderlijke rol toe. Implementeer vervolgens uw autorisatie logica om de juiste rol voor uw gebruikers te gebruiken.
         
               > [!NOTE] 
@@ -262,7 +262,7 @@ configuration.AccessToken(LR"(MyAccessToken)");
 
 ---
 
-## <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
+## <a name="azure-role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer voor Azure
 
 Om u te helpen het niveau van toegang te beheren dat wordt verleend aan toepassingen, services of Azure AD-gebruikers van uw service, kunt u deze vooraf bestaande rollen toewijzen aan uw Azure Spatial-ankers-accounts:
 

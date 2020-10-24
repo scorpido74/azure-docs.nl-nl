@@ -11,19 +11,19 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 978f8ff5e57a5a9a1df10152713c8c42901b3b6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e306c65735d8a5682cd90a1ce28fceec7d045c4d
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88545857"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519755"
 ---
 # <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>Zelf studie: een Zscaler configureren voor het automatisch inrichten van gebruikers
 
 In deze zelf studie ziet u de stappen voor het uitvoeren van Zscaler één en Azure Active Directory (Azure AD) voor het configureren van Azure AD voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en groepen tot Zscaler één.
 
 > [!NOTE]
-> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie voor meer informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen [gebruikers automatisch inrichten en ongedaan maken van de inrichting van SaaS-toepassingen (Software-as-a-Service) met Azure Active Directory](../active-directory-saas-app-provisioning.md).
+> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie voor meer informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen [gebruikers automatisch inrichten en ongedaan maken van de inrichting van SaaS-toepassingen (Software-as-a-Service) met Azure Active Directory](../app-provisioning/user-provisioning.md).
 
 
 ## <a name="prerequisites"></a>Vereisten
@@ -63,13 +63,13 @@ Voer de volgende stappen uit om Zscaler één van de Marketplace toe te voegen.
 
 Azure Active Directory gebruikt een concept met de naam *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers worden alleen de gebruikers of groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
 
-Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u bepalen welke gebruikers of groepen in azure AD toegang nodig hebben tot Zscaler. Volg de instructies in [een gebruiker of groep toewijzen aan een bedrijfs-app](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)om deze gebruikers of groepen toe te wijzen aan Zscaler één.
+Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u bepalen welke gebruikers of groepen in azure AD toegang nodig hebben tot Zscaler. Volg de instructies in [een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)om deze gebruikers of groepen toe te wijzen aan Zscaler één.
 
 ### <a name="important-tips-for-assigning-users-to-zscaler-one"></a>Belang rijke tips voor het toewijzen van gebruikers aan Zscaler One
 
 * We raden u aan één Azure AD-gebruiker toe te wijzen aan Zscaler één om de configuratie van automatische gebruikers inrichting te testen. U kunt later aanvullende gebruikers of groepen toewijzen.
 
-* Wanneer u een gebruiker toewijst aan Zscaler één, selecteert u een geldige toepassingsspecifieke rol, indien beschikbaar, in het dialoog venster toewijzing. Gebruikers met de rol **Standaardtoegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan Zscaler één, selecteert u een geldige toepassingsspecifieke rol, indien beschikbaar, in het dialoog venster toewijzing. Gebruikers met de rol **Standaard toegang** worden uitgesloten van het inrichten.
 
 ## <a name="configure-automatic-user-provisioning-to-zscaler-one"></a>Automatische gebruikers inrichting configureren voor Zscaler één
 
@@ -134,7 +134,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Zscaler één overeenkomende groeps kenmerken](./media/zscaler-one-provisioning-tutorial/group-attribute-mappings.png)
 
-14. Als u bereik filters wilt configureren, volgt u de instructies in de [zelf studie](./../active-directory-saas-scoping-filters.md)voor het filteren op bereik.
+14. Als u bereik filters wilt configureren, volgt u de instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik.
 
 15. Als u de Azure AD-inrichtings service voor Zscaler één wilt inschakelen, wijzigt u in de sectie **instellingen** de **inrichtings status** in **op aan**.
 
@@ -152,7 +152,7 @@ Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers of
 
 U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen. In het rapport worden alle acties beschreven die worden uitgevoerd door de Azure AD-inrichtings service op Zscaler One.
 
-Zie [Rapportage over automatische toewijzing van gebruikersaccounts](../active-directory-saas-provisioning-reporting.md) voor informatie over het lezen van de Azure AD-inrichtingslogboeken.
+Zie [Rapportage over automatische toewijzing van gebruikersaccounts](../app-provisioning/check-status-user-account-provisioning.md) voor informatie over het lezen van de Azure AD-inrichtingslogboeken.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
@@ -161,7 +161,7 @@ Zie [Rapportage over automatische toewijzing van gebruikersaccounts](../active-d
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van logboeken en het ophalen van rapporten over de inrichtingsactiviteit](../active-directory-saas-provisioning-reporting.md)
+* [Meer informatie over het controleren van logboeken en het ophalen van rapporten over de inrichtingsactiviteit](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/zscaler-one-provisioning-tutorial/tutorial-general-01.png

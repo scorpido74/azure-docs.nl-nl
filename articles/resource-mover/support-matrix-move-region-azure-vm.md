@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: raynew
-ms.openlocfilehash: d71181c5f45ab63febae7288f07189dc52ea12fd
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 4ee442d1983e4f7c1825690e1c780454272971aa
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945910"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521302"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Ondersteuning voor het verplaatsen van virtuele Azure-machines tussen Azure-regio's
 
@@ -107,7 +107,7 @@ Installatie kopieën van Azure Gallery (gepubliceerd door micro soft) | Onderste
 Installatie kopieën van Azure Gallery (gepubliceerd door derden)  | Ondersteund | Wordt ondersteund als de virtuele machine wordt uitgevoerd op een ondersteund besturings systeem.
 Aangepaste installatie kopieën (gepubliceerd door derden)| Ondersteund | Wordt ondersteund als de virtuele machine wordt uitgevoerd op een ondersteund besturings systeem.
 Vm's met Site Recovery | Niet ondersteund | Resources verplaatsen tussen regio's voor virtuele machines, met behulp van Site Recovery op de back-end. Als u Site Recovery al gebruikt, schakelt u replicatie uit en start u vervolgens het voorbereidings proces.
-RBAC-beleid | Niet ondersteund | Beleids regels op basis van op rollen gebaseerd toegangs beheer (RBAC) op Vm's worden niet naar de virtuele machine in de doel regio gekopieerd.
+Azure RBAC-beleid | Niet ondersteund | Beleids regels op basis van op rollen gebaseerd toegangs beheer (Azure RBAC) op Vm's worden niet naar de virtuele machine in de doel regio gekopieerd.
 Extensies | Niet ondersteund | Extensies worden niet naar de virtuele machine in de doel regio gekopieerd. Installeer ze hand matig nadat de verplaatsing is voltooid.
 
 
@@ -131,7 +131,7 @@ Gegevens schijf (standaard opslag account) | Niet ondersteund. | Wijzig het opsl
 Gegevens schijf (Premium Storage-account) | Niet ondersteund | Wijzig het opslag type in beheerde schijf en probeer vervolgens de virtuele machine te verplaatsen.
 Beheerde schijf (standaard) | Ondersteund  |
 Beheerde schijf (Premium) | Ondersteund |
-Standard SSD | Ondersteund |
+Standard - SSD | Ondersteund |
 Generatie 2 (UEFI-opstart) | Ondersteund
 Opslag account voor diagnostische gegevens over opstarten | Niet ondersteund | Schakel deze opnieuw in nadat u de virtuele machine naar de doel regio hebt verplaatst.
 

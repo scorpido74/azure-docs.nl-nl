@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 2f3fa755f61d398ce7f0965fba86262c3e3ec863
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef38e36ce1d2c7968e3eb7079270626629523334
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021150"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518732"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Opslaganalyse metrische gegevens (klassiek)
 
@@ -176,7 +176,10 @@ U kunt waarschuwingen instellen in de [Azure Portal](https://portal.azure.com) z
 >
 
 ## <a name="access-metrics-data-programmatically"></a>Toegang tot metrische gegevens via een programma  
-De volgende vermelding toont voor beeld C#-code die de metrische gegevens van de minuut voor een bereik van minuten opent en de resultaten weergeeft in een console venster. In het code voorbeeld wordt gebruikgemaakt van de Azure Storage-client bibliotheek versie 4. x of hoger, die de klasse **CloudAnalyticsClient** bevat waarmee de toegang tot de metrische tabellen in de opslag wordt vereenvoudigd.  
+De volgende vermelding toont voor beeld C#-code die de metrische gegevens van de minuut voor een bereik van minuten opent en de resultaten weergeeft in een console venster. In het code voorbeeld wordt gebruikgemaakt van de Azure Storage-client bibliotheek versie 4. x of hoger, die de klasse **CloudAnalyticsClient** bevat waarmee de toegang tot de metrische tabellen in de opslag wordt vereenvoudigd. 
+
+> [!NOTE]
+> De **CloudAnalyticsClient** -klasse is niet opgenomen in de Azure Blob Storage-client bibliotheek V12 voor .net. Op **31 augustus 2023** worden Opslaganalyse metrische gegevens, ook wel *klassieke metrische gegevens* genoemd, buiten gebruik gesteld. Zie de [officiële aankondiging](https://azure.microsoft.com/updates/azure-storage-classic-metrics-will-be-retired-on-31-august-2023/) voor meer informatie. Als u gebruikmaakt van klassieke metrische gegevens, raden we u aan om vóór die datum over te stappen op metrische gegevens in Azure Monitor. 
 
 ```csharp
 private static void PrintMinuteMetrics(CloudAnalyticsClient analyticsClient, DateTimeOffset startDateTime, DateTimeOffset endDateTime)  

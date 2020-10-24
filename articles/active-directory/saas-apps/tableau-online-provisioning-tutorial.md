@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 71d9af57ab85d694cc08f30c19f6ac87796b2c4e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: fa28b299a33f5386edc6ce14c523d2c332b0767b
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425563"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520501"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>Zelf studie: tableau online configureren voor het automatisch inrichten van gebruikers
 
@@ -61,7 +61,7 @@ Voer de volgende stappen uit om tableau online toe te voegen vanuit de Marketpla
 
 Azure Active Directory gebruikt een concept met de naam *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers worden alleen de gebruikers of groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
 
-Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u bepalen welke gebruikers of groepen in azure AD toegang moeten hebben tot tableau online. Volg de instructies in [een gebruiker of groep toewijzen aan een bedrijfs-app](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)om deze gebruikers of groepen online toe te wijzen aan tableau.
+Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u bepalen welke gebruikers of groepen in azure AD toegang moeten hebben tot tableau online. Volg de instructies in [een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)om deze gebruikers of groepen online toe te wijzen aan tableau.
 
 ### <a name="important-tips-for-assigning-users-to-tableau-online"></a>Belang rijke tips voor het toewijzen van gebruikers aan tableau online
 
@@ -78,7 +78,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="configure-automatic-user-provisioning-for-tableau-online-in-azure-ad"></a>Automatische gebruikers inrichting voor tableau online configureren in azure AD
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer alle toepassingen in **bedrijfs toepassingen**  >  **All applications**  >  **tableau online**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer alle toepassingen in **bedrijfs toepassingen**  >  **All applications**  >  **tableau online**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 

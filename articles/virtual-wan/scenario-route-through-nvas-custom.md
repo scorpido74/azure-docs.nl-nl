@@ -1,5 +1,5 @@
 ---
-title: "Scenario: verkeer routeren via Nva's met aangepaste instellingen"
+title: Verkeer routeren via Nva's met aangepaste instellingen
 titleSuffix: Azure Virtual WAN
 description: Dit scenario helpt u bij het routeren van verkeer via Nva's met behulp van een andere NVA voor Internet verkeer.
 services: virtual-wan
@@ -9,48 +9,44 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 031cbb48a7e0c572866dc591d26fb1e6b6b12dba
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 122e76e4bde96823ff18207bc24df4a8e91afb1c
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424721"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517965"
 ---
-# <a name="scenario-route-traffic-through-nvas---custom-preview"></a>Scenario: verkeer routeren via Nva's (preview)
+# <a name="scenario-route-traffic-through-nvas-by-using-custom-settings"></a>Scenario: verkeer routeren via Nva's met aangepaste instellingen
 
-Wanneer u werkt met virtuele WAN-hub routering, zijn er heel veel beschik bare scenario's. In dit scenario van NVA (virtueel netwerk apparaat) is het doel om verkeer te routeren via een NVA voor communicatie tussen VNets en filialen, en een ander NVA te gebruiken voor Internet-afhankelijk verkeer. Zie [about Virtual hub Routing](about-virtual-hub-routing.md)(Engelstalig) voor meer informatie over virtuele-hub-route ring.
+Wanneer u met virtuele WAN-hub van Azure werkt, hebt u een aantal opties die voor u beschikbaar zijn. De focus van dit artikel is wanneer u verkeer wilt routeren via een virtueel netwerk apparaat (NVA) voor communicatie tussen virtuele netwerken en filialen, en gebruik een andere NVA voor Internet verkeer. Zie [about Virtual hub Routing](about-virtual-hub-routing.md)(Engelstalig) voor meer informatie.
 
-## <a name="design"></a><a name="design"></a>Ontwerp
+## <a name="design"></a>Ontwerp
 
-In dit scenario gebruiken we de naamgevings Conventie:
+* **Spokes** voor virtuele netwerken die zijn verbonden met de virtuele hub. (Bijvoorbeeld VNet 1, VNet 2 en VNet 3 in het diagram verderop in dit artikel).
+* **Service-VNet** voor virtuele netwerken waarin gebruikers een NVA hebben geïmplementeerd om niet-Internet verkeer te controleren en mogelijk met algemene services die worden gebruikt door spokes. (Bijvoorbeeld VNet 4 in het diagram verderop in dit artikel). 
+* **Perimeter VNet** voor virtuele netwerken waarin gebruikers een NVA hebben geïmplementeerd die moeten worden gebruikt om het Internet verkeer te inspecteren. (Bijvoorbeeld VNet 5 in het diagram verderop in dit artikel).
+* **Hubs** voor virtuele WAN-hubs die worden beheerd door micro soft.
 
-* ' Spokes ' voor virtuele netwerken die zijn verbonden met de virtuele hub (VNet 1, VNet 2 en VNet 3 in **afbeelding 1**).
-* ' Service-VNet ' voor virtuele netwerken waarin gebruikers een NVA (VNet 4 in **afbeelding 1**) hebben geïmplementeerd om niet-Internet verkeer te controleren en mogelijk met algemene services die worden gebruikt door spokes.
-* ' DMZ VNet ' voor virtuele netwerken waarbij gebruikers een NVA hebben geïmplementeerd die moeten worden gebruikt voor het controleren van het Internet-gebonden verkeer (VNet 5 in **afbeelding 1**).
-* Hubs voor door micro soft beheerde virtuele WAN-hubs.
+De volgende tabel bevat een overzicht van de verbindingen die in dit scenario worden ondersteund:
 
-De volgende verbindings matrix bevat een overzicht van de stromen die in dit scenario worden ondersteund:
-
-**Verbindings matrix**
-
-| Van          | Aan:|*Knooppunten*|*Service-VNet*|*Vertakkingen*|*Internet*|
+| Van          | Tot|Knooppunten|Service-VNet|Vertakkingen|Internet|
 |---|---|:---:|:---:|:---:|:---:|:---:|
-| **Knooppunten**| &#8594;| rechtstreeks |rechtstreeks | Via service-VNet |Via DMZ VNet |
-| **Service-VNet**| &#8594;| rechtstreeks |n.v.t.| rechtstreeks | |
-| **Vertakkingen** | &#8594;| Via service-VNet |rechtstreeks| rechtstreeks |  |
+| **Knooppunten**| ->| rechtstreeks |rechtstreeks | via service-VNet |via perimeter VNet |
+| **Service-VNet**| ->| rechtstreeks |n.v.t.| rechtstreeks | |
+| **Vertakkingen** | ->| via service-VNet |rechtstreeks| rechtstreeks |  |
 
-Elk van de cellen in de verbindings matrix beschrijft of connectiviteit rechtstreeks via Virtual WAN of via een van de VNets met een NVA wordt uitgevoerd. Laten we de verschillende rijen in detail bekijken:
+Elk van de cellen in de verbindings matrix geeft aan of connectiviteit rechtstreeks via Virtual WAN of via een van de virtuele netwerken met een NVA. 
 
+Let op de volgende details:
 * Knoop punten
   * Spokes bereiken rechtstreeks via virtuele WAN-hubs andere spokes.
-  * Spokes krijgen verbindingen met vertakkingen via een statische route die verwijst naar het service-VNet. Ze moeten geen specifieke voor voegsels van de vertakkingen kennen (anders is dat iets meer specifiek en wordt de samen vatting overschreven).
-  * Spokes verzenden via een directe VNet-peering Internet verkeer naar het DMZ VNet.
-* Sleutel
-  * Vertakkingen krijgen toegang tot spokes via een statische route ring die verwijst naar het service-VNet. Ze moeten geen specifieke voor voegsels van de VNets leren die de samenvatte statische route overschrijven.
-* Het service-VNet is vergelijkbaar met een VNet voor gedeelde services dat bereikbaar moet zijn vanuit elk VNet en elke vertakking.
-* Het DMZ VNet hoeft niet echt verbinding te hebben via Virtual WAN, omdat het enige verkeer dat het ondersteunt, meer dan direct VNet-peerings zal zijn. We gebruiken echter hetzelfde connectiviteits model als voor de DMZ VNet om de configuratie te vereenvoudigen.
+  * Spokes krijgen verbindingen met vertakkingen via een statische route die verwijst naar het service-VNet. Er zijn geen specifieke voor voegsels van de vertakkingen, omdat deze specifieker zijn en de samen vatting onderdrukken.
+  * Spokes verzenden Internet verkeer naar het perimeter VNet via een directe VNet-peering.
+* Vertakkingen krijgen toegang tot spokes via een statische route ring die verwijst naar het service-VNet. Ze leren geen specifieke voor voegsels van de virtuele netwerken die de samenvatte statische route overschrijven.
+* Het service-VNet is vergelijkbaar met een VNet voor gedeelde services dat bereikbaar moet zijn vanuit elk virtueel netwerk en elke vertakking.
+* De perimeter VNet heeft geen verbinding nodig via Virtual WAN, omdat het enige verkeer dat wordt ondersteund, wordt geleverd via directe virtuele-netwerk peering. Gebruik voor het vereenvoudigen van de configuratie echter hetzelfde connectiviteits model als voor de perimeter VNet.
 
-Onze connectiviteits matrix biedt ons drie afzonderlijke connectiviteits patronen, die worden omgezet in drie route tabellen. De koppelingen met de verschillende VNets zijn als volgt:
+Er zijn drie verschillende verbindings patronen die worden omgezet in drie route tabellen. De koppelingen naar de verschillende virtuele netwerken zijn:
 
 * Knoop punten
   * Gekoppelde route tabel: **RT_V2B**
@@ -62,73 +58,69 @@ Onze connectiviteits matrix biedt ons drie afzonderlijke connectiviteits patrone
   * Gekoppelde route tabel: **standaard**
   * Door geven aan route tabellen: **RT_SHARED** en **standaard**
 
-We hebben deze statische routes nodig om ervoor te zorgen dat VNet-naar-vertakking-en vertakkings-naar-VNet-verkeer via de NVA in het service-VNet (VNet 4):
+Deze statische routes zorgen ervoor dat verkeer van en naar het virtuele netwerk en de vertakking via de NVA in het service-VNet (VNet 4):
 
 | Beschrijving | Routetabel | Statische route              |
 | ----------- | ----------- | ------------------------- |
 | Vertakkingen    | RT_V2B      | 10.2.0.0/16-> vnet4conn  |
 | NVA-spokes  | Standaard     | 10.1.0.0/16-> vnet4conn  |
 
-Het virtuele WAN weet nu naar welke verbinding de pakketten moeten worden verzonden, maar de verbinding moet weten wat er moet gebeuren wanneer deze pakketten worden ontvangen: hier worden de verbindings route tabellen gebruikt.
+U kunt nu Virtual WAN gebruiken om de juiste verbinding te selecteren om de pakketten naar te verzenden. U moet ook virtuele WAN gebruiken om de juiste actie te selecteren die moet worden uitgevoerd wanneer deze pakketten worden ontvangen. U gebruikt de volgende verbindings route tabellen:
 
 | Beschrijving | Verbinding | Statische route            |
 | ----------- | ---------- | ----------------------- |
 | VNet2Branch | vnet4conn  | 10.2.0.0/16-> 10.4.0.5 |
 | Branch2VNet | vnet4conn  | 10.1.0.0/16-> 10.4.0.5 |
 
-Op dit moment moet alles aanwezig zijn.
+Zie [about Virtual hub Routing](about-virtual-hub-routing.md)(Engelstalig) voor meer informatie.
 
-Zie [about Virtual hub Routing](about-virtual-hub-routing.md)(Engelstalig) voor meer informatie over virtuele-hub-route ring.
+## <a name="architecture"></a>Architectuur
 
-## <a name="architecture"></a><a name="architecture"></a>Architectuur
+Hier volgt een diagram van de architectuur die eerder in het artikel is beschreven.
 
-In **afbeelding 1**bevindt zich één hub, **hub 1**.
+Er is één hub met de naam **hub 1**.
 
 * **Hub 1** is rechtstreeks verbonden met NVA VNets **Vnet 4** en **vnet 5**.
 
-* Verkeer tussen VNets 1, 2 en 3 en branches (VPN/er/P2S) wordt naar verwachting via **VNet 4 NVA** 10.4.0.5.
+* Verkeer tussen VNets 1, 2 en 3 en branches is naar verwachting via **VNet 4 NVA** 10.4.0.5.
 
 * Alle Internet gebonden verkeer van VNets 1, 2 en 3 wordt verwacht door te gaan via **VNet 5 NVA** 10.5.0.5.
 
-**Afbeelding 1**
+:::image type="content" source="./media/routing-scenarios/nva-custom/figure-1.png" alt-text="Diagram van de netwerk architectuur.":::
 
-:::image type="content" source="./media/routing-scenarios/nva-custom/figure-1.png" alt-text="Afbeelding 1":::
-
-## <a name="workflow"></a><a name="workflow"></a>Werkstroom
+## <a name="workflow"></a>Werkstroom
 
 Als u route ring via NVA wilt instellen, kunt u overwegen de volgende stappen uit te voeren:
 
-1. Als u Internet-gebonden verkeer wilt gaan via VNet 5, hebt u VNets 1, 2 en 3 nodig om rechtstreeks verbinding te maken via VNet-peering met VNet 5. U moet ook een UDR instellen in de VNets voor 0.0.0.0/0 en de 10.5.0.5 van de volgende hop. Op dit moment staat Virtual WAN geen volgende hop-NVA in de virtuele hub voor 0.0.0.0/0 toe.
+1. Voor Internet-gebonden verkeer om via VNet 5 te gaan, hebt u VNets 1, 2 en 3 nodig om rechtstreeks verbinding te maken via de peering van het virtuele netwerk met VNet 5. U hebt ook een door de gebruiker gedefinieerde route ingesteld in de virtuele netwerken voor 0.0.0.0/0 en de 10.5.0.5 van de volgende hop. Op dit moment staat Virtual WAN geen NVA van de volgende hop toe aan de virtuele hub voor 0.0.0.0/0.
 
-1. In de Azure Portal gaat u naar uw virtuele hub en maakt u een aangepaste route tabel **RT_Shared** waarin routes worden weer gegeven via door geven van alle VNets-en vertakkings verbindingen. In **afbeelding 2**wordt dit weer gegeven als een lege aangepaste Route tabel **RT_Shared**.
+1. Ga in het Azure Portal naar uw virtuele hub en maak een aangepaste route tabel met de naam **RT_Shared**. In deze tabel vindt u informatie over routes via doorgifte van alle virtuele netwerken en vertakkings verbindingen. U ziet deze lege tabel in het volgende diagram.
 
    * **Routes:** U hoeft geen statische routes toe te voegen.
 
-   * **Koppeling:** Selecteer VNets 4 en 5. Dit betekent dat de VNets 4-en 5-verbindingen die zijn gekoppeld aan de route tabel **RT_Shared**.
+   * **Koppeling:** Selecteer VNets 4 en 5, wat betekent dat de verbindingen van deze virtuele netwerken zijn gekoppeld aan de route tabel **RT_Shared**.
 
-   * **Doorgifte:** Omdat u wilt dat alle vertakkingen en VNet-verbindingen hun routes dynamisch door geven aan deze route tabel, selecteert u vertakkingen en alle VNets.
+   * **Doorgifte:** Omdat u wilt dat alle vertakkingen en virtuele netwerk verbindingen de routes dynamisch door geven aan deze route tabel, selecteert u vertakkingen en alle virtuele netwerken.
 
-1. Maak een aangepaste route tabel **RT_V2B** voor het omleiden van verkeer van VNets 1, 2 en 3 naar branches.
+1. Maak een aangepaste route tabel met de naam **RT_V2B** voor het omleiden van verkeer van VNets 1, 2 en 3 naar branches.
 
-   * **Routes:** Voeg een geaggregeerde statische route vermelding toe voor vertakkingen (VPN/er/P2S) (10.2.0.0/16 in **afbeelding 2**) met de volgende hop als de VNet 4-verbinding. U moet ook een statische route configureren in de verbinding van VNet 4 voor de vertakkings voorvoegsels en aangeven dat de volgende hop het specifieke IP-adres van de NVA in VNet 4 is.
+   * **Routes:** Voeg een geaggregeerde statische route vermelding voor vertakkingen toe, met de volgende hop als de VNet 4-verbinding. Configureer een statische route in de verbinding van VNet 4 voor vertakkings voorvoegsels en geef de volgende hop op als het specifieke IP-adres van de NVA in VNet 4.
 
    * **Koppeling:** Selecteer alle VNets 1, 2 en 3. Dit betekent dat de VNet-verbindingen 1, 2 en 3 aan deze route tabel zullen worden gekoppeld en dat er routes (statisch en dynamisch via doorgifte) in deze route tabel kunnen worden weer gegeven.
 
-   * **Doorgifte:** Verbindingen geven routes door aan route tabellen. Als u VNets 1, 2 en 3 selecteert, worden de routes van VNets 1, 2 en 3 aan deze route tabel door gegeven. U hoeft geen routes van vertakkings verbindingen naar RT_V2B door te geven, omdat vertakkings-VNet-verkeer via de NVA in VNet 4 gaat.
+   * **Doorgifte:** Verbindingen geven routes door aan route tabellen. Als u VNets 1, 2 en 3 selecteert, kunnen routes worden door gegeven van VNets 1, 2 en 3 naar deze route tabel. U hoeft geen routes van de vertakkings verbindingen naar **RT_V2B**door te geven, omdat virtueel netwerk verkeer van de vertakking via de NVA in VNet 4 gaat.
   
-1. Bewerk de **DefaultRouteTable**voor de standaard route tabel.
+1. Bewerk de standaard route tabel **DefaultRouteTable**.
 
-   Alle VPN-, ExpressRoute-en gebruikers-VPN-verbindingen zijn gekoppeld aan de standaard route tabel. Alle VPN-, ExpressRoute-en gebruikers-VPN-verbindingen sturen routes door naar dezelfde set route tabellen.
+   Alle VPN-, Azure ExpressRoute-en VPN-verbindingen tussen gebruikers zijn gekoppeld aan de standaard route tabel. Alle VPN-, ExpressRoute-en gebruikers-VPN-verbindingen sturen routes door naar dezelfde set route tabellen.
 
-   * **Routes:** Voeg een geaggregeerde statische route vermelding toe voor VNets 1, 2 en 3 (10.1.0.0/16 in **afbeelding 2**) met de volgende hop als de VNet 4-verbinding. U moet ook een statische route configureren in de verbinding van VNet 4 voor VNet 1, 2 en 3 geaggregeerde voor voegsels en aangeven dat de volgende hop het specifieke IP-adres van de NVA in VNet 4 is.
+   * **Routes:** Voeg een geaggregeerde statische route vermelding toe voor VNets 1, 2 en 3, met de volgende hop als de VNet 4-verbinding. Configureer een statische route in de verbinding van VNet 4 voor VNet 1, 2 en 3 geaggregeerde voor voegsels en geef de volgende hop op als het specifieke IP-adres van de NVA in VNet 4.
 
-   * **Koppeling:** Zorg ervoor dat de optie voor vertakkingen (VPN/er/P2S) is geselecteerd, zodat de on-premises vertakkings verbindingen worden gekoppeld aan de *defaultroutetable*.
+   * **Koppeling:** Zorg ervoor dat de optie voor vertakkingen (VPN/er/P2S) is geselecteerd, zodat de on-premises vertakkings verbindingen aan de standaard route tabel zijn gekoppeld.
 
-   * **Doorgifte van:** Zorg ervoor dat de optie voor vertakkingen (VPN/er/P2S) is geselecteerd, zodat op de lokale verbindingen routes worden door gegeven aan de *defaultroutetable*.
+   * **Doorgifte van:** Zorg ervoor dat de optie voor vertakkingen (VPN/er/P2S) is geselecteerd, zodat lokale verbindingen routes naar de standaard route tabel door geven.
 
-**Afbeelding 2**
-
-:::image type="content" source="./media/routing-scenarios/nva-custom/figure-2.png" alt-text="Afbeelding 1" lightbox="./media/routing-scenarios/nva-custom/figure-2.png":::
+:::image type="content" source="./media/routing-scenarios/nva-custom/figure-2.png" alt-text="Diagram van de netwerk architectuur." lightbox="./media/routing-scenarios/nva-custom/figure-2.png":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

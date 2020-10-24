@@ -3,7 +3,7 @@ title: Media bestanden indexeren met Azure Media Indexer
 description: Met Azure Media Indexer kunt u inhoud van uw media bestanden doorzoekbaar maken en een transcriptie van volledige tekst genereren voor ondertiteling en tref woorden. In dit onderwerp wordt beschreven hoe u Media Indexer gebruikt.
 services: media-services
 documentationcenter: ''
-author: Asolanki
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 827a56b2-58a5-4044-8d5c-3e5356488271
@@ -12,23 +12,23 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/22/2019
-ms.author: juliako
+ms.date: 10/21/2020
+ms.author: inhenkel
 ms.reviewer: johndeu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 06bd9f159281a1353ca9474bf0876e99b6d1940a
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 12a4099a6a3f0d06dfbb40171970c7386c3e4d22
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018951"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518837"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Media bestanden indexeren met Azure Media Indexer
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-> [!NOTE]
-> De **Azure media indexer** -media processor wordt buiten gebruik gesteld. Voor de pensioen datums raadpleegt u dit onderwerp over [oudere onderdelen](legacy-components.md) . [Azure Media Services video indexer](../video-indexer/index.yml) vervangt deze verouderde media processor. Zie [Migrate from Azure media indexer en Azure media indexer 2 to Azure Media Services video indexer](migrate-indexer-v1-v2.md)voor meer informatie.
+> [!IMPORTANT]
+> Het wordt aanbevolen dat klanten migreren vanuit Indexeer functie v1 en Indexeer functie v2 naar het gebruik van de [Media Services v3 AudioAnalyzerPreset Basic-modus](../latest/analyzing-video-audio-files-concept.md). De media processor van [Azure media indexer](media-services-index-content.md) media en [Azure media indexer 2 Preview](./legacy-components.md) worden buiten gebruik gesteld. Voor de pensioen datums raadpleegt u dit onderwerp over [oudere onderdelen](legacy-components.md) .
 
 Met Azure Media Indexer kunt u inhoud van uw media bestanden doorzoekbaar maken en een transcriptie van volledige tekst genereren voor ondertiteling en tref woorden. U kunt één media bestand of meerdere media bestanden in een batch verwerken.  
 
@@ -248,11 +248,11 @@ De verwerking van Azure Media Indexer kan worden aangepast door naast de taak ee
 
 | Naam | Vereist | Beschrijving |
 | --- | --- | --- |
-| **ingevoerd** |onjuist |Activa bestand (en) die u wilt indexeren.</p><p>Azure Media Indexer ondersteunt de volgende indelingen voor media bestanden: MP4, WMV, MP3, M4A, WMA, AAC, WAV.</p><p>U kunt de bestands namen opgeven in het kenmerk **name** of **List** van het **input** -element (zoals hieronder weer gegeven). Als u niet opgeeft welk item bestand moet worden geïndexeerd, wordt het primaire bestand gekozen. Als er geen primair activa bestand is ingesteld, wordt het eerste bestand in de invoer Asset geïndexeerd.</p><p>Ga als volgt te werk om de naam van het activa bestand expliciet op te geven:<br/>`<input name="TestFile.wmv">`<br/><br/>U kunt ook meerdere Asset-bestanden tegelijk indexeren (Maxi maal 10 bestanden). Om dit te doen:<br/><br/><ol class="ordered"><li><p>Maak een tekst bestand (manifest bestand) en geef het de extensie. lst. </p></li><li><p>Voeg een lijst met alle bestands namen van assets in uw invoer Asset toe aan dit manifest bestand. </p></li><li><p>Voeg het manifest bestand toe (upload) naar de Asset.  </p></li><li><p>Geef de naam op van het manifest bestand in het lijst kenmerk van de invoer.<br/>`<input list="input.lst">`</li></ol><br/><br/>Opmerking: als u meer dan 10 bestanden aan het manifest bestand toevoegt, mislukt de indexerings taak met de fout code 2006. |
-| **metagegevensarchiefmethode** |onjuist |Meta gegevens voor het opgegeven item bestand (en) die worden gebruikt voor het aanpassen van de woorden lijst.  Het is handig om de Indexeer functie voor te bereiden om niet-standaard woordenlijst woorden, zoals de juiste naam woorden, te herkennen.<br/>`<metadata key="..." value="..."/>` <br/><br/>U kunt **waarden** voor vooraf gedefinieerde **sleutels**opgeven. Momenteel worden de volgende sleutels ondersteund:<br/><br/>"title" en "Description": wordt gebruikt voor het aanpassen van de terminologie van het taal model voor uw taak en het verbeteren van de nauw keurigheid van spraak herkenning.  De waarden Seed internet zoekt naar context afhankelijke relevante tekst documenten, waarbij de inhoud wordt gebruikt om de interne woorden lijst voor de duur van uw indexerings taak te verg Roten.<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
-| **functies** <br/><br/> Toegevoegd in versie 1,2. Op dit moment is de enige ondersteunde functie spraak herkenning (ASR). |onjuist |De functie voor spraak herkenning heeft de volgende instellingen sleutels:<table><tr><th><p>Sleutel</p></th>        <th><p>Beschrijving</p></th><th><p>Voorbeeldwaarde</p></th></tr><tr><td><p>Taal</p></td><td><p>De natuurlijke taal die moet worden herkend in het multimedia bestand.</p></td><td><p>Engels, Spaans</p></td></tr><tr><td><p>CaptionFormats</p></td><td><p>een door punt komma's gescheiden lijst met de gewenste indelingen van de uitvoer bijschriften (indien van toepassing)</p></td><td><p>ttml; webvtt</p></td></tr><tr><td><p></p></td><td><p> </p></td><td><p>Echte Terecht</p></td></tr><tr><td><p>GenerateKeywords</p></td><td><p>Een Booleaanse vlag die aangeeft of een XML-bestand met een tref woord is vereist.</p></td><td><p>Echte Terecht. </p></td></tr><tr><td><p>ForceFullCaption</p></td><td><p>Een Booleaanse vlag die aangeeft of volledige bijschriften moeten worden geforceerd (ongeacht het betrouwbaarheids niveau).  </p><p>De standaard waarde is False, in het geval dat woorden en zinsdelen met een kleiner dan 50% betrouw niveau worden wegge laten uit de laatste bijschrift uitvoer en worden vervangen door beletsel tekens ("...").  De weglatings tekens zijn handig voor het controleren van bijschriften en controles.</p></td><td><p>Echte Terecht. </p></td></tr></table> |
+| **ingevoerd** |false |Activa bestand (en) die u wilt indexeren.</p><p>Azure Media Indexer ondersteunt de volgende indelingen voor media bestanden: MP4, WMV, MP3, M4A, WMA, AAC, WAV.</p><p>U kunt de bestands namen opgeven in het kenmerk **name** of **List** van het **input** -element (zoals hieronder weer gegeven). Als u niet opgeeft welk item bestand moet worden geïndexeerd, wordt het primaire bestand gekozen. Als er geen primair activa bestand is ingesteld, wordt het eerste bestand in de invoer Asset geïndexeerd.</p><p>Ga als volgt te werk om de naam van het activa bestand expliciet op te geven:<br/>`<input name="TestFile.wmv">`<br/><br/>U kunt ook meerdere Asset-bestanden tegelijk indexeren (Maxi maal 10 bestanden). Om dit te doen:<br/><br/><ol class="ordered"><li><p>Maak een tekst bestand (manifest bestand) en geef het de extensie. lst. </p></li><li><p>Voeg een lijst met alle bestands namen van assets in uw invoer Asset toe aan dit manifest bestand. </p></li><li><p>Voeg het manifest bestand toe (upload) naar de Asset.  </p></li><li><p>Geef de naam op van het manifest bestand in het lijst kenmerk van de invoer.<br/>`<input list="input.lst">`</li></ol><br/><br/>Opmerking: als u meer dan 10 bestanden aan het manifest bestand toevoegt, mislukt de indexerings taak met de fout code 2006. |
+| **metagegevensarchiefmethode** |false |Meta gegevens voor het opgegeven item bestand (en) die worden gebruikt voor het aanpassen van de woorden lijst.  Het is handig om de Indexeer functie voor te bereiden om niet-standaard woordenlijst woorden, zoals de juiste naam woorden, te herkennen.<br/>`<metadata key="..." value="..."/>` <br/><br/>U kunt **waarden** voor vooraf gedefinieerde **sleutels**opgeven. Momenteel worden de volgende sleutels ondersteund:<br/><br/>"title" en "Description": wordt gebruikt voor het aanpassen van de terminologie van het taal model voor uw taak en het verbeteren van de nauw keurigheid van spraak herkenning.  De waarden Seed internet zoekt naar context afhankelijke relevante tekst documenten, waarbij de inhoud wordt gebruikt om de interne woorden lijst voor de duur van uw indexerings taak te verg Roten.<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
+| **functies** <br/><br/> Toegevoegd in versie 1,2. Op dit moment is de enige ondersteunde functie spraak herkenning (ASR). |false |De functie voor spraak herkenning heeft de volgende instellingen sleutels:<table><tr><th><p>Sleutel</p></th>        <th><p>Beschrijving</p></th><th><p>Voorbeeldwaarde</p></th></tr><tr><td><p>Taal</p></td><td><p>De natuurlijke taal die moet worden herkend in het multimedia bestand.</p></td><td><p>Engels, Spaans</p></td></tr><tr><td><p>CaptionFormats</p></td><td><p>een door punt komma's gescheiden lijst met de gewenste indelingen van de uitvoer bijschriften (indien van toepassing)</p></td><td><p>ttml; webvtt</p></td></tr><tr><td><p></p></td><td><p> </p></td><td><p>Echte Terecht</p></td></tr><tr><td><p>GenerateKeywords</p></td><td><p>Een Booleaanse vlag die aangeeft of een XML-bestand met een tref woord is vereist.</p></td><td><p>Echte Terecht. </p></td></tr><tr><td><p>ForceFullCaption</p></td><td><p>Een Booleaanse vlag die aangeeft of volledige bijschriften moeten worden geforceerd (ongeacht het betrouwbaarheids niveau).  </p><p>De standaard waarde is False, in het geval dat woorden en zinsdelen met een kleiner dan 50% betrouw niveau worden wegge laten uit de laatste bijschrift uitvoer en worden vervangen door beletsel tekens ("...").  De weglatings tekens zijn handig voor het controleren van bijschriften en controles.</p></td><td><p>Echte Terecht. </p></td></tr></table> |
 
-### <a name="error-codes"></a><a id="error_codes"></a>Foutcodes
+### <a name="error-codes"></a><a id="error_codes"></a>Fout codes
 In het geval van een fout moet Azure Media Indexer een van de volgende fout codes rapporteren:
 
 | Code | Naam | Mogelijke redenen |

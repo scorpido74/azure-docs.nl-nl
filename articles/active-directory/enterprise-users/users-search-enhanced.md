@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 10/02/2020
+ms.date: 10/23/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcef70d821c7148cb926bd9357bbe656ceae35fe
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d0e2ce094b792d6f3f7e5f8fe1920d87a9cceea2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375703"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517172"
 ---
 # <a name="user-management-enhancements-preview-in-azure-active-directory"></a>Verbeteringen in gebruikers beheer (preview) in Azure Active Directory
 
@@ -29,7 +29,7 @@ In dit artikel wordt beschreven hoe u de preview-versie van gebruikers beheer ku
 Wijzigingen in de preview zijn onder andere:
 
 - Meer zicht bare gebruikers eigenschappen, waaronder de object-ID, de synchronisatie status van de Directory, het aanmaak type en de identiteits verlener
-- Met zoeken kunt u nu gecombineerde Zoek opdrachten van namen, e-mails en object-Id's
+- Als u nu zoeken, kunt u zoeken in subtekenreeksen en gecombineerde Zoek opdrachten van namen, e-mails en object-Id's
 - Uitgebreid filteren op gebruikers type (lid, gast, geen), synchronisatie status van de Directory, aanmaak type, bedrijfs naam en domein naam
 - Nieuwe sorteer mogelijkheden op Eigenschappen als naam en user principal name
 - Een nieuw totaal aantal gebruikers dat updates met Zoek opdrachten of filters heeft
@@ -59,7 +59,7 @@ Hieronder ziet u de eigenschappen van de gebruiker op de pagina **alle gebruiker
 
 - Naam: de weergave naam van de gebruiker.
 - Principal-naam van gebruiker: de user principal name (UPN) van de gebruiker.
-- Gebruikers type: het gebruikers type van de gebruiker, ofwel lid of gast.
+- Gebruikers type: lid, gast, geen.
 - Directory-synchronisatie: geeft aan of de gebruiker is gesynchroniseerd vanuit een on-premises Directory.
 - Identiteits verlener: de verleners van de identiteit die wordt gebruikt om zich aan te melden bij een gebruikers account.
 - Object-ID: de object-ID van de gebruiker.
@@ -67,6 +67,7 @@ Hieronder ziet u de eigenschappen van de gebruiker op de pagina **alle gebruiker
 - Bedrijfs naam: de bedrijfs naam waaraan de gebruiker is gekoppeld.
 - Uitnodigings status: de status van de uitnodiging voor een gast gebruiker.
 - Mail: het e-mail adres van de gebruiker.
+- Laatste aanmelding: de datum waarop de gebruiker zich voor het laatst heeft aangemeld. Deze eigenschap is alleen zichtbaar voor gebruikers met machtigingen voor het lezen van controle Logboeken (Reporting_ApplicationAuditLogs_Read)
 
 ![nieuwe gebruikers eigenschappen die worden weer gegeven op de pagina's van alle gebruikers en verwijderde gebruikers](./media/users-search-enhanced/user-properties.png)
 
@@ -75,7 +76,10 @@ Hieronder ziet u de eigenschappen van de gebruiker op de pagina **alle gebruiker
 De pagina **Verwijderde gebruikers** bevat alle kolommen die beschikbaar zijn op de pagina **alle gebruikers** en enkele extra kolommen, namelijk:
 
 - Verwijderings datum: de datum waarop de gebruiker voor het eerst is verwijderd uit de organisatie (de gebruiker is herstorbaar).
-- Permanente verwijderings datum: de datum waarop de gebruiker permanent is verwijderd uit de organisatie.
+- Permanente verwijderings datum: de datum waarna het proces van het permanent verwijderen van de gebruiker uit de organisatie automatisch wordt gestart. 
+
+> [!NOTE]
+> Verwijderings datums worden weer gegeven in Coordinated Universal Time (UTC).
 
 Sommige kolommen worden standaard weer gegeven. Als u andere kolommen wilt toevoegen, selecteert u **kolommen** op de pagina, selecteert u de kolom namen die u wilt toevoegen en selecteert u **OK** om uw voor keuren op te slaan.
 
@@ -88,7 +92,7 @@ Selecteer een vermelding in de kolom **identiteits verlener** voor een wille keu
 
 ## <a name="user-list-search"></a>Zoek opdracht gebruikers lijst
 
-Wanneer u een zoek reeks invoert, gebruikt de zoek opdracht ' begint met ' die nu namen, e-mail berichten of object-Id's in één zoek opdracht kan vinden. U kunt een van deze kenmerken in het zoekvak invoeren, waarna de zoek opdracht automatisch alle overeenkomende resultaten oplevert. U kunt dezelfde zoek opdracht uitvoeren op de pagina's **alle gebruikers** en **Verwijderde gebruikers** .
+Wanneer u een zoek reeks invoert, gebruikt de zoek actie nu ' begint met ' en wordt met subtekenreeks zoeken namen, e-mail berichten of object-Id's in één zoek opdracht gevonden. U kunt een van deze kenmerken in het zoekvak invoeren en de zoek opdracht zoekt automatisch naar de volledige eigenschappen om eventuele overeenkomende resultaten te retour neren. De subtekenreeks zoeken wordt alleen uitgevoerd op hele woorden. U kunt dezelfde zoek opdracht uitvoeren op de pagina's **alle gebruikers** en **Verwijderde gebruikers** .
 
 ## <a name="user-list-filtering"></a>Filteren van gebruikers lijst
 
@@ -133,10 +137,10 @@ U kunt het totale aantal gebruikers weer geven op de pagina's **alle gebruikers*
 
 Vraag | Antwoord
 -------- | ------
+Waarom wordt de verwijderde gebruiker nog steeds weer gegeven wanneer de permanente verwijderings datum is verstreken? | De permanente verwijderings datum wordt weer gegeven in de UTC-tijd zone. Dit komt dus mogelijk niet overeen met de huidige tijd zone. Deze datum is ook de vroegste datum waarna de gebruiker permanent wordt verwijderd uit de organisatie, zodat deze nog steeds kan worden verwerkt. Gebruikers die permanent zijn verwijderd, worden automatisch uit de lijst verwijderd.
 Wat gebeurt er met de bulk mogelijkheden voor gebruikers en gasten? | De bulk bewerkingen zijn allemaal nog steeds beschikbaar voor gebruikers en gasten, waaronder bulksgewijs maken, bulksgewijs uitnodigen, bulksgewijs verwijderen en gebruikers downloaden. We hebben deze zojuist samengevoegd in een menu met de naam **bulk bewerkingen**. U kunt de opties voor **bulk bewerkingen** vinden boven aan de pagina **alle gebruikers** .
 Wat is er gebeurd met de bron kolom? | De **bron** kolom is vervangen door andere kolommen die vergelijk bare informatie geven, terwijl u kunt filteren op die waarden onafhankelijk van elkaar. Voor beelden zijn onder meer het **type maken**, de **Directory is gesynchroniseerd** en de identiteit van de **Uitgever**.
 Wat is er gebeurd met de kolom gebruikers naam? | De kolom **gebruikers naam** is nog steeds, maar is gewijzigd in Principal-naam van **gebruiker**. Dit komt overeen met de informatie in die kolom. U ziet ook dat de volledige Principal-naam van de gebruiker nu wordt weer gegeven voor B2B-gasten. Dit komt overeen met wat u in MS Graph zou krijgen.  
-Waarom kan ik alleen een zoek opdracht uitvoeren met ' starten met ' en niet naar ' bevat '? | Er zijn enkele beperkingen waardoor het niet mogelijk is om een ' contains '-Zoek opdracht uit te voeren. We hebben de feedback gehoord en blijven daarom afgestemd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

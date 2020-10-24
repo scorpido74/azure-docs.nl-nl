@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 86336ddb557613d42117480a5793e8b0ecbc7bae
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: e4b85c609c53c46cfab71f37b8427eb1cee29f1a
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495842"
+ms.locfileid: "92518004"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Veelgestelde vragen over virtuele Azure-netwerken (FAQ)
 
@@ -326,7 +326,7 @@ Er zijn twee stappen voor het beveiligen van een Azure-Service Resource via serv
 1. Schakel service-eind punten voor de Azure-service in.
 2. VNet-Acl's instellen voor de Azure-service.
 
-De eerste stap is een bewerking aan het netwerk en de tweede stap is een bewerking aan de service bron naast elkaar. Beide stappen kunnen door dezelfde beheerder of verschillende beheerders worden uitgevoerd op basis van de RBAC-machtigingen die zijn verleend aan de beheerdersrol. We raden u aan eerst Service-eind punten voor uw virtuele netwerk in te scha kelen voordat u VNet-Acl's op de Azure-service kant instelt. Daarom moeten de stappen in de bovenstaande volg orde worden uitgevoerd om de VNet-service-eind punten in te stellen.
+De eerste stap is een bewerking aan het netwerk en de tweede stap is een bewerking aan de service bron naast elkaar. Beide stappen kunnen door dezelfde beheerder of verschillende beheerders worden uitgevoerd op basis van de Azure RBAC-machtigingen die zijn verleend aan de beheerdersrol. We raden u aan eerst Service-eind punten voor uw virtuele netwerk in te scha kelen voordat u VNet-Acl's op de Azure-service kant instelt. Daarom moeten de stappen in de bovenstaande volg orde worden uitgevoerd om de VNet-service-eind punten in te stellen.
 
 >[!NOTE]
 > Beide bewerkingen die hierboven worden beschreven, moeten worden voltooid voordat u de toegang tot de Azure-service kunt beperken tot het toegestane VNet en subnet. Alleen het inschakelen van service-eind punten voor de Azure-service aan de kant van het netwerk biedt geen beperkte toegang. Daarnaast moet u ook VNet-Acl's instellen op de service kant van Azure.

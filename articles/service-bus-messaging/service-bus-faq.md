@@ -3,12 +3,12 @@ title: Veelgestelde vragen over Azure Service Bus | Microsoft Docs
 description: In dit artikel vindt u antwoorden op enkele veelgestelde vragen over Azure Service Bus.
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: addd629f137c5f638cd32a639f79cdbbafc4a94d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec79b6988fdbc78dc4f45e504f84179e617589cc
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90894529"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518752"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus-Veelgestelde vragen (FAQ)
 
@@ -83,7 +83,7 @@ Als u de **zone redundantie** voor uw naam ruimte gebruikt, moet u een aantal ex
     > Het IP-adres dat door de `nslookup` opdracht wordt geretourneerd, is geen statisch IP-adres. Het blijft echter constant totdat de onderliggende implementatie wordt verwijderd of verplaatst naar een ander cluster.
 
 ### <a name="where-can-i-find-the-ip-address-of-the-client-sendingreceiving-messages-tofrom-a-namespace"></a>Waar vind ik het IP-adres van de client die berichten verzendt/ontvangt van een naam ruimte? 
-De IP-adressen van clients die berichten verzenden of ontvangen van uw naam ruimte worden niet geregistreerd. Genereer sleutels opnieuw zodat alle bestaande clients geen[RBAC](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)-instellingen (Role-based Access Control) kunnen verifiëren en controleren om ervoor te zorgen dat alleen toegestane gebruikers of toepassingen toegang hebben tot de naam ruimte. 
+De IP-adressen van clients die berichten verzenden of ontvangen van uw naam ruimte worden niet geregistreerd. Genereer sleutels opnieuw zodat alle bestaande clients geen authenticatie [van op rollen gebaseerde toegangs beheer (Azure RBAC)](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)kunnen verifiëren en controleren om ervoor te zorgen dat alleen toegestane gebruikers of toepassingen toegang hebben tot de naam ruimte. 
 
 Als u een **Premium** -naam ruimte gebruikt, kunt u [IP-filtering](service-bus-ip-filtering.md), [service-eind punten voor virtuele netwerken](service-bus-service-endpoints.md)en [privé-eind punten](private-link-service.md) gebruiken om de toegang tot de naam ruimte te beperken. 
 

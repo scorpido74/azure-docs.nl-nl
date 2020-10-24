@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4e844904f236e9d81404a3481af9349ac8881085
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 3604a2efb4d6f8c08a19d832c8523e44df352444
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92310439"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518769"
 ---
 # <a name="azure-security-baseline-for-service-bus"></a>Azure-beveiligings basislijn voor Service Bus
 
@@ -227,7 +227,7 @@ U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: een inventaris van beheerders accounts onderhouden
 
-**Hulp**: met Azure op rollen gebaseerd toegangs beheer (RBAC) kunt u de toegang tot Azure-resources beheren via roltoewijzingen. U kunt deze rollen toewijzen aan gebruikers, groeperingen van service-principals en beheerde identiteiten. Er zijn vooraf gedefinieerde ingebouwde rollen voor Service Bus. deze rollen kunnen worden geïnventariseerd of worden opgevraagd via hulpprogram ma's als Azure CLI, Azure PowerShell of de Azure Portal.
+**Richt lijnen**: met Azure op rollen gebaseerd toegangs beheer (Azure RBAC) kunt u de toegang tot Azure-resources beheren via roltoewijzingen. U kunt deze rollen toewijzen aan gebruikers, groeperingen van service-principals en beheerde identiteiten. Er zijn vooraf gedefinieerde ingebouwde rollen voor Service Bus. deze rollen kunnen worden geïnventariseerd of worden opgevraagd via hulpprogram ma's als Azure CLI, Azure PowerShell of de Azure Portal.
 
 - [Ingebouwde rollen voor Azure Service Bus](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)
 

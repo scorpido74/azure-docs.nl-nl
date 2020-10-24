@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 787c7d7df5f013dd4477e466c02a2b323b4b59df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95f1c4bf9b599da8285ac69e299549e5aa73c2f9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275095"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519585"
 ---
 # <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity"></a>Een Indexeer functie verbinding met een gegevens bron instellen met behulp van een beheerde identiteit
 
@@ -31,7 +31,7 @@ Deze problemen kunnen worden opgelost door uw verbinding in te stellen met behul
 
 ## <a name="using-managed-identities"></a>Beheerde identiteiten gebruiken
 
-[Beheerde identiteiten](../active-directory/managed-identities-azure-resources/overview.md) is een functie die Azure-Services biedt met een automatisch beheerde identiteit in azure Active Directory (Azure AD). U kunt deze functie in azure Cognitive Search gebruiken om een gegevens bron object te maken met een connection string dat geen referenties bevat. In plaats daarvan wordt uw zoek service toegang verleend tot de gegevens bron via op rollen gebaseerd toegangs beheer (RBAC).
+[Beheerde identiteiten](../active-directory/managed-identities-azure-resources/overview.md) is een functie die Azure-Services biedt met een automatisch beheerde identiteit in azure Active Directory (Azure AD). U kunt deze functie in azure Cognitive Search gebruiken om een gegevens bron object te maken met een connection string dat geen referenties bevat. In plaats daarvan krijgt uw zoek service toegang tot de gegevens bron via op rollen gebaseerd toegangs beheer van Azure (Azure RBAC).
 
 Bij het instellen van een gegevens bron met behulp van een beheerde identiteit kunt u de referenties van uw gegevens bron wijzigen. uw Indexeer functies kunnen nog steeds verbinding maken met de gegevens bron. U kunt ook gegevens bron objecten maken in uw code zonder een account sleutel op te vragen of Key Vault te gebruiken om een account sleutel op te halen.
 
