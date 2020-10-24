@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: 633baafa7f6cb1bc134f07ce64ba98ebd4cb626c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50884a45e60826f09fffcc9f86992563e473424d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90603047"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478045"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>big data Analytics versnellen met behulp van de Apache Spark om de connector te Azure Cosmos DB
 
@@ -33,8 +33,8 @@ U kunt de connector gebruiken met [Azure Databricks](https://azure.microsoft.com
 
 ## <a name="quickstart"></a>Snelstart
 
-* Volg de stappen in aan [de slag met de Java SDK](sql-api-async-java-get-started.md) om een Cosmos DB account in te stellen en een aantal gegevens in te vullen.
-* Volg de stappen in [Azure Databricks](/azure/azure-databricks/quickstart-create-databricks-workspace-portal) aan de slag om een Azure Databricks-werk ruimte en-cluster in te stellen.
+* Volg de stappen in aan [de slag met de Java SDK](./create-sql-api-java.md) om een Cosmos DB account in te stellen en een aantal gegevens in te vullen.
+* Volg de stappen in [Azure Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal) aan de slag om een Azure Databricks-werk ruimte en-cluster in te stellen.
 * U kunt nu nieuwe notitie blokken maken en de Cosmos DB-connector bibliotheek importeren. Ga aan [de slag met de Cosmos DB-connector](#bk_working_with_connector) voor meer informatie over het instellen van uw werk ruimte.
 * De volgende sectie bevat fragmenten over het lezen en schrijven met behulp van de connector.
 

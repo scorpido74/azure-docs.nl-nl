@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 78addb76e2ce7a2679358e241650cc5cc827791f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 0cc3a335e5fbe037742767a3b59243e366f094ee
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461614"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495924"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Azure Functions-apps verbinden voor het verwerken van gegevens
 
@@ -186,26 +186,28 @@ U kunt de beveiligings toegang voor de Azure function-app instellen met een van 
 
 De Azure function-skelet van eerdere voor beelden vereist dat er een Bearer-token wordt door gegeven, zodat het kan worden geverifieerd met Azure Digital Apparaatdubbels. Als u er zeker van wilt zijn dat dit Bearer-token is door gegeven, moet u [Managed Service Identity (MSI)](../active-directory/managed-identities-azure-resources/overview.md) instellen voor de functie-app. U hoeft dit slechts één keer te doen voor elke functie-app.
 
-U kunt door het systeem beheerde identiteit maken en de identiteit van de functie-app toewijzen aan de rol _Azure Digital Apparaatdubbels Owner (preview)_ voor uw Azure Digital apparaatdubbels-instantie. Hiermee geeft u de functie-app toestemming in het exemplaar voor het uitvoeren van activiteiten voor gegevens vlak. Vervolgens stelt u de URL van het Azure Digital Apparaatdubbels-exemplaar toegankelijk te maken voor uw functie door een omgevings variabele in te stellen.
+U kunt door het systeem beheerde identiteit maken en de identiteit van de functie-app toewijzen aan de rol _**Azure Digital Apparaatdubbels data owner**_ voor uw Azure Digital apparaatdubbels-instantie. Hiermee geeft u de functie-app toestemming in het exemplaar voor het uitvoeren van activiteiten voor gegevens vlak. Vervolgens stelt u de URL van het Azure Digital Apparaatdubbels-exemplaar toegankelijk te maken voor uw functie door een omgevings variabele in te stellen.
 
- Gebruik [Azure Cloud shell](https://shell.azure.com) om de opdrachten uit te voeren.
+[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
+
+Gebruik [Azure Cloud shell](https://shell.azure.com) om de opdrachten uit te voeren.
 
 Gebruik de volgende opdracht om de door het systeem beheerde identiteit te maken. Noteer het veld _principalId_ in de uitvoer.
 
-```azurecli 
+```azurecli-interactive 
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>   
 ```
-Gebruik de waarde _principalId_ in de volgende opdracht om de identiteit van de functie-app toe te wijzen aan de rol _Azure Digital Apparaatdubbels Owner (preview)_ voor uw Azure Digital apparaatdubbels-exemplaar.
+Gebruik de waarde _principalId_ in de volgende opdracht om de identiteit van de functie-app toe te wijzen aan de rol _Azure Digital apparaatdubbels data owner_ voor uw Azure Digital apparaatdubbels-exemplaar.
 
-```azurecli 
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"
+```azurecli-interactive 
+az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
 ```
 Ten slotte kunt u de URL van uw Azure Digital Apparaatdubbels-exemplaar toegankelijk maken voor uw functie door een omgevings variabele in te stellen. Zie [*omgevings variabelen*](/sandbox/functions-recipes/environment-variables)voor meer informatie over het instellen van omgevings variabelen. 
 
 > [!TIP]
 > De URL van het Azure Digital Apparaatdubbels-exemplaar wordt gemaakt door *https://* toe te voegen aan het begin van de *hostnaam*van uw Azure Digital apparaatdubbels-exemplaar. Als u de hostnaam, samen met alle eigenschappen van uw exemplaar, wilt zien, kunt u uitvoeren `az dt show --dt-name <your-Azure-Digital-Twins-instance>` .
 
-```azurecli 
+```azurecli-interactive 
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-hostname>"
 ```
 ### <a name="option-2-set-up-security-access-for-the-azure-function-app-using-azure-portal"></a>Optie 2: beveiligings toegang instellen voor de Azure function-app met behulp van Azure Portal
@@ -241,7 +243,7 @@ Selecteer op de pagina _roltoewijzing toevoegen (preview)_ die wordt geopend:
 * _Bereik_: resourcegroep
 * _Abonnement_: Selecteer uw Azure-abonnement
 * _Resource groep_: Selecteer de resource groep in de vervolg keuzelijst
-* _Rol_: Selecteer de _Azure Digital apparaatdubbels-eigenaar (preview)_ in de vervolg keuzelijst
+* _Rol_: Selecteer de _Azure Digital Apparaatdubbels-gegevens eigenaar_ uit de vervolg keuzelijst
 
 Sla uw gegevens vervolgens op door te klikken op de knop _Opslaan_ .
 

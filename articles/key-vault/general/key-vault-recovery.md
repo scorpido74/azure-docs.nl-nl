@@ -8,14 +8,14 @@ author: ShaneBala-keyvault
 ms.author: sudbalas
 manager: ravijan
 ms.date: 09/30/2020
-ms.openlocfilehash: bea4a5d92309710645dd63e611cd0a5e3b742c34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0fe5c2af42e8d8095963e29149e1338cc064c90
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91604280"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495193"
 ---
-# <a name="azure-key-vault-recovery-overview"></a>Overzicht van Azure Key Vault herstel
+# <a name="how-to-enable-soft-delete-and-purge-protection"></a>Voorlopig verwijderen en leegmaken van beveiliging inschakelen
 
 Dit artikel heeft betrekking op twee herstel functies van Azure Key Vault, zacht verwijderen en beveiliging opschonen. Dit document bevat een overzicht van deze functies en laat zien hoe u deze kunt beheren via de Azure Portal, Azure CLI en Azure PowerShell.
 
@@ -34,7 +34,7 @@ Het **opschonen** van de beveiliging is zodanig ontworpen dat het verwijderen va
 > [!NOTE]
 > Het opschonen van de beveiliging is zo ontworpen dat er geen beheerdersrol of machtiging is die het opschonen van de beveiliging kan overschrijven, uitschakelen of omzeilen. **Wanneer het leegmaken van de beveiliging is ingeschakeld, kan het niet worden uitgeschakeld of overschreven door iedereen, waaronder micro soft.** Dit betekent dat u een verwijderde sleutel kluis moet herstellen of wachten totdat de Bewaar periode is verstreken voordat u de naam van de sleutel kluis opnieuw gebruikt.
 
-# <a name="azure-portal"></a>[Azure-portal](#tab/azure-portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
 ## <a name="verify-if-soft-delete-is-enabled-on-a-key-vault-and-enable-soft-delete"></a>Controleren of de functie voor voorlopig verwijderen is ingeschakeld voor een sleutel kluis en het voorlopig verwijderen inschakelen
 
@@ -89,7 +89,7 @@ Het **opschonen** van de beveiliging is zodanig ontworpen dat het verwijderen va
 
 :::image type="content" source="../media/key-vault-recovery-5.png" alt-text=" Een scherm afbeelding van de Azure Portal<>":::
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ## <a name="key-vault-cli"></a>Key Vault (CLI)
 

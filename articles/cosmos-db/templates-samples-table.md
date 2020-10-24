@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: c77c917cf6063b787dc2972f5ee7db3329e0e743
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: ef7749a2fa9c7a45cc4e2854e2eb4fcdc9792425
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284475"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477025"
 ---
 # <a name="manage-azure-cosmos-db-table-api-resources-using-azure-resource-manager-templates"></a>Azure Cosmos DB Table-API resources beheren met behulp van Azure Resource Manager sjablonen
 
 In dit artikel leert u hoe u Azure Resource Manager sjablonen kunt gebruiken om uw Azure Cosmos DB accounts, data bases en containers te implementeren en beheren.
 
-In dit artikel vindt u voor beelden voor Table-API accounts, om voor beelden te vinden voor andere typen API-accounts raadpleegt u: Azure Resource Manager sjablonen gebruiken met de API van Azure Cosmos DB voor [Cassandra](manage-cassandra-with-resource-manager.md), [Gremlin](manage-gremlin-with-resource-manager.md), [MongoDb](manage-mongodb-with-resource-manager.md)en [SQL](manage-sql-with-resource-manager.md) -artikelen.
+In dit artikel vindt u voor beelden voor Table-API accounts, om voor beelden te vinden voor andere typen API-accounts raadpleegt u: Azure Resource Manager sjablonen gebruiken met de API van Azure Cosmos DB voor [Cassandra](./templates-samples-cassandra.md), [Gremlin](./templates-samples-gremlin.md), [MongoDb](./templates-samples-mongodb.md)en [SQL](./manage-with-templates.md) -artikelen.
 
 > [!IMPORTANT]
 >
@@ -54,7 +54,7 @@ Met deze sjabloon wordt een Azure Cosmos-account gemaakt voor Table-API met een 
 
 Hier volgen enkele aanvullende bronnen:
 
-* [Documentatie voor Azure Resource Manager](/azure/azure-resource-manager/)
+* [Documentatie voor Azure Resource Manager](../azure-resource-manager/index.yml)
 * [Resource provider-schema Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions)
 * [Quick Start-sjablonen Azure Cosmos DB](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
 * [Veelvoorkomende fouten bij Azure Resource Manager implementatie oplossen](../azure-resource-manager/templates/common-deployment-errors.md)

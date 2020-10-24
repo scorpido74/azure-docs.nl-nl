@@ -8,12 +8,12 @@ ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: dc140553cbca2347678c376cc9420cfddef22b07
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 94aa699d8daab7e5e7ff4ae82e5d09ab1475c07e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428052"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477586"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Ontwerphandleiding voor Azure Table Storage-tabel: schaalbare en krachtige tabellen
 
@@ -24,7 +24,7 @@ Als u schaalbare en beter bruikbare tabellen wilt ontwerpen, moet u rekening hou
 Table Storage is ontworpen ter ondersteuning van toepassingen in de cloud die miljarden entiteiten (' rijen ' in relationele data base-terminologie) van gegevens kunnen bevatten, of voor gegevens sets die hoogwaardige volumes moeten ondersteunen. Daarom moet u nadenken over de manier waarop u uw gegevens opslaat, en begrijpen hoe tabel opslag werkt. Met een goed ontworpen NoSQL-gegevens archief kan uw oplossing veel verder worden geschaald (en tegen lagere kosten) dan een oplossing die gebruikmaakt van een relationele data base. Deze hand leiding helpt u bij deze onderwerpen.  
 
 ## <a name="about-azure-table-storage"></a>Over Azure Table Storage
-In deze sectie worden enkele van de belangrijkste functies van tabel opslag uitgelegd die vooral relevant zijn voor het ontwerpen van prestaties en schaal baarheid. Als u niet bekend bent met Azure Storage en tabel opslag, raadpleegt u [Inleiding tot Microsoft Azure Storage](../storage/common/storage-introduction.md) en aan de [slag met Azure Table Storage met behulp van .net voordat u](table-storage-how-to-use-dotnet.md) de rest van dit artikel leest. Hoewel deze hand leiding zich in de tabel opslag bevindt, bevat deze een discussie van Azure Queue Storage en Azure Blob-opslag, en hoe u deze kunt gebruiken samen met tabel opslag in een oplossing.  
+In deze sectie worden enkele van de belangrijkste functies van tabel opslag uitgelegd die vooral relevant zijn voor het ontwerpen van prestaties en schaal baarheid. Als u niet bekend bent met Azure Storage en tabel opslag, raadpleegt u [Inleiding tot Microsoft Azure Storage](../storage/common/storage-introduction.md) en aan de [slag met Azure Table Storage met behulp van .net voordat u](./tutorial-develop-table-dotnet.md) de rest van dit artikel leest. Hoewel deze hand leiding zich in de tabel opslag bevindt, bevat deze een discussie van Azure Queue Storage en Azure Blob-opslag, en hoe u deze kunt gebruiken samen met tabel opslag in een oplossing.  
 
 Tabel opslag maakt gebruik van een tabel indeling om gegevens op te slaan. In de standaard terminologie vertegenwoordigt elke rij van de tabel een entiteit, en in de kolommen worden de verschillende eigenschappen van die entiteit opgeslagen. Elke entiteit heeft een paar sleutels om deze uniek te identificeren en een time stamp-kolom die wordt gebruikt om bij te houden wanneer de entiteit voor het laatst is bijgewerkt. Het tijds tempel veld wordt automatisch toegevoegd en u kunt de tijds tempel niet hand matig overschrijven met een wille keurige waarde. De tabel opslag maakt gebruik van deze laatst gewijzigde tijds tempel (LMT) om optimistische gelijktijdigheid te beheren.  
 
@@ -52,7 +52,7 @@ In het volgende voor beeld ziet u een eenvoudig tabel ontwerp voor het opslaan v
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>Email</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Don</td>
@@ -72,7 +72,7 @@ In het volgende voor beeld ziet u een eenvoudig tabel ontwerp voor het opslaan v
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>Email</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Jun</td>
@@ -109,7 +109,7 @@ In het volgende voor beeld ziet u een eenvoudig tabel ontwerp voor het opslaan v
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>Email</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Ken</td>
@@ -123,7 +123,7 @@ In het volgende voor beeld ziet u een eenvoudig tabel ontwerp voor het opslaan v
 </table>
 
 
-Tot nu toe lijkt dit ontwerp op een tabel in een relationele data base. De belangrijkste verschillen zijn de verplichte kolommen en de mogelijkheid om meerdere entiteits typen op te slaan in dezelfde tabel. Daarnaast heeft elk van de door de gebruiker gedefinieerde eigenschappen, zoals voor **naam** of **leeftijd**, een gegevens type, zoals geheel getal of teken reeks, net als een kolom in een relationele data base. In tegens telling tot een relationele data base betekent het schema niet-minder aard van tabel opslag dat een eigenschap niet hetzelfde gegevens type hoeft te hebben voor elke entiteit. Als u complexe gegevens typen in één eigenschap wilt opslaan, moet u een serialisatie-indeling gebruiken, zoals JSON of XML. Zie voor meer informatie wat is de [Table Storage-gegevens model](https://msdn.microsoft.com/library/azure/dd179338.aspx).
+Tot nu toe lijkt dit ontwerp op een tabel in een relationele data base. De belangrijkste verschillen zijn de verplichte kolommen en de mogelijkheid om meerdere entiteits typen op te slaan in dezelfde tabel. Daarnaast heeft elk van de door de gebruiker gedefinieerde eigenschappen, zoals voor **naam** of **leeftijd**, een gegevens type, zoals geheel getal of teken reeks, net als een kolom in een relationele data base. In tegens telling tot een relationele data base betekent het schema niet-minder aard van tabel opslag dat een eigenschap niet hetzelfde gegevens type hoeft te hebben voor elke entiteit. Als u complexe gegevens typen in één eigenschap wilt opslaan, moet u een serialisatie-indeling gebruiken, zoals JSON of XML. Zie voor meer informatie wat is de [Table Storage-gegevens model](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model).
 
 De keuze van `PartitionKey` en `RowKey` is fundamenteel voor een goed ontwerp van de tabel. Elke entiteit die is opgeslagen in een tabel moet een unieke combi natie van `PartitionKey` en hebben `RowKey` . Net als bij sleutels in een relationele-database `PartitionKey` tabel `RowKey` worden de waarden en geïndexeerd voor het maken van een geclusterde index die snelle zoek pogingen mogelijk maakt. In tabel opslag worden echter geen secundaire indexen gemaakt. Dit zijn dus de enige twee geïndexeerde eigenschappen (sommige van de patronen die verderop worden beschreven, laten zien hoe u deze zicht bare beperking kunt omzeilen).  
 
@@ -134,7 +134,7 @@ De account naam, tabel naam en `PartitionKey` samen duiden de partitie in de ops
 
 In tabel opslag, een afzonderlijk knoop punt Services, een of meer volledige partities, en de service wordt geschaald door dynamische taak verdeling van partities tussen knoop punten. Als een knoop punt wordt geladen, kan de tabel opslag het bereik van partities dat door dat knoop punt wordt verwerkt, splitsen op verschillende knoop punten. Wanneer er verkeer wordt afgedeeld, kan de partitielay-out van de partitie reeksen van de Stille knoop punten weer worden samengevoegd op één knoop punt.  
 
-Zie [Microsoft Azure Storage: een Maxi maal beschik bare service voor Cloud opslag met sterke consistentie](https://docs.microsoft.com/archive/blogs/windowsazurestorage/sosp-paper-windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency)voor meer informatie over de interne Details van tabel opslag, en met name hoe het beheert van partities.  
+Zie [Microsoft Azure Storage: een Maxi maal beschik bare service voor Cloud opslag met sterke consistentie](/archive/blogs/windowsazurestorage/sosp-paper-windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency)voor meer informatie over de interne Details van tabel opslag, en met name hoe het beheert van partities.  
 
 ### <a name="entity-group-transactions"></a>Trans acties van entiteits groep
 In tabel opslag zijn EGTs (entity Group trans Actions) het enige ingebouwde mechanisme voor het uitvoeren van atomische updates op meerdere entiteiten. EGTs worden ook wel batch- *trans acties*genoemd. EGTs kan alleen worden uitgevoerd op entiteiten die zijn opgeslagen in dezelfde partitie (het delen van dezelfde partitie sleutel in een bepaalde tabel), dus wanneer u een Atomic-transactioneel gedrag voor meerdere entiteiten nodig hebt, moet u ervoor zorgen dat deze entiteiten zich in dezelfde partitie bevinden. Dit is vaak een reden om meerdere entiteits typen in dezelfde tabel (en partitie) te bewaren en niet meerdere tabellen te gebruiken voor verschillende entiteits typen. Eén EGT kan aan Maxi maal 100 entiteiten worden gebruikt.  Als u meerdere gelijktijdige EGTs voor verwerking verzendt, is het belang rijk om ervoor te zorgen dat deze EGTs niet worden uitgevoerd op entiteiten die gemeen schappelijk zijn voor EGTs. Anders wordt de verwerking van Risico's vertraagd.
@@ -156,7 +156,7 @@ De volgende tabel bevat enkele van de belangrijkste waarden waarvan u rekening m
 | Grootte van de `RowKey` |Een teken reeks met een grootte van Maxi maal 1 KB. |
 | Grootte van een transactie van entiteitsgroepen |Een trans actie kan Maxi maal 100 entiteiten bevatten en de payload moet minder dan 4 MB groot zijn. Een EGT kan een entiteit slechts één keer bijwerken. |
 
-Zie [Wat is het Table service-gegevens model](https://msdn.microsoft.com/library/azure/dd179338.aspx)? voor meer informatie.  
+Zie [Wat is het Table service-gegevens model](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)? voor meer informatie.  
 
 ### <a name="cost-considerations"></a>Kostenoverwegingen
 Table Storage is relatief goed koop, maar u moet kosten ramingen voor zowel het capaciteits gebruik als het aantal trans acties opnemen als onderdeel van de evaluatie van een oplossing die gebruikmaakt van Table-opslag. In veel gevallen is het echter wel mogelijk om gedenormaliseerde of dubbele gegevens op te slaan om de prestaties of schaal baarheid van uw oplossing te verbeteren. Zie de [Prijzen voor Azure Storage](https://azure.microsoft.com/pricing/details/storage/) voor meer informatie over prijzen.  
@@ -202,7 +202,7 @@ In de volgende voor beelden wordt ervan uitgegaan dat er in tabel opslag werk ne
 | `Age` |Geheel getal |
 | `EmailAddress` |Tekenreeks |
 
-Hier volgen enkele algemene richt lijnen voor het ontwerpen van Table-opslag query's. De filter syntaxis die in de volgende voor beelden wordt gebruikt, is afkomstig uit de tabel opslag REST API. Zie [query-entiteiten](https://msdn.microsoft.com/library/azure/dd179421.aspx)voor meer informatie.  
+Hier volgen enkele algemene richt lijnen voor het ontwerpen van Table-opslag query's. De filter syntaxis die in de volgende voor beelden wordt gebruikt, is afkomstig uit de tabel opslag REST API. Zie [query-entiteiten](/rest/api/storageservices/Query-Entities)voor meer informatie.  
 
 * Een *Point-query* is de meest efficiënte zoek opdracht en wordt aanbevolen voor Zoek opdrachten met hoge volumes of lookups waarvoor de laagste latentie is vereist. Een dergelijke query kan de indexen gebruiken om een afzonderlijke entiteit efficiënt te vinden door zowel de als-waarden op te geven `PartitionKey` `RowKey` . Bijvoorbeeld: `$filter=(PartitionKey eq 'Sales') and (RowKey eq '2')`.  
 * Tweede beste is een *bereik query*. Het gebruikt de `PartitionKey` en filtert op een reeks `RowKey` waarden om meer dan één entiteit te retour neren. De `PartitionKey` waarde identificeert een specifieke partitie en de `RowKey` waarden identificeren een subset van de entiteiten in die partitie. Bijvoorbeeld: `$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'`.  
@@ -410,7 +410,7 @@ In de vorige secties hebt u geleerd hoe u het tabel ontwerp optimaliseert voor h
 
 :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE05.png" alt-text="Afbeelding van een afdelings entiteit en een werknemers entiteit":::
 
-De patroon kaart markeert enkele relaties tussen patronen (blauw) en anti-patronen (oranje) die in deze hand leiding worden beschreven. Er zijn veel andere patronen die in overweging worden nemen. Een van de belangrijkste scenario's voor tabel opslag is bijvoorbeeld het gebruik van het [patroon gerealiseerde weer gave](https://msdn.microsoft.com/library/azure/dn589782.aspx) van het scheidings patroon van de [opdracht query-verantwoordelijkheid](https://msdn.microsoft.com/library/azure/jj554200.aspx) .  
+De patroon kaart markeert enkele relaties tussen patronen (blauw) en anti-patronen (oranje) die in deze hand leiding worden beschreven. Er zijn veel andere patronen die in overweging worden nemen. Een van de belangrijkste scenario's voor tabel opslag is bijvoorbeeld het gebruik van het [patroon gerealiseerde weer gave](/previous-versions/msp-n-p/dn589782(v=pandp.10)) van het scheidings patroon van de [opdracht query-verantwoordelijkheid](/previous-versions/msp-n-p/jj554200(v=pandp.10)) .  
 
 ### <a name="intra-partition-secondary-index-pattern"></a>Secundair index patroon voor de intra partitie
 Sla meerdere exemplaren van elke entiteit op met behulp van verschillende `RowKey` waarden (in dezelfde partitie). Dit maakt snelle en efficiënte zoek acties mogelijk en alternatieve Sorteer volgorden met behulp van verschillende `RowKey` waarden. Updates tussen kopieën kunnen consistent worden gehouden met behulp van EGTs.  
@@ -437,7 +437,7 @@ Als u een query uitvoert voor een bereik van werk nemers, kunt u een bereik opge
 * Als u wilt zoeken naar alle werk nemers van de afdeling verkoop met een werk nemer-ID in het bereik 000100 tot 000199, gebruikt u: $filter = (PartitionKey EQ ' Sales ') en (RowKey ge ' empid_000100 ') en (RowKey Le ' empid_000199 ')  
 * Als u wilt zoeken naar alle werk nemers van de afdeling verkoop met een e-mail adres dat begint met de letter ' a ', gebruikt u: $filter = (PartitionKey EQ ' Sales ') en (RowKey ge ' email_a ') en (RowKey lt ' email_b ')  
   
-De filter syntaxis die in de voor gaande voor beelden wordt gebruikt, is afkomstig uit de tabel opslag REST API. Zie [query-entiteiten](https://msdn.microsoft.com/library/azure/dd179421.aspx)voor meer informatie.  
+De filter syntaxis die in de voor gaande voor beelden wordt gebruikt, is afkomstig uit de tabel opslag REST API. Zie [query-entiteiten](/rest/api/storageservices/Query-Entities)voor meer informatie.  
 
 #### <a name="issues-and-considerations"></a>Problemen en overwegingen
 Beschouw de volgende punten als u besluit hoe u dit patroon wilt implementeren:  
@@ -497,7 +497,7 @@ Als u een query uitvoert voor een bereik van werk nemers, kunt u een bereik opge
 * Als u wilt zoeken naar alle werk nemers van de afdeling verkoop met een werk nemer-ID in het bereik **000100** tot **000199**, gesorteerd in de volg orde van de werk nemer-id, gebruikt u: $filter = (PartitionKey EQ ' empid_Sales ') en (RowKey ge 000100 ') en (RowKey Le ' 000199 ')  
 * Als u wilt zoeken naar alle werk nemers van de afdeling verkoop met een e-mail adres dat begint met ' a ', gesorteerd in de e-mailadres volgorde, gebruikt u: $filter = (PartitionKey EQ ' email_Sales ') en (RowKey ge ' a ') en (RowKey lt ' b ')  
 
-Houd er rekening mee dat de filter syntaxis die in de voor gaande voor beelden wordt gebruikt, afkomstig is uit de tabel opslag REST API. Zie [query-entiteiten](https://msdn.microsoft.com/library/azure/dd179421.aspx)voor meer informatie.  
+Houd er rekening mee dat de filter syntaxis die in de voor gaande voor beelden wordt gebruikt, afkomstig is uit de tabel opslag REST API. Zie [query-entiteiten](/rest/api/storageservices/Query-Entities)voor meer informatie.  
 
 #### <a name="issues-and-considerations"></a>Problemen en overwegingen
 Beschouw de volgende punten als u besluit hoe u dit patroon wilt implementeren:  
@@ -557,7 +557,7 @@ In dit voor beeld voegt stap 4 in het diagram de werk nemer in de **Archief** ta
 #### <a name="recover-from-failures"></a>Herstellen van fouten
 Het is belang rijk dat de bewerkingen in stap 4-5 in het diagram worden *idempotent* in het geval de werk rollen de archief bewerking opnieuw moeten starten. Als u tabel opslag gebruikt, moet u voor stap 4 de bewerking ' invoegen of vervangen ' gebruiken. voor stap 5 moet u een bewerking delete if exists gebruiken in de client bibliotheek die u gebruikt. Als u een ander opslag systeem gebruikt, moet u een geschikte idempotent-bewerking gebruiken.  
 
-Als de rol werk nemer de stap 6 nooit in het diagram voltooit, wordt het bericht na een time-out opnieuw weer gegeven in de wachtrij voor de werk rollen om het opnieuw te verwerken. De rol werk nemer kan controleren hoe vaak een bericht in de wachtrij is gelezen en, indien nodig, markeren als een ' verontreinigd ' bericht voor onderzoek door dit naar een afzonderlijke wachtrij te verzenden. Zie [berichten ophalen](https://msdn.microsoft.com/library/azure/dd179474.aspx)voor meer informatie over het lezen van wachtrij berichten en het controleren van het aantal in de wachtrij.  
+Als de rol werk nemer de stap 6 nooit in het diagram voltooit, wordt het bericht na een time-out opnieuw weer gegeven in de wachtrij voor de werk rollen om het opnieuw te verwerken. De rol werk nemer kan controleren hoe vaak een bericht in de wachtrij is gelezen en, indien nodig, markeren als een ' verontreinigd ' bericht voor onderzoek door dit naar een afzonderlijke wachtrij te verzenden. Zie [berichten ophalen](/rest/api/storageservices/Get-Messages)voor meer informatie over het lezen van wachtrij berichten en het controleren van het aantal in de wachtrij.  
 
 Sommige fouten van tabel opslag en wachtrij opslag zijn tijdelijke fouten en de client toepassing moet voldoende pogings logica bevatten om ze te kunnen verwerken.  
 
@@ -1011,7 +1011,7 @@ Een query op tabel opslag kan Maxi maal 1.000 entiteiten tegelijk retour neren, 
 - De query is niet binnen vijf seconden voltooid.
 - De query snijdt de partitie grens. 
 
-Zie querytime [-out en paginering](https://msdn.microsoft.com/library/azure/dd135718.aspx)voor meer informatie over de werking van vervolg tokens.  
+Zie querytime [-out en paginering](/rest/api/storageservices/Query-Timeout-and-Pagination)voor meer informatie over de werking van vervolg tokens.  
 
 Als u de Storage-client bibliotheek gebruikt, kan het automatisch vervolg tokens voor u afhandelen terwijl er entiteiten uit de tabel opslag worden geretourneerd. In het volgende voor beeld van C#-code worden vervolg tokens bijvoorbeeld automatisch verwerkt als de tabel opslag deze retourneert in een antwoord:  
 
@@ -1126,7 +1126,7 @@ Table Storage is een *schema-less Table-* archief. Dit betekent dat een enkele t
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>Email</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td></td>
@@ -1146,7 +1146,7 @@ Table Storage is een *schema-less Table-* archief. Dit betekent dat een enkele t
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>Email</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td></td>
@@ -1183,7 +1183,7 @@ Table Storage is een *schema-less Table-* archief. Dit betekent dat een enkele t
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>Email</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td></td>
@@ -1219,7 +1219,7 @@ Elke entiteit moet nog steeds `PartitionKey` , `RowKey` , en `Timestamp` waarden
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>Email</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Werknemer</td>
@@ -1241,7 +1241,7 @@ Elke entiteit moet nog steeds `PartitionKey` , `RowKey` , en `Timestamp` waarden
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>Email</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Werknemer</td>
@@ -1282,7 +1282,7 @@ Elke entiteit moet nog steeds `PartitionKey` , `RowKey` , en `Timestamp` waarden
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>Email</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Werknemer</td>
@@ -1417,7 +1417,7 @@ U kunt SAS-tokens (Shared Access Signature) gebruiken om client toepassingen toe
 * U kunt een deel van het werk dat web-en werk rollen uitvoeren in uw entiteiten beheren. U kunt offloaden naar client apparaten zoals computers en mobiele apparaten van eind gebruikers.  
 * U kunt een beperkte en tijdgebonden set machtigingen toewijzen aan een client (zoals alleen-lezen toegang toestaan voor specifieke resources).  
 
-Zie [using Shared Access signatures (SAS) (Engelstalig)](../storage/common/storage-dotnet-shared-access-signature-part-1.md)voor meer informatie over het gebruik van SAS-tokens met table-opslag.  
+Zie [using Shared Access signatures (SAS) (Engelstalig)](../storage/common/storage-sas-overview.md)voor meer informatie over het gebruik van SAS-tokens met table-opslag.  
 
 U moet echter nog steeds de SAS-tokens genereren die een client toepassing verlenen aan de entiteiten in tabel opslag. Doe dit in een omgeving met beveiligde toegang tot de sleutels van uw opslag account. Normaal gesp roken gebruikt u een web-of worker-rol voor het genereren van de SAS-tokens en levert u deze aan de client toepassingen die toegang nodig hebben tot uw entiteiten. Omdat er nog steeds overhead is betrokken bij het genereren en leveren van SAS-tokens aan clients, moet u rekening houden met het beste om deze overhead te reduceren, met name in scenario's met grote volumes.  
 
@@ -1514,5 +1514,4 @@ In dit asynchrone voor beeld ziet u de volgende wijzigingen ten opzichte van de 
 * De methode handtekening bevat nu de `async` modificator en retourneert een `Task` exemplaar.  
 * In plaats van de `Execute` -methode aan te roepen om de entiteit bij te werken, roept de methode nu de `ExecuteAsync` methode aan. De methode gebruikt de `await` modificator om resultaten asynchroon op te halen.  
 
-De client toepassing kan meerdere asynchrone methoden, zoals deze, aanroepen en elke methode aanroep wordt uitgevoerd in een afzonderlijke thread.  
-
+De client toepassing kan meerdere asynchrone methoden, zoals deze, aanroepen en elke methode aanroep wordt uitgevoerd in een afzonderlijke thread.

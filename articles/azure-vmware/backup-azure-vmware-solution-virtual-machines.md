@@ -3,16 +3,16 @@ title: Back-ups maken van Azure VMware-oplossing Vm's met Azure Backup Server
 description: Configureer uw Azure VMware-oplossings omgeving voor het maken van back-ups van virtuele machines met behulp van Azure Backup Server.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: b8b5236a8da165efbb8e479e25b58872c4a735ee
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: d4273980a134fbdaabe64215aaf0b66a53253788
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893013"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495703"
 ---
 # <a name="back-up-azure-vmware-solution-vms-with-azure-backup-server"></a>Back-ups maken van Azure VMware-oplossing Vm's met Azure Backup Server
 
-In dit artikel gaan we de procedures volgen voor het maken van back-ups van virtuele VMware-machines (Vm's) die worden uitgevoerd op de Azure VMware-oplossing met behulp van Azure Backup Server. Voordat u begint, moet u ervoor zorgen dat u de [Microsoft Azure backup server voor Azure VMware-oplossing hebt ingesteld](set-up-backup-server-for-azure-vmware-solution.md).
+In dit artikel gaan we een back-up maken van virtuele VMware-machines (Vm's) die worden uitgevoerd op de Azure VMware-oplossing met Azure Backup Server. Eerst moet [u de Microsoft Azure backup server instellen voor de Azure VMware-oplossing](set-up-backup-server-for-azure-vmware-solution.md).
 
 Vervolgens worden alle benodigde procedures door lopen voor het volgende:
 
@@ -162,7 +162,11 @@ Voor VMware 6,7 werd TLS ingeschakeld als communicatie protocol.
 
    ![Pagina volt ooien](../backup/media/backup-azure-backup-server-vmware/summary-screen.png)
 
-   De vCenter-Server wordt weer gegeven onder **productie server** met het type **VMware-Server** en de status van de **agent** als **OK**. Als u de **agent status** **onbekend**ziet, selecteert u **vernieuwen**.
+   De vCenter-Server wordt weer gegeven onder **productie server** met:
+   - Typen als **VMware-Server** 
+   - Agent status als **OK** 
+   
+      Als u de **agent status** **onbekend**ziet, selecteert u **vernieuwen**.
 
 ## <a name="configure-a-protection-group"></a>Een beveiligings groep configureren
 
@@ -202,7 +206,7 @@ Beveiligings groepen verzamelen meerdere Vm's en passen dezelfde gegevens retent
 
    - De aanbevolen schijf toewijzingen zijn gebaseerd op de Bewaar termijn die u hebt opgegeven, het type werk belasting en de grootte van de beveiligde gegevens. Breng de gewenste wijzigingen aan en selecteer **volgende**.
    - **Gegevens grootte:** Grootte van de gegevens in de beveiligings groep.
-   - **Schijf ruimte:** Aanbevolen hoeveelheid schijf ruimte voor de beveiligings groep. Als u deze instelling wilt wijzigen, wijst u de totale ruimte toe die iets hoger is dan de hoeveelheid waarmee u een schatting maakt van elke gegevens bron.
+   - **Schijf ruimte:** Aanbevolen hoeveelheid schijf ruimte voor de beveiligings groep. Als u deze instelling wilt wijzigen, selecteert u spatie licht groter dan het aantal dat u voor elke gegevens bron wilt schatten.
    - **Details van opslag groep:** Hier wordt de status van de opslag groep weer gegeven, inclusief de totale en resterende schijf grootte.
 
    :::image type="content" source="media/azure-vmware-solution-backup/review-disk-allocation.png" alt-text="vSphere-webclient":::
@@ -229,14 +233,14 @@ Beveiligings groepen verzamelen meerdere Vm's en passen dezelfde gegevens retent
 
    ![Gegevens voor online beveiliging opgeven](../backup/media/backup-azure-backup-server-vmware/select-data-to-protect.png)
 
-1. Geef op de pagina **online back-upschema opgeven** op hoe vaak u een back-up wilt maken van gegevens uit de lokale opslag naar Azure en selecteer vervolgens **volgende**. 
+1. Geef op de pagina **online back-upschema opgeven** op hoe vaak u een back-up wilt maken van gegevens uit de lokale opslag naar Azure. 
 
    - Cloud herstel punten voor de gegevens die volgens het schema worden gegenereerd. 
    - Nadat het herstel punt is gegenereerd, wordt het overgebracht naar de Recovery Services kluis in Azure.
 
    ![Online back-upschema opgeven](../backup/media/backup-azure-backup-server-vmware/online-backup-schedule.png)
 
-1. Geef op de pagina **online retentie beleid opgeven** op hoe lang u de herstel punten wilt bewaren die worden gemaakt op basis van de dagelijkse, wekelijkse, maandelijkse of jaarlijkse back-ups naar Azure en selecteer vervolgens **volgende**.
+1. Geef op de pagina **online retentie beleid opgeven** op hoe lang u wilt dat de herstel punten die zijn gemaakt van de back-ups naar Azure worden bewaard.
 
    - Er is geen tijds limiet voor hoe lang u gegevens in azure kunt blijven gebruiken.
    - De enige limiet is dat u niet meer dan 9.999 herstel punten per beveiligd exemplaar kunt hebben. In dit voor beeld is het beveiligde exemplaar de VMware-Server.
@@ -251,8 +255,9 @@ Beveiligings groepen verzamelen meerdere Vm's en passen dezelfde gegevens retent
 
 Nadat u de beveiligings groep hebt geconfigureerd om een back-up te maken van Azure VMware-oplossingen Vm's, kunt u de status van de back-uptaak en waarschuwing controleren met behulp van de Azure Backup Server-console. Dit is wat u kunt bewaken.
 
-- Op het tabblad **waarschuwingen** in het deel venster **bewaking** kunt u fouten, waarschuwingen en algemene informatie bewaken voor een beveiligings groep, voor een specifieke beveiligde computer of op basis van de ernst van het bericht. U kunt actieve en inactieve waarschuwingen weer geven en e-mail meldingen instellen.
-- Op het tabblad **taken** in het deel venster **bewaking** kunt u taken weer geven die door Azure backup server worden gestart voor een specifieke beveiligde gegevens bron of beveiligings groep. U kunt de voortgang van de taak volgen of resources die worden gebruikt door taken controleren.
+- In het taak gebied **controle** :
+   - Onder **waarschuwingen**kunt u fouten, waarschuwingen en algemene informatie bewaken.  U kunt actieve en inactieve waarschuwingen weer geven en e-mail meldingen instellen.
+   - Onder **taken**kunt u taken weer geven die zijn gestart door Azure backup server voor een specifieke beveiligde gegevens bron of beveiligings groep. U kunt de voortgang van de taak volgen of resources die worden gebruikt door taken controleren.
 - In het taak gebied **beveiliging** kunt u de status van volumes en shares in de beveiligings groep controleren. U kunt ook configuratie-instellingen controleren, zoals herstel instellingen, schijf toewijzing en het back-upschema.
 - In het taak gebied **beheer** kunt u de tabbladen **schijven, online**en **agents** weer geven om de status van de schijven in de opslag groep te controleren, te registreren bij Azure en de status van de DPM-agent te implementeren.
 
@@ -263,18 +268,18 @@ Nadat u de beveiligings groep hebt geconfigureerd om een back-up te maken van Az
 In de Azure Backup Server Administrator-console zijn er twee manieren om herstel bare gegevens te vinden. U kunt zoeken of bladeren. Wanneer u gegevens herstelt, is het mogelijk dat u gegevens of een virtuele machine niet naar dezelfde locatie wilt herstellen. Daarom ondersteunt Azure Backup Server drie herstel opties voor VMware VM-back-ups:
 
 - **Herstel van de oorspronkelijke locatie (herstellen)**: gebruik herstellen om een beveiligde virtuele machine terug te zetten op de oorspronkelijke locatie. U kunt een virtuele machine alleen op de oorspronkelijke locatie herstellen als er geen schijven zijn toegevoegd of verwijderd sinds de back-up is gemaakt. Als er schijven zijn toegevoegd of verwijderd, moet u alternatieve locatie herstel gebruiken.
-- **Alternatief locatie herstel (ALR)**: wanneer de oorspronkelijke VM ontbreekt of als u de oorspronkelijke VM niet wilt verstoren, herstelt u de virtuele machine op een andere locatie. Als u een virtuele machine naar een alternatieve locatie wilt herstellen, moet u de locatie van een ESXi-host, resource groep, map en de opslag-Data Store en het pad opgeven. Azure Backup Server voegt '-hersteld ' toe aan de naam van de virtuele machine om te voor komen dat de herstelde VM wordt onderscheiden van de oorspronkelijke VM.
+- **Herstel naar een andere locatie (ALR)**: gebruik wanneer de oorspronkelijke VM ontbreekt of als u niet wilt dat de oorspronkelijke VM wordt verstoord. Geef de locatie op van een ESXi-host, resource groep, map en de opslag-Data Store en het-pad. Azure Backup Server voegt *'-hersteld '* toe aan de naam van de virtuele machine om te voor komen dat de herstelde VM wordt onderscheiden van de oorspronkelijke VM.
 - **Herstel van afzonderlijke bestands locaties (ILR)**: als de beveiligde virtuele machine een Windows Server-VM is, kunnen afzonderlijke bestanden of mappen in de virtuele machine worden hersteld met behulp van de ILR-functie van Azure backup server. Zie de procedure verderop in dit artikel voor meer informatie over het herstellen van afzonderlijke bestanden. Het herstellen van een afzonderlijk bestand van een virtuele machine is alleen beschikbaar voor Windows-VM'S en schijf herstel punten.
 
 ### <a name="restore-a-recovery-point"></a>Herstel punt herstellen
 
 1. Selecteer in de Azure Backup Server Administrator-console de weer gave **herstel** . 
 
-1. Blader in het **Blader** venster en filter om de virtuele machine te vinden die u wilt herstellen. Nadat u een virtuele machine of map hebt geselecteerd, worden in het deel venster **herstel punten voor** de beschik bare herstel punten weer gegeven.
+1. Blader in het **Blader** venster en filter om de virtuele machine te vinden die u wilt herstellen. Nadat u een virtuele machine of map hebt geselecteerd, worden in het deel venster herstel punten voor de beschik bare herstel punten weer gegeven.
 
    ![Beschik bare herstel punten](../backup/media/restore-azure-backup-server-vmware/recovery-points.png)
 
-1. In het deel venster **herstel punten voor** kunt u de kalender en vervolg keuzemenu's gebruiken om een datum te selecteren waarop een herstel punt is gemaakt. De gemarkeerde kalender datums bevatten beschik bare herstel punten. U kunt ook met de rechter muisknop op de virtuele machine klikken en **alle herstel punten weer geven** selecteren en vervolgens het herstel punt selecteren in de lijst.
+1. Selecteer in het deel venster **herstel punten voor** de datum waarop een herstel punt is gemaakt. De gemarkeerde kalender datums bevatten beschik bare herstel punten. U kunt ook met de rechter muisknop op de virtuele machine klikken en **alle herstel punten weer geven** selecteren en vervolgens het herstel punt selecteren in de lijst.
 
    > [!NOTE] 
    > Voor beveiliging op korte termijn selecteert u een herstel punt op basis van een schijf voor sneller herstel. Nadat herstel punten voor de korte termijn zijn verlopen, ziet u alleen **online** herstel punten die moeten worden hersteld.
@@ -292,7 +297,7 @@ In de Azure Backup Server Administrator-console zijn er twee manieren om herstel
    > [!NOTE]
    > VMware-workloads bieden geen ondersteuning voor het inschakelen van netwerk bandbreedte regeling.
 
-1. Kies op de pagina **type herstel bewerking selecteren** of u wilt herstellen naar het oorspronkelijke exemplaar of een nieuwe locatie, en selecteer vervolgens **volgende**.
+1. Op de pagina **type herstel bewerking selecteren** kunt u herstellen naar het oorspronkelijke exemplaar of een nieuwe locatie.
 
    - Als u **herstellen naar oorspronkelijk exemplaar**kiest, hoeft u geen keuzes meer te maken in de wizard. De gegevens voor de oorspronkelijke instantie worden gebruikt.
    - Als u **herstellen als virtuele machine op een wille keurige host**kiest, geeft u op het scherm **doel opgeven** de gegevens op voor de **ESXi-host**, de **resource groep**, de **map**en het **pad**.
@@ -312,7 +317,7 @@ U kunt afzonderlijke bestanden herstellen vanaf een herstel punt van een beveili
 
 1. Selecteer in de Azure Backup Server Administrator-console de weer gave **herstel** .
 
-1. Blader in het **Blader** venster en filter om de virtuele machine te vinden die u wilt herstellen. Nadat u een virtuele machine of map hebt geselecteerd, worden in het deel venster **herstel punten voor** de beschik bare herstel punten weer gegeven.
+1. Blader in het **Blader** venster en filter om de virtuele machine te vinden die u wilt herstellen. Nadat u een virtuele machine of map hebt geselecteerd, worden in het deel venster herstel punten voor de beschik bare herstel punten weer gegeven.
 
    ![Beschik bare herstel punten](../backup/media/restore-azure-backup-server-vmware/vmware-rp-disk.png)
 
@@ -334,14 +339,14 @@ U kunt afzonderlijke bestanden herstellen vanaf een herstel punt van een beveili
 
 1. Wanneer u de items voor herstel hebt geselecteerd, selecteert u in het lint van de Administrator-console op **herstellen** om de **wizard herstellen**te openen. In de **herstel wizard**ziet u in het scherm **herstel selectie controleren** de geselecteerde items die moeten worden hersteld.
 
-1. Voer op het scherm **herstel opties opgeven** een van de volgende handelingen uit:
+1. Voer op het scherm **herstel opties opgeven** een van de volgende stappen uit:
 
    - Selecteer **wijzigen** om netwerk bandbreedte regeling in te scha kelen. In het dialoog venster **gashendel** selecteert u **beperking van netwerk bandbreedte gebruik inschakelen** om deze in te scha kelen. Wanneer deze functie is ingeschakeld, configureert u de **instellingen** en het **werk schema**.
    - Selecteer **volgende** om netwerk beperking uitgeschakeld te laten.
 
 1. Selecteer **volgende**in het scherm **herstel type selecteren** . U kunt uw bestanden of mappen alleen herstellen naar een netwerkmap.
 
-1. Selecteer op het scherm **doel opgeven** de optie **Bladeren** om een netwerk locatie te zoeken voor uw bestanden of mappen. Azure Backup Server maakt een map waarin alle herstelde items worden gekopieerd. De mapnaam heeft het voor voegsel MABS_day-maand-jaar. Wanneer u een locatie voor de herstelde bestanden of map selecteert, worden de gegevens voor die locatie, zoals **bestemming** **, doelpad**en **beschik bare ruimte**, weer gegeven.
+1. Selecteer op het scherm **doel opgeven** de optie **Bladeren** om een netwerk locatie te zoeken voor uw bestanden of mappen. Azure Backup Server maakt een map waarin alle herstelde items worden gekopieerd. De mapnaam heeft het voor voegsel MABS_day-maand-jaar. Wanneer u een locatie voor de herstelde bestanden of map selecteert, worden de gegevens voor die locatie gegeven.
 
    ![Geef de locatie op voor het herstellen van bestanden](../backup/media/restore-azure-backup-server-vmware/specify-destination.png)
 

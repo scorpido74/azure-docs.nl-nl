@@ -7,18 +7,18 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 11/25/2019
 ms.author: thvankra
-ms.openlocfilehash: 1b2e94bfe1bef9ecdeaa4b2b84224967bb1c7741
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 16110c8f48330d60d4d0b6a2affb870ffa5e349c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281585"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482669"
 ---
 # <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>Feed wijzigen in de Azure Cosmos DB-API voor Cassandra
 
 De ondersteuning voor het [wijzigen van feeds](change-feed.md) in de Azure Cosmos DB-API voor Cassandra is beschikbaar via de query predikaten in de Cassandra query language (CQL). Met behulp van deze predikaten kunt u een query uitvoeren op de feed-API voor wijzigingen. Toepassingen kunnen de wijzigingen die in een tabel zijn aangebracht, ophalen met behulp van de primaire sleutel (ook wel bekend als de partitie sleutel) als vereist in CQL. Vervolgens kunt u verdere acties uitvoeren op basis van de resultaten. Wijzigingen in de rijen in de tabel worden vastgelegd in de volg orde van de wijzigings tijd en de sorteer volgorde per partitie sleutel.
 
-In het volgende voor beeld ziet u hoe u een wijzigings feed kunt ophalen voor alle rijen in een Cassandra-API tabel met behulp van .NET. Het predicaat COSMOS_CHANGEFEED_START_TIME () wordt direct in CQL gebruikt om een query uit te voeren op items in de feed van een opgegeven begin tijd (in dit geval de huidige datum/tijd). U kunt hier het volledige voor beeld downloaden, voor C# [hier](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/) en [voor Java.](https://github.com/Azure-Samples/cosmos-changefeed-cassandra-java)
+In het volgende voor beeld ziet u hoe u een wijzigings feed kunt ophalen voor alle rijen in een Cassandra-API tabel met behulp van .NET. Het predicaat COSMOS_CHANGEFEED_START_TIME () wordt direct in CQL gebruikt om een query uit te voeren op items in de feed van een opgegeven begin tijd (in dit geval de huidige datum/tijd). U kunt hier het volledige voor beeld downloaden, voor C# [hier](/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/) en [voor Java.](https://github.com/Azure-Samples/cosmos-changefeed-cassandra-java)
 
 Bij elke iteratie wordt de query hervat op het laatste punt dat wijzigingen zijn gelezen, met behulp van de wissel status. We kunnen een doorlopende stroom van nieuwe wijzigingen in de tabel in de spatie weer geven. Er worden wijzigingen in rijen weer geven die zijn ingevoegd of bijgewerkt. Het is niet mogelijk om bewerkingen voor verwijderen te volgen met behulp van Change feed in Cassandra-API.
 
@@ -146,4 +146,4 @@ De volgende fout codes en-berichten worden ondersteund bij het gebruik van Chang
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Azure Cosmos DB Cassandra-API resources beheren met behulp van Azure Resource Manager sjablonen](manage-cassandra-with-resource-manager.md)
+* [Azure Cosmos DB Cassandra-API resources beheren met behulp van Azure Resource Manager sjablonen](./templates-samples-cassandra.md)

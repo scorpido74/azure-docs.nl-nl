@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/20/2019
-ms.openlocfilehash: 3ec50acc693452fe73d929effcea98b12fc5ff8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a663eb65bcd85a1b2e91e6f2ad90dc64b61273ce
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75933941"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484760"
 ---
 # <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>Werken in het Apache Hadoop ecosysteem op HDInsight vanaf een Windows-computer
 
@@ -58,7 +58,7 @@ Voor beelden van taken die u kunt uitvoeren met Visual Studio en Data Lake-Hulpp
 U kunt Visual Studio met de .NET SDK gebruiken voor het beheren van clusters en het ontwikkelen van big data toepassingen. U kunt andere Ide's gebruiken voor de volgende taken, maar voor beelden worden weer gegeven in Visual Studio.
 
 Voor beelden van taken die u kunt uitvoeren met de .NET SDK in Visual Studio:
-* [Azure HDInsight-SDK voor .net](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet).
+* [Azure HDInsight-SDK voor .net](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true).
 * [Voer Apache Hive Query's uit met behulp van de .NET SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md).
 * [Door de gebruiker gedefinieerde C#-functies gebruiken met Apache Hive en Apache Pig-streaming op Apache Hadoop](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md).
 
@@ -90,7 +90,7 @@ Als u in een situatie komt waarin u een hulp programma of technologie wilt gebru
 
 ## <a name="cross-platform-tools"></a>Hulpprogram ma's voor meerdere platformen
 
-De Azure-opdrachtregelinterface (CLI) is de platformoverschrijdende opdrachtregelervaring voor het beheren van Azure-resources.  Zie [Azure Command-Line interface (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)voor meer informatie.
+De Azure-opdrachtregelinterface (CLI) is de platformoverschrijdende opdrachtregelervaring voor het beheren van Azure-resources.  Zie [Azure Command-Line interface (CLI)](/cli/azure/)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

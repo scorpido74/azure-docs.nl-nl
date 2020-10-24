@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f9dd69c147dff1bf0bd10ca070e023bb6f7692a5
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b6dbcaf317efb8589a92275527f992029b7eb8a6
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368431"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494746"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Apparaten in azure Digital Apparaatdubbels automatisch beheren met behulp van de Device Provisioning Service (DPS)
 
@@ -71,7 +71,7 @@ Maak een Device Provisioning service-exemplaar dat wordt gebruikt voor het inric
 
 Met de volgende Azure CLI-opdracht wordt een Device Provisioning-Service gemaakt. U moet een naam, resource groep en regio opgeven. De opdracht kan worden uitgevoerd in [Cloud shell](https://shell.azure.com)of lokaal als u de Azure cli [op uw computer hebt geïnstalleerd](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
 
-```azurecli
+```azurecli-interactive
 az iot dps create --name <Device Provisioning Service name> --resource-group <resource group name> --location <region; for example, eastus>
 ```
 
@@ -237,7 +237,7 @@ Vervolgens moet u de omgevings variabelen in uw functie-app van eerder instellen
 
 Voeg de instelling toe met deze Azure CLI-opdracht:
 
-```azurecli
+```azurecli-interactive
 az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure Digital Twins instance _host name_>" -g <resource group> -n <your App Service (function app) name>
 ```
 
@@ -246,7 +246,7 @@ Zorg ervoor dat de machtigingen en de rol van beheerde identiteits toewijzing co
 <!-- 
 * Azure AD app registration **_Application (client) ID_** ([find in portal](../articles/digital-twins/how-to-set-up-instance-portal.md#collect-important-values))
 
-```azurecli
+```azurecli-interactive
 az functionapp config appsettings set --settings "AdtAppId=<Application (client)" ID> -g <resource group> -n <your App Service (function app) name> 
 ``` -->
 
@@ -293,7 +293,7 @@ U ziet het apparaat dat wordt geregistreerd en verbonden met IoT Hub en vervolge
 
 Als gevolg van de stroom die u in dit artikel hebt ingesteld, wordt het apparaat automatisch geregistreerd in azure Digital Apparaatdubbels. Gebruik de volgende [Azure Digital APPARAATDUBBELS cli](how-to-use-cli.md) -opdracht om de dubbele van het apparaat te vinden in het Azure Digital apparaatdubbels-exemplaar dat u hebt gemaakt.
 
-```azurecli
+```azurecli-interactive
 az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration ID>"
 ```
 
@@ -449,13 +449,13 @@ Vervolgens moet u de omgevings variabelen in uw functie-app van eerder instellen
 
 Voeg de instelling toe met deze Azure CLI-opdracht. De opdracht kan worden uitgevoerd in [Cloud shell](https://shell.azure.com)of lokaal als u de Azure cli [op uw computer hebt geïnstalleerd](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
 
-```azurecli
+```azurecli-interactive
 az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure Digital Twins instance _host name_>" -g <resource group> -n <your App Service (function app) name>
 ```
 
 Vervolgens moet u de functie omgevings variabele configureren om verbinding te maken met de zojuist gemaakte Event Hub.
 
-```azurecli
+```azurecli-interactive
 az functionapp config appsettings set --settings "EVENTHUB_CONNECTIONSTRING=<Event Hubs SAS connection string Listen>" -g <resource group> -n <your App Service (function app) name>
 ```
 
@@ -486,7 +486,7 @@ Het apparaat wordt automatisch uit Azure Digital Apparaatdubbels verwijderd.
 
 Gebruik de volgende [Azure Digital APPARAATDUBBELS cli](how-to-use-cli.md) -opdracht om te controleren of het dubbele apparaat in het Azure Digital apparaatdubbels-exemplaar is verwijderd.
 
-```azurecli
+```azurecli-interactive
 az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration ID>"
 ```
 
@@ -502,7 +502,7 @@ Met de Azure Cloud Shell of lokale Azure CLI kunt u alle Azure-resources in een 
 > [!IMPORTANT]
 > Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt. De resourcegroep en alle resources daarin worden permanent verwijderd. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. 
 
-```azurecli
+```azurecli-interactive
 az group delete --name <your-resource-group>
 ```
 

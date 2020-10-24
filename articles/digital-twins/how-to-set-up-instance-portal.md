@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e874e7107af0eac60f16f5494c04905da56f785a
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 0dfc93987fb2ca25b9e397e4aa91adcaaafd8a38
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205479"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478827"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Een Azure Digital Apparaatdubbels-exemplaar en-verificatie (Portal) instellen
 
@@ -75,7 +75,7 @@ Open eerst de pagina voor uw Azure Digital Apparaatdubbels-exemplaar in het Azur
 :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
 
 Vul de waarden in op de volgende pagina *roltoewijzing toevoegen* (moet worden voltooid door een gebruiker met [voldoende machtigingen](#prerequisites-permission-requirements) in het Azure-abonnement):
-* **Rol**: Selecteer de *Azure Digital apparaatdubbels-eigenaar (preview)* in het vervolg keuzemenu
+* **Rol**: Selecteer de *Azure Digital Apparaatdubbels-gegevens eigenaar* in het vervolg keuzemenu
 * **Toegang toewijzen aan**: Selecteer *Azure AD-gebruiker,-groep of Service-Principal* in het vervolg keuzemenu
 * **Selecteer**: Zoek de naam of het e-mail adres van de gebruiker die u wilt toewijzen. Wanneer u het resultaat selecteert, wordt de gebruiker weer gegeven in de sectie *geselecteerde leden* .
 
@@ -91,7 +91,7 @@ Wanneer u klaar bent met het invoeren van de details, klikt u op de knop *Opslaa
 
 ### <a name="verify-success"></a>Controleren geslaagd
 
-U kunt de roltoewijzing weer geven die u hebt ingesteld onder *toegangs beheer (IAM) > roltoewijzingen*. De gebruiker moet in de lijst worden weer gegeven met een rol van de *Azure Digital apparaatdubbels-eigenaar (preview)*. 
+U kunt de roltoewijzing weer geven die u hebt ingesteld onder *toegangs beheer (IAM) > roltoewijzingen*. De gebruiker moet in de lijst worden weer gegeven met een rol van de eigenaar van de *Azure Digital apparaatdubbels-gegevens*. 
 
 :::image type="content" source="media/how-to-set-up-instance/portal/verify-role-assignment.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
 

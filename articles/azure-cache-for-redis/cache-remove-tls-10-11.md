@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 69df5a65df99a7497099e71e9f41701458370c87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7be987b99c60185647ab976691d42b72236c6364
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84423918"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496052"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Verwijder TLS 1,0 en 1,1 van gebruik met Azure cache voor redis
 
@@ -19,10 +19,14 @@ Er is sprake van een brede push naar het exclusieve gebruik van Transport Layer 
 
 Als onderdeel van deze inspanning brengen we de volgende wijzigingen aan in azure cache voor redis:
 
-* **Fase 1:** We configureren de standaard minimum versie van TLS ingesteld op 1,2 voor nieuw gemaakte cache-exemplaren (voorheen TLS 1,0).  Bestaande cache-exemplaren worden op dit moment niet bijgewerkt. U kunt, indien nodig, [de minimale versie van TLS wijzigen](cache-configure.md#access-ports) in 1,0 of 1,1 voor achterwaartse compatibiliteit. Deze wijziging kan worden aangebracht via de Azure Portal of andere beheer-Api's.
-* **Fase 2:** De ondersteuning van TLS-versies 1,0 en 1,1 wordt gestopt. Na deze wijziging moet uw toepassing TLS 1,2 of hoger gebruiken om met uw cache te communiceren.
+* **Fase 1:** We configureren de standaard minimum versie van TLS op 1,2 voor nieuw gemaakte cache-exemplaren (voorheen was dit TLS 1,0). Bestaande cache-exemplaren worden op dit moment niet bijgewerkt. U kunt nog steeds de Azure Portal of andere beheer-Api's gebruiken om [de minimale TLS-versie te wijzigen](cache-configure.md#access-ports) in 1,0 of 1,1 voor achterwaartse compatibiliteit.
+* **Fase 2:** Het ondersteunen van TLS 1,1 en TLS 1,0 wordt gestopt. Na deze wijziging moet uw toepassing TLS 1,2 of hoger gebruiken om met uw cache te communiceren. De Azure-cache voor de redis-service is naar verwachting beschikbaar tijdens de migratie zodat alleen TLS 1,2 of hoger wordt ondersteund.
 
-Als onderdeel van deze wijziging wordt de ondersteuning voor oudere, onveilige coderings-suites ook verwijderd.  Onze ondersteunde coderings-suites worden beperkt tot het volgende wanneer de cache is geconfigureerd met een minimale TLS-versie van 1,2.
+  > [!NOTE]
+  > Fase 2 is voorlopig gepland om te beginnen met niet eerder dan 31 december 2020. We raden u echter ten zeerste aan om deze wijziging nu te plannen en proactief bij te werken voor het ondersteunen van TLS 1,2 of hoger. 
+  >
+
+Als onderdeel van deze wijziging wordt ook ondersteuning voor oudere coderings-suites verwijderd die niet veilig zijn. Onze ondersteunde coderings-suites worden beperkt tot de volgende suites wanneer de cache is geconfigureerd met een minimum van TLS 1,2:
 
 * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384
 * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256
@@ -33,12 +37,14 @@ De datums waarop deze wijzigingen van kracht worden, zijn:
 
 | Cloud                | Begin datum fase 1 | Begin datum fase 2         |
 |----------------------|--------------------|----------------------------|
-| Azure (globaal)       |  13 januari 2020  | Uitgesteld vanwege COVID 19  |
-| Azure Government     |  13 maart 2020    | Uitgesteld vanwege COVID 19  |
-| Azure Duitsland        |  13 maart 2020    | Uitgesteld vanwege COVID 19  |
-| Azure China 21Vianet |  13 maart 2020    | Uitgesteld vanwege COVID 19  |
+| Azure (globaal)       |  13 januari 2020  | Uitgesteld vanwege COVID-19  |
+| Azure Government     |  13 maart 2020    | Uitgesteld vanwege COVID-19  |
+| Azure Duitsland        |  13 maart 2020    | Uitgesteld vanwege COVID-19  |
+| Azure China 21Vianet |  13 maart 2020    | Uitgesteld vanwege COVID-19  |
 
-Opmerking: nieuwe datum voor fase 2 nog niet vastgesteld
+> [!NOTE]
+> Fase 2 is voorlopig gepland om te beginnen met niet eerder dan 31 december 2020. Dit artikel wordt bijgewerkt wanneer specifieke datums zijn ingesteld.
+>
 
 ## <a name="check-whether-your-application-is-already-compliant"></a>Controleren of uw toepassing al compatibel is
 

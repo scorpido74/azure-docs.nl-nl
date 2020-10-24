@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 16ee2f01e1b7771e71afe49c4b69b1fb39e43f37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13d2633576454ea6445deb4d2b0b11c2bbb1514e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88869436"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478368"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -151,15 +151,15 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **--** teken reeks op logboek niveau definiëren de logboek uitgebreidheids voor het logboek bestand, beschik bare niveaus: `INFO` (alle aanvragen en antwoorden), `WARNING` (trage reacties), `ERROR` (alleen mislukte aanvragen) en `NONE` (geen uitvoer Logboeken). (standaard `INFO` ). 
 
-**--behoud-SMB-info**     Standaard onwaar.Hiermee behoudt u SMB-eigenschaps gegevens (laatste schrijf tijd, aanmaak tijd, kenmerk bits) tussen SMB-bewuste resources (Windows en Azure Files).Deze vlag is van toepassing op bestanden en mappen, tenzij een filter alleen-lezen is opgegeven (bijvoorbeeld het patroon include).De gegevens die voor mappen worden overgezet, zijn hetzelfde als voor bestanden, met uitzonde ring van de laatste schrijf tijd die niet voor mappen is behouden.
+**--behoud-SMB-info**   Standaard onwaar. Hiermee behoudt u SMB-eigenschaps gegevens (laatste schrijf tijd, aanmaak tijd, kenmerk bits) tussen SMB-bewuste resources (Windows en Azure Files). Deze vlag is van toepassing op bestanden en mappen, tenzij een filter alleen-lezen is opgegeven (bijvoorbeeld het patroon include). De gegevens die voor mappen worden overgezet, zijn hetzelfde als voor bestanden, met uitzonde ring van de laatste schrijf tijd die niet voor mappen is behouden.
 
-**--behoud-SMB-machtigingen**     Standaard onwaar.Hiermee blijven SMB-Acl's behouden tussen de bewuste resources (Windows en Azure Files).Deze vlag is van toepassing op bestanden en mappen, tenzij een filter voor alleen bestanden is opgegeven (bijvoorbeeld  `include-pattern` ).
+**--behoud-SMB-machtigingen**   Standaard onwaar. Hiermee blijven SMB-Acl's behouden tussen de bewuste resources (Windows en Azure Files). Deze vlag is van toepassing op bestanden en mappen, tenzij een filter voor alleen bestanden is opgegeven (bijvoorbeeld `include-pattern` ).
 
 **--put-MD5**     Maak een MD5-hash van elk bestand en sla de hash op als de eigenschap content-MD5 van de BLOB of het doel bestand. (Standaard wordt de hash niet gemaakt.) Alleen beschikbaar bij het uploaden.
 
 **--recursief** `True` Standaard wordt recursief in submappen weer geven bij het synchroniseren tussen directory's.     (standaard `True` ). 
 
-**--S2S-pres Erve-Access-tier**  De Access-laag behouden tijdens service to service copy. Raadpleeg [Azure Blob-opslag: dynamische, koude en archief toegangs lagen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) om ervoor te zorgen dat het opslag account van de bestemming ondersteuning biedt voor het instellen van de toegangs laag. In het geval dat het instellen van de toegangs laag niet wordt ondersteund, gebruikt u s2sPreserveAccessTier = False om het kopiëren van de toegangs lagen over te slaan. (standaard `true` ). 
+**--S2S-pres Erve-Access-tier**  De Access-laag behouden tijdens service to service copy. Raadpleeg [Azure Blob-opslag: dynamische, koude en archief toegangs lagen](/azure/storage/blobs/storage-blob-storage-tiers) om ervoor te zorgen dat het opslag account van de bestemming ondersteuning biedt voor het instellen van de toegangs laag. In het geval dat het instellen van de toegangs laag niet wordt ondersteund, gebruikt u s2sPreserveAccessTier = False om het kopiëren van de toegangs lagen over te slaan. (standaard `true` ). 
 
 ## <a name="options-inherited-from-parent-commands"></a>Opties overgenomen van bovenliggende opdrachten
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: a67a062c06950294ec9e49e2ec69552edc4ee77a
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 347da75d8e3f58d3875b02000d74533b36a9b18c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278590"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486103"
 ---
 # <a name="provision-standard-manual-throughput-on-a-database-in-azure-cosmos-db---sql-api"></a>Standaard doorvoer (hand matig) door Voer voor een data base in Azure Cosmos DB-SQL-API
 
@@ -22,7 +22,7 @@ Als u een andere API gebruikt, raadpleegt u [API voor MongoDb](how-to-provision-
 
 ## <a name="provision-throughput-using-azure-portal"></a>Doorvoer inrichten met behulp van de Azure-portal
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-sql-api-dotnet.md#create-account)of selecteer een bestaand Azure Cosmos-account.
 
@@ -72,7 +72,7 @@ await client.CreateDatabaseIfNotExistsAsync(
 
 Raadpleeg de volgende artikelen voor meer informatie over ingerichte door Voer in Azure Cosmos DB:
 
-* [Wereldwijd schalen van ingerichte doorvoer](scaling-throughput.md)
+* [Wereldwijd schalen van ingerichte doorvoer](./request-units.md)
 * [Doorvoer voor containers en databases inrichten](set-throughput.md)
 * [Standaard doorvoer (hand matig) voor een container inrichten](how-to-provision-container-throughput.md)
 * [De door Voer van automatisch schalen inrichten voor een container](how-to-provision-autoscale-throughput.md)

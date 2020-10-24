@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: fc3ca5fdde464ba63671512a6ebecd2c314cb192
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7e5443869efd7f37153b47e4d9c3eaa39f9c41d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570829"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475274"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Azure Cosmos DB-gegevens visualiseren met behulp van de Power BI-connector 
 
@@ -32,7 +32,7 @@ Voordat u de instructies in deze Power BI zelf studie volgt, moet u ervoor zorge
 
 * Down load de [voorbeeld gegevens van Volcano](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/master/SampleData/VolcanoData.json) van github.
 
-* [Maak een Azure Cosmos-database account](https://azure.microsoft.com/documentation/articles/create-account/) en importeer de Volcano-gegevens met behulp van het [hulp programma voor gegevens migratie Azure Cosmos DB](import-data.md). Bij het importeren van gegevens moet u rekening houden met de volgende instellingen voor de bron en de doelen in het hulp programma voor gegevens migratie:
+* [Maak een Azure Cosmos-database account](create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account) en importeer de Volcano-gegevens met behulp van het [hulp programma voor gegevens migratie Azure Cosmos DB](import-data.md). Bij het importeren van gegevens moet u rekening houden met de volgende instellingen voor de bron en de doelen in het hulp programma voor gegevens migratie:
 
    * **Bron parameters** 
 
@@ -135,7 +135,7 @@ U haalt de Volcano-gegevens op uit het Azure Cosmos DB-account en visualiseert g
 
 1. Geef vervolgens de aangepaste formule voor de nieuwe kolom op.  In ons voor beeld voegen we de breedte-en lengte waarden, gescheiden door een komma, toe, zoals hieronder wordt weer gegeven, met behulp van de volgende formule: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})` . Klik op **OK**.
    
-   Raadpleeg voor meer informatie over Dax (Data Analysis expressions), waaronder DAX-functies, de [basis beginselen van Dax in Power bi Desktop](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics).
+   Raadpleeg voor meer informatie over Dax (Data Analysis expressions), waaronder DAX-functies, de [basis beginselen van Dax in Power bi Desktop](/power-bi/desktop-quickstart-learn-dax-basics).
    
    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png" alt-text="Power BI Desktop rapport weergave-Power BI-connector":::
 
@@ -226,4 +226,3 @@ For a scheduled refresh, do the following.
 ## <a name="next-steps"></a>Volgende stappen
 * Zie aan de [slag met Power bi](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/)voor meer informatie over Power bi.
 * Voor meer informatie over Azure Cosmos DB, raadpleegt u de [pagina land Azure Cosmos DB documentatie](https://azure.microsoft.com/documentation/services/cosmos-db/).
-

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 10d4d07a61bc4ebec789d53e4271a3bcdc7ba76b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 5806ea094abd3431cd7e22064c6acd8ad150726a
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205542"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495023"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Een Azure Digital Apparaatdubbels-exemplaar en-verificatie instellen (met een script)
 
@@ -43,7 +43,7 @@ In dit artikel wordt een voor beeld van een Azure Digital Apparaatdubbels-code g
 
 Hier volgen de stappen voor het uitvoeren van het implementatie script in Cloud Shell.
 1. Ga naar een [Azure Cloud shell](https://shell.azure.com/) -venster in uw browser. Meld u aan met deze opdracht:
-    ```azurecli
+    ```azurecli-interactive
     az login
     ```
     Als de CLI uw standaardbrowser kan openen, gebeurt dat ook en wordt er een Azure-aanmeldingspagina geladen. Als dat niet het geval is, opent u een browser pagina op *https://aka.ms/devicelogin* en voert u de autorisatie code in die wordt weer gegeven in uw Terminal.
@@ -60,11 +60,11 @@ Hier volgen de stappen voor het uitvoeren van het implementatie script in Cloud 
 
 4. Voer het script uit door de `./deploy.ps1` opdracht in het venster Cloud shell te verzenden. U kunt de onderstaande opdracht kopiëren (intrekken om te plakken in Cloud Shell, u kunt **CTRL + SHIFT + v** op Windows en Linux gebruiken of **Cmd + Shift + v** op macOS. U kunt ook het menu met de rechter muisknop gebruiken).
 
-    ```azurecli
+    ```azurecli-interactive
     ./deploy.ps1
     ```
 
-    Met het script wordt een Azure Digital Apparaatdubbels-exemplaar gemaakt en wordt uw Azure-gebruiker de *Azure Digital Apparaatdubbels owner-rol (preview)* voor het exemplaar toegewezen.
+    Met het script wordt een Azure Digital Apparaatdubbels-exemplaar gemaakt en wordt uw Azure-gebruiker de rol *Azure Digital apparaatdubbels-gegevens eigenaar* voor het exemplaar toegewezen.
 
     Wanneer het script wordt uitgevoerd via de automatische installatie stappen, wordt u gevraagd de volgende waarden door te geven:
     * Voor het exemplaar: de *abonnements-id* van uw Azure-abonnement dat moet worden gebruikt
@@ -79,10 +79,10 @@ Hier volgt een fragment van het uitvoer logboek van het script:
 Als het script is voltooid, wordt de uiteindelijke afdruk weer te zeggen `Deployment completed successfully` . Als dat niet het geval is, adresseert u het fout bericht en voert u het script opnieuw uit. De stappen die u al hebt voltooid, worden overgeslagen en de invoer wordt opnieuw gestart op het punt waar u was gebleven.
 
 > [!NOTE]
-> Met het script wordt momenteel de vereiste beheer functie in azure Digital Apparaatdubbels (*Azure Digital Apparaatdubbels owner)* toegewezen aan dezelfde gebruiker die het script uitvoert vanuit Cloud shell. Als u deze rol moet toewijzen aan iemand anders die het exemplaar gaat beheren, kunt u dit nu doen via de Azure Portal ([instructies](how-to-set-up-instance-portal.md#set-up-user-access-permissions)) of cli ([instructies](how-to-set-up-instance-cli.md#set-up-user-access-permissions)).
+> Met het script wordt momenteel de vereiste beheer functie in azure Digital Apparaatdubbels (*Azure Digital Apparaatdubbels data owner*) toegewezen aan dezelfde gebruiker die het script uitvoert vanuit Cloud shell. Als u deze rol moet toewijzen aan iemand anders die het exemplaar gaat beheren, kunt u dit nu doen via de Azure Portal ([instructies](how-to-set-up-instance-portal.md#set-up-user-access-permissions)) of cli ([instructies](how-to-set-up-instance-cli.md#set-up-user-access-permissions)).
 
 >[!NOTE]
->Er is momenteel een **bekend probleem** met het instellen van een script, waarbij sommige gebruikers (met name gebruikers van persoonlijke [micro soft-accounts (msa's)](https://account.microsoft.com/account)) de roltoewijzing kunnen vinden **voor de _Azure Digital apparaatdubbels-eigenaar (preview)_ is niet gemaakt**.
+>Er is momenteel een **bekend probleem** met het instellen van een script, waarbij sommige gebruikers (met name gebruikers van persoonlijke [micro soft-accounts (msa's)](https://account.microsoft.com/account)) de roltoewijzing kunnen vinden voor de eigenaar van de ** _Azure Digital apparaatdubbels-gegevens_ die niet is gemaakt**.
 >
 >U kunt de roltoewijzing controleren met het gedeelte [*toewijzing*](#verify-user-role-assignment) van gebruikersrol controleren verderop in dit artikel, en, indien nodig, de roltoewijzing hand matig instellen met behulp van de [Azure Portal](how-to-set-up-instance-portal.md#set-up-user-access-permissions) of [cli](how-to-set-up-instance-cli.md#set-up-user-access-permissions).
 >

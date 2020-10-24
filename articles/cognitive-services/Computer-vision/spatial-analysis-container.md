@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
-ms.openlocfilehash: 52df2ad0dc4c60c24e341a9765e31bcf9776bf5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d84867dbe51b9c6689ecdac2bc80585a88da66b4
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91277288"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496129"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>De container voor ruimtelijke analyse installeren en uitvoeren (preview-versie)
 
@@ -261,7 +261,7 @@ az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-reso
 az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
 ```
 
-Als de hostcomputer geen Azure Stack edge-apparaat is, moet u [Azure IOT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) versie 1.0.8 installeren. Volg deze stappen om de juiste versie te downloaden:
+Als de hostcomputer geen Azure Stack edge-apparaat is, moet u [Azure IOT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) versie 1.0.9 installeren. Volg deze stappen om de juiste versie te downloaden:
 
 Ubuntu-Server 18,04:
 ```bash
@@ -286,10 +286,10 @@ Werk de pakket lijsten op het apparaat bij.
 sudo apt-get update
 ```
 
-Installeer de 1.0.8-release:
+Installeer de 1.0.9-release:
 
 ```bash
-sudo apt-get install iotedge=1.0.8* libiothsm-std=1.0.8*
+sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.8*
 ```
 
 Registreer vervolgens de hostcomputer als IoT Edge apparaat in uw IoT Hub-exemplaar met behulp van een [Connection String](https://docs.microsoft.com/azure/iot-edge/how-to-register-device#register-in-the-azure-portal).
@@ -314,7 +314,7 @@ Gebruik de onderstaande stappen om de container te implementeren met behulp van 
 
 ### <a name="iot-deployment-manifest"></a>IoT-implementatie manifest
 
-Als u de implementatie van containers op meerdere hostcomputers wilt stroom lijnen, kunt u een manifest bestand voor implementatie maken om de opties voor het maken van de container en omgevings variabelen op te geven. U kunt een voor beeld van een [implementatie manifest vinden op github](https://go.microsoft.com/fwlink/?linkid=2142179).
+Als u de implementatie van containers op meerdere hostcomputers wilt stroom lijnen, kunt u een manifest bestand voor implementatie maken om de opties voor het maken van de container en omgevings variabelen op te geven. U vindt een voor beeld van een implementatie manifest [voor Azure stack Edge](https://go.microsoft.com/fwlink/?linkid=2142179) en  [andere desktop computers](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) op github.
 
 In de volgende tabel ziet u de verschillende omgevings variabelen die worden gebruikt door de module IoT Edge. U kunt deze ook instellen in het eerder gekoppelde implementatie manifest, met behulp van het- `env` kenmerk in `spatialanalysis` :
 
@@ -322,7 +322,7 @@ In de volgende tabel ziet u de verschillende omgevings variabelen die worden geb
 |---------|---------|---------|
 | ARCHON_LOG_LEVEL | Valuta Uitgebreide | Logboek registratie niveau, selecteer een van de twee waarden|
 | ARCHON_SHARED_BUFFER_LIMIT | 377487360 | Niet wijzigen|
-| ARCHON_PERF_MARKER| onjuist| Stel deze waarde in op True voor prestatie logboek registratie, anders moet dit onwaar zijn| 
+| ARCHON_PERF_MARKER| false| Stel deze waarde in op True voor prestatie logboek registratie, anders moet dit onwaar zijn| 
 | ARCHON_NODES_LOG_LEVEL | Valuta Uitgebreide | Logboek registratie niveau, selecteer een van de twee waarden|
 | OMP_WAIT_POLICY | Pass | Niet wijzigen|
 | QT_X11_NO_MITSHM | 1 | Niet wijzigen|
@@ -335,17 +335,16 @@ In de volgende tabel ziet u de verschillende omgevings variabelen die worden geb
 > [!IMPORTANT]
 > De `Eula` `Billing` Opties, en `ApiKey` moeten worden opgegeven om de container uit te voeren. anders wordt de container niet gestart.  Zie [facturering](#billing)voor meer informatie.
 
-Wanneer u de voorbeeld [DeploymentManifest.js](https://go.microsoft.com/fwlink/?linkid=2142179) hebt bijgewerkt met uw eigen instellingen en een aantal bewerkingen, kunt u de volgende [Azure cli](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-cli) -opdracht gebruiken om de container op de hostcomputer te implementeren, als een IOT Edge-module.
+Wanneer u het implementatie manifest voor [Azure stack edge-apparaten](https://go.microsoft.com/fwlink/?linkid=2142179) of [een desktop machine](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) met uw eigen instellingen en een selectie van bewerkingen hebt bijgewerkt, kunt u de onderstaande [Azure cli](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-cli) -opdracht gebruiken om de container op de hostcomputer te implementeren, als een IOT Edge-module.
 
 ```azurecli
 az login
 az extension add --name azure-iot
-az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json -–subscription "<subscriptionId>"
+az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json --subscription "<subscriptionId>"
 ```
 
 |Parameter  |Beschrijving  |
 |---------|---------|
-| `--deployment-id` | Een nieuwe naam voor de implementatie. |
 | `--hub-name` | De naam van uw Azure-IoT Hub. |
 | `--content` | De naam van het implementatie bestand. |
 | `--target-condition` | De naam van uw IoT Edge apparaat voor de hostcomputer. |
@@ -386,7 +385,7 @@ Navigeer naar het gedeelte **container** en maak een nieuwe container of gebruik
 
 Klik op **SAS-token en URL genereren** en kopieer de URL van de BLOB-SAS. Vervang het begin `https` door `http` en test de URL in een browser die het afspelen van video ondersteunt.
 
-Vervang `VIDEO_URL` in het [implementatie manifest](https://go.microsoft.com/fwlink/?linkid=2142179) met de URL die u hebt gemaakt, voor alle grafieken. Stel `VIDEO_IS_LIVE` in op `false` en implementeer de container voor ruimtelijke analyse opnieuw met het bijgewerkte manifest. Zie het voorbeeld hieronder.
+Vervang `VIDEO_URL` in het implementatie manifest voor uw [Azure stack edge-apparaat](https://go.microsoft.com/fwlink/?linkid=2142179) of op een andere [computer](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) de URL die u hebt gemaakt, voor alle grafieken. Stel `VIDEO_IS_LIVE` in op `false` en implementeer de container voor ruimtelijke analyse opnieuw met het bijgewerkte manifest. Zie het voorbeeld hieronder.
 
 De module ruimtelijke analyse begint met het gebruiken van het video bestand en wordt ook automatisch opnieuw afgespeeld.
 

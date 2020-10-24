@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: e3d6771f841d3a1d403c1c825da3b504b6896d9e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 0fb783a6ad65ce17bff14b72e8d94d284769779f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277213"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475155"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Tips voor betere prestaties van Azure Cosmos DB en .NET SDK v2
 
@@ -42,7 +42,7 @@ De [.net v3 SDK](https://github.com/Azure/azure-cosmos-dotnet-v3) wordt uitgebra
 
 U wordt aangeraden Windows 64-bits host te verwerken voor betere prestaties. De SQL SDK bevat een systeem eigen ServiceInterop.dll om query's lokaal te parseren en te optimaliseren. ServiceInterop.dll wordt alleen ondersteund op het Windows x64-platform. Voor Linux en andere niet-ondersteunde platforms waarbij ServiceInterop.dll niet beschikbaar is, wordt er een extra netwerk aanroep naar de gateway verzonden om de geoptimaliseerde query te krijgen. De volgende typen toepassingen gebruiken standaard 32-bits host verwerking. Voer de volgende stappen uit op basis van het type van uw toepassing om de verwerking van de host te wijzigen in 64-bits verwerking:
 
-- Voor uitvoer bare toepassingen kunt u de verwerking van een host wijzigen door het [platform doel](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019&preserve-view=true) in te stellen op **x64**  in het venster **project eigenschappen** op het tabblad **opbouwen** .
+- Voor uitvoer bare toepassingen kunt u de verwerking van een host wijzigen door het [platform doel](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019) in te stellen op **x64**  in het venster **project eigenschappen** op het tabblad **opbouwen** .
 
 - Voor VSTest test projecten kunt u de verwerking van de host wijzigen door test **Test**  >  **instellingen**testen  >  **standaard processor architectuur als x64** te selecteren in het menu van Visual Studio **testen** .
 
@@ -56,7 +56,7 @@ U wordt aangeraden Windows 64-bits host te verwerken voor betere prestaties. De 
     
 **Garbage Collection aan de server zijde inschakelen (GC)**
 
-Het verminderen van de frequentie van garbagecollection kan in sommige gevallen helpen. Stel in .NET [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) in op `true` .
+Het verminderen van de frequentie van garbagecollection kan in sommige gevallen helpen. Stel in .NET [gcServer](/dotnet/framework/configure-apps/file-schema/runtime/gcserver-element) in op `true` .
 
 **De werk belasting van uw client uitschalen**
 
@@ -90,8 +90,8 @@ Bij het uitvoeren van het TCP-protocol optimaliseert de client voor latentie doo
 
 In scenario's waarin u over sparse-toegang beschikt en als u een hoger aantal verbindingen krijgt in vergelijking met de toegang tot de gateway modus, kunt u het volgende doen:
 
-* Configureer de eigenschap [Connection Policy. PortReuseMode](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.portreusemode) in `PrivatePortPool` (effectief met Framework versie>= 4.6.1 en .net core versie >= 2,0): met deze eigenschap kan de SDK een kleine groep tijdelijke poorten gebruiken voor verschillende Azure Cosmos DB bestemmings eindpunten.
-* Configureer de eigenschap [Connection Policy. IdleConnectionTimeout](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.idletcpconnectiontimeout) moet groter zijn dan of gelijk zijn aan 10 minuten. De aanbevolen waarden liggen tussen 20 minuten en 24 uur.
+* Configureer de eigenschap [Connection Policy. PortReuseMode](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.portreusemode) in `PrivatePortPool` (effectief met Framework versie>= 4.6.1 en .net core versie >= 2,0): met deze eigenschap kan de SDK een kleine groep tijdelijke poorten gebruiken voor verschillende Azure Cosmos DB bestemmings eindpunten.
+* Configureer de eigenschap [Connection Policy. IdleConnectionTimeout](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.idletcpconnectiontimeout) moet groter zijn dan of gelijk zijn aan 10 minuten. De aanbevolen waarden liggen tussen 20 minuten en 24 uur.
 
 **Open async aanroepen om opstart latentie bij eerste aanvraag te voor komen**
 
@@ -109,7 +109,7 @@ Als dat mogelijk is, plaatst u toepassingen die Azure Cosmos DB aanroepen in dez
 **Het aantal threads/taken verhogen**
 <a id="increase-threads"></a>
 
-Omdat aanroepen naar Azure Cosmos DB via het netwerk worden gemaakt, moet u mogelijk de mate van parallelle uitvoering van uw aanvragen variëren, zodat de client toepassing mini maal tijd nodig heeft om te wachten tussen aanvragen. Als u bijvoorbeeld de [parallelle bibliotheek](https://msdn.microsoft.com//library/dd460717.aspx)van .net-taak gebruikt, maakt u op volg orde van honderden taken die worden gelezen van of schrijven naar Azure Cosmos db.
+Omdat aanroepen naar Azure Cosmos DB via het netwerk worden gemaakt, moet u mogelijk de mate van parallelle uitvoering van uw aanvragen variëren, zodat de client toepassing mini maal tijd nodig heeft om te wachten tussen aanvragen. Als u bijvoorbeeld de [parallelle bibliotheek](/dotnet/standard/parallel-programming/task-parallel-library-tpl)van .net-taak gebruikt, maakt u op volg orde van honderden taken die worden gelezen van of schrijven naar Azure Cosmos db.
 
 **Versneld netwerken inschakelen**
  
@@ -127,7 +127,7 @@ Elk `DocumentClient` exemplaar is thread-safe en voert efficiënt verbindings be
 
 **System.Net MaxConnections per host verg Roten met de gateway modus**
 
-Azure Cosmos DB aanvragen worden gedaan via HTTPS/REST wanneer u de gateway modus gebruikt. Deze worden onderworpen aan de standaard verbindings limiet per hostnaam of IP-adres. Mogelijk moet u `MaxConnections` een hogere waarde instellen (100 tot 1.000), zodat de client bibliotheek meerdere gelijktijdige verbindingen met Azure Cosmos db kan gebruiken. In .NET SDK 1.8.0 en hoger is de standaard waarde voor [ServicePointManager. DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) 50. Als u de waarde wilt wijzigen, kunt u [Documents. client. Connection Policy. MaxConnectionLimit](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) op een hogere waarde instellen.
+Azure Cosmos DB aanvragen worden gedaan via HTTPS/REST wanneer u de gateway modus gebruikt. Deze worden onderworpen aan de standaard verbindings limiet per hostnaam of IP-adres. Mogelijk moet u `MaxConnections` een hogere waarde instellen (100 tot 1.000), zodat de client bibliotheek meerdere gelijktijdige verbindingen met Azure Cosmos db kan gebruiken. In .NET SDK 1.8.0 en hoger is de standaard waarde voor [ServicePointManager. DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit) 50. Als u de waarde wilt wijzigen, kunt u [Documents. client. Connection Policy. MaxConnectionLimit](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit) op een hogere waarde instellen.
 
 **Parallelle query's voor gepartitioneerde verzamelingen afstemmen**
 
@@ -135,19 +135,19 @@ SQL .NET SDK 1.9.0 en hoger ondersteunen parallelle query's, waarmee u parallel 
 - `MaxDegreeOfParallelism` Hiermee bepaalt u het maximum aantal partities waarmee gelijktijdig query's kunnen worden uitgevoerd. 
 - `MaxBufferedItemCount` Hiermee bepaalt u het aantal vooraf opgehaalde resultaten.
 
-***Afstemmings graad van parallelle uitvoering***
+**_Afstemmings graad van parallellisme_*_
 
 Parallelle query werkt door meerdere partities parallel te doorzoeken. Maar gegevens van een afzonderlijke partitie worden serieel opgehaald ten opzichte van de query. De instelling `MaxDegreeOfParallelism` in [SDK v2](sql-api-sdk-dotnet.md) tot het aantal partities is de beste kans om de meest uitvoerende query te bereiken, op voor waarde dat alle andere systeem omstandigheden hetzelfde blijven. Als u het aantal partities niet weet, kunt u de mate van parallelle uitvoering instellen op een hoog getal. Het systeem kiest het minimum (aantal partities, door de gebruiker opgegeven invoer) als de mate van parallelle uitvoering.
 
 Parallelle query's produceren het meest voor deel als de gegevens gelijkmatig worden verdeeld over alle partities met betrekking tot de query. Als de gepartitioneerde verzameling is gepartitioneerd zodat alle of de meeste gegevens die door een query zijn geretourneerd, in een paar partities worden geconcentreerd (één partitie is het ergste geval), kunnen deze partities de prestaties van de query opsporen.
 
-***MaxBufferedItemCount afstemmen***
+_*_MaxBufferedItemCount afstemmen_*_
     
 Parallelle query is ontworpen om de resultaten vooraf op te halen terwijl de huidige batch met resultaten door de client wordt verwerkt. Deze vooraf ophalen helpt de algehele latentie van een query te verbeteren. De `MaxBufferedItemCount` para meter beperkt het aantal vooraf opgehaalde resultaten. Stel `MaxBufferedItemCount` in op het verwachte aantal geretourneerde resultaten (of een hoger getal), zodat de query het maximale voor deel van het vooraf ophalen kan ontvangen.
 
 Het vooraf ophalen werkt op dezelfde manier, ongeacht de mate van parallellisme, en er is één buffer voor de gegevens van alle partities.  
 
-**Uitstel implementeren met RetryAfter-intervallen**
+_*Implementeer uitstel met RetryAfter-intervallen**
 
 Tijdens de prestatie tests moet u de belasting verg Roten tot een klein aantal aanvragen wordt beperkt. Als aanvragen worden beperkt, moet de client toepassing worden uitgeschakeld op een vertraging voor het door de server opgegeven interval voor nieuwe pogingen. Door de uitstel te respecteren, zorgt u ervoor dat u een minimale hoeveelheid tijd kunt wachten tussen nieuwe pogingen. 
 
@@ -156,7 +156,7 @@ Ondersteuning voor het beleid voor opnieuw proberen is opgenomen in deze Sdk's:
 - Versie 1.9.0 en hoger van de [Node.js SDK voor SQL](sql-api-sdk-node.md) en de [python-SDK voor SQL](sql-api-sdk-python.md)
 - Alle ondersteunde versies van de [.net core](sql-api-sdk-dotnet-core.md) sdk's 
 
-Zie [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx)voor meer informatie.
+Zie [RetryAfter](/dotnet/api/microsoft.azure.documents.documentclientexception.retryafter)voor meer informatie.
     
 In versie 1,19 en hoger van de .NET SDK is er een mechanisme voor het vastleggen van aanvullende diagnostische gegevens en latentie problemen bij problemen, zoals wordt weer gegeven in het volgende voor beeld. U kunt de diagnostische teken reeks registreren voor aanvragen met een hogere lees latentie. De vastgelegde diagnostische teken reeks helpt u inzicht te krijgen in het aantal keren dat u 429 fouten hebt ontvangen voor een bepaalde aanvraag.
 

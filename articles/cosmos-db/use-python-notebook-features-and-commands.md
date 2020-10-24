@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: 5599a64e812c3006cf4379f98c5a0f0b0cd067e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 596d34ef0544f4160c18210f05f68b488ec114d3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801848"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476277"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-python-notebooks-preview"></a>Ingebouwde notebook opdrachten en-functies gebruiken in Azure Cosmos DB python-notebooks (preview)
 
@@ -167,7 +167,7 @@ Zie [PYTHON SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/c
 ## <a name="create-a-custom-instance-of-cosmos_client"></a>Een aangepast exemplaar van maken ``cosmos_client``
 Voor meer flexibiliteit kunt u een aangepast exemplaar van maken ``cosmos_client`` om het volgende te doen:
 
-- Het [verbindings beleid](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.documents.connectionpolicy?view=azure-python-preview&preserve-view=true) aanpassen
+- Het [verbindings beleid](/python/api/azure-cosmos/azure.cosmos.documents.connectionpolicy?preserve-view=true&view=azure-python-preview) aanpassen
 - Voer bewerkingen uit voor een ander Azure Cosmos-account dan dat waarin u zich bevindt
 
 U kunt toegang krijgen tot de connection string en de primaire sleutel van het huidige account via de [omgevings variabelen](#access-the-account-endpoint-and-primary-key-env-variables). 

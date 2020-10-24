@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: bc7bc677fb44600721b580ac9efc42feea4d98da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87d33308932ecd7c523c6fbe287648d4afc21ef0
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91252949"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485797"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies schrijven in Azure Cosmos DB
 
@@ -23,7 +23,7 @@ Als u een opgeslagen procedure, trigger en een door de gebruiker gedefinieerde f
 > [!NOTE]
 > Bij het uitvoeren van een opgeslagen procedure voor gepartitioneerde containers moet een waarde voor de partitiesleutel worden opgegeven in de aanvraagopties. Opgeslagen procedures zijn altijd gerelateerd aan een partitiesleutel. Items met een andere partitiesleutelwaarde zijn niet zichtbaar voor de opgeslagen procedure. Dit geldt ook voor triggers.
 > [!Tip]
-> Cosmos biedt ondersteuning voor het implementeren van containers met opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies. Zie [een Azure Cosmos DB-container maken met functionaliteit aan server zijde](manage-sql-with-resource-manager.md#create-sproc) voor meer informatie.
+> Cosmos biedt ondersteuning voor het implementeren van containers met opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies. Zie [een Azure Cosmos DB-container maken met functionaliteit aan server zijde](./manage-with-templates.md#create-sproc) voor meer informatie.
 
 ## <a name="how-to-write-stored-procedures"></a><a id="stored-procedures"></a>Opgeslagen procedures uitvoeren schrijven
 

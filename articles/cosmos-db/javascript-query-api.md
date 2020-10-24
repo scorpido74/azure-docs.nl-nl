@@ -8,20 +8,20 @@ ms.date: 05/07/2020
 ms.author: tisande
 ms.reviewer: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: 1e8e1aa9d8e582644d1d625fc8a97cc0e0c790df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f16498f0661ba918acd42b7964b649d0bbdf5841
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334392"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495880"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Java script-query-API in Azure Cosmos DB
 
-Naast het uitgeven van query's met behulp van de SQL-API in Azure Cosmos DB, biedt de [Cosmos DB SDK aan de server zijde](https://azure.github.io/azure-cosmosdb-js-server/) een Java script-interface voor het uitvoeren van geoptimaliseerde query's in Cosmos DB opgeslagen procedures en triggers. U hoeft niet op de hoogte te zijn van de SQL-taal om deze Java script-interface te gebruiken. Met de Java script-query-API kunt u programmatisch query's maken door predikaten te gebruiken in volg orde van functie aanroepen, met een syntaxis die bekend is met de ECMAScript5's array-ingebouwde en populaire Java script-bibliotheken zoals Lodash. Query's worden door de Java Script-runtime geparseerd en efficiënt uitgevoerd met Azure Cosmos DB indices.
+Naast het uitgeven van query's met behulp van de SQL-API in Azure Cosmos DB, biedt de [Cosmos DB SDK aan de server zijde](https://github.com/Azure/azure-cosmosdb-js-server/) een Java script-interface voor het uitvoeren van geoptimaliseerde query's in Cosmos DB opgeslagen procedures en triggers. U hoeft niet op de hoogte te zijn van de SQL-taal om deze Java script-interface te gebruiken. Met de Java script-query-API kunt u programmatisch query's maken door predikaten te gebruiken in volg orde van functie aanroepen, met een syntaxis die bekend is met de ECMAScript5's array-ingebouwde en populaire Java script-bibliotheken zoals Lodash. Query's worden door de Java Script-runtime geparseerd en efficiënt uitgevoerd met Azure Cosmos DB indices.
 
 ## <a name="supported-javascript-functions"></a>Ondersteunde Java script-functies
 
-| **Functie** | **Beschrijving** |
+| **Functie** | **Deschription** (Beschrijving) |
 |---------|---------|
 |`chain() ... .value([callback] [, options])`|Start een geketende aanroep die moet worden beëindigd met de waarde ().|
 |`filter(predicateFunction [, options] [, callback])`|Hiermee wordt de invoer gefilterd met behulp van een predicaat functie die waar/onwaar retourneert om invoer documenten te filteren in/uit te voeren in de resulterende set. Deze functie gedraagt zich op dezelfde manier als een WHERE-component in SQL.|
@@ -43,7 +43,7 @@ De volgende Java script-constructies worden niet geoptimaliseerd voor Azure Cosm
 - Controle stroom (bijvoorbeeld als, voor, while)
 - Functie aanroepen
 
-Zie de [Cosmos DB server side java script-documentatie](https://azure.github.io/azure-cosmosdb-js-server/)voor meer informatie.
+Zie de [Cosmos DB server side java script-documentatie](https://github.com/Azure/azure-cosmosdb-js-server/)voor meer informatie.
 
 ## <a name="sql-to-javascript-cheat-sheet"></a>Cheat-blad van SQL naar Java script
 
@@ -52,7 +52,7 @@ De volgende tabel bevat verschillende SQL-query's en de bijbehorende java script
 > [!NOTE]
 > `__` (dubbele onderstreping) is een alias naar `getContext().getCollection()` bij gebruik van de JavaScript-query-API.
 
-|**SQL**|**Java script-query-API**|**Beschrijving**|
+|**SQL**|**Java script-query-API**|**Deschription** (Beschrijving)|
 |---|---|---|
 |UITGESCHAKELD<br>VAN documenten| __. map (function (doc) { <br>&nbsp;&nbsp;&nbsp;&nbsp;retour document;<br>});|De resultaten zijn in alle documenten (gepagineerd met vervolg token).|
 |SELECT <br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;docs. bericht als msg,<br>&nbsp;&nbsp;&nbsp;docs. acties <br>VAN documenten|__. map (function (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;opvragen<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bericht: doc. bericht,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;acties: doc. acties<br>&nbsp;&nbsp;&nbsp;&nbsp;};<br>});|Projecteert de id, het bericht (met een alias als een bericht) en actie van alle documenten.|

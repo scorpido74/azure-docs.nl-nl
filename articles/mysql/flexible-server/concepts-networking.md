@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/23/2020
-ms.openlocfilehash: 48265856e5e745e05f6625766f9cd0c9b15c90a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eaccd0559439ce228325205f5845151f0e76bcae
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708659"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484522"
 ---
 # <a name="connectivity-and-networking-concepts-for-azure-database-for-mysql---flexible-server-preview"></a>Connectiviteits-en netwerk concepten voor Azure Database for MySQL-flexibele server (preview-versie)
 
@@ -73,6 +73,8 @@ Hier volgen enkele concepten die u moet kennen bij het gebruik van virtuele netw
 
 Meer informatie over het inschakelen van persoonlijke toegang (vnet-integratie) met behulp van de [Azure Portal](how-to-manage-virtual-network-portal.md) of [Azure cli](how-to-manage-virtual-network-cli.md).
 
+> [!NOTE]
+> Als u de aangepaste DNS-server gebruikt, moet u een DNS-Forwarder gebruiken om de FQDN van Azure Database for MySQL-flexibele server op te lossen. Raadpleeg [de naam omzetting die gebruikmaakt van uw eigen DNS-server](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) voor meer informatie.
 
 ## <a name="public-access-allowed-ip-addresses"></a>Openbare toegang (toegestane IP-adressen)
 De kenmerken van de open bare toegangs methode zijn onder andere:

@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 581c8fcad62c40555a90b7455a260259f3a09212
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e941c941c7b406be8d6931fd7af4108137220d56
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802410"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476906"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Problemen vaststellen en oplossen bij het gebruik van Azure Cosmos DB .NET SDK
 
@@ -34,8 +34,8 @@ Bekijk de volgende controle lijst voordat u uw toepassing naar productie gaat ve
 *    De nieuwste [SDK](sql-api-sdk-dotnet-standard.md)gebruiken. Preview-Sdk's mogen niet worden gebruikt voor productie. Dit voor komt dat bekende problemen die al zijn opgelost, worden gerepareerd.
 *    Bekijk de [Tips voor prestaties](performance-tips.md)en volg de aanbevolen procedures. Dit helpt voor komen dat schalen, latentie en andere prestatie problemen worden opgelost.
 *    Schakel de SDK-logboek registratie in om u te helpen bij het oplossen van een probleem. Het inschakelen van de logboek registratie kan van invloed zijn op de prestaties, zodat het het beste kan worden ingeschakeld wanneer u problemen oplost. U kunt de volgende logboeken inschakelen:
-*    [Metrische gegevens vastleggen](monitor-accounts.md) met behulp van de Azure Portal. Met metrische gegevens van de portal wordt de Azure Cosmos DB telemetrie weer gegeven. Dit is handig om te bepalen of het probleem overeenkomt met Azure Cosmos DB of van de client zijde.
-*    Registreer de [Diagnostische teken reeks](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring) in de v2 SDK of [diagnoses](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics) in de V3 SDK van de punt bewerkings reacties.
+*    [Metrische gegevens vastleggen](./monitor-cosmos-db.md) met behulp van de Azure Portal. Met metrische gegevens van de portal wordt de Azure Cosmos DB telemetrie weer gegeven. Dit is handig om te bepalen of het probleem overeenkomt met Azure Cosmos DB of van de client zijde.
+*    Registreer de [Diagnostische teken reeks](/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring) in de v2 SDK of [diagnoses](/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics) in de V3 SDK van de punt bewerkings reacties.
 *    De [metrische gegevens](sql-api-query-metrics.md) van de SQL-query registreren bij alle antwoorden op query's 
 *    Volg de installatie van de [SDK-logboek registratie]( https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/docs/documentdb-sdk_capture_etl.md)
 
@@ -51,7 +51,7 @@ Raadpleeg de [sectie met github-problemen](https://github.com/Azure/azure-cosmos
 * U kunt problemen met de connectiviteit/Beschik baarheid ondervinden als gevolg van een gebrek aan resources op de client computer. U wordt aangeraden uw CPU-gebruik te bewaken op knoop punten waarop de Azure Cosmos DB-client wordt uitgevoerd, en omhoog/omlaag te schalen als deze bij hoge belasting worden uitgevoerd.
 
 ### <a name="check-the-portal-metrics"></a>Controleer de metrische gegevens van de portal
-Door de [metrische gegevens](monitor-accounts.md) van de portal te controleren, kunt u bepalen of het een probleem aan de client zijde is of dat er een probleem is met de service. Als de metrische gegevens bijvoorbeeld een hoog aantal aanvragen met een rente beperking bevatten (HTTP-status code 429), wat betekent dat de aanvraag wordt beperkt, controleert u de sectie [aanvraag snelheid is te groot](troubleshoot-request-rate-too-large.md) . 
+Door de [metrische gegevens](./monitor-cosmos-db.md) van de portal te controleren, kunt u bepalen of het een probleem aan de client zijde is of dat er een probleem is met de service. Als de metrische gegevens bijvoorbeeld een hoog aantal aanvragen met een rente beperking bevatten (HTTP-status code 429), wat betekent dat de aanvraag wordt beperkt, controleert u de sectie [aanvraag snelheid is te groot](troubleshoot-request-rate-too-large.md) . 
 
 ## <a name="common-error-status-codes"></a>Algemene fout status codes <a id="error-codes"></a>
 
@@ -78,11 +78,11 @@ Als uw app is geïmplementeerd op [Azure virtual machines zonder een openbaar IP
 
 * Voeg uw Azure Cosmos DB Service-eind punt toe aan het subnet van uw virtuele Azure Virtual Machines-netwerk. Zie [Azure Virtual Network Service-eind punten](../virtual-network/virtual-network-service-endpoints-overview.md)voor meer informatie. 
 
-    Wanneer het service-eind punt is ingeschakeld, worden de aanvragen niet langer verzonden vanuit een openbaar IP-adres naar Azure Cosmos DB. In plaats daarvan worden de identiteit van het virtuele netwerk en het subnet verzonden. Deze wijziging kan ertoe leiden dat de firewall wordt neergezet als alleen open bare IP-adressen zijn toegestaan. Als u een firewall gebruikt en u het service-eind punt inschakelt, voegt u een subnet toe aan de firewall door gebruik te maken van [Virtual Network acl's](../virtual-network/virtual-networks-acl.md).
+    Wanneer het service-eind punt is ingeschakeld, worden de aanvragen niet langer verzonden vanuit een openbaar IP-adres naar Azure Cosmos DB. In plaats daarvan worden de identiteit van het virtuele netwerk en het subnet verzonden. Deze wijziging kan ertoe leiden dat de firewall wordt neergezet als alleen open bare IP-adressen zijn toegestaan. Als u een firewall gebruikt en u het service-eind punt inschakelt, voegt u een subnet toe aan de firewall door gebruik te maken van [Virtual Network acl's](/previous-versions/azure/virtual-network/virtual-networks-acl).
 * Wijs een [openbaar IP-adres toe aan uw Azure-VM](../load-balancer/troubleshoot-outbound-connection.md#assignilpip).
 
 ### <a name="high-network-latency"></a><a name="high-network-latency"></a>Hoge netwerk latentie
-Hoge netwerk latentie kan worden geïdentificeerd met behulp van de [Diagnostische teken reeks](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?view=azure-dotnet&preserve-view=true) in de v2 SDK of [diagnoses](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics) in de V3 SDK.
+Hoge netwerk latentie kan worden geïdentificeerd met behulp van de [Diagnostische teken reeks](/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?preserve-view=true&view=azure-dotnet) in de v2 SDK of [diagnoses](/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics) in de V3 SDK.
 
 Als er geen [time-outs](troubleshoot-dot-net-sdk-request-timeout.md) aanwezig zijn en de diagnostische gegevens afzonderlijke aanvragen weer geven waarbij de hoge latentie duidelijk is voor het verschil tussen `ResponseTime` en `RequestStartTime` , bijvoorbeeld (>300 milliseconden in dit voor beeld):
 
@@ -94,11 +94,11 @@ ResponseTime: 2020-03-09T22:44:49.9279906Z, StoreResult: StorePhysicalAddress: r
 Deze latentie kan meerdere oorzaken hebben:
 
 * Uw toepassing wordt niet uitgevoerd in dezelfde regio als uw Azure Cosmos DB-account.
-* De configuratie van de [PreferredLocations](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations) of [ApplicationRegion](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationregion) is onjuist en er wordt geprobeerd verbinding te maken met een andere regio waar uw toepassing momenteel wordt uitgevoerd.
+* De configuratie van de [PreferredLocations](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations) of [ApplicationRegion](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationregion) is onjuist en er wordt geprobeerd verbinding te maken met een andere regio waar uw toepassing momenteel wordt uitgevoerd.
 * Er is mogelijk een knel punt op de netwerk interface vanwege veel verkeer. Als de toepassing wordt uitgevoerd op Azure Virtual Machines, zijn er mogelijke oplossingen:
     * Overweeg het gebruik [van een virtuele machine met versneld netwerken ingeschakeld](../virtual-network/create-vm-accelerated-networking-powershell.md).
     * [Versneld netwerken inschakelen op een bestaande virtuele machine](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms).
-    * Overweeg het gebruik van een [hogere virtuele machine](../virtual-machines/windows/sizes.md).
+    * Overweeg het gebruik van een [hogere virtuele machine](../virtual-machines/sizes.md).
 
 ### <a name="common-query-issues"></a>Veelvoorkomende query problemen
 

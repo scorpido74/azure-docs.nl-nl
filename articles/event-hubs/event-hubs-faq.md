@@ -2,13 +2,13 @@
 title: Veelgestelde vragen-Azure Event Hubs | Microsoft Docs
 description: In dit artikel vindt u een lijst met veelgestelde vragen over Azure Event Hubs en de antwoorden hiervan.
 ms.topic: article
-ms.date: 09/16/2020
-ms.openlocfilehash: 2c58f67fed880b8aad60ff1a46a587dcf514102e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.date: 10/23/2020
+ms.openlocfilehash: 511706e0de2737feb259c0ff9529373ab8b6d026
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424184"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495228"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Veelgestelde vragen over Event Hubs
 
@@ -181,27 +181,12 @@ Bij een multi tenant-aanbieding kunnen doorvoer eenheden Maxi maal 40 TUs (u kun
 ### <a name="what-are-event-hubs-dedicated-clusters"></a>Wat zijn toegewezen clusters van Event Hubs?
 Event Hubs Dedicated-clusters bieden implementaties met één Tenant voor klanten met de meest veeleisende vereisten. Deze aanbieding bouwt voort op capaciteits clusters die niet zijn gebonden door doorvoer eenheden. Dit betekent dat u het cluster kunt gebruiken om uw gegevens op te nemen en te streamen, zoals bepaald door het CPU-en geheugen gebruik van het cluster. Zie [Event hubs dedicated clusters](event-hubs-dedicated-overview.md)voor meer informatie.
 
-### <a name="how-much-does-a-single-capacity-unit-let-me-achieve"></a>Wat kan ik doen met één capaciteitseenheid?
-Hoeveel u voor een toegewezen cluster kunt opnemen en streamen, is afhankelijk van verschillende factoren, zoals uw producenten, consumenten, de snelheid waarmee u opnamet en verwerkt, en nog veel meer. 
-
-De volgende tabel toont de Bench Mark-resultaten die we hebben behaald tijdens onze tests:
-
-| De shape Payload | Ontvangers | Ingangs bandbreedte| Berichten binnenkomend | Uitgangs band breedte | Uitstaande berichten | Totaal aantal TUs | TUs per CU |
-| ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
-| Batches van 100x1KB | 2 | 400 MB/sec. | 400k berichten per seconde | 800 MB/sec. | 800k berichten per seconde | 400 TUs | 100 TUs | 
-| Batches van 10x10KB | 2 | 666 MB/sec. | 66.6 k-berichten/sec | 1,33 GB/sec. | 133k berichten per seconde | 666 TUs | 166 TUs |
-| Batches van 6x32KB | 1 | 1,05 GB/sec. | 34k berichten per seconde | 1,05 GB/sec. | 34k berichten per seconde | 1000 TUs | 250 TUs |
-
-Bij het testen zijn de volgende criteria gebruikt:
-
-- Er is een toegewezen Event Hubs cluster met vier capaciteits eenheden (CUs) gebruikt. 
-- De Event Hub die wordt gebruikt voor opname, had 200 partities. 
-- De gegevens die zijn opgenomen, zijn ontvangen door twee receiver-toepassingen die van alle partities ontvangen.
-
-De resultaten geven u een idee van wat er met een toegewezen Event Hubs cluster kan worden gerealiseerd. Daarnaast wordt een exclusief cluster geleverd met de Event Hubs Capture ingeschakeld voor uw scenario's voor de Bewaar periode van micro batch en lange termijn.
-
 ### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>Hoe kan ik een Event Hubs Dedicated cluster maken?
-U maakt een Event Hubs toegewezen cluster door een [ondersteunings aanvraag voor quotum verhoging](https://portal.azure.com/#create/Microsoft.Support) in te dienen of door contact op te nemen met het [Event hubs team](mailto:askeventhubs@microsoft.com). Het duurt doorgaans ongeveer twee weken om het cluster op te halen en door te geven om door u te worden gebruikt. Dit proces is tijdelijk totdat een volledig zelfvoorzienings systeem beschikbaar is via de Azure Portal.
+Voor stapsgewijze instructies en meer informatie over het instellen van een Event Hubs toegewezen cluster raadpleegt [u Quick Start: een speciaal event hubs cluster maken met behulp van Azure Portal](event-hubs-dedicated-cluster-create-portal.md). 
+
+
+[!INCLUDE [event-hubs-dedicated-clusters-faq](../../includes/event-hubs-dedicated-clusters-faq.md)]
+
 
 ## <a name="best-practices"></a>Aanbevolen procedures
 
@@ -252,7 +237,7 @@ Capture maakt gebruik van een opslag account dat u opgeeft wanneer het is ingesc
 
 Zie [quota's](event-hubs-quotas.md)voor een lijst met alle Event hubs quota's.
 
-## <a name="troubleshooting"></a>Probleemoplossing
+## <a name="troubleshooting"></a>Problemen oplossen
 
 ### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Waarom kan ik geen naam ruimte maken nadat ik deze heb verwijderd uit een ander abonnement? 
 Wanneer u een naam ruimte uit een abonnement verwijdert, wacht u vier uur voordat u deze opnieuw maakt met dezelfde naam in een ander abonnement. Anders wordt het volgende fout bericht weer gegeven: `Namespace already exists` . 

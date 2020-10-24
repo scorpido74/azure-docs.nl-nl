@@ -248,13 +248,13 @@
           href: move-partner-namespaces-across-regions.md
     - name: Beveiligen
       items:
-        - name: Privé-eindpunten configureren
+        - name: Gebeurtenissen veilig publiceren via een privékoppeling
           href: configure-private-endpoints.md
         - name: IP-firewall configureren
           href: configure-firewall.md
         - name: Beveiligde Webhook met Azure Active Directory
           href: secure-webhook-delivery.md
-        - name: Gebeurtenisverzending met beheerde identiteit
+        - name: 'Gebeurtenisverzending, beheerde identiteit en privékoppeling'
           href: managed-service-identity.md
     - name: Problemen oplossen
       items:

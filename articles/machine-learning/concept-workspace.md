@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/22/2020
-ms.openlocfilehash: dccdbcb99b32a922d76b29e5896cdf99290758d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b40ce0951e2d9c8933d4f0ea9d24b1673e254d6
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302448"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495715"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Wat is een Azure Machine Learning-werk ruimte?
 
@@ -88,8 +88,8 @@ U kunt ook de volgende beheer taken voor werk ruimten uitvoeren:
 
 Er zijn meerdere manieren om een werk ruimte te maken:  
 
-* Gebruik de [Azure Portal](how-to-manage-workspace.md) voor een punt-en-klik-interface om elke stap stapsgewijs te door lopen.
-* De [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true#&preserve-view=trueworkspace) gebruiken om een werk ruimte te maken in de vlucht vanuit Python-scripts of Jupiter-notebooks
+* Gebruik de [Azure Portal](how-to-manage-workspace.md?tabs=azure-portal#create-a-workspace) voor een punt-en-klik-interface om elke stap stapsgewijs te door lopen.
+* De [Azure machine learning SDK voor python](how-to-manage-workspace.md?tabs=python#create-a-workspace) gebruiken om een werk ruimte te maken in de vlucht vanuit Python-scripts of Jupiter-notebooks
 * Gebruik een [Azure Resource Manager sjabloon](how-to-create-workspace-template.md) of de [Azure machine learning cli](reference-azure-machine-learning-cli.md) wanneer u het maken van de zakelijke beveiligings normen wilt automatiseren of aanpassen.
 * Als u in Visual Studio code werkt, gebruikt u de [VS code-extensie](how-to-manage-resources-vscode.md#create-a-workspace).
 
@@ -114,7 +114,7 @@ Wanneer u een nieuwe werk ruimte maakt, worden er automatisch verschillende Azur
 + [Azure Key Vault](https://azure.microsoft.com/services/key-vault/): slaat geheimen op die worden gebruikt door Compute-doelen en andere gevoelige informatie die nodig is voor de werk ruimte.
 
 > [!NOTE]
-> Naast het maken van nieuwe versies, kunt u ook bestaande Azure-Services gebruiken.
+> U kunt in plaats daarvan bestaande Azure-resource-instanties gebruiken wanneer u de werk ruimte met de [python-SDK](how-to-manage-workspace.md?tabs=python#create-a-workspace), [R-sdk](https://azure.github.io/azureml-sdk-for-r/reference/create_workspace.html)of de Azure machine learning cli maakt [met behulp van een arm-sjabloon](how-to-create-workspace-template.md).
 
 <a name="wheres-enterprise"></a>
 
@@ -131,9 +131,9 @@ In beide edities zijn klanten verantwoordelijk voor de kosten van verbruikte Azu
 Om aan de slag te gaan met Azure Machine Learning raadpleegt u:
 
 + [Overzicht van Azure Machine Learning](overview-what-is-azure-ml.md)
-+ [Een werkruimte maken](how-to-manage-workspace.md)
-+ [Een werkruimte beheren](how-to-manage-workspace.md)
-+ [Zelfstudie: Ga aan de slag met het maken van uw eerste ML-experiment met de Python SDK](tutorial-1st-experiment-sdk-setup.md)
++ [Een werk ruimte maken en beheren](how-to-manage-workspace.md)
++ [Zelf studie: aan de slag met Azure Machine Learning in uw ontwikkel omgeving](tutorial-1st-experiment-sdk-setup-local.md)
++ [Zelf studie: aan de slag met het maken van uw eerste ML-experiment op een reken instantie](tutorial-1st-experiment-sdk-setup.md)
 + [Zelf studie: aan de slag met Azure Machine Learning met de R SDK](tutorial-1st-r-experiment.md)
 + [Zelf studie: uw eerste classificatie model maken met geautomatiseerde machine learning](tutorial-first-experiment-automated-ml.md) 
 + [Zelfstudie: Autoprijzen voorspellen met de ontwerpfunctie](tutorial-designer-automobile-price-train-score.md)

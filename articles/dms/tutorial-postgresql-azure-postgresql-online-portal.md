@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 04/11/2020
-ms.openlocfilehash: 4e424d41a7b4c1d9394e789c60b60a6fa86a69c5
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: c451c49555e9c4c9214780bd936c17e9a30df776
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893778"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495536"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-portal"></a>Zelfstudie: PostgreSQL online migreren naar Azure DB for PostgreSQL met behulp van DMS en de Azure-portal
 
@@ -211,7 +211,7 @@ Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak v
 
 2. Zoek in het scherm **Azure Database Migration service** naar de naam van de Azure Database Migration Service-instantie die u hebt gemaakt, selecteer de instantie en selecteer vervolgens **Nieuw migratieproject**.
 
-3. Geef in het scherm **Nieuw migratieproject** een naam op voor het project, selecteer in het tekstvak **Bronservertype** de optie **PostgresSQL** en selecteer in het tekstvak **Doelservertype** de optie **Azure Database for PostgreSQL**.
+3. Geef in het scherm **Nieuw migratieproject** een naam op voor het project, selecteer in het tekstvak **Bronservertype** de optie **PostgreSQL** en selecteer in het tekstvak **Doelservertype** de optie **Azure Database for PostgreSQL**.
 
 4. Selecteer in de sectie **Het type activiteit kiezen** de optie **Onlinegegevensmigratie**.
 

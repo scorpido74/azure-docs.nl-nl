@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 1f04f8b447f07f62561f56722df3b9502ad58d41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f786a791fda1f601df2a94d9f38edcbfe9dc401
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289035"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474764"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Prestaties afstemmen met gerealiseerde weergaven
 
@@ -35,10 +35,10 @@ De meeste standaard weergave vereisten zijn nog steeds van toepassing op een ger
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
 |Definitie weergeven                 | Opgeslagen in azure Data Warehouse.              | Opgeslagen in azure Data Warehouse.
 |Inhoud weergeven                    | Elke keer dat de weer gave wordt gebruikt, gegenereerd.   | Vooraf verwerkt en opgeslagen in azure Data Warehouse tijdens het maken van de weer gave. Bijgewerkt wanneer gegevens worden toegevoegd aan de onderliggende tabellen.
-|Gegevens vernieuwen                    | Altijd bijgewerkt                               | Altijd bijgewerkt
+|Gegevensvernieuwing                    | Altijd bijgewerkt                               | Altijd bijgewerkt
 |Snelheid om weergave gegevens op te halen uit complexe query's     | Langzaam                                         | Snel  
 |Extra opslag ruimte                   | Nee                                           | Ja
-|Syntax                          | WEER GAVE MAKEN                                  | GEREALISEERDE WEER GAVE MAKEN ALS SELECTEREN
+|Syntax                          | CREATE VIEW                                  | GEREALISEERDE WEER GAVE MAKEN ALS SELECTEREN
 
 ## <a name="benefits-of-materialized-views"></a>Voor delen van gerealiseerde weer gaven
 
@@ -79,7 +79,9 @@ In vergelijking met andere afstemmings opties, zoals schalen en statistieken, is
 
 **U hebt verschillende strategieën voor het distribueren van gegevens nodig voor snellere query prestaties**
 
-Azure data warehouse is een gedistribueerd en een systeem met een enorme parallelle verwerking (MPP).   Gegevens in een Data Warehouse-tabel worden verdeeld over 60-knoop punten met behulp van een van de drie [distributie strategieën](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (hash, round_robin of gerepliceerd).  
+Azure data warehouse is een gedistribueerd en een systeem met een enorme parallelle verwerking (MPP).  
+
+Synapse SQL is een gedistribueerd querysysteem waarmee ondernemingen datawarehousing en gegevensvirtualisatie-scenario's kunnen implementeren met behulp van standaard T-SQL-ervaringen die bekend zijn bij data engineers. Ook worden de mogelijkheden van SQL uitgebreid om scenario's wat betreft streaming- en machine learning aan te pakken. Gegevens in een Data Warehouse-tabel worden verdeeld over 60-knoop punten met behulp van een van de drie [distributie strategieën](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (hash, round_robin of gerepliceerd).  
 
 De gegevens distributie wordt opgegeven tijdens het maken van de tabel en blijft ongewijzigd totdat de tabel wordt verwijderd. Gerealiseerde weer gave van een virtuele tabel op schijf ondersteunt hash-en round_robin gegevens distributies.  Gebruikers kunnen een gegevens distributie kiezen die afwijkt van de basis tabellen, maar wel optimaal is voor de prestaties van query's die regel matig gebruikmaken van de weer gaven.  
 

@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/19/2020
+ms.date: 10/22/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b481a1ccf36120a30bf7c923e2d59c5782433567
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 0ea5995dbd6397c37f88c302754bc7ac1e5ef089
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282510"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478266"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure gebruiken om SAP-werkbelasting scenario's te hosten en uit te voeren
 
@@ -79,6 +79,7 @@ In deze sectie vindt u documenten over PowerBI-integratie in SAP-gegevens bronne
 
 ## <a name="change-log"></a>Wijzigingen logboek
 
+- 10/22/2020: wijziging in [ha voor SAP NW op Azure-vm's op SLES voor SAP-toepassingen](./high-availability-guide-suse.md), [ha voor SAP NW op Azure vm's op SLES met ANF](./high-availability-guide-suse-netapp-files.md), [ha voor SAP NW op Azure vm's op RHEL voor SAP-toepassingen](./high-availability-guide-rhel.md) en [ha voor SAP NW op Azure vm's op RHEL met ANF](./high-availability-guide-rhel-netapp-files.md) om de aanbeveling voor net.IPv4.tcp_keepalive_time aan te passen  
 - 10/16/2020: wijziging in [ha van IBM DB2 LUW op Azure vm's op SLES met pacemaker](./dbms-guide-ha-ibm.md), [ha voor SAP NW op Azure vm's op RHEL voor SAP-toepassingen](./high-availability-guide-rhel.md), [ha van IBM Db2 LUW op Azure vm's op RHEL](./high-availability-guide-rhel-ibm-db2-luw.md), [ha voor SAP NW op Azure vm's op RHEL multi-sid guide](./high-availability-guide-rhel-multi-sid.md), [ha voor SAP NW](./high-availability-guide-rhel-netapp-files.md)op [Azure](./sap-hana-high-availability-netapp-files-red-hat.md) Vm's op RHEL met ANF, ha [voor SAP NW op Azure vm's op SLES voor SAP-toepassingen,](./high-availability-guide-suse.md)ha [voor SAP NnW op Azure Vm's op SLES multi-sid Guide,](./high-availability-guide-suse-multi-sid.md)ha [voor SAP NW op Azure vm's op SLES met ANF voor SAP-toepassingen,](./high-availability-guide-suse-netapp-files.md)ha [voor NFS op Azure vm's op](./high-availability-guide-suse-nfs.md)SLES, ha van [SAP Hana op Azure vm's op](./sap-hana-high-availability.md)SLES SAP Hana , [Ha van SAP Hana op Azure-vm's op RHEL](./sap-hana-high-availability-rhel.md), [SAP Hana scale-out HSR met pacemaker op virtuele machines van Azure op RHEL](./sap-hana-high-availability-scale-out-hsr-rhel.md), de [Azure-infra structuur voor SAP ASCS/SCS met de wsfc-en gedeelde schijf](./sap-high-availability-infrastructure-wsfc-shared-disk.md), de [multi-sid ha-hand leiding voor SAP ASCS/SCS met wsfc-en Azure Shared Disk](./sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md) en de [multi-sid ha-hand leiding voor SAP ASCS/SCS met wsfc-en gedeelde schijf](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md) 
 - 10/16/2020: Documentatie toevoegen voor het beheren van opslag momentopnamen van HANA grote instanties in [back-up en herstel van SAP Hana in Hana grote instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore)
 - 10/15/2020: release van het SAP BusinessObjects BI-platform op de Azure-documentatie, [SAP BUSINESSOBJECTS BI platform planning and Deployment Guide (Engelstalig) in azure](businessobjects-deployment-guide.md) en [SAP BusinessObjects BI platform Deployment Guide voor Linux op Azure](businessobjects-deployment-guide-linux.md)

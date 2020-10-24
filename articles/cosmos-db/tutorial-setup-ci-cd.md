@@ -8,12 +8,12 @@ ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 34508abdfa509dc2f8238e8e3b0dbac21c26ff7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7aace0b1ee6963aa220a60a11d02c370bf4d822a
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801916"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476549"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Een CI/CD-pijplijn instellen met de build-taak van Azure Cosmos DB Emulator in Azure DevOps
 
@@ -32,13 +32,13 @@ U kunt de build-taak pas gebruiken als u deze eerst installeert in uw Azure DevO
 Kies vervolgens de organisatie waarin u de extensie installeren. 
 
 > [!NOTE]
-> Als u een uitbrei ding wilt installeren in een Azure DevOps-organisatie, moet u een account eigenaar of beheerder van een project verzameling zijn. Als u niet bevoegd bent, maar wel lid bent van het account, kunt u extensies aanvragen. [Meer informatie.](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts&preserve-view=true)
+> Als u een uitbrei ding wilt installeren in een Azure DevOps-organisatie, moet u een account eigenaar of beheerder van een project verzameling zijn. Als u niet bevoegd bent, maar wel lid bent van het account, kunt u extensies aanvragen. [Meer informatie.](/azure/devops/marketplace/faq-extensions?preserve-view=true&view=vsts)
 
 :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_2.png" alt-text="Build-taak van Azure Cosmos DB Emulator zoeken en installeren in de Marketplace van Azure DevOps":::
 
 ## <a name="create-a-build-definition"></a>Een build-definitie maken
 
-Nu de uitbrei ding is geïnstalleerd, meldt u zich aan bij uw Azure DevOps-organisatie en gaat u naar het project in het dash board projecten. U kunt een [build-pipeline](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&preserve-view=true&tabs=new-nav) aan uw project toevoegen of een bestaande build-pipeline wijzigen. Als u al een build-pipeline hebt, kunt u verdergaan met[Build-taak van de emulator toevoegen aan een build-definitie](#addEmulatorBuildTaskToBuildDefinition).
+Nu de uitbrei ding is geïnstalleerd, meldt u zich aan bij uw Azure DevOps-organisatie en gaat u naar het project in het dash board projecten. U kunt een [build-pipeline](/azure/devops/pipelines/get-started-designer?preserve-view=true&tabs=new-nav&view=vsts) aan uw project toevoegen of een bestaande build-pipeline wijzigen. Als u al een build-pipeline hebt, kunt u verdergaan met[Build-taak van de emulator toevoegen aan een build-definitie](#addEmulatorBuildTaskToBuildDefinition).
 
 1. Om een nieuwe build-definitie te maken, gaat u naar het tabblad **Builds** in Azure DevOps. Selecteer **+ Nieuw.** \> **Nieuwe build-pipeline**
 
@@ -51,7 +51,7 @@ Nu de uitbrei ding is geïnstalleerd, meldt u zich aan bij uw Azure DevOps-organ
 3. Selecteer ten slotte de gewenste sjabloon voor de build-pipeline. We selecteren de sjabloon **ASP.NET** voor deze zelfstudie. U hebt nu een build-pijp lijn die u kunt instellen voor het gebruik van de Azure Cosmos DB emulator-opbouw taak. 
 
 > [!NOTE]
-> Voor de agent groep die moet worden geselecteerd voor deze CI moet docker voor Windows zijn geïnstalleerd, tenzij de installatie hand matig wordt uitgevoerd in een eerdere taak als onderdeel van de CI. Zie het artikel [micro soft hosted agents](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops&preserve-view=true&tabs=yaml) voor een selectie van agent groepen; We raden u aan om te beginnen met `Hosted VS2017` .
+> Voor de agent groep die moet worden geselecteerd voor deze CI moet docker voor Windows zijn geïnstalleerd, tenzij de installatie hand matig wordt uitgevoerd in een eerdere taak als onderdeel van de CI. Zie het artikel [micro soft hosted agents](/azure/devops/pipelines/agents/hosted?preserve-view=true&tabs=yaml&view=azure-devops) voor een selectie van agent groepen; We raden u aan om te beginnen met `Hosted VS2017` .
 
 De gehoste VS2019-agent groep wordt momenteel niet ondersteund door de Azure Cosmos DB-emulator. De emulator wordt echter al met VS2019 geïnstalleerd en u gebruikt deze door de emulator te starten met de volgende Power shell-cmdlets. Als u problemen ondervindt bij het gebruik van de VS2019, kunt u contact met het [Azure DevOps](https://developercommunity.visualstudio.com/spaces/21/index.html) -team bereiken voor hulp:
 
@@ -92,9 +92,9 @@ Deze stap is optioneel en is alleen vereist als u de CI/CD-pijp lijn instelt met
 
 Nu gaan we onze tests configureren voor het gebruik van de emulator. De build-taak van de emulator exporteert een omgevingsvariabele, 'CosmosDbEmulator.Endpoint', waarnaar taken verderop in de build-pijplijn eventueel aanvragen kunnen versturen. 
 
-In deze zelfstudie gebruiken we de [taak VSTest](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md) om moduletests uit te voeren die zijn geconfigureerd via een **.runsettings**-bestand. Raadpleeg de [documentatie](https://docs.microsoft.com/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?view=vs-2017&preserve-view=true) voor meer informatie over het configureren van de moduletests. Het volledige voor beeld van een toepassings code dat u in dit document gebruikt, is beschikbaar op [github](https://github.com/Azure-Samples/documentdb-dotnet-todo-app)
+In deze zelfstudie gebruiken we de [taak VSTest](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md) om moduletests uit te voeren die zijn geconfigureerd via een **.runsettings**-bestand. Raadpleeg de [documentatie](/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?preserve-view=true&view=vs-2017) voor meer informatie over het configureren van de moduletests. Het volledige voor beeld van een toepassings code dat u in dit document gebruikt, is beschikbaar op [github](https://github.com/Azure-Samples/documentdb-dotnet-todo-app)
 
-Hieronder ziet u een voorbeeld van een **.runsettings**-bestand met parameters die moeten worden doorgegeven aan de moduletests van een toepassing. De gebruikte variabele `authKey` is de [bekende sleutel](https://docs.microsoft.com/azure/cosmos-db/local-emulator#authenticating-requests) voor de emulator. `authKey` is de sleutel die wordt verwacht door de build-taak en deze moet dan ook zijn gedefinieerd in uw **.runsettings**-bestand.
+Hieronder ziet u een voorbeeld van een **.runsettings**-bestand met parameters die moeten worden doorgegeven aan de moduletests van een toepassing. De gebruikte variabele `authKey` is de [bekende sleutel](./local-emulator.md#authenticate-requests) voor de emulator. `authKey` is de sleutel die wordt verwacht door de build-taak en deze moet dan ook zijn gedefinieerd in uw **.runsettings**-bestand.
 
 ```csharp
 <RunSettings>
@@ -177,6 +177,6 @@ Als de build is voltooid, kijkt u of de tests zijn gelukt, en of ze allemaal van
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [De Azure Cosmos DB Emulator gebruiken voor lokaal ontwikkelen en testen](https://docs.microsoft.com/azure/cosmos-db/local-emulator) voor meer informatie over het gebruik van de emulator voor lokaal ontwikkelen en testen.
+Zie [De Azure Cosmos DB Emulator gebruiken voor lokaal ontwikkelen en testen](./local-emulator.md) voor meer informatie over het gebruik van de emulator voor lokaal ontwikkelen en testen.
 
-Zie [de Azure Cosmos DB-emulator certificaten exporteren voor gebruik met Java, python en Node.js](https://docs.microsoft.com/azure/cosmos-db/local-emulator-export-ssl-certificates) voor informatie over het exporteren van emulator TLS/SSL-certificaten.
+Zie [de Azure Cosmos DB-emulator certificaten exporteren voor gebruik met Java, python en Node.js](./local-emulator-export-ssl-certificates.md) voor informatie over het exporteren van emulator TLS/SSL-certificaten.

@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: thvankra
-ms.openlocfilehash: d6518767b0148828280071188c086e396401a6fc
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: cbd5dbd81cf8cda117447a15d4a73ae8a546f181
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277684"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482516"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Een Azure Cosmos DB Cassandra-API account elastisch schalen
 
 Er zijn diverse opties voor het verkennen van de elastische aard van de Azure Cosmos DB-API voor Cassandra. Om te begrijpen hoe effectief kan worden geschaald in Azure Cosmos DB, is het belang rijk om te begrijpen hoe u de juiste hoeveelheid aanvraag eenheden (RU/s) inricht om rekening te houden met de prestatie vereisten in uw systeem. Zie het artikel [aanvraag eenheden](request-units.md) voor meer informatie over aanvraag eenheden. 
 
-Voor de Cassandra-API kunt u de kosten voor aanvraag eenheden ophalen voor afzonderlijke query's met behulp van de [.net-en Java-sdk's](https://docs.microsoft.com/azure/cosmos-db/find-request-unit-charge#cassandra-api). Dit is handig bij het bepalen van de hoeveelheid RU/s die u moet inrichten in de service.
+Voor de Cassandra-API kunt u de kosten voor aanvraag eenheden ophalen voor afzonderlijke query's met behulp van de [.net-en Java-sdk's](./find-request-unit-charge-cassandra.md). Dit is handig bij het bepalen van de hoeveelheid RU/s die u moet inrichten in de service.
 
 :::image type="content" source="./media/request-units/request-units.png" alt-text="Database bewerkingen gebruiken aanvraag eenheden" border="false":::
 
@@ -38,7 +38,7 @@ Als u de latentie wilt minimaliseren, is er een breed scala aan opties voor het 
 
 In de volgende secties worden de voor-en nadelen van elke benadering uitgelegd. U kunt vervolgens besluiten over de beste strategie om de schaal behoeften van uw systeem, de totale kosten en efficiëntie behoeften voor uw oplossing te verdelen.
 
-## <a name="use-the-azure-portal"></a><a id="use-azure-portal"></a>Azure Portal gebruiken
+## <a name="use-the-azure-portal"></a><a id="use-azure-portal"></a>De Azure-portal gebruiken
 
 U kunt de resources in Azure Cosmos DB Cassandra-API-account schalen met behulp van Azure Portal. Zie het artikel over het inrichten van de [door Voer voor containers en data bases](set-throughput.md)voor meer informatie. In dit artikel worden de relatieve voor delen beschreven van het instellen van door Voer op [Data Base](set-throughput.md#set-throughput-on-a-database) -of [container](set-throughput.md#set-throughput-on-a-container) niveau in de Azure Portal. De termen "data base" en "container" die in deze artikelen worden vermeld, worden respectievelijk toegewezen aan "sleutel ruimte" en "tabel" voor de Cassandra-API.
 
@@ -46,7 +46,7 @@ Het voor deel van deze methode is dat het een eenvoudig kant-en-klare manier is 
 
 ## <a name="use-the-control-plane"></a><a id="use-control-plane"></a>Het besturings vlak gebruiken
 
-De API van Azure Cosmos DB voor Cassandra biedt de mogelijkheid om de door Voer programmatisch aan te passen met behulp van de verschillende functies van het controle vlak. Zie de artikelen [Azure Resource Manager](manage-cassandra-with-resource-manager.md), [Power shell](powershell-samples.md)en [Azure cli](cli-samples.md) voor hulp en voor beelden.
+De API van Azure Cosmos DB voor Cassandra biedt de mogelijkheid om de door Voer programmatisch aan te passen met behulp van de verschillende functies van het controle vlak. Zie de artikelen [Azure Resource Manager](./templates-samples-cassandra.md), [Power shell](powershell-samples.md)en [Azure cli](cli-samples.md) voor hulp en voor beelden.
 
 Het voor deel van deze methode is dat u de schaal aanpassing van resources naar boven of beneden kunt automatiseren op basis van een timer voor piek activiteit of peri Oden met een lage activiteit. Bekijk het voor beeld [hier](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler) om te zien hoe u dit kunt doen met Azure functions en Power shell.
 

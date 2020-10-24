@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: aahi
-ms.openlocfilehash: f85a7e2acf911772ecc6562217918352e909fcbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8154ef7a90011da8c15f52870eebb6c80ebaebca
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91254071"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496099"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetrie en probleem oplossing
 
@@ -23,9 +23,9 @@ Ruimtelijke analyse bevat een aantal functies voor het controleren van de status
 
 ## <a name="enable-visualizations"></a>Visualisaties inschakelen
 
-Als u een visualisatie van AI Insights-gebeurtenissen in een video frame wilt maken, moet u de `.debug` versie van een [ruimtelijke analyse bewerking](spatial-analysis-operations.md)gebruiken. Er zijn vier debug-bewerkingen beschikbaar.
+Als u een visualisatie van AI Insights-gebeurtenissen in een video frame wilt maken, moet u de `.debug` versie van een [ruimtelijke analyse bewerking](spatial-analysis-operations.md) op een desktop computer gebruiken. De visualisatie is niet mogelijk op Azure Stack edge-apparaten. Er zijn vier debug-bewerkingen beschikbaar.
 
-Bewerk het [implementatie manifest](https://go.microsoft.com/fwlink/?linkid=2142179) om de juiste waarde voor de `DISPLAY` omgevings variabele te gebruiken. De waarde moet overeenkomen met de `$DISPLAY` variabele op de hostcomputer. Nadat u het implementatie manifest hebt bijgewerkt, implementeert u de container opnieuw.
+Als uw apparaat geen Azure Stack edge-apparaat is, bewerkt u het manifest bestand van de implementatie voor [desktop computers](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) om de juiste waarde voor de `DISPLAY` omgevings variabele te gebruiken. De waarde moet overeenkomen met de `$DISPLAY` variabele op de hostcomputer. Nadat u het implementatie manifest hebt bijgewerkt, implementeert u de container opnieuw.
 
 Nadat de implementatie is voltooid, moet u het `.Xauthority` bestand mogelijk van de hostcomputer naar de container kopiëren en opnieuw starten. In het onderstaande voor beeld `peopleanalytics` is de naam van de container op de hostcomputer.
 
@@ -39,7 +39,7 @@ xhost +
 
 ## <a name="collect-system-health-telemetry"></a>Telemetrie van systeem status verzamelen
 
-Telegrafie is een open-source installatie kopie die werkt met ruimtelijke analyse en is beschikbaar in de micro soft-Container Registry. Het heeft de volgende invoer en verzendt deze naar Azure Monitor. De telegrafie module kan worden gebouwd met de gewenste aangepaste invoer en uitvoer. De configuratie van de telegrafie module in ruimtelijke analyse maakt deel uit van het [implementatie manifest](https://go.microsoft.com/fwlink/?linkid=2142179). Deze module is optioneel en kan worden verwijderd uit het manifest als u deze niet nodig hebt. 
+Telegrafie is een open-source installatie kopie die werkt met ruimtelijke analyse en is beschikbaar in de micro soft-Container Registry. Het heeft de volgende invoer en verzendt deze naar Azure Monitor. De telegrafie module kan worden gebouwd met de gewenste aangepaste invoer en uitvoer. De configuratie van de telegrafie module in ruimtelijke analyse maakt deel uit van het implementatie manifest (gekoppeld aan de bovenstaande). Deze module is optioneel en kan worden verwijderd uit het manifest als u deze niet nodig hebt. 
 
 Invoer: 
 1. Metrische gegevens over ruimtelijke analyse
@@ -68,14 +68,14 @@ az iot hub list
 az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principal name>" --scopes="<resource ID of IoT Hub>"
 ```
 
-Zoek in het [implementatie manifest](https://go.microsoft.com/fwlink/?linkid=2142179)naar de *telegrafie* module en vervang de volgende waarden door de gegevens van de service-principal uit de vorige stap en implementeer opnieuw.
+Zoek in het implementatie manifest voor uw [Azure stack edge-apparaat](https://go.microsoft.com/fwlink/?linkid=2142179) of andere [desktop computer](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)naar de *telegrafie* module en vervang de volgende waarden door de gegevens van de service-principal uit de vorige stap en implementeer opnieuw.
 
 ```json
 
 "telegraf": { 
-  "settings": {
-  "image":   "mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis/telegraf:1.0",
-  "createOptions":   "{\"HostConfig\":{\"Runtime\":\"nvidia\",\"NetworkMode\":\"azure-iot-edge\",\"Memory\":33554432,\"Binds\":[\"/var/run/docker.sock:/var/run/docker.sock\"]}}"
+  "settings": {
+  "image":   "mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis/telegraf:1.0",
+  "createOptions":   "{\"HostConfig\":{\"Runtime\":\"nvidia\",\"NetworkMode\":\"azure-iot-edge\",\"Memory\":33554432,\"Binds\":[\"/var/run/docker.sock:/var/run/docker.sock\"]}}"
 },
 "type": "docker",
 "env": {
@@ -105,19 +105,19 @@ Zodra de telegrafie module is geïmplementeerd, zijn de gerapporteerde metrische
 
 | Gebeurtenisnaam | Beschrijving|
 |------|---------|
-|archon_exit    |Verzonden wanneer een gebruiker de status van de ruimtelijke analyse module wijzigt van *actief* in *gestopt*.  |
-|archon_error   |Wordt verzonden wanneer een van de processen in de container vastloopt. Dit is een kritieke fout.  |
-|InputRate  |De snelheid waarmee de video-invoer door de grafiek wordt verwerkt. Elke 5 minuten gerapporteerd. | 
-|OutputRate     |De snelheid waarmee de grafiek AI-inzichten uitvoert. Elke 5 minuten gerapporteerd. |
-|archon_allGraphsStarted | Wordt verzonden wanneer het opstarten van alle grafieken is voltooid. |
-|archon_configchange    | Verzonden wanneer de configuratie van een grafiek is gewijzigd. |
-|archon_graphCreationFailed     |Verzonden wanneer de grafiek met de gemelde `graphId` fout niet kan worden gestart. |
-|archon_graphCreationSuccess    |Verzonden wanneer de grafiek met de gemelde `graphId` Start. |
-|archon_graphCleanup    | Verzonden wanneer de grafiek met de gerapporteerde `graphId` opschoont en afsluit. |
-|archon_graphHeartbeat  |Heartbeat elke minuut verzonden voor elke grafiek van een vaardigheid. |
+|archon_exit    |Verzonden wanneer een gebruiker de status van de ruimtelijke analyse module wijzigt van *actief* in *gestopt*.  |
+|archon_error   |Wordt verzonden wanneer een van de processen in de container vastloopt. Dit is een kritieke fout.  |
+|InputRate  |De snelheid waarmee de video-invoer door de grafiek wordt verwerkt. Elke 5 minuten gerapporteerd. | 
+|OutputRate     |De snelheid waarmee de grafiek AI-inzichten uitvoert. Elke 5 minuten gerapporteerd. |
+|archon_allGraphsStarted | Wordt verzonden wanneer het opstarten van alle grafieken is voltooid. |
+|archon_configchange    | Verzonden wanneer de configuratie van een grafiek is gewijzigd. |
+|archon_graphCreationFailed     |Verzonden wanneer de grafiek met de gemelde `graphId` fout niet kan worden gestart. |
+|archon_graphCreationSuccess    |Verzonden wanneer de grafiek met de gemelde `graphId` Start. |
+|archon_graphCleanup    | Verzonden wanneer de grafiek met de gerapporteerde `graphId` opschoont en afsluit. |
+|archon_graphHeartbeat  |Heartbeat elke minuut verzonden voor elke grafiek van een vaardigheid. |
 |archon_apiKeyAuthFail |Dit bericht wordt verzonden wanneer de container niet langer dan 24 uur door de Computer Vision bron sleutel kan worden geverifieerd vanwege de volgende redenen: buiten het quotum, ongeldig, offline. |
-|VideoIngesterHeartbeat     |Wordt elk uur verzonden om aan te geven dat de video wordt gestreamd vanuit de video bron, met het aantal fouten in dat uur. Gerapporteerd voor elke grafiek. |
-|VideoIngesterState | Rapporten *gestopt* of *gestart* voor video-streaming.Gerapporteerd voor elke grafiek. |
+|VideoIngesterHeartbeat     |Wordt elk uur verzonden om aan te geven dat de video wordt gestreamd vanuit de video bron, met het aantal fouten in dat uur. Gerapporteerd voor elke grafiek. |
+|VideoIngesterState | Rapporten *gestopt* of *gestart* voor video-streaming. Gerapporteerd voor elke grafiek. |
 
 ##  <a name="troubleshooting-an-iot-edge-device"></a>Problemen met een IoT Edge apparaat oplossen
 
@@ -129,22 +129,17 @@ U kunt `iotedge` het opdracht regel programma gebruiken om de status en logboeke
 
 ## <a name="collect-log-files-with-the-diagnostics-container"></a>Logboek bestanden met de diagnostische container verzamelen
 
-Met ruimtelijke analyse worden logboeken voor fout opsporing in docker gegenereerd die u kunt gebruiken om runtime problemen vast te stellen of in ondersteunings tickets op te vragen. De module voor de diagnostische gegevens over ruimtelijke analyse is beschikbaar in de micro soft-Container Registry die u kunt downloaden. Zoek in het voor [beeld-implementatie manifest](https://go.microsoft.com/fwlink/?linkid=2142179)naar de module *diagnostiek* .
+Met ruimtelijke analyse worden logboeken voor fout opsporing in docker gegenereerd die u kunt gebruiken om runtime problemen vast te stellen of in ondersteunings tickets op te vragen. De module voor de diagnostische gegevens over ruimtelijke analyse is beschikbaar in de micro soft-Container Registry die u kunt downloaden. Zoek in het manifest bestand voor het implementeren van uw [Azure stack edge-apparaat](https://go.microsoft.com/fwlink/?linkid=2142179) of andere [desktop computer](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)de module *Diagnostische gegevens* op.
 
 Voeg in de sectie ' env ' de volgende configuratie toe:
 
 ```json
-"diagnostics": {  
-  "settings": {
-  "image":   "mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis/diagnostics:1.0",
-  "createOptions":   "{\"HostConfig\":{\"Mounts\":[{\"Target\":\"/usr/bin/docker\",\"Source\":\"/home/data/docker\",\"Type\":\"bind\"},{\"Target\":\"/var/run\",\"Source\":\"/run\",\"Type\":\"bind\"}],\"LogConfig\":{\"Config\":{\"max-size\":\"500m\"}}}}"
-  }
+"diagnostics": {  
+  "settings": {
+  "image":   "mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis/diagnostics:1.0",
+  "createOptions":   "{\"HostConfig\":{\"Mounts\":[{\"Target\":\"/usr/bin/docker\",\"Source\":\"/home/data/docker\",\"Type\":\"bind\"},{\"Target\":\"/var/run\",\"Source\":\"/run\",\"Type\":\"bind\"}],\"LogConfig\":{\"Config\":{\"max-size\":\"500m\"}}}}"
+  }
 ```    
-
->[!NOTE]
-> Als u niet in een ASE Kubernetes-omgeving werkt, vervangt u de container Create-opties voor de logboek registratie-module naar het volgende:
->
->`"createOptions": "{\"HostConfig\": {\"Binds\": [\"/var/run/docker.sock:/var/run/docker.sock\",\"/usr/bin/docker:/usr/bin/docker\"],\"LogConfig\": {\"Config\": {\"max-size\": \"500m\"}}}}"`
 
 Voor het optimaliseren van logboeken die zijn geüpload naar een extern eind punt, zoals Azure Blob Storage, raden we u aan een kleine bestands grootte te behouden. Zie het onderstaande voor beeld voor de aanbevolen configuratie van docker-Logboeken.
 
@@ -193,13 +188,13 @@ Het kan ook worden ingesteld via het dubbele document van de IoT Edge module, vo
 > De `diagnostics` module heeft geen invloed op de inhoud van het logboek. het is alleen handig bij het verzamelen, filteren en uploaden van bestaande logboeken.
 > U moet docker API versie 1,40 of hoger hebben om deze module te kunnen gebruiken.
 
-Het manifest bestand voor het [implementatie voorbeeld](https://go.microsoft.com/fwlink/?linkid=2142179) bevat een module met de naam `diagnostics` die logboeken verzamelt en uploadt. Deze module is standaard uitgeschakeld en moet worden ingeschakeld via de configuratie van de IoT Edge-module als u logboeken wilt openen. 
+Het manifest bestand van de voorbeeld implementatie voor uw [Azure stack edge-apparaat](https://go.microsoft.com/fwlink/?linkid=2142179) of andere [desktop computer](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)  bevat een module met de naam `diagnostics` die logboeken verzamelt en uploadt. Deze module is standaard uitgeschakeld en moet worden ingeschakeld via de configuratie van de IoT Edge-module als u logboeken wilt openen. 
 
 De `diagnostics` verzameling is op aanvraag en wordt beheerd via een IOT Edge directe methode en kan Logboeken verzenden naar een Azure-Blob Storage.
 
 ### <a name="configure-diagnostics-upload-targets"></a>Upload doelen voor diagnostische gegevens configureren
 
-Selecteer uw apparaat in de IoT Edge Portal en vervolgens de module **diagnostiek** . Zoek in het voorbeeld bestand [*DeploymentManifest.jsop*](https://go.microsoft.com/fwlink/?linkid=2142179)naar de sectie **omgevings variabelen** voor diagnostische gegevens, met de naam ' env ' en voeg de volgende gegevens toe:
+Selecteer uw apparaat in de IoT Edge Portal en vervolgens de module **diagnostiek** . Zoek in het manifest bestand voor voorbeeld implementaties voor uw [Azure stack edge-apparaat](https://go.microsoft.com/fwlink/?linkid=2142179) of andere [desktop computers](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)de sectie **omgevings variabelen** voor diagnostische gegevens `env` en de naam en voeg de volgende gegevens toe:
 
 **Upload naar Azure Blob Storage configureren**
 
@@ -221,9 +216,9 @@ Logboeken worden op aanvraag geüpload met de `getRTCVLogs` methode IOT Edge in 
 
 
 1. Ga naar de pagina IoT Hub Portal, selecteer **edge-apparaten**en selecteer vervolgens uw apparaat en de module diagnostiek. 
-2. Ga naar de pagina Details van de module en klik op het tabblad ***directe methode*** .
+2. Ga naar de pagina Details van de module en klik op het tabblad **_directe methode_*_.
 3. Typ `getRTCVLogs` de naam van de methode en een JSON-indelings teken reeks in payload. U kunt `{}` een lege Payload opgeven. 
-4. Stel de time-out voor de verbinding en de methode in en klik op **methode aanroepen**.
+4. Stel de time-out voor de verbinding en de methode in en klik op _ * methode Invoke * *.
 5. Selecteer uw doel container en bouw een JSON-teken reeks voor de nettolading op met de para meters die worden beschreven in de sectie **syntaxis van logboek registratie** . Klik op **methode aanroepen** om de aanvraag uit te voeren.
 
 >[!NOTE]
@@ -250,7 +245,7 @@ De volgende tabel bevat de kenmerken in de query-antwoord.
 
 | Zoek | Beschrijving|
 |--|--|
-|DoPost| *Waar* of *Onwaar*. Hiermee wordt aangegeven of Logboeken zijn geüpload of niet. Wanneer u ervoor kiest geen logboeken te uploaden, retourneert de API gegevens ***synchroon***. Wanneer u ervoor kiest om logboeken te uploaden, retourneert de API 200, als de aanvraag geldig is, waarna logboeken ***asynchroon***worden geüpload.|
+|DoPost| *Waar* of *Onwaar*. Hiermee wordt aangegeven of Logboeken zijn geüpload of niet. Wanneer u ervoor kiest geen logboeken te uploaden, retourneert de API informatie ***synchroon**_. Wanneer u ervoor kiest om logboeken te uploaden, retourneert de API 200, als de aanvraag geldig is, waarna logboeken _*_asynchroon_*_ worden geüpload.|
 |TimeFilter| Tijd filter toegepast op de logboeken.|
 |ValueFilters| Tref woorden filters die worden toegepast op de logboeken. |
 |Neem| Start tijd van methode-uitvoering. |
@@ -303,7 +298,7 @@ De volgende tabel bevat de kenmerken in de query-antwoord.
 }
 ```
 
-Controleer de regels voor het ophaal logboek, de tijden en de grootte als deze instellingen goed worden vervangen ***DoPost*** naar `true` en dat de logboeken met dezelfde filters naar bestemmingen pusht. 
+Controleer de regels voor het ophaal logboek, de tijden en de grootte als deze instellingen goed worden vervangen _*_DoPost_*_ naar `true` en dat de logboeken met dezelfde filters naar bestemmingen pusht. 
 
 U kunt Logboeken exporteren vanuit de Azure-Blob Storage bij het oplossen van problemen. 
 
@@ -319,9 +314,9 @@ Zie [goed keuring aanvragen voor het uitvoeren van de container](spatial-analysi
 
 In de volgende sectie vindt u informatie over fout opsporing en verificatie van de status van uw Azure Stack edge-apparaat.
 
-### <a name="access-the-kubernetes-api-endpoint"></a>Toegang tot het Kubernetes API-eind punt. 
+### <a name="access-the-kubernetes-api-endpoint"></a>Toegang tot het Kubernetes API-eind punt. 
 
-1. Ga in de lokale gebruikers interface van het apparaat naar de pagina **apparaten** . 
+1. Ga in de lokale gebruikers interface van het apparaat naar de pagina _*apparaten**. 
 2. Kopieer het eind punt van de Kubernetes API-service onder de **eind punten**van het apparaat. Dit eindpunt is een tekenreeks met de volgende indeling: `https://compute..[device-IP-address]`.
 3. Sla de tekenreeks met het eindpunt op. U gebruikt dit later bij het configureren `kubectl` voor toegang tot het Kubernetes-cluster.
 

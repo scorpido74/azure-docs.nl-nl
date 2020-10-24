@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 081eb10166ff681990af15110829030176efa3fa
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 26302fa67394e6c3122b159866c3814fb5677ba6
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207764"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494965"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Een Azure Digital Apparaatdubbels-exemplaar en-authenticatie (CLI) instellen
 
@@ -36,7 +36,7 @@ Deze versie van dit artikel doorloopt deze stappen hand matig, één voor één,
 
 In deze sectie **maakt u een nieuw exemplaar van Azure Digital apparaatdubbels** met behulp van de Cloud shell opdracht. U moet het volgende opgeven:
 * Een resource groep om deze in te implementeren. Als u nog geen bestaande resource groep hebt, kunt u er nu een maken met de volgende opdracht:
-    ```azurecli
+    ```azurecli-interactive
     az group create --location <region> --name <name-for-your-resource-group>
     ```
 * Een regio voor de implementatie. Als u wilt zien welke regio's Azure Digital Apparaatdubbels ondersteunen, gaat u naar [*Azure-producten beschikbaar per regio*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
@@ -44,7 +44,7 @@ In deze sectie **maakt u een nieuw exemplaar van Azure Digital apparaatdubbels**
 
 Gebruik deze waarden in de volgende opdracht om het exemplaar te maken:
 
-```azurecli
+```azurecli-interactive
 az dt create --dt-name <name-for-your-Azure-Digital-Twins-instance> -g <your-resource-group> -l <region>
 ```
 
@@ -67,8 +67,8 @@ U hebt nu een Azure Digital Apparaatdubbels-exemplaar klaar om te gaan. Vervolge
 
 Gebruik de volgende opdracht om de rol toe te wijzen (moet worden uitgevoerd door een gebruiker met [voldoende machtigingen](#prerequisites-permission-requirements) in het Azure-abonnement). Voor de opdracht moet u de *User Principal name* op het Azure ad-account door geven aan de gebruiker aan wie de rol moet worden toegewezen. In de meeste gevallen komt dit overeen met het e-mail adres van de gebruiker op het Azure AD-account.
 
-```azurecli
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<Azure-AD-user-principal-name-of-user-to-assign>" --role "Azure Digital Twins Owner (Preview)"
+```azurecli-interactive
+az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<Azure-AD-user-principal-name-of-user-to-assign>" --role "Azure Digital Twins Data Owner"
 ```
 
 Het resultaat van deze opdracht is een gegenereerde informatie over de roltoewijzing die is gemaakt.

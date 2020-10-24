@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
-ms.openlocfilehash: 5203223f8468a4dfa0faf2df92e826a62f7bbfcf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6fa0b32d21c9a2172fa6093f2f7f57ccacf5e5d6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802749"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477756"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET-bibliotheek voor bulksgewijs laden: informatie downloaden 
 
@@ -21,29 +21,29 @@ ms.locfileid: "91802749"
 > * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
 > * [.NET SDK v2](sql-api-sdk-dotnet.md)
 > * [.NET Core-SDK v2](sql-api-sdk-dotnet-core.md)
-> * [.NET Change feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
+> * [.NET wijzigingenfeed-SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java-SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java-SDK v2](sql-api-sdk-java.md)
-> * [Lente gegevens v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
 > * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark-connector](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
-> * [REST-resourceprovider](/rest/api/cosmos-db-resource-provider/)
-> * [SQL](sql-api-query-reference.md)
-> * [Bulk-uitvoerder-.NET v2](sql-api-sdk-bulk-executor-dot-net.md)
-> * [Bulk-uitvoerder-java](sql-api-sdk-bulk-executor-java.md)
+> * [REST-resource provider](/rest/api/cosmos-db-resource-provider/)
+> * [SQL](./sql-query-getting-started.md)
+> * [Bulkuitvoerprogramma - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Bulkuitvoerprogramma - Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
-| **Beschrijving**| Met de bibliotheek .NET bulksgewijze uitvoerder kunnen client toepassingen bulk bewerkingen uitvoeren op Azure Cosmos DB accounts. Deze bibliotheek bevat BulkImport-, BulkUpdate-en BulkDelete-naam ruimten. De BulkImport-module kan documenten bulksgewijs opnemen in een geoptimaliseerde manier, zodat de door Voer ingericht voor een verzameling voor het maximale aantal wordt verbruikt. De BulkUpdate-module kan bestaande gegevens in azure Cosmos-containers bulksgewijs bijwerken als patches. De BulkDelete-module kan documenten bulksgewijs verwijderen op een geoptimaliseerde manier, zodat de door Voer ingericht voor een verzameling voor de maximale grootte wordt verbruikt.|
+| **Deschription** (Beschrijving)| Met de bibliotheek .NET bulksgewijze uitvoerder kunnen client toepassingen bulk bewerkingen uitvoeren op Azure Cosmos DB accounts. Deze bibliotheek bevat BulkImport-, BulkUpdate-en BulkDelete-naam ruimten. De BulkImport-module kan documenten bulksgewijs opnemen in een geoptimaliseerde manier, zodat de door Voer ingericht voor een verzameling voor het maximale aantal wordt verbruikt. De BulkUpdate-module kan bestaande gegevens in azure Cosmos-containers bulksgewijs bijwerken als patches. De BulkDelete-module kan documenten bulksgewijs verwijderen op een geoptimaliseerde manier, zodat de door Voer ingericht voor een verzameling voor de maximale grootte wordt verbruikt.|
 |**SDK downloaden**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
 | **Bibliotheek voor bulk-uitvoerder in GitHub**| [GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
-|**API-documentatie**|[Naslag documentatie voor .NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet&preserve-view=true)|
+|**API-documentatie**|[Naslag documentatie voor .NET API](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?preserve-view=true&view=azure-dotnet)|
 |**Aan de slag**|[Aan de slag met de bibliotheek voor bulk-uitvoerder .NET SDK](bulk-executor-dot-net.md)|
-| **Huidig ondersteund Framework**| Microsoft .NET Framework 4.5.2, 4.6.1 en .NET Standard 2,0 |
+| **Huidig ondersteund framework**| Microsoft .NET Framework 4.5.2, 4.6.1 en .NET Standard 2,0 |
 
 > [!NOTE]
 > Als u een bulk-uitvoerder gebruikt, raadpleegt u de meest recente versie 3. x van de [.NET SDK](tutorial-sql-api-dotnet-bulk-import.md), die in de SDK is ingebouwd. 
@@ -74,7 +74,7 @@ ms.locfileid: "91802749"
 
 * Inclusief MongoBulkExecutor ter ondersteuning van .NET Standard 2,0. Deze functie is functioneel gelijk aan 1.3.0-release, met toevoeging van ondersteuning van .NET Standard 2,0 als het doel raamwerk.
 
-### <a name="200-preview"></a><a name="2.0.0-preview"></a>2.0.0-preview
+### <a name="200-preview"></a><a name="2.0.0-preview"></a>2.0.0-Preview
 
 * .NET Standard 2,0 is toegevoegd als een van de ondersteunde doel stellingen om de bulk-uitvoerder bibliotheek te laten werken met .NET core-toepassingen.
 

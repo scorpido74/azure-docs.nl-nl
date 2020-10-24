@@ -8,12 +8,12 @@ ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 0c760a3a2f6300108c1739f18ef9fa97a40dd833
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 211121e21502e9cd4929169053a8ad58a9d7b21b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021932"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476923"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-net-sdk-request-timeout-exceptions"></a>Problemen met de time-out van Azure Cosmos DB .NET SDK-aanvragen vaststellen en oplossen
 De HTTP 408-fout treedt op als de SDK de aanvraag niet kan volt ooien voordat de time-outlimiet is opgetreden.
@@ -28,7 +28,7 @@ De SDK heeft twee verschillende alternatieven voor het beheren van time-outs, el
 
 ### <a name="cancellationtoken"></a>CancellationToken
 
-Alle async-bewerkingen in de SDK hebben een optionele CancellationToken-para meter. Deze [CancellationToken](https://docs.microsoft.com/dotnet/standard/threading/how-to-listen-for-cancellation-requests-by-polling) -para meter wordt gebruikt tijdens de gehele bewerking, in alle netwerk aanvragen. In tussen netwerk aanvragen kan het annulerings token worden gecontroleerd en een bewerking geannuleerd als het gerelateerde token is verlopen. Het annulerings token moet worden gebruikt voor het definiëren van een geschatte verwachte time-out op het bewerkings bereik.
+Alle async-bewerkingen in de SDK hebben een optionele CancellationToken-para meter. Deze [CancellationToken](/dotnet/standard/threading/how-to-listen-for-cancellation-requests-by-polling) -para meter wordt gebruikt tijdens de gehele bewerking, in alle netwerk aanvragen. In tussen netwerk aanvragen kan het annulerings token worden gecontroleerd en een bewerking geannuleerd als het gerelateerde token is verlopen. Het annulerings token moet worden gebruikt voor het definiëren van een geschatte verwachte time-out op het bewerkings bereik.
 
 > [!NOTE]
 > De `CancellationToken` para meter is een mechanisme waarbij de bibliotheek de annulering controleert, wanneer deze [geen ongeldige status veroorzaakt](https://devblogs.microsoft.com/premier-developer/recommended-patterns-for-cancellationtoken/). De bewerking kan niet exact worden geannuleerd wanneer de tijd die is gedefinieerd in de annulering, actief is. In plaats daarvan wordt het na de tijd geannuleerd wanneer dit veilig is.

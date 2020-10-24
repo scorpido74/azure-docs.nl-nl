@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
-ms.openlocfilehash: d4fbadd03f443d28376a122c7ecb06c475c2247d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7118a12a5a92912c51bb35d8b516d5b8e2f45388
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85850699"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478147"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Sociaal met Azure Cosmos DB
 
@@ -216,9 +216,9 @@ Omdat u Azure Cosmos DB gebruikt, kunt u binnen enkele minuten eenvoudig een zoe
 
 Waarom is dit proces zo gemakkelijk?
 
-Azure Cognitive Search implementeert wat ze [Indexeer](https://msdn.microsoft.com/library/azure/dn946891.aspx)functies aanroepen, achtergrond processen die aansluiten bij uw gegevensopslag plaatsen en automagiceel toevoegen, bijwerken of verwijderen van objecten in de indexen. Ze ondersteunen een [Azure SQL database Indexeer](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/)functies, [indexers van Azure blobs](../search/search-howto-indexing-azure-blob-storage.md) en gelukkig, [Azure Cosmos DB Indexeer functies](../search/search-howto-index-documentdb.md). De overgang van informatie van Cosmos DB naar Azure Cognitive Search is eenvoudig. Beide technologieën slaan gegevens in JSON-indeling, dus u hoeft alleen maar de [index te maken](../search/search-create-index-portal.md) en de kenmerken te koppelen uit uw documenten die u wilt indexeren. Dat is alles. Afhankelijk van de grootte van uw gegevens, is al uw inhoud beschikbaar om binnen enkele minuten te worden doorzocht door de beste Search-as-a-service-oplossing in de Cloud infrastructuur.
+Azure Cognitive Search implementeert wat ze [Indexeer](/rest/api/searchservice/Indexer-operations)functies aanroepen, achtergrond processen die aansluiten bij uw gegevensopslag plaatsen en automagiceel toevoegen, bijwerken of verwijderen van objecten in de indexen. Ze ondersteunen een [Azure SQL database Indexeer](/archive/blogs/kaevans/indexing-azure-sql-database-with-azure-search)functies, [indexers van Azure blobs](../search/search-howto-indexing-azure-blob-storage.md) en gelukkig, [Azure Cosmos DB Indexeer functies](../search/search-howto-index-cosmosdb.md). De overgang van informatie van Cosmos DB naar Azure Cognitive Search is eenvoudig. Beide technologieën slaan gegevens in JSON-indeling, dus u hoeft alleen maar de [index te maken](../search/search-what-is-an-index.md) en de kenmerken te koppelen uit uw documenten die u wilt indexeren. Dat is alles. Afhankelijk van de grootte van uw gegevens, is al uw inhoud beschikbaar om binnen enkele minuten te worden doorzocht door de beste Search-as-a-service-oplossing in de Cloud infrastructuur.
 
-Ga naar de [Hitchhiker-gids](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/02/02/a-hitchhikers-guide-to-search/)voor meer informatie over Azure Cognitive Search.
+Ga naar de [Hitchhiker-gids](/archive/blogs/mvpawardprogram/a-hitchhikers-guide-to-search)voor meer informatie over Azure Cognitive Search.
 
 ## <a name="the-underlying-knowledge"></a>De onderliggende kennis
 

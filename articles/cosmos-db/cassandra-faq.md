@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: thvankra
-ms.openlocfilehash: 9d6cb699ad8a24e4450cbeb4bc1ca3cb6d46d9fe
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: e38096a0c5de266be6be6a58e09a251ce28a55df
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278190"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482601"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>Veelgestelde vragen over de Cassandra-API in Azure Cosmos DB
 
@@ -75,7 +75,7 @@ Het is essentieel om te zien welke bewerkingen (en welk volume) dit probleem ver
 
 Er zijn metrische gegevens beschikbaar die laten zien hoe de door Voer wordt gebruikt in plaats van uren, meer dan dagen en per zeven dagen, verdeeld over partities of aggregatie. Zie voor meer informatie [bewaking en fout opsporing met metrische gegevens in azure Cosmos DB](use-metrics.md).
 
-Diagnostische logboeken worden beschreven in het artikel [Azure Cosmos DB diagnostische logboek registratie](logging.md) .
+Diagnostische logboeken worden beschreven in het artikel [Azure Cosmos DB diagnostische logboek registratie](./monitor-cosmos-db.md) .
 
 ### <a name="does-the-primary-key-map-to-the-partition-key-concept-of-azure-cosmos-db"></a>Is de primaire sleutel toegewezen aan het partitie sleutel concept van Azure Cosmos DB?
 
@@ -135,9 +135,9 @@ Ja, TTL wordt ondersteund.
 
 Azure Cosmos DB is een platform service waarmee u de productiviteit kunt verhogen en geen zorgen hoeft te maken over het beheer en de bewaking van de infra structuur. U hoeft bijvoorbeeld niet eerder de knooppunt status, replica status, GC en OS-para meters te bewaken met verschillende hulpprogram ma's. U hoeft alleen maar een door voer te nemen die beschikbaar is in de metrische gegevens van de portal om te controleren of u een beperking krijgt en vervolgens de door voer te verg Roten of verkleinen. U kunt:
 
-- [Sla's](monitor-accounts.md) controleren
+- [Sla's](./monitor-cosmos-db.md) controleren
 - [Metrische gegevens](use-metrics.md) gebruiken
-- [Diagnostische logboeken](logging.md) gebruiken
+- [Diagnostische logboeken](./monitor-cosmos-db.md) gebruiken
 
 ### <a name="which-client-sdks-can-work-with-the-cassandra-api"></a>Welke client-Sdk's kunnen samen werken met de Cassandra-API?
 
@@ -187,7 +187,7 @@ U vindt meer informatie over migratie opties in het [account uw gegevens migrere
 Feedback geven via [feedback van gebruikers](https://feedback.azure.com/forums/263030-azure-cosmos-db).
 
 [azure-portal]: https://portal.azure.com
-[query]: sql-api-sql-query.md
+[query]: ./sql-query-getting-started.md
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 51c177af10713dfb35857097b267638156f0cc5d
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 9514d0fb6c9cbc95b82f13ffb576703893f303f2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057532"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484556"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Back-ups maken en herstellen in Azure Database for MySQL
 
@@ -38,7 +38,7 @@ Back-ups van transactielogboeken worden elke vijf minuten uitgevoerd.
 De opslag voor algemeen gebruik is de back-end-opslag die [Algemeen](concepts-pricing-tiers.md) en de server met [geoptimaliseerd geheugen](concepts-pricing-tiers.md) ondersteunt. Voor servers met een algemene opslag van Maxi maal 4 TB worden er één keer per week volledige back-ups uitgevoerd. Differentiële back-ups worden twee keer per dag uitgevoerd. Back-ups van transactie logboeken worden om de vijf minuten uitgevoerd. De back-ups in algemene opslag ruimte tot 4 TB opslag worden niet op basis van een moment opname gemaakt en gebruiken de i/o-band breedte op het moment van de back-up. Voor grote data bases (> 1 TB) voor opslag van 4 TB raden wij u aan om 
 
 - Meer IOPs inrichten voor het account voor back-up-IOs of
-- U kunt ook migreren naar de opslag voor algemeen gebruik die ondersteuning biedt voor Maxi maal 16 TB opslag als de onderliggende opslag infastructure beschikbaar is in uw voor keuren [Azure-regio's](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage). Er zijn geen extra kosten verbonden aan opslag voor algemene doel einden, die ondersteuning biedt voor Maxi maal 16 TB aan opslag ruimte. Open een ondersteunings ticket van Azure Portal voor hulp bij de migratie naar 16 TB aan opslag ruimte. 
+- U kunt ook migreren naar de opslag voor algemeen gebruik die ondersteuning biedt voor Maxi maal 16 TB opslag als de onderliggende opslag infrastructuur beschikbaar is in uw voor keuren [Azure-regio's](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage). Er zijn geen extra kosten verbonden aan opslag voor algemene doel einden, die ondersteuning biedt voor Maxi maal 16 TB aan opslag ruimte. Open een ondersteunings ticket van Azure Portal voor hulp bij de migratie naar 16 TB aan opslag ruimte. 
 
 #### <a name="general-purpose-storage-servers-with-up-to-16-tb-storage"></a>Opslag servers voor algemeen gebruik met Maxi maal 16 TB opslag
 In een subset van [Azure-regio's](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)kunnen alle nieuw ingerichte servers ondersteuning bieden voor algemeen gebruik, tot 16 TB aan opslag ruimte. Met andere woorden, opslag tot 16 TB opslag is de standaard opslag voor algemeen gebruik voor alle [regio's](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage) waar deze wordt ondersteund. Back-ups op deze opslag servers met 16 TB zijn op moment opnamen gebaseerd. De eerste volledige momentopnameback-up wordt gepland direct nadat een server is gemaakt. De eerste volledige back-up van de moment opname wordt bewaard als basis back-up van de server. Volgende momentopnameback-ups zijn alleen differentiële back-ups. 
@@ -55,12 +55,16 @@ De Bewaar periode voor back-ups bepaalt hoe ver terug in de tijd een herstel naa
 - Servers met Maxi maal 4 TB opslag behouden Maxi maal twee volledige back-ups van de data base, alle differentiële back-ups en back-ups van transactie logboeken die zijn uitgevoerd sinds de eerste volledige back-up van de data base.
 -   Servers met Maxi maal 16 TB opslag behouden de volledige database momentopname, alle differentiële moment opnamen en back-ups van transactie Logboeken in de afgelopen 8 dagen.
 
+#### <a name="long-term-retention"></a>Langetermijnretentie
+Lange termijn retentie van back-ups van meer dan 35 dagen wordt momenteel niet ondersteund door de service. U hebt de mogelijkheid om mysqldump te gebruiken om back-ups te maken en op te slaan voor lange termijn retentie. Ons ondersteunings team heeft een stapsgewijs Blogged- [artikel](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/automate-backups-of-your-azure-database-for-mysql-server-to/ba-p/1791157) om te delen hoe dit kan worden gerealiseerd. 
+
+
 ### <a name="backup-redundancy-options"></a>Opties voor back-upredundantie
 
 Azure Database for MySQL biedt de flexibiliteit om te kiezen tussen lokaal redundante of geografisch redundante back-upopslag in de lagen Algemeen en geoptimaliseerd voor geheugen. Wanneer de back-ups worden opgeslagen in geografisch redundante back-upopslag, worden ze niet alleen opgeslagen in de regio waarin uw server wordt gehost, maar worden ook gerepliceerd naar een [gekoppeld Data Center](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). Dit biedt betere beveiliging en de mogelijkheid om uw server in een andere regio te herstellen in het geval van een ramp. De laag basis biedt alleen lokaal redundante back-upopslag.
 
-> [!IMPORTANT]
-> Het configureren van lokaal redundante of geografisch redundante opslag voor back-up is alleen toegestaan tijdens het maken van de server. Zodra de server is ingericht, kunt u de optie voor opslag redundantie van back-ups niet meer wijzigen.
+#### <a name="moving-from-locally-redundant-to-geo-redundant-backup-storage"></a>Verplaatsen van lokaal redundant naar geografisch redundante back-upopslag
+Het configureren van lokaal redundante of geografisch redundante opslag voor back-up is alleen toegestaan tijdens het maken van de server. Zodra de server is ingericht, kunt u de optie voor opslag redundantie van back-ups niet meer wijzigen. Als u uw back-upopslag wilt verplaatsen van lokaal redundante opslag naar geografisch redundante opslag, het maken van een nieuwe server en het migreren van de gegevens met [dump en herstellen](concepts-migrate-dump-restore.md) is de enige optie die wordt ondersteund.
 
 ### <a name="backup-storage-cost"></a>Kosten voor back-upopslag
 

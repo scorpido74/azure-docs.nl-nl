@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 72a224d4ad1807d095baa8db819878bf2e22e133
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b487ca5301aebf642c27b78489309d5def9128b7
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802715"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477620"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Java-bibliotheek voor bulksgewijs laden: Download informatie
 
@@ -22,27 +22,27 @@ ms.locfileid: "91802715"
 > * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
 > * [.NET SDK v2](sql-api-sdk-dotnet.md)
 > * [.NET Core-SDK v2](sql-api-sdk-dotnet-core.md)
-> * [.NET Change feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
+> * [.NET wijzigingenfeed-SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java-SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java-SDK v2](sql-api-sdk-java.md)
-> * [Lente gegevens v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
 > * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark-connector](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
-> * [REST-resourceprovider](/rest/api/cosmos-db-resource-provider/)
-> * [SQL](sql-api-query-reference.md)
-> * [Bulk-uitvoerder-.NET v2](sql-api-sdk-bulk-executor-dot-net.md)
-> * [Bulk-uitvoerder-java](sql-api-sdk-bulk-executor-java.md)
+> * [REST-resource provider](/rest/api/cosmos-db-resource-provider/)
+> * [SQL](./sql-query-getting-started.md)
+> * [Bulkuitvoerprogramma - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Bulkuitvoerprogramma - Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
-|**Beschrijving**|Met de bibliotheek bulk-uitvoerder kunnen client toepassingen bulk bewerkingen uitvoeren in Azure Cosmos DB accounts. de bibliotheek voor bulk-uitvoerder biedt BulkImport-en BulkUpdate-naam ruimten. De BulkImport-module kan documenten bulksgewijs opnemen in een geoptimaliseerde manier, zodat de door Voer ingericht voor een verzameling voor het maximale aantal wordt verbruikt. De BulkUpdate-module kan bestaande gegevens in azure Cosmos-containers bulksgewijs bijwerken als patches.|
+|**Deschription** (Beschrijving)|Met de bibliotheek bulk-uitvoerder kunnen client toepassingen bulk bewerkingen uitvoeren in Azure Cosmos DB accounts. de bibliotheek voor bulk-uitvoerder biedt BulkImport-en BulkUpdate-naam ruimten. De BulkImport-module kan documenten bulksgewijs opnemen in een geoptimaliseerde manier, zodat de door Voer ingericht voor een verzameling voor het maximale aantal wordt verbruikt. De BulkUpdate-module kan bestaande gegevens in azure Cosmos-containers bulksgewijs bijwerken als patches.|
 |**SDK downloaden**|[Maven](https://search.maven.org/#search%7Cga%7C1%7Cdocumentdb-bulkexecutor)|
 |**Bibliotheek voor bulk-uitvoerder in GitHub**|[GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started)|
-| **API-documentatie**| [Naslag documentatie voor Java API](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)|
+| **API-documentatie**| [Naslag documentatie voor Java API](/java/api/com.microsoft.azure.documentdb.bulkexecutor)|
 |**Aan de slag**|[Aan de slag met de bibliotheek met Java-SDK voor bulksgewijs laden](bulk-executor-java.md)|
 |**Minimale ondersteunde runtime**|[Java Development Kit (JDK) 7 +](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)|
 
@@ -67,5 +67,3 @@ ms.locfileid: "91802715"
 ### <a name="291"></a><a name="2.9.1"></a>2.9.1
 
 * Hiermee wordt de begin graad van gelijktijdigheid bijgewerkt naar 1 en worden logboeken voor fout opsporing voor minibatch toegevoegd.
-
-

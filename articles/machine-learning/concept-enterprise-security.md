@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: 462ecb1fb3f44f3caac8c58bfca169e4eac2a6da
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: fef41a177f653dc67835897a48d734400a37a0d0
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207934"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496001"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Enter prise Security voor Azure Machine Learning
 
@@ -90,7 +90,7 @@ Zie [beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azur
 | Resource | Machtigingen |
 | ----- | ----- |
 | Werkruimte | Inzender |
-| Opslagaccount | Inzender voor Storage Blob-gegevens |
+| Storage-account | Inzender voor Storage Blob-gegevens |
 | Key Vault | Toegang tot alle sleutels, geheimen, certificaten |
 | Azure Container Registry | Inzender |
 | Resource groep die de werk ruimte bevat | Inzender |
@@ -183,6 +183,7 @@ Als u uw eigen (door de klant beheerde) sleutels wilt gebruiken om uw Azure Cont
 Raadpleeg de volgende artikelen voor een voor beeld van het maken van een werk ruimte met behulp van een bestaande Azure Container Registry:
 
 * [Een werk ruimte maken voor Azure machine learning met Azure cli](how-to-manage-workspace-cli.md).
+* [Een werk ruimte maken met PYTHON SDK](how-to-manage-workspace.md?tabs=python#create-a-workspace).
 * [Een Azure Resource Manager sjabloon gebruiken om een werk ruimte te maken voor Azure Machine Learning](how-to-create-workspace-template.md)
 
 #### <a name="azure-container-instance"></a>Azure Container Instance
@@ -222,7 +223,7 @@ Elke virtuele machine heeft ook een lokale tijdelijke schijf voor besturingssyst
 
 Azure Databricks kunnen worden gebruikt in Azure Machine Learning pijp lijnen. Het Databricks File System (DBFS) dat door Azure Databricks wordt gebruikt, is standaard versleuteld met een door micro soft beheerde sleutel. Zie door de klant beheerde sleutels [configureren op standaard (root) DBFS](/azure/databricks/security/customer-managed-keys-dbfs)om Azure Databricks te configureren voor het gebruik van door de klant beheerde sleutels.
 
-### <a name="encryption-in-transit"></a>Versleuteling 'in transit'
+### <a name="encryption-in-transit"></a>Versleuteling tijdens overdracht
 
 Azure Machine Learning gebruikt TLS om interne communicatie tussen verschillende Azure Machine Learning micro services te beveiligen. Alle Azure Storage toegang vindt ook plaats via een beveiligd kanaal.
 

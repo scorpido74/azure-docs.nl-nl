@@ -1,6 +1,6 @@
 ---
 title: Synapse SQL-architectuur
-description: Meer informatie over hoe Azure Synapse SQL een enorme combi natie van parallelle verwerking (MPP) combineert met Azure Storage om hoge prestaties en schaal baarheid te garanderen.
+description: Ontdek hoe Azure Synapse SQL verwerkings mogelijkheden voor gedistribueerde query's combineert met Azure Storage om hoge prestaties en schaal baarheid te garanderen.
 services: synapse-analytics
 author: mlee3gsd
 manager: rothja
@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 9f2f3eee12bb8741f6d079f6f081a08f4e2db9b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae3b54ca72c92722dffa370b0b8be1ca2c490f97
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87046856"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476005"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Azure Synapse SQL-architectuur 
 
@@ -35,7 +35,7 @@ Voor SQL on-demand wordt serverloos geschaald, zodat u automatisch kunt schalen 
 
 Synapse SQL maakt gebruik van een architectuur op basis van een knoop punt. Toepassingen maken verbinding met T-SQL-opdrachten en geven ze aan een besturings element knoop punt. Dit is het enige invoer punt voor Synapse SQL. 
 
-Het beheer knooppunt van de SQL-groep gebruikt de MPP-engine voor het optimaliseren van query's voor parallelle verwerking en geeft vervolgens bewerkingen aan reken knooppunten door om hun werk parallel uit te voeren. 
+Het Azure Synapse SQL-beheer knooppunt maakt gebruik van een gedistribueerde query-engine voor het optimaliseren van query's voor parallelle verwerking en geeft vervolgens bewerkingen aan reken knooppunten door om hun werk parallel te doen. 
 
 Het SQL on-Demand Control-knoop punt maakt gebruik van de engine voor gedistribueerde query verwerking (DQP) om gedistribueerde uitvoering van gebruikers query te optimaliseren en te organiseren door deze te splitsen in kleinere query's die worden uitgevoerd op reken knooppunten. Elke kleine query heet taak en vertegenwoordigt een gedistribueerde uitvoerings eenheid. Het bestand (en) van de opslag wordt gelezen, wordt gekoppeld aan de resultaten van andere taken, groepen of order gegevens die zijn opgehaald uit andere taken. 
 
@@ -61,7 +61,7 @@ Met SQL on-Demand kunt u bestanden in uw data Lake doorzoeken op een alleen-leze
 
 Het beheerknooppunt is het brein van de architectuur. Het is de front-end met interactie met alle toepassingen en verbindingen. 
 
-In de SQL-groep wordt de MPP-engine op het beheer knooppunt uitgevoerd om parallelle query's te optimaliseren en te coördineren. Wanneer u een T-SQL-query naar een SQL-groep verzendt, transformeert het knoop punt deze in query's die parallel op elke distributie worden uitgevoerd.
+In Synapse SQL wordt de gedistribueerde query-engine uitgevoerd op het beheer knooppunt om parallelle query's te optimaliseren en te coördineren. Wanneer u een T-SQL-query naar een SQL-groep verzendt, transformeert het knoop punt deze in query's die parallel op elke distributie worden uitgevoerd.
 
 In SQL on demand wordt de DQP-Engine uitgevoerd op het knoop punt beheer om gedistribueerde uitvoering van gebruikers query te optimaliseren en te coördineren door deze te splitsen in kleinere query's die worden uitgevoerd op reken knooppunten. Ook worden er sets bestanden toegewezen die door elk knoop punt moeten worden verwerkt.
 
@@ -69,7 +69,7 @@ In SQL on demand wordt de DQP-Engine uitgevoerd op het knoop punt beheer om gedi
 
 De rekenknooppunten leveren de rekenkracht. 
 
-Distributies in SQL-groep worden toegewezen aan reken knooppunten voor verwerking. Wanneer u betaalt voor meer reken bronnen, wijst de groep de distributies opnieuw toe aan de beschik bare reken knooppunten. Het aantal Compute-knoop punten ligt tussen 1 en 60, en wordt bepaald door het service niveau voor de SQL-groep. Elk Compute-knoop punt heeft een knoop punt-ID die zichtbaar is in systeem weergaven. U kunt de ID van het reken knooppunt zien door te zoeken naar de node_id kolom in systeem weergaven waarvan de namen beginnen met sys.pdw_nodes. Zie [MPP System views](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest)(Engelstalig) voor een lijst met deze systeem weergaven.
+Distributies in SQL-groep worden toegewezen aan reken knooppunten voor verwerking. Wanneer u betaalt voor meer reken bronnen, wijst de groep de distributies opnieuw toe aan de beschik bare reken knooppunten. Het aantal Compute-knoop punten ligt tussen 1 en 60, en wordt bepaald door het service niveau voor de SQL-groep. Elk Compute-knoop punt heeft een knoop punt-ID die zichtbaar is in systeem weergaven. U kunt de ID van het reken knooppunt zien door te zoeken naar de node_id kolom in systeem weergaven waarvan de namen beginnen met sys.pdw_nodes. Zie [Synapse SQL System views](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest)(Engelstalig) voor een lijst met deze systeem weergaven.
 
 In SQL on-demand wordt aan elk reken knooppunt taak en set bestanden toegewezen voor het uitvoeren van een taak. De taak is een gedistribueerde eenheid voor query uitvoering, die eigenlijk deel uitmaakt van de query gebruiker die is verzonden. Automatisch schalen is actief om er zeker van te zijn dat er voldoende reken knooppunten worden gebruikt voor het uitvoeren van een gebruikers query.
 

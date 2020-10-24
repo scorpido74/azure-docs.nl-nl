@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: mjbrown
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8079fb3ab04d5f613566816735491203d7df951a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95337f88133c9493250e9197654288dc0af59ed1
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570670"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486137"
 ---
 # <a name="configure-multi-region-writes-in-your-applications-that-use-azure-cosmos-db"></a>Schrijf bewerkingen in meerdere regio's configureren in uw toepassingen die gebruikmaken van Azure Cosmos DB
 
@@ -129,8 +129,8 @@ Lees de volgende artikelen:
 * [Conflictsoorten en oplossingsbeleid in Azure Cosmos DB](conflict-resolution-policies.md)
 * [Hoge beschikbaarheid in Azure Cosmos DB](high-availability.md)
 * [Consistentieniveaus in Azure Cosmos DB](consistency-levels.md)
-* [Kies het juiste consistentie niveau in Azure Cosmos DB](consistency-levels-choosing.md)
-* [Consistentie, Beschik baarheid en prestatie afweging in Azure Cosmos DB](consistency-levels-tradeoffs.md)
-* [Beschik baarheid en prestaties voor diverse consistentie niveaus](consistency-levels-tradeoffs.md)
-* [Wereldwijd schalen van ingerichte doorvoer](scaling-throughput.md)
+* [Kies het juiste consistentie niveau in Azure Cosmos DB](./consistency-levels.md)
+* [Consistentie, Beschik baarheid en prestatie afweging in Azure Cosmos DB](./consistency-levels.md)
+* [Beschik baarheid en prestaties voor diverse consistentie niveaus](./consistency-levels.md)
+* [Wereldwijd schalen van ingerichte doorvoer](./request-units.md)
 * [Wereld wijde distributie: onder de motorkap](global-dist-under-the-hood.md)
