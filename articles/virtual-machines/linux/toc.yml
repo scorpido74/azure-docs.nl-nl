@@ -1024,8 +1024,6 @@
               href: disks-benchmarks.md
             - name: Prestaties optimaliseren
               href: optimization.md
-            - name: LVM configureren
-              href: configure-lvm.md
         - name: Niet-gekoppelde schijven zoeken - CLI
           href: find-unattached-disks.md
         - name: Niet-gekoppelde schijven zoeken - Portal
