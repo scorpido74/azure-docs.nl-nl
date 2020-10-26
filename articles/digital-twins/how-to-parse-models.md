@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2cc60af26754eddbe8699019ae8d906a4c1e9e62
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: f560f16c6437b219dd1e7017d70976ff4650c2c0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057685"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544355"
 ---
 # <a name="parse-and-validate-models-with-the-dtdl-parser-library"></a>Modellen parseren en valideren met de DTDL parser-bibliotheek
 
@@ -36,7 +36,7 @@ Nadat u een zelfstandig pakket hebt gemaakt en het uitvoer bare bestand aan uw p
 DTDLValidator
 ```
 
-Met de standaard opties zoekt het voor beeld naar `*.json` bestanden in de huidige map en alle submappen. U kunt ook de volgende optie toevoegen om het voor beeld te zoeken in de aangegeven map en alle submappen voor bestanden met de extensie *. dtdl*:
+Met de standaard opties zoekt het voor beeld naar `*.json` bestanden in de huidige map en alle submappen. U kunt ook de volgende optie toevoegen om het voor beeld te zoeken in de aangegeven map en alle submappen voor bestanden met de extensie *. dtdl* :
 
 ```cmd/sh
 DTDLValidator -d C:\Work\DTDL -e dtdl 
@@ -77,32 +77,50 @@ U kunt de parser-bibliotheek rechtstreeks gebruiken voor zaken als het valideren
 
 Voor de ondersteuning van het volgende voor beeld van de parsers code moet u rekening houden met verschillende modellen die zijn gedefinieerd in een Azure Digital Apparaatdubbels-exemplaar:
 
-> [!TIP] 
-> Het `dtmi:com:contoso:coffeeMaker` model gebruikt de syntaxis van het *mogelijkheidsprofiel* , wat impliceert dat het is geïnstalleerd in de service door een PnP-apparaat te verbinden dat dat model weergeeft.
-
 ```json
-{
-  "@id": " dtmi:com:contoso:coffeeMaker",
-  "@type": "CapabilityModel",
-  "implements": [
-        { "name": "coffeeMaker", "schema": " dtmi:com:contoso:coffeeMakerInterface" }
-  ]    
-}
-{
-  "@id": " dtmi:com:contoso:coffeeMakerInterface",
-  "@type": "Interface",
-  "contents": [
-      { "@type": "Property", "name": "waterTemp", "schema": "double" }  
-  ]
-}
-{
-  "@id": " dtmi:com:contoso:coffeeBar",
-  "@type": "Interface",
-  "contents": [
-        { "@type": "relationship", "contains": " dtmi:com:contoso:coffeeMaker" },
-        { "@type": "property", "name": "capacity", "schema": "integer" }
-  ]    
-}
+[
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:com:contoso:coffeeMaker;1",
+    "@type": "Interface",
+    "contents": [
+      {
+        "@type": "Component",
+        "name": "coffeeMaker",
+        "schema": "dtmi:com:contoso:coffeeMakerInterface;1"
+      }
+    ]
+  },
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:com:contoso:coffeeMakerInterface;1",
+    "@type": "Interface",
+    "contents": [
+      {
+        "@type": "Property",
+        "name": "waterTemp",
+        "schema": "double"
+      }
+    ]
+  },
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:com:contoso:coffeeBar;1",
+    "@type": "Interface",
+    "contents": [
+      {
+        "@type": "Relationship",
+        "name": "foo",
+        "target": "dtmi:com:contoso:coffeeMaker;1"
+      },
+      {
+        "@type": "Property",
+        "name": "capacity",
+        "schema": "integer"
+      }
+    ]
+  }
+]
 ```
 
 De volgende code toont een voor beeld van het gebruik van de parser-bibliotheek om deze definities in C# weer te geven:

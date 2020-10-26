@@ -297,17 +297,15 @@
           href: index-conversation-scenarios.yml
         - name: Gesprektranscriptie
           items:
-            - name: Overzicht
-              items:
-                - name: Wat is gesprektranscriptie?
-                  href: conversation-transcription.md
+            - name: Overzicht van gesprektranscriptie
+              href: conversation-transcription.md
+            - name: Quickstart voor gesprektranscriptie in realtime
+              href: how-to-use-conversation-transcription.md
             - name: Instructiegidsen
               items:
                 - name: Omgaan met callcenterscenario's
                   displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
                   href: call-center-transcription.md
-                - name: Gesprektranscriptie in realtime
-                  href: how-to-use-conversation-transcription.md
                 - name: Asynchrone gesprektranscriptie
                   href: how-to-async-conversation-transcription.md
             - name: Naslaginformatie
@@ -341,14 +339,10 @@
                       href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
         - name: Gesprek via meerdere apparaten
           items:
-            - name: Overzicht
-              items:
-                - name: Wat is een gesprek via meerdere apparaten?
-                  href: multi-device-conversation.md
-            - name: Snelstartgids
-              items:
-                - name: Een gesprek beginnen en eraan deelnemen
-                  href: quickstarts/multi-device-conversation.md
+            - name: Overzicht van gesprek via meerdere apparaten
+              href: multi-device-conversation.md
+            - name: Quickstart voor gesprek via meerdere apparaten
+              href: quickstarts/multi-device-conversation.md
             - name: Naslaginformatie
               items:
                 - name: Speech-SDK
@@ -363,12 +357,8 @@
       items:
         - name: Documentatie over spraakassistenten
           href: index-voice-assistants.yml
-        - name: Overzicht
-          items:
-            - name: Wat is een spraakassistent?
-              href: voice-assistants.md
-            - name: Voorbeelden van Spraakassistent (GitHub)
-              href: 'https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant'
+        - name: Overzicht van spraakassistenten
+          href: voice-assistants.md
         - name: Aangepaste opdrachten
           items:
             - name: Wat zijn aangepaste opdrachten?

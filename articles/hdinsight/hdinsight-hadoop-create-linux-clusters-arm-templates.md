@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/07/2020
-ms.openlocfilehash: 533fe0f391779a5bbe53bf7f2a136c3e9fb19017
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a14a7276d51b7bc1f490bc9ab49f72aedfb829f7
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86080615"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541839"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Apache Hadoop clusters maken in HDInsight met behulp van Resource Manager-sjablonen
 
@@ -51,11 +51,11 @@ U kunt een resource manager-sjabloon implementeren met behulp van de Azure Porta
 
 ## <a name="deploy-using-powershell"></a>Implementeren met PowerShell
 
-U kunt een resource manager-sjabloon implementeren met behulp van Azure PowerShell. Zie [resources implementeren met Resource Manager-sjablonen en Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md) en een [privé Resource Manager-sjabloon met SAS-token en Azure PowerShell implementeren](../azure-resource-manager/resource-manager-powershell-sas-token.md)voor meer informatie.
+U kunt een resource manager-sjabloon implementeren met behulp van Azure PowerShell. Zie [resources implementeren met Resource Manager-sjablonen en Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md) en een [privé Resource Manager-sjabloon met SAS-token en Azure PowerShell implementeren](../azure-resource-manager/templates/secure-template-with-sas-token.md)voor meer informatie.
 
 ## <a name="deploy-using-azure-cli"></a>Implementeren met behulp van Azure CLI
 
-U kunt een resource manager-sjabloon implementeren met behulp van Azure CLI. Zie [resources implementeren met Resource Manager-sjablonen en Azure cli](../azure-resource-manager/templates/deploy-cli.md) en een [persoonlijke Resource Manager-sjabloon implementeren met SAS-token en Azure cli](../azure-resource-manager/resource-manager-cli-sas-token.md)voor meer informatie.
+U kunt een resource manager-sjabloon implementeren met behulp van Azure CLI. Zie [resources implementeren met Resource Manager-sjablonen en Azure cli](../azure-resource-manager/templates/deploy-cli.md) en een [persoonlijke Resource Manager-sjabloon implementeren met SAS-token en Azure cli](../azure-resource-manager/templates/secure-template-with-sas-token.md)voor meer informatie.
 
 ## <a name="deploy-using-the-rest-api"></a>Implementeren met behulp van de REST API
 
@@ -78,6 +78,6 @@ In dit artikel hebt u verschillende manieren geleerd om een HDInsight-cluster te
 * Zie [Azure Quick](https://azure.microsoft.com/resources/templates/?term=hdinsight)start-sjablonen voor meer aan HDInsight gerelateerde sjablonen.
 * Zie [resources implementeren met behulp van .net-bibliotheken en een sjabloon](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)voor een voor beeld van het implementeren van resources via de .net-client bibliotheek.
 * Zie voor een uitgebreid voor beeld van de implementatie van een toepassing micro [services zoals verwacht inrichten en implementeren in azure](../app-service/deploy-complex-application-predictably.md).
-* Zie voor instructies over het implementeren van uw oplossing in verschillende omgevingen [Ontwikkeling en testomgevingen in Microsoft Azure](../solution-dev-test-environments.md).
+* Zie voor instructies over het implementeren van uw oplossing in verschillende omgevingen [Ontwikkeling en testomgevingen in Microsoft Azure](../devtest-labs/devtest-lab-overview.md).
 * Zie [ontwerp sjablonen](../azure-resource-manager/templates/template-syntax.md)voor meer informatie over de secties van de sjabloon Azure Resource Manager.
 * Zie [sjabloon functies](../azure-resource-manager/templates/template-functions.md)voor een overzicht van de functies die u kunt gebruiken in een Azure Resource Manager sjabloon.

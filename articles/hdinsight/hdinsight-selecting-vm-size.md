@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: a21e8d6c76c93b3084619c09f6a7664a25c1929c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d347707b0f48314dd872bc3ad34ac624817d2937
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73682210"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535311"
 ---
 # <a name="selecting-the-right-vm-size-for-your-azure-hdinsight-cluster"></a>De juiste VM-grootte voor uw Azure HDInsight-cluster selecteren
 
@@ -32,7 +32,7 @@ De grootte en het type van de virtuele machine zijn afhankelijk van CPU-verwerki
 
 - RAM: de VM-grootte bepaalt ook de hoeveelheid RAM-geheugen dat beschikbaar is in de virtuele machine. Voor werk belastingen waarbij gegevens in het geheugen worden opgeslagen voor verwerking, in plaats van de schijf te lezen, moet u ervoor zorgen dat uw worker-knoop punten voldoende geheugen hebben om de gegevens te passen.
 
-- Netwerk: voor de meeste cluster typen worden de gegevens die door het cluster worden verwerkt, niet op de lokale schijf opgeslagen, maar in een externe opslag service, zoals Data Lake Storage of Azure Storage. Houd rekening met de netwerk bandbreedte en door Voer tussen de VM van het knoop punt en de opslag service. De netwerk bandbreedte die beschikbaar is voor een virtuele machine neemt doorgaans toe met grotere grootten. Zie [overzicht van VM-grootten](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)voor meer informatie.
+- Netwerk: voor de meeste cluster typen worden de gegevens die door het cluster worden verwerkt, niet op de lokale schijf opgeslagen, maar in een externe opslag service, zoals Data Lake Storage of Azure Storage. Houd rekening met de netwerk bandbreedte en door Voer tussen de VM van het knoop punt en de opslag service. De netwerk bandbreedte die beschikbaar is voor een virtuele machine neemt doorgaans toe met grotere grootten. Zie [overzicht van VM-grootten](../virtual-machines/sizes.md)voor meer informatie.
 
 ## <a name="understanding-vm-optimization"></a>Meer informatie over VM-optimalisatie
 
@@ -40,10 +40,10 @@ Virtuele-machine families in azure zijn geoptimaliseerd voor verschillende use c
 
 | Type                     | Grootten           |    Beschrijving       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [Instap niveau](../virtual-machines/linux/sizes-general.md)          | A, Av2  | Beschikken over CPU-prestaties en geheugen configuraties die het meest geschikt zijn voor workloads op instap niveau, zoals ontwikkelen en testen. Ze zijn voordelig en bieden een goedkope optie om aan de slag te gaan met Azure. |
-| [Algemeen doel](../virtual-machines/linux/sizes-general.md)          | D, DSv2, dv2  | Evenwichtige CPU-geheugenverhouding. Dit is ideaal voor testen en ontwikkelen, voor kleine tot middelgrote databases, en webservers met weinig tot gemiddeld verkeer. |
-| [Geoptimaliseerde rekenkracht](../virtual-machines/linux/sizes-compute.md)        | F           | Hoge CPU-geheugenverhouding. Geschikt voor webservers met gemiddeld verkeer, netwerk apparaten, batch processen en toepassings servers.        |
-| [Geoptimaliseerd geheugen](../virtual-machines/linux/sizes-memory.md)         | Esv3, Ev3  | Hoge geheugen-CPU-verhouding. Zeer geschikt voor relationele databaseservers, middelgrote tot grote caches, en analysefuncties in het geheugen.                 |
+| [Instap niveau](../virtual-machines/sizes-general.md)          | A, Av2  | Beschikken over CPU-prestaties en geheugen configuraties die het meest geschikt zijn voor workloads op instap niveau, zoals ontwikkelen en testen. Ze zijn voordelig en bieden een goedkope optie om aan de slag te gaan met Azure. |
+| [Algemeen doel](../virtual-machines/sizes-general.md)          | D, DSv2, dv2  | Evenwichtige CPU-geheugenverhouding. Dit is ideaal voor testen en ontwikkelen, voor kleine tot middelgrote databases, en webservers met weinig tot gemiddeld verkeer. |
+| [Geoptimaliseerde rekenkracht](../virtual-machines/sizes-compute.md)        | F           | Hoge CPU-geheugenverhouding. Geschikt voor webservers met gemiddeld verkeer, netwerk apparaten, batch processen en toepassings servers.        |
+| [Geoptimaliseerd geheugen](../virtual-machines/sizes-memory.md)         | Esv3, Ev3  | Hoge geheugen-CPU-verhouding. Zeer geschikt voor relationele databaseservers, middelgrote tot grote caches, en analysefuncties in het geheugen.                 |
 
 - Zie [prijzen voor hdinsight](https://azure.microsoft.com/pricing/details/hdinsight/)voor meer informatie over de prijzen van beschik bare VM-exemplaren in de regio's die door hdinsight worden ondersteund.
 
@@ -55,10 +55,10 @@ De volgende tabel beschrijft de cluster typen en knooppunt typen die kunnen word
 
 | Clustertype | Versie | Worker-knoop punt | Hoofd knooppunt | Zookeeper-knoop punt |
 |---|---|---|---|---|
-| Spark | Alle | F4 en hoger | nee | nee |
-| Hadoop | Alle | F4 en hoger | nee | nee |
-| Kafka | Alle | F4 en hoger | nee | nee |
-| HBase | Alle | F4 en hoger | nee | nee |
+| Spark | Alles | F4 en hoger | nee | nee |
+| Hadoop | Alles | F4 en hoger | nee | nee |
+| Kafka | Alles | F4 en hoger | nee | nee |
+| HBase | Alles | F4 en hoger | nee | nee |
 | LLAP | geblokkeerd | nee | nee | nee |
 | Storm | geblokkeerd | nee | nee | nee |
 | ML-service | ALLEEN HDI 3,6 | F4 en hoger | nee | nee |
@@ -74,4 +74,4 @@ Zie [cluster capaciteit plannen in azure HDInsight ](hdinsight-capacity-planning
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Ondersteunde knooppunt configuraties van Azure HDInsight](hdinsight-supported-node-configuration.md)
-- [Sizes for Linux virtual machines in Azure](../virtual-machines/linux/sizes.md)
+- [Sizes for Linux virtual machines in Azure](../virtual-machines/sizes.md)

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 03c783b5a475f0a49fe94d33aa866654e9c9f5f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2d9c96a616f05c22c8b999fdc6cab2505c27485
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397824"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544933"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Apache Hive-beleidsregels configureren in HDInsight met Enterprise Security Package
 
@@ -21,7 +21,7 @@ Meer informatie over het configureren van Apache zwerver-beleids regels voor Apa
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een HDInsight-cluster met Enterprise Security Package. Zie [HDInsight-clusters configureren met ESP](apache-domain-joined-configure.md).
+* Een HDInsight-cluster met Enterprise Security Package. Zie [HDInsight-clusters configureren met ESP](./apache-domain-joined-configure-using-azure-adds.md).
 * Een werk station met Microsoft 365-apps voor Enter prise, Office 2016, Office 2013 Professional Plus, Excel 2013 standalone of Office 2010 Professional Plus.
 
 ## <a name="connect-to-apache-ranger-admin-ui"></a>Verbinding maken met de beheerinterface van Apache Ranger
@@ -49,8 +49,8 @@ In deze sectie maakt u twee zwerver-beleids regels voor toegang tot hivesampleta
 **Ranger-beleidsregels maken**
 
 1. Open de beheerinterface van Ranger. Zie Verbinding maken met de beheerinterface van Apache Ranger.
-2. Selecteer **CLUSTERNAME_Hive**onder **Hive**. Er worden twee vooraf geconfigureerde beleidsregels weergegeven.
-3. Selecteer **Nieuw beleid toevoegen**en voer de volgende waarden in:
+2. Selecteer **CLUSTERNAME_Hive** onder **Hive** . Er worden twee vooraf geconfigureerde beleidsregels weergegeven.
+3. Selecteer **Nieuw beleid toevoegen** en voer de volgende waarden in:
 
     |Eigenschap |Waarde |
     |---|---|
@@ -87,8 +87,8 @@ De instructies vindt u in [Hive ODBC-gegevensbron maken](../hadoop/apache-hadoop
  | --- | --- |
  | Naam van de gegevensbron | Geef uw gegevensbron een naam |
  | Host | Voer CLUSTERNAME.azurehdinsight.net in. Bijvoorbeeld: myHDICluster.azurehdinsight.net |
- | Poort | Gebruik **443**. (Deze poort is gewijzigd van 563 in 443.) |
- | Database | **Standaard instelling**gebruiken. |
+ | Poort | Gebruik **443** . (Deze poort is gewijzigd van 563 in 443.) |
+ | Database | **Standaard instelling** gebruiken. |
  | Type Hive-server | Selecteer **Hive Server 2** |
  | Mechanisme | Selecteer **Azure HDInsight Service** |
  | HTTP-pad | Laat dit leeg. |
@@ -107,17 +107,17 @@ In de laatste sectie hebt u twee beleids regels geconfigureerd.  hiveuser1 heeft
 
     ![Wizard gegevens verbinding openen](./media/apache-domain-joined-run-hive/simbahiveodbc-excel-dataconnection1.png)
 
-1. Selecteer in de vervolg keuzelijst de naam van de gegevens bron die u in de laatste sectie hebt gemaakt en selecteer vervolgens **OK**.
+1. Selecteer in de vervolg keuzelijst de naam van de gegevens bron die u in de laatste sectie hebt gemaakt en selecteer vervolgens **OK** .
 
 1. Voor het eerste gebruik wordt het dialoog venster **ODBC-stuur programma** geopend. Selecteer **Windows** in het menu links. Selecteer vervolgens **verbinding maken** om het **Navigator** venster te openen.
 
 1. Wacht totdat het dialoogvenster **Database en tabel selecteren** wordt geopend. Dit kan een paar seconden duren.
 
-1. Selecteer **hivesampletable**en selecteer **volgende**.
+1. Selecteer **hivesampletable** en selecteer **volgende** .
 
-1. Selecteer **Finish**.
+1. Selecteer **Finish** .
 
-1. In het dialoogvenster **Gegevens importeren** kunt u de query wijzigen of opgeven. Als u dit wilt doen, selecteert u **Eigenschappen**. Dit kan een paar seconden duren.
+1. In het dialoogvenster **Gegevens importeren** kunt u de query wijzigen of opgeven. Als u dit wilt doen, selecteert u **Eigenschappen** . Dit kan een paar seconden duren.
 
 1. Selecteer het tabblad **definitie** . De opdracht tekst is:
 
@@ -131,7 +131,7 @@ In de laatste sectie hebt u twee beleids regels geconfigureerd.  hiveuser1 heeft
 
 1. Selecteer **OK** om het dialoog venster **gegevens importeren** te sluiten.  
 
-1. Voer het wachtwoord van hiveuser1 opnieuw in en klik op **OK**. Het duurt een paar seconden voordat de gegevens naar Excel worden geïmporteerd. Wanneer u klaar bent, ziet u elf kolommen met gegevens.
+1. Voer het wachtwoord van hiveuser1 opnieuw in en klik op **OK** . Het duurt een paar seconden voordat de gegevens naar Excel worden geïmporteerd. Wanneer u klaar bent, ziet u elf kolommen met gegevens.
 
 Als u het tweede beleid wilt testen (Read-hivesampletable-devicemake), hebt u in de laatste sectie gemaakt
 
@@ -158,7 +158,7 @@ Als u het tweede beleid wilt testen (Read-hivesampletable-devicemake), hebt u in
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [hdinsight-clusters met ESP configureren](apache-domain-joined-configure.md)voor meer informatie over het configureren van een hdinsight-cluster met Enterprise Security Package.
+* Zie [hdinsight-clusters met ESP configureren](./apache-domain-joined-configure-using-azure-adds.md)voor meer informatie over het configureren van een hdinsight-cluster met Enterprise Security Package.
 * Zie [hdinsight-clusters beheren met ESP](apache-domain-joined-manage.md)voor meer informatie over het beheren van een hdinsight-cluster met ESP.
 * Zie [SSH gebruiken met HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md#authentication-domain-joined-hdinsight)voor het uitvoeren van Hive-QUERY'S met SSH op HDInsight-clusters met ESP.
 * Zie [verbinding maken met Apache Hive in azure HDInsight met behulp van het Hive JDBC-stuur programma voor het](../hadoop/apache-hadoop-connect-hive-jdbc-driver.md) verbinden van de component met hive JDBC.

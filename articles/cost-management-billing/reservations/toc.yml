@@ -124,6 +124,8 @@
           href: troubleshoot-no-eligible-subscriptions.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Problemen met reserveringsgebruik oplossen
           href: troubleshoot-reservation-utilization.md??toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Problemen met reserveringsaanbevelingen oplossen
+          href: troubleshoot-reservation-recommendation.md??toc=/azure/cost-management-billing/reservations/toc.json
 - name: Naslaginformatie
   items:
     - name: Reserveringen REST API

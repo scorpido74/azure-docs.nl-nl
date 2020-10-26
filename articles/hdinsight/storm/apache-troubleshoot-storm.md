@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: b51b2c21fd9256c93f6947386a48336af2b75d88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc08adb2f71c49fad3c8574e9cfd5315f13d7f44
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84700362"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92532761"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Problemen met Apache Storm oplossen met behulp van Azure HDInsight
 
@@ -27,8 +27,8 @@ U hebt twee opties voor het openen van de Storm-gebruikers interface vanuit een 
 ### <a name="apache-ambari-ui"></a>Apache Ambari-gebruikers interface
 
 1. Ga naar het Ambari-dash board.
-2. Selecteer **Storm**in de lijst met Services.
-3. Selecteer in het menu **snelle koppelingen** **Storm-gebruikers interface**.
+2. Selecteer **Storm** in de lijst met Services.
+3. Selecteer in het menu **snelle koppelingen** **Storm-gebruikers interface** .
 
 ### <a name="direct-link"></a>Directe koppeling
 
@@ -95,7 +95,7 @@ De binaire Storm-bestanden voor de huidige HDP-stack bevinden zich in `/usr/hdp/
 
 Er zijn mogelijk meerdere binaire bestanden voor specifieke HDP-versies in/usr/HDP (bijvoorbeeld `/usr/hdp/2.5.0.1233/storm` ). De `/usr/hdp/current/storm-client` map is symlinked naar de meest recente versie die op het cluster wordt uitgevoerd.
 
-Zie [verbinding maken met een HDInsight-cluster met behulp van SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) en [Apache Storm](https://storm.apache.org/)voor meer informatie.
+Zie [verbinding maken met een HDInsight-cluster met behulp van SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) en [Apache Storm](https://storm.apache.org/)voor meer informatie.
 
 ## <a name="how-do-i-determine-the-deployment-topology-of-a-storm-cluster"></a>Hoe kan ik de implementatie topologie van een storm-cluster bepalen?
 
@@ -137,11 +137,11 @@ Raadpleeg de volgende bronnen voor meer informatie over het gebruik van Storm Ev
 
 ### <a name="java-based-topology"></a>Op Java gebaseerde topologie
 
-[Gebeurtenissen verwerken vanuit Azure Event Hubs met Apache Storm op HDInsight (Java)](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)
+[Gebeurtenissen uit Azure Event Hubs verwerken met Apache Storm in HDInsight (Java)](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)
 
 ### <a name="c-based-topology-mono-on-hdinsight-34-linux-storm-clusters"></a>Topologie op basis van C# (mono op HDInsight 3.4 en Linux Storm-clusters)
 
-[Gebeurtenissen verwerken vanuit Azure Event Hubs met Apache Storm op HDInsight (C#)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-csharp-event-hub-topology)
+[Gebeurtenissen uit Azure Event Hubs verwerken met Apache Storm in HDInsight (C#)](./apache-storm-develop-csharp-event-hub-topology.md)
 
 ### <a name="latest-apache-storm-event-hub-spout-binaries-for-hdinsight-35-linux-storm-clusters"></a>Nieuwste Apache Storm Event Hub Spout binaire bestanden voor HDInsight 3.5-en Linux Storm-clusters
 
@@ -186,4 +186,4 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 - Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
-- Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+- Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](../../azure-portal/supportability/how-to-create-azure-support-request.md)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

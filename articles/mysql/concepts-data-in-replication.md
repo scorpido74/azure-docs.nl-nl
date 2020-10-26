@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 8/7/2020
-ms.openlocfilehash: 9212142ff6f43a84b141b0781fbe9828eebcbd40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e84f0c9beaee8a755499467925d28a83ba3139fc
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537154"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544049"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Gegevens repliceren naar Azure Database for MySQL
 
@@ -41,12 +41,12 @@ Raadpleeg de [MySQL-documentatie](https://dev.mysql.com/doc/refman/8.0/en/replic
 - Elke tabel moet een primaire sleutel hebben.
 - De MySQL InnoDB-engine moet worden gebruikt voor de bron server.
 - De gebruiker moet machtigingen hebben voor het configureren van binaire logboek registratie en het maken van nieuwe gebruikers op de bron server.
-- Als SSL is ingeschakeld op de bron server, moet u ervoor zorgen dat het SSL-CA-certificaat dat is opgegeven voor het domein, is opgenomen in de `mysql.az_replication_change_master` opgeslagen procedure. Raadpleeg de volgende [voor beelden](https://docs.microsoft.com/azure/mysql/howto-data-in-replication#link-master-and-replica-servers-to-start-data-in-replication) en de `master_ssl_ca` para meter.
-- Zorg ervoor dat het IP-adres van de bron server is toegevoegd aan de firewall regels van de Azure Database for MySQL replica-server. Firewallregels bijwerken met de [Azure-portal](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-portal) of [Azure CLI](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-cli).
+- Als SSL is ingeschakeld op de bron server, moet u ervoor zorgen dat het SSL-CA-certificaat dat is opgegeven voor het domein, is opgenomen in de `mysql.az_replication_change_master` opgeslagen procedure. Raadpleeg de volgende [voor beelden](./howto-data-in-replication.md#link-source-and-replica-servers-to-start-data-in-replication) en de `master_ssl_ca` para meter.
+- Zorg ervoor dat het IP-adres van de bron server is toegevoegd aan de firewall regels van de Azure Database for MySQL replica-server. Firewallregels bijwerken met de [Azure-portal](./howto-manage-firewall-using-portal.md) of [Azure CLI](./howto-manage-firewall-using-cli.md).
 - Zorg ervoor dat de computer die de bron server host, zowel binnenkomend als uitgaand verkeer op poort 3306 toestaat.
-- Controleer of de bron server een **openbaar IP-adres**heeft, of de DNS openbaar toegankelijk is of een Fully QUALIFIED domain name (FQDN) heeft.
+- Controleer of de bron server een **openbaar IP-adres** heeft, of de DNS openbaar toegankelijk is of een Fully QUALIFIED domain name (FQDN) heeft.
 
-### <a name="other"></a>Anders
+### <a name="other"></a>Overig
 - Replicatie van gegevens wordt alleen ondersteund in de Algemeen en de prijs categorieën die zijn geoptimaliseerd voor geheugen.
 - Algemene trans actie-id's (GTID) worden niet ondersteund.
 

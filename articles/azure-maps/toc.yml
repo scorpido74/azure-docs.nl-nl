@@ -95,6 +95,8 @@
   items:
     - name: Maps-accounts beheren
       items:
+        - name: Account maken met ARM-sjabloon
+          href: how-to-create-template.md
         - name: Accounts beheren
           href: how-to-manage-account-keys.md
         - name: Verificatie beheren

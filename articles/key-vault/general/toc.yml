@@ -100,6 +100,8 @@
           href: rbac-migration.md
         - name: Toegangsproblemen oplossen
           href: troubleshooting-access-issues.md
+    - name: Voorlopig verwijderen en opschonen beschermen inschakelen
+      href: key-vault-recovery.md
     - name: Logboekregistratie inschakelen
       href: howto-logging.md
     - name: Ontwikkelen
@@ -109,7 +111,7 @@
         - name: Azure Resource Manager gebruiken om Key Vault te implementeren
           href: vault-create-template.md
         - name: Web-app-geheimen opslaan
-          href: vs-secure-secret-appsettings.md
+          href: /previous-versions/azure/key-vault/vs-secure-secret-appsettings?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
         - name: Verificatie van service-tot-service met .NET
           href: service-to-service-authentication.md
         - name: Verbonden Key Vault-service gebruiken
@@ -134,14 +136,6 @@
           href: private-link-service.md
         - name: Toegang tot Key Vault achter een firewall - Azure Key Vault
           href: access-behind-firewall.md
-    - name: Voorlopig verwijderen
-      items:
-        - name: Key Vault-herstel (voorlopig verwijderen en opschoningbescherming)
-          href: key-vault-recovery.md
-        - name: Voorlopig verwijderen gebruiken met CLI
-          href: soft-delete-cli.md
-        - name: Voorlopig verwijderen gebruiken met PowerShell
-          href: soft-delete-powershell.md
     - name: Azure Key Vault verplaatsen
       items:
         - name: Key Vault verplaatsen naar een andere resourcegroep

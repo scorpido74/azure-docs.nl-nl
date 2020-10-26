@@ -64,7 +64,7 @@ De volgende tabel bevat de set van ondersteunde browsers en versies die momentee
 
 |                                  | Windows          | macOS          | Ubuntu | Linux  | Android | iOS    |
 | -------------------------------- | ---------------- | -------------- | ------- | ------ | ------ | ------ |
-| **De aanroepende clientbibliotheek gebruiken** | Chrome *, nieuwe Edge | Chrome *, Safari** | Chrome*  | Chrome* | Chrome* | Safari** |
+| **De aanroepende clientbibliotheek gebruiken** | Chrome *, nieuwe Microsoft Edge | Chrome *, Safari** | Chrome*  | Chrome* | Chrome* | Safari** |
 
 
 \* Let wel dat naast de vorige twee releases ook de meest recente versie van Chrome wordt ondersteund.<br/>

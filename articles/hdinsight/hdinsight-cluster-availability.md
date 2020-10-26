@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/01/2020
-ms.openlocfilehash: 615e23dc388f36f5ae1cd7e0d846acc14ffa2236
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cfc2abad828a3974c04074a4cde062a479f673f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086412"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533560"
 ---
 # <a name="how-to-monitor-cluster-availability-with-apache-ambari-in-azure-hdinsight"></a>De beschik baarheid van clusters bewaken met Apache Ambari in azure HDInsight
 
@@ -55,14 +55,13 @@ Als u een lijst met waarschuwings definities en hun statussen wilt weer geven, s
 
 Ambari biedt veel vooraf gedefinieerde waarschuwingen met betrekking tot Beschik baarheid, waaronder:
 
-| Naam van waarschuwing                        | Beschrijving   |
+| Naam van waarschuwing                        | Description   |
 |---|---|
 | DataNode status overzicht           | Deze waarschuwing op service niveau wordt geactiveerd als er sprake is van een slechte DataNodes|
 | Status van hoge Beschik baarheid van NameNode | Deze waarschuwing op service niveau wordt geactiveerd als de actieve NameNode of stand-NameNode niet actief is.|
 | Percentage beschik journalnodes beschikbaar    | Deze waarschuwing wordt geactiveerd als het aantal beschik journalnodes in het cluster hoger is dan de geconfigureerde kritieke drempel waarde. Hiermee worden de resultaten van JournalNode-proces controles geaggregeerd. |
 | Percentage DataNodes beschikbaar       | Deze waarschuwing wordt geactiveerd als het aantal DataNodes in het cluster hoger is dan de geconfigureerde kritieke drempel waarde. Hiermee worden de resultaten van DataNode-proces controles geaggregeerd.|
 
-[Hier](https://docs.microsoft.com/azure/hdinsight/hdinsight-high-availability-linux#ambari-web-ui)vindt u een volledige lijst met Ambari-waarschuwingen die u helpen de beschik baarheid van een cluster te bewaken.
 
 Als u Details voor een waarschuwing wilt weer geven of criteria wilt wijzigen, selecteert u de **naam** van de waarschuwing. Maak een voor beeld van **DataNode-status samenvatting** . U ziet een beschrijving van de waarschuwing en de specifieke criteria die een waarschuwing of kritieke waarschuwing activeren en het controle-interval voor de criteria. Als u de configuratie wilt bewerken, selecteert u de knop **bewerken** in de rechter bovenhoek van het configuratie venster.
 
@@ -87,7 +86,7 @@ Er wordt een dialoog venster geopend voor het beheren van waarschuwings meldinge
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Beschik baarheid en betrouw baarheid van Apache Hadoop clusters in HDInsight](hdinsight-high-availability-linux.md)
+- [Beschik baarheid en betrouw baarheid van Apache Hadoop clusters in HDInsight](./hdinsight-business-continuity.md)
 - [Clusterbeschikbaarheid - Azure Monitor-logboeken](./cluster-availability-monitor-logs.md)
 - [Azure Monitor-Logboeken gebruiken](hdinsight-hadoop-oms-log-analytics-tutorial.md)
 - [E-mailmeldingen voor Apache Ambari](apache-ambari-email.md)

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/24/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: 6bfedc7d14c234f88e8140281a01ffcc330ba532
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: af1419dfb47f9090fd3aa307c71f7e62206e3e93
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488364"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543352"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>Bewakings Azure Cosmos DB
 
@@ -66,9 +66,9 @@ De **overzichts** pagina in de Azure portal voor elke Azure Cosmos-Data Base bev
 
 ## <a name="analyzing-metric-data"></a><a id="analyze-metric-data"></a> Metrische gegevens analyseren
 
-Azure Cosmos DB biedt een aangepaste ervaring voor het werken met metrische gegevens. Zie [Azure Cosmos DB metrische gegevens controleren en fouten opsporen in azure monitor]() voor meer informatie over het gebruik van deze ervaring en voor het analyseren van verschillende Azure Cosmos DB scenario's.
+Azure Cosmos DB biedt een aangepaste ervaring voor het werken met metrische gegevens.
 
-U kunt metrische gegevens voor Azure Cosmos DB met metrische gegevens uit andere Azure-Services analyseren door **metrische gegevens** te openen in het menu **Azure monitor** . Zie [aan de slag met Azure Metrics Explorer](../azure-monitor/platform/metrics-getting-started.md) voor meer informatie over het gebruik van dit hulp programma. Alle metrische gegevens voor Azure Cosmos DB bevinden zich in de naam ruimte **Cosmos DB standaard metrische gegevens**. U kunt de volgende dimensies met deze metrische gegevens gebruiken bij het toevoegen van een filter aan een grafiek:
+U kunt metrische gegevens voor Azure Cosmos DB met metrische gegevens uit andere Azure-Services analyseren door **metrische gegevens** te openen in het menu **Azure monitor** . Zie [aan de slag met Azure Metrics Explorer](../azure-monitor/platform/metrics-getting-started.md) voor meer informatie over het gebruik van dit hulp programma. Alle metrische gegevens voor Azure Cosmos DB bevinden zich in de naam ruimte **Cosmos DB standaard metrische gegevens** . U kunt de volgende dimensies met deze metrische gegevens gebruiken bij het toevoegen van een filter aan een grafiek:
 
 * NaamVerzameling
 * DatabaseName
@@ -80,11 +80,11 @@ U kunt metrische gegevens voor Azure Cosmos DB met metrische gegevens uit andere
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
-1. Selecteer **monitor** in de navigatie balk aan de linkerkant en selecteer **metrische gegevens**.
+1. Selecteer **monitor** in de navigatie balk aan de linkerkant en selecteer **metrische gegevens** .
 
    :::image type="content" source="./media/monitor-cosmos-db/monitor-metrics-blade.png" alt-text="Beschik bare bewakings opties in Azure Portal":::
 
-1. Selecteer in het deel venster **metrieken** > **een resource selecteren** > Kies het vereiste **abonnement**en de **resource groep**. Voor het **bron type**selecteert u **Azure Cosmos DB accounts**, kiest u een van uw bestaande Azure Cosmos-accounts en selecteert u **Toep assen**.
+1. Selecteer in het deel venster **metrieken** > **een resource selecteren** > Kies het vereiste **abonnement** en de **resource groep** . Voor het **bron type** selecteert u **Azure Cosmos DB accounts** , kiest u een van uw bestaande Azure Cosmos-accounts en selecteert u **Toep assen** .
 
    :::image type="content" source="./media/monitor-cosmos-db/select-cosmosdb-account.png" alt-text="Beschik bare bewakings opties in Azure Portal":::
 
@@ -96,7 +96,7 @@ U kunt metrische gegevens voor Azure Cosmos DB met metrische gegevens uit andere
 
 ### <a name="add-filters-to-metrics"></a>Filters toevoegen aan metrische gegevens
 
-U kunt ook de metrische gegevens en de grafiek die worden weer gegeven met een specifieke **verzamelingnaam**, **DATABASENAME**, **OperationType**, **Region**en **status**code filteren. Als u de metrische gegevens wilt filteren, selecteert u **filter toevoegen** en kiest u de vereiste eigenschap, zoals **OperationType** , en selecteert u een waarde zoals **query**. In de grafiek worden vervolgens de verbruikte aanvraag eenheden voor de query bewerking voor de geselecteerde periode weer gegeven. De bewerkingen die zijn uitgevoerd via een opgeslagen procedure, worden niet geregistreerd, zodat ze niet beschikbaar zijn onder de metrische waarde voor OperationType.
+U kunt ook de metrische gegevens en de grafiek die worden weer gegeven met een specifieke **verzamelingnaam** , **DATABASENAME** , **OperationType** , **Region** en **status** code filteren. Als u de metrische gegevens wilt filteren, selecteert u **filter toevoegen** en kiest u de vereiste eigenschap, zoals **OperationType** , en selecteert u een waarde zoals **query** . In de grafiek worden vervolgens de verbruikte aanvraag eenheden voor de query bewerking voor de geselecteerde periode weer gegeven. De bewerkingen die zijn uitgevoerd via een opgeslagen procedure, worden niet geregistreerd, zodat ze niet beschikbaar zijn onder de metrische waarde voor OperationType.
 
 :::image type="content" source="./media/monitor-cosmos-db/add-metrics-filter.png" alt-text="Beschik bare bewakings opties in Azure Portal":::
 
@@ -153,7 +153,7 @@ De metrische gegevens op account niveau die beschikbaar zijn in de portal, zoals
 
 * Als u de REST API wilt gebruiken, moet u [een Get-bewerking uitvoeren op de verzameling](/rest/api/cosmos-db/get-a-collection). De quota-en gebruiks gegevens voor de verzameling worden geretourneerd in de x-MS-resource-quota-en x-MS-resource-usage-headers in het antwoord.
 
-* Als u de .NET SDK wilt gebruiken, gebruikt u de methode [DocumentClient. ReadDocumentCollectionAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.readdocumentcollectionasync) , die een [ResourceResponse](/dotnet/api/microsoft.azure.documents.client.resourceresponse-1) retourneert dat een aantal gebruiks eigenschappen bevat, zoals **CollectionSizeUsage**, **DatabaseUsage**, **DocumentUsage**en meer.
+* Als u de .NET SDK wilt gebruiken, gebruikt u de methode [DocumentClient. ReadDocumentCollectionAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.readdocumentcollectionasync) , die een [ResourceResponse](/dotnet/api/microsoft.azure.documents.client.resourceresponse-1) retourneert dat een aantal gebruiks eigenschappen bevat, zoals **CollectionSizeUsage** , **DatabaseUsage** , **DocumentUsage** en meer.
 
 Gebruik de [SDK van Azure monitor](https://www.nuget.org/packages/Microsoft.Azure.Insights)om toegang te krijgen tot extra metrische gegevens. Beschik bare metrische definities kunnen worden opgehaald door aan te roepen:
 

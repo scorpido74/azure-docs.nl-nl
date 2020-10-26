@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/06/2020
-ms.openlocfilehash: ef85b6f9e4595e7b4ff367da415fad777de68679
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be2e4a002d1daf4da7d042f1fd7d5bf0e9a01377
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88211309"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544508"
 ---
 # <a name="azure-cache-for-redis-development-faqs"></a>Veelgestelde vragen over Azure cache voor redis-ontwikkeling
 
@@ -55,8 +55,8 @@ Meestal zijn de standaard waarden van de client voldoende. U kunt de opties aanp
 
 * **Nieuwe pogingen**
   * De algemene richt lijnen voor ConnectRetry en ConnectTimeout zijn snel en opnieuw proberen. Deze richt lijnen zijn gebaseerd op uw werk belasting en hoe lang het duurt voordat uw client een redis-opdracht verzendt en een antwoord ontvangt.
-  * Laat stack Exchange. redis automatisch opnieuw verbinding maken in plaats van de verbindings status te controleren en zelf verbinding te maken. **Vermijd het gebruik van de eigenschap ConnectionMultiplexer. IsConnected**.
-  * Snowballing: soms is het mogelijk dat u een probleem ondervindt waarbij u het opnieuw probeert en de nieuwe pogingen Snowball en nooit herstellen. Als snowballing zich voordoet, kunt u het beste een exponentiële uitstel-algoritme gebruiken, zoals beschreven in [algemene richt lijnen voor opnieuw proberen](../best-practices-retry-general.md) die worden gepubliceerd door de micro soft-patronen & practices-groep.
+  * Laat stack Exchange. redis automatisch opnieuw verbinding maken in plaats van de verbindings status te controleren en zelf verbinding te maken. **Vermijd het gebruik van de eigenschap ConnectionMultiplexer. IsConnected** .
+  * Snowballing: soms is het mogelijk dat u een probleem ondervindt waarbij u het opnieuw probeert en de nieuwe pogingen Snowball en nooit herstellen. Als snowballing zich voordoet, kunt u het beste een exponentiële uitstel-algoritme gebruiken, zoals beschreven in [algemene richt lijnen voor opnieuw proberen](/azure/architecture/best-practices/transient-faults) die worden gepubliceerd door de micro soft-patronen & practices-groep.
   
 * **Time-outwaarden**
   * Denk aan uw werk belasting en stel de waarden dienovereenkomstig in. Als u grote waarden opslaat, stelt u de time-out in op een hogere waarde.
@@ -109,7 +109,7 @@ U kunt elk van de opdrachten die worden weer gegeven op [redis opdrachten](https
 * `redis-cli -h <Azure Cache for Redis name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
-> De opdracht regel Programma's voor redis werken niet met de TLS-poort, maar u kunt een hulp programma gebruiken `stunnel` om de hulpprogram ma's veilig te verbinden met de TLS-poort door de instructies te volgen in het [opdracht regel programma redis gebruiken met Azure cache for redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool) .
+> De opdracht regel Programma's voor redis werken niet met de TLS-poort, maar u kunt een hulp programma gebruiken `stunnel` om de hulpprogram ma's veilig te verbinden met de TLS-poort door de instructies te volgen in het [opdracht regel programma redis gebruiken met Azure cache for redis](./cache-how-to-redis-cli-tool.md) .
 >
 >
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 1a6aabe7ef3500a114525fe6c8bc993826295e36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: afbf80810f45f616eac40de16889bbebb1cf4964
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275350"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544797"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>Server concepten in Azure Database for MySQL
 
@@ -32,7 +32,7 @@ Een Azure Database for MySQL-server:
 - Voorziet in het bereik voor beheer beleid dat van toepassing is op de bijbehorende data bases: aanmelden, firewall, gebruikers, rollen, configuraties, enzovoort.
 - Is beschikbaar in meerdere versies. Zie [supported Azure database for MySQL data base versions](./concepts-supported-versions.md)(Engelstalig) voor meer informatie.
 
-Op een Azure Database voor MySQL-server kunt u een of meerdere databases maken. U kunt ervoor kiezen om één data base per server te maken voor het gebruik van alle resources of om meerdere data bases te maken om de resources te delen. De prijzen zijn gestructureerd per server, op basis van de configuratie van de prijs categorie, vCores en opslag (GB). Zie [prijs categorieën](./concepts-service-tiers.md)voor meer informatie.
+Op een Azure Database voor MySQL-server kunt u een of meerdere databases maken. U kunt ervoor kiezen om één data base per server te maken voor het gebruik van alle resources of om meerdere data bases te maken om de resources te delen. De prijzen zijn gestructureerd per server, op basis van de configuratie van de prijs categorie, vCores en opslag (GB). Zie [prijs categorieën](./concepts-pricing-tiers.md)voor meer informatie.
 
 ## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-mysql-server"></a>Hoe kan ik verbinding maken en verifiëren met een Azure Database for MySQL-server?
 
@@ -67,5 +67,5 @@ U kunt Azure Database for MySQL servers beheren door gebruik te maken van de Azu
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie [overzicht van Azure database for MySQL](./overview.md) voor een overzicht van de service
-- Zie [service lagen](./concepts-service-tiers.md) voor informatie over specifieke resource quota en beperkingen op basis **van uw servicelaag**.
+- Zie [prijs categorieën](./concepts-pricing-tiers.md) voor informatie over specifieke resource quota en beperkingen op basis van uw **prijs categorie**
 - Zie [verbindings bibliotheken voor Azure database for MySQL](./concepts-connection-libraries.md)voor meer informatie over het maken van een verbinding met de service.

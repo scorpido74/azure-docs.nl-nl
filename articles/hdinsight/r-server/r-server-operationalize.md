@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/27/2018
-ms.openlocfilehash: 1a5a46957c92fb2c14907db728216481f3f57aac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20159cf911670eb70fd5757991c07b63b3f1776b
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087687"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536263"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Operationeel maken ML-cluster in azure HDInsight
 
@@ -21,14 +21,14 @@ Nadat u het server gebruik van MILLILITERs in HDInsight hebt gebruikt om uw gege
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een cluster met MILLILITERs Services op HDInsight. Zie [Apache Hadoop-clusters maken met behulp van de Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) en selecteer **ml Services** voor het **cluster type**.
+* Een ML Services-cluster beheren in HDInsight. Zie [Apache Hadoop-clusters maken met behulp van Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) en selecteer **ML Services** voor **Clustertype** .
 
 * Een SSH-client (Secure Shell): er wordt een SSH-client gebruikt om extern verbinding te maken met het HDInsight-cluster en om opdrachten rechtstreeks uit te voeren op het cluster. Zie [SSH gebruiken met HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md) voor meer informatie.
 
 ## <a name="operationalize-ml-services-cluster-with-one-box-configuration"></a>Operationeel maken ML-cluster met een configuratie met één doos
 
 > [!NOTE]  
-> De onderstaande stappen zijn van toepassing op R Server 9,0 en ML Server 9,1. Raadpleeg voor ML Server 9,3 het [beheer programma gebruiken om de uitoefening-configuratie te beheren](https://docs.microsoft.com/machine-learning-server/operationalize/configure-admin-cli-launch).
+> De onderstaande stappen zijn van toepassing op R Server 9,0 en ML Server 9,1. Raadpleeg voor ML Server 9,3 het [beheer programma gebruiken om de uitoefening-configuratie te beheren](/machine-learning-server/operationalize/configure-admin-cli-launch).
 
 1. SSH op het Edge-knooppunt.
 
@@ -54,11 +54,11 @@ Nadat u het server gebruik van MILLILITERs in HDInsight hebt gebruikt om uw gege
         sudo dotnet Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
         ```
 
-1. U krijgt de keuze uit de opties waaruit u kunt kiezen. Kies de eerste optie, zoals wordt weer gegeven in de volgende scherm afbeelding, om **ml server voor uitoefening te configureren**.
+1. U krijgt de keuze uit de opties waaruit u kunt kiezen. Kies de eerste optie, zoals wordt weer gegeven in de volgende scherm afbeelding, om **ml server voor uitoefening te configureren** .
 
     ![R Server Administration Utility selecteren](./media/r-server-operationalize/admin-util-one-box-1.png)
 
-1. U krijgt nu de optie om te kiezen hoe u ML Server wilt operationeel maken. Kies in de weer gegeven opties de eerste door **een**te typen.
+1. U krijgt nu de optie om te kiezen hoe u ML Server wilt operationeel maken. Kies in de weer gegeven opties de eerste door **een** te typen.
 
     ![R Server Administration Utility operationeel maken](./media/r-server-operationalize/admin-util-one-box-2.png)
 
@@ -74,7 +74,7 @@ Nadat u het server gebruik van MILLILITERs in HDInsight hebt gebruikt om uw gege
 
     ![Diagnostische R Server Administration-hulpprogram ma's](./media/r-server-operationalize/hdinsight-diagnostic1.png)
 
-    b. Selecteer in het menu diagnostische tests **een**. Wanneer u hierom wordt gevraagd, voert u het wacht woord in dat u hebt opgegeven voor de gebruiker van de lokale beheerder.
+    b. Selecteer in het menu diagnostische tests **een** . Wanneer u hierom wordt gevraagd, voert u het wacht woord in dat u hebt opgegeven voor de gebruiker van de lokale beheerder.
 
     ![Hulp programma R Server Administration-hulpprogram ma's](./media/r-server-operationalize/hdinsight-diagnostic2.png)
 
@@ -103,7 +103,7 @@ chmod 777 /var/RevoShare/rserve2
 rxSparkConnect(reset = TRUE)
 ```
 
-In dit stadium is de configuratie voor uitoefening voltooid. Nu kunt u het `mrsdeploy` pakket op uw rclient gebruiken gebruiken om verbinding te maken met het uitoefening op Edge-knoop punt en de functies, zoals [extern uitvoeren](https://docs.microsoft.com/machine-learning-server/r/how-to-execute-code-remotely) en [webservices](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services), te gebruiken. Afhankelijk van of het cluster is ingesteld in een virtueel netwerk of niet, moet u mogelijk forward tunneling via SSH-aanmelding instellen voor de poort. In de volgende secties wordt uitgelegd hoe u deze tunnel instelt.
+In dit stadium is de configuratie voor uitoefening voltooid. Nu kunt u het `mrsdeploy` pakket op uw rclient gebruiken gebruiken om verbinding te maken met het uitoefening op Edge-knoop punt en de functies, zoals [extern uitvoeren](/machine-learning-server/r/how-to-execute-code-remotely) en [webservices](/machine-learning-server/operationalize/concept-what-are-web-services), te gebruiken. Afhankelijk van of het cluster is ingesteld in een virtueel netwerk of niet, moet u mogelijk forward tunneling via SSH-aanmelding instellen voor de poort. In de volgende secties wordt uitgelegd hoe u deze tunnel instelt.
 
 ### <a name="ml-services-cluster-on-virtual-network"></a>Clusters van ML Services in het virtuele netwerk
 
@@ -155,17 +155,17 @@ Volg deze stappen voor het buiten gebruik stellen van worker-knoop punten:
 
 1. Werk knooppunten selecteren (om uit bedrijf te nemen).
 
-1. Klik op **acties**  >  **geselecteerde hosts**hosts  >  **host**de  >  **onderhouds modus inschakelen**. In de volgende afbeelding zijn bijvoorbeeld wk3 en wk4 geselecteerd om uit bedrijf te worden genomen.  
+1. Klik op **acties**  >  **geselecteerde hosts** hosts  >  **host** de  >  **onderhouds modus inschakelen** . In de volgende afbeelding zijn bijvoorbeeld wk3 en wk4 geselecteerd om uit bedrijf te worden genomen.  
 
    ![Apache Ambari-onderhouds modus inschakelen](./media/r-server-operationalize/get-started-operationalization.png)  
 
-* Selecteer **acties**  >  **geselecteerde hosts**  >  **DataNodes** > Klik op uit **bedrijf nemen**.
-* Selecteer **acties**  >  **geselecteerde hosts**  >  **NodeManagers** > Klik op uit **bedrijf nemen**.
-* Selecteer **acties**  >  **geselecteerde hosts**  >  **DataNodes** > Klik op **Stop**.
-* Selecteer **acties**  >  **geselecteerde hosts**  >  **NodeManagers** > Klik op **Stop**.
-* Selecteer **acties**  >  **geselecteerde hosts**  >  **host** > Klik op **alle onderdelen stoppen**.
+* Selecteer **acties**  >  **geselecteerde hosts**  >  **DataNodes** > Klik op uit **bedrijf nemen** .
+* Selecteer **acties**  >  **geselecteerde hosts**  >  **NodeManagers** > Klik op uit **bedrijf nemen** .
+* Selecteer **acties**  >  **geselecteerde hosts**  >  **DataNodes** > Klik op **Stop** .
+* Selecteer **acties**  >  **geselecteerde hosts**  >  **NodeManagers** > Klik op **Stop** .
+* Selecteer **acties**  >  **geselecteerde hosts**  >  **host** > Klik op **alle onderdelen stoppen** .
 * Hef de selectie van de worker-knooppunten op en selecteer de hoofdknooppunten.
-* Selecteer **acties**  >  **geselecteerde hosts** > hosts**Hosts**  >  **alle onderdelen opnieuw starten**.
+* Selecteer **acties**  >  **geselecteerde hosts** > hosts **Hosts**  >  **alle onderdelen opnieuw starten** .
 
 ### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>Stap 2: reken knooppunten configureren op elk uit bedrijf genomen worker-knoop punt (en)
 
@@ -177,7 +177,7 @@ Volg deze stappen voor het buiten gebruik stellen van worker-knoop punten:
     dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
     ```
 
-1. Voer **1** in om de optie **ml server configureren voor uitoefening**te selecteren.
+1. Voer **1** in om de optie **ml server configureren voor uitoefening** te selecteren.
 
 1. Voer **C** in om de optie te selecteren `C. Compute node` . Hiermee configureert u het rekenknooppunt op het werkknooppunt.
 
