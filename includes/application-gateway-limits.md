@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: victorh
-ms.openlocfilehash: 92ec7c0a1469c9f02855cd6191faa8514e54c8f0
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: ff97aa6c6f04ad41ba6e1b986f3cc0734ec7a326
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91828771"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92526088"
 ---
 | Resource | Limiet | Opmerking |
 | --- | --- | --- |
@@ -39,6 +39,6 @@ ms.locfileid: "91828771"
 | Maximumgrootte voor bestandsupload, WAF |V1 Medium WAF-gateways, 100 MB<br>V1 Large WAF-gateways, 500 MB<br>V2 WAF, 750 MB| |
 | Maximale grootte van WAF, zonder bestanden|128 kB||
 | Maximumaantal aangepaste WAF-regels|100||
-| Maximumaantal WAF-uistluitingen|100||
+| Maximale WAF-uitsluitingen per Application Gateway|40||
 
 <sup>1</sup> In het geval van SKU's met WAF ingeschakeld moet u het aantal resources beperken tot 40.
