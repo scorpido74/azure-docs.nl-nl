@@ -6,12 +6,12 @@ ms.topic: article
 author: rboucher
 ms.author: robb
 ms.date: 07/01/2020
-ms.openlocfilehash: a029dcbebf6dfe7a2b6cb517641c824a5937ca95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96aea35a4796eae9d31062cedaf917a736f0fe82
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90988251"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547126"
 ---
 # <a name="upgrading-your-log-analytics-dashboard-visualizations"></a>Uw Log Analytics dashboard visualisaties bijwerken
 
@@ -47,7 +47,7 @@ Wanneer een Log Analytics vastgemaakte deel kan worden bijgewerkt, wordt er een 
  
 ![Zijbalk](media/dashboard-upgrade/update-message-1.png)
  
-![Zijbalk](media/dashboard-upgrade/update-message-2.png)
+![Scherm afbeelding die laat zien hoe u de tegel visualisatie bijwerkt.](media/dashboard-upgrade/update-message-2.png)
 
 > [!WARNING]
 > Wanneer het dash board is gepubliceerd, kan de upgrade onomkeerbaar zijn. Wijzigingen worden echter genegeerd als u het dash board verlaat zonder opnieuw te publiceren.  
@@ -56,7 +56,7 @@ Zodra u hebt geklikt, wordt de visualisatie bijgewerkt naar de nieuwe technologi
 
 Nadat de visualisaties zijn bijgewerkt, moet u het dash board opnieuw publiceren om de wijziging door te voeren.
 
-![Zijbalk](media/dashboard-upgrade/update-message-3.png)
+![Scherm opname van de bijgewerkte visualisaties.](media/dashboard-upgrade/update-message-3.png)
 
 ## <a name="stage-2---migration-of-all-dashboards"></a>Fase 2: migratie van alle Dash boards
 
@@ -74,7 +74,7 @@ Omdat dashboards meerdere visualisaties van meerdere query's kunnen bevatten, is
 
 Dash boards kunnen visueel en complex zijn. Als u de cognitieve belasting wilt beperken tijdens het weer geven van een dash board, optimaliseert u de visualisaties door de weer gave te beperken tot 25 verschillende gegevens typen. Wanneer er meer dan 25 Log Analytics, worden de gegevens geoptimaliseerd. De 25 typen worden afzonderlijk weer gegeven met de meeste gegevens als afzonderlijke en vervolgens de resterende waarden worden gegroepeerd in een andere waarde. In het volgende diagram ziet u een voor beeld van een dergelijk geval.  
 
-![Zijbalk](media/dashboard-upgrade/values-25-limit.png)
+![Scherm opname van een dash board met 25 verschillende gegevens typen.](media/dashboard-upgrade/values-25-limit.png)
 
 ### <a name="dashboard-refresh-on-load"></a>Dash board vernieuwen bij laden
 

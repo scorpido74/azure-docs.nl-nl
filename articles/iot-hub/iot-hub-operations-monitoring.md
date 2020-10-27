@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: nberdy
 ms.custom: amqp, devx-track-csharp
-ms.openlocfilehash: 956a676709322860da7f08d032d370ed66f55b3f
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 559dac0f37daf612404fca839e9918e97077029e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92139327"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538490"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>Bewaking van IoT Hub bewerkingen (afgeschaft)
 
 Met IoT Hub bewerkingen bewaken kunt u de status van de bewerkingen op uw IoT-hub in realtime bewaken. IoT Hub houdt gebeurtenissen in verschillende categorieën bewerkingen bij. U kunt ervoor kiezen gebeurtenissen te verzenden van een of meer categorieën naar een eind punt van uw IoT-hub voor verwerking. U kunt de gegevens controleren op fouten of complexere verwerking instellen op basis van gegevens patronen.
 
 >[!NOTE]
->IoT Hub **bewerkings bewaking is afgeschaft en is op 10 maart 2019 verwijderd uit IOT hub**. Zie [de status van Azure IOT hub controleren en problemen snel](iot-hub-monitor-resource-health.md)oplossen voor meer informatie over het controleren van de bewerkingen en de status van IOT hub. Zie [uw Azure IOT-oplossingen bewaken met Azure monitor en Azure resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health)voor meer informatie over de tijd lijn van de afschaffing.
+>IoT Hub **bewerkings bewaking is afgeschaft en is op 10 maart 2019 verwijderd uit IOT hub** . Zie [IOT hub bewaken](monitor-iot-hub.md)voor het bewaken van de bewerkingen en de status van IOT hub. Zie [uw Azure IOT-oplossingen bewaken met Azure monitor en Azure resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health)voor meer informatie over de tijd lijn van de afschaffing.
 
 IoT Hub bewaken zes categorieën gebeurtenissen:
 
@@ -39,11 +39,11 @@ IoT Hub bewaken zes categorieën gebeurtenissen:
 
 1. Maak een IoT-hub. In de hand leiding [aan de slag](quickstart-send-telemetry-dotnet.md) vindt u instructies voor het maken van een IOT-hub.
 
-2. Open de Blade van uw IoT-hub. Klik vervolgens op **bewerkingen bewaking**.
+2. Open de Blade van uw IoT-hub. Klik vervolgens op **bewerkingen bewaking** .
 
     ![Configuratie van bewerkings bewaking openen in de portal](./media/iot-hub-operations-monitoring/enable-OM-1.png)
 
-3. Selecteer de bewakings categorieën die u wilt bewaken en klik vervolgens op **Opslaan**. De gebeurtenissen zijn beschikbaar voor het lezen van het eind punt dat compatibel is met Event hub, vermeld in **bewakings instellingen**. Het IoT Hub-eind punt wordt aangeroepen `messages/operationsmonitoringevents` .
+3. Selecteer de bewakings categorieën die u wilt bewaken en klik vervolgens op **Opslaan** . De gebeurtenissen zijn beschikbaar voor het lezen van het eind punt dat compatibel is met Event hub, vermeld in **bewakings instellingen** . Het IoT Hub-eind punt wordt aangeroepen `messages/operationsmonitoringevents` .
 
     ![Bewaking van bewerkingen op uw IoT-hub configureren](./media/iot-hub-operations-monitoring/enable-OM-2.png)
 
@@ -197,11 +197,11 @@ Als u verbinding wilt maken met het bewakings eindpunt, hebt u een connection st
 
 1. Navigeer in de portal naar de Blade IoT Hub resource.
 
-2. Kies **bewerkingen bewaken**en noteer de **Event hub-compatibele naam** en **Event hub-compatibele eindpunt** waarden:
+2. Kies **bewerkingen bewaken** en noteer de **Event hub-compatibele naam** en **Event hub-compatibele eindpunt** waarden:
 
     ![Event hub-compatibele eindpunt waarden](./media/iot-hub-operations-monitoring/monitoring-endpoint.png)
 
-3. Kies **beleid voor gedeelde toegang**en kies vervolgens **service**. Noteer de waarde van de **primaire sleutel** :
+3. Kies **beleid voor gedeelde toegang** en kies vervolgens **service** . Noteer de waarde van de **primaire sleutel** :
 
     ![Primaire sleutel voor het beleid voor gedeelde toegang van services](./media/iot-hub-operations-monitoring/service-key.png)
 

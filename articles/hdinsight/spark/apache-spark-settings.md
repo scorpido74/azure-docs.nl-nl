@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: cdef21c69e8f05924097d57bbe78b86d38497b86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 231ab5cc93d98d7356d47472b7e160ddd3ade790
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82188154"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545936"
 ---
 # <a name="configure-apache-spark-settings"></a>Apache Spark-instellingen configureren
 
@@ -23,13 +23,13 @@ Het standaard HDInsight-Apache Spark cluster bevat de volgende knoop punten: dri
 
 ![Spark HDInsight-architectuur](./media/apache-spark-settings/spark-hdinsight-arch.png)
 
-Het aantal Vm's en VM-grootten voor de knoop punten in uw HDInsight-cluster kunnen invloed hebben op uw Spark-configuratie. Niet-standaard-HDInsight-configuratie waarden vereisen vaak niet-standaard Spark-configuratie waarden. Wanneer u een HDInsight Spark-cluster maakt, worden de voorgestelde VM-grootten voor elk van de onderdelen weer gegeven. Momenteel zijn de door het [geheugen geoptimaliseerde Linux VM-grootten](../../virtual-machines/linux/sizes-memory.md) voor Azure D12 v2 of hoger.
+Het aantal Vm's en VM-grootten voor de knoop punten in uw HDInsight-cluster kunnen invloed hebben op uw Spark-configuratie. Niet-standaard-HDInsight-configuratie waarden vereisen vaak niet-standaard Spark-configuratie waarden. Wanneer u een HDInsight Spark-cluster maakt, worden de voorgestelde VM-grootten voor elk van de onderdelen weer gegeven. Momenteel zijn de door het [geheugen geoptimaliseerde Linux VM-grootten](../../virtual-machines/sizes-memory.md) voor Azure D12 v2 of hoger.
 
 ## <a name="apache-spark-versions"></a>Apache Spark versies
 
 Gebruik de aanbevolen Spark-versie voor uw cluster.  De HDInsight-service bevat verschillende versies van zowel Spark als HDInsight.  Elke versie van Spark bevat een set standaard cluster instellingen.  
 
-Wanneer u een nieuw cluster maakt, zijn er meerdere Spark-versies waaruit u kunt kiezen. Voor een overzicht van de volledige lijst,  [HDInsight-onderdelen en versies](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning).
+Wanneer u een nieuw cluster maakt, zijn er meerdere Spark-versies waaruit u kunt kiezen. Voor een overzicht van de volledige lijst,  [HDInsight-onderdelen en versies](../hdinsight-component-versioning.md).
 
 > [!NOTE]  
 > De standaard versie van Apache Spark in de HDInsight-service kan zonder kennisgeving worden gewijzigd. Als u een versie afhankelijkheid hebt, raadt micro soft u aan die bepaalde versie op te geven wanneer u clusters maakt met behulp van .NET SDK, Azure PowerShell en klassieke CLI van Azure.
@@ -60,7 +60,7 @@ Controleer de huidige configuratie-instellingen voor het HDInsight-cluster voord
 
 De Apache Ambari-webgebruikersinterface wordt weer gegeven, met een dash board met belang rijke gegevens over het resource gebruik van het cluster.  Het Ambari-dash board toont u de Apache Spark configuratie en andere geïnstalleerde services. Het dash board bevat een tabblad van de **configuratie geschiedenis** , waar u informatie bekijkt voor geïnstalleerde services, waaronder Spark.
 
-Als u de configuratie waarden voor Apache Spark wilt bekijken, selecteert u **configuratie geschiedenis**en selecteert u **Spark2**.  Selecteer het tabblad **configuraties** en selecteer vervolgens de `Spark` koppeling (of `Spark2` , afhankelijk van uw versie) in de lijst met Services.  U ziet een lijst met configuratie waarden voor het cluster:
+Als u de configuratie waarden voor Apache Spark wilt bekijken, selecteert u **configuratie geschiedenis** en selecteert u **Spark2** .  Selecteer het tabblad **configuraties** en selecteer vervolgens de `Spark` koppeling (of `Spark2` , afhankelijk van uw versie) in de lijst met Services.  U ziet een lijst met configuratie waarden voor het cluster:
 
 ![Spark-configuraties](./media/apache-spark-settings/spark-configurations.png)
 

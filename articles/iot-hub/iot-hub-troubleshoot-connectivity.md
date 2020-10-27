@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-ms.openlocfilehash: 17fb1bf8aebe1bd114f970aed997e77ce8a07af1
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: b194812ef68820a0c310d0bac3b055360c5b5e4a
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150768"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538422"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>De verbinding met Azure IoT Hub controleren, vaststellen en problemen oplossen
 
@@ -28,39 +28,39 @@ Connectiviteits problemen voor IoT-apparaten kunnen lastig zijn om problemen op 
 
 Gebruik Azure Monitor om waarschuwingen op te halen en logboeken te schrijven wanneer apparaten de verbinding verbreken.
 
-### <a name="turn-on-diagnostic-logs"></a>Diagnostische logboeken inschakelen
+### <a name="turn-on-logs"></a>Logboeken inschakelen
 
-Schakel diagnostische gegevens in voor IoT Hub om de gebeurtenissen en fouten van het apparaat vast te leggen. We raden u aan deze logboeken zo snel mogelijk in te scha kelen, want als de diagnostische logboeken niet zijn ingeschakeld, hebt u geen informatie om het probleem op te lossen.
+Als u de gebeurtenissen en fouten van een apparaat wilt vastleggen, maakt u een diagnostische instelling voor de [bron logboeken van IOT hub verbindingen](monitor-iot-hub-reference.md#connections). We raden u aan deze instelling zo snel mogelijk te maken, omdat deze logboeken niet standaard worden verzameld en zonder deze worden geen informatie over het oplossen van problemen met het apparaat verbroken wanneer deze zich voordoen.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
-2. Blader naar uw IoT-hub.
+1. Blader naar uw IoT-hub.
 
-3. Selecteer **instellingen voor diagnostische gegevens**.
+1. Selecteer **instellingen voor diagnostische gegevens** .
 
-4. Selecteer **Diagnostische gegevens inschakelen**.
+1. Selecteer **Diagnostische instelling toevoegen** .
 
-5. De logboeken voor het verzamelen van **verbindingen** inschakelen.
+1. Selecteer **verbindingen** Logboeken.
 
-6. Schakel **Send to log Analytics** ([Zie prijzen](https://azure.microsoft.com/pricing/details/log-analytics/)) in om de analyse te vergemakkelijken. Zie het voor beeld onder [connectiviteits fouten oplossen](#resolve-connectivity-errors).
+1. Voor een eenvoudige analyse selecteert **u verzenden naar log Analytics** ( [Zie prijzen](https://azure.microsoft.com/pricing/details/log-analytics/)). Zie het voor beeld onder [connectiviteits fouten oplossen](#resolve-connectivity-errors).
 
    ![Aanbevolen instellingen](./media/iot-hub-troubleshoot-connectivity/diagnostic-settings-recommendation.png)
 
-Zie [de status van Azure IOT hub controleren en problemen snel](iot-hub-monitor-resource-health.md)oplossen voor meer informatie.
+Zie [IOT hub bewaken](monitor-iot-hub.md)voor meer informatie.
 
 ### <a name="set-up-alerts-for-device-disconnect-at-scale"></a>Waarschuwingen instellen voor het verbreken van het apparaat op schaal
 
 Als u waarschuwingen wilt ontvangen wanneer apparaten de verbinding verbreken, configureert u waarschuwingen op de metrische gegevens van de **verbonden apparaten (preview-versie)** .
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 2. Blader naar uw IoT-hub.
 
-3. Selecteer **waarschuwingen**.
+3. Selecteer **waarschuwingen** .
 
-4. Selecteer **Nieuwe waarschuwingsregel**.
+4. Selecteer **Nieuwe waarschuwingsregel** .
 
-5. Selecteer **voor waarde toevoegen**en selecteer vervolgens verbonden apparaten (preview).
+5. Selecteer **voor waarde toevoegen** en selecteer vervolgens verbonden apparaten (preview).
 
 6. Stel drempelwaarde en waarschuwingen in door de volgende vragen te volgen.
 
@@ -72,15 +72,15 @@ Als u het verbreken van een *apparaat* wilt detecteren, bijvoorbeeld wanneer u w
 
 ## <a name="resolve-connectivity-errors"></a>Connectiviteits fouten oplossen
 
-Wanneer u Diagnostische logboeken en waarschuwingen voor verbonden apparaten inschakelt, ontvangt u waarschuwingen wanneer er fouten optreden. In deze sectie wordt beschreven hoe u veelvoorkomende problemen kunt controleren wanneer u een waarschuwing ontvangt. In de onderstaande stappen wordt ervan uitgegaan dat u Azure Monitor logboeken voor uw Diagnostische logboeken hebt ingesteld.
+Wanneer u Logboeken en waarschuwingen inschakelt voor verbonden apparaten, ontvangt u waarschuwingen wanneer er fouten optreden. In deze sectie wordt beschreven hoe u veelvoorkomende problemen kunt controleren wanneer u een waarschuwing ontvangt. In de onderstaande stappen wordt ervan uitgegaan dat u al een diagnostische instelling hebt gemaakt voor het verzenden van Logboeken voor IoT Hub verbindingen naar een Log Analytics-werk ruimte.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Blader naar uw IoT-hub.
 
-1. Selecteer **Logboeken**.
+1. Selecteer **Logboeken** .
 
-1. Als u verbindings fouten logboeken wilt isoleren voor IoT Hub, voert u de volgende query in en selecteert u vervolgens **uitvoeren**:
+1. Als u verbindings fouten logboeken wilt isoleren voor IoT Hub, voert u de volgende query in en selecteert u vervolgens **uitvoeren** :
 
     ```kusto
     AzureDiagnostics

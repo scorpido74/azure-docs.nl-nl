@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: a97147395d4f877b666f4aa54254c8631400c735
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ead9b775b8c61d0d89abd4821bef2b1aaaea0d76
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855664"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547432"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Azure-opslag gebruiken met Azure HDInsight-clusters
 
@@ -29,11 +29,11 @@ In dit artikel wordt uitgelegd hoe Azure Storage werkt met HDInsight-clusters.
 > [!IMPORTANT]  
 > Type opslag account **BlobStorage** kan alleen worden gebruikt als secundaire opslag voor HDInsight-clusters.
 
-| Opslagaccounttype | Ondersteunde services | Ondersteunde prestatie lagen |Geen ondersteunde prestatie lagen| Ondersteunde toegangs lagen |
+| Opslagaccounttype | Ondersteunde services | Ondersteunde prestatielagen |Geen ondersteunde prestatie lagen| Ondersteunde toegangslagen |
 |----------------------|--------------------|-----------------------------|---|------------------------|
-| StorageV2 (algemeen gebruik v2)  | Blob     | Standard                    |Premium| Hot, cool, Archive\*   |
+| StorageV2 (algemeen gebruik v2)  | Blob     | Standard                    |Premium| Dynamisch, statisch en archiefopslag\*   |
 | Storage (algemene doeleinden v1)   | Blob     | Standard                    |Premium| N.v.t.                    |
-| BlobStorage                    | Blob     | Standard                    |Premium| Hot, cool, Archive\*   |
+| BlobStorage                    | Blob     | Standard                    |Premium| Dynamisch, statisch en archiefopslag\*   |
 
 Het is niet raadzaam om de standaard BLOB-container te gebruiken voor het opslaan van Bedrijfs gegevens. Het is een goede gewoonte om de standaard-blobcontainer na ieder gebruik te verwijderen om de opslagkosten te verlagen. De standaard container bevat toepassings-en systeem Logboeken. Breng de logboeken over naar een andere locatie voordat u de container verwijdert.
 
@@ -44,23 +44,23 @@ Het delen van één BLOB-container als het standaard bestandssysteem voor meerde
 
 ## <a name="access-files-from-within-cluster"></a>Toegang tot bestanden in het cluster
 
-Er zijn verschillende manieren om toegang te krijgen tot de bestanden in Data Lake Storage vanuit een HDInsight-cluster. Het URI-schema biedt niet-versleutelde toegang (met *wasb:* voor voegsel) en TLS-versleutelde toegang (met *wasbs*). Waar mogelijk kunt u het beste *wasbs* gebruiken, zelfs voor de toegang tot gegevens die zich in dezelfde regio in Azure bevinden.
+Er zijn verschillende manieren om toegang te krijgen tot de bestanden in Data Lake Storage vanuit een HDInsight-cluster. Het URI-schema biedt niet-versleutelde toegang (met *wasb:* voor voegsel) en TLS-versleutelde toegang (met *wasbs* ). Waar mogelijk kunt u het beste *wasbs* gebruiken, zelfs voor de toegang tot gegevens die zich in dezelfde regio in Azure bevinden.
 
-* **De volledig gekwalificeerde naam gebruiken**. Met deze methode geeft u het volledige pad op naar het bestand dat u wilt openen.
+* **De volledig gekwalificeerde naam gebruiken** . Met deze methode geeft u het volledige pad op naar het bestand dat u wilt openen.
 
     ```
     wasb://<containername>@<accountname>.blob.core.windows.net/<file.path>/
     wasbs://<containername>@<accountname>.blob.core.windows.net/<file.path>/
     ```
 
-* **De verkorte padnotatie gebruiken**. Met deze methode vervangt u het pad naar de hoofdmap van het cluster met:
+* **De verkorte padnotatie gebruiken** . Met deze methode vervangt u het pad naar de hoofdmap van het cluster met:
 
     ```
     wasb:///<file.path>/
     wasbs:///<file.path>/
     ```
 
-* **Het relatieve pad gebruiken**. Met deze methode geeft u alleen het volledige relatieve pad op naar het bestand dat u wilt openen.
+* **Het relatieve pad gebruiken** . Met deze methode geeft u alleen het volledige relatieve pad op naar het bestand dat u wilt openen.
 
     ```
     /<file.path>/
@@ -132,8 +132,8 @@ Micro soft biedt de volgende hulpprogram ma's voor het werken met Azure Storage:
 
 | Hulpprogramma | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [Azure-portal](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
-| [Azure-CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
+| [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
+| [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
 | [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
 | [AzCopy](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |
 
@@ -151,7 +151,7 @@ Zie [de standaard opslag ophalen](./hdinsight-hadoop-manage-ambari-rest-api.md#g
 
 ## <a name="blob-containers"></a>Blobcontainers
 
-Als u blobs wilt gebruiken, maakt u eerst een [Azure Storage-account](../storage/common/storage-create-storage-account.md). Als onderdeel van deze stap geeft u een Azure-regio op waar het opslag account wordt gemaakt. Het cluster en het opslagaccount moeten worden gehost in dezelfde regio. De Hive-metastore SQL Server-Data Base en Apache Oozie-meta Store SQL Server-Data Base moeten zich in dezelfde regio bevinden.
+Als u blobs wilt gebruiken, maakt u eerst een [Azure Storage-account](../storage/common/storage-account-create.md). Als onderdeel van deze stap geeft u een Azure-regio op waar het opslag account wordt gemaakt. Het cluster en het opslagaccount moeten worden gehost in dezelfde regio. De Hive-metastore SQL Server-Data Base en Apache Oozie-meta Store SQL Server-Data Base moeten zich in dezelfde regio bevinden.
 
 Elke blob die u maakt, behoort tot een container in uw Azure Storage-account, ongeacht de locatie van de blob. Deze container kan een bestaande BLOB zijn die buiten HDInsight is gemaakt. Of het kan een container zijn die is gemaakt voor een HDInsight-cluster.
 

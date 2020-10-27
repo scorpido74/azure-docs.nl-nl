@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seodec18, devx-track-java
 ms.date: 12/24/2019
-ms.openlocfilehash: 7cd368df1f2a94c8f49454530e7f5997f2659a32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61b8aaf9ea61ebe85eac6708d7390c386dea2696
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323771"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547908"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Ontwikkel Java-toepassingen voor Apache HBase
 
@@ -25,13 +25,13 @@ De stappen in dit document gebruiken [Apache Maven](https://maven.apache.org/) o
 
 * Een Apache HBase-cluster in HDInsight. Zie [aan de slag met Apache HBase](./apache-hbase-tutorial-get-started-linux.md).
 
-* [Jdk-versie 8 (Java Developer Kit)](https://aka.ms/azure-jdks).
+* [Jdk-versie 8 (Java Developer Kit)](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 
 * [Apache Maven](https://maven.apache.org/download.cgi) correct [geïnstalleerd](https://maven.apache.org/install.html) volgens Apache.  Maven is een systeem voor het bouwen van Java-projecten.
 
 * Een SSH-client. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* Als u Power shell gebruikt, hebt u de [AZ-module](https://docs.microsoft.com/powershell/azure/)nodig.
+* Als u Power shell gebruikt, hebt u de [AZ-module](/powershell/azure/)nodig.
 
 * Een teksteditor. In dit artikel wordt micro soft Klad blok gebruikt.
 
@@ -48,7 +48,7 @@ cd C:\HDI
 
 ## <a name="create-a-maven-project"></a>Een Maven-project maken
 
-1. Voer de volgende opdracht in om een Maven-project met de naam **hbaseapp**te maken:
+1. Voer de volgende opdracht in om een Maven-project met de naam **hbaseapp** te maken:
 
     ```cmd
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=hbaseapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
@@ -415,7 +415,7 @@ De volgende stappen `scp` worden gebruikt om het jar naar het primaire hoofd kno
     yarn jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.CreateTable
     ```
 
-    Met deze opdracht wordt een HBase-tabel met de naam **personen**gemaakt en gevuld met gegevens.
+    Met deze opdracht wordt een HBase-tabel met de naam **personen** gemaakt en gevuld met gegevens.
 
 4. Als u wilt zoeken naar e-mail adressen die zijn opgeslagen in de tabel, gebruikt u de volgende opdracht:
 
@@ -442,7 +442,7 @@ De volgende stappen `scp` worden gebruikt om het jar naar het primaire hoofd kno
 
 ## <a name="upload-the-jar-and-run-jobs-powershell"></a>De JAR en run Jobs uploaden (Power shell)
 
-In de volgende stappen wordt gebruikgemaakt van de Azure PowerShell [AZ-module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) voor het uploaden van het jar naar de standaard opslag voor uw Apache HBase-cluster. HDInsight-cmdlets worden vervolgens gebruikt om de voor beelden op afstand uit te voeren.
+In de volgende stappen wordt gebruikgemaakt van de Azure PowerShell [AZ-module](/powershell/azure/new-azureps-module-az) voor het uploaden van het jar naar de standaard opslag voor uw Apache HBase-cluster. HDInsight-cmdlets worden vervolgens gebruikt om de voor beelden op afstand uit te voeren.
 
 1. Nadat u de AZ-module hebt geïnstalleerd en geconfigureerd, maakt u een bestand met de naam `hbase-runner.psm1` . Gebruik de volgende tekst als de inhoud van dit bestand:
 

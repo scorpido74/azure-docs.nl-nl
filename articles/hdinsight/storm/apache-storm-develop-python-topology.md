@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-python
 ms.date: 12/16/2019
-ms.openlocfilehash: 1f062a8f358ac311b53e657fb5714583458bd9b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e62e2583f8a4d3872a1342f0f702a1913f733e7f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87872579"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545460"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Apache Storm topologieën ontwikkelen met behulp van python in HDInsight
 
@@ -24,13 +24,13 @@ Meer informatie over het maken van een [Apache Storm](https://storm.apache.org/)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Apache Storm-cluster in HDInsight. Zie [Apache Hadoop-clusters maken met behulp van de Azure-portal](../hdinsight-hadoop-create-linux-clusters-portal.md) en selecteer **Storm** voor **Clustertype**.
+* Een Apache Storm-cluster in HDInsight. Zie [Apache Hadoop-clusters maken met behulp van de Azure-portal](../hdinsight-hadoop-create-linux-clusters-portal.md) en selecteer **Storm** voor **Clustertype** .
 
 * Een lokale Storm-ontwikkel omgeving (optioneel). Een lokale Storm-omgeving is alleen nodig als u de topologie lokaal wilt uitvoeren. Zie [een ontwikkel omgeving instellen](https://storm.apache.org/releases/current/Setting-up-development-environment.html)voor meer informatie.
 
 * [Python 2,7 of hoger](https://www.python.org/downloads/).
 
-* [Jdk-versie 8 (Java Developer Kit)](https://aka.ms/azure-jdks).
+* [Jdk-versie 8 (Java Developer Kit)](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 
 * [Apache Maven](https://maven.apache.org/download.cgi) correct [geïnstalleerd](https://maven.apache.org/install.html) volgens Apache.  Maven is een systeem voor het bouwen van Java-projecten.
 
@@ -114,7 +114,7 @@ Zoals eerder vermeld, is er een `storm.py` bestand dat de Thrift-definitie voor 
     storm kill wordcount
     ```
 
-    U kunt ook de Storm-gebruikers interface gebruiken. Selecteer in **topologie acties** voor de topologie **Kill**.
+    U kunt ook de Storm-gebruikers interface gebruiken. Selecteer in **topologie acties** voor de topologie **Kill** .
 
 ## <a name="run-the-topology-locally"></a>De topologie lokaal uitvoeren
 
@@ -141,7 +141,7 @@ Zodra de topologie is gestart, wordt er informatie verzonden naar de lokale cons
 24303 [Thread-17-log-executor[3 3]] INFO  o.a.s.f.w.b.LogInfoBolt - {word=four, count=160}
 ```
 
-Gebruik __CTRL + C__om de topologie te stoppen.
+Gebruik __CTRL + C__ om de topologie te stoppen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

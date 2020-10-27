@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 1bdec284ccdfca9e13ca227fe1109afe28da14b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40e1fdae5cdb1ec806e67dcacc70510a63093a82
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85851380"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539459"
 ---
 # <a name="azure-storage-overview-in-hdinsight"></a>Azure Storage overzicht in HDInsight
 
@@ -21,7 +21,7 @@ Azure Storage is een robuuste, algemene opslag oplossing die naadloos kan worden
 
 We raden u aan om afzonderlijke opslag containers te gebruiken voor uw standaard cluster opslag en uw bedrijfs gegevens. De schei ding is het isoleren van de HDInsight-logboeken en tijdelijke bestanden van uw eigen zakelijke gegevens. We raden u ook aan de standaard-BLOB-container te verwijderen, die toepassings-en systeem Logboeken bevat, na elk gebruik om de opslag kosten te verlagen. Breng de logboeken over naar een andere locatie voordat u de container verwijdert.
 
-Als u ervoor kiest om uw opslag account te beveiligen met de **firewalls en beperkingen voor virtuele netwerken** op **geselecteerde netwerken**, moet u de uitzonde ring inschakelen **vertrouwde micro soft-Services toestaan...**. De uitzonde ring hierop is dat HDInsight toegang kan krijgen tot uw opslag account.
+Als u ervoor kiest om uw opslag account te beveiligen met de **firewalls en beperkingen voor virtuele netwerken** op **geselecteerde netwerken** , moet u de uitzonde ring inschakelen **vertrouwde micro soft-Services toestaan...** . De uitzonde ring hierop is dat HDInsight toegang kan krijgen tot uw opslag account.
 
 ## <a name="hdinsight-storage-architecture"></a>HDInsight-opslagarchitectuur
 
@@ -44,7 +44,7 @@ Houd rekening met de volgende principes wanneer u een Azure Storage-account gebr
 * **Open bare containers of open bare blobs in opslag accounts die niet zijn verbonden met een cluster:** U hebt alleen-lezen-machtiging voor de blobs in de containers.
   
   > [!NOTE]  
-  > Open bare containers bieden u de mogelijkheid een lijst op te halen met alle blobs die beschikbaar zijn in die container en om meta gegevens van de container op te halen. Openbare blobs zijn alleen toegankelijk als u de exacte URL weet. Zie [anonieme lees toegang tot containers en blobs beheren](../storage/blobs/storage-manage-access-to-resources.md)voor meer informatie.
+  > Open bare containers bieden u de mogelijkheid een lijst op te halen met alle blobs die beschikbaar zijn in die container en om meta gegevens van de container op te halen. Openbare blobs zijn alleen toegankelijk als u de exacte URL weet. Zie [Anonieme leestoegang tot containers en blobs beheren](../storage/blobs/anonymous-read-access-configure.md) voor meer informatie.
 
 * **Persoonlijke containers in opslag accounts die niet zijn verbonden met een cluster:** U hebt geen toegang tot de blobs in de containers, tenzij u het opslag account definieert wanneer u de WebHCat-taken verzendt.
 

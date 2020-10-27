@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: 5415446e0211618cfbee917d0df91213d68b7097
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6a914df9ed277625d3706465fe335e128aeced1
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627343"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545154"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Server parameters in Azure Database for MySQL
 
@@ -57,9 +57,9 @@ Als u de prestatie problemen met korte query's in de thread groep wilt verbetere
 
 ### <a name="log_bin_trust_function_creators"></a>log_bin_trust_function_creators
 
-In Azure Database for MySQL zijn binaire logboeken altijd ingeschakeld (bijvoorbeeld `log_bin` ingesteld op aan). Als u triggers wilt gebruiken, wordt er een fout bericht weer gegeven die vergelijkbaar *is met de superrechts-en binaire logboek registratie is ingeschakeld (mogelijk wilt u de minder veilige `log_bin_trust_function_creators` variabele gebruiken)*. 
+In Azure Database for MySQL zijn binaire logboeken altijd ingeschakeld (bijvoorbeeld `log_bin` ingesteld op aan). Als u triggers wilt gebruiken, wordt er een fout bericht weer gegeven die vergelijkbaar *is met de superrechts-en binaire logboek registratie is ingeschakeld (mogelijk wilt u de minder veilige `log_bin_trust_function_creators` variabele gebruiken)* . 
 
-De indeling van de binaire logboek registratie is altijd **rij** en alle verbindingen met de server gebruiken **altijd** binaire logboek registratie van rijen. Met binaire logboek registratie op basis van rijen bestaan geen beveiligings problemen en kan binaire logboek registratie niet breken, dus u kunt veilig instellen [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) op **True**.
+De indeling van de binaire logboek registratie is altijd **rij** en alle verbindingen met de server gebruiken **altijd** binaire logboek registratie van rijen. Met binaire logboek registratie op basis van rijen bestaan geen beveiligings problemen en kan binaire logboek registratie niet breken, dus u kunt veilig instellen [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) op **True** .
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 
@@ -108,7 +108,7 @@ Raadpleeg de [MySQL-documentatie](https://dev.mysql.com/doc/refman/5.7/en/innodb
 
 MySQL slaat de tabel InnoDB op in verschillende tablespaces op basis van de configuratie die u hebt ingevoerd tijdens het maken van de tabel. De [systeem-tabel ruimte](https://dev.mysql.com/doc/refman/5.7/en/innodb-system-tablespace.html) is het opslag gebied voor de InnoDB-data dictionary. Een [bestand-per-tabel tabel ruimte](https://dev.mysql.com/doc/refman/5.7/en/innodb-file-per-table-tablespaces.html) bevat gegevens en indexen voor één InnoDB-tabel en wordt opgeslagen in het bestands systeem in een eigen gegevens bestand. Dit gedrag wordt bepaald door de `innodb_file_per_table` para meter server. Instelling `innodb_file_per_table` om `OFF` ervoor te zorgen dat InnoDB tabellen maakt in de ruimte van het systeem. Anders maakt InnoDB tabellen in file-per-tabel tablespaces.
 
-Azure Database for MySQL ondersteunt Maxi maal **1 TB**in één gegevens bestand. Als de grootte van de data base groter is dan 1 TB, maakt u de tabel in [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) tabel ruimte. Als u één tabel grootte hebt die groter is dan 1 TB, moet u de partitie tabel gebruiken.
+Azure Database for MySQL ondersteunt Maxi maal **1 TB** in één gegevens bestand. Als de grootte van de data base groter is dan 1 TB, maakt u de tabel in [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) tabel ruimte. Als u één tabel grootte hebt die groter is dan 1 TB, moet u de partitie tabel gebruiken.
 
 ### <a name="join_buffer_size"></a>join_buffer_size
 
@@ -215,9 +215,9 @@ Raadpleeg de [MySQL-documentatie](https://dev.mysql.com/doc/refman/5.7/en/server
 
 ### <a name="innodb_strict_mode"></a>innodb_strict_mode
 
-Als er een fout bericht wordt weer gegeven dat vergelijkbaar is met het ' Rijgrootte is te groot (> 8126) ', kunt u de para meter **INNODB_STRICT_MODE**uitschakelen. De **innodb_strict_mode** van de server parameter mag niet globaal worden gewijzigd op server niveau omdat de grootte van de gegevensrij groter is dan 8k, worden de gegevens afgekapt zonder dat er een fout optreedt bij mogelijk gegevens verlies. Het is raadzaam om het schema aan te passen aan de limiet voor de pagina grootte. 
+Als er een fout bericht wordt weer gegeven dat vergelijkbaar is met het ' Rijgrootte is te groot (> 8126) ', kunt u de para meter **INNODB_STRICT_MODE** uitschakelen. De **innodb_strict_mode** van de server parameter mag niet globaal worden gewijzigd op server niveau omdat de grootte van de gegevensrij groter is dan 8k, worden de gegevens afgekapt zonder dat er een fout optreedt bij mogelijk gegevens verlies. Het is raadzaam om het schema aan te passen aan de limiet voor de pagina grootte. 
 
-Deze para meter kan worden ingesteld op sessie niveau met `init_connect` . Als u **innodb_strict_mode** wilt instellen op sessie niveau, raadpleegt u de [instellings parameter wordt niet weer gegeven](https://docs.microsoft.com/azure/mysql/howto-server-parameters#setting-parameters-not-listed).
+Deze para meter kan worden ingesteld op sessie niveau met `init_connect` . Als u **innodb_strict_mode** wilt instellen op sessie niveau, raadpleegt u de [instellings parameter wordt niet weer gegeven](./howto-server-parameters.md#setting-parameters-not-listed).
 
 > [!NOTE]
 > Als u een replica-server lezen hebt ingesteld, wordt het instellen van **innodb_strict_mode** op sessie niveau op een bron server uitgeschakeld. U wordt aangeraden de para meter in te stellen op uit als u replica's hebt gelezen.

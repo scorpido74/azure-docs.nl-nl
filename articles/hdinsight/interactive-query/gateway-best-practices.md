@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 924b1132efeb3ee4211593da190f5b7251029ae3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3db411df69a754857220867865522f8e4fa24030
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80586975"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546004"
 ---
 # <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Uitgebreide en aanbevolen procedures voor het Apache Hive in azure HDInsight
 
@@ -46,7 +46,7 @@ In het volgende diagram ziet u de stappen van een SELECT-query.
 
 Apache Hive is een relationele samen vatting van een bestands systeem dat compatibel is met HDFS. Deze abstractie betekent dat **Select** -instructies in Hive overeenkomen met **Lees** bewerkingen op het bestands systeem. De **Lees** bewerkingen worden vertaald naar het juiste schema voordat ze aan de gebruiker worden gerapporteerd. De latentie van dit proces neemt toe met de grootte van de gegevens en het totale aantal hops dat nodig is om de eind gebruiker te bereiken.
 
-Hetzelfde gedrag kan optreden bij het uitvoeren van **Create** -of **Insert** -instructies van grote gegevens, omdat deze opdrachten overeenkomen met **Schrijf** bewerkingen in het onderliggende bestands systeem. Overweeg om gegevens, zoals RAW ORC, te schrijven naar het bestands systeem/datalake in plaats van het te laden met behulp van **Insert** of **Load**.
+Hetzelfde gedrag kan optreden bij het uitvoeren van **Create** -of **Insert** -instructies van grote gegevens, omdat deze opdrachten overeenkomen met **Schrijf** bewerkingen in het onderliggende bestands systeem. Overweeg om gegevens, zoals RAW ORC, te schrijven naar het bestands systeem/datalake in plaats van het te laden met behulp van **Insert** of **Load** .
 
 In bedrijven met een beveiligd beveiligings pakket kan voldoende complex Apache zwerver-beleid een vertraging veroorzaken in de compilatie tijd van de query, wat kan leiden tot een time-out voor de gateway. Als er een time-out voor de gateway is opgetreden in een ESP-cluster, overweeg dan om het aantal zwerver-beleid te verminderen of te combi neren.
 
@@ -54,11 +54,11 @@ In bedrijven met een beveiligd beveiligings pakket kan voldoende complex Apache 
 
 Er zijn meerdere locaties voor het beperken en het vaststellen van prestatie problemen die aan het bovenstaande gedrag voldoen. Gebruik de volgende controle lijst wanneer de prestaties van de query worden vertraagd via de HDInsight-gateway:
 
-* Gebruik de component **Limit** wanneer u grote **selectie** query's uitvoert. De component **Limit** vermindert het totaal aantal rijen dat is gerapporteerd aan de client-host. De component **Limit** heeft alleen gevolgen voor het genereren van resultaten en wijzigt het query plan niet. Gebruik de configuratie om de component **Limit** toe te passen op het query plan `hive.limit.optimize.enable` . De **limiet** kan worden gecombineerd met een offset met behulp van het argument formulier **maximum x, y**.
+* Gebruik de component **Limit** wanneer u grote **selectie** query's uitvoert. De component **Limit** vermindert het totaal aantal rijen dat is gerapporteerd aan de client-host. De component **Limit** heeft alleen gevolgen voor het genereren van resultaten en wijzigt het query plan niet. Gebruik de configuratie om de component **Limit** toe te passen op het query plan `hive.limit.optimize.enable` . De **limiet** kan worden gecombineerd met een offset met behulp van het argument formulier **maximum x, y** .
 
-* Geef uw interessante kolommen een naam wanneer u **Select** -query's uitvoert in plaats van **selecteren \* **. Als u minder kolommen selecteert, wordt de hoeveelheid gegevens die wordt gelezen verlaagd.
+* Noem uw interessante kolommen bij het uitvoeren van **selectie** query's in plaats van ** \* Select* _. Als u minder kolommen selecteert, wordt de hoeveelheid gegevens die wordt gelezen verlaagd.
 
-* Probeer de query van interest uit te voeren via Apache Beeline. Als het ophalen van resultaten via Apache Beeline een lange periode duurt, worden er vertragingen verwacht bij het ophalen van dezelfde resultaten via externe hulpprogram ma's.
+_ Probeer de query van interest uit te voeren via Apache Beeline. Als het ophalen van resultaten via Apache Beeline een lange periode duurt, worden er vertragingen verwacht bij het ophalen van dezelfde resultaten via externe hulpprogram ma's.
 
 * Een eenvoudige Hive-query testen om ervoor te zorgen dat er een verbinding met de HDInsight-gateway tot stand kan worden gebracht. Voer een basis query uit twee of meer externe hulpprogram ma's uit om er zeker van te zijn dat er geen afzonderlijk hulp programma wordt uitgevoerd.
 
@@ -80,7 +80,7 @@ Er zijn meerdere locaties voor het beperken en het vaststellen van prestatie pro
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Apache Beeline in HDInsight](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-use-hive-beeline)
-* [Stappen voor probleem oplossing voor HDInsight-gateway](https://docs.microsoft.com/azure/hdinsight/interactive-query/troubleshoot-gateway-timeout)
-* [Virtuele netwerken voor HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)
-* [HDInsight met Express route](https://docs.microsoft.com/azure/hdinsight/connect-on-premises-network)
+* [Apache Beeline in HDInsight](../hadoop/apache-hadoop-use-hive-beeline.md)
+* [Stappen voor probleem oplossing voor HDInsight-gateway](./troubleshoot-gateway-timeout.md)
+* [Virtuele netwerken voor HDInsight](../hdinsight-plan-virtual-network-deployment.md)
+* [HDInsight met Express route](../connect-on-premises-network.md)

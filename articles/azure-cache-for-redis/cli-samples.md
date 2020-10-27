@@ -8,18 +8,18 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 04/14/2017
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9bfdd2d03b3ab6edd04a641787475930435a9ffc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32530982bc2a9d1b5deb31b3bc71460462352258
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87499599"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536416"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-cli"></a>Azure-cache beheren voor redis met Azure CLI
 
 De volgende tabel bevat koppelingen naar bash-scripts die zijn gebouwd met behulp van de Azure CLI.
 
-| Cache maken | Beschrijving |
+| Cache maken | Description |
 | ------------ | ----------- |
 | [Een cache maken](./scripts/create-cache.md) | Hiermee maakt u een resource groep en een Azure-cache van de Basic-laag voor redis. |
 | [Een Premium-cache maken met clustering](./scripts/create-premium-cache-cluster.md) | Hiermee maakt u een resource groep en een Premium-laag cache waarvoor Clustering is ingeschakeld.|
@@ -30,4 +30,4 @@ De volgende tabel bevat koppelingen naar bash-scripts die zijn gebouwd met behul
 |**Cache verwijderen**| **Beschrijving** |
 | [Een cache verwijderen](./scripts/delete-cache.md) | Hiermee wordt een Azure-cache voor redis-exemplaar verwijderd  |
 
-Zie [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli) en aan de [slag met Azure cli](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)voor meer informatie over de Azure cli.
+Zie [de Azure cli installeren](/cli/azure/install-azure-cli) en aan de [slag met Azure cli](/cli/azure/get-started-with-azure-cli)voor meer informatie over de Azure cli.

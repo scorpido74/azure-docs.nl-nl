@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: f0c7b966b9fa7580809d2df0f4d05a7146ca0fd1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84224172dbfd63fee51b3a7b80f5990b04e5e228
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91871963"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535022"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Problemen met Apache Hadoop YARN oplossen met behulp van Azure HDInsight
 
@@ -24,7 +24,7 @@ Meer informatie over de belangrijkste problemen en hun oplossingen bij het werke
 
 Gebruik de volgende stappen in Ambari om een nieuwe garen wachtrij te maken en de capaciteits toewijzing te verdelen over alle wacht rijen.
 
-In dit voor beeld worden twee bestaande wacht rijen (**standaard** en **thriftsvr**) gewijzigd van 50% capaciteit in 25% capaciteit, waardoor de nieuwe wachtrij (Spark) 50% capaciteit wordt weer geven.
+In dit voor beeld worden twee bestaande wacht rijen ( **standaard** en **thriftsvr** ) gewijzigd van 50% capaciteit in 25% capaciteit, waardoor de nieuwe wachtrij (Spark) 50% capaciteit wordt weer geven.
 
 | Wachtrij | Capaciteit | Maximale capaciteit |
 | --- | --- | --- |
@@ -32,7 +32,7 @@ In dit voor beeld worden twee bestaande wacht rijen (**standaard** en **thriftsv
 | thrftsvr | 25% | 50% |
 | spark | 50% | 50% |
 
-1. Selecteer het pictogram **Ambari weer gaven** en selecteer vervolgens het raster patroon. Selecteer vervolgens **garening Queue Manager**.
+1. Selecteer het pictogram **Ambari weer gaven** en selecteer vervolgens het raster patroon. Selecteer vervolgens **garening Queue Manager** .
 
     ![Ambari-dash board voor Apache-wachtrij beheer](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
 2. Selecteer de **standaard** wachtrij.
@@ -41,7 +41,7 @@ In dit voor beeld worden twee bestaande wacht rijen (**standaard** en **thriftsv
 3. Voor de **standaard** wachtrij wijzigt u de **capaciteit** van 50% in 25%. Voor de **thriftsvr** -wachtrij wijzigt u de **capaciteit** in 25%.
 
     ![De capaciteit wijzigen in 25% voor de standaard-en thriftsvr-wacht rijen](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
-4. Selecteer **wachtrij toevoegen**om een nieuwe wachtrij te maken.
+4. Selecteer **wachtrij toevoegen** om een nieuwe wachtrij te maken.
 
     ![Ambari-invoeg wachtrij voor Apache-garen](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
 
@@ -52,7 +52,7 @@ In dit voor beeld worden twee bestaande wacht rijen (**standaard** en **thriftsv
 6. Wijzig de **capaciteits** waarden bij 50% en selecteer vervolgens de knop **acties** .
 
     ![Bewerking voor Ambari-garen selecteren voor Apache](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
-7. Selecteer **opslaan en wacht rijen vernieuwen**.
+7. Selecteer **opslaan en wacht rijen vernieuwen** .
 
     ![Selecteer opslaan en wacht rijen vernieuwen](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png)  
 
@@ -131,7 +131,7 @@ Deze wijzigingen zijn direct zichtbaar in de gebruikers interface van de GARENs-
 
 ### <a name="additional-reading"></a><a name="additional-reading-2"></a>Meer artikelen
 
-- [Verbinding maken met HDInsight (Apache Hadoop) met behulp van SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
+- [Verbinding maken met HDInsight (Apache Hadoop) met behulp van SSH](./hdinsight-hadoop-linux-use-ssh-unix.md)
 - [Apache Hadoop GARENs en toepassingen](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow)
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -142,4 +142,4 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 - Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
-- Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+- Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](../azure-portal/supportability/how-to-create-azure-support-request.md)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

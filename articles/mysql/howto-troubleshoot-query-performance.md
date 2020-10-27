@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: ec926bf6065e11e1b6ca2e3f6df22c4b5ee2c2c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0725de878836e415695d307b68db43802d9b5c2f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83836121"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545851"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mysql"></a>UITLEGGEN hoe u de prestaties van query's in Azure Database for MySQL kunt bepalen
 **Uitleg** is een handig hulp programma voor het optimaliseren van query's. De instructie uitleg kan worden gebruikt om informatie op te halen over hoe SQL-instructies worden uitgevoerd. In de volgende uitvoer ziet u een voor beeld van de uitvoering van een uitleg-instructie.
@@ -54,10 +54,10 @@ possible_keys: id
 ```
 
 In de nieuwe uitleg ziet u dat MySQL nu gebruikmaakt van een index om het aantal rijen te beperken tot 1, die op zijn beurt de zoek tijd aanzienlijk verkort.
- 
+ 
 ## <a name="covering-index"></a>Bedekte index
 Een bedekte index bestaat uit alle kolommen van een query in de index om het ophalen van waarden uit gegevens tabellen te verminderen. Hier volgt een voor beeld in de volgende **Group by** -instructie.
- 
+ 
 ```sql
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
 *************************** 1. row ***************************
@@ -75,11 +75,11 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-Zoals in de uitvoer kan worden weer gegeven, gebruikt MySQL geen indexen omdat er geen geschikte indexen beschikbaar zijn. Er wordt ook *gebruikgemaakt van tijdelijke; Het gebruik van bestanden sorteren*, wat betekent dat MySQL een tijdelijke tabel maakt om te voldoen aan de component **Group by** .
- 
+Zoals in de uitvoer kan worden weer gegeven, gebruikt MySQL geen indexen omdat er geen geschikte indexen beschikbaar zijn. Er wordt ook *gebruikgemaakt van tijdelijke; Het gebruik van bestanden sorteren* , wat betekent dat MySQL een tijdelijke tabel maakt om te voldoen aan de component **Group by** .
+ 
 Het maken van een index op kolom **C2** is alleen geen verschil en MySQL moet nog steeds een tijdelijke tabel maken:
 
-```sql 
+```sql 
 mysql> ALTER TABLE tb1 ADD KEY (c2);
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
 *************************** 1. row ***************************
@@ -97,9 +97,9 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-In dit geval kan een **gedekte index** op zowel **C1** als **C2** worden gemaakt, waarbij de waarde **C2**direct in de index wordt toegevoegd om verdere gegevens zoekactie te elimineren.
+In dit geval kan een **gedekte index** op zowel **C1** als **C2** worden gemaakt, waarbij de waarde **C2** direct in de index wordt toegevoegd om verdere gegevens zoekactie te elimineren.
 
-```sql 
+```sql 
 mysql> ALTER TABLE tb1 ADD KEY covered(c1,c2);
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
 *************************** 1. row ***************************
@@ -120,7 +120,7 @@ possible_keys: covered
 Zoals hierboven wordt weer gegeven, maakt MySQL nu gebruik van de gedekte index en vermijdt u het maken van een tijdelijke tabel. 
 
 ## <a name="combined-index"></a>Gecombineerde index
-Een gecombineerde index bevat waarden uit meerdere kolommen en kan worden beschouwd als een matrix van rijen die zijn gesorteerd door het samen voegen van de waarden van de geïndexeerde kolommen.Deze methode kan nuttig zijn in een **Group by** -instructie.
+Een gecombineerde index bevat waarden uit meerdere kolommen en kan worden beschouwd als een matrix van rijen die zijn gesorteerd door het samen voegen van de waarden van de geïndexeerde kolommen. Deze methode kan nuttig zijn in een **Group by** -instructie.
 
 ```sql
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
@@ -141,7 +141,7 @@ possible_keys: NULL
 
 MySQL voert een *Bestands Sorteer* bewerking uit die tamelijk langzaam is, vooral wanneer het een groot aantal rijen moet sorteren. Als u deze query wilt optimaliseren, kunt u een gecombineerde index maken op beide kolommen die worden gesorteerd.
 
-```sql 
+```sql 
 mysql> ALTER TABLE tb1 ADD KEY my_sort2 (c1, c2);
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
 *************************** 1. row ***************************
@@ -160,11 +160,11 @@ possible_keys: NULL
 ```
 
 In de uitleg is nu aangegeven dat MySQL een gecombineerde index kan gebruiken om extra Sorteer bewerkingen te voor komen omdat de index al is gesorteerd.
- 
+ 
 ## <a name="conclusion"></a>Conclusie
- 
+ 
 Door gebruik te maken van uitleg en verschillende typen indexen kunnen de prestaties aanzienlijk toenemen. Het hebben van een index voor de tabel is niet noodzakelijkerwijs dat MySQL het zou kunnen gebruiken voor uw query's. Valideer uw hypo theses altijd met uitleg en Optimaliseer uw query's met behulp van indexen.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Ga naar [micro soft Q&een vraag pagina](https://docs.microsoft.com/answers/topics/azure-database-mysql.html) of [stack overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql)als u op zoek bent naar peer antwoorden op uw vragen of als u een nieuwe vraag/antwoord wilt plaatsen.
+- Ga naar [micro soft Q&een vraag pagina](/answers/topics/azure-database-mysql.html) of [stack overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql)als u op zoek bent naar peer antwoorden op uw vragen of als u een nieuwe vraag/antwoord wilt plaatsen.

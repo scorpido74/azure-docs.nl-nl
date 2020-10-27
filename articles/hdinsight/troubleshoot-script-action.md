@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: e8585779a263f4ff5dbdd998bbf065c6a4e1acdf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 977e3571a24e8be9d9ef6cd79e80e654ca944fa4
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86079255"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538813"
 ---
 # <a name="troubleshoot-script-actions-in-azure-hdinsight"></a>Problemen met script acties in azure HDInsight oplossen
 
@@ -31,7 +31,7 @@ U kunt de Web-UI van Apache Ambari gebruiken om informatie te bekijken die is va
 
     ![Ambari Web UI-balk met OPS geselecteerd](./media/troubleshoot-script-action/hdi-apache-ambari-nav.png)
 
-1. Zoek de vermeldingen met ** \_ customscriptaction** uit in de kolom **bewerkingen** . Deze vermeldingen worden gemaakt wanneer de script acties worden uitgevoerd.
+1. Zoek de vermeldingen met **\_ customscriptaction** uit in de kolom **bewerkingen** . Deze vermeldingen worden gemaakt wanneer de script acties worden uitgevoerd.
 
     ![Acties voor Apache Ambari-script actie](./media/troubleshoot-script-action/ambari-script-action.png)
 
@@ -45,13 +45,13 @@ Als het maken van een cluster mislukt vanwege een script fout, worden de logboek
 
     ![Script actie logboeken](./media/troubleshoot-script-action/script-action-logs-in-storage.png)
 
-    In deze map worden de logboeken afzonderlijk geordend voor **hoofd knooppunt**, **worker node**en **Zookeeper node**. Zie de volgende voorbeelden:
+    In deze map worden de logboeken afzonderlijk geordend voor **hoofd knooppunt** , **worker node** en **Zookeeper node** . Zie de volgende voorbeelden:
 
-    * **Hoofd knooppunt**: `<ACTIVE-HEADNODE-NAME>.cloudapp.net`
+    * **Hoofd knooppunt** : `<ACTIVE-HEADNODE-NAME>.cloudapp.net`
 
-    * **Worker-knoop punt**: `<ACTIVE-WORKERNODE-NAME>.cloudapp.net`
+    * **Worker-knoop punt** : `<ACTIVE-WORKERNODE-NAME>.cloudapp.net`
 
-    * **Zookeeper-knoop punt**: `<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
+    * **Zookeeper-knoop punt** : `<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
 
 * Alle **stdout** en **stderr** van de bijbehorende host worden geüpload naar het opslag account. Er zijn één **uitvoer- \* . txt** en **fouten- \* . txt** voor elke script actie. Het **output-*. txt** -bestand bevat informatie over de URI van het script dat op de host is uitgevoerd. De volgende tekst is een voor beeld van deze informatie:
 
@@ -59,7 +59,7 @@ Als het maken van een cluster mislukt vanwege een script fout, worden de logboek
     'Start downloading script locally: ', u'https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh'
     ```
 
-* Het is mogelijk dat u herhaaldelijk een script actie cluster met dezelfde naam maakt. In dat geval kunt u de relevante logboeken onderscheiden op basis van de naam van de map **date** . De mapstructuur voor een cluster, **mycluster**, die op verschillende datums wordt gemaakt, lijkt bijvoorbeeld op de volgende logboek vermeldingen:
+* Het is mogelijk dat u herhaaldelijk een script actie cluster met dezelfde naam maakt. In dat geval kunt u de relevante logboeken onderscheiden op basis van de naam van de map **date** . De mapstructuur voor een cluster, **mycluster** , die op verschillende datums wordt gemaakt, lijkt bijvoorbeeld op de volgende logboek vermeldingen:
 
     `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-04` `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-05`
 
@@ -75,7 +75,7 @@ Wijzig niet het wacht woord voor de Ambari watchdog, hdinsightwatchdog, op uw op
 
 ## <a name="cant-import-name-blobservice"></a>Kan de naam BlobService niet importeren
 
-__Symptomen__. De script actie mislukt. Tekst die vergelijkbaar is met de volgende fout wordt weer gegeven wanneer u de bewerking in Ambari bekijkt:
+__Symptomen__ . De script actie mislukt. Tekst die vergelijkbaar is met de volgende fout wordt weer gegeven wanneer u de bewerking in Ambari bekijkt:
 
 ```
 Traceback (most recent call list):
@@ -84,9 +84,9 @@ Traceback (most recent call list):
 ImportError: cannot import name BlobService
 ```
 
-__Oorzaak__. Deze fout treedt op als u de python Azure Storage-client bijwerkt die is opgenomen in het HDInsight-cluster. HDInsight verwacht Azure Storage client 0.20.0.
+__Oorzaak__ . Deze fout treedt op als u de python Azure Storage-client bijwerkt die is opgenomen in het HDInsight-cluster. HDInsight verwacht Azure Storage client 0.20.0.
 
-__Oplossing__. Om deze fout op te lossen, moet u hand matig verbinding maken met elk cluster knooppunt met behulp van `ssh` . Voer de volgende opdracht uit om de juiste Storage-client versie opnieuw te installeren:
+__Oplossing__ . Om deze fout op te lossen, moet u hand matig verbinding maken met elk cluster knooppunt met behulp van `ssh` . Voer de volgende opdracht uit om de juiste Storage-client versie opnieuw te installeren:
 
 ```bash
 sudo pip install azure-storage==0.20.0
@@ -116,4 +116,4 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](../azure-portal/supportability/how-to-create-azure-support-request.md)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 6/10/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 74e62c39295d36132abdce0abc033162fa22cb64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 747b8bc1abbf19c861e180faf17e2fa1a143a237
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91531629"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546310"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli-and-rest-api"></a>Lees replica's maken en beheren in Azure Database for MySQL met behulp van de Azure CLI en REST API
 
@@ -23,7 +23,7 @@ U kunt met behulp van de Azure CLI Lees replica's maken en beheren.
 
 ### <a name="prerequisites"></a>Vereisten
 
-- [Installeer Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [Installeer Azure CLI 2.0](/cli/azure/install-azure-cli)
 - Een [Azure database for mysql-server](quickstart-create-mysql-server-database-using-azure-portal.md) die wordt gebruikt als de bron server. 
 
 > [!IMPORTANT]
@@ -42,10 +42,10 @@ az mysql server replica create --name mydemoreplicaserver --source-server mydemo
 
 Voor de `az mysql server replica create` opdracht zijn de volgende para meters vereist:
 
-| Instelling | Voorbeeldwaarde | Beschrijving  |
+| Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
-| resource-group |  myResourceGroup |  De resource groep waar de replica-server wordt gemaakt.  |
-| naam | mydemoreplicaserver | De naam van de nieuwe replica server die wordt gemaakt. |
+| resource-group |  myResourceGroup |  De resource groep waar de replica-server wordt gemaakt.  |
+| name | mydemoreplicaserver | De naam van de nieuwe replica server die wordt gemaakt. |
 | source-server | mydemoserver | De naam of ID van de bestaande bron server waaruit moet worden gerepliceerd. |
 
 Gebruik de para meter om een lees replica te maken `--location` . In het CLI-voor beeld hieronder wordt de replica in VS West gemaakt.
@@ -71,9 +71,9 @@ az mysql server replica list --server-name mydemoserver --resource-group myresou
 
 Voor de `az mysql server replica list` opdracht zijn de volgende para meters vereist:
 
-| Instelling | Voorbeeldwaarde | Beschrijving  |
+| Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
-| resource-group |  myResourceGroup |  De resource groep waar de replica-server wordt gemaakt.  |
+| resource-group |  myResourceGroup |  De resource groep waar de replica-server wordt gemaakt.  |
 | servernaam | mydemoserver | De naam of ID van de bron server. |
 
 ### <a name="stop-replication-to-a-replica-server"></a>Replicatie naar een replica server stoppen
@@ -89,10 +89,10 @@ az mysql server replica stop --name mydemoreplicaserver --resource-group myresou
 
 Voor de `az mysql server replica stop` opdracht zijn de volgende para meters vereist:
 
-| Instelling | Voorbeeldwaarde | Beschrijving  |
+| Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
-| resource-group |  myResourceGroup |  De resource groep waar de replica-server bestaat.  |
-| naam | mydemoreplicaserver | De naam van de replica server waarvoor replicatie moet worden gestopt. |
+| resource-group |  myResourceGroup |  De resource groep waar de replica-server bestaat.  |
+| name | mydemoreplicaserver | De naam van de replica server waarvoor replicatie moet worden gestopt. |
 
 ### <a name="delete-a-replica-server"></a>Een replica server verwijderen
 

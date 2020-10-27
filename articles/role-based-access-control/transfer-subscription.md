@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 10/06/2020
 ms.author: rolyon
-ms.openlocfilehash: 35c6d94ce69acf59ae6cd8b26b0ad75645eb526a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3289f8a22e5601552ec6d44c7d37195b06913fde
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819717"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545341"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Een Azure-abonnement overdragen naar een andere Azure AD-adres lijst
 
@@ -75,7 +75,8 @@ Verschillende Azure-resources hebben een afhankelijkheid van een abonnement of e
 | Azure Files | Ja | Ja |  | U moet alle Acl's opnieuw maken. |
 | Azure File Sync | Ja | Ja |  |  |
 | Azure Managed Disks | Ja | Ja |  |  Als u schijf versleutelings sets gebruikt om Managed Disks te versleutelen met door de klant beheerde sleutels, moet u de door het systeem toegewezen identiteiten die zijn gekoppeld aan de schijf versleutelings sets, uitschakelen en opnieuw inschakelen. En u moet de roltoewijzingen opnieuw maken, dus ken de vereiste machtigingen voor de schijf versleutelings sets in de sleutel kluizen opnieuw. |
-| Azure container Services voor Kubernetes | Ja | Ja |  |  |
+| Azure Kubernetes Service | Ja | Ja |  |  |
+| Azure Policy | Ja | Nee | Alle Azure Policy-objecten, inclusief aangepaste definities, toewijzingen, uitzonde ringen en compatibiliteits gegevens. | U moet definities [exporteren](../governance/policy/how-to/export-resources.md), importeren en opnieuw toewijzen. Maak vervolgens nieuwe beleids toewijzingen en alle benodigde [uitzonde ringen](../governance/policy/concepts/exemption-structure.md)voor het beleid. |
 | Azure Active Directory Domain Services | Ja | Nee |  |  |
 | App-registraties | Ja | Ja |  |  |
 
@@ -108,9 +109,9 @@ Als u deze stappen wilt uitvoeren, hebt u het volgende nodig:
     az account set --subscription "Marketing"
     ```
 
-### <a name="install-the-resource-graph-extension"></a>De resource-Graph-extensie installeren
+### <a name="install-the-azure-resource-graph-extension"></a>De Azure resource Graph-extensie installeren
 
- Met de resource grafiek extensie kunt u de opdracht [AZ Graph](/cli/azure/ext/resource-graph/graph) gebruiken om te zoeken naar resources die worden beheerd door Azure Resource Manager. U gebruikt deze opdracht in latere stappen.
+ Met de Azure CLI-extensie voor [Azure resource Graph](../governance/resource-graph/index.yml), *resource-Graph* , kunt u de opdracht [AZ Graph](/cli/azure/ext/resource-graph/graph) gebruiken om te zoeken naar resources die worden beheerd door Azure Resource Manager. U gebruikt deze opdracht in latere stappen.
 
 1. Gebruik [AZ Extension List](/cli/azure/extension#az_extension_list) om te zien of de *resource-Graph-* extensie is geïnstalleerd.
 

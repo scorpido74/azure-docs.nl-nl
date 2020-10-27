@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 0b7b09696cbbe12a57d066e452b4c8ea7a7b8f27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 319b7a40a87d29454b22a26088df313ef524dc56
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935882"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545817"
 ---
 # <a name="configure-and-access-logs-in-azure-database-for-postgresql---flexible-server"></a>Logboeken configureren en openen in Azure Database for PostgreSQL-flexibele server
 
@@ -22,20 +22,20 @@ PostgreSQL-logboeken zijn beschikbaar op elk knoop punt van een flexibele server
 
 ## <a name="configure-diagnostic-settings"></a>Diagnostische instellingen configureren
 
-U kunt Diagnostische instellingen inschakelen voor uw post gres-server met behulp van de Azure Portal, CLI, REST API en Power shell. De logboek categorie die moet worden geselecteerd, is **PostgreSQLLogs**.
+U kunt Diagnostische instellingen inschakelen voor uw post gres-server met behulp van de Azure Portal, CLI, REST API en Power shell. De logboek categorie die moet worden geselecteerd, is **PostgreSQLLogs** .
 
 Resource logboeken inschakelen met behulp van de Azure Portal:
 
 1. Ga in de portal naar *Diagnostische instellingen* in het navigatie menu van uw post gres-server.
    
-2. Selecteer *Diagnostische instelling toevoegen*.
+2. Selecteer *Diagnostische instelling toevoegen* .
    :::image type="content" source="media/howto-logging/diagnostic-settings.png" alt-text="Knop Diagnostische instellingen toevoegen":::
 
 3. Geef deze instelling een naam. 
 
 4. Selecteer uw gewenste eind punt (opslag account, Event Hub, log Analytics). 
 
-5. Selecteer het logboek type **PostgreSQLLogs**.
+5. Selecteer het logboek type **PostgreSQLLogs** .
    :::image type="content" source="media/howto-logging/diagnostic-create-setting.png" alt-text="Knop Diagnostische instellingen toevoegen":::
 
 7. Sla de instelling op.
@@ -44,7 +44,7 @@ Ga naar het artikel [Diagnostische instellingen](../../azure-monitor/platform/di
 
 ### <a name="access-resource-logs"></a>Toegang tot resource logboeken
 
-De manier waarop u de logboeken opent, is afhankelijk van het eind punt dat u kiest. Zie het artikel over het [opslag account voor logboeken](../../azure-monitor/platform/resource-logs-collect-storage.md) voor Azure Storage. Zie het artikel [Stream Azure logs](../../azure-monitor/platform/resource-logs-stream-event-hubs.md) voor Event hubs.
+De manier waarop u de logboeken opent, is afhankelijk van het eind punt dat u kiest. Zie het artikel over het [opslag account voor logboeken](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage) voor Azure Storage. Zie het artikel [Stream Azure logs](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs) voor Event hubs.
 
 Voor Azure Monitor-logboeken worden logboeken verzonden naar de werk ruimte die u hebt geselecteerd. De post gres-Logboeken gebruiken de **AzureDiagnostics** -verzamelings modus, zodat ze kunnen worden opgevraagd vanuit de tabel AzureDiagnostics. De velden in de tabel worden hieronder beschreven. Meer informatie over het uitvoeren van query's en waarschuwingen vindt u in het overzicht van de [Azure monitor-logboeken](../../azure-monitor/log-query/log-query-overview.md) .
 
@@ -71,5 +71,5 @@ In de bovenstaande query worden de resultaten weer gegeven in de afgelopen 6 uur
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Aan de slag met log Analytics-query's](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
-- Meer informatie over [Azure Event hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-about)
+- [Aan de slag met log Analytics-query's](../../azure-monitor/log-query/get-started-portal.md)
+- Meer informatie over [Azure Event hubs](../../event-hubs/event-hubs-about.md)

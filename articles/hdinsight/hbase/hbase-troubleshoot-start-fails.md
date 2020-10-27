@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/14/2019
-ms.openlocfilehash: 290b541d9b5e86616373d2e426241fca07e780ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 032c25969bf477e1163b8db2aca631044c457939
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75887203"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539969"
 ---
 # <a name="apache-hbase-master-hmaster-fails-to-start-in-azure-hdinsight"></a>Apache HBase Master (HMaster) kan niet worden gestart in azure HDInsight
 
@@ -83,7 +83,7 @@ Dit probleem kan optreden als u veel tabellen en regio's hebt die niet zijn leeg
 
 ### <a name="resolution"></a>Oplossing
 
-1. Ga vanuit de Apache Ambari-gebruikers interface naar **HBase**-  >  **configuraties**. Voeg in het aangepaste `hbase-site.xml` bestand de volgende instelling toe:
+1. Ga vanuit de Apache Ambari-gebruikers interface naar **HBase** -  >  **configuraties** . Voeg in het aangepaste `hbase-site.xml` bestand de volgende instelling toe:
 
     ```
     Key: hbase.master.namespace.init.timeout Value: 2400000  
@@ -113,7 +113,7 @@ Lange `regionserver` JVM °c pauzeren. De onderbreking `regionserver` reageert n
 
 Wijzig de time-out van de Zookeeper-sessie, niet alleen `hbase-site` instelling, `zookeeper.session.timeout` maar ook de `zoo.cfg` instelling Zookeeper `maxSessionTimeout` moet worden gewijzigd.
 
-1. Open de Ambari-gebruikers interface, ga naar **HBase-> configuraties-> instellingen**in de sectie time-outs, wijzig de waarde van Zookeeper sessietime time-out.
+1. Open de Ambari-gebruikers interface, ga naar **HBase-> configuraties-> instellingen** in de sectie time-outs, wijzig de waarde van Zookeeper sessietime time-out.
 
 1. Toegang tot de Ambari-gebruikers interface, gaat u naar **Zookeeper-> configs-> aangepast** `zoo.cfg` , voegt u de volgende instelling toe of wijzigt u deze. Zorg ervoor dat de waarde gelijk is aan HBase `zookeeper.session.timeout` .
 
@@ -149,4 +149,4 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](../../azure-portal/supportability/how-to-create-azure-support-request.md)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

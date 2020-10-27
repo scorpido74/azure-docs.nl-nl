@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 29492ee6b7bce50c4807a36d0c252e18e6aadf87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6db036752bab7b84b72a37b148eaec7aa5765ef3
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88008947"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538592"
 ---
 # <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>Problemen met gegevensverlies in Azure Cache voor Redis oplossen
 
@@ -27,7 +27,7 @@ Azure cache voor redis verwijdert geen wille keurige sleutels nadat ze zijn opge
 
 Als u ontdekt dat sleutels zijn verdwenen uit uw cache, controleert u de volgende mogelijke oorzaken:
 
-| Oorzaak | Beschrijving |
+| Oorzaak | Description |
 |---|---|
 | [Verval datum van de sleutel](#key-expiration) | Sleutels worden verwijderd omdat er time-outs zijn ingesteld. |
 | [Sleutel verwijdering](#key-eviction) | Sleutels worden verwijderd onder geheugen belasting. |
@@ -36,7 +36,7 @@ Als u ontdekt dat sleutels zijn verdwenen uit uw cache, controleert u de volgend
 
 ### <a name="key-expiration"></a>Verval datum van de sleutel
 
-Azure cache voor redis verwijdert automatisch een sleutel als aan de sleutel een time-out wordt toegewezen en die periode is verstreken. Zie de documentatie van de [verlopende](https://redis.io/commands/expire) opdracht voor meer informatie over de verval datum van de redis-sleutel. Time-outwaarden kunnen ook worden ingesteld met behulp van de [set](https://redis.io/commands/set)-, [SETEX](https://redis.io/commands/setex)-, [GETSET](https://redis.io/commands/getset)-en andere ** \* Store** -opdrachten.
+Azure cache voor redis verwijdert automatisch een sleutel als aan de sleutel een time-out wordt toegewezen en die periode is verstreken. Zie de documentatie van de [verlopende](https://redis.io/commands/expire) opdracht voor meer informatie over de verval datum van de redis-sleutel. Time-outwaarden kunnen ook worden ingesteld met behulp van de [set](https://redis.io/commands/set)-, [SETEX](https://redis.io/commands/setex)-, [GETSET](https://redis.io/commands/getset)-en andere **\* Store** -opdrachten.
 
 Gebruik de opdracht [info](https://redis.io/commands/info) om statistieken weer te geven over hoeveel sleutels zijn verlopen. In de `Stats` sectie wordt het totale aantal verlopen sleutels weer gegeven. De `Keyspace` sectie bevat meer informatie over het aantal sleutels met time-outs en de gemiddelde time-outwaarde.
 
@@ -86,7 +86,7 @@ Elk Azure-cache-exemplaar voor redis in de laag Standard of Premium is geconfigu
 
 Als de meeste of alle sleutels uit uw cache zijn verdwenen, controleert u de volgende mogelijke oorzaken:
 
-| Oorzaak | Beschrijving |
+| Oorzaak | Description |
 |---|---|
 | [Leegmaken van sleutel](#key-flushing) | Sleutels zijn hand matig verwijderd. |
 | [Onjuiste database selectie](#incorrect-database-selection) | Azure cache voor redis is ingesteld op het gebruik van een niet-standaard database. |
@@ -106,7 +106,7 @@ cmdstat_flushdb:calls=1,usec=110,usec_per_call=52.00
 
 ### <a name="incorrect-database-selection"></a>Onjuiste database selectie
 
-Azure cache voor redis maakt standaard gebruik van de **db0** -data base. Als u overschakelt naar een andere data base (bijvoorbeeld **db1**) en probeert sleutels te lezen, worden deze daar niet gevonden door Azure cache voor redis. Elke Data Base is een logische afzonderlijke eenheid en bevat een andere gegevensset. Gebruik de [Select](https://redis.io/commands/select) -opdracht om andere beschik bare data bases te gebruiken en zoek naar sleutels in elk van deze.
+Azure cache voor redis maakt standaard gebruik van de **db0** -data base. Als u overschakelt naar een andere data base (bijvoorbeeld **db1** ) en probeert sleutels te lezen, worden deze daar niet gevonden door Azure cache voor redis. Elke Data Base is een logische afzonderlijke eenheid en bevat een andere gegevensset. Gebruik de [Select](https://redis.io/commands/select) -opdracht om andere beschik bare data bases te gebruiken en zoek naar sleutels in elk van deze.
 
 ### <a name="redis-instance-failure"></a>Redis-instantie fout
 
@@ -114,7 +114,7 @@ Redis is een gegevens archief in het geheugen. Gegevens worden bewaard op de fys
 
 Caches in de Standard-en Premium-lagen bieden veel meer tolerantie tegen gegevens verlies met behulp van twee virtuele machines in een gerepliceerde configuratie. Wanneer het primaire knoop punt in een dergelijke cache mislukt, neemt het replica knooppunt de gegevens automatisch door. Deze Vm's bevinden zich in verschillende domeinen voor fouten en updates, om de kans te verkleinen dat ze niet tegelijkertijd niet meer beschikbaar zijn. Als er sprake is van een ernstige storing in het Data Center, kunnen de Vm's echter nog steeds samen gaan. De gegevens gaan in deze zeldzame gevallen verloren.
 
-Overweeg het gebruik van [redis-gegevens persistentie](https://redis.io/topics/persistence) en [geo-replicatie](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-geo-replication) om de beveiliging van uw gegevens tegen deze infrastructuur fouten te verbeteren.
+Overweeg het gebruik van [redis-gegevens persistentie](https://redis.io/topics/persistence) en [geo-replicatie](./cache-how-to-geo-replication.md) om de beveiliging van uw gegevens tegen deze infrastructuur fouten te verbeteren.
 
 ## <a name="additional-information"></a>Aanvullende informatie
 

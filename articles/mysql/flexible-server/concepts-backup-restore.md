@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: a72552d8654a45d1ff4c1890c8086d43d7bd801d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44cfe9bc6cd357cc0c649cecd022d3955bb5a2ce
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91756531"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545868"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql-flexible-server-preview"></a>Back-up en herstel in Azure Database for MySQL flexibele server (preview-versie)
 
@@ -24,7 +24,7 @@ Azure Database for MySQL flexibele server maakt automatisch server back-ups en s
 
 Flexibele server maakt momentopname back-ups van de gegevens bestanden en slaat ze op in een lokale redundante opslag. De-server voert ook back-ups van transactie Logboeken uit en slaat deze ook op in lokale redundante opslag. Met deze back-ups kunt u een server herstellen naar elk gewenst moment binnen de geconfigureerde back-upperiode. De standaardretentieperiode voor back-ups is zeven dagen. U kunt de back-up van de data base optioneel configureren van 1 tot 35 dagen. Alle back-ups worden versleuteld met AES 256-bits versleuteling voor de gegevens die in rust zijn opgeslagen.
 
-Deze back-upbestanden kunnen niet worden geëxporteerd. De back-ups kunnen alleen worden gebruikt voor herstel bewerkingen op een flexibele server. U kunt [mysqldump](https://docs.microsoft.com/azure/postgresql/howto-migrate-using-dump-and-restore)ook gebruiken   vanuit een mysql-client om een Data Base te kopiëren.
+Deze back-upbestanden kunnen niet worden geëxporteerd. De back-ups kunnen alleen worden gebruikt voor herstel bewerkingen op een flexibele server. U kunt [mysqldump](../concepts-migrate-dump-restore.md#dump-and-restore-using-mysqldump-utility) ook gebruiken vanuit een mysql-client om een Data Base te kopiëren.
 
 ## <a name="backup-frequency"></a>Back-upfrequentie
 
@@ -40,9 +40,9 @@ De Bewaar periode voor back-ups bepaalt hoe ver terug in de tijd een herstel bew
 
 ## <a name="backup-storage-cost"></a>Kosten voor back-upopslag
 
-Flexibele servers bieden Maxi maal 100% van uw ingerichte Server opslag als back-upopslag zonder extra kosten. Alle extra back-upopslag wordt in GB per maand in rekening gebracht. Als u bijvoorbeeld een server hebt ingericht met 250 GB opslag, hebt u 250 GB aan opslag ruimte beschikbaar voor Server back-ups zonder extra kosten. Als het dagelijks gebruik van de back-up 25 GB is, kunt u Maxi maal 10 dagen aan gratis back-upopslag gebruiken. Opslag die voor back-250 ups wordt gebruikt, wordt in rekening gebracht volgens het [prijs model](https://azure.microsoft.com/pricing/details/mysql/).
+Flexibele servers bieden Maxi maal 100% van uw ingerichte Server opslag als back-upopslag zonder extra kosten. Alle extra back-upopslag wordt in GB per maand in rekening gebracht. Als u bijvoorbeeld een server hebt ingericht met 250 GB opslag, hebt u 250 GB aan opslag ruimte beschikbaar voor Server back-ups zonder extra kosten. Als het dagelijks gebruik van de back-up 25 GB is, kunt u Maxi maal 10 dagen aan gratis back-upopslag gebruiken. Opslag die voor back-250 ups wordt gebruikt, wordt in rekening gebracht volgens het [prijs model](https://azure.microsoft.com/pricing/details/mysql/).
 
-U kunt de gebruikte waarde voor [back-upopslag](https://docs.microsoft.com/azure/mysql/concepts-monitoring)gebruiken   in azure monitor beschikbaar in de Azure Portal om de back-upopslag te bewaken die door een server wordt gebruikt. De metrische **back-Upopslagwaarde** vertegenwoordigt de som van de opslag die wordt gebruikt door alle back-ups van de data base en logboek back-ups die worden bewaard op basis van de Bewaar periode voor back-ups voor de server. Intensieve transactionele activiteit op de server kan ertoe leiden dat het gebruik van back-upopslag toeneemt, onafhankelijk van de totale databasegrootte.
+U kunt de gebruikte waarde voor [back-upopslag](../concepts-monitoring.md) gebruiken in azure monitor beschikbaar in de Azure Portal om de back-upopslag te bewaken die door een server wordt gebruikt. De metrische **back-Upopslagwaarde** vertegenwoordigt de som van de opslag die wordt gebruikt door alle back-ups van de data base en logboek back-ups die worden bewaard op basis van de Bewaar periode voor back-ups voor de server. Intensieve transactionele activiteit op de server kan ertoe leiden dat het gebruik van back-upopslag toeneemt, onafhankelijk van de totale databasegrootte.
 
 De belangrijkste manier om de opslag kosten voor back-ups te beheren, is door de juiste Bewaar periode voor back-ups in te stellen. U kunt een Bewaar periode tussen 1 en 35 dagen selecteren.
 
@@ -68,8 +68,8 @@ Herstel naar een bepaald tijdstip is handig in meerdere scenario's. Enkele van d
 
 U kunt kiezen tussen een laatste herstel punt en een aangepast herstel punt via [Azure Portal](how-to-restore-server-portal.md).
 
--   **Meest recente herstel punt**: het meest recente herstel punt helpt u bij het herstellen van de server naar de laatste back-up die is uitgevoerd op de bron server. De tijds tempel voor het terugzetten wordt ook weer gegeven op de portal. Deze optie is handig om snel de meest recente status van de server te herstellen.
--   **Aangepast herstel punt**: Hiermee kunt u een wille keurig tijdstip kiezen binnen de retentie periode die voor deze flexibele server is gedefinieerd. Deze optie is handig voor het herstellen van de server op het precieze tijdstip om een gebruikers fout te herstellen.
+-   **Meest recente herstel punt** : het meest recente herstel punt helpt u bij het herstellen van de server naar de laatste back-up die is uitgevoerd op de bron server. De tijds tempel voor het terugzetten wordt ook weer gegeven op de portal. Deze optie is handig om snel de meest recente status van de server te herstellen.
+-   **Aangepast herstel punt** : Hiermee kunt u een wille keurig tijdstip kiezen binnen de retentie periode die voor deze flexibele server is gedefinieerd. Deze optie is handig voor het herstellen van de server op het precieze tijdstip om een gebruikers fout te herstellen.
 
 De geschatte duur van de herstel bewerking is afhankelijk van verschillende factoren, zoals de grootte van de data base, de back-up van het transactie logboek, de reken grootte van de SKU en de tijd van de herstel bewerking. Het herstellen van het transactie logboek is de meest tijdrovende toepassing van het herstel proces. Als de herstel tijd dichter bij het volledige of het back-upschema van de differentiële moment opname is gekozen, zijn de herstelde bestanden sneller sinds de transactie logboek toepassing mini maal is. Om de nauw keurige herstel tijd voor uw server te schatten, raden we u ten zeerste aan om deze in uw omgeving te testen, omdat deze te veel omgevings-specifieke variabelen heeft.
 
@@ -77,7 +77,7 @@ De geschatte duur van de herstel bewerking is afhankelijk van verschillende fact
 > Als u een flexibele server herstelt die is geconfigureerd met een zone redundant hoge Beschik baarheid, wordt de herstelde server geconfigureerd in dezelfde regio en zone als uw primaire server en geïmplementeerd als een enkele flexibele server in een niet-HA-modus. Raadpleeg de [zone redundante hoge Beschik baarheid](concepts-high-availability.md) voor flexibele server.
 
 > [!IMPORTANT]
-> Verwijderde servers **kunnen niet**   worden hersteld. Als u de server verwijdert, worden ook alle data bases die deel uitmaken van de server, verwijderd en kunnen deze niet worden hersteld. Beheerders kunnen gebruikmaken van [beheer vergrendelingen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)om Server bronnen te beveiligen, na implementatie van onopzettelijk verwijderen of onverwachte wijzigingen.
+> Verwijderde servers **kunnen niet** worden hersteld. Als u de server verwijdert, worden ook alle data bases die deel uitmaken van de server, verwijderd en kunnen deze niet worden hersteld. Beheerders kunnen gebruikmaken van [beheer vergrendelingen](../../azure-resource-manager/management/lock-resources.md)om Server bronnen te beveiligen, na implementatie van onopzettelijk verwijderen of onverwachte wijzigingen.
 
 ## <a name="perform-post-restore-tasks"></a>Taken na herstel uitvoeren
 
@@ -91,5 +91,5 @@ Na een herstel van het **meest recente herstel punt** of het herstel mechanisme 
 ## <a name="next-steps"></a>Volgende stappen
 
 -   Meer informatie over [bedrijfs continuïteit](./concepts-business-continuity.md)
--   Meer informatie over [zone redundante hoge Beschik baarheid](./concepts-high-availability.md)
+-   Meer informatie over [zone redundante hoge Beschik baarheid](./concepts-high-availability.md)
 -   Meer informatie over [back-up en herstel](./concepts-backup-restore.md)
