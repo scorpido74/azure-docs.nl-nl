@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/06/2020
-ms.openlocfilehash: 5c5c7a5adae9891f764f714d1700c6024376de02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15c7ed4ca9d04e4bb314eea8b92bef749d2369b1
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88205396"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537657"
 ---
 # <a name="azure-cache-for-redis-management-faqs"></a>Veelgestelde vragen over Azure cache voor redis Management
 In dit artikel vindt u antwoorden op veelgestelde vragen over het beheren van Azure cache voor redis.
@@ -63,7 +63,7 @@ Voor instructies over het downloaden van de redis-hulpprogram ma's, zie de secti
 * De client-VM die wordt gebruikt voor het testen moet zich in dezelfde regio bevinden als uw Azure-cache voor redis-exemplaar.
 * We raden u aan om een dv2-VM-reeks te gebruiken voor uw client, omdat deze betere hardware heeft en de beste resultaten moeten bieden.
 * Zorg ervoor dat uw client-VM die u kiest, ten minste zoveel computer-en bandbreedte capaciteit heeft als de cache die u wilt testen.
-* Schakel VRSS in op de client computer als u zich in Windows bevindt. [Zie hier voor meer informatie](https://technet.microsoft.com/library/dn383582.aspx).
+* Schakel VRSS in op de client computer als u zich in Windows bevindt. [Zie hier voor meer informatie](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn383582(v=ws.11)).
 * Redis-exemplaren van de Premium-laag hebben een betere netwerk latentie en door Voer omdat ze worden uitgevoerd op betere hardware voor zowel CPU als netwerk.
 
 ### <a name="what-are-some-of-the-considerations-when-using-common-redis-commands"></a>Wat zijn enkele aandachtspunten bij het gebruik van algemene redis-opdrachten?
@@ -142,9 +142,9 @@ Deze instelling configureren:
     ```
 
     > [!NOTE]
-    > De waarde die wordt opgegeven met deze methode is een algemene instelling die van invloed is op het hele AppDomain. Als u bijvoorbeeld een computer met vier kernen hebt en *minWorkerThreads* en *minIoThreads* wilt instellen op 50 per CPU tijdens runtime, gebruikt u **thread pool. SetMinThreads (200, 200)**.
+    > De waarde die wordt opgegeven met deze methode is een algemene instelling die van invloed is op het hele AppDomain. Als u bijvoorbeeld een computer met vier kernen hebt en *minWorkerThreads* en *minIoThreads* wilt instellen op 50 per CPU tijdens runtime, gebruikt u **thread pool. SetMinThreads (200, 200)** .
 
-* Het is ook mogelijk om de instelling minimale threads op te geven met behulp van de [configuratie-instelling *MinIoThreads* of *minWorkerThreads* ](https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx) onder het `<processModel>` configuratie-element in `Machine.config` , meestal bevindt zich op `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\` . **Het instellen van het aantal minimale threads op deze manier wordt doorgaans niet aanbevolen, omdat het een instelling voor het hele systeem is.**
+* Het is ook mogelijk om de instelling minimale threads op te geven met behulp van de [configuratie-instelling *MinIoThreads* of *minWorkerThreads*](/previous-versions/dotnet/netframework-4.0/7w2sway1(v=vs.100)) onder het `<processModel>` configuratie-element in `Machine.config` , meestal bevindt zich op `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\` . **Het instellen van het aantal minimale threads op deze manier wordt doorgaans niet aanbevolen, omdat het een instelling voor het hele systeem is.**
 
   > [!NOTE]
   > De waarde die is opgegeven in dit configuratie-element is een instelling *per kern* . Als u bijvoorbeeld een computer met vier kernen hebt en u wilt dat uw *minIoThreads* -instelling 200 tijdens runtime, gebruikt u `<processModel minIoThreads="50"/>` .

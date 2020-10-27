@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/04/2020
-ms.openlocfilehash: e2db6d1d60026a00fa8e766fbaa1c72975fa2e99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71a4f2aa9bebd325b329af335985a37df5cd7263
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82786611"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547398"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Een virtueel netwerk plannen voor Azure HDInsight
 
@@ -84,7 +84,7 @@ Volg de stappen in deze sectie om te ontdekken hoe u een nieuwe HDInsight kunt t
         Zie het document [problemen met netwerk beveiligings groepen oplossen](../virtual-network/diagnose-network-traffic-filter-problem.md) voor meer informatie.
 
         > [!IMPORTANT]  
-        > De regels voor de netwerk beveiligings groep worden op volg orde toegepast op basis van regel prioriteit. De eerste regel die overeenkomt met het verkeers patroon wordt toegepast en er worden geen andere regels voor dat verkeer toegepast. Bestel regels van de meest strikte tot minst strikte. Zie het document [netwerk verkeer filteren met netwerk beveiligings groepen](../virtual-network/security-overview.md) voor meer informatie.
+        > De regels voor de netwerk beveiligings groep worden op volg orde toegepast op basis van regel prioriteit. De eerste regel die overeenkomt met het verkeers patroon wordt toegepast en er worden geen andere regels voor dat verkeer toegepast. Bestel regels van de meest strikte tot minst strikte. Zie het document [netwerk verkeer filteren met netwerk beveiligings groepen](../virtual-network/network-security-groups-overview.md) voor meer informatie.
 
     * Door de gebruiker gedefinieerde routes
 
@@ -148,7 +148,7 @@ Voor het inschakelen van naam omzetting tussen het virtuele netwerk en bronnen i
 
          * Alle andere aanvragen door sturen naar de on-premises DNS-server. De on-premises DNS verwerkt alle andere aanvragen voor naam omzetting, zelfs aanvragen voor Internet bronnen zoals Microsoft.com.
 
-     * __On-premises DNS__: aanvragen door sturen voor het DNS-achtervoegsel van het virtuele netwerk naar de aangepaste DNS-server. De aangepaste DNS-server wordt vervolgens doorgestuurd naar de recursieve resolver van Azure.
+     * __On-premises DNS__ : aanvragen door sturen voor het DNS-achtervoegsel van het virtuele netwerk naar de aangepaste DNS-server. De aangepaste DNS-server wordt vervolgens doorgestuurd naar de recursieve resolver van Azure.
 
        Deze configuratie routes aanvragen voor volledig gekwalificeerde domein namen die het DNS-achtervoegsel van het virtuele netwerk bevatten naar de aangepaste DNS-server. Alle andere aanvragen (zelfs voor open bare Internet adressen) worden verwerkt door de on-premises DNS-server.
 
@@ -210,6 +210,6 @@ Wanneer u een HDInsight-cluster maakt, wordt er ook een load balancer gemaakt. H
 * Zie [virtuele netwerken voor Azure HDInsight-clusters maken](hdinsight-create-virtual-network.md)voor code voorbeelden en voor beelden van het maken van virtuele Azure-netwerken.
 * Zie [Hdinsight verbinden met een on-premises netwerk](./connect-on-premises-network.md)voor een end-to-end-voor beeld van het configureren van hdinsight om verbinding te maken met een on-premises netwerk.
 * Zie [overzicht van azure Virtual Network](../virtual-network/virtual-networks-overview.md)voor meer informatie over virtuele Azure-netwerken.
-* Zie [netwerk beveiligings groepen](../virtual-network/security-overview.md)voor meer informatie over netwerk beveiligings groepen.
+* Zie [netwerk beveiligings groepen](../virtual-network/network-security-groups-overview.md)voor meer informatie over netwerk beveiligings groepen.
 * Zie door de gebruiker [gedefinieerde routes en door sturen via IP](../virtual-network/virtual-networks-udr-overview.md)voor meer informatie over door de gebruiker gedefinieerde routes.
 * Zie [netwerk verkeer beheren](./control-network-traffic.md)voor meer informatie over het beheren van verkeer.

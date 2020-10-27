@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/20/2019
-ms.openlocfilehash: a663eb65bcd85a1b2e91e6f2ad90dc64b61273ce
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 6482b2ec07a0473ddbea2098d37c5d67c8b68704
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92484760"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539697"
 ---
 # <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>Werken in het Apache Hadoop ecosysteem op HDInsight vanaf een Windows-computer
 
@@ -31,17 +31,17 @@ Voor beelden van taken die u kunt uitvoeren met Power shell:
 * [Voer Apache Hive Query's uit met behulp van Power shell](hadoop/apache-hadoop-use-hive-powershell.md).
 * [Clusters beheren met Power shell](hdinsight-administer-use-powershell.md).
 
-Volg de stappen voor het [installeren en configureren van Azure Power shell](https://docs.microsoft.com/powershell/azure/install-az-ps) om de nieuwste versie te verkrijgen.
+Volg de stappen voor het [installeren en configureren van Azure Power shell](/powershell/azure/install-az-ps) om de nieuwste versie te verkrijgen.
 
 ## <a name="utilities-you-can-run-in-a-browser"></a>Hulpprogram ma's die u kunt uitvoeren in een browser
 
 De volgende hulpprogram ma's hebben een web-UI die wordt uitgevoerd in een browser:
-* **[Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview)** is een interactieve, opdracht regel shell die wordt uitgevoerd in uw browser en vanuit de Azure Portal.
+* **[Azure Cloud shell](../cloud-shell/overview.md)** is een interactieve, opdracht regel shell die wordt uitgevoerd in uw browser en vanuit de Azure Portal.
 
 * De **[Web-UI van Apache Ambari](hdinsight-hadoop-manage-ambari.md)** is een hulp programma voor beheer en bewaking dat beschikbaar is in het Azure Portal dat kan worden gebruikt voor het beheren van verschillende soorten taken, zoals:
     * [Apache Ambari gebruiken met de REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
     * [Apache Hive weer geven in Apache Ambari](hadoop/apache-hadoop-use-hive-ambari-view.md)
-    * [Apache TEZ View in Apache Ambari](hdinsight-debug-ambari-tez-view.md)
+    * [Apache TEZ View in Apache Ambari](./index.yml)
 
 ## <a name="data-lake-hadoop-tools-for-visual-studio"></a>Data Lake (Hadoop)-Hulpprogram Ma's voor Visual Studio
 
@@ -84,7 +84,7 @@ Apache Spark clusters in HDInsight zijn Apache Zeppelin-notebooks en kernels die
 
 Als u in een situatie komt waarin u een hulp programma of technologie wilt gebruiken die alleen beschikbaar is op Linux, kunt u de volgende opties overwegen:
 
-* **Bash op Ubuntu in Windows 10** biedt een Linux-subsysteem in Windows. Met bash kunt u rechtstreeks Linux-hulpprogram ma's uitvoeren zonder dat u een speciale Linux-installatie hoeft te onderhouden. Zie [Installatiehandleiding voor Windows 10 voor Windows-subsysteem voor Linux](https://docs.microsoft.com/windows/wsl/install-win10) voor installatiestappen.  Andere [UNIX-shells](https://www.gnu.org/software/bash/) kunnen ook worden gebruikt.
+* **Bash op Ubuntu in Windows 10** biedt een Linux-subsysteem in Windows. Met bash kunt u rechtstreeks Linux-hulpprogram ma's uitvoeren zonder dat u een speciale Linux-installatie hoeft te onderhouden. Zie [Installatiehandleiding voor Windows 10 voor Windows-subsysteem voor Linux](/windows/wsl/install-win10) voor installatiestappen.  Andere [UNIX-shells](https://www.gnu.org/software/bash/) kunnen ook worden gebruikt.
 * **Docker voor Windows** biedt toegang tot veel Linux-hulpprogram ma's en kan rechtstreeks vanuit Windows worden uitgevoerd. U kunt docker bijvoorbeeld gebruiken om de Beeline-client voor Hive rechtstreeks vanuit Windows uit te voeren. U kunt docker ook gebruiken om een lokale Jupyter-notebook uit te voeren en op afstand verbinding te maken met Spark op HDInsight. [Aan de slag met docker voor Windows](https://docs.docker.com/docker-for-windows/)
 * Met **[MobaXTerm](https://mobaxterm.mobatek.net/)** kunt u het bestands systeem van het cluster grafisch doorzoeken via een SSH-verbinding.
 

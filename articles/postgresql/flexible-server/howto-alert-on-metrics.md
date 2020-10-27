@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: d3d5ced5860c14e9e4d522c42ffd0bc71341a9c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac252c3898eb014885bf9a6bf6bdedb7db74fb62
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935774"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545834"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---flexible-server"></a>Gebruik de Azure Portal om waarschuwingen in te stellen voor de Azure Database for PostgreSQL-flexibele server
 
@@ -30,9 +30,9 @@ U kunt een waarschuwing configureren om de volgende acties uit te voeren wanneer
 
 U kunt informatie over waarschuwings regels configureren en ophalen met behulp van:
 
-* [Azure-portal](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric#create-with-azure-portal)
-* [Azure-CLI](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric#with-azure-cli)
-* [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
+* [Azure Portal](../../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure CLI](../../azure-monitor/platform/alerts-metric.md#with-azure-cli)
+* [Azure Monitor REST API](/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Een waarschuwings regel maken op basis van een metriek van de Azure Portal
 
@@ -48,13 +48,13 @@ U kunt informatie over waarschuwings regels configureren en ophalen met behulp v
 
    :::image type="content" source="./media/howto-alert-on-metrics/4-add-rule-form.png" alt-text="Waarschuwings regels selecteren":::
 
-5. Selecteer **voor waarde toevoegen**in de sectie **voor waarde** .
+5. Selecteer **voor waarde toevoegen** in de sectie **voor waarde** .
 
 6. Selecteer een waarde in de lijst met signalen waarop u wilt worden gewaarschuwd. In dit voor beeld selecteert u ' opslag percentage '.
 
    :::image type="content" source="./media/howto-alert-on-metrics/6-configure-signal-logic.png" alt-text="Waarschuwings regels selecteren":::
 
-7. Configureer de waarschuwings logica met inbegrip van de **voor waarde** (bijvoorbeeld ' Groter dan '), **drempel waarde** (bijvoorbeeld 85 procent), **tijd aggregatie**, **periode waarbinnen** de metrische regel moet worden voldaan voordat de waarschuwingen worden geactiveerd (bijvoorbeeld ' In de afgelopen 30 minuten ') en **frequentie**.
+7. Configureer de waarschuwings logica met inbegrip van de **voor waarde** (bijvoorbeeld ' Groter dan '), **drempel waarde** (bijvoorbeeld 85 procent), **tijd aggregatie** , **periode waarbinnen** de metrische regel moet worden voldaan voordat de waarschuwingen worden geactiveerd (bijvoorbeeld ' In de afgelopen 30 minuten ') en **frequentie** .
 
    Selecteer **gereed** wanneer u klaar bent.
 
@@ -92,5 +92,5 @@ Zodra u een waarschuwing hebt gemaakt, kunt u deze selecteren en de volgende act
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het [configureren van webhooks in waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-webhooks).
-* Bekijk een [overzicht van de verzameling metrische gegevens](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-how-to-customize-monitoring) om te controleren of uw service beschikbaar is en reageert.
+* Meer informatie over het [configureren van webhooks in waarschuwingen](../../azure-monitor/platform/alerts-webhooks.md).
+* Bekijk een [overzicht van de verzameling metrische gegevens](../../azure-monitor/platform/data-platform.md) om te controleren of uw service beschikbaar is en reageert.

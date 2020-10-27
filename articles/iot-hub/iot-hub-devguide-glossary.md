@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e7765e077638c85c0cefe394a10cc22fe2b0b757
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 30ce2247207b34ab63df5b32b2a96f27256afdbb
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147780"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547789"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Woorden lijst met IoT Hub voor waarden
 
@@ -60,7 +60,7 @@ De [Azure IOT-Hulpprogram ma's](https://marketplace.visualstudio.com/items?itemN
 
 ## <a name="azure-portal"></a>Azure Portal
 
-De [Microsoft Azure-Portal](https://portal.azure.com) is een centrale locatie waar u uw Azure-resources kunt inrichten en beheren. De inhoud wordt ingedeeld met behulp van _Blades_.
+De [Microsoft Azure-Portal](https://portal.azure.com) is een centrale locatie waar u uw Azure-resources kunt inrichten en beheren. De inhoud wordt ingedeeld met behulp van _Blades_ .
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -218,7 +218,7 @@ IoT Hub is een volledig beheerde Azure-service die betrouw bare en veilige bidir
 
 ## <a name="iot-hub-metrics"></a>IoT Hub metrische gegevens
 
-[IOT hub metrische](iot-hub-metrics.md) gegevens geven u informatie over de status van de IOT-hubs in uw [Azure-abonnement](#subscription). Met IoT Hub metrische gegevens kunt u de algemene status van de service en de aangesloten apparaten beoordelen. Met IoT Hub metrische gegevens kunt u zien wat er gebeurt met uw IoT hub en problemen met de hoofd oorzaak onderzoeken zonder dat u contact hoeft op te nemen met de ondersteuning van Azure.
+[IOT hub metrische](monitor-iot-hub-reference.md#metrics) gegevens geven u informatie over de status van de IOT-hubs in uw [Azure-abonnement](#subscription). Met IoT Hub metrische gegevens kunt u de algemene status van de service en de aangesloten apparaten beoordelen. Met IoT Hub metrische gegevens kunt u zien wat er gebeurt met uw IoT hub en problemen met de hoofd oorzaak onderzoeken zonder dat u contact hoeft op te nemen met de ondersteuning van Azure. Zie [IOT hub bewaken](monitor-iot-hub.md)voor meer informatie.
 
 ## <a name="iot-hub-query-language"></a>Query taal IoT Hub
 

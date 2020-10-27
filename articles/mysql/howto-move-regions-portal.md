@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/26/2020
-ms.openlocfilehash: e0333c5cabec597261938765298b622bf2fe79a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88f9b82df0ce1fae78f0c9de9c8d7a7b158d151e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542509"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546327"
 ---
 # <a name="move-an-azure-database-for-mysql-server-to-another-region-by-using-the-azure-portal"></a>Een Azure Database for MySQL-server naar een andere regio verplaatsen met behulp van de Azure Portal
 
@@ -21,7 +21,7 @@ Er zijn verschillende scenario's voor het verplaatsen van een bestaande Azure Da
 U kunt een Azure Database for MySQL [Kruis regio lezen replica](concepts-read-replicas.md#cross-region-replication) gebruiken om de overgang naar een andere regio te volt ooien. Als u dit wilt doen, maakt u eerst een lees replica in de doel regio. Stop vervolgens de replicatie naar de server voor het lezen van replica's om een zelfstandige server te maken die zowel lees-als schrijf verkeer accepteert. 
 
 > [!NOTE]
-> Dit artikel richt zich op het verplaatsen van uw server naar een andere regio. Als u uw server wilt verplaatsen naar een andere resource groep of een ander abonnement, raadpleegt u het artikel over [verplaatsen](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription) . 
+> Dit artikel richt zich op het verplaatsen van uw server naar een andere regio. Als u uw server wilt verplaatsen naar een andere resource groep of een ander abonnement, raadpleegt u het artikel over [verplaatsen](../azure-resource-manager/management/move-resource-group-and-subscription.md) . 
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -35,8 +35,8 @@ Als u in de doel regio een cross-Region replica server wilt maken met behulp van
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 1. Selecteer de bestaande Azure Database for MySQL-server die u wilt gebruiken als de bron server. Met deze actie wordt de pagina **overzicht** geopend.
-1. Selecteer **replicatie** in het menu onder **instellingen**.
-1. Selecteer **replica toevoegen**.
+1. Selecteer **replicatie** in het menu onder **instellingen** .
+1. Selecteer **replica toevoegen** .
 1. Voer een naam in voor de replica server.
 1. Selecteer de locatie voor de replica server. De standaard locatie is dezelfde als die van de bron server. Controleer of u de doel locatie hebt geselecteerd waarop u de replica wilt implementeren.
 1. Selecteer **OK** om te bevestigen dat u de replica wilt maken. Tijdens het maken van de replica worden gegevens van de bron server naar de replica gekopieerd. Het maken van een tijd kan een paar minuten of meer duren, in verhouding tot de grootte van de bron server.
@@ -53,19 +53,19 @@ Als u in de doel regio een cross-Region replica server wilt maken met behulp van
 De replicatie naar de replica server wordt gestopt, waardoor deze een zelfstandige server wordt. Voer de volgende stappen uit om de replicatie naar de replica vanuit het Azure Portal te stoppen:
 
 1. Wanneer de replica is gemaakt, zoekt en selecteert u uw Azure Database for MySQL-bron server. 
-1. Selecteer **replicatie** in het menu onder **instellingen**.
+1. Selecteer **replicatie** in het menu onder **instellingen** .
 1. Selecteer de replica server.
-1. Selecteer **Replicatie stoppen**.
-1. Bevestig dat u de replicatie wilt stoppen door op **OK**te klikken.
+1. Selecteer **Replicatie stoppen** .
+1. Bevestig dat u de replicatie wilt stoppen door op **OK** te klikken.
 
 ## <a name="clean-up-source-server"></a>Bron server opschonen
 
 Mogelijk wilt u de bron Azure Database for MySQL server verwijderen. Volg hiervoor de volgende stappen:
 
 1. Wanneer de replica is gemaakt, zoekt en selecteert u uw Azure Database for MySQL-bron server.
-1. Selecteer in het venster **overzicht** de optie **verwijderen**.
+1. Selecteer in het venster **overzicht** de optie **verwijderen** .
 1. Typ de naam van de bron server om te bevestigen dat u wilt verwijderen.
-1. Selecteer **Verwijderen**.
+1. Selecteer **Verwijderen** .
 
 ## <a name="next-steps"></a>Volgende stappen
 

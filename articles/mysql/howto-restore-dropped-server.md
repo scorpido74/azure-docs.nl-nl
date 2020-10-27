@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/09/2020
-ms.openlocfilehash: 1de11a07bdbac153b6813915cfa52edfa6484aec
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 982747c1a7e093f84daeb63e75cfdf439d3fccf9
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876938"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546718"
 ---
 # <a name="restore-a-dropped-azure-database-for-mysql-server"></a>Een verwijderde Azure Database for MySQL server herstellen
 
@@ -36,7 +36,7 @@ Als u een verwijderde Azure Database for MySQL server wilt herstellen, moet u he
    
  3. Dubbel klik op de gebeurtenis MySQL-server verwijderen en klik op het tabblad JSON en noteer de kenmerken ' resourceId ' en ' submissionTimestamp ' in JSON-uitvoer. De resourceId heeft de volgende indeling:/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TargetResourceGroup/providers/Microsoft.DBforMySQL/servers/deletedserver.
  
- 4. Ga naar [Server rest API pagina maken](https://docs.microsoft.com/rest/api/mysql/servers/create) en klik op het tabblad ' try it ' is gemarkeerd als groen en meld u aan met uw Azure-account.
+ 4. Ga naar [Server rest API pagina maken](/rest/api/mysql/servers/create) en klik op het tabblad ' try it ' is gemarkeerd als groen en meld u aan met uw Azure-account.
  
  5. Geef de resourceGroupName, servername (verwijderde server naam), subscriptionId, afgeleid van het kenmerk resourceId dat is vastgelegd in stap 3, terwijl de API-versie vooraf is ingevuld, zoals wordt weer gegeven in de afbeelding.
  

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020,devx-track-java
 ms.date: 04/27/2020
-ms.openlocfilehash: b928ea8b0d05b9e1eac3c9429ec4c0ce8f88bb22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 881ec4aa36261958b566dc2d7c4d06475a76bad4
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322870"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545494"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Een Apache Storm topologie maken in Java
 
@@ -26,7 +26,7 @@ Nadat u de stappen in dit document hebt voltooid, kunt u de topologie implemente
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Java Developer Kit (JDK) versie 8](https://aka.ms/azure-jdks)
+* [Java Developer Kit (JDK) versie 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 
 * [Apache Maven](https://maven.apache.org/download.cgi) correct [geïnstalleerd](https://maven.apache.org/install.html) volgens Apache.  Maven is een systeem voor het bouwen van Java-projecten.
 
@@ -43,7 +43,7 @@ cd C:\HDI
 
 ## <a name="create-a-maven-project"></a>Een Maven-project maken
 
-Voer de volgende opdracht in om een Maven-project met de naam **WordCount**te maken:
+Voer de volgende opdracht in om een Maven-project met de naam **WordCount** te maken:
 
 ```cmd
 mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart -DgroupId=com.microsoft.example -DartifactId=WordCount -DinteractiveMode=false
@@ -199,9 +199,9 @@ Deze sectie wordt gebruikt om invoeg toepassingen, resources en andere configura
 
     Een andere handige invoeg toepassing is de [`Apache Maven Compiler Plugin`](https://maven.apache.org/plugins/maven-compiler-plugin/) , die wordt gebruikt om de compilatie opties te wijzigen. Wijzig de Java-versie die maven gebruikt voor de bron en het doel voor uw toepassing.
 
-  * Voor HDInsight __3,4 of eerder__stelt u de bron-en doel-Java-versie in op __1,7__.
+  * Voor HDInsight __3,4 of eerder__ stelt u de bron-en doel-Java-versie in op __1,7__ .
 
-  * Voor HDInsight __3,5__stelt u de bron-en doel-Java-versie in op __1,8__.
+  * Voor HDInsight __3,5__ stelt u de bron-en doel-Java-versie in op __1,8__ .
 
   Voeg de volgende tekst toe `<plugins>` aan de sectie van het bestand, waarin `pom.xml` de invoeg toepassing Apache Maven compiler wordt vermeld. In dit voor beeld wordt 1,8 opgegeven, dus is de HDInsight-versie van het doel 3,5.
 
@@ -237,11 +237,11 @@ In dit voor beeld wordt de map resources in de hoofdmap van het project ( `${bas
 
 Een op Java gebaseerde Apache Storm topologie bestaat uit drie onderdelen die u als een afhankelijkheid (of referentie) moet maken.
 
-* **Spouts**: gegevens uit externe bronnen worden gelezen en gegevens stromen in de topologie worden verzonden.
+* **Spouts** : gegevens uit externe bronnen worden gelezen en gegevens stromen in de topologie worden verzonden.
 
-* **Bouten**: verwerkt stromen op basis van spouts of andere schichten en levert een of meer streams.
+* **Bouten** : verwerkt stromen op basis van spouts of andere schichten en levert een of meer streams.
 
-* **Topologie**: definieert hoe de spouts en schichten worden gerangschikt en biedt het toegangs punt voor de topologie.
+* **Topologie** : definieert hoe de spouts en schichten worden gerangschikt en biedt het toegangs punt voor de topologie.
 
 ### <a name="create-the-spout"></a>De Spout maken
 
@@ -327,9 +327,9 @@ public class RandomSentenceSpout extends BaseRichSpout {
 
 Bouten verwerken de gegevens verwerking. Schichten kunnen alles doen, bijvoorbeeld berekening, persistentie of praten met externe onderdelen. In deze topologie worden twee schichten gebruikt:
 
-* **SplitSentence**: splitst de zinnen die worden verzonden door **RandomSentenceSpout** in afzonderlijke woorden.
+* **SplitSentence** : splitst de zinnen die worden verzonden door **RandomSentenceSpout** in afzonderlijke woorden.
 
-* **WordCount**: telt het aantal keren dat elk woord heeft plaatsgevonden.
+* **WordCount** : telt het aantal keren dat elk woord heeft plaatsgevonden.
 
 #### <a name="splitsentence"></a>SplitSentence
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/28/2019
-ms.openlocfilehash: fa0ae0137064cc14d6d8f2adfe085ca255da73af
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c392ad7a098116a8f2224d6844d38dc40e01d753
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486307"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545987"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Ontwikkeling van script acties met HDInsight
 
@@ -235,7 +235,7 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 De volgende helpers die beschikbaar zijn voor gebruik in uw script:
 
-| Help-gebruik | Beschrijving |
+| Help-gebruik | Description |
 | --- | --- |
 | `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |Hiermee wordt een bestand gedownload van de bron-URI naar het opgegeven bestandspad. Standaard wordt een bestaand bestand niet overschreven. |
 | `untar_file TARFILE DESTDIR` |Hiermee wordt een tar-bestand (met) uitgepakt `-xf` naar de doelmap. |
@@ -256,7 +256,7 @@ Deze sectie bevat richt lijnen voor het implementeren van een aantal algemene ge
 
 In sommige gevallen kan het script para meters nodig hebben. Het is bijvoorbeeld mogelijk dat u het beheerders wachtwoord voor het cluster nodig hebt wanneer u de Ambari-REST API gebruikt.
 
-Para meters die aan het script worden door gegeven, worden ook wel *positionele para meters*genoemd en worden toegewezen aan `$1` voor de eerste para meter, `$2` voor de tweede, enzovoort. `$0` bevat de naam van het script zelf.
+Para meters die aan het script worden door gegeven, worden ook wel *positionele para meters* genoemd en worden toegewezen aan `$1` voor de eerste para meter, `$2` voor de tweede, enzovoort. `$0` bevat de naam van het script zelf.
 
 Waarden die worden door gegeven aan het script als para meters moeten tussen enkele aanhalings tekens (') worden geplaatst. Dit zorgt ervoor dat de door gegeven waarde wordt beschouwd als een letterlijke teken reeks.
 
@@ -290,9 +290,9 @@ Scripts die worden gebruikt voor het aanpassen van een cluster, moeten worden op
 
 * Een __extra opslag account__ dat aan het cluster is gekoppeld.
 
-* Een __openbaar Lees bare URI__. Bijvoorbeeld een URL naar gegevens die zijn opgeslagen in OneDrive, Dropbox of een andere service voor het hosten van bestanden.
+* Een __openbaar Lees bare URI__ . Bijvoorbeeld een URL naar gegevens die zijn opgeslagen in OneDrive, Dropbox of een andere service voor het hosten van bestanden.
 
-* Een __Azure data Lake Storage-account__ dat is gekoppeld aan het HDInsight-cluster. Zie [Quick Start: clusters instellen in hdinsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)voor meer informatie over het gebruik van Azure data Lake Storage met hdinsight.
+* Een __Azure data Lake Storage-account__ dat is gekoppeld aan het HDInsight-cluster. Zie [Quick Start: clusters instellen in hdinsight](./hdinsight-hadoop-provision-linux-clusters.md)voor meer informatie over het gebruik van Azure data Lake Storage met hdinsight.
 
     > [!NOTE]  
     > De Service-Principal HDInsight gebruikt om toegang te krijgen tot Data Lake Storage moet lees toegang hebben tot het script.
@@ -332,13 +332,13 @@ Micro soft biedt voorbeeld scripts voor het installeren van onderdelen in een HD
 
 Hieronder vindt u fouten die kunnen optreden bij het gebruik van scripts die u hebt ontwikkeld:
 
-**Fout**: `$'\r': command not found` . Soms gevolgd door `syntax error: unexpected end of file` .
+**Fout** : `$'\r': command not found` . Soms gevolgd door `syntax error: unexpected end of file` .
 
-*Oorzaak*: deze fout wordt veroorzaakt wanneer de regels in een script EINDIGEN met CRLF. UNIX-systemen verwachten alleen LF als de regel eindigt.
+*Oorzaak* : deze fout wordt veroorzaakt wanneer de regels in een script EINDIGEN met CRLF. UNIX-systemen verwachten alleen LF als de regel eindigt.
 
 Dit probleem treedt meestal op wanneer het script wordt gemaakt in een Windows-omgeving, aangezien CRLF een gemeen schappelijke lijn eindigt voor veel tekst editors in Windows.
 
-*Oplossing*: als het een optie in de tekst editor is, selecteert u UNIX-indeling of LF voor de regel die eindigt. U kunt ook de volgende opdrachten op een UNIX-systeem gebruiken om de CRLF te wijzigen in een LF:
+*Oplossing* : als het een optie in de tekst editor is, selecteert u UNIX-indeling of LF voor de regel die eindigt. U kunt ook de volgende opdrachten op een UNIX-systeem gebruiken om de CRLF te wijzigen in een LF:
 
 > [!NOTE]  
 > De volgende opdrachten zijn ongeveer gelijk aan die moeten worden gewijzigd de CRLF-regel eindigt op LF. Selecteer een op basis van de hulpprogram ma's die beschikbaar zijn op uw systeem.
@@ -350,11 +350,11 @@ Dit probleem treedt meestal op wanneer het script wordt gemaakt in een Windows-o
 | `perl -pi -e 's/\r\n/\n/g' INFILE` | Hiermee wordt het bestand rechtstreeks gewijzigd |
 | ```sed 's/$'"/`echo \\\r`/" INFILE > OUTFILE``` |Out-bestand bevat een versie met alleen LF-einden. |
 
-**Fout**: `line 1: #!/usr/bin/env: No such file or directory` .
+**Fout** : `line 1: #!/usr/bin/env: No such file or directory` .
 
-*Oorzaak*: deze fout treedt op wanneer het script is opgeslagen als UTF-8 met een byte order Mark (bom).
+*Oorzaak* : deze fout treedt op wanneer het script is opgeslagen als UTF-8 met een byte order Mark (bom).
 
-*Oplossing*: Sla het bestand op als ASCII of als UTF-8 zonder een stuk lijst. U kunt ook de volgende opdracht op een Linux-of UNIX-systeem gebruiken om een bestand te maken zonder de stuk lijst:
+*Oplossing* : Sla het bestand op als ASCII of als UTF-8 zonder een stuk lijst. U kunt ook de volgende opdracht op een Linux-of UNIX-systeem gebruiken om een bestand te maken zonder de stuk lijst:
 
 ```bash
 awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
@@ -366,4 +366,4 @@ Vervang door `INFILE` het bestand dat de stuk lijst bevat. `OUTFILE` moet een ni
 
 * Meer informatie over het [aanpassen van HDInsight-clusters met behulp van script acties](hdinsight-hadoop-customize-cluster-linux.md)
 * Gebruik de [referentie voor hdinsight .NET SDK](/dotnet/api/overview/azure/hdinsight) voor meer informatie over het maken van .NET-toepassingen voor het beheren van HDInsight
-* Gebruik het [HDInsight-rest API](https://msdn.microsoft.com/library/azure/mt622197.aspx) om te leren hoe u rest kunt gebruiken om beheer acties uit te voeren op HDInsight-clusters.
+* Gebruik het [HDInsight-rest API](/rest/api/hdinsight/) om te leren hoe u rest kunt gebruiken om beheer acties uit te voeren op HDInsight-clusters.

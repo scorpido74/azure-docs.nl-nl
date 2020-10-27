@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/11/2020
-ms.openlocfilehash: 452a3b04637126b40aca907178bebd6f74ec4481
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86d951089e4247d9b959476c812b98e170d92bd8
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79365768"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547976"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>Enterprise Security Package in HDInsight gebruiken
 
@@ -57,7 +57,7 @@ Zie [HDInsight-clusters met ESP configureren met behulp van Azure AD DS](./apach
 
 Als u een on-premises Active Directory-exemplaar of meer complexe Active Directory-instellingen voor uw domein hebt, kunt u deze identiteiten synchroniseren met Azure AD met behulp van Azure AD Connect. Vervolgens kunt u Azure AD DS inschakelen op die Active Directory Tenant.
 
-Omdat Kerberos afhankelijk is van wacht woord-hashes, moet u [wachtwoord hash-synchronisatie inschakelen op Azure AD DS](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md).
+Omdat Kerberos afhankelijk is van wacht woord-hashes, moet u [wachtwoord hash-synchronisatie inschakelen op Azure AD DS](../../active-directory-domain-services/tutorial-create-instance.md).
 
 Als u Federatie gebruikt met Active Directory Federation Services (AD FS), moet u wachtwoord hash-synchronisatie inschakelen. (Zie [deze video](https://youtu.be/qQruArbu2Ew)voor een aanbevolen installatie.) Wachtwoord hash Sync helpt bij herstel na nood gevallen in geval van een storing in uw AD FS-infra structuur en biedt ook een bescherming tegen beveiligings problemen. Zie [enable password hash sync with Azure AD Connect Sync](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)(Engelstalig) voor meer informatie.
 
@@ -65,7 +65,7 @@ Het gebruik van on-premises Active Directory of Active Directory op IaaS Vm's al
 
 Als Federatie wordt gebruikt en wacht woord-hashes correct worden gesynchroniseerd, maar er verificatie fouten optreden, controleert u of Cloud wachtwoord verificatie is ingeschakeld voor de Power shell-service-principal. Als dat niet het geval is, moet u een [hrd-beleid (Home realm Discovery)](../../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md) instellen voor uw Azure AD-Tenant. Het HRD-beleid controleren en instellen:
 
-1. Installeer de preview [Azure AD Power shell-module](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2).
+1. Installeer de preview [Azure AD Power shell-module](/powershell/azure/active-directory/install-adv2).
 
    ```powershell
    Install-Module AzureAD

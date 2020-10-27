@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: f3a58a6766c42385dd6611c2014ba36fd1078710
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fe1d5a5a472b47abd364a89d1a65f1249c67c0d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936151"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538660"
 ---
 # <a name="monitor-azure-database-for-mysql-flexible-servers-with-built-in-metrics"></a>Azure Database for MySQL flexibele servers bewaken met ingebouwde metrische gegevens
 
@@ -24,14 +24,14 @@ In dit artikel vindt u informatie over de verschillende metrische gegevens die b
 
 ## <a name="available-metrics"></a>Beschikbare metrische gegevens
 
-Azure Database for MySQL flexibele server biedt diverse metrische gegevens om inzicht te krijgen in de prestaties van uw werk belasting en op basis van deze informatie. u kunt de gevolgen van uw server en toepassing begrijpen. Zo kunt u in een flexibele server bijvoorbeeld het **CPU-percentage**van de host, **actieve verbindingen**, het **io-percentage**en het **host geheugen percentage** bewaken om te identificeren wanneer er sprake is van invloed op de prestaties. Van daaruit moet u mogelijk uw werk belasting optimaliseren, verticaal schalen door de reken lagen te wijzigen of horizon taal schalen met behulp van replica lezen.
+Azure Database for MySQL flexibele server biedt diverse metrische gegevens om inzicht te krijgen in de prestaties van uw werk belasting en op basis van deze informatie. u kunt de gevolgen van uw server en toepassing begrijpen. Zo kunt u in een flexibele server bijvoorbeeld het **CPU-percentage** van de host, **actieve verbindingen** , het **io-percentage** en het **host geheugen percentage** bewaken om te identificeren wanneer er sprake is van invloed op de prestaties. Van daaruit moet u mogelijk uw werk belasting optimaliseren, verticaal schalen door de reken lagen te wijzigen of horizon taal schalen met behulp van replica lezen.
 
-Alle metrische gegevens van Azure hebben een frequentie van één minuut, en elke metriek bevat een geschiedenis van 30 dagen. U kunt waarschuwingen configureren voor de metrische gegevens. Zie voor stapsgewijze instructies voor [het instellen van waarschuwingen](./how-to-alert-on-metric.md). Andere taken zijn onder andere het instellen van geautomatiseerde acties, het uitvoeren van geavanceerde analyses en het archiveren van de geschiedenis. Zie het overzicht van Azure- [metrische](../../monitoring-and-diagnostics/monitoring-overview-metrics.md)gegevens voor meer informatie.
+Alle metrische gegevens van Azure hebben een frequentie van één minuut, en elke metriek bevat een geschiedenis van 30 dagen. U kunt waarschuwingen configureren voor de metrische gegevens. Zie voor stapsgewijze instructies voor [het instellen van waarschuwingen](./how-to-alert-on-metric.md). Andere taken zijn onder andere het instellen van geautomatiseerde acties, het uitvoeren van geavanceerde analyses en het archiveren van de geschiedenis. Zie het overzicht van Azure- [metrische](../../azure-monitor/platform/data-platform.md)gegevens voor meer informatie.
 
 ### <a name="list-of-metrics"></a>Lijst met metrische gegevens
 Deze metrische gegevens zijn beschikbaar voor Azure Database for MySQL:
 
-|Weergave naam voor metrische gegevens|Gegevens|Eenheid|Beschrijving|
+|Weergave naam voor metrische gegevens|Gegevens|Eenheid|Description|
 |---|---|---|---|
 |CPU-percentage van host|cpu_percent|Percentage|Het percentage CPU-gebruik op de server, inclusief het CPU-gebruik van zowel de werk belasting van de klant als de Azure MySQL-processen|
 |Host-netwerk in |network_bytes_ingress|Bytes|Binnenkomend netwerk verkeer op de server, inclusief verkeer van zowel de klanten database als Azure MySQL-functies, zoals replicatie, bewaking, logboeken, enzovoort.|

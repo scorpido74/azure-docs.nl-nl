@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
-ms.openlocfilehash: 1fb5b78f210a9bd817a2987dcb30fa25d156d5d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f30f92df505abeff108f8d1c503cb33162d2e409
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82780433"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533543"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>Het maken van een cluster mislukt met InvalidNetworkConfigurationErrorCode in azure HDInsight
 
@@ -66,7 +66,7 @@ Azure Storage en SQL hebben geen vaste IP-adressen, dus moeten uitgaande verbind
 
     Ga naar de Azure Portal en Identificeer de route tabel die is gekoppeld aan het subnet waar het cluster wordt geïmplementeerd. Wanneer u de route tabel voor het subnet hebt gevonden, inspecteert u de sectie **routes** hierin.
 
-    Als er routes zijn gedefinieerd, moet u ervoor zorgen dat er routes zijn voor IP-adressen voor de regio waarin het cluster is geïmplementeerd en dat de **NextHopType** voor elke route **Internet**is. Er moet een route worden gedefinieerd voor elk vereiste IP-adres dat in het voor noemde artikel wordt beschreven.
+    Als er routes zijn gedefinieerd, moet u ervoor zorgen dat er routes zijn voor IP-adressen voor de regio waarin het cluster is geïmplementeerd en dat de **NextHopType** voor elke route **Internet** is. Er moet een route worden gedefinieerd voor elk vereiste IP-adres dat in het voor noemde artikel wordt beschreven.
 
 ---
 
@@ -145,4 +145,4 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](../../azure-portal/supportability/how-to-create-azure-support-request.md)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

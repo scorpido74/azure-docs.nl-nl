@@ -9,12 +9,12 @@ ms.reviewer: v-ching, estfan, logicappspm
 ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: b08b5db5639d498aa6a6a47b7f7121cad565fe02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5842c5f3130b39f75b5339274b84feb2e0f283f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87986365"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547092"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>Verbeter de beveiliging tegen bedreigingen door beveiligings bewerkingen te integreren met Microsoft Graph Security-& Azure Logic Apps
 
@@ -36,7 +36,7 @@ Zie [Microsoft Graph Security API overview](https://aka.ms/graphsecuritydocs)(En
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/). 
 
-* Als u de Microsoft Graph Security-connector wilt gebruiken, moet u de Azure Active Directory (AD) *expliciet tenantbeheerderstoestemming hebben gegeven*, als onderdeel van de [Microsoft Graph Security-verificatievereisten](https://aka.ms/graphsecurityauth). Deze toestemming vereist de toepassings-ID en naam van de Microsoft Graph Security connector, die u ook in de [Azure Portal](https://portal.azure.com)kunt vinden:
+* Als u de Microsoft Graph Security-connector wilt gebruiken, moet u de Azure Active Directory (AD) *expliciet tenantbeheerderstoestemming hebben gegeven* , als onderdeel van de [Microsoft Graph Security-verificatievereisten](https://aka.ms/graphsecurityauth). Deze toestemming vereist de toepassings-ID en naam van de Microsoft Graph Security connector, die u ook in de [Azure Portal](https://portal.azure.com)kunt vinden:
 
   | Eigenschap | Waarde |
   |----------|-------|
@@ -64,11 +64,11 @@ Zie [Microsoft Graph Security API overview](https://aka.ms/graphsecuritydocs)(En
 
    -of-
 
-   Voor bestaande Logic apps, onder de laatste stap waar u een Microsoft Graph beveiligings actie wilt toevoegen, selecteert u **nieuwe stap**.
+   Voor bestaande Logic apps, onder de laatste stap waar u een Microsoft Graph beveiligings actie wilt toevoegen, selecteert u **nieuwe stap** .
 
    -of-
 
-   Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. Selecteer het plus teken (+) dat wordt weer gegeven en selecteer **een actie toevoegen**.
+   Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. Selecteer het plus teken (+) dat wordt weer gegeven en selecteer **een actie toevoegen** .
 
 1. Voer in het zoekvak ' micro soft Graph Security ' in als uw filter. Selecteer in de lijst acties de gewenste actie.
 
@@ -94,12 +94,12 @@ In dit voor beeld ziet u hoe u een werk stroom van een logische app kunt starten
    | Eigenschap | Eigenschap (JSON) | Vereist | Type | Beschrijving |
    |----------|-----------------|----------|------|-------------|
    | **Interval** | `interval` | Ja | Geheel getal | Een positief geheel getal dat aangeeft hoe vaak de werk stroom wordt uitgevoerd op basis van de frequentie. Dit zijn de minimale en maximale intervallen: <p><p>-Maand: 1-16 maanden <br>-Dag: 1-500 dagen <br>-Uur: 1-12000 uur <br>-Minuut: 1-72000 minuten <br>-Seconde: 1-9999999 seconden <p>Als het interval bijvoorbeeld 6 is en de frequentie ' month ' is, is het terugkeer patroon elke 6 maanden. |
-   | **Frequentie** | `frequency` | Ja | Tekenreeks | De tijds eenheid voor het terugkeer patroon: **tweede**, **minuut**, **uur**, **dag**, **week**of **maand** |
+   | **Frequentie** | `frequency` | Ja | Tekenreeks | De tijds eenheid voor het terugkeer patroon: **tweede** , **minuut** , **uur** , **dag** , **week** of **maand** |
    | **Tijdzone** | `timeZone` | Nee | Tekenreeks | Is alleen van toepassing wanneer u een start tijd opgeeft, omdat deze trigger geen [UTC-offset](https://en.wikipedia.org/wiki/UTC_offset)accepteert. Selecteer de tijd zone die u wilt Toep assen. |
    | **Begin tijd** | `startTime` | Nee | Tekenreeks | Geef een begin datum en-tijd op in de volgende indeling: <p><p>JJJJ-MM-DDTuu: mm: SS als u een tijd zone selecteert <p>-of- <p>JJJJ-MM-DDTuu: mm: ssZ als u geen tijd zone selecteert <p>Als u bijvoorbeeld 18 september 2017 om 2:00 uur wilt, geeft u "2017-09-18T14:00:00" op en selecteert u een tijd zone zoals Pacific (standaard tijd). U kunt ook "2017-09-18T14:00:00Z" opgeven zonder tijd zone. <p>**Opmerking:** Deze begin tijd heeft een maximum van 49 jaar in de toekomst en moet voldoen aan de [ISO 8601 date time-specificatie](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) in [UTC datum tijd notatie](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), maar zonder een [UTC-afwijking](https://en.wikipedia.org/wiki/UTC_offset). Als u geen tijd zone selecteert, moet u de letter ' Z ' aan het einde toevoegen zonder spaties. Deze "Z" verwijst naar de equivalente [zeemijl tijd](https://en.wikipedia.org/wiki/Nautical_time). <p>Voor eenvoudige schema's is de start tijd het eerste voorval, terwijl voor complexe schema's de trigger niet eerder dan de begin tijd wordt geactiveerd. [*Wat zijn de manieren waarop ik de begin datum en-tijd kan gebruiken?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
    ||||||
 
-1.  Wanneer u klaar bent, selecteert u op de werk balk ontwerpen de optie **Opslaan**.
+1.  Selecteer **Opslaan** op de werkbalk van de ontwerper wanneer u klaar bent.
 
 1.  Ga nu verder met het toevoegen van een of meer acties aan uw logische app voor de taken die u wilt uitvoeren met de trigger resultaten.
 
@@ -115,7 +115,7 @@ Als u de meest recente resultaten wilt filteren, sorteren of ophalen, geeft u *a
 
 Voor meer informatie over de query's die u met deze connector kunt gebruiken, raadpleegt u de [documentatie over Microsoft Graph Security Alerts](/graph/api/alert-list). Meer informatie over de [schema-eigenschappen](/graph/api/resources/alert) die door de connector worden ondersteund om uitgebreide ervaringen met deze connector te maken.
 
-| Bewerking | Beschrijving |
+| Actie | Beschrijving |
 |--------|-------------|
 | **Waarschuwingen ophalen** | Ontvang waarschuwingen die worden gefilterd op basis van een of meer [Eigenschappen van waarschuwingen](/graph/api/resources/alert), bijvoorbeeld `Provider eq 'Azure Security Center' or 'Palo Alto Networks'` . | 
 | **Waarschuwing op ID ontvangen** | Een specifieke waarschuwing ophalen op basis van de waarschuwings-ID. | 
@@ -128,7 +128,7 @@ Microsoft Graph ondersteunt [*abonnementen*](/graph/api/resources/subscription)o
 
 `security/alerts?$filter=status eq 'NewAlert'`
 
-| Bewerking | Beschrijving |
+| Actie | Beschrijving |
 |--------|-------------|
 | **Abonnementen maken** | [Maak een abonnement](/graph/api/subscription-post-subscriptions) dat u op de hoogte brengt van eventuele wijzigingen. U kunt dit abonnement filteren op de specifieke waarschuwings typen die u wilt. U kunt bijvoorbeeld een abonnement maken dat u op de hoogte stelt van waarschuwingen met hoge urgentie. |
 | **Actieve abonnementen ophalen** | Niet- [verlopen abonnementen ophalen](/graph/api/subscription-list). | 
@@ -142,19 +142,19 @@ Als u de meest recente resultaten wilt filteren, sorteren of ophalen, geeft u *a
 
 `Filter threat intelligence indicator value as threatType eq 'DDoS'`
 
-Voor meer informatie over de query's die u met deze connector kunt gebruiken, raadpleegt u [' optionele query parameters ' in de referentie documentatie Microsoft Graph Security Threat Intelligence-indicator](/graph/api/tiindicators-list?tabs=http&view=graph-rest-beta). Als u uitgebreide ervaringen met deze connector wilt maken, leest u meer over de [schema-eigenschappen Threat Intelligence-indicator](/graph/api/resources/tiindicator?view=graph-rest-beta) die door de connector wordt ondersteund.
+Voor meer informatie over de query's die u met deze connector kunt gebruiken, raadpleegt u [' optionele query parameters ' in de referentie documentatie Microsoft Graph Security Threat Intelligence-indicator](/graph/api/tiindicators-list). Als u uitgebreide ervaringen met deze connector wilt maken, leest u meer over de [schema-eigenschappen Threat Intelligence-indicator](/graph/api/resources/tiindicator) die door de connector wordt ondersteund.
 
-| Bewerking | Beschrijving |
+| Actie | Beschrijving |
 |--------|-------------|
-| **Threat Intelligence-Indica tors ophalen** | Get tiIndicators gefilterd op basis van een of meer [tiIndicator-eigenschappen](/graph/api/resources/tiindicator?view=graph-rest-beta), bijvoorbeeld `threatType eq 'MaliciousUrl' or 'DDoS'` |
+| **Threat Intelligence-Indica tors ophalen** | Get tiIndicators gefilterd op basis van een of meer [tiIndicator-eigenschappen](/graph/api/resources/tiindicator), bijvoorbeeld `threatType eq 'MaliciousUrl' or 'DDoS'` |
 | **Bedreigings informatie-indicator op ID ophalen** | Een specifieke tiIndicator ophalen op basis van de tiIndicator-ID. | 
-| **Bedreigings informatie-indicator maken** | Maak een nieuwe tiIndicator door te boeken naar de tiIndicators-verzameling. Om ervoor te zorgen dat u de vereiste eigenschappen in uw aanvraag doorgeeft, raadpleegt u de [vereiste eigenschappen voor het maken van tiIndicator](/graph/api/tiindicators-post?tabs=http&view=graph-rest-beta). |
-| **Meerdere Threat Intelligence-indica toren verzenden** | Maak meerdere nieuwe tiIndicators door een tiIndicators-verzameling te boeken. Om ervoor te zorgen dat u de vereiste eigenschappen in uw aanvraag doorgeeft, raadpleegt u de [vereiste eigenschappen voor het verzenden van meerdere tiIndicators](/graph/api/tiindicator-submittiindicators?tabs=http&view=graph-rest-beta). |
-| **Bedreigings informatie-indicator bijwerken** | Een specifieke tiIndicator bijwerken op basis van de tiIndicator-ID. Zie de [Bewerk bare eigenschappen voor tiIndicator](/graph/api/tiindicator-update?tabs=http&view=graph-rest-beta)om ervoor te zorgen dat u de vereiste en bewerk bare eigenschappen in uw aanvraag doorgeeft. Als u bijvoorbeeld de actie wilt bijwerken die moet worden toegepast als de indicator wordt vergeleken vanuit het targetProduct-beveiligings hulpprogramma, kunt u de eigenschap **Action** van tiIndicator bijwerken. |
-| **Meerdere Threat Intelligence-indica toren bijwerken** | Meerdere tiIndicators bijwerken. Raadpleeg de [vereiste eigenschappen voor het bijwerken van meerdere tiIndicators](/graph/api/tiindicator-updatetiindicators?tabs=http&view=graph-rest-beta)om ervoor te zorgen dat u de vereiste eigenschappen in uw aanvraag doorgeeft. |
+| **Bedreigings informatie-indicator maken** | Maak een nieuwe tiIndicator door te boeken naar de tiIndicators-verzameling. Om ervoor te zorgen dat u de vereiste eigenschappen in uw aanvraag doorgeeft, raadpleegt u de [vereiste eigenschappen voor het maken van tiIndicator](/graph/api/tiindicators-post). |
+| **Meerdere Threat Intelligence-indica toren verzenden** | Maak meerdere nieuwe tiIndicators door een tiIndicators-verzameling te boeken. Om ervoor te zorgen dat u de vereiste eigenschappen in uw aanvraag doorgeeft, raadpleegt u de [vereiste eigenschappen voor het verzenden van meerdere tiIndicators](/graph/api/tiindicator-submittiindicators). |
+| **Bedreigings informatie-indicator bijwerken** | Een specifieke tiIndicator bijwerken op basis van de tiIndicator-ID. Zie de [Bewerk bare eigenschappen voor tiIndicator](/graph/api/tiindicator-update)om ervoor te zorgen dat u de vereiste en bewerk bare eigenschappen in uw aanvraag doorgeeft. Als u bijvoorbeeld de actie wilt bijwerken die moet worden toegepast als de indicator wordt vergeleken vanuit het targetProduct-beveiligings hulpprogramma, kunt u de eigenschap **Action** van tiIndicator bijwerken. |
+| **Meerdere Threat Intelligence-indica toren bijwerken** | Meerdere tiIndicators bijwerken. Raadpleeg de [vereiste eigenschappen voor het bijwerken van meerdere tiIndicators](/graph/api/tiindicator-updatetiindicators)om ervoor te zorgen dat u de vereiste eigenschappen in uw aanvraag doorgeeft. |
 | **Bedreigings informatie-indicator op ID verwijderen** | Een specifieke tiIndicator verwijderen op basis van de tiIndicator-ID. |
-| **Meerdere Threat Intelligence-indica toren per id verwijderen** | Verwijder meerdere tiIndicators met hun Id's. Om ervoor te zorgen dat u de vereiste eigenschappen in uw aanvraag doorgeeft, raadpleegt u de [vereiste eigenschappen voor het verwijderen van meerdere tiIndicators op id's](/graph/api/tiindicator-deletetiindicators?tabs=http&view=graph-rest-beta). |
-| **Meerdere Threat Intelligence-indica toren met externe Id's verwijderen** | Meerdere tiIndicators verwijderen met de externe Id's. Om ervoor te zorgen dat u de vereiste eigenschappen in uw aanvraag doorgeeft, raadpleegt u de [vereiste eigenschappen voor het verwijderen van meerdere tiIndicators door externe id's](/graph/api/tiindicator-deletetiindicatorsbyexternalid?tabs=http&view=graph-rest-beta). |
+| **Meerdere Threat Intelligence-indica toren per id verwijderen** | Verwijder meerdere tiIndicators met hun Id's. Om ervoor te zorgen dat u de vereiste eigenschappen in uw aanvraag doorgeeft, raadpleegt u de [vereiste eigenschappen voor het verwijderen van meerdere tiIndicators op id's](/graph/api/tiindicator-deletetiindicators). |
+| **Meerdere Threat Intelligence-indica toren met externe Id's verwijderen** | Meerdere tiIndicators verwijderen met de externe Id's. Om ervoor te zorgen dat u de vereiste eigenschappen in uw aanvraag doorgeeft, raadpleegt u de [vereiste eigenschappen voor het verwijderen van meerdere tiIndicators door externe id's](/graph/api/tiindicator-deletetiindicatorsbyexternalid). |
 |||
 
 ## <a name="connector-reference"></a>Connector-verwijzing

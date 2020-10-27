@@ -6,18 +6,18 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: e49fd0d2b4d8fc801372dbc766c2fdc7beb21b10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6086aecc73f04b25e95d3c93c60abd2164a5610
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905908"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544236"
 ---
 # <a name="private-link-for-azure-database-for-mysql"></a>Persoonlijke koppeling voor Azure Database for MySQL
 
 Met een Private Link kunt u via een privé-eindpunt verbinding maken met verschillende PaaS-services in Azure. Met Azure Private Link worden Azure-services binnen uw persoonlijke virtuele network (VNet) geplaatst. De PaaS-resources kunnen worden geopend met behulp van het privé-IP-adres, net zoals elke andere resource op het VNet.
 
-Raadpleeg de [documentatie](https://docs.microsoft.com/azure/private-link/index)van de privé-koppeling voor een lijst met PaaS-services die ondersteuning bieden voor persoonlijke koppelings functionaliteit. Een persoonlijk eind punt is een privé-IP-adres binnen een specifiek [VNet](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) en subnet.
+Raadpleeg de [documentatie](../private-link/index.yml)van de privé-koppeling voor een lijst met PaaS-services die ondersteuning bieden voor persoonlijke koppelings functionaliteit. Een persoonlijk eind punt is een privé-IP-adres binnen een specifiek [VNet](../virtual-network/virtual-networks-overview.md) en subnet.
 
 > [!NOTE]
 > De functie voor persoonlijke koppelingen is alleen beschikbaar voor Azure Database for MySQL servers in de prijs Categorieën Algemeen of geoptimaliseerd voor geheugen. Zorg ervoor dat de database server zich in een van deze prijs categorieën bevindt.
@@ -28,7 +28,7 @@ Gegevens die worden gefilterd in Azure Database for MySQL, zijn wanneer een geau
 
 Overweeg een scenario met een gebruiker die MySQL Workbench uitvoert binnen een Azure virtual machine (VM) die verbinding maakt met een Azure Database for MySQL server die in VS West is ingericht. In het onderstaande voor beeld ziet u hoe u de toegang tot de open bare eind punten op Azure Database for MySQL met behulp van besturings elementen voor netwerk toegang kunt beperken.
 
-* Schakel alle Azure-service verkeer uit voor Azure Database for MySQL via het open bare eind punt door de instelling *Azure-Services toestaan* in te scha kelen. Zorg ervoor dat er geen IP-adressen of bereiken toegang hebben tot de server via [firewall regels](https://docs.microsoft.com/azure/mysql/concepts-firewall-rules) of [virtuele netwerk service-eind punten](https://docs.microsoft.com/azure/mysql/concepts-data-access-and-security-vnet).
+* Schakel alle Azure-service verkeer uit voor Azure Database for MySQL via het open bare eind punt door de instelling *Azure-Services toestaan* in te scha kelen. Zorg ervoor dat er geen IP-adressen of bereiken toegang hebben tot de server via [firewall regels](./concepts-firewall-rules.md) of [virtuele netwerk service-eind punten](./concepts-data-access-and-security-vnet.md).
 
 * Alleen verkeer naar het Azure Database for MySQL toestaan met behulp van het privé-IP-adres van de virtuele machine. Zie de artikelen over [Service-eindpunt](concepts-data-access-and-security-vnet.md) en [VNet-firewallregels](howto-manage-vnet-using-portal.md)voor meer informatie.
 
@@ -45,7 +45,7 @@ Met persoonlijke koppeling kunt u nu netwerk toegangs beheer instellen, zoals Ns
 
 Wanneer u verbinding maakt met het open bare eind punt vanaf de on-premises machines, moet uw IP-adres worden toegevoegd aan de op IP gebaseerde firewall met behulp van een firewall regel op server niveau. Hoewel dit model goed werkt voor het toestaan van toegang tot afzonderlijke computers voor ontwikkel- of testwerkbelastingen, is het moeilijk te beheren in een productieomgeving.
 
-Met persoonlijke koppeling kunt u cross-premises toegang tot het privé-eind punt inschakelen met behulp van [Express route](https://azure.microsoft.com/services/expressroute/) (er), persoonlijke peering of [VPN-tunnel](https://docs.microsoft.com/azure/vpn-gateway/). Ze kunnen vervolgens alle toegang uitschakelen via het open bare eind punt en de op IP gebaseerde firewall niet gebruiken.
+Met persoonlijke koppeling kunt u cross-premises toegang tot het privé-eind punt inschakelen met behulp van [Express route](https://azure.microsoft.com/services/expressroute/) (er), persoonlijke peering of [VPN-tunnel](../vpn-gateway/index.yml). Ze kunnen vervolgens alle toegang uitschakelen via het open bare eind punt en de op IP gebaseerde firewall niet gebruiken.
 
 > [!NOTE]
 > In sommige gevallen bevinden de Azure Database for MySQL en het VNet-subnet zich in verschillende abonnementen. In deze gevallen moet u ervoor zorgen dat u de volgende configuraties hebt:
@@ -57,8 +57,8 @@ Met persoonlijke koppeling kunt u cross-premises toegang tot het privé-eind pun
 
 Privé-eind punten zijn vereist om een persoonlijke koppeling in te scha kelen. U kunt dit doen met behulp van de volgende hand leidingen.
 
-* [Azure-portal](https://docs.microsoft.com/azure/mysql/howto-configure-privatelink-portal)
-* [CLI](https://docs.microsoft.com/azure/mysql/howto-configure-privatelink-cli)
+* [Azure Portal](./howto-configure-privatelink-portal.md)
+* [CLI](./howto-configure-privatelink-cli.md)
 
 ### <a name="approval-process"></a>Goedkeuringsproces
 Zodra de netwerk beheerder het persoonlijke eind punt (PE) heeft gemaakt, kan de MySQL-beheerder de verbinding met het privé-eind punt (PEC) met Azure Database for MySQL beheren. Deze schei ding van taken tussen de netwerk beheerder en de DBA is handig voor het beheer van de Azure Database for MySQL-verbinding. 
@@ -89,17 +89,17 @@ Clients kunnen verbinding maken met het persoonlijke eind punt van hetzelfde VNe
 :::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-overview.png" alt-text="de portal voor het persoonlijke eind punt selecteren":::
 
 ### <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>Verbinding maken vanaf een Azure VM in een Peered Virtual Network (VNet)
-Configureer [VNet-peering](https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-powershell) om verbinding te maken met de Azure database for MySQL van een Azure-vm in een gekoppeld VNet.
+Configureer [VNet-peering](../virtual-network/tutorial-connect-virtual-networks-powershell.md) om verbinding te maken met de Azure database for MySQL van een Azure-vm in een gekoppeld VNet.
 
 ### <a name="connecting-from-an-azure-vm-in-vnet-to-vnet-environment"></a>Verbinding maken vanaf een Azure VM in VNet-naar-VNet-omgeving
-Configureer de [vnet-naar-VNet VPN-gateway verbinding](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal) om verbinding te maken met een Azure database for MySQL van een Azure-vm in een andere regio of een ander abonnement.
+Configureer de [vnet-naar-VNet VPN-gateway verbinding](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) om verbinding te maken met een Azure database for MySQL van een Azure-vm in een andere regio of een ander abonnement.
 
 ### <a name="connecting-from-an-on-premises-environment-over-vpn"></a>Verbinding maken vanuit een on-premises omgeving via VPN
 Als u verbinding wilt maken vanuit een on-premises omgeving met de Azure Database for MySQL, kiest en implementeert u een van de volgende opties:
 
-* [Punt-naar-site-verbinding](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
-* [Site-naar-site-VPN-verbinding](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell)
-* [ExpressRoute-circuit](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager)
+* [Punt-naar-site-verbinding](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
+* [Site-naar-site-VPN-verbinding](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
+* [ExpressRoute-circuit](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)
 
 ## <a name="private-link-combined-with-firewall-rules"></a>Privé koppeling gecombineerd met firewall regels
 
@@ -115,7 +115,7 @@ De volgende situaties en resultaten zijn mogelijk wanneer u een persoonlijke kop
 
 Als u alleen wilt vertrouwen op privé-eind punten voor toegang tot hun Azure Database for MySQL, kunt u het instellen van alle open bare eind punten (zoals [firewall regels](concepts-firewall-rules.md) en [VNet-service-eind punten](concepts-data-access-and-security-vnet.md)) uitschakelen door de configuratie voor het **weigeren van open bare netwerk toegang** op de database server in te stellen. 
 
-Als deze instelling is ingesteld op *Ja*, zijn alleen verbindingen via persoonlijke eind punten toegestaan voor uw Azure database for MySQL. Als deze instelling is ingesteld op *Nee*, kunnen clients verbinding maken met uw Azure database for MySQL op basis van de instellingen van uw firewall of VNet-service-eind punten. Nadat de waarde van de toegang tot het particuliere netwerk is ingesteld, kunnen klanten ook bestaande firewall regels en VNet-service-eindpunt regels toevoegen en/of bijwerken.
+Als deze instelling is ingesteld op *Ja* , zijn alleen verbindingen via persoonlijke eind punten toegestaan voor uw Azure database for MySQL. Als deze instelling is ingesteld op *Nee* , kunnen clients verbinding maken met uw Azure database for MySQL op basis van de instellingen van uw firewall of VNet-service-eind punten. Nadat de waarde van de toegang tot het particuliere netwerk is ingesteld, kunnen klanten ook bestaande firewall regels en VNet-service-eindpunt regels toevoegen en/of bijwerken.
 
 > [!Note]
 > Deze functie is beschikbaar in alle Azure-regio's waar Azure Database for PostgreSQL-één server ondersteunt de prijs categorieën voor Algemeen en geoptimaliseerd voor geheugen.
@@ -128,11 +128,11 @@ Zie voor meer informatie over het instellen van de **toegang van open bare netwe
 
 Raadpleeg de volgende artikelen voor meer informatie over Azure Database for MySQL beveiligings functies:
 
-* Zie [firewall ondersteuning](https://docs.microsoft.com/azure/mysql/concepts-firewall-rules)als u een firewall wilt configureren voor Azure database for MySQL.
+* Zie [firewall ondersteuning](./concepts-firewall-rules.md)als u een firewall wilt configureren voor Azure database for MySQL.
 
-* Zie [toegang vanaf virtuele netwerken configureren](https://docs.microsoft.com/azure/mysql/concepts-data-access-and-security-vnet)voor meer informatie over het configureren van een service-eind punt voor een virtueel netwerk voor uw Azure database for MySQL.
+* Zie [toegang vanaf virtuele netwerken configureren](./concepts-data-access-and-security-vnet.md)voor meer informatie over het configureren van een service-eind punt voor een virtueel netwerk voor uw Azure database for MySQL.
 
-* Zie [Azure database for MySQL Connectivity Architecture](https://docs.microsoft.com/azure/mysql/concepts-connectivity-architecture) (Engelstalig) voor een overzicht van Azure database for MySQL connectiviteit
+* Zie [Azure database for MySQL Connectivity Architecture](./concepts-connectivity-architecture.md) (Engelstalig) voor een overzicht van Azure database for MySQL connectiviteit
 
 <!-- Link references, to text, Within this same GitHub repo. -->
 [resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

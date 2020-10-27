@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: a4db09c81efcd342d149cb95286aa6ee9cac93a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3dcb5d7ed75bda8422ba3bd461b08d3bfb2d974f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595781"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541006"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>HDInsight-clusters beheren met Enterprise Security Package
 
@@ -87,13 +87,13 @@ Als u wilt zoeken naar de Fully Qualified Domain Name van een hoofd knooppunt, g
 
 Een niet-ESP HDInsight-cluster heeft twee gebruikers accounts die worden gemaakt tijdens het maken van het cluster:
 
-- **Ambari beheerder**: dit account wordt ook een *Hadoop-gebruiker* of *http-gebruiker*genoemd. Dit account kan worden gebruikt om u aan te melden bij Ambari op `https://CLUSTERNAME.azurehdinsight.net` . Het kan ook worden gebruikt om query's uit te voeren op Ambari-weer gaven, taken uit te voeren via externe hulpprogram ma's (bijvoorbeeld Power shell, Templeton, Visual Studio) en te verifiëren met het Hive ODBC-stuur programma en BI-hulpprogram ma's (bijvoorbeeld Excel, Power BI of tableau).
+- **Ambari beheerder** : dit account wordt ook een *Hadoop-gebruiker* of *http-gebruiker* genoemd. Dit account kan worden gebruikt om u aan te melden bij Ambari op `https://CLUSTERNAME.azurehdinsight.net` . Het kan ook worden gebruikt om query's uit te voeren op Ambari-weer gaven, taken uit te voeren via externe hulpprogram ma's (bijvoorbeeld Power shell, Templeton, Visual Studio) en te verifiëren met het Hive ODBC-stuur programma en BI-hulpprogram ma's (bijvoorbeeld Excel, Power BI of tableau).
 
 Een HDInsight-cluster met ESP heeft naast Ambari-beheerder drie nieuwe gebruikers.
 
-- **Zwerver-beheerder**: dit account is het lokale Apache zwerver-beheerders account. Het is geen Active Directory-domein gebruiker. Dit account kan worden gebruikt voor het instellen van beleid en het maken van andere gebruikers beheerders of gedelegeerde beheerders (zodat deze gebruikers beleid kunnen beheren). De gebruikers naam is standaard *beheerder* en het wacht woord is hetzelfde als het Ambari beheerders wachtwoord. Het wacht woord kan worden bijgewerkt vanaf de pagina instellingen in zwerver.
+- **Zwerver-beheerder** : dit account is het lokale Apache zwerver-beheerders account. Het is geen Active Directory-domein gebruiker. Dit account kan worden gebruikt voor het instellen van beleid en het maken van andere gebruikers beheerders of gedelegeerde beheerders (zodat deze gebruikers beleid kunnen beheren). De gebruikers naam is standaard *beheerder* en het wacht woord is hetzelfde als het Ambari beheerders wachtwoord. Het wacht woord kan worden bijgewerkt vanaf de pagina instellingen in zwerver.
 
-- **Domein gebruiker cluster beheerder**: dit account is een Active Directory-domein gebruiker die is aangewezen als Hadoop-Cluster beheer, waaronder Ambari en zwerver. U moet de referenties van deze gebruiker opgeven tijdens het maken van het cluster. Deze gebruiker heeft de volgende bevoegdheden:
+- **Domein gebruiker cluster beheerder** : dit account is een Active Directory-domein gebruiker die is aangewezen als Hadoop-Cluster beheer, waaronder Ambari en zwerver. U moet de referenties van deze gebruiker opgeven tijdens het maken van het cluster. Deze gebruiker heeft de volgende bevoegdheden:
     - Voeg computers toe aan het domein en plaats deze binnen de OE die u opgeeft tijdens het maken van het cluster.
     - Service-principals maken binnen de organisatie-eenheid die u opgeeft tijdens het maken van het cluster.
     - Omgekeerde DNS-vermeldingen maken.
@@ -102,7 +102,7 @@ Een HDInsight-cluster met ESP heeft naast Ambari-beheerder drie nieuwe gebruiker
 
     Er zijn een aantal eind punten in het cluster (bijvoorbeeld Templeton) die niet worden beheerd door zwerver en daarom niet zijn beveiligd. Deze eind punten zijn voor alle gebruikers vergrendeld, met uitzonde ring van de domein gebruiker cluster beheerder.
 
-- **Normaal**: tijdens het maken van een cluster kunt u meerdere Active Directory-groepen opgeven. De gebruikers in deze groepen worden gesynchroniseerd met zwerver en Ambari. Deze gebruikers zijn domein gebruikers en hebben toegang tot alleen zwerver-beheerde eind punten (bijvoorbeeld Hiveserver2). Alle RBAC-beleids regels en-controles zijn van toepassing op deze gebruikers.
+- **Normaal** : tijdens het maken van een cluster kunt u meerdere Active Directory-groepen opgeven. De gebruikers in deze groepen worden gesynchroniseerd met zwerver en Ambari. Deze gebruikers zijn domein gebruikers en hebben toegang tot alleen zwerver-beheerde eind punten (bijvoorbeeld Hiveserver2). Alle RBAC-beleids regels en-controles zijn van toepassing op deze gebruikers.
 
 ## <a name="roles-of-hdinsight-clusters-with-esp"></a>Rollen van HDInsight-clusters met ESP
 
@@ -117,7 +117,7 @@ HDInsight Enterprise Security Package heeft de volgende rollen:
 **De machtigingen van deze rollen weer geven**
 
 1. Open de gebruikers interface van Ambari-beheer.  Zie [de gebruikers interface van Ambari Management openen](#open-the-ambari-management-ui).
-2. Selecteer in het menu links de optie **rollen**.
+2. Selecteer in het menu links de optie **rollen** .
 3. Selecteer het blauwe vraag teken om de machtigingen te bekijken:
 
     ![Machtigingen voor ESP HDInsight-rollen](./media/apache-domain-joined-manage/hdinsight-domain-joined-roles-permissions.png)
@@ -126,7 +126,7 @@ HDInsight Enterprise Security Package heeft de volgende rollen:
 
 1. Navigeer naar `https://CLUSTERNAME.azurehdinsight.net/` de naam van het cluster.
 1. Meld u aan bij Ambari met behulp van de domein gebruikers naam en het wacht woord van de Cluster beheerder.
-1. Selecteer de vervolg keuzelijst **beheerder** in de rechter bovenhoek en selecteer vervolgens **Ambari beheren**.
+1. Selecteer de vervolg keuzelijst **beheerder** in de rechter bovenhoek en selecteer vervolgens **Ambari beheren** .
 
     ![ESP HDInsight Manage Apache Ambari](./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)
 
@@ -137,21 +137,21 @@ HDInsight Enterprise Security Package heeft de volgende rollen:
 ## <a name="list-the-domain-users-synchronized-from-your-active-directory"></a>De domein gebruikers weer geven die zijn gesynchroniseerd vanuit uw Active Directory
 
 1. Open de gebruikers interface van Ambari-beheer.  Zie [de gebruikers interface van Ambari Management openen](#open-the-ambari-management-ui).
-2. Selecteer in het menu links de optie **gebruikers**. U ziet alle gebruikers die zijn gesynchroniseerd van uw Active Directory naar het HDInsight-cluster.
+2. Selecteer in het menu links de optie **gebruikers** . U ziet alle gebruikers die zijn gesynchroniseerd van uw Active Directory naar het HDInsight-cluster.
 
     ![Gebruikers interface lijst van ESP HDInsight Ambari-beheer](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-users.png)
 
 ## <a name="list-the-domain-groups-synchronized-from-your-active-directory"></a>De domein groepen weer geven die zijn gesynchroniseerd vanuit uw Active Directory
 
 1. Open de gebruikers interface van Ambari-beheer.  Zie [de gebruikers interface van Ambari Management openen](#open-the-ambari-management-ui).
-2. Selecteer in het menu links **groepen**. U ziet alle groepen die zijn gesynchroniseerd van uw Active Directory naar het HDInsight-cluster.
+2. Selecteer in het menu links **groepen** . U ziet alle groepen die zijn gesynchroniseerd van uw Active Directory naar het HDInsight-cluster.
 
     ![Lijst groepen van de gebruikers interface van ESP HDInsight Ambari Management](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-groups.png)
 
 ## <a name="configure-hive-views-permissions"></a>Machtigingen voor Hive-weer gaven configureren
 
 1. Open de gebruikers interface van Ambari-beheer.  Zie [de gebruikers interface van Ambari Management openen](#open-the-ambari-management-ui).
-2. Selecteer in het menu links de optie **weer gaven**.
+2. Selecteer in het menu links de optie **weer gaven** .
 3. Selecteer **Hive** om de details weer te geven.
 
     ![UI-Hive-weer gaven ESP HDInsight Ambari Management](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views.png)
@@ -161,17 +161,17 @@ HDInsight Enterprise Security Package heeft de volgende rollen:
 
     ![Gebruikers interface van ESP HDInsight Ambari Management-Hive machtigingen configureren](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views-permissions.png)
 
-6. Selecteer **gebruiker toevoegen** of **groep toevoegen**en geef vervolgens de gebruikers of groepen op die Hive-weer gaven kunnen gebruiken.
+6. Selecteer **gebruiker toevoegen** of **groep toevoegen** en geef vervolgens de gebruikers of groepen op die Hive-weer gaven kunnen gebruiken.
 
 ## <a name="configure-users-for-the-roles"></a>Gebruikers configureren voor de rollen
 
  Zie rollen van HDInsight-clusters met ESP voor een overzicht van de rollen en de bijbehorende machtigingen.
 
 1. Open de gebruikers interface van Ambari-beheer.  Zie [de gebruikers interface van Ambari Management openen](#open-the-ambari-management-ui).
-2. Selecteer in het menu links de optie **rollen**.
+2. Selecteer in het menu links de optie **rollen** .
 3. Selecteer **gebruiker toevoegen** of **groep toevoegen** om gebruikers en groepen toe te wijzen aan verschillende rollen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [hdinsight-clusters met ESP configureren](apache-domain-joined-configure.md)voor meer informatie over het configureren van een hdinsight-cluster met Enterprise Security Package.
+- Zie [hdinsight-clusters met ESP configureren](./apache-domain-joined-configure-using-azure-adds.md)voor meer informatie over het configureren van een hdinsight-cluster met Enterprise Security Package.
 - Zie [configure Apache Hive policies for HDInsight clusters with ESP](apache-domain-joined-run-hive.md)(Engelstalig) voor het configureren van Hive-beleid en het uitvoeren van Hive-query's.

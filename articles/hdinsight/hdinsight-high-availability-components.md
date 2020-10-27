@@ -7,19 +7,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 4d0405df1863ee47374242ba4fba5b845711d3a1
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1ff7932f0afb128f6e7568ecdae602c6471db0bd
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424517"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539714"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Services met hoge Beschik baarheid die worden ondersteund door Azure HDInsight
 
 HDInsight is ontwikkeld met een unieke architectuur voor hoge Beschik baarheid (HA) van essentiële services, zodat u een optimale Beschik baarheid kunt bieden voor uw analyse onderdelen. Sommige onderdelen van deze architectuur zijn ontwikkeld door micro soft om automatische failover te bieden. Andere onderdelen zijn standaard Apache-onderdelen die zijn geïmplementeerd ter ondersteuning van specifieke services. In dit artikel wordt de architectuur van het service model HA in HDInsight beschreven, hoe HDInsight failover ondersteunt voor HA-Services en best practices voor het herstellen van andere service onderbrekingen.
 
 > [!NOTE]
-> Dit artikel bevat verwijzingen naar de term *Slave*, een term die door micro soft niet meer wordt gebruikt. Wanneer de periode van de software wordt verwijderd, worden deze uit dit artikel verwijderd.
+> Dit artikel bevat verwijzingen naar de term *Slave* , een term die door micro soft niet meer wordt gebruikt. Wanneer de periode van de software wordt verwijderd, worden deze uit dit artikel verwijderd.
 
 ## <a name="high-availability-infrastructure"></a>Infra structuur met hoge Beschik baarheid
 
@@ -49,7 +49,7 @@ In de volgende secties vindt u meer informatie over de manier waarop deze servic
 
 ## <a name="hdinsight-high-availability-services"></a>Services met hoge Beschik baarheid HDInsight
 
-Micro soft biedt ondersteuning voor de vier Apache-Services in de volgende tabel in HDInsight-clusters. Om ze te onderscheiden van services met hoge Beschik baarheid die worden ondersteund door onderdelen van Apache, worden de *Services van HDINSIGHT ha*genoemd.
+Micro soft biedt ondersteuning voor de vier Apache-Services in de volgende tabel in HDInsight-clusters. Om ze te onderscheiden van services met hoge Beschik baarheid die worden ondersteund door onderdelen van Apache, worden de *Services van HDINSIGHT ha* genoemd.
 
 | Service | Clusterknooppunten | Cluster typen | Doel |
 |---|---|---|---|
@@ -65,7 +65,7 @@ Micro soft biedt ondersteuning voor de vier Apache-Services in de volgende tabel
 
 Elk HDInsight-cluster heeft respectievelijk twee hoofd knooppunten in de modi actief en stand-by. De HDInsight HA-services worden alleen op hoofd knooppunten uitgevoerd. Deze services moeten altijd worden uitgevoerd op het actieve hoofd knooppunt en in de onderhouds modus worden gestopt en in de stand-bymodus worden geplaatst hoofd knooppunt.
 
-Om de juiste statussen van HA-services te behouden en een snelle failover te bieden, maakt HDInsight gebruik van Apache ZooKeeper, een coördinatie service voor gedistribueerde toepassingen, om actieve hoofd knooppunt-verkiezing uit te voeren. HDInsight is ook van toepassing op een aantal Java-achtergrond processen, waarmee de procedure failover voor HDInsight HA-Services wordt gecoördineerd. Deze services zijn de volgende: de hoofd-failover-controller, de slave-failover-controller, de *Master-ha-service*en de *Slave-ha-service*.
+Om de juiste statussen van HA-services te behouden en een snelle failover te bieden, maakt HDInsight gebruik van Apache ZooKeeper, een coördinatie service voor gedistribueerde toepassingen, om actieve hoofd knooppunt-verkiezing uit te voeren. HDInsight is ook van toepassing op een aantal Java-achtergrond processen, waarmee de procedure failover voor HDInsight HA-Services wordt gecoördineerd. Deze services zijn de volgende: de hoofd-failover-controller, de slave-failover-controller, de *Master-ha-service* en de *Slave-ha-service* .
 
 ### <a name="apache-zookeeper"></a>Apache ZooKeeper
 
@@ -136,5 +136,5 @@ HDInsight HBase-clusters ondersteunen HBase Master hoge Beschik baarheid. In teg
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Beschik baarheid en betrouw baarheid van Apache Hadoop clusters in HDInsight](hdinsight-high-availability-linux.md)
+- [Beschik baarheid en betrouw baarheid van Apache Hadoop clusters in HDInsight](./hdinsight-business-continuity.md)
 - [Azure HDInsight Virtual Network-architectuur](hdinsight-virtual-network-architecture.md)

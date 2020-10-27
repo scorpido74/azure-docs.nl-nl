@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: b29e4411a104bbcd1d6d5b3320df47a742e2ca84
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: dc1da641ba628cef92250549c1c6b6482cf18b51
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461240"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547330"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Een Python-omgeving veilig beheren in Azure HDInsight met scriptactie
 
@@ -37,7 +37,7 @@ Er zijn twee soorten open source-onderdelen die beschikbaar zijn in de HDInsight
 > [!IMPORTANT]
 > Onderdelen die worden meegeleverd met het HDInsight-cluster, worden volledig ondersteund. Microsoft Ondersteuning helpt bij het isoleren en oplossen van problemen met betrekking tot deze onderdelen.
 >
-> Aangepaste onderdelen ontvangen commercieel redelijke ondersteuning om u te helpen het probleem verder op te lossen. Micro soft ondersteuning kan het probleem mogelijk oplossen of u wordt gevraagd beschik bare kanalen te betrekken voor de open source-technologieën waar diep gaande expertise voor die technologie wordt gevonden. Er zijn bijvoorbeeld veel community-sites die kunnen worden gebruikt, zoals: [micro soft Q&een vraag pagina voor HDInsight](https://docs.microsoft.com/answers/topics/azure-hdinsight.html) `https://stackoverflow.com` . Ook Apache-projecten hebben project sites op `https://apache.org` .
+> Aangepaste onderdelen ontvangen commercieel redelijke ondersteuning om u te helpen het probleem verder op te lossen. Micro soft ondersteuning kan het probleem mogelijk oplossen of u wordt gevraagd beschik bare kanalen te betrekken voor de open source-technologieën waar diep gaande expertise voor die technologie wordt gevonden. Er zijn bijvoorbeeld veel community-sites die kunnen worden gebruikt, zoals: [micro soft Q&een vraag pagina voor HDInsight](/answers/topics/azure-hdinsight.html) `https://stackoverflow.com` . Ook Apache-projecten hebben project sites op `https://apache.org` .
 
 ## <a name="understand-default-python-installation"></a>Informatie over de standaard installatie van python
 

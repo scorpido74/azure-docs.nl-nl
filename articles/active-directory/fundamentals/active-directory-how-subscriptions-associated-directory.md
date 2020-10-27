@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 747edfdb2a2709a842f767d2ace09662d139c827
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ed68211d034a133b923b6a2eec20ad6f1a0ffe2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666429"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541023"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Een Azure-abonnement aan uw Azure Active Directory-tenant toevoegen of koppelen
 
@@ -35,8 +35,6 @@ Al uw gebruikers hebben één *basis* Directory voor verificatie. Uw gebruikers 
 > [!Important]
 > Wanneer u een abonnement aan een andere Directory koppelt, gaan gebruikers die rollen hebben die zijn toegewezen met behulp [van Azure op rollen gebaseerd toegangs beheer](../../role-based-access-control/role-assignments-portal.md) hun toegang kwijt. Klassieke abonnementsbeheerders, waaronder de servicebeheerder en co-beheerders, verliezen ook hun toegang.
 >
-> Beleidstoewijzingen worden verwijderd uit een abonnement wanneer het abonnement wordt gekoppeld aan een andere Active Directory.
->
 > Door uw Azure Kubernetes service-cluster (AKS) naar een ander abonnement te verplaatsen of het cluster eigenaar-abonnement te verplaatsen naar een nieuwe Tenant, wordt de functionaliteit van het cluster verloren gegaan vanwege verloren Roltoewijzingen en de rechten van de Service-Principal. Zie [Azure Kubernetes service (AKS) (Engelstalig)](../../aks/index.yml)voor meer informatie over AKS.
 
 ## <a name="before-you-begin"></a>Voordat u begint
@@ -50,7 +48,7 @@ Voordat u uw abonnement kunt koppelen of toevoegen, moet u de volgende taken uit
   - Als u sleutel kluizen hebt, zijn ze niet toegankelijk en moet u deze na de koppeling oplossen
   - Als u beheerde identiteiten hebt voor resources zoals Virtual Machines of Logic Apps, moet u deze opnieuw inschakelen of opnieuw maken na de koppeling
   - Als u een geregistreerde Azure Stack hebt, moet u deze na de koppeling opnieuw registreren
-  - Zie [een Azure-abonnement overdragen naar een andere Azure AD-Directory](../../role-based-access-control/transfer-subscription.md)voor meer informatie.
+  - Raadpleeg [Een Azure-abonnement overzetten naar een andere Azure AD-map](../../role-based-access-control/transfer-subscription.md) voor meer informatie.
 
 - Meld u aan met een account dat:
 
@@ -65,11 +63,11 @@ Voer de volgende stappen uit om een bestaand abonnement aan uw Azure AD-adres li
 
 1. Meld u aan en selecteer het abonnement dat u wilt gebruiken op de [pagina Abonnementen in azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 
-1. Selecteer **map wijzigen**.
+1. Selecteer **map wijzigen** .
 
    ![Pagina Abonnementen, met de optie map wijzigen gemarkeerd](media/active-directory-how-subscriptions-associated-directory/change-directory-in-azure-subscriptions.png)
 
-1. Bekijk eventuele waarschuwingen die worden weer gegeven en selecteer **wijzigen**.
+1. Bekijk eventuele waarschuwingen die worden weer gegeven en selecteer **wijzigen** .
 
    ![Wijzig de Directory-pagina met de Directory waarnaar moet worden gewijzigd](media/active-directory-how-subscriptions-associated-directory/edit-directory-ui.png)
 
@@ -79,7 +77,7 @@ Voer de volgende stappen uit om een bestaand abonnement aan uw Azure AD-adres li
 
    ![Pagina Directory-wisselaar, met voorbeeld gegevens](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 
-   Het kan enkele uren duren voordat alles goed wordt weer gegeven. Als het te lang lijkt te duren, controleert u het **filter voor algemeen abonnement**. Zorg ervoor dat het verplaatste abonnement niet is verborgen. Mogelijk moet u zich afmelden bij de Azure Portal en u opnieuw aanmelden om de nieuwe map te zien.
+   Het kan enkele uren duren voordat alles goed wordt weer gegeven. Als het te lang lijkt te duren, controleert u het **filter voor algemeen abonnement** . Zorg ervoor dat het verplaatste abonnement niet is verborgen. Mogelijk moet u zich afmelden bij de Azure Portal en u opnieuw aanmelden om de nieuwe map te zien.
 
 Het wijzigen van de abonnements Directory is een bewerking op service niveau. Dit heeft geen invloed op het eigendom van het abonnement. Als u de oorspronkelijke map wilt verwijderen, moet u het eigendom van het abonnement overdragen aan een nieuwe account beheerder. Zie [eigendom van een Azure-abonnement overdragen aan een ander account](../../cost-management-billing/manage/billing-subscription-transfer.md)voor meer informatie over het overdragen van het eigendom van de facturering.
 
@@ -93,7 +91,7 @@ Nadat u een abonnement aan een andere map hebt gekoppeld, moet u mogelijk de vol
 
 - Als u een Azure Stack met dit abonnement hebt geregistreerd, moet u zich opnieuw registreren. Zie [Azure stack registreren bij Azure](/azure-stack/operator/azure-stack-registration)voor meer informatie.
 
-- Zie [een Azure-abonnement overdragen naar een andere Azure AD-Directory](../../role-based-access-control/transfer-subscription.md)voor meer informatie.
+- Raadpleeg [Een Azure-abonnement overzetten naar een andere Azure AD-map](../../role-based-access-control/transfer-subscription.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

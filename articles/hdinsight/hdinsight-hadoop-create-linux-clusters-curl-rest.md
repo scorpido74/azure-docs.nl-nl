@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
-ms.openlocfilehash: f2b3810afab86b2f81a18bac442ef361404f2309
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b67ddd57c3a0787213763253cef5083f420cefe0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490353"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541669"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Apache Hadoop clusters maken met behulp van de Azure-REST API
 
@@ -219,7 +219,7 @@ Volg de stappen in [aan de slag met Azure cli](/cli/azure/get-started-with-az-cl
 ## <a name="create-a-service-principal"></a>Een service-principal maken
 
 > [!NOTE]  
-> Deze stappen zijn een verkorte versie van de sectie *Service-Principal maken met wacht woord* van [Azure CLI gebruiken om een service-principal te maken voor toegang tot resources](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) -document. Met deze stappen maakt u een service-principal die wordt gebruikt voor verificatie bij de Azure-REST API.
+> Deze stappen zijn een verkorte versie van de sectie *Service-Principal maken met wacht woord* van [Azure CLI gebruiken om een service-principal te maken voor toegang tot resources](/cli/azure/create-an-azure-service-principal-azure-cli) -document. Met deze stappen maakt u een service-principal die wordt gebruikt voor verificatie bij de Azure-REST API.
 
 1. Gebruik vanaf een opdracht regel de volgende opdracht om uw Azure-abonnementen weer te geven.
 
@@ -242,13 +242,13 @@ Volg de stappen in [aan de slag met Azure cli](/cli/azure/get-started-with-az-cl
 
    De waarde die door deze opdracht wordt geretourneerd, is de __App-ID__ voor de nieuwe toepassing. Sla deze waarde op.
 
-3. Gebruik de volgende opdracht om een service-principal te maken met behulp van de **App-ID**.
+3. Gebruik de volgende opdracht om een service-principal te maken met behulp van de **App-ID** .
 
    ```azurecli
    az ad sp create --id <App ID> --query 'objectId'
    ```
 
-     De waarde die door deze opdracht wordt geretourneerd, is de __object-id__. Sla deze waarde op.
+     De waarde die door deze opdracht wordt geretourneerd, is de __object-id__ . Sla deze waarde op.
 
 4. Wijs de rol **eigenaar** toe aan de service-principal met behulp van de **object-id-** waarde. Gebruik de **abonnements-id** die u eerder hebt verkregen.
 
@@ -274,7 +274,7 @@ Stel `$TENANTID` , `$APPID` , en `$PASSWORD` op de waarden die u eerder hebt ver
 
 Als deze aanvraag is voltooid, ontvangt u een respons van 200-series en bevat de antwoord tekst een JSON-document.
 
-Het JSON-document dat door deze aanvraag wordt geretourneerd bevat een element met de naam **access_token**. De waarde van **access_token** wordt gebruikt voor het verifiëren van aanvragen voor de rest API.
+Het JSON-document dat door deze aanvraag wordt geretourneerd bevat een element met de naam **access_token** . De waarde van **access_token** wordt gebruikt voor het verifiëren van aanvragen voor de rest API.
 
 ```json
 {

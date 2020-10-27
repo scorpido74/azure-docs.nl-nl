@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: how-to
 ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: de2a8e6377ababadc7d42f873a816a01a8f3b77e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f19797fa1c79261dc3459e2b924ed45d0b7e36e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207460"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547959"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Aan de slag met een Apache Hadoop sandbox, een emulator op een virtuele machine
 
@@ -34,13 +34,13 @@ Meer informatie over het installeren van de Apache Hadoop sandbox van Hortonwork
 
 Zie [sandbox-implementatie en installatie handleiding](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/1/)voor instructies voor het instellen van de sandbox.
 
-Als u een oudere sandbox van de HDP-versie wilt downloaden, raadpleegt u de koppelingen onder **oudere versies**.
+Als u een oudere sandbox van de HDP-versie wilt downloaden, raadpleegt u de koppelingen onder **oudere versies** .
 
 ## <a name="start-the-virtual-machine"></a>De virtuele machine starten
 
 1. Open Oracle VM VirtualBox.
-1. Klik in het menu **bestand** op **apparaat importeren**en geef vervolgens de Hortonworks sandbox-installatie kopie op.
-1. Selecteer de sandbox Hortonworks, klik op **Start**en vervolgens op **normaal starten**. Zodra de virtuele machine het opstart proces heeft voltooid, worden aanmeldings instructies weer gegeven.
+1. Klik in het menu **bestand** op **apparaat importeren** en geef vervolgens de Hortonworks sandbox-installatie kopie op.
+1. Selecteer de sandbox Hortonworks, klik op **Start** en vervolgens op **normaal starten** . Zodra de virtuele machine het opstart proces heeft voltooid, worden aanmeldings instructies weer gegeven.
 
     ![normale start van VirtualBox Manager](./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png)
 
@@ -48,7 +48,7 @@ Als u een oudere sandbox van de HDP-versie wilt downloaden, raadpleegt u de kopp
 
 ## <a name="set-sandbox-passwords"></a>Sandbox-wacht woorden instellen
 
-1. Selecteer in de stap **aan de slag** van de sandbox Hortonworks-pagina **Geavanceerde opties weer geven**. Gebruik de informatie op deze pagina om u aan te melden bij de sandbox met SSH. Gebruik de opgegeven naam en het wacht woord.
+1. Selecteer in de stap **aan de slag** van de sandbox Hortonworks-pagina **Geavanceerde opties weer geven** . Gebruik de informatie op deze pagina om u aan te melden bij de sandbox met SSH. Gebruik de opgegeven naam en het wacht woord.
 
    > [!NOTE]
    > Als er geen SSH-client is geïnstalleerd, kunt u de op het web gebaseerde SSH gebruiken die is verschaft door de virtuele machine op **http://localhost:4200/** .
@@ -85,7 +85,7 @@ Als u een oudere sandbox van de HDP-versie wilt downloaden, raadpleegt u de kopp
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het gebruik van Visual Studio met de Hortonworks sandbox](../hdinsight-hadoop-emulator-visual-studio.md)
+* [Meer informatie over het gebruik van Visual Studio met de Hortonworks sandbox](./apache-hadoop-visual-studio-tools-get-started.md)
 
 * [De kabels van de Hortonworks-sandbox leren](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 

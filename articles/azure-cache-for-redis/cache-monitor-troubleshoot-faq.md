@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 2149d069ce9cb0b636e461d19963f413b162bc9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e96c73578a9341f67d90cd4482ed75179c6886d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88010855"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537521"
 ---
 # <a name="azure-cache-for-redis-monitoring-and-troubleshooting-faqs"></a>Azure-cache voor redis-controle en veelgestelde vragen over problemen oplossen
 In dit artikel vindt u antwoorden op veelgestelde vragen over het bewaken en oplossen van problemen met Azure-cache voor redis.
@@ -29,7 +29,7 @@ Microsoft Azure cache voor redis-instanties kunnen worden bewaakt in de [Azure P
 Het menu Azure cache for redis **resource** bevat ook verschillende hulpprogram ma's voor het controleren en oplossen van problemen met uw caches.
 
 * **Problemen vaststellen en oplossen** biedt informatie over veelvoorkomende problemen en strategieën voor het oplossen ervan.
-* De **resource status** houdt uw resource in de gaten en vertelt u of deze wordt uitgevoerd zoals verwacht. Zie [overzicht van Azure resource Health](../resource-health/resource-health-overview.md)voor meer informatie over de Azure resource Health-Service.
+* De **resource status** houdt uw resource in de gaten en vertelt u of deze wordt uitgevoerd zoals verwacht. Zie [overzicht van Azure resource Health](../service-health/resource-health-overview.md)voor meer informatie over de Azure resource Health-Service.
 * **Nieuwe ondersteunings aanvraag** biedt opties voor het openen van een ondersteunings aanvraag voor uw cache.
 
 Met deze hulpprogram ma's kunt u de status van uw Azure-cache bewaken voor redis-instanties en helpt u bij het beheren van uw cache toepassingen. Zie voor meer informatie de sectie ' ondersteuning voor het oplossen van problemen &-instellingen ' van het [configureren van Azure cache voor redis](cache-configure.md).

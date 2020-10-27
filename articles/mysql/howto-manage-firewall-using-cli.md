@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d981bf66ef9c17fda031e66e12e18a2ad9c67cc3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb7f8547419b45314ad044b41957a53085cdbe13
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87503052"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546395"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Azure Database for MySQL firewall regels maken en beheren met behulp van de Azure CLI
 Firewall regels op server niveau kunnen worden gebruikt om de toegang tot een Azure Database for MySQL server te beheren vanuit een specifiek IP-adres of een bereik met IP-adressen. Met behulp van handige Azure CLI-opdrachten kunt u firewall regels maken, bijwerken, verwijderen en weer geven om uw server te beheren. Zie [Azure database for MySQL Server firewall-regels](./concepts-firewall-rules.md)voor een overzicht van Azure database for MySQL firewalls.
@@ -21,18 +21,18 @@ Firewall regels op server niveau kunnen worden gebruikt om de toegang tot een Az
 Regels voor Virtual Network (VNet) kunnen ook worden gebruikt voor het beveiligen van de toegang tot uw server. Meer informatie over [het maken en beheren van Virtual Network Service-eind punten en-regels met behulp van de Azure cli](howto-manage-vnet-using-cli.md).
 
 ## <a name="prerequisites"></a>Vereisten
-* [Installeer Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* [Installeer Azure cli](/cli/azure/install-azure-cli).
 * Een [Azure database for mysql-server en-data base](quickstart-create-mysql-server-database-using-azure-cli.md).
 
 ## <a name="firewall-rule-commands"></a>Opdracht firewall regel:
 De opdracht **AZ mysql server firewall-Rule** wordt gebruikt vanuit de Azure CLI om firewall regels te maken, verwijderen, weer geven en bijwerken.
 
 Opdrachten:
-- **maken**: een Azure mysql server-firewall regel maken.
-- **verwijderen**: een Azure mysql server-firewall regel verwijderen.
-- **lijst**: Geef de firewall regels voor de Azure mysql-server weer.
-- **weer geven**: de details van een Azure mysql server-firewall regel weer geven.
-- **Update**: een Azure mysql server-firewall regel bijwerken.
+- **maken** : een Azure mysql server-firewall regel maken.
+- **verwijderen** : een Azure mysql server-firewall regel verwijderen.
+- **lijst** : Geef de firewall regels voor de Azure mysql-server weer.
+- **weer geven** : de details van een Azure mysql server-firewall regel weer geven.
+- **Update** : een Azure mysql server-firewall regel bijwerken.
 
 ## <a name="sign-in-to-azure-and-list-your-azure-database-for-mysql-servers"></a>Meld u aan bij Azure en vermeld uw Azure Database for MySQL-servers
 Maak veilig verbinding met Azure CLI met uw Azure-account met behulp van de opdracht **AZ login** .

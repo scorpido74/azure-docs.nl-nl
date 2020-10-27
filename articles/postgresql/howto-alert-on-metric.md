@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: a221e3c32d458135111583885a0b9f97743d36ce
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: f37dcc1d092de10c51c0492bbc8671047e4a90a3
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490030"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546616"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---single-server"></a>Gebruik de Azure Portal om waarschuwingen in te stellen voor de Azure Database for PostgreSQL-één-server
 
@@ -42,13 +42,13 @@ U kunt informatie over waarschuwings regels configureren en ophalen met behulp v
 
    :::image type="content" source="./media/howto-alert-on-metric/4-add-rule-form.png" alt-text="Waarschuwings regels selecteren":::
 
-5. Selecteer **voor waarde toevoegen**in de sectie **voor waarde** .
+5. Selecteer **voor waarde toevoegen** in de sectie **voor waarde** .
 
 6. Selecteer een waarde in de lijst met signalen waarop u wilt worden gewaarschuwd. In dit voor beeld selecteert u ' opslag percentage '.
    
    :::image type="content" source="./media/howto-alert-on-metric/6-configure-signal-logic.png" alt-text="Waarschuwings regels selecteren":::
 
-7. Configureer de waarschuwings logica met inbegrip van de **voor waarde** (bijvoorbeeld ' Groter dan '), **drempel waarde** (bijvoorbeeld 85 procent), **tijd aggregatie**, **periode waarbinnen** de metrische regel moet worden voldaan voordat de waarschuwingen worden geactiveerd (bijvoorbeeld ' In de afgelopen 30 minuten ') en **frequentie**.
+7. Configureer de waarschuwings logica met inbegrip van de **voor waarde** (bijvoorbeeld ' Groter dan '), **drempel waarde** (bijvoorbeeld 85 procent), **tijd aggregatie** , **periode waarbinnen** de metrische regel moet worden voldaan voordat de waarschuwingen worden geactiveerd (bijvoorbeeld ' In de afgelopen 30 minuten ') en **frequentie** .
    
    Selecteer **gereed** wanneer u klaar bent.
 

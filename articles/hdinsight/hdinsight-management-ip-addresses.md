@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: f9e52d931f8873cebf42534fd6bf03b144e61e23
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 35f2f82b4fe6862f0d023a70b32c964698b0c0eb
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974665"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547806"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>IP-adressen beheren met HDInsight
 
@@ -57,7 +57,7 @@ Verkeer toestaan van de IP-adressen die worden vermeld voor de Azure HDInsight-s
 | Azië | Azië - oost | 23.102.235.122</br>52.175.38.134 | \*: 443 | Inkomend |
 | &nbsp; | Azië - zuidoost | 13.76.245.160</br>13.76.136.249 | \*: 443 | Inkomend |
 | Australië | Australië - oost | 104.210.84.115</br>13.75.152.195 | \*: 443 | Inkomend |
-| &nbsp; | Australia Southeast | 13.77.2.56</br>13.77.2.94 | \*: 443 | Inkomend |
+| &nbsp; | Australië - zuidoost | 13.77.2.56</br>13.77.2.94 | \*: 443 | Inkomend |
 | Brazilië | Brazil South | 191.235.84.104</br>191.235.87.113 | \*: 443 | Inkomend |
 | Canada | Canada - oost | 52.229.127.96</br>52.229.123.172 | \*: 443 | Inkomend |
 | &nbsp; | Canada - midden | 52.228.37.66</br>52.228.45.222 |\*: 443 | Inkomend |
@@ -72,7 +72,7 @@ Verkeer toestaan van de IP-adressen die worden vermeld voor de Azure HDInsight-s
 | &nbsp; | Duitsland - noordoost | 51.5.150.132</br>51.5.144.101 | \*: 443 | Inkomend |
 | India | India - centraal | 52.172.153.209</br>52.172.152.49 | \*: 443 | Inkomend |
 | &nbsp; | India - zuid | 104.211.223.67<br/>104.211.216.210 | \*: 443 | Inkomend |
-| Japan | Japan East | 13.78.125.90</br>13.78.89.60 | \*: 443 | Inkomend |
+| Japan | Japan - oost | 13.78.125.90</br>13.78.89.60 | \*: 443 | Inkomend |
 | &nbsp; | Japan - west | 40.74.125.69</br>138.91.29.150 | \*: 443 | Inkomend |
 | Korea | Korea - centraal | 52.231.39.142</br>52.231.36.209 | \*: 443 | Inkomend |
 | &nbsp; | Korea - zuid | 52.231.203.16</br>52.231.205.214 | \*: 443 | Inkomend
@@ -87,7 +87,7 @@ Verkeer toestaan van de IP-adressen die worden vermeld voor de Azure HDInsight-s
 | &nbsp; | VAE - noord | 65.52.252.96</br>65.52.252.97 | \*: 443 | Inkomend |
 | &nbsp; | UAE - centraal | 20.37.76.96</br>20.37.76.99 | \*: 443 | Inkomend |
 
-Voor informatie over de IP-adressen die voor Azure Government moeten worden gebruikt, raadpleegt u het document [Azure Government Intelligence en Analytics](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics) .
+Voor informatie over de IP-adressen die voor Azure Government moeten worden gebruikt, raadpleegt u het document [Azure Government Intelligence en Analytics](../azure-government/compare-azure-government-global-azure.md) .
 
 Zie [netwerk verkeer beheren](./control-network-traffic.md)voor meer informatie.
 

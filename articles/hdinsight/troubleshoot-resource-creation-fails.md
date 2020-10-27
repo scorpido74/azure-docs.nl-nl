@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/22/2020
-ms.openlocfilehash: 527d2d8cb8086ed6b5e87417e2bc80dd52aa6e63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a47781bcdf60d863d6dcf77d70bc0ee496a51388
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82188409"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538796"
 ---
 # <a name="troubleshoot-resource-creation-failures-in-azure-hdinsight"></a>Problemen met het maken van resources in azure HDInsight oplossen
 
@@ -25,7 +25,7 @@ Azure heeft een quotumlimiet van 800 implementaties per resourcegroep. Verschill
 
 U kunt dit probleem oplossen door de implementaties te verwijderen die niet langer nodig zijn met behulp van de Azure Portal, CLI of Power shell.
 
-Zie voor meer informatie [Solve errors for resource quotas](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors) (Fouten voor resourcequota oplossen).
+Zie voor meer informatie [Solve errors for resource quotas](../azure-resource-manager/templates/error-resource-quota.md) (Fouten voor resourcequota oplossen).
 
 ## <a name="error-the-maximum-node-exceeded-the-available-cores-in-this-region"></a>Fout: het maximale knoop punt heeft de beschik bare kernen in deze regio overschreden
 
@@ -33,15 +33,15 @@ Uw abonnement mag worden geconfigureerd om het aantal kerngeheugens voor een reg
 
 Voer de volgende stappen uit om een quotumverhoging aan te vragen:
 
-1. Ga naar de [Azure Portal](https://portal.azure.com)en selecteer **Help + ondersteuning**.
+1. Ga naar de [Azure Portal](https://portal.azure.com)en selecteer **Help + ondersteuning** .
 
-1. Selecteer **Nieuwe ondersteuningsaanvraag**.
+1. Selecteer **Nieuwe ondersteuningsaanvraag** .
 
 1. Op het tabblad **basis principes** van de pagina **nieuwe ondersteunings aanvraag** geeft u de volgende informatie op:
 
    * **Type probleem:** **Service-en abonnements limieten (quota's)** selecteren.
    * **Abonnement:** Selecteer het abonnement dat u wilt wijzigen.
-   * **Quotum type:** Selecteer **HDInsight**.
+   * **Quotum type:** Selecteer **HDInsight** .
 
 Raadpleeg [Create a support ticket to increase core](hdinsight-capacity-planning.md#quotas) (Een ondersteuningsticket maken om het aantal kerngeheugens te verhogen) voor meer informatie.
 
@@ -53,4 +53,4 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](../azure-portal/supportability/how-to-create-azure-support-request.md)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

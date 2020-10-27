@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/14/2019
-ms.openlocfilehash: b886f51bcb2bb7308c49c76563dcb70148bbc583
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed12c9629506fa8defb23b987fe672bb3b384418
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75887288"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92540088"
 ---
 # <a name="scenario-apache-phoenix-connectivity-issues-in-azure-hdinsight"></a>Scenario: verbindings problemen Apache Phoenix in azure HDInsight
 
@@ -28,7 +28,7 @@ Onjuist IP-adres van actief Zookeeper-knoop punt.
 
 ### <a name="resolution"></a>Oplossing
 
-Het IP-adres van het actieve Zookeeper-knoop punt kan worden geïdentificeerd via de Ambari-gebruikers interface door de koppelingen naar **HBase**  >  **Quick links**  >  **ZK (Active)**  >  **Zookeeper info**te volgen. Corrigeer het IP-adres als dat nodig is.
+Het IP-adres van het actieve Zookeeper-knoop punt kan worden geïdentificeerd via de Ambari-gebruikers interface door de koppelingen naar **HBase**  >  **Quick links**  >  **ZK (Active)**  >  **Zookeeper info** te volgen. Corrigeer het IP-adres als dat nodig is.
 
 ---
 
@@ -50,7 +50,7 @@ ERROR: org.apache.hadoop.hbase.NotServingRegionException: Region SYSTEM.CATALOG,
 
 In de Apache Ambari-gebruikers interface voert u de volgende stappen uit om de HMaster-service opnieuw op alle ZooKeeper-knoop punten te starten:
 
-1. Ga in de sectie **samen vatting** van HBase naar **HBase**  >  **Active HBase Master**.
+1. Ga in de sectie **samen vatting** van HBase naar **HBase**  >  **Active HBase Master** .
 
 1. Start de HBase Master-service opnieuw op in de sectie **onderdelen** .
 
@@ -66,4 +66,4 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](../../azure-portal/supportability/how-to-create-azure-support-request.md)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

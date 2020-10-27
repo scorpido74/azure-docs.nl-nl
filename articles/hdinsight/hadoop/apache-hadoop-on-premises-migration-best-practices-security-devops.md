@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: 7deaca67212146881754f785e6dceaa064bde6e7
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 6fd59a346a36a304f699894c493d8ba9800489b2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329420"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545256"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>On-premises Apache Hadoop clusters migreren naar Azure HDInsight-beveiligings-en DevOps best practices
 
@@ -84,7 +84,7 @@ End-to-end Bedrijfs beveiliging kan worden bereikt met de volgende besturings el
 Raadpleeg voor meer informatie de volgende artikelen:
 
 - [Overzicht van Azure Virtual Networks](../../virtual-network/virtual-networks-overview.md)
-- [Overzicht van Azure-netwerk beveiligings groepen](../../virtual-network/security-overview.md)
+- [Overzicht van Azure-netwerk beveiligings groepen](../../virtual-network/network-security-groups-overview.md)
 - [Peering van virtuele netwerken in Azure](../../virtual-network/virtual-network-peering-overview.md)
 - [Azure Storage-beveiligingshandleiding](../../storage/blobs/security-recommendations.md)
 - [Versleuteling van Azure Storage-service bij rest](../../storage/common/storage-service-encryption.md)
@@ -122,4 +122,4 @@ Zie het artikel: [patches voor het besturings systeem voor HDInsight](../hdinsig
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [HDInsight 4,0](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-introduction).
+Meer informatie over [HDInsight 4,0](./apache-hadoop-introduction.md).

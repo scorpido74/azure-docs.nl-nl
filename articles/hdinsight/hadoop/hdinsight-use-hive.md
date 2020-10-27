@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
-ms.openlocfilehash: 37fdf863d29015bba7015fcff1ae49a34aebd785
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2e59b35a30bd838eab2b05dcacf83d8b2c21236
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462272"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92540394"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Wat is Apache Hive en HiveQL in azure HDInsight?
 
@@ -23,7 +23,7 @@ Met hive kunt u de structuur projecteren op grotendeels ongestructureerde gegeve
 
 HDInsight biedt verschillende cluster typen, die zijn afgestemd op specifieke werk belastingen. De volgende cluster typen worden meestal gebruikt voor Hive-query's:
 
-|Clustertype |Beschrijving|
+|Clustertype |Description|
 |---|---|
 |Interactive Query|Een Hadoop-cluster dat [LLAP-functionaliteit (Low latentie Analytical Processing)](https://cwiki.apache.org/confluence/display/Hive/LLAP) biedt om de reactie tijden voor interactieve query's te verbeteren. Zie het document [Start with Interactive query in HDInsight](../interactive-query/apache-interactive-query-get-started.md) voor meer informatie.|
 |Hadoop|Een Hadoop-cluster dat is afgestemd op werk belastingen voor batch verwerking. Zie het document [beginnen met Apache Hadoop in HDInsight](../hadoop/apache-hadoop-linux-tutorial-get-started.md) voor meer informatie.|
@@ -72,14 +72,14 @@ Voor meer informatie over bestands indelingen die worden ondersteund door Hive, 
 
 Er zijn twee soorten tabellen die u met hive kunt maken:
 
-* __Intern__: gegevens worden opgeslagen in het Hive-Data Warehouse. Het Data Warehouse bevindt zich `/hive/warehouse/` op de standaard opslag voor het cluster.
+* __Intern__ : gegevens worden opgeslagen in het Hive-Data Warehouse. Het Data Warehouse bevindt zich `/hive/warehouse/` op de standaard opslag voor het cluster.
 
     Gebruik interne tabellen wanneer een van de volgende voor waarden van toepassing is:
 
     * De gegevens zijn tijdelijk.
     * U wilt dat de Hive de levens cyclus van de tabel en gegevens beheert.
 
-* __Extern__: gegevens worden buiten het Data Warehouse opgeslagen. De gegevens kunnen worden opgeslagen op elke opslag die toegankelijk is voor het cluster.
+* __Extern__ : gegevens worden buiten het Data Warehouse opgeslagen. De gegevens kunnen worden opgeslagen op elke opslag die toegankelijk is voor het cluster.
 
     Gebruik externe tabellen wanneer een van de volgende voor waarden van toepassing is:
 
@@ -88,11 +88,11 @@ Er zijn twee soorten tabellen die u met hive kunt maken:
     * U hebt een aangepaste locatie nodig, zoals een niet-standaard opslag account.
     * Een ander programma dan Hive beheert de gegevens indeling, locatie, enzovoort.
 
-Zie het blog bericht [Hive intern en externe tabellen Inleiding](https://blogs.msdn.microsoft.com/cindygross/2013/02/05/hdinsight-hive-internal-and-external-tables-intro/) voor meer informatie.
+Zie het blog bericht [Hive intern en externe tabellen Inleiding](/archive/blogs/cindygross/hdinsight-hive-internal-and-external-tables-intro) voor meer informatie.
 
 ## <a name="user-defined-functions-udf"></a>Door de gebruiker gedefinieerde functies (UDF)
 
-Hive kan ook worden uitgebreid via door de **gebruiker gedefinieerde functies (UDF)**. Met een UDF kunt u functionaliteit of logica implementeren die niet eenvoudig kan worden gemodelleerd in HiveQL. Raadpleeg de volgende documenten voor een voor beeld van het gebruik van Udf's met hive:
+Hive kan ook worden uitgebreid via door de **gebruiker gedefinieerde functies (UDF)** . Met een UDF kunt u functionaliteit of logica implementeren die niet eenvoudig kan worden gemodelleerd in HiveQL. Raadpleeg de volgende documenten voor een voor beeld van het gebruik van Udf's met hive:
 
 * [Een door de gebruiker gedefinieerde Java-functie gebruiken met Apache Hive](../hadoop/apache-hadoop-hive-java-udf.md)
 
@@ -100,7 +100,7 @@ Hive kan ook worden uitgebreid via door de **gebruiker gedefinieerde functies (U
 
 * [Een door de gebruiker gedefinieerde C#-functie gebruiken met Apache Hive](../hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
-* [Een aangepaste Apache Hive door de gebruiker gedefinieerde functie toevoegen aan HDInsight](https://docs.microsoft.com/archive/blogs/bigdatasupport/how-to-add-custom-hive-udfs-to-hdinsight)
+* [Een aangepaste Apache Hive door de gebruiker gedefinieerde functie toevoegen aan HDInsight](/archive/blogs/bigdatasupport/how-to-add-custom-hive-udfs-to-hdinsight)
 
 * [Een voor beeld Apache Hive door de gebruiker gedefinieerde functie voor het converteren van datum/tijd-indelingen naar Hive-time stamp](https://github.com/Azure-Samples/hdinsight-java-hive-udf)
 
@@ -197,11 +197,11 @@ Met Azure Data Factory kunt u HDInsight gebruiken als onderdeel van een Data Fac
 
 U kunt SQL Server Integration Services (SSIS) gebruiken om een Hive-taak uit te voeren. Het Azure Feature Pack voor SSIS bevat de volgende onderdelen die werken met hive-taken in HDInsight.
 
-* [Azure HDInsight-Hive-taak](https://docs.microsoft.com/sql/integration-services/control-flow/azure-hdinsight-hive-task)
+* [Azure HDInsight-Hive-taak](/sql/integration-services/control-flow/azure-hdinsight-hive-task)
 
-* [Verbindings beheer voor Azure-abonnementen](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-subscription-connection-manager)
+* [Verbindings beheer voor Azure-abonnementen](/sql/integration-services/connection-manager/azure-subscription-connection-manager)
 
-Zie de documentatie van het [Azure Feature Pack](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis) voor meer informatie.
+Zie de documentatie van het [Azure Feature Pack](/sql/integration-services/azure-feature-pack-for-integration-services-ssis) voor meer informatie.
 
 ### <a name="apache-oozie"></a>Apache Oozie
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: 1b3c694b4d6134f30d04ba8bafee9a6ffabdd959
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 0f0073c72c28395d89cec74a489cbc36a8f3ffe7
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488109"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546106"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informatie over het gebruik van HDInsight in Linux
 
@@ -24,9 +24,9 @@ Azure HDInsight-clusters bieden Apache Hadoop in een vertrouwde Linux-omgeving, 
 Veel van de stappen in dit document gebruiken de volgende hulpprogram ma's, die mogelijk op uw systeem moeten worden geïnstalleerd.
 
 * [krul](https://curl.haxx.se/) : wordt gebruikt voor communicatie met op internet gebaseerde services.
-* **JQ**, een JSON-processor op de opdracht regel.  Zie [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
+* **JQ** , een JSON-processor op de opdracht regel.  Zie [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
 * [Azure cli](/cli/azure/install-azure-cli) : wordt gebruikt voor het extern beheren van Azure-Services.
-* **Een SSH-client**. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Een SSH-client** . Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="users"></a>Gebruikers
 
@@ -81,7 +81,7 @@ Met deze opdracht wordt een JSON-document geretourneerd dat de service beschrijf
     >
     > Verificatie is in tekst zonder opmaak: gebruik altijd HTTPS om ervoor te zorgen dat de verbinding beveiligd is.
 
-* **SSH** -CLUSTERNAME-SSH.azurehdinsight.net op poort 22 of 23. Poort 22 wordt gebruikt om verbinding te maken met de primaire hoofd knooppunt, terwijl 23 wordt gebruikt om verbinding te maken met de secundaire. Zie [Beschik baarheid en betrouw baarheid van Apache Hadoop clusters in HDInsight](hdinsight-high-availability-linux.md)voor meer informatie over de hoofd knooppunten.
+* **SSH** -CLUSTERNAME-SSH.azurehdinsight.net op poort 22 of 23. Poort 22 wordt gebruikt om verbinding te maken met de primaire hoofd knooppunt, terwijl 23 wordt gebruikt om verbinding te maken met de secundaire. Zie [Beschik baarheid en betrouw baarheid van Apache Hadoop clusters in HDInsight](./hdinsight-business-continuity.md)voor meer informatie over de hoofd knooppunten.
 
     > [!NOTE]  
     > U kunt alleen vanaf een client computer toegang krijgen tot de hoofd knooppunten van het cluster via SSH. Nadat de verbinding tot stand is gebracht, kunt u de worker-knoop punten openen met behulp van SSH vanuit een hoofd knooppunt.
@@ -92,8 +92,8 @@ Zie voor meer informatie de [poorten die worden gebruikt door Apache Hadoop Serv
 
 Hadoop-gerelateerde bestanden kunnen worden gevonden op de cluster knooppunten op `/usr/hdp` . Deze map bevat de volgende submappen:
 
-* **2.6.5.3009-43**: de directory naam is de versie van het Hadoop-platform dat wordt gebruikt door HDInsight. Het nummer op uw cluster kan afwijken van het aantal dat hier wordt vermeld.
-* **huidige**: deze map bevat koppelingen naar submappen onder de Directory **2.6.5.3009-43** . Deze map bestaat, zodat u het versie nummer niet hoeft te onthouden.
+* **2.6.5.3009-43** : de directory naam is de versie van het Hadoop-platform dat wordt gebruikt door HDInsight. Het nummer op uw cluster kan afwijken van het aantal dat hier wordt vermeld.
+* **huidige** : deze map bevat koppelingen naar submappen onder de Directory **2.6.5.3009-43** . Deze map bestaat, zodat u het versie nummer niet hoeft te onthouden.
 
 Voor beelden van gegevens-en JAR-bestanden vindt u op Hadoop Distributed File System op `/example` en `/HdiSamples` .
 
@@ -183,13 +183,13 @@ U kunt de opslag informatie ook vinden met behulp van de Azure Portal door de vo
 
 1. Selecteer uw HDInsight-cluster in de [Azure Portal](https://portal.azure.com/).
 
-2. Selecteer **opslag accounts**in de sectie **Eigenschappen** . De opslag gegevens voor het cluster worden weer gegeven.
+2. Selecteer **opslag accounts** in de sectie **Eigenschappen** . De opslag gegevens voor het cluster worden weer gegeven.
 
 ### <a name="how-do-i-access-files-from-outside-hdinsight"></a>Hoe kan ik toegang tot bestanden uit externe HDInsight
 
 Er zijn verschillende manieren om toegang te krijgen tot gegevens van buiten het HDInsight-cluster. Hier volgen enkele koppelingen naar hulpprogram ma's en Sdk's die kunnen worden gebruikt voor het werken met uw gegevens:
 
-Als u __Azure Blob Storage__gebruikt, raadpleegt u de volgende koppelingen voor manieren waarop u toegang hebt tot uw gegevens:
+Als u __Azure Blob Storage__ gebruikt, raadpleegt u de volgende koppelingen voor manieren waarop u toegang hebt tot uw gegevens:
 
 * [Azure cli](/cli/azure/install-az-cli2): Command-Line interface opdrachten voor het werken met Azure. Na de installatie gebruikt u de `az storage` opdracht voor hulp bij het gebruik van opslag of `az storage blob` voor BLOB-specifieke opdrachten.
 * [blobxfer.py](https://github.com/Azure/blobxfer): een python-script voor het werken met blobs in azure Storage.
@@ -201,9 +201,9 @@ Als u __Azure Blob Storage__gebruikt, raadpleegt u de volgende koppelingen voor 
     * [Python](https://github.com/Azure/azure-sdk-for-python)
     * [Ruby](https://github.com/Azure/azure-sdk-for-ruby)
     * [.NET](https://github.com/Azure/azure-sdk-for-net)
-    * [Storage REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx)
+    * [Storage REST API](/rest/api/storageservices/Blob-Service-REST-API)
 
-Als u __Azure data Lake Storage gen1__gebruikt, raadpleegt u de volgende koppelingen voor manieren waarop u toegang hebt tot uw gegevens:
+Als u __Azure data Lake Storage gen1__ gebruikt, raadpleegt u de volgende koppelingen voor manieren waarop u toegang hebt tot uw gegevens:
 
 * [Webbrowser](../data-lake-store/data-lake-store-get-started-portal.md)
 * [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)
@@ -245,7 +245,7 @@ Als u een andere versie van een onderdeel wilt gebruiken, uploadt u de versie di
 > [!IMPORTANT]
 > Onderdelen die worden meegeleverd met het HDInsight-cluster, worden volledig ondersteund en Microsoft Ondersteuning helpt bij het isoleren en oplossen van problemen met betrekking tot deze onderdelen.
 >
-> Aangepaste onderdelen ontvangen commercieel redelijke ondersteuning om u te helpen het probleem verder op te lossen. Dit kan leiden tot het oplossen van het probleem of het vragen om beschik bare kanalen te benaderen voor de open source-technologieën waar diep gaande expertise voor die technologie wordt gevonden. Er zijn bijvoorbeeld veel community-sites die kunnen worden gebruikt, zoals: [micro soft Q&een vraag pagina voor HDInsight](https://docs.microsoft.com/answers/topics/azure-hdinsight.html) [https://stackoverflow.com](https://stackoverflow.com) . Ook Apache-projecten hebben project sites op [https://apache.org](https://apache.org) , bijvoorbeeld: [Hadoop](https://hadoop.apache.org/), [Spark](https://spark.apache.org/).
+> Aangepaste onderdelen ontvangen commercieel redelijke ondersteuning om u te helpen het probleem verder op te lossen. Dit kan leiden tot het oplossen van het probleem of het vragen om beschik bare kanalen te benaderen voor de open source-technologieën waar diep gaande expertise voor die technologie wordt gevonden. Er zijn bijvoorbeeld veel community-sites die kunnen worden gebruikt, zoals: [micro soft Q&een vraag pagina voor HDInsight](/answers/topics/azure-hdinsight.html) [https://stackoverflow.com](https://stackoverflow.com) . Ook Apache-projecten hebben project sites op [https://apache.org](https://apache.org) , bijvoorbeeld: [Hadoop](https://hadoop.apache.org/), [Spark](https://spark.apache.org/).
 
 ## <a name="next-steps"></a>Volgende stappen
 

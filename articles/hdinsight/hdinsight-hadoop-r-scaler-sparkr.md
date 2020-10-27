@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/26/2019
-ms.openlocfilehash: 28a97edcbe84ae63a3d3d0cad2b9275c672f5664
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5864a5de8ddec60f2072a28827a870c83ece8b9d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86082272"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546038"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>Schaalr en Spark in HDInsight combi neren
 
-In dit document wordt beschreven hoe u vertragingen in de vlucht kunt voors pellen met behulp van een **schaalbaar** logistiek-regressie model. In het voor beeld worden vlucht vertraging en weers gegevens gebruikt, gekoppeld met behulp van **Spark**.
+In dit document wordt beschreven hoe u vertragingen in de vlucht kunt voors pellen met behulp van een **schaalbaar** logistiek-regressie model. In het voor beeld worden vlucht vertraging en weers gegevens gebruikt, gekoppeld met behulp van **Spark** .
 
 Hoewel beide pakketten worden uitgevoerd op de Spark-uitvoerings engine van Apache Hadoop, worden ze geblokkeerd voor het delen van gegevens in het geheugen omdat ze elk hun eigen respectievelijk Spark-sessies vereisen. Totdat dit probleem is opgelost in een toekomstige versie van ML Server, is de tijdelijke oplossing het onderhouden van niet-overlappende Spark-sessies en het uitwisselen van gegevens via tussenliggende bestanden. In deze instructies ziet u dat deze vereisten eenvoudig zijn te verzorgen.
 
@@ -25,7 +25,7 @@ Dit voor beeld is in eerste instantie gedeeld in een gesprek op Strata 2016 door
 
 De code is oorspronkelijk geschreven voor ML Server die worden uitgevoerd op Spark in een HDInsight-cluster in Azure. Maar het combi neren van het gebruik van Spark en schalen in één script is ook geldig in de context van on-premises omgevingen.
 
-Bij de stappen in dit document wordt ervan uitgegaan dat u een tussenliggend niveau van de kennis van R hebt en de [scaleer](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) -bibliotheek van ml server. U gaat naar [Spark](https://spark.apache.org/docs/2.1.0/sparkr.html) , terwijl u dit scenario doorloopt.
+Bij de stappen in dit document wordt ervan uitgegaan dat u een tussenliggend niveau van de kennis van R hebt en de [scaleer](/machine-learning-server/r/concept-what-is-revoscaler) -bibliotheek van ml server. U gaat naar [Spark](https://spark.apache.org/docs/2.1.0/sparkr.html) , terwijl u dit scenario doorloopt.
 
 ## <a name="the-airline-and-weather-datasets"></a>De luchtvaart maatschappij en weer gegevens sets
 
@@ -535,7 +535,7 @@ In dit artikel laten we zien hoe u het gebruik van Spark kunt combi neren voor h
 
 ## <a name="next-steps-and-more-information"></a>Volgende stappen en meer informatie
 
-- Zie de aan de slag- [hand leiding](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)voor meer informatie over het gebruik van ML Server op Apache Spark.
+- Zie de aan de slag- [hand leiding](/machine-learning-server/r/how-to-revoscaler-spark)voor meer informatie over het gebruik van ML Server op Apache Spark.
 
 - Zie [overzicht van ml Services op hdinsight](r-server/r-server-overview.md)voor meer informatie over de ml van de services op hdinsight.
 
@@ -543,4 +543,4 @@ Zie voor meer informatie over het gebruik van Spark:
 
 - [Apache Spark-document](https://spark.apache.org/docs/2.1.0/sparkr.html).
 
-- [Spark-overzicht](https://docs.databricks.com/spark/latest/sparkr/overview.html) van Databricks.
+- [Overzicht van Spark](/azure/databricks/spark/latest/sparkr/overview)

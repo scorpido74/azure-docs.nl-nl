@@ -8,16 +8,16 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 000971878e24c46892aaef1fa0c65237a4219883
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e139954e6550e33edb75d01ab9dbec0bba543ea6
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81678537"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92548138"
 ---
 Nadat de **peering** -resource is geïmplementeerd, kunt u deze bekijken door de volgende stappen uit te voeren.
 
-1. Ga naar **resource groepen**en selecteer de resource groep die u hebt geselecteerd tijdens het maken van de **peering** -resource. Gebruik het vak **filteren** als u te veel resource groepen hebt.
+1. Ga naar **resource groepen** en selecteer de resource groep die u hebt geselecteerd tijdens het maken van de **peering** -resource. Gebruik het vak **filteren** als u te veel resource groepen hebt.
 
     > [!div class="mx-imgBorder"]
     > ![Resourcegroepen](../media/setup-direct-get-resourcegroup.png)
@@ -25,7 +25,7 @@ Nadat de **peering** -resource is geïmplementeerd, kunt u deze bekijken door de
 1. Selecteer de **peering** -resource die u hebt gemaakt.
 
     > [!div class="mx-imgBorder"]
-    > ![Bron weergave voor peering](../media/setup-direct-get-open.png)
+    > ![Scherm afbeelding van de peering-resource die u hebt gemaakt.](../media/setup-direct-get-open.png)
 
 1. Op de pagina **overzicht** vindt u informatie op hoog niveau, zoals hier wordt weer gegeven.
 
@@ -37,14 +37,14 @@ Nadat de **peering** -resource is geïmplementeerd, kunt u deze bekijken door de
     > [!div class="mx-imgBorder"]
     > ![ASN-gegevens van peering-bron](../media/setup-direct-get-asninfo.png)
 
-1. Selecteer aan de linkerkant **verbindingen**. Boven aan het scherm ziet u een samen vatting van peering-verbindingen tussen uw ASN en micro soft, tussen verschillende faciliteiten binnen de metro. U kunt het overzicht van verbindingen ook openen op de pagina **overzicht** door **verbindingen** te selecteren in het middelste deel venster, zoals wordt weer gegeven.
+1. Selecteer aan de linkerkant **verbindingen** . Boven aan het scherm ziet u een samen vatting van peering-verbindingen tussen uw ASN en micro soft, tussen verschillende faciliteiten binnen de metro. U kunt het overzicht van verbindingen ook openen op de pagina **overzicht** door **verbindingen** te selecteren in het middelste deel venster, zoals wordt weer gegeven.
 
     > [!div class="mx-imgBorder"]
     > ![Peering-bron verbindingen](../media/setup-exchange-get-connectionssummary.png)
 
     * De **verbindings status** komt overeen met de status van de instelling voor de peering-verbinding. De status diagram die in dit veld wordt weer gegeven, is te zien in het [overzicht van Exchange-peering](../walkthrough-exchange-all.md).
     * De status van de **IPv4-sessie** en de **IPv6-sessie** komen respectievelijk overeen met de IPv4-en IPv6 BGP-sessie status.  
-    * Wanneer u een rij boven aan het scherm selecteert, toont de sectie **verbinding** onderaan de details van elke verbinding. Selecteer de pijlen om de **configuratie**, het **IPv4-adres**en het **IPv6-adres**uit te vouwen.
+    * Wanneer u een rij boven aan het scherm selecteert, toont de sectie **verbinding** onderaan de details van elke verbinding. Selecteer de pijlen om de **configuratie** , het **IPv4-adres** en het **IPv6-adres** uit te vouwen.
 
     > [!div class="mx-imgBorder"]
-    > ![Bron weergave voor peering](../media/setup-exchange-get-connectionsipv4.png)
+    > ![Scherm afbeelding die een pijl markeert die een sectie uitbreidt.](../media/setup-exchange-get-connectionsipv4.png)

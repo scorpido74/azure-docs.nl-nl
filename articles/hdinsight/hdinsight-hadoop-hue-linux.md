@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 03/31/2020
-ms.openlocfilehash: ef30672e250e598688d1b81fd33fe0a995e78c7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e80df5d1c3d2b2195e76622964406cc65c933a63
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087721"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546191"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Tint op HDInsight Hadoop-clusters installeren en gebruiken
 
@@ -33,7 +33,7 @@ Tint is een set webtoepassingen die worden gebruikt voor interactie met een Apac
 > [!WARNING]  
 > Onderdelen die worden meegeleverd met het HDInsight-cluster, worden volledig ondersteund en Microsoft Ondersteuning helpt bij het isoleren en oplossen van problemen met betrekking tot deze onderdelen.
 >
-> Aangepaste onderdelen ontvangen commercieel redelijke ondersteuning om u te helpen het probleem verder op te lossen. Dit kan leiden tot het oplossen van het probleem of het vragen om beschik bare kanalen te benaderen voor de open source-technologieën waar diep gaande expertise voor die technologie wordt gevonden. Er zijn bijvoorbeeld veel community-sites die kunnen worden gebruikt, zoals: [micro soft Q&een vraag pagina voor HDInsight](https://docs.microsoft.com/answers/topics/azure-hdinsight.html) [https://stackoverflow.com](https://stackoverflow.com) . Ook Apache-projecten hebben project sites op [https://apache.org](https://apache.org) , bijvoorbeeld: [Hadoop](https://hadoop.apache.org/).
+> Aangepaste onderdelen ontvangen commercieel redelijke ondersteuning om u te helpen het probleem verder op te lossen. Dit kan leiden tot het oplossen van het probleem of het vragen om beschik bare kanalen te benaderen voor de open source-technologieën waar diep gaande expertise voor die technologie wordt gevonden. Er zijn bijvoorbeeld veel community-sites die kunnen worden gebruikt, zoals: [micro soft Q&een vraag pagina voor HDInsight](/answers/topics/azure-hdinsight.html) [https://stackoverflow.com](https://stackoverflow.com) . Ook Apache-projecten hebben project sites op [https://apache.org](https://apache.org) , bijvoorbeeld: [Hadoop](https://hadoop.apache.org/).
 
 ## <a name="install-hue-using-script-actions"></a>Tint installeren met script acties
 
@@ -45,7 +45,7 @@ Gebruik de informatie in de onderstaande tabel voor uw script actie. Zie [HDInsi
 |Eigenschap |Waarde |
 |---|---|
 |Script type:|- Aangepast|
-|Name|Kleur Toon installeren|
+|Naam|Kleur Toon installeren|
 |Bash-script-URI|`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`|
 |Knooppunt type (n):|Head|
 
@@ -87,11 +87,11 @@ U kunt slechts één gebruikers account hebben met kleur Toon op gewone clusters
 
 ### <a name="run-a-hive-query"></a>Een Hive-query uitvoeren
 
-1. Selecteer in de portal voor kleur Toon **query-editors**en selecteer vervolgens **Hive** om de Hive-editor te openen.
+1. Selecteer in de portal voor kleur Toon **query-editors** en selecteer vervolgens **Hive** om de Hive-editor te openen.
 
     ![Portal voor HDInsight-tinten gebruiken Hive-editor](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-use-hive.png "Hive gebruiken")
 
-2. Op het tabblad **assistent** , onder **Data Base**, ziet u **hivesampletable**. Dit is een voorbeeld tabel die wordt geleverd met alle Hadoop-clusters in HDInsight. Voer een voorbeeld query in het rechterdeel venster in en Bekijk de uitvoer op het tabblad **resultaten** in het onderstaande deel venster, zoals wordt weer gegeven in de scherm opname.
+2. Op het tabblad **assistent** , onder **Data Base** , ziet u **hivesampletable** . Dit is een voorbeeld tabel die wordt geleverd met alle Hadoop-clusters in HDInsight. Voer een voorbeeld query in het rechterdeel venster in en Bekijk de uitvoer op het tabblad **resultaten** in het onderstaande deel venster, zoals wordt weer gegeven in de scherm opname.
 
     ![Portal Hive-query voor HDInsight-tint](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-hive-query.png "Hive-query uitvoeren")
 
@@ -125,8 +125,8 @@ U kunt slechts één gebruikers account hebben met kleur Toon op gewone clusters
 
    Dit is te wijten aan een bekend probleem. Als tijdelijke oplossing wijzigt u Ambari zodat de actieve Resource Manager ook wordt uitgevoerd op de primaire hoofd knooppunt.
 
-1. Kleur Toon begrijpt WebHDFS terwijl HDInsight-clusters Azure Storage gebruiken `wasbs://` . Het aangepaste script dat wordt gebruikt met script actie installeert dus WebWasb, een WebHDFS-compatibele service voor het praten met WASB. Dit betekent dat, zelfs als de kleur Toon, HDFS op locatie (bijvoorbeeld wanneer u de muis over de **bestands browser**beweegt) wordt geïnterpreteerd als WASB.
+1. Kleur Toon begrijpt WebHDFS terwijl HDInsight-clusters Azure Storage gebruiken `wasbs://` . Het aangepaste script dat wordt gebruikt met script actie installeert dus WebWasb, een WebHDFS-compatibele service voor het praten met WASB. Dit betekent dat, zelfs als de kleur Toon, HDFS op locatie (bijvoorbeeld wanneer u de muis over de **bestands browser** beweegt) wordt geïnterpreteerd als WASB.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Installeer R op HDInsight-clusters](hdinsight-hadoop-r-scripts-linux.md). Gebruik cluster aanpassing om R-op HDInsight Hadoop-clusters te installeren. R is een open source-taal en-omgeving voor statistische computing. Het biedt honderden ingebouwde statistische functies en een eigen programmeer taal waarmee aspecten van functionele en objectgeoriënteerd Program meren worden gecombineerd. Het biedt ook uitgebreide grafische mogelijkheden.
+[Installeer R op HDInsight-clusters](./r-server/r-server-overview.md). Gebruik cluster aanpassing om R-op HDInsight Hadoop-clusters te installeren. R is een open source-taal en-omgeving voor statistische computing. Het biedt honderden ingebouwde statistische functies en een eigen programmeer taal waarmee aspecten van functionele en objectgeoriënteerd Program meren worden gecombineerd. Het biedt ook uitgebreide grafische mogelijkheden.
