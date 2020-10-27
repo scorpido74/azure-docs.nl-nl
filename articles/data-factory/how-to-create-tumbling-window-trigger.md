@@ -3,20 +3,20 @@ title: Tumblingvenstertriggers-venster triggers maken in Azure Data Factory
 description: Meer informatie over het maken van een trigger in Azure Data Factory die een pijp lijn uitvoert in een tumblingvenstertriggers-venster.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: chez-charlie
+ms.author: chez
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/11/2019
-ms.openlocfilehash: c35fa28457e3cb9a063fa29c20d8651fcb4eeb45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/25/2020
+ms.openlocfilehash: 3d02210559e3da0d42f7de96157cbbe886b16082
+ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856481"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92558589"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Een trigger maken die een pijplijn uitvoert op een tumblingvenster
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -27,8 +27,8 @@ Tumblingvenstertriggers zijn triggers die vanaf een opgegeven begintijd worden g
 
 ## <a name="data-factory-ui"></a>Gebruikersinterface van Data Factory
 
-1. Als u een trigger voor een tumblingvenstertriggers-venster wilt maken in de Data Factory-gebruikers interface, selecteert u het tabblad **Triggers** en selecteert u vervolgens **Nieuw**. 
-1. Nadat het deel venster trigger configuratie is geopend, selecteert u **Tumblingvenstertriggers venster**en definieert u de trigger eigenschappen van het tumblingvenstertriggers-venster. 
+1. Als u een trigger voor een tumblingvenstertriggers-venster wilt maken in de Data Factory-gebruikers interface, selecteert u het tabblad **Triggers** en selecteert u vervolgens **Nieuw** . 
+1. Nadat het deel venster trigger configuratie is geopend, selecteert u **Tumblingvenstertriggers venster** en definieert u de trigger eigenschappen van het tumblingvenstertriggers-venster. 
 1. Selecteer **Opslaan** als u klaar bent.
 
 ![Een trigger voor een tumblingvenstertriggers-venster maken in de Azure Portal](media/how-to-create-tumbling-window-trigger/create-tumbling-window-trigger.png)
@@ -97,12 +97,12 @@ De volgende tabel bevat een overzicht op hoog niveau van de belangrijkste JSON-e
 | JSON-element | Beschrijving | Type | Toegestane waarden | Vereist |
 |:--- |:--- |:--- |:--- |:--- |
 | **type** | Het type van de trigger. Het type is de vaste waarde ' TumblingWindowTrigger '. | Tekenreeks | "TumblingWindowTrigger" | Ja |
-| **runtimeState** | De huidige status van de uitvoerings tijd van de trigger.<br/>**Opmerking**: dit element is \<readOnly> . | Tekenreeks | "Gestart," "gestopt," "uitgeschakeld" | Ja |
+| **runtimeState** | De huidige status van de uitvoerings tijd van de trigger.<br/>**Opmerking** : dit element is \<readOnly> . | Tekenreeks | "Gestart," "gestopt," "uitgeschakeld" | Ja |
 | **ingang** | Een teken reeks die de frequentie-eenheid (minuten of uren) aangeeft waarmee de trigger wordt herhaald. Als de **datum waarden** voor de start tijd meer nauw keuriger zijn dan de **frequentie** waarde, worden de datums van de **StartTime** meegenomen wanneer de venster grenzen worden berekend. Als de waarde van de **frequentie** bijvoorbeeld elk uur is en de waarde voor **StartTime** is 2017-09-01T10:10:10Z, is het eerste venster (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z). | Tekenreeks | "minuut," uur "  | Ja |
-| **bereik** | Een positief geheel getal dat het interval voor de waarde **frequency** aangeeft. Het bepaalt hoe vaak de trigger wordt uitgevoerd. Als het **interval** bijvoorbeeld 3 is en de **frequentie** is ingesteld op ' uur ', wordt de trigger elke drie uur herhaald. <br/>**Opmerking**: het minimale venster interval is 5 minuten. | Geheel getal | Een positief geheel getal. | Ja |
-| **startTime**| De eerste instantie, die in het verleden kan zijn. Het eerste trigger interval is (**StartTime**, **StartTime**  +  -**interval**). | DateTime | Een datum/tijd-waarde. | Ja |
+| **bereik** | Een positief geheel getal dat het interval voor de waarde **frequency** aangeeft. Het bepaalt hoe vaak de trigger wordt uitgevoerd. Als het **interval** bijvoorbeeld 3 is en de **frequentie** is ingesteld op ' uur ', wordt de trigger elke drie uur herhaald. <br/>**Opmerking** : het minimale venster interval is 5 minuten. | Geheel getal | Een positief geheel getal. | Ja |
+| **startTime**| De eerste instantie, die in het verleden kan zijn. Het eerste trigger interval is ( **StartTime** , **StartTime**  +  - **interval** ). | DateTime | Een datum/tijd-waarde. | Ja |
 | **endTime**| De laatste instantie, die in het verleden kan zijn. | DateTime | Een datum/tijd-waarde. | Ja |
-| **spoedig** | De hoeveelheid tijd die het starten van de gegevens verwerking voor het venster moet vertragen. De pijplijn uitvoering wordt gestart na de verwachte uitvoerings tijd plus de hoeveelheid **vertraging**. De **vertraging** bepaalt hoe lang de trigger na de eind tijd wacht voordat een nieuwe uitvoering wordt geactiveerd. De **vertraging** wijzigt de **StartTime**van het venster niet. Een **vertragings** waarde van 00:10:00 impliceert bijvoorbeeld een vertraging van 10 minuten. | Periode<br/>(UU: mm: SS)  | Een time span-waarde waarbij de standaard instelling is 00:00:00. | Nee |
+| **spoedig** | De hoeveelheid tijd die het starten van de gegevens verwerking voor het venster moet vertragen. De pijplijn uitvoering wordt gestart na de verwachte uitvoerings tijd plus de hoeveelheid **vertraging** . De **vertraging** bepaalt hoe lang de trigger na de eind tijd wacht voordat een nieuwe uitvoering wordt geactiveerd. De **vertraging** wijzigt de **StartTime** van het venster niet. Een **vertragings** waarde van 00:10:00 impliceert bijvoorbeeld een vertraging van 10 minuten. | Periode<br/>(UU: mm: SS)  | Een time span-waarde waarbij de standaard instelling is 00:00:00. | Nee |
 | **maxConcurrency** | Het aantal gelijktijdige trigger uitvoeringen dat wordt geactiveerd voor Windows die gereed zijn. Als u bijvoorbeeld per uur back-upvulling voor gisteren wilt uitvoeren, worden er 24 vensters weer gegeven. Als **maxConcurrency** = 10, worden trigger gebeurtenissen alleen geactiveerd voor de eerste 10 windows (00:00-01:00-09:00-10:00). Nadat de eerste tien geactiveerde pijplijn uitvoeringen zijn voltooid, worden de trigger uitvoeringen geactiveerd voor de volgende 10 Windows (10:00-11:00-19:00-20:00). Als u doorgaat met dit voor beeld van **maxConcurrency** = 10, zijn er 10 Windows klaar, dan zijn er 10 totale pijplijn uitvoeringen. Als er slechts één venster gereed is, is er slechts één pijplijn uitvoering. | Geheel getal | Een geheel getal tussen 1 en 50. | Ja |
 | **retryPolicy: aantal** | Het aantal nieuwe pogingen voordat de pijplijn uitvoering is gemarkeerd als ' mislukt '.  | Geheel getal | Een geheel getal, waarbij de standaard waarde is 0 (geen nieuwe pogingen). | Nee |
 | **retryPolicy: intervalInSeconds** | De vertraging tussen nieuwe pogingen opgegeven in seconden. | Geheel getal | Het aantal seconden, waarbij de standaard waarde is 30. | Nee |
@@ -162,7 +162,20 @@ In het geval van pijp lijn fouten kan de tumblingvenstertriggers-venster trigger
 
 ### <a name="tumbling-window-trigger-dependency"></a>Afhankelijkheid van tumblingvenstertriggers-venster trigger
 
-Als u er zeker van wilt zijn dat een trigger voor een tumblingvenstertriggers-venster wordt uitgevoerd nadat de uitvoering van een andere tumblingvenstertriggers-venster trigger in de data factory is voltooid, [maakt u een tumblingvenstertriggers-venster trigger](tumbling-window-trigger-dependency.md). 
+Als u er zeker van wilt zijn dat een trigger voor een tumblingvenstertriggers-venster wordt uitgevoerd nadat de uitvoering van een andere tumblingvenstertriggers-venster trigger in de data factory is voltooid, [maakt u een tumblingvenstertriggers-venster trigger](tumbling-window-trigger-dependency.md).
+
+### <a name="cancel-tumbling-window-run"></a>Het venster tumblingvenstertriggers annuleren uitvoeren
+
+U kunt uitvoeringen voor een tumblingvenstertriggers-venster trigger annuleren als het specifieke venster zich in de _wacht_ stand bevindt, _wacht op afhankelijkheid_ of de status _wordt uitgevoerd_
+
+* Als de status van het venster **actief** is, annuleert u de bijbehorende uitvoering van de _pijp lijn_ en wordt het uitvoeren van de trigger gemarkeerd als _geannuleerd_ .
+* Als het venster in **afwachting** is of **wacht op afhankelijkheids** status, kunt u het venster annuleren vanuit bewaking:
+
+![Een trigger voor een tumblingvenstertriggers-venster annuleren vanuit de bewakings pagina](media/how-to-create-tumbling-window-trigger/cancel-tumbling-window-trigger.png)
+
+U kunt ook een geannuleerd venster opnieuw uitvoeren. Bij het opnieuw uitvoeren worden de _meest recente_ gepubliceerde definities van de trigger uitgevoerd en worden de afhankelijkheden voor het opgegeven venster _opnieuw geëvalueerd_ wanneer het opnieuw wordt uitgevoerd
+
+![Een trigger voor een tumblingvenstertriggers-venster opnieuw uitvoeren voor eerder geannuleerde uitvoeringen](media/how-to-create-tumbling-window-trigger/rerun-tumbling-window-trigger.png)
 
 ## <a name="sample-for-azure-powershell"></a>Voor beeld voor Azure PowerShell
 

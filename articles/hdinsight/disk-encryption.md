@@ -8,12 +8,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: d37f1c52157d2038d216873150b1d68e669e3392
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 9afab87e0d7f0e7a9e5c05b36ace1dfc09c9aa9f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487310"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92548027"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Dubbele versleuteling van Azure HDInsight voor Data-at-rest
 
@@ -23,7 +23,7 @@ Dit document bevat geen informatie over de gegevens die zijn opgeslagen in uw Az
 
 ## <a name="introduction"></a>Inleiding
 
-Er zijn drie hoofd rollen voor beheerde schijven in Azure: de gegevens schijf, de besturingssysteem schijf en de tijdelijke schijf. Zie [Introduction to Azure Managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)(Engelstalig) voor meer informatie over verschillende typen Managed disks. 
+Er zijn drie hoofd rollen voor beheerde schijven in Azure: de gegevens schijf, de besturingssysteem schijf en de tijdelijke schijf. Zie [Introduction to Azure Managed disks](../virtual-machines/managed-disks-overview.md)(Engelstalig) voor meer informatie over verschillende typen Managed disks. 
 
 HDInsight ondersteunt meerdere typen versleuteling in twee verschillende lagen:
 
@@ -35,8 +35,8 @@ Deze typen worden in de volgende tabel samenvatten.
 
 |Clustertype |BESTURINGSSYSTEEM schijf (beheerde schijf) |Gegevens schijf (beheerde schijf) |Tijdelijke gegevens schijf (lokale SSD) |
 |---|---|---|---|
-|Kafka, HBase met versnelde schrijf bewerkingen|Layer1: standaard instelling voor [SSE-versleuteling](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption)|Layer1: [SSE-versleuteling](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption) standaard, Layer2: optionele versleuteling bij rest met behulp van CMK|Layer1: optionele versleuteling op host met behulp van PMK, Layer2: optionele versleuteling bij rest met behulp van CMK|
-|Alle andere clusters (Spark, Interactive, Hadoop, HBase zonder versnelde schrijf bewerkingen)|Layer1: standaard instelling voor [SSE-versleuteling](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption)|N.v.t.|Layer1: optionele versleuteling op host met behulp van PMK, Layer2: optionele versleuteling bij rest met behulp van CMK|
+|Kafka, HBase met versnelde schrijf bewerkingen|Layer1: standaard instelling voor [SSE-versleuteling](../virtual-machines/managed-disks-overview.md#encryption)|Layer1: [SSE-versleuteling](../virtual-machines/managed-disks-overview.md#encryption) standaard, Layer2: optionele versleuteling bij rest met behulp van CMK|Layer1: optionele versleuteling op host met behulp van PMK, Layer2: optionele versleuteling bij rest met behulp van CMK|
+|Alle andere clusters (Spark, Interactive, Hadoop, HBase zonder versnelde schrijf bewerkingen)|Layer1: standaard instelling voor [SSE-versleuteling](../virtual-machines/managed-disks-overview.md#encryption)|N.v.t.|Layer1: optionele versleuteling op host met behulp van PMK, Layer2: optionele versleuteling bij rest met behulp van CMK|
 
 ## <a name="encryption-at-rest-using-customer-managed-keys"></a>Versleuteling in rust met door de klant beheerde sleutels
 
@@ -73,15 +73,15 @@ Zie [een door de gebruiker toegewezen beheerde identiteit maken](../active-direc
 
 Een sleutelkluis maken. Zie [Azure Key Vault maken](../key-vault/secrets/quick-create-portal.md) voor specifieke stappen.
 
-HDInsight ondersteunt alleen Azure Key Vault. Als u uw eigen sleutel kluis hebt, kunt u uw sleutels importeren in Azure Key Vault. Houd er rekening mee dat voor de sleutel kluis **voorlopig verwijderen** moet zijn ingeschakeld. Ga voor meer informatie over het importeren van bestaande sleutels naar [sleutels, geheimen en certificaten](../key-vault/about-keys-secrets-and-certificates.md).
+HDInsight ondersteunt alleen Azure Key Vault. Als u uw eigen sleutel kluis hebt, kunt u uw sleutels importeren in Azure Key Vault. Houd er rekening mee dat voor de sleutel kluis **voorlopig verwijderen** moet zijn ingeschakeld. Ga voor meer informatie over het importeren van bestaande sleutels naar [sleutels, geheimen en certificaten](../key-vault/general/about-keys-secrets-certificates.md).
 
 ### <a name="create-key"></a>Sleutel maken
 
-1. Navigeer vanuit uw nieuwe sleutel kluis naar **instellingen**  >  **sleutels**  >  **+ genereren/importeren**.
+1. Navigeer vanuit uw nieuwe sleutel kluis naar **instellingen**  >  **sleutels**  >  **+ genereren/importeren** .
 
     ![Een nieuwe sleutel in Azure Key Vault genereren](./media/disk-encryption/create-new-key.png "Een nieuwe sleutel in Azure Key Vault genereren")
 
-1. Geef een naam op en selecteer **maken**. Het standaard **sleutel type** van **RSA**onderhouden.
+1. Geef een naam op en selecteer **maken** . Het standaard **sleutel type** van **RSA** onderhouden.
 
     ![genereert sleutel naam](./media/disk-encryption/create-key.png "Sleutel naam genereren")
 
@@ -95,7 +95,7 @@ HDInsight ondersteunt alleen Azure Key Vault. Als u uw eigen sleutel kluis hebt,
 
 ### <a name="create-access-policy"></a>Toegangs beleid maken
 
-1. Ga vanuit de nieuwe sleutel kluis naar **instellingen**  >  **toegangs beleid**  >  **+ toegangs beleid toevoegen**.
+1. Ga vanuit de nieuwe sleutel kluis naar **instellingen**  >  **toegangs beleid**  >  **+ toegangs beleid toevoegen** .
 
     ![Nieuw toegangs beleid voor Azure Key Vault maken](./media/disk-encryption/key-vault-access-policy.png)
 
@@ -103,15 +103,15 @@ HDInsight ondersteunt alleen Azure Key Vault. Als u uw eigen sleutel kluis hebt,
 
     |Eigenschap |Beschrijving|
     |---|---|
-    |Sleutel machtigingen|Selecteer **ophalen**, **deterugloop sleutel**en **Terugloop sleutel**.|
-    |Geheime machtigingen|Selecteer **ophalen**, **instellen**en **verwijderen**.|
+    |Sleutel machtigingen|Selecteer **ophalen** , **deterugloop sleutel** en **Terugloop sleutel** .|
+    |Geheime machtigingen|Selecteer **ophalen** , **instellen** en **verwijderen** .|
     |Principal selecteren|Selecteer de door de gebruiker toegewezen beheerde identiteit die u eerder hebt gemaakt.|
 
     ![Selecteer de principal voor Azure Key Vault toegangs beleid instellen](./media/disk-encryption/azure-portal-add-access-policy.png)
 
-1. Selecteer **Toevoegen**.
+1. Selecteer **Toevoegen** .
 
-1. Selecteer **Opslaan**.
+1. Selecteer **Opslaan** .
 
     ![Azure Key Vault toegangs beleid opslaan](./media/disk-encryption/add-key-vault-access-policy-save.png)
 
@@ -121,7 +121,7 @@ U bent nu klaar om een nieuw HDInsight-cluster te maken. Door de klant beheerde 
 
 #### <a name="using-the-azure-portal"></a>Azure Portal gebruiken
 
-Geef tijdens het maken van het cluster de volledige **sleutel-id**op, met inbegrip van de sleutel versie. Bijvoorbeeld `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. U moet ook de beheerde identiteit toewijzen aan het cluster en de sleutel-URI opgeven.
+Geef tijdens het maken van het cluster de volledige **sleutel-id** op, met inbegrip van de sleutel versie. Bijvoorbeeld `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. U moet ook de beheerde identiteit toewijzen aan het cluster en de sleutel-URI opgeven.
 
 ![Nieuw cluster maken](./media/disk-encryption/create-cluster-portal.png)
 
@@ -141,7 +141,7 @@ az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
 
 #### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen gebruiken
 
-In het volgende voor beeld ziet u hoe u een Azure Resource Manager sjabloon gebruikt om een nieuw Apache Spark-cluster te maken waarvoor schijf versleuteling is ingeschakeld. Zie [Wat zijn arm-sjablonen?](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)voor meer informatie.
+In het volgende voor beeld ziet u hoe u een Azure Resource Manager sjabloon gebruikt om een nieuw Apache Spark-cluster te maken waarvoor schijf versleuteling is ingeschakeld. Zie [Wat zijn arm-sjablonen?](../azure-resource-manager/templates/overview.md)voor meer informatie.
 
 In dit voor beeld wordt Power shell gebruikt om de sjabloon aan te roepen.
 
@@ -359,7 +359,7 @@ Er zijn mogelijk scenario's waarin u mogelijk de versleutelings sleutels wilt wi
 
 #### <a name="using-the-azure-portal"></a>Azure Portal gebruiken
 
-Als u de sleutel wilt draaien, hebt u de URL van de basis sleutel kluis nodig. Als u dat hebt gedaan, gaat u naar de sectie eigenschappen van HDInsight-cluster in de portal en klikt u op de **sleutel wijzigen** onder URL voor de **schijf versleutelings sleutel**. Voer in de nieuwe sleutel-URL in en verzend de sleutel om deze te draaien.
+Als u de sleutel wilt draaien, hebt u de URL van de basis sleutel kluis nodig. Als u dat hebt gedaan, gaat u naar de sectie eigenschappen van HDInsight-cluster in de portal en klikt u op de **sleutel wijzigen** onder URL voor de **schijf versleutelings sleutel** . Voer in de nieuwe sleutel-URL in en verzend de sleutel om deze te draaien.
 
 ![schijf versleutelings sleutel draaien](./media/disk-encryption/change-key.png)
 
@@ -420,7 +420,7 @@ Versleuteling op host kan worden ingeschakeld tijdens het maken van het cluster 
 
 :::image type="content" source="media/disk-encryption/encryption-at-host.png" alt-text="Versleuteling inschakelen op de host.":::
 
-Met deze optie schakelt u [versleuteling op de host in](../virtual-machines/linux/disks-enable-host-based-encryption-portal.md) voor virtuele HDInsight-vm's tijdelijke gegevens schijven met behulp van PMK. Versleuteling op host wordt alleen [ondersteund op bepaalde VM-sku's in een beperkt aantal regio's](../virtual-machines/linux/disks-enable-host-based-encryption-portal.md) en HDInsight ondersteunt de [volgende knooppunt configuratie en sku's](./hdinsight-supported-node-configuration.md).
+Met deze optie schakelt u [versleuteling op de host in](../virtual-machines/disks-enable-host-based-encryption-portal.md) voor virtuele HDInsight-vm's tijdelijke gegevens schijven met behulp van PMK. Versleuteling op host wordt alleen [ondersteund op bepaalde VM-sku's in een beperkt aantal regio's](../virtual-machines/disks-enable-host-based-encryption-portal.md) en HDInsight ondersteunt de [volgende knooppunt configuratie en sku's](./hdinsight-supported-node-configuration.md).
 
 Zie [de juiste VM-grootte voor uw Azure hdinsight-cluster selecteren](hdinsight-selecting-vm-size.md)als u meer wilt weten over de juiste VM-grootte voor uw hdinsight-cluster. De standaard-VM-SKU voor het Zookeeper-knoop punt wanneer versleuteling op host is ingeschakeld, wordt DS2V2.
 

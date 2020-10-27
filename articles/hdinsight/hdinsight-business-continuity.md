@@ -8,12 +8,12 @@ keywords: Hadoop hoge Beschik baarheid
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: beb3c54a0ab7f6f063232a1ad49744d99746c589
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: f83f5aec264aeae1a729e81932843825a0ce6673
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893642"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546939"
 ---
 # <a name="azure-hdinsight-business-continuity"></a>Azure HDInsight-bedrijfs continuïteit
 
@@ -39,7 +39,7 @@ In deze sectie worden enkele aanbevolen procedures besproken waarmee u rekening 
 
 * Gebruik Azure controle hulpprogramma's op HDInsight om abnormaal gedrag in het cluster te detecteren en bijbehorende waarschuwings meldingen in te stellen. U kunt de vooraf geconfigureerde HDInsight-cluster-specifieke beheer oplossingen implementeren die belang rijke metrische prestatie gegevens van het specifieke cluster type verzamelen. Zie [Azure-bewaking voor HDInsight](./hdinsight-hadoop-oms-log-analytics-tutorial.md)voor meer informatie.  
 
-* Abonneer u op Azure Health Alerts om op de hoogte te worden gesteld van problemen met de service, gepland onderhoud, status-en beveiligings adviezen voor een abonnement, service of regio. Status meldingen die de oorzaak van het probleem en de opgeloste letterlijke ETA bevatten, helpen u bij het uitvoeren van failover en failback. Zie [Azure service Health-documentatie](/azure/service-health/)voor meer informatie.
+* Abonneer u op Azure Health Alerts om op de hoogte te worden gesteld van problemen met de service, gepland onderhoud, status-en beveiligings adviezen voor een abonnement, service of regio. Status meldingen die de oorzaak van het probleem en de opgeloste letterlijke ETA bevatten, helpen u bij het uitvoeren van failover en failback. Zie [Azure service Health-documentatie](../service-health/index.yml)voor meer informatie.
 
 ## <a name="single-region-availability"></a>Beschik baarheid van één regio
 

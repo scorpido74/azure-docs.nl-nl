@@ -8,15 +8,15 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2cee60a71f6f19e09194dc689f95999bb11faad3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca84cb6cdd6b47976eadbc5298701a46fe677426
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086463"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547823"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Een HDInsight-toepassing publiceren in azure Marketplace
-U kunt een Azure HDInsight-toepassing installeren op een HDInsight-cluster op basis van Linux. In dit artikel leert u hoe u een HDInsight-toepassing publiceert in azure Marketplace. Zie [een aanbieding publiceren in azure Marketplace](../marketplace/marketplace-publishers-guide.md)voor algemene informatie over publiceren in azure Marketplace.
+U kunt een Azure HDInsight-toepassing installeren op een HDInsight-cluster op basis van Linux. In dit artikel leert u hoe u een HDInsight-toepassing publiceert in azure Marketplace. Zie [een aanbieding publiceren in azure Marketplace](../marketplace/overview.md)voor algemene informatie over publiceren in azure Marketplace.
 
 HDInsight-toepassingen maken gebruik van het model *uw eigen licentie (BYOL)* . In een BYOL-scenario is een toepassings provider verantwoordelijk voor het licentiëren van de toepassing op app-gebruikers. App-gebruikers worden alleen in rekening gebracht voor de Azure-resources die ze maken, zoals het HDInsight-cluster, en de Vm's en knoop punten van het cluster. Facturering voor de toepassing wordt momenteel niet uitgevoerd in Azure.
 
@@ -28,7 +28,7 @@ Zie deze artikelen over HDInsight-toepassingen voor meer informatie:
 ## <a name="prerequisites"></a>Vereisten
 Als u uw aangepaste toepassing in Marketplace wilt verzenden, moet [u eerst uw aangepaste toepassing maken en testen](hdinsight-apps-install-custom-applications.md).
 
-U moet ook uw ontwikkelaars account registreren. Zie [een aanbieding publiceren in azure Marketplace](../marketplace/marketplace-publishers-guide.md) en [een micro soft-ontwikkelaars account maken](../marketplace/marketplace-publishers-guide.md)voor meer informatie.
+U moet ook uw ontwikkelaars account registreren. Zie [een aanbieding publiceren in azure Marketplace](../marketplace/overview.md) en [een micro soft-ontwikkelaars account maken](../marketplace/overview.md)voor meer informatie.
 
 ## <a name="define-the-application"></a>De toepassing definiëren
 Er zijn twee stappen betrokken bij het publiceren van toepassingen in de Marketplace. Definieer eerst een *createUiDef.jsin* het bestand. De createUiDef.jsin het bestand geeft aan aan welke clusters uw toepassing compatibel is. Publiceer vervolgens de sjabloon vanuit het Azure Portal. Hier volgt een voor beeld createUiDef.jsvan het bestand:
@@ -44,7 +44,7 @@ Er zijn twee stappen betrokken bij het publiceren van toepassingen in de Marketp
 }
 ```
 
-| Veld | Beschrijving | Mogelijke waarden |
+| Veld | Description | Mogelijke waarden |
 | --- | --- | --- |
 | typen |De clustertypen waarmee de toepassing compatibel is. |Hadoop, HBase, Storm, Spark (of een combi natie hiervan) |
 | versies |De HDInsight-clustertypen waarmee de toepassing compatibel is. |3.4 |
@@ -63,7 +63,7 @@ Wanneer een toepassing op een cluster wordt geïnstalleerd (op een bestaand clus
   > * Een koppel teken, voor de Lees baarheid.
   > * Een unieke teken reeks functie, met de naam van de toepassing als de para meter.
   > 
-  > In de lijst met persistente script acties wordt het vorige voor beeld weer gegeven als **tint-installeren-v0-4wkahss55hlas**. Bekijk een voor beeld van een [JSON-nettolading](https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json).
+  > In de lijst met persistente script acties wordt het vorige voor beeld weer gegeven als **tint-installeren-v0-4wkahss55hlas** . Bekijk een voor beeld van een [JSON-nettolading](https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json).
   > 
 
 Het installatie script moet de volgende kenmerken hebben:
@@ -87,14 +87,14 @@ Maak een zip-bestand dat alle bestanden bevat die nodig zijn voor het installere
 Een HDInsight-toepassing publiceren:
 
 1. Meld u aan bij [Azure Publishing](https://publish.windowsazure.com/).
-2. Selecteer **oplossingen sjablonen**in het linkermenu.
-3. Voer een titel in en selecteer vervolgens **een nieuwe oplossings sjabloon maken**.
-4. Als u uw organisatie nog niet hebt geregistreerd, selecteert u **ontwikkelaars centrum-account maken en lid worden van het Azure-programma**.  Zie [een micro soft-ontwikkelaars account maken](../marketplace/marketplace-publishers-guide.md)voor meer informatie.
-5. Selecteer **enkele topologieën definiëren om aan de slag te gaan**. Een oplossings sjabloon is een ' Parent ' van alle topologieën. U kunt meerdere topologieën definiëren in één aanbieding of oplossings sjabloon. Wanneer een aanbieding naar fase ring wordt gepusht, wordt deze met alle topologieën gepusht. 
+2. Selecteer **oplossingen sjablonen** in het linkermenu.
+3. Voer een titel in en selecteer vervolgens **een nieuwe oplossings sjabloon maken** .
+4. Als u uw organisatie nog niet hebt geregistreerd, selecteert u **ontwikkelaars centrum-account maken en lid worden van het Azure-programma** .  Zie [een micro soft-ontwikkelaars account maken](../marketplace/overview.md)voor meer informatie.
+5. Selecteer **enkele topologieën definiëren om aan de slag te gaan** . Een oplossings sjabloon is een ' Parent ' van alle topologieën. U kunt meerdere topologieën definiëren in één aanbieding of oplossings sjabloon. Wanneer een aanbieding naar fase ring wordt gepusht, wordt deze met alle topologieën gepusht. 
 6. Voer een topologie naam in en selecteer deze **+** .
 7. Voer een nieuwe versie in en selecteer **+** .
 8. Upload het zip-bestand dat u hebt gemaakt tijdens het inpakken van de toepassing.  
-9. Selecteer **certificerings**instantie. Het micro soft-certificerings team beoordeelt de bestanden en certificeert de topologie.
+9. Selecteer **certificerings** instantie. Het micro soft-certificerings team beoordeelt de bestanden en certificeert de topologie.
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over het [installeren van HDInsight-toepassingen](hdinsight-apps-install-applications.md) in uw clusters.
@@ -102,4 +102,3 @@ Een HDInsight-toepassing publiceren:
 * Meer informatie over het [gebruik van script acties voor het aanpassen van HDInsight-clusters op basis van Linux](hdinsight-hadoop-customize-cluster-linux.md) en het toevoegen van meer toepassingen. 
 * Meer informatie over het maken van op [Linux gebaseerde Apache Hadoop clusters in HDInsight met behulp van Azure Resource Manager-sjablonen](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 * Meer informatie over hoe u [een leeg Edge-knoop punt in hdinsight gebruikt](hdinsight-apps-use-edge-node.md) om toegang te krijgen tot hdinsight-clusters, hdinsight-toepassingen te testen en hdinsight-toepassingen te hosten.
-

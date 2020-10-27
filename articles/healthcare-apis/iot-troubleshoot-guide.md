@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: troubleshooting
 ms.date: 09/16/2020
 ms.author: jasteppe
-ms.openlocfilehash: 64056ef2f63331686553c52040af9e10ee0ac468
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a1a23ca2d0b30a192c30b331c588d13a2a261a7
+ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90982988"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92558513"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-troubleshooting-guide"></a>Gids voor probleem oplossing van Azure IoT connector voor FHIR (preview)
 
@@ -33,12 +33,12 @@ In deze sectie vindt u meer informatie over het validatie proces dat door Azure 
 
 |Element|Vereist|
 |:-------|:------|
-|TypeName|True|
-|TypeMatchExpression|True|
-|DeviceIdExpression|True|
-|TimestampExpression|True|
-|Values []. ValueName|True|
-|Values []. ValueExpression|True|
+|TypeName|Waar|
+|TypeMatchExpression|Waar|
+|DeviceIdExpression|Waar|
+|TimestampExpression|Waar|
+|Values []. ValueName|Waar|
+|Values []. ValueExpression|Waar|
 
 > [!NOTE]
 > Values []. Waardenaam en waarden []. ValueExpression
@@ -49,7 +49,7 @@ In deze sectie vindt u meer informatie over het validatie proces dat door Azure 
 
 |Element|Vereist|
 |:------|:-------|
-|TypeName|True|
+|TypeName|Waar|
 
 > [!NOTE]
 > Dit is het enige vereiste FHIR-toewijzings element dat op dit moment is gevalideerd.
@@ -104,7 +104,7 @@ Het toewijzings bestand moet worden voorzien van de technische ondersteuning van
 > [!NOTE]
 > Dit proces kan ook worden gebruikt voor het kopiëren en opslaan van de inhoud van de JSON **FHIR-toewijzing configureren** .
 
-3. Selecteer **apparaattoewijzing configureren**.
+3. Selecteer **apparaattoewijzing configureren** .
 
     :::image type="content" source="media/iot-troubleshoot/map-files-select-device-with-box.png" alt-text="IoT-Connector1" lightbox="media/iot-troubleshoot/map-files-select-device-with-box.png":::
 
@@ -122,7 +122,7 @@ Het toewijzings bestand moet worden voorzien van de technische ondersteuning van
 Bekijk veelgestelde vragen over de Azure IoT-connector voor FHIR.
 
 >[!div class="nextstepaction"]
->[Veelgestelde vragen over Azure IoT connector voor FHIR](fhir-faq.md#azure-iot-connector-for-fhir-preview)
+>[Veelgestelde vragen over Azure IoT connector voor FHIR](fhir-faq.md)
 
 *In Azure Portal wordt Azure IoT Connector for FHIR aangeduid als IoT Connector (preview).
 

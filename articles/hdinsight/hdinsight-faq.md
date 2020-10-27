@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: c0efdda24ae47ae65f0d469b50feaefdf6350678
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0240510a2232bd12a94d5cdd59672270289e5e8f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84022211"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547517"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: veelgestelde vragen
 
@@ -24,7 +24,7 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
 
 ### <a name="how-do-i-provision-an-hdinsight-cluster"></a>Een HDInsight-cluster Hoe kan ik inrichten?
 
-Zie [clusters instellen in HDInsight met Apache Hadoop, Apache Spark, Apache Kafka en meer](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)om de typen HDInsight-clusters en de inrichtings methoden te bekijken.
+Zie [clusters instellen in HDInsight met Apache Hadoop, Apache Spark, Apache Kafka en meer](./hdinsight-hadoop-provision-linux-clusters.md)om de typen HDInsight-clusters en de inrichtings methoden te bekijken.
 
 ### <a name="how-do-i-delete-an-existing-hdinsight-cluster"></a>Hoe kan ik een bestaand HDInsight-cluster verwijderen?
 
@@ -38,7 +38,7 @@ Probeer ten minste 30 tot 60 minuten tussen Create-en delete-bewerkingen te late
 
 Het juiste aantal kern geheugens en andere configuratie opties zijn afhankelijk van verschillende factoren.
 
-Zie [capaciteits planning voor HDInsight-clusters](https://docs.microsoft.com/azure/hdinsight/hdinsight-capacity-planning)voor meer informatie.
+Zie [capaciteits planning voor HDInsight-clusters](./hdinsight-capacity-planning.md)voor meer informatie.
 
 ### <a name="what-are-the-various-types-of-nodes-in-an-hdinsight-cluster"></a>Wat zijn de verschillende typen knoop punten in een HDInsight-cluster?
 
@@ -46,11 +46,11 @@ Zie [resource typen in azure HDInsight-clusters](hdinsight-virtual-network-archi
 
 ### <a name="what-are-the-best-practices-for-creating-large-hdinsight-clusters"></a>Wat zijn de aanbevolen procedures voor het maken van grote HDInsight-clusters?
 
-1. Het is raadzaam HDInsight-clusters in te stellen met een [aangepaste Ambari-data base](https://docs.microsoft.com/azure/hdinsight/hdinsight-custom-ambari-db) om de schaal baarheid van het cluster te verbeteren.
-2. Gebruik [Azure data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) om HDInsight-clusters te maken om te profiteren van meer band breedte en andere prestatie kenmerken van Azure data Lake Storage Gen2.
+1. Het is raadzaam HDInsight-clusters in te stellen met een [aangepaste Ambari-data base](./hdinsight-custom-ambari-db.md) om de schaal baarheid van het cluster te verbeteren.
+2. Gebruik [Azure data Lake Storage Gen2](./hdinsight-hadoop-use-data-lake-storage-gen2.md) om HDInsight-clusters te maken om te profiteren van meer band breedte en andere prestatie kenmerken van Azure data Lake Storage Gen2.
 3. Hoofd knooppunten moet voldoende groot zijn om meerdere Master services te kunnen uitvoeren op deze knoop punten.
 4. Bepaalde werk belastingen, zoals interactieve Query's, hebben ook grotere Zookeeper-knoop punten nodig. Houd rekening met mini maal 8 kern-Vm's.
-5. Gebruik [externe Hive-metastore](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-external-metadata-stores)in het geval van Hive en Spark.
+5. Gebruik [externe Hive-metastore](./hdinsight-use-external-metadata-stores.md)in het geval van Hive en Spark.
 
 ## <a name="individual-components"></a>Afzonderlijke onderdelen
 
@@ -58,11 +58,11 @@ Zie [resource typen in azure HDInsight-clusters](hdinsight-virtual-network-archi
 
 Ja. Als u extra onderdelen wilt installeren of cluster configuratie wilt aanpassen, gebruikt u:
 
-- Scripts tijdens of na het maken. Scripts worden aangeroepen via [script acties](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux). Script actie is een configuratie optie die u kunt gebruiken vanuit de Azure Portal, HDInsight Windows Power shell-cmdlets of de HDInsight .NET SDK. Deze configuratie optie kan worden gebruikt vanuit de Azure Portal, HDInsight Windows Power shell-cmdlets of de HDInsight .NET SDK.
+- Scripts tijdens of na het maken. Scripts worden aangeroepen via [script acties](./hdinsight-hadoop-customize-cluster-linux.md). Script actie is een configuratie optie die u kunt gebruiken vanuit de Azure Portal, HDInsight Windows Power shell-cmdlets of de HDInsight .NET SDK. Deze configuratie optie kan worden gebruikt vanuit de Azure Portal, HDInsight Windows Power shell-cmdlets of de HDInsight .NET SDK.
 
 - [HDInsight-toepassings platform](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) voor het installeren van toepassingen.
 
-Zie [Wat zijn de Apache Hadoop onderdelen en versies die beschikbaar zijn in HDInsight?](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions) voor een lijst met ondersteunde onderdelen?
+Zie [Wat zijn de Apache Hadoop onderdelen en versies die beschikbaar zijn in HDInsight?](./hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions) voor een lijst met ondersteunde onderdelen?
 
 ### <a name="can-i-upgrade-the-individual-components-that-are-pre-installed-on-the-cluster"></a>Kan ik een upgrade uitvoeren voor de afzonderlijke onderdelen die vooraf zijn geïnstalleerd op het cluster?
 
@@ -129,11 +129,11 @@ Als u poort 22 en poort 23 blokkeert, hebt u geen SSH-toegang tot het cluster. D
 
 Raadpleeg de volgende documenten voor meer informatie:
 
-- [Netwerk verkeer beheren](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#networktraffic)
+- [Poorten die worden gebruikt door Apache Hadoop Services in HDInsight](./hdinsight-hadoop-port-settings-for-services.md)
 
 - [Binnenkomend verkeer naar HDInsight-clusters in een virtueel netwerk met een persoonlijk eind punt beveiligen](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)
 
-- [IP-adressen beheren met HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)
+- [IP-adressen beheren met HDInsight](./hdinsight-management-ip-addresses.md)
 
 ### <a name="can-i-deploy-an-additional-virtual-machine-within-the-same-subnet-as-an-hdinsight-cluster"></a>Kan ik een extra virtuele machine implementeren in hetzelfde subnet als een HDInsight-cluster?
 
@@ -186,7 +186,7 @@ U wordt aangeraden een certificaat te gebruiken dat is uitgegeven door een certi
 
 ### <a name="how-can-i-pull-login-activity-shown-in-ranger"></a>Hoe kan ik de aanmeldings activiteiten in zwerver weer geven?
 
-Voor controle vereisten raadt micro soft aan Azure Monitor Logboeken in te scha kelen zoals beschreven in [Azure monitor Logboeken gebruiken om HDInsight-clusters te controleren](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-oms-log-analytics-tutorial).
+Voor controle vereisten raadt micro soft aan Azure Monitor Logboeken in te scha kelen zoals beschreven in [Azure monitor Logboeken gebruiken om HDInsight-clusters te controleren](./hdinsight-hadoop-oms-log-analytics-tutorial.md).
 
 ### <a name="can-i-disable-clamscan-on-my-cluster"></a>Kan ik uitschakelen `Clamscan` op mijn cluster?
 
@@ -258,7 +258,7 @@ Momenteel bestaat er geen zwerver-invoeg toepassing voor Blob Storage en Azure D
 U kunt beleid voor gegevens toegang toewijzen aan de beveiligings groepen van uw gebruikers met behulp van de Azure Storage Explorer. Zie voor meer informatie:
 
 - [Hoe kan ik machtigingen instellen voor Azure AD-gebruikers om gegevens op te vragen in Data Lake Storage Gen2 met behulp van Hive of andere services?](hdinsight-hadoop-use-data-lake-storage-gen2.md#how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services)
-- [Machtigingen op bestands- en mapniveau instellen voor Azure Data Lake Storage Gen2 met behulp van Azure Storage Explorer](/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
+- [Machtigingen op bestands- en mapniveau instellen voor Azure Data Lake Storage Gen2 met behulp van Azure Storage Explorer](../storage/blobs/data-lake-storage-explorer.md)
 
 ### <a name="can-i-increase-hdfs-storage-on-a-cluster-without-increasing-the-disk-size-of-worker-nodes"></a>Kan ik de HDFS-opslag op een cluster verg Roten zonder de schijf grootte van worker-knoop punten te verhogen?
 
@@ -272,7 +272,7 @@ Zie [lege Edge-knoop punten gebruiken op Apache Hadoop clusters in HDInsight](hd
 
 ### <a name="how-can-i-connect-to-an-edge-node"></a>Hoe kan ik verbinding maken met een Edge-knoop punt?
 
-Nadat u een Edge-knoop punt hebt gemaakt, kunt u er verbinding mee maken via SSH op poort 22. U kunt de naam van het Edge-knoop punt vinden in de cluster Portal. De namen eindigen meestal met *-Ed*.
+Nadat u een Edge-knoop punt hebt gemaakt, kunt u er verbinding mee maken via SSH op poort 22. U kunt de naam van het Edge-knoop punt vinden in de cluster Portal. De namen eindigen meestal met *-Ed* .
 
 ### <a name="why-are-persisted-scripts-not-running-automatically-on-newly-created-edge-nodes"></a>Waarom worden persistente scripts niet automatisch uitgevoerd op nieuw gemaakte Edge-knoop punten?
 
@@ -333,11 +333,11 @@ De facturering voor het gebruik van HDInsight-clusters begint zodra er een clust
 
 ### <a name="how-do-i-cancel-my-subscription"></a>Hoe kan ik mijn abonnement annuleren?
 
-Zie [uw Azure-abonnement annuleren](https://docs.microsoft.com/azure/billing/billing-how-to-cancel-azure-subscription)voor meer informatie over het annuleren van uw abonnement.
+Zie [uw Azure-abonnement annuleren](../cost-management-billing/manage/cancel-azure-subscription.md)voor meer informatie over het annuleren van uw abonnement.
 
 ### <a name="for-pay-as-you-go-subscriptions-what-happens-after-i-cancel-my-subscription"></a>Wat gebeurt er nadat ik mijn abonnement heb geannuleerd? voor betalen per gebruik-abonnementen?
 
-Zie [Wat gebeurt er nadat ik mijn abonnement heb geannuleerd?](/azure/billing/billing-how-to-cancel-azure-subscription) voor informatie over uw abonnement nadat dit is geannuleerd?
+Zie [Wat gebeurt er nadat ik mijn abonnement heb geannuleerd?](../cost-management-billing/manage/cancel-azure-subscription.md) voor informatie over uw abonnement nadat dit is geannuleerd?
 
 ## <a name="hive"></a>Hive
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/18/2020
-ms.openlocfilehash: 8c1ff1eebabd94c5e6b1241b33ca83960e8eedbb
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 69844a392aa03dc962f8af456996ab51f1adf561
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490285"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547466"
 ---
 # <a name="apache-hadoop-clusters-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Apache Hadoop clusters met opslag accounts voor veilige overdracht in azure HDInsight
 
@@ -32,7 +32,7 @@ Zie voor het bijwerken van een bestaand opslag account met Azure Portal [vereise
 
 ### <a name="powershell"></a>PowerShell
 
-Zorg ervoor dat de para meter is ingesteld voor de Power shell-cmdlet [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) `-EnableHttpsTrafficOnly` `1` .
+Zorg ervoor dat de para meter is ingesteld voor de Power shell-cmdlet [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) `-EnableHttpsTrafficOnly` `1` .
 
 Zie [veilige overdracht vereisen met Power shell](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-powershell)voor meer informatie over het bijwerken van een bestaand opslag account met Power shell.
 

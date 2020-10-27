@@ -8,17 +8,17 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: da5eb43f8bc2fc8b4ac213f6ff90464de5995a47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4eede07b285614c061f4b59845c8f44d82083ec2
+ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87553644"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92558530"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>Toewijzingssjablonen in Azure IoT Connector for FHIR (preview)
 In dit artikel vindt u informatie over het configureren van Azure IoT connector voor FHIR * met toewijzings sjablonen.
 
-De Azure IoT connector voor FHIR vereist twee typen toewijzings sjablonen op basis van JSON. Het eerste type, **apparaattoewijzing**, is verantwoordelijk voor het toewijzen van de nettoladingen van apparaten die zijn verzonden naar het `devicedata` eind punt van de Azure Event hub. Het extraheert typen, apparaat-id's, meting datum en meet waarde (n). Het tweede type, **FHIR-toewijzing**, bepaalt de toewijzing voor FHIR-resource. Hiermee kunt u de lengte van de observatie periode, het gegevens type FHIR dat wordt gebruikt voor het opslaan van de waarden en terminologie code (s), configureren. 
+De Azure IoT connector voor FHIR vereist twee typen toewijzings sjablonen op basis van JSON. Het eerste type, **apparaattoewijzing** , is verantwoordelijk voor het toewijzen van de nettoladingen van apparaten die zijn verzonden naar het `devicedata` eind punt van de Azure Event hub. Het extraheert typen, apparaat-id's, meting datum en meet waarde (n). Het tweede type, **FHIR-toewijzing** , bepaalt de toewijzing voor FHIR-resource. Hiermee kunt u de lengte van de observatie periode, het gegevens type FHIR dat wordt gebruikt voor het opslaan van de waarden en terminologie code (s), configureren. 
 
 De toewijzings sjablonen zijn samengesteld in een JSON-document op basis van hun type. Deze JSON-documenten worden vervolgens toegevoegd aan uw Azure IoT-connector voor FHIR via de Azure Portal. Het document apparaattoewijzing wordt toegevoegd via de pagina apparaattoewijzing **configureren** en het FHIR-toewijzings document via de pagina **toewijzing van FHIR configureren** .
 
@@ -71,8 +71,8 @@ Met de JsonPathContentTemplate kunt u waarden uit een event hub-bericht vergelij
 |**TypeMatchExpression**|De JSON-padexpressie die wordt geëvalueerd op basis van de nettolading van de Event hub. Als er een overeenkomende JToken wordt gevonden, wordt de sjabloon als een overeenkomst beschouwd. Alle volgende expressies worden geëvalueerd op basis van de geëxtraheerde JToken die hier overeenkomen.|`$..[?(@heartRate)]`
 |**TimestampExpression**|De expressie JSON-pad om de time stamp-waarde voor de OccurenceTimeUtc van de meting te extra heren.|`$.endDate`
 |**DeviceIdExpression**|De expressie JSON-pad voor het uitpakken van de apparaat-id.|`$.deviceId`
-|**PatientIdExpression**|*Optioneel*: de expressie voor het JSON-pad om de patiënt-id op te halen.|`$.patientId`
-|**EncounterIdExpression**|*Optioneel*: de expressie van het JSON-pad om de ondertredende id op te halen.|`$.encounterId`
+|**PatientIdExpression**|*Optioneel* : de expressie voor het JSON-pad om de patiënt-id op te halen.|`$.patientId`
+|**EncounterIdExpression**|*Optioneel* : de expressie van het JSON-pad om de ondertredende id op te halen.|`$.encounterId`
 |**Values []. ValueName**|De naam die moet worden gekoppeld aan de waarde die is geëxtraheerd door de volgende expressie. Wordt gebruikt om de vereiste waarde/component in de FHIR-toewijzings sjabloon te koppelen. |`hr`
 |**Values []. ValueExpression**|De expressie voor het JSON-pad om de vereiste waarde op te halen.|`$.heartRate`
 |**Values []. Vereist**|Moet de waarde aanwezig zijn in de payload.  Als dit niet wordt gevonden, wordt er geen meting gegenereerd en wordt er een InvalidOperationException gegenereerd.|`true`
@@ -362,7 +362,7 @@ Vertegenwoordigt het [SampledData](http://hl7.org/fhir/datatypes.html#SampledDat
 |**DefaultPeriod**|De standaard periode in milliseconden die moet worden gebruikt. 
 |**Eenheid**|De eenheid die moet worden ingesteld op de oorsprong van de SampledData. 
 
-#### <a name="quantity"></a>Hoeveelheid
+#### <a name="quantity"></a>Aantal
 Hiermee wordt het gegevens type [hoeveelheid](http://hl7.org/fhir/datatypes.html#Quantity) FHIR. Als er meer dan één waarde in de groepering aanwezig is, wordt alleen de eerste waarde gebruikt. Wanneer een nieuwe waarde arriveert die is toegewezen aan dezelfde observatie, wordt de oude waarde overschreven.
 
 | Eigenschap | Beschrijving 
@@ -565,7 +565,7 @@ Vertegenwoordigt het [CodeableConcept](http://hl7.org/fhir/datatypes.html#Codeab
 Bekijk veelgestelde vragen over Azure IoT connector voor FHIR (preview).
 
 >[!div class="nextstepaction"]
->[Veelgestelde vragen over Azure IoT connector voor FHIR](fhir-faq.md#azure-iot-connector-for-fhir-preview)
+>[Veelgestelde vragen over Azure IoT connector voor FHIR](fhir-faq.md)
 
 *In Azure Portal wordt Azure IoT Connector for FHIR aangeduid als IoT Connector (preview).
 

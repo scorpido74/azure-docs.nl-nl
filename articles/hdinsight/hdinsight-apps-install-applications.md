@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: e0d1f9ad99e1b64560321312a22f61f5a2ef3dea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b34c6fe58873a614ee8502e052c2af5aaed898cd
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89016033"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547942"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Apache Hadoop-toepassingen van derden installeren op Azure HDInsight
 
@@ -23,7 +23,7 @@ An HDInsight toepassing is een toepassing die gebruikers kunnen installeren op e
 
 De volgende lijst bevat de gepubliceerde toepassingen:
 
-|Toepassing |Cluster type (n) | Beschrijving |
+|Toepassing |Cluster type (n) | Description |
 |---|---|---|
 |[AtScale intelligence-platform](https://azuremarketplace.microsoft.com/marketplace/apps/atscaleinc.atscale) |Hadoop |Met AtScale wordt uw HDInsight-cluster omgezet in een scale-out OLAP-server, zodat u miljarden rijen gegevens interactief kunt opvragen met behulp van de BI-hulpprogram ma's die u al kent, eigenaar en liefde – van micro soft Excel, Power BI, tableau software naar QlikView. |
 |[CDAP voor HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/cask.cdap-for-hdinsight) |HBase |CDAP is het eerste geïntegreerde integratie platform voor big data dat de time-to-waarde voor Hadoop versnelt en de IT-service in staat stelt om selfservice gegevens te leveren. Open source en uitbreid bare, CDAP verwijdert belemmeringen voor innovatie. Vereisten: 4 regio knooppunten, min D3 v2. |
@@ -52,9 +52,9 @@ De volgende procedure beschrijft hoe u HDInsight-toepassingen in een bestaand HD
 **Een HDInsight-toepassing installeren**
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Ga in het menu links naar **alle services**  >  **Analytics**  >  **HDInsight-clusters**.
+2. Ga in het menu links naar **alle services**  >  **Analytics**  >  **HDInsight-clusters** .
 3. Selecteer een HDInsight-cluster in de lijst.  Als u deze niet hebt, maakt u die eerst.  Zie [Clusters maken](hadoop/apache-hadoop-linux-tutorial-get-started.md).
-4. Selecteer in de categorie **instellingen** de optie **toepassingen**. In het hoofd venster ziet u een lijst met geïnstalleerde toepassingen. 
+4. Selecteer in de categorie **instellingen** de optie **toepassingen** . In het hoofd venster ziet u een lijst met geïnstalleerde toepassingen. 
    
     ![Menu van HDInsight-toepassingenportal](./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png)
 5. Selecteer **+ toevoegen** in het menu. U kunt een lijst met beschik bare toepassingen weer geven.  Als **+ add** grijs wordt weer gegeven, betekent dit dat er geen toepassingen zijn voor deze versie van het HDInsight-cluster.
@@ -66,7 +66,7 @@ U kunt de installatie status bekijken via de meldingen van de portal (Selecteer 
 
 ## <a name="install-applications-during-cluster-creation"></a>Toepassingen installeren tijdens het maken van het cluster
 
-U hebt ook de optie HDInsight-toepassingen te installeren wanneer u een cluster maakt. Tijdens het proces worden HDInsight-toepassingen geïnstalleerd nadat het cluster is gemaakt en actief is. Als u toepassingen wilt installeren tijdens het maken van het cluster met behulp van de Azure Portal, klikt u op het tabblad **configuratie + prijzen** en selecteert u **+ toepassing toevoegen**.
+U hebt ook de optie HDInsight-toepassingen te installeren wanneer u een cluster maakt. Tijdens het proces worden HDInsight-toepassingen geïnstalleerd nadat het cluster is gemaakt en actief is. Als u toepassingen wilt installeren tijdens het maken van het cluster met behulp van de Azure Portal, klikt u op het tabblad **configuratie + prijzen** en selecteert u **+ toepassing toevoegen** .
 
 ![Azure Portal cluster configuratie toepassingen](./media/hdinsight-apps-install-applications/azure-portal-cluster-configuration-applications.png)
 
@@ -76,9 +76,9 @@ De portal toont een lijst van de geïnstalleerde HDInsight-toepassingen voor een
 **Lijst met HDInsight-toepassingen en weer gave-eigenschappen**
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Ga in het menu links naar **alle services**  >  **Analytics**  >  **HDInsight-clusters**.
+2. Ga in het menu links naar **alle services**  >  **Analytics**  >  **HDInsight-clusters** .
 3. Selecteer een HDInsight-cluster in de lijst.
-4. Selecteer in de categorie **instellingen** de optie **toepassingen**. In het hoofd venster ziet u een lijst met geïnstalleerde toepassingen. 
+4. Selecteer in de categorie **instellingen** de optie **toepassingen** . In het hoofd venster ziet u een lijst met geïnstalleerde toepassingen. 
    
     ![HDInsight-toepassingen, geïnstalleerde apps](./media/hdinsight-apps-install-applications/hdinsight-apps-installed-apps-with-apps.png)
 5. Selecteer een van de geïnstalleerde toepassingen om de eigenschap weer te geven. De eigenschappen lijsten:
@@ -89,7 +89,7 @@ De portal toont een lijst van de geïnstalleerde HDInsight-toepassingen voor een
     |Status |Toepassings status. |
     |Webpagina |De URL van de webtoepassing die u hebt geïmplementeerd op het Edge-knoop punt. De referenties zijn dezelfde als de HTTP-gebruikersreferenties die u hebt geconfigureerd voor het cluster. |
     |SSH-eind punt |U kunt SSH gebruiken om verbinding te maken met het Edge-knoop punt. De SSH-referenties zijn dezelfde als de SSH-gebruikersreferenties die u hebt geconfigureerd voor het cluster. Zie [SSH-sleutels gebruiken met HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) voor informatie. |
-    |Beschrijving | Beschrijving van toepassing. |
+    |Description | Beschrijving van toepassing. |
 
 6. Als u een toepassing wilt verwijderen, klikt u met de rechter muisknop op de toepassing en klikt u vervolgens op **verwijderen** in het context menu.
 
@@ -104,8 +104,7 @@ Zie [Problemen met de installatie oplossen](hdinsight-apps-install-custom-applic
 ## <a name="next-steps"></a>Volgende stappen
 * [Aangepaste hdinsight-toepassingen installeren](hdinsight-apps-install-custom-applications.md): meer informatie over het implementeren van een niet-gepubliceerde hdinsight-toepassing op hdinsight.
 * [HDInsight-toepassingen publiceren](hdinsight-apps-publish-applications.md): informatie over het publiceren van aangepaste HDInsight-toepassingen in Azure Marketplace.
-* [MSDN: een HDInsight-toepassing installeren](https://msdn.microsoft.com/library/mt706515.aspx): informatie over het definiëren van HDInsight-toepassingen.
+* [MSDN: een HDInsight-toepassing installeren](/rest/api/hdinsight/hdinsight-application): informatie over het definiëren van HDInsight-toepassingen.
 * [Op Linux gebaseerde HDInsight-clusters aanpassen met behulp van een scriptactie](hdinsight-hadoop-customize-cluster-linux.md): informatie over het gebruik van een scriptactie om extra toepassingen te installeren.
 * [Op Linux gebaseerde Apache Hadoop clusters maken in HDInsight met behulp van Resource Manager-sjablonen](hdinsight-hadoop-create-linux-clusters-arm-templates.md): informatie over het aanroepen van Resource Manager-sjablonen voor het maken van HDInsight-clusters.
 * [Use empty edge nodes in HDInsight](hdinsight-apps-use-edge-node.md) (Lege edge-knooppunten gebruiken in HDInsight): meer informatie over het gebruik van een leeg edge-knooppunt om toegang te krijgen tot het HDInsight-cluster, HDInsight toepassingen te testen en HDInsight-toepassingen te hosten.
-

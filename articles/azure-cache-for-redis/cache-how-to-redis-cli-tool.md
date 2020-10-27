@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.openlocfilehash: e8a3183e1fcac3f1a71d07835cacc37c2f57fb06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ca8980123240a90f73a4866c37a79800ce403d1
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839041"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538014"
 ---
 # <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>Het opdracht regel programma redis gebruiken met Azure cache voor redis
 
@@ -27,8 +27,8 @@ Als u het opdracht regel programma wilt uitvoeren op een ander platform, downloa
 
 U kunt de gegevens die nodig zijn voor toegang tot de cache verzamelen met behulp van drie methoden:
 
-1. Azure CLI met [AZ redis List-Keys](https://docs.microsoft.com/cli/azure/redis?view=azure-cli-latest#az-redis-list-keys)
-2. Azure PowerShell met [Get-AzRedisCacheKey](https://docs.microsoft.com/powershell/module/az.rediscache/Get-AzRedisCacheKey)
+1. Azure CLI met [AZ redis List-Keys](/cli/azure/redis?view=azure-cli-latest#az-redis-list-keys)
+2. Azure PowerShell met [Get-AzRedisCacheKey](/powershell/module/az.rediscache/Get-AzRedisCacheKey)
 3. Via Azure Portal.
 
 In deze sectie haalt u de sleutels op uit het Azure Portal.
@@ -46,7 +46,7 @@ Met Azure cache voor redis is alleen de TLS-poort (6380) standaard ingeschakeld.
 
     Voer **STUNNEL GUI start** uit om de server te starten.
 
-    Klik met de rechter muisknop op het taak balk pictogram voor de stunnel-server en klik op **logboek venster weer geven**.
+    Klik met de rechter muisknop op het taak balk pictogram voor de stunnel-server en klik op **logboek venster weer geven** .
 
     Klik in het menu van het stunnel-logboek op **configuratie**  >  **bewerkings configuratie** om het huidige configuratie bestand te openen.
 
@@ -61,12 +61,12 @@ Met Azure cache voor redis is alleen de TLS-poort (6380) standaard ingeschakeld.
 
     Sla het configuratie bestand op en sluit het. 
   
-    **Klik in**het menu van het stunnel-logboek op configuratie  >  **opnieuw laden**configuratie.
+    **Klik in** het menu van het stunnel-logboek op configuratie  >  **opnieuw laden** configuratie.
 
 
 ## <a name="connect-using-the-redis-command-line-tool"></a>Verbinding maken met behulp van het opdracht regel programma redis.
 
-Wanneer u stunnel gebruikt, voert u *redis-cli.exe*uit en geeft u alleen uw *poort*door en de *toegangs sleutel* (primair of secundair) om verbinding te maken met de cache.
+Wanneer u stunnel gebruikt, voert u *redis-cli.exe* uit en geeft u alleen uw *poort* door en de *toegangs sleutel* (primair of secundair) om verbinding te maken met de cache.
 
 ```
 redis-cli.exe -p 6380 -a YourAccessKey
@@ -74,7 +74,7 @@ redis-cli.exe -p 6380 -a YourAccessKey
 
 ![Scherm opname die laat zien dat de verbinding met de cache is geslaagd.](media/cache-how-to-redis-cli-tool/cache-redis-cli-stunnel.png)
 
-Als u een test cache gebruikt met de niet- **beveiligde** niet-TLS-poort, voert u `redis-cli.exe` de *hostnaam*, *poort*en *toegangs sleutel* (primair of secundair) uit om verbinding te maken met de test cache.
+Als u een test cache gebruikt met de niet- **beveiligde** niet-TLS-poort, voert u `redis-cli.exe` de *hostnaam* , *poort* en *toegangs sleutel* (primair of secundair) uit om verbinding te maken met de test cache.
 
 ```
 redis-cli.exe -h yourcachename.redis.cache.windows.net -p 6379 -a YourAccessKey
@@ -88,4 +88,3 @@ redis-cli.exe -h yourcachename.redis.cache.windows.net -p 6379 -a YourAccessKey
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over het gebruik van de [redis-console](cache-configure.md#redis-console) om opdrachten uit te geven.
-

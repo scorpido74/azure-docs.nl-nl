@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/26/2019
-ms.openlocfilehash: b4f390e6d362895d58be0e8695e72d058a021b34
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c4efb8b4835b7dc828caa49eaf6013a2f58bb081
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485542"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534546"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>Apache Kafka op HDInsight gebruiken met Azure IoT Hub
 
@@ -37,7 +37,7 @@ Zie voor meer informatie over de Connect-API [https://kafka.apache.org/documenta
 
 * Een SSH-client. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* Een Azure-IoT Hub en-apparaat. Voor dit artikel kunt u gebruikmaken van [Connect Raspberry Pi online Simulator naar Azure IOT hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started).
+* Een Azure-IoT Hub en-apparaat. Voor dit artikel kunt u gebruikmaken van [Connect Raspberry Pi online Simulator naar Azure IOT hub](../../iot-hub/iot-hub-raspberry-pi-web-simulator-get-started.md).
 
 * [Hulp programma scala build](https://www.scala-sbt.org/).
 
@@ -125,7 +125,7 @@ Gebruik vanuit uw SSH-verbinding met het Edge-knoop punt de volgende stappen om 
     |`value.converter=org.apache.kafka.connect.json.JsonConverter`|`value.converter=org.apache.kafka.connect.storage.StringConverter`|Hetzelfde als hierboven.|
     |N.v.t.|`consumer.max.poll.records=10`|Toevoegen aan het einde van het bestand. Deze wijziging is het voor komen van time-outs in de Sink-connector door deze te beperken tot 10 records tegelijk. Zie [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md) voor meer informatie.|
 
-1. Als u het bestand wilt opslaan, gebruikt u __CTRL + X__, __Y__en __voert__u in.
+1. Als u het bestand wilt opslaan, gebruikt u __CTRL + X__ , __Y__ en __voert__ u in.
 
 1. Gebruik de volgende opdrachten om de onderwerpen te maken die door de connector worden gebruikt:
 
@@ -151,9 +151,9 @@ Voer de volgende stappen uit om IoT hub-gegevens op te halen die worden gebruikt
 
    * Voer __vanuit het [Azure Portal](https://portal.azure.com/)__ de volgende stappen uit:
 
-     1. Navigeer naar uw IoT Hub en selecteer __eind punten__.
-     2. Selecteer __gebeurtenissen__van __ingebouwde eind punten__.
-     3. Kopieer de waarde van de volgende velden uit __Eigenschappen__:
+     1. Navigeer naar uw IoT Hub en selecteer __eind punten__ .
+     2. Selecteer __gebeurtenissen__ van __ingebouwde eind punten__ .
+     3. Kopieer de waarde van de volgende velden uit __Eigenschappen__ :
 
          * __Event hub-compatibele naam__
          * __Event hub-compatibel eind punt__
@@ -176,11 +176,11 @@ Voer de volgende stappen uit om IoT hub-gegevens op te halen die worden gebruikt
        "Partitions": 2
        ```
 
-2. Het __gedeelde toegangs beleid__ en de __sleutel__ophalen. Voor dit voor beeld gebruikt u de __service__ sleutel. Gebruik een van de volgende methoden om deze informatie op te halen:
+2. Het __gedeelde toegangs beleid__ en de __sleutel__ ophalen. Voor dit voor beeld gebruikt u de __service__ sleutel. Gebruik een van de volgende methoden om deze informatie op te halen:
 
     * Voer __vanuit het [Azure Portal](https://portal.azure.com/)__ de volgende stappen uit:
 
-        1. Selecteer __beleid voor gedeelde toegang__en selecteer vervolgens __service__.
+        1. Selecteer __beleid voor gedeelde toegang__ en selecteer vervolgens __service__ .
         2. Kopieer de waarde van de __primaire sleutel__ .
         3. Kopieer de __verbindings reeks--__ waarde voor de primaire sleutel.
 
@@ -233,7 +233,7 @@ Als u de bron wilt configureren voor gebruik met uw IoT Hub, voert u de volgende
 
     Zie [Kafka Connect source connector for Azure IOT hub](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md)voor een voorbeeld configuratie.
 
-1. Als u de wijzigingen wilt opslaan, gebruikt u __CTRL + X__, __Y__en voert u vervolgens __Enter__.
+1. Als u de wijzigingen wilt opslaan, gebruikt u __CTRL + X__ , __Y__ en voert u vervolgens __Enter__ .
 
 Zie voor meer informatie over het configureren van de connector bron [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md) .
 
@@ -262,7 +262,7 @@ Als u de Sink-verbinding wilt configureren voor gebruik met uw IoT Hub, voert u 
 
     Zie [Kafka Connect Sink connector voor Azure IOT hub](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)voor een voorbeeld configuratie.
 
-1. Als u de wijzigingen wilt opslaan, gebruikt u __CTRL + X__, __Y__en voert u vervolgens __Enter__.
+1. Als u de wijzigingen wilt opslaan, gebruikt u __CTRL + X__ , __Y__ en voert u vervolgens __Enter__ .
 
 Zie voor meer informatie over het configureren van de connector-Sink [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md) .
 

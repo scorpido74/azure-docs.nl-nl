@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive, devx-track-python
-ms.openlocfilehash: 9c16b3ff013c2985ea381ed4bb002276b1c3fdb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0179fd10e75af0ced55b4bb41f9525dc26b3efe5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462238"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92540377"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>Met python door de gebruiker gedefinieerde functies (UDF) met Apache Hive en Apache varken in HDInsight gebruiken
 
@@ -27,11 +27,11 @@ HDInsight omvat ook jython, een python-implementatie die is geschreven in Java. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* **Een Hadoop-cluster in HDInsight**. Zie aan de [slag met HDInsight op Linux](apache-hadoop-linux-tutorial-get-started.md).
-* **Een SSH-client**. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Een Hadoop-cluster in HDInsight** . Zie aan de [slag met HDInsight op Linux](apache-hadoop-linux-tutorial-get-started.md).
+* **Een SSH-client** . Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 * Het [URI-schema](../hdinsight-hadoop-linux-information.md#URI-and-scheme) voor de primaire opslag voor uw clusters. Dit is `wasb://` voor Azure Storage voor `abfs://` Azure Data Lake Storage Gen2 of adl://voor Azure data Lake Storage gen1. Als beveiligde overdracht is ingeschakeld voor Azure Storage, zou de URI wasbs://zijn.  Zie ook [beveiligde overdracht](../../storage/common/storage-require-secure-transfer.md).
 * **Mogelijke wijziging van de opslag configuratie.**  Zie [opslag configuratie](#storage-configuration) als u een type opslag account gebruikt `BlobStorage` .
-* Optioneel.  Als u Power shell wilt gebruiken, hebt u de [AZ-module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) geïnstalleerd.
+* Optioneel.  Als u Power shell wilt gebruiken, hebt u de [AZ-module](/powershell/azure/new-azureps-module-az) geïnstalleerd.
 
 > [!NOTE]  
 > Het opslag account dat in dit artikel wordt gebruikt, is Azure Storage met [beveiligde overdracht](../../storage/common/storage-require-secure-transfer.md) ingeschakeld en `wasbs` wordt dus in het hele artikel gebruikt.
@@ -46,7 +46,7 @@ U hoeft geen actie te ondernemen als het gebruikte opslag account van soort `Sto
 > * U maakt de python-scripts in uw lokale ontwikkel omgeving.
 > * U uploadt de scripts naar HDInsight met behulp van de `scp` opdracht of het Power shell-script.
 >
-> Als u de [Azure Cloud shell (bash)](https://docs.microsoft.com/azure/cloud-shell/overview) wilt gebruiken om met HDInsight te werken, moet u het volgende doen:
+> Als u de [Azure Cloud shell (bash)](../../cloud-shell/overview.md) wilt gebruiken om met HDInsight te werken, moet u het volgende doen:
 >
 > * Maak de scripts in de Cloud shell-omgeving.
 > * Gebruiken `scp` om de bestanden te uploaden van de Cloud shell naar HDInsight.
@@ -300,8 +300,8 @@ Een python-script kan worden gebruikt als een UDF van varken via de- `GENERATE` 
 
 Als u de Python-interpreter wilt opgeven, gebruikt u `register` bij het verwijzen naar het python-script. De volgende voor beelden registreren scripts met varkens als `myfuncs` :
 
-* **Jython gebruiken**: `register '/path/to/pigudf.py' using jython as myfuncs;`
-* **C Python gebruiken**: `register '/path/to/pigudf.py' using streaming_python as myfuncs;`
+* **Jython gebruiken** : `register '/path/to/pigudf.py' using jython as myfuncs;`
+* **C Python gebruiken** : `register '/path/to/pigudf.py' using streaming_python as myfuncs;`
 
 > [!IMPORTANT]  
 > Wanneer u jython gebruikt, kan het pad naar het pig_jython bestand een lokaal pad of een WASBS://-pad zijn. Bij gebruik van C python moet u echter verwijzen naar een bestand op het lokale bestands systeem van het knoop punt dat u gebruikt om de Pig-taak te verzenden.
@@ -343,7 +343,7 @@ def create_structure(input):
 
 In het Latijnse voor beeld van het varken `LINE` wordt de invoer gedefinieerd als een chararray, omdat er geen consistent schema is voor de invoer. Het python-script transformeert de gegevens naar een consistent schema voor uitvoer.
 
-1. De `@outputSchema` instructie definieert de indeling van de gegevens die worden geretourneerd naar varken. In dit geval is het een **gegevens verzameling**, een Pig-gegevens type. De Bag bevat de volgende velden, die allemaal chararray (teken reeksen) zijn:
+1. De `@outputSchema` instructie definieert de indeling van de gegevens die worden geretourneerd naar varken. In dit geval is het een **gegevens verzameling** , een Pig-gegevens type. De Bag bevat de volgende velden, die allemaal chararray (teken reeksen) zijn:
 
    * datum: de datum waarop de logboek vermelding is gemaakt
    * tijdstip: de tijd waarop de logboek vermelding is gemaakt
@@ -423,7 +423,7 @@ Vervang in de onderstaande opdrachten door `sshuser` de daad werkelijke gebruike
     #from pig_util import outputSchema
     ```
 
-    Deze regel wijzigt het python-script om te werken met C python in plaats van jython. Nadat de wijziging is aangebracht, gebruikt u **CTRL + X** om de editor af te sluiten. Selecteer **Y**en **Voer** deze in om de wijzigingen op te slaan.
+    Deze regel wijzigt het python-script om te werken met C python in plaats van jython. Nadat de wijziging is aangebracht, gebruikt u **CTRL + X** om de editor af te sluiten. Selecteer **Y** en **Voer** deze in om de wijzigingen op te slaan.
 
 6. Gebruik de `pig` opdracht om de shell opnieuw te starten. Als u zich bij de prompt bevindt `grunt>` , gebruikt u de volgende opdracht om het python-script uit te voeren met de C Python-interpreter.
 
@@ -594,7 +594,7 @@ De fout informatie (STDERR) en het resultaat van de taak (STDOUT) worden ook ger
 
 ## <a name="next-steps"></a><a name="next"></a>Volgende stappen
 
-Zie [een module implementeren in azure HDInsight](https://docs.microsoft.com/archive/blogs/benjguin/how-to-deploy-a-python-module-to-windows-azure-hdinsight)als u python-modules wilt laden die niet standaard worden meegeleverd.
+Zie [een module implementeren in azure HDInsight](/archive/blogs/benjguin/how-to-deploy-a-python-module-to-windows-azure-hdinsight)als u python-modules wilt laden die niet standaard worden meegeleverd.
 
 Raadpleeg de volgende documenten voor andere manieren om Pig en Hive te gebruiken en om meer te leren over het gebruik van MapReduce:
 

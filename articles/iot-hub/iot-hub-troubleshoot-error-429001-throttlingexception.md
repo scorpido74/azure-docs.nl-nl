@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
-ms.openlocfilehash: 3095e398d7e5cfe59085144d5bb4e8dc33618064
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2f12a6982886eeaa375151c5b8a73acc573aab9
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76960696"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545358"
 ---
 # <a name="429001-throttlingexception"></a>429001 ThrottlingException
 
@@ -21,7 +21,7 @@ In dit artikel worden de oorzaken en oplossingen voor **429001 ThrottlingExcepti
 
 ## <a name="symptoms"></a>Symptomen
 
-Uw aanvragen voor IoT Hub mislukken met de fout **429001 ThrottlingException**.
+Uw aanvragen voor IoT Hub mislukken met de fout **429001 ThrottlingException** .
 
 ## <a name="cause"></a>Oorzaak
 
@@ -29,7 +29,7 @@ De [limieten](./iot-hub-devguide-quotas-throttling.md) voor IOT hub beperking zi
 
 ## <a name="solution"></a>Oplossing
 
-Controleer of u de beperkings limiet hebt bereikt door uw *telemetrie-bericht verzendings* waarden te vergelijken met de hierboven opgegeven limieten. U kunt ook het aantal metrieke *beperkings fouten* controleren. Zie voor meer informatie over deze en andere metrische gegevens die beschikbaar zijn voor IoT Hub [IOT hub metrische gegevens en hoe u deze kunt gebruiken](./iot-hub-metrics.md#iot-hub-metrics-and-how-to-use-them).
+Controleer of u de beperkings limiet hebt bereikt door uw *telemetrie-bericht verzendings* waarden te vergelijken met de hierboven opgegeven limieten. U kunt ook het aantal metrieke *beperkings fouten* controleren. Zie metrische gegevens over de [telemetrie](monitor-iot-hub-reference.md#device-telemetry-metrics)van een apparaat voor meer informatie over deze gegevens. Zie [IOT hub bewaken](monitor-iot-hub.md)voor meer informatie over het gebruik van metrische gegevens voor het bewaken van uw IOT-hub.
 
 IoT Hub retourneert 429 ThrottlingException nadat de limiet te lang is geschonden. Dit wordt gedaan zodat uw berichten niet worden verwijderd als uw IoT-hub burst-verkeer ontvangt. In de tussentijd worden de berichten in IoT Hub verwerkt volgens de vertragingsfactor voor bewerkingen. Als er te veel achterstallig verkeer is, kan dit traag zijn. Zie [IoT traffic shaping](./iot-hub-devguide-quotas-throttling.md#traffic-shaping)voor meer informatie.
 

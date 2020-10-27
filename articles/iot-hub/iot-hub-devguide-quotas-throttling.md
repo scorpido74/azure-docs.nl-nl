@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: 2f2ab3c55c5532b76c45a18054fd653dd8fe8137
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 72aff2a2761d3aae695968bd5b4b9d07eab1697f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92504071"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547687"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referentie-IoT Hub quota's en beperking
 
@@ -43,7 +43,7 @@ De volgende tabel geeft de afgedwongen vertragingen weer. Waarden verwijzen naar
 | Vertragen | Gratis, B1 en S1 | B2 en S2 | B3 en S3 | 
 | -------- | ------- | ------- | ------- |
 | [Identiteits register bewerkingen](#identity-registry-operations-throttle) (maken, ophalen, weer geven, bijwerken, verwijderen) | 1.67 per seconde per eenheid (100 per minuut/eenheid) | 1.67 per seconde per eenheid (100 per minuut/eenheid) | 83.33 per seconde per eenheid (5000/min per eenheid) |
-| [Nieuwe verbindingen voor apparaten](#device-connections-throttle) (deze limiet geldt voor de frequentie van _nieuwe verbindingen_, niet het totale aantal verbindingen) | Hoger van 100 per seconde of 12 per seconde per eenheid <br/> Zo zijn twee S1-eenheden 2 \* 12 = 24 nieuwe verbindingen per seconde, maar u hebt ten minste 100 nieuwe verbindingen per seconde over uw eenheden. Met negen S1-eenheden hebt u 108 nieuwe verbindingen per seconde (9 \* 12) in uw eenheden. | 120 nieuwe verbindingen per seconde per eenheid | 6.000 nieuwe verbindingen per seconde per eenheid |
+| [Nieuwe verbindingen voor apparaten](#device-connections-throttle) (deze limiet geldt voor de frequentie van _nieuwe verbindingen_ , niet het totale aantal verbindingen) | Hoger van 100 per seconde of 12 per seconde per eenheid <br/> Zo zijn twee S1-eenheden 2 \* 12 = 24 nieuwe verbindingen per seconde, maar u hebt ten minste 100 nieuwe verbindingen per seconde over uw eenheden. Met negen S1-eenheden hebt u 108 nieuwe verbindingen per seconde (9 \* 12) in uw eenheden. | 120 nieuwe verbindingen per seconde per eenheid | 6.000 nieuwe verbindingen per seconde per eenheid |
 | Apparaat-naar-cloud verzendt | Meer dan 100 verzend bewerkingen per seconde of 12 verzend bewerkingen per seconde/eenheid <br/> Bijvoorbeeld: twee S1-eenheden zijn 2 \* 12 = 24 per seconde, maar u hebt ten minste 100 verzend bewerkingen per seconde over uw eenheden. Met negen S1-eenheden hebt u 108 verzend bewerkingen per seconde (9 \* 12) in uw eenheden. | 120 verzend bewerkingen per seconde per eenheid | 6.000 verzend bewerkingen per seconde per eenheid |
 | Verzenden van Cloud naar apparaat<sup>1</sup> | 1,67 verzend bewerkingen per seconde/eenheid (100 berichten/minuut/eenheid) | 1,67 verzend bewerkingen per seconde/eenheid (100 verzend bewerkingen per minuut/eenheid) | 83,33 verzend bewerkingen per seconde/eenheid (5.000 verzend bewerkingen per minuut/eenheid) |
 | Cloud-naar-apparaat ontvangt<sup>1</sup> <br/> (alleen wanneer het apparaat HTTPS gebruikt)| 16,67 receive-bewerkingen per seconde/eenheid (1.000-ontvangst bewerkingen/min/eenheid) | 16,67 receive-bewerkingen per seconde/eenheid (1.000-ontvangst bewerkingen/min/eenheid) | 833,33 receive-bewerkingen per seconde/eenheid (50.000-ontvangst bewerkingen/min/eenheid) |
@@ -71,7 +71,7 @@ De volgende tabel geeft de afgedwongen vertragingen weer. Waarden verwijzen naar
 
 *  Voor *bewerkingen voor taken apparaten (update dubbele, directe methode aanroepen)* voor tier S2 geldt dat 50 per seconde per eenheid alleen van toepassing is wanneer u methoden aanroept met behulp van taken. Als u rechtstreeks directe methoden aanroept, geldt de oorspronkelijke beperkings limiet van 24 MB per seconde per eenheid (voor S2).
 
-*  **Quota** is het totale aantal berichten dat *per dag*in uw hub kan worden verzonden. U kunt de quotum limiet van uw hub vinden onder het kolom **Totaal aantal berichten/dag** op de [pagina met IOT hub prijzen](https://azure.microsoft.com/pricing/details/iot-hub/).
+*  **Quota** is het totale aantal berichten dat *per dag* in uw hub kan worden verzonden. U kunt de quotum limiet van uw hub vinden onder het kolom **Totaal aantal berichten/dag** op de [pagina met IOT hub prijzen](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 *  De beperkings limieten voor Cloud-naar-apparaat-en apparaat-naar-Cloud bepalen *het maximum aantal* berichten dat kan worden verzonden, ongeacht de 4 KB-segmenten. Elk bericht kan Maxi maal 256 KB groot zijn. Dit is de [maximale bericht grootte](iot-hub-devguide-quotas-throttling.md#other-limits).
 
@@ -79,9 +79,9 @@ De volgende tabel geeft de afgedwongen vertragingen weer. Waarden verwijzen naar
 
 ### <a name="traffic-shaping"></a>Verkeers vorming
 
-Om burst-verkeer te kunnen verwerken, worden de aanvragen voor een beperkte tijd boven de gashendel geaccepteerd IoT Hub. De eerste enkele van deze aanvragen worden direct verwerkt. Als het aantal aanvragen echter de vertraging overloopt, IoT Hub begint met het plaatsen van de aanvragen in een wachtrij en verwerkt tegen de limiet snelheid. Dit effect wordt *Traffic Shaping*genoemd. Bovendien is de grootte van deze wachtrij beperkt. Als de fout met de vertraging wordt vervolgd, wordt de wachtrij uiteindelijk gevuld en IoT Hub wordt het weigeren van aanvragen gestart `429 ThrottlingException` .
+Om burst-verkeer te kunnen verwerken, worden de aanvragen voor een beperkte tijd boven de gashendel geaccepteerd IoT Hub. De eerste enkele van deze aanvragen worden direct verwerkt. Als het aantal aanvragen echter de vertraging overloopt, IoT Hub begint met het plaatsen van de aanvragen in een wachtrij en verwerkt tegen de limiet snelheid. Dit effect wordt *Traffic Shaping* genoemd. Bovendien is de grootte van deze wachtrij beperkt. Als de fout met de vertraging wordt vervolgd, wordt de wachtrij uiteindelijk gevuld en IoT Hub wordt het weigeren van aanvragen gestart `429 ThrottlingException` .
 
-U gebruikt bijvoorbeeld een gesimuleerd apparaat voor het verzenden van 200 apparaat-naar-Cloud-berichten per seconde naar uw S1-IoT Hub (dat een limiet van 100/sec. D2C-verzen ding heeft). Voor de eerste minuut of twee worden de berichten onmiddellijk verwerkt. Omdat het apparaat echter nog steeds meer berichten verzendt dan de beperkings limiet, worden met IoT Hub slechts 100 berichten per seconde verwerkt en wordt de rest in een wachtrij geplaatst. U begint merkt meer latentie. Uiteindelijk kunt u beginnen `429 ThrottlingException` met het ophalen van de wachtrij, en wordt het aantal vertragings fouten in de [metrische gegevens](iot-hub-metrics.md) van de IOT hub steeds groter.
+U gebruikt bijvoorbeeld een gesimuleerd apparaat voor het verzenden van 200 apparaat-naar-Cloud-berichten per seconde naar uw S1-IoT Hub (dat een limiet van 100/sec. D2C-verzen ding heeft). Voor de eerste minuut of twee worden de berichten onmiddellijk verwerkt. Omdat het apparaat echter nog steeds meer berichten verzendt dan de beperkings limiet, worden met IoT Hub slechts 100 berichten per seconde verwerkt en wordt de rest in een wachtrij geplaatst. U begint merkt meer latentie. Uiteindelijk kunt u beginnen `429 ThrottlingException` met het ophalen van de wachtrij, waarna het [aantal beperkende fouten IOT hub meet](monitor-iot-hub-reference.md#device-telemetry-metrics) tijd wordt verg root. Zie [IOT hub controleren](monitor-iot-hub.md)voor meer informatie over het maken van waarschuwingen en grafieken op basis van metrische gegevens.
 
 ### <a name="identity-registry-operations-throttle"></a>Beperking van de identiteits register bewerkingen
 
@@ -139,3 +139,4 @@ Zie het blog bericht [IOT hub beperking en u](https://azure.microsoft.com/blog/i
 Andere naslag onderwerpen in deze IoT Hub ontwikkelaars handleiding zijn:
 
 * [IoT Hub-eindpunten](iot-hub-devguide-endpoints.md)
+* [IoT Hub bewaken](monitor-iot-hub.md)

@@ -7,22 +7,22 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 05/01/2017
-ms.openlocfilehash: 7692bfda16ac1b8789ee49469c46ef8276c97f8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce77f5074d707da5cfb251a103653b96e4644b5f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88213298"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544525"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>ASP.NET-sessiestatusprovider voor Azure Cache voor Redis
 
-Azure cache voor redis biedt een sessie status provider die u kunt gebruiken om de sessie status in het geheugen op te slaan met Azure cache voor redis in plaats van een SQL Server-Data Base. Als u de provider voor cache sessie status wilt gebruiken, moet u eerst uw cache configureren en vervolgens uw ASP.NET-toepassing configureren voor cache met behulp van het Azure-cache geheugen voor de redis-sessie status NuGet-pakket. Lees voor ASP.NET Core toepassingen de modus voor [sessie-en status beheer in ASP.net core](https://docs.microsoft.com/aspnet/core/fundamentals/app-state).
+Azure cache voor redis biedt een sessie status provider die u kunt gebruiken om de sessie status in het geheugen op te slaan met Azure cache voor redis in plaats van een SQL Server-Data Base. Als u de provider voor cache sessie status wilt gebruiken, moet u eerst uw cache configureren en vervolgens uw ASP.NET-toepassing configureren voor cache met behulp van het Azure-cache geheugen voor de redis-sessie status NuGet-pakket. Lees voor ASP.NET Core toepassingen de modus voor [sessie-en status beheer in ASP.net core](/aspnet/core/fundamentals/app-state).
 
 Het is vaak niet praktisch in een echte Cloud-app om te voor komen dat u een vorm van status voor een gebruikers sessie opslaat, maar sommige benaderingen beïnvloeden de prestaties en schaal baarheid meer dan andere. Als u de status wilt opslaan, is de beste oplossing om de hoeveelheid status laag te bewaren en op te slaan in cookies. Als dat niet haalbaar is, is de volgende beste oplossing om de ASP.NET-sessie status te gebruiken met een provider voor gedistribueerde, in-memory cache. De slechtste oplossing van een oogpunt van prestaties en schaal baarheid is het gebruik van een Data Base-back-up van de sessie status. Dit onderwerp bevat richt lijnen voor het gebruik van de ASP.NET-sessie status provider voor Azure cache voor redis. Zie [ASP.net session status Options](#aspnet-session-state-options)(Engelstalig) voor meer informatie over andere sessie status opties.
 
 ## <a name="store-aspnet-session-state-in-the-cache"></a>De ASP.NET-sessiestatus in de cache opslaan
 
-Als u in Visual Studio een client toepassing wilt configureren met behulp van het Azure-cache geheugen voor de redis-sessie status NuGet-pakket, klikt u op **NuGet package manager**, **Package Manager console** in het menu **extra** .
+Als u in Visual Studio een client toepassing wilt configureren met behulp van het Azure-cache geheugen voor de redis-sessie status NuGet-pakket, klikt u op **NuGet package manager** , **Package Manager console** in het menu **extra** .
 
 Voer de volgende opdracht uit vanuit het venster `Package Manager Console`.
     
@@ -122,8 +122,8 @@ Zodra deze stappen zijn uitgevoerd, wordt uw toepassing geconfigureerd voor het 
 ## <a name="aspnet-session-state-options"></a>Opties voor de sessie status van ASP.NET
 
 * In de geheugen sessie status provider: deze provider slaat de sessie status op in het geheugen. Het voor deel van het gebruik van deze provider is eenvoudig en snel. U kunt uw Web Apps echter niet schalen als u in de geheugen provider gebruikt, omdat deze niet is gedistribueerd.
-* SQL Server-sessie status provider: deze provider slaat de sessie status op in SQL Server. Gebruik deze provider als u de sessie status wilt opslaan in permanente opslag. U kunt uw web-app schalen, maar het gebruik van SQL Server voor de sessie heeft invloed op de prestaties van uw web-app. U kunt deze provider ook gebruiken met een [OLTP-configuratie in het geheugen](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/11/28/asp-net-session-state-with-sql-server-in-memory-oltp/) om de prestaties te verbeteren.
-* Gedistribueerd in de geheugen sessie status provider, zoals Azure cache voor redis-sessie status provider-deze provider biedt u het beste van beide werelden. Uw web-app kan een eenvoudige, snelle en schaal bare sessie status provider hebben. Omdat deze provider de sessie status opslaat in een cache, moet uw app rekening houden met alle kenmerken die zijn gekoppeld aan een gedistribueerd in de geheugen cache, zoals tijdelijke netwerk storingen. Zie voor aanbevolen procedures voor het gebruik van cache de [richt lijnen voor caching](../best-practices-caching.md) van micro soft patronen & procedures [Azure Cloud Application Design and implementation guidance](https://github.com/mspnp/azure-guidance)(Engelstalig).
+* SQL Server-sessie status provider: deze provider slaat de sessie status op in SQL Server. Gebruik deze provider als u de sessie status wilt opslaan in permanente opslag. U kunt uw web-app schalen, maar het gebruik van SQL Server voor de sessie heeft invloed op de prestaties van uw web-app. U kunt deze provider ook gebruiken met een [OLTP-configuratie in het geheugen](/archive/blogs/sqlserverstorageengine/asp-net-session-state-with-sql-server-in-memory-oltp) om de prestaties te verbeteren.
+* Gedistribueerd in de geheugen sessie status provider, zoals Azure cache voor redis-sessie status provider-deze provider biedt u het beste van beide werelden. Uw web-app kan een eenvoudige, snelle en schaal bare sessie status provider hebben. Omdat deze provider de sessie status opslaat in een cache, moet uw app rekening houden met alle kenmerken die zijn gekoppeld aan een gedistribueerd in de geheugen cache, zoals tijdelijke netwerk storingen. Zie voor aanbevolen procedures voor het gebruik van cache de [richt lijnen voor caching](/azure/architecture/best-practices/caching) van micro soft patronen & procedures [Azure Cloud Application Design and implementation guidance](https://github.com/mspnp/azure-guidance)(Engelstalig).
 
 Zie [Aanbevolen procedures voor webontwikkeling (buil ding Real-World Cloud-apps met Azure)](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices)voor meer informatie over de sessie status en andere aanbevolen procedures.
 

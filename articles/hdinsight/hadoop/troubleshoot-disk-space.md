@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/17/2020
-ms.openlocfilehash: 0628033ecf6f2e51cf18f61c6e5b36042557dc7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82044796cca3e135c15e750d6706fe504622ebdb
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530158"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92540343"
 ---
 # <a name="manage-disk-space-in-azure-hdinsight"></a>Schijf ruimte in azure HDInsight beheren
 
@@ -22,7 +22,7 @@ In dit artikel worden de stappen beschreven voor het oplossen van problemen en m
 
 1. Navigeer in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net`, waarbij `CLUSTERNAME` de naam van uw cluster is.
 
-1. Navigeer naar **Hive**  >  **configurations**  >  **Geavanceerde**  >  **Geavanceerde component-log4j**. Controleer de volgende instellingen:
+1. Navigeer naar **Hive**  >  **configurations**  >  **Geavanceerde**  >  **Geavanceerde component-log4j** . Controleer de volgende instellingen:
 
     * `hive.root.logger=DEBUG,RFA`. Dit is de standaard waarde, wijzig het [logboek niveau](https://logging.apache.org/log4j/2.x/log4j-api/apidocs/org/apache/logging/log4j/Level.html) zodat er `INFO` minder logboek vermeldingen worden afgedrukt.
 
@@ -38,7 +38,7 @@ Bekijk de volgende configuraties:
 
     1. Navigeer in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net`, waarbij `CLUSTERNAME` de naam van uw cluster is.
 
-    1. Navigeer naar **Hive**  >  **configurations**  >  **Advanced**  >  **Resource Manager**. Zorg ervoor dat **logboek aggregatie inschakelen** is ingeschakeld. Als deze functie is uitgeschakeld, worden de logboeken lokaal door naam knooppunten bewaard en worden ze niet geaggregeerd in externe opslag wanneer de toepassing wordt voltooid of beëindigd.
+    1. Navigeer naar **Hive**  >  **configurations**  >  **Advanced**  >  **Resource Manager** . Zorg ervoor dat **logboek aggregatie inschakelen** is ingeschakeld. Als deze functie is uitgeschakeld, worden de logboeken lokaal door naam knooppunten bewaard en worden ze niet geaggregeerd in externe opslag wanneer de toepassing wordt voltooid of beëindigd.
 
 * Zorg ervoor dat de clustergrootte geschikt is voor de werkbelasting. De werk belasting is mogelijk onlangs gewijzigd of het cluster is verg root of verkleind. [Schaal](../hdinsight-scaling-best-practices.md) het cluster omhoog zodat dit overeenkomt met een hogere werk belasting.
 
@@ -52,4 +52,4 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](../../azure-portal/supportability/how-to-create-azure-support-request.md)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

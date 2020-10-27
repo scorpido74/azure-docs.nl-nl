@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/16/2020
-ms.openlocfilehash: b5ea227ba75a9ecf6666883603dad97d02385b5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddd1a6fa2fc25add30664da5b739338e87e7e74f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086480"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547840"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Lege Edge-knoop punten op Apache Hadoop clusters in HDInsight gebruiken
 
@@ -61,7 +61,7 @@ Nadat u een Edge-knoop punt hebt gemaakt, kunt u via SSH verbinding maken met he
 > [!WARNING]
 > Aangepaste onderdelen die zijn geïnstalleerd op het Edge-knoop punt ontvangen commercieel redelijke ondersteuning van micro soft. Dit kan leiden tot problemen oplossen die u tegen komt. Het is ook mogelijk dat u resources van de community voor verdere ondersteuning moet worden genoemd. Hier volgen enkele van de meest actieve sites om hulp van de community te verkrijgen:
 >
-> * [Micro soft Q&een vraag pagina voor HDInsight] (https://docs.microsoft.com/answers/topics/azure-hdinsight.html
+> * [Micro soft Q&een vraag pagina voor HDInsight] (/Answers/topics/azure-hdinsight.html
 > * [https://stackoverflow.com](https://stackoverflow.com).
 >
 > Als u een Apache-technologie gebruikt, kunt u mogelijk ondersteuning vinden via de Apache-project sites op [https://apache.org](https://apache.org) , zoals de [Apache Hadoop](https://hadoop.apache.org/) -site.
@@ -86,7 +86,7 @@ In deze sectie gebruikt u een resource manager-sjabloon om een Edge-knoop punt t
     |Locatie|Selecteer de locatie van het bestaande HDInsight-cluster.|
     |Clusternaam|Voer de naam van een bestaand HDInsight-cluster in.|
 
-1. Ga **akkoord met de bovenstaande voor waarden**en selecteer vervolgens  **aanschaffen** om het Edge-knoop punt te maken.
+1. Ga **akkoord met de bovenstaande voor waarden** en selecteer vervolgens  **aanschaffen** om het Edge-knoop punt te maken.
 
 > [!IMPORTANT]  
 > Zorg ervoor dat u de Azure-resource groep voor het bestaande HDInsight-cluster selecteert.  Anders wordt het volgende fout bericht weer gegeven: kan de aangevraagde bewerking niet uitvoeren op een geneste bron. De bovenliggende resource &lt; clustername> is niet gevonden.
@@ -109,15 +109,15 @@ In deze sectie gebruikt u een resource manager-sjabloon om een HDInsight-cluster
     |Resourcegroep|Maak een nieuwe resource groep die wordt gebruikt voor het cluster.|
     |Locatie|Selecteer een locatie voor de resourcegroep.|
     |Clusternaam|Voer een naam in voor het nieuwe cluster dat u wilt maken.|
-    |Gebruikersnaam voor clusteraanmelding|Voer de Hadoop HTTP-gebruikers naam in.  De standaardnaam is **admin**.|
+    |Gebruikersnaam voor clusteraanmelding|Voer de Hadoop HTTP-gebruikers naam in.  De standaardnaam is **admin** .|
     |Wachtwoord voor clusteraanmelding|Voer het Hadoop HTTP-gebruikers wachtwoord in.|
-    |Ssh-gebruikersnaam|Voer de SSH-gebruikers naam in. De standaard naam is **sshuser**.|
+    |Ssh-gebruikersnaam|Voer de SSH-gebruikers naam in. De standaard naam is **sshuser** .|
     |Ssh-wachtwoord|Voer het wacht woord voor SSH-gebruikers in.|
     |Script actie installeren|Behoud de standaard waarde voor dit artikel.|
 
     Sommige eigenschappen zijn vastgelegd in de sjabloon: cluster type, aantal cluster worker-knoop punten, grootte van Edge-knoop punt en rand knooppunt naam.
 
-1. Ga **akkoord met de bovenstaande voor waarden**en selecteer vervolgens  **aankoop** om het cluster met het Edge-knoop punt te maken.
+1. Ga **akkoord met de bovenstaande voor waarden** en selecteer vervolgens  **aankoop** om het cluster met het Edge-knoop punt te maken.
 
 ## <a name="add-multiple-edge-nodes"></a>Meerdere Edge-knoop punten toevoegen
 
@@ -133,7 +133,7 @@ Het Edge-knoop punt wordt weer gegeven als een toepassing op het Azure Portal.  
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Open het HDInsight-cluster met een Edge-knoop punt.
-3. Selecteer **toepassingen**. Het Edge-knoop punt wordt weer geven.  De standaard naam is **New-de**.
+3. Selecteer **toepassingen** . Het Edge-knoop punt wordt weer geven.  De standaard naam is **New-de** .
 4. Selecteer het Edge-knoop punt. Het SSH-eind punt wordt weer geven.
 
 **Hive op het Edge-knoop punt gebruiken**
@@ -158,8 +158,8 @@ U kunt een Edge-knoop punt verwijderen uit het Azure Portal.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Open het HDInsight-cluster met een Edge-knoop punt.
-3. Selecteer **toepassingen**. Er wordt een lijst met Edge-knoop punten weer geven.  
-4. Klik met de rechter muisknop op het Edge-knoop punt dat u wilt verwijderen en selecteer vervolgens **verwijderen**.
+3. Selecteer **toepassingen** . Er wordt een lijst met Edge-knoop punten weer geven.  
+4. Klik met de rechter muisknop op het Edge-knoop punt dat u wilt verwijderen en selecteer vervolgens **verwijderen** .
 5. Selecteer **Ja** om te bevestigen.
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -169,6 +169,6 @@ In dit artikel hebt u geleerd hoe u een Edge-knoop punt kunt toevoegen en hoe u 
 * [HDInsight-toepassingen installeren](hdinsight-apps-install-applications.md): informatie over het installeren van een HDInsight-toepassing op uw clusters.
 * [Aangepaste hdinsight-toepassingen installeren](hdinsight-apps-install-custom-applications.md): meer informatie over het implementeren van een niet-gepubliceerde hdinsight-toepassing op hdinsight.
 * [HDInsight-toepassingen publiceren](hdinsight-apps-publish-applications.md): informatie over het publiceren van aangepaste HDInsight-toepassingen in Azure Marketplace.
-* [MSDN: een HDInsight-toepassing installeren](https://msdn.microsoft.com/library/mt706515.aspx): informatie over het definiëren van HDInsight-toepassingen.
+* [MSDN: een HDInsight-toepassing installeren](/rest/api/hdinsight/hdinsight-application): informatie over het definiëren van HDInsight-toepassingen.
 * [Op Linux gebaseerde HDInsight-clusters aanpassen met behulp van een scriptactie](hdinsight-hadoop-customize-cluster-linux.md): informatie over het gebruik van een scriptactie om extra toepassingen te installeren.
 * [Op Linux gebaseerde Apache Hadoop clusters maken in HDInsight met behulp van Resource Manager-sjablonen](hdinsight-hadoop-create-linux-clusters-arm-templates.md): informatie over het aanroepen van Resource Manager-sjablonen voor het maken van HDInsight-clusters.

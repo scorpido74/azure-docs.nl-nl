@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/24/2020
-ms.openlocfilehash: 6473b6b69ba45138c30e4f2c8a7f1ba1a7f2ae7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 633b6b33bc044b28628cc444227021cd0b4ff377
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816844"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544899"
 ---
 # <a name="authentication-issues-in-azure-hdinsight"></a>Verificatie problemen in azure HDInsight
 
@@ -154,7 +154,7 @@ Manieren om te zoeken `sAMAccountName` :
 
 * Als u zich kunt aanmelden bij Ambari met behulp van de lokale Ambari-beheerder, kijkt u naar de lijst met gebruikers.
 
-* Als u een [Windows-computer](../../active-directory-domain-services/manage-domain.md)hebt die lid is van een domein, kunt u de standaard Windows AD-hulpprogram ma's gebruiken om te bladeren. Hiervoor is een werk account in het domein vereist.
+* Als u een [Windows-computer](../../active-directory-domain-services/tutorial-create-management-vm.md)hebt die lid is van een domein, kunt u de standaard Windows AD-hulpprogram ma's gebruiken om te bladeren. Hiervoor is een werk account in het domein vereist.
 
 * Vanuit het hoofd knooppunt kunt u SAMBA-opdrachten gebruiken om te zoeken. Hiervoor is een geldige Kerberos-sessie (geslaagde kinit) vereist. net ADS Search (userPrincipalName = Bob *) "
 
@@ -220,4 +220,4 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](../../azure-portal/supportability/how-to-create-azure-support-request.md)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

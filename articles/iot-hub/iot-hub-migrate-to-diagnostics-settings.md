@@ -8,18 +8,18 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: kgremban
-ms.openlocfilehash: ab07da38c01b052a4220274fb059683a22950a3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40c90142330b0530f1127beae1624ff27d7eb6ca
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75750695"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541482"
 ---
 # <a name="migrate-your-iot-hub-from-operations-monitoring-to-diagnostics-settings"></a>Migreer uw IoT Hub van operations monitoring naar Diagnostische instellingen
 
 Klanten die bewerkings [bewaking](iot-hub-operations-monitoring.md) gebruiken om de status van bewerkingen in IOT hub bij te houden, kunnen die werk stroom migreren naar de [Diagnostische instellingen van Azure](../azure-monitor/platform/platform-logs-overview.md), een functie van Azure monitor. Diagnostische instellingen geven diagnostische gegevens op resource niveau voor veel Azure-Services.
 
-**De functionaliteit voor de bewaking van bewerkingen van IOT hub is afgeschaft**en is verwijderd uit de portal. In dit artikel worden de stappen beschreven voor het verplaatsen van de workloads van bewerkingen die worden bewaakt naar Diagnostische instellingen. Zie [uw Azure IOT-oplossingen bewaken met Azure monitor en Azure resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/)voor meer informatie over de tijd lijn van de afschaffing.
+**De functionaliteit voor de bewaking van bewerkingen van IOT hub is afgeschaft** en is verwijderd uit de portal. In dit artikel worden de stappen beschreven voor het verplaatsen van de workloads van bewerkingen die worden bewaakt naar Diagnostische instellingen. Zie [uw Azure IOT-oplossingen bewaken met Azure monitor en Azure resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/)voor meer informatie over de tijd lijn van de afschaffing.
 
 ## <a name="update-iot-hub"></a>IoT Hub bijwerken
 
@@ -34,9 +34,9 @@ Als u uw IoT Hub in de Azure Portal wilt bijwerken, schakelt u eerst de instelli
 
 Wanneer u de nieuwe diagnostische instellingen in uw werk stroom hebt getest, kunt u de functie voor het controleren van bewerkingen uitschakelen. 
 
-1. Selecteer in het menu IoT Hub de optie **bewerkingen bewaken**.
+1. Selecteer in het menu IoT Hub de optie **bewerkingen bewaken** .
 
-2. Selecteer onder elke bewakings categorie de optie **geen**.
+2. Selecteer onder elke bewakings categorie de optie **geen** .
 
 3. Sla de wijzigingen van de operations-bewaking op.
 
@@ -52,7 +52,7 @@ Daarnaast biedt de diagnostische instellingen vijf nieuwe categorieën voor het 
 * Taakbewerkingen
 * Directe methoden
 
-Zie [inzicht in het schema voor Diagnostische instellingen](iot-hub-monitor-resource-health.md#understand-the-logs)voor de specifieke schema structuren.
+Zie [bron logboeken](monitor-iot-hub-reference.md#resource-logs)voor de specifieke schema structuren.
 
 ## <a name="monitoring-device-connect-and-disconnect-events-with-low-latency"></a>Bewaking van het apparaat verbinding maken en verbreken van gebeurtenissen met een lage latentie
 
@@ -60,4 +60,4 @@ Als u verbinding met het apparaat wilt bewaken en de gebeurtenissen in de produc
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[De status van Azure IoT Hub bewaken en snel problemen vaststellen](iot-hub-monitor-resource-health.md)
+[IoT Hub bewaken](monitor-iot-hub.md)

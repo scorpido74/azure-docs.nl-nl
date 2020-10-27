@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: Operations'
-ms.openlocfilehash: c82f6eb37d542f80b6cb79ffb1fae6fe0cf0c233
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: bd016fcfe377dc610d5918ad8128fff4f6473fe5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144285"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538456"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>De juiste IoT Hub-laag kiezen voor uw oplossing
 
@@ -47,7 +47,7 @@ Er kan slechts één type [versie](https://azure.microsoft.com/pricing/details/i
 | [Bericht routering](iot-hub-devguide-messages-read-custom.md), [verrijkingen van berichten](iot-hub-message-enrichments-overview.md)en [integratie van Event grid](iot-hub-event-grid.md) | Ja | Ja |
 | [HTTP-, AMQP-en MQTT-protocollen](iot-hub-devguide-protocols.md) | Ja | Ja |
 | [Device Provisioning Service](../iot-dps/about-iot-dps.md) | Ja | Ja |
-| [Controle en diagnose](iot-hub-monitor-resource-health.md) | Ja | Ja |
+| [Controle en diagnose](monitor-iot-hub.md) | Ja | Ja |
 | [Cloud-naar-apparaat-berichten](iot-hub-devguide-c2d-guidance.md) |   | Ja |
 | [Apparaat apparaatdubbels](iot-hub-devguide-device-twins.md), [module apparaatdubbels](iot-hub-devguide-module-twins.md)en [Apparaatbeheer](iot-hub-device-management-overview.md) |   | Ja |
 | [Apparaatversleuteling (preview-versie)](iot-hub-device-streams-overview.md) |   | Ja |
@@ -97,7 +97,7 @@ Het verschil in ondersteunde mogelijkheden tussen de lagen basis en standaard va
 | [Import export taak ophalen](/rest/api/iothub/service/jobs/getimportexportjob) | Ja | Ja |
 | [Import-export taken ophalen](/rest/api/iothub/service/jobs/getimportexportjobs) | Ja | Ja |
 | [Opdracht wachtrij leegmaken](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#purgecommandqueue-string--msrest-requestoptionsbase-) |   | Ja |
-| [Apparaat dubbele ophalen](/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?view=azure-java-stable) |   | Ja |
+| [Apparaatdubbel ophalen](/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?view=azure-java-stable) |   | Ja |
 | [Module dubbele ophalen](/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-getmoduletwin) |   | Ja |
 | [Methode aanroepen van apparaat](./iot-hub-devguide-direct-methods.md) |   | Ja |
 | [Dubbele update van apparaat](./iot-hub-devguide-device-twins.md) |   | Ja |
