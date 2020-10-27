@@ -8,29 +8,29 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 4df3c24c6f0853c1ae7447a8e20e8c2944319686
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21781015aa91c9c953d716b9b3399851f25be9b5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087602"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536331"
 ---
-# <a name="compute-context-options-for-ml-services-on-hdinsight"></a>Opties voor Compute-context voor MILLILITERs Services in HDInsight
+# <a name="compute-context-options-for-ml-services-on-hdinsight"></a>Opties voor compute-context voor ML Services in HDInsight
 
 De services van ML van Azure HDInsight bepalen hoe aanroepen worden uitgevoerd door de compute-context in te stellen. In dit artikel vindt u een overzicht van de opties die beschikbaar zijn om aan te geven of en hoe uitvoering wordt geevenwijdigd verdeeld over kernen van het Edge-knoop punt of HDInsight-cluster.
 
-Het Edge-knoop punt van een cluster biedt een handige plaats om verbinding te maken met het cluster en om uw R-scripts uit te voeren. Met een Edge-knoop punt hebt u de mogelijkheid om de geparallel gedistribueerde functies van RevoScaleR uit te voeren op de kernen van de server met het Edge-knoop punt. U kunt ze ook uitvoeren op de knoop punten van het cluster met behulp van de Hadoop-toewijzing van RevoScaleR of Apache Spark reken contexten.
+Het edge-knooppunt van een cluster biedt een handige plaats om verbinding te maken met het cluster en om uw R-scripts uit te voeren. Met een edge-knooppunt hebt u de mogelijkheid om de geparallelliseerde gedistribueerde functies van RevoScaleR uit te voeren op de kernen van de server van het edge-knooppunt. U kunt ze ook uitvoeren op de knooppunten van het cluster door compute-contexten van Hadoop Map Reduce of Apache Spark van RevoScaleR te gebruiken.
 
 ## <a name="ml-services-on-azure-hdinsight"></a>ML Services in azure HDInsight
 
-[Ml Services in azure HDInsight](r-server-overview.md) biedt de nieuwste mogelijkheden voor R-gebaseerde analyses. Het kan gebruikmaken van gegevens die zijn opgeslagen in een Apache Hadoop HDFS-container in uw [Azure Blob](../../storage/common/storage-introduction.md "Azure Blob Storage") -opslag account, een Data Lake Store of het lokale Linux-bestands systeem. Omdat de services van ML zijn gebouwd op open source R, kunnen de op R gebaseerde toepassingen die u bouwt, een van de 8000 + open source R-pakketten Toep assen. Ze kunnen ook gebruikmaken van de routines in [RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), het Big Data Analytics-pakket van micro soft dat deel uitmaakt van ml Services.  
+[Ml Services in azure HDInsight](r-server-overview.md) biedt de nieuwste mogelijkheden voor R-gebaseerde analyses. Het kan gebruikmaken van gegevens die zijn opgeslagen in een Apache Hadoop HDFS-container in uw [Azure Blob](../../storage/common/storage-introduction.md "Azure Blob Storage") -opslag account, een Data Lake Store of het lokale Linux-bestands systeem. Omdat de services van ML zijn gebouwd op open source R, kunnen de op R gebaseerde toepassingen die u bouwt, een van de 8000 + open source R-pakketten Toep assen. Ze kunnen ook gebruikmaken van de routines in [RevoScaleR](/machine-learning-server/r-reference/revoscaler/revoscaler), het Big Data Analytics-pakket van micro soft dat deel uitmaakt van ml Services.  
 
 ## <a name="compute-contexts-for-an-edge-node"></a>Contexten berekenen voor een Edge-knoop punt
 
 In het algemeen wordt een R-script dat wordt uitgevoerd in het cluster met MILLILITER Services op het Edge-knoop punt uitgevoerd in de R-interpreter op dat knoop punt. De uitzonde ringen zijn de stappen die de functie RevoScaleR aanroepen. De RevoScaleR-aanroepen worden uitgevoerd in een compute-omgeving die wordt bepaald door de manier waarop u de RevoScaleR-Compute-context instelt.  Wanneer u uw R-script uitvoert vanuit een Edge-knoop punt, zijn de mogelijke waarden van de compute-context:
 
-- lokaal sequentieel (*lokaal*)
-- lokaal parallel (*localpar*)
+- lokaal sequentieel ( *lokaal* )
+- lokaal parallel ( *localpar* )
 - Toewijzing verminderen
 - Spark
 
@@ -59,12 +59,12 @@ Op basis van deze principes bieden de volgende secties enkele algemene vuist reg
 
 ### <a name="local"></a>Lokaal
 
-- Als de hoeveelheid gegevens die moet worden geanalyseerd klein is en er geen herhaalde analyse nodig is, kunt u deze rechtstreeks naar de analyse routine streamen met behulp van *lokale* of *localpar*.
-- Als de hoeveelheid gegevens die moet worden geanalyseerd, klein of middel groot is en herhaalde analyse vereist is, kopieert u deze naar het lokale bestands systeem, importeert u het naar XDF en analyseert u deze via *lokale* of *localpar*.
+- Als de hoeveelheid gegevens die moet worden geanalyseerd klein is en er geen herhaalde analyse nodig is, kunt u deze rechtstreeks naar de analyse routine streamen met behulp van *lokale* of *localpar* .
+- Als de hoeveelheid gegevens die moet worden geanalyseerd, klein of middel groot is en herhaalde analyse vereist is, kopieert u deze naar het lokale bestands systeem, importeert u het naar XDF en analyseert u deze via *lokale* of *localpar* .
 
 ### <a name="apache-spark"></a>Apache Spark
 
-- Als de hoeveelheid gegevens die moet worden geanalyseerd groot is, kunt u deze in een Spark-data frame importeren met **RxHiveData** of **RxParquetData**, of naar XDF in HDFS (tenzij opslag een probleem is) en deze analyseren met behulp van de Spark-Compute-context.
+- Als de hoeveelheid gegevens die moet worden geanalyseerd groot is, kunt u deze in een Spark-data frame importeren met **RxHiveData** of **RxParquetData** , of naar XDF in HDFS (tenzij opslag een probleem is) en deze analyseren met behulp van de Spark-Compute-context.
 
 ### <a name="apache-hadoop-map-reduce"></a>Apache Hadoop toewijzing verminderen
 
@@ -77,7 +77,7 @@ Voor meer informatie en voor beelden van RevoScaleR Compute-contexten, zie de in
 > ?rxSetComputeContext
 ```
 
-U kunt ook het overzicht van [gedistribueerde computers](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing) in [machine learning Server documentatie](https://docs.microsoft.com/machine-learning-server/)raadplegen.
+U kunt ook het overzicht van [gedistribueerde computers](/machine-learning-server/r/how-to-revoscaler-distributed-computing) in [machine learning Server documentatie](/machine-learning-server/)raadplegen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

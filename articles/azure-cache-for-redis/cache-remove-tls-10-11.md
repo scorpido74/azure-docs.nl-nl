@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 7be987b99c60185647ab976691d42b72236c6364
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: fd0e6f893d152259c46ff06e9ec20af54395c5e6
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496052"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545307"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Verwijder TLS 1,0 en 1,1 van gebruik met Azure cache voor redis
 
@@ -65,7 +65,7 @@ Redis .NET-clients gebruiken standaard de oudste TLS-versie op .NET Framework 4.
 
 Redis .NET core-clients standaard ingesteld op de standaard TLS-versie van het besturings systeem, wat duidelijk afhankelijk is van het besturings systeem zelf. 
 
-Afhankelijk van de versie van het besturings systeem en eventuele patches die zijn toegepast, kan de meest efficiënte standaard-TLS-versie verschillen. Hoewel er één bron van informatie hierover is, is [hier](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) een artikel voor Windows. 
+Afhankelijk van de versie van het besturings systeem en eventuele patches die zijn toegepast, kan de meest efficiënte standaard-TLS-versie verschillen. Hoewel er één bron van informatie hierover is, is [hier](/dotnet/framework/network-programming/tls#support-for-tls-12) een artikel voor Windows. 
 
 Als u echter een oud besturings systeem gebruikt of gewoon wilt, kunt u het beste de voor Keurs-TLS-versie hand matig configureren via de client.
 

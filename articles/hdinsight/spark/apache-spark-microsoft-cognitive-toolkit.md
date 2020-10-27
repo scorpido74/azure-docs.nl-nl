@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/14/2020
-ms.openlocfilehash: 659e44ddc13cf093d7e571e904e177136ed21127
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d94a4858b4c4fa99a09acc2bec88f94a64686c2d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084491"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539136"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Microsoft Cognitive Toolkit diepe leer model gebruiken met Azure HDInsight Spark cluster
 
 In dit artikel voert u de volgende stappen uit.
 
-1. Voer een aangepast script uit om [Microsoft Cognitive Toolkit](https://docs.microsoft.com/cognitive-toolkit/) te installeren op een Azure HDInsight Spark cluster.
+1. Voer een aangepast script uit om [Microsoft Cognitive Toolkit](/cognitive-toolkit/) te installeren op een Azure HDInsight Spark cluster.
 
 2. Upload een [Jupyter notebook](https://jupyter.org/) naar het [Apache Spark](https://spark.apache.org/) -cluster om te zien hoe u een getraind Microsoft Cognitive Toolkit diepe leer model kunt Toep assen op bestanden in een Azure Blob Storage-account met behulp van de [Spark python API (PySpark)](https://spark.apache.org/docs/latest/api/python/index.html)
 
@@ -61,7 +61,7 @@ Zie [HDInsight-clusters aanpassen met script actie](../hdinsight-hadoop-customiz
 |Eigenschap |Waarde |
 |---|---|
 |Scripttype|- Aangepast|
-|Name| MCT installeren|
+|Naam| MCT installeren|
 |Bash-script-URI|`https://raw.githubusercontent.com/Azure-Samples/hdinsight-pyspark-cntk-integration/master/cntk-install.sh`|
 |Knooppunt type (n):|Hoofd, werk nemer|
 |Parameters|Geen|

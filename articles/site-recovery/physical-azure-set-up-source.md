@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: ramamill
-ms.openlocfilehash: d2cc3627222bcd8de5a5cb1b5c83b04c5d4ef880
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 327e995a8fe2f66903548fba054804768d2538ab
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86130202"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534291"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>De configuratieserver instellen voor herstel na noodgeval van fysieke servers naar Azure
 
@@ -36,19 +36,19 @@ De volgende tabel bevat de minimale hardware-, software-en netwerk vereisten voo
 ## <a name="choose-your-protection-goals"></a>Uw beveiligings doelen kiezen
 
 1. Ga in het Azure Portal naar de Blade **Recovery Services** kluizen en selecteer uw kluis.
-2. Klik in het menu **resource** van de kluis op **aan de slag**  >  **site Recovery**  >  **stap 1: infrastructuur**  >  **beveiliging**voorbereiden.
+2. Klik in het menu **resource** van de kluis op **aan de slag**  >  **site Recovery**  >  **stap 1: infrastructuur**  >  **beveiliging** voorbereiden.
 
-    ![Doelstellingen kiezen](./media/physical-azure-set-up-source/choose-goals.png)
-3. In **beveiligings doel**selecteert **u naar Azure** en **niet gevirtualiseerd/Overig**en klikt u vervolgens op **OK**.
+    ![Scherm afbeelding die laat zien waar het beveiligings doel moet worden geselecteerd.](./media/physical-azure-set-up-source/choose-goals.png)
+3. In **beveiligings doel** selecteert **u naar Azure** en **niet gevirtualiseerd/Overig** en klikt u vervolgens op **OK** .
 
     ![Doelstellingen kiezen](./media/physical-azure-set-up-source/physical-protection-goal.png)
 
 ## <a name="set-up-the-source-environment"></a>De bronomgeving instellen
 
-1. Als u geen configuratie server hebt, klikt u in **bron voorbereiden**op **+ configuratie** server om er een toe te voegen.
+1. Als u geen configuratie server hebt, klikt u in **bron voorbereiden** op **+ configuratie** server om er een toe te voegen.
 
-   ![Bron instellen](./media/physical-azure-set-up-source/plus-config-srv.png)
-2. Controleer op de Blade **server toevoegen** of de **Configuratie server** wordt weer gegeven bij **server type**.
+   ![Scherm afbeelding die laat zien hoe u de configuratie server selecteert.](./media/physical-azure-set-up-source/plus-config-srv.png)
+2. Controleer op de Blade **server toevoegen** of de **Configuratie server** wordt weer gegeven bij **server type** .
 4. Download het installatiebestand voor de Geïntegreerde Setup van Site Recovery.
 5. Download de registratiesleutel voor de kluis. U hebt de registratie sleutel nodig wanneer u Unified Setup uitvoert. De sleutel blijft vijf dagen na het genereren ervan geldig.
 

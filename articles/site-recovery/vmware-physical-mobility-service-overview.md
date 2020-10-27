@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: ramamill
-ms.openlocfilehash: 14f0eaee1ede4da3b80ddd94d5c915438e97f8f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90862a74e5fb6521a95292d50fc5cc11bd0082b5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530060"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547653"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Over de Mobility-service voor VMware-Vm's en fysieke servers
 
@@ -52,7 +52,7 @@ Tijdens een push-installatie van de Mobility-service worden de volgende stappen 
    - Als aan alle vereisten wordt voldaan, wordt de installatie gestart.
    - De installatie mislukt als er niet aan een of meer van de [vereisten](vmware-physical-azure-support-matrix.md) wordt voldaan.
 1. Als onderdeel van de agent installatie wordt de Volume Shadow Copy Service Provider (VSS) voor Azure Site Recovery geïnstalleerd. De VSS-provider wordt gebruikt voor het genereren van toepassings consistente herstel punten. Als de installatie van de VSS-provider mislukt, wordt deze stap overgeslagen en wordt de agent installatie voortgezet.
-1. Als de agent is geïnstalleerd, maar de installatie van de VSS-provider is mislukt, wordt de taak status als **waarschuwing**gemarkeerd. Dit heeft geen invloed op het vastlopen van het genereren van herstel punten.
+1. Als de agent is geïnstalleerd, maar de installatie van de VSS-provider is mislukt, wordt de taak status als **waarschuwing** gemarkeerd. Dit heeft geen invloed op het vastlopen van het genereren van herstel punten.
 
     - Als u toepassings consistente herstel punten wilt genereren, raadpleegt u [onze richt lijnen](vmware-physical-manage-mobility-service.md#install-site-recovery-vss-provider-on-source-machine) voor het volt ooien van een hand matige installatie van de site Recovery VSS-provider.
     - Als u geen toepassings consistente herstel punten wilt genereren, wijzigt u [het replicatie beleid](vmware-azure-set-up-replication.md#create-a-policy) om toepassings consistente herstel punten uit te scha kelen.
@@ -78,16 +78,16 @@ Tijdens een push-installatie van de Mobility-service worden de volgende stappen 
 > Gebruik niet de installatie methode van de gebruikers interface als u een Azure-infra structuur als een service (IaaS) repliceert van de ene Azure-regio naar een andere. Gebruik de installatie van de [opdracht prompt](#install-the-mobility-service-using-command-prompt) .
 
 1. Kopieer het installatie bestand naar de computer en voer dit uit.
-1. Selecteer in **installatie optie** **Mobility service installeren**.
-1. Kies de installatie locatie en selecteer **installeren**.
+1. Selecteer in **installatie optie** **Mobility service installeren** .
+1. Kies de installatie locatie en selecteer **installeren** .
 
     :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility1.png" alt-text="Pagina installatie optie voor Mobility-service.":::
 
-1. Controleer de installatie in **voortgang**van de installatie. Nadat de installatie is voltooid, selecteert u **door gaan naar configuratie** om de service te registreren bij de configuratie server.
+1. Controleer de installatie in **voortgang** van de installatie. Nadat de installatie is voltooid, selecteert u **door gaan naar configuratie** om de service te registreren bij de configuratie server.
 
     :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility3.png" alt-text="Pagina installatie optie voor Mobility-service.":::
 
-1. Geef in details van de **Configuratie server**het IP-adres en de wachtwoordzin op die u hebt geconfigureerd.
+1. Geef in details van de **Configuratie server** het IP-adres en de wachtwoordzin op die u hebt geconfigureerd.
 
     :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility4.png" alt-text="Pagina installatie optie voor Mobility-service.":::
 
@@ -104,7 +104,7 @@ Tijdens een push-installatie van de Mobility-service worden de volgende stappen 
 
 ### <a name="windows-machine"></a>Windows-computer
 
-- Voer vanaf een opdracht prompt de volgende opdrachten uit om het installatie programma te kopiëren naar een lokale map, zoals _C:\Temp_, op de server die u wilt beveiligen. Vervang de naam van het installatie bestand door de daad werkelijke bestands naam.
+- Voer vanaf een opdracht prompt de volgende opdrachten uit om het installatie programma te kopiëren naar een lokale map, zoals _C:\Temp_ , op de server die u wilt beveiligen. Vervang de naam van het installatie bestand door de daad werkelijke bestands naam.
 
   ```cmd
   cd C:\Temp
@@ -134,7 +134,7 @@ Syntax | `UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /
 Installatielogboeken | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log`
 `/Role` | Verplichte installatie parameter. Hiermee geeft u op of de Mobility-service (MS) of het hoofd doel (MT) moet worden geïnstalleerd.
 `/InstallLocation`| Optionele parameter. Hiermee geeft u de installatie locatie van de Mobility-service (een map).
-`/Platform` | Verplicht. Hiermee geeft u het platform op waarop de Mobility-service is geïnstalleerd: <br/> **VMware** voor virtuele VMware-machines/fysieke servers. <br/> **Azure** voor Azure-vm's.<br/><br/> Als u Azure-Vm's als fysieke machines behandelt, moet u **VMware**opgeven.
+`/Platform` | Verplicht. Hiermee geeft u het platform op waarop de Mobility-service is geïnstalleerd: <br/> **VMware** voor virtuele VMware-machines/fysieke servers. <br/> **Azure** voor Azure-vm's.<br/><br/> Als u Azure-Vm's als fysieke machines behandelt, moet u **VMware** opgeven.
 `/Silent`| Optioneel. Hiermee geeft u op of het installatie programma moet worden uitgevoerd in de Stille modus.
 
 #### <a name="registration-settings"></a>Registratie-instellingen
@@ -187,12 +187,12 @@ Syntax | `cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CS
 
 ## <a name="azure-virtual-machine-agent"></a>Agent van de virtuele machine van Azure
 
-- **Windows-vm's**: van versie 9.7.0.0 van de Mobility-service wordt de [Azure VM-agent](../virtual-machines/extensions/features-windows.md#azure-vm-agent) geïnstalleerd door het installatie programma van de Mobility-service. Op deze manier zorgt u ervoor dat wanneer de computer failover naar Azure wordt uitgevoerd, de Azure VM voldoet aan de installatie vereisten van de agent voor het gebruik van een VM-extensie.
-- **Virtuele Linux-machines**: de  [WALinuxAgent](../virtual-machines/extensions/update-linux-agent.md) moet hand matig worden geïnstalleerd op de virtuele Azure-machine na een failover.
+- **Windows-vm's** : van versie 9.7.0.0 van de Mobility-service wordt de [Azure VM-agent](../virtual-machines/extensions/features-windows.md#azure-vm-agent) geïnstalleerd door het installatie programma van de Mobility-service. Op deze manier zorgt u ervoor dat wanneer de computer failover naar Azure wordt uitgevoerd, de Azure VM voldoet aan de installatie vereisten van de agent voor het gebruik van een VM-extensie.
+- **Virtuele Linux-machines** : de  [WALinuxAgent](../virtual-machines/extensions/update-linux-agent.md) moet hand matig worden geïnstalleerd op de virtuele Azure-machine na een failover.
 
 ## <a name="locate-installer-files"></a>Installatie bestanden zoeken
 
-Ga op de configuratie server naar de map _%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository_. Controleer welk installatie programma u nodig hebt op basis van het besturings systeem. De volgende tabel bevat een overzicht van de installatie bestanden voor elke VMware-VM en een fysiek Server besturingssysteem. Voordat u begint, kunt u de [ondersteunde besturings systemen](vmware-physical-azure-support-matrix.md#replicated-machines)bekijken.
+Ga op de configuratie server naar de map _%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository_ . Controleer welk installatie programma u nodig hebt op basis van het besturings systeem. De volgende tabel bevat een overzicht van de installatie bestanden voor elke VMware-VM en een fysiek Server besturingssysteem. Voordat u begint, kunt u de [ondersteunde besturings systemen](vmware-physical-azure-support-matrix.md#replicated-machines)bekijken.
 
 > [!NOTE]
 > De bestands namen gebruiken de syntaxis die in de volgende tabel wordt weer gegeven met _versie_ en _datum_ als tijdelijke aanduidingen voor de werkelijke waarden. De daad werkelijke bestands namen zien er ongeveer als volgt uit:
@@ -232,7 +232,7 @@ Als een **vereiste voor het bijwerken of beveiligen van SuSE Linux Enterprise Se
 3. Navigeer naar configuratie server, kopieer het installatie programma van de agent van SUSE Linux Enterprise Server 11 SP3 op het pad INSTALL_DIR \home\svsystems\pushinstallsvc\repository
 1. Nadat u het nieuwste installatie programma hebt gekopieerd, start u de inmage PushInstall-service opnieuw. 
 1. Ga nu naar de bijbehorende scale-out proces servers, herhaal stap 3 en stap 4.
-1. Als installatiepad **bijvoorbeeld**C:\Program Files (x86) \Microsoft Azure site Recovery, worden de hierboven genoemde directory's
+1. Als installatiepad **bijvoorbeeld** C:\Program Files (x86) \Microsoft Azure site Recovery, worden de hierboven genoemde directory's
     1. C:\Program Files (x86) \Microsoft Azure site Recovery\home\svsystems\pushinstallsvc\repository
 
 ### <a name="rhel-5-or-centos-5-server"></a>RHEL 5-of CentOS 5-server
@@ -244,7 +244,7 @@ Als **u een vereiste hebt om RHEL 5-machines bij te werken of te beschermen** va
 3. Navigeer naar configuratie server, kopieer het installatie programma van de agent voor RHEL 5 of CentOS 5 op het pad-INSTALL_DIR \home\svsystems\pushinstallsvc\repository
 1. Nadat u het nieuwste installatie programma hebt gekopieerd, start u de inmage PushInstall-service opnieuw. 
 1. Ga nu naar de bijbehorende scale-out proces servers, herhaal stap 3 en stap 4.
-1. Als installatiepad **bijvoorbeeld**C:\Program Files (x86) \Microsoft Azure site Recovery, worden de hierboven genoemde directory's
+1. Als installatiepad **bijvoorbeeld** C:\Program Files (x86) \Microsoft Azure site Recovery, worden de hierboven genoemde directory's
     1. C:\Program Files (x86) \Microsoft Azure site Recovery\home\svsystems\pushinstallsvc\repository
 
 ## <a name="debian-7-server"></a>Debian 7-server
@@ -256,7 +256,7 @@ Als een **vereiste voor het bijwerken of beveiligen van Debian 7-computers** van
 3. Navigeer naar configuratie server, kopieer het installatie programma van de Debian 7-agent op het pad-INSTALL_DIR \home\svsystems\pushinstallsvc\repository
 1. Nadat u het nieuwste installatie programma hebt gekopieerd, start u de inmage PushInstall-service opnieuw. 
 1. Ga nu naar de bijbehorende scale-out proces servers, herhaal stap 3 en stap 4.
-1. Als installatiepad **bijvoorbeeld**C:\Program Files (x86) \Microsoft Azure site Recovery, worden de hierboven genoemde directory's
+1. Als installatiepad **bijvoorbeeld** C:\Program Files (x86) \Microsoft Azure site Recovery, worden de hierboven genoemde directory's
     1. C:\Program Files (x86) \Microsoft Azure site Recovery\home\svsystems\pushinstallsvc\repository
 
 ## <a name="next-steps"></a>Volgende stappen

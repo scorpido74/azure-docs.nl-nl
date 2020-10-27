@@ -10,20 +10,20 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 9b5463ba789a1bcfb707fb03c70f1a8464cb6b59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83c290adea02915db1dc52bd359b4d3165611522
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91767355"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547704"
 ---
-# <a name="iot-hub-message-routing-query-syntax"></a>Querysyntaxis voor het routeren van IoT Hub-berichten
+# <a name="iot-hub-message-routing-query-syntax"></a>Querysyntaxis voor IoT Hub-berichtroutering
 
 Met bericht routering kunnen gebruikers verschillende gegevens typen routeren, namelijk telemetrie-berichten van apparaten, levenscyclus gebeurtenissen van apparaten en gebeurtenissen voor het wijzigen van het apparaat naar verschillende eind punten. U kunt ook uitgebreide query's Toep assen op deze gegevens voordat u deze doorstuurt om de gegevens te ontvangen die voor u van belang zijn. In dit artikel wordt de query taal voor het routeren van berichten IoT Hub beschreven en vindt u enkele veelgebruikte query patronen.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-Met bericht routering kunt u een query uitvoeren op de bericht eigenschappen en de bericht tekst, evenals dubbele labels voor apparaten en dubbele eigenschappen van het apparaat. Als de bericht tekst niet JSON is, kan bericht routering het bericht nog steeds routeren, maar query's kunnen niet worden toegepast op de bericht tekst.  Query's worden beschreven als Boole-expressies waarbij een Booleaanse waarde True maakt dat de query slaagt en dat alle binnenkomende gegevens doorstuurt, en Boolean False mislukt de query en er worden geen gegevens doorgestuurd. Als de expressie wordt geëvalueerd als null of niet gedefinieerd, wordt deze als onwaar beschouwd en wordt er een fout gegenereerd in Diagnostische logboeken in geval van een storing. De query syntaxis moet correct zijn voor het opslaan en evalueren van de route.  
+Met bericht routering kunt u een query uitvoeren op de bericht eigenschappen en de bericht tekst, evenals dubbele labels voor apparaten en dubbele eigenschappen van het apparaat. Als de bericht tekst niet JSON is, kan bericht routering het bericht nog steeds routeren, maar query's kunnen niet worden toegepast op de bericht tekst.  Query's worden beschreven als Boole-expressies waarbij een Booleaanse waarde True maakt dat de query slaagt en dat alle binnenkomende gegevens doorstuurt, en Boolean False mislukt de query en er worden geen gegevens doorgestuurd. Als de expressie wordt geëvalueerd als null of niet gedefinieerd, wordt deze als onwaar beschouwd en wordt er een fout gegenereerd in IoT Hub [route ring van bron logboeken](monitor-iot-hub-reference.md#routes) in het geval van een storing. De query syntaxis moet correct zijn voor het opslaan en evalueren van de route.  
 
 ## <a name="message-routing-query-based-on-message-properties"></a>Bericht routering query op basis van bericht eigenschappen 
 
@@ -53,7 +53,7 @@ Met de IoT Hub definieert u een [algemene indeling](iot-hub-devguide-messages-co
 
 Systeem eigenschappen helpen de inhoud en bron van de berichten te identificeren. 
 
-| Eigenschap | Type | Beschrijving |
+| Eigenschap | Type | Description |
 | -------- | ---- | ----------- |
 | Invoer | tekenreeks | De gebruiker geeft het inhouds type van het bericht op. Als u een query wilt toestaan voor de hoofd tekst van het bericht, moet u de waarde Application/JSON instellen. |
 | contentEncoding | tekenreeks | De gebruiker geeft het type code ring van het bericht op. Toegestane waarden zijn UTF-8, UTF-16, UTF-32 als het content type is ingesteld op Application/JSON. |
@@ -62,7 +62,7 @@ Systeem eigenschappen helpen de inhoud en bron van de berichten te identificeren
 | DT-dataschema | tekenreeks |  Deze waarde wordt ingesteld door IoT hub op apparaat-naar-Cloud-berichten. Het bevat de apparaat model-ID die is ingesteld in de apparaat-verbinding. Gebruik voor query's `$dt-dataschema` . |
 | DT-onderwerp | tekenreeks | De naam van het onderdeel dat de apparaat-naar-Cloud-berichten verzendt. Gebruik voor query's `$dt-subject` . |
 
-Zoals beschreven in de [IOT hub berichten](iot-hub-devguide-messages-construct.md), zijn er aanvullende systeem eigenschappen in een bericht. Naast de bovenstaande eigenschappen in de vorige tabel kunt u ook een query uitvoeren op **connectionDeviceId**, **connectionModuleId**.
+Zoals beschreven in de [IOT hub berichten](iot-hub-devguide-messages-construct.md), zijn er aanvullende systeem eigenschappen in een bericht. Naast de bovenstaande eigenschappen in de vorige tabel kunt u ook een query uitvoeren op **connectionDeviceId** , **connectionModuleId** .
 
 ### <a name="application-properties"></a>Toepassingseigenschappen
 
@@ -146,7 +146,7 @@ deviceClient.sendEvent(message, (err, res) => {
 ```
 
 > [!NOTE] 
-> Hier ziet u hoe u de code ring van de hoofd tekst in Java script kunt afhandelen. Als u een voor beeld in C# wilt zien, downloadt u de [Azure IOT C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)-voor beelden. Pak het bestand master.zip uit. Het Program.cs-bestand van de Visual Studio Solution *SimulatedDevice*laat zien hoe u berichten kunt coderen en verzenden naar een IOT hub. Dit is hetzelfde voor beeld dat wordt gebruikt voor het testen van de bericht routering, zoals wordt uitgelegd in de [zelf studie over bericht routering](tutorial-routing.md). Onder aan Program.cs is er ook een methode voor het lezen van een van de versleutelde bestanden, het decoderen en het wegschrijven van het bestand als ASCII, zodat u het kunt lezen. 
+> Hier ziet u hoe u de code ring van de hoofd tekst in Java script kunt afhandelen. Als u een voor beeld in C# wilt zien, downloadt u de [Azure IOT C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)-voor beelden. Pak het bestand master.zip uit. Het Program.cs-bestand van de Visual Studio Solution *SimulatedDevice* laat zien hoe u berichten kunt coderen en verzenden naar een IOT hub. Dit is hetzelfde voor beeld dat wordt gebruikt voor het testen van de bericht routering, zoals wordt uitgelegd in de [zelf studie over bericht routering](tutorial-routing.md). Onder aan Program.cs is er ook een methode voor het lezen van een van de versleutelde bestanden, het decoderen en het wegschrijven van het bestand als ASCII, zodat u het kunt lezen. 
 
 
 ### <a name="query-expressions"></a>Query-expressies

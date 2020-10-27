@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/30/2020
-ms.openlocfilehash: 62a34a2dba459c6f65729cd5c6804378ee7f8b52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74aa0bf84c19b9d663b92d529604c08bf5800c45
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90902768"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544848"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>Sys_schema gebruiken voor het afstemmen van prestaties en het beheren van data bases in Azure Database for MySQL
 
@@ -29,7 +29,7 @@ De sys_schema bevat 52 weer gaven en elke weer gave heeft een van de volgende vo
 - Gebruiker: resources die worden verbruikt en gegroepeerd door gebruikers. Voor beelden hiervan zijn bestands-I/O's, verbindingen en geheugen.
 - Wachten: wacht gebeurtenissen gegroepeerd op host of gebruiker.
 
-Laten we nu eens kijken naar enkele veelvoorkomende gebruiks patronen van de sys_schema. Om te beginnen, groeperen we de gebruiks patronen in twee categorieën: **prestaties afstemmen** en **database onderhoud**.
+Laten we nu eens kijken naar enkele veelvoorkomende gebruiks patronen van de sys_schema. Om te beginnen, groeperen we de gebruiks patronen in twee categorieën: **prestaties afstemmen** en **database onderhoud** .
 
 ## <a name="performance-tuning"></a>Prestaties afstemmen
 
@@ -83,4 +83,4 @@ Indexen zijn fantastische hulp middelen voor het verbeteren van de Lees prestati
 In samen vatting is de sys_schema een geweldig hulp middel voor het afstemmen van prestaties en het onderhoud van de data base. Zorg ervoor dat u deze functie in uw Azure Database for MySQL kunt gebruiken. 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Ga naar [micro soft Q&een vraag pagina](https://docs.microsoft.com/answers/topics/azure-database-mysql.html) of [stack overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql)als u op zoek bent naar peer antwoorden op uw vragen of als u een nieuwe vraag/antwoord wilt plaatsen.
+- Ga naar [micro soft Q&een vraag pagina](/answers/topics/azure-database-mysql.html) of [stack overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql)als u op zoek bent naar peer antwoorden op uw vragen of als u een nieuwe vraag/antwoord wilt plaatsen.

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/22/2020
-ms.openlocfilehash: b5499a8c4fd6ee200ca0fac800c8c17c92a1cc0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9b74cc3bff23848bf63859e7e38bb06599956a3
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087840"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92540768"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Excel verbinden met Apache Hadoop in Azure HDIsight met behulp van het Hive ODBC-stuurprogramma van Microsoft
 
@@ -21,7 +21,7 @@ ms.locfileid: "86087840"
 
 De Big Data-oplossing van micro soft integreert micro soft Business Intelligence-onderdelen (BI) met Apache Hadoop clusters die in HDInsight zijn geïmplementeerd. Een voor beeld is de mogelijkheid om Excel te verbinden met het Hive-Data Warehouse van een Hadoop-cluster. Verbinding maken via het micro soft ODBC-stuur programma (component Open Database Connectivity).
 
-U kunt de gegevens die zijn gekoppeld aan een HDInsight-cluster via Excel verbinden met de micro soft Power Query-invoeg toepassing voor Excel. Zie [Excel verbinden met HDInsight met Power query](../hdinsight-connect-excel-power-query.md)voor meer informatie.
+U kunt de gegevens die zijn gekoppeld aan een HDInsight-cluster via Excel verbinden met de micro soft Power Query-invoeg toepassing voor Excel. Zie [Excel verbinden met HDInsight met Power query](./apache-hadoop-connect-excel-power-query.md)voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -38,7 +38,7 @@ Down load en installeer het [micro soft Hive ODBC-stuur programma](https://www.m
 
 De volgende stappen laten zien hoe u een Hive-ODBC-gegevens bron maakt.
 
-1. Ga vanuit Windows naar **Start > Windows-beheer programma's > ODBC-gegevens bronnen (32-bits)/(64-bits)**.  Met deze actie wordt het venster **ODBC-gegevens bron beheer** geopend.
+1. Ga vanuit Windows naar **Start > Windows-beheer programma's > ODBC-gegevens bronnen (32-bits)/(64-bits)** .  Met deze actie wordt het venster **ODBC-gegevens bron beheer** geopend.
 
     ![ODBC-gegevensbronbeheerder](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-datasourceadmin1.png "Een DSN configureren met behulp van ODBC-gegevensbronbeheerder")
 
@@ -52,10 +52,10 @@ De volgende stappen laten zien hoe u een Hive-ODBC-gegevens bron maakt.
    | --- | --- |
    |  Naam van de gegevensbron |Geef uw gegevensbron een naam |
    |  Host(s) |Voer `HDInsightClusterName.azurehdinsight.net` in. Bijvoorbeeld `myHDICluster.azurehdinsight.net`. Opmerking: `HDInsightClusterName-int.azurehdinsight.net` wordt ondersteund zolang de client-VM is gekoppeld aan hetzelfde virtuele netwerk. |
-   |  Poort |Gebruik **443**. (Deze poort is gewijzigd van 563 in 443.) |
-   |  Database |Gebruik **standaard**. |
+   |  Poort |Gebruik **443** . (Deze poort is gewijzigd van 563 in 443.) |
+   |  Database |Gebruik **standaard** . |
    |  Mechanisme |Selecteer **Windows Azure HDInsight Service** |
-   |  Gebruikersnaam |Voer de gebruikersnaam van de HTTP-gebruiker van het HDInsight-cluster in. De standaardgebruikersnaam **admin**. |
+   |  Gebruikersnaam |Voer de gebruikersnaam van de HTTP-gebruiker van het HDInsight-cluster in. De standaardgebruikersnaam **admin** . |
    |  Wachtwoord |Voer het gebruikerswachtwoord voor het HDInsight-cluster in. Schakel het selectievakje **Wachtwoord opslaan (versleuteld)** in.|
 
 1. Optioneel: Selecteer **Geavanceerde opties...**  
@@ -86,11 +86,11 @@ In de volgende stappen wordt beschreven hoe u gegevens uit een Hive-tabel import
 
     ![Wizard Excel-gegevens verbinding openen](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-excel-dataconnection1.png "Wizard Excel-gegevens verbinding openen")
 
-3. Selecteer in de vervolg keuzelijst de naam van de gegevens bron die u in de laatste sectie hebt gemaakt en selecteer vervolgens **OK**.
+3. Selecteer in de vervolg keuzelijst de naam van de gegevens bron die u in de laatste sectie hebt gemaakt en selecteer vervolgens **OK** .
 
 4. Voor het eerste gebruik wordt het dialoog venster **ODBC-stuur programma** geopend. Selecteer **Windows** in het menu links. Selecteer vervolgens **verbinding maken** om het **Navigator** venster te openen.
 
-5. Navigeer vanuit **Navigator**naar **Hive**  >  **default**  >  **hivesampletable**en selecteer **Load**. Het duurt enkele minuten voordat de gegevens in Excel worden geïmporteerd.
+5. Navigeer vanuit **Navigator** naar **Hive**  >  **default**  >  **hivesampletable** en selecteer **Load** . Het duurt enkele minuten voordat de gegevens in Excel worden geïmporteerd.
 
     ![ODBC-Navigator Excel-Hive van HDInsight](./media/apache-hadoop-connect-excel-hive-odbc-driver/hdinsight-hive-odbc-navigator.png "ODBC-Navigator Excel-Hive van HDInsight")
 

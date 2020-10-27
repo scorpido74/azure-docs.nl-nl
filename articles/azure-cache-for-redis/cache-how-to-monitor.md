@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
-ms.openlocfilehash: 7d703c63ebdc5b70987ead3ed2ccbe5f4843a06f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93ac9a0b8766da70a55ac04f864fe48106fe8774
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88004846"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536739"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>Azure Cache voor Redis bewaken
 
@@ -34,13 +34,13 @@ De Blade **overzicht** bevat de volgende vooraf geconfigureerde bewakings grafie
 
 ### <a name="monitoring-charts"></a>Bewakings grafieken
 
-De sectie **bewaking** op de Blade **overzicht** bevat **treffers en missers**, **ophalen en instellen**, **verbindingen**en **Totaal aantal opdrachten** grafieken.
+De sectie **bewaking** op de Blade **overzicht** bevat **treffers en missers** , **ophalen en instellen** , **verbindingen** en **Totaal aantal opdrachten** grafieken.
 
 ![Bewakings grafieken](./media/cache-how-to-monitor/redis-cache-monitoring-part.png)
 
 ### <a name="usage-charts"></a>Gebruiks grafieken
 
-De sectie **gebruik** in de Blade **overzicht** bevat **redis server belasting**, **geheugen gebruik**, **netwerk bandbreedte**en **CPU-gebruiks** grafieken, en geeft ook de **prijs categorie** voor het cache-exemplaar weer.
+De sectie **gebruik** in de Blade **overzicht** bevat **redis server belasting** , **geheugen gebruik** , **netwerk bandbreedte** en **CPU-gebruiks** grafieken, en geeft ook de **prijs categorie** voor het cache-exemplaar weer.
 
 ![Gebruiks grafieken](./media/cache-how-to-monitor/redis-cache-usage-part.png)
 
@@ -48,27 +48,27 @@ In de **prijs** categorie wordt de prijs categorie voor de cache weer gegeven. d
 
 ## <a name="view-metrics-with-azure-monitor"></a>Metrische gegevens weer geven met Azure monitor
 
-Als u metrische gegevens voor redis wilt weer geven en aangepaste grafieken wilt maken met behulp van Azure Monitor, klikt u op **metrische gegevens** in het **menu resource**en past u uw grafiek aan met de gewenste metrische gegevens, het rapportage-interval, het grafiek type en nog veel meer.
+Als u metrische gegevens voor redis wilt weer geven en aangepaste grafieken wilt maken met behulp van Azure Monitor, klikt u op **metrische gegevens** in het **menu resource** en past u uw grafiek aan met de gewenste metrische gegevens, het rapportage-interval, het grafiek type en nog veel meer.
 
 ![Metrische gegevens van redis](./media/cache-how-to-monitor/redis-cache-monitor.png)
 
-Zie [overzicht van metrische gegevens in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)voor meer informatie over het werken met metrische gegevens met behulp van Azure monitor.
+Zie [overzicht van metrische gegevens in Microsoft Azure](../azure-monitor/platform/data-platform.md)voor meer informatie over het werken met metrische gegevens met behulp van Azure monitor.
 
 <a name="how-to-view-metrics-and-customize-chart"></a>
 <a name="enable-cache-diagnostics"></a>
 ## <a name="export-cache-metrics"></a>Metrische gegevens van de cache exporteren
 
-Standaard worden de metrische gegevens in de cache van Azure Monitor [30 dagen opgeslagen](../azure-monitor/platform/data-platform-metrics.md) en vervolgens verwijderd. Als u de cache-metrische gegevens langer dan 30 dagen wilt behouden, kunt u [een opslag account aanwijzen](../azure-monitor/platform/archive-diagnostic-logs.md) en een **Bewaar beleid (dagen)** voor uw cache-metrische gegevens opgeven. 
+Standaard worden de metrische gegevens in de cache van Azure Monitor [30 dagen opgeslagen](../azure-monitor/platform/data-platform-metrics.md) en vervolgens verwijderd. Als u de cache-metrische gegevens langer dan 30 dagen wilt behouden, kunt u [een opslag account aanwijzen](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) en een **Bewaar beleid (dagen)** voor uw cache-metrische gegevens opgeven. 
 
 Een opslag account configureren voor de metrische gegevens van de cache:
 
-1. Selecteer op de pagina **Azure-cache voor redis** , onder de kop **bewaking** , de optie **Diagnostische gegevens**.
-2. Selecteer **+ Diagnostische instelling toevoegen**.
+1. Selecteer op de pagina **Azure-cache voor redis** , onder de kop **bewaking** , de optie **Diagnostische gegevens** .
+2. Selecteer **+ Diagnostische instelling toevoegen** .
 3. Geef de instellingen een naam.
 4. Schakel **Archiveren naar een opslagaccount** in. Wanneer u Diagnostische gegevens naar een opslag account verzendt, worden de normale tarieven voor opslag en trans acties in rekening gebracht.
 4. Selecteer **configureren** om het opslag account te kiezen waarin de metrische gegevens van de cache moeten worden opgeslagen.
-5. Schakel onder het veld tabelkop **metrische gegevens**het selectie vakje in naast de regel items die u wilt opslaan, zoals **AllMetrics**. Geef een **Bewaar beleid (dagen)** op. De maximale Bewaar periode die u kunt opgeven, is **365 dagen**. Als u de metrische gegevens echter altijd wilt behouden, stelt u **bewaren (dagen)** in op **0**.
-6. Klik op **Opslaan**.
+5. Schakel onder het veld tabelkop **metrische gegevens** het selectie vakje in naast de regel items die u wilt opslaan, zoals **AllMetrics** . Geef een **Bewaar beleid (dagen)** op. De maximale Bewaar periode die u kunt opgeven, is **365 dagen** . Als u de metrische gegevens echter altijd wilt behouden, stelt u **bewaren (dagen)** in op **0** .
+6. Klik op **Opslaan** .
 
 
 ![Redis diagnostische gegevens](./media/cache-how-to-monitor/redis-cache-diagnostics.png)
@@ -85,7 +85,7 @@ Als u toegang wilt krijgen tot uw metrische gegevens, kunt u ze weer geven in de
 
 ## <a name="available-metrics-and-reporting-intervals"></a>Beschik bare metrische gegevens en rapportage-intervallen
 
-Metrische cache gegevens worden gerapporteerd met behulp van verschillende rapportage intervallen, waaronder **afgelopen uur**, **vandaag**, in de **afgelopen week**en **aangepast**. De Blade **metrische gegevens** voor elk metrieke diagram geeft de gemiddelde, minimale en maximale waarde voor elke metriek in het diagram en sommige metrische gegevens geven een totaal weer voor het rapportage-interval. 
+Metrische cache gegevens worden gerapporteerd met behulp van verschillende rapportage intervallen, waaronder **afgelopen uur** , **vandaag** , in de **afgelopen week** en **aangepast** . De Blade **metrische gegevens** voor elk metrieke diagram geeft de gemiddelde, minimale en maximale waarde voor elke metriek in het diagram en sommige metrische gegevens geven een totaal weer voor het rapportage-interval. 
 
 Elke metriek bevat twee versies. Eén meet waarde meet de prestaties voor de volledige cache en voor caches die gebruikmaken van [clusters](cache-how-to-premium-clustering.md), een tweede versie van de metrische waarde die in de naam is opgenomen, neemt `(Shard 0-9)` de prestaties van één Shard in een cache. Als een cache bijvoorbeeld vier Shards heeft, `Cache Hits` is het totale aantal treffers voor de hele cache en `Cache Hits (Shard 3)` zijn alleen de treffers voor die Shard van de cache.
 
@@ -125,11 +125,11 @@ U kunt instellen dat u waarschuwingen ontvangt op basis van metrische gegevens e
 * Een webhook aanroepen
 * Een logische Azure-app aanroepen
 
-Als u waarschuwings regels wilt configureren voor uw cache, klikt u op **waarschuwings regels** in het **menu resource**.
+Als u waarschuwings regels wilt configureren voor uw cache, klikt u op **waarschuwings regels** in het **menu resource** .
 
 ![Bewaking](./media/cache-how-to-monitor/redis-cache-monitoring.png)
 
-Zie [overzicht van waarschuwingen](../monitoring-and-diagnostics/insights-alerts-portal.md)voor meer informatie over het configureren en gebruiken van waarschuwingen.
+Zie [overzicht van waarschuwingen](../azure-monitor/platform/alerts-classic-portal.md)voor meer informatie over het configureren en gebruiken van waarschuwingen.
 
 ## <a name="activity-logs"></a>Activiteitenlogboeken
 Activiteiten logboeken bieden inzicht in de bewerkingen die zijn uitgevoerd op uw Azure-cache voor redis-exemplaren. Voorheen bekend als ' controle logboeken ' of ' operationele logboeken '. Met activiteiten Logboeken kunt u de ' What, wie en wanneer ' bepalen voor schrijf bewerkingen (PUT, POST, DELETE) die zijn gemaakt in uw Azure-cache voor redis-exemplaren. 
@@ -138,6 +138,6 @@ Activiteiten logboeken bieden inzicht in de bewerkingen die zijn uitgevoerd op u
 > Activiteiten logboeken bevatten geen lees bewerkingen (GET).
 >
 
-Als u activiteiten logboeken voor uw cache wilt weer geven, klikt u op **activiteiten logboeken** in het **menu resource**.
+Als u activiteiten logboeken voor uw cache wilt weer geven, klikt u op **activiteiten logboeken** in het **menu resource** .
 
 Zie [overzicht van het Azure-activiteiten logboek](../azure-monitor/platform/platform-logs-overview.md)voor meer informatie over activiteiten Logboeken.

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: has-adal-ref, devx-track-python
 ms.date: 04/03/2020
-ms.openlocfilehash: 7d8d2c7d48dc0b77d3be0b9019d4bbf1da8a40c4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a99c6412650cac565414817c91752ae85b8ad37d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490268"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539595"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>Interactie met Apache Kafka clusters in azure HDInsight met behulp van een REST-proxy
 
@@ -21,13 +21,13 @@ Met de Kafka REST-proxy kunt u met uw Kafka-cluster communiceren via een REST AP
 
 ## <a name="rest-api-reference"></a>Naslaginformatie over REST-API
 
-Voor bewerkingen die worden ondersteund door de Kafka-REST API, Zie [HDInsight Kafka rest proxy API Reference](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy).
+Voor bewerkingen die worden ondersteund door de Kafka-REST API, Zie [HDInsight Kafka rest proxy API Reference](/rest/api/hdinsight-kafka-rest-proxy).
 
 ## <a name="background"></a>Achtergrond
 
 ![Kafka REST-proxy ontwerp](./media/rest-proxy/rest-proxy-architecture.png)
 
-Zie [Apache Kafka rest proxy API](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy)voor een volledige specificatie van bewerkingen die worden ondersteund door de API.
+Zie [Apache Kafka rest proxy API](/rest/api/hdinsight-kafka-rest-proxy)voor een volledige specificatie van bewerkingen die worden ondersteund door de API.
 
 ### <a name="rest-proxy-endpoint"></a>REST-proxy-eind punt
 
@@ -40,7 +40,7 @@ De toegang tot de Kafka REST-proxy wordt beheerd met Azure Active Directory-beve
 Voor REST proxy-eindpunt aanvragen moet client toepassingen een OAuth-Token ophalen. Het token wordt gebruikt om het lidmaatschap van een beveiligings groep te controleren. Hieronder vindt u een voor beeld van een [client toepassing](#client-application-sample) waarin wordt uitgelegd hoe u een OAuth-token ophaalt. De client toepassing geeft het OAuth-token in de HTTP-aanvraag door aan de REST-proxy.
 
 > [!NOTE]
-> Zie [toegang tot apps en bronnen beheren met Azure Active Directory groepen](../../active-directory/fundamentals/active-directory-manage-groups.md)voor meer informatie over Aad-beveiligings groepen. Zie [toegang tot Azure Active Directory webtoepassingen toestaan met de OAuth 2,0 code subsidie flow](../../active-directory/develop/v1-protocols-oauth-code.md)voor meer informatie over de werking van OAuth-tokens.
+> Zie [toegang tot apps en bronnen beheren met Azure Active Directory groepen](../../active-directory/fundamentals/active-directory-manage-groups.md)voor meer informatie over Aad-beveiligings groepen. Zie [toegang tot Azure Active Directory webtoepassingen toestaan met de OAuth 2,0 code subsidie flow](../../active-directory/azuread-dev/v1-protocols-oauth-code.md)voor meer informatie over de werking van OAuth-tokens.
 
 ## <a name="kafka-rest-proxy-with-network-security-groups"></a>Kafka REST-proxy met netwerk beveiligings groepen
 Als u uw eigen VNet en netwerk verkeer met netwerk beveiligings groepen wilt beheren, kunt u **Inkomend** verkeer op poort **9400** naast poort 443 toestaan. Dit zorgt ervoor dat de Kafka REST-proxy server bereikbaar is.
@@ -51,7 +51,7 @@ Als u uw eigen VNet en netwerk verkeer met netwerk beveiligings groepen wilt beh
 
 1. Maak een Azure AD-beveiligingsgroep. Voeg de toepassing die u hebt geregistreerd bij Azure AD aan de beveiligings groep toe als **lid** van de groep. Deze beveiligingsgroep wordt gebruikt om te bepalen welke toepassingen mogen communiceren met de REST-proxy. Zie [Een basisgroep maken en leden toevoegen met Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) voor meer informatie over het maken van Azure AD-groepen.
 
-    Controleer of de groep van het type **Security**is.
+    Controleer of de groep van het type **Security** is.
     ![Beveiligings groep](./media/rest-proxy/rest-proxy-group.png)
 
     Controleer of de toepassing lid is van de groep.
@@ -65,11 +65,11 @@ In de onderstaande stappen wordt gebruikgemaakt van de Azure Portal. Zie voor ee
 
      ![Scherm afbeelding toont de pagina H D Insight-cluster maken met beveiliging en netwerken geselecteerd.](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest.png)
 
-1. Klik op **beveiligings groep selecteren**. Selecteer in de lijst met beveiligings groepen de beveiligings groep waartoe u toegang wilt hebben tot de REST-proxy. U kunt het zoekvak gebruiken om de juiste beveiligings groep te vinden. Klik onderaan op de knop **selecteren** .
+1. Klik op **beveiligings groep selecteren** . Selecteer in de lijst met beveiligings groepen de beveiligings groep waartoe u toegang wilt hebben tot de REST-proxy. U kunt het zoekvak gebruiken om de juiste beveiligings groep te vinden. Klik onderaan op de knop **selecteren** .
 
      ![Scherm afbeelding toont de pagina H D Insight-cluster maken met de optie om een beveiligings groep te selecteren.](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest2.png)
 
-1. Voltooi de resterende stappen voor het maken van uw cluster zoals beschreven in [Apache Kafka cluster maken in azure HDInsight met behulp van Azure Portal](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-get-started).
+1. Voltooi de resterende stappen voor het maken van uw cluster zoals beschreven in [Apache Kafka cluster maken in azure HDInsight met behulp van Azure Portal](./apache-kafka-get-started.md).
 
 1. Zodra het cluster is gemaakt, gaat u naar de eigenschappen van het cluster om de Kafka REST proxy-URL op te nemen.
 
@@ -269,4 +269,4 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Kafka REST proxy API-naslag documenten](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy/)
+* [Kafka REST proxy API-naslag documenten](/rest/api/hdinsight-kafka-rest-proxy/)

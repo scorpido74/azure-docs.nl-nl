@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: fc10d385df1dffed07e771d622d9bf9d8bedee39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1cd6d93ff45d7fb40ae7ca1874343486bd0b8cb
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086531"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547925"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Gebruikers machtigen voor Apache Ambari-weergaven
 
@@ -24,7 +24,7 @@ Active Directory kunnen gebruikers zich met hun domein referenties aanmelden bij
 > [!WARNING]  
 > Wijzig het wacht woord van de Ambari-watchdog (hdinsightwatchdog) niet in uw HDInsight-cluster op basis van Linux. Als u het wacht woord wijzigt, is het niet meer mogelijk om script acties te gebruiken of om schaal bewerkingen uit te voeren met uw cluster.
 
-Als u dit nog niet hebt gedaan, volgt u [deze instructies](./domain-joined/apache-domain-joined-configure.md) om een nieuw ESP-cluster in te richten.
+Als u dit nog niet hebt gedaan, volgt u [deze instructies](./domain-joined/apache-domain-joined-configure-using-azure-adds.md) om een nieuw ESP-cluster in te richten.
 
 ## <a name="access-the-ambari-management-page"></a>Toegang tot de Ambari-beheer pagina
 
@@ -36,13 +36,13 @@ Als u naar de **Ambari-beheer pagina** van de [Apache AMBARI-webgebruikersinterf
 
 ### <a name="add-users-through-the-portal"></a>Gebruikers toevoegen via de portal
 
-1. Selecteer op de pagina beheer de optie **gebruikers**.
+1. Selecteer op de pagina beheer de optie **gebruikers** .
 
     ![Gebruikers van Apache Ambari-beheer pagina](./media/hdinsight-authorize-users-to-ambari/apache-ambari-management-page-users.png)
 
-1. Selecteer **+ lokale gebruiker maken**.
+1. Selecteer **+ lokale gebruiker maken** .
 
-1. Geef een **gebruikers naam** en **wacht woord**op. Selecteer **Opslaan**.
+1. Geef een **gebruikers naam** en **wacht woord** op. Selecteer **Opslaan** .
 
 ### <a name="add-users-through-powershell"></a>Gebruikers toevoegen via Power shell
 
@@ -167,7 +167,7 @@ curl -k -u $user:$userPassword -H "X-Requested-By: ambari" \
 
 ## <a name="grant-permissions-to-apache-hive-views"></a>Machtigingen verlenen voor het Apache Hive weer gaven
 
-Ambari wordt geleverd met View instances voor [Apache Hive](https://hive.apache.org/) en [Apache TEZ](https://tez.apache.org/), onder andere. Ga naar de **beheer pagina**van het Ambari om toegang te verlenen aan een of meer Hive-exemplaren.
+Ambari wordt geleverd met View instances voor [Apache Hive](https://hive.apache.org/) en [Apache TEZ](https://tez.apache.org/), onder andere. Ga naar de **beheer pagina** van het Ambari om toegang te verlenen aan een of meer Hive-exemplaren.
 
 1. Selecteer op de pagina beheer de koppeling **weer gaven** in de kop van het menu **weer gaven** aan de linkerkant.
 
@@ -191,14 +191,14 @@ Ambari wordt geleverd met View instances voor [Apache Hive](https://hive.apache.
 
    * Selecteer of voltooi de gebruikers naam. Selecteer de knop **Nieuw** om deze gebruikers naam toe te voegen als een nieuwe gebruiker.
 
-   * Schakel het **selectie vakje blauw**in om uw wijzigingen op te slaan.
+   * Schakel het **selectie vakje blauw** in om uw wijzigingen op te slaan.
 
      ![Apache Ambari gebruikers machtigingen verlenen](./media/hdinsight-authorize-users-to-ambari/user-entered-permissions.png)
 
 1. Selecteer de knop **groep toevoegen** om een groep toe te voegen.
 
    * Begin met het typen van de groeps naam. Het proces van het selecteren van een bestaande groeps naam of het toevoegen van een nieuwe groep is hetzelfde als voor het toevoegen van gebruikers.
-   * Schakel het **selectie vakje blauw**in om uw wijzigingen op te slaan.
+   * Schakel het **selectie vakje blauw** in om uw wijzigingen op te slaan.
 
      ![Apache Ambari Grant-machtigingen](./media/hdinsight-authorize-users-to-ambari/ambari-group-entered.png)
 
@@ -224,7 +224,7 @@ Er zijn vijf beveiligings rollen voor gebruikers en groepen, die worden vermeld 
 * Service operator
 * Cluster gebruiker
 
-Als u rollen wilt beheren, gaat u naar de **pagina beheer van Ambari**en selecteert u vervolgens de koppeling **rollen** in de menu groep *clusters* aan de linkerkant.
+Als u rollen wilt beheren, gaat u naar de **pagina beheer van Ambari** en selecteert u vervolgens de koppeling **rollen** in de menu groep *clusters* aan de linkerkant.
 
 ![Menu koppelingen voor Apache Ambari-rollen](./media/hdinsight-authorize-users-to-ambari/cluster-roles-menu-link.png)
 

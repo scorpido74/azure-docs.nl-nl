@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 6c088188802590139ee895c45fb26959138db07e
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: eba175eb831ef0c472c2e11d2d03f134a0d3b052
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939797"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547670"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-using-the-azure-cli"></a>Een Azure Database for PostgreSQL-flexibele server beheren met de Azure CLI
 
@@ -23,13 +23,13 @@ In dit artikel leest u hoe u uw flexibele server kunt beheren die in Azure is ge
 ## <a name="prerequisites"></a>Vereisten
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint. In dit artikel moet u Azure CLI-versie 2.0 of later lokaal uitvoeren. Voer de opdracht `az --version` uit om de geïnstalleerde versie te zien. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
-U moet zich aanmelden bij uw account met behulp van de opdracht [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login). Let op de eigenschap **id**, die verwijst naar **abonnements-id** voor uw Azure-account.
+U moet zich aanmelden bij uw account met behulp van de opdracht [az login](/cli/azure/reference-index#az-login). Let op de eigenschap **id** , die verwijst naar **abonnements-id** voor uw Azure-account.
 
 ```azurecli-interactive
 az login
 ```
 
-Selecteer het specifieke abonnement in uw account met de opdracht [az account set](/cli/azure/account). Noteer de **id**-waarde uit de uitvoer van **az login** en gebruik deze als de waarde voor het argument **abonnement** in de opdracht. Als u meerdere abonnementen hebt, kiest u het juiste abonnement waarin de resource moet worden gefactureerd. U kunt al uw abonnementen ophalen met de opdracht [az account list](https://docs.microsoft.com/cli/azure/account#az-account-list).
+Selecteer het specifieke abonnement in uw account met de opdracht [az account set](/cli/azure/account). Noteer de **id** -waarde uit de uitvoer van **az login** en gebruik deze als de waarde voor het argument **abonnement** in de opdracht. Als u meerdere abonnementen hebt, kiest u het juiste abonnement waarin de resource moet worden gefactureerd. U kunt al uw abonnementen ophalen met de opdracht [az account list](/cli/azure/account#az-account-list).
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -101,7 +101,7 @@ Er zijn een aantal toepassingen die kunt gebruiken om verbinding te maken met uw
     CREATE DATABASE postgresdb;
     ```
 
-3. Voer bij de prompt de volgende opdracht uit om verbinding te maken met de zojuist gemaakte Data Base- **PostgresDB**:
+3. Voer bij de prompt de volgende opdracht uit om verbinding te maken met de zojuist gemaakte Data Base- **PostgresDB** :
 
     ```bash
     \c postgresdb

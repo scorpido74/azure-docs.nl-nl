@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 81c6cd6ffe200f0fbc9df20f4fa7e2e147db86af
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 421763769ff0bd7ffe2b06eb48e1ac5ecbbb545e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151186"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537963"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Leesreplica's in Azure Database for MySQL
 
@@ -24,7 +24,7 @@ Zie de [MySQL-replicatie documentatie](https://dev.mysql.com/doc/refman/5.7/en/r
 > [!NOTE]
 > Oordeelloze communicatie
 >
-> Microsoft biedt ondersteuning voor een gevarieerde en insluitende omgeving. Dit artikel bevat verwijzingen naar het woord _slaaf_. In de [stijlgids voor oordeelloze communicatie](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) wordt dit woord herkend als uitsluitend. Het woord wordt in dit artikel gebruikt voor consistentie, omdat het momenteel het woord is dat wordt weergegeven in de software. Wanneer de software is bijgewerkt om het woord te verwijderen, wordt dit artikel ook bijgewerkt zodat het is afgestemd.
+> Microsoft biedt ondersteuning voor een gevarieerde en insluitende omgeving. Dit artikel bevat verwijzingen naar het woord _slaaf_ . In de [stijlgids voor oordeelloze communicatie](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) wordt dit woord herkend als uitsluitend. Het woord wordt in dit artikel gebruikt voor consistentie, omdat het momenteel het woord is dat wordt weergegeven in de software. Wanneer de software is bijgewerkt om het woord te verwijderen, wordt dit artikel ook bijgewerkt zodat het is afgestemd.
 >
 
 ## <a name="when-to-use-a-read-replica"></a>Wanneer moet u een lees replica gebruiken?
@@ -71,7 +71,7 @@ Er zijn echter beperkingen om rekening mee te houden:
 
 Als een bron server geen bestaande replica servers heeft, wordt de bron eerst opnieuw opgestart om zichzelf voor te bereiden voor replicatie.
 
-Wanneer u de werk stroom voor het maken van de replica start, wordt er een lege Azure Database for MySQL-server gemaakt. De nieuwe server wordt gevuld met de gegevens die zich op de bron server bevonden. De aanmaak tijd is afhankelijk van de hoeveelheid gegevens op de bron en de tijd sinds de laatste wekelijkse volledige back-up. De tijd kan variëren van een paar minuten tot enkele uren. De replica server wordt altijd gemaakt in dezelfde resource groep en hetzelfde abonnement als de bron server. Als u een replica server wilt maken naar een andere resource groep of een ander abonnement, kunt u [de replica-server verplaatsen](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription) nadat u deze hebt gemaakt.
+Wanneer u de werk stroom voor het maken van de replica start, wordt er een lege Azure Database for MySQL-server gemaakt. De nieuwe server wordt gevuld met de gegevens die zich op de bron server bevonden. De aanmaak tijd is afhankelijk van de hoeveelheid gegevens op de bron en de tijd sinds de laatste wekelijkse volledige back-up. De tijd kan variëren van een paar minuten tot enkele uren. De replica server wordt altijd gemaakt in dezelfde resource groep en hetzelfde abonnement als de bron server. Als u een replica server wilt maken naar een andere resource groep of een ander abonnement, kunt u [de replica-server verplaatsen](../azure-resource-manager/management/move-resource-group-and-subscription.md) nadat u deze hebt gemaakt.
 
 Elke replica is ingeschakeld voor [automatische groei](concepts-pricing-tiers.md#storage-auto-grow)van opslag. Met de functie voor automatisch uitbreiden kan de replica de gegevens repliceren, en wordt voor komen dat er een onderbreking in de replicatie wordt veroorzaakt door problemen met de opslag.
 
@@ -83,7 +83,7 @@ Bij het maken neemt een replica de firewall regels van de bron server over. Daar
 
 De replica neemt het beheerders account over van de bron server. Alle gebruikers accounts op de bron server worden gerepliceerd naar de replica's die worden gelezen. U kunt alleen verbinding maken met een lees replica met behulp van de beschik bare gebruikers accounts op de bron server.
 
-U kunt verbinding maken met de replica door de hostnaam en een geldig gebruikers account te gebruiken, net zoals bij een gewone Azure Database for MySQL-server. Voor een server met de naam **myreplica** met de gebruikers naam **myadmin**van de beheerder kunt u verbinding maken met de replica met behulp van de MySQL cli:
+U kunt verbinding maken met de replica door de hostnaam en een geldig gebruikers account te gebruiken, net zoals bij een gewone Azure Database for MySQL-server. Voor een server met de naam **myreplica** met de gebruikers naam **myadmin** van de beheerder kunt u verbinding maken met de replica met behulp van de MySQL cli:
 
 ```bash
 mysql -h myreplica.mysql.database.azure.com -u myadmin@myreplica -p
@@ -113,7 +113,7 @@ Meer informatie over het [stoppen van replicatie naar een replica](howto-read-re
 
 Er is geen automatische failover tussen bron-en replica servers. 
 
-Omdat replicatie asynchroon is, is er sprake van een vertraging tussen de bron en de replica. De hoeveelheid vertraging kan worden beïnvloed door een aantal factoren, zoals hoe zwaar de werk belasting die wordt uitgevoerd op de bron server en de latentie tussen data centers. In de meeste gevallen varieert replicavertraging tussen enkele seconden en een paar minuten. U kunt uw werkelijke replicatie vertraging bijhouden met behulp van de metrische *replica vertraging*, die beschikbaar is voor elke replica. Met deze metriek wordt de tijd weer gegeven sinds de laatste geplayte trans actie. U wordt aangeraden om te bepalen wat uw gemiddelde vertraging is door uw replica vertraging te bestuderen gedurende een bepaalde periode. U kunt een waarschuwing instellen voor replica vertraging, zodat u actie kunt ondernemen als deze buiten het verwachte bereik komt.
+Omdat replicatie asynchroon is, is er sprake van een vertraging tussen de bron en de replica. De hoeveelheid vertraging kan worden beïnvloed door een aantal factoren, zoals hoe zwaar de werk belasting die wordt uitgevoerd op de bron server en de latentie tussen data centers. In de meeste gevallen varieert replicavertraging tussen enkele seconden en een paar minuten. U kunt uw werkelijke replicatie vertraging bijhouden met behulp van de metrische *replica vertraging* , die beschikbaar is voor elke replica. Met deze metriek wordt de tijd weer gegeven sinds de laatste geplayte trans actie. U wordt aangeraden om te bepalen wat uw gemiddelde vertraging is door uw replica vertraging te bestuderen gedurende een bepaalde periode. U kunt een waarschuwing instellen voor replica vertraging, zodat u actie kunt ondernemen als deze buiten het verwachte bereik komt.
 
 > [!Tip]
 > Als u een failover naar de replica doorzoekt, geeft de vertraging op het moment dat u de replica loskoppelt van de bron aan hoeveel gegevens er verloren zijn gegaan.
@@ -136,7 +136,7 @@ MySQL ondersteunt twee typen trans acties: GTID trans acties (aangeduid met GTID
 
 De volgende server parameters zijn beschikbaar voor het configureren van GTID: 
 
-|**Server parameter**|**Beschrijving**|**Standaard waarde**|**Waarden**|
+|**Server parameter**|**Beschrijving**|**Standaardwaarde**|**Waarden**|
 |--|--|--|--|
 |`gtid_mode`|Hiermee wordt aangegeven of GTIDs worden gebruikt om trans acties te identificeren. Wijzigingen tussen modi kunnen slechts één stap per keer in oplopende volg orde worden uitgevoerd (bijvoorbeeld `OFF` -> `OFF_PERMISSIVE` -> `ON_PERMISSIVE` -> `ON`)|`OFF`|`OFF`: Zowel nieuwe als replicatie transacties moeten anoniem zijn <br> `OFF_PERMISSIVE`: Nieuwe trans acties zijn anoniem. Gerepliceerde trans acties kunnen anoniem of GTID-trans acties zijn. <br> `ON_PERMISSIVE`: Nieuwe trans acties zijn GTID trans acties. Gerepliceerde trans acties kunnen anoniem of GTID-trans acties zijn. <br> `ON`: Zowel nieuwe als gerepliceerde trans acties moeten GTID trans acties zijn.|
 |`enforce_gtid_consistency`|Dwingt consistentie van GTID af door alleen de instructies toe te staan die op transactionele veilige wijze kunnen worden geregistreerd. Deze waarde moet worden ingesteld op `ON` voordat u GTID-replicatie inschakelt. |`OFF`|`OFF`: Alle trans acties mogen GTID-consistentie schenden.  <br> `ON`: Geen enkele trans actie mag GTID-consistentie schenden. <br> `WARN`: Alle trans acties mogen GTID-consistentie schenden, maar er wordt een waarschuwing gegenereerd. | 
@@ -208,7 +208,7 @@ GTID is standaard uitgeschakeld. Als GTID is ingeschakeld, kunt u deze niet meer
 
 Als GTID is ingeschakeld op een bron server, is voor nieuw gemaakte replica's ook GTID ingeschakeld en wordt GTID-replicatie gebruikt. Om replicatie consistent te blijven, kunt u niet bijwerken `gtid_mode` op de bron-of replica server (s).
 
-### <a name="other"></a>Anders
+### <a name="other"></a>Overig
 
 - Het maken van een replica van een replica wordt niet ondersteund.
 - In-Memory tabellen kunnen ertoe leiden dat replica's niet meer synchroon zijn. Dit is een beperking van de MySQL-replicatie technologie. Meer informatie vindt u in de [referentie documentatie voor mysql](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) .

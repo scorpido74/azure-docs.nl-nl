@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: ccee3b52b0f204561ca790ce364308f81a1db6f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e72cf2cbe17f3a92d3769fb85332f29be038f17
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906599"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547228"
 ---
 # <a name="azure-database-for-mysql-advanced-threat-protection"></a>Azure Database for MySQL Advanced Threat Protection
 
@@ -34,14 +34,14 @@ Advanced Threat Protection voor Azure Database for MySQL biedt een nieuwe beveil
 
 ## <a name="advanced-threat-protection-alerts"></a>Geavanceerde beveiligings waarschuwingen 
 Advanced Threat Protection voor Azure Database for MySQL detecteert afwijkende activiteiten die een ongebruikelijke en potentieel schadelijke pogingen om toegang te krijgen tot of misbruik te maken van data bases en de volgende waarschuwingen kunnen activeren:
-- **Toegang vanaf ongebruikelijke locatie**: deze waarschuwing wordt geactiveerd wanneer er een wijziging is in het toegangs patroon voor de Azure database for mysql-server, waarbij iemand zich vanaf een ongebruikelijke geografische locatie heeft aangemeld bij de Azure database for mysql-server. In sommige gevallen detecteert de waarschuwing een legitieme actie (een nieuwe toepassing of onderhoud door ontwikkelaars). In andere gevallen detecteert de waarschuwing een schadelijke actie (voormalig werknemer, externe aanvaller).
-- **Toegang vanaf ongebruikelijk Azure Data Center**: deze waarschuwing wordt geactiveerd wanneer er een wijziging is in het toegangs patroon voor de Azure database for mysql-server, waarbij iemand zich bij de server heeft aangemeld vanuit een ongebruikelijk Azure Data Center dat tijdens de recente periode op deze server is gedetecteerd. In sommige gevallen detecteert de waarschuwing een legitieme actie (uw nieuwe toepassing in azure, Power BI, Azure Database for MySQL Query-Editor). In andere gevallen detecteert de waarschuwing een schadelijke actie vanuit een Azure resource/service (voormalig werknemer, externe aanvaller).
-- **Toegang vanaf een niet-vertrouwde Principal**: deze waarschuwing wordt geactiveerd wanneer er een wijziging is in het toegangs patroon voor de Azure database for mysql-server, waarbij iemand zich heeft aangemeld bij de server met behulp van een ongewone principal (Azure database for MySQL gebruiker). In sommige gevallen detecteert de waarschuwing een legitieme actie (een nieuwe toepassing of onderhoud door ontwikkelaars). In andere gevallen detecteert de waarschuwing een schadelijke actie (voormalig werknemer, externe aanvaller).
-- **Toegang tot een toepassing die mogelijk schadelijk is**: deze waarschuwing wordt geactiveerd wanneer een mogelijk schadelijke toepassing wordt gebruikt voor toegang tot de database. In sommige gevallen detecteert de waarschuwing het uitvoeren van testen om binnen te dringen. In andere gevallen detecteert de waarschuwing een aanval met behulp van gebruikelijk aanvalsprogramma’s.
-- Beveiligings **verificatie Azure database for MySQL referenties**: deze waarschuwing wordt geactiveerd wanneer er sprake is van een abnormaal groot aantal mislukte aanmeldingen met andere referenties. In sommige gevallen detecteert de waarschuwing het uitvoeren van testen om binnen te dringen. In andere gevallen detecteert de waarschuwing een Brute Force-aanval.
+- **Toegang vanaf ongebruikelijke locatie** : deze waarschuwing wordt geactiveerd wanneer er een wijziging is in het toegangs patroon voor de Azure database for mysql-server, waarbij iemand zich vanaf een ongebruikelijke geografische locatie heeft aangemeld bij de Azure database for mysql-server. In sommige gevallen detecteert de waarschuwing een legitieme actie (een nieuwe toepassing of onderhoud door ontwikkelaars). In andere gevallen detecteert de waarschuwing een schadelijke actie (voormalig werknemer, externe aanvaller).
+- **Toegang vanaf ongebruikelijk Azure Data Center** : deze waarschuwing wordt geactiveerd wanneer er een wijziging is in het toegangs patroon voor de Azure database for mysql-server, waarbij iemand zich bij de server heeft aangemeld vanuit een ongebruikelijk Azure Data Center dat tijdens de recente periode op deze server is gedetecteerd. In sommige gevallen detecteert de waarschuwing een legitieme actie (uw nieuwe toepassing in azure, Power BI, Azure Database for MySQL Query-Editor). In andere gevallen detecteert de waarschuwing een schadelijke actie vanuit een Azure resource/service (voormalig werknemer, externe aanvaller).
+- **Toegang vanaf een niet-vertrouwde Principal** : deze waarschuwing wordt geactiveerd wanneer er een wijziging is in het toegangs patroon voor de Azure database for mysql-server, waarbij iemand zich heeft aangemeld bij de server met behulp van een ongewone principal (Azure database for MySQL gebruiker). In sommige gevallen detecteert de waarschuwing een legitieme actie (een nieuwe toepassing of onderhoud door ontwikkelaars). In andere gevallen detecteert de waarschuwing een schadelijke actie (voormalig werknemer, externe aanvaller).
+- **Toegang tot een toepassing die mogelijk schadelijk is** : deze waarschuwing wordt geactiveerd wanneer een mogelijk schadelijke toepassing wordt gebruikt voor toegang tot de database. In sommige gevallen detecteert de waarschuwing het uitvoeren van testen om binnen te dringen. In andere gevallen detecteert de waarschuwing een aanval met behulp van gebruikelijk aanvalsprogramma’s.
+- Beveiligings **verificatie Azure database for MySQL referenties** : deze waarschuwing wordt geactiveerd wanneer er sprake is van een abnormaal groot aantal mislukte aanmeldingen met andere referenties. In sommige gevallen detecteert de waarschuwing het uitvoeren van testen om binnen te dringen. In andere gevallen detecteert de waarschuwing een Brute Force-aanval.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+* Meer informatie over [Azure Security Center](../security-center/security-center-introduction.md)
 * Zie de [pagina met prijzen voor Azure database for MySQL](https://azure.microsoft.com/pricing/details/mysql/) voor meer informatie over prijzen. 
-* [Azure database for MySQL Advanced Threat Protection](howto-database-threat-protection-portal.md) configureren met behulp van de Azure Portal  
+* [Azure database for MySQL Advanced Threat Protection](howto-database-threat-protection-portal.md) configureren met behulp van de Azure Portal

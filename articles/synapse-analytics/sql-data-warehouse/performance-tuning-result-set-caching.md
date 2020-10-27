@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: aeeca38afb82e2dcd86e111d1ae5dcb2e7499f42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 933ec541e358f1839c1b4d24acd19e439ea26375
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362262"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541278"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Prestaties afstemmen door resultatensets op te slaan in de cache
 
@@ -36,11 +36,15 @@ Als de cache voor het instellen van de resultatenset is ingeschakeld, slaat Syna
 
 Zodra de caching van de resultatenset voor een Data Base is ingeschakeld, worden de resultaten in de cache opgeslagen voor alle query's totdat de cache vol is, met uitzonde ring van de volgende query's:
 
-- Query's die gebruikmaken van niet-deterministische functies, zoals DateTime. Now ()
+- Query's met ingebouwde functies of runtime-expressies die niet-deterministisch zijn, zelfs wanneer er geen wijzigingen zijn in de gegevens of query van de basis tabellen. Bijvoorbeeld DateTime. Now (), GetDate ().
 - Query's met door de gebruiker gedefinieerde functies
 - Query's die gebruikmaken van tabellen met beveiliging op rijniveau of beveiliging op kolom niveau ingeschakeld
 - Query's die gegevens retour neren met een Rijgrootte groter dan 64 KB
 - Query's waarbij grote gegevens worden geretourneerd (>10GB) 
+>[!NOTE]
+> - Sommige niet-deterministische functies en runtime-expressies kunnen deterministisch zijn voor herhaalde query's voor dezelfde gegevens. Bijvoorbeeld ROW_NUMBER ().  
+> - Gebruik ORDER BY in uw query als de volg orde/volg orde van de rijen in de resultatenset van de query belang rijk is voor uw toepassings logica.
+> - Als de gegevens in de volg orde van kolommen niet uniek zijn, is er geen garanteed voor rijen met dezelfde waarden in de volg orde van kolommen, ongeacht of cache voor het instellen van de resultatenset is ingeschakeld of uitgeschakeld.
 
 > [!IMPORTANT]
 > De bewerkingen voor het maken van een cache met resultaten en het ophalen van gegevens uit de cache vindt plaats op het knoop punt beheer van een exemplaar van een Synapse SQL-groep.

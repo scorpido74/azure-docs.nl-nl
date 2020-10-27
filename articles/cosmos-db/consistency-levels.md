@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: 0f69b30f477f99e2a4cae10edc7443b0630175c9
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 77af5a66ba349e5985e3b27b07c82a1595ccc8a1
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487803"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547075"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Consistentieniveaus in Azure Cosmos DB
 
@@ -49,16 +49,16 @@ Azure Cosmos DB garandeert dat 100 procent van de Lees aanvragen voldoet aan de 
 
 De semantiek van de vijf consistentie niveaus worden hier beschreven:
 
-- **Sterk**: sterke consistentie biedt een linearizability-garantie. Linearizability verwijst naar de gelijktijdigheid van aanvragen. De Lees bewerkingen worden gegarandeerd de meest recente doorgevoerde versie van een item te retour neren. Een client ziet nooit een niet-doorgevoerde of gedeeltelijke schrijf bewerking. Gebruikers worden altijd gegarandeerd de laatste vastgelegde schrijf bewerkingen te lezen.
+- **Sterk** : sterke consistentie biedt een linearizability-garantie. Linearizability verwijst naar de gelijktijdigheid van aanvragen. De Lees bewerkingen worden gegarandeerd de meest recente doorgevoerde versie van een item te retour neren. Een client ziet nooit een niet-doorgevoerde of gedeeltelijke schrijf bewerking. Gebruikers worden altijd gegarandeerd de laatste vastgelegde schrijf bewerkingen te lezen.
 
   In de volgende afbeelding ziet u de sterke consistentie met muzikale notities. Wanneer u de gegevens van andere regio's hebt geschreven naar de regio vs-West 2, krijgt u de meest recente waarde:
 
   :::image type="content" source="media/consistency-levels/strong-consistency.gif" alt-text="Consistentie als een spectrum":::
 
-- **Gebonden veroudering**: de Lees bewerkingen worden gegarandeerd de consistentie van het voor voegsel garanderen. De Lees bewerkingen kunnen vertraging oplopen bij schrijf bewerkingen door de meeste *"K"* -versies (dat wil zeggen "updates") van een item of door een *T* -outinterval, afhankelijk van wat het eerst wordt bereikt. Met andere woorden, wanneer u de gebonden veroudering kiest, kan de ' verouderd ' op twee manieren worden geconfigureerd:
+- **Gebonden veroudering** : de Lees bewerkingen worden gegarandeerd de consistentie van het voor voegsel garanderen. De Lees bewerkingen kunnen vertraging oplopen bij schrijf bewerkingen door de meeste *"K"* -versies (dat wil zeggen "updates") van een item of door een *T* -outinterval, afhankelijk van wat het eerst wordt bereikt. Met andere woorden, wanneer u de gebonden veroudering kiest, kan de ' verouderd ' op twee manieren worden geconfigureerd:
 
-- Het aantal versies (*K*) van het item
-- De tijds interval (*T*) Lees bewerkingen kunnen vertraging oplopen achter de schrijf bewerkingen
+- Het aantal versies ( *K* ) van het item
+- De tijds interval ( *T* ) Lees bewerkingen kunnen vertraging oplopen achter de schrijf bewerkingen
 
 Voor een account van één regio is de minimum waarde *K* en *T* 10 schrijf bewerkingen of 5 seconden. Voor accounts met meerdere regio's is de minimale waarde van *K* en *T* 100.000 schrijf bewerkingen of 300 seconden.
 
@@ -75,7 +75,7 @@ Binnen het verouderde venster biedt gebonden veroudering de volgende consistenti
 
   :::image type="content" source="media/consistency-levels/bounded-staleness-consistency.gif" alt-text="Consistentie als een spectrum":::
 
-- **Sessie**: in een enkele client sessie Lees bewerkingen worden gegarandeerd het consistente voor voegsel, monotone Lees bewerkingen, monotone schrijf bewerkingen, lees-uw-schrijf bewerkingen en lees-en schrijf bewerkingen. Hierbij wordt ervan uitgegaan dat u één schrijver-sessie hebt of het sessie token deelt voor meerdere schrijvers.
+- **Sessie** : in een enkele client sessie Lees bewerkingen worden gegarandeerd het consistente voor voegsel, monotone Lees bewerkingen, monotone schrijf bewerkingen, lees-uw-schrijf bewerkingen en lees-en schrijf bewerkingen. Hierbij wordt ervan uitgegaan dat u één schrijver-sessie hebt of het sessie token deelt voor meerdere schrijvers.
 
 Clients buiten de sessie die schrijf bewerkingen uitvoeren, zien de volgende garanties:
 
@@ -88,7 +88,7 @@ Clients buiten de sessie die schrijf bewerkingen uitvoeren, zien de volgende gar
 
   :::image type="content" source="media/consistency-levels/session-consistency.gif" alt-text="Consistentie als een spectrum":::
 
-- **Consistent voor voegsel**: updates die worden geretourneerd, bevatten een voor voegsel van alle updates, zonder onderbrekingen. Consistent consistentie niveau van het voor voegsel zorgt ervoor dat lees bewerkingen die nooit worden uitgevoerd, niet worden weer gegeven.
+- **Consistent voor voegsel** : updates die worden geretourneerd, bevatten een voor voegsel van alle updates, zonder onderbrekingen. Consistent consistentie niveau van het voor voegsel zorgt ervoor dat lees bewerkingen die nooit worden uitgevoerd, niet worden weer gegeven.
 
 Als schrijf bewerkingen zijn uitgevoerd in de volg orde `A, B, C` , ziet een client een `A` van de, `A,B` , of `A,B,C` , maar niet-beschik bare permutaties zoals `A,C` of `B,A,C` . Consistent voor voegsel biedt schrijf latentie, Beschik baarheid en lees doorvoer die vergelijkbaar zijn met die van uiteindelijke consistentie, maar biedt ook de volg orde van de bestellingen die voldoen aan de behoeften van scenario's waarin de volg orde belang rijk is.
 
@@ -103,7 +103,7 @@ In de volgende afbeelding ziet u de consistentie van het consistentie voorvoegse
 
   :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="Consistentie als een spectrum":::
 
-- **Uiteindelijk**: er is geen garantie voor lees bewerkingen. Als er verder geen schrijfbewerkingen worden uitgevoerd, convergeren de replica's uiteindelijk.  
+- **Uiteindelijk** : er is geen garantie voor lees bewerkingen. Als er verder geen schrijfbewerkingen worden uitgevoerd, convergeren de replica's uiteindelijk.  
 Uiteindelijke consistentie is de zwakke vorm van consistentie, omdat een client de waarden kan lezen die ouder zijn dan de waarde die het eerder had gelezen. Uiteindelijke consistentie is ideaal wanneer de toepassing geen garantie voor het ordenen van de toepassingen vereist. Voor beelden zijn het aantal retweeten, leuk of niet-threaded opmerkingen. In de volgende afbeelding ziet u de uiteindelijke consistentie met muzikale notities.
 
   :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="Consistentie als een spectrum":::
@@ -112,7 +112,7 @@ Uiteindelijke consistentie is de zwakke vorm van consistentie, omdat een client 
 
 In de praktijk kunt u vaak sterkere consistentie garanties krijgen. Consistentie garanties voor een lees bewerking komen overeen met de versheid en volg orde van de database status die u aanvraagt. Lees consistentie is gekoppeld aan de volg orde en doorgifte van de schrijf-en bijwerk bewerkingen.  
 
-Als er geen schrijf bewerkingen zijn op de data base, kan een Lees **bewerking met een**mogelijke consistentie niveau, een **sessie**of een **consistent voor voegsel** dezelfde resultaten opleveren als een lees bewerking met een hoog consistentie niveau.
+Als er geen schrijf bewerkingen zijn op de data base, kan een Lees **bewerking met een** mogelijke consistentie niveau, een **sessie** of een **consistent voor voegsel** dezelfde resultaten opleveren als een lees bewerking met een hoog consistentie niveau.
 
 Als uw Azure Cosmos-account is geconfigureerd met een ander consistentie niveau dan de sterke consistentie, kunt u de kans ontdekken dat uw clients sterke en consistente Lees bewerkingen voor uw werk belastingen krijgen door te kijken naar de metrische gegevens van de *Probabilistically-gebonden veroudering* (PBS). Deze metriek wordt weer gegeven in de Azure Portal voor meer informatie, Zie [Probabilistically gebonden verouderde waarde (PBS) controleren](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric).
 
@@ -152,7 +152,7 @@ De exacte RTT-latentie is een functie van de snelheid van de afstand en de Azure
 
 ## <a name="consistency-levels-and-data-durability"></a><a id="rto"></a>Consistentie niveaus en gegevens duurzaamheid
 
-Binnen een wereld wijd gedistribueerde database omgeving is er een rechtstreekse relatie tussen het consistentie niveau en de duurzaamheid van de gegevens in de aanwezigheid van een regionale storing. Wanneer u uw bedrijfs continuïteits plan ontwikkelt, moet u weten wat de Maxi maal toegestane tijd is voordat de toepassing volledig wordt hersteld na een storende gebeurtenis. De tijd die nodig is om een toepassing volledig te herstellen, wordt de **beoogde herstel tijd** (**RTO**) genoemd. U moet ook inzicht krijgen in de maximale periode van recente gegevens updates die de toepassing kan afnemen bij het herstellen na een storende gebeurtenis. De tijds periode van updates die u mogelijk wilt verliezen, is **Recovery Point Objective** (**RPO**) genoemd.
+Binnen een wereld wijd gedistribueerde database omgeving is er een rechtstreekse relatie tussen het consistentie niveau en de duurzaamheid van de gegevens in de aanwezigheid van een regionale storing. Wanneer u uw bedrijfs continuïteits plan ontwikkelt, moet u weten wat de Maxi maal toegestane tijd is voordat de toepassing volledig wordt hersteld na een storende gebeurtenis. De tijd die nodig is om een toepassing volledig te herstellen, wordt de **beoogde herstel tijd** ( **RTO** ) genoemd. U moet ook inzicht krijgen in de maximale periode van recente gegevens updates die de toepassing kan afnemen bij het herstellen na een storende gebeurtenis. De tijds periode van updates die u mogelijk wilt verliezen, is **Recovery Point Objective** ( **RPO** ) genoemd.
 
 In de onderstaande tabel wordt de relatie tussen consistentie model en gegevens duurzaamheid gedefinieerd in aanwezigheid van een regionale storing. Het is belang rijk te weten dat in een gedistribueerd systeem, zelfs met sterke consistentie, geen gedistribueerde data base met een RPO en RTO van nul is vanwege [Cap theorema](https://en.wikipedia.org/wiki/CAP_theorem).
 
@@ -191,8 +191,6 @@ Lees de volgende artikelen voor meer informatie over consistentie concepten:
 
 Lees de volgende artikelen voor meer informatie over de consistentie niveaus in Azure Cosmos DB:
 
-- [Het juiste consistentie niveau voor uw toepassing kiezen]()
-- [Consistentie niveaus voor Azure Cosmos DB-Api's]()
 - [Het standaardconsistentieniveau configureren](how-to-manage-consistency.md#configure-the-default-consistency-level)
 - [Het standaardconsistentieniveau overschrijven](how-to-manage-consistency.md#override-the-default-consistency-level)
 - [SLA voor Azure Cosmos DB](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/)

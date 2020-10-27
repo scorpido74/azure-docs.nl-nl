@@ -3,15 +3,15 @@ title: Integratie beleid voor Azure API Management Dapr | Microsoft Docs
 description: Meer informatie over Azure API Management-beleid voor interactie met Dapr micro Services-extensies.
 author: vladvino
 ms.author: vlvinogr
-ms.date: 9/13/2020
+ms.date: 10/23/2020
 ms.topic: article
 ms.service: api-management
-ms.openlocfilehash: d537040be4ed4cbf961a4621980d3d290e306359
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bf9c4d233cfad454d63da4dce30a38af80d24ab
+ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91343026"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92558394"
 ---
 # <a name="api-management-dapr-integration-policies"></a>API Management-integratie beleid voor Dapr
 
@@ -104,14 +104,14 @@ Dit beleid kan worden gebruikt in de volgende beleids [secties](./api-management
 
 ## <a name="send-message-to-pubsub-topic"></a><a name="pubsub"></a> Bericht verzenden naar pub/sub-onderwerp
 
-Dit beleid geeft API Management Gateway om een bericht te verzenden naar een Dapr Publish/Subscriber-onderwerp. Het beleid zorgt ervoor dat door een HTTP POST-aanvraag te maken voor het `http://localhost:3500/v1.0/publish/{{pub-name}}/{{topic}}` vervangen van sjabloon parameters en het toevoegen van inhoud die is opgegeven in de beleids verklaring.
+Dit beleid geeft API Management Gateway om een bericht te verzenden naar een Dapr Publish/Subscriber-onderwerp. Het beleid zorgt ervoor dat door een HTTP POST-aanvraag te maken voor het `http://localhost:3500/v1.0/publish/{{pubsub-name}}/{{topic}}` vervangen van sjabloon parameters en het toevoegen van inhoud die is opgegeven in de beleids verklaring.
 
 In het beleid wordt ervan uitgegaan dat Dapr runtime wordt uitgevoerd in een zijspan container in dezelfde pod als de gateway. Dapr runtime implementeert de pub/sub-semantiek.
 
 ### <a name="policy-statement"></a>Beleids verklaring
 
 ```xml
-<publish-to-dapr topic=”topic-name” ignore-error="false|true" response-variable-name="resp-var-name" timeout="in seconds" template=”Liquid” content-type="application/json">
+<publish-to-dapr pubsub-name="pubsub-name" topic=”topic-name” ignore-error="false|true" response-variable-name="resp-var-name" timeout="in seconds" template=”Liquid” content-type="application/json">
     <!-- message content -->
 </publish-to-dapr>
 ```
@@ -131,7 +131,8 @@ De sectie back-end is leeg en de aanvraag wordt niet doorgestuurd naar de back-e
      <inbound>
         <base />
         <publish-to-dapr
-               topic="@("orders/new")"
+           pubsub-name="orders"
+               topic="new"
                response-variable-name="dapr-response">
             @(context.Request.Body.As<string>())
         </publish-to-dapr>
@@ -158,7 +159,8 @@ De sectie back-end is leeg en de aanvraag wordt niet doorgestuurd naar de back-e
 
 | Kenmerk        | Beschrijving                     | Vereist | Standaard |
 |------------------|---------------------------------|----------|---------|
-| onderwerp            | Naam van doel onderwerp               | Ja      | N.v.t.     |
+| pubsub-naam      | De naam van het doel-PubSub-onderdeel. Wordt toegewezen aan de para meter [pubsubname](https://github.com/dapr/docs/blob/master/reference/api/pubsub_api.md) in Dapr. Als dat niet het geval is, moet de waarde van het __onderwerp__ worden opgegeven in de vorm van `pubsub-name/topic-name` .    | Nee       | Geen    |
+| onderwerp            | De naam van het onderwerp. Wordt toegewezen aan de [onderwerp](https://github.com/dapr/docs/blob/master/reference/api/pubsub_api.md) -para meter in Dapr.               | Ja      | N.v.t.     |
 | negeren-fout     | Als deze instelling is ingesteld op `true` , wordt het beleid niet geactiveerd om de sectie ["On-Error"](api-management-error-handling-policies.md) te activeren bij het ontvangen van een fout vanuit Dapr runtime | Nee | `false` |
 | reactie-variabele-naam | Naam van de verzamelings vermelding van de [variabelen](api-management-policy-expressions.md#ContextVariables) die moet worden gebruikt voor het opslaan van de reactie van Dapr runtime | Nee | Geen |
 | timeout | Tijd (in seconden) die moet worden gewacht voordat Dapr runtime reageert. U kunt een waarde tussen 1 en 240 seconden opgeven. | Nee | 5 |
@@ -243,7 +245,7 @@ De sectie back-end is leeg en de aanvraag wordt niet doorgestuurd naar de back-e
 
 | Kenmerk        | Beschrijving                     | Vereist | Standaard |
 |------------------|---------------------------------|----------|---------|
-| naam            | Doel binding naam. Moet overeenkomen met de naam van de bindingen die zijn [gedefinieerd](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#bindings-structure) in Dapr.           | Ja      | N.v.t.     |
+| name            | Doel binding naam. Moet overeenkomen met de naam van de bindingen die zijn [gedefinieerd](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#bindings-structure) in Dapr.           | Ja      | N.v.t.     |
 | bewerking       | Doel bewerkings naam (binding specifiek). Wordt toegewezen aan de [bewerkings](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#invoking-output-bindings) eigenschap in Dapr. | Nee | Geen |
 | negeren-fout     | Als deze instelling is ingesteld op `true` , wordt het beleid niet geactiveerd om de sectie ["On-Error"](api-management-error-handling-policies.md) te activeren bij het ontvangen van een fout vanuit Dapr runtime | Nee | `false` |
 | reactie-variabele-naam | Naam van de verzamelings vermelding van de [variabelen](api-management-policy-expressions.md#ContextVariables) die moet worden gebruikt voor het opslaan van de reactie van Dapr runtime | Nee | Geen |

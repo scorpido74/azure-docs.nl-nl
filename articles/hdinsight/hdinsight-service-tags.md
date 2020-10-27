@@ -7,16 +7,16 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: 112f915f533627ccdc0ac6efe38caacc80b254bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a90bc6636dcb3aa81f09b0489850c1a95b3256d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89399953"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535243"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>NSG-service tags voor Azure HDInsight
 
-De labels van de Azure HDInsight-service voor netwerk beveiligings groepen (Nsg's) zijn groepen IP-adressen voor status-en beheer Services. Deze groepen helpen de complexiteit te minimaliseren voor het maken van de beveiligings regel. [Service Tags](../virtual-network/security-overview.md#service-tags) staan inkomend verkeer van specifieke ip's toe zonder elk van de [beheer-IP-adressen](hdinsight-management-ip-addresses.md) in uw nsg's in te voeren.
+De labels van de Azure HDInsight-service voor netwerk beveiligings groepen (Nsg's) zijn groepen IP-adressen voor status-en beheer Services. Deze groepen helpen de complexiteit te minimaliseren voor het maken van de beveiligings regel. [Service Tags](../virtual-network/network-security-groups-overview.md#service-tags) staan inkomend verkeer van specifieke ip's toe zonder elk van de [beheer-IP-adressen](hdinsight-management-ip-addresses.md) in uw nsg's in te voeren.
 
 De HDInsight-service beheert deze service tags. U kunt geen eigen servicetag maken of een bestaande tag wijzigen. Micro soft beheert de adres voorvoegsels die overeenkomen met het servicetag en werkt de servicetag automatisch bij met gewijzigde adressen.
 
@@ -26,9 +26,9 @@ Als u een bepaalde regio wilt gebruiken en de servicetag nog niet is gedocumente
 
 U hebt twee opties voor het gebruik van service tags in uw netwerk beveiligings groepen:
 
-- **Eén algemeen HDInsight-service label gebruiken**: met deze optie wordt het virtuele netwerk geopend op alle IP-adressen die de HDInsight-service gebruikt om clusters in alle regio's te bewaken. Deze optie is de eenvoudigste methode, maar is mogelijk niet geschikt als u strenge beveiligings vereisten hebt.
+- **Eén algemeen HDInsight-service label gebruiken** : met deze optie wordt het virtuele netwerk geopend op alle IP-adressen die de HDInsight-service gebruikt om clusters in alle regio's te bewaken. Deze optie is de eenvoudigste methode, maar is mogelijk niet geschikt als u strenge beveiligings vereisten hebt.
 
-- **Meerdere regionale service tags gebruiken: met**deze optie wordt het virtuele netwerk geopend op alleen de IP-adressen die door HDInsight worden gebruikt in die specifieke regio. Als u echter meerdere regio's gebruikt, moet u meerdere service Tags toevoegen aan het virtuele netwerk.
+- **Meerdere regionale service tags gebruiken: met** deze optie wordt het virtuele netwerk geopend op alleen de IP-adressen die door HDInsight worden gebruikt in die specifieke regio. Als u echter meerdere regio's gebruikt, moet u meerdere service Tags toevoegen aan het virtuele netwerk.
 
 ## <a name="use-a-single-global-hdinsight-service-tag"></a>Eén algemeen HDInsight-service label gebruiken
 
@@ -36,11 +36,11 @@ De eenvoudigste manier om te beginnen met het gebruik van service tags met uw HD
 
 1. Selecteer uw netwerk beveiligings groep in het [Azure Portal](https://portal.azure.com/).
 
-1. Selecteer bij **instellingen**de optie **regels voor binnenkomende beveiliging**en selecteer vervolgens **+ toevoegen**.
+1. Selecteer bij **instellingen** de optie **regels voor binnenkomende beveiliging** en selecteer vervolgens **+ toevoegen** .
 
-1. Selecteer in de vervolg keuzelijst **bron** de optie **service label**.
+1. Selecteer in de vervolg keuzelijst **bron** de optie **service label** .
 
-1. Selecteer **HDInsight**in de vervolg keuzelijst **bron service label** .
+1. Selecteer **HDInsight** in de vervolg keuzelijst **bron service label** .
 
     ![Een servicetag van de Azure Portal toevoegen](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
 
@@ -59,7 +59,7 @@ Als uw cluster zich bevindt in een regio die in deze tabel wordt vermeld, hoeft 
 | Land | Regio | Servicetag |
 | ---- | ---- | ---- |
 | Australië | Australië - oost | HDInsight. AustraliaEast |
-| &nbsp; | Australia Southeast | HDInsight. AustraliaSoutheast |
+| &nbsp; | Australië - zuidoost | HDInsight. AustraliaSoutheast |
 | &nbsp; | Australië - centraal | HDInsight. AustraliaCentral |
 | China | China - oost 2 | HDInsight. ChinaEast2 |
 | &nbsp; | China - noord 2 | HDInsight. ChinaNorth2 |
@@ -98,13 +98,13 @@ Als uw cluster bijvoorbeeld in de regio wordt gemaakt `East US 2` , moet u de vo
 
 | Land | Regio | Servicetag |
 | ---- | ---- | ---- |
-| Verenigde Staten | VS - oost 2 | HDInsight. EastUS2 |
+| Verenigde Staten | US - oost 2 | HDInsight. EastUS2 |
 | &nbsp; | Central US | HDInsight. Centraalus |
 | &nbsp; | NorthCentral | HDInsight. NorthCentralUS |
 | &nbsp; | South Central US | HDInsight. SouthCentralUS |
 | &nbsp; | VS - oost | HDInsight. Oostelijkeus |
 | &nbsp; | VS - west | HDInsight. Westelijkeus |
-| Japan | Japan East | HDInsight. JapanEast |
+| Japan | Japan - oost | HDInsight. JapanEast |
 | Europa | Europa - noord | HDInsight. NorthEurope |
 | &nbsp; | Europa -west| HDInsight. Europa West |
 | Azië | Azië - oost | HDInsight. EastAsia |
@@ -125,5 +125,5 @@ Clusters in de regio's van *Duitsland-centraal* en *Duitsland-Noordoost* twee se
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Netwerk beveiligings groepen: Service Tags](../virtual-network/security-overview.md#security-rules)
+- [Netwerk beveiligings groepen: Service Tags](../virtual-network/network-security-groups-overview.md#security-rules)
 - [Virtuele netwerken voor Azure HDInsight-clusters maken](hdinsight-create-virtual-network.md)

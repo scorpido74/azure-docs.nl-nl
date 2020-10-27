@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.custom: mqtt
-ms.openlocfilehash: c8cb91aa0c7ce1610320d4107db282d3c34407ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 673a76417739fa59a91979cca7c6807a584868f0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81758722"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538252"
 ---
 # <a name="404104-deviceconnectionclosedremotely"></a>404104 DeviceConnectionClosedRemotely
 
@@ -24,15 +24,15 @@ In dit artikel worden de oorzaken en oplossingen voor **404104 DeviceConnectionC
 
 ### <a name="symptom-1"></a>Symptoom 1
 
-Apparaten verbreekt de verbinding met een regel matig interval (bijvoorbeeld elke 65 minuten) en u ziet **404104 DeviceConnectionClosedRemotely** in IOT hub Diagnostische logboeken. Soms ziet u ook **401003 IoTHubUnauthorized** en een geslaagde apparaatfout van minder dan een minuut later.
+Apparaten verbreekt de verbinding met een regel matig interval (bijvoorbeeld elke 65 minuten) en u ziet **404104 DeviceConnectionClosedRemotely** in IOT hub bron Logboeken. Soms ziet u ook **401003 IoTHubUnauthorized** en een geslaagde apparaatfout van minder dan een minuut later.
 
 ### <a name="symptom-2"></a>Symptoom 2
 
-Apparaten worden wille keurig losgekoppeld en u ziet **404104 DeviceConnectionClosedRemotely** in IOT hub Diagnostische logboeken.
+Apparaten worden wille keurig losgekoppeld en u ziet **404104 DeviceConnectionClosedRemotely** in IOT hub bron Logboeken.
 
 ### <a name="symptom-3"></a>Symptoom 3
 
-Veel apparaten worden gelijktijdig verbroken, u ziet een dip in de [metrische gegevens voor verbonden apparaten](iot-hub-metrics.md)en er zijn meer **404104 DeviceConnectionClosedRemotely** -en [500xxx interne fouten](iot-hub-troubleshoot-error-500xxx-internal-errors.md) in Diagnostische logboeken dan gebruikelijk.
+Veel apparaten worden in één keer losgekoppeld, maar er wordt een dip in de [connectedDeviceCount (Connected devices)](monitor-iot-hub-reference.md)weer gegeven en er zijn meer **404104 DeviceConnectionClosedRemotely** en [500Xxx interne fouten](iot-hub-troubleshoot-error-500xxx-internal-errors.md) in azure monitor logboeken dan gebruikelijk.
 
 ## <a name="causes"></a>Oorzaken
 

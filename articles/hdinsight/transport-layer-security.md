@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 6e46cca28c049a794db617797d5f09e9f3b5720d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42c1efa176a6dbf5294e19afe02fd74a53150272
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90006888"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538949"
 ---
 # <a name="transport-layer-security-in-azure-hdinsight"></a>Trans port Layer Security in azure HDInsight
 
-Verbindingen met het HDInsight-cluster via het open bare cluster-eind punt `https://CLUSTERNAME.azurehdinsight.net` worden via cluster gateway knooppunten via een proxy verzonden. Deze verbindingen worden beveiligd met een protocol dat TLS wordt genoemd. Het afdwingen van hogere versies van TLS op gateways verbetert de beveiliging voor deze verbindingen. Zie [het probleem met het TLS 1,0 oplossen](https://docs.microsoft.com/security/solving-tls1-problem)voor meer informatie over de reden waarom u nieuwere versies van TLS moet gebruiken.
+Verbindingen met het HDInsight-cluster via het open bare cluster-eind punt `https://CLUSTERNAME.azurehdinsight.net` worden via cluster gateway knooppunten via een proxy verzonden. Deze verbindingen worden beveiligd met een protocol dat TLS wordt genoemd. Het afdwingen van hogere versies van TLS op gateways verbetert de beveiliging voor deze verbindingen. Zie [het probleem met het TLS 1,0 oplossen](/security/solving-tls1-problem)voor meer informatie over de reden waarom u nieuwere versies van TLS moet gebruiken.
 
 Standaard accepteren Azure HDInsight-clusters TLS 1,2-verbindingen op open bare HTTPS-eind punten en oudere versies voor achterwaartse compatibiliteit. U kunt de minimale TLS-versie die wordt ondersteund op de gateway knooppunten tijdens het maken van het cluster beheren met behulp van de Azure Portal of een resource manager-sjabloon. Selecteer voor de Portal de TLS-versie op het tabblad **beveiliging en netwerk** tijdens het maken van het cluster. Gebruik de eigenschap **minSupportedTlsVersion** voor een resource manager-sjabloon op het moment van implementatie. Zie de Quick Start- [sjabloon voor mini maal TLS 1,2](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls)voor een voorbeeld sjabloon. Deze eigenschap ondersteunt drie waarden: "1,0", "1,1" en "1,2", die overeenkomen met respectievelijk TLS 1.0 +, TLS 1.1 + en TLS 1.2 +.
 
@@ -26,4 +26,4 @@ Standaard accepteren Azure HDInsight-clusters TLS 1,2-verbindingen op open bare 
 
 * [Een virtueel netwerk plannen voor Azure HDInsight](./hdinsight-plan-virtual-network-deployment.md)
 * [Virtuele netwerken maken voor Azure HDInsight-clusters](hdinsight-create-virtual-network.md).
-* [Netwerk beveiligings groepen](../virtual-network/security-overview.md).
+* [Netwerk beveiligings groepen](../virtual-network/network-security-groups-overview.md).

@@ -7,23 +7,23 @@ ms.service: mysql
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 10/21/2020
-ms.openlocfilehash: 4589687593abbe5667aa4b21b1361b68e4bed07f
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: b2670862814495ab04f92d8f34a757d3ede6cf4a
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428123"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546871"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Bewaking in Azure Database for MySQL
 Het bewaken van gegevens over uw servers helpt u bij het oplossen en optimaliseren van uw werk belasting. Azure Database for MySQL biedt diverse metrische gegevens die inzicht geven in het gedrag van uw server.
 
 ## <a name="metrics"></a>Metrische gegevens
-Alle metrische gegevens van Azure hebben een frequentie van één minuut, en elke metriek bevat een geschiedenis van 30 dagen. U kunt waarschuwingen configureren voor de metrische gegevens. Zie voor stapsgewijze instructies voor [het instellen van waarschuwingen](howto-alert-on-metric.md). Andere taken zijn onder andere het instellen van geautomatiseerde acties, het uitvoeren van geavanceerde analyses en het archiveren van de geschiedenis. Zie het overzicht van Azure- [metrische](../monitoring-and-diagnostics/monitoring-overview-metrics.md)gegevens voor meer informatie.
+Alle metrische gegevens van Azure hebben een frequentie van één minuut, en elke metriek bevat een geschiedenis van 30 dagen. U kunt waarschuwingen configureren voor de metrische gegevens. Zie voor stapsgewijze instructies voor [het instellen van waarschuwingen](howto-alert-on-metric.md). Andere taken zijn onder andere het instellen van geautomatiseerde acties, het uitvoeren van geavanceerde analyses en het archiveren van de geschiedenis. Zie het overzicht van Azure- [metrische](../azure-monitor/platform/data-platform.md)gegevens voor meer informatie.
 
 ### <a name="list-of-metrics"></a>Lijst met metrische gegevens
 Deze metrische gegevens zijn beschikbaar voor Azure Database for MySQL:
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Beschrijving|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Description|
 |---|---|---|---|
 |cpu_percent|CPU-percentage|Percentage|Het percentage CPU-gebruik.|
 |memory_percent|Geheugen percentage|Percentage|Het percentage geheugen dat in gebruik is.|
@@ -61,6 +61,6 @@ Meer informatie over het instellen van meldingen in het document [geplande onder
 
 ## <a name="next-steps"></a>Volgende stappen
 - Zie [waarschuwingen instellen](howto-alert-on-metric.md) voor hulp bij het maken van een waarschuwing op metrische gegevens.
-- Zie het [overzicht van Azure-metrische](../monitoring-and-diagnostics/monitoring-overview-metrics.md)gegevens voor meer informatie over het openen en exporteren van metrische gegevens met behulp van de Azure Portal, rest API of cli.
+- Zie het [overzicht van Azure-metrische](../azure-monitor/platform/data-platform.md)gegevens voor meer informatie over het openen en exporteren van metrische gegevens met behulp van de Azure Portal, rest API of cli.
 - Lees onze blog [voor de aanbevolen procedures voor het bewaken van uw server](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-mysql-monitoring/).
 - Meer informatie over [geplande onderhouds meldingen](./concepts-planned-maintenance-notification.md) in azure database for MySQL-één server

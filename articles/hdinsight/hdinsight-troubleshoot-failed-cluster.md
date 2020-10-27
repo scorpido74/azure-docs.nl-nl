@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 98e062b159b2df639923cb3cd3aac286f6051016
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 4fea7719d0aa375aad3d2795d240006222b6486c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490897"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535090"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Problemen met een trage of niet werkende taak in een HDInsight-cluster oplossen
 
@@ -90,8 +90,8 @@ HDInsight is afhankelijk van verschillende Azure-Services. Hiermee worden virtue
 
 #### <a name="check-azure-service-usage-limits"></a>Gebruiks limieten van Azure-service controleren
 
-Als u een groot cluster start of meerdere clusters tegelijkertijd hebt gestart, kan een cluster mislukken als u een limiet van Azure-Services hebt overschreden. Service limieten variëren, afhankelijk van uw Azure-abonnement. Zie [Azure-abonnement- en servicelimieten, quota en beperkingen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) voor meer informatie.
-U kunt aanvragen dat micro soft het aantal HDInsight-resources dat beschikbaar is (zoals VM-kernen en VM-exemplaren), verg Roten met een aanvraag voor het verhogen van de [kern quota van Resource Manager](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
+Als u een groot cluster start of meerdere clusters tegelijkertijd hebt gestart, kan een cluster mislukken als u een limiet van Azure-Services hebt overschreden. Service limieten variëren, afhankelijk van uw Azure-abonnement. Zie [Azure-abonnement- en servicelimieten, quota en beperkingen](../azure-resource-manager/management/azure-subscription-service-limits.md) voor meer informatie.
+U kunt aanvragen dat micro soft het aantal HDInsight-resources dat beschikbaar is (zoals VM-kernen en VM-exemplaren), verg Roten met een aanvraag voor het verhogen van de [kern quota van Resource Manager](../azure-portal/supportability/resource-manager-core-quotas-request.md).
 
 #### <a name="check-the-release-version"></a>De release versie controleren
 
@@ -115,7 +115,7 @@ Het [Ambari-dash board van de gebruikers interface](#view-cluster-configuration-
 
 ### <a name="check-your-webhcat-service"></a>Controleer uw WebHCat-service
 
-Een veelvoorkomend scenario voor Apache Hive-, Apache Pig-of Apache Sqoop-taken mislukken is een fout met de [WebHCat](hdinsight-hadoop-templeton-webhcat-debug-errors.md) -service (of *Templeton*). WebHCat is een REST-interface voor het uitvoeren van externe taken, zoals Hive, varken, overzicht en MapReduce. WebHCat vertaalt de aanvraag voor het indienen van taken in Apache Hadoop garen-toepassingen en retourneert een status die is afgeleid van de toepassings status van de GARENs.  In de volgende secties worden veelvoorkomende HTTP-status codes voor WebHCat beschreven.
+Een veelvoorkomend scenario voor Apache Hive-, Apache Pig-of Apache Sqoop-taken mislukken is een fout met de [WebHCat](hdinsight-hadoop-templeton-webhcat-debug-errors.md) -service (of *Templeton* ). WebHCat is een REST-interface voor het uitvoeren van externe taken, zoals Hive, varken, overzicht en MapReduce. WebHCat vertaalt de aanvraag voor het indienen van taken in Apache Hadoop garen-toepassingen en retourneert een status die is afgeleid van de toepassings status van de GARENs.  In de volgende secties worden veelvoorkomende HTTP-status codes voor WebHCat beschreven.
 
 #### <a name="badgateway-502-status-code"></a>BadGateway (502-status code)
 
@@ -172,7 +172,7 @@ Op het niveau van de GARENs zijn er twee soorten time-outs:
 
     Als u het `/var/log/webhcat/webhcat.log` logboek bestand opent en op ' wachtrij taak ' zoekt, ziet u mogelijk meerdere vermeldingen waarbij de uitvoerings tijd buitensporig lang is (>2000 MS), met vermeldingen die de toenemende wacht tijden weer geven.
 
-    De tijd voor de taken in de wachtrij blijft toenemen omdat de snelheid waarmee nieuwe taken worden verzonden hoger is dan de snelheid waarmee de oude taken zijn voltooid. Zodra het garen geheugen 100% is gebruikt, kan de *joblauncher-wachtrij* geen capaciteit meer lenen van de *standaard wachtrij*. Daarom kunnen er geen nieuwe taken meer worden geaccepteerd in de joblauncher-wachtrij. Dit kan ervoor zorgen dat de wacht tijd langer en langer duurt, waardoor er een time-outfout optreedt die meestal door veel andere wordt gevolgd.
+    De tijd voor de taken in de wachtrij blijft toenemen omdat de snelheid waarmee nieuwe taken worden verzonden hoger is dan de snelheid waarmee de oude taken zijn voltooid. Zodra het garen geheugen 100% is gebruikt, kan de *joblauncher-wachtrij* geen capaciteit meer lenen van de *standaard wachtrij* . Daarom kunnen er geen nieuwe taken meer worden geaccepteerd in de joblauncher-wachtrij. Dit kan ervoor zorgen dat de wacht tijd langer en langer duurt, waardoor er een time-outfout optreedt die meestal door veel andere wordt gevolgd.
 
     In de volgende afbeelding ziet u de joblauncher-wachtrij met een overgebruik van 714,4%. Dit is acceptabel, zolang er nog steeds vrije capaciteit in de standaard wachtrij staat om van te lenen. Wanneer het cluster echter volledig wordt gebruikt en de capaciteit van het garen ten 100% is, moeten nieuwe taken wachten, waardoor de time-outs uiteindelijk worden veroorzaakt.
 
@@ -206,7 +206,7 @@ U kunt deze problemen als volgt vaststellen:
 
 ## <a name="step-4-review-the-environment-stack-and-versions"></a>Stap 4: de stack en versies van de omgeving controleren
 
-De pagina Ambari UI- **stack en-versie** bevat informatie over de configuratie van de Cluster Services en de geschiedenis van de service versie.  Onjuiste versies van de Hadoop-service bibliotheek kunnen een storing in de cluster veroorzaken.  Selecteer in de Ambari-gebruikers interface het menu **beheerder** en vervolgens  **stacks en versies**.  Selecteer op de pagina het tabblad **versies** om informatie over de service versie weer te geven:
+De pagina Ambari UI- **stack en-versie** bevat informatie over de configuratie van de Cluster Services en de geschiedenis van de service versie.  Onjuiste versies van de Hadoop-service bibliotheek kunnen een storing in de cluster veroorzaken.  Selecteer in de Ambari-gebruikers interface het menu **beheerder** en vervolgens  **stacks en versies** .  Selecteer op de pagina het tabblad **versies** om informatie over de service versie weer te geven:
 
 ![Apache Ambari-stack en-versies](./media/hdinsight-troubleshoot-failed-cluster/ambari-stack-versions.png)
 
@@ -262,7 +262,7 @@ Om te helpen bij het vaststellen van de bron van een cluster fout, start u een n
 ## <a name="next-steps"></a>Volgende stappen
 
 * [HDInsight-clusters beheren met behulp van de Apache Ambari-webinterface](hdinsight-hadoop-manage-ambari.md)
-* [HDInsight-logboeken analyseren](hdinsight-debug-jobs.md)
+* [HDInsight-logboeken analyseren](./hdinsight-troubleshoot-guide.md)
 * [Toegang tot Apache Hadoop garen van een toepassing aanmelden op basis van Linux](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 * [Heap-dumps inschakelen voor Apache Hadoop Services op HDInsight op basis van Linux](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
-* [Bekende problemen met Apache Spark cluster op HDInsight](hdinsight-apache-spark-known-issues.md)
+* [Bekende problemen met Apache Spark cluster op HDInsight](./spark/apache-spark-known-issues.md)

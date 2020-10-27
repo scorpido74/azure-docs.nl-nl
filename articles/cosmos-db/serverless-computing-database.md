@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: d6399da204ba930fad2dd3656d27a807a83b1b13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0167dc0b1cbf8cf3b95995645ef24548a05c4343
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85263257"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538643"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Serverloze database Computing met Azure Cosmos DB en Azure Functions
 
@@ -23,9 +23,9 @@ Met de systeem eigen integratie tussen [Azure Cosmos DB](https://azure.microsoft
 
 Met Azure Cosmos DB en Azure Functions kunt u uw data bases en serverloze apps op de volgende manieren integreren:
 
-* Maak een gebeurtenis gerichte **Azure functions trigger voor Cosmos DB**. Deze trigger is afhankelijk van de wijzigingen in de [feed](change-feed.md) voor het bewaken van de Azure Cosmos-container. Wanneer er wijzigingen worden aangebracht in een container, wordt de wijzigings stroom van de feed verzonden naar de trigger, waarmee de Azure-functie wordt aangeroepen.
-* U kunt ook een Azure-functie binden aan een Azure Cosmos-container met behulp van een **invoer binding**. Invoer bindingen lezen gegevens uit een container wanneer een functie wordt uitgevoerd.
-* Een functie binden aan een Azure Cosmos-container met behulp van een **uitvoer binding**. Met uitvoer bindingen worden gegevens naar een container geschreven wanneer een functie is voltooid.
+* Maak een gebeurtenis gerichte **Azure functions trigger voor Cosmos DB** . Deze trigger is afhankelijk van de wijzigingen in de [feed](change-feed.md) voor het bewaken van de Azure Cosmos-container. Wanneer er wijzigingen worden aangebracht in een container, wordt de wijzigings stroom van de feed verzonden naar de trigger, waarmee de Azure-functie wordt aangeroepen.
+* U kunt ook een Azure-functie binden aan een Azure Cosmos-container met behulp van een **invoer binding** . Invoer bindingen lezen gegevens uit een container wanneer een functie wordt uitgevoerd.
+* Een functie binden aan een Azure Cosmos-container met behulp van een **uitvoer binding** . Met uitvoer bindingen worden gegevens naar een container geschreven wanneer een functie is voltooid.
 
 > [!NOTE]
 > Momenteel worden Azure Functions trigger, invoer bindingen en uitvoer bindingen voor Cosmos DB alleen ondersteund voor gebruik met de SQL-API. Voor alle andere Azure Cosmos DB Api's moet u de data base vanuit uw functie openen met behulp van de statische client voor uw API.
@@ -69,7 +69,7 @@ In financiële implementaties kunt u een functie aanroepen wanneer een saldo van
 
 **Implementatie:** Een timer trigger met een Azure Cosmos DB invoer binding
 
-1. Met een [Timer trigger](../azure-functions/functions-bindings-timer.md)kunt u de gegevens van het bankrekening saldo ophalen die zijn opgeslagen in een Azure Cosmos-container met behulp van een **invoer binding**.
+1. Met een [Timer trigger](../azure-functions/functions-bindings-timer.md)kunt u de gegevens van het bankrekening saldo ophalen die zijn opgeslagen in een Azure Cosmos-container met behulp van een **invoer binding** .
 2. Als het saldo lager is dan de drempel waarde voor het laagste saldo dat door de gebruiker is ingesteld, voert u een actie uit vanuit de Azure-functie.
 3. De uitvoer binding kan een [SendGrid-integratie](../azure-functions/functions-bindings-sendgrid.md) zijn die een e-mail verzendt van een service account naar de e-mail adressen die voor elk van de accounts met een lage balans worden geïdentificeerd.
 
@@ -81,12 +81,12 @@ De volgende afbeeldingen tonen de code in de Azure Portal voor dit scenario.
 
 ### <a name="gaming-use-case---azure-functions-trigger-and-output-binding-for-cosmos-db"></a>Gebruiks voorbeeld van games-Azure Functions trigger-en uitvoer binding voor Cosmos DB 
 
-Wanneer een nieuwe gebruiker is gemaakt in gaming, kunt u zoeken naar andere gebruikers die deze kunnen kennen met behulp van de [Azure Cosmos DB GREMLIN API](graph-introduction.md). U kunt de resultaten vervolgens naar een [Azure Cosmos DB of SQL database]() schrijven om het eenvoudig op te halen.
+Wanneer een nieuwe gebruiker is gemaakt in gaming, kunt u zoeken naar andere gebruikers die deze kunnen kennen met behulp van de [Azure Cosmos DB GREMLIN API](graph-introduction.md). U kunt de resultaten vervolgens naar een Azure Cosmos DB of SQL database schrijven om het eenvoudig op te halen.
 
 **Implementatie:** Een Azure Functions trigger en uitvoer binding gebruiken voor Cosmos DB
 
 1. Een Azure Cosmos DB [Graph-data base](graph-introduction.md) gebruiken om alle gebruikers op te slaan, kunt u een nieuwe functie maken met een Azure functions trigger voor Cosmos db. 
-2. Wanneer een nieuwe gebruiker wordt ingevoegd, wordt de functie aangeroepen en wordt het resultaat opgeslagen met behulp van een **uitvoer binding**.
+2. Wanneer een nieuwe gebruiker wordt ingevoegd, wordt de functie aangeroepen en wordt het resultaat opgeslagen met behulp van een **uitvoer binding** .
 3. De functie voert een query uit op de Graph-data base om te zoeken naar alle gebruikers die rechtstreeks zijn gerelateerd aan de nieuwe gebruiker en die DataSet retourneert naar de functie.
 4. Deze gegevens worden vervolgens opgeslagen in een Azure Cosmos DB die vervolgens eenvoudig kunnen worden opgehaald door een front-end-toepassing die de nieuwe gebruiker hun verbonden vrienden weergeeft.
 
@@ -122,23 +122,23 @@ Azure Functions biedt de mogelijkheid om schaal bare werk eenheden of beknopte s
 
 Azure Cosmos DB is de aanbevolen Data Base voor uw serverloze computer architectuur om de volgende redenen:
 
-* **Directe toegang tot al uw gegevens**: u hebt gedetailleerde toegang tot elke opgeslagen waarde, omdat Azure Cosmos DB standaard alle gegevens [automatisch indexeert](index-policy.md) en deze indexen onmiddellijk beschikbaar maakt. Dit betekent dat u voortdurend in staat bent om nieuwe items te zoeken, bij te werken en toe te voegen aan uw data base en direct toegang te hebben via Azure Functions.
+* **Directe toegang tot al uw gegevens** : u hebt gedetailleerde toegang tot elke opgeslagen waarde, omdat Azure Cosmos DB standaard alle gegevens [automatisch indexeert](index-policy.md) en deze indexen onmiddellijk beschikbaar maakt. Dit betekent dat u voortdurend in staat bent om nieuwe items te zoeken, bij te werken en toe te voegen aan uw data base en direct toegang te hebben via Azure Functions.
 
-* **Schemaloos**. Azure Cosmos DB is zonder schema, zodat de gegevens uitvoer van een Azure-functie uniek kan worden verwerkt. Met deze aanpak van ' alles afhandelen ' maakt u het eenvoudig om allerlei functies te maken die alle uitvoer naar Azure Cosmos DB.
+* **Schemaloos** . Azure Cosmos DB is zonder schema, zodat de gegevens uitvoer van een Azure-functie uniek kan worden verwerkt. Met deze aanpak van ' alles afhandelen ' maakt u het eenvoudig om allerlei functies te maken die alle uitvoer naar Azure Cosmos DB.
 
-* **Schaal bare door Voer**. De door Voer kan direct omhoog en omlaag worden geschaald in Azure Cosmos DB. Als er honderden of duizenden functies zijn die query's uitvoeren en schrijven naar dezelfde container, kunt u uw [ru/s](request-units.md) omhoog schalen om de belasting te verwerken. Alle functies kunnen parallel werken met behulp van uw toegewezen RU/s en uw gegevens worden gegarandeerd [consistent](consistency-levels.md).
+* **Schaal bare door Voer** . De door Voer kan direct omhoog en omlaag worden geschaald in Azure Cosmos DB. Als er honderden of duizenden functies zijn die query's uitvoeren en schrijven naar dezelfde container, kunt u uw [ru/s](request-units.md) omhoog schalen om de belasting te verwerken. Alle functies kunnen parallel werken met behulp van uw toegewezen RU/s en uw gegevens worden gegarandeerd [consistent](consistency-levels.md).
 
-* **Globale replicatie**. U kunt Azure Cosmos DB gegevens [over de hele wereld](distribute-data-globally.md) repliceren om de latentie te verminderen, waardoor uw gegevens zich in de buurt bevinden waar uw gebruikers zich bevinden. Net als bij alle Azure Cosmos DB query's worden gegevens van door gebeurtenis gestuurde triggers gegevens gelezen van de Azure Cosmos DB die het dichtst bij de gebruiker ligt.
+* **Globale replicatie** . U kunt Azure Cosmos DB gegevens [over de hele wereld](distribute-data-globally.md) repliceren om de latentie te verminderen, waardoor uw gegevens zich in de buurt bevinden waar uw gebruikers zich bevinden. Net als bij alle Azure Cosmos DB query's worden gegevens van door gebeurtenis gestuurde triggers gegevens gelezen van de Azure Cosmos DB die het dichtst bij de gebruiker ligt.
 
 Als u wilt integreren met Azure Functions om gegevens op te slaan en geen diepe indexering nodig hebt of als u bijlagen en media bestanden wilt opslaan, is de [Azure Blob Storage-trigger](../azure-functions/functions-bindings-storage-blob.md) mogelijk een betere optie.
 
 Voor delen van Azure Functions: 
 
-* **Gebeurtenis-gestuurd**. Azure Functions zijn op gebeurtenissen gebaseerd en kunnen naar een wijzigings feed Luis teren vanuit Azure Cosmos DB. Dit betekent dat u geen luisterende logica hoeft te maken. u hoeft alleen maar een ogen effect te hebben voor de wijzigingen die u hebt geluisterd. 
+* **Gebeurtenis-gestuurd** . Azure Functions zijn op gebeurtenissen gebaseerd en kunnen naar een wijzigings feed Luis teren vanuit Azure Cosmos DB. Dit betekent dat u geen luisterende logica hoeft te maken. u hoeft alleen maar een ogen effect te hebben voor de wijzigingen die u hebt geluisterd. 
 
-* **Geen limieten**. Functies worden parallel uitgevoerd en de service draait zo veel als u wilt. U stelt de para meters in.
+* **Geen limieten** . Functies worden parallel uitgevoerd en de service draait zo veel als u wilt. U stelt de para meters in.
 
-* **Goed voor snelle taken**. De service draait nieuwe instanties van functies op wanneer een gebeurtenis wordt geactiveerd en wordt gesloten zodra de functie is voltooid. U betaalt alleen voor de tijd dat uw functies worden uitgevoerd.
+* **Goed voor snelle taken** . De service draait nieuwe instanties van functies op wanneer een gebeurtenis wordt geactiveerd en wordt gesloten zodra de functie is voltooid. U betaalt alleen voor de tijd dat uw functies worden uitgevoerd.
 
 Als u niet zeker weet of flow, Logic Apps, Azure Functions of webjobs het meest geschikt zijn voor uw implementatie, raadpleegt u [kiezen tussen flow, Logic apps, functions en webjobs](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md).
 

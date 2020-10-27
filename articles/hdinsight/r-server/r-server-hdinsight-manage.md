@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/19/2019
-ms.openlocfilehash: 1e04662cb0f67863e23f1fc1ce7e1f21ca4e9197
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 898a02796d578d76f9b45d167f4e92a4bf9831ba
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087636"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536280"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Een cluster van ML Services beheren in azure HDInsight
 
@@ -21,7 +21,7 @@ In dit artikel leert u hoe u een bestaand ML Services-cluster in azure HDInsight
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een cluster met MILLILITERs Services op HDInsight. Zie [Apache Hadoop-clusters maken met behulp van de Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) en selecteer **ml Services** voor het **cluster type**.
+* Een ML Services-cluster beheren in HDInsight. Zie [Apache Hadoop-clusters maken met behulp van Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) en selecteer **ML Services** voor **Clustertype** .
 
 * Een SSH-client (Secure Shell): er wordt een SSH-client gebruikt om extern verbinding te maken met het HDInsight-cluster en om opdrachten rechtstreeks uit te voeren op het cluster. Zie [SSH gebruiken met HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)voor meer informatie.
 
@@ -31,8 +31,8 @@ U kunt meerdere gelijktijdige gebruikers inschakelen voor een cluster van ML Ser
 
 ![HDI Azure Portal aanmeldings parameters](./media/r-server-hdinsight-manage/hdi-concurrent-users1.png)
 
-- **Gebruikersnaam voor aanmelding cluster**: een HTTP-gebruiker voor verificatie via de HDInsight-gateway die wordt gebruikt voor het beveiligen van de HDInsight-clusters die u hebt gemaakt. Deze HTTP-gebruiker wordt gebruikt voor toegang tot de Apache Ambari-gebruikers interface, Apache Hadoop garen gebruikers interface en andere GEBRUIKERSINTERFACE onderdelen.
-- **Secure Shell (SSH)-gebruikersnaam**: een SSH-gebruiker voor toegang tot het cluster via Secure Shell. Deze gebruiker is een gebruiker in het Linux-systeem voor alle hoofdknooppunten, werkknooppunten en Edge-knooppunten. U kunt Secure Shell gebruiken voor toegang tot alle knooppunten in een extern cluster.
+- **Gebruikersnaam voor aanmelding cluster** : een HTTP-gebruiker voor verificatie via de HDInsight-gateway die wordt gebruikt voor het beveiligen van de HDInsight-clusters die u hebt gemaakt. Deze HTTP-gebruiker wordt gebruikt voor toegang tot de Apache Ambari-gebruikers interface, Apache Hadoop garen gebruikers interface en andere GEBRUIKERSINTERFACE onderdelen.
+- **Secure Shell (SSH)-gebruikersnaam** : een SSH-gebruiker voor toegang tot het cluster via Secure Shell. Deze gebruiker is een gebruiker in het Linux-systeem voor alle hoofdknooppunten, werkknooppunten en Edge-knooppunten. U kunt Secure Shell gebruiken voor toegang tot alle knooppunten in een extern cluster.
 
 De R Studio Server Community-versie die wordt gebruikt in het clusters van de ML Services op HDInsight accepteert alleen Linux-gebruikers naam en-wacht woord als aanmeldings mechanisme. Doorgegeven tokens worden niet ondersteund. Daarom moet u zich twee keer aanmelden wanneer u probeert om R Studio voor de eerste keer te openen op een ML-cluster.
 
@@ -74,7 +74,7 @@ Wanneer u wordt gevraagd naar ' Huidig Kerberos-wacht woord: ', drukt u op **Ent
 
 Toegang tot RStudio vanuit `https://CLUSTERNAME.azurehdinsight.net/rstudio/` . Als u zich voor het eerst aanmeldt na het maken van het cluster, voert u de referenties van de Cluster beheerder in, gevolgd door de gebruikers referenties voor SSH die u hebt gemaakt. Als dit niet uw eerste aanmelding is, voert u alleen de referenties in voor de SSH-gebruiker die u hebt gemaakt.
 
-U kunt zich ook vanuit een ander browser venster Aanmelden met de oorspronkelijke referenties (standaard *sshuser*).
+U kunt zich ook vanuit een ander browser venster Aanmelden met de oorspronkelijke referenties (standaard *sshuser* ).
 
 U ziet ook dat de zojuist toegevoegde gebruikers geen hoofdmapbevoegdheden in het Linux-systeem hebben, maar wel dezelfde toegang tot alle bestanden in de externe HDFS- en WASB-opslag hebben.
 
@@ -106,7 +106,7 @@ mySparkCluster <- RxSpark(
 )
 ```
 
-Zie voor meer informatie de sectie ' using Microsoft Machine Learning Server as a Apache Hadoop client ' in [How to use RevoScaleR in een Apache Spark Compute-context](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-spark#more-spark-scenarios)
+Zie voor meer informatie de sectie ' using Microsoft Machine Learning Server as a Apache Hadoop client ' in [How to use RevoScaleR in een Apache Spark Compute-context](/machine-learning-server/r/how-to-revoscaler-spark#more-spark-scenarios)
 
 ## <a name="use-a-compute-context"></a>Een compute-context gebruiken
 
@@ -195,19 +195,19 @@ Als u R-pakketten wilt installeren op de worker-knoop punten van het cluster, mo
 
 1. Volg de stappen in [clusters aanpassen met behulp van script acties](../hdinsight-hadoop-customize-cluster-linux.md).
 
-3. Geef voor de **actie script verzenden**de volgende informatie op:
+3. Geef voor de **actie script verzenden** de volgende informatie op:
 
-   * Selecteer **aangepast**bij **script type**.
+   * Selecteer **aangepast** bij **script type** .
 
-   * Geef bij **naam**een naam op voor de script actie.
+   * Geef bij **naam** een naam op voor de script actie.
 
-     * Voer voor **bash-script-URI**in  `https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh` . Dit is het script waarmee extra R-pakketten worden geïnstalleerd op het worker-knoop punt
+     * Voer voor **bash-script-URI** in  `https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh` . Dit is het script waarmee extra R-pakketten worden geïnstalleerd op het worker-knoop punt
 
-   * Schakel het selectie vakje voor de **werk nemer**alleen in.
+   * Schakel het selectie vakje voor de **werk nemer** alleen in.
 
-   * **Parameters**: de R-pakketten die moeten worden geïnstalleerd. Bijvoorbeeld: `bitops stringr arules`
+   * **Parameters** : de R-pakketten die moeten worden geïnstalleerd. Bijvoorbeeld: `bitops stringr arules`
 
-   * Schakel het selectie vakje in om **Deze script actie persistent**te maken.  
+   * Schakel het selectie vakje in om **Deze script actie persistent** te maken.  
 
    > [!NOTE]
    > 1. Standaard worden alle R-pakketten geïnstalleerd vanuit een moment opname van de micro soft MRAN-opslag plaats, consistent met de versie van ML Server die is geïnstalleerd. Als u nieuwere versies van pakketten wilt installeren, is er kans op incompatibiliteit. Dit soort installatie is echter mogelijk door `useCRAN` op te geven als het eerste element van de pakketlijst, bijvoorbeeld `useCRAN bitops, stringr, arules`.  

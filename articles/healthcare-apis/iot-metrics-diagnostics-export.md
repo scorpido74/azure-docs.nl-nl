@@ -1,5 +1,5 @@
 ---
-title: De metrische gegevens van Azure IoT connector voor FHIR (preview) exporteren via Diagnostische instellingen
+title: Metrische gegevens over Azure IoT Connector for FHIR (preview) exporteren via diagnostische instellingen
 description: In dit artikel wordt uitgelegd hoe u de metrische gegevens van Azure IoT connector voor FHIR (preview) exporteert via Diagnostische instellingen
 services: healthcare-apis
 author: msjasteppe
@@ -8,14 +8,14 @@ ms.subservice: iomt
 ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: jasteppe
-ms.openlocfilehash: c81dcdd2e79f5d89a0766415b47ad118874e5ad2
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: d7779c74a562e1237db863d7759b2adcffa2bddf
+ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209700"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92558547"
 ---
-# <a name="export-azure-iot-connector-for-fhir-preview-metrics-through-diagnostic-settings"></a>De metrische gegevens van Azure IoT connector voor FHIR (preview) exporteren via Diagnostische instellingen
+# <a name="export-azure-iot-connector-for-fhir-preview-metrics-through-diagnostic-settings"></a>Metrische gegevens over Azure IoT Connector for FHIR (preview) exporteren via diagnostische instellingen
 
 In dit artikel leert u hoe u Azure IoT connector exporteert voor FHIR * metrische Logboeken. De functie waarmee metrische logboek registratie wordt ingeschakeld, is de [**Diagnostische instellingen**](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) in de Azure Portal. 
 
@@ -41,7 +41,7 @@ In dit artikel leert u hoe u Azure IoT connector exporteert voor FHIR * metrisch
 
 6. Selecteer **fouten, verkeer en latentie** voor de Azure IOT-connector voor FHIR en eventuele aanvullende metrische categorieën die u wilt vastleggen voor de Azure API voor FHIR.
 
-7. Selecteer **Opslaan**
+7. Selecteer **Opslaan** .
 
    :::image type="content" source="media/iot-metrics-export/diagnostic-setting-add.png" alt-text="IoT-Connector1" lightbox="media/iot-metrics-export/diagnostic-setting-add.png":::
 
@@ -58,7 +58,7 @@ Toegang tot metrische Logboeken is essentieel voor het controleren en oplossen v
 Bekijk veelgestelde vragen over de Azure IoT-connector voor FHIR.
 
 >[!div class="nextstepaction"]
->[Veelgestelde vragen over Azure IoT connector voor FHIR](fhir-faq.md#azure-iot-connector-for-fhir-preview)
+>[Veelgestelde vragen over Azure IoT connector voor FHIR](fhir-faq.md)
 
 *In Azure Portal wordt Azure IoT Connector for FHIR aangeduid als IoT Connector (preview).
 
