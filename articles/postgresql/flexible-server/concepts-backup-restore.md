@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: bed196d1be101ffa75affc389d390ec0fa764b05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0e79e42c7c004638336ada23de663bbe74b7e48
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90934932"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92532642"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---flexible-server"></a>Back-ups maken en herstellen in Azure Database for PostgreSQL-flexibele server
 
@@ -28,7 +28,7 @@ Als de data base is geconfigureerd met hoge Beschik baarheid, worden dagelijkse 
 > [!IMPORTANT]
 >Er worden geen back-ups uitgevoerd op gestopte servers. Back-ups worden echter hervat wanneer de data base na 7 dagen automatisch wordt gestart of door de gebruiker is gestart.
 
-De back-ups kunnen alleen worden gebruikt voor herstel bewerkingen binnen de flexibele server. Als u gegevens naar de flexibele server wilt exporteren of importeren, gebruikt u de methoden [dump en Restore](https://docs.microsoft.com/azure/postgresql/howto-migrate-using-dump-and-restore)   .
+De back-ups kunnen alleen worden gebruikt voor herstel bewerkingen binnen de flexibele server. Als u gegevens naar de flexibele server wilt exporteren of importeren, gebruikt u de methoden [dump en Restore](../howto-migrate-using-dump-and-restore.md) .
 
 
 ### <a name="backup-retention"></a>Back-upretentie
@@ -40,9 +40,9 @@ De Bewaar periode van de back-up bepaalt hoe ver terug in de tijd een herstel na
 
 ### <a name="backup-storage-cost"></a>Kosten voor back-upopslag
 
-Flexibele servers bieden Maxi maal 100% van uw ingerichte Server opslag als back-upopslag zonder extra kosten. Alle extra back-upopslag wordt in GB per maand in rekening gebracht. Als u bijvoorbeeld een server hebt ingericht met 250 GiB opslag, hebt u 250 GiB voor back-upopslag zonder extra kosten. Als het dagelijks gebruik van de back-up 25 GiB is, kunt u Maxi maal 10 dagen aan gratis back-upopslag gebruiken. Back-upopslag verbruik van meer dan 250 GiB wordt in rekening gebracht volgens het [prijs model](https://azure.microsoft.com/pricing/details/postgresql/).
+Flexibele servers bieden Maxi maal 100% van uw ingerichte Server opslag als back-upopslag zonder extra kosten. Alle extra back-upopslag wordt in GB per maand in rekening gebracht. Als u bijvoorbeeld een server hebt ingericht met 250 GiB opslag, hebt u 250 GiB voor back-upopslag zonder extra kosten. Als het dagelijks gebruik van de back-up 25 GiB is, kunt u Maxi maal 10 dagen aan gratis back-upopslag gebruiken. Back-upopslag verbruik van meer dan 250 GiB wordt in rekening gebracht volgens het [prijs model](https://azure.microsoft.com/pricing/details/postgresql/).
 
-U kunt de metrische [back-upopslag](https://docs.microsoft.com/azure/postgresql/concepts-monitoring)gebruiken   in de Azure Portal om de back-upopslag te bewaken die door een server wordt gebruikt. Het metrisch gegeven Gebruikte back-upopslag vertegenwoordigt de totale opslagruimte die wordt gebruikt door alle database- en logboekback-ups die worden bewaard op basis van de retentieperiode voor back-ups die voor de server is ingesteld.  Intensieve transactionele activiteit op de server kan ertoe leiden dat het gebruik van back-upopslag toeneemt, onafhankelijk van de totale databasegrootte.
+U kunt het metrisch gegeven [Gebruikte back-upopslag](../concepts-monitoring.md) in de Azure-portal gebruiken om de back-upopslag te bewaken die door een server wordt gebruikt. Het metrisch gegeven Gebruikte back-upopslag vertegenwoordigt de totale opslagruimte die wordt gebruikt door alle database- en logboekback-ups die worden bewaard op basis van de retentieperiode voor back-ups die voor de server is ingesteld.  Intensieve transactionele activiteit op de server kan ertoe leiden dat het gebruik van back-upopslag toeneemt, onafhankelijk van de totale databasegrootte.
 
 De belangrijkste manier om de opslag kosten voor back-ups te beheren, is door de juiste Bewaar periode voor back-ups in te stellen en de opties voor de juiste back-upredundantie te kiezen om te voldoen aan de gewenste herstel doelen.
 
@@ -71,15 +71,15 @@ Herstel naar een bepaald tijdstip is handig in meerdere scenario's. Wanneer een 
 
 U kunt kiezen tussen een vroeg herstel punt en een aangepast herstel punt.
 
--   **Oudste herstel punt**: afhankelijk van de Bewaar periode is dit de eerste keer dat u kunt herstellen. De oudste back-uptijd wordt automatisch geselecteerd en wordt weer gegeven in de portal. Dit is handig als u wilt onderzoeken of testen vanaf dat moment.
+-   **Oudste herstel punt** : afhankelijk van de Bewaar periode is dit de eerste keer dat u kunt herstellen. De oudste back-uptijd wordt automatisch geselecteerd en wordt weer gegeven in de portal. Dit is handig als u wilt onderzoeken of testen vanaf dat moment.
 
--   **Aangepast herstel punt**: met deze optie kunt u een wille keurig tijdstip kiezen binnen de retentie periode die voor deze flexibele server is gedefinieerd. Standaard is de meest recente tijd in UTC automatisch geselecteerd en nuttig als u wilt herstellen naar de laatste vastgelegde trans actie voor uw test doeleinden. U kunt eventueel ook andere dagen en tijd kiezen. 
+-   **Aangepast herstel punt** : met deze optie kunt u een wille keurig tijdstip kiezen binnen de retentie periode die voor deze flexibele server is gedefinieerd. Standaard is de meest recente tijd in UTC automatisch geselecteerd en nuttig als u wilt herstellen naar de laatste vastgelegde trans actie voor uw test doeleinden. U kunt eventueel ook andere dagen en tijd kiezen. 
 
 De geschatte tijd voor het herstellen is afhankelijk van verschillende factoren, zoals de grootte van de data base, het volume van de transactie logboeken die moeten worden verwerkt, de netwerk bandbreedte en het totale aantal data bases dat op hetzelfde moment wordt hersteld in dezelfde regio. De totale herstel tijd duurt doorgaans slechts enkele minuten tot enkele uren.
 
 
 > [!IMPORTANT]
-> Verwijderde servers **kunnen niet**   worden hersteld. Als u de server verwijdert, worden ook alle data bases die deel uitmaken van de server, verwijderd en kunnen deze niet worden hersteld. Beheerders kunnen gebruikmaken van [beheer vergrendelingen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)om Server bronnen te beveiligen, na implementatie van onopzettelijk verwijderen of onverwachte wijzigingen.
+> Verwijderde servers **kunnen niet** worden hersteld. Als u de server verwijdert, worden ook alle data bases die deel uitmaken van de server, verwijderd en kunnen deze niet worden hersteld. Beheerders kunnen gebruikmaken van [beheer vergrendelingen](../../azure-resource-manager/management/lock-resources.md)om Server bronnen te beveiligen, na implementatie van onopzettelijk verwijderen of onverwachte wijzigingen.
 
 ## <a name="perform-post-restore-tasks"></a>Taken na herstel uitvoeren
 
@@ -101,6 +101,5 @@ Na het herstellen van de Data Base kunt u de volgende taken uitvoeren om uw gebr
 ## <a name="next-steps"></a>Volgende stappen
 
 -   Meer informatie over [bedrijfs continuïteit](./concepts-business-continuity.md)
--   Meer informatie over [zone redundante hoge Beschik baarheid](./concepts-high-availability.md)
+-   Meer informatie over [zone redundante hoge Beschik baarheid](./concepts-high-availability.md)
 -   Meer informatie [over het herstellen](./how-to-restore-server-portal.md) van
-

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 12/16/2019
-ms.openlocfilehash: 8031e917d998b877e6c3a5830d69abf81c9bdebe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe511ed2d6b724c1215f9986c9d6c50aae076935
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086718"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533288"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>Twitter-gegevens analyseren met Apache Hive en Apache Hadoop op HDInsight
 
@@ -30,31 +30,31 @@ Met Twitter kunt u de gegevens voor elke Tweet ophalen als een JavaScript Object
 
 1. Meld u vanuit een webbrowser aan bij [https://developer.twitter.com/apps/](https://developer.twitter.com/apps/) . Selecteer de koppeling **nu aanmelden** als u geen Twitter-account hebt.
 
-2. Selecteer **nieuwe app maken**.
+2. Selecteer **nieuwe app maken** .
 
-3. Voer de **naam**, **Beschrijving**, **website**in. U kunt een URL maken voor het veld **website** . In de volgende tabel ziet u een aantal voorbeeld waarden die moeten worden gebruikt:
+3. Voer de **naam** , **Beschrijving** , **website** in. U kunt een URL maken voor het veld **website** . In de volgende tabel ziet u een aantal voorbeeld waarden die moeten worden gebruikt:
 
    | Veld | Waarde |
    |--- |--- |
    | Naam |MyHDInsightApp |
-   | Beschrijving |MyHDInsightApp |
+   | Description |MyHDInsightApp |
    | Website |`https://www.myhdinsightapp.com` |
 
-4. Selecteer **Ja, ik ga akkoord**en selecteer vervolgens **uw Twitter-toepassing maken**.
+4. Selecteer **Ja, ik ga akkoord** en selecteer vervolgens **uw Twitter-toepassing maken** .
 
-5. Selecteer het tabblad **machtigingen** . De standaard machtiging is **alleen-lezen**.
+5. Selecteer het tabblad **machtigingen** . De standaard machtiging is **alleen-lezen** .
 
 6. Selecteer het tabblad **sleutels en toegangs tokens** .
 
-7. Selecteer **mijn toegangs token maken**.
+7. Selecteer **mijn toegangs token maken** .
 
 8. Selecteer in de rechter bovenhoek van de pagina **OAuth testen** .
 
-9. Schrijf de **consument sleutel**, het geheim van de **consument**, het **toegangs token**en het **toegangs token geheim**in.
+9. Schrijf de **consument sleutel** , het geheim van de **consument** , het **toegangs token** en het **toegangs token geheim** in.
 
 ### <a name="download-tweets"></a>Tweets downloaden
 
-Met de volgende python-code wordt 10.000 tweets van Twitter gedownload en opgeslagen in een bestand met de naam **tweets.txt**.
+Met de volgende python-code wordt 10.000 tweets van Twitter gedownload en opgeslagen in een bestand met de naam **tweets.txt** .
 
 > [!NOTE]  
 > De volgende stappen worden uitgevoerd op het HDInsight-cluster, omdat python al is geïnstalleerd.
@@ -78,7 +78,7 @@ Met de volgende python-code wordt 10.000 tweets van Twitter gedownload en opgesl
    pip install tweepy progressbar pyOpenSSL requests[security]
    ```
 
-1. Gebruik de volgende opdracht om een bestand met de naam **gettweets.py**te maken:
+1. Gebruik de volgende opdracht om een bestand met de naam **gettweets.py** te maken:
 
    ```bash
    nano gettweets.py
@@ -143,7 +143,7 @@ Met de volgende python-code wordt 10.000 tweets van Twitter gedownload en opgesl
     > [!TIP]  
     > Pas het filter onderwerpen op de laatste regel aan om de populaire tref woorden te volgen. Het gebruik van tref woorden populair op het moment dat u het script uitvoert, maakt het snel vastleggen van gegevens mogelijk.
 
-1. Gebruik **CTRL + X**en vervolgens **Y** om het bestand op te slaan.
+1. Gebruik **CTRL + X** en vervolgens **Y** om het bestand op te slaan.
 
 1. Gebruik de volgende opdracht om het bestand uit te voeren en tweets te downloaden:
 
@@ -283,7 +283,7 @@ Met deze opdrachten worden de gegevens opgeslagen op een locatie waartoe alle kn
    WHERE (length(json_response) > 500);
    ```
 
-1. Druk op **CTRL + X**en druk vervolgens op **j** om het bestand op te slaan.
+1. Druk op **CTRL + X** en druk vervolgens op **j** om het bestand op te slaan.
 
 1. Gebruik de volgende opdracht om de HiveQL uit het bestand uit te voeren:
 
@@ -313,4 +313,4 @@ Met deze opdrachten worden de gegevens opgeslagen op een locatie waartoe alle kn
 U hebt geleerd hoe u een ongestructureerde JSON-gegevensset kunt transformeren naar een gestructureerde [Apache Hive](https://hive.apache.org/) tabel. Raadpleeg de volgende documenten voor meer informatie over Hive op HDInsight:
 
 * [Aan de slag met HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
-* [Gegevens van de vlucht vertraging analyseren met HDInsight](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)
+* [Gegevens van de vlucht vertraging analyseren met HDInsight](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)

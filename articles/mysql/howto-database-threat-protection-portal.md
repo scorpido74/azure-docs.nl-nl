@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 43b85ba58ed7163a896054ab9e77ddf82e3461a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96f6993f92192a1149e3b243c68fdf5fe96fdc66
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90902807"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541448"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>Advanced Threat Protection voor Azure Database for MySQL
 
@@ -28,11 +28,11 @@ Advanced Threat Protection maakt deel uit van de Advanced Data Security-aanbiedi
 
 ## <a name="set-up-threat-detection"></a>Detectie van bedreigingen instellen
 1. Start de Azure Portal op [https://portal.azure.com](https://portal.azure.com) .
-2. Ga naar de configuratie pagina van de Azure Database for MySQL-server die u wilt beveiligen. Selecteer in de beveiligings instellingen **Advanced Threat Protection (preview)**.
+2. Ga naar de configuratie pagina van de Azure Database for MySQL-server die u wilt beveiligen. Selecteer in de beveiligings instellingen **Advanced Threat Protection (preview)** .
 3. Op de configuratie pagina **Advanced Threat Protection (preview)** :
 
    - Geavanceerde beveiliging tegen bedreigingen inschakelen op de-server.
-   - Geef in het tekstvak **waarschuwingen verzenden naar** een lijst met e-mail berichten op voor het ontvangen van beveiligings waarschuwingen bij de detectie van afwijkende database activiteiten in de **instellingen voor geavanceerde beveiliging tegen bedreigingen**.
+   - Geef in het tekstvak **waarschuwingen verzenden naar** een lijst met e-mail berichten op voor het ontvangen van beveiligings waarschuwingen bij de detectie van afwijkende database activiteiten in de **instellingen voor geavanceerde beveiliging tegen bedreigingen** .
   
    :::image type="content" source="./media/howto-database-threat-protection-portal/set-up-threat-protection.png" alt-text="Detectie van bedreigingen instellen":::
 
@@ -63,5 +63,5 @@ Klik op **waarschuwing bedreigingen detectie** om de pagina Azure Security Cente
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
-* Zie de [pagina met prijzen voor Azure database for MySQL](https://azure.microsoft.com/pricing/details/mysql/) voor meer informatie over prijzen.  
+* Meer informatie over [Azure Security Center](../security-center/security-center-introduction.md)
+* Zie de [pagina met prijzen voor Azure database for MySQL](https://azure.microsoft.com/pricing/details/mysql/) voor meer informatie over prijzen.

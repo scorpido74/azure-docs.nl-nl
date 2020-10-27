@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: b9f7e93af61dbcf306f7d6eb105cb113412a423a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e412b82be911f0b4ba2e5cda51495cdcd7826917
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86083097"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542298"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>On-premises Apache Hadoop clusters migreren naar de aanbevolen procedures voor Azure HDInsight-infra structuur
 
@@ -27,7 +27,7 @@ De belangrijkste keuzes voor het maken van de capaciteits planning voor HDInsigh
 De Azure-regio bepaalt waar het cluster fysiek wordt ingericht. Het cluster moet zich in dezelfde regio bevinden als de gegevens om de latentie van lees-en schrijf bewerkingen te minimaliseren.
 
 **Opslag locatie en-grootte**  
-De standaard opslag moet zich in dezelfde regio bevinden als het cluster.Voor een cluster met een 48-knoop punt is het raadzaam 4 tot 8 opslag accounts te hebben. Hoewel er mogelijk al voldoende totale opslag ruimte beschikbaar is, biedt elk opslag account extra netwerk bandbreedte voor de reken knooppunten. Als er meerdere opslag accounts zijn, gebruikt u een wille keurige naam voor elk opslag account, zonder voor voegsel. Het doel van een wille keurige naam is het verminderen van de kans op opslag knelpunten (beperking) of fouten in de algemene modus voor alle accounts. Gebruik slechts één container per opslag account voor betere prestaties.
+De standaard opslag moet zich in dezelfde regio bevinden als het cluster. Voor een cluster met een 48-knoop punt is het raadzaam 4 tot 8 opslag accounts te hebben. Hoewel er mogelijk al voldoende totale opslag ruimte beschikbaar is, biedt elk opslag account extra netwerk bandbreedte voor de reken knooppunten. Als er meerdere opslag accounts zijn, gebruikt u een wille keurige naam voor elk opslag account, zonder voor voegsel. Het doel van een wille keurige naam is het verminderen van de kans op opslag knelpunten (beperking) of fouten in de algemene modus voor alle accounts. Gebruik slechts één container per opslag account voor betere prestaties.
 
 **VM-grootte en-type (ondersteunt nu de G-serie)**  
 Elk cluster type heeft een reeks knooppunt typen en elk knooppunt type heeft specifieke opties voor de VM-grootte en het bijbehorende type. De grootte en het type van de virtuele machine worden bepaald door CPU-verwerkings kracht, RAM-grootte en netwerk latentie. Een gesimuleerde werk belasting kan worden gebruikt om de optimale grootte en het type van de virtuele machine voor elke knooppunt typen te bepalen.
@@ -52,35 +52,35 @@ Toepassingen of onderdelen die beschikbaar waren in on-premises clusters, maar d
 |**App**|**Integratie**
 |---|---|
 |Lucht stroom|IaaS of HDInsight Edge-knoop punt
-|Alluxio|IaaS  
-|Arcadia|IaaS 
+|Alluxio|IaaS  
+|Arcadia|IaaS 
 |Atlas|Geen (alleen HDP)
 |Data meer|HDInsight Edge-knoop punt
 |Datastax (Cassandra)|IaaS (CosmosDB een alternatief op Azure)
-|DataTorrent|IaaS 
-|Drill|IaaS 
+|DataTorrent|IaaS 
+|Drill|IaaS 
 |Ignite|IaaS
-|Jethro|IaaS 
-|Mapador|IaaS 
+|Jethro|IaaS 
+|Mapador|IaaS 
 |Mongo|IaaS (CosmosDB een alternatief op Azure)
-|NiFi|IaaS 
+|NiFi|IaaS 
 |Presto|IaaS of HDInsight Edge-knoop punt
-|Python 2|PaaS 
-|Python 3|PaaS 
-|R|PaaS 
-|SAS|IaaS 
+|Python 2|PaaS 
+|Python 3|PaaS 
+|R|PaaS 
+|SAS|IaaS 
 |Vertica|IaaS (SQLDW een alternatief op Azure)
-|Tableau|IaaS 
+|Tableau|IaaS 
 |Toestand|HDInsight Edge-knoop punt
-|StreamSets|HDInsight-rand 
-|Palantir|IaaS 
-|Sailpoint|IaaS 
+|StreamSets|HDInsight-rand 
+|Palantir|IaaS 
+|Sailpoint|IaaS 
 
 Zie het artikel [Apache Hadoop onderdelen die beschikbaar zijn in verschillende versies van HDInsight](../hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions) voor meer informatie
 
 ## <a name="customize-hdinsight-clusters-using-script-actions"></a>HDInsight-clusters aanpassen met behulp van script acties
 
-HDInsight biedt een methode van cluster configuratie die een **script actie**wordt genoemd. Een script actie is een bash script dat wordt uitgevoerd op de knoop punten in een HDInsight-cluster en kan worden gebruikt voor het installeren van extra onderdelen en het wijzigen van configuratie-instellingen.
+HDInsight biedt een methode van cluster configuratie die een **script actie** wordt genoemd. Een script actie is een bash script dat wordt uitgevoerd op de knoop punten in een HDInsight-cluster en kan worden gebruikt voor het installeren van extra onderdelen en het wijzigen van configuratie-instellingen.
 
 Script acties moeten worden opgeslagen op een URI die toegankelijk is vanuit het HDInsight-cluster. Ze kunnen worden gebruikt tijdens of na het maken van het cluster en kunnen ook worden beperkt om alleen te worden uitgevoerd op bepaalde knooppunt typen.
 
@@ -109,7 +109,7 @@ Raadpleeg voor meer informatie de volgende artikelen:
 
 ## <a name="customize-hdinsight-configs-using-bootstrap"></a>HDInsight-configuratie aanpassen met Boots trap
 
-Wijzigingen in configuratie-instellingen in de configuratie bestanden `core-site.xml` , zoals `hive-site.xml` en `oozie-env.xml` kunnen worden gemaakt met Boots trap. Het volgende script is een voor beeld van het gebruik van de Power shell [AZ module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) [-cmdlet New-AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster):
+Wijzigingen in configuratie-instellingen in de configuratie bestanden `core-site.xml` , zoals `hive-site.xml` en `oozie-env.xml` kunnen worden gemaakt met Boots trap. Het volgende script is een voor beeld van het gebruik van de Power shell [AZ module](/powershell/azure/new-azureps-module-az) [-cmdlet New-AzHDInsightClusterConfig](/powershell/module/az.hdinsight/new-azhdinsightcluster):
 
 ```powershell
 # hive-site.xml configuration

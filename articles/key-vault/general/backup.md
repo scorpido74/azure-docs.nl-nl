@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.date: 08/12/2019
+ms.date: 10/22/2020
 ms.author: sudbalas
-ms.openlocfilehash: a1c07432dcf90759662e8f4aaedc760abd18157c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 931aea02d0a3c26bb5c2e7158f9c4360976d3af5
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88585930"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440515"
 ---
 # <a name="azure-key-vault-backup"></a>Back-up voor Azure Key Vault
 
@@ -30,6 +30,9 @@ Key Vault onderhoudt de beschikbaarheid in noodscenario's en voert automatisch f
 Als u uw geheimen wilt beveiligen tegen onbedoelde of opzettelijke verwijdering, moet u de beveiligingsfuncties voor voorlopig verwijderen en opschonen voor uw sleutelkluis configureren. Zie [Azure Key Vault: overzicht van voorlopig verwijderen](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview) voor meer informatie.
 
 ## <a name="limitations"></a>Beperkingen
+
+> [!IMPORTANT]
+> Key Vault ondersteunt de mogelijkheid niet om meer een back-up te maken van meer dan 500 eerdere versies van een sleutel, geheim of certificaatobject. Als u probeert een back-up te maken van een sleutel, geheim of certificaatobject, leidt dat mogelijk tot een fout. Het is niet mogelijk om eerdere versies van een sleutel, geheim of certificaat te verwijderen.
 
 Key Vault biedt momenteel geen manier om in één bewerking een back-up te maken van een volledige sleutelkluis. Pogingen om de opdrachten in dit document te gebruiken om een automatische back-up van een sleutelkluis te maken, kunnen fouten veroorzaken en worden niet ondersteund door Microsoft of het Azure Key Vault-team. 
 
@@ -64,11 +67,11 @@ Volg de stappen in deze sectie voor het maken en herstellen van back-ups van obj
     ![Schermopname waarin wordt aangegeven waar de instellingen voor sleutels en een object in een sleutelkluis moeten worden geselecteerd.](../media/backup-1.png)
 
 4. Selecteer het object.
-5. Selecteer **Back-up downloaden**.
+5. Selecteer **Back-up downloaden** .
 
     ![Schermopname waarin wordt aangegeven waar u de knop Back-up downloaden selecteert in een sleutelkluis.](../media/backup-2.png)
     
-6. Selecteer **Download**.
+6. Selecteer **Download** .
 
     ![Schermopname waarin wordt aangegeven waar u de knop Downloaden selecteert in een sleutelkluis.](../media/backup-3.png)
     
@@ -79,12 +82,12 @@ Volg de stappen in deze sectie voor het maken en herstellen van back-ups van obj
 1. Ga naar Azure Portal.
 2. Selecteer uw sleutelkluis.
 3. Ga naar het type object (geheim, sleutel of certificaat) dat u wilt herstellen.
-4. Selecteer **Back-up terugzetten**.
+4. Selecteer **Back-up terugzetten** .
 
     ![Schermopname waarin wordt aangegeven waar u de knop Back-up terugzetten selecteert in een sleutelkluis.](../media/backup-4.png)
     
 5. Ga naar de locatie waar u de versleutelde blob hebt opgeslagen.
-6. Selecteer **OK**.
+6. Selecteer **OK** .
 
 ## <a name="back-up-and-restore-from-the-azure-cli"></a>Back-ups maken en herstellen met de Azure CLI
 

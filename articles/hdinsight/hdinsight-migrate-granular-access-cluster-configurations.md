@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: 8ae16e6799d1253b8b070d59414beaee3c7ff332
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d2e9c1fe89866511f8eae0b900563471cd6e52e9
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479779"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533305"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migreren naar gedetailleerde, op rollen gebaseerde toegang voor clusterconfiguraties
 
@@ -20,11 +20,11 @@ We introduceren enkele belang rijke wijzigingen ter ondersteuning van meer verfi
 
 ## <a name="what-is-changing"></a>Wat wordt er gewijzigd?
 
-Voorheen kunnen geheimen worden verkregen via de HDInsight API door cluster gebruikers die beschikken over de rol van eigenaar, bijdrager of lezer [Azure](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles), omdat ze beschikbaar waren voor iedereen met de `*/read` machtiging. Geheimen worden gedefinieerd als waarden die kunnen worden gebruikt om meer verhoogde toegang te verkrijgen dan de rol van een gebruiker moet toestaan. Dit zijn onder andere waarden zoals de HTTP-referenties van de cluster gateway, sleutels voor opslag accounts en database referenties.
+Voorheen kunnen geheimen worden verkregen via de HDInsight API door cluster gebruikers die beschikken over de rol van eigenaar, bijdrager of lezer [Azure](../role-based-access-control/rbac-and-directory-admin-roles.md), omdat ze beschikbaar waren voor iedereen met de `*/read` machtiging. Geheimen worden gedefinieerd als waarden die kunnen worden gebruikt om meer verhoogde toegang te verkrijgen dan de rol van een gebruiker moet toestaan. Dit zijn onder andere waarden zoals de HTTP-referenties van de cluster gateway, sleutels voor opslag accounts en database referenties.
 
 Vanaf 3 september 2019 heeft toegang tot deze geheimen de `Microsoft.HDInsight/clusters/configurations/action` machtiging nodig, wat betekent dat gebruikers niet langer toegang hebben tot de rol van lezer. De functies die deze machtiging hebben, zijn Inzender, eigenaar en de nieuwe rol HDInsight-cluster operator (meer hierover).
 
-We introduceren ook een nieuwe rol van een [HDInsight-cluster operator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) die geheimen kan ophalen zonder dat de beheerders machtigingen van Inzender of eigenaar worden toegewezen. Samenvatting:
+We introduceren ook een nieuwe rol van een [HDInsight-cluster operator](../role-based-access-control/built-in-roles.md#hdinsight-cluster-operator) die geheimen kan ophalen zonder dat de beheerders machtigingen van Inzender of eigenaar worden toegewezen. Samenvatting:
 
 | Rol                                  | Verwijderd                                                                                       | Gaat verder       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
@@ -57,23 +57,23 @@ Zie de onderstaande secties (of gebruik de bovenstaande koppelingen) voor een ov
 
 De volgende Api's worden gewijzigd of afgeschaft:
 
-- [**/Configurations/{configurationName} ophalen**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) (gevoelige informatie verwijderd)
+- [**/Configurations/{configurationName} ophalen**](/rest/api/hdinsight/hdinsight-cluster#get-configuration) (gevoelige informatie verwijderd)
     - Eerder gebruikt om afzonderlijke configuratie typen (inclusief geheimen) op te halen.
     - Vanaf 3 september 2019 retourneert deze API-aanroep nu afzonderlijke configuratie typen waarvoor geheimen zijn wegge laten. Gebruik de nieuwe aanroep POST/configurations om alle configuraties, inclusief geheimen, te verkrijgen. Als u alleen gateway-instellingen wilt ophalen, gebruikt u de nieuwe aanroep POST/getGatewaySettings.
-- [**/Configurations ophalen**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) (afgeschaft)
+- [**/Configurations ophalen**](/rest/api/hdinsight/hdinsight-cluster#get-configuration) (afgeschaft)
     - Eerder gebruikt om alle configuraties te verkrijgen (inclusief geheimen)
     - Vanaf 3 september 2019 wordt deze API-aanroep afgeschaft en wordt deze niet meer ondersteund. Gebruik de nieuwe aanroep POST/configurations om alle configuraties te verkrijgen die verder gaan. Voor het verkrijgen van configuraties met gevoelige para meters, gebruikt u de aanroep GET/configurations/{configurationName}.
-- [**Post/configurations/{configurationName}**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings) (afgeschaft)
+- [**Post/configurations/{configurationName}**](/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings) (afgeschaft)
     - Eerder gebruikt om de gateway referenties bij te werken.
     - Vanaf 3 september 2019 wordt deze API-aanroep afgeschaft en wordt deze niet meer ondersteund. Gebruik in plaats daarvan de nieuwe POST-/updateGatewaySettings.
 
 De volgende vervangings-Api's zijn toegevoegd:</span>
 
-- [**/Configurations plaatsen**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#list-configurations)
+- [**/Configurations plaatsen**](/rest/api/hdinsight/hdinsight-cluster#list-configurations)
     - Gebruik deze API om alle configuraties, inclusief geheimen, op te halen.
-- [**/GetGatewaySettings plaatsen**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-gateway-settings)
+- [**/GetGatewaySettings plaatsen**](/rest/api/hdinsight/hdinsight-cluster#get-gateway-settings)
     - Gebruik deze API om gateway instellingen te verkrijgen.
-- [**/UpdateGatewaySettings plaatsen**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings)
+- [**/UpdateGatewaySettings plaatsen**](/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings)
     - Gebruik deze API om gateway-instellingen (gebruikers naam en/of wacht woord) bij te werken.
 
 ### <a name="azure-hdinsight-tools-for-visual-studio-code"></a>Azure HDInsight-Hulpprogram Ma's voor Visual Studio code
@@ -86,7 +86,7 @@ Als u versie 3.20.0 of lager gebruikt, werkt u bij naar de [nieuwste versie van 
 
 ### <a name="azure-data-lake-and-stream-analytics-tools-for-visual-studio"></a>Azure Data Lake-en Stream Analytics-Hulpprogram Ma's voor Visual Studio
 
-Update naar versie 2.3.9000.1 of hoger van [Azure data Lake en stream Analytics tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=ADLTools.AzureDataLakeandStreamAnalyticsTools&ssr=false#overview) om onderbrekingen te voor komen.  Voor hulp bij het bijwerken raadpleegt u onze documentatie, [Update Data Lake-Hulpprogram ma's voor Visual Studio](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-visual-studio-tools-get-started#update-data-lake-tools-for-visual-studio).
+Update naar versie 2.3.9000.1 of hoger van [Azure data Lake en stream Analytics tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=ADLTools.AzureDataLakeandStreamAnalyticsTools&ssr=false#overview) om onderbrekingen te voor komen.  Voor hulp bij het bijwerken raadpleegt u onze documentatie, [Update Data Lake-Hulpprogram ma's voor Visual Studio](./hadoop/apache-hadoop-visual-studio-tools-get-started.md#update-data-lake-tools-for-visual-studio).
 
 ### <a name="azure-toolkit-for-eclipse"></a>Azure-toolkit voor Eclipse
 
@@ -122,10 +122,10 @@ Update naar [versie 5.0.0](https://www.nuget.org/packages/Microsoft.Azure.Manage
 
 Update naar [versie 1.0.0](https://pypi.org/project/azure-mgmt-hdinsight/1.0.0/) of hoger van de HDInsight SDK voor python. U kunt minimale code wijzigingen opgeven als u een methode gebruikt die wordt beïnvloed door deze wijzigingen:
 
-- [`ConfigurationsOperations.get`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#get-resource-group-name--cluster-name--configuration-name--custom-headers-none--raw-false----operation-config-)**retourneert niet langer gevoelige para meters** , zoals opslag sleutels (kern site) of http-referenties (gateway).
-    - Gebruik voorwaarts om alle configuraties, inclusief gevoelige para meters, op te halen [`ConfigurationsOperations.list`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#list-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-) .Houd er rekening mee dat gebruikers met de rol ' lezer ' deze methode niet kunnen gebruiken. Dit biedt gedetailleerde controle over welke gebruikers toegang hebben tot gevoelige informatie voor een cluster. 
-    - Als u alleen referenties van de HTTP-gateway wilt ophalen, gebruikt u [`ClusterOperations.get_gateway_settings`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clustersoperations#get-gateway-settings-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-) .
-- [`ConfigurationsOperations.update`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#update-resource-group-name--cluster-name--configuration-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-) is nu afgeschaft en is vervangen door [`ClusterOperations.update_gateway_settings`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clustersoperations#update-gateway-settings-resource-group-name--cluster-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-) .
+- [`ConfigurationsOperations.get`](/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#get-resource-group-name--cluster-name--configuration-name--custom-headers-none--raw-false----operation-config-)**retourneert niet langer gevoelige para meters** , zoals opslag sleutels (kern site) of http-referenties (gateway).
+    - Gebruik voorwaarts om alle configuraties, inclusief gevoelige para meters, op te halen [`ConfigurationsOperations.list`](/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#list-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-) .Houd er rekening mee dat gebruikers met de rol ' lezer ' deze methode niet kunnen gebruiken. Dit biedt gedetailleerde controle over welke gebruikers toegang hebben tot gevoelige informatie voor een cluster. 
+    - Als u alleen referenties van de HTTP-gateway wilt ophalen, gebruikt u [`ClusterOperations.get_gateway_settings`](/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clustersoperations#get-gateway-settings-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-) .
+- [`ConfigurationsOperations.update`](/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#update-resource-group-name--cluster-name--configuration-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-) is nu afgeschaft en is vervangen door [`ClusterOperations.update_gateway_settings`](/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clustersoperations#update-gateway-settings-resource-group-name--cluster-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-) .
 
 ### <a name="sdk-for-java"></a>SDK voor Java
 
@@ -154,7 +154,7 @@ Update naar [AZ Power shell version 2.0.0](https://www.powershellgallery.com/pac
 
 ## <a name="add-the-hdinsight-cluster-operator-role-assignment-to-a-user"></a>De roltoewijzing van de HDInsight-cluster operator toevoegen aan een gebruiker
 
-Een gebruiker met de rol [eigenaar](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) kan de rol van de [HDInsight-cluster operator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) toewijzen aan gebruikers waarvoor u lees-/schrijftoegang wilt hebben tot gevoelige configuratie waarden voor het hdinsight-cluster (zoals de cluster gateway referenties en de sleutels van het opslag account).
+Een gebruiker met de rol [eigenaar](../role-based-access-control/built-in-roles.md#owner) kan de rol van de [HDInsight-cluster operator](../role-based-access-control/built-in-roles.md#hdinsight-cluster-operator) toewijzen aan gebruikers waarvoor u lees-/schrijftoegang wilt hebben tot gevoelige configuratie waarden voor het hdinsight-cluster (zoals de cluster gateway referenties en de sleutels van het opslag account).
 
 ### <a name="using-the-azure-cli"></a>Met behulp van de Azure CLI
 
@@ -183,7 +183,7 @@ az role assignment create --role "HDInsight Cluster Operator" --assignee user@do
 
 ### <a name="using-the-azure-portal"></a>Azure Portal gebruiken
 
-U kunt ook de Azure Portal gebruiken om de roltoewijzing van de HDInsight-cluster operator toe te voegen aan een gebruiker. Raadpleeg de documentatie om [Azure-roltoewijzingen toe te voegen of te verwijderen met behulp van de Azure Portal-een roltoewijzing toevoegen](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment).
+U kunt ook de Azure Portal gebruiken om de roltoewijzing van de HDInsight-cluster operator toe te voegen aan een gebruiker. Raadpleeg de documentatie om [Azure-roltoewijzingen toe te voegen of te verwijderen met behulp van de Azure Portal-een roltoewijzing toevoegen](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment).
 
 ## <a name="faq"></a>Veelgestelde vragen
 

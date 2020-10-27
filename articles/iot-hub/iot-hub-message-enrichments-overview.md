@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 3fd1ae82450c6203833a1e7b9947d516950c0330
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3975a57c095a8593e392e932bd125308853d3756
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146584"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541516"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Verrijkingen van berichten voor IoT Hub berichten van apparaat-naar-Cloud
 
@@ -35,9 +35,9 @@ De **waarde** kan een van de volgende voor beelden zijn:
 
 * Een statische teken reeks. Dynamische waarden zoals voor waarden, logica, bewerkingen en functies zijn niet toegestaan. Als u bijvoorbeeld een SaaS-toepassing ontwikkelt die wordt gebruikt door verschillende klanten, kunt u een id toewijzen aan elke klant en die id beschikbaar maken in de toepassing. Wanneer de toepassing wordt uitgevoerd, stemt IoT Hub de telemetrie-berichten van het apparaat in met de id van de klant, waardoor het mogelijk is om de berichten anders voor elke klant te verwerken.
 
-* De naam van de IoT-hub die het bericht verzendt. Deze waarde is *$iothubname*.
+* De naam van de IoT-hub die het bericht verzendt. Deze waarde is *$iothubname* .
 
-* Informatie van het apparaat dubbele, zoals het pad. Voor beelden hiervan zijn *$Twin. Tags. Field* en *$Twin. Tags. Latitude*.
+* Informatie van het apparaat dubbele, zoals het pad. Voor beelden hiervan zijn *$Twin. Tags. Field* en *$Twin. Tags. Latitude* .
 
    > [!NOTE]
    > Op dit moment worden alleen $iothubname, $twin. Tags, $twin. Properties. desired en $twin. Properties. gerapporteerd worden ondersteunde variabelen voor het verrijken van het bericht.
@@ -62,8 +62,8 @@ Verrijkingen kunnen worden geconfigureerd met behulp van de volgende methoden:
 
 | **Methode** | **Opdracht** |
 | ----- | -----| 
-| Portal | [Azure-portal](https://portal.azure.com) | Raadpleeg de [zelf studie](tutorial-message-enrichments.md) voor het verbeteren van een bericht | 
-| Azure CLI   | [AZ IOT hub-bericht-verrijking](/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
+| Portal | [Azure Portal](https://portal.azure.com) | Raadpleeg de [zelf studie](tutorial-message-enrichments.md) voor het verbeteren van een bericht | 
+| Azure CLI   | [AZ IOT hub-bericht-verrijking](/cli/azure/iot/hub/message-enrichment) |
 | Azure PowerShell | [Add-AzIotHubMessageEnrichment](/powershell/module/az.iothub/add-aziothubmessageenrichment) |
 
 Het toevoegen van bericht verrijkingen voegt geen latentie toe aan de route ring van berichten.
@@ -84,7 +84,7 @@ Raadpleeg de [zelf studie](tutorial-message-enrichments.md) voor het verbeteren 
 
 * Het kan tot vijf minuten duren voordat updates op een apparaat worden weer gegeven in de bijbehorende verrijkings waarde.
 
-* De totale bericht grootte, inclusief de verrijkingen, mag niet groter zijn dan 256 KB. Als de grootte van een bericht groter is dan 256 KB, wordt het bericht door de IoT Hub verwijderd. U kunt [IOT hub metrische gegevens](iot-hub-metrics.md) gebruiken om fouten op te sporen en op te sporen wanneer berichten worden verwijderd. U kunt bijvoorbeeld D2C. telemetrie. bewaken. ongeldig.
+* De totale bericht grootte, inclusief de verrijkingen, mag niet groter zijn dan 256 KB. Als de grootte van een bericht groter is dan 256 KB, wordt het bericht door de IoT Hub verwijderd. U kunt [IOT hub metrische gegevens](monitor-iot-hub-reference.md#metrics) gebruiken om fouten op te sporen en op te sporen wanneer berichten worden verwijderd. U kunt bijvoorbeeld de gegevens van de *telemetrie* bewaken die niet compatibel zijn ( *D2C. telemetrie* ... valid) in de [metrische gegevens van de route ring](monitor-iot-hub-reference.md#routing-metrics). Zie [IOT hub bewaken](monitor-iot-hub.md)voor meer informatie.
 
 * Verrijkingen van berichten zijn niet van toepassing op digitale dubbele wijzigings gebeurtenissen.
 

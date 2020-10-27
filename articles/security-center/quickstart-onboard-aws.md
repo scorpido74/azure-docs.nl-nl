@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: cddae0a7115fc2999b52eaba7df2b49db509981b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfb1c0180b50ca95cb2f1fbff62469e63ab5f19d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449041"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428103"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>Uw AWS-accounts verbinden met Azure Security Center
 
@@ -66,48 +66,48 @@ In de onderstaande schermopname ziet u de AWS-accounts die worden weergegeven in
 
 Er zijn twee manieren om Security Center te verifiëren bij AWS:
 
-- **Een IAM-rol maken voor Security Center**: dit is de veiligste methode en wordt daarom ook aanbevolen
-- **Een AWS-gebruiker maken voor Security Center**: dit is een minder veilige optie als u IAM niet hebt ingeschakeld
+- **Een IAM-rol maken voor Security Center** : dit is de veiligste methode en wordt daarom ook aanbevolen
+- **Een AWS-gebruiker maken voor Security Center** : dit is een minder veilige optie als u IAM niet hebt ingeschakeld
 
 #### <a name="create-an-iam-role-for-security-center"></a>Een IAM-rol maken voor Security Center
-1. Ga in uw Amazon Web Services-console naar **Beveiliging, identiteit en naleving** en selecteer **IAM**.
+1. Ga in uw Amazon Web Services-console naar **Beveiliging, identiteit en naleving** en selecteer **IAM** .
     :::image type="content" source="./media/quickstart-onboard-aws/aws-identity-and-compliance.png" alt-text="3 GCP-projecten worden weergegevens op het overzichtsdashboard van Security Center":::
 
-1. Selecteer **Rollen** en **Rol maken**.
-1. Selecteer **Een ander AWS-account**.
+1. Selecteer **Rollen** en **Rol maken** .
+1. Selecteer **Een ander AWS-account** .
 1. Voer de volgende details in:
 
-    - **Account-id**: voer de id van uw Microsoft-account (**158177204117**) in, zoals wordt weergegeven op de pagina van de AWS-connector in Security Center.
+    - **Account-id** : voer de id van uw Microsoft-account ( **158177204117** ) in, zoals wordt weergegeven op de pagina van de AWS-connector in Security Center.
     - **Externe is vereisen** moet geselecteerd zijn
-    - **Externe id**: voer de abonnements-id is zoals wordt weergegeven op de pagina van de AWS-connector in Security Center 
+    - **Externe id** : voer de abonnements-id is zoals wordt weergegeven op de pagina van de AWS-connector in Security Center 
 
-1. Selecteer **Next**.
-1. Selecteer de volgende beleidsregels in de sectie **Machtigingsbeleid toevoegen**:
+1. Selecteer **Next** .
+1. Selecteer de volgende beleidsregels in de sectie **Machtigingsbeleid toevoegen** :
 
     - SecurityAudit
     - AmazonSSMAutomationRole
     - AWSSecurityHubReadOnlyAccess
 
 1. Voeg eventueel tags toe. Het toevoegen van labels aan de gebruiker heeft geen invloed op de verbinding.
-1. Selecteer **Next**.
+1. Selecteer **Next** .
 
 1. Kies in de lijst met rollen de rol die u hebt gemaakt
 
 1. Sla de naam van de Amazon-resource (ARN) op voor later. 
 
 #### <a name="create-an-aws-user-for-security-center"></a>Een AWS-gebruiker maken voor Security Center 
-1. Open het tabblad **Gebruikers** en selecteer **Gebruiker toevoegen**.
+1. Open het tabblad **Gebruikers** en selecteer **Gebruiker toevoegen** .
 1. Voer in de stap **Details** een gebruikersnaam in voor Security Center en zorg ervoor dat u **Programmatische toegang** selecteert bij het toegangstype voor AWS. 
-1. Selecteer **Next Permissions**.
+1. Selecteer **Next Permissions** .
 1. Selecteer **Bestaande beleidsregels rechtstreeks toevoegen** en pas de volgende beleidsregels toe:
     - SecurityAudit
     - AmazonSSMAutomationRole
     - AWSSecurityHubReadOnlyAccess
     
-1. Selecteer **Volgende: Tags**. Voeg eventueel tags toe. Het toevoegen van labels aan de gebruiker heeft geen invloed op de verbinding.
-1. Selecteer **Beoordelen**.
+1. Selecteer **Volgende: Tags** . Voeg eventueel tags toe. Het toevoegen van labels aan de gebruiker heeft geen invloed op de verbinding.
+1. Selecteer **Beoordelen** .
 1. Sla de automatisch gegenereerde CSV-bestanden met de **Toegangssleutel-id** en **Geheime toegangssleutel** op voor later.
-1. Controleer de samenvatting en klik vervolgens op **Gebruiker maken**.
+1. Controleer de samenvatting en klik vervolgens op **Gebruiker maken** .
 
 
 ### <a name="step-3-configure-the-ssm-agent"></a>Stap 3. De SSM-agent configureren
@@ -118,37 +118,41 @@ AWS Systems Manager is vereist voor het automatiseren van taken in uw AWS-resour
 - [SSM-agent installeren en configureren op Amazon EC2 Linux-instanties](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-ssm-agent.html)
 
 
-### <a name="step-4-create-a-service-principal-for-onboarding-at-scale"></a>Stap 4. Een service-principal voor onboarding op schaal
+### <a name="step-4-complete-azure-arc-prerequisites"></a>Stap 4. Azure Arc-vereisten voltooien
+1. Zorg ervoor dat de juiste [Azure-resourceproviders](../azure-arc/servers/agent-overview.md#register-azure-resource-providers) zijn geregistreerd:
+    - Microsoft.HybridCompute
+    - Microsoft.GuestConfiguration
 
-Als **Eigenaar** van het abonnement dat u wilt gebruiken voor de onboarding maakt u een service-principal voor Azure Arc-onboarding zoals beschreven in [Een service-principal maken voor onboarding op schaal](../azure-arc/servers/onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)
+1. Een service-principal voor onboarding op schaal. Als **Eigenaar** van het abonnement dat u wilt gebruiken voor de onboarding maakt u een service-principal voor Azure Arc-onboarding zoals beschreven in [Een service-principal maken voor onboarding op schaal](../azure-arc/servers/onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale).
 
 
 ### <a name="step-5-connect-aws-to-security-center"></a>Stap 5. AWS verbinden met Security Center
 
 1. Selecteer **Meerdere cloudconnectors** in het menu van Security Center.
-1. Selecteer **AWS-account toevoegen**.
+1. Selecteer **AWS-account toevoegen** .
     :::image type="content" source="./media/quickstart-onboard-aws/add-aws-account.png" alt-text="3 GCP-projecten worden weergegevens op het overzichtsdashboard van Security Center":::
-1. Configureer de opties op het tabblad **AWS-verificatie**:
+1. Configureer de opties op het tabblad **AWS-verificatie** :
     1. Voer een **Weergavenaam** in voor de connector.
     1. Bevestig dat het abonnement het juiste is. Dit abonnement gaat de connector en de aanbevelingen van AWS Security Hub bevatten.
     1. Dit is afhankelijk van de verificatieoptie die u hebt gekozen in [Stap 2. Verificatie instellen voor Security Center in AWS](#step-2-set-up-authentication-for-security-center-in-aws):
-        - Selecteer **Rol aannemen** en plak de ARN van [Een IAM-rol maken voor Security Center](#create-an-iam-role-for-security-center) :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="3 GCP-projecten worden weergegevens op het overzichtsdashboard van Security Center":::
+        - Selecteer **Rol aannemen** en plak de ARN van [Een IAM-rol maken voor Security Center](#create-an-iam-role-for-security-center).
+            :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="3 GCP-projecten worden weergegevens op het overzichtsdashboard van Security Center":::
 
             OF
 
         - Selecteer **Referenties** en plak de **toegangssleutel** en **geheime sleutel** uit het CSV-bestand dat u hebt opgeslagen in [Een AWS-gebruiker maken voor Security Center](#create-an-aws-user-for-security-center).
-1. Selecteer **Next**.
-1. Configureer de opties op het tabblad **Azure Arc-configuratie**:
+1. Selecteer **Next** .
+1. Configureer de opties op het tabblad **Azure Arc-configuratie** :
 
     Security Center detecteert de EC2-instanties in het verbonden AWS-account en gebruikt SSM om ze op Azure Arc te onboarden. 
 
     > [!TIP]
-    > De lijst met ondersteunde besturingssystemen vindt u in de veelgestelde vragen hieronder.
+    > Voor de lijst ondersteunde besturingssystemen, raadpleegt u [Welke besturingssystemen worden ondersteund voor mijn EC2-instanties?](#what-operating-systems-for-my-ec2-instances-are-supported) in de veelgestelde vragen.
 
     1. Selecteer de **Resourcegroep** en **Azure-regio** voor de onboarding van de gedetecteerde AWS EC2's in het geselecteerde abonnement.
     1. Voer de **Service-principal-id** en het **Service-principal-clientgeheim** voor Azure Arc in, zoals hier wordt beschreven [Een service-principal maken voor onboarding op schaal](../azure-arc/servers/onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)
     1. Als de machine verbinding maakt met het internet via een proxyserver, geeft u het IP-adres van de proxyserver op of de naam en het poortnummer die de machine zal gebruiken om met de proxyserver te communiceren. Voer de waarde in de indeling ```http://<proxyURL>:<proxyport>``` in.
-    1. Selecteer **Controleren + maken**.
+    1. Selecteer **Controleren + maken** .
 
         Lees de overzichtsinformatie
 

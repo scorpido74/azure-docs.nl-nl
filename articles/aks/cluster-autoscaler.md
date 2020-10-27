@@ -4,12 +4,12 @@ description: Meer informatie over hoe u de cluster-automatische schaal functie k
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: 7368745d3b6bf9731f987d6f4fc36b81d354fed8
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: e644a931152c83a5232c8233d519f7807ab708af
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92103863"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542638"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Een cluster automatisch schalen om te voldoen aan de toepassingsvraag op Azure Kubernetes Service (AKS)
 
@@ -47,7 +47,7 @@ Het cluster en de horizontale pod kunnen samen worden gebruikt en worden vaak ge
 
 ## <a name="create-an-aks-cluster-and-enable-the-cluster-autoscaler"></a>Een AKS-cluster maken en de cluster automatisch schalen inschakelen
 
-Als u een AKS-cluster moet maken, gebruikt u de opdracht [AZ AKS Create][az-aks-create] . Als u de cluster-automatische schaal functie wilt inschakelen en configureren voor de knooppunt groep voor het cluster, gebruikt u de para meter *--Enable-cluster-autoscaler* en geeft u een knoop punt *--Min-aantal* en *--maximum-aantal*op.
+Als u een AKS-cluster moet maken, gebruikt u de opdracht [AZ AKS Create][az-aks-create] . Voor het inschakelen en configureren van de cluster-automatische schaal functie voor de knooppunt groep voor het cluster, gebruikt u de `--enable-cluster-autoscaler` para meter en geeft u een knoop punt `--min-count` en op `--max-count` .
 
 > [!IMPORTANT]
 > De automatische schaal functie van het cluster is een Kubernetes-onderdeel. Hoewel het AKS-cluster gebruikmaakt van een schaalset voor virtuele machines voor de knoop punten, kunt u de instellingen voor het automatisch schalen van schaal sets niet hand matig inschakelen of bewerken in de Azure Portal of de Azure CLI gebruiken. Laat de Kubernetes voor cluster automatisch schalen de vereiste schaal instellingen beheren. Zie [kan ik de AKS-resources in de knooppunt resource groep wijzigen?][aks-faq-node-resource-group] voor meer informatie.
@@ -74,7 +74,7 @@ Het duurt enkele minuten om het cluster te maken en de instellingen voor het aut
 
 ## <a name="update-an-existing-aks-cluster-to-enable-the-cluster-autoscaler"></a>Een bestaand AKS-cluster bijwerken om de automatische cluster schaalr in te scha kelen
 
-Gebruik de opdracht [AZ AKS update][az-aks-update] om de cluster auto scaleer in te scha kelen voor de knooppunt groep voor het bestaande cluster. Gebruik de para meter *--Enable-cluster-automatische schaalr* en geef een knoop punt *--Min-aantal* en *--maximum-aantal*op.
+Gebruik de opdracht [AZ AKS update][az-aks-update] om de cluster auto scaleer in te scha kelen voor de knooppunt groep voor het bestaande cluster. Gebruik de `--enable-cluster-autoscaler` para meter en geef een knoop punt `--min-count` en op `--max-count` .
 
 > [!IMPORTANT]
 > De automatische schaal functie van het cluster is een Kubernetes-onderdeel. Hoewel het AKS-cluster gebruikmaakt van een schaalset voor virtuele machines voor de knoop punten, kunt u de instellingen voor het automatisch schalen van schaal sets niet hand matig inschakelen of bewerken in de Azure Portal of de Azure CLI gebruiken. Laat de Kubernetes voor cluster automatisch schalen de vereiste schaal instellingen beheren. Zie [kan ik de AKS-resources in de knooppunt resource groep wijzigen?][aks-faq-node-resource-group] voor meer informatie.
@@ -97,7 +97,7 @@ Het duurt enkele minuten om het cluster bij te werken en de instellingen voor he
 > [!IMPORTANT]
 > Als u meerdere knooppunt groepen in uw AKS-cluster hebt, gaat u naar de [sectie automatisch schalen met meerdere agent groepen](#use-the-cluster-autoscaler-with-multiple-node-pools-enabled). Voor clusters met meerdere agent Pools moet de `az aks nodepool` opdracht set worden gebruikt om specifieke eigenschappen van de knooppunten groep te wijzigen in plaats van `az aks` .
 
-In de vorige stap om een AKS-cluster te maken of een bestaande knooppunt groep bij te werken, is het minimum aantal knoop punten van het cluster automatisch ingesteld op *1*en is het maximum aantal knoop punten ingesteld op *3*. Als uw toepassing wordt gewijzigd, moet u mogelijk het aantal knoop punten van de cluster automatisch schalen aanpassen.
+In de vorige stap om een AKS-cluster te maken of een bestaande knooppunt groep bij te werken, is het minimum aantal knoop punten van het cluster automatisch ingesteld op *1* en is het maximum aantal knoop punten ingesteld op *3* . Als uw toepassing wordt gewijzigd, moet u mogelijk het aantal knoop punten van de cluster automatisch schalen aanpassen.
 
 Als u het aantal knoop punten wilt wijzigen, gebruikt u de opdracht [AZ AKS update][az-aks-update] .
 
@@ -129,9 +129,16 @@ U kunt ook gedetailleerdere Details van de cluster automatisch schalen configure
 | omlaag schalen-omlaag-na-mislukt   | Hoe lang na uitval van de omlaag geschaalde fout dat het omlaag schalen van evaluatie versies wordt hervat                     | 3 minuten     |
 | omlaag schalen-overbodige tijdstippen         | Hoe lang een knoop punt niet nodig moet zijn voordat deze in aanmerking komt voor omlaag omlaag schalen                  | 10 minuten    |
 | omlaag schalen-niet-lees bare tijd          | Hoe lang een ongelezeny-knoop punt niet nodig moet zijn voordat het in aanmerking komt voor omlaag schalen         | 20 minuten    |
-| schaal-down-gebruik-drempel waarde | Het niveau van het knooppunt gebruik, gedefinieerd als de som van aangevraagde resources gedeeld door capaciteit, waaronder een knoop punt kan worden overwogen voor omlaag schalen | 0.5 |
+| schaal-down-gebruik-drempel waarde | Het niveau van het knooppunt gebruik, gedefinieerd als de som van aangevraagde resources gedeeld door capaciteit, waaronder een knoop punt kan worden overwogen voor omlaag schalen | 0,5 |
 | Max-correct beëindigen-SEC     | Het maximum aantal seconden dat de automatische schaal functie van het cluster wacht op beëindiging van pod wanneer u een knoop punt omlaag wilt schalen. | 600 seconden   |
-| saldo-vergelijkbaar-node-groups | Vergelijk bare knooppunt groepen detecteren en het aantal knoop punten ertussen verdelen | false |
+| saldo-vergelijkbaar-node-groups      | Detecteert vergelijk bare knooppunt Pools en balanceert het aantal knoop punten ertussen                 | false         |
+| uitbreiden                         | Type [uitbreidings](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) module voor de knooppunt groep die moet worden gebruikt voor omhoog schalen. Mogelijke waarden: `most-pods` , `random` , `least-waste` | willekeurig | 
+| overs Laan: knoop punten-met-Local-Storage    | Als de echte automatische schaal functie van het cluster nooit knoop punten met de lokale opslag, bijvoorbeeld EmptyDir of HostPath, verwijdert. | true |
+| overs Laan: knoop punten-met-systeem-peul      | Als de echte cluster-functie voor automatisch schalen geen knoop punten met een van de uitvoeren-systemen (met uitzonde ring van Daemonset of spie gelen) verwijdert | true | 
+| Max-leeg-bulk-Delete            | Het maximum aantal lege knoop punten dat tegelijkertijd kan worden verwijderd.                      | 10 knoop punten      |
+| New-pod-upscale-up-vertraging           | Voor scenario's zoals burst/batch Scale waarbij CA niet moet reageren voordat de kubernetes scheduler alle leeftijden kan plannen, kunt u aangeven dat de certificerings instantie niet-geplande peulingen moet negeren voordat ze een bepaalde leeftijd hebben.                                                                                                                | 10 seconden    |
+| Max-totaal-onleesbaar percentage     | Maximum percentage van ongelezeny-knoop punten in het cluster. Nadat dit percentage is overschreden, stopt de CA bewerkingen | 45% | 
+| OK-totaal-onleesbaar aantal           | Aantal toegestane ongelezen knoop punten, ongeacht het Max-totaal-onleesbaar-percentage            | 3 knoop punten       |
 
 > [!IMPORTANT]
 > Het profiel van de cluster automatisch schalen is van invloed op alle knooppunt groepen die gebruikmaken van de automatische cluster schaal. U kunt geen profiel voor automatische schaal aanpassing instellen per knooppunt groep.
@@ -194,7 +201,7 @@ az aks update \
 
 ## <a name="disable-the-cluster-autoscaler"></a>De automatische schaal functie van het cluster uitschakelen
 
-Als u de cluster automatisch schalen niet meer wilt gebruiken, kunt u dit uitschakelen met de opdracht [AZ AKS update][az-aks-update-preview] , waarbij u de para meter *--Disable-cluster-auto Scaler* opgeeft. Knoop punten worden niet verwijderd wanneer de automatische schaal functie van het cluster is uitgeschakeld.
+Als u de cluster automatisch schalen niet meer wilt gebruiken, kunt u dit uitschakelen met de opdracht [AZ AKS update][az-aks-update-preview] , waarbij u de `--disable-cluster-autoscaler` para meter opgeeft. Knoop punten worden niet verwijderd wanneer de automatische schaal functie van het cluster is uitgeschakeld.
 
 ```azurecli-interactive
 az aks update \
@@ -207,18 +214,18 @@ U kunt het cluster hand matig schalen na het uitschakelen van de automatische cl
 
 ## <a name="re-enable-a-disabled-cluster-autoscaler"></a>Een uitgeschakelde cluster automatisch schalen opnieuw inschakelen
 
-Als u de automatisch schalen van het cluster opnieuw wilt inschakelen op een bestaand cluster, kunt u het opnieuw inschakelen met de opdracht [AZ AKS update][az-aks-update-preview] , waarbij u de para *meter--Enable-cluster-auto Scaler*, *--min-Count*en *--maximum-Count* opgeeft.
+Als u de automatisch schalen van het cluster opnieuw wilt inschakelen op een bestaand cluster, kunt u het opnieuw inschakelen met behulp van de opdracht [AZ AKS update][az-aks-update-preview] en de `--enable-cluster-autoscaler` `--min-count` `--max-count` para meters, en opgeven.
 
 ## <a name="retrieve-cluster-autoscaler-logs-and-status"></a>Logboeken en status van automatische cluster-uitschalen ophalen
 
 Voor het diagnosticeren en opsporen van fouten in de functie voor automatisch schalen, kunnen Logboeken en statussen worden opgehaald uit de invoeg toepassing voor automatisch schalen.
 
-AKS beheert de automatisch schalen van het cluster namens u en voert dit uit in het beheerde besturings vlak. Hoofd knooppunt Logboeken moeten zo worden geconfigureerd dat ze als resultaat worden weer gegeven.
+AKS beheert de automatisch schalen van het cluster namens u en voert dit uit in het beheerde besturings vlak. U kunt Control node-knoop punt inschakelen om de logboeken en bewerkingen van de CA te bekijken.
 
 Voer de volgende stappen uit om logboeken te configureren die moeten worden gepusht van de automatische clustering van clusters naar Log Analytics.
 
 1. Stel een regel in voor bron Logboeken om de logboeken van het automatisch schalen van het cluster te Log Analytics. [Instructies worden hier beschreven][aks-view-master-logs], zodat u het selectie vakje inschakelt `cluster-autoscaler` bij het selecteren van opties voor Logboeken.
-1. Klik op de sectie ' logs ' op het cluster via de Azure Portal.
+1. Selecteer de sectie ' logs ' in het cluster via de Azure Portal.
 1. Voer de volgende voorbeeld query in op Log Analytics:
 
 ```
@@ -230,7 +237,7 @@ Er worden logboeken weer gegeven die vergelijkbaar zijn met het volgende voor be
 
 ![Log Analytics logboeken](media/autoscaler/autoscaler-logs.png)
 
-De automatische schaal functie van het cluster schrijft ook de integriteits status naar een configmap met de naam `cluster-autoscaler-status` . Als u deze logboeken wilt ophalen, voert u de volgende `kubectl` opdracht uit. Er wordt een integriteits status gerapporteerd voor elke knooppunt groep die is geconfigureerd met de cluster-automatische schaal functie.
+De automatische schaal functie van het cluster kan ook de integriteits status naar een `configmap` benoemde naam schrijven `cluster-autoscaler-status` . Als u deze logboeken wilt ophalen, voert u de volgende `kubectl` opdracht uit. Er wordt een integriteits status gerapporteerd voor elke knooppunt groep die is geconfigureerd met de cluster-automatische schaal functie.
 
 ```
 kubectl get configmap -n kube-system cluster-autoscaler-status -o yaml
@@ -242,7 +249,7 @@ Lees de veelgestelde vragen over het [github-project van Kubernetes/autoscaler][
 
 De cluster-automatische schaal functie kan worden gebruikt in combi natie met [meerdere knooppunt Pools][aks-multiple-node-pools] ingeschakeld. Volg dat document voor meer informatie over het inschakelen van meerdere knooppunt groepen en toevoegen van extra knooppunt groepen aan een bestaand cluster. Wanneer beide functies samen worden gebruikt, schakelt u de automatische schaal functie van het cluster in op elke afzonderlijke knooppunt groep in het cluster en kunt u hiervoor unieke regels voor automatisch schalen door geven.
 
-In de onderstaande opdracht wordt ervan uitgegaan dat u de [eerste instructies](#create-an-aks-cluster-and-enable-the-cluster-autoscaler) eerder in dit document hebt gevolgd en dat u het maximum aantal van een bestaande groep van een knoop punt wilt bijwerken van *3* naar *5*. Gebruik de opdracht [AZ AKS nodepool update][az-aks-nodepool-update] om de instellingen van een bestaande groep knoop punten bij te werken.
+In de onderstaande opdracht wordt ervan uitgegaan dat u de [eerste instructies](#create-an-aks-cluster-and-enable-the-cluster-autoscaler) eerder in dit document hebt gevolgd en dat u het maximum aantal van een bestaande groep van een knoop punt wilt bijwerken van *3* naar *5* . Gebruik de opdracht [AZ AKS nodepool update][az-aks-nodepool-update] om de instellingen van een bestaande groep knoop punten bij te werken.
 
 ```azurecli-interactive
 az aks nodepool update \
@@ -264,7 +271,7 @@ az aks nodepool update \
   --disable-cluster-autoscaler
 ```
 
-Als u de automatisch schalen van het cluster opnieuw wilt inschakelen op een bestaand cluster, kunt u het opnieuw inschakelen met behulp van de opdracht [AZ AKS nodepool update][az-aks-nodepool-update] , waarbij u de para meter *--Enable-cluster-auto scaleer*, *--min-Count*en *--maximum-Count* opgeeft.
+Als u de automatisch schalen van het cluster opnieuw wilt inschakelen op een bestaand cluster, kunt u het opnieuw inschakelen met behulp van de opdracht [AZ AKS nodepool update][az-aks-nodepool-update] , waarbij u de `--enable-cluster-autoscaler` `--min-count` `--max-count` para meters, en opgeeft.
 
 ## <a name="next-steps"></a>Volgende stappen
 

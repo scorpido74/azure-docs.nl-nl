@@ -6,12 +6,12 @@ ms.topic: article
 author: rboucher
 ms.author: robb
 ms.date: 06/16/2020
-ms.openlocfilehash: 462358ab967d4ba26a265d7b5f401b995223815e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92d712aab6dcb52f64af340b3110e475c8da2b10
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85959839"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542604"
 ---
 # <a name="saved-queries-in-azure-monitor-log-analytics"></a>Opgeslagen query's in Azure Monitor Log Analytics
 
@@ -38,7 +38,7 @@ U kunt voorbeeld query's van twee verschillende locaties ontvangen.
 
 ### <a name="example-query-dialog"></a>Voorbeeld query dialoog venster
 
-Wanneer u de Log Analytics-ervaring voor het eerst opgeeft, wordt het *dialoog venster voorbeeld query's* automatisch weer gegeven.  U kunt deze ook openen door in de rechter bovenhoek van het scherm op **voorbeeld query's**te klikken.
+Wanneer u de Log Analytics-ervaring voor het eerst opgeeft, wordt het *dialoog venster voorbeeld query's* automatisch weer gegeven.  U kunt deze ook openen door in de rechter bovenhoek van het scherm op **voorbeeld query's** te klikken.
 
 ![Zijbalk](media/saved-queries/sidebar-2.png)
 
@@ -54,7 +54,7 @@ Elke voorbeeld query wordt weer gegeven door een kaart. U kunt snel de query's s
 
 U kunt alle dezelfde functionaliteit van de dialoog venster openen vanuit het paneel query's aan de rechter zijbalk van Log Analytics. U kunt de muis aanwijzer over een query naam bewegen om de beschrijving van de query en aanvullende functionaliteit op te halen.
 
-![Zijbalk](media/saved-queries/sidebar-3.png)
+![Scherm opname van het deel venster query's.](media/saved-queries/sidebar-3.png)
 
 ## <a name="finding-and-filtering-queries"></a>Query's zoeken en filteren
 
@@ -80,13 +80,13 @@ Wijzig de groepering van de query's door te klikken op de vervolg keuzelijst *gr
 Het dialoog venster ondersteunt groeperen op:
 
 - **Resource type** : een resource zoals gedefinieerd in azure, zoals een virtuele machine. Zie de [Naslag informatie over Azure monitor](/azure/azure-monitor/reference/tables/tables-resourcetype) tabellen voor een volledige toewijzing van Azure monitor logboeken/log Analytics tabellen naar resource type.  
-- **Categorie** : een type informatie zoals *beveiliging* of *controle*. Categorieën zijn identiek aan de categorieën die zijn gedefinieerd in het deel venster tabellen. Zie de [Naslag informatie over Azure monitor tabellen](/azure/azure-monitor/reference/tables/tables-category) voor een volledige lijst met categorieën.  
+- **Categorie** : een type informatie zoals *beveiliging* of *controle* . Categorieën zijn identiek aan de categorieën die zijn gedefinieerd in het deel venster tabellen. Zie de [Naslag informatie over Azure monitor tabellen](/azure/azure-monitor/reference/tables/tables-category) voor een volledige lijst met categorieën.  
 - **Oplossing** : een Azure monitor oplossing die is gekoppeld aan de query's
-- **Onderwerp** : het onderwerp van de voorbeeld query, zoals *activiteiten logboeken* of *app-logboeken*. De eigenschap onderwerp is uniek voor voorbeeld query's en kan verschillen op basis van het specifieke resource type.
+- **Onderwerp** : het onderwerp van de voorbeeld query, zoals *activiteiten logboeken* of *app-logboeken* . De eigenschap onderwerp is uniek voor voorbeeld query's en kan verschillen op basis van het specifieke resource type.
 
 De groeperings waarden fungeren ook als een actieve inhouds opgave. Als u op een van de waarden aan de linkerkant van het scherm klikt, wordt de weer gave query's rechts naar het item geklikt.
 
-### <a name="filter"></a>Filter
+### <a name="filter"></a>Filteren
 
 U kunt de query's ook filteren op basis van de bovenstaande GroupBy-waarden. In het dialoog venster voor beeld query worden de filters bovenaan gevonden.
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/07/2020
-ms.openlocfilehash: cbd1303417f008da476356a274dde30d7d02d36f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 389aee77ac56407f3a116d42ad62fbd94de1bb4e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89505502"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541941"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>Apache Hadoop-architectuur in HDInsight
 
@@ -37,7 +37,7 @@ Wanneer een MapReduce-toepassing wordt uitgevoerd op een cluster, biedt de Resou
 
 De Resource Manager voert ook een webserver proces uit dat een webgebruikersinterface biedt om de status van toepassingen te controleren.
 
-Wanneer een gebruiker een MapReduce-toepassing indient om uit te voeren op het cluster, wordt de toepassing verzonden naar de Resource Manager. De resource manager wijst op zijn beurt een container toe op beschik bare NodeManager-knoop punten. De NodeManager-knoop punten zijn waar de toepassing daad werkelijk wordt uitgevoerd. De eerste toegewezen container voert een speciale toepassing uit met de naam ApplicationMaster. Deze ApplicationMaster is verantwoordelijk voor het verkrijgen van resources, in de vorm van volgende containers, die nodig zijn om de ingediende toepassing uit te voeren. De ApplicationMaster onderzoekt de fasen van de toepassing, zoals de kaart fase en de fase verminderen, en factoren in hoeveel gegevens er moeten worden verwerkt. De ApplicationMaster vervolgens aanvragen (*onderhandelt*) de bronnen uit de resource manager namens de toepassing. De Resource Manager geeft resources van de NodeManagers in het cluster door aan de ApplicationMaster om deze te gebruiken voor het uitvoeren van de toepassing.
+Wanneer een gebruiker een MapReduce-toepassing indient om uit te voeren op het cluster, wordt de toepassing verzonden naar de Resource Manager. De resource manager wijst op zijn beurt een container toe op beschik bare NodeManager-knoop punten. De NodeManager-knoop punten zijn waar de toepassing daad werkelijk wordt uitgevoerd. De eerste toegewezen container voert een speciale toepassing uit met de naam ApplicationMaster. Deze ApplicationMaster is verantwoordelijk voor het verkrijgen van resources, in de vorm van volgende containers, die nodig zijn om de ingediende toepassing uit te voeren. De ApplicationMaster onderzoekt de fasen van de toepassing, zoals de kaart fase en de fase verminderen, en factoren in hoeveel gegevens er moeten worden verwerkt. De ApplicationMaster vervolgens aanvragen ( *onderhandelt* ) de bronnen uit de resource manager namens de toepassing. De Resource Manager geeft resources van de NodeManagers in het cluster door aan de ApplicationMaster om deze te gebruiken voor het uitvoeren van de toepassing.
 
 De NodeManagers voert de taken uit waaruit de toepassing is opgebouwd en rapporteert de voortgang en de status terug naar de ApplicationMaster. Met de ApplicationMaster in wordt de status van de toepassing weer gegeven in de Resource Manager. De Resource Manager retourneert alle resultaten naar de client.
 
@@ -53,12 +53,12 @@ Als u het verwijderen van een bestand uit uw opslag account ongedaan wilt maken,
 
 ### <a name="azure-storage"></a>Azure Storage
 
-* [Voorlopig verwijderen voor Azure Storage-blobs](../storage/blobs/storage-blob-soft-delete.md)
-* [BLOB verwijderen](https://docs.microsoft.com/rest/api/storageservices/undelete-blob)
+* [Voorlopig verwijderen voor Azure Storage-blobs](../storage/blobs/soft-delete-blob-overview.md)
+* [BLOB verwijderen](/rest/api/storageservices/undelete-blob)
 
 ### <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage Gen 1
 
-[Restore-AzDataLakeStoreDeletedItem](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem)
+[Restore-AzDataLakeStoreDeletedItem](/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem)
 
 ### <a name="azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen 2
 
@@ -66,7 +66,7 @@ Als u het verwijderen van een bestand uit uw opslag account ongedaan wilt maken,
 
 ## <a name="trash-purging"></a>Prullenbak verwijderen
 
-De `fs.trash.interval` eigenschap van **HDFS**de  >  **geavanceerde kern-site** van HDFS moet op de standaard waarde blijven `0` omdat u geen gegevens op het lokale bestands systeem hoeft op te slaan. Deze waarde heeft geen invloed op externe opslag accounts (WASB, ADLS GEN1, ABFS)
+De `fs.trash.interval` eigenschap van **HDFS** de  >  **geavanceerde kern-site** van HDFS moet op de standaard waarde blijven `0` omdat u geen gegevens op het lokale bestands systeem hoeft op te slaan. Deze waarde heeft geen invloed op externe opslag accounts (WASB, ADLS GEN1, ABFS)
 
 ## <a name="next-steps"></a>Volgende stappen
 

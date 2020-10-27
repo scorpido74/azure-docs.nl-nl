@@ -4,12 +4,12 @@ ms.author: glenga
 ms.date: 7/24/2019
 ms.topic: include
 ms.service: azure-functions
-ms.openlocfilehash: 1928a8238cd73087e3c199675574dd1395f4d76d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0159ceb6e5d6d64a7a9bda383396607e4ce05b84
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68881332"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164858"
 ---
 #### <a name="built-in-log-streaming"></a>Ingebouwde logboekstreaming
 
@@ -19,9 +19,12 @@ Gebruik de optie `logstream` om streaminglogboeken te ontvangen van een specifie
 func azure functionapp logstream <FunctionAppName>
 ```
 
+>[!NOTE]
+>De ingebouwde logboekstreaming is in Core Tools nog niet ingeschakeld voor functie-apps die worden uitgevoerd op Linux in een verbruiksabonnement. Voor deze hostingabonnementen moet u in plaats daarvan Live Metrics Stream gebruiken om de logboeken nagenoeg in realtime weer te geven.
+
 #### <a name="live-metrics-stream"></a>Live Metrics Stream
 
-U kunt de [Live Metrics Stream](../articles/azure-monitor/app/live-stream.md) voor uw functie-app ook in een nieuw browservenster weergeven door de optie `--browser` op te nemen, zoals in het volgende voorbeeld:
+U kunt de [Live Metrics Stream](../articles/azure-monitor/app/live-stream.md) voor uw functie-app in een nieuw browservenster weergeven door de optie `--browser` op te nemen, zoals in het volgende voorbeeld:
 
 ```bash
 func azure functionapp logstream <FunctionAppName> --browser

@@ -164,7 +164,7 @@
       href: recovery-plan-overview.md
     - name: Over migratie naar Azure
       href: migrate-overview.md
-    - name: Over op rollen gebaseerd toegangsbeheer met Site Recovery
+    - name: Over op rollen gebaseerd toegangsbeheer van Azure met Site Recovery
       href: site-recovery-role-based-linked-access-control.md
     - name: Over herstel na noodgevallen instellen naar een secundaire on-premises site
       items:

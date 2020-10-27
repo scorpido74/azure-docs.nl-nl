@@ -47,7 +47,7 @@ In deze zelfstudie vindt u informatie over onderwerpen als:
 Zorg voordat u begint voor het volgende:
 
 * U hebt de [Zelfstudie: Gegevens kopiëren naar Azure Data Box en deze gegevens controleren](data-box-deploy-copy-data.md).
-* Kopieertaken zijn voltooid en er zijn geen fouten op de pagina **Verbinding maken en kopiëren**. Voorbereiding voor verzending kan niet worden uitgevoerd als er kopieertaken worden uitgevoerd of als er fouten zijn op de pagina **Verbinding maken en kopiëren**.
+* Kopieertaken zijn voltooid en er zijn geen fouten op de pagina **Verbinding maken en kopiëren** . Voorbereiding voor verzending kan niet worden uitgevoerd als er kopieertaken worden uitgevoerd of als er fouten zijn op de pagina **Verbinding maken en kopiëren** .
 
 ## <a name="prepare-to-ship"></a>Voorbereiding voor verzending
 
@@ -84,7 +84,7 @@ Voer de volgende stappen uit als u het apparaat vanuit de VS, Canada of Europa r
 
 1. Zorg ervoor dat het apparaat uit staat en de kabels zijn verwijderd. 
 2. Rol het netsnoer op en plaats het veilig aan de achterzijde van het apparaat.
-3. Zorg ervoor dat het verzendlabel wordt weergegeven op het E-ink-scherm en plan met de vervoerder een tijdstip waarop het kan worden opgehaald. Neem contact op met de Microsoft-ondersteuning als het label beschadigd is of ontbreekt of niet wordt weergegeven op het e-inkscherm. Als het ondersteuningsteam dit aanraadt, gaat u in de Azure-portal naar **Overzicht > Verzendlabel downloaden**. Download het verzendlabel en bevestig dat op het apparaat. 
+3. Zorg ervoor dat het verzendlabel wordt weergegeven op het E-ink-scherm en plan met de vervoerder een tijdstip waarop het kan worden opgehaald. Neem contact op met de Microsoft-ondersteuning als het label beschadigd is of ontbreekt of niet wordt weergegeven op het e-inkscherm. Als het ondersteuningsteam dit aanraadt, gaat u in de Azure-portal naar **Overzicht > Verzendlabel downloaden** . Download het verzendlabel en bevestig dat op het apparaat. 
 4. Als u het apparaat retourneert, spreekt u met UPS een tijdstip af waarop het kan worden opgehaald. Ophalen van apparaat plannen:
 
     * Bel met UPS (gratis land-/regiospecifiek nummer).
@@ -92,7 +92,7 @@ Voer de volgende stappen uit als u het apparaat vanuit de VS, Canada of Europa r
     * Als het trackingnummer niet wordt vermeld, moet u bij het afhalen door UPS extra kosten betalen.
 
     In plaats van het ophalen te plannen, kunt u de Data Box ook zelf naar de dichtstbijzijnde inleverlocatie brengen.
-4. Nadat de Data Box door de vervoerder is opgehaald en gescand, verandert de orderstatus in de portal in **Opgehaald**. Er wordt ook een tracerings-id weergegeven.
+4. Nadat de Data Box door de vervoerder is opgehaald en gescand, verandert de orderstatus in de portal in **Opgehaald** . Er wordt ook een tracerings-id weergegeven.
 
 ::: zone target="chromeless"
 

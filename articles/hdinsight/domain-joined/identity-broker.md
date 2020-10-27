@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: 6d4539e5dbc7182386a60317a9ee45a986ffd61f
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 99ea17dad4f99cdab3fb44b8031e60e6cf69879c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999950"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543148"
 ---
 # <a name="azure-hdinsight-id-broker-preview"></a>Azure HDInsight ID Broker (preview-versie)
 
@@ -43,7 +43,7 @@ In dit diagram moet de-client (dat wil zeggen, een browser of app) eerst het OAu
 
 Er zijn nog steeds veel oudere toepassingen die alleen basis verificatie ondersteunen (dat wil zeggen, gebruikers naam en wacht woord). Voor deze scenario's kunt u HTTP-basis verificatie blijven gebruiken om verbinding te maken met de cluster gateways. In deze installatie moet u ervoor zorgen dat de netwerk verbinding van de gateway knooppunten naar het Active Directory Federation Services-eind punt (AD FS) wordt voor een directe regel van het gezichts vermogen van Gateway knooppunten.
 
-In het volgende diagram ziet u de basis verificatie stroom voor federatieve gebruikers. Eerst probeert de gateway de verificatie te volt ooien met behulp van de [ROPC-stroom](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc). Als er geen wacht woord-hashes zijn gesynchroniseerd met Azure AD, valt deze weer op het detecteren van het AD FS-eind punt en wordt de verificatie voltooid door toegang te krijgen tot het AD FS-eind punt.
+In het volgende diagram ziet u de basis verificatie stroom voor federatieve gebruikers. Eerst probeert de gateway de verificatie te volt ooien met behulp van de [ROPC-stroom](../../active-directory/develop/v2-oauth-ropc.md). Als er geen wacht woord-hashes zijn gesynchroniseerd met Azure AD, valt deze weer op het detecteren van het AD FS-eind punt en wordt de verificatie voltooid door toegang te krijgen tot het AD FS-eind punt.
 
 :::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="Diagram waarin de verificatie stroom met HDInsight ID Broker wordt weer gegeven.":::
 
@@ -54,7 +54,7 @@ Een Enterprise Security Package cluster maken waarbij HDInsight ID Broker is ing
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Volg de basis stappen voor het maken van een Enterprise Security Package cluster. Zie [een HDInsight-cluster maken met Enterprise Security Package](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)voor meer informatie.
-1. Selecteer **HDINSIGHT id Broker inschakelen**.
+1. Selecteer **HDINSIGHT id Broker inschakelen** .
 
 Met de functie HDInsight ID Broker wordt één extra virtuele machine aan het cluster toegevoegd. Deze VM is het knoop punt HDInsight ID Broker en bevat Server onderdelen ter ondersteuning van verificatie. Het knoop punt HDInsight ID Broker is een domein dat is gekoppeld aan het Azure AD DS-domein.
 
@@ -103,7 +103,7 @@ Als u een nieuwe rol met de naam `idbrokernode` met de volgende kenmerken aan he
 
 ## <a name="tool-integration"></a>Integratie van hulp programma
 
-HDInsight-hulpprogram ma's worden bijgewerkt naar systeem eigen ondersteuning voor OAuth. Gebruik deze hulpprogram ma's voor moderne, op OAuth gebaseerde toegang tot de clusters. De HDInsight [IntelliJ-invoeg toepassing](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#integrate-with-hdinsight-identity-broker-hib) kan worden gebruikt voor toepassingen op basis van Java, zoals scala. [Spark-en Hive-Hulpprogram ma's voor Visual Studio code](https://docs.microsoft.com/azure/hdinsight/hdinsight-for-vscode) kunnen worden gebruikt voor PySpark en Hive-taken. De hulpprogram ma's ondersteunen zowel batch-als interactieve taken.
+HDInsight-hulpprogram ma's worden bijgewerkt naar systeem eigen ondersteuning voor OAuth. Gebruik deze hulpprogram ma's voor moderne, op OAuth gebaseerde toegang tot de clusters. De HDInsight [IntelliJ-invoeg toepassing](../spark/apache-spark-intellij-tool-plugin.md#integrate-with-hdinsight-identity-broker-hib) kan worden gebruikt voor toepassingen op basis van Java, zoals scala. [Spark-en Hive-Hulpprogram ma's voor Visual Studio code](../hdinsight-for-vscode.md) kunnen worden gebruikt voor PySpark en Hive-taken. De hulpprogram ma's ondersteunen zowel batch-als interactieve taken.
 
 ## <a name="ssh-access-without-a-password-hash-in-azure-ad-ds"></a>SSH-toegang zonder wacht woord-hash in azure AD DS
 
@@ -117,11 +117,11 @@ Als u SSH wilt maken naar een virtuele machine die lid is van een domein of als 
 
 Als uw organisatie geen wacht woord-hashes synchroniseert met Azure AD DS, kunt u als best practice één Cloud gebruiker maken in azure AD. Wijs deze vervolgens als cluster beheerder toe wanneer u het cluster maakt en gebruik dat voor beheer doeleinden. U kunt deze gebruiken om toegang te krijgen tot de virtuele machines via SSH.
 
-Zie [deze hand leiding](https://docs.microsoft.com/azure/hdinsight/domain-joined/domain-joined-authentication-issues)voor informatie over het oplossen van problemen met verificatie.
+Zie [deze hand leiding](./domain-joined-authentication-issues.md)voor informatie over het oplossen van problemen met verificatie.
 
 ## <a name="clients-using-oauth-to-connect-to-an-hdinsight-gateway-with-hdinsight-id-broker"></a>Clients die gebruikmaken van OAuth om verbinding te maken met een HDInsight-gateway met HDInsight ID Broker
 
-In het installatie programma voor de HDInsight-ID-Broker kunnen aangepaste apps en clients die verbinding maken met de gateway, worden bijgewerkt om eerst het vereiste OAuth-token te verkrijgen. Volg de stappen in [dit document](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app) om het token te verkrijgen met de volgende informatie:
+In het installatie programma voor de HDInsight-ID-Broker kunnen aangepaste apps en clients die verbinding maken met de gateway, worden bijgewerkt om eerst het vereiste OAuth-token te verkrijgen. Volg de stappen in [dit document](../../storage/common/storage-auth-aad-app.md) om het token te verkrijgen met de volgende informatie:
 
 *   OAuth-resource-URI: `https://hib.azurehdinsight.net` 
 *   AppId: 7865c1d2-f040-46cc-875f-831a1ef6a28a

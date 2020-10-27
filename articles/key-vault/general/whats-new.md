@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: reference
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 194b0122987d4fdc5d100112c60006588d28f96c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fac5fad51137cd08f2498db132768263a770430d
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826913"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203871"
 ---
 # <a name="whats-new-for-azure-key-vault"></a>Nieuwe functies voor Azure Key Vault
 
@@ -27,7 +27,7 @@ Dit zijn de nieuwe functies in Azure Key Vault. Nieuwe functies en verbeteringen
 
 ### <a name="soft-delete-on-by-default"></a>Voorlopig verwijderen standaard ingeschakeld
 
-Vanaf eind 2020 is de functie **Voorlopig verwijderen standaard ingeschakeld voor alle sleutelkluizen**, zowel nieuwe als bestaande. Raadpleeg het artikel [Voorlopig verwijderen wordt ingeschakeld in alle sleutelkluizen](soft-delete-change.md) voor de volledige details over deze wijziging die fouten kan veroorzaken, en voor de stappen voor het vinden en vooraf bijwerken van betrokken sleutelkluizen. 
+Vanaf eind 2020 is de functie **Voorlopig verwijderen standaard ingeschakeld voor alle sleutelkluizen** , zowel nieuwe als bestaande. Raadpleeg het artikel [Voorlopig verwijderen wordt ingeschakeld in alle sleutelkluizen](soft-delete-change.md) voor de volledige details over deze wijziging die fouten kan veroorzaken, en voor de stappen voor het vinden en vooraf bijwerken van betrokken sleutelkluizen. 
 
 ### <a name="azure-tls-certificate-changes"></a>Wijzigingen in Azure TLS-certificaat  
 
@@ -37,7 +37,7 @@ Microsoft werkt Azure-services bij om TLS-certificaten te gebruiken van een ande
 
 - Deze transitie is op 7 juli 2020 begonnen in [Azure AD](/azure/active-directory)-services (Active Directory).
 - Alle nieuw gemaakte Azure TLS/SSL-eindpunten bevatten bijgewerkte certificaten die zijn gekoppeld aan de nieuwe basis-CA's.
-- Bestaande Azure-eindpunten worden vanaf 13 augustus 2020 gefaseerd overgezet. Dit wordt op 26 oktober 2020 voltooid.
+- Bestaande Azure-eindpunten worden vanaf 13 augustus 2020 gefaseerd overgezet.
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) en [DPS](/azure/iot-dps/) blijven in de Baltimore CyberTrust Root CA, maar de tussenliggende CA's veranderen. Zie de volgende blobpost voor de volledige details: [Azure IoT TLS: Changes are coming! (…and why you care)](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518) Er komen wijzigingen aan (en waarom u dat iets kan schelen).
 - [Azure Storage](/azure/storage) blijft aanwezig in de basis-CA van Baltimore CyberTrust, maar de tussenliggende CA's veranderen. Zie de volgende blobpost voor de volledige details: [Azure Storage TLS: Changes are coming! (…and why you care)](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518) Er komen wijzigingen aan (en waarom u dat iets kan schelen).
 
@@ -80,11 +80,11 @@ Hier zijn enkele manieren om vast te stellen of uw toepassing wordt beïnvloed:
 - Als u een toepassing hebt die integreert met Azure-API's of andere Azure-services, en u niet zeker weet of de toepassing gebruikmaakt van certificaatkoppeling, neemt u contact op met de leverancier.
 
 - Voor verschillende besturingssystemen en taalruntimes die communiceren met Azure-services, zijn mogelijk extra stappen vereist om de certificaatketen juist te bouwen met deze nieuwe basis-CA's.
-    - **Linux**: Voor veel distributies moet u de CA's toevoegen aan /etc/ssl/certs. Raadpleeg de documentatie van de distributie voor specifieke instructies.
-    - **Java**: Controleer of het Java-sleutelarchief de CA's bevat die hierboven worden vermeld.
-    - **Windows uitgevoerd in omgevingen zonder verbinding**: Voor systemen die worden uitgevoerd in omgevingen zonder verbinding, moeten de nieuwe basis-CA's worden toegevoegd aan het archief Vertrouwde basiscertificeringsinstanties, en de tussenliggende CA's aan het archief Tussenliggende certificeringsinstanties.
-    - **Android**: Raadpleeg de documentatie voor uw apparaat en versie van Android.
-    - **Andere hardwareapparaten, met name IoT**: Neem contact op met de fabrikant van het apparaat.
+    - **Linux** : Voor veel distributies moet u de CA's toevoegen aan /etc/ssl/certs. Raadpleeg de documentatie van de distributie voor specifieke instructies.
+    - **Java** : Controleer of het Java-sleutelarchief de CA's bevat die hierboven worden vermeld.
+    - **Windows uitgevoerd in omgevingen zonder verbinding** : Voor systemen die worden uitgevoerd in omgevingen zonder verbinding, moeten de nieuwe basis-CA's worden toegevoegd aan het archief Vertrouwde basiscertificeringsinstanties, en de tussenliggende CA's aan het archief Tussenliggende certificeringsinstanties.
+    - **Android** : Raadpleeg de documentatie voor uw apparaat en versie van Android.
+    - **Andere hardwareapparaten, met name IoT** : Neem contact op met de fabrikant van het apparaat.
 
 - Als u een omgeving hebt waarin firewallregels zijn ingesteld om alleen uitgaande oproepen toe te staan naar specifieke CRL-downloadlocaties (certificaatintrekkingslijst) en/of OCSP-verificatielocaties (Online Certificate Status Protocol). U hebt de volgende CRL- en OCSP-URL's nodig:
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/30/2020
-ms.openlocfilehash: 1e34c1002be3dffb719490fee01e481e8df45901
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc8162f3a7ca8744a94aba039996275b5f13c727
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532559"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533407"
 ---
 # <a name="scenario-azure-hdinsight-clusters-with-disk-encryption-lose-key-vault-access"></a>Scenario: Azure HDInsight-clusters met schijf versleuteling, verlies Key Vault toegang
 
@@ -26,7 +26,7 @@ De RHC-waarschuwing (Resource Health Center) `The HDInsight cluster is unable to
 
 De waarschuwing zorgt ervoor dat KV toegankelijk is vanaf de cluster knooppunten, waardoor de netwerk verbinding, de status van KV en het toegangs beleid voor de door de gebruiker toegewezen beheerde identiteit worden gegarandeerd. Deze waarschuwing is slechts een waarschuwing dat het afsluiten van de Broker op het volgende knoop punt opnieuw wordt opgestart. het cluster blijft functioneren totdat knoop punten opnieuw worden opgestart.
 
-Navigeer naar Apache Ambari UI voor meer informatie over de waarschuwing van **schijf versleuteling Key Vault status**. Deze waarschuwing bevat details over de reden voor de verificatie fout.
+Navigeer naar Apache Ambari UI voor meer informatie over de waarschuwing van **schijf versleuteling Key Vault status** . Deze waarschuwing bevat details over de reden voor de verificatie fout.
 
 ## <a name="resolution"></a>Oplossing
 
@@ -36,7 +36,7 @@ Bekijk [Azure Key Vault Beschik baarheid en redundantie](../../key-vault/general
 
 ### <a name="kv-accidental-deletion"></a>Onbedoeld verwijderen van KV
 
-* Herstellen van verwijderde sleutel op KV naar automatisch herstellen. Zie [verwijderde sleutel herstellen](https://docs.microsoft.com/rest/api/keyvault/recoverdeletedkey)voor meer informatie.
+* Herstellen van verwijderde sleutel op KV naar automatisch herstellen. Zie [verwijderde sleutel herstellen](/rest/api/keyvault/recoverdeletedkey)voor meer informatie.
 * Neem contact op met het team van KV om onbedoelde verwijderingen te herstellen.
 
 ### <a name="kv-access-policy-changed"></a>Toegangs beleid voor KV is gewijzigd
@@ -88,4 +88,4 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](../../azure-portal/supportability/how-to-create-azure-support-request.md)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

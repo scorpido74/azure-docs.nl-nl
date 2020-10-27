@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
-ms.openlocfilehash: f9dfcb930e3fe4f862f9f51ff00270d0eb0c66ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9564e149055dcabf205694b3cf6c3ddc03163037
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77539107"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533832"
 ---
 # <a name="scenario-apache-ambari-stale-alerts-in-azure-hdinsight"></a>Scenario: Apache Ambari verouderde waarschuwingen in azure HDInsight
 
@@ -46,17 +46,17 @@ U kunt de waarde van een afzonderlijk waarschuwings interval verhogen op basis v
 
 1. Selecteer in de Apache Ambari-gebruikers interface het tabblad **waarschuwingen** .
 1. Selecteer de naam van de waarschuwings definitie die u wilt.
-1. Selecteer in de definitie **bewerken**.
-1. Verhoog de waarde voor het **controle-interval** en selecteer vervolgens **Opslaan**.
+1. Selecteer in de definitie **bewerken** .
+1. Verhoog de waarde voor het **controle-interval** en selecteer vervolgens **Opslaan** .
 
 ### <a name="increase-the-alert-interval-time-for-ambari-server-alerts"></a>De waarschuwings interval tijd voor Ambari-server waarschuwingen verhogen
 
 1. Selecteer in de Apache Ambari-gebruikers interface het tabblad **waarschuwingen** .
-1. Selecteer in de vervolg keuzelijst **groepen** de optie **AMBARI standaard**.
+1. Selecteer in de vervolg keuzelijst **groepen** de optie **AMBARI standaard** .
 1. Selecteer de waarschuwing **Ambari server waarschuwingen** .
-1. Selecteer in de definitie **bewerken**.
+1. Selecteer in de definitie **bewerken** .
 1. Verhoog de waarde voor het **controle-interval** .
-1. Verhoog de waarde voor **interval vermenigvuldiger** en selecteer vervolgens **Opslaan**.
+1. Verhoog de waarde voor **interval vermenigvuldiger** en selecteer vervolgens **Opslaan** .
 
 ### <a name="disable-and-reenable-the-alert"></a>De waarschuwing uitschakelen en opnieuw inschakelen
 
@@ -65,10 +65,10 @@ Als u een verouderde waarschuwing wilt verwijderen, schakelt u deze opnieuw in:
 1. Selecteer in de Apache Ambari-gebruikers interface het tabblad **waarschuwingen** .
 1. Selecteer de naam van de waarschuwings definitie die u wilt.
 1. Selecteer de optie **ingeschakeld** in het uiterst rechtse deel van de gebruikers interface van de definitie.
-1. Selecteer in het pop-upvenster **bevestigen** de optie **uitschakelen**.
+1. Selecteer in het pop-upvenster **bevestigen** de optie **uitschakelen** .
 1. Wacht een paar seconden totdat alle waarschuwingen die op de pagina worden weer gegeven, moeten worden gewist.
 1. Selecteer in de definitie **uitgeschakeld** in het uiterst rechtse deel van de gebruikers interface.
-1. Selecteer in het pop-upvenster **bevestigen** de optie **inschakelen**.
+1. Selecteer in het pop-upvenster **bevestigen** de optie **inschakelen** .
 
 ### <a name="increase-the-alert-grace-period"></a>De respijt periode van de waarschuwing verhogen
 
@@ -84,6 +84,6 @@ Als uw probleem hier niet is vermeld of als u het niet kunt oplossen, gaat u naa
 
 * Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) op Twitter. Dit is het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. De Azure-community wordt verbonden met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Als u deze wilt weer geven, selecteert u Help (**?**) in het menu van de portal of opent u het deel venster **Help + ondersteuning** . Zie [een Azure-ondersteunings aanvraag maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. 
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Als u deze wilt weer geven, selecteert u Help ( **?** ) in het menu van de portal of opent u het deel venster **Help + ondersteuning** . Zie [een Azure-ondersteunings aanvraag maken](../../azure-portal/supportability/how-to-create-azure-support-request.md)voor meer informatie. 
 
   Ondersteuning voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement. Technische ondersteuning is beschikbaar via de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

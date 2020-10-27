@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/10/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: d0015868f6b53c2903b83795839e2dbcffd09ce4
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: ea1ac064799b0cede1de82851a514a2b389f20aa
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92116683"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92499138"
 ---
 De volgende tabellen bevatten quota en limieten die specifiek zijn voor [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). Zie [Prijzen voor Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/) voor prijsinformatie over Event Hubs.
 
@@ -47,6 +47,8 @@ De volgende tabel geeft de limieten weer die mogelijk anders zijn voor basic- en
 ### <a name="dedicated-tier"></a>Toegewezen laag
 De Event Hubs Dedicated-aanbieding wordt gefactureerd tegen een vaste maandelijkse prijs, met een minimum van 4 uur gebruik. De Dedicated-laag biedt alle functies van het Standard-abonnement, maar met schaalcapaciteit voor grote bedrijven en limieten voor klanten met veeleisende werkbelastingen. 
 
+Raadpleeg dit [document](https://docs.microsoft.com/azure/event-hubs/event-hubs-dedicated-cluster-create-portal) voor meer informatie over hoe u toegewezen Event Hubs-clusters maakt met Azure-portal.
+
 | Functie | Limieten |
 | --- | ---|
 | Bandbreedte |  20 CU's |
@@ -63,7 +65,7 @@ De Event Hubs Dedicated-aanbieding wordt gefactureerd tegen een vaste maandelijk
 
 ### <a name="schema-registry-limitations"></a>Beperkingen voor schemaregisters
 
-#### <a name="limits-that-are-the-same-for-standard-and-dedicated-tiers"></a>Limieten die dezelfde zijn voor **standard** en **toegewezen**-lagen 
+#### <a name="limits-that-are-the-same-for-standard-and-dedicated-tiers"></a>Limieten die dezelfde zijn voor **standard** en **toegewezen** -lagen 
 | Functie | Limiet | 
 | --- |  --- | -- |
 | Maximumlengte van een schemagroepnaam | 50 |  
@@ -74,7 +76,7 @@ De Event Hubs Dedicated-aanbieding wordt gefactureerd tegen een vaste maandelijk
 | Grootte in bytes per groepeigenschapswaarde | 1024 | 
 
 
-#### <a name="limits-that-are-different-for-standard-and-dedicated-tiers"></a>Limieten die anders zijn voor **standard** en **toegewezen**-lagen 
+#### <a name="limits-that-are-different-for-standard-and-dedicated-tiers"></a>Limieten die anders zijn voor **standard** en **toegewezen** -lagen 
 
 | Limiet | Standard | Toegewezen | 
 | --- |  --- | -- | --- |

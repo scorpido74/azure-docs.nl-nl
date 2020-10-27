@@ -241,7 +241,7 @@ U vindt [hier](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-contro
 
 ### <a name="localizing-the-map"></a>Lokaliseren van de kaart
 
-Lokalisatie is belangrijk als uw doelgroep zich in meerdere landen bevindt of verschillende talen spreekt.
+Lokalisatie is belangrijk als uw doelgroep zich in meerdere landen/regio's bevindt of verschillende talen spreekt.
 
 **Vóór: Bing Kaarten**
 
@@ -506,7 +506,7 @@ map.layers.insert(layer);
 Als u een HTML-markering in Azure Maps wilt aanpassen, geeft u een HTML-`string` of `HTMLElement` door aan de optie `htmlContent` van de markering. In Azure Maps wordt een `anchor`-optie gebruikt om de relatieve positie van de markering ten opzichte van de positiecoördinaat op te geven met behulp van een van de negen gedefinieerde referentiepunten: center, top, bottom, left, right, top-left, top-right, bottom-left en bottom-right. De inhoud is verankerd en is standaard ingesteld op bottom (het midden aan de onderzijde aan de HTML-inhoud). Om het gemakkelijker te maken code te migreren vanuit Bing Kaarten, stelt u het anker in op top-left en gebruikt u vervolgens de optie `offset` met de offset die wordt gebruikt in Bing Kaarten. De offsets in Azure Maps worden in de tegenovergestelde richting verplaatst van de offsets in Bing Kaarten. Vermenigvuldig deze dus met -1.
 
 > [!TIP]
-> Voeg `pointer-events:none` als stijl toe aan de HTML-inhoud om het standaardgedrag voor slepen in MS Edge uit te schakelen, waardoor een ongewenst pictogram wordt weergegeven.
+> Voeg `pointer-events:none` als stijl toe aan de HTML-inhoud om het standaardgedrag voor slepen in Microsoft Edge uit te schakelen, waardoor een ongewenst pictogram wordt weergegeven.
 
 ```html
 map.markers.add(new atlas.HtmlMarker({
