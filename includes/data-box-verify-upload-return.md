@@ -12,11 +12,11 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 10/01/2020
 ms.locfileid: "91631530"
 ---
-Wanneer Microsoft het apparaat heeft ontvangen en gescand, wordt de orderstatus bijgewerkt naar **Ontvangen**. Het apparaat wordt vervolgens fysiek gecontroleerd op schade of op tekenen dat ermee is geknoeid.
+Wanneer Microsoft het apparaat heeft ontvangen en gescand, wordt de orderstatus bijgewerkt naar **Ontvangen** . Het apparaat wordt vervolgens fysiek gecontroleerd op schade of op tekenen dat ermee is geknoeid.
 
 Nadat de controle is uitgevoerd, wordt de Data Box met het netwerk in het Azure-datacenter verbonden. Het kopiëren van de gegevens start automatisch. Afhankelijk van de gegevensgrootte kan de kopieerbewerking enkele uren tot enkele dagen duren. U kunt de voortgang van de kopieertaak bewaken via de portal.
 
-Nadat de kopie is voltooid, wordt de orderstatus bijgewerkt naar **Voltooid**.
+Nadat de kopie is voltooid, wordt de orderstatus bijgewerkt naar **Voltooid** .
 
 Controleer of uw gegevens zijn geüpload naar Azure voordat u deze uit de bron verwijdert. Uw gegevens kunnen zich bevinden in:
 

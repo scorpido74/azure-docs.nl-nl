@@ -16,11 +16,11 @@ De laatste stap is de voorbereiding van het apparaat voor verzending. In deze st
 > [!IMPORTANT]
 > Voorbereiding voor verzending is vereist omdat gegevens die niet aan de naamgevingsregels van Azure voldoen, worden gemarkeerd. Deze stap voorkomt mogelijke fouten bij het uploaden van gegevens vanwege gegevens die niet voldoen.
 
-1. Ga naar **Voorbereiden voor verzending** en klik op **Voorbereiden starten**. Standaard worden er controlesommen berekend tijdens het kopiëren van gegevens. Deze berekening wordt afgerond tijdens de stap Voorbereiding voor verzending, waarna er een lijst met bestanden (een *stuklijst*) wordt opgesteld. Het berekenen van de controlesom kan, afhankelijk van de grootte van uw gegevens, uren tot dagen duren. 
+1. Ga naar **Voorbereiden voor verzending** en klik op **Voorbereiden starten** . Standaard worden er controlesommen berekend tijdens het kopiëren van gegevens. Deze berekening wordt afgerond tijdens de stap Voorbereiding voor verzending, waarna er een lijst met bestanden (een *stuklijst* ) wordt opgesteld. Het berekenen van de controlesom kan, afhankelijk van de grootte van uw gegevens, uren tot dagen duren. 
    
     ![Voorbereiding voor verzending 1](media/data-box-prepare-to-ship/prepare-to-ship1.png)
 
-    Als u om een bepaalde reden wilt stoppen met de voorbereiding van het apparaat, klikt u op **Voorbereiding stoppen**. U kunt de voorbereiding voor verzending later hervatten.
+    Als u om een bepaalde reden wilt stoppen met de voorbereiding van het apparaat, klikt u op **Voorbereiding stoppen** . U kunt de voorbereiding voor verzending later hervatten.
         
     ![Voorbereiding voor verzending 2](media/data-box-prepare-to-ship/prepare-to-ship2.png)
     
@@ -30,7 +30,7 @@ De laatste stap is de voorbereiding van het apparaat voor verzending. In deze st
 
     Als u meer gegevens naar het apparaat wilt kopiëren, kunt u het apparaat ontgrendelen, meer gegevens kopiëren en de voorbereiding voor verzending opnieuw uitvoeren.
 
-    Als deze stap fouten bevat, wordt de status bijgewerkt naar *Scan voltooid met fouten*. Ontgrendel het apparaat en ga naar de pagina **Verbinding maken en kopiëren**, download de lijst met problemen en los de fouten op.
+    Als deze stap fouten bevat, wordt de status bijgewerkt naar *Scan voltooid met fouten* . Ontgrendel het apparaat en ga naar de pagina **Verbinding maken en kopiëren** , download de lijst met problemen en los de fouten op.
 
     ![Voorbereiding voor verzending 1](media/data-box-prepare-to-ship/prepare-to-ship4.png)
 
@@ -45,6 +45,6 @@ De laatste stap is de voorbereiding van het apparaat voor verzending. In deze st
     3. Selecteer en download de verzendinstructies voor het apparaat. De verzendinstructies verschillen afhankelijk van het land waarin u zich bevindt.
     4. Als het verzendlabel niet wordt weer gegeven in de E-ink, kunt u het label voor omgekeerde verzending hier downloaden. 
 
-5. Schakel het apparaat uit. Ga naar de pagina **Uitschakelen of opnieuw opstarten** en klik op **Afsluiten**. Klik op **OK** om verder te gaan als u om bevestiging wordt gevraagd.
+5. Schakel het apparaat uit. Ga naar de pagina **Uitschakelen of opnieuw opstarten** en klik op **Afsluiten** . Klik op **OK** om verder te gaan als u om bevestiging wordt gevraagd.
 
 6. Verwijder de kabels. U moet het apparaat vervolgens naar Microsoft verzenden.

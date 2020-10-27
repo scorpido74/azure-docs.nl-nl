@@ -32,9 +32,9 @@ Bouw met behulp van C# een chatbot met ingebouwd taalbegrip (LUIS). De bot is ge
 
 ## <a name="create-a-web-app-bot-resource"></a>Een web-app-botresource maken
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com) de optie **Nieuwe resource maken**.
+1. Selecteer in de [Azure-portal](https://portal.azure.com) de optie **Nieuwe resource maken** .
 
-1. Zoek via het zoekvak naar **Web-app-bot** en selecteer deze optie. Selecteer **Maken**.
+1. Zoek via het zoekvak naar **Web-app-bot** en selecteer deze optie. Selecteer **Maken** .
 
 1. In **Bot Service** geeft u de vereiste informatie op:
 
@@ -59,7 +59,7 @@ Bouw met behulp van C# een chatbot met ingebouwd taalbegrip (LUIS). De bot is ge
     |SDK-taal|Computertaal van de bot|**C#**|
     |Bot|Type bot|**Basisbot**|
 
-1. Selecteer **Maken**. Hiermee maakt u de botservice en implementeert u deze in Azure. Bij dit proces wordt een LUIS-app gemaakt met de naam `luis-csharp-bot-XXXX`. Deze naam is gebaseerd op de app-naam /Azure Bot Service.
+1. Selecteer **Maken** . Hiermee maakt u de botservice en implementeert u deze in Azure. Bij dit proces wordt een LUIS-app gemaakt met de naam `luis-csharp-bot-XXXX`. Deze naam is gebaseerd op de app-naam /Azure Bot Service.
 
     > [!div class="mx-imgBorder"]
     > [![Een web-app-bot maken](./media/bfv4-csharp/create-web-app-service.png)](./media/bfv4-csharp/create-web-app-service.png#lightbox)
@@ -81,7 +81,7 @@ Bij het maken van de botservice wordt ook een nieuwe LUIS-app met intenties en v
 
 ## <a name="test-the-bot-in-web-chat"></a>De bot testen in een webgesprek
 
-1. Selecteer in de Azure Portal voor de nieuwe bot **Testen in webgesprek**.
+1. Selecteer in de Azure Portal voor de nieuwe bot **Testen in webgesprek** .
 1. Voer in het tekstvak **Typ uw bericht** de tekst `Book a flight from Seattle to Berlin tomorrow` in. De bot vraagt u te bevestigen dat u een vlucht wilt boeken.
 
     ![Schermopname van de Azure-portal, voer de tekst 'hello' in.](./media/bfv4-nodejs/ask-bot-question-in-portal-test-in-web-chat.png)
@@ -92,13 +92,13 @@ Bij het maken van de botservice wordt ook een nieuwe LUIS-app met intenties en v
 
 Als u de code van de web-app-bot verder wilt ontwikkelen, downloadt u de code en gebruikt u deze op uw lokale computer.
 
-1. In de Azure-portal selecteert u **Bouwen** in het gedeelte **Botbeheer**.
+1. In de Azure-portal selecteert u **Bouwen** in het gedeelte **Botbeheer** .
 
-1. Selecteer **Broncode bot downloaden**.
+1. Selecteer **Broncode bot downloaden** .
 
     [![Download de broncode van de web-app-bot voor de basisbot](../../../includes/media/cognitive-services-luis/bfv4/download-code.png)](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
 
-1. Wanneer in het pop-updialoogvenster de vraag **App-instellingen opnemen in het gedownloade ZIP-bestand?** wordt weergegeven, selecteert u **Ja**.
+1. Wanneer in het pop-updialoogvenster de vraag **App-instellingen opnemen in het gedownloade ZIP-bestand?** wordt weergegeven, selecteert u **Ja** .
 
 1. Als de broncode is ingepakt, ziet u een bericht met een link voor het downloaden van de code. Selecteer de link.
 
@@ -106,7 +106,7 @@ Als u de code van de web-app-bot verder wilt ontwikkelen, downloadt u de code en
 
 ## <a name="review-code-to-send-utterance-to-luis-and-get-response"></a>Code voor het verzenden van een uiting naar LUIS en het ontvangen van een antwoord controleren
 
-1. Als u de gebruikersuiting wilt verzenden naar het LUIS-voorspellingseindpunt, opent u het bestand **FlightBookingRecognizer.js**. Hier wordt de uiting die de gebruiker heeft ingevoerd in de bot naar LUIS verzonden. Het antwoord van LUIS wordt geretourneerd op basis van de methode **RecognizeAsync**.
+1. Als u de gebruikersuiting wilt verzenden naar het LUIS-voorspellingseindpunt, opent u het bestand **FlightBookingRecognizer.js** . Hier wordt de uiting die de gebruiker heeft ingevoerd in de bot naar LUIS verzonden. Het antwoord van LUIS wordt geretourneerd op basis van de methode **RecognizeAsync** .
 
     ```csharp
     // Copyright (c) Microsoft Corporation. All rights reserved.
@@ -316,15 +316,15 @@ Start de bot in Visual Studio 2019. Er wordt een browservenster geopend met de w
 
 ## <a name="use-the-bot-framework-emulator-to-test-the-bot"></a>De Bot Framework-emulator gebruiken om de bot te testen
 
-1. Start de Bot Framework-emulator en selecteer **Bot openen**.
+1. Start de Bot Framework-emulator en selecteer **Bot openen** .
 1. Voer in het pop-updialoogvenster **Een bot openen** uw bot-URL in, zoals `http://localhost:3978/api/messages`. De route `/api/messages` is het webadres voor de bot.
-1. Voer de **Microsoft-app-id** en het **Microsoft-app-wachtwoord** in. U vindt deze in het bestand **appsettings.json** in de hoofdmap van de botcode die u hebt gedownload. Selecteer vervolgens **Verbinding maken**.
+1. Voer de **Microsoft-app-id** en het **Microsoft-app-wachtwoord** in. U vindt deze in het bestand **appsettings.json** in de hoofdmap van de botcode die u hebt gedownload. Selecteer vervolgens **Verbinding maken** .
 
 1. Voer in de Bot Framework-emulator `Book a flight from Seattle to Berlin tomorrow` in en ontvang hetzelfde antwoord voor de basisbot dat u hebt ontvangen bij **Testen in webgesprek** in een eerdere sectie.
 
     [![Schermopname toont de Bot Framework Emulator met een basic-bot-antwoord.](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
 
-1. Selecteer **Ja**. De bot reageert met een overzicht van de bijbehorende acties.
+1. Selecteer **Ja** . De bot reageert met een overzicht van de bijbehorende acties.
 1. Selecteer in het logboek van de Bot Framework-emulator de regel die `<- trace LuisV3 Trace` bevat. Hiermee wordt het JSON-antwoord van LUIS voor de intentie en entiteiten van de uiting weergegeven.
 
     [![Schermopname toont een basic-bot-antwoord met de LuisV3-tracering geselecteerd en het JSON-antwoord gemarkeerd.](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
