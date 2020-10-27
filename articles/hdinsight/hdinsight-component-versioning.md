@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 08/13/2020
-ms.openlocfilehash: 15d7b11ed49880a81e52c48a93a72e1491a5b645
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47e2211be478a16238d35eeb5219cf6e785a6979
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89394326"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547568"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Apache-onderdelen en-versies die beschikbaar zijn voor Azure HDInsight
 
@@ -96,7 +96,7 @@ Deze tabel geeft een lijst van de versies van HDInsight die beschikbaar zijn in 
 | HDInsight 3,6 ML-Services      | 9.3               | 31 december 2020                      | 31 december 2020                |
 
 > [!NOTE]
-> Nadat de ondersteuning voor een cluster versie is verlopen, is deze mogelijk niet meer beschikbaar via de Azure Portal. In sommige gevallen blijven cluster versies beschikbaar met behulp van de para meter **Version** in de Windows Power shell [New-AzHDInsightCluster-](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) opdracht en de .NET SDK tot de datum waarop de versie is uitgevallen.
+> Nadat de ondersteuning voor een cluster versie is verlopen, is deze mogelijk niet meer beschikbaar via de Azure Portal. In sommige gevallen blijven cluster versies beschikbaar met behulp van de para meter **Version** in de Windows Power shell [New-AzHDInsightCluster-](/powershell/module/az.hdinsight/new-azhdinsightcluster) opdracht en de .NET SDK tot de datum waarop de versie is uitgevallen.
 
 ### <a name="retired-versions"></a>Buiten gebruik gestelde versies
 
@@ -119,7 +119,7 @@ Deze tabel geeft een lijst van de versies van HDInsight die niet beschikbaar zij
 
 ## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>Service Level overeenkomst voor HDInsight-cluster versies
 
-De Service Level Agreement wordt gedefinieerd als een _ondersteunings venster_. Een ondersteunings venster is de periode waarin een HDInsight-versie wordt ondersteund door de klanten service en ondersteuning van micro soft. Als de versie de _verval datum_van de ondersteuning heeft door gegeven, bevindt het HDInsight-cluster zich buiten het ondersteunings venster. Ondersteuning voor verloop tijd van HDInsight-versie X (nadat een nieuwere X + 1-versie beschikbaar is), is de volgende:
+De Service Level Agreement wordt gedefinieerd als een _ondersteunings venster_ . Een ondersteunings venster is de periode waarin een HDInsight-versie wordt ondersteund door de klanten service en ondersteuning van micro soft. Als de versie de _verval datum_ van de ondersteuning heeft door gegeven, bevindt het HDInsight-cluster zich buiten het ondersteunings venster. Ondersteuning voor verloop tijd van HDInsight-versie X (nadat een nieuwere X + 1-versie beschikbaar is), is de volgende:
 
 - **Formule 1:** 180 dagen toevoegen aan de datum waarop de versie X van het HDInsight-cluster is uitgebracht.
 - **Formule 2:** Voeg 90 dagen toe aan de datum waarop de versie van het HDInsight-cluster, X + 1, beschikbaar wordt gemaakt in de Azure Portal.

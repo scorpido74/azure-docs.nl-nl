@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
-ms.openlocfilehash: 9794dd47949dc7dea891893dbcf261808ab335fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2a2c734b256ad934b7a17d7cefd1783b406e766
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86521374"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537181"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>On-premises Apache Hadoop clusters migreren naar de aanbevolen procedures voor het migreren van Azure HDInsight-gegevens
 
@@ -24,15 +24,15 @@ Dit artikel bevat aanbevelingen voor het migreren van gegevens naar Azure HDInsi
 Er zijn twee belang rijke opties voor het migreren van gegevens van on-premises naar Azure-omgeving:
 
 * Gegevens overdragen via het netwerk met TLS
-    * Via internet: u kunt gegevens overdragen naar Azure Storage via een reguliere Internet verbinding met een van de volgende hulpprogram ma's, zoals: Azure Storage Explorer, AzCopy, Azure Power shell en Azure CLI. Zie [gegevens verplaatsen van en naar Azure Storage](../../storage/common/storage-moving-data.md)voor meer informatie.
+    * Via internet: u kunt gegevens overdragen naar Azure Storage via een reguliere Internet verbinding met een van de volgende hulpprogram ma's, zoals: Azure Storage Explorer, AzCopy, Azure Power shell en Azure CLI. Zie [gegevens verplaatsen van en naar Azure Storage](../../storage/common/storage-choose-data-transfer-solution.md)voor meer informatie.
 
     * Express route-ExpressRoute is een Azure-service waarmee u particuliere verbindingen kunt maken tussen micro soft-data centers en-infra structuur op uw locatie of in een functie voor samen locatie. ExpressRoute-verbindingen gaan niet via het open bare Internet en bieden betere beveiliging, betrouw baarheid en snelheden met lagere latenties dan typische verbindingen via internet. Zie [een ExpressRoute-circuit maken en wijzigen](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)voor meer informatie.
 
-    * Data Box Online gegevens overdracht: Data Box Edge en Data Box Gateway zijn online gegevens overdracht producten die fungeren als gateways voor netwerk opslag om gegevens te beheren tussen uw site en Azure. Data Box Edge, een on-premises netwerk apparaat, brengt gegevens over van en naar Azure en maakt gebruik van een Edge Compute met kunst matige intelligentie (AI) voor het verwerken van gegevens. Data Box Gateway is een virtueel apparaat met mogelijkheden voor opslag gateway. Zie [Azure data Box documentatie-online overdracht](https://docs.microsoft.com/azure/databox-online/)voor meer informatie.
+    * Data Box Online gegevens overdracht: Data Box Edge en Data Box Gateway zijn online gegevens overdracht producten die fungeren als gateways voor netwerk opslag om gegevens te beheren tussen uw site en Azure. Data Box Edge, een on-premises netwerk apparaat, brengt gegevens over van en naar Azure en maakt gebruik van een Edge Compute met kunst matige intelligentie (AI) voor het verwerken van gegevens. Data Box Gateway is een virtueel apparaat met mogelijkheden voor opslag gateway. Zie [Azure data Box documentatie-online overdracht](../../databox-online/index.yml)voor meer informatie.
 
 * Gegevens offline verzenden
 
-    Data Box offline gegevens overdracht: Data Box-, Data Box Disk-en Data Box Heavy-apparaten kunt u grote hoeveel heden gegevens naar Azure overdragen wanneer het netwerk geen optie is. Deze apparaten voor offline gegevens overdracht worden verzonden tussen uw organisatie en het Azure-Data Center. Ze gebruiken AES-versleuteling om uw gegevens tijdens de overdracht te beschermen en ze ondervinden een verouderd proces voor het opschonen van de upload om uw gegevens van het apparaat te verwijderen. Zie [Azure data Box-documentatie-offline overdracht](https://docs.microsoft.com/azure/databox/)voor meer informatie over de data Box apparaten voor offline overdracht. Zie [Azure data box gebruiken om te migreren van een on-premises HDFS-Store naar Azure Storage](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md)voor meer informatie over de migratie van Hadoop-clusters.
+    Data Box offline gegevens overdracht: Data Box-, Data Box Disk-en Data Box Heavy-apparaten kunt u grote hoeveel heden gegevens naar Azure overdragen wanneer het netwerk geen optie is. Deze apparaten voor offline gegevens overdracht worden verzonden tussen uw organisatie en het Azure-Data Center. Ze gebruiken AES-versleuteling om uw gegevens tijdens de overdracht te beschermen en ze ondervinden een verouderd proces voor het opschonen van de upload om uw gegevens van het apparaat te verwijderen. Zie [Azure data Box-documentatie-offline overdracht](../../databox/index.yml)voor meer informatie over de data Box apparaten voor offline overdracht. Zie [Azure data box gebruiken om te migreren van een on-premises HDFS-Store naar Azure Storage](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md)voor meer informatie over de migratie van Hadoop-clusters.
 
 De volgende tabel heeft geschatte duur van gegevens overdracht op basis van het gegevens volume en de netwerk bandbreedte. Gebruik een Data box als de gegevens migratie meer dan drie weken naar verwachting duurt.
 

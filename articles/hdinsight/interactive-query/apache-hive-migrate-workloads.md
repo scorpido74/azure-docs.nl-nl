@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/13/2019
-ms.openlocfilehash: 26dfe8d134f9f38d8272895583ba2eff614d78e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bcc0faa8fdbd61ab3e3e0886256f7c796e5a98e2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91308381"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534682"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3,6 Hive-workloads migreren naar HDInsight 4,0
 
@@ -39,7 +39,7 @@ Maak een nieuwe kopie van uw externe meta Store. Als u een externe meta Store ge
 ### <a name="3-upgrade-metastore-schema"></a>3. het meta Store-schema bijwerken
 Zodra de meta Store- **kopie** is voltooid, voert u een schema-upgrade script uit in [script actie](../hdinsight-hadoop-customize-cluster-linux.md) op het bestaande HDInsight 3,6-cluster om de nieuwe Meta Store naar Hive 3-schema bij te werken. (Voor deze stap is het niet nodig om de nieuwe Meta Store te koppelen aan een cluster.) Hierdoor kan de Data Base worden gekoppeld als HDInsight 4,0-meta Store.
 
-Gebruik de waarden in de tabel hieronder. Vervang door `SQLSERVERNAME DATABASENAME USERNAME PASSWORD` de juiste waarden voor de Hive-metastore **kopie**, gescheiden door spaties. Neem '. database.windows.net ' niet op bij het opgeven van de naam van de SQL-Server.
+Gebruik de waarden in de tabel hieronder. Vervang door `SQLSERVERNAME DATABASENAME USERNAME PASSWORD` de juiste waarden voor de Hive-metastore **kopie** , gescheiden door spaties. Neem '. database.windows.net ' niet op bij het opgeven van de naam van de SQL-Server.
 
 |Eigenschap | Waarde |
 |---|---|
@@ -117,7 +117,7 @@ De HDInsight 3,6-en 4,0-clusters moeten hetzelfde opslag account gebruiken.
 
 1. Verbinding maken met het HDInsight 3,6-cluster met behulp van een [SSH-client (Secure Shell)](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-1. Down load vanuit de open SSH-sessie het volgende script bestand om een bestand met de naam **AllTables. HQL**te genereren.
+1. Down load vanuit de open SSH-sessie het volgende script bestand om een bestand met de naam **AllTables. HQL** te genereren.
 
     ```bash
     wget https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/exporthive_hdi_3_6.sh
@@ -208,7 +208,7 @@ Nadat u hebt bevestigd dat de release volledig en operationeel is, kunt u versie
 
 ## <a name="query-execution-across-hdinsight-versions"></a>Uitvoering van query's in HDInsight-versies
 
-Er zijn twee manieren voor het uitvoeren en opsporen van fouten in Hive/LLAP-query's binnen een HDInsight 3,6-cluster. HiveCLI biedt een opdracht regel ervaring en de weer gave [TEZ View/Hive](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-use-hive-ambari-view) biedt een op GUI gebaseerde werk stroom.
+Er zijn twee manieren voor het uitvoeren en opsporen van fouten in Hive/LLAP-query's binnen een HDInsight 3,6-cluster. HiveCLI biedt een opdracht regel ervaring en de weer gave [TEZ View/Hive](../hadoop/apache-hadoop-use-hive-ambari-view.md) biedt een op GUI gebaseerde werk stroom.
 
 In HDInsight 4,0 is HiveCLI vervangen door Beeline. De weer gave TEZ/Hive bevat een werk stroom op basis van een GUI. HiveCLI is een thrift-client voor Hiveserver 1 en Beeline is een JDBC-client die toegang biedt tot Hiveserver 2. Beeline kan ook worden gebruikt om verbinding te maken met een ander data base-eind punt dat compatibel is met JDBC. Beeline is out-of-box beschikbaar op HDInsight 4,0 zonder dat hiervoor een installatie nodig is.
 

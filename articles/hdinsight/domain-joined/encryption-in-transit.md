@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.openlocfilehash: 25e38beb561ee954db2987643775f3a3c6e05737
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85382ecd627ec8afc63a85de0debd98f94a89849
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89668772"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544882"
 ---
 # <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>IPSec-versleuteling in transit voor Azure HDInsight
 
@@ -27,7 +27,7 @@ Azure HDInsight biedt diverse beveiligings functies voor het beveiligen van uw b
 
 Versleuteling op rest wordt gedekt door versleuteling aan de server zijde van Azure Storage-accounts, evenals schijf versleuteling op de Azure-Vm's die deel uitmaken van uw HDInsight-cluster.
 
-Versleuteling van gegevens in transit op HDInsight wordt bereikt met [Transport Layer Security (TLS)](https://docs.microsoft.com/azure/hdinsight/transport-layer-security) voor het accssing van de cluster gateways en [Internet Protocol Security (IPSec)](https://en.wikipedia.org/wiki/IPsec) tussen cluster knooppunten. IPSec kan eventueel worden ingeschakeld tussen alle hoofd knooppunten, Worker-knoop punten, Edge-knoop punten en Zookeeper-knoop punten. Het is niet ingeschakeld voor verkeer tussen gateway [-of id Broker-](https://docs.microsoft.com/azure/hdinsight/domain-joined/identity-broker) knoop punten die op Windows gebaseerde virtuele machines zijn en andere op Linux gebaseerde knoop punten in het cluster.
+Versleuteling van gegevens in transit op HDInsight wordt bereikt met [Transport Layer Security (TLS)](../transport-layer-security.md) voor het accssing van de cluster gateways en [Internet Protocol Security (IPSec)](https://en.wikipedia.org/wiki/IPsec) tussen cluster knooppunten. IPSec kan eventueel worden ingeschakeld tussen alle hoofd knooppunten, Worker-knoop punten, Edge-knoop punten en Zookeeper-knoop punten. Het is niet ingeschakeld voor verkeer tussen gateway [-of id Broker-](./identity-broker.md) knoop punten die op Windows gebaseerde virtuele machines zijn en andere op Linux gebaseerde knoop punten in het cluster.
 
 ## <a name="enable-encryption-in-transit"></a>Versleuteling in transit inschakelen
 
@@ -50,7 +50,7 @@ Versleuteling in transit is ingeschakeld met behulp van de `isEncryptionInTransi
 
 U kunt [een voorbeeld sjabloon en een parameter bestand downloaden](https://github.com/Azure-Samples/hdinsight-enterprise-security). Voordat u de sjabloon en het Azure CLI-code fragment hieronder gebruikt, vervangt u de volgende tijdelijke aanduidingen door de juiste waarden:
 
-| Tijdelijke aanduiding | Beschrijving |
+| Tijdelijke aanduiding | Description |
 |---|---|
 | `<SUBSCRIPTION_ID>` | De ID van uw Azure-abonnement |
 | `<RESOURCE_GROUP>` | De resource groep waar u het nieuwe cluster en opslag account wilt maken. |

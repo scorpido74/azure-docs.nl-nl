@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/11/2017
-ms.openlocfilehash: e780ef0b82240ac6771059f8bd239b90395135d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 332233873bfbcb2ae77f5a70b4aaa5a6102cecec
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88213331"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537844"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Het schalen van Azure Cache voor Redis
 Azure cache voor redis heeft verschillende cache aanbiedingen, die flexibiliteit bieden bij het kiezen van de cache grootte en-functies. Nadat u een cache hebt gemaakt, kunt u de grootte en de prijs categorie van de cache schalen als de vereisten van de toepassing veranderen. Dit artikel laat u zien hoe u uw cache kunt schalen met behulp van de Azure Portal en hulpprogram ma's zoals Azure PowerShell en Azure CLI.
@@ -30,11 +30,11 @@ U kunt de volgende metrische gegevens controleren om te helpen bepalen of u wilt
 Als u vaststelt dat uw cache niet langer voldoet aan de vereisten van uw toepassing, kunt u schalen naar een grotere of kleinere prijs categorie voor de cache die geschikt is voor uw toepassing. Zie [de juiste laag kiezen](cache-overview.md#choosing-the-right-tier)voor meer informatie over het bepalen van de prijs categorie voor de cache die u wilt gebruiken.
 
 ## <a name="scale-a-cache"></a>Een cache schalen
-Als u de cache wilt schalen, [bladert u naar de cache](cache-configure.md#configure-azure-cache-for-redis-settings) in de [Azure Portal](https://portal.azure.com) en klikt u op **schalen** in het **menu resource**.
+Als u de cache wilt schalen, [bladert u naar de cache](cache-configure.md#configure-azure-cache-for-redis-settings) in de [Azure Portal](https://portal.azure.com) en klikt u op **schalen** in het **menu resource** .
 
 ![Schalen](./media/cache-how-to-scale/redis-cache-scale-menu.png)
 
-Selecteer de gewenste prijs categorie op de Blade **prijs categorie selecteren** en klik op **selecteren**.
+Selecteer de gewenste prijs categorie op de Blade **prijs categorie selecteren** en klik op **selecteren** .
 
 ![Prijscategorie][redis-cache-pricing-tier-blade]
 
@@ -52,7 +52,7 @@ Terwijl de cache wordt geschaald naar de nieuwe prijs categorie, wordt een **sch
 
 ![Schalen][redis-cache-scaling]
 
-Wanneer het schalen is voltooid, verandert de status van **schalen** in **wordt uitgevoerd**.
+Wanneer het schalen is voltooid, verandert de status van **schalen** in **wordt uitgevoerd** .
 
 ## <a name="how-to-automate-a-scaling-operation"></a>Een schaal bewerking automatiseren
 Naast het schalen van uw cache-instanties in de Azure Portal, kunt u de schaal aanpassen met behulp van Power shell-cmdlets, Azure CLI en met behulp van de Microsoft Azure Management libraries (MAML). 
@@ -65,7 +65,7 @@ Naast het schalen van uw cache-instanties in de Azure Portal, kunt u de schaal a
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-U kunt uw Azure-cache schalen voor redis-instanties met Power shell met behulp van de cmdlet [set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) wanneer de `Size` , `Sku` of- `ShardCount` eigenschappen worden gewijzigd. In het volgende voor beeld ziet u hoe u een cache kunt schalen met de naam `myCache` in een cache van 2,5 GB. 
+U kunt uw Azure-cache schalen voor redis-instanties met Power shell met behulp van de cmdlet [set-AzRedisCache](/powershell/module/az.rediscache/set-azrediscache) wanneer de `Size` , `Sku` of- `ShardCount` eigenschappen worden gewijzigd. In het volgende voor beeld ziet u hoe u een cache kunt schalen met de naam `myCache` in een cache van 2,5 GB. 
 
 ```powershell
    Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
@@ -174,7 +174,7 @@ Als een schaal bewerking mislukt, probeert de service de bewerking ongedaan te m
 De schaal tijd is afhankelijk van de hoeveelheid gegevens in de cache, waarbij grotere hoeveel heden gegevens langer duren om te volt ooien. Het schalen duurt ongeveer 20 minuten. Voor geclusterde caches duurt het schalen ongeveer 20 minuten per Shard.
 
 ### <a name="how-can-i-tell-when-scaling-is-complete"></a>Hoe kan ik zien wanneer schalen is voltooid?
-In de Azure Portal ziet u dat de schaal bewerking wordt uitgevoerd. Wanneer het schalen is voltooid, verandert de status van de cache in **actief**.
+In de Azure Portal ziet u dat de schaal bewerking wordt uitgevoerd. Wanneer het schalen is voltooid, verandert de status van de cache in **actief** .
 
 <!-- IMAGES -->
 

@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/15/2019
-ms.openlocfilehash: 31cdef281b1cb26d01a4690c815e3d3621e2c053
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 156d3ce4b7f8b6eaa297f2cddd0d5a93f382f78e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84709042"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547279"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>OutOfMemoryError-uitzonde ringen voor Apache Spark in azure HDInsight
 
@@ -60,7 +60,7 @@ De meest waarschijnlijke oorzaak van deze uitzonde ring is dat er niet voldoende
 
 1. Bepaal de maximale grootte van de gegevens die de Spark-toepassing moet verwerken. Maak een schatting van de grootte op basis van het maximum van de invoer gegevens, de tussenliggende gegevens die worden geproduceerd door het transformeren van de invoer gegevens en de uitvoer gegevens die de tussenliggende gegevens hebben getransformeerd. Als de oorspronkelijke schatting niet voldoende is, verg root u de grootte en herhaalt u dit tot de geheugen fouten.
 
-1. Zorg ervoor dat het HDInsight-cluster dat u wilt gebruiken, over voldoende resources (geheugen en kernen) beschikt voor uitvoering van de Spark-toepassing. Dit kan worden bepaald door de sectie cluster metrieken van de garen-gebruikers interface van het cluster te bekijken voor de waarden van **geheugen die worden gebruikt** versus **Totaal geheugen** en **VCores dat is gebruikt** voor het **totaal van VCores**.
+1. Zorg ervoor dat het HDInsight-cluster dat u wilt gebruiken, over voldoende resources (geheugen en kernen) beschikt voor uitvoering van de Spark-toepassing. Dit kan worden bepaald door de sectie cluster metrieken van de garen-gebruikers interface van het cluster te bekijken voor de waarden van **geheugen die worden gebruikt** versus **Totaal geheugen** en **VCores dat is gebruikt** voor het **totaal van VCores** .
 
     ![kern geheugen weergave van garen](./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png)
 
@@ -249,10 +249,10 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * [Overzicht van Spark-geheugen beheer](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview).
 
-* [Fout opsporing van Spark-toepassing op HDInsight-clusters](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/).
+* [Fout opsporing van Spark-toepassing op HDInsight-clusters](/archive/blogs/azuredatalake/spark-debugging-101).
 
 * Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
 * Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](../../azure-portal/supportability/how-to-create-azure-support-request.md)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

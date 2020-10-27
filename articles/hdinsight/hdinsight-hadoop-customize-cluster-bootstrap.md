@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/01/2020
-ms.openlocfilehash: cd81a15853f1c3b0eb1b1cdd40cc4c7ebf713308
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 246c5600da3b554ba65872780f0719a58f3f4be2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490302"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547483"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>HDInsight-clusters aanpassen met Boots trap
 
@@ -48,14 +48,14 @@ Zie [HDInsight-clusters aanpassen met script Action (Linux)](hdinsight-hadoop-cu
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als u Power shell gebruikt, hebt u de [AZ-module](https://docs.microsoft.com/powershell/azure/)nodig.
+* Als u Power shell gebruikt, hebt u de [AZ-module](/powershell/azure/)nodig.
 
 ## <a name="use-azure-powershell"></a>Azure PowerShell gebruiken
 
 Met de volgende Power shell-code wordt een [Apache Hive](https://hive.apache.org/) configuratie aangepast:
 
 > [!IMPORTANT]  
-> De para meter `Spark2Defaults` moet mogelijk worden gebruikt met [add-AzHDInsightConfigValue](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightconfigvalue). U kunt lege waarden door geven aan de para meter, zoals wordt weer gegeven in het code voorbeeld hieronder.
+> De para meter `Spark2Defaults` moet mogelijk worden gebruikt met [add-AzHDInsightConfigValue](/powershell/module/az.hdinsight/add-azhdinsightconfigvalue). U kunt lege waarden door geven aan de para meter, zoals wordt weer gegeven in het code voorbeeld hieronder.
 
 ```powershell
 # hive-site.xml configuration
@@ -86,9 +86,9 @@ Een volledig werkend Power shell-script vindt u in [bijlage](#appendix-powershel
 **De wijziging controleren:**
 
 1. Ga naar `https://CLUSTERNAME.azurehdinsight.net/` de locatie waar `CLUSTERNAME` de naam van het cluster zich bevindt.
-1. Navigeer in het linkermenu naar **Hive**  >  **configes**  >  **Advanced**.
-1. Vouw **Geavanceerde Hive-site**uit.
-1. Zoek **Hive. MailStore. client. socket. timeout** en bevestig dat de waarde **90s**is.
+1. Navigeer in het linkermenu naar **Hive**  >  **configes**  >  **Advanced** .
+1. Vouw **Geavanceerde Hive-site** uit.
+1. Zoek **Hive. MailStore. client. socket. timeout** en bevestig dat de waarde **90s** is.
 
 Meer voor beelden over het aanpassen van andere configuratie bestanden:
 
@@ -143,7 +143,7 @@ Voor beeld van een resource manager-sjabloon fragment om te scha kelen tussen co
 * [Apache Hadoop clusters maken in HDInsight](hdinsight-hadoop-provision-linux-clusters.md) vindt u instructies voor het maken van een HDInsight-cluster met behulp van andere aangepaste opties.
 * [Script actie scripts voor HDInsight ontwikkelen](hdinsight-hadoop-script-actions-linux.md)
 * [Apache Spark op HDInsight-clusters installeren en gebruiken](spark/apache-spark-jupyter-spark-sql-use-portal.md)
-* [Installeer en gebruik Apache Giraph in HDInsight-clusters](hdinsight-hadoop-giraph-install.md).
+* [Installeer en gebruik Apache Giraph in HDInsight-clusters](./hdinsight-hadoop-hue-linux.md).
 
 ## <a name="appendix-powershell-sample"></a>Bijlage: Power shell-voor beeld
 

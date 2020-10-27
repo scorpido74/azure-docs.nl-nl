@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: 5c0694f9ef16de9c69d424b5005ca0d5a277a77f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fdd43a017e584a07d61d41e1af06d30db2f30ac7
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89505026"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542774"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>Back-up en replicatie instellen voor Apache HBase en Apache Phoenix op HDInsight
 
@@ -52,7 +52,7 @@ Nadat u het cluster hebt verwijderd, kunt u de gegevens op de gewenste plaats la
 
 * Een nieuw HDInsight-exemplaar maken dat verwijst naar de huidige opslag locatie. Het nieuwe exemplaar wordt gemaakt met alle bestaande gegevens.
 
-* Kopieer de `hbase` map naar een andere Azure Storage BLOB-container of Data Lake Storage locatie en start vervolgens een nieuw cluster met die gegevens. Gebruik [AzCopy](../../storage/common/storage-use-azcopy.md)voor Azure Storage en voor data Lake Storage gebruik van [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md).
+* Kopieer de `hbase` map naar een andere Azure Storage BLOB-container of Data Lake Storage locatie en start vervolgens een nieuw cluster met die gegevens. Gebruik [AzCopy](../../storage/common/storage-use-azcopy-v10.md)voor Azure Storage en voor data Lake Storage gebruik van [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md).
 
 ## <a name="export-then-import"></a>Exporteren en vervolgens importeren
 
@@ -173,7 +173,7 @@ In ons voorbeeld:
 
 ## <a name="snapshots"></a>Momentopnamen
 
-Met [moment opnamen](https://hbase.apache.org/book.html#ops.snapshots) kunt u een tijdrovende back-up maken van gegevens in uw HBase-opslag plaats. Moment opnamen hebben minimale overhead en zijn binnen enkele seconden voltooid, omdat een momentopname bewerking in feite een meta gegevens bewerking is die de namen van alle bestanden in de opslag op dat moment vastlegt. Op het moment van een moment opname worden er geen werkelijke gegevens gekopieerd. Moment opnamen zijn afhankelijk van het onveranderbare karakter van de gegevens die zijn opgeslagen in HDFS, waarbij updates, verwijderingen en invoegingen worden weer gegeven als nieuwe gegevens. U kunt een moment opname op hetzelfde cluster herstellen (*klonen*) of een moment opname exporteren naar een ander cluster.
+Met [moment opnamen](https://hbase.apache.org/book.html#ops.snapshots) kunt u een tijdrovende back-up maken van gegevens in uw HBase-opslag plaats. Moment opnamen hebben minimale overhead en zijn binnen enkele seconden voltooid, omdat een momentopname bewerking in feite een meta gegevens bewerking is die de namen van alle bestanden in de opslag op dat moment vastlegt. Op het moment van een moment opname worden er geen werkelijke gegevens gekopieerd. Moment opnamen zijn afhankelijk van het onveranderbare karakter van de gegevens die zijn opgeslagen in HDFS, waarbij updates, verwijderingen en invoegingen worden weer gegeven als nieuwe gegevens. U kunt een moment opname op hetzelfde cluster herstellen ( *klonen* ) of een moment opname exporteren naar een ander cluster.
 
 Als u een moment opname wilt maken, maakt u een SSH-verbinding met het hoofd knooppunt van uw HDInsight HBase-cluster en start u de `hbase` shell:
 
@@ -245,4 +245,4 @@ Als u replicatie op HDInsight wilt inschakelen, moet u een script actie Toep ass
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Apache HBase-replicatie configureren](apache-hbase-replication.md)
-* [Werken met het HBase-hulp programma voor importeren en exporteren](https://blogs.msdn.microsoft.com/data_otaku/2016/12/21/working-with-the-hbase-import-and-export-utility/)
+* [Werken met het HBase-hulp programma voor importeren en exporteren](/archive/blogs/data_otaku/working-with-the-hbase-import-and-export-utility)

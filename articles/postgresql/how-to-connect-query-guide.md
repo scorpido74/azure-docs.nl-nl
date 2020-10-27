@@ -1,18 +1,18 @@
 ---
 title: Verbinding maken en query's uitvoeren-PostgreSQL met één server
-description: Koppelingen naar Azure My SQL Database Quick starts laten zien hoe u verbinding maakt met uw server en query's uitvoert.
+description: Koppelingen naar Quick starts die laten zien hoe u verbinding maakt met uw Azure Database for PostgreSQL één server en query's uitvoert.
 services: postgresql
 ms.service: postgresql
 ms.topic: how-to
 author: mksuni
 ms.author: sumuth
 ms.date: 09/21/2020
-ms.openlocfilehash: 5c6d6a51887d2912da8d6b4e357a1036596d63d5
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 413f5fc1f6579102b62042c1470816470c2e1449
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490013"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546548"
 ---
 # <a name="connect-and-query-overview-for-azure-database-for-postgresql--single-server"></a>Verbinding maken en query's uitvoeren op een overzicht van Azure data base for PostgreSQL-één server
 
@@ -33,13 +33,12 @@ Het volgende document bevat koppelingen naar voor beelden waarin wordt getoond h
 |[Python](connect-python.md)|In deze Quick Start wordt gedemonstreerd hoe u python gebruikt om verbinding te maken met een Data Base en met behulp van het gebruik van database objecten om gegevens op te vragen. |
 |[Ruby](connect-ruby.md)|In deze Quick Start wordt gedemonstreerd hoe u ruby gebruikt om een programma te maken dat verbinding maakt met een Data Base en met behulp van data base-objecten kunt gebruiken om gegevens op te vragen.|
 
-
 ## <a name="tls-considerations-for-database-connectivity"></a>TLS-overwegingen voor de connectiviteit van databases
 
-Transport Layer Security (TLS) wordt gebruikt door alle Stuur Programma's die door micro soft worden geleverd of ondersteund voor het maken van verbinding met data bases in Azure Database for PostgreSQL. Er is geen speciale configuratie nodig, maar afdwingen van TLS 1,2 voor nieuw gemaakte servers. U wordt aangeraden TLS 1,0 en 1,1 te gebruiken en vervolgens de TLS-versie voor uw servers bij te werken. Meer [ informatie over het configureren van TLS](howto-tls-configurations.md)
-
+Transport Layer Security (TLS) wordt gebruikt door alle Stuur Programma's die door micro soft worden geleverd of ondersteund voor het maken van verbinding met data bases in Azure Database for PostgreSQL. Er is geen speciale configuratie nodig, maar afdwingen van TLS 1,2 voor nieuw gemaakte servers. U wordt aangeraden TLS 1,0 en 1,1 te gebruiken en vervolgens de TLS-versie voor uw servers bij te werken. Meer [informatie over het configureren van TLS](howto-tls-configurations.md)
 
 ## <a name="postgresql-extensions"></a>PostgreSQL-extensies
+
 PostgreSQL biedt de mogelijkheid om de functionaliteit van uw data base uit te breiden met behulp van extensies. Extensies bundelen meerdere SQL-objecten in één pakket dat met één opdracht kan worden geladen in of verwijderd uit uw database. Nadat de gegevens in de database zijn geladen, functioneren de extensies als ingebouwde functies.
 
 - [Post gres 11-extensies](./concepts-extensions.md#postgres-11-extensions)
@@ -49,7 +48,7 @@ PostgreSQL biedt de mogelijkheid om de functionaliteit van uw data base uit te b
 
 Zie [postgresql-extensies gebruiken op één server voor](concepts-extensions.md)meer informatie.
 
-## <a name="next-steps"></a>Volgende stappen 
+## <a name="next-steps"></a>Volgende stappen
 
 - [Gegevens migreren met dump en herstel](howto-migrate-using-dump-and-restore.md)
 - [Gegevens migreren met importeren en exporteren](howto-migrate-using-export-and-import.md)

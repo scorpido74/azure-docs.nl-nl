@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 978312c6238315cf836cf7c26a2ee63e452d3b85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c7fe3db3f85824dc2cfbe87fc22b63a59e931ab
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90884600"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546361"
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-mysql"></a>Minimale migratie van downtime naar Azure Database for MySQL
 [!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
@@ -25,4 +25,4 @@ Azure DMS voert een initiële belasting van uw on-premises naar Azure Database f
 
 ## <a name="next-steps"></a>Volgende stappen
 - Bekijk de video [eenvoudig MySQL/PostgreSQL-apps migreren naar een door Azure beheerde service](https://medius.studios.ms/Embed/Video/THR2201?sid=THR2201), die een demonstratie bevat van het migreren van MySQL-apps naar Azure database for MySQL.
-- Raadpleeg de zelf studie [MySQL migreren naar Azure database for MySQL online met behulp van DMS](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online).
+- Raadpleeg de zelf studie [MySQL migreren naar Azure database for MySQL online met behulp van DMS](../dms/tutorial-mysql-azure-mysql-online.md).

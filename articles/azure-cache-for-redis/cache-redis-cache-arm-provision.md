@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: subject-armqs
 ms.date: 08/18/2020
-ms.openlocfilehash: 0445aeaea6f99754469d5c0e46972aef2ed667aa
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: fdfa8c767757aa17983a28d0d586698551326fe4
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424211"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545324"
 ---
 # <a name="create-an-azure-cache-for-redis-using-an-arm-template"></a>Een Azure-cache maken voor redis met een ARM-sjabloon
 
@@ -20,14 +20,14 @@ Meer informatie over het maken van een Azure Resource Manager sjabloon (ARM-sjab
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Als uw omgeving voldoet aan de vereisten en u bekend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
+Als uw omgeving voldoet aan de vereisten en u bekend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure** . De sjabloon wordt in Azure Portal geopend.
 
 [![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* **Azure-abonnement**: Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
-* **Een opslag account**: zie [een Azure Storage-account maken](/azure/storage/common/storage-account-create?tabs=azure-portal)als u er een wilt maken. Het opslag account wordt gebruikt voor diagnostische gegevens.
+* **Azure-abonnement** : Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+* **Een opslag account** : zie [een Azure Storage-account maken](../storage/common/storage-account-create.md?tabs=azure-portal)als u er een wilt maken. Het opslag account wordt gebruikt voor diagnostische gegevens.
 
 ## <a name="review-the-template"></a>De sjabloon controleren
 
@@ -46,7 +46,7 @@ Resource Manager-sjablonen voor de nieuwe [Premium-laag](cache-overview.md#servi
 * [Premium Azure-cache maken voor redis met gegevens persistentie](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)
 * [Premium-Redis Cache die zijn geïmplementeerd in een Virtual Network maken](https://azure.microsoft.com/resources/templates/201-redis-premium-vnet/)
 
-Zie [Azure Quick](https://azure.microsoft.com/documentation/templates/) start-sjablonen en zoek naar _Azure cache voor redis_om te controleren of er nieuwe sjablonen zijn.
+Zie [Azure Quick](https://azure.microsoft.com/documentation/templates/) start-sjablonen en zoek naar _Azure cache voor redis_ om te controleren of er nieuwe sjablonen zijn.
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
 
@@ -55,14 +55,14 @@ Zie [Azure Quick](https://azure.microsoft.com/documentation/templates/) start-sj
     [![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
 1. Typ of selecteer de volgende waarden:
 
-    * **Abonnement**: selecteer een Azure-abonnement dat wordt gebruikt om de gegevensshare en de andere resources te maken.
-    * **Resourcegroep**: selecteer **Nieuwe maken** om een nieuwe resourcegroep te maken of een bestaande resourcegroep te selecteren.
-    * **Locatie**: selecteer een locatie voor de resourcegroep. Het opslag account en de redis-cache moeten zich in dezelfde regio bevinden. De redis-cache maakt standaard gebruik van dezelfde locatie als de resource groep. Geef dus dezelfde locatie op als het opslag account.
-    * **Redis cache naam**: Voer een naam in voor de redis-cache.
-    * **Bestaand opslag account voor diagnostische gegevens**: Voer de resource-id in van een opslag account. De syntaxis is `/subscriptions/&lt;SUBSCRIPTION ID>/resourceGroups/&lt;RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/&lt;STORAGE ACCOUNT NAME>`.
+    * **Abonnement** : selecteer een Azure-abonnement dat wordt gebruikt om de gegevensshare en de andere resources te maken.
+    * **Resourcegroep** : selecteer **Nieuwe maken** om een nieuwe resourcegroep te maken of een bestaande resourcegroep te selecteren.
+    * **Locatie** : selecteer een locatie voor de resourcegroep. Het opslag account en de redis-cache moeten zich in dezelfde regio bevinden. De redis-cache maakt standaard gebruik van dezelfde locatie als de resource groep. Geef dus dezelfde locatie op als het opslag account.
+    * **Redis cache naam** : Voer een naam in voor de redis-cache.
+    * **Bestaand opslag account voor diagnostische gegevens** : Voer de resource-id in van een opslag account. De syntaxis is `/subscriptions/&lt;SUBSCRIPTION ID>/resourceGroups/&lt;RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/&lt;STORAGE ACCOUNT NAME>`.
 
     Gebruik de standaardwaarde voor de overige instellingen.
-1. Selecteer **Ik ga akkoord met de bovenstaande voorwaarden** en selecteer vervolgens **Kopen**.
+1. Selecteer **Ik ga akkoord met de bovenstaande voorwaarden** en selecteer vervolgens **Kopen** .
 
 ## <a name="review-deployed-resources"></a>Geïmplementeerde resources bekijken
 

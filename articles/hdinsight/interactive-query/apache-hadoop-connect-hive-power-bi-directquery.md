@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
-ms.openlocfilehash: bc84c8ef27b86244a7f467109525bdcb14bd030b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92e94c911acb701b1ccf8e39636d152cc5bfb575
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087534"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534801"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-hdinsight"></a>Interactieve query Apache Hive gegevens visualiseren met micro soft Power BI met behulp van directe query's in HDInsight
 
@@ -21,13 +21,13 @@ In dit artikel wordt beschreven hoe u micro soft Power BI verbindt met Azure HDI
 
 ![HDInsight-Power BI het kaart rapport](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-visualization.png)
 
-U kunt gebruikmaken van het [Apache Hive ODBC-stuur programma](../hadoop/apache-hadoop-connect-hive-power-bi.md) om te importeren via de algemene ODBC-connector in Power bi Desktop. Het wordt echter niet aanbevolen voor BI-workloads die niet-interactieve aard hebben van de Hive-query-engine. [Hdinsight Interactive query connector](./apache-hadoop-connect-hive-power-bi-directquery.md) en [hdinsight Apache Spark connector](https://docs.microsoft.com/power-bi/spark-on-hdinsight-with-direct-connect) zijn de beste keuze voor de prestaties.
+U kunt gebruikmaken van het [Apache Hive ODBC-stuur programma](../hadoop/apache-hadoop-connect-hive-power-bi.md) om te importeren via de algemene ODBC-connector in Power bi Desktop. Het wordt echter niet aanbevolen voor BI-workloads die niet-interactieve aard hebben van de Hive-query-engine. [Hdinsight Interactive query connector](./apache-hadoop-connect-hive-power-bi-directquery.md) en [hdinsight Apache Spark connector](/power-bi/spark-on-hdinsight-with-direct-connect) zijn de beste keuze voor de prestaties.
 
 ## <a name="prerequisites"></a>Vereisten
 Voordat u dit artikel gaat passeren, hebt u de volgende items nodig:
 
-* **HDInsight-cluster**. Het cluster kan een HDInsight-cluster met Apache Hive of een nieuw, vrijgegeven interactief query cluster zijn. Zie [cluster maken](../hadoop/apache-hadoop-linux-tutorial-get-started.md)voor meer informatie over het maken van clusters.
-* **[Micro soft power bi Desktop](https://powerbi.microsoft.com/desktop/)**. U kunt een kopie downloaden van het [micro soft Download centrum](https://www.microsoft.com/download/details.aspx?id=45331).
+* **HDInsight-cluster** . Het cluster kan een HDInsight-cluster met Apache Hive of een nieuw, vrijgegeven interactief query cluster zijn. Zie [cluster maken](../hadoop/apache-hadoop-linux-tutorial-get-started.md)voor meer informatie over het maken van clusters.
+* **[Micro soft power bi Desktop](https://powerbi.microsoft.com/desktop/)** . U kunt een kopie downloaden van het [micro soft Download centrum](https://www.microsoft.com/download/details.aspx?id=45331).
 
 ## <a name="load-data-from-hdinsight"></a>Gegevens uit HDInsight laden
 
@@ -35,29 +35,29 @@ De `hivesampletable` Hive-tabel wordt geleverd met alle HDInsight-clusters.
 
 1. Start Power BI Desktop.
 
-2. Ga in de menu balk naar **Start**  >  **gegevens ophalen**  >  **meer...**.
+2. Ga in de menu balk naar **Start**  >  **gegevens ophalen**  >  **meer...** .
 
     ![HDInsight-Power BI gegevens meer ophalen](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png)
 
 3. In het venster **gegevens ophalen** voert u **hdinsight** in het zoekvak in.  
 
-4. Selecteer in de zoek resultaten **HDInsight Interactive query**en selecteer vervolgens **verbinding maken**.  Als u **HDInsight Interactive query**niet ziet, moet u uw Power bi Desktop bijwerken naar de nieuwste versie.
+4. Selecteer in de zoek resultaten **HDInsight Interactive query** en selecteer vervolgens **verbinding maken** .  Als u **HDInsight Interactive query** niet ziet, moet u uw Power bi Desktop bijwerken naar de nieuwste versie.
 
 5. Selecteer **door gaan** om het dialoog venster **verbinding maken met een service van derden** te sluiten.
 
-6. Voer in het venster **HDInsight Interactive query** de volgende gegevens in en selecteer **OK**:
+6. Voer in het venster **HDInsight Interactive query** de volgende gegevens in en selecteer **OK** :
 
     |Eigenschap | Waarde |
     |---|---|
-    |server |Voer de naam van het cluster in, bijvoorbeeld *myiqcluster.azurehdinsight.net*.|
+    |Server |Voer de naam van het cluster in, bijvoorbeeld *myiqcluster.azurehdinsight.net* .|
     |Database |Voer de **standaard waarde** in voor dit artikel.|
     |Gegevensverbindingsmodus |Selecteer **DirectQuery** voor dit artikel.|
 
     ![HDInsight Interactive query Power BI DirectQuery Connect](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-connect.png)
 
-7. Voer de HTTP-referenties in en selecteer vervolgens **verbinding maken**. De standaard gebruikersnaam is **admin**.
+7. Voer de HTTP-referenties in en selecteer vervolgens **verbinding maken** . De standaard gebruikersnaam is **admin** .
 
-8. Selecteer **hivesampletale**in het **Navigatie** venster in het linkerdeel venster.
+8. Selecteer **hivesampletale** in het **Navigatie** venster in het linkerdeel venster.
 
 9. Selecteer **laden** in het hoofd venster.
 
@@ -67,11 +67,11 @@ De `hivesampletable` Hive-tabel wordt geleverd met alle HDInsight-clusters.
 
 Door gaan met de laatste procedure.
 
-1. Selecteer in het deel venster visualisaties de optie **kaart**, het pictogram wereldbol. Er wordt een algemene toewijzing weer gegeven in het hoofd venster.
+1. Selecteer in het deel venster visualisaties de optie **kaart** , het pictogram wereldbol. Er wordt een algemene toewijzing weer gegeven in het hoofd venster.
 
     ![Power BI van HDInsight-rapport aanpassen](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-customize.png)
 
-2. Selecteer in het deel venster velden de optie **land** en **devicemake**. Een wereld kaart met de gegevens punten wordt na enkele ogen blikken weer gegeven in het hoofd venster.
+2. Selecteer in het deel venster velden de optie **land** en **devicemake** . Een wereld kaart met de gegevens punten wordt na enkele ogen blikken weer gegeven in het hoofd venster.
 
 3. Vouw de kaart uit.
 

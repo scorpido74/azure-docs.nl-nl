@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: a5e4b8bbae67e32a5a0c951de583688836eb014b
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 4948d23af98e267e72e6f0e0efcc1a4037173576
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426392"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547415"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Azure HDInsight-clusters beveiligen en isoleren met een persoonlijke koppeling (preview-versie)
 
@@ -25,7 +25,7 @@ U kunt persoonlijke HDInsight-clusters maken door specifieke netwerk eigenschapp
 
 ## <a name="remove-public-ip-addresses"></a>Open bare IP-adressen verwijderen
 
-De HDInsight RP maakt standaard gebruik van een *inkomende* verbinding met het cluster met behulp van open bare ip's. Wanneer de `resourceProviderConnection` eigenschap netwerk is ingesteld op *uitgaand*, worden de verbindingen met de HDInsight RP omgekeerd zodat de verbindingen altijd vanuit het cluster naar de RP worden geïnitieerd. Zonder een binnenkomende verbinding hoeven de inkomende service tags of open bare IP-adressen niet te worden gemaakt.
+De HDInsight RP maakt standaard gebruik van een *inkomende* verbinding met het cluster met behulp van open bare ip's. Wanneer de `resourceProviderConnection` eigenschap netwerk is ingesteld op *uitgaand* , worden de verbindingen met de HDInsight RP omgekeerd zodat de verbindingen altijd vanuit het cluster naar de RP worden geïnitieerd. Zonder een binnenkomende verbinding hoeven de inkomende service tags of open bare IP-adressen niet te worden gemaakt.
 
 De Basic load balancers die worden gebruikt in de standaard virtuele-netwerk architectuur, bieden automatisch een open bare NAT (Network Address Translation) voor toegang tot de vereiste uitgaande afhankelijkheden, zoals de HDInsight RP. Als u de uitgaande verbinding met het open bare Internet wilt beperken, kunt u [een firewall configureren](./hdinsight-restrict-outbound-traffic.md), maar dit is geen vereiste.
 
@@ -54,13 +54,13 @@ Als u toegang wilt krijgen tot het cluster met behulp van cluster-FQDN-namen, ku
 
 Een persoonlijke koppeling, die standaard is uitgeschakeld, vereist uitgebreide netwerk kennis voor het instellen van door de gebruiker gedefinieerde routes (UDR) en firewall regels op de juiste manier voordat u een cluster maakt. Persoonlijke koppelings toegang tot het cluster is alleen beschikbaar wanneer de `resourceProviderConnection` eigenschap netwerk is ingesteld op *uitgaand* , zoals wordt beschreven in de vorige sectie.
 
-Wanneer `privateLink` is ingesteld op *inschakelen*, worden interne [standaard load balancers](../load-balancer/load-balancer-overview.md) (SLB) gemaakt en wordt een Azure Private Link-service voor elke SLB ingericht. Met de persoonlijke koppelings service kunt u toegang krijgen tot het HDInsight-cluster vanuit privé-eind punten.
+Wanneer `privateLink` is ingesteld op *inschakelen* , worden interne [standaard load balancers](../load-balancer/load-balancer-overview.md) (SLB) gemaakt en wordt een Azure Private Link-service voor elke SLB ingericht. Met de persoonlijke koppelings service kunt u toegang krijgen tot het HDInsight-cluster vanuit privé-eind punten.
 
-Standaard load balancers bieden niet automatisch de [open bare uitgaande NAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) , zoals Basic load balancers. U moet uw eigen NAT-oplossing opgeven, zoals [Virtual Network NAT](../virtual-network/nat-overview.md) of een [firewall](./hdinsight-restrict-outbound-traffic.md), voor uitgaande afhankelijkheden. Uw HDInsight-cluster moet nog steeds toegang hebben tot de uitgaande afhankelijkheden. Als deze uitgaande afhankelijkheden niet zijn toegestaan, kan het maken van het cluster mislukken.
+Standaard load balancers bieden niet automatisch de [open bare uitgaande NAT](../load-balancer/load-balancer-outbound-connections.md) , zoals Basic load balancers. U moet uw eigen NAT-oplossing opgeven, zoals [Virtual Network NAT](../virtual-network/nat-overview.md) of een [firewall](./hdinsight-restrict-outbound-traffic.md), voor uitgaande afhankelijkheden. Uw HDInsight-cluster moet nog steeds toegang hebben tot de uitgaande afhankelijkheden. Als deze uitgaande afhankelijkheden niet zijn toegestaan, kan het maken van het cluster mislukken.
 
 ### <a name="prepare-your-environment"></a>Uw omgeving voorbereiden
 
-Voor het maken van persoonlijke koppelings Services moet u [netwerk beleid voor de persoonlijke koppelings service expliciet uitschakelen](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy).
+Voor het maken van persoonlijke koppelings Services moet u [netwerk beleid voor de persoonlijke koppelings service expliciet uitschakelen](../private-link/disable-private-link-service-network-policy.md).
 
 In het volgende diagram ziet u een voor beeld van de netwerk configuratie die is vereist voordat u een cluster maakt. In dit voor beeld wordt al het uitgaande verkeer [geforceerd](../firewall/forced-tunneling.md) Azure Firewall met behulp van UDR en moeten de vereiste uitgaande afhankelijkheden "allowed" zijn op de firewall voordat een cluster wordt gemaakt. Voor Enterprise Security Package clusters kan de netwerk verbinding met Azure Active Directory Domain Services worden verschaft door VNet-peering.
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: f1e1518cce060374f14f1db7d5f4e594e3de8f85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe9ccc50d6196997863fbf228fbb76913a0d0330
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086259"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534376"
 ---
 # <a name="open-source-software-support-in-azure-hdinsight"></a>Open-source software ondersteuning in azure HDInsight
 
@@ -40,7 +40,7 @@ Als gebruiker van het cluster kunt u in uw workload elk onderdeel dat beschikbaa
 > [!WARNING]  
 > Onderdelen die worden meegeleverd met het HDInsight-cluster, worden volledig ondersteund. Microsoft Ondersteuning helpt bij het isoleren en oplossen van problemen met betrekking tot deze onderdelen.
 >
-> Aangepaste onderdelen ontvangen commercieel redelijke ondersteuning om u te helpen het probleem verder op te lossen. Microsoft Ondersteuning kunt het probleem mogelijk oplossen. Het kan ook zijn dat u beschik bare kanalen moet betrekken voor de open source technologieën waar diep gaande expertise voor die technologie wordt gevonden. Veel community-sites kunnen worden gebruikt. Voor beelden zijn [micro soft Q&een vraag pagina voor HDInsight](https://docs.microsoft.com/answers/topics/azure-hdinsight.html) en [stack overflow](https://stackoverflow.com).
+> Aangepaste onderdelen ontvangen commercieel redelijke ondersteuning om u te helpen het probleem verder op te lossen. Microsoft Ondersteuning kunt het probleem mogelijk oplossen. Het kan ook zijn dat u beschik bare kanalen moet betrekken voor de open source technologieën waar diep gaande expertise voor die technologie wordt gevonden. Veel community-sites kunnen worden gebruikt. Voor beelden zijn [micro soft Q&een vraag pagina voor HDInsight](/answers/topics/azure-hdinsight.html) en [stack overflow](https://stackoverflow.com).
 >
 > Apache-projecten hebben ook project sites op de [Apache-website](https://apache.org). Een voor beeld is [Hadoop](https://hadoop.apache.org/).
 
@@ -48,7 +48,7 @@ Als gebruiker van het cluster kunt u in uw workload elk onderdeel dat beschikbaa
 
 De HDInsight-service biedt verschillende manieren om aangepaste onderdelen te gebruiken. Hetzelfde ondersteunings niveau geldt, ongeacht hoe een onderdeel wordt gebruikt of geïnstalleerd op het cluster. In de volgende tabel worden de meest voorkomende manieren beschreven waarop aangepaste onderdelen worden gebruikt in HDInsight-clusters:
 
-|Gebruik |Beschrijving |
+|Gebruik |Description |
 |---|---|
 |Indienen van job|Hadoop of andere typen taken die aangepaste onderdelen uitvoeren of gebruiken, kunnen worden verzonden naar het cluster.|
 |Cluster aanpassing|Tijdens het maken van het cluster kunt u aanvullende instellingen en aangepaste onderdelen opgeven die op de cluster knooppunten zijn geïnstalleerd.|

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: bc90389e9f600f1411699700989e38c78bee99cc
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: dc6412a85beba67551e7683c8127a65730f9218f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92103336"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535464"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Uitgaand netwerk verkeer voor Azure HDInsight-clusters configureren met behulp van Firewall
 
@@ -23,7 +23,7 @@ In dit artikel worden de stappen beschreven voor het beveiligen van uitgaand ver
 
 HDInsight-clusters worden normaal gesp roken geïmplementeerd in een virtueel netwerk. Het cluster heeft afhankelijkheden voor services buiten dat virtuele netwerk.
 
-Het inkomende beheer verkeer kan niet via een firewall worden verzonden. U kunt NSG-service tags gebruiken voor het inkomende verkeer zoals [hier](https://docs.microsoft.com/azure/hdinsight/hdinsight-service-tags)wordt beschreven. 
+Het inkomende beheer verkeer kan niet via een firewall worden verzonden. U kunt NSG-service tags gebruiken voor het inkomende verkeer zoals [hier](./hdinsight-service-tags.md)wordt beschreven. 
 
 De afhankelijkheden voor uitgaand verkeer van HDInsight zijn bijna volledig gedefinieerd met FQDN-verwijzingen. Er zijn geen statische IP-adressen achter. Het ontbreken van statische adressen betekent dat netwerk beveiligings groepen (Nsg's) uitgaand verkeer van een cluster niet kunnen vergren delen. De IP-adressen die vaak voldoende worden gewijzigd, kunnen geen regels instellen op basis van de huidige naam omzetting en het gebruik.
 
@@ -53,7 +53,7 @@ Maak een toepassings regel verzameling waarmee het cluster belang rijke communic
 
 1. Selecteer de nieuwe firewall **test-FW01** van de Azure Portal.
 
-1. Navigeer naar **instellingen**  >  **regels**  >  **toepassings regel verzameling**  >  **+ toepassings regel verzameling toevoegen**.
+1. Navigeer naar **instellingen**  >  **regels**  >  **toepassings regel verzameling**  >  **+ toepassings regel verzameling toevoegen** .
 
     ![Titel: toepassings regel verzameling toevoegen](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
 
@@ -65,31 +65,31 @@ Maak een toepassings regel verzameling waarmee het cluster belang rijke communic
     |---|---|
     |Naam| FwAppRule|
     |Prioriteit|200|
-    |Bewerking|Toestaan|
+    |Actie|Toestaan|
 
     **Sectie FQDN-Tags**
 
-    | Name | Bron adres | FQDN-label | Notities |
+    | Naam | Bron adres | FQDN-label | Notities |
     | --- | --- | --- | --- |
     | Rule_1 | * | WindowsUpdate en HDInsight | Vereist voor HDI-Services |
 
     **Sectie FQDN-doel items**
 
-    | Name | Bron adressen | Protocol: poort | Doel-FQDN-naam | Notities |
+    | Naam | Bron adressen | Protocol:Poort | Doel-FQDN-naam | Notities |
     | --- | --- | --- | --- | --- |
-    | Rule_2 | * | https: 443 | login.windows.net | Windows-aanmeldings activiteit toestaan |
-    | Rule_3 | * | https: 443 | login.microsoftonline.com | Windows-aanmeldings activiteit toestaan |
+    | Rule_2 | * | https:443 | login.windows.net | Windows-aanmeldings activiteit toestaan |
+    | Rule_3 | * | https:443 | login.microsoftonline.com | Windows-aanmeldings activiteit toestaan |
     | Rule_4 | * | https: 443, http: 80 | storage_account_name. blob. core. Windows. net | Vervang door `storage_account_name` de werkelijke naam van het opslag account. Als u alleen HTTPS-verbindingen wilt gebruiken, moet u ervoor zorgen dat ["beveiligde overdracht vereist"](../storage/common/storage-require-secure-transfer.md) is ingeschakeld op het opslag account. Als u een privé-eind punt gebruikt voor toegang tot opslag accounts, is deze stap niet nodig en wordt het opslag verkeer niet doorgestuurd naar de firewall.|
 
    ![Titel: Details van toepassings regel verzameling invoeren](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
-1. Selecteer **Toevoegen**.
+1. Selecteer **Toevoegen** .
 
 ### <a name="configure-the-firewall-with-network-rules"></a>De firewall met netwerk regels configureren
 
 Maak de netwerk regels om uw HDInsight-cluster correct te configureren.
 
-1. Ga verder met de vorige stap, navigeer naar **netwerk regel verzameling**  >  **+ verzameling netwerk regels toevoegen**.
+1. Ga verder met de vorige stap, navigeer naar **netwerk regel verzameling**  >  **+ verzameling netwerk regels toevoegen** .
 
 1. Geef in het scherm **verzameling van netwerk regels toevoegen** de volgende informatie op:
 
@@ -99,34 +99,34 @@ Maak de netwerk regels om uw HDInsight-cluster correct te configureren.
     |---|---|
     |Naam| FwNetRule|
     |Prioriteit|200|
-    |Bewerking|Toestaan|
+    |Actie|Toestaan|
 
     **Sectie Service Tags**
 
-    | Name | Protocol | Bron adressen | Servicetags | Doel poorten | Notities |
+    | Naam | Protocol | Bron adressen | Servicetags | Doel poorten | Notities |
     | --- | --- | --- | --- | --- | --- |
     | Rule_5 | TCP | * | SQL | 1433 | Als u de standaard SQL-servers gebruikt die door HDInsight worden meegeleverd, configureert u een netwerk regel in het gedeelte service tags voor SQL waarmee u SQL-verkeer kunt registreren en controleren. Tenzij u service-eind punten voor SQL Server op het HDInsight-subnet hebt geconfigureerd, waardoor de firewall wordt overgeslagen. Als u een aangepaste SQL Server gebruikt voor Ambari, Oozie, zwerver en Hive metastroes, hoeft u alleen het verkeer naar uw eigen aangepaste SQL-servers toe te staan.|
     | Rule_6 | TCP | * | Azure Monitor | * | Beschrijving Klanten die de functie voor automatisch schalen willen gebruiken, moeten deze regel toevoegen. |
     
    ![Titel: toepassings regel verzameling invoeren](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
-1. Selecteer **Toevoegen**.
+1. Selecteer **Toevoegen** .
 
 ### <a name="create-and-configure-a-route-table"></a>Een route tabel maken en configureren
 
 Maak een route tabel met de volgende vermeldingen:
 
-* Alle IP-adressen van [status-en beheer Services](../hdinsight/hdinsight-management-ip-addresses.md#health-and-management-services-all-regions) met het volgende hop-type **Internet**. Het moet 4 Ip's van de algemene regio's en 2 Ip's bevatten voor uw specifieke regio. Deze regel is alleen nodig als de ResourceProviderConnection is ingesteld op *binnenkomend*. Als de ResourceProviderConnection is ingesteld op *outbound* , zijn deze IP-adressen niet nodig in de UDR. 
+* Alle IP-adressen van [status-en beheer Services](../hdinsight/hdinsight-management-ip-addresses.md#health-and-management-services-all-regions) met het volgende hop-type **Internet** . Het moet 4 Ip's van de algemene regio's en 2 Ip's bevatten voor uw specifieke regio. Deze regel is alleen nodig als de ResourceProviderConnection is ingesteld op *binnenkomend* . Als de ResourceProviderConnection is ingesteld op *outbound* , zijn deze IP-adressen niet nodig in de UDR. 
 
 * Eén virtuele-toestel route voor IP-adres 0.0.0.0/0 met de volgende hop wordt uw Azure Firewall privé-IP-adres.
 
 Gebruik bijvoorbeeld de volgende stappen om de route tabel te configureren voor een cluster dat is gemaakt in de regio VS-Oost VS:
 
-1. Selecteer uw Azure Firewall **-test-FW01**. Kopieer het **privé-IP-adres** dat wordt weer gegeven op de pagina **overzicht** . In dit voor beeld gebruiken we een voor beeld **van een adres van 10.0.2.4**.
+1. Selecteer uw Azure Firewall **-test-FW01** . Kopieer het **privé-IP-adres** dat wordt weer gegeven op de pagina **overzicht** . In dit voor beeld gebruiken we een voor beeld **van een adres van 10.0.2.4** .
 
-1. Ga vervolgens naar **alle services**  >  **netwerk**  >  **route tabellen** en **Maak een route tabel**.
+1. Ga vervolgens naar **alle services**  >  **netwerk**  >  **route tabellen** en **Maak een route tabel** .
 
-1. Navigeer vanuit uw nieuwe route naar **instellingen**  >  **routes**  >  **en toevoegen**. Voeg de volgende routes toe:
+1. Navigeer vanuit uw nieuwe route naar **instellingen**  >  **routes**  >  **en toevoegen** . Voeg de volgende routes toe:
 
 | Routenaam | Adresvoorvoegsel | Volgend hoptype | Adres van de volgende hop |
 |---|---|---|---|
@@ -140,13 +140,13 @@ Gebruik bijvoorbeeld de volgende stappen om de route tabel te configureren voor 
 
 De configuratie van de route tabel volt ooien:
 
-1. Wijs de route tabel die u hebt gemaakt aan uw HDInsight-subnet toe door **subnetten** onder **instellingen**te selecteren.
+1. Wijs de route tabel die u hebt gemaakt aan uw HDInsight-subnet toe door **subnetten** onder **instellingen** te selecteren.
 
-1. Selecteer **+ koppelen**.
+1. Selecteer **+ koppelen** .
 
 1. Selecteer in het scherm **subnet koppelen** het virtuele netwerk waarin het cluster is gemaakt. En het **subnet** dat u hebt gebruikt voor uw HDInsight-cluster.
 
-1. Selecteer **OK**.
+1. Selecteer **OK** .
 
 ## <a name="edge-node-or-custom-application-traffic"></a>Edge-knoop punt of aangepast toepassings verkeer
 
@@ -160,7 +160,7 @@ Als uw toepassingen andere afhankelijkheden hebben, moeten ze worden toegevoegd 
 
 ## <a name="logging-and-scale"></a>Logboek registratie en-schaal
 
-Azure Firewall kunt logboeken naar een aantal verschillende opslag systemen verzenden. Volg de stappen in de [zelf studie: Monitor Azure firewall logboeken en metrische gegevens](../firewall/tutorial-diagnostics.md)voor instructies over het configureren van logboek registratie voor uw firewall.
+Azure Firewall kunt logboeken naar een aantal verschillende opslag systemen verzenden. Volg de stappen in de [zelf studie: Monitor Azure firewall logboeken en metrische gegevens](../firewall/firewall-diagnostics.md)voor instructies over het configureren van logboek registratie voor uw firewall.
 
 Als u de logboek registratie hebt voltooid, kunt u, als u Log Analytics gebruikt, het geblokkeerde verkeer bekijken met een query zoals:
 

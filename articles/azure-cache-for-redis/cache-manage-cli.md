@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: yegu
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: db55ac4ce868f2e6ce2afbfbf014aac67653ce4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7643f882d5ac330046c169e0a3f2fa4920331d4e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500501"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537691"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Azure-cache voor redis maken en beheren met behulp van de klassieke Azure-CLI
 > [!div class="op_single_selector"]
@@ -30,9 +30,9 @@ De klassieke Azure-CLI is een uitstekende manier om uw Azure-infra structuur van
 Voor het maken en beheren van Azure-cache voor redis-exemplaren met behulp van klassieke Azure-CLI, moet u de volgende stappen uitvoeren.
 
 * U moet een Azure-account hebben. Als u er nog geen hebt, kunt u in slechts enkele ogen blikken een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.
-* [Installeer de klassieke Azure-cli](../cli-install-nodejs.md).
+* [Installeer de klassieke Azure-cli](/cli/azure/install-classic-cli).
 * Verbind uw Azure CLI-installatie met een persoonlijk Azure-account of met een werk-of school-Azure-account en meld u aan bij de klassieke CLI met behulp van de `azure login` opdracht.
-* Voordat u een van de volgende opdrachten uitvoert, moet u de klassieke CLI overschakelen naar de Resource Manager-modus door de opdracht uit te voeren `azure config mode arm` . Zie [de klassieke Azure-CLI gebruiken voor het beheren van Azure-resources en-resource groepen](../xplat-cli-azure-resource-manager.md)voor meer informatie.
+* Voordat u een van de volgende opdrachten uitvoert, moet u de klassieke CLI overschakelen naar de Resource Manager-modus door de opdracht uit te voeren `azure config mode arm` . Zie [de klassieke Azure-CLI gebruiken voor het beheren van Azure-resources en-resource groepen](../azure-resource-manager/management/manage-resources-cli.md)voor meer informatie.
 
 ## <a name="azure-cache-for-redis-properties"></a>Eigenschappen van Azure Cache voor Redis
 De volgende eigenschappen worden gebruikt bij het maken en bijwerken van Azure-cache voor redis-exemplaren.

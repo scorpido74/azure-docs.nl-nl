@@ -8,12 +8,12 @@ keywords: Hadoop hoge Beschik baarheid
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: c2c5e5d0dc90f8f41882f6a63497a197cd74f0ce
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: c322380d6a41e69baa8f753b84c0bc074f334647
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207577"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547024"
 ---
 # <a name="azure-hdinsight-business-continuity-architectures"></a>Azure HDInsight-architectuur voor bedrijfs continuïteit
 
@@ -54,11 +54,11 @@ In een *actieve primaire, met secundaire architectuur op aanvraag* , schrijven t
 
 #### <a name="hive-active-primary-with-standby-secondary"></a>Hive actief primair met stand-by-secundair
 
-In een *actief primair met stand-by secundair*, schrijven toepassingen naar de actieve primaire regio terwijl een stand-by omlaag geschaald secundair cluster in de modus alleen-lezen wordt uitgevoerd tijdens normale bewerkingen. Tijdens normale bewerkingen kunt u ervoor kiezen om regio-specifieke Lees bewerkingen te offloaden naar een secundaire.
+In een *actief primair met stand-by secundair* , schrijven toepassingen naar de actieve primaire regio terwijl een stand-by omlaag geschaald secundair cluster in de modus alleen-lezen wordt uitgevoerd tijdens normale bewerkingen. Tijdens normale bewerkingen kunt u ervoor kiezen om regio-specifieke Lees bewerkingen te offloaden naar een secundaire.
 
 :::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary.png" alt-text="Architectuur van Hive-en interactieve query's":::
 
-Zie [Apache Hive replicatie in azure HDInsight-clusters](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-hive-replication) voor meer informatie over Hive-replicatie en code voorbeelden.
+Zie [Apache Hive replicatie in azure HDInsight-clusters](./interactive-query/apache-hive-replication.md) voor meer informatie over Hive-replicatie en code voorbeelden.
 
 ## <a name="apache-spark"></a>Apache Spark
 
@@ -97,7 +97,7 @@ Toepassingen lezen en schrijven naar Spark-en Hive-clusters in de primaire regio
 
 HBase export en HBase-replicatie zijn algemene manieren om bedrijfs continuïteit in te scha kelen tussen HDInsight HBase-clusters.
 
-HBase export is een batch replicatie proces dat gebruikmaakt van het export hulpprogramma HBase voor het exporteren van tabellen van het primaire HBase-cluster naar de onderliggende Azure Data Lake Storage gen 2-opslag. De geëxporteerde gegevens kunnen vervolgens worden geopend vanuit het secundaire HBase-cluster en worden geïmporteerd in tabellen die moeten bestaan in de secundaire. Hoewel de HBase-export een granulatie op tabel niveau biedt, bepaalt de Automation-engine voor het exporteren van het aantal incrementele rijen dat in elke uitvoering moet worden meegenomen. Zie [HDInsight HBase Backup and Replication](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-backup-replication#export-then-import)(Engelstalig) voor meer informatie.
+HBase export is een batch replicatie proces dat gebruikmaakt van het export hulpprogramma HBase voor het exporteren van tabellen van het primaire HBase-cluster naar de onderliggende Azure Data Lake Storage gen 2-opslag. De geëxporteerde gegevens kunnen vervolgens worden geopend vanuit het secundaire HBase-cluster en worden geïmporteerd in tabellen die moeten bestaan in de secundaire. Hoewel de HBase-export een granulatie op tabel niveau biedt, bepaalt de Automation-engine voor het exporteren van het aantal incrementele rijen dat in elke uitvoering moet worden meegenomen. Zie [HDInsight HBase Backup and Replication](./hbase/apache-hbase-backup-replication.md#export-then-import)(Engelstalig) voor meer informatie.
 
 HBase-replicatie maakt gebruik van bijna realtime replicatie tussen HBase-clusters op een volledig geautomatiseerde manier. De replicatie wordt uitgevoerd op tabel niveau. Alle tabellen of specifieke tabellen kunnen worden benaderd voor replicatie. HBase-replicatie is uiteindelijk consistent, wat inhoudt dat recente wijzigingen in een tabel in de primaire regio mogelijk niet onmiddellijk beschikbaar zijn voor alle secundairen. De secundaire zones worden gegarandeerd uiteindelijk consistent met de primaire. HBase-replicatie kan tussen twee of meer HDInsight HBase-clusters worden ingesteld als:
 
@@ -105,9 +105,9 @@ HBase-replicatie maakt gebruik van bijna realtime replicatie tussen HBase-cluste
 * Primair en secundair bevinden zich in verschillende gepeerde VNets in dezelfde regio.
 * Primair en secundair bevinden zich in verschillende gepeerde VNets in verschillende regio's.
 
-Zie voor meer informatie [configuratie van Apache HBase-cluster replicatie in azure Virtual Networks](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-replication).
+Zie voor meer informatie [configuratie van Apache HBase-cluster replicatie in azure Virtual Networks](./hbase/apache-hbase-replication.md).
 
-Er zijn een aantal andere manieren voor het uitvoeren van back-ups van HBase-clusters, zoals [het kopiëren van de map HBase, het](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-backup-replication#copy-the-hbase-folder) [kopiëren van tabellen](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-backup-replication#copy-tables) en [moment opnamen](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-backup-replication#snapshots).
+Er zijn een aantal andere manieren voor het uitvoeren van back-ups van HBase-clusters, zoals [het kopiëren van de map HBase, het](./hbase/apache-hbase-backup-replication.md#copy-the-hbase-folder) [kopiëren van tabellen](./hbase/apache-hbase-backup-replication.md#copy-tables) en [moment opnamen](./hbase/apache-hbase-backup-replication.md#snapshots).
 
 ### <a name="hbase-rpo--rto"></a>HBase RPO & RTO
 
@@ -147,7 +147,7 @@ Het replicatie model Multi-Region/cyclische is een uitbrei ding van HBase-replic
 
 ## <a name="apache-kafka"></a>Apache Kafka
 
-De beschik baarheid van meerdere regio's inschakelen HDInsight 4,0 ondersteunt Kafka MirrorMaker die kunnen worden gebruikt voor het onderhouden van een secundaire replica van het primaire Kafka-cluster in een andere regio. MirrorMaker fungeert als een consumer op hoog niveau, gebruikt van een specifiek onderwerp in het primaire cluster en maakt een onderwerp met dezelfde naam in de secundaire. Replicatie tussen clusters voor nood herstel met hoge Beschik baarheid met behulp van MirrorMaker wordt geleverd met de veronderstelling dat producenten en consumenten een failover naar het replica cluster moeten uitvoeren. Zie [MirrorMaker-onderwerpen Apache Kafka repliceren met Kafka op HDInsight](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-mirroring) voor meer informatie.
+De beschik baarheid van meerdere regio's inschakelen HDInsight 4,0 ondersteunt Kafka MirrorMaker die kunnen worden gebruikt voor het onderhouden van een secundaire replica van het primaire Kafka-cluster in een andere regio. MirrorMaker fungeert als een consumer op hoog niveau, gebruikt van een specifiek onderwerp in het primaire cluster en maakt een onderwerp met dezelfde naam in de secundaire. Replicatie tussen clusters voor nood herstel met hoge Beschik baarheid met behulp van MirrorMaker wordt geleverd met de veronderstelling dat producenten en consumenten een failover naar het replica cluster moeten uitvoeren. Zie [MirrorMaker-onderwerpen Apache Kafka repliceren met Kafka op HDInsight](./kafka/apache-kafka-mirroring.md) voor meer informatie.
 
 Afhankelijk van de levens duur van het onderwerp wanneer de replicatie is gestart, kan de MirrorMaker-onderwerp replicatie leiden tot verschillende offsets tussen de bron-en replica-onderwerpen. HDInsight Kafka-clusters bieden ook ondersteuning voor de replicatie van onderwerps partities. Dit is een functie voor hoge Beschik baarheid op het niveau van de afzonderlijke cluster.
 
@@ -192,7 +192,7 @@ Nadelen:
 
 ## <a name="hdinsight-enterprise-security-package"></a>HDInsight-Enterprise Security Package
 
-Deze instelling wordt gebruikt voor het inschakelen van functionaliteit voor meerdere gebruikers in zowel primaire als secundaire en [Azure AD DS replica sets](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-replica-set) , om ervoor te zorgen dat gebruikers zich kunnen verifiëren voor beide clusters. Tijdens normaal gebruik moeten zwerver-beleids regels worden ingesteld in de secundaire, om ervoor te zorgen dat gebruikers alleen lees bewerkingen kunnen uitvoeren. In de onderstaande architectuur wordt uitgelegd hoe een door ESP ingeschakelde component actieve primaire – stand-by secundaire set kan worden weer gegeven.
+Deze instelling wordt gebruikt voor het inschakelen van functionaliteit voor meerdere gebruikers in zowel primaire als secundaire en [Azure AD DS replica sets](../active-directory-domain-services/tutorial-create-replica-set.md) , om ervoor te zorgen dat gebruikers zich kunnen verifiëren voor beide clusters. Tijdens normaal gebruik moeten zwerver-beleids regels worden ingesteld in de secundaire, om ervoor te zorgen dat gebruikers alleen lees bewerkingen kunnen uitvoeren. In de onderstaande architectuur wordt uitgelegd hoe een door ESP ingeschakelde component actieve primaire – stand-by secundaire set kan worden weer gegeven.
 
 Zwerver meta Store-replicatie:
 

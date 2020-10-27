@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: 2cd9f01404a4e33303356dd3f452cd7dbc47a747
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a6faac66edaaf047f5ba025e94a1522c2313f9ed
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328561"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546667"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Persoonlijke Azure-koppeling voor Azure Data Factory
 
@@ -53,10 +53,10 @@ De communicatie met de Azure Data Factory-service gaat via een privé koppeling 
 ![Diagram van een persoonlijke koppeling voor Azure Data Factory architectuur.](./media/data-factory-private-link/private-link-architecture.png)
 
 Het inschakelen van de service voor persoonlijke koppelingen voor elk van de voor gaande communicatie kanalen biedt de volgende functionaliteit:
-- **Ondersteund**:
+- **Ondersteund** :
    - U kunt de data factory in uw virtuele netwerk ontwerpen en bewaken, zelfs als u alle uitgaande communicatie blokkeert.
    - De opdracht communicatie tussen de zelf-hostende Integration runtime en de Azure Data Factory-service kan veilig worden uitgevoerd in een particuliere netwerk omgeving. Het verkeer tussen de zelf-hostende Integration runtime en de Azure Data Factory-service verloopt via een persoonlijke koppeling. 
-- **Momenteel niet ondersteund**:
+- **Momenteel niet ondersteund** :
    - Interactief ontwerpen waarbij gebruik wordt gemaakt van een zelf-hostende Integration runtime, zoals de verbinding testen, bladeren in mappen lijst en tabel lijst, schema ophalen en gegevens bekijken, via een persoonlijke koppeling.
    - De nieuwe versie van de zelf-hostende Integration runtime kan automatisch worden gedownload van het micro soft Download centrum als u auto update inschakelt.
 
@@ -67,7 +67,7 @@ Het inschakelen van de service voor persoonlijke koppelingen voor elk van de voo
 > Wanneer u een gekoppelde service maakt, moet u ervoor zorgen dat uw referenties zijn opgeslagen in een Azure-sleutel kluis. Anders werken de referenties niet wanneer u een persoonlijke koppeling inschakelt in Azure Data Factory.
 
 ## <a name="set-up-private-link-for-azure-data-factory"></a>Persoonlijke koppeling instellen voor Azure Data Factory
-U kunt persoonlijke eind punten maken met behulp van [de Azure Portal](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal), Power shell of de Azure cli.
+U kunt persoonlijke eind punten maken met behulp van [de Azure Portal](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal).
 
 U kunt ook naar uw Azure data factory gaan in de Azure Portal en een persoonlijk eind punt maken, zoals hier wordt weer gegeven:
 

@@ -1,17 +1,17 @@
 ---
-title: Overzicht van bedrijfs continuïteit met Azure Database for MySQL flexibele server
+title: Overzicht van bedrijfs continuïteit-Azure Database for MySQL flexibele server
 description: Meer informatie over de concepten van bedrijfs continuïteit met Azure Database for MySQL flexibele server
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 0c1afaa7d2d7971b2570914aa7c69fa7c666ae46
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 833031a787f8571a8f8aea8e536410d4abcca298
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107841"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546412"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-mysql---flexible-server-preview"></a>Overzicht van bedrijfs continuïteit met Azure Database for MySQL-flexibele server (preview-versie)
 
@@ -21,7 +21,6 @@ ms.locfileid: "92107841"
 Azure Database for MySQL flexibele server biedt mogelijkheden voor bedrijfs continuïteit die uw data bases beschermen in het geval van een geplande en ongeplande onderbreking. Functies, zoals geautomatiseerde back-ups en hoge Beschik baarheid, hebben verschillende niveaus van fout beveiliging met verschillende herstel tijd-en gegevens verlies Risico's. Als u uw toepassing wilt beveiligen tegen fouten, moet u rekening houden met de beoogde herstel tijd (RTO) en Recovery Point Objective (RPO) voor elke toepassing. RTO is de uitval tijd tolerantie en de RPO is de tolerantie voor gegevens verlies na een onderbreking van de database service.
 
 In de volgende tabel ziet u de functies van flexibele server aanbiedingen.
-
 
 | **Functie** | **Beschrijving** | **Beperkingen** |
 | ---------- | ----------- | ------------ |
@@ -34,17 +33,18 @@ In de volgende tabel ziet u de functies van flexibele server aanbiedingen.
 > Er worden geen uptime-, RTO-en RPO-SLA tijdens de preview-periode geboden. Details die op deze pagina worden verstrekt, alleen voor uw gegevens en plannings doeleinden.
 
 ## <a name="planned-downtime-mitigation"></a>Geplande downtime van uitval tijd
+
 Hier volgen enkele geplande onderhouds scenario's voor uitval tijd:
 
 | **Scenario** | **Proces**|
 | :------------ | :----------- |
 | **Compute scaling (gebruiker)**| Wanneer u de berekening van de reken schaal uitvoert, wordt een nieuwe flexibele server ingericht met behulp van de geschaalde Compute-configuratie. In de bestaande database server kunnen actieve controle punten worden voltooid, worden de client verbindingen geleegd, worden niet-doorgevoerde trans acties geannuleerd en vervolgens afgesloten. De opslag wordt vervolgens gekoppeld aan de nieuwe server en de data base wordt gestart, waardoor zo nodig herstel wordt uitgevoerd voordat client verbindingen worden geaccepteerd. |
 | **Nieuwe software-implementatie (Azure)** | Nieuwe functies implementatie-of fout oplossingen worden automatisch uitgevoerd als onderdeel van het geplande onderhoud van de service, en u kunt plannen wanneer deze activiteiten plaatsvinden. Raadpleeg de [documentatie](https://aka.ms/servicehealthpm)voor meer informatie en Controleer ook uw [Portal](https://aka.ms/servicehealthpm) |
-| **Secundaire versie-upgrades (Azure)** | Azure Database for MySQL worden database servers automatisch aan de secundaire versie door Azure door berekend. Deze treedt op als onderdeel van het geplande onderhoud van de service. Dit leidt tot een korte downtime in seconden en de database server wordt automatisch opnieuw opgestart met de nieuwe secundaire versie. Raadpleeg de [documentatie](https://docs.microsoft.com/azure/mysql/concepts-monitoring#planned-maintenance-notification)voor meer informatie en Controleer ook uw [Portal](https://aka.ms/servicehealthpm).|
+| **Secundaire versie-upgrades (Azure)** | Azure Database for MySQL worden database servers automatisch aan de secundaire versie door Azure door berekend. Deze treedt op als onderdeel van het geplande onderhoud van de service. Dit leidt tot een korte downtime in seconden en de database server wordt automatisch opnieuw opgestart met de nieuwe secundaire versie. Raadpleeg de [documentatie](../concepts-monitoring.md#planned-maintenance-notification)voor meer informatie en Controleer ook uw [Portal](https://aka.ms/servicehealthpm).|
 
-Wanneer de flexibele server is geconfigureerd met een **zone redundant hoge Beschik baarheid**, voert de flexibele server eerst bewerkingen uit op de stand-by-server en vervolgens op de primaire server zonder failover. Raadpleeg [concepten-hoge Beschik baarheid](./concepts-high-availability.md) voor meer informatie.
+Wanneer de flexibele server is geconfigureerd met een **zone redundant hoge Beschik baarheid** , voert de flexibele server eerst bewerkingen uit op de stand-by-server en vervolgens op de primaire server zonder failover. Raadpleeg [concepten-hoge Beschik baarheid](./concepts-high-availability.md) voor meer informatie.
 
-##  <a name="unplanned-downtime-mitigation"></a>Ongeplande downtime-beperking
+## <a name="unplanned-downtime-mitigation"></a>Ongeplande downtime-beperking
 
 Ongeplande uitval tijd kan optreden als gevolg van onvoorziene fouten, waaronder onderliggende hardwarestoringen, netwerk problemen en software fouten. Als de database server onverwacht uitvalt, als deze is geconfigureerd met hoge Beschik baarheid [HA], wordt de stand-by replica geactiveerd. Als dat niet het geval is, wordt er automatisch een nieuwe database server ingericht. Hoewel een ongeplande downtime niet kan worden vermeden, vermindert de flexibele server de uitval tijd door automatisch herstel bewerkingen uit te voeren op database server-en opslag lagen zonder menselijke tussen komst.
 
@@ -60,12 +60,10 @@ Hier volgen enkele ongeplande fout scenario's en het herstel proces:
 | **Fout in beschikbaarheids zone** | Hoewel het een zeldzame gebeurtenis is, kunt u, als u wilt herstellen van een storing op zone niveau, herstel naar een bepaald tijdstip uitvoeren met behulp van de back-up en een aangepast herstel punt kiezen om de meest recente gegevens op te halen. Er wordt een nieuwe flexibele server geïmplementeerd in een andere zone. De tijd die nodig is om te herstellen, is afhankelijk van de vorige back-up en het aantal transactie logboeken dat moet worden hersteld. | Flexibele server voert automatische failover uit naar de stand-by-site. Raadpleeg de [pagina ha-concepten](./concepts-high-availability.md) voor meer informatie. |
 | **Regio fout** | De functies voor replicatie tussen regio's en geo-Restore worden nog niet ondersteund in de preview-versie. | |
 
-
 > [!IMPORTANT]
-> Verwijderde servers **kunnen niet**   worden hersteld. Als u de server verwijdert, worden ook alle data bases die deel uitmaken van de server, verwijderd en kunnen deze niet worden hersteld. Gebruik [Azure resource Lock](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources)   om onbedoelde verwijdering van uw server te voor komen.
-
+> Verwijderde servers **kunnen niet** worden hersteld. Als u de server verwijdert, worden ook alle data bases die deel uitmaken van de server, verwijderd en kunnen deze niet worden hersteld. Gebruik [Azure resource Lock](../../azure-resource-manager/management/lock-resources.md) om onbedoelde verwijdering van uw server te voor komen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
--   Meer informatie over [zone redundante hoge Beschik baarheid](./concepts-high-availability.md)
--   Meer informatie over [back-up en herstel](./concepts-backup-restore.md)
+- Meer informatie over [zone redundante hoge Beschik baarheid](./concepts-high-availability.md)
+- Meer informatie over [back-up en herstel](./concepts-backup-restore.md)

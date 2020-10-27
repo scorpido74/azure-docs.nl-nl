@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 45b9c158aca85d62b02d65282876d5e40129878f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ba1d1e15b1dbb3efb24219b6c09a6827e701d46
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081063"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546072"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>HDInsight-clusters beheren met behulp van de Apache Ambari REST API
 
@@ -29,7 +29,7 @@ Apache Ambari vereenvoudigt het beheer en de bewaking van Hadoop-clusters door e
 
 * Een Hadoop-cluster in HDInsight. Zie aan de [slag met HDInsight op Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
-* Bash op Ubuntu in Windows 10.  In de voorbeelden in dit artikel wordt gebruikgemaakt van de Bash-shell in Windows 10. Zie [Installatiehandleiding voor Windows 10 voor Windows-subsysteem voor Linux](https://docs.microsoft.com/windows/wsl/install-win10) voor installatiestappen.  Andere [UNIX-shells](https://www.gnu.org/software/bash/) kunnen ook worden gebruikt.  De voor beelden, met een kleine wijziging, kunnen werken aan een Windows-opdracht prompt.  U kunt ook Windows Power shell gebruiken.
+* Bash op Ubuntu in Windows 10.  In de voorbeelden in dit artikel wordt gebruikgemaakt van de Bash-shell in Windows 10. Zie [Installatiehandleiding voor Windows 10 voor Windows-subsysteem voor Linux](/windows/wsl/install-win10) voor installatiestappen.  Andere [UNIX-shells](https://www.gnu.org/software/bash/) kunnen ook worden gebruikt.  De voor beelden, met een kleine wijziging, kunnen werken aan een Windows-opdracht prompt.  U kunt ook Windows Power shell gebruiken.
 
 * jq, een opdrachtregel-JSON-processor.  Zie [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
 
@@ -37,11 +37,11 @@ Apache Ambari vereenvoudigt het beheer en de bewaking van Hadoop-clusters door e
 
 ## <a name="base-uniform-resource-identifier-for-ambari-rest-api"></a>Base-uniform resource-id voor Ambari rest API
 
- De basis-URI (Uniform Resource Identifier) voor de Ambari REST API in HDInsight is `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` , waarbij `CLUSTERNAME` de naam van uw cluster is.  Cluster namen in Uri's zijn **hoofdletter gevoelig**.  De naam van het cluster in het Fully Qualified Domain Name (FQDN) van de URI ( `CLUSTERNAME.azurehdinsight.net` ) is hoofdletter gevoelig en andere exemplaren in de URI zijn hoofdletter gevoelig.
+ De basis-URI (Uniform Resource Identifier) voor de Ambari REST API in HDInsight is `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` , waarbij `CLUSTERNAME` de naam van uw cluster is.  Cluster namen in Uri's zijn **hoofdletter gevoelig** .  De naam van het cluster in het Fully Qualified Domain Name (FQDN) van de URI ( `CLUSTERNAME.azurehdinsight.net` ) is hoofdletter gevoelig en andere exemplaren in de URI zijn hoofdletter gevoelig.
 
 ## <a name="authentication"></a>Verificatie
 
-Voor het maken van verbinding met Ambari op HDInsight is HTTPS vereist. Gebruik de naam van het beheerders account (de standaard **beheerder**) en het wacht woord dat u hebt opgegeven tijdens het maken van het cluster.
+Voor het maken van verbinding met Ambari op HDInsight is HTTPS vereist. Gebruik de naam van het beheerders account (de standaard **beheerder** ) en het wacht woord dat u hebt opgegeven tijdens het maken van het cluster.
 
 Voor Enterprise Security Package clusters gebruikt u in plaats van `admin` een volledig gekwalificeerde gebruikers naam zoals `username@domain.onmicrosoft.com` .
 
@@ -87,7 +87,7 @@ $clusterName
 
 ### <a name="parsing-json-data"></a>JSON-gegevens parseren
 
-In het volgende voor beeld wordt [JQ](https://stedolan.github.io/jq/) of [ConvertFrom-JSON](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json) gebruikt om het JSON-respons document te parseren en alleen de `health_report` informatie van de resultaten weer te geven.
+In het volgende voor beeld wordt [JQ](https://stedolan.github.io/jq/) of [ConvertFrom-JSON](/powershell/module/microsoft.powershell.utility/convertfrom-json) gebruikt om het JSON-respons document te parseren en alleen de `health_report` informatie van de resultaten weer te geven.
 
 ```bash
 curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName" \
@@ -253,7 +253,7 @@ De geretourneerde waarde is vergelijkbaar met een van de volgende voor beelden:
     De geretourneerde waarde is vergelijkbaar met `/clusters/CLUSTERNAME/` . Deze waarde is een pad binnen het Data Lake Storage-account. Dit pad is de hoofdmap van het HDFS-compatibele bestands systeem voor het cluster.  
 
 > [!NOTE]  
-> Met de cmdlet [Get-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) die door [Azure PowerShell](/powershell/azure/) wordt verstrekt, worden ook de opslag gegevens voor het cluster geretourneerd.
+> Met de cmdlet [Get-AzHDInsightCluster](/powershell/module/az.hdinsight/get-azhdinsightcluster) die door [Azure PowerShell](/powershell/azure/) wordt verstrekt, worden ook de opslag gegevens voor het cluster geretourneerd.
 
 ### <a name="get-all-configurations"></a>Alle configuraties ophalen
 

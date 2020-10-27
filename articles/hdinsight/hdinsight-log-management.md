@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/05/2020
-ms.openlocfilehash: 95472d53045e23741286188da004eb649570a965
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c2aa33ac9e92f6763c0d89f0a049409c1a6a4049
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487225"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546021"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Logboeken beheren voor een HDInsight-cluster
 
@@ -77,11 +77,11 @@ Een typisch HDInsight-cluster maakt gebruik van verschillende services en open-s
 
 Apache Ambari vereenvoudigt het beheer, de configuratie en de controle van een HDInsight-cluster door een web-UI en een REST API op te geven. Ambari is opgenomen in HDInsight-clusters op basis van Linux. Selecteer het deel venster **cluster dashboard** op de pagina Azure Portal HDInsight om de pagina **cluster dashboards** koppeling te openen.  Selecteer vervolgens het deel venster **dash board voor HDInsight-cluster** om de Ambari-gebruikers interface te openen.  U wordt gevraagd om de aanmeldings referenties voor uw cluster.
 
-Als u een lijst met Service weergaven wilt openen, selecteert u het deel venster **Ambari weer gaven** op de pagina Azure portal voor HDInsight.  Deze lijst varieert, afhankelijk van de bibliotheken die u hebt geïnstalleerd.  Zo ziet u een voor beeld van een garen van het wachtrij beheer, Hive-weer gave en TEZ.  Selecteer een service koppeling om de configuratie-en service gegevens te bekijken.  De pagina Ambari UI **stack en version** bevat informatie over de configuratie-en service versie geschiedenis van Cluster Services. Als u wilt navigeren naar deze sectie van de Ambari-gebruikers interface, selecteert u het menu **beheerder** en vervolgens **stacks en versies**.  Selecteer het tabblad **versies** om informatie over de service versie weer te geven.
+Als u een lijst met Service weergaven wilt openen, selecteert u het deel venster **Ambari weer gaven** op de pagina Azure portal voor HDInsight.  Deze lijst varieert, afhankelijk van de bibliotheken die u hebt geïnstalleerd.  Zo ziet u een voor beeld van een garen van het wachtrij beheer, Hive-weer gave en TEZ.  Selecteer een service koppeling om de configuratie-en service gegevens te bekijken.  De pagina Ambari UI **stack en version** bevat informatie over de configuratie-en service versie geschiedenis van Cluster Services. Als u wilt navigeren naar deze sectie van de Ambari-gebruikers interface, selecteert u het menu **beheerder** en vervolgens **stacks en versies** .  Selecteer het tabblad **versies** om informatie over de service versie weer te geven.
 
 ![Apache Ambari-beheer stack en-versies](./media/hdinsight-log-management/ambari-stack-versions.png)
 
-Met de Ambari-gebruikers interface kunt u de configuratie voor alle (of alle) services die worden uitgevoerd op een bepaalde host (of een knoop punt) in het cluster downloaden.  Selecteer het menu **hosts** en vervolgens de koppeling voor de gewenste host. Selecteer op de pagina van de host de knop **acties host** en **down load vervolgens client configuraties**.
+Met de Ambari-gebruikers interface kunt u de configuratie voor alle (of alle) services die worden uitgevoerd op een bepaalde host (of een knoop punt) in het cluster downloaden.  Selecteer het menu **hosts** en vervolgens de koppeling voor de gewenste host. Selecteer op de pagina van de host de knop **acties host** en **down load vervolgens client configuraties** .
 
 ![Configuratie van Ambari-host-client downloaden van Apache](./media/hdinsight-log-management/download-client-configs.png)
 
@@ -109,7 +109,7 @@ De volgende stap is het controleren van de logboek bestanden voor taak uitvoerin
 
 ### <a name="access-the-hadoop-log-files"></a>Toegang tot de Hadoop-logboek bestanden
 
-HDInsight slaat de logboek bestanden op in het cluster bestandssysteem en in Azure Storage. U kunt logboek bestanden in het cluster onderzoeken door een [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) -verbinding met het cluster te openen en door het bestands systeem te bladeren of door de Hadoop-status Portal op de externe hoofd knooppunt server te gebruiken. U kunt de logboek bestanden in Azure Storage bekijken met een van de hulpprogram ma's waarmee u gegevens van Azure Storage kunt openen en downloaden. Voor beelden zijn [AzCopy](../storage/common/storage-use-azcopy.md), [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer)en Visual Studio Server Explorer. U kunt ook Power shell en de Azure Storage-client bibliotheken of de Azure .NET-Sdk's gebruiken om toegang te krijgen tot gegevens in Azure Blob-opslag.
+HDInsight slaat de logboek bestanden op in het cluster bestandssysteem en in Azure Storage. U kunt logboek bestanden in het cluster onderzoeken door een [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) -verbinding met het cluster te openen en door het bestands systeem te bladeren of door de Hadoop-status Portal op de externe hoofd knooppunt server te gebruiken. U kunt de logboek bestanden in Azure Storage bekijken met een van de hulpprogram ma's waarmee u gegevens van Azure Storage kunt openen en downloaden. Voor beelden zijn [AzCopy](../storage/common/storage-use-azcopy-v10.md), [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer)en Visual Studio Server Explorer. U kunt ook Power shell en de Azure Storage-client bibliotheken of de Azure .NET-Sdk's gebruiken om toegang te krijgen tot gegevens in Azure Blob-opslag.
 
 Hadoop voert het werk van de taken uit als *taak pogingen* op verschillende knoop punten in het cluster. HDInsight kan speculatieve taak pogingen initiëren en eventuele andere taak pogingen beëindigen die niet eerst worden voltooid. Hiermee genereert u belang rijke activiteiten die op het moment van de-vlucht worden vastgelegd in de controller, stderr en syslog-logboek bestanden. Daarnaast worden meerdere taak pogingen tegelijk uitgevoerd, maar een logboek bestand kan alleen de resultaten lineair weer geven.
 
@@ -144,13 +144,13 @@ De gebruikers interface van de garen-server wordt uitgevoerd op het hoofd knoopp
 
 1. Navigeer in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net`. Vervang CLUSTERNAME door de naam van uw HDInsight-cluster.
 2. Selecteer in de lijst met services aan de linkerkant de optie GARENs.
-3. Selecteer in de vervolg keuzelijst snelle koppelingen een van de cluster hoofd knooppunten en selecteer vervolgens de weer gave van het **Resource Manager-logboek**. Er wordt een lijst weer gegeven met koppelingen naar GARENs in de logboeken.
+3. Selecteer in de vervolg keuzelijst snelle koppelingen een van de cluster hoofd knooppunten en selecteer vervolgens de weer gave van het **Resource Manager-logboek** . Er wordt een lijst weer gegeven met koppelingen naar GARENs in de logboeken.
 
 ## <a name="step-4-forecast-log-volume-storage-sizes-and-costs"></a>Stap 4: het logboek volume grootte en kosten voor de opslag van volumes
 
 Nadat u de voor gaande stappen hebt voltooid, hebt u een goed idee van de typen en volumes van de logboek bestanden die uw HDInsight-cluster (en) produceert.
 
-Analyseer daarna het volume van de logboek gegevens in de opslag locaties van het sleutel logboek gedurende een bepaalde tijd. U kunt bijvoorbeeld het volume en de groei gedurende 30-60-90 dagen analyseren.  Neem deze informatie op in een werk blad of gebruik andere hulpprogram ma's, zoals Visual Studio, de Azure Storage Explorer of Power Query voor Excel. Zie [HDInsight-logboeken analyseren](hdinsight-debug-jobs.md)voor meer informatie.  
+Analyseer daarna het volume van de logboek gegevens in de opslag locaties van het sleutel logboek gedurende een bepaalde tijd. U kunt bijvoorbeeld het volume en de groei gedurende 30-60-90 dagen analyseren.  Neem deze informatie op in een werk blad of gebruik andere hulpprogram ma's, zoals Visual Studio, de Azure Storage Explorer of Power Query voor Excel. ```
 
 U hebt nu voldoende informatie om een strategie voor logboek beheer voor de sleutel logboeken te maken.  Gebruik uw werk blad (of hulp programma) om zowel de groei van de logboek grootte als de logboek opslag van Azure-service kosten in de toekomst te ramen.  Houd ook rekening met de vereisten voor het bewaren van Logboeken voor de set met logboeken die u wilt onderzoeken.  Nu kunt u toekomstige kosten voor de opslag van het logboek opnieuw ramen nadat u hebt bepaald welke logboek bestanden kunnen worden verwijderd (indien van toepassing) en welke logboeken moeten worden bewaard en naar minder dure Azure Storage worden gearchiveerd.
 
@@ -186,6 +186,6 @@ Als u de logboeken van alle knoop punten op één centrale locatie wilt verzamel
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Bewakings-en logboek registratie praktijken voor HDInsight](https://msdn.microsoft.com/library/dn749790.aspx)
+* [Bewakings-en logboek registratie praktijken voor HDInsight](/previous-versions/msp-n-p/dn749790(v=pandp.10))
 * [Toegang tot Apache Hadoop GARENs van toepassings Logboeken in HDInsight op basis van Linux](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 * [De grootte van logboek bestanden voor verschillende Apache Hadoop-onderdelen beheren](https://community.hortonworks.com/articles/8882/how-to-control-size-of-log-files-for-various-hdp-c.html)

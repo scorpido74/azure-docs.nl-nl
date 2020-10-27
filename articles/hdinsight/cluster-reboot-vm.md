@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/22/2020
-ms.openlocfilehash: 2177e74bd627e80ea1afbcacaf85baf4e030834c
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 725b616fec9c2bc4a0540a7941098377e01732e2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91928976"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546463"
 ---
 # <a name="reboot-vms-for-hdinsight-clusters"></a>Vm's voor HDInsight-clusters opnieuw opstarten
 
@@ -38,13 +38,13 @@ Wanneer een knoop punt opnieuw wordt opgestart, wordt het cluster mogelijk besch
 
 Er zijn twee stappen vereist voor het opnieuw opstarten van het knoop punt: een lijst met knoop punten en opnieuw starten van knoop punten.
 
-1. Knoop punten weer geven. U kunt de lijst met cluster knooppunten ophalen op [Get-AzHDInsightHost](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsighthost).
+1. Knoop punten weer geven. U kunt de lijst met cluster knooppunten ophalen op [Get-AzHDInsightHost](/powershell/module/az.hdinsight/get-azhdinsighthost).
 
       ```
       Get-AzHDInsightHost -ClusterName myclustername
       ```
 
-1. Start hosts opnieuw op. Nadat u de namen van de knoop punten hebt opgehaald die u opnieuw wilt opstarten, start u de knoop punten opnieuw met behulp van [restart-AzHDInsightHost](https://docs.microsoft.com/powershell/module/az.hdinsight/restart-azhdinsighthost).
+1. Start hosts opnieuw op. Nadat u de namen van de knoop punten hebt opgehaald die u opnieuw wilt opstarten, start u de knoop punten opnieuw met behulp van [restart-AzHDInsightHost](/powershell/module/az.hdinsight/restart-azhdinsighthost).
 
       ```
       Restart-AzHDInsightHost -ClusterName myclustername -Name wn0-myclus, wn1-myclus
@@ -54,13 +54,13 @@ Er zijn twee stappen vereist voor het opnieuw opstarten van het knoop punt: een 
 
 U kunt de functie **try it** in het API-document gebruiken om aanvragen te verzenden naar HDInsight. Er zijn twee stappen vereist voor het opnieuw opstarten van het knoop punt: een lijst met knoop punten en opnieuw starten van knoop punten.
 
-1. Knoop punten weer geven. U kunt de lijst met cluster knooppunten ophalen uit de REST API of in Ambari. Zie voor meer informatie de [lijst met HDInsight-hosts rest API bewerking](https://docs.microsoft.com/rest/api/hdinsight/virtualmachines/listhosts).
+1. Knoop punten weer geven. U kunt de lijst met cluster knooppunten ophalen uit de REST API of in Ambari. Zie voor meer informatie de [lijst met HDInsight-hosts rest API bewerking](/rest/api/hdinsight/virtualmachines/listhosts).
 
     ```
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/listHosts?api-version=2018-06-01-preview
     ```
 
-1. Start hosts opnieuw op. Nadat u de namen van de knoop punten hebt opgehaald die u opnieuw wilt opstarten, start u de knoop punten opnieuw met behulp van de REST API om de knoop punten opnieuw op te starten. De naam van het knoop punt volgt het patroon van *NodeType (wn/HN/ZK/GW)*  +  *x*de  +  *eerste zes tekens van de cluster naam*. Zie voor meer informatie [HDInsight-hosts opnieuw opstarten rest API bewerking](https://docs.microsoft.com/rest/api/hdinsight/virtualmachines/restarthosts).
+1. Start hosts opnieuw op. Nadat u de namen van de knoop punten hebt opgehaald die u opnieuw wilt opstarten, start u de knoop punten opnieuw met behulp van de REST API om de knoop punten opnieuw op te starten. De naam van het knoop punt volgt het patroon van *NodeType (wn/HN/ZK/GW)*  +  *x* de  +  *eerste zes tekens van de cluster naam* . Zie voor meer informatie [HDInsight-hosts opnieuw opstarten rest API bewerking](/rest/api/hdinsight/virtualmachines/restarthosts).
 
     ```
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/restartHosts?api-version=2018-06-01-preview
@@ -77,6 +77,6 @@ De werkelijke namen van de knoop punten die u opnieuw wilt opstarten, worden opg
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Restart-AzHDInsightHost](https://docs.microsoft.com/powershell/module/az.hdinsight/restart-azhdinsighthost)
-* [Virtuele HDInsight-machines REST API](https://docs.microsoft.com/rest/api/hdinsight/virtualmachines)
-* [HDInsight-REST API](https://docs.microsoft.com/rest/api/hdinsight/)
+* [Restart-AzHDInsightHost](/powershell/module/az.hdinsight/restart-azhdinsighthost)
+* [Virtuele HDInsight-machines REST API](/rest/api/hdinsight/virtualmachines)
+* [HDInsight-REST API](/rest/api/hdinsight/)

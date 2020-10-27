@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 09/23/2020
-ms.openlocfilehash: c63a8efc4bbcf6e5a124d439e6f9f91397e2fa53
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9d126f591da1bffebbfd29119c56927cfbb21dcd
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91315079"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370573"
 ---
 # <a name="changelog"></a>Wijzigingenlogboek
 
@@ -105,7 +105,7 @@ Relevante KeyDelivery-fouten retourneren voor het aanroepen van toepassingen
 - De huidige tijd kan groter zijn dan de duur van de video
 - Het instellen van de afspeelsnelheid via initialSpeed werkt niet
 - Soms lijkt de speler vast te lopen
-- Wanneer u op Edge en Internet Explorer op een aanraakscherm drukt, wordt het juiste segment van de video niet nauwkeurig weergegeven wanneer u inzoomt op een pagina
+- Wanneer u op Microsoft Edge en Internet Explorer op een aanraakscherm drukt, wordt het juiste segment van de video niet nauwkeurig weergegeven wanneer u inzoomt op een pagina
 - [Toegankelijkheid] Het label Aria voor afspelen/onderbreken beschrijft niet videospeler. Live segment niet gevonden fout voor flashSS wordt niet aan de correcte amp-fout toegewezen
 - [Toegankelijkheid] Aria-rollen die worden gebruikt voor afspelen/onderbreken moeten voldoen aan geldige waarden (. vjs-text-track-display)
 - [Toegankelijkheid] Bepaalde ARIA-rollen moeten zijn opgenomen in bepaalde bovenliggende items
@@ -198,7 +198,7 @@ Relevante KeyDelivery-fouten retourneren voor het aanroepen van toepassingen
 
 ### <a name="changes"></a>Wijzigingen ###
 
-- [Wijziging][Live-ondertiteling] API-naam voor CEA-bijschriften gewijzigd van 608 in 708. Zie [CEA708 Captions Settings](/javascript/api/azuremediaplayer/amp.player.cea708captionssettings)--> (Engelstalig) voor meer informatie
+- [Wijziging][Live-ondertiteling] API-naam voor CEA-bijschriften gewijzigd van 608 in 708. Zie [CEA708 Captions Settings](/javascript/api/azuremediaplayer/cea708captionssettings)--> (Engelstalig) voor meer informatie
 
 ## <a name="220-official-release"></a>2.2.0 (officiële versie) ##
 

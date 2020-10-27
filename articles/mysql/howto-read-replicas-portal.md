@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/10/2020
-ms.openlocfilehash: 6b097aa0adb39e1576e8771bbae8707348351a82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63ce078cc80b856fe09f3d2bbad1c6e96615eae8
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91740119"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546803"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>Lees replica's maken en beheren in Azure Database for MySQL met behulp van de Azure Portal
 
@@ -35,9 +35,9 @@ Een lees replica-server kan worden gemaakt met behulp van de volgende stappen:
 
 2. Selecteer de bestaande Azure Database for MySQL-server die u wilt gebruiken als een Master. Met deze actie wordt de pagina **overzicht** geopend.
 
-3. Selecteer **replicatie** in het menu onder **instellingen**.
+3. Selecteer **replicatie** in het menu onder **instellingen** .
 
-4. Selecteer **replica toevoegen**.
+4. Selecteer **replica toevoegen** .
 
    :::image type="content" source="./media/howto-read-replica-portal/add-replica.png" alt-text="Azure Database for MySQL-replicatie":::
 
@@ -55,7 +55,7 @@ Een lees replica-server kan worden gemaakt met behulp van de volgende stappen:
 7. Selecteer **OK** om te bevestigen dat u de replica wilt maken.
 
 > [!NOTE]
-> Lees replica's worden gemaakt met dezelfde server configuratie als de Master. De configuratie van de replica server kan worden gewijzigd nadat deze is gemaakt. De replica server wordt altijd gemaakt in dezelfde resource groep en hetzelfde abonnement als de bron server. Als u een replica server wilt maken naar een andere resource groep of een ander abonnement, kunt u [de replica-server verplaatsen](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription) nadat u deze hebt gemaakt. Het is raadzaam om de configuratie van de replica server te behouden in gelijke of hogere waarden dan de bron om ervoor te zorgen dat de replica kan blijven werken met de Master.
+> Lees replica's worden gemaakt met dezelfde server configuratie als de Master. De configuratie van de replica server kan worden gewijzigd nadat deze is gemaakt. De replica server wordt altijd gemaakt in dezelfde resource groep en hetzelfde abonnement als de bron server. Als u een replica server wilt maken naar een andere resource groep of een ander abonnement, kunt u [de replica-server verplaatsen](../azure-resource-manager/management/move-resource-group-and-subscription.md) nadat u deze hebt gemaakt. Het is raadzaam om de configuratie van de replica server te behouden in gelijke of hogere waarden dan de bron om ervoor te zorgen dat de replica kan blijven werken met de Master.
 
 Zodra de replica server is gemaakt, kan deze worden weer gegeven op de Blade **replicatie** .
 
@@ -70,17 +70,17 @@ Als u de replicatie tussen een bron en een replica server van de Azure Portal wi
 
 1. Selecteer uw bron Azure Database for MySQL server in het Azure Portal. 
 
-2. Selecteer **replicatie** in het menu onder **instellingen**.
+2. Selecteer **replicatie** in het menu onder **instellingen** .
 
 3. Selecteer de replica server waarvoor u de replicatie wilt stoppen.
 
    :::image type="content" source="./media/howto-read-replica-portal/stop-replication-select.png" alt-text="Azure Database for MySQL-replicatie":::
 
-4. Selecteer **Replicatie stoppen**.
+4. Selecteer **Replicatie stoppen** .
 
    :::image type="content" source="./media/howto-read-replica-portal/stop-replication.png" alt-text="Azure Database for MySQL-replicatie":::
 
-5. Bevestig dat u de replicatie wilt stoppen door op **OK**te klikken.
+5. Bevestig dat u de replicatie wilt stoppen door op **OK** te klikken.
 
    :::image type="content" source="./media/howto-read-replica-portal/stop-replication-confirm.png" alt-text="Azure Database for MySQL-replicatie":::
 
@@ -90,7 +90,7 @@ Voer de volgende stappen uit om een lees replica-server te verwijderen uit de Az
 
 1. Selecteer uw bron Azure Database for MySQL server in het Azure Portal.
 
-2. Selecteer **replicatie** in het menu onder **instellingen**.
+2. Selecteer **replicatie** in het menu onder **instellingen** .
 
 3. Selecteer de replica server die u wilt verwijderen.
 
@@ -113,7 +113,7 @@ Gebruik de volgende stappen om een bron server te verwijderen uit de Azure Porta
 
 1. Selecteer uw bron Azure Database for MySQL server in het Azure Portal.
 
-2. Selecteer **verwijderen**in het **overzicht**.
+2. Selecteer **verwijderen** in het **overzicht** .
 
    :::image type="content" source="./media/howto-read-replica-portal/delete-master-overview.png" alt-text="Azure Database for MySQL-replicatie":::
 
@@ -125,7 +125,7 @@ Gebruik de volgende stappen om een bron server te verwijderen uit de Azure Porta
 
 1. Selecteer in de [Azure Portal](https://portal.azure.com/)de replica Azure database for mysql server die u wilt bewaken.
 
-2. Onder de sectie **bewaking** van de zijbalk selecteert u **metrische gegevens**:
+2. Onder de sectie **bewaking** van de zijbalk selecteert u **metrische gegevens** :
 
 3. Selecteer **replicatie vertraging in seconden in** de vervolg keuzelijst met beschik bare metrische gegevens.
 

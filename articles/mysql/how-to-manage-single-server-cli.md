@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/22/2020
-ms.openlocfilehash: c3a3fae9150b6805e9bb1533f2bb585d8845b253
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f0b059a25cd9fc77a59dc0a78feb18c2c549057
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936626"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546854"
 ---
 # <a name="manage-an-azure-database-for-mysql-single-server-using-the-azure-cli"></a>Een Azure Database for MySQL één server beheren met de Azure CLI
 
@@ -20,13 +20,13 @@ Dit artikel laat u zien hoe u uw enkele servers kunt beheren die zijn geïmpleme
 ## <a name="prerequisites"></a>Vereisten
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint. In dit artikel moet u Azure CLI-versie 2.0 of later lokaal uitvoeren. Voer de opdracht `az --version` uit om de geïnstalleerde versie te zien. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
-U moet zich aanmelden bij uw account met behulp van de opdracht [az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login). Let op de eigenschap **id**, die verwijst naar **abonnements-id** voor uw Azure-account.
+U moet zich aanmelden bij uw account met behulp van de opdracht [az login](/cli/azure/reference-index#az-login). Let op de eigenschap **id** , die verwijst naar **abonnements-id** voor uw Azure-account.
 
 ```azurecli-interactive
 az login
 ```
 
-Selecteer het specifieke abonnement in uw account met de opdracht [az account set](/cli/azure/account). Noteer de **id**-waarde uit de uitvoer van **az login** en gebruik deze als de waarde voor het argument **abonnement** in de opdracht. Als u meerdere abonnementen hebt, kiest u het juiste abonnement waarin de resource moet worden gefactureerd. U kunt al uw abonnementen ophalen met de opdracht [az account list](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list).
+Selecteer het specifieke abonnement in uw account met de opdracht [az account set](/cli/azure/account). Noteer de **id** -waarde uit de uitvoer van **az login** en gebruik deze als de waarde voor het argument **abonnement** in de opdracht. Als u meerdere abonnementen hebt, kiest u het juiste abonnement waarin de resource moet worden gefactureerd. U kunt al uw abonnementen ophalen met de opdracht [az account list](/cli/azure/account#az-account-list).
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -35,7 +35,7 @@ az account set --subscription <subscription id>
 Als u nog geen server hebt gemaakt, raadpleegt u deze [Snelstartgids](quickstart-create-mysql-server-database-using-azure-cli.md) om er een te maken.
 
 ## <a name="scale-compute-and-storage"></a>Schaal berekening en opslag
-Met de volgende opdracht kunt u de prijs categorie eenvoudig opschalen, berekenen en opslaan. U kunt alle server bewerkingen zien die u kunt uitvoeren [AZ mysql server Overview](/cli/azure/mysql/server?view=azure-cli-latest) (Engelstalig)
+Met de volgende opdracht kunt u de prijs categorie eenvoudig opschalen, berekenen en opslaan. U kunt alle server bewerkingen zien die u kunt uitvoeren [AZ mysql server Overview](/cli/azure/mysql/server) (Engelstalig)
 
 ```azurecli-interactive
 az mysql server update --resource-group myresourcegroup --name mydemoserver --sku-name GP_Gen5_4 --storage-size 6144
@@ -58,7 +58,7 @@ storage-size | 6144 | De opslagcapaciteit van de server (eenheid is MB). Mini ma
 ## <a name="manage-mysql-databases-on-a-server"></a>MySQL-data bases op een server beheren
 U kunt elk van deze opdrachten gebruiken om data base-eigenschappen van een Data Base op uw server te maken, te verwijderen, weer te geven.
 
-| Cmdlet | Gebruik| Beschrijving |
+| Cmdlet | Gebruik| Description |
 | --- | ---| --- |
 |[AZ MySQL DB Create](/cli/azure/sql/db#az-mysql-db-create)|```az mysql db create -g myresourcegroup -s mydemoserver -n mydatabasename``` |Hiermee maakt u een Data Base|
 |[AZ MySQL DB Delete](/cli/azure/sql/db#az-mysql-db-delete)|```az mysql db delete -g myresourcegroup -s mydemoserver -n mydatabasename```|Verwijder uw data base van uw server. Met deze opdracht wordt de server niet verwijderd. |

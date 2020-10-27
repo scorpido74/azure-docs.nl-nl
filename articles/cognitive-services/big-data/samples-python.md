@@ -33,7 +33,7 @@ De voorbeelden in dit artikel maken gebruik van de volgende services van Cogniti
 1. Nadat u een nieuw notebook in Azure Databricks hebt gemaakt, kopieert u de onderstaande **gedeelde code** en plakt u deze in een nieuwe cel in uw notebook.
 1. Kies hieronder een voorbeeld van een service, kopieer deze en plak deze in een tweede nieuwe cel in uw notebook.
 1. Vervang een tijdelijke aanduiding met de serviceabonnementssleutel door uw eigen sleutel.
-1. Kies de knop Uitvoeren (pictogram met driehoek) in de rechterbovenhoek van de cel en selecteer **Cel uitvoeren**.
+1. Kies de knop Uitvoeren (pictogram met driehoek) in de rechterbovenhoek van de cel en selecteer **Cel uitvoeren** .
 1. Bekijk de resultaten in een tabel onder de cel.
 
 ## <a name="shared-code"></a>Gedeelde code

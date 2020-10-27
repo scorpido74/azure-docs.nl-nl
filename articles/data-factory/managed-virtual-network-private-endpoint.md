@@ -13,12 +13,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: 5a40faa1feac20ae096dfe39a5b1d109d4a11d3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31d0d7f3ecb9ddb8a52c8ddda8a076e32283ae16
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90563995"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545715"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Beheerde Virtual Network Azure Data Factory (preview-versie)
 
@@ -94,6 +94,7 @@ De onderstaande gegevens bronnen worden ondersteund om verbinding te maken via e
 - VS - oost
 - VS - oost 2
 - VS - west-centraal
+- VS - west
 - West US 2
 - South Central US
 - Central US
@@ -102,6 +103,7 @@ De onderstaande gegevens bronnen worden ondersteund om verbinding te maken via e
 - Verenigd Koninkrijk Zuid
 - Azië - zuidoost
 - Australië - oost
+- Australië - zuidoost
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>Uitgaande communicatie via het open bare eind punt van de Virtual Network voor ADF beheerd
 - Alleen poort 443 wordt geopend voor uitgaande communicatie.

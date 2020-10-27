@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 82b0b53b1933a7ca08163a12b2b7649b7b9538f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c112896e78c07fafa2d714b0533db1f58dd57ffd
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361633"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535600"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>VM van Azure-infra structuur opnieuw opstarten gebruiken om een hogere Beschik baarheid van een SAP-systeem te krijgen
 
@@ -228,7 +228,7 @@ Azure Managed disks worden automatisch geplaatst in het fout domein van de virtu
 
 Een voor beeld van een architectuur van een SAP net-systeem met een hoge Beschik baarheid voor Azure-infra structuur en opslag accounts kan er als volgt uitzien:
 
-![Hoge Beschik baarheid van Azure-infra structuur gebruiken om de SAP-toepassing hogere Beschik baarheid te bieden][planning-guide-figure-2900]
+![Diagram waarin de architectuur wordt weer gegeven van een SAP NetWeaver-systeem dat gebruikmaakt van hoge Beschik baarheid en opslag accounts van Azure-infra structuur.][planning-guide-figure-2900]
 
 Een voor beeld van een architectuur van een SAP net-systeem met een hoge Beschik baarheid voor Azure-infra structuur en beheerde schijven kan er als volgt uitzien:
 

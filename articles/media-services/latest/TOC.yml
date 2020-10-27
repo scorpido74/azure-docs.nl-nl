@@ -63,6 +63,7 @@
           href: protect-with-drm.md
         - name: Inhoudsbeveiliging met Azure AD
           href: azure-ad-content-protection.md
+          displayName: 'AAD, Active Directory'
     - name: REST
       items:
         - name: Een extern bestand REST coderen en streamen
@@ -129,8 +130,8 @@
         - name: Overzicht
           href: analyzing-video-audio-files-concept.md
           displayName: 'analyze, analyzing, presets, jobs'
-        - name: Transformaties en taken
-          href: transforms-jobs-concept.md
+    - name: Transformaties en taken
+      href: transforms-jobs-concept.md
     - name: Live streamen
       items:
         - name: Overzicht
@@ -265,6 +266,8 @@
       items:
         - name: Transformaties maken
           href: cli-create-transform.md
+        - name: Een eenvoudige audiotransformatie maken met REST
+          href: how-to-create-basic-audio-transform.md
         - name: Taken maken
           href: cli-create-jobs.md
         - name: Taakinvoer maken met een lokaal bestand en .NET

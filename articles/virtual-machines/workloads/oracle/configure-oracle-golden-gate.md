@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: c1890ab9f99999c88e28eb9a76d6270fa08fb87c
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: c480de6da0427b8eda212e02e08c7b3f5426941c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996666"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534138"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Oracle Golden-Gate implementeren op een Azure Linux-VM 
 
@@ -24,7 +24,7 @@ Voordat u begint, moet u controleren of de Azure-CLI is geïnstalleerd. Zie voor
 
 ## <a name="prepare-the-environment"></a>De omgeving voorbereiden
 
-Als u de Oracle Golden-Gate-installatie wilt uitvoeren, moet u twee virtuele Azure-machines maken op dezelfde beschikbaarheidsset. De Marketplace-installatie kopie die u gebruikt om de Vm's te maken, is **Oracle: Oracle-data base-ee: 12.1.0.2: Latest**.
+Als u de Oracle Golden-Gate-installatie wilt uitvoeren, moet u twee virtuele Azure-machines maken op dezelfde beschikbaarheidsset. De Marketplace-installatie kopie die u gebruikt om de Vm's te maken, is **Oracle: Oracle-data base-ee: 12.1.0.2: Latest** .
 
 U moet ook bekend zijn met UNIX editor VI en een basis kennis hebben van X11 (X Windows).
 
@@ -347,7 +347,7 @@ SQL> EXIT;
 ### <a name="download-golden-gate-software"></a>Gouden poort software downloaden
 Voer de volgende stappen uit om de Oracle Golden-Gate-software te downloaden en voor te bereiden:
 
-1. Down load het **fbo_ggs_Linux_x64_shiphome.zip** -bestand van de [Oracle Golden Gate-download pagina](https://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html). Onder de Download titel **Oracle Golden Gate 12. x. x. x voor Oracle Linux x86-64**moet er een set zip-bestanden worden gedownload.
+1. Down load het **fbo_ggs_Linux_x64_shiphome.zip** -bestand van de [Oracle Golden Gate-download pagina](https://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html). Onder de Download titel **Oracle Golden Gate 12. x. x. x voor Oracle Linux x86-64** moet er een set zip-bestanden worden gedownload.
 
 2. Nadat u de zip-bestanden naar uw client computer hebt gedownload, gebruikt u het Secure Copy Protocol (SCP) om de bestanden te kopiëren naar uw VM:
 
@@ -389,9 +389,9 @@ Dit is een optionele taak. U kunt deze stap overs Laan als u een Linux-client ge
 3. In PuTTy-sleutel Generator:
 
    - Selecteer de knop **genereren** om een sleutel te genereren.
-   - Kopieer de inhoud van de sleutel (**CTRL + C**).
+   - Kopieer de inhoud van de sleutel ( **CTRL + C** ).
    - Selecteer de knop **persoonlijke sleutel opslaan** .
-   - Negeer de waarschuwing die wordt weer gegeven en selecteer **OK**.
+   - Negeer de waarschuwing die wordt weer gegeven en selecteer **OK** .
 
    ![Scherm afbeelding van de pagina PuTTy-sleutel generator](./media/oracle-golden-gate/puttykeygen.png)
 
@@ -403,21 +403,21 @@ Dit is een optionele taak. U kunt deze stap overs Laan als u een Linux-client ge
    $ cd .ssh
    ```
 
-5. Maak een bestand met de naam **authorized_keys**. Plak de inhoud van de sleutel in dit bestand en sla het bestand op.
+5. Maak een bestand met de naam **authorized_keys** . Plak de inhoud van de sleutel in dit bestand en sla het bestand op.
 
    > [!NOTE]
    > De sleutel moet de teken reeks bevatten `ssh-rsa` . De inhoud van de sleutel moet ook één tekst regel zijn.
    >  
 
-6. Start PuTTY. Selecteer in het deel venster **categorie** de optie **verbinding**  >  **SSH**  >  **auth**. Blader in het vak **persoonlijk sleutel bestand voor verificatie** naar de sleutel die u eerder hebt gegenereerd.
+6. Start PuTTY. Selecteer in het deel venster **categorie** de optie **verbinding**  >  **SSH**  >  **auth** . Blader in het vak **persoonlijk sleutel bestand voor verificatie** naar de sleutel die u eerder hebt gegenereerd.
 
    ![Scherm afbeelding van de pagina persoonlijke sleutel instellen](./media/oracle-golden-gate/setprivatekey.png)
 
-7. Selecteer in het deel venster **categorie** de optie **verbinding**  >  **SSH**-  >  **X11**. Schakel vervolgens het **doorstuur selectie vakje X11 inschakelen** in.
+7. Selecteer in het deel venster **categorie** de optie **verbinding**  >  **SSH** -  >  **X11** . Schakel vervolgens het **doorstuur selectie vakje X11 inschakelen** in.
 
    ![Scherm afbeelding van de pagina X11 inschakelen](./media/oracle-golden-gate/enablex11.png)
 
-8. Ga in het deel venster **categorie** naar **sessie**. Voer de gegevens van de host in en selecteer vervolgens **openen**.
+8. Ga in het deel venster **categorie** naar **sessie** . Voer de gegevens van de host in en selecteer vervolgens **openen** .
 
    ![Scherm afbeelding van de sessie pagina](./media/oracle-golden-gate/puttysession.png)
 
@@ -442,19 +442,19 @@ Voer de volgende stappen uit om Oracle Golden Gate te installeren:
 
 4. Wijzig de map Inventory en selecteer **volgende** om door te gaan.
 
-   ![Scherm afbeelding van de installatie pagina selecteren](./media/oracle-golden-gate/golden_gate_install_03.png)
+   ![Scherm afbeelding van de installatie pagina selecteren waarop de installatie directory wordt weer gegeven.](./media/oracle-golden-gate/golden_gate_install_03.png)
 
 5. Selecteer in het scherm **samen vatting** de optie **installeren** om door te gaan.
 
-   ![Scherm afbeelding van het installatie programma installatie pagina selecteren](./media/oracle-golden-gate/golden_gate_install_04.png)
+   ![Scherm afbeelding met de installatie pagina selecteren en de knop installeren.](./media/oracle-golden-gate/golden_gate_install_04.png)
 
 6. U wordt mogelijk gevraagd om een script uit te voeren als root. Als dit het geval is, opent u een afzonderlijke sessie, SSH naar de virtuele machine, sudo naar root en voert u het script uit. Selecteer **OK** door gaan.
 
-   ![Scherm afbeelding van de installatie pagina selecteren](./media/oracle-golden-gate/golden_gate_install_05.png)
+   ![Scherm opname van de script locatie en hoe het configuratie script moet worden uitgevoerd.](./media/oracle-golden-gate/golden_gate_install_05.png)
 
 7. Wanneer de installatie is voltooid, selecteert u **sluiten** om het proces te volt ooien.
 
-   ![Scherm afbeelding van de installatie pagina selecteren](./media/oracle-golden-gate/golden_gate_install_06.png)
+   ![Scherm afbeelding van de installatie pagina selecteren waarop de knop Sluiten wordt weer gegeven.](./media/oracle-golden-gate/golden_gate_install_06.png)
 
 ### <a name="set-up-service-on-myvm1-primary"></a>Service instellen op myVM1 (primair)
 

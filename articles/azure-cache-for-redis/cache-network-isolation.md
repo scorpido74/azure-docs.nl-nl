@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: b01e7ca9ff05b6eed51e1c454b8064ab28bda0d5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 0fda0b659dd2500e811fac1f53c99a9987276185
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222403"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537470"
 ---
 # <a name="azure-cache-for-redis-network-isolation-options"></a>Azure-cache voor redis-netwerk isolatie opties 
 In dit artikel leert u hoe u de beste oplossing voor netwerk isolatie kunt bepalen voor uw behoeften. We gaan de basis beginselen van Azure private link, Azure Virtual Network (VNet)-injectie door nemen en Azure Firewall regels met hun voor delen en beperkingen.  
@@ -21,7 +21,7 @@ Persoonlijke Azure-koppeling biedt persoonlijke connectiviteit vanuit een virtue
 
 ### <a name="advantages"></a>Voordelen
 * Ondersteund in Basic, Standard en Premium Azure cache voor redis-exemplaren. 
-* Met behulp van een [persoonlijke Azure-koppeling](/azure/private-link/private-link-overview)kunt u verbinding maken met een Azure-cache-exemplaar vanuit uw virtuele netwerk via een persoonlijk eind punt, waaraan een persoonlijk IP-adres is toegewezen in een subnet binnen het virtuele netwerk. In dit geval zijn de cache-exemplaren beschikbaar in zowel het VNet als openbaar.  
+* Met behulp van een [persoonlijke Azure-koppeling](../private-link/private-link-overview.md)kunt u verbinding maken met een Azure-cache-exemplaar vanuit uw virtuele netwerk via een persoonlijk eind punt, waaraan een persoonlijk IP-adres is toegewezen in een subnet binnen het virtuele netwerk. In dit geval zijn de cache-exemplaren beschikbaar in zowel het VNet als openbaar.  
 * Zodra een persoonlijk eind punt is gemaakt, kan de toegang tot het open bare netwerk worden beperkt via de `publicNetworkAccess` vlag. Deze vlag wordt standaard ingesteld op `Enabled` , zodat de open bare en persoonlijke koppeling toegang kan krijgen tot de cache. Als deze eigenschap is ingesteld op `Disabled` , is toegang tot persoonlijke koppelingen alleen toegestaan. U kunt de waarde instellen op `Disabled` met een patch-aanvraag. Zie [Azure-cache voor redis met Azure private link (preview)](cache-private-link.md)voor meer informatie. 
 * Alle externe cache afhankelijkheden hebben geen invloed op de NSG-regels van het VNet.
 
@@ -51,7 +51,7 @@ VNet is de fundamentele bouw steen voor uw particuliere netwerk in Azure. Met VN
 
 
 ## <a name="azure-firewall-rules"></a>Azure Firewall regels
-[Azure firewall](/azure/firewall/overview) is een beheerde, Cloud service voor netwerk beveiliging die uw Azure VNet-resources beveiligt. Het is een volledig stateful firewall als een service met ingebouwde hoge Beschik baarheid en een onbeperkte schaal baarheid van de Cloud. U kunt beleid voor toepassings- en netwerkconnectiviteit centraal maken, afdwingen en registreren voor abonnementen en virtuele netwerken.  
+[Azure firewall](../firewall/overview.md) is een beheerde, Cloud service voor netwerk beveiliging die uw Azure VNet-resources beveiligt. Het is een volledig stateful firewall als een service met ingebouwde hoge Beschik baarheid en een onbeperkte schaal baarheid van de Cloud. U kunt beleid voor toepassings- en netwerkconnectiviteit centraal maken, afdwingen en registreren voor abonnementen en virtuele netwerken.  
 
 ### <a name="advantages"></a>Voordelen
 * Wanneer de firewall regels zijn geconfigureerd, kunnen alleen client verbindingen van de opgegeven IP-adresbereiken verbinding maken met de cache. Verbindingen van Azure cache voor redis-bewakings systemen zijn altijd toegestaan, zelfs als de firewall regels zijn geconfigureerd. NSG-regels die u definieert, zijn ook toegestaan.  
@@ -63,4 +63,4 @@ VNet is de fundamentele bouw steen voor uw particuliere netwerk in Azure. Met VN
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over het configureren van een door [VNet geïnjecteerde cache voor een Premium Azure-cache voor een redis-exemplaar](cache-how-to-premium-vnet.md).  
 * Meer informatie over het configureren [van firewall regels voor alle Azure-cache voor redis-lagen](cache-configure.md#firewall). 
-* Meer informatie over het [configureren van persoonlijke eind punten voor alle Azure-cache voor redis-lagen](cache-private-link.md). 
+* Meer informatie over het [configureren van persoonlijke eind punten voor alle Azure-cache voor redis-lagen](cache-private-link.md).

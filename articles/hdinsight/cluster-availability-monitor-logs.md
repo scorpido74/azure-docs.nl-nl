@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 08/12/2020
-ms.openlocfilehash: 19e3f1a157ee2c042dfebfc96c9b51c3c4698ebc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f86b2166ea9bd2a547a29a777d6b709877036161
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88163727"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542536"
 ---
 # <a name="how-to-monitor-cluster-availability-with-azure-monitor-logs-in-hdinsight"></a>De beschik baarheid van een cluster bewaken met Azure Monitor-Logboeken in HDInsight
 
@@ -22,11 +22,11 @@ HDInsight-clusters zijn onder andere integratie van Azure Monitor Logboeken. Dit
 
 Azure Monitor logboeken maken het mogelijk om gegevens die zijn gegenereerd door meerdere resources, zoals HDInsight-clusters, op één plek te verzamelen en samen te voegen voor een uniforme bewakings ervaring.
 
-Als vereiste hebt u een Log Analytics-werk ruimte nodig om de verzamelde gegevens op te slaan. Als u er nog geen hebt gemaakt, kunt u hier de instructies volgen: [Maak een log Analytics-werk ruimte](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
+Als vereiste hebt u een Log Analytics-werk ruimte nodig om de verzamelde gegevens op te slaan. Als u er nog geen hebt gemaakt, kunt u hier de instructies volgen: [Maak een log Analytics-werk ruimte](../azure-monitor/learn/quick-create-workspace.md).
 
 ## <a name="enable-hdinsight-azure-monitor-logs-integration"></a>Integratie van HDInsight Azure Monitor-logboeken inschakelen
 
-Selecteer op de pagina HDInsight-cluster resource in de Portal de optie **Azure monitor**. Selecteer vervolgens **inschakelen** en selecteer uw log Analytics-werk ruimte in de vervolg keuzelijst.
+Selecteer op de pagina HDInsight-cluster resource in de Portal de optie **Azure monitor** . Selecteer vervolgens **inschakelen** en selecteer uw log Analytics-werk ruimte in de vervolg keuzelijst.
 
 ![HDInsight Operations Management Suite](media/cluster-availability-monitor-logs/azure-portal-monitoring.png)
 
@@ -34,13 +34,13 @@ Standaard installeert de OMS-agent op alle cluster knooppunten, met uitzonde rin
 
 ## <a name="query-metrics-and-logs-tables"></a>Query's uitvoeren op metrische gegevens en logboeken van tabellen
 
-Als de integratie van Azure Monitor logboek is ingeschakeld (dit kan enkele minuten duren), navigeert u naar uw **log Analytics werkruimte** resource en selecteert u **Logboeken**.
+Als de integratie van Azure Monitor logboek is ingeschakeld (dit kan enkele minuten duren), navigeert u naar uw **log Analytics werkruimte** resource en selecteert u **Logboeken** .
 
 ![Log Analytics werkruimte logboeken](media/cluster-availability-monitor-logs/hdinsight-portal-logs.png)
 
 In Logboeken worden een aantal voorbeeld query's weer geven, zoals:
 
-| Querynaam                      | Beschrijving                                                               |
+| Querynaam                      | Description                                                               |
 |---------------------------------|---------------------------------------------------------------------------|
 | Computers Beschik baarheid vandaag    | Grafiek het aantal computers dat Logboeken verzendt, elk uur                     |
 | Heartbeats weer geven                 | Alle Heartbeats van de computer in het afgelopen uur weer geven                           |
@@ -55,13 +55,13 @@ Voer bijvoorbeeld de voorbeeld query **beschikbaarheids frequentie** uit door **
 > [!NOTE]  
 > Het beschikbaarheids tarief wordt gemeten over een periode van 24 uur, zodat uw cluster ten minste 24 uur moet worden uitgevoerd voordat er nauw keurige beschikbaarheids tarieven worden weer geven.
 
-U kunt deze tabel vastmaken aan een gedeeld dash board door in de rechter bovenhoek op **vastmaken** te klikken. Als u geen Beschrijf bare gedeelde Dash boards hebt, kunt u deze hier maken: [Dash boards maken en delen in de Azure Portal](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards#publish-and-share-a-dashboard).
+U kunt deze tabel vastmaken aan een gedeeld dash board door in de rechter bovenhoek op **vastmaken** te klikken. Als u geen Beschrijf bare gedeelde Dash boards hebt, kunt u deze hier maken: [Dash boards maken en delen in de Azure Portal](../azure-portal/azure-portal-dashboards.md#publish-and-share-a-dashboard).
 
 ## <a name="azure-monitor-alerts"></a>Azure Monitor waarschuwingen
 
 U kunt ook Azure Monitor waarschuwingen instellen die worden geactiveerd wanneer de waarde van een metriek of de resultaten van een query voldoen aan bepaalde voor waarden. U kunt bijvoorbeeld een waarschuwing maken om een e-mail bericht te verzenden wanneer een of meer knoop punten niet langer dan 5 uur een heartbeat hebben verzonden (dat wil zeggen dat deze niet beschikbaar is).
 
-Voer vanuit **Logboeken**de voorbeeld query niet- **beschik bare computers** uit door **uitvoeren** op die query te selecteren, zoals hieronder wordt weer gegeven.
+Voer vanuit **Logboeken** de voorbeeld query niet- **beschik bare computers** uit door **uitvoeren** op die query te selecteren, zoals hieronder wordt weer gegeven.
 
 ![Voor beeld van Log Analytics werkruimte logboeken ' niet-beschik bare computers '](media/cluster-availability-monitor-logs/portal-unavailable-computers.png)
 
@@ -70,11 +70,11 @@ Als alle knoop punten beschikbaar zijn, moet deze query voor Taan nul resultaten
 ![Nieuwe waarschuwings regel Log Analytics werk ruimte](media/cluster-availability-monitor-logs/portal-logs-new-alert-rule.png)
 
 Er zijn drie onderdelen voor een waarschuwing: de *resource* waarvoor u de regel (de log Analytics-werk ruimte in dit geval) wilt maken, de *voor waarde* voor het activeren van de waarschuwing en de *actie groepen* die bepalen wat er gebeurt wanneer de waarschuwing wordt geactiveerd.
-Klik op de titel van de **voor waarde**, zoals hieronder wordt weer gegeven, om het configureren van de signaal logica te volt ooien.
+Klik op de titel van de **voor waarde** , zoals hieronder wordt weer gegeven, om het configureren van de signaal logica te volt ooien.
 
 ![Status voor regel voor maken van portal waarschuwing](media/cluster-availability-monitor-logs/portal-condition-title.png)
 
-Hiermee wordt de **logica**voor het configureren van signalen geopend.
+Hiermee wordt de **logica** voor het configureren van signalen geopend.
 
 Stel de sectie **waarschuwings logica** als volgt in:
 
@@ -84,7 +84,7 @@ Omdat deze query alleen niet-beschik bare knoop punten retourneert als resultaat
 
 Stel in het gedeelte **geëvalueerd op basis van** de **periode** en **frequentie** in op basis van hoe vaak u wilt controleren op niet-beschik bare knoop punten.
 
-Voor het doel van deze waarschuwing moet u de frequentie van de **periode instellen.** Meer informatie over periode, frequentie en andere waarschuwings parameters vindt u [hier](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log#log-search-alert-rule---definition-and-types).
+Voor het doel van deze waarschuwing moet u de frequentie van de **periode instellen.** Meer informatie over periode, frequentie en andere waarschuwings parameters vindt u [hier](../azure-monitor/platform/alerts-unified-log.md#alert-logic-definition).
 
 Selecteer **gereed** wanneer u klaar bent met het configureren van de signaal logica.
 
@@ -94,16 +94,16 @@ Als u nog geen actie groep hebt, klikt u op **nieuwe maken** onder de sectie **a
 
 ![Waarschuwings regel maakt nieuwe actie groep](media/cluster-availability-monitor-logs/portal-create-new-action-group.png)
 
-Hiermee wordt de **actie groep toevoegen**geopend. Kies een **naam voor de actie groep**, de **korte naam**, het **abonnement**en de **resource groep.** Kies in de sectie **acties** een **actie naam** en selecteer **e-mail/SMS/push/Voice** als **actie type.**
+Hiermee wordt de **actie groep toevoegen** geopend. Kies een **naam voor de actie groep** , de **korte naam** , het **abonnement** en de **resource groep.** Kies in de sectie **acties** een **actie naam** en selecteer **e-mail/SMS/push/Voice** als **actie type.**
 
 > [!NOTE]
-> Er zijn verschillende andere acties die een waarschuwing kan activeren naast een E-mail/SMS/push/Voice, zoals een Azure-functie, LogicApp, webhook, ITSM en Automation-Runbook. [Meer informatie.](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#action-specific-information)
+> Er zijn verschillende andere acties die een waarschuwing kan activeren naast een E-mail/SMS/push/Voice, zoals een Azure-functie, LogicApp, webhook, ITSM en Automation-Runbook. [Meer informatie.](../azure-monitor/platform/action-groups.md#action-specific-information)
 
-Hiermee wordt **e-mail/SMS/push/Voice**geopend. Kies een **naam** voor de ontvanger, **Schakel** het vak **e-mail** in en typ een e-mail adres waarnaar de waarschuwing moet worden verzonden. Selecteer **OK** in  **e-mail/SMS/push/Voice**en klik vervolgens in **actie groep toevoegen** om het configureren van uw actie groep te volt ooien.
+Hiermee wordt **e-mail/SMS/push/Voice** geopend. Kies een **naam** voor de ontvanger, **Schakel** het vak **e-mail** in en typ een e-mail adres waarnaar de waarschuwing moet worden verzonden. Selecteer **OK** in  **e-mail/SMS/push/Voice** en klik vervolgens in **actie groep toevoegen** om het configureren van uw actie groep te volt ooien.
 
 ![Waarschuwings regel maakt actie groep toevoegen](media/cluster-availability-monitor-logs/portal-add-action-group.png)
 
-Nadat deze Blades zijn gesloten, ziet u dat uw actie groep wordt weer gegeven onder de sectie **actie groepen** . Vul tot slot de **sectie waarschuwings Details** in door een naam en **Beschrijving** voor de **waarschuwings regel** te typen en een **Ernst**te kiezen. Klik op **waarschuwings regel maken** om te volt ooien.
+Nadat deze Blades zijn gesloten, ziet u dat uw actie groep wordt weer gegeven onder de sectie **actie groepen** . Vul tot slot de **sectie waarschuwings Details** in door een naam en **Beschrijving** voor de **waarschuwings regel** te typen en een **Ernst** te kiezen. Klik op **waarschuwings regel maken** om te volt ooien.
 
 ![Portal maakt een eind datum voor de waarschuwings regel](media/cluster-availability-monitor-logs/portal-create-alert-rule-finish.png)
 
@@ -114,7 +114,7 @@ Wanneer aan de voor waarde voor deze waarschuwing wordt voldaan, wordt de waarsc
 
 ![Voor beeld van een e-mail bericht Azure Monitor](media/cluster-availability-monitor-logs/portal-oms-alert-email.png)
 
-U kunt ook alle waarschuwingen weer geven die zijn geactiveerd, gegroepeerd op Ernst, door naar **waarschuwingen** in uw log Analytics- **werk ruimte**te gaan.
+U kunt ook alle waarschuwingen weer geven die zijn geactiveerd, gegroepeerd op Ernst, door naar **waarschuwingen** in uw log Analytics- **werk ruimte** te gaan.
 
 ![Waarschuwingen voor Log Analytics werk ruimte](media/cluster-availability-monitor-logs/hdi-portal-oms-alerts.png)
 

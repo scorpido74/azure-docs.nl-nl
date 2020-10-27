@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 08/24/2020
-ms.openlocfilehash: cae8647d970020a22d59dc49b058d43fe28dd00c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97cad12ad1854df37b54ff663385fe79ca15b7c2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816453"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543097"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: fouten bij het maken van een cluster
 
@@ -24,7 +24,7 @@ In dit artikel worden oplossingen beschreven voor fouten die u kunt tegen komen 
 
 ## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Fout code: DeploymentDocument ' CsmDocument_2_0 ' is niet gevalideerd
 
-**Fout**: de locatie van de script actie kan geen toegang krijgen tot \<SCRIPT ACTION URL\> URI:
+**Fout** : de locatie van de script actie kan geen toegang krijgen tot \<SCRIPT ACTION URL\> URI:
 
 ### <a name="error-message-1"></a>Fout bericht 1
 
@@ -141,7 +141,7 @@ Een firewall regel in uw netwerk beveiligings groep (NSG) blokkeert de cluster c
 Als u van plan bent om netwerk beveiligings groepen te gebruiken om netwerk verkeer te beheren, voert u de volgende acties uit voordat u HDInsight installeert:
 
 - Bepaal de Azure-regio die u wilt gebruiken voor HDInsight.
-- Identificeer de IP-adressen die zijn vereist voor HDInsight. Zie voor meer informatie [HDInsight management IP addresses](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses) (IP-adressen voor HDInsight-beheer).
+- Identificeer de IP-adressen die zijn vereist voor HDInsight. Zie voor meer informatie [HDInsight management IP addresses](./hdinsight-management-ip-addresses.md) (IP-adressen voor HDInsight-beheer).
   - Maak of wijzig de netwerk beveiligings groepen voor het subnet waarop u HDInsight wilt installeren.
   - Voor netwerk beveiligings groepen staat u inkomend verkeer op poort 443 van de IP-adressen toe. Deze configuratie zorgt ervoor dat HDInsight-beheer Services het cluster kunnen bereiken van buiten het virtuele netwerk.
 
@@ -161,7 +161,7 @@ U hebt niet de vereiste machtigingen voor het beheren van de identiteit opgegeve
 
 1. Open Azure Portal.
 1. Ga naar uw opslagaccount.
-1. Kijk onder **Access Control (IAM)**.
+1. Kijk onder **Access Control (IAM)** .
 1. Zorg ervoor dat de gebruiker de rol Storage BLOB data contributor of de gebruikersrol Storage BLOB-gegevens eigenaar heeft toegewezen.
 
 Zie [machtigingen voor de beheerde identiteit instellen op het data Lake Storage Gen2-account](hdinsight-hadoop-use-data-lake-storage-gen2.md)voor meer informatie.
@@ -172,7 +172,7 @@ Zie [machtigingen voor de beheerde identiteit instellen op het data Lake Storage
 
 ### <a name="error"></a>Fout
 
-"De beveiligings regels in de netwerk beveiligings groep/Subscriptions/ \<SubscriptionID\> /resourceGroups/<naam van de resource groep \> standaard/providers/micro soft. Network/networkSecurityGroups/ \<Network Security Group Name\> geconfigureerd met subnet/Subscriptions/ \<SubscriptionID\> /resourceGroups/ \<Resource Group name\> RG-westeurope-vnet-TomTom-default/providers/micro soft. Network/virtualNetworks/ \<Virtual Network Name\> /subnets/ \<Subnet Name\> staat geen vereiste binnenkomende en/of uitgaande connectiviteit toe. Ga voor meer informatie naar [een virtueel netwerk voor Azure HDInsight plannen](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)of neem contact op met de ondersteuning.
+"De beveiligings regels in de netwerk beveiligings groep/Subscriptions/ \<SubscriptionID\> /resourceGroups/<naam van de resource groep \> standaard/providers/micro soft. Network/networkSecurityGroups/ \<Network Security Group Name\> geconfigureerd met subnet/Subscriptions/ \<SubscriptionID\> /resourceGroups/ \<Resource Group name\> RG-westeurope-vnet-TomTom-default/providers/micro soft. Network/virtualNetworks/ \<Virtual Network Name\> /subnets/ \<Subnet Name\> staat geen vereiste binnenkomende en/of uitgaande connectiviteit toe. Ga voor meer informatie naar [een virtueel netwerk voor Azure HDInsight plannen](./hdinsight-plan-virtual-network-deployment.md)of neem contact op met de ondersteuning.
 
 ### <a name="cause"></a>Oorzaak
 
@@ -182,8 +182,8 @@ Als netwerk beveiligings groepen of door de gebruiker gedefinieerde routes (Udr'
 
 Als u van plan bent om netwerk beveiligings groepen te gebruiken om netwerk verkeer te beheren, voert u de volgende acties uit voordat u HDInsight installeert:
 
-- Identificeer de Azure-regio die u wilt gebruiken voor HDInsight en maak een veilige lijst met de IP-adressen voor uw regio. Zie [status-en beheer Services: specifieke regio's](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses#health-and-management-services-specific-regions)voor meer informatie.
-- Identificeer de IP-adressen die HDInsight nodig heeft. Zie [IP-adressen voor HDInsight-beheer](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)voor meer informatie.
+- Identificeer de Azure-regio die u wilt gebruiken voor HDInsight en maak een veilige lijst met de IP-adressen voor uw regio. Zie [status-en beheer Services: specifieke regio's](./hdinsight-management-ip-addresses.md#health-and-management-services-specific-regions)voor meer informatie.
+- Identificeer de IP-adressen die HDInsight nodig heeft. Zie [IP-adressen voor HDInsight-beheer](./hdinsight-management-ip-addresses.md)voor meer informatie.
 - Maak of wijzig de netwerk beveiligings groepen voor het subnet waarop u HDInsight wilt installeren. Voor netwerk beveiligings groepen staat u inkomend verkeer op poort 443 van de IP-adressen toe. Deze configuratie zorgt ervoor dat HDInsight-beheer Services het cluster kunnen bereiken van buiten het virtuele netwerk.
 
 ---
@@ -216,7 +216,7 @@ De HDInsight-service kan geen verbinding maken met uw cluster tijdens het maken 
 
 ### <a name="resolution"></a>Oplossing
 
-Als u aangepaste VNet-netwerk beveiligings groep (Nsg's) en door de gebruiker gedefinieerde routes (Udr's) gebruikt, moet u ervoor zorgen dat uw cluster kan communiceren met HDInsight-beheer Services. Zie [IP-adressen voor HDInsight-beheer](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)voor meer informatie.
+Als u aangepaste VNet-netwerk beveiligings groep (Nsg's) en door de gebruiker gedefinieerde routes (Udr's) gebruikt, moet u ervoor zorgen dat uw cluster kan communiceren met HDInsight-beheer Services. Zie [IP-adressen voor HDInsight-beheer](./hdinsight-management-ip-addresses.md)voor meer informatie.
 
 ---
 
@@ -240,4 +240,4 @@ De Azure Policy toewijzing op basis van een abonnement verwijderen of uitschakel
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie problemen met het maken van [clusters oplossen met Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-troubleshoot-cluster-creation-fails)voor meer informatie over het oplossen van problemen bij het maken van een cluster.
+Zie problemen met het maken van [clusters oplossen met Azure HDInsight](./hadoop/hdinsight-troubleshoot-cluster-creation-fails.md)voor meer informatie over het oplossen van problemen bij het maken van een cluster.

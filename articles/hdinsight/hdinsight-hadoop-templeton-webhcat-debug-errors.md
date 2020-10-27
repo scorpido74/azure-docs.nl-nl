@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
-ms.openlocfilehash: 021bfc0b87b0da800728eda26d9f5222bd52bc1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dbae7254949eaa642b8344b4e550de4a44b2f33f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086956"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545970"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>Fouten die vanuit WebHCat zijn ontvangen, begrijpen en oplossen op HDInsight
 
@@ -39,7 +39,7 @@ Als de volgende standaard waarden worden overschreden, kan dit de prestaties van
 
 ## <a name="too-many-requests"></a>Te veel aanvragen
 
-**HTTP-status code**: 429
+**HTTP-status code** : 429
 
 | Oorzaak | Oplossing |
 | --- | --- |
@@ -47,7 +47,7 @@ Als de volgende standaard waarden worden overschreden, kan dit de prestaties van
 
 ## <a name="server-unavailable"></a>De server is niet beschikbaar
 
-**HTTP-status code**: 503
+**HTTP-status code** : 503
 
 | Oorzaak | Oplossing |
 | --- | --- |
@@ -55,7 +55,7 @@ Als de volgende standaard waarden worden overschreden, kan dit de prestaties van
 
 ## <a name="bad-request-content-could-not-find-job"></a>Inhoud van ongeldige aanvraag: de taak is niet gevonden
 
-**HTTP-status code**: 400
+**HTTP-status code** : 400
 
 | Oorzaak | Oplossing |
 | --- | --- |
@@ -65,7 +65,7 @@ Als de volgende standaard waarden worden overschreden, kan dit de prestaties van
 
 ## <a name="bad-gateway"></a>Ongeldige gateway
 
-**HTTP-status code**: 502
+**HTTP-status code** : 502
 
 | Oorzaak | Oplossing |
 | --- | --- |
@@ -83,7 +83,7 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](../azure-portal/supportability/how-to-create-azure-support-request.md)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
 
 [maximum-applications]: https://docs.cloudera.com/HDPDocuments/HDP2/HDP-2.1.3/bk_system-admin-guide/content/setting_application_limits.html
 [max-procs]: https://cwiki.apache.org/confluence/display/Hive/WebHCat+Configure#WebHCatConfigure-WebHCatConfiguration
