@@ -6,17 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/20/2020
-ms.openlocfilehash: d6c29cb41d38e5473a9b24dbc89fd99d3e19c16f
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 9a70dcbabea9bc55703a5e9875df05b534eb372a
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638326"
+ms.locfileid: "92674740"
 ---
 # <a name="monitor-health-of-log-analytics-workspace-in-azure-monitor"></a>De status van de Log Analytics werk ruimte in Azure Monitor bewaken
 Als u de prestaties en beschik baarheid van uw Log Analytics-werk ruimte in Azure Monitor wilt behouden, moet u alle problemen die zich voordoen, proactief kunnen detecteren. In dit artikel wordt beschreven hoe u de status van uw Log Analytics-werk ruimte kunt controleren met behulp van gegevens in de [bewerkings](https://docs.microsoft.com/azure/azure-monitor/reference/tables/operation) tabel. Deze tabel is opgenomen in elke Log Analytics-werk ruimte en bevat fout-en waarschuwingen die zich in uw werk ruimte voordoen. U moet deze gegevens regel matig bekijken en waarschuwingen maken om proactief te worden gewaarschuwd wanneer er belang rijke incidenten in uw werk ruimte zijn.
 
 ## <a name="_logoperation-function"></a>Functie _LogOperation
+
 Met Azure Monitor logboeken worden gegevens over problemen verzonden naar de [bewerkings](https://docs.microsoft.com/azure/azure-monitor/reference/tables/operation) tabel in de werk ruimte waar het probleem is opgetreden. De **_LogOperation** -systeem functie is gebaseerd op de **bewerkings** tabel en biedt een vereenvoudigde set informatie voor analyse en waarschuwingen.
 
 ## <a name="columns"></a>Kolommen
@@ -36,6 +37,7 @@ De functie **_LogOperation** retourneert de kolommen in de volgende tabel.
 
 
 ## <a name="categories"></a>Categorieën
+
 De volgende tabel beschrijft de categorieën van de functie _LogOperation. 
 
 | Categorie | Beschrijving |

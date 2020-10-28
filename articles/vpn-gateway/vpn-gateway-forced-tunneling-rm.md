@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: e9444291c40ef504a674ee18351ba581695d1dd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00f98a5086b9a9bf21054138cf01d26a550338da
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89394514"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92673840"
 ---
 # <a name="configure-forced-tunneling-using-the-azure-resource-manager-deployment-model"></a>Geforceerde tunneling met het implementatiemodel van Azure Resource Manager configureren
 
@@ -53,6 +53,7 @@ Geforceerde Tunneling in azure wordt geconfigureerd via door de gebruiker gedefi
 * Deze procedure maakt gebruik van door de gebruiker gedefinieerde routes (UDR) om een routerings tabel te maken om een standaard route toe te voegen en koppel de routerings tabel vervolgens aan uw VNet-subnet ('s) om geforceerde Tunneling in te scha kelen op deze subnetten.
 * Geforceerde tunneling moet worden gekoppeld aan een VNet met een op route gebaseerde VPN-gateway. U moet een "standaard site" instellen tussen de cross-premises lokale sites die zijn verbonden met het virtuele netwerk. Het on-premises VPN-apparaat moet ook worden geconfigureerd met 0.0.0.0/0 als verkeers selectie. 
 * ExpressRoute geforceerde tunneling is niet geconfigureerd via dit mechanisme, maar wordt in plaats daarvan ingeschakeld door een standaard route te adverteren via de BGP-peering-sessies van ExpressRoute. Zie de [ExpressRoute-documentatie](https://azure.microsoft.com/documentation/services/expressroute/)voor meer informatie.
+* Wanneer u zowel de VPN Gateway-als de ExpressRoute-gateway in hetzelfde VNet hebt geïmplementeerd, zijn door de gebruiker gedefinieerde routes (UDR) niet meer nodig omdat de ExpressRoute-gateway de configuratie ' standaard site ' in VNet adverteert.
 
 ## <a name="configuration-overview"></a>Configuratieoverzicht
 

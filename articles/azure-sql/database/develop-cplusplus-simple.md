@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
-ms.openlocfilehash: 38e4839a41ad8e58e575e552e877303a5105ff36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e891c5797c9ce93e6cab7a07d2f68de1a9157249
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443667"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674768"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Verbinding maken met SQL Database met behulp van C en C++
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ Zorg ervoor dat u over de volgende zaken beschikt:
 
 * Een actief Azure-account. Als u nog geen abonnement hebt, kunt u zich registreren voor een [gratis Azure-proefversie](https://azure.microsoft.com/pricing/free-trial/).
 * [Visual Studio](https://www.visualstudio.com/downloads/). U moet de C++-taal onderdelen installeren om dit voor beeld te bouwen en uit te voeren.
-* [Ontwikkeling van Visual Studio Linux](https://docs.microsoft.com/cpp/linux/?view=vs-2019). Als u op Linux ontwikkelt, moet u ook de Visual Studio Linux-extensie installeren.
+* [Ontwikkeling van Visual Studio Linux](/cpp/linux/?view=vs-2019). Als u op Linux ontwikkelt, moet u ook de Visual Studio Linux-extensie installeren.
 
 ## <a name="azure-sql-database-and-sql-server-on-virtual-machines"></a><a id="AzureSQL"></a>Azure SQL Database en SQL Server op virtuele machines
 
@@ -39,7 +39,7 @@ Azure heeft momenteel twee opties voor het hosten van SQL Server-workloads: Azur
 
 ## <a name="data-access-technologies-odbc-and-ole-db"></a><a id="ODBC"></a>Technologieën voor gegevens toegang: ODBC en OLE DB
 
-Verbinding maken met Azure SQL Database is niet anders en er zijn momenteel twee manieren om verbinding te maken met data bases: ODBC (Open Data Base Connectivity) en OLE DB (object linking and Embedding data base). In de afgelopen jaren is micro soft afgestemd op [ODBC voor native relationele gegevens toegang](https://blogs.msdn.microsoft.com/sqlnativeclient/20../../microsoft-is-aligning-with-odbc-for-native-relational-data-access/). ODBC is relatief eenvoudig en ook veel sneller dan OLE DB. Het enige voor behoud hier is dat ODBC een oude C-style-API gebruikt.
+Verbinding maken met Azure SQL Database is niet anders en er zijn momenteel twee manieren om verbinding te maken met data bases: ODBC (Open Data Base Connectivity) en OLE DB (object linking and Embedding data base). In de afgelopen jaren is micro soft afgestemd op [ODBC voor native relationele gegevens toegang](/archive/blogs/sqlnativeclient/microsoft-is-aligning-with-odbc-for-native-relational-data-access). ODBC is relatief eenvoudig en ook veel sneller dan OLE DB. Het enige voor behoud hier is dat ODBC een oude C-style-API gebruikt.
 
 ## <a name="step-1--creating-your-azure-sql-database"></a><a id="Create"></a>Stap 1: uw Azure SQL Database maken
 
@@ -81,7 +81,7 @@ U kunt ook een DSN-bestand maken met behulp van de wizard die wordt gestart wann
 
 ![DSN-bestand maken](./media/develop-cplusplus-simple/datasource.png)
 
-Gefeliciteerd! U hebt nu verbinding gemaakt met Azure SQL via C++ en ODBC in Windows. U kunt ook door gaan met lezen om hetzelfde te doen voor Linux-platform.
+Gefeliciteerd. U hebt nu verbinding gemaakt met Azure SQL via C++ en ODBC in Windows. U kunt ook door gaan met lezen om hetzelfde te doen voor Linux-platform.
 
 ## <a name="step-5-connecting-from-a-linux-cc-application"></a><a id="Linux"></a>Stap 5: verbinding maken vanuit een Linux C/C++-toepassing
 
@@ -131,7 +131,7 @@ Als de verbinding is geslaagd, ziet u nu de huidige database naam in de Linux-co
 
 ![Venster uitvoer Linux-console](./media/develop-cplusplus-simple/linuxconsolewindow.png)
 
-Gefeliciteerd! U hebt de zelf studie voltooid en kunt nu verbinding maken met uw Azure SQL Database vanuit C++ op Windows-en Linux-platforms.
+Gefeliciteerd. U hebt de zelf studie voltooid en kunt nu verbinding maken met uw Azure SQL Database vanuit C++ op Windows-en Linux-platforms.
 
 ## <a name="get-the-complete-cc-tutorial-solution"></a><a id="GetSolution"></a>De volledige oplossing C/C++-zelf studie ophalen
 
@@ -143,7 +143,7 @@ U kunt de GetStarted-oplossing vinden die alle voor beelden in dit artikel bevat
 ## <a name="next-steps"></a>Volgende stappen
 
 * Bekijk het [overzicht](develop-overview.md) van de SQL database-ontwikkeling
-* Meer informatie over de [ODBC API-verwijzing](https://docs.microsoft.com/sql/odbc/reference/syntax/odbc-api-reference/)
+* Meer informatie over de [ODBC API-verwijzing](/sql/odbc/reference/syntax/odbc-api-reference/)
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 

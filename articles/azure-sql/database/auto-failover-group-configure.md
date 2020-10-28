@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 08/14/2019
-ms.openlocfilehash: ab057e1328efbff294faa1d68f2a27c5a1f03ade
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98f2a8fb0ce48dab0e1e5f7610d73d55526969eb
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577506"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675097"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Een failovergroep voor Azure SQL Database configureren
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -50,9 +50,9 @@ Maak uw failovergroep en voeg uw afzonderlijke data base toe met behulp van de A
 
    ![Nieuwe failovergroep toevoegen](./media/auto-failover-group-configure/sqldb-add-new-failover-group.png)
 
-1. Voer op de pagina **failover-groep** de vereiste waarden in of Selecteer deze en selecteer vervolgens **maken**.
+1. Voer op de pagina **failover-groep** de vereiste waarden in of Selecteer deze en selecteer vervolgens **maken** .
 
-   - **Data bases in de groep**: Kies de data base die u aan de failovergroep wilt toevoegen. Door de database aan de failovergroep toe te voegen, wordt het proces voor geo-replicatie automatisch gestart.
+   - **Data bases in de groep** : Kies de data base die u aan de failovergroep wilt toevoegen. Door de database aan de failovergroep toe te voegen, wordt het proces voor geo-replicatie automatisch gestart.
 
    ![SQL Database aan failovergroep toevoegen](./media/auto-failover-group-configure/add-sqldb-to-failover-group.png)
 
@@ -220,7 +220,7 @@ Maak uw failovergroep en voeg uw elastische groep toe met behulp van de Azure Po
 
    ![Nieuwe failovergroep toevoegen](./media/auto-failover-group-configure/sqldb-add-new-failover-group.png)
 
-1. Voer op de pagina **failover-groep** de vereiste waarden in of Selecteer deze en selecteer vervolgens **maken**. Maak een nieuwe secundaire server of selecteer een bestaande secundaire server.
+1. Voer op de pagina **failover-groep** de vereiste waarden in of Selecteer deze en selecteer vervolgens **maken** . Maak een nieuwe secundaire server of selecteer een bestaande secundaire server.
 
 1. Selecteer **data bases in de groep** en kies vervolgens de elastische pool die u aan de failovergroep wilt toevoegen. Als er nog geen elastische pool aanwezig is op de secundaire server, verschijnt er een waarschuwing waarin u wordt gevraagd een elastische pool te maken op de secundaire server. Selecteer de waarschuwing en selecteer vervolgens **OK** om de elastische pool te maken op de secundaire server.
 
@@ -371,11 +371,11 @@ Als u [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resour
 Maak de primaire virtuele netwerk gateway met behulp van de Azure Portal.
 
 1. Ga in de [Azure-portal](https://portal.azure.com) naar uw resourcegroep en selecteer de resource **Virtueel netwerk** voor uw primaire beheerde exemplaar.
-1. Selecteer **Subnetten** onder **Instellingen**, en selecteer vervolgens om een nieuw **Gatewaysubnet** te maken. Laat de standaardwaarden staan.
+1. Selecteer **Subnetten** onder **Instellingen** , en selecteer vervolgens om een nieuw **Gatewaysubnet** te maken. Laat de standaardwaarden staan.
 
    ![Gateway toevoegen voor primair beheerd exemplaar](./media/auto-failover-group-configure/add-subnet-gateway-primary-vnet.png)
 
-1. Nadat de subnetgateway is gemaakt, selecteert u **Een resource maken** in het linkernavigatievenster, en typt u vervolgens `Virtual network gateway` in het zoekvak. Selecteer de resource **Virtuele netwerkgateway** die is gepubliceerd door **Microsoft**.
+1. Nadat de subnetgateway is gemaakt, selecteert u **Een resource maken** in het linkernavigatievenster, en typt u vervolgens `Virtual network gateway` in het zoekvak. Selecteer de resource **Virtuele netwerkgateway** die is gepubliceerd door **Microsoft** .
 
    ![Een virtuele netwerkgateway maken](./media/auto-failover-group-configure/create-virtual-network-gateway.png)
 
@@ -388,12 +388,12 @@ Maak de primaire virtuele netwerk gateway met behulp van de Azure Portal.
     | **Abonnement** |  Het abonnement waarin uw primaire beheerde exemplaar zich bevindt. |
     | **Naam** | De naam voor de gateway van uw virtuele netwerk. |
     | **Regio** | De regio waarin uw primaire beheerde exemplaar zich bevindt. |
-    | **Gatewaytype** | Selecteer **VPN**. |
+    | **Gatewaytype** | Selecteer **VPN** . |
     | **VPN-type** | **Op route gebaseerd** selecteren |
     | **SKU**| Laat de standaardinstelling `VpnGw1` staan. |
     | **Locatie**| De locatie waar uw secundaire beheerde instantie en secundaire virtuele netwerk zich bevindt.   |
     | **Virtueel netwerk**| Selecteer het virtuele netwerk voor uw secundaire beheerde exemplaar. |
-    | **Openbaar IP-adres**| Selecteer **Nieuw maken**. |
+    | **Openbaar IP-adres**| Selecteer **Nieuw maken** . |
     | **Naam openbaar IP-adres**| Voer een naam in voor uw IP-adres. |
     | &nbsp; | &nbsp; |
 
@@ -450,12 +450,12 @@ In de volgende tabel ziet u de waarden die nodig zijn voor de gateway voor het s
    | **Abonnement** |  Het abonnement waarin uw secundaire beheerde exemplaar zich bevindt. |
    | **Naam** | De naam voor de virtuele netwerkgateway, zoals `secondary-mi-gateway`. |
    | **Regio** | De regio waarin uw secundaire beheerde exemplaar zich bevindt. |
-   | **Gatewaytype** | Selecteer **VPN**. |
+   | **Gatewaytype** | Selecteer **VPN** . |
    | **VPN-type** | **Op route gebaseerd** selecteren |
    | **SKU**| Laat de standaardinstelling `VpnGw1` staan. |
    | **Locatie**| De locatie waar uw secundaire beheerde instantie en secundaire virtuele netwerk zich bevindt.   |
    | **Virtueel netwerk**| Selecteer het virtuele netwerk dat is gemaakt in sectie 2, zoals `vnet-sql-mi-secondary`. |
-   | **Openbaar IP-adres**| Selecteer **Nieuw maken**. |
+   | **Openbaar IP-adres**| Selecteer **Nieuw maken** . |
    | **Naam openbaar IP-adres**| Voer een naam in voor het IP-adres, zoals `secondary-gateway-IP`. |
    | &nbsp; | &nbsp; |
 
@@ -507,17 +507,17 @@ De gedeelde sleutel die voor beide verbindingen wordt gebruikt, moet hetzelfde z
 Maak verbindingen tussen de twee gateways met behulp van de Azure Portal.
 
 1. Selecteer **Een resource maken** in de [Azure-portal](https://portal.azure.com).
-1. Typ `connection` in het zoekvak, en druk vervolgens op Enter om te zoeken. Dit brengt u naar de resource **Verbinding**, gepubliceerd door Microsoft.
+1. Typ `connection` in het zoekvak, en druk vervolgens op Enter om te zoeken. Dit brengt u naar de resource **Verbinding** , gepubliceerd door Microsoft.
 1. Selecteer **Maken** om de verbinding te maken.
-1. Selecteer op het tabblad **basis beginselen** de volgende waarden en selecteer vervolgens **OK**.
-    1. Selecteer `VNet-to-VNet` voor **Verbindingstype**.
+1. Selecteer op het tabblad **basis beginselen** de volgende waarden en selecteer vervolgens **OK** .
+    1. Selecteer `VNet-to-VNet` voor **Verbindingstype** .
     1. Selecteer uw abonnement in de vervolgkeuzelijst.
     1. Selecteer de resource groep voor uw beheerde instantie in de vervolg keuzelijst.
     1. Selecteer de locatie van uw primaire beheerde instantie in de vervolgkeuzelijst.
-1. Op het tabblad **instellingen** selecteert of voert u de volgende waarden in en selecteert u **OK**:
-    1. Kies de primaire netwerkgateway voor de **Eerste virtuele netwerkgateway**, zoals `Primary-Gateway`.  
-    1. Kies de secundaire netwerkgateway voor de **Tweede virtuele netwerkgateway**, zoals `Secondary-Gateway`.
-    1. Schakel het selectievakje in naast **Connectiviteit in twee richtingen tot stand brengen**.
+1. Op het tabblad **instellingen** selecteert of voert u de volgende waarden in en selecteert u **OK** :
+    1. Kies de primaire netwerkgateway voor de **Eerste virtuele netwerkgateway** , zoals `Primary-Gateway`.  
+    1. Kies de secundaire netwerkgateway voor de **Tweede virtuele netwerkgateway** , zoals `Secondary-Gateway`.
+    1. Schakel het selectievakje in naast **Connectiviteit in twee richtingen tot stand brengen** .
     1. Laat de standaardnaam voor de primaire verbinding staan, of kies een nieuwe naam naar keuze.
     1. Geef een **Gedeelde sleutel (PSK)** op voor de verbinding, zoals `mi1m2psk`.
 
@@ -566,7 +566,7 @@ Maak de failovergroep voor uw SQL Managed instances met behulp van de Azure Port
 
 1. Selecteer **Azure SQL** in het menu aan de linkerzijde van de [Azure-portal](https://portal.azure.com). Als **Azure SQL** niet in de lijst staat, selecteert u **Alle services** en typt u Azure SQL in het zoekvak. (Optioneel) Selecteer de ster naast **Azure SQL** om deze te favoriseren en voeg deze als item in de linkernavigatiebalk toe.
 1. Selecteer de primaire beheerde instantie die u wilt toevoegen aan de failovergroep.  
-1. Ga onder **instellingen**naar **failover-groepen voor instanties** en kies vervolgens **groep toevoegen** om de pagina **failover-groep voor instanties** te openen.
+1. Ga onder **instellingen** naar **failover-groepen voor instanties** en kies vervolgens **groep toevoegen** om de pagina **failover-groep voor instanties** te openen.
 
    ![Een failovergroep toevoegen](./media/auto-failover-group-configure/add-failover-group.png)
 
@@ -574,7 +574,7 @@ Maak de failovergroep voor uw SQL Managed instances met behulp van de Azure Port
 
    ![Failovergroep maken](./media/auto-failover-group-configure/create-failover-group.png)
 
-1. Zodra de implementatie van de failovergroep is voltooid, wordt u teruggeleid naar de pagina **Failovergroep**.
+1. Zodra de implementatie van de failovergroep is voltooid, wordt u teruggeleid naar de pagina **Failovergroep** .
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -607,7 +607,7 @@ Test de failover van de failovergroep met behulp van de Azure Portal of Power sh
 
 Test de failover van uw failovergroep met behulp van de Azure-portal.
 
-1. Ga naar uw _secundaire_ beheerde exemplaar in de [Azure-portal](https://portal.azure.com), en selecteer onder Instellingen de optie **Exemplaarfailovergroepen**.
+1. Ga naar uw _secundaire_ beheerde exemplaar in de [Azure-portal](https://portal.azure.com), en selecteer onder Instellingen de optie **Exemplaarfailovergroepen** .
 1. Controleer welk beheerde exemplaar het primaire is en welk beheerde exemplaar het secundaire is.
 1. Selecteer **Failover** en selecteer vervolgens **Ja** bij de waarschuwing over het verbreken van de verbinding met TDS-sessies.
 
@@ -665,7 +665,7 @@ Met behulp van een persoonlijke koppeling kunt u een logische server koppelen aa
 
 Ga als volgt te werk om een persoonlijke koppeling met uw failover-groep te gebruiken:
 
-1. Zorg ervoor dat de primaire en secundaire servers zich in een [gekoppelde regio](/azure/best-practices-availability-paired-regions)bevinden. 
+1. Zorg ervoor dat de primaire en secundaire servers zich in een [gekoppelde regio](../../best-practices-availability-paired-regions.md)bevinden. 
 1. Maak het virtuele netwerk en het subnet in elke regio voor het hosten van persoonlijke eind punten voor primaire en secundaire servers, zodat ze niet-overlappende IP-adres ruimten hebben. Het primaire adres bereik van het virtuele netwerk van 10.0.0.0/16 en het secundaire virtuele netwerk adres bereik van 10.0.0.1/16 overlapt bijvoorbeeld. Zie voor meer informatie over de adresbereiken van het virtuele netwerk de blog [Azure virtuele netwerken ontwerpen](https://devblogs.microsoft.com/premier-developer/understanding-cidr-notation-when-designing-azure-virtual-networks-and-subnets/).
 1. Maak een [persoonlijk eind punt en Azure privé-DNS zone voor de primaire server](../../private-link/create-private-endpoint-portal.md#create-a-private-endpoint). 
 1. Maak ook een persoonlijk eind punt voor de secundaire server, maar deze keer u ervoor kiest om dezelfde Privé-DNS zone die is gemaakt voor de primaire server, opnieuw te gebruiken. 

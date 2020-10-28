@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: 344d4e6b57082eb9ccfcd0642732d05216ad3978
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 35aff26eac3dd456db55204b662cb9b8a6bb9f2b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426316"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672976"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Actieve geo-replicatie-Azure SQL Database maken en gebruiken
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ Actieve geo-replicatie is een Azure SQL Database functie waarmee u lees bare sec
 Actieve geo-replicatie is ontworpen als een oplossing voor bedrijfs continuïteit waarmee de toepassing snel herstel van afzonderlijke data bases kan uitvoeren in het geval van een regionale storing of een grote schaal onderbreking. Als geo-replicatie is ingeschakeld, kan de toepassing failover initiëren naar een secundaire data base in een andere Azure-regio. Maxi maal vier secundaire, worden in dezelfde of verschillende regio's ondersteund, en de secundairen kunnen ook worden gebruikt voor alleen-lezen toegang query's. De failover moet hand matig worden geïnitieerd door de toepassing of de gebruiker. Na een failover heeft de nieuwe primaire een ander eind punt voor de verbinding.
 
 > [!NOTE]
-> Actieve geo-replicatie repliceert wijzigingen door het transactie logboek van de streaming-data base. Het is niet gerelateerd aan [transactionele replicatie](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication), waardoor wijzigingen worden GEREPLICEERD door DML-opdrachten (insert, update, Delete) uit te voeren.
+> Actieve geo-replicatie repliceert wijzigingen door het transactie logboek van de streaming-data base. Het is niet gerelateerd aan [transactionele replicatie](/sql/relational-databases/replication/transactional/transactional-replication), waardoor wijzigingen worden GEREPLICEERD door DML-opdrachten (insert, update, Delete) uit te voeren.
 
 Het volgende diagram illustreert een typische configuratie van een geo-redundante Cloud toepassing met behulp van actieve geo-replicatie.
 
@@ -46,15 +46,15 @@ U kunt de replicatie en failover van een afzonderlijke data base of een set met 
 - [Power shell: één data base](scripts/setup-geodr-and-failover-database-powershell.md)
 - [Power shell: elastische pool](scripts/setup-geodr-and-failover-elastic-pool-powershell.md)
 - [Transact-SQL: Eén data base of elastische pool](/sql/t-sql/statements/alter-database-azure-sql-database)
-- [REST API: Eén data base](https://docs.microsoft.com/rest/api/sql/replicationlinks)
+- [REST API: Eén data base](/rest/api/sql/replicationlinks)
 
-Actieve geo-replicatie maakt gebruik van de AlwaysOn- [beschikbaarheids groep](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) technologie van de data base-engine om op asynchrone wijze doorgevoerde trans acties op de primaire data base te repliceren naar een secundaire data base met behulp van snap shot-isolatie. Automatische-failover-groepen bieden de groeps semantiek boven op actieve geo-replicatie, maar hetzelfde mechanisme voor asynchrone replicatie wordt gebruikt. Hoewel de secundaire Data Base op een bepaald moment mogelijk iets achter de primaire data base ligt, worden de secundaire gegevens gegarandeerd nooit gedeeltelijk trans acties. Dankzij de redundantie van meerdere regio's kunnen toepassingen snel worden hersteld van een permanent verlies van een volledig Data Center of delen van een Data Center, veroorzaakt door natuur rampen, fatale menselijke fouten of kwaad aardige handelingen. De specifieke RPO-gegevens kunt u vinden in [overzicht van bedrijfs continuïteit](business-continuity-high-availability-disaster-recover-hadr-overview.md).
+Actieve geo-replicatie maakt gebruik van de AlwaysOn- [beschikbaarheids groep](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) technologie van de data base-engine om op asynchrone wijze doorgevoerde trans acties op de primaire data base te repliceren naar een secundaire data base met behulp van snap shot-isolatie. Automatische-failover-groepen bieden de groeps semantiek boven op actieve geo-replicatie, maar hetzelfde mechanisme voor asynchrone replicatie wordt gebruikt. Hoewel de secundaire Data Base op een bepaald moment mogelijk iets achter de primaire data base ligt, worden de secundaire gegevens gegarandeerd nooit gedeeltelijk trans acties. Dankzij de redundantie van meerdere regio's kunnen toepassingen snel worden hersteld van een permanent verlies van een volledig Data Center of delen van een Data Center, veroorzaakt door natuur rampen, fatale menselijke fouten of kwaad aardige handelingen. De specifieke RPO-gegevens kunt u vinden in [overzicht van bedrijfs continuïteit](business-continuity-high-availability-disaster-recover-hadr-overview.md).
 
 > [!NOTE]
 > Als er sprake is van een netwerk fout tussen twee regio's, wordt elke 10 seconden opnieuw geprobeerd verbindingen tot stand te brengen.
 
 > [!IMPORTANT]
-> Om ervoor te zorgen dat een kritieke wijziging op de primaire Data Base naar een secundair wordt gerepliceerd voordat u een failover doorvoert, kunt u de synchronisatie afdwingen om te zorgen voor de replicatie van belang rijke wijzigingen (bijvoorbeeld wachtwoord updates). Geforceerde synchronisatie is van invloed op de prestaties omdat het de aanroepende thread blokkeert totdat alle doorgevoerde trans acties worden gerepliceerd. Zie [sp_wait_for_database_copy_sync](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync)voor meer informatie. Zie [sys.dm_geo_replication_link_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database)voor het bewaken van de replicatie vertraging tussen de primaire data base en geo-secundair.
+> Om ervoor te zorgen dat een kritieke wijziging op de primaire Data Base naar een secundair wordt gerepliceerd voordat u een failover doorvoert, kunt u de synchronisatie afdwingen om te zorgen voor de replicatie van belang rijke wijzigingen (bijvoorbeeld wachtwoord updates). Geforceerde synchronisatie is van invloed op de prestaties omdat het de aanroepende thread blokkeert totdat alle doorgevoerde trans acties worden gerepliceerd. Zie [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync)voor meer informatie. Zie [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database)voor het bewaken van de replicatie vertraging tussen de primaire data base en geo-secundair.
 
 In de volgende afbeelding ziet u een voor beeld van actieve geo-replicatie die is geconfigureerd met een primaire waarde in de regio Noord-Centraal VS en secundair in de regio Zuid-Centraal vs.
 
@@ -64,8 +64,8 @@ Omdat de secundaire data bases leesbaar zijn, kunnen ze worden gebruikt voor het
 
 Naast herstel na nood geval kan geo-replicatie worden gebruikt in de volgende scenario's:
 
-- **Database migratie**: u kunt actieve geo-replicatie gebruiken om een Data Base te migreren van de ene server naar een andere online met minimale downtime.
-- **Toepassings upgrades**: u kunt een extra secundair als een failback-kopie maken tijdens de upgrade van de toepassing.
+- **Database migratie** : u kunt actieve geo-replicatie gebruiken om een Data Base te migreren van de ene server naar een andere online met minimale downtime.
+- **Toepassings upgrades** : u kunt een extra secundair als een failback-kopie maken tijdens de upgrade van de toepassing.
 
 Voor een echte bedrijfs continuïteit is het toevoegen van database redundantie tussen data centers slechts een deel van de oplossing. Het herstellen van een toepassing (Service) End-to-end na een onherstelbare fout vereist het herstellen van alle onderdelen die de service en eventuele afhankelijke services vormen. Voor beelden van deze onderdelen zijn de client software (bijvoorbeeld een browser met een aangepaste Java script), web-front-ends, opslag en DNS. Het is van essentieel belang dat alle onderdelen zich in dezelfde storingen bevinden en beschikbaar komen binnen de beoogde herstel tijd (RTO) van uw toepassing. Daarom moet u alle afhankelijke services identificeren en inzicht krijgen in de garanties en mogelijkheden die ze bieden. Vervolgens moet u de juiste stappen nemen om ervoor te zorgen dat uw service functioneert tijdens de failover van de services waarvan deze afhankelijk is. Zie [cloud oplossingen ontwerpen voor herstel na nood gevallen met actieve geo-replicatie](designing-cloud-solutions-for-disaster-recovery.md)voor meer informatie over het ontwerpen van oplossingen voor herstel na nood gevallen.
 
@@ -244,7 +244,7 @@ Als u de vertraging wilt meten met betrekking tot wijzigingen op de primaire dat
 
 ## <a name="programmatically-managing-active-geo-replication"></a>Programmatisch beheer van actieve geo-replicatie
 
-Zoals eerder besproken, kan actieve geo-replicatie ook programmatisch worden beheerd met behulp van Azure PowerShell en de REST API. De volgende tabellen bevatten een beschrijving van de beschik bare opdrachten. Actieve geo-replicatie bevat een set Azure Resource Manager Api's voor beheer, met inbegrip van de [Azure SQL database-rest API](https://docs.microsoft.com/rest/api/sql/) en [Azure PowerShell-cmdlets](https://docs.microsoft.com/powershell/azure/). Deze Api's vereisen het gebruik van resource groepen en bieden beveiliging op basis van rollen (RBAC). Zie voor meer informatie over het implementeren van toegangs rollen [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../../role-based-access-control/overview.md).
+Zoals eerder besproken, kan actieve geo-replicatie ook programmatisch worden beheerd met behulp van Azure PowerShell en de REST API. De volgende tabellen bevatten een beschrijving van de beschik bare opdrachten. Actieve geo-replicatie bevat een set Azure Resource Manager Api's voor beheer, met inbegrip van de [Azure SQL database-rest API](/rest/api/sql/) en [Azure PowerShell-cmdlets](/powershell/azure/). Deze Api's vereisen het gebruik van resource groepen en bieden beveiliging op basis van rollen (RBAC). Zie voor meer informatie over het implementeren van toegangs rollen [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../../role-based-access-control/overview.md).
 
 ### <a name="t-sql-manage-failover-of-single-and-pooled-databases"></a>T-SQL: failover van één en gepoolde data bases beheren
 
@@ -253,9 +253,9 @@ Zoals eerder besproken, kan actieve geo-replicatie ook programmatisch worden beh
 
 | Opdracht | Beschrijving |
 | --- | --- |
-| [ALTER DATA BASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |Gebruik het argument secundair op SERVER toevoegen om een secundaire Data Base voor een bestaande Data Base te maken en gegevens replicatie te starten |
-| [ALTER DATA BASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |FAILOVER of FORCE_FAILOVER_ALLOW_DATA_LOSS gebruiken om naar een secundaire data base te scha kelen die primair moet zijn om FAILOVER te initiëren |
-| [ALTER DATA BASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |Gebruik secundaire verwijderen op de SERVER om een gegevens replicatie tussen een SQL Database en de opgegeven secundaire data base te beëindigen. |
+| [ALTER DATA BASE](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-current) |Gebruik het argument secundair op SERVER toevoegen om een secundaire Data Base voor een bestaande Data Base te maken en gegevens replicatie te starten |
+| [ALTER DATA BASE](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-current) |FAILOVER of FORCE_FAILOVER_ALLOW_DATA_LOSS gebruiken om naar een secundaire data base te scha kelen die primair moet zijn om FAILOVER te initiëren |
+| [ALTER DATA BASE](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-current) |Gebruik secundaire verwijderen op de SERVER om een gegevens replicatie tussen een SQL Database en de opgegeven secundaire data base te beëindigen. |
 | [sys.geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Retourneert informatie over alle bestaande replicatie koppelingen voor elke Data Base op een server. |
 | [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Hiermee worden de laatste replicatie tijd, de laatste replicatie vertraging en andere informatie over de replicatie koppeling voor een bepaalde data base opgehaald. |
 | [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Hier wordt de status weer gegeven voor alle database bewerkingen, inclusief de status van de replicatie koppelingen. |
@@ -266,15 +266,15 @@ Zoals eerder besproken, kan actieve geo-replicatie ook programmatisch worden beh
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> De module PowerShell Azure Resource Manager wordt nog steeds ondersteund in Azure SQL Database, maar alle toekomstige ontwikkeling is voor de Az.Sql-module. Zie [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/) voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek.
+> De module PowerShell Azure Resource Manager wordt nog steeds ondersteund in Azure SQL Database, maar alle toekomstige ontwikkeling is voor de Az.Sql-module. Zie [AzureRM.Sql](/powershell/module/AzureRM.Sql/) voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek.
 
 | Cmdlet | Beschrijving |
 | --- | --- |
-| [Get-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabase) |Hiermee haalt u een of meer databases op. |
-| [New-AzSqlDatabaseSecondary](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabasesecondary) |Hiermee maakt u een secundaire database voor een bestaande database en wordt gegevensreplicatie gestart. |
-| [Set-AzSqlDatabaseSecondary](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesecondary) |Hiermee wordt overgeschakeld op een secundaire database als primaire om de failover te initiëren. |
-| [Remove-AzSqlDatabaseSecondary](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesecondary) |Hiermee wordt gegevensreplicatie tussen een SQL Database en de opgegeven secundaire database beëindigd. |
-| [Get-AzSqlDatabaseReplicationLink](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasereplicationlink) |Hiermee haalt u de geo-replicatiekoppelingen tussen een Azure SQL Database en een resourcegroep of logische SQL Server op. |
+| [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) |Hiermee haalt u een of meer databases op. |
+| [New-AzSqlDatabaseSecondary](/powershell/module/az.sql/new-azsqldatabasesecondary) |Hiermee maakt u een secundaire database voor een bestaande database en wordt gegevensreplicatie gestart. |
+| [Set-AzSqlDatabaseSecondary](/powershell/module/az.sql/set-azsqldatabasesecondary) |Hiermee wordt overgeschakeld op een secundaire database als primaire om de failover te initiëren. |
+| [Remove-AzSqlDatabaseSecondary](/powershell/module/az.sql/remove-azsqldatabasesecondary) |Hiermee wordt gegevensreplicatie tussen een SQL Database en de opgegeven secundaire database beëindigd. |
+| [Get-AzSqlDatabaseReplicationLink](/powershell/module/az.sql/get-azsqldatabasereplicationlink) |Hiermee haalt u de geo-replicatiekoppelingen tussen een Azure SQL Database en een resourcegroep of logische SQL Server op. |
 |  | |
 
 > [!IMPORTANT]
@@ -284,13 +284,13 @@ Zoals eerder besproken, kan actieve geo-replicatie ook programmatisch worden beh
 
 | API | Beschrijving |
 | --- | --- |
-| [Data base maken of bijwerken (createMode = herstellen)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Hiermee wordt een primaire of secundaire data base gemaakt, bijgewerkt of teruggezet. |
-| [Database status van maken of bijwerken ophalen](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Retourneert de status tijdens het maken van een bewerking. |
-| [Secundaire Data Base als primair instellen (geplande failover)](https://docs.microsoft.com/rest/api/sql/replicationlinks/failover) |Hiermee wordt ingesteld welke secundaire data base primair is door een failover uit te geven van de huidige primaire data base. **Deze optie wordt niet ondersteund voor SQL Managed instance.**|
-| [Secundaire Data Base als primair instellen (niet-geplande failover)](https://docs.microsoft.com/rest/api/sql/replicationlinks/failoverallowdataloss) |Hiermee wordt ingesteld welke secundaire data base primair is door een failover uit te geven van de huidige primaire data base. Deze bewerking kan leiden tot verlies van gegevens. **Deze optie wordt niet ondersteund voor SQL Managed instance.**|
-| [Replicatie koppeling ophalen](https://docs.microsoft.com/rest/api/sql/replicationlinks/get) |Hiermee wordt een specifieke replicatie koppeling voor een bepaalde data base in een geo-replicatie relatie opgehaald. Hiermee wordt de informatie opgehaald die zichtbaar is in de catalogus weergave van sys.geo_replication_links. **Deze optie wordt niet ondersteund voor SQL Managed instance.**|
-| [Replicatie koppelingen-lijst op Data Base](https://docs.microsoft.com/rest/api/sql/replicationlinks/listbydatabase) | Hiermee worden alle replicatie koppelingen voor een bepaalde data base in een geo-replicatie relatie opgehaald. Hiermee wordt de informatie opgehaald die zichtbaar is in de catalogus weergave van sys.geo_replication_links. |
-| [Replicatie koppeling verwijderen](https://docs.microsoft.com/rest/api/sql/replicationlinks/delete) | Hiermee verwijdert u een database replicatie koppeling. Kan niet worden uitgevoerd tijdens failover. |
+| [Data base maken of bijwerken (createMode = herstellen)](/rest/api/sql/databases/createorupdate) |Hiermee wordt een primaire of secundaire data base gemaakt, bijgewerkt of teruggezet. |
+| [Database status van maken of bijwerken ophalen](/rest/api/sql/databases/createorupdate) |Retourneert de status tijdens het maken van een bewerking. |
+| [Secundaire Data Base als primair instellen (geplande failover)](/rest/api/sql/replicationlinks/failover) |Hiermee wordt ingesteld welke secundaire data base primair is door een failover uit te geven van de huidige primaire data base. **Deze optie wordt niet ondersteund voor SQL Managed instance.**|
+| [Secundaire Data Base als primair instellen (niet-geplande failover)](/rest/api/sql/replicationlinks/failoverallowdataloss) |Hiermee wordt ingesteld welke secundaire data base primair is door een failover uit te geven van de huidige primaire data base. Deze bewerking kan leiden tot verlies van gegevens. **Deze optie wordt niet ondersteund voor SQL Managed instance.**|
+| [Replicatie koppeling ophalen](/rest/api/sql/replicationlinks/get) |Hiermee wordt een specifieke replicatie koppeling voor een bepaalde data base in een geo-replicatie relatie opgehaald. Hiermee wordt de informatie opgehaald die zichtbaar is in de catalogus weergave van sys.geo_replication_links. **Deze optie wordt niet ondersteund voor SQL Managed instance.**|
+| [Replicatie koppelingen-lijst op Data Base](/rest/api/sql/replicationlinks/listbydatabase) | Hiermee worden alle replicatie koppelingen voor een bepaalde data base in een geo-replicatie relatie opgehaald. Hiermee wordt de informatie opgehaald die zichtbaar is in de catalogus weergave van sys.geo_replication_links. |
+| [Replicatie koppeling verwijderen](/rest/api/sql/replicationlinks/delete) | Hiermee verwijdert u een database replicatie koppeling. Kan niet worden uitgevoerd tijdens failover. |
 |  | |
 
 ## <a name="next-steps"></a>Volgende stappen

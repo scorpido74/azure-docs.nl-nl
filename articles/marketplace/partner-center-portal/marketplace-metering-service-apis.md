@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: d4c1005d300a5b326ff2f41d9fa3838dbb1c7552
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: e29aeb7570ad6daba9d6fc652291471fa246bf0a
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278025"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674628"
 ---
 # <a name="marketplace-metered-billing-apis"></a>Facturerings-Api's met geplaatste Marketplace
 
@@ -34,7 +34,7 @@ Er kan slechts één gebruiks gebeurtenis voor elk uur van een kalenderdag worde
 
 Er kan slechts één gebruiks gebeurtenis worden verzonden voor elk uur van een kalenderdag per resource. Als er in een uur meer dan één eenheid wordt verbruikt, kunt u alle eenheden die in het uur zijn verbruiken, verzamelen en vervolgens in één gebeurtenis verzenden. Gebruiks gebeurtenissen kunnen gedurende de afgelopen 24 uur alleen worden verzonden. Als u een gebruiks gebeurtenis op elk gewenst moment tussen 8:00 en 8:59:59 (en wordt geaccepteerd) en een extra gebeurtenis voor dezelfde dag tussen 8:00 en 8:59:59 verzendt, wordt deze als een duplicaat afgewezen.
 
-**Post**: `https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
+**Post** : `https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
 
 *Query parameters:*
 
@@ -67,7 +67,7 @@ Er kan slechts één gebruiks gebeurtenis worden verzonden voor elk uur van een 
 >[!NOTE]
 >`resourceId` heeft een andere betekenis voor SaaS-apps en voor beheerde apps die aangepaste meter uitstralen. 
 
-Voor Azure-toepassing Managed apps-plannen `resourceId` is de `resourceUsageId` gevonden onder het `billingDetails` meta gegevens object van de beheerde app. Een voorbeeld script voor het ophalen hiervan vindt [u in het token Azure Managed Identities gebruiken](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token). 
+De `resourceId` is de beheerde app voor het plannen van Azure-toepassing beheerde apps `resource group Id` . Een voorbeeld script voor het ophalen hiervan vindt [u in het token Azure Managed Identities gebruiken](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token). 
 
 Voor SaaS-aanbiedingen `resourceId` is de SaaS-abonnements-id. Zie [abonnementen weer](./pc-saas-fulfillment-api-v2.md#get-list-of-all-subscriptions)geven voor meer informatie over SaaS-abonnementen.
 
@@ -191,7 +191,7 @@ Met de gebeurtenis-API voor batch gebruik kunt u gebruiks gebeurtenissen voor me
 >[!NOTE]
 >`resourceId` heeft een andere betekenis voor SaaS-apps en voor beheerde apps die aangepaste meter uitstralen. 
 
-Voor Azure-toepassing Managed apps-plannen `resourceId` is de `resourceUsageId` gevonden onder het `billingDetails` meta gegevens object van de beheerde app. Een voorbeeld script voor het ophalen hiervan vindt [u in het token Azure Managed Identities gebruiken](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token). 
+De `resourceId` is de beheerde app voor het plannen van Azure-toepassing beheerde apps `resource group Id` . Een voorbeeld script voor het ophalen hiervan vindt [u in het token Azure Managed Identities gebruiken](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token). 
 
 Voor SaaS-aanbiedingen `resourceId` is de SaaS-abonnements-id. Zie [abonnementen weer](./pc-saas-fulfillment-api-v2.md#get-list-of-all-subscriptions)geven voor meer informatie over SaaS-abonnementen.
 

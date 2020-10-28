@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 88a8dcb53ab2f845f52121b11c96c23ad0a3e791
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef74c4b799c3a24636f88a8e704bf726104b034f
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87078929"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674326"
 ---
 # <a name="sensor-partner-integration"></a>Partnerintegratie voor sensoren
 
@@ -48,7 +48,7 @@ De Api's bevatten technische documentatie voor Swagger. Zie [Swagger](https://ak
 
 FarmBeats maakt gebruik van Microsoft Azure Active Directory-verificatie.Azure App Service biedt ingebouwde ondersteuning voor verificatie en autorisatie.
 
-Zie [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)voor meer informatie.
+Zie [Azure Active Directory](../../app-service/overview-authentication-authorization.md)voor meer informatie.
 
 FarmBeats Datahub maakt gebruik van Bearer-verificatie, die de volgende referenties nodig heeft:
    - Client-id
@@ -126,10 +126,10 @@ JSON is een gemeen schappelijke taal onafhankelijke gegevens indeling die een ee
 
 FarmBeats Datahub heeft de volgende Api's waarmee de apparaat partners apparaat-of sensor-meta gegevens kunnen maken en beheren.
 
-- /**DeviceModel**: DeviceModel komt overeen met de meta gegevens van het apparaat, zoals de fabrikant en het type apparaat, ofwel de gateway ofwel het knoop punt.
-- /**Apparaat**: het apparaat komt overeen met een fysiek apparaat dat aanwezig is op de farm.
-- /**SensorModel**: SensorModel komt overeen met de meta gegevens van de sensor, zoals de fabrikant, het type sensor dat analoog of digitaal is en de sensor meting, zoals omgevings temperatuur en druk.
-- /**Sensor**: sensor komt overeen met een fysieke sensor waarmee waarden worden vastgelegd. Een sensor is doorgaans verbonden met een apparaat met een apparaat-ID.
+- /**DeviceModel** : DeviceModel komt overeen met de meta gegevens van het apparaat, zoals de fabrikant en het type apparaat, ofwel de gateway ofwel het knoop punt.
+- /**Apparaat** : het apparaat komt overeen met een fysiek apparaat dat aanwezig is op de farm.
+- /**SensorModel** : SensorModel komt overeen met de meta gegevens van de sensor, zoals de fabrikant, het type sensor dat analoog of digitaal is en de sensor meting, zoals omgevings temperatuur en druk.
+- /**Sensor** : sensor komt overeen met een fysieke sensor waarmee waarden worden vastgelegd. Een sensor is doorgaans verbonden met een apparaat met een apparaat-ID.
 
   DeviceModel | Beschrijving |
   --- | ---
@@ -201,7 +201,7 @@ De telemetriegegevens worden toegewezen aan een canonieke bericht dat wordt gepu
 
 ## <a name="send-telemetry-data-to-farmbeats"></a>Telemetriegegevens naar FarmBeats verzenden
 
-Als u telemetriegegevens wilt verzenden naar FarmBeats, maakt u een client die berichten verzendt naar een Event Hub in FarmBeats. Zie [telemetrie verzenden naar een event hub](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send)voor meer informatie over telemetrie-gegevens.
+Als u telemetriegegevens wilt verzenden naar FarmBeats, maakt u een client die berichten verzendt naar een Event Hub in FarmBeats. Zie [telemetrie verzenden naar een event hub](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)voor meer informatie over telemetrie-gegevens.
 
 Hier volgt een voor beeld van een python-code die telemetrie verzendt als een client naar een opgegeven Event Hub.
 
@@ -324,7 +324,7 @@ Met apparaat-partners kunnen klanten de FarmBeats-integratie-instellingen bewerk
 
 ## <a name="view-the-last-telemetry-sent"></a>De laatste telemetriegegevens weer geven die zijn verzonden
 
-Met apparaat-partners kunnen klanten de tijds tempel van de laatste gezonden telemetrie weer geven, die wordt gevonden onder **telemetrie verzonden**. Dit is het tijdstip waarop de laatste telemetrie is verzonden naar FarmBeats.
+Met apparaat-partners kunnen klanten de tijds tempel van de laatste gezonden telemetrie weer geven, die wordt gevonden onder **telemetrie verzonden** . Dit is het tijdstip waarop de laatste telemetrie is verzonden naar FarmBeats.
 
 ## <a name="troubleshooting-and-error-management"></a>Probleem oplossing en fouten beheer
 

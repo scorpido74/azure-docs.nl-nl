@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 088618c0f23f5cfd1b14c3c946ef735fadb893d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 214cdbd5ad30ad096cb6c9d1442936eefb2b2054
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87086095"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674872"
 ---
 # <a name="use-azure-storage-explorer-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Azure Storage Explorer gebruiken voor het beheren van adreslijsten, bestanden en ACL's in Azure Data Lake Storage Gen2
 
@@ -38,15 +38,15 @@ Wanneer u Azure Storage Explorer de eerste keer start, wordt het venster **Micro
 
 Selecteer **Een Azure-account toevoegen** en klik op **Aanmelden...** . Volg de instructies op het scherm om u aan te melden bij uw Azure-account.
 
-![Het venster Microsoft Azure Storage Explorer - Verbinding maken](media/storage-quickstart-blobs-storage-explorer/connect.png)
+![Scherm afbeelding met Microsoft Azure Storage Explorer en de optie een Azure-account toevoegen en de knop aanmelden.](media/storage-quickstart-blobs-storage-explorer/connect.png)
 
-Wanneer de verbinding tot stand is gebracht, wordt Azure Storage Explorer geladen en ziet u het tabblad **Explorer**. Deze weergave biedt u inzicht in al uw Azure Storage-accounts, evenals lokale opslag die is geconfigureerd via de [Azure-opslagemulator](../common/storage-use-azurite.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json), [Cosmos DB](../../cosmos-db/storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)-accounts of [Azure Stack](/azure-stack/user/azure-stack-storage-connect-se?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)-omgevingen.
+Wanneer de verbinding tot stand is gebracht, wordt Azure Storage Explorer geladen en ziet u het tabblad **Explorer** . Deze weergave biedt u inzicht in al uw Azure Storage-accounts, evenals lokale opslag die is geconfigureerd via de [Azure-opslagemulator](../common/storage-use-azurite.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json), [Cosmos DB](../../cosmos-db/storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)-accounts of [Azure Stack](/azure-stack/user/azure-stack-storage-connect-se?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)-omgevingen.
 
 ![Het venster Microsoft Azure Storage Explorer - Verbinding maken](media/storage-quickstart-blobs-storage-explorer/mainpage.png)
 
 ## <a name="create-a-container"></a>Een container maken
 
-Een container bevat directory's en bestanden. Vouw het opslag account uit dat u in de stap door gaan hebt gemaakt om er een te maken. Selecteer **Blobcontainers**, klik met de rechtermuisknop en selecteer **Blobcontainer maken**. Voer de naam voor de container in. Zie de sectie [een container maken](storage-quickstart-blobs-dotnet.md#create-a-container) voor een lijst met regels en beperkingen voor het benoemen van containers. Wanneer u klaar bent, drukt u op **Enter** om de container te maken. Zodra de container is gemaakt, wordt deze weer gegeven onder de map **BLOB containers** voor het geselecteerde opslag account.
+Een container bevat directory's en bestanden. Vouw het opslag account uit dat u in de stap door gaan hebt gemaakt om er een te maken. Selecteer **Blobcontainers** , klik met de rechtermuisknop en selecteer **Blobcontainer maken** . Voer de naam voor de container in. Zie de sectie [een container maken](storage-quickstart-blobs-dotnet.md#create-a-container) voor een lijst met regels en beperkingen voor het benoemen van containers. Wanneer u klaar bent, drukt u op **Enter** om de container te maken. Zodra de container is gemaakt, wordt deze weer gegeven onder de map **BLOB containers** voor het geselecteerde opslag account.
 
 ![Microsoft Azure Storage Explorer-een container maken](media/data-lake-storage-explorer/creating-a-filesystem.png)
 
@@ -64,7 +64,7 @@ Kies de bestanden of map die u wilt uploaden.
 
 ![Microsoft Azure Storage Explorer - een blob uploaden](media/data-lake-storage-explorer/upload-file.png)
 
-Wanneer u **OK** selecteert, worden de geselecteerde bestanden in een wachtrij geplaatst om te worden geüpload. Elk bestand wordt geüpload. Wanneer het uploaden is voltooid, worden de resultaten weergegeven in het venster **Activiteiten**.
+Wanneer u **OK** selecteert, worden de geselecteerde bestanden in een wachtrij geplaatst om te worden geüpload. Elk bestand wordt geüpload. Wanneer het uploaden is voltooid, worden de resultaten weergegeven in het venster **Activiteiten** .
 
 ## <a name="view-blobs-in-a-directory"></a>Blobs in een directory weergeven
 
@@ -74,11 +74,11 @@ Selecteer in de toepassing **Azure Storage Explorer** een directory in een opsla
 
 ## <a name="download-blobs"></a>Blobs downloaden
 
-Als u bestanden wilt downloaden met behulp van **Azure Storage Explorer**, selecteert u in het lint de optie **down load** , waarbij een bestand is geselecteerd. Er wordt een dialoogvenster geopend waarin u een bestandsnaam kunt invoeren. Selecteer **Opslaan** om het downloaden van een bestand naar de lokale locatie te starten.
+Als u bestanden wilt downloaden met behulp van **Azure Storage Explorer** , selecteert u in het lint de optie **down load** , waarbij een bestand is geselecteerd. Er wordt een dialoogvenster geopend waarin u een bestandsnaam kunt invoeren. Selecteer **Opslaan** om het downloaden van een bestand naar de lokale locatie te starten.
 
 ## <a name="managing-access"></a>Toegang beheren
 
-U kunt machtigingen instellen in de hoofdmap van de container. Hiervoor moet u zijn aangemeld bij Azure Storage Explorer met uw eigen account met rechten om dit te doen (in plaats van een connection string). Klik met de rechter muisknop op uw container en selecteer **machtigingen beheren**, het dialoog venster **machtiging beheren** .
+U kunt machtigingen instellen in de hoofdmap van de container. Hiervoor moet u zijn aangemeld bij Azure Storage Explorer met uw eigen account met rechten om dit te doen (in plaats van een connection string). Klik met de rechter muisknop op uw container en selecteer **machtigingen beheren** , het dialoog venster **machtiging beheren** .
 
 ![Microsoft Azure Storage Explorer - Toegang tot mappen beheren](media/storage-quickstart-blobs-storage-Explorer/manageperms.png)
 
@@ -86,20 +86,20 @@ Via het dialoogvenster **Machtiging beheren** kunt u machtigingen beheren voor d
 
 Selecteer het veld **Gebruiker of groep toevoegen** om een nieuwe gebruiker of groep toe te voegen aan de toegangsbeheerlijst.
 
-Voer de bijbehorende AAD-vermelding (Azure Active Directory) in die u aan de lijst wilt toevoegen en selecteer vervolgens **Toevoegen**.
+Voer de bijbehorende AAD-vermelding (Azure Active Directory) in die u aan de lijst wilt toevoegen en selecteer vervolgens **Toevoegen** .
 
-De gebruiker of groep wordt nu weergegeven in het veld **Gebruikers en groepen:**, zodat u kunt beginnen met het beheren van hun machtigingen.
+De gebruiker of groep wordt nu weergegeven in het veld **Gebruikers en groepen:** , zodat u kunt beginnen met het beheren van hun machtigingen.
 
 > [!NOTE]
 > Het is een best practice en het wordt aanbevolen om een beveiligingsgroep in AAD te maken en machtigingen te onderhouden voor de groep in plaats van afzonderlijke gebruikers. Zie [Best practices voor Data Lake Storage Gen2](data-lake-storage-best-practices.md) voor meer informatie over deze aanbeveling en tevens andere best practices.
 
 Er zijn twee machtigingscategorieën die u kunt toewijzen: Toegangs-ACL’s en Standaard-ACL’s.
 
-* **Toegang**: toegangs-acl's bepalen de toegang tot een object. Bestanden en mappen hebben beide Toegangs-ACL's.
+* **Toegang** : toegangs-acl's bepalen de toegang tot een object. Bestanden en mappen hebben beide Toegangs-ACL's.
 
-* **Standaard**: een sjabloon met acl's die zijn gekoppeld aan een map die de toegangs-acl's bepaalt voor alle onderliggende items die zijn gemaakt in die map. Bestanden hebben geen Standaard-ACL's.
+* **Standaard** : een sjabloon met acl's die zijn gekoppeld aan een map die de toegangs-acl's bepaalt voor alle onderliggende items die zijn gemaakt in die map. Bestanden hebben geen Standaard-ACL's.
 
-In beide categorieën zijn er drie machtigingen die u vervolgens kunt toewijzen aan bestanden of mappen: **lezen**, **schrijven**en **uitvoeren**.
+In beide categorieën zijn er drie machtigingen die u vervolgens kunt toewijzen aan bestanden of mappen: **lezen** , **schrijven** en **uitvoeren** .
 
 >[!NOTE]
 > Wanneer u hier selecties maakt, worden machtigingen voor een reeds bestaand item in de map niet ingesteld. U moet naar elk afzonderlijk item gaan en de machtigingen handmatig instellen als het bestand al bestaat.

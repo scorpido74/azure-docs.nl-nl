@@ -3,18 +3,18 @@ title: 'Concepten: identiteit en toegang'
 description: Meer informatie over de identiteits-en toegangs concepten van de Azure VMware-oplossing
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 9d5b7b4c7c2e0d55cffc99a3f371494f40320a16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7127109801d92d2177f6edac3efcaf76ddf217e6
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88750583"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674644"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Concepten van Azure VMware-oplossings identiteiten
 
-Een vCenter-Server en NSX-T-beheer worden ingericht wanneer een privécloud wordt geïmplementeerd. U gebruikt vCenter voor het beheren van werk belastingen van virtuele machines en NSX-T-beheer voor het uitbreiden van het software-gedefinieerd netwerk van de privécloud.
+Wanneer u een privécloud implementeert, wordt een vCenter-Server en NSX-T-Manager ingericht. U kunt vCenter gebruiken om werk belastingen van virtuele machines (VM) te beheren. U gebruikt NSX-T-beheer voor het uitbreiden van het software-gedefinieerde netwerk van de privécloud.
 
-Toegang en identiteits beheer gebruiken CloudAdmin groeps rechten voor vCenter en beperkte beheerders rechten voor NSX-T-beheer. Dit beleid zorgt ervoor dat uw particuliere cloud platform automatisch kan worden bijgewerkt. Dit levert regel matig de nieuwste functies en patches. Zie het [artikel concepten][concepts-upgrades] van de privécloud-upgrades voor meer informatie over de upgrades van de privécloud.
+Toegang en identiteits beheer gebruiken CloudAdmin groeps rechten voor vCenter en beperkte beheerders rechten voor NSX-T-beheer. Zo zorgt u ervoor dat uw persoonlijke Cloud platform automatisch wordt bijgewerkt met de nieuwste functies en patches.  Zie het [artikel concepten van upgrades][concepts-upgrades]van de privécloud voor meer informatie.
 
 ## <a name="vcenter-access-and-identity"></a>toegang tot vCenter en identiteit
 
@@ -28,7 +28,7 @@ De CloudAdmin-en CloudGlobalAdmin-bevoegdheden worden weer gegeven in de volgend
 |  Automatisch implementeren             |  --  |        --        |  Micro soft beheert hostbeheer.  |
 |  Certificaten            |  --  |        --       |  Micro soft biedt certificaat beheer.  |
 |  Inhoudsbibliotheek         | Een CloudAdmin-gebruiker heeft bevoegdheden voor het maken en gebruiken van bestanden in een inhouds bibliotheek.    |         Ingeschakeld met SSO.         |  Micro soft zal bestanden in de inhouds bibliotheek distribueren naar ESXi-hosts.  |
-|  Datacenter              |  --  |        --          |  Micro soft voert alle Data Center-bewerkingen uit.  |
+|  Datacentrum              |  --  |        --          |  Micro soft voert alle Data Center-bewerkingen uit.  |
 |  Gegevensarchief               | Data Store. AllocateSpace, Data Store. browse, Datastore.Config, Data Store. Delete File, Data Store. File Management, Data Store. UpdateVirtualMachineMetadata     |    --    |   -- |
 |  ESX-agent beheer       |  --  |         --       |  Micro soft voert alle bewerkingen uit.  |
 |  Map                  |  Een CloudAdmin-gebruiker heeft alle machtigingen voor de map.     |  --  |  --  |
@@ -49,7 +49,7 @@ De CloudAdmin-en CloudGlobalAdmin-bevoegdheden worden weer gegeven in de volgend
 
 ## <a name="nsx-t-manager-access-and-identity"></a>Toegangs-en identiteits beheer NSX-T
 
-U hebt toegang tot NSX-T Manager met het account ' Administrator '. Dit account heeft volledige bevoegdheden en stelt u in staat T1-routers, logische switches en alle services te maken en te beheren. De volledige bevoegdheden in NSX-T bieden u ook toegang tot de NSX-T T0-router. Een wijziging in de T0-router kan leiden tot slechte netwerk prestaties of een verlies van toegang tot een privécloud. Om aan de ondersteunings vereisten te voldoen, is het vereist dat u een ondersteunings aanvraag in de Azure Portal opent om eventuele wijzigingen aan te vragen aan uw NSX-T T0-router.
+Gebruik het account Administrator om toegang te krijgen tot NSX-T-beheer. Het heeft volledige bevoegdheden en stelt u in staat T1-routers, logische switches en alle services te maken en te beheren. De bevoegdheden bieden u toegang tot de NSX-T T0-router. Een wijziging in de T0-router kan leiden tot gedegradeerde netwerk prestaties of geen toegang tot de privécloud. Open een ondersteunings aanvraag in de Azure Portal om eventuele wijzigingen aan uw NSX-T T0-router aan te vragen.
   
 ## <a name="next-steps"></a>Volgende stappen
 

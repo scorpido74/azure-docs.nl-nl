@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
-ms.custom: aaddev
-ms.openlocfilehash: ab072fa53d3ecc3f856b6765acfb8c19da3ff298
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.custom: aaddev devx-track-js
+ms.openlocfilehash: 327280c193c3c2fb829e468bccfc352f35edfdb5
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442249"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92673503"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>Micro soft-verificatie bibliotheek voor Java script gebruiken om te werken met Azure AD B2C
 
@@ -56,7 +56,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 
 ### <a name="step-3-configure-authentication"></a>Stap 3: verificatie configureren
 
-1. Open het bestand `config.json` in het voorbeeld.
+1. Open de *config.js* in het bestand in het voor beeld.
 
 2. Configureer het voor beeld met de referenties van de toepassing die u eerder hebt verkregen tijdens het registreren van uw toepassing. Wijzig de volgende regels code door de waarden te vervangen door de naam van uw Tenant, de client-ID en de naam van het beleid.
 
@@ -169,7 +169,7 @@ Bij de volgende stappen wordt ervan uitgegaan dat u de stappen in de voor gaande
 
 ### <a name="step-2-catch-and-handle-authentication-errors-in-your-login-method"></a>Stap 2: authenticatie fouten in uw aanmeldings methode ondervangen en verwerken
 
-Wanneer een gebruiker een **verg eten wacht woord**selecteert, genereert uw toepassing een fout die u moet opvangen in uw code en gaat u vervolgens door met de juiste gebruikers stroom. In dit geval wordt de `b2c_1_reset` stroom voor het opnieuw instellen van het wacht woord.
+Wanneer een gebruiker een **verg eten wacht woord** selecteert, genereert uw toepassing een fout die u moet opvangen in uw code en gaat u vervolgens door met de juiste gebruikers stroom. In dit geval wordt de `b2c_1_reset` stroom voor het opnieuw instellen van het wacht woord.
 
 1. Breid uw aanmeldings methode als volgt uit:
 

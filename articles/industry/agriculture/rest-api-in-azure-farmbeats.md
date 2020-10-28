@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
-ms.openlocfilehash: f15bee7e802b04d04a3c87d7f84fc975b88bf260
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 292374bcce90da042dc6bd672feaad3750759aa9
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86536569"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674503"
 ---
 # <a name="azure-farmbeats-apis"></a>Azure FarmBeats-Api's
 
@@ -143,23 +143,23 @@ In dit voor beeld, wanneer een farm is gemaakt, is het verplichte veld ' naam ' 
 
 Azure FarmBeats-Api's kunnen worden gebruikt door een gebruiker of een app-registratie in Azure Active Directory. Voer de volgende stappen uit om een app-registratie te maken in Azure Active Directory:
 
-1. Ga naar de [Azure Portal](https://portal.azure.com)en selecteer **Azure Active Directory**  >  **app-registraties**  >  **nieuwe registratie**. U kunt ook een bestaand account gebruiken.
+1. Ga naar de [Azure Portal](https://portal.azure.com)en selecteer **Azure Active Directory**  >  **app-registraties**  >  **nieuwe registratie** . U kunt ook een bestaand account gebruiken.
 2. Ga als volgt te werk voor een nieuw account:
 
     - Voer een naam in.
-    - Selecteer **accounts in deze organisatie-Directory alleen (één Tenant)**.
+    - Selecteer **accounts in deze organisatie-Directory alleen (één Tenant)** .
     - Gebruik de standaard waarden in de rest van de velden.
-    - Selecteer **Registreren**.
+    - Selecteer **Registreren** .
 
 3. Ga als volgt te werk in het deel venster Nieuw en bestaand app-registratie **overzicht** :
 
-    - Leg de **client-id** en **Tenant-id**vast.
-    - Ga naar **certificaten en geheimen** om een nieuw client geheim te genereren en het **client geheim**vast te leggen.
-    - Ga terug naar **overzicht**en selecteer de koppeling naast **toepassing beheren in de lokale map**.
-    - Ga naar **Eigenschappen** om de **object-id**vast te leggen.
+    - Leg de **client-id** en **Tenant-id** vast.
+    - Ga naar **certificaten en geheimen** om een nieuw client geheim te genereren en het **client geheim** vast te leggen.
+    - Ga terug naar **overzicht** en selecteer de koppeling naast **toepassing beheren in de lokale map** .
+    - Ga naar **Eigenschappen** om de **object-id** vast te leggen.
 
 4. Ga naar uw Datahub Swagger (https:// <yourdatahub> . azurewebsites.net/swagger/index.html) en voer de volgende handelingen uit:
-    - Ga naar de **RoleAssignment-API**.
+    - Ga naar de **RoleAssignment-API** .
     - Voer een bericht uit om een **RoleAssignment** -object te maken voor de **object-id** die u zojuist hebt gemaakt.
  
 ```json
@@ -172,7 +172,7 @@ Azure FarmBeats-Api's kunnen worden gebruikt door een gebruiker of een app-regis
 ```
 
   > [!NOTE]
-  > Zie [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)voor meer informatie over het toevoegen van gebruikers en het registreren van Active Directory.
+  > Zie [Azure Active Directory](../../active-directory/develop/howto-create-service-principal-portal.md)voor meer informatie over het toevoegen van gebruikers en het registreren van Active Directory.
 
 Nadat u de vorige stappen hebt voltooid, kunt u met de app-registratie (client) de Azure FarmBeats-Api's aanroepen met behulp van een toegangs token via Bearer-verificatie.
 

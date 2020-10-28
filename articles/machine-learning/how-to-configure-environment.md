@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 66008012dd9b3eb6000e96f251d18cf14a9c8dc1
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: ee1753932018d0ea3a627ff2a6c7b85dc0a65de1
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495232"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674857"
 ---
 # <a name="set-up-a-development-environment-for-azure-machine-learning"></a>Een ontwikkel omgeving instellen voor Azure Machine Learning
 
@@ -43,7 +43,7 @@ Dit artikel bevat ook extra tips voor het gebruik van de volgende hulpprogram ma
 
 ### <a name="local-and-dsvm-only-create-a-workspace-configuration-file"></a><a id="workspace"></a> (Alleen lokaal en alleen DSVM) Een configuratie bestand voor een werk ruimte maken
 
-Het configuratie bestand van de werk ruimte is een JSON-bestand dat de SDK vertelt hoe er met uw Azure Machine Learning-werk ruimte moet worden gecommuniceerd. Het bestand heeft de naam *config.jsop*en heeft de volgende indeling:
+Het configuratie bestand van de werk ruimte is een JSON-bestand dat de SDK vertelt hoe er met uw Azure Machine Learning-werk ruimte moet worden gecommuniceerd. Het bestand heeft de naam *config.jsop* en heeft de volgende indeling:
 
 ```json
 {
@@ -53,7 +53,7 @@ Het configuratie bestand van de werk ruimte is een JSON-bestand dat de SDK verte
 }
 ```
 
-Dit JSON-bestand moet zich in de mapstructuur bevinden die uw python-scripts of Jupyter-notebooks bevat. Deze kan zich in dezelfde map bevindt, in een submap met de naam *. azureml*of in een bovenliggende map.
+Dit JSON-bestand moet zich in de mapstructuur bevinden die uw python-scripts of Jupyter-notebooks bevat. Deze kan zich in dezelfde map bevindt, in een submap met de naam *. azureml* of in een bovenliggende map.
 
 Als u dit bestand uit uw code wilt gebruiken, gebruikt u de- [`Workspace.from_config`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#from-config-path-none--auth-none---logger-none---file-name-none-&preserve-view=true) methode. Met deze code worden de gegevens uit het bestand geladen en wordt verbinding gemaakt met uw werk ruimte.
 
@@ -61,13 +61,13 @@ Maak een werkruimte configuratie bestand op een van de volgende manieren:
 
 * Azure Portal
 
-    **Down load het bestand**: In de [Azure Portal](https://ms.portal.azure.com)selecteert u  **config.jsdownloaden** in het gedeelte **overzicht** van uw werk ruimte.
+    **Down load het bestand** : In de [Azure Portal](https://ms.portal.azure.com)selecteert u  **config.jsdownloaden** in het gedeelte **overzicht** van uw werk ruimte.
 
     ![Azure Portal](./media/how-to-configure-environment/configure.png)
 
 * Azure Machine Learning python-SDK
 
-    Maak een script om verbinding te maken met uw Azure Machine Learning-werk ruimte en gebruik de [`write_config`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#write-config-path-none--file-name-none-&preserve-view=true) methode om uw bestand te genereren en op te slaan als *. azureml/config.jsop*. Zorg ervoor dat u `subscription_id` , `resource_group` en `workspace_name` met uw eigen vervangen.
+    Maak een script om verbinding te maken met uw Azure Machine Learning-werk ruimte en gebruik de [`write_config`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#write-config-path-none--file-name-none-&preserve-view=true) methode om uw bestand te genereren en op te slaan als *. azureml/config.jsop* . Zorg ervoor dat u `subscription_id` , `resource_group` en `workspace_name` met uw eigen vervangen.
 
     ```python
     from azureml.core import Workspace
@@ -122,7 +122,10 @@ Wanneer u een lokale Jupyter Notebook server uitvoert, is het raadzaam om een IP
 
 Raadpleeg de [opslag plaats Azure machine learning notitie blokken](https://github.com/Azure/MachineLearningNotebooks) om aan de slag te gaan met Azure machine learning-en Jupyter-notebooks.
 
-### <a name="visual-studio-code"></a><a id="vscode"></a>Visual Studio Code
+> [!NOTE]
+> Een door de Community aangedreven opslag plaats met voor beelden vindt u op https://github.com/Azure/azureml-examples .
+
+### <a name="visual-studio-code"></a><a id="vscode"></a>Visual Studio code
 
 Visual Studio code gebruiken voor ontwikkeling:
 
@@ -240,7 +243,7 @@ Wacht totdat het cluster wordt uitgevoerd voordat u doorgaat.
 
 Zodra het cluster wordt uitgevoerd, [maakt u een bibliotheek](https://docs.databricks.com/user-guide/libraries.html#create-a-library) om het juiste Azure machine learning SDK-pakket aan uw cluster toe te voegen. Voor automatische MILLILITERs slaat u de [sectie SDK voor Databricks met automatische machine learning](#sdk-for-databricks-with-automated-machine-learning)over.
 
-1. Klik met de rechter muisknop op de huidige werkruimte map waar u de bibliotheek wilt opslaan. Selecteer **Create**  >  **bibliotheek**maken.
+1. Klik met de rechter muisknop op de huidige werkruimte map waar u de bibliotheek wilt opslaan. Selecteer **Create**  >  **bibliotheek** maken.
 
 1. Kies de volgende optie (er worden geen andere SDK-installaties ondersteund)
 
@@ -251,15 +254,15 @@ Zodra het cluster wordt uitgevoerd, [maakt u een bibliotheek](https://docs.datab
    > [!Warning]
    > Er kunnen geen andere SDK-extra's worden geïnstalleerd. Kies alleen de `databricks` optie [].
 
-   * Selecteer niet **automatisch koppelen aan alle clusters**.
+   * Selecteer niet **automatisch koppelen aan alle clusters** .
    * Selecteer  **koppelen** naast de naam van uw cluster.
 
-1. Controleer op fouten totdat de status is gewijzigd in **bijgevoegd**. Dit kan enkele minuten duren.  Als deze stap mislukt:
+1. Controleer op fouten totdat de status is gewijzigd in **bijgevoegd** . Dit kan enkele minuten duren.  Als deze stap mislukt:
 
    Probeer het cluster opnieuw te starten door:
-   1. Selecteer **clusters**in het linkerdeel venster.
+   1. Selecteer **clusters** in het linkerdeel venster.
    1. Selecteer de naam van uw cluster in de tabel.
-   1. Selecteer **opnieuw opstarten**op het tabblad **tape wisselaars** .
+   1. Selecteer **opnieuw opstarten** op het tabblad **tape wisselaars** .
 
    Houd ook rekening met het volgende:
    + Bij het gebruik van Azure Databricks de volgende para meters toevoegen in AutoML config:

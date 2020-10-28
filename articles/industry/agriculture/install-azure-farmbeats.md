@@ -5,12 +5,12 @@ author: usha-rathnavel
 ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
-ms.openlocfilehash: 2535c05241c076e08f8f0f2ba9e2301fb353723e
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 5863dcc20fb13f1bb203c68ad168655371130601
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330475"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674562"
 ---
 # <a name="install-azure-farmbeats"></a>Azure FarmBeats installeren
 
@@ -18,9 +18,9 @@ In dit artikel wordt beschreven hoe u Azure FarmBeats installeert in uw Azure-ab
 
 Azure FarmBeats is een Business-to-business-aanbieding die beschikbaar is in Azure Marketplace. Hiermee kunnen aggregatie van agrarische gegevens sets worden verzameld over providers en kan er inzicht hebben in het genereren van actie bare inzichten. Azure FarmBeats doet dit door u in staat te stellen om modellen van kunst matige intelligentie (AI) of machine learning (ML) te bouwen op basis van gegevens sets met zekering. De twee belangrijkste onderdelen van Azure FarmBeats zijn:
 
-- **Datahub**: een API-laag die aggregatie, normalisatie en contextualization van verschillende agrarische gegevens sets in verschillende providers mogelijk maakt.
+- **Datahub** : een API-laag die aggregatie, normalisatie en contextualization van verschillende agrarische gegevens sets in verschillende providers mogelijk maakt.
 
-- **Accelerator**: Web-app die is gebouwd op Datahub. Het gaat hier om de ontwikkeling en visualisatie van uw model. De Accelerator maakt gebruik van Azure FarmBeats-Api's om de visualisatie van opgenomen sensor gegevens te demonstreren als grafieken en visualisatie van model uitvoer als kaarten.
+- **Accelerator** : Web-app die is gebouwd op Datahub. Het gaat hier om de ontwikkeling en visualisatie van uw model. De Accelerator maakt gebruik van Azure FarmBeats-Api's om de visualisatie van opgenomen sensor gegevens te demonstreren als grafieken en visualisatie van model uitvoer als kaarten.
 
 ## <a name="general-information"></a>Algemene informatie
 
@@ -57,7 +57,7 @@ De kosten van Azure FarmBeats zijn een samen vatting van de kosten van de onderl
 Momenteel wordt Azure FarmBeats ondersteund in open bare Cloud omgevingen in de volgende regio's:
 
 - Australië - oost
-- Central US
+- VS - centraal
 - VS - oost
 - VS - oost 2
 - VS - west
@@ -87,13 +87,13 @@ De eerste twee machtigingen zijn nodig voor [het maken van de procedure voor de 
 
 De persoon die de FarmBeats-installatie uitvoert vanuit Marketplace moet een eigenaar zijn van de resource groep waarin FarmBeats wordt geïnstalleerd. Voor abonnements eigenaren gebeurt dit automatisch wanneer de resource groep wordt gemaakt. Voor anderen maakt u eerst de resource groep en vraagt u de eigenaar van het abonnement om u een eigenaar van de resource groep te maken.
 
-U kunt uw toegangs machtigingen in de Azure Portal controleren door de instructies te volgen in [toegangs beheer op basis van rollen](https://docs.microsoft.com/azure/role-based-access-control/check-access).
+U kunt uw toegangs machtigingen in de Azure Portal controleren door de instructies te volgen in [toegangs beheer op basis van rollen](../../role-based-access-control/check-access.md).
 
 ### <a name="decide-subscription-and-region"></a>Abonnement en regio kiezen
 
 U hebt de Azure-abonnements-ID en de regio waar u Azure FarmBeats wilt installeren. Kies een van de regio's die worden vermeld in de sectie regio's die worden [ondersteund](#regions-supported) .
 
-Noteer de ID van het **Azure-abonnement** en de **Azure-regio**.
+Noteer de ID van het **Azure-abonnement** en de **Azure-regio** .
 
 ### <a name="create-an-aad-application"></a>Een AAD-toepassing maken
 
@@ -124,11 +124,11 @@ Voer de volgende stappen uit in een Cloud Shell-exemplaar met behulp van de Powe
 
 4. Het script vraagt om de volgende drie invoer:
 
-    - **FarmBeats-website naam**: dit is het unieke URL-voor voegsel voor uw FarmBeats-webtoepassing. Als het voor voegsel al wordt gemaakt, wordt er een fout opgetreden in het script. Na de installatie is uw FarmBeats-implementatie toegankelijk via https:// \<FarmBeats-website-name> . azurewebsites.net en zijn de Swagger-api's op https:// \<FarmBeats-website-name> -API.azurewebsites.net
+    - **FarmBeats-website naam** : dit is het unieke URL-voor voegsel voor uw FarmBeats-webtoepassing. Als het voor voegsel al wordt gemaakt, wordt er een fout opgetreden in het script. Na de installatie is uw FarmBeats-implementatie toegankelijk via https:// \<FarmBeats-website-name> . azurewebsites.net en zijn de Swagger-api's op https:// \<FarmBeats-website-name> -API.azurewebsites.net
 
-    - **Azure-aanmeldings-id**: Geef de Azure-aanmeldings-id op voor de gebruiker die u wilt toevoegen als beheerder van FarmBeats. Deze gebruiker kan vervolgens toegang tot FarmBeats-webtoepassing verlenen aan andere gebruikers. De aanmeldings-ID is in het algemeen van het formulier john.doe@domain.com . Azure UPN wordt ook ondersteund.
+    - **Azure-aanmeldings-id** : Geef de Azure-aanmeldings-id op voor de gebruiker die u wilt toevoegen als beheerder van FarmBeats. Deze gebruiker kan vervolgens toegang tot FarmBeats-webtoepassing verlenen aan andere gebruikers. De aanmeldings-ID is in het algemeen van het formulier john.doe@domain.com . Azure UPN wordt ook ondersteund.
 
-    - **Abonnements-id**: dit is de id van het abonnement waarin u Azure FarmBeats wilt installeren
+    - **Abonnements-id** : dit is de id van het abonnement waarin u Azure FarmBeats wilt installeren
 
 5. Het AAD-script duurt ongeveer twee minuten om waarden op het scherm uit te voeren en af te ronden op een JSON-bestand in dezelfde map. Als u iemand anders het script hebt uitgevoerd, vraagt u hen deze uitvoer met u te delen.
 
@@ -142,7 +142,7 @@ Volg de stappen voor het maken van een gratis account met Sentinel:
 2. Geef de vereiste gegevens op (voor naam, achternaam, gebruikers naam, wacht woord en e-mail-ID) en vul het formulier in.
 3. Er wordt een verificatie koppeling naar de geregistreerde e-mail-ID verzonden. Selecteer de koppeling die in het e-mail bericht wordt gegeven en voltooi de verificatie.
 
-Het registratie proces is voltooid. Noteer uw **Sentinel-gebruikers naam** en **verklikker wachtwoord**wanneer de verificatie ook is voltooid.
+Het registratie proces is voltooid. Noteer uw **Sentinel-gebruikers naam** en **verklikker wachtwoord** wanneer de verificatie ook is voltooid.
 
 ## <a name="install"></a>Installeren
 
@@ -152,7 +152,7 @@ U bent nu klaar om FarmBeats te installeren. Volg de onderstaande stappen om de 
 
 2. Ga in de portal naar Azure Marketplace en zoek naar **Azure FarmBeats** in de Marketplace.
 
-3. Er wordt een nieuw venster met een overzicht van Azure FarmBeats weer gegeven. Selecteer **Maken**.
+3. Er wordt een nieuw venster met een overzicht van Azure FarmBeats weer gegeven. Selecteer **Maken** .
 
 4. Een nieuw venster wordt weergegeven. Voltooi het registratie proces door het juiste abonnement, de resource groep en de locatie te kiezen waarop u Azure FarmBeats wilt installeren.
 
@@ -166,7 +166,7 @@ U bent nu klaar om FarmBeats te installeren. Volg de onderstaande stappen om de 
 
     ![Tabblad Afhankelijkheden](./media/install-azure-farmbeats/create-azure-farmbeats-dependencies.png)
 
-8. Zodra de ingevoerde gegevens zijn gevalideerd, selecteert u **OK**. De pagina Gebruiksvoorwaarden wordt weer gegeven. Bekijk de voor waarden en selecteer **maken** om de installatie te starten. U wordt omgeleid naar de pagina waar u de voortgang van de installatie kunt volgen.
+8. Zodra de ingevoerde gegevens zijn gevalideerd, selecteert u **OK** . De pagina Gebruiksvoorwaarden wordt weer gegeven. Bekijk de voor waarden en selecteer **maken** om de installatie te starten. U wordt omgeleid naar de pagina waar u de voortgang van de installatie kunt volgen.
 
 Nadat de installatie is voltooid, kunt u de installatie controleren en de FarmBeats-portal gaan gebruiken door te navigeren naar de naam van de website die u tijdens de installatie hebt ingesteld: https:// \<FarmBeats-website-name> . azurewebsites.net. U ziet de FarmBeats-gebruikers interface met een optie voor het maken van farms.
 

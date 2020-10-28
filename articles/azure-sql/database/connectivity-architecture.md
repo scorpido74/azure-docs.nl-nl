@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 06/26/2020
-ms.openlocfilehash: 711d1cfccb6cdfe4a2fcb48a8ada7b33f744c317
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d0242ceec62db6548d91e5e58c21981a4f0246a0
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479082"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672508"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Azure SQL Database-en Azure Synapse Analytics-connectiviteits architectuur
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "92479082"
 In dit artikel wordt de architectuur van verschillende onderdelen beschreven die het netwerk verkeer naar een server in Azure SQL Database of Azure Synapse Analytics omleiden. Er wordt ook uitgelegd dat er verschillende verbindings beleidsregels zijn en hoe deze invloed heeft op clients die verbinding maken vanuit Azure en clients die verbinding maken van buiten Azure.
 
 > [!IMPORTANT]
-> Dit artikel is *niet* van toepassing op **Azure SQL Managed Instance**. Raadpleeg [de verbindings architectuur voor een beheerd exemplaar](../managed-instance/connectivity-architecture-overview.md).
+> Dit artikel is *niet* van toepassing op **Azure SQL Managed Instance** . Raadpleeg [de verbindings architectuur voor een beheerd exemplaar](../managed-instance/connectivity-architecture-overview.md).
 
 ## <a name="connectivity-architecture"></a>Connectiviteitsarchitectuur
 
@@ -51,7 +51,7 @@ Servers in SQL Database en Azure Synapse ondersteunen de volgende drie opties vo
 
 - **Standaard:** Dit is het verbindings beleid dat wordt toegepast op alle servers na het maken, tenzij u het verbindings beleid expliciet wijzigt naar ofwel `Proxy` of `Redirect` . Het standaard beleid is `Redirect` voor alle client verbindingen die afkomstig zijn van Azure (bijvoorbeeld van een virtuele machine van Azure) en `Proxy` voor alle client verbindingen die afkomstig zijn van buiten (bijvoorbeeld verbindingen van uw lokale werk station).
 
-Het is raadzaam `Redirect` om het verbindings beleid `Proxy` voor de laagste latentie en de hoogste door Voer uit te voeren via het verbindings beleid. U moet echter wel voldoen aan de aanvullende vereisten voor het toestaan van netwerk verkeer zoals hierboven wordt beschreven. Als de client een virtuele machine van Azure is, kunt u dit doen met behulp van netwerk beveiligings groepen (NSG) met [service Tags](../../virtual-network/security-overview.md#service-tags). Als de client verbinding maakt met behulp van een on-premises werk station, moet u mogelijk samen werken met uw netwerk beheerder om netwerk verkeer via uw bedrijfs firewall toe te staan.
+Het is raadzaam `Redirect` om het verbindings beleid `Proxy` voor de laagste latentie en de hoogste door Voer uit te voeren via het verbindings beleid. U moet echter wel voldoen aan de aanvullende vereisten voor het toestaan van netwerk verkeer zoals hierboven wordt beschreven. Als de client een virtuele machine van Azure is, kunt u dit doen met behulp van netwerk beveiligings groepen (NSG) met [service Tags](../../virtual-network/network-security-groups-overview.md#service-tags). Als de client verbinding maakt met behulp van een on-premises werk station, moet u mogelijk samen werken met uw netwerk beheerder om netwerk verkeer via uw bedrijfs firewall toe te staan.
 
 ## <a name="connectivity-from-within-azure"></a>Connectiviteit vanuit Azure
 
@@ -66,7 +66,7 @@ Als u verbinding maakt vanuit buiten Azure, hebben uw verbindingen standaard een
 ![Diagram dat laat zien hoe de TCP-sessie tot stand is gebracht via de Azure SQL Database gateway en dat alle volgende pakketten via de gateway stromen.](./media/connectivity-architecture/connectivity-onprem.png)
 
 > [!IMPORTANT]
-> Daarnaast open TCP-poorten 1434 en 14000-14999 om [verbinding te maken met DAC](https://docs.microsoft.com/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac)
+> Daarnaast open TCP-poorten 1434 en 14000-14999 om [verbinding te maken met DAC](/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac)
 
 ## <a name="gateway-ip-addresses"></a>IP-adressen van Gateway
 
@@ -80,17 +80,17 @@ Meer informatie over hoe verkeer moet worden gemigreerd naar nieuwe gateways in 
 | Australië-Central2   | 20.36.113.0 |
 | Australië - oost       | 13.75.149.87, 40.79.161.1, 13.70.112.9 |
 | Australië - zuidoost | 191.239.192.109, 13.73.109.251, 13.77.48.10 |
-| Brazil South         | 104.41.11.5, 191.233.200.14 |
+| Brazilië - zuid         | 104.41.11.5, 191.233.200.14 |
 | Canada - midden       | 40.85.224.249, 52.246.152.0, 20.38.144.1 |
 | Canada - oost          | 40.86.226.166, 52.242.30.154 |
-| Central US           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 |
+| VS - centraal           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 |
 | China East           | 139.219.130.35     |
 | China - oost 2         | 40.73.82.1         |
 | China - noord          | 139.219.15.17      |
 | China - noord 2        | 40.73.50.0         |
 | Azië - oost            | 191.234.2.139, 52.175.33.150, 13.75.32.4 |
 | VS - oost              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
-| US - oost 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0, 191.239.224.107, 104.208.150.3 |
+| VS - oost 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0, 191.239.224.107, 104.208.150.3 |
 | Frankrijk - centraal       | 40.79.137.0, 40.79.129.1 |
 | Duitsland - centraal      | 51.4.144.100       |
 | Duitsland-noord Oost   | 51.5.144.179       |
@@ -108,7 +108,7 @@ Meer informatie over hoe verkeer moet worden gemigreerd naar nieuwe gateways in 
 | Noorwegen - west          | 51.120.216.0       |
 | Zuid-Afrika - noord   | 102.133.152.0, 102.133.120.2       |
 | Zuid-Afrika - west    | 102.133.24.0       |
-| South Central US     | 13.66.62.124, 23.98.162.75, 104.214.16.32, 20.45.121.1, 20.49.88.1   |
+| VS - zuid-centraal     | 13.66.62.124, 23.98.162.75, 104.214.16.32, 20.45.121.1, 20.49.88.1   |
 | Azië - zuidoost      | 104.43.15.0, 23.100.117.95, 40.78.232.3   |
 | Zwitserland - noord    | 51.107.56.0, 51.107.57.0 |
 | Zwitserland - west     | 51.107.152.0, 51.107.153.0 |
@@ -124,6 +124,6 @@ Meer informatie over hoe verkeer moet worden gemigreerd naar nieuwe gateways in 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie voor meer informatie over het wijzigen van het Azure SQL Database verbindings beleid voor een-server verbinding [-beleid](https://docs.microsoft.com/cli/azure/sql/server/conn-policy).
+- Zie voor meer informatie over het wijzigen van het Azure SQL Database verbindings beleid voor een-server verbinding [-beleid](/cli/azure/sql/server/conn-policy).
 - Voor informatie over Azure SQL Database verbindings gedrag voor clients die gebruikmaken van ADO.NET 4,5 of een latere versie, Zie [poorten na 1433 voor ADO.NET 4,5](adonet-v12-develop-direct-route-ports.md).
 - Zie [SQL database Application Development Overview (overzicht van toepassings ontwikkeling](develop-overview.md)) voor algemene informatie over het ontwikkelen van toepassingen.

@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 5ddc79721355924f125acedd7420cab5f487c065
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71c73fec4f559b34b097556243617636acd77480
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445040"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92673263"
 ---
 # <a name="tutorial-configure-active-geo-replication-and-failover-in-the-azure-portal-azure-sql-database"></a>Zelfstudie: Actieve geo-replicatie en failover configureren in de Azure-portal (Azure SQL Database)
 
@@ -35,7 +35,7 @@ Om actieve geo-replicatie met de Azure-portal te configureren, hebt u de volgend
 * Een database in Azure SQL Database: de primaire database die u wilt repliceren naar een andere geografische regio.
 
 > [!Note]
-> Als u Azure Portal gebruikt, kunt u een secundaire database alleen maken in hetzelfde abonnement als de primaire database. Als een secundaire database in een ander abonnement moet worden gemaakt, gebruik dan [Create Database REST API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) of [ALTER DATABASE Transact-SQL API](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql).
+> Als u Azure Portal gebruikt, kunt u een secundaire database alleen maken in hetzelfde abonnement als de primaire database. Als een secundaire database in een ander abonnement moet worden gemaakt, gebruik dan [Create Database REST API](/rest/api/sql/databases/createorupdate) of [ALTER DATABASE Transact-SQL API](/sql/t-sql/statements/alter-database-transact-sql).
 
 ## <a name="add-a-secondary-database"></a>Een secundaire database toevoegen
 
@@ -70,8 +70,8 @@ Nadat de secundaire database is gemaakt en geseed, worden er gegevens gereplicee
 U kunt van de secundaire database een primaire database maken.  
 
 1. Blader in de [Azure-portal](https://portal.azure.com) naar de primaire database in het geo-replicatie-partnerschap.
-2. Selecteer op de blade SQL Database **Alle instellingen** > **Geo-replicatie**.
-3. Selecteer in de lijst **SECUNDAIRE DATABASES** de database waarvan u wilt dat deze de nieuwe primaire database wordt en klik op **Geforceerde failover**.
+2. Selecteer op de blade SQL Database **Alle instellingen** > **Geo-replicatie** .
+3. Selecteer in de lijst **SECUNDAIRE DATABASES** de database waarvan u wilt dat deze de nieuwe primaire database wordt en klik op **Geforceerde failover** .
 
     ![failover](./media/active-geo-replication-configure-portal/secondaries.png)
 4. Klik op **Ja** om de failover te starten.
@@ -88,9 +88,9 @@ Terwijl de rollen worden omgewisseld, is er een korte periode (van 0 tot 25 seco
 Met deze bewerking wordt de replicatie naar de secundaire database permanent beëindigd en wordt de rol van de secundaire database gewijzigd in die van een normale lezen-schrijven-database. Als de verbinding met de secundaire database is verbroken, wordt de opdracht uitgevoerd, maar de secundaire database wordt pas een lezen-schrijven-database wanneer de verbinding is hersteld.  
 
 1. Blader in de [Azure-portal](https://portal.azure.com) naar de primaire database in het geo-replicatie-partnerschap.
-2. Selecteer op de pagina SQL database **Geo-replicatie**.
+2. Selecteer op de pagina SQL database **Geo-replicatie** .
 3. Selecteer in de lijst **SECUNDAIRE DATABASES** de database die u wilt verwijderen uit het geo-replicatie-partnerschap.
-4. Klik op **Replicatie stoppen**.
+4. Klik op **Replicatie stoppen** .
 
     ![Secundaire database verwijderen](./media/active-geo-replication-configure-portal/remove-secondary.png)
 5. Er wordt een bevestigingsvenster geopend. Klik op **Ja** om de database uit het geo-replicatie-partnerschap te verwijderen. (Stel de database in als een lezen-schrijven-database die geen deel uitmaakt van een replicatie.)

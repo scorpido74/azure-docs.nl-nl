@@ -12,28 +12,28 @@ author: VanMSFT
 ms.author: vanto
 ms.reviwer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: a966579e1acc02f1479c41520dcbbc58d420647c
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 60dea826a12ea475806adb6db88faa88e26463a1
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164513"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674831"
 ---
 # <a name="configure-always-encrypted-by-using-the-windows-certificate-store"></a>Always Encrypted configureren met behulp van het Windows-certificaat archief
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-In dit artikel wordt beschreven hoe u met behulp van de [wizard always encrypted](/sql/relational-databases/security/encryption/always-encrypted-wizard) in [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx)gevoelige gegevens in Azure SQL database of Azure SQL Managed Instance kunt beveiligen met database versleuteling. U ziet ook hoe u de versleutelings sleutels opslaat in het Windows-certificaat archief.
+In dit artikel wordt beschreven hoe u met behulp van de [wizard always encrypted](/sql/relational-databases/security/encryption/always-encrypted-wizard) in [SQL Server Management Studio (SSMS)](/sql/ssms/sql-server-management-studio-ssms)gevoelige gegevens in Azure SQL database of Azure SQL Managed Instance kunt beveiligen met database versleuteling. U ziet ook hoe u de versleutelings sleutels opslaat in het Windows-certificaat archief.
 
-Always Encrypted is een technologie voor gegevens versleuteling waarmee gevoelige gegevens in rust op de server worden beschermd tijdens het verkeer tussen de client en de server, terwijl de gegevens in gebruik zijn, zodat gevoelige gegevens nooit als tekst zonder opmaak in het database systeem worden weer gegeven. Nadat u gegevens hebt versleuteld, hebben alleen client toepassingen of app-servers die toegang hebben tot de sleutels toegang tot tekst zonder opmaak. Zie [Always encrypted (data base-engine)](https://msdn.microsoft.com/library/mt163865.aspx)voor meer informatie.
+Always Encrypted is een technologie voor gegevens versleuteling waarmee gevoelige gegevens in rust op de server worden beschermd tijdens het verkeer tussen de client en de server, terwijl de gegevens in gebruik zijn, zodat gevoelige gegevens nooit als tekst zonder opmaak in het database systeem worden weer gegeven. Nadat u gegevens hebt versleuteld, hebben alleen client toepassingen of app-servers die toegang hebben tot de sleutels toegang tot tekst zonder opmaak. Zie [Always encrypted (data base-engine)](/sql/relational-databases/security/encryption/always-encrypted-database-engine)voor meer informatie.
 
 Nadat u de Data Base hebt geconfigureerd voor het gebruik van Always Encrypted, maakt u met Visual Studio een client toepassing in C# om met de versleutelde gegevens te werken.
 
 Volg de stappen in dit artikel voor meer informatie over het instellen van Always Encrypted voor SQL Database of SQL Managed instance. In dit artikel wordt beschreven hoe u de volgende taken uitvoert:
 
-* Gebruik de wizard Always Encrypted in SSMS om [Always encrypted sleutels](https://msdn.microsoft.com/library/mt163865.aspx#Anchor_3)te maken.
-  * Maak een [hoofd sleutel voor een kolom (CMK)](https://msdn.microsoft.com/library/mt146393.aspx).
-  * Maak een [kolom versleutelings sleutel (CEK)](https://msdn.microsoft.com/library/mt146372.aspx).
+* Gebruik de wizard Always Encrypted in SSMS om [Always encrypted sleutels](/sql/relational-databases/security/encryption/always-encrypted-database-engine#Anchor_3)te maken.
+  * Maak een [hoofd sleutel voor een kolom (CMK)](/sql/t-sql/statements/create-column-master-key-transact-sql).
+  * Maak een [kolom versleutelings sleutel (CEK)](/sql/t-sql/statements/create-column-encryption-key-transact-sql).
 * Een database tabel maken en kolommen versleutelen.
 * Een toepassing maken waarmee gegevens uit de versleutelde kolommen worden ingevoegd, geselecteerd en weer gegeven.
 
@@ -43,15 +43,15 @@ Voor deze zelf studie hebt u het volgende nodig:
 
 * Een Azure-account en -abonnement. Als u er nog geen hebt, kunt u zich aanmelden voor een [gratis proef versie](https://azure.microsoft.com/pricing/free-trial/).
 - Een data base in [Azure SQL database](single-database-create-quickstart.md) of [Azure SQL Managed instance](../managed-instance/instance-create-quickstart.md).
-* [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) versie 13.0.700.242 of hoger.
-* [.NET Framework 4,6](https://msdn.microsoft.com/library/w0x726c2.aspx) of hoger (op de client computer).
+* [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) versie 13.0.700.242 of hoger.
+* [.NET Framework 4,6](/dotnet/framework/) of hoger (op de client computer).
 * [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
 
 ## <a name="enable-client-application-access"></a>Toegang tot client toepassingen inschakelen
 
 U moet uw client toepassing inschakelen voor toegang tot SQL Database of SQL Managed instance door een Azure Active Directory-toepassing (AAD) in te stellen en de *toepassings-id en-* *sleutel* te kopiëren die u nodig hebt om uw toepassing te verifiëren.
 
-Als u de *toepassings-id en-* *sleutel*wilt ophalen, volgt u de stappen in [Create a Azure Active Directory-toepassing en service-principal die toegang heeft tot resources](../../active-directory/develop/howto-create-service-principal-portal.md).
+Als u de *toepassings-id en-* *sleutel* wilt ophalen, volgt u de stappen in [Create a Azure Active Directory-toepassing en service-principal die toegang heeft tot resources](../../active-directory/develop/howto-create-service-principal-portal.md).
 
 
 
@@ -70,8 +70,8 @@ Als het venster **nieuwe firewall regel** wordt geopend, meldt u zich aan bij Az
 
 In deze sectie maakt u een tabel om patiënten-gegevens op te slaan. Dit is in eerste instantie een normale tabel--u configureert de versleuteling in de volgende sectie.
 
-1. Vouw **data bases**uit.
-2. Klik met de rechter muisknop op de **Clinic** -data base en klik op **nieuwe query**.
+1. Vouw **data bases** uit.
+2. Klik met de rechter muisknop op de **Clinic** -data base en klik op **nieuwe query** .
 3. Plak de volgende Transact-SQL (T-SQL) in het nieuwe query venster en **Voer** dit uit.
     
     ```tsql
@@ -94,20 +94,20 @@ In deze sectie maakt u een tabel om patiënten-gegevens op te slaan. Dit is in e
 
 SSMS biedt een wizard waarmee u Always Encrypted eenvoudig kunt configureren door de kolommen CMK, CEK en encrypted voor u in te stellen.
 
-1. Vouw **data bases**  >  **Clinic**-  >  **tabellen**uit.
+1. Vouw **data bases**  >  **Clinic** -  >  **tabellen** uit.
 2. Klik met de rechter muisknop op de tabel **patiënten** en selecteer **kolommen versleutelen** om de wizard always encrypted te openen:
 
     ![Scherm opname van de versleutelings Colunns... menu optie in de tabel patiënten.](./media/always-encrypted-certificate-store-configure/encrypt-columns.png)
 
-De wizard Always Encrypted bevat de volgende secties: **kolom selectie**, **configuratie van de hoofd sleutel** (CMK), **validatie**en **samen vatting**.
+De wizard Always Encrypted bevat de volgende secties: **kolom selectie** , **configuratie van de hoofd sleutel** (CMK), **validatie** en **samen vatting** .
 
 ### <a name="column-selection"></a>Kolom selectie
 
-Klik op **volgende** op de pagina **Inleiding** om de pagina **kolom selectie** te openen. Op deze pagina selecteert u de kolommen die u wilt versleutelen, [het type versleuteling en welke kolom versleutelings sleutel (CEK)](https://msdn.microsoft.com/library/mt459280.aspx#Anchor_2) u wilt gebruiken.
+Klik op **volgende** op de pagina **Inleiding** om de pagina **kolom selectie** te openen. Op deze pagina selecteert u de kolommen die u wilt versleutelen, [het type versleuteling en welke kolom versleutelings sleutel (CEK)](/sql/relational-databases/security/encryption/always-encrypted-wizard#Anchor_2) u wilt gebruiken.
 
 Gegevens van **SSN** en **geboorte datum** versleutelen voor elke patiënt. De kolom **SSN** maakt gebruik van deterministische versleuteling, die ondersteuning biedt voor treffers, samen voegingen en Group by. In de kolom **geboorte datum** wordt wille keurige versleuteling gebruikt, die geen ondersteuning biedt voor bewerkingen.
 
-Stel het **versleutelings type** voor de kolom **SSN** in op **deterministisch** en de kolom **geboorte datum** in **wille keurige volg orde**. Klik op **Volgende**.
+Stel het **versleutelings type** voor de kolom **SSN** in op **deterministisch** en de kolom **geboorte datum** in **wille keurige volg orde** . Klik op **Volgende** .
 
 ![Kolommen versleutelen](./media/always-encrypted-certificate-store-configure/column-selection.png)
 
@@ -115,13 +115,13 @@ Stel het **versleutelings type** voor de kolom **SSN** in op **deterministisch**
 
 Op de pagina **hoofd sleutel configuratie** kunt u uw CMK instellen en de sleutel archief provider selecteren waar de CMK worden opgeslagen. Op dit moment kunt u een CMK opslaan in het Windows-certificaat archief, Azure Key Vault of een Hardware Security module (HSM). Deze zelf studie laat zien hoe u uw sleutels opslaat in het Windows-certificaat archief.
 
-Controleer of **Windows-certificaat archief** is geselecteerd en klik op **volgende**.
+Controleer of **Windows-certificaat archief** is geselecteerd en klik op **volgende** .
 
 ![Configuratie van hoofd sleutel](./media/always-encrypted-certificate-store-configure/master-key-configuration.png)
 
 ### <a name="validation"></a>Validatie
 
-U kunt de kolommen nu versleutelen of een Power shell-script opslaan om het later uit te voeren. Voor deze zelf studie selecteert u **nu door gaan naar volt ooien** en klikt u op **volgende**.
+U kunt de kolommen nu versleutelen of een Power shell-script opslaan om het later uit te voeren. Voor deze zelf studie selecteert u **nu door gaan naar volt ooien** en klikt u op **volgende** .
 
 ### <a name="summary"></a>Samenvatting
 
@@ -137,17 +137,17 @@ Nadat de wizard is voltooid, is de data base ingesteld op Always Encrypted. De w
 * Er is een CEK gemaakt.
 * De geselecteerde kolommen voor versleuteling zijn geconfigureerd. De tabel **patiënten** bevat momenteel geen gegevens, maar alle bestaande gegevens in de geselecteerde kolommen zijn nu versleuteld.
 
-U kunt het maken van de sleutels in SSMS controleren door naar de **Clinic**  >  **Security**  >  **Always encrypted Keys**te gaan. U kunt nu de nieuwe sleutels zien die de wizard voor u heeft gegenereerd.
+U kunt het maken van de sleutels in SSMS controleren door naar de **Clinic**  >  **Security**  >  **Always encrypted Keys** te gaan. U kunt nu de nieuwe sleutels zien die de wizard voor u heeft gegenereerd.
 
 ## <a name="create-a-client-application-that-works-with-the-encrypted-data"></a>Een client toepassing maken die werkt met de versleutelde gegevens
 
 Nu Always Encrypted is ingesteld, kunt u een toepassing bouwen waarmee de versleutelde kolommen worden *ingevoegd* en *geselecteerd* . Als u de voorbeeld toepassing wilt uitvoeren, moet u deze uitvoeren op dezelfde computer als waarop u de Always Encrypted wizard hebt uitgevoerd. Als u de toepassing wilt uitvoeren op een andere computer, moet u uw Always Encrypted-certificaten implementeren op de computer waarop de client-app wordt uitgevoerd.  
 
 > [!IMPORTANT]
-> Uw toepassing moet [SqlParameter](https://msdn.microsoft.com/library/system.data.sqlclient.sqlparameter.aspx) -objecten gebruiken bij het door geven van ongecodeerde gegevens naar de server met Always encrypted-kolommen. Het door geven van letterlijke waarden zonder gebruik te maken van SqlParameter-objecten leidt tot een uitzonde ring.
+> Uw toepassing moet [SqlParameter](/dotnet/api/system.data.sqlclient.sqlparameter) -objecten gebruiken bij het door geven van ongecodeerde gegevens naar de server met Always encrypted-kolommen. Het door geven van letterlijke waarden zonder gebruik te maken van SqlParameter-objecten leidt tot een uitzonde ring.
 
 1. Open Visual Studio en maak een nieuwe C#-console toepassing. Zorg ervoor dat uw project is ingesteld op **.NET Framework 4,6** of hoger.
-2. Geef het project de naam **AlwaysEncryptedConsoleApp** en klik op **OK**.
+2. Geef het project de naam **AlwaysEncryptedConsoleApp** en klik op **OK** .
 
 ![Scherm afbeelding met het nieuwe benoemde AlwaysEncryptedConsoleApp-project.](./media/always-encrypted-certificate-store-configure/console-app.png)
 
@@ -155,9 +155,9 @@ Nu Always Encrypted is ingesteld, kunt u een toepassing bouwen waarmee de versle
 
 In deze sectie wordt uitgelegd hoe u Always Encrypted in uw data base inschakelt connection string. U wijzigt de console-app die u zojuist hebt gemaakt in de volgende sectie, ' Always Encrypted voorbeeld console toepassing '.
 
-Als u Always Encrypted wilt inschakelen, moet u het tref woord voor de **kolom versleutelings instelling** toevoegen aan de Connection String en instellen op **ingeschakeld**.
+Als u Always Encrypted wilt inschakelen, moet u het tref woord voor de **kolom versleutelings instelling** toevoegen aan de Connection String en instellen op **ingeschakeld** .
 
-U kunt dit rechtstreeks in het connection string instellen of u kunt het instellen met behulp van een [SqlConnectionStringBuilder](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.aspx). De voorbeeld toepassing in de volgende sectie laat zien hoe u **SqlConnectionStringBuilder**kunt gebruiken.
+U kunt dit rechtstreeks in het connection string instellen of u kunt het instellen met behulp van een [SqlConnectionStringBuilder](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder). De voorbeeld toepassing in de volgende sectie laat zien hoe u **SqlConnectionStringBuilder** kunt gebruiken.
 
 > [!NOTE]
 > Dit is de enige wijziging vereist in een client toepassing die specifiek is voor Always Encrypted. Als u een bestaande toepassing hebt die de connection string extern opslaat (dat wil zeggen, in een configuratie bestand), kunt u Always Encrypted mogelijk maken zonder dat u code hoeft te wijzigen.
@@ -170,7 +170,7 @@ Voeg het volgende tref woord toe aan uw connection string:
 
 ### <a name="enable-always-encrypted-with-a-sqlconnectionstringbuilder"></a>Always Encrypted met een SqlConnectionStringBuilder inschakelen
 
-De volgende code laat zien hoe u Always Encrypted inschakelt door de [SqlConnectionStringBuilder. ColumnEncryptionSetting](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.columnencryptionsetting.aspx) in te stellen op [ingeschakeld](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectioncolumnencryptionsetting.aspx).
+De volgende code laat zien hoe u Always Encrypted inschakelt door de [SqlConnectionStringBuilder. ColumnEncryptionSetting](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.columnencryptionsetting) in te stellen op [ingeschakeld](/dotnet/api/system.data.sqlclient.sqlconnectioncolumnencryptionsetting).
 
 ```csharp
 // Instantiate a SqlConnectionStringBuilder.
@@ -514,9 +514,9 @@ U kunt zien dat de versleutelde kolommen geen lees bare gegevens bevatten.
 
 Als u SSMS wilt gebruiken om toegang te krijgen tot de Lees bare gegevens, kunt u de para meter voor **kolom versleutelings instelling = ingeschakeld** toevoegen aan de verbinding.
 
-1. Klik in SSMS met de rechter muisknop op uw server in **objectverkenner**en klik vervolgens op **verbinding verbreken**.
-2. Klik op **Connect**  >  **Data base-engine** verbinden om het venster **verbinding maken met server** te openen en klik vervolgens op **Opties**.
-3. Klik op **extra verbindings parameters** en type **kolom versleutelings instelling = ingeschakeld**.
+1. Klik in SSMS met de rechter muisknop op uw server in **objectverkenner** en klik vervolgens op **verbinding verbreken** .
+2. Klik op **Connect**  >  **Data base-engine** verbinden om het venster **verbinding maken met server** te openen en klik vervolgens op **Opties** .
+3. Klik op **extra verbindings parameters** en type **kolom versleutelings instelling = ingeschakeld** .
 
     ![Scherm opname van het tabblad Extra verbindings parameters met kolom versleutelings instelling = ingeschakeld in het vak.](./media/always-encrypted-certificate-store-configure/ssms-connection-parameter.png)
 4. Voer de volgende query uit op de **Clinic** -data base.
@@ -537,14 +537,14 @@ Als u SSMS wilt gebruiken om toegang te krijgen tot de Lees bare gegevens, kunt 
 Nadat u een Data Base hebt gemaakt die gebruikmaakt van Always Encrypted, kunt u het volgende doen:
 
 * Voer dit voor beeld uit vanaf een andere computer. Het heeft geen toegang tot de versleutelings sleutels, dus heeft geen toegang tot de niet-gecodeerde gegevens en kan niet worden uitgevoerd.
-* [Uw sleutels draaien en opschonen](https://msdn.microsoft.com/library/mt607048.aspx).
-* [Migreer gegevens die al zijn versleuteld met Always encrypted](https://msdn.microsoft.com/library/mt621539.aspx).
-* [Implementeer always encrypted certificaten op andere client computers](https://msdn.microsoft.com/library/mt723359.aspx#Anchor_1) (Zie de sectie ' certificaten beschikbaar maken voor toepassingen en gebruikers ').
+* [Uw sleutels draaien en opschonen](/sql/relational-databases/security/encryption/configure-always-encrypted-using-sql-server-management-studio).
+* [Migreer gegevens die al zijn versleuteld met Always encrypted](/sql/relational-databases/security/encryption/migrate-sensitive-data-protected-by-always-encrypted).
+* [Implementeer always encrypted certificaten op andere client computers](/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted#Anchor_1) (Zie de sectie ' certificaten beschikbaar maken voor toepassingen en gebruikers ').
 
 ## <a name="related-information"></a>Gerelateerde informatie
 
-* [Always Encrypted (client ontwikkeling)](https://msdn.microsoft.com/library/mt147923.aspx)
-* [Transparante gegevensversleuteling](https://msdn.microsoft.com/library/bb934049.aspx)
-* [Versleuteling SQL Server](https://msdn.microsoft.com/library/bb510663.aspx)
-* [Wizard Always Encrypted](https://msdn.microsoft.com/library/mt459280.aspx)
-* [Always Encrypted blog](https://docs.microsoft.com/archive/blogs/sqlsecurity/always-encrypted-key-metadata)
+* [Always Encrypted (client ontwikkeling)](/sql/relational-databases/security/encryption/always-encrypted-client-development)
+* [Transparante gegevensversleuteling](/sql/relational-databases/security/encryption/transparent-data-encryption)
+* [Versleuteling SQL Server](/sql/relational-databases/security/encryption/sql-server-encryption)
+* [Wizard Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-wizard)
+* [Always Encrypted blog](/archive/blogs/sqlsecurity/always-encrypted-key-metadata)

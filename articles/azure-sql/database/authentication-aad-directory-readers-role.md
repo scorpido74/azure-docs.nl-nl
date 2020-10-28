@@ -9,19 +9,19 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: 0f9b6e0250acb53899ab0443a62db7c9cc51f992
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 2374b1fb7f355b336c713a8a3240eacc8b1f188c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370097"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675065"
 ---
 # <a name="directory-readers-role-in-azure-active-directory-for-azure-sql"></a>Rol Directory Readers in Azure Active Directory voor Azure SQL
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 > [!NOTE]
-> Deze functie in dit artikel is beschikbaar als **open bare preview**.
+> Deze functie in dit artikel is beschikbaar als **open bare preview** .
 
 Azure Active Directory (Azure AD) heeft [het gebruik van Cloud groepen geïntroduceerd om roltoewijzingen in azure Active Directory (preview-versie) te beheren](../../active-directory/roles/groups-concept.md). Hierdoor kunnen Azure AD-rollen worden toegewezen aan groepen.
 
@@ -31,7 +31,7 @@ De functie voor het **lezers van mappen** is nodig voor het volgende:
 
 - Azure AD-aanmeldingen voor SQL Managed instance maken
 - Azure AD-gebruikers imiteren in Azure SQL
-- Migreer SQL Server gebruikers die gebruikmaken van Windows-verificatie naar een SQL Managed instance met Azure AD-verificatie (met behulp van de opdracht [Alter User (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-mi-current#d-map-the-user-in-the-database-to-an-azure-ad-login-after-migration) )
+- Migreer SQL Server gebruikers die gebruikmaken van Windows-verificatie naar een SQL Managed instance met Azure AD-verificatie (met behulp van de opdracht [Alter User (Transact-SQL)](/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-mi-current#d-map-the-user-in-the-database-to-an-azure-ad-login-after-migration) )
 - De Azure AD-beheerder voor het beheerde exemplaar van SQL wijzigen
 - [Service-principals (toepassingen)](authentication-aad-service-principal.md) toestaan om Azure AD-gebruikers te maken in Azure SQL
 
@@ -45,7 +45,7 @@ Het is niet vereist de rol **Directory Readers** toe te wijzen aan de serveriden
 
 ## <a name="granting-the-directory-readers-role-to-an-azure-ad-group"></a>De rol van de Directory lezers toekennen aan een Azure AD-groep
 
-In de **open bare preview-versie**kunt u nu [Global Administrator](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) een Azure AD- [groep maken en](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) de [**Directory lezers**](../../active-directory/roles/permissions-reference.md#directory-readers) machtigingen toewijzen aan de groep. Hiermee krijgt u toegang tot de Azure AD-Graph API voor leden van deze groep. Bovendien mogen Azure AD-gebruikers die eigen aren van deze groep zijn, nieuwe leden voor deze groep toewijzen, met inbegrip van de identiteiten van de logische Azure SQL-servers.
+In de **open bare preview-versie** kunt u nu [Global Administrator](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) een Azure AD- [groep maken en](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) de [**Directory lezers**](../../active-directory/roles/permissions-reference.md#directory-readers) machtigingen toewijzen aan de groep. Hiermee krijgt u toegang tot de Azure AD-Graph API voor leden van deze groep. Bovendien mogen Azure AD-gebruikers die eigen aren van deze groep zijn, nieuwe leden voor deze groep toewijzen, met inbegrip van de identiteiten van de logische Azure SQL-servers.
 
 Voor deze oplossing is nog steeds een gebruiker met hoge bevoegdheden (globale beheerder of beheerdersrol) vereist voor het maken van een groep en het toewijzen van gebruikers als een eenmalige activiteit, maar de eigenaar van de Azure AD-groep kan extra leden toewijzen aan de volgende. Dit elimineert de nood zaak om een gebruiker met hoge bevoegdheden in de toekomst te betrekken bij het configureren van alle SQL-data bases, SQL Managed instances of Azure Synapse-servers in hun Azure AD-Tenant.
 

@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 07/09/2020
 ms.author: sunasing
-ms.openlocfilehash: a2677b5343b2d65a39e7c9f6d5006db599c1ac73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 661147769d8ae845066e912a84118c9fd3f93486
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86496992"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674917"
 ---
 # <a name="weather-partner-integration"></a>Partnerintegratie voor weer
 
@@ -28,7 +28,7 @@ Een weer partner moet een docker-installatie kopie/programma (met de hieronder v
 - Klantspecifieke API-sleutels/referenties voor toegang tot de gegevens van het systeem van de weer partner
 - SKU-gegevens voor virtuele machines (partners kunnen dit bieden als hun docker specifieke VM-vereisten heeft, anders kunnen klanten kiezen uit ondersteunde VM-Sku's in Azure)
 
-Met behulp van de bovenstaande docker-gegevens registreert de klant een weer partner in hun FarmBeats-exemplaar. Voor meer informatie over hoe klanten de docker kunnen gebruiken om weer gegevens op te nemen in FarmBeats, raadpleegt u de hand leiding om [weer gegevens](https://docs.microsoft.com/azure/industry/agriculture/get-weather-data-from-weather-partner) op te halen
+Met behulp van de bovenstaande docker-gegevens registreert de klant een weer partner in hun FarmBeats-exemplaar. Voor meer informatie over hoe klanten de docker kunnen gebruiken om weer gegevens op te nemen in FarmBeats, raadpleegt u de hand leiding om [weer gegevens](./get-weather-data-from-weather-partner.md) op te halen
 
 ## <a name="connector-docker-development"></a>Docker-ontwikkeling van connector
 
@@ -71,9 +71,9 @@ Om ervoor te zorgen dat klanten tijdens de uitvoering van de docker kunnen verif
    }
 }
 ```
-De API-service serializeert deze dicteer en slaat deze op in een sleutel [kluis](https://docs.microsoft.com/azure/key-vault/basic-concepts).
+De API-service serializeert deze dicteer en slaat deze op in een sleutel [kluis](../../key-vault/general/basic-concepts.md).
 
-[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) wordt gebruikt voor het indelen van weer taken en het draaien van resources om de docker-code uit te voeren. Het biedt ook een mechanisme voor het veilig pushen van gegevens naar de virtuele machine waarop de docker-taak wordt uitgevoerd. De API-referenties, die nu veilig zijn opgeslagen in de sleutel kluis, worden gelezen als beveiligde teken reeksen uit de-/mnt/en als uitgebreide eigenschappen beschikbaar gemaakt in de werkmap van de docker-container als activity.jsop (het pad naar het bestand is "working_dir/activity.json") kan de docker-code de referenties van dit bestand tijdens runtime lezen om toegang te krijgen tot Api's van de client. De referenties zijn als volgt beschikbaar in het bestand:
+[Azure Data Factory](../../data-factory/introduction.md) wordt gebruikt voor het indelen van weer taken en het draaien van resources om de docker-code uit te voeren. Het biedt ook een mechanisme voor het veilig pushen van gegevens naar de virtuele machine waarop de docker-taak wordt uitgevoerd. De API-referenties, die nu veilig zijn opgeslagen in de sleutel kluis, worden gelezen als beveiligde teken reeksen uit de-/mnt/en als uitgebreide eigenschappen beschikbaar gemaakt in de werkmap van de docker-container als activity.jsop (het pad naar het bestand is "working_dir/activity.json") kan de docker-code de referenties van dit bestand tijdens runtime lezen om toegang te krijgen tot Api's van de client. De referenties zijn als volgt beschikbaar in het bestand:
 
 ```json
 { 
@@ -89,7 +89,7 @@ De FarmBeats lib biedt hulp functies om partners in staat te stellen de referent
 
 De levens duur van het bestand is alleen tijdens de uitvoering van de docker-code en wordt verwijderd nadat de docker-uitvoering is beëindigd.
 
-Zie voor meer informatie over de werking van ADF-pijp lijnen en-activiteiten [https://docs.microsoft.com/azure/data-factory/copy-activity-schema-and-type-mapping](https://docs.microsoft.com/azure/data-factory/copy-activity-schema-and-type-mapping) .
+Zie voor meer informatie over de werking van ADF-pijp lijnen en-activiteiten [https://docs.microsoft.com/azure/data-factory/copy-activity-schema-and-type-mapping](../../data-factory/copy-activity-schema-and-type-mapping.md) .
 
 **HTTP-aanvraag headers**
 
@@ -107,7 +107,7 @@ JSON is een gemeen schappelijke taal onafhankelijke gegevens indeling die een ee
 
 ## <a name="docker-specifications"></a>Docker-specificaties
 
-Het docker-programma moet twee onderdelen bevatten: **Boots trap** en **taken**. Er kan meer dan een taak zijn.
+Het docker-programma moet twee onderdelen bevatten: **Boots trap** en **taken** . Er kan meer dan een taak zijn.
 
 ### <a name="bootstrap"></a>Bootstrap
 
@@ -123,8 +123,8 @@ De volgende meta gegevens worden gemaakt als onderdeel van dit proces.
  > [!NOTE]
  > **Houd er rekening mee** dat als u de bootstrap_manifest.jsop bestand bijwerkt zoals vermeld in de [referentie-implementatie](https://github.com/azurefarmbeats/noaa_docker), u de onderstaande meta gegevens niet hoeft te maken omdat de Boots trap hetzelfde op basis van het manifest bestand maakt.
 
-- /**WeatherDataModel**: een WeatherDataModel is een model voor weer gave van gegevens die overeenkomen met de verschillende gegevens sets die door de bron worden verschaft. Een DailyForecastSimpleModel kan bijvoorbeeld één keer per dag de gemiddelde Tempe ratuur, vochtigheids graad en precipitatie gegevens geven, terwijl een DailyForecastAdvancedModel mogelijk veel meer informatie kan bieden op het uurloon. U kunt een wille keurig aantal WeatherDataModels maken.
-- /**Taak type**: FarmBeats heeft een uitbreidbaar taak beheersysteem. Als weer gegeven gegevens provider hebt u verschillende gegevens sets/Api's (bijvoorbeeld GetDailyForecasts). u kunt ze inschakelen in FarmBeats als taak type. Zodra een taak type is gemaakt, kan een klant taken van dat type activeren om weer gegevens op te halen voor hun locatie/Farm van belang (Zie taak type en taak-Api's in [FarmBeats Swagger](https://aka.ms/farmbeatsswagger)).
+- /**WeatherDataModel** : een WeatherDataModel is een model voor weer gave van gegevens die overeenkomen met de verschillende gegevens sets die door de bron worden verschaft. Een DailyForecastSimpleModel kan bijvoorbeeld één keer per dag de gemiddelde Tempe ratuur, vochtigheids graad en precipitatie gegevens geven, terwijl een DailyForecastAdvancedModel mogelijk veel meer informatie kan bieden op het uurloon. U kunt een wille keurig aantal WeatherDataModels maken.
+- /**Taak type** : FarmBeats heeft een uitbreidbaar taak beheersysteem. Als weer gegeven gegevens provider hebt u verschillende gegevens sets/Api's (bijvoorbeeld GetDailyForecasts). u kunt ze inschakelen in FarmBeats als taak type. Zodra een taak type is gemaakt, kan een klant taken van dat type activeren om weer gegevens op te halen voor hun locatie/Farm van belang (Zie taak type en taak-Api's in [FarmBeats Swagger](https://aka.ms/farmbeatsswagger)).
 
 ### <a name="jobs"></a>Taken
 
@@ -136,7 +136,7 @@ Dit onderdeel wordt elke keer aangeroepen wanneer een FarmBeats-gebruiker een ta
 
   WeatherDataModel | Beschrijving |
   --- | ---
-  Name  | Naam van het weer gegeven gegevens model |
+  Naam  | Naam van het weer gegeven gegevens model |
   Beschrijving  | Geef een zinvolle beschrijving van het model op. |
   Eigenschappen  | Aanvullende eigenschappen die zijn gedefinieerd door de gegevens provider. |
   > naam weatherMeasures  | De naam van de weer maat meting. Bijvoorbeeld humidity_max |
@@ -159,7 +159,7 @@ Dit onderdeel wordt elke keer aangeroepen wanneer een FarmBeats-gebruiker een ta
   **WeatherDataLocation** | **Beschrijving** |
   weatherDataModelId  | ID van de bijbehorende WeatherDataModel die is gemaakt tijdens de Boots trap|
   location  | vertegenwoordigt de breedte graad, lengte graad en uitbrei ding |
-  Name | Naam van het object |
+  Naam | Naam van het object |
   Beschrijving | Beschrijving |
   farmId | **optioneel** ID van de farm die door de klant wordt gegeven als onderdeel van de taak parameter |
   Eigenschappen  | Aanvullende eigenschappen van de fabrikant.
@@ -180,7 +180,7 @@ De connector docker moet de mogelijkheid hebben om updates te verzenden voor de 
 
 ## <a name="weather-data-telemetry-specifications"></a>Specificaties voor weer gegevens (telemetrie)
 
-De weer gegevens worden toegewezen aan een canonieke bericht dat naar een Azure Event hub wordt gepusht voor verwerking. Azure EventHub is een service waarmee realtime gegevens (telemetrie) kunnen worden opgenomen vanuit verbonden apparaten en toepassingen. Als u weer gegevens naar FarmBeats wilt verzenden, moet u een client maken waarmee berichten worden verzonden naar een event hub in FarmBeats. Raadpleeg [telemetrie verzenden naar een event hub](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send) voor meer informatie over het verzenden van telemetrie
+De weer gegevens worden toegewezen aan een canonieke bericht dat naar een Azure Event hub wordt gepusht voor verwerking. Azure EventHub is een service waarmee realtime gegevens (telemetrie) kunnen worden opgenomen vanuit verbonden apparaten en toepassingen. Als u weer gegevens naar FarmBeats wilt verzenden, moet u een client maken waarmee berichten worden verzonden naar een event hub in FarmBeats. Raadpleeg [telemetrie verzenden naar een event hub](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) voor meer informatie over het verzenden van telemetrie
 
 Hier volgt een voor beeld van een python-code die telemetrie verzendt als een client naar een opgegeven Event Hub.
 

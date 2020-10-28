@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 04/23/2020
-ms.openlocfilehash: d90cc76da20861ae9eca7aaf59a49e5f3e866c92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a57de3d6beda5336f480f20137a9ccaa014b012d
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444432"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675081"
 ---
 # <a name="use-azure-active-directory-authentication"></a>Azure Active Directory-verificatie gebruiken
 
@@ -153,21 +153,21 @@ De volgende verificatie methoden worden ondersteund voor Azure AD-server-princip
   - Het toevoegen van Azure AD-server-principals (aanmeldingen) voor een SQL Managed instance biedt de mogelijkheid om meerdere Azure AD server-principals (aanmeldingen) te maken die kunnen worden toegevoegd aan de `sysadmin` rol.
 - Alleen een Azure AD-beheerder voor de server kan voor het eerst verbinding maken met de server of het beheerde exemplaar met behulp van een Azure Active Directory-account. De Active Directory-beheerder kan vervolgens nieuwe Azure AD-databasegebruikers configureren.
 - Het is raadzaam om de time-out voor de verbinding in te stellen op 30 seconden.
-- SQL Server 2016 Management Studio en SQL Server Data Tools voor Visual Studio 2015 (versie 14.0.60311.1 van april 2016 of later) ondersteunen Azure Active Directory-verificatie. (Azure AD-verificatie wordt ondersteund door de **.NET Framework-gegevensprovider voor SqlServer**; minimaal .NET Framework versie 4.6). Daarom kunnen de nieuwste versies van deze hulpprogram ma's en gegevenslaag toepassingen (DAC en BACPAC) gebruikmaken van Azure AD-verificatie.
+- SQL Server 2016 Management Studio en SQL Server Data Tools voor Visual Studio 2015 (versie 14.0.60311.1 van april 2016 of later) ondersteunen Azure Active Directory-verificatie. (Azure AD-verificatie wordt ondersteund door de **.NET Framework-gegevensprovider voor SqlServer** ; minimaal .NET Framework versie 4.6). Daarom kunnen de nieuwste versies van deze hulpprogram ma's en gegevenslaag toepassingen (DAC en BACPAC) gebruikmaken van Azure AD-verificatie.
 - Vanaf versie 15.0.1, [sqlcmd utility](/sql/tools/sqlcmd-utility) en [bcp Utility](/sql/tools/bcp-utility) ondersteunen Active Directory interactieve verificatie met multi-factor Authentication.
-- SQL Server Data Tools voor Visual Studio 2015 vereist minimaal de versie van april 2016 van de hulpmiddelen voor gegevens (versie 14.0.60311.1). Op dit moment worden Azure AD-gebruikers niet weer gegeven in SSDT Objectverkenner. Als tijdelijke oplossing kunt u de gebruikers weergeven in [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx).
+- SQL Server Data Tools voor Visual Studio 2015 vereist minimaal de versie van april 2016 van de hulpmiddelen voor gegevens (versie 14.0.60311.1). Op dit moment worden Azure AD-gebruikers niet weer gegeven in SSDT Objectverkenner. Als tijdelijke oplossing kunt u de gebruikers weergeven in [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql).
 - [Microsoft JDBC Driver 6.0 voor SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) ondersteunt Azure AD-verificatie. Zie ook [De verbindingseigenschappen instellen](/sql/connect/jdbc/setting-the-connection-properties).
 - Poly Base kan niet worden geverifieerd met behulp van Azure AD-verificatie.
 - Azure AD-verificatie wordt ondersteund voor Azure SQL Database en Azure Synapse via de Blade Azure Portal **Data Base importeren** en **Data Base exporteren** . Importeren en exporteren met behulp van Azure AD-verificatie wordt ook ondersteund vanuit een Power shell-opdracht.
-- Azure AD-verificatie wordt ondersteund voor SQL Database, SQL Managed instance en Azure Synapse met behulp van de CLI. Zie [Azure AD-verificatie configureren en beheren met SQL database of Azure Synapse](authentication-aad-configure.md) en [SQL Server-AZ SQL Server](https://docs.microsoft.com/cli/azure/sql/server)voor meer informatie.
+- Azure AD-verificatie wordt ondersteund voor SQL Database, SQL Managed instance en Azure Synapse met behulp van de CLI. Zie [Azure AD-verificatie configureren en beheren met SQL database of Azure Synapse](authentication-aad-configure.md) en [SQL Server-AZ SQL Server](/cli/azure/sql/server)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie voor meer informatie over het maken en vullen van een Azure AD-exemplaar en het configureren met Azure SQL Database, SQL Managed instance of Azure Synapse de [Azure Active Directory-verificatie configureren en beheren met SQL database, SQL Managed instance of Azure Synapse](authentication-aad-configure.md).
 - Voor een zelf studie over het gebruik van Azure AD server-principals (aanmeldingen) met SQL Managed instance raadpleegt u [Azure ad server-principals (aanmeldingen) met SQL Managed instance](../managed-instance/aad-security-configure-tutorial.md)
 - Zie [aanmeldingen, gebruikers, database rollen en machtigingen](logins-create-manage.md)voor een overzicht van aanmeldingen, gebruikers, database rollen en machtigingen in SQL database.
-- Zie [Principals](https://msdn.microsoft.com/library/ms181127.aspx) voor meer informatie over database-principals.
-- Zie [Databaserollen](https://msdn.microsoft.com/library/ms189121.aspx) voor meer informatie over databaserollen.
+- Zie [Principals](/sql/relational-databases/security/authentication-access/principals-database-engine) voor meer informatie over database-principals.
+- Zie [Databaserollen](/sql/relational-databases/security/authentication-access/database-level-roles) voor meer informatie over databaserollen.
 - Zie  [login maken](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true)voor de syntaxis voor het maken van Azure ad-server principals (aanmeldingen) voor een door SQL beheerd exemplaar.
 - Zie [SQL Database-firewallregels](firewall-configure.md) voor meer informatie over de firewallregels in SQL Database.
 

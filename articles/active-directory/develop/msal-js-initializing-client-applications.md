@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 5af5d3a88262792f4b32e2ce3d8143ac680f083a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: aaddev, devx-track-js
+ms.openlocfilehash: ea8629e53ec793b4a63c817b6ec83278a2d23871
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87027033"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674078"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Client toepassingen initialiseren met MSAL.js
 
@@ -37,8 +37,8 @@ Nadat u uw app hebt geregistreerd, hebt u enkele of alle van de volgende waarden
 | Waarde | Vereist | Beschrijving |
 |:----- | :------: | :---------- |
 | (Client-)id van de app | Vereist | Een GUID die uw toepassing op unieke wijze identificeert binnen het micro soft Identity-platform. |
-| Instantie | Optioneel | De URL van de identiteits provider (het *exemplaar*) en de *doel groep voor aanmelding* voor uw toepassing. Het exemplaar en de doel groep bij het samen voegen van de *instantie*. |
-| (Tenant-)id van de map | Optioneel | Geef dit op als u een line-of-Business-toepassing wilt bouwen voor uw organisatie, ook wel een *toepassing met één Tenant*genoemd. |
+| Instantie | Optioneel | De URL van de identiteits provider (het *exemplaar* ) en de *doel groep voor aanmelding* voor uw toepassing. Het exemplaar en de doel groep bij het samen voegen van de *instantie* . |
+| (Tenant-)id van de map | Optioneel | Geef dit op als u een line-of-Business-toepassing wilt bouwen voor uw organisatie, ook wel een *toepassing met één Tenant* genoemd. |
 | Omleidings-URI | Optioneel | Als u een web-app bouwt, `redirectUri` geeft de opgegeven locatie aan waar de ID-provider (het micro soft Identity-platform) de beveiligings tokens moet retour neren die het heeft uitgegeven. |
 
 ## <a name="initialize-msaljs-2x-apps"></a>Initialiseren MSAL.js 2. x-apps

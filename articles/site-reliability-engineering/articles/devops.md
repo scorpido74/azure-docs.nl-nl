@@ -8,12 +8,12 @@ ms.service: site-reliability-engineering
 ms.topic: article
 ms.date: 09/14/2020
 ms.author: dnb
-ms.openlocfilehash: 3d0698f2780a4ccc41eedbde70fddea1766c5f21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62872443c386c45d9821053dc901ad8e0055b74f
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90090326"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674264"
 ---
 # <a name="frequently-asked-questions-whats-the-relationship-between-sre-and-devops"></a>Veelgestelde vragen: wat is de relatie tussen SRE en DevOps?
 
@@ -50,7 +50,7 @@ Als we deze definitie van SRE gebruiken van de [site betrouwbaarheids engineerin
 
 vervolgens zou het woord voor SRE ' betrouw baarheid ' zijn. Het is in het midden van de naam ook een uitstekende bewijs voor deze claim.
 
-Als we deze definitie van DevOps gebruiken in het [Azure DevOps Resource Center](https://docs.microsoft.com/azure/devops/learn/):
+Als we deze definitie van DevOps gebruiken in het [Azure DevOps Resource Center](/azure/devops/learn/):
 
 > DevOps is de combinatie van mensen, processen en producten om continu waarde te kunnen bieden aan onze eindgebruikers.
 
@@ -80,4 +80,4 @@ We hopen dat de vorige antwoorden een idee hebben van de manier waarop de twee p
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Wilt u meer leren over de site betrouwbaarheids techniek of DevOps? Bekijk onze [site betrouwbaarheids techniek hub](../index.yml) en [Azure DevOps Resource Center](https://docs.microsoft.com/azure/devops/learn/).
+Wilt u meer leren over de site betrouwbaarheids techniek of DevOps? Bekijk onze [site betrouwbaarheids techniek hub](../index.yml) en [Azure DevOps Resource Center](/azure/devops/learn/).
