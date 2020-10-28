@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/09/2020
 ms.author: anfeldma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 74ff6983b08b6f19a94384be7c4361d4266d6a20
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 2d82b7f618757fbf77072bd7147595eec3083885
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108759"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487633"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Quickstart: een taken-app maken met Xamarin met behulp van een SQL API-account van Azure Cosmos DB
 
@@ -32,7 +32,7 @@ Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van 
 > [!NOTE]
 > Voorbeeldcode voor een hele canonieke voorbeeldapp in Xamarin, met meerdere Azure-producten, waaronder CosmosDB, zijn te vinden [hier](https://github.com/xamarinhq/app-geocontacts) op GitHub. Deze app demonstreert de weergave van geografisch verspreide contactpersonen en de mogelijkheid om toe te staan dat deze contactpersonen hun locatie wijzigen.
 
-Deze snelstart laat zien hoe u een SQL API-account van Azure Cosmos DB, een documentdatabase en een container kunt maken met behulp van de Azure-portal. U maakt en implementeert vervolgens een mobiele app voor takenlijstjes op de [SQL .NET API](sql-api-sdk-dotnet.md) en [Xamarin](https://docs.microsoft.com/xamarin/) met behulp van [Xamarin.Forms](https://docs.microsoft.com/xamarin/) en het [MVVM-architectuurpatroon](https://docs.microsoft.com/xamarin/xamarin-forms/xaml/xaml-basics/data-bindings-to-mvvm).
+Deze snelstart laat zien hoe u een SQL API-account van Azure Cosmos DB, een documentdatabase en een container kunt maken met behulp van de Azure-portal. U maakt en implementeert vervolgens een mobiele app voor takenlijstjes op de [SQL .NET API](sql-api-sdk-dotnet.md) en [Xamarin](/xamarin/) met behulp van [Xamarin.Forms](/xamarin/) en het [MVVM-architectuurpatroon](/xamarin/xamarin-forms/xaml/xaml-basics/data-bindings-to-mvvm).
 
 :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ios-todo-screen.png" alt-text="Taken-app in Xamarin uitgevoerd op iOS":::
 
@@ -177,7 +177,7 @@ U hebt uw app nu bijgewerkt met alle informatie die nodig is voor de communicati
 Met de volgende stappen wordt gedemonstreerd hoe u de app uitvoert met behulp van het Visual Studio voor Mac-foutopsporingsprogramma.
 
 > [!NOTE]
-> Het gebruik van de Android-app is precies hetzelfde; eventuele verschillen worden in de onderstaande stappen aangegeven. Als u fouten wilt opsporen met Visual Studio in Windows, bekijkt u de documentatie voor [iOS](https://docs.microsoft.com/xamarin/ios/deploy-test/debugging-in-xamarin-ios?tabs=vswin) of [Android](https://docs.microsoft.com/xamarin/android/deploy-test/debugging/).
+> Het gebruik van de Android-app is precies hetzelfde; eventuele verschillen worden in de onderstaande stappen aangegeven. Als u fouten wilt opsporen met Visual Studio in Windows, bekijkt u de documentatie voor [iOS](/xamarin/ios/deploy-test/debugging-in-xamarin-ios?tabs=vswin) of [Android](/xamarin/android/deploy-test/debugging/).
 
 1. Selecteer eerst het doelplatform door op de gemarkeerde vervolgkeuzelijst te klikken en ToDoItems.iOS te selecteren voor iOS of ToDoItems.Android te selecteren voor Android.
 

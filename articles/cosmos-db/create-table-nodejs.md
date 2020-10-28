@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: 42871d4219424e3e46d6b2dccc5899b02dccc57e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0f53958f8d7b0c5c12d78940b30f88b49d667c1e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91318990"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487531"
 ---
 # <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>Quickstart: Een Table-API compileren met Node.js en Azure Cosmos DB
 
@@ -22,7 +22,7 @@ ms.locfileid: "91318990"
 > * [.NET](create-table-dotnet.md)
 > * [Java](create-table-java.md)
 > * [Node.js](create-table-nodejs.md)
-> * [Python](create-table-python.md)
+> * [Python](./table-storage-how-to-use-python.md)
 > 
 
 In deze snelstart maakt u een Azure Cosmos DB Table-API-account en gebruikt u Data Explorer en een Node.js-app die is gekloond van GitHub om tabellen en entiteiten te maken. Met Azure Cosmos DB, een databaseservice met meerdere modellen, kunt u snel databases met documenten, tabellen, sleutelwaarden en grafieken maken en hier query's op uitvoeren. Deze databases hebben wereldwijde distributie en horizontale schaalmogelijkheden.
@@ -137,7 +137,7 @@ Deze stap is optioneel. Als u wilt weten hoe de databaseresources in de code wor
 
 Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en kopieer deze in de app. Hierdoor kan de app communiceren met de gehoste database. 
 
-1. Selecteer in uw Azure Cosmos DB-account in de [Azure-portal](https://portal.azure.com/) de optie **Verbindingsreeks**. 
+1. Selecteer in uw Azure Cosmos DB-account in de [Azure-portal](https://portal.azure.com/) de optie **Verbindingsreeks** . 
 
     :::image type="content" source="./media/create-table-nodejs/connection-string.png" alt-text="De vereiste verbindingsreeksinformatie bekijken en kopiëren vanuit het deelvenster Verbindingsreeks":::
 
@@ -161,7 +161,7 @@ U hebt uw app nu bijgewerkt met alle informatie die nodig is voor de communicati
     cd "C:\git-samples\storage-table-node-getting-started"
     ```
 
-2. Voer de volgende opdracht uit om de modules [azure], [node-uuid], [nconf] en [async] lokaal uit te voeren en een vermelding voor deze modules op te slaan in het bestand *package.json*.
+2. Voer de volgende opdracht uit om de modules [azure], [node-uuid], [nconf] en [async] lokaal uit te voeren en een vermelding voor deze modules op te slaan in het bestand *package.json* .
 
    ```
    npm install azure-storage node-uuid async nconf --save

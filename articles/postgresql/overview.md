@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: 5945f50ada9af6a8d117d3d773ebeae48d5f4085
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c3ea7930f41fe89538a817da032e993e534db9cd
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90903758"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491322"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Wat is Azure Database for PostgreSQL?
 
@@ -36,14 +36,14 @@ Deze mogelijkheden vereisen nauwelijks beheer, en worden alle zonder extra koste
 Azure Database for PostgreSQL op basis van de PostgreSQL Community Edition is beschikbaar in drie implementatiemodi:
 
 - Single Server
-- Flexible Server (Preview)
+- Flexible Server (preview)
 - Hyperscale (Citus)
 
 ### <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - één server
 
 Azure Database for PostgreSQL Single Server is een volledig beheerde databaseservice met minimale vereisten voor database-aanpassingen. Het Single Server-platform is ontworpen voor het verwerken van de meeste databasebeheerfuncties, zoals het toepassen van patches, back-ups, hoge beschikbaarheid, beveiliging met minimale gebruikersconfiguratie en beheer. De architectuur is geoptimaliseerd voor ingebouwde hoge beschikbaarheid met een beschikbaarheid van 99,99% in één beschikbaarheidszone. Het ondersteunt de communityversie van PostgreSQL 9.5, 9.6, 10 en 11. De service is momenteel algemeen beschikbaar in allerlei [Azure-regio's](https://azure.microsoft.com/global-infrastructure/services/).
 
-De implementatieoptie Individuele server biedt de volgende drie prijscategorieën: Basic, Algemeen gebruik en Geoptimaliseerd voor geheugen. Elke categorie biedt verschillende resources ter ondersteuning van de workloads van uw databases. U kunt uw eerste app op een kleine database bouwen voor een paar euro met maand en vervolgens de schaal ervan aanpassen om aan de vereisten van uw oplossing te voldoen. Doordat de schaalbaarheid dynamisch is, kan uw database op een transparante manier reageren op snel veranderende resourcevereisten. U betaalt alleen voor de resources die u nodig hebt op het moment dat u ze nodig hebt. Zie [Prijscategorieën](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers) voor meer details.
+De implementatieoptie Individuele server biedt de volgende drie prijscategorieën: Basic, Algemeen gebruik en Geoptimaliseerd voor geheugen. Elke categorie biedt verschillende resources ter ondersteuning van de workloads van uw databases. U kunt uw eerste app op een kleine database bouwen voor een paar euro met maand en vervolgens de schaal ervan aanpassen om aan de vereisten van uw oplossing te voldoen. Doordat de schaalbaarheid dynamisch is, kan uw database op een transparante manier reageren op snel veranderende resourcevereisten. U betaalt alleen voor de resources die u nodig hebt op het moment dat u ze nodig hebt. Zie [Prijscategorieën](./concepts-pricing-tiers.md) voor meer details.
 
 Eén server is het meest geschikt voor cloudtoepassingen die zijn ontworpen voor de verwerking van automatische patches, waarbij geen nauwkeurige controle op het patchschema en aangepaste configuratie-instellingen voor PostgreSQL nodig zijn.
 
@@ -72,7 +72,7 @@ De implementatieoptie Hyperscale (Citus) levert het volgende:
 - Query-parallellisatie over deze servers voor een snellere respons bij grote gegevenssets
 - Uitstekende ondersteuning voor multi-tenant toepassingen, realtime operationele analyse en transactionele workloads met hoge doorvoer
   
-Toepassingen die zijn gebouwd voor PostgreSQL kunnen gedistribueerde query's uitvoeren op Hyperscale (Citus) met standaard [verbindingsbibliotheken](https://docs.microsoft.com/azure/postgresql/concepts-connection-libraries) en minimale wijzigingen.
+Toepassingen die zijn gebouwd voor PostgreSQL kunnen gedistribueerde query's uitvoeren op Hyperscale (Citus) met standaard [verbindingsbibliotheken](./concepts-connection-libraries.md) en minimale wijzigingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

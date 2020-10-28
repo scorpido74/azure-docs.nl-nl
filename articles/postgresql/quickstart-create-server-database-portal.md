@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/27/2020
-ms.openlocfilehash: 6e43d00722dd86934c8f95e06a3b8b590b263d61
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2c340f9e7d2c44082adc67eeb816276449602035
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91705157"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484488"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-portal"></a>Quickstart: Een Azure Database for PostgreSQL-server maken met behulp van de Azure-portal
 
@@ -31,12 +31,12 @@ Ga als volgt te werk om een Azure Database for PostgreSQL-server te maken:
 
 1. Selecteer **Een resource maken** in de linkerbovenhoek van de portal.
 
-2. Selecteer **Databases** > **Azure Database for PostgreSQL**.
+2. Selecteer **Databases** > **Azure Database for PostgreSQL** .
 
    > [!div class="mx-imgBorder"]
    > :::image type="content" source="./media/quickstart-create-database-portal/1-create-database.png" alt-text="Schermopname waarin Azure Database for PostgreSQL in het menu wordt weergegeven.":::
 
-3. Selecteer de implementatieoptie **Enkele server**.
+3. Selecteer de implementatieoptie **Enkele server** .
 
    > [!div class="mx-imgBorder"]
    > :::image type="content" source="./media/quickstart-create-database-portal/select-deployment-option.png" alt-text="Schermopname waarin Azure Database for PostgreSQL in het menu wordt weergegeven.":::
@@ -56,7 +56,7 @@ Ga als volgt te werk om een Azure Database for PostgreSQL-server te maken:
    Wachtwoord |Uw wachtwoord| Een nieuw wachtwoord voor het beheerdersaccount voor de server. Het moet 8 tot 128 tekens bevatten uit drie van de volgende categorieën: Nederlandse hoofdletters, Nederlandse kleine letters, cijfers (0 t/m 9) en niet-alfanumerieke tekens (bijvoorbeeld !, $, #, %).
    Locatie|De regio het dichtst bij uw gebruikers| De locatie die het dichtst bij uw gebruikers is.
    Versie|De meest recente primaire versie| De nieuwste primaire versie van PostgreSQL, tenzij u specifieke andere vereisten hebt.
-   Compute en opslag | **Algemeen**, **Gen 5**, **2 vCores**, **5 GB**, **7 dagen**, **Geografisch redundant** | De reken-, opslag- en back-upconfiguraties voor de nieuwe server. Selecteer **Server configureren**. Selecteer vervolgens de juiste prijscategorie. Raadpleeg [Prijsgegevens](https://azure.microsoft.com/pricing/details/postgresql/server/) voor meer informatie. Als u serverback-ups in geografisch redundante opslag wilt inschakelen, selecteert u **Geografisch redundant** in het gedeelte **Redundantieopties voor back-up**. Selecteer **OK**.
+   Compute en opslag | **Algemeen** , **Gen 5** , **2 vCores** , **5 GB** , **7 dagen** , **Geografisch redundant** | De reken-, opslag- en back-upconfiguraties voor de nieuwe server. Selecteer **Server configureren** . Selecteer vervolgens de juiste prijscategorie. Raadpleeg [Prijsgegevens](https://azure.microsoft.com/pricing/details/postgresql/server/) voor meer informatie. Als u serverback-ups in geografisch redundante opslag wilt inschakelen, selecteert u **Geografisch redundant** in het gedeelte **Redundantieopties voor back-up** . Selecteer **OK** .
 
    > [!NOTE]
    > Overweeg het gebruik van de prijscategorie Basic als lichte reken- en I/O-capaciteit voldoende is voor uw workload. Servers die zijn gemaakt in de prijscategorie Basic kunnen later niet meer worden geschaald voor Algemeen gebruik of Geoptimaliseerd voor geheugen. 
@@ -65,22 +65,22 @@ Ga als volgt te werk om een Azure Database for PostgreSQL-server te maken:
 
 6. Selecteer het pictogram **Meldingen** (een klok) op de werkbalk om het implementatieproces te bewaken. Nadat de implementatie is voltooid, selecteert u **Ga naar resource** om de pagina **Overzicht** van de server te openen.
 
-Er wordt een lege database, **postgres**, gemaakt. Er is ook een database **azure_maintenance** die wordt gebruikt om de processen van de beheerde service van gebruikersacties te onderscheiden. U kunt de database **azure_maintenance** niet openen.
+Er wordt een lege database, **postgres** , gemaakt. Er is ook een database **azure_maintenance** die wordt gebruikt om de processen van de beheerde service van gebruikersacties te onderscheiden. U kunt de database **azure_maintenance** niet openen.
 
 ## <a name="configure-a-server-level-firewall-rule"></a>Een serverfirewallregel configureren
-De server die u maakt, is standaard niet openbaar toegankelijk. U moet toegang tot uw IP-adres verlenen. Ga in de Azure-portal naar uw serverresource en selecteer **Verbindingsbeveiliging** in het linkermenu van uw serverresource. Zie [Resources openen](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal#open-resources) als u niet weet hoe u uw resource moet vinden.
+De server die u maakt, is standaard niet openbaar toegankelijk. U moet toegang tot uw IP-adres verlenen. Ga in de Azure-portal naar uw serverresource en selecteer **Verbindingsbeveiliging** in het linkermenu van uw serverresource. Zie [Resources openen](../azure-resource-manager/management/manage-resources-portal.md#open-resources) als u niet weet hoe u uw resource moet vinden.
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/quickstart-create-database-portal/add-current-ip-firewall.png" alt-text="Schermopname waarin Azure Database for PostgreSQL in het menu wordt weergegeven.":::
   
-Selecteer **Huidig IP-adres van client toevoegen** en selecteer vervolgens **Opslaan**. U kunt meer IP-adressen toevoegen of een IP-bereik opgeven om verbinding met uw server te maken vanaf die IP-adressen. Zie [Firewallregels in Azure Database for PostgreSQL](./concepts-firewall-rules.md) voor meer informatie.
+Selecteer **Huidig IP-adres van client toevoegen** en selecteer vervolgens **Opslaan** . U kunt meer IP-adressen toevoegen of een IP-bereik opgeven om verbinding met uw server te maken vanaf die IP-adressen. Zie [Firewallregels in Azure Database for PostgreSQL](./concepts-firewall-rules.md) voor meer informatie.
    
 > [!NOTE]
 > Om connectiviteitsproblemen te vermijden, controleert u of uw netwerk uitgaand verkeer via poort 5432 toestaat. Azure Database for PostgreSQL gebruikt die poort.  
 
 ## <a name="connect-to-azure-database-for-postgresql-server-by-using-psql"></a>Verbinding maken met een Azure Database for PostgreSQL-server met behulp van psql
 
-U kunt [psql](http://postgresguide.com/utilities/psql.html) of [pgAdmin](https://www.pgadmin.org/docs/pgadmin4/latest/connecting.html) (populaire PostgreSQL-clients) gebruiken. In deze quickstart maakt u verbinding met behulp van psql in [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) binnen de Azure-portal.
+U kunt [psql](http://postgresguide.com/utilities/psql.html) of [pgAdmin](https://www.pgadmin.org/docs/pgadmin4/latest/connecting.html) (populaire PostgreSQL-clients) gebruiken. In deze quickstart maakt u verbinding met behulp van psql in [Azure Cloud Shell](../cloud-shell/overview.md) binnen de Azure-portal.
 
 1. Noteer uw servernaam, aanmeldings-id voor de serverbeheerder, wachtwoord en abonnements-id voor de nieuwe server in de sectie **Overzicht** van de server.
 
@@ -117,13 +117,13 @@ U kunt [psql](http://postgresguide.com/utilities/psql.html) of [pgAdmin](https:/
 
     postgres=>
     ```
-4. Maak in dezelfde Azure Cloud Shell-terminal een database met de naam **guest**.
+4. Maak in dezelfde Azure Cloud Shell-terminal een database met de naam **guest** .
 
    ```bash
    postgres=> CREATE DATABASE guest;
    ```
 
-5. Schakel de verbindingen over naar de nieuwe **guest**-database.
+5. Schakel de verbindingen over naar de nieuwe **guest** -database.
 
    ```bash
    \c guest
@@ -137,8 +137,8 @@ Zo verwijdert u de resourcegroep:
 
 1. Zoek en selecteer **Resourcegroepen** in de Azure-portal. 
 2. Kies in de lijst met resourcegroepen de naam van uw resourcegroep.
-3. Selecteer op de pagina **Overzicht** van uw resourcegroep de optie **Resourcegroep verwijderen**.
-4. Typ de naam van de resourcegroep in het bevestigingsvenster en selecteer **Verwijderen**.
+3. Selecteer op de pagina **Overzicht** van uw resourcegroep de optie **Resourcegroep verwijderen** .
+4. Typ de naam van de resourcegroep in het bevestigingsvenster en selecteer **Verwijderen** .
 
 Om de server te verwijderen, selecteert u de knop **Verwijderen** op de pagina **Overzicht** van uw server:
 

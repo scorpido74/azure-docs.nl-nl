@@ -9,12 +9,12 @@ ms.date: 05/20/2019
 author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
-ms.openlocfilehash: abd88c3cdb54747c21ad8772860a3ed6929dbd15
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7727dd2ae69fab75219c5d6d733db3f150061df3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318718"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477229"
 ---
 # <a name="azure-table-storage-overview"></a>Overzicht van Azure Table Storage
 
@@ -30,10 +30,10 @@ U kunt Table Storage gebruiken voor de opslag van flexibele gegevenssets, zoals 
 
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) is een gratis, zelfstandige app van Microsoft waarmee u visueel met Azure Storage-gegevens kunt werken in Windows, macOS en Linux.
 
-* [Aan de slag met Azure Cosmos DB Table-API en Azure Table-opslag met de .NET SDK](table-storage-how-to-use-dotnet.md)
+* [Aan de slag met Azure Cosmos DB Table-API en Azure Table-opslag met de .NET SDK](./tutorial-develop-table-dotnet.md)
 
 * Bekijk de naslagdocumentatie over de Table Service voor meer informatie over beschikbare API's:
 
-    * [Naslaginformatie over de Storage-clientbibliotheek voor .NET](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
+    * [Naslaginformatie over de Storage-clientbibliotheek voor .NET](/dotnet/api/overview/azure/storage)
 
-    * [Naslaginformatie over REST API](https://msdn.microsoft.com/library/azure/dd179355)
+    * [Naslaginformatie over REST API](/rest/api/storageservices/)

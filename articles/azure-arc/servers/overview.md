@@ -2,14 +2,14 @@
 title: Overzicht van servers met Azure Arc
 description: Lees meer informatie over het gebruik van Azure Arc voor servers om servers te beheren die buiten Azure worden gehost alsof het Azure-resources zijn.
 keywords: azure automation, DSC, powershell, configuratie van gewenste status, updatebeheer, bijhouden van wijzigingen, inventaris, runbooks, python, grafisch, hybride
-ms.date: 10/07/2020
+ms.date: 10/15/2020
 ms.topic: overview
-ms.openlocfilehash: b2875cfdeb80aa17b19cee462dc35eaa7a3de665
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 01de579d2e1ea84c0e9da4ceafbd33dbad4c6e27
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92200964"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460849"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Wat zijn servers met Azure Arc?
 
@@ -29,7 +29,7 @@ Wanneer u uw machine verbindt met servers met Azure Arc, kunt u de volgende conf
 
 - Vereenvoudig de implementatie met andere Azure-services zoals Azure Automation [State Configuration](../../automation/automation-dsc-overview.md) en Azure Monitor Log Analytics-werkruimte door gebruik te maken van de ondersteunde [Azure VM-extensies](manage-vm-extensions.md) voor uw niet-Azure Windows- of Linux-machine. Dit omvat het uitvoeren van configuratie na de implementatie of software-installatie met behulp van de aangepaste scriptextensie.
 
-- Gebruik [Updatebeheer](../../automation/update-management/update-mgmt-overview.md) in Azure Automation om updates van het besturingssysteem voor uw Windows- en Linux-servers te beheren. Implementeer eerst de rol [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md) rol en volg de stappen om [Updatebeheer in te schakelen](../../automation/update-management/update-mgmt-enable-portal.md) op uw niet-Azure Windows- of Linux-machine.
+- Gebruik [Updatebeheer](../../automation/update-management/update-mgmt-overview.md) in Azure Automation om updates van het besturingssysteem voor uw Windows- en Linux-servers te beheren.
 
 - Neem uw niet-Azure-servers op voor het detecteren van bedreigingen en proactief toezicht op potentiële beveiligingsrisico's met behulp van [Azure Security Center](../../security-center/security-center-introduction.md).
 
@@ -45,7 +45,7 @@ In de meeste gevallen moet de locatie die u selecteert bij het maken van het ins
 
 ### <a name="agent-status"></a>Agenstatus
 
-De Connected Machine-agent stuurt elke 5 minuten een standaard heartbeat-bericht naar de service. Als de service de heartbeat-berichten van een machine niet meer ontvangt, wordt de machine als offline beschouwd en wordt de status in de portal na 15 tot 30 minuten automatisch gewijzigd in **Verbinding verbroken**. Wanneer er weer een heartbeat-bericht van de Connected Machine-agent wordt ontvangen, wordt de status van de machine automatisch gewijzigd in **Verbonden**.
+De Connected Machine-agent stuurt elke 5 minuten een standaard heartbeat-bericht naar de service. Als de service de heartbeat-berichten van een machine niet meer ontvangt, wordt de machine als offline beschouwd en wordt de status in de portal na 15 tot 30 minuten automatisch gewijzigd in **Verbinding verbroken** . Wanneer er weer een heartbeat-bericht van de Connected Machine-agent wordt ontvangen, wordt de status van de machine automatisch gewijzigd in **Verbonden** .
 
 ## <a name="next-steps"></a>Volgende stappen
 

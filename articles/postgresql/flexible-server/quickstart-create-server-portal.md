@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 09/22/2020
-ms.openlocfilehash: 25c3f875717c9c064af0ce27bdab735db67d2f5d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 978fcb8c8cf9d2ffd929da5b76d7fd2ff109f420
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943596"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535855"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---flexible-server-in-the-azure-portal"></a>Quickstart: Een Azure Database for PostgreSQL - Flexible Server maken in de Azure-portal
 
@@ -29,17 +29,17 @@ Open uw webbrowser en ga naar de [portal](https://portal.azure.com/). Voer uw re
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>Een Azure-database voor PostgreSQL-server maken
 
-Een Azure Database for PostgreSQL-server wordt gemaakt met een geconfigureerde set [reken- en opslagresources](./concepts-compute-storage.md). De server wordt gemaakt in een [Azure-resourcegroep](https://docs.microsoft.com/azure/azure-resource-manager/management/overview).
+Een Azure Database for PostgreSQL-server wordt gemaakt met een geconfigureerde set [reken- en opslagresources](./concepts-compute-storage.md). De server wordt gemaakt in een [Azure-resourcegroep](../../azure-resource-manager/management/overview.md).
 
 Volg deze stappen voor het maken van een Azure Database for PostgreSQL-server:
 
 1. Selecteer in de linkerbovenhoek van de portal **Een resource maken** (+).
 
-2. Selecteer **Databases** > **Azure Database for PostgreSQL**.
+2. Selecteer **Databases** > **Azure Database for PostgreSQL** .
 
     :::image type="content" source="./media/quickstart-create-database-portal/1-create-database.png" alt-text="Azure Database for PostgreSQL in het menu":::
 
-3. Selecteer de implementatieoptie **Flexible Server**.
+3. Selecteer de implementatieoptie **Flexible Server** .
 
    :::image type="content" source="./media/quickstart-create-database-portal/2-select-deployment-option.png" alt-text="Azure Database for PostgreSQL in het menu":::
 
@@ -56,7 +56,7 @@ Volg deze stappen voor het maken van een Azure Database for PostgreSQL-server:
     Wachtwoord |Uw wachtwoord| Een nieuw wachtwoord voor het beheerdersaccount voor de server. Dit wachtwoord moet tussen 8 en 128 tekens bevatten. Uw wachtwoord moet tekens bevatten uit drie van de volgende categorieën: Nederlandse hoofdletters, Nederlandse kleine letters, cijfers (0 tot en met 9) en niet-alfanumerieke tekens (!, $, #, %, enzovoort).
     Locatie|De regio het dichtst bij uw gebruikers| De locatie die zich het dichtst bij uw gebruikers bevindt.
     Versie|De meest recente primaire versie| De nieuwste primaire versie van PostgreSQL, tenzij u specifieke andere vereisten hebt.
-    Berekening en opslag | **Algemeen**, **4 vCores**, **512 GB**, **7 dagen** | De reken-, opslag- en back-upconfiguraties voor de nieuwe server. Selecteer **Server configureren**. *Algemeen*, *4 vCores*, *512 GB* en *7 dagen* zijn de standaardwaarden voor **Compute-laag**, **vCore**, **Opslag** en **Bewaartermijn voor back-ups**. U kunt deze schuifregelaars laten zoals ze zijn of ze aanpassen. Selecteer **OK** om deze geselecteerde prijscategorie op te slaan. Deze selecties worden afgebeeld in de volgende schermopname.
+    Berekening en opslag | **Algemeen** , **4 vCores** , **512 GB** , **7 dagen** | De reken-, opslag- en back-upconfiguraties voor de nieuwe server. Selecteer **Server configureren** . *Algemeen* , *4 vCores* , *512 GB* en *7 dagen* zijn de standaardwaarden voor **Compute-laag** , **vCore** , **Opslag** en **Bewaartermijn voor back-ups** . U kunt deze schuifregelaars laten zoals ze zijn of ze aanpassen. Selecteer **OK** om deze geselecteerde prijscategorie op te slaan. Deze selecties worden afgebeeld in de volgende schermopname.
 
     :::image type="content" source="./media/quickstart-create-database-portal/4-pricing-tier.png" alt-text="Azure Database for PostgreSQL in het menu":::
     
@@ -76,7 +76,7 @@ Volg deze stappen voor het maken van een Azure Database for PostgreSQL-server:
 
     :::image type="content" source="./media/quickstart-create-database-portal/7-notifications.png" alt-text="Azure Database for PostgreSQL in het menu":::
 
-   Standaard word een **postgres**-database op uw server gemaakt. De database [postgres](https://www.postgresql.org/docs/12/static/app-initdb.html) is een standaarddatabase die kan worden gebruikt door gebruikers, hulpprogramma's en toepassingen van derden. (De andere standaarddatabase is **azure_maintenance**. De functie van de database is het scheiden van beheerde serviceprocessen van acties van de gebruiker. U hebt geen toegang tot deze database.)
+   Standaard word een **postgres** -database op uw server gemaakt. De database [postgres](https://www.postgresql.org/docs/12/static/app-initdb.html) is een standaarddatabase die kan worden gebruikt door gebruikers, hulpprogramma's en toepassingen van derden. (De andere standaarddatabase is **azure_maintenance** . De functie van de database is het scheiden van beheerde serviceprocessen van acties van de gebruiker. U hebt geen toegang tot deze database.)
 
     > [!NOTE]
     > Verbindingen met uw Azure Database voor PostgreSQL-server communiceren via poort 5432. Als u verbinding wilt maken vanuit een bedrijfsnetwerk, is uitgaand verkeer via poort 5432 mogelijk niet toegestaan vanwege de firewall van het netwerk. In dat geval kunt u alleen verbinding maken met uw server als uw IT-afdeling poort 5432 openstelt.
@@ -86,7 +86,7 @@ Volg deze stappen voor het maken van een Azure Database for PostgreSQL-server:
 
 Wanneer u de Azure Database for PostgreSQL-server maakt, wordt een standaarddatabase met de naam **postgres** gemaakt. Voor verbinding met uw databaseserver, hebt u de volledige servernaam en aanmeldingsreferenties van de beheerder nodig. U hebt deze waarden mogelijk al eerder in dit artikel genoteerd. Als u dat niet hebt gedaan, kunt u de servernaam en aanmeldingsgegevens gemakkelijk terugvinden op de **overzichtspagina** voor de server in de portal.
 
-Open de pagina **Overzicht** van de server. Noteer de **servernaam** en de **gebruikersnaam van de serverbeheerder**. Beweeg de cursor over elk veld. Het kopieersymbool wordt rechts van de tekst weergegeven. Selecteer het kopieerpictogram indien nodig om de waarden te kopiëren.
+Open de pagina **Overzicht** van de server. Noteer de **servernaam** en de **gebruikersnaam van de serverbeheerder** . Beweeg de cursor over elk veld. Het kopieersymbool wordt rechts van de tekst weergegeven. Selecteer het kopieerpictogram indien nodig om de waarden te kopiëren.
 
  :::image type="content" source="./media/quickstart-create-database-portal/8-server-name.png" alt-text="Azure Database for PostgreSQL in het menu":::
 
@@ -133,7 +133,7 @@ Er zijn een aantal toepassingen die kunt gebruiken om verbinding te maken met uw
     CREATE DATABASE mypgsqldb;
     ```
 
-3. In de prompt voert u de volgende opdracht uit om verbinding te maken met de zojuist gemaakte database **mypgsqldb**:
+3. In de prompt voert u de volgende opdracht uit om verbinding te maken met de zojuist gemaakte database **mypgsqldb** :
 
     ```bash
     \c mypgsqldb
@@ -152,19 +152,19 @@ De resources die u hebt gemaakt in de Quick Start kunt u op een van de volgende 
 
 De hele resourcegroep verwijderen, met inbegrip van de nieuwe server:
 
-1. Zoek de resourcegroep in de portal. Selecteer **Resourcegroepen** in het menu aan de linkerkant. Selecteer vervolgens de naam van de resourcegroep, zoals in het voorbeeld **myresourcegroup**.
+1. Zoek de resourcegroep in de portal. Selecteer **Resourcegroepen** in het menu aan de linkerkant. Selecteer vervolgens de naam van de resourcegroep, zoals in het voorbeeld **myresourcegroup** .
 
-2. Selecteer **Verwijderen** op de pagina van de resourcegroep. Voer vervolgens in het tekstvak de naam van de resourcegroep in, zoals **myresourcegroup** uit het voorbeeld, om het verwijderen te bevestigen. Selecteer **Verwijderen**.
+2. Selecteer **Verwijderen** op de pagina van de resourcegroep. Voer vervolgens in het tekstvak de naam van de resourcegroep in, zoals **myresourcegroup** uit het voorbeeld, om het verwijderen te bevestigen. Selecteer **Verwijderen** .
 
 Alleen de zojuist gemaakte server verwijderen:
 
 1. Als de server niet is geopend, zoekt u de server in de portal. Selecteer **Alle resources** in het menu aan de linkerkant. Zoek vervolgens naar de server die u hebt gemaakt.
 
-2. Selecteer **Verwijderen** op de pagina **Overzicht**.
+2. Selecteer **Verwijderen** op de pagina **Overzicht** .
 
     :::image type="content" source="./media/quickstart-create-database-portal/9-delete.png" alt-text="Azure Database for PostgreSQL in het menu":::
 
-3. Controleer de naam van de server die u gaat verwijderen en kijk welke databases eveneens worden verwijderd. Voer in het tekstvak de naam van uw server in, zoals **mydemoserver** uit het voorbeeld. Selecteer **Verwijderen**.
+3. Controleer de naam van de server die u gaat verwijderen en kijk welke databases eveneens worden verwijderd. Voer in het tekstvak de naam van uw server in, zoals **mydemoserver** uit het voorbeeld. Selecteer **Verwijderen** .
 
 ## <a name="next-steps"></a>Volgende stappen
 > [!div class="nextstepaction"]

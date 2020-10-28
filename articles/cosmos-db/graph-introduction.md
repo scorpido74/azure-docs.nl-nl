@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 07/10/2020
 ms.author: jasonh
-ms.openlocfilehash: 72f40a980a2f7039d036ca14c549bae8ab45abb2
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 30e1a9e4b82971180f375a006f4825832e6179e9
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279843"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490608"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Inleiding tot de Gremlin-API in Azure Cosmos DB
 
@@ -32,7 +32,7 @@ De volgende functies zijn de gedifferentieerde functies die beschikbaar zijn met
 
 * **Elastisch schaalbare doorvoer en opslag**
 
-  Grafieken moeten in de praktijk hoger worden geschaald dan de capaciteit van een enkele server. Azure Cosmos DB biedt ondersteuning voor horizontaal schaalbare graafdatabases die, wat opslag en ingerichte doorvoer betreft, een vrijwel onbeperkte grootte kunnen hebben. Naarmate de schaal van de graafdatabase wordt uitgebreid, worden de gegevens automatisch gedistribueerd met behulp van [grafiekpartitionering](https://docs.microsoft.com/azure/cosmos-db/graph-partitioning).
+  Grafieken moeten in de praktijk hoger worden geschaald dan de capaciteit van een enkele server. Azure Cosmos DB biedt ondersteuning voor horizontaal schaalbare graafdatabases die, wat opslag en ingerichte doorvoer betreft, een vrijwel onbeperkte grootte kunnen hebben. Naarmate de schaal van de graafdatabase wordt uitgebreid, worden de gegevens automatisch gedistribueerd met behulp van [grafiekpartitionering](./graph-partitioning.md).
 
 * **Replicatie naar meerdere regio's**
 
@@ -52,7 +52,7 @@ De volgende functies zijn de gedifferentieerde functies die beschikbaar zijn met
 
 * **Automatisch indexeren**
 
-  In Azure Cosmos DB worden standaard alle eigenschappen in de knooppunten (ook hoekpunten genoemd) en randen van de grafiek geïndexeerd. Er wordt geen schema verwacht of vereist en er hoeven geen secundaire indexen te worden gemaakt. Meer informatie over [indexeren in Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/index-overview).
+  In Azure Cosmos DB worden standaard alle eigenschappen in de knooppunten (ook hoekpunten genoemd) en randen van de grafiek geïndexeerd. Er wordt geen schema verwacht of vereist en er hoeven geen secundaire indexen te worden gemaakt. Meer informatie over [indexeren in Azure Cosmos DB](/azure/cosmos-db/index-overview).
 
 * **Compatibiliteit met Apache TinkerPop**
 

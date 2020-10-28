@@ -16,16 +16,16 @@ ms.date: 07/27/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b6709d7589ebf4c82ec25c6b7a79fa31a305839
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 30724edafdee0c04f0c8b004ce335072b4ce0fd4
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87506439"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367445"
 ---
 # <a name="management-capabilities-for-privileged-access-azure-ad-groups-preview"></a>Mogelijkheden voor het beheer van Azure AD-groepen met uitgebreide toegang (preview-versie)
 
-In Privileged Identity Management (PIM) kunt u nu de geschiktheid voor lidmaatschap of eigendom van groepen met uitgebreide toegang toewijzen. Met deze preview-versie kunt u ingebouwde Azure AD-rollen (Azure Active Directory) toewijzen aan cloudgroepen en PIM gebruiken voor het beheren van de geschiktheid en activering van groepsleden en eigenaren. Zie [Cloudgroepen gebruiken voor het beheren van roltoewijzingen in Azure Active Directory (preview)](../users-groups-roles/roles-groups-concept.md) voor meer informatie over groepen waarin in Azure AD rollen kunnen worden toegewezen.
+In Privileged Identity Management (PIM) kunt u nu de geschiktheid voor lidmaatschap of eigendom van groepen met uitgebreide toegang toewijzen. Met deze preview-versie kunt u ingebouwde Azure AD-rollen (Azure Active Directory) toewijzen aan cloudgroepen en PIM gebruiken voor het beheren van de geschiktheid en activering van groepsleden en eigenaren. Zie [Cloudgroepen gebruiken voor het beheren van roltoewijzingen in Azure Active Directory (preview)](../roles/groups-concept.md) voor meer informatie over groepen waarin in Azure AD rollen kunnen worden toegewezen.
 
 ## <a name="require-different-policies-for-each-role-assignable-group"></a>Verschillende beleidsregels vereisen voor elke groep waaraan rollen kunnen worden toegewezen
 

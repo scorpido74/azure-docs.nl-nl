@@ -14,12 +14,12 @@ ms.date: 09/29/2020
 ms.author: curtand
 ms.custom: pim ; azuread-video-2020
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0b7bcfa6569edd93373f493cfaa7deff2976d35
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: c3c7003ce3e8c65f6fdb7f3d847947114aee251f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540826"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370182"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Wat is Azure AD Privileged Identity Management?
 
@@ -36,7 +36,7 @@ Organisaties willen het aantal mensen dat toegang heeft tot beveiligde gegevens 
 
 Privileged Identity Management biedt op tijd en goedkeuring gebaseerde rolactiveringen om de risico's van buitensporige, onnodige of verkeerd gebruikte toegangsmachtigingen te beperken voor resources die u belangrijk vindt. Hier volgen enkele van de belangrijkste functies van Privileged Identity Management:
 
-- Bevoorrechte **JIT**-toegang (Just-In-Time) bieden aan Azure Active Directory- en Azure-resources
+- Bevoorrechte **JIT** -toegang (Just-In-Time) bieden aan Azure Active Directory- en Azure-resources
 - **Tijdsgebonden** toegang bieden aan resources met behulp van begin- en einddatums
 - **Goedkeuring** vereisen om bevoorrechte rollen te activeren
 - **Meervoudige verificatie** afdwingen om een rol te activeren
@@ -47,7 +47,7 @@ Privileged Identity Management biedt op tijd en goedkeuring gebaseerde rolactive
 
 ## <a name="what-can-i-do-with-it"></a>Wat kan ik ermee doen?
 
-Zodra u Privileged Identity Management hebt ingesteld, ziet u de opties **Taken**, **Beheren** en **Activiteit** in het navigatiemenu links. Als beheerder kunt u kiezen uit opties zoals het beheren van **Azure AD-rollen**, het beheren van **Azure-resource**-rollen of groepen met uitgebreide toegang. Wanneer u hebt gekozen wat u wilt beheren, ziet u de juiste set opties voor die optie.
+Zodra u Privileged Identity Management hebt ingesteld, ziet u de opties **Taken** , **Beheren** en **Activiteit** in het navigatiemenu links. Als beheerder kunt u kiezen uit opties zoals het beheren van **Azure AD-rollen** , het beheren van **Azure-resource** -rollen of groepen met uitgebreide toegang. Wanneer u hebt gekozen wat u wilt beheren, ziet u de juiste set opties voor die optie.
 
 ![Schermopname van Privileged Identity Management in Azure Portal](./media/pim-configure/pim-quickstart.png)
 
@@ -106,5 +106,5 @@ Zie [Licentievereisten voor het gebruik van Privileged Identity Management](subs
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Licentievereisten voor het gebruik van Privileged Identity Management](subscription-requirements.md)
-- [Bevoegde toegang beveiligen voor hybride implementaties en cloudimplementaties in Azure AD](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+- [Bevoegde toegang beveiligen voor hybride implementaties en cloudimplementaties in Azure AD](../roles/security-planning.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 - [Privileged Identity Management implementeren](pim-deployment-plan.md)

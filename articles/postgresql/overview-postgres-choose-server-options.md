@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: f81a44af4a90ccda1875c0a9f2bfaa8dc0b73441
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8bc303f619d145cc280e6caab65781bd42d1b314
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90944646"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489690"
 ---
 # <a name="choose-the-right-postgresql-server-option-in-azure"></a>De juiste PostgreSQL-serveroptie in Azure kiezen
 
@@ -86,7 +86,7 @@ Met Azure Database for PostgreSQL kunt u uw database blijven beheren. Maar u hoe
 
 Daarnaast vereist het configureren van hoge beschikbaarheid voor een ander datacentrum nauwelijks tot geen configuratie of beheer.
 
-- Met PostgreSQL op Azure VM's hebt u volledige controle over het besturingssysteem en de configuratie van het PostgreSQL-serverexemplaar. Met een VM kunt u bepalen wanneer het besturingssysteem en de databasesoftware moeten worden bijgewerkt of geüpgraded en welke patches moeten worden toegepast. U beslist ook wanneer u extra software, zoals een antivirustoepassing, installeert. Sommige geautomatiseerde functies worden geleverd om het toepassen van patches, het maken van een back-up en hoge beschikbaarheid aanzienlijk te vereenvoudigen. U kunt de grootte van de VM, het aantal schijven en hun opslagconfiguraties beheren. Zie [Groottes van virtuele machines en cloudservices voor Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) voor meer informatie.
+- Met PostgreSQL op Azure VM's hebt u volledige controle over het besturingssysteem en de configuratie van het PostgreSQL-serverexemplaar. Met een VM kunt u bepalen wanneer het besturingssysteem en de databasesoftware moeten worden bijgewerkt of geüpgraded en welke patches moeten worden toegepast. U beslist ook wanneer u extra software, zoals een antivirustoepassing, installeert. Sommige geautomatiseerde functies worden geleverd om het toepassen van patches, het maken van een back-up en hoge beschikbaarheid aanzienlijk te vereenvoudigen. U kunt de grootte van de VM, het aantal schijven en hun opslagconfiguraties beheren. Zie [Groottes van virtuele machines en cloudservices voor Azure](../virtual-machines/sizes.md) voor meer informatie.
 
 ## <a name="time-to-move-to-azure-postgresql-service-paas"></a>Tijd om over te stappen naar Azure PostgreSQL Service (PaaS)
 
@@ -98,4 +98,3 @@ Daarnaast vereist het configureren van hoge beschikbaarheid voor een ander datac
 
 - Zie de [prijzen voor Azure Database for PostgreSQL](https://azure.microsoft.com/pricing/details/postgresql/server/).
 - Ga aan de slag met het maken van uw eerste server.
-

@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/22/2020
-ms.openlocfilehash: 268eedf6f9d64d52539e20006322b6b1dd9964e8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b4df91f4654f39780f81e0a27139677431926238
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91439956"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92532659"
 ---
 # <a name="azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - Flexible Server
 
@@ -90,11 +90,9 @@ De service voor flexibele servers is uitgerust met ingebouwde functies voor pres
 
 De service voert de communityversie van PostgreSQL uit. Dit biedt volledige toepassingscompatibiliteit en vereist minimale herstructureringskosten voor het migreren van bestaande toepassingen die zijn ontwikkeld op PostgreSQL-engine naar Flexible Server. 
 
-- **Dumpen en herstellen**: voor offline migraties, waarbij gebruikers zich enige downtime kunnen veroorloven, kan dumpen en herstellen met behulp van communityhulpprogramma's, zoals pg_dump en pg_restore, de snelste manier zijn voor migratie. Zie [Migreren met behulp van dumpen en herstellen](https://docs.microsoft.com/azure/postgresql/howto-migrate-using-dump-and-restore) voor meer informatie.
-- **Azure Database Migration Service**: voor naadloze en vereenvoudigde migraties naar één server met minimale downtime kan Azure Database Migration Service worden gebruikt. Zie [DMS via portal](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online-portal) en [DMS via CLI](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online). U kunt migreren van uw Azure Database for PostgreSQL - Single Server naar Flexible Server. Zie dit [DMS-artikel](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal) voor meer informatie.
+- **Dumpen en herstellen** : voor offline migraties, waarbij gebruikers zich enige downtime kunnen veroorloven, kan dumpen en herstellen met behulp van communityhulpprogramma's, zoals pg_dump en pg_restore, de snelste manier zijn voor migratie. Zie [Migreren met behulp van dumpen en herstellen](../howto-migrate-using-dump-and-restore.md) voor meer informatie.
+- **Azure Database Migration Service** : voor naadloze en vereenvoudigde migraties naar één server met minimale downtime kan Azure Database Migration Service worden gebruikt. Zie [DMS via portal](../../dms/tutorial-postgresql-azure-postgresql-online-portal.md) en [DMS via CLI](../../dms/tutorial-postgresql-azure-postgresql-online.md). U kunt migreren van uw Azure Database for PostgreSQL - Single Server naar Flexible Server. Zie dit [DMS-artikel](../../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Nu u een inleiding tot de implementatiemodus voor flexibele servers van Azure Database for PostgreSQL hebt gelezen, bent u klaar om uw eerste server te maken: [Een Azure Database for PostgreSQL- Flexible Server maken met behulp van Azure Portal](./quickstart-create-server-portal.md)
-
-

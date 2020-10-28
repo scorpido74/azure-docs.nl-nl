@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/06/2020
 ms.author: anfeldma
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: acd5914ca9f465c69df4c017162ef92f795b235a
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b0939191a8029ef30f17500bbaaa7eb32b5a6d7e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278364"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486545"
 ---
 # <a name="quickstart-build-a-spring-data-azure-cosmos-db-v3-app-to-manage-azure-cosmos-db-sql-api-data"></a>Quickstart: EenSpring Data Azure Cosmos DB v3-app maken voor het beheren van API-gegevens van Azure Cosmos DB SQL
 
@@ -36,9 +36,9 @@ In deze quickstart maakt en beheert u een SQL API-account van Azure Cosmos DB vi
 > Spring Data Azure Cosmos DB ondersteunt alleen de SQL-API.
 >
 > Lees deze artikelen voor informatie over Spring Data op andere Azure Cosmos DB-API's:
-> * [Spring Data voor Apache Cassandra met Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
-> * [Spring Data MongoDB met Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db)
-> * [Spring Data Gremlin met Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
+> * [Spring Data voor Apache Cassandra met Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
+> * [Spring Data MongoDB met Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db)
+> * [Spring Data Gremlin met Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
 >
 
 ## <a name="prerequisites"></a>Vereisten
@@ -50,15 +50,15 @@ In deze quickstart maakt en beheert u een SQL API-account van Azure Cosmos DB vi
 
 ## <a name="introductory-notes"></a>Inleidende opmerkingen
 
-*De structuur van een Cosmos DB-account.* Ongeacht de API- of programmeer taal, bevat een Cosmos DB-*account* nul of meer *databases*, een *database* (DB) bevat nul of meer *containers* en een *container* bevat nul of meer items, zoals in het onderstaande diagram wordt weer gegeven:
+*De structuur van een Cosmos DB-account.* Ongeacht de API- of programmeer taal, bevat een Cosmos DB- *account* nul of meer *databases* , een *database* (DB) bevat nul of meer *containers* en een *container* bevat nul of meer items, zoals in het onderstaande diagram wordt weer gegeven:
 
 :::image type="content" source="./media/account-databases-containers-items/cosmos-entities.png" alt-text="Entiteiten van Azure Cosmos-account" border="false":::
 
-Vind [hier](account-databases-containers-items.md) meer informatie over databases, containers en items. Enkele belangrijke eigenschappen worden op het niveau van de container gedefinieerd, onder andere *ingerichte doorvoer* en *partitiesleutel*. 
+Vind [hier](account-databases-containers-items.md) meer informatie over databases, containers en items. Enkele belangrijke eigenschappen worden op het niveau van de container gedefinieerd, onder andere *ingerichte doorvoer* en *partitiesleutel* . 
 
-De ingerichte doorvoer wordt gemeten in de aanvraageenheden (*RU’s*) die een monetaire prijs hebben en die een substantiële bepaling van de bedrijfskosten van het account zijn. Ingerichte doorvoer kan worden geselecteerd bij granulatie op basis van een container of nauwkeurigheid per database, maar de specificatie voor doorvoer op containerniveau verdient doorgaans de voorkeur. U kunt [hier](set-throughput.md) meer lezen over het inrichten van de doorvoer.
+De ingerichte doorvoer wordt gemeten in de aanvraageenheden ( *RU’s* ) die een monetaire prijs hebben en die een substantiële bepaling van de bedrijfskosten van het account zijn. Ingerichte doorvoer kan worden geselecteerd bij granulatie op basis van een container of nauwkeurigheid per database, maar de specificatie voor doorvoer op containerniveau verdient doorgaans de voorkeur. U kunt [hier](set-throughput.md) meer lezen over het inrichten van de doorvoer.
 
-Naarmate items worden ingevoegd in een Cosmos DB-container, groeit de database horizontaal door meer opslag en rekenkracht toe te voegen voor het afhandelen van aanvragen. Opslag-en rekencapaciteit worden toegevoegd aan discrete eenheden die *partities worden genoemd* en u moet één veld in uw documenten selecteren als partitiesleutel die elk document aan een partitie toewijst. De manier waarop partities worden beheerd, is dat aan elke partitie een ongeveer gelijk segment uit het bereik van partitiesleutelwaarden wordt toegewezen. Daarom wordt u aangeraden een partitiesleutel te kiezen die relatief willekeurig of gelijkmatig gedistribueerd is. Als dat niet het geval is, zien sommige partities aanzienlijk meer aanvragen (*dynamische partitie*), terwijl andere partities aanzienlijk minder aanvragen (*statische partitie*) zien. Dit moet vermeden worden. U vind [hier](partitioning-overview.md) meer informatie over partitionering.
+Naarmate items worden ingevoegd in een Cosmos DB-container, groeit de database horizontaal door meer opslag en rekenkracht toe te voegen voor het afhandelen van aanvragen. Opslag-en rekencapaciteit worden toegevoegd aan discrete eenheden die *partities worden genoemd* en u moet één veld in uw documenten selecteren als partitiesleutel die elk document aan een partitie toewijst. De manier waarop partities worden beheerd, is dat aan elke partitie een ongeveer gelijk segment uit het bereik van partitiesleutelwaarden wordt toegewezen. Daarom wordt u aangeraden een partitiesleutel te kiezen die relatief willekeurig of gelijkmatig gedistribueerd is. Als dat niet het geval is, zien sommige partities aanzienlijk meer aanvragen ( *dynamische partitie* ), terwijl andere partities aanzienlijk minder aanvragen ( *statische partitie* ) zien. Dit moet vermeden worden. U vind [hier](partitioning-overview.md) meer informatie over partitionering.
 
 ## <a name="create-a-database-account"></a>Een databaseaccount maken
 
@@ -95,7 +95,7 @@ Deze stap is optioneel. Als u wilt weten hoe de databaseresources in de code wor
 
 ### <a name="application-configuration-file"></a>Configuratiebestand van toepassing
 
-Hier laten we zien hoe Spring Boot en Spring Data de gebruikservaring verbeteren: het proces van het maken van een Cosmos-client en het verbinden met Cosmos-resources is nu een kwestie van configuratie in plaats van code. Bij het opstarten van Spring Boot wordt al deze standaardcode verwerkt met behulp van de instellingen in **application.properties**:
+Hier laten we zien hoe Spring Boot en Spring Data de gebruikservaring verbeteren: het proces van het maken van een Cosmos-client en het verbinden met Cosmos-resources is nu een kwestie van configuratie in plaats van code. Bij het opstarten van Spring Boot wordt al deze standaardcode verwerkt met behulp van de instellingen in **application.properties** :
 
 ```xml
 cosmos.uri=${ACCOUNT_HOST}

@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8e782dc632fe4100194015c3e0adb4ceb1ac30a6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d73f225f0e6f230509c856af0d15bc02e80fcd98
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89011460"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425879"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>Quickstart: De Azure Storage SDK V11 voor .NET gebruiken om een wachtrij te beheren
 
@@ -34,7 +34,7 @@ Download en installeer vervolgens .NET Core 2.0 voor uw besturingssysteem. Als u
 - Installeer [.NET Core voor Windows](https://www.microsoft.com/net/download/windows) of [.NET Framework](https://www.microsoft.com/net/download/windows) (opgenomen in Visual Studio voor Windows)
 - Installeer [Visual Studio voor Windows](https://www.visualstudio.com/). Als u van .NET Core gebruikmaakt, is het installeren van Visual Studio optioneel.  
 
-Zie [Choose between .NET Core and .NET Framework for server apps](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server) (Kiezen tussen .NET Core en .NET Framework voor server-apps) voor informatie over de keuze tussen .NET Core en .NET Framework.
+Zie [Choose between .NET Core and .NET Framework for server apps](/dotnet/standard/choosing-core-framework-server) (Kiezen tussen .NET Core en .NET Framework voor server-apps) voor informatie over de keuze tussen .NET Core en .NET Framework.
 
 ### <a name="linux"></a>Linux
 
@@ -56,7 +56,7 @@ Gebruik [git](https://git-scm.com/) om een kopie van de toepassing naar uw ontwi
 git clone https://github.com/Azure-Samples/storage-queues-dotnet-quickstart.git
 ```
 
-Met deze opdracht wordt de opslagplaats naar uw lokale git-map gekloond. Zoek voor het openen van de Visual Studio-oplossing naar de map *storage-wachtrijen-dotnet-snelstart*, open deze en dubbelklik op *storage-wachtrijen-dotnet-snelstart.sln*. 
+Met deze opdracht wordt de opslagplaats naar uw lokale git-map gekloond. Zoek voor het openen van de Visual Studio-oplossing naar de map *storage-wachtrijen-dotnet-snelstart* , open deze en dubbelklik op *storage-wachtrijen-dotnet-snelstart.sln* . 
 
 [!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
@@ -266,14 +266,14 @@ Zie de volgende aanvullende bronnen voor .NET-ontwikkeling met Azure-wachtrijen:
 
 ### <a name="binaries-and-source-code"></a>Binaire bestanden en broncode
 
-- Download de NuGet-pakketten voor de nieuwste versie van de [Azure Storage-clientbibliotheek voor .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet)
+- Download de NuGet-pakketten voor de nieuwste versie van de [Azure Storage-clientbibliotheek voor .NET](/dotnet/api/overview/azure/storage)
     - [Algemeen](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
     - [Wachtrijen](https://www.nuget.org/packages/Azure.Storage.Queues/)
 - Bekijk de [broncode van de .NET-clientbibliotheek](https://github.com/Azure/azure-storage-net) op GitHub.
 
 ### <a name="client-library-reference-and-samples"></a>Naslaginformatie en voorbeelden voor de .NET-clientbibliotheek
 
-- Zie het [.NET API-referentiemateriaal](https://docs.microsoft.com/dotnet/api/overview/azure/storage) voor meer informatie over de .NET-clientbibliotheek.
+- Zie het [.NET API-referentiemateriaal](/dotnet/api/overview/azure/storage) voor meer informatie over de .NET-clientbibliotheek.
 - Verken [Wachtrij-opslagvoorbeelden](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=queues) die zijn geschreven met de .NET-clientbibliotheek.
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -281,6 +281,6 @@ Zie de volgende aanvullende bronnen voor .NET-ontwikkeling met Azure-wachtrijen:
 In deze quickstart hebt u geleerd u hoe u berichten aan een wachtrij kunt toevoegen, berichten uit een wachtrij kunt bekijken en weghalen en hoe u berichten kunt verwerken met behulp van .NET. 
 
 > [!div class="nextstepaction"]
-> [Communiceren tussen toepassingen met Azure Queue Storage](https://docs.microsoft.com/learn/modules/communicate-between-apps-with-azure-queue-storage/index)
+> [Communiceren tussen toepassingen met Azure Queue Storage](/learn/modules/communicate-between-apps-with-azure-queue-storage/index)
 
 - Zie voor meer informatie over .NET Core [Aan de slag met .NET in 10 minuten](https://www.microsoft.com/net/learn/get-started/).

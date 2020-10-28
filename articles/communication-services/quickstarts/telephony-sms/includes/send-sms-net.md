@@ -10,12 +10,12 @@ ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: dademath
-ms.openlocfilehash: c044e9dc7b8ee622b157a93726e7700e62ba2dfa
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: c8bce6afd914a22be80a57ae234e39161d182b7f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779134"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92499164"
 ---
 Ga aan de slag met Azure Communication Services door de clientbibliotheek voor C#-sms van Communications Services te gebruiken om sms-berichten te verzenden.
 
@@ -41,7 +41,7 @@ Voor het voltooien van deze quickstart worden kosten van een paar dollarcent of 
 
 ### <a name="create-a-new-c-application"></a>Een nieuwe C#-toepassing maken
 
-Gebruik in een consolevenster (zoals cmd, PowerShell of Bash) de opdracht `dotnet new` om een nieuwe console-app te maken met de naam `SmsQuickstart`. Met deze opdracht maakt u een eenvoudig Hallo wereld-C#-project met één bronbestand: **Program.cs**.
+Gebruik in een consolevenster (zoals cmd, PowerShell of Bash) de opdracht `dotnet new` om een nieuwe console-app te maken met de naam `SmsQuickstart`. Met deze opdracht maakt u een eenvoudig Hallo wereld-C#-project met één bronbestand: **Program.cs** .
 
 ```console
 dotnet new console -o SmsQuickstart
@@ -95,7 +95,7 @@ SmsClient smsClient = new SmsClient(connectionString);
 
 ## <a name="send-an-sms-message"></a>Een sms-bericht verzenden
 
-Een sms-bericht verzenden door de verzendmethode aan te roepen. Voeg deze code toe aan het einde van de `Main`-methode in **Program.cs**:
+Een sms-bericht verzenden door de verzendmethode aan te roepen. Voeg deze code toe aan het einde van de `Main`-methode in **Program.cs** :
 
 ```csharp
 smsClient.Send(
@@ -117,3 +117,7 @@ Voer de toepassing op vanuit uw toepassingsmap met de opdracht `dotnet run`.
 ```console
 dotnet run
 ```
+
+## <a name="sample-code"></a>Voorbeeldcode
+
+U kunt de voorbeeld-app downloaden uit [GitHub](https://github.com/Azure-Samples/communication-services-dotnet-quickstarts/tree/main/SendSMS).

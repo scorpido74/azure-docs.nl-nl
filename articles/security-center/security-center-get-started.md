@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 46bb3b1e450312a2c02fec3f98e2b3d7381b53d2
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 3a523421c128ea26503c0848ad8fcf7d74636a04
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946012"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341326"
 ---
 # <a name="quickstart-setting-up-azure-security-center"></a>Quickstart: Azure Security Center instellen
 
@@ -81,8 +81,8 @@ Automatische inrichting van de Log Analytics-agent inschakelen:
 
 1. Selecteer **Prijzen en instellingen** in het hoofdmenu van Security Center.
 1. Selecteer het betreffende abonnement.
-1. Stel op de pagina **Gegevensverzameling** **Automatische inrichting** in op **Aan**.
-1. Selecteer **Opslaan**.
+1. Stel op de pagina **Gegevensverzameling** **Automatische inrichting** in op **Aan** .
+1. Selecteer **Opslaan** .
 
     :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Overzichtsdashboard van Security Center":::
 
@@ -92,7 +92,7 @@ Automatische inrichting van de Log Analytics-agent inschakelen:
 Als de agent is geïmplementeerd op uw machines, kan Security Center extra aanbevelingen doen met betrekking tot de updatestatus van het systeem, de beveiligingsconfiguraties van het besturingssysteem en de eindpuntbeveiliging. Ook kan Security Center aanvullende beveiligingswaarschuwingen genereren.
 
 >[!NOTE]
-> Wanneer u automatische inrichting instelt op **Uit**, wordt de Log Analytics-agent niet verwijderd van Azure-VM's waarop de agent al is ingericht. Door automatische inrichting uit te schakelen, wordt de beveiligingsbewaking voor uw resources beperkt.
+> Wanneer u automatische inrichting instelt op **Uit** , wordt de Log Analytics-agent niet verwijderd van Azure-VM's waarop de agent al is ingericht. Door automatische inrichting uit te schakelen, wordt de beveiligingsbewaking voor uw resources beperkt.
 
 
 
@@ -105,7 +105,7 @@ In deze quickstart hebt u Azure Defender ingeschakeld en de Log Analytics-agent 
 Wilt u optimaliseren en op uw cloudverbruik besparen?
 
 > [!div class="nextstepaction"]
-> [Analyseer kosten met Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [Analyseer kosten met Cost Management](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
 
 <!--Image references-->
 [2]: ./media/security-center-get-started/overview.png

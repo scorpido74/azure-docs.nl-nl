@@ -12,12 +12,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08623e6d69ac4db1790c1e9b46089f0c72c0526d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bf57e60fc05d579365d459e4a5d5288c2ca52bb0
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87910501"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442147"
 ---
 # <a name="what-are-external-identities-in-azure-active-directory"></a>Wat zijn externe identiteiten in Azure Active Directory?
 
@@ -31,7 +31,7 @@ Externe identiteiten van Azure AD focussen minder op de relatie van een gebruike
 
 - **Ontwikkel apps die bedoeld zijn voor andere Azure AD-tenants (met één tenant of meerdere tenants)** . Bij het ontwikkelen van toepassingen voor Azure AD, kunt u gebruikers van één organisatie (één tenant) of gebruikers van elke organisatie die al een Azure AD-tenant heeft (toepassingen met meerdere tenants genoemd) als doel instellen. Deze toepassingen met meerdere tenants worden eenmalig in uw eigen Azure AD geregistreerd, maar kunnen vervolgens door elke Azure AD-gebruiker van elke organisatie worden gebruikt zonder dat u iets hoeft te doen.
 
-- **White label-apps ontwikkelen voor consumenten en klanten (Azure AD B2C)** . Als u een bedrijf of ontwikkelaar bent die klantgerichte apps maakt, kunt u schalen naar consumenten, klanten of burgers door gebruik te maken van een Azure AD B2C. Ontwikkelaars kunnen Azure AD als het volledig functionele identiteitssysteem gebruiken voor hun toepassing, zodat klanten zich kunnen aanmelden met een identiteit die ze al hebt gemaakt (zoals Facebook of Gmail). Met Azure AD B2C kunt u volledig aanpassen en beheren hoe klanten zich registreren en aanmelden en hoe zij hun profielen beheren wanneer ze uw toepassingen gebruiken. Zie de [Azure AD-B2C-documentatie](https://docs.microsoft.com/azure/active-directory-b2c/) voor meer informatie.
+- **White label-apps ontwikkelen voor consumenten en klanten (Azure AD B2C)** . Als u een bedrijf of ontwikkelaar bent die klantgerichte apps maakt, kunt u schalen naar consumenten, klanten of burgers door gebruik te maken van een Azure AD B2C. Ontwikkelaars kunnen Azure AD als het volledig functionele identiteitssysteem gebruiken voor hun toepassing, zodat klanten zich kunnen aanmelden met een identiteit die ze al hebt gemaakt (zoals Facebook of Gmail). Met Azure AD B2C kunt u volledig aanpassen en beheren hoe klanten zich registreren en aanmelden en hoe zij hun profielen beheren wanneer ze uw toepassingen gebruiken. Zie de [Azure AD-B2C-documentatie](../../active-directory-b2c/index.yml) voor meer informatie.
 
 ## <a name="compare-external-identities-solutions"></a>Oplossingen voor externe identiteiten vergelijken
 
@@ -45,13 +45,13 @@ De onderstaande tabel bevat een gedetailleerde vergelijking van de verschillende
 | Externe gebruikers worden beheerd in hun eigen map, geïsoleerd van de map waarin de toepassing is geregistreerd.    | Externe gebruikers worden beheerd in dezelfde map als werknemers, maar met een speciale aantekening. Ze kunnen op dezelfde manier als werknemers worden beheerd, kunnen worden toegevoegd aan dezelfde groepen, enzovoort.    | Externe gebruikers worden beheerd in de toepassingsmap. Ze worden afzonderlijk beheerd vanaf de werknemers- en partnermap van de organisatie (indien van toepassing).  |
 | Eenmalige aanmelding: SSO voor alle Azure AD verbonden apps wordt ondersteund.          | Eenmalige aanmelding: SSO voor alle Azure AD verbonden apps wordt ondersteund. U kunt bijvoorbeeld toegang bieden voor Microsoft 365 of on-premises apps en andere SaaS-apps, zoals Salesforce of Workday.    | Eenmalige aanmelding: SSO voor apps van klanten in de Azure AD B2C-tenants wordt ondersteund. SSO bij Microsoft 365 of andere SaaS-apps van Microsoft wordt niet ondersteund.    |
 | Levenscyclus van de klant: Beheerd door de thuisorganisatie van de gebruiker.      | Levenscyclus van de partner: beheerd door de host/uitnodigende organisatie.    | Levenscyclus van de klant: self-service of beheerd door de toepassing.      |
-| Beveiligingsbeleid en naleving: Beheerd door de host/uitnodigende organisatie (bijvoorbeeld met [Beleid voor voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access)).           | Beveiligingsbeleid en naleving: Beheerd door de host/uitnodigende organisatie (bijvoorbeeld met [Beleid voor voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access)). | Beveiligingsbeleid en naleving: beheerd door de toepassing.        |
+| Beveiligingsbeleid en naleving: Beheerd door de host/uitnodigende organisatie (bijvoorbeeld met [Beleid voor voorwaardelijke toegang](./conditional-access.md)).           | Beveiligingsbeleid en naleving: Beheerd door de host/uitnodigende organisatie (bijvoorbeeld met [Beleid voor voorwaardelijke toegang](./conditional-access.md)). | Beveiligingsbeleid en naleving: beheerd door de toepassing.        |
 | Branding: Merk van host/uitnodigende organisatie wordt gebruikt.   | Branding: Merk van host/uitnodigende organisatie wordt gebruikt.    | Branding: beheerd door de toepassing. Doorgaans het merkproduct, terwijl de organisatie vervaagt in de achtergrond.   |
-| Meer informatie: [Identiteitsbeheer in multitenant-toepassingen](https://docs.microsoft.com/azure/architecture/multitenant-identity/), [Instructiegids](https://docs.microsoft.com/azure/active-directory/develop/howto-convert-app-to-be-multi-tenant) | Meer informatie: [Blogpost](https://blogs.technet.microsoft.com/enterprisemobility/2017/02/01/azure-ad-b2b-new-updates-make-cross-business-collab-easy/), [Documentatie](what-is-b2b.md)                   | Meer informatie: [Productpagina](https://azure.microsoft.com/services/active-directory-b2c/), [Documentatie](https://docs.microsoft.com/azure/active-directory-b2c/)       |
+| Meer informatie: [Identiteitsbeheer in multitenant-toepassingen](/azure/architecture/multitenant-identity/), [Instructiegids](../develop/howto-convert-app-to-be-multi-tenant.md) | Meer informatie: [Blogpost](https://blogs.technet.microsoft.com/enterprisemobility/2017/02/01/azure-ad-b2b-new-updates-make-cross-business-collab-easy/), [Documentatie](what-is-b2b.md)                   | Meer informatie: [Productpagina](https://azure.microsoft.com/services/active-directory-b2c/), [Documentatie](../../active-directory-b2c/index.yml)       |
 
 Beveilig en beheer klanten en partners buiten de grenzen van uw organisatie met externe Azure AD-identiteiten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Wat is Azure AD B2B-samenwerking?](what-is-b2b.md)
-- [Over Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/overview)
+- [Over Azure AD B2C](../../active-directory-b2c/overview.md)

@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.custom: devx-track-python
-ms.openlocfilehash: 1ed15182e700f125072c69ba9bcf60caf4da5c88
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a0545ea61879b30349403e019ead69ba14f75cb9
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87873038"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486494"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Quickstart: Een Python-app maken met de API van Azure Cosmos DB voor MongoDB
 
@@ -113,21 +113,21 @@ Als u wilt testen hoe de code met een actief Azure Cosmos DB-account werkt, gaat
 
 Als u de code wilt testen in het liveaccount van Azure Cosmos DB, haalt u de verbindingsreeksgegevens op. Kopieer deze vervolgens in de app.
 
-1. Selecteer in uw Azure Cosmos DB-account in de Azure-portal, in de linkernavigatie, de optie **Verbindingsreeks**. Selecteer vervolgens **Sleutels voor lezen/schrijven**. Gebruik de kopieerknoppen aan de rechterkant van het scherm om gebruikersnaam, verbindingsreeks en wachtwoord te kopiëren. 
+1. Selecteer in uw Azure Cosmos DB-account in de Azure-portal, in de linkernavigatie, de optie **Verbindingsreeks** . Selecteer vervolgens **Sleutels voor lezen/schrijven** . Gebruik de kopieerknoppen aan de rechterkant van het scherm om gebruikersnaam, verbindingsreeks en wachtwoord te kopiëren. 
 
 2. Open het bestand *app.py* in de hoofdmap.
 
-3. Kopieer de waarde van **gebruikersnaam** van de portal (gebruik hiervoor de kopieerknop) en maak hiervan de waarde van **gebruikersnaam** in het bestand *app.py*.
+3. Kopieer de waarde van **gebruikersnaam** van de portal (gebruik hiervoor de kopieerknop) en maak hiervan de waarde van **gebruikersnaam** in het bestand *app.py* .
 
-4. Kopieer de waarde van **verbindingsreeks** van de portal en maak hiervan de waarde van de **MongoClient** in het bestand *app.py*.
+4. Kopieer de waarde van **verbindingsreeks** van de portal en maak hiervan de waarde van de **MongoClient** in het bestand *app.py* .
 
-5. Kopieer ten slotte de waarde van **wachtwoord** van de portal en maak hiervan de waarde van **wachtwoord** in het bestand *app.py*.
+5. Kopieer ten slotte de waarde van **wachtwoord** van de portal en maak hiervan de waarde van **wachtwoord** in het bestand *app.py* .
 
 U hebt uw app nu bijgewerkt met alle informatie die nodig is voor de communicatie met Azure Cosmos DB. U kunt deze nu net als voorheen uitvoeren.
 
 ## <a name="deploy-to-azure"></a>Implementeren in Azure
 
-Als u deze app wilt implementeren, kunt u een nieuwe web-app maken in Azure en continue implementatie inschakelen met een fork van deze GitHub-opslagplaats. Volg deze [zelfstudie](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment) voor het instellen van continue implementatie met GitHub in Azure.
+Als u deze app wilt implementeren, kunt u een nieuwe web-app maken in Azure en continue implementatie inschakelen met een fork van deze GitHub-opslagplaats. Volg deze [zelfstudie](../app-service/deploy-continuous-deployment.md) voor het instellen van continue implementatie met GitHub in Azure.
 
 Wanneer u Azure implementeert, moet u de sleutels van uw toepassing verwijderen en controleren of de onderstaande sectie als opmerking is opgenomen:
 
@@ -137,7 +137,7 @@ Wanneer u Azure implementeert, moet u de sleutels van uw toepassing verwijderen 
     db.authenticate(name=os.getenv("MONGO_USERNAME"),password=os.getenv("MONGO_PASSWORD"))
 ```
 
-Vervolgens moet u uw MONGOURL, MONGO_PASSWORD en MONGO_USERNAME toevoegen aan de toepassingsinstellingen. In deze [zelfstudie](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings) vindt u meer informatie over toepassingsinstellingen in Azure Web Apps.
+Vervolgens moet u uw MONGOURL, MONGO_PASSWORD en MONGO_USERNAME toevoegen aan de toepassingsinstellingen. In deze [zelfstudie](../app-service/configure-common.md#configure-app-settings) vindt u meer informatie over toepassingsinstellingen in Azure Web Apps.
 
 Als u van deze opslagplaats geen fork wilt maken, kunt u ook de knop **Implementeren naar Azure** hieronder selecteren. Vervolgens gaat u naar Azure en stelt u daar de toepassingsinstellingen in op basis van de gegevens van uw Azure Cosmos DB-account.
 
@@ -161,4 +161,4 @@ Als u van deze opslagplaats geen fork wilt maken, kunt u ook de knop **Implement
 In deze quickstart hebt u geleerd hoe u een Azure Cosmos DB voor MongoDB-API-account maakt en het Azure Cosmos DB Emulator-account gebruikt om een Python Flask To Do-web-app uit te voeren die is gekloond uit GitHub. Nu kunt u aanvullende gegevens in uw Azure Cosmos DB-account importeren. 
 
 > [!div class="nextstepaction"]
-> [MongoDB-gegevens importeren in Azure Cosmos DB](mongodb-migrate.md)
+> [MongoDB-gegevens importeren in Azure Cosmos DB](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)

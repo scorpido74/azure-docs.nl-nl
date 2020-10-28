@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ecbebfc75cb8c77ebb99ad04b1f9e33b3c4ef64
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e02df83d4b7874a1d158aae45f1619eb543e0aec
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91306460"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362447"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Wat is Azure AD Identity Governance?
 
@@ -42,7 +42,7 @@ Het is met name bedoeld om organisaties te helpen bij het oplossen van deze vier
 
 ## <a name="identity-lifecycle"></a>Identiteitslevenscyclus
 
-Met Identity Governance kunnen organisaties een balans vinden tussen *productiviteit*: hoe snel kunnen personen toegang krijgen tot de resources die ze nodig hebben, bijvoorbeeld wanneer ze deel uit gaan maken van mijn organisatie? En *veiligheid*: hoe moet de toegang in de loop van de tijd worden aangepast, bijvoorbeeld als gevolg van wijzigingen in de werknemersstatus van die persoon?  Het beheer van identiteitslevenscycli vormt de basis voor Identity Governance en voor een effectief beheer op schaal moet de infrastructuur voor het identiteitslevenscyclusbeheer voor toepassingen worden gemoderniseerd.
+Met Identity Governance kunnen organisaties een balans vinden tussen *productiviteit* : hoe snel kunnen personen toegang krijgen tot de resources die ze nodig hebben, bijvoorbeeld wanneer ze deel uit gaan maken van mijn organisatie? En *veiligheid* : hoe moet de toegang in de loop van de tijd worden aangepast, bijvoorbeeld als gevolg van wijzigingen in de werknemersstatus van die persoon?  Het beheer van identiteitslevenscycli vormt de basis voor Identity Governance en voor een effectief beheer op schaal moet de infrastructuur voor het identiteitslevenscyclusbeheer voor toepassingen worden gemoderniseerd.
 
 ![Identiteitslevenscyclus](./media/identity-governance-overview/identity-lifecycle.png)
 
@@ -58,7 +58,7 @@ Organisaties hebben een proces nodig waarmee de toegang wordt beheerd nadat deze
 
 Normaal gesproken worden goedkeuringsbeslissingen met betrekking tot de toegang door de IT-afdeling overgelaten aan besluitvormers van het bedrijf.  Daarnaast kan de IT-afdeling de gebruikers hierbij betrekken.  Gebruikers die toegang hebben tot vertrouwelijke klantgegevens in de marketingtoepassing van een bedrijf in Europa moeten bijvoorbeeld op de hoogte zijn van het bedrijfsbeleid. Gastgebruikers zijn mogelijk niet op de hoogte van de verwerkingsvereisten voor gegevens in een organisatie waardoor ze zijn uitgenodigd.
 
-Organisaties kunnen het toegangslevenscyclusproces automatiseren via technologieën als [dynamische groepen](../users-groups-roles/groups-dynamic-membership.md), in combinatie met het inrichten van gebruikers voor [SaaS-apps](../saas-apps/tutorial-list.md) of [apps die zijn geïntegreerd met SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md).  Organisaties kunnen ook bepalen welke [gastgebruikers toegang hebben tot on-premises toepassingen](../external-identities/hybrid-cloud-to-on-premises.md).  Deze toegangsrechten kunnen vervolgens regelmatig worden geëvalueerd met behulp van herhaaldelijke [Azure AD-toegangsbeoordelingen](access-reviews-overview.md).   [Azure AD-rechtenbeheer](entitlement-management-overview.md) stelt u ook in staat om te definiëren hoe gebruikers toegang aanvragen in pakketten van groeps- en teamlidmaatschappen, toepassingsrollen en SharePoint Online-rollen.
+Organisaties kunnen het toegangslevenscyclusproces automatiseren via technologieën als [dynamische groepen](../enterprise-users/groups-dynamic-membership.md), in combinatie met het inrichten van gebruikers voor [SaaS-apps](../saas-apps/tutorial-list.md) of [apps die zijn geïntegreerd met SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md).  Organisaties kunnen ook bepalen welke [gastgebruikers toegang hebben tot on-premises toepassingen](../external-identities/hybrid-cloud-to-on-premises.md).  Deze toegangsrechten kunnen vervolgens regelmatig worden geëvalueerd met behulp van herhaaldelijke [Azure AD-toegangsbeoordelingen](access-reviews-overview.md).   [Azure AD-rechtenbeheer](entitlement-management-overview.md) stelt u ook in staat om te definiëren hoe gebruikers toegang aanvragen in pakketten van groeps- en teamlidmaatschappen, toepassingsrollen en SharePoint Online-rollen.
 
 Wanneer een gebruiker toegang probeert te krijgen tot toepassingen, dwingt Azure AD beleid voor [voorwaardelijke toegang](../conditional-access/index.yml) af. Het beleid voor voorwaardelijke toegang kan bijvoorbeeld bestaan uit het weergeven van [gebruiksvoorwaarden](../conditional-access/terms-of-use.md) en [het afdwingen dat de gebruiker akkoord gaat met deze voorwaarden](../conditional-access/require-tou.md) voordat ze toegang kunnen krijgen tot een toepassing.
 
@@ -100,7 +100,7 @@ Als u feedback hebt over Identity Governance-functies, klikt u op **Hebt u feedb
 Hoewel er geen perfecte oplossing of aanbeveling bestaat voor elke klant, bevatten de volgende configuratiehandleidingen ook het minimale beleid dat door Microsoft wordt aanbevolen zodat u over beter beveiligd en productiever personeel beschikt.
 
 - [Configuraties voor identiteiten en apparaattoegang](/microsoft-365/enterprise/microsoft-365-policies-configurations)
-- [Uitgebreide toegang beveiligen](../users-groups-roles/directory-admin-roles-secure.md)
+- [Uitgebreide toegang beveiligen](../roles/security-planning.md)
 
 ## <a name="appendix---least-privileged-roles-for-managing-in-identity-governance-features"></a>Bijlage: minst bevoorrechte rollen voor het uitvoeren van beheertaken in Identity Governance-functies
 

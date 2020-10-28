@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 301bedc75d243f427120c955bda539508ff43200
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a831921ec3b3fa755496c08c02665b1c0fe99557
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87323635"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475954"
 ---
 # <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>Quickstart: Een console-app maken met Java en de MongoDB-API in Azure Cosmos DB
 
@@ -41,7 +41,7 @@ In deze quickstart maakt en beheert u een Azure Cosmos DB voor MongoDB-API-accou
 
 ## <a name="add-a-collection"></a>Een verzameling toevoegen
 
-Geef uw nieuwe database de naam **db**, en uw nieuwe verzameling **verz**.
+Geef uw nieuwe database de naam **db** , en uw nieuwe verzameling **verz** .
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-mongodb-create-collection.md)] 
 
@@ -73,7 +73,7 @@ We gaan nu een app klonen vanaf GitHub, de verbindingsreeks instellen en de app 
 
 Deze stap is optioneel. Als u wilt weten hoe de databaseresources in de code worden gemaakt, kunt u de volgende codefragmenten bekijken. Als u deze stap wilt overslaan, kunt u verdergaan naar [Uw verbindingsreeks bijwerken](#update-your-connection-string). 
 
-De volgende codefragmenten zijn allemaal afkomstig uit het bestand *Program.java*.
+De volgende codefragmenten zijn allemaal afkomstig uit het bestand *Program.java* .
 
 Deze console-app maakt gebruik van het [MongoDB Java-stuurprogramma](https://docs.mongodb.com/ecosystem/drivers/java/). 
 
@@ -111,9 +111,9 @@ Deze console-app maakt gebruik van het [MongoDB Java-stuurprogramma](https://doc
 
 Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en kopieer deze in de app.
 
-1. Selecteer in uw Azure Cosmos DB-account de optie **Snel starten**, selecteer **Java** en kopieer vervolgens de verbindingsreeks naar het klembord.
+1. Selecteer in uw Azure Cosmos DB-account de optie **Snel starten** , selecteer **Java** en kopieer vervolgens de verbindingsreeks naar het klembord.
 
-2. Open het bestand *Program.java*, vervang het argument voor de MongoClientURI-constructor door de verbindingsreeks. U hebt uw app nu bijgewerkt met alle informatie die nodig is voor de communicatie met Azure Cosmos DB. 
+2. Open het bestand *Program.java* , vervang het argument voor de MongoClientURI-constructor door de verbindingsreeks. U hebt uw app nu bijgewerkt met alle informatie die nodig is voor de communicatie met Azure Cosmos DB. 
     
 ## <a name="run-the-console-app"></a>De console-app uitvoeren
 
@@ -136,4 +136,4 @@ U kunt nu [Robomongo](mongodb-robomongo.md) / [Studio 3T](mongodb-mongochef.md) 
 In deze quickstart hebt u geleerd hoe u een Azure Cosmos DB API voor MongoDB-account maakt, een database en container toevoegt met behulp van Data Explorer, en gegevens toevoegt met behulp van een Java-console-app. Nu kunt u aanvullende gegevens in uw Cosmos database importeren. 
 
 > [!div class="nextstepaction"]
-> [MongoDB-gegevens importeren in Azure Cosmos DB](mongodb-migrate.md)
+> [MongoDB-gegevens importeren in Azure Cosmos DB](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)

@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: aad69a34cc27f341bec5beda0f52e2581538aaf9
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: cd6bbe963f0cee89c188053d0770816fdabc1b93
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278424"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490387"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Welkom bij Azure Cosmos DB
 
@@ -40,7 +40,7 @@ Door de hechte integratie met de infrastructuur van Azure en de [transparante re
 
 ### <a name="elastic-scalability-of-throughput-and-storage-worldwide"></a>Doorvoer en opslag wereldwijd elastisch schalen
 
-Cosmos DB is ontwikkeld met transparante horizontale partitionering en replicatie voor schrijfbewerking in meerdere regio's en biedt nog nooit eerder vertoonde elastische schaalbaarheid voor uw schrijf- en leesbewerkingen, overal ter wereld. U kunt met een enkele API-aanroep elastisch opschalen van duizenden tot honderden miljoenen aanvragen per seconde over de hele wereld, en toch u betaalt u alleen voor de doorvoer (en opslag) die u nodig hebt. Deze mogelijkheid helpt u om onverwachte pieken in uw werkbelastingen te kunnen verwerken zonder dat u zich met excessieve inrichting hoeft bezig te houden om de piek aan te kunnen. Zie [Partitionering in Cosmos DB](partitioning-overview.md), [Ingerichte doorvoer op containers en databases](set-throughput.md) en [Doorvoer wereldwijd inrichten](scaling-throughput.md) voor meer informatie.
+Cosmos DB is ontwikkeld met transparante horizontale partitionering en replicatie voor schrijfbewerking in meerdere regio's en biedt nog nooit eerder vertoonde elastische schaalbaarheid voor uw schrijf- en leesbewerkingen, overal ter wereld. U kunt met een enkele API-aanroep elastisch opschalen van duizenden tot honderden miljoenen aanvragen per seconde over de hele wereld, en toch u betaalt u alleen voor de doorvoer (en opslag) die u nodig hebt. Deze mogelijkheid helpt u om onverwachte pieken in uw werkbelastingen te kunnen verwerken zonder dat u zich met excessieve inrichting hoeft bezig te houden om de piek aan te kunnen. Zie [Partitionering in Cosmos DB](partitioning-overview.md), [Ingerichte doorvoer op containers en databases](set-throughput.md) en [Doorvoer wereldwijd inrichten](./request-units.md) voor meer informatie.
 
 ### <a name="guaranteed-low-latency-at-99th-percentile-worldwide"></a>Gegarandeerde lage latentie in het 99e percentiel, wereldwijd
 
@@ -48,7 +48,7 @@ Met Cosmos DB kunt u hoog-responsieve wereldwijde toepassingen bouwen. Dankzij h
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>Nauwkeurig gedefinieerde, meerdere consistentiekeuzes
 
-Wanneer u wereldwijd gedistribueerde toepassingen in Cosmos DB maakt, hoeft u niet langer verregaande [compromissen tussen consistentie, beschikbaarheid, latentie en doorvoer](consistency-levels-tradeoffs.md) te sluiten. Het replicatieprotocol voor meerdere regio's van Cosmos DB biedt [vijf duidelijk gedefinieerde consistentieniveaus](consistency-levels.md) - *sterk* , *gebonden veroudering* , *sessie* , *consistent voorvoegsel* en *uiteindelijk* – voor een intuïtief programmeermodel met lage latentie en hoge beschikbaarheid voor uw wereldwijde toepassing.
+Wanneer u wereldwijd gedistribueerde toepassingen in Cosmos DB maakt, hoeft u niet langer verregaande [compromissen tussen consistentie, beschikbaarheid, latentie en doorvoer](./consistency-levels.md) te sluiten. Het replicatieprotocol voor meerdere regio's van Cosmos DB biedt [vijf duidelijk gedefinieerde consistentieniveaus](consistency-levels.md) - *sterk* , *gebonden veroudering* , *sessie* , *consistent voorvoegsel* en *uiteindelijk* – voor een intuïtief programmeermodel met lage latentie en hoge beschikbaarheid voor uw wereldwijde toepassing.
 
 ### <a name="no-schema-or-index-management"></a>Geen schema- of indexbeheer
 
@@ -76,11 +76,11 @@ Cosmos DB is de eerste en enige service die [toonaangevende SLA's](https://azure
 
 ### <a name="globally-distributed-operational-analytics-and-ai-with-natively-built-in-apache-spark"></a>Wereldwijd gedistribueerde operationele analyse en AI met ingebouwde Apache Spark
 
-U kunt [Spark](spark-connector.md) rechtstreeks uitvoeren op gegevens die zijn opgeslagen in Cosmos DB. Op deze manier kunt u op wereldwijde schaal operationele analyses met een lage latentie uitvoeren zonder dat dit gevolgen heeft voor transactionele workloads die rechtstreeks van Cosmos DB gebruikmaken. Zie [Wereldwijd gedistribueerde operationele analyse](lambda-architecture.md)voor meer informatie.
+U kunt [Spark](spark-connector.md) rechtstreeks uitvoeren op gegevens die zijn opgeslagen in Cosmos DB. Op deze manier kunt u op wereldwijde schaal operationele analyses met een lage latentie uitvoeren zonder dat dit gevolgen heeft voor transactionele workloads die rechtstreeks van Cosmos DB gebruikmaken. Zie [Wereldwijd gedistribueerde operationele analyse](./synapse-link.md)voor meer informatie.
 
 ### <a name="develop-applications-on-cosmos-db-using-popular-open-source-software-oss-apis"></a>Toepassingen ontwikkelen op Cosmos DB met behulp van populaire OSS-API's (open source software)
 
-Cosmos DB biedt een keuze uit API's voor het werken met uw gegevens die zijn opgeslagen in uw Cosmos-database. U kunt standaard [SQL gebruiken](how-to-sql-query.md) (een kern-API) voor het uitvoeren van een query op uw Cosmos-database. Cosmos DB implementeert ook API’s voor[Cassandra](cassandra-introduction.md), [MongoDB](mongodb-introduction.md), [Gremlin](graph-introduction.md) en [Azure Table Storage](table-introduction.md). U kunt stuurprogramma's (en hulpprogramma's) van clients voor de meestgebruikte NoSQL-API's (zoals MongoDB, Cassandra en Gremlin) rechtstreeks naar uw Cosmos-database verwijzen. Door ondersteuning te bieden voor wire-protocollen van veelgebruikte NoSQL-API's kan Cosmos DB u het volgende bieden:
+Cosmos DB biedt een keuze uit API's voor het werken met uw gegevens die zijn opgeslagen in uw Cosmos-database. U kunt standaard [SQL gebruiken](./sql-query-getting-started.md) (een kern-API) voor het uitvoeren van een query op uw Cosmos-database. Cosmos DB implementeert ook API’s voor[Cassandra](cassandra-introduction.md), [MongoDB](mongodb-introduction.md), [Gremlin](graph-introduction.md) en [Azure Table Storage](table-introduction.md). U kunt stuurprogramma's (en hulpprogramma's) van clients voor de meestgebruikte NoSQL-API's (zoals MongoDB, Cassandra en Gremlin) rechtstreeks naar uw Cosmos-database verwijzen. Door ondersteuning te bieden voor wire-protocollen van veelgebruikte NoSQL-API's kan Cosmos DB u het volgende bieden:
 
 * U kunt uw toepassing eenvoudig migreren naar Cosmos DB met behoud van belangrijke onderdelen van uw toepassingslogica.
 * Behoud de overdraagbaarheid van uw toepassing zonder dat u de vrijheid verliest om van cloudleverancier te veranderen.

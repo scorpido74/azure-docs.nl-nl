@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: f9d472b94b5490d00eac6d160af40c61d547534b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 89e8a6a2abfc38c497be646bd70910895f92588f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107484"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489316"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Door Azure Cosmos DB Cassandra API ondersteunde Apache Cassandra-functies 
 
@@ -208,7 +208,7 @@ U kunt ook verbinding maken met de Cassandra-API in Azure Cosmos DB met behulp v
 
 **Windows:**
 
-Als u Windows gebruikt, raden we u aan om het [Windows-bestandssysteem voor Linux](https://docs.microsoft.com/windows/wsl/install-win10#install-the-windows-subsystem-for-linux) in te schakelen. U kunt vervolgens de onderstaande Linux-opdrachten volgen.
+Als u Windows gebruikt, raden we u aan om het [Windows-bestandssysteem voor Linux](/windows/wsl/install-win10#install-the-windows-subsystem-for-linux) in te schakelen. U kunt vervolgens de onderstaande Linux-opdrachten volgen.
 
 **UNIX/Linux/Mac:**
 
@@ -255,7 +255,7 @@ foreach (string key in insertResult.Info.IncomingPayload)
 
 ## <a name="consistency-mapping"></a>Consistentietoewijzing 
 
-Azure Cosmos DB Cassandra-API biedt een keuze aan consistentie voor leesbewerkingen.  [Hier](consistency-levels-across-apis.md#cassandra-mapping) vindt u de details van de consistentietoewijzing.
+Azure Cosmos DB Cassandra-API biedt een keuze aan consistentie voor leesbewerkingen.  [Hier](./cassandra-consistency.md#mapping-consistency-levels) vindt u de details van de consistentietoewijzing.
 
 ## <a name="permission-and-role-management"></a>Machtigings- en rolbeheer
 

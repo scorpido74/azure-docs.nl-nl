@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 07/14/2020
-ms.openlocfilehash: ba53fb786b1d1f61535168cda2152049a12dfb99
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 87f3ea2d1ce8d3d9f2f584db379618fc6c4a4a67
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86535560"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491237"
 ---
 # <a name="quickstart-build-a-go-app-with-the-gocql-client-to-manage-azure-cosmos-db-cassandra-api-data"></a>Quickstart: Een Go-app bouwen met de client `gocql` om Azure Cosmos DB Cassandra-API-gegevens te beheren
 
@@ -85,7 +85,7 @@ func GetSession(cosmosCassandraContactPoint, cosmosCassandraPort, cosmosCassandr
 }
 ```
 
-De Azure Cosmos DB Cassandra-host wordt door gegeven aan de [`gocql.NewCluster`](https://godoc.org/github.com/gocql/gocql#NewCluster)-functie om een struct [`*gocql.ClusterConfig`](https://godoc.org/github.com/gocql/gocql#ClusterConfig) te verkrijgen die vervolgens is geconfigureerd voor het gebruik van de gebruikersnaam, het wachtwoord, de poort en de juiste TLS-versie ([vereiste voor de beveiliging van HTTPS/SSL/TLS-versleuteling](https://docs.microsoft.com/azure/cosmos-db/database-security?WT.mc_id=cassandrago-docs-abhishgu#how-does-azure-cosmos-db-secure-my-database))
+De Azure Cosmos DB Cassandra-host wordt door gegeven aan de [`gocql.NewCluster`](https://godoc.org/github.com/gocql/gocql#NewCluster)-functie om een struct [`*gocql.ClusterConfig`](https://godoc.org/github.com/gocql/gocql#ClusterConfig) te verkrijgen die vervolgens is geconfigureerd voor het gebruik van de gebruikersnaam, het wachtwoord, de poort en de juiste TLS-versie ([vereiste voor de beveiliging van HTTPS/SSL/TLS-versleuteling](./database-security.md?WT.mc_id=cassandrago-docs-abhishgu#how-does-azure-cosmos-db-secure-my-database))
 
 De functie `GetSession` wordt vervolgens aangeroepen vanuit de functie `main` (`main.go`).
 
@@ -225,7 +225,7 @@ func mapToUser(m map[string]interface{}) model.User {
 
 Zoals eerder vermeld, accepteert de toepassing connectiviteit en referenties in de vorm van de omgevingsvariabelen. 
 
-1. Selecteer in uw Azure Cosmos DB-account in de [Azure-portal](https://portal.azure.com/) de optie **Verbindingsreeks**. 
+1. Selecteer in uw Azure Cosmos DB-account in de [Azure-portal](https://portal.azure.com/) de optie **Verbindingsreeks** . 
 
     :::image type="content" source="./media/create-cassandra-go/copy-username-connection-string-azure-portal.png" alt-text="Details uit de pagina Verbindingsreeks bekijken en kopiëren via Azure Portal":::
 

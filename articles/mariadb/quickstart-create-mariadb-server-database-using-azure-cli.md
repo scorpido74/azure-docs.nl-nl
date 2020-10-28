@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 7fe68e7b1a56c22e8c0d9638408982518105888e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 198a8eee38da2738552bc5e2a2ba52e13a890122
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88185142"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424489"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Quickstart: Een Azure Database for MariaDB-server maken met behulp van de Azure CLI
 
@@ -33,7 +33,7 @@ az account set --subscription 00000000-0000-0000-0000-000000000000
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Maak een [Azure-resourcegroep](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) met de opdracht [az group create](/cli/azure/group#az-group-create). Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en groepsgewijs worden beheerd.
+Maak een [Azure-resourcegroep](../azure-resource-manager/management/overview.md) met de opdracht [az group create](/cli/azure/group#az-group-create). Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en groepsgewijs worden beheerd.
 
 In het volgende voorbeeld wordt een resourcegroep met de naam `myresourcegroup` gemaakt op de locatie `westus`:
 
@@ -49,14 +49,14 @@ Instelling | Voorbeeldwaarde | Beschrijving
 ---|---|---
 naam | **mydemoserver** | Voer een unieke naam in ter identificatie van de Azure Database for MariaDB-server. De servernaam mag alleen kleine letters, cijfers en het koppelteken (-) bevatten. Dit wachtwoord moet tussen 3 en 63 tekens bevatten.
 resource-group | **myresourcegroup** | Voer de naam van de Azure-resourcegroep in.
-sku-name | **GP_Gen5_2** | De naam van de SKU. Volgt de verkorte notatie voor conventie *{prijscategorie}* \_ *{compute-bewerking}* \_ *{vCores}* . Zie de sectie onder deze tabel voor meer informatie over de parameter **sku-name**.
+sku-name | **GP_Gen5_2** | De naam van de SKU. Volgt de verkorte notatie voor conventie *{prijscategorie}* \_ *{compute-bewerking}* \_ *{vCores}* . Zie de sectie onder deze tabel voor meer informatie over de parameter **sku-name** .
 backup-retention | **7** | Hoe lang een back-up moet worden bewaard. De eenheid is dagen. Bereik: 7 tot 35. 
-geo-redundant-backup | **Uitgeschakeld** | Of geografisch redundante back-ups moeten worden ingeschakeld voor deze server. Toegestane waarden: **Ingeschakeld**, **Uitgeschakeld**.
+geo-redundant-backup | **Uitgeschakeld** | Of geografisch redundante back-ups moeten worden ingeschakeld voor deze server. Toegestane waarden: **Ingeschakeld** , **Uitgeschakeld** .
 location | **westus** | De Azure-locatie voor de server.
-ssl-enforcement | **Ingeschakeld** | Of SSL moet worden ingeschakeld voor deze server. Toegestane waarden: **Ingeschakeld**, **Uitgeschakeld**.
+ssl-enforcement | **Ingeschakeld** | Of SSL moet worden ingeschakeld voor deze server. Toegestane waarden: **Ingeschakeld** , **Uitgeschakeld** .
 storage-size | **51200** | De opslagcapaciteit van de server (de eenheid is MB). Geldige opslagruimten zijn 5.120 MB (minimaal) met verhogingen in stappen van 1024 MB. Zie [Prijscategorieën](./concepts-pricing-tiers.md) voor meer informatie over de opslaglimieten. 
 versie | **10.2** | De versie van de hoofd-engine van MariaDB.
-admin-user | **myadmin** | De gebruikersnaam voor aanmelding als beheerder. De parameter voor **admin-user** kan niet **azure_superuser**, **admin**, **administrator**, **root**, **guest** of **public** zijn.
+admin-user | **myadmin** | De gebruikersnaam voor aanmelding als beheerder. De parameter voor **admin-user** kan niet **azure_superuser** , **admin** , **administrator** , **root** , **guest** of **public** zijn.
 admin-password | *Uw wachtwoord* | Het wachtwoord van het beheerdersaccount. Uw wachtwoord moet tussen 8 en 128 tekens bevatten. Het moet tekens bevatten uit drie van de volgende categorieën: Nederlandse hoofdletters, Nederlandse kleine letters, cijfers en niet-alfanumerieke tekens.
 
 De parameterwaarde voor de sku-naam volgt de conventie {prijscategorie} \_{compute-generatie}\_{vCores}, zoals in de onderstaande voorbeelden:
@@ -106,7 +106,7 @@ Als u verbinding met uw server wilt maken, moet u hostgegevens en toegangsrefere
 az mariadb server show --resource-group myresourcegroup --name mydemoserver
 ```
 
-Het resultaat wordt in JSON-indeling weergegeven. Noteer de waarden voor **fullyQualifiedDomainName** en de **administratorLogin**.
+Het resultaat wordt in JSON-indeling weergegeven. Noteer de waarden voor **fullyQualifiedDomainName** en de **administratorLogin** .
 
 ```json
 {
@@ -206,7 +206,7 @@ Maak als volgt verbinding met de server met het opdrachtregelprogramma mysql:
 
 1. Open MySQL Workbench op uw clientcomputer. Als dit nog niet is geïnstalleerd, [downloadt](https://dev.mysql.com/downloads/workbench/) en installeert u de toepassing.
 
-2. Voer in het dialoogvenster **Nieuwe verbinding instellen** de volgende gegevens in op het tabblad **Parameters**:
+2. Voer in het dialoogvenster **Nieuwe verbinding instellen** de volgende gegevens in op het tabblad **Parameters** :
 
    ![Een nieuwe verbinding instellen](./media/quickstart-create-mariadb-server-database-using-azure-cli/setup-new-connection.png)
 
@@ -240,4 +240,4 @@ az mariadb server delete --resource-group myresourcegroup --name mydemoserver
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een MariaDB-database ontwerpen met Azure CLI](./tutorial-design-database-cli.md)
+> [Een MariaDB-database ontwerpen met Azure CLI](tutorial-design-database-cli.md)

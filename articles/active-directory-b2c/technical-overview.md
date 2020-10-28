@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9d4e709b2a844db9d0be55de2630ce799edb01ff
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 80ae79f73a55d5feb1aede7ccc7d3b2b64682a24
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87921670"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364079"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Technisch overzicht en functieoverzicht van Azure Active Directory B2C
 
@@ -28,15 +28,15 @@ In Azure Active Directory B2C (Azure AD B2C) vertegenwoordigt een *tenant* uw or
 Dit zijn de primaire resources waarmee u werkt in een Azure AD B2C-tenant:
 
 * **Directory-** : de *directory* is de locatie waar Azure AD B2C de referenties en profielgegevens van uw gebruikers opslaat, evenals de registraties van uw toepassingen.
-* **Toepassingsregistraties**: u kunt uw web-, mobiele en systeemeigen toepassingen registreren bij Azure AD B2C om identiteitsbeheer in te schakelen. Dit geldt ook voor eventuele API's die u wilt beveiligen met Azure AD B2C.
-* **Gebruikersstromen** en **aangepaste beleidsregels**: de ingebouwde (gebruikersstromen) en volledig aanpasbare (aangepaste beleidsregels) identiteitservaringen voor uw toepassingen.
+* **Toepassingsregistraties** : u kunt uw web-, mobiele en systeemeigen toepassingen registreren bij Azure AD B2C om identiteitsbeheer in te schakelen. Dit geldt ook voor eventuele API's die u wilt beveiligen met Azure AD B2C.
+* **Gebruikersstromen** en **aangepaste beleidsregels** : de ingebouwde (gebruikersstromen) en volledig aanpasbare (aangepaste beleidsregels) identiteitservaringen voor uw toepassingen.
   * Gebruik *gebruikersstromen* voor snelle configuratie en inschakeling van algemene identiteitstaken zoals registreren, aanmelden en profielbewerking.
   * Gebruik *aangepaste beleidsregels* om gebruikerservaringen niet alleen in te schakelen voor de algemene identiteitstaken, maar ook voor het bieden van ondersteuning voor complexe identiteitswerkstromen die uniek zijn voor uw organisatie, klanten, werknemers, partners en burgers.
-* **Id-providers**: federatie-instellingen voor:
+* **Id-providers** : federatie-instellingen voor:
   * Id-providers voor *sociale netwerken* zoals Facebook, LinkedIn of Twitter die u wilt ondersteunen in uw toepassingen.
   * *Externe* id-providers die ondersteuning bieden voor standaardidentiteitsprotocollen zoals OAuth 2.0 en OpenID Connect.
   * *Lokale* accounts waarmee gebruikers zich kunnen registreren en kunnen aanmelden met een gebruikersnaam (of een e-mailadres of een andere id) en een wachtwoord.
-* **Sleutels**: u kunt versleutelingssleutels toevoegen en beheren voor het ondertekenen en valideren van tokens, clientgeheimen, certificaten en wachtwoorden.
+* **Sleutels** : u kunt versleutelingssleutels toevoegen en beheren voor het ondertekenen en valideren van tokens, clientgeheimen, certificaten en wachtwoorden.
 
 Een Azure AD B2C-tenant is de eerste resource die u moet maken om aan de slag te gaan met Azure AD B2C. Ga voor meer informatie naar [Zelfstudie: Een Azure Active Directory B2C-tenant maken](tutorial-create-tenant.md).
 
@@ -44,9 +44,9 @@ Een Azure AD B2C-tenant is de eerste resource die u moet maken om aan de slag te
 
 In Azure AD B2C wordt onderscheid gemaakt tussen verschillende typen gebruikersaccounts. Azure Active Directory, Azure Active Directory B2B en Azure Active Directory B2C delen deze accounttypen.
 
-* **Werkaccount**: gebruikers met werkaccounts kunnen resources in een tenant beheren, en met de rol van beheerder kunnen ze tenants ook beheren. Gebruikers met werkaccounts kunnen nieuwe consumentenaccounts maken, wachtwoorden opnieuw instellen, accountsblokkeren/deblokkeren, en machtigingen instellen of een account toewijzen aan een beveiligingsgroep.
-* **Gastaccount**: externe gebruikers die u als gast uitnodigt voor uw tenant. Een typisch scenario voor het uitnodigen van een gastgebruiker voor uw Azure AD B2C-tenant is voor het delen van beheerderstaken.
-* **Consumentenaccount**: consumentenaccounts zijn de accounts die worden gemaakt in uw Azure AD B2C-directory wanneer gebruikers het registratieproject voltooien in een toepassing die u hebt geregistreerd in uw tenant.
+* **Werkaccount** : gebruikers met werkaccounts kunnen resources in een tenant beheren, en met de rol van beheerder kunnen ze tenants ook beheren. Gebruikers met werkaccounts kunnen nieuwe consumentenaccounts maken, wachtwoorden opnieuw instellen, accountsblokkeren/deblokkeren, en machtigingen instellen of een account toewijzen aan een beveiligingsgroep.
+* **Gastaccount** : externe gebruikers die u als gast uitnodigt voor uw tenant. Een typisch scenario voor het uitnodigen van een gastgebruiker voor uw Azure AD B2C-tenant is voor het delen van beheerderstaken.
+* **Consumentenaccount** : consumentenaccounts zijn de accounts die worden gemaakt in uw Azure AD B2C-directory wanneer gebruikers het registratieproject voltooien in een toepassing die u hebt geregistreerd in uw tenant.
 
 ![Pagina in Azure AD B2C voor gebruikersbeheer via de Azure-portal](media/technical-overview/portal-01-users.png)<br/>*Afbeelding: Directory van gebruikers van een Azure Active Directory B2C-tenant in de Azure-portal*
 
@@ -57,7 +57,7 @@ Met een *consumentenaccount* kunnen gebruikers zich aanmelden bij de toepassinge
 Een consumentenaccount kan worden gekoppeld aan deze identiteitstypen:
 
 * **Lokale** identiteit, waarbij de gebruikersnaam en het wachtwoord lokaal worden opgeslagen in de Azure AD B2C-directory. We verwijzen vaak naar deze identiteiten als 'lokale accounts'.
-* Identiteiten voor **sociale netwerken** of **ondernemingen**, waarbij de identiteit van de gebruiker wordt beheerd door een federatieve id-provider zoals Facebook, Microsoft, ADFS of Salesforce.
+* Identiteiten voor **sociale netwerken** of **ondernemingen** , waarbij de identiteit van de gebruiker wordt beheerd door een federatieve id-provider zoals Facebook, Microsoft, ADFS of Salesforce.
 
 Een gebruiker met een consumentenaccount kan zich met verschillende identiteiten aanmelden, bijvoorbeeld gebruikersnaam, e-mailadres, werknemer-id of overheids-id. Eén account kan meerdere identiteiten hebben, zowel lokaal als sociaal.
 
@@ -91,7 +91,7 @@ In Azure AD B2C zijn er twee hoofdtrajecten die u kunt volgen om deze identiteit
 
 * Via **aangepaste beleidsregels** kunt u uw eigen gebruikersbelevingen samenstellen voor scenario's met complexe identiteitservaringen.
 
-Zowel gebruikersstromen als aangepaste beleidsregels maken gebruik van het *Identity Experience Framework*, de engine van Azure AD B2C voor het orkestreren van beleid.
+Zowel gebruikersstromen als aangepaste beleidsregels maken gebruik van het *Identity Experience Framework* , de engine van Azure AD B2C voor het orkestreren van beleid.
 
 ### <a name="user-flow"></a>Gebruikersstroom
 
@@ -148,13 +148,13 @@ In het volgende diagram ziet u hoe Azure AD B2C in dezelfde verificatiestroom ka
 
 ## <a name="application-integration"></a>Integratie van toepassingen
 
-Wanneer een gebruiker zich wil aanmelden bij uw toepassing, of het nu gaat om een webtoepassing, een mobiele toepassing, een bureaubladtoepassing of een toepassing met één pagina (SPA), initieert de toepassing een autorisatieaanvraag naar een eindpunt van een gebruikersstroom of aangepast beleid. De gebruikersstroom of het aangepaste beleid definieert en bepaalt de gebruikerservaring. Wanneer de gebruikersstroom is voltooid, bijvoorbeeld de stroom voor *registratie of aanmelding*, wordt er door Azure AD B2C een token gegenereerd en wordt de gebruiker teruggeleid naar uw toepassing.
+Wanneer een gebruiker zich wil aanmelden bij uw toepassing, of het nu gaat om een webtoepassing, een mobiele toepassing, een bureaubladtoepassing of een toepassing met één pagina (SPA), initieert de toepassing een autorisatieaanvraag naar een eindpunt van een gebruikersstroom of aangepast beleid. De gebruikersstroom of het aangepaste beleid definieert en bepaalt de gebruikerservaring. Wanneer de gebruikersstroom is voltooid, bijvoorbeeld de stroom voor *registratie of aanmelding* , wordt er door Azure AD B2C een token gegenereerd en wordt de gebruiker teruggeleid naar uw toepassing.
 
 ![Mobiele app met pijlen die de stroom tussen de app en de aanmeldingspagina van Azure AD B2C aangeven](media/technical-overview/app-integration.png)
 
 Meerdere toepassingen kunnen dezelfde gebruikersstroom of hetzelfde aangepaste beleid gebruiken. Meerdere toepassingen kunnen dezelfde gebruikersstroom of hetzelfde aangepaste beleid gebruiken.
 
-Als u zich bijvoorbeeld wilt aanmelden bij een toepassing, gebruikt de toepassing de gebruikersstroom *registreren of aanmelden*. Nadat de gebruiker zich heeft aangemeld, wil deze misschien zijn profiel bewerken, zodat de toepassing een andere autorisatieaanvraag initieert, deze keer met behulp van de gebruikersstroom *profiel bewerken*.
+Als u zich bijvoorbeeld wilt aanmelden bij een toepassing, gebruikt de toepassing de gebruikersstroom *registreren of aanmelden* . Nadat de gebruiker zich heeft aangemeld, wil deze misschien zijn profiel bewerken, zodat de toepassing een andere autorisatieaanvraag initieert, deze keer met behulp van de gebruikersstroom *profiel bewerken* .
 
 ## <a name="seamless-user-experiences"></a>Naadloze gebruikerservaringen
 
@@ -215,7 +215,7 @@ U kunt rollen toewijzen om te bepalen wie bepaalde beheeracties kan uitvoeren in
 * Beleidsregels voor het vertrouwensframework in het Identity Experience Framework (aangepaste beleidsregels) maken en beheren
 * Geheimen voor federatie en versleuteling in het Identity Experience Framework (aangepaste beleidsregels) beheren
 
-Zie [Administrator role permissions in Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md) (Machtigingen voor beheerdersrol in Azure Active Directory) voor meer informatie over Azure AD-rollen, waaronder ondersteuning voor de Azure AD B2C-beheerdersrol.
+Zie [Administrator role permissions in Azure Active Directory](../active-directory/roles/permissions-reference.md) (Machtigingen voor beheerdersrol in Azure Active Directory) voor meer informatie over Azure AD-rollen, waaronder ondersteuning voor de Azure AD B2C-beheerdersrol.
 
 ### <a name="multi-factor-authentication-mfa"></a>Meervoudige verificatie (MFA)
 

@@ -17,12 +17,12 @@ ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: f8bf2a1bb4892637ac504d5920754fc412691a4a
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 24e514208683d540f08818020238090583a1bc42
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91597380"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362464"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Wat is Azure AD-rechtenbeheer?
 
@@ -77,15 +77,15 @@ Rechtenbeheer introduceert het concept van een *toegangspakket* in Azure AD. Een
 
 U kunt ook de toegang beheren tot andere resources die afhankelijk zijn van Azure AD-beveiligingsgroepen of Microsoft 365-groepen.  Bijvoorbeeld:
 
-- U kunt gebruikers licenties geven voor Microsoft 365 met behulp van een Azure AD-beveiligingsgroep in een toegangspakket en [groepslicenties](../users-groups-roles/licensing-groups-assign.md) configureren voor die groep.
+- U kunt gebruikers licenties geven voor Microsoft 365 met behulp van een Azure AD-beveiligingsgroep in een toegangspakket en [groepslicenties](../enterprise-users/licensing-groups-assign.md) configureren voor die groep.
 - U kunt gebruikers in staat stellen om Azure-resources te beheren met behulp van een Azure AD-beveiligingsgroep in een toegangspakket en een [Azure-roltoewijzing](../../role-based-access-control/role-assignments-portal.md) maken voor die groep.
-- U kunt gebruikers toegang geven tot het beheren van Azure AD-rollen door gebruik te maken van groepen die kunnen worden toegewezen aan Azure AD-rollen in een toegangspakket en [een Azure AD-rol toe te wijzen aan die groep](../users-groups-roles/roles-groups-assign-role.md).
+- U kunt gebruikers toegang geven tot het beheren van Azure AD-rollen door gebruik te maken van groepen die kunnen worden toegewezen aan Azure AD-rollen in een toegangspakket en [een Azure AD-rol toe te wijzen aan die groep](../roles/groups-assign-role.md).
 
 ## <a name="how-do-i-control-who-gets-access"></a>Hoe kan ik controleren wie toegang krijgt?
 
 Met een toegangspakket geeft een beheerder of een gedelegeerde beheerder de resources (groepen, apps en sites) en de rollen op die de gebruikers nodig hebben voor die resources.
 
-Toegangspakketten bestaan ook uit een of meer *beleidsregels*. Een beleid definieert de regels of richtlijnen voor toewijzing tot een toegangspakket. Elke beleidsregel kan gebruikt worden om ervoor te zorgen dat enkel de juiste gebruikers toegang kunnen aanvragen, dat er fiatteurs zijn voor hun verzoek en dat hun toegang tot die resources beperkt is in de tijd en verloopt wanneer dit niet vernieuwd wordt.
+Toegangspakketten bestaan ook uit een of meer *beleidsregels* . Een beleid definieert de regels of richtlijnen voor toewijzing tot een toegangspakket. Elke beleidsregel kan gebruikt worden om ervoor te zorgen dat enkel de juiste gebruikers toegang kunnen aanvragen, dat er fiatteurs zijn voor hun verzoek en dat hun toegang tot die resources beperkt is in de tijd en verloopt wanneer dit niet vernieuwd wordt.
 
 ![Toegangspakket en beleidsregels](./media/entitlement-management-overview/elm-overview-access-package.png)
 

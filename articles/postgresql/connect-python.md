@@ -8,19 +8,19 @@ ms.custom: mvc, devcenter, devx-track-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: 6452934828c4e74563daf001271b3ce018ab58e3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2ecf5c540c3fce7a60ebf256d871993400a731ed
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91707894"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92481190"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Quickstart: Python gebruiken om verbinding te maken en gegevens op te vragen in Azure Database for PostgreSQL - individuele server
 
 In deze quickstart werkt u met een Azure Database for PostgreSQL-exemplaar met behulp van Python in macOS, Ubuntu Linux of Windows. In de quickstart ziet u hoe u verbinding kunt maken met de database en SQL-instructies kunt gebruiken om gegevens in de database op te vragen, in te voegen, bij te werken en te verwijderen. In dit artikel wordt ervan uitgegaan dat u bekend bent met Python, maar geen ervaring hebt met het werken met Azure Database for PostgreSQL.
 
 > [!TIP]
-> Als u een Django-toepassing met PostgreSQL wilt maken, raadpleegt u de zelfstudie [Tutorial: Deploy a Django web app with PostgreSQL](../app-service/containers/tutorial-python-postgresql-app.md) (Engelstalig).
+> Als u een Django-toepassing met PostgreSQL wilt maken, raadpleegt u de zelfstudie [Tutorial: Deploy a Django web app with PostgreSQL](../app-service/tutorial-python-postgresql-app.md) (Engelstalig).
 
 
 ## <a name="prerequisites"></a>Vereisten
@@ -42,7 +42,7 @@ Als u `psycopg2` wilt installeren, opent u een terminal of opdrachtprompt en voe
 Voor het maken van verbinding met een Azure Database for PostgreSQL-database zijn de volledig gekwalificeerde servernaam en aanmeldingsreferenties vereist. U kunt deze informatie ophalen uit Azure Portal.
 
 1. Zoek en selecteer in [Azure Portal](https://portal.azure.com/) uw Azure Database for PostgreSQL-servernaam. 
-1. Kopieer op de pagina **Overzicht** van de server de volledig gekwalificeerde **servernaam** en de **gebruikersnaam met beheerdersrechten**. De volledig gekwalificeerde **servernaam** heeft altijd de vorm *\<my-server-name>.postgres.database.azure.com* en de **gebruikersnaam met beheerdersrechten** heeft altijd van de vorm *\<my-admin-username>@\<my-server-name>* . 
+1. Kopieer op de pagina **Overzicht** van de server de volledig gekwalificeerde **servernaam** en de **gebruikersnaam met beheerdersrechten** . De volledig gekwalificeerde **servernaam** heeft altijd de vorm *\<my-server-name>.postgres.database.azure.com* en de **gebruikersnaam met beheerdersrechten** heeft altijd van de vorm *\<my-admin-username>@\<my-server-name>* . 
    
    U hebt ook uw beheerderswachtwoord nodig. Als u deze vergeten bent, kunt u deze opnieuw instellen op deze pagina. 
    
@@ -59,12 +59,12 @@ Voor elk codevoorbeeld in dit artikel:
    - `<admin-password>` door uw serverwachtwoord.
    - `<database-name>` door de naam van uw Azure Database for PostgreSQL-database. Er is automatisch een standaarddatabase met de naam *postgres* gemaakt toen u uw server maakte. U kunt de naam van de database wijzigen of een nieuwe database maken met behulp van SQL-opdrachten. 
    
-1. Sla het bestand op in uw projectmap met een *.py*-extensie, zoals *postgres-insert.py*. In Windows moet u ervoor zorgen dat UTF-8-codering is geselecteerd wanneer u het bestand opslaat. 
+1. Sla het bestand op in uw projectmap met een *.py* -extensie, zoals *postgres-insert.py* . In Windows moet u ervoor zorgen dat UTF-8-codering is geselecteerd wanneer u het bestand opslaat. 
    
 1. Als u het bestand wilt uitvoeren, gaat u naar uw projectmap in een opdrachtregelinterface en typt u `python` gevolgd door de bestandsnaam, bijvoorbeeld `python postgres-insert.py`.
 
 ## <a name="create-a-table-and-insert-data"></a>Een tabel maken en gegevens invoegen
-In het volgende codevoorbeeld wordt verbinding gemaakt met uw Azure Database for PostgreSQL-database met behulp van de functie [psycopg2.connect](http://initd.org/psycopg/docs/connection.html) en worden gegevens geladen met de SQL-instructie **INSERT**. Met de functie [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) wordt de SQL-query uitgevoerd op de database. 
+In het volgende codevoorbeeld wordt verbinding gemaakt met uw Azure Database for PostgreSQL-database met behulp van de functie [psycopg2.connect](http://initd.org/psycopg/docs/connection.html) en worden gegevens geladen met de SQL-instructie **INSERT** . Met de functie [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) wordt de SQL-query uitgevoerd op de database. 
 
 ```Python
 import psycopg2
