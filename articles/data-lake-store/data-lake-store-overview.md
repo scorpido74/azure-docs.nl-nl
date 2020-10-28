@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: overview
 ms.date: 04/17/2019
 ms.author: twooley
-ms.openlocfilehash: 2ca6ceb326a1fd6f7aaf5a9871d043377e60de83
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 52c00359fb4e759d9517dee958e31c00feb2b33e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85508551"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149243"
 ---
 # <a name="what-is-azure-data-lake-storage-gen1"></a>Wat is Azure Data Lake Storage Gen1
 
@@ -60,7 +60,7 @@ Data Lake Storage Gen1 maakt gebruik van Azure Active Directory (Azure AD) voor 
 
 | Functie | Beschrijving |
 | --- | --- |
-| Verificatie |Data Lake Storage Gen1 integreert met Azure AD voor identiteits- en toegangsbeheer voor alle gegevens die zijn opgeslagen in Data Lake Storage Gen1. Door die integratie profiteert Data Lake Storage Gen1 van alle Azure AD-functies, zoals Multi-Factor Authentication, voorwaardelijke toegang, op rollen gebaseerd toegangsbeheer, bewaking van het gebruik van toepassingen, beveiligingsbewaking en waarschuwingen enzovoort. Data Lake Storage Gen1 ondersteunt het OAuth 2.0-protocol voor verificatie in de REST-interface. Zie [Data Lake Storage Gen1-verificatie](data-lakes-store-authentication-using-azure-active-directory.md).|
+| Verificatie |Data Lake Storage Gen1 integreert met Azure AD voor identiteits- en toegangsbeheer voor alle gegevens die zijn opgeslagen in Data Lake Storage Gen1. Door die integratie profiteert Data Lake Storage Gen1 van alle Azure AD-functies, zoals meervoudige verificatie, voorwaardelijke toegang, op rollen gebaseerd toegangsbeheer van Azure, bewaking van het gebruik van toepassingen, beveiligingsbewaking en waarschuwingen enzovoort. Data Lake Storage Gen1 ondersteunt het OAuth 2.0-protocol voor verificatie in de REST-interface. Zie [Data Lake Storage Gen1-verificatie](data-lakes-store-authentication-using-azure-active-directory.md).|
 | Toegangsbeheer |Data Lake Storage Gen1 biedt toegangsbeheer door ondersteuning te bieden voor POSIX-machtigingen die beschikbaar worden gemaakt door het protocol WebHDFS. U kunt ACL's inschakelen voor de hoofdmap, submappen en afzonderlijke bestanden. Zie voor meer informatie over de werking van ACL's in de context van Data Lake Storage Gen1 [Toegangsbeheer in Data Lake Storage Gen1](data-lake-store-access-control.md). |
 | Versleuteling |Data Lake Storage Gen1 biedt ook versleuteling voor gegevens die zijn opgeslagen in het account. U geeft de versleutelingsinstellingen op tijdens het maken van een Data Lake Storage Gen1-account. U kunt ervoor kiezen de gegevens te versleutelen of niet te versleutelen. Zie [Versleuteling in Data Lake Storage Gen1](data-lake-store-encryption.md) voor meer informatie. Voor instructies voor het bieden van versleuteling-gerelateerde configuratie raadpleegt u [Aan de slag met Data Lake Storage Gen1 via Azure Portal](data-lake-store-get-started-portal.md). |
 

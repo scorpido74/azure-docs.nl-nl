@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5554cfcde9aba1b0e5c9c8b60e2e6a7e9a8ba378
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fb585e2ccf8c8ed071b5156961adf48d4e4b108d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89270667"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309775"
 ---
 # <a name="set-up-identity-protection-and-conditional-access-in-azure-ad-b2c"></a>Identiteitsbeveiliging en voorwaardelijke toegang instellen in Azure AD B2C
 
@@ -41,10 +41,12 @@ De volgende risicodetecties worden momenteel ondersteund voor Azure AD B2C:
 |Risicodetectietype  |Beschrijving  |
 |---------|---------|
 | Ongewoon traject     | Aanmelding vanaf een ongewone locatie op basis van recente aanmeldingen van de gebruiker.        |
-|Anoniem IP-adres     | Aanmelding vanaf een anoniem IP-adres (bijvoorbeeld Tor-browser, anonymizer-VPN’s)        |
+|Anoniem IP-adres     | Aanmelding vanaf een anoniem IP-adres (bijvoorbeeld een Tor-browser, anonymizer-VPN's).        |
+|Aan malware gekoppeld IP-adres     | Aanmelding via een aan malware gekoppeld IP-adres.         |
 |Onbekende aanmeldingseigenschappen     | Aanmelding met eigenschappen die niet recent zijn waargenomen voor de gebruiker.        |
-|Aan malware gekoppeld IP-adres     | Aanmelding via een aan malware gekoppeld IP-adres         |
-|Azure AD-bedreigingsinformatie     | De interne en externe bedreigingsinformatiebronnen van Microsoft hebben een bekend aanvalspatroon geïdentificeerd        |
+|Door beheerder bevestigd misbruik van gebruiker    | Een beheerder heeft aangegeven dat er misbruik is gemaakt een gebruiker.             |
+|Wachtwoordspray     | Meld u aan met een spraying-aanval op wachtwoorden.      |
+|Azure AD-bedreigingsinformatie     | De interne en externe bedreigingsinformatiebronnen van Microsoft hebben een bekend aanvalspatroon geïdentificeerd.        |
 
 ## <a name="view-risk-events-for-your-azure-ad-b2c-tenant"></a>Risicogebeurtenissen voor uw Azure AD B2C-tenant weergeven
 
@@ -72,9 +74,9 @@ Als u een beleid voor voorwaardelijke toegang wilt toevoegen op basis van de ris
 
 2. Selecteer het pictogram **Map + Abonnement** in de werkbalk van de portal en selecteer vervolgens de map die uw Azure AD B2C-tenant bevat.
 
-3. Zoek en selecteer in de Azure-portal de optie **Azure Active Directory**.
+3. Zoek en selecteer in de Azure-portal de optie **Azure Active Directory** .
 
-4. Selecteer **Eigenschappen** en selecteer vervolgens **Standaardinstellingen voor beveiliging beheren**.
+4. Selecteer **Eigenschappen** en selecteer vervolgens **Standaardinstellingen voor beveiliging beheren** .
 
    ![Standaardinstellingen voor beveiliging uitschakelen](media/conditional-access-identity-protection-setup/disable-security-defaults.png)
 
@@ -90,14 +92,14 @@ Als u een beleid voor voorwaardelijke toegang wilt toevoegen op basis van de ris
 
 1. Zoek en selecteer **Azure AD B2C** in de Azure-portal.
 
-1. Selecteer **Voorwaardelijke toegang (preview)** onder **Beveiliging**. De pagina **Beleid voor voorwaardelijke toegang** wordt geopend. 
+1. Selecteer **Voorwaardelijke toegang (preview)** onder **Beveiliging** . De pagina **Beleid voor voorwaardelijke toegang** wordt geopend. 
 
 1. Selecteer **Nieuw beleid** en volg de documentatie voor voorwaardelijke toegang van Azure AD om een nieuw beleid te maken. Hier volgt een voorbeeld:
 
    - [Aanmelden met voorwaardelijke toegang op basis van risico's: Inschakelen met beleid voor voorwaardelijke toegang](../active-directory/conditional-access/howto-conditional-access-policy-risk.md#enable-with-conditional-access-policy)
 
    > [!IMPORTANT]
-   > Wanneer u de gebruikers selecteert waarop u het beleid wilt toepassen, selecteert u niet alleen **Alle gebruikers**, want u kunt uw eigen aanmelding dan blokkeren.
+   > Wanneer u de gebruikers selecteert waarop u het beleid wilt toepassen, selecteert u niet alleen **Alle gebruikers** , want u kunt uw eigen aanmelding dan blokkeren.
 
 ## <a name="test-the-conditional-access-policy"></a>Het beleid voor voorwaardelijke toegang testen
 
@@ -106,7 +108,7 @@ Als u een beleid voor voorwaardelijke toegang wilt toevoegen op basis van de ris
    - Selecteer onder **Gebruikers en groepen** de testgebruiker. Selecteer niet **Alle gebruikers** of u blokkeert uzelf bij het aanmelden.
    - Kies voor **Cloud-apps of -acties** **Apps selecteren** en kies vervolgens uw Relying Party-toepassing.
    - Selecteer als voorwaarden **Aanmeldingsrisico** en **Hoge** **Medium** en **Lage** risiconiveaus.
-   - Kies **Toegang blokkeren** voor **Verlenen**.
+   - Kies **Toegang blokkeren** voor **Verlenen** .
 
       ![Kies Toegang blokkeren](media/conditional-access-identity-protection-setup/test-conditional-access-policy.png)
 
@@ -128,16 +130,16 @@ Het resultaat van een voorwaardelijke toegangsgebeurtenis bekijken:
 
 3. Zoek en selecteer **Azure AD B2C** in de Azure-portal.
 
-4. Onder **Activiteiten** selecteert u **Controlelogboeken**.
+4. Onder **Activiteiten** selecteert u **Controlelogboeken** .
 
-5. Filter het controlelogboek door **Categorie** in te stellen op **B2C** en **Activiteit-resourcetype** op **IdentityProtection**. Selecteer vervolgens **Toepassen**.
+5. Filter het controlelogboek door **Categorie** in te stellen op **B2C** en **Activiteit-resourcetype** op **IdentityProtection** . Selecteer vervolgens **Toepassen** .
 
 6. Controleer de controle-activiteit gedurende de afgelopen 7 dagen. De volgende typen activiteiten zijn opgenomen:
 
-   - **Beleidsregels voor voorwaardelijke toegang evalueren**: Deze vermelding in het controlelogboek geeft aan dat er een evaluatie van voorwaardelijke toegang is uitgevoerd tijdens een verificatie.
-   - **Gebruiker herstellen**: Deze vermelding geeft aan dat aan de subsidie of vereisten van een beleid voor voorwaardelijke toegang is voldaan door de eindgebruiker en dat deze activiteit is gerapporteerd aan de risico-engine om het risico van de gebruiker te beperken.
+   - **Beleidsregels voor voorwaardelijke toegang evalueren** : Deze vermelding in het controlelogboek geeft aan dat er een evaluatie van voorwaardelijke toegang is uitgevoerd tijdens een verificatie.
+   - **Gebruiker herstellen** : Deze vermelding geeft aan dat aan de subsidie of vereisten van een beleid voor voorwaardelijke toegang is voldaan door de eindgebruiker en dat deze activiteit is gerapporteerd aan de risico-engine om het risico van de gebruiker te beperken.
 
-7. Selecteer een **Beleid voor voorwaardelijke toegang evalueren**-logboekvermelding in de lijst om de details van **-activiteit te openen: Controlelogboek**-pagina, waarin de audit logboek-id's worden weer gegeven, samen met deze informatie in de sectie **Aanvullende details**:
+7. Selecteer een **Beleid voor voorwaardelijke toegang evalueren** -logboekvermelding in de lijst om de details van **-activiteit te openen: Controlelogboek** -pagina, waarin de audit logboek-id's worden weer gegeven, samen met deze informatie in de sectie **Aanvullende details** :
 
    - ConditionalAccessResult: De toekenning die is vereist voor de evaluatie van het voorwaardelijke beleid.
    - AppliedPolicies: Een lijst met alle beleidsregels voor voorwaardelijke toegang waarin aan de voorwaarden is voldaan en het beleid is ingeschakeld.

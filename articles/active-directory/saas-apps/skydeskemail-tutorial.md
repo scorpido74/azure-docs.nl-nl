@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 71150ea5ba7d6f25b07a9afaa1f1dc60adcb3e24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72aaa1a19ef5a375ec1ee6c2938f64cb37aac139
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88518647"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126974"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skydesk-email"></a>Zelfstudie: Integratie van Azure Active Directory met SkyDesk Email
 
@@ -49,11 +49,11 @@ Voor het configureren van de integratie van SkyDesk Email in Azure AD, moet u Sk
 
 **Als u SkyDesk Email wilt toevoegen vanuit de galerie, voert u de volgende stappen uit:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen**.
+2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -67,7 +67,7 @@ Voor het configureren van de integratie van SkyDesk Email in Azure AD, moet u Sk
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u eenmalige aanmelding van Azure AD met SkyDesk Email op basis van een testgebruiker met de naam **Britta Simon**.
+In deze sectie configureert en test u eenmalige aanmelding van Azure AD met SkyDesk Email op basis van een testgebruiker met de naam **Britta Simon** .
 Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure Active Directory-gebruiker en de daaraan gerelateerde gebruiker in SkyDesk Email tot stand is gebracht.
 
 Als u Azure AD-eenmalige aanmelding met SkyDesk Email wilt configureren en testen, moet u de volgende bouwstenen voltooien:
@@ -85,7 +85,7 @@ In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakel
 
 Voor het configureren van Azure AD-eenmalige aanmelding met SkyDesk Email, moet u de volgende stappen uitvoeren:
 
-1. In de [Azure Portal](https://portal.azure.com/) selecteert u **Eenmalige aanmelding** op de integratiepagina van **SkyDesk Email**.
+1. In de [Azure Portal](https://portal.azure.com/) selecteert u **Eenmalige aanmelding** op de integratiepagina van **SkyDesk Email** .
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -124,34 +124,34 @@ Voor het configureren van Azure AD-eenmalige aanmelding met SkyDesk Email, moet 
 
 1. Meld u in een andere webbrowser als beheerder aan bij uw SkyDesk Email-account.
 
-1. Klik in het menu bovenaan op **Setup** en klik vervolgens op **Org**.
+1. Klik in het menu bovenaan op **Setup** en klik vervolgens op **Org** .
 
-    ![Eenmalige aanmelding configureren](./media/skydeskemail-tutorial/tutorial_skydeskemail_51.png)
+    ![Schermopname van Org geselecteerd in het Setup-menu.](./media/skydeskemail-tutorial/tutorial_skydeskemail_51.png)
   
-1. Klik op in het linkerdeelvenster op **Domains**.
+1. Klik op in het linkerdeelvenster op **Domains** (Domeinen).
 
-    ![Eenmalige aanmelding configureren](./media/skydeskemail-tutorial/tutorial_skydeskemail_53.png)
+    ![Schermopname van Domains geselecteerd in Control Panel.](./media/skydeskemail-tutorial/tutorial_skydeskemail_53.png)
 
-1. Klik op **Add Domain**.
+1. Klik op **Add Domain** (Domein toevoegen).
 
-    ![Eenmalige aanmelding configureren](./media/skydeskemail-tutorial/tutorial_skydeskemail_54.png)
+    ![Schermopname waarin Add Domain is geselecteerd.](./media/skydeskemail-tutorial/tutorial_skydeskemail_54.png)
 
 1. Voer uw domeinnaam in en controleer het domein.
 
-    ![Eenmalige aanmelding configureren](./media/skydeskemail-tutorial/tutorial_skydeskemail_55.png)
+    ![Schermopname van het tabblad Add Domain waar u uw domein kunt invoeren.](./media/skydeskemail-tutorial/tutorial_skydeskemail_55.png)
 
-1. Klik in het linkerdeelvenster op **SAML Authentication**.
+1. Klik in het linkerdeelvenster op **SAML Authentication** .
 
-    ![Eenmalige aanmelding configureren](./media/skydeskemail-tutorial/tutorial_skydeskemail_52.png)
+    ![Schermopname van SAML Authentication geselecteerd in Control Panel.](./media/skydeskemail-tutorial/tutorial_skydeskemail_52.png)
 
 1. Voer in het dialoogvenster **SAML Authentication** de volgende stappen uit:
 
-    ![Eenmalige aanmelding configureren](./media/skydeskemail-tutorial/tutorial_skydeskemail_56.png)
+    ![Schermopname van het dialoogvenster SAML Authentication Details waarin u de beschreven waarden kunt invoeren.](./media/skydeskemail-tutorial/tutorial_skydeskemail_56.png)
 
     > [!NOTE]
-    > Als u op SAML gebaseerde verificatie wilt gebruiken, moet u **geverifieerde domein**- of **Portal-URL**-instellingen hebben. U kunt de portal-URL instellen met de unieke naam.
+    > Als u op SAML gebaseerde verificatie wilt gebruiken, moet u **geverifieerde domein** - of **Portal-URL** -instellingen hebben. U kunt de portal-URL instellen met de unieke naam.
 
-    ![Eenmalige aanmelding configureren](./media/skydeskemail-tutorial/tutorial_skydeskemail_57.png)
+    ![Schermopname van de Portal U R L waar u de naam invoert.](./media/skydeskemail-tutorial/tutorial_skydeskemail_57.png)
 
     a. Plak in het tekstvak **Aanmeldings-URL** de waarde van de **Aanmeldings-URL** die u hebt gekopieerd uit de Azure Portal.
 
@@ -161,7 +161,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met SkyDesk Email, moet 
 
     d. Klik op **Get Key From File** om het gedownloade certificaat te selecteren in Azure Portal en klik vervolgens op **Open** om het certificaat te uploaden.
 
-    e. Selecteer **RSA** als **algoritme**.
+    e. Selecteer **RSA** als **algoritme** .
 
     f. Klik op **OK** om de wijzigingen op te slaan.
 
@@ -169,7 +169,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met SkyDesk Email, moet 
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -181,32 +181,32 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u **brittasimon@yourcompanydomain.extension** .  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Create** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie stelt u Britta Simon in staat om eenmalige aanmelding van Azure te gebruiken door haar toegang te geven tot SkyDesk Email.
 
-1. Selecteer in Azure Portal **Bedrijfstoepassingen**, selecteer **Alle toepassingen** en selecteer vervolgens **SkyDesk Email**.
+1. Selecteer in Azure Portal **Bedrijfstoepassingen** , selecteer **Alle toepassingen** en selecteer vervolgens **SkyDesk Email** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen de optie **SkyDesk Email**.
+2. Selecteer in de lijst met toepassingen de optie **SkyDesk Email** .
 
     ![De SkyDesk Email-koppeling in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen** .
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -214,7 +214,7 @@ In deze sectie stelt u Britta Simon in staat om eenmalige aanmelding van Azure t
 
 6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
-7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen** .
 
 ### <a name="create-skydesk-email-test-user"></a>Testgebruiker voor SkyDesk Email maken
 
@@ -222,7 +222,7 @@ In deze sectie maakt u een gebruiker met de naam Britta Simon in SkyDesk Email.
 
 Klik in het linkerpaneel in SkyDesk Email op **User Access** en voer uw gebruikersnaam in.
 
-![Eenmalige aanmelding configureren](./media/skydeskemail-tutorial/tutorial_skydeskemail_58.png)
+![Schermopname van User Access geselecteerd in Control Panel.](./media/skydeskemail-tutorial/tutorial_skydeskemail_58.png)
 
 > [!NOTE]
 > Als u bulkgebruikers wilt maken, neemt u contact op met het [klantondersteuningsteam van SkyDesk Email](https://www.skydesk.jp/apps/support/).

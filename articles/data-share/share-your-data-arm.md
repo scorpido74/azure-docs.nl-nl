@@ -7,12 +7,12 @@ ms.service: data-share
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 08/19/2020
-ms.openlocfilehash: 76ef44d438b9af7ada6c1c464705a22ee10f4c58
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f72fbad579bcb08a36c2dd29c387e18953f26c09
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88654103"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146155"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-and-resource-manager-templates"></a>Quickstart: Gegevens delen met Azure Data Share- en Resource Manager-sjablonen
 
@@ -20,7 +20,7 @@ U leert hoe u een nieuwe Azure Data Share instelt vanuit een Azure-opslagaccount
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure** . De sjabloon wordt in Azure Portal geopend.
 
 [![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-data-share-share-storage-account%2Fazuredeploy.json)
 
@@ -60,7 +60,7 @@ Deze sjabloon is gemaakt voor leerdoeleinden. In de praktijk hebt u meestal enke
 "Missing permissions for DataShareAcccount on resource 'subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>' (Code: 5006)"
 ```
 
-Dit komt doordat de implementatie probeert de gegevensset te maken voordat de RBAC-toewijzing is voltooid. Ondanks het foutbericht is de implementatie mogelijk geslaagd.  U kunt nog steeds door [geïmplementeerde resources](#review-deployed-resources) bladeren.
+Dit komt doordat de implementatie probeert de gegevensset te maken voordat de Azure-roltoewijzing is voltooid. Ondanks het foutbericht is de implementatie mogelijk geslaagd.  U kunt nog steeds door [geïmplementeerde resources](#review-deployed-resources) bladeren.
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
 
@@ -69,15 +69,15 @@ Dit komt doordat de implementatie probeert de gegevensset te maken voordat de RB
     [![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-data-share-share-storage-account%2Fazuredeploy.json)
 1. Typ of selecteer de volgende waarden:
 
-    * **Abonnement**: selecteer een Azure-abonnement dat wordt gebruikt om de gegevensshare en de andere resources te maken.
-    * **Resourcegroep**: selecteer **Nieuwe maken** om een nieuwe resourcegroep te maken of een bestaande resourcegroep te selecteren.
-    * **Locatie**: selecteer een locatie voor de resourcegroep.
-    * **Projectnaam**: voer een projectnaam in.  De projectnaam wordt gebruikt om resourcenamen te genereren.  Zie de variabele definities in de vorige sjabloon.
-    * **Locatie**: selecteer een locatie voor de resources.  U kunt dezelfde locatie gebruiken voor de resourcegroep.
-    * **Uitnodigingse-mail**: voer het Azure e-mailadres van de ontvanger van de gegevensshare in.  E-mailalias werkt niet.
+    * **Abonnement** : selecteer een Azure-abonnement dat wordt gebruikt om de gegevensshare en de andere resources te maken.
+    * **Resourcegroep** : selecteer **Nieuwe maken** om een nieuwe resourcegroep te maken of een bestaande resourcegroep te selecteren.
+    * **Locatie** : selecteer een locatie voor de resourcegroep.
+    * **Projectnaam** : voer een projectnaam in.  De projectnaam wordt gebruikt om resourcenamen te genereren.  Zie de variabele definities in de vorige sjabloon.
+    * **Locatie** : selecteer een locatie voor de resources.  U kunt dezelfde locatie gebruiken voor de resourcegroep.
+    * **Uitnodigingse-mail** : voer het Azure e-mailadres van de ontvanger van de gegevensshare in.  E-mailalias werkt niet.
 
     Gebruik de standaardwaarde voor de overige instellingen.
-1. Selecteer **Ik ga akkoord met de bovenstaande voorwaarden** en selecteer vervolgens **Kopen**.
+1. Selecteer **Ik ga akkoord met de bovenstaande voorwaarden** en selecteer vervolgens **Kopen** .
 
 ## <a name="review-deployed-resources"></a>Geïmplementeerde resources bekijken
 
@@ -87,7 +87,7 @@ Dit komt doordat de implementatie probeert de gegevensset te maken voordat de RB
 1. Selecteer het opslagaccount.  Onder **Details** ziet u de synchronisatie-instelling die u in de sjabloon hebt geconfigureerd.
 
     ![Synchronisatie-instellingen voor Azure Data Share-opslagaccount](./media/share-your-data-arm/azure-data-share-storage-account-synchronization-settings.png)
-1. Selecteer bovenaan **Uitnodigingen**. U ziet het e-mailadres dat u hebt opgegeven bij het implementeren van de sjabloon. De **status** is **In behandeling**.
+1. Selecteer bovenaan **Uitnodigingen** . U ziet het e-mailadres dat u hebt opgegeven bij het implementeren van de sjabloon. De **status** is **In behandeling** .
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

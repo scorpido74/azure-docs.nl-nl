@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 664686511df8f310295a9f6ed6bc689b3a999544
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a654454c1ef3d5ea1ff7e6eb525bb153f7875c1
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75430740"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168202"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>De stijl van de pagina's van de ontwikkelaarsportal aanpassen
 
@@ -31,7 +31,7 @@ Er zijn drie gebruikelijke manieren waarop u de ontwikkelaarsportal in Azure API
 
 In dit artikel leert u hoe u de stijl aanpast van de elementen op pagina's van de verouderde **ontwikkelaarsportal** en hoe u de wijzigingen weergeeft.
 
-![stijl aanpassen](./media/modify-developer-portal-style/developer_portal.png)
+![Schermafbeelding die laat zien waar u de instellingen in de verouderde ontwikkelaarsportal wijzigt.](./media/modify-developer-portal-style/developer_portal.png)
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
@@ -45,11 +45,11 @@ In dit artikel leert u hoe u de stijl aanpast van de elementen op pagina's van d
 
 ## <a name="customize-the-developer-portal"></a>De ontwikkelaarsportal aanpassen
 
-1. Selecteer **Overzicht**.
-2. Klik op de knop **Ontwikkelaarsportal (verouderd)** boven aan het venster **Overzicht**.
+1. Selecteer **Overzicht** .
+2. Klik op de knop **Ontwikkelaarsportal (verouderd)** boven aan het venster **Overzicht** .
 3. In de linkerbovenhoek van het scherm ziet u een pictogram dat bestaat uit twee schilderkwasten. Beweeg de muisaanwijzer over dit pictogram om het menu Portalaanpassing te openen.
 
-    ![stijl aanpassen](./media/modify-developer-portal-style/modify-developer-portal-style01.png)
+    ![Schermopname met het pictogram met twee kwasten gemarkeerd.](./media/modify-developer-portal-style/modify-developer-portal-style01.png)
 4. Selecteer **Stijlen** in het menu om het deelvenster Stijl aanpassen te openen.
 
     Alle elementen die u kunt aanpassen met behulp van **Stijlen** worden weergegeven op de pagina
@@ -59,7 +59,7 @@ In dit artikel leert u hoe u de stijl aanpast van de elementen op pagina's van d
 
     ![stijl aanpassen](./media/modify-developer-portal-style/modify-developer-portal-style02.png)
     
-6. Klik op het veld voor de variabele **\@headings-color**. 
+6. Klik op het veld voor de variabele **\@headings-color** . 
     
     De vervolgkeuzelijst Kleurenkiezer wordt geopend.
 7. Selecteer een nieuwe kleur uit de vervolgkeuzelijst Kleurenkiezer.

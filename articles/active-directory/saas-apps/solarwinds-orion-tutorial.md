@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 723546d6a997d895c1a1df39b558aabb797d0a11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9f93457edc4276422eb97b56c90b83ad6a19a65
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88545091"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126889"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-solarwinds-orion"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met SolarWinds Orion
 
@@ -47,16 +47,16 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 Om de integratie van SolarWinds Orion te configureren in Azure AD, moet u SolarWinds Orion vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
-1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory** .
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen** .
 1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **Toevoegen uit de galerie** in het zoekvak: **SolarWinds Orion**.
+1. Typ in de sectie **Toevoegen uit de galerie** in het zoekvak: **SolarWinds Orion** .
 1. Selecteer **SolarWinds Orion** in het resultatenvenster en voeg de app vervolgens toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 
 ## <a name="configure-and-test-azure-ad-sso-for-solarwinds-orion"></a>Eenmalige aanmelding van Azure AD voor SolarWinds Orion configureren en testen
 
-Configureer en test eenmalige aanmelding van Azure AD met SolarWinds Orion met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in SolarWinds Orion.
+Configureer en test eenmalige aanmelding van Azure AD met SolarWinds Orion met behulp van een testgebruiker met de naam **B.Simon** . Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in SolarWinds Orion.
 
 Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met SolarWinds Orion te configureren en te testen:
 
@@ -71,8 +71,8 @@ Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met SolarWinds 
 
 Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Ga in de [Azure-portal](https://portal.azure.com/) naar de integratiepagina van de toepassing **SolarWinds Orion**, ga naar de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
-1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Ga in de [Azure-portal](https://portal.azure.com/) naar de integratiepagina van de toepassing **SolarWinds Orion** , ga naar de sectie **Beheren** en selecteer **Eenmalige aanmelding** .
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding** .
 1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
@@ -114,51 +114,51 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Create**.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord** .
+   1. Klik op **Create** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot SolarWinds Orion.
 
-1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen** .
 1. Selecteer **SolarWinds Orion** in de lijst met toepassingen.
-1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen** .
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
 1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
 1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
-1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen** .
 
 ## <a name="configure-solarwinds-orion-sso"></a>Eenmalige aanmelding met SolarWinds Orion configureren
 
-1. Meld u aan bij SolarWinds Orion en ga naar **Settings** -> **All Settings**.
+1. Meld u aan bij SolarWinds Orion en ga naar **Settings** -> **All Settings** .
 
-    ![ SolarWinds Orion configureren ](./media/solarwinds-orion-tutorial/settings.png)
+    ![Schermopname waarop Alle instellingen in Instellingen is geselecteerd.](./media/solarwinds-orion-tutorial/settings.png)
 
-1. Selecteer **SAML Configuration** in de sectie **USER ACCOUNTS**.
+1. Selecteer **SAML Configuration** in de sectie **USER ACCOUNTS** .
 
-    ![ SolarWinds Orion configureren ](./media/solarwinds-orion-tutorial/configure-user-accounts.png)
+    ![Schermopname waarop de SAML-configuratie in Gebruikersaccounts is geselecteerd.](./media/solarwinds-orion-tutorial/configure-user-accounts.png)
 
-1. Klik op **ADD IDENTITY PROVIDER**.
+1. Klik op **ADD IDENTITY PROVIDER** .
 
-    ![ SolarWinds Orion configureren ](./media/solarwinds-orion-tutorial/configure-add-identity-provider.png)
+    ![Schermopname met de SAML-configuratie waar u ID-PROVIDER TOEVOEGEN kunt selecteren.](./media/solarwinds-orion-tutorial/configure-add-identity-provider.png)
 
-1. Voer de volgende stappen uit op de pagina **Add Identity Provider**:
+1. Voer de volgende stappen uit op de pagina **Add Identity Provider** :
 
-    ![ SolarWinds Orion configureren ](./media/solarwinds-orion-tutorial/configure-solarwinds.png)
+    ![Schermopname van de pagina Id-provider toevoegen, waar u de beschreven waarden kunt invoeren.](./media/solarwinds-orion-tutorial/configure-solarwinds.png)
 
-    a. Ga naar het tabblad **Configure**.
+    a. Ga naar het tabblad **Configure** .
 
     b. Geef in het tekstvak **Identity Provider Name** een geldige naam voor de id-provider op, zoals `My SSO service`.
 
@@ -166,33 +166,33 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
     d.  Plak in het tekstvak **Issuer URL** de **Azure AD-id** die u uit de Azure-portal hebt gekopieerd.
 
-    e. Open in de Azure-portal het gedownloade **Base64-certificaat** in Kladblok en plak de inhoud in het tekstvak **X.509-certificaat**.
+    e. Open in de Azure-portal het gedownloade **Base64-certificaat** in Kladblok en plak de inhoud in het tekstvak **X.509-certificaat** .
 
-    f. Klik op **Opslaan**.
+    f. Klik op **Opslaan** .
 
 ### <a name="create-solarwinds-orion-test-user"></a>Een SolarWinds Orion-testgebruiker maken
 
-1. Meld u aan bij de website van SolarWinds Orion en ga naar **Settings** -> **All Settings**.
+1. Meld u aan bij de website van SolarWinds Orion en ga naar **Settings** -> **All Settings** .
 
-    ![ SolarWinds Orion-testgebruiker maken ](./media/solarwinds-orion-tutorial/settings.png)
+    ![Schermopname waarop Alle instellingen in Instellingen is geselecteerd.](./media/solarwinds-orion-tutorial/settings.png)
 
-1. Selecteer **Manage Accounts** in de sectie **USER ACCOUNTS**.
+1. Selecteer **Manage Accounts** in de sectie **USER ACCOUNTS** .
 
-    ![ SolarWinds Orion-testgebruiker maken ](./media/solarwinds-orion-tutorial/user-accounts.png)
+    ![Schermopname waarop de SAML-configuratie is geselecteerd.](./media/solarwinds-orion-tutorial/user-accounts.png)
 
-1. Klik op het tabblad **INDIVIDUAL ACCOUNTS** op **ADD NEW ACCOUNT**.
+1. Klik op het tabblad **INDIVIDUAL ACCOUNTS** op **ADD NEW ACCOUNT** .
 
-    ![ SolarWinds Orion-testgebruiker maken ](./media/solarwinds-orion-tutorial/create-user.png)
+    ![Schermopname waarin NIEUW ACCOUNT TOEVOEGEN is geselecteerd in Accounts beheren.](./media/solarwinds-orion-tutorial/create-user.png)
 
 1. Selecteer het type account dat u nodig hebt om afzonderlijke SAML-gebruikers of SAML-gebruikersgroepen te maken.
 
-    ![ SolarWinds Orion-testgebruiker maken ](./media/solarwinds-orion-tutorial/create-user-new-account.png)
+    ![Schermopname met Nieuw account toevoegen, waar u het type account kunt selecteren.](./media/solarwinds-orion-tutorial/create-user-new-account.png)
 
 1.  Voer in het tekstvak **NAME ID** de gebruikers- of groepsnaam in. Deze moet exact overeenkomen met de gebruikers- of groepsnaam in Azure AD.
 
 1.  Klik op **Next** (Volgende) en verzend de pagina.
 
-    ![ SolarWinds Orion-testgebruiker maken ](./media/solarwinds-orion-tutorial/create-user-name-id.png)
+    ![Schermopname met Nieuw account toevoegen, waar u de Naam-id van Azure AD kunt invoeren.](./media/solarwinds-orion-tutorial/create-user-name-id.png)
 
 ## <a name="test-sso"></a>Eenmalige aanmelding testen 
 

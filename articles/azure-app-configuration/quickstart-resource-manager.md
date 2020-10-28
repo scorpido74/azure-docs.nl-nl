@@ -4,28 +4,28 @@ titleSuffix: Azure App Configuration
 description: Meer informatie over het maken van een Azure App Configuration-archief met behulp van een Azure Resource Manager-sjabloon (ARM-sjabloon).
 author: ZhijunZhao
 ms.author: zhijzhao
-ms.date: 09/21/2020
+ms.date: 10/16/2020
 ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: 840f907015e9673caba46998493b5cb705de5fb7
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: feabac62564729338e41bf30eaf8d9f5a6317126
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91824189"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149002"
 ---
 # <a name="quickstart-create-an-azure-app-configuration-store-by-using-an-arm-template"></a>Quickstart: Een Azure App Configuration-archief maken met behulp van een ARM-sjabloon
 
-In deze quickstart wordt beschreven hoe u:
+In deze quickstart wordt het volgende beschreven:
 
-- Een App Configuration-archief kunt implementeren met behulp van een ARM-sjabloon
-- Sleutelwaarden kunt maken in een App Configuration-archief met behulp van een ARM-sjabloon
-- Sleutelwaarden kunt lezen in een App Configuration-archief met behulp van een ARM-sjabloon
+- Een App Configuration-archief implementeren met behulp van een Azure Resource Manager-sjabloon (ARM-sjabloon).
+- Sleutelwaarden maken in een App Configuration-archief met behulp van een ARM-sjabloon.
+- Sleutelwaarden lezen in een App Configuration-archief met behulp van een ARM-sjabloon.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure** . De sjabloon wordt in Azure Portal geopend.
 
 [![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration-store-kv%2Fazuredeploy.json)
 
@@ -35,14 +35,14 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="review-the-template"></a>De sjabloon controleren
 
-De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-snelstartsjablonen](https://azure.microsoft.com/en-us/resources/templates/101-app-configuration-store-kv/). Er wordt een nieuw App Configuration-archief gemaakt met twee sleutelwaarden erin. Vervolgens wordt de functie `reference` gebruikt voor het uitvoeren van de waarden van de twee resources voor sleutelwaarden. Als u de waarde van de sleutel op deze manier leest, kan deze worden gebruikt op andere plaatsen in de sjabloon.
+De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-snelstartsjablonen](https://azure.microsoft.com/resources/templates/101-app-configuration-store-kv/). Er wordt een nieuw App Configuration-archief gemaakt met twee sleutelwaarden erin. Vervolgens wordt de functie `reference` gebruikt voor het uitvoeren van de waarden van de twee resources voor sleutelwaarden. Als u de waarde van de sleutel op deze manier leest, kan deze worden gebruikt op andere plaatsen in de sjabloon.
 
 De quickstart maakt gebruik van het element `copy` voor het maken van meerdere exemplaren van de sleutelwaarde-resource. Zie [Resource-iteratie in ARM-sjablonen](../azure-resource-manager/templates/copy-resources.md)voor meer informatie over het element `copy`.
 
 > [!IMPORTANT]
 > Voor deze sjabloon is versie `2020-07-01-preview` of hoger van de resourceprovider van App Configuration vereist. Deze versie maakt gebruik van de functie `reference` om sleutelwaarden te lezen. De functie `listKeyValue` die is gebruikt voor het lezen van sleutelwaarden in de vorige versie is niet meer beschikbaar vanaf versie `2020-07-01-preview`.
 
-:::code language="json" source="~/quickstart-templates/101-app-configuration-store-kv/azuredeploy.json" range="1-88" highlight="52-58,61-75,80,84":::
+:::code language="json" source="~/quickstart-templates/101-app-configuration-store-kv/azuredeploy.json":::
 
 Er worden twee Azure-resources gedefinieerd in de sjabloon:
 
@@ -83,7 +83,7 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 ## <a name="review-deployed-resources"></a>Geïmplementeerde resources bekijken
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com)
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Typ **App Configuration** in het zoekvak van de Azure-portal. Selecteer **App Configuration** uit de lijst.
 1. Selecteer de zojuist gemaakte resource van de App Configuration.
 1. Klik onder **Bewerkingen** op **Configuratieverkenner.**

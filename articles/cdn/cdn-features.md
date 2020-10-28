@@ -1,30 +1,29 @@
 ---
-title: Productfuncties van Azure Content Delivery Network (CDN) vergelijken| Microsoft Docs
+title: Productfuncties van Azure Content Delivery Network (CDN) vergelijken
 description: Meer informatie over de functies waarvoor elk product van Azure Content Delivery Network (CDN) ondersteuning biedt.
 services: cdn
 documentationcenter: ''
 author: asudbring
-manager: danielgi
-editor: mdgattuso
-ms.assetid: ''
 ms.service: azure-cdn
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 11/15/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 0e57ae691bf4b07b8161bc343929510d6be041a8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c8d8b01e8c5f4ea3054e639ecc9dd8b14bbf048b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81260510"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148728"
 ---
-# <a name="compare-azure-cdn-product-features"></a>Azure CDN-producteigenschappen vergelijken
+# <a name="what-are-the-comparisons-between-azure-cdn-product-features"></a>Wat zijn de vergelijkingen tussen Azure CDN-productfuncties?
 
-Azure Content Delivery Network (CDN) bestaat uit vier producten: **Azure CDN Standard van Microsoft**, **Azure CDN Standard van Akamai**, **Azure CDN Standard van Verizon** en **Azure CDN Premium van Verizon**. Voor informatie over het migreren van een **Azure CDN Standard van Verizon**-profiel naar **Azure CDN Premium van Verizon**, raadpleegt u [Een Azure CDN-profiel migreren van Standard Verizon naar Premium Verizon](cdn-migrate.md). Hoewel een upgradepad van Standard Verizon naar Premium Verizon bestaat, is er op dit moment geen omzettingsmechanisme beschikbaar voor andere producten.
+Azure Content Delivery Network (CDN) bevat vier producten: 
+
+* **Azure CDN Standard van Microsoft**
+* **Azure CDN Standard van Akamai**
+* **Azure CDN Standard van Verizon**
+* **Azure CDN Premium van Verizon** . 
 
 De volgende tabel vergelijkt de functies die beschikbaar zijn voor elk product.
 
@@ -75,8 +74,16 @@ De volgende tabel vergelijkt de functies die beschikbaar zijn voor elk product.
 | [Compressie-MIME-typen](https://docs.microsoft.com/azure/cdn/cdn-improve-performance)  |Alleen standaard |Configureerbaar |Configureerbaar  |Configureerbaar  |
 | Compressie-coderingen  |gzip, brotli |gzip |gzip, deflate, bzip2, brotili  |gzip, deflate, bzip2, brotili  |
 
+## <a name="migration"></a>Migratie
 
+Voor informatie over het migreren van een **Azure CDN Standard van Verizon** -profiel naar **Azure CDN Premium van Verizon** , raadpleegt u [Een Azure CDN-profiel migreren van Standard Verizon naar Premium Verizon](cdn-migrate.md). 
 
+> [!NOTE]
+> Er bestaat een upgradepad van Standard Verizon naar Premium Verizon, maar er is op dit moment geen omzettingsmechanisme beschikbaar voor andere producten.
+
+## <a name="next-steps"></a>Volgende stappen
+
+* Meer informatie over [Azure CDN](cdn-overview.md).
 
 
 

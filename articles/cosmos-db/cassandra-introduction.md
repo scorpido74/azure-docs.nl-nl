@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 05/21/2019
-ms.openlocfilehash: 70dbceb51ed030124d1b793d77c6bc287da91065
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6e31150a15996d9c6e77c772e6d703a39adfa91f
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81687630"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278928"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-cassandra-api"></a>Inleiding tot de Azure Cosmos DB Cassandra-API
 
@@ -23,23 +23,23 @@ De Cassandra-API stelt u in staat om gegevens te gebruiken die zijn opgeslagen i
 
 ## <a name="what-is-the-benefit-of-using-apache-cassandra-api-for-azure-cosmos-db"></a>Wat is het voordeel van het gebruik van de Apache Cassandra-API voor Azure Cosmos DB?
 
-**Geen operationeel management**: Azure Cosmos DB Cassandra-API is een volledig beheerde cloudservice, waardoor beheerders zich niet bezig hoeven te houden met het beheren en controleren van talloze instellingen in OS-, JVM- en yaml-bestanden en de bijbehorende wisselwerkingen. Azure Cosmos DB biedt controle van doorvoer, latentie, opslag, beschikbaarheid en waarschuwingen die kunnen worden geconfigureerd.
+**Geen operationeel management** : Azure Cosmos DB Cassandra-API is een volledig beheerde cloudservice, waardoor beheerders zich niet bezig hoeven te houden met het beheren en controleren van talloze instellingen in OS-, JVM- en yaml-bestanden en de bijbehorende wisselwerkingen. Azure Cosmos DB biedt controle van doorvoer, latentie, opslag, beschikbaarheid en waarschuwingen die kunnen worden geconfigureerd.
 
-**Opensourcestandaard**: De Cassandra-API is een volledig beheerde service, maar ondersteunt een uitgebreide surface area van het systeemeigen [wire-protocol van Apache Cassandra](cassandra-support.md). Zo kunt u toepassingen ontwikkelen via een veelgebruikte en niet-cloudgebonden opensourcestandaard.
+**Opensourcestandaard** : De Cassandra-API is een volledig beheerde service, maar ondersteunt een uitgebreide surface area van het systeemeigen [wire-protocol van Apache Cassandra](cassandra-support.md). Zo kunt u toepassingen ontwikkelen via een veelgebruikte en niet-cloudgebonden opensourcestandaard.
 
-**Prestatiebeheer**: Azure Cosmos DB biedt gegarandeerde lage latentie van lees- en schrijfbewerkingen voor een percentiel van 99%, ondersteund met een SLA. Gebruikers hoeven zich geen zorgen te maken over operationele overhead voor hoge prestaties en lage latentie van lees- en schrijfbewerkingen. Dit betekent dat gebruikers zich niet bezig hoeven te houden met geplande compressie, het beheren van testblokken, het handmatig instellen van bloomfilters en replica’s. Azure Cosmos DB verwijdert de overhead om deze zaken te beheren, waardoor u zich beter kunt focussen op de logica van de toepassing.
+**Prestatiebeheer** : Azure Cosmos DB biedt gegarandeerde lage latentie van lees- en schrijfbewerkingen voor een percentiel van 99%, ondersteund met een SLA. Gebruikers hoeven zich geen zorgen te maken over operationele overhead voor hoge prestaties en lage latentie van lees- en schrijfbewerkingen. Dit betekent dat gebruikers zich niet bezig hoeven te houden met geplande compressie, het beheren van testblokken, het handmatig instellen van bloomfilters en replica’s. Azure Cosmos DB verwijdert de overhead om deze zaken te beheren, waardoor u zich beter kunt focussen op de logica van de toepassing.
 
-**Mogelijkheid om bestaande code en hulpprogramma’s te gebruiken**: Azure Cosmos DB biedt compatibiliteit van wire-protocolniveau’s met bestaande Cassandra-SDK’s en hulpprogramma’s. Door deze compatibiliteit kunt u bestaande codebase gebruiken met de Azure Cosmos DB Cassandra-API, met slechts een klein aantal wijzigingen.
+**Mogelijkheid om bestaande code en hulpprogramma’s te gebruiken** : Azure Cosmos DB biedt compatibiliteit van wire-protocolniveau’s met bestaande Cassandra-SDK’s en hulpprogramma’s. Door deze compatibiliteit kunt u bestaande codebase gebruiken met de Azure Cosmos DB Cassandra-API, met slechts een klein aantal wijzigingen.
 
-**Elasticiteit van doorvoer en opslag**: Azure Cosmos DB biedt elasticiteit van gegarandeerde doorvoer naar alle regio’s en kan de geboden doorvoer opschalen met Azure Portal, PowerShell of de CLI. U kunt naar behoefte [flexibel](manage-scale-cassandra.md) de schaal van de opslag en doorvoer voor de tabellen aanpassen met voorspelbare prestaties.
+**Elasticiteit van doorvoer en opslag** : Azure Cosmos DB biedt doorvoer naar alle regio's en kan de ingerichte doorvoer schalen met Azure Portal, PowerShell of CLI-bewerkingen. U kunt naar behoefte [flexibel](manage-scale-cassandra.md) de schaal van de opslag en doorvoer voor de tabellen aanpassen met voorspelbare prestaties.
 
-**Wereldwijde distributie en beschikbaarheid**: Azure Cosmos DB heeft de mogelijkheid om gegevens wereldwijd te distribueren over alle Azure-regio’s en de gegevens lokaal aanbieden terwijl lage latentie gegevenstoegang en hoge beschikbaarheid gegarandeerd blijft. Azure Cosmos DB biedt 99,99% hoge beschikbaarheid binnen een regio, en 99,999% beschikbaarheid voor lezen en schrijven in meerdere regio’s, zonder operationele overhead. Lees het artikel [Gegevens wereldwijd distribueren](distribute-data-globally.md) voor meer informatie. 
+**Wereldwijde distributie en beschikbaarheid** : Azure Cosmos DB heeft de mogelijkheid om gegevens wereldwijd te distribueren over alle Azure-regio’s en de gegevens lokaal aanbieden terwijl lage latentie gegevenstoegang en hoge beschikbaarheid gegarandeerd blijft. Azure Cosmos DB biedt 99,99% hoge beschikbaarheid binnen een regio, en 99,999% beschikbaarheid voor lezen en schrijven in meerdere regio’s, zonder operationele overhead. Lees het artikel [Gegevens wereldwijd distribueren](distribute-data-globally.md) voor meer informatie. 
 
-**Keuze in consistentie**: Azure Cosmos DB biedt de keuze uit vijf goed gedefinieerde consistentieniveaus voor een optimale balans tussen consistentie en prestaties. Deze consistentieniveaus zijn: sterk, gebonden-verouderd, sessie, consistent voorvoegsel en mogelijk. Op basis van deze goed gedefinieerde, praktische en intuïtieve consistentieniveaus kunnen ontwikkelaars een nauwkeurige balans vinden tussen de consistentie, beschikbaarheid en latentie. Lees het artikel [consistentieniveaus](consistency-levels.md) voor meer informatie. 
+**Keuze in consistentie** : Azure Cosmos DB biedt de keuze uit vijf goed gedefinieerde consistentieniveaus voor een optimale balans tussen consistentie en prestaties. Deze consistentieniveaus zijn: sterk, gebonden-verouderd, sessie, consistent voorvoegsel en mogelijk. Op basis van deze goed gedefinieerde, praktische en intuïtieve consistentieniveaus kunnen ontwikkelaars een nauwkeurige balans vinden tussen de consistentie, beschikbaarheid en latentie. Lees het artikel [consistentieniveaus](consistency-levels.md) voor meer informatie. 
 
-**Zakelijk niveau**: Azure Cosmos DB biedt [nalevingscertificeringen](https://www.microsoft.com/trustcenter) om ervoor te zorgen dat het platform veilig kan worden gebruikt. Azure Cosmos DB biedt ook versleuteling van niet-actieve en actieve gegevens, een IP-firewall en auditlogboeken voor beheeractiviteiten.
+**Zakelijk niveau** : Azure Cosmos DB biedt [nalevingscertificeringen](https://www.microsoft.com/trustcenter) om ervoor te zorgen dat het platform veilig kan worden gebruikt. Azure Cosmos DB biedt ook versleuteling van niet-actieve en actieve gegevens, een IP-firewall en auditlogboeken voor beheeractiviteiten.
 
-**Gebeurtenisbronnen**: De Cassandra-API biedt toegang tot een permanent wijzigingenlogboek, de [wijzigingenfeed](cassandra-change-feed.md), waarmee u gebeurtenisbronnen rechtstreeks uit de database kunt ophalen. Het enige equivalent in Apache Cassandra is change data capture (CDC). Dit is een mechanisme om specifieke tabellen te markeren voor archivering. Hiermee kunnen ook schrijfbewerkingen naar die tabellen worden geweigerd wanneer de ingestelde grootte op de schijf voor het CDC-logboek wordt bereikt. Deze mogelijkheden zijn overbodig in Cosmos DB omdat de relevante aspecten automatisch worden beheerd.
+**Gebeurtenisbronnen** : De Cassandra-API biedt toegang tot een permanent wijzigingenlogboek, de [wijzigingenfeed](cassandra-change-feed.md), waarmee u gebeurtenisbronnen rechtstreeks uit de database kunt ophalen. Het enige equivalent in Apache Cassandra is change data capture (CDC). Dit is een mechanisme om specifieke tabellen te markeren voor archivering. Hiermee kunnen ook schrijfbewerkingen naar die tabellen worden geweigerd wanneer de ingestelde grootte op de schijf voor het CDC-logboek wordt bereikt. Deze mogelijkheden zijn overbodig in Cosmos DB omdat de relevante aspecten automatisch worden beheerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

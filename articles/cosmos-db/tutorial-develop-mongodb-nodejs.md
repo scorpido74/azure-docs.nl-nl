@@ -10,18 +10,18 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: d2e7ce959edffdb2e8c929c81837e0ac3fc3da9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 992111f6b28356d5220e27a80068acdaf80b4055
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75444684"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280506"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb"></a>Een Angular-app maken met de API van Azure Cosmos DB voor MongoDB
 
 In deze meerdelige zelfstudie leert u hoe u een app maakt die is geschreven in Node.js met Express en Angular, en hoe u deze app verbindt met uw [Cosmos-account dat is geconfigureerd met de API van Cosmos DB voor MongoDB](mongodb-introduction.md).
 
-Azure Cosmos DB is de globaal gedistribueerde multimodel-databaseservice van Microsoft. U kunt er snel databases van documenten, sleutel/waarde-paren en grafieken mee maken en hier query's op uitvoeren. Deze databases genieten het voordeel van de wereldwijde distributie en horizontale schaalmogelijkheden die ten grondslag liggen aan Cosmos DB. 
+Azure Cosmos DB is de snelle NoSQL-database van Microsoft, met open API's voor elke schaal. Hiermee kunt u moderne apps ontwikkelen met door een SLA ondersteunde snelheid en beschikbaarheid, automatische en directe schaalbaarheid en open source-API's voor veel NoSQL-engines.
 
 Deze meerdelige zelfstudie behandelt de volgende taken:
 

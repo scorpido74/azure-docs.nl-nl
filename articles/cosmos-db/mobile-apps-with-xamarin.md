@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2ea823a16714f9db85c3d5148bc8bb2ba7629b84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 427facaffa277ec44ee99d70681928f49fe31df8
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91565510"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278486"
 ---
 # <a name="tutorial-build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Zelfstudie: Mobiele toepassingen maken met Xamarin en Azure Cosmos DB
 
@@ -36,7 +36,7 @@ Azure Cosmos DB biedt de volgende belangrijke mogelijkheden voor ontwikkelaars v
 
 * Uitgebreide query's via schemaloze gegevens. Azure Cosmos DB slaat gegevens op als schemaloze JSON-documenten in heterogene verzamelingen. Het biedt [uitgebreide en snelle query's](how-to-sql-query.md) zonder u zorgen te hoeven maken over schema's of indexen.
 * Snelle doorvoer. Het duurt slechts enkele milliseconden om documenten te lezen en te schrijven met Azure Cosmos DB. Ontwikkelaars kunnen de doorvoer selecteren die ze nodig hebben. Azure Cosmos DB biedt ze dan een SLA voor een beschikbaarheid van 99,99% voor alle accounts voor één regio en alle accounts voor meerdere regio's met soepele consistentie en leesbeschikbaarheid van 99,999% voor alle databaseaccounts voor meerdere regio's.
-* Schalen zonder enige beperking. Uw Azure Cosmos DB-containers [groeien naarmate uw app groeit](partition-data.md). U kunt beginnen met een kleine gegevensgrootte en honderden aanvragen per seconde doorvoeren. Uw verzamelingen of databases kunnen uitgroeien tot vele petabytes aan gegevens en bijbehorende grote doorvoer met honderden miljoenen aanvragen per seconde.
+* Schalen zonder enige beperking. Uw Azure Cosmos DB-containers [groeien naarmate uw app groeit](partitioning-overview.md). U kunt beginnen met een kleine gegevensgrootte en honderden aanvragen per seconde doorvoeren. Uw verzamelingen of databases kunnen uitgroeien tot vele petabytes aan gegevens en bijbehorende grote doorvoer met honderden miljoenen aanvragen per seconde.
 * Wereldwijd verspreid. Gebruikers van mobiele apps zijn onderweg, overal ter wereld. Azure Cosmos DB is een [wereldwijd gedistribueerde database](distribute-data-globally.md). Klik op de kaart om uw gegevens toegankelijk te maken voor uw gebruikers.
 * Ingebouwde uitgebreide autorisatie. Met Azure Cosmos DB kunt u eenvoudig populaire patronen implementeren zoals [gegevens per gebruiker](https://github.com/kirillg/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems) of gedeelde gegevens van meerdere gebruikers, zonder ingewikkelde aangepaste autorisatiecode.
 * Georuimtelijke query's. Veel mobiele apps bieden tegenwoordig ervaringen met geografische context. Met eersteklas ondersteuning voor [georuimtelijke typen](geospatial.md) kunt u met Azure Cosmos DB deze ervaringen heel eenvoudig tot stand brengen.
@@ -46,11 +46,11 @@ Azure Cosmos DB biedt de volgende belangrijke mogelijkheden voor ontwikkelaars v
 In de volgende zelfstudie leest u hoe u een mobiele toepassing bouwt met Xamarin en Azure Cosmos DB. U vindt de volledige broncode voor de zelfstudie op [Xamarin en Azure Cosmos DB op GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin).
 
 ### <a name="get-started"></a>Aan de slag
-U kunt eenvoudig aan de slag met Azure Cosmos DB. Ga naar Azure Portal en maak een nieuw Azure Cosmos DB-account. Klik op het tabblad **Snel starten**. Download het takenlijstvoorbeeld van Xamarin Forms dat al met uw Azure Cosmos DB-account is verbonden. 
+U kunt eenvoudig aan de slag met Azure Cosmos DB. Ga naar Azure Portal en maak een nieuw Azure Cosmos DB-account. Klik op het tabblad **Snel starten** . Download het takenlijstvoorbeeld van Xamarin Forms dat al met uw Azure Cosmos DB-account is verbonden. 
 
 :::image type="content" source="media/mobile-apps-with-xamarin/cosmos-db-quickstart.png" alt-text="Mogelijkheden van Azure Cosmos DB voor mobiele apps":::
 
-Als u een bestaande Xamarin-app hebt, kunt u ook het [Azure Cosmos DB NuGet-pakket](sql-api-sdk-dotnet-core.md) toevoegen. Azure Cosmos DB ondersteunt gedeelde bibliotheken voor Xamarin.IOS, Xamarin.Android en Xamarin Forms.
+Als u een bestaande Xamarin-app hebt, kunt u ook het [Azure Cosmos DB NuGet-pakket](sql-api-sdk-dotnet-core.md) toevoegen. Azure Cosmos DB ondersteunt gedeelde bibliotheken voor Xamarin.iOS, Xamarin.Android en Xamarin Forms.
 
 ### <a name="work-with-data"></a>Werken met gegevens
 Uw gegevensrecords worden opgeslagen in Azure Cosmos DB als schemaloze JSON-documenten in heterogene verzamelingen. U kunt documenten met verschillende structuren opslaan in dezelfde verzameling:
@@ -91,7 +91,7 @@ U vindt een volledig codevoorbeeld van dit patroon op [Resource Token Broker op 
 Als u wilt dat twee gebruikers toegang hebben tot dezelfde takenlijst, kunt u aanvullende machtigingen toevoegen aan het toegangstoken in Resource Token Broker.
 
 ### <a name="scale-on-demand"></a>Schalen op aanvraag
-Azure Cosmos DB is een beheerde Database as a Service. Wanneer uw gebruikersgroep groeit, hoeft u zich geen zorgen te maken over het inrichten van VM’s of het uitbreiden van het aantal kernen. U hoeft Azure Cosmos DB alleen maar te vertellen hoeveel bewerkingen per seconde (doorvoer) uw app nodig heeft. U kunt de doorvoer opgeven via het tabblad **Schaal aanpassen** met de doorvoermeting Aanvraageenheden (RU’s) per seconde. Voor een leesbewerking van een document van 1 kB is bijvoorbeeld 1 RU vereist. U kunt ook waarschuwingen toevoegen aan de meetwaarde **Doorvoer** om de groei van het verkeer te bewaken en de doorvoer via programmacode te wijzigen wanneer waarschuwingen worden afgegeven.
+Azure Cosmos DB is een beheerde Database as a Service. Wanneer uw gebruikersgroep groeit, hoeft u zich geen zorgen te maken over het inrichten van VM’s of het uitbreiden van het aantal kernen. U hoeft Azure Cosmos DB alleen maar te vertellen hoeveel bewerkingen per seconde (doorvoer) uw app nodig heeft. U kunt de doorvoer opgeven via het tabblad **Schaal aanpassen** met de doorvoermeting Aanvraageenheden (RU’s) per seconde. Voor een leesbewerking van een document van 1 KB is bijvoorbeeld één RU vereist. U kunt ook waarschuwingen toevoegen aan de meetwaarde **Doorvoer** om de groei van het verkeer te bewaken en de doorvoer via programmacode te wijzigen wanneer waarschuwingen worden afgegeven.
 
 :::image type="content" source="media/mobile-apps-with-xamarin/cosmos-db-xamarin-scale.png" alt-text="Mogelijkheden van Azure Cosmos DB voor mobiele apps":::
 

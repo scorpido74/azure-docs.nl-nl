@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: d2160a5cd38fcd24c3af5d32ccbbbee8ac723b2f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6ce0006c493228d99131ca564a34600800f0ab5e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88226304"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92169111"
 ---
 In deze quickstart leert u hoe u de Speech Devices SDK voor Windows kunt gebruiken om een spraakgestuurd product te maken of dit te gebruiken als apparaat voor [gesprektranscriptie](../conversation-transcription-service.md). Voor gesprektranscriptie wordt alleen de [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) ondersteund. Voor andere soorten spraak gebruikt u lineaire microfoonmatrices die een microfoonmatrixgeometrie bieden. Deze wordt ondersteund.
 
@@ -42,19 +42,19 @@ Als u van plan bent om de intenties te gebruiken, hebt u een [Language Understan
 
 1. Start Eclipse.
 
-1. Voer in de **Eclipse IDE Launcher**, in het veld **Werkruimte**, de naam van een nieuwe werkruimtemap in. Selecteer vervolgens **Starten**.
+1. Voer in de **Eclipse IDE Launcher** , in het veld **Werkruimte** , de naam van een nieuwe werkruimtemap in. Selecteer vervolgens **Starten** .
 
-   ![Schermopname van Eclipse Launcher](../media/speech-devices-sdk/eclipse-launcher.png)
+   ![Schermopname met het Eclipse-startprogramma waar u de naam van de map voor de werkruimte invoert.](../media/speech-devices-sdk/eclipse-launcher.png)
 
 1. Binnen enkele ogenblikken verschijnt het hoofdvenster van de Eclipse-IDE. Sluit het welkomstscherm als dit verschijnt.
 
 1. Maak via de Eclipse-menubalk een nieuw project door **Bestand** > **Nieuw** > **Java-project** te kiezen. Kies **Project** en daarna **Java-project** als dit niet beschikbaar is.
 
-1. De wizard **Nieuw Java-project** wordt gestart. **Blader**  naar de locatie van het voorbeeldproject. Selecteer **Finish**.
+1. De wizard **Nieuw Java-project** wordt gestart. **Blader**  naar de locatie van het voorbeeldproject. Selecteer **Finish** .
 
-   ![Schermopname van de wizard Nieuw Java-project](../media/speech-devices-sdk/eclipse-new-java-project.png)
+   ![Schermopname van de wizard Nieuw Java-project.](../media/speech-devices-sdk/eclipse-new-java-project.png)
 
-1. Klik in de **Package Explorer** met de rechtermuisknop op uw project. Kies in het contextmenu **Configureren** > **Naar Maven-project converteren**. Selecteer **Finish**.
+1. Klik in de **Package Explorer** met de rechtermuisknop op uw project. Kies in het contextmenu **Configureren** > **Naar Maven-project converteren** . Selecteer **Finish** .
 
    ![Schermopname van Package explorer](../media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
@@ -112,7 +112,7 @@ Als u van plan bent om de intenties te gebruiken, hebt u een [Language Understan
 
     Als u een nieuw trefwoord wilt gebruiken, werkt u de volgende regel in `FunctionsList.java` bij, en kopieert u het trefwoord naar uw app. Ga als volgt te werk als u bijvoorbeeld het trefwoord 'machine' uit het trefwoordpakket `machine.zip` wilt gebruiken:
 
-   * Kopieer het `kws.table`-bestand vanuit het zip-pakket naar de projectmap **target/classes**.
+   * Kopieer het `kws.table`-bestand vanuit het zip-pakket naar de projectmap **target/classes** .
    * Werk `FunctionsList.java` bij met de naam van het trefwoord:
 
      ```java
@@ -121,29 +121,29 @@ Als u van plan bent om de intenties te gebruiken, hebt u een [Language Understan
 
 ## <a name="run-the-sample-application-from-eclipse"></a>De voorbeeldtoepassing vanuit Eclipse uitvoeren
 
-1. Selecteer op de Eclipse-menubalk **Run** > **Run As** > **Java Application**. Selecteer vervolgens **FunctionsList** en **OK**.
+1. Selecteer op de Eclipse-menubalk **Run** > **Run As** > **Java Application** . Selecteer vervolgens **FunctionsList** en **OK** .
 
    ![Schermopname van een Java-toepassing selecteren](../media/speech-devices-sdk/eclipse-run-sample.png)
 
 1. De Speech Devices SDK-voorbeeldtoepassing wordt gestart en de volgende opties worden weergegeven:
 
-   ![Voorbeeld van de Speech Devices SDK-voorbeeldtoepassing en opties](../media/speech-devices-sdk/java-sample-app-windows.png)
+   ![Schermopname van een Speech Devices SDK-voorbeeldtoepassing en de opties.](../media/speech-devices-sdk/java-sample-app-windows.png)
 
-1. Probeer de nieuwe demo voor **gesprektranscriptie**. Begin met transcriberen met **Sessie** > **Start**. Standaard is iedereen een gast. Als u echter stemkarakteristieken van een deelnemer hebt, kunnen ze in een bestand `participants.properties` in projectmap **target/classes** worden geplaatst. Als u de stemkarakteristiek wilt genereren, bekijkt u [Gesprekken transcriberen (SDK)](../how-to-use-conversation-transcription-service.md).
+1. Probeer de nieuwe demo voor **gesprektranscriptie** . Begin met transcriberen met **Sessie** > **Start** . Standaard is iedereen een gast. Als u echter stemkarakteristieken van een deelnemer hebt, kunnen ze in een bestand `participants.properties` in projectmap **target/classes** worden geplaatst. Als u de stemkarakteristiek wilt genereren, bekijkt u [Gesprekken transcriberen (SDK)](../how-to-use-conversation-transcription-service.md).
 
-   ![Demo gesprektranscriptietoepassing](../media/speech-devices-sdk/cts-sample-app-windows.png)
+   ![Schermopname van een demo van de gesprektranscriptietoepassing.](../media/speech-devices-sdk/cts-sample-app-windows.png)
 
 ## <a name="create-and-run-a-standalone-application"></a>Een zelfstandige toepassing maken en uitvoeren
 
-1. Klik in de **Package Explorer** met de rechtermuisknop op uw project. Kies **Exporteren**.
+1. Klik in de **Package Explorer** met de rechtermuisknop op uw project. Kies **Exporteren** .
 
-1. Het venster **Exporteren** wordt weergegeven. Vouw **Java**, selecteer **Uitvoerbaar JAR-bestand** en vervolgens **Volgende**.
+1. Het venster **Exporteren** wordt weergegeven. Vouw **Java** , selecteer **Uitvoerbaar JAR-bestand** en vervolgens **Volgende** .
 
-   ![Schermopname van het venster Exporteren](../media/speech-devices-sdk/eclipse-export-windows.png)
+   ![Schermopname van het venster Exporteren waar u het uitvoerbare JAR-bestand selecteert.](../media/speech-devices-sdk/eclipse-export-windows.png)
 
-1. Het venster **Export van uitvoerbaar JAR-bestand** wordt weergegeven. Kies een **exportbestemming** voor de toepassing en selecteer **Voltooien**.
+1. Het venster **Export van uitvoerbaar JAR-bestand** wordt weergegeven. Kies een **exportbestemming** voor de toepassing en selecteer **Voltooien** .
 
-   ![Schermopname van Export van uitvoerbaar JAR-bestand](../media/speech-devices-sdk/eclipse-export-jar-windows.png)
+   ![Schermopname van het venster Export van uitvoerbaar JAR-bestand waar u het exportdoel kiest.](../media/speech-devices-sdk/eclipse-export-jar-windows.png)
 
 1. Plaats `kws.table`, `participants.properties`, `unimic_runtime.dll`, `pma.dll` en `Microsoft.CognitiveServices.Speech.extension.pma.dll` in de hierboven gekozen doelmap, omdat deze bestanden nodig zijn voor de toepassing.
 

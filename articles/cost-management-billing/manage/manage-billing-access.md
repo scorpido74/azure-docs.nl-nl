@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: ccdd7b16c7ec292b8f4f4c155a6f9497c606a489
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: e174a0539a75945cc0a2595e28a60d928e10acf4
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371810"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166213"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Toegang tot factureringsgegevens beheren voor Azure
 
@@ -51,15 +51,15 @@ Nadat een accountbeheerder de juiste rollen aan andere gebruikers heeft toegewez
 
 1. Meld u als accountbeheerder aan bij de [Azure-portal](https://portal.azure.com/),
 
-1. Zoek naar **kostenbeheer en facturering**.
+1. Zoek naar **kostenbeheer en facturering** .
 
-    ![Schermopname van de zoekopdracht in de Azure-portal](./media/manage-billing-access/billing-search-cost-management-billing.png)
+    ![Schermopname met Kostenbeheer en facturering gemarkeerd in de sectie Services.](./media/manage-billing-access/billing-search-cost-management-billing.png)
 
-1. Selecteer in het linkerdeelvenster **Abonnementen**. Afhankelijk van de toegangsmogelijkheden moet u mogelijk een factureringsbereik en vervolgens **Abonnementen** selecteren.
+1. Selecteer in het linkerdeelvenster **Abonnementen** . Afhankelijk van de toegangsmogelijkheden moet u mogelijk een factureringsbereik en vervolgens **Abonnementen** selecteren.
 
     ![Schermopname van het selecteren van abonnementen](./media/manage-billing-access/billing-select-subscriptions.png)
 
-1. Selecteer **Facturen** en vervolgens **Toegang tot factuur**.
+1. Selecteer **Facturen** en vervolgens **Toegang tot factuur** .
 
     ![Schermopname laat zien hoe u de toegang tot facturen kunt delegeren](./media/manage-billing-access/aa-optin01.png)
 
@@ -77,11 +77,11 @@ De functie Facturering voor lezer is beschikbaar als preview-versie en biedt nog
 
 1. Meld u als accountbeheerder aan bij de [Azure-portal](https://portal.azure.com/),
 
-1. Zoek naar **kostenbeheer en facturering**.
+1. Zoek naar **kostenbeheer en facturering** .
 
     ![Schermopname van de zoekopdracht in de Azure-portal](./media/manage-billing-access/billing-search-cost-management-billing.png)
 
-1. Selecteer in het linkerdeelvenster **Abonnementen**. Afhankelijk van de toegangsmogelijkheden moet u mogelijk een factureringsbereik en vervolgens **Abonnementen** selecteren.
+1. Selecteer in het linkerdeelvenster **Abonnementen** . Afhankelijk van de toegangsmogelijkheden moet u mogelijk een factureringsbereik en vervolgens **Abonnementen** selecteren.
 
     ![Schermopname van het selecteren van abonnementen](./media/manage-billing-access/billing-select-subscriptions.png)
 
@@ -90,11 +90,11 @@ De functie Facturering voor lezer is beschikbaar als preview-versie en biedt nog
 
     ![Schermopname van het klikken op Roltoewijzing toevoegen](./media/manage-billing-access/billing-click-add-role-assignment.png)
 
-1. Kies in de vervolgkeuzelijst **Rol** **Facturering voor lezer**.
+1. Kies in de vervolgkeuzelijst **Rol** **Facturering voor lezer** .
 1. Typ in het tekstvak **Selecteren** de naam of het e-mailadres van de gebruiker die u wilt toevoegen.
 1. Selecteer de gebruiker.
-1. Selecteer **Opslaan**.
-    ![Schermopname van het klikken op Roltoewijzing toevoegen](./media/manage-billing-access/billing-save-role-assignment.png)
+1. Selecteer **Opslaan** .
+    ![Schermopname met de knop Opslaan gemarkeerd.](./media/manage-billing-access/billing-save-role-assignment.png)
 
 1. Na enkele ogenblikken wordt aan de gebruiker de rol Facturering voor lezer toegewezen voor het abonnement.
 

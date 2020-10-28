@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 538aa29ab66fce48da944dbdf9ea79d5c8f7f330
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d25cdce2670de64fecc8590a2f5f833c10d2df69
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89421285"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316005"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>Quickstart: Azure Attestation instellen met behulp van Microsoft Azure PowerShell
 
@@ -186,7 +186,7 @@ $teeType = "<tee Type>"
 Get-AzAttestationPolicy   -Name $attestationProvider -ResourceGroupName $attestationResourceGroup -Tee $teeType 
 ```
 
-De ondersteunde TEE-typen zijn "sgxenclave" en "vbsenclave".
+De ondersteunde TEE-typen zijn SgxEnclave, OpenEnclave en VbsEnclave.
 
 Set-AttestationPolicy stelt een nieuw beleid in voor de opgegeven TEE. De cmdlet accepteert beleid in tekst- of JWT-indeling en wordt beheerd door de parameter PolicyFormat. "Tekst" is de standaardwaarde voor PolicyFormat. 
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
-ms.openlocfilehash: c8d0ce5031dc5972cac81b92477d3de049bc1f2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6efb96448cc99df95b8f898c9fb7dd3ef166c5ea
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543105"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126991"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sequr"></a>Zelfstudie: Azure Active Directory-integratie met Sequr
 
@@ -49,11 +49,11 @@ Om de integratie van Sequr in Azure AD te configureren, moet u Sequr vanuit de g
 
 **Voer de volgende stappen uit om Sequr toe te voegen vanuit de galerie:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen**.
+2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -61,13 +61,13 @@ Om de integratie van Sequr in Azure AD te configureren, moet u Sequr vanuit de g
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **Sequr**, selecteer **Sequr** in het resultaatvenster en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak **Sequr** , selecteer **Sequr** in het resultaatvenster en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
 
     ![Sequr in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u eenmalige aanmelding van Azure AD met Sequr op basis van een testgebruiker met de naam **Britta Simon**.
+In deze sectie configureert en test u eenmalige aanmelding van Azure AD met Sequr op basis van een testgebruiker met de naam **Britta Simon** .
 Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in Sequr tot stand is gebracht.
 
 Als u Azure AD-eenmalige aanmelding met Sequr wilt configureren en testen, moet u de volgende bouwstenen uitvoeren:
@@ -85,7 +85,7 @@ In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakel
 
 Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met Sequr te configureren:
 
-1. In de [Azure-portal](https://portal.azure.com/) selecteert u **Eenmalige aanmelding** op de integratiepagina van de toepassing **Sequr**.
+1. In de [Azure-portal](https://portal.azure.com/) selecteert u **Eenmalige aanmelding** op de integratiepagina van de toepassing **Sequr** .
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -101,7 +101,7 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met Sequr te c
 
     ![Domein- en URL-gegevens voor eenmalige aanmelding bij Sequr](common/idp-identifier.png)
 
-    Typ de volgende URL in het tekstvak **Id**: `https://login.sequr.io`
+    Typ de volgende URL in het tekstvak **Id** : `https://login.sequr.io`
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
@@ -131,15 +131,15 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met Sequr te c
 
 1. Klik op **Integraties** in het linkernavigatievenster.
 
-    ![Sequr-configuratie](./media/sequr-tutorial/configure1.png)
+    ![Schermopname van Integraties geselecteerd in het navigatiedeelvenster.](./media/sequr-tutorial/configure1.png)
 
-1. Schuif omlaag naar de sectie **Eenmalige aanmelding** en klik op **Beheren**.
+1. Schuif omlaag naar de sectie **Eenmalige aanmelding** en klik op **Beheren** .
 
-    ![Sequr-configuratie](./media/sequr-tutorial/configure2.png)
+    ![Schermopname van de sectie Eenmalige aanmelding met de knop Beheren geselecteerd.](./media/sequr-tutorial/configure2.png)
 
 1. Voer in het gedeelte **Eenmalige aanmelding beheren** de volgende stappen uit:
 
-    ![Sequr-configuratie](./media/sequr-tutorial/configure3.png)
+    ![Schermopname van de sectie Eenmalige aanmelding beheren, waarin u de beschreven waarden kunt invoeren.](./media/sequr-tutorial/configure3.png)
 
     a. Plak in het tekstvak **URL van id-provider voor eenmalige aanmelding** de **aanmeldings-URL** die u hebt gekopieerd in de Microsoft Azure-portal.
 
@@ -147,13 +147,13 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met Sequr te c
 
     c. Wanneer u de configuratie heeft opgeslagen, wordt de waarde voor de relaystatus gegenereerd. Kopieer de waarde van de **relaystatus** en plak deze in het tekstvak **Relaystatus** in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-    d. Klik op **Opslaan**.
+    d. Klik op **Opslaan** .
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -165,31 +165,31 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u `brittasimon@yourcompanydomain.extension`. Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Create** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In dit gedeelte stelt u Britta Simon in staat om gebruik te maken van eenmalige aanmelding van Azure door haar toegang te geven tot Sequr.
 
-1. Selecteer in Azure Portal **Bedrijfstoepassingen**, **Alle toepassingen** en vervolgens **Sequr**.
+1. Selecteer in Azure Portal **Bedrijfstoepassingen** , **Alle toepassingen** en vervolgens **Sequr** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen de optie **Sequr**.
+2. Selecteer in de lijst met toepassingen de optie **Sequr** .
 
     ![De koppeling Sequr in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen** .
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -197,7 +197,7 @@ In dit gedeelte stelt u Britta Simon in staat om gebruik te maken van eenmalige 
 
 6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
-7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen** .
 
 ### <a name="create-sequr-test-user"></a>Sequr-testgebruiker maken
 

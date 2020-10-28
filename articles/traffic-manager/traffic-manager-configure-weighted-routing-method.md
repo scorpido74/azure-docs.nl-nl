@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/20/2017
+ms.date: 10/19/2020
 ms.author: duau
-ms.openlocfilehash: dff7d4ec02c5a17b51d73b9d81f93984b95a7d22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: abcfce43b90c7371d5b38aa5b7a6d478e9d6a0dd
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401347"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207818"
 ---
 # <a name="tutorial-configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>Zelfstudie: De gewogen verkeersrouteringsmethode configureren in Traffic Manager
 
@@ -25,31 +25,62 @@ Een veelgebruikte methode voor het routeren van verkeer is om een set identieke 
 > [!NOTE]
 > De Azure-web-app biedt al round robin-taakverdeling voor websites binnen een Azure-regio (die mogelijk meerdere datacentra omvat). Met Traffic Manager kunt u verkeer distribueren over websites in verschillende datacentra.
 
-## <a name="to-configure-the-weighted-traffic-routing-method"></a>Ga als volgt te werk om de gewogen verkeersrouteringsmethode te configureren
+In deze zelfstudie leert u het volgende:
+> [!div class="checklist"]
+> - Een Traffic Manager-profiel met gewogen routering maken.
+> - Het Traffic Manager-profiel gebruiken.
+> - Traffic Manager-profiel verwijderen.
 
-1. Meld u vanuit een browser aan bij [Azure Portal](https://portal.azure.com). Als u nog geen account hebt, kunt u zich registreren voor een [gratis proefversie van één maand](https://azure.microsoft.com/free/). 
-2. Zoek in de zoekbalk van de portal naar de **Traffic Manager-profielen** en klik vervolgens op de profielnaam waarvoor u de routeringsmethode wilt configureren.
-3. Verifieer in de blade van het **Traffic Manager-profiel** of zowel de cloudservices als websites die u in uw configuratie wilt opnemen aanwezig zijn.
-4. Klik in de sectie **Instellingen** op **Configuratie** en voer in de blade **Configuratie** de volgende configuratie uit:
-    1. Controleer voor **instellingen voor de methode voor verkeersroutering** of de methode voor verkeersroutering op **Gewogen** is ingesteld. Klik op **Gewogen** in de vervolgkeuzelijst als dat niet het geval is.
-    2. Stel de **Controle-instellingen voor het eindpunt** voor alle eindpunten in dit profiel hetzelfde in en doe dit als volgt:
-        1. Selecteer het juiste **Protocol** en geef het **Poortnummer** op. 
-        2. Typ bij **Pad** een slash */* . Als u eindpunten wilt controleren, moet u een pad en bestandsnaam opgeven. Een slash (/) is een geldige vermelding voor het relatieve pad en impliceert dat het bestand zich in de hoofdmap bevindt (standaard).
-        3. Klik bovenaan de pagina op **Opslaan**.
-5. Test de wijzigingen in uw configuratie als volgt:
-    1.  Zoek in de zoekbalk van de portal naar de naam van het Traffic Manager-profiel en klik in de weergegeven resultaten op het Traffic Manager-profiel.
-    2.  Klik in de blade met het **Traffic Manager**-profiel op **Overzicht**.
-    3.  De blade **Traffic Manager-profiel** geeft de DNS-naam weer van het Traffic Manager-profiel dat u zojuist hebt gemaakt. Dit kan door clients worden gebruikt (bijvoorbeeld door ernaar te navigeren met een webbrowser) om naar het juiste eindpunt te gaan, zoals wordt bepaald door het routeringstype. In dit geval worden alle aanvragen naar elk eindpunt gerouteerd op basis van round robin.
-6. Als uw Traffic Manager-profiel werkt, kunt u de DNS-record op uw gezaghebbende DNS-server zo bewerken dat de domeinnaam van uw bedrijf verwijst naar de Traffic Manager-domeinnaam.
+## <a name="prerequisites"></a>Vereisten
 
-![De gewogen verkeersrouteringsmethode configureren met Traffic Manager][1]
+* Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/)
+
+## <a name="configure-the-weighted-traffic-routing-method"></a>De gewogen verkeersrouteringsmethode configureren
+
+1. Meld u vanuit een browser aan bij de [Azure-portal](https://portal.azure.com).
+
+1. Zoek in de zoekbalk van de portal de naam van het **Traffic Manager-profiel** dat u in het vorige gedeelte hebt gemaakt en selecteer het Traffic Manager-profiel in de weergegeven resultaten.
+
+    :::image type="content" source="./media/traffic-manager-weighted-routing-method/search-traffic-manager-weighted-profile.png" alt-text="Traffic Manager-profiel zoeken":::
+
+1. Selecteer **Configuratie** en selecteer of voer de volgende instellingen in:
+
+    | Instelling         | Waarde                                              |
+    | ---             | ---                                                |
+    | Routeringsmethode            | Selecteer **Gewogen** . |    
+    | DNS time to live (TTL) | Deze waarde bepaalt hoe vaak de lokale cachenaamserver van de client een query op het Traffic Manager-systeem uitvoert naar bijgewerkte DNS-vermeldingen. Dit is de tijd die het duurt voor wijzigingen die zich voordoen met Traffic Manager, zoals het wijzigen van de routeringsmethode van het verkeer of wijzigingen in de beschikbaarheid van toegevoegde eindpunten, in het globale systeem van DNS-servers worden doorgevoerd. |
+    | Protocol    | Selecteer een protocol voor eindpuntbewaking. *Opties: HTTP, HTTPS en TCP* |
+    | Poort | Geef het poortnummer op. |
+    | Pad | Als u eindpunten wilt controleren, moet u een pad en bestandsnaam opgeven. Een slash (/) is een geldige vermelding voor het relatieve pad en impliceert dat het bestand zich in de hoofdmap bevindt (standaard). |
+    | Aangepaste headerinstellingen | Configureer de aangepaste headers met de indeling host:contoso.com,nieuweheader:nieuwewaarde. Het maximum aantal ondersteunde paren is 8. Van toepassing op het HTTP- en HTTPS-protocol. Van toepassing op alle eindpunten in het profiel |
+    | Verwachte statuscodebereiken (standaard: 200) | Configureer statuscodebereiken in de notatie 200-299,301-301. Het maximum aantal ondersteunde bereiken is 8. Van toepassing op het HTTP- en HTTPS-protocol. Van toepassing op alle eindpunten in het profiel |
+    | Testinterval | Het tijdsinterval tussen statustests van eindpunten configureren. U kunt 10 of 30 seconden kiezen. |
+    | Aantal fouten tolereren | Configureer het aantal mislukte statustestfouten dat is toegestaan voordat een eindpuntfout wordt getriggerd. Voer een getal tussen 0 en 9 in. | 
+    | Time-out voor testen | Configureer de tijd die nodig is voor een time-out van een eindpuntstatustest. Deze waarde moet ten minste 5 zijn en kleiner zijn dan de waarde voor het testinterval. |
+
+1. Selecteer **Opslaan** om de configuratie te voltooien.
+
+    :::image type="content" source="./media/traffic-manager-weighted-routing-method/traffic-manager-weighted-configuration.png" alt-text="Traffic Manager-profiel zoeken"::: 
+
+1. Selecteer **Eindpunt** en configureer het gewicht van elk eindpunt. Het gewicht kan 1-1000 zijn. Hoe hoger het gewicht, hoe hoger de prioriteit.  
+
+    :::image type="content" source="./media/traffic-manager-weighted-routing-method/traffic-manager-configure-endpoints-weighted.png" alt-text="Traffic Manager-profiel zoeken"::: 
+
+## <a name="use-the-traffic-manager-profile"></a>Het Traffic Manager-profiel gebruiken
+
+Het **Traffic Manager-profiel** geeft de DNS-naam weer van het Traffic Manager-profiel dat u zojuist hebt gemaakt. Deze naam kan door clients worden gebruikt (bijvoorbeeld door ernaar te navigeren met een webbrowser) om naar het juiste eindpunt te gaan, zoals wordt bepaald door het routeringstype. In dit geval worden alle aanvragen naar elk eindpunt gerouteerd op basis van round robin.
+
+:::image type="content" source="./media/traffic-manager-weighted-routing-method/traffic-manager-weighted-overview.png" alt-text="Traffic Manager-profiel zoeken"::: 
+
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Als u het Traffic Manager-profiel niet meer nodig hebt, zoekt u het profiel op en selecteert u **Profiel verwijderen** .
+
+:::image type="content" source="./media/traffic-manager-weighted-routing-method/delete-traffic-manager-weighted-profile.png" alt-text="Traffic Manager-profiel zoeken":::
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [geprioriteerde verkeersrouteringsmethode](traffic-manager-configure-priority-routing-method.md).
-- Meer informatie over [verkeersroutering op basis van prestaties](traffic-manager-configure-performance-routing-method.md).
-- Meer informatie over [geografische verkeersrouteringsmethode](traffic-manager-configure-geographic-routing-method.md).
-- Meer informatie over het [testen van Traffic Manager-instellingen](traffic-manager-testing-settings.md).
+Zie voor meer informatie over de gewogen routeringsmethode:
 
-<!--Image references-->
-[1]: ./media/traffic-manager-weighted-routing-method/traffic-manager-weighted-routing-method.png
+> [!div class="nextstepaction"]
+> [Gewogen verkeersrouteringsmethode](traffic-manager-routing-methods.md#weighted)

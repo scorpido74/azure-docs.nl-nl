@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 8e7ad721eba103679f55886053e8ba9e888573c0
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 19ce74046dd86885a01ad5e8dcc4bfda950dd884
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057481"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201342"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Zelfstudie: Coderen met de Azure Digital Twins-API's
 
@@ -39,7 +39,7 @@ U gaat als volgt aan de slag:
 
 Wanneer u klaar bent om met uw Azure Digital Twins-exemplaar, moet u het client-app-project instellen. 
 
-Open een opdrachtprompt of een ander consolevenster op uw computer en maak een lege projectmap waarin u uw werk wilt opslaan tijdens deze zelfstudie. Geef de map een willekeurige naam (bijvoorbeeld *DigitalTwinsCodeTutorial*).
+Open een opdrachtprompt of een ander consolevenster op uw computer en maak een lege projectmap waarin u uw werk wilt opslaan tijdens deze zelfstudie. Geef de map een willekeurige naam (bijvoorbeeld *DigitalTwinsCodeTutorial* ).
 
 Navigeer naar de nieuwe map.
 
@@ -104,40 +104,21 @@ Vervolgens voegt u code toe aan dit bestand om een deel van de functionaliteit i
 
 Het eerste wat uw app moet doen, is verifiëren op basis van de Azure Digital Twins-service. Vervolgens kunt u een service-clientklasse maken voor toegang tot de SDK-functies.
 
-Als u zich wilt verifiëren, hebt u soorten informatie nodig:
-* De *Map-id* voor uw abonnement
-* De *Toepassings-id (client)* die is gemaakt bij het eerder instellen van Azure Digital Twins
-* The *hostName* van uw exemplaar van Azure Digital Twins
+Voor de verificatie hebt u de *hostName* -waarde van uw Azure Digital Twins-exemplaar nodig.
 
->[!TIP]
-> Als u uw *Map-id* niet weet, kunt u deze downloaden door deze opdracht uit te voeren in [Azure Cloud Shell](https://shell.azure.com):
-> 
-> ```azurecli
-> az account show --query tenantId
-> ```
-
-Plak de volgende code in *Program.cs* onder de regel "Hello World!" in de `Main` methode. Stel de waarde van `adtInstanceUrl` in op uw Azure Digital Twins-exemplaar *hostnaam*, `clientId` naar uw *Toepassings-ID* en `tenantId` naar uw *Map-id*.
+Plak de volgende code in *Program.cs* onder de regel "Hello World!" in de `Main` methode. Stel de waarde van `adtInstanceUrl` in op die van *hostName* van uw exemplaar van Azure Digital Twins.
 
 ```csharp
-string clientId = "<your-application-ID>";
-string tenantId = "<your-directory-ID>";
-string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>";
-var credentials = new InteractiveBrowserCredential(tenantId, clientId);
-DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credentials);
+string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>"; 
+var credential = new DefaultAzureCredential();
+DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
 Console.WriteLine($"Service client created – ready to go");
 ```
 
 Sla het bestand op. 
 
-In dit voorbeeld wordt een interactieve browserreferentie gebruikt:
-```csharp
-var credentials = new InteractiveBrowserCredential(tenantId, clientId);
-```
-
-Dit type referentie zorgt ervoor dat er een browservenster wordt geopend, waarin u wordt gevraagd uw Azure-referenties op te geven. 
-
 >[!NOTE]
-> Zie de documentatie voor de [Microsoft Identity platform-verificatiebibliotheken](../active-directory/develop/reference-v2-libraries.md) voor informatie over andere typen referenties.
+> In dit voorbeeld wordt een `DefaultAzureCredential` voor verificatie gebruikt. Zie de documentatie voor de [Microsoft Identity platform-verificatiebibliotheken](../active-directory/develop/reference-v2-libraries.md) of het artikel van Azure Digital Twins over [verificatie van clienttoepassingen](how-to-authenticate-client.md) voor informatie over andere typen referenties.
 
 Voer in het opdrachtvenster de code uit met de volgende opdracht: 
 
@@ -151,11 +132,11 @@ Hiermee herstelt u de afhankelijkheden bij de eerste uitvoering en voert u het p
 
 ### <a name="upload-a-model"></a>Een model uploaden
 
-Azure Digital Twins heeft geen intrinsieke domeinwoordenlijst. De typen elementen in uw omgeving die u kunt vertegenwoordigen in Azure Digital Twins, worden door u gedefinieerd met behulp van **Modellen**. [Modellen](concepts-models.md) lijken op klassen in objectgeoriënteerde programmeertalen. Ze bieden door de gebruiker gedefinieerde sjablonen die [digitale tweelingen](concepts-twins-graph.md) later kunnen volgen en instantiëren. Ze worden geschreven in een JSON-achtige taal met de naam **Digital Twins Definition Language (DTDL)** .
+Azure Digital Twins heeft geen intrinsieke domeinwoordenlijst. De typen elementen in uw omgeving die u kunt vertegenwoordigen in Azure Digital Twins, worden door u gedefinieerd met behulp van **Modellen** . [Modellen](concepts-models.md) lijken op klassen in objectgeoriënteerde programmeertalen. Ze bieden door de gebruiker gedefinieerde sjablonen die [digitale tweelingen](concepts-twins-graph.md) later kunnen volgen en instantiëren. Ze worden geschreven in een JSON-achtige taal met de naam **Digital Twins Definition Language (DTDL)** .
 
 De eerste stap bij het maken van een Azure Digital Twins-oplossing is het definiëren van ten minste een model in een DTDL-bestand.
 
-Maak in de map waar u het project hebt gemaakt een nieuw *.json*-bestand met de naam *SampleModel.json*. Plak in de volgende hoofdtekst van het bestand: 
+Maak in de map waar u het project hebt gemaakt een nieuw *.json* -bestand met de naam *SampleModel.json* . Plak in de volgende hoofdtekst van het bestand: 
 
 ```json
 {
@@ -178,7 +159,7 @@ Maak in de map waar u het project hebt gemaakt een nieuw *.json*-bestand met de 
 ```
 
 > [!TIP]
-> Als u Visual Studio voor deze zelfstudie gebruikt, wilt u mogelijk het zojuist gemaakte JSON-bestand selecteren en de eigenschap *Kopiëren naar uitvoermap* instellen in de Eigenschappencontrole naar te *Kopiëren als nieuwer* of *Altijd kopiëren*. Hierdoor kan Visual Studio het JSON-bestand met het standaardpad vinden wanneer u het programma uitvoert met **F5** tijdens de rest van de zelfstudie.
+> Als u Visual Studio voor deze zelfstudie gebruikt, wilt u mogelijk het zojuist gemaakte JSON-bestand selecteren en de eigenschap *Kopiëren naar uitvoermap* instellen in de Eigenschappencontrole naar te *Kopiëren als nieuwer* of *Altijd kopiëren* . Hierdoor kan Visual Studio het JSON-bestand met het standaardpad vinden wanneer u het programma uitvoert met **F5** tijdens de rest van de zelfstudie.
 
 > [!TIP] 
 > Er is een taalagnostisch [DTDL-validatorvoorbeeld](/samples/azure-samples/dtdl-validator/dtdl-validator) dat u kunt gebruiken om modeldocumenten te controleren en u ervan te verzekeren dat de DTDL geldig is. Het voorbeeld is gemaakt op basis van de DTDL-parserbibliotheek, waarover u meer kunt lezen in [*Instructies: Modellen parseren en valideren*](how-to-parse-models.md).
@@ -283,7 +264,7 @@ Vanaf dit punt verstuurt de zelfstudie alle aanroepen naar servicemethoden in tr
 
 ### <a name="create-digital-twins"></a>Digitale tweelingen maken
 
-Nu u een model naar Azure Digital Twins hebt geüpload, kunt u deze modeldefinitie gebruiken voor het maken van **digitale tweelingen**. [Digitale tweelingen](concepts-twins-graph.md) zijn exemplaren van een model en vertegenwoordigen de entiteiten in uw bedrijfsomgeving: dingen als sensoren op een boerderij, ruimten in een gebouw, of lichten in een auto. In deze sectie wordt een aantal digitale tweelingen gemaakt op basis van het model dat u eerder hebt geüpload.
+Nu u een model naar Azure Digital Twins hebt geüpload, kunt u deze modeldefinitie gebruiken voor het maken van **digitale tweelingen** . [Digitale tweelingen](concepts-twins-graph.md) zijn exemplaren van een model en vertegenwoordigen de entiteiten in uw bedrijfsomgeving: dingen als sensoren op een boerderij, ruimten in een gebouw, of lichten in een auto. In deze sectie wordt een aantal digitale tweelingen gemaakt op basis van het model dat u eerder hebt geüpload.
 
 Voeg bovenaan een nieuwe `using`-instructie toe, omdat u de ingebouwde .NET JSON-serializer nodig hebt in `System.Text.Json`:
 
@@ -314,19 +295,26 @@ for(int i=0; i<3; i++) {
 
 Voer in het opdrachtvenster de programma uit met `dotnet run`. Herhaal dit vervolgens om het programma opnieuw uit te voeren. 
 
-U ziet dat er geen fout wordt gegenereerd wanneer de tweelingen de tweede keer worden gemaakt, zelfs als tweeling al bestaan na de eerste uitvoering. In tegenstelling tot het maken van een model, is het maken van tweelingen op het REST-niveau een *PUT*-aanroep met *upsert*-semantiek. Dit betekent dat als er al een tweeling bestaat, er wordt geprobeerd om deze opnieuw te maken. Geen fout vereist.
+U ziet dat er geen fout wordt gegenereerd wanneer de tweelingen de tweede keer worden gemaakt, zelfs als tweeling al bestaan na de eerste uitvoering. In tegenstelling tot het maken van een model, is het maken van tweelingen op het REST-niveau een *PUT* -aanroep met *upsert* -semantiek. Dit betekent dat als er al een tweeling bestaat, er wordt geprobeerd om deze opnieuw te maken. Geen fout vereist.
 
 ### <a name="create-relationships"></a>Relaties maken
 
-Vervolgens kunt u **relaties** maken tussen deze gemaakte tweelingen, om ze te verbinden in een **tweelinggrafiek**. [Tweelinggrafieken](concepts-twins-graph.md) worden gebruikt om uw gehele omgeving voor te stellen.
+Vervolgens kunt u **relaties** maken tussen deze gemaakte tweelingen, om ze te verbinden in een **tweelinggrafiek** . [Tweelinggrafieken](concepts-twins-graph.md) worden gebruikt om uw gehele omgeving voor te stellen.
 
-U hebt de `Azure.DigitalTwins.Core.Serialization`-naamruimte nodig om relaties te kunnen maken. U hebt dit eerder aan het project toegevoegd met deze `using`-instructie:
+Dit codevoorbeeld maakt gebruik van de `Azure.DigitalTwins.Core.Serialization`-naamruimte bij het maken van relaties. U hebt dit eerder aan het project toegevoegd met deze `using`-instructie:
 
 ```csharp
 using Azure.DigitalTwins.Core.Serialization;
 ```
 
+>[!NOTE]
+>`Azure.DigitalTwins.Core.Serialization` is niet vereist voor het werken met digitale dubbels en relaties. Het is een optionele naamruimte waarmee u gegevens in de juiste indeling kunt ophalen. Enkele alternatieven voor het gebruik ervan zijn:
+>* Tekenreeksen samenvoegen om een JSON-object te maken
+>* Een JSON-parser als `System.Text.Json` gebruiken om dynamisch een JSON-object te bouwen
+>* Uw aangepaste typen in C# modelleren, ze instantiëren en naar tekenreeksen serialiseren
+
 Voeg een nieuwe statische methode toe aan de klasse `Program`, onder de methode `Main`:
+
 ```csharp
 public async static Task CreateRelationship(DigitalTwinsClient client, string srcId, string targetId)
 {
@@ -348,7 +336,8 @@ public async static Task CreateRelationship(DigitalTwinsClient client, string sr
 }
 ```
 
-Voeg vervolgens de volgende code toe aan het einde van de `Main`-methode om de `CreateRelationship`-code aan te roepen:
+Voeg vervolgens de volgende code toe aan het einde van de `Main`-methode om de `CreateRelationship`-methode aan te roepen en gebruik de code die u zojuist hebt geschreven:
+
 ```csharp
 // Connect the twins with relationships
 await CreateRelationship(client, "sampleTwin-0", "sampleTwin-1");
@@ -455,11 +444,10 @@ namespace minimal
         {
             Console.WriteLine("Hello World!");
             
-            string clientId = "<your-application-ID>";
-            string tenantId = "<your-directory-ID>";
-            string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>";
-            var credentials = new InteractiveBrowserCredential(tenantId, clientId);
-            DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credentials);
+            string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>"; 
+            
+            var credential = new DefaultAzureCredential();
+            DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
             Console.WriteLine($"Service client created – ready to go");
 
             Console.WriteLine();

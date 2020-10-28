@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: overview
 ms.date: 06/29/2020
 ms.author: pafarley
-ms.openlocfilehash: 019a9264beddafbd4585810967551e064592e94d
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 4fbfbd1d578eb77d50d91413efb9f9fbf28e115f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602520"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146309"
 ---
 # <a name="whats-new-in-custom-vision"></a>Wat is er nieuw in Custom Vision
 
@@ -23,9 +23,9 @@ Meer informatie over nieuwe functies in de service. Dit kunnen opmerkingen bij d
 
 ## <a name="july-2020"></a>Juli 2020
 
-### <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
+### <a name="azure-role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer voor Azure
 
-* Custom Vision biedt ondersteuning voor op rollen gebaseerd toegangsbeheer voor Azure (Azure RBAC), een autorisatiesysteem voor het beheren van afzonderlijke toegang tot Azure-resources. Zie [Op rollen gebaseerd toegangsbeheer](./role-based-access-control.md) voor meer informatie over het beheren van de toegang tot uw Custom Vision-projecten.
+* Custom Vision biedt ondersteuning voor op rollen gebaseerd toegangsbeheer voor Azure (Azure RBAC), een autorisatiesysteem voor het beheren van afzonderlijke toegang tot Azure-resources. Zie [Op Azure-rollen gebaseerd toegangsbeheer](./role-based-access-control.md) voor meer informatie over het beheren van de toegang tot uw Custom Vision-projecten.
 
 ### <a name="subset-training"></a>Trainen met subsets
 

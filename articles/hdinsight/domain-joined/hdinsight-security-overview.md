@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 08/24/2020
-ms.openlocfilehash: 9cfda93cb7f99851109ab7c4a4590517f785c8a1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ea61ca42c345fe9df0436a193fb2adcb00ce6195
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89292976"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150798"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Overzicht van bedrijfsbeveiliging in Azure HDInsight
 
@@ -82,14 +82,16 @@ De volgende tabel bevat koppelingen naar resources voor elk type beveiligingsopl
 |  | Controleer of de functie voor [Versleuteling-in-transit](./encryption-in-transit.md) is ingeschakeld om TLS en IPSec te gebruiken voor communicatie binnen het cluster. | Klant |
 |  | [Door de klant beheerde sleutels](../../storage/common/storage-encryption-keys-portal.md) configureren voor Azure Storage-versleuteling | Klant |
 |  | Toegang tot uw gegevens beheren via Azure-ondersteuning met behulp van [Klanten-lockbox](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview) | Klant |
-| Beveiliging van toepassingen en middleware | Integratie uitvoeren met AAD-DS en [verificatie configureren](apache-domain-joined-configure-using-azure-adds.md) | Klant |
+| Beveiliging van toepassingen en middleware | Integreren met AAD-DS en [ESP configureren](apache-domain-joined-configure-using-azure-adds.md) of [HIB for OAuth Authentication](identity-broker.md) gebruiken| Klant |
 |  | Beleid voor [Apache Ranger-autorisatie](apache-domain-joined-run-hive.md) configureren | Klant |
 |  | [Azure Monitor-logboeken](../hdinsight-hadoop-oms-log-analytics-tutorial.md) gebruiken | Klant |
 | Beveiliging van besturingssysteem | Clusters met de nieuwste beveiligde basisinstallatiekopie maken | Klant |
 |  | Periodiek ervoor zorgen dat [patches op het besturingssysteem worden toegepast](../hdinsight-os-patching.md) | Klant |
+|  | Zorgen voor [CMK-schijfversleuteling voor VM's](../disk-encryption.md) | Klant |
 | Netwerkbeveiliging | [Een virtueel netwerk](../hdinsight-plan-virtual-network-deployment.md) configureren |
-|  | [Regels voor binnenkomend verkeer van netwerkbeveiligingsgroepen (NSG)](../control-network-traffic.md) configureren | Klant |
+|  | [Regels voor binnenkomend verkeer van netwerkbeveiligingsgroepen (NSG)](../control-network-traffic.md) of [privékoppeling](../hdinsight-private-link.md) configureren | Klant |
 |  | [Beperkingen voor uitgaand verkeer](../hdinsight-restrict-outbound-traffic.md) configureren met een firewall | Klant |
+|  | [IPSec-versleuteling in transit](encryption-in-transit.md) tussen clusterknooppunten configureren | Klant |
 | Gevirtualiseerde infrastructuur | N.v.t. | HDInsight (cloudprovider) |
 | Fysieke beveiligingsinfrastructuur | N.v.t. | HDInsight (cloudprovider) |
 

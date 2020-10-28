@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 78807db19b413bb642e8dcf61e480d6d954b6178
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c3c1b61cb4f799b79ca00fc92ffadc2374a61c03
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87059554"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132462"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio-preview"></a>Verbinding maken met Synapse SQL met Azure Data Studio (preview-versie)
 
@@ -30,11 +30,11 @@ U kunt [Azure Data Studio (preview-versie)](/sql/azure-data-studio/download-azur
 
 ## <a name="connect"></a>Verbinding maken
 
-Als u verbinding wilt maken met Synapse SQL, opent u Azure Data Studio en selecteert u **Nieuwe verbinding**.
+Als u verbinding wilt maken met Synapse SQL, opent u Azure Data Studio en selecteert u **Nieuwe verbinding** .
 
 ![Azure Data Studio openen](./media/get-started-azure-data-studio/1-start.png)
 
-Kies **Microsoft SQL Server** als **verbindingstype**.
+Kies **Microsoft SQL Server** als **verbindingstype** .
 
 Voor de verbinding zijn de volgende parameters vereist:
 
@@ -50,7 +50,7 @@ Voor de verbinding zijn de volgende parameters vereist:
 >
 > - `<Azure Synapse workspace name>`.sql.azuresynapse.net
 
-Kies **Windows-verificatie**, **Azure Active Directory** of **SQL-aanmelding** als **verificatietype**.
+Kies **Windows-verificatie** , **Azure Active Directory** of **SQL-aanmelding** als **verificatietype** .
 
 Als u gebruik wilt maken van **SQL-aanmelding** als verificatietype, moet u de gebruikersnaam- en wachtwoordparameters toevoegen:
 
@@ -61,11 +61,11 @@ Als u Azure Active Directory wilt gebruiken, moet u het gewenste verificatietype
 
 ![Microsoft Azure Active Directory-verificatie](./media/get-started-azure-data-studio/3-aad-auth.png)
 
-De volgende schermopname toont de **verbindingsgegevens** voor **Windows-verificatie**:
+De volgende schermopname toont de **verbindingsgegevens** voor **Windows-verificatie** :
 
 ![Windows-verificatie](./media/get-started-azure-data-studio/3-windows-auth.png)
 
-De volgende schermopname toont de **verbindingsgegevens** via **SQL-aanmelding**:
+De volgende schermopname toont de **verbindingsgegevens** via **SQL-aanmelding** :
 
 ![SQL-aanmelding](./media/get-started-azure-data-studio/2-database-details.png)
 
@@ -94,4 +94,5 @@ Verken andere manieren om verbinding te maken met Synapse SQL:
 - [Power BI](get-started-power-bi-professional.md)
 - [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [sqlcmd](get-started-connect-sqlcmd.md)
- 
+
+Ga naar [Azure Data Studio gebruiken om verbinding te maken en query's op gegevens kunt uitvoeren met behulp van een toegewezen SQL-pool in Azure Synapse Analytics](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-dw) voor meer informatie. 

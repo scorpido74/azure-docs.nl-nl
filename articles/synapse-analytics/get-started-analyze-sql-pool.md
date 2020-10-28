@@ -7,14 +7,15 @@ ms.author: saveenr
 manager: julieMSFT
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
+ms.subservice: sql
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 11c11d3e43f15b569a74c282b15a95525cea7e7c
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: c46adf9e9f5c1b2e74c1098ebf137c4556bfc58d
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91620032"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147565"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Gegevens analyseren met toegewezen SQL-pools
 
@@ -23,6 +24,7 @@ Azure Synapse Analytics biedt u de mogelijkheid om gegevens te analyseren met be
 ## <a name="load-the-nyc-taxi-data-into-sqldb1"></a>Laad de NYCe Taxi-gegevens in SQLDB1
 
 1. Ga in Synapse Studio naar de hub **Ontwikkelen** en maak vervolgens een nieuw SQL-script
+1. Selecteer de pool SQLDB1 (de pool die is gemaakt in [STAP 1](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace#create-a-sql-pool) van deze zelfstudie) in de sectie Verbinding maken met van het script.
 1. Voer de volgende code in:
     ```
     CREATE TABLE [dbo].[Trip]
@@ -73,11 +75,11 @@ Azure Synapse Analytics biedt u de mogelijkheid om gegevens te analyseren met be
 
 ## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>De NYC-taxigegevens in de toegewezen SQL-pool verkennen
 
-1. Ga in Synapse Studio naar de hub **Gegevens**.
-1. Ga naar **SQLDB1** > **Tabellen**. Er wordt een aantal tabellen geladen.
-1. Klik met de rechtermuisknop op de tabel **dbo.Trip** en selecteer **Nieuw SQL-script** > **Eerste 100 rijen selecteren**.
+1. Ga in Synapse Studio naar de hub **Gegevens** .
+1. Ga naar **SQLDB1** > **Tabellen** . Er wordt een aantal tabellen geladen.
+1. Klik met de rechtermuisknop op de tabel **dbo.Trip** en selecteer **Nieuw SQL-script** > **Eerste 100 rijen selecteren** .
 1. Wacht tot er een nieuw SQL-script wordt gemaakt en uitgevoerd.
-1. U ziet dat bovenaan het SQL-script **Verbinding maken met** automatisch is ingesteld op de SQL-pool met de naam **SQLDB1**.
+1. U ziet dat bovenaan het SQL-script **Verbinding maken met** automatisch is ingesteld op de SQL-pool met de naam **SQLDB1** .
 1. Vervang de tekst van het SQL-script door deze code en voer deze uit.
 
     ```sql

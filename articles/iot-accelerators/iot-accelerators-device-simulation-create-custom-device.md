@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: troyhop
-ms.openlocfilehash: 302b863e7ad7d6df286adf53342356f279ab92d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ddd1aa9865cb4061212ce77b31efc82ad339283
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "61450549"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165567"
 ---
 # <a name="tutorial-create-a-custom-simulated-device"></a>Zelfstudie: Een aangepast gesimuleerd apparaat maken
 
@@ -86,13 +86,13 @@ Uw koelkast is nu opgenomen in de lijst met apparaatmodellen. Misschien moet u o
 
 Door een apparaatmodel te klonen, maakt u een kopie van een bestaand apparaatmodel. Vervolgens kunt u de kopie bewerken zodat deze voldoet aan uw specifieke behoeften. Klonen bespaart tijd wanneer u vergelijkbare apparaatmodellen moet maken.
 
-Als u een apparaatmodel wilt klonen, schakelt u het selectievakje naast het model in en klikt u in de actiebalk op **Klonen**:
+Als u een apparaatmodel wilt klonen, schakelt u het selectievakje naast het model in en klikt u in de actiebalk op **Klonen** :
 
-![Apparaatmodel verwijderen](media/iot-accelerators-device-simulation-create-custom-device/clonedevice.png)
+![Schermopname waarin het geselecteerde model en de knop Klonen zijn gemarkeerd.](media/iot-accelerators-device-simulation-create-custom-device/clonedevice.png)
 
 ## <a name="delete-a-device-model"></a>Een apparaatmodel verwijderen
 
-U kunt elk aangepast apparaatmodel verwijderen. Als u een apparaatmodel wilt verwijderen, schakelt u het selectievakje naast het model in en klikt u in de actiebalk op **Verwijderen**:
+U kunt elk aangepast apparaatmodel verwijderen. Als u een apparaatmodel wilt verwijderen, schakelt u het selectievakje naast het model in en klikt u in de actiebalk op **Verwijderen** :
 
 ![Apparaatmodel verwijderen](media/iot-accelerators-device-simulation-create-custom-device/deletedevice.png)
 

@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 09/22/2020
 ms.topic: overview
-ms.openlocfilehash: 47fef490c5ece577823a14e3fa4c415f0f613ccb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e8a28415bf9448133102e92a658e7d200ac2772c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90944566"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316969"
 ---
 # <a name="what-are-azure-arc-enabled-data-services-preview"></a>Wat zijn Azure Arc-gegevensservices (preview)?
 
@@ -33,7 +33,7 @@ Azure Arc-gegevensservices, zoals Azure Arc Enabled SQL Managed Instance en Azur
 
 ## <a name="elastic-scale"></a>Elastisch schalen
 
-Met cloudfunctionaliteit on-premises kunt u databases op dezelfde manier dynamisch omhoog of omlaag schalen als in Azure, op basis van de beschikbare capaciteit van uw infrastructuur. Deze mogelijkheid kan voldoen aan burst-scenario's die vluchtige behoeften hebben, waaronder scenario's waarbij gegevens in realtime moeten worden opgenomen en opgevraagd, op elke schaal, met een reactietijd van minder dan seconden. Daarnaast kunt u ook database-instanties uitschalen met behulp van de unieke implementatie optie voor hyperschalen van Azure Database for PostgreSQL Hyperscale. Deze mogelijkheid biedt gegevens-workloads een extra boost van capaciteitsoptimalisatie, met behulp van unieke scale-*out* lees- en schrijfbewerkingen.
+Met cloudfunctionaliteit on-premises kunt u databases op dezelfde manier dynamisch omhoog of omlaag schalen als in Azure, op basis van de beschikbare capaciteit van uw infrastructuur. Deze mogelijkheid kan voldoen aan burst-scenario's die vluchtige behoeften hebben, waaronder scenario's waarbij gegevens in realtime moeten worden opgenomen en opgevraagd, op elke schaal, met een reactietijd van minder dan seconden. Daarnaast kunt u ook database-instanties uitschalen met behulp van de unieke implementatie optie voor hyperschalen van Azure Database for PostgreSQL Hyperscale. Deze mogelijkheid biedt gegevens-workloads een extra boost van capaciteitsoptimalisatie, met behulp van unieke scale- *out* lees- en schrijfbewerkingen.
 
 ## <a name="self-service-provisioning"></a>Self-service inrichten
 
@@ -41,7 +41,7 @@ Azure Arc biedt ook andere voordelen van de cloud, zoals snelle implementatie en
 
 ## <a name="unified-management"></a>Geïntegreerd beheer
 
-Met vertrouwde hulpprogramma's zoals het Azure Portal, Azure Data Studio en de Azure Data CLI kunt u nu een uniforme weergave krijgen van al uw gegevensassets die zijn geïmplementeerd met Azure Arc. U kunt niet alleen een verscheidenheid aan relationele databases in uw omgeving en Azure bekijken en beheren, maar ook logboeken en telemetrie van Kubernetes-Api's om de onderliggende infrastructuurcapaciteit en -status te analyseren. Naast het gebruik van gelokaliseerde logboekanalyse en prestatiebewaking, kunt u nu gebruikmaken van Azure Monitor voor uitgebreid operationeel inzicht in uw hele bezit.
+Met vertrouwde hulpprogramma's zoals het Azure Portal, Azure Data Studio en de [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] kunt u nu een uniforme weergave krijgen van al uw gegevensassets die zijn geïmplementeerd met Azure Arc. U kunt niet alleen een verscheidenheid aan relationele databases in uw omgeving en Azure bekijken en beheren, maar ook logboeken en telemetrie van Kubernetes-Api's om de onderliggende infrastructuurcapaciteit en -status te analyseren. Naast het gebruik van gelokaliseerde logboekanalyse en prestatiebewaking, kunt u nu gebruikmaken van Azure Monitor voor uitgebreid operationeel inzicht in uw hele bezit.
 
 ## <a name="disconnected-scenario-support"></a>Niet-verbonden scenario's
 

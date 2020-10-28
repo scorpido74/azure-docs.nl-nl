@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.openlocfilehash: d9ef069291f010db510d626ceda959a0342c39e2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2e5c588db6f372a50b2a80afd8a2a023ece34502
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91305780"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203617"
 ---
 # <a name="quickstart-set-up-saml-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Snelstart: Eenmalige aanmelding (SSO) op basis van SAML instellen voor een toepassing in uw Azure Active Directory-tenant (Azure AD)
 
@@ -43,7 +43,7 @@ Nadat u klaar bent met het toevoegen van een toepassing aan uw Azure AD-tenant, 
 
 Eenmalige aanmelding voor een toepassing instellen:
 
-1. Selecteer in het Azure AD-portal **Bedrijfstoepassingen**. Zoek en selecteer de toepassing die u wilt instellen voor eenmalige aanmelding.
+1. Selecteer in het Azure AD-portal **Bedrijfstoepassingen** . Zoek en selecteer de toepassing die u wilt instellen voor eenmalige aanmelding.
 1. Selecteer **Eenmalige aanmelding** in de sectie **Beheren** om het deelvenster **Eenmalige aanmelding** te openen voor bewerken.
 
     > [!IMPORTANT]
@@ -68,7 +68,7 @@ Eenmalige aanmelding voor een toepassing instellen:
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u de quickstart-reeks hebt voltooid, kunt u de app verwijderen om uw testtenant op te schonen. Zie [Een app verwijderen](delete-application-portal.md) in de laatste quickstart in deze reeks voor meer informatie over het verwijderen van een app.
+Als u deze quickstart-reeks hebt voltooid, kunt u de app verwijderen om uw testtenant op te schonen. Zie [Een app verwijderen](delete-application-portal.md) in de laatste quickstart in deze reeks voor meer informatie over het verwijderen van een app.
 
 ## <a name="next-steps"></a>Volgende stappen
 

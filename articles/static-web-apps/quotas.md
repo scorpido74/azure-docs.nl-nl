@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 6fa70eba5875c32d41fa1cfc8daf9b1cdf8f19df
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 915f8675ffda0d70347905d11c7d93975b9d4526
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "83599107"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132734"
 ---
 # <a name="quotas-in-azure-static-web-apps-preview"></a>Quota in Azure Static Web Apps Preview
 
@@ -26,7 +26,7 @@ De volgende quota bestaan voor Azure Static Web Apps Preview.
 | Inbegrepen bandbreedte          | 100 GB per maand |
 | Overschrijding van bandbreedte           | Niet beschikbaar      |
 | Apps per Azure-abonnement | 10               |
-| App-grootte                    | 100 MB           |
+| App-grootte                    | 250 MB           |
 | Preproductieomgevingen | 1                |
 | Aangepaste domeinen              | 1                |
 | Autorisatie<br><br>Met aangepaste rollen en routeringsregels | Maximaal 25 eindgebruikers uitgenodigd en rollen toegewezen |

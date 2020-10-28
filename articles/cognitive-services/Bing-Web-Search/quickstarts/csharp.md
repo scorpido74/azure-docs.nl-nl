@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 05/22/2020
+ms.date: 10/19/2020
 ms.author: aahi
 ms.custom: seodec2018, devx-track-csharp
-ms.openlocfilehash: 2760e6a46801871a25ecbe23a2400211ae312650
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f87cf1ed9194ff74f85dcd11ed398824750ef696
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88921695"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217283"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>Quickstart: Zoeken op internet met behulp van de REST API voor Bing Web Search en C#
 
@@ -29,14 +29,14 @@ In dit voorbeeldprogramma in deze quickstart worden alleen .NET Core-klassen geb
 Voordat u verdergaat met deze snelstart moet u beschikken over:
 
 * Windows: [Visual Studio 2017 of hoger](https://www.visualstudio.com/downloads/)
-* Linux/macOS: [Mono](https://www.mono-project.com/)  
-* Een abonnementssleutel
+* Linux/macOS: [Visual Studio Code](https://code.visualstudio.com/) en [.NET Core](https://dotnet.microsoft.com/download)
+* [Een gratis Azure-abonnement](https://azure.microsoft.com/free/dotnet)
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-declare-dependencies"></a>Een project maken en afhankelijkheden declareren
 
-Maak een nieuw project in Visual Studio of Mono. Gebruik de volgende code om de vereiste naamruimten en typen te importeren:
+Maak een consoleproject in Visual Studio of VS Code. Gebruik de volgende code om de vereiste naamruimten en typen te importeren:
 
 ```csharp
 using System;

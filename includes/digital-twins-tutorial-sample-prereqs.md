@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: d8741ced0ea829da6912a85db10f881e23fa4530
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 062aa975deb71cdf7c76842d1e94152aff73b068
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91292671"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92324182"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -18,8 +18,8 @@ Als u geen abonnement op Azure hebt, **maakt u een [gratis account](https://azur
 
 Voordat u begint, moet u ook **versie 16.5 of nieuwer van [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)** installeren op uw ontwikkelmachine. Als u al een oudere versie hebt geïnstalleerd, kunt u de app *Visual Studio Installer* op uw machine openen en de prompts volgen om uw installatie bij te werken.
 
-De zelfstudie is gebaseerd op een voorbeeldproject dat is geschreven in C#. Het voorbeeld is hier te vinden: [Azure Digital Twins-voorbeelden](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples). **Download het voorbeeldproject** op uw computer door naar de voorbeeldkoppeling te gaan en de knop *ZIP* downloaden te selecteren onder de titel.
+De zelfstudie is gebaseerd op een voorbeeldproject dat is geschreven in C#. Het voorbeeld is hier te vinden: [End-to-end-voorbeelden voor Azure Digital Twins](/samples/azure-samples/digital-twins-samples/digital-twins-samples). **Download het voorbeeldproject** op uw computer door naar de voorbeeldkoppeling te gaan en de knop *ZIP* downloaden te selecteren onder de titel.
 
-Hiermee wordt een *. ZIP*-map gedownload naar uw computer als **Azure_Digital_Twins_samples.zip**. Pak de map uit en extraheer de bestanden.
+Hiermee wordt een *ZIP-map* gedownload naar uw computer als **Azure_Digital_Twins_samples.zip** . Pak de map uit en extraheer de bestanden.
 
 [!INCLUDE [Azure Digital Twins tutorials: instance prereq](digital-twins-tutorial-prereq-instance.md)]

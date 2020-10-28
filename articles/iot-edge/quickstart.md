@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: acd2f12150155efbccc668b99dcc4683d81b87e0
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 7b732537d5b0ba517c5d638381c07f229c500081
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047009"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107790"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Quickstart: Uw eerste IoT Edge-module implementeren in een virtueel Windows-apparaat
 
@@ -68,8 +68,8 @@ IoT Edge-apparaat:
   Zodra uw virtuele machine start, kunt u vervolgens een RDP-bestand downloaden dat moet worden gebruikt om verbinding te maken met uw virtuele machine:
 
   1. Navigeer naar uw nieuwe Windows VM in Azure Portal.
-  1. Selecteer **Verbinden**.
-  1. Selecteer op het tabblad **RDP** de optie **RDP-bestand downloaden**.
+  1. Selecteer **Verbinden** .
+  1. Selecteer op het tabblad **RDP** de optie **RDP-bestand downloaden** .
 
   Open dit bestand met Verbinding met extern bureaublad om verbinding te maken met uw virtuele Windows-machine. Gebruik de beheerdersnaam en het beheerderswachtwoord die u hebt opgegeven met de opdracht `az vm create`.
 
@@ -78,7 +78,7 @@ IoT Edge-apparaat:
 >
 > Voor het gemak wordt in deze quickstart gebruikgemaakt van een Windows VM. Zie [Systemen met ondersteuning voor Azure IoT Edge](support.md) voor meer informatie over welke Windows-besturingssystemen algemeen beschikbaar zijn voor productiescenario's.
 >
-> Als u uw eigen Windows-apparaat wilt configureren voor IoT Edge, volgt u de stappen in [De Azure IoT Edge-runtime installeren](how-to-install-iot-edge.md).
+> Als u uw eigen Windows-apparaat wilt configureren voor IoT Edge, met inbegrip van apparaten met IoT Core, volgt u de stappen in [De Azure IoT Edge-runtime installeren](how-to-install-iot-edge.md).
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
@@ -88,13 +88,13 @@ Begin met de snelstart door een IoT Hub met Azure CLI te maken.
 
 Het gratis niveau van IoT Hub werkt voor deze snelstart. Als u in het verleden IoT Hub hebt gebruikt en al een hub hebt gemaakt, kunt u die IoT-hub gebruiken.
 
-Met de volgende code wordt een gratis **F1**-hub gemaakt in de resourcegroep `IoTEdgeResources`. Vervang `{hub_name}` door een unieke naam voor uw IoT-hub. Het kan enkele minuten duren voordat een IoT-hub is gemaakt.
+Met de volgende code wordt een gratis **F1** -hub gemaakt in de resourcegroep `IoTEdgeResources`. Vervang `{hub_name}` door een unieke naam voor uw IoT-hub. Het kan enkele minuten duren voordat een IoT-hub is gemaakt.
 
    ```azurecli-interactive
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 --partition-count 2
    ```
 
-   Als er een fout optreedt omdat er al één gratis hub in uw abonnement is, wijzigt u de SKU in **S1**. Als u het foutbericht ontvangt dat de naam van de IoT Hub niet beschikbaar is, betekent dit dat iemand anders al een hub met die naam heeft. Probeer een andere naam.
+   Als er een fout optreedt omdat er al één gratis hub in uw abonnement is, wijzigt u de SKU in **S1** . Als u het foutbericht ontvangt dat de naam van de IoT Hub niet beschikbaar is, betekent dit dat iemand anders al een hub met die naam heeft. Probeer een andere naam.
 
 ## <a name="register-an-iot-edge-device"></a>Een IoT Edge-apparaat registreren
 
@@ -169,7 +169,7 @@ Gebruik PowerShell om de IoT Edge-runtime te downloaden en te installeren. Gebru
    Initialize-IoTEdge -ContainerOs Windows
    ```
 
-6. Als u wordt gevraagd naar een **DeviceConnectionString**, geeft u de tekenreeks op die u in de vorige sectie hebt gekopieerd. Plaats geen aanhalingstekens rond de verbindingsreeks.
+6. Als u wordt gevraagd naar een **DeviceConnectionString** , geeft u de tekenreeks op die u in de vorige sectie hebt gekopieerd. Plaats geen aanhalingstekens rond de verbindingsreeks.
 
 ### <a name="view-the-iot-edge-runtime-status"></a>De IoT Edge runtime-status bekijken
 
@@ -187,7 +187,7 @@ Controleer of de runtime goed is geïnstalleerd en geconfigureerd. Het kan enkel
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
    ```
 
-3. Bekijk alle modules die op uw IoT Edge-apparaat worden uitgevoerd. Aangezien de service net voor het eerst is gestart, zou u moeten zien dat alleen de **edgeAgent**-module actief is. De edgeAgent-module wordt standaard uitgevoerd en helpt bij het installeren en starten van aanvullende modules die u op uw apparaat implementeert.
+3. Bekijk alle modules die op uw IoT Edge-apparaat worden uitgevoerd. Aangezien de service net voor het eerst is gestart, zou u moeten zien dat alleen de **edgeAgent** -module actief is. De edgeAgent-module wordt standaard uitgevoerd en helpt bij het installeren en starten van aanvullende modules die u op uw apparaat implementeert.
 
     ```powershell
     iotedge list
@@ -241,7 +241,7 @@ Als u uw virtuele machine en IoT-hub in een nieuwe resourcegroep hebt gemaakt, k
 > [!IMPORTANT]
 > Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt.
 
-Verwijder de groep **IoTEdgeResources**. Het kan enkele minuten duren voordat een resourcegroep is verwijderd.
+Verwijder de groep **IoTEdgeResources** . Het kan enkele minuten duren voordat een resourcegroep is verwijderd.
 
 ```azurecli-interactive
 az group delete --name IoTEdgeResources

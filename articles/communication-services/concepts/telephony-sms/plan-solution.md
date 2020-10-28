@@ -10,26 +10,26 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: b25ac36bc0b424a9d6f76b37b532e52dc56e19e3
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 0420360b70485e49dc6cd06dbeb19400c0f73ef5
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048216"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070347"
 ---
 # <a name="plan-your-telephony-and-sms-solution"></a>Uw oplossing voor telefonie en sms plannen
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 
-Met Azure Communication Services kunt u telefoonnummers gebruiken om gesprekken te voeren en sms-berichten te verzenden met het openbare telefoonnetwerk (PSTN). In dit document bekijken we de typen telefoonnummers, abonnementen en beschikbaarheid in regio's voor het plannen van uw telefoon- en sms-oplossing met behulp van Communication Services.
+Met Azure Communication Services kunt u telefoonnummers gebruiken om gesprekken te voeren en sms-berichten te verzenden met het openbare telefoonnetwerk (PSTN). In dit document bekijken we de typen telefoonnummers, configuratieopties en beschikbaarheid in regio's voor het plannen van uw telefoon- en sms-oplossing met behulp van Communication Services.
 
 [!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
 
 ## <a name="phone-number-types-in-azure-communication-services"></a>Typen telefoonnummers in Azure Communication Services
  
-Communication Services biedt twee soorten telefoonnummers: **lokaal** en **gratis**. 
+Communication Services biedt twee soorten telefoonnummers: **lokaal** en **gratis** . 
 
 ### <a name="local-numbers"></a>Lokale nummers
 Lokale (geografische) nummers zijn 10-cijferige telefoonnummers die bestaan uit de lokale netnummers in de Verenigde Staten. `+1 (206) XXX-XXXX` is bijvoorbeeld een lokaal nummer met het netnummer `206`. Dit netnummer is toegewezen aan de stad Seattle. Deze telefoonnummers worden doorgaans gebruikt door individuen en lokale bedrijven. Azure Communication Services biedt lokale nummers in de Verenigde Staten. Deze nummers kunnen worden gebruikt om te bellen, maar niet om sms-berichten te verzenden. 
@@ -48,22 +48,22 @@ In de volgende tabel vindt u een overzicht van deze typen telefoonnummers:
 | Type telefoonnummer | Voorbeeld                              | Beschikbaarheid land    | Mogelijkheid van telefoonnummer |Algemeen scenario                                                                                                     |
 | ----------------- | ------------------------------------ | ----------------------- | ------------------------|------------------------------------------------------------------------------------------------------------------- |
 | Lokaal (geografisch)        | +1 (lokaal netnummer) XXX XX XX  | VS                      | Oproepen (uitgaand) | Telefoonnummers toewijzen aan gebruikers in uw toepassingen  |
-| Gratis         | \+ 1 (gratis *netnummer*) XXX XX XX | VS                      | Oproepen (uitgaand), sms (inkomend/uitgaand)| Het toewijzen van telefoonnummers aan IVR-systemen (Interactive Voice Response)/bots, sms-toepassingen                                        |
+| Gratis         | \+ 1 (gratis *netnummer* ) XXX XX XX | VS                      | Oproepen (uitgaand), sms (inkomend/uitgaand)| Het toewijzen van telefoonnummers aan IVR-systemen (Interactive Voice Response)/bots, sms-toepassingen                                        |
 
 
-## <a name="phone-number-plans-in-azure-communication-services"></a>Telefoonnummerabonnementen in Azure Communication Services 
+## <a name="phone-number-features-in-azure-communication-services"></a>Functies voor telefoonnummers in Azure Communication Services 
 
-Voor de meeste telefoonnummers kunt u een reeks abonnementen 'à la carte' configureren. Sommige ontwikkelaars hebben enkel een abonnement voor uitgaande oproepen nodig. Andere kiezen misschien liever voor uitgaande oproepen en uitgaande sms-berichten. Deze abonnementen kunnen worden geselecteerd wanneer u uw telefoonnummers huurt in Azure Communication Services.
+Voor de meeste telefoonnummers kunt u een reeks functies 'à la carte' configureren. Deze functies kunnen worden geselecteerd wanneer u uw telefoonnummers least in Azure Communication Services.
 
-Welke abonnementen voor u beschikbaar zijn, is afhankelijk van het land waarin u werkt, uw gebruik en het type telefoonnummer dat u hebt geselecteerd. Deze abonnementen verschillen per land als gevolg van wettelijke vereisten. Azure Communication Services biedt de volgende abonnementen:
+Welke functies voor u beschikbaar zijn, is afhankelijk van het land waarin u werkt, uw gebruik en het type telefoonnummer dat u hebt geselecteerd. Deze functies verschillen per land als gevolg van wettelijke vereisten. Azure Communication Services biedt de volgende functies voor telefoonnummers:
 
-- **Uitgaande sms in één richting** Met dit abonnement kunt u sms-berichten verzenden naar uw gebruikers. Dit abonnement is handig voor scenario's zoals meldingen en waarschuwingen met tweeledige verificatiemethode. 
-- **Inkomende en uitgaande sms in twee richtingen** Met dit abonnement kunt u berichten van uw gebruikers verzenden en ontvangen met behulp van telefoonnummers. Dit abonnement is handig voor klantenservicescenario's.
-- **Uitgaande telefoonoproepen in één richting** Met dit abonnement kunt u uw gebruikers bellen en de beller-id configureren voor uitgaande oproepen die door uw service worden gemaakt. Dit abonnement is handig in scenario's voor klantenservices en spraakmeldingen.
+- **Uitgaande sms in één richting** Met deze optie kunt u sms-berichten verzenden naar uw gebruikers. Dat kan handig zijn voor meldingen en tweeledige verificatie. 
+- **Inkomende en uitgaande sms in twee richtingen** Met deze optie kunt u berichten van uw gebruikers verzenden en ontvangen met behulp van telefoonnummers. Dat kan handig zijn voor klantenservicescenario's.
+- **Uitgaande telefoonoproepen in één richting** Met deze optie kunt u uw gebruikers bellen en de beller-id configureren voor uitgaande oproepen die door uw service worden gemaakt. Dat kan handig zijn in scenario's voor klantenservices en spraakmeldingen.
 
 ## <a name="countryregion-availability"></a>Beschikbaarheid in land/regio
 
-In de volgende tabel ziet u waar u verschillende soorten telefoonnummers kunt verkrijgen, samen met de mogelijkheden voor inkomende en uitgaande oproepen en sms die zijn gekoppeld aan deze typen telefoonnummers.
+In de volgende tabel ziet u waar u verschillende soorten telefoonnummers kunt verkrijgen, samen met de functies voor inkomende en uitgaande oproepen en sms die zijn gekoppeld aan deze typen telefoonnummers.
 
 |Nummertype| Nummers verkrijgen in | Bellen naar                                        | Oproepen ontvangen van                                    |Berichten verzenden naar       | Berichten ontvangen van |
 |-----------| ------------------ | ---------------------------------------------------  |-------------------------------------------------------|-----------------------|--------|

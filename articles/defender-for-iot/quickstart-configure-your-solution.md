@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2020
 ms.author: mlottner
-ms.openlocfilehash: 3ecb2e2022cab80abf6a8692ac8cc3ba54eff1e4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f949d52d4ba461da94153cbbd17ca5fb3eb214d7
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90945086"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092083"
 ---
 # <a name="quickstart-configure-your-azure-defender-for-iot-solution"></a>Quickstart: Configureer uw Azure Defender for IoT
 
@@ -43,9 +43,9 @@ Nadat u alle resourcerelaties hebt gedefinieerd, maakt Defender for IoT gebruik 
 Doe het volgende om nieuwe resources toe te voegen aan uw IoT-oplossing:
 
 1. Open uw **IoT-hub** in de Azure-portal.
-1. Selecteer en open **Instellingen** in de sectie **Beveiliging** in het linkermenu, en selecteer vervolgens **Bewaakte resources**.
+1. Onder **Beveiliging** selecteert u **Overzicht** gevolgd door **Instellingen** > Selecteer vervolgens **Bewaakte resources** .
 1. Selecteer **Bewerken** en selecteer de bewaakte resources die bij uw IoT-oplossing horen.
-1. Klik op **Add**.
+1. Klik op **Add** .
 
 Gefeliciteerd. U hebt een nieuwe resourcegroep toegevoegd aan uw IoT-oplossing.
 

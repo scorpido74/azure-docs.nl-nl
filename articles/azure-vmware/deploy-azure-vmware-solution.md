@@ -4,12 +4,12 @@ description: Meer informatie over hoe u gegevens verzameld in de planningsfase k
 ms.topic: tutorial
 ms.author: tredavis
 ms.date: 10/02/2020
-ms.openlocfilehash: c20bf0f4a8c182d5ade1caec0dd66100c4613204
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 0839048c2d0ad5944566a48f54cca07a4daeb754
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776422"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152031"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Azure VMware Solution implementeren en configureren
 
@@ -35,7 +35,7 @@ Gebruik de informatie die u hebt verzameld in het artikel [De implementatie van 
 ## <a name="create-the-jump-box"></a>De jumpbox maken
 
 >[!IMPORTANT]
->Als u de optie **Virtueel netwerk** leeg hebt gelaten tijdens de eerste inrichtingsstap op het scherm **Een Privécloud maken**, voltooi dan de zelfstudie [Netwerken configureren voor uw VMware-privécloud](tutorial-configure-networking.md) **voordat** u verdergaat met dit onderdeel.  
+>Als u de optie **Virtueel netwerk** leeg hebt gelaten tijdens de eerste inrichtingsstap op het scherm **Een Privécloud maken** , voltooi dan de zelfstudie [Netwerken configureren voor uw VMware-privécloud](tutorial-configure-networking.md) **voordat** u verdergaat met dit onderdeel.  
 
 Na de implementatie van Azure VMware Solution maakt u de jumpbox van het virtueel netwerk die verbinding maakt met vCenter en NSX. Wanneer u ExpressRoute-circuits en ExpressRoute Global Reach hebt geconfigureerd, is de jumpbox niet meer nodig.  Maar het is handig om vCenter en NSX te bereiken in uw Azure VMware Solution.  
 
@@ -67,7 +67,7 @@ In dit voorbeeld werd het 10.74.72.0/22-netwerk ingevoerd tijdens de implementat
 
 Meld u aan bij de jumpbox die u in de vorige stap hebt aangemaakt. Zodra u bent aangemeld, opent u een webbrowser en gaat u naar en meldt u zich aan bij de beheerconsole van vCenter en NSX-T.  
 
-U kunt de IP-adressen en referenties van de beheerconsole van vCenter en NSX controleren in het Azure-portaal.  Selecteer uw privécloud en selecteer vervolgens in de weergave **Overzicht** de optie **Identiteit > Standaard**. 
+U kunt de IP-adressen en referenties van de beheerconsole van vCenter en NSX controleren in het Azure-portaal.  Selecteer uw privécloud en selecteer vervolgens in de weergave **Overzicht** de optie **Identiteit > Standaard** . 
 
 ## <a name="create-a-network-segment-on-azure-vmware-solution"></a>Een netwerksegment maken in Azure VMware Solution
 
@@ -82,7 +82,7 @@ Volg de zelfstudie [Een NSX-T-netwerksegment maken in Azure VMware Solution](tut
 
 Ga terug naar de stap[Geadverteerde netwerkroutes controleren](#verify-network-routes-advertised) U ziet een of meer route(s) in de lijst met de netwerksegment(en) die u in de vorige stap hebt gemaakt.  
 
-Voor virtuele machines wijst u de segment(en) toe die u hebt gemaakt in de stap [Geadverteerd NSX-T-segment controleren](#verify-advertised-nsx-t-segment).  
+Voor virtuele machines wijst u de segmenten toe die u hebt gemaakt in de stap [Een netwerksegment maken in Azure VMware Solution](#create-a-network-segment-on-azure-vmware-solution).  
 
 Omdat DNS vereist is, identificeert u de DNS-server die u wilt gebruiken.  
 

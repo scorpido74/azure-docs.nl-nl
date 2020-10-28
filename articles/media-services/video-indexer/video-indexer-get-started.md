@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: quickstart
-ms.date: 03/17/2020
+ms.date: 10/19/2020
 ms.author: juliako
-ms.openlocfilehash: f6c3953947e6f7e84f4cf9b565d2f66648b177f7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6b154db25f1f13b60e4110d1b1866308ee952487
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85130752"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219786"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Quickstart: Registreren en uw eerste video uploaden
 
@@ -39,19 +39,23 @@ Zie het artikel [invoercontainer/bestandsindelingen](../latest/media-encoder-sta
 ### <a name="upload-a-video"></a>Een video uploaden
 
 1. Registreer u op de [Video Indexer](https://www.videoindexer.ai/)-website.
-2. Als u een video wilt uploaden, drukt u op de knop of link **Uploaden**.
+1. Als u een video wilt uploaden, drukt u op de knop of link **Uploaden** .
 
     > [!NOTE]
     > De naam van de video mag niet langer zijn dan 80 tekens.
 
-    ![Uploaden](./media/video-indexer-get-started/video-indexer-upload.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/video-indexer-upload.png" alt-text="Uploaden":::
+1. Zodra uw video is geüpload, start Video Indexer met het indexeren en analyseren van de video. U ziet de voortgang. 
 
-    Zodra uw video is geüpload, start Video Indexer met het indexeren en analyseren van de video.
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="Uploaden":::
+1. Wanneer Video Indexer klaar is met analyseren, ontvangt u een e-mailbericht met een link naar uw video en een korte beschrijving van wat is gevonden in uw video. Bijvoorbeeld: personen, gesproken en geschreven woorden, onderwerpen en benoemde entiteiten.
+1. U kunt uw video later vinden in de bibliotheeklijst en verschillende bewerkingen uitvoeren. Bijvoorbeeld: zoeken, opnieuw indexeren, bewerken.
 
-    ![Geüpload](./media/video-indexer-get-started/video-indexer-uploaded.png) 
-
-    Wanneer Video Indexer klaar is met analyseren, ontvangt u een melding met een link naar uw video en een korte beschrijving van wat is gevonden in uw video. Bijvoorbeeld: mensen, onderwerpen, OCR's.
-
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/uploaded.png" alt-text="Uploaden":::
+ 
 ## <a name="see-also"></a>Zie ook
 
 Zie [Video's uploaden en indexeren](upload-index-videos.md) voor meer informatie.

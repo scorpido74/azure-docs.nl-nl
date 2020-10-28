@@ -6,12 +6,12 @@ ms.author: marobert
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: bb0af58c9abc4fad701b1d0927f4c13e1fdcca49
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 48a3972d7b7db3f0c68866f23d6deca0bbce2e35
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91377379"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92157875"
 ---
 In deze quickstart leert u hoe u een oproep start met behulp van de clientbibliotheek voor oproepen van Azure Communication Services voor iOS.
 
@@ -28,7 +28,7 @@ Voor het voltooien van deze zelfstudie moet aan de volgende vereisten worden vol
 
 ### <a name="creating-the-xcode-project"></a>Het Xcode-project maken
 
-Maak in Xcode een nieuw iOS-project en selecteer de sjabloon **Single View-app** (Toepassing met één weergave). In deze zelfstudie wordt gebruikgemaakt van het [SwiftUI-framework](https://developer.apple.com/xcode/swiftui/). U moet dus de **taal** instellen op **Swift** en de **gebruikersinterface** op **SwiftUI**. Tijdens deze quickstart maakt u geen tests. U kunt **Tests opnemen** uitschakelen.
+Maak in Xcode een nieuw iOS-project en selecteer de sjabloon **Single View-app** (Toepassing met één weergave). In deze zelfstudie wordt gebruikgemaakt van het [SwiftUI-framework](https://developer.apple.com/xcode/swiftui/). U moet dus de **taal** instellen op **Swift** en de **gebruikersinterface** op **SwiftUI** . Tijdens deze quickstart maakt u geen tests. U kunt **Tests opnemen** uitschakelen.
 
 :::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="Schermafbeelding met het venster Nieuw project in Xcode.":::
 
@@ -43,8 +43,8 @@ Voeg de Azure Communication Services-clientbibliotheek en de bijbehorende afhank
 2. Klik in Xcode op het projectbestand en selecteer het build-doel om de projectinstellingen-editor te openen.
 3. Scrol op het tabblad **Algemeen** naar de secties **Frameworks, Bibliotheken en Ingesloten inhoud** en klik op het pictogram **"+"** .
 4. Kies **Bestanden toevoegen** in de vervolgkeuzelijst linksonder in het dialoogvenster en navigeer naar de map **AzureCommunicationCalling.framework** van het uitgepakte clientbibliotheekpakket.
-    1. Herhaal de laatste stap voor het toevoegen van **AzureCore.framework** en **AzureCommunication.framework**.
-5. Open het tabblad **Build-instellingen** van de projectinstellingeneditor en blader naar de secties **Zoekpaden**. Voeg een nieuwe vermelding **Zoekpaden framework** toe voor de map die het **AzureCommunicationCalling.framework** bevat.
+    1. Herhaal de laatste stap voor het toevoegen van **AzureCore.framework** en **AzureCommunication.framework** .
+5. Open het tabblad **Build-instellingen** van de projectinstellingeneditor en blader naar de secties **Zoekpaden** . Voeg een nieuwe vermelding **Zoekpaden framework** toe voor de map die het **AzureCommunicationCalling.framework** bevat.
     1. Voeg nog een vermelding Zoekpaden framework toe aan de map die de afhankelijkheden bevat.
 
 :::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="Schermafbeelding met het venster Nieuw project in Xcode.":::
@@ -53,7 +53,7 @@ Voeg de Azure Communication Services-clientbibliotheek en de bijbehorende afhank
 
 Als u toegang wilt krijgen tot de microfoon van het apparaat, moet u de eigenschappenlijst van de app bijwerken met een `NSMicrophoneUsageDescription`. U stelt de bijbehorende waarde in op een `string` die wordt opgenomen in het dialoogvenster dat het systeem gebruikt om toegang te vragen aan de gebruiker.
 
-Klik met de rechtermuisknop op de `Info.plist`-vermelding van de projectstructuur en selecteer **Open As** > **Source Code**. Voeg de volgende regels toe in de bovenste sectie `<dict>` en sla het bestand op.
+Klik met de rechtermuisknop op de `Info.plist`-vermelding van de projectstructuur en selecteer **Open As** > **Source Code** . Voeg de volgende regels toe in de bovenste sectie `<dict>` en sla het bestand op.
 
 ```xml
 <key>NSMicrophoneUsageDescription</key>
@@ -125,7 +125,7 @@ De volgende klassen en interfaces verwerken enkele van de belangrijkste functies
 
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
-Initialiseer een `CallAgent`-instantie met een token voor gebruikerstoegang waarmee we oproepen kunnen maken en ontvangen. Voeg de volgende code toe aan de `onAppear`-call back in **ContentView.swift**:
+Initialiseer een `CallAgent`-instantie met een token voor gebruikerstoegang waarmee we oproepen kunnen maken en ontvangen. Voeg de volgende code toe aan de `onAppear`-call back in **ContentView.swift** :
 
 ```swift
 var userCredential: CommunicationUserCredential?
@@ -194,10 +194,10 @@ U kunt uw app maken en uitvoeren op een iOS-simulator door **Product** > **Uitvo
 
 :::image type="content" source="../media/ios/quick-start-make-call.png" alt-text="Schermafbeelding met het venster Nieuw project in Xcode.":::
 
-U kunt een uitgaande VOIP-oproep maken door een gebruikers-ID op te geven in het tekstveld en te tikken op de knop **Oproep starten**. Door `8:echo123` te bellen, wordt u verbonden met een echo-bot. Dit is handig om aan de slag te gaan en te controleren of uw audio-apparaten werken. 
+U kunt een uitgaande VOIP-oproep maken door een gebruikers-ID op te geven in het tekstveld en te tikken op de knop **Oproep starten** . Door `8:echo123` te bellen, wordt u verbonden met een echo-bot. Dit is handig om aan de slag te gaan en te controleren of uw audio-apparaten werken. 
 
 > [!NOTE]
-> De eerste keer dat u een oproep doet, wordt u gevraagd om toegang tot de microfoon. In een productietoepassing moet u de `AVAudioSession`API[ gebruiken om de machtigingsstatus](https://developer.apple.com/documentation/uikit/protecting_the_user_s_privacy/requesting_access_to_protected_resources) te controleren en het gedrag van uw toepassing bij te werken wanneer geen toestemming wordt verleend.
+> De eerste keer dat u een oproep doet, wordt u gevraagd om toegang tot de microfoon. In een productietoepassing moet u de `AVAudioSession`API[ gebruiken om de machtigingsstatus ](https://developer.apple.com/documentation/uikit/protecting_the_user_s_privacy/requesting_access_to_protected_resources) te controleren en het gedrag van uw toepassing bij te werken wanneer geen toestemming wordt verleend.
 
 ## <a name="sample-code"></a>Voorbeeldcode
 

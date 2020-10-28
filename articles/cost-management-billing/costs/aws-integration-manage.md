@@ -3,18 +3,18 @@ title: AWS-kosten en -gebruik beheren in Azure Cost Management
 description: In dit artikel leert u hoe u kostenanalyse en budgetten kunt gebruiken in Cost Management om uw AWS-kosten en -gebruik te beheren.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/28/2020
+ms.date: 10/16/2020
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
 ms.custom: ''
-ms.openlocfilehash: 7df27a6ed288555d0f4815223fd0bb6dddff6f44
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5fed70ccdbebbd178412c416f37c2e9001a81f38
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266175"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148963"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>AWS-kosten en -gebruik beheren in Azure
 
@@ -22,7 +22,7 @@ Nadat u integratie van het kosten en gebruiksrapport voor AWS hebt ingesteld en 
 
 Zie [Integratie van kosten- en gebruiksrapport voor AWS instellen en configureren](aws-integration-set-up-configure.md) als u de integratie nog niet hebt geconfigureerd.
 
-_Voordat u begint_: Als u niet bekend bent met kostenanalyse, raadpleegt u de quickstart [Kosten verkennen en analyseren met kostenanalyse](quick-acm-cost-analysis.md). En als u niet bekend bent met budgetten in Azure, raadpleegt u de zelfstudie [Azure-budgetten maken en beheren](tutorial-acm-create-budgets.md).
+_Voordat u begint_ : Als u niet bekend bent met kostenanalyse, raadpleegt u de quickstart [Kosten verkennen en analyseren met kostenanalyse](quick-acm-cost-analysis.md). En als u niet bekend bent met budgetten in Azure, raadpleegt u de zelfstudie [Azure-budgetten maken en beheren](tutorial-acm-create-budgets.md).
 
 ## <a name="view-aws-costs-in-cost-analysis"></a>AWS-kosten bekijken in Kostenanalyse
 
@@ -44,7 +44,7 @@ Gebruik in Kostenanalyse de bereikkiezer om de beheergroep met de gekoppelde AWS
 
 Hier volgt een voorbeeld van de kosten van de beheergroep in Kostenanalyse, gegroepeerd op provider (Azure en AWS).
 
-:::image type="content" source="./media/aws-integration-manage/cost-analysis-aws-azure.png" alt-text="Voorbeeld van de kosten voor Azure en AWS voor een kwartaal in Kostenanalyse" lightbox="./media/aws-integration-manage/cost-analysis-aws-azure.png" :::
+:::image type="content" source="./media/aws-integration-manage/cost-analysis-aws-azure.png" alt-text="Voorbeeld van de bereikkiezer met gekoppelde accounts onder een beheergroep" lightbox="./media/aws-integration-manage/cost-analysis-aws-azure.png" :::
 
 > [!NOTE]
 > Beheergroepen worden momenteel niet ondersteund voor klanten met een Microsoft-klantovereenkomst (MCA). MCA-klanten kunnen de connector maken en hun AWS-gegevens weergeven. MCA-klanten kunnen hun Azure-kosten en AWS-kosten echter niet samen weergeven onder een beheergroep.
@@ -55,17 +55,17 @@ Als u de kosten van gekoppelde AWS-accounts wilt weergeven, opent u de bereikkie
 
 Hier ziet u een voorbeeld waarin het bereik van gekoppelde AWS-accounts wordt geselecteerd.
 
-:::image type="content" source="./media/aws-integration-manage/select-scope02.png" alt-text="Voorbeeld van de bereikkiezer met gekoppelde AWS-accounts" :::
+:::image type="content" source="./media/aws-integration-manage/select-scope02.png" alt-text="Voorbeeld van de bereikkiezer met gekoppelde accounts onder een beheergroep" :::
 
 ### <a name="view-aws-consolidated-account-costs"></a>Kosten van geconsolideerde AWS-accounts weergeven
 
 Als u de kosten voor geconsolideerde AWS-accounts wilt bekijken, opent u de bereikkiezer en selecteert u het geconsolideerde AWS-account. Hier ziet u een voorbeeld waarin het bereik van een geconsolideerd AWS-account wordt geselecteerd.
 
-:::image type="content" source="./media/aws-integration-manage/select-scope03.png" alt-text="Voorbeeld van de bereikkiezer met geconsolideerde accounts" :::
+:::image type="content" source="./media/aws-integration-manage/select-scope03.png" alt-text="Voorbeeld van de bereikkiezer met gekoppelde accounts onder een beheergroep" :::
 
 Dit bereik biedt een geaggregeerde weergave van alle gekoppelde AWS-accounts die aan het geconsolideerde AWS-account zijn gekoppeld. Hier ziet u een voorbeeld van de kosten voor een geconsolideerd AWS-account, gegroepeerd op servicenaam.
 
-:::image type="content" source="./media/aws-integration-manage/cost-analysis-aws-consolidated.png" alt-text="Voorbeeld van geconsolideerde AWS-kosten in Kostenanalyse" lightbox="./media/aws-integration-manage/cost-analysis-aws-consolidated.png" :::
+:::image type="content" source="./media/aws-integration-manage/cost-analysis-aws-consolidated.png" alt-text="Voorbeeld van de bereikkiezer met gekoppelde accounts onder een beheergroep" lightbox="./media/aws-integration-manage/cost-analysis-aws-consolidated.png" :::
 
 ### <a name="dimensions-available-for-filtering-and-grouping"></a>Dimensies beschikbaar voor filteren en groeperen
 
@@ -95,7 +95,7 @@ In de volgende tabel worden de dimensies beschreven die beschikbaar zijn voor gr
 
 Gebruik budgetten om kosten proactief te beheren en aansprakelijkheid in uw organisatie te bevorderen. Budgetten worden ingesteld op de bereiken van geconsolideerde AWS-accounts en gekoppelde AWS-accounts. Hier volgt een voorbeeld van budgetten voor een geconsolideerd AWS-account die worden weergegeven in Cost Management:
 
-:::image type="content" source="./media/aws-integration-manage/budgets-aws-consolidated-account01.png" alt-text="Voorbeeld van budgetten voor een geconsolideerd AWS-account" :::
+:::image type="content" source="./media/aws-integration-manage/budgets-aws-consolidated-account01.png" alt-text="Voorbeeld van de bereikkiezer met gekoppelde accounts onder een beheergroep" :::
 
 ## <a name="aws-data-collection-process"></a>Proces voor verzamelen van AWS-gegevens
 
@@ -143,9 +143,9 @@ Om de connectorinstellingen te kunnen controleren, hebt u ten minste de rol van 
 Deze fout betekent dat Cost Management de AssumeRole-API van AWS niet kan aanroepen. Dit probleem kan optreden vanwege een probleem met de roldefinitie. Controleer of aan de volgende voorwaarden wordt voldaan:
 
 - De externe id is hetzelfde als die in de roldefinitie en de definitie van de connector.
-- Het roltype is ingesteld op **Een ander AWS-account**.
+- Het roltype is ingesteld op **Een ander AWS-account** .
 - De optie **MFA vereisen** is uitgeschakeld.
-- Het vertrouwde AWS-account in de AWS-rol is _432263259397_.
+- Het vertrouwde AWS-account in de AWS-rol is _432263259397_ .
 
 ### <a name="collection-failed-with-access-denied---cur-report-definitions"></a>Verzameling mislukt omdat toegang is geweigerd - CUR-rapportdefinities
 
@@ -176,6 +176,12 @@ Deze fout betekent dat Cost Management het kosten- en gebruiksrapport niet kan v
 **Foutcode:** _ReportIsNotValid_
 
 Deze fout heeft betrekking op de definitie van het kosten- en gebruiksrapport van AWS. We hebben specifieke instellingen voor dit rapport nodig. Zie de vereisten in [Een kosten- en gebruiksrapport maken in AWS](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws).
+
+### <a name="internal-error-when-creating-connector"></a>Interne fout bij maken van connector
+
+**Foutcode:** _Connector maken: Kan connector &lt;Connectornaam&gt; niet maken. Reden: Interne fout. Controleer of de juiste AWS-eigenschappen zijn opgegeven._
+
+Deze fout kan optreden wanneer uw AWS-connector en-abonnement zich in verschillende beheergroepen bevinden. De AWS-connector en het abonnement moeten zich in dezelfde beheergroep bevinden.
 
 ## <a name="next-steps"></a>Volgende stappen
 

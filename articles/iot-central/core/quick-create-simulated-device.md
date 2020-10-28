@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 26aba84fcc38fddf43c04550b1c3d1ce2d70b21f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 757575b31bde1a0e25cc3e70aad0cca0fdd45953
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87001945"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170331"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>Quickstart: Een gesimuleerd apparaat toevoegen aan uw IoT Central-toepassing
 
@@ -30,7 +30,7 @@ In deze quickstart voegt u een apparaatsjabloon toe voor een *MXChip IoT DevKit*
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voltooi de quickstart [Een Azure IoT Central-toepassing maken](./quick-deploy-iot-central.md) om een IoT Central-toepassing te maken met behulp van de toepassing **Aangepaste app > Aangepaste sjabloon**.
+Voltooi de quickstart [Een Azure IoT Central-toepassing maken](./quick-deploy-iot-central.md) om een IoT Central-toepassing te maken met behulp van de toepassing **Aangepaste app > Aangepaste sjabloon** .
 
 ## <a name="create-a-template"></a>Een sjabloon maken
 
@@ -44,29 +44,29 @@ Een apparaatsjabloon bevat een apparaatondersteuningsprofiel waarin de telemetri
 
 ### <a name="add-a-device-capability-model"></a>Een apparaatondersteuningsprofiel toevoegen
 
-Er zijn verschillende opties voor het toevoegen van een apparaatondersteuningsprofiel aan uw IoT Central-toepassing. U kunt een geheel nieuw model maken, een model importeren uit een bestand of een apparaat selecteren uit de apparaatcatalogus. IoT Central biedt ook ondersteuning voor een *apparaat-eerst*-aanpak, waarbij automatisch een model wordt geïmporteerd uit een opslagplaats wanneer een apparaat voor het eerst verbinding maakt. In deze quickstart kiest u een apparaat uit de apparaatcatalogus om het apparaatondersteuningsprofiel ervan te importeren.
+Er zijn verschillende opties voor het toevoegen van een apparaatondersteuningsprofiel aan uw IoT Central-toepassing. U kunt een geheel nieuw model maken, een model importeren uit een bestand of een apparaat selecteren uit de apparaatcatalogus. IoT Central biedt ook ondersteuning voor een *apparaat-eerst* -aanpak, waarbij automatisch een model wordt geïmporteerd uit een opslagplaats wanneer een apparaat voor het eerst verbinding maakt. In deze quickstart kiest u een apparaat uit de apparaatcatalogus om het apparaatondersteuningsprofiel ervan te importeren.
 
-De volgende stappen laten zien hoe u de apparaatcatalogus kunt gebruiken om het ondersteuningsprofiel voor een **MXChip IoT DevKit**-apparaat te importeren. Deze apparaten verzenden telemetrie, zoals temperatuur, naar uw toepassing:
+De volgende stappen laten zien hoe u de apparaatcatalogus kunt gebruiken om het ondersteuningsprofiel voor een **MXChip IoT DevKit** -apparaat te importeren. Deze apparaten verzenden telemetrie, zoals temperatuur, naar uw toepassing:
 
 1. Selecteer **+** op de pagina **Apparaatsjablonen** om een nieuwe apparaatsjabloon toe te voegen.
 
 1. Schuif op de pagina **Sjabloontype selecteren** omlaag totdat u de tegel **MXChip IoT DevKit** hebt gevonden.
 
-1. Selecteer de tegel **MXChip IoT DevKit** en selecteer vervolgens **Volgende: Aanpassen**.
+1. Selecteer de tegel **MXChip IoT DevKit** en selecteer vervolgens **Volgende: Aanpassen** .
 
-1. Selecteer op de pagina **Beoordelen** de optie **Maken**.
+1. Selecteer op de pagina **Beoordelen** de optie **Maken** .
 
 1. Na een paar seconden ziet u de nieuwe apparaatsjabloon:
 
     ![MXChip IoT DevKit-apparaatsjabloon](./media/quick-create-simulated-device/devkit-template.png)
 
-    Het MXChip IoT DevKit-ondersteuningsprofiel bevat interfaces zoals **mxchip_sensor**, **mxchip_settings**en **Apparaatgegevens**. Interfaces definiëren de mogelijkheden van een MXChip IoT DevKit-apparaat. Mogelijkheden zijn de telemetrie die een apparaat verzendt, de eigenschappen die een apparaat rapporteert en de opdrachten waarop een apparaat reageert.
+    Het MXChip IoT DevKit-ondersteuningsprofiel bevat interfaces zoals **mxchip_sensor** , **mxchip_settings** en **Apparaatgegevens** . Interfaces definiëren de mogelijkheden van een MXChip IoT DevKit-apparaat. Mogelijkheden zijn de telemetrie die een apparaat verzendt, de eigenschappen die een apparaat rapporteert en de opdrachten waarop een apparaat reageert.
 
 ### <a name="add-cloud-properties"></a>Cloudeigenschappen toevoegen
 
 Een apparaatsjabloon kan cloudeigenschappen bevatten. Cloudeigenschappen bestaan alleen in de IoT Central-toepassing en worden nooit verzonden naar of ontvangen van een apparaat. Een cloudeigenschap toevoegen:
 
-1. Selecteer **Cloudeigenschappen** en klik vervolgens op **+ Cloudeigenschap toevoegen**. Gebruik de informatie in de volgende tabel om twee cloudeigenschappen toe te voegen aan uw apparaatsjabloon:
+1. Selecteer **Cloudeigenschappen** en klik vervolgens op **+ Cloudeigenschap toevoegen** . Gebruik de informatie in de volgende tabel om twee cloudeigenschappen toe te voegen aan uw apparaatsjabloon:
 
     | Weergavenaam      | Semantisch type | Schema |
     | ----------------- | ------------- | ------ |
@@ -92,15 +92,15 @@ Standaardweergaven zijn een snelle manier om aan de slag te gaan met het visuali
 * In de weergave **Overzicht** worden grafieken en metrische gegevens gebruikt om apparaattelemetrie weer te geven.
 * In de weergave **Info** worden apparaateigenschappen weergegeven.
 
-Selecteer het knooppunt **Weergaven** in de apparaatsjabloon. U ziet dat IoT Central een **Overzicht**- en **Info**-weergave heeft gemaakt toen u de sjabloon hebt toegevoegd.
+Selecteer het knooppunt **Weergaven** in de apparaatsjabloon. U ziet dat IoT Central een **Overzicht** - en **Info** -weergave heeft gemaakt toen u de sjabloon hebt toegevoegd.
 
-Voeg als volgt een nieuw **Apparaat beheren**-formulier toe dat een operator kan gebruiken om het apparaat te beheren:
+Voeg als volgt een nieuw **Apparaat beheren** -formulier toe dat een operator kan gebruiken om het apparaat te beheren:
 
 1. Selecteer het knooppunt **Weergaven** en vervolgens de tegel **Apparaat- en cloudgegevens bewerken** om een nieuwe weergave toe te voegen.
 
-1. Wijzig de naam van het formulier in **Apparaat beheren**.
+1. Wijzig de naam van het formulier in **Apparaat beheren** .
 
-1. Selecteer de cloudeigenschappen **Klantnaam** en **Laatste servicedatum** en de eigenschap **Snelheid van ventilator**. Selecteer vervolgens **Sectie toevoegen**:
+1. Selecteer de cloudeigenschappen **Klantnaam** en **Laatste servicedatum** en de eigenschap **Snelheid van ventilator** . Selecteer vervolgens **Sectie toevoegen** :
 
     ![Nieuw formulier maken](media/quick-create-simulated-device/new-form.png)
 
@@ -112,23 +112,23 @@ Voordat u een gesimuleerd apparaat kunt maken of een echt apparaat aansluiten, m
 
 Een apparaatsjabloon publiceren:
 
-1. Ga naar uw apparaatsjabloon op de pagina **Apparaatsjablonen**.
+1. Ga naar uw apparaatsjabloon op de pagina **Apparaatsjablonen** .
 
-1. Selecteer **Publiceren**:
+1. Selecteer **Publiceren** :
 
     ![Gepubliceerd model](media/quick-create-simulated-device/published-model.png)
 
-1. Selecteer **Publiceren** in het dialoogvenster **Deze apparaatsjabloon publiceren naar de toepassing**. 
+1. Selecteer **Publiceren** in het dialoogvenster **Deze apparaatsjabloon publiceren naar de toepassing** . 
 
-Nadat u een apparaatsjabloon hebt gepubliceerd, wordt deze weergegeven op de pagina **Apparaten**. U kunt in een gepubliceerde apparaatsjabloon geen apparaatondersteuningsprofiel bewerken zonder een nieuwe versie te maken. Maar u kunt de cloudeigenschappen, aanpassingen en weergaven in een gepubliceerde apparaatsjabloon wel bijwerken zonder een nieuwe versie te maken. Nadat u wijzigingen hebt aangebracht, selecteert u **Publiceren** om de wijzigingen naar uw operator te pushen.
+Nadat u een apparaatsjabloon hebt gepubliceerd, wordt deze weergegeven op de pagina **Apparaten** . U kunt in een gepubliceerde apparaatsjabloon geen apparaatondersteuningsprofiel bewerken zonder een nieuwe versie te maken. Maar u kunt de cloudeigenschappen, aanpassingen en weergaven in een gepubliceerde apparaatsjabloon wel bijwerken zonder een nieuwe versie te maken. Nadat u wijzigingen hebt aangebracht, selecteert u **Publiceren** om de wijzigingen naar uw operator te pushen.
 
 ## <a name="add-a-simulated-device"></a>Een gesimuleerd apparaat toevoegen
 
-Als u een gesimuleerd apparaat wilt toevoegen aan uw toepassing, gebruikt u de **MXChip IoT DevKit**-apparaatsjabloon die u hebt gemaakt.
+Als u een gesimuleerd apparaat wilt toevoegen aan uw toepassing, gebruikt u de **MXChip IoT DevKit** -apparaatsjabloon die u hebt gemaakt.
 
-1. Als u als operator een nieuw apparaat wilt toevoegen, kiest u **Apparaten** in het linkerdeelvenster. Op het tabblad **Apparaten** wordt **Alle apparaten** en de apparaatsjabloon **MXChip IoT DevKit** device weergegeven. Selecteer **MXChip IoT DevKit**.
+1. Als u als operator een nieuw apparaat wilt toevoegen, kiest u **Apparaten** in het linkerdeelvenster. Op het tabblad **Apparaten** wordt **Alle apparaten** en de apparaatsjabloon **MXChip IoT DevKit** device weergegeven. Selecteer **MXChip IoT DevKit** .
 
-1. Selecteer **+** om een gesimuleerd DevKit-apparaat toe te voegen. Gebruik de voorgestelde **Apparaat-ID** of voer uw eigen **Apparaat-ID** in (in kleine letters). U kunt ook een naam voor uw nieuwe apparaat invoeren. Zorg ervoor dat de wisselknop **Gesimuleerd** op **Aan** staat, en selecteer **Maken**.
+1. Selecteer **+** om een gesimuleerd DevKit-apparaat toe te voegen. Gebruik de voorgestelde **Apparaat-id** of voer uw eigen apparaat-id in. Een apparaat-id mag alleen letters, cijfers en het teken `-` bevatten. U kunt ook een naam voor uw nieuwe apparaat invoeren. Zorg ervoor dat de wisselknop **Gesimuleerd** op **Aan** staat, en selecteer **Maken** .
 
     ![Gesimuleerd apparaat](./media/quick-create-simulated-device/simulated-device.png)
 
@@ -142,7 +142,7 @@ U kunt nu met de weergaven die de bouwer voor de apparaatsjabloon heeft gemaakt 
 
     * In de weergave **Info** ziet u eigenschapswaarden, waaronder de cloudeigenschappen die u aan de weergave hebt toegevoegd.
 
-    * In de weergave **Opdrachten** kunt u opdrachten uitvoeren op het apparaat, zoals **knipperen**.
+    * In de weergave **Opdrachten** kunt u opdrachten uitvoeren op het apparaat, zoals **knipperen** .
 
     * De weergave **Apparaten beheren** is het formulier dat u voor de operator hebt gemaakt om het apparaat te beheren.
 
@@ -152,17 +152,17 @@ U kunt nu met de weergaven die de bouwer voor de apparaatsjabloon heeft gemaakt 
 
 Nadat u een nieuw gesimuleerd apparaat hebt gemaakt, kan de bouwer dit apparaat gebruiken om de weergaven voor de apparaatsjabloon te verbeteren en verder te ontwikkelen.
 
-1. Kies **Apparaatprofielen** in het linkerdeelvenster en selecteer de sjabloon **MXChip IoT DevKit**.
+1. Kies **Apparaatprofielen** in het linkerdeelvenster en selecteer de sjabloon **MXChip IoT DevKit** .
 
-1. Selecteer een van de weergaven die u wilt bewerken of maak een nieuwe weergave. Selecteer **Voorbeeldapparaat configureren**en selecteer **Selecteren vanaf een actief apparaat**. Hier kunt u kiezen of u geen preview-apparaat wilt, een echt apparaat dat is geconfigureerd voor testen of een bestaand apparaat dat u hebt toegevoegd aan IoT Central.
+1. Selecteer een van de weergaven die u wilt bewerken of maak een nieuwe weergave. Selecteer **Voorbeeldapparaat configureren** en selecteer **Selecteren vanaf een actief apparaat** . Hier kunt u kiezen of u geen preview-apparaat wilt, een echt apparaat dat is geconfigureerd voor testen of een bestaand apparaat dat u hebt toegevoegd aan IoT Central.
 
-1. Kies uw gesimuleerde apparaat in de lijst. Selecteer vervolgens **Toepassen**. U ziet nu hetzelfde gesimuleerde apparaat in de interface voor het bouwen van apparaatsjabloonweergaven. Deze weergave is handig voor grafieken en andere visualisaties.
+1. Kies uw gesimuleerde apparaat in de lijst. Selecteer vervolgens **Toepassen** . U ziet nu hetzelfde gesimuleerde apparaat in de interface voor het bouwen van apparaatsjabloonweergaven. Deze weergave is handig voor grafieken en andere visualisaties.
 
     ![Voorbeeldapparaat configureren](./media/quick-create-simulated-device/configure-preview.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u geleerd hoe u een **MXChip IoT DevKit**-apparaatsjabloon kunt maken en een gesimuleerd apparaat toevoegen aan uw toepassing.
+In deze quickstart hebt u geleerd hoe u een **MXChip IoT DevKit** -apparaatsjabloon kunt maken en een gesimuleerd apparaat toevoegen aan uw toepassing.
 
 Ga voor meer informatie over het bewaken van met uw toepassing verbonden apparaten verder met de quickstart:
 

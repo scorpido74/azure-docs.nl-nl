@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: b639bc19620a07d9730066f98977080827f07ec0
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 67ed8c54e32a301a50fa49b1ebba284b216d8664
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570466"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276300"
 ---
 # <a name="quickstart-build-a-console-app-using-the-net-v4-sdk-to-manage-azure-cosmos-db-sql-api-account-resources"></a>Quickstart: Bouw een console-app met behulp van de .NET V4 SDK voor het beheren van Azure Cosmos DB SQL API-accountresources.
 
@@ -29,7 +29,7 @@ ms.locfileid: "91570466"
 
 Ga aan de slag met de Azure Cosmos DB SQL API-clientbibliotheek voor .NET. Volg de stappen in dit document om het .NET V4-pakket (Azure.Cosmos) te installeren, een app te bouwen en de voorbeeldcode voor basis CRUD-bewerkingen uit te proberen voor de gegevens die zijn opgeslagen in Azure Cosmos DB. 
 
-Azure Cosmos DB is de globaal gedistribueerde multimodel-databaseservice van Microsoft. U kunt Azure Cosmos DB gebruiken om snel databases voor belangrijke/waardevolle documenten en grafieken te maken en doorzoeken. Gebruik de Azure Cosmos DB SQL API-clientbibliotheek voor .NET om:
+Azure Cosmos DB is de snelle NoSQL-database van Microsoft, met open API's voor elke schaal. U kunt Azure Cosmos DB gebruiken om snel databases voor belangrijke/waardevolle documenten en grafieken te maken en doorzoeken. Gebruik de Azure Cosmos DB SQL API-clientbibliotheek voor .NET om:
 
 * Een Azure Cosmos-database en een container te maken
 * Voorbeeldgegevens toe te voegen aan de container
@@ -53,9 +53,9 @@ Als u de optie [Azure Cosmos DB gratis proberen](https://azure.microsoft.com/try
 
 Als u uw eigen Azure-abonnement hebt of een gratis abonnement hebt gemaakt, moet u expliciet een Azure Cosmos-account maken. Met de volgende code wordt een Azure Cosmos-account gemaakt met sessieconsistentie. Het account wordt gerepliceerd in `South Central US` en `North Central US`.  
 
-U kunt Azure Cloud Shell gebruiken om het Azure Cosmos-account te maken. Azure Cloud Shell is een interactieve, geverifieerde en vanuit de browser toegankelijke shell voor het beheer van Azure-resources. Het biedt de flexibiliteit om de shell-ervaring te kiezen die het beste past bij de manier waarop u werkt, dan wel Bash of PowerShell. Kies voor deze quickstart de modus **Bash**. Voor Azure Cloud Shell hebt u ook een opslagaccount nodig. U kunt er een maken wanneer u hierom wordt gevraagd.
+U kunt Azure Cloud Shell gebruiken om het Azure Cosmos-account te maken. Azure Cloud Shell is een interactieve, geverifieerde en vanuit de browser toegankelijke shell voor het beheer van Azure-resources. Het biedt de flexibiliteit om de shell-ervaring te kiezen die het beste past bij de manier waarop u werkt, dan wel Bash of PowerShell. Kies voor deze quickstart de modus **Bash** . Voor Azure Cloud Shell hebt u ook een opslagaccount nodig. U kunt er een maken wanneer u hierom wordt gevraagd.
 
-Selecteer de knop **Uitproberen** naast de volgende code, kies de modus **Bash**, selecteer **een opslagaccount maken** en meld u aan bij Cloud Shell. Kopieer vervolgens de volgende code en plak deze in Azure Cloud Shell en voer deze uit. De naam van het Azure Cosmos-account moet wereldwijd uniek zijn. Zorg ervoor dat u de `mysqlapicosmosdb`-waarde bijwerkt voordat u de opdracht uitvoert.
+Selecteer de knop **Uitproberen** naast de volgende code, kies de modus **Bash** , selecteer **een opslagaccount maken** en meld u aan bij Cloud Shell. Kopieer vervolgens de volgende code en plak deze in Azure Cloud Shell en voer deze uit. De naam van het Azure Cosmos-account moet wereldwijd uniek zijn. Zorg ervoor dat u de `mysqlapicosmosdb`-waarde bijwerkt voordat u de opdracht uitvoert.
 
 ```azurecli-interactive
 
@@ -139,7 +139,7 @@ Voordat u begint met het compileren van de toepassing, kijken we naar de hiërar
 * Containers 
 * Items
 
-Zie het artikel [werken met databases, containers en items in Azure Cosmos DB](databases-containers-items.md) voor meer informatie over de hiërarchie van verschillende entiteiten. U gebruikt de volgende .NET-klassen om te communiceren met deze resources:
+Zie het artikel [werken met databases, containers en items in Azure Cosmos DB](account-databases-containers-items.md) voor meer informatie over de hiërarchie van verschillende entiteiten. U gebruikt de volgende .NET-klassen om te communiceren met deze resources:
 
 * CosmosClient: deze klasse biedt een logische weergave aan de clientzijde voor de Azure Cosmos DB-service. Het clientobject wordt gebruikt om aanvragen aan de service te configureren en uitvoeren.
 * CreateDatabaseIfNotExistsAsync: deze methode maakt (indien niet aanwezig) of haalt (indien aanwezig) een database-resource op als een asynchrone bewerking. 

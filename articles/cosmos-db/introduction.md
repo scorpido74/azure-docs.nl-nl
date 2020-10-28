@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: 2301219db250b97fd7ea2eb3814f5eba2c70148a
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: aad69a34cc27f341bec5beda0f52e2581538aaf9
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569860"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278424"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Welkom bij Azure Cosmos DB
 
@@ -48,7 +48,7 @@ Met Cosmos DB kunt u hoog-responsieve wereldwijde toepassingen bouwen. Dankzij h
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>Nauwkeurig gedefinieerde, meerdere consistentiekeuzes
 
-Wanneer u wereldwijd gedistribueerde toepassingen in Cosmos DB maakt, hoeft u niet langer verregaande [compromissen tussen consistentie, beschikbaarheid, latentie en doorvoer](consistency-levels-tradeoffs.md) te sluiten. Het replicatieprotocol voor meerdere regio's van Cosmos DB biedt [vijf duidelijk gedefinieerde consistentieniveaus](consistency-levels.md) - *sterk*, *gebonden veroudering*, *sessie*, *consistent voorvoegsel* en *uiteindelijk* – voor een intuïtief programmeermodel met lage latentie en hoge beschikbaarheid voor uw wereldwijde toepassing.
+Wanneer u wereldwijd gedistribueerde toepassingen in Cosmos DB maakt, hoeft u niet langer verregaande [compromissen tussen consistentie, beschikbaarheid, latentie en doorvoer](consistency-levels-tradeoffs.md) te sluiten. Het replicatieprotocol voor meerdere regio's van Cosmos DB biedt [vijf duidelijk gedefinieerde consistentieniveaus](consistency-levels.md) - *sterk* , *gebonden veroudering* , *sessie* , *consistent voorvoegsel* en *uiteindelijk* – voor een intuïtief programmeermodel met lage latentie en hoge beschikbaarheid voor uw wereldwijde toepassing.
 
 ### <a name="no-schema-or-index-management"></a>Geen schema- of indexbeheer
 
@@ -60,7 +60,7 @@ Cosmos DB is een fundamentele service in Azure. Cosmos DB wordt al bijna een dec
 
 ### <a name="ubiquitous-regional-presence"></a>Alomtegenwoordige regionale aanwezigheid
 
-Cosmos DB is beschikbaar in alle Azure-regio's wereldwijd, waaronder meer dan 54 regio's in de openbare cloud, [Azure China 21Vianet](https://www.azure.cn/en-us/), Azure Duitsland, Azure Government en Azure Government for Department of Defense (DoD). Zie [Regionale aanwezigheid van Cosmos DB](regional-presence.md).
+Cosmos DB is beschikbaar in alle Azure-regio's wereldwijd, waaronder meer dan 54 regio's in de openbare cloud, [Azure China 21Vianet](https://www.azure.cn/en-us/), Azure Duitsland, Azure Government en Azure Government for Department of Defense (DoD). Zie [Hoge beschikbaarheid in Azure Cosmos DB](high-availability.md).
 
 ### <a name="secure-by-default-and-enterprise-ready"></a>Standaard beveiligd en geschikt voor gebruik door bedrijven
 

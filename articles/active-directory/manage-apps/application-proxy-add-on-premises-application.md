@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 7d94b8604b2f947463dd760ca7baf25f19a15a26
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 081ed9675c10be8ea1db767567aa866442158086
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88642143"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207662"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Zelfstudie: Een on-premises toepassing voor externe toegang toevoegen via Application Proxy in Azure Active Directory
 
@@ -112,7 +112,7 @@ Sta toegang tot de volgende URL's toe:
 | URL | Hoe dat wordt gebruikt |
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | Communicatie tussen de connector en de Application Proxy-cloudservice |
-| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | De connector gebruikt deze URL's om certificaten te verifiëren. |
+| crl3.digicert.com<br>crl4.digicert.com<br>ocsp.digicert.com<br>www.d-trust.net<br>root-c3-ca2-2009.ocsp.d-trust.net<br>crl.microsoft.com<br>oneocsp.microsoft.com<br>ocsp.msocsp.com<br> | De connector gebruikt deze URL's om certificaten te verifiëren. |
 | login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>\*.microsoftonline.com<br>\*.microsoftonline-p.com<br>\*.msauth.net<br>\*.msauthimages.net<br>\*.msecnd.net<br>\*.msftauth.net<br>\*.msftauthimages.net<br>\*.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com:80 | De connector gebruikt deze URL's tijdens het registratieproces. |
 
 U kunt verbindingen met \*.msappproxy.net en \*.servicebus.windows.net toestaan als uw firewall of proxy toestaat dat u DNS-acceptatielijsten configureert. Zo niet, dan moet u toegang tot de [Azure IP-bereiken en -servicetags – Openbare cloud](https://www.microsoft.com/download/details.aspx?id=56519) toestaan. die overigens elke week worden bijgewerkt.
@@ -127,15 +127,15 @@ De connector installeren:
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/) als een toepassingsbeheerder van de map die gebruikmaakt van Application Proxy. Als het domein van de tenant bijvoorbeeld contoso.com is, moet de beheerder admin@contoso.com of een andere beheerdersalias in dat domein zijn.
 1. Selecteer uw gebruikersnaam in de rechterbovenhoek. Controleer of u bent aangemeld in een directory die gebruikmaakt van Application Proxy. Als u van directory moet veranderen, selecteert u **Schakelen tussen directory’s** en kiest u een directory die gebruikmaakt van Application Proxy.
 1. Selecteer **Azure Active Directory** in het navigatiepaneel aan de linkerkant.
-1. Selecteer onder **Beheren** de optie **Application Proxy**.
-1. Selecteer **Service-connector downloaden**.
+1. Selecteer onder **Beheren** de optie **Application Proxy** .
+1. Selecteer **Service-connector downloaden** .
 
     ![Download de service-connector om de servicevoorwaarden te bekijken](./media/application-proxy-add-on-premises-application/application-proxy-download-connector-service.png)
 
-1. Lees de servicevoorwaarden. Wanneer u klaar bent, selecteert u **Voorwaarden accepteren en downloaden**.
+1. Lees de servicevoorwaarden. Wanneer u klaar bent, selecteert u **Voorwaarden accepteren en downloaden** .
 1. Selecteer **Uitvoeren** onderaan het venster om de connector te installeren. Er wordt een installatiewizard geopend.
 1. Volg de instructies in de wizard om de service te installeren. Wanneer u wordt gevraagd de connector te registreren voor de Application Proxy voor uw Azure AD-tenant, geeft u uw gegevens als toepassingsbeheerder op.
-    - Voor Internet Explorer (IE) geldt dat als **Verbeterde beveiliging van Internet Explorer** is ingesteld op **Aan**, het registratiescherm niet wordt weergegeven. Volg de instructies in het foutbericht om toegang te krijgen. Zorg ervoor dat **Verbeterde beveiliging van Internet Explorer** is ingesteld op **Uit**.
+    - Voor Internet Explorer (IE) geldt dat als **Verbeterde beveiliging van Internet Explorer** is ingesteld op **Aan** , het registratiescherm niet wordt weergegeven. Volg de instructies in het foutbericht om toegang te krijgen. Zorg ervoor dat **Verbeterde beveiliging van Internet Explorer** is ingesteld op **Uit** .
 
 ### <a name="general-remarks"></a>Algemene opmerkingen
 
@@ -156,7 +156,7 @@ U kunt de Azure-portal of uw Windows-server gebruiken om te bevestigen dat er ee
 Controleren of de connector juist is geïnstalleerd en geregistreerd:
 
 1. Meld u aan bij uw tenantmap in de [Azure-portal](https://portal.azure.com).
-1. Selecteer **Azure Active Directory** in het navigatiepaneel aan de linkerkant en selecteer vervolgens **Application Proxy** in de sectie **Beheren**. Al uw connectors en connectorgroepen worden op deze pagina weergegeven.
+1. Selecteer **Azure Active Directory** in het navigatiepaneel aan de linkerkant en selecteer vervolgens **Application Proxy** in de sectie **Beheren** . Al uw connectors en connectorgroepen worden op deze pagina weergegeven.
 1. Bekijk een connector om de details ervan te controleren. De connectors moeten standaard zijn uitgevouwen. Als de connector die u wilt bekijken niet is uitgevouwen, vouwt u de connector uit om de details te bekijken. Een actief groen label geeft aan dat de connector verbinding kan maken met de service. Maar ook al is het label groen, toch kan een netwerkprobleem er nog steeds voor zorgen dat de connector geen berichten ontvangt.
 
     ![Azure AD Application Proxy-connectors](./media/application-proxy-add-on-premises-application/app-proxy-connectors.png)
@@ -167,14 +167,14 @@ Zie [Probleem bij het installeren van de Application Proxy-connector](applicatio
 
 Controleren of de connector juist is geïnstalleerd en geregistreerd:
 
-1. Open Windows Services Manager door te klikken op de **Windows**-toets en *services.msc* in te voeren.
+1. Open Windows Services Manager door te klikken op de **Windows** -toets en *services.msc* in te voeren.
 1. Controleer of de status van de volgende twee services **Wordt uitgevoerd** is.
    - Met **Microsoft AAD Application Proxy Connector** wordt de connectiviteit mogelijk gemaakt.
    - **Microsoft AAD Application Proxy Connector Updater** is een automatische updateservice. De updater controleert op nieuwe versies van de connector en werkt de connector bij als dat nodig is.
 
      ![Connectorservices voor toepassingsproxy - schermafbeelding](./media/application-proxy-add-on-premises-application/app_proxy_services.png)
 
-1. Als de status van de services niet **Wordt uitgevoerd** is, klikt u met de rechtermuisknop om elke service te selecteren en kiest u **Starten**.
+1. Als de status van de services niet **Wordt uitgevoerd** is, klikt u met de rechtermuisknop om elke service te selecteren en kiest u **Starten** .
 
 ## <a name="add-an-on-premises-app-to-azure-ad"></a>Een on-premises app toevoegen aan Azure AD
 
@@ -182,8 +182,8 @@ Nu u uw omgeving hebt voorbereid en een connector hebt geïnstalleerd, kunt u on
 
 1. Meld u aan als beheerder in de [Azure-portal](https://portal.azure.com/).
 2. Selecteer **Azure Active Directory** in het navigatiepaneel aan de linkerkant.
-3. Selecteer **Ondernemingstoepassingen** en selecteer vervolgens **Nieuwe toepassing**.
-4. Selecteer in de sectie **On-premises toepassingen** de optie **Een on-premises toepassing toevoegen**.
+3. Selecteer **Ondernemingstoepassingen** en selecteer vervolgens **Nieuwe toepassing** .
+4. Selecteer in de sectie **On-premises toepassingen** de optie **Een on-premises toepassing toevoegen** .
 5. Geef in de sectie **Uw eigen on-premises toepassing toevoegen** de volgende informatie over uw toepassing op:
 
     | Veld | Beschrijving |
@@ -191,21 +191,21 @@ Nu u uw omgeving hebt voorbereid en een connector hebt geïnstalleerd, kunt u on
     | **Naam** | De naam van de toepassing die wordt weergegeven in My Apps en in de Azure-portal. |
     | **Interne URL** | Dit is de URL voor toegang tot de toepassing vanuit uw particuliere netwerk. U kunt voor het publiceren een specifiek pad opgeven op de back-endserver, terwijl de rest van de server ongepubliceerd blijft. Op deze manier kunt u verschillende sites op dezelfde server als verschillende apps publiceren en elk daarvan een eigen naam en toegangsregels geven.<br><br>Als u een pad publiceert, moet u ervoor zorgen dat dit alle benodigde installatiekopieën, scripts en opmaakmodellen voor uw toepassing bevat. Als uw app zich bijvoorbeeld bevindt op het pad https:\//uwapp/app en gebruikmaakt van installatiekopieën op https:\//uwapp/media, moet u https:\//uwapp/ publiceren als het pad. Deze interne URL hoeft niet de bestemmingspagina te zijn die uw gebruikers te zien krijgen. Zie [Een aangepaste startpagina voor gepubliceerde apps instellen](application-proxy-configure-custom-home-page.md) voor meer informatie. |
     | **Externe URL** | Het adres voor gebruikers om toegang te krijgen tot de app van buiten uw netwerk. Als u het standaarddomein voor Application Proxy niet wilt gebruiken, lees dan de informatie over [aangepaste domeinen in Azure AD Application Proxy](application-proxy-configure-custom-domain.md).|
-    | **Verificatie vooraf** | De manier waarop gebruikers door Application Proxy worden geverifieerd voordat ze toegang krijgen tot uw toepassing.<br><br>**Azure Active Directory**: de gebruikers worden omgeleid door Application Proxy zodat ze zich kunnen aanmelden met Azure AD. Hierbij worden hun machtigingen geverifieerd voor de map en de toepassing. Het is raadzaam deze optie standaard ingesteld te houden, zodat u gebruik kunt maken van Azure AD-beveiligingsfuncties zoals voorwaardelijke toegang en meervoudige verificatie. **Azure Active Directory** is vereist voor het bewaken van de toepassing met Microsoft Cloud Application Security.<br><br>**Passthrough**: gebruikers hoeven geen verificatie te doorlopen in Azure AD om toegang te krijgen tot de toepassing. U kunt nog steeds verificatievereisten op de back-end instellen. |
-    | **Connectorgroep** | Connectors verwerken de externe toegang tot uw toepassing en met connectorgroepen kunt u connectors en toepassingen indelen per regio, netwerk of doel. Als u nog geen connectorgroepen hebt gemaakt, wordt uw toepassing toegewezen als **Standaard**.<br><br>Als uw toepassing gebruikmaakt van WebSockets om verbinding te maken, moeten alle connectors in de groep versie 1.5.612.0 of hoger hebben.|
+    | **Verificatie vooraf** | De manier waarop gebruikers door Application Proxy worden geverifieerd voordat ze toegang krijgen tot uw toepassing.<br><br>**Azure Active Directory** : de gebruikers worden omgeleid door Application Proxy zodat ze zich kunnen aanmelden met Azure AD. Hierbij worden hun machtigingen geverifieerd voor de map en de toepassing. Het is raadzaam deze optie standaard ingesteld te houden, zodat u gebruik kunt maken van Azure AD-beveiligingsfuncties zoals voorwaardelijke toegang en meervoudige verificatie. **Azure Active Directory** is vereist voor het bewaken van de toepassing met Microsoft Cloud Application Security.<br><br>**Passthrough** : gebruikers hoeven geen verificatie te doorlopen in Azure AD om toegang te krijgen tot de toepassing. U kunt nog steeds verificatievereisten op de back-end instellen. |
+    | **Connectorgroep** | Connectors verwerken de externe toegang tot uw toepassing en met connectorgroepen kunt u connectors en toepassingen indelen per regio, netwerk of doel. Als u nog geen connectorgroepen hebt gemaakt, wordt uw toepassing toegewezen als **Standaard** .<br><br>Als uw toepassing gebruikmaakt van WebSockets om verbinding te maken, moeten alle connectors in de groep versie 1.5.612.0 of hoger hebben.|
 
-6. Configureer zo nodig**aanvullende instellingen**. Voor de meeste toepassingen moet u voor deze instellingen de standaardwaarden behouden. 
+6. Configureer zo nodig **aanvullende instellingen** . Voor de meeste toepassingen moet u voor deze instellingen de standaardwaarden behouden. 
 
     | Veld | Beschrijving |
     | :---- | :---------- |
     | **Toepassingstime-out voor de back-end** | Stel deze waarde alleen in op **Lang** als uw toepassing traag is met verifiëren en verbinding maken. De toepassingstime-out voor de back-end is standaard 85 seconden. Wanneer u de waarde instelt op ‘Lang’, wordt de time-out voor de back-end verlengd tot 180 seconden. |
-    | **Alleen-HTTP-cookies gebruiken** | Stel deze waarde in op **Ja** om ervoor te zorgen dat Application Proxy-cookies de HTTPOnly-vlag in de HTTP-antwoordheader bevatten. Als u Extern bureaublad-services gebruikt, stelt u deze waarde in op **Nee**.|
+    | **Alleen-HTTP-cookies gebruiken** | Stel deze waarde in op **Ja** om ervoor te zorgen dat Application Proxy-cookies de HTTPOnly-vlag in de HTTP-antwoordheader bevatten. Als u Extern bureaublad-services gebruikt, stelt u deze waarde in op **Nee** .|
     | **Beveiligde cookies gebruiken**| Stel deze waarde in op **Ja** om cookies te verzenden via een beveiligd kanaal, zoals een versleutelde HTTPS-aanvraag.
-    | **Permanente cookies gebruiken**| Houd deze waarde ingesteld op **Nee**. Gebruik deze instelling alleen voor toepassingen die cookies niet kunnen delen tussen processen. Zie [Cookie-instellingen voor toegang tot on-premises toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-cookie-settings) voor meer informatie over cookie-instellingen.
+    | **Permanente cookies gebruiken**| Houd deze waarde ingesteld op **Nee** . Gebruik deze instelling alleen voor toepassingen die cookies niet kunnen delen tussen processen. Zie [Cookie-instellingen voor toegang tot on-premises toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-cookie-settings) voor meer informatie over cookie-instellingen.
     | **URL's in headers vertalen** | Laat deze waarde op **Ja** staan, tenzij voor uw toepassing de oorspronkelijke host-header in de verificatieaanvraag moet zijn opgenomen. |
     | **URL's vertalen in de hoofdtekst van de toepassing** | Laat deze waarde op **Nee** staan, tenzij u hardcoded HTML-koppelingen naar andere on-premises toepassingen hebt en geen aangepaste domeinen gebruikt. Zie [Vertaling koppelen aan Application Proxy](application-proxy-configure-hard-coded-link-translation.md) voor meer informatie.<br><br>Stel deze waarde in op **Ja** als u van plan bent om deze toepassing te bewaken met Microsoft Cloud App Security (MCAS). Zie [Configuratie van realtime bewaking van toegang tot toepassingen met Microsoft Cloud App Security en Azure Active Directory](application-proxy-integrate-with-microsoft-cloud-application-security.md) voor meer informatie. |
 
-7. Selecteer **Toevoegen**.
+7. Selecteer **Toevoegen** .
 
 ## <a name="test-the-application"></a>De toepassing testen
 
@@ -218,11 +218,11 @@ Controleer voordat u een gebruiker aan de toepassing toevoegt of het gebruikersa
 Een testgebruiker toevoegen:
 
 1. Selecteer **Ondernemingstoepassingen** en selecteer vervolgens de toepassing die u wilt testen.
-2. Selecteer **Aan de slag** en selecteer vervolgens **Een gebruiker toewijzen voor de test**.
-3. Selecteer onder **Gebruikers en groepen** de optie **Gebruiker toevoegen**.
-4. Selecteer onder **Toewijzing toevoegen** de optie **Gebruikers en groepen**. De sectie **Gebruikers en groepen** wordt nu weergegeven.
+2. Selecteer **Aan de slag** en selecteer vervolgens **Een gebruiker toewijzen voor de test** .
+3. Selecteer onder **Gebruikers en groepen** de optie **Gebruiker toevoegen** .
+4. Selecteer onder **Toewijzing toevoegen** de optie **Gebruikers en groepen** . De sectie **Gebruikers en groepen** wordt nu weergegeven.
 5. Kies het account dat u wilt toevoegen.
-6. Kies **Selecteren** en selecteer vervolgens **Toewijzen**.
+6. Kies **Selecteren** en selecteer vervolgens **Toewijzen** .
 
 ### <a name="test-the-sign-on"></a>De aanmelding testen
 

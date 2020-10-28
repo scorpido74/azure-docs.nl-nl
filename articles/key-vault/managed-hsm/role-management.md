@@ -8,17 +8,17 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 814167425fcd39e90edccd952e1a3e4fbd570988
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 370be4501a113403a9b1db14571f5a021ac15517
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91818023"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149107"
 ---
 # <a name="managed-hsm-role-management"></a>Rolbeheer van beheerde HSM
 
 > [!NOTE]
-> Key Vault ondersteunt twee typen resources: kluizen en beheerde HSM's. Dit artikel gaat over **beheerde HSM**. Als u wilt weten hoe u een kluis beheert, raadpleegt u [Key Vault beheren met de Azure CLI](../general/manage-with-cli2.md).
+> Key Vault ondersteunt twee typen resources: kluizen en beheerde HSM's. Dit artikel gaat over **beheerde HSM** . Als u wilt weten hoe u een kluis beheert, raadpleegt u [Key Vault beheren met de Azure CLI](../general/manage-with-cli2.md).
 
 Zie [Wat is beheerde HSM?](overview.md) voor een overzicht van beheerde HSM. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -60,7 +60,7 @@ az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Cr
 
 ### <a name="assign-role-for-a-specific-key"></a>Rol toewijzen voor een specifieke sleutel
 
-Gebruik de opdracht `az keyvault role assignment create` om de rol **Crypto Officer van beheerde HSM** toe te wijzen aan de gebruiker die wordt geïdentificeerd door de naam voor de user principal **user2\@contoso.com** voor een specifieke sleutel met de naam **myrsakey**.
+Gebruik de opdracht `az keyvault role assignment create` om de rol **Crypto Officer van beheerde HSM** toe te wijzen aan de gebruiker die wordt geïdentificeerd door de naam voor de user principal **user2\@contoso.com** voor een specifieke sleutel met de naam **myrsakey** .
 
 ```azurecli-interactive
 az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Crypto Officer" --assignee user2@contoso.com  --scope /keys/myrsakey

@@ -1,22 +1,22 @@
 ---
 title: Informatie over naleving van regelgeving met Azure Security Benchmark
 description: Informatie over het ingebouwde initiatief voor naleving van regelgeving in Azure Security Benchmark. Elke beheeroptie wordt toegewezen aan een of meer Azure Policy-definities die helpen bij de evaluatie.
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 0ac37714aa18806d3eddbb5cf03c922754483f85
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: c4f009b24889f3c855e9cb612fed7bdc1342e313
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932172"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311463"
 ---
 # <a name="details-of-the-azure-security-benchmark-regulatory-compliance-built-in-initiative"></a>Informatie over het ingebouwde initiatief voor naleving van regelgeving in Azure Security Benchmark
 
 Het volgende artikel beschrijft hoe de definitie van het ingebouwde initiatief voor naleving van regelgeving in Azure Policy wordt toegewezen aan **nalevingsdomeinen** en **beheeropties** in Azure Security Benchmark.
 Zie [Azure Security Benchmark](../../../security/benchmarks/overview.md)voor meer informatie over deze nalevingsstandaard. Zie [Azure Policy-beleidsdefinitie](../concepts/definition-structure.md#type) en [Gedeelde verantwoordelijkheid in de Cloud](../../../security/fundamentals/shared-responsibility.md) om _Eigendom_ te begrijpen.
 
-De volgende toewijzingen zijn aan de beheeropties van **Azure Security Benchmark**. Gebruik de navigatie aan de rechterkant om rechtstreeks naar een toewijzing van een specifiek **nalevingsdomein** te gaan. Veel van de beheeropties worden geïmplementeerd met een [Azure Policy](../overview.md)-initiatiefdefinitie. Als u de complete initiatiefdefinitie wilt bekijken, opent u **Beleid** in de Azure-portal en selecteert u de pagina **Definities**.
+De volgende toewijzingen zijn aan de beheeropties van **Azure Security Benchmark** . Gebruik de navigatie aan de rechterkant om rechtstreeks naar een toewijzing van een specifiek **nalevingsdomein** te gaan. Veel van de beheeropties worden geïmplementeerd met een [Azure Policy](../overview.md)-initiatiefdefinitie. Als u de complete initiatiefdefinitie wilt bekijken, opent u **Beleid** in de Azure-portal en selecteert u de pagina **Definities** .
 Zoek vervolgens het ingebouwde initiatief voor naleving van **Azure Security Benchmark**
 
 Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdrukvoorbeeld van Azure Security Benchmark](../../blueprints/samples/azure-security-benchmark.md).
@@ -29,7 +29,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>Resources beschermen met behulp van netwerkbeveiligingsgroepen of Azure Firewall op uw virtueel netwerk
 
-**Id**: Azure Benchmark 1.1 **Eigendom**: Klant
+**Id** : Azure Benchmark 1.1 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -46,8 +46,8 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 |[Beheerpoorten van virtuele machines moeten worden beveiligd met Just-In-Time-netwerktoegangsbeheer](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb0f33259-77d7-4c9e-aac6-3aabcfae693c) |Mogelijke Just In Time-netwerktoegang (JIT) wordt als aanbeveling bewaakt door Azure Security Center |AuditIfNotExists, uitgeschakeld |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_JITNetworkAccess_Audit.json) |
 |[Beheerpoorten moeten gesloten zijn op uw virtuele machines](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F22730e10-96f6-4aac-ad84-9383d35b5917) |Open poorten voor extern beheer stellen uw virtuele machine bloot aan een verhoogd risico op aanvallen via internet. Deze aanvallen proberen de aanmeldingsgegevens voor de beheerderstoegang tot de computer te verkrijgen. |AuditIfNotExists, uitgeschakeld |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_OpenManagementPortsOnVirtualMachines_Audit.json) |
 |[Het privé-eindpunt moet worden ingeschakeld voor MariaDB-servers](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0a1302fb-a631-4106-9753-f3d494733990) |Met privé-eindpuntverbindingen wordt beveiligde communicatie afgedwongen door middel van het inschakelen van privéconnectiviteit met Azure Database for MariaDB. Configureer een privé-eindpuntverbinding om alleen verkeer dat afkomstig is van bekende netwerken toegang te verlenen en om verkeer van alle andere IP-adressen, ook binnen Azure, toegang te ontzeggen. |AuditIfNotExists, uitgeschakeld |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/MariaDB_EnablePrivateEndPoint_Audit.json) |
-|[Het privé-eindpunt moet worden ingeschakeld voor MySQL-servers](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7595c971-233d-4bcf-bd18-596129188c49) |Met privé-eindpuntverbindingen wordt beveiligde communicatie afgedwongen door middel van het inschakelen van privéconnectiviteit met Azure Database for MySQL. Configureer een privé-eindpuntverbinding om alleen verkeer dat afkomstig is van bekende netwerken toegang te verlenen en om verkeer van alle andere IP-adressen, ook binnen Azure, toegang te ontzeggen. |AuditIfNotExists, uitgeschakeld |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/MySQL_EnablePrivateEndPoint_Audit.json) |
-|[Het privé-eindpunt moet worden ingeschakeld voor PostgreSQL-servers](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0564d078-92f5-4f97-8398-b9f58a51f70b) |Met privé-eindpuntverbindingen wordt beveiligde communicatie afgedwongen door middel van het inschakelen van privéconnectiviteit met Azure Database for PostgreSQL. Configureer een privé-eindpuntverbinding om alleen verkeer dat afkomstig is van bekende netwerken toegang te verlenen en om verkeer van alle andere IP-adressen, ook binnen Azure, toegang te ontzeggen. |AuditIfNotExists, uitgeschakeld |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_EnablePrivateEndPoint_Audit.json) |
+|[Het privé-eindpunt moet worden ingeschakeld voor MySQL-servers](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7595c971-233d-4bcf-bd18-596129188c49) |Met privé-eindpuntverbindingen wordt beveiligde communicatie afgedwongen door middel van het inschakelen van privéconnectiviteit met Azure Database for MySQL. Configureer een privé-eindpuntverbinding om alleen toegang mogelijk te maken tot verkeer dat afkomstig is van bekende netwerken en om toegang te voorkomen vanaf alle andere IP-adressen, ook binnen Azure. |AuditIfNotExists, uitgeschakeld |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/MySQL_EnablePrivateEndPoint_Audit.json) |
+|[Het privé-eindpunt moet worden ingeschakeld voor PostgreSQL-servers](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0564d078-92f5-4f97-8398-b9f58a51f70b) |Met privé-eindpuntverbindingen wordt beveiligde communicatie afgedwongen door middel van het inschakelen van privéconnectiviteit met Azure Database for PostgreSQL. Configureer een privé-eindpuntverbinding om alleen toegang mogelijk te maken tot verkeer dat afkomstig is van bekende netwerken en om toegang te voorkomen vanaf alle andere IP-adressen, ook binnen Azure. |AuditIfNotExists, uitgeschakeld |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_EnablePrivateEndPoint_Audit.json) |
 |[Service Bus moet gebruikmaken van een service-eindpunt voor een virtueel netwerk](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F235359c5-7c52-4b82-9055-01c75cf9f60e) |Met dit beleid worden alle exemplaren van Service Bus gecontroleerd die niet zijn geconfigureerd voor het gebruik van een service-eindpunt voor een virtueel netwerk. |AuditIfNotExists, uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_ServiceBus_AuditIfNotExists.json) |
 |[SQL Server moet gebruikmaken van een service-eindpunt voor een virtueel netwerk](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fae5d2f14-d830-42b6-9899-df6cfe9c71a3) |Met dit beleid worden alle exemplaren van SQL Server gecontroleerd die niet zijn geconfigureerd voor het gebruik van een service-eindpunt voor een virtueel netwerk. |AuditIfNotExists, uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_SQLServer_AuditIfNotExists.json) |
 |[Netwerktoegang tot opslagaccounts moet zijn beperkt](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F34c877ad-507e-4c82-993e-3452a6e0ad3c) |Netwerktoegang tot opslagaccounts moet worden beperkt. Configureer netwerkregels zo dat alleen toepassingen van toegestane netwerken toegang hebben tot het opslagaccount. Om verbindingen van specifieke internet- of lokale clients toe te staan, kan toegang worden verleend aan verkeer van specifieke Azure Virtual Networks of aan openbare IP-adresbereiken voor internet |Controleren, Weigeren, Uitgeschakeld |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Storage_NetworkAcls_Audit.json) |
@@ -58,7 +58,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>De configuratie en het verkeer van VNet's, Subnets en NIC's controleren en vastleggen
 
-**Id**: Azure Security Benchmark 1.2 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 1.2 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -66,7 +66,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="protect-critical-web-applications"></a>Kritieke webtoepassingen beschermen
 
-**Id**: Azure Security Benchmark 1.3 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 1.3 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -80,7 +80,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="deny-communications-with-known-malicious-ip-addresses"></a>Communicatie met gekende schadelijke IP-adressen weigeren
 
-**Id**: Azure Security Benchmark 1.4 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 1.4 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -91,7 +91,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="record-network-packets-and-flow-logs"></a>Netwerkpakketten en stroomlogboeken vastleggen
 
-**Id**: Azure Security Benchmark 1.5 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 1.5 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -99,7 +99,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>Geautomatiseerde hulpprogramma's gebruiken om de configuraties van netwerkresources te controleren en wijzigingen te detecteren
 
-**Id**: Azure Security Benchmark 1.11 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 1.11 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -115,11 +115,11 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="configure-central-security-log-management"></a>Centraal beheer van beveiligingslogboeken configureren
 
-**Id**: Azure Security Benchmark 2.2 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 2.2 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Windows-machines controleren waarop de Log Analytics-agent niet is verbonden zoals verwacht](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6265018c-d7e2-432f-a75d-094d5f6f4465) |Hiertoe moeten vereiste onderdelen worden geïmplementeerd in het bereik van de beleidstoewijzing. Zie [https://aka.ms/gcpol](https://aka.ms/gcpol) voor meer informatie. Machines zijn niet-compatibel als de agent niet is geïnstalleerd, of als deze wel is geïnstalleerd, maar door het COM-object AgentConfigManager.MgmtSvcCfg wordt geretourneerd dat deze is geregistreerd bij een andere werkruimte dan de id die is opgegeven in de beleidsparameter. |auditIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_WindowsLogAnalyticsAgentConnection_AINE.json) |
+|[Windows-machines controleren waarop de Log Analytics-agent niet is verbonden zoals verwacht](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6265018c-d7e2-432f-a75d-094d5f6f4465) |Hiertoe moeten vereiste onderdelen worden geïmplementeerd in het bereik van de beleidstoewijzing. Zie [https://aka.ms/gcpol](https://aka.ms/gcpol) voor meer informatie. Machines voldoen niet als de agent niet is geïnstalleerd, of als deze wel is geïnstalleerd, maar door het COM-object AgentConfigManager.MgmtSvcCfg wordt geretourneerd dat de agent is geregistreerd bij een andere werkruimte dan de ID die is opgegeven in de beleidsparameter. |auditIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_WindowsLogAnalyticsAgentConnection_AINE.json) |
 |[Automatisch inrichten van de Log Analytics-agent voor controle moet zijn ingeschakeld voor uw abonnement](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F475aae12-b88a-4572-8b36-9b712b2b3a17) |Automatisch inrichten van de Log Analytics-agent voor controle inschakelen voor het verzamelen van beveiligingsgegevens |AuditIfNotExists, uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_Automatic_provisioning_log_analytics_monitoring_agent.json) |
 |[Met het Azure Monitor-logboekprofiel moeten logboeken worden verzameld voor de categorieën ‘schrijven’, ‘verwijderen’ en ‘actie’](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1a4e592a-6a6e-44a5-9814-e36264ca96e7) |Met dit beleid wordt ervoor gezorgd dat in een logboekprofiel logboeken worden verzameld voor de categorieën 'schrijven', 'verwijderen' en 'actie' |AuditIfNotExists, uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_CaptureAllCategories.json) |
 |[Azure Monitor moet activiteitenlogboeken uit alle regio's verzamelen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F41388f1c-2db0-4c25-95b2-35d7f5ccbfa9) |Met dit beleid wordt het Azure Monitor-logboekprofiel gecontroleerd waarbij geen activiteiten worden geëxporteerd uit alle door Azure ondersteunde regio's, inclusief wereldwijd. |AuditIfNotExists, uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_CaptureAllRegions.json) |
@@ -128,7 +128,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="enable-audit-logging-for-azure-resources"></a>Auditlogboekregistratie voor Azure-resources inschakelen
 
-**Id**: Azure Security Benchmark 2.3 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 2.3 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -150,18 +150,18 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="collect-security-logs-from-operating-systems"></a>Beveiligingslogboeken van besturingssystemen verzamelen
 
-**Id**: Azure Security Benchmark 2.4 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 2.4 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Windows-machines controleren waarop de Log Analytics-agent niet is verbonden zoals verwacht](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6265018c-d7e2-432f-a75d-094d5f6f4465) |Hiertoe moeten vereiste onderdelen worden geïmplementeerd in het bereik van de beleidstoewijzing. Zie [https://aka.ms/gcpol](https://aka.ms/gcpol) voor meer informatie. Machines zijn niet-compatibel als de agent niet is geïnstalleerd, of als deze wel is geïnstalleerd, maar door het COM-object AgentConfigManager.MgmtSvcCfg wordt geretourneerd dat deze is geregistreerd bij een andere werkruimte dan de id die is opgegeven in de beleidsparameter. |auditIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_WindowsLogAnalyticsAgentConnection_AINE.json) |
+|[Windows-machines controleren waarop de Log Analytics-agent niet is verbonden zoals verwacht](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6265018c-d7e2-432f-a75d-094d5f6f4465) |Hiertoe moeten vereiste onderdelen worden geïmplementeerd in het bereik van de beleidstoewijzing. Zie [https://aka.ms/gcpol](https://aka.ms/gcpol) voor meer informatie. Machines voldoen niet als de agent niet is geïnstalleerd, of als deze wel is geïnstalleerd, maar door het COM-object AgentConfigManager.MgmtSvcCfg wordt geretourneerd dat de agent is geregistreerd bij een andere werkruimte dan de ID die is opgegeven in de beleidsparameter. |auditIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_WindowsLogAnalyticsAgentConnection_AINE.json) |
 |[Automatisch inrichten van de Log Analytics-agent voor controle moet zijn ingeschakeld voor uw abonnement](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F475aae12-b88a-4572-8b36-9b712b2b3a17) |Automatisch inrichten van de Log Analytics-agent voor controle inschakelen voor het verzamelen van beveiligingsgegevens |AuditIfNotExists, uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_Automatic_provisioning_log_analytics_monitoring_agent.json) |
 |[De Log Analytics-agent moet worden geïnstalleerd op virtuele-machineschaalsets](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fefbde977-ba53-4479-b8e9-10b957924fbf) |Met dit beleid worden alle virtuele-machineschaalsets van Windows/Linux gecontroleerd als de Log Analytics-agent niet is geïnstalleerd. |AuditIfNotExists, uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/VMSS_LogAnalyticsAgent_AuditIfNotExists.json) |
 |[De Log Analytics-agent moet worden geïnstalleerd op virtuele machines](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa70ca396-0a34-413a-88e1-b956c1e683be) |Met dit beleid worden alle virtuele machines van Windows/Linux gecontroleerd als de Log Analytics-agent niet is geïnstalleerd. |AuditIfNotExists, uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/VirtualMachines_LogAnalyticsAgent_AuditIfNotExists.json) |
 
 ### <a name="configure-security-log-storage-retention"></a>De retentie voor de opslag van beveiligingslogboeken configureren
 
-**Id**: Azure Security Benchmark 2.5 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 2.5 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -169,7 +169,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="enable-alerts-for-anomalous-activity"></a>Waarschuwingen voor afwijkende activiteiten inschakelen
 
-**Id**: Azure Security Benchmark 2.7 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 2.7 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -178,7 +178,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="centralize-anti-malware-logging"></a>Antimalware-logboekregistratie centraliseren
 
-**Id**: Azure Security Benchmark 2.8 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 2.8 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -190,7 +190,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="maintain-an-inventory-of-administrative-accounts"></a>Een inventaris van beheerdersaccounts onderhouden
 
-**Id**: Azure Security Benchmark 3.1 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 3.1 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -201,19 +201,19 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="use-dedicated-administrative-accounts"></a>Specifieke beheerdersaccounts gebruiken
 
-**Id**: Azure Security Benchmark 3.3 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 3.3 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Er moeten maximaal drie eigenaren worden aangewezen voor uw abonnement](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4f11b553-d42e-4e3a-89be-32ca364cad4c) |Het wordt aanbevolen maximaal 3 abonnementseigenaren aan te wijzen om het risico dat een gecompromitteerde eigenaar inbreuk kan plegen te beperken. |AuditIfNotExists, uitgeschakeld |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_DesignateLessThanXOwners_Audit.json) |
-|[Windows-machines controleren waarop opgegeven leden van de groep Administrators ontbreken](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F30f71ea1-ac77-4f26-9fc5-2d926bbd4ba7) |Hiertoe moeten vereiste onderdelen worden geïmplementeerd in het bereik van de beleidstoewijzing. Zie [https://aka.ms/gcpol](https://aka.ms/gcpol) voor meer informatie. Machines zijn niet-compatibel als de lokale groep Administrators niet een of meer leden bevat die worden vermeld in de beleidsparameter. |auditIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AdministratorsGroupMembersToInclude_AINE.json) |
-|[Windows-machines controleren met extra accounts in de groep Administrators](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3d2a3320-2a72-4c67-ac5f-caa40fbee2b2) |Hiertoe moeten vereiste onderdelen worden geïmplementeerd in het bereik van de beleidstoewijzing. Zie [https://aka.ms/gcpol](https://aka.ms/gcpol) voor meer informatie. Machines zijn niet-compatibel als de lokale groep Administrators leden bevat die niet worden vermeld in de beleidsparameter. |auditIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AdministratorsGroupMembers_AINE.json) |
-|[Windows-machines controleren die opgegeven leden van de groep Administrators bevatten](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F69bf4abd-ca1e-4cf6-8b5a-762d42e61d4f) |Hiertoe moeten vereiste onderdelen worden geïmplementeerd in het bereik van de beleidstoewijzing. Zie [https://aka.ms/gcpol](https://aka.ms/gcpol) voor meer informatie. Machines zijn niet-compatibel als de lokale groep Administrators een of meer leden bevat die worden vermeld in de beleidsparameter. |auditIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AdministratorsGroupMembersToExclude_AINE.json) |
+|[Windows-machines controleren waarop opgegeven leden van de groep Beheerders ontbreken](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F30f71ea1-ac77-4f26-9fc5-2d926bbd4ba7) |Hiertoe moeten vereiste onderdelen worden geïmplementeerd in het bereik van de beleidstoewijzing. Zie [https://aka.ms/gcpol](https://aka.ms/gcpol) voor meer informatie. Machines voldoen niet als de lokale groep Beheerders niet één of meer leden bevat die worden vermeld in de beleidsparameter. |auditIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AdministratorsGroupMembersToInclude_AINE.json) |
+|[Windows-machines controleren met extra accounts in de groep Administrators](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3d2a3320-2a72-4c67-ac5f-caa40fbee2b2) |Hiertoe moeten vereiste onderdelen worden geïmplementeerd in het bereik van de beleidstoewijzing. Zie [https://aka.ms/gcpol](https://aka.ms/gcpol) voor meer informatie. Machines voldoen niet als de lokale groep Beheerders leden bevat die niet worden vermeld in de beleidsparameter. |auditIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AdministratorsGroupMembers_AINE.json) |
+|[Windows-machines controleren die opgegeven leden van de groep Beheerders bevatten](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F69bf4abd-ca1e-4cf6-8b5a-762d42e61d4f) |Hiertoe moeten vereiste onderdelen worden geïmplementeerd in het bereik van de beleidstoewijzing. Zie [https://aka.ms/gcpol](https://aka.ms/gcpol) voor meer informatie. Machines voldoen niet als de lokale groep Beheerders één of meer leden bevat die worden vermeld in de beleidsparameter. |auditIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AdministratorsGroupMembersToExclude_AINE.json) |
 |[Er moet meer dan één eigenaar zijn toegewezen aan uw abonnement](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F09024ccc-0c5f-475e-9457-b7c0d9ed487b) |Het is raadzaam meer dan één abonnementseigenaar toe te wijzen voor toegangsredundantie voor beheerders. |AuditIfNotExists, uitgeschakeld |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_DesignateMoreThanOneOwner_Audit.json) |
 
 ### <a name="use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>Meervoudige verificatie gebruiken voor alle op Azure Active Directory gebaseerde toegang
 
-**Id**: Azure Security Benchmark 3.5 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 3.5 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -223,7 +223,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="use-azure-active-directory"></a>Azure Active Directory gebruiken
 
-**Id**: Azure Security Benchmark 3.9 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 3.9 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -232,7 +232,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="regularly-review-and-reconcile-user-access"></a>Regelmatig gebruikerstoegang beoordelen en afstemmen
 
-**Id**: Azure Security Benchmark 3.10 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 3.10 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -246,7 +246,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="maintain-an-inventory-of-sensitive-information"></a>Een inventaris van gevoelige gegevens onderhouden
 
-**Id**: Azure Security Benchmark 4.1 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 4.1 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -254,7 +254,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="encrypt-all-sensitive-information-in-transit"></a>Alle gevoelige gegevens versleutelen tijdens overdracht
 
-**Id**: Azure Security Benchmark 4.4 **Eigendom**: Gedeeld
+**Id** : Azure Security Benchmark 4.4 **Eigendom** : Gedeeld
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -274,7 +274,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="use-an-active-discovery-tool-to-identify-sensitive-data"></a>Een hulpprogramma voor actieve detectie gebruiken om gevoelige gegevens te identificeren
 
-**Id**: Azure Security Benchmark 4.5 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 4.5 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -284,7 +284,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="use-azure-rbac-to-control-access-to-resources"></a>Azure RBAC gebruiken om toegang tot resources te beheren
 
-**Id**: Azure Security Benchmark 4.6 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 4.6 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -293,7 +293,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="encrypt-sensitive-information-at-rest"></a>Gevoelige gegevens 'at rest' versleutelen
 
-**Id**: Azure Security Benchmark 4.8 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 4.8 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -307,7 +307,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="log-and-alert-on-changes-to-critical-azure-resources"></a>Wijzigingen aan kritieke Azure-resources vastleggen en melden
 
-**Id**: Azure Security Benchmark 4.9 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 4.9 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -317,7 +317,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="run-automated-vulnerability-scanning-tools"></a>Geautomatiseerde hulpprogramma's voor het scannen op beveiligingsproblemen uitvoeren
 
-**Id**: Azure Security Benchmark 5.1 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 5.1 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -327,7 +327,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="deploy-automated-operating-system-patch-management-solution"></a>Geautomatiseerde oplossingen implementeren voor patchbeheer van besturingssystemen
 
-**Id**: Azure Security Benchmark 5.2 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 5.2 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -336,23 +336,23 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="deploy-automated-third-party-software-patch-management-solution"></a>Geautomatiseerde oplossing implementeren voor patchbeheer van software van derden
 
-**Id**: Azure Security Benchmark 5.3 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 5.3 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Controleren of de Java-versie de meest recente is, als deze wordt gebruikt als onderdeel van de API-app](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F88999f4c-376a-45c8-bcb3-4058f713cf39) |Er worden regelmatig nieuwere versies uitgebracht voor Java, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste Python-versie voor API-apps wordt aanbevolen om te profiteren van beveiligingsoplossingen, indien van toepassing, en/of nieuwe functies van de nieuwste versie. |AuditIfNotExists, uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_java_Latest.json) |
-|[Controleren of de nieuwste versie van Java wordt gebruikt als onderdeel van de Function-app](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9d0b6ea4-93e2-4578-bf2f-6bb17d22b4bc) |Er worden regelmatig nieuwere versies uitgebracht voor Java-software, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste Java-versie voor Function-apps wordt aanbevolen om te profiteren van beveiligingsfixes, indien van toepassing, en/of nieuwe functies van de nieuwste versie. |AuditIfNotExists, uitgeschakeld |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_java_Latest.json) |
-|[Controleren of de Java-versie de meest recente is, als deze wordt gebruikt als onderdeel van de web-app](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F496223c3-ad65-4ecd-878a-bae78737e9ed) |Er worden regelmatig nieuwere versies uitgebracht voor Java-software, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste Java-versie voor web-apps wordt aanbevolen om te profiteren van beveiligingsfixes, indien van toepassing, en/of nieuwe functies van de nieuwste versie. |AuditIfNotExists, uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_java_Latest.json) |
-|[Controleren of de PHP-versie de meest recente is, als deze wordt gebruikt als onderdeel van de API-app](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1bc1795e-d44a-4d48-9b3b-6fff0fd5f9ba) |Er worden regelmatig nieuwere versies uitgebracht voor PHP-software, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste PHP-versie voor API-apps wordt aanbevolen om te profiteren van beveiligingsoplossingen, indien van toepassing, en/of nieuwe functies van de nieuwste versie. |AuditIfNotExists, uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_PHP_Latest.json) |
-|[Controleren of de PHP-versie de meest recente is, als deze wordt gebruikt als onderdeel van de web-app](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7261b898-8a84-4db8-9e04-18527132abb3) |Er worden regelmatig nieuwere versies uitgebracht voor PHP-software, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste PHP-versie voor web-apps wordt aanbevolen om te profiteren van beveiligingsoplossingen, indien van toepassing, en/of nieuwe functies van de nieuwste versie. |AuditIfNotExists, uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_Webapp_Audit_PHP_Latest.json) |
-|[Controleren of de Python-versie de meest recente is, als deze wordt gebruikt als onderdeel van de API-app](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F74c3584d-afae-46f7-a20a-6f8adba71a16) |Er worden regelmatig nieuwere versies uitgebracht voor Python-software, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste Python-versie voor API-apps wordt aanbevolen om te profiteren van beveiligingsoplossingen, indien van toepassing, en/of nieuwe functies van de nieuwste versie. |AuditIfNotExists, uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_python_Latest.json) |
-|[Controleren of de Python-versie de meest recente is, als deze wordt gebruikt als onderdeel van de Function-app](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7238174a-fd10-4ef0-817e-fc820a951d73) |Er worden regelmatig nieuwere versies uitgebracht voor Python-software, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste Python-versie voor Function-apps wordt aanbevolen om te profiteren van beveiligingsoplossingen, indien van toepassing, en/of nieuwe functies van de nieuwste versie. |AuditIfNotExists, uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_python_Latest.json) |
-|[Controleren of de Python-versie de meest recente is, als deze wordt gebruikt als onderdeel van de web-app](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7008174a-fd10-4ef0-817e-fc820a951d73) |Er worden regelmatig nieuwere versies uitgebracht voor Python-software, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste Python-versie voor web-apps wordt aanbevolen om te profiteren van beveiligingsoplossingen, indien van toepassing, en/of nieuwe functies van de nieuwste versie. |AuditIfNotExists, uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_python_Latest.json) |
+|[Controleren of de Java-versie de meest recente is als deze wordt gebruikt als onderdeel van de API-app](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F88999f4c-376a-45c8-bcb3-4058f713cf39) |Er worden regelmatig nieuwere versies uitgebracht voor Java, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste Python-versie voor API-apps wordt aanbevolen om te kunnen profiteren van beveiligingsoplossingen (indien van toepassing) en/of nieuwe functies van de nieuwste versie. Dit beleid is momenteel alleen van toepassing op Linux-web-apps. |AuditIfNotExists, uitgeschakeld |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_java_Latest.json) |
+|[Controleren of de nieuwste versie van Java wordt gebruikt als onderdeel van de Function-app](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9d0b6ea4-93e2-4578-bf2f-6bb17d22b4bc) |Er worden regelmatig nieuwere versies uitgebracht voor Java-software, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste Java-versie voor Function-apps wordt aanbevolen om te profiteren van beveiligingsfixes, indien van toepassing, en/of nieuwe functies van de nieuwste versie. Dit beleid is momenteel alleen van toepassing op Linux-web-apps. |AuditIfNotExists, uitgeschakeld |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_java_Latest.json) |
+|[Controleren of de Java-versie de meest recente is, als deze wordt gebruikt als onderdeel van de web-app](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F496223c3-ad65-4ecd-878a-bae78737e9ed) |Er worden regelmatig nieuwere versies uitgebracht voor Java-software, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste Java-versie voor web-apps wordt aanbevolen om te profiteren van beveiligingsfixes, indien van toepassing, en/of nieuwe functies van de nieuwste versie. Dit beleid is momenteel alleen van toepassing op Linux-web-apps. |AuditIfNotExists, uitgeschakeld |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_java_Latest.json) |
+|[Controleren of de PHP-versie de meest recente is als deze wordt gebruikt als onderdeel van de API-app](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1bc1795e-d44a-4d48-9b3b-6fff0fd5f9ba) |Er worden regelmatig nieuwere versies uitgebracht voor PHP-software, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste PHP-versie voor API-apps wordt aanbevolen om te profiteren van beveiligingsoplossingen, indien van toepassing, en/of nieuwe functies van de nieuwste versie. Dit beleid is momenteel alleen van toepassing op Linux-web-apps. |AuditIfNotExists, uitgeschakeld |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_PHP_Latest.json) |
+|[Controleren of de PHP-versie de meest recente is, als deze wordt gebruikt als onderdeel van de web-app](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7261b898-8a84-4db8-9e04-18527132abb3) |Er worden regelmatig nieuwere versies uitgebracht voor PHP-software, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste PHP-versie voor web-apps wordt aanbevolen om te profiteren van beveiligingsoplossingen, indien van toepassing, en/of nieuwe functies van de nieuwste versie. Dit beleid is momenteel alleen van toepassing op Linux-web-apps. |AuditIfNotExists, uitgeschakeld |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_Webapp_Audit_PHP_Latest.json) |
+|[Controleren of de Python-versie de meest recente is als deze wordt gebruikt als onderdeel van de API-app](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F74c3584d-afae-46f7-a20a-6f8adba71a16) |Er worden regelmatig nieuwere versies uitgebracht voor Python-software, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste Python-versie voor API-apps wordt aanbevolen om te kunnen profiteren van beveiligingsoplossingen (indien van toepassing) en/of nieuwe functies van de nieuwste versie. Dit beleid is momenteel alleen van toepassing op Linux-web-apps. |AuditIfNotExists, uitgeschakeld |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_python_Latest.json) |
+|[Controleren of de Python-versie de meest recente is, als deze wordt gebruikt als onderdeel van de Function-app](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7238174a-fd10-4ef0-817e-fc820a951d73) |Er worden regelmatig nieuwere versies uitgebracht voor Python-software, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste Python-versie voor Function-apps wordt aanbevolen om te profiteren van beveiligingsoplossingen, indien van toepassing, en/of nieuwe functies van de nieuwste versie. Dit beleid is momenteel alleen van toepassing op Linux-web-apps. |AuditIfNotExists, uitgeschakeld |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_python_Latest.json) |
+|[Controleren of de Python-versie de meest recente is, als deze wordt gebruikt als onderdeel van de web-app](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7008174a-fd10-4ef0-817e-fc820a951d73) |Er worden regelmatig nieuwere versies uitgebracht voor Python-software, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste Python-versie voor web-apps wordt aanbevolen om te profiteren van beveiligingsoplossingen, indien van toepassing, en/of nieuwe functies van de nieuwste versie. Dit beleid is momenteel alleen van toepassing op Linux-web-apps. |AuditIfNotExists, uitgeschakeld |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_python_Latest.json) |
 |[Kubernetes-services moeten worden geüpgraded naar een niet-kwetsbare Kubernetes-versie](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb893a29-21bb-418c-a157-e99480ec364c) |Voer een upgrade van uw Kubernetes-servicecluster uit naar een nieuwere Kubernetes-versie om het cluster te beschermen tegen bekende beveiligingsproblemen in de huidige Kubernetes-versie. Beveiligingsprobleem met betrekking tot CVE-2019-9946 is opgelost in Kubernetes-versies 1.11.9+, 1.12.7+, 1.13.5+ en 1.14.0+ |Controle, uitgeschakeld |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UpgradeVersion_KubernetesService_Audit.json) |
 
 ### <a name="use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>Een proces voor risicobeoordeling gebruiken om het herstel van ontdekte beveiligingsproblemen te prioriteren
 
-**Id**: Azure Security Benchmark 5.5 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 5.5 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -366,7 +366,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="use-only-approved-applications"></a>Enkel goedgekeurde toepassingen gebruiken
 
-**Id**: Azure Security Benchmark 6.8 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 6.8 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -374,7 +374,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="use-only-approved-azure-services"></a>Enkel goedgekeurde Azure-services gebruiken
 
-**Id**: Azure Security Benchmark 6.9 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 6.9 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -383,7 +383,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="implement-approved-application-list"></a>Lijst met goedgekeurde toepassingen implementeren
 
-**Id**: Azure Security Benchmark 6.10 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 6.10 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -393,7 +393,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="maintain-secure-operating-system-configurations"></a>Veilige configuraties houden voor besturingssystemen
 
-**Id**: Azure Security Benchmark 7.4 **Eigendom**: Gedeeld
+**Id** : Azure Security Benchmark 7.4 **Eigendom** : Gedeeld
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -403,7 +403,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="implement-automated-configuration-monitoring-for-operating-systems"></a>Geautomatiseerde configuratiecontrole voor besturingssystemen implementeren
 
-**Id**: Azure Security Benchmark 7.10 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 7.10 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -413,7 +413,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="manage-azure-secrets-securely"></a>Azure-geheimen veilig beheren
 
-**Id**: Azure Security Benchmark 7.11 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 7.11 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -421,7 +421,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="manage-identities-securely-and-automatically"></a>Identiteiten veilig en automatisch beheren 
 
-**Id**: Azure Security Benchmark 7.12 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 7.12 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -433,7 +433,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="use-centrally-managed-anti-malware-software"></a>Centraal beheerde antimalwaresoftware gebruiken
 
-**Id**: Azure Security Benchmark 8.1 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 8.1 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -442,7 +442,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-anti-malware-software-and-signatures-are-updated"></a>Zorgen dat antimalwaresoftware en handtekeningen worden bijgewerkt
 
-**Id**: Azure Security Benchmark 8.3 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 8.3 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -452,7 +452,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-regular-automated-back-ups"></a>Regelmatige geautomatiseerde back-ups verzekeren
 
-**Id**: Azure Security Benchmark 9.1 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 9.1 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -464,7 +464,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>Complete back-ups van het systeem uitvoeren en back-ups maken van door klant beheerde sleutels
 
-**Id**: Azure Security Benchmark 9.2 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 9.2 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -476,7 +476,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-protection-of-backups-and-customer-managed-keys"></a>Bescherming van back-upbestanden en door de klant beheerde sleutels garanderen
 
-**Id**: Azure Security Benchmark 9.4 **Eigendom**: Klant
+**Id** : Azure Security Benchmark 9.4 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -486,7 +486,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>Contactgegevens opgeven en waarschuwingsmeldingen configureren voor beveiligingsincidenten
 
-**Id**: Azure  Benchmark 10.4 **Eigendom**: Klant
+**Id** : Azure  Benchmark 10.4 **Eigendom** : Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|

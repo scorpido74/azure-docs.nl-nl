@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 613f42905c88da7669881dfcae7ae038341b2434
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7eeeb421104a09fe164c8bc93e47d7cf254a802e
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548639"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126940"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-showpad"></a>Zelfstudie: Azure Active Directory-integratie met Showpad
 
@@ -50,11 +50,11 @@ Als u de integratie van Showpad in Azure AD wilt configureren, moet u Showpad va
 
 **Voer de volgende stappen uit om Showpad toe te voegen vanuit de galerie:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen**.
+2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -68,7 +68,7 @@ Als u de integratie van Showpad in Azure AD wilt configureren, moet u Showpad va
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie gaat u eenmalige aanmelding van Azure AD bij Showpad configureren en testen op basis van een testgebruiker met de naam **Britta Simon**.
+In deze sectie gaat u eenmalige aanmelding van Azure AD bij Showpad configureren en testen op basis van een testgebruiker met de naam **Britta Simon** .
 Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in Showpad tot stand is gebracht.
 
 Als u eenmalige aanmelding van Azure AD bij Showpad wilt configureren en testen, voert u de volgende stappen uit:
@@ -86,7 +86,7 @@ In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakel
 
 Voor het configureren van eenmalige aanmelding van Azure AD met Showpad moet u de volgende stappen uitvoeren:
 
-1. In [Azure Portal](https://portal.azure.com/) selecteert u **Eenmalige aanmelding** op de toepassingsintegratiepagina van **Showpad**.
+1. In [Azure Portal](https://portal.azure.com/) selecteert u **Eenmalige aanmelding** op de toepassingsintegratiepagina van **Showpad** .
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -127,25 +127,25 @@ Voor het configureren van eenmalige aanmelding van Azure AD met Showpad moet u d
 
 1. Meld u bij uw Showpad-tenant aan als beheerder.
 
-1. Klik in het menu bovenaan op de **Instellingen**.
+1. Klik in het menu bovenaan op de **Instellingen** .
 
-    ![Eenmalige aanmelding aan app-zijde configureren](./media/showpad-tutorial/tutorial_showpad_001.png)
+    ![Schermopname met Instellingen geselecteerd in het menu Instellingen.](./media/showpad-tutorial/tutorial_showpad_001.png)
 
-1. Ga naar **Eenmalige aanmelding** en klik op **Inschakelen**.
+1. Ga naar **Eenmalige aanmelding** en klik op **Inschakelen** .
 
-    ![Eenmalige aanmelding aan app-zijde configureren](./media/showpad-tutorial/tutorial_showpad_002.png)
+    ![Schermopname van Eenmalige aanmelding geselecteerd met de optie Inschakelen.](./media/showpad-tutorial/tutorial_showpad_002.png)
 
 1. Voer in het dialoogvenster **Een SAML 2.0-service toevoegen** de volgende stappen uit:
 
-    ![Eenmalige aanmelding aan app-zijde configureren](./media/showpad-tutorial/tutorial_showpad_003.png) 
+    ![Schermopname van het dialoogvenster Een SAML 2.0-service toevoegen, waar u de beschreven waarden kunt invoeren.](./media/showpad-tutorial/tutorial_showpad_003.png) 
 
     a. Typ in het tekstvak **Naam** de naam van de identiteitsprovider (bijvoorbeeld uw bedrijfsnaam).
 
-    b. Selecteer **XML** als de **Bron van metagegevens**.
+    b. Selecteer **XML** als de **Bron van metagegevens** .
 
-    c. Kopieer de inhoud van het XML-bestand met metagegevens, dat u uit Azure Portal hebt gedownload, en plak deze inhoud in het tekstvak **Metagegevens-XML**.
+    c. Kopieer de inhoud van het XML-bestand met metagegevens, dat u uit Azure Portal hebt gedownload, en plak deze inhoud in het tekstvak **Metagegevens-XML** .
 
-    d. Selecteer **Accounts voor nieuwe gebruikers automatisch inrichten wanneer ze zich aanmelden**.
+    d. Selecteer **Accounts voor nieuwe gebruikers automatisch inrichten wanneer ze zich aanmelden** .
 
     e. Klik op **Submit**
 
@@ -153,7 +153,7 @@ Voor het configureren van eenmalige aanmelding van Azure AD met Showpad moet u d
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -165,32 +165,32 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u `brittasimon@yourcompanydomain.extension`  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Create** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie zorgt u ervoor dat Britta Simon eenmalige aanmelding van Azure kan gebruiken door haar toegang te geven tot Showpad.
 
-1. Selecteer in Azure Portal achtereenvolgens **Bedrijfstoepassingen**, **Alle toepassingen** en **Showpad**.
+1. Selecteer in Azure Portal achtereenvolgens **Bedrijfstoepassingen** , **Alle toepassingen** en **Showpad** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen de optie **Showpad**.
+2. Selecteer in de lijst met toepassingen de optie **Showpad** .
 
     ![De koppeling naar Showpad in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen** .
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -198,7 +198,7 @@ In deze sectie zorgt u ervoor dat Britta Simon eenmalige aanmelding van Azure ka
 
 6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
-7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen** .
 
 ### <a name="create-showpad-test-user"></a>Een Showpad-testgebruiker maken
 

@@ -8,20 +8,20 @@ ms.service: cosmos-db
 ms.topic: quickstart
 ms.date: 06/01/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 249ff87813fe23505a09db020d4c6ad0f272796d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b6aa31e816a42e9cf1344137676fbbafb0c06730
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85483292"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282185"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-an-arm-template"></a>Quickstart: Een Azure Cosmos DB en een container maken met behulp van een ARM-sjabloon
 
-Azure Cosmos DB is de globaal gedistribueerde multimodel-databaseservice van Microsoft. U kunt Azure Cosmos DB gebruiken om snel databases voor sleutels en waarden, documentdatabases en grafiekdatabases te maken en te doorzoeken. Deze quickstart is gericht op het implementeren van een Azure Resource Manager-sjabloon (ARM-sjabloon) voor het maken van een Azure Cosmos-database en een container in die database. U kunt later gegevens opslaan in deze container.
+Azure Cosmos DB is de snelle NoSQL-database van Microsoft, met open API's voor elke schaal. U kunt Azure Cosmos DB gebruiken om snel databases voor sleutels en waarden, documentdatabases en grafiekdatabases te maken en te doorzoeken. Deze quickstart is gericht op het implementeren van een Azure Resource Manager-sjabloon (ARM-sjabloon) voor het maken van een Azure Cosmos-database en een container in die database. U kunt later gegevens opslaan in deze container.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure** . De sjabloon wordt in Azure Portal geopend.
 
 [:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Implementeren in Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
 
@@ -61,22 +61,22 @@ Meer voorbeelden van Azure Cosmos DB-sjablonen vindt u in de [galerie met quicks
 
     Gebruik de standaardwaarden om de Azure Cosmos-resources te maken, tenzij er iets anders is aangegeven.
 
-    * **Abonnement**: selecteer een Azure-abonnement.
-    * **Resourcegroep**: selecteer **Nieuwe maken**, geef een unieke naam op voor de resourcegroep en klik op **OK**.
-    * **Locatie**: selecteer een locatie.  Bijvoorbeeld **VS - centraal**.
-    * **Accountnaam**: voer een naam in voor het Azure Cosmos-account. De naam moet wereldwijd uniek zijn.
-    * **Locatie**: geef aan waar u uw Azure Cosmos-account wilt maken. Het Azure Cosmos-account kan zich op dezelfde locatie bevinden als de resourcegroep.
-    * **Primaire regio**: De primaire-replicaregio voor het Azure Cosmos-account.
-    * **Secundaire regio**: De secundaire-replicaregio voor het Azure Cosmos-account.
-    * **Standaardconsistentieniveau**: Het standaardconsistentieniveau voor het Azure Cosmos-account.
-    * **Voorvoegsel max. veroudering**: Max. aantal verouderde aanvragen. Vereist voor BoundedStaleness.
-    * **Max. interval in seconden**: Maximale vertragingstijd. Vereist voor BoundedStaleness.
-    * **Databasenaam**: De naam van de Azure Cosmos-database.
-    * **Containernaam**: De naam van de Azure Cosmos-container.
-    * **Doorvoer**:  De doorvoer van de container. De minimale doorvoerwaarde is 400 RU/s.
-    * **Ik ga akkoord met de bovenstaande voorwaarden**: Selecteren.
+    * **Abonnement** : selecteer een Azure-abonnement.
+    * **Resourcegroep** : selecteer **Nieuwe maken** , geef een unieke naam op voor de resourcegroep en klik op **OK** .
+    * **Locatie** : selecteer een locatie.  Bijvoorbeeld **VS - centraal** .
+    * **Accountnaam** : voer een naam in voor het Azure Cosmos-account. De naam moet wereldwijd uniek zijn.
+    * **Locatie** : geef aan waar u uw Azure Cosmos-account wilt maken. Het Azure Cosmos-account kan zich op dezelfde locatie bevinden als de resourcegroep.
+    * **Primaire regio** : De primaire-replicaregio voor het Azure Cosmos-account.
+    * **Secundaire regio** : De secundaire-replicaregio voor het Azure Cosmos-account.
+    * **Standaardconsistentieniveau** : Het standaardconsistentieniveau voor het Azure Cosmos-account.
+    * **Voorvoegsel max. veroudering** : Max. aantal verouderde aanvragen. Vereist voor BoundedStaleness.
+    * **Max. interval in seconden** : Maximale vertragingstijd. Vereist voor BoundedStaleness.
+    * **Databasenaam** : De naam van de Azure Cosmos-database.
+    * **Containernaam** : De naam van de Azure Cosmos-container.
+    * **Doorvoer** :  De doorvoer van de container. De minimale doorvoerwaarde is 400 RU/s.
+    * **Ik ga akkoord met de bovenstaande voorwaarden** : Selecteren.
 
-3. Selecteer **Aankoop**. Nadat het Azure Cosmos-account is geïmplementeerd, ontvangt u een melding:
+3. Selecteer **Aankoop** . Nadat het Azure Cosmos-account is geïmplementeerd, ontvangt u een melding:
 
    :::image type="content" source="./media/quick-create-template/resource-manager-template-portal-deployment-notification.png" alt-text="Implementeren in Azure":::
 

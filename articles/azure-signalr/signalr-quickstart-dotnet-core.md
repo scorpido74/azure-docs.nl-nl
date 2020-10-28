@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: zhshang
-ms.openlocfilehash: b5fc15815c9843c55bf31efe31e12e2de02d3be3
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: b5a2064e2fd80b895b0e801090c66d7119cf69dd
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874013"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151009"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>Quickstart: Een chatruimte maken met behulp van SignalR Service
 
-De Azure SignalR-service is een Azure-service waarmee ontwikkelaars eenvoudig webtoepassingen met realtime-functies kunnen bouwen. Deze service is oorspronkelijk gebaseerd op [SignalR voor ASP.NET Core 2.1](https://docs.microsoft.com/aspnet/core/signalr/introduction?preserve-view=true&view=aspnetcore-2.1), maar ondersteunt nu latere versies.
+De Azure SignalR-service is een Azure-service waarmee ontwikkelaars eenvoudig webtoepassingen met realtime-functies kunnen bouwen. Deze service is oorspronkelijk gebaseerd op [SignalR voor ASP.NET Core 2.1](/aspnet/core/signalr/introduction?preserve-view=true&view=aspnetcore-2.1), maar ondersteunt nu latere versies.
 
 In dit artikel leest u hoe u aan de slag gaat met de Azure SignalR-service. In deze snelstart maakt u een chattoepassing met behulp van een web-app van ASP.NET Core MVC. Deze app maakt verbinding met de resource van de Azure SignalR-service om inhoud in realtime bij te werken. U gaat de webtoepassing lokaal hosten en verbinding maken met verschillende browserclients. Elke client kan bijgewerkte inhoud pushen naar alle andere clients. 
 
@@ -42,7 +42,7 @@ De code voor deze zelfstudie is beschikbaar als download in de [GitHub-opslagpla
 
 ## <a name="create-an-aspnet-core-web-app"></a>Een ASP.NET Core-web-app maken
 
-In dit gedeelte gebruikt u de [opdrachtregelinterface (CLI) van .NET Core](https://docs.microsoft.com/dotnet/core/tools/) om een web-app-project van ASP.NET Core MVC te maken. Het voordeel van de CLI van .NET Core ten opzichte van Visual Studio is dat de interface beschikbaar is voor Windows, macOS en Linux. 
+In dit gedeelte gebruikt u de [opdrachtregelinterface (CLI) van .NET Core](/dotnet/core/tools/) om een web-app-project van ASP.NET Core MVC te maken. Het voordeel van de CLI van .NET Core ten opzichte van Visual Studio is dat de interface beschikbaar is voor Windows, macOS en Linux. 
 
 1. Maak een map voor uw project. In deze snelstart wordt *E:\Testing\chattest* gebruikt.
 
@@ -56,9 +56,9 @@ In dit gedeelte gebruikt u de [opdrachtregelinterface (CLI) van .NET Core](https
 
 ## <a name="add-secret-manager-to-the-project"></a>Secret Manager toevoegen aan het project
 
-In dit gedeelte voegt u het [hulpprogramma Secret Manager](https://docs.microsoft.com/aspnet/core/security/app-secrets) toe aan uw project. Dit hulpprogramma slaat gevoelige gegevens voor ontwikkeltaken op buiten de projectstructuur. Deze aanpak voorkomt dat er per ongeluk appgeheimen worden gedeeld in de broncode.
+In dit gedeelte voegt u het [hulpprogramma Secret Manager](/aspnet/core/security/app-secrets) toe aan uw project. Dit hulpprogramma slaat gevoelige gegevens voor ontwikkeltaken op buiten de projectstructuur. Deze aanpak voorkomt dat er per ongeluk appgeheimen worden gedeeld in de broncode.
 
-1. Open het bestand *.csproj*. Voeg een element `DotNetCliToolReference` toe voor *Microsoft.Extensions.SecretManager.Tools*. Voeg ook een `UserSecretsId`-element toe zoals getoond in de volgende code voor *chattest.csproj* en sla het bestand op.
+1. Open het bestand *.csproj* . Voeg een element `DotNetCliToolReference` toe voor *Microsoft.Extensions.SecretManager.Tools* . Voeg ook een `UserSecretsId`-element toe zoals getoond in de volgende code voor *chattest.csproj* en sla het bestand op.
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -96,7 +96,7 @@ In dit gedeelte voegt u het [hulpprogramma Secret Manager](https://docs.microsof
 
     Dit geheim bevat straks de verbindingsreeks voor toegang tot de resource van de SignalR-service. *Azure:SignalR:ConnectionString* is de standaardconfiguratiesleutel waarnaar SignalR zoekt om een verbinding tot stand te brengen. Vervang de waarde in de volgende opdracht door de verbindingsreeks voor de resource van de SignalR-service.
 
-    Deze opdracht moet worden uitgevoerd in dezelfde map als waar het *.csproj*-bestand zich bevindt.
+    Deze opdracht moet worden uitgevoerd in dezelfde map als waar het *.csproj* -bestand zich bevindt.
 
     ```dotnetcli
     dotnet user-secrets set Azure:SignalR:ConnectionString "<Your connection string>"
@@ -107,16 +107,17 @@ In dit gedeelte voegt u het [hulpprogramma Secret Manager](https://docs.microsof
     Dit geheim is toegankelijk met de Configuratie-API. Een dubbele punt (:) werkt in de configuratienaam met de configuratie-API op alle ondersteunde platforms. Zie [Configuratie per omgeving](/dotnet/core/extensions/configuration-providers#environment-variable-configuration-provider).
 
 
-4. Open *Startup.cs* en werk de methode `ConfigureServices` bij voor het gebruik van de Azure SignalR-service door de methode `AddSignalR()` aan te roepen:
+4. Open *Startup.cs* en werk de methode `ConfigureServices` bij voor het gebruik van de Azure SignalR-service door de methoden `AddSignalR()` en `AddAzureSignalR()` aan te roepen:
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddAzureSignalR();
+        services.AddSignalR()
+                .AddAzureSignalR();
     }
     ```
 
-    Omdat er geen parameter wordt doorgegeven aan `AddAzureSignalR()`, wordt in deze code de standaardconfiguratiesleutel gebruikt voor de resourceverbindingsreeks van SignalR Service. De standaardconfiguratiesleutel is *Azure:SignalR:ConnectionString*.
+    Omdat er geen parameter wordt doorgegeven aan `AddAzureSignalR()`, wordt in deze code de standaardconfiguratiesleutel gebruikt voor de resourceverbindingsreeks van SignalR Service. De standaardconfiguratiesleutel is *Azure:SignalR:ConnectionString* .
 
 5. In *Startup.cs* moet u de `Configure` methode bijwerken door hem te vervangen met de onderstaande code.
 
@@ -141,7 +142,7 @@ In SignalR is een hub een belangrijk onderdeel waarmee een set methoden beschikb
 
 Beide methoden maken gebruik van de `Clients`-interface die wordt geboden door de SignalR-SDK van ASP.NET Core. Via deze interface hebt u toegang tot alle verbonden clients, zodat u inhoud naar uw clients kunt pushen.
 
-1. Voeg in de projectmap een nieuwe map toe met de naam *Hub*. Voeg een nieuw bestand met hub-code met de naam *ChatHub.cs* toe aan de nieuwe map.
+1. Voeg in de projectmap een nieuwe map toe met de naam *Hub* . Voeg een nieuw bestand met hub-code met de naam *ChatHub.cs* toe aan de nieuwe map.
 
 2. Voeg de volgende code toe aan *ChatHub.cs* om de hub-klasse te definiëren en sla het bestand op.
 
@@ -167,13 +168,13 @@ Beide methoden maken gebruik van de `Clients`-interface die wordt geboden door d
 
 ### <a name="add-the-client-interface-for-the-web-app"></a>De clientinterface voor de web-app toevoegen
 
-De clientgebruikersinterface voor deze chatruimte-app bestaat uit HTML en JavaScript in een bestand met de naam *index.html* in de map *wwwroot*.
+De clientgebruikersinterface voor deze chatruimte-app bestaat uit HTML en JavaScript in een bestand met de naam *index.html* in de map *wwwroot* .
 
 Kopieer het bestand *css/site.css* uit de map *wwwroot* van de [sample-opslagplaats](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/ChatRoom/wwwroot). Vervang de *css/site.css* van het project door de versie die u hebt gekopieerd.
 
-Dit is de hoofdcode van *index.html*:
+Dit is de hoofdcode van *index.html* :
 
-Maak een nieuw bestand in de *wwwroot*-map met de naam *index.html-* , kopieer en plak de volgende HTML-code in het zojuist gemaakte bestand:
+Maak een nieuw bestand in de *wwwroot* -map met de naam *index.html-* , kopieer en plak de volgende HTML-code in het zojuist gemaakte bestand:
 
 ```html
 <!DOCTYPE html>
@@ -325,9 +326,9 @@ Als de verbinding tot stand is gebracht, wordt de verbinding doorgegeven aan `bi
 
 ## <a name="add-a-development-runtime-profile"></a>Een profiel voor een runtime-ontwikkelomgeving toevoegen
 
-In dit gedeelte voegt u een runtime-ontwikkelomgeving voor ASP.NET Core toe. Zie [Use multiple environments in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/environments) (Meerdere omgevingen gebruiken in ASP.NET Core) voor meer informatie.
+In dit gedeelte voegt u een runtime-ontwikkelomgeving voor ASP.NET Core toe. Zie [Use multiple environments in ASP.NET Core](/aspnet/core/fundamentals/environments) (Meerdere omgevingen gebruiken in ASP.NET Core) voor meer informatie.
 
-1. Maak een nieuwe map in uw project met de naam *Properties*.
+1. Maak een nieuwe map in uw project met de naam *Properties* .
 
 2. Voeg een nieuw bestand met de naam *launchSettings.json* toe aan de map, met de onderstaande inhoud, en sla het bestand op.
 
@@ -377,7 +378,7 @@ In dit gedeelte voegt u een runtime-ontwikkelomgeving voor ASP.NET Core toe. Zie
           Content root path: E:\Testing\chattest
     ```
 
-1. Open twee browservensters. Ga in beide browsers naar `http://localhost:5000`. U wordt gevraagd uw naam in te voeren. Voer een clientnaam in voor beide clients en test het pushen van berichtinhoud tussen beide clients met behulp van de knop **Send**.
+1. Open twee browservensters. Ga in beide browsers naar `http://localhost:5000`. U wordt gevraagd uw naam in te voeren. Voer een clientnaam in voor beide clients en test het pushen van berichtinhoud tussen beide clients met behulp van de knop **Send** .
 
     ![Voorbeeld van een Azure SignalR-groeps-chat](media/signalr-quickstart-dotnet-core/signalr-quickstart-complete-local.png)
 
@@ -392,13 +393,13 @@ Als u klaar bent met de voorbeeldtoepassing uit de quickstart, kunt u de Azure-r
 > [!IMPORTANT]
 > Het verwijderen van een resourcegroep is onomkeerbaar, en omvat alle resources in die groep. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. Als u de resources voor het hosten van dit voorbeeld in een bestaande resourcegroep hebt gemaakt en deze groep ook resources bevat die u wilt behouden, kunt u elke resource afzonderlijk verwijderen via de blade waar deze zich bevindt in plaats van de resourcegroep te verwijderen.
 
-Meld u aan bij [Azure Portal](https://portal.azure.com) en selecteer **Resourcegroepen**.
+Meld u aan bij [Azure Portal](https://portal.azure.com) en selecteer **Resourcegroepen** .
 
-Typ de naam van de resourcegroep in het tekstvak **Filteren op naam**. In de instructies voor deze snelstart is een resourcegroep met de naam *SignalRTestResources* gebruikt. Selecteer het beletselteken ( **...** ) bij de resourcegroep in de lijst met resultaten en vervolgens **Resourcegroep verwijderen**.
+Typ de naam van de resourcegroep in het tekstvak **Filteren op naam** . In de instructies voor deze snelstart is een resourcegroep met de naam *SignalRTestResources* gebruikt. Selecteer het beletselteken ( **...** ) bij de resourcegroep in de lijst met resultaten en vervolgens **Resourcegroep verwijderen** .
 
 ![Selecties voor het verwijderen van een resourcegroep](./media/signalr-quickstart-dotnet-core/signalr-delete-resource-group.png)
 
-U wordt gevraagd om het verwijderen van de resourcegroep te bevestigen. Voer de naam van de resourcegroep in ter bevestiging en selecteer **Verwijderen**.
+U wordt gevraagd om het verwijderen van de resourcegroep te bevestigen. Voer de naam van de resourcegroep in ter bevestiging en selecteer **Verwijderen** .
 
 Na enkele ogenblikken worden de resourcegroep en alle bijbehorende resources verwijderd.
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6c76fcc0fefdf8aa3ae97a4c131481f7ea6ada81
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a9bb3ac7d3028937a422f2cd94aca4f4f4f41b58
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288848"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167532"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Externe tabellen gebruiken met Synapse SQL
 
@@ -165,6 +165,8 @@ Door een externe bestandsindeling te maken, geeft u de opmaak aan van de gegeven
 
 ### <a name="syntax-for-create-external-file-format"></a>Syntaxis voor CREATE EXTERNAL FILE FORMAT
 
+#### <a name="sql-pool"></a>[SQL-pool](#tab/sql-pool)
+
 ```syntaxsql
 -- Create an external file format for PARQUET files.  
 CREATE EXTERNAL FILE FORMAT file_format_name  
@@ -193,6 +195,40 @@ WITH (
 }
 ```
 
+#### <a name="sql-on-demand"></a>[SQL on-demand](#tab/sql-on-demand)
+
+```syntaxsql
+-- Create an external file format for PARQUET files.  
+CREATE EXTERNAL FILE FORMAT file_format_name  
+WITH (  
+    FORMAT_TYPE = PARQUET  
+    [ , DATA_COMPRESSION = {  
+        'org.apache.hadoop.io.compress.SnappyCodec'  
+      | 'org.apache.hadoop.io.compress.GzipCodec'      }  
+    ]);  
+
+--Create an external file format for DELIMITED TEXT files
+CREATE EXTERNAL FILE FORMAT file_format_name  
+WITH (  
+    FORMAT_TYPE = DELIMITEDTEXT  
+    [ , DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec' ]
+    [ , FORMAT_OPTIONS ( <format_options> [ ,...n  ] ) ]  
+    );  
+
+<format_options> ::=  
+{  
+    FIELD_TERMINATOR = field_terminator  
+    | STRING_DELIMITER = string_delimiter
+    | First_Row = integer
+    | USE_TYPE_DEFAULT = { TRUE | FALSE }
+    | Encoding = {'UTF8' | 'UTF16'}
+    | PARSER_VERSION = {'parser_version'}
+}
+```
+
+---
+
+
 ### <a name="arguments-for-create-external-file-format"></a>Argumenten voor CREATE EXTERNAL FILE FORMAT
 
 file_format_name: hiermee geeft u een naam op voor de externe bestandsindeling.
@@ -202,7 +238,7 @@ FORMAT_TYPE = [ PARQUET | DELIMITEDTEXT]: hiermee geeft u de indeling van de ext
 - PARQUET: Hiermee geeft u een Parquet-indeling op.
 - DELIMITEDTEXT: hiermee geeft u een tekstindeling op met kolomscheidingstekens, ook wel veldeindtekens genoemd.
 
-FIELD_TERMINATOR = *field_terminator*: alleen van toepassing op tekstbestanden met scheidingstekens. Het veldeindteken duidt een of meer tekens aan die het einde van elk veld (kolom) in het tekstbestand met scheidingstekens aangeven. De standaardwaarde is het sluisteken (ꞌ|ꞌ).
+FIELD_TERMINATOR = *field_terminator* : alleen van toepassing op tekstbestanden met scheidingstekens. Het veldeindteken duidt een of meer tekens aan die het einde van elk veld (kolom) in het tekstbestand met scheidingstekens aangeven. De standaardwaarde is het sluisteken (ꞌ|ꞌ).
 
 Voorbeelden:
 
@@ -210,7 +246,7 @@ Voorbeelden:
 - FIELD_TERMINATOR = ' '
 - FIELD_TERMINATOR = ꞌ\tꞌ
 
-STRING_DELIMITER = *string_delimiter*: hiermee geeft u het veldeindteken op voor gegevens van het type Tekenreeks (String) in het tekstbestand met scheidingstekens. De tekenreeksafsluiting bevat een of meer tekens en staat tussen enkele aanhalingstekens. De standaardwaarde is een lege tekenreeks ("").
+STRING_DELIMITER = *string_delimiter* : hiermee geeft u het veldeindteken op voor gegevens van het type Tekenreeks (String) in het tekstbestand met scheidingstekens. De tekenreeksafsluiting bevat een of meer tekens en staat tussen enkele aanhalingstekens. De standaardwaarde is een lege tekenreeks ("").
 
 Voorbeelden:
 
@@ -218,7 +254,7 @@ Voorbeelden:
 - STRING_DELIMITER = '*'
 - STRING_DELIMITER = ꞌ,ꞌ
 
-FIRST_ROW = *First_row_int*: hiermee geeft u het rijnummer op dat het eerst wordt gelezen en van toepassing is op alle bestanden. Als u de waarde instelt op twee, wordt de eerste rij in elk bestand (de koprij) overgeslagen wanneer de gegevens worden geladen. Rijen worden overgeslagen op basis van de rij-eindtekens (/r/n, /r, /n) die worden vermeld.
+FIRST_ROW = *First_row_int* : hiermee geeft u het rijnummer op dat het eerst wordt gelezen en van toepassing is op alle bestanden. Als u de waarde instelt op twee, wordt de eerste rij in elk bestand (de koprij) overgeslagen wanneer de gegevens worden geladen. Rijen worden overgeslagen op basis van de rij-eindtekens (/r/n, /r, /n) die worden vermeld.
 
 USE_TYPE_DEFAULT = { TRUE | **FALSE** }: hiermee geeft u op hoe ontbrekende waarden in tekstbestanden met scheidingstekens moeten worden verwerkt bij het ophalen van gegevens uit het tekstbestand.
 
@@ -232,7 +268,7 @@ FALSE: sla alle ontbrekende waarden op als NULL. NULL-waarden die zijn opgeslage
 
 Encoding = {'UTF8' | 'UTF16'}: SQL on-demand kan met UTF8 en UTF16 gecodeerde tekstbestanden met scheidingstekens lezen.
 
-DATA_COMPRESSION = *data_compression_method*: met dit argument geeft u de gegevenscompressiemethode voor de externe gegevens op. 
+DATA_COMPRESSION = *data_compression_method* : met dit argument geeft u de gegevenscompressiemethode voor de externe gegevens op. 
 
 Het bestandsindelingstype PARQUET ondersteunt de volgende compressiemethoden:
 
@@ -244,6 +280,8 @@ Bij het lezen van externe PARQUET-tabellen wordt dit argument genegeerd, maar he
 Het bestandsindelingstype DELIMITEDTEXT ondersteunt de volgende compressiemethode:
 
 - DATA_COMPRESSION = org.apache.hadoop.io.compress.GzipCodec
+
+PARSER_VERSION = 'parser_version' geeft de parser-versie aan die moet worden gebruikt bij het lezen van bestanden. Controleer het PARSER_VERSION-argument in [OPENROWSET-argumenten](develop-openrowset.md#arguments) voor meer informatie.
 
 ### <a name="example-for-create-external-file-format"></a>Voorbeeld voor CREATE EXTERNAL FILE FORMAT
 
@@ -285,7 +323,7 @@ column_name <data_type>
 
 De uit een tot drie delen bestaande naam van de tabel die u wilt maken. Voor een externe tabel slaat SQL on-demand alleen de metagegevens van de tabel op. Er worden geen werkelijke gegevens verplaatst of opgeslagen in SQL on-demand.
 
-<column_definition>, ...*n* ]
+<column_definition>, ... *n* ]
 
 CREATE EXTERNAL TABLE ondersteunt de mogelijkheid om de kolomnaam, het gegevenstype, het toestaan van null-waarden en de sortering te configureren. U kunt de STANDAARDBEPERKING niet gebruiken voor externe tabellen.
 
@@ -307,9 +345,9 @@ In dit voorbeeld worden door if LOCATION='/webdata/', een SQL on -demand-query, 
 
 ![Recursieve gegevens voor externe tabellen](./media/develop-tables-external-tables/folder-traversal.png)
 
-DATA_SOURCE = *external_data_source_name*: hiermee geeft u de naam op van de externe gegevensbron die de locatie van de externe gegevens bevat. Als u een externe gegevensbron wilt maken, gebruikt u [CREATE EXTERNAL DATA SOURCE](#create-external-data-source).
+DATA_SOURCE = *external_data_source_name* : hiermee geeft u de naam op van de externe gegevensbron die de locatie van de externe gegevens bevat. Als u een externe gegevensbron wilt maken, gebruikt u [CREATE EXTERNAL DATA SOURCE](#create-external-data-source).
 
-FILE_FORMAT = *external_file_format_name*: hiermee geeft u de naam op van het object voor de externe bestandsindeling, waarin het bestandstype en de compressiemethode voor de externe gegevens worden opgeslagen. Als u een externe bestandsindeling wilt maken, gebruikt u [CREATE EXTERNAL FILE FORMAT](#create-external-file-format).
+FILE_FORMAT = *external_file_format_name* : hiermee geeft u de naam op van het object voor de externe bestandsindeling, waarin het bestandstype en de compressiemethode voor de externe gegevens worden opgeslagen. Als u een externe bestandsindeling wilt maken, gebruikt u [CREATE EXTERNAL FILE FORMAT](#create-external-file-format).
 
 ### <a name="permissions-create-external-table"></a>Machtigingen voor CREATE EXTERNAL TABLE
 
@@ -351,7 +389,7 @@ Met de verkenningsmogelijkheden van Data Lake kunt u nu een externe tabel maken 
 
 - U moet ten minste over [machtigingen beschikken voor het maken](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#permissions-2&preserve-view=true) van externe tabellen en het uitvoeren van query's hierop in de SQL-pool of SQL on-demand
 
-- De gekoppelde service die aan het ADLS Gen2-account is gekoppeld, **moet toegang hebben tot het bestand**. Als de verificatiemethode van de gekoppelde service bijvoorbeeld beheerde identiteit is, moet de beheerde identiteit voor de werkruimte ten minste over de machtiging Lezer van Storage Blob beschikken voor het opslagaccount
+- De gekoppelde service die aan het ADLS Gen2-account is gekoppeld, **moet toegang hebben tot het bestand** . Als de verificatiemethode van de gekoppelde service bijvoorbeeld beheerde identiteit is, moet de beheerde identiteit voor de werkruimte ten minste over de machtiging Lezer van Storage Blob beschikken voor het opslagaccount
 
 Selecteer in het deelvenster Gegevens het bestand waaruit u de externe tabel wilt maken:
 > [!div class="mx-imgBorder"]
