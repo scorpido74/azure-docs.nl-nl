@@ -6,13 +6,13 @@ ms.topic: article
 ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: d6b9ebd8401151d57f103e639e70dd213bde6e33
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 82cb8da1a83e5b1e5430ebecf40f5152c824f6aa
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152082"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742492"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Beheerde identiteiten gebruiken voor App Service en Azure Functions
 
@@ -33,17 +33,17 @@ Als u een beheerde identiteit in de portal instelt, moet u eerst een toepassing 
 
 1. Maak een app in de portal zoals u dat gewend bent. Navigeer ernaar in de portal.
 
-2. Als u een functie-app gebruikt, navigeert u naar **platform functies**. Voor andere typen apps schuift u omlaag naar de **instellingen** groep in het linkernavigatievenster.
+2. Als u een functie-app gebruikt, navigeert u naar **platform functies** . Voor andere typen apps schuift u omlaag naar de **instellingen** groep in het linkernavigatievenster.
 
-3. Selecteer **identiteit**.
+3. Selecteer **identiteit** .
 
-4. Schakel op het tabblad **systeem toegewezen** de optie **status** in **op aan**. Klik op **Opslaan**.
+4. Schakel op het tabblad **systeem toegewezen** de optie **status** in **op aan** . Klik op **Opslaan** .
 
     ![Beheerde identiteit in App Service](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
 
 
 > [!NOTE] 
-> Als u de beheerde identiteit voor de web-app of de app wilt vinden in de Azure Portal, gaat u naar de sectie **gebruikers instellingen** onder **bedrijfs toepassingen**. Normaal gesp roken is de naam van de sleuf gelijk aan `<app name>/slots/<slot name>` .
+> Als u de beheerde identiteit voor de web-app of de app wilt vinden in de Azure Portal, gaat u naar de sectie **gebruikers instellingen** onder **bedrijfs toepassingen** . Normaal gesp roken is de naam van de sleuf gelijk aan `<app name>/slots/<slot name>` .
 
 
 ### <a name="using-the-azure-cli"></a>Met behulp van de Azure CLI
@@ -198,13 +198,13 @@ Eerst moet u een door de gebruiker toegewezen id-resource maken.
 
 2. Maak een app in de portal zoals u dat gewend bent. Navigeer ernaar in de portal.
 
-3. Als u een functie-app gebruikt, navigeert u naar **platform functies**. Voor andere typen apps schuift u omlaag naar de **instellingen** groep in het linkernavigatievenster.
+3. Als u een functie-app gebruikt, navigeert u naar **platform functies** . Voor andere typen apps schuift u omlaag naar de **instellingen** groep in het linkernavigatievenster.
 
-4. Selecteer **identiteit**.
+4. Selecteer **identiteit** .
 
-5. Klik op het tabblad **toegewezen door gebruiker** op **toevoegen**.
+5. Klik op het tabblad **toegewezen door gebruiker** op **toevoegen** .
 
-6. Zoek de identiteit die u eerder hebt gemaakt en selecteer deze. Klik op **Add**.
+6. Zoek de identiteit die u eerder hebt gemaakt en selecteer deze. Klik op **Add** .
 
     ![Beheerde identiteit in App Service](media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png)
 
@@ -395,7 +395,7 @@ public async Task<HttpResponseMessage> GetToken(string resource)  {
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
-const rp = require('request-promise');
+const rp = require('request-promise');
 const getToken = function(resource, cb) {
     let options = {
         uri: `${process.env["IDENTITY_ENDPOINT"]}/?resource=${resource}&api-version=2019-08-01`,

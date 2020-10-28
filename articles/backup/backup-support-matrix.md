@@ -4,12 +4,12 @@ description: Bevat een samenvatting van ondersteuningsinstellingen en -beperking
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: d9da2ee893244afc7150ab6249dbe51845d5d0c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee37e994c9e72c3d3c98455360dc68746f49d278
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332709"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743118"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Ondersteunings matrix voor Azure Backup
 
@@ -151,7 +151,7 @@ Azure Backup de functie voor het terugzetten van meerdere regio's heeft toegevoe
 | Type back-upbeheer | Ondersteund                                                    | Ondersteunde regio's |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | Ja.   Ondersteund voor versleutelde Vm's en Vm's met minder dan 4 TB schijven | Alle open bare Azure-regio's en soevereine Clouds.  |
-| SQL-/SAP HANA | Ja                                                          | VS-West 2 (WUS2), West-Centraal VS (WCUS), Canada-centraal (CNC), Canada-oost (CNE), VS-Oost (EUS), VS-West (WUS), Japan-Oost (JPE), Japan-Oost (JPE) |
+| SQL-/SAP HANA | Ja                                                          | Alle open bare regio's behalve Frank rijk |
 | MARS-agent/on-premises  | Nee                                                           | N.v.t.               |
 | AFS (Azure-bestands shares)                 | Nee                                                           | N.v.t.               |
 

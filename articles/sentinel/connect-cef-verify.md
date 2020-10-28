@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 643b28b2e88f233d2924270511d3c87fa4d9b767
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba14e2c475611ed77661060d6e17ae0bcbf0a6ca
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631627"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744218"
 ---
 # <a name="step-3-validate-connectivity"></a>STAP 3: connectiviteit valideren
 
@@ -29,18 +29,27 @@ Nadat u uw logboek doorstuur server (in stap 1) hebt geïmplementeerd en uw beve
 
 - U moet een verhoogde machtigingen (sudo) hebben op uw logboek-doorstuur machine.
 
-- Python moet op uw logboek-doorstuur machine zijn geïnstalleerd.<br>
+- **Python 2,7** moet zijn geïnstalleerd op uw logboek-doorstuur machine.<br>
 Gebruik de `python –version` opdracht om te controleren.
+
+- Mogelijk hebt u de werk ruimte-ID en de primaire sleutel voor de werk ruimte op een bepaald moment in dit proces nodig. U vindt deze in de werkruimte resource onder **agent beheer** .
 
 ## <a name="how-to-validate-connectivity"></a>Connectiviteit valideren
 
-1. Open **Logboeken**vanuit het Sentinel-navigatie menu van Azure. Voer een query uit met behulp van het **CommonSecurityLog** -schema om te controleren of er logboeken van uw beveiligings oplossing worden ontvangen.<br>
-Houd er rekening mee dat het ongeveer 20 minuten kan duren voordat uw logboeken in **log Analytics**worden weer gegeven. 
+1. Open **Logboeken** vanuit het Sentinel-navigatie menu van Azure. Voer een query uit met behulp van het **CommonSecurityLog** -schema om te controleren of er logboeken van uw beveiligings oplossing worden ontvangen.<br>
+Houd er rekening mee dat het ongeveer 20 minuten kan duren voordat uw logboeken in **log Analytics** worden weer gegeven. 
 
 1. Als er geen resultaten van de query worden weer geven, controleert u of er gebeurtenissen worden gegenereerd op basis van uw beveiligings oplossing of probeer het te genereren, en te controleren of ze worden doorgestuurd naar de door u opgegeven syslog-doorstuur machine. 
 
-1. Voer het volgende script uit op de logboek-doorstuur server om de connectiviteit tussen uw beveiligings oplossing, de logboek forwarder en Azure Sentinel te controleren. Met dit script wordt gecontroleerd of de daemon op de juiste poorten luistert, of het door sturen correct is geconfigureerd en dat er geen communicatie tussen de daemon en de Log Analytics agent wordt geblokkeerd. Er worden ook beeldberichten TestCommonEventFormat verzonden om end-to-end-connectiviteit te controleren. <br>
- `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]`
+1. Voer het volgende script uit op de logboek-doorstuur server (waarbij de werk ruimte-ID in plaats van de tijdelijke aanduiding wordt toegepast) om te controleren of de verbinding tussen uw beveiligings oplossing, de logboek-forwarder en Azure-Sentinel wordt gecontroleerd. Met dit script wordt gecontroleerd of de daemon op de juiste poorten luistert, of het door sturen correct is geconfigureerd en dat er geen communicatie tussen de daemon en de Log Analytics agent wordt geblokkeerd. Er worden ook beeldberichten TestCommonEventFormat verzonden om end-to-end-connectiviteit te controleren. <br>
+
+    ```bash
+    sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]` 
+    ```
+
+   - Mogelijk wordt er een bericht weer gegeven waarin u wordt gevraagd een opdracht uit te voeren om een probleem met de **toewijzing van het *computer* veld** te corrigeren. Zie de [uitleg bij het validatie script](#mapping-command) voor meer informatie.
+
+    - Mogelijk wordt er een bericht weer gegeven waarin u wordt gevraagd een opdracht uit te voeren om een probleem met het **parseren van Cisco ASA-Firewall logboeken** te corrigeren. Zie de [uitleg bij het validatie script](#parsing-command) voor meer informatie.
 
 ## <a name="validation-script-explained"></a>Validatie script uitgelegd
 
@@ -72,21 +81,31 @@ Het validatie script voert de volgende controles uit:
     </filter>
     ```
 
-1. Controleert of de Cisco ASA-parsering voor Firewall gebeurtenissen is geconfigureerd zoals verwacht:
+1. Controleert of de parsering voor Cisco ASA-Firewall gebeurtenissen is geconfigureerd zoals verwacht, met behulp van de volgende opdracht: 
 
     ```bash
-    sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" 
-        /opt/microsoft/omsagent/plugin/security_lib.rb && 
-        sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    grep -i "return ident if ident.include?('%ASA')" /opt/microsoft/omsagent/plugin/security_lib.rb
     ```
 
-1. Hiermee wordt gecontroleerd of het *computer* veld in de syslog-bron juist is toegewezen in de log Analytics-agent:
+    - <a name="parsing-command"></a>Als er een probleem is met het parseren, wordt er een fout bericht weer gegeven waarin u wordt gevraagd om **de volgende opdracht hand matig uit te voeren** (het Toep assen van de werk ruimte-id in plaats van de tijdelijke aanduiding). De opdracht zorgt ervoor dat de juiste parsering wordt uitgevoerd en de agent opnieuw moet worden gestart.
+    
+        ```bash
+        # Cisco ASA parsing fix
+        sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" /opt/microsoft/omsagent/plugin/security_lib.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
+
+1. Hiermee wordt gecontroleerd of het *computer* veld in de syslog-bron juist is toegewezen in de log Analytics-agent met behulp van de volgende opdracht: 
 
     ```bash
-    sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
-        -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
-        filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    grep -i "'Host' => record\['host'\]"  /opt/microsoft/omsagent/plugin/filter_syslog_security.rb
     ```
+
+    - <a name="mapping-command"></a>Als er een probleem is met de toewijzing, produceert het script een fout bericht dat u **de volgende opdracht hand matig moet uitvoeren** (waarbij de werk ruimte-id in plaats van de tijdelijke aanduiding wordt toegepast). De opdracht zorgt ervoor dat de juiste toewijzing wordt uitgevoerd en start de agent opnieuw.
+
+        ```bash
+        # Computer field mapping fix
+        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/plugin/filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
 
 1. Hiermee wordt gecontroleerd of er beveiligings uitbreidingen worden uitgevoerd op de computer die netwerk verkeer mogelijk blokkeert (zoals een firewall van een host).
 
@@ -155,21 +174,31 @@ Het validatie script voert de volgende controles uit:
     </filter>
     ```
 
-1. Controleert of de Cisco ASA-parsering voor Firewall gebeurtenissen is geconfigureerd zoals verwacht:
+1. Controleert of de parsering voor Cisco ASA-Firewall gebeurtenissen is geconfigureerd zoals verwacht, met behulp van de volgende opdracht: 
 
     ```bash
-    sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" 
-        /opt/microsoft/omsagent/plugin/security_lib.rb && 
-        sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    grep -i "return ident if ident.include?('%ASA')" /opt/microsoft/omsagent/plugin/security_lib.rb
     ```
 
-1. Hiermee wordt gecontroleerd of het *computer* veld in de syslog-bron juist is toegewezen in de log Analytics-agent:
+    - <a name="parsing-command"></a>Als er een probleem is met het parseren, wordt er een fout bericht weer gegeven waarin u wordt gevraagd om **de volgende opdracht hand matig uit te voeren** (het Toep assen van de werk ruimte-id in plaats van de tijdelijke aanduiding). De opdracht zorgt ervoor dat de juiste parsering wordt uitgevoerd en de agent opnieuw moet worden gestart.
+    
+        ```bash
+        # Cisco ASA parsing fix
+        sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" /opt/microsoft/omsagent/plugin/security_lib.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
+
+1. Hiermee wordt gecontroleerd of het *computer* veld in de syslog-bron juist is toegewezen in de log Analytics-agent met behulp van de volgende opdracht: 
 
     ```bash
-    sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
-        -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
-        filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    grep -i "'Host' => record\['host'\]"  /opt/microsoft/omsagent/plugin/filter_syslog_security.rb
     ```
+
+    - <a name="mapping-command"></a>Als er een probleem is met de toewijzing, produceert het script een fout bericht dat u **de volgende opdracht hand matig moet uitvoeren** (waarbij de werk ruimte-id in plaats van de tijdelijke aanduiding wordt toegepast). De opdracht zorgt ervoor dat de juiste toewijzing wordt uitgevoerd en start de agent opnieuw.
+
+        ```bash
+        # Computer field mapping fix
+        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/plugin/filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
 
 1. Hiermee wordt gecontroleerd of er beveiligings uitbreidingen worden uitgevoerd op de computer die netwerk verkeer mogelijk blokkeert (zoals een firewall van een host).
 

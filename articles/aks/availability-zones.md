@@ -2,15 +2,15 @@
 title: Beschikbaarheids zones gebruiken in azure Kubernetes service (AKS)
 description: Meer informatie over het maken van een cluster dat knoop punten distribueert over beschikbaarheids zones in azure Kubernetes service (AKS)
 services: container-service
-ms.custom: fasttrack-edit, references_regions
+ms.custom: fasttrack-edit, references_regions, devx-track-azurecli
 ms.topic: article
 ms.date: 09/04/2020
-ms.openlocfilehash: 5d2c670bc862dadf289171fbf53318e876eff3d3
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 7d91491a2f521d974f15878791739a70a31c1bbe
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165805"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745810"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Een AKS-cluster (Azure Kubernetes service) maken dat gebruikmaakt van beschikbaarheids zones
 
@@ -22,7 +22,7 @@ In dit artikel wordt beschreven hoe u een AKS-cluster maakt en hoe u de knooppun
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-U moet de Azure CLI-versie 2.0.76 of hoger hebben geïnstalleerd en geconfigureerd. Voer  `az --version` uit om de versie te bekijken. Als u wilt installeren of upgraden, raadpleegt u [Azure cli installeren][install-azure-cli].
+U moet de Azure CLI-versie 2.0.76 of hoger hebben geïnstalleerd en geconfigureerd. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][install-azure-cli] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="limitations-and-region-availability"></a>Beperkingen en beschik baarheid van regio's
 
@@ -34,7 +34,7 @@ AKS-clusters kunnen momenteel worden gemaakt met beschikbaarheids zones in de vo
 * US - oost 2
 * VS - oost
 * Frankrijk - centraal
-* Japan East
+* Japan - oost
 * Europa - noord
 * Azië - zuidoost
 * Verenigd Koninkrijk Zuid
@@ -56,11 +56,11 @@ Als u stateful werk belastingen moet uitvoeren, gebruikt u de taints van de knoo
 
 ## <a name="overview-of-availability-zones-for-aks-clusters"></a>Overzicht van beschikbaarheids zones voor AKS-clusters
 
-Beschikbaarheids zones zijn een aanbieding met hoge Beschik baarheid die uw toepassingen en gegevens beveiligt tegen Data Center-fouten. Zones zijn unieke fysieke locaties binnen een Azure-regio. Elke zone bestaat uit een of meer datacenters die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerken. Voor een tolerantie moeten er mini maal drie afzonderlijke zones aanwezig zijn in alle regio's die zones ondersteunen. De fysieke scheiding tussen beschikbaarheidszones binnen een Azure-regio beschermt toepassingen en gegevens tegen storingen van het datacenter.
+Beschikbaarheids zones zijn een aanbieding met hoge Beschik baarheid die uw toepassingen en gegevens beveiligt tegen Data Center-fouten. Zones zijn unieke fysieke locaties binnen een Azure-regio. Elke zone bestaat uit een of meer datacenters die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerken. Om tolerantie te garanderen, is er altijd meer dan één zone in alle regio's waarvoor zone is ingeschakeld. De fysieke scheiding tussen beschikbaarheidszones binnen een Azure-regio beschermt toepassingen en gegevens tegen storingen van het datacenter.
 
 Zie [Wat zijn beschikbaarheids zones in azure?][az-overview]voor meer informatie.
 
-AKS-clusters die zijn geïmplementeerd met beschikbaarheids zones, kunnen knoop punten distribueren over meerdere zones binnen één regio. Zo kan een cluster in de regio *VS-Oost 2*   knoop punten maken in alle drie beschikbaarheids zones in *VS-Oost 2*. Deze distributie van AKS-cluster resources verbetert de beschik baarheid van het cluster, omdat ze robuust zijn in het mislukken van een specifieke zone.
+AKS-clusters die zijn geïmplementeerd met beschikbaarheids zones, kunnen knoop punten distribueren over meerdere zones binnen één regio. Zo kan een cluster in de regio  *VS-Oost 2*   knoop punten maken in alle drie beschikbaarheids zones in *VS-Oost 2* . Deze distributie van AKS-cluster resources verbetert de beschik baarheid van het cluster, omdat ze robuust zijn in het mislukken van een specifieke zone.
 
 ![Distributie van AKS-knoop punten in beschikbaarheids zones](media/availability-zones/aks-availability-zones.png)
 
@@ -68,11 +68,11 @@ Als een enkele zone niet beschikbaar is, blijven uw toepassingen worden uitgevoe
 
 ## <a name="create-an-aks-cluster-across-availability-zones"></a>Een AKS-cluster maken in verschillende beschikbaarheids zones
 
-Wanneer u een cluster maakt met behulp van de opdracht [AZ AKS Create][az-aks-create] , `--zones` definieert de para meter welke zone-agent knooppunten worden geïmplementeerd in. De besturings vlak onderdelen, zoals etcd, worden verdeeld over drie zones als u de `--zones` para meter definieert tijdens het maken van het cluster. De specifieke zones waarin de besturings vlak onderdelen zijn verdeeld, zijn onafhankelijk van welke expliciete zones zijn geselecteerd voor de eerste knooppunt groep.
+Wanneer u een cluster maakt met behulp van de opdracht [AZ AKS Create][az-aks-create] , `--zones` definieert de para meter welke zone-agent knooppunten worden geïmplementeerd in. De besturings vlak onderdelen, zoals etcd of de API, worden verdeeld over de beschik bare zones in de regio als u de `--zones` para meter definieert tijdens het maken van het cluster. De specifieke zones waarin de besturings vlak onderdelen zijn verdeeld, zijn onafhankelijk van welke expliciete zones zijn geselecteerd voor de eerste knooppunt groep.
 
 Als u geen zones voor de standaard agent groep definieert wanneer u een AKS-cluster maakt, zijn de Control-onderdelen niet gegarandeerd over de verschillende beschikbaarheids zones. U kunt extra knooppunt Pools toevoegen met behulp van de opdracht [AZ AKS nodepool add][az-aks-nodepool-add] en opgeven `--zones` voor nieuwe knoop punten, maar de manier waarop het besturings vlak over zones is verspreid, wordt niet gewijzigd. Instellingen voor de beschikbaarheids zone kunnen alleen worden gedefinieerd in het cluster of in de groep met knooppunt groepen.
 
-In het volgende voor beeld wordt een AKS-cluster gemaakt met de naam *myAKSCluster* in de resource groep met de naam *myResourceGroup*. Er zijn in totaal *drie* knoop punten gemaakt: één agent in zone *1*, één in *2*, en vervolgens een in *3*.
+In het volgende voor beeld wordt een AKS-cluster gemaakt met de naam *myAKSCluster* in de resource groep met de naam *myResourceGroup* . Er zijn in totaal *drie* knoop punten gemaakt: één agent in zone *1* , één in *2* , en vervolgens een in *3* .
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus2
@@ -87,7 +87,7 @@ az aks create \
     --zones 1 2 3
 ```
 
-Het duurt enkele minuten om het AKS-cluster te maken.
+Het duurt een paar minuten om het AKS-cluster te maken.
 
 Bij het bepalen van de zone waarvan een nieuw knoop punt deel moet uitmaken, gebruikt een bepaalde AKS-knooppunt groep een [Aanbevolen zone verdeling die wordt geboden door de onderliggende Azure-virtual machine Scale sets][vmss-zone-balancing]. Een bepaalde AKS-knooppunt groep wordt beschouwd als ' evenwichtig ' als elke zone hetzelfde aantal Vm's of + \- 1 virtuele machine heeft in alle andere zones voor de schaalset.
 

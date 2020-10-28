@@ -3,13 +3,13 @@ title: De galerie met gedeelde afbeeldingen gebruiken om een aangepaste installa
 description: Aangepaste installatie kopie groepen zijn een efficiënte manier om reken knooppunten te configureren om uw batch-workloads uit te voeren.
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.custom: devx-track-python
-ms.openlocfilehash: 31fcbff50a2a66aec1643f1bac351e0401205861
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 4a41e8345bdb4c4e8761debe8e6b39f8588f5a8c
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90605189"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745514"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>De galerie met gedeelde afbeeldingen gebruiken om een aangepaste installatie kopie groep te maken
 
@@ -19,7 +19,7 @@ Wanneer u een Azure Batch groep maakt met behulp van de configuratie van de virt
 
 Wanneer u de galerie met gedeelde afbeeldingen gebruikt voor uw aangepaste installatie kopie, hebt u controle over het type en de configuratie van het besturings systeem, evenals het type gegevens schijven. De gedeelde installatie kopie kan toepassingen en referentie gegevens bevatten die beschikbaar worden op alle knoop punten in de batch-pool zodra ze zijn ingericht.
 
-U kunt ook meerdere versies van een installatie kopie naar behoefte hebben voor uw omgeving. Wanneer u een installatie kopie-versie gebruikt om een virtuele machine te maken, wordt de versie van de installatie kopie gebruikt voor het maken van nieuwe schijven voor de virtuele machine.
+U kunt ook meerdere versies van een installatie kopie naar behoefte hebben voor uw omgeving. Wanneer u een installatiekopieversie gebruikt om een VM te maken, wordt de installatiekopieversie gebruikt voor het maken van nieuwe schijven voor de VM.
 
 Met een gedeelde installatie kopie bespaart u tijd bij het voorbereiden van de reken knooppunten van uw pool om uw batch-workload uit te voeren. Het is mogelijk om een Azure Marketplace-installatie kopie te gebruiken en software te installeren op elk reken knooppunt na het inrichten, maar het gebruik van een gedeelde installatie kopie is doorgaans efficiënter. Daarnaast kunt u meerdere replica's opgeven voor de gedeelde installatie kopie, dus wanneer u groepen met veel Vm's (meer dan 600 Vm's) maakt, bespaart u tijd bij het maken van de groep.
 
@@ -40,7 +40,7 @@ Het gebruik van een gedeelde installatie kopie die voor uw scenario is geconfigu
 
 - **Een Azure Batch-account.** Als u een batch-account wilt maken, raadpleegt u de batch-Quick starts met behulp van de [Azure Portal](quick-create-portal.md) of [Azure cli](quick-create-cli.md).
 
-- **Een afbeelding van de galerie met gedeelde afbeeldingen**. Als u een gedeelde installatie kopie wilt maken, moet u een beheerde installatie kopie bron hebben of maken. De installatie kopie moet worden gemaakt op basis van moment opnamen van de besturingssysteem schijf van de VM en optioneel op de gekoppelde gegevens schijven.
+- **Een afbeelding van de galerie met gedeelde afbeeldingen** . Als u een gedeelde installatie kopie wilt maken, moet u een beheerde installatie kopie bron hebben of maken. De installatie kopie moet worden gemaakt op basis van moment opnamen van de besturingssysteem schijf van de VM en optioneel op de gekoppelde gegevens schijven.
 
 > [!NOTE]
 > Als de gedeelde installatie kopie zich niet in hetzelfde abonnement als het batch-account bevindt, moet u [de resource provider Microsoft.BatCH registreren](../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider) voor dat abonnement. De twee abonnementen moeten zich in dezelfde Azure AD-Tenant bezitten.
@@ -208,9 +208,9 @@ Gebruik de volgende stappen om een groep te maken op basis van een gedeelde inst
 1. Open [Azure Portal](https://portal.azure.com).
 1. Ga naar **batch-accounts** en selecteer uw account.
 1. Selecteer **Pools** en voeg vervolgens **toe** om een nieuwe groep te maken.
-1. Selecteer in de sectie **type installatie** kopie de **Galerie gedeelde installatie kopieën**.
+1. Selecteer in de sectie **type installatie** kopie de **Galerie gedeelde installatie kopieën** .
 1. Voltooi de resterende gedeelten met informatie over uw beheerde installatie kopie.
-1. Selecteer **OK**.
+1. Selecteer **OK** .
 
 ![Maak een pool met behulp van een gedeelde installatie kopie met de portal.](media/batch-sig-images/create-custom-pool.png)
 

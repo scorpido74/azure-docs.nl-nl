@@ -5,13 +5,13 @@ author: marcvaneijk
 ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
-ms.custom: seodec18
-ms.openlocfilehash: 72f9e332a4faa98a8a86ef7b6edbefe20357e33f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: ea010a625c3e3cd6228513299d878733bf3775ce
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91356882"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744761"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>ARM-sjablonen ontwikkelen voor Cloud consistentie
 
@@ -205,7 +205,7 @@ Als u de absolute URI van een artefact wilt maken, is het gebruik van de functie
 }
 ```
 
-Met deze aanpak kunnen alle implementatie artefacten, inclusief configuratie scripts, op dezelfde locatie worden opgeslagen als de sjabloon zelf. Als u de locatie van alle koppelingen wilt wijzigen, hoeft u alleen een andere basis-URL voor de _artifactsLocation-para meters_op te geven.
+Met deze aanpak kunnen alle implementatie artefacten, inclusief configuratie scripts, op dezelfde locatie worden opgeslagen als de sjabloon zelf. Als u de locatie van alle koppelingen wilt wijzigen, hoeft u alleen een andere basis-URL voor de _artifactsLocation-para meters_ op te geven.
 
 ## <a name="factor-in-differing-regional-capabilities"></a>Factor in verschillende regionale mogelijkheden
 
@@ -641,7 +641,7 @@ Er is ook een versie van elke specifieke extensie. Deze versie wordt weer gegeve
         ...
 ```
 
-Als u een lijst met de beschik bare versies voor een specifieke VM-extensie wilt ophalen, gebruikt u de cmdlet [Get-AzureRmVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage) . In het volgende voor beeld worden de beschik bare versies van de VM-extensie voor Power shell DSC (desired state Configuration) opgehaald van **myLocation**:
+Als u een lijst met de beschik bare versies voor een specifieke VM-extensie wilt ophalen, gebruikt u de cmdlet [Get-AzureRmVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage) . In het volgende voor beeld worden de beschik bare versies van de VM-extensie voor Power shell DSC (desired state Configuration) opgehaald van **myLocation** :
 
 ```azurepowershell-interactive
 Get-AzureRmVMExtensionImage -Location myLocation -PublisherName Microsoft.PowerShell -Type DSC | FT

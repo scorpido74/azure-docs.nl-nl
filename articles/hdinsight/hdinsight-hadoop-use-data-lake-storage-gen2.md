@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive,seoapr2020
+ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 04/24/2020
-ms.openlocfilehash: 0675f77acbdecfe74634a6734b83c5b74019b8ab
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: cc17cd23ae197db25fed440eb249f2cf069d4859
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332022"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744580"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure Data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters
 
@@ -28,7 +28,7 @@ Zie [opslag opties vergelijken voor gebruik met Azure HDInsight-clusters](hdinsi
 Data Lake Storage Gen2 is beschikbaar als een opslag optie voor bijna alle Azure HDInsight-cluster typen als standaard en als een extra opslag account. HBase kan echter slechts één account hebben met Data Lake Storage Gen2.
 
 > [!Note]  
-> Nadat u Data Lake Storage Gen2 als uw **primaire opslag type**selecteert, kunt u een Data Lake Storage gen1 als extra opslag ruimte niet selecteren.
+> Nadat u Data Lake Storage Gen2 als uw **primaire opslag type** selecteert, kunt u een Data Lake Storage gen1 als extra opslag ruimte niet selecteren.
 
 ## <a name="create-hdinsight-clusters-using-data-lake-storage-gen2"></a>HDInsight-clusters maken met behulp van Data Lake Storage Gen2
 
@@ -66,19 +66,19 @@ Als u machtigingen voor gebruikers wilt instellen om gegevens op te vragen, gebr
 
 Er zijn verschillende manieren om toegang te krijgen tot de bestanden in Data Lake Storage Gen2 vanuit een HDInsight-cluster.
 
-* **De volledig gekwalificeerde naam gebruiken**. Met deze methode geeft u het volledige pad op naar het bestand dat u wilt openen.
+* **De volledig gekwalificeerde naam gebruiken** . Met deze methode geeft u het volledige pad op naar het bestand dat u wilt openen.
 
     ```
     abfs://<containername>@<accountname>.dfs.core.windows.net/<file.path>/
     ```
 
-* **De verkorte padnotatie gebruiken**. Met deze methode vervangt u het pad naar de hoofdmap van het cluster met:
+* **De verkorte padnotatie gebruiken** . Met deze methode vervangt u het pad naar de hoofdmap van het cluster met:
 
     ```
     abfs:///<file.path>/
     ```
 
-* **Het relatieve pad gebruiken**. Met deze methode geeft u alleen het volledige relatieve pad op naar het bestand dat u wilt openen.
+* **Het relatieve pad gebruiken** . Met deze methode geeft u alleen het volledige relatieve pad op naar het bestand dat u wilt openen.
 
     ```
     /<file.path>/

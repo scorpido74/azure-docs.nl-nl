@@ -7,12 +7,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: manayar
-ms.openlocfilehash: 0a777b9008864368a6d1731cae0374e55a4c585f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c7574daced9cec078b6e98e378212ce30d6f4f6
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842866"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744715"
 ---
 # <a name="preview-automatic-vm-guest-patching-for-windows-vms-in-azure"></a>Preview: Automatische VM-gastpatches voor Windows VM's in Azure
 
@@ -80,17 +80,20 @@ Virtuele Windows-machines in azure ondersteunen nu de volgende patch indelings m
 
 **AutomaticByPlatform:**
 - Deze modus maakt automatische VM-gast patches mogelijk voor de virtuele Windows-machine en de volgende patch-installatie wordt georganiseerd door Azure.
+- Deze modus is vereist voor de beschik baarheid-eerste patches.
 - Als u deze modus instelt, wordt de systeem eigen Automatische updates ook uitgeschakeld op de virtuele Windows-machine om te voor komen dat er dubbele bewerkingen worden uitgevoerd.
 - Deze modus wordt alleen ondersteund voor virtuele machines die worden gemaakt met behulp van de ondersteunde installatie kopieën van het besturings systeem.
 - Als u deze modus wilt gebruiken, stelt u de eigenschap `osProfile.windowsConfiguration.enableAutomaticUpdates=true` in en stelt u de eigenschap  `osProfile.windowsConfiguration.patchSettings.patchMode=AutomaticByPlatfom` in de VM-sjabloon in.
 
 **AutomaticByOS:**
 - In deze modus wordt Automatische updates op de virtuele Windows-machine ingeschakeld en worden patches op de VM geïnstalleerd via Automatische updates.
+- Deze modus biedt geen ondersteuning voor de beschik baarheid-eerste patches.
 - Deze modus wordt standaard ingesteld als er geen andere patch modus is opgegeven.
 - Als u deze modus wilt gebruiken, stelt u de eigenschap `osProfile.windowsConfiguration.enableAutomaticUpdates=true` in en stelt u de eigenschap  `osProfile.windowsConfiguration.patchSettings.patchMode=AutomaticByOS` in de VM-sjabloon in.
 
 **Handmatig:**
 - Deze modus schakelt Automatische updates op de virtuele Windows-machine uit.
+- Deze modus biedt geen ondersteuning voor de beschik baarheid-eerste patches.
 - Deze modus moet worden ingesteld wanneer aangepaste oplossingen voor patches worden gebruikt.
 - Als u deze modus wilt gebruiken, stelt u de eigenschap `osProfile.windowsConfiguration.enableAutomaticUpdates=false` in en stelt u de eigenschap  `osProfile.windowsConfiguration.patchSettings.patchMode=Manual` in de VM-sjabloon in.
 
@@ -196,7 +199,7 @@ Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Gebruik [AZ VM Create](/cli/azure/vm#az-vm-create) om automatische VM-gast patches in te scha kelen bij het maken van een nieuwe virtuele machine. In het volgende voor beeld wordt automatische VM-gast patches geconfigureerd voor een virtuele machine met de naam *myVM* in de resource groep met de naam *myResourceGroup*:
+Gebruik [AZ VM Create](/cli/azure/vm#az-vm-create) om automatische VM-gast patches in te scha kelen bij het maken van een nieuwe virtuele machine. In het volgende voor beeld wordt automatische VM-gast patches geconfigureerd voor een virtuele machine met de naam *myVM* in de resource groep met de naam *myResourceGroup* :
 
 ```azurecli-interactive
 az vm create --resource-group myResourceGroup --name myVM --image Win2019Datacenter --enable-agent --enable-auto-update --patch-mode AutomaticByPlatform

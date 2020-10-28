@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 10/23/2020
 ms.custom: generated
-ms.openlocfilehash: 955e80f31cf08dd703f089d26a03b7f97242eab0
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 905bdf95222a03514b5c5e76e18330cf27da0d3d
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631101"
+ms.locfileid: "92745131"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure-resource provider bewerkingen
 
@@ -158,6 +158,7 @@ Klik op de naam van de resource provider in de volgende tabel om de lijst met be
 | [Microsoft.Intune](#microsoftintune) |
 | **Overige** |
 | [Microsoft.BingMaps](#microsoftbingmaps) |
+| [Micro soft. DigitalTwins](#microsoftdigitaltwins) |
 
 
 ## <a name="general"></a>Algemeen
@@ -9663,6 +9664,45 @@ Azure-service: [Bing Maps](https://docs.microsoft.com/BingMaps/)
 > | Micro soft. BingMaps/mapApis/listSecrets/Action | Geef een lijst van de geheimen voor micro soft. BingMaps/mapApis |
 > | Micro soft. BingMaps/mapApis/listUsageMetrics/Action | De metrische gegevens voor micro soft. BingMaps/mapApis weer geven |
 > | Micro soft. BingMaps/Operations/lezen | De bewerkingen voor micro soft. BingMaps weer geven |
+
+### <a name="microsoftdigitaltwins"></a>Micro soft. DigitalTwins
+
+Azure-service: [Azure Digital apparaatdubbels](../digital-twins/index.yml)
+
+> [!div class="mx-tableFixed"]
+> | Actie | Beschrijving |
+> | --- | --- |
+> | Micro soft. DigitalTwins/REGI ster/actie | Registreer het abonnement voor de resource provider van de digitale Apparaatdubbels en schakel het maken van digitale Apparaatdubbels-instanties in. |
+> | Micro soft. DigitalTwins/registratie/actie | De registratie van het abonnement voor de resource provider van de digitale Apparaatdubbels ongedaan maken |
+> | Micro soft. DigitalTwins/digitalTwinsInstances/lezen | Alle micro soft. DigitalTwins/digitalTwinsInstances-resources lezen |
+> | Micro soft. DigitalTwins/digitalTwinsInstances/schrijven | Een micro soft. DigitalTwins/digitalTwinsInstances-resource maken of bijwerken |
+> | Micro soft. DigitalTwins/digitalTwinsInstances/verwijderen | Een micro soft. DigitalTwins/digitalTwinsInstances-resource verwijderen |
+> | Micro soft. DigitalTwins/digitalTwinsInstances/diagnosticSettings/lezen | Hiermee worden de diagnostische instellingen voor de resource opgehaald |
+> | Micro soft. DigitalTwins/digitalTwinsInstances/diagnosticSettings/write | Hiermee worden de diagnostische instellingen voor de resource ingesteld |
+> | Micro soft. DigitalTwins/digitalTwinsInstances/endpoints/verwijderen | Een eind punt van een Digital Apparaatdubbels-resource verwijderen |
+> | Micro soft. DigitalTwins/digitalTwinsInstances/endpoints/lezen | Een eind punt van een Digital Apparaatdubbels-resource lezen |
+> | Micro soft. DigitalTwins/digitalTwinsInstances/endpoints/schrijven | Een eind punt van een Digital Apparaatdubbels-resource maken of bijwerken |
+> | Micro soft. DigitalTwins/digitalTwinsInstances/logDefinitions/lezen | Hiermee worden de logboek instellingen opgehaald voor de Azure Monitor van de resource |
+> | Micro soft. DigitalTwins/digitalTwinsInstances/metricDefinitions/lezen | Hiermee worden de metrische instellingen opgehaald voor de Azure Monitor van de resource |
+> | Micro soft. DigitalTwins/digitalTwinsInstances/operationsResults/lezen | Alle bewerkings resultaten lezen |
+> | Micro soft. DigitalTwins/locaties/checkNameAvailability/actie | Beschik baarheid van de naam van een resource in de Digital Apparaatdubbels resource provider controleren |
+> | Micro soft. DigitalTwins/locaties/operationsResults/lezen | Alle bewerkings resultaten lezen |
+> | Micro soft. DigitalTwins/Operations/lezen | Alle bewerkingen lezen |
+> | **DataAction** | **Beschrijving** |
+> | Micro soft. DigitalTwins/query/actie | Een wille keurige Digital Apparaatdubbels-grafiek opvragen |
+> | Micro soft. DigitalTwins/DigitalTwins/lezen | Alle digitale dubbele items lezen |
+> | Micro soft. DigitalTwins/DigitalTwins/schrijven | Een digitale dubbele |
+> | Micro soft. DigitalTwins/DigitalTwins/verwijderen | Verwijder alle digitale dubbele |
+> | Micro soft. DigitalTwins/DigitalTwins/commands/Action | Een wille keurige opdracht aanroepen op een digitale dubbele |
+> | Micro soft. DigitalTwins/DigitalTwins/relationships/lezen | Een digitale dubbele relatie lezen |
+> | Micro soft. DigitalTwins/DigitalTwins/relationships/write | Een digitale dubbele relatie maken of bijwerken |
+> | Micro soft. DigitalTwins/DigitalTwins/relationships/verwijderen | Een digitale dubbele relatie verwijderen |
+> | Micro soft. DigitalTwins/eventroutes/lezen | Alle gebeurtenis routes lezen |
+> | Micro soft. DigitalTwins/eventroutes/verwijderen | Gebeurtenis route verwijderen |
+> | Micro soft. DigitalTwins/eventroutes/schrijven | Een gebeurtenis route maken of bijwerken |
+> | Micro soft. DigitalTwins/modellen/lezen | Een model lezen |
+> | Micro soft. DigitalTwins/modellen/schrijven | Een model maken of bijwerken |
+> | Micro soft. DigitalTwins/modellen/verwijderen | Elk model verwijderen |
 
 ## <a name="next-steps"></a>Volgende stappen
 

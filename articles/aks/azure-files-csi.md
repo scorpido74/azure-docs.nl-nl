@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 986db4edbf7b8856a12067fb66a370627642e970
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 556aec071ccb59a0223bc07d134f3427755117f3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078354"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745788"
 ---
 # <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Azure Files-Stuur Programma's van de container Storage interface (CSI) gebruiken in azure Kubernetes service (AKS) (preview)
 
@@ -33,13 +33,13 @@ Zie [opslag opties voor toepassingen in AKS][concepts-storage]voor meer informat
 
 ## <a name="dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes"></a>Azure Files PVs dynamisch maken met behulp van de ingebouwde opslag klassen
 
-Een opslag klasse wordt gebruikt om te bepalen hoe een Azure Files share wordt gemaakt. Er wordt in de resource groep van het [knoop punt][node-resource-group] automatisch een opslag account gemaakt voor gebruik met de opslag klasse om de Azure files-shares op te slaan. Kies een van de volgende [Azure Storage redundantie sku's][storage-skus] voor *skuName*:
+Een opslag klasse wordt gebruikt om te bepalen hoe een Azure Files share wordt gemaakt. Er wordt in de resource groep van het [knoop punt][node-resource-group] automatisch een opslag account gemaakt voor gebruik met de opslag klasse om de Azure files-shares op te slaan. Kies een van de volgende [Azure Storage redundantie sku's][storage-skus] voor *skuName* :
 
-* **Standard_LRS**: lokaal redundante opslag
-* **Standard_GRS**: standaard geografisch redundante opslag
-* **Standard_ZRS**: standaard zone-redundante opslag
-* **Standard_RAGRS**: standaard geografisch redundante opslag met lees toegang
-* **Premium_LRS**: Premium lokaal redundante opslag
+* **Standard_LRS** : lokaal redundante opslag
+* **Standard_GRS** : standaard geografisch redundante opslag
+* **Standard_ZRS** : standaard zone-redundante opslag
+* **Standard_RAGRS** : standaard geografisch redundante opslag met lees toegang
+* **Premium_LRS** : Premium lokaal redundante opslag
 
 > [!NOTE]
 > Azure Files ondersteunt Azure Premium Storage. De minimale Premium-bestands share is 100 GB.
@@ -212,7 +212,7 @@ Registreer de `AllowNfsFileShares` functie vlag met behulp van de opdracht [AZ f
 az feature register --namespace "Microsoft.Storage" --name "AllowNfsFileShares"
 ```
 
-Het duurt enkele minuten voordat de status is *geregistreerd*. Controleer de registratie status met behulp van de opdracht [AZ Feature List][az-feature-list] :
+Het duurt enkele minuten voordat de status is *geregistreerd* . Controleer de registratie status met behulp van de opdracht [AZ Feature List][az-feature-list] :
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.Storage/AllowNfsFileShares')].{Name:name,State:properties.state}"
@@ -259,7 +259,7 @@ storageclass.storage.k8s.io/azurefile-csi created
 U kunt een voor beeld [stateful set](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml) implementeren waarmee tijds tempels worden opgeslagen in een bestand `data.txt` door de volgende opdracht te implementeren met de opdracht [kubectl apply][kubectl-apply] :
 
  ```console
-$ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/windows/statefulset.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/statefulset.yaml
 
 statefulset.apps/statefulset-azurefile created
 ```

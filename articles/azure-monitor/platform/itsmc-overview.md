@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 344e15d3c15474fc8959b120f86bb86f22217ef6
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 5c18a904f0ec0f100312ee3fafb53038bd2ccf19
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676972"
+ms.locfileid: "92745700"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Verbinding maken tussen Azure en ITSM-hulpprogramma's met behulp van IT Service Management-connector
 
@@ -125,7 +125,7 @@ Gebruik de volgende procedure:
 1. Klik in Azure Portal op  **waarschuwingen** .
 2. Klik in het bovenste deel venster op  **acties beheren** . Het venster **actie groep toevoegen** wordt weer gegeven.
 
-    ![Actiegroepen](media/itsmc-overview/action-groups.png)
+    [![Actie groepen](media/itsmc-overview/action-groups-selection.png)](media/itsmc-overview/action-groups-selection-big.png)
 
 3. Selecteer het **abonnement** en de **resource groep** waar u uw actie groep wilt maken. Geef de naam van de **actie groep** en de **weergave naam** voor uw actie groep op. Klik op **volgende: meldingen** .
 
@@ -135,7 +135,7 @@ Gebruik de volgende procedure:
 5. Selecteer in de lijst acties de optie **ITSM** in de vervolg keuzelijst voor het **actie type** . Geef een **naam** op voor de actie en klik op de pen met de details van de **bewerking** .
 6. Selecteer het **abonnement** waarin uw log Analytics-werk ruimte zich bevindt. Selecteer de naam van de **verbinding** (uw ITSM-connector naam), gevolgd door de naam van uw werk ruimte. Bijvoorbeeld ' MyITSMMConnector (MyWorkspace) '.
 
-    ![Details van ITSM-actie](media/itsmc-overview/itsm-action-details.png)
+    ![Details van ITSM-actie](media/itsmc-overview/itsm-action-configuration.png)
 
 7. Selecteer type **werk item** in de vervolg keuzelijst.
 

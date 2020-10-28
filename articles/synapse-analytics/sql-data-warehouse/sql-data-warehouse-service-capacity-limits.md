@@ -11,12 +11,12 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: c0fcbe59aa4393f1266c0840cf05c3dc7b1f6d90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e06dbee5b1edbb4fd1a3379ee2d9aa06f9949ab
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85204979"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742461"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Capaciteits limieten voor Azure Synapse Analytics (voorheen SQL DW)
 
@@ -54,15 +54,15 @@ De maximum waarden die zijn toegestaan voor verschillende onderdelen van Azure S
 | statistieken |Kolommen per statistiek object. |32 |
 | statistieken |Statistieken gemaakt voor kolommen per tabel. |30.000 |
 | Opgeslagen procedures |Maximum aantal geneste niveaus. |8 |
-| Weergave |Kolommen per weer gave |1.024 |
+| Weergave |Kolommen per weer gave |1\.024 |
 ||||
 
 ## <a name="loads"></a>Laden
 
 | Categorie | Beschrijving | Maximum |
 |:--- |:--- |:--- |
-| Poly base belastingen |MB per rij |1<br/><br/>Poly base laadt rijen die kleiner zijn dan 1 MB. Het laden van LOB-gegevens typen in tabellen met een geclusterde column store-index (CCI) wordt niet ondersteund.<br/><br/> |
-||||
+| Poly base belastingen |MB per rij |1<br/><br/>Poly base laadt rijen die kleiner zijn dan 1 MB. Het laden van LOB-gegevens typen in tabellen met een geclusterde column store-index (CCI) wordt niet ondersteund.<br/> |
+|Poly base belastingen|Totaal aantal bestanden|1.000.000<br/><br/>Poly base ladingen mogen niet meer dan 1M bestanden overschrijden. De volgende fout kan optreden: de **bewerking is mislukt omdat het aantal gesplitste items groter is dan de bovengrens van 1000000** .|
 
 ## <a name="queries"></a>Query's
 

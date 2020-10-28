@@ -84,6 +84,8 @@
       href: concepts/logging-and-diagnostics.md
     - name: Metrische gegevens
       href: concepts/metrics.md
+    - name: Problemen oplossen
+      href: concepts/troubleshooting-info.md
 - name: Voorbeelden
   items:
     - name: Hero-voorbeeld van groepsgesprek
@@ -105,4 +107,4 @@
 - name: Resources
   items:
     - name: Releaseopmerkingen
-      href: 'https://github.com/Azure/Communication/blob/master/releasenotes/2020-September-22.md'
+      href: 'https://github.com/Azure/Communication/blob/master/releasenotes'

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 2d1122d723058af7b11004589a9ebd14958cc4ef
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 4744b974cd20c15d8abf22f52b64b8d3dc5a7f55
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173113"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743001"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>Informatie over de wijzigingen in de basis-CA-wijziging voor Azure Database for MariaDB
 
@@ -52,11 +52,11 @@ Volg de onderstaande stappen om te voor komen dat de beschik baarheid van uw toe
 *   Genereer een gecombineerd CA-certificaat archief met zowel **BaltimoreCyberTrustRoot** als **DigiCertGlobalRootG2** -certificaten.
     *   Voor Java-gebruikers (MariaDB Connector/J) voert u het volgende uit:
 
-          ```azurecli-interactive
+          ```console
           keytool -importcert -alias MariaDBServerCACert  -file D:\BaltimoreCyberTrustRoot.crt.pem  -keystore truststore -storepass password -noprompt
           ```
 
-          ```azurecli-interactive
+          ```console
           keytool -importcert -alias MariaDBServerCACert2  -file D:\DigiCertGlobalRootG2.crt.pem -keystore truststore -storepass password  -noprompt
           ```
 
@@ -149,7 +149,7 @@ Als u [gegevens replicatie](concepts-data-in-replication.md) gebruikt om verbind
 Raadpleeg [SSL-verificatie](howto-configure-ssl.md#verify-the-ssl-connection)om te controleren of u SSL-verbinding gebruikt om verbinding te maken met de server.
 
 ### <a name="14-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>14. is er een actie vereist als ik DigiCertGlobalRootG2 al in mijn certificaat bestand heb?
-Nee. Er is geen actie vereist als uw certificaat bestand al het **DigiCertGlobalRootG2**heeft.
+Nee. Er is geen actie vereist als uw certificaat bestand al het **DigiCertGlobalRootG2** heeft.
 
 ### <a name="15-what-if-i-have-further-questions"></a>15. Wat moet ik doen als ik meer vragen heb?
 Als u vragen hebt, kunt u antwoorden krijgen van experts van community's in [micro soft Q&A](mailto:AzureDatabaseformariadb@service.microsoft.com). Als u een ondersteunings abonnement hebt en technische hulp nodig hebt, kunt u [contact met ons](mailto:AzureDatabaseformariadb@service.microsoft.com)opnemen.

@@ -14,17 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: a54dfa0f2b072d30cac605937a1b623ef9d4051d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ab02cc7e60870852666c8c01ccc17a1b1102a62
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631491"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742835"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>Stap 1: de logboek-doorstuur server implementeren
 
 
 In deze stap wijst en configureert u de Linux-computer waarmee de logboeken worden doorgestuurd van uw beveiligings oplossing naar uw Azure Sentinel-werk ruimte. Deze computer kan een fysieke of virtuele machine in uw on-premises omgeving, een Azure-VM of een VM in een andere cloud zijn. Met behulp van de opgegeven koppeling voert u een script uit op de aangewezen computer die de volgende taken uitvoert:
+
 - Installeert de Log Analytics agent voor Linux (ook wel bekend als de OMS-agent) en configureert deze voor de volgende doel einden:
     - Luis teren naar CEF-berichten van de ingebouwde Linux syslog-daemon op TCP-poort 25226
     - de berichten veilig via TLS verzenden naar uw Azure Sentinel-werk ruimte, waar ze worden geparseerd en verrijkt
@@ -36,18 +37,25 @@ In deze stap wijst en configureert u de Linux-computer waarmee de logboeken word
 ## <a name="prerequisites"></a>Vereisten
 
 - U moet een verhoogde machtigingen (sudo) hebben op de aangewezen Linux-machine.
-- Python moet zijn geïnstalleerd op de Linux-machine.<br>Gebruik de `python -version` opdracht om te controleren.
+
+- **Python 2,7** moet zijn geïnstalleerd op de Linux-computer.<br>Gebruik de `python -version` opdracht om te controleren.
+
 - De Linux-machine mag niet worden verbonden met een Azure-werk ruimte voordat u de Log Analytics-Agent installeert.
+
+- Mogelijk hebt u de werk ruimte-ID en de primaire sleutel voor de werk ruimte op een bepaald moment in dit proces nodig. U vindt deze in de werkruimte resource onder **agent beheer** .
 
 ## <a name="run-the-deployment-script"></a>Het implementatiescript uitvoeren
  
-1. Klik in het navigatie menu van de Azure-Sentinel op **Data connectors**. Klik in de lijst met connectors op de tegel **algemene gebeurtenis indeling (CEF)** en klik vervolgens op de knop **pagina connector openen** op de rechter benedenhoek. 
+1. Klik in het navigatie menu van de Azure-Sentinel op **Data connectors** . Klik in de lijst met connectors op de tegel **algemene gebeurtenis indeling (CEF)** en klik vervolgens op de knop **pagina connector openen** op de rechter benedenhoek. 
 
-1. Onder **1,2 Installeer de CEF-Collector op de Linux-computer**, kopieer de koppeling die u hebt gekregen onder **Voer het volgende script uit om de CEF-Collector te installeren en toe te passen**, of uit de onderstaande tekst:
+1. Onder **1,2 Installeer de CEF-Collector op de Linux-computer** , kopieer de koppeling die u hebt gemaakt onder **Voer het volgende script uit om de CEF-Collector te installeren en toe te passen** , of uit de onderstaande tekst (waarbij de werk ruimte-id en de primaire sleutel worden toegepast in plaats van de tijdelijke aanduidingen):
 
-     `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
+    ```bash
+    sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
+    ```
 
 1. Zorg ervoor dat het script wordt uitgevoerd en controleer of er geen fout-of waarschuwings berichten worden weer gegeven.
+    - Mogelijk wordt er een bericht weer gegeven waarin u wordt gevraagd een opdracht uit te voeren om een probleem met de toewijzing van het *computer* veld te corrigeren. Zie de [uitleg in het implementatie script](#mapping-command) voor meer informatie.
 
 > [!NOTE]
 > **Dezelfde computer gebruiken voor het door sturen van zowel normale syslog- *als* CEF-berichten**
@@ -122,12 +130,15 @@ Kies een syslog-daemon om de juiste beschrijving te bekijken.
 
 1. **De toewijzing van het *computer* veld zoals verwacht controleren:**
 
-    - Hiermee zorgt u ervoor dat het veld *computer* in de syslog-bron juist is toegewezen in de log Analytics agent door deze opdracht uit te voeren en de agent opnieuw te starten.
+    - Hiermee zorgt u ervoor dat het veld *computer* in de syslog-bron juist is toegewezen in de log Analytics-agent met behulp van de volgende opdracht: 
 
         ```bash
-        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
-            -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
-            filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        grep -i "'Host' => record\['host'\]"  /opt/microsoft/omsagent/plugin/filter_syslog_security.rb
+        ```
+    - <a name="mapping-command"></a>Als er een probleem is met de toewijzing, produceert het script een fout bericht dat u **de volgende opdracht hand matig moet uitvoeren** (waarbij de werk ruimte-id in plaats van de tijdelijke aanduiding wordt toegepast). De opdracht zorgt ervoor dat de juiste toewijzing wordt uitgevoerd en start de agent opnieuw.
+    
+        ```bash
+        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/plugin/filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
         ```
 
 # <a name="syslog-ng-daemon"></a>[syslog-ng-daemon](#tab/syslogng)
@@ -187,15 +198,16 @@ Kies een syslog-daemon om de juiste beschrijving te bekijken.
 
 1. **De toewijzing van het *computer* veld zoals verwacht controleren:**
 
-    - Hiermee zorgt u ervoor dat het veld *computer* in de syslog-bron juist is toegewezen in de log Analytics agent door deze opdracht uit te voeren en de agent opnieuw te starten.
+    - Hiermee zorgt u ervoor dat het veld *computer* in de syslog-bron juist is toegewezen in de log Analytics-agent met behulp van de volgende opdracht: 
 
         ```bash
-        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
-            -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
-            filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        grep -i "'Host' => record\['host'\]"  /opt/microsoft/omsagent/plugin/filter_syslog_security.rb
         ```
-
-
+    - <a name="mapping-command"></a>Als er een probleem is met de toewijzing, produceert het script een fout bericht dat u **de volgende opdracht hand matig moet uitvoeren** (waarbij de werk ruimte-id in plaats van de tijdelijke aanduiding wordt toegepast). De opdracht zorgt ervoor dat de juiste toewijzing wordt uitgevoerd en start de agent opnieuw.
+    
+        ```bash
+        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/plugin/filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
 
 ## <a name="next-steps"></a>Volgende stappen
 In dit document hebt u geleerd hoe u de Log Analytics-agent implementeert voor het verbinden van CEF-apparaten met Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:

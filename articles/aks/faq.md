@@ -3,12 +3,12 @@ title: Veelgestelde vragen over Azure Kubernetes service (AKS)
 description: Vind antwoorden op enkele veelgestelde vragen over Azure Kubernetes service (AKS).
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: c68810e0fd9ee3593aa014243c3f75fb8a63a7fd
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: bbe4d43fde3746e6c992b7f03927f081d3814597
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494525"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745759"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Veelgestelde vragen over AKS (Azure Kubernetes Service)
 
@@ -57,12 +57,12 @@ AKS bouwt voort op een aantal Azure-infrastructuur resources, zoals schaal sets 
 
 Om deze architectuur in te scha kelen, omvat elke AKS-implementatie twee resource groepen:
 
-1. U maakt de eerste resource groep. Deze groep bevat alleen de Kubernetes-service resource. De resource provider AKS maakt automatisch de tweede resource groep tijdens de implementatie. Een voor beeld van de tweede resource groep is *MC_myResourceGroup_myAKSCluster_eastus*. Zie de volgende sectie voor meer informatie over het opgeven van de naam van deze tweede resource groep.
-1. De tweede resource groep, ook wel de *resource groep knoop punt*genoemd, bevat alle infrastructuur resources die zijn gekoppeld aan het cluster. Deze resources omvatten de Kubernetes-knoop punt-Vm's, virtuele netwerken en opslag. De resource groep van het knoop punt heeft standaard een naam als *MC_myResourceGroup_myAKSCluster_eastus*. AKS verwijdert automatisch de knooppunt resource wanneer het cluster wordt verwijderd. dit moet daarom alleen worden gebruikt voor resources die de levens cyclus van het cluster delen.
+1. U maakt de eerste resource groep. Deze groep bevat alleen de Kubernetes-service resource. De resource provider AKS maakt automatisch de tweede resource groep tijdens de implementatie. Een voor beeld van de tweede resource groep is *MC_myResourceGroup_myAKSCluster_eastus* . Zie de volgende sectie voor meer informatie over het opgeven van de naam van deze tweede resource groep.
+1. De tweede resource groep, ook wel de *resource groep knoop punt* genoemd, bevat alle infrastructuur resources die zijn gekoppeld aan het cluster. Deze resources omvatten de Kubernetes-knoop punt-Vm's, virtuele netwerken en opslag. De resource groep van het knoop punt heeft standaard een naam als *MC_myResourceGroup_myAKSCluster_eastus* . AKS verwijdert automatisch de knooppunt resource wanneer het cluster wordt verwijderd. dit moet daarom alleen worden gebruikt voor resources die de levens cyclus van het cluster delen.
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>Kan ik mijn eigen naam opgeven voor de resource groep van het AKS-knoop punt?
 
-Ja. AKS krijgt standaard de naam van de knooppunt resource groep *MC_resourcegroupname_clustername_location*, maar u kunt ook uw eigen naam opgeven.
+Ja. AKS krijgt standaard de naam van de knooppunt resource groep *MC_resourcegroupname_clustername_location* , maar u kunt ook uw eigen naam opgeven.
 
 Als u de naam van uw eigen resource groep wilt opgeven, installeert u de [AKS-preview][aks-preview-cli] Azure cli-extensie versie *0.3.2* of hoger. Wanneer u een AKS-cluster maakt met behulp van de opdracht [AZ AKS Create][az-aks-create] , gebruikt u de para meter *--node-Resource-Group* en geeft u een naam op voor de resource groep. Als u [een Azure Resource Manager-sjabloon gebruikt][aks-rm-template] om een AKS-cluster te implementeren, kunt u de naam van de resource groep definiëren met behulp van de eigenschap *nodeResourceGroup* .
 
@@ -95,6 +95,9 @@ AKS ondersteunt de volgende [toegangs controllers][admission-controllers]:
 - *MutatingAdmissionWebhook*
 - *ValidatingAdmissionWebhook*
 - *ResourceQuota*
+- *PodNodeSelector*
+- *PodTolerationRestriction*
+- *ExtendedResourceToleration*
 
 Op dit moment kunt u de lijst met toegangs controllers in AKS niet wijzigen.
 
@@ -109,9 +112,11 @@ namespaceSelector:
       operator: DoesNotExist
 ```
 
+AKS firewalls de API-server uitkomend, zodat u toegangs beheer webhooks vanuit het cluster toegankelijk moet zijn.
+
 ## <a name="can-admission-controller-webhooks-impact-kube-system-and-internal-aks-namespaces"></a>Kan de toegangs beheer-webhooks invloed hebben op uitvoeren-System en interne AKS-naam ruimten?
 
-Om de stabiliteit van het systeem te beschermen en te voor komen dat aangepaste toegangs controllers van invloed zijn op interne services in het uitvoeren-systeem, is naam ruimte AKS een **toegangs Afdwinger**die automatisch uitvoeren-systeem en AKS interne naam ruimten uitsluit. Deze service zorgt ervoor dat de aangepaste toegangs controllers niet van invloed zijn op de services die worden uitgevoerd in uitvoeren-System.
+Om de stabiliteit van het systeem te beschermen en te voor komen dat aangepaste toegangs controllers van invloed zijn op interne services in het uitvoeren-systeem, is naam ruimte AKS een **toegangs Afdwinger** die automatisch uitvoeren-systeem en AKS interne naam ruimten uitsluit. Deze service zorgt ervoor dat de aangepaste toegangs controllers niet van invloed zijn op de services die worden uitgevoerd in uitvoeren-System.
 
 Als u een belang rijke gebruiks situatie hebt om iets te implementeren op een uitvoeren-systeem (niet aanbevolen), wat u nodig hebt om te worden gedekt door uw aangepaste Admission-webhook, kunt u het onderstaande label of de aantekening toevoegen, zodat de toegangs afdwingt deze negeert.
 

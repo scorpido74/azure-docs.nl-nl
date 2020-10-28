@@ -6,13 +6,13 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 731e4306575a8bd5f63dd47ca213a0e52a21487b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 03b112466ef094a578d47586a44ab383a5da1a9b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151238"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744885"
 ---
 # <a name="azure-signalr-service-authentication"></a>verificatie van Azure SignalR Service
 
@@ -55,16 +55,16 @@ U hebt het volgende nodig om deze zelfstudie te voltooien:
 
 1. Open een webbrowser, ga naar `https://github.com` en meld u aan bij uw account.
 
-2. Voor uw account gaat u naar **instellingen**  >  **ontwikkelaars instellingen** en klikt u op **een nieuwe toepassing registreren**of **nieuwe OAuth-app** onder *OAuth-apps*.
+2. Voor uw account gaat u naar **instellingen**  >  **ontwikkelaars instellingen** en klikt u op **een nieuwe toepassing registreren** of **nieuwe OAuth-app** onder *OAuth-apps* .
 
-3. Gebruik de volgende instellingen voor de nieuwe OAuth-app en klik vervolgens op **Register application**:
+3. Gebruik de volgende instellingen voor de nieuwe OAuth-app en klik vervolgens op **Register application** :
 
     | Instellingsnaam | Voorgestelde waarde | Beschrijving |
     | ------------ | --------------- | ----------- |
     | De naam van de toepassing | *Azure SignalR Chat* | De GitHub-gebruiker moet de app waarmee hij of zij verificatie uitvoert, kunnen herkennen en vertrouwen.   |
     | Homepage URL | `http://localhost:5000/home` | |
     | Application description | *Een voorbeeld van een chatruimte die Azure SignalR Service gebruikt voor GitHub-verificatie* | Een zinvolle beschrijving van de toepassing zodat de gebruikers van uw toepassing de context begrijpen waarin de verificatie wordt gebruikt. |
-    | Authorization callback URL | `http://localhost:5000/signin-github` | Deze instelling is de belangrijkste instelling voor uw OAuth-toepassing. Dit is de callback-URL waarnaar de gebruiker door GitHub wordt omgeleid na een geslaagde authenticatie. In deze zelfstudie moet u de standaard-callback-URL voor het pakket *AspNet.Security.OAuth.GitHub* gebruiken, te weten */signin-github*.  |
+    | Authorization callback URL | `http://localhost:5000/signin-github` | Deze instelling is de belangrijkste instelling voor uw OAuth-toepassing. Dit is de callback-URL waarnaar de gebruiker door GitHub wordt omgeleid na een geslaagde authenticatie. In deze zelfstudie moet u de standaard-callback-URL voor het pakket *AspNet.Security.OAuth.GitHub* gebruiken, te weten */signin-github* .  |
 
 4. Zodra de registratie van de nieuwe OAuth-app is voltooid, voegt u de *Client ID* en *Client Secret* toe aan Secret Manager. Gebruik hiervoor de volgende opdrachten. Vervang *Your_GitHub_Client_Id* en *Your_GitHub_Client_Secret* door de waarden voor uw OAuth-app.
 
@@ -155,7 +155,7 @@ U hebt het volgende nodig om deze zelfstudie te voltooien:
 
 In dit gedeelte gaat u een `Login`-API implementeert die clients verifieert met behulp van de GitHub OAuth-app. Als de verificatie is voltooid, voegt de API een cookie toen aan de respons van de webclient voordat de client weer wordt teruggeleid naar de chat-app. Dat cookie wordt vervolgens gebruikt voor het identificeren van de client.
 
-1. Voeg een nieuw bestand met controllercode toe aan de map *chattest\Controllers*. Noem het bestand *AuthController.cs*.
+1. Voeg een nieuw bestand met controllercode toe aan de map *chattest\Controllers* . Noem het bestand *AuthController.cs* .
 
 2. Voeg de volgende code toe voor de verificatiecontroller. Vergeet niet om de naamruimte bij te werken als de projectmap niet *chattest* was:
 
@@ -232,7 +232,7 @@ In dit gedeelte gaat u echte verificatie inschakelen door het kenmerk `Authorize
 
 1. Open *wwwroot\index.html* en vervang de code die om de gebruikersnaam vraagt door code waarmee het cookie wordt gebruikt dat wordt geretourneerd door de verificatiecontroller.
 
-    Verwijder de volgende code uit *index.html*:
+    Verwijder de volgende code uit *index.html* :
 
     ```javascript
     // Get the user name and store it to prepend to messages.
@@ -374,7 +374,7 @@ In dit gedeelte gaat u echte verificatie inschakelen door het kenmerk `Authorize
 
     ![Downloaden voltooid in Azure](media/signalr-concept-authenticate-oauth/signalr-oauth-complete-azure.png)
 
-    U wordt gevraagd om de chat-app toegang te geven tot uw GitHub-account. Klik op de knop **Authorize**.
+    U wordt gevraagd om de chat-app toegang te geven tot uw GitHub-account. Klik op de knop **Authorize** .
 
     ![OAuth-app autoriseren](media/signalr-concept-authenticate-oauth/signalr-authorize-oauth-app.png)
 
@@ -396,7 +396,7 @@ In de stappen in dit gedeelte wordt de extensie *signalr* voor de Azure CLI gebr
 az extension add -n signalr
 ```
 
-Bij het maken van de volgende resources moet u de resourcegroep gebruiken waarin zich ook de resource van de SignalR-service bevindt. Op deze manier is het achteraf veel eenvoudiger om alle resources te verwijderen. In deze voorbeelden wordt ervan uitgegaan dat u de groepsnaam hebt gebruikt die in eerdere zelfstudies wordt aanbevolen, te weten *SignalRTestResources*.
+Bij het maken van de volgende resources moet u de resourcegroep gebruiken waarin zich ook de resource van de SignalR-service bevindt. Op deze manier is het achteraf veel eenvoudiger om alle resources te verwijderen. In deze voorbeelden wordt ervan uitgegaan dat u de groepsnaam hebt gebruikt die in eerdere zelfstudies wordt aanbevolen, te weten *SignalRTestResources* .
 
 ### <a name="create-the-web-app-and-plan"></a>De web-app en het plan maken
 
@@ -550,7 +550,7 @@ Voer de volgende opdrachten uit in een Git-shell om uw code te implementeren.
 
 Als laatste moet u de waarden voor **Homepage URL** en **Authorization callback URL** van de GitHub OAuth-app bijwerken, zodat deze verwijzen naar de nieuwe gehoste app.
 
-1. Open [https://github.com](https://github.com) in een browser en navigeer naar de **instellingen**van uw account OAuth-apps voor  >  **ontwikkel aars**  >  **Oauth Apps**.
+1. Open [https://github.com](https://github.com) in een browser en navigeer naar de **instellingen** van uw account OAuth-apps voor  >  **ontwikkel aars**  >  **Oauth Apps** .
 
 2. Klik op de verificatie-app en werk de waarden voor **Homepage URL** en **Authorization callback URL** bij zoals hieronder wordt weergegeven:
 
@@ -572,13 +572,13 @@ Als u niet verder wilt met de voorbeeldtoepassing uit de snelstart, kunt u de Az
 > [!IMPORTANT]
 > Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt. De resourcegroep en alle bijbehorende resources worden permanent verwijderd. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. Als u de resources voor het hosten van dit voorbeeld in een bestaande resourcegroep hebt gemaakt en deze groep ook resources bevat die u wilt behouden, kunt u elke resource afzonderlijk verwijderen via hun respectievelijke blade.
 
-Meld u aan bij [Azure Portal](https://portal.azure.com) en klik op **Resourcegroepen**.
+Meld u aan bij [Azure Portal](https://portal.azure.com) en klik op **Resourcegroepen** .
 
-Typ de naam van de resourcegroep in het tekstvak **Filteren op naam...** . In de instructies voor dit artikel is een resourcegroep met de naam *SignalRTestResources* gebruikt. Klik in de resourcegroep in de lijst met resultaten op **...** en vervolgens op **Resourcegroep verwijderen**.
+Typ de naam van de resourcegroep in het tekstvak **Filteren op naam...** . In de instructies voor dit artikel is een resourcegroep met de naam *SignalRTestResources* gebruikt. Klik in de resourcegroep in de lijst met resultaten op **...** en vervolgens op **Resourcegroep verwijderen** .
 
 ![Verwijderen](./media/signalr-concept-authenticate-oauth/signalr-delete-resource-group.png)
 
-U wordt gevraagd om het verwijderen van de resourcegroep te bevestigen. Typ de naam van de resourcegroep om te bevestigen en klik op **Verwijderen**.
+U wordt gevraagd om het verwijderen van de resourcegroep te bevestigen. Typ de naam van de resourcegroep om te bevestigen en klik op **Verwijderen** .
 
 Na enkele ogenblikken worden de resourcegroep en alle resources in de groep verwijderd.
 

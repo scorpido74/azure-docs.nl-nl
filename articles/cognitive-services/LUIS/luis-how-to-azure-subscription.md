@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: adc0c253648ed7ae869a20b92c42e7f6478501b7
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: eecc93558625d3ae891ca589424aec218036adae
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151590"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744705"
 ---
 # <a name="create-luis-resources"></a>LUIS-resources maken
 
@@ -29,7 +29,7 @@ Met LUIS kunt u drie typen Azure-resources en één niet-Azure-resource maken:
 
 |Resource|Doel|Cognitieve service `kind`|Cognitieve service `type`|
 |--|--|--|--|
-|Resource ontwerpen|Met kunt u uw toepassingen maken, beheren, trainen, testen en publiceren. [Maak een Luis-ontwerp bron](luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal) als u Luis-apps programtically of vanuit de Luis-Portal wilt ontwerpen. U moet eerst [uw Luis-account migreren](luis-migration-authoring.md#what-is-migration) zodat u uw Azure authroring-resources kunt koppelen aan uw toepassing. U kunt machtigingen voor de ontwerp bron beheren door personen toe te wijzen aan [de rol Inzender](#contributions-from-other-authors). <br><br> Er is één laag avialable voor de LUIS-ontwerp Bron:<br> * **Gratis F0-ontwerp bron** , waarmee u maandelijks gratis bewerkings transacties en gratis eindpunt aanvragen van 1000 kunt testen. |`LUIS.Authoring`|`Cognitive Services`|
+|Resource ontwerpen|Met kunt u uw toepassingen maken, beheren, trainen, testen en publiceren. [Maak een Luis-ontwerp bron](luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal) als u Luis-apps programtically of vanuit de Luis-Portal wilt ontwerpen. U moet eerst [uw Luis-account migreren](luis-migration-authoring.md#what-is-migration) om uw Azure-ontwerp resources te kunnen koppelen aan uw toepassing. U kunt machtigingen voor de ontwerp bron beheren door personen toe te wijzen aan [de rol Inzender](#contributions-from-other-authors). <br><br> Er is één laag beschikbaar voor de LUIS-ontwerp Bron:<br> * **Gratis F0-ontwerp bron** , waarmee u maandelijks gratis bewerkings transacties en gratis eindpunt aanvragen van 1000 kunt testen. |`LUIS.Authoring`|`Cognitive Services`|
 |Voorspellings bron| Nadat u uw LUIS-toepassing hebt gepubliceerd, gebruikt u de Voorspellings resource/sleutel om te vragen om een query voor voor spelling-eindpunt aanvragen. Maak een LUIS-Voorspellings bron voordat u de voor spellingen van de client-app voorspelde aanvragen 1.000 overschrijdt die zijn opgegeven door de auteur of de eerste resource. <br><br> Er zijn twee lagen avialble voor de Voorspellings resource:<br> * **Gratis F0-Voorspellings resource** waarmee u 10.000 gratis eindpunt aanvragen voor voor spellingen ontvangt<br> * **Standaard S0-Voorspellings resource** die de betaalde laag is. [Meer informatie over de prijs informatie](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|
 |Resource voor starter/proef versie|Met kunt u uw toepassingen maken, beheren, trainen, testen en publiceren. Dit wordt gemaakt door standaard als u de optie starter resource hebt gekozen tijdens de eerste aanmelding TP LUIS. De start sleutel wordt uiteindelijk echter afgeschaft en alle LUIS-gebruikers moeten [hun accounts migreren](luis-migration-authoring.md#what-is-migration) en hun Luis-toepassingen koppelen aan een ontwerp bron. Deze resource biedt geen machtigingen voor toegangs beheer op basis van rollen, zoals de ontwerp bron. <br><br> Net zoals de resource voor schrijven, biedt de eerste resource u gratis ontwerp transacties en 1000 gratis test eindpunt aanvragen voor voor spellingen.|-|Geen Azure-resource|
 |[Bron sleutel voor de cognitieve service met meerdere services](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|Query Voorspellings eindpunt aanvragen gedeeld met LUIS en andere ondersteunde Cognitive Services.|`CognitiveServices`|`Cognitive Services`|
@@ -190,20 +190,20 @@ Resource `kind` :
 
     Hiermee opent u een browser waarmee u het juiste account en verificatie kunt selecteren.
 
-1. Maak een **Luis-ontwerp bron**, van `LUIS.Authoring` de soort, met `my-luis-authoring-resource` de naam in de _bestaande_ resource groep met `my-resource-group` de naam voor de `westus` regio.
+1. Maak een **Luis-ontwerp bron** , van `LUIS.Authoring` de soort, met `my-luis-authoring-resource` de naam in de _bestaande_ resource groep met `my-resource-group` de naam voor de `westus` regio.
 
     ```azurecli
     az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
     ```
 
-1. Maak een **Luis-Voorspellings eindpunt bron**, van `LUIS` het type, met `my-luis-prediction-resource` de naam in de _bestaande_ resource groep met `my-resource-group` de naam voor de `westus` regio. Als u een hogere door voer wilt dan de gratis laag, wijzigt u `F0` in `S0` . Meer informatie over [prijs categorieën en door Voer](luis-limits.md#key-limits).
+1. Maak een **Luis-Voorspellings eindpunt bron** , van `LUIS` het type, met `my-luis-prediction-resource` de naam in de _bestaande_ resource groep met `my-resource-group` de naam voor de `westus` regio. Als u een hogere door voer wilt dan de gratis laag, wijzigt u `F0` in `S0` . Meer informatie over [prijs categorieën en door Voer](luis-limits.md#key-limits).
 
     ```azurecli
     az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
     ```
 
     > [!Note]
-    > Deze sleutels worden **niet** gebruikt door de Luis-Portal totdat ze zijn toegewezen in de Luis-Portal op de **Azure-resources voor beheer >**.
+    > Deze sleutels worden **niet** gebruikt door de Luis-Portal totdat ze zijn toegewezen in de Luis-Portal op de **Azure-resources voor beheer >** .
 
 <a name="assign-an-authoring-resource-in-the-luis-portal-for-all-apps"></a>
 
@@ -212,8 +212,8 @@ Resource `kind` :
 U kunt een ontwerp bron toewijzen voor één app of voor alle apps in LUIS. Met de volgende procedure worden alle apps aan één ontwerp bron toegewezen.
 
 1. Meld u aan bij de [Luis-Portal](https://www.luis.ai).
-1. Selecteer in de bovenste navigatie balk helemaal rechts uw gebruikers account en selecteer vervolgens **instellingen**.
-1. Selecteer op de pagina **gebruikers instellingen** de optie **ontwerp resource toevoegen** en selecteer vervolgens een bestaande ontwerp bron. Selecteer **Opslaan**.
+1. Selecteer in de bovenste navigatie balk helemaal rechts uw gebruikers account en selecteer vervolgens **instellingen** .
+1. Selecteer op de pagina **gebruikers instellingen** de optie **ontwerp resource toevoegen** en selecteer vervolgens een bestaande ontwerp bron. Selecteer **Opslaan** .
 
 ## <a name="assign-a-resource-to-an-app"></a>Een resource toewijzen aan een app
 
@@ -292,7 +292,7 @@ Zie [gegevens opslag en verwijderen](luis-concept-data-storage.md#accounts) voor
 ## <a name="viewing-azure-resource-metrics"></a>Metrische gegevens van Azure-resource weer geven
 
 ### <a name="viewing-azure-resource-summary-usage"></a>Gebruik van Azure Resource Summary weer geven
-U kunt LUIS-gebruiks gegevens weer geven in Azure. Op de **overzichts** pagina ziet u recente samenvattings informatie, inclusief oproepen en fouten. Als u een LUIS-eindpunt aanvraag maakt en de **overzichts pagina**onmiddellijk bekijkt, moet u Maxi maal vijf minuten toestaan voordat het gebruik wordt weer gegeven.
+U kunt LUIS-gebruiks gegevens weer geven in Azure. Op de **overzichts** pagina ziet u recente samenvattings informatie, inclusief oproepen en fouten. Als u een LUIS-eindpunt aanvraag maakt en de **overzichts pagina** onmiddellijk bekijkt, moet u Maxi maal vijf minuten toestaan voordat het gebruik wordt weer gegeven.
 
 ![Samenvattings gebruik weer geven](./media/luis-usage-tiers/overview.png)
 

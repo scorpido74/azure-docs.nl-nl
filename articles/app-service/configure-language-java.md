@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
-ms.custom: seodec18, devx-track-java
+ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 65b31bd39c85ea9073bb9415b9829df12b7d9e35
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 2e77d76ddae540a311655eca36c53b23c418f5e3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171580"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744151"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Een Java-app voor Azure App Service configureren
 
@@ -330,29 +330,29 @@ In deze sectie wordt beschreven hoe u Java-toepassingen die zijn geïmplementeer
 ::: zone pivot="platform-windows"
 
 1. Een NewRelic-account maken op [NewRelic.com](https://newrelic.com/signup)
-2. Down load de Java-Agent van NewRelic. deze heeft een bestands naam die vergelijkbaar is met *newrelic-java-x.x.x.zip*.
+2. Down load de Java-Agent van NewRelic. deze heeft een bestands naam die vergelijkbaar is met *newrelic-java-x.x.x.zip* .
 3. Kopieer uw licentie sleutel, u hebt deze later nodig om de agent te configureren.
-4. [Ssh in uw app service-exemplaar](configure-linux-open-ssh-session.md) en maak een nieuwe directory */Home/site/wwwroot/apm*.
-5. Upload de uitgepakte NewRelic Java-Agent bestanden naar een map onder */Home/site/wwwroot/apm*. De bestanden voor uw agent moeten in */Home/site/wwwroot/apm/newrelic*zijn.
+4. [Ssh in uw app service-exemplaar](configure-linux-open-ssh-session.md) en maak een nieuwe directory */Home/site/wwwroot/apm* .
+5. Upload de uitgepakte NewRelic Java-Agent bestanden naar een map onder */Home/site/wwwroot/apm* . De bestanden voor uw agent moeten in */Home/site/wwwroot/apm/newrelic* zijn.
 6. Wijzig het YAML-bestand op */Home/site/wwwroot/apm/newrelic/newrelic.yml* en vervang de tijdelijke aanduiding voor de licentie waarde door uw eigen licentie code.
 7. In de Azure Portal, bladert u naar uw toepassing in App Service en maakt u een nieuwe toepassings instelling.
 
     - Voor **Java SE** -apps maakt u een omgevings variabele `JAVA_OPTS` met de naam met de waarde `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` .
-    - Voor **Tomcat**maakt u een omgevings variabele `CATALINA_OPTS` met de naam met de waarde `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` .
+    - Voor **Tomcat** maakt u een omgevings variabele `CATALINA_OPTS` met de naam met de waarde `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` .
 
 ::: zone-end
 ::: zone pivot="platform-linux"
 
 1. Een NewRelic-account maken op [NewRelic.com](https://newrelic.com/signup)
-2. Down load de Java-Agent van NewRelic. deze heeft een bestands naam die vergelijkbaar is met *newrelic-java-x.x.x.zip*.
+2. Down load de Java-Agent van NewRelic. deze heeft een bestands naam die vergelijkbaar is met *newrelic-java-x.x.x.zip* .
 3. Kopieer uw licentie sleutel, u hebt deze later nodig om de agent te configureren.
-4. [Ssh in uw app service-exemplaar](configure-linux-open-ssh-session.md) en maak een nieuwe directory */Home/site/wwwroot/apm*.
-5. Upload de uitgepakte NewRelic Java-Agent bestanden naar een map onder */Home/site/wwwroot/apm*. De bestanden voor uw agent moeten in */Home/site/wwwroot/apm/newrelic*zijn.
+4. [Ssh in uw app service-exemplaar](configure-linux-open-ssh-session.md) en maak een nieuwe directory */Home/site/wwwroot/apm* .
+5. Upload de uitgepakte NewRelic Java-Agent bestanden naar een map onder */Home/site/wwwroot/apm* . De bestanden voor uw agent moeten in */Home/site/wwwroot/apm/newrelic* zijn.
 6. Wijzig het YAML-bestand op */Home/site/wwwroot/apm/newrelic/newrelic.yml* en vervang de tijdelijke aanduiding voor de licentie waarde door uw eigen licentie code.
 7. In de Azure Portal, bladert u naar uw toepassing in App Service en maakt u een nieuwe toepassings instelling.
    
     - Voor **Java SE** -apps maakt u een omgevings variabele `JAVA_OPTS` met de naam met de waarde `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` .
-    - Voor **Tomcat**maakt u een omgevings variabele `CATALINA_OPTS` met de naam met de waarde `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` .
+    - Voor **Tomcat** maakt u een omgevings variabele `CATALINA_OPTS` met de naam met de waarde `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` .
 
 ::: zone-end
 
@@ -364,8 +364,8 @@ In deze sectie wordt beschreven hoe u Java-toepassingen die zijn geïmplementeer
 
 1. Een AppDynamics-account maken op [AppDynamics.com](https://www.appdynamics.com/community/register/)
 2. De Java-agent downloaden van de AppDynamics-website, de bestands naam is vergelijkbaar met *AppServerAgent-x.x.x.xxxxx.zip*
-3. Gebruik de [kudu-console](https://github.com/projectkudu/kudu/wiki/Kudu-console) om een nieuwe directory */Home/site/wwwroot/apm*te maken.
-4. Upload de Java-Agent bestanden naar een map onder */Home/site/wwwroot/apm*. De bestanden voor uw agent moeten in */Home/site/wwwroot/apm/appdynamics*zijn.
+3. Gebruik de [kudu-console](https://github.com/projectkudu/kudu/wiki/Kudu-console) om een nieuwe directory */Home/site/wwwroot/apm* te maken.
+4. Upload de Java-Agent bestanden naar een map onder */Home/site/wwwroot/apm* . De bestanden voor uw agent moeten in */Home/site/wwwroot/apm/appdynamics* zijn.
 5. In de Azure Portal, bladert u naar uw toepassing in App Service en maakt u een nieuwe toepassings instelling.
 
    - Voor **Java SE** -apps maakt u een omgevings variabele `JAVA_OPTS` met de naam met de waarde `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` waar de naam van `<app-name>` uw app service is.
@@ -376,8 +376,8 @@ In deze sectie wordt beschreven hoe u Java-toepassingen die zijn geïmplementeer
 
 1. Een AppDynamics-account maken op [AppDynamics.com](https://www.appdynamics.com/community/register/)
 2. De Java-agent downloaden van de AppDynamics-website, de bestands naam is vergelijkbaar met *AppServerAgent-x.x.x.xxxxx.zip*
-3. [Ssh in uw app service-exemplaar](configure-linux-open-ssh-session.md) en maak een nieuwe directory */Home/site/wwwroot/apm*.
-4. Upload de Java-Agent bestanden naar een map onder */Home/site/wwwroot/apm*. De bestanden voor uw agent moeten in */Home/site/wwwroot/apm/appdynamics*zijn.
+3. [Ssh in uw app service-exemplaar](configure-linux-open-ssh-session.md) en maak een nieuwe directory */Home/site/wwwroot/apm* .
+4. Upload de Java-Agent bestanden naar een map onder */Home/site/wwwroot/apm* . De bestanden voor uw agent moeten in */Home/site/wwwroot/apm/appdynamics* zijn.
 5. In de Azure Portal, bladert u naar uw toepassing in App Service en maakt u een nieuwe toepassings instelling.
 
    - Voor **Java SE** -apps maakt u een omgevings variabele `JAVA_OPTS` met de naam met de waarde `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` waar de naam van `<app-name>` uw app service is.
@@ -437,7 +437,7 @@ Bepaal vervolgens of de gegevens bron beschikbaar moet zijn voor één toepassin
 
 1. Maak een *context.xml* -bestand in de *META-INF/-* map van uw project. Maak de *META-INF/-* map als deze niet bestaat.
 
-2. Voeg in *context.xml*een `Context` element toe om de gegevens bron te koppelen aan een JNDI-adres. Vervang de `driverClassName` tijdelijke aanduiding door de naam van de klasse van uw stuur programma uit de bovenstaande tabel.
+2. Voeg in *context.xml* een `Context` element toe om de gegevens bron te koppelen aan een JNDI-adres. Vervang de `driverClassName` tijdelijke aanduiding door de naam van de klasse van uw stuur programma uit de bovenstaande tabel.
 
     ```xml
     <Context>
@@ -515,7 +515,7 @@ Bepaal vervolgens of de gegevens bron beschikbaar moet zijn voor één toepassin
 
 1. Maak een *context.xml* -bestand in de *META-INF/-* map van uw project. Maak de *META-INF/-* map als deze niet bestaat.
 
-2. Voeg in *context.xml*een `Context` element toe om de gegevens bron te koppelen aan een JNDI-adres. Vervang de `driverClassName` tijdelijke aanduiding door de naam van de klasse van uw stuur programma uit de bovenstaande tabel.
+2. Voeg in *context.xml* een `Context` element toe om de gegevens bron te koppelen aan een JNDI-adres. Vervang de `driverClassName` tijdelijke aanduiding door de naam van de klasse van uw stuur programma uit de bovenstaande tabel.
 
     ```xml
     <Context>
@@ -541,16 +541,16 @@ Bepaal vervolgens of de gegevens bron beschikbaar moet zijn voor één toepassin
 
 #### <a name="shared-server-level-resources"></a>Resources op gedeelde server niveau
 
-Als u een gedeelde gegevens bron op server niveau wilt toevoegen, moet u de server.xml van Tomcat bewerken. Upload eerst een [opstart script](faq-app-service-linux.md#built-in-images) en stel het pad naar het script in de **Configuration**  >  **opstart opdracht**van de configuratie in. U kunt het opstart script uploaden met [FTP](deploy-ftp.md).
+Als u een gedeelde gegevens bron op server niveau wilt toevoegen, moet u de server.xml van Tomcat bewerken. Upload eerst een [opstart script](faq-app-service-linux.md#built-in-images) en stel het pad naar het script in de **Configuration**  >  **opstart opdracht** van de configuratie in. U kunt het opstart script uploaden met [FTP](deploy-ftp.md).
 
 Met het opstart script wordt een [XSL-trans formatie](https://www.w3schools.com/xml/xsl_intro.asp) naar het server.xml-bestand gemaakt en wordt het resulterende XML-bestand uitgevoerd naar `/usr/local/tomcat/conf/server.xml` . Het opstart script moet libxslt installeren via APK. Het XSL-bestand en het opstart script kunnen worden geüpload via FTP. Hieronder ziet u een voor beeld van een opstart script.
 
 ```sh
-# Install libxslt. Also copy the transform file to /home/tomcat/conf/
+# Install libxslt. Also copy the transform file to /home/tomcat/conf/
 apk add --update libxslt
 
-# Usage: xsltproc --output output.xml style.xsl input.xml
-xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /usr/local/tomcat/conf/server.xml
+# Usage: xsltproc --output output.xml style.xsl input.xml
+xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /usr/local/tomcat/conf/server.xml
 ```
 
 Hieronder vindt u een voor beeld van een XSL-bestand. Het XSL-voorbeeld bestand voegt een nieuw connector knooppunt toe aan de Tomcat-server.xml.
@@ -678,7 +678,7 @@ Er zijn drie kern stappen bij het [registreren van een gegevens bron met JBoss E
     ```
 
 1. Gebruik een FTP-client van uw keuze, upload uw JDBC-stuur programma,, `jboss-cli-commands.cli` `startup_script.sh` en de module definitie naar `/site/deployments/tools/` .
-2. Configureer uw site om uit te voeren `startup_script.sh` wanneer de container wordt gestart. In azure portal gaat u naar **configuratie**  >  **algemene instellingen**  >  **opstart opdracht**. Stel het opstart opdracht veld in op `/home/site/deployments/tools/startup_script.sh` . U moet vervolgens de wijzigingen **Opslaan**.
+2. Configureer uw site om uit te voeren `startup_script.sh` wanneer de container wordt gestart. In azure portal gaat u naar **configuratie**  >  **algemene instellingen**  >  **opstart opdracht** . Stel het opstart opdracht veld in op `/home/site/deployments/tools/startup_script.sh` . U moet vervolgens de wijzigingen **Opslaan** .
 
 Om te bevestigen dat de gegevens bron is toegevoegd aan de JBoss-server, SSH in uw webapp en run `$JBOSS_HOME/bin/jboss-cli.sh --connect` . Zodra u verbinding hebt gemaakt met JBoss, voert u de uit `/subsystem=datasources:read-resource` om een lijst met gegevens bronnen af te drukken.
 

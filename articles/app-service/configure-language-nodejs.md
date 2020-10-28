@@ -1,17 +1,17 @@
 ---
 title: Node.js-apps configureren
 description: Meer informatie over het configureren van een Node.js-app in de systeem eigen Windows-exemplaren of in een vooraf ontwikkelde Linux-container in Azure App Service. In dit artikel worden de meest algemene configuratietaken beschreven.
-ms.custom: devx-track-js
+ms.custom: devx-track-js, devx-track-azurecli
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 48b111966d58af80b6c34fa17231034f4f0cc213
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f925854f4ef09ccc74c0ec1e8fdcca6b71d1437
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311832"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744062"
 ---
 # <a name="configure-a-nodejs-app-for-azure-app-service"></a>Een Node.js-app configureren voor Azure App Service
 
@@ -93,8 +93,8 @@ Als u uw app wilt implementeren met behulp van Git of zip-pakketten waarbij bouw
 
 1. Voer aangepast script uit als dit door `PRE_BUILD_SCRIPT_PATH` is opgegeven.
 1. `npm install`Zonder vlaggen worden uitgevoerd, waaronder NPM `preinstall` en `postinstall` scripts en wordt ook geïnstalleerd `devDependencies` .
-1. Voer uit `npm run build` Als u een build-script hebt opgegeven in uw *package.jsop*.
-1. Uitvoeren `npm run build:azure` als een build: Azure script is opgegeven in uw *package.jsop*.
+1. Voer uit `npm run build` Als u een build-script hebt opgegeven in uw *package.jsop* .
+1. Uitvoeren `npm run build:azure` als een build: Azure script is opgegeven in uw *package.jsop* .
 1. Voer aangepast script uit als dit is opgegeven door `POST_BUILD_SCRIPT_PATH`.
 
 > [!NOTE]
@@ -123,7 +123,7 @@ De Node.js-containers worden geleverd met [PM2](https://pm2.keymetrics.io/), een
 
 ### <a name="run-custom-command"></a>Aangepaste opdracht uitvoeren
 
-App Service kunt uw app starten met een aangepaste opdracht, zoals een uitvoerbaar bestand zoals *Run.sh*. Als u bijvoorbeeld wilt uitvoeren `npm run start:prod` , voert u de volgende opdracht uit in het [Cloud shell](https://shell.azure.com):
+App Service kunt uw app starten met een aangepaste opdracht, zoals een uitvoerbaar bestand zoals *Run.sh* . Als u bijvoorbeeld wilt uitvoeren `npm run start:prod` , voert u de volgende opdracht uit in het [Cloud shell](https://shell.azure.com):
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "npm run start:prod"
@@ -164,7 +164,7 @@ De container start automatisch uw app met PM2 wanneer een van de gemeen schappel
 U kunt ook een aangepast start bestand met de volgende extensies configureren:
 
 - Een *js* -bestand
-- Een [PM2-bestand](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file) met de *extensie. json*, *.config.js*, *. yaml*of *. yml*
+- Een [PM2-bestand](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file) met de *extensie. json* , *.config.js* , *. yaml* of *. yml*
 
 Als u een aangepast start bestand wilt toevoegen, voert u de volgende opdracht uit in de [Cloud shell](https://shell.azure.com):
 
@@ -177,7 +177,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 > [!NOTE]
 > Externe fout opsporing is momenteel beschikbaar als preview-versie.
 
-U kunt fouten opsporen in uw Node.js-app op afstand in [Visual Studio code](https://code.visualstudio.com/) als u deze configureert voor [uitvoering met PM2](#run-with-pm2), behalve wanneer u deze uitvoert met een * .config.js, *. yml of *. yaml*.
+U kunt fouten opsporen in uw Node.js-app op afstand in [Visual Studio code](https://code.visualstudio.com/) als u deze configureert voor [uitvoering met PM2](#run-with-pm2), behalve wanneer u deze uitvoert met een * .config.js, *. yml of *. yaml* .
 
 In de meeste gevallen is er geen extra configuratie vereist voor uw app. Als uw app wordt uitgevoerd met een *process.jsin* het bestand (standaard of aangepast), moet deze een `script` eigenschap hebben in het JSON-basis programma. Bijvoorbeeld:
 
@@ -191,9 +191,9 @@ In de meeste gevallen is er geen extra configuratie vereist voor uw app. Als uw 
 
 Als u Visual Studio code voor externe fout opsporing wilt instellen, installeert u de [app service extensie](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice). Volg de instructies op de pagina extensie en meld u aan bij Azure in Visual Studio code.
 
-Zoek in de Azure Verkenner de app waarvoor u fouten wilt opsporen, klik er met de rechter muisknop op en selecteer **externe fout opsporing starten**. Klik op **Ja** om het voor uw app in te scha kelen. App Service start een tunnel proxy voor u en koppelt de debugger. U kunt vervolgens aanvragen indienen bij de app en zien hoe het fout opsporingsprogramma op onderbrekings punten pauzeert.
+Zoek in de Azure Verkenner de app waarvoor u fouten wilt opsporen, klik er met de rechter muisknop op en selecteer **externe fout opsporing starten** . Klik op **Ja** om het voor uw app in te scha kelen. App Service start een tunnel proxy voor u en koppelt de debugger. U kunt vervolgens aanvragen indienen bij de app en zien hoe het fout opsporingsprogramma op onderbrekings punten pauzeert.
 
-Als u klaar bent met het oplossen van fouten, stopt u het fout opsporingsprogramma door de **verbinding te verbreken** Wanneer u hierom wordt gevraagd, klikt u op **Ja** om externe fout opsporing uit te scha kelen. Als u dit later wilt uitschakelen, klikt u opnieuw met de rechter muisknop op uw app in azure Verkenner en selecteert u **externe fout opsporing uitschakelen**.
+Als u klaar bent met het oplossen van fouten, stopt u het fout opsporingsprogramma door de **verbinding te verbreken** Wanneer u hierom wordt gevraagd, klikt u op **Ja** om externe fout opsporing uit te scha kelen. Als u dit later wilt uitschakelen, klikt u opnieuw met de rechter muisknop op uw app in azure Verkenner en selecteert u **externe fout opsporing uitschakelen** .
 
 ::: zone-end
 
@@ -227,7 +227,7 @@ npm install kuduscript -g
 kuduscript --node --scriptType bash --suppressPrompt
 ```
 
-De hoofdmap van uw opslag plaats heeft nu twee extra bestanden: *. Deployment* en *Deploy.sh*.
+De hoofdmap van uw opslag plaats heeft nu twee extra bestanden: *. Deployment* en *Deploy.sh* .
 
 Open *Deploy.sh* en zoek de `Deployment` sectie, die er als volgt uitziet:
 
@@ -318,7 +318,7 @@ Wanneer een werk Node.js-app anders werkt in App Service of fouten bevat, kunt u
 
 - [Open de logboekstream](#access-diagnostic-logs).
 - Test de app lokaal in de productie modus. App Service worden uw Node.js-apps uitgevoerd in de productie modus. u moet er dus voor zorgen dat uw project in de productie modus lokaal werkt zoals verwacht. Bijvoorbeeld:
-    - Afhankelijk van uw *package.jsop*kunnen verschillende pakketten worden geïnstalleerd voor de productie modus ( `dependencies` VS. `devDependencies` ).
+    - Afhankelijk van uw *package.jsop* kunnen verschillende pakketten worden geïnstalleerd voor de productie modus ( `dependencies` VS. `devDependencies` ).
     - Bepaalde web Frameworks kunnen statische bestanden in de productie modus anders implementeren.
     - Bepaalde web Frameworks kunnen aangepaste opstart scripts gebruiken wanneer ze in de productie modus worden uitgevoerd.
 - Voer uw app uit in de App Service in de ontwikkelings modus. In [MEAN.js](https://meanjs.org/)kunt u bijvoorbeeld uw app in runtime instellen op de ontwikkelings modus door [de app- `NODE_ENV` instelling](configure-common.md)in te stellen.
