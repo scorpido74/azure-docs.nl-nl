@@ -48,7 +48,7 @@
               href: ../../hdinsight/spark/apache-spark-jupyter-spark-sql.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Stream Analytics
               href: ../../stream-analytics/quick-create-azure-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
-            - name: Synapse Analytics
+            - name: Synapse Analytics SQL-pool
               href: ../../synapse-analytics/sql-data-warehouse/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Blockchain
           items:
@@ -158,6 +158,10 @@
               href: ../../application-gateway/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: CDN (Content Delivery Network)
               href: ../../cdn/create-profile-endpoint-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: DNS
+              href: ../../dns/dns-get-started-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: ExpressRoute
+              href: ../../expressroute/quickstart-create-expressroute-vnet-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Firewall - Beschikbaarheidszones
               href: ../../firewall/deploy-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Firewall - IP-groepen
@@ -166,21 +170,27 @@
               href: ../../firewall/quick-create-multiple-ip-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Firewall Manager
               href: ../../firewall-manager/quick-secure-virtual-hub.md?toc=/azure/azure-resource-manager/templates/toc.json
-            - name: Load Balancer
+            - name: Load Balancer - openbaar
               href: ../../load-balancer/quickstart-load-balancer-standard-public-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: NAT-gateway
+              href: ../../virtual-network/quickstart-create-nat-gateway-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Privé-eindpunt
               href: ../../private-link/create-private-endpoint-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Private Link-service
               href: ../../private-link/create-private-link-service-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Traffic Manager
+              href: ../../traffic-manager/quickstart-create-traffic-manager-profile-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Web Application Firewall
               href: ../../web-application-firewall/ag/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Beveiliging
           items:
             - name: Attestation
               href: ../../attestation/quickstart-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-            - name: Key Vault
+            - name: Key Vault - geheim
               href: ../../key-vault/secrets/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: Storage
+            - name: Security Center
+              href: ../../security-center/quickstart-automation-alert.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Opslag
           items:
             - name: Data Share
               href: ../../data-share/share-your-data-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
@@ -188,6 +198,8 @@
               href: ../../storage/common/storage-account-create.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Web
           items:
+            - name: API Management
+              href: ../../api-management/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: App Service
               href: ../../app-service/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Notification Hubs
@@ -343,36 +355,42 @@
             - name: Uitvoer
               displayName: 'iteration,copy'
               href: copy-outputs.md
-    - name: Sjablooneigenschappen ontdekken
-      items:
-        - name: Sjabloon exporteren
-          href: export-template-portal.md
-        - name: Resources ontdekken
-          href: view-resources.md
-    - name: Sjablonen valideren
-      items:
-        - name: What if-implementatie
-          href: template-deploy-what-if.md
-        - name: Testtoolkit
-          href: test-toolkit.md
-        - name: Testcases
-          href: test-cases.md
     - name: Sjablonen implementeren
       items:
-        - name: Implementeren - portal
-          displayName: deployment
-          href: deploy-portal.md
-        - name: Implementeren - CLI
-          displayName: deployment
-          href: deploy-cli.md
-        - name: Implementeren - PowerShell
-          displayName: deployment
-          href: deploy-powershell.md
-        - name: Implementeren - REST API
-          displayName: deployment
-          href: deploy-rest.md
-        - name: Implementeren vanuit GitHub
-          href: deploy-to-azure-button.md
+        - name: Implementatiebewerkingen
+          items:
+            - name: Implementeren - portal
+              displayName: deployment
+              href: deploy-portal.md
+            - name: Implementeren - CLI
+              displayName: deployment
+              href: deploy-cli.md
+            - name: Implementeren - PowerShell
+              displayName: deployment
+              href: deploy-powershell.md
+            - name: Implementeren - REST API
+              displayName: deployment
+              href: deploy-rest.md
+            - name: Implementeren - GitHub
+              href: deploy-to-azure-button.md
+            - name: Implementeren - Cloud Shell
+              href: deploy-cloud-shell.md
+        - name: Bereiken
+          items:
+            - name: Resourcegroep
+              href: deploy-to-resource-group.md
+            - name: Abonnement
+              href: deploy-to-subscription.md
+            - name: Beheergroep
+              href: deploy-to-management-group.md
+            - name: Tenant
+              href: deploy-to-tenant.md
+            - name: Uitbreidingsresources
+              href: scope-extension-resources.md
+            - name: Functies binnen bereiken
+              href: scope-functions.md
+        - name: What if-implementatie
+          href: template-deploy-what-if.md
         - name: Opnieuw implementeren bij fout
           displayName: rollback
           href: rollback-on-error.md
@@ -380,16 +398,6 @@
           href: secure-template-with-sas-token.md
         - name: Implementatiegeschiedenis weergeven
           href: deployment-history.md
-    - name: Bereikimplementaties
-      items:
-        - name: Abonnement
-          href: deploy-to-subscription.md
-        - name: Beheergroep
-          href: deploy-to-management-group.md
-        - name: Tenant
-          href: deploy-to-tenant.md
-        - name: Kruislingse implementaties
-          href: cross-scope-deployment.md
     - name: Parameters opgeven
       items:
         - name: Parameterbestand maken
@@ -397,12 +405,24 @@
         - name: Gevoelige waarden doorgeven
           displayname: key vault
           href: key-vault-parameter.md
+    - name: Testsjablonen
+      items:
+        - name: Testtoolkit
+          href: test-toolkit.md
+        - name: Testcases
+          href: test-cases.md
     - name: CI/CD
       items:
         - name: ARM-sjablonen met pijplijnen
           href: add-template-to-azure-pipelines.md
         - name: Implementeren - GitHub Actions
           href: deploy-github-actions.md
+    - name: Sjablooneigenschappen ontdekken
+      items:
+        - name: Sjabloon exporteren
+          href: export-template-portal.md
+        - name: Resources ontdekken
+          href: view-resources.md
     - name: Creatiehulpprogramma's gebruiken
       items:
         - name: Visual Studio
