@@ -12,24 +12,24 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: f687901601ba517a50710610d4c827524b8ec565
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2b10744222da8e5d85b19e1ded5aa24cf9c9706
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85320978"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637850"
 ---
 # <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>De opgeslagen procedure vanuit een Kopieer activiteit in Azure Data Factory aanroepen
 > [!NOTE]
 > Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [gegevens transformeren met behulp van opgeslagen procedure activiteit in Data Factory](../transform-data-using-stored-procedure.md).
 
 
-Bij het kopiëren van gegevens naar [SQL Server](data-factory-sqlserver-connector.md) of [Azure SQL database](data-factory-azure-sql-connector.md), kunt u de **SqlSink** in de Kopieer activiteit configureren om een opgeslagen procedure aan te roepen. U kunt de opgeslagen procedure gebruiken voor het uitvoeren van eventuele aanvullende verwerking (het samen voegen van kolommen, het opzoeken van waarden, invoeging in meerdere tabellen, enzovoort). Dit is vereist voordat u gegevens in de doel tabel invoegt. Deze functie maakt gebruik van [para meters met tabel waarden](https://msdn.microsoft.com/library/bb675163.aspx). 
+Bij het kopiëren van gegevens naar [SQL Server](data-factory-sqlserver-connector.md) of [Azure SQL database](data-factory-azure-sql-connector.md), kunt u de **SqlSink** in de Kopieer activiteit configureren om een opgeslagen procedure aan te roepen. U kunt de opgeslagen procedure gebruiken voor het uitvoeren van eventuele aanvullende verwerking (het samen voegen van kolommen, het opzoeken van waarden, invoeging in meerdere tabellen, enzovoort). Dit is vereist voordat u gegevens in de doel tabel invoegt. Deze functie maakt gebruik van [para meters met tabel waarden](/dotnet/framework/data/adonet/sql/table-valued-parameters). 
 
 In het volgende voor beeld ziet u hoe u een opgeslagen procedure in een SQL Server-Data Base aanroept vanuit een Data Factory pijp lijn (Kopieer activiteit):  
 
 ## <a name="output-dataset-json"></a>JSON van uitvoer gegevensset
-Stel in de JSON van de uitvoer gegevensset het **type** in op: **SqlServerTable**. Stel deze in op **AzureSqlTable** om te gebruiken met Azure SQL database. De waarde voor de eigenschap **TableName** moet overeenkomen met de naam van de eerste para meter van de opgeslagen procedure.  
+Stel in de JSON van de uitvoer gegevensset het **type** in op: **SqlServerTable** . Stel deze in op **AzureSqlTable** om te gebruiken met Azure SQL database. De waarde voor de eigenschap **TableName** moet overeenkomen met de naam van de eerste para meter van de opgeslagen procedure.  
 
 ```json
 {
@@ -68,7 +68,7 @@ Definieer de sectie **SqlSink** in de JSON Copy activity als volgt. Als u een op
 ```
 
 ## <a name="stored-procedure-definition"></a>Definitie van opgeslagen procedure 
-Definieer in uw data base de opgeslagen procedure met de naam **SqlWriterStoredProcedureName**. De opgeslagen procedure verwerkt invoer gegevens uit de brongegevens opslag en voegt gegevens toe aan een tabel in de doel database. De naam van de eerste para meter van de opgeslagen procedure moet overeenkomen met de TableName die is gedefinieerd in de gegevensset JSON (marketing).
+Definieer in uw data base de opgeslagen procedure met de naam **SqlWriterStoredProcedureName** . De opgeslagen procedure verwerkt invoer gegevens uit de brongegevens opslag en voegt gegevens toe aan een tabel in de doel database. De naam van de eerste para meter van de opgeslagen procedure moet overeenkomen met de TableName die is gedefinieerd in de gegevensset JSON (marketing).
 
 ```sql
 CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @stringData varchar(256)
@@ -81,7 +81,7 @@ END
 ```
 
 ## <a name="table-type-definition"></a>Definitie van tabel type
-Definieer in uw data base het tabel type met de naam **SqlWriterTableType**. Het schema van het tabel type moet overeenkomen met het schema van de invoer gegevensset.
+Definieer in uw data base het tabel type met de naam **SqlWriterTableType** . Het schema van het tabel type moet overeenkomen met het schema van de invoer gegevensset.
 
 ```sql
 CREATE TYPE [dbo].[MarketingType] AS TABLE(

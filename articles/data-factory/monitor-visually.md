@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: fcbf48081484941fd93f209bee21eb14c2c38310
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48373c9ffc9146b6e62b62fb7d7fe10d571ce27f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570146"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638105"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Azure Data Factory visueel bewaken
 
@@ -36,7 +36,7 @@ De standaard weergave voor bewaking is de lijst met pijplijn uitvoeringen in de 
 | Start uitvoeren | Begin datum en-tijd voor de pijplijn uitvoering (MM/DD/JJJJ, uu: MM: SS AM/PM) |
 | Duur | Uitvoerings duur (UU: MM: SS) |
 | Geactiveerd door | De naam van de trigger die de pijp lijn heeft gestart |
-| Status | **Mislukt**, **geslaagd**, **in behandeling**, **geannuleerd**of in **wachtrij** |
+| Status | **Mislukt** , **geslaagd** , **in behandeling** , **geannuleerd** of in **wachtrij** |
 | Aantekeningen | Filter bare labels die zijn gekoppeld aan een pijp lijn  |
 | Parameters | Para meters voor de pijp lijn run (naam/waarde-paren) |
 | Fout | Als de pijp lijn is mislukt, wordt de uitvoerings fout |
@@ -55,11 +55,11 @@ Als u de uitvoering van de activiteit voor elke pijplijn uitvoering wilt weer ge
 | **Kolomnaam** | **Beschrijving** |
 | --- | --- |
 | Activiteitsnaam | De naam van de activiteit in de pijp lijn |
-| Type activiteit | Type activiteit, zoals **copy**, **ExecuteDataFlow**of **AzureMLExecutePipeline** |
+| Type activiteit | Type activiteit, zoals **copy** , **ExecuteDataFlow** of **AzureMLExecutePipeline** |
 | Acties | Pictogrammen waarmee u JSON-invoer gegevens, JSON-uitvoer gegevens of gedetailleerde activiteiten voor bewaking kunt weer geven | 
 | Start uitvoeren | Begin datum en-tijd voor de uitvoering van de activiteit (MM/DD/JJJJ, uu: MM: SS AM/PM) |
 | Duur | Uitvoerings duur (UU: MM: SS) |
-| Status | **Mislukt**, **geslaagd**, **in uitvoering**of **geannuleerd** |
+| Status | **Mislukt** , **geslaagd** , **in uitvoering** of **geannuleerd** |
 | Integration Runtime | Waarop Integration Runtime de activiteit is uitgevoerd |
 | Gebruikerseigenschappen | Door de gebruiker gedefinieerde eigenschappen van de activiteit |
 | Fout | Als de activiteit is mislukt, wordt de uitvoerings fout |
@@ -93,8 +93,8 @@ Scha kelen tussen de uitvoering van de pijp lijn in aflopende of oplopende volg 
 | **Kolomnaam** | **Beschrijving** |
 | --- | --- |
 | Naam van pijp lijn | Filter op de naam van de pijp lijn. |
-| Start uitvoeren |  Bepaal het tijds bereik van de pijplijn uitvoeringen wordt weer gegeven. Opties bevatten snelle filters voor de **afgelopen 24 uur**, de **afgelopen week**, de **afgelopen 30 dagen** of het selecteren van een aangepaste datum en tijd. |
-| Uitvoerings status | Filter wordt uitgevoerd op status: **geslaagd**, **mislukt**, in **wachtrij**, **geannuleerd**of wordt **uitgevoerd**. |
+| Start uitvoeren |  Bepaal het tijds bereik van de pijplijn uitvoeringen wordt weer gegeven. Opties bevatten snelle filters voor de **afgelopen 24 uur** , de **afgelopen week** , de **afgelopen 30 dagen** of het selecteren van een aangepaste datum en tijd. |
+| Uitvoerings status | Filter wordt uitgevoerd op status: **geslaagd** , **mislukt** , in **wachtrij** , **geannuleerd** of wordt **uitgevoerd** . |
 | Aantekeningen | Filteren op labels die zijn toegepast op elke pijp lijn |
 | Wordt uitgevoerd | Filteren of u reran-pijp lijnen wilt zien |
 
@@ -110,7 +110,7 @@ Verg root of verklein de kolom breedten in de lijst weergave door met de muis aa
 
 ## <a name="rerun-activities-inside-a-pipeline"></a>Activiteiten in een pijp lijn opnieuw uitvoeren
 
-U kunt activiteiten in een pijp lijn opnieuw uitvoeren. Selecteer **uitvoering van activiteit weer geven**en selecteer vervolgens de activiteit in de pijp lijn van welk punt u de pijp lijn opnieuw wilt uitvoeren.
+U kunt activiteiten in een pijp lijn opnieuw uitvoeren. Selecteer **uitvoering van activiteit weer geven** en selecteer vervolgens de activiteit in de pijp lijn van welk punt u de pijp lijn opnieuw wilt uitvoeren.
 
 ![Uitvoeringen van activiteit bekijken](media/monitor-visually/rerun-activities-image1.png)
 
@@ -118,7 +118,7 @@ U kunt activiteiten in een pijp lijn opnieuw uitvoeren. Selecteer **uitvoering v
 
 ### <a name="rerun-from-failed-activity"></a>Opnieuw uitvoeren op basis van mislukte activiteit
 
-Als een activiteit mislukt, er een time-out optreedt of de bewerking wordt geannuleerd, kunt u de pijp lijn opnieuw uitvoeren vanaf de mislukte activiteit door **opnieuw uitvoeren te selecteren op basis van de mislukte activiteit**.
+Als een activiteit mislukt, er een time-out optreedt of de bewerking wordt geannuleerd, kunt u de pijp lijn opnieuw uitvoeren vanaf de mislukte activiteit door **opnieuw uitvoeren te selecteren op basis van de mislukte activiteit** .
 
 ![Mislukte activiteit opnieuw uitvoeren](media/monitor-visually/rerun-failed-activity.png)
 
@@ -212,4 +212,4 @@ Bekijk de volgende video voor een inleiding en demonstratie van zeven minuten vo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over het bewaken en beheren van pijp lijnen het [programmatische artikel pijp lijnen bewaken en beheren](https://docs.microsoft.com/azure/data-factory/monitor-programmatically) .
+Zie voor meer informatie over het bewaken en beheren van pijp lijnen het [programmatische artikel pijp lijnen bewaken en beheren](./monitor-programmatically.md) .

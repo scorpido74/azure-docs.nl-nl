@@ -12,12 +12,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 09/23/2020
-ms.openlocfilehash: 942cbda3652692acc8eedf2ec9508bb501a60547
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 204399186ae229324f9dc478e0ef58a173060013
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332097"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638173"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Gegevens kopiëren van en naar Dynamics 365 (Common Data Service) of Dynamics CRM door gebruik te maken van Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -56,14 +56,14 @@ Voor Dynamics 365 worden de volgende toepassings typen ondersteund:
 
 Deze connector biedt geen ondersteuning voor andere toepassings typen zoals Finance, Operations en talen.
 
-Deze Dynamics-connector is gebaseerd op [Dynamics xRM-hulp middelen](https://docs.microsoft.com/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools).
+Deze Dynamics-connector is gebaseerd op [Dynamics xRM-hulp middelen](/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools).
 
 >[!TIP]
 >U kunt de [Dynamics AX-connector](connector-dynamics-ax.md)gebruiken om gegevens uit Dynamics 365-Financiën en-bewerkingen te kopiëren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u deze connector met Azure AD-Service-Principal-verificatie wilt gebruiken, moet u server-naar-Server-verificatie (S2S) in Common Data Service of Dynamics instellen. Raadpleeg [dit artikel](https://docs.microsoft.com/powerapps/developer/common-data-service/build-web-applications-server-server-s2s-authentication) voor gedetailleerde stappen.
+Als u deze connector met Azure AD-Service-Principal-verificatie wilt gebruiken, moet u server-naar-Server-verificatie (S2S) in Common Data Service of Dynamics instellen. Raadpleeg [dit artikel](/powerapps/developer/common-data-service/build-web-applications-server-server-s2s-authentication) voor gedetailleerde stappen.
 
 ## <a name="get-started"></a>Aan de slag
 
@@ -172,7 +172,7 @@ De volgende eigenschappen worden ondersteund voor de Dynamics gekoppelde service
 
 ### <a name="dynamics-365-and-dynamics-crm-on-premises-with-ifd"></a>Dynamics 365 en Dynamics CRM on-premises met IFD
 
-Aanvullende eigenschappen die worden vergeleken met Dynamics online zijn **hostnaam** en **poort**.
+Aanvullende eigenschappen die worden vergeleken met Dynamics online zijn **hostnaam** en **poort** .
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
@@ -255,7 +255,7 @@ Als u gegevens wilt kopiëren uit Dynamics, ondersteunt het gedeelte **bron** va
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op "DynamicsSource", "DynamicsCrmSource" of "CommonDataServiceForAppsSource". | Ja |
-| query | FetchXML is een eigen query taal die wordt gebruikt in Dynamics online en on-premises. Zie het volgende voorbeeld Zie [Query's bouwen met FetchXML](https://msdn.microsoft.com/library/gg328332.aspx)voor meer informatie. | Nee if `entityName` in de gegevensset is opgegeven |
+| query | FetchXML is een eigen query taal die wordt gebruikt in Dynamics online en on-premises. Zie het volgende voorbeeld Zie [Query's bouwen met FetchXML](/previous-versions/dynamicscrm-2016/developers-guide/gg328332(v=crm.8))voor meer informatie. | Nee if `entityName` in de gegevensset is opgegeven |
 
 >[!NOTE]
 >De PK-kolom wordt altijd gekopieerd, zelfs als de kolom projectie die u configureert in de FetchXML-query deze niet bevat.
@@ -326,12 +326,12 @@ Als u gegevens wilt kopiëren naar Dynamics, ondersteunt het gedeelte **sink** v
 | writeBehavior | Het schrijf gedrag van de bewerking. De waarde moet ' Upsert ' zijn. | Ja |
 | alternateKeyName | De alternatieve sleutel naam die op uw entiteit is gedefinieerd om een upsert uit te voeren. | Nee. |
 | writeBatchSize | Het aantal rijen van gegevens dat in elke batch naar Dynamics is geschreven. | Nee. De standaardwaarde is 10. |
-| ignoreNullValues | Hiermee wordt aangegeven of Null-waarden moeten worden genegeerd voor andere invoer gegevens dan de sleutel velden tijdens een schrijf bewerking.<br/><br/>Geldige waarden zijn **True** en **False**:<ul><li>**Waar**: laat de gegevens in het doel object ongewijzigd wanneer u een upsert of update-bewerking doet. Voeg een gedefinieerde standaard waarde in wanneer u een INSERT-bewerking wilt uitvoeren.</li><li>**Onwaar**: werk de gegevens in het doel object bij naar een null-waarde wanneer u een upsert of update-bewerking uitgevoerd. Voeg een null-waarde toe wanneer u een INSERT-bewerking uitgevoerd.</li></ul> | Nee. De standaard waarde is **False**. |
+| ignoreNullValues | Hiermee wordt aangegeven of Null-waarden moeten worden genegeerd voor andere invoer gegevens dan de sleutel velden tijdens een schrijf bewerking.<br/><br/>Geldige waarden zijn **True** en **False** :<ul><li>**Waar** : laat de gegevens in het doel object ongewijzigd wanneer u een upsert of update-bewerking doet. Voeg een gedefinieerde standaard waarde in wanneer u een INSERT-bewerking wilt uitvoeren.</li><li>**Onwaar** : werk de gegevens in het doel object bij naar een null-waarde wanneer u een upsert of update-bewerking uitgevoerd. Voeg een null-waarde toe wanneer u een INSERT-bewerking uitgevoerd.</li></ul> | Nee. De standaard waarde is **False** . |
 
 >[!NOTE]
 >De standaard waarde voor de Sink- **writeBatchSize** en de **[parallelCopies](copy-activity-performance-features.md#parallel-copy)** voor de Kopieer activiteit voor de Dynamics-sink is 10. Daarom worden records van 100 standaard gelijktijdig verzonden naar Dynamics.
 
-Voor Dynamics 365 online geldt een limiet van [twee gelijktijdige batch-aanroepen per organisatie](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations). Als deze limiet wordt overschreden, wordt de uitzonde ring ' server bezet ' gegenereerd voordat de eerste aanvraag wordt uitgevoerd. Bewaar **writeBatchSize** op 10 of minder om te voor komen dat gelijktijdige aanroepen worden beperkt.
+Voor Dynamics 365 online geldt een limiet van [twee gelijktijdige batch-aanroepen per organisatie](/previous-versions/dynamicscrm-2016/developers-guide/jj863631(v=crm.8)#Run-time%20limitations). Als deze limiet wordt overschreden, wordt de uitzonde ring ' server bezet ' gegenereerd voordat de eerste aanvraag wordt uitgevoerd. Bewaar **writeBatchSize** op 10 of minder om te voor komen dat gelijktijdige aanroepen worden beperkt.
 
 De optimale combi natie van **writeBatchSize** en **parallelCopies** is afhankelijk van het schema van uw entiteit. Schema-elementen bevatten het aantal kolommen, de Rijgrootte en het aantal invoeg toepassingen, werk stromen of werk stroom activiteiten dat aan deze aanroepen is toegevoegd. De standaard instelling van **writeBatchSize** (10) &times; **parallelCopies** (10) is de aanbeveling volgens de Dynamics-service. Deze waarde werkt voor de meeste Dynamics-entiteiten, hoewel het mogelijk niet de beste prestaties biedt. U kunt de prestaties afstemmen door de combi natie te wijzigen in de instellingen voor de Kopieer activiteit.
 
@@ -378,7 +378,7 @@ Configureer het bijbehorende Data Factory gegevens type in een gegevensset struc
 | Dynamics-gegevens type | Data Factory tussentijds gegevens type | Ondersteund als bron | Ondersteund als Sink |
 |:--- |:--- |:--- |:--- |
 | AttributeTypeCode. BigInt | Omvang | ✓ | ✓ |
-| AttributeTypeCode. Boolean | Booleaans | ✓ | ✓ |
+| AttributeTypeCode. Boolean | Boolean-waarde | ✓ | ✓ |
 | AttributeType. klant | GUID | ✓ | ✓ (Zie de [richt lijnen](#writing-data-to-a-lookup-field)) |
 | AttributeType. DateTime | Datum/tijd | ✓ | ✓ |
 | AttributeType. decimaal | Decimaal | ✓ | ✓ |
@@ -386,7 +386,7 @@ Configureer het bijbehorende Data Factory gegevens type in een gegevensset struc
 | AttributeType. EntityName | Tekenreeks | ✓ | ✓ |
 | AttributeType. integer | Int32 | ✓ | ✓ |
 | AttributeType. lookup | GUID | ✓ | ✓ (Zie de [richt lijnen](#writing-data-to-a-lookup-field)) |
-| AttributeType. ManagedProperty | Booleaans | ✓ | |
+| AttributeType. ManagedProperty | Boolean-waarde | ✓ | |
 | AttributeType. Memo | Tekenreeks | ✓ | ✓ |
 | AttributeType. geld | Decimaal | ✓ | ✓ |
 | AttributeType. owner | GUID | ✓ | ✓ (Zie de [richt lijnen](#writing-data-to-a-lookup-field)) |
@@ -397,7 +397,7 @@ Configureer het bijbehorende Data Factory gegevens type in een gegevensset struc
 | AttributeType. status | Int32 | ✓ | ✓ |
 
 > [!NOTE]
-> De Dynamics-gegevens typen **AttributeType. CalendarRules**, **AttributeType. MultiSelectPicklist**en **AttributeType. PartyList** worden niet ondersteund.
+> De Dynamics-gegevens typen **AttributeType. CalendarRules** , **AttributeType. MultiSelectPicklist** en **AttributeType. PartyList** worden niet ondersteund.
 
 ## <a name="writing-data-to-a-lookup-field"></a>Gegevens schrijven naar een opzoek veld
 
@@ -413,15 +413,15 @@ Als u gegevens wilt schrijven naar een opzoek veld met meerdere doelen als klant
 
 Stel bijvoorbeeld dat de bron deze twee kolommen bevat:
 
-- Kolom **CustomerField** van het type **GUID**. Dit is de primaire sleutel waarde van de doel entiteit in Dynamics.
-- **Doel** kolom van het type **teken reeks**. Dit is de logische naam van de doel entiteit.
+- Kolom **CustomerField** van het type **GUID** . Dit is de primaire sleutel waarde van de doel entiteit in Dynamics.
+- **Doel** kolom van het type **teken reeks** . Dit is de logische naam van de doel entiteit.
 
-Stel ook dat u dergelijke gegevens wilt kopiëren naar het entiteits veld van de Sink Dynamics- **CustomerField** van het type **klant**.
+Stel ook dat u dergelijke gegevens wilt kopiëren naar het entiteits veld van de Sink Dynamics- **CustomerField** van het type **klant** .
 
 Wijs in kolom toewijzing van Copy-activiteit de twee kolommen als volgt toe:
 
-- **CustomerField** naar **CustomerField**. Deze toewijzing is de normale veld toewijzing.
-- **Doel** naar **CustomerField \@ EntityReference**. De kolom sink is een virtuele kolom die de verwijzing naar de entiteit vertegenwoordigt. Voer dergelijke veld namen in een toewijzing in, aangezien deze niet worden weer gegeven door het importeren van schema's.
+- **CustomerField** naar **CustomerField** . Deze toewijzing is de normale veld toewijzing.
+- **Doel** naar **CustomerField \@ EntityReference** . De kolom sink is een virtuele kolom die de verwijzing naar de entiteit vertegenwoordigt. Voer dergelijke veld namen in een toewijzing in, aangezien deze niet worden weer gegeven door het importeren van schema's.
 
 ![Dynamics Lookup-veld toewijzing van kolom](./media/connector-dynamics-crm-office-365/connector-dynamics-lookup-field-column-mapping.png)
 

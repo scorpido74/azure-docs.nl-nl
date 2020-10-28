@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 963a541835c5e45c5642f2d516da53fd165142b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be1cb7abbc243e3f79e183223fbbb32380f5d02d
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616921"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638037"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Azure Data Factory gebruiken om gegevens te migreren van Amazon S3 naar Azure Storage 
 
@@ -41,9 +41,9 @@ Klanten hebben PETA bytes van gegevens gemigreerd die bestaan uit honderden milj
 
 In de bovenstaande afbeelding ziet u hoe u met behulp van verschillende niveaus van parallellisme uitstekende gegevens verplaatsings snelheden kunt realiseren:
  
-- Eén Kopieer activiteit kan profiteren van schaal bare reken bronnen: wanneer u Azure Integration Runtime gebruikt, kunt u [Maxi maal 256 DIUs](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#data-integration-units) voor elke Kopieer activiteit op serverloze wijze opgeven. Wanneer u zelf-hostende Integration Runtime gebruikt, kunt u de machine hand matig opschalen of uitschalen naar meerdere machines ([Maxi maal 4 knoop punten](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)), en met één Kopieer activiteit wordt de bestands set gepartitioneerd op alle knoop punten. 
+- Eén Kopieer activiteit kan profiteren van schaal bare reken bronnen: wanneer u Azure Integration Runtime gebruikt, kunt u [Maxi maal 256 DIUs](./copy-activity-performance.md#data-integration-units) voor elke Kopieer activiteit op serverloze wijze opgeven. Wanneer u zelf-hostende Integration Runtime gebruikt, kunt u de machine hand matig opschalen of uitschalen naar meerdere machines ([Maxi maal 4 knoop punten](./create-self-hosted-integration-runtime.md#high-availability-and-scalability)), en met één Kopieer activiteit wordt de bestands set gepartitioneerd op alle knoop punten. 
 - Eén Kopieer activiteit leest van en schrijft naar het gegevens archief met behulp van meerdere threads. 
-- De controle stroom van ADF kan meerdere Kopieer activiteiten parallel starten, bijvoorbeeld [voor elke lus](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity). 
+- De controle stroom van ADF kan meerdere Kopieer activiteiten parallel starten, bijvoorbeeld [voor elke lus](./control-flow-for-each-activity.md). 
 
 ## <a name="resilience"></a>Tolerantie
 
@@ -81,10 +81,10 @@ Gegevens migreren via een persoonlijke koppeling:
 
 ### <a name="authentication-and-credential-management"></a>Verificatie en referentie beheer 
 
-- Als u zich wilt verifiëren bij het Amazon S3-account, moet u de [toegangs sleutel voor het IAM-account](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service#linked-service-properties)gebruiken. 
-- Meerdere verificatie typen worden ondersteund om verbinding te maken met Azure Blob Storage.  Het gebruik van [beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity) wordt ten zeerste aanbevolen: gebouwd op basis van een automatisch beheerde ADF-zoek opdracht in azure AD, kunt u pijp lijnen configureren zonder dat er referenties worden opgegeven in de definitie van de gekoppelde service.  U kunt ook verifiëren bij Azure Blob Storage met behulp van de [Service-Principal](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication), de [hand tekening voor gedeelde toegang](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)of de sleutel van het [opslag account](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication). 
-- Meerdere verificatie typen worden ook ondersteund om verbinding te maken met Azure Data Lake Storage Gen2.  Het gebruik van [beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity) wordt sterk aanbevolen, hoewel de sleutel van de [Service-Principal](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication) of het [opslag account](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication) ook kan worden gebruikt. 
-- Wanneer u geen beheerde identiteiten voor Azure-resources gebruikt, wordt [het opslaan van de referenties in azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) ten zeerste aanbevolen, zodat het eenvoudiger is om sleutels te beheren en te draaien zonder de gekoppelde services van ADF aan te passen.  Dit is ook een van de [Aanbevolen procedures voor CI/cd](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd). 
+- Als u zich wilt verifiëren bij het Amazon S3-account, moet u de [toegangs sleutel voor het IAM-account](./connector-amazon-simple-storage-service.md#linked-service-properties)gebruiken. 
+- Meerdere verificatie typen worden ondersteund om verbinding te maken met Azure Blob Storage.  Het gebruik van [beheerde identiteiten voor Azure-resources](./connector-azure-blob-storage.md#managed-identity) wordt ten zeerste aanbevolen: gebouwd op basis van een automatisch beheerde ADF-zoek opdracht in azure AD, kunt u pijp lijnen configureren zonder dat er referenties worden opgegeven in de definitie van de gekoppelde service.  U kunt ook verifiëren bij Azure Blob Storage met behulp van de [Service-Principal](./connector-azure-blob-storage.md#service-principal-authentication), de [hand tekening voor gedeelde toegang](./connector-azure-blob-storage.md#shared-access-signature-authentication)of de sleutel van het [opslag account](./connector-azure-blob-storage.md#account-key-authentication). 
+- Meerdere verificatie typen worden ook ondersteund om verbinding te maken met Azure Data Lake Storage Gen2.  Het gebruik van [beheerde identiteiten voor Azure-resources](./connector-azure-data-lake-storage.md#managed-identity) wordt sterk aanbevolen, hoewel de sleutel van de [Service-Principal](./connector-azure-data-lake-storage.md#service-principal-authentication) of het [opslag account](./connector-azure-data-lake-storage.md#account-key-authentication) ook kan worden gebruikt. 
+- Wanneer u geen beheerde identiteiten voor Azure-resources gebruikt, wordt [het opslaan van de referenties in azure Key Vault](./store-credentials-in-key-vault.md) ten zeerste aanbevolen, zodat het eenvoudiger is om sleutels te beheren en te draaien zonder de gekoppelde services van ADF aan te passen.  Dit is ook een van de [Aanbevolen procedures voor CI/cd](./continuous-integration-deployment.md#best-practices-for-cicd). 
 
 ### <a name="initial-snapshot-data-migration"></a>Initiële momentopname gegevens migratie 
 
@@ -138,16 +138,16 @@ Dit is de geschatte prijs op basis van de bovenstaande hypo Thesen:
 ![Scherm afbeelding van een tabel toont een geschatte prijs.](media/data-migration-guidance-s3-to-azure-storage/pricing-table.png)
 
 ### <a name="additional-references"></a>Aanvullende naslaginformatie 
-- [Amazon Simple Storage-service connector](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service)
-- [Azure Blob Storage-connector](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
-- [Azure Data Lake Storage Gen2-connector](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-- [Gids voor het afstemmen van de activiteit prestaties kopiëren](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
-- [Zelf-hostende Integration Runtime maken en configureren](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
-- [Zelf-hostende runtime HA en schaal baarheid](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
-- [Beveiligingsoverwegingen bij het verplaatsen van gegevens](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
-- [Referenties opslaan in Azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
-- [Bestand incrementeel kopiëren op basis van een gepartitioneerde bestands naam](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-partitioned-file-name-copy-data-tool)
-- [Nieuwe en gewijzigde bestanden kopiëren op basis van LastModifiedDate](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-lastmodified-copy-data-tool)
+- [Amazon Simple Storage-service connector](./connector-amazon-simple-storage-service.md)
+- [Azure Blob Storage-connector](./connector-azure-blob-storage.md)
+- [Azure Data Lake Storage Gen2-connector](./connector-azure-data-lake-storage.md)
+- [Gids voor het afstemmen van de activiteit prestaties kopiëren](./copy-activity-performance.md)
+- [Zelf-hostende Integration Runtime maken en configureren](./create-self-hosted-integration-runtime.md)
+- [Zelf-hostende runtime HA en schaal baarheid](./create-self-hosted-integration-runtime.md#high-availability-and-scalability)
+- [Beveiligingsoverwegingen bij het verplaatsen van gegevens](./data-movement-security-considerations.md)
+- [Referenties opslaan in Azure Key Vault](./store-credentials-in-key-vault.md)
+- [Bestand incrementeel kopiëren op basis van een gepartitioneerde bestands naam](./tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)
+- [Nieuwe en gewijzigde bestanden kopiëren op basis van LastModifiedDate](./tutorial-incremental-copy-lastmodified-copy-data-tool.md)
 - [Pagina met prijzen voor ADF](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
 
 ## <a name="template"></a>Template

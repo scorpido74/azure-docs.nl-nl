@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: ca76563475dfbf8d35595c1de3cdee37f80e3ce1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2f61085d3dab6d4489aa190204be4169ea5c2fb
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83691262"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638003"
 ---
 # <a name="plan-and-manage-costs-for-azure-data-factory"></a>Kosten plannen en beheren voor Azure Data Factory
 
@@ -56,15 +56,15 @@ Nu kunt u 30 activiteiten en 380 DIU-uren in de ADF-prijs calculator aansluiten 
 
 ## <a name="use-budgets-and-cost-alerts"></a>Budgetten en kostenwaarschuwingen gebruiken
 
-U kunt [budgetten](https://docs.microsoft.com/azure/cost-management/tutorial-acm-create-budgets) maken om kosten te beheren en waarschuwingen te maken waarmee belanghebbenden automatisch worden geïnformeerd over afwijkende uitgaven en het risico om teveel uit te geven.  Waarschuwingen zijn gebaseerd op de vergelijking tussen uitgaven en drempelwaarden voor budgetten en kosten.  Wanneer u een budget maakt, kunt u dit doen op het abonnements niveau of op een lagere granulatie door extra filters toe te voegen, zoals de resource-ID en de naam van de meter.  U kunt echter geen budgetten maken voor afzonderlijke pijp lijnen in een fabriek.
+U kunt [budgetten](../cost-management-billing/costs/tutorial-acm-create-budgets.md) maken om kosten te beheren en waarschuwingen te maken waarmee belanghebbenden automatisch worden geïnformeerd over afwijkende uitgaven en het risico om teveel uit te geven.  Waarschuwingen zijn gebaseerd op de vergelijking tussen uitgaven en drempelwaarden voor budgetten en kosten.  Wanneer u een budget maakt, kunt u dit doen op het abonnements niveau of op een lagere granulatie door extra filters toe te voegen, zoals de resource-ID en de naam van de meter.  U kunt echter geen budgetten maken voor afzonderlijke pijp lijnen in een fabriek.
 
 ## <a name="monitor-costs-at-factory-level"></a>Bewaak de kosten op het niveau van de fabriek
 
-Als u begint met het gebruik van Azure Data Factory, ziet u de kosten die zijn gemaakt in het deel venster [kosten analyse](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis) in de Azure Portal.
+Als u begint met het gebruik van Azure Data Factory, ziet u de kosten die zijn gemaakt in het deel venster [kosten analyse](../cost-management-billing/costs/quick-acm-cost-analysis.md) in de Azure Portal.
 
-1. Als u de [kosten analyse](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis)wilt weer geven, opent u het venster **Cost Management en facturering** , selecteert u **kosten beheer** in het menu en selecteert u vervolgens **kosten analyse openen**.
+1. Als u de [kosten analyse](../cost-management-billing/costs/quick-acm-cost-analysis.md)wilt weer geven, opent u het venster **Cost Management en facturering** , selecteert u **kosten beheer** in het menu en selecteert u vervolgens **kosten analyse openen** .
 2. In de standaard weergave worden de gecumuleerde kosten voor de huidige maand weer gegeven.  U kunt overschakelen naar een ander tijds bereik en een andere granulariteit, zoals dagelijks of maandelijks.
-3. Als u de kosten voor één service, zoals Azure Data Factory, wilt beperken, selecteert u **filter toevoegen** en selecteert u vervolgens **service naam**.  Kies vervolgens **Azure Data Factory v2** in de lijst.
+3. Als u de kosten voor één service, zoals Azure Data Factory, wilt beperken, selecteert u **filter toevoegen** en selecteert u vervolgens **service naam** .  Kies vervolgens **Azure Data Factory v2** in de lijst.
 4. U kunt extra filters toevoegen om de kosten voor een specifiek fabrieks exemplaar en de specifieke granulatie van de ADF-meter te analyseren.
 
    ![Kostenanalyse](media/plan-manage-costs/cost-analysis.png)
@@ -81,7 +81,7 @@ Als u op de knop **verbruik** naast de naam van de pijp lijn klikt, wordt er een
 
 ![Details van pijplijn verbruik](media/plan-manage-costs/pipeline-consumption-details.png)
 
-In de weer gave verbruik van pijp lijn uitvoeren ziet u het verbruikte aantal voor elke ADF-meter voor de specifieke pijplijn uitvoering, maar de werkelijke prijs wordt niet weer gegeven, omdat de hoeveelheid die aan u wordt gefactureerd, afhankelijk is van het type Azure-account dat u hebt en het type valuta dat wordt gebruikt.  Zie voor de volledige lijst met ondersteunde accounttypen [Gegevens van Azure Cost Management begrijpen](https://docs.microsoft.com/azure/cost-management-billing/costs/understand-cost-mgt-data).
+In de weer gave verbruik van pijp lijn uitvoeren ziet u het verbruikte aantal voor elke ADF-meter voor de specifieke pijplijn uitvoering, maar de werkelijke prijs wordt niet weer gegeven, omdat de hoeveelheid die aan u wordt gefactureerd, afhankelijk is van het type Azure-account dat u hebt en het type valuta dat wordt gebruikt.  Zie voor de volledige lijst met ondersteunde accounttypen [Gegevens van Azure Cost Management begrijpen](../cost-management-billing/costs/understand-cost-mgt-data.md).
 
 ## <a name="monitor-consumption-at-activity-run-level"></a>Verbruik op activiteit controleren-uitvoerings niveau
 Zodra u het geaggregeerde verbruik op pijplijn niveau hebt begrepen, zijn er scenario's waarin u verder kunt inzoomen en moet worden vastgesteld wat de kostbaarste activiteit binnen de pijp lijn is.
@@ -101,5 +101,5 @@ En hier volgt een voor beeld van een activiteit voor het uitvoeren van toewijzin
 Raadpleeg de volgende artikelen voor meer informatie over de werking van prijzen in Azure Data Factory:
 
 - [Pagina met Azure Data Factory prijzen](https://azure.microsoft.com/pricing/details/data-factory/ssis/)
-- [Uitleg over Azure Data Factory via voor beelden](https://docs.microsoft.com/azure/data-factory/pricing-concepts)
+- [Uitleg over Azure Data Factory via voor beelden](./pricing-concepts.md)
 - [Azure Data Factory prijs calculator](https://azure.microsoft.com/pricing/calculator/?service=data-factory)

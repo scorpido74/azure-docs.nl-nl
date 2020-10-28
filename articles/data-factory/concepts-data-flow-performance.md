@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 08/12/2020
-ms.openlocfilehash: a6f2c16730a9140fdbd1710a3aa0df0ee91795d6
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 055cdf7b6cec12eb8c3e7fde891d155b831a6523
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874829"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637867"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Gegevens stromen toewijzen prestaties en afstemmings handleiding
 
@@ -109,7 +109,7 @@ Gegevens stromen distribueren de gegevens verwerking over verschillende knoop pu
 
 De standaard cluster grootte is vier Stuur knooppunten en vier werk knooppunten.  Bij het verwerken van meer gegevens worden grotere clusters aanbevolen. Hieronder ziet u de mogelijke opties voor de grootte:
 
-| Kernen van werk nemers | Kern geheugens van Stuur Programma's | Totaal aantal cores | Notities |
+| Kernen van werk nemers | Kern geheugens van Stuur Programma's | Totaal aantal cores | Opmerkingen |
 | ------------ | ------------ | ----------- | ----- |
 | 4 | 4 | 8 | Niet beschikbaar voor berekenings optimalisatie |
 | 8 | 8 | 16 | |
@@ -155,7 +155,7 @@ Azure SQL Database heeft een unieke partitionering-optie met de naam bron partit
 
 #### <a name="isolation-level"></a>Isolatie niveau
 
-Het isolatie niveau van de Lees bewerking op een Azure SQL-bron systeem heeft invloed op de prestaties. Als u ' niet doorgevoerd ' kiest, worden de snelste prestaties geboden en kunnen er geen database vergrendelingen worden uitgevoerd. Zie informatie over [isolatie niveaus](https://docs.microsoft.com/sql/connect/jdbc/understanding-isolation-levels?view=sql-server-ver15)voor meer informatie over SQL-isolatie niveaus.
+Het isolatie niveau van de Lees bewerking op een Azure SQL-bron systeem heeft invloed op de prestaties. Als u ' niet doorgevoerd ' kiest, worden de snelste prestaties geboden en kunnen er geen database vergrendelingen worden uitgevoerd. Zie informatie over [isolatie niveaus](/sql/connect/jdbc/understanding-isolation-levels?view=sql-server-ver15)voor meer informatie over SQL-isolatie niveaus.
 
 #### <a name="read-using-query"></a>Lezen met behulp van query
 
@@ -163,7 +163,7 @@ U kunt lezen van Azure SQL Database met behulp van een tabel of een SQL-query. A
 
 ### <a name="azure-synapse-analytics-sources"></a>Azure Synapse Analytics-bronnen
 
-Wanneer u Azure Synapse Analytics gebruikt, is een instelling met de naam **fase ring inschakelen** aanwezig in de bron opties. Dit maakt het mogelijk om ADF te lezen van Synapse met [poly base](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide?view=sql-server-ver15), waardoor de Lees prestaties aanzienlijk worden verbeterd. Als u poly base inschakelt, moet u een Azure Blob Storage of Azure Data Lake Storage Gen2 faserings locatie opgeven in de instellingen voor de gegevens stroom activiteit.
+Wanneer u Azure Synapse Analytics gebruikt, is een instelling met de naam **fase ring inschakelen** aanwezig in de bron opties. Dit maakt het mogelijk om ADF te lezen van Synapse met [poly base](/sql/relational-databases/polybase/polybase-guide?view=sql-server-ver15), waardoor de Lees prestaties aanzienlijk worden verbeterd. Als u poly base inschakelt, moet u een Azure Blob Storage of Azure Data Lake Storage Gen2 faserings locatie opgeven in de instellingen voor de gegevens stroom activiteit.
 
 ![Faseringsmodus inschakelen](media/data-flow/enable-staging.png "Faseringsmodus inschakelen")
 
@@ -198,7 +198,7 @@ Deze kunnen zowel als systeem eigen worden uitgevoerd met scripts van vóór en 
 ![Indexen uitschakelen](media/data-flow/disable-indexes-sql.png "Indexen uitschakelen")
 
 > [!WARNING]
-> Wanneer u indexen uitschakelt, wordt de controle over een data base in feite uitgevoerd en zijn query's waarschijnlijk op dit moment niet mogelijk. Als gevolg hiervan worden veel ETL-taken in het midden van de nacht geactiveerd om dit conflict te voor komen. Meer informatie over de beperkingen voor het [uitschakelen van indexen](https://docs.microsoft.com/sql/relational-databases/indexes/disable-indexes-and-constraints?view=sql-server-ver15)
+> Wanneer u indexen uitschakelt, wordt de controle over een data base in feite uitgevoerd en zijn query's waarschijnlijk op dit moment niet mogelijk. Als gevolg hiervan worden veel ETL-taken in het midden van de nacht geactiveerd om dit conflict te voor komen. Meer informatie over de beperkingen voor het [uitschakelen van indexen](/sql/relational-databases/indexes/disable-indexes-and-constraints?view=sql-server-ver15)
 
 #### <a name="scaling-up-your-database"></a>Uw data base omhoog schalen
 
@@ -206,7 +206,7 @@ Plan een grootte van uw bron en Sink Azure SQL DB en DW vóór de uitvoering van
 
 ### <a name="azure-synapse-analytics-sinks"></a>Azure Synapse Analytics-sinks
 
-Wanneer u naar Azure Synapse Analytics schrijft, moet u ervoor zorgen dat het **inschakelen van staging** is ingesteld op waar. Op deze manier kan ADF schrijven met [poly base](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) , waarmee de gegevens effectief worden geladen. U moet verwijzen naar een Azure Data Lake Storage Gen2-of Azure Blob Storage-account voor het faseren van de gegevens bij gebruik van poly base.
+Wanneer u naar Azure Synapse Analytics schrijft, moet u ervoor zorgen dat het **inschakelen van staging** is ingesteld op waar. Op deze manier kan ADF schrijven met [poly base](/sql/relational-databases/polybase/polybase-guide) , waarmee de gegevens effectief worden geladen. U moet verwijzen naar een Azure Data Lake Storage Gen2-of Azure Blob Storage-account voor het faseren van de gegevens bij gebruik van poly base.
 
 Met uitzonde ring van poly Base, zijn dezelfde aanbevolen procedures van toepassing op Azure Synapse Analytics als Azure SQL Database.
 
@@ -226,7 +226,7 @@ Als u de **standaard** optie selecteert, wordt het snelst geschreven. Elke parti
 
 Als u een naamgevings **patroon** instelt, wordt de naam van elk partitie bestand gewijzigd in een gebruiks vriendelijke, beschrijvende namen. Deze bewerking treedt op na schrijven en is iets langzamer dan de standaard waarde kiezen. Per partitie kunt u elke afzonderlijke partitie hand matig benoemen.
 
-Als een kolom overeenkomt met de manier waarop u de gegevens wilt uitvoeren, kunt u **als gegevens selecteren in kolom**. Dit heeft gevolgen voor de gegevens en kan invloed hebben op de prestaties als de kolommen niet gelijkmatig worden gedistribueerd.
+Als een kolom overeenkomt met de manier waarop u de gegevens wilt uitvoeren, kunt u **als gegevens selecteren in kolom** . Dit heeft gevolgen voor de gegevens en kan invloed hebben op de prestaties als de kolommen niet gelijkmatig worden gedistribueerd.
 
 **Met uitvoer naar één bestand worden** alle gegevens gecombineerd tot één partitie. Dit leidt tot lange schrijf tijden, met name voor grote gegevens sets. Het Azure Data Factory Team raadt met klem aan deze optie **niet** te kiezen, tenzij er een expliciete zakelijke reden is om dit te doen.
 
@@ -247,7 +247,7 @@ Wanneer u naar CosmosDB schrijft, kunt u de prestaties verbeteren door de door V
 
 #### <a name="broadcasting"></a>Verzenden
 
-In samen voegingen, zoek acties en bestaande trans formaties, als een of beide gegevens stromen klein genoeg zijn voor het geheugen van het worker-knoop punt, kunt u de prestaties optimaliseren door **broadcast**in te scha kelen. Broadcasten is wanneer u kleine gegevens frames naar alle knoop punten in het cluster verzendt. Hierdoor kan de Spark-engine een koppeling uitvoeren zonder dat de gegevens in de grote stream opnieuw worden gevolgd. Standaard wordt door de Spark-Engine automatisch bepaald of één zijde van een koppeling moet worden uitgezonden. Als u bekend bent met uw inkomende gegevens en weet dat de ene stroom aanzienlijk kleiner is dan de andere, kunt u een **vaste** uitzending selecteren. Met de vaste uitzending wordt Spark geforceerd de geselecteerde stroom uitgezonden. 
+In samen voegingen, zoek acties en bestaande trans formaties, als een of beide gegevens stromen klein genoeg zijn voor het geheugen van het worker-knoop punt, kunt u de prestaties optimaliseren door **broadcast** in te scha kelen. Broadcasten is wanneer u kleine gegevens frames naar alle knoop punten in het cluster verzendt. Hierdoor kan de Spark-engine een koppeling uitvoeren zonder dat de gegevens in de grote stream opnieuw worden gevolgd. Standaard wordt door de Spark-Engine automatisch bepaald of één zijde van een koppeling moet worden uitgezonden. Als u bekend bent met uw inkomende gegevens en weet dat de ene stroom aanzienlijk kleiner is dan de andere, kunt u een **vaste** uitzending selecteren. Met de vaste uitzending wordt Spark geforceerd de geselecteerde stroom uitgezonden. 
 
 Als de verzonden gegevens te groot zijn voor het Spark-knoop punt, wordt er mogelijk een geheugen fout weer gegeven. Gebruik **geoptimaliseerde geheugen** clusters om geheugen fouten te voor komen. Als u uitzend-time-outs ondervindt tijdens de uitvoering van gegevens stromen, kunt u de uitschakeling van de uitzending uitschakelen. Dit leidt er echter toe dat gegevens stromen langzamer worden uitgevoerd.
 

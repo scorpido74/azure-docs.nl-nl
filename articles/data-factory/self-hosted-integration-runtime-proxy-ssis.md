@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 09/09/2020
-ms.openlocfilehash: d135320d8dd9f86fbc313b17b8b55ed3c609e9dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 867f12b026a56b7cab8530ef30c4a2f2c325f6b1
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595016"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637782"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Een zelf-hostende IR configureren als proxy voor een Azure-SSIS IR in Azure Data Factory
 
@@ -25,11 +25,11 @@ ms.locfileid: "89595016"
 
 In dit artikel wordt beschreven hoe u SQL Server Integration Services (SSIS)-pakketten uitvoert op een Azure-SSIS Integration Runtime (Azure-SSIS IR) in Azure Data Factory met een zelf-hostende Integration runtime (zelf-hostende IR) die is geconfigureerd als proxy. 
 
-Met deze functie kunt u on-premises toegang krijgen tot gegevens zonder dat u [uw Azure-SSIS IR hoeft te koppelen aan een virtueel netwerk](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network). De functie is handig wanneer uw bedrijfs netwerk een configuratie te complex heeft of een beleid dat te beperkend is voor u om uw Azure-SSIS IR te injecteren.
+Met deze functie kunt u on-premises toegang krijgen tot gegevens zonder dat u [uw Azure-SSIS IR hoeft te koppelen aan een virtueel netwerk](./join-azure-ssis-integration-runtime-virtual-network.md). De functie is handig wanneer uw bedrijfs netwerk een configuratie te complex heeft of een beleid dat te beperkend is voor u om uw Azure-SSIS IR te injecteren.
 
 Deze functie onderbreekt uw SSIS data flow-taak in twee staging-taken wanneer dit van toepassing is: 
-* **On-premises faserings taak**: met deze taak wordt uw gegevensstroom onderdeel uitgevoerd dat verbinding maakt met een on-premises gegevens archief op uw zelf-hostende IR. De gegevens worden verplaatst van het on-premises gegevens archief naar een faserings gebied in uw Azure Blob-opslag of andersom.
-* **Faserings taak**voor de Cloud: met deze taak wordt het gegevens stroom onderdeel uitgevoerd dat geen verbinding maakt met een on-premises gegevens archief op uw Azure-SSIS IR. De gegevens worden verplaatst van het faserings gebied in uw Azure Blob-opslag naar een gegevens opslag in de Cloud of andersom.
+* **On-premises faserings taak** : met deze taak wordt uw gegevensstroom onderdeel uitgevoerd dat verbinding maakt met een on-premises gegevens archief op uw zelf-hostende IR. De gegevens worden verplaatst van het on-premises gegevens archief naar een faserings gebied in uw Azure Blob-opslag of andersom.
+* **Faserings taak** voor de Cloud: met deze taak wordt het gegevens stroom onderdeel uitgevoerd dat geen verbinding maakt met een on-premises gegevens archief op uw Azure-SSIS IR. De gegevens worden verplaatst van het faserings gebied in uw Azure Blob-opslag naar een gegevens opslag in de Cloud of andersom.
 
 Als uw gegevens stroom taak gegevens verplaatst van on-premises naar de Cloud, zullen de eerste en tweede faserings taken respectievelijk on-premises en in de cloud worden geplaatst. Als uw gegevens stroom taak gegevens verplaatst van de Cloud naar on-premises, worden de eerste en tweede faserings taken respectievelijk de Cloud en on-premises faserings taken. Als uw gegevens stroom taak gegevens verplaatst van on-premises naar on-premises, zijn de eerste en tweede staging-taken beide lokale faserings taken. Als uw gegevens stroom taak gegevens verplaatst van de Cloud naar de Cloud, is deze functie niet van toepassing.
 
@@ -37,9 +37,9 @@ Met andere voor delen en mogelijkheden van deze functie kunt u bijvoorbeeld uw z
 
 ## <a name="prepare-the-self-hosted-ir"></a>De zelf-hostende IR voorbereiden
 
-Als u deze functie wilt gebruiken, maakt u eerst een data factory en stelt u een Azure-SSIS IR in. Als u dit nog niet hebt gedaan, volgt u de instructies in [een Azure-SSIS IR instellen](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure).
+Als u deze functie wilt gebruiken, maakt u eerst een data factory en stelt u een Azure-SSIS IR in. Als u dit nog niet hebt gedaan, volgt u de instructies in [een Azure-SSIS IR instellen](./tutorial-deploy-ssis-packages-azure.md).
 
-Vervolgens stelt u uw zelf-hostende IR in op dezelfde data factory waar uw Azure-SSIS IR is ingesteld. Zie hiervoor [een zelf-hostende IR maken](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime).
+Vervolgens stelt u uw zelf-hostende IR in op dezelfde data factory waar uw Azure-SSIS IR is ingesteld. Zie hiervoor [een zelf-hostende IR maken](./create-self-hosted-integration-runtime.md).
 
 Ten slotte downloadt en installeert u de nieuwste versie van de zelf-hostende IR, evenals de extra Stuur Programma's en runtime op uw on-premises machine of virtuele Azure-machine (VM), als volgt:
 - Down load en installeer de nieuwste versie van de [zelf-hostende IR](https://www.microsoft.com/download/details.aspx?id=39717).
@@ -54,13 +54,13 @@ Ten slotte downloadt en installeert u de nieuwste versie van de zelf-hostende IR
 
 ## <a name="prepare-the-azure-blob-storage-linked-service-for-staging"></a>De aan Azure Blob Storage gekoppelde service voorbereiden voor fase ring
 
-Als u dit nog niet hebt gedaan, maakt u een aan Azure Blob Storage gekoppelde service op hetzelfde data factory waar uw Azure-SSIS IR is ingesteld. Zie hiervoor [een Azure Data Factory-gekoppelde service maken](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal#create-a-linked-service). Zorg ervoor dat u het volgende doet:
-- Selecteer **Azure Blob Storage**voor **gegevens opslag**.  
-- Voor **verbinden via Integration runtime**selecteert u **AutoResolveIntegrationRuntime** (niet uw Azure-SSIS IR en uw zelf-hostende IR), omdat we de standaard Azure IR gebruiken om toegangs referenties voor uw Azure Blob Storage op te halen.
-- Selecteer voor **verificatie methode** **account sleutel**, **SAS-URI**of service- **Principal**.  
+Als u dit nog niet hebt gedaan, maakt u een aan Azure Blob Storage gekoppelde service op hetzelfde data factory waar uw Azure-SSIS IR is ingesteld. Zie hiervoor [een Azure Data Factory-gekoppelde service maken](./quickstart-create-data-factory-portal.md#create-a-linked-service). Zorg ervoor dat u het volgende doet:
+- Selecteer **Azure Blob Storage** voor **gegevens opslag** .  
+- Voor **verbinden via Integration runtime** selecteert u **AutoResolveIntegrationRuntime** (niet uw Azure-SSIS IR en uw zelf-hostende IR), omdat we de standaard Azure IR gebruiken om toegangs referenties voor uw Azure Blob Storage op te halen.
+- Selecteer voor **verificatie methode** **account sleutel** , **SAS-URI** of service- **Principal** .  
 
     >[!TIP]
-    >Als u de **Service-Principal** -methode selecteert, geeft u de Service-Principal ten minste een rol voor *Storage BLOB data Inzender*   . Zie [Azure Blob Storage-connector](connector-azure-blob-storage.md#linked-service-properties)voor meer informatie.
+    >Als u de **Service-Principal** -methode selecteert, geeft u de Service-Principal ten minste een rol voor *Storage BLOB data Inzender* . Zie [Azure Blob Storage-connector](connector-azure-blob-storage.md#linked-service-properties)voor meer informatie.
 
 ![De aan Azure Blob Storage gekoppelde service voorbereiden voor fase ring](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 
@@ -68,7 +68,7 @@ Als u dit nog niet hebt gedaan, maakt u een aan Azure Blob Storage gekoppelde se
 
 Als u uw zelf-hostende IR-en Azure Blob Storage-gekoppelde service voor fase ring hebt voor bereid, kunt u nu uw nieuwe of bestaande Azure-SSIS IR configureren met de zelf-hostende IR als proxy in uw data factory-portal of-app. Voordat u dit doet, moet u, als uw bestaande Azure-SSIS IR al wordt uitgevoerd, stoppen en opnieuw starten.
 
-1. In het deel venster **Setup van Integration runtime** gaat u verder met de secties **algemene instellingen** en **SQL-instellingen** door **volgende**te selecteren. 
+1. In het deel venster **Setup van Integration runtime** gaat u verder met de secties **algemene instellingen** en **SQL-instellingen** door **volgende** te selecteren. 
 
 1. Ga als volgt te werk in de sectie **Geavanceerde instellingen** :
 
@@ -80,7 +80,7 @@ Als u uw zelf-hostende IR-en Azure Blob Storage-gekoppelde service voor fase rin
 
    1. Geef in het vak **pad voor gefaseerde installatie** een BLOB-container op in het geselecteerde Azure Blob Storage-account of laat het veld leeg om een standaard waarde te gebruiken voor fase ring.
 
-   1. Selecteer **Doorgaan**.
+   1. Selecteer **Doorgaan** .
 
    ![Geavanceerde instellingen met een zelf-hostende IR](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-shir.png)
 
@@ -122,18 +122,18 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 Door de meest recente SSDT te gebruiken als de extensie voor de SSIS-projecten voor Visual Studio of een zelfstandig installatie programma, kunt u een nieuwe `ConnectByProxy` eigenschap vinden die is toegevoegd aan de verbindings beheer Programma's voor ondersteunde gegevens stroom onderdelen.
 * [De SSIS projects-extensie voor Visual Studio downloaden](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects)
-* [Het zelfstandige installatie programma downloaden](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)   
+* [Het zelfstandige installatie programma downloaden](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)   
 
 Wanneer u nieuwe pakketten met gegevens stroom taken ontwerpt met onderdelen die toegang hebben tot gegevens on-premises, kunt u deze eigenschap inschakelen door deze in te stellen op *True* in het deel venster **Eigenschappen** van de relevante verbindings beheer Programma's.
 
 ![De eigenschap ConnectByProxy inschakelen](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-manager-properties.png)
 
 U kunt deze eigenschap ook inschakelen wanneer u bestaande pakketten uitvoert, zonder dat u deze hand matig hoeft te wijzigen.  Er zijn twee opties:
-- **Optie A**: open, Rebuild en implementeer het project met de pakketten met de meest recente SSDT om uit te voeren op uw Azure-SSIS IR. U kunt de eigenschap vervolgens inschakelen door deze in te stellen op *True* voor de relevante verbindings beheer Programma's. Wanneer u pakketten uit SSMS uitvoert, worden deze verbindings beheer weer gegeven op het tabblad **verbindings beheer** van het pop-upvenster **pakket uitvoeren** .
+- **Optie A** : open, Rebuild en implementeer het project met de pakketten met de meest recente SSDT om uit te voeren op uw Azure-SSIS IR. U kunt de eigenschap vervolgens inschakelen door deze in te stellen op *True* voor de relevante verbindings beheer Programma's. Wanneer u pakketten uit SSMS uitvoert, worden deze verbindings beheer weer gegeven op het tabblad **verbindings beheer** van het pop-upvenster **pakket uitvoeren** .
 
   ![ConnectByProxy property2 inschakelen](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssms.png)
 
-  U kunt de eigenschap ook inschakelen door deze in te stellen op *True* voor de relevante verbindings beheer die wordt weer gegeven op het tabblad **verbindings beheer** van de [activiteit uitvoeren SSIS-pakket](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) wanneer u pakketten uitvoert in Data Factory pijp lijnen.
+  U kunt de eigenschap ook inschakelen door deze in te stellen op *True* voor de relevante verbindings beheer die wordt weer gegeven op het tabblad **verbindings beheer** van de [activiteit uitvoeren SSIS-pakket](./how-to-invoke-ssis-package-ssis-activity.md) wanneer u pakketten uitvoert in Data Factory pijp lijnen.
   
   ![ConnectByProxy property3 inschakelen](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssis-activity.png)
 
@@ -141,7 +141,7 @@ U kunt deze eigenschap ook inschakelen wanneer u bestaande pakketten uitvoert, z
 
   ![ConnectByProxy property4 inschakelen](media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-tab-ssms.png)
 
-  U kunt de eigenschap ook inschakelen door het pad naar de eigenschap op te geven, `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]` en deze in te stellen op *True* als eigenschaps onderdrukking op het tabblad **Eigenschappen overschrijft** van de [activiteit uitvoering van SSIS-pakket](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) wanneer u pakketten uitvoert in Data Factory pijp lijnen.
+  U kunt de eigenschap ook inschakelen door het pad naar de eigenschap op te geven, `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]` en deze in te stellen op *True* als eigenschaps onderdrukking op het tabblad **Eigenschappen overschrijft** van de [activiteit uitvoering van SSIS-pakket](./how-to-invoke-ssis-package-ssis-activity.md) wanneer u pakketten uitvoert in Data Factory pijp lijnen.
   
   ![ConnectByProxy property5 inschakelen](media/self-hosted-integration-runtime-proxy-ssis/shir-property-overrides-tab-ssis-activity.png)
 
@@ -153,9 +153,9 @@ Op uw zelf-hostende IR vindt u de runtime-Logboeken in de map *C:\ProgramData\SS
 
 ## <a name="use-windows-authentication-in-on-premises-staging-tasks"></a>Windows-verificatie gebruiken in on-premises faserings taken
 
-Als voor on-premises staging-taken op uw zelf-hostende IR Windows-verificatie is vereist, [configureert u uw SSIS-pakketten voor gebruik van dezelfde Windows-verificatie](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth?view=sql-server-ver15). 
+Als voor on-premises staging-taken op uw zelf-hostende IR Windows-verificatie is vereist, [configureert u uw SSIS-pakketten voor gebruik van dezelfde Windows-verificatie](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth?view=sql-server-ver15). 
 
-Uw on-premises faserings taken worden aangeroepen met het zelf-hostende IR-service account (standaard*NT SERVICE\DIAHostService*) en uw gegevens archieven worden geopend met het Windows-verificatie account. Voor beide accounts moet een bepaald beveiligings beleid worden toegewezen. Op de zelf-hostende IR-computer gaat u naar **lokaal**  >  **beleid lokale beleids regels**  >  **toewijzing van gebruikers rechten**en gaat u als volgt te werk:
+Uw on-premises faserings taken worden aangeroepen met het zelf-hostende IR-service account (standaard *NT SERVICE\DIAHostService* ) en uw gegevens archieven worden geopend met het Windows-verificatie account. Voor beide accounts moet een bepaald beveiligings beleid worden toegewezen. Op de zelf-hostende IR-computer gaat u naar **lokaal**  >  **beleid lokale beleids regels**  >  **toewijzing van gebruikers rechten** en gaat u als volgt te werk:
 
 1. Wijs de *geheugen quota voor het aanpassen van een proces* toe en *Vervang een token beleid op proces niveau* naar het zelf-hostende IR-service account. Dit moet automatisch gebeuren wanneer u uw zelf-hostende IR installeert met het standaard service account. Als dat niet het geval is, moet u dit beleid hand matig toewijzen. Als u een ander service account gebruikt, wijst u hieraan hetzelfde beleid toe.
 
@@ -176,9 +176,9 @@ Als u een krachtig crypto grafie/veiliger netwerk protocol (TLS 1,2) moet gebrui
 ## <a name="current-limitations"></a>Huidige beperkingen
 
 - Op dit moment worden alleen gegevensstroom taken met OLEDB/ODBC/platte bestands bronnen of OLEDB-bestemming ondersteund.
-- Er worden alleen Azure Blob Storage-gekoppelde services ondersteund die zijn geconfigureerd met de *account sleutel*, *Shared Access Signature (SAS) URI*of *Service-Principal* -verificatie.
+- Er worden alleen Azure Blob Storage-gekoppelde services ondersteund die zijn geconfigureerd met de *account sleutel* , *Shared Access Signature (SAS) URI* of *Service-Principal* -verificatie.
 - *ParameterMapping* in OLEDB-bron wordt momenteel niet ondersteund. Als tijdelijke oplossing gebruikt u *SQL-opdracht van variabele* als de *AccessMode* en gebruikt u de *expressie* om uw variabelen/para meters in een SQL-opdracht in te voegen. Zie het pakket *ParameterMappingSample. dtsx* dat u kunt vinden in de map *SelfHostedIRProxy/beperkingen* van onze open bare preview-container. Met Azure Storage Explorer kunt u verbinding maken met onze open bare preview-container door de bovenstaande SAS-URI in te voeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u uw zelf-hostende IR hebt geconfigureerd als proxy voor uw Azure-SSIS IR, kunt u uw pakketten implementeren en uitvoeren voor toegang tot on-premises gegevens als uitvoering van SSIS-pakket activiteiten in Data Factory-pijp lijnen. Zie [SSIS-pakketten uitvoeren als uitvoering van SSIS-pakket activiteiten in Data Factory pijp lijnen](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)voor meer informatie.
+Nadat u uw zelf-hostende IR hebt geconfigureerd als proxy voor uw Azure-SSIS IR, kunt u uw pakketten implementeren en uitvoeren voor toegang tot on-premises gegevens als uitvoering van SSIS-pakket activiteiten in Data Factory-pijp lijnen. Zie [SSIS-pakketten uitvoeren als uitvoering van SSIS-pakket activiteiten in Data Factory pijp lijnen](./how-to-invoke-ssis-package-ssis-activity.md)voor meer informatie.

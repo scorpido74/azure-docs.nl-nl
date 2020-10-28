@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/30/2019
-ms.openlocfilehash: 63b657e77172282225a9bc890b2f185b0f4d42a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e691244c4c03635eb87a7905eff6756da5c04f9
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417139"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638122"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-hadoop-cluster-to-azure-storage"></a>Azure Data Factory gebruiken om gegevens van een on-premises Hadoop-cluster te migreren naar Azure Storage 
 
@@ -26,8 +26,8 @@ Azure Data Factory biedt een krachtige, robuuste en kosteneffectieve methode voo
 
 Data Factory biedt twee basis benaderingen voor het migreren van gegevens van on-premises HDFS naar Azure. U kunt de aanpak selecteren op basis van uw scenario. 
 
-- **Data Factory DistCp-modus** (aanbevolen): in Data Factory kunt u [DistCp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) (gedistribueerde kopie) gebruiken om bestanden te kopiëren naar Azure Blob Storage (inclusief [gefaseerde kopie](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#staged-copy)) of Azure data Lake Store Gen2. Gebruik Data Factory geïntegreerd met DistCp om te profiteren van een bestaand krachtig cluster om de beste Kopieer doorvoer te halen. U profiteert ook van het voor deel van flexibele planning en een uniforme bewakings ervaring van Data Factory. Afhankelijk van de configuratie van uw Data Factory maakt Kopieer activiteit automatisch een DistCp-opdracht, worden de gegevens naar uw Hadoop-cluster verzonden en wordt de Kopieer status gecontroleerd. We raden u aan Data Factory DistCp-modus voor het migreren van gegevens van een on-premises Hadoop-cluster naar Azure.
-- **Data Factory systeem eigen integratie runtime modus**: DistCp is geen optie in alle scenario's. In een omgeving met virtuele netwerken van Azure biedt het DistCp-hulp programma bijvoorbeeld geen ondersteuning voor Azure ExpressRoute private-peering met een Azure Storage eind punt van een virtueel netwerk. In sommige gevallen wilt u uw bestaande Hadoop-cluster niet gebruiken als een engine voor het migreren van gegevens, zodat u geen zware belasting op het cluster plaatst. Dit kan van invloed zijn op de prestaties van bestaande ETL-taken. In plaats daarvan kunt u de systeem eigen mogelijkheid van de Data Factory Integration runtime gebruiken als de engine waarmee gegevens worden gekopieerd van on-premises HDFS naar Azure.
+- **Data Factory DistCp-modus** (aanbevolen): in Data Factory kunt u [DistCp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) (gedistribueerde kopie) gebruiken om bestanden te kopiëren naar Azure Blob Storage (inclusief [gefaseerde kopie](./copy-activity-performance.md#staged-copy)) of Azure data Lake Store Gen2. Gebruik Data Factory geïntegreerd met DistCp om te profiteren van een bestaand krachtig cluster om de beste Kopieer doorvoer te halen. U profiteert ook van het voor deel van flexibele planning en een uniforme bewakings ervaring van Data Factory. Afhankelijk van de configuratie van uw Data Factory maakt Kopieer activiteit automatisch een DistCp-opdracht, worden de gegevens naar uw Hadoop-cluster verzonden en wordt de Kopieer status gecontroleerd. We raden u aan Data Factory DistCp-modus voor het migreren van gegevens van een on-premises Hadoop-cluster naar Azure.
+- **Data Factory systeem eigen integratie runtime modus** : DistCp is geen optie in alle scenario's. In een omgeving met virtuele netwerken van Azure biedt het DistCp-hulp programma bijvoorbeeld geen ondersteuning voor Azure ExpressRoute private-peering met een Azure Storage eind punt van een virtueel netwerk. In sommige gevallen wilt u uw bestaande Hadoop-cluster niet gebruiken als een engine voor het migreren van gegevens, zodat u geen zware belasting op het cluster plaatst. Dit kan van invloed zijn op de prestaties van bestaande ETL-taken. In plaats daarvan kunt u de systeem eigen mogelijkheid van de Data Factory Integration runtime gebruiken als de engine waarmee gegevens worden gekopieerd van on-premises HDFS naar Azure.
 
 In dit artikel vindt u de volgende informatie over beide benaderingen:
 > [!div class="checklist"]
@@ -45,11 +45,11 @@ DistCp maakt gebruik van MapReduce om de distributie, het afhandelen en herstell
 
 Data Factory native Integration runtime modus maakt ook parallelle uitvoering op verschillende niveaus mogelijk. U kunt parallelisme gebruiken om uw netwerk bandbreedte, opslag-IOPS en band breedte volledig te benutten om de door Voer van gegevens verplaatsing te maximaliseren:
 
-- Eén Kopieer activiteit kan profiteren van schaal bare reken resources. Met een zelf-hostende Integration runtime kunt u de machine hand matig schalen of uitschalen naar meerdere machines ([Maxi maal vier knoop punten](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)). Met één Kopieer activiteit worden de bestanden die zijn ingesteld op alle knoop punten gepartitioneerd. 
+- Eén Kopieer activiteit kan profiteren van schaal bare reken resources. Met een zelf-hostende Integration runtime kunt u de machine hand matig schalen of uitschalen naar meerdere machines ([Maxi maal vier knoop punten](./create-self-hosted-integration-runtime.md#high-availability-and-scalability)). Met één Kopieer activiteit worden de bestanden die zijn ingesteld op alle knoop punten gepartitioneerd. 
 - Eén Kopieer activiteit leest van en schrijft naar het gegevens archief met behulp van meerdere threads. 
-- Data Factory controle stroom kan meerdere Kopieer activiteiten parallel starten. U kunt bijvoorbeeld een [voor elke lus](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)gebruiken. 
+- Data Factory controle stroom kan meerdere Kopieer activiteiten parallel starten. U kunt bijvoorbeeld een [voor elke lus](./control-flow-for-each-activity.md)gebruiken. 
 
-Zie de [prestatie handleiding Kopieer activiteit](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)voor meer informatie.
+Zie de [prestatie handleiding Kopieer activiteit](./copy-activity-performance.md)voor meer informatie.
 
 ## <a name="resilience"></a>Tolerantie
 
@@ -93,10 +93,10 @@ U wordt aangeraden deze aanbevolen procedures te volgen wanneer u uw gegevens mi
 
 ### <a name="authentication-and-credential-management"></a>Verificatie en referentie beheer 
 
-- Als u wilt verifiëren op HDFS, kunt u [Windows (Kerberos) of anoniem](https://docs.microsoft.com/azure/data-factory/connector-hdfs#linked-service-properties)gebruiken. 
-- Meerdere verificatie typen worden ondersteund om verbinding te maken met Azure Blob Storage.  Het is raadzaam [beheerde identiteiten te gebruiken voor Azure-resources](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity). Beheerde identiteiten zijn gebaseerd op een automatisch beheerde Data Factory identiteit in Azure Active Directory (Azure AD), zodat u pijp lijnen kunt configureren zonder dat er referenties worden opgegeven in de definitie van de gekoppelde service. U kunt ook verifiëren met Blob Storage met behulp van een [Service-Principal](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication), een [hand tekening voor gedeelde toegang](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)of een sleutel voor een [opslag account](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication). 
-- Meerdere verificatie typen worden ook ondersteund om verbinding te maken met Data Lake Storage Gen2.  We raden u ten zeerste aan [beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity)te gebruiken, maar u kunt ook een [Service-Principal](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication) of een [opslag account sleutel](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication)gebruiken. 
-- Wanneer u geen beheerde identiteiten voor Azure-resources gebruikt, raden we u ten zeerste aan [de referenties op te slaan in azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) om het eenvoudiger te maken om sleutels te beheren en te draaien zonder Data Factory gekoppelde services te wijzigen. Dit is ook een [Best Practice voor CI/cd](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd). 
+- Als u wilt verifiëren op HDFS, kunt u [Windows (Kerberos) of anoniem](./connector-hdfs.md#linked-service-properties)gebruiken. 
+- Meerdere verificatie typen worden ondersteund om verbinding te maken met Azure Blob Storage.  Het is raadzaam [beheerde identiteiten te gebruiken voor Azure-resources](./connector-azure-blob-storage.md#managed-identity). Beheerde identiteiten zijn gebaseerd op een automatisch beheerde Data Factory identiteit in Azure Active Directory (Azure AD), zodat u pijp lijnen kunt configureren zonder dat er referenties worden opgegeven in de definitie van de gekoppelde service. U kunt ook verifiëren met Blob Storage met behulp van een [Service-Principal](./connector-azure-blob-storage.md#service-principal-authentication), een [hand tekening voor gedeelde toegang](./connector-azure-blob-storage.md#shared-access-signature-authentication)of een sleutel voor een [opslag account](./connector-azure-blob-storage.md#account-key-authentication). 
+- Meerdere verificatie typen worden ook ondersteund om verbinding te maken met Data Lake Storage Gen2.  We raden u ten zeerste aan [beheerde identiteiten voor Azure-resources](./connector-azure-data-lake-storage.md#managed-identity)te gebruiken, maar u kunt ook een [Service-Principal](./connector-azure-data-lake-storage.md#service-principal-authentication) of een [opslag account sleutel](./connector-azure-data-lake-storage.md#account-key-authentication)gebruiken. 
+- Wanneer u geen beheerde identiteiten voor Azure-resources gebruikt, raden we u ten zeerste aan [de referenties op te slaan in azure Key Vault](./store-credentials-in-key-vault.md) om het eenvoudiger te maken om sleutels te beheren en te draaien zonder Data Factory gekoppelde services te wijzigen. Dit is ook een [Best Practice voor CI/cd](./continuous-integration-deployment.md#best-practices-for-cicd). 
 
 ### <a name="initial-snapshot-data-migration"></a>Initiële momentopname gegevens migratie 
 
@@ -110,7 +110,7 @@ Als een van de Kopieer taken mislukt als gevolg van tijdelijke problemen met het
 
 In Data Factory DistCp-modus kunt u de opdracht regel parameter DistCp gebruiken `-update` om gegevens te schrijven wanneer het bron bestand en het doel bestand verschillen qua grootte, voor Delta gegevens migratie.
 
-In Data Factory systeem eigen integratie modus is de meest krachtige manier om nieuwe of gewijzigde bestanden van HDFS te identificeren met behulp van een tijdgebonden naamgevings Conventie. Als uw gegevens in HDFS zijn gepartitioneerd met tijds segmenten in de naam van het bestand of de map (bijvoorbeeld */yyyy/mm/dd/file.csv*), kan uw pijp lijn eenvoudig bepalen welke bestanden en mappen incrementeel moeten worden gekopieerd.
+In Data Factory systeem eigen integratie modus is de meest krachtige manier om nieuwe of gewijzigde bestanden van HDFS te identificeren met behulp van een tijdgebonden naamgevings Conventie. Als uw gegevens in HDFS zijn gepartitioneerd met tijds segmenten in de naam van het bestand of de map (bijvoorbeeld */yyyy/mm/dd/file.csv* ), kan uw pijp lijn eenvoudig bepalen welke bestanden en mappen incrementeel moeten worden gekopieerd.
 
 Als uw gegevens in HDFS niet tijdgebonden zijn, kunt Data Factory nieuwe of gewijzigde bestanden identificeren met behulp van de **LastModifiedDate** -waarde. Data Factory scant alle bestanden van HDFS en kopieert alleen nieuwe en bijgewerkte bestanden met een tijds tempel laatst gewijzigd dat groter is dan een ingestelde waarde. 
 
@@ -141,16 +141,16 @@ Dit is de geschatte prijs op basis van onze veronderstellingen:
 
 ### <a name="additional-references"></a>Aanvullende naslaginformatie
 
-- [HDFS-connector](https://docs.microsoft.com/azure/data-factory/connector-hdfs)
-- [Azure Blob-opslag connector](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
-- [Azure Data Lake Storage Gen2-connector](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-- [Gids voor het afstemmen van de activiteit prestaties kopiëren](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
-- [Zelf-hostende Integration Runtime maken en configureren](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
-- [Zelf-hostende Integration runtime hoge Beschik baarheid en schaal baarheid](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
-- [Beveiligingsoverwegingen bij het verplaatsen van gegevens](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
-- [Referenties opslaan in Azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
-- [Een bestand incrementeel kopiëren op basis van een gepartitioneerde bestands naam](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-partitioned-file-name-copy-data-tool)
-- [Nieuwe en gewijzigde bestanden kopiëren op basis van LastModifiedDate](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-lastmodified-copy-data-tool)
+- [HDFS-connector](./connector-hdfs.md)
+- [Azure Blob-opslag connector](./connector-azure-blob-storage.md)
+- [Azure Data Lake Storage Gen2-connector](./connector-azure-data-lake-storage.md)
+- [Gids voor het afstemmen van de activiteit prestaties kopiëren](./copy-activity-performance.md)
+- [Zelf-hostende Integration Runtime maken en configureren](./create-self-hosted-integration-runtime.md)
+- [Zelf-hostende Integration runtime hoge Beschik baarheid en schaal baarheid](./create-self-hosted-integration-runtime.md#high-availability-and-scalability)
+- [Beveiligingsoverwegingen bij het verplaatsen van gegevens](./data-movement-security-considerations.md)
+- [Referenties opslaan in Azure Key Vault](./store-credentials-in-key-vault.md)
+- [Een bestand incrementeel kopiëren op basis van een gepartitioneerde bestands naam](./tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)
+- [Nieuwe en gewijzigde bestanden kopiëren op basis van LastModifiedDate](./tutorial-incremental-copy-lastmodified-copy-data-tool.md)
 - [Pagina met Data Factory prijzen](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
 
 ## <a name="next-steps"></a>Volgende stappen

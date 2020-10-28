@@ -6,22 +6,22 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/20/2020
-ms.openlocfilehash: d77b4b5824c4426f106d10ca246c5b0d5e76327a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d6c29cb41d38e5473a9b24dbc89fd99d3e19c16f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372256"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638326"
 ---
 # <a name="monitor-health-of-log-analytics-workspace-in-azure-monitor"></a>De status van de Log Analytics werk ruimte in Azure Monitor bewaken
-Als u de prestaties en beschik baarheid van uw Log Analytics-werk ruimte in Azure Monitor wilt behouden, moet u alle problemen die zich voordoen, proactief kunnen detecteren. In dit artikel wordt beschreven hoe u de status van uw Log Analytics-werk ruimte kunt controleren met behulp van gegevens in de [bewerkings](/azure-monitor/reference/tables/operation) tabel. Deze tabel is opgenomen in elke Log Analytics-werk ruimte en bevat fout-en waarschuwingen die zich in uw werk ruimte voordoen. U moet deze gegevens regel matig bekijken en waarschuwingen maken om proactief te worden gewaarschuwd wanneer er belang rijke incidenten in uw werk ruimte zijn.
+Als u de prestaties en beschik baarheid van uw Log Analytics-werk ruimte in Azure Monitor wilt behouden, moet u alle problemen die zich voordoen, proactief kunnen detecteren. In dit artikel wordt beschreven hoe u de status van uw Log Analytics-werk ruimte kunt controleren met behulp van gegevens in de [bewerkings](https://docs.microsoft.com/azure/azure-monitor/reference/tables/operation) tabel. Deze tabel is opgenomen in elke Log Analytics-werk ruimte en bevat fout-en waarschuwingen die zich in uw werk ruimte voordoen. U moet deze gegevens regel matig bekijken en waarschuwingen maken om proactief te worden gewaarschuwd wanneer er belang rijke incidenten in uw werk ruimte zijn.
 
-## <a name="_logsoperation-function"></a>Functie _LogsOperation
-Met Azure Monitor logboeken worden gegevens over problemen verzonden naar de [bewerkings](/azure-monitor/reference/tables/operation) tabel in de werk ruimte waar het probleem is opgetreden. De **_LogsOperation** -systeem functie is gebaseerd op de **bewerkings** tabel en biedt een vereenvoudigde set informatie voor analyse en waarschuwingen.
+## <a name="_logoperation-function"></a>Functie _LogOperation
+Met Azure Monitor logboeken worden gegevens over problemen verzonden naar de [bewerkings](https://docs.microsoft.com/azure/azure-monitor/reference/tables/operation) tabel in de werk ruimte waar het probleem is opgetreden. De **_LogOperation** -systeem functie is gebaseerd op de **bewerkings** tabel en biedt een vereenvoudigde set informatie voor analyse en waarschuwingen.
 
 ## <a name="columns"></a>Kolommen
 
-De functie **_LogsOperation** retourneert de kolommen in de volgende tabel.
+De functie **_LogOperation** retourneert de kolommen in de volgende tabel.
 
 | Kolom | Beschrijving |
 |:---|:---|
@@ -36,7 +36,7 @@ De functie **_LogsOperation** retourneert de kolommen in de volgende tabel.
 
 
 ## <a name="categories"></a>Categorieën
-De volgende tabel beschrijft de categorieën van de functie _LogsOperations. 
+De volgende tabel beschrijft de categorieën van de functie _LogOperation. 
 
 | Categorie | Beschrijving |
 |:---|:---|
@@ -66,7 +66,7 @@ Opname bewerkingen zijn problemen die zich hebben voorgedaan tijdens het opnemen
 | Opname frequentie | Info | De limiet voor opname frequentie is 70%. | [Servicebeperkingen van Azure Monitor](../service-limits.md#log-analytics-workspaces) |
 | Opname frequentie | Waarschuwing | De limiet voor opname snelheden die de limiet nadert. | [Servicebeperkingen van Azure Monitor](../service-limits.md#log-analytics-workspaces) |
 | Opname frequentie | Fout   | Frequentie limiet bereikt. | [Servicebeperkingen van Azure Monitor](../service-limits.md#log-analytics-workspaces) |
-| Storage | Fout   | Kan geen toegang krijgen tot het opslag account omdat de gebruikte referenties ongeldig zijn.  |
+| Opslag | Fout   | Kan geen toegang krijgen tot het opslag account omdat de gebruikte referenties ongeldig zijn.  |
 
 
 
@@ -80,10 +80,10 @@ Een aanbevolen strategie is om te beginnen met twee waarschuwings regels op basi
 Gebruik het proces in [logboek waarschuwingen maken, weer geven en beheren met Azure monitor](../platform/alerts-log.md) om de waarschuwings regels voor het logboek te maken. De volgende secties beschrijven de details van elke regel.
 
 
-| Query’s uitvoeren | Drempelwaarde | Periode | Frequency |
+| Query’s uitvoeren | Drempelwaarde | Periode | Frequentie |
 |:---|:---|:---|:---|
-| `_LogsOperation | where Level == "Error"`   | 0 | 5 | 5 |
-| `_LogsOperation | where Level == "Warning"` | 0 | 1440 | 1440 |
+| `_LogOperation | where Level == "Error"`   | 0 | 5 | 5 |
+| `_LogOperation | where Level == "Warning"` | 0 | 1440 | 1440 |
 
 Deze waarschuwings regels reageren hetzelfde op alle bewerkingen met een fout of waarschuwing. Naarmate u vertrouwd bent met de bewerkingen die waarschuwingen genereren, wilt u mogelijk anders reageren op bepaalde bewerkingen. U kunt bijvoorbeeld meldingen naar verschillende personen verzenden voor bepaalde bewerkingen. 
 

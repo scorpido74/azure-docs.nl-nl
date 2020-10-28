@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 9/03/2019
-ms.openlocfilehash: 2197136b86d0bfbb2de79af6712c953339d46371
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8192b1351d54acbb553bacb8b36474cba271cb05
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89442834"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638071"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>Azure Data Factory gebruiken om gegevens van een on-premises Netezza-server naar Azure te migreren 
 
@@ -41,13 +41,13 @@ Azure Data Factory biedt een serverloze architectuur die parallellisme op versch
 
 Het voor gaande diagram kan als volgt worden geïnterpreteerd:
 
-- Eén Kopieer activiteit kan profiteren van schaal bare reken resources. Wanneer u Azure Integration Runtime gebruikt, kunt u voor elke Kopieer activiteit op serverloze wijze [Maxi maal 256 DIUs](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#data-integration-units) opgeven. Met een zelf-hostende Integration runtime (zelf-hostende IR) kunt u de machine hand matig opschalen of uitschalen naar meerdere machines ([Maxi maal vier knoop punten](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)), en met één Kopieer activiteit wordt de partitie over alle knoop punten gedistribueerd. 
+- Eén Kopieer activiteit kan profiteren van schaal bare reken resources. Wanneer u Azure Integration Runtime gebruikt, kunt u voor elke Kopieer activiteit op serverloze wijze [Maxi maal 256 DIUs](./copy-activity-performance.md#data-integration-units) opgeven. Met een zelf-hostende Integration runtime (zelf-hostende IR) kunt u de machine hand matig opschalen of uitschalen naar meerdere machines ([Maxi maal vier knoop punten](./create-self-hosted-integration-runtime.md#high-availability-and-scalability)), en met één Kopieer activiteit wordt de partitie over alle knoop punten gedistribueerd. 
 
 - Eén Kopieer activiteit leest van en schrijft naar het gegevens archief met behulp van meerdere threads. 
 
-- Azure Data Factory controle stroom kan meerdere Kopieer activiteiten parallel starten. Het kan bijvoorbeeld worden gestart met behulp van een [voor elke lus](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity). 
+- Azure Data Factory controle stroom kan meerdere Kopieer activiteiten parallel starten. Het kan bijvoorbeeld worden gestart met behulp van een [voor elke lus](./control-flow-for-each-activity.md). 
 
-Zie voor meer informatie kopiëren van de [prestaties en schaal baarheid](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)van de activiteit.
+Zie voor meer informatie kopiëren van de [prestaties en schaal baarheid](./copy-activity-performance.md)van de activiteit.
 
 ## <a name="resilience"></a>Tolerantie
 
@@ -95,33 +95,33 @@ Het voor gaande diagram kan als volgt worden geïnterpreteerd:
 
 ### <a name="manage-authentication-and-credentials"></a>Verificatie en referenties beheren 
 
-- U kunt [ODBC-verificatie via Connection String](https://docs.microsoft.com/azure/data-factory/connector-netezza#linked-service-properties)gebruiken om te verifiëren bij Netezza. 
+- U kunt [ODBC-verificatie via Connection String](./connector-netezza.md#linked-service-properties)gebruiken om te verifiëren bij Netezza. 
 
 - Verificatie bij Azure Blob-opslag: 
 
-   - Het is raadzaam [beheerde identiteiten te gebruiken voor Azure-resources](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity). Beheerde identiteiten zijn gebaseerd op een automatisch beheerde Azure Data Factory identiteit in Azure Active Directory (Azure AD), zodat u pijp lijnen kunt configureren zonder dat er referenties moeten worden opgegeven in de definitie van de gekoppelde service.  
+   - Het is raadzaam [beheerde identiteiten te gebruiken voor Azure-resources](./connector-azure-blob-storage.md#managed-identity). Beheerde identiteiten zijn gebaseerd op een automatisch beheerde Azure Data Factory identiteit in Azure Active Directory (Azure AD), zodat u pijp lijnen kunt configureren zonder dat er referenties moeten worden opgegeven in de definitie van de gekoppelde service.  
 
-   - U kunt ook verifiëren voor Azure Blob Storage met behulp van de [Service-Principal](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication), een [hand tekening voor gedeelde toegang](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)of een sleutel voor het [opslag account](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication). 
+   - U kunt ook verifiëren voor Azure Blob Storage met behulp van de [Service-Principal](./connector-azure-blob-storage.md#service-principal-authentication), een [hand tekening voor gedeelde toegang](./connector-azure-blob-storage.md#shared-access-signature-authentication)of een sleutel voor het [opslag account](./connector-azure-blob-storage.md#account-key-authentication). 
 
 - Verifiëren bij Azure Data Lake Storage Gen2: 
 
-   - Het is raadzaam [beheerde identiteiten te gebruiken voor Azure-resources](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity).
+   - Het is raadzaam [beheerde identiteiten te gebruiken voor Azure-resources](./connector-azure-data-lake-storage.md#managed-identity).
    
-   - U kunt ook een sleutel voor de [Service-Principal](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication) of een [opslag account](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication)gebruiken. 
+   - U kunt ook een sleutel voor de [Service-Principal](./connector-azure-data-lake-storage.md#service-principal-authentication) of een [opslag account](./connector-azure-data-lake-storage.md#account-key-authentication)gebruiken. 
 
 - Verificatie bij Azure Synapse Analytics:
 
-   - Het is raadzaam [beheerde identiteiten te gebruiken voor Azure-resources](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#managed-identity).
+   - Het is raadzaam [beheerde identiteiten te gebruiken voor Azure-resources](./connector-azure-sql-data-warehouse.md#managed-identity).
    
-   - U kunt ook [Service-Principal](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#service-principal-authentication) of [SQL-verificatie](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#sql-authentication)gebruiken.
+   - U kunt ook [Service-Principal](./connector-azure-sql-data-warehouse.md#service-principal-authentication) of [SQL-verificatie](./connector-azure-sql-data-warehouse.md#sql-authentication)gebruiken.
 
-- Wanneer u geen beheerde identiteiten voor Azure-resources gebruikt, raden we u ten zeerste aan [de referenties op te slaan in azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) om het eenvoudiger te maken om sleutels te beheren en te draaien zonder dat u Azure Data Factory gekoppelde services hoeft te wijzigen. Dit is ook een van de [Aanbevolen procedures voor CI/cd](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd). 
+- Wanneer u geen beheerde identiteiten voor Azure-resources gebruikt, raden we u ten zeerste aan [de referenties op te slaan in azure Key Vault](./store-credentials-in-key-vault.md) om het eenvoudiger te maken om sleutels te beheren en te draaien zonder dat u Azure Data Factory gekoppelde services hoeft te wijzigen. Dit is ook een van de [Aanbevolen procedures voor CI/cd](./continuous-integration-deployment.md#best-practices-for-cicd). 
 
 ### <a name="migrate-initial-snapshot-data"></a>Initiële momentopname gegevens migreren 
 
 Voor kleine tabellen (dat wil zeggen: tabellen met een volume kleiner dan 100 GB of die binnen twee uur naar Azure kunnen worden gemigreerd), kunt u elke taak voor het laden van gegevens per tabel maken. Voor een hogere door Voer kunt u meerdere Azure Data Factory Kopieer taken uitvoeren om afzonderlijke tabellen gelijktijdig te laden. 
 
-U kunt binnen elke Kopieer taak parallelle query's uitvoeren en gegevens kopiëren per partitie, maar ook een zekere mate van parallellisme bereiken met behulp van de instelling van de [ `parallelCopies` eigenschap](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#parallel-copy) met een van de volgende opties voor de gegevens partitie:
+U kunt binnen elke Kopieer taak parallelle query's uitvoeren en gegevens kopiëren per partitie, maar ook een zekere mate van parallellisme bereiken met behulp van de instelling van de [ `parallelCopies` eigenschap](./copy-activity-performance.md#parallel-copy) met een van de volgende opties voor de gegevens partitie:
 
 - Voor een grotere efficiëntie kunt u het beste beginnen met een gegevens segment.  Zorg ervoor dat de waarde in de `parallelCopies` instelling lager is dan het totale aantal gegevens segment partities in de tabel op de Netezza-server.  
 
@@ -192,18 +192,18 @@ Op basis van de voor gaande hypo theses is dit de geschatte prijs:
 Raadpleeg de volgende artikelen en hand leidingen voor meer informatie:
 
 - [Gegevens migreren van een on-premises relationele data warehouse-Data Base naar Azure met behulp van Azure Data Factory](https://azure.microsoft.com/resources/data-migration-from-on-premise-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/)
-- [Netezza-connector](https://docs.microsoft.com/azure/data-factory/connector-netezza)
-- [ODBC-connector](https://docs.microsoft.com/azure/data-factory/connector-odbc)
-- [Azure Blob-opslag connector](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
-- [Azure Data Lake Storage Gen2-connector](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-- [Azure Synapse Analytics-connector](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse)
-- [Gids voor het afstemmen van de activiteit prestaties kopiëren](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
-- [Zelf-hostende Integration Runtime maken en configureren](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
-- [Zelf-hostende runtime HA en schaal baarheid](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
-- [Beveiligingsoverwegingen bij het verplaatsen van gegevens](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
-- [Referenties opslaan in Azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
-- [Gegevens stapsgewijs uit een tabel kopiëren](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-portal)
-- [Gegevens stapsgewijs uit meerdere tabellen kopiëren](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-multiple-tables-portal)
+- [Netezza-connector](./connector-netezza.md)
+- [ODBC-connector](./connector-odbc.md)
+- [Azure Blob-opslag connector](./connector-azure-blob-storage.md)
+- [Azure Data Lake Storage Gen2-connector](./connector-azure-data-lake-storage.md)
+- [Azure Synapse Analytics-connector](./connector-azure-sql-data-warehouse.md)
+- [Gids voor het afstemmen van de activiteit prestaties kopiëren](./copy-activity-performance.md)
+- [Zelf-hostende Integration Runtime maken en configureren](./create-self-hosted-integration-runtime.md)
+- [Zelf-hostende runtime HA en schaal baarheid](./create-self-hosted-integration-runtime.md#high-availability-and-scalability)
+- [Beveiligingsoverwegingen bij het verplaatsen van gegevens](./data-movement-security-considerations.md)
+- [Referenties opslaan in Azure Key Vault](./store-credentials-in-key-vault.md)
+- [Gegevens stapsgewijs uit een tabel kopiëren](./tutorial-incremental-copy-portal.md)
+- [Gegevens stapsgewijs uit meerdere tabellen kopiëren](./tutorial-incremental-copy-multiple-tables-portal.md)
 - [Pagina met Azure Data Factory prijzen](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -2,15 +2,15 @@
 title: Resources implementeren in beheer groep
 description: Hierin wordt beschreven hoe u resources kunt implementeren in het bereik van de beheer groep in een Azure Resource Manager sjabloon.
 ms.topic: conceptual
-ms.date: 09/24/2020
-ms.openlocfilehash: 23f86d7d0b7e1f882cf3fb74adc484e0fe47db87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/22/2020
+ms.openlocfilehash: 084ab69f463334569d37efd9187bfe587bfc524d
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372422"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92668937"
 ---
-# <a name="create-resources-at-the-management-group-level"></a>Resources op het niveau van de beheer groep maken
+# <a name="management-group-deployments-with-arm-templates"></a>Implementaties van beheer groepen met ARM-sjablonen
 
 Als uw organisatie is gerijpt, kunt u een Azure Resource Manager sjabloon (ARM-sjabloon) implementeren om resources te maken op het niveau van de beheer groep. U moet bijvoorbeeld [beleids regels](../../governance/policy/overview.md) of [toegangs beheer op basis van rollen (Azure RBAC)](../../role-based-access-control/overview.md) voor een beheer groep definiëren en toewijzen. Met beheer groeps niveau sjablonen kunt u declaratief beleid Toep assen en rollen toewijzen op het niveau van de beheer groep.
 
@@ -52,42 +52,26 @@ Het schema dat u voor de implementaties van beheer groepen gebruikt, verschilt v
 Voor sjablonen gebruikt u:
 
 ```json
-https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    ...
+}
 ```
 
 Het schema voor een parameter bestand is hetzelfde voor alle implementatie bereiken. Gebruik voor parameter bestanden:
 
 ```json
-https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    ...
+}
 ```
-
-## <a name="deployment-scopes"></a>Implementatie bereiken
-
-Wanneer u implementeert in een beheer groep, kunt u de beheer groep die is opgegeven in de implementatie opdracht richten of u kunt andere beheer groepen in de Tenant selecteren.
-
-Resources die zijn gedefinieerd in de sectie resources van de sjabloon, worden toegepast op de beheer groep via de implementatie opdracht.
-
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-mg.json" highlight="5":::
-
-Als u een andere beheer groep wilt instellen, voegt u een geneste implementatie toe en geeft u de `scope` eigenschap op. Stel de `scope` eigenschap in op een waarde in de notatie `Microsoft.Management/managementGroups/<mg-name>` .
-
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/scope-mg.json" highlight="10,17,22":::
-
-U kunt ook abonnementen of resource groepen binnen een beheer groep richten. De gebruiker die de sjabloon implementeert, moet toegang hebben tot het opgegeven bereik.
-
-Gebruik een geneste implementatie en de eigenschap om een abonnement in de beheer groep te richten `subscriptionId` .
-
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-subscription.json" highlight="10,18":::
-
-Als u een resource groep in het abonnement wilt richten, voegt u een andere geneste implementatie en de `resourceGroup` eigenschap toe.
-
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-resource-group.json" highlight="10,21,25":::
-
-Voor het gebruik van een implementatie van een beheer groep voor het maken van een resource groep in een abonnement en het implementeren van een opslag account voor die resource groep, Zie [implementeren naar abonnement en resource groep](#deploy-to-subscription-and-resource-group).
 
 ## <a name="deployment-commands"></a>Implementatie opdrachten
 
-De opdrachten voor het implementeren van beheer groepen verschillen van de opdrachten voor het implementeren van resource groepen.
+Als u wilt implementeren in een beheer groep, gebruikt u de opdrachten voor de implementatie van beheer groepen.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Gebruik [AZ Deployment mg Create](/cli/azure/deployment/mg#az-deployment-mg-create)voor Azure cli:
 
@@ -99,6 +83,8 @@ az deployment mg create \
   --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/management-level-deployment/azuredeploy.json"
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 Voor Azure PowerShell gebruikt u [New-AzManagementGroupDeployment](/powershell/module/az.resources/new-azmanagementgroupdeployment).
 
 ```azurepowershell-interactive
@@ -109,42 +95,70 @@ New-AzManagementGroupDeployment `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/management-level-deployment/azuredeploy.json"
 ```
 
-Gebruik voor REST API [implementaties-maken voor het bereik van de beheer groep](/rest/api/resources/deployments/createorupdateatmanagementgroupscope).
+---
+
+Zie voor meer gedetailleerde informatie over implementatie opdrachten en opties voor het implementeren van ARM-sjablonen:
+
+* [Resources implementeren met ARM-sjablonen en Azure Portal](deploy-portal.md)
+* [Resources implementeren met ARM-sjablonen en Azure CLI](deploy-cli.md)
+* [Resources implementeren met ARM-sjablonen en Azure PowerShell](deploy-powershell.md)
+* [Resources implementeren met ARM-sjablonen en Azure Resource Manager REST API](deploy-rest.md)
+* [Een implementatie knop gebruiken voor het implementeren van sjablonen uit de GitHub-opslag plaats](deploy-to-azure-button.md)
+* [ARM-sjablonen implementeren vanuit Cloud Shell](deploy-cloud-shell.md)
+
+## <a name="deployment-scopes"></a>Implementatie bereiken
+
+Wanneer u implementeert in een beheer groep, kunt u resources implementeren voor het volgende:
+
+* de doel beheer groep van de bewerking
+* een andere beheer groep in de Tenant
+* abonnementen in de beheer groep
+* resource groepen in de beheer groep (via twee geneste implementaties)
+* [uitbreidings bronnen](scope-extension-resources.md) kunnen worden toegepast op resources
+
+De gebruiker die de sjabloon implementeert, moet toegang hebben tot het opgegeven bereik.
+
+In deze sectie wordt beschreven hoe u verschillende bereiken kunt opgeven. U kunt deze verschillende bereiken combi neren in één sjabloon.
+
+### <a name="scope-to-target-management-group"></a>Bereik van doel beheer groep
+
+Resources die zijn gedefinieerd in de sectie resources van de sjabloon, worden toegepast op de beheer groep via de implementatie opdracht.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-mg.json" highlight="5":::
+
+### <a name="scope-to-another-management-group"></a>Bereik naar een andere beheer groep
+
+Als u een andere beheer groep wilt instellen, voegt u een geneste implementatie toe en geeft u de `scope` eigenschap op. Stel de `scope` eigenschap in op een waarde in de notatie `Microsoft.Management/managementGroups/<mg-name>` .
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/scope-mg.json" highlight="10,17,22":::
+
+### <a name="scope-to-subscription"></a>Bereik voor abonnement
+
+U kunt ook abonnementen in een beheer groep richten. De gebruiker die de sjabloon implementeert, moet toegang hebben tot het opgegeven bereik.
+
+Gebruik een geneste implementatie en de eigenschap om een abonnement in de beheer groep te richten `subscriptionId` .
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-subscription.json" highlight="10,18":::
+
+### <a name="scope-to-resource-group"></a>Bereik voor resource groep
+
+Als u een resource groep in het abonnement wilt richten, voegt u twee geneste implementaties toe. De eerste streeft naar het abonnement met de resource groep. De tweede streeft naar de resource groep door de eigenschap in te stellen `resourceGroup` .
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-resource-group.json" highlight="10,21,25":::
+
+Voor het gebruik van een implementatie van een beheer groep voor het maken van een resource groep in een abonnement en het implementeren van een opslag account voor die resource groep, Zie [implementeren naar abonnement en resource groep](#deploy-to-subscription-and-resource-group).
 
 ## <a name="deployment-location-and-name"></a>Locatie en naam van de implementatie
 
 Voor implementaties op beheer groepniveau moet u een locatie opgeven voor de implementatie. De locatie van de implementatie is gescheiden van de locatie van de resources die u implementeert. De implementatie locatie geeft aan waar de implementatie gegevens moeten worden opgeslagen.
 
-U kunt een naam opgeven voor de implementatie of de naam van de standaard implementatie gebruiken. De standaard naam is de naam van het sjabloon bestand. Als u bijvoorbeeld een sjabloon met de naam **azuredeploy.jsop** implementeert, maakt de standaard implementatie naam **azuredeploy**.
+U kunt een naam opgeven voor de implementatie of de naam van de standaard implementatie gebruiken. De standaard naam is de naam van het sjabloon bestand. Als u bijvoorbeeld een sjabloon met de naam **azuredeploy.jsop** implementeert, maakt de standaard implementatie naam **azuredeploy** .
 
 Voor elke implementatie naam is de locatie onveranderbaar. U kunt geen implementatie op één locatie maken wanneer er een bestaande implementatie met dezelfde naam op een andere locatie is. Als u de fout code krijgt `InvalidDeploymentLocation` , moet u een andere naam of dezelfde locatie gebruiken als de vorige implementatie voor die naam.
 
-## <a name="use-template-functions"></a>Sjabloon functies gebruiken
-
-Voor implementaties van een beheer groep gelden enkele belang rijke aandachtspunten bij het gebruik van sjabloon functies:
-
-* De functie [resourceGroup ()](template-functions-resource.md#resourcegroup) wordt **niet** ondersteund.
-* De functie [Subscription ()](template-functions-resource.md#subscription) wordt **niet** ondersteund.
-* De functies [Reference ()](template-functions-resource.md#reference) en [List ()](template-functions-resource.md#list) worden ondersteund.
-* Gebruik niet de functie [resourceId ()](template-functions-resource.md#resourceid) voor resources die zijn geïmplementeerd in de beheer groep.
-
-  Gebruik in plaats daarvan de functie [extensionResourceId ()](template-functions-resource.md#extensionresourceid) voor resources die zijn geïmplementeerd als uitbrei dingen van de beheer groep. Aangepaste beleids definities die worden geïmplementeerd in de beheer groep zijn uitbrei dingen van de beheer groep.
-
-  Als u de resource-ID voor een aangepaste beleids definitie op het niveau van de beheer groep wilt ophalen, gebruikt u:
-  
-  ```json
-  "policyDefinitionId": "[extensionResourceId(variables('mgScope'), 'Microsoft.Authorization/policyDefinitions', parameters('policyDefinitionID'))]"
-  ```
-
-  Gebruik de functie [tenantResourceId](template-functions-resource.md#tenantresourceid) voor Tenant bronnen die beschikbaar zijn in de beheer groep. Ingebouwde beleids definities zijn resources op Tenant niveau.
-
-  Als u de resource-ID voor een ingebouwde beleids definitie wilt ophalen, gebruikt u:
-  
-  ```json
-  "policyDefinitionId": "[tenantResourceId('Microsoft.Authorization/policyDefinitions', parameters('policyDefinitionID'))]"
-  ```
-
 ## <a name="azure-policy"></a>Azure Policy
+
+Aangepaste beleids definities die worden geïmplementeerd in de beheer groep zijn uitbrei dingen van de beheer groep. Als u de ID van een aangepaste beleids definitie wilt ophalen, gebruikt u de functie [extensionResourceId ()](template-functions-resource.md#extensionresourceid) . Ingebouwde beleids definities zijn resources op Tenant niveau. Als u de ID van een ingebouwde beleids definitie wilt ophalen, gebruikt u de functie [tenantResourceId](template-functions-resource.md#tenantresourceid) .
 
 In het volgende voor beeld ziet u hoe u een beleid [definieert](../../governance/policy/concepts/definition-structure.md) op het niveau van de beheer groep en dit toewijst.
 

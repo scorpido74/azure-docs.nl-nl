@@ -4,13 +4,13 @@ description: Meer informatie over het gebruik van Azure-toepassing Insights met 
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.custom: devx-track-csharp, fasttrack-edit, contperfq2
-ms.openlocfilehash: 85851c896d32d2e15efa0a39260af4331f99f862
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.custom: devx-track-csharp, fasttrack-edit, contperfq2, devx-track-js
+ms.openlocfilehash: 87c31df6ecb92acd5bedaee274f9886383e5c617
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217147"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92668726"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions controleren
 
@@ -33,7 +33,7 @@ De volledige lijst met Application Insights functies die beschikbaar zijn voor u
 
 ## <a name="application-insights-integration"></a>Integratie van Application Insights
 
-Normaal gesp roken maakt u een Application Insights-instantie wanneer u de functie-app maakt. In dit geval is de instrumentatie sleutel die is vereist voor de integratie al ingesteld als een toepassings instelling met de naam *APPINSIGHTS_INSTRUMENTATIONKEY*. Als uw functie-app om een of andere reden geen instrumentatie sleutel heeft ingesteld, moet u [Application Insights-integratie inschakelen](configure-monitoring.md#enable-application-insights-integration).  
+Normaal gesp roken maakt u een Application Insights-instantie wanneer u de functie-app maakt. In dit geval is de instrumentatie sleutel die is vereist voor de integratie al ingesteld als een toepassings instelling met de naam *APPINSIGHTS_INSTRUMENTATIONKEY* . Als uw functie-app om een of andere reden geen instrumentatie sleutel heeft ingesteld, moet u [Application Insights-integratie inschakelen](configure-monitoring.md#enable-application-insights-integration).  
 
 ## <a name="collecting-telemetry-data"></a>Telemetriegegevens verzamelen
 
@@ -89,15 +89,15 @@ Raadpleeg de ontwikkelaars handleiding voor uw taal voor meer informatie over he
 + [PowerShell](functions-reference-powershell.md#logging)
 + [Python](functions-reference-python.md#logging)
 
-## <a name="streaming-logs"></a>Streaming-logboeken
+## <a name="streaming-logs"></a>Streaminglogboeken
 
 Tijdens het ontwikkelen van een toepassing wilt u vaak zien wat er in de buurt van real-time naar de logboeken wordt geschreven wanneer u in azure uitvoert.
 
 Er zijn twee manieren om een stroom weer te geven van de logboek gegevens die worden gegenereerd door uw functie-uitvoeringen.
 
-* **Ingebouwde logboek streaming**: met het app service-platform kunt u een stroom weer geven van de logboek bestanden van uw toepassing. Deze stroom is gelijk aan de uitvoer die wordt weer gegeven wanneer u tijdens de [lokale ontwikkeling](functions-develop-local.md) fouten opspoort in uw functies en wanneer u het tabblad **testen** in de portal gebruikt. Alle gegevens op basis van het logboek worden weer gegeven. Zie [Stream-logboeken](../app-service/troubleshoot-diagnostic-logs.md#stream-logs)voor meer informatie. Deze streaming-methode ondersteunt slechts één exemplaar en kan niet worden gebruikt met een app die wordt uitgevoerd op Linux in een verbruiks abonnement.
+* **Ingebouwde logboek streaming** : met het app service-platform kunt u een stroom weer geven van de logboek bestanden van uw toepassing. Deze stroom is gelijk aan de uitvoer die wordt weer gegeven wanneer u tijdens de [lokale ontwikkeling](functions-develop-local.md) fouten opspoort in uw functies en wanneer u het tabblad **testen** in de portal gebruikt. Alle gegevens op basis van het logboek worden weer gegeven. Zie [Stream-logboeken](../app-service/troubleshoot-diagnostic-logs.md#stream-logs)voor meer informatie. Deze streaming-methode ondersteunt slechts één exemplaar en kan niet worden gebruikt met een app die wordt uitgevoerd op Linux in een verbruiks abonnement.
 
-* **Live Metrics stream**: als uw functie-app is [verbonden met Application Insights](configure-monitoring.md#enable-application-insights-integration), kunt u de logboek gegevens en andere gegevens in bijna realtime weer geven in de Azure Portal met [Live Metrics stream](../azure-monitor/app/live-stream.md). Gebruik deze methode wanneer u functies bewaken die worden uitgevoerd op meerdere exemplaren of op Linux in een verbruiks abonnement. Met deze methode worden [voorbeeld gegevens](configure-monitoring.md#configure-sampling)gebruikt.
+* **Live Metrics stream** : als uw functie-app is [verbonden met Application Insights](configure-monitoring.md#enable-application-insights-integration), kunt u de logboek gegevens en andere gegevens in bijna realtime weer geven in de Azure Portal met [Live Metrics stream](../azure-monitor/app/live-stream.md). Gebruik deze methode wanneer u functies bewaken die worden uitgevoerd op meerdere exemplaren of op Linux in een verbruiks abonnement. Met deze methode worden [voorbeeld gegevens](configure-monitoring.md#configure-sampling)gebruikt.
 
 Logboek stromen kunnen zowel in de portal als in de meeste lokale ontwikkel omgevingen worden weer gegeven. Zie [streaming-uitvoerings logboeken inschakelen in azure functions](streaming-logs.md)voor meer informatie over het inschakelen van logboek stromen.
 
@@ -123,7 +123,7 @@ Als u een probleem wilt melden met Application Insights integratie in functions,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende bronnen voor meer informatie:
+Zie de volgende resources voor meer informatie:
 
 * [Application Insights](/azure/application-insights/)
 * [ASP.NET Core logboek registratie](/aspnet/core/fundamentals/logging/)

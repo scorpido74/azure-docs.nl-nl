@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: b2c1d08656ce9ef6b76e34a943f133859b78345a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f1332255ae83a32f9b71d24d812b00fad9b7fa1
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86172023"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637918"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Problemen met SSIS Integration Runtime Management in Azure Data Factory oplossen
 
@@ -82,7 +82,7 @@ Dit type fout bericht ziet er als volgt uit: "Ongeldige object naam catalog.cata
 
 ## <a name="custom-setup-issues"></a>Aangepaste installatie problemen
 
-Aangepaste installatie biedt een interface voor het toevoegen van uw eigen installatiestappen tijdens het inrichten of opnieuw configureren van uw SSIS IR. Zie [Installatie aanpassen voor Azure-SSIS Integration Runtime](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup) voor meer informatie.
+Aangepaste installatie biedt een interface voor het toevoegen van uw eigen installatiestappen tijdens het inrichten of opnieuw configureren van uw SSIS IR. Zie [Installatie aanpassen voor Azure-SSIS Integration Runtime](./how-to-configure-azure-ssis-ir-custom-setup.md) voor meer informatie.
 
 Zorg ervoor dat uw container alleen de benodigde aangepaste installatiebestanden bevat. Alle bestanden in de container worden gedownload naar het SSIS IR-werkknooppunt. Het is raadzaam om het aangepaste installatiescript op een lokale machine te testen om eventuele problemen met het uitvoeren van scripts op te lossen voordat u het script uitvoert in SSIS IR.
 
@@ -114,7 +114,7 @@ Deze fout betekent dat de poging om de logboeken voor de uitvoering van de aange
 
 ## <a name="virtual-network-configuration"></a>Configuratie van virtueel netwerk
 
-Als u SSIS IR toevoegt aan Azure Virtual Network, maakt SSIS IR gebruik van het virtuele netwerk onder dit gebruikersabonnement. Zie [Azure-SSIS Integration Runtime toevoegen aan een virtueel netwerk](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network) voor meer informatie.
+Als u SSIS IR toevoegt aan Azure Virtual Network, maakt SSIS IR gebruik van het virtuele netwerk onder dit gebruikersabonnement. Zie [Azure-SSIS Integration Runtime toevoegen aan een virtueel netwerk](./join-azure-ssis-integration-runtime-virtual-network.md) voor meer informatie.
 Nadat SSIS IR is gestart, kunt u, als u problemen met de netwerk verbinding ondervindt, proberen om het probleem op te lossen met het [hulp programma voor diagnose verbindingen](ssis-integration-runtime-diagnose-connectivity-faq.md) .
 Wanneer er een probleem optreedt dat is gerelateerd aan een virtueel netwerk, ziet u een van de volgende fouten.
 
@@ -141,7 +141,7 @@ Deze fouten geven aan dat het virtuele netwerk niet bestaat, de Azure Batch-serv
 
 Dit type fout bericht kan er als volgt uitzien: ' kan geen Integration Runtime inrichten in VNet. Als de DNS-server-of NSG-instellingen zijn geconfigureerd, controleert u of de DNS-server toegankelijk is en of NSG juist is geconfigureerd. "
 
-In deze situatie hebt u waarschijnlijk een aangepaste configuratie van de DNS-server of NSG-instellingen, waardoor de Azure-servernaam die is vereist voor SSIS IR, niet kan worden omgezet of weergegeven. Zie [Virtual Network-configuratie voor SSIS IR](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network) voor meer informatie. Als u nog steeds problemen ondervindt, neemt u contact op met het ondersteuningsteam van Azure Data Factory.
+In deze situatie hebt u waarschijnlijk een aangepaste configuratie van de DNS-server of NSG-instellingen, waardoor de Azure-servernaam die is vereist voor SSIS IR, niet kan worden omgezet of weergegeven. Zie [Virtual Network-configuratie voor SSIS IR](./join-azure-ssis-integration-runtime-virtual-network.md) voor meer informatie. Als u nog steeds problemen ondervindt, neemt u contact op met het ondersteuningsteam van Azure Data Factory.
 
 ### <a name="vnetresourcegrouplockedduringupgrade"></a>VNetResourceGroupLockedDuringUpgrade
 
@@ -157,11 +157,11 @@ Als u SSIS IR stopt, worden alle aan Virtual Network gerelateerde resources verw
 
 ### <a name="nodeunavailable"></a>NodeUnavailable
 
-Deze fout treedt op als IR actief is, en duidt erop dat IR is beschadigd. Deze fout wordt altijd veroorzaakt door een wijziging in de DNS-server of NSG-configuratie, waardoor SSIS IR geen verbinding kan maken met een noodzakelijke service. Omdat de configuratie van DNS-server en NSG wordt beheerd door de klant, moet deze de blokkerende problemen aan de eigen zijde oplossen. Zie [Virtual Network-configuratie voor SSIS IR](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network) voor meer informatie. Als u nog steeds problemen ondervindt, neemt u contact op met het ondersteuningsteam van Azure Data Factory.
+Deze fout treedt op als IR actief is, en duidt erop dat IR is beschadigd. Deze fout wordt altijd veroorzaakt door een wijziging in de DNS-server of NSG-configuratie, waardoor SSIS IR geen verbinding kan maken met een noodzakelijke service. Omdat de configuratie van DNS-server en NSG wordt beheerd door de klant, moet deze de blokkerende problemen aan de eigen zijde oplossen. Zie [Virtual Network-configuratie voor SSIS IR](./join-azure-ssis-integration-runtime-virtual-network.md) voor meer informatie. Als u nog steeds problemen ondervindt, neemt u contact op met het ondersteuningsteam van Azure Data Factory.
 
 ## <a name="static-public-ip-addresses-configuration"></a>Configuratie van statische open bare IP-adressen
 
-Wanneer u de Azure-SSIS IR aan Azure Virtual Network koppelt, kunt u ook uw eigen statische open bare IP-adressen voor de IR meebrengen, zodat de IR toegang kan krijgen tot gegevens bronnen waarmee de toegang tot specifieke IP-adressen wordt beperkt. Zie [Azure-SSIS Integration Runtime toevoegen aan een virtueel netwerk](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network) voor meer informatie.
+Wanneer u de Azure-SSIS IR aan Azure Virtual Network koppelt, kunt u ook uw eigen statische open bare IP-adressen voor de IR meebrengen, zodat de IR toegang kan krijgen tot gegevens bronnen waarmee de toegang tot specifieke IP-adressen wordt beperkt. Zie [Azure-SSIS Integration Runtime toevoegen aan een virtueel netwerk](./join-azure-ssis-integration-runtime-virtual-network.md) voor meer informatie.
 
 Naast de bovenstaande problemen met het virtuele netwerk, kunt u ook voldoen aan statisch openbaar IP-adressen probleem. Raadpleeg de volgende fouten voor meer informatie.
 
@@ -174,7 +174,7 @@ Deze fout kan om verschillende redenen optreden wanneer u de Azure-SSIS IR start
 | Het geleverde statische open bare IP-adres wordt al gebruikt. Geef twee ongebruikte voor uw Azure-SSIS Integration Runtime op. | U moet twee ongebruikte statische open bare IP-adressen selecteren of de huidige verwijzingen naar het opgegeven open bare IP-adres verwijderen en vervolgens de Azure-SSIS IR opnieuw opstarten. |
 | Het geleverde statische open bare IP-adres heeft geen DNS-naam. Geef twee van de DNS-naam op voor de Azure-SSIS Integration Runtime. | U kunt de DNS-naam van het open bare IP-adres in Azure Portal instellen, zoals hieronder wordt weer gegeven. Specifieke stappen zijn als volgt: (1) open Azure Portal en ga naar de pagina resource van dit open bare IP-adres. (2) Selecteer de **configuratie** sectie en stel de DNS-naam in en klik vervolgens op de knop **Opslaan** . (3) start uw Azure-SSIS IR opnieuw op. |
 | De verschafte VNet-en statische open bare IP-adressen voor uw Azure-SSIS Integration Runtime moeten zich op dezelfde locatie bezien. | Volgens de vereisten van het Azure-netwerk moeten het statische open bare IP-adres en het virtuele netwerk zich op dezelfde locatie en hetzelfde abonnement benemen. Geef twee geldige statische open bare IP-adressen op en start de Azure-SSIS IR opnieuw. |
-| Het geleverde statische open bare IP-adres is een basis. Geef twee standaard voor uw Azure-SSIS Integration Runtime op. | Raadpleeg [sku's van het open bare IP-adres](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku) voor hulp. |
+| Het geleverde statische open bare IP-adres is een basis. Geef twee standaard voor uw Azure-SSIS Integration Runtime op. | Raadpleeg [sku's van het open bare IP-adres](../virtual-network/public-ip-addresses.md#sku) voor hulp. |
 
 ![Azure-SSIS IR](media/ssis-integration-runtime-management-troubleshoot/setup-publicipdns-name.png)
 
