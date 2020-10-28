@@ -4,14 +4,14 @@ description: Meer informatie over het configureren van een aangepaste container 
 ms.topic: article
 ms.date: 09/22/2020
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 5b1bf9b205fc1eb90c6eeae3a101def764381213
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f71efbf7cc606efd598880e90ade3a549402245
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91264572"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787054"
 ---
-# <a name="configure-a-custom-container-for-azure-app-service"></a>Een aangepaste container voor Azure App Service configureren
+# <a name="configure-a-custom-container-for-azure-app-service"></a>Een aangepaste container configureren voor Azure App Service
 
 In dit artikel leest u hoe u een aangepaste container kunt configureren om te worden uitgevoerd op Azure App Service.
 
@@ -212,7 +212,7 @@ Er zijn verschillende manieren om toegang te krijgen tot docker-logboeken:
 
 ### <a name="in-azure-portal"></a>In Azure Portal
 
-Docker-logboeken worden weer gegeven in de portal, op de pagina **container instellingen** van uw app. De logboeken worden afgekapt, maar u kunt alle logboeken downloaden door te klikken op **downloaden**. 
+Docker-logboeken worden weer gegeven in de portal, op de pagina **container instellingen** van uw app. De logboeken worden afgekapt, maar u kunt alle logboeken downloaden door te klikken op **downloaden** . 
 
 ### <a name="from-the-kudu-console"></a>Vanuit de kudu-console
 
@@ -272,7 +272,7 @@ De processoren kunnen multicore-of HyperThreading-processors zijn. Informatie ov
 
 ## <a name="customize-health-ping-behavior"></a>Gedrag van de status ping aanpassen
 
-App Service houdt in dat een container met succes wordt gestart wanneer de container wordt gestart en reageert op een HTTP-ping. De header van de ping-aanvraag wordt door de Health-opdracht regel `User-Agent= "App Service Hyper-V Container Availability Check"` . Als de container wordt gestart, maar niet reageert op een ping na een bepaalde tijd, App Service een gebeurtenis geregistreerd in het docker-logboek, wat aangeeft dat de container niet is gestart. 
+App Service houdt in dat een container met succes wordt gestart wanneer de container wordt gestart en reageert op een HTTP-ping. De ping-aanvraag voor de status bevat de header `User-Agent= "App Service Hyper-V Container Availability Check"` . Als de container wordt gestart, maar niet reageert op een ping na een bepaalde tijd, App Service een gebeurtenis geregistreerd in het docker-logboek, wat aangeeft dat de container niet is gestart. 
 
 Als uw toepassing resource intensief is, reageert de container mogelijk niet op de HTTP-ping in de tijd. Als u de acties wilt beheren wanneer HTTP-pings mislukken, stelt u de `CONTAINER_AVAILABILITY_CHECK_MODE` app-instelling in. U kunt deze instellen via de [Cloud shell](https://shell.azure.com). In bash:
 
@@ -325,7 +325,7 @@ SSH maakt veilige communicatie tussen een container en een client mogelijk. Als 
     ```
 
     > [!NOTE]
-    > Het *sshd_config*-bestand moet de volgende items bevatten:
+    > Het *sshd_config* -bestand moet de volgende items bevatten:
     > - `Ciphers`moet ten minste één item in deze lijst bevatten: `aes128-cbc,3des-cbc,aes256-cbc`.
     > - `MACs`moet ten minste één item in deze lijst bevatten: `hmac-sha1,hmac-sha1-96`.
 

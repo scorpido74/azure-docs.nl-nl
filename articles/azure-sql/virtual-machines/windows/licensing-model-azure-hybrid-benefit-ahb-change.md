@@ -13,18 +13,18 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b09d808201d58b571b2fe5ceb2e228d4e1c21d11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28ab0a158507e3f29ecfdc026203d92d71877633
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316950"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786510"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>Het licentiemodel voor een virtuele SQL-machine in Azure wijzigen
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 
-In dit artikel wordt beschreven hoe u het licentie model voor een SQL Server virtuele machine (VM) in azure wijzigt met behulp van de nieuwe SQL Server VM-resource provider **micro soft. SqlVirtualMachine**.
+In dit artikel wordt beschreven hoe u het licentie model voor een SQL Server virtuele machine (VM) in azure wijzigt met behulp van de nieuwe SQL Server VM-resource provider **micro soft. SqlVirtualMachine** .
 
 Er zijn drie licentie modellen voor een virtuele machine die als host fungeert voor SQL Server: betalen naar gebruik, Azure Hybrid Benefit (AHB) en nood herstel (DR). U kunt het licentie model van uw SQL Server-VM wijzigen met behulp van de Azure Portal, de Azure CLI of Power shell. 
 
@@ -49,7 +49,7 @@ Het licentie type van SQL Server kan worden geconfigureerd wanneer de virtuele m
 Het wijzigen van het licentie model van uw SQL Server virtuele machine heeft de volgende vereisten: 
 
 - Een [Azure-abonnement](https://azure.microsoft.com/free/).
-- Een [SQL Server VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) die is geregistreerd bij de [resource provider](sql-vm-resource-provider-register.md)van de SQL-VM.
+- Een [SQL Server VM](./create-sql-vm-portal.md) die is geregistreerd bij de [resource provider](sql-vm-resource-provider-register.md)van de SQL-VM.
 - [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) is een vereiste voor het gebruik van de [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/). 
 
 
@@ -62,7 +62,7 @@ Het wijzigen van het licentie model van uw SQL Server virtuele machine heeft de 
 U kunt het licentie model rechtstreeks vanuit de portal wijzigen: 
 
 1. Open de [Azure Portal](https://portal.azure.com) en open de [resource van de virtuele SQL-machines](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) voor uw SQL Server VM. 
-1. Selecteer **configureren** onder **instellingen**. 
+1. Selecteer **configureren** onder **instellingen** . 
 1. Selecteer de optie **Azure Hybrid Benefit** en schakel het selectie vakje in om te bevestigen dat u een SQL Server licentie hebt met Software Assurance. 
 1. Selecteer **Toep assen** onder aan de pagina **configureren** . 
 
@@ -83,7 +83,7 @@ U kunt de Azure CLI gebruiken om uw licentie model te wijzigen.
 az sql vm update -n <VMName> -g <ResourceGroupName> --license-type AHUB
 ```
 
-**Betalen**naar gebruik: 
+**Betalen** naar gebruik: 
 
 ```azurecli-interactive
 # Switch your SQL Server VM license from bring-your-own to pay-as-you-go
@@ -180,5 +180,3 @@ Raadpleeg voor meer informatie de volgende artikelen:
 * [Veelgestelde vragen over SQL Server op een Windows-VM](frequently-asked-questions-faq.md)
 * [Prijs informatie voor SQL Server op een Windows-VM](pricing-guidance.md)
 * [Release opmerkingen voor SQL Server op een Windows-VM](../../database/doc-changes-updates-release-notes.md)
-
-

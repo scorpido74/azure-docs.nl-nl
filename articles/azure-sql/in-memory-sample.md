@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 2829b1c71aebcc97452fc658e6509e4fae42da8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5a1035f8a213a6ce02dd3252ff7d3ddea46faf7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616802"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786578"
 ---
 # <a name="in-memory-sample"></a>Voorbeeld van In-Memory
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -49,7 +49,7 @@ Voor een eenvoudigere, maar visueel aantrekkelijke prestatiedemo voor In-Memory 
 
 1. Maak in het [Azure-portaal](https://portal.azure.com/) een Premium- of Bedrijfskritieke database op een server. Stel de **bron** in op de voorbeelddatabase AdventureWorksLT. Zie [Uw eerste data base in Azure SQL Database maken](database/single-database-create-quickstart.md) voor gedetailleerde instructies.
 
-2. Maak verbinding met de database met behulp van SQL Server Management Studio [(SSMS.exe)](https://msdn.microsoft.com/library/mt238290.aspx).
+2. Maak verbinding met de database met behulp van SQL Server Management Studio [(SSMS.exe)](/sql/ssms/download-sql-server-management-studio-ssms).
 
 3. Kopieer het [script In-Memory OLTP Transact-SQL](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_oltp_sample.sql) naar uw klembord. Het script T-SQL maakt de benodigde In-Memory-objecten in de AdventureWorksLT-voorbeelddatabase die u in stap 1 hebt gemaakt.
 
@@ -74,7 +74,7 @@ Het resultaat **0** betekent dat In-Memory niet wordt ondersteund en **1** betek
 
 ### <a name="about-the-created-memory-optimized-items"></a>Over de aangemaakte items die zijn geoptimaliseerd voor geheugen
 
-**Tabellen**: Het voorbeeld bevat de volgende tabellen die zijn geoptimaliseerd voor geheugen:
+**Tabellen** : Het voorbeeld bevat de volgende tabellen die zijn geoptimaliseerd voor geheugen:
 
 - SalesLT.Product_inmem
 - SalesLT.SalesOrderHeader_inmem
@@ -82,7 +82,7 @@ Het resultaat **0** betekent dat In-Memory niet wordt ondersteund en **1** betek
 - Demo.DemoSalesOrderHeaderSeed
 - Demo.DemoSalesOrderDetailSeed
 
-U kunt tabellen die zijn geoptimaliseerd voor geheugen inspecteren met de **Objectverkenner** in SSMS. Klik met de rechtermuisknop op **Tabellen** > **Filter** > **Filterinstellingen** > **Is geoptimaliseerd voor geheugen**. De waarde is gelijk aan 1.
+U kunt tabellen die zijn geoptimaliseerd voor geheugen inspecteren met de **Objectverkenner** in SSMS. Klik met de rechtermuisknop op **Tabellen** > **Filter** > **Filterinstellingen** > **Is geoptimaliseerd voor geheugen** . De waarde is gelijk aan 1.
 
 U kunt ook een query uitvoeren op de catalogusweergaven, zoals:
 
@@ -92,7 +92,7 @@ SELECT is_memory_optimized, name, type_desc, durability_desc
     WHERE is_memory_optimized = 1;
 ```
 
-**In eigen systeem gecompileerde opgeslagen procedure**: U kunt SalesLT.usp_InsertSalesOrder_inmem inspecteren via een query in de catalogusweergave:
+**In eigen systeem gecompileerde opgeslagen procedure** : U kunt SalesLT.usp_InsertSalesOrder_inmem inspecteren via een query in de catalogusweergave:
 
 ```sql
 SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
@@ -150,7 +150,7 @@ begin;
 end
 ```
 
-Als u de versie *_ondisk* van het vorige T-SQL-script voor ostress.exe wilt maken, vervangt u beide exemplaren van de subtekenreeks *_inmem* door *_ondisk*. Deze vervangingen zijn van invloed op de namen van tabellen en opgeslagen procedures.
+Als u de versie *_ondisk* van het vorige T-SQL-script voor ostress.exe wilt maken, vervangt u beide exemplaren van de subtekenreeks *_inmem* door *_ondisk* . Deze vervangingen zijn van invloed op de namen van tabellen en opgeslagen procedures.
 
 #### <a name="install-rml-utilities-and-ostress"></a>Installeer RML-hulpprogramma's en `ostress`
 
@@ -160,8 +160,8 @@ Installeer de RML-hulpprogram ma's (Replay Markup Language) op de virtuele machi
 
 Zie voor meer informatie:
 
-- De discussie oer ostress.exe in [Voorbeelddatabase voor In-Memory OLTP](https://msdn.microsoft.com/library/mt465764.aspx).
-- [Voorbeelddatabase voor In-Memory OLTP](https://msdn.microsoft.com/library/mt465764.aspx).
+- De discussie oer ostress.exe in [Voorbeelddatabase voor In-Memory OLTP](/sql/relational-databases/in-memory-oltp/sample-database-for-in-memory-oltp).
+- [Voorbeelddatabase voor In-Memory OLTP](/sql/relational-databases/in-memory-oltp/sample-database-for-in-memory-oltp).
 - De [blog om ostress.exe te installeren](https://techcommunity.microsoft.com/t5/sql-server-support/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql/ba-p/317910).
 
 <!--
@@ -207,7 +207,7 @@ Als `ostress.exe` voltooid is, wordt de uitvoeringsduur als laatste regel van de
 
 #### <a name="reset-edit-for-_ondisk-then-rerun"></a>Stel het opnieuw in, bewerk het voor *_ondisk* en voer dan opnieuw uit
 
-Nadat u het resultaat van de *_inmem*-uitvoering hebt verkregen, voert u de volgende stappen uit voor de *_ondisk*-uitvoering:
+Nadat u het resultaat van de *_inmem* -uitvoering hebt verkregen, voert u de volgende stappen uit voor de *_ondisk* -uitvoering:
 
 1. Stel de database opnieuw in door de volgende opdracht uit te voeren in SSMS om alle gegevens te verwijderen die zijn ingevoegd bij de eerdere uitvoering:
 
@@ -233,7 +233,7 @@ Onze In-Memory-tests hebben laten zien dat de prestaties **negen keer** beter zi
 
 In deze sectie gaat u de IO en de statistische resultaten vergelijken wanneer u een columnstore-index gebruikt versus wanneer u een traditionele b-tree-index gebruikt.
 
-Voor realtime analyses van een OLTP-workload kunt u vaak best een niet-geclusterde columnstore-index gebruiken. Zie [Beschreven columnstore-indexen](https://msdn.microsoft.com/library/gg492088.aspx) voor meer informatie.
+Voor realtime analyses van een OLTP-workload kunt u vaak best een niet-geclusterde columnstore-index gebruiken. Zie [Beschreven columnstore-indexen](/sql/relational-databases/indexes/columnstore-indexes-overview) voor meer informatie.
 
 ### <a name="prepare-the-columnstore-analytics-test"></a>De analysetest van columnstore voorbereiden
 
@@ -254,9 +254,9 @@ Voor realtime analyses van een OLTP-workload kunt u vaak best een niet-gecluster
 
 #### <a name="key-tables-and-columnstore-indexes"></a>Sleuteltabellen en columnstore-indexen
 
-- dbo.FactResellerSalesXL_CCI is een tabel met een geclusterde columnstore-index met geavanceerde compressie op het *gegevens*niveau.
+- dbo.FactResellerSalesXL_CCI is een tabel met een geclusterde columnstore-index met geavanceerde compressie op het *gegevens* niveau.
 
-- dbo.FactResellerSalesXL_PageCompressed is een tabel die een equivalente reguliere geclusterde index heeft, die alleen op het *pagina*niveau gecomprimeerd wordt.
+- dbo.FactResellerSalesXL_PageCompressed is een tabel die een equivalente reguliere geclusterde index heeft, die alleen op het *pagina* niveau gecomprimeerd wordt.
 
 #### <a name="key-queries-to-compare-the-columnstore-index"></a>Belangrijkste query's om de columnstore-index te vergelijken
 
@@ -335,7 +335,7 @@ In een database in prijscategorie P2 kunt u ongeveer negen keer zoveel prestatie
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Snelstart 1: In-Memory OLTP voor snellere T-SQL-prestaties](https://msdn.microsoft.com/library/mt694156.aspx)
+- [Snelstart 1: In-Memory OLTP voor snellere T-SQL-prestaties](/sql/relational-databases/in-memory-oltp/survey-of-initial-areas-in-in-memory-oltp)
 
 - [In-Memory OLTP gebruiken in een bestaande Azure SQL-toepassing](in-memory-oltp-configure.md)
 
@@ -349,17 +349,17 @@ In een database in prijscategorie P2 kunt u ongeveer negen keer zoveel prestatie
 
 - [Blogbericht over In-Memory OLTP in Azure SQL Database](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 
-- [Meer informatie over In-Memory OLTP](https://msdn.microsoft.com/library/dn133186.aspx)
+- [Meer informatie over In-Memory OLTP](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)
 
-- [Meer informatie over columnstore-indexen](https://msdn.microsoft.com/library/gg492088.aspx)
+- [Meer informatie over columnstore-indexen](/sql/relational-databases/indexes/columnstore-indexes-overview)
 
-- [Meer informatie over realtime operationele analyses](https://msdn.microsoft.com/library/dn817827.aspx)
+- [Meer informatie over realtime operationele analyses](/sql/relational-databases/indexes/get-started-with-columnstore-for-real-time-operational-analytics)
 
-- Zie [Veelvoorkomende workloadpatronen en overwegingen bij migratie](https://msdn.microsoft.com/library/dn673538.aspx) (waarin wordt beschreven welke de workloadpatronen zijn waarbij In-Memory OLTP vaak significante prestatiewinsten biedt)
+- Zie [Veelvoorkomende workloadpatronen en overwegingen bij migratie](/previous-versions/dn673538(v=msdn.10)) (waarin wordt beschreven welke de workloadpatronen zijn waarbij In-Memory OLTP vaak significante prestatiewinsten biedt)
 
 #### <a name="application-design"></a>Toepassingsontwerp
 
-- [In-Memory OLTP (In-Memory-optimalisatie)](https://msdn.microsoft.com/library/dn133186.aspx)
+- [In-Memory OLTP (In-Memory-optimalisatie)](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)
 
 - [In-Memory OLTP gebruiken in een bestaande Azure SQL-toepassing](in-memory-oltp-configure.md)
 
@@ -367,6 +367,6 @@ In een database in prijscategorie P2 kunt u ongeveer negen keer zoveel prestatie
 
 - [Azure-portal](https://portal.azure.com/)
 
-- [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
+- [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)
 
-- [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)
+- [SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt)

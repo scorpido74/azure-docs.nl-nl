@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: ''
 ms.date: 07/11/2019
-ms.openlocfilehash: a33ff6b927045389c3692201fa70839c6a466ede
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e7775f289e0221862d11c585ae85a5b0bc6cc27
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90887650"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788547"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>Migratie van SQL Server-exemplaren naar Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -45,7 +45,7 @@ Op hoog niveau ziet het database migratie proces er als volgt uit:
 
 Bepaal eerst of SQL Managed instance compatibel is met de database vereisten van uw toepassing. SQL Managed instance is ontworpen om eenvoudig lift-en Shift-migratie te bieden voor de meeste bestaande toepassingen die gebruikmaken van SQL Server. Het kan echter ook voor komen dat u functies of mogelijkheden nodig hebt die nog niet worden ondersteund en dat de kosten voor het implementeren van een tijdelijke oplossing te hoog zijn.
 
-Gebruik [Data Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview) om mogelijke compatibiliteits problemen te detecteren die invloed hebben op de database functionaliteit op Azure SQL database. Als er een aantal problemen met de blok kering zijn gerapporteerd, moet u mogelijk een alternatieve optie overwegen, zoals [SQL Server op de Azure-VM](https://azure.microsoft.com/services/virtual-machines/sql-server/). Enkele voorbeelden:
+Gebruik [Data Migration Assistant](/sql/dma/dma-overview) om mogelijke compatibiliteits problemen te detecteren die invloed hebben op de database functionaliteit op Azure SQL database. Als er een aantal problemen met de blok kering zijn gerapporteerd, moet u mogelijk een alternatieve optie overwegen, zoals [SQL Server op de Azure-VM](https://azure.microsoft.com/services/virtual-machines/sql-server/). Enkele voorbeelden:
 
 - Als u rechtstreeks toegang tot het besturings systeem of het bestands systeem nodig hebt, bijvoorbeeld voor het installeren van derden of aangepaste agents op dezelfde virtuele machine met SQL Server.
 - Als u strikte afhankelijkheid hebt voor functies die nog niet worden ondersteund, zoals FileStream/bestands tabel, poly base en trans acties met meerdere exemplaren.
@@ -69,8 +69,8 @@ De basis lijn voor prestaties is een set para meters, zoals gemiddeld/Maxi maal 
 Enkele van de para meters die u moet meten op uw SQL Server-exemplaar zijn:
 
 - [Controleer het CPU-gebruik op uw SQL Server-exemplaar](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131) en noteer het gemiddelde en maximum CPU-gebruik.
-- [Controleer het geheugen gebruik op uw SQL Server-exemplaar](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-memory-usage) en bepaal de hoeveelheid geheugen die wordt gebruikt door verschillende onderdelen, zoals de buffer groep, de plannings cache, de column-Store-groep, [in-Memory OLTP](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage?view=sql-server-2017), enzovoort. Bovendien moet u de gemiddelde en piek waarden voor het prestatie meter item pagina-levens verwachting geheugen vinden.
-- Controleer het gebruik van de schijf-i/o op het bron SQL Server exemplaar met behulp van [sys.dm_io_virtual_file_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) weergave of [prestatie meter items](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-disk-usage).
+- [Controleer het geheugen gebruik op uw SQL Server-exemplaar](/sql/relational-databases/performance-monitor/monitor-memory-usage) en bepaal de hoeveelheid geheugen die wordt gebruikt door verschillende onderdelen, zoals de buffer groep, de plannings cache, de column-Store-groep, [in-Memory OLTP](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage?view=sql-server-2017), enzovoort. Bovendien moet u de gemiddelde en piek waarden voor het prestatie meter item pagina-levens verwachting geheugen vinden.
+- Controleer het gebruik van de schijf-i/o op het bron SQL Server exemplaar met behulp van [sys.dm_io_virtual_file_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) weergave of [prestatie meter items](/sql/relational-databases/performance-monitor/monitor-disk-usage).
 - Controleer de werk belasting-en query prestaties of uw SQL Server-exemplaar door dynamische beheer weergaven of query Store te controleren als u migreert van een SQL Server 2016 + versie. Bepaal de gemiddelde duur en het CPU-gebruik van de belangrijkste query's in uw workload om ze te vergelijken met de query's die worden uitgevoerd op het beheerde exemplaar.
 
 > [!Note]
@@ -116,7 +116,7 @@ SQL Managed instance ondersteunt de volgende opties voor database migratie (mome
 
 [Azure database Migration service](../../dms/dms-overview.md) is een volledig beheerde service die is ontworpen om naadloze migratie van meerdere database bronnen naar Azure-gegevens platforms mogelijk te maken met minimale downtime. Deze service stroomlijnt de taken die nodig zijn om bestaande data bases van derden en SQL Server naar Azure te verplaatsen. Implementatie-opties in open bare preview omvatten data bases in Azure SQL Database en SQL Server data bases in een virtuele machine van Azure. Database Migration Service is de aanbevolen migratie methode voor uw bedrijfs werkbelastingen.
 
-Als u SQL Server Integration Services (SSIS) op SQL Server on-premises gebruikt, biedt Database Migration Service nog geen ondersteuning voor het migreren van de SSIS-catalogus (SSISDB) waarin SSIS-pakketten worden opgeslagen, maar u kunt wel Azure-SSIS Integration Runtime (IR) inrichten in Azure Data Factory, waardoor er een nieuwe SSISDB wordt gemaakt in een beheerd exemplaar, zodat u uw pakketten opnieuw kunt implementeren. Zie [Azure-SSIS IR maken in azure Data Factory](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
+Als u SQL Server Integration Services (SSIS) op SQL Server on-premises gebruikt, biedt Database Migration Service nog geen ondersteuning voor het migreren van de SSIS-catalogus (SSISDB) waarin SSIS-pakketten worden opgeslagen, maar u kunt wel Azure-SSIS Integration Runtime (IR) inrichten in Azure Data Factory, waardoor er een nieuwe SSISDB wordt gemaakt in een beheerd exemplaar, zodat u uw pakketten opnieuw kunt implementeren. Zie [Azure-SSIS IR maken in azure Data Factory](../../data-factory/create-azure-ssis-integration-runtime.md).
 
 Zie [uw on-premises data base migreren naar een beheerd exemplaar met behulp van database Migration service](../../dms/tutorial-sql-server-to-managed-instance.md)voor meer informatie over dit scenario en de configuratie stappen voor database Migration service.  
 
@@ -133,8 +133,8 @@ De volgende tabel bevat meer informatie over de methoden die u kunt gebruiken, a
 |Stap|SQL-engine en-versie|Back-up/herstel methode|
 |---|---|---|
 |Back-up naar Azure Storage plaatsen|Voorafgaand aan 2012 SP1 CU2|Upload het. bak-bestand rechtstreeks naar Azure Storage|
-||2012 SP1 CU2-2016|Directe back-up met afgeschaft [met referentie](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql) syntaxis|
-||2016 en hoger|Directe back-ups met behulp [van SAS-referenties](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url)|
+||2012 SP1 CU2-2016|Directe back-up met afgeschaft [met referentie](/sql/t-sql/statements/restore-statements-transact-sql) syntaxis|
+||2016 en hoger|Directe back-ups met behulp [van SAS-referenties](/sql/relational-databases/backup-restore/sql-server-backup-to-url)|
 |Herstellen van Azure Storage naar een beheerd exemplaar|[HERSTELLEN vanaf URL met SAS-referentie](restore-sample-database-quickstart.md)|
 
 > [!IMPORTANT]
@@ -164,7 +164,7 @@ Zorg ervoor dat u de volgende activiteiten hebt voltooid voor een vereiste:
 - Uw instellingen op het beheerde exemplaar uitlijnen met de instellingen van de bron SQL Server instantie door verschillende instanties, data bases, tempdb-instellingen en configuraties te onderzoeken. Zorg ervoor dat u geen instellingen hebt gewijzigd, zoals compatibiliteits niveaus of versleuteling voordat u de eerste prestatie vergelijking uitvoert. u kunt ook het risico accepteren dat sommige van de nieuwe functies die u hebt ingeschakeld, invloed hebben op sommige query's. Als u de migratie Risico's wilt verminderen, wijzigt u het database compatibiliteits niveau pas nadat de prestaties zijn gecontroleerd.
 - Implementeer [opslag best practice richt lijnen voor algemeen](https://techcommunity.microsoft.com), zoals het vooraf toewijzen van de grootte van de bestanden om betere prestaties te krijgen.
 - Meer informatie over de [belangrijkste omgevings verschillen die de prestatie verschillen kunnen veroorzaken tussen een beheerd exemplaar en SQL Server](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/)en de Risico's identificeren die van invloed kunnen zijn op de prestaties.
-- Zorg ervoor dat het ingeschakelde query archief en automatisch afstemmen op uw beheerde exemplaar blijven staan. Met deze functies kunt u de prestaties van de werk belasting meten en automatisch de mogelijke prestatie problemen oplossen. Informatie over het gebruik van query Store als een optimaal hulp programma voor het verkrijgen van informatie over de prestaties van de werk belasting vóór en na de wijziging van het compatibiliteits niveau van de data base, zoals wordt uitgelegd in [stabiliteit van prestaties bewaren tijdens de upgrade naar een nieuwere versie van SQL Server](https://docs.microsoft.com/sql/relational-databases/performance/query-store-usage-scenarios#CEUpgrade).
+- Zorg ervoor dat het ingeschakelde query archief en automatisch afstemmen op uw beheerde exemplaar blijven staan. Met deze functies kunt u de prestaties van de werk belasting meten en automatisch de mogelijke prestatie problemen oplossen. Informatie over het gebruik van query Store als een optimaal hulp programma voor het verkrijgen van informatie over de prestaties van de werk belasting vóór en na de wijziging van het compatibiliteits niveau van de data base, zoals wordt uitgelegd in [stabiliteit van prestaties bewaren tijdens de upgrade naar een nieuwere versie van SQL Server](/sql/relational-databases/performance/query-store-usage-scenarios#CEUpgrade).
 Wanneer u de omgeving hebt voor bereid die vergelijkbaar is met uw on-premises omgeving, kunt u beginnen met het uitvoeren van de werk belasting en de prestaties meten. Het meet proces moet dezelfde para meters bevatten die u hebt gemeten [tijdens het maken van de basislijn prestaties van uw werkbelastingscapaciteit op het bron SQL Server exemplaar](#create-a-performance-baseline).
 Als gevolg hiervan moet u prestatie parameters vergelijken met de basis lijn en kritieke verschillen identificeren.
 
@@ -194,16 +194,16 @@ SQL Managed instance biedt veel geavanceerde hulpprogram ma's voor het controler
 
 Als u zich op een volledig beheerd platform bevindt en u hebt gecontroleerd of de prestaties van de werk belasting overeenkomen met uw SQL Server de werk belasting, kunt u gebruikmaken van de voor delen die automatisch worden gegeven als onderdeel van de service.
 
-Zelfs als u tijdens de migratie geen wijzigingen aanbrengt in het beheerde exemplaar, is er een hoge kans dat u een aantal van de nieuwe functies inschakelt terwijl u uw exemplaar gaat gebruiken om te profiteren van de nieuwste verbeteringen in de data base-engine. Sommige wijzigingen zijn alleen ingeschakeld wanneer het [database compatibiliteits niveau is gewijzigd](https://docs.microsoft.com/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database).
+Zelfs als u tijdens de migratie geen wijzigingen aanbrengt in het beheerde exemplaar, is er een hoge kans dat u een aantal van de nieuwe functies inschakelt terwijl u uw exemplaar gaat gebruiken om te profiteren van de nieuwste verbeteringen in de data base-engine. Sommige wijzigingen zijn alleen ingeschakeld wanneer het [database compatibiliteits niveau is gewijzigd](/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database).
 
 U hoeft bijvoorbeeld geen back-ups te maken op een beheerd exemplaar. de service voert automatisch back-ups voor u uit. U hoeft zich geen zorgen meer te maken over het plannen, maken en beheren van back-ups. Met SQL Managed Instance kunt u op elk gewenst moment binnen deze Bewaar periode herstellen met behulp van [PITR (Point in time Recovery)](../database/recovery-using-backups.md#point-in-time-restore). Bovendien hoeft u zich geen zorgen te maken over het instellen van hoge Beschik baarheid, omdat [hoge Beschik baarheid](../database/high-availability-sla.md) is ingebouwd.
 
-U kunt de beveiliging versterken door [Azure Active Directory verificatie](../database/security-overview.md), [controle](auditing-configure.md), [detectie van bedreigingen](../database/azure-defender-for-sql.md), [beveiliging op rijniveau](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)en [dynamische gegevens maskering](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)te gebruiken.
+U kunt de beveiliging versterken door [Azure Active Directory verificatie](../database/security-overview.md), [controle](auditing-configure.md), [detectie van bedreigingen](../database/azure-defender-for-sql.md), [beveiliging op rijniveau](/sql/relational-databases/security/row-level-security)en [dynamische gegevens maskering](/sql/relational-databases/security/dynamic-data-masking)te gebruiken.
 
-Naast geavanceerde beheer-en beveiligings functies biedt een beheerd exemplaar een aantal geavanceerde hulp middelen waarmee u [uw werk belasting kunt bewaken en afstemmen](../database/monitor-tune-overview.md). Met [Azure SQL-analyse](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) kunt u een groot aantal beheerde exemplaren bewaken en de controle van een grote hoeveelheid exemplaren en data bases centraliseren. [Automatisch afstemmen](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction) in beheerde instanties bewaakt voortdurend de prestaties van de uitvoerings statistieken van uw SQL-plan en corrigeert de geïdentificeerde prestatie problemen automatisch.
+Naast geavanceerde beheer-en beveiligings functies biedt een beheerd exemplaar een aantal geavanceerde hulp middelen waarmee u [uw werk belasting kunt bewaken en afstemmen](../database/monitor-tune-overview.md). Met [Azure SQL-analyse](../../azure-monitor/insights/azure-sql.md) kunt u een groot aantal beheerde exemplaren bewaken en de controle van een grote hoeveelheid exemplaren en data bases centraliseren. [Automatisch afstemmen](/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction) in beheerde instanties bewaakt voortdurend de prestaties van de uitvoerings statistieken van uw SQL-plan en corrigeert de geïdentificeerde prestatie problemen automatisch.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie [Wat is Azure SQL Managed instance?](sql-managed-instance-paas-overview.md)voor meer informatie over Azure SQL Managed instance.
 - Zie [een beheerd exemplaar maken](instance-create-quickstart.md)voor een zelf studie met een back-up van het type terugzetten.
-- Zie [uw on-premises data base migreren naar Azure SQL Managed instance met database Migration service voor een](../../dms/tutorial-sql-server-to-managed-instance.md)zelf studie over de migratie met behulp van database Migration service.  
+- Zie [uw on-premises data base migreren naar Azure SQL Managed instance met database Migration service voor een](../../dms/tutorial-sql-server-to-managed-instance.md)zelf studie over de migratie met behulp van database Migration service.

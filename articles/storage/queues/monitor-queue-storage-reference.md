@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 396d2785d80ff29212dddcfb97adbff8ba9ce4c8
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 6164617c66401811715007548de59ebbf5ff253b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425163"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787479"
 ---
 # <a name="azure-queue-storage-monitoring-data-reference"></a>Naslag informatie over bewakings gegevens van Azure Queue Storage
 
@@ -36,7 +36,7 @@ Azure Storage biedt de volgende metrische gegevens over capaciteit in Azure Moni
 
 #### <a name="queue-storage"></a>Queue Storage
 
-In deze tabel worden [metrische opslag gegevens](/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsqueueservices)voor de wachtrij weer gegeven.
+In deze tabel worden [metrische opslag gegevens](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices)voor de wachtrij weer gegeven.
 
 | Gegevens | Beschrijving |
 | ------------------- | ----------------- |

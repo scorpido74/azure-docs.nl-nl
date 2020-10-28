@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 1a2c4364337083be005c550a8859079cd3bb1218
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: b385d6dfb5beba481ad92403d69f5d0988f3bce3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167947"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786425"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>Aanbevolen procedures voor clusterconfiguratie (SQL Server op virtuele machines van Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -56,7 +56,7 @@ Een gedeelde Azure-schijf configureren als de schijfwitness.
 Zie [een schijfwitness configureren](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)om aan de slag te gaan.
 
 
-**Ondersteund besturingssysteem**: Alle   
+**Ondersteund besturingssysteem** : Alle   
 
 
 ### <a name="cloud-witness"></a>Cloudwitness
@@ -66,7 +66,7 @@ Een cloudwitness is een type quorum-Witness van het failovercluster dat gebruikm
 Zie [een Cloudwitness configureren](/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp)om aan de slag te gaan.
 
 
-**Ondersteund besturingssysteem**: Windows Server 2016 en hoger   
+**Ondersteund besturingssysteem** : Windows Server 2016 en hoger   
 
 
 ### <a name="file-share-witness"></a>Bestandsshare-witness
@@ -78,7 +78,7 @@ Als u een Azure-bestands share wilt gebruiken, kunt u deze koppelen aan hetzelfd
 Zie [Configure a file share Witness](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)om aan de slag te gaan.
 
 
-**Ondersteund besturingssysteem**: Windows Server 2012 en hoger   
+**Ondersteund besturingssysteem** : Windows Server 2012 en hoger   
 
 ## <a name="connectivity"></a>Connectiviteit
 
@@ -89,7 +89,7 @@ Gebruik een VNN met Azure Load Balancer of een gedistribueerde netwerk naam (DNN
 
 De volgende tabel vergelijkt de HADR-verbindings ondersteuning: 
 
-| |**Naam van virtueel netwerk (VNN)**  |**Gedistribueerde netwerknaam (DNN)**  |
+| |**Virtual Network naam (VNN)**  |**Gedistribueerde netwerk naam (DNN)**  |
 |---------|---------|---------|
 |**Minimale versie van het besturingssysteem**| Alles | Windows Server 2016 |
 |**Minimale versie van SQL Server** |Alles |SQL Server 2019 CU2 (voor FCI)<br/> SQL Server 2019 CU8 (voor AG)|
@@ -104,9 +104,9 @@ Er is een lichte vertraging bij de failover wanneer u de load balancer gebruikt,
 
 Meer informatie over het configureren van Azure Load Balancer voor het [failover-cluster exemplaar](failover-cluster-instance-vnn-azure-load-balancer-configure.md) of een [beschikbaarheids groep](availability-group-vnn-azure-load-balancer-configure.md)
 
-**Ondersteund besturingssysteem**: Alle   
-**Ondersteunde SQL-versie**: Alle   
-**Ondersteunde HADR-oplossing**: failover-cluster exemplaar en beschikbaarheids groep   
+**Ondersteund besturingssysteem** : Alle   
+**Ondersteunde SQL-versie** : Alle   
+**Ondersteunde HADR-oplossing** : failover-cluster exemplaar en beschikbaarheids groep   
 
 
 ### <a name="distributed-network-name-dnn"></a>Gedistribueerde netwerknaam (DNN)
@@ -124,9 +124,9 @@ De meeste SQL Server functies werken op transparante wijze met FCI-en beschikbaa
 
 Als u aan de slag wilt gaan, leert u hoe u een gedistribueerde netwerk naam bron kunt configureren voor [een failovercluster](failover-cluster-instance-distributed-network-name-dnn-configure.md) of een [beschikbaarheids groep](availability-group-distributed-network-name-dnn-listener-configure.md)
 
-**Ondersteund besturingssysteem**: Windows Server 2016 en hoger   
-**Ondersteunde SQL-versie**: SQL Server 2019 Cu2 (FCI) en SQL Server 2019 CU8 (AG)   
-**Ondersteunde HADR-oplossing**: failover-cluster exemplaar en beschikbaarheids groep   
+**Ondersteund besturingssysteem** : Windows Server 2016 en hoger   
+**Ondersteunde SQL-versie** : SQL Server 2019 Cu2 (FCI) en SQL Server 2019 CU8 (AG)   
+**Ondersteunde HADR-oplossing** : failover-cluster exemplaar en beschikbaarheids groep   
 
 
 ## <a name="limitations"></a>Beperkingen
@@ -135,7 +135,7 @@ Houd rekening met de volgende beperkingen wanneer u werkt met FCI-of beschikbaar
 
 ### <a name="msdtc"></a>MSDTC 
 
-Virtuele Azure-machines bieden ondersteuning voor MSDTC (Microsoft Distributed Transaction Coordinator) in Windows Server 2019 met opslag op geclusterde gedeelde volumes (CSV) en [Azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) of op VM's met SQL Server die gebruikmaken van gedeelde Azure-schijven. 
+Virtuele Azure-machines bieden ondersteuning voor MSDTC (Microsoft Distributed Transaction Coordinator) in Windows Server 2019 met opslag op geclusterde gedeelde volumes (CSV) en [Azure Standard Load Balancer](../../../load-balancer/load-balancer-overview.md) of op VM's met SQL Server die gebruikmaken van gedeelde Azure-schijven. 
 
 MSDTC wordt vanwege deze redenen niet ondersteund op virtuele Azure-machines voor Windows Server 2016 of eerder met geclusterde gedeelde volumes:
 
@@ -145,5 +145,4 @@ MSDTC wordt vanwege deze redenen niet ondersteund op virtuele Azure-machines voo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u de juiste aanbevolen procedures voor uw oplossing hebt vastgesteld, kunt u aan de slag met het [voorbereiden van uw SQL Server VM voor FCI](failover-cluster-instance-prepare-vm.md) of door de beschikbaarheids groep te maken met behulp van de [Azure Portal](availability-group-azure-portal-configure.md), de [Azure cli/Power shell](availability-group-az-cli-configure.md)of de [Azure Quick](availability-group-quickstart-template-configure.md)start-sjablonen. 
-
+Nadat u de juiste aanbevolen procedures voor uw oplossing hebt vastgesteld, kunt u aan de slag met het [voorbereiden van uw SQL Server VM voor FCI](failover-cluster-instance-prepare-vm.md) of door de beschikbaarheids groep te maken met behulp van de [Azure Portal](availability-group-azure-portal-configure.md), de [Azure cli/Power shell](./availability-group-az-commandline-configure.md)of de [Azure Quick](availability-group-quickstart-template-configure.md)start-sjablonen.

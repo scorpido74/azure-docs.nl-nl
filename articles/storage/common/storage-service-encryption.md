@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: f56da93d0ea0f346e73b34990d8ec4c222bb8813
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: bc0a556841c3c6ee91ae472087aaaf7c74009b67
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488568"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785779"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage-versleuteling voor inactieve gegevens
 
@@ -38,7 +38,7 @@ Voor informatie over versleuteling en sleutel beheer voor Azure Managed disks, Z
 
 Gegevens in een nieuw opslag account worden standaard versleuteld met door micro soft beheerde sleutels. U kunt door micro soft beheerde sleutels blijven gebruiken voor het versleutelen van uw gegevens of u kunt versleuteling beheren met uw eigen sleutels. Als u ervoor kiest om versleuteling te beheren met uw eigen sleutels, hebt u twee opties. U kunt een van beide typen sleutel beheer of beide gebruiken:
 
-- U kunt een door de *klant beheerde sleutel* opgeven die moet worden gebruikt voor het versleutelen en ontsleutelen van gegevens in Blob Storage en in azure files. <sup>1, 2 door</sup> de klant beheerde sleutels moeten worden opgeslagen in Azure Key Vault of Azure Key Vault beheerde hardware security model (hsm) (preview). Zie door de [klant beheerde sleutels gebruiken voor Azure Storage versleuteling](encryption-customer-managed-keys.md)voor meer informatie over door de klant beheerde sleutels.
+- U kunt een door de *klant beheerde sleutel* opgeven die moet worden gebruikt voor het versleutelen en ontsleutelen van gegevens in Blob Storage en in azure files. <sup>1, 2 door</sup> de klant beheerde sleutels moeten worden opgeslagen in Azure Key Vault of Azure Key Vault beheerde hardware security model (hsm) (preview). Zie door de [klant beheerde sleutels gebruiken voor Azure Storage versleuteling](./customer-managed-keys-overview.md)voor meer informatie over door de klant beheerde sleutels.
 - U kunt een door de *klant opgegeven sleutel* voor Blob-opslag bewerkingen opgeven. Een client die een lees-of schrijf aanvraag uitvoert voor Blob Storage, kan een versleutelings sleutel bevatten op de aanvraag voor gedetailleerde controle over hoe BLOB-gegevens worden versleuteld en ontsleuteld. Zie [een versleutelings sleutel voor een aanvraag voor Blob-opslag bieden](../blobs/encryption-customer-provided-keys.md)voor meer informatie over door de klant geleverde sleutels.
 
 De volgende tabel vergelijkt de opties voor sleutel beheer voor Azure Storage versleuteling.
@@ -101,8 +101,8 @@ Wanneer een versleutelings bereik is uitgeschakeld, wordt dit niet meer in reken
 
 Als uw versleutelings bereik is beveiligd met door de klant beheerde sleutels voor Azure Key Vault, kunt u ook de bijbehorende sleutel in de sleutel kluis verwijderen om het versleutelings bereik uit te scha kelen. Houd er rekening mee dat door de klant beheerde sleutels in Azure Key Vault worden beveiligd door zacht verwijderen en de beveiliging op te schonen, en dat een verwijderde sleutel onderhevig is aan het gedrag dat is gedefinieerd door die eigenschappen. Zie een van de volgende onderwerpen in de Azure Key Vault-documentatie voor meer informatie:
 
-- [Voorlopig verwijderen gebruiken met PowerShell](../../key-vault/general/soft-delete-powershell.md)
-- [Voorlopig verwijderen gebruiken met CLI](../../key-vault/general/soft-delete-cli.md)
+- [Voorlopig verwijderen gebruiken met PowerShell](../../key-vault/general/key-vault-recovery.md)
+- [Voorlopig verwijderen gebruiken met CLI](../../key-vault/general/key-vault-recovery.md)
 
 > [!NOTE]
 > Het is niet mogelijk om een versleutelings bereik te verwijderen.

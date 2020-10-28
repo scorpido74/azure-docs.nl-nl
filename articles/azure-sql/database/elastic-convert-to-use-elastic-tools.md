@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 95afd0b9117caca4b531c453417217d8a8de7c7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6ad8b4c80f4b9c2fdb3c1a14209dcf0febc89e9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443464"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787139"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Bestaande data bases migreren om uit te schalen
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -72,7 +72,7 @@ Maak voor een model met één Tenant een **lijst** Shard toewijzing. Het model m
 
 ![Lijst toewijzing][1]
 
-Het model met meerdere tenants wijst meerdere tenants toe aan een afzonderlijke data base (en u kunt groepen tenants distribueren over meerdere data bases). Gebruik dit model wanneer u verwacht dat elke Tenant kleine gegevens nodig heeft. Wijs in dit model een aantal tenants toe aan een Data Base met behulp van **bereik toewijzing**.
+Het model met meerdere tenants wijst meerdere tenants toe aan een afzonderlijke data base (en u kunt groepen tenants distribueren over meerdere data bases). Gebruik dit model wanneer u verwacht dat elke Tenant kleine gegevens nodig heeft. Wijs in dit model een aantal tenants toe aan een Data Base met behulp van **bereik toewijzing** .
 
 ![Toewijzing van bereik][2]
 
@@ -168,7 +168,7 @@ Zie voor informatie over algemene gegevensarchitectuurpatronen van multitenant s
 
 ## <a name="questions-and-feature-requests"></a>Vragen en functie aanvragen
 
-Gebruik voor vragen de [pagina micro soft Q&een vraag voor SQL database](https://docs.microsoft.com/answers/topics/azure-sql-database.html) en voeg deze voor functie aanvragen toe aan het [forum SQL database feedback](https://feedback.azure.com/forums/217321-sql-database/).
+Gebruik voor vragen de [pagina micro soft Q&een vraag voor SQL database](/answers/topics/azure-sql-database.html) en voeg deze voor functie aanvragen toe aan het [forum SQL database feedback](https://feedback.azure.com/forums/217321-sql-database/).
 
 <!--Image references-->
 [1]: ./media/elastic-convert-to-use-elastic-tools/listmapping.png

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: e17c7d6618d67d66c89875696c5c529af3a85ea9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75ca0438336825bf8d4bbdc6e08eca109f430fde
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440548"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785915"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center
 
@@ -46,7 +46,7 @@ Security Center verzamelt, analyseert en integreert automatisch logboekgegevens 
 
    ![Beveiligingswaarschuwingen in Security Center](./media/security-center-managing-and-responding-alerts/security-center-manage-alerts.png)
 
-1. Als u de weer gegeven waarschuwingen wilt filteren, klikt u op **filter**en selecteert u op de Blade **filter** die wordt geopend de filter opties die u wilt Toep assen. De lijst wordt bijgewerkt op basis van het geselecteerde filter. Filteren kan zeer nuttig zijn. U kunt u bijvoorbeeld concentreren op de beveiligingswaarschuwingen van de afgelopen 24 uur, omdat u een mogelijke inbreuk in het systeem onderzoekt.
+1. Als u de weer gegeven waarschuwingen wilt filteren, klikt u op **filter** en selecteert u op de Blade **filter** die wordt geopend de filter opties die u wilt Toep assen. De lijst wordt bijgewerkt op basis van het geselecteerde filter. Filteren kan zeer nuttig zijn. U kunt u bijvoorbeeld concentreren op de beveiligingswaarschuwingen van de afgelopen 24 uur, omdat u een mogelijke inbreuk in het systeem onderzoekt.
 
     ![Waarschuwingen filteren in Security Center](./media/security-center-managing-and-responding-alerts/security-center-filter-alerts.png)
 
@@ -80,4 +80,4 @@ Security Center verzamelt, analyseert en integreert automatisch logboekgegevens 
 In dit document hebt u geleerd hoe u beveiligings waarschuwingen kunt weer geven. Raadpleeg de volgende pagina's voor gerelateerde materialen:
 
 - [Regels voor het onderdrukken van waarschuwingen configureren](alerts-suppression-rules.md)
-- [Automatische reacties op waarschuwingen en aanbevelingen automatiseren met werk stroom automatisering](workflow-automation.md)
+- [Reacties op Security Center triggers automatiseren](workflow-automation.md)

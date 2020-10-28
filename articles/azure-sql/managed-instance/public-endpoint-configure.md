@@ -10,17 +10,17 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, sstein
 ms.date: 05/07/2019
-ms.openlocfilehash: f3708885759a6a353742fe89b4454b39496aeeab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73fa4d4988c7a036dc1d2eb7dc81c3c1c5d77026
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619981"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788278"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-managed-instance"></a>Openbaar eindpunt configureren in een beheerd Azure SQL-exemplaar
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Het open bare eind punt voor een [beheerd exemplaar](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) maakt gegevens toegang tot uw beheerde exemplaar mogelijk buiten het [virtuele netwerk](../../virtual-network/virtual-networks-overview.md). U hebt toegang tot uw beheerde exemplaar vanuit multi tenant Azure-Services, zoals Power BI, Azure App Service of een on-premises netwerk. Als u het open bare eind punt op een beheerd exemplaar gebruikt, hoeft u geen VPN te gebruiken. Dit kan helpen om problemen met de door Voer van VPN te voor komen.
+Het open bare eind punt voor een [beheerd exemplaar](./sql-managed-instance-paas-overview.md) maakt gegevens toegang tot uw beheerde exemplaar mogelijk buiten het [virtuele netwerk](../../virtual-network/virtual-networks-overview.md). U hebt toegang tot uw beheerde exemplaar vanuit multi tenant Azure-Services, zoals Power BI, Azure App Service of een on-premises netwerk. Als u het open bare eind punt op een beheerd exemplaar gebruikt, hoeft u geen VPN te gebruiken. Dit kan helpen om problemen met de door Voer van VPN te voor komen.
 
 In dit artikel leert u het volgende:
 
@@ -112,7 +112,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 ## <a name="obtaining-the-managed-instance-public-endpoint-connection-string"></a>Het open bare endpoint van het beheerde exemplaar verkrijgen connection string
 
 1. Ga naar de configuratie pagina van het beheerde exemplaar die is ingeschakeld voor het open bare eind punt. Selecteer het tabblad **verbindings reeksen** onder de configuratie- **instellingen** .
-1. Houd er rekening mee dat de hostnaam van het open bare eind punt de indeling <mi_name> bevat. **Public**. <dns_zone>. database.Windows.net en de poort die voor de verbinding wordt gebruikt, is 3342.
+1. Houd er rekening mee dat de hostnaam van het open bare eind punt de indeling <mi_name> bevat. **Public** . <dns_zone>. database.Windows.net en de poort die voor de verbinding wordt gebruikt, is 3342.
 
     ![Scherm afbeelding toont de verbindings reeksen voor uw open bare en privé-eind punten.](./media/public-endpoint-configure/mi-public-endpoint-conn-string.png)
 

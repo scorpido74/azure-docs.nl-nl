@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 10/27/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 4c88791815d248cc20546d7942e7b0f107071186
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07f506ac46b8aa503138cec33918534ea309defc
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90018574"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785796"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>Een mini maal vereiste versie van Transport Layer Security (TLS) afdwingen voor aanvragen van een opslag account
 
@@ -33,7 +33,7 @@ Zie [configure Transport Layer Security (TLS) (Engelstalig) voor een client toep
 
 Wanneer u een minimum versie van TLS afdwingt voor uw opslag account, is het risico dat aanvragen worden afgewezen van clients die gegevens verzenden met een oudere versie van TLS. Om te begrijpen hoe het configureren van de minimale TLS-versie van invloed kan zijn op client toepassingen, raadt micro soft u aan om logboek registratie in te scha kelen voor uw Azure Storage-account en de logboeken te analyseren na een tijds interval om te detecteren welke versies van TLS-client toepassingen worden gebruikt.
 
-Als u aanvragen wilt registreren voor uw Azure Storage-account en de TLS-versie wilt bepalen die wordt gebruikt door de client, kunt u Azure Storage logboek registratie gebruiken in Azure Monitor (preview). Zie [Azure Storage bewaken](monitor-storage.md)voor meer informatie.
+Als u aanvragen wilt registreren voor uw Azure Storage-account en de TLS-versie wilt bepalen die wordt gebruikt door de client, kunt u Azure Storage logboek registratie gebruiken in Azure Monitor (preview). Zie [Azure Storage bewaken](../blobs/monitor-blob-storage.md)voor meer informatie.
 
 Azure Storage logboek registratie in Azure Monitor ondersteunt het gebruik van logboek query's voor het analyseren van logboek gegevens. Als u een query wilt uitvoeren op Logboeken, kunt u een Azure Log Analytics-werk ruimte gebruiken. Zie [zelf studie: aan de slag met log Analytics query's](../../azure-monitor/log-query/get-started-portal.md)voor meer informatie over logboek query's.
 
@@ -42,18 +42,18 @@ Als u Azure Storage gegevens wilt registreren met Azure Monitor en deze wilt ana
 1. Schrijf u in [voor de Azure Storage registratie in azure monitor preview](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u).
 1. Maak een nieuwe Log Analytics-werk ruimte in het abonnement dat uw Azure Storage-account bevat. Nadat u logboek registratie voor uw opslag account hebt geconfigureerd, zijn de logboeken beschikbaar in de werk ruimte Log Analytics. Raadpleeg [Een Log Analytics-werkruimte maken in Azure Portal](../../azure-monitor/learn/quick-create-workspace.md) voor meer informatie.
 1. Ga in Azure Portal naar uw opslagaccount.
-1. Selecteer in de sectie controle de optie **Diagnostische instellingen (preview)**.
+1. Selecteer in de sectie controle de optie **Diagnostische instellingen (preview)** .
 1. Selecteer de Azure Storage-service waarvoor u aanvragen wilt registreren. Kies bijvoorbeeld **BLOB** om aanvragen te registreren bij Blob Storage.
-1. Selecteer **Diagnostische instelling toevoegen**.
+1. Selecteer **Diagnostische instelling toevoegen** .
 1. Geef een naam op voor de diagnostische instelling.
-1. Kies onder **categorie Details**in de sectie **logboek** welke typen aanvragen moeten worden geregistreerd. U kunt aanvragen voor lezen, schrijven en verwijderen vastleggen in een logboek. Als u bijvoorbeeld **StorageRead** en **StorageWrite** kiest, worden de lees-en schrijf aanvragen geregistreerd voor de geselecteerde service.
-1. Selecteer onder **doel gegevens** **verzenden naar log Analytics**. Selecteer uw abonnement en de Log Analytics werk ruimte die u eerder hebt gemaakt, zoals wordt weer gegeven in de volgende afbeelding.
+1. Kies onder **categorie Details** in de sectie **logboek** welke typen aanvragen moeten worden geregistreerd. U kunt aanvragen voor lezen, schrijven en verwijderen vastleggen in een logboek. Als u bijvoorbeeld **StorageRead** en **StorageWrite** kiest, worden de lees-en schrijf aanvragen geregistreerd voor de geselecteerde service.
+1. Selecteer onder **doel gegevens** **verzenden naar log Analytics** . Selecteer uw abonnement en de Log Analytics werk ruimte die u eerder hebt gemaakt, zoals wordt weer gegeven in de volgende afbeelding.
 
     :::image type="content" source="media/transport-layer-security-configure-minimum-version/create-diagnostic-setting-logs.png" alt-text="Scherm afbeelding die laat zien hoe u een diagnostische instelling voor logboek registratie aanvragen maakt":::
 
 Nadat u de diagnostische instelling hebt gemaakt, worden aanvragen voor het opslag account vervolgens geregistreerd volgens die instelling. Zie voor meer informatie [Diagnostische instelling maken om bron logboeken en metrische gegevens in azure te verzamelen](../../azure-monitor/platform/diagnostic-settings.md).
 
-Zie [bron Logboeken (preview)](monitor-storage-reference.md#resource-logs-preview)voor een verwijzing van velden die beschikbaar zijn in azure Storage-Logboeken in azure monitor.
+Zie [bron Logboeken (preview)](../blobs/monitor-blob-storage-reference.md#resource-logs-preview)voor een verwijzing van velden die beschikbaar zijn in azure Storage-Logboeken in azure monitor.
 
 ### <a name="query-logged-requests-by-tls-version"></a>Query's in vastgelegde aanvragen per TLS-versie
 
@@ -91,9 +91,6 @@ Wanneer u zeker weet dat verkeer van clients met oudere versies van TLS mini maa
 
 Als u de minimale TLS-versie voor een opslag account wilt configureren, stelt u de **MinimumTlsVersion** -versie voor het account in. Deze eigenschap is beschikbaar voor alle opslag accounts die zijn gemaakt met het Azure Resource Manager-implementatie model. Zie [overzicht van opslag accounts](storage-account-overview.md)voor meer informatie over het Azure Resource Manager-implementatie model.
 
-> [!NOTE]
-> De eigenschap **MinimumTlsVersion** is momenteel alleen beschikbaar voor opslag accounts in de open bare Azure-Cloud.
-
 # <a name="portal"></a>[Portal](#tab/portal)
 
 Wanneer u een opslag account met de Azure Portal maakt, wordt de minimale TLS-versie standaard ingesteld op 1,2.
@@ -102,7 +99,7 @@ Voer de volgende stappen uit om de minimale TLS-versie voor een bestaand opslag 
 
 1. Ga in Azure Portal naar uw opslagaccount.
 1. Selecteer de **configuratie** -instelling.
-1. Gebruik onder **minimum versie van TLS**de vervolg keuzelijst om de minimale versie van TLS te selecteren die vereist is voor toegang tot gegevens in dit opslag account, zoals wordt weer gegeven in de volgende afbeelding.
+1. Gebruik onder **minimum versie van TLS** de vervolg keuzelijst om de minimale versie van TLS te selecteren die vereist is voor toegang tot gegevens in dit opslag account, zoals wordt weer gegeven in de volgende afbeelding.
 
     :::image type="content" source="media/transport-layer-security-configure-minimum-version/configure-minimum-version-portal.png" alt-text="Scherm afbeelding die laat zien hoe u een diagnostische instelling voor logboek registratie aanvragen maakt":::
 
@@ -110,7 +107,7 @@ Voer de volgende stappen uit om de minimale TLS-versie voor een bestaand opslag 
 
 Als u de minimale TLS-versie wilt configureren voor een opslag account met Power shell, installeert u [Azure PowerShell versie 4.4.0](https://www.powershellgallery.com/packages/Az/4.4.0) of hoger. Configureer vervolgens de eigenschap **MinimumTLSVersion** voor een nieuw of bestaand opslag account. Geldige waarden voor **MinimumTlsVersion** zijn `TLS1_0` , `TLS1_1` en `TLS1_2` .
 
-De eigenschap **MinimumTlsVersion** is niet standaard ingesteld wanneer u een opslag account maakt met Power shell. Deze eigenschap retourneert geen waarde totdat u deze expliciet hebt ingesteld. Het opslag account staat aanvragen toe die zijn verzonden met TLS-versie 1,0 of hoger als de waarde van de eigenschap **Null**is.
+De eigenschap **MinimumTlsVersion** is niet standaard ingesteld wanneer u een opslag account maakt met Power shell. Deze eigenschap retourneert geen waarde totdat u deze expliciet hebt ingesteld. Het opslag account staat aanvragen toe die zijn verzonden met TLS-versie 1,0 of hoger als de waarde van de eigenschap **Null** is.
 
 In het volgende voor beeld wordt een opslag account gemaakt en wordt de **MinimumTLSVersion** ingesteld op TLS 1,1, wordt het account bijgewerkt en wordt de **MINIMUMTLSVERSION** ingesteld op TLS 1,2. In het voor beeld wordt ook de waarde van de eigenschap in elk geval opgehaald. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen vier Kante haken te vervangen door uw eigen waarden:
 
@@ -138,11 +135,11 @@ Set-AzStorageAccount -ResourceGroupName $rgName `
 (Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName).MinimumTlsVersion
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Als u de minimale TLS-versie wilt configureren voor een opslag account met Azure CLI, installeert u Azure CLI versie 2.9.0 of hoger. Zie [de Azure cli installeren](/cli/azure/install-azure-cli)voor meer informatie. Configureer vervolgens de eigenschap **minimumTlsVersion** voor een nieuw of bestaand opslag account. Geldige waarden voor **minimumTlsVersion** zijn `TLS1_0` , `TLS1_1` en `TLS1_2` .
+Als u de minimale TLS-versie wilt configureren voor een opslag account met Azure CLI, installeert u Azure CLI versie 2.9.0 of hoger. Zie [De Azure CLI installeren](/cli/azure/install-azure-cli) voor meer informatie. Configureer vervolgens de eigenschap **minimumTlsVersion** voor een nieuw of bestaand opslag account. Geldige waarden voor **minimumTlsVersion** zijn `TLS1_0` , `TLS1_1` en `TLS1_2` .
 
-De eigenschap **minimumTlsVersion** is niet standaard ingesteld wanneer u een opslag account maakt met Azure cli. Deze eigenschap retourneert geen waarde totdat u deze expliciet hebt ingesteld. Het opslag account staat aanvragen toe die zijn verzonden met TLS-versie 1,0 of hoger als de waarde van de eigenschap **Null**is.
+De eigenschap **minimumTlsVersion** is niet standaard ingesteld wanneer u een opslag account maakt met Azure cli. Deze eigenschap retourneert geen waarde totdat u deze expliciet hebt ingesteld. Het opslag account staat aanvragen toe die zijn verzonden met TLS-versie 1,0 of hoger als de waarde van de eigenschap **Null** is.
 
 In het volgende voor beeld wordt een opslag account gemaakt en wordt de **minimumTLSVersion** ingesteld op TLS 1,1. Vervolgens wordt het account bijgewerkt en wordt de eigenschap **minimumTLSVersion** ingesteld op TLS 1,2. In het voor beeld wordt ook de waarde van de eigenschap in elk geval opgehaald. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen vier Kante haken te vervangen door uw eigen waarden:
 
@@ -176,9 +173,9 @@ az storage account show \
 
 Als u de minimum versie TLS wilt configureren voor een opslag account met een sjabloon, maakt u een sjabloon waarvoor de eigenschap **MinimumTLSVersion** is ingesteld op `TLS1_0` , `TLS1_1` , of `TLS1_2` . In de volgende stappen wordt beschreven hoe u een sjabloon maakt in de Azure Portal.
 
-1. Kies in het Azure Portal **een resource maken**.
-1. Typ in **de Marketplace zoeken de** **sjabloon implementatie**en druk vervolgens op **Enter**.
-1. Kies **Sjabloonimlementatie (implementeren met aangepaste sjablonen) (preview)**, kies **maken**en kies vervolgens **uw eigen sjabloon bouwen in de editor**.
+1. Kies in het Azure Portal **een resource maken** .
+1. Typ in **de Marketplace zoeken de** **sjabloon implementatie** en druk vervolgens op **Enter** .
+1. Kies **Sjabloonimlementatie (implementeren met aangepaste sjablonen) (preview)** , kies **maken** en kies vervolgens **uw eigen sjabloon bouwen in de editor** .
 1. Plak in de sjabloon editor in de volgende JSON om een nieuw account te maken en stel de minimale TLS-versie in op TLS 1,2. Vergeet niet om de tijdelijke aanduidingen tussen punt haken te vervangen door uw eigen waarden.
 
     ```json
@@ -221,7 +218,7 @@ Voor het configureren van de minimale TLS-versie is versie 2019-04-01 of hoger v
 
 ### <a name="check-the-minimum-required-tls-version-for-multiple-accounts"></a>De mini maal vereiste TLS-versie voor meerdere accounts controleren
 
-Als u de mini maal vereiste TLS-versie wilt controleren in een reeks opslag accounts met optimale prestaties, kunt u de Azure resource Graph Explorer gebruiken in de Azure Portal. Voor meer informatie over het gebruik van de resource Graph Explorer raadpleegt u [Quick Start: uw eerste resource grafiek query uitvoeren met Azure resource Graph Explorer](/azure/governance/resource-graph/first-query-portal).
+Als u de mini maal vereiste TLS-versie wilt controleren in een reeks opslag accounts met optimale prestaties, kunt u de Azure resource Graph Explorer gebruiken in de Azure Portal. Voor meer informatie over het gebruik van de resource Graph Explorer raadpleegt u [Quick Start: uw eerste resource grafiek query uitvoeren met Azure resource Graph Explorer](../../governance/resource-graph/first-query-portal.md).
 
 Als u de volgende query uitvoert in de resource Graph Explorer, wordt een lijst met opslag accounts geretourneerd en wordt de minimale TLS-versie voor elk account weer gegeven:
 
@@ -249,11 +246,11 @@ Azure Policy ondersteunt effecten die bepalen wat er gebeurt wanneer een beleids
 Voer de volgende stappen uit om een beleid te maken met een controle-effect voor de minimale TLS-versie met de Azure Portal:
 
 1. Ga in het Azure Portal naar de Azure Policy-service.
-1. Selecteer in het gedeelte **ontwerpen** de optie **definities**.
+1. Selecteer in het gedeelte **ontwerpen** de optie **definities** .
 1. Selecteer **beleids definitie toevoegen** om een nieuwe beleids definitie te maken.
 1. Selecteer voor het veld **definitie locatie** de knop **meer** om op te geven waar de bron van het controle beleid zich bevindt.
 1. Geef een naam op voor het beleid. U kunt desgewenst een beschrijving en categorie opgeven.
-1. Voeg onder **beleids regel**de volgende beleids definitie toe aan de sectie **policyRule** .
+1. Voeg onder **beleids regel** de volgende beleids definitie toe aan de sectie **policyRule** .
 
     ```json
     {
@@ -286,12 +283,12 @@ Wijs vervolgens het beleid toe aan een resource. Het bereik van het beleid komt 
 Voer de volgende stappen uit om het beleid toe te wijzen met de Azure Portal:
 
 1. Ga in het Azure Portal naar de Azure Policy-service.
-1. Selecteer in het gedeelte **ontwerpen** de optie **toewijzingen**.
+1. Selecteer in het gedeelte **ontwerpen** de optie **toewijzingen** .
 1. Selecteer **beleid toewijzen** om een nieuwe beleids toewijzing te maken.
 1. Selecteer in het veld **bereik** het bereik van de beleids toewijzing.
 1. Selecteer de knop **meer** in het veld **beleids definitie** en selecteer vervolgens het beleid dat u in de vorige sectie hebt gedefinieerd in de lijst.
 1. Geef een naam op voor de beleids toewijzing. De beschrijving is optioneel.
-1. Zorg ervoor dat **beleids afdwinging** is ingesteld op *ingeschakeld*. Deze instelling heeft geen invloed op het controle beleid.
+1. Zorg ervoor dat **beleids afdwinging** is ingesteld op *ingeschakeld* . Deze instelling heeft geen invloed op het controle beleid.
 1. Selecteer **controleren + maken** om de toewijzing te maken.
 
 ### <a name="view-compliance-report"></a>Nalevings rapport weer geven
@@ -303,7 +300,7 @@ Het kan enkele minuten duren voordat het nalevings rapport beschikbaar is nadat 
 Voer de volgende stappen uit om het nalevings rapport in de Azure Portal weer te geven:
 
 1. Ga in het Azure Portal naar de Azure Policy-service.
-1. Selecteer **naleving**.
+1. Selecteer **naleving** .
 1. Filter de resultaten voor de naam van de beleids toewijzing die u in de vorige stap hebt gemaakt. In het rapport wordt weer gegeven hoeveel resources niet voldoen aan het beleid.
 1. U kunt inzoomen op het rapport voor meer informatie, met inbegrip van een lijst met opslag accounts die niet voldoen aan het beleid.
 

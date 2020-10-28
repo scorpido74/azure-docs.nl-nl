@@ -9,12 +9,12 @@ ms.custom: sqldbrb=1
 author: stevestein
 ms.author: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 1ec9884dbb8c3d02caaa7d8621905a32e7b1e36a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2eb7984097b4edf34ed2f0214e1453246e12916f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84047543"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786748"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Uitbreiden met Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ U kunt data bases eenvoudig uitschalen in Azure SQL Database met behulp van de *
 * [Elastic database hulp programma voor splitsen en samen voegen](elastic-scale-overview-split-and-merge.md): verplaatst gegevens tussen Shard-data bases. Dit hulp programma is nuttig voor het verplaatsen van gegevens van een Data Base met meerdere tenants naar een Data Base met één Tenant (of andersom). Zie de [zelf studie voor Elastic data base Split-Merge tool](elastic-scale-configure-deploy-split-and-merge.md).
 * [Taak voor Elastic database](elastic-jobs-overview.md): gebruik taken voor het beheren van grote aantallen data bases in Azure SQL database. U kunt eenvoudig beheer bewerkingen uitvoeren zoals schema wijzigingen, referentie beheer, referentie gegevens updates, verzameling van prestatie gegevens of Tenant-telemetrie verzameling met behulp van taken.
 * [Elastic database query](elastic-query-overview.md) (preview): Hiermee kunt u een Transact-SQL-query uitvoeren die meerdere data bases omspant. Dit maakt het mogelijk om verbinding te maken met rapportage Programma's zoals Excel, Power BI, tableau, enzovoort.
-* [Elastische trans acties](elastic-transactions-overview.md): met deze functie kunt u trans acties uitvoeren die meerdere data bases omvatten. Elastic data base-trans acties zijn beschikbaar voor .NET-toepassingen met behulp van ADO .NET en kunnen worden geïntegreerd met de bekende programmeer ervaring met behulp van de [System. Trans Action-klassen](https://msdn.microsoft.com/library/system.transactions.aspx).
+* [Elastische trans acties](elastic-transactions-overview.md): met deze functie kunt u trans acties uitvoeren die meerdere data bases omvatten. Elastic data base-trans acties zijn beschikbaar voor .NET-toepassingen met behulp van ADO .NET en kunnen worden geïntegreerd met de bekende programmeer ervaring met behulp van de [System. Trans Action-klassen](/dotnet/api/system.transactions).
 
 In de volgende afbeelding ziet u een architectuur die de **Elastic database-functies** bevat ten opzichte van een verzameling data bases.
 
@@ -33,7 +33,7 @@ In deze afbeelding vertegenwoordigen de kleuren van de data base schema's. Data 
 
 1. Een set **SQL-data bases** wordt gehost op Azure met behulp van de sharding-architectuur.
 2. De **Elastic database-client bibliotheek** wordt gebruikt voor het beheren van een Shard-set.
-3. Een subset van de data bases wordt in een **elastische pool**geplaatst. (Zie [Wat is een pool?](elastic-pool-overview.md)).
+3. Een subset van de data bases wordt in een **elastische pool** geplaatst. (Zie [Wat is een pool?](elastic-pool-overview.md)).
 4. Met een **Elastic database taak** worden geplande of ad hoc T-SQL-scripts uitgevoerd voor alle data bases.
 5. Het **hulp programma splitsen** wordt gebruikt om gegevens van een Shard naar een andere te verplaatsen.
 6. Met de **Elastic database query** kunt u een query schrijven die alle data bases in de Shard-set omspant.
@@ -104,4 +104,3 @@ Zie [prijs-en prestatie overwegingen voor een elastische pool](elastic-pool-over
 [2]:./media/elastic-scale-introduction/h_versus_vert.png
 [3]:./media/elastic-scale-introduction/overview.png
 [4]:./media/elastic-scale-introduction/single_v_multi_tenant.png
-

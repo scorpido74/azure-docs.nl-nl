@@ -9,18 +9,18 @@ ms.date: 07/23/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 37e56caa8242709214265af0e1fc03c3853300f1
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 971f0cd74d7ccc6e2b0d8049a4441ba3d465b70a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488789"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787666"
 ---
-# <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics-logboek registratie
+# <a name="azure-storage-analytics-logging"></a>Azure Storage-analyselogboeken
 
 Opslaganalyse registreert gedetailleerde informatie over geslaagde en mislukte aanvragen bij een opslagservice. Deze informatie kan worden gebruikt voor het bewaken van afzonderlijke aanvragen en voor het vaststellen van problemen met een opslagservice. Aanvragen worden op de beste basis geregistreerd.
 
- Logboekregistratie van Opslaganalyse is niet standaard ingeschakeld voor uw opslagaccount. U kunt deze inschakelen in de [Azure Portal](https://portal.azure.com/); Zie [een opslag account bewaken in de Azure Portal](/azure/storage/storage-monitor-storage-account)voor meer informatie. U kunt Opslaganalyse ook via een programma inschakelen via de REST API of de client bibliotheek. Gebruik de bewerkingen eigenschappen van [BLOB-service ophalen](/rest/api/storageservices/Blob-Service-REST-API), [Eigenschappen van wachtrij service ophalen](/rest/api/storageservices/Get-Queue-Service-Properties)en [Eigenschappen van Table service ophalen](/rest/api/storageservices/Get-Table-Service-Properties) om Opslaganalyse in te scha kelen voor elke service.
+ Logboekregistratie van Opslaganalyse is niet standaard ingeschakeld voor uw opslagaccount. U kunt deze inschakelen in de [Azure Portal](https://portal.azure.com/); Zie [een opslag account bewaken in de Azure Portal](./storage-monitor-storage-account.md)voor meer informatie. U kunt Opslaganalyse ook via een programma inschakelen via de REST API of de client bibliotheek. Gebruik de bewerkingen eigenschappen van [BLOB-service ophalen](/rest/api/storageservices/Blob-Service-REST-API), [Eigenschappen van wachtrij service ophalen](/rest/api/storageservices/Get-Queue-Service-Properties)en [Eigenschappen van Table service ophalen](/rest/api/storageservices/Get-Table-Service-Properties) om Opslaganalyse in te scha kelen voor elke service.
 
  Logboek vermeldingen worden alleen gemaakt als er aanvragen worden gedaan voor het service-eind punt. Als een opslag account bijvoorbeeld activiteit heeft in het BLOB-eind punt, maar niet in de tabel-of wachtrij-eind punten, worden alleen logboeken gemaakt die betrekking hebben op het Blob service.
 
@@ -77,7 +77,7 @@ Met de meeste hulpprogram ma's voor opslag navigatie kunt u de meta gegevens van
  }  
  ```  
 
-Zie het [inventariseren van BLOB-resources](https://msdn.microsoft.com/library/azure/hh452233.aspx) en [het instellen en ophalen van eigenschappen en meta gegevens voor BLOB-resources](https://msdn.microsoft.com/library/azure/dd179404.aspx)voor meer informatie over het programmatisch weer geven van blobs.  
+Zie het [inventariseren van BLOB-resources](/rest/api/storageservices/Enumerating-Blob-Resources) en [het instellen en ophalen van eigenschappen en meta gegevens voor BLOB-resources](/rest/api/storageservices/Setting-and-Retrieving-Properties-and-Metadata-for-Blob-Resources)voor meer informatie over het programmatisch weer geven van blobs.  
 
 ### <a name="log-naming-conventions"></a>Naamgevings regels vastleggen
 
@@ -131,7 +131,7 @@ U kunt logboek registratie van opslag inschakelen met Azure Portal-, Power shell
 
 ### <a name="enable-storage-logging-using-the-azure-portal"></a>Opslag logboek registratie inschakelen met behulp van de Azure Portal  
 
-Gebruik in de Azure Portal de Blade **Diagnostische instellingen (klassiek)** om de logboek registratie van opslag te beheren, toegankelijk via het gedeelte **bewaking (klassiek)** van de **menu Blade**van een opslag account.
+Gebruik in de Azure Portal de Blade **Diagnostische instellingen (klassiek)** om de logboek registratie van opslag te beheren, toegankelijk via het gedeelte **bewaking (klassiek)** van de **menu Blade** van een opslag account.
 
 U kunt de opslag services opgeven die u wilt registreren en de retentie periode (in dagen) voor de geregistreerde gegevens.  
 
@@ -139,7 +139,7 @@ U kunt de opslag services opgeven die u wilt registreren en de retentie periode 
 
  U kunt Power shell op uw lokale machine gebruiken om opslag logboek registratie te configureren in uw opslag account met behulp van de cmdlet **Get-AzStorageServiceLoggingProperty** van Azure PowerShell om de huidige instellingen op te halen en de cmdlet **set-AzStorageServiceLoggingProperty** om de huidige instellingen te wijzigen.  
 
- De cmdlets die de logboek registratie van opslag regelen, gebruiken een **LoggingOperations** -para meter die een teken reeks is met een door komma's gescheiden lijst met aanvraag typen die moeten worden geregistreerd. De drie mogelijke aanvraag typen zijn **lezen**, **schrijven**en **verwijderen**. Als u logboek registratie wilt uitschakelen, gebruikt u de waarde **geen** voor de para meter **LoggingOperations** .  
+ De cmdlets die de logboek registratie van opslag regelen, gebruiken een **LoggingOperations** -para meter die een teken reeks is met een door komma's gescheiden lijst met aanvraag typen die moeten worden geregistreerd. De drie mogelijke aanvraag typen zijn **lezen** , **schrijven** en **verwijderen** . Als u logboek registratie wilt uitschakelen, gebruikt u de waarde **geen** voor de para meter **LoggingOperations** .  
 
  Met de volgende opdracht wordt de logboek registratie voor lees-, schrijf-en verwijder aanvragen in het Queue-service in uw standaard-opslag account met Bewaar termijn ingesteld op vijf dagen:  
 
@@ -153,7 +153,7 @@ Set-AzStorageServiceLoggingProperty -ServiceType Queue -LoggingOperations read,w
 Set-AzStorageServiceLoggingProperty -ServiceType Table -LoggingOperations none  
 ```  
 
- Zie voor informatie over het configureren van de Azure PowerShell-cmdlets voor het werken met uw Azure-abonnement en het selecteren van het standaard opslag account dat moet worden gebruikt: [Azure PowerShell installeren en configureren](https://azure.microsoft.com/documentation/articles/install-configure-powershell/).  
+ Zie voor informatie over het configureren van de Azure PowerShell-cmdlets voor het werken met uw Azure-abonnement en het selecteren van het standaard opslag account dat moet worden gebruikt: [Azure PowerShell installeren en configureren](/powershell/azure/).  
 
 ### <a name="enable-storage-logging-programmatically"></a>Opslag logboek registratie via een programma inschakelen  
 
@@ -179,9 +179,9 @@ queueClient.SetServiceProperties(serviceProperties);
 ---
 
 
- Zie voor meer informatie over het gebruik van een .NET-taal voor het configureren van opslag logboek registratie de [referentie opslag-client bibliotheek](https://msdn.microsoft.com/library/azure/dn261237.aspx).  
+ Zie voor meer informatie over het gebruik van een .NET-taal voor het configureren van opslag logboek registratie de [referentie opslag-client bibliotheek](/previous-versions/azure/dn261237(v=azure.100)).  
 
- Zie [Opslaganalyse inschakelen en configureren](https://msdn.microsoft.com/library/azure/hh360996.aspx)voor algemene informatie over het configureren van opslag logboek registratie met behulp van de rest API.  
+ Zie [Opslaganalyse inschakelen en configureren](/rest/api/storageservices/Enabling-and-Configuring-Storage-Analytics)voor algemene informatie over het configureren van opslag logboek registratie met behulp van de rest API.  
 
 ## <a name="download-storage-logging-log-data"></a>Logboek gegevens van opslag logboeken downloaden
 
@@ -204,7 +204,7 @@ In het volgende voor beeld ziet u hoe u de logboek gegevens voor de wachtrij ser
 azcopy copy 'https://mystorageaccount.blob.core.windows.net/$logs/queue' 'C:\Logs\Storage' --include-path '2014/05/20/09;2014/05/20/10;2014/05/20/11' --recursive
 ```
 
-Zie [specifieke bestanden downloaden](/azure/storage/common/storage-use-azcopy-blobs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#download-specific-files)voor meer informatie over het downloaden van specifieke bestanden.
+Zie [specifieke bestanden downloaden](./storage-use-azcopy-blobs.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json#download-specific-files)voor meer informatie over het downloaden van specifieke bestanden.
 
 Wanneer u uw logboek gegevens hebt gedownload, kunt u de logboek vermeldingen in de bestanden weer geven. Deze logboek bestanden maken gebruik van een tekst indeling met scheidings tekens die door veel hulpprogram ma's voor logboeken kunnen worden geparseerd (Zie de hand leiding voor [bewaking, diagnose en probleem oplossing Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md)) voor meer informatie. Andere hulpprogram ma's hebben verschillende voorzieningen voor het opmaken, filteren, sorteren en zoeken in de inhoud van uw logboek bestanden. Zie [Opslaganalyse-logboek indeling](/rest/api/storageservices/storage-analytics-log-format) en [Opslaganalyse geregistreerde bewerkingen en status berichten](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)voor meer informatie over de indeling en inhoud van het logboek bestand voor opslag logboek registratie.
 

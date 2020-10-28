@@ -12,25 +12,25 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: d04d29b82ecf09d1ee52986fc40687e5511573da
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 3baf2d7ed7c326895ae40948fc2d0a4cc03021f9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331903"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788363"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-azure-sql-managed-instance-from-on-premises"></a>Quickstart: Een punt-naar-site-verbinding naar Azure SQL Managed Instance configureren vanuit on-premises
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Deze quickstart laat zien hoe u verbinding kunt maken met Azure SQL Managed Instance met behulp van [SSMS](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SQL Server Management Studio) vanaf een on-premises clientcomputer, via een punt-naar-site-verbinding. Raadpleeg [Over punt-naar-site-VPN](../../vpn-gateway/point-to-site-about.md) voor informatie over punt-naar-site-verbindingen.
+Deze quickstart laat zien hoe u verbinding kunt maken met Azure SQL Managed Instance met behulp van [SSMS](/sql/ssms/sql-server-management-studio-ssms) (SQL Server Management Studio) vanaf een on-premises clientcomputer, via een punt-naar-site-verbinding. Raadpleeg [Over punt-naar-site-VPN](../../vpn-gateway/point-to-site-about.md) voor informatie over punt-naar-site-verbindingen.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Voor deze snelstartgids geldt het volgende:
 
 - Gebruikt als uitgangspunt de resources die zijn gemaakt in [Een beheerd exemplaar maken](instance-create-quickstart.md).
-- Vereist PowerShell 5.1 en Azure PowerShell 1.4.0 of later op uw on-premises clientcomputer. Zie, indien nodig, de instructies voor het [installeren van de Azure PowerShell-module](https://docs.microsoft.com/powershell/azure/install-az-ps#install-the-azure-powershell-module).
-- Vereist de nieuwste versie van [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) op uw on-premises clientcomputer.
+- Vereist PowerShell 5.1 en Azure PowerShell 1.4.0 of later op uw on-premises clientcomputer. Zie, indien nodig, de instructies voor het [installeren van de Azure PowerShell-module](/powershell/azure/install-az-ps#install-the-azure-powershell-module).
+- Vereist de nieuwste versie van [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) op uw on-premises clientcomputer.
 
 ## <a name="attach-a-vpn-gateway-to-a-virtual-network"></a>Een VPN-gateway koppelen aan een virtueel netwerk
 

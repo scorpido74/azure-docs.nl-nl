@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c07ad6e631482b47da674549e976953842cf983e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb53181355e292a885e8ffc2ac7c8a3aa48adaae
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855919"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787462"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Aan de slag met Azure Queue Storage met .NET
 
@@ -71,7 +71,7 @@ U moet verwijzen naar de volgende vier pakketten in uw project om deze zelf stud
 
 U kunt NuGet gebruiken om deze pakketten te verkrijgen. Volg deze stappen:
 
-1. Klik met de rechter muisknop op uw project in **Solution Explorer**en kies **NuGet-pakketten beheren**.
+1. Klik met de rechter muisknop op uw project in **Solution Explorer** en kies **NuGet-pakketten beheren** .
 1. **Bladeren** selecteren
 1. Zoek online naar ' Azure. storage. queues ' en selecteer **installeren** om de Storage-client bibliotheek en de afhankelijkheden ervan te installeren. Hiermee worden ook de bibliotheken Azure. storage. common en Azure. core geïnstalleerd. Dit zijn afhankelijkheden van de wachtrij bibliotheek.
 1. Zoek online naar ' System.Configuration.ConfigurationManager ' en selecteer **installeren** om de Configuration Manager te installeren.
@@ -86,7 +86,7 @@ U moet verwijzen naar de volgende drie pakketten in uw project om deze zelf stud
 
 U kunt NuGet gebruiken om deze pakketten te verkrijgen. Volg deze stappen:
 
-1. Klik met de rechter muisknop op uw project in **Solution Explorer**en kies **NuGet-pakketten beheren**.
+1. Klik met de rechter muisknop op uw project in **Solution Explorer** en kies **NuGet-pakketten beheren** .
 1. **Bladeren** selecteren
 1. Zoek online naar ' micro soft. Azure. storage. Queue ' en selecteer **installeren** om de Storage-client bibliotheek en de afhankelijkheden ervan te installeren. Hiermee wordt ook de bibliotheek micro soft. Azure. storage. common geïnstalleerd. Dit is een afhankelijkheid van de wachtrij bibliotheek.
 1. Zoek online naar ' Microsoft.Azure.ConfigurationManager ' en selecteer **installeren** om de Azure-Configuration Manager te installeren.
@@ -113,7 +113,7 @@ De voorbeeldcode moet de toegang tot uw opslagaccount autoriseren. Om te autoris
 
 1. Navigeer naar [Azure Portal](https://portal.azure.com).
 2. Zoek uw opslagaccount.
-3. In de sectie **Instellingen** van het overzicht met opslagaccounts selecteert u **Toegangssleutels**. De toegangssleutels van uw account worden weergegeven, evenals de volledige verbindingsreeks voor elke sleutel.
+3. In de sectie **Instellingen** van het overzicht met opslagaccounts selecteert u **Toegangssleutels** . De toegangssleutels van uw account worden weergegeven, evenals de volledige verbindingsreeks voor elke sleutel.
 4. Zoek de waarde van de **Verbindingsreeks** onder **key1** en klik op de knop **Kopiëren** om de verbindingsreeks te kopiëren. U gaat in de volgende stap de waarde voor de verbinding toevoegen aan een omgevingsvariabele.
 
     ![Schermopname waarin een verbindingsreeks vanuit de Azure-portal wordt gekopieerd](media/storage-dotnet-how-to-use-queues/portal-connection-string.png)
@@ -349,7 +349,7 @@ queue.DeleteMessage(retrievedMessage);
 
 ## <a name="use-async-await-pattern-with-common-queue-storage-apis"></a>Het Async-Await-patroon gebruiken met algemene Queue Storage-API's
 
-Dit voorbeeld laat zien hoe u het Async-Await-patroon gebruikt met algemene Queue Storage-API's. In het voorbeeld wordt de asynchrone versie aangeroepen van elk van de opgegeven methoden. Dit ziet u aan het achtervoegsel *Async* van elke methode. Wanneer er een asynchrone methode wordt gebruikt, schort het Async-Await-patroon lokale uitvoering uit totdat de aanroep is voltooid. Dit gedrag stelt de huidige thread in staat andere bewerkingen uit te voeren, zodat knelpunten in de prestaties worden voorkomen en de algehele respons van uw toepassing verbetert. Zie [Async en Await (C# en Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx) voor meer informatie over het gebruik van het Async-Await-patroon in .NET.
+Dit voorbeeld laat zien hoe u het Async-Await-patroon gebruikt met algemene Queue Storage-API's. In het voorbeeld wordt de asynchrone versie aangeroepen van elk van de opgegeven methoden. Dit ziet u aan het achtervoegsel *Async* van elke methode. Wanneer er een asynchrone methode wordt gebruikt, schort het Async-Await-patroon lokale uitvoering uit totdat de aanroep is voltooid. Dit gedrag stelt de huidige thread in staat andere bewerkingen uit te voeren, zodat knelpunten in de prestaties worden voorkomen en de algehele respons van uw toepassing verbetert. Zie [Async en Await (C# en Visual Basic)](/previous-versions/hh191443(v=vs.140)) voor meer informatie over het gebruik van het Async-Await-patroon in .NET.
 
 # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
@@ -489,10 +489,10 @@ queue.Delete();
 Nu u de basisprincipes van Queue Storage hebt geleerd, volgt u deze koppelingen voor meer informatie over complexere opslagtaken.
 
 - Bekijk de naslagdocumentatie over de Queue-service voor meer informatie over beschikbare API's:
-  - [Naslaginformatie over de Storage-clientbibliotheek voor .NET](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
-  - [Naslaginformatie over REST API](https://msdn.microsoft.com/library/azure/dd179355)
+  - [Naslaginformatie over de Storage-clientbibliotheek voor .NET](/dotnet/api/overview/azure/storage)
+  - [Naslaginformatie over REST API](/rest/api/storageservices/)
 - Bekijk meer functiehandleidingen voor informatie over aanvullende mogelijkheden voor het opslaan van gegevens in Azure.
-  - [Aan de slag met Azure Table Storage met .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md) voor het opslaan van gestructureerde gegevens.
-  - [Aan de slag met Azure Blob Storage met .NET](../blobs/storage-dotnet-how-to-use-blobs.md) voor het opslaan van niet-gestructureerde gegevens.
+  - [Aan de slag met Azure Table Storage met .NET](../../cosmos-db/tutorial-develop-table-dotnet.md) voor het opslaan van gestructureerde gegevens.
+  - [Aan de slag met Azure Blob Storage met .NET](../blobs/storage-quickstart-blobs-dotnet.md) voor het opslaan van niet-gestructureerde gegevens.
   - [Verbinding maken met SQL Database met behulp van .NET (C#)](../../azure-sql/database/connect-query-dotnet-core.md) voor het opslaan van relationele gegevens.
 - Leer hoe u de code die u schrijft om te werken met Azure Storage, kunt vereenvoudigen met behulp van de [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki).

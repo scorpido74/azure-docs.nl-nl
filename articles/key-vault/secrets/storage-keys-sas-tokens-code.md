@@ -9,12 +9,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6072c71fa675bd203e94f3f42814a1183b12ae8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d2d28a525f38aad3f48e439992a23abde0b7718
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597980"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786068"
 ---
 # <a name="create-sas-definition-and-fetch-shared-access-signature-tokens-in-code"></a>SAS-definitie maken en gedeelde toegangstokens ophalen in code
 
@@ -23,7 +23,7 @@ U kunt uw opslagaccount met SAS-tokens (Shared Access Signature) beheren die zij
 > [!NOTE]
 > U kunt het beste [Op rollen gebaseerd toegangsbeheer (RBAC)](../../storage/common/storage-auth-aad.md) gebruiken om uw opslagaccount te beveiligen voor betere beveiliging en het gebruiksgemak van gedeelde-sleutelverificatie.
 
-In dit artikel vindt u voorbeelden van .NET-code waarmee een SAS-definitie wordt gemaakt en SAS-tokens worden opgehaald. Bekijk ons [ShareLink](https://docs.microsoft.com/samples/azure/azure-sdk-for-net/share-link/)-voorbeeld voor volledige informatie, inclusief de gegenereerde client voor met Key Vault beheerde opslagaccounts. Voor informatie over het maken en opslaan van SAS-tokens, raadpleegt u [Sleutels voor opslagaccounts beheren met Key Vault en de Azure CLI](overview-storage-keys.md) of [Sleutels voor opslagaccounts beheren met Key Vault en Azure PowerShell](overview-storage-keys-powershell.md).
+In dit artikel vindt u voorbeelden van .NET-code waarmee een SAS-definitie wordt gemaakt en SAS-tokens worden opgehaald. Bekijk ons [ShareLink](/samples/azure/azure-sdk-for-net/share-link/)-voorbeeld voor volledige informatie, inclusief de gegenereerde client voor met Key Vault beheerde opslagaccounts. Voor informatie over het maken en opslaan van SAS-tokens, raadpleegt u [Sleutels voor opslagaccounts beheren met Key Vault en de Azure CLI](overview-storage-keys.md) of [Sleutels voor opslagaccounts beheren met Key Vault en Azure PowerShell](overview-storage-keys-powershell.md).
 
 ## <a name="code-samples"></a>Codevoorbeelden
 
@@ -41,7 +41,7 @@ Nadat de SAS-definitie is gemaakt, kunt u SAS-tokens zoals geheimen ophalen met 
 
 Als uw handtekeningtoken voor gedeelde toegang bijna is verlopen, kunt u hetzelfde geheim nogmaals ophalen om een nieuw token te genereren.
 
-Voor meer informatie over hoe u SAS-tokens uit de Key Vault gebruikt om Azure Storage-services te openen, raadpleegt u [Een account-SAS gebruiken voor toegang tot de Blob service](https://docs.microsoft.com/azure/storage/common/storage-account-sas-create-dotnet#use-an-account-sas-from-a-client)
+Voor meer informatie over hoe u SAS-tokens uit de Key Vault gebruikt om Azure Storage-services te openen, raadpleegt u [Een account-SAS gebruiken voor toegang tot de Blob service](../../storage/common/storage-account-sas-create-dotnet.md#use-an-account-sas-from-a-client)
 
 > [!NOTE]
 > Uw app moet worden voorbereid om de SAS te vernieuwen als deze een 403 vanuit Storage ontvangt, zodat u een inbreuk op een sleutel kunt afhandelen waardoor een snellere rotatie nodig is dan de normale rotatieperiode. 

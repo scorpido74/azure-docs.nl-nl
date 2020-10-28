@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 8998f03fa44529a5f006936a01f711a279178245
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51e15a8dc5e9f918c630397d6d6593f5bf561755
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84045681"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786901"
 ---
 # <a name="elastic-database-tools-frequently-asked-questions-faq"></a>Veelgestelde vragen over hulpprogram ma's voor Elastic data base
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,11 +39,11 @@ Gebruik geen referenties in de vorm ' gebruikers-ID = username@servername ', in 
 
 ## <a name="do-i-need-to-create-a-shard-map-manager-and-populate-shards-every-time-i-start-my-applications"></a>Moet ik een Shard-toewijzings beheer maken en Shards elke keer invullen wanneer ik mijn toepassingen start
 
-Nee: het maken van het Shard-toewijzings beheer (bijvoorbeeld [ShardMapManagerFactory. CreateSqlShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager)) is een eenmalige bewerking.  Uw toepassing moet de aanroep [ShardMapManagerFactory. TryGetSqlShardMapManager ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager) op de start tijd van de toepassing gebruiken.  Er mag slechts één aanroep per toepassings domein zijn.
+Nee: het maken van het Shard-toewijzings beheer (bijvoorbeeld [ShardMapManagerFactory. CreateSqlShardMapManager](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager)) is een eenmalige bewerking.  Uw toepassing moet de aanroep [ShardMapManagerFactory. TryGetSqlShardMapManager ()](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager) op de start tijd van de toepassing gebruiken.  Er mag slechts één aanroep per toepassings domein zijn.
 
 ## <a name="i-have-questions-about-using-elastic-database-tools-how-do-i-get-them-answered"></a>Ik heb vragen over het gebruik van hulpprogram ma's voor elastische data bases, hoe krijg ik deze antwoorden
 
-Neem contact met ons op de [pagina micro soft Q&een vraag voor SQL database](https://docs.microsoft.com/answers/topics/azure-sql-database.html).
+Neem contact met ons op de [pagina micro soft Q&een vraag voor SQL database](/answers/topics/azure-sql-database.html).
 
 ## <a name="when-i-get-a-database-connection-using-a-sharding-key-i-can-still-query-data-for-other-sharding-keys-on-the-same-shard--is-this-by-design"></a>Wanneer ik een database verbinding krijg met behulp van een sharding-sleutel, kan ik nog steeds gegevens opvragen voor andere sharding-sleutels op dezelfde Shard.  Is dit per ontwerp
 

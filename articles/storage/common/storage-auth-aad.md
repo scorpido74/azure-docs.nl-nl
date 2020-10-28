@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 391cbbca79560ba57ae2be62accdad8451446227
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7128a11ae9d5c9844353404309f8ad40cba53972
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488721"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787581"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Toegang verlenen tot blobs en wacht rijen met behulp van Azure Active Directory
 
@@ -37,7 +37,7 @@ Wanneer een beveiligingsprincipal (een gebruiker, groep of toepassing) probeert 
 
 De verificatie stap vereist dat een toepassing tijdens runtime een OAuth 2,0-toegangs token opvraagt. Als een toepassing wordt uitgevoerd vanuit een Azure-entiteit, zoals een Azure-VM, een schaalset voor virtuele machines of een Azure Functions-app, kan deze een [beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md) gebruiken om toegang te krijgen tot blobs of wacht rijen. Zie [toegang verlenen aan blobs en wacht rijen met Azure Active Directory en beheerde identiteiten voor Azure-resources](storage-auth-aad-msi.md)voor meer informatie over het autoriseren van aanvragen die door een beheerde identiteit worden door gegeven aan de Azure-Blob of de Queue-service.
 
-De autorisatie stap vereist dat er een of meer Azure-rollen aan de beveiligingsprincipal worden toegewezen. Azure Storage biedt Azure-rollen die algemene sets machtigingen voor Blob-en wachtrij gegevens omvatten. De rollen die zijn toegewezen aan een beveiligingsprincipal, bepalen de machtigingen die de principal heeft. Voor meer informatie over het toewijzen van Azure-functies voor Azure Storage raadpleegt [u toegangs rechten voor opslag gegevens beheren met Azure RBAC](storage-auth-aad-rbac.md).
+De autorisatie stap vereist dat er een of meer Azure-rollen aan de beveiligingsprincipal worden toegewezen. Azure Storage biedt Azure-rollen die algemene sets machtigingen voor Blob-en wachtrij gegevens omvatten. De rollen die zijn toegewezen aan een beveiligingsprincipal, bepalen de machtigingen die de principal heeft. Voor meer informatie over het toewijzen van Azure-functies voor Azure Storage raadpleegt [u toegangs rechten voor opslag gegevens beheren met Azure RBAC](./storage-auth-aad-rbac-portal.md).
 
 Systeem eigen toepassingen en webtoepassingen die aanvragen indienen bij de Azure Blob of Queue-service, kunnen ook toegang verlenen met Azure AD. Zie [toegang tot Azure Storage met Azure AD toestaan vanuit een Azure Storage toepassing](storage-auth-aad-app.md)voor meer informatie over het aanvragen van een toegangs token en het gebruik ervan om aanvragen voor BLOB-of wachtrij gegevens te autoriseren.
 
@@ -75,7 +75,7 @@ Toegang tot BLOB-of wachtrij gegevens via de Azure Portal, Power shell of Azure 
 
 De Azure Portal kunnen uw Azure AD-account of de toegangs sleutels voor het account gebruiken om toegang te krijgen tot Blob-en wachtrij gegevens in een Azure-opslag account. Welk verificatie schema het Azure Portal gebruikt, is afhankelijk van de Azure-functies die aan u zijn toegewezen.
 
-Wanneer u probeert toegang te krijgen tot BLOB-of wachtrij gegevens, controleert de Azure Portal eerst of aan u een Azure-rol is toegewezen met **micro soft. Storage/Storage accounts/listkeys ophalen/Action**. Als aan u een rol is toegewezen met deze actie, gebruikt de Azure Portal de account sleutel voor toegang tot Blob-en wachtrij gegevens via gedeelde sleutel autorisatie. Als u geen rol aan deze actie hebt toegewezen, probeert de Azure Portal toegang te krijgen tot gegevens met uw Azure AD-account.
+Wanneer u probeert toegang te krijgen tot BLOB-of wachtrij gegevens, controleert de Azure Portal eerst of aan u een Azure-rol is toegewezen met **micro soft. Storage/Storage accounts/listkeys ophalen/Action** . Als aan u een rol is toegewezen met deze actie, gebruikt de Azure Portal de account sleutel voor toegang tot Blob-en wachtrij gegevens via gedeelde sleutel autorisatie. Als u geen rol aan deze actie hebt toegewezen, probeert de Azure Portal toegang te krijgen tot gegevens met uw Azure AD-account.
 
 Als u toegang wilt krijgen tot BLOB-of wachtrij gegevens van de Azure Portal met uw Azure AD-account, hebt u machtigingen nodig voor toegang tot de BLOB-en wachtrij gegevens en hebt u ook machtigingen nodig om te navigeren door de resources van het opslag account in de Azure Portal. De ingebouwde rollen die worden verschaft door Azure Storage toegang verlenen tot Blob-en wachtrij resources, maar ze verlenen geen machtigingen voor de resources van het opslag account. Daarom moet de toegang tot de portal ook de toewijzing van een Azure Resource Manager rol, zoals de rol van [lezer](../../role-based-access-control/built-in-roles.md#reader) , bereiken van het niveau van het opslag account of hoger. De rol van **lezer** verleent de meeste beperkte machtigingen, maar een andere Azure Resource Manager rol die toegang verleent tot bronnen voor het beheer van opslag accounts is ook aanvaardbaar. Zie voor meer informatie over het toewijzen van machtigingen aan gebruikers voor toegang tot gegevens in de Azure Portal met een Azure AD-account, [de Azure Portal gebruiken om een Azure-rol toe te wijzen voor toegang tot Blob-en wachtrij gegevens](storage-auth-aad-rbac-portal.md).
 
@@ -83,7 +83,7 @@ De Azure Portal geeft aan welk verificatie schema wordt gebruikt wanneer u naar 
 
 ### <a name="data-access-from-powershell-or-azure-cli"></a>Gegevens toegang vanuit Power shell of Azure CLI
 
-Azure CLI en Power shell ondersteunen het aanmelden met Azure AD-referenties. Nadat u zich hebt aangemeld, wordt uw sessie uitgevoerd onder deze referenties. Zie voor meer informatie [Azure CLI of Power shell-opdrachten uitvoeren met Azure AD-referenties voor toegang tot BLOB-of wachtrij gegevens](authorize-active-directory-powershell.md).
+Azure CLI en Power shell ondersteunen het aanmelden met Azure AD-referenties. Nadat u zich hebt aangemeld, wordt uw sessie uitgevoerd onder deze referenties. Zie voor meer informatie [Azure CLI of Power shell-opdrachten uitvoeren met Azure AD-referenties voor toegang tot BLOB-of wachtrij gegevens](../blobs/authorize-active-directory-powershell.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
