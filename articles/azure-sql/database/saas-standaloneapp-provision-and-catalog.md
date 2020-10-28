@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: fc12d1359ab7b6f664326cd3be448b79809c53e2
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 2343800f8801105ca75f285972b441ecb027d1a0
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332175"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793242"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>Nieuwe tenants inrichten en catalogiseren met behulp van het SaaS-patroon voor een toepassing per tenant
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ Dit artikel bestaat uit twee hoofdonderdelen:
 
 ## <a name="standalone-application-per-tenant-pattern"></a>Patroon voor een zelfstandige toepassing per tenant
 
-Het patroon voor een zelfstandige toepassing per tenant is er een uit verschillende patronen voor SaaS-toepassingen met meerdere tenants.  In dit patroon wordt een zelfstandige app ingericht voor elke tenant. De toepassing omvat onderdelen op toepassingsniveau en een Azure SQL-database.  Elke tenant-app kan worden geïmplementeerd in het abonnement van de leverancier.  Azure biedt ook een [programma voor beheerde toepassingen](https://docs.microsoft.com/azure/managed-applications/overview) waarin een app kan worden geïmplementeerd in het abonnement van een tenant en namens de tenant door de leverancier worden beheerd.
+Het patroon voor een zelfstandige toepassing per tenant is er een uit verschillende patronen voor SaaS-toepassingen met meerdere tenants.  In dit patroon wordt een zelfstandige app ingericht voor elke tenant. De toepassing omvat onderdelen op toepassingsniveau en een Azure SQL-database.  Elke tenant-app kan worden geïmplementeerd in het abonnement van de leverancier.  Azure biedt ook een [programma voor beheerde toepassingen](../../azure-resource-manager/managed-applications/overview.md) waarin een app kan worden geïmplementeerd in het abonnement van een tenant en namens de tenant door de leverancier worden beheerd.
 
    ![patroon voor app per tenant](./media/saas-standaloneapp-provision-and-catalog/standalone-app-pattern.png)
 
@@ -72,8 +72,8 @@ Aan het einde van deze zelfstudie beschikt u over een set zelfstandige tenanttoe
 
 U kunt deze zelfstudie alleen voltooien als aan de volgende vereisten wordt voldaan:
 
-* Azure PowerShell is geïnstalleerd. Zie [Aan de slag met Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps) voor meer informatie.
-* De drie voorbeeldtenant-apps worden geïmplementeerd. Zie [De zelfstandige SaaS-toepassing Wingtip Tickets implementeren en verkennen](../../sql-database/saas-standaloneapp-get-started-deploy.md) om deze apps binnen vijf minuten te implementeren.
+* Azure PowerShell is geïnstalleerd. Zie [Aan de slag met Azure PowerShell](/powershell/azure/get-started-azureps) voor meer informatie.
+* De drie voorbeeldtenant-apps worden geïmplementeerd. Zie [De zelfstandige SaaS-toepassing Wingtip Tickets implementeren en verkennen](./saas-standaloneapp-get-started-deploy.md) om deze apps binnen vijf minuten te implementeren.
 
 ## <a name="provision-the-catalog"></a>De catalogus inrichten
 
@@ -92,7 +92,7 @@ In deze taak leert u hoe u de catalogus inricht die wordt gebruikt voor het regi
 1. Voer het script uit door op **F5** te drukken.
 1.  Wanneer de uitvoering van het script stopt bij het onderbrekingspunt, drukt u op **F11** om het New-Catalog.ps1-script stapsgewijs uit te voeren.
 1.  Bekijk de uitvoering van het script via opties F10 en F11 van het menu Fouten opsporen om aangeroepen functies over te slaan of stapsgewijs uit te voeren.
-    *   Zie [Tips voor het werken met en opsporen van fouten in PowerShell-scripts](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise) voor meer informatie over foutopsporing in PowerShell-scripts.
+    *   Zie [Tips voor het werken met en opsporen van fouten in PowerShell-scripts](/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise) voor meer informatie over foutopsporing in PowerShell-scripts.
 
 Zodra het script is voltooid, bestaat de catalogus en worden alle tenantvoorbeelden geregistreerd.
 
@@ -156,4 +156,4 @@ In deze zelfstudie hebt u het volgende geleerd:
 > * Informatie over de servers en databases die deel uitmaken van de app.
 > * Voorbeeldresources verwijderen om gerelateerde facturering te stoppen.
 
-U kunt zien hoe de catalogus wordt gebruikt voor het ondersteunen van diverse tenant-overschrijdende scenario's met behulp van de database-per-tenantversie van de [SaaS-toepassing Wingtip Tickets](../../sql-database/saas-dbpertenant-wingtip-app-overview.md).
+U kunt zien hoe de catalogus wordt gebruikt voor het ondersteunen van diverse tenant-overschrijdende scenario's met behulp van de database-per-tenantversie van de [SaaS-toepassing Wingtip Tickets](./saas-dbpertenant-wingtip-app-overview.md).

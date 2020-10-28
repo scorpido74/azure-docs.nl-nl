@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, devx-track-azurecli
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: cade5a4329cdfc11c1b256ba01e9764f60a476a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1126798bdf07f54811c83b932af9928f3e3115dc
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667857"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792001"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Een Azure Kubernetes service-cluster maken en koppelen
 
@@ -54,12 +54,12 @@ Azure Machine Learning kunt getrainde machine learning modellen implementeren in
    
  - Als u modellen wilt implementeren op **GPU** -knoop punten of **FPGA** -knoop punten (of een specifieke SKU), moet u een cluster maken met de specifieke SKU. Er is geen ondersteuning voor het maken van een secundaire knooppunt groep in een bestaand cluster en het implementeren van modellen in de secundaire knooppunt groep.
  
-- Wanneer u een cluster maakt of koppelt, kunt u selecteren of u het cluster wilt maken voor __dev-test__ of __productie__. Als u een AKS-cluster wilt maken voor __ontwikkeling__, __validatie__en __testen__ in plaats van productie, stelt u het __cluster doel__ in op __dev-test__. Als u het cluster doel niet opgeeft, wordt er een __productie__ cluster gemaakt. 
+- Wanneer u een cluster maakt of koppelt, kunt u selecteren of u het cluster wilt maken voor __dev-test__ of __productie__ . Als u een AKS-cluster wilt maken voor __ontwikkeling__ , __validatie__ en __testen__ in plaats van productie, stelt u het __cluster doel__ in op __dev-test__ . Als u het cluster doel niet opgeeft, wordt er een __productie__ cluster gemaakt. 
 
     > [!IMPORTANT]
     > Een __dev-test-__ cluster is niet geschikt voor verkeer op productie niveau en kan leiden tot meer tijd. Dev/test-clusters garanderen ook geen fout tolerantie.
 
-- Wanneer u een cluster maakt of koppelt en het cluster wordt gebruikt voor __productie__, moet dit ten minste 12 __virtuele cpu's__bevatten. Het aantal virtuele Cpu's kan worden berekend door het __aantal knoop punten__ in het cluster te vermenigvuldigen met het __aantal kernen dat__ is opgegeven door de geselecteerde VM-grootte. Als u bijvoorbeeld een VM-grootte van ' Standard_D3_v2 ' gebruikt, die vier virtuele kernen heeft, moet u 3 of groter selecteren als het aantal knoop punten.
+- Wanneer u een cluster maakt of koppelt en het cluster wordt gebruikt voor __productie__ , moet dit ten minste 12 __virtuele cpu's__ bevatten. Het aantal virtuele Cpu's kan worden berekend door het __aantal knoop punten__ in het cluster te vermenigvuldigen met het __aantal kernen dat__ is opgegeven door de geselecteerde VM-grootte. Als u bijvoorbeeld een VM-grootte van ' Standard_D3_v2 ' gebruikt, die vier virtuele kernen heeft, moet u 3 of groter selecteren als het aantal knoop punten.
 
     Voor een __dev-test__ cluster worden de opdracht mini maal twee virtuele cpu's.
 
@@ -124,7 +124,7 @@ Result
 1.16.13
 ```
 
-Als u **de beschik bare versies programmatisch wilt controleren**, gebruikt u de rest API van de [Container Service-client lijst](https://docs.microsoft.com/rest/api/container-service/container%20service%20client/listorchestrators) . Als u de beschik bare versies wilt vinden, bekijkt u de vermeldingen in `orchestratorType` `Kubernetes` . De bijbehorende `orchestrationVersion` vermeldingen bevatten de beschik bare versies die aan uw werk ruimte kunnen worden **gekoppeld** .
+Als u **de beschik bare versies programmatisch wilt controleren** , gebruikt u de rest API van de [Container Service-client lijst](https://docs.microsoft.com/rest/api/container-service/container%20service%20client/listorchestrators) . Als u de beschik bare versies wilt vinden, bekijkt u de vermeldingen in `orchestratorType` `Kubernetes` . De bijbehorende `orchestrationVersion` vermeldingen bevatten de beschik bare versies die aan uw werk ruimte kunnen worden **gekoppeld** .
 
 Als u de standaard versie wilt vinden die wordt gebruikt bij **het maken** van een cluster via Azure machine learning, zoekt u de vermelding waar `orchestratorType` `Kubernetes` en `default` is `true` . De gekoppelde `orchestratorVersion` waarde is de standaard versie. In het volgende JSON-fragment ziet u een voorbeeld vermelding:
 
@@ -147,7 +147,7 @@ Als u de standaard versie wilt vinden die wordt gebruikt bij **het maken** van e
 
 ## <a name="create-a-new-aks-cluster"></a>Een nieuw AKS-cluster maken
 
-**Geschatte tijd**: ongeveer 10 minuten.
+**Geschatte tijd** : ongeveer 10 minuten.
 
 Het maken of koppelen van een AKS-cluster is een eenmalig proces voor uw werk ruimte. U kunt dit cluster hergebruiken voor meerdere implementaties. Als u het cluster of de resource groep verwijdert die het bevat, moet u de volgende keer dat u moet implementeren een nieuw cluster maken. Er kunnen meerdere AKS-clusters aan uw werk ruimte zijn gekoppeld.
 
@@ -188,7 +188,7 @@ Voor meer informatie over de klassen, methoden en para meters die in dit voor be
 * [ComputeTarget. Create](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py&preserve-view=true#create-workspace--name--provisioning-configuration-)
 * [ComputeTarget.wait_for_completion](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py&preserve-view=true#wait-for-completion-show-output-false-)
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az ml computetarget create aks -n myaks
@@ -251,7 +251,7 @@ Voor meer informatie over de klassen, methoden en para meters die in dit voor be
 * [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py&preserve-view=true)
 * [AksCompute. attach](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py&preserve-view=true#attach-workspace--name--attach-configuration-)
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u een bestaand cluster wilt koppelen met behulp van de CLI, moet u de bron-ID van het bestaande cluster ophalen. Gebruik de volgende opdracht om deze waarde op te halen. Vervang door `myexistingcluster` de naam van uw AKS-cluster. Vervang door `myresourcegroup` de resource groep die het cluster bevat:
 
@@ -284,7 +284,7 @@ Zie [Compute-doelen maken in azure machine learning Studio](how-to-create-attach
 Gebruik een van de volgende methoden om een cluster los te koppelen van uw werk ruimte:
 
 > [!WARNING]
-> Als u de Azure Machine Learning Studio, SDK of de Azure CLI-extensie gebruikt voor machine learning om een AKS-cluster los te koppelen, **wordt het AKS-cluster niet verwijderd**. Zie [de Azure CLI gebruiken met AKS](/azure/aks/kubernetes-walkthrough#delete-the-cluster)voor het verwijderen van het cluster.
+> Als u de Azure Machine Learning Studio, SDK of de Azure CLI-extensie gebruikt voor machine learning om een AKS-cluster los te koppelen, **wordt het AKS-cluster niet verwijderd** . Zie [de Azure CLI gebruiken met AKS](/azure/aks/kubernetes-walkthrough#delete-the-cluster)voor het verwijderen van het cluster.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -292,7 +292,7 @@ Gebruik een van de volgende methoden om een cluster los te koppelen van uw werk 
 aks_target.detach()
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Gebruik de volgende opdracht om het bestaande cluster los te koppelen aan uw werk ruimte. Vervang door `myaks` de naam die het AKS-cluster aan uw werk ruimte is gekoppeld. Vervang door `myresourcegroup` de resource groep die uw werk ruimte bevat. Vervang door `myworkspace` de naam van uw werk ruimte.
 
@@ -302,7 +302,7 @@ az ml computetarget detach -n myaks -g myresourcegroup -w myworkspace
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Selecteer in Azure Machine Learning Studio __Compute__, __clusters__afstellen en het cluster dat u wilt verwijderen. Gebruik de koppeling __loskoppelen__ om het cluster los te koppelen.
+Selecteer in Azure Machine Learning Studio __Compute__ , __clusters__ afstellen en het cluster dat u wilt verwijderen. Gebruik de koppeling __loskoppelen__ om het cluster los te koppelen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -11,12 +11,12 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 2aa2c0c8cbd8b826444dc5420685aaa9731cddab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9a026ed47d662b80ef01e505bfbcf8f32d20b04
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409579"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792171"
 ---
 # <a name="create-configure-and-manage-elastic-jobs-preview"></a>Elastische taken maken, configureren en beheren (preview-versie)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -50,20 +50,20 @@ Taken gebruiken [databasereferenties](/sql/t-sql/statements/create-database-scop
 
 Het instellen van de juiste referenties voor het uitvoeren van een taak kan enigszins verwarrend zijn. Houd daarom de volgende punten in gedachten:
 
-- De referenties van het data base-bereik moeten worden gemaakt in de *taak database*.
-- **Alle doel databases moeten een aanmelding hebben met [voldoende machtigingen](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) voor het volt ooien van de taak** ( `jobuser` in het onderstaande diagram).
+- De referenties van het data base-bereik moeten worden gemaakt in de *taak database* .
+- **Alle doel databases moeten een aanmelding hebben met [voldoende machtigingen](/sql/relational-databases/security/permissions-database-engine) voor het volt ooien van de taak** ( `jobuser` in het onderstaande diagram).
 - Referenties kunnen opnieuw worden gebruikt voor verschillende taken en de referentie wachtwoorden worden versleuteld en beveiligd door gebruikers met alleen-lezen toegang tot taak objecten.
 
-De volgende afbeelding is gemaakt als hulp bij het begrijpen en instellen van de juiste taakreferenties. **Denk eraan dat de gebruiker moet worden gemaakt in elke database (alle *doelgebruikersdatabases*) waarin de taak moet worden uitgevoerd**.
+De volgende afbeelding is gemaakt als hulp bij het begrijpen en instellen van de juiste taakreferenties. **Denk eraan dat de gebruiker moet worden gemaakt in elke database (alle *doelgebruikersdatabases* ) waarin de taak moet worden uitgevoerd** .
 
 ![Referenties voor Elastic Jobs](./media/elastic-jobs-overview/job-credentials.png)
 
-## <a name="security-best-practices"></a>Aanbevolen beveiligingsprocedures
+## <a name="security-best-practices"></a>Aanbevolen procedures voor beveiliging
 
 Een paar aandachtspunten voor best practices voor het werken met elastische taken:
 
 - Beperk het gebruik van de API's tot vertrouwde personen.
-- Referenties moeten slechts de minimale bevoegdheden hebben die nodig zijn om de taakstap uit te voeren. Zie [autorisatie en machtigingen](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server)voor meer informatie.
+- Referenties moeten slechts de minimale bevoegdheden hebben die nodig zijn om de taakstap uit te voeren. Zie [autorisatie en machtigingen](/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server)voor meer informatie.
 - Wanneer u een lid van een server en/of groeps doel groep gebruikt, is het zeer raadzaam een afzonderlijke referentie te maken met rechten op de hoofd database om data bases weer te geven/te vermelden die worden gebruikt om de database lijsten van de server (s) en/of pool (s) uit te breiden voordat de taak wordt uitgevoerd.
 
 ## <a name="agent-performance-capacity-and-limitations"></a>Agentprestaties, - capaciteit en -beperkingen

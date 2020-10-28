@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.date: 10/15/2020
 ms.reviewer: ''
-ms.openlocfilehash: 9ae5d5e488a7bbe0e80f5a8960be27fd3de8489a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 19178359d1eeb935499a01828f7c53b123e17571
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102996"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793174"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Service-lagen in het op DTU gebaseerde aankoopmodel
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -54,7 +54,7 @@ Het kiezen van een servicelaag is voornamelijk afhankelijk van de bedrijfs conti
 >
 
 > [!TIP]
-> Als u de werkelijke [resource governance](resource-limits-logical-server.md#resource-governance) -limieten voor een Data Base of elastische pool wilt bekijken, kunt u de weer gave [sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) opvragen.
+> Als u de werkelijke [resource governance](resource-limits-logical-server.md#resource-governance) -limieten voor een Data Base of elastische pool wilt bekijken, kunt u de weer gave [sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) opvragen.
 
 > [!NOTE]
 > U kunt een gratis data base in Azure SQL Database in de laag basis service in combi natie met een gratis Azure-account om Azure te verkennen. Zie [een beheerde Cloud database maken met uw gratis Azure-account](https://azure.microsoft.com/free/services/sql-database/)voor meer informatie.
@@ -73,7 +73,7 @@ Reken grootten worden uitgedrukt in termen van Dtu's (data base Trans Action uni
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>EDTU-, opslag-en gegroepeerde database limieten voor elastische Pools
 
-|| **Basic** | **Standard** | **Premium** |
+|| **Basic** | **Standard** | **Ultieme** |
 | :-- | --: | --: | --: |
 | **Maximale opslag grootte per data base**  | 2 GB | 1 TB | 1 TB |
 | **Maximale opslag grootte per groep** | 156 GB | 4 TB | 4 TB |
@@ -114,7 +114,7 @@ De grootte van de data base is gebaseerd op een ' schaal factor '. De schaal fac
 
 De werk belasting bestaat uit negen transactie typen, zoals wordt weer gegeven in de volgende tabel. Elke trans actie is ontworpen om een bepaalde set systeem kenmerken te markeren in de data base-engine en systeemhardware, met een hoog contrast van de andere trans acties. Deze aanpak maakt het gemakkelijker om de impact van verschillende onderdelen te beoordelen op de algehele prestaties. De trans actie ' read Heavy ' produceert bijvoorbeeld een groot aantal lees bewerkingen van de schijf.
 
-| Transactietype | Description |
+| Transactietype | Beschrijving |
 | --- | --- |
 | Lite lezen |UITGESCHAKELD in-Memory; alleen-lezen |
 | Medium lezen |UITGESCHAKELD voornamelijk in-Memory; alleen-lezen |

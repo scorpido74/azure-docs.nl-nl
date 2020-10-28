@@ -4,7 +4,7 @@
   items:
     - name: Informatie over beheerde HSM
       href: overview.md
-- name: Snelstartgidsen
+- name: Quickstarts
   expanded: true
   items:
     - name: CLI
@@ -75,6 +75,6 @@
     - name: Service-updates
       href: 'https://azure.microsoft.com/updates/?product=key-vault'
     - name: Blog
-      href: 'https://blogs.technet.com/b/kv/'
+      href: /archive/blogs/kv/
     - name: Productfeedback
       href: 'https://feedback.azure.com/forums/906355-azure-key-vault'

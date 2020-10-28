@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 11b41f4dcffad2c98ea5d1f70346ba150fd18c17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 492041e39cf3e7be256bc783afc82fc756e17bf4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91278631"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791542"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Veelgestelde vragen over Application Gateway
 
@@ -69,7 +69,7 @@ Bekijk de [volg orde van de verwerking van de listener](https://docs.microsoft.c
 
 Als u een openbaar IP-adres gebruikt als een eind punt, vindt u de IP-en DNS-informatie over de open bare IP-adres resource. U kunt deze ook vinden in de portal, op de pagina overzicht voor de toepassings gateway. Als u interne IP-adressen gebruikt, vindt u de informatie op de pagina overzicht.
 
-Open voor de v2-SKU de open bare IP-resource en selecteer **configuratie**. Het **DNS-naam label (optioneel)** veld is beschikbaar voor het configureren van de DNS-naam.
+Open voor de v2-SKU de open bare IP-resource en selecteer **configuratie** . Het **DNS-naam label (optioneel)** veld is beschikbaar voor het configureren van de DNS-naam.
 
 ### <a name="what-are-the-settings-for-keep-alive-timeout-and-tcp-idle-timeout"></a>Wat zijn de instellingen voor Keep-Alive time-out en TCP-time-out voor inactiviteit?
 
@@ -138,7 +138,7 @@ Nee. Application Gateway v2 biedt nog geen ondersteuning voor proxy aanvragen me
 ### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>Ondersteunt Application Gateway kenmerk SameSite-cookie?
 Ja, de [V80-update](https://chromiumdash.appspot.com/schedule) van de [chroom browser](https://www.chromium.org/Home) heeft een mandaat geïntroduceerd op http-cookies zonder SameSite kenmerk dat moet worden behandeld als SameSite = slordig. Dit betekent dat de Application Gateway affiniteits cookie niet wordt verzonden door de browser in een context van een derde partij. 
 
-Ter ondersteuning van dit scenario wordt door Application Gateway een andere cookie met de naam *ApplicationGatewayAffinityCORS* , naast de bestaande *ApplicationGatewayAffinity* cookie injecteerd.  Deze cookies zijn vergelijkbaar, maar aan de *ApplicationGatewayAffinityCORS* -cookie zijn twee meer kenmerken toegevoegd: *SameSite = none; Beveiligd*. Deze kenmerken behouden plak sessies, zelfs voor cross-Origin-aanvragen. Zie de [sectie affiniteit op basis van cookies](configuration-http-settings.md#cookie-based-affinity) voor meer informatie.
+Ter ondersteuning van dit scenario wordt door Application Gateway een andere cookie met de naam *ApplicationGatewayAffinityCORS* , naast de bestaande *ApplicationGatewayAffinity* cookie injecteerd.  Deze cookies zijn vergelijkbaar, maar aan de *ApplicationGatewayAffinityCORS* -cookie zijn twee meer kenmerken toegevoegd: *SameSite = none; Beveiligd* . Deze kenmerken behouden plak sessies, zelfs voor cross-Origin-aanvragen. Zie de [sectie affiniteit op basis van cookies](configuration-http-settings.md#cookie-based-affinity) voor meer informatie.
 
 ## <a name="performance"></a>Prestaties
 
@@ -249,11 +249,11 @@ Maar als u Application Gateway v2 wilt gebruiken met alleen particulier IP-adres
 2. Maak geen listeners voor het open bare frontend-IP-adres. Application Gateway luistert niet naar verkeer op het open bare IP-adres als er geen listeners worden gemaakt.
 3. Maak en koppel een [netwerk beveiligings groep](https://docs.microsoft.com/azure/virtual-network/security-overview) voor het subnet Application Gateway met de volgende configuratie in volg orde van prioriteit:
     
-    a. Sta verkeer toe van de bron als **GatewayManager** -service label en-bestemming als **een** doel poort van **65200-65535**. Dit poort bereik is vereist voor de communicatie van Azure-infra structuur. Deze poorten worden beveiligd (vergrendeld) door verificatie via certificaat. Externe entiteiten, met inbegrip van de gebruikers beheerders van de gateway, kunnen geen wijzigingen op deze eind punten initiëren zonder dat de juiste certificaten aanwezig zijn
+    a. Sta verkeer toe van de bron als **GatewayManager** -service label en-bestemming als **een** doel poort van **65200-65535** . Dit poort bereik is vereist voor de communicatie van Azure-infra structuur. Deze poorten worden beveiligd (vergrendeld) door verificatie via certificaat. Externe entiteiten, met inbegrip van de gebruikers beheerders van de gateway, kunnen geen wijzigingen op deze eind punten initiëren zonder dat de juiste certificaten aanwezig zijn
     
     b. Verkeer toestaan van bron als **AzureLoadBalancer** -service label en bestemming en doel poort **Any**
     
-    c. Alle binnenkomend verkeer van de bron als de code van de **Internet** -service en de doel-en doel poort als **elk**te weigeren. Geef deze regel de *minste prioriteit* in de regels voor binnenkomende verbindingen
+    c. Alle binnenkomend verkeer van de bron als de code van de **Internet** -service en de doel-en doel poort als **elk** te weigeren. Geef deze regel de *minste prioriteit* in de regels voor binnenkomende verbindingen
     
     d. Behoud de standaard regels zoals het toestaan van VirtualNetwork inkomend zodat de toegang op privé-IP-adres niet wordt geblokkeerd
     
@@ -350,7 +350,7 @@ De browser van de certificerings instantie (CA) meldt recent rapporten die zijn 
 * [Bug 1649951](https://bugzilla.mozilla.org/show_bug.cgi?id=1649951)
 * [Bug 1650910](https://bugzilla.mozilla.org/show_bug.cgi?id=1650910)
 
-Conform de nalevings vereisten van de branche begon de leveranciers van de certificerings instantie niet-compatibele certificerings instanties aan te roepen en certificaten te verlenen die voldoen aan het beleid.Micro soft werkt nauw samen met deze leveranciers om de potentiële impact op Azure-Services te minimaliseren, **maar uw zelf verleende certificaten of certificaten die worden gebruikt in de scenario's ' uw eigen certificaat gebruiken ' (BYOC) zijn nog steeds kwetsbaar voor onverwacht gebruik**.
+Conform de nalevings vereisten van de branche begon de leveranciers van de certificerings instantie niet-compatibele certificerings instanties aan te roepen en certificaten te verlenen die voldoen aan het beleid.Micro soft werkt nauw samen met deze leveranciers om de potentiële impact op Azure-Services te minimaliseren, **maar uw zelf verleende certificaten of certificaten die worden gebruikt in de scenario's ' uw eigen certificaat gebruiken ' (BYOC) zijn nog steeds kwetsbaar voor onverwacht gebruik** .
 
 Als u wilt controleren of de certificaten die door uw toepassing worden gebruikt, zijn ingetrokken, geeft u de [aankondiging van de DigiCert](https://knowledge.digicert.com/alerts/DigiCert-ICA-Replacement) en de [intrekkings tracering](https://misissued.com/#revoked)voor het certificaat op. Als uw certificaten zijn ingetrokken of worden ingetrokken, moet u nieuwe certificaten aanvragen bij de CA-leverancier die in uw toepassingen wordt gebruikt. Als u wilt voor komen dat de beschik baarheid van uw toepassing wordt onderbroken omdat de certificaten onverwacht zijn ingetrokken, of als u een ingetrokken certificaat wilt bijwerken, raadpleegt u de Azure updates post voor herstel koppelingen van verschillende Azure-Services die ondersteuning bieden voor BYOC: https://azure.microsoft.com/updates/certificateauthorityrevocation/
 
@@ -434,9 +434,9 @@ Nee, AGIC-invoeg toepassing is een beheerde service, wat betekent dat micro soft
 
 Application Gateway biedt drie logboeken: 
 
-* **ApplicationGatewayAccessLog**: het toegangs logboek bevat elke aanvraag die is verzonden naar het front Application Gateway-front-end. De gegevens omvatten het IP-adres van de beller, de aangevraagde URL, reactie latentie, retour code en bytes in en uit. Het bevat één record per toepassings gateway.
-* **ApplicationGatewayPerformanceLog**: in het prestatie logboek worden prestatie gegevens voor elke toepassings gateway vastgelegd. De informatie omvat de door Voer in bytes, totaal aantal geleverde aanvragen, aantal mislukte aanvragen en een gezonde en slechte back-end van een backend-exemplaar.
-* **ApplicationGatewayFirewallLog**: voor toepassings gateways die u CONFIGUREERT met WAF, bevat het logboek van de firewall aanvragen die zijn geregistreerd via de detectie modus of de modus voor preventie.
+* **ApplicationGatewayAccessLog** : het toegangs logboek bevat elke aanvraag die is verzonden naar het front Application Gateway-front-end. De gegevens omvatten het IP-adres van de beller, de aangevraagde URL, reactie latentie, retour code en bytes in en uit. Het bevat één record per toepassings gateway.
+* **ApplicationGatewayPerformanceLog** : in het prestatie logboek worden prestatie gegevens voor elke toepassings gateway vastgelegd. De informatie omvat de door Voer in bytes, totaal aantal geleverde aanvragen, aantal mislukte aanvragen en een gezonde en slechte back-end van een backend-exemplaar.
+* **ApplicationGatewayFirewallLog** : voor toepassings gateways die u CONFIGUREERT met WAF, bevat het logboek van de firewall aanvragen die zijn geregistreerd via de detectie modus of de modus voor preventie.
 
 Alle logboeken worden elke 60 seconden verzameld. Zie voor meer informatie [back-end status, Diagnostische logboeken en metrische gegevens voor Application Gateway](application-gateway-diagnostics.md).
 
@@ -472,6 +472,10 @@ Ja. Als uw configuratie overeenkomt met het volgende scenario, ziet u geen toege
 - U hebt Application Gateway v2 geïmplementeerd
 - U hebt een NSG op het toepassings gateway-subnet
 - U hebt NSG-stroom logboeken ingeschakeld op die NSG
+
+### <a name="does-application-gateway-store-customer-data"></a>Worden klant gegevens Application Gateway opgeslagen?
+
+Nee, Application Gateway worden geen klant gegevens opgeslagen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

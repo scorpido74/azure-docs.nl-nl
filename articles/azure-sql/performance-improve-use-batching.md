@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 487b668d9a3d934220fecf5c0896f7ef492c6775
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07334d62cee94be8b5b8dd6188c1d6354c4d584b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840486"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792596"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>Batch verwerking gebruiken om de prestaties van Azure SQL Database en Azure SQL Managed instance-toepassingen te verbeteren
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -42,7 +42,7 @@ In het eerste deel van dit artikel worden verschillende batch technieken onderzo
 ### <a name="note-about-timing-results-in-this-article"></a>Opmerking over timing resultaten in dit artikel
 
 > [!NOTE]
-> Resultaten zijn geen benchmarks, maar zijn bedoeld om **relatieve prestaties**weer te geven. Tijds instellingen zijn gebaseerd op een gemiddelde van ten minste tien test uitvoeringen. Bewerkingen worden ingevoegd in een lege tabel. Deze tests werden gemeten vóór V12 en ze komen niet noodzakelijkerwijs overeen met de door Voer die u kunt ervaren in een V12-data base met behulp van de nieuwe [DTU-service lagen](database/service-tiers-dtu.md) of [vCore-service lagen](database/service-tiers-vcore.md). Het relatieve voor deel van de batch-techniek moet vergelijkbaar zijn.
+> Resultaten zijn geen benchmarks, maar zijn bedoeld om **relatieve prestaties** weer te geven. Tijds instellingen zijn gebaseerd op een gemiddelde van ten minste tien test uitvoeringen. Bewerkingen worden ingevoegd in een lege tabel. Deze tests werden gemeten vóór V12 en ze komen niet noodzakelijkerwijs overeen met de door Voer die u kunt ervaren in een V12-data base met behulp van de nieuwe [DTU-service lagen](database/service-tiers-dtu.md) of [vCore-service lagen](database/service-tiers-vcore.md). Het relatieve voor deel van de batch-techniek moet vergelijkbaar zijn.
 
 ### <a name="transactions"></a>Transacties
 
@@ -93,22 +93,22 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-Trans acties worden feitelijk gebruikt in beide voor beelden. In het eerste voor beeld is elke afzonderlijke aanroep een impliciete trans actie. In het tweede voor beeld verloopt een expliciete trans actie alle aanroepen. In de documentatie voor het [transactie logboek voor schrijven](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15#WAL)worden logboek records naar de schijf verwijderd wanneer de trans actie wordt doorgevoerd. Door meer aanroepen in een trans actie op te nemen, kan de schrijf bewerking naar het transactie logboek worden vertraagd totdat de trans actie is doorgevoerd. In feite schakelt u batch verwerking in voor de schrijf bewerkingen naar het transactie logboek van de server.
+Trans acties worden feitelijk gebruikt in beide voor beelden. In het eerste voor beeld is elke afzonderlijke aanroep een impliciete trans actie. In het tweede voor beeld verloopt een expliciete trans actie alle aanroepen. In de documentatie voor het [transactie logboek voor schrijven](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15#WAL)worden logboek records naar de schijf verwijderd wanneer de trans actie wordt doorgevoerd. Door meer aanroepen in een trans actie op te nemen, kan de schrijf bewerking naar het transactie logboek worden vertraagd totdat de trans actie is doorgevoerd. In feite schakelt u batch verwerking in voor de schrijf bewerkingen naar het transactie logboek van de server.
 
 In de volgende tabel ziet u enkele ad hoc test resultaten. De tests hebben dezelfde sequentiële toevoegingen met en zonder trans acties uitgevoerd. Voor meer perspectief is de eerste set testen op afstand uitgevoerd vanaf een laptop naar de data base in Microsoft Azure. De tweede set tests is uitgevoerd vanuit een Cloud service en data base die zich in hetzelfde Microsoft Azure Data Center (VS-West) bevindt. De volgende tabel toont de duur in milliseconden van opeenvolgende toevoegingen met en zonder trans acties.
 
-**On-premises naar Azure**:
+**On-premises naar Azure** :
 
-| Operations | Geen trans actie (MS) | Trans actie (MS) |
+| Bewerkingen | Geen trans actie (MS) | Trans actie (MS) |
 | --- | --- | --- |
 | 1 |130 |402 |
 | 10 |1208 |1226 |
 | 100 |12662 |10395 |
 | 1000 |128852 |102917 |
 
-**Azure naar Azure (hetzelfde Data Center)**:
+**Azure naar Azure (hetzelfde Data Center)** :
 
-| Operations | Geen trans actie (MS) | Trans actie (MS) |
+| Bewerkingen | Geen trans actie (MS) | Trans actie (MS) |
 | --- | --- | --- |
 | 1 |21 |26 |
 | 10 |220 |56 |
@@ -120,15 +120,15 @@ In de volgende tabel ziet u enkele ad hoc test resultaten. De tests hebben dezel
 
 Op basis van de vorige test resultaten vermindert het verpakken van een enkele bewerking in een trans actie de prestaties. Maar naarmate u het aantal bewerkingen binnen één trans actie verhoogt, wordt de prestatie verbetering gemarkeerd. Het prestatie verschil is ook merkbaarer wanneer alle bewerkingen binnen het Microsoft Azure Data Center plaatsvinden. De verbeterde latentie van het gebruik van Azure SQL Database of Azure SQL Managed instance van buiten het Microsoft Azure Data Center overschaduwt de prestatie verbetering van het gebruik van trans acties.
 
-Hoewel het gebruik van trans acties de prestaties kan verhogen, blijven de [Aanbevolen procedures voor trans acties en verbindingen](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms187484(v=sql.105))zien. Bewaar de trans actie zo kort mogelijk en sluit de database verbinding nadat het werk is voltooid. De instructie using in het vorige voor beeld zorgt ervoor dat de verbinding wordt gesloten wanneer het volgende code blok is voltooid.
+Hoewel het gebruik van trans acties de prestaties kan verhogen, blijven de [Aanbevolen procedures voor trans acties en verbindingen](/previous-versions/sql/sql-server-2008-r2/ms187484(v=sql.105))zien. Bewaar de trans actie zo kort mogelijk en sluit de database verbinding nadat het werk is voltooid. De instructie using in het vorige voor beeld zorgt ervoor dat de verbinding wordt gesloten wanneer het volgende code blok is voltooid.
 
 In het vorige voor beeld ziet u dat u een lokale trans actie kunt toevoegen aan elke ADO.NET code met twee regels. Trans acties bieden een snelle manier om de prestaties te verbeteren van code die sequentiële invoeg-, bijwerk-en verwijder bewerkingen mogelijk maakt. Voor de snelste prestaties kunt u echter het beste de code wijzigen om te profiteren van batch verwerking aan de client zijde, zoals para meters voor tabel waarden.
 
 Zie [lokale trans acties in ADO.net](/dotnet/framework/data/adonet/local-transactions)voor meer informatie over trans acties in ADO.net.
 
-### <a name="table-valued-parameters"></a>Tabelwaardeparameter
+### <a name="table-valued-parameters"></a>Tabelwaardeparameters
 
-Para meters voor tabel waarden ondersteunen door de gebruiker gedefinieerde tabel typen als para meters in Transact-SQL-instructies, opgeslagen procedures en functies. Met deze batch techniek voor client zijde kunt u meerdere rijen met gegevens binnen de tabelwaardeparameter verzenden. Als u para meters met tabel waarden wilt gebruiken, moet u eerst een tabel type definiëren. Met de volgende Transact-SQL-instructie maakt u een tabel type met de naam **MyTableType**.
+Para meters voor tabel waarden ondersteunen door de gebruiker gedefinieerde tabel typen als para meters in Transact-SQL-instructies, opgeslagen procedures en functies. Met deze batch techniek voor client zijde kunt u meerdere rijen met gegevens binnen de tabelwaardeparameter verzenden. Als u para meters met tabel waarden wilt gebruiken, moet u eerst een tabel type definiëren. Met de volgende Transact-SQL-instructie maakt u een tabel type met de naam **MyTableType** .
 
 ```sql
     CREATE TYPE MyTableType AS TABLE
@@ -169,7 +169,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-In het vorige voor beeld voegt het **SqlCommand** -object rijen uit een tabelwaardeparameter, ** \@ TestTvp**. Het eerder gemaakte **DataTable** -object wordt toegewezen aan deze para meter met de methode **SqlCommand. para meters. add** . Als u de invoeging in één gesprek inschakelt, neemt de prestaties aanzienlijk toe tijdens opeenvolgende invoegingen.
+In het vorige voor beeld voegt het **SqlCommand** -object rijen uit een tabelwaardeparameter, **\@ TestTvp** . Het eerder gemaakte **DataTable** -object wordt toegewezen aan deze para meter met de methode **SqlCommand. para meters. add** . Als u de invoeging in één gesprek inschakelt, neemt de prestaties aanzienlijk toe tijdens opeenvolgende invoegingen.
 
 Als u het vorige voor beeld verder wilt verbeteren, gebruikt u een opgeslagen procedure in plaats van een op tekst gebaseerde opdracht. Met de volgende Transact-SQL-opdracht maakt u een opgeslagen procedure die de **SimpleTestTableType** -para meter voor de tabel waarde gebruikt.
 
@@ -195,7 +195,7 @@ In de meeste gevallen hebben para meters met een tabel waarde dezelfde of betere
 
 In de volgende tabel ziet u de resultaten van ad hoc tests voor het gebruik van para meters met tabel waarden in milliseconden.
 
-| Operations | On-premises naar Azure (MS) | Azure hetzelfde Data Center (MS) |
+| Bewerkingen | On-premises naar Azure (MS) | Azure hetzelfde Data Center (MS) |
 | --- | --- | --- |
 | 1 |124 |32 |
 | 10 |131 |25 |
@@ -212,7 +212,7 @@ Zie [para meters voor tabel waarden](/sql/relational-databases/tables/use-table-
 
 ### <a name="sql-bulk-copy"></a>Bulksgewijs kopiëren van SQL
 
-SQL bulksgewijze kopie is een andere manier om grote hoeveel heden gegevens in te voegen in een doel database. .NET-toepassingen kunnen de klasse **SqlBulkCopy** gebruiken om bulksgewijze Insert-bewerkingen uit te voeren. **SqlBulkCopy** is vergelijkbaar met de functie voor het opdracht regel programma, **Bcp.exe**of de Transact-SQL-instructie **Bulk Insert**. In het volgende code voorbeeld ziet u hoe u de rijen in de bron- **DataTable**, tabel, in bulk kunt kopiëren naar de doel tabel mytable.
+SQL bulksgewijze kopie is een andere manier om grote hoeveel heden gegevens in te voegen in een doel database. .NET-toepassingen kunnen de klasse **SqlBulkCopy** gebruiken om bulksgewijze Insert-bewerkingen uit te voeren. **SqlBulkCopy** is vergelijkbaar met de functie voor het opdracht regel programma, **Bcp.exe** of de Transact-SQL-instructie **Bulk Insert** . In het volgende code voorbeeld ziet u hoe u de rijen in de bron- **DataTable** , tabel, in bulk kunt kopiëren naar de doel tabel mytable.
 
 ```csharp
 using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
@@ -233,7 +233,7 @@ Er zijn enkele gevallen waarin bulksgewijs kopiëren de voor keur geeft aan de p
 
 De volgende ad hoc test resultaten tonen de prestaties van batching met **SqlBulkCopy** in milliseconden.
 
-| Operations | On-premises naar Azure (MS) | Azure hetzelfde Data Center (MS) |
+| Bewerkingen | On-premises naar Azure (MS) | Azure hetzelfde Data Center (MS) |
 | --- | --- | --- |
 | 1 |433 |57 |
 | 10 |441 |32 |
@@ -276,7 +276,7 @@ Dit voor beeld is bedoeld om het basis concept weer te geven. In een realistisch
 
 De volgende resultaten van ad hoc tests geven de prestaties van dit type instructie INSERT in milliseconden weer.
 
-| Operations | Tabelwaardeparameter (MS) | INSERT met één instructie (MS) |
+| Bewerkingen | Tabelwaardeparameter (MS) | INSERT met één instructie (MS) |
 | --- | --- | --- |
 | 1 |32 |20 |
 | 10 |30 |25 |
@@ -293,7 +293,7 @@ Met de klasse **Data adapter** kunt u een object **DataSet** wijzigen en vervolg
 
 ### <a name="entity-framework"></a>Entity Framework
 
-[Entity Framework Core](https://docs.microsoft.com/ef/efcore-and-ef6/#saving-data) ondersteunt batch verwerking.
+[Entity Framework Core](/ef/efcore-and-ef6/#saving-data) ondersteunt batch verwerking.
 
 ### <a name="xml"></a>XML
 
@@ -380,7 +380,7 @@ Hoewel er sprake is van een duidelijkere kandidaat voor batch verwerking, zijn e
 
 Denk bijvoorbeeld aan een webtoepassing waarmee de navigatie geschiedenis van elke gebruiker wordt bijgehouden. Op elke pagina-aanvraag kan de toepassing een database aanroep maken om de pagina weergave van de gebruiker vast te leggen. Maar betere prestaties en schaal baarheid kan worden bereikt door de navigatie activiteiten van de gebruikers te bufferen en deze gegevens vervolgens naar de data base in batches te verzenden. U kunt de Data Base-update activeren op basis van de verstreken tijd en/of buffer grootte. Een regel kan bijvoorbeeld aangeven dat de batch na 20 seconden moet worden verwerkt of wanneer de buffer 1000 items bereikt.
 
-Het volgende code voorbeeld maakt gebruik van [reactieve extensies-RX](https://docs.microsoft.com/previous-versions/dotnet/reactive-extensions/hh242985(v=vs.103)) om gebufferde gebeurtenissen te verwerken die door een bewakings klasse worden gegenereerd. Wanneer de buffer opvulling of een time-out is bereikt, wordt de batch met gebruikers gegevens naar de data base verzonden met een tabelwaardeparameter.
+Het volgende code voorbeeld maakt gebruik van [reactieve extensies-RX](/previous-versions/dotnet/reactive-extensions/hh242985(v=vs.103)) om gebufferde gebeurtenissen te verwerken die door een bewakings klasse worden gegenereerd. Wanneer de buffer opvulling of een time-out is bereikt, wordt de batch met gebruikers gegevens naar de data base verzonden met een tabelwaardeparameter.
 
 De volgende NavHistoryData-klassen modellen de navigatie gegevens van de gebruiker. Het bevat algemene informatie, zoals de gebruikers-id, de URL die wordt gebruikt en de toegangs tijd.
 

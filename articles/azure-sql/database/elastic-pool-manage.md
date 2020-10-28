@@ -9,13 +9,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein
 ms.date: 03/12/2019
-ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: bd3917c42859d4240fbb3a75f951ff38a548e204
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seoapril2019 sqldbrb=1, devx-track-azurecli
+ms.openlocfilehash: 5916a687c4eff4c6c8890b14a8c204cbabc145ea
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330805"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792188"
 ---
 # <a name="manage-elastic-pools-in-azure-sql-database"></a>Elastische Pools beheren in Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,7 +40,7 @@ Hier kunt u een combi natie van de volgende wijzigingen maken en deze allemaal i
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek.
+> De module PowerShell Azure Resource Manager wordt nog steeds ondersteund in Azure SQL Database, maar alle toekomstige ontwikkeling is voor de Az.Sql-module. Zie [AzureRM.Sql](/powershell/module/AzureRM.Sql/) voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek.
 
 Gebruik de volgende Power shell-cmdlets om SQL Database elastische Pools en gegroepeerde Data bases te maken en te beheren met Azure PowerShell. Als u Power shell wilt installeren of upgraden, raadpleegt u [Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Zie [servers maken en beheren](logical-servers.md)voor meer informatie over het maken en beheren van de servers voor een elastische pool. Zie [firewall regels maken en beheren met Power shell](firewall-configure.md#use-powershell-to-manage-server-level-ip-firewall-rules)voor meer informatie over het maken en beheren van firewall regels.
 
@@ -65,7 +65,7 @@ Gebruik de volgende Power shell-cmdlets om SQL Database elastische Pools en gegr
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Als u SQL Database elastische Pools wilt maken en beheren met de [Azure cli](/cli/azure), gebruikt u de volgende [Azure cli SQL database](/cli/azure/sql/db) -opdrachten. Gebruik de [Cloud Shell](/azure/cloud-shell/overview) om de CLI in uw browser uit te voeren of [installeer](/cli/azure/install-azure-cli) de CLI op macOS, Linux of Windows.
+Als u SQL Database elastische Pools wilt maken en beheren met de [Azure cli](/cli/azure), gebruikt u de volgende [Azure cli SQL database](/cli/azure/sql/db) -opdrachten. Gebruik de [Cloud Shell](../../cloud-shell/overview.md) om de CLI in uw browser uit te voeren of [installeer](/cli/azure/install-azure-cli) de CLI op macOS, Linux of Windows.
 
 > [!TIP]
 > Zie voor voor beelden van Azure CLI-scripts [CLI gebruiken om een data base in SQL database in een elastische SQL-pool te verplaatsen](scripts/move-database-between-elastic-pools-cli.md) en [gebruik Azure CLI om een elastische SQL-groep in Azure SQL database te schalen](scripts/scale-pool-cli.md).
@@ -102,18 +102,18 @@ Gebruik deze REST API aanvragen voor het maken en beheren van SQL Database elast
 
 | Opdracht | Beschrijving |
 | --- | --- |
-|[Elastische Pools-maken of bijwerken](https://docs.microsoft.com/rest/api/sql/elasticpools/createorupdate)|Hiermee maakt u een nieuwe elastische pool of werkt u een bestaande elastische pool bij.|
-|[Elastische Pools-verwijderen](https://docs.microsoft.com/rest/api/sql/elasticpools/delete)|Hiermee verwijdert u de elastische pool.|
-|[Elastische Pools-ophalen](https://docs.microsoft.com/rest/api/sql/elasticpools/get)|Hiermee haalt u een elastische pool op.|
-|[Elastische Pools-lijst op server](https://docs.microsoft.com/rest/api/sql/elasticpools/listbyserver)|Retourneert een lijst met elastische Pools in een server.|
-|[Elastische Pools-bijwerken](https://docs.microsoft.com/rest/api/sql/elasticpools/listbyserver)|Hiermee wordt een bestaande elastische pool bijgewerkt.|
-|[Activiteiten voor elastische Pools](https://docs.microsoft.com/rest/api/sql/elasticpoolactivities)|Hiermee worden activiteiten voor elastische Pools geretourneerd.|
-|[Activiteiten voor Elastic pool-data bases](https://docs.microsoft.com/rest/api/sql/elasticpooldatabaseactivities)|Hiermee wordt de activiteit in data bases binnen een elastische pool geretourneerd.|
-|[Data bases: maken of bijwerken](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|Hiermee maakt u een nieuwe data base of werkt u een bestaande data base bij.|
-|[Data bases-ophalen](https://docs.microsoft.com/rest/api/sql/databases/get)|Hiermee haalt u een Data Base.|
-|[Data bases-lijst op elastische pool](https://docs.microsoft.com/rest/api/sql/databases/listbyelasticpool)|Retourneert een lijst met data bases in een elastische pool.|
-|[Data bases-lijst per server](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|Retourneert een lijst met data bases op een server.|
-|[Data bases-bijwerken](https://docs.microsoft.com/rest/api/sql/databases/update)|Hiermee wordt een bestaande data base bijgewerkt.|
+|[Elastische Pools-maken of bijwerken](/rest/api/sql/elasticpools/createorupdate)|Hiermee maakt u een nieuwe elastische pool of werkt u een bestaande elastische pool bij.|
+|[Elastische Pools-verwijderen](/rest/api/sql/elasticpools/delete)|Hiermee verwijdert u de elastische pool.|
+|[Elastische Pools-ophalen](/rest/api/sql/elasticpools/get)|Hiermee haalt u een elastische pool op.|
+|[Elastische Pools-lijst op server](/rest/api/sql/elasticpools/listbyserver)|Retourneert een lijst met elastische Pools in een server.|
+|[Elastische Pools-bijwerken](/rest/api/sql/elasticpools/listbyserver)|Hiermee wordt een bestaande elastische pool bijgewerkt.|
+|[Activiteiten voor elastische Pools](/rest/api/sql/elasticpoolactivities)|Hiermee worden activiteiten voor elastische Pools geretourneerd.|
+|[Activiteiten voor Elastic pool-data bases](/rest/api/sql/elasticpooldatabaseactivities)|Hiermee wordt de activiteit in data bases binnen een elastische pool geretourneerd.|
+|[Data bases: maken of bijwerken](/rest/api/sql/databases/createorupdate)|Hiermee maakt u een nieuwe data base of werkt u een bestaande data base bij.|
+|[Data bases-ophalen](/rest/api/sql/databases/get)|Hiermee haalt u een Data Base.|
+|[Data bases-lijst op elastische pool](/rest/api/sql/databases/listbyelasticpool)|Retourneert een lijst met data bases in een elastische pool.|
+|[Data bases-lijst per server](/rest/api/sql/databases/listbyserver)|Retourneert een lijst met data bases op een server.|
+|[Data bases-bijwerken](/rest/api/sql/databases/update)|Hiermee wordt een bestaande data base bijgewerkt.|
 
 ## <a name="next-steps"></a>Volgende stappen
 

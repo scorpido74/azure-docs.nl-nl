@@ -5,14 +5,14 @@ ms.topic: include
 author: markingmyname
 ms.author: maghan
 ms.reviewer: drskwier
-ms.openlocfilehash: e22049ef2acfd952689e386ff75b9a8a73658365
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13d1a58fa7d5a54386baed71356ea1b2bc79b494
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596139"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92886543"
 ---
 > [!NOTE]
 > In december 2021 kunnen releases van SSMS vóór 18.6 niet meer worden geverifieerd via Azure Active Directory met MFA.
 >
-> Als u wilt doorgaan met het gebruik van Azure Active Directory-verificatie met MFA, hebt u [SSMS 18.6 of hoger](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) nodig.
+> Als u wilt doorgaan met het gebruik van Azure Active Directory-verificatie met MFA, hebt u [SSMS 18.6 of hoger](/sql/ssms/download-sql-server-management-studio-ssms) nodig.

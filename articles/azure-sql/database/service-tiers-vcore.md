@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 09/30/2020
-ms.openlocfilehash: 44dafd1b0043c2daa7065069f571f13529303a73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4473ea304176615c35205494f342922869b71ea
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614424"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793140"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>overzicht van vCore-model-Azure SQL Database en Azure SQL Managed instance 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -34,8 +34,8 @@ Opties voor de servicelaag in het vCore-model bevatten Algemeen, Bedrijfskritiek
 |-|**Algemeen doel**|**Bedrijfskritiek**|**Hyperscale**|
 |---|---|---|---|
 |Ideaal voor|De meeste zakelijke workloads. Biedt budgetgerichte, gebalanceerde en schaalbare reken- en opslagopties. |Biedt zakelijke toepassingen de hoogste flexibiliteit voor storingen met behulp van verschillende geïsoleerde replica's en biedt de hoogste I/O-prestaties per database replica.|De meeste zakelijke workloads met zeer schaal bare opslag-en lees vereisten.  Biedt meer flexibiliteit voor storingen door de configuratie van meer dan één geïsoleerde database replica toe te staan. |
-|Storage|Maakt gebruik van externe opslag.<br/>**SQL database voorziene Compute**:<br/>5 GB – 4 TB<br/>**Serverloze Compute**:<br/>5 GB-3 TB<br/>**SQL Managed instance**: 32 GB-8 TB |Maakt gebruik van lokale SSD-opslag.<br/>**SQL database voorziene Compute**:<br/>5 GB – 4 TB<br/>**SQL-beheerd exemplaar**:<br/>32 GB-4 TB |Flexibele Automatische toename van opslag als dat nodig is. Ondersteunt Maxi maal 100 TB aan opslag ruimte. Maakt gebruik van lokale SSD-opslag voor lokale buffer-pool cache en lokale gegevens opslag. Maakt gebruik van Azure externe opslag als definitieve gegevens opslag op lange termijn. |
-|IOPS en door Voer (ongeveer)|**SQL database**: Zie resource limieten voor [afzonderlijke data bases](resource-limits-vcore-single-databases.md) en [elastische Pools](resource-limits-vcore-elastic-pools.md).<br/>**SQL-beheerd exemplaar**: zie overzicht van de [resource limieten voor Azure SQL Managed instance](../managed-instance/resource-limits.md#service-tier-characteristics).|Zie resource limieten voor [afzonderlijke data bases](resource-limits-vcore-single-databases.md) en [elastische Pools](resource-limits-vcore-elastic-pools.md).|Grootschalige is een architectuur met meerdere lagen met caching op meerdere niveaus. Effectief IOPS en door Voer is afhankelijk van de werk belasting.|
+|Opslag|Maakt gebruik van externe opslag.<br/>**SQL database voorziene Compute** :<br/>5 GB – 4 TB<br/>**Serverloze Compute** :<br/>5 GB-3 TB<br/>**SQL Managed instance** : 32 GB-8 TB |Maakt gebruik van lokale SSD-opslag.<br/>**SQL database voorziene Compute** :<br/>5 GB – 4 TB<br/>**SQL-beheerd exemplaar** :<br/>32 GB-4 TB |Flexibele Automatische toename van opslag als dat nodig is. Ondersteunt Maxi maal 100 TB aan opslag ruimte. Maakt gebruik van lokale SSD-opslag voor lokale buffer-pool cache en lokale gegevens opslag. Maakt gebruik van Azure externe opslag als definitieve gegevens opslag op lange termijn. |
+|IOPS en door Voer (ongeveer)|**SQL database** : Zie resource limieten voor [afzonderlijke data bases](resource-limits-vcore-single-databases.md) en [elastische Pools](resource-limits-vcore-elastic-pools.md).<br/>**SQL-beheerd exemplaar** : zie overzicht van de [resource limieten voor Azure SQL Managed instance](../managed-instance/resource-limits.md#service-tier-characteristics).|Zie resource limieten voor [afzonderlijke data bases](resource-limits-vcore-single-databases.md) en [elastische Pools](resource-limits-vcore-elastic-pools.md).|Grootschalige is een architectuur met meerdere lagen met caching op meerdere niveaus. Effectief IOPS en door Voer is afhankelijk van de werk belasting.|
 |Beschikbaarheid|1 replica, geen replica's met lees schaal|3 replica's, 1 [replica met lees grootte](read-scale-out.md),<br/>zone-redundante hoge Beschik baarheid (HA)|1 replica met lees-en schrijf bewerkingen, plus 0-4 [replica's met lees grootte](read-scale-out.md)|
 |Back-ups|[Geografisch redundante opslag met lees toegang (RA-GRS)](../../storage/common/geo-redundant-design.md), 7-35 dagen (standaard 7 dagen)|[Ra-GRS](../..//storage/common/geo-redundant-design.md), 7-35 dagen (standaard 7 dagen)|Back-ups op basis van moment opnamen in azure externe opslag. Herstelt het gebruik van deze moment opnamen voor snel herstel. Back-ups zijn onmiddellijk en zijn niet van invloed op de I/O-prestaties van compute. Herstel bewerkingen zijn snel en zijn geen omvang van de gegevens bewerking (minuten in plaats van uren of dagen).|
 |In het geheugen|Niet ondersteund|Ondersteund|Niet ondersteund|
@@ -111,7 +111,7 @@ To enable M-series hardware for a subscription and region, a support request mus
 |Fsv2-serie     |-Intel® 8168-processors (Skylake)<br>-Met een zeer hoge Turbo klok snelheid van 3,4 GHz en een maximale klok snelheid van Maxi maal één kern van 3,7 GHz.<br>-Maxi maal 72 vCores (1 vCore = 1 Hyper Thread) inrichten|-1,9 GB per vCore<br>-Maxi maal 136 GB inrichten|
 |M-serie     |-Intel® E7-8890 v3 2,5 GHz en Intel® 8280M 2,7 GHz (Cascade Lake)-processors<br>-Maxi maal 128 vCores (1 vCore = 1 Hyper Thread) inrichten|-29 GB per vCore<br>-Maxi maal 3,7 TB inrichten|
 
-\* In de [sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) dynamische beheer weergave worden de hardware-generatie voor data bases met Intel® SP-8160 (Skylake)-processors weer gegeven als Gen6, terwijl het genereren van hardware voor data bases met behulp van Intel® 8272CL (Cascade Lake) als Gen7 wordt weer gegeven. Resource limieten voor alle GEN5-data bases zijn hetzelfde, ongeacht het processor type (Broadwell, Skylake of Cascade Lake).
+\* In de [sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) dynamische beheer weergave worden de hardware-generatie voor data bases met Intel® SP-8160 (Skylake)-processors weer gegeven als Gen6, terwijl het genereren van hardware voor data bases met behulp van Intel® 8272CL (Cascade Lake) als Gen7 wordt weer gegeven. Resource limieten voor alle GEN5-data bases zijn hetzelfde, ongeacht het processor type (Broadwell, Skylake of Cascade Lake).
 
 Zie [resource limieten voor afzonderlijke data bases (vCore)](resource-limits-vcore-single-databases.md)of resource limieten [voor elastische Pools (vCore)](resource-limits-vcore-elastic-pools.md)voor meer informatie over resource limieten.
 
@@ -138,7 +138,7 @@ Voor een Data Base selecteert u op de pagina overzicht de **prijs categorie** ko
 
   ![hardware wijzigen](./media/service-tiers-vcore/change-hardware.png)
 
-Voor een groep selecteert u op de pagina overzicht de optie **configureren**.
+Voor een groep selecteert u op de pagina overzicht de optie **configureren** .
 
 Volg de stappen voor het wijzigen van de configuratie en selecteer de hardware-generatie zoals beschreven in de vorige stappen.
 
@@ -168,7 +168,7 @@ Gebruik het volgende PowerShell-script:
 Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -ComputeGeneration Gen5
 ```
 
-Raadpleeg de opdracht [set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance) voor meer informatie.
+Raadpleeg de opdracht [set-AzSqlInstance](/powershell/module/az.sql/set-azsqlinstance) voor meer informatie.
 
 # <a name="the-azure-cli"></a>[De Azure CLI](#tab/azure-cli)
 
@@ -178,7 +178,7 @@ Gebruik de volgende CLI-opdracht:
 az sql mi update -g mygroup -n myinstance --family Gen5
 ```
 
-Raadpleeg [AZ SQL mi update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update) Command voor meer informatie.
+Raadpleeg [AZ SQL mi update](/cli/azure/sql/mi#az-sql-mi-update) Command voor meer informatie.
 
 ---
 
@@ -238,5 +238,4 @@ Zie voor meer informatie over de specifieke berekenings-en opslag grootten die b
 
 - [vCore resource limieten voor Azure SQL database](resource-limits-vcore-single-databases.md).
 - [vCore resource limieten voor gegroepeerde Azure SQL database](resource-limits-vcore-elastic-pools.md).
-- [vCore op basis van resource limieten voor Azure SQL Managed instance](../managed-instance/resource-limits.md). 
-
+- [vCore op basis van resource limieten voor Azure SQL Managed instance](../managed-instance/resource-limits.md).

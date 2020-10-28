@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5c54da3621df1e5d49e7269781e6ae33fc9c0923
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 47cface4efbf38f2cec630745d498db674c936d3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675672"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791950"
 ---
 # <a name="how-to-use-azuresearchdocuments-in-a-c-net-application"></a>Azure.Search.Documents gebruiken in een C# .NET-toepassing
 
@@ -23,7 +23,7 @@ In dit artikel wordt uitgelegd hoe u Zoek objecten maakt en beheert met behulp v
 
 ## <a name="about-version-11"></a>Over versie 11
 
-De Azure SDK voor .NET voegt een nieuwe client bibliotheek toe van het Azure SDK-team dat functioneel equivalent is aan [micro soft. Azure. Search](/dotnet/api/overview/azure/search/client10) client libraries, maar maakt gebruik van algemene benaderingen en conventies waar van toepassing. Enkele voor beelden zijn [`AzureKeyCredential`](/dotnet/api/azure.azurekeycredential) sleutel verificatie en [System.Text.Jsop. Serialisatie](/dotnet/api/system.text.json.serialization) voor JSON-serialisatie.
+De Azure SDK voor .NET voegt een nieuwe [**Azure.Search.Documents**](/dotnet/api/overview/azure/search) -client bibliotheek toe van het Azure SDK-team dat functioneel equivalent is aan [micro soft. Azure. Search](/dotnet/api/overview/azure/search/client10) client libraries, maar maakt gebruik van algemene benaderingen en conventies waar van toepassing. Enkele voor beelden zijn [`AzureKeyCredential`](/dotnet/api/azure.azurekeycredential) sleutel verificatie en [System.Text.Jsop. Serialisatie](/dotnet/api/system.text.json.serialization) voor JSON-serialisatie.
 
 Net als bij vorige versies kunt u deze bibliotheek gebruiken voor het volgende:
 

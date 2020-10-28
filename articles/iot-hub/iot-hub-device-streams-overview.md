@@ -11,12 +11,13 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-ms.openlocfilehash: 8194f520abf5c8d4e47fa279f6cf82013024e9ec
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+- devx-track-azurecli
+ms.openlocfilehash: bdd9d5fd878094326331e60fc1a639eef08b7ea3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152169"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792460"
 ---
 # <a name="iot-hub-device-streams-preview"></a>Streams van IoT Hub-apparaten (preview-versie)
 
@@ -56,7 +57,7 @@ Het programmatisch maken van een apparaat stroom met behulp van de SDK omvat de 
 
 1. De apparaat-app registreert vooraf een terugroeping om op de hoogte te worden gesteld wanneer een nieuwe apparaat stroom naar het apparaat wordt geïnitieerd. Deze stap vindt normaal gesp roken plaats wanneer het apparaat wordt opgestart en verbinding maakt met IoT Hub.
 
-2. Het programma aan de service zijde initieert een apparaat stroom wanneer dit nodig is door de apparaat-ID (_niet_ het IP-adres) op te geven.
+2. Het programma aan de service zijde initieert een apparaat stroom wanneer dit nodig is door de apparaat-ID ( _niet_ het IP-adres) op te geven.
 
 3. Met IoT hub wordt het apparaat aan het programma geïnformeerd door het aanroepen van de call back die is geregistreerd in stap 1. Het apparaat accepteert of weigert de aanvraag voor het initiëren van de stroom. Deze logica kan specifiek zijn voor uw toepassings scenario. Als de stroom aanvraag door het apparaat wordt afgewezen, IoT Hub de service dienovereenkomstig informeren. anders volgt u de onderstaande stappen.
 
@@ -103,7 +104,7 @@ De uitvoer is een JSON-object van alle eind punten die het apparaat en de servic
 ```
 
 > [!NOTE]
-> Zorg ervoor dat u Azure CLI-versie 2.0.57 of hoger hebt geïnstalleerd. U kunt de meest recente versie downloaden van de pagina [Azure cli installeren](/cli/azure/install-azure-cli?view=azure-cli-latest) .
+> Zorg ervoor dat u Azure CLI-versie 2.0.57 of hoger hebt geïnstalleerd. U kunt de meest recente versie downloaden van de pagina [Azure cli installeren](/cli/azure/install-azure-cli) .
 >
 
 ## <a name="allow-outbound-connectivity-to-the-device-streaming-endpoints"></a>Uitgaande connectiviteit met de streaming-eind punten van het apparaat toestaan
@@ -119,28 +120,28 @@ az iot hub devicestream show --name <YourIoTHubName>
 ```
 
 > [!NOTE]
-> Zorg ervoor dat u Azure CLI-versie 2.0.57 of hoger hebt geïnstalleerd. U kunt de meest recente versie downloaden van de pagina [Azure cli installeren](/cli/azure/install-azure-cli?view=azure-cli-latest) .
+> Zorg ervoor dat u Azure CLI-versie 2.0.57 of hoger hebt geïnstalleerd. U kunt de meest recente versie downloaden van de pagina [Azure cli installeren](/cli/azure/install-azure-cli) .
 >
 
-## <a name="troubleshoot-via-device-streams-activity-logs"></a>Problemen oplossen via activiteiten logboeken van Device streams
+## <a name="troubleshoot-via-device-streams-resource-logs"></a>Problemen oplossen via bron logboeken van Device streams
 
-U kunt Azure Monitor logboeken instellen om het activiteiten logboek van de streams van apparaten in uw IoT Hub te verzamelen. Dit kan zeer nuttig zijn in scenario's voor het oplossen van problemen.
+U kunt Azure Monitor instellen voor het verzamelen [van de bron logboeken voor apparaat-streams](monitor-iot-hub-reference.md#device-streams-preview) die door uw IOT hub worden verzonden. Dit kan zeer nuttig zijn in scenario's voor het oplossen van problemen.
 
-Volg de onderstaande stappen om Azure Monitor logboeken te configureren voor de activiteiten van de apparaten stroom van uw IoT Hub:
+Volg de onderstaande stappen om een diagnostische instelling te maken voor het verzenden van Logboeken voor het streamen van apparaten voor uw IoT Hub naar Azure Monitor-logboeken:
 
-1. Ga naar het tabblad *Diagnostische instellingen* in uw IOT hub en klik op *Diagnostische gegevens inschakelen* .
+1. Ga in Azure Portal naar uw IoT-hub. Klik in het linkerdeel venster onder **bewaking** op **Diagnostische instellingen** . Selecteer vervolgens **Diagnostische instelling toevoegen** .
 
-   ![' Diagnostische logboeken inschakelen '](./media/iot-hub-device-streams-overview/device-streams-diagnostics-settings-pane.png)
+2. Geef een naam op voor de diagnostische instelling en selecteer **DeviceStreams** in de lijst met Logboeken. Selecteer vervolgens **verzenden naar log Analytics** . U wordt begeleid bij het kiezen van een bestaande Log Analytics werk ruimte of het maken van een nieuwe.
 
-2. Geef een naam op voor de diagnostische instellingen en kies *verzenden naar log Analytics* optie. U wordt begeleid bij het kiezen van een bestaande Log Analytics werkruimte resource of het maken van een nieuwe. Controleer ook de *DeviceStreams* in de lijst.
+    :::image type="content" source="media/iot-hub-device-streams-overview/device-streams-configure-diagnostics.png" alt-text="Logboeken voor apparaten stromen inschakelen":::
 
-    !["Device streams logboeken inschakelen"](./media/iot-hub-device-streams-overview/device-streams-configure-diagnostics.png)
-
-3. U hebt nu toegang tot uw stream-logboeken voor apparaten op het tabblad *Logboeken* in de portal van uw IOT hub. Activiteiten logboeken voor Device stream worden weer gegeven in de `AzureDiagnostics` tabel en hebben `Category=DeviceStreams` .
+3. Nadat u een diagnostische instelling hebt gemaakt om uw stream-logboeken van uw apparaten te verzenden naar een Log Analytics-werk ruimte, kunt u de logboeken openen door **Logboeken** te selecteren onder **bewaking** in het linkerdeel venster van uw IoT-hub in azure Portal. De logboeken voor apparaten stromen worden weer gegeven in de `AzureDiagnostics` tabel en hebben `Category=DeviceStreams` . Houd er rekening mee dat het enkele minuten kan duren voordat Logboeken in de tabel worden weer gegeven.
 
    Zoals hieronder wordt weer gegeven, is de identiteit van het doel apparaat en het resultaat van de bewerking ook beschikbaar in de logboeken.
 
    !["Stream-logboeken van apparaat openen"](./media/iot-hub-device-streams-overview/device-streams-view-logs.png)
+
+Zie [IOT hub bewaken](monitor-iot-hub.md)voor meer informatie over het gebruik van Azure Monitor met IOT hub. Zie [Azure IOT hub data Reference bewaken](monitor-iot-hub-reference.md)voor meer informatie over alle bron logboeken, metrische gegevens en tabellen die beschikbaar zijn voor IOT hub.
 
 ## <a name="regional-availability"></a>Regionale beschikbaarheid
 
@@ -182,7 +183,7 @@ Het voor beeld van een lokale proxy demonstreert een manier om tunneling in te s
 
 In deze sectie wordt het gebruik van de streams beschreven om de gebruiker in staat te stellen SSH naar een apparaat via de streams van een apparaat te maken (de aanvraag voor RDP of andere client/server-toepassing is vergelijkbaar met de bijbehorende poort van het Protocol).
 
-De installatie maakt gebruik van twee *lokale proxy* Programma's die worden weer gegeven in de onderstaande afbeelding, namelijk *apparaat-lokale proxy* en *service-Local proxy*. De lokale proxy Programma's zijn verantwoordelijk voor het uitvoeren van de handshake voor het [initiëren van de apparaatgegevens](#device-stream-creation-flow) met IOT hub en met behulp van reguliere client/server-sockets met de SSH-client en SSH-daemon.
+De installatie maakt gebruik van twee *lokale proxy* Programma's die worden weer gegeven in de onderstaande afbeelding, namelijk *apparaat-lokale proxy* en *service-Local proxy* . De lokale proxy Programma's zijn verantwoordelijk voor het uitvoeren van de handshake voor het [initiëren van de apparaatgegevens](#device-stream-creation-flow) met IOT hub en met behulp van reguliere client/server-sockets met de SSH-client en SSH-daemon.
 
 !["Device stream-proxy-installatie voor SSH/RDP"](./media/iot-hub-device-streams-overview/iot-hub-device-streams-ssh.png)
 

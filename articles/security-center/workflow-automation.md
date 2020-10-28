@@ -6,24 +6,20 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: 015b3fb116c4eb16e4280e2f71873e88dccff278
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: bbd46237e0b3b21b822b088c545c91f678a8034e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92344029"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792290"
 ---
-# <a name="create-automatic-responses-to-alerts-and-recommendations-with-workflow-automation"></a>Automatische reacties op waarschuwingen en aanbevelingen maken met werkstroomautomatisering
+# <a name="automate-responses-to-security-center-triggers"></a>Reacties op Security Center triggers automatiseren
 
 Elk beveiligings programma bevat meerdere werk stromen voor reactie op incidenten. Deze processen kunnen het melden van relevante belanghebbenden, het starten van een wijzigings beheer proces en het Toep assen van specifieke herbemiddelings stappen zijn. Beveiligings experts raden u aan zo veel mogelijk stappen van deze procedures te automatiseren. Automation vermindert de overhead. Het kan ook de beveiliging verbeteren door ervoor te zorgen dat de proces stappen snel, consistent en volgens uw vooraf gedefinieerde vereisten worden uitgevoerd.
 
 In dit artikel wordt de functie werk stroom automatisering van Azure Security Center beschreven. Deze functie kan Logic Apps activeren over beveiligings waarschuwingen en aanbevelingen. U kunt bijvoorbeeld Security Center een e-mail bericht verzenden wanneer er een waarschuwing wordt weer gegeven. U leert ook hoe u Logic Apps maakt met behulp van [Azure Logic apps](../logic-apps/logic-apps-overview.md).
-
-> [!NOTE]
-> Als u eerder de weer gave Playbooks (preview) op de zijbalk hebt gebruikt, kunt u dezelfde functies vinden in combi natie met de uitgebreide functionaliteit op de pagina nieuwe werk stroom automatisering.
-
 
 
 ## <a name="availability"></a>Beschikbaarheid
@@ -40,17 +36,21 @@ In dit artikel wordt de functie werk stroom automatisering van Azure Security Ce
 
 ## <a name="create-a-logic-app-and-define-when-it-should-automatically-run"></a>Een logische app maken en definiëren wanneer deze automatisch moet worden uitgevoerd 
 
-1. Selecteer op de zijbalk van Security Center **werk stroom automatisering**.
+1. Selecteer op de zijbalk van Security Center **werk stroom automatisering** .
 
     :::image type="content" source="./media/workflow-automation/list-of-workflow-automations.png" alt-text="Lijst met werk stroom Automatiseringen":::
 
     Op deze pagina kunt u nieuwe Automation-regels maken, maar ook bestaande voor het inschakelen, uitschakelen of verwijderen.
 
-1. Als u een nieuwe werk stroom wilt definiëren, klikt u op **werk stroom automatisering toevoegen**. 
+1. Als u een nieuwe werk stroom wilt definiëren, klikt u op **werk stroom automatisering toevoegen** . 
 
     Er wordt een deel venster met de opties voor uw nieuwe automatisering weer gegeven. Hier kunt u het volgende invoeren:
     1. Een naam en beschrijving voor de automatisering.
     1. De triggers waarmee deze automatische werk stroom wordt gestart. U wilt bijvoorbeeld dat uw logische app wordt uitgevoerd wanneer er een beveiligings waarschuwing wordt gegenereerd die ' SQL ' bevat.
+
+        > [!NOTE]
+        > Als uw trigger is een aanbeveling met ' subaanbevelingen ', bijvoorbeeld **evaluaties van beveiligings problemen voor uw SQL-data bases** , wordt de logische app niet geactiveerd voor elke nieuwe beveiligings zoek actie. alleen wanneer de status van de aanbeveling van het bovenliggende wordt gewijzigd.
+
     1. De logische app die wordt uitgevoerd wanneer aan de voor waarden van de trigger wordt voldaan. 
 
         :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="Lijst met werk stroom Automatiseringen":::
@@ -61,11 +61,14 @@ In dit artikel wordt de functie werk stroom automatisering van Azure Security Ce
 
     [![Een nieuwe logische app maken](media/workflow-automation/logic-apps-create-new.png)](media/workflow-automation/logic-apps-create-new.png#lightbox)
 
-1. Voer een naam, resource groep en locatie in en klik op **maken**.
+1. Voer een naam, resource groep en locatie in en klik op **maken** .
 
 1. In de nieuwe logische app kunt u kiezen uit ingebouwde, vooraf gedefinieerde sjablonen uit de beveiligings categorie. U kunt ook een aangepaste stroom van gebeurtenissen definiëren die moeten worden uitgevoerd wanneer dit proces wordt geactiveerd.
 
-    In de ontwerp functie voor logische apps worden de volgende triggers van de Security Center-connectors ondersteund:
+    > [!TIP]
+    > Soms worden para meters in een logische app in de connector opgenomen als onderdeel van een teken reeks en niet in hun eigen veld. Zie stap #14 van het [werken met para meters voor logische apps tijdens het bouwen van Azure Security Center werk stroom automatisering](https://techcommunity.microsoft.com/t5/azure-security-center/working-with-logic-app-parameters-while-building-azure-security/ba-p/1342121)voor een EAN-voor beeld van het extra heren van para meters.
+
+    De ontwerp functie voor logische Apps ondersteunt deze Security Center-triggers:
 
     * **Wanneer een Azure Security Center aanbeveling wordt gemaakt of geactiveerd** : als uw logische app gebruikmaakt van een aanbeveling die wordt afgeschaft of vervangen, werkt de automatisering niet meer en moet u de trigger bijwerken. Zie [Azure Security Center opmerkingen](release-notes.md)bij de release als u wijzigingen in aanbevelingen wilt bijhouden.
 
@@ -87,13 +90,66 @@ In dit artikel wordt de functie werk stroom automatisering van Azure Security Ce
 
 U kunt Logic Apps ook hand matig uitvoeren wanneer u een beveiligings waarschuwing of aanbeveling bekijkt.
 
-Als u een logische app hand matig wilt uitvoeren, opent u een waarschuwing of een aanbeveling en klikt u op **logische app activeren**:
+Als u een logische app hand matig wilt uitvoeren, opent u een waarschuwing of een aanbeveling en klikt u op **logische app activeren** :
 
 [![Een logische app hand matig activeren](media/workflow-automation/manually-trigger-logic-app.png)](media/workflow-automation/manually-trigger-logic-app.png#lightbox)
+
+
+## <a name="configure-workflow-automation-at-scale-using-the-supplied-policies"></a>Werk stroom automatisering op schaal configureren met de geleverde beleids regels
+
+Het automatiseren van de processen voor bewaking en reageren op incidenten van uw organisatie kan de tijd die nodig is om beveiligingsincidenten te onderzoeken en te verhelpen aanzienlijk verbeteren.
+
+Als u uw automatiserings configuraties in uw organisatie wilt implementeren, gebruikt u het opgegeven Azure Policy beleid ' DeployIfNotExist ' dat hieronder wordt beschreven om werk stroom automatiserings procedures te maken en te configureren.
+
+Aan de slag met [sjablonen voor werkstroomautomatisering](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation).
+
+Deze beleids regels implementeren:
+
+1. Selecteer in de onderstaande tabel het beleid dat u wilt Toep assen:
+
+    |Doel  |Beleid  |Beleids-id  |
+    |---------|---------|---------|
+    |Werkstroomautomatisering voor beveiligingswaarschuwingen|[Werkstroomautomatisering implementeren voor Azure Security Center-waarschuwingen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff1525828-9a90-4fcf-be48-268cdd02361e)|f1525828-9a90-4fcf-be48-268cdd02361e|
+    |Werkstroomautomatisering voor beveiligingsaanbevelingen|[Werkstroomautomatisering implementeren voor Azure Security Center-aanbevelingen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f73d6ab6c-2475-4850-afd6-43795f3492ef)|73d6ab6c-2475-4850-afd6-43795f3492ef|
+    ||||
+
+    > [!TIP]
+    > U kunt deze ook vinden door te zoeken naar Azure Policy:
+    > 1. Open Azure Policy.
+    > :::image type="content" source="./media/continuous-export/opening-azure-policy.png" alt-text="Lijst met werk stroom Automatiseringen":::
+    > 2. Selecteer in het menu Azure Policy **definities** en zoek ze op naam. 
+
+1. Selecteer op de pagina relevante Azure Policy **toewijzen** .
+    :::image type="content" source="./media/workflow-automation/export-policy-assign.png" alt-text="Lijst met werk stroom Automatiseringen":::
+
+1. Open elk tabblad en stel de para meters naar wens in:
+    1. Stel op het tabblad **basis beginselen** het bereik voor het beleid in. Als u gecentraliseerd beheer wilt gebruiken, wijst u het beleid toe aan de beheer groep met de abonnementen die de automatiserings configuratie voor werk stromen gaan gebruiken. 
+    1. Stel op het tabblad **para meters** de gegevens van de resource groep en het gegevens type in. 
+        > [!TIP]
+        > Elke para meter heeft een knop info met uitleg over de beschik bare opties.
+        >
+        > Het tabblad para meters van Azure Policy (1) biedt toegang tot vergelijk bare configuratie opties als de werk stroom automatiserings pagina van Security Center (2).
+        > :::image type="content" source="./media/workflow-automation/azure-policy-next-to-workflow-automation.png" alt-text="Lijst met werk stroom Automatiseringen" lightbox="./media/workflow-automation/azure-policy-next-to-workflow-automation.png":::
+
+    1. Als u deze toewijzing wilt Toep assen op bestaande abonnementen, opent u het tabblad **herstel** en selecteert u de optie voor het maken van een herstel taak.
+
+1. Controleer de pagina samen vatting en selecteer **maken** .
+
 
 ## <a name="data-types-schemas"></a>Gegevens type schema's
 
 Als u de onbewerkte gebeurtenis schema's wilt bekijken van de beveiligings waarschuwingen of aanbevelingen die zijn door gegeven aan de logische app-instantie, gaat u naar de [schema gegevens typen werk stroom automatisering](https://aka.ms/ASCAutomationSchemas). Dit kan handig zijn in gevallen waarin u geen gebruik maakt van Security Center ingebouwde logische app-connectors die hierboven worden genoemd. in plaats daarvan kunt u het JSON-schema van de logische app gebruiken om dit hand matig te parseren.
+
+
+## <a name="faq-for-workflow-automation"></a>Veelgestelde vragen voor werk stroom automatisering
+
+### <a name="does-workflow-automation-support-any-business-continuity-or-disaster-recovery-bcdr-scenarios"></a>Ondersteunt werk stroom automatisering alle scenario's voor bedrijfs continuïteit of herstel na nood gevallen (BCDR)?
+
+Wanneer u uw omgeving voorbereidt voor BCDR-scenario's, waarbij de doel resource een storing of een andere nood situatie ondervindt, is het de verantwoordelijkheid van de organisatie om gegevens verlies te voor komen door back-ups te maken op basis van de richt lijnen van Azure Event Hubs, Log Analytics-werk ruimte en logische app.
+
+Voor elke actieve automatisering wordt u aangeraden een identieke (uitgeschakelde) automatisering te maken en deze op een andere locatie op te slaan. Wanneer er een storing optreedt, kunt u deze back-upautomatiseringen inschakelen en normale bewerkingen onderhouden.
+
+Meer informatie over [bedrijfs continuïteit en herstel na nood gevallen voor Azure Logic apps](../logic-apps/business-continuity-disaster-recovery-guidance.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

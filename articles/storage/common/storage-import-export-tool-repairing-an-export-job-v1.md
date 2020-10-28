@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 67d1979ccbfbffc17ba450600e605a96911c8331
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35738db5b7bd4a1ac7aaf94e2dc5f1d26a075cdf
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056336"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791831"
 ---
 # <a name="repairing-an-export-job"></a>Een exporttaak herstellen
 Nadat een export taak is voltooid, kunt u de Microsoft Azure Import/Export-hulp programma on-premises uitvoeren om:  
@@ -24,11 +24,11 @@ Nadat een export taak is voltooid, kunt u de Microsoft Azure Import/Export-hulp 
   
 U moet verbinding hebben met Azure Storage om deze functionaliteit te kunnen gebruiken.  
   
-De opdracht voor het herstellen van een import taak is **RepairExport**.
+De opdracht voor het herstellen van een import taak is **RepairExport** .
 
 ## <a name="repairexport-parameters"></a>RepairExport-para meters
 
-De volgende para meters kunnen worden opgegeven met **RepairExport**:  
+De volgende para meters kunnen worden opgegeven met **RepairExport** :  
   
 |Parameter|Beschrijving|  
 |---------------|-----------------|  
@@ -81,7 +81,7 @@ Het kopie logboek bestand geeft aan dat er een fout is opgetreden tijdens het do
 ## <a name="using-repairexport-to-validate-drive-contents"></a>RepairExport gebruiken om de inhoud van een station te valideren  
 U kunt Azure import/export ook gebruiken met de **RepairExport** -optie om de inhoud van het station te valideren. Het manifest bestand op elk export station bevat MD5s voor de inhoud van het station.  
   
-De Azure import/export-service kan tijdens het export proces ook de manifest bestanden opslaan in een opslag account. De locatie van de manifest bestanden is beschikbaar via de bewerking [taak ophalen](/rest/api/storageimportexport/jobs) wanneer de taak is voltooid. Zie [import/export service manifest File Format](storage-import-export-file-format-metadata-and-properties.md)(Engelstalig) voor meer informatie over de indeling van een manifest bestand voor een station.  
+De Azure import/export-service kan tijdens het export proces ook de manifest bestanden opslaan in een opslag account. De locatie van de manifest bestanden is beschikbaar via de bewerking [taak ophalen](/rest/api/storageimportexport/jobs) wanneer de taak is voltooid. Zie [import/export service manifest File Format](/previous-versions/azure/storage/common/storage-import-export-file-format-metadata-and-properties)(Engelstalig) voor meer informatie over de indeling van een manifest bestand voor een station.  
   
 In het volgende voor beeld ziet u hoe u het Azure import/export-hulp programma uitvoert met de para meters **/ManifestFile** en **/CopyLogFile** :  
   
@@ -153,6 +153,6 @@ Elk onderdeel dat niet kan worden geverifieerd, wordt door het hulp programma ge
 ## <a name="next-steps"></a>Volgende stappen
  
 * [Het Azure-hulp programma voor importeren/exporteren instellen](storage-import-export-tool-setup-v1.md)   
-* [Harde schijven voorbereiden voor een importtaak](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
+* [Harde schijven voorbereiden voor een importtaak](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import-v1)   
 * [De taakstatus controleren met kopielogboekbestanden](storage-import-export-tool-reviewing-job-status-v1.md)   
 * [Een importtaak herstellen](storage-import-export-tool-repairing-an-import-job-v1.md)

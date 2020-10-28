@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: 3330b4d5df366a5e886157e875f40d7e370c7442
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a4dcec2b50a13a256c82e4a5ec54c9b22aa973f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91543032"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791984"
 ---
 # <a name="how-to-index-encrypted-blobs-using-blob-indexers-and-skillsets-in-azure-cognitive-search"></a>Versleutelde blobs indexeren met Blob-Indexeer functies en vaardig heden in azure Cognitive Search
 
@@ -56,7 +56,7 @@ In de DecryptBlobFile-vaardigheid wordt de URL en het SAS-token voor elke BLOB a
 
 1. Selecteer **het abonnement waar uw Azure Key Vault-exemplaar bestaat** (deze hand leiding werkt niet als u een ander abonnement selecteert) en selecteer een bestaande resource groep of maak een nieuwe. Als u een nieuwe wilt maken, moet u ook een regio selecteren waarop u wilt implementeren.
 
-1. Selecteer **controleren + maken**, zorg ervoor dat u akkoord gaat met de voor waarden en selecteer vervolgens **maken** om de Azure-functie te implementeren.
+1. Selecteer **controleren + maken** , zorg ervoor dat u akkoord gaat met de voor waarden en selecteer vervolgens **maken** om de Azure-functie te implementeren.
 
     ![ARM-sjabloon in Portal](media/indexing-encrypted-blob-files/arm-template.jpg "ARM-sjabloon in Portal")
 
@@ -64,13 +64,13 @@ In de DecryptBlobFile-vaardigheid wordt de URL en het SAS-token voor elke BLOB a
 
 1. Navigeer naar uw Azure Key Vault-exemplaar in de portal. [Maak een toegangs beleid](../key-vault/general/assign-access-policy-portal.md) in de Azure Key Vault dat belang rijke toegang verleent aan de aangepaste vaardigheid.
  
-    1. Selecteer onder **instellingen** **toegangs beleid**en selecteer vervolgens **toegangs beleid toevoegen** .
+    1. Selecteer onder **instellingen** **toegangs beleid** en selecteer vervolgens **toegangs beleid toevoegen** .
      
        ![Toegangs beleid voor sleutel kluis toevoegen](media/indexing-encrypted-blob-files/keyvault-access-policies.jpg "Toegangs beleid voor de sleutel kluis")
 
-    1. Onder **configureren vanaf sjabloon**selecteert u **Azure data Lake Storage of Azure Storage**.
+    1. Onder **configureren vanaf sjabloon** selecteert u **Azure data Lake Storage of Azure Storage** .
 
-    1. Selecteer voor de principal het Azure-functie-exemplaar dat u hebt geïmplementeerd. U kunt ernaar zoeken met het resource-voor voegsel dat is gebruikt om het te maken in stap 2, dat een standaard voorvoegsel waarde heeft van **psdbf-function-app**.
+    1. Selecteer voor de principal het Azure-functie-exemplaar dat u hebt geïmplementeerd. U kunt ernaar zoeken met het resource-voor voegsel dat is gebruikt om het te maken in stap 2, dat een standaard voorvoegsel waarde heeft van **psdbf-function-app** .
 
     1. Selecteer niets voor de optie voor de geautoriseerde toepassing.
      
@@ -86,7 +86,7 @@ In de DecryptBlobFile-vaardigheid wordt de URL en het SAS-token voor elke BLOB a
     
         ![Functie-URL](media/indexing-encrypted-blob-files/function-uri.jpg "Waar vind ik de URL van de Azure-functie?")
 
-    1. De host-sleutel code, die u kunt vinden door te navigeren naar **app-sleutels**, te klikken om de **standaard** sleutel weer te geven en de waarde te kopiëren.
+    1. De host-sleutel code, die u kunt vinden door te navigeren naar **app-sleutels** , te klikken om de **standaard** sleutel weer te geven en de waarde te kopiëren.
      
         ![Functie host-sleutel code](media/indexing-encrypted-blob-files/function-host-key.jpg "Waar vind ik de Azure function host-sleutel code")
 
@@ -108,7 +108,7 @@ Neem even de tijd om de beheer sleutel te verzamelen, net als bij de Azure-funct
 
 2. Haal onder **Instellingen** > **Sleutels** een beheersleutel op voor volledige rechten op de service. Er zijn twee uitwisselbare beheersleutels die voor bedrijfscontinuïteit worden verstrekt voor het geval u een moet overschakelen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
 
-   ![De naam van de service en de querysleutels voor beheer ophalen](media/search-get-started-nodejs/service-name-and-keys.png)
+   ![De naam van de service en de querysleutels voor beheer ophalen](media/search-get-started-javascript/service-name-and-keys.png)
 
 Voor alle aanvragen is een API-sleutel vereist in de header die naar uw service wordt verzonden. Me een geldige sleutel stelt u per aanvraag een vertrouwensrelatie in tussen de toepassing die de aanvraag verzendt en de service die de aanvraag afhandelt.
 
@@ -121,10 +121,10 @@ Postman installeren en instellen.
 1. Download de [broncode van de Postman-verzameling](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/index-encrypted-blobs/Index%20encrypted%20Blob%20files.postman_collection.json).
 1. Selecteer **Bestand** > **Importeren** om de broncode te importeren in Postman.
 1. Selecteer het tabblad **Verzamelingen** en selecteer vervolgens de knop met het beletselteken **...** .
-1. Selecteer **Bewerken**. 
+1. Selecteer **Bewerken** . 
    
    ![Postman-app met navigatie](media/indexing-encrypted-blob-files/postman-edit-menu.jpg "Ga naar het menu Bewerken in Postman")
-1. Selecteer in het dialoogvenster **Bewerken** het tabblad **Variabelen**. 
+1. Selecteer in het dialoogvenster **Bewerken** het tabblad **Variabelen** . 
 
 U kunt op het tabblad **Variabelen** waarden toevoegen die Postman steeds verwisselt wanneer een specifieke variabele wordt aangetroffen binnen dubbele accolades. Postman vervangt bijvoorbeeld het symbool `{{admin-key}}` door de huidige waarde die u hebt ingesteld voor `admin-key`. Postman vervangt de URL's, kopteksten, de hoofdtekst van de aanvraag, enzovoort. 
 
@@ -137,24 +137,24 @@ Als u de waarde voor wilt ophalen `admin-key` , gebruikt u de Azure Cognitive Se
 |-------------|-----------------|
 | `admin-key` | Op de pagina **Sleutels** van de Azure Cognitive Search-service.  |
 | `search-service-name` | De naam van de Azure Cognitive Search-service. De URL is `https://{{search-service-name}}.search.windows.net`. | 
-| `storage-connection-string` | Selecteer in het opslagaccount op het tabblad **Toegangssleutels** de **key1** >  **-verbindingstekenreeks**. | 
+| `storage-connection-string` | Selecteer in het opslagaccount op het tabblad **Toegangssleutels** de **key1** >  **-verbindingstekenreeks** . | 
 | `storage-container-name` | De naam van de BLOB-container met de versleutelde bestanden die moeten worden geïndexeerd. | 
 | `function-uri` |  In de Azure-functie onder **Essentials** op de hoofd pagina. | 
-| `function-code` | Klik in de functie Azure, door te navigeren naar **app-sleutels**, op om de **standaard** sleutel weer te geven en de waarde te kopiëren. | 
-| `api-version` | Laat deze staan op **2020-06-30**. |
-| `datasource-name` | Als **versleutelde blobs-DS**laten. | 
-| `index-name` | **Versleuteld-blobs-idx**laten staan. | 
-| `skillset-name` | **Versleuteld-blobs-SS**laten staan. | 
-| `indexer-name` | Zorg ervoor dat **versleutelde blobs-IXR**. | 
+| `function-code` | Klik in de functie Azure, door te navigeren naar **app-sleutels** , op om de **standaard** sleutel weer te geven en de waarde te kopiëren. | 
+| `api-version` | Laat deze staan op **2020-06-30** . |
+| `datasource-name` | Als **versleutelde blobs-DS** laten. | 
+| `index-name` | **Versleuteld-blobs-idx** laten staan. | 
+| `skillset-name` | **Versleuteld-blobs-SS** laten staan. | 
+| `indexer-name` | Zorg ervoor dat **versleutelde blobs-IXR** . | 
 
 ### <a name="review-the-request-collection-in-postman"></a>De verzameling aanvragen weergeven in Postman
 
 Wanneer u deze hand leiding uitvoert, moet u vier HTTP-aanvragen doen: 
 
-- **PUT-aanvraag om de index te maken**: Deze index bevat de gegevens die door Azure Cognitive Search worden gebruikt en geretourneerd.
-- **Post-aanvraag voor het maken van de gegevens bron**: deze gegevens bron verbindt uw Azure Cognitive Search-service met uw opslag account en daarom versleutelde BLOB-bestanden. 
-- De **aanvraag voor het maken van de vaardig heden plaatsen: in**de vaardig heden wordt de aangepaste vaardigheids definitie opgegeven voor de Azure-functie waarmee de BLOB-bestands gegevens worden ontsleuteld, en een [DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) om de tekst uit elk document te extra heren nadat deze is ontsleuteld.
-- **PUT-aanvraag om de indexeerfunctie te maken**: Als de indexeerfunctie wordt uitgevoerd, worden de gegevens gelezen, wordt de vaardighedenset toegepast en worden de resultaten opgeslagen. U moet deze aanvraag als laatste uitvoeren.
+- **PUT-aanvraag om de index te maken** : Deze index bevat de gegevens die door Azure Cognitive Search worden gebruikt en geretourneerd.
+- **Post-aanvraag voor het maken van de gegevens bron** : deze gegevens bron verbindt uw Azure Cognitive Search-service met uw opslag account en daarom versleutelde BLOB-bestanden. 
+- De **aanvraag voor het maken van de vaardig heden plaatsen: in** de vaardig heden wordt de aangepaste vaardigheids definitie opgegeven voor de Azure-functie waarmee de BLOB-bestands gegevens worden ontsleuteld, en een [DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) om de tekst uit elk document te extra heren nadat deze is ontsleuteld.
+- **PUT-aanvraag om de indexeerfunctie te maken** : Als de indexeerfunctie wordt uitgevoerd, worden de gegevens gelezen, wordt de vaardighedenset toegepast en worden de resultaten opgeslagen. U moet deze aanvraag als laatste uitvoeren.
 
 De [bron code](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/index-encrypted-blobs/Index%20encrypted%20Blob%20files.postman_collection.json) bevat een postman-verzameling met de vier aanvragen, evenals een aantal nuttige opvolgings aanvragen. Als u de aanvragen wilt uitgeven, selecteert u in postman het tabblad voor de aanvragen en selecteert u **verzenden** voor elke aanvraag.
 

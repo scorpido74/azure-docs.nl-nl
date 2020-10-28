@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 4a741834637900ec0c78105790bac2453d759e2f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: d825a30cf43b3e7f9017638138df91d5145d280e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514483"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791593"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Release opmerkingen bij Azure Media Services v3
 
@@ -46,6 +46,16 @@ De vooraf ingestelde audio analyse bevat nu een prijs categorie voor de Basic-mo
 Klanten die Indexeer functie v1 en Indexeer functie v2 gebruiken, moeten worden gemigreerd naar de standaard instelling voor de analyse van audio.
 
 Zie [video-en audio bestanden analyseren](analyzing-video-audio-files-concept.md)voor meer informatie over de Basic Audio Analyzer-modus.  Zie [een eenvoudige audio transformatie maken](how-to-create-basic-audio-transform.md)voor meer informatie over het gebruik van de Basic Audio Analyzer-modus met de rest API.
+
+## <a name="live-events"></a>Livegebeurtenissen
+
+Updates van de meeste eigenschappen zijn nu toegestaan wanneer Live-gebeurtenissen worden gestopt. Daarnaast mogen gebruikers een voor voegsel opgeven voor de statische hostnaam voor de invoer en preview-Url's van de live-gebeurtenis. VanityUrl wordt nu aangeroepen `useStaticHostName` om het doel van de eigenschap beter weer te geven.
+
+Live-gebeurtenissen hebben nu de status stand-by.  Bekijk [Live Events en live outputs in Media Services](https://docs.microsoft.com/azure/media-services/latest/live-events-outputs-concept).
+
+Een live-gebeurtenis ondersteunt het ontvangen van verschillende invoer hoogte-breedte verhoudingen. Met de stretch-modus kunnen klanten het stretch gedrag voor de uitvoer opgeven.
+
+Met Live Encoding wordt nu de mogelijkheid toegevoegd voor het uitvoeren van vaste-sleutel frame-interval fragmenten tussen 0,5 en 20 seconden.
 
 ## <a name="august-2020"></a>Augustus 2020
 
@@ -99,7 +109,7 @@ Azure Media Player documenten zijn gemigreerd naar de [Azure-documentatie](../az
 
 ### <a name="azure-government-cloud-updates"></a>Cloud updates Azure Government
 
-Media Services GA'ed in de volgende Azure Government regio's: *USGov Arizona* en *USGov Texas*.
+Media Services GA'ed in de volgende Azure Government regio's: *USGov Arizona* en *USGov Texas* .
 
 ## <a name="december-2019"></a>December 2019
 
@@ -163,7 +173,7 @@ Media Services v3 kondigt de preview van 24 uur x 365 dagen aan live lineaire co
 
 #### <a name="deprecation-of-media-processors"></a>Afschaffing van media processors
 
-Er wordt een afschaffing van *Azure media indexer* en *Azure media indexer 2 Preview*aangekondigd. Zie het artikel  [verouderde onderdelen](../previous/legacy-components.md) voor de pensioen datums. [Azure Media Services video indexer](../video-indexer/index.yml) vervangt deze verouderde media processors.
+Er wordt een afschaffing van *Azure media indexer* en *Azure media indexer 2 Preview* aangekondigd. Zie het artikel  [verouderde onderdelen](../previous/legacy-components.md) voor de pensioen datums. [Azure Media Services video indexer](../video-indexer/index.yml) vervangt deze verouderde media processors.
 
 Zie [Migrate from Azure media indexer en Azure media indexer 2 to Azure Media Services video indexer](../previous/migrate-indexer-v1-v2.md)voor meer informatie.
 
@@ -265,10 +275,10 @@ U moet het MPI-bestand niet wijzigen of verwijderen of afhankelijk van de aanwez
 
 Updates van de GA-versie van de V3 API zijn onder andere:
        
-* De **PresentationTimeRange** -eigenschappen zijn niet meer vereist voor **Asset filters** en **account filters**. 
+* De **PresentationTimeRange** -eigenschappen zijn niet meer vereist voor **Asset filters** en **account filters** . 
 * De query opties $top en $skip voor **taken** en **trans formaties** zijn verwijderd en $OrderBy is toegevoegd. Als onderdeel van het toevoegen van de nieuwe ordenings functionaliteit werd ontdekt dat de opties voor $top en $skip per ongeluk werden weer gegeven, zelfs als ze niet zijn geïmplementeerd.
 * De Enumeration-uitbreid baarheid is opnieuw ingeschakeld. Deze functie is ingeschakeld in de Preview-versies van de SDK en is per ongeluk uitgeschakeld in de GA-versie.
-* Er zijn twee vooraf gedefinieerde stroomsgewijze beleids regels gewijzigd. **SecureStreaming** is nu **MultiDrmCencStreaming**. **SecureStreamingWithFairPlay** is nu **Predefined_MultiDrmStreaming**.
+* Er zijn twee vooraf gedefinieerde stroomsgewijze beleids regels gewijzigd. **SecureStreaming** is nu **MultiDrmCencStreaming** . **SecureStreamingWithFairPlay** is nu **Predefined_MultiDrmStreaming** .
 
 ## <a name="november-2018"></a>November 2018
 

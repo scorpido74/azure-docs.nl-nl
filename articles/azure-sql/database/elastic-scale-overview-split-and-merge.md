@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 9303d84b2862b556a9ccc286ffa118bf1e52b715
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a646ffe1d306d7ea13da002715d5bd9b907107b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84047522"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793463"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Gegevens verplaatsen tussen uitgeschaalde clouddatabases
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,7 +27,7 @@ Het hulp programma voor splitsen en samen voegen wordt uitgevoerd als een Azure-
 
 ![Overzicht][1]
 
-## <a name="download"></a>Downloaden
+## <a name="download"></a>Download
 
 [Micro soft. Azure. SqlDatabase. ElasticScale. service. SplitMerge](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
 
@@ -220,7 +220,7 @@ De Split-Merge-service maakt gebruik van Azure Diagnostics op basis van Azure SD
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek.
+> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM.Sql](/powershell/module/AzureRM.Sql/) voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek.
 
 Als u controle en diagnostische gegevens wilt inschakelen met behulp van de diagnostische configuratie voor de web-en werk rollen van het NuGet-pakket, voert u de volgende opdrachten uit met Azure PowerShell:
 
@@ -244,7 +244,7 @@ U kunt hier meer informatie vinden over het configureren en implementeren van di
 
 ## <a name="retrieve-diagnostics"></a>Diagnostische gegevens ophalen
 
-U kunt eenvoudig toegang krijgen tot uw diagnostische gegevens via de Visual Studio-Server Explorer in het gedeelte Azure van de Server Explorer boom structuur. Open een exemplaar van Visual Studio en klik in de menu balk op weer gave en Server Explorer. Klik op het pictogram van Azure om verbinding te maken met uw Azure-abonnement. Ga vervolgens naar Azure-> Storage-> `<your storage account>` -> tabellen-> WADLogsTable. Zie [Server Explorer](https://msdn.microsoft.com/library/x603htbk.aspx)voor meer informatie.
+U kunt eenvoudig toegang krijgen tot uw diagnostische gegevens via de Visual Studio-Server Explorer in het gedeelte Azure van de Server Explorer boom structuur. Open een exemplaar van Visual Studio en klik in de menu balk op weer gave en Server Explorer. Klik op het pictogram van Azure om verbinding te maken met uw Azure-abonnement. Ga vervolgens naar Azure-> Storage-> `<your storage account>` -> tabellen-> WADLogsTable. Zie [Server Explorer](/previous-versions/x603htbk(v=vs.140))voor meer informatie.
 
 ![WADLogsTable][2]
 

@@ -6,15 +6,17 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
-ms.date: 10/08/2020
-ms.openlocfilehash: cb02b29c100da7b8d63f214acc78906a757344c0
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.date: 10/25/2020
+ms.openlocfilehash: af82b9e2feee3e03d2a0703d771c68b67ddd08c9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096093"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791576"
 ---
-# <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>Problemen met replicatie latentie in Azure Database for MySQL oplossen
+# <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>Troubleshoot replication latency in Azure Database for MySQL (Problemen vanwege replicavertraging oplossen in Azure Database for MySQL)
+
+[!INCLUDE[applies-to-single-flexible-server](./includes/applies-to-single-flexible-server.md)]
 
 Met de functie [replica lezen](concepts-read-replicas.md) kunt u gegevens van een Azure database for mysql server repliceren naar een replica server met het kenmerk alleen-lezen. U kunt werk belastingen uitschalen door lees-en rapport query's van de toepassing naar replica servers te routeren. Deze installatie vermindert de druk op de bron server. Het verbetert ook de algehele prestaties en latentie van de toepassing terwijl deze wordt geschaald. 
 
@@ -31,9 +33,9 @@ In dit artikel leert u hoe u de replicatie latentie in Azure Database for MySQL 
 
 ## <a name="replication-concepts"></a>Concepten voor replicatie
 
-Wanneer een binair logboek is ingeschakeld, schrijft de bron server doorgevoerde trans acties naar het binaire logboek. Het binaire logboek wordt gebruikt voor replicatie. Het is standaard ingeschakeld voor alle nieuw ingerichte servers die ondersteuning bieden voor Maxi maal 16 TB aan opslag ruimte. Op replica servers worden twee threads uitgevoerd op elke replica-server. De ene thread is de *i/o-thread*en de andere is de *SQL-thread*:
+Wanneer een binair logboek is ingeschakeld, schrijft de bron server doorgevoerde trans acties naar het binaire logboek. Het binaire logboek wordt gebruikt voor replicatie. Het is standaard ingeschakeld voor alle nieuw ingerichte servers die ondersteuning bieden voor Maxi maal 16 TB aan opslag ruimte. Op replica servers worden twee threads uitgevoerd op elke replica-server. De ene thread is de *i/o-thread* en de andere is de *SQL-thread* :
 
-- De IO-thread maakt verbinding met de bron server en vraagt bijgewerkte binaire logboeken aan. Deze thread ontvangt de binaire logboek updates. Deze updates worden opgeslagen op een replica server in een lokaal logboek dat het *Relay-logboek*wordt genoemd.
+- De IO-thread maakt verbinding met de bron server en vraagt bijgewerkte binaire logboeken aan. Deze thread ontvangt de binaire logboek updates. Deze updates worden opgeslagen op een replica server in een lokaal logboek dat het *Relay-logboek* wordt genoemd.
 - De SQL-thread leest het relay-logboek en past vervolgens de gegevens wijzigingen op replica servers toe.
 
 ## <a name="monitoring-replication-latency"></a>Replicatie latentie controleren

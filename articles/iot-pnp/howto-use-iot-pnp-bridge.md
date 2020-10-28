@@ -7,12 +7,12 @@ ms.date: 09/22/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6670f654685f8d5cdcaf55d2b1679738a57ecab4
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 958402e61f6dc81a3e6618dbcd4df4c8dd6b9ced
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042793"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793055"
 ---
 # <a name="how-to-connect-an--iot-plug-and-play-bridge-sample-running-on-linux-or-windows-to-iot-hub"></a>Verbinding maken met een IoT Plug en Play Bridge-voor beeld dat wordt uitgevoerd in Linux of Windows naar IoT Hub
 
@@ -30,14 +30,14 @@ In deze quickstart wordt ervan uitgegaan dat u Ubuntu Linux gebruikt. De stappen
 
 Om deze quickstart in Linux te voltooien, installeert u de volgende software in uw lokale Linux-omgeving:
 
-Installeer **GCC**, **Git**, **cmake**en alle vereiste afhankelijkheden met behulp van de opdracht `apt-get`:
+Installeer **GCC** , **Git** , **cmake** en alle vereiste afhankelijkheden met behulp van de opdracht `apt-get`:
 
 ```sh
 sudo apt-get update
 sudo apt-get install -y git cmake build-essential curl libcurl4-openssl-dev libssl-dev uuid-dev
 ```
 
-Controleer of de versie van `cmake` hoger is dan **2.8.12** en of de versie van **GCC** hoger dan **4.4.7**.
+Controleer of de versie van `cmake` hoger is dan **2.8.12** en of de versie van **GCC** hoger dan **4.4.7** .
 
 ```sh
 cmake --version
@@ -54,7 +54,7 @@ Om deze quickstart in Windows te voltooien, installeert u de volgende software i
 
 ### <a name="azure-iot-explorer"></a>Azure IoT Explorer
 
-Om in het tweede deel van deze quickstart te communiceren met het voorbeeldapparaat, gebruikt u het hulpprogramma **Azure IoT Explorer**. [Download en installeer de nieuwste release van Azure IoT Explorer](./howto-use-iot-explorer.md) voor uw besturingssysteem.
+Om in het tweede deel van deze quickstart te communiceren met het voorbeeldapparaat, gebruikt u het hulpprogramma **Azure IoT Explorer** . [Download en installeer de nieuwste release van Azure IoT Explorer](./howto-use-iot-explorer.md) voor uw besturingssysteem.
 
 [!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
 
@@ -107,9 +107,13 @@ Deze bewerking kan enkele minuten in beslag nemen.
 
 Nadat u de IoT Plug en Play Bridge opslag plaats naar uw computer hebt gekopieerd, gaat u naar de `pnpbridge/docs/schema` map van de gekloonde opslag plaats waar u de [configuratie-JSON](https://aka.ms/iot-pnp-bridge-env-config) kunt vinden of `config.json` voor het omgevings voorbeeld van de brug. Meer informatie over de configuratie bestanden vindt u in het [document IoT Plug en Play Bridge-concepten](concepts-iot-pnp-bridge.md).
 
-Voor het `root-_interface_model_id` veld moet u de IoT Plug en Play model-id kopiëren die het model voor uw apparaat identificeert. In dit voorbeeld is het `dtmi:com:example:SampleDevice;1`. Wijzig de volgende para meters onder **pnp_bridge_parameters** knoop punt in het `config.json` bestand in de:
+Voor het `root-_interface_model_id` veld moet u de IoT Plug en Play model-id kopiëren die het model voor uw apparaat identificeert. In dit voorbeeld is het `dtmi:com:example:SampleDevice;1`. Wijzig de volgende para meters onder **pnp_bridge_parameters** knoop punt in het `config.json` bestand:
 
-  Verbindings reeks gebruiken (Opmerking: de symmetric_key moeten overeenkomen met de SAS-sleutel in de connection string):
+* connection_string 
+* symmetric_key 
+
+>[!NOTE]
+> De symmetric_key moet overeenkomen met de SAS-sleutel in de connection string.
 
   ```JSON
     {
@@ -126,7 +130,7 @@ Voor het `root-_interface_model_id` veld moet u de IoT Plug en Play model-id kop
   }
   ```
 
- Wanneer u het bestand hebt ingevuld, moet het er als volgt `config.json` uitzien:
+ Zodra het bestand is ingevuld, ziet het er als `config.json` volgt uit:
 
    ```JSON
     {

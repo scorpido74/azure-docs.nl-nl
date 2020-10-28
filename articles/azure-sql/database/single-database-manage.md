@@ -4,19 +4,19 @@ description: Meer informatie over het maken en beheren van servers en individuel
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 43e28774625db0217dde1227bad160ba87750c8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c487b5bc5c8d5fa01388b2942a70defa0001253
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85254987"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791525"
 ---
 # <a name="create-and-manage-servers-and-single-databases-in-azure-sql-database"></a>Servers en individuele data bases maken en beheren in Azure SQL Database
 
@@ -58,7 +58,7 @@ Als u een bestaande Data Base wilt beheren, gaat u naar de pagina **SQL-data bas
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek.
+> De module PowerShell Azure Resource Manager wordt nog steeds ondersteund in Azure SQL Database, maar alle toekomstige ontwikkeling is voor de Az.Sql-module. Zie [AzureRM.Sql](/powershell/module/AzureRM.Sql/) voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek.
 
 Gebruik de volgende Power shell-cmdlets om servers, afzonderlijke en gegroepeerde Data bases en firewalls op server niveau met Azure PowerShell te maken en te beheren. Als u Power shell wilt installeren of upgraden, raadpleegt u [Azure PowerShell-module installeren](/powershell/azure/install-az-ps).
 
@@ -74,7 +74,7 @@ Gebruik de volgende Power shell-cmdlets om servers, afzonderlijke en gegroepeerd
 |[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)|Hiermee maakt u een resource groep|
 |[New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver)|Hiermee maakt u een server|
 |[Get-AzSqlServer](/powershell/module/az.sql/get-azsqlserver)|Retourneert informatie over servers|
-|[Set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver)|Hiermee wijzigt u de eigenschappen van een server|
+|[Set-AzSqlServer](/powershell/module/az.sql/set-azsqlserver)|Hiermee wijzigt u de eigenschappen van een server|
 |[Remove-AzSqlServer](/powershell/module/az.sql/remove-azsqlserver)|Hiermee wordt een server verwijderd|
 |[New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule)|Hiermee maakt u een firewall regel op server niveau |
 |[Get-AzSqlServerFirewallRule](/powershell/module/az.sql/get-azsqlserverfirewallrule)|Hiermee worden de firewall regels voor een server opgehaald|
@@ -84,7 +84,7 @@ Gebruik de volgende Power shell-cmdlets om servers, afzonderlijke en gegroepeerd
 
 ## <a name="the-azure-cli"></a>De Azure CLI
 
-Gebruik de volgende [Azure cli](/cli/azure/sql/db) -opdrachten om de servers, data bases en firewalls te maken en te beheren met [de Azure cli](/cli/azure). Gebruik de [Cloud Shell](/azure/cloud-shell/overview) om de CLI in uw browser uit te voeren of [installeer](/cli/azure/install-azure-cli) de CLI op macOS, Linux of Windows. Zie [elastische Pools](elastic-pool-overview.md)voor het maken en beheren van elastische Pools.
+Gebruik de volgende [Azure cli](/cli/azure/sql/db) -opdrachten om de servers, data bases en firewalls te maken en te beheren met [de Azure cli](/cli/azure). Gebruik de [Cloud Shell](../../cloud-shell/overview.md) om de CLI in uw browser uit te voeren of [installeer](/cli/azure/install-azure-cli) de CLI op macOS, Linux of Windows. Zie [elastische Pools](elastic-pool-overview.md)voor het maken en beheren van elastische Pools.
 
 > [!TIP]
 > Zie [een enkele Azure SQL database maken met behulp van de Azure cli](az-cli-script-samples-content-guide.md)voor een Snelstartgids van Azure cli. Zie voor voor beelden van Azure CLI-scripts [CLI gebruiken om een Data Base te maken in Azure SQL database en een SQL database firewall regel configureren](scripts/create-and-configure-database-cli.md) en [CLI gebruiken om een data base in Azure SQL database te controleren en te schalen](scripts/monitor-and-scale-database-cli.md).
@@ -144,22 +144,22 @@ Gebruik deze REST API aanvragen om de servers, data bases en firewalls te maken 
 
 | Opdracht | Beschrijving |
 | --- | --- |
-|[Servers: maken of bijwerken](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|Hiermee wordt een nieuwe server gemaakt of bijgewerkt.|
-|[Servers-verwijderen](https://docs.microsoft.com/rest/api/sql/servers/delete)|Hiermee verwijdert u een SQL-Server.|
-|[Servers: ophalen](https://docs.microsoft.com/rest/api/sql/servers/get)|Hiermee wordt een server opgehaald.|
-|[Servers-lijst](https://docs.microsoft.com/rest/api/sql/servers/list)|Retourneert een lijst met servers in een abonnement.|
-|[Servers-lijst op resource groep](https://docs.microsoft.com/rest/api/sql/servers/listbyresourcegroup)|Retourneert een lijst met servers in een resource groep.|
-|[Servers-bijwerken](https://docs.microsoft.com/rest/api/sql/servers/update)|Hiermee wordt een bestaande server bijgewerkt.|
-|[Data bases: maken of bijwerken](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|Hiermee maakt u een nieuwe data base of werkt u een bestaande data base bij.|
-|[Data bases-verwijderen](https://docs.microsoft.com/rest/api/sql/databases/delete)|Hiermee verwijdert u een Data Base.|
-|[Data bases-ophalen](https://docs.microsoft.com/rest/api/sql/databases/get)|Hiermee haalt u een Data Base.|
-|[Data bases-lijst op elastische pool](https://docs.microsoft.com/rest/api/sql/databases/listbyelasticpool)|Retourneert een lijst met data bases in een elastische pool.|
-|[Data bases-lijst per server](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|Retourneert een lijst met data bases op een server.|
-|[Data bases-bijwerken](https://docs.microsoft.com/rest/api/sql/databases/update)|Hiermee wordt een bestaande data base bijgewerkt.|
-|[Firewall regels: maken of bijwerken](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)|Hiermee wordt een firewall regel gemaakt of bijgewerkt.|
-|[Firewall regels-verwijderen](https://docs.microsoft.com/rest/api/sql/firewallrules/delete)|Hiermee verwijdert u een firewall regel.|
-|[Firewall regels: ophalen](https://docs.microsoft.com/rest/api/sql/firewallrules/get)|Hiermee wordt een firewall regel opgehaald.|
-|[Firewall regels-lijst per server](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver)|Retourneert een lijst met firewall regels.|
+|[Servers: maken of bijwerken](/rest/api/sql/servers/createorupdate)|Hiermee wordt een nieuwe server gemaakt of bijgewerkt.|
+|[Servers-verwijderen](/rest/api/sql/servers/delete)|Hiermee verwijdert u een SQL-Server.|
+|[Servers: ophalen](/rest/api/sql/servers/get)|Hiermee wordt een server opgehaald.|
+|[Servers-lijst](/rest/api/sql/servers/list)|Retourneert een lijst met servers in een abonnement.|
+|[Servers-lijst op resource groep](/rest/api/sql/servers/listbyresourcegroup)|Retourneert een lijst met servers in een resource groep.|
+|[Servers-bijwerken](/rest/api/sql/servers/update)|Hiermee wordt een bestaande server bijgewerkt.|
+|[Data bases: maken of bijwerken](/rest/api/sql/databases/createorupdate)|Hiermee maakt u een nieuwe data base of werkt u een bestaande data base bij.|
+|[Data bases-verwijderen](/rest/api/sql/databases/delete)|Hiermee verwijdert u een Data Base.|
+|[Data bases-ophalen](/rest/api/sql/databases/get)|Hiermee haalt u een Data Base.|
+|[Data bases-lijst op elastische pool](/rest/api/sql/databases/listbyelasticpool)|Retourneert een lijst met data bases in een elastische pool.|
+|[Data bases-lijst per server](/rest/api/sql/databases/listbyserver)|Retourneert een lijst met data bases op een server.|
+|[Data bases-bijwerken](/rest/api/sql/databases/update)|Hiermee wordt een bestaande data base bijgewerkt.|
+|[Firewall regels: maken of bijwerken](/rest/api/sql/firewallrules/createorupdate)|Hiermee wordt een firewall regel gemaakt of bijgewerkt.|
+|[Firewall regels-verwijderen](/rest/api/sql/firewallrules/delete)|Hiermee verwijdert u een firewall regel.|
+|[Firewall regels: ophalen](/rest/api/sql/firewallrules/get)|Hiermee wordt een firewall regel opgehaald.|
+|[Firewall regels-lijst per server](/rest/api/sql/firewallrules/listbyserver)|Retourneert een lijst met firewall regels.|
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: daa1bbbace55281f81e04c4639b083b3e934b9f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c507a4c618713ba83d25b9defa918092db1a3c8e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443088"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792086"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>Query's uitvoeren in Cloud databases met verschillende schema's (preview-versie)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,10 +36,10 @@ Verticaal gepartitioneerde data bases gebruiken verschillende sets tabellen in v
 > In tegens telling tot horizontale partitionering zijn deze DDL-instructies niet afhankelijk van het definiëren van een gegevenslaag met een Shard-toewijzing via de client bibliotheek voor Elastic data base.
 >
 
-1. [HOOFD SLEUTEL MAKEN](https://msdn.microsoft.com/library/ms174382.aspx)
-2. [DATA BASE-SCOPED REFERENTIE MAKEN](https://msdn.microsoft.com/library/mt270260.aspx)
-3. [CREATE EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx)
-4. [CREATE EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx)
+1. [HOOFD SLEUTEL MAKEN](/sql/t-sql/statements/create-master-key-transact-sql)
+2. [DATA BASE-SCOPED REFERENTIE MAKEN](/sql/t-sql/statements/create-database-scoped-credential-transact-sql)
+3. [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql)
+4. [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql)
 
 ## <a name="create-database-scoped-master-key-and-credentials"></a>Data base-scoped Master sleutel en referenties maken
 
@@ -63,7 +63,7 @@ Syntaxis:
     CREDENTIAL = <credential_name>) [;]
 
 > [!IMPORTANT]
-> De TYPE parameter moet worden ingesteld op **RDBMS**.
+> De TYPE parameter moet worden ingesteld op **RDBMS** .
 
 ### <a name="example"></a>Voorbeeld
 
@@ -120,8 +120,8 @@ select * from sys.external_tables;
 
 Met elastische query's wordt de bestaande syntaxis van de externe tabel uitgebreid met het definiëren van externe tabellen die gebruikmaken van externe gegevens bronnen van het type RDBMS. Een externe tabel definitie voor verticale partitionering heeft betrekking op de volgende aspecten:
 
-* **Schema**: de externe tabel DDL definieert een schema dat door uw query's kan worden gebruikt. Het schema dat is opgegeven in de definitie van de externe tabel moet overeenkomen met het schema van de tabellen in de externe data base waarin de daad werkelijke gegevens zijn opgeslagen.
-* **Externe database referentie**: de externe tabel DDL verwijst naar een externe gegevens bron. De externe gegevens bron geeft de naam van de server en de data base van de externe data base waar de gegevens van de actuele tabel worden opgeslagen.
+* **Schema** : de externe tabel DDL definieert een schema dat door uw query's kan worden gebruikt. Het schema dat is opgegeven in de definitie van de externe tabel moet overeenkomen met het schema van de tabellen in de externe data base waarin de daad werkelijke gegevens zijn opgeslagen.
+* **Externe database referentie** : de externe tabel DDL verwijst naar een externe gegevens bron. De externe gegevens bron geeft de naam van de server en de data base van de externe data base waar de gegevens van de actuele tabel worden opgeslagen.
 
 Als u een externe gegevens bron gebruikt, zoals beschreven in de vorige sectie, is de syntaxis voor het maken van externe tabellen als volgt:
 
@@ -135,7 +135,7 @@ De volgende DDL-instructie verwijdert een bestaande definitie van een externe ta
 DROP EXTERNAL TABLE [ [ schema_name ] . | schema_name. ] table_name[;]  
 ```
 
-**Machtigingen voor maken/verwijderen van externe tabel**: machtigingen voor externe gegevens bronnen wijzigen is vereist voor de DDL van externe tabellen die ook nodig is om te verwijzen naar de onderliggende gegevens bron.  
+**Machtigingen voor maken/verwijderen van externe tabel** : machtigingen voor externe gegevens bronnen wijzigen is vereist voor de DDL van externe tabellen die ook nodig is om te verwijzen naar de onderliggende gegevens bron.  
 
 ## <a name="security-considerations"></a>Beveiligingsoverwegingen
 
@@ -163,7 +163,7 @@ Met de volgende query wordt een drie richtings relatie uitgevoerd tussen de twee
 
 ## <a name="stored-procedure-for-remote-t-sql-execution-sp_execute_remote"></a>Opgeslagen procedure voor het uitvoeren van externe T-SQL-uitvoering: SP \_ execute_remote
 
-Met elastische query's wordt ook een opgeslagen procedure geïntroduceerd die directe toegang biedt tot de externe data base. De opgeslagen procedure heet [ \_ \_ extern uitvoeren](https://msdn.microsoft.com/library/mt703714) en kan worden gebruikt om externe opgeslagen procedures of T-SQL-code uit te voeren op de externe data base. Hierbij worden de volgende para meters gebruikt:
+Met elastische query's wordt ook een opgeslagen procedure geïntroduceerd die directe toegang biedt tot de externe data base. De opgeslagen procedure heet [ \_ \_ extern uitvoeren](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database) en kan worden gebruikt om externe opgeslagen procedures of T-SQL-code uit te voeren op de externe data base. Hierbij worden de volgende para meters gebruikt:
 
 * Naam van de gegevens bron (nvarchar): de naam van de externe gegevens bron van het type RDBMS.
 * Query (nvarchar): de T-SQL-query die moet worden uitgevoerd op de externe data base.
@@ -195,7 +195,7 @@ U kunt gewone SQL Server verbindings reeksen gebruiken om uw BI-en gegevens inte
 * Zie [Aan de slag met query's op meerdere databases (verticale partitionering)](elastic-query-getting-started-vertical.md) voor een zelfstudie over verticale partitionering.
 * Zie [Aan de slag met elastische query's voor horizontale partitionering (sharding)](elastic-query-getting-started.md) voor een zelfstudie over horizontale partitionering (sharding).
 * Zie [Query's uitvoeren op horizontaal gepartitioneerde gegevens](elastic-query-horizontal-partitioning.md) voor de syntaxis van en voorbeeldquery's voor horizontaal gepartitioneerde gegevens
-* Zie [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714) voor een opgeslagen procedure waarmee een Transact-SQL-instructie wordt uitgevoerd op één externe Azure SQL-database of een aantal databases die als shards fungeren in een schema voor horizontale partitionering.
+* Zie [sp\_execute \_remote](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database) voor een opgeslagen procedure waarmee een Transact-SQL-instructie wordt uitgevoerd op één externe Azure SQL-database of een aantal databases die als shards fungeren in een schema voor horizontale partitionering.
 
 <!--Image references-->
 [1]: ./media/elastic-query-vertical-partitioning/verticalpartitioning.png

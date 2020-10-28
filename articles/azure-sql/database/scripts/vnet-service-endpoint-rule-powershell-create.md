@@ -12,12 +12,12 @@ ms.reviewer: vanto
 ms.date: 04/17/2019
 ms.custom: sqldbrb=1
 tags: azure-synapse
-ms.openlocfilehash: ae92d2000bb2c0dfd7e7a42c6070c143e5b787e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f32599c9d289c8fc5e86eb8c7b0574d9703a6dd4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84170865"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792664"
 ---
 # <a name="powershell-create-a-virtual-service-endpoint-and-vnet-rule-for-azure-sql-database"></a>Power shell: een virtueel service-eind punt en een VNet-regel voor Azure SQL Database maken
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "84170865"
 In dit artikel wordt een Power shell-script gedemonstreerd dat de volgende acties onderneemt:
 
 1. Hiermee maakt u een Microsoft Azure *virtueel service-eind punt* in uw subnet.
-2. Hiermee voegt u het eind punt toe aan de firewall van uw server om een regel voor het *virtuele netwerk*te maken.
+2. Hiermee voegt u het eind punt toe aan de firewall van uw server om een regel voor het *virtuele netwerk* te maken.
 
 Zie [Virtual service-eind punten voor Azure SQL database][sql-db-vnet-service-endpoint-rule-overview-735r]voor meer achtergrond informatie.
 
@@ -40,20 +40,20 @@ Zie [Virtual service-eind punten voor Azure SQL database][sql-db-vnet-service-en
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de [ `Az.Sql` cmdlets](/powershell/module/az.sql). Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor de oudere module. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek.
+> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de [ `Az.Sql` cmdlets](/powershell/module/az.sql). Zie [AzureRM. SQL](/powershell/module/AzureRM.Sql/)voor de oudere module. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek.
 
 ## <a name="major-cmdlets"></a>Primaire cmdlets
 
-Dit artikel benadrukt de cmdlet [ **New-AzSqlServerVirtualNetworkRule** ](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlservervirtualnetworkrule) waarmee het subnet-eind punt wordt toegevoegd aan de toegangs beheer lijst (ACL) van uw server, waardoor een regel wordt gemaakt.
+Dit artikel benadrukt de cmdlet [ **New-AzSqlServerVirtualNetworkRule**](/powershell/module/az.sql/new-azsqlservervirtualnetworkrule) waarmee het subnet-eind punt wordt toegevoegd aan de toegangs beheer lijst (ACL) van uw server, waardoor een regel wordt gemaakt.
 
-In de volgende lijst ziet u de volg orde van andere *belang rijke* cmdlets die u moet uitvoeren om u voor te bereiden op het aanroepen van **New-AzSqlServerVirtualNetworkRule**. In dit artikel vinden deze aanroepen plaats in [script 3 "virtuele netwerk regel"](#a-script-30):
+In de volgende lijst ziet u de volg orde van andere *belang rijke* cmdlets die u moet uitvoeren om u voor te bereiden op het aanroepen van **New-AzSqlServerVirtualNetworkRule** . In dit artikel vinden deze aanroepen plaats in [script 3 "virtuele netwerk regel"](#a-script-30):
 
-1. [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig): Hiermee wordt een subnetobject gemaakt.
-2. [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork): maakt uw virtuele netwerk, waardoor het het subnet.
-3. [Set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetworkSubnetConfig): wijst een virtueel service-eind punt toe aan uw subnet.
-4. [Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetwork): persistente updates die zijn aangebracht in uw virtuele netwerk.
-5. [New-AzSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlservervirtualnetworkrule): nadat het subnet een eind punt is, voegt u het subnet als een regel voor het virtuele netwerk toe aan de ACL van uw server.
-   - Deze cmdlet biedt de para meter **-IgnoreMissingVNetServiceEndpoint**, te beginnen met de module versie 5.1.1 van Azure RM Power shell.
+1. [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig): Hiermee wordt een subnetobject gemaakt.
+2. [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork): maakt uw virtuele netwerk, waardoor het het subnet.
+3. [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/Set-azVirtualNetworkSubnetConfig): wijst een virtueel service-eind punt toe aan uw subnet.
+4. [Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork): persistente updates die zijn aangebracht in uw virtuele netwerk.
+5. [New-AzSqlServerVirtualNetworkRule](/powershell/module/az.sql/new-azsqlservervirtualnetworkrule): nadat het subnet een eind punt is, voegt u het subnet als een regel voor het virtuele netwerk toe aan de ACL van uw server.
+   - Deze cmdlet biedt de para meter **-IgnoreMissingVNetServiceEndpoint** , te beginnen met de module versie 5.1.1 van Azure RM Power shell.
 
 ## <a name="prerequisites-for-running-powershell"></a>Vereisten voor het uitvoeren van Power shell
 
@@ -382,7 +382,7 @@ U kunt er ook voor zorgen dat u niet zeker weet of uw subnet de naam van het **m
 
 1. Controleer of het subnet de naam van het **micro soft. SQL** -type heeft.
 2. U kunt desgewenst de naam van het type toewijzen als deze niet aanwezig is.
-    - Het script vraagt u om te *bevestigen*voordat de naam van het ontbrekende type wordt toegepast.
+    - Het script vraagt u om te *bevestigen* voordat de naam van het ontbrekende type wordt toegepast.
 
 ### <a name="phases-of-the-script"></a>Fasen van het script
 
@@ -391,7 +391,7 @@ Dit zijn de fasen van het Power shell-script:
 1. Meld u aan bij uw Azure-account en u hebt slechts één keer per PS-sessie nodig.  Variabelen toewijzen.
 2. Zoek naar uw virtuele netwerk en vervolgens naar uw subnet.
 3. Is het subnet gelabeld als **micro soft. SQL** -eindpunt server type?
-4. Voeg in uw subnet een virtueel service-eind punt van de type naam **micro soft. SQL**toe.
+4. Voeg in uw subnet een virtueel service-eind punt van de type naam **micro soft. SQL** toe.
 
 > [!IMPORTANT]
 > Voordat u dit script uitvoert, moet u de waarden bewerken die zijn toegewezen aan de $-variabelen, aan de bovenkant van het script.

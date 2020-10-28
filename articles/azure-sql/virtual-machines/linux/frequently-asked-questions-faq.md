@@ -11,12 +11,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/13/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: afd36eb079b6e5f29fa664050cded3c5ddd17d8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad991974df30060e552d21a44d5796cd2ba165e2
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84669457"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792545"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-virtual-machines"></a>Veelgestelde vragen over SQL Server on Linux virtuele machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -61,7 +61,7 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
 
 1. **Hoe kan ik mijn gelicentieerd exemplaar van SQL Server installeren op een Azure-VM?**
 
-   Maak eerst een virtuele machine met alleen een Linux-besturings systeem. Voer vervolgens de [SQL Server installatie stappen](https://docs.microsoft.com/sql/linux/sql-server-linux-setup#platforms) voor uw Linux-distributie uit. Tenzij u een van de gratis gelicentieerde edities van SQL Server installeert, moet u ook een SQL Server licentie en [License Mobility via Software Assurance op Azure](https://azure.microsoft.com/pricing/license-mobility/)hebben.
+   Maak eerst een virtuele machine met alleen een Linux-besturings systeem. Voer vervolgens de [SQL Server installatie stappen](/sql/linux/sql-server-linux-setup#platforms) voor uw Linux-distributie uit. Tenzij u een van de gratis gelicentieerde edities van SQL Server installeert, moet u ook een SQL Server licentie en [License Mobility via Software Assurance op Azure](https://azure.microsoft.com/pricing/license-mobility/)hebben.
 
 1. **Zijn er installatie kopieën van de virtuele Linux-machine (BYOL) van uw eigen licentie voor SQL Server?**
 
@@ -75,7 +75,7 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
 
 1. **Kan ik een virtuele Linux-machine met SQL Server met SQL Server Management Studio (SSMS) beheren?**
 
-   Ja, maar SSMS is momenteel een Windows-hulp programma. U moet op afstand verbinding maken vanaf een Windows-computer om SSMS te gebruiken met Linux-Vm's met SQL Server. Lokaal op Linux kunnen met het nieuwe hulp programma [MSSQL-conf](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf) veel beheer taken worden uitgevoerd. Zie [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is)voor een hulp programma voor het beheer van meerdere platforms voor data bases.
+   Ja, maar SSMS is momenteel een Windows-hulp programma. U moet op afstand verbinding maken vanaf een Windows-computer om SSMS te gebruiken met Linux-Vm's met SQL Server. Lokaal op Linux kunnen met het nieuwe hulp programma [MSSQL-conf](/sql/linux/sql-server-linux-configure-mssql-conf) veel beheer taken worden uitgevoerd. Zie [Azure Data Studio](/sql/azure-data-studio/what-is)voor een hulp programma voor het beheer van meerdere platforms voor data bases.
 
 1. **Kan ik SQL Server volledig verwijderen van VM met SQL Server?**
 
@@ -85,7 +85,7 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
 
 1. **Hoe kan ik upgrade naar een nieuwe versie/editie van de SQL Server in een Azure VM?**
 
-   er wordt momenteel geen upgrade uitgevoerd voor SQL Server in een virtuele machine van Azure. Maak een nieuwe virtuele Azure-machine met de gewenste SQL Server versie/editie en migreer vervolgens uw data bases naar de nieuwe server met behulp van [standaard technieken voor gegevens migratie](https://docs.microsoft.com/sql/linux/sql-server-linux-migrate-overview).
+   er wordt momenteel geen upgrade uitgevoerd voor SQL Server in een virtuele machine van Azure. Maak een nieuwe virtuele Azure-machine met de gewenste SQL Server versie/editie en migreer vervolgens uw data bases naar de nieuwe server met behulp van [standaard technieken voor gegevens migratie](/sql/linux/sql-server-linux-migrate-overview).
 
 ## <a name="general"></a>Algemeen
 
@@ -95,13 +95,13 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
 
 ## <a name="resources"></a>Resources
 
-**Virtuele Linux-machines**:
+**Virtuele Linux-machines** :
 
 * [Overzicht van SQL Server op een Linux-VM](sql-server-on-linux-vm-what-is-iaas-overview.md)
 * [SQL Server inrichten op een Linux-VM](sql-vm-create-portal-quickstart.md)
-* [Documentatie voor SQL Server op Linux](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)
+* [Documentatie voor SQL Server op Linux](/sql/linux/sql-server-linux-overview)
 
-**Windows-vm's**:
+**Windows-vm's** :
 
 * [Overzicht van SQL Server op een Windows-VM](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [SQL Server inrichten op een Windows-VM](../windows/sql-vm-create-portal-quickstart.md)

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: cawa
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 96b6b262765a361befeadd9b5a42d37ca5e66497
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 57cda5104551f8b62d157e443a42c5e3c75e4ddf
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372052"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792409"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Instellingen voor geheime toepassingen veilig opslaan voor een webtoepassing
 
@@ -30,7 +30,7 @@ Om ervoor te zorgen dat het ontwikkel proces veilig is, worden hulp middelen en 
 ## <a name="aspnet-and-net-core-applications"></a>ASP.NET-en .NET core-toepassingen
 
 ### <a name="save-secret-settings-in-user-secret-store-that-is-outside-of-source-control-folder"></a>Bewaar geheime instellingen in het geheime archief van de gebruiker die zich buiten de map voor broncode beheer bevindt
-Als u een snel prototype uitvoert of als u geen toegang hebt tot internet, start u met het verplaatsen van de geheime instellingen buiten de map voor het opslaan van gebruikers naar het geheime archief van de gebruiker. Geheim archief van de gebruiker is een bestand dat is opgeslagen in de map gebruikers Profiler, waardoor geheimen niet zijn ingecheckt bij broncode beheer. In het volgende diagram ziet u hoe [gebruikers geheimen](https://docs.microsoft.com/aspnet/core/security/app-secrets?tabs=visual-studio) werkt.
+Als u een snel prototype uitvoert of als u geen toegang hebt tot internet, start u met het verplaatsen van de geheime instellingen buiten de map voor het opslaan van gebruikers naar het geheime archief van de gebruiker. Geheim archief van de gebruiker is een bestand dat is opgeslagen in de map gebruikers Profiler, waardoor geheimen niet zijn ingecheckt bij broncode beheer. In het volgende diagram ziet u hoe [gebruikers geheimen](/aspnet/core/security/app-secrets?tabs=visual-studio) werkt.
 
 ![Gebruikers geheim houdt geheime instellingen buiten broncode beheer](../media/vs-secure-secret-appsettings/aspnetcore-usersecret.PNG)
 
@@ -43,7 +43,7 @@ Als u een project ontwikkelt en de bron code veilig moet delen, gebruikt u [Azur
 
     ![Azure Key Vault maken](../media/vs-secure-secret-appsettings/create-keyvault.PNG)
 
-2. Ken u en uw team leden toegang tot de Key Vault. Als u een groot team hebt, kunt u een [Azure Active Directory groep](../../active-directory/active-directory-groups-create-azure-portal.md) maken en die beveiligings groep toevoegen aan de Key Vault. Selecteer in de vervolg keuzelijst *geheime machtigingen* de optie *ophalen* en *weer geven* onder *geheime beheer bewerkingen*.
+2. Ken u en uw team leden toegang tot de Key Vault. Als u een groot team hebt, kunt u een [Azure Active Directory groep](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) maken en die beveiligings groep toevoegen aan de Key Vault. Selecteer in de vervolg keuzelijst *geheime machtigingen* de optie *ophalen* en *weer geven* onder *geheime beheer bewerkingen* .
 Als u uw web-app al hebt gemaakt, verleent u de web-app toegang tot de Key Vault zodat deze toegang heeft tot de sleutel kluis zonder dat de geheime configuratie in de app-instellingen of bestanden wordt opgeslagen. Zoek naar uw web-app met behulp van de naam en voeg deze op dezelfde manier toe als u gebruikers toegang verleent.
 
     ![Key Vault toegangs beleid toevoegen](../media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
@@ -103,7 +103,7 @@ Als u wilt door gaan, kunt u [.net 4.7.1 downloaden](https://www.microsoft.com/d
 ### <a name="save-secret-settings-in-a-secret-file-that-is-outside-of-source-control-folder"></a>Bewaar geheime instellingen in een geheim bestand dat zich buiten de map voor broncode beheer bevindt
 Als u een snel prototype schrijft en Azure-resources niet wilt inrichten, gaat u naar deze optie.
 
-1. Klik met de rechter muisknop op het project en selecteer **gebruikers geheimen beheren**. Hiermee installeert u een NuGet-pakket **Microsoft.Configuration.ConfigurationBuilders. UserSecrets** , maakt u een bestand voor het opslaan van geheime instellingen buiten web.config bestand en voegt u een sectie **ConfigBuilders** toe aan het web.config-bestand.
+1. Klik met de rechter muisknop op het project en selecteer **gebruikers geheimen beheren** . Hiermee installeert u een NuGet-pakket **Microsoft.Configuration.ConfigurationBuilders. UserSecrets** , maakt u een bestand voor het opslaan van geheime instellingen buiten web.config bestand en voegt u een sectie **ConfigBuilders** toe aan het web.config-bestand.
 
 2. Geheime instellingen opnemen onder hoofd element. Hieronder ziet u een voor beeld
 

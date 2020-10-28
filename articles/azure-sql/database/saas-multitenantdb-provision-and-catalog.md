@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 0b381e2dbdbfd30d10f37637b30bcdfbab8ed99a
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: eddb0c8339069025f0742e9bcbc371efbef094ee
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331937"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793327"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Nieuwe tenants inrichten en catalogiseren in een SaaS-toepassing met behulp van een shard-multitenant-Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -127,9 +127,9 @@ In deze zelfstudie leert u het volgende:
 
 U kunt deze zelfstudie alleen voltooien als aan de volgende vereisten wordt voldaan:
 
-- Azure PowerShell is geïnstalleerd. Zie [Aan de slag met Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps) voor meer informatie.
+- Azure PowerShell is geïnstalleerd. Zie [Aan de slag met Azure PowerShell](/powershell/azure/get-started-azureps) voor meer informatie.
 
-- De Wingtip Tickets SaaS Multi-tenant Database-app wordt geïmplementeerd. Zie [De Wingtip Tickets SaaS Multi-tenant Database-toepassing implementeren en verkennen](../../sql-database/saas-multitenantdb-get-started-deploy.md) om deze binnen vijf minuten te implementeren
+- De Wingtip Tickets SaaS Multi-tenant Database-app wordt geïmplementeerd. Zie [De Wingtip Tickets SaaS Multi-tenant Database-toepassing implementeren en verkennen](./saas-multitenantdb-get-started-deploy.md) om deze binnen vijf minuten te implementeren
 
 - De Wingtip-scripts en -broncode ophalen:
     - De Wingtip Tickets SaaS-multitenantdatabasescripts en broncode van de toepassing zijn beschikbaar in de GitHub-opslagplaats [WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB).
@@ -173,7 +173,7 @@ Als u wilt weten hoe de Wingtip-app nieuwe tenant-inrichtingen implementeert in 
 
 5. Bekijk de uitvoering van het script via de opties van het menu **Fouten opsporen** , **F10** en **F11** , om aangeroepen functies over te slaan of weer te geven.
 
-Zie [Tips voor het werken met en opsporen van fouten in PowerShell-scripts](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise) voor meer informatie over foutopsporing in PowerShell-scripts.
+Zie [Tips voor het werken met en opsporen van fouten in PowerShell-scripts](/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise) voor meer informatie over foutopsporing in PowerShell-scripts.
 
 ## <a name="provision-a-tenant-in-its-own-database"></a>Een tenant inrichten in zijn *eigen* database
 
@@ -263,9 +263,9 @@ Dit type geautomatiseerde service kan eenvoudig of complex zijn. Met de automati
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-<!-- - Additional [tutorials that build upon the Wingtip SaaS application](../../sql-database/saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)-->
+<!-- - Additional [tutorials that build upon the Wingtip SaaS application](./saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)-->
 - [Clientbibliotheek voor Elastic Database](elastic-database-client-library.md)
-- [How to Debug Scripts in Windows PowerShell ISE](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise) (Fouten opsporen in scripts met Windows PowerShell ISE)
+- [How to Debug Scripts in Windows PowerShell ISE](/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise) (Fouten opsporen in scripts met Windows PowerShell ISE)
 
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -277,5 +277,4 @@ In deze zelfstudie hebt u het volgende geleerd:
 > * Verschillende tenants tegelijk inrichten
 > * De details van het inrichten van tenants en het registreren in de catalogus doorlopen
 
-Ga naar de [zelfstudie Prestatiebewaking](../../sql-database/saas-multitenantdb-performance-monitoring.md).
-
+Ga naar de [zelfstudie Prestatiebewaking](./saas-multitenantdb-performance-monitoring.md).

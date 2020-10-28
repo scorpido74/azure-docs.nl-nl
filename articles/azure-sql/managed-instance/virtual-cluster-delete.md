@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
 ms.date: 06/26/2019
-ms.openlocfilehash: 0b8ceee1260e4209420778d7f327d771b858a899
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ed8f6dc90debddd17282f8f96962ffd78055030
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617720"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791661"
 ---
 # <a name="delete-a-subnet-after-deleting-a-managed-instance-of-sql-managed-instance"></a>Een subnet verwijderen na het verwijderen van een beheerd exemplaar van een SQL-beheerd exemplaar
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -29,7 +29,7 @@ Als u 12 uur niet wilt wachten en de voor keur geeft om het virtuele cluster en 
 
 > [!IMPORTANT]
 > - Het virtuele cluster mag geen beheerde instanties bevatten zodat de verwijdering kan worden voltooid. 
-> - Het verwijderen van een virtueel cluster is ongeveer 1,5 uur lang operationeel (Zie bewerkingen voor beheer van [beheerde exemplaren](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations) voor actuele virtuele cluster verwijderings tijd). Het virtuele cluster wordt nog steeds weer gegeven in de portal totdat dit proces is voltooid.
+> - Het verwijderen van een virtueel cluster is ongeveer 1,5 uur lang operationeel (Zie bewerkingen voor beheer van [beheerde exemplaren](./sql-managed-instance-paas-overview.md#management-operations) voor actuele virtuele cluster verwijderings tijd). Het virtuele cluster wordt nog steeds weer gegeven in de portal totdat dit proces is voltooid.
 
 ## <a name="delete-a-virtual-cluster-from-the-azure-portal"></a>Een virtueel cluster verwijderen uit het Azure Portal
 
@@ -37,7 +37,7 @@ Als u een virtueel cluster wilt verwijderen met behulp van de Azure Portal, zoek
 
 ![Scherm afbeelding van de Azure Portal, waarbij het zoekvak is gemarkeerd](./media/virtual-cluster-delete/virtual-clusters-search.png)
 
-Nadat u het virtuele cluster dat u wilt verwijderen hebt gevonden, selecteert u deze resource en selecteert u **verwijderen**. U wordt gevraagd om het verwijderen van het virtuele cluster te bevestigen.
+Nadat u het virtuele cluster dat u wilt verwijderen hebt gevonden, selecteert u deze resource en selecteert u **verwijderen** . U wordt gevraagd om het verwijderen van het virtuele cluster te bevestigen.
 
 ![Scherm opname van het dash board van de Azure Portal virtuele clusters, met de optie verwijderen gemarkeerd](./media/virtual-cluster-delete/virtual-clusters-delete.png)
 
@@ -48,7 +48,7 @@ In Azure Portal meldingen wordt een bevestiging weer gegeven dat de aanvraag voo
 
 ## <a name="delete-a-virtual-cluster-by-using-the-api"></a>Een virtueel cluster verwijderen met de API
 
-Als u een virtueel cluster wilt verwijderen via de API, gebruikt u de URI-para meters die zijn opgegeven in de methode voor het [verwijderen van virtuele clusters](https://docs.microsoft.com/rest/api/sql/virtualclusters/delete).
+Als u een virtueel cluster wilt verwijderen via de API, gebruikt u de URI-para meters die zijn opgegeven in de methode voor het [verwijderen van virtuele clusters](/rest/api/sql/virtualclusters/delete).
 
 ## <a name="next-steps"></a>Volgende stappen
 

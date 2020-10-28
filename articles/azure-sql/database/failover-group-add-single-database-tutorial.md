@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 06/19/2019
-ms.openlocfilehash: 5fca46e7bf80504632e0894deefa1805a080b3b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4709bf901ed74e0ea7589824a280651f8b73866
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442724"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793378"
 ---
 # <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>Zelfstudie: Een Azure SQL Database toevoegen aan een groep voor automatische failover
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -75,21 +75,21 @@ Maak uw failovergroep en voeg uw database toe met behulp van de Azure-portal.
 
    ![Nieuwe failovergroep toevoegen](./media/failover-group-add-single-database-tutorial/sqldb-add-new-failover-group.png)
 
-1. Voer op de pagina **Failovergroep maken** de volgende waarden in en selecteer **Maken**:
+1. Voer op de pagina **Failovergroep maken** de volgende waarden in en selecteer **Maken** :
 
-   - **Naam van failovergroep**: Typ een unieke naam voor de failovergroep, zoals `failovergrouptutorial`.
-   - **Secundaire server**: Selecteer de optie *Vereiste instellingen configureren* en kies vervolgens **Een nieuwe server maken**. U kunt ook een al bestaande server kiezen als secundaire server. Nadat u de volgende waarden hebt ingevoerd, selecteert u **Selecteren**.
-      - **Servernaam**: Typ een unieke naam voor de secundaire server, zoals `mysqlsecondary`.
-      - **Aanmeldgegevens van serverbeheerder**: Type `azureuser`
-      - **Wachtwoord**: Typ een complex wachtwoord dat voldoet aan de wachtwoordvereisten.
-      - **Locatie**: Kies een locatie in de vervolgkeuzelijst, zoals `East US`. Deze locatie mag niet dezelfde locatie zijn als die van uw primaire server.
+   - **Naam van failovergroep** : Typ een unieke naam voor de failovergroep, zoals `failovergrouptutorial`.
+   - **Secundaire server** : Selecteer de optie *Vereiste instellingen configureren* en kies vervolgens **Een nieuwe server maken** . U kunt ook een al bestaande server kiezen als secundaire server. Nadat u de volgende waarden hebt ingevoerd, selecteert u **Selecteren** .
+      - **Servernaam** : Typ een unieke naam voor de secundaire server, zoals `mysqlsecondary`.
+      - **Aanmeldgegevens van serverbeheerder** : Type `azureuser`
+      - **Wachtwoord** : Typ een complex wachtwoord dat voldoet aan de wachtwoordvereisten.
+      - **Locatie** : Kies een locatie in de vervolgkeuzelijst, zoals `East US`. Deze locatie mag niet dezelfde locatie zijn als die van uw primaire server.
 
      > [!NOTE]
      > De aanmeldings- en firewall-instellingen van de server moeten overeenkomen met die van de primaire server.
 
      ![Een secundaire server maken voor de failovergroep](./media/failover-group-add-single-database-tutorial/create-secondary-failover-server.png)
 
-   - **Databases in de groep**: Wanneer een secundaire server is geselecteerd, wordt deze optie ontgrendeld. Selecteer deze optie om **Toe te voegen databases te selecteren** en kies de database die u in sectie 1 hebt gemaakt. Door de database aan de failovergroep toe te voegen, wordt het proces voor geo-replicatie automatisch gestart.
+   - **Databases in de groep** : Wanneer een secundaire server is geselecteerd, wordt deze optie ontgrendeld. Selecteer deze optie om **Toe te voegen databases te selecteren** en kies de database die u in sectie 1 hebt gemaakt. Door de database aan de failovergroep toe te voegen, wordt het proces voor geo-replicatie automatisch gestart.
 
    ![SQL Database aan failovergroep toevoegen](./media/failover-group-add-single-database-tutorial/add-sqldb-to-failover-group.png)
 
@@ -373,7 +373,7 @@ In dit gedeelte van de zelfstudie worden de volgende Azure CLI-cmdlets gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
+| [az group delete](/cli/azure/vm/extension#az-vm-extension-set) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 
 ---
 
@@ -417,7 +417,7 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 | [az sql failover-group create](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create) | Hiermee maakt u een failovergroep in Azure SQL Database. |
 | [az sql failover-group list](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list) | Hiermee worden de failovergroepen op een server in Azure SQL Database weergegeven. |
 | [az sql failover-group set-primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | Stel de primaire server van de failovergroep in door het uitvoeren van een failover voor alle databases van de huidige primaire server. |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
+| [az group delete](/cli/azure/vm/extension#az-vm-extension-set) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 
 # <a name="the-portal"></a>[De portal](#tab/azure-portal)
 

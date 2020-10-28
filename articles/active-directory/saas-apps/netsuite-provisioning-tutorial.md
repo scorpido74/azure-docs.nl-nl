@@ -10,16 +10,21 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: faf66b9a261fd4e8f63779b3d254de4c44d1d731
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8406ee5647d02cc917a0fdb1daf2355611bb781d
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92513899"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792205"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Zelf studie: een NetSuite configureren voor het automatisch inrichten van gebruikers
 
 Het doel van deze zelf studie is om u te laten zien welke stappen u moet uitvoeren in OneWorld en Azure AD voor het automatisch inrichten en inleveren van gebruikers accounts van Azure AD naar Netsuite.
+
+> [!NOTE]
+> Deze integratie verifieert momenteel met behulp van basis verificatie (gebruikers naam en wacht woord). Netsuite heeft een multi-factor Authentication-vereiste geïmplementeerd waarmee wordt voor komen dat klanten deze integratie gebruiken, tenzij ze een vrijs telling hebben van deze vereiste. We werken samen met NetSuite om deze integratie bij te werken naar een nieuwere verificatie methode zodat klanten zonder een uitzonde ring opnieuw kunnen worden gebruikt. Dit document wordt met een letter ETA bijgewerkt zodra er een beschikbaar is.
+
+Aanbevolen actie: wacht tot de update is uitgebracht voor het verificatie gedrag van deze integratie of neem contact op met de ondersteuning van NetSuite om een uitzonde ring op de multi-factor Authentication-vereiste op te vragen.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -28,7 +33,7 @@ In het scenario dat in deze zelfstudie wordt beschreven, wordt ervan uitgegaan d
 *   Een Azure Active Directory-Tenant.
 *   Een OneWorld-abonnement van NetSuite. Houd er rekening mee dat automatische gebruikers inrichting momenteel alleen wordt ondersteund met NetSuite OneWorld.
 *   Een gebruikers account in NetSuite met beheerders machtigingen.
-*   Voor de integratie met Azure AD is een twee ledige-uitzonde ring vereist. Neem contact op met het ondersteunings team van NetSuite voor deze uitzonde ring.
+*   Voor de integratie met Azure AD is een twee ledige-uitzonde ring vereist. Neem contact op met het ondersteunings team van NetSuite om deze uitzonde ring aan te vragen.
 
 ## <a name="assigning-users-to-netsuite-oneworld"></a>Gebruikers toewijzen aan NetSuite OneWorld
 
@@ -61,7 +66,7 @@ Het doel van deze sectie is het maken van een overzicht van het inschakelen van 
 
 1. Selecteer uw exemplaar van NetSuite en selecteer vervolgens het tabblad **inrichten** .
 
-1. Stel de **Inrichtingsmodus** in op **Automatisch**. 
+1. Stel de **Inrichtingsmodus** in op **Automatisch** . 
 
     ![Scherm afbeelding toont de inrichtings pagina van de Netsuite, waarbij de inrichtings modus is ingesteld op automatisch en andere waarden die u kunt instellen.](./media/netsuite-provisioning-tutorial/provisioning.png)
 

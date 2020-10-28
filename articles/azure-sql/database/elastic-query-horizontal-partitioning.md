@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/03/2019
-ms.openlocfilehash: ced546f8f4375433d9fcd59f7ce46f9604f72921
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 148c4828309738a18dbda5fd35ea634e8384bfde
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443126"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792103"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>Rapportage over uitgeschaalde Cloud databases (preview-versie)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,10 +40,10 @@ Zie [Query's uitvoeren in Cloud databases met verschillende schema's](elastic-qu
 
 Deze instructies maken de meta gegevens weergave van uw Shard-gegevenslaag in de Elastic query-data base.
 
-1. [HOOFD SLEUTEL MAKEN](https://msdn.microsoft.com/library/ms174382.aspx)
-2. [DATA BASE-SCOPED REFERENTIE MAKEN](https://msdn.microsoft.com/library/mt270260.aspx)
-3. [CREATE EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx)
-4. [CREATE EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx)
+1. [HOOFD SLEUTEL MAKEN](/sql/t-sql/statements/create-master-key-transact-sql)
+2. [DATA BASE-SCOPED REFERENTIE MAKEN](/sql/t-sql/statements/create-database-scoped-credential-transact-sql)
+3. [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql)
+4. [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql)
 
 ## <a name="11-create-database-scoped-master-key-and-credentials"></a>1,1 Create Data Base scoped Master Key and referenties
 
@@ -57,7 +57,7 @@ SECRET = '<password>'
 ```
 
 > [!NOTE]
-> Zorg ervoor dat het achtervoegsel ' * \<username\> "* geen * \@ Server naam"* bevat.
+> Zorg ervoor dat het achtervoegsel ' *\<username\> "* geen *\@ Server naam"* bevat.
 
 ## <a name="12-create-external-data-sources"></a>1,2 externe gegevens bronnen maken
 
@@ -163,7 +163,7 @@ De distributie component geeft de gegevens distributie op die voor deze tabel wo
 2. **Gerepliceerd** betekent dat identieke kopieën van de tabel aanwezig zijn op elke Data Base. Het is uw verantwoordelijkheid om ervoor te zorgen dat de replica's identiek zijn in de data bases.
 3. **Ronde \_ ROBIN** betekent dat de tabel horizon taal is gepartitioneerd met behulp van een toepassings afhankelijke distributie methode.
 
-**Referentie gegevenslaag**: de externe tabel verwijst DDL naar een externe gegevens bron. De externe gegevens bron geeft een Shard-toewijzing op waarmee de externe tabel wordt voorzien van de informatie die nodig is om alle data bases in uw gegevenslaag te vinden.
+**Referentie gegevenslaag** : de externe tabel verwijst DDL naar een externe gegevens bron. De externe gegevens bron geeft een Shard-toewijzing op waarmee de externe tabel wordt voorzien van de informatie die nodig is om alle data bases in uw gegevenslaag te vinden.
 
 ### <a name="security-considerations"></a>Beveiligingsoverwegingen
 
@@ -194,7 +194,7 @@ Met de volgende query wordt een drieweg-koppeling tussen magazijnen, orders en o
 
 ## <a name="stored-procedure-for-remote-t-sql-execution-sp_execute_remote"></a>Opgeslagen procedure voor het uitvoeren van externe T-SQL-uitvoering: SP \_ execute_remote
 
-Met elastische query's wordt ook een opgeslagen procedure geïntroduceerd waarmee direct toegang tot de Shards wordt geboden. De opgeslagen procedure heet [ \_ \_ extern uitvoeren](https://msdn.microsoft.com/library/mt703714) en kan worden gebruikt om externe opgeslagen procedures of T-SQL-code uit te voeren op de externe data bases. Hierbij worden de volgende para meters gebruikt:
+Met elastische query's wordt ook een opgeslagen procedure geïntroduceerd waarmee direct toegang tot de Shards wordt geboden. De opgeslagen procedure heet [ \_ \_ extern uitvoeren](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database) en kan worden gebruikt om externe opgeslagen procedures of T-SQL-code uit te voeren op de externe data bases. Hierbij worden de volgende para meters gebruikt:
 
 * Naam van de gegevens bron (nvarchar): de naam van de externe gegevens bron van het type RDBMS.
 * Query (nvarchar): de T-SQL-query die moet worden uitgevoerd op elke Shard.
@@ -228,7 +228,7 @@ Gebruik reguliere SQL Server verbindings reeksen om uw toepassing, uw BI-en gege
 * Zie [Aan de slag met query's op meerdere databases (verticale partitionering)](elastic-query-getting-started-vertical.md) voor een zelfstudie over verticale partitionering.
 * Zie [Query's uitvoeren op verticaal gepartitioneerde gegevens](elastic-query-vertical-partitioning.md) voor de syntaxis van en voorbeeldquery's voor verticaal gepartitioneerde gegevens
 * Zie [Aan de slag met elastische query's voor horizontale partitionering (sharding)](elastic-query-getting-started.md) voor een zelfstudie over horizontale partitionering (sharding).
-* Zie [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714) voor een opgeslagen procedure waarmee een Transact-SQL-instructie wordt uitgevoerd op één externe Azure SQL-database of een aantal databases die als shards fungeren in een schema voor horizontale partitionering.
+* Zie [sp\_execute \_remote](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database) voor een opgeslagen procedure waarmee een Transact-SQL-instructie wordt uitgevoerd op één externe Azure SQL-database of een aantal databases die als shards fungeren in een schema voor horizontale partitionering.
 
 <!--Image references-->
 [1]: ./media/elastic-query-horizontal-partitioning/horizontalpartitioning.png

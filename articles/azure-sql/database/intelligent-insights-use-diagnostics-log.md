@@ -11,17 +11,17 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 06/12/2020
-ms.openlocfilehash: 5fd0f14f4bbc919efd5b3c236b13654574d456d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 488d10906039327d830bfb6bcffc3163d65ad01e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334970"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792035"
 ---
 # <a name="use-the-intelligent-insights-performance-diagnostics-log-of-azure-sql-database-and-azure-sql-managed-instance-performance-issues"></a>Het Intelligent Insights prestatie diagnose logboek van Azure SQL Database en prestatie problemen met Azure SQL Managed instance gebruiken
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Deze pagina bevat informatie over het gebruik van het logboek voor prestatie diagnose dat is gegenereerd door [intelligent Insights](intelligent-insights-overview.md) van Azure SQL database en prestatie problemen met Azure SQL Managed instance, de indeling en de gegevens die het bevat voor uw aangepaste ontwikkelings behoeften. U kunt dit diagnostische logboek verzenden naar [Azure monitor-logboeken](../../azure-monitor/insights/azure-sql.md), [Azure Event hubs](../../azure-monitor/platform/resource-logs-stream-event-hubs.md), [Azure Storage](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)of een oplossing van derden voor aangepaste DevOps-waarschuwingen en rapportage mogelijkheden.
+Deze pagina bevat informatie over het gebruik van het logboek voor prestatie diagnose dat is gegenereerd door [intelligent Insights](intelligent-insights-overview.md) van Azure SQL database en prestatie problemen met Azure SQL Managed instance, de indeling en de gegevens die het bevat voor uw aangepaste ontwikkelings behoeften. U kunt dit diagnostische logboek verzenden naar [Azure monitor-logboeken](../../azure-monitor/insights/azure-sql.md), [Azure Event hubs](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs), [Azure Storage](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)of een oplossing van derden voor aangepaste DevOps-waarschuwingen en rapportage mogelijkheden.
 
 > [!NOTE]
 > Intelligent Insights is een preview-functie die niet beschikbaar is in de volgende regio's: Europa-west, Europa-noord, VS-West 1 en VS-Oost 1.
@@ -144,5 +144,5 @@ U kunt het Intelligent Insights prestatie logboek gebruiken met [Azure monitor-l
 
 - Meer informatie over [intelligent Insights](intelligent-insights-overview.md) -concepten.
 - Meer informatie over het [oplossen van prestatie problemen met intelligent Insights](intelligent-insights-troubleshoot-performance.md).
-- Meer informatie over het [bewaken van prestatie problemen met behulp van Azure SQL-analyse](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).
-- Meer informatie over het [verzamelen en gebruiken van logboek gegevens van uw Azure-resources](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
+- Meer informatie over het [bewaken van prestatie problemen met behulp van Azure SQL-analyse](../../azure-monitor/insights/azure-sql.md).
+- Meer informatie over het [verzamelen en gebruiken van logboek gegevens van uw Azure-resources](../../azure-monitor/platform/platform-logs-overview.md).

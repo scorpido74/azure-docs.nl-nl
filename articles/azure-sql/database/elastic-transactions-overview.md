@@ -1,5 +1,5 @@
 ---
-title: Gedistribueerde trans acties in Cloud databases (preview-versie)
+title: Over clouddatabases gedistribueerde transacties (preview)
 description: Overzicht van Elastic Database transacties met Azure SQL Database en Azure SQL Managed instance.
 services: sql-database
 ms.service: sql-database
@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 369f79a436d76e6a1bf1a1ce64f7754f25a5abc5
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 5504b9bc87f78682ff584006255d4e75e5e69fa7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058043"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793344"
 ---
-# <a name="distributed-transactions-across-cloud-databases-preview"></a>Gedistribueerde trans acties in Cloud databases (preview-versie)
+# <a name="distributed-transactions-across-cloud-databases-preview"></a>Over clouddatabases gedistribueerde transacties (preview)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Met Elastic data base-trans acties voor Azure SQL Database en Azure SQL Managed Instance kunt u trans acties uitvoeren die meerdere data bases omvatten. Elastic data base-trans acties zijn beschikbaar voor .NET-toepassingen die gebruikmaken van ADO.NET en kunnen worden geïntegreerd met de bekende programmeer ervaring met behulp van de [System. Trans Action](https://msdn.microsoft.com/library/system.transactions.aspx) -klassen. Zie [.NET Framework 4.6.1 (web installer)](https://www.microsoft.com/download/details.aspx?id=49981)om de tape wisselaar op te halen.
-Daarnaast zijn voor beheerde instantie gedistribueerde trans acties beschikbaar in [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql).
+Met Elastic data base-trans acties voor Azure SQL Database en Azure SQL Managed Instance kunt u trans acties uitvoeren die meerdere data bases omvatten. Elastic data base-trans acties zijn beschikbaar voor .NET-toepassingen die gebruikmaken van ADO.NET en kunnen worden geïntegreerd met de bekende programmeer ervaring met behulp van de [System. Trans Action](/dotnet/api/system.transactions) -klassen. Zie [.NET Framework 4.6.1 (web installer)](https://www.microsoft.com/download/details.aspx?id=49981)om de tape wisselaar op te halen.
+Daarnaast zijn voor beheerde instantie gedistribueerde trans acties beschikbaar in [Transact-SQL](/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql).
 
 In een on-premises-scenario moet micro soft Distributed Transaction Coordinator (MSDTC) meestal worden uitgevoerd. Omdat MSDTC niet beschikbaar is voor platform-as-a-service-toepassingen in azure, is de mogelijkheid om gedistribueerde trans acties te coördineren, nu rechtstreeks geïntegreerd in SQL Database of een beheerd exemplaar. Toepassingen kunnen verbinding maken met elke Data Base om gedistribueerde trans acties te starten. een van de data bases of servers zal de gedistribueerde trans actie transparant coördineren, zoals wordt weer gegeven in de volgende afbeelding.
 
@@ -32,7 +32,7 @@ In dit document worden "gedistribueerde trans acties" en "Elastic data base tran
 
 ## <a name="common-scenarios"></a>Algemene scenario's
 
-Met Elastic data base transacties kunnen toepassingen atomische wijzigingen aanbrengen in gegevens die in verschillende data bases zijn opgeslagen. Het voor beeld is gericht op de ontwikkelings ervaringen aan client zijde in C# en .NET. Een server ervaring (code die is geschreven in opgeslagen procedures of scripts aan de server zijde) met behulp van [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql) is alleen beschikbaar voor beheerde exemplaren.
+Met Elastic data base transacties kunnen toepassingen atomische wijzigingen aanbrengen in gegevens die in verschillende data bases zijn opgeslagen. Het voor beeld is gericht op de ontwikkelings ervaringen aan client zijde in C# en .NET. Een server ervaring (code die is geschreven in opgeslagen procedures of scripts aan de server zijde) met behulp van [Transact-SQL](/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql) is alleen beschikbaar voor beheerde exemplaren.
 > [!IMPORTANT]
 > In de preview-periode wordt het uitvoeren van elastische database transacties tussen Azure SQL Database en Azure SQL Managed instance op dit moment niet ondersteund. Elastische-database transactie kan alleen over meerdere sets SQL-data bases of een set beheerde exemplaren beschikken.
 
@@ -136,9 +136,9 @@ Het volgende codevoorbeeld illustreert deze aanpak. Hierbij wordt ervan uitgegaa
 
 ## <a name="transact-sql-development-experience"></a>Ontwikkelings ervaring voor Transact-SQL
 
-Een gedistribueerde trans actie op de server met behulp van Transact-SQL is alleen beschikbaar voor Azure SQL Managed instance. Gedistribueerde trans actie kan alleen worden uitgevoerd tussen beheerde instanties die tot dezelfde [Server vertrouwens groep](https://aka.ms/mitrusted-groups)behoren. In dit scenario moeten beheerde exemplaren een [gekoppelde server](https://docs.microsoft.com/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine#TsqlProcedure) gebruiken om naar elkaar te verwijzen.
+Een gedistribueerde trans actie op de server met behulp van Transact-SQL is alleen beschikbaar voor Azure SQL Managed instance. Gedistribueerde trans actie kan alleen worden uitgevoerd tussen beheerde instanties die tot dezelfde [Server vertrouwens groep](../managed-instance/server-trust-group-overview.md)behoren. In dit scenario moeten beheerde exemplaren een [gekoppelde server](/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine#TsqlProcedure) gebruiken om naar elkaar te verwijzen.
 
-De volgende Transact-SQL-voorbeeld code maakt gebruik van de [begin GEdistribueerde trans actie](https://docs.microsoft.com/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql) om gedistribueerde trans actie te starten.
+De volgende Transact-SQL-voorbeeld code maakt gebruik van de [begin GEdistribueerde trans actie](/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql) om gedistribueerde trans actie te starten.
 
 ```Transact-SQL
 
@@ -192,7 +192,7 @@ Hier volgt een voor beeld waarin trans actie expliciet wordt bevorderd tot gedis
             Helper.ExecuteNonQueryOnOpenConnection(conn, "BEGIN DISTRIBUTED TRAN");
             // ...
         }
-     
+     
         using (SqlConnection conn2 = new SqlConnection(DB1_ConnectionString)
         {
             conn2.Open();
@@ -232,19 +232,19 @@ In het volgende voor beeld ziet u een trans actie die impliciet wordt bevorderd 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> De module PowerShell Azure Resource Manager wordt nog steeds ondersteund in Azure SQL Database, maar alle toekomstige ontwikkeling is voor de Az.Sql-module. Zie [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/) voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek.
+> De module PowerShell Azure Resource Manager wordt nog steeds ondersteund in Azure SQL Database, maar alle toekomstige ontwikkeling is voor de Az.Sql-module. Zie [AzureRM.Sql](/powershell/module/AzureRM.Sql/) voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek.
 
 Elastische-database transacties worden ondersteund op verschillende servers in Azure SQL Database. Als trans acties meerdere server grenzen, moeten de deelnemende servers eerst worden ingevoerd in een wederzijdse communicatie relatie. Zodra de communicatie relatie tot stand is gebracht, kan elke data base in een van de twee servers deel nemen aan elastische trans acties met data bases van de andere server. Met trans acties die meer dan twee servers omspannen, moet er een communicatie relatie zijn voor elk paar servers.
 
 Gebruik de volgende Power shell-cmdlets voor het beheren van communicatie relaties tussen servers voor Elastic data base-trans acties:
 
-* **New-AzSqlServerCommunicationLink**: gebruik deze cmdlet om een nieuwe communicatie relatie te maken tussen twee servers in Azure SQL database. De relatie is symmetrisch, wat betekent dat beide servers trans acties kunnen initiëren met de andere server.
-* **Get-AzSqlServerCommunicationLink**: gebruik deze cmdlet om bestaande communicatie relaties en hun eigenschappen op te halen.
-* **Remove-AzSqlServerCommunicationLink**: gebruik deze cmdlet om een bestaande communicatie relatie te verwijderen.
+* **New-AzSqlServerCommunicationLink** : gebruik deze cmdlet om een nieuwe communicatie relatie te maken tussen twee servers in Azure SQL database. De relatie is symmetrisch, wat betekent dat beide servers trans acties kunnen initiëren met de andere server.
+* **Get-AzSqlServerCommunicationLink** : gebruik deze cmdlet om bestaande communicatie relaties en hun eigenschappen op te halen.
+* **Remove-AzSqlServerCommunicationLink** : gebruik deze cmdlet om een bestaande communicatie relatie te verwijderen.
 
 ## <a name="transactions-across-multiple-servers-for-azure-sql-managed-instance"></a>Trans acties op meerdere servers voor Azure SQL Managed instance
 
-Gedistribueerde trans acties worden ondersteund op verschillende servers in Azure SQL Managed instance. Wanneer trans acties intermanaged instance grenzen overschrijden, moeten de deelnemende instanties eerst worden ingevoerd in een onderlinge beveiligings-en communicatie relatie. Dit doet u door een [Server vertrouwensrelatie groep](https://aka.ms/mitrusted-groups)te maken die kan worden uitgevoerd op Azure Portal. Als beheerde exemplaren zich niet in hetzelfde virtuele netwerk bevinden, moet de [peering van het virtuele netwerk](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) worden ingesteld en binnenkomende en uitgaande regels van de netwerk beveiligings groep moeten poorten 5024 en 11000-12000 toestaan voor alle deelnemende virtuele netwerken.
+Gedistribueerde trans acties worden ondersteund op verschillende servers in Azure SQL Managed instance. Wanneer trans acties intermanaged instance grenzen overschrijden, moeten de deelnemende instanties eerst worden ingevoerd in een onderlinge beveiligings-en communicatie relatie. Dit doet u door een [Server vertrouwensrelatie groep](../managed-instance/server-trust-group-overview.md)te maken die kan worden uitgevoerd op Azure Portal. Als beheerde exemplaren zich niet in hetzelfde virtuele netwerk bevinden, moet de [peering van het virtuele netwerk](../../virtual-network/virtual-network-peering-overview.md) worden ingesteld en binnenkomende en uitgaande regels van de netwerk beveiligings groep moeten poorten 5024 en 11000-12000 toestaan voor alle deelnemende virtuele netwerken.
 
   ![Server vertrouwens groepen in azure Portal][3]
 
@@ -254,13 +254,13 @@ In het volgende diagram ziet u de vertrouwens groep van de server met beheerde i
 
 ## <a name="monitoring-transaction-status"></a>Controle transactie status
 
-Gebruik dynamische beheer weergaven (Dmv's) om de status en voortgang van uw lopende elastische database transacties te bewaken. Alle Dmv's die betrekking hebben op trans acties zijn relevant voor gedistribueerde trans acties in SQL Database en een beheerd exemplaar. U vindt de bijbehorende lijst met Dmv's hier: [trans actie-gerelateerde dynamische beheer weergaven en-functies (Transact-SQL)](https://msdn.microsoft.com/library/ms178621.aspx).
+Gebruik dynamische beheer weergaven (Dmv's) om de status en voortgang van uw lopende elastische database transacties te bewaken. Alle Dmv's die betrekking hebben op trans acties zijn relevant voor gedistribueerde trans acties in SQL Database en een beheerd exemplaar. U vindt de bijbehorende lijst met Dmv's hier: [trans actie-gerelateerde dynamische beheer weergaven en-functies (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/transaction-related-dynamic-management-views-and-functions-transact-sql).
 
 Deze Dmv's zijn bijzonder nuttig:
 
-* **sys.DM \_ Tran \_ actieve \_ trans acties**: een lijst met momenteel actieve trans acties en hun status. De kolom UOW (eenheid van werk) kan de verschillende onderliggende trans acties identificeren die deel uitmaken van dezelfde gedistribueerde trans actie. Alle trans acties binnen dezelfde gedistribueerde trans actie hebben dezelfde UOW-waarde. Zie de [dmv-documentatie](https://msdn.microsoft.com/library/ms174302.aspx)voor meer informatie.
-* **sys.DM \_ Tran- \_ database \_ transacties**: biedt aanvullende informatie over trans acties, zoals plaatsing van de trans actie in het logboek. Zie de [dmv-documentatie](https://msdn.microsoft.com/library/ms186957.aspx)voor meer informatie.
-* **sys.DM \_ Tran- \_ vergren delingen**: bevat informatie over de vergren delingen die momenteel worden bewaard door lopende trans acties. Zie de [dmv-documentatie](https://msdn.microsoft.com/library/ms190345.aspx)voor meer informatie.
+* **sys.DM \_ Tran \_ actieve \_ trans acties** : een lijst met momenteel actieve trans acties en hun status. De kolom UOW (eenheid van werk) kan de verschillende onderliggende trans acties identificeren die deel uitmaken van dezelfde gedistribueerde trans actie. Alle trans acties binnen dezelfde gedistribueerde trans actie hebben dezelfde UOW-waarde. Zie de [dmv-documentatie](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-active-transactions-transact-sql)voor meer informatie.
+* **sys.DM \_ Tran- \_ database \_ transacties** : biedt aanvullende informatie over trans acties, zoals plaatsing van de trans actie in het logboek. Zie de [dmv-documentatie](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-database-transactions-transact-sql)voor meer informatie.
+* **sys.DM \_ Tran- \_ vergren delingen** : bevat informatie over de vergren delingen die momenteel worden bewaard door lopende trans acties. Zie de [dmv-documentatie](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql)voor meer informatie.
 
 ## <a name="limitations"></a>Beperkingen
 
@@ -268,19 +268,19 @@ De volgende beperkingen zijn momenteel van toepassing op elastische data base-tr
 
 * Alleen trans acties over data bases in SQL Database worden ondersteund. Andere [X//Open XA-](https://en.wikipedia.org/wiki/X/Open_XA) resource providers en data bases buiten SQL database kunnen geen deel uitmaken van elastische data base-trans acties. Dit betekent dat Elastic data base-trans acties niet kunnen worden uitgerekt over on-premises SQL Server en Azure SQL Database. Ga verder met het gebruik van MSDTC voor gedistribueerde trans acties op locatie.
 * Alleen door de client samengestelde trans acties van een .NET-toepassing worden ondersteund. De server ondersteuning voor T-SQL zoals BEGIN gedistribueerde trans actie is gepland, maar is nog niet beschikbaar.
-* Trans acties via WCF-services worden niet ondersteund. U hebt bijvoorbeeld een WCF-service methode waarmee een trans actie wordt uitgevoerd. Het sluiten van de aanroep binnen een transactie bereik mislukt als [System. service model. ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception).
+* Trans acties via WCF-services worden niet ondersteund. U hebt bijvoorbeeld een WCF-service methode waarmee een trans actie wordt uitgevoerd. Het sluiten van de aanroep binnen een transactie bereik mislukt als [System. service model. ProtocolException](/dotnet/api/system.servicemodel.protocolexception).
 
 De volgende beperkingen zijn momenteel van toepassing op gedistribueerde trans acties in een beheerd exemplaar:
 
 * Alleen trans acties over data bases in een beheerd exemplaar worden ondersteund. Andere [X//Open XA-](https://en.wikipedia.org/wiki/X/Open_XA) resource providers en data bases buiten een Azure SQL Managed instance kunnen niet deel nemen aan gedistribueerde trans acties. Dit betekent dat gedistribueerde trans acties niet kunnen worden uitgerekt over on-premises SQL Server en Azure SQL Managed instance. Ga verder met het gebruik van MSDTC voor gedistribueerde trans acties op locatie.
-* Trans acties via WCF-services worden niet ondersteund. U hebt bijvoorbeeld een WCF-service methode waarmee een trans actie wordt uitgevoerd. Het sluiten van de aanroep binnen een transactie bereik mislukt als [System. service model. ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception).
-* Azure SQL Managed instance moet deel uitmaken van een [Server vertrouwens groep](https://aka.ms/mitrusted-groups) om deel te nemen aan gedistribueerde trans acties.
-* Beperkingen van [Server vertrouwens groepen](https://aka.ms/mitrusted-groups) beïnvloeden gedistribueerde trans acties.
+* Trans acties via WCF-services worden niet ondersteund. U hebt bijvoorbeeld een WCF-service methode waarmee een trans actie wordt uitgevoerd. Het sluiten van de aanroep binnen een transactie bereik mislukt als [System. service model. ProtocolException](/dotnet/api/system.servicemodel.protocolexception).
+* Azure SQL Managed instance moet deel uitmaken van een [Server vertrouwens groep](../managed-instance/server-trust-group-overview.md) om deel te nemen aan gedistribueerde trans acties.
+* Beperkingen van [Server vertrouwens groepen](../managed-instance/server-trust-group-overview.md) beïnvloeden gedistribueerde trans acties.
 * Beheerde instanties die deel nemen aan gedistribueerde trans acties, moeten verbinding hebben via particuliere eind punten (met behulp van een privé IP-adres van het virtuele netwerk waar ze worden geïmplementeerd) en moeten onderling worden gerefereerd met behulp van particuliere FQDN-namen. Client toepassingen kunnen gedistribueerde trans acties op privé-eind punten gebruiken. Daarnaast kunnen client toepassingen gedistribueerde trans acties op open bare eind punten gebruiken wanneer Transact-SQL gebruikmaakt van gekoppelde servers die verwijzen naar privé-eind punten. Deze beperking wordt uitgelegd in het volgende diagram.
   ![Connectiviteits beperking van het particuliere eind punt][4]
 ## <a name="next-steps"></a>Volgende stappen
 
-* Neem voor vragen contact op met de [micro soft Q&een vraag pagina voor SQL database](https://docs.microsoft.com/answers/topics/azure-sql-database.html).
+* Neem voor vragen contact op met de [micro soft Q&een vraag pagina voor SQL database](/answers/topics/azure-sql-database.html).
 * Voor functie aanvragen voegt u deze toe aan het [SQL database feedback forum](https://feedback.azure.com/forums/217321-sql-database/) of het [Managed instance-forum](https://feedback.azure.com/forums/915676-sql-managed-instance).
 
 
@@ -290,4 +290,3 @@ De volgende beperkingen zijn momenteel van toepassing op gedistribueerde trans a
 [2]: ./media/elastic-transactions-overview/sql-mi-distributed-transactions.png
 [3]: ./media/elastic-transactions-overview/server-trust-groups-azure-portal.png
 [4]: ./media/elastic-transactions-overview/managed-instance-distributed-transactions-private-endpoint-limitations.png
- 

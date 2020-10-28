@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: 50e7e597a4fb02919739633529abdbf772bcecea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efab0234d428a8283845946289cdd1e8a17ded26
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443052"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792052"
 ---
 # <a name="adding-a-shard-using-elastic-database-tools"></a>Een Shard toevoegen met behulp van Elastic Database-hulpprogram ma's
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ Als het nieuwe bereik met sleutel waarden niet al deel uitmaakt van een bestaand
 
 ### <a name="example--adding-a-shard-and-its-range-to-an-existing-shard-map"></a>Voor beeld: een Shard en het bijbehorende bereik toevoegen aan een bestaande Shard-toewijzing
 
-In dit voor beeld wordt gebruikgemaakt van de TryGetShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.trygetshard), [.net](https://docs.microsoft.com/previous-versions/azure/dn823929(v=azure.100))), de[CreateShard (Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard)), CreateRangeMapping ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1) -methoden en een exemplaar van de ShardLocation-klasse ([Java](/java/api/com.microsoft.azure.elasticdb.shard.base.shardlocation) [, .net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation)). In het onderstaande voor beeld is een Data Base met de naam **sample_shard_2** en alle benodigde schema objecten erin gemaakt voor het bewaren van het bereik [300, 400).  
+In dit voor beeld wordt gebruikgemaakt van de TryGetShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.trygetshard), [.net](/previous-versions/azure/dn823929(v=azure.100))), de[CreateShard (Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard)), CreateRangeMapping ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1) -methoden en een exemplaar van de ShardLocation-klasse ([Java](/java/api/com.microsoft.azure.elasticdb.shard.base.shardlocation) [, .net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation)). In het onderstaande voor beeld is een Data Base met de naam **sample_shard_2** en alle benodigde schema objecten erin gemaakt voor het bewaren van het bereik [300, 400).  
 
 ```csharp
 // sm is a RangeShardMap object.
@@ -79,6 +79,6 @@ upd.Shard = shard2;
 sm.MarkMappingOnline(sm.UpdateMapping(sm.GetMappingForKey(25), upd));
 ```
 
-**Belang rijk**: gebruik deze techniek alleen als u zeker weet dat het bereik voor de bijgewerkte toewijzing leeg is.  Met de voor gaande methoden worden geen gegevens gecontroleerd voor het bereik dat wordt verplaatst, zodat het het beste is om cheques in uw code op te neemt.  Als er rijen bestaan in het bereik dat wordt verplaatst, komt de werkelijke gegevens distributie niet overeen met de bijgewerkte Shard-toewijzing. Gebruik het [hulp programma voor splitsen en samen voegen](elastic-scale-overview-split-and-merge.md) om in plaats daarvan de bewerking uit te voeren.  
+**Belang rijk** : gebruik deze techniek alleen als u zeker weet dat het bereik voor de bijgewerkte toewijzing leeg is.  Met de voor gaande methoden worden geen gegevens gecontroleerd voor het bereik dat wordt verplaatst, zodat het het beste is om cheques in uw code op te neemt.  Als er rijen bestaan in het bereik dat wordt verplaatst, komt de werkelijke gegevens distributie niet overeen met de bijgewerkte Shard-toewijzing. Gebruik het [hulp programma voor splitsen en samen voegen](elastic-scale-overview-split-and-merge.md) om in plaats daarvan de bewerking uit te voeren.  
 
 [!INCLUDE [elastic-scale-include](../../../includes/elastic-scale-include.md)]

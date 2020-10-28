@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: b6d46dfc348cc518daf2e6af4d5b9677148c3911
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a5206ed55dfe2632c7f6604c4f3d8e3199e23b99
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503212"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792018"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure Machine Learning Studio gebruiken in een virtueel Azure-netwerk
 
@@ -36,7 +36,7 @@ Zie de andere artikelen in deze serie:
 
 
 > [!IMPORTANT]
-> Als uw werk ruimte zich in een __soevereine Cloud__bevindt, zoals Azure Government of Azure China 21vianet, bieden geïntegreerde notebooks _geen_ ondersteuning voor het gebruik van opslag die zich in een virtueel netwerk bevindt. In plaats daarvan kunt u Jupyter-notebooks van een reken instantie gebruiken. Zie de sectie [toegang tot gegevens in een reken instantie-notitie blok](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook) voor meer informatie.
+> Als uw werk ruimte zich in een __soevereine Cloud__ bevindt, zoals Azure Government of Azure China 21vianet, bieden geïntegreerde notebooks _geen_ ondersteuning voor het gebruik van opslag die zich in een virtueel netwerk bevindt. In plaats daarvan kunt u Jupyter-notebooks van een reken instantie gebruiken. Zie de sectie [toegang tot gegevens in een reken instantie-notitie blok](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook) voor meer informatie.
 
 
 ## <a name="prerequisites"></a>Vereisten
@@ -66,9 +66,6 @@ Als u de beheerde identiteit niet inschakelt, wordt deze fout ook weer gegeven, 
 * Een AutoML-experiment verzenden.
 * Een label project starten.
 
-> [!NOTE]
-> [Ml van ondersteunde gegevens etikettering](how-to-create-labeling-projects.md#use-ml-assisted-labeling) biedt geen ondersteuning voor standaard opslag accounts die zijn beveiligd achter een virtueel netwerk. U moet een niet-standaard opslagaccount gebruiken voor het labelen van gegevens met behulp van ML. Het niet-standaard opslagaccount kan worden beveiligd achter het virtuele netwerk. 
-
 De Studio ondersteunt het lezen van gegevens uit de volgende gegevensopslag typen in een virtueel netwerk:
 
 * Azure Blob
@@ -76,17 +73,21 @@ De Studio ondersteunt het lezen van gegevens uit de volgende gegevensopslag type
 * Azure Data Lake Storage Gen2
 * Azure SQL Database
 
-### <a name="configure-datastores-to-use-managed-identity"></a>Gegevens opslag configureren voor het gebruik van beheerde identiteit
+### <a name="grant-workspace-managed-identity-__reader__-access-to-storage-private-link"></a>Toegang tot de beheerde __identiteit van__ de werk ruimte verlenen aan de persoonlijke opslag koppeling
+
+Deze stap is alleen vereist als u het Azure Storage-account aan uw virtuele netwerk hebt toegevoegd met een [persoonlijk eind punt](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints). Zie de ingebouwde rol van [lezer](../role-based-access-control/built-in-roles.md#reader) voor meer informatie.
+
+### <a name="configure-datastores-to-use-workspace-managed-identity"></a>Data stores configureren voor het gebruik van beheerde identiteiten voor werk ruimten
 
 Azure Machine Learning maakt gebruik van [data stores](concept-data.md#datastores) om verbinding te maken met opslag accounts. Gebruik de volgende stappen om uw gegevens opslag te configureren voor het gebruik van beheerde identiteit. 
 
-1. Selecteer __gegevens opslag__in de Studio.
+1. Selecteer __gegevens opslag__ in de Studio.
 
-1. Selecteer __+ Nieuw gegevens archief__als u een nieuwe gegevens opslag wilt maken.
+1. Selecteer __+ Nieuw gegevens archief__ als u een nieuwe gegevens opslag wilt maken.
 
-    Als u een bestaande gegevens opslag wilt bijwerken, selecteert u de gegevens opslag en selecteert u __referenties bijwerken__.
+    Als u een bestaande gegevens opslag wilt bijwerken, selecteert u de gegevens opslag en selecteert u __referenties bijwerken__ .
 
-1. Selecteer in de instellingen voor gegevens archief de optie __Ja__  __Als u wilt dat Azure machine learning-service toegang heeft tot de opslag met behulp van een door werk ruimte beheerde identiteit__.
+1. Selecteer in de instellingen voor gegevens archief de optie __Ja__  __Als u wilt dat Azure machine learning-service toegang heeft tot de opslag met behulp van een door werk ruimte beheerde identiteit__ .
 
 
 Met deze stappen wordt de door de werk ruimte beheerde identiteit als __lezer__ aan de opslag service toegevoegd met behulp van Azure resource-based Access Control (Azure RBAC). Met __Reader__ toegang kan de werk ruimte Firewall instellingen ophalen en ervoor zorgen dat gegevens het virtuele netwerk niet verlaten.
@@ -100,7 +101,7 @@ Het gebruik van beheerde identiteit voor toegang tot opslag Services heeft betre
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 
-Voor __Azure Blob Storage__wordt de door de werk ruimte beheerde identiteit ook toegevoegd als een [gegevens lezer voor blobs](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) , zodat deze gegevens uit de Blob-opslag kan lezen.
+Voor __Azure Blob Storage__ wordt de door de werk ruimte beheerde identiteit ook toegevoegd als een [gegevens lezer voor blobs](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) , zodat deze gegevens uit de Blob-opslag kan lezen.
 
 ### <a name="azure-data-lake-storage-gen2-access-control"></a>Toegangs beheer Azure Data Lake Storage Gen2
 
@@ -127,15 +128,15 @@ De ontwerp functie gebruikt het opslag account dat aan uw werk ruimte is gekoppe
 Een nieuwe standaard opslag voor een pijp lijn instellen:
 
 1. Selecteer in een pijp lijn concept het **tandwiel pictogram instellingen** in de buurt van de titel van de pijp lijn.
-1. Selecteer de **Selecteer standaard gegevens opslag**.
+1. Selecteer de **Selecteer standaard gegevens opslag** .
 1. Geef een nieuwe gegevens opslag op.
 
 U kunt ook de standaard gegevens opslag per module negeren. Dit geeft u de controle over de opslag locatie voor elke afzonderlijke module.
 
 1. Selecteer de module waarvan u de uitvoer wilt opgeven.
 1. Vouw de sectie **uitvoer instellingen** uit.
-1. Selecteer **standaard instellingen voor uitvoer negeren**.
-1. Selecteer **uitvoer instellingen instellen**.
+1. Selecteer **standaard instellingen voor uitvoer negeren** .
+1. Selecteer **uitvoer instellingen instellen** .
 1. Geef een nieuwe gegevens opslag op.
 
 ## <a name="next-steps"></a>Volgende stappen

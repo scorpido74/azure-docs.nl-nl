@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 01/14/2020
-ms.openlocfilehash: 9b151e566f0cc3e086277c101a796e7dde059ef9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19cec1deeef344ea5897061db0fec88066b90b05
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442569"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791763"
 ---
 # <a name="configure-and-manage-content-reference---azure-sql-database"></a>Inhouds referentie configureren en beheren-Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -56,7 +56,7 @@ In dit artikel vindt u een inhouds verwijzing naar verschillende hand leidingen,
 
 - [Handmatig instellen](performance-guidance.md)
 - [DMV's gebruiken voor het bewaken van prestaties](monitoring-with-dmvs.md)
-- [Query Store gebruiken voor het bewaken van prestaties](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
+- [Query Store gebruiken voor het bewaken van prestaties](/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
 - [Schakel automatisch afstemmen](automatic-tuning-enable.md) in om de prestaties van uw werk belasting Azure SQL database optimaliseren.
 - [Schakel e-mail meldingen voor automatisch afstemmen](automatic-tuning-email-notifications-configure.md) in om informatie te krijgen over de aanbevelingen voor het afstemmen.
 - [Aanbevelingen voor prestaties Toep assen](database-advisor-find-recommendations-portal.md) en uw data base optimaliseren.
@@ -84,7 +84,7 @@ In dit artikel vindt u een inhouds verwijzing naar verschillende hand leidingen,
 - [SQL Data Sync](sql-data-sync-data-sql-server-sql-database.md)
 - [Data Sync-agent](sql-data-sync-agent-overview.md)
 - [Schemawijzigingen repliceren](sql-data-sync-update-sync-schema.md)
-- [Bewaken met OMS](sql-data-sync-monitor-sync.md)
+- [Bewaken met OMS](./monitor-tune-overview.md)
 - [Best practices voor Data Sync](sql-data-sync-best-practices.md)
 - [Problemen met Data Sync oplossen](sql-data-sync-troubleshoot.md)
 

@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ae00703805bef6f5e9758bafcb781eda91cd93f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60f781ddfa5717bbe5bcbb05ec8c236c8594c587
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272154"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793089"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Wat is SQL Server in Azure Virtual Machines (Windows)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "91272154"
 
 Met [SQL Server in Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/sql-server/) kunt u volledige versies van SQL Server in de cloud gebruiken zonder dat u on-premises hardware hoeft te beheren. Virtuele machines (VM's) van SQL Server vereenvoudigen ook de licentiekosten als u betaalt naar gebruik.
 
-Virtuele machines van Azure worden uitgevoerd in talloze verschillende [geografische regio's](https://azure.microsoft.com/regions/) ter wereld. Er zijn ook diverse [formaten](../../../virtual-machines/windows/sizes.md). In de galerie met installatiekopieën voor virtuele machines kunt u een SQL Server-VM met de juiste versie, de juiste editie en het juiste besturingssysteem maken. Daarom zijn virtuele machines een goede optie voor allerlei verschillende SQL Server-werkbelastingen.
+Virtuele machines van Azure worden uitgevoerd in talloze verschillende [geografische regio's](https://azure.microsoft.com/regions/) ter wereld. Er zijn ook diverse [formaten](../../../virtual-machines/sizes.md). In de galerie met installatiekopieën voor virtuele machines kunt u een SQL Server-VM met de juiste versie, de juiste editie en het juiste besturingssysteem maken. Daarom zijn virtuele machines een goede optie voor allerlei verschillende SQL Server-werkbelastingen.
 
 Als u geen ervaring hebt met SQL Server op Azure-VM's, bekijk dan de video *Overzicht van SQL Server op Azure VM* uit onze diepgaande [Azure SQL-videoserie](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner):
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/SQL-Server-on-Azure-VM-Overview-4-of-61/player]
@@ -42,7 +42,7 @@ SQL Server in Azure Virtual Machines kan [geautomatiseerde patching](automated-p
 
 SQL Server in Azure Virtual Machines kan gebruikmaken van [geautomatiseerde back-ups](automated-backup.md), waarbij er regelmatig back-ups in Blob Storage worden gemaakt van uw database. U kunt deze techniek ook handmatig gebruiken. Zie [Azure Storage gebruiken voor SQL Server-back-up en -herstel](azure-storage-sql-server-backup-restore-use.md) voor meer informatie.
 
-Azure biedt ook een geavanceerde back-upoplossing voor SQL Server op Azure-VM's. De volledig beheerde back-upoplossing van Azure biedt ondersteuning voor AlwaysOn-beschikbaarheidsgroepen, retentie op lange termijn, herstel naar een bepaald tijdstip, en centraal beheer en centrale bewaking. Zie [Azure Backup voor SQL Server op Azure-VM's](https://docs.microsoft.com/azure/backup/backup-azure-sql-database) voor meer informatie.
+Azure biedt ook een geavanceerde back-upoplossing voor SQL Server op Azure-VM's. De volledig beheerde back-upoplossing van Azure biedt ondersteuning voor AlwaysOn-beschikbaarheidsgroepen, retentie op lange termijn, herstel naar een bepaald tijdstip, en centraal beheer en centrale bewaking. Zie [Azure Backup voor SQL Server op Azure-VM's](../../../backup/backup-azure-sql-database.md) voor meer informatie.
   
 
 ## <a name="high-availability"></a>Hoge beschikbaarheid
@@ -109,14 +109,14 @@ Als u een bestaande database hebt, doet u er verstandig aan deze te verplaatsen 
 
 De Azure-portal biedt één pagina waar u [al uw Azure SQL-resources](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Sql%2Fazuresql) kunt beheren, met inbegrip van uw virtuele SQL-machines.
 
-Om toegang te krijgen tot de pagina **Azure SQL-resources**, selecteert u **Azure SQL** in het menu van de Azure-portal of zoekt en selecteert u **Azure SQL** vanaf een willekeurige pagina.
+Om toegang te krijgen tot de pagina **Azure SQL-resources** , selecteert u **Azure SQL** in het menu van de Azure-portal of zoekt en selecteert u **Azure SQL** vanaf een willekeurige pagina.
 
 ![Zoeken naar Azure SQL](./media/sql-server-on-azure-vm-iaas-what-is-overview/search-for-azure-sql.png)
 
 > [!NOTE]
 > Azure SQL biedt een snelle en eenvoudige manier om toegang te krijgen tot al uw databases, elastische pools, logische servers, beheerde instanties en virtuele machines van Azure SQL. Azure SQL is geen service of resource. 
 
-Als u bestaande resources wilt beheren, selecteert u het gewenste item in de lijst. Als u nieuwe Azure SQL-resources wilt maken, selecteert u **+ Toevoegen**. 
+Als u bestaande resources wilt beheren, selecteert u het gewenste item in de lijst. Als u nieuwe Azure SQL-resources wilt maken, selecteert u **+ Toevoegen** . 
 
 ![Azure SQL-resource maken](./media/sql-server-on-azure-vm-iaas-what-is-overview/create-azure-sql-resource.png)
 
@@ -135,7 +135,7 @@ Zie deze artikelen voor meer informatie:
 Azure onderhoudt slechts één installatiekopie van een virtuele machine voor elk ondersteunde combinatie van besturingssysteem, versie en editie. Dit betekent dat installatiekopieën na verloop van tijd worden vernieuwd en dat oudere installatiekopieën worden verwijderd. Zie de sectie **Installatiekopieën** in de [veelgestelde vragen over virtuele machines met SQL Server](frequently-asked-questions-faq.md#images) voor meer informatie.
 
 ## <a name="customer-experience-improvement-program-ceip"></a>Programma voor kwaliteitsverbetering (CEIP)
-Het programma voor kwaliteitsverbetering (CEIP) is standaard ingeschakeld. Met dit programma worden regelmatig rapporten naar Microsoft verzonden zodat SQL Server kan worden verbeterd. Er hoeft voor het programma voor kwaliteitsverbetering geen beheertaak worden uitgevoerd, tenzij u het na het inrichten wilt uitschakelen. U kunt het programma voor kwaliteitsverbetering aanpassen of uitschakelen door via Extern bureaublad verbinding te maken met de virtuele machine. Voer vervolgens het hulpprogramma **SQL Server-fouten- en gebruiksrapportage** uit. Volg de instructies voor het uitschakelen van rapportage. Zie de [privacyverklaring van SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-privacy) voor meer informatie over gegevensverzameling.
+Het programma voor kwaliteitsverbetering (CEIP) is standaard ingeschakeld. Met dit programma worden regelmatig rapporten naar Microsoft verzonden zodat SQL Server kan worden verbeterd. Er hoeft voor het programma voor kwaliteitsverbetering geen beheertaak worden uitgevoerd, tenzij u het na het inrichten wilt uitschakelen. U kunt het programma voor kwaliteitsverbetering aanpassen of uitschakelen door via Extern bureaublad verbinding te maken met de virtuele machine. Voer vervolgens het hulpprogramma **SQL Server-fouten- en gebruiksrapportage** uit. Volg de instructies voor het uitschakelen van rapportage. Zie de [privacyverklaring van SQL Server](/sql/sql-server/sql-server-privacy) voor meer informatie over gegevensverzameling.
 
 ## <a name="related-products-and-services"></a>Gerelateerde producten en services
 ### <a name="windows-virtual-machines"></a>Virtuele Windows-machines
@@ -150,7 +150,7 @@ Het programma voor kwaliteitsverbetering (CEIP) is standaard ingeschakeld. Met d
 * [Een Fully Qualified Domain Name maken in Azure Portal](../../../virtual-machines/linux/portal-create-fqdn.md)
 
 ### <a name="sql"></a>SQL
-* [Documentatie over SQL Server](https://docs.microsoft.com/sql/index)
+* [Documentatie over SQL Server](/sql/index)
 * [Vergelijking met Azure SQL Database](../../azure-sql-iaas-vs-paas-what-is-overview.md)
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -165,5 +165,5 @@ Vind antwoorden op veelgestelde vragen over VM's met SQL Server:
 
 Referentiearchitecturen bekijken voor het uitvoeren van N-tier-toepassingen in SQL Server in IaaS
 
-* [Windows N-tier-toepassing in Azure met SQL Server](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
-* [N-tier-toepassing uitvoeren in meerdere Azure-regio's voor hoge beschikbaarheid](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)
+* [Windows N-tier-toepassing in Azure met SQL Server](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
+* [N-tier-toepassing uitvoeren in meerdere Azure-regio's voor hoge beschikbaarheid](/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)

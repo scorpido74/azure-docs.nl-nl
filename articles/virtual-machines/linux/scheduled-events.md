@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviewer: mimckitt
-ms.openlocfilehash: 265b99fb985602604eefee27d722b4dc8d7593a8
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 99528d1575056917b68bcb38f41a24d065822827
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970381"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792800"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Geplande gebeurtenissen voor Linux-VM’s
 
@@ -98,7 +98,7 @@ Als u een virtuele machine opnieuw opstart, wordt een gebeurtenis met het type `
 
 ## <a name="use-the-api"></a>De API gebruiken
 
-### <a name="headers"></a>Headers
+### <a name="headers"></a>Kopteksten
 Wanneer u Metadata Service een query uitvoert, moet u de header opgeven `Metadata:true` om ervoor te zorgen dat de aanvraag niet per ongeluk is omgeleid. De `Metadata:true` header is vereist voor alle aanvragen voor geplande gebeurtenissen. Het toevoegen van de header in de aanvraag resulteert in een antwoord op een ' ongeldige aanvraag ' van Metadata Service.
 
 ### <a name="query-for-events"></a>Query's uitvoeren op gebeurtenissen
@@ -154,6 +154,10 @@ Elke gebeurtenis wordt in de toekomst gepland op basis van het gebeurtenis type.
 
 > [!NOTE] 
 > In sommige gevallen kan Azure host-uitval voors pellen vanwege gedegradeerde hardware en zal proberen de onderbreking van uw service te verhelpen door een migratie te plannen. De betrokken virtuele machines ontvangen een geplande gebeurtenis met een `NotBefore` van de meeste dagen in de toekomst. De werkelijke tijd is afhankelijk van de voorspelde risico analyse. Azure probeert zo de voorafgaande kennisgeving van 7 dagen te geven, maar de werkelijke tijd varieert en kan kleiner zijn als de voor spelling is dat er een hoge kans op het onmiddellijk uitvallen van de hardware is. Om het risico voor uw service tot een minimum te beperken, raden we u aan uw virtuele machine zo snel mogelijk zelf opnieuw te implementeren.
+
+### <a name="polling-frequency"></a>Pollingfrequentie
+
+U kunt het eind punt zo vaak of zo vaak als gewenst controleren op updates. Hoe langer de tijd is tussen aanvragen, hoe meer tijd u mogelijk kwijtraakt om te reageren op een aanstaande gebeurtenis. De meeste gebeurtenissen hebben een kennisgeving van vijf tot 15 minuten, hoewel in sommige gevallen een voorafgaande kennisgeving van minder dan 30 seconden kan zijn. Om ervoor te zorgen dat u zo veel mogelijk tijd hebt om maat regelen te nemen, raden we u aan om de service één keer per seconde te pollen.
 
 ### <a name="start-an-event"></a>Een gebeurtenis starten 
 

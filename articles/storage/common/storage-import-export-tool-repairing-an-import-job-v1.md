@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: d67046f799e60db3101dfeb27dee10f92f9aad79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0454e7bcc81c71cdffcddcd859bb6d335cc8aef2
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90052423"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791814"
 ---
 # <a name="repairing-an-import-job"></a>Een importtaak herstellen
 De Microsoft Azure Import/Export-service kan een aantal van uw bestanden of delen van een bestand niet kopiëren naar de Windows Azure Blob-service. Enkele mogelijke oorzaken:  
@@ -28,19 +28,19 @@ U kunt het Microsoft Azure Import/Export-hulp programma uitvoeren met de Kopieer
   
 ## <a name="repairimport-parameters"></a>RepairImport-para meters
 
-De volgende para meters kunnen worden opgegeven met **RepairImport**: 
+De volgende para meters kunnen worden opgegeven met **RepairImport** : 
   
 |||  
 |-|-|  
-|**/r:**<RepairFile\>|**Vereist.** Het pad naar het reparatie bestand, dat de voortgang van de reparatie bijhoudt en u kunt een onderbroken reparatie hervatten. Elk station moet één en slechts één herstel bestand hebben. Wanneer u een herstel start voor een bepaald station, geeft u het pad door aan een herstel bestand dat nog niet bestaat. Als u een onderbroken reparatie wilt hervatten, moet u de naam van een bestaand herstel bestand door geven. Geef altijd het herstel bestand op dat overeenkomt met het doel station.|  
-|**/logdir:**<LogDirectory\>|**Beschrijving.** De logboekmap. Uitgebreide logboek bestanden worden naar deze map geschreven. Als er geen Logboekmap is opgegeven, wordt de huidige map gebruikt als Logboekmap.|  
-|**/d:**<TargetDirectories\>|**Vereist.** Een of meer met punt komma's gescheiden directory's die de oorspronkelijke bestanden bevatten die zijn geïmporteerd. Het import station kan ook worden gebruikt, maar is niet vereist als er alternatieve locaties van de oorspronkelijke bestanden beschikbaar zijn.|  
-|**/BK:**<BitLockerKey\>|**Beschrijving.** Geef de BitLocker-sleutel op als u wilt dat het hulp programma een versleuteld station ontgrendelt waar de oorspronkelijke bestanden beschikbaar zijn.|  
-|**/sn:**<StorageAccountName\>|**Vereist.** De naam van het opslag account voor de import taak.|  
-|**/SK:**<StorageAccountKey\>|**Vereist** als en alleen als er geen container-SAS is opgegeven. De account sleutel voor het opslag account voor de import taak.|  
-|**/csas:**<ContainerSas\>|**Vereist** als en alleen als de sleutel voor het opslag account niet is opgegeven. De container-SAS voor toegang tot de blobs die zijn gekoppeld aan de import taak.|  
-|**/CopyLogFile:**<DriveCopyLogFile\>|**Vereist.** Pad naar het kopie logboek bestand (uitgebreid logboek of fouten logboek). Het bestand wordt gegenereerd door de service Windows Azure import/export en kan worden gedownload van de Blob-opslag die aan de taak is gekoppeld. Het kopie logboek bestand bevat informatie over de mislukte blobs of bestanden, die moeten worden hersteld.|  
-|**/PathMapFile:**<DrivePathMapFile\>|**Beschrijving.** Pad naar een tekst bestand dat wordt gebruikt om ambiguïteiten op te lossen als u meerdere bestanden hebt met dezelfde naam die u in dezelfde taak hebt geïmporteerd. De eerste keer dat het hulp programma wordt uitgevoerd, kan dit bestand vullen met alle ambigue namen. Als u het hulp programma later uitvoert, gebruikt u dit bestand om de dubbel zinnigheid op te lossen.|  
+|**/r:** <RepairFile\>|**Vereist.** Het pad naar het reparatie bestand, dat de voortgang van de reparatie bijhoudt en u kunt een onderbroken reparatie hervatten. Elk station moet één en slechts één herstel bestand hebben. Wanneer u een herstel start voor een bepaald station, geeft u het pad door aan een herstel bestand dat nog niet bestaat. Als u een onderbroken reparatie wilt hervatten, moet u de naam van een bestaand herstel bestand door geven. Geef altijd het herstel bestand op dat overeenkomt met het doel station.|  
+|**/logdir:** <LogDirectory\>|**Beschrijving.** De logboekmap. Uitgebreide logboek bestanden worden naar deze map geschreven. Als er geen Logboekmap is opgegeven, wordt de huidige map gebruikt als Logboekmap.|  
+|**/d:** <TargetDirectories\>|**Vereist.** Een of meer met punt komma's gescheiden directory's die de oorspronkelijke bestanden bevatten die zijn geïmporteerd. Het import station kan ook worden gebruikt, maar is niet vereist als er alternatieve locaties van de oorspronkelijke bestanden beschikbaar zijn.|  
+|**/BK:** <BitLockerKey\>|**Beschrijving.** Geef de BitLocker-sleutel op als u wilt dat het hulp programma een versleuteld station ontgrendelt waar de oorspronkelijke bestanden beschikbaar zijn.|  
+|**/sn:** <StorageAccountName\>|**Vereist.** De naam van het opslag account voor de import taak.|  
+|**/SK:** <StorageAccountKey\>|**Vereist** als en alleen als er geen container-SAS is opgegeven. De account sleutel voor het opslag account voor de import taak.|  
+|**/csas:** <ContainerSas\>|**Vereist** als en alleen als de sleutel voor het opslag account niet is opgegeven. De container-SAS voor toegang tot de blobs die zijn gekoppeld aan de import taak.|  
+|**/CopyLogFile:** <DriveCopyLogFile\>|**Vereist.** Pad naar het kopie logboek bestand (uitgebreid logboek of fouten logboek). Het bestand wordt gegenereerd door de service Windows Azure import/export en kan worden gedownload van de Blob-opslag die aan de taak is gekoppeld. Het kopie logboek bestand bevat informatie over de mislukte blobs of bestanden, die moeten worden hersteld.|  
+|**/PathMapFile:** <DrivePathMapFile\>|**Beschrijving.** Pad naar een tekst bestand dat wordt gebruikt om ambiguïteiten op te lossen als u meerdere bestanden hebt met dezelfde naam die u in dezelfde taak hebt geïmporteerd. De eerste keer dat het hulp programma wordt uitgevoerd, kan dit bestand vullen met alle ambigue namen. Als u het hulp programma later uitvoert, gebruikt u dit bestand om de dubbel zinnigheid op te lossen.|  
   
 ## <a name="using-the-repairimport-command"></a>De opdracht RepairImport gebruiken  
 Als u gegevens wilt herstellen door de gegevens over het netwerk te streamen, moet u de mappen opgeven die de oorspronkelijke bestanden bevatten die u hebt geïmporteerd met behulp van de `/d` para meter. Geef ook het kopie logboek bestand op dat u hebt gedownload uit uw opslag account. Een typische opdracht regel voor het herstellen van een import taak met gedeeltelijke fouten ziet er als volgt uit:  
@@ -100,6 +100,6 @@ Nadat u de benodigde bestanden hebt gemaakt voor het hulp programma of het pad n
 ## <a name="next-steps"></a>Volgende stappen
  
 * [Het Azure-hulp programma voor importeren/exporteren instellen](storage-import-export-tool-setup-v1.md)   
-* [Harde schijven voorbereiden voor een importtaak](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
+* [Harde schijven voorbereiden voor een importtaak](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import-v1)   
 * [De taakstatus controleren met kopielogboekbestanden](storage-import-export-tool-reviewing-job-status-v1.md)   
-* [Een exporttaak herstellen](../storage-import-export-tool-repairing-an-export-job-v1.md)
+* [Een exporttaak herstellen](./storage-import-export-tool-repairing-an-export-job-v1.md)

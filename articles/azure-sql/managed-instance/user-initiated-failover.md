@@ -10,12 +10,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
 ms.date: 08/31/2020
-ms.openlocfilehash: 3be0695c20eafb71564211d1168bc59813f8800a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebf36c99e6c4dd636c41086d4c72fd6761f6d5ca
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617754"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791627"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Door de gebruiker geïnitieerde hand matige failover op een SQL-beheerd exemplaar
 
@@ -62,7 +62,7 @@ Connect-AzAccount
 Select-AzSubscription -SubscriptionId $subscription
 ```
 
-Gebruik de Power shell [-opdracht invoke-AzSqlInstanceFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlinstancefailover) met het volgende voor beeld om failover van het primaire knoop punt te initiëren, die van toepassing is op de service tier BC en GP.
+Gebruik de Power shell [-opdracht invoke-AzSqlInstanceFailover](/powershell/module/az.sql/invoke-azsqlinstancefailover) met het volgende voor beeld om failover van het primaire knoop punt te initiëren, die van toepassing is op de service tier BC en GP.
 
 ```powershell
 $ResourceGroup = 'enter resource group of your MI'
@@ -96,7 +96,7 @@ az sql mi failover -g myresourcegroup -n myinstancename --replica-type ReadableS
 
 ### <a name="using-rest-api"></a>REST API gebruiken
 
-Voor geavanceerde gebruikers die mogelijk failovers van hun SQL Managed instances moeten automatiseren voor het implementeren van doorlopende test pijplijn of geautomatiseerde prestaties, kan deze functie worden uitgevoerd via het initiëren van een failover via een API-aanroep. Zie [beheerde instanties-failover-rest API](https://docs.microsoft.com/rest/api/sql/managed%20instances%20-%20failover/failover) voor meer informatie.
+Voor geavanceerde gebruikers die mogelijk failovers van hun SQL Managed instances moeten automatiseren voor het implementeren van doorlopende test pijplijn of geautomatiseerde prestaties, kan deze functie worden uitgevoerd via het initiëren van een failover via een API-aanroep. Zie [beheerde instanties-failover-rest API](/rest/api/sql/managed%20instances%20-%20failover/failover) voor meer informatie.
 
 Als u failover wilt initiëren met REST API aanroep, genereert u eerst het verificatie token met behulp van de API-client van uw keuze. Het gegenereerde verificatie token wordt gebruikt als autorisatie-eigenschap in de header van de API-aanvraag en is verplicht.
 
@@ -140,7 +140,7 @@ Het is niet mogelijk om dezelfde uitvoer te zien met de categorie GP als hierbov
 
 > [!IMPORTANT]
 > Functionele beperkingen van door de gebruiker gestarte hand matige failover zijn:
-> - Er kan één (1) failover worden gestart op hetzelfde beheerde exemplaar om de **30 minuten**.
+> - Er kan één (1) failover worden gestart op hetzelfde beheerde exemplaar om de **30 minuten** .
 > - Voor BC-instanties moet er een quorum van replica's bestaan voor het accepteren van de failover-aanvraag.
 > - Voor BC-instanties is het niet mogelijk om op te geven welke secundaire replica moet worden gelezen om de failover te initiëren.
 

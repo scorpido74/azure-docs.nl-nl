@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/05/2019
-ms.openlocfilehash: 5798220ad92a99f32f757ffa20f9233b8c79151b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 732a9bab018103321a9a3a759b31495bd67a209e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617431"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793106"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>Azure SQL Managed instance implementeren in een instantie groep
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -41,7 +41,7 @@ In de volgende tabel ziet u de beschik bare bewerkingen met betrekking tot exemp
 |Een Data Base maken in het exemplaar van de groep|Ja|Ja|
 |Een Data Base verwijderen uit een SQL-beheerd exemplaar|Ja|Ja|
 
-Beschik bare [Power shell-opdrachten](https://docs.microsoft.com/powershell/module/az.sql/):
+Beschik bare [Power shell-opdrachten](/powershell/module/az.sql/):
 
 |Cmdlet |Beschrijving |
 |:---|:---|
@@ -52,7 +52,7 @@ Beschik bare [Power shell-opdrachten](https://docs.microsoft.com/powershell/modu
 |[Get-AzSqlInstancePoolUsage](/powershell/module/az.sql/get-azsqlinstancepoolusage/) | Retourneert informatie over het gebruik van SQL Managed instance-groep. |
 
 
-Als u Power shell wilt gebruiken, [installeert u de nieuwste versie van Power shell core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell)en volgt u de instructies om [de Azure PowerShell-module te installeren](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Als u Power shell wilt gebruiken, [installeert u de nieuwste versie van Power shell core](/powershell/scripting/install/installing-powershell#powershell)en volgt u de instructies om [de Azure PowerShell-module te installeren](/powershell/azure/install-az-ps).
 
 Voor bewerkingen met betrekking tot instanties in Pools en afzonderlijke instanties gebruikt u de standaard [Managed instance-opdrachten](api-references-create-manage-instance.md#powershell-create-and-configure-managed-instances), maar de eigenschap name van de *instantie groep* moet worden ingevuld wanneer u deze opdrachten gebruikt voor een instantie in een groep.
 
@@ -255,9 +255,9 @@ Als er meerdere data bases zijn, herhaalt u het proces voor elke Data Base.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [algemene SQL-functies](../database/features-comparison.md)voor een lijst met functies en vergelijkingen.
+- Zie [Veelvoorkomende SQL-functies](../database/features-comparison.md) voor een lijst met functies en vergelijkingen.
 - Zie [VNet-configuratie van SQL Managed Instance](connectivity-architecture-overview.md) voor meer informatie over VNet-configuratie.
 - Zie [Beheerd exemplaar maken](instance-create-quickstart.md) voor een quickstart waarmee u een beheerd exemplaar kunt maken en een database vanuit een back-upbestand kunt herstellen.
 - Zie [Migratie van SQL Managed Instance met behulp van Database Migration Service](../../dms/tutorial-sql-server-to-managed-instance.md) voor een zelfstudie over Azure Database Migration Service voor migratie.
-- Zie [Azure SQL Managed instance bewaken met Azure SQL-analyse](../../azure-monitor/insights/azure-sql.md)voor geavanceerde bewaking van prestaties van SQL Managed instance-data bases met ingebouwde probleemoplossings informatie.
+- Zie [Azure SQL Managed Instance bewaken met Azure SQL-analyse](../../azure-monitor/insights/azure-sql.md) voor geavanceerde bewaking van de databaseprestaties in SQL Managed Instance, met ingebouwde intelligentie voor het oplossen van problemen.
 - Zie [prijzen van SQL Managed instance](https://azure.microsoft.com/pricing/details/sql-database/managed/)voor prijs informatie.

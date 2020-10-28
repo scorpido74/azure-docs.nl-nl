@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 3a0b40b91aad388cb42222ead8da4f2bd91947ee
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 848f3cd2d5719d62e39f46c166d51e09ec89bd4c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165233"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792511"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>Een FCI maken met Opslagruimten Direct (SQL Server op Azure Vm's)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -38,7 +38,7 @@ In het volgende diagram ziet u de volledige oplossing, die gebruikmaakt van hype
 
 In het voor gaande diagram worden de volgende resources in dezelfde resource groep weer gegeven:
 
-- Twee virtuele machines in een Windows Server-failovercluster. Wanneer een virtuele machine zich in een failovercluster bevindt, wordt deze ook wel een *cluster knooppunt* of *knoop punt*genoemd.
+- Twee virtuele machines in een Windows Server-failovercluster. Wanneer een virtuele machine zich in een failovercluster bevindt, wordt deze ook wel een *cluster knooppunt* of *knoop punt* genoemd.
 - Elke virtuele machine heeft twee of meer gegevens schijven.
 - Opslagruimten Direct synchroniseert de gegevens op de gegevens schijven en geeft de gesynchroniseerde opslag weer als een opslag groep.
 - De opslag groep presenteert een Cluster Shared Volume (CSV) voor het failovercluster.
@@ -68,11 +68,11 @@ Voordat u de instructies in dit artikel hebt voltooid, hebt u het volgende nodig
 
    Ga als volgt te werk om failover clustering te installeren vanuit de gebruikers interface:
 
-   1. Selecteer in **Serverbeheer** **beheren**en selecteer vervolgens **functies en onderdelen toevoegen**.
-   1. Selecteer in de wizard **functies en onderdelen toevoegen** de optie **volgende** totdat u **onderdelen selecteert**.
-   1. Selecteer in **functies selecteren**de optie **failover clustering**. Neem alle vereiste functies en de beheer hulpprogramma's op. 
-   1. Selecteer **onderdelen toevoegen**.
-   1. Selecteer **volgende**en selecteer vervolgens **volt ooien** om de functies te installeren.
+   1. Selecteer in **Serverbeheer** **beheren** en selecteer vervolgens **functies en onderdelen toevoegen** .
+   1. Selecteer in de wizard **functies en onderdelen toevoegen** de optie **volgende** totdat u **onderdelen selecteert** .
+   1. Selecteer in **functies selecteren** de optie **failover clustering** . Neem alle vereiste functies en de beheer hulpprogramma's op. 
+   1. Selecteer **onderdelen toevoegen** .
+   1. Selecteer **volgende** en selecteer vervolgens **volt ooien** om de functies te installeren.
 
    Als u Failover Clustering wilt installeren met behulp van Power shell, voert u het volgende script uit vanuit een Power shell-beheer sessie op een van de virtuele machines:
 
@@ -81,7 +81,7 @@ Voordat u de instructies in dit artikel hebt voltooid, hebt u het volgende nodig
    Invoke-Command  $nodes {Install-WindowsFeature Failover-Clustering -IncludeAllSubFeature -IncludeManagementTools}
    ```
 
-Voor meer informatie over de volgende stappen raadpleegt u de instructies in de sectie ' stap 3: Configure Opslagruimten Direct ' van de [hypergeconvergeerd-oplossing met behulp van opslagruimten direct in Windows Server 2016](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-3-configure-storage-spaces-direct).
+Voor meer informatie over de volgende stappen raadpleegt u de instructies in de sectie ' stap 3: Configure Opslagruimten Direct ' van de [hypergeconvergeerd-oplossing met behulp van opslagruimten direct in Windows Server 2016](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-3-configure-storage-spaces-direct).
 
 
 ## <a name="validate-the-cluster"></a>Het cluster valideren
@@ -90,18 +90,18 @@ Valideer het cluster in de gebruikers interface of met behulp van Power shell.
 
 Als u het cluster wilt valideren met behulp van de gebruikers interface, gaat u als volgt te werk op een van de virtuele machines:
 
-1. Klik onder **Serverbeheer**op **extra**en selecteer vervolgens **Failoverclusterbeheer**.
-1. Selecteer onder **Failoverclusterbeheer** **actie**en selecteer vervolgens **configuratie valideren**.
-1. Selecteer **Next**.
-1. Voer onder **servers of een cluster selecteren**de namen van beide virtuele machines in.
-1. Onder **test opties**selecteert u **alleen geselecteerde tests uitvoeren**. 
-1. Selecteer **Next**.
-1. Selecteer onder **selectie testen**alle tests, met uitzonde ring van **opslag**, zoals hier wordt weer gegeven:
+1. Klik onder **Serverbeheer** op **extra** en selecteer vervolgens **Failoverclusterbeheer** .
+1. Selecteer onder **Failoverclusterbeheer** **actie** en selecteer vervolgens **configuratie valideren** .
+1. Selecteer **Next** .
+1. Voer onder **servers of een cluster selecteren** de namen van beide virtuele machines in.
+1. Onder **test opties** selecteert u **alleen geselecteerde tests uitvoeren** . 
+1. Selecteer **Next** .
+1. Selecteer onder **selectie testen** alle tests, met uitzonde ring van **opslag** , zoals hier wordt weer gegeven:
 
    ![Cluster validatie tests selecteren](./media/failover-cluster-instance-storage-spaces-direct-manually-configure/10-validate-cluster-test.png)
 
-1. Selecteer **Next**.
-1. Klik onder **bevestiging**op **volgende**.
+1. Selecteer **Next** .
+1. Klik onder **bevestiging** op **volgende** .
 
     Met de wizard **een configuratie valideren** worden de validatie tests uitgevoerd.
 
@@ -150,9 +150,9 @@ Configureer de quorum oplossing die het beste past bij uw bedrijfs behoeften. U 
 
 ## <a name="add-storage"></a>Opslag toevoegen
 
-De schijven voor Opslagruimten Direct moeten leeg zijn. Ze kunnen geen partities of andere gegevens bevatten. Volg de instructies in [Deploy opslagruimten direct](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct?redirectedfrom=MSDN#step-31-clean-drives)om de schijven op te schonen.
+De schijven voor Opslagruimten Direct moeten leeg zijn. Ze kunnen geen partities of andere gegevens bevatten. Volg de instructies in [Deploy opslagruimten direct](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-31-clean-drives)om de schijven op te schonen.
 
-1. [Schakel opslagruimten direct in](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-35-enable-storage-spaces-direct).
+1. [Schakel opslagruimten direct in](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-35-enable-storage-spaces-direct).
 
    Met het volgende Power shell-script kunt Opslagruimten Direct:  
 
@@ -160,9 +160,9 @@ De schijven voor Opslagruimten Direct moeten leeg zijn. Ze kunnen geen partities
    Enable-ClusterS2D
    ```
 
-   In **Failoverclusterbeheer**kunt u nu de opslag groep zien.
+   In **Failoverclusterbeheer** kunt u nu de opslag groep zien.
 
-1. [Maak een volume](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-36-create-volumes).
+1. [Maak een volume](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-36-create-volumes).
 
    Opslagruimten Direct maakt automatisch een opslag groep wanneer u deze inschakelt. U bent nu klaar om een volume te maken. De Power shell-cmdlet `New-Volume` automatiseert het proces voor het maken van een volume. Dit proces omvat het format teren, het toevoegen van het volume aan het cluster en het maken van een CSV. In dit voor beeld wordt een CSV-bestand van 800 GB gemaakt:
 
@@ -180,7 +180,7 @@ De schijven voor Opslagruimten Direct moeten leeg zijn. Ze kunnen geen partities
 
 ## <a name="test-cluster-failover"></a>Cluster-Failover testen
 
-Test de failover van het cluster. Klik in **Failoverclusterbeheer**met de rechter muisknop op uw cluster, selecteer **meer acties**  >  **basis cluster resource verplaatsen**  >  **knoop punt selecteren**en selecteer vervolgens het andere knoop punt van het cluster. Verplaats de kern cluster bron naar elk knoop punt van het cluster en verplaats deze vervolgens terug naar het primaire knoop punt. Als u het cluster kunt verplaatsen naar elk knoop punt, bent u klaar om SQL Server te installeren.  
+Test de failover van het cluster. Klik in **Failoverclusterbeheer** met de rechter muisknop op uw cluster, selecteer **meer acties**  >  **basis cluster resource verplaatsen**  >  **knoop punt selecteren** en selecteer vervolgens het andere knoop punt van het cluster. Verplaats de kern cluster bron naar elk knoop punt van het cluster en verplaats deze vervolgens terug naar het primaire knoop punt. Als u het cluster kunt verplaatsen naar elk knoop punt, bent u klaar om SQL Server te installeren.  
 
 :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="Cluster-Failover testen door de kern bron te verplaatsen naar de andere knoop punten":::
 
@@ -190,13 +190,13 @@ Nadat u het failovercluster en alle cluster onderdelen, inclusief opslag, hebt g
 
 1. Maak verbinding met de eerste virtuele machine met behulp van RDP.
 
-1. Zorg er in **Failoverclusterbeheer**voor dat alle kern cluster bronnen zich op de eerste virtuele machine bevinden. Verplaats, indien nodig, alle resources naar die virtuele machine.
+1. Zorg er in **Failoverclusterbeheer** voor dat alle kern cluster bronnen zich op de eerste virtuele machine bevinden. Verplaats, indien nodig, alle resources naar die virtuele machine.
 
-1. Zoek het installatie medium. Als de virtuele machine een van de installatie kopieën van Azure Marketplace gebruikt, bevindt de media zich op `C:\SQLServer_<version number>_Full` . Selecteer **Setup**.
+1. Zoek het installatie medium. Als de virtuele machine een van de installatie kopieën van Azure Marketplace gebruikt, bevindt de media zich op `C:\SQLServer_<version number>_Full` . Selecteer **Setup** .
 
-1. In **SQL Server Installation Center**selecteert u **installatie**.
+1. In **SQL Server Installation Center** selecteert u **installatie** .
 
-1. Selecteer **nieuwe SQL Server failover-cluster installatie**. Volg de instructies in de wizard om de SQL Server FCI te installeren.
+1. Selecteer **nieuwe SQL Server failover-cluster installatie** . Volg de instructies in de wizard om de SQL Server FCI te installeren.
 
    De FCI-gegevens directory's moeten zich op geclusterde opslag beslaan. Met Opslagruimten Direct is het geen gedeelde schijf, maar een koppel punt naar een volume op elke server. Opslagruimten Direct synchroniseert het volume tussen beide knoop punten. Het volume wordt door gegeven aan het cluster als een CSV-bestand. Gebruik het CSV-koppel punt voor de gegevens directory's.
 
@@ -206,12 +206,12 @@ Nadat u het failovercluster en alle cluster onderdelen, inclusief opslag, hebt g
 
 1. Nadat de FCI op het eerste knoop punt is geïnstalleerd, maakt u verbinding met het tweede knoop punt met behulp van RDP.
 
-1. Open het **SQL Server-installatie centrum**. Selecteer **installatie**.
+1. Open het **SQL Server-installatie centrum** . Selecteer **installatie** .
 
-1. Selecteer **knoop punt toevoegen aan een SQL Server-failovercluster**. Volg de instructies in de wizard om SQL Server te installeren en de server toe te voegen aan de FCI.
+1. Selecteer **knoop punt toevoegen aan een SQL Server-failovercluster** . Volg de instructies in de wizard om SQL Server te installeren en de server toe te voegen aan de FCI.
 
    >[!NOTE]
-   >Als u een installatie kopie van een Azure Marketplace-galerie hebt gebruikt die SQL Server bevat, zijn er SQL Server-hulpprogram ma's in de installatie kopie opgenomen. Als u een van deze installatie kopieën niet hebt gebruikt, installeert u de SQL Server-hulpprogram ma's afzonderlijk. Zie [down load SQL Server Management Studio (SSMS) (Engelstalig)](https://msdn.microsoft.com/library/mt238290.aspx)voor meer informatie.
+   >Als u een installatie kopie van een Azure Marketplace-galerie hebt gebruikt die SQL Server bevat, zijn er SQL Server-hulpprogram ma's in de installatie kopie opgenomen. Als u een van deze installatie kopieën niet hebt gebruikt, installeert u de SQL Server-hulpprogram ma's afzonderlijk. Zie [down load SQL Server Management Studio (SSMS) (Engelstalig)](/sql/ssms/download-sql-server-management-studio-ssms)voor meer informatie.
    >
 
 
@@ -237,7 +237,7 @@ Als u verkeer op de juiste manier wilt door sturen naar het huidige primaire kno
 
 ## <a name="limitations"></a>Beperkingen
 
-- Azure virtual machines ondersteunen micro soft Distributed Transaction Coordinator (MSDTC) op Windows Server 2019 met opslag op Csv's en een [standaard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md).
+- Azure virtual machines ondersteunen micro soft Distributed Transaction Coordinator (MSDTC) op Windows Server 2019 met opslag op Csv's en een [standaard Load Balancer](../../../load-balancer/load-balancer-overview.md).
 - Schijven die zijn gekoppeld als schijven met NTFS-indeling kunnen alleen worden gebruikt met Opslagruimten Direct als de optie voor de geschiktheid van de schijf is uitgeschakeld, of als deze is gewist, wanneer opslag wordt toegevoegd aan het cluster. 
 - Alleen registreren met de resource provider van de SQL-VM in de [Lightweight-beheer modus](sql-vm-resource-provider-register.md#management-modes) wordt ondersteund.
 

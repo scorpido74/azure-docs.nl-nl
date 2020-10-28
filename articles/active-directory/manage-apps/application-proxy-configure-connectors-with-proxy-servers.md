@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperfq2
-ms.openlocfilehash: fcf06c280a93489b2e958b9baff2e132da37c005
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 81a735966b2a0ebdd7c8fcd9e9aa467d68aac354
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426451"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792749"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Werken met bestaande on-premises proxyservers
 
@@ -111,11 +111,12 @@ Er zijn vier aspecten waarmee u rekening moet houden bij de uitgaande proxy:
 
 Sta toegang tot de volgende URL's toe:
 
-| URL | Hoe dat wordt gebruikt |
-| --- | --- |
-| \*.msappproxy.net<br>\*.servicebus.windows.net | Communicatie tussen de connector en de Application Proxy-cloudservice |
-| crl3.digicert.com<br>crl4.digicert.com<br>ocsp.digicert.com<br>www.d-trust.net<br>root-c3-ca2-2009.ocsp.d-trust.net<br>crl.microsoft.com<br>oneocsp.microsoft.com<br>ocsp.msocsp.com<br> | De connector gebruikt deze URL's om certificaten te verifiëren. |
-| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*. microsoftonline.com <br> *. microsoftonline-p.com<br>*. msauth.net <br> *. msauthimages.net<br>*. msecnd.net <br> *. msftauth.net<br>*. msftauthimages.net <br> *. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com:80 | De connector gebruikt deze URL's tijdens het registratieproces. |
+| URL | Poort |  Hoe dat wordt gebruikt |
+| --- | --- | --- |
+| &ast;.msappproxy.net<br>&ast;.servicebus.windows.net | 443/HTTPS | Communicatie tussen de connector en de Application Proxy-cloudservice |
+| crl3.digicert.com<br>crl4.digicert.com<br>ocsp.digicert.com<br>crl.microsoft.com<br>oneocsp.microsoft.com<br>ocsp.msocsp.com<br> | 80/HTTP | De connector gebruikt deze URL's om certificaten te verifiëren. |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>&ast;.microsoftonline.com<br>&ast;.microsoftonline-p.com<br>&ast;.msauth.net<br>&ast;.msauthimages.net<br>&ast;.msecnd.net<br>&ast;.msftauth.net<br>&ast;.msftauthimages.net<br>&ast;.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com | 443/HTTPS | De connector gebruikt deze URL's tijdens het registratieproces. |
+| ctldl.windowsupdate.com | 80/HTTP | De connector gebruikt deze URL tijdens het registratie proces. |
 
 Als uw firewall of proxy u toestaat om DNS-acceptatie lijsten te configureren, kunt u verbindingen met \* . msappproxy.net en \* . servicebus.Windows.net toestaan.
 
@@ -178,7 +179,7 @@ Voer de volgende stappen uit voor eerste probleem oplossing:
    ![Azure AD-toepassingsproxy-connector service in Services. msc](./media/application-proxy-configure-connectors-with-proxy-servers/services-local.png)
 
 1. Voer Message Analyzer uit als Administrator.
-1. Selecteer **lokale tracering starten**.
+1. Selecteer **lokale tracering starten** .
 1. Start de service Azure AD-toepassingsproxy-connector.
 1. Stop de netwerk opname.
 
@@ -188,7 +189,7 @@ Voer de volgende stappen uit voor eerste probleem oplossing:
 
 Als u de connector voor de toepassings proxy hebt geconfigureerd om de proxy servers te omzeilen en rechtstreeks verbinding te maken met de toepassings proxy service, wilt u zoeken in het netwerk vastleggen voor mislukte TCP-verbindings pogingen.
 
-Gebruik het filter Message Analyzer om deze pogingen te identificeren. Voer `property.TCPSynRetransmit` in het vak Filter in en selecteer **Toep assen**.
+Gebruik het filter Message Analyzer om deze pogingen te identificeren. Voer `property.TCPSynRetransmit` in het vak Filter in en selecteer **Toep assen** .
 
 Een SYN-pakket is het eerste pakket dat wordt verzonden om een TCP-verbinding tot stand te brengen. Als dit pakket geen antwoord retourneert, wordt de SYN opnieuw geprobeerd. U kunt het voor gaande filter gebruiken om alle opnieuw verzonden SYNs te bekijken. Vervolgens kunt u controleren of deze SYNs overeenkomen met elk verkeer dat betrekking heeft op de connector.
 

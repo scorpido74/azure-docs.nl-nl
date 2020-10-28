@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: f3fb31dc7db4808db83f33abdf14179265d147f9
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c0952e0f267f9c2511a2e80fa7106958d8dd0ee5
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425186"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791882"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Aanbevelingen voor beveiliging in Azure Security Center 
 In dit onderwerp wordt uitgelegd hoe u de aanbevelingen in Azure Security Center kunt bekijken en begrijpen om u te helpen uw Azure-resources te beveiligen.
@@ -77,8 +77,8 @@ Een voorbeeld van een preview-aanbeveling:
 
 In dit document hebt u kennis gemaakt met beveiligings aanbevelingen in Security Center. Voor verwante informatie:
 
-- [Aanbevelingen herstellen](security-center-remediate-recommendations.md) : informatie over het configureren van beveiligings beleid voor uw Azure-abonnementen en resource groepen.
+- [Aanbevelingen herstellen](security-center-remediate-recommendations.md): meer informatie over het configureren van beveiligings beleid voor uw Azure-abonnementen en resource groepen.
 - [Voorkom onjuiste configuraties met de aanbevelingen afdwingen/weigeren](prevent-misconfigurations.md).
-- [Reacties op aanbevelingen automatiseren](workflow-automation.md)
+- [Automatisch reacties op Security Center triggers automatiseren](workflow-automation.md)--reacties op aanbevelingen automatiseren
 - [Een resource uitsluiten van een aanbeveling](exempt-resource.md)
 - [Aanbevelingen voor beveiliging: een naslaggids](recommendations-reference.md)

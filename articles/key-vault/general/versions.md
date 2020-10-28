@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 06/30/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 58c5fdcfef5e866d0c69d65412582c0ed649f7c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2396aac67a17352987d9d6e3b49535c19ffe8917
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86230822"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792375"
 ---
 # <a name="key-vault-versions"></a>Versies van Key Vault
 
@@ -33,7 +33,7 @@ Privé-eind punten zijn nu beschikbaar als preview-versie. Met Azure Private Lin
 ## <a name="2019"></a>2019
 
 - Release van de Azure Key Vault-SDK's van de volgende generatie. Raadpleeg de quickstarts over Azure Key Vault-geheimen voor [Python](../secrets/quick-create-python.md), [.NET](../secrets/quick-create-net.md), [Java](../secrets/quick-create-java.md) en [Node.js](../secrets/quick-create-node.md) voor gebruiksvoorbeelden
-- Nieuwe Azure-beleidsregels voor het beheren van sleutelkluiscertificaten. Zie de [Ingebouwde Azure Policy-definities voor Key Vault](../policy-samples.md).
+- Nieuwe Azure-beleidsregels voor het beheren van sleutelkluiscertificaten. Zie de [Ingebouwde Azure Policy-definities voor Key Vault](../policy-reference.md).
 - Azure Key Vault-extensie van virtuele machine is nu algemeen beschikbaar.  Zie [Key Vault-extensie van virtuele machine voor Linux](../../virtual-machines/extensions/key-vault-linux.md) en [Key Vault-extensie van virtuele machine voor Windows](../../virtual-machines/extensions/key-vault-windows.md).
 - Gebeurtenisgestuurd beheer van geheimen voor Azure Key Vault is nu beschikbaar in Azure Event Grid. Bekijk [het Event Grid-schema voor gebeurtenissen in Azure Key Vault](../../event-grid/event-schema-key-vault.md] en [Key Vault-meldingen ontvangen en beantwoorden met Azure Event Grid](event-grid-tutorial.md) voor meer informatie.
 
@@ -49,8 +49,8 @@ Nieuwe functies en integraties die dit jaar zijn uitgebracht:
 
 Nieuwe functies die dit jaar zijn uitgebracht:
 
-- Beheerde opslagaccountsleutels. Met de functie Opslagaccountsleutels is eenvoudigere integratie met Azure Storage toegevoegd. Bekijk het overzichtsonderwerp [Overzicht van Beheerde opslagaccountsleutels](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-storage-keys) voor meer informatie.
-- Voorlopig verwijderen. Met de functie Voorlopig verwijderen is gegevensbescherming van uw sleutelkluizen en sleutelkluisobjecten verbeterd. Bekijk het overzichtsonderwerp [Overzicht van Voorlopig verwijderen](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) voor meer informatie.
+- Beheerde opslagaccountsleutels. Met de functie Opslagaccountsleutels is eenvoudigere integratie met Azure Storage toegevoegd. Bekijk het overzichtsonderwerp [Overzicht van Beheerde opslagaccountsleutels](../secrets/overview-storage-keys.md) voor meer informatie.
+- Voorlopig verwijderen. Met de functie Voorlopig verwijderen is gegevensbescherming van uw sleutelkluizen en sleutelkluisobjecten verbeterd. Bekijk het overzichtsonderwerp [Overzicht van Voorlopig verwijderen](./soft-delete-overview.md) voor meer informatie.
 
 ## <a name="2015"></a>2015
 
@@ -64,7 +64,7 @@ Algemene beschikbaarheid (versie 2015-06-01) werd aangekondigd op 24 juni 2015. 
 - Een sleutel herstellen - veld 'gebruiken' is verwijderd.     
 - RSA_OAEP is gewijzigd in RSA-OAEP voor RSA-algoritmen. Zie [Over sleutels, geheimen en certificaten](about-keys-secrets-certificates.md).    
  
-De tweede preview-versie (versie 2015-02-01-preview) werd aangekondigd op 20 april 2015. Zie de blogpost [REST API-update](https://docs.microsoft.com/archive/blogs/kv/rest-api-update) voor meer informatie. De volgende taken zijn bijgewerkt:
+De tweede preview-versie (versie 2015-02-01-preview) werd aangekondigd op 20 april 2015. Zie de blogpost [REST API-update](/archive/blogs/kv/rest-api-update) voor meer informatie. De volgende taken zijn bijgewerkt:
  
 - De sleutels in een kluis vermelden - ondersteuning voor paginering toegevoegd aan bewerking.
 - De versies van een sleutel vermelden - bewerking toegevoegd voor het vermelden van de versies van een sleutel.  
@@ -87,4 +87,4 @@ De eerste preview-versie (versie 2014-12-08-preview) werd aangekondigd op 8 janu
 - [Informatie over sleutels, geheimen en certificaten](about-keys-secrets-certificates.md)
 - [Sleutels](../keys/index.yml)
 - [Geheimen](../secrets/index.yml)
-- [Bewijzen](../certificates/index.yml)
+- [Certificaten](../certificates/index.yml)

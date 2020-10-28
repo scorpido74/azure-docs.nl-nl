@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 429883a1bd9bc4df270e6a9f2965087fa3fba2dc
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: fc44b7a49785a24460ea11f07e5248b266f5dfad
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488857"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793004"
 ---
 # <a name="storage-account-overview"></a>Overzicht van opslagaccounts
 
@@ -32,7 +32,7 @@ V2-opslag accounts voor algemeen gebruik ondersteunen de nieuwste functies van A
 
 - Blobs (alle typen: blok keren, toevoegen, pagina)
 - Data Lake Gen2
-- Files
+- Bestanden
 - Disks
 - Wachtrijen
 - Tabellen
@@ -49,7 +49,7 @@ V2-opslag accounts voor algemeen gebruik bieden meerdere toegangs lagen voor het
 V1-opslag accounts voor algemeen gebruik bieden toegang tot alle Azure Storage-services, maar hebben mogelijk niet de nieuwste functies of de laagste prijzen per gigabyte. V1-opslag accounts voor algemeen gebruik ondersteunen deze Azure Storage services:
 
 - Blobs (alle typen)
-- Files
+- Bestanden
 - Disks
 - Wachtrijen
 - Tabellen
@@ -60,7 +60,7 @@ In de meeste gevallen moet u v2-accounts voor algemeen gebruik gebruiken. U kunt
 
 - Uw toepassingen zijn transactie intensief of gebruiken aanzienlijke band breedte met geo-replicatie, maar vereisen geen grote capaciteit. In dit geval is algemeen-doel v1 de meest economische keuze.
 
-- U gebruikt een versie van de [Storage services-rest API](https://msdn.microsoft.com/library/azure/dd894041.aspx) die ouder is dan 2014-02-14 of een client bibliotheek met een lagere versie dan 4. x. U kunt de toepassing niet bijwerken.
+- U gebruikt een versie van de [Storage services-rest API](/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) die ouder is dan 2014-02-14 of een client bibliotheek met een lagere versie dan 4. x. U kunt de toepassing niet bijwerken.
 
 ### <a name="blockblobstorage-accounts"></a>BlockBlobStorage-accounts
 
@@ -108,7 +108,7 @@ De beschik bare toegangs lagen zijn:
 
 - De **warme** Access-laag. Deze laag is geoptimaliseerd voor veelvuldige toegang tot objecten in het opslag account. Het verkrijgen van toegang tot gegevens in de warme laag is de meest rendabel, terwijl de opslag kosten hoger zijn. Nieuwe opslag accounts worden standaard in de warme laag gemaakt.
 - De laag van de **coolbar** . Deze laag is geoptimaliseerd voor het opslaan van grote hoeveel heden gegevens die niet regel matig worden geopend en die gedurende ten minste 30 dagen worden opgeslagen. Het opslaan van gegevens in de cool-laag is rendabeler, maar de toegang tot die gegevens kan duurder zijn dan de toegang tot gegevens in de warme laag.
-- De **archief**laag. Deze laag is alleen beschikbaar voor afzonderlijke blok-blobs. De archief laag is geoptimaliseerd voor gegevens die een aantal uur van het ophalen van de latentie kunnen verdragen en die ten minste 180 dagen in de archief laag blijven. De archief laag is de meest rendabele optie voor het opslaan van gegevens. Het is echter wel duurder om toegang te krijgen tot gegevens in de warme of coole lagen.
+- De **archief** laag. Deze laag is alleen beschikbaar voor afzonderlijke blok-blobs. De archief laag is geoptimaliseerd voor gegevens die een aantal uur van het ophalen van de latentie kunnen verdragen en die ten minste 180 dagen in de archief laag blijven. De archief laag is de meest rendabele optie voor het opslaan van gegevens. Het is echter wel duurder om toegang te krijgen tot gegevens in de warme of coole lagen.
 
 Als er een wijziging is in het gebruiks patroon van uw gegevens, kunt u op elk gewenst moment scha kelen tussen deze toegangs lagen. Zie [Azure Blob Storage: warme, cool en archief toegangs lagen](../blobs/storage-blob-storage-tiers.md)voor meer informatie over toegangs lagen.
 
@@ -127,18 +127,18 @@ Alle gegevens in uw opslag account worden versleuteld aan de kant van de service
 
 Een opslagaccount biedt een unieke naamruimte in Azure voor uw gegevens. Elk object dat u in Azure Storage opslaat, heeft een adres dat uw unieke accountnaam bevat. De combinatie van de accountnaam en het service-eindpunt voor Azure Storage vormen de eindpunten voor uw opslagaccount.
 
-Als uw opslag account voor algemeen gebruik bijvoorbeeld *mystorageaccount*heet, zijn de standaard eindpunten voor dat account:
+Als uw opslag account voor algemeen gebruik bijvoorbeeld *mystorageaccount* heet, zijn de standaard eindpunten voor dat account:
 
 - Blob-opslag: `https://*mystorageaccount*.blob.core.windows.net`
 - Tabel opslag: `https://*mystorageaccount*.table.core.windows.net`
 - Wachtrij opslag: `https://*mystorageaccount*.queue.core.windows.net`
 - Azure Files: `https://*mystorageaccount*.file.core.windows.net`
-- Azure Data Lake Storage Gen2: `https://*mystorageaccount*.dfs.core.windows.net` (maakt gebruik [van het ABFS-stuur programma dat specifiek is geoptimaliseerd voor Big Data](/azure/storage/blobs/data-lake-storage-introduction#key-features-of-data-lake-storage-gen2).)
+- Azure Data Lake Storage Gen2: `https://*mystorageaccount*.dfs.core.windows.net` (maakt gebruik [van het ABFS-stuur programma dat specifiek is geoptimaliseerd voor Big Data](../blobs/data-lake-storage-introduction.md#key-features-of-data-lake-storage-gen2).)
 
 > [!NOTE]
 > Blok-Blob en Blob Storage-accounts bieden alleen het Blob service-eind punt.
 
-Maak de URL voor toegang tot een object in een opslag account door de locatie van het object in het opslag account toe te voegen aan het eind punt. Een blobadres kan bijvoorbeeld de volgende indeling hebben: http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*.
+Maak de URL voor toegang tot een object in een opslag account door de locatie van het object in het opslag account toe te voegen aan het eind punt. Een blobadres kan bijvoorbeeld de volgende indeling hebben: http:// *mystorageaccount* .blob.core.windows.net/ *mycontainer*/*myblob* .
 
 U kunt uw opslag account ook configureren voor het gebruik van een aangepast domein voor blobs. Zie [een aangepaste domein naam configureren voor uw Azure Storage-account](../blobs/storage-custom-domain-name.md)voor meer informatie.  
 
@@ -167,7 +167,7 @@ Wanneer u een upgrade uitvoert naar een v2-account voor algemeen gebruik van een
 
 ### <a name="azcopy"></a>AzCopy
 
-AzCopy is een Windows-opdrachtregelprogramma dat is  ontworpen voor het high-performance kopiëren van gegevens van en naar Azure Storage. U kunt AzCopy gebruiken om gegevens te kopiëren naar een Blob Storage-account vanuit een bestaand opslag account voor algemeen gebruik of om gegevens van on-premises opslag apparaten te uploaden. Zie [gegevens overdragen met het AzCopy-hulp programma van Command-Line](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)voor meer informatie.
+AzCopy is een Windows-opdrachtregelprogramma dat is  ontworpen voor het high-performance kopiëren van gegevens van en naar Azure Storage. U kunt AzCopy gebruiken om gegevens te kopiëren naar een Blob Storage-account vanuit een bestaand opslag account voor algemeen gebruik of om gegevens van on-premises opslag apparaten te uploaden. Zie [gegevens overdragen met het AzCopy-hulp programma van Command-Line](./storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json)voor meer informatie.
 
 ### <a name="data-movement-library"></a>Bibliotheek voor gegevensverplaatsing
 

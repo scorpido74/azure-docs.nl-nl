@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: sstein, sashan
 ms.date: 08/12/2020
-ms.openlocfilehash: 93e9ad28b14a51432fd9ccd32d1a155eaff2e190
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c616ba1971fcbb0674a42583b30c25f6ccda6874
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427134"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791780"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Hoge Beschik baarheid voor Azure SQL Database en SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -63,7 +63,7 @@ De zone redundante versie van de architectuur met hoge Beschik baarheid voor de 
 > Zie [Services ondersteunen per regio](../../availability-zones/az-region.md)voor actuele informatie over de regio's die zone redundante data bases ondersteunen. De zone-redundante configuratie is alleen beschikbaar wanneer de GEN5 Compute-hardware is geselecteerd. Deze functie is niet beschikbaar in het door SQL beheerde exemplaar.
 
 > [!NOTE]
-> Algemeen-data bases met een grootte van 80 VCore kan de prestaties afnemen met de zone redundante configuratie. Bewerkingen, zoals back-ups maken, herstellen, data base kopiëren en instellen van geo-DR-relaties, kunnen leiden tot tragere prestaties voor afzonderlijke data bases die groter zijn dan 1 TB. 
+> Algemeen-data bases met een grootte van 80 VCore kan de prestaties afnemen met de zone redundante configuratie. Bewerkingen zoals back-ups maken, herstellen, kopiëren van data bases en instellen van geo-DR-relaties kunnen leiden tot tragere prestaties voor afzonderlijke data bases die groter zijn dan 1 TB. 
 
 ## <a name="premium-and-business-critical-service-tier-locally-redundant-availability"></a>Premium en Bedrijfskritiek servicelaag lokaal redundante Beschik baarheid
 
@@ -71,7 +71,7 @@ Premium-en Bedrijfskritiek-service lagen maken gebruik van het Premium-beschikba
 
 ![Cluster van data base-engine knooppunten](./media/high-availability-sla/business-critical-service-tier.png)
 
-De onderliggende database bestanden (. MDF/. ldf) worden geplaatst op de gekoppelde SSD-opslag om een lage latentie-IO te bieden voor uw werk belasting. Hoge Beschik baarheid wordt geïmplementeerd met behulp van een technologie die vergelijkbaar is met SQL Server AlwaysOn- [beschikbaarheids groepen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server). Het cluster bevat één primaire replica die toegankelijk is voor werk belastingen van de klant lezen en schrijven, en Maxi maal drie secundaire replica's (Compute en opslag) die kopieën van gegevens bevatten. Het primaire knoop punt duwt voortdurend wijzigingen in de secundaire knoop punten en zorgt ervoor dat de gegevens worden gesynchroniseerd naar ten minste één secundaire replica voordat elke trans actie wordt doorgevoerd. Dit proces zorgt ervoor dat als het primaire knoop punt om een of andere reden vastloopt, er altijd een volledig gesynchroniseerd knoop punt wordt uitgevoerd. De failover wordt gestart door de Azure-Service Fabric. Zodra de secundaire replica het nieuwe primaire knoop punt wordt, wordt er een andere secundaire replica gemaakt om ervoor te zorgen dat het cluster voldoende knoop punten (quorum set) heeft. Zodra de failover is voltooid, worden Azure SQL-verbindingen automatisch omgeleid naar het nieuwe primaire knoop punt.
+De onderliggende database bestanden (. MDF/. ldf) worden geplaatst op de gekoppelde SSD-opslag om een lage latentie-IO te bieden voor uw werk belasting. Hoge Beschik baarheid wordt geïmplementeerd met behulp van een technologie die vergelijkbaar is met SQL Server AlwaysOn- [beschikbaarheids groepen](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server). Het cluster bevat één primaire replica die toegankelijk is voor werk belastingen van de klant lezen en schrijven, en Maxi maal drie secundaire replica's (Compute en opslag) die kopieën van gegevens bevatten. Het primaire knoop punt duwt voortdurend wijzigingen in de secundaire knoop punten en zorgt ervoor dat de gegevens worden gesynchroniseerd naar ten minste één secundaire replica voordat elke trans actie wordt doorgevoerd. Dit proces zorgt ervoor dat als het primaire knoop punt om een of andere reden vastloopt, er altijd een volledig gesynchroniseerd knoop punt wordt uitgevoerd. De failover wordt gestart door de Azure-Service Fabric. Zodra de secundaire replica het nieuwe primaire knoop punt wordt, wordt er een andere secundaire replica gemaakt om ervoor te zorgen dat het cluster voldoende knoop punten (quorum set) heeft. Zodra de failover is voltooid, worden Azure SQL-verbindingen automatisch omgeleid naar het nieuwe primaire knoop punt.
 
 Als extra voor deel heeft het Premium-beschikbaarheids model de mogelijkheid om alleen-lezen Azure SQL-verbindingen om te leiden naar een van de secundaire replica's. Deze functie heet [Uitschalen lezen](read-scale-out.md). Het biedt 100% extra reken capaciteit zonder extra kosten voor het laden van alleen-lezen bewerkingen, zoals analytische werk belastingen, van de primaire replica.
 
@@ -82,7 +82,7 @@ Het cluster met knoop punten voor het Premium-beschikbaarheids model wordt stand
 Omdat de redundante data bases van de zone replica's hebben in verschillende data centers met een aantal onderlinge afstanden, kan de verhoogde netwerk latentie de doorvoer tijd verhogen en de prestaties van bepaalde OLTP-workloads beïnvloeden. U kunt altijd terugkeren naar de configuratie met één zone door de instelling voor zone redundantie uit te scha kelen. Dit proces is een online bewerking die vergelijkbaar is met de normale upgrade van de servicelaag. Aan het einde van het proces wordt de data base of groep gemigreerd van een redundante ring zone naar een enkele zone ring of andersom.
 
 > [!IMPORTANT]
-> Zone redundante data bases en elastische Pools worden momenteel alleen ondersteund in de service lagen Premium en Bedrijfskritiek in regio's selecteren. Wanneer u de laag Bedrijfskritiek gebruikt, is de redundante configuratie van de zone alleen beschikbaar wanneer de GEN5 Compute-hardware is geselecteerd. Zie [Services ondersteunen per regio](../../availability-zones/az-region.md)voor actuele informatie over de regio's die zone redundante data bases ondersteunen.
+> Wanneer u de laag Bedrijfskritiek gebruikt, is de redundante configuratie van de zone alleen beschikbaar wanneer de GEN5 Compute-hardware is geselecteerd. Zie [Services ondersteunen per regio](../../availability-zones/az-region.md)voor actuele informatie over de regio's die zone redundante data bases ondersteunen.
 
 > [!NOTE]
 > Deze functie is niet beschikbaar in het door SQL beheerde exemplaar.
@@ -122,9 +122,9 @@ Een failover kan worden gestart met behulp van Power shell, REST API of Azure CL
 
 |Implementatie type|PowerShell|REST-API| Azure CLI|
 |:---|:---|:---|:---|
-|Database|[Invoke-AzSqlDatabaseFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover)|[Data base-failover](/rest/api/sql/databases(failover)/failover/)|[AZ rest](https://docs.microsoft.com/cli/azure/reference-index#az-rest) kan worden gebruikt voor het aanroepen van een rest API aanroep vanuit Azure cli|
-|Elastische pool|[Invoke-AzSqlElasticPoolFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[Failover van elastische groep](/rest/api/sql/elasticpools(failover)/failover/)|[AZ rest](https://docs.microsoft.com/cli/azure/reference-index#az-rest) kan worden gebruikt voor het aanroepen van een rest API aanroep vanuit Azure cli|
-|Beheerd exemplaar|[Invoke-AzSqlInstanceFailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[Beheerde instanties-failover](https://docs.microsoft.com/rest/api/sql/managed%20instances%20-%20failover/failover)|[AZ SQL mi failover](/cli/azure/sql/mi/#az-sql-mi-failover)|
+|Database|[Invoke-AzSqlDatabaseFailover](/powershell/module/az.sql/invoke-azsqldatabasefailover)|[Data base-failover](/rest/api/sql/databases(failover)/failover/)|[AZ rest](/cli/azure/reference-index#az-rest) kan worden gebruikt voor het aanroepen van een rest API aanroep vanuit Azure cli|
+|Elastische pool|[Invoke-AzSqlElasticPoolFailover](/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[Failover van elastische groep](/rest/api/sql/elasticpools(failover)/failover/)|[AZ rest](/cli/azure/reference-index#az-rest) kan worden gebruikt voor het aanroepen van een rest API aanroep vanuit Azure cli|
+|Beheerd exemplaar|[Invoke-AzSqlInstanceFailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[Beheerde instanties-failover](/rest/api/sql/managed%20instances%20-%20failover/failover)|[AZ SQL mi failover](/cli/azure/sql/mi/#az-sql-mi-failover)|
 
 > [!IMPORTANT]
 > De opdracht failover is niet beschikbaar voor lees bare secundaire replica's van grootschalige-data bases.

@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 43c8f3dc0df41d9322edbe2e0c763de12b787ed6
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: f8b555c4022fcf2532a7350839d2357c96562f4c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479796"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791848"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage bewaken, problemen opsporen en oplossen
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -59,8 +59,8 @@ Als u dergelijke toepassingen wilt beheren, moet u ze proactief controleren en i
   * [Uw probleem doet zich voor bij het gebruik van de opslag emulator voor ontwikkelen of testen]
   * [U ondervindt problemen bij het installeren van de Azure SDK voor .NET]
   * [U hebt een ander probleem met een opslag service]
-  * [Problemen met Vhd's op virtuele Windows-machines oplossen](../../virtual-machines/windows/troubleshoot-vhds.md)   
-  * [Problemen met Vhd's op virtuele Linux-machines oplossen](../../virtual-machines/linux/troubleshoot-vhds.md)
+  * [Problemen met Vhd's op virtuele Windows-machines oplossen](../../virtual-machines/troubleshooting/index.yml)   
+  * [Problemen met Vhd's op virtuele Linux-machines oplossen](../../virtual-machines/troubleshooting/index.yml)
   * [Problemen met Azure Files oplossen met Windows](../files/storage-troubleshoot-windows-file-connection-problems.md)   
   * [Problemen met Azure Files oplossen met Linux](../files/storage-troubleshoot-linux-file-connection-problems.md)
 * [Bijlagen]
@@ -92,9 +92,9 @@ De sectie '[probleemoplossings richtlijnen]' bevat richt lijnen voor probleem op
 De '[bijlagen]' bevatten informatie over het gebruik van andere hulpprogram ma's, zoals wireshark en netmon voor het analyseren van gegevens van het netwerk pakket en het Fiddler voor het analyseren van HTTP/HTTPS-berichten.
 
 ## <a name="monitoring-your-storage-service"></a><a name="monitoring-your-storage-service"></a>Uw opslag service controleren
-Als u bekend bent met de bewaking van Windows-prestaties, kunt u de metrische gegevens van de opslag beschouwen als Azure Storage equivalent van prestatie meter items van Windows. In metrische gegevens over opslag vindt u een uitgebreide set metrische gegevens (prestatie meter items in de terminologie van Windows prestatie meter), zoals service beschikbaarheid, het totale aantal aanvragen voor de service of het percentage voltooide aanvragen aan de service. Zie voor een volledige lijst met beschik bare metrische gegevens het [tabel schema voor Opslaganalyse metrische gegevens](https://msdn.microsoft.com/library/azure/hh343264.aspx). U kunt opgeven of u wilt dat de opslag service elk uur of elke minuut metrische gegevens verzamelt en samenvoegt. Voor meer informatie over het inschakelen van metrische gegevens en het bewaken van uw opslag accounts raadpleegt u metrische waarden voor [opslag inschakelen en statistieken weer geven](https://go.microsoft.com/fwlink/?LinkId=510865).
+Als u bekend bent met de bewaking van Windows-prestaties, kunt u de metrische gegevens van de opslag beschouwen als Azure Storage equivalent van prestatie meter items van Windows. In metrische gegevens over opslag vindt u een uitgebreide set metrische gegevens (prestatie meter items in de terminologie van Windows prestatie meter), zoals service beschikbaarheid, het totale aantal aanvragen voor de service of het percentage voltooide aanvragen aan de service. Zie voor een volledige lijst met beschik bare metrische gegevens het [tabel schema voor Opslaganalyse metrische gegevens](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema). U kunt opgeven of u wilt dat de opslag service elk uur of elke minuut metrische gegevens verzamelt en samenvoegt. Voor meer informatie over het inschakelen van metrische gegevens en het bewaken van uw opslag accounts raadpleegt u metrische waarden voor [opslag inschakelen en statistieken weer geven](../blobs/monitor-blob-storage.md).
 
-U kunt kiezen welke metrische gegevens per uur u wilt weer geven in de [Azure Portal](https://portal.azure.com) en regels configureren waarmee beheerders per e-mail op de hoogte worden gesteld wanneer een metrische waarde van elk uur een bepaalde drempel waarde overschrijdt. Zie [waarschuwings meldingen ontvangen](/azure/monitoring-and-diagnostics/monitoring-overview-alerts)voor meer informatie.
+U kunt kiezen welke metrische gegevens per uur u wilt weer geven in de [Azure Portal](https://portal.azure.com) en regels configureren waarmee beheerders per e-mail op de hoogte worden gesteld wanneer een metrische waarde van elk uur een bepaalde drempel waarde overschrijdt. Zie [waarschuwings meldingen ontvangen](../../azure-monitor/platform/alerts-overview.md)voor meer informatie.
 
 U wordt aangeraden [Azure monitor voor opslag](../../azure-monitor/insights/storage-insights-overview.md) te bekijken (preview). Het is een functie van Azure Monitor die uitgebreide controle biedt over uw Azure Storage-accounts door een uniforme weer gave te bieden van de prestaties, capaciteit en beschik baarheid van uw Azure Storage services. U hoeft niets in te scha kelen of te configureren, en u kunt deze metrische gegevens direct weer geven vanuit de vooraf gedefinieerde interactieve diagrammen en andere visualisaties die zijn opgenomen.
 
@@ -124,7 +124,7 @@ Opmerking: deze informatie is eerder beschikbaar, samen met historische gegevens
 Terwijl de [Azure Portal](https://portal.azure.com) status gegevens verzamelt vanuit de Azure-Data Centers (interne bewaking), kunt u ook overwegen een externe benadering te gebruiken voor het genereren van synthetische trans acties die regel matig toegang hebben tot uw door Azure gehoste webtoepassing vanaf meerdere locaties. De services die worden aangeboden door [Dynatrace](https://www.dynatrace.com/en/synthetic-monitoring) en Application Insights voor Azure DevOps zijn voor beelden van deze benadering. Voor meer informatie over Application Insights voor Azure DevOps raadpleegt u de bijlage[bijlage 5: bewaking met Application Insights voor Azure DevOps](#appendix-5).
 
 ### <a name="monitoring-capacity"></a><a name="monitoring-capacity"></a>Bewakings capaciteit
-Met metrische gegevens voor opslag worden alleen metrische gegevens over capaciteit opgeslagen voor de BLOB-service, omdat blobs doorgaans het grootste deel van de opgeslagen data hebben (op het moment van schrijven, is het niet mogelijk metrische opslag waarden te gebruiken om de capaciteit van uw tabellen en wacht rijen te controleren). U kunt deze gegevens vinden in de tabel **$MetricsCapacityBlob** als u bewaking hebt ingeschakeld voor de BLOB service. Met metrische gegevens van de opslag records worden deze eenmalig per dag geregistreerd en kunt u de waarde van de **RowKey** gebruiken om te bepalen of de rij een entiteit bevat die is gekoppeld aan gebruikers gegevens (waardegegevens) of Analytics-gegevens **(Value** **Analytics**). Elke opgeslagen entiteit bevat informatie over de hoeveelheid gebruikte opslag ruimte (**capaciteit** gemeten in bytes) en het huidige aantal containers (**ContainerCount**) en blobs (**ObjectCount**) die worden gebruikt in het opslag account. Zie [Opslaganalyse-tabel schema metrische](https://msdn.microsoft.com/library/azure/hh343264.aspx)gegevens voor meer informatie over de capaciteits gegevens die zijn opgeslagen in de tabel **$MetricsCapacityBlob** .
+Met metrische gegevens voor opslag worden alleen metrische gegevens over capaciteit opgeslagen voor de BLOB-service, omdat blobs doorgaans het grootste deel van de opgeslagen data hebben (op het moment van schrijven, is het niet mogelijk metrische opslag waarden te gebruiken om de capaciteit van uw tabellen en wacht rijen te controleren). U kunt deze gegevens vinden in de tabel **$MetricsCapacityBlob** als u bewaking hebt ingeschakeld voor de BLOB service. Met metrische gegevens van de opslag records worden deze eenmalig per dag geregistreerd en kunt u de waarde van de **RowKey** gebruiken om te bepalen of de rij een entiteit bevat die is gekoppeld aan gebruikers gegevens (waardegegevens) of Analytics-gegevens **(Value** **Analytics** ). Elke opgeslagen entiteit bevat informatie over de hoeveelheid gebruikte opslag ruimte ( **capaciteit** gemeten in bytes) en het huidige aantal containers ( **ContainerCount** ) en blobs ( **ObjectCount** ) die worden gebruikt in het opslag account. Zie [Opslaganalyse-tabel schema metrische](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema)gegevens voor meer informatie over de capaciteits gegevens die zijn opgeslagen in de tabel **$MetricsCapacityBlob** .
 
 > [!NOTE]
 > U moet deze waarden controleren voor een vroegtijdige waarschuwing dat u de capaciteits limieten van uw opslag account nadert. U kunt in de Azure Portal waarschuwings regels toevoegen om u te waarschuwen als het gebruik van geaggregeerde opslag overschrijdt of lager is dan de drempel waarden die u opgeeft.
@@ -134,9 +134,9 @@ Met metrische gegevens voor opslag worden alleen metrische gegevens over capacit
 Zie het blog bericht [over Azure Storage facturering – band breedte, trans acties en capaciteit](/archive/blogs/patrick_butler_monterde/azure-storage-understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity)voor hulp bij het schatten van de grootte van verschillende opslag objecten, zoals blobs.
 
 ### <a name="monitoring-availability"></a><a name="monitoring-availability"></a>Beschikbaarheid bewaken
-U moet de beschik baarheid van de opslag Services in uw opslag account bewaken door de waarde in de kolom **Beschik baarheid** te bewaken in de metrische tabellen per uur of minuut, **$MetricsHourPrimaryTransactionsBlob**, **$MetricsHourPrimaryTransactionsTable**, **$MetricsHourPrimaryTransactionsQueue**, **$MetricsMinutePrimaryTransactionsBlob**, **$MetricsMinutePrimaryTransactionsTable**, **$MetricsMinutePrimaryTransactionsQueue** **$MetricsCapacityBlob.** De kolom **Beschik baarheid** bevat een percentage waarde waarmee de beschik baarheid van de service of de API-bewerking wordt aangegeven die wordt vertegenwoordigd door de rij (de **RowKey** geeft aan of de rij metrische gegevens bevat voor de service als geheel of voor een specifieke API-bewerking).
+U moet de beschik baarheid van de opslag Services in uw opslag account bewaken door de waarde in de kolom **Beschik baarheid** te bewaken in de metrische tabellen per uur of minuut, **$MetricsHourPrimaryTransactionsBlob** , **$MetricsHourPrimaryTransactionsTable** , **$MetricsHourPrimaryTransactionsQueue** , **$MetricsMinutePrimaryTransactionsBlob** , **$MetricsMinutePrimaryTransactionsTable** , **$MetricsMinutePrimaryTransactionsQueue** **$MetricsCapacityBlob.** De kolom **Beschik baarheid** bevat een percentage waarde waarmee de beschik baarheid van de service of de API-bewerking wordt aangegeven die wordt vertegenwoordigd door de rij (de **RowKey** geeft aan of de rij metrische gegevens bevat voor de service als geheel of voor een specifieke API-bewerking).
 
-Een waarde van minder dan 100% geeft aan dat sommige opslag aanvragen mislukken. U kunt zien waarom ze mislukken door de andere kolommen in de metrische gegevens te onderzoeken die het aantal aanvragen weer geven met verschillende fout typen, zoals **ServerTimeoutError**. U verwacht dat de **Beschik baarheid** tijdelijk onder 100% wordt weer gegeven om redenen als tijdelijke time-outs bij de server terwijl de service partities verplaatst naar een betere Load-Balancing-aanvraag; de logica voor opnieuw proberen in uw client toepassing moet dergelijke periodieke omstandigheden afhandelen. Het artikel [Opslaganalyse vastgelegde bewerkingen en status berichten](https://msdn.microsoft.com/library/azure/hh343260.aspx) bevat een lijst met de transactie typen die door metrische gegevens voor opslag zijn opgenomen in de **beschikbaarheids** berekening.
+Een waarde van minder dan 100% geeft aan dat sommige opslag aanvragen mislukken. U kunt zien waarom ze mislukken door de andere kolommen in de metrische gegevens te onderzoeken die het aantal aanvragen weer geven met verschillende fout typen, zoals **ServerTimeoutError** . U verwacht dat de **Beschik baarheid** tijdelijk onder 100% wordt weer gegeven om redenen als tijdelijke time-outs bij de server terwijl de service partities verplaatst naar een betere Load-Balancing-aanvraag; de logica voor opnieuw proberen in uw client toepassing moet dergelijke periodieke omstandigheden afhandelen. Het artikel [Opslaganalyse vastgelegde bewerkingen en status berichten](/rest/api/storageservices/Storage-Analytics-Logged-Operations-and-Status-Messages) bevat een lijst met de transactie typen die door metrische gegevens voor opslag zijn opgenomen in de **beschikbaarheids** berekening.
 
 In de [Azure Portal](https://portal.azure.com)kunt u waarschuwings regels toevoegen om u te waarschuwen als **Beschik baarheid** voor een service onder een drempel waarde valt die u opgeeft.
 
@@ -183,7 +183,7 @@ Nadat u de waarschijnlijke locatie van de oorzaak van het prestatie probleem van
 In de sectie '[probleemoplossings richtlijnen]' verderop in deze hand leiding vindt u meer informatie over enkele veelvoorkomende prestatie problemen die u kunt tegen komen.
 
 ### <a name="diagnosing-errors"></a><a name="diagnosing-errors"></a>Fouten vaststellen
-Gebruikers van uw toepassing kunnen u een melding geven over fouten die zijn gerapporteerd door de client toepassing. Metrische opslag gegevens registreren ook het aantal verschillende fout typen van uw opslag Services, zoals **NetworkError**, **ClientTimeoutError**of **AuthorizationError**. Hoewel de metrische gegevens van de opslag slechts een aantal verschillende fout typen hebben, kunt u meer details over afzonderlijke aanvragen verkrijgen door de server-, client-en netwerk logboeken te controleren. Normaal gesp roken geeft de HTTP-status code die wordt geretourneerd door de opslag service een indicatie waarom de aanvraag is mislukt.
+Gebruikers van uw toepassing kunnen u een melding geven over fouten die zijn gerapporteerd door de client toepassing. Metrische opslag gegevens registreren ook het aantal verschillende fout typen van uw opslag Services, zoals **NetworkError** , **ClientTimeoutError** of **AuthorizationError** . Hoewel de metrische gegevens van de opslag slechts een aantal verschillende fout typen hebben, kunt u meer details over afzonderlijke aanvragen verkrijgen door de server-, client-en netwerk logboeken te controleren. Normaal gesp roken geeft de HTTP-status code die wordt geretourneerd door de opslag service een indicatie waarom de aanvraag is mislukt.
 
 > [!NOTE]
 > Houd er rekening mee dat u verwacht een aantal periodieke fouten te zien: bijvoorbeeld fouten als gevolg van tijdelijke netwerk problemen of toepassings fouten.
@@ -192,11 +192,11 @@ Gebruikers van uw toepassing kunnen u een melding geven over fouten die zijn ger
 
 De volgende resources kunnen worden gebruikt voor een overzicht van status- en foutcodes in verband met de opslag:
 
-* [Veelvoorkomende fout codes voor REST API](https://msdn.microsoft.com/library/azure/dd179357.aspx)
-* [Fout codes voor BLOB-service](https://msdn.microsoft.com/library/azure/dd179439.aspx)
-* [Fout codes voor Queue-service](https://msdn.microsoft.com/library/azure/dd179446.aspx)
-* [Fout codes voor tabel Services](https://msdn.microsoft.com/library/azure/dd179438.aspx)
-* [Fout codes voor bestands Services](https://msdn.microsoft.com/library/azure/dn690119.aspx)
+* [Veelvoorkomende fout codes voor REST API](/rest/api/storageservices/Common-REST-API-Error-Codes)
+* [Fout codes voor BLOB-service](/rest/api/storageservices/Blob-Service-Error-Codes)
+* [Fout codes voor Queue-service](/rest/api/storageservices/Queue-Service-Error-Codes)
+* [Fout codes voor tabel Services](/rest/api/storageservices/Table-Service-Error-Codes)
+* [Fout codes voor bestands Services](/rest/api/storageservices/File-Service-Error-Codes)
 
 ### <a name="storage-emulator-issues"></a><a name="storage-emulator-issues"></a>Problemen met de opslag emulator
 De Azure SDK bevat een opslag emulator die u kunt uitvoeren op een ontwikkel werkstation. Deze emulator simuleert het grootste deel van het gedrag van de Azure Storage-services en is nuttig tijdens het ontwikkelen en testen, zodat u toepassingen kunt uitvoeren die gebruikmaken van Azure Storage-services zonder dat u een Azure-abonnement en een Azure-opslag account nodig hebt.
@@ -204,9 +204,9 @@ De Azure SDK bevat een opslag emulator die u kunt uitvoeren op een ontwikkel wer
 In het gedeelte "[richt lijnen voor probleem oplossing]" van deze hand leiding worden enkele veelvoorkomende problemen beschreven die zich voordoen met de opslag emulator.
 
 ### <a name="storage-logging-tools"></a><a name="storage-logging-tools"></a>Hulpprogram ma's voor opslag logboek registratie
-Opslag logboek registratie biedt logboek registratie aan de server zijde van opslag aanvragen in uw Azure Storage-account. Zie [opslag logboeken inschakelen en logboek gegevens openen](https://go.microsoft.com/fwlink/?LinkId=510867)voor meer informatie over het inschakelen van logboek registratie aan de server zijde en het openen van logboek gegevens.
+Opslag logboek registratie biedt logboek registratie aan de server zijde van opslag aanvragen in uw Azure Storage-account. Zie [opslag logboeken inschakelen en logboek gegevens openen](./storage-analytics-logging.md)voor meer informatie over het inschakelen van logboek registratie aan de server zijde en het openen van logboek gegevens.
 
-Met de Storage-client bibliotheek voor .NET kunt u logboek gegevens aan de client zijde verzamelen die betrekking hebben op opslag bewerkingen die worden uitgevoerd door uw toepassing. Zie [Logboekregistratie op de client inschakelen met de .NET-opslagclientbibliotheek](https://go.microsoft.com/fwlink/?LinkId=510868) voor meer informatie.
+Met de Storage-client bibliotheek voor .NET kunt u logboek gegevens aan de client zijde verzamelen die betrekking hebben op opslag bewerkingen die worden uitgevoerd door uw toepassing. Zie [Logboekregistratie op de client inschakelen met de .NET-opslagclientbibliotheek](/rest/api/storageservices/Client-side-Logging-with-the-.NET-Storage-Client-Library) voor meer informatie.
 
 > [!NOTE]
 > In sommige gevallen (zoals SAS-autorisatie fouten), kan een gebruiker een fout melden waarvoor u geen aanvraag gegevens in de opslag logboeken aan de server zijde kunt vinden. U kunt de logboek functies van de Storage-client bibliotheek gebruiken om te onderzoeken of de oorzaak van het probleem zich op de client bevindt of netwerk controle hulpprogramma's gebruiken om het netwerk te onderzoeken.
@@ -348,11 +348,11 @@ Is uw probleem gerelateerd aan de beschik baarheid van een van de opslag Service
 
 ---
 ### <a name="metrics-show-high-averagee2elatency-and-low-averageserverlatency"></a><a name="metrics-show-high-AverageE2ELatency-and-low-AverageServerLatency"></a>Prestatiegegevens geven hoge AverageE2ELatency en lage AverageServerLatency aan
-In de onderstaande afbeelding van het hulp programma [Azure Portal](https://portal.azure.com) bewaking ziet u een voor beeld waarin de **AverageE2ELatency** aanzienlijk hoger is dan de **averageserverlatency aan**.
+In de onderstaande afbeelding van het hulp programma [Azure Portal](https://portal.azure.com) bewaking ziet u een voor beeld waarin de **AverageE2ELatency** aanzienlijk hoger is dan de **averageserverlatency aan** .
 
 ![Afbeelding van de Azure Portal waarin een voor beeld wordt weer gegeven waarvan de AverageE2ELatency aanzienlijk hoger is dan de Averageserverlatency aan.][4]
 
-De opslag service berekent alleen de metrische **AverageE2ELatency** voor voltooide aanvragen en, in tegens telling tot **averageserverlatency aan**, bevat de tijd die de client nodig heeft om de gegevens te verzenden en bevestiging van de opslag service te ontvangen. Daarom kan een verschil tussen **AverageE2ELatency** en **averageserverlatency aan** worden veroorzaakt doordat de client toepassing langzaam reageert of als gevolg van de omstandigheden in het netwerk.
+De opslag service berekent alleen de metrische **AverageE2ELatency** voor voltooide aanvragen en, in tegens telling tot **averageserverlatency aan** , bevat de tijd die de client nodig heeft om de gegevens te verzenden en bevestiging van de opslag service te ontvangen. Daarom kan een verschil tussen **AverageE2ELatency** en **averageserverlatency aan** worden veroorzaakt doordat de client toepassing langzaam reageert of als gevolg van de omstandigheden in het netwerk.
 
 > [!NOTE]
 > U kunt ook **E2ELatency** en **ServerLatency** weer geven voor afzonderlijke opslag bewerkingen in de logboek gegevens van de opslag logboek registratie.
@@ -362,7 +362,7 @@ De opslag service berekent alleen de metrische **AverageE2ELatency** voor voltoo
 #### <a name="investigating-client-performance-issues"></a>Problemen met client prestaties onderzoeken
 Mogelijke oorzaken voor de client lopen langzaam, zoals een beperkt aantal beschik bare verbindingen of threads, of er is onvoldoende bronnen beschikbaar, zoals CPU, geheugen of netwerk bandbreedte. U kunt het probleem mogelijk oplossen door de client code efficiënter te wijzigen (bijvoorbeeld door asynchrone aanroepen naar de opslag service te gebruiken) of door een grotere virtuele machine te gebruiken (met meer kernen en meer geheugen).
 
-Voor de tabel-en wachtrij Services kan het Nagle-algoritme ook hoge **AverageE2ELatency** veroorzaken ten opzichte van **averageserverlatency aan**: Zie het [algoritme van post Nagle is niet geschikt voor kleine aanvragen](/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests)voor meer informatie. U kunt de Nagle-algoritme in code uitschakelen met behulp van de klasse **ServicePointManager** in de naam ruimte **System.net** . U moet dit doen voordat u aanroepen naar de tabel-of wachtrij Services in uw toepassing, omdat dit geen invloed heeft op verbindingen die al zijn geopend. Het volgende voor beeld wordt opgehaald uit de **Application_Start** -methode in een werk rollen.
+Voor de tabel-en wachtrij Services kan het Nagle-algoritme ook hoge **AverageE2ELatency** veroorzaken ten opzichte van **averageserverlatency aan** : Zie het [algoritme van post Nagle is niet geschikt voor kleine aanvragen](/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests)voor meer informatie. U kunt de Nagle-algoritme in code uitschakelen met behulp van de klasse **ServicePointManager** in de naam ruimte **System.net** . U moet dit doen voordat u aanroepen naar de tabel-of wachtrij Services in uw toepassing, omdat dit geen invloed heeft op verbindingen die al zijn geopend. Het volgende voor beeld wordt opgehaald uit de **Application_Start** -methode in een werk rollen.
 
 # <a name="net-v12"></a>[.NET-V12](#tab/dotnet)
 
@@ -378,7 +378,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 
 ---
 
-Controleer de logboeken aan de client om te zien hoeveel aanvragen uw client toepassing verzendt en controleer op algemene .NET-gerelateerde prestatie knelpunten in uw client zoals CPU, .NET-garbagecollection, netwerk gebruik of geheugen. Als uitgangs punt voor het oplossen van problemen met .NET-client toepassingen raadpleegt u [fout opsporing, tracering en profile ring](https://msdn.microsoft.com/library/7fe0dd2y).
+Controleer de logboeken aan de client om te zien hoeveel aanvragen uw client toepassing verzendt en controleer op algemene .NET-gerelateerde prestatie knelpunten in uw client zoals CPU, .NET-garbagecollection, netwerk gebruik of geheugen. Als uitgangs punt voor het oplossen van problemen met .NET-client toepassingen raadpleegt u [fout opsporing, tracering en profile ring](/dotnet/framework/debug-trace-profile/).
 
 #### <a name="investigating-network-latency-issues"></a>Problemen met netwerk latentie onderzoeken
 Een hoge end-to-end latentie als gevolg van het netwerk wordt meestal veroorzaakt door tijdelijke omstandigheden. U kunt zowel tijdelijke als permanente netwerk problemen, zoals verwijderde pakketten, onderzoeken door gebruik te maken van hulpprogram ma's zoals wireshark.
@@ -408,7 +408,7 @@ Als er hoge **averageserverlatency aan** voor het downloaden van blobs worden we
 High- **averageserverlatency aan** -waarden kunnen ook een symptoom zijn van slecht ontworpen tabellen of query's die resulteren in scan bewerkingen of die het Anti-patroon Append/laten voorafgaan door volgen. Zie "[metrische gegevens geven een toename in percentthrottlingerror aan]" voor meer informatie.
 
 > [!NOTE]
-> Hier vindt u een uitgebreid overzicht van de controle lijst voor prestaties: [Microsoft Azure Storage controle lijst voor prestaties en schaal baarheid](storage-performance-checklist.md).
+> Hier vindt u een uitgebreid overzicht van de controle lijst voor prestaties: [Microsoft Azure Storage controle lijst voor prestaties en schaal baarheid](../blobs/storage-performance-checklist.md).
 >
 >
 
@@ -459,14 +459,14 @@ Uw metrische gegevens tonen een toename in **percenttimeouterror aan** voor een 
 >
 >
 
-De metrische waarde voor **percenttimeouterror aan** is een aggregatie van de volgende metrische gegevens: **ClientTimeoutError**, **AnonymousClientTimeoutError**, **SASClientTimeoutError**, **ServerTimeoutError**, **AnonymousServerTimeoutError**en **SASServerTimeoutError**.
+De metrische waarde voor **percenttimeouterror aan** is een aggregatie van de volgende metrische gegevens: **ClientTimeoutError** , **AnonymousClientTimeoutError** , **SASClientTimeoutError** , **ServerTimeoutError** , **AnonymousServerTimeoutError** en **SASServerTimeoutError** .
 
 De time-outs van de server worden veroorzaakt door een fout op de server. De time-out van de client treedt op omdat een bewerking op de server de time-out overschrijdt die is opgegeven door de client. een client die de Storage-client bibliotheek gebruikt, kan bijvoorbeeld een time-out voor een bewerking instellen met behulp van de eigenschap **ServerTimeout** van de klasse **QueueRequestOptions** .
 
 Server-time-outs duiden op een probleem met de opslag service die verder moet worden onderzocht. U kunt metrische gegevens gebruiken om te zien of u de schaalbaarheids limieten voor de service krijgt en eventuele pieken in het verkeer die dit probleem veroorzaken, kunnen identificeren. Als het probleem zich voordoet, kan dit worden veroorzaakt door taak verdeling in de service. Als het probleem zich blijft voordoen en niet wordt veroorzaakt door de toepassing die de schaalbaarheids limieten van de service bereikt, moet u een ondersteunings probleem veroorzaken. Voor client-time-outs moet u bepalen of de time-out is ingesteld op een geschikte waarde in de client en de time-outwaarde van de client wijzigen of onderzoeken hoe u de prestaties van de bewerkingen in de opslag service kunt verbeteren, bijvoorbeeld door de tabel query's te optimaliseren of de grootte van uw berichten te verkleinen.
 
 ### <a name="metrics-show-an-increase-in-percentnetworkerror"></a><a name="metrics-show-an-increase-in-PercentNetworkError"></a>Prestatiegegevens geven een toename in PercentNetworkError aan
-Uw metrische gegevens tonen een toename in **PercentNetworkError** voor een van uw opslag Services. De metrische waarde voor **PercentNetworkError** is een aggregatie van de volgende metrische gegevens: **NetworkError**, **AnonymousNetworkError**en **SASNetworkError**. Deze treden op wanneer de opslag service een netwerk fout detecteert wanneer de client een opslag aanvraag doet.
+Uw metrische gegevens tonen een toename in **PercentNetworkError** voor een van uw opslag Services. De metrische waarde voor **PercentNetworkError** is een aggregatie van de volgende metrische gegevens: **NetworkError** , **AnonymousNetworkError** en **SASNetworkError** . Deze treden op wanneer de opslag service een netwerk fout detecteert wanneer de client een opslag aanvraag doet.
 
 De meest voorkomende oorzaak van deze fout is dat een client de verbinding verbreekt voordat een time-out in de opslag service verloopt. Onderzoek de code in uw client om te begrijpen waarom en wanneer de client de verbinding met de opslag service verbreekt. U kunt ook wireshark of Tcping gebruiken om problemen met de netwerk verbinding van de client te onderzoeken. Deze hulpprogram ma's worden beschreven in de [bijlagen].
 
@@ -489,10 +489,10 @@ In dit scenario moet u onderzoeken waarom de SAS-token verloopt voordat de clien
 
 * Normaliter mag u geen begintijd instellen als u een SAS voor een client maakt voor onmiddellijk gebruik. Als er kleine tijdverschillen zijn tussen de host die de SAS genereert en die gebruikmaakt van de huidige tijd en de opslagservice, dan kan de opslagservice een SAS ontvangen die nog niet geldig is.
 * Stel geen heel korte verlooptijd in voor een SAS. Kleine tijdverschillen tussen de host die de SAS genereert en de opslagservice kunnen er ook toe leiden dat een SAS kennelijk eerder verloopt dan verwacht.
-* Komt de versie parameter in de SAS-sleutel (bijvoorbeeld **SV = 2015-04-05**) overeen met de versie van de Storage-client bibliotheek die u gebruikt? U wordt aangeraden altijd de nieuwste versie van de [Storage-client bibliotheek](https://www.nuget.org/packages/WindowsAzure.Storage/)te gebruiken.
+* Komt de versie parameter in de SAS-sleutel (bijvoorbeeld **SV = 2015-04-05** ) overeen met de versie van de Storage-client bibliotheek die u gebruikt? U wordt aangeraden altijd de nieuwste versie van de [Storage-client bibliotheek](https://www.nuget.org/packages/WindowsAzure.Storage/)te gebruiken.
 * Als u uw opslagtoegangssleutels opnieuw genereert, kunnen eventuele SAS-tokens ongeldig worden. Dit probleem doet zich voor als u SAS-tokens genereert met een lange verlooptijd voor clienttoepassingen die in de cache worden opgeslagen.
 
-Als u de Storage-clientbibliotheek gebruikt om SAS-tokens te genereren, dan kan er gemakkelijk een geldig token worden gemaakt. Als u echter de opslag REST API gebruikt en de SAS-tokens hand matig bouwt, raadpleegt u [toegang met een Shared Access Signature overdragen](https://msdn.microsoft.com/library/azure/ee395415.aspx).
+Als u de Storage-clientbibliotheek gebruikt om SAS-tokens te genereren, dan kan er gemakkelijk een geldig token worden gemaakt. Als u echter de opslag REST API gebruikt en de SAS-tokens hand matig bouwt, raadpleegt u [toegang met een Shared Access Signature overdragen](/rest/api/storageservices/delegate-access-with-shared-access-signature).
 
 ### <a name="the-client-is-receiving-http-404-not-found-messages"></a><a name="the-client-is-receiving-404-messages"></a>De client ontvangt HTTP 404-meldingen (niet gevonden)
 Als de clienttoepassing een HTTP 404-melding (niet gevonden) van de server ontvangt, houdt dit in dat het object dat de client wilde gebruiken (zoals een entiteit, tabel, blob, container of wachtrij) niet in de opslagservice aanwezig is. Hiervoor zijn een aantal mogelijke redenen, bijvoorbeeld:
@@ -598,7 +598,7 @@ SCRIPT7002: XMLHttpRequest: Network Error 0x80070005, Access is denied.
 
 Deze fouten treden op omdat de webbrowser dezelfde beveiligings beperking voor het [herkomst beleid](https://www.w3.org/Security/wiki/Same_Origin_Policy) implementeert, waarmee wordt voor komen dat een webpagina een API aanroept in een ander domein dan het domein waarvan de pagina afkomstig is.
 
-U kunt het Java script-probleem omzeilen door cross Origin Resource Sharing (CORS) te configureren voor de opslag service waartoe de client toegang heeft. Zie [ondersteuning voor het gebruik van meerdere bronnen (CORS) voor Azure Storage services](https://msdn.microsoft.com/library/azure/dn535601.aspx)voor meer informatie.
+U kunt het Java script-probleem omzeilen door cross Origin Resource Sharing (CORS) te configureren voor de opslag service waartoe de client toegang heeft. Zie [ondersteuning voor het gebruik van meerdere bronnen (CORS) voor Azure Storage services](/rest/api/storageservices/Cross-Origin-Resource-Sharing--CORS--Support-for-the-Azure-Storage-Services)voor meer informatie.
 
 In het volgende code voorbeeld ziet u hoe u de BLOB-service zo configureert dat Java script wordt uitgevoerd in het contoso-domein om toegang te krijgen tot een BLOB in de Blob Storage-service:
 
@@ -633,7 +633,7 @@ De uitzonderings Details in de client bevatten de aanvraag-ID (7e84f12d...) die 
 
 Het logboek aan de server zijde bevat ook een andere vermelding met dezelfde **client-aanvraag-id** -waarde (813ea74f...) voor een geslaagde Verwijder bewerking voor dezelfde entiteit en van dezelfde client. Deze geslaagde verwijderings bewerking duurde zeer kort vóór de mislukte verwijderings aanvraag.
 
-De meest waarschijnlijke oorzaak van dit scenario is dat de client een aanvraag voor het verwijderen van de entiteit naar de tabel service heeft verzonden die is geslaagd, maar dat er geen bevestiging is ontvangen van de server (mogelijk vanwege een tijdelijk netwerk probleem). De client heeft vervolgens automatisch opnieuw geprobeerd de bewerking uit te voeren (met dezelfde **client-aanvraag-id**) en de nieuwe poging is mislukt omdat de entiteit al is verwijderd.
+De meest waarschijnlijke oorzaak van dit scenario is dat de client een aanvraag voor het verwijderen van de entiteit naar de tabel service heeft verzonden die is geslaagd, maar dat er geen bevestiging is ontvangen van de server (mogelijk vanwege een tijdelijk netwerk probleem). De client heeft vervolgens automatisch opnieuw geprobeerd de bewerking uit te voeren (met dezelfde **client-aanvraag-id** ) en de nieuwe poging is mislukt omdat de entiteit al is verwijderd.
 
 Als dit probleem regel matig optreedt, moet u onderzoeken waarom de client geen bevestigingen van de tabel service kan ontvangen. Als het probleem zich weer voordoet, moet u de fout ' HTTP (404) niet gevonden ' onderscheppen en registreren in de client, maar de client toestaan om door te gaan.
 
@@ -652,7 +652,7 @@ Met de code in de client toepassing wordt een BLOB-container met dezelfde naam v
 De clienttoepassing moet een unieke containernaam gebruiken wanneer er een nieuwe container wordt gemaakt als het patroon voor verwijderen/opnieuw maken algemeen is.
 
 ### <a name="metrics-show-low-percentsuccess-or-analytics-log-entries-have-operations-with-transaction-status-of-clientothererrors"></a><a name="metrics-show-low-percent-success"></a>Metrische gegevens tonen een laag PercentSuccess of logboek vermeldingen van een analyse bewerking met de transactie status ClientOtherErrors
-Met de metrische gegevens van de **PercentSuccess** wordt het percentage bewerkingen vastgelegd dat is geslaagd op basis van de HTTP-status code. Bewerkingen met status codes van 2XX tellen als geslaagd, terwijl bewerkingen met status codes in 3XX-, 4XX-en 5XX-bereiken als niet-geslaagde waarden worden beschouwd en de **PercentSuccess** metrische waarde verlagen. In de logboek bestanden voor opslag aan de server zijde worden deze bewerkingen vastgelegd met de transactie status **ClientOtherErrors**.
+Met de metrische gegevens van de **PercentSuccess** wordt het percentage bewerkingen vastgelegd dat is geslaagd op basis van de HTTP-status code. Bewerkingen met status codes van 2XX tellen als geslaagd, terwijl bewerkingen met status codes in 3XX-, 4XX-en 5XX-bereiken als niet-geslaagde waarden worden beschouwd en de **PercentSuccess** metrische waarde verlagen. In de logboek bestanden voor opslag aan de server zijde worden deze bewerkingen vastgelegd met de transactie status **ClientOtherErrors** .
 
 Het is belang rijk te weten dat deze bewerkingen zijn voltooid en daarom niet van invloed zijn op andere metrische gegevens, zoals Beschik baarheid. Enkele voor beelden van bewerkingen die met succes worden uitgevoerd, maar die kunnen leiden tot mislukte HTTP-status codes zijn:
 
@@ -660,7 +660,7 @@ Het is belang rijk te weten dat deze bewerkingen zijn voltooid en daarom niet va
 * **ResourceAlreadyExists** (conflict 409), bijvoorbeeld van een **CreateIfNotExist** -bewerking waarbij de resource al bestaat.
 * **ConditionNotMet** (niet gewijzigd 304), bijvoorbeeld van een voorwaardelijke bewerking, zoals wanneer een client een **ETAG** -waarde en een http **If-None-Match-** header verzendt om een installatie kopie alleen aan te vragen als deze sinds de laatste bewerking is bijgewerkt.
 
-U vindt een lijst met algemene REST API fout codes die door de opslag Services op de pagina worden geretourneerd [rest API fout codes](https://msdn.microsoft.com/library/azure/dd179357.aspx).
+U vindt een lijst met algemene REST API fout codes die door de opslag Services op de pagina worden geretourneerd [rest API fout codes](/rest/api/storageservices/Common-REST-API-Error-Codes).
 
 ### <a name="capacity-metrics-show-an-unexpected-increase-in-storage-capacity-usage"></a><a name="capacity-metrics-show-an-unexpected-increase"></a>Met metrische gegevens over capaciteit wordt een onverwachte toename van het gebruik van de opslag capaciteit weer gegeven
 Als er onverwachte, onverwacht wijzigingen in capaciteits gebruik in uw opslag account worden weer gegeven, kunt u de redenen onderzoeken door eerst te kijken naar uw metrische gegevens over beschik baarheid. een toename van het aantal mislukte verwijderings aanvragen kan bijvoorbeeld leiden tot een toename van de hoeveelheid Blob-opslag die u gebruikt als toepassingsspecifieke opschoon bewerkingen die u mogelijk had verwacht dat het vrijmaken van ruimte mogelijk niet werkt zoals verwacht (bijvoorbeeld omdat de SAS-tokens die worden gebruikt voor het vrijmaken van ruimte zijn verlopen).
@@ -733,7 +733,7 @@ Deze bijlage bevat een kort overzicht van het configureren van Fiddler voor het 
 Nadat u Fiddler hebt gestart, wordt het HTTP-en HTTPS-verkeer op uw lokale machine vastgelegd. Hier volgen enkele handige opdrachten voor het beheren van Fiddler:
 
 * Het vastleggen van verkeer stoppen en starten. Ga in het hoofd menu naar **bestand** en klik vervolgens op vast **verkeer vastleggen** om vastleggen in of uit te scha kelen.
-* Gegevens van vastgelegd verkeer opslaan. Ga in het hoofd menu naar **bestand**, klik op **Opslaan**en klik vervolgens op **alle sessies**. Hiermee kunt u het verkeer in een sessie archief bestand opslaan. U kunt later een sessie archief opnieuw laden voor analyse, of het verzenden als het wordt aangevraagd bij micro soft ondersteuning.
+* Gegevens van vastgelegd verkeer opslaan. Ga in het hoofd menu naar **bestand** , klik op **Opslaan** en klik vervolgens op **alle sessies** . Hiermee kunt u het verkeer in een sessie archief bestand opslaan. U kunt later een sessie archief opnieuw laden voor analyse, of het verzenden als het wordt aangevraagd bij micro soft ondersteuning.
 
 U kunt de hoeveelheid verkeer dat Fiddler vastlegt, beperken door filters te gebruiken die u configureert op het tabblad **filters** . De volgende scherm afbeelding toont een filter waarmee alleen verkeer wordt vastgelegd dat naar het **contosoemaildist.table.core.Windows.net** Storage-eind punt wordt verzonden:
 
@@ -746,19 +746,19 @@ De volgende procedure laat zien hoe u gedetailleerde pakket gegevens voor verkee
 
 1. Start wireshark op uw lokale machine.
 2. Selecteer in de sectie **starten** de lokale netwerk interface of interfaces die zijn verbonden met internet.
-3. Klik op **vastleg opties**.
+3. Klik op **vastleg opties** .
 4. Voeg een filter toe aan het tekstvak voor het **opname filter** . **Host contosoemaildist.table.core.Windows.net** configureert bijvoorbeeld wireshark voor het vastleggen van alleen pakketten die zijn verzonden naar of van het eind punt van de tabel service in het **contosoemaildist** -opslag account. Bekijk de [volledige lijst met opname filters](https://wiki.wireshark.org/CaptureFilters).
 
    ![Scherm afbeelding die laat zien hoe u een filter kunt toevoegen aan het tekstvak voor de opname filter.][6]
-5. Klik op **Start**. Wireshark legt nu alle pakketten vast die worden verzonden naar of van het eind punt van de tabel service wanneer u uw client toepassing op uw lokale computer gebruikt.
-6. Wanneer u klaar bent, klikt u in het hoofd menu op **vastleggen** en vervolgens op **stoppen**.
-7. Klik in het hoofd menu op **bestand** en vervolgens op **Opslaan**om de opgenomen gegevens op te slaan in een Wireshark-capture-bestand.
+5. Klik op **Start** . Wireshark legt nu alle pakketten vast die worden verzonden naar of van het eind punt van de tabel service wanneer u uw client toepassing op uw lokale computer gebruikt.
+6. Wanneer u klaar bent, klikt u in het hoofd menu op **vastleggen** en vervolgens op **stoppen** .
+7. Klik in het hoofd menu op **bestand** en vervolgens op **Opslaan** om de opgenomen gegevens op te slaan in een Wireshark-capture-bestand.
 
-Met WireShark worden eventuele fouten in het venster **packetlist** gemarkeerd. U kunt ook het venster met informatie over de **expert** gebruiken (Klik op **analyseren**en vervolgens op **expert info**) om een samen vatting van fouten en waarschuwingen weer te geven.
+Met WireShark worden eventuele fouten in het venster **packetlist** gemarkeerd. U kunt ook het venster met informatie over de **expert** gebruiken (Klik op **analyseren** en vervolgens op **expert info** ) om een samen vatting van fouten en waarschuwingen weer te geven.
 
 ![Scherm opname van het venster met Expertgegevens waarin u een samen vatting van fouten en waarschuwingen kunt bekijken.][7]
 
-U kunt er ook voor kiezen om de TCP-gegevens weer te geven wanneer de toepassingslaag de laag ziet door met de rechter muisknop op de TCP-gegevens te klikken en **TCP-stroom volgen**te selecteren. Dit is handig als u uw dump hebt vastgelegd zonder een opname filter. Zie de [volgende TCP-streams](https://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html)voor meer informatie.
+U kunt er ook voor kiezen om de TCP-gegevens weer te geven wanneer de toepassingslaag de laag ziet door met de rechter muisknop op de TCP-gegevens te klikken en **TCP-stroom volgen** te selecteren. Dit is handig als u uw dump hebt vastgelegd zonder een opname filter. Zie de [volgende TCP-streams](https://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html)voor meer informatie.
 
 ![Scherm afbeelding die laat zien hoe de TCP-gegevens worden weer gegeven wanneer de toepassingslaag de laag ziet.][8]
 
@@ -768,15 +768,15 @@ U kunt er ook voor kiezen om de TCP-gegevens weer te geven wanneer de toepassing
 >
 
 ### <a name="appendix-4-using-excel-to-view-metrics-and-log-data"></a><a name="appendix-4"></a>Bijlage 4: Excel gebruiken om metrische gegevens weer te geven en te registreren
-Met veel hulpprogram ma's kunt u de metrische gegevens van de opslag van Azure Table-opslag downloaden in een indeling met scheidings tekens, waardoor het eenvoudig wordt om de gegevens in Excel te laden voor weer gave en analyse. Gegevens van de opslag registratie van Azure Blob-opslag bevindt zich al in een indeling met scheidings tekens die u in Excel kunt laden. U moet echter wel de juiste kolom koppen toevoegen op basis van de gegevens in [Opslaganalyse logboek indeling](https://msdn.microsoft.com/library/azure/hh343259.aspx) en [Opslaganalyse metrische tabel schema](https://msdn.microsoft.com/library/azure/hh343264.aspx).
+Met veel hulpprogram ma's kunt u de metrische gegevens van de opslag van Azure Table-opslag downloaden in een indeling met scheidings tekens, waardoor het eenvoudig wordt om de gegevens in Excel te laden voor weer gave en analyse. Gegevens van de opslag registratie van Azure Blob-opslag bevindt zich al in een indeling met scheidings tekens die u in Excel kunt laden. U moet echter wel de juiste kolom koppen toevoegen op basis van de gegevens in [Opslaganalyse logboek indeling](/rest/api/storageservices/Storage-Analytics-Log-Format) en [Opslaganalyse metrische tabel schema](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema).
 
 Als u de gegevens van uw opslag logboek wilt importeren in Excel nadat u deze hebt gedownload van Blob Storage:
 
-* Klik in het menu **Data** op **van tekst**.
-* Blader naar het logboek bestand dat u wilt weer geven en klik op **importeren**.
-* In stap 1 van de **wizard Tekst importeren**selecteert u **gescheiden**.
+* Klik in het menu **Data** op **van tekst** .
+* Blader naar het logboek bestand dat u wilt weer geven en klik op **importeren** .
+* In stap 1 van de **wizard Tekst importeren** selecteert u **gescheiden** .
 
-Selecteer in stap 1 van de **wizard Tekst importeren** **punt komma** als het enige scheidings teken en kies dubbele aanhalings tekens als **tekst indicator**. Klik vervolgens op **volt ooien** en kies waar u de gegevens in uw werkmap wilt plaatsen.
+Selecteer in stap 1 van de **wizard Tekst importeren** **punt komma** als het enige scheidings teken en kies dubbele aanhalings tekens als **tekst indicator** . Klik vervolgens op **volt ooien** en kies waar u de gegevens in uw werkmap wilt plaatsen.
 
 ### <a name="appendix-5-monitoring-with-application-insights-for-azure-devops"></a><a name="appendix-5"></a>Bijlage 5: bewaking met Application Insights voor Azure DevOps
 U kunt ook de Application Insights functie voor Azure DevOps gebruiken als onderdeel van de prestatie-en beschikbaarheids bewaking. Dit hulp programma kan:

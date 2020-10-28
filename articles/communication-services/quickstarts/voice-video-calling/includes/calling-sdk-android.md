@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 99a038b23eb0978b6e1d8a65b061c2f744852def
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 1f71c01d53a89ce1b459826689eb5b2e4899b3a2
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126791"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92886544"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -56,7 +56,7 @@ dependencies {
 
 ## <a name="object-model"></a>Objectmodel
 
-De volgende klassen en interfaces verwerken enkele van de belangrijkste functies van de Azure Communication Services-clientbibliotheek voor oproepen:
+De volgende klassen en interfaces verwerken enkele van de belangrijkste functies van de Azure Communication Services-clientbibliotheek voor aanroepen:
 
 | Naam                                  | Beschrijving                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
@@ -114,11 +114,21 @@ Call groupCall = callAgent.call(participants, startCallOptions);
 > Momenteel wordt slechts één uitgaande lokale video stroom ondersteund om een gesprek met video te plaatsen die u nodig hebt om lokale camera's op te sommen met behulp van de `deviceManager` `getCameraList` API.
 Wanneer u een gewenste camera hebt geselecteerd, gebruikt u deze om een instantie te maken `LocalVideoStream` en door `videoOptions` te geven als een item in de `localVideoStream` matrix naar een `call` methode.
 Zodra de oproep verbinding maakt, begint automatisch met het verzenden van een video stroom van de geselecteerde camera naar een andere deel nemer (s).
+
+> [!NOTE]
+> Vanwege privacy-problemen wordt video niet gedeeld met de aanroep als deze niet lokaal wordt weer gegeven.
+Zie de [voor beeld van een lokale camera](#local-camera-preview) voor meer informatie.
 ```java
 Context appContext = this.getApplicationContext();
 VideoDeviceInfo desiredCamera = callClient.getDeviceManager().get().getCameraList().get(0);
 LocalVideoStream currentVideoStream = new LocalVideoStream(desiredCamera, appContext);
 VideoOptions videoOptions = new VideoOptions(currentVideoStream);
+
+// Render a local preview of video so the user knows that their video is being shared
+Renderer previewRenderer = new Renderer(currentVideoStream, appContext);
+View uiView = previewRenderer.createView(new RenderingOptions(ScalingMode.Fit));
+// Attach the uiView to a viewable location on the app at this point
+layout.addView(uiView);
 
 CommunicationUser[] participants = new CommunicationUser[]{ new CommunicationUser("<acs user id>") };
 StartCallOptions startCallOptions = new StartCallOptions();
@@ -146,7 +156,7 @@ Mobiele push meldingen zijn de pop-upmeldingen die u op mobiele apparaten ziet. 
 Een Firebase-account dat is ingesteld met Cloud Messa ging (FCM) ingeschakeld en met uw Firebase Cloud Messa ging-service verbonden met een Azure notification hub-exemplaar. Zie [communicatie Services-meldingen](https://docs.microsoft.com/azure/communication-services/concepts/notifications) voor meer informatie.
 Daarnaast wordt door de zelf studie aangenomen dat u Android Studio versie 3,6 of hoger gebruikt om uw toepassing te bouwen.
 
-Er is een set machtigingen vereist voor de Android-toepassing om meldings berichten te kunnen ontvangen van Firebase Cloud Messa ging. Voeg in uw `AndroidManifest.xml` bestand de volgende machtigingen toe na het * manifest<... >* of onder het *</application>* label
+Er is een set machtigingen vereist voor de Android-toepassing om meldings berichten te kunnen ontvangen van Firebase Cloud Messa ging. Voeg in uw `AndroidManifest.xml` bestand de volgende machtigingen toe na het *manifest<... >* of onder het *</application>* label
 
 ```XML
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -607,9 +617,9 @@ currentVideoStream = new LocalVideoStream(videoDevice, appContext);
 videoOptions = new VideoOptions(currentVideoStream);
 
 Renderer previewRenderer = new Renderer(currentVideoStream, appContext);
-View uiView previewRenderer.createView(new RenderingOptions(ScalingMode.Fit));
+View uiView = previewRenderer.createView(new RenderingOptions(ScalingMode.Fit));
 
-// Attach the renderingSurface to a viewable location on the app at this point
+// Attach the uiView to a viewable location on the app at this point
 layout.addView(uiView);
 ```
 

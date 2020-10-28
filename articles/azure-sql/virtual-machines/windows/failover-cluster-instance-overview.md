@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 29ab7def6209483ee891dc0d26bf8163cdc39a23
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 6f216a7f0851661efc61a771fc35feb71e77fd1f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165230"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792477"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Exemplaren van failoverclusters met SQL Server op virtuele Azure-machines (VM's).
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,8 +30,8 @@ SQL Server op Azure-VM's maakt gebruik van de WSFC-functionaliteit (Windows Serv
 
 De rest van het artikel richt zich op de verschillen voor exemplaren van failoverclusters wanneer deze worden gebruikt met SQL Server Azure-VM's. Lees deze artikelen voor meer informatie over de technologie achter failoverclustering: 
 
-- [Windows-clustertechnologieën](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)
-- [Instanties van een SQL Server-failovercluster](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Windows-clustertechnologieën](/windows-server/failover-clustering/failover-clustering-overview)
+- [Instanties van een SQL Server-failovercluster](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
 
 ## <a name="quorum"></a>Quorum
 
@@ -60,10 +60,10 @@ In de rest van deze sectie vindt u een overzicht van de voordelen en beperkingen
 
 [Gedeelde Azure-schijven](../../../virtual-machines/windows/disks-shared.md) is een functie van [Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md). Windows Server Failover Clustering ondersteunt het gebruik van gedeelde Azure-schijven met een exemplaar van een failovercluster. 
 
-**Ondersteund besturingssysteem**: Alle   
-**Ondersteunde SQL-versie**: Alle     
+**Ondersteund besturingssysteem** : Alle   
+**Ondersteunde SQL-versie** : Alle     
 
-**Voordelen**: 
+**Voordelen** : 
 - Handig voor toepassingen die moeten worden gemigreerd naar Azure, met behoud van hun architectuur voor hoge beschikbaarheid en herstel na noodgevallen (HADR). 
 - Geclusterde toepassingen kunnen ongewijzigd naar Azure worden gemigreerd door de ondersteuning voor SCSI PR (SCSI Persistent Reservations). 
 - Biedt ondersteuning voor opslag met Azure Premium SSD en Azure Ultra Disk-opslag.
@@ -71,7 +71,7 @@ In de rest van deze sectie vindt u een overzicht van de voordelen en beperkingen
 - Ondersteunt FileStream.
 
 
-**Beperkingen**: 
+**Beperkingen** : 
 - Virtuele machines moeten in dezelfde beschikbaarheidsset en dezelfde nabijheidsplaatsingsgroep worden geplaatst.
 - Beschikbaarheidszones worden niet ondersteund.
 - Caching op Premium SSD-schijven wordt niet ondersteund.
@@ -82,8 +82,8 @@ Zie [Create an FCI with Azure shared disks (SQL Server on Azure VMs)](failover-c
 
 [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) is een Windows Server-functie die wordt ondersteund met failoverclustering op virtuele Azure-machines. De functie biedt een virtueel SAN op basis van software.
 
-**Ondersteund besturingssysteem**: Windows Server 2016 en hoger   
-**Ondersteunde SQL-versie**: SQL Server 2016 en hoger   
+**Ondersteund besturingssysteem** : Windows Server 2016 en hoger   
+**Ondersteunde SQL-versie** : SQL Server 2016 en hoger   
 
 
 **Voordelen:** 
@@ -104,8 +104,8 @@ Zie [Create an FCI with Storage Spaces Direct (SQL Server on Azure VMs)](failove
 
 [Premium-bestandsshares](../../../storage/files/storage-how-to-create-premium-fileshare.md) zijn een functie van [Azure Files](../../../storage/files/index.yml). Premium-bestandsshares worden opgeslagen op een SSD en hebben een consistent lage latentie. Ze worden volledig ondersteund voor gebruik met exemplaren van failoverclusters voor SQL Server 2012 of hoger met Windows Server 2012 of hoger. Premium-bestandsshares bieden meer flexibiliteit, omdat u een bestandsshare zonder downtime kunt vergroten of verkleinen en schalen.
 
-**Ondersteund besturingssysteem**: Windows Server 2012 en hoger   
-**Ondersteunde SQL-versie**: SQL Server 2012 en hoger   
+**Ondersteund besturingssysteem** : Windows Server 2012 en hoger   
+**Ondersteunde SQL-versie** : SQL Server 2012 en hoger   
 
 **Voordelen:** 
 - Oplossing voor uitsluitend gedeelde opslag voor virtuele machines verspreid over meerdere beschikbaarheidszones. 
@@ -122,8 +122,8 @@ Zie [Create an FCI with a premium file share (SQL Server on Azure VMs)](failover
 
 Er zijn oplossingen voor clustering met ondersteunde partneropslag. 
 
-**Ondersteund besturingssysteem**: Alle   
-**Ondersteunde SQL-versie**: Alle   
+**Ondersteund besturingssysteem** : Alle   
+**Ondersteunde SQL-versie** : Alle   
 
 Een voorbeeld is om SIOS DataKeeper als opslag te gebruiken. Zie voor meer informatie het blogbericht [Failover clustering and SIOS DataKeeper](https://azure.microsoft.com/blog/high-availability-for-a-file-share-using-wsfc-ilb-and-3rd-party-software-sios-datakeeper/).
 
@@ -131,8 +131,8 @@ Een voorbeeld is om SIOS DataKeeper als opslag te gebruiken. Zie voor meer infor
 
 U kunt ook gedeelde blokopslag op een iSCSI-doel beschikbaar maken via Azure ExpressRoute. 
 
-**Ondersteund besturingssysteem**: Alle   
-**Ondersteunde SQL-versie**: Alle   
+**Ondersteund besturingssysteem** : Alle   
+**Ondersteunde SQL-versie** : Alle   
 
 NetApp Private Storage (NPS) biedt bijvoorbeeld een iSCSI-doel aan voor Azure-VM's via ExpressRoute met Equinix.
 
@@ -155,7 +155,7 @@ De volledige extensie ondersteunt functies zoals automatische back-ups en patche
 
 ### <a name="msdtc"></a>MSDTC 
 
-Virtuele Azure-machines bieden ondersteuning voor MSDTC (Microsoft Distributed Transaction Coordinator) in Windows Server 2019 met opslag op geclusterde gedeelde volumes (CSV) en [Azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) of op VM's met SQL Server die gebruikmaken van gedeelde Azure-schijven. 
+Virtuele Azure-machines bieden ondersteuning voor MSDTC (Microsoft Distributed Transaction Coordinator) in Windows Server 2019 met opslag op geclusterde gedeelde volumes (CSV) en [Azure Standard Load Balancer](../../../load-balancer/load-balancer-overview.md) of op VM's met SQL Server die gebruikmaken van gedeelde Azure-schijven. 
 
 MSDTC wordt vanwege deze redenen niet ondersteund op virtuele Azure-machines voor Windows Server 2016 of eerder met geclusterde gedeelde volumes:
 
@@ -171,4 +171,3 @@ Zie voor meer informatie:
 
 - [Windows-clustertechnologieën](/windows-server/failover-clustering/failover-clustering-overview)   
 - [Instanties van een SQL Server-failovercluster](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
-

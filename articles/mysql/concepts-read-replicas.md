@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/15/2020
-ms.openlocfilehash: 421763769ff0bd7ffe2b06eb48e1ac5ecbbb545e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.date: 10/26/2020
+ms.openlocfilehash: c66845a801b93db4ba718bc0aba5c39eabdd24b4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537963"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791967"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Leesreplica's in Azure Database for MySQL
 
@@ -36,9 +36,6 @@ Een veelvoorkomend scenario is om BI-en analytische werk belastingen de Lees rep
 Omdat replica's alleen-lezen zijn, worden ze niet rechtstreeks op de Master gereduceerd. Deze functie is niet gericht op schrijfintensieve werkbelastingen.
 
 De functie replica lezen maakt gebruik van MySQL-asynchrone replicatie. De functie is niet bedoeld voor synchrone replicatie scenario's. Er is een meet bare vertraging tussen de bron en de replica. De gegevens op de replica worden uiteindelijk consistent met de gegevens op de Master. Gebruik deze functie voor werk belastingen die deze vertraging kunnen bevatten.
-
-> [!IMPORTANT]
-> Azure Database for MySQL maakt gebruik van op **rijen** gebaseerde binaire logboekregistratie. Als uw tabel geen primaire sleutel heeft, worden alle rijen in de tabel gescand op DML-bewerkingen. Dit leidt tot meer vertraging bij het repliceren. Om ervoor te zorgen dat de replica gelijke tred kan houden met wijzigingen in de bron, is het raadzaam om een primaire sleutel toe te voegen aan tabellen op de bronserver voordat u de replicaserver maakt, of de replicaserver opnieuw maakt als u er al een hebt.
 
 ## <a name="cross-region-replication"></a>Replicatie in meerdere regio's
 U kunt een lees replica maken in een andere regio dan de bron server. Replicatie tussen regio's kan handig zijn voor scenario's zoals het plannen van herstel na nood gevallen of gegevens dichter bij uw gebruikers te brengen.
@@ -95,7 +92,7 @@ Voer bij de prompt het wacht woord voor het gebruikers account in.
 
 Azure Database for MySQL levert de **replicatie vertraging in seconden** metric in azure monitor. Deze metriek is alleen beschikbaar voor replica's. Deze metrische gegevens worden berekend met behulp van de `seconds_behind_master` beschik bare metrische gegevens in de opdracht van MySQL `SHOW SLAVE STATUS` . Stel een waarschuwing in om u te informeren wanneer de replicatie vertraging een waarde bereikt die niet geschikt is voor uw werk belasting.
 
-Als u de replicatie vertraging toeneemt, raadpleegt u [problemen met replicatie latentie oplossen](howto-troubleshoot-replication-latency.md) om problemen op te lossen en mogelijke oorzaken te achterhalen.
+Als u de replicatie vertraging toeneemt, raadpleegt u het [oplossen van problemen met replicatie latentie](howto-troubleshoot-replication-latency.md) om problemen op te lossen en mogelijke oorzaken te achterhalen.
 
 ## <a name="stop-replication"></a>Replicatie stoppen
 
@@ -136,7 +133,7 @@ MySQL ondersteunt twee typen trans acties: GTID trans acties (aangeduid met GTID
 
 De volgende server parameters zijn beschikbaar voor het configureren van GTID: 
 
-|**Server parameter**|**Beschrijving**|**Standaardwaarde**|**Waarden**|
+|**Server parameter**|**Beschrijving**|**Standaard waarde**|**Waarden**|
 |--|--|--|--|
 |`gtid_mode`|Hiermee wordt aangegeven of GTIDs worden gebruikt om trans acties te identificeren. Wijzigingen tussen modi kunnen slechts één stap per keer in oplopende volg orde worden uitgevoerd (bijvoorbeeld `OFF` -> `OFF_PERMISSIVE` -> `ON_PERMISSIVE` -> `ON`)|`OFF`|`OFF`: Zowel nieuwe als replicatie transacties moeten anoniem zijn <br> `OFF_PERMISSIVE`: Nieuwe trans acties zijn anoniem. Gerepliceerde trans acties kunnen anoniem of GTID-trans acties zijn. <br> `ON_PERMISSIVE`: Nieuwe trans acties zijn GTID trans acties. Gerepliceerde trans acties kunnen anoniem of GTID-trans acties zijn. <br> `ON`: Zowel nieuwe als gerepliceerde trans acties moeten GTID trans acties zijn.|
 |`enforce_gtid_consistency`|Dwingt consistentie van GTID af door alleen de instructies toe te staan die op transactionele veilige wijze kunnen worden geregistreerd. Deze waarde moet worden ingesteld op `ON` voordat u GTID-replicatie inschakelt. |`OFF`|`OFF`: Alle trans acties mogen GTID-consistentie schenden.  <br> `ON`: Geen enkele trans actie mag GTID-consistentie schenden. <br> `WARN`: Alle trans acties mogen GTID-consistentie schenden, maar er wordt een waarschuwing gegenereerd. | 
@@ -208,7 +205,7 @@ GTID is standaard uitgeschakeld. Als GTID is ingeschakeld, kunt u deze niet meer
 
 Als GTID is ingeschakeld op een bron server, is voor nieuw gemaakte replica's ook GTID ingeschakeld en wordt GTID-replicatie gebruikt. Om replicatie consistent te blijven, kunt u niet bijwerken `gtid_mode` op de bron-of replica server (s).
 
-### <a name="other"></a>Overig
+### <a name="other"></a>Overige
 
 - Het maken van een replica van een replica wordt niet ondersteund.
 - In-Memory tabellen kunnen ertoe leiden dat replica's niet meer synchroon zijn. Dit is een beperking van de MySQL-replicatie technologie. Meer informatie vindt u in de [referentie documentatie voor mysql](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) .
