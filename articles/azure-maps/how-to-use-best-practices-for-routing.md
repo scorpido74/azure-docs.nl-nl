@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 13c7178b4a0866066dc74e409f8f4bfcd21a23f4
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 743710ea0d40eb31375236d4e59b0b138a217518
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874591"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895542"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Aanbevolen procedures voor Azure Maps route service
 
-De route richtingen en route matrix-Api's in Azure Maps [route service](https://docs.microsoft.com/rest/api/maps/route) kunnen worden gebruikt om de geschatte aankomst tijden (ETAs) voor elke aangevraagde route te berekenen. Router-Api's beschouwen factoren als realtime verkeers gegevens en historische verkeers gegevens, zoals de standaard snelheden op de gewenste dag van de week en het tijdstip van de dag. De API's retourneren de kortste of snelste routes die beschikbaar zijn voor meerdere bestemmingen tegelijk in een reeks of in een geoptimaliseerde volgorde, op basis van tijd of afstand. Gebruikers kunnen ook specifieke routes en Details aanvragen voor walkie, fietsers en commerciële Voer tuigen, zoals vracht wagens. In dit artikel delen we de aanbevolen procedures voor het aanroepen van Azure Maps [route service](https://docs.microsoft.com/rest/api/maps/route)en leert u het volgende:
+De route richtingen en route matrix-Api's in Azure Maps [route service](/rest/api/maps/route) kunnen worden gebruikt om de geschatte aankomst tijden (ETAs) voor elke aangevraagde route te berekenen. Router-Api's beschouwen factoren als realtime verkeers gegevens en historische verkeers gegevens, zoals de standaard snelheden op de gewenste dag van de week en het tijdstip van de dag. De API's retourneren de kortste of snelste routes die beschikbaar zijn voor meerdere bestemmingen tegelijk in een reeks of in een geoptimaliseerde volgorde, op basis van tijd of afstand. Gebruikers kunnen ook specifieke routes en Details aanvragen voor walkie, fietsers en commerciële Voer tuigen, zoals vracht wagens. In dit artikel delen we de aanbevolen procedures voor het aanroepen van Azure Maps [route service](/rest/api/maps/route)en leert u het volgende:
 
  * Kiezen tussen de route richtingen Api's en de API voor de matrix routering
  * Historische en voorspelde reistijden aanvragen, op basis van real-time en historische verkeersgegevens
@@ -27,7 +27,7 @@ De route richtingen en route matrix-Api's in Azure Maps [route service](https://
  * Een route aanvragen die bestaat uit een of meer stop (waypoints)
  * Optimaliseer een route van een of meer stops om de beste volg orde te verkrijgen om elke Stop (waypoint) te bezoeken.
  * Optimaliseer alternatieve routes met ondersteunende punten. U kunt bijvoorbeeld alternatieve routes aanbieden die een elektriciteits station voor het laden van het Voer tuig door geven.
- * De [route service](https://docs.microsoft.com/rest/api/maps/route) gebruiken met de Azure Maps Web-SDK
+ * De [route service](/rest/api/maps/route) gebruiken met de Azure Maps Web-SDK
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -113,7 +113,7 @@ In het tweede voor beeld hieronder hebben we een realtime-routerings aanvraag, w
 https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&query=47.6422356,-122.1389797:47.6641142,-122.3011268&travelMode=car&traffic=true&computeTravelTimeFor=all
 ```
 
-Het antwoord bevat een samen vatting zoals hieronder wordt weer gegeven. Vanwege congestie is de waarde voor **trafficDelaysInSeconds** groter dan nul. Het is ook groter dan **historicTrafficTravelTimeInSeconds**.
+Het antwoord bevat een samen vatting zoals hieronder wordt weer gegeven. Vanwege congestie is de waarde voor **trafficDelaysInSeconds** groter dan nul. Het is ook groter dan **historicTrafficTravelTimeInSeconds** .
 
 ```json
 "summary": {
@@ -140,7 +140,7 @@ Vouw het `point` element uit om de lijst met coördinaten voor het pad weer te g
 
 ![Element uitgebreide punten](media/how-to-use-best-practices-for-routing/points-list-img.png)
 
-De route beschrijvingen Api's ondersteunen verschillende indelingen van instructies die kunnen worden gebruikt door de para meter **instructionsType** op te geven. Gebruik **instructionsType = code ring**om instructies te Format teren voor een eenvoudige verwerking van de computer. Gebruik **instructionsType = label** om instructies weer te geven als tekst voor de gebruiker. Instructies kunnen ook worden opgemaakt als tekst waarbij sommige elementen van de instructies zijn gemarkeerd en de instructie wordt weer gegeven met speciale opmaak. Zie de [lijst met ondersteunde instructie typen](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#routeinstructionstype)voor meer informatie.
+De route beschrijvingen Api's ondersteunen verschillende indelingen van instructies die kunnen worden gebruikt door de para meter **instructionsType** op te geven. Gebruik **instructionsType = code ring** om instructies te Format teren voor een eenvoudige verwerking van de computer. Gebruik **instructionsType = label** om instructies weer te geven als tekst voor de gebruiker. Instructies kunnen ook worden opgemaakt als tekst waarbij sommige elementen van de instructies zijn gemarkeerd en de instructie wordt weer gegeven met speciale opmaak. Zie de [lijst met ondersteunde instructie typen](/rest/api/maps/route/postroutedirections#routeinstructionstype)voor meer informatie.
 
 Als er instructies worden aangevraagd, retourneert het antwoord een nieuw element met de naam `guidance` . Het `guidance` element bevat twee soorten informatie: instructies en overzicht van de instructie.
 
@@ -186,7 +186,7 @@ De onderstaande reactie geldt voor een truck die een gevaarlijk materiaal van kl
 
 ## <a name="request-traffic-information-along-a-route"></a>Verkeers gegevens via een route aanvragen
 
-Met de Azure Maps route Direction-Api's kunnen ontwikkel aars Details aanvragen voor elk sectie type door de `sectionType` para meter in de aanvraag op te nemen. U kunt bijvoorbeeld de snelheids informatie voor elk binnenkomend netwerk segment opvragen. Raadpleeg de [lijst met waarden voor de sleutel sectionType](https://docs.microsoft.com/rest/api/maps/route/getroutedirections#sectiontype) voor meer informatie over de verschillende details die u kunt aanvragen.
+Met de Azure Maps route Direction-Api's kunnen ontwikkel aars Details aanvragen voor elk sectie type door de `sectionType` para meter in de aanvraag op te nemen. U kunt bijvoorbeeld de snelheids informatie voor elk binnenkomend netwerk segment opvragen. Raadpleeg de [lijst met waarden voor de sleutel sectionType](/rest/api/maps/route/getroutedirections#sectiontype) voor meer informatie over de verschillende details die u kunt aanvragen.
 
 ### <a name="sample-query"></a>Voorbeeldquery
 
@@ -208,13 +208,13 @@ Deze optie kan worden gebruikt om de secties te kleuren wanneer de kaart wordt w
 
 Azure Maps biedt momenteel twee soorten route optimalisaties:
 
-* Optimalisaties op basis van het gevraagde route type, zonder de volg orde van waypoints te wijzigen. U kunt de [ondersteunde route typen hier](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#routetype) vinden
+* Optimalisaties op basis van het gevraagde route type, zonder de volg orde van waypoints te wijzigen. U kunt de [ondersteunde route typen hier](/rest/api/maps/route/postroutedirections#routetype) vinden
 
 * Traveling Salesman Optimization, waarmee de volg orde van de waypoints wordt gewijzigd om de beste volg orde te verkrijgen om elke stop te bezoeken
 
 Voor multi-stop routering kan Maxi maal 150 waypoints worden opgegeven in één route aanvraag. De begin-en eind coördinaten van de locatie kunnen hetzelfde zijn, net als bij een retour. Maar u moet ten minste één extra waypoint opgeven om de route berekening te kunnen uitvoeren. Waypoints kan worden toegevoegd aan de query tussen de oorsprong en de doel coördinaten.
 
-Als u de beste volg orde wilt optimaliseren om de opgegeven waypoints te bezoeken, moet u **computeBestOrder = True**opgeven. Dit scenario staat ook bekend als het Traveling Salesman-optimalisatie probleem.
+Als u de beste volg orde wilt optimaliseren om de opgegeven waypoints te bezoeken, moet u **computeBestOrder = True** opgeven. Dit scenario staat ook bekend als het Traveling Salesman-optimalisatie probleem.
 
 ### <a name="sample-query"></a>Voorbeeldquery
 
@@ -262,11 +262,11 @@ De optimale route heeft de volgende waypoint-volg orde: 0, 5, 1, 2, 4, 3 en 6.
 Er kunnen zich situaties voordoen waarin u een route opnieuw wilt samen stellen om nul of meer alternatieve routes voor een referentie route te berekenen. U kunt bijvoorbeeld alternatieve routes voor klanten weer geven die uw winkel door geven. In dit geval moet u een locatie bias met ondersteunende punten. Hier volgen de stappen voor het afnemen van een locatie:
 
 1. Een route bevinden als is en het pad ophalen uit het antwoord van de route
-2. Gebruik het traject om de gewenste locaties op of in de buurt van het traject te vinden. U kunt bijvoorbeeld Azure Maps [Point of interest-API](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi) gebruiken of uw eigen gegevens in uw data base opvragen.  
+2. Gebruik het traject om de gewenste locaties op of in de buurt van het traject te vinden. U kunt bijvoorbeeld Azure Maps [Point of interest-API](/rest/api/maps/search/getsearchpoi) gebruiken of uw eigen gegevens in uw data base opvragen.  
 3. Volg de locaties op basis van de afstand vanaf het begin van de route
-4. Voeg deze locaties toe als ondersteunende punten in een nieuwe route aanvraag naar de [post route richtingen-API](https://docs.microsoft.com/rest/api/maps/route/postroutedirections). Voor meer informatie over de ondersteunings punten raadpleegt u de documentatie over het [publiceren van route richtingen](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#supportingpoints). 
+4. Voeg deze locaties toe als ondersteunende punten in een nieuwe route aanvraag naar de [post route richtingen-API](/rest/api/maps/route/postroutedirections). Voor meer informatie over de ondersteunings punten raadpleegt u de documentatie over het [publiceren van route richtingen](/rest/api/maps/route/postroutedirections#supportingpoints). 
 
-Wanneer u de [post route richtingen-API](https://docs.microsoft.com/rest/api/maps/route/postroutedirections)aanroept, kunt u de minimale afwijkings tijd of de beperkingen voor de afstand instellen, samen met de ondersteunende punten. Gebruik deze para meters als u alternatieve routes wilt bieden, maar u ook de reis tijd wilt beperken. Wanneer deze beperkingen worden gebruikt, volgen de alternatieve routes de referentie route van het oorsprongs punt voor de opgegeven tijd of afstand. Met andere woorden, de andere routes wijken af van de referentie route volgens de opgegeven beperkingen.
+Wanneer u de [post route richtingen-API](/rest/api/maps/route/postroutedirections)aanroept, kunt u de minimale afwijkings tijd of de beperkingen voor de afstand instellen, samen met de ondersteunende punten. Gebruik deze para meters als u alternatieve routes wilt bieden, maar u ook de reis tijd wilt beperken. Wanneer deze beperkingen worden gebruikt, volgen de alternatieve routes de referentie route van het oorsprongs punt voor de opgegeven tijd of afstand. Met andere woorden, de andere routes wijken af van de referentie route volgens de opgegeven beperkingen.
 
 De onderstaande afbeelding is een voor beeld van het weer geven van alternatieve routes met de opgegeven afwijkings limieten voor de tijd en de afstand.
 
@@ -274,20 +274,20 @@ De onderstaande afbeelding is een voor beeld van het weer geven van alternatieve
 
 ## <a name="use-the-routing-service-in-a-web-app"></a>De Routing-service gebruiken in een web-app
 
-De Azure Maps Web-SDK biedt een [service module](https://docs.microsoft.com/javascript/api/azure-maps-rest/). Deze module is een helper-bibliotheek waarmee u gemakkelijk de Azure Maps REST-Api's in web-of Node.js toepassingen kunt gebruiken, met Java script of type script. De service module kan worden gebruikt om de geretourneerde routes op de kaart weer te geven. De module bepaalt automatisch welke API moet worden gebruikt met GET-en POST-aanvragen.
+De Azure Maps Web-SDK biedt een [service module](/javascript/api/azure-maps-rest/). Deze module is een helper-bibliotheek waarmee u gemakkelijk de Azure Maps REST-Api's in web-of Node.js toepassingen kunt gebruiken, met Java script of type script. De service module kan worden gebruikt om de geretourneerde routes op de kaart weer te geven. De module bepaalt automatisch welke API moet worden gebruikt met GET-en POST-aanvragen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Ga voor meer informatie naar:
 
 > [!div class="nextstepaction"]
-> [Azure Maps Route-service](https://docs.microsoft.com/rest/api/maps/route)
+> [Azure Maps Route-service](/rest/api/maps/route)
 
 > [!div class="nextstepaction"]
-> [De service module gebruiken](https://docs.microsoft.com/azure/azure-maps/how-to-use-services-module)
+> [De service module gebruiken](./how-to-use-services-module.md)
 
 > [!div class="nextstepaction"]
-> [Route op de kaart weer geven](https://docs.microsoft.com/azure/azure-maps/map-route)
+> [Route op de kaart weer geven](./map-route.md)
 
 > [!div class="nextstepaction"]
 > [NPM-pakket Azure Maps](https://www.npmjs.com/package/azure-maps-rest  )

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: a01f5d2d000ef6e177000828500ef2ab0e26c4ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1faf4455a983e87ce4c702c09f8bf2d9fbe70047
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448186"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893400"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>De diagnostische Linux-extensie gebruiken voor het bewaken van metrische gegevens en logboeken
 
@@ -23,7 +23,7 @@ In dit document wordt versie 3,0 en nieuwer van de Linux Diagnostic-extensie bes
 > [!IMPORTANT]
 > Zie [dit document](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2)voor meer informatie over versie 2,3 en ouder.
 
-## <a name="introduction"></a>Inleiding
+## <a name="introduction"></a>Introductie
 
 De diagnostische extensie van Linux helpt gebruikers bij het controleren van de status van een virtuele Linux-machine die wordt uitgevoerd op Microsoft Azure. Het heeft de volgende mogelijkheden:
 
@@ -39,6 +39,9 @@ Deze uitbrei ding werkt met beide Azure-implementatie modellen.
 ## <a name="installing-the-extension-in-your-vm"></a>De extensie in uw virtuele machine installeren
 
 U kunt deze uitbrei ding inschakelen met behulp van de Azure PowerShell-cmdlets, Azure CLI-scripts, ARM-sjablonen of de Azure Portal. Zie [Extensions-functies](features-linux.md)voor meer informatie.
+
+>[!NOTE]
+>Bepaalde onderdelen van de diagnostische VM-extensie worden ook verzonden in de [log Analytics VM-extensie](./oms-linux.md). Vanwege deze architectuur kunnen er conflicten optreden als beide uitbrei dingen worden geïnstantieerd in dezelfde ARM-sjabloon. Om deze runtime-conflicten te voor komen, gebruikt u de- [ `dependsOn` instructie](../../azure-resource-manager/templates/define-resource-dependency.md#dependson) om te controleren of de uitbrei dingen opeenvolgend zijn geïnstalleerd. De uitbrei dingen kunnen in een van beide volg orde worden geïnstalleerd.
 
 Met deze installatie-instructies en een [Download bare voorbeeld configuratie](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json) Lad 3,0 instellen op:
 
@@ -67,8 +70,8 @@ Ondersteunde distributies en versies:
 
 ### <a name="prerequisites"></a>Vereisten
 
-* **Azure Linux-agent versie 2.2.0 of hoger**. De meeste installatie kopieën van de Azure VM Linux-galerie bevatten versie 2.2.7 of hoger. Voer uit `/usr/sbin/waagent -version` om te controleren of de versie is geïnstalleerd op de VM. Als op de virtuele machine een oudere versie van de gast agent wordt uitgevoerd, volgt u [deze instructies](./update-linux-agent.md) om de app bij te werken.
-* **Azure CLI**. [Stel de Azure cli](/cli/azure/install-azure-cli) -omgeving in op uw machine.
+* **Azure Linux-agent versie 2.2.0 of hoger** . De meeste installatie kopieën van de Azure VM Linux-galerie bevatten versie 2.2.7 of hoger. Voer uit `/usr/sbin/waagent -version` om te controleren of de versie is geïnstalleerd op de VM. Als op de virtuele machine een oudere versie van de gast agent wordt uitgevoerd, volgt u [deze instructies](./update-linux-agent.md) om de app bij te werken.
+* **Azure CLI** . [Stel de Azure cli](/cli/azure/install-azure-cli) -omgeving in op uw machine.
 * De wget-opdracht als u deze nog niet hebt: Voer uit `sudo apt-get install wget` .
 * Een bestaand Azure-abonnement en een bestaand opslag account voor algemeen gebruik voor het opslaan van de gegevens in.  Opslag accounts voor algemeen gebruik ondersteunen tabel opslag die is vereist.  Een Blob Storage-account werkt niet.
 
@@ -172,7 +175,7 @@ Nadat u uw beveiligde of open bare instellingen hebt gewijzigd, implementeert u 
 
 ### <a name="migration-from-previous-versions-of-the-extension"></a>Migratie van eerdere versies van de uitbrei ding
 
-De meest recente versie van de uitbrei ding is **3,0**. **Oude versies (2. x) zijn afgeschaft en kunnen na 31 juli 2018 niet meer worden gepubliceerd**.
+De meest recente versie van de uitbrei ding is **3,0** . **Oude versies (2. x) zijn afgeschaft en kunnen na 31 juli 2018 niet meer worden gepubliceerd** .
 
 > [!IMPORTANT]
 > Deze uitbrei ding bevat een belang rijke wijziging in de configuratie van de uitbrei ding. Er is een dergelijke wijziging aangebracht ter verbetering van de beveiliging van de uitbrei ding; Als gevolg hiervan kan achterwaartse compatibiliteit met 2. x niet worden gehandhaafd. De extensie Publisher voor deze uitbrei ding wijkt af van de uitgever voor de 2. x-versies.
@@ -202,7 +205,7 @@ Deze set configuratie-informatie bevat gevoelige informatie die moet worden beve
 }
 ```
 
-Naam | Waarde
+Name | Waarde
 ---- | -----
 storageAccountName | De naam van het opslag account waarin de gegevens worden geschreven door de extensie.
 storageAccountEndPoint | Beschrijving Het eind punt dat de Cloud aanduidt waarin het opslag account zich bevindt. Als deze instelling niet aanwezig is, LAD standaard ingesteld op de open bare Azure-Cloud `https://core.windows.net` . Als u een opslag account in azure Duitsland, Azure Government of Azure China wilt gebruiken, stelt u deze waarde dienovereenkomstig in.
@@ -578,7 +581,7 @@ TransfersPerSecond | Lees-of schrijf bewerkingen per seconde
 
 Geaggregeerde waarden voor alle bestands systemen kunnen worden verkregen door in te stellen `"condition": "IsAggregate=True"` . Waarden voor een specifiek gekoppeld bestands systeem, zoals '/mnt ', kunnen worden verkregen door in te stellen `"condition": 'Name="/mnt"'` . 
 
-**Opmerking**: als u de Azure-Portal gebruikt in plaats van JSON, is het veld voor de juiste voorwaarde waarde name = '/mnt '
+**Opmerking** : als u de Azure-Portal gebruikt in plaats van JSON, is het veld voor de juiste voorwaarde waarde name = '/mnt '
 
 ### <a name="builtin-metrics-for-the-disk-class"></a>ingebouwde metrische gegevens voor de klasse schijf
 

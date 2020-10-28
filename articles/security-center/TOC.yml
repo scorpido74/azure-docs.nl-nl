@@ -17,13 +17,13 @@
     - name: Wat is nieuw?
       items:
         - name: Releaseopmerkingen
-          displayName: changelog
+          displayName: 'changelog, news'
           href: release-notes.md
         - name: Belangrijke aanstaande wijzigingen
-          displayName: 'release notes, changelog'
+          displayName: 'release notes, changelog, news'
           href: upcoming-changes.md
         - name: Gearchiveerde releaseopmerkingen (ouder dan zes maanden)
-          displayName: changelog
+          displayName: 'changelog, news'
           href: release-notes-archive.md
     - name: Basisprincipes van Security Center
       items:
@@ -92,6 +92,7 @@
     - name: E-mailmeldingen instellen
       href: security-center-provide-security-contact-details.md
     - name: Een automatische reactie maken op een waarschuwing met een ARM-sjabloon
+      displayName: Resource Manager
       href: quickstart-automation-alert.md
 - name: Zelfstudies
   items:
@@ -238,6 +239,7 @@
           displayName: 'continuous, SIEM, SOAR, Splunk, QRadar, ServiceNow, ArcSight, Monitor, Graph, Sentinel,'
           href: export-to-siem.md
         - name: Exporteren naar een Log Analytics-werkruimte of Azure Event Hub
+          displayName: continuous
           href: continuous-export.md
         - name: Een CSV-rapport van alle waarschuwingen downloaden
           href: continuous-export.md#manual-one-time-export-of-alerts-and-recommendations

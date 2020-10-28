@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 61ea102d0e020f7890da1ae86cdfbb5c3db8f51b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e64df21b31d686b72b210d2c62956745350891f5
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335293"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895389"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>De Azure Maps ruimtelijke IO-module gebruiken
 
-De Azure Maps Web-SDK biedt de **ruimtelijke IO-module**, die ruimtelijke gegevens integreert met de Azure Maps Web-SDK met behulp van Java script of type script. Met de krachtige functies in deze module kunnen ontwikkel aars het volgende doen:
+De Azure Maps Web-SDK biedt de **ruimtelijke IO-module** , die ruimtelijke gegevens integreert met de Azure Maps Web-SDK met behulp van Java script of type script. Met de krachtige functies in deze module kunnen ontwikkel aars het volgende doen:
 
 - [Algemene ruimtelijke gegevens bestanden lezen en schrijven](spatial-io-read-write-spatial-data.md). Ondersteunde bestands indelingen zijn: KML, KMZ, GPX, GeoRSS, GML, geojson en CSV-bestanden met kolommen met ruimtelijke gegevens. Ondersteunt ook Well-Known tekst (WKT).
 - [Maak verbinding met Open Geospatial Consortium-Services (OGC) en integreer met Azure Maps Web-SDK. Overlay van web map Services (WMS) en WMTS (web map tile Services) als lagen op de kaart](spatial-io-add-ogc-map-layer.md).
@@ -40,7 +40,7 @@ In deze video vindt u een overzicht van de ruimtelijke IO-module in de Azure Map
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u de ruimtelijke IO-module kunt gebruiken, moet u [een Azure Maps account maken](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-azure-maps-account) en [de primaire abonnements sleutel voor uw account ophalen](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#get-the-primary-key-for-your-account).
+Voordat u de ruimtelijke IO-module kunt gebruiken, moet u [een Azure Maps account maken](./quick-demo-map-app.md#create-an-azure-maps-account) en [de primaire abonnements sleutel voor uw account ophalen](./quick-demo-map-app.md#get-the-primary-key-for-your-account).
 
 ## <a name="installing-the-spatial-io-module"></a>De ruimtelijke IO-module installeren
 
@@ -68,7 +68,7 @@ U kunt de Azure Maps ruimtelijke IO-module laden met een van de twee opties:
 
 1. Maak een nieuw HTML-bestand.
 
-2. Laad de Azure Maps Web-SDK en Initialiseer het kaart besturings element. Raadpleeg de hand leiding voor het [beheer van Azure Maps-kaarten](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control) voor meer informatie. Zodra u klaar bent met deze stap, ziet uw HTML-bestand er als volgt uit:
+2. Laad de Azure Maps Web-SDK en Initialiseer het kaart besturings element. Raadpleeg de hand leiding voor het [beheer van Azure Maps-kaarten](./how-to-use-map-control.md) voor meer informatie. Zodra u klaar bent met deze stap, ziet uw HTML-bestand er als volgt uit:
 
     ```html
     <!DOCTYPE html>
@@ -256,4 +256,4 @@ De functie die we hier hebben gedemonstreerd, is slechts een van de vele beschik
 Raadpleeg de Azure Maps ruimtelijke IO-documentatie:
 
 > [!div class="nextstepaction"]
-> [Azure Maps ruimtelijk IO-pakket](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/)
+> [Azure Maps ruimtelijk IO-pakket](/javascript/api/azure-maps-spatial-io/)

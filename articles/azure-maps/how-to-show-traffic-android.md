@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 93cabb566db02de7ef991fe9cdd293f8c399c3a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc37f2b3f603262f67a46746187df6e4b5a494b5
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272953"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895525"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Verkeers gegevens op de kaart weer geven met behulp van Azure Maps Android SDK
 
@@ -21,7 +21,7 @@ Gegevens over stroom gegevens en incidenten zijn de twee typen verkeers gegevens
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u verkeer op de kaart kunt weer geven, moet u [een Azure-account maken](quick-demo-map-app.md#create-an-azure-maps-account)en [een abonnements sleutel verkrijgen](quick-demo-map-app.md#get-the-primary-key-for-your-account). Vervolgens moet u de [Azure Maps ANDROID SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) installeren en een kaart laden.
+Voordat u verkeer op de kaart kunt weer geven, moet u [een Azure-account maken](quick-demo-map-app.md#create-an-azure-maps-account)en [een abonnements sleutel verkrijgen](quick-demo-map-app.md#get-the-primary-key-for-your-account). Vervolgens moet u de [Azure Maps ANDROID SDK](./how-to-use-android-map-control-library.md) installeren en een kaart laden.
 
 ## <a name="incidents-traffic-data"></a>Verkeers gegevens van incidenten
 
@@ -53,7 +53,7 @@ import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
 
 Gebruik het volgende code fragment om gegevens over de verkeers stroom in te stellen. Net als bij de code in de vorige sectie geven we de retour waarde van de `flow` methode door aan de- `setTraffic` methode. Er zijn vier waarden die kunnen worden door gegeven aan `flow` , en elke waarde wordt geactiveerd `flow` om de desbetreffende waarde te retour neren. De geretourneerde waarde van `flow` wordt vervolgens door gegeven als het argument aan `setTraffic` . Zie de onderstaande tabel voor deze vier waarden:
 
-|Stroom waarde | Beschrijving|
+|Stroom waarde | Description|
 | :-- | :-- |
 | Verkeers stroom. NONE | Verkeers gegevens worden niet weer gegeven op de kaart |
 | Verkeers stroom. RELATIVE | Geeft verkeers gegevens weer die relatief zijn ten opzichte van de vrije stroom snelheid van de weg |
@@ -73,7 +73,7 @@ protected void onCreate(Bundle savedInstanceState) {
 
 U kunt de volgende code gebruiken om de incidenten voor een specifieke functie te verkrijgen. Wanneer er op een functie wordt geklikt, controleert de code logica op incidenten en wordt er een bericht over het incident gegenereerd. Aan de onderkant van het scherm wordt een bericht met de details weer gegeven.
 
-1. Eerst moet u de indeling van **res > > activity_main.xml**bewerken, zodat deze er als volgt uitziet. U kunt de `mapcontrol_centerLat` , en door de `mapcontrol_centerLng` `mapcontrol_zoom` gewenste waarden vervangen. Intrekken, het zoom niveau is een waarde tussen 0 en 22. Op Zoom niveau 0 past de hele wereld op één tegel.
+1. Eerst moet u de indeling van **res > > activity_main.xml** bewerken, zodat deze er als volgt uitziet. U kunt de `mapcontrol_centerLat` , en door de `mapcontrol_centerLng` `mapcontrol_zoom` gewenste waarden vervangen. Intrekken, het zoom niveau is een waarde tussen 0 en 22. Op Zoom niveau 0 past de hele wereld op één tegel.
 
    ```XML
    <?xml version="1.0" encoding="utf-8"?>

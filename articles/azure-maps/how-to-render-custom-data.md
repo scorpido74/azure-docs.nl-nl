@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ec62461e5a12f0c566becdfc7d9a1464433ee656
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88afb380f1aabf0c91e9d5abb0430972743eb6c2
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311016"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895746"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Aangepaste gegevens op een raster kaart weer geven
 
-In dit artikel wordt uitgelegd hoe u de [statische installatie kopie service](https://docs.microsoft.com/rest/api/maps/render/getmapimage)gebruikt, met de functie voor het samen stellen van afbeeldingen, om overlays boven op een raster kaart toe te staan. De samen stelling van de afbeelding bevat de mogelijkheid om een raster tegel terug te halen, met aanvullende gegevens, zoals aangepaste markerings punten, labels en geometrie-overlays.
+In dit artikel wordt uitgelegd hoe u de [statische installatie kopie service](/rest/api/maps/render/getmapimage)gebruikt, met de functie voor het samen stellen van afbeeldingen, om overlays boven op een raster kaart toe te staan. De samen stelling van de afbeelding bevat de mogelijkheid om een raster tegel terug te halen, met aanvullende gegevens, zoals aangepaste markerings punten, labels en geometrie-overlays.
 
-Als u aangepaste markerings punten, labels en geometrie-overlays wilt weer geven, kunt u de toepassing postman gebruiken. U kunt Azure Maps [Data Service-api's](https://docs.microsoft.com/rest/api/maps/data) gebruiken om overlays op te slaan en weer te geven.
+Als u aangepaste markerings punten, labels en geometrie-overlays wilt weer geven, kunt u de toepassing postman gebruiken. U kunt Azure Maps [Data Service-api's](/rest/api/maps/data) gebruiken om overlays op te slaan en weer te geven.
 
 > [!Tip]
 > Het is vaak veel rendabeler om de Azure Maps Web-SDK te gebruiken voor het weer geven van een eenvoudige kaart op een webpagina dan voor het gebruik van de statische installatie kopie service. De Web-SDK gebruikt kaart tegels en tenzij de gebruiker de kaart pannt en inzoomt, wordt er vaak slechts een fractie van een trans actie per kaart belasting gegenereerd. Houd er rekening mee dat de Azure Maps Web-SDK opties heeft voor het uitschakelen van pannen en zoomen. Daarnaast biedt de Azure Maps Web-SDK een uitgebreidere set opties voor gegevens visualisatie dan een statische map-webservice.  
@@ -41,9 +41,9 @@ De S0-laag van het Azure Maps account ondersteunt slechts één exemplaar van de
 
 Voer de volgende stappen uit om de markerings punten met labels en een aangepaste installatie kopie te genereren:
 
-1. Maak een verzameling waarin de aanvragen worden opgeslagen. Selecteer in de app postman de optie **Nieuw**. Selecteer **Collection** (Verzameling) in het venster **Create New** (Nieuwe maken). Geef de verzameling een naam en selecteer de knop **Create** (Maken). 
+1. Maak een verzameling waarin de aanvragen worden opgeslagen. Selecteer in de app postman de optie **Nieuw** . Selecteer **Collection** (Verzameling) in het venster **Create New** (Nieuwe maken). Geef de verzameling een naam en selecteer de knop **Create** (Maken). 
 
-2. Selecteer nogmaals **New** (Nieuw) om de aanvraag te maken. Selecteer **Request** (Aanvraag) in het venster **Create New** (Nieuwe maken). Voer een **aanvraag naam** in voor de markerings punten. Selecteer de verzameling die u in de vorige stap hebt gemaakt, als de locatie voor het opslaan van de aanvraag. Selecteer vervolgens **Opslaan**.
+2. Selecteer nogmaals **New** (Nieuw) om de aanvraag te maken. Selecteer **Request** (Aanvraag) in het venster **Create New** (Nieuwe maken). Voer een **aanvraag naam** in voor de markerings punten. Selecteer de verzameling die u in de vorige stap hebt gemaakt, als de locatie voor het opslaan van de aanvraag. Selecteer vervolgens **Opslaan** .
     
     ![Een aanvraag maken in postman](./media/how-to-render-custom-data/postman-new.png)
 
@@ -62,7 +62,7 @@ Voer de volgende stappen uit om de markerings punten met labels en een aangepast
 > [!Note]
 > Voor de procedure in deze sectie is een Azure Maps-account vereist in de prijs categorie S1.
 
-U kunt ook het pad en de locatie gegevens van de pincode verkrijgen met behulp van de API voor het [uploaden van gegevens](https://docs.microsoft.com/rest/api/maps/data/uploadpreview). Volg de onderstaande stappen om het pad en de pincode gegevens te uploaden.
+U kunt ook het pad en de locatie gegevens van de pincode verkrijgen met behulp van de API voor het [uploaden van gegevens](/rest/api/maps/data/uploadpreview). Volg de onderstaande stappen om het pad en de pincode gegevens te uploaden.
 
 1. Open in de Postman-app een nieuw tabblad in de verzameling die u hebt gemaakt in de vorige sectie. Selecteer de POST HTTP-methode op het tabblad opbouw functie en voer de volgende URL in om een POST-aanvraag te maken:
 
@@ -172,7 +172,7 @@ U kunt ook het pad en de locatie gegevens van de pincode verkrijgen met behulp v
 > Voor de procedure in deze sectie is een Azure Maps-account vereist in de prijs categorie S1.
 
 
-U kunt het uiterlijk van een veelhoek wijzigen met behulp van stijl wijzigingen met de [para meter Path](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters).
+U kunt het uiterlijk van een veelhoek wijzigen met behulp van stijl wijzigingen met de [para meter Path](/rest/api/maps/render/getmapimage#uri-parameters).
 
 1. Open in de Postman-app een nieuw tabblad in de verzameling die u eerder hebt gemaakt. Selecteer de methode HTTP ophalen op het tabblad opbouw functie en voer de volgende URL in om een GET-aanvraag te configureren voor het weer geven van een veelhoek met kleur en dekking:
     
@@ -192,7 +192,7 @@ U kunt het uiterlijk van een veelhoek wijzigen met behulp van stijl wijzigingen 
 > Voor de procedure in deze sectie is een Azure Maps-account vereist in de prijs categorie S1.
 
 
-U kunt de weer gave van de pincodes wijzigen door aanpassings opties voor stijlen toe te voegen. Als u bijvoorbeeld markerings punten en de labels groter of kleiner wilt maken, gebruikt u de `sc` aanpassings functie ' schaal stijl '. Deze modificator heeft een waarde die groter is dan nul. Een waarde van 1 is de standaard schaal. Waarden die groter zijn dan 1 maken de pincodes groter en waarden kleiner dan 1 maken deze kleiner. Zie [para meters voor statisch installatie kopie-pad](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters)voor meer informatie over stijl parameters.
+U kunt de weer gave van de pincodes wijzigen door aanpassings opties voor stijlen toe te voegen. Als u bijvoorbeeld markerings punten en de labels groter of kleiner wilt maken, gebruikt u de `sc` aanpassings functie ' schaal stijl '. Deze modificator heeft een waarde die groter is dan nul. Een waarde van 1 is de standaard schaal. Waarden die groter zijn dan 1 maken de pincodes groter en waarden kleiner dan 1 maken deze kleiner. Zie [para meters voor statisch installatie kopie-pad](/rest/api/maps/render/getmapimage#uri-parameters)voor meer informatie over stijl parameters.
 
 
 Volg deze stappen om een cirkel en markerings punten met aangepaste labels weer te geven:
@@ -222,6 +222,5 @@ Op dezelfde manier kunt u andere stijl aanpassingen wijzigen, toevoegen en verwi
 ## <a name="next-steps"></a>Volgende stappen
 
 
-* Verken de documentatie over de [Azure Maps-overzichts-API ophalen](https://docs.microsoft.com/rest/api/maps/render/getmapimage) .
-* Zie de [Service documentatie](https://docs.microsoft.com/rest/api/maps/data)voor meer informatie over Azure Maps data service.
-
+* Verken de documentatie over de [Azure Maps-overzichts-API ophalen](/rest/api/maps/render/getmapimage) .
+* Zie de [Service documentatie](/rest/api/maps/data)voor meer informatie over Azure Maps data service.

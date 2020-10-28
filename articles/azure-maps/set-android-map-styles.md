@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4e37ae82b46ce06162d0a67d74af54cddaf3f6eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15dbe7d30652d0ace78bca4dc053757d57361c1a
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88030942"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895304"
 ---
 # <a name="set-map-style-using-azure-maps-android-sdk"></a>Kaart stijl instellen met Azure Maps Android SDK
 
@@ -22,12 +22,12 @@ In dit artikel ziet u twee manieren om kaart stijlen in te stellen met behulp va
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om het proces in dit artikel te volt ooien, moet u [Azure Maps ANDROID SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) installeren om een kaart te laden.
+Om het proces in dit artikel te volt ooien, moet u [Azure Maps ANDROID SDK](./how-to-use-android-map-control-library.md) installeren om een kaart te laden.
 
 
 ## <a name="set-map-style-in-the-layout"></a>Kaart stijl instellen in de lay-out
 
-U kunt een kaart stijl instellen in het indelings bestand voor uw activiteiten klasse. Wijzig de **indeling res > > activity_main.xml**, zodat deze er als volgt uitziet:
+U kunt een kaart stijl instellen in het indelings bestand voor uw activiteiten klasse. Wijzig de **indeling res > > activity_main.xml** , zodat deze er als volgt uitziet:
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -51,7 +51,7 @@ U kunt een kaart stijl instellen in het indelings bestand voor uw activiteiten k
 </FrameLayout>
 ```
 
-`mapcontrol_style`Met het bovenstaande kenmerk stelt u de stijl van de kaart in op **grayscale_dark**. 
+`mapcontrol_style`Met het bovenstaande kenmerk stelt u de stijl van de kaart in op **grayscale_dark** . 
 
 <center>
 
@@ -59,7 +59,7 @@ U kunt een kaart stijl instellen in het indelings bestand voor uw activiteiten k
 
 ## <a name="set-map-style-in-the-activity-class"></a>Kaart stijl instellen in de klasse activiteit
 
-Kaart stijl kan worden ingesteld in de klasse activity. Kopieer het volgende code fragment in de methode **onCreate ()** van uw `MainActivity.java` klasse. Met deze code wordt de kaart stijl ingesteld op **satellite_road_labels**.
+Kaart stijl kan worden ingesteld in de klasse activity. Kopieer het volgende code fragment in de methode **onCreate ()** van uw `MainActivity.java` klasse. Met deze code wordt de kaart stijl ingesteld op **satellite_road_labels** .
 
 ```Java
 mapControl.onReady(map -> {

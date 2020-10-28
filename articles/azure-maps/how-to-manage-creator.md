@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 579294388dbcf9f785ef41e06505c14b6767565f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6d8a2bfe20d0e7b52dcd60127b3666f0c21a792
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83677946"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895797"
 ---
 # <a name="manage-azure-maps-creator"></a>Azure Maps Maker beheren
 
@@ -25,19 +25,19 @@ In dit artikel worden de stappen beschreven voor het maken en verwijderen van ee
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com)
 
-2. Selecteer uw Azure Maps-account. Als u uw Azure Maps-account niet kunt zien onder de **recente resources**, gaat u naar het menu Azure Portal. Selecteer **Alle resources**. Zoek en selecteer uw Azure Maps-account.
+2. Selecteer uw Azure Maps-account. Als u uw Azure Maps-account niet kunt zien onder de **recente resources** , gaat u naar het menu Azure Portal. Selecteer **Alle resources** . Zoek en selecteer uw Azure Maps-account.
 
     ![Start pagina van Azure Maps Portal](./media/how-to-manage-creator/select-maps-account.png)
 
-3. Als u zich op de pagina Azure Maps-account bevindt, gaat u naar de optie **overzicht** onder **Maker**. Klik op  **maken**  om een Azure Maps Creator-resource te maken.
+3. Als u zich op de pagina Azure Maps-account bevindt, gaat u naar de optie **overzicht** onder **Maker** . Klik op  **maken**  om een Azure Maps Creator-resource te maken.
 
     ![Azure Maps Creator-pagina maken](./media/how-to-manage-creator/creator-blade-settings.png)
 
-4. Voer de naam en locatie in voor de bron van de maker. Momenteel wordt de Maker alleen ondersteund in de Verenigde Staten. Klik op **Controleren + maken**.
+4. Voer de naam en locatie in voor de bron van de maker. Momenteel wordt de Maker alleen ondersteund in de Verenigde Staten. Klik op **Controleren + maken** .
 
    ![Informatie pagina voor de account van de Creator invoeren](./media/how-to-manage-creator/creator-creation-dialog.png)
 
-5. Controleer uw instellingen en klik op **maken**.
+5. Controleer uw instellingen en klik op **maken** .
 
     ![Pagina instellingen van de Creator-account bevestigen](./media/how-to-manage-creator/creator-create-dialog.png)
 
@@ -45,7 +45,7 @@ In dit artikel worden de stappen beschreven voor het maken en verwijderen van ee
 
    ![Pagina status van implementatie van resource](./media/how-to-manage-creator/creator-resource-created.png)
 
-7. Klik op **Ga naar resource**. Op de pagina Maker resource weergave ziet u de status van uw Creator-resource en de gekozen demografische regio.
+7. Klik op **Ga naar resource** . Op de pagina Maker resource weergave ziet u de status van uw Creator-resource en de gekozen demografische regio.
 
     ![Pagina status van de maker](./media/how-to-manage-creator/creator-resource-view.png)
 
@@ -54,7 +54,7 @@ In dit artikel worden de stappen beschreven voor het maken en verwijderen van ee
 
 ## <a name="delete-creator-resource"></a>Creator-resource verwijderen
 
-Als u de Creator-resource wilt verwijderen, gaat u naar uw Azure Maps-account. Selecteer **overzicht** onder **Maker**. Klik op de knop **Verwijderen**.
+Als u de Creator-resource wilt verwijderen, gaat u naar uw Azure Maps-account. Selecteer **overzicht** onder **Maker** . Klik op de knop **Verwijderen** .
 
 >[!WARNING]
 >Wanneer u de maker-resource van uw Azure Maps-account verwijdert, verwijdert u ook de gegevens sets, tilesets en functie statesets die zijn gemaakt met behulp van Creator Services.
@@ -69,7 +69,7 @@ Klik op de knop **verwijderen** en typ de naam van de maker om de verwijdering t
 
 De maker neemt de instellingen van Azure Maps Access Control (IAM) over. Alle API-aanroepen voor gegevens toegang moeten met verificatie-en autorisatie regels worden verzonden.
 
-De gebruiks gegevens van de maker zijn opgenomen in uw Azure Maps-gebruiks diagrammen en het activiteiten logboek.  Zie [verificatie beheren in azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)voor meer informatie.
+De gebruiks gegevens van de maker zijn opgenomen in uw Azure Maps-gebruiks diagrammen en het activiteiten logboek.  Zie [verificatie beheren in azure Maps](./how-to-manage-authentication.md)voor meer informatie.
 
 ## <a name="access-to-creator-services"></a>Toegang tot Creator-services
 

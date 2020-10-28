@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 429baa4d5dc85476192758e4500f4c1f14610e6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b609a21348222150faf5fb828f2cc38ca6658f5d
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089306"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895814"
 ---
 # <a name="interaction-types-and-keyboard-shortcuts-in-the-drawing-tools-module"></a>Interactie typen en sneltoetsen in de module teken hulpprogramma's
 
@@ -135,7 +135,7 @@ Wanneer de teken beheer `draw-circle` modus actief is, kunnen de volgende acties
 
 De teken hulpprogramma's ondersteunen sneltoetsen. Deze sneltoetsen werken als de kaart zich in de focus bevindt.
 
-| Sleutel      | Bewerking                            |
+| Sleutel      | Actie                            |
 |----------|-----------------------------------|
 | `C` | Hiermee wordt de actieve tekening voltooid en wordt de teken modus ingesteld op inactief. De focus wordt verplaatst naar het map-element op het hoogste niveau.  |
 | `Escape` | Hiermee wordt de actieve tekening geannuleerd en wordt de teken modus ingesteld op inactief. De focus wordt verplaatst naar het map-element op het hoogste niveau.  |
@@ -146,7 +146,7 @@ De teken hulpprogramma's ondersteunen sneltoetsen. Deze sneltoetsen werken als d
 Meer informatie over de klassen in de module teken hulpprogramma's:
 
 > [!div class="nextstepaction"]
-> [Drawing Manager](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager)
+> [Drawing Manager](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager)
 
 > [!div class="nextstepaction"]
-> [Werk balk tekenen](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)
+> [Werk balk tekenen](/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)

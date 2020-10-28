@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: e62a5c984afb434b8c47b5ee8c5c66c61485dbfc
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 3833cbfd0802f334e482203d269984eb0e299797
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090434"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895627"
 ---
 # <a name="secure-an-input-constrained-device-with-azure-ad-and-azure-maps-rest-apis"></a>Een invoer beperkt apparaat beveiligen met Azure AD en Azure Maps REST-Api's
 
@@ -25,42 +25,42 @@ In deze hand leiding wordt beschreven hoe u open bare toepassingen of apparaten 
 ## <a name="create-an-application-registration-in-azure-ad"></a>Een toepassings registratie maken in azure AD
 
 > [!NOTE]
-> * **Vereisten lezen:** [scenario: bureau blad-app die web-api's aanroept](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-overview)
+> * **Vereisten lezen:** [scenario: bureau blad-app die web-api's aanroept](../active-directory/develop/scenario-desktop-overview.md)
 > * In het volgende scenario wordt de code stroom van het apparaat gebruikt, waarbij geen webbrowser is vereist voor het verkrijgen van een token.
 
 Maak de toepassing op basis van het apparaat in azure AD om aanmelden bij Azure AD in te scha kelen. Aan deze toepassing wordt toegang verleend tot Azure Maps REST-Api's.
 
-1. Selecteer in het Azure Portal in de lijst met Azure-Services **Azure Active Directory**  >  **app-registraties**  >  **nieuwe registratie**.  
+1. Selecteer in het Azure Portal in de lijst met Azure-Services **Azure Active Directory**  >  **app-registraties**  >  **nieuwe registratie** .  
 
     > [!div class="mx-imgBorder"]
     > ![Appregistratie](./media/how-to-manage-authentication/app-registration.png)
 
-2. Voer een **naam**in en kies **accounts in deze organisatie-Directory alleen** als **ondersteund account type**. Geef bij **omleidings-uri's**de **open bare client/systeem eigen (Mobile & bureau blad)** op en voeg deze vervolgens toe `https://login.microsoftonline.com/common/oauth2/nativeclient` aan de waarde. Zie Azure AD desktop-app voor [het aanroepen van web-api's: app-registratie](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration)voor meer informatie. **Registreer** vervolgens de toepassing.
+2. Voer een **naam** in en kies **accounts in deze organisatie-Directory alleen** als **ondersteund account type** . Geef bij **omleidings-uri's** de **open bare client/systeem eigen (Mobile & bureau blad)** op en voeg deze vervolgens toe `https://login.microsoftonline.com/common/oauth2/nativeclient` aan de waarde. Zie Azure AD desktop-app voor [het aanroepen van web-api's: app-registratie](../active-directory/develop/scenario-desktop-app-registration.md)voor meer informatie. **Registreer** vervolgens de toepassing.
 
     > [!div class="mx-imgBorder"]
     > ![App-registratie Details voor naam en omleidings-URI toevoegen](./media/azure-maps-authentication/devicecode-app-registration.png)
 
-3. Ga naar **verificatie** en Schakel **toepassing behandelen als een open bare client**in. Hiermee schakelt u verificatie op basis van een apparaatcode in met Azure AD.
+3. Ga naar **verificatie** en Schakel **toepassing behandelen als een open bare client** in. Hiermee schakelt u verificatie op basis van een apparaatcode in met Azure AD.
     
     > [!div class="mx-imgBorder"]
     > ![App-registratie inschakelen als open bare client](./media/azure-maps-authentication/devicecode-public-client.png)
 
-4.  Als u gedelegeerde API-machtigingen aan Azure Maps wilt toewijzen, gaat u naar de toepassing. Selecteer vervolgens de optie **API-machtigingen**om  >  **een machtiging toe te voegen**. Onder **api's die mijn organisatie gebruikt**, zoekt en selecteert u **Azure Maps**.
+4.  Als u gedelegeerde API-machtigingen aan Azure Maps wilt toewijzen, gaat u naar de toepassing. Selecteer vervolgens de optie **API-machtigingen** om  >  **een machtiging toe te voegen** . Onder **api's die mijn organisatie gebruikt** , zoekt en selecteert u **Azure Maps** .
 
     > [!div class="mx-imgBorder"]
     > ![API-machtigingen voor apps toevoegen](./media/how-to-manage-authentication/app-permissions.png)
 
-5. Schakel het selectie vakje in naast **toegang Azure Maps**en selecteer vervolgens **machtigingen toevoegen**.
+5. Schakel het selectie vakje in naast **toegang Azure Maps** en selecteer vervolgens **machtigingen toevoegen** .
 
     > [!div class="mx-imgBorder"]
     > ![App API-machtigingen selecteren](./media/how-to-manage-authentication/select-app-permissions.png)
 
 6. Op rollen gebaseerd toegangs beheer voor Azure (Azure RBAC) configureren voor gebruikers of groepen. Zie [toegang verlenen op basis van rollen voor gebruikers om Azure Maps](#grant-role-based-access-for-users-to-azure-maps).
 
-7. Voeg code toe voor het ophalen van de token stroom in de toepassing, voor implementatie Details Zie [toestel code stroom](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-acquire-token#device-code-flow). Bij het ophalen van tokens, verwijst u naar het bereik `user_impersonation` dat is geselecteerd in eerdere stappen.
+7. Voeg code toe voor het ophalen van de token stroom in de toepassing, voor implementatie Details Zie [toestel code stroom](../active-directory/develop/scenario-desktop-acquire-token.md#device-code-flow). Bij het ophalen van tokens, verwijst u naar het bereik `user_impersonation` dat is geselecteerd in eerdere stappen.
 
 > [!Tip]
-> Gebruik micro soft Authentication Library (MSAL) om toegangs tokens te verkrijgen. Bekijk aanbevelingen voor [desktop-apps die web-api's aanroepen: code configuratie](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-configuration)
+> Gebruik micro soft Authentication Library (MSAL) om toegangs tokens te verkrijgen. Bekijk aanbevelingen voor [desktop-apps die web-api's aanroepen: code configuratie](../active-directory/develop/scenario-desktop-app-configuration.md)
 
 8. Stel de HTTP-aanvraag met het verkregen token van Azure AD samen en verzend een aanvraag met een geldige HTTP-client.
 

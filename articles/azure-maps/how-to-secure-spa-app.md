@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 000f6a80a2cee14abc3d954de479dd87b1edf876
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: c39104912c99b199d38cf489bb61d64e83b89286
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090247"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895593"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>Een toepassing met één pagina beveiligen met niet-interactieve aanmelding
 
@@ -30,15 +30,15 @@ De volgende hand leiding heeft betrekking op een toepassing die Azure Active Dir
 
 Maak een beveiligde web service-toepassing die verantwoordelijk is voor verificatie bij Azure AD. 
 
-1. Maak een functie in de Azure Portal. Zie [Azure function maken](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function)voor meer informatie.
+1. Maak een functie in de Azure Portal. Zie [Azure function maken](../azure-functions/functions-create-first-azure-function.md)voor meer informatie.
 
-2. Configureer het CORS-beleid voor de Azure-functie zodat deze toegankelijk is voor de webtoepassing met één pagina. Hiermee worden browser-clients beveiligd tot de toegestane oorsprong van uw webtoepassing. Zie [CORS-functionaliteit toevoegen](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-rest-api#add-cors-functionality).
+2. Configureer het CORS-beleid voor de Azure-functie zodat deze toegankelijk is voor de webtoepassing met één pagina. Hiermee worden browser-clients beveiligd tot de toegestane oorsprong van uw webtoepassing. Zie [CORS-functionaliteit toevoegen](../app-service/app-service-web-tutorial-rest-api.md#add-cors-functionality).
 
-3. [Voeg een door het systeem toegewezen identiteit toe](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity) aan de Azure-functie om het maken van een Service-Principal in te scha kelen voor verificatie bij Azure AD.  
+3. [Voeg een door het systeem toegewezen identiteit toe](../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity) aan de Azure-functie om het maken van een Service-Principal in te scha kelen voor verificatie bij Azure AD.  
 
 4. Ken op rollen gebaseerde toegang toe voor de door het systeem toegewezen identiteit aan het Azure Maps-account. Zie [toegang verlenen op basis van rollen](#grant-role-based-access) voor meer informatie.
 
-5. Schrijf code voor de Azure-functie om Azure Maps toegangs tokens te verkrijgen met behulp van een door het systeem toegewezen identiteit met een van de ondersteunde mechanismen of het REST-protocol. Zie [tokens voor Azure-resources verkrijgen](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)
+5. Schrijf code voor de Azure-functie om Azure Maps toegangs tokens te verkrijgen met behulp van een door het systeem toegewezen identiteit met een van de ondersteunde mechanismen of het REST-protocol. Zie [tokens voor Azure-resources verkrijgen](../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity)
 
     Voor beeld van een voor beeld van een REST-Protocol:
 
@@ -64,8 +64,8 @@ Maak een beveiligde web service-toepassing die verantwoordelijk is voor verifica
 
 6. Beveiliging configureren voor de Azure function-http trigger
 
-   * [Een functie toegangs sleutel maken](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=csharp#authorization-keys)
-   * [SSL-eind punt](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=csharp#secure-an-http-endpoint-in-production) voor de Azure-functie in productie.
+   * [Een functie toegangs sleutel maken](../azure-functions/functions-bindings-http-webhook-trigger.md?tabs=csharp#authorization-keys)
+   * [SSL-eind punt](../azure-functions/functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production) voor de Azure-functie in productie.
    
 7. Webtoepassing Web Application Azure Maps Web-SDK configureren. 
 
@@ -102,25 +102,25 @@ Maak een beveiligde web service-toepassing die verantwoordelijk is voor verifica
 
 ## <a name="grant-role-based-access"></a>Op rollen gebaseerde toegang verlenen
 
-U verleent op *rollen gebaseerd toegangs beheer voor Azure (Azure RBAC)* door de door het systeem toegewezen identiteit toe te wijzen aan een of meer Azure-functie definities. Als u de definities van Azure-functies wilt weer geven die beschikbaar zijn voor Azure Maps, gaat u naar **toegangs beheer (IAM)**. Selecteer **rollen**en zoek vervolgens naar rollen die beginnen met *Azure Maps*.
+U verleent op *rollen gebaseerd toegangs beheer voor Azure (Azure RBAC)* door de door het systeem toegewezen identiteit toe te wijzen aan een of meer Azure-functie definities. Als u de definities van Azure-functies wilt weer geven die beschikbaar zijn voor Azure Maps, gaat u naar **toegangs beheer (IAM)** . Selecteer **rollen** en zoek vervolgens naar rollen die beginnen met *Azure Maps* .
 
-1. Ga naar uw **Azure Maps-account**. Selecteer de roltoewijzing van **toegangs beheer (IAM)**  >  **Role assignment**.
+1. Ga naar uw **Azure Maps-account** . Selecteer de roltoewijzing van **toegangs beheer (IAM)**  >  **Role assignment** .
 
     > [!div class="mx-imgBorder"]
     > ![Toegang verlenen met behulp van Azure RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. Selecteer op **het tabblad roltoewijzingen,** onder **rol**, een ingebouwde Azure Maps roldefinitie, zoals **Azure Maps gegevens lezer** of **Azure Maps gegevensinzender**. Selecteer **functie-app**onder **toegang toewijzen aan**. Selecteer de principal op naam. Selecteer vervolgens **Opslaan**.
+2. Selecteer op **het tabblad roltoewijzingen,** onder **rol** , een ingebouwde Azure Maps roldefinitie, zoals **Azure Maps gegevens lezer** of **Azure Maps gegevensinzender** . Selecteer **functie-app** onder **toegang toewijzen aan** . Selecteer de principal op naam. Selecteer vervolgens **Opslaan** .
 
-   * Zie de Details voor het [toevoegen of verwijderen van roltoewijzingen](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+   * Zie de Details voor het [toevoegen of verwijderen van roltoewijzingen](../role-based-access-control/role-assignments-portal.md).
 
 > [!WARNING]
-> Azure Maps ingebouwde roldefinities bieden een zeer grote autorisatie toegang tot veel Azure Maps REST-Api's. Zie [een aangepaste roldefinitie maken en de door het systeem toegewezen identiteit toewijzen](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) aan de definitie van de aangepaste rol om api's toegang tot een minimum te beperken. Hiermee wordt de mini maal benodigde bevoegdheden voor toegang tot Azure Maps door de toepassing ingeschakeld.
+> Azure Maps ingebouwde roldefinities bieden een zeer grote autorisatie toegang tot veel Azure Maps REST-Api's. Zie [een aangepaste roldefinitie maken en de door het systeem toegewezen identiteit toewijzen](../role-based-access-control/custom-roles.md) aan de definitie van de aangepaste rol om api's toegang tot een minimum te beperken. Hiermee wordt de mini maal benodigde bevoegdheden voor toegang tot Azure Maps door de toepassing ingeschakeld.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over een toepassings scenario met één pagina:
 > [!div class="nextstepaction"]
-> [Toepassing met één pagina](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-overview)
+> [Toepassing met één pagina](../active-directory/develop/scenario-spa-overview.md)
 
 Zoek de metrische gegevens over het API-gebruik voor uw Azure Maps account:
 > [!div class="nextstepaction"]

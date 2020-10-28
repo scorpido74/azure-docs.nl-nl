@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: a96a62d7bb93f0ede6b16008dc844ad7f1a8c8d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9ce0d0770c7e6c4579469cc16d8c76c309a33d1
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86517294"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895372"
 ---
 # <a name="implement-dynamic-styling-for-creator-indoor-maps"></a>Dynamische stijlen voor het maken van kaarten in de maker implementeren
 
-Azure Maps- [functie status service](https://docs.microsoft.com/rest/api/maps/featurestate) maakt het mogelijk om stijlen toe te passen op basis van de dynamische eigenschappen van de functies van de gegevens van de binnenste kaart.  U kunt bijvoorbeeld faciliteit Vergader zalen met een specifieke kleur weer geven om de status van bezetting weer te geven. In dit artikel laten we u zien hoe u met behulp van de [functie status service](https://docs.microsoft.com/rest/api/maps/featurestate) en de [WEBMODULE](how-to-use-indoor-module.md)over een dynamisch overzicht kunt weer geven van de toewijzings functies.
+Azure Maps- [functie status service](/rest/api/maps/featurestate) maakt het mogelijk om stijlen toe te passen op basis van de dynamische eigenschappen van de functies van de gegevens van de binnenste kaart.  U kunt bijvoorbeeld faciliteit Vergader zalen met een specifieke kleur weer geven om de status van bezetting weer te geven. In dit artikel laten we u zien hoe u met behulp van de [functie status service](/rest/api/maps/featurestate) en de [WEBMODULE](how-to-use-indoor-module.md)over een dynamisch overzicht kunt weer geven van de toewijzings functies.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -66,15 +66,15 @@ In de volgende sectie wordt de bezettings *status* van Office ingesteld `UNIT26`
 
  We gaan nu de status van de twee kant oren bijwerken `UNIT26` en `UNIT27` :
 
-1. Selecteer in de Postman-toepassing de optie **New**. Selecteer **Request** (Aanvraag) in het venster **Create New** (Nieuwe maken). Voer een **aanvraagnaam** in en selecteer een verzameling. Klik op **Opslaan**.
+1. Selecteer in de Postman-toepassing de optie **New** . Selecteer **Request** (Aanvraag) in het venster **Create New** (Nieuwe maken). Voer een **aanvraagnaam** in en selecteer een verzameling. Klik op **Opslaan** .
 
-2. Gebruik de [API voor de functie-update status](https://docs.microsoft.com/rest/api/maps/featurestate/updatestatespreview) om de status bij te werken. Geef de statusset-ID en `UNIT26` een van de twee eenheden door. Voeg uw Azure Maps-abonnements sleutel toe. Dit is de URL van een **post** -aanvraag om de status bij te werken:
+2. Gebruik de [API voor de functie-update status](/rest/api/maps/featurestate/updatestatespreview) om de status bij te werken. Geef de statusset-ID en `UNIT26` een van de twee eenheden door. Voeg uw Azure Maps-abonnements sleutel toe. Dit is de URL van een **post** -aanvraag om de status bij te werken:
 
     ```http
     https://atlas.microsoft.com/featureState/state?api-version=1.0&statesetID={statesetId}&featureID=UNIT26&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-3. Stel in de **headers** van de **POST**-aanvraag `Content-Type` in op `application/json`. In de **hoofd tekst** van de **post** -aanvraag schrijft u de volgende JSON met de functie-updates. De update wordt alleen opgeslagen als de tijds tempel na het tijds tempel dat is gebruikt in de vorige functie status update aanvragen voor dezelfde functie is `ID` . Geef de ' bezette ' door `keyName` om de waarde bij te werken.
+3. Stel in de **headers** van de **POST** -aanvraag `Content-Type` in op `application/json`. In de **hoofd tekst** van de **post** -aanvraag schrijft u de volgende JSON met de functie-updates. De update wordt alleen opgeslagen als de tijds tempel na het tijds tempel dat is gebruikt in de vorige functie status update aanvragen voor dezelfde functie is `ID` . Geef de ' bezette ' door `keyName` om de waarde bij te werken.
 
     ```json
     {
@@ -134,4 +134,3 @@ Zie de naslag informatie voor de Api's die in dit artikel worden vermeld:
 
 > [!div class="nextstepaction"]
 > [WFS-service](creator-indoor-maps.md#web-feature-service-api)
-

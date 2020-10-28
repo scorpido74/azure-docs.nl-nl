@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: a0347e76a39be8bada9ec59eb8accef17e784951
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ea53eda3863ea5164142fa0d37fff7be365a4d5c
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738120"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92894097"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines planning en implementatie voor SAP net-Weaver
 
@@ -1832,7 +1832,7 @@ Azure Managed disks worden automatisch geplaatst in het fout domein van de virtu
 
 Een voor beeld van een architectuur van een SAP NetWeaver-systeem dat gebruikmaakt van Azure-infrastructuur HA en opslag accounts, ziet er als volgt uit:
 
-![Azure-infrastructuur HA gebruiken om een hogere Beschik baarheid van SAP-toepassingen te garanderen][planning-guide-figure-2900]
+![Diagram met een SAP NetWeaver-systeem dat gebruikmaakt van Azure-infrastructuur HA en-opslag accounts.][planning-guide-figure-2900]
 
 Een voor beeld van een architectuur van een SAP NetWeaver-systeem dat gebruikmaakt van Azure-infrastructuur HA en Managed Disks kan er als volgt uitzien:
 
@@ -1892,7 +1892,7 @@ Alleen niet-beheerde schijven: de concepten zoals hieronder uitgelegd, moeten mo
 
 ##### <a name="windows-logologo_windows-ha-on-windows"></a>![Windows-logo.][Logo_Windows] HA op Windows
 
-![Architectuur van de Application HA van SAP net-Weaver met SQL Server in azure IaaS][planning-guide-figure-3200]
+![Diagram waarin de architectuur van de SAP NetWeaver-toepassing HA wordt weer gegeven met SQL Server in azure IaaS.][planning-guide-figure-3200]
 
 De volgende Azure-constructs worden gebruikt voor het SAP NetWeaver-systeem om de impact te minimaliseren door problemen met de infra structuur en host-patching:
 

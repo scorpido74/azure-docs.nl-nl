@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 7d22226721d4fc09b4f5affc15047b6799ed0d19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1772a61f45d88e0b63346c41d557cfddf35ab4a7
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409473"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892618"
 ---
 # <a name="test-drive-technical-configuration"></a>Technische configuratie van test drive
 
@@ -22,19 +22,19 @@ Als u een test drive voor uw aanbieding niet meer wilt opgeven, gaat u terug naa
 
 ## <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager test drive
 
-Dit is de enige test drive optie voor de aanbiedingen van virtuele machines of Azure-apps en vereist ook tamelijk gedetailleerde installatie. Lees de onderstaande secties voor [Details van het implementatie abonnement](#deployment-subscription-details) en [test stations](#test-drive-listings), en ga vervolgens door met het afzonderlijke onderwerp voor [Azure Resource Manager test drive-configuratie](azure-resource-manager-test-drive.md).
+Dit is de enige test drive optie voor de aanbiedingen van virtuele machines of Azure-apps en vereist tamelijk gedetailleerde installatie. Lees de onderstaande secties voor [Details van het implementatie abonnement](#deployment-subscription-details) en [test stations](#test-drive-listings), en ga vervolgens door met het afzonderlijke onderwerp voor [Azure Resource Manager test drive-configuratie](azure-resource-manager-test-drive.md).
 
 ## <a name="hosted-test-drive"></a>Gehoste test drive
 
-Micro soft kan de complexiteit van het instellen van een test drive verwijderen door de service-inrichting en-implementatie te hosten en te onderhouden met dit type test drive. De configuratie voor dit type gehoste test drive is hetzelfde, ongeacht of de test drive is gericht op een Dynamics 365 Business Central, een Dynamics 365 Customer engagement of een Dynamics 365-bewerkings publiek.
+Micro soft kan de complexiteit van het instellen van een test drive verwijderen door het inrichten en onderhouden van de inrichting van de service te hosten. De configuratie voor dit type test drive is hetzelfde, ongeacht of de test drive is gericht op een Dynamics 365-klant afspraak of een Dynamics 365-bewerkings publiek.
 
 - **Maxi maal aantal gelijktijdige test schijven** (vereist): Stel het maximum in voor de klanten die uw test drive tegelijk kunnen gebruiken. Elke gelijktijdige gebruiker gebruikt een Dynamics 365-licentie terwijl de test drive actief is. Zorg er dus voor dat er voldoende licenties beschikbaar zijn voor de ondersteuning van de maximale limiet. De aanbevolen waarde is 3-5.
 
-- **Duur van test drive** (vereist): Voer het aantal uren in dat het test drive actief blijft (ten minste één uur). Na deze periode wordt de sessie beëindigd en wordt een van uw licenties niet meer gebruikt. We raden een waarde van 2-24 uur aan, afhankelijk van de complexiteit van uw aanbieding. Deze duur mag alleen in hele uren worden ingesteld (bijvoorbeeld ' 2 ' uur is geldig; "1,5" is niet). De gebruiker kan een nieuwe sessie aanvragen als deze niet langer actief zijn en de test drive opnieuw willen gebruiken.
+- **Duur van test drive** (vereist): Voer het aantal uren in dat het test drive actief blijft voor elke klant. Na deze periode wordt de sessie beëindigd en wordt een van uw licenties niet meer gebruikt. We raden een waarde van 2-24 uur aan, afhankelijk van de complexiteit van uw aanbieding. Deze duur mag alleen in hele uren worden ingesteld (bijvoorbeeld ' 2 uur ' is geldig; "1,5 uur" is niet). De gebruiker kan een nieuwe sessie aanvragen als deze niet langer actief zijn en de test drive opnieuw willen gebruiken.
 
 - **URL van exemplaar** (vereist): de URL waar de klant de test drive begint. Doorgaans de URL van uw Dynamics 365-exemplaar waarop uw app wordt uitgevoerd, waarbij voorbeeld gegevens zijn geïnstalleerd (bijvoorbeeld `https://testdrive.crm.dynamics.com` ).
 
-- **URL** van de Web-API voor het exemplaar (vereist): Haal de Web-API-URL voor uw Dynamics 365-exemplaar op door u aan te melden bij uw Microsoft 365-account en te navigeren naar **instellingen**  >  **aanpassing**  >  **ontwikkelaars resources**  >  **instance Web API (Service root URL)**, kopieer de URL die u hier kunt vinden (bijvoorbeeld `https://testdrive.crm.dynamics.com/api/data/v9.0` ).
+- **URL** van de Web-API voor het exemplaar (vereist): Haal de Web-API-URL voor uw Dynamics 365-exemplaar op door u aan te melden bij uw Microsoft 365-account en te navigeren naar **instellingen**  >  **aanpassing**  >  **ontwikkelaars resources**  >  **instance Web API (Service root URL)** , kopieer de URL die u hier kunt vinden (bijvoorbeeld `https://testdrive.crm.dynamics.com/api/data/v9.0` ).
 
 - **Rolnaam** (vereist): Geef de beveiligingsrol naam op die u hebt gedefinieerd in uw aangepaste Dynamics 365 test drive, die wordt toegewezen aan de gebruiker tijdens hun test drive (bijvoorbeeld test station-Role).
 
@@ -48,7 +48,7 @@ Dit type test drive wordt niet gehost door micro soft. Gebruik het om verbinding
 
 - **Maxi maal aantal gelijktijdige test schijven** (vereist): Stel het maximum in voor de klanten die uw test drive tegelijk kunnen gebruiken. Deze test stations zijn al geïmplementeerd, zodat klanten deze direct kunnen openen zonder te hoeven wachten op een implementatie.
 
-- **Duur van test drive** (vereist): Voer het aantal uren in dat het test drive actief blijft (ten minste één uur). De test drive wordt automatisch beëindigd nadat deze periode is verstreken.
+- **Test drive** (vereist): Voer de tijds duur in die het test station actief blijft, in aantal uren. De test drive wordt automatisch beëindigd nadat deze periode is verstreken.
 
 - **Naam van de Azure-resource groep** (vereist): Voer de naam van de [Azure-resource groep](../azure-resource-manager/resource-group-overview.md#resource-groups)in waar uw logische app-test drive wordt opgeslagen.
 
@@ -68,13 +68,13 @@ Als u wilt dat micro soft de test drive namens u kan implementeren, maakt en ver
 
 - **Azure-abonnements-id** (vereist voor Azure Resource Manager en Logic apps): Voer de abonnements-id in om toegang te verlenen tot uw Azure-account services voor rapportage en facturering van resource gebruik. Het is raadzaam om [een afzonderlijk Azure-abonnement te maken](../cost-management-billing/manage/create-subscription.md) dat u voor test stations kunt gebruiken als u er nog geen hebt. U kunt uw Azure-abonnements-ID vinden door u aan te melden bij de [Azure Portal](https://portal.azure.com/) en te navigeren naar het tabblad **abonnementen** van het menu aan de linkerkant. Als u het tabblad selecteert, wordt uw abonnements-ID weer gegeven (bijvoorbeeld "a83645ac-1234-5ab6-6789-1h234g764ghty").
 
-- **Azure AD-Tenant-id** (vereist): voer uw Azure Active Directory (AD) [Tenant-id](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) in. Als u deze ID wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/), selecteert u het tabblad Active Directory in het menu links, selecteert u **Eigenschappen**en zoekt u naar de weer gegeven **Directory-id** (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e). U kunt ook de Tenant-ID van uw organisatie opzoeken met uw domein naam adres op [https://www.whatismytenantid.com](https://www.whatismytenantid.com) .
+- **Azure AD-Tenant-id** (vereist): voer uw Azure Active Directory (AD) [Tenant-id](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) in. Als u deze ID wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/), selecteert u het tabblad Active Directory in het menu links, selecteert u **Eigenschappen** en zoekt u naar de weer gegeven **Directory-id** (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e). U kunt ook de Tenant-ID van uw organisatie opzoeken met uw domein naam adres op [https://www.whatismytenantid.com](https://www.whatismytenantid.com) .
 
 - **Naam van Azure AD-Tenant** (vereist voor dynamische 365): Voer de naam van uw Azure Active Directory (AD) in. Als u deze naam wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/). in de rechter bovenhoek wordt de naam van de Tenant vermeld onder uw account naam.
 
-- **Azure AD-App-ID** (vereist): voer uw Azure Active Directory (AD) [-toepassings-id](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) in. Als u deze ID wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/), selecteert u het tabblad Active Directory in het menu aan de linkerkant, selecteert u **app-registraties**en zoekt u naar de weer gegeven **toepassings-id** (zoals `50c464d3-4930-494c-963c-1e951d15360e` ).
+- **Azure AD-App-ID** (vereist): voer uw Azure Active Directory (AD) [-toepassings-id](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) in. Als u deze ID wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/), selecteert u het tabblad Active Directory in het menu aan de linkerkant, selecteert u **app-registraties** en zoekt u naar de weer gegeven **toepassings-id** (zoals `50c464d3-4930-494c-963c-1e951d15360e` ).
 
-- **Azure AD-App-client geheim** (vereist): Voer uw Azure AD-toepassings [client geheim](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)in. Als u deze waarde wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/). Selecteer in het linkermenu het tabblad **Azure Active Directory** , selecteer **app-registraties**en selecteer vervolgens uw test drive-app. Selecteer vervolgens **certificaten en geheimen**, selecteer **Nieuw client geheim**, voer een beschrijving in, selecteer **nooit** onder **verlooptd**en kies vervolgens **toevoegen**. Zorg ervoor dat u de waarde kopieert. Navigeer niet weg van de pagina voordat u de waarde kopieert.
+- **Azure AD-App-client geheim** (vereist): Voer uw Azure AD-toepassings [client geheim](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)in. Als u deze waarde wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/). Selecteer in het linkermenu het tabblad **Azure Active Directory** , selecteer **app-registraties** en selecteer uw test drive-app. Selecteer vervolgens **certificaten en geheimen** , selecteer **Nieuw client geheim** , voer een beschrijving in, selecteer **nooit** onder **verloopt** en kies **toevoegen** . Zorg ervoor dat u de waarde kopieert. Navigeer niet weg van de pagina voordat u de waarde kopieert.
 
 ## <a name="test-drive-listings"></a>Test stations
 
@@ -93,6 +93,14 @@ De optie voor het **testen van stations** vindt u op het tabblad **test station*
 
 Als u uw test drive momenteel in partner centrum maakt, selecteert u **concept opslaan** voordat u doorgaat.
 
-## <a name="next-step"></a>Volgende stap
+## <a name="next-steps"></a>Volgende stappen
 
+- [Aanbevolen procedures testen](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
+- [Overzicht](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)(PDF; Controleer of de pop-upblokkering is uitgeschakeld)
 - [Een bestaande aanbieding bijwerken in de commerciële Marketplace](partner-center-portal/update-existing-offer.md)
+
+## <a name="additional-resources"></a>Aanvullende resources
+
+## <a name="feedback"></a>Feedback
+
+Feedback verzenden en weer geven voor [dit product](https://feedback.azure.com/forums/216369-azure-marketplace)

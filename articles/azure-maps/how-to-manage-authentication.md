@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 6fb4d1459584e8dd2b230a424f043ad086f2570d
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 57e847116febcea66e1e3ac4ba131617463b6c94
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089448"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895763"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Verificatie in Azure Maps beheren
 
@@ -22,16 +22,16 @@ Nadat u een Azure Maps-account hebt gemaakt, worden er een client-ID en-sleutels
 
 ## <a name="view-authentication-details"></a>Verificatie gegevens weer geven
 
-Nadat u een Azure Maps account hebt gemaakt, worden de primaire en secundaire sleutels gegenereerd. U wordt aangeraden een primaire sleutel als abonnements sleutel te gebruiken wanneer u [gebruikmaakt van gedeelde sleutel verificatie om Azure Maps aan te roepen](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication#shared-key-authentication). U kunt een secundaire sleutel gebruiken in scenario's zoals wijzigingen in de Rolling sleutel. Zie [verificatie in azure Maps](https://aka.ms/amauth)voor meer informatie.
+Nadat u een Azure Maps account hebt gemaakt, worden de primaire en secundaire sleutels gegenereerd. U wordt aangeraden een primaire sleutel als abonnements sleutel te gebruiken wanneer u [gebruikmaakt van gedeelde sleutel verificatie om Azure Maps aan te roepen](./azure-maps-authentication.md#shared-key-authentication). U kunt een secundaire sleutel gebruiken in scenario's zoals wijzigingen in de Rolling sleutel. Zie [verificatie in azure Maps](./azure-maps-authentication.md)voor meer informatie.
 
-U kunt uw verificatie gegevens weer geven in de Azure Portal. In uw account selecteert u in het menu **instellingen** de optie **verificatie**.
+U kunt uw verificatie gegevens weer geven in de Azure Portal. In uw account selecteert u in het menu **instellingen** de optie **verificatie** .
 
 > [!div class="mx-imgBorder"]
 > ![Verificatie gegevens](./media/how-to-manage-authentication/how-to-view-auth.png)
 
 ## <a name="discover-category-and-scenario"></a>Categorie en scenario detecteren
 
-Afhankelijk van de toepassings behoeften zijn er specifieke paden om de toepassing te beveiligen. Azure AD definieert categorieën voor de ondersteuning van een breed scala aan verificatie stromen. Zie [toepassings categorieën](https://docs.microsoft.com/azure/active-directory/develop/authentication-flows-app-scenarios#application-categories) om te begrijpen in welke categorie de toepassing past.
+Afhankelijk van de toepassings behoeften zijn er specifieke paden om de toepassing te beveiligen. Azure AD definieert categorieën voor de ondersteuning van een breed scala aan verificatie stromen. Zie [toepassings categorieën](../active-directory/develop/authentication-flows-app-scenarios.md#application-categories) om te begrijpen in welke categorie de toepassing past.
 
 > [!NOTE]
 > Zelfs als u gebruikmaakt van gedeelde sleutel verificatie, is het beter om de toepassing te beveiligen met categorieën en scenario's.
@@ -56,14 +56,14 @@ Met de koppelingen in de tabel gaat u naar gedetailleerde configuratie-informati
 
 ## <a name="view-role-definitions"></a>Roldefinities weer geven
 
-Ga naar **toegangs beheer (IAM)** om Azure-functies weer te geven die beschikbaar zijn voor Azure Maps. Selecteer **rollen**en zoek vervolgens naar rollen die beginnen met *Azure Maps*. Deze Azure Maps rollen zijn de rollen waaraan u toegang kunt verlenen.
+Ga naar **toegangs beheer (IAM)** om Azure-functies weer te geven die beschikbaar zijn voor Azure Maps. Selecteer **rollen** en zoek vervolgens naar rollen die beginnen met *Azure Maps* . Deze Azure Maps rollen zijn de rollen waaraan u toegang kunt verlenen.
 
 > [!div class="mx-imgBorder"]
 > ![Beschik bare rollen weer geven](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
 
 ## <a name="view-role-assignments"></a>Roltoewijzingen weergeven
 
-Ga naar **Access Control (IAM)** om gebruikers en apps weer te geven die toegang hebben gekregen voor Azure Maps. Hier selecteert u **roltoewijzingen**en filtert u vervolgens op **Azure Maps**.
+Ga naar **Access Control (IAM)** om gebruikers en apps weer te geven die toegang hebben gekregen voor Azure Maps. Hier selecteert u **roltoewijzingen** en filtert u vervolgens op **Azure Maps** .
 
 > [!div class="mx-imgBorder"]
 > ![Gebruikers en apps weer geven waaraan toegang is verleend](./media/how-to-manage-authentication/how-to-view-amrbac.png)
@@ -77,11 +77,11 @@ Een token aanvragen bij het Azure AD-token eindpunt. Gebruik de volgende gegeven
 | Openbare Azure-cloud     | `https://login.microsoftonline.com` | `https://atlas.microsoft.com/` |
 | Azure Government Cloud | `https://login.microsoftonline.us`  | `https://atlas.microsoft.com/` |
 
-Zie [verificatie scenario's voor Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios) en specifieke scenario's weer geven in de tabel met [scenario's](./how-to-manage-authentication.md#determine-authentication-and-authorization)voor meer informatie over het aanvragen van toegangs tokens van Azure AD voor gebruikers en service-principals.
+Zie [verificatie scenario's voor Azure AD](../active-directory/develop/authentication-vs-authorization.md) en specifieke scenario's weer geven in de tabel met [scenario's](./how-to-manage-authentication.md#determine-authentication-and-authorization)voor meer informatie over het aanvragen van toegangs tokens van Azure AD voor gebruikers en service-principals.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure AD en Azure Maps Web SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)voor meer informatie.
+Zie [Azure AD en Azure Maps Web SDK](./how-to-use-map-control.md)voor meer informatie.
 
 Zoek de metrische gegevens over het API-gebruik voor uw Azure Maps account:
 > [!div class="nextstepaction"]

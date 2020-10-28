@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 8bcea36b99ae51da256d6b4fc49a4e3965a8c82c
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 9f72d54fda8f66c2fce35f0520b51406aa276bb0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279183"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892750"
 ---
 # <a name="metered-billing-for-saas-using-the-commercial-marketplace-metering-service"></a>Factuur met data limiet voor SaaS met de commerciële Marketplace-meet service
 
@@ -37,7 +37,7 @@ Het is belang rijk dat u begrijpt wat de aanbiedings hiërarchie is, wanneer het
 
 - Elke SaaS-aanbieding is zo geconfigureerd dat deze wordt verkocht via micro soft of niet.  Zodra een aanbieding is gepubliceerd, kunt u deze optie niet meer wijzigen.
 - Elk SaaS-aanbod dat is geconfigureerd om te worden verkocht via micro soft, kan een of meer abonnementen hebben.  Een gebruiker meldt zich aan bij de SaaS-aanbieding, maar wordt aangeschaft via micro soft binnen de context van een abonnement.
-- Aan elk abonnement is een prijs model gekoppeld: **vast tarief** of **per gebruiker**. Alle abonnementen in een aanbieding moeten aan hetzelfde prijs model zijn gekoppeld. Er kan bijvoorbeeld geen abonnement zijn met plannen voor een vast prijs model en een ander prijs model per gebruiker.
+- Aan elk abonnement is een prijs model gekoppeld: **vast tarief** of **per gebruiker** . Alle abonnementen in een aanbieding moeten aan hetzelfde prijs model zijn gekoppeld. Er kan bijvoorbeeld geen abonnement zijn met plannen voor een vast prijs model en een ander prijs model per gebruiker.
 - Binnen elk schema dat is geconfigureerd voor een facturerings model met een vast tarief, is ten minste één terugkerend tarief (dat kan $0), opgenomen:
     - Terugkerende **maandelijkse** kosten: vaste maandelijkse kosten die vooraf worden betaald op een maandelijks terugkeer patroon wanneer de gebruiker het abonnement koopt.
     - Terugkerende **jaarlijkse** kosten: forfaitaire jaarlijkse kosten die vooraf worden betaald op een jaarlijks terugkeer patroon wanneer de gebruiker het abonnement koopt.
@@ -73,12 +73,12 @@ Op basis van het geselecteerde plan kan een Azure klant aankoop abonnement op de
 
 Elke facturerings dimensie definieert een aangepaste eenheid waarmee de ISV gebruiks gebeurtenissen kan verzenden.  Facturerings dimensies worden ook gebruikt om met de klant te communiceren over hoe ze worden gefactureerd voor het gebruik van de software.  Ze worden als volgt gedefinieerd:
 
-- **Id**: de onveranderbare dimensie-id waarnaar wordt verwezen tijdens het verzenden van gebruiks gebeurtenissen.
-- **Weergave naam**: de weergave naam die aan de dimensie is gekoppeld, bijvoorbeeld ' verzonden tekst berichten '.
-- **Maat eenheid**: de beschrijving van de facturerings eenheid, bijvoorbeeld ' per SMS-bericht ' of ' per 100 e-mail berichten '.
-- **Prijs per eenheid in USD**: de prijs voor één eenheid van de dimensie.  Dit kan 0 zijn. 
-- **Maandelijks aantal dat is opgenomen in de basis**: de hoeveelheid dimensie die per maand wordt opgenomen voor klanten die de terugkerende maandelijkse kosten betalen, moet een geheel getal zijn. Dit kan 0 of onbeperkt zijn.
-- **Jaarlijkse hoeveelheid die is inbegrepen in de basis**: de hoeveelheid van de dimensie die per jaar wordt opgenomen voor klanten die de terugkerende jaarlijkse vergoeding betalen, moet een geheel getal zijn. Kan 0 of onbeperkt zijn.
+- **Id** : de onveranderbare dimensie-id waarnaar wordt verwezen tijdens het verzenden van gebruiks gebeurtenissen.
+- **Weergave naam** : de weergave naam die aan de dimensie is gekoppeld, bijvoorbeeld ' verzonden tekst berichten '.
+- **Maat eenheid** : de beschrijving van de facturerings eenheid, bijvoorbeeld ' per SMS-bericht ' of ' per 100 e-mail berichten '.
+- **Prijs per eenheid in USD** : de prijs voor één eenheid van de dimensie.  Dit kan 0 zijn. 
+- **Maandelijks aantal dat is opgenomen in de basis** : de hoeveelheid dimensie die per maand wordt opgenomen voor klanten die de terugkerende maandelijkse kosten betalen, moet een geheel getal zijn. Dit kan 0 of onbeperkt zijn.
+- **Jaarlijkse hoeveelheid die is inbegrepen in de basis** : de hoeveelheid van de dimensie die per jaar wordt opgenomen voor klanten die de terugkerende jaarlijkse vergoeding betalen, moet een geheel getal zijn. Kan 0 of onbeperkt zijn.
 
 Facturerings dimensies worden gedeeld in alle abonnementen voor een aanbieding.  Sommige kenmerken zijn van toepassing op de dimensie over alle plannen en andere kenmerken zijn specifiek voor een plan.
 
@@ -143,7 +143,7 @@ Zodra een plan is gepubliceerd, kunnen de details op plan niveau niet meer worde
 
 ### <a name="upper-limits"></a>Bovengrens
 
-Het maximum aantal dimensies dat kan worden geconfigureerd voor een enkele aanbieding is 18 unieke dimensies.
+Het maximum aantal dimensies dat voor een enkele aanbieding kan worden geconfigureerd, is 30 unieke dimensies.
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 

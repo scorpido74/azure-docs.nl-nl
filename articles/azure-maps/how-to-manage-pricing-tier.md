@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 8e62734e039d0f6ceff836947519ef71ee9b8497
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9934a2660d18fdcbada1cda86f957345b2d1a8c8
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311050"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895729"
 ---
 # <a name="manage-the-pricing-tier-of-your-azure-maps-account"></a>De prijs categorie van uw Azure Maps account beheren
 
 U kunt de prijs categorie van uw Azure Maps-account beheren via de Azure Portal. U kunt de prijs categorie van uw account ook weer geven of wijzigen nadat u een [account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)hebt gemaakt.
 
-Meer informatie over [het kiezen van de juiste prijs categorie in azure Maps](https://docs.microsoft.com/azure/azure-maps/choose-pricing-tier).
+Meer informatie over [het kiezen van de juiste prijs categorie in azure Maps](./choose-pricing-tier.md).
 
 ## <a name="view-your-pricing-tier"></a>Uw prijs categorie weer geven
 

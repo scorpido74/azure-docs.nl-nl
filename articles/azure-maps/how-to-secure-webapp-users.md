@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 1668c7ccad75771a598aaa55f5403f070ea2dff8
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: ebdc4b219e0840c18e6bef8ebfe9b8eefa8faf3b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090213"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895564"
 ---
 # <a name="secure-a-web-application-with-user-sign-in"></a>Een webtoepassing beveiligen met gebruikers aanmelding
 
@@ -27,36 +27,36 @@ De volgende hand leiding heeft betrekking op een toepassing die wordt gehost op 
 
 U moet de webtoepassing maken in azure AD voor gebruikers om zich aan te melden. Deze webtoepassing delegeert vervolgens de gebruikers toegang tot Azure Maps REST-Api's.
 
-1. Selecteer in het Azure Portal in de lijst met Azure-Services **Azure Active Directory**  >  **app-registraties**  >  **nieuwe registratie**.  
+1. Selecteer in het Azure Portal in de lijst met Azure-Services **Azure Active Directory**  >  **app-registraties**  >  **nieuwe registratie** .  
 
     > [!div class="mx-imgBorder"]
     > ![Appregistratie](./media/how-to-manage-authentication/app-registration.png)
 
-2. Voer een **naam**in, kies een **type ondersteunings account**en geef een OMleidings-URI op die de URL vertegenwoordigt die door Azure AD wordt uitgegeven en de URL waar het kaart besturings element wordt gehost. Zie voor meer informatie Azure AD [scenario: Web-app die de gebruikers aantekent](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-overview). Voer de stappen uit die worden beschreven in het scenario van Azure AD.  
+2. Voer een **naam** in, kies een **type ondersteunings account** en geef een OMleidings-URI op die de URL vertegenwoordigt die door Azure AD wordt uitgegeven en de URL waar het kaart besturings element wordt gehost. Zie voor meer informatie Azure AD [scenario: Web-app die de gebruikers aantekent](../active-directory/develop/scenario-web-app-sign-user-overview.md). Voer de stappen uit die worden beschreven in het scenario van Azure AD.  
 
 3. Zodra de registratie van de toepassing is voltooid, controleert u of de aanmelding van de toepassing voor gebruikers werkt. Zodra het aanmelden werkt, kan de toepassing gedelegeerde toegang krijgen tot Azure Maps REST-Api's.
     
-4.  Als u gedelegeerde API-machtigingen aan Azure Maps wilt toewijzen, gaat u naar de toepassing. Selecteer vervolgens de optie **API-machtigingen**om  >  **een machtiging toe te voegen**. Onder **api's die mijn organisatie gebruikt**, zoekt en selecteert u **Azure Maps**.
+4.  Als u gedelegeerde API-machtigingen aan Azure Maps wilt toewijzen, gaat u naar de toepassing. Selecteer vervolgens de optie **API-machtigingen** om  >  **een machtiging toe te voegen** . Onder **api's die mijn organisatie gebruikt** , zoekt en selecteert u **Azure Maps** .
 
     > [!div class="mx-imgBorder"]
     > ![API-machtigingen voor apps toevoegen](./media/how-to-manage-authentication/app-permissions.png)
 
-5. Schakel het selectie vakje in naast **toegang Azure Maps**en selecteer vervolgens **machtigingen toevoegen**.
+5. Schakel het selectie vakje in naast **toegang Azure Maps** en selecteer vervolgens **machtigingen toevoegen** .
 
     > [!div class="mx-imgBorder"]
     > ![App API-machtigingen selecteren](./media/how-to-manage-authentication/select-app-permissions.png)
 
-6. De webtoepassing inschakelen om Azure Maps REST-Api's aan te roepen door de app-registratie te configureren met een toepassings geheim, voor gedetailleerde stappen raadpleegt u [een web-app die web-api's aanroept: app-registratie](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-app-registration). Een geheim is vereist voor de verificatie van Azure AD namens de gebruiker. Het certificaat van de app-registratie of het geheim moet worden opgeslagen in een beveiligde Store zodat de webtoepassing kan worden opgehaald om te verifiëren bij Azure AD. 
+6. De webtoepassing inschakelen om Azure Maps REST-Api's aan te roepen door de app-registratie te configureren met een toepassings geheim, voor gedetailleerde stappen raadpleegt u [een web-app die web-api's aanroept: app-registratie](../active-directory/develop/scenario-web-app-call-api-app-registration.md). Een geheim is vereist voor de verificatie van Azure AD namens de gebruiker. Het certificaat van de app-registratie of het geheim moet worden opgeslagen in een beveiligde Store zodat de webtoepassing kan worden opgehaald om te verifiëren bij Azure AD. 
    
    * Als de toepassing al een Azure AD-App-registratie heeft geconfigureerd en een geheim, kan deze stap worden overgeslagen.
 
 > [!Tip]
-> Als de toepassing wordt gehost in een Azure-omgeving, raden we u aan [beheerde identiteiten te gebruiken voor Azure-resources](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) en een Azure Key Vault-exemplaar voor het openen van geheimen door [een toegangs token](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token) voor toegang tot Azure Key Vault geheimen of certificaten te verkrijgen. Zie zelf studie voor het maken van een verbinding met Azure Key Vault om geheimen op te halen met [behulp van beheerde identiteit](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-create-vault-azure-web-app).
+> Als de toepassing wordt gehost in een Azure-omgeving, raden we u aan [beheerde identiteiten te gebruiken voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md) en een Azure Key Vault-exemplaar voor het openen van geheimen door [een toegangs token](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) voor toegang tot Azure Key Vault geheimen of certificaten te verkrijgen. Zie zelf studie voor het maken van een verbinding met Azure Key Vault om geheimen op te halen met [behulp van beheerde identiteit](../key-vault/general/tutorial-net-create-vault-azure-web-app.md).
    
 7. Implementeer een veilig token eindpunt voor de Azure Maps Web-SDK om toegang te krijgen tot een token. 
    
    * Zie [Azure Maps Azure AD](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples/blob/master/src/OpenIdConnect/AzureMapsOpenIdConnectv1/AzureMapsOpenIdConnect/Controllers/TokenController.cs)-voor beelden voor een voor beeld van een token controller. 
-   * Zie [token ophalen voor de app](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token) uit Azure AD-documentatie voor een niet-AspNetCore implementatie of andere.
+   * Zie [token ophalen voor de app](../active-directory/develop/scenario-web-app-call-api-acquire-token.md) uit Azure AD-documentatie voor een niet-AspNetCore implementatie of andere.
    * Het eind punt van het beveiligde token is verantwoordelijk voor het retour neren van een toegangs token voor de geverifieerde en geautoriseerde gebruiker om Azure Maps REST-Api's aan te roepen.
 
 8. Op rollen gebaseerd toegangs beheer voor Azure (Azure RBAC) configureren voor gebruikers of groepen. Zie [toegang verlenen op basis van rollen voor gebruikers](#grant-role-based-access-for-users-to-azure-maps).
@@ -100,7 +100,7 @@ var map = new atlas.Map("map", {
 
 Meer informatie over scenario voor webtoepassingen:
 > [!div class="nextstepaction"]
-> [Scenario: Web-app waarmee gebruikers worden aangemeld](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-overview)
+> [Scenario: Web-app waarmee gebruikers worden aangemeld](../active-directory/develop/scenario-web-app-sign-user-overview.md)
 
 Zoek de metrische gegevens over het API-gebruik voor uw Azure Maps account:
 > [!div class="nextstepaction"]

@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: mbullwin
-ms.openlocfilehash: 34f9d480234ecaef0d581cfecd68e2cdd1cf6fdc
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6c461983053a145dfda58b9e3d26b39db0c339e5
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046771"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893417"
 ---
 # <a name="metrics-advisor-glossary-of-common-vocabulary-and-concepts"></a>Verklarende woorden lijst voor metrische gegevens adviseur van common vocabulaire en concepten
 
@@ -33,7 +33,7 @@ Een gegevensfeed is de metrische gegevens die door Advisor worden opgenomen in d
 
 ## <a name="metric"></a>Gegevens
 
-Een metriek is een meet bare meting die wordt gebruikt om de status van een specifiek bedrijfs proces te controleren en te beoordelen. Dit kan een combi natie zijn van meerdere tijdreeks waarden, onderverdeeld in dimensies. Een *status* van een webservice kan bijvoorbeeld dimensies bevatten voor het *aantal gebruikers* en de *-en-US-markt*.
+Een metriek is een meet bare meting die wordt gebruikt om de status van een specifiek bedrijfs proces te controleren en te beoordelen. Dit kan een combi natie zijn van meerdere tijdreeks waarden, onderverdeeld in dimensies. Een *status* van een webservice kan bijvoorbeeld dimensies bevatten voor het *aantal gebruikers* en de *-en-US-markt* .
 
 ## <a name="dimension"></a>Dimensie
 
@@ -60,7 +60,7 @@ In dit voor beeld zijn *categorie* en *markt* dimensies. *Omzet* is de KPI (Key 
 
 Stel dat u gegevens hebt voor het aantal fouten dat in een toepassing is geregistreerd. De tijdreeks gegevens kunnen er ongeveer als volgt uitzien:
 
-| Tijdstempel | Toepassings onderdeel | Regio | Aantal fouten |
+| Tijdstempel | Toepassings onderdeel | Region | Aantal fouten |
 | ----------|----------|--------|----- |
 | 2020-6-1 | Werknemers database | WEST-EU | 9000 |
 | 2020-6-1 | Berichtenwachtrij | VS-OOST | 1000 |
@@ -69,7 +69,7 @@ Stel dat u gegevens hebt voor het aantal fouten dat in een toepassing is geregis
 
 In dit voor beeld zijn het *toepassings onderdeel* en de *regio* dimensies. *Aantal fouten* is de KPI die kan worden gesegmenteerd in verschillende categorieën en/of markten, en kan ook worden geaggregeerd. Bijvoorbeeld het aantal fouten in de *berichten wachtrij* in alle regio's.
 
-## <a name="measure"></a>Measure
+## <a name="measure"></a>Maateenheid
 
 Een meting is een basis-of eenheids gerichte term en een meet bare waarde van de metriek.
 
@@ -139,29 +139,29 @@ De metrische gegevens adviseur biedt verschillende [detectie methoden](how-tos/c
 
 Afwijkings detectie met meerdere algoritmen van machine learning.
 
-**Gevoeligheid**: een numerieke waarde om de tolerantie van de afwijkings detectie aan te passen. Visueel, hoe hoger de waarde, hoe smaller de bovenste en onderste grenzen rond de tijd reeks.
+**Gevoeligheid** : een numerieke waarde om de tolerantie van de afwijkings detectie aan te passen. Visueel, hoe hoger de waarde, hoe smaller de bovenste en onderste grenzen rond de tijd reeks.
 
 ### <a name="hard-threshold"></a>Harde drempel waarde
 
 Waarden buiten de bovenste of onderste grenzen zijn afwijkingen.
 
-**Min**: de ondergrens
+**Min** : de ondergrens
 
-**Max**: de bovengrens
+**Max** : de bovengrens
 
 ### <a name="change-threshold"></a>Drempel waarde wijzigen
 
 Gebruik de waarde voor vorig punt om te bepalen of dit punt een afwijkend is.
 
-**Percentage wijzigen**: vergeleken met het vorige punt is het huidige punt een afwijkend als het percentage van de wijziging meer is dan deze para meter.
+**Percentage wijzigen** : vergeleken met het vorige punt is het huidige punt een afwijkend als het percentage van de wijziging meer is dan deze para meter.
 
-**Punten wijzigen**: hoeveel punten moeten worden teruggestuurd.
+**Punten wijzigen** : hoeveel punten moeten worden teruggestuurd.
 
 ### <a name="common-parameters"></a>Algemene para meters
 
-**Richting**: een punt is alleen een afwijkend wanneer de afwijking in de richting *omhoog*, *omlaag*of *beide*wordt uitgevoerd.
+**Richting** : een punt is alleen een afwijkend wanneer de afwijking in de richting *omhoog* , *omlaag* of *beide* wordt uitgevoerd.
 
-**Ongeldige afwijkings waarde tot**: een gegevens punt is alleen een afwijkingen als een opgegeven percentage van vorige punten ook afwijkingen bevat.
+**Ongeldige afwijkings waarde tot** : een gegevens punt is alleen een afwijkingen als een opgegeven percentage van vorige punten ook afwijkingen bevat.
 
 ## <a name="alert-settings"></a>Waarschuwings instellingen
 
@@ -173,17 +173,17 @@ U kunt ook een waarschuwing over metrische gegevens maken. Bijvoorbeeld een waar
 
 Het waarschuwings bereik verwijst naar het bereik waarop de waarschuwing van toepassing is. Er zijn vier opties:
 
-**Afwijkingen van alle reeksen**: waarschuwingen worden geactiveerd voor afwijkingen in alle reeksen binnen de metrische gegevens.
+**Afwijkingen van alle reeksen** : waarschuwingen worden geactiveerd voor afwijkingen in alle reeksen binnen de metrische gegevens.
 
-**Afwijkingen in reeks groep**: waarschuwingen worden alleen geactiveerd voor afwijkingen in specifieke dimensies van de reeks groep. Het aantal opgegeven dimensies moet kleiner zijn dan het totale aantal dimensies.
+**Afwijkingen in reeks groep** : waarschuwingen worden alleen geactiveerd voor afwijkingen in specifieke dimensies van de reeks groep. Het aantal opgegeven dimensies moet kleiner zijn dan het totale aantal dimensies.
 
-**Afwijkingen in de favorieten reeks**: waarschuwingen worden alleen geactiveerd voor afwijkingen die als favorieten worden toegevoegd. U kunt een groep reeksen kiezen als favoriet voor elke detectie configuratie.
+**Afwijkingen in de favorieten reeks** : waarschuwingen worden alleen geactiveerd voor afwijkingen die als favorieten worden toegevoegd. U kunt een groep reeksen kiezen als favoriet voor elke detectie configuratie.
 
-**Afwijkingen in de bovenste n van alle reeksen**: waarschuwingen worden alleen geactiveerd voor afwijkingen in de eerste n-serie. U kunt para meters instellen om het aantal tijds tempels op te geven waarmee rekening moet worden gehouden en hoeveel afwijkingen er moeten zijn om de waarschuwing te verzenden.
+**Afwijkingen in de bovenste n van alle reeksen** : waarschuwingen worden alleen geactiveerd voor afwijkingen in de eerste n-serie. U kunt para meters instellen om het aantal tijds tempels op te geven waarmee rekening moet worden gehouden en hoeveel afwijkingen er moeten zijn om de waarschuwing te verzenden.
 
-### <a name="severity"></a>Severity
+### <a name="severity"></a>Ernst
 
-Ernst is een cijfer dat door de metrieke Advisor wordt gebruikt om de ernst van het incident te beschrijven, met inbegrip van *hoog*, *gemiddeld*en *laag*.
+Ernst is een cijfer dat door de metrieke Advisor wordt gebruikt om de ernst van het incident te beschrijven, met inbegrip van *hoog* , *gemiddeld* en *laag* .
 
 Op dit moment gebruikt metrische Advisor de volgende factoren om de ernst van de waarschuwing te meten:
 1. De waarde van de verhouding en het aantal afwijkingen in de metrische gegevens.
@@ -200,7 +200,7 @@ Het gedrag van uitstellen kan worden ingesteld op het niveau van metrische gegev
 
 ### <a name="ingestion-time-offset"></a>Offset van opname tijd
 
-Standaard worden gegevens opgenomen op basis van de granulatie (bijvoorbeeld *dagelijks*). Door een positief geheel getal te gebruiken, kunt u de opname van de gegevens vertragen met de opgegeven waarde. Met een negatief getal kunt u de opname door gegeven aan de opgegeven waarde.
+Standaard worden gegevens opgenomen op basis van de granulatie (bijvoorbeeld *dagelijks* ). Door een positief geheel getal te gebruiken, kunt u de opname van de gegevens vertragen met de opgegeven waarde. Met een negatief getal kunt u de opname door gegeven aan de opgegeven waarde.
 
 ### <a name="max-ingestion-per-minute"></a>Max. opname per minuut
 
@@ -238,7 +238,7 @@ Als deze optie is ingesteld op nul, wordt er met elke tijds tempel en *niet besc
 
 ## <a name="data-feed-permissions"></a>Machtigingen voor gegevens invoer
 
-Er zijn twee rollen voor het beheren van machtigingen voor gegevens invoer: *beheerder*en *Viewer*. 
+Er zijn twee rollen voor het beheren van machtigingen voor gegevens invoer: *beheerder* en *Viewer* . 
 
 * Een *beheerder* heeft volledige controle over de gegevensfeed en de metrische gegevens. Ze kunnen de gegevensfeed activeren, onderbreken, verwijderen en updates maken voor feeds en configuraties. Een *beheerder* is doorgaans de eigenaar van de metrische gegevens.
 
@@ -246,5 +246,4 @@ Er zijn twee rollen voor het beheren van machtigingen voor gegevens invoer: *beh
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Overzicht van Metrics Advisor](overview.md)
-- [Probeer de demo site](quickstarts/explore-demo.md)
 - [De webportal gebruiken](quickstarts/web-portal.md)

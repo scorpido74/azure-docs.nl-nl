@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 2cda543781118a19ba4999e774b96ae81857f442
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd2c714c2e16cb8a7a9c530e8e458c33218b1c2b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330924"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895491"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Aan de slag met Azure Maps Android SDK
 
@@ -36,10 +36,10 @@ Down load Android Studio en maak een project met een lege activiteit voordat u d
 
 Maak eerst een nieuw project met een lege activiteit. Voer de volgende stappen uit om een Android Studio project te maken:
 
-1. Onder **Kies uw project**selecteert u **telefoon en Tablet**. Uw toepassing wordt uitgevoerd op deze vorm factor.
-2. Op het tabblad **telefoon en Tablet** selecteert u **lege activiteit**en selecteert u **volgende**.
-3. Onder **uw project configureren**selecteert u `API 21: Android 5.0.0 (Lollipop)` als minimale SDK. Dit is de oudste versie die wordt ondersteund door de Azure Maps Android SDK.
-4. Accepteer de standaard instelling `Activity Name` en `Layout Name` Selecteer **volt ooien**.
+1. Onder **Kies uw project** selecteert u **telefoon en Tablet** . Uw toepassing wordt uitgevoerd op deze vorm factor.
+2. Op het tabblad **telefoon en Tablet** selecteert u **lege activiteit** en selecteert u **volgende** .
+3. Onder **uw project configureren** selecteert u `API 21: Android 5.0.0 (Lollipop)` als minimale SDK. Dit is de oudste versie die wordt ondersteund door de Azure Maps Android SDK.
+4. Accepteer de standaard instelling `Activity Name` en `Layout Name` Selecteer **volt ooien** .
 
 Raadpleeg de [Android Studio-documentatie](https://developer.android.com/studio/intro/) voor meer informatie over het installeren van Android Studio en het maken van een nieuw project.
 
@@ -47,7 +47,7 @@ Raadpleeg de [Android Studio-documentatie](https://developer.android.com/studio/
 
 ## <a name="set-up-a-virtual-device"></a>Een virtueel apparaat instellen
 
-Met Android Studio kunt u een virtueel Android-apparaat op uw computer instellen. Dit kan u helpen bij het testen van uw toepassing tijdens de ontwikkeling. Als u een virtueel apparaat wilt instellen, selecteert u het pictogram Android Virtual Device (AVD) Manager in de rechter bovenhoek van het venster van het project en selecteert u **virtueel apparaat maken**. U kunt ook naar de AVD Manager gaan door **extra**  >  **Android**  >  **AVD Manager** te selecteren op de werk balk. In de categorie **telefoons** selecteert u **Nexus 5x**en selecteert u vervolgens **volgende**.
+Met Android Studio kunt u een virtueel Android-apparaat op uw computer instellen. Dit kan u helpen bij het testen van uw toepassing tijdens de ontwikkeling. Als u een virtueel apparaat wilt instellen, selecteert u het pictogram Android Virtual Device (AVD) Manager in de rechter bovenhoek van het venster van het project en selecteert u **virtueel apparaat maken** . U kunt ook naar de AVD Manager gaan door **extra**  >  **Android**  >  **AVD Manager** te selecteren op de werk balk. In de categorie **telefoons** selecteert u **Nexus 5x** en selecteert u vervolgens **volgende** .
 
 Meer informatie over het instellen van een AVD vindt u in de [documentatie van Android Studio](https://developer.android.com/studio/run/managing-avds).
 
@@ -57,7 +57,7 @@ Meer informatie over het instellen van een AVD vindt u in de [documentatie van A
 
 De volgende stap bij het bouwen van uw toepassing is het installeren van de Azure Maps Android SDK. Voer de volgende stappen uit om de SDK te installeren:
 
-1. Open het bestand **Build. gradle** op het hoogste niveau en voeg de volgende code toe aan de sectie **alle projecten**, **opslag** plaatsen blok:
+1. Open het bestand **Build. gradle** op het hoogste niveau en voeg de volgende code toe aan de sectie **alle projecten** , **opslag** plaatsen blok:
 
     ```
     maven {
@@ -83,7 +83,7 @@ De volgende stap bij het bouwen van uw toepassing is het installeren van de Azur
         implementation "com.microsoft.azure.maps:mapcontrol:0.4"
         ```
     
-    4. Ga op de werkbalk naar **Bestand** en klik vervolgens op **Project met Gradle-bestanden synchroniseren**.
+    4. Ga op de werkbalk naar **Bestand** en klik vervolgens op **Project met Gradle-bestanden synchroniseren** .
 3. Voeg een kaart fragment toe aan de hoofd activiteit ( \> Res \> Layout \_ -activiteitmain.xml):
     
     ```XML
@@ -219,7 +219,7 @@ Het duurt een paar seconden Android Studio om de toepassing te bouwen. Nadat de 
 
 ![Azure Maps in Android-toepassing](./media/how-to-use-android-map-control-library/android-map.png)</center>
 
-## <a name="localizing-the-map"></a>Lokaliseren van de kaart
+## <a name="localizing-the-map"></a>De kaart lokaliseren
 
 De Azure Maps Android SDK biedt drie verschillende manieren om de taal en de regionale weer gave van de kaart in te stellen. De volgende code laat zien hoe u de taal instelt op Frans (fr-FR) en de regionale weer gave op ' auto '. 
 
@@ -296,10 +296,10 @@ Er zijn verschillende manieren waarop de kaart kan worden ingezoomd, panned, ged
 Meer informatie over het toevoegen van overlay-gegevens op de kaart:
 
 > [!div class="nextstepaction"]
-> [Een symbool laag aan een Android-kaart toevoegen](how-to-add-symbol-to-android-map.md)
+> [Een symboollaag toevoegen aan een Android-kaart](how-to-add-symbol-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [Vormen toevoegen aan een Android-kaart](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)
+> [Vormen toevoegen aan een Android-kaart](./how-to-add-shapes-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [Kaart stijlen wijzigen in Android-kaarten](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
+> [Kaartstijlen wijzigen in Android-kaarten](./set-android-map-styles.md)

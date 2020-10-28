@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 0382c7c7f7d068ea227397ae7accf4bc410de04a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16d90aea8edc47750dfb7e64de7b50885971f632
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761444"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893683"
 ---
 # <a name="receipt-concepts"></a>Concepten van ontvangsten
 
@@ -437,7 +437,7 @@ De gegevens die zijn geëxtraheerd met de ontvangstbewijs-API kunnen worden gebr
 
 Vaak worden bedrijfs kosten in mindering gebracht op basis van de uitgaven voor het hand matig invoeren van gegevens uit installatie kopieën van kwitanties. Met de kassabon-API kunt u de geëxtraheerde velden gebruiken om dit proces gedeeltelijk te automatiseren en uw ontvangsten snel te analyseren.  
 
-Omdat de bevestigings-API een eenvoudige JSON-uitvoer heeft, kunt u de geëxtraheerde veld waarden op verschillende manieren gebruiken. Integreer met interne onkosten toepassingen om onkosten rapporten vooraf in te vullen. Lees voor meer informatie over hoe Acumatica gebruikmaakt van de ontvangstbewijs-API om [onkosten rapportage een minder gemeld proces te maken](https://customers.microsoft.com/en-us/story/762684-acumatica-partner-professional-services-azure).  
+Omdat de bevestigings-API een eenvoudige JSON-uitvoer heeft, kunt u de geëxtraheerde veld waarden op verschillende manieren gebruiken. Integreer met interne onkosten toepassingen om onkosten rapporten vooraf in te vullen. Lees voor meer informatie over hoe Acumatica gebruikmaakt van de ontvangstbewijs-API om [onkosten rapportage een minder gemeld proces te maken](https://customers.microsoft.com/story/762684-acumatica-partner-professional-services-azure).  
 
 ### <a name="auditing-and-accounting"></a>Controle en accounting 
 

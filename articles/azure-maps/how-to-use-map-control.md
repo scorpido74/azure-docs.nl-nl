@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 19db4fb0d75369a0f272eef1180e86f47d45d284
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21fd5f5c94b56f2f63d0e90d9982edd60a2d95d6
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335327"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895440"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Het kaartbesturingselement in Azure Maps gebruiken
 
@@ -26,7 +26,7 @@ Als u de Map Control op een webpagina wilt gebruiken, moet u beschikken over een
 
 * [Maak een Azure Maps-account](quick-demo-map-app.md#create-an-azure-maps-account) en [Verkrijg een sleutel voor een primair abonnement](quick-demo-map-app.md#get-the-primary-key-for-your-account), ook wel bekend als de primaire sleutel of de abonnements sleutel.
 
-* Vraag uw Azure Active Directory-referenties (AAD) aan met [verificatie opties](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions).
+* Vraag uw Azure Active Directory-referenties (AAD) aan met [verificatie opties](/javascript/api/azure-maps-control/atlas.authenticationoptions).
 
 ## <a name="create-a-new-map-in-a-web-page"></a>Een nieuwe kaart maken op een webpagina
 
@@ -75,7 +75,7 @@ U kunt een kaart insluiten in een webpagina met behulp van de Map Control java s
     </style>
    ```
 
-4. Voeg in de hoofd tekst van de pagina een `<div>` element toe en geef het de naam `id` **myMap**.
+4. Voeg in de hoofd tekst van de pagina een `<div>` element toe en geef het de naam `id` **myMap** .
 
    ```HTML
     <body onload="InitMap()">
@@ -83,7 +83,7 @@ U kunt een kaart insluiten in een webpagina met behulp van de Map Control java s
     </body>
    ```
 
-5. Nu gaan we het kaart besturings element initialiseren. Als u het besturings element wilt verifiëren, moet u eigenaar zijn van een Azure Maps-abonnements sleutel of gebruikmaken van de referenties van Azure Active Directory (AAD) met [verificatie opties](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions).
+5. Nu gaan we het kaart besturings element initialiseren. Als u het besturings element wilt verifiëren, moet u eigenaar zijn van een Azure Maps-abonnements sleutel of gebruikmaken van de referenties van Azure Active Directory (AAD) met [verificatie opties](/javascript/api/azure-maps-control/atlas.authenticationoptions).
 
     Als u een abonnements sleutel voor verificatie gebruikt, kopieert en plakt u het volgende script-element in het `<head>` -element en onder het eerste `<script>` element. Vervang door `<Your Azure Maps Key>` uw Azure Maps primaire abonnements sleutel.
 
@@ -198,7 +198,7 @@ U kunt een kaart insluiten in een webpagina met behulp van de Map Control java s
 
    ![Kaart afbeelding die het gegenereerde resultaat weergeeft](./media/how-to-use-map-control/map-of-seattle.png)
 
-## <a name="localizing-the-map"></a>Lokaliseren van de kaart
+## <a name="localizing-the-map"></a>De kaart lokaliseren
 
 Azure Maps biedt twee verschillende manieren om de taal-en regionale weer gave voor de gerenderde kaart in te stellen. De eerste optie is om deze informatie toe te voegen aan de globale `atlas` naam ruimte, wat resulteert in alle instanties van de kaart besturing in uw app die standaard worden ingesteld op deze instellingen. Hiermee stelt u de taal in op Frans ("fr-FR") en de regionale weer gave op ' auto ':
 
@@ -256,7 +256,7 @@ Als u rechtstreeks toegang hebt tot de Azure Maps REST-services, wijzigt u het U
 
 Bij het ontwikkelen met behulp van een JavaScript-framework kan een van de volgende opensource-projecten nuttig zijn:
 
-- [ng-azure-maps](https://github.com/arnaudleclerc/ng-azure-maps): Angular 10-wrapper rond Azure Maps.
+- [ng-azure-maps](https://github.com/arnaudleclerc/ng-azure-maps): Angular 10-wrapper rond Azure-kaarten.
 - [AzureMapsControl.Components](https://github.com/arnaudleclerc/AzureMapsControl.Components): een Azure Maps Blazor-onderdeel.
 - [Azure Maps React-onderdeel](https://github.com/WiredSolutions/react-azure-maps): een react-wrapper voor het Azure Maps-besturingselement.
 - [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps): een Azure Maps-onderdeel voor de Vue-toepassing.
@@ -279,7 +279,7 @@ Meer gegevens toevoegen aan uw kaart:
 > [Een kaart maken](map-create.md)
 
 > [!div class="nextstepaction"]
-> [Codevoorbeelden](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Codevoorbeelden](/samples/browse/?products=azure-maps)
 
 Zie voor een lijst met voor beelden die laten zien hoe u Azure Active Directory (AAD) integreert met Azure Maps:
 

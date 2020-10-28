@@ -8,23 +8,23 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 2a322de383194f131395629d33456d7561397eb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9628ecada2e427f6220ae2a5154cebb8e4958bd0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310982"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895695"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Zoeken naar een locatie met behulp van Azure Maps-Zoek Services
 
-De [Azure Maps Search service](https://docs.microsoft.com/rest/api/maps/search) is een reeks rest api's die is ontworpen om ontwikkel aars te helpen bij het zoeken naar adressen, plaatsen en zakelijke vermeldingen op naam, categorie en andere geografische informatie. Naast het ondersteunen van traditionele geocodering kunnen services ook Geocode-adressen en Cross-Streets omkeren op basis van de breedte graad en lengte graad. De breedte-en lengte waarden die door de zoek opdracht worden geretourneerd, kunnen als para meters in andere Azure Maps services worden gebruikt, zoals [route](https://docs.microsoft.com/rest/api/maps/route) en [weer](https://docs.microsoft.com/rest/api/maps/weather) Services.
+De [Azure Maps Search service](/rest/api/maps/search) is een reeks rest api's die is ontworpen om ontwikkel aars te helpen bij het zoeken naar adressen, plaatsen en zakelijke vermeldingen op naam, categorie en andere geografische informatie. Naast het ondersteunen van traditionele geocodering kunnen services ook Geocode-adressen en Cross-Streets omkeren op basis van de breedte graad en lengte graad. De breedte-en lengte waarden die door de zoek opdracht worden geretourneerd, kunnen als para meters in andere Azure Maps services worden gebruikt, zoals [route](/rest/api/maps/route) en [weer](/rest/api/maps/weather) Services.
 
 In dit artikel leert u het volgende:
 
 * Vraag de breedte-en lengte coördinaten voor een adres (locatie van een geocode) aan met behulp van de [API voor Zoek adressen]( https://docs.microsoft.com/rest/api/maps/search/getsearchaddress).
-* Zoek naar een adres of belang stelling (POI) met behulp van de [fuzzy Search-API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy).
-* Maak een [achterwaartse adres zoekactie](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) om de coördinaat locatie te vertalen naar het adres.
-* Vertaal de locatie van de coördinaat in een door een mens begrijpelijke cross-straat met behulp van [Search Address reverse Cross Street-API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet).  Dit is meestal nodig bij het volgen van toepassingen die een GPS-feed ontvangen van een apparaat of Asset en waarvan u wilt weten waar de coördinaat zich bevindt.
+* Zoek naar een adres of belang stelling (POI) met behulp van de [fuzzy Search-API](/rest/api/maps/search/getsearchfuzzy).
+* Maak een [achterwaartse adres zoekactie](/rest/api/maps/search/getsearchaddressreverse) om de coördinaat locatie te vertalen naar het adres.
+* Vertaal de locatie van de coördinaat in een door een mens begrijpelijke cross-straat met behulp van [Search Address reverse Cross Street-API](/rest/api/maps/search/getsearchaddressreversecrossstreet).  Dit is meestal nodig bij het volgen van toepassingen die een GPS-feed ontvangen van een apparaat of Asset en waarvan u wilt weten waar de coördinaat zich bevindt.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -35,10 +35,10 @@ In deze zelfstudie wordt gebruikgemaakt van de [Postman](https://www.postman.com
 
 ## <a name="request-latitude-and-longitude-for-an-address-geocoding"></a>De breedte graad en lengte graad voor een adres aanvragen (geocodering)
 
-In dit voor beeld gebruiken we de Azure Maps [Zoek adres-API ophalen](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) om een adres te converteren naar de coördinaten van de breedte graad en lengte graad. Dit proces wordt ook wel *geocodering*genoemd. Naast het retour neren van de coördinaten retourneert het antwoord ook gedetailleerde adres eigenschappen, zoals straat, post code, gemeente en land/regio gegevens.
+In dit voor beeld gebruiken we de Azure Maps [Zoek adres-API ophalen](/rest/api/maps/search/getsearchaddress) om een adres te converteren naar de coördinaten van de breedte graad en lengte graad. Dit proces wordt ook wel *geocodering* genoemd. Naast het retour neren van de coördinaten retourneert het antwoord ook gedetailleerde adres eigenschappen, zoals straat, post code, gemeente en land/regio gegevens.
 
 >[!TIP]
->Als u een reeks adressen naar Geocode hebt, kunt u de batch- [API post Search-adres](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressbatch) gebruiken om een batch met query's te verzenden in één API-aanroep.
+>Als u een reeks adressen naar Geocode hebt, kunt u de batch- [API post Search-adres](/rest/api/maps/search/postsearchaddressbatch) gebruiken om een batch met query's te verzenden in één API-aanroep.
 
 1. Open de Postman-app. Selecteer **New** (Nieuw) bovenaan de Postman-app. Selecteer **Collection** (Verzameling) in het venster **Create New** (Nieuwe maken).  Geef de verzameling een naam en selecteer de knop **Create** (Maken). U gebruikt deze verzameling voor de rest van de voor beelden in dit document.
 
@@ -60,14 +60,14 @@ In dit voor beeld gebruiken we de Azure Maps [Zoek adres-API ophalen](https://do
 
 6. Probeer vervolgens de `query` sleutel in te stellen `400 Broa` op.
 
-7. Klik op de knop **Verzenden**.  U kunt nu zien dat het antwoord reacties van meerdere landen bevat. Als u de resultaten voor uw gebruikers wilt geobias, voegt u altijd zoveel locatie gegevens toe aan de aanvraag.
+7. Klik op de knop **Verzenden** .  U kunt nu zien dat het antwoord reacties van meerdere landen bevat. Als u de resultaten voor uw gebruikers wilt geobias, voegt u altijd zoveel locatie gegevens toe aan de aanvraag.
 
 ## <a name="using-fuzzy-search-api"></a>Fuzzy Search-API gebruiken
 
-De Azure Maps [fuzzy Search-API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) ondersteunt standaard enkelvoudige en vrije-vorm zoekopdrachten. U wordt aangeraden de Azure Maps zoek actie voor fuzzy te gebruiken wanneer u het invoer type van uw gebruiker voor een zoek aanvraag niet kent.  De query-invoer kan een volledig of gedeeltelijk adres zijn. Het kan ook een POI-token (Point of interest) zijn, zoals een naam van POI, een POI categorie of een merk naam. Daarnaast kunnen de query resultaten worden beperkt door een coördinaat locatie en RADIUS, of door een selectie vakje te definiëren om de relevantie van de zoek resultaten te verbeteren.
+De Azure Maps [fuzzy Search-API](/rest/api/maps/search/getsearchfuzzy) ondersteunt standaard enkelvoudige en vrije-vorm zoekopdrachten. U wordt aangeraden de Azure Maps zoek actie voor fuzzy te gebruiken wanneer u het invoer type van uw gebruiker voor een zoek aanvraag niet kent.  De query-invoer kan een volledig of gedeeltelijk adres zijn. Het kan ook een POI-token (Point of interest) zijn, zoals een naam van POI, een POI categorie of een merk naam. Daarnaast kunnen de query resultaten worden beperkt door een coördinaat locatie en RADIUS, of door een selectie vakje te definiëren om de relevantie van de zoek resultaten te verbeteren.
 
 >[!TIP]
->De meeste zoek query's zijn standaard maxFuzzyLevel = 1 voor het verkrijgen van prestaties en het verminderen van ongebruikelijke resultaten. U kunt het overeenkomst niveau aanpassen met behulp van de `maxFuzzyLevel` `minFuzzyLevel` para meters of. Zie voor meer informatie over `maxFuzzyLevel` en een volledige lijst met alle optionele para meters de [para meters voor fuzzy Search-uri's](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy#uri-parameters)
+>De meeste zoek query's zijn standaard maxFuzzyLevel = 1 voor het verkrijgen van prestaties en het verminderen van ongebruikelijke resultaten. U kunt het overeenkomst niveau aanpassen met behulp van de `maxFuzzyLevel` `minFuzzyLevel` para meters of. Zie voor meer informatie over `maxFuzzyLevel` en een volledige lijst met alle optionele para meters de [para meters voor fuzzy Search-uri's](/rest/api/maps/search/getsearchfuzzy#uri-parameters)
 
 ### <a name="search-for-an-address-using-fuzzy-search"></a>Zoeken naar een adres met behulp van fuzzy Search
 
@@ -76,7 +76,7 @@ In dit voor beeld gebruiken we fuzzy Search om te zoeken naar de hele wereld voo
 >[!IMPORTANT]
 >Als u de resultaten voor uw gebruikers wilt geobias, voegt u altijd zoveel mogelijk locatie gegevens toe. Zie [Aanbevolen procedures voor zoeken voor](how-to-use-best-practices-for-search.md#geobiased-search-results)meer informatie.
 
-1. Open de Postman-app, klik op **Nieuw**en selecteer **aanvraag**. Voer een **Request name** (Aanvraagnaam) in voor de aanvraag. Selecteer de verzameling die u hebt gemaakt in de vorige sectie of maak een nieuwe, en selecteer vervolgens **Opslaan**.
+1. Open de Postman-app, klik op **Nieuw** en selecteer **aanvraag** . Voer een **Request name** (Aanvraagnaam) in voor de aanvraag. Selecteer de verzameling die u hebt gemaakt in de vorige sectie of maak een nieuwe, en selecteer vervolgens **Opslaan** .
 
 2. Selecteer de methode http **ophalen** op het tabblad Builder en voer de volgende URL in. Voor deze aanvraag en andere aanvragen die in dit artikel worden vermeld, vervangt u `{Azure-Maps-Primary-Subscription-key}` door uw primaire abonnementssleutel. De aanvraag moet lijken op de volgende URL:
 
@@ -85,13 +85,13 @@ In dit voor beeld gebruiken we fuzzy Search om te zoeken naar de hele wereld voo
     ```
 
     >[!NOTE]
-    >Het _JSON_ -kenmerk in het URL-pad bepaalt de antwoord indeling. In dit artikel wordt JSON gebruikt voor gebruiks gemak en lees baarheid. Zie de `format` parameter definitie in de [naslag documentatie over URI-para meters](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy#uri-parameters)voor meer informatie over andere ondersteunde antwoord indelingen.
+    >Het _JSON_ -kenmerk in het URL-pad bepaalt de antwoord indeling. In dit artikel wordt JSON gebruikt voor gebruiks gemak en lees baarheid. Zie de `format` parameter definitie in de [naslag documentatie over URI-para meters](/rest/api/maps/search/getsearchfuzzy#uri-parameters)voor meer informatie over andere ondersteunde antwoord indelingen.
 
 3. Klik op **verzenden** en controleer de tekst van het antwoord.
 
-    De dubbel zinnige query reeks voor ' pizza ' heeft 10 [resultaat van de rente](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi#searchpoiresponse) (POI) in de categorieën ' pizza ' en ' restaurant ' geretourneerd. Elk resultaat bevat details zoals het adres van de straat, de breedte graad en de lengte graad, de weergave poort en de toegangs punten voor de locatie. De resultaten zijn nu variërend voor deze query en zijn niet gekoppeld aan een referentie locatie.
+    De dubbel zinnige query reeks voor ' pizza ' heeft 10 [resultaat van de rente](/rest/api/maps/search/getsearchpoi#searchpoiresponse) (POI) in de categorieën ' pizza ' en ' restaurant ' geretourneerd. Elk resultaat bevat details zoals het adres van de straat, de breedte graad en de lengte graad, de weergave poort en de toegangs punten voor de locatie. De resultaten zijn nu variërend voor deze query en zijn niet gekoppeld aan een referentie locatie.
   
-    In de volgende stap gebruiken we de `countrySet` para meter om alleen de landen/regio's op te geven waarvoor uw toepassing behoefte heeft. Zie [Zoek dekking](https://docs.microsoft.com/azure/azure-maps/geocoding-coverage)voor een volledige lijst met ondersteunde landen/regio's.
+    In de volgende stap gebruiken we de `countrySet` para meter om alleen de landen/regio's op te geven waarvoor uw toepassing behoefte heeft. Zie [Zoek dekking](./geocoding-coverage.md)voor een volledige lijst met ondersteunde landen/regio's.
 
 4. Het standaard gedrag is om de hele wereld te doorzoeken, waardoor mogelijk onnodige resultaten worden geretourneerd. We zoeken nu alleen naar Pizza van de Verenigde Staten. Voeg de `countrySet` sleutel toe aan de sectie **params** en stel de waarde in op `US` . Als de `countrySet` sleutel wordt ingesteld op `US` , worden de resultaten gebonden aan de Verenigde Staten.
 
@@ -110,7 +110,7 @@ In dit voor beeld gebruiken we fuzzy Search om te zoeken naar de hele wereld voo
     | RADIUS | 400 |
     | ondergrens | 5|
 
-6. Klik op **Verzenden**. Het antwoord bevat resultaten voor pizza restaurants in de buurt van de naald ruimte van Seattle.
+6. Klik op **Verzenden** . Het antwoord bevat resultaten voor pizza restaurants in de buurt van de naald ruimte van Seattle.
 
 ## <a name="search-for-a-street-address-using-reverse-address-search"></a>Zoeken naar een adres met behulp van Reverse Address Search
 
@@ -120,11 +120,11 @@ Met de Azure Maps [Zoek adres terugdraaiende API]( https://docs.microsoft.com/re
 >Als u de resultaten voor uw gebruikers wilt geobias, voegt u altijd zoveel mogelijk locatie gegevens toe. Zie [Aanbevolen procedures voor zoeken voor](how-to-use-best-practices-for-search.md#geobiased-search-results)meer informatie.
 
 >[!TIP]
->Als u een set coördinaten locaties hebt voor reverse Geocode, kunt u [post Search Address reverse batch-API](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressreversebatch) gebruiken om een batch met query's in één API-aanroep te verzenden.
+>Als u een set coördinaten locaties hebt voor reverse Geocode, kunt u [post Search Address reverse batch-API](/rest/api/maps/search/postsearchaddressreversebatch) gebruiken om een batch met query's in één API-aanroep te verzenden.
 
-In dit voor beeld maken we omgekeerde Zoek opdrachten met enkele van de optionele para meters die beschikbaar zijn. Zie [Reverse Search-para meters](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#uri-parameters)voor een volledige lijst met optionele para meters.
+In dit voor beeld maken we omgekeerde Zoek opdrachten met enkele van de optionele para meters die beschikbaar zijn. Zie [Reverse Search-para meters](/rest/api/maps/search/getsearchaddressreverse#uri-parameters)voor een volledige lijst met optionele para meters.
 
-1. Klik in de app postman op **Nieuw**en selecteer **aanvraag**. Voer een **Request name** (Aanvraagnaam) in voor de aanvraag. Selecteer de verzameling die u in de eerste sectie hebt gemaakt of maak een nieuwe, en selecteer vervolgens **Opslaan**.
+1. Klik in de app postman op **Nieuw** en selecteer **aanvraag** . Voer een **Request name** (Aanvraagnaam) in voor de aanvraag. Selecteer de verzameling die u in de eerste sectie hebt gemaakt of maak een nieuwe, en selecteer vervolgens **Opslaan** .
 
 2. Selecteer de methode http **ophalen** op het tabblad Builder en voer de volgende URL in. Voor deze aanvraag en andere aanvragen die in dit artikel worden vermeld, vervangt u `{Azure-Maps-Primary-Subscription-key}` door uw primaire abonnementssleutel. De aanvraag moet lijken op de volgende URL:
 
@@ -132,7 +132,7 @@ In dit voor beeld maken we omgekeerde Zoek opdrachten met enkele van de optionel
     https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=47.591180,-122.332700&number=1
     ```
 
-3. Klik op **verzenden**en controleer de tekst van het antwoord. Er wordt een resultaat van de query weer geven. Het antwoord bevat sleutel adres informatie over het veld Safeco.
+3. Klik op **verzenden** en controleer de tekst van het antwoord. Er wordt een resultaat van de query weer geven. Het antwoord bevat sleutel adres informatie over het veld Safeco.
   
 4. Nu voegen we de volgende sleutel/waarde-paren toe aan de sectie **params** :
 
@@ -140,27 +140,27 @@ In dit voor beeld maken we omgekeerde Zoek opdrachten met enkele van de optionel
     |-----|------------|------|
     | getal | 1 |Het antwoord kan de zijde van de straat (links/rechts) bevatten en ook een verschuivings positie voor het getal.|
     | returnSpeedLimit | true | Retourneert de snelheids limiet op het adres.|
-    | returnRoadUse | true | Hiermee wordt het gebruik van typen weg op het adres geretourneerd. Voor alle mogelijke typen weg gebruik, Zie [typen voor gebruik](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#uri-parameters)van de weg.|
-    | returnMatchType | true| Hiermee wordt het type overeenkomst geretourneerd. Zie [omgekeerde adres Zoek resultaten](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#searchaddressreverseresult) voor alle mogelijke waarden
+    | returnRoadUse | true | Hiermee wordt het gebruik van typen weg op het adres geretourneerd. Voor alle mogelijke typen weg gebruik, Zie [typen voor gebruik](/rest/api/maps/search/getsearchaddressreverse#uri-parameters)van de weg.|
+    | returnMatchType | true| Hiermee wordt het type overeenkomst geretourneerd. Zie [omgekeerde adres Zoek resultaten](/rest/api/maps/search/getsearchaddressreverse#searchaddressreverseresult) voor alle mogelijke waarden
 
    :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="Adres zoeken":::
 
-5. Klik op **verzenden**en controleer de tekst van het antwoord.
+5. Klik op **verzenden** en controleer de tekst van het antwoord.
 
-6. Vervolgens voegt u de sleutel toe `entityType` en stelt u de waarde in op `Municipality` . De `entityType` sleutel wordt vervangen door de `returnMatchType` sleutel in de vorige stap. We moeten ook proberen om `returnSpeedLimit` `returnRoadUse` informatie over de gemeente te verwijderen.  Zie [entiteits typen](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#entitytype)voor alle mogelijke entiteits typen.
+6. Vervolgens voegt u de sleutel toe `entityType` en stelt u de waarde in op `Municipality` . De `entityType` sleutel wordt vervangen door de `returnMatchType` sleutel in de vorige stap. We moeten ook proberen om `returnSpeedLimit` `returnRoadUse` informatie over de gemeente te verwijderen.  Zie [entiteits typen](/rest/api/maps/search/getsearchaddressreverse#entitytype)voor alle mogelijke entiteits typen.
 
     :::image type="content" source="./media/how-to-search-for-address/search-reverse-entity-type.png" alt-text="Adres zoeken":::
 
-7. Klik op **Verzenden**. Vergelijk de resultaten met de resultaten die u in stap 5 hebt geretourneerd.  Omdat het aangevraagde entiteit type nu is `municipality` , bevat het antwoord geen adres informatie. De geretourneerde `geometryId` kan ook worden gebruikt om grens veelhoek aan te vragen via Azure Maps [Zoek VEELHOEK-API](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)ophalen.
+7. Klik op **Verzenden** . Vergelijk de resultaten met de resultaten die u in stap 5 hebt geretourneerd.  Omdat het aangevraagde entiteit type nu is `municipality` , bevat het antwoord geen adres informatie. De geretourneerde `geometryId` kan ook worden gebruikt om grens veelhoek aan te vragen via Azure Maps [Zoek VEELHOEK-API](/rest/api/maps/search/getsearchpolygon)ophalen.
 
 >[!TIP]
->Zie de [sectie terugkerend zoeken](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#uri-parameters)voor meer informatie over deze para meters en informatie over anderen.
+>Zie de [sectie terugkerend zoeken](/rest/api/maps/search/getsearchaddressreverse#uri-parameters)voor meer informatie over deze para meters en informatie over anderen.
 
 ## <a name="search-for-cross-street-using-reverse-address-cross-street-search"></a>Zoeken naar meerdere Streets met omgekeerde adres zoeken in meerdere straat
 
 In dit voor beeld zoeken we naar een cross-straat op basis van de coördinaten van een adres.
 
-1. Klik in de app postman op **Nieuw**en selecteer **aanvraag**. Voer een **Request name** (Aanvraagnaam) in voor de aanvraag. Selecteer de verzameling die u in de eerste sectie hebt gemaakt of maak een nieuwe, en selecteer vervolgens **Opslaan**.
+1. Klik in de app postman op **Nieuw** en selecteer **aanvraag** . Voer een **Request name** (Aanvraagnaam) in voor de aanvraag. Selecteer de verzameling die u in de eerste sectie hebt gemaakt of maak een nieuwe, en selecteer vervolgens **Opslaan** .
 
 2. Selecteer de methode http **ophalen** op het tabblad Builder en voer de volgende URL in. Voor deze aanvraag en andere aanvragen die in dit artikel worden vermeld, vervangt u `{Azure-Maps-Primary-Subscription-key}` door uw primaire abonnementssleutel. De aanvraag moet lijken op de volgende URL:
   
@@ -170,12 +170,12 @@ In dit voor beeld zoeken we naar een cross-straat op basis van de coördinaten v
 
     :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="Adres zoeken":::
   
-3. Klik op **verzenden**en controleer de tekst van het antwoord. U ziet dat het antwoord een waarde bevat `crossStreet` van `Occidental Avenue South` .
+3. Klik op **verzenden** en controleer de tekst van het antwoord. U ziet dat het antwoord een waarde bevat `crossStreet` van `Occidental Avenue South` .
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Azure Maps Search Service REST API](https://docs.microsoft.com/rest/api/maps/search)
+> [Azure Maps Search Service REST API](/rest/api/maps/search)
 
 > [!div class="nextstepaction"]
 > [Aanbevolen procedures voor Azure Maps Search Service](how-to-use-best-practices-for-search.md)
