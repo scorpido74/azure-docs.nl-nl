@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/19/2020
-ms.openlocfilehash: 547e56dbc72e283b6c186380a01580982e029a64
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: ee9bcedea15b039982e73304a25073c85b496635
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216637"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780050"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperscale-servicelaag
 
@@ -67,11 +67,11 @@ De grootschalige-servicelaag ondersteunt een breed scala aan SQL Server workload
 
 Grootschalige is alleen beschikbaar in het [vCore-model](service-tiers-vcore.md). Als u wilt uitlijnen met de nieuwe architectuur, is het prijs model iets anders dan Algemeen of Bedrijfskritiek service lagen:
 
-- **Berekenen**:
+- **Berekenen** :
 
   De grootschalige reken eenheids prijs is per replica. De [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) prijs wordt toegepast om automatisch schaal replica's te lezen. Er wordt standaard een primaire replica en één alleen-lezen replica per grootschalige-data base gemaakt.  Gebruikers kunnen het totaal aantal replica's aanpassen, met inbegrip van de primaire van 1-5.
 
-- **Opslag**:
+- **Opslag** :
 
   U hoeft niet de maximale gegevens grootte op te geven bij het configureren van een grootschalige-data base. In de grootschalige-laag worden er kosten in rekening gebracht voor de opslag voor uw Data Base op basis van de werkelijke toewijzing. Opslag wordt automatisch toegewezen tussen 40 GB en 100 TB, in stappen van 10 GB. Meerdere gegevens bestanden kunnen op hetzelfde moment worden uitgebreid als dat nodig is. Een grootschalige-data base wordt gemaakt met een begin grootte van 10 GB en deze wordt met 10 GB elke 10 minuten verg root totdat de grootte van 40 GB wordt bereikt.
 
@@ -87,7 +87,7 @@ In het volgende diagram ziet u de verschillende typen knoop punten in een groots
 
 Een grootschalige-Data Base bevat de volgende verschillende soorten onderdelen:
 
-### <a name="compute"></a>Rekenkracht
+### <a name="compute"></a>Compute
 
 Het reken knooppunt is de locatie waar de relationele engine zich bevindt. Dit is waar taal-, query-en transactie verwerking plaatsvindt. Alle gebruikers interacties met een grootschalige-data base vinden plaats via deze reken knooppunten. Reken knooppunten hebben op SSD gebaseerde caches in het voor gaande diagram om het aantal netwerk round trips dat nodig is om een pagina met gegevens op te halen, zo klein mogelijk te houden. Er is één primair reken knooppunt waar alle werk belastingen en trans acties voor lezen/schrijven worden verwerkt. Er zijn een of meer secundaire reken knooppunten die fungeren als hot standby-knoop punten voor failover-doel einden, en fungeren als alleen-lezen Compute-knoop punten voor het offloaden van Lees werkbelastingen (als deze functionaliteit gewenst is).
 
@@ -117,9 +117,9 @@ Met de mogelijkheid om snel extra alleen-lezen Compute-knoop punten in te zetten
 
 ## <a name="create-a-hyperscale-database"></a>Een grootschalige-data base maken
 
-Een grootschalige-data base kan worden gemaakt met behulp van de [Azure Portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql), [Power shell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase)of [cli](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create). Grootschalige-data bases zijn alleen beschikbaar via het [op vCore gebaseerde aankoop model](service-tiers-vcore.md).
+Een grootschalige-data base kan worden gemaakt met behulp van de [Azure Portal](https://portal.azure.com), [T-SQL](/sql/t-sql/statements/create-database-transact-sql), [Power shell](/powershell/module/azurerm.sql/new-azurermsqldatabase)of [cli](/cli/azure/sql/db#az-sql-db-create). Grootschalige-data bases zijn alleen beschikbaar via het [op vCore gebaseerde aankoop model](service-tiers-vcore.md).
 
-Met de volgende T-SQL-opdracht maakt u een grootschalige-data base. U moet zowel de editie als de service doelstelling opgeven in de `CREATE DATABASE` instructie. Raadpleeg de [resource limieten](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale---provisioned-compute---gen4) voor een lijst met geldige service doelstellingen.
+Met de volgende T-SQL-opdracht maakt u een grootschalige-data base. U moet zowel de editie als de service doelstelling opgeven in de `CREATE DATABASE` instructie. Raadpleeg de [resource limieten](./resource-limits-vcore-single-databases.md#hyperscale---provisioned-compute---gen4) voor een lijst met geldige service doelstellingen.
 
 ```sql
 -- Create a Hyperscale Database
@@ -131,7 +131,7 @@ Hiermee maakt u een grootschalige-Data Base op GEN5-hardware met vier kernen.
 
 ## <a name="upgrade-existing-database-to-hyperscale"></a>Bestaande data base bijwerken naar grootschalige
 
-U kunt uw bestaande data bases in Azure SQL Database verplaatsen naar grootschalige met behulp van de [Azure Portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql), [Power shell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase)of [cli](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update). Op dit moment is dit een eenrichtings migratie. U kunt geen data bases van grootschalige naar een andere servicelaag verplaatsen, met uitzonde ring van gegevens exporteren en importeren. Voor testen van concept (POCs) wordt u aangeraden een kopie te maken van uw productie databases en de kopie te migreren naar grootschalige. Het migreren van een bestaande data base in Azure SQL Database naar de grootschalige-laag is een grootte van de gegevens bewerking.
+U kunt uw bestaande data bases in Azure SQL Database verplaatsen naar grootschalige met behulp van de [Azure Portal](https://portal.azure.com), [T-SQL](/sql/t-sql/statements/alter-database-transact-sql), [Power shell](/powershell/module/azurerm.sql/set-azurermsqldatabase)of [cli](/cli/azure/sql/db#az-sql-db-update). Op dit moment is dit een eenrichtings migratie. U kunt geen data bases van grootschalige naar een andere servicelaag verplaatsen, met uitzonde ring van gegevens exporteren en importeren. Voor testen van concept (POCs) wordt u aangeraden een kopie te maken van uw productie databases en de kopie te migreren naar grootschalige. Het migreren van een bestaande data base in Azure SQL Database naar de grootschalige-laag is een grootte van de gegevens bewerking.
 
 Met de volgende T-SQL-opdracht wordt een Data Base verplaatst naar de servicelaag grootschalige. U moet zowel de editie als de service doelstelling opgeven in de `ALTER DATABASE` instructie.
 
@@ -165,7 +165,7 @@ Zie [Sla voor Azure SQL database](https://azure.microsoft.com/support/legal/sla/
 Als u een grootschalige-data base in Azure SQL Database moet herstellen naar een andere regio dan die die momenteel wordt gehost in, als onderdeel van een nood herstel bewerking of een analyse, herlocatie of een andere reden, is de primaire methode een geografisch herstel van de data base. Dit omvat precies dezelfde stappen als wat u zou gebruiken om een andere data base in SQL Database naar een andere regio te herstellen:
 
 1. Maak een [Server](logical-servers.md) in de doel regio als u er nog geen geschikte server hebt.  Deze server moet eigendom zijn van hetzelfde abonnement als de oorspronkelijke server (bron).
-2. Volg de instructies in het onderwerp [geo-Restore](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups#geo-restore) van de pagina voor het herstellen van een data base in Azure SQL database van automatische back-ups.
+2. Volg de instructies in het onderwerp [geo-Restore](./recovery-using-backups.md#geo-restore) van de pagina voor het herstellen van een data base in Azure SQL database van automatische back-ups.
 
 > [!NOTE]
 > Omdat de bron en het doel zich in verschillende regio's bevinden, kan de data base geen momentopname opslag delen met de bron database als in niet-geografische herstel bewerkingen, die zeer snel zijn voltooid. In het geval van een geo-Restore van een grootschalige-data base is het een grootte-of-Data-bewerking, zelfs als het doel zich in het gekoppelde gebied van de geo-gerepliceerde opslag bevindt.  Dit betekent dat het uitvoeren van een geo-herstel tijd evenredig is met de grootte van de data base die wordt hersteld.  Als het doel zich in het gekoppelde gebied bevindt, wordt de kopie binnen een regio weer gegeven. Dit is aanzienlijk sneller dan een kopie van een andere regio, maar het is nog steeds een bewerking voor de grootte van de gegevens.
@@ -202,7 +202,7 @@ Ingeschakelde regio's:
 - Noorwegen - oost
 - Noorwegen - west
 - Zuid-Afrika - noord
-- South Central US
+- VS - zuid-centraal
 - Azië - zuidoost
 - Zwitserland - west
 - Verenigd Koninkrijk Zuid
@@ -227,7 +227,7 @@ Dit zijn de huidige beperkingen voor het grootschalige van de service tier.  We 
 | Als een Data Base een of meer gegevens bestanden heeft die groter zijn dan 1 TB, mislukt de migratie | In sommige gevallen is het mogelijk om dit probleem te omzeilen door de grote bestanden kleiner te maken dan 1 TB. Als u een Data Base migreert die tijdens het migratie proces wordt gebruikt, moet u ervoor zorgen dat er geen bestanden groter zijn dan 1 TB. Gebruik de volgende query om de grootte van database bestanden te bepalen. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | SQL Managed Instance | Azure SQL Managed instance wordt momenteel niet ondersteund met grootschalige-data bases. |
 | Elastische pools |  Elastische Pools worden momenteel niet ondersteund met grootschalige.|
-| Migratie naar grootschalige is momenteel een eenrichtings bewerking | Wanneer een Data Base wordt gemigreerd naar grootschalige, kan deze niet rechtstreeks worden gemigreerd naar een niet-grootschalige. Op dit moment is de enige manier om een Data Base te migreren van grootschalige naar een niet-grootschalige, het exporteren/importeren met behulp van een Bacpac-bestand of andere technologieën voor gegevens verplaatsing (Bulk Copy, Azure Data Factory, Azure Databricks, SSIS, enzovoort). Bacpac exporteren/importeren uit Azure Portal, vanuit Power shell met [New-AzSqlDatabaseExport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseexport) of [New-AzSqlDatabaseImport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseimport), vanuit Azure CLI met [AZ SQL DB export](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-export) en [az SQL DB import](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-import), en van [rest API](https://docs.microsoft.com/rest/api/sql/databases%20-%20import%20export) wordt niet ondersteund. Bacpac import/export voor kleinere grootschalige-data bases (tot 200 GB) wordt ondersteund met behulp van SSMS en [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) versie 18,4 of hoger. Voor grotere data bases kan het maken van een Bacpac-export/-import enige tijd duren en kan om verschillende redenen mislukken.|
+| Migratie naar grootschalige is momenteel een eenrichtings bewerking | Wanneer een Data Base wordt gemigreerd naar grootschalige, kan deze niet rechtstreeks worden gemigreerd naar een niet-grootschalige. Op dit moment is de enige manier om een Data Base te migreren van grootschalige naar een niet-grootschalige, het exporteren/importeren met behulp van een Bacpac-bestand of andere technologieën voor gegevens verplaatsing (Bulk Copy, Azure Data Factory, Azure Databricks, SSIS, enzovoort). Bacpac exporteren/importeren uit Azure Portal, vanuit Power shell met [New-AzSqlDatabaseExport](/powershell/module/az.sql/new-azsqldatabaseexport) of [New-AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport), vanuit Azure CLI met [AZ SQL DB export](/cli/azure/sql/db#az-sql-db-export) en [az SQL DB import](/cli/azure/sql/db#az-sql-db-import), en van [rest API](/rest/api/sql/databases%20-%20import%20export) wordt niet ondersteund. Bacpac import/export voor kleinere grootschalige-data bases (tot 200 GB) wordt ondersteund met behulp van SSMS en [SqlPackage](/sql/tools/sqlpackage) versie 18,4 of hoger. Voor grotere data bases kan het maken van een Bacpac-export/-import enige tijd duren en kan om verschillende redenen mislukken.|
 | Migratie van data bases met In-Memory OLTP-objecten | Grootschalige ondersteunt een subset van In-Memory OLTP-objecten, waaronder door het geheugen geoptimaliseerde tabel typen, tabel variabelen en systeem eigen, gecompileerde modules. Wanneer echter een soort In-Memory OLTP-objecten aanwezig zijn in de data base die wordt gemigreerd, wordt de migratie van Premium-en Bedrijfskritiek-service lagen naar grootschalige niet ondersteund. Als u een dergelijke Data Base wilt migreren naar grootschalige, moeten alle In-Memory OLTP-objecten en de bijbehorende afhankelijkheden worden verwijderd. Nadat de data base is gemigreerd, kunnen deze objecten opnieuw worden gemaakt. Duurzame en niet-duurzame tabellen die zijn geoptimaliseerd voor geheugen, worden momenteel niet ondersteund in grootschalige en moeten opnieuw worden gemaakt als schijf tabellen.|
 | Geo-replicatie  | U kunt geo-replicatie voor Azure SQL Database grootschalige nog niet configureren. |
 | Data base kopiëren | Het kopiëren van de Data Base op grootschalige is nu beschikbaar als open bare preview. |
@@ -244,4 +244,3 @@ Dit zijn de huidige beperkingen voor het grootschalige van de service tier.  We 
 - Zie [overzicht van resource limieten op een server](resource-limits-logical-server.md) voor informatie over limieten op het niveau van de server en het abonnement.
 - Zie [Azure SQL database op vCore gebaseerde inkoop model limieten voor één data](resource-limits-vcore-single-databases.md)Base voor meer informatie over het aankoop model voor één data base.
 - Zie [Veelvoorkomende SQL-functies](features-comparison.md) voor een lijst met functies en vergelijkingen.
- 

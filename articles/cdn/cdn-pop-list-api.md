@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 13d4587a80cbbe66e18eb1bec8f3154221ac62b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43b4bcaee447d84efa088e84340ccfc717fe2777
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88192553"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778313"
 ---
 # <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>De huidige POP-IP-lijst voor Azure CDN ophalen
 
 ## <a name="retrieve-the-current-verizon-pop-ip-list-for-azure-cdn"></a>De huidige Verizon POP IP-lijst voor Azure CDN ophalen
 
-U kunt de REST API gebruiken om de set IP-adressen op te halen voor de POP-servers (Point of Presence) van Verizon. Deze POP-servers maken aanvragen voor de oorspronkelijke servers die zijn gekoppeld aan de Azure Content Delivery Network (CDN)-eind punten op een Verizon-Profiel (**Azure CDN Standard van Verizon** of **Azure CDN Premium van Verizon**). Houd er rekening mee dat deze set IP-adressen verschilt van de IP-adressen die een client zou zien wanneer ze aanvragen indienen bij de Pop's. 
+U kunt de REST API gebruiken om de set IP-adressen op te halen voor de POP-servers (Point of Presence) van Verizon. Deze POP-servers maken aanvragen voor de oorspronkelijke servers die zijn gekoppeld aan de Azure Content Delivery Network (CDN)-eind punten op een Verizon-Profiel ( **Azure CDN Standard van Verizon** of **Azure CDN Premium van Verizon** ). Houd er rekening mee dat deze set IP-adressen verschilt van de IP-adressen die een client zou zien wanneer ze aanvragen indienen bij de Pop's. 
 
-Zie [Edge nodes-List](https://docs.microsoft.com/rest/api/cdn/edgenodes/list)(Engelstalig) voor de syntaxis van de rest API bewerking voor het ophalen van de POP-lijst.
+Zie [Edge nodes-List](/rest/api/cdn/edgenodes/list)(Engelstalig) voor de syntaxis van de rest API bewerking voor het ophalen van de POP-lijst.
 
 ## <a name="retrieve-the-current-microsoft-pop-ip-list-for-azure-cdn"></a>De huidige micro soft POP-IP-lijst voor Azure CDN ophalen
 
@@ -48,4 +48,4 @@ Uit veiligheids overwegingen kunt u deze IP-lijst gebruiken om af te dwingen dat
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure CDN rest API](https://docs.microsoft.com/rest/api/cdn/)voor meer informatie over de rest API.
+Zie [Azure CDN rest API](/rest/api/cdn/)voor meer informatie over de rest API.

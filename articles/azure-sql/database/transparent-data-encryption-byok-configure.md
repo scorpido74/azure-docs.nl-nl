@@ -5,19 +5,19 @@ description: Meer informatie over het configureren van een Azure SQL Database en
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: security
-ms.custom: seo-lt-2019 sqldbrb=1
+ms.custom: seo-lt-2019 sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: e2cdf7d5213f1667b0b588cc5bfa9f105245b6b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38be8b97b3255e4e63301e693d2a5f295e8d801b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619114"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779965"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>Power shell en Azure CLI: Schakel Transparent Data Encryption in met door de klant beheerde sleutel van Azure Key Vault
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -36,11 +36,11 @@ In dit artikel wordt beschreven hoe u een sleutel gebruikt uit Azure Key Vault v
 - De sleutel moet de volgende kenmerken hebben om te kunnen worden gebruikt voor TDE:
   - Geen verval datum
   - Niet uitgeschakeld
-  - Kan de *Get*-, *Terugloop*-, *sleutel bewerking uitpakken*
+  - Kan de *Get* -, *Terugloop* -, *sleutel bewerking uitpakken*
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Raadpleeg [Azure PowerShell installeren](/powershell/azure/install-az-ps) voor instructies over de installatie van de Az-module. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor specifieke cmdlets.
+Raadpleeg [Azure PowerShell installeren](/powershell/azure/install-az-ps) voor instructies over de installatie van de Az-module. Zie [AzureRM. SQL](/powershell/module/AzureRM.Sql/)voor specifieke cmdlets.
 
 Voor specifieke informatie over Key Vault raadpleegt u [Power shell-instructies van Key Vault](../../key-vault/secrets/quick-create-powershell.md) en [hoe u Key Vault Soft-verwijderings opdracht kunt gebruiken met Power shell](../../key-vault/general/soft-delete-powershell.md).
 
@@ -123,7 +123,7 @@ Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName <SQLDataba
 
 # <a name="the-azure-cli"></a>[De Azure CLI](#tab/azure-cli)
 
-Als u de vereiste versie van de Azure CLI (versie 2,0 of hoger) wilt installeren en verbinding wilt maken met uw Azure-abonnement, raadpleegt u [de Azure platformoverschrijdende Command-Line Interface 2,0 installeren en configureren](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Als u de vereiste versie van de Azure CLI (versie 2,0 of hoger) wilt installeren en verbinding wilt maken met uw Azure-abonnement, raadpleegt u [de Azure platformoverschrijdende Command-Line Interface 2,0 installeren en configureren](/cli/azure/install-azure-cli).
 
 Voor specifieke informatie over Key Vault raadpleegt [u Key Vault beheren met de cli 2,0](../../key-vault/general/manage-with-cli2.md) en [hoe u Key Vault zacht-Delete gebruikt met de CLI](../../key-vault/general/soft-delete-cli.md).
 
@@ -239,7 +239,7 @@ Controleer het volgende als er een probleem optreedt:
 
 - Als de nieuwe sleutel niet kan worden toegevoegd aan de server, of als de nieuwe sleutel niet kan worden bijgewerkt als de TDE-Protector, controleert u het volgende:
    - De sleutel mag geen verval datum hebben
-   - Voor de sleutel moet de bewerking *Get*, *wrap*en *uitpakken van sleutel* bewerkingen zijn ingeschakeld.
+   - Voor de sleutel moet de bewerking *Get* , *wrap* en *uitpakken van sleutel* bewerkingen zijn ingeschakeld.
 
 ## <a name="next-steps"></a>Volgende stappen
 

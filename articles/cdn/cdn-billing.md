@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2019
 ms.author: allensu
-ms.openlocfilehash: bd6b4831b29a99ed6694f75e64202f339385b7ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa2f00a732a3978524fc017481285859c9535387
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88191166"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779166"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Inzicht in facturering voor Azure CDN
 
@@ -38,7 +38,7 @@ Een facturerings regio is een geografisch gebied dat wordt gebruikt om te bepale
 
 - Zone 5: India
 
-Zie [Azure CDN pop-locaties per regio](https://docs.microsoft.com/azure/cdn/cdn-pop-locations)voor meer informatie over pop-regio's (Point-of-Presence). Een POP die zich in Mexico bevindt, bevindt zich bijvoorbeeld in de Noord-Amerika regio en is daarom opgenomen in zone 1. 
+Zie [Azure CDN pop-locaties per regio](./cdn-pop-locations.md)voor meer informatie over pop-regio's (Point-of-Presence). Een POP die zich in Mexico bevindt, bevindt zich bijvoorbeeld in de Noord-Amerika regio en is daarom opgenomen in zone 1. 
 
 Zie [Content Delivery Network prijzen](https://azure.microsoft.com/pricing/details/cdn/)voor meer informatie over Azure CDN prijzen.
 
@@ -48,7 +48,7 @@ De Azure CDN facturerings regio is gebaseerd op de locatie van de bron server di
 Als een gebruiker die zich in Mexico bevindt bijvoorbeeld een aanvraag afgeeft en deze aanvraag wordt verwerkt door een server die zich in een Verenigde Staten POP bevindt als gevolg van peering of verkeers omstandigheden, wordt de facturerings regio de Verenigde Staten.
 
 ## <a name="what-is-a-billable-azure-cdn-transaction"></a>Wat is een factureer bare Azure CDN trans actie?
-Elke HTTP (S)-aanvraag die bij het CDN eindigt, is een factureer bare gebeurtenis. Dit omvat alle antwoord typen: geslaagd, mislukt of andere. Verschillende antwoorden kunnen echter verschillende verkeers bedragen genereren. Bijvoorbeeld, *304 niet gewijzigd* en andere antwoorden met alleen kopteksten genereren weinig verkeer omdat ze een kleine reactie op de header zijn; fout Reacties (bijvoorbeeld *404 niet gevonden*) zijn factureer bare, maar maken een kleine kosten vanwege de nettolading van het kleine antwoord.
+Elke HTTP (S)-aanvraag die bij het CDN eindigt, is een factureer bare gebeurtenis. Dit omvat alle antwoord typen: geslaagd, mislukt of andere. Verschillende antwoorden kunnen echter verschillende verkeers bedragen genereren. Bijvoorbeeld, *304 niet gewijzigd* en andere antwoorden met alleen kopteksten genereren weinig verkeer omdat ze een kleine reactie op de header zijn; fout Reacties (bijvoorbeeld *404 niet gevonden* ) zijn factureer bare, maar maken een kleine kosten vanwege de nettolading van het kleine antwoord.
 
 ## <a name="what-other-azure-costs-are-associated-with-azure-cdn-use"></a>Wat andere Azure-kosten zijn gekoppeld aan Azure CDN gebruiken?
 Het gebruik van Azure CDN heeft ook enkele gebruiks kosten in rekening gebracht voor de services die als oorsprong voor uw objecten worden gebruikt. Deze kosten zijn doorgaans een kleine fractie van de totale kosten voor het CDN-gebruik.
@@ -66,7 +66,7 @@ Als u Azure Blob Storage gebruikt als oorsprong voor uw inhoud, worden ook de vo
 
 Zie [Azure Storage facturering – band breedte, trans acties en capaciteit](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/)voor meer informatie over Azure Storage facturering.
 
-Als u gebruikmaakt van *gehoste service levering*, worden er kosten in rekening gebracht:
+Als u gebruikmaakt van *gehoste service levering* , worden er kosten in rekening gebracht:
 
 - Azure-reken tijd: de reken instanties die fungeren als de oorsprong.
 
@@ -119,4 +119,4 @@ Als u een van de volgende Azure-Services gebruikt als uw CDN-oorsprong, worden e
 - Azure Cache voor Redis
 
 ## <a name="how-do-i-manage-my-costs-most-effectively"></a>Hoe kan ik mijn kosten het meest effectief beheren?
-Stel de langst mogelijke TTL in voor uw inhoud. 
+Stel de langst mogelijke TTL in voor uw inhoud.

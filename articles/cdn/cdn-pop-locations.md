@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2020
 ms.author: allensu
-ms.openlocfilehash: e9092e9564fadb07311b151948656bc6cd007323
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: a707cde306006aef685c22cf1a9f9332449ee1c9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951720"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778237"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>Dekking Azure CDN per metro lijn 
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ In dit artikel vindt u een overzicht van de huidige metro lijnen die POP-locatie
 > Omdat elk Azure CDN product een unieke manier heeft voor het bouwen van de CDN-infra structuur, raadt micro soft aan om te kiezen voor het gebruik van POP-locaties om te bepalen welk Azure CDN product moet worden gebruikt. In plaats daarvan moet u rekening houden met de functies en prestaties van de eind gebruiker. Test de prestaties met elk Azure CDN product om het juiste product voor uw gebruikers te kiezen. 
 > 
 
-| Regio | Microsoft | Verizon | Akamai |
+| Region | Microsoft | Verizon | Akamai |
 | --- | --- | --- | --- |
 | Noord-Amerika | Toronto, Canada<br />Vancouver, Canada<br />Montreal, Canada<br />Querétaro, Mexico<br />San-Juan, Puerto Rico<br />Ashburn, VA, USA<br />Atlanta, NH, USA<br />Raleigh, NC, USA<br />Boston, MA, USA<br />Cheyenne, WY, USA<br />Chicago, IL, USA<br /> Rotterdam, TX, USA<br />Denver, CO, USA<br />Honolulu, HI, USA<br />Houston, TX, USA<br />Neon, NV, USA<br />Los Angeles, CA, USA<br />Miami, FL, USA<br />New York, NY, USA<br />Newark, NJ, USA<br />Phoenix, AZ, USA<br />Rotterdam, of USA<br />San Antonio, TX, USA<br />San Jose, CA, USA<br />Seattle, WA, USA | Guadalajara, Mexico<br />Mexico City, Mexico<br />Puebla, Mexico<br />Querétaro, Mexico<br />Atlanta, NH, USA<br />Boston, MA, USA<br />Chicago, IL, USA<br />Rotterdam, TX, USA<br />Denver, CO, USA<br />Detroit, MI, USA<br />Los Angeles, CA, USA<br />Miami, FL, USA<br />New York, NY, USA<br />Philadelphia, PA, USA<br />San Jose, CA, USA<br />Seattle, WA, USA<br />Washington, DC, USA <br /> Ashburn, VA, USA <br /> Phoenix, AZ, USA | Canada<br />Mexico<br />VS |
 | Zuid-Amerika | Campinas, Brazilië<br />Rio de Janeiro, Brazilië<br />Sao Paulo, Brazilië<br />Santiago, Chili<br />Bogotá, Colombia<br />Buenos Aires, Argentinië | Buenos Aires, Argentinië<br />Rio de Janeiro, Brazilië<br />Sao Paulo, Brazilië<br />Valparaíso, Chili<br />Bogotá, Colombia<br />Barranquilla, Colombia<br />Medellin, Colombia<br />Quito, Ecuador<br />Lima, Peru | Argentinië<br />Brazilië<br />Chili<br />Colombia<br />Ecuador<br />Peru<br />Uruguay |
@@ -49,4 +49,4 @@ In dit artikel vindt u een overzicht van de huidige metro lijnen die POP-locatie
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Als u de meest recente IP-adressen voor White List wilt ophalen, raadpleegt u de [API voor Azure CDN Edge-knoop punten](https://docs.microsoft.com/rest/api/cdn/edgenodes).
+* Als u de meest recente IP-adressen voor White List wilt ophalen, raadpleegt u de [API voor Azure CDN Edge-knoop punten](/rest/api/cdn/edgenodes).

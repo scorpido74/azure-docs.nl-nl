@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/19/2019
-ms.openlocfilehash: 43527e8e5860e0bbfc50643210156be943d2f174
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48b74a5507eb4a1d48b7bf70133e476a30fe8169
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85985187"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779948"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-azure-sql-database-and-azure-sql-managed-instance"></a>Optimaliseer de prestaties met behulp van in-Memory technologieën in Azure SQL Database en Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -37,7 +37,7 @@ In-Memory technologieën kunnen de prestaties van deze werk belastingen verbeter
 
 Azure SQL Database en Azure SQL Managed instance hebben de volgende in-Memory technologieën:
 
-- *[In-Memory OLTP neemt het](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)* aantal trans acties per seconde toe en vermindert de latentie voor de verwerking van trans acties. Scenario's die van In-Memory OLTP profiteren, zijn: transactie verwerking met hoge door Voer, zoals handel en gaming, gegevens opname van gebeurtenissen of IoT-apparaten, caching, gegevens belasting en tijdelijke scenario's voor tabel-en tabel variabelen.
+- *[In-Memory OLTP neemt het](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)* aantal trans acties per seconde toe en vermindert de latentie voor de verwerking van trans acties. Scenario's die van In-Memory OLTP profiteren, zijn: transactie verwerking met hoge door Voer, zoals handel en gaming, gegevens opname van gebeurtenissen of IoT-apparaten, caching, gegevens belasting en tijdelijke scenario's voor tabel-en tabel variabelen.
 - *Geclusterde column Store-indexen* verminderen uw opslag ruimte (Maxi maal 10 keer) en verbetert de prestaties voor rapportage-en analyse query's. U kunt het gebruiken met feiten tabellen in uw data bases voor het aanpassen van meer gegevens in uw gegevens bron en de prestaties te verbeteren. Daarnaast kunt u het gebruiken met historische gegevens in uw operationele data base om te archiveren en om Maxi maal tien keer meer gegevens op te vragen.
 - Niet- *geclusterde column Store-indexen* voor HTAP helpen u real-time inzicht te krijgen in uw bedrijf door rechtstreeks query's uit te voeren op de operationele data base, zonder dat u een kostbaar proces voor extra heren, transformeren en laden (ETL) moet uitvoeren en moet wachten tot het Data Warehouse is gevuld. Met niet-geclusterde column Store-indexen kunnen analyse query's snel worden uitgevoerd op de OLTP-data base, en wordt de impact op de operationele werk belasting verminderd.
 - Met *geheugen geoptimaliseerde column Store-indexen* voor HTAP kunt u snelle transactie verwerking uitvoeren, en *tegelijkertijd* analyse query's op dezelfde gegevens uitvoeren.
@@ -69,10 +69,10 @@ In dit artikel worden de aspecten beschreven van In-Memory OLTP-en column Store-
 
 Zie voor meer informatie over in-memory in SQL Server:
 
-- [Overzicht van in-Memory OLTP en gebruiks scenario's](/sql/relational-databases/in-memory-oltp/overview-and-usage-scenarios) (bevat verwijzingen naar casestudy's van klanten en informatie om aan de slag te gaan)
-- [Documentatie voor In-Memory OLTP](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)
-- [Hand leiding voor column Store-indexen](/sql/relational-databases/indexes/columnstore-indexes-overview)
-- Hybride transactionele/analytische verwerking (HTAP), ook wel bekend als [real-time Operational Analytics](/sql/relational-databases/indexes/get-started-with-columnstore-for-real-time-operational-analytics)
+- [Overzicht van in-Memory OLTP en gebruiksscenario's](/sql/relational-databases/in-memory-oltp/overview-and-usage-scenarios) (bevat verwijzingen naar casestudy's van klanten en informatie om aan de slag te gaan)
+- [Documentatie voor in-Memory OLTP](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)
+- [Gids columnstore-indexen](/sql/relational-databases/indexes/columnstore-indexes-overview)
+- Hybride transactionele/analytische verwerking (HTAP), ook wel bekend onder de naam [real-time operationele analyses](/sql/relational-databases/indexes/get-started-with-columnstore-for-real-time-operational-analytics)
 
 ## <a name="in-memory-oltp"></a>In-Memory OLTP
 
@@ -93,7 +93,7 @@ Een snelle primer op In-Memory OLTP: [Snelstartgids 1: In-Memory OLTP-technologi
 Uitgebreide Video's over de technologieën:
 
 - [In-Memory OLTP](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB) (dit bevat een demo van de prestatie voordelen en stappen om deze resultaten zelf te reproduceren)
-- [In-Memory OLTP-Video's: wat is het en wanneer/hoe u deze kunt gebruiken](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../in-memory-oltp-video-what-it-is-and-whenhow-to-use-it/)
+- [In-Memory OLTP-Video's: wat is het en wanneer/hoe u deze kunt gebruiken](/archive/blogs/sqlserverstorageengine/in-memory-oltp-video-what-it-is-and-whenhow-to-use-it)
 
 Er is een programmatische manier om te begrijpen of een bepaalde data base In-Memory OLTP ondersteunt. U kunt de volgende Transact-SQL-query uitvoeren:
 
@@ -101,7 +101,7 @@ Er is een programmatische manier om te begrijpen of een bepaalde data base In-Me
 SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
 ```
 
-Als de query **1**retourneert, wordt In-Memory OLTP ondersteund in deze data base. Met de volgende query's worden alle objecten geïdentificeerd die moeten worden verwijderd voordat een Data Base kan worden gedowngraded naar Algemeen, Standard of Basic:
+Als de query **1** retourneert, wordt In-Memory OLTP ondersteund in deze data base. Met de volgende query's worden alle objecten geïdentificeerd die moeten worden verwijderd voordat een Data Base kan worden gedowngraded naar Algemeen, Standard of Basic:
 
 ```sql
 SELECT * FROM sys.tables WHERE is_memory_optimized=1
@@ -111,7 +111,7 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 
 ### <a name="data-size-and-storage-cap-for-in-memory-oltp"></a>Gegevens grootte en opslag limiet voor In-Memory OLTP
 
-In-Memory OLTP bevat tabellen die zijn geoptimaliseerd voor geheugen, die worden gebruikt voor het opslaan van gebruikers gegevens. Deze tabellen moeten in het geheugen passen. Omdat u het geheugen rechtstreeks beheert in SQL Database, hebben we het concept van een quotum voor gebruikers gegevens. Dit wordt aangeduid als *OLTP-opslag in het geheugen*.
+In-Memory OLTP bevat tabellen die zijn geoptimaliseerd voor geheugen, die worden gebruikt voor het opslaan van gebruikers gegevens. Deze tabellen moeten in het geheugen passen. Omdat u het geheugen rechtstreeks beheert in SQL Database, hebben we het concept van een quotum voor gebruikers gegevens. Dit wordt aangeduid als *OLTP-opslag in het geheugen* .
 
 Elke ondersteunde prijs categorie voor één data base en elke prijs categorie voor elastische Pools bevat een bepaalde hoeveelheid In-Memory OLTP-opslag.
 
@@ -149,7 +149,7 @@ Het downgradeen van de laag kan echter een negatieve invloed hebben op uw data b
 
 Voordat u de data base downgradet naar Algemeen, Standard of Basic, verwijdert u alle tabellen en tabel typen die zijn geoptimaliseerd voor geheugen en van alle systeem eigen, gecompileerde T-SQL-modules.
 
-*Resources in bedrijfskritiek laag schalen*: gegevens in tabellen die zijn geoptimaliseerd voor geheugen, moeten passen binnen de In-Memory OLTP-opslag die is gekoppeld aan de laag van de data base of het beheerde exemplaar of beschikbaar is in de elastische pool. Als u probeert de laag te schalen of de data base te verplaatsen naar een pool die niet voldoende beschik bare In-Memory OLTP-opslag heeft, mislukt de bewerking.
+*Resources in bedrijfskritiek laag schalen* : gegevens in tabellen die zijn geoptimaliseerd voor geheugen, moeten passen binnen de In-Memory OLTP-opslag die is gekoppeld aan de laag van de data base of het beheerde exemplaar of beschikbaar is in de elastische pool. Als u probeert de laag te schalen of de data base te verplaatsen naar een pool die niet voldoende beschik bare In-Memory OLTP-opslag heeft, mislukt de bewerking.
 
 ## <a name="in-memory-columnstore"></a>In-Memory column Store
 
@@ -164,13 +164,13 @@ Er zijn twee soorten column Store-modellen die u kunt gebruiken om uw gegevens t
 
 Diep gaande video over de technologie:
 
-- [Column store-index: in-Memory Analytics Video's van Ignite 2016](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../columnstore-index-in-memory-analytics-i-e-columnstore-index-videos-from-ignite-2016/)
+- [Column store-index: in-Memory Analytics Video's van Ignite 2016](/archive/blogs/sqlserverstorageengine/columnstore-index-in-memory-analytics-i-e-columnstore-index-videos-from-ignite-2016)
 
 ### <a name="data-size-and-storage-for-columnstore-indexes"></a>Gegevens grootte en-opslag voor column Store-indexen
 
 Column Store-indexen hoeven niet in het geheugen te passen. Daarom is de enige limiet voor de grootte van de indexen de maximale totale database grootte, die wordt beschreven in het [op DTU gebaseerde aankoop model](database/service-tiers-dtu.md) en [op vCore gebaseerde inkoop model](database/service-tiers-vcore.md) artikelen.
 
-Wanneer u geclusterde column Store-indexen gebruikt, wordt kolom compressie gebruikt voor de basis tabel opslag. Deze compressie kan de opslag capaciteit van uw gebruikers gegevens aanzienlijk verminderen. Dit betekent dat u meer gegevens in de Data Base kunt aanpassen. En de compressie kan verder worden verhoogd met de [kolom archivering compressie](https://msdn.microsoft.com/library/cc280449.aspx#using-columnstore-and-columnstore-archive-compression). De hoeveelheid compressie die u kunt behaalt, is afhankelijk van de aard van de gegevens, maar tien keer de compressie is niet ongebruikelijk.
+Wanneer u geclusterde column Store-indexen gebruikt, wordt kolom compressie gebruikt voor de basis tabel opslag. Deze compressie kan de opslag capaciteit van uw gebruikers gegevens aanzienlijk verminderen. Dit betekent dat u meer gegevens in de Data Base kunt aanpassen. En de compressie kan verder worden verhoogd met de [kolom archivering compressie](/sql/relational-databases/data-compression/data-compression#using-columnstore-and-columnstore-archive-compression). De hoeveelheid compressie die u kunt behaalt, is afhankelijk van de aard van de gegevens, maar tien keer de compressie is niet ongebruikelijk.
 
 Als u bijvoorbeeld een Data Base hebt met een maximale grootte van 1 terabyte (TB) en u de compressie 10 keer behaalt met behulp van Column Store-indexen, kunt u in totaal 10 TB aan gebruikers gegevens in de Data Base gebruiken.
 
@@ -189,29 +189,29 @@ Als u een **geclusterde** column store-index hebt, wordt de hele tabel na de dow
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Snelstartgids 1: In-Memory OLTP-technologieën voor snellere T-SQL-prestaties](https://msdn.microsoft.com/library/mt694156.aspx)
+- [Snelstart 1: In-Memory OLTP voor snellere T-SQL-prestaties](/sql/relational-databases/in-memory-oltp/survey-of-initial-areas-in-in-memory-oltp)
 - [In-Memory OLTP gebruiken in een bestaande Azure SQL-toepassing](in-memory-oltp-configure.md)
-- [In-Memory OLTP-opslag](in-memory-oltp-monitor-space.md) voor In-Memory OLTP bewaken
+- [In-Memory OLTP-opslag controleren](in-memory-oltp-monitor-space.md) voor In-Memory OLTP
 - [Functies in het geheugen proberen](in-memory-sample.md)
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-### <a name="deeper-information"></a>Dieper informatie
+### <a name="deeper-information"></a>Meer gedetailleerde informatie
 
 - [Meer informatie over hoe quorum de werk belasting van de Key Data Base verdubbelt tijdens het verlagen van DTU met 70% met In-Memory OLTP in SQL Database](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
 - [In-Memory OLTP-blog bericht](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
-- [Meer informatie over In-Memory OLTP](https://msdn.microsoft.com/library/dn133186.aspx)
-- [Meer informatie over column Store-indexen](https://msdn.microsoft.com/library/gg492088.aspx)
-- [Meer informatie over real-time operationele analyses](https://msdn.microsoft.com/library/dn817827.aspx)
-- Bekijk [algemene werk belasting patronen en migratie overwegingen](https://msdn.microsoft.com/library/dn673538.aspx) (die de werkbelasting patronen beschrijft waarbij In-Memory OLTP doorgaans aanzienlijke prestatie verbeteringen biedt)
+- [Meer informatie over In-Memory OLTP](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)
+- [Meer informatie over columnstore-indexen](/sql/relational-databases/indexes/columnstore-indexes-overview)
+- [Meer informatie over realtime operationele analyses](/sql/relational-databases/indexes/get-started-with-columnstore-for-real-time-operational-analytics)
+- Zie [Veelvoorkomende workloadpatronen en overwegingen bij migratie](/previous-versions/dn673538(v=msdn.10)) (waarin wordt beschreven welke de workloadpatronen zijn waarbij In-Memory OLTP vaak significante prestatiewinsten biedt)
 
 ### <a name="application-design"></a>Toepassingsontwerp
 
-- [OLTP in het geheugen (in-Memory optimalisatie)](https://msdn.microsoft.com/library/dn133186.aspx)
+- [OLTP in het geheugen (in-Memory optimalisatie)](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)
 - [In-Memory OLTP gebruiken in een bestaande Azure SQL-toepassing](in-memory-oltp-configure.md)
 
 ### <a name="tools"></a>Hulpprogramma's
 
-- [Azure-portal](https://portal.azure.com/)
-- [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
-- [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)
+- [Azure Portal](https://portal.azure.com/)
+- [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)
+- [SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt)

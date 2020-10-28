@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: fa144c7ebd68e6f5dd192fca83dc6f306d7b8d63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 599ec041837460c30b4655531b822eab5f0eafa3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81254101"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778911"
 ---
 # <a name="china-content-delivery-with-azure-cdn"></a>Levering van inhoud in China met Azure CDN
 
@@ -40,7 +40,7 @@ Azure CDN Global en Azure CDN China hebben de volgende kenmerken:
 
      - Vier prijs Categorieën: micro soft Standard, Verizon Standard, Verizon Premium en Akamai Standard
 
-     - [Documentatie](https://docs.microsoft.com/azure/cdn/)
+     - [Documentatie](./index.yml)
 
 - Azure CDN China:
 
@@ -63,7 +63,4 @@ Zie voor meer informatie over Azure CDN China:
 
 - [Azure Content Delivery Network gebruiken](https://docs.azure.cn/en-us/cdn/cdn-how-to-use)
 
-- [Beschik baarheid van Azure-service in China](https://docs.microsoft.com/azure/china/concepts-service-availability)
-
-
-
+- [Beschik baarheid van Azure-service in China](/azure/china/concepts-service-availability)

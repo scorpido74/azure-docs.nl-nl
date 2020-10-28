@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 65b3d5a29028214a52e6b26430472394c91c6f27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81c92b6ef5bdf89391364bc238f55200eb3679f6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84887060"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778165"
 ---
 # <a name="monitor-the-health-of-azure-cdn-resources"></a>De status van Azure CDN-resources bewaken
   
-Azure CDN resource Health is een subset van [Azure-resource status](../resource-health/resource-health-overview.md).  U kunt Azure resource Health gebruiken om de status van CDN-resources te controleren en richt lijnen te ontvangen om problemen op te lossen.
+Azure CDN resource Health is een subset van [Azure-resource status](../service-health/resource-health-overview.md).  U kunt Azure resource Health gebruiken om de status van CDN-resources te controleren en richt lijnen te ontvangen om problemen op te lossen.
 
 >[!IMPORTANT] 
 >Azure CDN resource Health alleen momenteel accounts voor de status van globale CDN-bezorgings-en API-mogelijkheden.  Azure CDN resource Health verifieert geen individuele CDN-eind punten.
@@ -38,7 +38,7 @@ Azure CDN resource Health is een subset van [Azure-resource status](../resource-
 
     ![Knop Instellingen](./media/cdn-resource-health/cdn-profile-settings.png)
 
-3. Klik onder *ondersteuning en probleem oplossing*op **resource status**.
+3. Klik onder *ondersteuning en probleem oplossing* op **resource status** .
 
     ![CDN-resource status](./media/cdn-resource-health/cdn-resource-health3.png)
 
@@ -51,7 +51,7 @@ Azure CDN resource Health is een subset van [Azure-resource status](../resource-
 
 Statussen met betrekking tot Azure CDN resource status vindt u hieronder.
 
-|Bericht | Aanbevolen actie |
+|Bericht | Aanbevolen actie |
 |---|---|
 |Een of meer CDN-eindpunten zijn mogelijk gestopt, verwijderd of verkeerd geconfigureerd | Een of meer CDN-eindpunten zijn mogelijk gestopt, verwijderd of verkeerd geconfigureerd.|
 |De CDN-beheerservice is momenteel niet beschikbaar | Kom hier terug voor status updates. Neem contact op met de ondersteuning als het probleem zich blijft voordoen na de verwachte oplossings tijd.|
@@ -62,6 +62,6 @@ Er zijn momenteel problemen met een aantal van onze CDN-providers | Kom hier ter
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een overzicht van de Azure-resource status lezen](../resource-health/resource-health-overview.md)
+- [Een overzicht van de Azure-resource status lezen](../service-health/resource-health-overview.md)
 - [Problemen met CDN-compressie oplossen](./cdn-troubleshoot-compression.md)
 - [Problemen met 404-fouten oplossen](./cdn-troubleshoot-endpoint.md)

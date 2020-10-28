@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: allensu
-ms.openlocfilehash: 0710f2f31510ae299fafe89dc1798f40e325e8b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c7e4ff05307452da67c37b23bf492db8855e2ef
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88192583"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778366"
 ---
 # <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>Azure CDN optimaliseren voor het type inhouds levering
 
@@ -39,7 +39,7 @@ Dit artikel bevat een overzicht van de verschillende optimalisatie functies en w
 * [Algemene Internet levering](#general-web-delivery). Deze optimalisatie wordt ook gebruikt voor mediastreaming en grote bestanden downloaden.
 
 > [!NOTE]
-> Dynamische site versnelling van micro soft wordt aangeboden via de [Azure front-deur service](https://docs.microsoft.com/azure/frontdoor/front-door-overview).
+> Dynamische site versnelling van micro soft wordt aangeboden via de [Azure front-deur service](../frontdoor/front-door-overview.md).
 
 **Azure CDN Standard van Verizon** en **Azure CDN Premium van Verizon** -profielen ondersteunen de volgende optimalisaties:
 
@@ -70,7 +70,7 @@ Wanneer u een CDN-eind punt maakt, selecteert u een optimalisatie type dat het b
 
     ![Eindpunt selectie](./media/cdn-optimization-overview/01_Akamai.png)
 
-2. Selecteer **optimalisatie**onder instellingen. Selecteer vervolgens een type in de vervolg keuzelijst **geoptimaliseerd voor** .
+2. Selecteer **optimalisatie** onder instellingen. Selecteer vervolgens een type in de vervolg keuzelijst **geoptimaliseerd voor** .
 
     ![Optimalisatie en type selectie](./media/cdn-optimization-overview/02_Select.png)
 
@@ -95,7 +95,7 @@ Mediastreaming is tijd gevoelig, omdat pakketten die te laat op de client arrive
 
 Dit scenario is gebruikelijk voor klanten van Azure media service. Wanneer u Azure Media Services gebruikt, krijgt u één streaming-eind punt dat kan worden gebruikt voor zowel live als streaming op aanvraag. In dit scenario hoeven klanten niet over te scha kelen naar een ander eind punt wanneer ze van Live worden gewijzigd in streaming op aanvraag. Algemene optimalisatie van mediastreaming ondersteunt dit type scenario.
 
-Voor **Azure CDN standaard van micro soft**, **Azure CDN Standard van Verizon**en **Azure CDN Premium van Verizon**, gebruikt u het optimalisatie type algemene weblevering voor het leveren van algemene streaming-media-inhoud.
+Voor **Azure CDN standaard van micro soft** , **Azure CDN Standard van Verizon** en **Azure CDN Premium van Verizon** , gebruikt u het optimalisatie type algemene weblevering voor het leveren van algemene streaming-media-inhoud.
 
 Zie [optimalisatie](cdn-media-streaming-optimization.md)van mediastreaming voor meer informatie over de optimalisatie van media-streaming.
 
@@ -103,7 +103,7 @@ Zie [optimalisatie](cdn-media-streaming-optimization.md)van mediastreaming voor 
 
 Video-on-demand optimalisatie van mediastreaming verbetert video-on-demand streaming-inhoud. Als u een eind punt gebruikt voor video-on-demand streaming, gebruikt u deze optie.
 
-Voor **Azure CDN standaard van micro soft**, **Azure CDN Standard van Verizon**en **Azure CDN Premium van Verizon** -profielen, gebruikt u het optimalisatie type algemene weblevering voor het leveren van video-on-demand streaming media-inhoud.
+Voor **Azure CDN standaard van micro soft** , **Azure CDN Standard van Verizon** en **Azure CDN Premium van Verizon** -profielen, gebruikt u het optimalisatie type algemene weblevering voor het leveren van video-on-demand streaming media-inhoud.
 
 Zie [optimalisatie](cdn-media-streaming-optimization.md)van mediastreaming voor meer informatie over de optimalisatie van media-streaming.
 
@@ -115,22 +115,19 @@ Zie [optimalisatie](cdn-media-streaming-optimization.md)van mediastreaming voor 
 
 Voor **Azure CDN standaard van Akamai** -profielen zijn grote bestands downloads geoptimaliseerd voor inhoud die groter is dan 10 MB. Als uw gemiddelde bestands grootte kleiner is dan 10 MB, gebruikt u algemene Internet levering. Als uw gemiddelde bestands grootte consistent groter is dan 10 MB, kan het efficiënter zijn om een afzonderlijk eind punt voor grote bestanden te maken. Bijvoorbeeld: firmware of software-updates zijn grote bestanden. Als u bestanden wilt leveren die groter zijn dan 1,8 GB, is de optimalisatie van grote bestanden vereist.
 
-Voor **Azure CDN standaard van micro soft**, **Azure CDN Standard van Verizon**en **Azure CDN Premium van Verizon** -profielen, gebruikt u het optimalisatie type algemene weblevering voor het leveren van inhoud voor grote bestanden downloaden. Er is geen beperking voor de grootte van het downloaden van bestanden.
+Voor **Azure CDN standaard van micro soft** , **Azure CDN Standard van Verizon** en **Azure CDN Premium van Verizon** -profielen, gebruikt u het optimalisatie type algemene weblevering voor het leveren van inhoud voor grote bestanden downloaden. Er is geen beperking voor de grootte van het downloaden van bestanden.
 
 Zie voor meer informatie over de optimalisatie van grote bestanden [grote bestanden optimaliseren](cdn-large-file-optimization.md).
 
 ### <a name="dynamic-site-acceleration"></a>Dynamische siteversnelling
 
- Dynamic site Acceleration (DSA) is beschikbaar voor **Azure CDN Standard van Akamai**, **Azure CDN Standard van Verizon**en **Azure CDN Premium van Verizon** -profielen. Deze optimalisatie omvat extra kosten voor het gebruik van. Zie [Content Delivery Network prijzen](https://azure.microsoft.com/pricing/details/cdn/)voor meer informatie.
+ Dynamic site Acceleration (DSA) is beschikbaar voor **Azure CDN Standard van Akamai** , **Azure CDN Standard van Verizon** en **Azure CDN Premium van Verizon** -profielen. Deze optimalisatie omvat extra kosten voor het gebruik van. Zie [Content Delivery Network prijzen](https://azure.microsoft.com/pricing/details/cdn/)voor meer informatie.
 
 > [!NOTE]
-> Dynamische site versnelling van micro soft wordt aangeboden via de [Azure front-deur service](https://docs.microsoft.com/azure/frontdoor/front-door-overview) , een wereld wijde [anycast](https://en.wikipedia.org/wiki/Anycast) -service die gebruikmaakt van het privé wereld wijde netwerk van micro soft om uw app-workloads te leveren.
+> Dynamische site versnelling van micro soft wordt aangeboden via de [Azure front-deur service](../frontdoor/front-door-overview.md) , een wereld wijde [anycast](https://en.wikipedia.org/wiki/Anycast) -service die gebruikmaakt van het privé wereld wijde netwerk van micro soft om uw app-workloads te leveren.
 
 DSA bevat verschillende technieken voor het voor deel van de latentie en prestaties van dynamische inhoud. Technieken zijn route-en netwerk optimalisatie, TCP-optimalisatie en meer. 
 
 U kunt deze optimalisatie gebruiken om een web-app te versnellen die talloze reacties bevat die niet in cache kunnen worden opgeslagen. Voor beelden zijn Zoek resultaten, afhandelings transacties of realtime-gegevens. U kunt de basis mogelijkheden voor Azure CDN caching blijven gebruiken voor statische gegevens. 
 
 Zie [Dynamic site Acceleration](cdn-dynamic-site-acceleration.md)voor meer informatie over dynamische site versnelling.
-
-
-

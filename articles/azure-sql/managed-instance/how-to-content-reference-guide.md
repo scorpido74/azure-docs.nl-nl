@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 04/16/2019
-ms.openlocfilehash: 208793d3ba8c3463abe892b368beb41d4b79f214
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7f2f060f32cf3bf92660a2e8b75a45b7ec76b82
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617448"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779761"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Naslag informatie voor Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -64,7 +64,7 @@ In dit artikel vindt u een inhouds verwijzing naar verschillende hand leidingen,
 
 - [Handmatig instellen](../database/performance-guidance.md)
 - [DMV's gebruiken voor het bewaken van prestaties](../database/monitoring-with-dmvs.md)
-- [Query opslag gebruiken om de prestaties te bewaken](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
+- [Query opslag gebruiken om de prestaties te bewaken](/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
 - [Prestatieproblemen oplossen met Intelligent Insights](../database/intelligent-insights-troubleshoot-performance.md)
 - [Het Intelligent Insights diagnostische logboek gebruiken](../database/intelligent-insights-use-diagnostics-log.md)
 - [In-Memory OLTP-ruimte bewaken](../in-memory-oltp-monitor-space.md)
@@ -79,7 +79,7 @@ In dit artikel vindt u een inhouds verwijzing naar verschillende hand leidingen,
 
 - [Waarschuwingen in beheerd exemplaar maken](alerts-create.md)
 
-## <a name="operations"></a>Operations
+## <a name="operations"></a>Bewerkingen
 
 - [Door de gebruiker geïnitieerde hand matige failover op een SQL-beheerd exemplaar](user-initiated-failover.md)
 

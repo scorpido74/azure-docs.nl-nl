@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: allensu
-ms.openlocfilehash: aa3c190912c0fbd62b08182018c99b985354811b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a226682c2580a871e1b2fc4db71f369f3bcc3abb
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86201809"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778631"
 ---
 # <a name="how-caching-works"></a>Hoe caching werkt
 
@@ -65,7 +65,7 @@ Twee kopteksten kunnen worden gebruikt voor het definiëren van cache versheid: 
 ## <a name="cache-directive-headers"></a>Cache-instructie headers
 
 > [!IMPORTANT]
-> Een Azure CDN-eind punt dat is geoptimaliseerd voor DSA, negeert standaard cache-instructie headers en bypass caching. Voor **Azure CDN Standard van Verizon** en **Azure CDN Standard van Akamai** -profielen, kunt u aanpassen hoe een Azure CDN-eind punt deze headers behandelt door gebruik te maken van [regels voor CDN-caching](cdn-caching-rules.md) om caching in te scha kelen. Voor **Azure CDN Premium van Verizon** -profielen gebruikt u de [regel engine](cdn-rules-engine.md) om caching in te scha kelen.
+> Een Azure CDN-eind punt dat is geoptimaliseerd voor DSA, negeert standaard cache-instructie headers en bypass caching. Voor **Azure CDN Standard van Verizon** en **Azure CDN Standard van Akamai** -profielen, kunt u aanpassen hoe een Azure CDN-eind punt deze headers behandelt door gebruik te maken van [regels voor CDN-caching](cdn-caching-rules.md) om caching in te scha kelen. Voor **Azure CDN Premium van Verizon** -profielen gebruikt u de [regel engine](./cdn-verizon-premium-rules-engine.md) om caching in te scha kelen.
 
 Azure CDN ondersteunt de volgende HTTP-cache-instructie headers, waarmee de cache duur en het delen van de cache worden gedefinieerd.
 
@@ -129,14 +129,11 @@ In de volgende tabel wordt het standaard gedrag voor caching voor de Azure CDN p
 | **Naleven**       | Ja    | Ja   | Nee   | Ja    | Nee   | Ja   | Ja    |
 | **CDN-cache duur** | 2 dagen |7 dagen | Geen | 7 dagen | Geen | 1 dag | 1 jaar |
 
-Nagaan van de **oorsprong**: Hiermee geeft u aan of de ondersteunde cache-instructie headers moeten worden nageleefd als deze bestaan in het HTTP-antwoord van de oorspronkelijke server.
+Nagaan van de **oorsprong** : Hiermee geeft u aan of de ondersteunde cache-instructie headers moeten worden nageleefd als deze bestaan in het HTTP-antwoord van de oorspronkelijke server.
 
-**CDN-cache duur**: Hiermee geeft u de hoeveelheid tijd op waarvoor een resource in de cache wordt opgeslagen op de Azure CDN. Als navraag van de **oorsprong** Ja is en het HTTP-antwoord van de oorspronkelijke server de header van de cache-instructie bevat `Expires` of `Cache-Control: max-age` , Azure CDN gebruikt de duur waarde die door de header is opgegeven. 
+**CDN-cache duur** : Hiermee geeft u de hoeveelheid tijd op waarvoor een resource in de cache wordt opgeslagen op de Azure CDN. Als navraag van de **oorsprong** Ja is en het HTTP-antwoord van de oorspronkelijke server de header van de cache-instructie bevat `Expires` of `Cache-Control: max-age` , Azure CDN gebruikt de duur waarde die door de header is opgegeven. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie voor meer informatie over het aanpassen en negeren van het standaard gedrag bij het opslaan van caches in het CDN door de regels voor caching regelt u het [gedrag van Azure CDN caching met cache regels](cdn-caching-rules.md). 
 - Zie voor meer informatie over het gebruik van query reeksen voor het beheren [van cache gedrag Control-Azure CDN in de cache opslaan met query reeksen](cdn-query-string.md).
-
-
-

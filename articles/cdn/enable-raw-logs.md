@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/25/2020
 ms.author: allensu
-ms.openlocfilehash: c41bf8bc6e5aa3749786bc1189343dfdebdc1508
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fbefd3b7761976cffbd6be8714cb849e1253aec
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321146"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778026"
 ---
 # <a name="monitoring-metrics-and-raw-logs-for-azure-cdn-from-microsoft"></a>Metrische gegevens en onbewerkte logboeken bewaken voor Azure CDN van micro soft
 Met Azure CDN van micro soft kunt u bronnen bewaken op de volgende manieren om problemen op te lossen, op te sporen en op te sporen. 
@@ -38,36 +38,36 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 
 RAW-logboeken voor uw Azure CDN van het micro soft-profiel configureren: 
 
-1. Selecteer **alle resources**in het menu Azure Portal  >>  **\<your-CDN-profile>** .
+1. Selecteer **alle resources** in het menu Azure Portal  >>  **\<your-CDN-profile>** .
 
-2. Onder **bewaking**selecteert u **instellingen voor diagnostische gegevens**.
+2. Onder **bewaking** selecteert u **instellingen voor diagnostische gegevens** .
 
-3. Selecteer **+ Diagnostische instelling toevoegen**.
+3. Selecteer **+ Diagnostische instelling toevoegen** .
 
     :::image type="content" source="./media/cdn-raw-logs/raw-logs-01.png" alt-text="Diagnostische instelling voor CDN-profiel toevoegen." border="true":::
     
     > [!IMPORTANT]
     > Onbewerkte logboeken zijn alleen beschikbaar in het profiel niveau, terwijl geaggregeerde HTTP-status code logboeken beschikbaar zijn op het niveau van het eind punt.
 
-4. Voer onder **Diagnostische instellingen**een naam in voor de diagnostische instelling onder **naam van diagnostische instellingen**.
+4. Voer onder **Diagnostische instellingen** een naam in voor de diagnostische instelling onder **naam van diagnostische instellingen** .
 
 5. Selecteer de **AzureCdnAccessLog** en stel de Bewaar periode in op dagen.
 
-6. Selecteer de **doel gegevens**. Bestemmings opties zijn:
+6. Selecteer de **doel gegevens** . Bestemmings opties zijn:
     * **Verzenden naar Log Analytics**
-        * Selecteer het **abonnement** en de **log Analytics-werk ruimte**.
+        * Selecteer het **abonnement** en de **log Analytics-werk ruimte** .
     * **Archiveren naar een opslag account**
-        * Selecteer het **abonnement** en het **opslag account**.
+        * Selecteer het **abonnement** en het **opslag account** .
     * **Streamen naar een Event Hub**
-        * Selecteer het **abonnement**, de **Event hub-naam ruimte**, de naam van de **Event hub (optioneel)** en de naam van het **Event hub-beleid**.
+        * Selecteer het **abonnement** , de **Event hub-naam ruimte** , de naam van de **Event hub (optioneel)** en de naam van het **Event hub-beleid** .
 
     :::image type="content" source="./media/cdn-raw-logs/raw-logs-02.png" alt-text="Diagnostische instelling voor CDN-profiel toevoegen." border="true":::
 
-7. Selecteer **Opslaan**.
+7. Selecteer **Opslaan** .
 
 ## <a name="configuration---azure-powershell"></a>Configuratie-Azure PowerShell
 
-Gebruik [set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) om de diagnostische instelling voor onbewerkte logboeken te configureren.
+Gebruik [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) om de diagnostische instelling voor onbewerkte logboeken te configureren.
 
 Bewaar gegevens worden gedefinieerd door de optie **-RetentionInDays** in de opdracht.
 
@@ -178,7 +178,7 @@ Azure CDN van de micro soft-service biedt momenteel onbewerkte Logboeken. RAW-lo
     ```
 
 ### <a name="sent-to-origin-shield-deprecation"></a>Verzonden naar afkomst van oorsprong afschermen
-De onbewerkte logboek eigenschap **isSentToOriginShield** is afgeschaft en vervangen door een nieuw veld **isReceivedFromClient**. Gebruik het nieuwe veld als u het afgeschafte veld al gebruikt. 
+De onbewerkte logboek eigenschap **isSentToOriginShield** is afgeschaft en vervangen door een nieuw veld **isReceivedFromClient** . Gebruik het nieuwe veld als u het afgeschafte veld al gebruikt. 
 
 Onbewerkte logboeken bevatten logboeken die zijn gegenereerd op basis van CDN Edge (onderliggende POP) en Afscherm van oorsprong. Schild van oorsprong verwijst naar bovenliggende knoop punten die zich wereld wijd bevinden. Deze knoop punten communiceren met de oorspronkelijke servers en verminderen de belasting van het verkeer op de oorsprong. 
 
@@ -201,7 +201,7 @@ AzureDiagnostics
 ```
 
 > [!IMPORTANT]
-> De functie voor onbewerkte HTTP-Logboeken is automatisch beschikbaar voor profielen die na **25 februari 2020**zijn gemaakt of bijgewerkt. Voor CDN-profielen die u eerder hebt gemaakt, moet het CDN-eind punt bij het instellen van de logboek registratie worden bijgewerkt. Een voor beeld: er kan worden genavigeerd naar geo-filtering onder CDN-eind punten en alle landen/regio's blok keren die niet relevant zijn voor de werk belasting en op Opslaan drukken.
+> De functie voor onbewerkte HTTP-Logboeken is automatisch beschikbaar voor profielen die na **25 februari 2020** zijn gemaakt of bijgewerkt. Voor CDN-profielen die u eerder hebt gemaakt, moet het CDN-eind punt bij het instellen van de logboek registratie worden bijgewerkt. Een voor beeld: er kan worden genavigeerd naar geo-filtering onder CDN-eind punten en alle landen/regio's blok keren die niet relevant zijn voor de werk belasting en op Opslaan drukken.
 
 
 ## <a name="metrics"></a>Metrische gegevens
@@ -211,7 +211,7 @@ De metrische gegevens worden weer gegeven in grafieken en toegankelijk via Power
 
 Azure CDN van micro soft-metingen en verzendt de metrische gegevens over 60-seconden intervallen. De metrische gegevens kunnen Maxi maal drie minuten in de portal worden weer gegeven. 
 
-Zie [Azure monitor metrische](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics)gegevens voor meer informatie.
+Zie [Azure monitor metrische](../azure-monitor/platform/data-platform-metrics.md)gegevens voor meer informatie.
 
 **Metrische gegevens die door Azure CDN van micro soft worden ondersteund**
 
@@ -220,9 +220,9 @@ Zie [Azure monitor metrische](https://docs.microsoft.com/azure/azure-monitor/pla
 | Percentage treffers * | Het percentage van de uitvoer van de CDN-cache dat wordt berekend op basis van het totale aantal uitgangen.                                      | Eindpunt                                                                                    |
 | RequestCount    | Het aantal client aanvragen dat door CDN wordt geleverd.                                                                     | Eindpunt </br> Land van de client. </br> Client regio. </br> HTTP-status. </br> HTTP-status groep. |
 | ResponseSize    | Het aantal bytes dat is verzonden als antwoorden van CDN Edge naar clients.                                                  |Eindpunt </br> Land van de client. </br> Client regio. </br> HTTP-status. </br> HTTP-status groep.                                                                                          |
-| TotalLatency    | De totale tijd van de client aanvraag die door CDN is ontvangen **totdat de laatste reactie byte van CDN naar de client is verzonden**. |Eindpunt </br> Land van de client. </br> Client regio. </br> HTTP-status. </br> HTTP-status groep.                                                                                             |
+| TotalLatency    | De totale tijd van de client aanvraag die door CDN is ontvangen **totdat de laatste reactie byte van CDN naar de client is verzonden** . |Eindpunt </br> Land van de client. </br> Client regio. </br> HTTP-status. </br> HTTP-status groep.                                                                                             |
 
-***Aantal bytes treffers = (uitgang van rand-uitgang van oorsprong)/egress vanaf rand**
+**_Aantal bytes treffers = (uitgang van rand-uitgang van oorsprong)/egress vanaf rand_*
 
 Scenario's die zijn uitgesloten voor de berekening van de verhouding treffers in bytes:
 
@@ -231,13 +231,13 @@ Scenario's die zijn uitgesloten voor de berekening van de verhouding treffers in
 
 ### <a name="metrics-configuration"></a>Configuratie van metrische gegevens
 
-1. Selecteer **alle resources**in het menu Azure Portal  >>  **\<your-CDN-profile>** .
+1. Selecteer **alle resources** in het menu Azure Portal  >>  **\<your-CDN-profile>** .
 
-2. Onder **bewaking**selecteert u **metrische gegevens**:
+2. Onder **bewaking** selecteert u **metrische gegevens** :
 
     :::image type="content" source="./media/cdn-raw-logs/raw-logs-03.png" alt-text="Diagnostische instelling voor CDN-profiel toevoegen." border="true":::
 
-3. Selecteer **metrische gegevens toevoegen**en selecteer de toe te voegen metriek:
+3. Selecteer **metrische gegevens toevoegen** en selecteer de toe te voegen metriek:
 
     :::image type="content" source="./media/cdn-raw-logs/raw-logs-04.png" alt-text="Diagnostische instelling voor CDN-profiel toevoegen." border="true":::
 
@@ -255,13 +255,13 @@ Scenario's die zijn uitgesloten voor de berekening van de verhouding treffers in
 
 ### <a name="alerts"></a>Waarschuwingen
 
-U kunt waarschuwingen instellen op micro soft CDN door **bewakings**  >>  **waarschuwingen**te selecteren.
+U kunt waarschuwingen instellen op micro soft CDN door **bewakings**  >>  **waarschuwingen** te selecteren.
 
 Selecteer **nieuwe waarschuwings regel** voor metrische gegevens die worden weer gegeven in de sectie metrische gegevens:
 
 :::image type="content" source="./media/cdn-raw-logs/raw-logs-08.png" alt-text="Diagnostische instelling voor CDN-profiel toevoegen." border="true":::
 
-Er wordt een waarschuwing berekend op basis van Azure Monitor. Zie [Azure monitor-waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)voor meer informatie over waarschuwingen.
+Er wordt een waarschuwing berekend op basis van Azure Monitor. Zie [Azure monitor-waarschuwingen](../azure-monitor/platform/alerts-overview.md)voor meer informatie over waarschuwingen.
 
 ### <a name="additional-metrics"></a>Aanvullende metrische gegevens
 U kunt extra metrische gegevens inschakelen met behulp van Azure Log Analytics en onbewerkte logboeken voor extra kosten.
@@ -272,17 +272,17 @@ U kunt extra metrische gegevens inschakelen met behulp van Azure Log Analytics e
 
     :::image type="content" source="./media/cdn-raw-logs/raw-logs-09.png" alt-text="Diagnostische instelling voor CDN-profiel toevoegen." border="true":::   
 
-3. Selecteer **Logboeken** onder **Algemeen** in de log Analytics-werk ruimte.  Selecteer vervolgens **aan de slag**:
+3. Selecteer **Logboeken** onder **Algemeen** in de log Analytics-werk ruimte.  Selecteer vervolgens **aan de slag** :
 
     :::image type="content" source="./media/cdn-raw-logs/raw-logs-10.png" alt-text="Diagnostische instelling voor CDN-profiel toevoegen." border="true":::   
  
-4. Selecteer **CDN-profielen**.  Selecteer een voorbeeld query voor het uitvoeren of sluiten van het voorbeeld scherm om een aangepaste query in te voeren:
+4. Selecteer **CDN-profielen** .  Selecteer een voorbeeld query voor het uitvoeren of sluiten van het voorbeeld scherm om een aangepaste query in te voeren:
 
     :::image type="content" source="./media/cdn-raw-logs/raw-logs-11.png" alt-text="Diagnostische instelling voor CDN-profiel toevoegen." border="true":::   
 
     :::image type="content" source="./media/cdn-raw-logs/raw-logs-12.png" alt-text="Diagnostische instelling voor CDN-profiel toevoegen." border="true":::   
 
-4. Als u gegevens wilt weer geven per grafiek, selecteert u **diagram**.  Selecteer **vastmaken aan dash board** om de grafiek aan het Azure-dash board vast te maken:
+4. Als u gegevens wilt weer geven per grafiek, selecteert u **diagram** .  Selecteer **vastmaken aan dash board** om de grafiek aan het Azure-dash board vast te maken:
 
     :::image type="content" source="./media/cdn-raw-logs/raw-logs-13.png" alt-text="Diagnostische instelling voor CDN-profiel toevoegen." border="true"::: 
 
@@ -293,6 +293,6 @@ Zie voor meer informatie over Azure CDN en de andere Azure-Services die in dit a
 
 * [Analyseren](cdn-log-analysis.md) Gebruiks patronen Azure CDN.
 
-* Meer informatie over [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview).
+* Meer informatie over [Azure monitor](../azure-monitor/overview.md).
 
-* [Log Analytics configureren in azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal).
+* [Log Analytics configureren in azure monitor](../azure-monitor/log-query/get-started-portal.md).

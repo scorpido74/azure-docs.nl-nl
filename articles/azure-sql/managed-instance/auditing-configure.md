@@ -13,12 +13,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 05/26/2020
-ms.openlocfilehash: d8a6ead23e080b5e1e17403873e2dbaedc0ce177
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d067d30220c76de5617aab2c42365351888d744
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91620355"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780016"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Aan de slag met controle van Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,17 +32,17 @@ Met controle van [Azure SQL Managed instance](sql-managed-instance-paas-overview
 
 In de volgende sectie wordt de configuratie van de controle op uw beheerde exemplaar beschreven.
 
-1. Ga naar de [Azure Portal](https://portal.azure.com).
+1. Ga naar [Azure Portal](https://portal.azure.com).
 2. Een Azure Storage- **container** maken waar audit logboeken worden opgeslagen.
 
    1. Ga naar het Azure Storage-account waar u de audit logboeken wilt opslaan.
 
       > [!IMPORTANT]
       > - Gebruik een opslag account in dezelfde regio als het beheerde exemplaar om Lees-en schrijf bewerkingen in meerdere regio's te voor komen. 
-      > - Als uw opslag account zich achter een Virtual Network of een firewall bevindt, kunt u [toegang verlenen via een virtueel netwerk](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-a-virtual-network).
+      > - Als uw opslag account zich achter een Virtual Network of een firewall bevindt, kunt u [toegang verlenen via een virtueel netwerk](../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network).
       > - Als u de retentieperiode van 0 (onbeperkte retentie) wijzigt in een andere waarde, moet u er rekening mee houden dat retentie alleen van toepassing is op logboeken die zijn geschreven nadat de waarde is gewijzigd, (logboeken die zijn geschreven tijdens de periode waarin de retentie was ingesteld op onbeperkt, blijven behouden, zelfs nadat retentie is ingeschakeld).
 
-   1. Ga in het opslag account naar **overzicht** en klik op **blobs**.
+   1. Ga in het opslag account naar **overzicht** en klik op **blobs** .
 
       ![Widget Azure blobs](./media/auditing-configure/1_blobs_widget.png)
 
@@ -50,18 +50,18 @@ In de volgende sectie wordt de configuratie van de controle op uw beheerde exemp
 
       ![Pictogram van een BLOB-container maken](./media/auditing-configure/2_create_container_button.png)
 
-   1. Geef een container **naam**op, stel **openbaar toegangs niveau** in op **privé**en klik vervolgens op **OK**.
+   1. Geef een container **naam** op, stel **openbaar toegangs niveau** in op **privé** en klik vervolgens op **OK** .
 
       ![Configuratie van BLOB-container maken](./media/auditing-configure/3_create_container_config.png)
 
     > [!IMPORTANT]
-    > Klanten die een onveranderbare logboek opslag voor hun server-of database niveau controle gebeurtenissen willen configureren, moeten de [instructies van Azure Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage#enabling-allow-protected-append-blobs-writes)volgen. (Zorg ervoor dat u **Extra toevoegen toestaan** selecteert wanneer u de onveranderbare Blob-opslag configureert.)
+    > Klanten die een onveranderbare logboek opslag voor hun server-of database niveau controle gebeurtenissen willen configureren, moeten de [instructies van Azure Storage](../../storage/blobs/storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes)volgen. (Zorg ervoor dat u **Extra toevoegen toestaan** selecteert wanneer u de onveranderbare Blob-opslag configureert.)
   
 3. Nadat u de container voor de audit Logboeken hebt gemaakt, zijn er twee manieren om deze te configureren als het doel voor de audit logboeken: het [gebruik van T-SQL](#blobtsql) of [de gebruikers interface van de SQL Server Management Studio (SSMS)](#blobssms):
 
    - <a id="blobtsql"></a>Blob-opslag configureren voor audit logboeken met T-SQL:
 
-     1. Klik in de lijst containers op de zojuist gemaakte container en klik vervolgens op **container eigenschappen**.
+     1. Klik in de lijst containers op de zojuist gemaakte container en klik vervolgens op **container eigenschappen** .
 
         ![Knop Eigenschappen van BLOB-container](./media/auditing-configure/4_container_properties_button.png)
 
@@ -79,16 +79,16 @@ In de volgende sectie wordt de configuratie van de controle op uw beheerde exemp
 
         - Configureer de SAS als volgt:
 
-          - **Toegestane Services**: BLOB
+          - **Toegestane Services** : BLOB
 
-          - **Begin datum**: gebruik de datum van gisteren om te voor komen dat er problemen met de tijd zone te maken hebben
+          - **Begin datum** : gebruik de datum van gisteren om te voor komen dat er problemen met de tijd zone te maken hebben
 
-          - **Eind datum**: Kies de datum waarop deze SAS-token verloopt
+          - **Eind datum** : Kies de datum waarop deze SAS-token verloopt
 
             > [!NOTE]
             > Vernieuw het token na verloop om mislukte audits te voor komen.
 
-          - Klik op **SAS genereren**.
+          - Klik op **SAS genereren** .
 
             ![SAS-configuratie](./media/auditing-configure/7_sas_configure.png)
 
@@ -126,11 +126,11 @@ In de volgende sectie wordt de configuratie van de controle op uw beheerde exemp
 
      1. Vouw de hoofd notitie van Objectverkenner uit.
 
-     1. Vouw het **beveiligings** knooppunt uit, klik met de rechter muisknop op het knoop punt **controles** en klik op **nieuwe controle**:
+     1. Vouw het **beveiligings** knooppunt uit, klik met de rechter muisknop op het knoop punt **controles** en klik op **nieuwe controle** :
 
         ![Beveiligings-en controle knooppunt uitvouwen](./media/auditing-configure/10_mi_SSMS_new_audit.png)
 
-     1. Zorg ervoor dat de **URL** is geselecteerd in de **controle bestemming** en klik op **Bladeren**:
+     1. Zorg ervoor dat de **URL** is geselecteerd in de **controle bestemming** en klik op **Bladeren** :
 
         ![Azure Storage bladeren](./media/auditing-configure/11_mi_SSMS_audit_browse.png)
 
@@ -138,7 +138,7 @@ In de volgende sectie wordt de configuratie van de controle op uw beheerde exemp
 
         ![Aanmelden bij Azure](./media/auditing-configure/12_mi_SSMS_sign_in_to_azure.png)
 
-     1. Selecteer een abonnement, opslag account en BLOB-container in de vervolg keuzelijsten of maak uw eigen container door te klikken op **maken**. Wanneer u klaar bent, klikt u op **OK**:
+     1. Selecteer een abonnement, opslag account en BLOB-container in de vervolg keuzelijsten of maak uw eigen container door te klikken op **maken** . Wanneer u klaar bent, klikt u op **OK** :
 
         ![Azure-abonnement, opslag account en BLOB-container selecteren](./media/auditing-configure/13_mi_SSMS_select_subscription_account_container.png)
 
@@ -146,8 +146,8 @@ In de volgende sectie wordt de configuratie van de controle op uw beheerde exemp
 
 4. <a id="createspec"></a>Nadat u de BLOB-container als doel voor de audit Logboeken hebt geconfigureerd, maakt en activeert u een specificatie van de server audit of een database audit die u zou moeten voor SQL Server:
 
-   - [T-SQL-hand leiding voor Server audit Specification maken](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql)
-   - [T-SQL-hand leiding voor database audit specificatie maken](https://docs.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql)
+   - [T-SQL-hand leiding voor Server audit Specification maken](/sql/t-sql/statements/create-server-audit-specification-transact-sql)
+   - [T-SQL-hand leiding voor database audit specificatie maken](/sql/t-sql/statements/create-database-audit-specification-transact-sql)
 
 5. Schakel de server controle in die u in stap 3 hebt gemaakt:
 
@@ -160,8 +160,8 @@ In de volgende sectie wordt de configuratie van de controle op uw beheerde exemp
 Meer informatie:
 
 - [Controleren van verschillen tussen Azure SQL Managed instance en een data base in SQL Server](#auditing-differences-between-databases-in-azure-sql-managed-instance-and-databases-in-sql-server)
-- [SERVER CONTROLE MAKEN](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
-- [ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
+- [SERVER CONTROLE MAKEN](/sql/t-sql/statements/create-server-audit-transact-sql)
+- [ALTER SERVER AUDIT](/sql/t-sql/statements/alter-server-audit-transact-sql)
 
 ## <a name="set-up-auditing-for-your-server-to-event-hubs-or-azure-monitor-logs"></a>Controle instellen voor uw server naar Event Hubs-of Azure Monitor-logboeken
 
@@ -169,15 +169,15 @@ Audit logboeken van een beheerd exemplaar kunnen worden verzonden naar Azure Eve
 
 1. Navigeer in de [Azure Portal](https://portal.azure.com/) naar het beheerde exemplaar.
 
-2. Klik op **Diagnostische instellingen**.
+2. Klik op **Diagnostische instellingen** .
 
-3. Klik op **Diagnostische gegevens inschakelen**. Als diagnostische gegevens al is ingeschakeld, wordt in plaats daarvan de **Diagnostische instelling toevoegen** weer gegeven.
+3. Klik op **Diagnostische gegevens inschakelen** . Als diagnostische gegevens al is ingeschakeld, wordt in plaats daarvan de **Diagnostische instelling toevoegen** weer gegeven.
 
 4. Selecteer **SQLSecurityAuditEvents** in de lijst met Logboeken.
 
 5. Selecteer een doel voor de controle gebeurtenissen: Event Hubs, Azure Monitor Logboeken of beide. Configureer voor elk doel de vereiste para meters (bijvoorbeeld Log Analytics-werk ruimte).
 
-6. Klik op **Opslaan**.
+6. Klik op **Opslaan** .
 
     ![Diagnostische instellingen configureren](./media/auditing-configure/9_mi_configure_diagnostics.png)
 
@@ -192,8 +192,8 @@ Audit logboeken van een beheerd exemplaar kunnen worden verzonden naar Azure Eve
 
 9. Maak en schakel een server audit specificatie of specificatie van de database audit in zoals u zou doen voor SQL Server:
 
-   - [T-SQL-hand leiding voor Server audit Specification maken](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql)
-   - [T-SQL-hand leiding voor database audit specificatie maken](https://docs.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql)
+   - [T-SQL-hand leiding voor Server audit Specification maken](/sql/t-sql/statements/create-server-audit-specification-transact-sql)
+   - [T-SQL-hand leiding voor database audit specificatie maken](/sql/t-sql/statements/create-database-audit-specification-transact-sql)
 
 10. Schakel de server controle in die is gemaakt in stap 8:
 
@@ -209,9 +209,9 @@ Audit logboeken van een beheerd exemplaar kunnen worden verzonden naar Azure Eve
 
 Er zijn verschillende methoden die u kunt gebruiken om de controle logboeken van blobs weer te geven.
 
-- Gebruik de systeem functie `sys.fn_get_audit_file` (T-SQL) om de controle logboek gegevens in tabel vorm te retour neren. Zie de [sys.fn_get_audit_file-documentatie](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)voor meer informatie over het gebruik van deze functie.
+- Gebruik de systeem functie `sys.fn_get_audit_file` (T-SQL) om de controle logboek gegevens in tabel vorm te retour neren. Zie de [sys.fn_get_audit_file-documentatie](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)voor meer informatie over het gebruik van deze functie.
 
-- U kunt audit logboeken verkennen met behulp van een hulp programma zoals [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/). In Azure Storage worden controle Logboeken opgeslagen als een verzameling BLOB-bestanden binnen een container die is gedefinieerd voor het opslaan van de audit Logboeken. Zie voor meer informatie over de hiërarchie van de opslagmap, de naam conventies en de logboek indeling de [verwijzing naar de indeling van het BLOB-controle logboek](https://go.microsoft.com/fwlink/?linkid=829599).
+- U kunt audit logboeken verkennen met behulp van een hulp programma zoals [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/). In Azure Storage worden controle Logboeken opgeslagen als een verzameling BLOB-bestanden binnen een container die is gedefinieerd voor het opslaan van de audit Logboeken. Zie voor meer informatie over de hiërarchie van de opslagmap, de naam conventies en de logboek indeling de [verwijzing naar de indeling van het BLOB-controle logboek](../database/audit-log-format.md).
 
 - Raadpleeg aan de [slag met Azure SQL database controle](../../azure-sql/database/auditing-overview.md)voor een volledige lijst met verbruiks methoden voor controle Logboeken.
 
@@ -223,7 +223,7 @@ Als u gegevens van de audit logboeken van Event Hubs wilt gebruiken, moet u een 
 
 Als audit logboeken naar Azure Monitor logboeken worden geschreven, zijn ze beschikbaar in de Log Analytics-werk ruimte, waar u geavanceerde zoek opdrachten kunt uitvoeren op de controle gegevens. Ga als uitgangs punt naar de Log Analytics-werk ruimte. Klik onder de sectie **Algemeen** op **Logboeken** en voer een eenvoudige query in, zoals: `search "SQLSecurityAuditEvents"` om de audit logboeken weer te geven.  
 
-Met Azure Monitor-Logboeken kunt u in realtime operationeel inzicht krijgen met behulp van geïntegreerde Zoek-en aangepaste Dash boards waarmee u miljoenen records in al uw workloads en servers eenvoudig kunt analyseren. Zie voor aanvullende nuttige informatie over Azure Monitor Zoek taal en-opdrachten in Logboeken [Azure monitor logboeken zoeken](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
+Met Azure Monitor-Logboeken kunt u in realtime operationeel inzicht krijgen met behulp van geïntegreerde Zoek-en aangepaste Dash boards waarmee u miljoenen records in al uw workloads en servers eenvoudig kunt analyseren. Zie voor aanvullende nuttige informatie over Azure Monitor Zoek taal en-opdrachten in Logboeken [Azure monitor logboeken zoeken](../../azure-monitor/log-query/log-query-overview.md).
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -234,15 +234,15 @@ De belangrijkste verschillen tussen controles in data bases in Azure SQL Managed
 - Met Azure SQL Managed instance werkt auditing op server niveau en worden `.xel` logboek bestanden opgeslagen in Azure Blob-opslag.
 - In SQL Server werkt audit op het niveau van de server, maar worden gebeurtenissen opgeslagen in gebeurtenis logboeken van bestanden systeem/Windows.
 
-XEvent-controle in beheerde instanties ondersteunt Azure Blob-opslag doelen. Bestands-en Windows-logboeken worden **niet ondersteund**.
+XEvent-controle in beheerde instanties ondersteunt Azure Blob-opslag doelen. Bestands-en Windows-logboeken worden **niet ondersteund** .
 
 De belangrijkste verschillen in de `CREATE AUDIT` syntaxis voor de controle van Azure Blob-opslag zijn:
 
 - Er wordt een nieuwe syntaxis `TO URL` opgegeven, waarmee u de URL kunt opgeven van de Azure Blob Storage-container waar de `.xel` bestanden worden geplaatst.
 - Er wordt een nieuwe syntaxis `TO EXTERNAL MONITOR` gegeven om event hubs-en Azure monitor-logboek doelen in te scha kelen.
 - De syntaxis `TO FILE` wordt **niet ondersteund** omdat een door Azure SQL beheerd exemplaar geen toegang heeft tot Windows-bestands shares.
-- De optie shutdown wordt **niet ondersteund**.
-- `queue_delay` van 0 wordt **niet ondersteund**.
+- De optie shutdown wordt **niet ondersteund** .
+- `queue_delay` van 0 wordt **niet ondersteund** .
 
 ## <a name="next-steps"></a>Volgende stappen
 

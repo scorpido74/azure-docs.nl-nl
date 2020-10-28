@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: c06af1cc7f068070954669fc4ec269c9e679f278
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2ef1367cbbb1fb71159c4520c3d1481904c1769
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84886059"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779319"
 ---
 # <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Gebruiksstatistieken analyseren met geavanceerde HTTP-rapporten in Azure CDN
 ## <a name="overview"></a>Overzicht
@@ -33,7 +33,7 @@ In dit document wordt uitgebreide HTTP-rapportage in Microsoft Azure CDN uitgele
     ![De knop Blade van het CDN-profiel beheren](./media/cdn-advanced-http-reports/cdn-manage-btn.png)
    
     De CDN-beheer portal wordt geopend.
-2. Beweeg de muis aanwijzer over het tabblad **Analytics** en Beweeg vervolgens de muis aanwijzer over de **Geavanceerde http-rapporten** flyout.  Klik op een **groot http-platform**.
+2. Beweeg de muis aanwijzer over het tabblad **Analytics** en Beweeg vervolgens de muis aanwijzer over de **Geavanceerde http-rapporten** flyout.  Klik op een **groot http-platform** .
    
     ![CDN-beheer Portal-menu Geavanceerde rapporten](./media/cdn-advanced-http-reports/cdn-advanced-reports.png)
    
@@ -202,6 +202,5 @@ Direct onder het staaf diagram wordt de volgende informatie weer gegeven voor de
 ## <a name="see-also"></a>Zie ook
 * [Overzicht van Azure CDN](cdn-overview.md)
 * [Realtime-statistieken in Microsoft Azure CDN](cdn-real-time-stats.md)
-* [Standaard HTTP-gedrag negeren met de regel engine](cdn-rules-engine.md)
+* [Standaard HTTP-gedrag negeren met de regel engine](./cdn-verizon-premium-rules-engine.md)
 * [Prestaties van de rand analyseren](cdn-edge-performance.md)
-

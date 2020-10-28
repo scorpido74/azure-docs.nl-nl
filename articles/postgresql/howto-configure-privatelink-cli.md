@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 297190a99f9231cd07cffe1364202a1acbe75323
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 780ce6bed230ebbcf2a603962afc711fb9ab7f11
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489996"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92777925"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>Een persoonlijke koppeling voor Azure Database for PostgreSQL-één server maken en beheren met CLI
 
@@ -40,7 +40,7 @@ az group create --name myResourceGroup --location westeurope
 ```
 
 ## <a name="create-a-virtual-network"></a>Een Virtual Network maken
-Maak een Virtual Network met [az network vnet create](/cli/azure/network/vnet). In dit voorbeeld wordt een standaard Virtual Network gemaakt met de naam *myVirtualNetwork* met één subnet genaamd *mySubnet*:
+Maak een Virtual Network met [az network vnet create](/cli/azure/network/vnet). In dit voorbeeld wordt een standaard Virtual Network gemaakt met de naam *myVirtualNetwork* met één subnet genaamd *mySubnet* :
 
 ```azurecli-interactive
 az network vnet create \
@@ -60,7 +60,7 @@ az network vnet subnet update \
  --disable-private-endpoint-network-policies true
 ```
 ## <a name="create-the-vm"></a>De virtuele machine maken 
-Maak een VM met az vm create. Wanneer u hierom wordt gevraagd, geeft u een wachtwoord op dat moet worden gebruikt als de aanmeldingsreferenties voor de VM. In het volgende voorbeeld wordt een VM gemaakt met de naam *myVm*: 
+Maak een VM met az vm create. Wanneer u hierom wordt gevraagd, geeft u een wachtwoord op dat moet worden gebruikt als de aanmeldingsreferenties voor de VM. In het volgende voorbeeld wordt een VM gemaakt met de naam *myVm* : 
 ```azurecli-interactive
 az vm create \
   --resource-group myResourceGroup \
@@ -70,7 +70,7 @@ az vm create \
  Noteer het open bare IP-adres van de virtuele machine. U gebruikt dit adres om in de volgende stap verbinding te maken met de virtuele machine via internet.
 
 ## <a name="create-an-azure-database-for-postgresql---single-server"></a>Een Azure Database for PostgreSQL-één-server maken 
-Maak een Azure Database for PostgreSQL met de opdracht AZ post gres server Create. Houd er rekening mee dat de naam van uw PostgreSQL-server uniek moet zijn in azure, dus Vervang de waarde van de tijdelijke aanduiding tussen vier Kante haken door uw eigen unieke waarde: 
+Maak een Azure Database for PostgreSQL met de opdracht AZ post gres server Create. Houd er rekening mee dat de naam van uw PostgreSQL-server uniek moet zijn in azure, dus Vervang de waarde van de tijdelijke aanduiding door uw eigen unieke waarden die u hierboven hebt gebruikt: 
 
 ```azurecli-interactive
 # Create a server in the resource group 
@@ -134,11 +134,11 @@ Maak als volgt verbinding met de VM *myVm* van Internet:
 
 1. Voer in de zoekbalk van de portal *myVm* in.
 
-1. Selecteer de knop **Verbinding maken**. Na het selecteren van de knop **Verbinden** wordt **Verbinden met virtuele machine** geopend.
+1. Selecteer de knop **Verbinding maken** . Na het selecteren van de knop **Verbinden** wordt **Verbinden met virtuele machine** geopend.
 
-1. Selecteer **RDP-bestand downloaden**. In Azure wordt een *RDP*-bestand (Remote Desktop Protocol) gemaakt en het bestand wordt gedownload naar de computer.
+1. Selecteer **RDP-bestand downloaden** . In Azure wordt een *RDP* -bestand (Remote Desktop Protocol) gemaakt en het bestand wordt gedownload naar de computer.
 
-1. Open het *downloaded.rdp*-bestand.
+1. Open het *downloaded.rdp* -bestand.
 
     1. Selecteer **Verbinding maken** wanneer hierom wordt gevraagd.
 
@@ -147,15 +147,15 @@ Maak als volgt verbinding met de VM *myVm* van Internet:
         > [!NOTE]
         > Mogelijk moet u **Meer opties** > **Een ander account gebruiken** selecteren om de referenties op te geven die u hebt ingevoerd tijdens het maken van de VM.
 
-1. Selecteer **OK**.
+1. Selecteer **OK** .
 
-1. Er wordt mogelijk een certificaatwaarschuwing weergegeven tijdens het aanmelden. Als er een certificaatwaarschuwing wordt weergegeven, selecteert u **Ja** of **Doorgaan**.
+1. Er wordt mogelijk een certificaatwaarschuwing weergegeven tijdens het aanmelden. Als er een certificaatwaarschuwing wordt weergegeven, selecteert u **Ja** of **Doorgaan** .
 
 1. Wanneer het VM-bureaublad wordt weergegeven, minimaliseert u het om terug te gaan naar het lokale bureaublad.  
 
 ## <a name="access-the-postgresql-server-privately-from-the-vm"></a>De PostgreSQL-server privé openen vanuit de VM
 
-1. Open PowerShell in het extern bureaublad van *myVM*.
+1. Open PowerShell in het extern bureaublad van *myVM* .
 
 2. Voer  `nslookup mydemopostgresserver.privatelink.postgres.database.azure.com` in. 
 
@@ -170,15 +170,15 @@ Maak als volgt verbinding met de VM *myVm* van Internet:
 
 3. Test de verbinding van de persoonlijke verbinding voor de PostgreSQL-server met behulp van elke beschik bare client. In het onderstaande voor beeld heb ik [Azure Data Studio](/sql/azure-data-studio/download?view=sql-server-ver15) gebruikt om de bewerking uit te voeren.
 
-4. In **nieuwe verbinding**voert u de volgende gegevens in of selecteert u deze:
+4. In **nieuwe verbinding** voert u de volgende gegevens in of selecteert u deze:
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | Servertype| Selecteer **postgresql**.|
+    | Servertype| Selecteer **postgresql** .|
     | Servernaam| *Mydemopostgresserver.privatelink.postgres.database.Azure.com* selecteren |
     | Gebruikersnaam | Voer de gebruikers naam in username@servername die wordt opgegeven tijdens het maken van de postgresql-server. |
     |Wachtwoord |Voer een wacht woord in dat u hebt opgegeven tijdens het maken van de PostgreSQL-server. |
-    |SSL|Selecteer **vereist**.|
+    |SSL|Selecteer **vereist** .|
     ||
 
 5. Selecteer Verbinding maken.

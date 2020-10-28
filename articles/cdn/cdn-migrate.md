@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 06/21/2018
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: c1302822715a37ef1b85007130067ac02a8fd17a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e58c1177fb3c4d241a3efe1759b3900abbd04ca1
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84887582"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778392"
 ---
 # <a name="migrate-an-azure-cdn-profile-from-standard-verizon-to-premium-verizon"></a>Een Azure CDN profiel migreren van Standard Verizon naar Premium Verizon
 
@@ -42,7 +42,7 @@ Neem contact op met [Microsoft ondersteuning](https://azure.microsoft.com/suppor
 
 **Azure CDN Premium van Verizon** -profielen hebben de volgende extra functies:
 - [Token verificatie](cdn-token-auth.md): Hiermee kunnen gebruikers een token verkrijgen en gebruiken voor het ophalen van beveiligde bronnen.
-- [Regel engine](cdn-rules-engine.md): Hiermee kunt u aanpassen hoe HTTP-aanvragen worden verwerkt.
+- [Regel engine](./cdn-verizon-premium-rules-engine.md): Hiermee kunt u aanpassen hoe HTTP-aanvragen worden verwerkt.
 - Geavanceerde analyse Programma's:
    - [Gedetailleerde HTTP-analyse](cdn-advanced-http-reports.md)
    - [Edge Performance Analytics](cdn-edge-performance.md)
@@ -50,5 +50,4 @@ Neem contact op met [Microsoft ondersteuning](https://azure.microsoft.com/suppor
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor meer informatie over de regel engine de [referentie voor Azure CDN regels-engine](cdn-rules-engine-reference.md).
-
+Zie voor meer informatie over de regel engine de [referentie voor Azure CDN regels-engine](./cdn-verizon-premium-rules-engine-reference.md).

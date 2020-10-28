@@ -12,23 +12,23 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, emlisa
 ms.date: 10/26/2020
-ms.openlocfilehash: bb9e17a4befcdcf1a322734c6cc5d75d653f23e6
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 1485f06af2bb3c4912df3e34cb23c409b7db3dc2
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676135"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780356"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Een overzicht van de beveiligings mogelijkheden van Azure SQL Database en SQL Managed instance
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+[!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-In dit artikel vindt u een overzicht van de basis principes van het beveiligen van de gegevenslaag van een toepassing met behulp van [Azure SQL database](sql-database-paas-overview.md) en [Azure SQL Managed instance](../managed-instance/sql-managed-instance-paas-overview.md). De beschreven beveiligings strategie volgt de gelaagde ingrijpende aanpak zoals wordt weer gegeven in de onderstaande afbeelding, en verplaatst van de buiten kant naar:
+In dit artikel vindt u een overzicht van de basis principes van het beveiligen van de gegevenslaag van een toepassing met behulp van [Azure SQL database](sql-database-paas-overview.md), [Azure SQL Managed instance](../managed-instance/sql-managed-instance-paas-overview.md)en [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md). De beschreven beveiligings strategie volgt de gelaagde ingrijpende aanpak zoals wordt weer gegeven in de onderstaande afbeelding, en verplaatst van de buiten kant naar:
 
 ![Diagram van de ingrijpende verdediging in de diepte. Klant gegevens zijn Encased in lagen van netwerk beveiliging, Toegangs beheer en bedreigingen en informatie bescherming.](./media/security-overview/sql-security-layer.png)
 
 ## <a name="network-security"></a>Netwerkbeveiliging
 
-Microsoft Azure SQL Database en SQL Managed instance bieden een relationele database service voor Cloud-en bedrijfs toepassingen. Om klant gegevens te helpen beschermen, worden netwerk toegang tot de server voor komen door firewalls, totdat de toegang expliciet wordt verleend op basis van het IP-adres of de oorsprong van het virtuele netwerk verkeer van Azure.
+Microsoft Azure SQL Database, SQL Managed instance en Azure Synapse Analytics bieden een relationele database service voor Cloud-en bedrijfs toepassingen. Om klant gegevens te helpen beschermen, worden netwerk toegang tot de server voor komen door firewalls, totdat de toegang expliciet wordt verleend op basis van het IP-adres of de oorsprong van het virtuele netwerk verkeer van Azure.
 
 ### <a name="ip-firewall-rules"></a>IP-firewallregels
 
@@ -36,7 +36,7 @@ IP-firewall regels verlenen toegang tot data bases op basis van het oorspronkeli
 
 ### <a name="virtual-network-firewall-rules"></a>Firewallregels voor virtueel netwerk
 
-Met [virtuele netwerk service-eind punten](../../virtual-network/virtual-network-service-endpoints-overview.md) wordt de verbinding van het virtuele netwerk via de Azure-backbone uitgebreid en kunnen Azure SQL database het subnet van het virtuele netwerk identificeren waaruit het verkeer afkomstig is. Als u wilt toestaan dat verkeer wordt bereikt Azure SQL Database, gebruikt u de SQL [service-Tags](../../virtual-network/security-overview.md) om uitgaand verkeer via netwerk beveiligings groepen toe te staan.
+Met [virtuele netwerk service-eind punten](../../virtual-network/virtual-network-service-endpoints-overview.md) wordt de verbinding van het virtuele netwerk via de Azure-backbone uitgebreid en kunnen Azure SQL database het subnet van het virtuele netwerk identificeren waaruit het verkeer afkomstig is. Als u wilt toestaan dat verkeer wordt bereikt Azure SQL Database, gebruikt u de SQL [service-Tags](../../virtual-network/network-security-groups-overview.md) om uitgaand verkeer via netwerk beveiligings groepen toe te staan.
 
 Met [regels voor virtuele netwerken](vnet-service-endpoint-rule-overview.md) kunnen Azure SQL database alleen communicatie accepteren die worden verzonden vanuit geselecteerde subnetten binnen een virtueel netwerk.
 
@@ -99,7 +99,7 @@ Geavanceerde beveiliging tegen bedreigingen is een analyse van uw logboeken om o
 
 SQL Database, SQL Managed instance en Azure Synapse Analytics beveiligde klant gegevens door gegevens in beweging te versleutelen met [Transport Layer Security (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server).
 
-SQL Database, SQL Managed instance en Azure Synapse dwingt te allen tijde Encryption (SSL/TLS) af voor alle verbindingen. Dit zorgt ervoor dat alle gegevens in transit tussen de client en server worden versleuteld, ongeacht de instelling van **versleutelen** of **TrustServerCertificate** in de Connection String.
+SQL Database, SQL Managed instance en Azure Synapse Analytics te allen tijde versleuteling (SSL/TLS) afdwingen voor alle verbindingen. Dit zorgt ervoor dat alle gegevens in transit tussen de client en server worden versleuteld, ongeacht de instelling van **versleutelen** of **TrustServerCertificate** in de Connection String.
 
 Als best practice kunt u het beste een versleutelde verbinding opgeven in de connection string die door de toepassing wordt gebruikt en het server certificaat _**niet**_ vertrouwen. Dit dwingt uw toepassing af om het server certificaat te verifiëren en zorgt er daarom voor dat uw toepassing kwetsbaar is voor man in het middelste type aanvallen.
 

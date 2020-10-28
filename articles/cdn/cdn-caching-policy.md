@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/04/2017
 ms.author: juliako
-ms.openlocfilehash: 6beaee98e78e79c48270801f5696e4e487b0a2c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5807d38e22d8cecf40b5ad4262f9e4662b77ec4c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84883706"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779132"
 ---
 # <a name="manage-azure-cdn-caching-policy-in-azure-media-services"></a>Azure CDN cache beleid in Azure Media Services beheren
 Azure Media Services biedt op HTTP gebaseerde adaptieve streaming en progressief downloaden. Streaming op basis van HTTP is zeer schaalbaar en biedt voor delen van caching in proxy-en CDN-lagen, en caching aan client zijde. Streaming-eind punten bieden algemene streaming-mogelijkheden en ook configuratie voor HTTP-cache headers. Met streaming-eind punten wordt HTTP-cache-Control ingesteld: Max-Age en Expires-headers. U kunt meer informatie krijgen over HTTP-cache headers van [w3.org](https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html).
@@ -40,10 +40,9 @@ U kunt Azure Portal-of Azure Media Services-Api's gebruiken voor het configurere
 
 1. Zie de sectie [streaming-eind punten beheren](../media-services/previous/media-services-portal-manage-streaming-endpoints.md) in het streaming-eind punt configureren om cache headers te configureren met behulp van Azure Portal.
 2. Azure Media Services REST API, [StreamingEndpoint](/rest/api/media/operations/streamingendpoint#StreamingEndpointCacheControl).
-3. Azure Media Services .NET-SDK, [StreamingEndpointCacheControl eigenschappen](https://go.microsoft.com/fwlink/?LinkId=615302).
+3. Azure Media Services .NET-SDK, [StreamingEndpointCacheControl eigenschappen](/dotnet/api/microsoft.windowsazure.mediaservices.client.streamingendpointcachecontrol).
 
 ## <a name="cache-configuration-precedence-order"></a>Volg orde van prioriteit van cache configuratie
 1. Standaard waarde voor onderdrukking van Azure Media Services geconfigureerde cache waarde.
 2. Als er geen hand matige configuratie is, zijn de standaard waarden van toepassing.
 3. Standaard zijn 2 seconden cache headers van toepassing op het live streaming-manifest (afspeel lijst), ongeacht de Azure-media-of Azure Storage configuratie en het overschrijven van deze waarde is niet beschikbaar.
-

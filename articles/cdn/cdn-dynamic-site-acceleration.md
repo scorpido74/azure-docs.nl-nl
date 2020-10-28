@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: allensu
-ms.openlocfilehash: bae131c086e8fbf062015ee27c563bb988731cad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5387fdc224cd77ee5273767df5033a51dc27608c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84888546"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778860"
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Dynamische site versnelling via Azure CDN
 
@@ -27,7 +27,7 @@ Met de explosie van sociale media, elektronische handel en het Hyper-gepersonali
 
 De standaard functionaliteit voor Content Delivery Network (CDN) omvat de mogelijkheid om bestanden dichter bij eind gebruikers op te slaan om het leveren van statische bestanden te versnellen. Met dynamische webtoepassingen is het in de cache plaatsen van inhoud in Edge-locaties echter niet mogelijk omdat de server de inhoud genereert als reactie op het gedrag van de gebruiker. Het versnellen van de levering van dergelijke inhoud is complexer dan de traditionele breedte van de rand, en vereist een end-to-end oplossing die elk element van het hele gegevenspad afstemt van het begin tot de levering. Met Azure CDN optimalisatie van dynamische site versnelling (DSA) kunnen de prestaties van webpagina's met dynamische inhoud meetbaar worden verbeterd.
 
-**Azure CDN van Akamai** en **Azure CDN van Verizon** bieden DSA Optimization via het menu **Optimized for** tijdens het maken van een eind punt. Dynamische site versnelling van micro soft wordt aangeboden via de [Azure front-deur service](https://docs.microsoft.com/azure/frontdoor/front-door-overview).
+**Azure CDN van Akamai** en **Azure CDN van Verizon** bieden DSA Optimization via het menu **Optimized for** tijdens het maken van een eind punt. Dynamische site versnelling van micro soft wordt aangeboden via de [Azure front-deur service](../frontdoor/front-door-overview.md).
 
 > [!Important]
 > Voor **Azure CDN van Akamai** -profielen, mag u de optimalisatie van een CDN-eind punt wijzigen nadat deze is gemaakt.
@@ -40,21 +40,21 @@ Als u een CDN-eind punt wilt configureren om de levering van dynamische bestande
 
 **Een CDN-eind punt voor DSA-optimalisatie configureren met behulp van de Azure Portal:**
 
-1. Selecteer op de pagina **CDN-profiel** de optie **eind punt**.
+1. Selecteer op de pagina **CDN-profiel** de optie **eind punt** .
 
    ![Een nieuw CDN-eind punt toevoegen](./media/cdn-dynamic-site-acceleration/cdn-endpoint-profile.png) 
 
    Het deelvenster **Een eindpunt toevoegen** wordt weergegeven.
 
-2. Selecteer onder **geoptimaliseerd voor** **dynamische site versnelling**.
+2. Selecteer onder **geoptimaliseerd voor** **dynamische site versnelling** .
 
     ![Een nieuw CDN-eind punt maken met DSA](./media/cdn-dynamic-site-acceleration/cdn-endpoint-dsa.png)
 
-3. Voer voor **probe Path**een geldig pad naar een bestand in.
+3. Voer voor **probe Path** een geldig pad naar een bestand in.
 
     Probe is een functie die specifiek is voor DSA en een geldig pad is vereist voor het maken van. DSA gebruikt een klein *probe Path* -bestand dat op de oorspronkelijke server is geplaatst om de configuratie van netwerk routering voor het CDN te optimaliseren. Voor het pad naar het probe-bestand kunt u het voorbeeld bestand downloaden en uploaden naar uw site, of een bestaand activum op uw oorsprong gebruiken dat ongeveer 10 KB groot is.
 
-4. Voer de andere vereiste eindpunt opties in (Zie [een nieuw CDN-eind punt maken](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint)voor meer informatie) en selecteer vervolgens **toevoegen**.
+4. Voer de andere vereiste eindpunt opties in (Zie [een nieuw CDN-eind punt maken](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint)voor meer informatie) en selecteer vervolgens **toevoegen** .
 
    Nadat het CDN-eind punt is gemaakt, worden de DSA-optimalisaties toegepast voor alle bestanden die aan bepaalde criteria voldoen. 
 
@@ -63,11 +63,11 @@ Als u een CDN-eind punt wilt configureren om de levering van dynamische bestande
 
 1. Selecteer op de pagina **CDN-profiel** het eind punt dat u wilt wijzigen.
 
-2. Selecteer **optimalisatie**in het linkerdeel venster. 
+2. Selecteer **optimalisatie** in het linkerdeel venster. 
 
    De pagina **optimalisatie** wordt weer gegeven.
 
-3. Selecteer onder **geoptimaliseerd voor** **dynamische site versnelling**en selecteer vervolgens **Opslaan**.
+3. Selecteer onder **geoptimaliseerd voor** **dynamische site versnelling** en selecteer vervolgens **Opslaan** .
 
 > [!Note]
 > DSA brengt extra kosten met zich mee. Zie [Content Delivery Network prijzen](https://azure.microsoft.com/pricing/details/cdn/)voor meer informatie.
@@ -109,9 +109,9 @@ Transmission Control Protocol (TCP) is de standaard van de Internet protocol sui
 
 1. Status-en bandbreedte bewaking wordt gebruikt om de band breedte van verbindingen tussen PoP-servers met Edge te meten.
     
-2. Metrische PoP-servers worden gedeeld, zodat elke server op de hoogte is van de netwerk omstandigheden en de server status van de andere Pop's rond ze.  
+2. Metrische PoP-servers worden gedeeld, zodat elke server op de hoogte is van de netwerk omstandigheden en de server status van de andere Pop's rond ze.  
     
-3. De CDN-rand servers maken veronderstellingen over bepaalde overdrachts parameters, zoals wat de optimale venster grootte moet zijn wanneer u communiceert met andere CDN edge-servers in de buurt. Deze stap betekent dat de initiële insluitings venster grootte kan worden verhoogd als de status van de verbinding tussen de CDN-rand servers geschikt is voor hogere pakket gegevens overdracht.  
+3. De CDN-rand servers maken veronderstellingen over bepaalde overdrachts parameters, zoals wat de optimale venster grootte moet zijn wanneer u communiceert met andere CDN edge-servers in de buurt. Deze stap betekent dat de initiële insluitings venster grootte kan worden verhoogd als de status van de verbinding tussen de CDN-rand servers geschikt is voor hogere pakket gegevens overdracht.  
 
 #### <a name="leveraging-persistent-connections"></a>Permanente verbindingen gebruiken
 
@@ -157,7 +157,7 @@ Voor **Azure CDN Standard van Verizon** en **Azure CDN Standard van Akamai** -pr
 
 Voor toegang tot de regels voor opslaan in cache:
 
-1. Selecteer op de pagina **CDN-profiel** onder instellingen de optie **cache regels**.  
+1. Selecteer op de pagina **CDN-profiel** onder instellingen de optie **cache regels** .  
     
     ![Knop Regels voor CDN-caching](./media/cdn-dynamic-site-acceleration/cdn-caching-rules-btn.png)
 
@@ -165,17 +165,17 @@ Voor toegang tot de regels voor opslaan in cache:
 
 2. Maak een algemene of aangepaste regel voor opslaan in cache om caching in te scha kelen voor uw DSA-eind punt. 
 
-Voor **Azure CDN Premium van Verizon** -profielen, kunt u caching voor specifieke DSA-eind punten inschakelen met behulp van de [regel engine](cdn-rules-engine.md). Alle regels die worden gemaakt, zijn alleen van invloed op de eind punten van uw profiel die zijn geoptimaliseerd voor DSA. 
+Voor **Azure CDN Premium van Verizon** -profielen, kunt u caching voor specifieke DSA-eind punten inschakelen met behulp van de [regel engine](./cdn-verizon-premium-rules-engine.md). Alle regels die worden gemaakt, zijn alleen van invloed op de eind punten van uw profiel die zijn geoptimaliseerd voor DSA. 
 
 Voor toegang tot de regel Engine:
     
-1. Selecteer op de pagina **CDN-profiel** de optie **beheren**.  
+1. Selecteer op de pagina **CDN-profiel** de optie **beheren** .  
     
     ![Beheer knop voor CDN-profiel](./media/cdn-dynamic-site-acceleration/cdn-manage-btn.png)
 
     De CDN-beheer portal wordt geopend.
 
-2. Selecteer **ADN**in de CDN-beheer Portal en selecteer vervolgens **regel engine**. 
+2. Selecteer **ADN** in de CDN-beheer Portal en selecteer vervolgens **regel engine** . 
 
     ![Regel engine voor DSA](./media/cdn-dynamic-site-acceleration/cdn-dsa-rules-engine.png)
 
@@ -183,7 +183,4 @@ Voor toegang tot de regel Engine:
 
 U kunt ook twee CDN-eind punten gebruiken: één eind punt dat is geoptimaliseerd met DSA voor het leveren van dynamische assets en een ander eind punt dat is geoptimaliseerd voor een statisch optimalisatie type, zoals algemene weblevering, voor leverings cachebare assets. Wijzig de Url's van uw webpagina's zodat u deze rechtstreeks kunt koppelen aan de Asset op het CDN-eind punt dat u wilt gebruiken. 
 
-Bijvoorbeeld: `mydynamic.azureedge.net/index.html` is een dynamische pagina en wordt geladen vanuit het DSA-eind punt.De HTML-pagina verwijst naar meerdere statische assets, zoals Java script-bibliotheken of installatie kopieën die worden geladen vanuit het statische CDN-eind punt, zoals `mystatic.azureedge.net/banner.jpg` en `mystatic.azureedge.net/scripts.js` . 
-
-
-
+Bijvoorbeeld: `mydynamic.azureedge.net/index.html` is een dynamische pagina en wordt geladen vanuit het DSA-eind punt.  De HTML-pagina verwijst naar meerdere statische assets, zoals Java script-bibliotheken of installatie kopieën die worden geladen vanuit het statische CDN-eind punt, zoals `mystatic.azureedge.net/banner.jpg` en `mystatic.azureedge.net/scripts.js` .

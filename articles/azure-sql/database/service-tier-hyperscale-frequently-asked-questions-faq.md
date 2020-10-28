@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: be8e38d38408bd7cf11608d71035bd7cf0808b60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 400dd66827e82c1ede496526c49977e6f5383487
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89488861"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780186"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Veelgestelde vragen over Azure SQL Database grootschalige
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -136,7 +136,7 @@ Nee.
 
 ### <a name="how-many-read-scale-out-replicas-are-supported"></a>Hoeveel Lees Scale-outs replica's worden ondersteund
 
-De grootschalige-data bases worden standaard gemaakt met één Read scale-out replica (twee replica's, inclusief primair). U kunt het aantal alleen-lezen replica's tussen 0 en 4 schalen met behulp van [Azure Portal](https://portal.azure.com) of [rest API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate).
+De grootschalige-data bases worden standaard gemaakt met één Read scale-out replica (twee replica's, inclusief primair). U kunt het aantal alleen-lezen replica's tussen 0 en 4 schalen met behulp van [Azure Portal](https://portal.azure.com) of [rest API](/rest/api/sql/databases/createorupdate).
 
 ### <a name="for-high-availability-do-i-need-to-provision-additional-compute-replicas"></a>Voor hoge Beschik baarheid moet ik extra reken replica's inrichten
 
@@ -198,7 +198,7 @@ Ja, met inbegrip van rij-, pagina-en column Store-compressie.
 
 ### <a name="if-i-have-a-huge-table-does-my-table-data-get-spread-out-across-multiple-data-files"></a>Als ik een enorme tabel heb, worden mijn tabel gegevens verdeeld over meerdere gegevens bestanden
 
-Ja. De gegevens pagina's die aan een bepaalde tabel zijn gekoppeld, kunnen eindigen op meerdere gegevens bestanden, die allemaal deel uitmaken van dezelfde bestands groep. SQL Server maakt gebruik van [proportionele strategie](https://docs.microsoft.com/sql/relational-databases/databases/database-files-and-filegroups#file-and-filegroup-fill-strategy) voor het distribueren van gegevens over gegevens bestanden.
+Ja. De gegevens pagina's die aan een bepaalde tabel zijn gekoppeld, kunnen eindigen op meerdere gegevens bestanden, die allemaal deel uitmaken van dezelfde bestands groep. SQL Server maakt gebruik van [proportionele strategie](/sql/relational-databases/databases/database-files-and-filegroups#file-and-filegroup-fill-strategy) voor het distribueren van gegevens over gegevens bestanden.
 
 ## <a name="data-migration-questions"></a>Vragen over gegevens migratie
 
@@ -231,9 +231,9 @@ Grootschalige is geschikt voor het gebruik van 100 MB/s met nieuwe/gewijzigde ge
 
 ### <a name="can-i-read-data-from-blob-storage-and-do-fast-load-like-polybase-in-azure-synapse-analytics"></a>Kan ik gegevens lezen uit Blob Storage en snel laden (zoals poly base in azure Synapse Analytics)
 
-U kunt een client toepassing gegevens laten lezen van Azure Storage en laden van gegevens in een grootschalige-data base (net als bij andere data bases in Azure SQL Database). Poly Base wordt momenteel niet ondersteund in Azure SQL Database. Als alternatief voor snelle belasting kunt u [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/)gebruiken, of een Spark-taak gebruiken in [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) met de Spark- [Connector voor SQL](spark-connector.md). De Spark-connector naar SQL ondersteunt bulksgewijze invoeging.
+U kunt een client toepassing gegevens laten lezen van Azure Storage en laden van gegevens in een grootschalige-data base (net als bij andere data bases in Azure SQL Database). Poly Base wordt momenteel niet ondersteund in Azure SQL Database. Als alternatief voor snelle belasting kunt u [Azure Data Factory](../../data-factory/index.yml)gebruiken, of een Spark-taak gebruiken in [Azure Databricks](/azure/azure-databricks/) met de Spark- [Connector voor SQL](spark-connector.md). De Spark-connector naar SQL ondersteunt bulksgewijze invoeging.
 
-Het is ook mogelijk om gegevens te lezen uit een Azure Blob Store met behulp van BULK INSERT of OPENROWSET: [voor beelden van bulk toegang tot gegevens in Azure Blob Storage](https://docs.microsoft.com/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?view=sql-server-2017#accessing-data-in-a-csv-file-referencing-an-azure-blob-storage-location).
+Het is ook mogelijk om gegevens te lezen uit een Azure Blob Store met behulp van BULK INSERT of OPENROWSET: [voor beelden van bulk toegang tot gegevens in Azure Blob Storage](/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?view=sql-server-2017#accessing-data-in-a-csv-file-referencing-an-azure-blob-storage-location).
 
 Het eenvoudige herstel-of bulk logboek model wordt niet ondersteund in grootschalige. Een volledig herstel model is vereist voor een hoge Beschik baarheid en herstel naar een bepaald tijdstip. Grootschalige-logboek architectuur biedt echter betere gegevens opname frequentie vergeleken met andere Azure SQL Database-Service lagen.
 
@@ -277,7 +277,7 @@ Nee. Back-ups worden beheerd door het opslag subsysteem en maken gebruik van ops
 
 ### <a name="can-i-perform-geo-restore-with-a-hyperscale-database"></a>Kan ik geo-herstel uitvoeren met een grootschalige-data base
 
-Ja. Geo-Restore wordt volledig ondersteund. In tegens telling tot het herstel punt in de tijd vereist geo-Restore een omvang van gegevens bewerkingen. Gegevens bestanden worden parallel gekopieerd. de duur van deze bewerking is vooral afhankelijk van de grootte van het grootste bestand in de data base, in plaats van de totale database grootte. De geo-herstel tijd is aanzienlijk korter als de data base wordt hersteld in de Azure-regio die is [gekoppeld](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) aan de regio van de bron database.
+Ja. Geo-Restore wordt volledig ondersteund. In tegens telling tot het herstel punt in de tijd vereist geo-Restore een omvang van gegevens bewerkingen. Gegevens bestanden worden parallel gekopieerd. de duur van deze bewerking is vooral afhankelijk van de grootte van het grootste bestand in de data base, in plaats van de totale database grootte. De geo-herstel tijd is aanzienlijk korter als de data base wordt hersteld in de Azure-regio die is [gekoppeld](../../best-practices-availability-paired-regions.md) aan de regio van de bron database.
 
 ### <a name="can-i-set-up-geo-replication-with-hyperscale-database"></a>Kan ik geo-replicatie met grootschalige-data base instellen
 
@@ -357,7 +357,7 @@ Nee. Alleen de primaire Compute replica accepteert Lees-en schrijf aanvragen. Se
 
 ### <a name="how-many-secondary-compute-replicas-can-i-provision"></a>Hoeveel secundaire reken replica's kan ik inrichten
 
-Er wordt standaard één secundaire replica voor grootschalige-data bases gemaakt. Als u het aantal replica's wilt aanpassen, kunt u dit doen met behulp van [Azure Portal](https://portal.azure.com) of [rest API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate).
+Er wordt standaard één secundaire replica voor grootschalige-data bases gemaakt. Als u het aantal replica's wilt aanpassen, kunt u dit doen met behulp van [Azure Portal](https://portal.azure.com) of [rest API](/rest/api/sql/databases/createorupdate).
 
 ### <a name="how-do-i-connect-to-these-secondary-compute-replicas"></a>Hoe kan ik verbinding maken met deze secundaire reken replica's
 

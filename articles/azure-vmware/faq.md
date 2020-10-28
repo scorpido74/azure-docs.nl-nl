@@ -4,12 +4,12 @@ description: Hier vindt u antwoorden op enkele veelgestelde vragen over de Azure
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: 816f64f9987abbdcd49de93b3bc218ec1606d9f3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 91be1c51639aa3ae8acbf0c37f5c4a8174b5a592
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461648"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779438"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Veelgestelde vragen over de Azure VMware-oplossing
 
@@ -19,7 +19,7 @@ Antwoorden op veelgestelde vragen over de Azure VMware-oplossing.
 
 #### <a name="what-is-azure-vmware-solution"></a>Wat is Azure VMware Solution?
 
-Als ondernemingen de strategie voor modernisatie verhogen om de flexibiliteit van het bedrijf te verbeteren, kosten te verlagen en innovatie te versnellen, zijn hybride Cloud platforms opgegroeid als belangrijkste digitale trans formatie van klanten. De oplossing Azure VMware combineert SDDC-software (Software Defined Data Center) van VMware met Microsoft Azure Global Cloud service-ecosysteem. De Azure VMware-oplossing wordt beheerd om te voldoen aan de vereisten voor prestaties, Beschik baarheid, beveiliging en naleving.
+Als ondernemingen de strategie voor modernisatie verhogen om de flexibiliteit van het bedrijf te verbeteren, kosten te verlagen en innovatie te versnellen, zijn hybride Cloud platforms opgegroeid als belangrijkste digitale trans formatie van klanten. De oplossing Azure VMware combineert de Software-Defined Data Center-software van VMware (SDDC) met Microsoft Azure Global Cloud service-ecosysteem. De Azure VMware-oplossing wordt beheerd om te voldoen aan de vereisten voor prestaties, Beschik baarheid, beveiliging en naleving.
 
 ## <a name="azure-vmware-solution-service"></a>Azure VMware-oplossings service
 
@@ -49,7 +49,7 @@ Ja. VM-migratie en vMotion kunnen worden gebruikt om Vm's naar een privécloud t
 
 #### <a name="is-a-specific-version-of-vsphere-required-in-on-premises-environments"></a>Is een specifieke versie van vSphere vereist in on-premises omgevingen?
 
-Omdat alle Cloud omgevingen zijn geleverd met VMware HCX, vSphere 5,5 of hoger in on-premises omgevingen voor vMotion.
+Alle Cloud omgevingen worden geleverd met VMware HCX, vSphere 5,5 of hoger in on-premises omgevingen voor vMotion.
 
 #### <a name="what-does-the-change-control-process-look-like"></a>Wat ziet het wijzigings controle proces eruit?
 
@@ -57,7 +57,7 @@ Updates die in de service zelf zijn aangebracht, volgen het standaard proces voo
 
 #### <a name="how-is-this-different-from-azure-vmware-solution-by-cloudsimple"></a>Wat is het verschil tussen de Azure VMware-oplossing en CloudSimple?
 
-Met de nieuwe Azure VMware-oplossing beschikt micro soft en VMware over een direct partnerschap voor de Cloud provider. De nieuwe oplossing is volledig ontworpen, gebouwd en ondersteund door micro soft en goedgekeurd door VMware. In architectuur zijn de oplossingen consistent, met de VMware-technologie stack die wordt uitgevoerd op een toegewezen Azure-infra structuur.
+Met de nieuwe Azure VMware-oplossing beschikt micro soft en VMware over een direct partnerschap voor de Cloud provider. De nieuwe oplossing is volledig ontworpen, gebouwd en ondersteund door micro soft en goedgekeurd door VMware. In architectuur zijn de oplossingen consistent, met de VMware-technologie stack die wordt uitgevoerd op een specifieke Azure-infra structuur.
 
 #### <a name="are-red-hat-solutions-supported-on-azure-vmware-solution"></a>Worden Red Hat-oplossingen ondersteund op de Azure VMware-oplossing?
 
@@ -65,10 +65,10 @@ Micro soft en Red Hat delen een geïntegreerd ondersteunings team dat een unifor
 
 #### <a name="is-vmware-hcx-enterprise-edition-available-and-if-so-how-much-does-it-cost"></a>Is VMware HCX Enter prise Edition beschikbaar, en zo ja, hoeveel kost het?
 
-VMware HCX Enterprise Edition (EE) is beschikbaar met Azure VMware Solution als een *preview*-functie/-service. Hoewel VMware HCX EE voor de Azure VMware-oplossing in preview is, is het een gratis functie/service en onderhevig aan de voor waarden van de preview-versie van de service. Zodra de VMware HCX EE-service algemeen beschikbaar wordt, krijgt u een melding dat de facturering over 30 dagen wordt omgeschakeld. U kunt de service uitschakelen of u afmelden.
+VMware HCX Enterprise Edition (EE) is beschikbaar met Azure VMware Solution als een *preview* -functie/-service. Hoewel VMware HCX EE voor de Azure VMware-oplossing in preview is, is het een gratis functie/service en onderhevig aan de voor waarden van de preview-versie van de service. Zodra de VMware HCX EE-service algemeen beschikbaar wordt, krijgt u een melding dat de facturering over 30 dagen wordt omgeschakeld. U kunt de service uitschakelen of u afmelden.
 
 #### <a name="can-azure-vmware-solution-vms-be-managed-by-vmrc"></a>Kunnen Vm's van Azure VMware-oplossingen worden beheerd door VMRC?
-Ja, op voor waarde dat het systeem waarop het is geïnstalleerd, toegang kan krijgen tot de privécloud en open bare DNS gebruikt (zodat ESXi hostnamen kan worden omgezet).
+Ja, op voor waarde dat het systeem waarop het is geïnstalleerd, toegang kan krijgen tot de privécloud en de open bare DNS gebruikt om ESXi-hostnamen op te lossen.
 
 #### <a name="are-there-special-instructions-for-installing-and-using-vmrc-with-azure-vmware-solution-vms"></a>Zijn er speciale instructies voor het installeren en gebruiken van VMRC met virtuele machines met Azure VMware-oplossingen?
 Nee, gebruik de [instructies van VMware](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html) en voer de vereiste VM-vereisten in deze instructies uit. 
@@ -102,7 +102,7 @@ Elke ESXi-host heeft twee vSAN-diskgroups met een capaciteits categorie van 15,2
 
 #### <a name="how-much-network-bandwidth-is-available-in-each-esxi-host"></a>Hoeveel netwerk bandbreedte is beschikbaar op elke ESXi-host?
 
-Elke ESXi-host is een Azure VMware-oplossing is geconfigureerd met 4 25-Gbps Nic's, met twee Nic's die zijn ingericht voor het ESXi-systeem verkeer en twee Nic's die zijn ingericht voor werkbelasting verkeer. 
+Elke ESXi-host in de Azure VMware-oplossing is geconfigureerd met 4 25-Gbps Nic's, twee Nic's die zijn ingericht voor het ESXi-systeem verkeer en twee Nic's die zijn ingericht voor werkbelasting verkeer. 
 
 #### <a name="is-data-stored-on-the-vsan-datastores-encrypted-at-rest"></a>Worden gegevens opgeslagen op de vSAN-data stores die zijn versleuteld op rest?
 
@@ -116,9 +116,9 @@ Net als we weten, moeten alle back-upoplossingen die gebruikmaken van VMware VAD
 
 Omdat deze back-upoplossingen worden geïnstalleerd en beheerd door klanten, kunnen ze contact met de desbetreffende ISV vinden voor ondersteuning. 
 
-#### <a name="what-is-the-correct-storage-policy-for-the-dedup-setup"></a>Wat is het juiste opslag beleid voor de instellingen voor de ontdubbeling?
+#### <a name="what-is-the-correct-storage-policy-for-the-dedupe-setup"></a>Wat is het juiste opslag beleid voor de instelling voor ontdubbeling?
 
-Gebruik het *thin_provision* -opslag beleid voor uw VM-sjabloon.  De standaard waarde is *thick_provision*.
+Gebruik het *thin_provision* -opslag beleid voor uw VM-sjabloon.  De standaard waarde is *thick_provision* .
 
 #### <a name="are-the-snmp-infrastructure-logs-shared"></a>Worden de logboeken voor de SNMP-infra structuur gedeeld?
 
@@ -130,17 +130,17 @@ Nee.
 
 Nee, hosts en clusters in de privécloud zijn toegewezen en veilig verwijderd voor en na gebruik.
 
-#### <a name="what-are-the-minimum-and-maximum-number-of-hosts-per-cluster"></a>Wat zijn het minimale en maximum aantal hosts per cluster?
+#### <a name="what-are-the-minimum-and-the-maximum-number-of-hosts-per-cluster"></a>Wat is het minimum en het maximum aantal hosts per cluster?
 
 Clusters kunnen worden geschaald tussen 3-en 16 ESXi-hosts. Proef clusters zijn beperkt tot drie hosts.
 
 #### <a name="can-i-scale-my-private-cloud-clusters"></a>Kan ik mijn persoonlijke Cloud clusters schalen?
 
-Ja, clusters worden geschaald tussen het minimale en het maximale aantal ESXi-hosts. Proef clusters zijn beperkt tot drie hosts.
+Ja, clusters worden geschaald tussen het minimum en het maximum aantal ESXi-hosts. Proef clusters zijn beperkt tot drie hosts.
 
 #### <a name="what-are-trial-clusters"></a>Wat zijn proef clusters?
 
-Proef clusters zijn drie host-clusters die worden gebruikt voor één maand evaluatie van persoonlijke Clouds van Azure VMware.
+Proef clusters zijn drie host-clusters die worden gebruikt voor evaluaties van Azure VMware-oplossingen met persoonlijke Clouds voor één maand.
 
 #### <a name="can-i-use-high-end-hosts-for-trial-clusters"></a>Kan ik hoogwaardige hosts gebruiken voor proef clusters?
 
@@ -154,7 +154,7 @@ Persoonlijke Clouds gebruiken vSphere 6,7, vSAN 6,7, VMware HCX en versie 2,5 va
 
 #### <a name="do-private-clouds-use-vmware-nsx"></a>Gebruiken persoonlijke Clouds VMware NSX?
 
-Ja, NSX-T 2,5 wordt gebruikt voor de software gedefinieerde netwerken in azure VMware-oplossingen voor persoonlijke Clouds.
+Ja, NSX-T 2,5 wordt gebruikt voor het door software gedefinieerde netwerk in persoonlijke Clouds van Azure VMware.
 
 #### <a name="can-i-use-vmware-nsx-v-in-a-private-cloud"></a>Kan ik VMware NSX-V in een privécloud gebruiken?
 
@@ -166,11 +166,11 @@ Nee, u hoeft NSX niet on-premises te gebruiken.
 
 #### <a name="what-is-the-upgrade-and-update-schedule-for-vmware-software-in-a-private-cloud"></a>Wat is de upgrade en update planning voor VMware-software in een privécloud?
 
-De software bundel upgrades van de privécloud worden uitgevoerd om de software binnen één versie van de meest recente release van de software bundel uit VMware te laten. De software versies van de privécloud kunnen afwijken van de meest recente versies van de afzonderlijke software onderdelen (ESXi, NSX-T, vCenter, vSAN).
+De software bundel upgrades van de privécloud worden uitgevoerd om de software binnen één versie van de meest recente software bundel versie van VMware te blijven gebruiken. De software versies van de privécloud kunnen afwijken van de meest recente versies van de afzonderlijke software onderdelen (ESXi, NSX-T, vCenter, vSAN).
 
 #### <a name="how-often-will-the-private-cloud-software-stack-be-updated"></a>Hoe vaak wordt de software stack voor de privécloud bijgewerkt?
 
-De privécloud wordt bijgewerkt volgens een schema dat met de release van de software bundel uit VMware wordt getraceerd. Uw privécloud vereist geen uitval tijd voor upgrades.
+De software van de privécloud wordt bijgewerkt volgens een schema dat de release van de software bundel uit VMware bijhoudt. Uw privécloud vereist geen uitval tijd voor upgrades.
 
 ## <a name="connectivity"></a>Connectiviteit
 
@@ -228,7 +228,7 @@ Zie de pagina met [prijzen](https://azure.microsoft.com/pricing/details/azure-vm
 
 #### <a name="who-supports-azure-vmware-solution"></a>Wie ondersteunt de Azure VMware-oplossing?
 
-Ondersteuning voor de Azure VMware-oplossing wordt geleverd door micro soft. U kunt een [ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)indienen.
+Micro soft biedt ondersteuning voor de Azure VMware-oplossing. U kunt een [ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)indienen.
 
 #### <a name="what-accounts-do-i-need-to-create-an-azure-vmware-solution-private-cloud"></a>Welke accounts heb ik nodig om een privécloud van Azure VMware-oplossing te maken?
 
@@ -242,7 +242,7 @@ U hebt een Azure-account in een Azure-abonnement nodig.
 Voordat u uw Azure VMware-oplossings resource maakt, moet u een ondersteunings ticket indienen om uw knoop punten toe te wijzen. Het duurt Maxi maal vijf werk dagen om uw aanvraag te bevestigen en uw knoop punten toe te wijzen. Als u een bestaande privécloud van Azure VMware Solution hebt en u meer knooppunten wilt toewijzen, dan volgt u hetzelfde proces.
 
 
-1. Maak in uw Azure Portal onder **Help en ondersteuning**een **[nieuwe ondersteunings aanvraag](https://rc.portal.azure.com/#create/Microsoft.Support)** en geef de volgende informatie op voor het ticket:
+1. Maak in uw Azure Portal onder **Help en ondersteuning** een **[nieuwe ondersteunings aanvraag](https://rc.portal.azure.com/#create/Microsoft.Support)** en geef de volgende informatie op voor het ticket:
    - **Type probleem:** Documentatie
    - **Abonnement:** Uw abonnement selecteren
    - **Service:** Alle services > Azure VMware-oplossing
@@ -272,9 +272,9 @@ Voordat u uw Azure VMware-oplossings resource maakt, moet u een ondersteunings t
 
    ```azurecli-interactive
    az provider register -n Microsoft.AVS --subscription <your subscription ID>
-   ```
+   `"
 
-   Zie [Azure-resourceproviders en -typen](../azure-resource-manager/management/resource-providers-and-types.md) voor meer manieren om de Azure Synapse-resourceprovider te registeren.
+   For additional ways to register the resource provider, see [Azure resource providers and types](../azure-resource-manager/management/resource-providers-and-types.md).
 
 <!-- LINKS - external -->
 [kb2106952]: https://kb.vmware.com/s/article/2106952?lang=en_US&queryTerm=21069522
