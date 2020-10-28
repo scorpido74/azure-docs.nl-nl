@@ -4,13 +4,13 @@ description: Meer informatie over het configureren van instellingen voor Azure f
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 057c030b060343d5bc6f85c38d61feee0b01dfde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: cc996988-fb4f-47, devx-track-azurecli
+ms.openlocfilehash: f597e58c70d6ac9daff753f5c0a54199c2383c42
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83122291"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746167"
 ---
 # <a name="manage-your-function-app"></a>Uw functie-app beheren 
 
@@ -29,13 +29,13 @@ In dit artikel wordt beschreven hoe u uw functie-apps configureert en beheert.
 
 1. Als u wilt beginnen, gaat u naar de [Azure Portal] en meldt u zich aan bij uw Azure-account. Voer in de zoek balk boven in de Portal de naam van uw functie-app in en selecteer deze in de lijst. 
 
-2. Selecteer **configuratie**onder **instellingen** in het linkerdeel venster.
+2. Selecteer **configuratie** onder **instellingen** in het linkerdeel venster.
 
     :::image type="content" source="./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png" alt-text="Overzicht van functie-app in de Azure Portal":::
 
-U kunt navigeren naar alles wat u nodig hebt om uw functie-app te beheren op de pagina overzicht, met name de **[Toepassings instellingen](#settings)** en **[platform functies](#platform-features)**.
+U kunt navigeren naar alles wat u nodig hebt om uw functie-app te beheren op de pagina overzicht, met name de **[Toepassings instellingen](#settings)** en **[platform functies](#platform-features)** .
 
-## <a name="application-settings"></a><a name="settings"></a>Toepassingsinstellingen
+## <a name="application-settings"></a><a name="settings"></a>Toepassings instellingen
 
 Op het tabblad **Toepassings instellingen** worden instellingen onderhouden die worden gebruikt door de functie-app. Deze instellingen worden versleuteld opgeslagen en u moet **waarden weer geven** selecteren om de waarden in de portal weer te geven. U kunt ook toegang krijgen tot toepassings instellingen met behulp van de Azure CLI.
 
@@ -148,5 +148,5 @@ Wanneer functies een HTTP-trigger gebruiken, kunt u vereisen dat aanroepen eerst
 + [Azure App Service-instellingen configureren](../app-service/configure-common.md)
 + [Doorlopende implementatie voor Azure Functions](functions-continuous-deployment.md)
 
-[Azure-CLI]: /cli/azure/
+[Azure CLI]: /cli/azure/
 [Azure-portal]: https://portal.azure.com

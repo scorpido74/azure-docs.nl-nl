@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 02/26/2020
 ms.reviewer: jushiman
-ms.custom: avverma
-ms.openlocfilehash: d4b31eb59ed0bae2afe408546ece66eacade9ddb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: avverma, devx-track-azurecli
+ms.openlocfilehash: c4d6de1b3406e6d82bdac5ff9b5c72a2286da988
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90603829"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747754"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Melding beëindigen voor exemplaren van virtuele-machineschaalsets van Azure
 Instanties van een schaalset kunnen zich aanmelden voor het ontvangen van meldingen voor het beëindigen van een exemplaar en het instellen van een vooraf gedefinieerde vertragings time-out voor de bewerking beëindigen. De beëindigings melding wordt verzonden via Azure Metadata Service – [Scheduled Events](../virtual-machines/windows/scheduled-events.md), waarmee impact bewerkingen kunnen worden vertraagd, zoals het opnieuw opstarten en opnieuw implementeren. De oplossing voegt een andere gebeurtenis – Terminate toe aan de lijst met Scheduled Events en de bijbehorende vertraging van de gebeurtenis Terminate is afhankelijk van de vertragings limiet, zoals opgegeven door gebruikers in de model configuraties van de schaalset.
@@ -28,12 +28,12 @@ Er zijn meerdere manieren om beëindigings meldingen in te scha kelen voor insta
 
 Met de volgende stappen kunt u de melding beëindigen inschakelen bij het maken van een nieuwe schaalset. 
 
-1. Ga naar **schaal sets voor virtuele machines**.
+1. Ga naar **schaal sets voor virtuele machines** .
 1. Selecteer **+ toevoegen** om een nieuwe schaalset te maken.
 1. Ga naar het tabblad **beheer** . 
 1. Zoek de sectie voor het beëindigen van het **exemplaar** .
-1. Selecteer aan voor het **Afmelden** **van**het exemplaar.
-1. Stel de gewenste time-out voor de **beëindiging in (minuten)**.
+1. Selecteer aan voor het **Afmelden** **van** het exemplaar.
+1. Stel de gewenste time-out voor de **beëindiging in (minuten)** .
 1. Wanneer u klaar bent met het maken van de nieuwe schaalset, selecteert u de knop **controleren + maken** . 
 
 > [!NOTE]
@@ -63,9 +63,9 @@ PUT on `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/provi
 
 ```
 
-In het bovenstaande blok is een time-outvertraging van 5 minuten (zoals aangegeven door *PT5M*) voor elke beëindiging van alle exemplaren in uw schaalset opgegeven. Het veld *notBeforeTimeout* kan elke waarde tussen 5 en 15 minuten in ISO 8601-indeling hebben. U kunt de standaardtime-out voor de bewerking beëindigen wijzigen door de eigenschap *notBeforeTimeout* te wijzigen onder *terminateNotificationProfile* hierboven beschreven.
+In het bovenstaande blok is een time-outvertraging van 5 minuten (zoals aangegeven door *PT5M* ) voor elke beëindiging van alle exemplaren in uw schaalset opgegeven. Het veld *notBeforeTimeout* kan elke waarde tussen 5 en 15 minuten in ISO 8601-indeling hebben. U kunt de standaardtime-out voor de bewerking beëindigen wijzigen door de eigenschap *notBeforeTimeout* te wijzigen onder *terminateNotificationProfile* hierboven beschreven.
 
-Nadat u *scheduledEventsProfile* op het model voor de schaalset hebt ingeschakeld en de *notBeforeTimeout*hebt ingesteld, werkt u de afzonderlijke exemplaren bij naar het [meest recente model](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) om de wijzigingen weer te geven.
+Nadat u *scheduledEventsProfile* op het model voor de schaalset hebt ingeschakeld en de *notBeforeTimeout* hebt ingesteld, werkt u de afzonderlijke exemplaren bij naar het [meest recente model](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) om de wijzigingen weer te geven.
 
 > [!NOTE]
 >Beëindigen van meldingen op instanties van schaal sets kunnen alleen worden ingeschakeld met API-versie 2019-03-01 en hoger
@@ -197,7 +197,7 @@ Als er geen **Terminate** -gebeurtenissen worden ontvangen via Scheduled Events,
 >'http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01'
 
 ### <a name="getting-terminate-event-with-incorrect-notbefore-time"></a>De gebeurtenis Terminate met een onjuiste NotBefore-tijd ophalen  
-Nadat u *scheduledEventsProfile* op het model voor de schaalset hebt ingeschakeld en de *notBeforeTimeout*hebt ingesteld, werkt u de afzonderlijke exemplaren bij naar het [meest recente model](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) om de wijzigingen weer te geven.
+Nadat u *scheduledEventsProfile* op het model voor de schaalset hebt ingeschakeld en de *notBeforeTimeout* hebt ingesteld, werkt u de afzonderlijke exemplaren bij naar het [meest recente model](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) om de wijzigingen weer te geven.
 
 ## <a name="next-steps"></a>Volgende stappen
 Meer informatie over het [implementeren van uw toepassing](virtual-machine-scale-sets-deploy-app.md) op virtuele-machine schaal sets.

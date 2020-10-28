@@ -3,13 +3,13 @@ title: Algemene problemen
 description: Meer informatie over het oplossen van veelvoorkomende problemen wanneer u Azure Container Instances implementeert, uitvoert of beheert
 ms.topic: article
 ms.date: 06/25/2020
-ms.custom: mvc
-ms.openlocfilehash: b31f29cdc9cd15ebf3ba88769095bfd0ef2628d2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: ac75fff3b088a7d595de2b27c92126ce592aff47
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148618"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746921"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Veelvoorkomende problemen in Azure Container Instances oplossen
 
@@ -213,7 +213,7 @@ Als u wilt bevestigen dat Azure Container Instances kan Luis teren op de poort d
     --ip-address Public --ports 9000 \
     --environment-variables 'PORT'='9000'
     ```
-1. Zoek het IP-adres van de container groep in de uitvoer van de opdracht van `az container create` . Zoek de waarde van **IP**. 
+1. Zoek het IP-adres van de container groep in de uitvoer van de opdracht van `az container create` . Zoek de waarde van **IP** . 
 1. Nadat de container is ingericht, bladert u naar het IP-adres en de poort van de container-app in uw browser, bijvoorbeeld: `192.0.2.0:9000` . 
 
     U ziet de ' Welkom bij Azure Container Instances! ' het bericht dat wordt weer gegeven door de web-app.

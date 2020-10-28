@@ -8,12 +8,12 @@ author: ShaneBala-keyvault
 ms.author: sudbalas
 manager: ravijan
 ms.date: 09/30/2020
-ms.openlocfilehash: a0fe5c2af42e8d8095963e29149e1338cc064c90
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: fbeb6f5f223642c09183c149188c6717c1f33a8e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495193"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748496"
 ---
 # <a name="how-to-enable-soft-delete-and-purge-protection"></a>Voorlopig verwijderen en leegmaken van beveiliging inschakelen
 
@@ -23,11 +23,11 @@ Dit artikel heeft betrekking op twee herstel functies van Azure Key Vault, zacht
 
 Zacht verwijderen en de beveiliging opschonen zijn twee verschillende herstel functies voor de sleutel kluis.
 > [!IMPORTANT]
-> Tijdelijke verwijderings beveiliging moet zijn ingeschakeld op alle sleutel kluizen. De mogelijkheid om de beveiliging tegen zacht verwijderen uit te scha kelen, wordt vóór december 2020 afgeschaft. Lees hier de volledige informatie [ **here**.](soft-delete-change.md)
+> Tijdelijke verwijderings beveiliging moet zijn ingeschakeld op alle sleutel kluizen. De mogelijkheid om de beveiliging tegen zacht verwijderen uit te scha kelen, wordt vóór december 2020 afgeschaft. Lees hier de volledige informatie [ **here** .](soft-delete-change.md)
 
 **Zacht verwijderen** is ontworpen om onbedoelde verwijdering van uw sleutel kluis en sleutels, geheimen en certificaten die zijn opgeslagen in de sleutel kluis te voor komen. Denk na over zacht verwijderen, zoals een prullenbak. Wanneer u een sleutel kluis of een sleutel kluis-object verwijdert, kan het worden hersteld voor een door de gebruiker Configureer bare Bewaar periode of een standaard waarde van 90 dagen. Sleutel kluizen in de voorlopig verwijderde status kunnen ook worden **opgeschoond** , wat betekent dat ze permanent worden verwijderd. Zo kunt u de sleutel kluizen en sleutel kluis objecten opnieuw maken met dezelfde naam. Voor het herstellen en verwijderen van sleutel kluizen en objecten zijn machtigingen voor het verhoogde toegangs beleid vereist. **Zodra de functie voor voorlopig verwijderen is ingeschakeld, kan deze niet worden uitgeschakeld.**
 
-Het is belang rijk te weten dat de **namen van sleutel kluizen wereld wijd uniek zijn**. u kunt dus geen sleutel kluis maken met dezelfde naam als een sleutel kluis in de voorlopig verwijderde status. De namen van sleutels, geheimen en certificaten zijn ook uniek binnen een sleutel kluis. Het is niet mogelijk om een geheim, sleutel of certificaat met dezelfde naam als een andere te maken in de voorlopig verwijderde status.
+Het is belang rijk te weten dat de **namen van sleutel kluizen wereld wijd uniek zijn** . u kunt dus geen sleutel kluis maken met dezelfde naam als een sleutel kluis in de voorlopig verwijderde status. De namen van sleutels, geheimen en certificaten zijn ook uniek binnen een sleutel kluis. Het is niet mogelijk om een geheim, sleutel of certificaat met dezelfde naam als een andere te maken in de voorlopig verwijderde status.
 
 Het **opschonen** van de beveiliging is zodanig ontworpen dat het verwijderen van uw sleutel kluis, sleutels, geheimen en certificaten door een kwaadwillende Insider wordt voor komen. U beschouwt dit als een prullenbak met een op tijd gebaseerde vergren deling. U kunt items op elk gewenst moment herstellen tijdens de Configureer bare Bewaar periode. **U kunt een sleutel kluis pas definitief verwijderen of wissen nadat de Bewaar periode is verstreken.** Zodra de Bewaar periode is verstreken, wordt de sleutel kluis of het sleutel kluis object automatisch verwijderd.
 
@@ -241,14 +241,6 @@ Het **opschonen** van de beveiliging is zodanig ontworpen dat het verwijderen va
 
     ```powershell
     Get-AzKeyVault -VaultName "ContosoVault"
-    ```
-
-* Voorlopig verwijderen inschakelen op de sleutel kluis
-
-    ```powershell
-    ($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "ContosoVault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"
-
-    Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
     ```
 
 * Sleutel kluis verwijderen

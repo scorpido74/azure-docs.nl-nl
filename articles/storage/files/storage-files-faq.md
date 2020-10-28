@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 9bb228c81ee180ec337ce52e3c87a4a9684e158a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 609f6d5fd0bf75b1a2056c01c8d22ae9e08ab9cb
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90563689"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746830"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Lees de veelgestelde vragen (FAQ) over Azure Files
 [Azure files](storage-files-introduction.md) biedt volledig beheerde bestands shares in de cloud die toegankelijk zijn via het industrie standaard [SMB-protocol (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) en het [NFS-protocol (Network File System](https://en.wikipedia.org/wiki/Network_File_System) ) (preview). U kunt Azure-bestands shares gelijktijdig koppelen aan Cloud-of on-premises implementaties van Windows, Linux en macOS. U kunt ook Azure-bestands shares op Windows Server-computers in de cache opslaan met behulp van Azure File Sync voor snelle toegang, waarbij de gegevens worden gebruikt.
@@ -22,7 +22,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 1. De sectie opmerkingen van dit artikel.
 2. [Micro soft Q&een vraag pagina voor Azure Storage](https://docs.microsoft.com/answers/topics/azure-file-storage.html).
 3. [Azure files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files). 
-4. Microsoft Ondersteuning. Als u een nieuwe ondersteunings aanvraag wilt maken, selecteert u in het Azure Portal op het tabblad **Help** de knop **Help en ondersteuning** en selecteert u vervolgens **nieuwe ondersteunings aanvraag**.
+4. Microsoft Ondersteuning. Als u een nieuwe ondersteunings aanvraag wilt maken, selecteert u in het Azure Portal op het tabblad **Help** de knop **Help en ondersteuning** en selecteert u vervolgens **nieuwe ondersteunings aanvraag** .
 
 ## <a name="general"></a>Algemeen
 * <a id="why-files-useful"></a>
@@ -107,7 +107,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
     Prestaties zijn afhankelijk van uw omgevings instellingen, configuratie en of dit een initiële synchronisatie of een voortdurende synchronisatie is. Zie voor meer informatie [Azure file sync metrische gegevens over prestaties](storage-files-scale-targets.md#azure-file-sync-performance-metrics)
 
 * <a id="afs-conflict-resolution"></a>**Als hetzelfde bestand op ongeveer hetzelfde moment op twee servers wordt gewijzigd, wat gebeurt er dan?**  
-    Azure File Sync maakt gebruik van een eenvoudige strategie voor conflict oplossing: wijzigingen in bestanden die op hetzelfde moment worden gewijzigd in twee eind punten worden bewaard. De meest recent geschreven wijziging behoudt de oorspronkelijke bestands naam. Het oudere bestand (bepaald door LastWriteTime) heeft de naam van het eind punt en het conflict nummer dat is toegevoegd aan de bestands naam. Voor Server-eind punten is de naam van het eind punt de naam van de server. Voor Cloud-eind punten is de naam van het eind punt in de **Cloud**. De naam volgt deze taxonomie: 
+    Azure File Sync maakt gebruik van een eenvoudige strategie voor conflict oplossing: wijzigingen in bestanden die op hetzelfde moment worden gewijzigd in twee eind punten worden bewaard. De meest recent geschreven wijziging behoudt de oorspronkelijke bestands naam. Het oudere bestand (bepaald door LastWriteTime) heeft de naam van het eind punt en het conflict nummer dat is toegevoegd aan de bestands naam. Voor Server-eind punten is de naam van het eind punt de naam van de server. Voor Cloud-eind punten is de naam van het eind punt in de **Cloud** . De naam volgt deze taxonomie: 
    
     \<FileNameWithoutExtension\>-\<endpointName\>\[-#\].\<ext\>  
 
@@ -257,7 +257,25 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 * <a id="ad-multiple-forest"></a>
 **Ondersteunt on-premises AD DS verificatie voor Azure-bestands shares de integratie met een AD DS omgeving met meerdere forests?**    
 
-    Azure Files on-premises AD DS authenticatie alleen worden geïntegreerd met het forest van de domein service waarop het opslag account is geregistreerd. Als u verificatie van een ander forest wilt ondersteunen, moet uw omgeving een forest-vertrouwens relatie juist hebben geconfigureerd. De manier waarop Azure Files zich in AD DS bijna hetzelfde bevinden als een gewone bestands server, waar het een identiteit (computer-of service-aanmeldings account) in AD DS voor verificatie maakt. Het enige verschil is dat de geregistreerde SPN van het opslag account eindigt op ' file.core.windows.net ', wat niet overeenkomt met het domein achtervoegsel. Neem contact op met uw domein beheerder om te controleren of er een update van uw DNS-routerings beleid is vereist om meerdere Forest-verificatie mogelijk te maken vanwege het andere domein achtervoegsel.
+    Azure Files on-premises AD DS authenticatie alleen worden geïntegreerd met het forest van de domein service waarop het opslag account is geregistreerd. Als u verificatie van een ander forest wilt ondersteunen, moet uw omgeving een forest-vertrouwens relatie juist hebben geconfigureerd. De manier waarop Azure Files zich in AD DS bijna hetzelfde bevinden als een gewone bestands server, waar het een identiteit (computer-of service-aanmeldings account) in AD DS voor verificatie maakt. Het enige verschil is dat de geregistreerde SPN van het opslag account eindigt op ' file.core.windows.net ', wat niet overeenkomt met het domein achtervoegsel. Neem contact op met uw domein beheerder om te controleren of er een update voor het routerings beleid voor achtervoegsels is vereist om meerdere Forest-verificatie mogelijk te maken vanwege het andere domein achtervoegsel. Hieronder vindt u een voor beeld van het configureren van het routerings beleid voor achtervoegsels.
+    
+    Voor beeld: wanneer gebruikers in forests een domein willen bereiken met het opslag account dat is geregistreerd voor een domein in forest B, werkt dit niet automatisch omdat de service-principal van het opslag account geen achtervoegsel heeft dat overeenkomt met het achtervoegsel van een domein in forest A. We kunnen dit probleem oplossen door hand matig een regel voor achtervoegsel routering van forest A naar forest B te configureren voor een aangepast achtervoegsel van "file.core.windows.net".
+    Eerst moet u een nieuw aangepast achtervoegsel toevoegen aan forest B. Zorg ervoor dat u over de juiste beheerders machtigingen beschikt om de configuratie te wijzigen en voer vervolgens de volgende stappen uit:   
+    1. Aanmelden bij een computer domein dat lid is van forest B
+    2.  De console ' Active Directory domeinen en vertrouwens relaties ' openen
+    3.  Klik met de rechter muisknop op Active Directory domeinen en vertrouwens relaties
+    4.  Klik op Eigenschappen
+    5.  Klik op toevoegen
+    6.  File.core.windows.net toevoegen als UPN-achtervoegsels
+    7.  Klik op Toep assen en vervolgens op OK om de wizard te sluiten
+    
+    Voeg vervolgens de regel voor achtervoegsel routering toe aan forest A, zodat deze wordt omgeleid naar forest B.
+    1.  Aanmelden bij een computer domein dat lid is van forest A
+    2.  De console ' Active Directory domeinen en vertrouwens relaties ' openen
+    3.  Klik met de rechter muisknop op het domein dat u wilt gebruiken voor toegang tot de bestands share, klik op het tabblad vertrouwens relaties en selecteer forest B domein in uitgaande vertrouwens relaties. Als u geen vertrouwens relatie tussen de twee forests hebt geconfigureerd, moet u eerst de vertrouwens relatie instellen
+    4.  Klik op Eigenschappen... then "naam achtervoegsel routeren"
+    5.  Controleer of de file.core.windows.net-surffix wordt weer gegeven. Als dat niet het geval is, klikt u op vernieuwen
+    6.  Selecteer ' *. file.core.windows.net ' en klik vervolgens op ' inschakelen ' en ' toep assen '
 
 * <a id=""></a>
 **Welke regio's zijn beschikbaar voor Azure Files AD DS-verificatie?**

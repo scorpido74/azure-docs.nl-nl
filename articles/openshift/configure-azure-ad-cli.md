@@ -7,13 +7,13 @@ ms.date: 03/12/2020
 author: sabbour
 ms.author: asabbour
 keywords: Aro, open Shift, AZ Aro, Red Hat, cli
-ms.custom: mvc
-ms.openlocfilehash: fd6ea0749cce154ae20479bc54ef9b7374a69d0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 03ecd0e11df5fa20f134b6fd87baf788078a2203
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89469419"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748035"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-cli"></a>Azure Active Directory authenticatie configureren voor een Azure Red Hat open Shift 4-cluster (CLI)
 
@@ -21,7 +21,7 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor 
 
 Haal de cluster-specifieke Url's op die u wilt gebruiken om de Azure Active Directory-toepassing te configureren.
 
-Maak de OAuth call back-URL van het cluster en sla deze op in een variabele **oauthCallbackURL**. Zorg ervoor dat u **Aro-RG** vervangt door de naam van de resource groep en het **Aro-cluster** met de naam van uw cluster.
+Maak de OAuth call back-URL van het cluster en sla deze op in een variabele **oauthCallbackURL** . Zorg ervoor dat u **Aro-RG** vervangt door de naam van de resource groep en het **Aro-cluster** met de naam van uw cluster.
 
 > [!NOTE]
 > De `AAD` sectie in de OAuth call back-URL moet overeenkomen met de naam van de OAuth ID-provider die u later gaat instellen.
@@ -210,6 +210,6 @@ oauth.config.openshift.io/cluster configured
 
 ## <a name="verify-login-through-azure-active-directory"></a>Aanmelden via Azure Active Directory verifiëren
 
-Als u de open Shift-webconsole nu afmeldt en zich opnieuw probeert aan te melden, wordt een nieuwe optie weer gegeven om u aan te melden met **Aad**. Mogelijk moet u enkele minuten wachten.
+Als u de open Shift-webconsole nu afmeldt en zich opnieuw probeert aan te melden, wordt een nieuwe optie weer gegeven om u aan te melden met **Aad** . Mogelijk moet u enkele minuten wachten.
 
 ![Aanmeld scherm met Azure Active Directory optie](media/aro4-login-2.png)

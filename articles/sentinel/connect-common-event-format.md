@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: d63893ab219854a270652da38c474e3ccad83abc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dae8ce6cbad1ae08898ae439c1f621bef185b5df
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630505"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747899"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Verbind uw externe oplossing met de algemene gebeurtenis indeling
 
@@ -44,7 +44,7 @@ Deze installatie bestaat ook als u een virtuele machine in een andere Cloud of o
 
 ## <a name="security-considerations"></a>Beveiligingsoverwegingen
 
-Zorg ervoor dat u de beveiliging van de computer configureert op basis van het beveiligings beleid van uw organisatie. U kunt bijvoorbeeld uw netwerk zodanig configureren dat het wordt uitgelijnd met het beveiligings beleid van uw bedrijfs netwerk en de poorten en protocollen in de daemon wijzigen om af te stemmen op uw vereisten. U kunt de volgende instructies gebruiken om de beveiligings configuratie van uw computer te verbeteren:  [Beveilig de virtuele machine in azure](../virtual-machines/security-policy.md), [Aanbevolen procedures voor netwerk beveiliging](../security/fundamentals/network-best-practices.md).
+Zorg ervoor dat u de beveiliging van de computer configureert op basis van het beveiligings beleid van uw organisatie. U kunt bijvoorbeeld uw netwerk zodanig configureren dat het wordt uitgelijnd met het beveiligings beleid van uw bedrijfs netwerk en de poorten en protocollen in de daemon wijzigen om af te stemmen op uw vereisten. U kunt de volgende instructies gebruiken om de beveiligings configuratie van uw computer te verbeteren:  [Beveilig de virtuele machine in azure](../virtual-machines/security-policy.md), [Aanbevolen procedures voor netwerk beveiliging](../security/fundamentals/network-best-practices.md).
 
 Als u TLS-communicatie tussen de syslog-bron en de syslog-doorstuur server wilt gebruiken, moet u de syslog-daemon (rsyslog of syslog-ng) configureren om te communiceren in TLS: [syslog-verkeer met TLS-rsyslog versleutelen](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), [logboek berichten versleutelen met TLS-syslog-aardgas](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298).
  
@@ -55,14 +55,14 @@ Zorg ervoor dat op de Linux-machine die u als proxy gebruikt, een van de volgend
 - 64-bits
   - CentOS 7 en subversies en hoger (niet 6)
   - Amazon Linux 2017,09
-  - Oracle Linux 6 en 7
+  - Oracle Linux 7
   - Red Hat Enterprise Linux (RHEL) Server 7 en subversies en hoger (niet 6)
   - Debian GNU/Linux 8 en 9
   - Ubuntu Linux 14,04 LTS, 16,04 LTS en 18,04 LTS
   - SUSE Linux Enterprise Server 12
 - 32-bits
    - CentOS 7
-   - Oracle Linux 6
+   - Oracle Linux 7
    - Red Hat Enterprise Linux Server 7
    - Debian GNU/Linux 8 en 9
    - Ubuntu Linux 14,04 LTS en 16,04 LTS
@@ -79,7 +79,7 @@ Zorg ervoor dat uw computer ook aan de volgende vereisten voldoet:
 - Machtigingen
     - U moet over verhoogde machtigingen (sudo) beschikken op uw computer. 
 - Softwarevereisten
-    - Zorg ervoor dat op uw computer python (2,7 of hoger) wordt uitgevoerd
+    - Zorg ervoor dat python 2,7 op uw computer wordt uitgevoerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

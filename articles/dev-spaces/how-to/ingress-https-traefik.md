@@ -5,13 +5,13 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Meer informatie over het configureren van Azure dev Spaces voor het gebruik van een aangepaste traefik ingress-controller en het configureren van HTTPS met deze ingangs controller
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, servicemesh, servicemeshroutering, kubectl, k8s
-ms.custom: devx-track-js
-ms.openlocfilehash: a30dae3b65a7e877dc20b4d6fae8de338024d3c7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: fb45c310d306813dc10b667db6ce36048eccf217
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973050"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746122"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Een aangepaste traefik ingangs controller gebruiken en HTTPS configureren
 
@@ -102,8 +102,8 @@ cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
 Open [Values. yaml][values-yaml] en voer de volgende updates uit:
-* Alle exemplaren van *<REPLACE_ME_WITH_HOST_SUFFIX>* vervangen door *traefik. MY_CUSTOM_DOMAIN* uw domein gebruiken voor *MY_CUSTOM_DOMAIN*. 
-* Vervang *kubernetes.io/ingress.class: traefik-azds # dev Spaces-specifiek* met *kubernetes.io/ingress.class: traefik # aangepaste*inkomend verkeer. 
+* Alle exemplaren van *<REPLACE_ME_WITH_HOST_SUFFIX>* vervangen door *traefik. MY_CUSTOM_DOMAIN* uw domein gebruiken voor *MY_CUSTOM_DOMAIN* . 
+* Vervang *kubernetes.io/ingress.class: traefik-azds # dev Spaces-specifiek* met *kubernetes.io/ingress.class: traefik # aangepaste* inkomend verkeer. 
 
 Hieronder ziet u een voor beeld van een bijgewerkt `values.yaml` bestand:
 
@@ -212,7 +212,7 @@ spec:
 ```
 
 > [!NOTE]
-> Voor het testen kunt u ook een [staging-server][letsencrypt-staging-issuer] gebruiken voor uw *ClusterIssuer*.
+> Voor het testen kunt u ook een [staging-server][letsencrypt-staging-issuer] gebruiken voor uw *ClusterIssuer* .
 
 Gebruiken `kubectl` om toe te passen `letsencrypt-clusterissuer.yaml` .
 
@@ -220,7 +220,7 @@ Gebruiken `kubectl` om toe te passen `letsencrypt-clusterissuer.yaml` .
 kubectl apply -f letsencrypt-clusterissuer.yaml --namespace traefik
 ```
 
-Verwijder de vorige *traefik* *ClusterRole* en *ClusterRoleBinding*en werk traefik vervolgens bij met behulp van HTTPS `helm` .
+Verwijder de vorige *traefik* *ClusterRole* en *ClusterRoleBinding* en werk traefik vervolgens bij met behulp van HTTPS `helm` .
 
 > [!NOTE]
 > Als op uw AKS-cluster geen RBAC is ingeschakeld, verwijdert u de para meter *--set RBAC. Enabled = True* .
@@ -262,7 +262,7 @@ az network dns record-set a remove-record \
     --ipv4-address PREVIOUS_EXTERNAL_IP
 ```
 
-In het bovenstaande voor beeld wordt de *A* -record in de *MY_CUSTOM_DOMAIN* DNS-zone voor het gebruik van *PREVIOUS_EXTERNAL_IP*bijgewerkt.
+In het bovenstaande voor beeld wordt de *A* -record in de *MY_CUSTOM_DOMAIN* DNS-zone voor het gebruik van *PREVIOUS_EXTERNAL_IP* bijgewerkt.
 
 Update [Values. yaml][values-yaml] om de Details voor het gebruik van *CERT-beheer* en HTTPS op te neemt. Hieronder ziet u een voor beeld van een bijgewerkt `values.yaml` bestand:
 

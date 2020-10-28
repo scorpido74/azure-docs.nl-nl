@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 3164de9c3e44001d58d46eab9f823041b440960b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 612ba18ba71a22ad6c346b26008e688195c1d1e4
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90984136"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746571"
 ---
 # <a name="create-a-storage-account-with-infrastructure-encryption-enabled-for-double-encryption-of-data"></a>Een opslag account maken waarvoor infrastructuur versleuteling is ingeschakeld voor dubbele versleuteling van gegevens
 
@@ -29,7 +30,7 @@ Als u uw gegevens wilt versleutelen, moet u eerst een opslag account maken dat i
 
 Als u een opslag account wilt maken waarvoor infrastructuur versleuteling is ingeschakeld, moet u zich eerst registreren voor het gebruik van deze functie met Azure met behulp van Power shell of Azure CLI.
 
-# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 N.v.t.
 
@@ -55,7 +56,7 @@ Nadat de registratie is goedgekeurd, moet u de Azure Storage Resource provider o
 Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u zich wilt registreren bij Azure CLI, roept u de opdracht [AZ feature REGI ster](/cli/azure/feature#az-feature-register) aan.
 
@@ -89,13 +90,13 @@ U moet een opslag account configureren voor het gebruik van infrastructuur versl
 
 Infrastructuur versleuteling kan niet worden ingeschakeld of uitgeschakeld nadat het account is gemaakt.
 
-# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Als u Power shell wilt gebruiken om een opslag account te maken waarvoor infrastructuur versleuteling is ingeschakeld, voert u de volgende stappen uit:
 
 1. Navigeer in het Azure Portal naar de pagina **opslag accounts** .
 1. Klik op de knop **toevoegen** om een nieuw v2-opslag account voor algemeen gebruik toe te voegen.
-1. Op het tabblad **Geavanceerd** gaat u naar **infrastructuur** versleuteling en selecteert u **ingeschakeld**.
+1. Op het tabblad **Geavanceerd** gaat u naar **infrastructuur** versleuteling en selecteert u **ingeschakeld** .
 1. Selecteer **beoordeling + maken** om het opslag account te maken.
 
     :::image type="content" source="media/infrastructure-encryption-enable/create-account-infrastructure-encryption-portal.png" alt-text="Scherm afbeelding die laat zien hoe infrastructuur versleuteling wordt ingeschakeld bij het maken van het account":::
@@ -117,9 +118,9 @@ New-AzStorageAccount -ResourceGroupName <resource_group> `
     -RequireInfrastructureEncryption
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Als u Azure CLI wilt gebruiken voor het maken van een opslag account waarvoor infrastructuur versleuteling is ingeschakeld, moet u ervoor zorgen dat u Azure CLI-versie 2.8.0 of hoger hebt geïnstalleerd. Zie [de Azure cli installeren](/cli/azure/install-azure-cli)voor meer informatie.
+Als u Azure CLI wilt gebruiken voor het maken van een opslag account waarvoor infrastructuur versleuteling is ingeschakeld, moet u ervoor zorgen dat u Azure CLI-versie 2.8.0 of hoger hebt geïnstalleerd. Zie [De Azure CLI installeren](/cli/azure/install-azure-cli) voor meer informatie.
 
 Maak vervolgens een voor algemeen gebruik v2-opslag account door de opdracht [AZ Storage account create](/cli/azure/storage/account#az-storage-account-create) aan te roepen en de `--require-infrastructure-encryption option` infra structuur-versleuteling in te scha kelen.
 
@@ -173,12 +174,12 @@ In het volgende JSON-voor beeld wordt een v2-opslag account voor algemeen gebrui
 
 ## <a name="verify-that-infrastructure-encryption-is-enabled"></a>Controleren of infrastructuur versleuteling is ingeschakeld
 
-# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Voer de volgende stappen uit om te controleren of infrastructuur versleuteling is ingeschakeld voor een opslag account met de Azure Portal:
 
 1. Ga in Azure Portal naar uw opslagaccount.
-1. Kies onder **instellingen**de optie **versleuteling**.
+1. Kies onder **instellingen** de optie **versleuteling** .
 
     :::image type="content" source="media/infrastructure-encryption-enable/verify-infrastructure-encryption-portal.png" alt-text="Scherm afbeelding die laat zien hoe infrastructuur versleuteling wordt ingeschakeld bij het maken van het account":::
 
@@ -194,7 +195,7 @@ $account = Get-AzStorageAccount -ResourceGroupName <resource-group> `
 $account.Encryption.RequireInfrastructureEncryption
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u wilt controleren of infrastructuur versleuteling is ingeschakeld voor een opslag account met Azure CLI, roept u de opdracht [AZ Storage account show](/cli/azure/storage/account#az-storage-account-show) aan. Met deze opdracht wordt een set eigenschappen van het opslag account en de bijbehorende waarden geretourneerd. Zoek het `requireInfrastructureEncryption` veld in de `encryption` eigenschap en controleer of het is ingesteld op `true` .
 

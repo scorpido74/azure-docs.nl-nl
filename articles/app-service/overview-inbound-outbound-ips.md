@@ -3,13 +3,13 @@ title: Inkomende/uitgaande IP-adressen
 description: Meer informatie over hoe binnenkomende en uitgaande IP-adressen worden gebruikt in Azure App Service, wanneer ze worden gewijzigd en hoe u de adressen voor uw app kunt vinden.
 ms.topic: article
 ms.date: 08/25/2020
-ms.custom: seodec18
-ms.openlocfilehash: 8fa9fec9219cfd85a8a0b25f50835425766d9043
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: e5b271cc5cd8cb52267b6ee44bc3965d0e4b0aab
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89050689"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746157"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Binnenkomende en uitgaande IP-adressen in Azure App Service
 
@@ -51,7 +51,7 @@ De set met uitgaande IP-adressen voor uw app wordt gewijzigd wanneer u een van d
 
 - Een app verwijderen en opnieuw maken in een andere resource groep (implementatie-eenheid kan worden gewijzigd).
 - Verwijder de laatste app in een combi natie van resource groep _en_ regio en maak deze opnieuw (implementatie-eenheid kan worden gewijzigd).
-- Schaal uw app tussen de lagere lagen (**Basic**, **Standard**en **Premium**) en de **Premium v2** -laag (IP-adressen kunnen worden toegevoegd aan of afgetrokken van de set).
+- Schaal uw app tussen de lagere lagen ( **Basic** , **Standard** en **Premium** ) en de **Premium v2** -laag (IP-adressen kunnen worden toegevoegd aan of afgetrokken van de set).
 
 U kunt de set met alle mogelijke uitgaande IP-adressen die uw app kan gebruiken, ongeacht de prijs categorieën, door te zoeken naar de `possibleOutboundIpAddresses` eigenschap of in het veld **extra uitgaande IP-adressen** op de Blade **Eigenschappen** in de Azure Portal. Zie [uitgaande Ip's zoeken](#find-outbound-ips).
 

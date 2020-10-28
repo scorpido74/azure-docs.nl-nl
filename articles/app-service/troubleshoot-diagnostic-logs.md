@@ -4,13 +4,13 @@ description: Lees hoe u diagnostische logboek registratie kunt inschakelen en in
 ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
-ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 6dffe2c6145e1596d92335defdc764c3c7bc3fa0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
+ms.openlocfilehash: 7b27aae712843ece27fd61927c4bfecff00399fa
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91264368"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747014"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Diagnostische logboek registratie inschakelen voor apps in Azure App Service
 ## <a name="overview"></a>Overzicht
@@ -25,7 +25,7 @@ In dit artikel wordt gebruikgemaakt van de [Azure Portal](https://portal.azure.c
 
 |Type|Platform|Locatie|Beschrijving|
 |-|-|-|-|
-| Toepassingslogboeken | Windows, Linux | App Service bestands systeem en/of Azure Storage-blobs | Registreert berichten die zijn gegenereerd door de toepassings code. De berichten kunnen worden gegenereerd door het webframework dat u kiest, of vanuit de code van uw toepassing rechtstreeks met het standaard logboek registratie patroon van uw taal. Aan elk bericht wordt een van de volgende categorieën toegewezen: **kritiek**, **fout**, **waarschuwing**, **info**, **fout opsporing**en **tracering**. U kunt selecteren hoe uitgebreid u de logboek registratie wilt maken door het Ernst niveau in te stellen wanneer u logboek registratie van toepassingen inschakelt.|
+| Toepassingslogboeken | Windows, Linux | App Service bestands systeem en/of Azure Storage-blobs | Registreert berichten die zijn gegenereerd door de toepassings code. De berichten kunnen worden gegenereerd door het webframework dat u kiest, of vanuit de code van uw toepassing rechtstreeks met het standaard logboek registratie patroon van uw taal. Aan elk bericht wordt een van de volgende categorieën toegewezen: **kritiek** , **fout** , **waarschuwing** , **info** , **fout opsporing** en **tracering** . U kunt selecteren hoe uitgebreid u de logboek registratie wilt maken door het Ernst niveau in te stellen wanneer u logboek registratie van toepassingen inschakelt.|
 | Logboek registratie van webserver| Windows | App Service bestands systeem of Azure Storage-blobs| Onbewerkte HTTP-aanvraag gegevens in de [uitgebreide W3C-indeling van logboek bestand](/windows/desktop/Http/w3c-logging). Elk logboek bericht bevat gegevens zoals de HTTP-methode, bron-URI, client-IP, client poort, gebruikers agent, respons code, enzovoort. |
 | Gedetailleerde fout berichten| Windows | App Service bestands systeem | Kopieën van de *htm* -fout pagina's die naar de client browser zouden zijn verzonden. Uit veiligheids overwegingen mogen gedetailleerde fout pagina's niet worden verzonden naar clients in de productie omgeving, maar App Service kunt de fout pagina opslaan telkens wanneer er een toepassings fout optreedt met HTTP-code 400 of hoger. De pagina bevat mogelijk informatie die u kan helpen bij het bepalen van de oorzaak van de fout code door de server. |
 | Tracering van mislukte aanvragen | Windows | App Service bestands systeem | Gedetailleerde tracerings informatie over mislukte aanvragen, inclusief een tracering van de IIS-onderdelen die worden gebruikt om de aanvraag te verwerken en de tijd die in elk onderdeel is gemaakt. Het is handig als u de prestaties van de site wilt verbeteren of een specifieke HTTP-fout wilt isoleren. Er wordt één map gegenereerd voor elke mislukte aanvraag, die het XML-logboek bestand bevat en het XSL-opmaak model waarmee het logboek bestand wordt weer gegeven. |
@@ -42,7 +42,7 @@ In dit artikel wordt gebruikgemaakt van de [Azure Portal](https://portal.azure.c
 > [!NOTE]
 > Toepassings logboeken voor Blob Storage kunnen alleen opslag accounts gebruiken in dezelfde regio als de App Service
 
-Als u toepassings logboeken wilt inschakelen voor Windows-apps in de [Azure Portal](https://portal.azure.com), navigeert u naar uw app en selecteert u **app service logboeken**.
+Als u toepassings logboeken wilt inschakelen voor Windows-apps in de [Azure Portal](https://portal.azure.com), navigeert u naar uw app en selecteert u **app service logboeken** .
 
 Selecteer **aan** voor **toepassings Logboeken (bestands systeem)** of **toepassings Logboeken (BLOB)** of beide. 
 
@@ -53,12 +53,12 @@ De optie **Bestands systeem** is bedoeld voor tijdelijke fout opsporing en schak
 >
 > Als u de [toegangs sleutels van uw opslag account opnieuw genereert](../storage/common/storage-account-create.md), moet u ook de configuratie van de betreffende logboek registratie opnieuw instellen om de bijgewerkte toegangs sleutels te gebruiken. Om dit te doen:
 >
-> 1. Stel op het tabblad **configureren** de respectieve logboek registratie functie in op **uit**. Sla de instelling op.
+> 1. Stel op het tabblad **configureren** de respectieve logboek registratie functie in op **uit** . Sla de instelling op.
 > 2. Schakel logboek registratie voor de blob van het opslag account opnieuw in. Sla de instelling op.
 >
 >
 
-Selecteer het **niveau**of het niveau van de details die moeten worden vastgelegd. De volgende tabel bevat de logboek categorieën die zijn opgenomen in elk niveau:
+Selecteer het **niveau** of het niveau van de details die moeten worden vastgelegd. De volgende tabel bevat de logboek categorieën die zijn opgenomen in elk niveau:
 
 | Niveau | Opgenomen categorieën |
 |-|-|
@@ -68,41 +68,41 @@ Selecteer het **niveau**of het niveau van de details die moeten worden vastgeleg
 |**Informatie** | Info, waarschuwing, fout, kritiek|
 |**Uitgebreide** | Traceren, fouten opsporen, info, waarschuwing, fout, kritiek (alle categorieën) |
 
-Wanneer u klaar bent, selecteert u **Opslaan**.
+Wanneer u klaar bent, selecteert u **Opslaan** .
 
 ## <a name="enable-application-logging-linuxcontainer"></a>Toepassings logboeken inschakelen (Linux/container)
 
-Als u toepassings logboeken wilt inschakelen voor Linux-apps of aangepaste container-apps in de [Azure Portal](https://portal.azure.com), navigeert u naar uw app en selecteert u **app service logboeken**.
+Als u toepassings logboeken wilt inschakelen voor Linux-apps of aangepaste container-apps in de [Azure Portal](https://portal.azure.com), navigeert u naar uw app en selecteert u **app service logboeken** .
 
-Selecteer in **toepassings logboeken**de optie **Bestands systeem**.
+Selecteer in **toepassings logboeken** de optie **Bestands systeem** .
 
 Geef in **quotum (MB)** het schijf quotum voor de toepassings logboeken op. Stel in de **Bewaar periode (dagen)** het aantal dagen in dat de logboeken moeten worden bewaard.
 
-Wanneer u klaar bent, selecteert u **Opslaan**.
+Wanneer u klaar bent, selecteert u **Opslaan** .
 
 ## <a name="enable-web-server-logging"></a>Logboek registratie van webserver inschakelen
 
-Als u webserver logboek registratie wilt inschakelen voor Windows-apps in de [Azure Portal](https://portal.azure.com), navigeert u naar uw app en selecteert u **app service logboeken**.
+Als u webserver logboek registratie wilt inschakelen voor Windows-apps in de [Azure Portal](https://portal.azure.com), navigeert u naar uw app en selecteert u **app service logboeken** .
 
-Voor **logboek registratie van webserver**selecteert u **opslag** om logboeken op te slaan in Blob Storage of op het **Bestands systeem** om logboeken op te slaan op het app service-Bestands systeem. 
+Voor **logboek registratie van webserver** selecteert u **opslag** om logboeken op te slaan in Blob Storage of op het **Bestands systeem** om logboeken op te slaan op het app service-Bestands systeem. 
 
 Stel in de **Bewaar periode (dagen)** het aantal dagen in dat de logboeken moeten worden bewaard.
 
 > [!NOTE]
 > Als u de [toegangs sleutels van uw opslag account opnieuw genereert](../storage/common/storage-account-create.md), moet u de configuratie van de betreffende logboek registratie opnieuw instellen om de bijgewerkte sleutels te gebruiken. Om dit te doen:
 >
-> 1. Stel op het tabblad **configureren** de respectieve logboek registratie functie in op **uit**. Sla de instelling op.
+> 1. Stel op het tabblad **configureren** de respectieve logboek registratie functie in op **uit** . Sla de instelling op.
 > 2. Schakel logboek registratie voor de blob van het opslag account opnieuw in. Sla de instelling op.
 >
 >
 
-Wanneer u klaar bent, selecteert u **Opslaan**.
+Wanneer u klaar bent, selecteert u **Opslaan** .
 
 ## <a name="log-detailed-errors"></a>Gedetailleerde fouten in logboek vastleggen
 
-Als u de fout pagina of tracering van mislukte aanvragen voor Windows-apps in de [Azure Portal](https://portal.azure.com)wilt opslaan, gaat u naar uw app en selecteert u **app service logboeken**.
+Als u de fout pagina of tracering van mislukte aanvragen voor Windows-apps in de [Azure Portal](https://portal.azure.com)wilt opslaan, gaat u naar uw app en selecteert u **app service logboeken** .
 
-Onder **gedetailleerde fout registratie** of **tracering van mislukte aanvragen**selecteert u **aan**en selecteert u vervolgens **Opslaan**.
+Onder **gedetailleerde fout registratie** of **tracering van mislukte aanvragen** selecteert u **aan** en selecteert u vervolgens **Opslaan** .
 
 Beide typen logboeken worden opgeslagen in het App Service-bestands systeem. Er worden Maxi maal 50 fouten (bestanden/mappen) bewaard. Wanneer het aantal HTML-bestanden groter is dan 50, worden de oudste 26 fouten automatisch verwijderd.
 
@@ -128,7 +128,7 @@ Voordat u Logboeken in realtime streamen, schakelt u het gewenste logboek type i
 
 ### <a name="in-azure-portal"></a>In Azure Portal
 
-Als u logboeken wilt streamen in de [Azure Portal](https://portal.azure.com), navigeert u naar uw app en selecteert u **log stream**. 
+Als u logboeken wilt streamen in de [Azure Portal](https://portal.azure.com), navigeert u naar uw app en selecteert u **log stream** . 
 
 ### <a name="in-cloud-shell"></a>In Cloud Shell
 
@@ -170,7 +170,7 @@ Voor Windows-apps bevat het ZIP-bestand de inhoud van de *D:\Home\LogFiles* -map
 |-|-|-|
 | **Toepassings logboeken** |*/LogFiles/Application/* | Bevat een of meer tekst bestanden. De indeling van de logboek berichten is afhankelijk van de logboek registratie provider die u gebruikt. |
 | **Traceringen van mislukte aanvragen** | */LogFiles/W3SVC#########/* | Bevat XML-bestanden en een XSL-bestand. U kunt de opgemaakte XML-bestanden weer geven in de browser. |
-| **Gedetailleerde fouten logboeken** | */LogFiles/DetailedErrors/* | Bevat HTM-fout bestanden. U kunt de HTM-bestanden weer geven in de browser.<br/>Een andere manier om de traceringen van mislukte aanvragen weer te geven, is door naar de app-pagina in de portal te navigeren. Selecteer in het linkermenu **problemen vaststellen en oplossen**, zoek naar **Logboeken voor tracering van mislukte aanvragen**en klik vervolgens op het pictogram om de gewenste tracering weer te geven. |
+| **Gedetailleerde fouten logboeken** | */LogFiles/DetailedErrors/* | Bevat HTM-fout bestanden. U kunt de HTM-bestanden weer geven in de browser.<br/>Een andere manier om de traceringen van mislukte aanvragen weer te geven, is door naar de app-pagina in de portal te navigeren. Selecteer in het linkermenu **problemen vaststellen en oplossen** , zoek naar **Logboeken voor tracering van mislukte aanvragen** en klik vervolgens op het pictogram om de gewenste tracering weer te geven. |
 | **Webserver logboeken** | */LogFiles/http/RawLogs/* | Bevat tekst bestanden die zijn ingedeeld met de [uitgebreide W3C-indeling van logboek bestand](/windows/desktop/Http/w3c-logging). Deze informatie kan worden gelezen met een tekst editor of een hulp programma zoals [log parser](https://go.microsoft.com/fwlink/?LinkId=246619).<br/>App Service biedt geen ondersteuning voor de `s-computername` `s-ip` velden, of `cs-version` . |
 | **Implementatie logboeken** | */Logfiles/Git/* en */Deployments/* | Logboeken bevatten die zijn gegenereerd door de interne implementatie processen, evenals logboeken voor git-implementaties. |
 

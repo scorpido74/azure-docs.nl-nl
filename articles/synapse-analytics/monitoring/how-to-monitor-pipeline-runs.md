@@ -6,19 +6,19 @@ author: matt1883
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: monitoring
-ms.date: 04/15/2020
+ms.date: 10/27/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 7676f4aeeb9485ce5e3a702027884bc54d79a863
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61d860def7209908e65e9456a4bcde87eed522fc
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87387316"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746383"
 ---
 # <a name="use-synapse-studio-to-monitor-your-workspace-pipeline-runs"></a>Synapse Studio gebruiken om de pipeline-uitvoeringen van uw werk ruimte te controleren
 
-Met Azure Synapse Analytics kunt u complexe pijp lijnen maken waarmee u uw gegevens verplaatsing, gegevens transformatie en Compute-activiteiten binnen uw oplossing kunt automatiseren en organiseren. U kunt deze pijp lijnen ontwerpen en bewaken met behulp van Synapse Studio (preview).
+Met Azure Synapse Analytics kunt u complexe pijp lijnen maken die uw gegevens verplaatsing, gegevens transformatie en reken activiteiten binnen uw oplossing kunnen automatiseren en integreren. U kunt deze pijp lijnen ontwerpen en bewaken met behulp van Synapse Studio (preview).
 
 In dit artikel wordt uitgelegd hoe u uw pijplijn uitvoeringen kunt bewaken, zodat u op de hoogte blijft van de meest recente status, problemen en voortgang van uw pijp lijnen.
 

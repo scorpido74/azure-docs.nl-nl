@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: fa37c251e61b1f920edc55ead38f745439f2de92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b54076413d3a6cabf2e3ef0b06e8e17875efbf97
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91812859"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746405"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Gegevens beveiliging in Azure Stream Analytics 
 
@@ -61,22 +61,18 @@ Gebruik de volgende stappen om uw opslag account te configureren voor privé geg
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-1. Selecteer in de linkerbovenhoek van Azure Portal **Een resource maken**. 
+1. Selecteer in de linkerbovenhoek van Azure Portal **Een resource maken** . 
 
 1. Selecteer **analyse**   >  **Stream Analytics taak**   in de lijst met resultaten. 
 
 1. Vul de pagina Stream Analytics-taak in met de benodigde gegevens, zoals naam, regio en schaal. 
 
-1. Schakel het selectie vakje in dat alle privé gegevensassets die *nodig zijn voor deze taak in mijn opslag account beveiligd*.
+1. Schakel het selectie vakje in dat alle privé gegevensassets die *nodig zijn voor deze taak in mijn opslag account beveiligd* .
 
 1. Selecteer een opslag account in uw abonnement. Houd er rekening mee dat deze instelling tijdens de levens cyclus van de taak niet kan worden gewijzigd. 
 
    ![Instellingen voor het opslag account voor privé gegevens](./media/data-protection/storage-account-create.png)
 
-
-
-### <a name="known-issues"></a>Bekende problemen
-Op dit moment is er sprake van een bekende beperking waarbij een taak die door de klant beheerde sleutel wordt gebruikt, wordt uitgevoerd bij het gebruik van beheerde identiteit om te verifiëren bij invoer of uitvoer.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -7,13 +7,13 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
-ms.custom: include file
-ms.openlocfilehash: 234aa602cccb90d130e4d4b6aca375726ca29f0d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: 489ee630deb56aef6c004067f29779053fbcd3e7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91989473"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755916"
 ---
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
@@ -63,8 +63,8 @@ New-AzKeyvault -name "<your-unique-keyvault-name>" -ResourceGroupName "myResourc
 
 U kunt ook een sleutelkluis maken met behulp van een [Resource Manager-sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create).
 
-1. Klik in de quickstart-sjabloon van Azure op **Implementeren naar Azure**.
-2. Selecteer het abonnement, de resourcegroep, de locatie van de resourcegroep, de naam van de sleutelkluis, de object-id, de juridische voorwaarden en de overeenkomst en klik vervolgens op **Aankoop**. 
+1. Klik in de quickstart-sjabloon van Azure op **Implementeren naar Azure** .
+2. Selecteer het abonnement, de resourcegroep, de locatie van de resourcegroep, de naam van de sleutelkluis, de object-id, de juridische voorwaarden en de overeenkomst en klik vervolgens op **Aankoop** . 
 
 
 ##  <a name="set-key-vault-advanced-access-policies"></a>Geavanceerd toegangsbeleid voor de sleutelkluis instellen
@@ -117,10 +117,10 @@ Gebruik [az keyvault update](/cli/azure/keyvault#az-keyvault-update) om schijfve
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Selecteer uw sleutelkluis, ga naar **Toegangsbeleid** en **Klik hierop om geavanceerde beleidsregels weer te geven**.
+1. Selecteer uw sleutelkluis, ga naar **Toegangsbeleid** en **Klik hierop om geavanceerde beleidsregels weer te geven** .
 2. Schakel het selectievakje **Toegang tot Azure Disk Encryption voor volumeversleuteling inschakelen** in.
-3. Selecteer indien nodig **Toegang tot Azure Virtual Machines inschakelen voor implementatie** en/of **Toegang tot Azure Resource Manager inschakelen voor sjabloonimplementatie**. 
-4. Klik op **Opslaan**.
+3. Selecteer indien nodig **Toegang tot Azure Virtual Machines inschakelen voor implementatie** en/of **Toegang tot Azure Resource Manager inschakelen voor sjabloonimplementatie** . 
+4. Klik op **Opslaan** .
 
     ![Geavanceerd toegangsbeleid voor Azure Key Vault](../articles/virtual-machines/media/disk-encryption/keyvault-portal-fig4.png)
 

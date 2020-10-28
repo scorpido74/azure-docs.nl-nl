@@ -3,13 +3,13 @@ title: Container groep implementeren in een virtueel Azure-netwerk
 description: Meer informatie over hoe u een container groep implementeert in een nieuw of bestaand virtueel Azure-netwerk met behulp van de Azure-opdracht regel interface.
 ms.topic: article
 ms.date: 07/02/2020
-ms.custom: devx-track-js
-ms.openlocfilehash: f8f61bc74f79c1712c3c662be66384c5ef689eb7
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 02cf514e6c19387e3a9e2f1c78b65f346fff764e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518123"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746906"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Containerinstanties implementeren in een virtueel Azure-netwerk
 
@@ -69,7 +69,7 @@ Een container groep implementeren in een bestaand virtueel netwerk:
 
 In het volgende voor beeld wordt een tweede container groep geïmplementeerd op hetzelfde subnet dat eerder is gemaakt en wordt de communicatie tussen de twee container instanties geverifieerd.
 
-Haal eerst het IP-adres op van de eerste container groep die u hebt geïmplementeerd, de *appcontainer*:
+Haal eerst het IP-adres op van de eerste container groep die u hebt geïmplementeerd, de *appcontainer* :
 
 ```azurecli
 az container show --resource-group myResourceGroup \
@@ -83,7 +83,7 @@ In de uitvoer wordt het IP-adres van de container groep in het privé-subnet wee
 10.0.0.4
 ```
 
-Stel nu `CONTAINER_GROUP_IP` in op het IP-adres dat u hebt opgehaald met de `az container show` opdracht en voer de volgende `az container create` opdracht uit. Deze tweede container, *commchecker*, voert een alpine Linux-installatie kopie uit en voert een uitvoer uit `wget` op basis van het IP-adres van het particuliere subnet van de container groep.
+Stel nu `CONTAINER_GROUP_IP` in op het IP-adres dat u hebt opgehaald met de `az container show` opdracht en voer de volgende `az container create` opdracht uit. Deze tweede container, *commchecker* , voert een alpine Linux-installatie kopie uit en voert een uitvoer uit `wget` op basis van het IP-adres van het particuliere subnet van de container groep.
 
 ```azurecli
 CONTAINER_GROUP_IP=<container-group-IP-address>
@@ -139,7 +139,7 @@ Voorbeelduitvoer:
 /subscriptions/<Subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkProfiles/aci-network-profile-aci-vnet-aci-subnet
 ```
 
-Wanneer u de netwerk profiel-ID hebt, kopieert u de volgende YAML naar een nieuw bestand met de naam *vnet-Deploy-ACI. yaml*. `networkProfile`Vervang onder de waarde door de `id` id die u zojuist hebt opgehaald en sla het bestand op. Met deze YAML maakt u een container groep met de naam *appcontaineryaml* in uw virtuele netwerk.
+Wanneer u de netwerk profiel-ID hebt, kopieert u de volgende YAML naar een nieuw bestand met de naam *vnet-Deploy-ACI. yaml* . `networkProfile`Vervang onder de waarde door de `id` id die u zojuist hebt opgehaald en sla het bestand op. Met deze YAML maakt u een container groep met de naam *appcontaineryaml* in uw virtuele netwerk.
 
 ```YAML
 apiVersion: '2019-12-01'
@@ -204,7 +204,7 @@ Voor deze functie zijn momenteel verschillende extra opdrachten vereist voor het
 Voordat u het script uitvoert, stelt `RES_GROUP` u de variabele in op de naam van de resource groep met het virtuele netwerk en het subnet dat moet worden verwijderd. Werk de naam van het virtuele netwerk bij als u de naam die u eerder hebt voorgesteld niet hebt gebruikt `aci-vnet` . Het script is geformatteerd voor de bash-shell. Als u de voor keur geeft aan een andere shell, zoals Power shell of opdracht prompt, moet u de toewijzings-en toegangs rechten van de variabele dienovereenkomstig aanpassen.
 
 > [!WARNING]
-> Met dit script worden resources verwijderd! Hiermee verwijdert u het virtuele netwerk en alle subnetten die het bevat. Zorg ervoor dat u *een* van de resources in het virtuele netwerk niet meer nodig hebt, met inbegrip van de subnetten die het bevat, voordat u dit script uitvoert. Nadat **deze bronnen zijn verwijderd, kunnen ze onherstelbaar zijn**.
+> Met dit script worden resources verwijderd! Hiermee verwijdert u het virtuele netwerk en alle subnetten die het bevat. Zorg ervoor dat u *een* van de resources in het virtuele netwerk niet meer nodig hebt, met inbegrip van de subnetten die het bevat, voordat u dit script uitvoert. Nadat **deze bronnen zijn verwijderd, kunnen ze onherstelbaar zijn** .
 
 ```azurecli
 # Replace <my-resource-group> with the name of your resource group

@@ -3,13 +3,13 @@ title: Azure Files volume koppelen aan container groep
 description: Meer informatie over het koppelen van een Azure Files-volume om de status te behouden met Azure Container Instances
 ms.topic: article
 ms.date: 07/02/2020
-ms.custom: mvc
-ms.openlocfilehash: eaf5e0704ba2ea4f0e0a30d61e4ae1d2ad1bf58d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 5ca619ac3ae93ee238d019b64ecccc975b7c8e3b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86259473"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746857"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Een Azure-bestandsshare koppelen in Azure Container Instances
 
@@ -235,7 +235,7 @@ az deployment group create --resource-group myResourceGroup --template-file depl
 
 Als u meerdere volumes in een container exemplaar wilt koppelen, moet u implementeren met behulp van een [Azure Resource Manager-sjabloon](/azure/templates/microsoft.containerinstance/containergroups), een yaml-bestand of een andere programmatische methode. Als u een sjabloon-of YAML-bestand wilt gebruiken, geeft u de delen Details op en definieert u de volumes door de `volumes` matrix in de `properties` sectie van het bestand in te vullen. 
 
-Als u bijvoorbeeld twee Azure Files shares hebt gemaakt met de naam *share1* en *Share2* in de *myStorageAccount*van het opslag account, ziet de `volumes` matrix in een resource manager-sjabloon er ongeveer als volgt uit:
+Als u bijvoorbeeld twee Azure Files shares hebt gemaakt met de naam *share1* en *Share2* in de *myStorageAccount* van het opslag account, ziet de `volumes` matrix in een resource manager-sjabloon er ongeveer als volgt uit:
 
 ```JSON
 "volumes": [{
@@ -256,7 +256,7 @@ Als u bijvoorbeeld twee Azure Files shares hebt gemaakt met de naam *share1* en 
 }]
 ```
 
-Voor elke container in de container groep waarin u de volumes wilt koppelen, vult u de `volumeMounts` matrix in de `properties` sectie van de container definitie. Hiermee koppelt u bijvoorbeeld de twee volumes, *myvolume1* en *myvolume2*, die eerder zijn gedefinieerd:
+Voor elke container in de container groep waarin u de volumes wilt koppelen, vult u de `volumeMounts` matrix in de `properties` sectie van de container definitie. Hiermee koppelt u bijvoorbeeld de twee volumes, *myvolume1* en *myvolume2* , die eerder zijn gedefinieerd:
 
 ```JSON
 "volumeMounts": [{

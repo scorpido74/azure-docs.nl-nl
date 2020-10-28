@@ -4,13 +4,13 @@ description: Meer informatie over de optionele SLA-aanbieding voor uptime voor d
 services: container-service
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.custom: references_regions
-ms.openlocfilehash: 6523e16bfe3bf0592b78da544d7d52dc3d969af4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: dd1836220b5fd5a0af2d4ece3d9bc3932f1ae554
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88749119"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748871"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>SLA voor uptime van Azure Kubernetes service (AKS)
 
@@ -48,7 +48,7 @@ SLA voor uptime is een betaalde functie en ingeschakeld per cluster. De prijzen 
 
 Als u een nieuw cluster wilt maken met de SLA voor de uptime, gebruikt u de Azure CLI.
 
-In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus*:
+In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus* :
 
 ```azurecli-interactive
 # Create a resource group

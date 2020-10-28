@@ -1,5 +1,5 @@
 ---
-title: Een Azure Files StorageClass maken in azure Red Hat open Shift 4
+title: Een Azure Files StorageClass maken in Azure Red Hat OpenShift 4
 description: Meer informatie over het maken van een Azure Files StorageClass in azure Red Hat open Shift
 ms.service: container-service
 ms.topic: article
@@ -8,14 +8,14 @@ author: grantomation
 ms.author: b-grodel
 keywords: Aro, open Shift, AZ Aro, Red Hat, CLI, Azure file
 ms.custom: mvc
-ms.openlocfilehash: c0d809324baa095b2ce8262170289e0dfec8bfd1
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: a7415a481b133c2f528ba4636c0297ce5cfa23a7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428875"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747885"
 ---
-# <a name="create-an-azure-files-storageclass-on-azure-red-hat-openshift-4"></a>Een Azure Files StorageClass maken in azure Red Hat open Shift 4
+# <a name="create-an-azure-files-storageclass-on-azure-red-hat-openshift-4"></a>Een Azure Files StorageClass maken in Azure Red Hat OpenShift 4
 
 In dit artikel maakt u een StorageClass voor Azure Red Hat open Shift 4 waarmee de opslag van ReadWriteMany (LSU) dynamisch wordt ingericht met behulp van Azure Files. U leert het volgende:
 
@@ -32,7 +32,7 @@ Een Azure Red Hat open Shift 4-cluster implementeren in uw abonnement, Zie [een 
 
 ### <a name="set-up-azure-storage-account"></a>Azure Storage-account instellen
 
-Met deze stap maakt u een resource groep buiten de resource groep van de Azure Red Hat open Shift-cluster. Deze resource groep bevat de Azure Files-shares die zijn gemaakt door de dynamische inrichting van Azure Red Hat open SHIFT.
+Met deze stap maakt u een resource groep buiten de resource groep van het Azure Red Hat open Shift (ARO)-cluster. Deze resource groep bevat de Azure Files-shares die zijn gemaakt door de dynamische inrichting van Azure Red Hat open SHIFT.
 
 ```bash
 AZURE_FILES_RESOURCE_GROUP=aro_azure_files
