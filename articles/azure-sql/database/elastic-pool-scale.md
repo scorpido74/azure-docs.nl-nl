@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein
 ms.date: 09/16/2020
-ms.openlocfilehash: 2792a93748600d71c37972058c8e496928543c9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 947d842860452425f8b30fbdaf9558c2a94a89a2
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330703"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781206"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Elastische pool-resources in Azure SQL Database schalen
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ In dit artikel wordt beschreven hoe u de berekenings-en opslag resources die bes
 
 ## <a name="change-compute-resources-vcores-or-dtus"></a>Reken bronnen wijzigen (vCores of Dtu's)
 
-Nadat u het aantal vCores of Edtu's hebt gekozen, kunt u een elastische pool dynamisch omhoog of omlaag schalen op basis van de werkelijke ervaring met behulp van de [Azure Portal](elastic-pool-manage.md#azure-portal), [Power shell](/powershell/module/az.sql/Get-AzSqlElasticPool), de [Azure cli](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)of de [rest API](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
+Nadat u het aantal vCores of Edtu's hebt gekozen, kunt u een elastische pool dynamisch omhoog of omlaag schalen op basis van de werkelijke ervaring met behulp van de [Azure Portal](elastic-pool-manage.md#azure-portal), [Power shell](/powershell/module/az.sql/Get-AzSqlElasticPool), de [Azure cli](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)of de [rest API](/rest/api/sql/elasticpools/update).
 
 ### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>Gevolgen van het wijzigen van de servicelaag of het opnieuw schalen van de reken grootte
 
@@ -57,7 +57,7 @@ De geschatte latentie voor het wijzigen van de servicelaag, het schalen van de r
 >
 > - In het geval van het wijzigen van de servicelaag of het opnieuw schalen van de computer voor een elastische pool, moet de som van de ruimte die wordt gebruikt voor alle data bases in de pool worden gebruikt voor het berekenen van de schatting.
 > - In het geval van het verplaatsen van een Data Base naar/van een elastische pool, is alleen de ruimte die wordt gebruikt door de data base van invloed op de latentie, niet de ruimte die wordt gebruikt door de elastische pool.
-> - Voor standaard-en Algemeen elastische Pools wordt een latentie van het verplaatsen van een data base in/uit een elastische pool of tussen elastische Pools evenredig met de grootte van de Data Base als de elastische pool gebruikmaakt van[PFS](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)-opslag (Premium file share). Voer de volgende query uit in de context van een data base in de groep om te bepalen of een pool gebruikmaakt van PFS-opslag. Als de waarde in de kolom account type is `PremiumFileStorage` of `PremiumFileStorage-ZRS` , gebruikt de groep PFS-opslag.
+> - Voor standaard-en Algemeen elastische Pools wordt een latentie van het verplaatsen van een data base in/uit een elastische pool of tussen elastische Pools evenredig met de grootte van de Data Base als de elastische pool gebruikmaakt van[PFS](../../storage/files/storage-files-introduction.md)-opslag (Premium file share). Voer de volgende query uit in de context van een data base in de groep om te bepalen of een pool gebruikmaakt van PFS-opslag. Als de waarde in de kolom account type is `PremiumFileStorage` of `PremiumFileStorage-ZRS` , gebruikt de groep PFS-opslag.
 
 ```sql
 SELECT s.file_id,
@@ -69,7 +69,7 @@ WHERE s.type_desc IN ('ROWS', 'LOG');
 ```
 
 > [!TIP]
-> Zie voor het controleren van bewerkingen in uitvoering: [bewerkingen beheren met behulp van de SQL rest API](https://docs.microsoft.com/rest/api/sql/operations/list), [bewerkingen beheren met CLI](/cli/azure/sql/db/op), [bewerkingen bewaken met T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) en deze twee Power shell-opdrachten: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) en [Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
+> Zie voor het controleren van bewerkingen in uitvoering: [bewerkingen beheren met behulp van de SQL rest API](/rest/api/sql/operations/list), [bewerkingen beheren met CLI](/cli/azure/sql/db/op), [bewerkingen bewaken met T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) en deze twee Power shell-opdrachten: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) en [Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
 
 ### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>Aanvullende overwegingen bij het wijzigen van de servicelaag of het opnieuw schalen van de reken grootte
 
@@ -100,7 +100,7 @@ Er worden kosten in rekening gebracht voor elk uur dat een data base bestaat met
 ### <a name="dtu-based-purchasing-model"></a>Op DTU gebaseerd inkoop model
 
 - De eDTU-prijs voor een elastische pool bevat een bepaalde hoeveelheid opslag zonder extra kosten. Extra opslag buiten de inbegrepen hoeveelheid kan worden ingericht voor extra kosten tot de maximale grootte in stappen van 250 GB tot 1 TB en vervolgens in stappen van 256 GB tot meer dan 1 TB. Zie [elastische pool: opslag grootten en reken grootten](resource-limits-dtu-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes)voor inbegrepen opslag bedragen en maximale grootte limieten.
-- Extra opslag voor een elastische pool kan worden ingericht door de maximale grootte te verhogen met behulp van de [Azure Portal](elastic-pool-manage.md#azure-portal), [Power shell](/powershell/module/az.sql/Get-AzSqlElasticPool), de [Azure cli](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)of de [rest API](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
+- Extra opslag voor een elastische pool kan worden ingericht door de maximale grootte te verhogen met behulp van de [Azure Portal](elastic-pool-manage.md#azure-portal), [Power shell](/powershell/module/az.sql/Get-AzSqlElasticPool), de [Azure cli](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)of de [rest API](/rest/api/sql/elasticpools/update).
 - De prijs van extra opslag voor een elastische pool is de extra opslag hoeveelheid vermenigvuldigd met de extra eenheids prijs voor opslag van de servicelaag. Zie [SQL database prijzen](https://azure.microsoft.com/pricing/details/sql-database/)voor meer informatie over de prijs van extra opslag.
 
 > [!IMPORTANT]

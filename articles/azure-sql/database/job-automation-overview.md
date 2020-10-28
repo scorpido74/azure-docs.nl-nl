@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/10/2020
-ms.openlocfilehash: 6b4b31ab4bc0cb1fe5bd9140870df86db6841ff3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ecd7e847a91847db8f57c640a374dc329fce7ea
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450348"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782940"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Beheertaken automatiseren met behulp van databasetaken
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -173,13 +173,13 @@ Enkele van de SQL Agent-functies die beschikbaar zijn in SQL Server worden niet 
 - Proxy's worden niet ondersteund.
 - Gebeurtenislogboek wordt niet ondersteund.
 
-Zie [SQL Server Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) voor meer informatie over SQL Server Agent.
+Zie [SQL Server Agent](/sql/ssms/agent/sql-server-agent) voor meer informatie over SQL Server Agent.
 
 ## <a name="elastic-database-jobs-preview"></a>Taken voor Elastic Database (preview)
 
 **Taak voor Elastic Database** biedt de mogelijkheid om een of meer T-SQL-scripts parallel in een groot aantal databases uit te voeren volgens een schema of op aanvraag.
 
-**Taken uitvoeren voor een willekeurige combinatie van databases**: een of meer afzonderlijke databases, alle databases op een server, alle databases in een elastische pool of shardkaart, met de extra flexibiliteit om een specifieke database al dan niet op te nemen. **Taken kunnen worden uitgevoerd op meerdere servers en meerdere pools, en kunnen zelfs worden uitgevoerd voor databases in verschillende abonnementen.** Servers en pools worden dynamisch opgesomd tijdens runtime, zodat taken worden uitgevoerd voor alle databases die op het moment van de uitvoering in de doelgroep aanwezig zijn.
+**Taken uitvoeren voor een willekeurige combinatie van databases** : een of meer afzonderlijke databases, alle databases op een server, alle databases in een elastische pool of shardkaart, met de extra flexibiliteit om een specifieke database al dan niet op te nemen. **Taken kunnen worden uitgevoerd op meerdere servers en meerdere pools, en kunnen zelfs worden uitgevoerd voor databases in verschillende abonnementen.** Servers en pools worden dynamisch opgesomd tijdens runtime, zodat taken worden uitgevoerd voor alle databases die op het moment van de uitvoering in de doelgroep aanwezig zijn.
 
 De volgende afbeelding toont hoe een taakagent taken uitvoert op verschillende soorten doelgroepen:
 
@@ -210,30 +210,30 @@ Voor de huidige preview is een bestaande database in Azure SQL Database (S0 of h
 
 De *taakdatabase* hoeft niet helemaal nieuw te zijn, maar het moet een schone, lege database met servicedoelstelling S0 of hoger zijn. De aanbevolen servicedoelstelling van de *taakdatabase* is S1 of hoger, maar de optimale keuze hangt af van de prestatiebehoeften van uw taken: het aantal taakstappen, het aantal taakdoelen en met welke frequentie de taken worden uitgevoerd. Zo is een S0-database mogelijk voldoende voor een taakagent die enkele taken per uur uitvoert voor minder dan tien databases. Maar als een taak elke minuut moet worden uitgevoerd, is deze database mogelijk niet snel genoeg en is een hogere servicelaag misschien beter.
 
-Als bewerkingen voor de taakdatabase langzamer zijn dan verwacht, [bewaak](monitor-tune-overview.md#azure-sql-database-and-azure-sql-managed-instance-resource-monitoring) dan de databaseprestaties en het resourcegebruik in de taakdatabase tijdens trage periodes met behulp van Azure Portal of de DMV [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database). Als het gebruik van een resource, zoals CPU, gegevens-IO of logboekschrijfbewerkingen bijna 100% is en overeenkomt met trage perioden, kunt u overwegen om de database stapsgewijs te schalen naar hogere servicedoelstellingen (in het [DTU-model](service-tiers-dtu.md) of het [vCore-model](service-tiers-vcore.md)) totdat de prestaties van de taakdatabase voldoende zijn verbeterd.
+Als bewerkingen voor de taakdatabase langzamer zijn dan verwacht, [bewaak](monitor-tune-overview.md#azure-sql-database-and-azure-sql-managed-instance-resource-monitoring) dan de databaseprestaties en het resourcegebruik in de taakdatabase tijdens trage periodes met behulp van Azure Portal of de DMV [sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database). Als het gebruik van een resource, zoals CPU, gegevens-IO of logboekschrijfbewerkingen bijna 100% is en overeenkomt met trage perioden, kunt u overwegen om de database stapsgewijs te schalen naar hogere servicedoelstellingen (in het [DTU-model](service-tiers-dtu.md) of het [vCore-model](service-tiers-vcore.md)) totdat de prestaties van de taakdatabase voldoende zijn verbeterd.
 
 ##### <a name="job-database-permissions"></a>Machtigingen voor taakdatabase
 
-Tijdens het maken van een taakagent worden er een schema, tabellen en een rol met de naam *jobs_reader* gemaakt in de *taakdatabase*. De rol is gemaakt met de volgende machtigingen en is ontworpen om beheerders gedetailleerder toegangsbeheer te geven voor het bewaken van de taak:
+Tijdens het maken van een taakagent worden er een schema, tabellen en een rol met de naam *jobs_reader* gemaakt in de *taakdatabase* . De rol is gemaakt met de volgende machtigingen en is ontworpen om beheerders gedetailleerder toegangsbeheer te geven voor het bewaken van de taak:
 
 |Rolnaam |Machtigingen voor schema 'jobs' |Machtigingen voor schema 'jobs_internal' |
 |---------|---------|---------|
 |**jobs_reader** | SELECT | Geen |
 
 > [!IMPORTANT]
-> Houd rekening met de beveiligingsaspecten voordat u iemand als een databasebeheerder toegang verleent tot de *taakdatabase*. Een kwaadwillende gebruiker met machtigingen voor het maken of bewerken van taken kan een taak die gebruikmaakt van een opgeslagen referentie, maken of bewerken om verbinding te maken met een database onder het beheer van de kwaadwillende gebruiker. Op die manier kan de kwaadwillende gebruiker het wachtwoord van de referenties achterhalen.
+> Houd rekening met de beveiligingsaspecten voordat u iemand als een databasebeheerder toegang verleent tot de *taakdatabase* . Een kwaadwillende gebruiker met machtigingen voor het maken of bewerken van taken kan een taak die gebruikmaakt van een opgeslagen referentie, maken of bewerken om verbinding te maken met een database onder het beheer van de kwaadwillende gebruiker. Op die manier kan de kwaadwillende gebruiker het wachtwoord van de referenties achterhalen.
 
 #### <a name="target-group"></a>Doelgroep
 
 Een *doelgroep* definieert de verzameling databases waarvoor een taakstap wordt uitgevoerd. Een doelgroep kan een willekeurig aantal en een willekeurige combinatie van de volgende elementen bevatten:
 
-- **Logische SQL-server**: als een server is opgegeven, maken alle databases op de server op het moment waarop de taak wordt uitgevoerd, deel uit van de groep. De referenties van de hoofddatabase moeten worden opgegeven zodat de groep kan worden opgesomd en worden bijgewerkt voordat de taak wordt uitgevoerd.
-- **Elastische pool**: als een elastische pool is opgegeven, maken alle databases die zich in de elastische pool bevinden op het moment dat de taak wordt uitgevoerd, deel uit van de groep. Wat de server betreft, moeten de referenties van de hoofddatabase worden opgegeven zodat de groep kan worden bijgewerkt voordat de taak wordt uitgevoerd.
-- **Individuele database**: geef een of meer afzonderlijke databases op als onderdeel van de groep.
-- **Shardkaart**: databases van een shardkaart.
+- **Logische SQL-server** : als een server is opgegeven, maken alle databases op de server op het moment waarop de taak wordt uitgevoerd, deel uit van de groep. De referenties van de hoofddatabase moeten worden opgegeven zodat de groep kan worden opgesomd en worden bijgewerkt voordat de taak wordt uitgevoerd.
+- **Elastische pool** : als een elastische pool is opgegeven, maken alle databases die zich in de elastische pool bevinden op het moment dat de taak wordt uitgevoerd, deel uit van de groep. Wat de server betreft, moeten de referenties van de hoofddatabase worden opgegeven zodat de groep kan worden bijgewerkt voordat de taak wordt uitgevoerd.
+- **Individuele database** : geef een of meer afzonderlijke databases op als onderdeel van de groep.
+- **Shardkaart** : databases van een shardkaart.
 
 > [!TIP]
-> Op het moment dat de taak wordt uitgevoerd, wordt de reeks databases in de doelgroepen die servers of pools bevatten, opnieuw geëvalueerd met behulp van *dynamische opsomming*. Dynamische opsomming zorgt ervoor dat **taken worden uitgevoerd voor alle databases die in de server of de pool bestaan op het moment dat de taak wordt uitgevoerd**. Een herevaluatie van de lijst met databases tijdens runtime is met name nuttig als het lidmaatschap van de pool of server regelmatig verandert.
+> Op het moment dat de taak wordt uitgevoerd, wordt de reeks databases in de doelgroepen die servers of pools bevatten, opnieuw geëvalueerd met behulp van *dynamische opsomming* . Dynamische opsomming zorgt ervoor dat **taken worden uitgevoerd voor alle databases die in de server of de pool bestaan op het moment dat de taak wordt uitgevoerd** . Een herevaluatie van de lijst met databases tijdens runtime is met name nuttig als het lidmaatschap van de pool of server regelmatig verandert.
 
 Pools en individuele databases kunnen worden opgegeven als ingesloten in of uitgesloten van de groep. Zo kunt u een doelgroep maken met een willekeurige combinatie van databases. Zo kunt u bijvoorbeeld een server toevoegen aan een doelgroep, maar specifieke databases in een elastische pool (of een hele pool) uitsluiten.
 
@@ -245,8 +245,8 @@ In de volgende voorbeelden ziet u hoe verschillende doelgroepdefinities tijdens 
 
 In **Voorbeeld 1** ziet u een doelgroep dat bestaat uit een lijst met afzonderlijke databases. Wanneer een taakstap wordt uitgevoerd met behulp van deze doelgroep, wordt de actie van de taakstap uitgevoerd in elk van deze databases.<br>
 In **Voorbeeld 2** ziet u een doelgroep die een server als doel heeft. Wanneer een taakstap wordt uitgevoerd met behulp van deze doelgroep, wordt de server dynamisch geïnventariseerd om de actuele lijst met databases op de server te bepalen. De actie van de taakstap wordt uitgevoerd in elk van deze databases.<br>
-In **Voorbeeld 3** ziet u een vergelijkbare doelgroep als in *Voorbeeld 2*, maar een afzonderlijke database wordt uitdrukkelijk uitgesloten. De actie van de taakstap wordt *niet* uitgevoerd in de uitgesloten database.<br>
-In **Voorbeeld 4** ziet u een doelgroep die een elastische pool als doel heeft. De pool wordt, vergelijkbaar met in *Voorbeeld 2*, dynamisch geïnventariseerd tijdens het uitvoeren van de taak om de lijst met databases in de pool te bepalen.
+In **Voorbeeld 3** ziet u een vergelijkbare doelgroep als in *Voorbeeld 2* , maar een afzonderlijke database wordt uitdrukkelijk uitgesloten. De actie van de taakstap wordt *niet* uitgevoerd in de uitgesloten database.<br>
+In **Voorbeeld 4** ziet u een doelgroep die een elastische pool als doel heeft. De pool wordt, vergelijkbaar met in *Voorbeeld 2* , dynamisch geïnventariseerd tijdens het uitvoeren van de taak om de lijst met databases in de pool te bepalen.
 <br><br>
 
 ![Aanvullende voorbeelden van doelgroepen](./media/job-automation-overview/targetgroup-examples2.png)
@@ -260,7 +260,7 @@ In **Voorbeeld 7** ziet u dat de shards in een shardkaart ook kunnen worden geë
 
 #### <a name="job"></a>Taak
 
-Een *taak* is een werkeenheid die wordt uitgevoerd volgens een schema of als een eenmalige taak. Een taak bestaat uit een of meer *taakstappen*.
+Een *taak* is een werkeenheid die wordt uitgevoerd volgens een schema of als een eenmalige taak. Een taak bestaat uit een of meer *taakstappen* .
 
 ##### <a name="job-step"></a>Taakstap
 
@@ -272,7 +272,7 @@ Het resultaat van de stappen van een taak op elke doeldatabase wordt gedetaillee
 
 #### <a name="job-history"></a>Jobgeschiedenis
 
-De taakgeschiedenis wordt opgeslagen in de *taakdatabase*. Met een systeemopschoontaak wordt uitvoergeschiedenis verwijderd die ouder is dan 45 dagen. Als u geschiedenis wilt verwijderen die nog geen 45 dagen oud is, roept u de procedure **sp_purge_history** in de *taakdatabase* aan.
+De taakgeschiedenis wordt opgeslagen in de *taakdatabase* . Met een systeemopschoontaak wordt uitvoergeschiedenis verwijderd die ouder is dan 45 dagen. Als u geschiedenis wilt verwijderen die nog geen 45 dagen oud is, roept u de procedure **sp_purge_history** in de *taakdatabase* aan.
 
 ### <a name="agent-performance-capacity-and-limitations"></a>Agentprestaties, - capaciteit en -beperkingen
 
@@ -288,7 +288,7 @@ Om ervoor te zorgen dat resources niet worden overbelast tijdens het uitvoeren v
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Wat is SQL Server Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent)
+- [Wat is SQL Server Agent](/sql/ssms/agent/sql-server-agent)
 - [Elastische taken maken en beheren](elastic-jobs-overview.md)
 - [Elastische taken maken en beheren met PowerShell](elastic-jobs-powershell-create.md)
 - [Elastische taken maken en beheren met Transact-SQL (T-SQL)](elastic-jobs-tsql-create-manage.md)

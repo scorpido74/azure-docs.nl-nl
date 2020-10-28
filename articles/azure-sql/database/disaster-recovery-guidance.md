@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 06/21/2019
-ms.openlocfilehash: e88c1b976ce1de0ce0be4b6a5f85af6790802323
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4a6802829d230cebc460df1409b7655534a5b8e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321625"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782991"
 ---
 # <a name="restore-your-azure-sql-database-or-failover-to-a-secondary"></a>Uw Azure SQL Database of failover naar een secundaire herstellen
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -62,7 +62,7 @@ De herstel bewerking is van invloed op de toepassing. Hiervoor moet de SQL-conne
 
 Afhankelijk van de toepassings tolerantie tot uitval tijd en mogelijke bedrijfs aansprakelijkheid kunt u de volgende herstel opties overwegen.
 
-Gebruik de [database herstel bare data base](https://msdn.microsoft.com/library/dn800985.aspx) (*LastAvailableBackupDate*) ophalen om het meest recente, door de geo gerepliceerde terugzet punt op te halen.
+Gebruik de [database herstel bare data base](/previous-versions/azure/reference/dn800985(v=azure.100)) ( *LastAvailableBackupDate* ) ophalen om het meest recente, door de geo gerepliceerde terugzet punt op te halen.
 
 ## <a name="wait-for-service-recovery"></a>Wachten op service herstel
 

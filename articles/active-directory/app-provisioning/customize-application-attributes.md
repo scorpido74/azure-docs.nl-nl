@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 10/26/2020
 ms.author: kenwith
-ms.openlocfilehash: 159a473b2b164d1f0692864e26f6127d9faf8287
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: bf88782cf771c01a6a167d4584ad86dc69795c59
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92069871"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781478"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Kenmerk toewijzingen voor het inrichten van gebruikers aanpassen voor SaaS-toepassingen in Azure Active Directory
 
@@ -30,7 +30,7 @@ U kunt de standaard kenmerk toewijzingen aanpassen op basis van de behoeften van
 Volg deze stappen om toegang te krijgen tot de functie **toewijzingen** van het inrichten van gebruikers:
 
 1. Meld u aan bij de [Azure Active Directory Portal](https://aad.portal.azure.com).
-1. Selecteer **bedrijfs toepassingen** in het linkerdeel venster. Er wordt een lijst met alle geconfigureerde apps weer gegeven, met inbegrip van apps die zijn toegevoegd vanuit de galerie.
+1. Selecteer **Enterprise-toepassingen** in het linkerdeelvenster. Er wordt een lijst met alle geconfigureerde apps weergegeven, met inbegrip van apps die zijn toegevoegd vanuit de galerie.
 1. Selecteer een app om het deel venster app-beheer te laden. hier kunt u rapporten bekijken en app-instellingen beheren.
 1. Selecteer **inrichting** om de instellingen voor het inrichten van gebruikers accounts voor de geselecteerde app te beheren.
 1. Vouw **toewijzingen** uit om de gebruikers kenmerken weer te geven en te bewerken die tussen Azure AD en de doel toepassing stroom gaan. Als de doel toepassing deze ondersteunt, kunt u in deze sectie desgewenst het inrichten van groepen en gebruikers accounts configureren.
@@ -90,7 +90,7 @@ Een geselecteerd aantal toepassingen, zoals ServiceNow, box en G suite, onderste
 
 ![Voor beeld toont ServiceNow met ingerichte groeps-en gebruikers objecten](./media/customize-application-attributes/24.png)
 
-Groeps inrichting kan optioneel worden in-of uitgeschakeld door de groeps toewijzing onder **toewijzingen**te selecteren en in **te scha kelen op** de gewenste optie in het scherm **kenmerk toewijzing** .
+Groeps inrichting kan optioneel worden in-of uitgeschakeld door de groeps toewijzing onder **toewijzingen** te selecteren en in **te scha kelen op** de gewenste optie in het scherm **kenmerk toewijzing** .
 
 De kenmerken die als onderdeel van groeps objecten worden ingericht, kunnen op dezelfde manier worden aangepast als gebruikers objecten, zoals eerder beschreven. 
 
@@ -107,9 +107,12 @@ Toepassingen en systemen die ondersteuning bieden voor aanpassing van de lijst m
 
 - SalesForce
 - ServiceNow
-- Workday
+- Workday tot Active Directory/werkdag tot Azure Active Directory
+- SuccessFactors Active Directory/SuccessFactors naar Azure Active Directory
 - Azure Active Directory ([standaard kenmerken van Azure AD Graph API](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity) en aangepaste Directory-extensies worden ondersteund)
 - Apps die ondersteuning bieden voor [SCIM 2,0](https://tools.ietf.org/html/rfc7643), waarbij kenmerken die zijn gedefinieerd in het [kern schema](https://tools.ietf.org/html/rfc7643) , moeten worden toegevoegd
+- Voor Azure Active Directory write-back naar workday of SuccessFactors, wordt het ondersteund voor het bijwerken van relevante meta gegevens voor ondersteunde kenmerken (XPATH en JSONPath), maar wordt het niet ondersteund om nieuwe workday-of SuccessFactors-kenmerken toe te voegen dan die in het standaard schema zijn opgenomen.
+
 
 > [!NOTE]
 > Het bewerken van de lijst met ondersteunde kenmerken wordt alleen aanbevolen voor beheerders die het schema van hun toepassingen en systemen hebben aangepast, en die over de eerste kennis beschikken over hoe hun aangepaste kenmerken zijn gedefinieerd. Dit vereist soms vertrouwd met de Api's en ontwikkel hulpprogramma's van een toepassing of systeem.
@@ -133,16 +136,16 @@ Bij het bewerken van de lijst met ondersteunde kenmerken, worden de volgende eig
 
 #### <a name="provisioning-a-custom-extension-attribute-to-a-scim-compliant-application"></a>Een aangepast uitbreidings kenmerk inrichten voor een SCIM-compatibele toepassing
 De SCIM-RFC definieert een kern gebruikers-en groeps schema, en biedt ook uitbrei dingen voor het schema om te voldoen aan de behoeften van uw toepassing. Een aangepast kenmerk toevoegen aan een SCIM-toepassing:
-   1. Meld u aan bij de [Azure Active Directory-Portal](https://aad.portal.azure.com), selecteer **zakelijke toepassingen**, selecteer uw toepassing en selecteer vervolgens **inrichting**.
-   2. Selecteer onder **toewijzingen**het object (gebruiker of groep) waarvoor u een aangepast kenmerk wilt toevoegen.
-   3. Selecteer onder aan de pagina **Geavanceerde opties weer geven**.
-   4. Selecteer **kenmerk lijst bewerken voor appName**.
-   5. Typ onder aan de lijst met kenmerken informatie over het aangepaste kenmerk in de opgegeven velden. Selecteer vervolgens **kenmerk toevoegen**.
+   1. Meld u aan bij de [Azure Active Directory-Portal](https://aad.portal.azure.com), selecteer **zakelijke toepassingen** , selecteer uw toepassing en selecteer vervolgens **inrichting** .
+   2. Selecteer onder **toewijzingen** het object (gebruiker of groep) waarvoor u een aangepast kenmerk wilt toevoegen.
+   3. Selecteer onder aan de pagina **Geavanceerde opties weer geven** .
+   4. Selecteer **kenmerk lijst bewerken voor appName** .
+   5. Typ onder aan de lijst met kenmerken informatie over het aangepaste kenmerk in de opgegeven velden. Selecteer vervolgens **kenmerk toevoegen** .
 
 Voor SCIM-toepassingen moet de naam van het kenmerk voldoen aan het patroon dat in het voor beeld hieronder wordt weer gegeven. De ' CustomExtensionName ' en ' CustomAttribute ' kunnen worden aangepast volgens de vereisten van uw toepassing, bijvoorbeeld:  
  * urn: IETF: params: scim: schemas: extension: CustomExtensionName: 2.0: gebruiker: CustomAttribute 
  * urn: IETF: params: scim: schemas: extension: 2.0: CustomExtensionName: CustomAttribute  
- * urn: IETF: params: scim: schemas: extension: CustomExtensionName: 2.0: User. CustomAttributeName: waarde
+ * urn: IETF: params: scim: schemas: extensie: CustomExtensionName: 2.0: gebruiker: CustomAttributeName: waarde
 
 Deze instructies zijn alleen van toepassing op SCIM-toepassingen. Toepassingen zoals ServiceNow en Sales Force zijn niet geïntegreerd met Azure AD met behulp van SCIM. deze specifieke naam ruimte is daarom niet vereist bij het toevoegen van een aangepast kenmerk.
 
@@ -174,7 +177,7 @@ Aangepaste kenmerken kunnen geen referentiële kenmerken of kenmerken met meerde
        "displayName": "John Smith"
      }
    },
-     "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:CustomAttribute:User": {
+     "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User": {
      "CustomAttribute": "701984",
    },
    "meta": {
@@ -278,7 +281,7 @@ Bepaalde kenmerken, zoals phoneNumbers en e-mail berichten, zijn kenmerken met m
 
 * phoneNumbers[type eq "work"].value
 * phoneNumbers[type eq "mobile"].value
-* phoneNumbers [type EQ "fax"]. waarde
+* phoneNumbers[type eq "fax"].value
 
    ```json
    "phoneNumbers": [

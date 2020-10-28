@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/07/2019
-ms.openlocfilehash: 6038ec1d83957f20ca6e2759eeb5a88e66c2f77f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3bfbf56b6e5f2be33b407945490531e6e2e8ac47
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443406"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781257"
 ---
 # <a name="create-performance-counters-to-track-performance-of-shard-map-manager"></a>Prestatie meter items maken om de prestaties van Shard-toewijzings beheer bij te houden
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -35,28 +35,28 @@ U kunt de prestaties van een [Shard-kaart beheer](elastic-scale-shard-map-manage
 
 ## <a name="create-performance-category-and-counters"></a>Prestatie categorie en tellers maken
 
-Als u de items wilt maken, roept u de methode CreatePerformanceCategoryAndCounters van de [klasse ShardMapManagementFactory](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory)aan. Alleen een beheerder kan de volgende methode uitvoeren:
+Als u de items wilt maken, roept u de methode CreatePerformanceCategoryAndCounters van de [klasse ShardMapManagementFactory](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory)aan. Alleen een beheerder kan de volgende methode uitvoeren:
 
 `ShardMapManagerFactory.CreatePerformanceCategoryAndCounters()`
 
 U kunt [Dit](https://gallery.technet.microsoft.com/scriptcenter/Elastic-DB-Tools-for-Azure-17e3d283) Power shell-script ook gebruiken om de-methode uit te voeren.
 Met de-methode worden de volgende prestatie meter items gemaakt:  
 
-* **Toewijzingen in de cache**: het aantal toewijzingen in de cache voor de Shard-kaart.
-* **DDR-bewerkingen per seconde**: frequentie van gegevens afhankelijke route ring bewerkingen voor de Shard-kaart. Dit item wordt bijgewerkt wanneer een aanroep van [OpenConnectionForKey ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey) resulteert in een geslaagde verbinding met de doel-Shard.
-* **Treffers voor het opzoeken van de opzoek cache per seconde**: frequentie van geslaagde cache opzoek bewerkingen voor toewijzingen in de Shard-toewijzing.
-* Missers in de cache voor het opzoeken van de **toewijzingen per seconde**: de frequentie van mislukte opzoek bewerkingen in de cache voor toewijzingen in de Shard-toewijzing.
-* **Toewijzingen die zijn toegevoegd of bijgewerkt in de cache per seconde**: de snelheid waarmee toewijzingen worden toegevoegd of bijgewerkt in de cache voor de Shard-toewijzing.
-* **Toewijzingen verwijderd uit cache/SEC**: snelheid waarmee toewijzingen worden verwijderd uit de cache voor de Shard-toewijzing.
+* **Toewijzingen in de cache** : het aantal toewijzingen in de cache voor de Shard-kaart.
+* **DDR-bewerkingen per seconde** : frequentie van gegevens afhankelijke route ring bewerkingen voor de Shard-kaart. Dit item wordt bijgewerkt wanneer een aanroep van [OpenConnectionForKey ()](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey) resulteert in een geslaagde verbinding met de doel-Shard.
+* **Treffers voor het opzoeken van de opzoek cache per seconde** : frequentie van geslaagde cache opzoek bewerkingen voor toewijzingen in de Shard-toewijzing.
+* Missers in de cache voor het opzoeken van de **toewijzingen per seconde** : de frequentie van mislukte opzoek bewerkingen in de cache voor toewijzingen in de Shard-toewijzing.
+* **Toewijzingen die zijn toegevoegd of bijgewerkt in de cache per seconde** : de snelheid waarmee toewijzingen worden toegevoegd of bijgewerkt in de cache voor de Shard-toewijzing.
+* **Toewijzingen verwijderd uit cache/SEC** : snelheid waarmee toewijzingen worden verwijderd uit de cache voor de Shard-toewijzing.
 
 Prestatie meter items worden gemaakt voor elke Shard-kaart in de cache per proces.  
 
-## <a name="notes"></a>Notities
+## <a name="notes"></a>Opmerkingen
 
 Met de volgende gebeurtenissen wordt het maken van de prestatie meter items geactiveerd:  
 
-* Initialisatie van de [ShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager) met behulp van een te [laden](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerloadpolicy), als de ShardMapManager een Shard-toewijzing bevat. Dit zijn onder andere de methoden [GetSqlShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager) en [TryGetSqlShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager) .
-* Het opzoeken van een Shard-kaart is geslaagd (met behulp van [GetShardMap ()](https://msdn.microsoft.com/library/azure/dn824215.aspx), [GetListShardMap ()](https://msdn.microsoft.com/library/azure/dn824212.aspx) of [GetRangeShardMap ()](https://msdn.microsoft.com/library/azure/dn824173.aspx)).
+* Initialisatie van de [ShardMapManager](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager) met behulp van een te [laden](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerloadpolicy), als de ShardMapManager een Shard-toewijzing bevat. Dit zijn onder andere de methoden [GetSqlShardMapManager](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager) en [TryGetSqlShardMapManager](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager) .
+* Het opzoeken van een Shard-kaart is geslaagd (met behulp van [GetShardMap ()](/previous-versions/azure/dn824215(v=azure.100)), [GetListShardMap ()](/previous-versions/azure/dn824212(v=azure.100)) of [GetRangeShardMap ()](/previous-versions/azure/dn824173(v=azure.100))).
 * Het maken van een Shard-toewijzing met CreateShardMap () is voltooid.
 
 De prestatie meter items worden bijgewerkt door alle cache bewerkingen die worden uitgevoerd op de Shard-kaart en toewijzingen. Het verwijderen van de Shard-toewijzing met DeleteShardMap () resulteert in het verwijderen van het prestatie meter item-exemplaar.  

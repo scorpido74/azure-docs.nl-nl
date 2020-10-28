@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: d2e50502c8c3e37c5d48359079e2e72c13feea4a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 17a29621d3d70d56745d2e51e0ce80974876a9ef
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487871"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782158"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure import/export-service: veelgestelde vragen
 
@@ -55,13 +55,13 @@ Nee. Elk station dat wordt gebruikt voor het importeren van gegevens moet worden
 
 ### <a name="do-i-need-to-perform-any-disk-preparation-when-creating-an-export-job"></a>Moet ik schijf voorbereiding uitvoeren bij het maken van een export taak?
 
-Nee. Sommige voor spellingen worden aanbevolen. Als u het aantal vereiste schijven wilt controleren, gebruikt u de opdracht PreviewExport van het WAImportExport-hulp programma. Zie voor meer informatie [het voor beeld van het gebruik van een schijf voor een export taak bekijken](https://msdn.microsoft.com/library/azure/dn722414.aspx). Met deze opdracht kunt u het gebruik van het station voor de geselecteerde blobs bekijken op basis van de grootte van de stations die u gaat gebruiken. Controleer ook of u kunt lezen uit en schrijven naar de vaste schijf die voor de export taak wordt verzonden.
+Nee. Sommige voor spellingen worden aanbevolen. Als u het aantal vereiste schijven wilt controleren, gebruikt u de opdracht PreviewExport van het WAImportExport-hulp programma. Zie voor meer informatie [het voor beeld van het gebruik van een schijf voor een export taak bekijken](/previous-versions/azure/storage/common/storage-import-export-tool-previewing-drive-usage-export-v1). Met deze opdracht kunt u het gebruik van het station voor de geselecteerde blobs bekijken op basis van de grootte van de stations die u gaat gebruiken. Controleer ook of u kunt lezen uit en schrijven naar de vaste schijf die voor de export taak wordt verzonden.
 
 ## <a name="importexport-jobs"></a>Import/export-taken
 
 ### <a name="can-i-cancel-my-job"></a>Kan ik mijn taak annuleren?
 
-Ja. U kunt een taak annuleren wanneer de status het **maken** of **verzenden**heeft. Na deze fasen kan de taak niet worden geannuleerd en wordt deze tot de laatste fase voortgezet.
+Ja. U kunt een taak annuleren wanneer de status het **maken** of **verzenden** heeft. Na deze fasen kan de taak niet worden geannuleerd en wordt deze tot de laatste fase voortgezet.
 
 ### <a name="how-long-can-i-view-the-status-of-completed-jobs-in-the-azure-portal"></a>Hoe lang kan ik de status van voltooide taken in het Azure Portal weer geven?
 
@@ -132,7 +132,7 @@ Nee. Alle stations zijn versleuteld met BitLocker.
 
 ### <a name="how-can-i-access-data-that-is-imported-by-this-service"></a>Hoe kan ik toegang krijgen tot gegevens die door deze service worden geïmporteerd?
 
-Gebruik de Azure Portal of [Storage Explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer) om toegang te krijgen tot de gegevens in uw Azure Storage-account.  
+Gebruik de Azure Portal of [Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) om toegang te krijgen tot de gegevens in uw Azure Storage-account.  
 
 ### <a name="after-the-import-is-complete-what-does-my-data-look-like-in-the-storage-account-is-my-directory-hierarchy-preserved"></a>Waar worden mijn gegevens weer gegeven in het opslag account nadat het importeren is voltooid? Is mijn Directory-hiërarchie behouden?
 
@@ -144,7 +144,7 @@ Is afhankelijk van. Wanneer u het station voorbereidt, kunt u opgeven of de doel
 
 ### <a name="is-the-waimportexport-tool-compatible-with-32-bit-operating-systems"></a>Is het WAImportExport-hulp programma compatibel met 32-bits besturings systemen?
 
-Nee. Het hulp programma WAImportExport is alleen compatibel met 64-bits Windows-besturings systemen. Ga naar [ondersteunde besturings systemen](/azure/storage/common/storage-import-export-requirements)voor een volledige lijst met ondersteunde versies van het besturings systeem.
+Nee. Het hulp programma WAImportExport is alleen compatibel met 64-bits Windows-besturings systemen. Ga naar [ondersteunde besturings systemen](./storage-import-export-requirements.md)voor een volledige lijst met ondersteunde versies van het besturings systeem.
 
 ### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Wat is de maximum grootte van een blok-Blob en een pagina-blob die wordt ondersteund door Azure import/export?
 

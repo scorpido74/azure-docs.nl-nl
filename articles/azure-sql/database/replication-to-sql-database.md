@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 079d187f66cf77585121198df06cabafc454fea1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ff1d485ab4c0662ae8a9d754ce67b1446b76fcc
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362126"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780951"
 ---
 # <a name="replication-to-azure-sql-database"></a>Replicatie naar Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "91362126"
 U kunt een Azure SQL Database als push-abonnee configureren in een transactionele trans actie-of momentopname replicatie topologie.
 
 > [!NOTE]
-> In dit artikel wordt het gebruik van [transactionele replicatie](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) in Azure SQL database beschreven. Het heeft geen betrekking op [actieve geo-replicatie](https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication), een Azure SQL database functie waarmee u volledig Lees bare replica's van afzonderlijke data bases kunt maken.
+> In dit artikel wordt het gebruik van [transactionele replicatie](/sql/relational-databases/replication/transactional/transactional-replication) in Azure SQL database beschreven. Het heeft geen betrekking op [actieve geo-replicatie](./active-geo-replication-overview.md), een Azure SQL database functie waarmee u volledig Lees bare replica's van afzonderlijke data bases kunt maken.
 
 ## <a name="supported-configurations"></a>Ondersteunde configuraties
   
@@ -50,16 +50,16 @@ Als u alle functies van Azure SQL Database wilt gebruiken, moet u de nieuwste ve
 
 ### <a name="types-of-replication"></a>Typen replicatie
 
-Er zijn verschillende [typen replicatie](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication):
+Er zijn verschillende [typen replicatie](/sql/relational-databases/replication/types-of-replication):
 
 | Replicatie | Azure SQL Database | Azure SQL Managed Instance |
 | :----| :------------- | :--------------- |
-| [**Standaard transactionele**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Ja (alleen als abonnee) | Ja | 
-| [**Snapshot**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Ja (alleen als abonnee) | Ja|
-| [**Samenvoeg replicatie**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Nee | Nee|
-| [**Peer-to-peer**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nee | Nee|
-| [**Bidirectioneel**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nee | Ja|
-| [**Bij te werken abonnementen**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Nee | Nee|
+| [**Standaard transactionele**](/sql/relational-databases/replication/transactional/transactional-replication) | Ja (alleen als abonnee) | Ja | 
+| [**Momentopname**](/sql/relational-databases/replication/snapshot-replication) | Ja (alleen als abonnee) | Ja|
+| [**Samenvoeg replicatie**](/sql/relational-databases/replication/merge/merge-replication) | Nee | Nee|
+| [**Peer-to-peer**](/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nee | Nee|
+| [**Bidirectioneel**](/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nee | Ja|
+| [**Bij te werken abonnementen**](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Nee | Nee|
 | &nbsp; | &nbsp; | &nbsp; |
 
   
@@ -126,14 +126,14 @@ De volgende opties worden niet ondersteund voor Azure SQL Database-abonnementen:
 
 Maak een publicatie en een push-abonnement. Zie voor meer informatie:
   
-- [Een publicatie maken](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [Maak een push-abonnement](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) met behulp van de server naam als de abonnee (bijvoorbeeld **N'azuresqldbdns. data base. Windows. net**) en de naam van de Azure SQL database als doel database (bijvoorbeeld **AdventureWorks**).  
+- [Een publicatie maken](/sql/relational-databases/replication/publish/create-a-publication)
+- [Maak een push-abonnement](/sql/relational-databases/replication/create-a-push-subscription/) met behulp van de server naam als de abonnee (bijvoorbeeld **N'azuresqldbdns. data base. Windows. net** ) en de naam van de Azure SQL database als doel database (bijvoorbeeld **AdventureWorks** ).  
 
 ## <a name="see-also"></a>Zie ook  
 
 - [Transactionele replicatie](../managed-instance/replication-transactional-overview.md)
-- [Een publicatie maken](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [Een push-abonnement maken](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
-- [Typen replicatie](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
-- [Bewaking (replicatie)](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)
-- [Een abonnement initialiseren](https://docs.microsoft.com/sql/relational-databases/replication/initialize-a-subscription)  
+- [Een publicatie maken](/sql/relational-databases/replication/publish/create-a-publication)
+- [Een push-abonnement maken](/sql/relational-databases/replication/create-a-push-subscription/)
+- [Typen replicatie](/sql/relational-databases/replication/types-of-replication)
+- [Bewaking (replicatie)](/sql/relational-databases/replication/monitor/monitoring-replication)
+- [Een abonnement initialiseren](/sql/relational-databases/replication/initialize-a-subscription)

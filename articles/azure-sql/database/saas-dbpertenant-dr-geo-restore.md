@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: 620a5dad7966347667e0a0a50eb30d562ab700b2
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: daccbd9dfb3ed628d8a3e604cbb9af4045f1ebe6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330101"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780883"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Geo-herstel gebruiken om een multitenant-SaaS-toepassing te herstellen vanuit databaseback-ups
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -43,7 +43,7 @@ In deze zelfstudie verkent u zowel de herstel- als de repatriëringswerkstroom. 
 
 Voordat u deze zelfstudie start, doet u het volgende:
 * Implementeer de Wingtip Tickets-SaaS-database-per-tenant-app. Zie [De SaaS-app Wingtip Tickets met een database per tenant implementeren en verkennen](saas-dbpertenant-get-started-deploy.md) om de app in minder dan vijf minuten te implementeren. 
-* Installeer Azure PowerShell. Zie [Aan de slag met Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps) voor meer informatie.
+* Installeer Azure PowerShell. Zie [Aan de slag met Azure PowerShell](/powershell/azure/get-started-azureps) voor meer informatie.
 
 ## <a name="introduction-to-the-geo-restore-recovery-pattern"></a>Inleiding tot het herstelpatroon met geo-herstel
 
@@ -58,17 +58,17 @@ Herstel na noodgevallen is een belangrijke overweging voor veel toepassingen, on
  * Databases repatriëren naar hun oorspronkelijke regio met minimale gevolgen voor tenants wanneer de storing is verholpen.  
 
 > [!NOTE]
-> De toepassing wordt hersteld in de gekoppelde regio van de regio waarin de toepassing is geïmplementeerd. Zie [Gekoppelde Azure-regio's](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) voor meer informatie.   
+> De toepassing wordt hersteld in de gekoppelde regio van de regio waarin de toepassing is geïmplementeerd. Zie [Gekoppelde Azure-regio's](../../best-practices-availability-paired-regions.md) voor meer informatie.   
 
 In deze zelfstudie worden functies van Azure SQL Database en het Azure-platform gebruikt om deze uitdagingen het hoofd te bieden:
 
-* [Azure Resource Manager-sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template) om zo snel mogelijk alle benodigde capaciteit te reserveren. Azure Resource Manager-sjablonen worden gebruikt om een mirror-installatiekopie van de oorspronkelijke servers en elastische pools in de herstelregio in te richten. Er worden ook een afzonderlijke server en pool gemaakt voor het inrichten van nieuwe tenants.
+* [Azure Resource Manager-sjablonen](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) om zo snel mogelijk alle benodigde capaciteit te reserveren. Azure Resource Manager-sjablonen worden gebruikt om een mirror-installatiekopie van de oorspronkelijke servers en elastische pools in de herstelregio in te richten. Er worden ook een afzonderlijke server en pool gemaakt voor het inrichten van nieuwe tenants.
 * [Elastic Database Client Library](elastic-database-client-library.md) (EDCL) om een tenantdatabasecatalogus te maken en te onderhouden. Aan de uitgebreide catalogus worden regelmatig vernieuwde pool- en databaseconfiguratiegegevens toegevoegd.
 * [Shard-beheerherstelfuncties](elastic-database-recovery-manager.md) van de EDCL om databaselocatievermeldingen in de catalogus te onderhouden tijdens het herstel en de repatriëring.  
 * [Geo-herstel](../../key-vault/general/disaster-recovery-guidance.md) om de catalogus- en tenantdatabases te herstellen van automatisch onderhouden, geografisch redundante back-ups. 
-* [Asynchrone herstelbewerkingen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations), die zijn verzonden in volgorde van tenantprioriteit, worden voor elke pool door het systeem in de wachtrij geplaatst en verwerkt in batches, zodat de pool niet overbelast raakt. Deze bewerkingen kunnen zo nodig vóór of tijdens de uitvoering worden geannuleerd.   
+* [Asynchrone herstelbewerkingen](../../azure-resource-manager/management/async-operations.md), die zijn verzonden in volgorde van tenantprioriteit, worden voor elke pool door het systeem in de wachtrij geplaatst en verwerkt in batches, zodat de pool niet overbelast raakt. Deze bewerkingen kunnen zo nodig vóór of tijdens de uitvoering worden geannuleerd.   
 * [Geo-replicatie](active-geo-replication-overview.md) om databases na de storing te repatriëren naar de oorspronkelijke regio. Er gaan geen gegevens verloren en de gevolgen voor de tenant zijn minimaal wanneer u geo-replicatie gebruikt.
-* [SQL Server-DNS-aliassen](../../sql-database/dns-alias-overview.md) om het catalogussynchronisatieproces toe te staan om verbinding te maken met de actieve catalogus, ongeacht de locatie.  
+* [SQL Server-DNS-aliassen](./dns-alias-overview.md) om het catalogussynchronisatieproces toe te staan om verbinding te maken met de actieve catalogus, ongeacht de locatie.  
 
 ## <a name="get-the-disaster-recovery-scripts"></a>De scripts voor herstel na noodgevallen ophalen
 
@@ -104,7 +104,7 @@ Voordat u het herstelproces start, controleert u de normale status van de toepas
 In deze taak start u een proces voor het synchroniseren van de configuratie van de servers, elastische pools en databases met de tenantcatalogus. Deze informatie wordt later gebruikt om een omgeving met mirror-installatiekopieën in de herstelregio te configureren.
 
 > [!IMPORTANT]
-> Ter vereenvoudiging worden het synchronisatieproces en andere langlopende herstel- en repatriëringsprocessen in deze voorbeelden geïmplementeerd als lokale PowerShell-taken of -sessies die worden uitgevoerd onder de aanmeldingsgegevens van de client. De verificatietokens die worden uitgegeven wanneer u zich aanmeldt, verlopen na enkele uren. Hierna mislukken de taken. In een productiescenario moeten langlopende processen worden geïmplementeerd als betrouwbare Azure-services van een bepaald type die worden uitgevoerd onder een service-principal. Zie [Azure PowerShell gebruiken om een service-principal met een certificaat te maken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal). 
+> Ter vereenvoudiging worden het synchronisatieproces en andere langlopende herstel- en repatriëringsprocessen in deze voorbeelden geïmplementeerd als lokale PowerShell-taken of -sessies die worden uitgevoerd onder de aanmeldingsgegevens van de client. De verificatietokens die worden uitgegeven wanneer u zich aanmeldt, verlopen na enkele uren. Hierna mislukken de taken. In een productiescenario moeten langlopende processen worden geïmplementeerd als betrouwbare Azure-services van een bepaald type die worden uitgevoerd onder een service-principal. Zie [Azure PowerShell gebruiken om een service-principal met een certificaat te maken](../../active-directory/develop/howto-authenticate-service-principal-powershell.md). 
 
 1. Open in PowerShell ISE het bestand ...\Learning Modules\UserConfig.psm1. Vervang `<resourcegroup>` en `<user>` op de regels 10 en 11 door de waarde die is gebruikt bij het implementeren van de app. Sla het bestand op.
 
@@ -180,7 +180,7 @@ Stel dat er een storing optreedt in de regio waarin de toepassing is geïmplemen
 
     * Het script wordt geopend in een nieuw PowerShell-venster en vervolgens wordt een set PowerShell-taken gestart die parallel worden uitgevoerd. Met deze taken worden servers, pools en databases hersteld naar de herstelregio.
 
-    * De herstelregio is de gekoppelde regio die hoort bij de Azure-regio waarin u de toepassing hebt geïmplementeerd. Zie [Gekoppelde Azure-regio's](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) voor meer informatie. 
+    * De herstelregio is de gekoppelde regio die hoort bij de Azure-regio waarin u de toepassing hebt geïmplementeerd. Zie [Gekoppelde Azure-regio's](../../best-practices-availability-paired-regions.md) voor meer informatie. 
 
 3. Bewaak de status van het herstelproces in het PowerShell-venster.
 
@@ -374,7 +374,7 @@ In deze zelfstudie heeft u het volgende geleerd:
 > * Een DNS-alias gebruiken om ervoor te zorgen dat een toepassing altijd zonder herconfiguratie verbinding kan maken met de tenantcatalogus.
 > * Geo-replicatie gebruiken om de herstelde databases naar hun oorspronkelijke regio te repatriëren nadat een storing is verholpen.
 
-Probeer de zelfstudie [Herstel na noodgevallen voor een multitenant-SaaS-toepassing met behulp van geo-replicatie van databases](../../sql-database/saas-dbpertenant-dr-geo-replication.md) voor meer informatie over het gebruik van geo-replicatie om een grootschalige multitenant-toepassing aanzienlijk sneller te herstellen.
+Probeer de zelfstudie [Herstel na noodgevallen voor een multitenant-SaaS-toepassing met behulp van geo-replicatie van databases](./saas-dbpertenant-dr-geo-replication.md) voor meer informatie over het gebruik van geo-replicatie om een grootschalige multitenant-toepassing aanzienlijk sneller te herstellen.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 

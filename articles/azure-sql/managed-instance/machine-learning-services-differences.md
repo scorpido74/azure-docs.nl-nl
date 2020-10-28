@@ -1,6 +1,6 @@
 ---
 title: Belangrijkste verschillen voor Machine Learning Services (preview-versie)
-description: In dit onderwerp worden de belangrijkste verschillen tussen Machine Learning Services in Azure SQL Managed instance en SQL Server Machine Learning Services beschreven.
+description: In dit artikel worden de belangrijkste verschillen tussen Machine Learning Services in Azure SQL Managed instance en SQL Server Machine Learning Services beschreven.
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: machine-learning
@@ -11,17 +11,17 @@ author: garyericson
 ms.author: garye
 ms.reviewer: sstein, davidph
 manager: cgronlun
-ms.date: 05/27/2020
-ms.openlocfilehash: 9ff2de18042c466bdd8fa6c71194fff4286c820d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/26/2020
+ms.openlocfilehash: adf454ac697f8cabf4256ebfc5baa5d0d1c76264
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325093"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782464"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-managed-instance-and-sql-server"></a>De belangrijkste verschillen tussen Machine Learning Services in Azure SQL Managed Instance en SQL Server
 
-De functionaliteit van [Machine Learning Services in Azure SQL Managed instance (preview)](machine-learning-services-overview.md) is bijna identiek aan [SQL Server machine learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning). Hier volgen enkele belang rijke verschillen.
+De functionaliteit van [Machine Learning Services in Azure SQL Managed instance (preview)](machine-learning-services-overview.md) is bijna identiek aan [SQL Server machine learning Services](/sql/advanced-analytics/what-is-sql-server-machine-learning). Hier volgen enkele belang rijke verschillen.
 
 > [!IMPORTANT]
 > Machine Learning Services in Azure SQL Managed instance is momenteel beschikbaar als open bare preview. Zie [registreren voor de preview](machine-learning-services-overview.md#signup)om u aan te melden.
@@ -33,13 +33,13 @@ Tijdens de preview gelden de volgende beperkingen voor de service:
 - Loop back-verbindingen werken niet (Zie [loop back-verbinding met SQL Server vanuit een python-of R-script](/sql/machine-learning/connect/loopback-connection)).
 - Externe resourcegroepen worden niet ondersteund.
 - Alleen Python en R worden ondersteund. Externe talen, zoals Java, kunnen niet worden toegevoegd.
-- Scenario's die gebruikmaken van de [Message Passing Interface](https://docs.microsoft.com/message-passing-interface/microsoft-mpi) (MPI) worden niet ondersteund.
+- Scenario's die gebruikmaken van de [Message Passing Interface](/message-passing-interface/microsoft-mpi) (MPI) worden niet ondersteund.
 
-Als er een update voor een SLO (Service Level Objective) beschikbaar is, werkt u de SLO bij en dient u een ondersteuningsticket in om de toegewezen resourcebeperkingen voor R/Python opnieuw in te schakelen.
+In het geval van een serviceniveau doelstelling (SLO) update, werkt u de SLO bij en verhoogt u een ondersteunings ticket om de toegewezen resource limieten voor R/python opnieuw in te scha kelen.
 
 ## <a name="language-support"></a>Taalondersteuning
 
-Machine Learning Services in SQL Managed instance en SQL Server ondersteunen zowel python als R [Extensibility Framework](https://docs.microsoft.com/sql/advanced-analytics/concepts/extensibility-framework). De belangrijkste verschillen zijn:
+Machine Learning Services in SQL Managed instance en SQL Server ondersteunen zowel python als R [Extensibility Framework](/sql/advanced-analytics/concepts/extensibility-framework). De belangrijkste verschillen zijn:
 
 - De eerste versies van python en R verschillen van Machine Learning Services in SQL Managed instance en SQL Server:
 
@@ -54,32 +54,32 @@ Machine Learning Services in SQL Managed instance en SQL Server ondersteunen zow
 
 Python en R-pakket beheer werken anders tussen SQL Managed instance en SQL Server. Deze verschillen zijn:
 
-- Pakketten kunnen geen uitgaande netwerk aanroepen uitvoeren. Deze beperking is vergelijkbaar met de [standaard firewall regels voor Machine Learning Services](https://docs.microsoft.com//sql/advanced-analytics/security/firewall-configuration) in SQL Server, maar kan niet worden gewijzigd in een SQL Managed instance.
 - Er wordt geen ondersteuning geboden voor pakketten die afhankelijk zijn van externe Runtimes (zoals Java) of waarvoor u toegang nodig hebt tot OS Api's voor installatie of gebruik.
+- Pakketten kunnen uitgaande netwerk aanroepen uitvoeren (eerdere wijzigingen in de preview-versie). U kunt de juiste uitgaande beveiligings regels instellen op het niveau van de [netwerk beveiligings groep](/azure/virtual-network/network-security-groups-overview) om uitgaande netwerk aanroepen in te scha kelen.
 
 Zie voor meer informatie over het beheren van python-en R-pakketten:
 
-- [Python-pakketgegevens ophalen](https://docs.microsoft.com/sql/machine-learning/package-management/python-package-information?context=azure/sql-database/context/ml-context&view=sql-server-ver15)
-- [R-pakketgegevens ophalen](https://docs.microsoft.com/sql/machine-learning/package-management/r-package-information?context=azure/sql-database/context/ml-context&view=sql-server-ver15)
+- [Python-pakketgegevens ophalen](/sql/machine-learning/package-management/python-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true)
+- [R-pakketgegevens ophalen](/sql/machine-learning/package-management/r-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true)
 
 ## <a name="resource-governance"></a>Resourcebeheer
 
-Het is niet mogelijk om R-resources te beperken via [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) en externe resource groepen.
+Het is niet mogelijk om R-resources te beperken via [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) en externe resource groepen.
 
-Tijdens de openbare preview worden R-resources ingesteld op maximaal 20% van de SQL Managed Instance-resources en zijn ze afhankelijk van welke servicelaag u kiest. Zie [Azure SQL database-aankoop modellen](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers)voor meer informatie.
+Tijdens de openbare preview worden R-resources ingesteld op maximaal 20% van de SQL Managed Instance-resources en zijn ze afhankelijk van welke servicelaag u kiest. Zie [Azure SQL database-aankoop modellen](../database/purchasing-models.md)voor meer informatie.
 
 ### <a name="insufficient-memory-error"></a>Onvoldoende geheugen fout
 
 Als er onvoldoende geheugen beschikbaar is voor R, wordt er een foutbericht weergegeven. Veelvoorkomende fout berichten zijn:
 
-- Kan niet communiceren met de runtime voor het script ' R ' voor aanvraag-id: * * * * * * *. Controleer de vereisten van runtime R
-- Er is een R-scriptfout opgetreden tijdens het uitvoeren van sp_execute_external_script met HRESULT 0x80004004. ... een externe scriptfout opgetreden: '.. kan geen geheugen toewijzen (0 MB) in C-functie R_AllocStringBuffer'
-- Er is een externe script fout opgetreden: fout: kan de vector grootte niet toewijzen.
+- `Unable to communicate with the runtime for 'R' script for request id: *******. Please check the requirements of 'R' runtime`
+- `'R' script error occurred during execution of 'sp_execute_external_script' with HRESULT 0x80004004. ...an external script error occurred: "..could not allocate memory (0 Mb) in C function 'R_AllocStringBuffer'"`
+- `An external script error occurred: Error: cannot allocate vector of size.`
 
 Het geheugengebruik is afhankelijk van de hoeveelheid die wordt gebruikt in uw R-scripts en het aantal parallelle query's dat wordt uitgevoerd. Als u de bovenstaande foutberichten ontvangt, kunt u uw database schalen naar een hogere servicelaag om dit probleem op te lossen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie het overzicht [Machine Learning Services in Azure SQL Managed instance](machine-learning-services-overview.md).
-- Zie [python-scripts uitvoeren](https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=sql-server-ver15)voor meer informatie over het gebruik van python in Machine Learning Services.
-- Zie [r-scripts uitvoeren](https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=sql-server-ver15)voor meer informatie over het gebruik van r in Machine Learning Services.
+- Zie [python-scripts uitvoeren](/sql/machine-learning/tutorials/quickstart-python-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true)voor meer informatie over het gebruik van python in Machine Learning Services.
+- Zie [r-scripts uitvoeren](/sql/machine-learning/tutorials/quickstart-r-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true)voor meer informatie over het gebruik van r in Machine Learning Services.

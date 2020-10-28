@@ -12,12 +12,12 @@ author: urosmil
 ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
-ms.openlocfilehash: bdb021bc0247972fa29975c62bc9214e3b474e2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f76d2079b7ed5aacbf835540ea92febd034e2d0
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995355"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782447"
 ---
 # <a name="monitoring-azure-sql-managed-instance-management-operations"></a>Azure SQL Managed instance Management-bewerkingen bewaken
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -37,7 +37,7 @@ De meeste beheer bewerkingen zijn [langlopende bewerkingen](management-operation
 Er zijn verschillende manieren om bewerkingen voor beheer van beheerde exemplaren te controleren:
 
 - [Implementaties van resource groepen](../../azure-resource-manager/templates/deployment-history.md)
-- [Activiteitenlogboek](../../azure-monitor/platform/activity-log.md)
+- [Activiteiten logboek](../../azure-monitor/platform/activity-log.md)
 - [Managed instance Operations API](#managed-instance-operations-api)
 
 
@@ -62,9 +62,9 @@ Dit zijn de Api's:
 
 | Opdracht | Beschrijving |
 | --- | --- |
-|[Bewerkingen voor beheerd exemplaar-ophalen](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/get)|Hiermee wordt een beheer bewerking opgehaald voor een beheerd exemplaar.|
-|[Bewerkingen voor beheerd exemplaar-annuleren](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/cancel)|Hiermee wordt de asynchrone bewerking op het beheerde exemplaar geannuleerd.|
-|[Beheerde exemplaar bewerkingen-lijst op beheerde instantie](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/listbymanagedinstance)|Hiermee haalt u een lijst met bewerkingen op die zijn uitgevoerd op het beheerde exemplaar.|
+|[Bewerkingen voor beheerd exemplaar-ophalen](/rest/api/sql/managedinstanceoperations/get)|Hiermee wordt een beheer bewerking opgehaald voor een beheerd exemplaar.|
+|[Bewerkingen voor beheerd exemplaar-annuleren](/rest/api/sql/managedinstanceoperations/cancel)|Hiermee wordt de asynchrone bewerking op het beheerde exemplaar geannuleerd.|
+|[Beheerde exemplaar bewerkingen-lijst op beheerde instantie](/rest/api/sql/managedinstanceoperations/listbymanagedinstance)|Hiermee haalt u een lijst met bewerkingen op die zijn uitgevoerd op het beheerde exemplaar.|
 
 > [!NOTE]
 > Gebruik API-versie 2020-02-02 om de bewerking voor het maken van een beheerd exemplaar te bekijken in de lijst met bewerkingen. Dit is de standaard versie die wordt gebruikt in het Azure Portal en de meest recente Power shell-en Azure CLI-pakketten.
@@ -98,9 +98,9 @@ $managementOperations = Get-AzSqlInstanceOperation `
     -ManagedInstanceName $managedInstance  -ResourceGroupName $resourceGroup
 ```
 
-Zie [Get-AzSqlInstanceOperation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstanceoperation)voor gedetailleerde uitleg over opdrachten.
+Zie [Get-AzSqlInstanceOperation](/powershell/module/az.sql/get-azsqlinstanceoperation)voor gedetailleerde uitleg over opdrachten.
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 De AZ SQL mi a-lijst haalt een lijst met bewerkingen op die zijn uitgevoerd op het beheerde exemplaar. Als u de Azure CLI nog niet hebt geïnstalleerd, raadpleegt u [de Azure cli installeren](/cli/azure/install-azure-cli).
 
@@ -108,7 +108,7 @@ De AZ SQL mi a-lijst haalt een lijst met bewerkingen op die zijn uitgevoerd op h
 az sql mi op list -g yourResourceGroupName --mi yourInstanceName 
 ```
 
-Zie [AZ SQL mi op](https://docs.microsoft.com/cli/azure/sql/mi/op)voor gedetailleerde opdracht uitleg.
+Zie [AZ SQL mi op](/cli/azure/sql/mi/op)voor gedetailleerde opdracht uitleg.
 
 ---
 

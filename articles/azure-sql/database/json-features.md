@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 04/19/2020
-ms.openlocfilehash: 53428a542bb8d8d546e68f63aaf80ee40f2b0874
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4258c60335a13a6c0f27588aac1c6cdb185fcf6a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450253"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782797"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database-and-azure-sql-managed-instance"></a>Aan de slag met JSON-functies in Azure SQL Database en Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -196,6 +196,4 @@ De verzameling orders die is opgemaakt als een JSON-matrix en die als een para m
 
 Raadpleeg de volgende bronnen voor meer informatie over het integreren van JSON in uw toepassing:
 
-Als u meer wilt weten over de verschillende scenario's voor het integreren van JSON in uw toepassing, raadpleegt u de demo's in deze [kanaal 9-video](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds) of zoekt u een scenario dat overeenkomt met uw use-case in [JSON-blog berichten](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/json-in-sql-server-use-cases).
-
-
+Als u meer wilt weten over de verschillende scenario's voor het integreren van JSON in uw toepassing, raadpleegt u de demo's in deze [kanaal 9-video](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds) of zoekt u een scenario dat overeenkomt met uw use-case in [JSON-blog berichten](/archive/blogs/sqlserverstorageengine/json-in-sql-server-use-cases).

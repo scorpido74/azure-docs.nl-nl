@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: abb8f42e7fe4ffe6e933f466202247c73ece129a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38133a63d65e45a4d1c83e9752dcaa01a86da33e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441711"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782889"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>Wat is een logische SQL-Server in Azure SQL Database en Azure Synapse?
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -34,7 +34,7 @@ Een server in SQL Database en Azure Synapse:
 - Is de bovenliggende resource voor databases, elastische groepen en datawarehouses
 - Voorziet in een naam ruimte voor data bases, elastische groepen en Data Warehouse-data bases
 - Is een logische container met een sterke levens duur semantiek: een server verwijderen en de data bases, elastische groepen en SQK-groepen worden verwijderd
-- Maakt deel uit van op [rollen gebaseerd toegangs beheer (Azure RBAC) van Azure](/azure/role-based-access-control/overview) -data bases, elastische groepen en Data Warehouse-data bases binnen een server neemt de toegangs rechten van de server over
+- Maakt deel uit van op [rollen gebaseerd toegangs beheer (Azure RBAC) van Azure](../../role-based-access-control/overview.md) -data bases, elastische groepen en Data Warehouse-data bases binnen een server neemt de toegangs rechten van de server over
 - Is een hoog element van de identiteit van de data bases, elastische Pools en Data Warehouse-data bases voor Azure Resource Management (Zie het URL-schema voor data bases en Pools)
 - Groepeert resources in een regio
 - Biedt een verbindingseindpunt voor databasetoegang (`<serverName>`.database.windows.net)
@@ -83,7 +83,7 @@ Als u een bestaande Data Base wilt beheren, gaat u naar de pagina **SQL-data bas
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek.
+> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM.Sql](/powershell/module/AzureRM.Sql/) voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek.
 
 Als u servers, data bases en firewalls met Azure PowerShell wilt maken en beheren, gebruikt u de volgende Power shell-cmdlets. Als u Power shell wilt installeren of upgraden, raadpleegt u [Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Zie [elastische Pools](elastic-pool-overview.md)voor het maken en beheren van elastische Pools.
 
@@ -96,7 +96,7 @@ Als u servers, data bases en firewalls met Azure PowerShell wilt maken en behere
 |[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)|Hiermee maakt u een resource groep|
 |[New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver)|Hiermee maakt u een server|
 |[Get-AzSqlServer](/powershell/module/az.sql/get-azsqlserver)|Retourneert informatie over servers|
-|[Set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver)|Hiermee wijzigt u de eigenschappen van een server|
+|[Set-AzSqlServer](/powershell/module/az.sql/set-azsqlserver)|Hiermee wijzigt u de eigenschappen van een server|
 |[Remove-AzSqlServer](/powershell/module/az.sql/remove-azsqlserver)|Hiermee wordt een server verwijderd|
 |[New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule)|Hiermee maakt u een firewall regel op server niveau |
 |[Get-AzSqlServerFirewallRule](/powershell/module/az.sql/get-azsqlserverfirewallrule)|Hiermee worden de firewall regels voor een server opgehaald|
@@ -110,7 +110,7 @@ Als u servers, data bases en firewalls met Azure PowerShell wilt maken en behere
 
 ## <a name="manage-servers-databases-and-firewalls-using-the-azure-cli"></a>Servers, data bases en firewalls beheren met de Azure CLI
 
-Als u servers, data bases en firewalls wilt maken en beheren met de [Azure cli](/cli/azure), gebruikt u de volgende [Azure cli SQL database](/cli/azure/sql/db) -opdrachten. Gebruik de [Cloud Shell](/azure/cloud-shell/overview) om de CLI in uw browser uit te voeren of [installeer](/cli/azure/install-azure-cli) de CLI op macOS, Linux of Windows. Zie [elastische Pools](elastic-pool-overview.md)voor het maken en beheren van elastische Pools.
+Als u servers, data bases en firewalls wilt maken en beheren met de [Azure cli](/cli/azure), gebruikt u de volgende [Azure cli SQL database](/cli/azure/sql/db) -opdrachten. Gebruik de [Cloud Shell](../../cloud-shell/overview.md) om de CLI in uw browser uit te voeren of [installeer](/cli/azure/install-azure-cli) de CLI op macOS, Linux of Windows. Zie [elastische Pools](elastic-pool-overview.md)voor het maken en beheren van elastische Pools.
 
 | Cmdlet | Beschrijving |
 | --- | --- |
@@ -150,7 +150,7 @@ Gebruik de volgende T-SQL-opdrachten om servers, data bases en firewalls te make
 |[DATA base maken (Azure SQL Database)](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current) | Hiermee maakt u een nieuwe database in Azure SQL Database. U moet zijn verbonden met de hoofd database om een nieuwe Data Base te kunnen maken.|
 |[CREATE data base (Azure Synapse)](/sql/t-sql/statements/create-database-transact-sql?view=azure-sqldw-latest) | Hiermee maakt u een nieuwe Data Warehouse-data base in azure Synapse. U moet zijn verbonden met de hoofd database om een nieuwe Data Base te kunnen maken.|
 | [ALTER data base (Azure SQL Database)](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Data Base of elastische pool wordt gewijzigd. |
-|[ALTER data base (Azure Synapse Analytics)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=sql-server-ver15)|Hiermee wijzigt u een Data Warehouse-data base in azure Synapse.|
+|[ALTER data base (Azure Synapse Analytics)](/sql/t-sql/statements/alter-database-transact-sql?view=sql-server-ver15)|Hiermee wijzigt u een Data Warehouse-data base in azure Synapse.|
 |[DROP data base (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Hiermee verwijdert u een Data Base.|
 |[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Retourneert de editie (service tier), de service doelstelling (prijs categorie) en de naam van de elastische groep, indien van toepassing, voor een Data Base. Als u bent aangemeld bij de hoofd database voor een-server, retourneert informatie over alle data bases. Voor Azure Synapse moet u verbinding hebben met de hoofd database.|
 |[sys.dm_db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Retourneert CPU, i/o en geheugen verbruik voor een data base in Azure SQL Database. Er bestaat één rij voor elke 15 seconden, zelfs als er geen activiteit in de data base is.|
@@ -173,22 +173,22 @@ Gebruik deze REST API aanvragen om servers, data bases en firewalls te maken en 
 
 | Opdracht | Beschrijving |
 | --- | --- |
-|[Servers: maken of bijwerken](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|Hiermee wordt een nieuwe server gemaakt of bijgewerkt.|
-|[Servers-verwijderen](https://docs.microsoft.com/rest/api/sql/servers/delete)|Hiermee wordt een server verwijderd.|
-|[Servers: ophalen](https://docs.microsoft.com/rest/api/sql/servers/get)|Hiermee wordt een server opgehaald.|
-|[Servers-lijst](https://docs.microsoft.com/rest/api/sql/servers/list)|Retourneert een lijst met servers.|
-|[Servers-lijst op resource groep](https://docs.microsoft.com/rest/api/sql/servers/listbyresourcegroup)|Retourneert een lijst met servers in een resource groep.|
-|[Servers-bijwerken](https://docs.microsoft.com/rest/api/sql/servers/update)|Hiermee wordt een bestaande server bijgewerkt.|
-|[Data bases: maken of bijwerken](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|Hiermee maakt u een nieuwe data base of werkt u een bestaande data base bij.|
-|[Data bases-verwijderen](https://docs.microsoft.com/rest/api/sql/databases/delete)|Hiermee verwijdert u een Data Base.|
-|[Data bases-ophalen](https://docs.microsoft.com/rest/api/sql/databases/get)|Hiermee haalt u een Data Base.|
-|[Data bases-lijst op elastische pool](https://docs.microsoft.com/rest/api/sql/databases/listbyelasticpool)|Retourneert een lijst met data bases in een elastische pool.|
-|[Data bases-lijst per server](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|Retourneert een lijst met data bases op een server.|
-|[Data bases-bijwerken](https://docs.microsoft.com/rest/api/sql/databases/update)|Hiermee wordt een bestaande data base bijgewerkt.|
-|[Firewall regels: maken of bijwerken](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)|Hiermee wordt een firewall regel gemaakt of bijgewerkt.|
-|[Firewall regels-verwijderen](https://docs.microsoft.com/rest/api/sql/firewallrules/delete)|Hiermee verwijdert u een firewall regel.|
-|[Firewall regels: ophalen](https://docs.microsoft.com/rest/api/sql/firewallrules/get)|Hiermee wordt een firewall regel opgehaald.|
-|[Firewall regels-lijst per server](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver)|Retourneert een lijst met firewall regels.|
+|[Servers: maken of bijwerken](/rest/api/sql/servers/createorupdate)|Hiermee wordt een nieuwe server gemaakt of bijgewerkt.|
+|[Servers-verwijderen](/rest/api/sql/servers/delete)|Hiermee wordt een server verwijderd.|
+|[Servers: ophalen](/rest/api/sql/servers/get)|Hiermee wordt een server opgehaald.|
+|[Servers-lijst](/rest/api/sql/servers/list)|Retourneert een lijst met servers.|
+|[Servers-lijst op resource groep](/rest/api/sql/servers/listbyresourcegroup)|Retourneert een lijst met servers in een resource groep.|
+|[Servers-bijwerken](/rest/api/sql/servers/update)|Hiermee wordt een bestaande server bijgewerkt.|
+|[Data bases: maken of bijwerken](/rest/api/sql/databases/createorupdate)|Hiermee maakt u een nieuwe data base of werkt u een bestaande data base bij.|
+|[Data bases-verwijderen](/rest/api/sql/databases/delete)|Hiermee verwijdert u een Data Base.|
+|[Data bases-ophalen](/rest/api/sql/databases/get)|Hiermee haalt u een Data Base.|
+|[Data bases-lijst op elastische pool](/rest/api/sql/databases/listbyelasticpool)|Retourneert een lijst met data bases in een elastische pool.|
+|[Data bases-lijst per server](/rest/api/sql/databases/listbyserver)|Retourneert een lijst met data bases op een server.|
+|[Data bases-bijwerken](/rest/api/sql/databases/update)|Hiermee wordt een bestaande data base bijgewerkt.|
+|[Firewall regels: maken of bijwerken](/rest/api/sql/firewallrules/createorupdate)|Hiermee wordt een firewall regel gemaakt of bijgewerkt.|
+|[Firewall regels-verwijderen](/rest/api/sql/firewallrules/delete)|Hiermee verwijdert u een firewall regel.|
+|[Firewall regels: ophalen](/rest/api/sql/firewallrules/get)|Hiermee wordt een firewall regel opgehaald.|
+|[Firewall regels-lijst per server](/rest/api/sql/firewallrules/listbyserver)|Retourneert een lijst met firewall regels.|
 
 ## <a name="next-steps"></a>Volgende stappen
 

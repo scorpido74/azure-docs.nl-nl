@@ -12,12 +12,12 @@ ms.author: garye
 ms.reviewer: sstein, davidph
 manager: cgronlun
 ms.date: 06/03/2020
-ms.openlocfilehash: 2fb584d999d48c7d29420db26daebf592790af2b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: c5392c822c42c2e0ee3f6ce9edffc6229d572165
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676825"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782413"
 ---
 # <a name="machine-learning-services-in-azure-sql-managed-instance-preview"></a>Machine Learning Services in Azure SQL Managed instance (preview-versie)
 
@@ -44,7 +44,7 @@ Gebruik Machine Learning Services met R/python-ondersteuning in Azure SQL Manage
 
 - **Implementeer uw modellen en scripts in productie in opgeslagen procedures** : de scripts en getrainde modellen kunnen eenvoudigweg worden operationeel door ze in de opgeslagen T-SQL-procedures in te sluiten. Apps die verbinding maken met een beheerd exemplaar van Azure SQL kunnen profiteren van voor spellingen en intelligentie in deze modellen door alleen een opgeslagen procedure aan te roepen. U kunt ook de native T-SQL-functie voors PELLEn gebruiken om modellen te operationeel maken, zodat u snel kunt scoren in zeer gelijktijdige Score scenario's voor realtime.
 
-Basis distributies van python en R zijn opgenomen in Machine Learning Services. U kunt open source-pakketten en-frameworks installeren en gebruiken, zoals PyTorch, tensor flow en scikit-learn, naast de micro soft-pakketten [revoscalepy](https://docs.microsoft.com/sql/advanced-analytics/python/ref-py-revoscalepy) en [microsoftml](https://docs.microsoft.com/sql/advanced-analytics/python/ref-py-microsoftml) voor python, en [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler), [Microsoftml](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-microsoftml), [olapr](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-olapr)en [sqlrutils](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-sqlrutils) voor R.
+Basis distributies van python en R zijn opgenomen in Machine Learning Services. U kunt open source-pakketten en-frameworks installeren en gebruiken, zoals PyTorch, tensor flow en scikit-learn, naast de micro soft-pakketten [revoscalepy](/sql/advanced-analytics/python/ref-py-revoscalepy) en [microsoftml](/sql/advanced-analytics/python/ref-py-microsoftml) voor python, en [RevoScaleR](/sql/advanced-analytics/r/ref-r-revoscaler), [Microsoftml](/sql/advanced-analytics/r/ref-r-microsoftml), [olapr](/sql/advanced-analytics/r/ref-r-olapr)en [sqlrutils](/sql/advanced-analytics/r/ref-r-sqlrutils) voor R.
 
 <a name="signup"></a>
 
@@ -85,6 +85,6 @@ Machine Learning Services in SQL Managed Instance wordt niet aanbevolen voor pro
 ## <a name="next-steps"></a>Volgende stappen
 
 - Bekijk de belangrijkste verschillen ten opzichte [van SQL Server machine learning Services](machine-learning-services-differences.md).
-- Zie [python-scripts uitvoeren](https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=sql-server-ver15)voor meer informatie over het gebruik van python in Machine Learning Services.
-- Zie [r-scripts uitvoeren](https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=sql-server-ver15)voor meer informatie over het gebruik van r in Machine Learning Services.
-- Zie de [documentatie voor sql machine learning](https://docs.microsoft.com/sql/machine-learning/)voor meer informatie over machine learning op andere SQL-platforms.
+- Zie [python-scripts uitvoeren](/sql/machine-learning/tutorials/quickstart-python-create-script?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&view=sql-server-ver15)voor meer informatie over het gebruik van python in Machine Learning Services.
+- Zie [r-scripts uitvoeren](/sql/machine-learning/tutorials/quickstart-r-create-script?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&view=sql-server-ver15)voor meer informatie over het gebruik van r in Machine Learning Services.
+- Zie de [documentatie voor sql machine learning](/sql/machine-learning/)voor meer informatie over machine learning op andere SQL-platforms.

@@ -12,17 +12,17 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 08/04/2020
 tags: azure-synpase
-ms.openlocfilehash: 0689cea221142ec9c9bdbb18ab82fab00a3e2fe5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5442ddab5b4925e40250e63833a634006db7aead
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398609"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781444"
 ---
 # <a name="dynamic-data-masking"></a>Dynamische gegevensmaskering 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Azure SQL Database, Azure SQL Managed instance en Azure Synapse Analytics bieden ondersteuning voor dynamische gegevens maskering. Dynamische gegevens maskering beperkt de bloot stelling van gevoelige gegevens door deze te maskeren voor niet-bevoegde gebruikers. 
+Azure SQL Database, Azure SQL Managed instance en Azure Synapse Analytics bieden ondersteuning voor dynamische gegevens maskering. Met dynamische gegevensmaskering wordt de blootstelling van gevoelige gegevens beperkt door deze gegevens te maskeren voor niet-gemachtigde gebruikers. 
 
 Dynamische gegevensmaskering helpt onbevoegde toegang tot gevoelige gegevens te voorkomen, doordat klanten kunnen aangeven hoeveel van de gevoelige gegevens mag worden vrijgegeven, met minimale gevolgen voor de toepassingslaag. Dit is een beveiligingsfunctie op basis van beleid. De gevoelige gegevens in de resultatenset van een query die is uitgevoerd op toegewezen databasevelden worden verborgen, terwijl de gegevens in de database niet worden gewijzigd.
 
@@ -34,7 +34,7 @@ U stelt een beleid voor dynamische gegevens maskering in de Azure Portal in door
 
 ### <a name="dynamic-data-masking-permissions"></a>Machtigingen voor dynamische gegevens maskering
 
-Dynamische gegevens maskering kan worden geconfigureerd door de rollen Azure SQL Database beheerder, Server beheerder of [SQL Security Manager](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) .
+Dynamische gegevens maskering kan worden geconfigureerd door de rollen Azure SQL Database beheerder, Server beheerder of [SQL Security Manager](../../role-based-access-control/built-in-roles.md#sql-security-manager) .
 
 ### <a name="dynamic-data-masking-policy"></a>Beleid voor dynamische gegevens maskering
 
@@ -44,7 +44,7 @@ Dynamische gegevens maskering kan worden geconfigureerd door de rollen Azure SQL
 
 | Maskerings functie | Logica maskeren |
 | --- | --- |
-| **Prijs** |**Volledige maskering volgens de gegevens typen van de aangewezen velden**<br/><br/>• Gebruik XXXX of minder XS als de grootte van het veld kleiner is dan 4 tekens voor teken reeks gegevens typen (NCHAR, ntext, nvarchar).<br/>• Gebruik de waarde nul voor numerieke gegevens typen (bigint, bit, Decimal, int, Money, numeric, smallint, smallmoney, tinyint, float, Real).<br/>• Gebruik 01-01-1900 voor datum-en tijd gegevens typen (datum, DATETIME2, datetime, date time offset, smalldatetime, time).<br/>• Voor SQL-variant wordt de standaard waarde van het huidige type gebruikt.<br/>• Voor XML wordt het document \<masked/> gebruikt.<br/>• Gebruik een lege waarde voor speciale gegevens typen (Time Stamp-tabel, hierarchyid, GUID, binary, afbeelding, type Spatial). |
+| **Standaard** |**Volledige maskering volgens de gegevens typen van de aangewezen velden**<br/><br/>• Gebruik XXXX of minder XS als de grootte van het veld kleiner is dan 4 tekens voor teken reeks gegevens typen (NCHAR, ntext, nvarchar).<br/>• Gebruik de waarde nul voor numerieke gegevens typen (bigint, bit, Decimal, int, Money, numeric, smallint, smallmoney, tinyint, float, Real).<br/>• Gebruik 01-01-1900 voor datum-en tijd gegevens typen (datum, DATETIME2, datetime, date time offset, smalldatetime, time).<br/>• Voor SQL-variant wordt de standaard waarde van het huidige type gebruikt.<br/>• Voor XML wordt het document \<masked/> gebruikt.<br/>• Gebruik een lege waarde voor speciale gegevens typen (Time Stamp-tabel, hierarchyid, GUID, binary, afbeelding, type Spatial). |
 | **Credit Card** |**Maskerings methode, waarmee de laatste vier cijfers van de aangewezen velden worden** weer gegeven en een constante teken reeks als voor voegsel wordt toegevoegd in de vorm van een credit card.<br/><br/>XXXX-XXXX-XXXX-1234 |
 | **E-mail** |**Maskerings methode, waarmee de eerste letter wordt weer gegeven en het domein wordt vervangen door xxx.com** met behulp van een constante voor voegsel van een teken reeks in de vorm van een e-mail adres.<br/><br/>aXX@XXXX.com |
 | **Wille keurig getal** |**Maskerings methode, waarmee een wille keurig getal wordt gegenereerd** op basis van de geselecteerde grenzen en de werkelijke gegevens typen. Als de aangewezen grenzen gelijk zijn, is de maskerings functie een constant getal.<br/><br/>![Scherm opname van de maskerings methode voor het genereren van een wille keurig getal.](./media/dynamic-data-masking-overview/1_DDM_Random_number.png) |
@@ -60,15 +60,15 @@ De DDM-engine voor aanbevelingen, markeert bepaalde velden uit uw data base als 
 
 ### <a name="data-masking-policies"></a>Beleid voor gegevens maskering
 
-- [Get-AzSqlDatabaseDataMaskingPolicy](https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseDataMaskingPolicy)
-- [Set-AzSqlDatabaseDataMaskingPolicy](https://docs.microsoft.com/powershell/module/az.sql/Set-AzSqlDatabaseDataMaskingPolicy)
+- [Get-AzSqlDatabaseDataMaskingPolicy](/powershell/module/az.sql/Get-AzSqlDatabaseDataMaskingPolicy)
+- [Set-AzSqlDatabaseDataMaskingPolicy](/powershell/module/az.sql/Set-AzSqlDatabaseDataMaskingPolicy)
 
 ### <a name="data-masking-rules"></a>Regels voor gegevens maskering
 
-- [Get-AzSqlDatabaseDataMaskingRule](https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseDataMaskingRule)
-- [New-AzSqlDatabaseDataMaskingRule](https://docs.microsoft.com/powershell/module/az.sql/New-AzSqlDatabaseDataMaskingRule)
-- [Remove-AzSqlDatabaseDataMaskingRule](https://docs.microsoft.com/powershell/module/az.sql/Remove-AzSqlDatabaseDataMaskingRule)
-- [Set-AzSqlDatabaseDataMaskingRule](https://docs.microsoft.com/powershell/module/az.sql/Set-AzSqlDatabaseDataMaskingRule)
+- [Get-AzSqlDatabaseDataMaskingRule](/powershell/module/az.sql/Get-AzSqlDatabaseDataMaskingRule)
+- [New-AzSqlDatabaseDataMaskingRule](/powershell/module/az.sql/New-AzSqlDatabaseDataMaskingRule)
+- [Remove-AzSqlDatabaseDataMaskingRule](/powershell/module/az.sql/Remove-AzSqlDatabaseDataMaskingRule)
+- [Set-AzSqlDatabaseDataMaskingRule](/powershell/module/az.sql/Set-AzSqlDatabaseDataMaskingRule)
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-the-rest-api"></a>Dynamische gegevens maskering instellen voor uw data base met behulp van de REST API
 
@@ -76,10 +76,10 @@ U kunt de REST API gebruiken om beleid en regels voor gegevens maskering program
 
 ### <a name="data-masking-policies"></a>Beleid voor gegevens maskering
 
-- [Maken of bijwerken](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/createorupdate): Hiermee wordt een beleid voor database gegevens maskering gemaakt of bijgewerkt.
-- [Ophalen](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/get): Hiermee wordt een beleid voor database gegevens maskering opgehaald. 
+- [Maken of bijwerken](/rest/api/sql/datamaskingpolicies/createorupdate): Hiermee wordt een beleid voor database gegevens maskering gemaakt of bijgewerkt.
+- [Ophalen](/rest/api/sql/datamaskingpolicies/get): Hiermee wordt een beleid voor database gegevens maskering opgehaald. 
 
 ### <a name="data-masking-rules"></a>Regels voor gegevens maskering
 
-- [Maken of bijwerken](https://docs.microsoft.com/rest/api/sql/datamaskingrules/createorupdate): Hiermee wordt een regel voor database gegevens maskering gemaakt of bijgewerkt.
-- [Lijst op data base](https://docs.microsoft.com/rest/api/sql/datamaskingrules/listbydatabase): Hiermee wordt een lijst met regels voor database gegevens maskering opgehaald.
+- [Maken of bijwerken](/rest/api/sql/datamaskingrules/createorupdate): Hiermee wordt een regel voor database gegevens maskering gemaakt of bijgewerkt.
+- [Lijst op data base](/rest/api/sql/datamaskingrules/listbydatabase): Hiermee wordt een lijst met regels voor database gegevens maskering opgehaald.

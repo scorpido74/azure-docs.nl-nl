@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 993c0bdf1e8e29a7cff9bd1cad60bf78386b16a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b474ae184374a2c91dcba15517048556686ec35
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578220"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782226"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>Door de klant beheerde sleutels voor Azure Storage versleuteling
 
@@ -65,7 +65,7 @@ Zie [Configure Encryption with door de klant beheerde sleutels die zijn opgeslag
 > [!IMPORTANT]
 > Door de klant beheerde sleutels zijn gebaseerd op beheerde identiteiten voor Azure-resources, een functie van Azure AD. Beheerde identiteiten bieden momenteel geen ondersteuning voor scenario's met meerdere mappen. Wanneer u door de klant beheerde sleutels in de Azure Portal configureert, wordt er automatisch een beheerde identiteit toegewezen aan uw opslag account. Als u het abonnement, de resource groep of het opslag account vervolgens verplaatst van de ene Azure AD-Directory naar een andere, wordt de beheerde identiteit die aan het opslag account is gekoppeld, niet overgebracht naar de nieuwe Tenant, zodat door de klant beheerde sleutels mogelijk niet meer werken. Zie **een abonnement overdragen tussen Azure AD-mappen** in [Veelgestelde vragen en bekende problemen met beheerde identiteiten voor Azure-resources](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)voor meer informatie.  
 
-Azure Storage Encryption ondersteunt RSA-en RSA-HSM-sleutels met een grootte van 2048, 3072 en 4096. Zie **Key Vault sleutels** in [over Azure Key Vault sleutels, geheimen en certificaten](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)voor meer informatie over sleutels.
+Azure Storage Encryption ondersteunt RSA-en RSA-HSM-sleutels met een grootte van 2048, 3072 en 4096. Zie [about Keys](../../key-vault/keys/about-keys.md)(Engelstalig) voor meer informatie over sleutels.
 
 Er zijn kosten verbonden aan het gebruik van een sleutel kluis of beheerde HSM. Zie [Key Vault prijzen](https://azure.microsoft.com/pricing/details/key-vault/)voor meer informatie.
 
@@ -109,7 +109,7 @@ Als u deze bewerkingen opnieuw wilt aanroepen, moet u de toegang tot de door de 
 
 Alle gegevens bewerkingen die niet in deze sectie worden vermeld, kunnen door gaan nadat door de klant beheerde sleutels zijn ingetrokken of een sleutel wordt uitgeschakeld of verwijderd.
 
-Als u de toegang tot door de klant beheerde sleutels wilt intrekken, gebruikt u [Power shell](storage-encryption-keys-powershell.md#revoke-customer-managed-keys) of [Azure cli](storage-encryption-keys-cli.md#revoke-customer-managed-keys).
+Als u de toegang tot door de klant beheerde sleutels wilt intrekken, gebruikt u [Power shell](./customer-managed-keys-configure-key-vault.md#revoke-customer-managed-keys) of [Azure cli](./customer-managed-keys-configure-key-vault.md#revoke-customer-managed-keys).
 
 ## <a name="customer-managed-keys-for-azure-managed-disks"></a>Door de klant beheerde sleutels voor Azure Managed disks
 

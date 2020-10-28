@@ -10,12 +10,12 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 11/14/2019
 ms.custom: sqldbrb=2
-ms.openlocfilehash: b099158261de55c829ab2b89a2f994b35b3e50d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ea3456dbd1d0942cba48c97d70982ae088d73f9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85254035"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782974"
 ---
 # <a name="application-development-overview---sql-database--sql-managed-instance"></a>Overzicht van toepassings ontwikkeling-SQL Database & SQL Managed instance
 
@@ -27,7 +27,7 @@ In dit artikel worden de basis overwegingen beschreven die een ontwikkelaar moet
 
 U kunt verschillende [Programmeer talen en platformen](connect-query-content-reference-guide.md) gebruiken om verbinding te maken en Azure SQL database op te vragen. U kunt [voorbeeld toepassingen](https://azure.microsoft.com/resources/samples/?service=sql-database&sort=0) vinden die u kunt gebruiken om verbinding te maken met de data base.
 
-U kunt gebruikmaken van open-source hulpprogram ma's zoals [Cheetah](https://github.com/wunderlist/cheetah), [SQL-CLI](https://www.npmjs.com/package/sql-cli)en [VS code](https://code.visualstudio.com/). Daarnaast werkt Azure SQL Database met Microsoft-hulpprogramma's zoals [Visual Studio](https://www.visualstudio.com/downloads/) en [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx). U kunt ook de Azure Portal, Power shell en REST Api's gebruiken om extra productiviteit te verkrijgen.
+U kunt gebruikmaken van open-source hulpprogram ma's zoals [Cheetah](https://github.com/wunderlist/cheetah), [SQL-CLI](https://www.npmjs.com/package/sql-cli)en [VS code](https://code.visualstudio.com/). Daarnaast werkt Azure SQL Database met Microsoft-hulpprogramma's zoals [Visual Studio](https://www.visualstudio.com/downloads/) en [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms). U kunt ook de Azure Portal, Power shell en REST Api's gebruiken om extra productiviteit te verkrijgen.
 
 ## <a name="authentication"></a>Verificatie
 
@@ -39,7 +39,7 @@ Meer informatie over het [beheren van database toegang en-aanmelding](logins-cre
 
 In de verbindingslogica van de client overschrijft u de standaardtime-out zodat deze 30 seconden bedraagt. De standaardwaarde van 15 seconden is te kort voor verbindingen die afhankelijk zijn van internet.
 
-Als u een [verbindingsgroep](https://msdn.microsoft.com/library/8xx3tyca.aspx) gebruikt, zorgt u ervoor dat de verbinding wordt verbroken zodra uw programma er niet actief meer gebruik van maakt en wanneer uw programma niet wordt voorbereid om opnieuw verbinding te maken.
+Als u een [verbindingsgroep](/dotnet/framework/data/adonet/sql-server-connection-pooling) gebruikt, zorgt u ervoor dat de verbinding wordt verbroken zodra uw programma er niet actief meer gebruik van maakt en wanneer uw programma niet wordt voorbereid om opnieuw verbinding te maken.
 
 Vermijd langlopende trans acties omdat een infra structuur of verbindings fout de trans actie kan terugdraaien. Als dat mogelijk is, splitst u de trans actie in de meerdere kleinere trans acties en gebruikt [u batch verwerking om de prestaties te verbeteren](../performance-improve-use-batching.md).
 

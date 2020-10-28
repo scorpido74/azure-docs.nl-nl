@@ -12,12 +12,12 @@ author: urosmil
 ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
-ms.openlocfilehash: 4ec999cc35e7d18287679c74c6d45a5aa2ecb9e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 092981f9d74a3f9f18c491ca6cee539a29e73c83
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995556"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782498"
 ---
 # <a name="canceling-azure-sql-managed-instance-management-operations"></a>De Azure SQL Managed instance Management-bewerkingen worden geannuleerd
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -75,7 +75,7 @@ Als de annulerings aanvraag mislukt of de knop Annuleren niet actief is, beteken
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Als Azure PowerShell nog niet is geïnstalleerd, raadpleegt u [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Als Azure PowerShell nog niet is geïnstalleerd, raadpleegt u [de module Azure PowerShell installeren](/powershell/azure/install-az-ps).
 
 Als u een beheer bewerking wilt annuleren, moet u de naam van de beheer bewerking opgeven. Daarom moet u eerst de opdracht Get gebruiken om de lijst met bewerkingen op te halen en vervolgens de specifieke bewerking annuleren.
 
@@ -93,9 +93,9 @@ foreach ($mo in $managementOperations ) {
 }
 ```
 
-Zie [Get-AzSqlInstanceOperation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstanceoperation) en [Stop-AzSqlInstanceOperation](https://docs.microsoft.com/powershell/module/az.sql/stop-azsqlinstanceoperation)voor gedetailleerde uitleg over opdrachten.
+Zie [Get-AzSqlInstanceOperation](/powershell/module/az.sql/get-azsqlinstanceoperation) en [Stop-AzSqlInstanceOperation](/powershell/module/az.sql/stop-azsqlinstanceoperation)voor gedetailleerde uitleg over opdrachten.
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u de Azure CLI nog niet hebt geïnstalleerd, raadpleegt u [de Azure cli installeren](/cli/azure/install-azure-cli).
 
@@ -110,13 +110,13 @@ az sql mi op cancel -g yourResourceGroupName --mi yourInstanceName -n $operation
 done
 ```
 
-Zie [AZ SQL mi op](https://docs.microsoft.com/cli/azure/sql/mi/op)voor gedetailleerde opdracht uitleg.
+Zie [AZ SQL mi op](/cli/azure/sql/mi/op)voor gedetailleerde opdracht uitleg.
 
 ---
 
 ## <a name="canceled-deployment-request"></a>De implementatie aanvraag is geannuleerd
 
-Met API versie 2020-02-02, zodra de aanvraag voor het maken van een instantie wordt geaccepteerd, bestaat het exemplaar als een resource, ongeacht de voortgang van het implementatie proces (status van beheerd exemplaar is **inrichten**). Als u de aanvraag voor de exemplaar implementatie annuleert (nieuwe instantie maken), wordt het beheerde exemplaar van de **inrichtings** status naar **FailedToCreate**.
+Met API versie 2020-02-02, zodra de aanvraag voor het maken van een instantie wordt geaccepteerd, bestaat het exemplaar als een resource, ongeacht de voortgang van het implementatie proces (status van beheerd exemplaar is **inrichten** ). Als u de aanvraag voor de exemplaar implementatie annuleert (nieuwe instantie maken), wordt het beheerde exemplaar van de **inrichtings** status naar **FailedToCreate** .
 
 Instanties die niet zijn gemaakt, zijn nog steeds aanwezig als resource en: 
 

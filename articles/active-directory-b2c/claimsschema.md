@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d02bc8d97b65f4ea2c2585201654899a63d3229b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aadb75d7257470cf4288c6123263f3d2dfe14d21
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85201358"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781716"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -69,7 +69,7 @@ Het **Data type** -element ondersteunt de volgende waarden:
 | Type | Beschrijving |
 | ------- | ----------- |
 |booleaans|Vertegenwoordigt een Booleaanse `true` waarde (of `false` ).|
-|datum| Vertegenwoordigt een onmiddellijke tijd, meestal uitgedrukt als een datum van een dag. De waarde van de datum volgt de ISO 8601-Conventie.|
+|date| Vertegenwoordigt een onmiddellijke tijd, meestal uitgedrukt als een datum van een dag. De waarde van de datum volgt de ISO 8601-Conventie.|
 |dateTime|Vertegenwoordigt een onmiddellijke tijd, meestal uitgedrukt als een datum en tijd van de dag. De waarde van de datum volgt de ISO 8601-Conventie.|
 |duur|Vertegenwoordigt een tijds interval in jaren, maanden, dagen, uren, minuten en seconden. De indeling van is `PnYnMnDTnHnMnS` , waarbij `P` positief of voor een `N` negatieve waarde wordt aangegeven. `nY` is het aantal jaren, gevolgd door een letterlijke waarde `Y` . `nMo` is het aantal maanden gevolgd door een letterlijke waarde `Mo` . `nD` is het aantal dagen, gevolgd door een letterlijke waarde `D` . Voor beelden: `P21Y` vertegenwoordigen 21 jaar. `P1Y2Mo` vertegenwoordigt één jaar en twee maanden. `P1Y2Mo5D` vertegenwoordigt één jaar, twee maanden en vijf dagen.  `P1Y2M5DT8H5M620S` vertegenwoordigt één jaar, twee maanden, vijf dagen, acht uur, vijf minuten en twintig seconden.  |
 |phoneNumber|Vertegenwoordigt een telefoon nummer. |
@@ -109,7 +109,7 @@ In het volgende voor beeld, wanneer het Framework voor identiteits ervaring comm
 </ClaimType>
 ```
 
-Als gevolg hiervan levert het JWT-token dat is uitgegeven door Azure AD B2C, het `family_name` in plaats **surname**van de naam van claim type name.
+Als gevolg hiervan levert het JWT-token dat is uitgegeven door Azure AD B2C, het `family_name` in plaats **surname** van de naam van claim type name.
 
 ```json
 {
@@ -228,7 +228,7 @@ In het volgende voor beeld wordt een **e-mail** claim geconfigureerd met de regu
   <UserHelpText>Email address that can be used to contact you.</UserHelpText>
   <UserInputType>TextBox</UserInputType>
   <Restriction>
-    <Pattern RegularExpression="^[a-zA-Z0-9.!#$%&amp;'^_`{}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" HelpText="Please enter a valid email address." />
+    <Pattern RegularExpression="^[a-zA-Z0-9.+!#$%&amp;'^_`{}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" HelpText="Please enter a valid email address." />
     </Restriction>
  </ClaimType>
 ```
@@ -284,7 +284,7 @@ Het invoer type voor de **EmailBox** -gebruiker wordt gebruikt om een eenvoudig 
   <UserHelpText>Email address that can be used to contact you.</UserHelpText>
   <UserInputType>EmailBox</UserInputType>
   <Restriction>
-    <Pattern RegularExpression="^[a-zA-Z0-9!#$%&amp;'+^_`{}~-]+(?:\.[a-zA-Z0-9!#$%&amp;'+^_`{}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$" HelpText="Please enter a valid email address." />
+    <Pattern RegularExpression="^[a-zA-Z0-9.+!#$%&amp;'+^_`{}~-]+(?:\.[a-zA-Z0-9!#$%&amp;'+^_`{}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$" HelpText="Please enter a valid email address." />
   </Restriction>
 </ClaimType>
 ```

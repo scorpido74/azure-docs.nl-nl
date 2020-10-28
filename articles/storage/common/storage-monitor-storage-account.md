@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 14edb8db945a9b69ba77d56cd19a4524876ede03
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: bfecae4775655f732df8fd6cffea613cd39fb828
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676808"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782005"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Een Storage-account bewaken in de Azure-portal
 
@@ -27,7 +27,7 @@ U wordt aangeraden [Azure monitor voor opslag](../../azure-monitor/insights/stor
 >
 > Azure Files ondersteunt momenteel Opslaganalyse metrische gegevens, maar biedt nog geen ondersteuning voor logboek registratie.
 >
-> Opslag accounts voor Premium-prestaties blok-blobs bieden geen ondersteuning voor metrische gegevens over opslag analyse, maar wel ondersteuning voor logboek registratie. U kunt logboek registratie via een programma inschakelen via de REST API of de client bibliotheek. Als u metrische gegevens wilt weer geven met Premium-Blob-Blob Storage-accounts, kunt u overwegen [Azure Storage metrische gegevens in azure monitor](storage-metrics-in-azure-monitor.md)te gebruiken.
+> Opslag accounts voor Premium-prestaties blok-blobs bieden geen ondersteuning voor metrische gegevens over opslag analyse, maar wel ondersteuning voor logboek registratie. U kunt logboek registratie via een programma inschakelen via de REST API of de client bibliotheek. Als u metrische gegevens wilt weer geven met Premium-Blob-Blob Storage-accounts, kunt u overwegen [Azure Storage metrische gegevens in azure monitor](../blobs/monitor-blob-storage.md)te gebruiken.
 >
 > Zie [Microsoft Azure Storage controleren, diagnosticeren en problemen oplossen](storage-monitoring-diagnosing-troubleshooting.md)voor meer informatie over het gebruik van Opslaganalyse en andere hulpprogram ma's voor het identificeren, vaststellen en oplossen van problemen met Azure Storage.
 >

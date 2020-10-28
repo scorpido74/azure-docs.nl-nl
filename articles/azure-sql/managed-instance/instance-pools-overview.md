@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/05/2019
-ms.openlocfilehash: 3753004b2bd9c18399655cffd594392b63c14264
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab77c8cf563c315768ad1c16089d8d939c085322
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325161"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782651"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>Wat is een Azure SQL Managed instance-groep (preview)?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ Daarnaast ondersteunen instantie groepen systeem eigen VNet-integratie zodat u m
 
 Exemplaar groepen bieden de volgende voor delen:
 
-1. Mogelijkheid om 2 vCore-instanties te hosten. * \* Alleen voor instanties in de exemplaar groepen*.
+1. Mogelijkheid om 2 vCore-instanties te hosten. *\* Alleen voor instanties in de exemplaar groepen* .
 2. Voorspel bare en snelle exemplaar implementatie tijd (Maxi maal 5 minuten).
 3. Minimale toewijzing van IP-adressen.
 
@@ -59,9 +59,9 @@ De volgende lijst bevat de belangrijkste gebruiks situaties waarbij exemplaar gr
 
 ## <a name="architecture"></a>Architectuur
 
-Exemplaar groepen hebben een vergelijk bare architectuur voor reguliere (*enkelvoudige*) beheerde exemplaren. Voor de ondersteuning van [implementaties in azure Virtual Networks](../../virtual-network/virtual-network-for-azure-services.md)   en voor het afschermen en beveiligen van klanten kunnen exemplaar groepen ook worden gebaseerd op [virtuele clusters](connectivity-architecture-overview.md#high-level-connectivity-architecture). Virtuele clusters vertegenwoordigen een specifieke set geïsoleerde virtuele machines die zijn geïmplementeerd in het subnet van het virtuele netwerk van de klant.
+Exemplaar groepen hebben een vergelijk bare architectuur voor reguliere ( *enkelvoudige* ) beheerde exemplaren. Voor de ondersteuning van [implementaties in azure Virtual Networks](../../virtual-network/virtual-network-for-azure-services.md) en voor het afschermen en beveiligen van klanten kunnen exemplaar groepen ook worden gebaseerd op [virtuele clusters](connectivity-architecture-overview.md#high-level-connectivity-architecture). Virtuele clusters vertegenwoordigen een specifieke set geïsoleerde virtuele machines die zijn geïmplementeerd in het subnet van het virtuele netwerk van de klant.
 
-Het belangrijkste verschil tussen de twee implementatie modellen is dat instantie groepen meerdere implementaties van SQL Server processen toestaan op hetzelfde knoop punt van de virtuele machine, die resources best rijken met behulp van [Windows-taak objecten](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects), terwijl afzonderlijke instanties altijd op een knoop punt van een virtuele machine worden uitgevoerd.
+Het belangrijkste verschil tussen de twee implementatie modellen is dat instantie groepen meerdere implementaties van SQL Server processen toestaan op hetzelfde knoop punt van de virtuele machine, die resources best rijken met behulp van [Windows-taak objecten](/windows/desktop/ProcThread/job-objects), terwijl afzonderlijke instanties altijd op een knoop punt van een virtuele machine worden uitgevoerd.
 
 In het volgende diagram ziet u een exemplaar groep en twee afzonderlijke instanties die in hetzelfde subnet zijn geïmplementeerd en worden de belangrijkste details van de architectuur voor beide implementatie modellen geïllustreerd:
 
@@ -76,7 +76,7 @@ Er bestaan verschillende resourcebeperkingen met betrekking tot exemplaarpools e
 - Exemplaar groepen zijn alleen beschikbaar op GEN5-hardware.
 - Beheerde exemplaren in een groep hebben toegewezen CPU en RAM, dus het geaggregeerde aantal vCores voor alle exemplaren moet kleiner zijn dan of gelijk zijn aan het aantal vCores dat aan de pool is toegewezen.
 - Alle [limieten op exemplaar niveau](resource-limits.md#service-tier-characteristics) zijn van toepassing op instanties die in een groep zijn gemaakt.
-- Naast limieten op exemplaar niveau zijn er ook twee limieten opgelegd *voor het niveau van de instantie groep*:
+- Naast limieten op exemplaar niveau zijn er ook twee limieten opgelegd *voor het niveau van de instantie groep* :
   - Totale opslag grootte per pool (8 TB).
   - Totaal aantal data bases per pool (100).
 - AAD-beheerder kan niet worden ingesteld voor de instanties die in de exemplaar groep worden geïmplementeerd. Daarom kan AAD-verificatie niet worden gebruikt.
@@ -137,8 +137,8 @@ de vCore prijs voor een pool wordt in rekening gebracht, ongeacht het aantal exe
 
 Voor de berekenings prijs (gemeten in vCores) zijn twee prijs opties beschikbaar:
 
-  1. *Inbegrepen licentie*: prijs van SQL Server licenties is inbegrepen. Dit geldt voor de klanten die ervoor kiezen geen bestaande SQL Server licenties met Software Assurance toe te passen.
-  2. *Azure Hybrid Benefit*: een gereduceerde prijs met inbegrip van Azure Hybrid Benefit voor SQL Server. Klanten kunnen zich op deze prijs aanmelden door gebruik te maken van hun bestaande SQL Server licenties met Software Assurance. Zie [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)voor Beschik baarheid en andere informatie.
+  1. *Inbegrepen licentie* : prijs van SQL Server licenties is inbegrepen. Dit geldt voor de klanten die ervoor kiezen geen bestaande SQL Server licenties met Software Assurance toe te passen.
+  2. *Azure Hybrid Benefit* : een gereduceerde prijs met inbegrip van Azure Hybrid Benefit voor SQL Server. Klanten kunnen zich op deze prijs aanmelden door gebruik te maken van hun bestaande SQL Server licenties met Software Assurance. Zie [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)voor Beschik baarheid en andere informatie.
 
 Het is niet mogelijk om verschillende prijs opties in te stellen voor afzonderlijke exemplaren in een pool. Alle exemplaren in de bovenliggende groep moeten de prijs van de licentie of de Azure Hybrid Benefit prijs zijn. Het licentie model voor de groep kan worden gewijzigd nadat de groep is gemaakt.
 
@@ -157,5 +157,5 @@ Raadpleeg de sectie *exemplaar groepen* op de [pagina met prijzen voor SQL Manag
 - Zie [VNet-configuratie van SQL Managed Instance](connectivity-architecture-overview.md) voor meer informatie over VNet-configuratie.
 - Zie [Beheerd exemplaar maken](instance-create-quickstart.md) voor een quickstart waarmee u een beheerd exemplaar kunt maken en een database vanuit een back-upbestand kunt herstellen.
 - Zie [Migratie van SQL Managed Instance met behulp van Database Migration Service](../../dms/tutorial-sql-server-to-managed-instance.md) voor een zelfstudie over Azure Database Migration Service voor migratie.
-- Zie [Azure SQL Managed instance bewaken met Azure SQL-analyse](../../azure-monitor/insights/azure-sql.md)voor geavanceerde bewaking van prestaties van SQL Managed instance-data bases met ingebouwde probleemoplossings informatie.
+- Zie [Azure SQL Managed Instance bewaken met Azure SQL-analyse](../../azure-monitor/insights/azure-sql.md) voor geavanceerde bewaking van de databaseprestaties in SQL Managed Instance, met ingebouwde intelligentie voor het oplossen van problemen.
 - Zie [prijzen van SQL Managed instance](https://azure.microsoft.com/pricing/details/sql-database/managed/)voor prijs informatie.

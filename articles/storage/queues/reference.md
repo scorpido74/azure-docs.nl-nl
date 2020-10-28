@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: 5544a6985ca357688b2585fa29c6dc63546c3e8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de504cc4209aea19925c4c3e2385c7feabceedeb
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90014953"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781614"
 ---
 # <a name="azure-queue-storage-reference"></a>Azure Queue Storage-verwijzing
 
@@ -23,10 +23,10 @@ Zoek naar Azure Queue Storage API Reference, bibliotheek pakketten, leesmij-best
 
 De volgende tabel bevat Naslag informatie en voorbeeld documentatie voor Azure Queue Storage .NET-Api's.
 
-|  Versie  | Referentie documentatie | Pakket | Snelstart |
+|  Versie  | Referentie documentatie | Pakket | Snelstartgids |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [Naam ruimte Azure. storage. queues](/dotnet/api/azure.storage.queues) | [Pakket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/) | [Quickstart: Azure Queue Storage-clientbibliotheek v12 voor .NET](/azure/storage/queues/storage-quickstart-queues-dotnet) |
-| 11. x | [Micro soft. Azure. storage. wachtrij naam ruimte](/dotnet/api/microsoft.azure.storage.queue) | [Pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/) | [Quickstart: De Azure Storage SDK V11 voor .NET gebruiken om een wachtrij te beheren](/azure/storage/queues/storage-quickstart-queues-dotnet-legacy) |
+| 12.x | [Naam ruimte Azure. storage. queues](/dotnet/api/azure.storage.queues) | [Pakket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/) | [Quickstart: Azure Queue Storage-clientbibliotheek v12 voor .NET](./storage-quickstart-queues-dotnet.md) |
+| 11. x | [Micro soft. Azure. storage. wachtrij naam ruimte](/dotnet/api/microsoft.azure.storage.queue) | [Pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/) | [Quickstart: De Azure Storage SDK V11 voor .NET gebruiken om een wachtrij te beheren](./storage-quickstart-queues-dotnet-legacy.md) |
 
 ### <a name="storage-management"></a>Opslagbeheer
 
@@ -48,10 +48,10 @@ De volgende tabel bevat referentie documentatie voor het Azure Storage van .NET-
 
 De volgende tabel bevat Naslag informatie en voorbeeld documentatie voor Azure Queue Storage Java-Api's.
 
-|  Versie  | Referentie documentatie | Pakket | Snelstart |
+|  Versie  | Referentie documentatie | Pakket | Snelstartgids |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [Client bibliotheek van Azure Storage-wachtrij voor Java](/java/api/overview/azure/storage-queue-readme) | [Pakket (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue) | [Quickstart: Azure Queue Storage-clientbibliotheek v12 voor Java](/azure/storage/queues/storage-quickstart-queues-java) |
-| 8.x | [com. micro soft. Azure. storage. Queue](/java/api/com.microsoft.azure.storage.queue) | [Pakket (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [Quick Start: blobs beheren met Java V8 SDK](/azure/storage/blobs/storage-quickstart-blobs-java-legacy) |
+| 12.x | [Client bibliotheek van Azure Storage-wachtrij voor Java](/java/api/overview/azure/storage-queue-readme) | [Pakket (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue) | [Quickstart: Azure Queue Storage-clientbibliotheek v12 voor Java](./storage-quickstart-queues-java.md) |
+| 8.x | [com. micro soft. Azure. storage. Queue](/java/api/com.microsoft.azure.storage.queue) | [Pakket (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [Quick Start: blobs beheren met Java V8 SDK](../blobs/storage-quickstart-blobs-java-legacy.md) |
 
 ### <a name="storage-management"></a>Opslagbeheer
 
@@ -65,19 +65,19 @@ De volgende tabel bevat referentie documentatie voor Java-Api's van Azure Storag
 
 De volgende tabel bevat Naslag informatie en voorbeeld documentatie voor de python-Api's van Azure Queue Storage.
 
-|  Versie  | Referentie documentatie | Pakket | Snelstart |
+|  Versie  | Referentie documentatie | Pakket | Snelstartgids |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [Azure Storage-client bibliotheken V12 voor python](/azure/developer/python/sdk/storage/overview) | [Pakket (PyPI)](https://pypi.org/project/azure-storage-queue/) | [Quickstart: Azure Queue Storage-clientbibliotheek v12 voor Python](/azure/storage/queues/storage-quickstart-queues-python) |
-| 2.x | [Azure Storage-client bibliotheken v2 voor python](/azure/developer/python/sdk/storage/overview?view=storage-py-v2&preserve-view=true) | [Pakket (PyPI)](https://pypi.org/project/azure-storage-queue/2.1.0/) | [Azure-wachtrij opslag gebruiken v 2.1 van python](/azure/storage/queues/storage-python-how-to-use-queue-storage) |
+| 12.x | [Azure Storage-client bibliotheken V12 voor python](/azure/developer/python/sdk/storage/overview) | [Pakket (PyPI)](https://pypi.org/project/azure-storage-queue/) | [Quickstart: Azure Queue Storage-clientbibliotheek v12 voor Python](./storage-quickstart-queues-python.md) |
+| 2.x | [Azure Storage-client bibliotheken v2 voor python](/azure/developer/python/sdk/storage/overview?view=storage-py-v2&preserve-view=true) | [Pakket (PyPI)](https://pypi.org/project/azure-storage-queue/2.1.0/) | [Azure-wachtrij opslag gebruiken v 2.1 van python](./storage-python-how-to-use-queue-storage.md) |
 
 ## <a name="javascript-client-libraries"></a>Java script-client bibliotheken
 
 De volgende tabel bevat Naslag informatie en voorbeeld documentatie voor Azure Queue-opslag java script-Api's.
 
-|  Versie  | Referentie documentatie | Pakket | Snelstart |
+|  Versie  | Referentie documentatie | Pakket | Snelstartgids |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [Client bibliotheek voor Azure Storage wachtrij voor Java script](/javascript/api/overview/azure/storage-queue-readme) | [Package (npm)](https://www.npmjs.com/package/@azure/storage-queue) | [Quickstart: Azure Queue Storage-clientbibliotheek v12 voor JavaScript](/azure/storage/queues/storage-quickstart-queues-nodejs) |
-| 10. x | [@azure/storage-queue](/javascript/api/@azure/storage-queue/?view=azure-node-legacy&preserve-view=true) | [Package (npm)](https://www.npmjs.com/package/@azure/storage-queue/v/10.3.0) | [Azure Queue-service gebruiken voor het maken en verwijderen van wacht rijen van Node.js](/azure/storage/queues/storage-nodejs-how-to-use-queues) |
+| 12.x | [Client bibliotheek voor Azure Storage wachtrij voor Java script](/javascript/api/overview/azure/storage-queue-readme) | [Package (npm)](https://www.npmjs.com/package/@azure/storage-queue) | [Quickstart: Azure Queue Storage-clientbibliotheek v12 voor JavaScript](./storage-quickstart-queues-nodejs.md) |
+| 10. x | [@azure/storage-queue](/javascript/api/@azure/storage-queue/?view=azure-node-legacy&preserve-view=true) | [Package (npm)](https://www.npmjs.com/package/@azure/storage-queue/v/10.3.0) | [Azure Queue-service gebruiken voor het maken en verwijderen van wacht rijen van Node.js](./storage-nodejs-how-to-use-queues.md) |
 
 ## <a name="rest-apis"></a>REST-API’s
 

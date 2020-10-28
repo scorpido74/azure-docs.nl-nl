@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 6a4f8b99be564779b350bff2ab5b37f3c7ccc6f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25858ac3dc78803f59aec7e77e151dc9afcc4950
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87020968"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781665"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>Queue Storage gebruiken met C++
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -21,7 +21,7 @@ ms.locfileid: "87020968"
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>Overzicht
-In deze hand leiding wordt uitgelegd hoe u algemene scenario's uitvoert met behulp van de Azure Queue Storage-service. De voorbeelden zijn geschreven in C++ en maken gebruik van de [Azure Storage-clientbibliotheek voor C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md). De gedekte scenario's zijn het **Invoegen**, **inspecteren**, **ophalen**en **verwijderen** van wachtrij berichten, en het **maken en verwijderen van wacht rijen**.
+In deze hand leiding wordt uitgelegd hoe u algemene scenario's uitvoert met behulp van de Azure Queue Storage-service. De voorbeelden zijn geschreven in C++ en maken gebruik van de [Azure Storage-clientbibliotheek voor C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md). De gedekte scenario's zijn het **Invoegen** , **inspecteren** , **ophalen** en **verwijderen** van wachtrij berichten, en het **maken en verwijderen van wacht rijen** .
 
 > [!NOTE]
 > Deze handleiding is gericht op de Azure-opslagclientbibliotheek voor C++ versie 1.0.0 en hoger. De aanbevolen versie is opslagclientbibliotheek 2.2.0. Deze is beschikbaar via [NuGet](https://www.nuget.org/packages/wastorage) of [GitHub](https://github.com/Azure/azure-storage-cpp/).
@@ -57,7 +57,7 @@ Voeg de volgende include-instructies toe aan het begin van het C++-bestand waari
 ```
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>Een Azure Storage-connection string instellen
-Een Azure-opslagclient gebruikt een opslagverbindingstekenreeks om eindpunten en referenties voor toegang tot gegevensbeheerservices op te slaan. Wanneer u uitvoert in een client toepassing, moet u de opslag connection string in de volgende indeling opgeven, waarbij u de naam van uw opslag account en de toegangs sleutel voor opslag gebruikt voor het opslag account dat wordt vermeld in de [Azure Portal](https://portal.azure.com) voor de waarden *AccountName* en *AccountKey* . Zie [over Azure Storage-accounts](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)voor meer informatie over opslag accounts en toegangs sleutels. In dit voorbeeld ziet u hoe u een statisch veld kunt declareren voor het opslaan van de verbindingstekenreeks:
+Een Azure-opslagclient gebruikt een opslagverbindingstekenreeks om eindpunten en referenties voor toegang tot gegevensbeheerservices op te slaan. Wanneer u uitvoert in een client toepassing, moet u de opslag connection string in de volgende indeling opgeven, waarbij u de naam van uw opslag account en de toegangs sleutel voor opslag gebruikt voor het opslag account dat wordt vermeld in de [Azure Portal](https://portal.azure.com) voor de waarden *AccountName* en *AccountKey* . Zie [over Azure Storage-accounts](../common/storage-account-create.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json)voor meer informatie over opslag accounts en toegangs sleutels. In dit voorbeeld ziet u hoe u een statisch veld kunt declareren voor het opslaan van de verbindingstekenreeks:
 
 ```cpp
 // Define the connection-string with your values.
@@ -105,7 +105,7 @@ azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sampl
 ```
 
 ## <a name="how-to-insert-a-message-into-a-queue"></a>Procedure: een bericht in een wachtrij invoegen
-Als u een bericht wilt invoegen in een bestaande wachtrij, maakt u eerst een nieuwe **cloud_queue_message**. Roep vervolgens de **add_message** -methode aan. Een **cloud_queue_message** kan worden gemaakt op basis van een teken reeks of een **byte** matrix. Met deze code wordt er een wachtrij gemaakt (als deze nog niet bestaat) en het bericht 'Hello, World' toegevoegd:
+Als u een bericht wilt invoegen in een bestaande wachtrij, maakt u eerst een nieuwe **cloud_queue_message** . Roep vervolgens de **add_message** -methode aan. Een **cloud_queue_message** kan worden gemaakt op basis van een teken reeks of een **byte** matrix. Met deze code wordt er een wachtrij gemaakt (als deze nog niet bestaat) en het bericht 'Hello, World' toegevoegd:
 
 ```cpp
 // Retrieve storage account from connection-string.
@@ -172,7 +172,7 @@ std::wcout << U("Changed message content: ") << changed_message.content_as_strin
 ```
 
 ## <a name="how-to-de-queue-the-next-message"></a>Procedure: het volgende bericht in de wachtrij plaatsen
-Met uw code wordt een bericht in twee stappen uit de wachtrij verwijderd. Wanneer u **get_message**aanroept, wordt het volgende bericht in een wachtrij weer gegeven. Een bericht dat wordt geretourneerd door **get_message** wordt onzichtbaar voor andere code die berichten uit deze wachtrij leest. Als u het verwijderen van het bericht uit de wachtrij wilt volt ooien, moet u ook **delete_message**aanroepen. Dit proces in twee stappen voor het verwijderen van een bericht zorgt ervoor dat als de code er niet in slaagt een bericht te verwerken vanwege hardware- of softwareproblemen, een ander exemplaar van uw code hetzelfde bericht kan ophalen en het opnieuw kan proberen. Uw code roept **delete_message** direct nadat het bericht is verwerkt.
+Met uw code wordt een bericht in twee stappen uit de wachtrij verwijderd. Wanneer u **get_message** aanroept, wordt het volgende bericht in een wachtrij weer gegeven. Een bericht dat wordt geretourneerd door **get_message** wordt onzichtbaar voor andere code die berichten uit deze wachtrij leest. Als u het verwijderen van het bericht uit de wachtrij wilt volt ooien, moet u ook **delete_message** aanroepen. Dit proces in twee stappen voor het verwijderen van een bericht zorgt ervoor dat als de code er niet in slaagt een bericht te verwerken vanwege hardware- of softwareproblemen, een ander exemplaar van uw code hetzelfde bericht kan ophalen en het opnieuw kan proberen. Uw code roept **delete_message** direct nadat het bericht is verwerkt.
 
 ```cpp
 // Retrieve storage account from connection-string.
@@ -193,7 +193,7 @@ queue.delete_message(dequeued_message);
 ```
 
 ## <a name="how-to-leverage-additional-options-for-de-queuing-messages"></a>Procedure: aanvullende opties gebruiken voor de wachtrij berichten
-Er zijn twee manieren waarop u het ophalen van berichten uit een wachtrij kunt aanpassen. Ten eerste kunt u berichten batchgewijs (maximaal 32) ophalen. Ten tweede kunt u een langere of kortere time-out voor onzichtbaarheid instellen, zodat uw code meer of minder tijd krijgt voor het volledig verwerken van elk bericht. In het volgende code voorbeeld wordt de methode **get_messages** gebruikt om 20 berichten in één aanroep op te halen. Vervolgens wordt elk bericht verwerkt met behulp **van een for** -lus. De time-out voor onzichtbaarheid wordt ingesteld op vijf minuten voor elk bericht. Houd er rekening mee dat de 5 minuten voor alle berichten tegelijk worden gestart, dus nadat de 5 minuten zijn verstreken sinds de aanroep van **get_messages**, worden alle berichten die niet zijn verwijderd, weer zichtbaar.
+Er zijn twee manieren waarop u het ophalen van berichten uit een wachtrij kunt aanpassen. Ten eerste kunt u berichten batchgewijs (maximaal 32) ophalen. Ten tweede kunt u een langere of kortere time-out voor onzichtbaarheid instellen, zodat uw code meer of minder tijd krijgt voor het volledig verwerken van elk bericht. In het volgende code voorbeeld wordt de methode **get_messages** gebruikt om 20 berichten in één aanroep op te halen. Vervolgens wordt elk bericht verwerkt met behulp **van een for** -lus. De time-out voor onzichtbaarheid wordt ingesteld op vijf minuten voor elk bericht. Houd er rekening mee dat de 5 minuten voor alle berichten tegelijk worden gestart, dus nadat de 5 minuten zijn verstreken sinds de aanroep van **get_messages** , worden alle berichten die niet zijn verwijderd, weer zichtbaar.
 
 ```cpp
 // Retrieve storage account from connection-string.

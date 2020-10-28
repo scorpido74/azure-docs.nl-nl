@@ -11,17 +11,17 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 06/12/2020
-ms.openlocfilehash: 80f5d6033429c40f468d525a088bcc72bdc3375b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4837b905f4e65b5513f1dbf693af9815b5696a4a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450301"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782957"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>Problemen met prestatie problemen met Azure SQL Database en Azure SQL Managed instance oplossen met Intelligent Insights
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Deze pagina bevat informatie over Azure SQL Database en prestatie problemen met Azure SQL Managed instance die zijn gedetecteerd via het [intelligent Insights](intelligent-insights-overview.md) resource logboek. Metrische gegevens en bron logboeken kunnen worden gestreamd naar [Azure monitor-logboeken](../../azure-monitor/insights/azure-sql.md), [Azure Event hubs](../../azure-monitor/platform/resource-logs-stream-event-hubs.md), [Azure Storage](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)of een oplossing van derden voor aangepaste DevOps-waarschuwingen en rapportage mogelijkheden.
+Deze pagina bevat informatie over Azure SQL Database en prestatie problemen met Azure SQL Managed instance die zijn gedetecteerd via het [intelligent Insights](intelligent-insights-overview.md) resource logboek. Metrische gegevens en bron logboeken kunnen worden gestreamd naar [Azure monitor-logboeken](../../azure-monitor/insights/azure-sql.md), [Azure Event hubs](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs), [Azure Storage](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)of een oplossing van derden voor aangepaste DevOps-waarschuwingen en rapportage mogelijkheden.
 
 > [!NOTE]
 > Zie de [Aanbevolen stroom diagram voor probleem oplossing](intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) in dit document voor een snelle probleemoplossings gids voor het oplossen van problemen met behulp van intelligent Insights.
@@ -74,7 +74,7 @@ In het diagnostische logboek worden query-hashes uitgevoerd van query's die invl
 
 Als u de beschik bare sessie limieten hebt bereikt, kunt u uw toepassingen optimaliseren door het aantal aanmeldingen in de data base te verminderen. Als u het aantal aanmeldingen van uw toepassingen naar de data base niet kunt reduceren, kunt u overwegen de prijs categorie van uw data base-abonnement te verg Roten. Of u kunt uw data base in meerdere data bases splitsen en verplaatsen voor een meer evenwichtige taak verdeling.
 
-Zie [de limieten van maximum aantal aanmeldingen](https://blogs.technet.microsoft.com/latam/20../../how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/)voor meer suggesties voor het oplossen van sessie limieten. Zie [overzicht van resource limieten op een server](resource-limits-logical-server.md) voor informatie over limieten op het niveau van de server en het abonnement.
+Zie [de limieten van maximum aantal aanmeldingen](/archive/blogs/latam/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins)voor meer suggesties voor het oplossen van sessie limieten. Zie [overzicht van resource limieten op een server](resource-limits-logical-server.md) voor informatie over limieten op het niveau van de server en het abonnement.
 
 ## <a name="workload-increase"></a>Toename van de workload
 
@@ -118,7 +118,7 @@ Zie [geheugen subsidies Meditation: de verwarrende SQL Server Memory Consumer me
 
 Dit prestatie patroon duidt op degradatie van de prestaties van de huidige Data Base waarin buitensporige database vergrendeling wordt gedetecteerd vergeleken met de afgelopen zeven-daagse prestatie basislijn.
 
-In moderne RDBMS is het vergren delen van essentieel belang voor het implementeren van multi thread-systemen waarbij de prestaties worden gemaximaliseerd door meerdere gelijktijdige werk nemers en parallelle database transacties waar mogelijk uit te voeren. Vergren deling in deze context verwijst naar het ingebouwde toegangs mechanisme waarbij slechts één trans actie exclusieve toegang kan krijgen tot de rijen, pagina's, tabellen en bestanden die vereist zijn en niet concurreren met een andere trans actie voor resources. Wanneer de trans actie die de resources voor gebruik heeft vergrendeld, wordt uitgevoerd, wordt de vergren deling van deze resources vrijgegeven, waardoor andere trans acties toegang hebben tot de vereiste resources. Zie [de data base-engine vergren delen](https://msdn.microsoft.com/library/ms190615.aspx)voor meer informatie over vergren delen.
+In moderne RDBMS is het vergren delen van essentieel belang voor het implementeren van multi thread-systemen waarbij de prestaties worden gemaximaliseerd door meerdere gelijktijdige werk nemers en parallelle database transacties waar mogelijk uit te voeren. Vergren deling in deze context verwijst naar het ingebouwde toegangs mechanisme waarbij slechts één trans actie exclusieve toegang kan krijgen tot de rijen, pagina's, tabellen en bestanden die vereist zijn en niet concurreren met een andere trans actie voor resources. Wanneer de trans actie die de resources voor gebruik heeft vergrendeld, wordt uitgevoerd, wordt de vergren deling van deze resources vrijgegeven, waardoor andere trans acties toegang hebben tot de vereiste resources. Zie [de data base-engine vergren delen](/previous-versions/sql/sql-server-2008-r2/ms190615(v=sql.105))voor meer informatie over vergren delen.
 
 Als trans acties die worden uitgevoerd door de SQL-engine tijdig worden gewacht om toegang te krijgen tot resources die zijn vergrendeld voor gebruik, zorgt deze wacht tijd voor de vertraging van de prestaties van de werk belasting.
 
@@ -144,7 +144,7 @@ De MAXDOP-server configuratie optie wordt gebruikt om te bepalen hoeveel CPU-ker
 
 Het diagnostische logboek voert query-hashes uit die zijn gerelateerd aan query's waarvoor de duur van de uitvoering is verhoogd omdat ze meer zijn geparallelleerd dan ze zouden moeten hebben. In het logboek worden ook CXP-wacht tijden uitgevoerd. Deze tijd staat voor de tijd dat een enkele thread van de Organizer (thread 0) wordt gewacht voordat alle andere threads worden voltooid voordat de resultaten worden samengevoegd en vooruit worden verplaatst. Daarnaast voert het diagnostische logboek de wacht tijden uit waarop de slechtere query's in de gehele uitvoering wachten. U kunt deze informatie gebruiken als basis voor het oplossen van problemen.
 
-Optimaliseer of Vereenvoudig complexe query's eerst. Een goede gewoonte is het opsplitsen van lange batch taken in kleinere versies. Bovendien moet u ervoor zorgen dat u indexen hebt gemaakt voor de ondersteuning van uw query's. U kunt ook hand matig de maximale mate van parallellisme (MAXDOP) afdwingen voor een query die als slechte uitvoering is gemarkeerd. Als u deze bewerking wilt configureren met T-SQL, raadpleegt u [de configuratie optie voor de MAXDOP-server configureren](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option).
+Optimaliseer of Vereenvoudig complexe query's eerst. Een goede gewoonte is het opsplitsen van lange batch taken in kleinere versies. Bovendien moet u ervoor zorgen dat u indexen hebt gemaakt voor de ondersteuning van uw query's. U kunt ook hand matig de maximale mate van parallellisme (MAXDOP) afdwingen voor een query die als slechte uitvoering is gemarkeerd. Als u deze bewerking wilt configureren met T-SQL, raadpleegt u [de configuratie optie voor de MAXDOP-server configureren](/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option).
 
 Als u de MAXDOP-server configuratie optie instelt op nul (0) als standaard waarde, geeft u aan dat de data base alle beschik bare CPU-kernen kan gebruiken voor parallelliseren-threads voor het uitvoeren van één query. Als u MAXDOP instelt op één (1), ziet u dat er slechts één kern kan worden gebruikt voor het uitvoeren van één query. In de praktijk betekent dit dat parallellisme is uitgeschakeld. Afhankelijk van de basis per geval, beschik bare kernen voor de data base en diagnostische logboek gegevens, kunt u de MAXDOP-optie afstemmen op het aantal kernen dat wordt gebruikt voor het uitvoeren van parallelle query's, waardoor het probleem in uw situatie kan worden opgelost.
 
@@ -196,7 +196,7 @@ Het diagnostische logboek voert query-hashes uit voor de query's die zijn geïde
 
 Dit prestatie patroon geeft aan dat er een nieuwe query wordt gedetecteerd die slecht presteert en invloed heeft op de prestaties van de werk belasting vergeleken met de basis lijn voor zeven dagen.
 
-Het schrijven van een goed uitgevoerde query kan soms een uitdagende taak zijn. Zie [SQL-Query's schrijven](https://msdn.microsoft.com/library/bb264565.aspx)voor meer informatie over het schrijven van query's. Zie [query afstemmen](https://msdn.microsoft.com/library/ms176005.aspx)om de bestaande query prestaties te optimaliseren.
+Het schrijven van een goed uitgevoerde query kan soms een uitdagende taak zijn. Zie [SQL-Query's schrijven](/previous-versions/sql/sql-server-2005/express-administrator/bb264565(v=sql.90))voor meer informatie over het schrijven van query's. Zie [query afstemmen](/previous-versions/sql/sql-server-2008-r2/ms176005(v=sql.105))om de bestaande query prestaties te optimaliseren.
 
 ### <a name="troubleshooting"></a>Problemen oplossen
 
@@ -210,7 +210,7 @@ In Azure SQL Database kunt u [query Performance Insight](query-performance-insig
 
 Dit Detecteer bare prestatie patroon duidt op een prestatie vermindering van de werk belasting waarbij slechtere query's worden geïdentificeerd ten opzichte van de afgelopen 7-daagse basis lijn voor de werk belasting.
 
-In dit geval kan het systeem de slechtere query's niet classificeren onder andere standaard gedetecteerde prestatie categorieën, maar is de wacht tijd die verantwoordelijk is voor de regressie, gedetecteerd. Daarom worden ze beschouwd als query's met *verhoogde wacht statistieken*, waarbij de wacht tijd die verantwoordelijk is voor de regressie ook wordt weer gegeven.
+In dit geval kan het systeem de slechtere query's niet classificeren onder andere standaard gedetecteerde prestatie categorieën, maar is de wacht tijd die verantwoordelijk is voor de regressie, gedetecteerd. Daarom worden ze beschouwd als query's met *verhoogde wacht statistieken* , waarbij de wacht tijd die verantwoordelijk is voor de regressie ook wordt weer gegeven.
 
 ### <a name="troubleshooting"></a>Problemen oplossen
 
@@ -218,7 +218,7 @@ Het diagnostische logboek voert informatie uit over verhoogde wacht tijd en quer
 
 Omdat het systeem de hoofd oorzaak voor de query's die niet goed worden uitgevoerd niet kan identificeren, is de diagnostische informatie een goed uitgangs punt voor hand matige probleem oplossing. U kunt de prestaties van deze query's optimaliseren. Het is een goed idee om alleen de gegevens op te halen die u nodig hebt en om complexe query's te vereenvoudigen en te onderverdelen in kleinere bestanden.
 
-Zie [query tuning](https://msdn.microsoft.com/library/ms176005.aspx)(Engelstalig) voor meer informatie over het optimaliseren van query prestaties.
+Zie [query tuning](/previous-versions/sql/sql-server-2008-r2/ms176005(v=sql.105))(Engelstalig) voor meer informatie over het optimaliseren van query prestaties.
 
 ## <a name="tempdb-contention"></a>TempDB-conflicten
 
@@ -230,7 +230,7 @@ Dit Detecteer bare prestatie patroon duidt op een prestatie voorwaarde voor de D
 
 In het diagnostische logboek worden de details van tempDB-conflicten in de geheugen uitvoer uitgevoerd. U kunt de informatie als uitgangs punt gebruiken voor het oplossen van problemen. Er zijn twee dingen die u kunt uitvoeren om dit soort conflicten op te lossen en de door Voer van de totale werk belasting te verg Roten: u kunt stoppen met het gebruik van de tijdelijke tabellen. U kunt ook tabellen gebruiken die zijn geoptimaliseerd voor geheugen.
 
-Zie [Inleiding tot tabellen die zijn geoptimaliseerd voor geheugen](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables)voor meer informatie.
+Zie [Inleiding tot tabellen die zijn geoptimaliseerd voor geheugen](/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables)voor meer informatie.
 
 ## <a name="elastic-pool-dtu-shortage"></a>DTU-tekort elastische groep
 
@@ -260,7 +260,7 @@ Dit gedetecteerde prestatie patroon combineert drie verschillende gevallen van p
 
 De nieuwe regressie voorwaarde van het plan verwijst naar een status waarin de data base-engine begint met het uitvoeren van een nieuw uitvoerings plan voor query's dat niet zo efficiënt is als het oude plan. De oude voor waarde van het plan is de status van wanneer de data base-engine overschakelt van een nieuw, efficiënt plan naar het oude plan, wat niet zo efficiënt is als het nieuwe plan. De bestaande plannings regressie van de werk belasting heeft betrekking op de staat waarin de oude en de nieuwe plannen voortdurend wisselen, met het saldo voor het slecht uitgevoerde plan.
 
-Zie [Wat is regressie plannen in SQL Server?](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../what-is-plan-regression-in-sql-server/)voor meer informatie over het plannen van regressies.
+Zie [Wat is regressie plannen in SQL Server?](/archive/blogs/sqlserverstorageengine/what-is-plan-regression-in-sql-server)voor meer informatie over het plannen van regressies.
 
 ### <a name="troubleshooting"></a>Problemen oplossen
 
@@ -268,7 +268,7 @@ In het diagnostische logboek worden de query-hashes, een goede plan-ID, een onju
 
 U kunt analyseren welk plan het beste presteert voor uw specifieke query's die u kunt identificeren met de opgegeven query-hashes. Nadat u hebt vastgesteld welk abonnement beter werkt voor uw query's, kunt u dit hand matig afdwingen.
 
-Zie [meer informatie over het voor komen van plannings regressies in SQL Server](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../you-shall-not-regress-how-sql-server-2017-prevents-plan-regressions/).
+Zie [meer informatie over het voor komen van plannings regressies in SQL Server](/archive/blogs/sqlserverstorageengine/you-shall-not-regress-how-sql-server-2017-prevents-plan-regressions).
 
 > [!TIP]
 > Wist u dat de ingebouwde intelligence-functie automatisch de best presterende uitvoerings plannen voor query's kan beheren voor uw data bases?
@@ -287,7 +287,7 @@ Wijzigingen in het database bereik configuratie kunnen worden ingesteld voor elk
 
 In het logboek voor diagnostische gegevens zijn wijzigingen in de configuratie van de data base vastgelegd die onlangs zijn aangebracht en die de prestaties verslechteren ten opzichte van het vorige werkings gedrag van zeven dagen. U kunt de wijzigingen in de configuratie herstellen naar de vorige waarden. U kunt ook de waarde op waarde afstemmen tot het gewenste prestatie niveau is bereikt. U kunt configuratie waarden voor database bereik kopiëren uit een vergelijk bare data base met voldoende prestaties. Als u de prestaties niet kunt oplossen, keert u terug naar de standaard waarden en probeert u het probleem op te lossen vanaf deze basis lijn.
 
-Zie [ALTER data base-scoped Configuration (Transact-SQL)](https://msdn.microsoft.com/library/mt629158.aspx)voor meer informatie over het optimaliseren van de database bereik configuratie en de T-SQL-syntaxis bij het wijzigen van de configuratie.
+Zie [ALTER data base-scoped Configuration (Transact-SQL)](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql)voor meer informatie over het optimaliseren van de database bereik configuratie en de T-SQL-syntaxis bij het wijzigen van de configuratie.
 
 ## <a name="slow-client"></a>Trage client
 
@@ -326,11 +326,11 @@ Ga naar Azure SQL-analyse om Intelligent Insights via de Azure Portal. Probeer d
 > [!TIP]
 > Selecteer het stroom diagram om een PDF-versie te downloaden.
 
-Intelligent Insights is doorgaans één uur tijd nodig voor het uitvoeren van de analyse van de hoofd oorzaak van het prestatie probleem. Als u het probleem niet kunt vinden in Intelligent Insights en het essentieel voor u is, gebruikt u het query archief om de hoofd oorzaak van het prestatie probleem hand matig te identificeren. (Doorgaans zijn deze problemen minder dan een uur oud.) Zie [prestaties bewaken met behulp van de query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)voor meer informatie.
+Intelligent Insights is doorgaans één uur tijd nodig voor het uitvoeren van de analyse van de hoofd oorzaak van het prestatie probleem. Als u het probleem niet kunt vinden in Intelligent Insights en het essentieel voor u is, gebruikt u het query archief om de hoofd oorzaak van het prestatie probleem hand matig te identificeren. (Doorgaans zijn deze problemen minder dan een uur oud.) Zie [prestaties bewaken met behulp van de query Store](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Leer [intelligent Insights](intelligent-insights-overview.md) -concepten.
 - Het logboek voor de [intelligent Insights prestatie diagnose](intelligent-insights-use-diagnostics-log.md)gebruiken.
-- Bewaak met [Azure SQL-analyse](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).
+- Bewaak met [Azure SQL-analyse](../../azure-monitor/insights/azure-sql.md).
 - Meer informatie over [het verzamelen en gebruiken van logboek gegevens van uw Azure-resources](../../azure-monitor/platform/platform-logs-overview.md).
