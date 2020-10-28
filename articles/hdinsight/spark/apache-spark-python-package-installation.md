@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: dc1da641ba628cef92250549c1c6b6482cf18b51
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5a0f9f9f972ec42987d6152c16e4377e399cdba5
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547330"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896409"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Een Python-omgeving veilig beheren in Azure HDInsight met scriptactie
 
@@ -129,6 +129,24 @@ HDInsight-cluster is afhankelijk van de ingebouwde python-omgeving, zowel python
     4. Sla de wijzigingen op en start de betrokken services opnieuw. Voor deze wijzigingen moet de Spark2-service opnieuw worden gestart. De Ambari-gebruikers interface vraagt een vereiste herinnering opnieuw op te starten. Klik op opnieuw opstarten om alle betrokken services opnieuw te starten.
 
         ![Services opnieuw starten](./media/apache-spark-python-package-installation/ambari-restart-services.png)
+
+    5. Stel twee eigenschappen in op uw Spark-sessie om ervoor te zorgen dat de taak naar de bijgewerkte Spark-configuratie verwijst: `spark.yarn.appMasterEnv.PYSPARK_PYTHON` en `spark.yarn.appMasterEnv.PYSPARK_DRIVER_PYTHON` . 
+
+        Gebruik de functie met behulp van de terminal of een notitie blok `spark.conf.set` .
+
+        ```spark
+        spark.conf.set("spark.yarn.appMasterEnv.PYSPARK_PYTHON", "/usr/bin/anaconda/envs/py35/bin/python")
+        spark.conf.set("spark.yarn.appMasterEnv.PYSPARK_DRIVER_PYTHON", "/usr/bin/anaconda/envs/py35/bin/python")
+        ```
+
+        Als u livy gebruikt, voegt u de volgende eigenschappen toe aan de hoofd tekst van de aanvraag:
+
+        ```
+        “conf” : {
+        “spark.yarn.appMasterEnv.PYSPARK_PYTHON”:”/usr/bin/anaconda/envs/py35/bin/python”,
+        “spark.yarn.appMasterEnv.PYSPARK_DRIVER_PYTHON”:”/usr/bin/anaconda/envs/py35/bin/python”
+        }
+        ```
 
 4. Als u de nieuwe virtuele omgeving die u hebt gemaakt, wilt gebruiken op Jupyter. Wijzig Jupyter-configuraties en start Jupyter opnieuw. Voer script acties uit op alle hoofd knooppunten met de instructie hieronder om Jupyter naar de nieuwe virtuele omgeving te wijzen. Zorg ervoor dat u het pad naar het voor voegsel dat u hebt opgegeven voor uw virtuele omgeving wijzigt. Nadat u deze script actie hebt uitgevoerd, start u de Jupyter-service opnieuw via de Ambari-gebruikers interface om deze wijziging beschikbaar te maken.
 

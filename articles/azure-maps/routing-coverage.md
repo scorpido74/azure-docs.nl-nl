@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 160e8182a2de56b494e8f37bbedf4a8cec66c608
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05c3cfc390fed905f4a1b09c221095b56867d540
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88030891"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896171"
 ---
 # <a name="azure-maps-routing-coverage"></a>Routerings dekking Azure Maps
 
@@ -245,4 +245,4 @@ De volgende tabel bevat informatie over de dekking van Azure Maps route ring.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de pagina [route ring](https://docs.microsoft.com/rest/api/maps/route) -verwijzing voor meer informatie over Azure Maps route ring.
+Zie de pagina [route ring](/rest/api/maps/route) -verwijzing voor meer informatie over Azure Maps route ring.

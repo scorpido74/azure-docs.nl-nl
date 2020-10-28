@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 8a0d930d1c0fd30c48d97b0d1d4b94548077fbca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ab99f32932f39d5ad140b7a16d16ceae30fff54
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86261754"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896205"
 ---
 # <a name="add-a-tile-layer"></a>Een titellaag toevoegen
 
@@ -57,11 +57,11 @@ De tegel-URL een HTTPS-URL naar een URL-sjabloon voor tegels die gebruikmaakt va
 -   `{quadkey}` -Tegel- `quadkey` id gebaseerd op de naam Conventie voor Bing Maps-tegel systemen.
 -   `{bbox-epsg-3857}` -Een teken reeks voor selectie kader met de indeling `{west},{south},{east},{north}` in het EPSG 3857 Spatial Reference System.
 
-Het volgende voor beeld is een indelings-URL met een opmaak die wordt [weer](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) gegeven in azure Maps. Opmerking: dit `[subscription-key]` is een tijdelijke aanduiding voor uw Azure Maps-abonnements sleutel.
+Het volgende voor beeld is een indelings-URL met een opmaak die wordt [weer](/rest/api/maps/renderv2/getmaptilepreview) gegeven in azure Maps. Opmerking: dit `[subscription-key]` is een tijdelijke aanduiding voor uw Azure Maps-abonnements sleutel.
 
 > `https://atlas.microsoft.com/map/tile?zoom={z}&x={x}&y={y}&tilesetId=microsoft.weather.radar.main&api-version=2.0&subscription-key=[subscription-key]`
 
-Zie [zoom niveaus en tegel raster](zoom-levels-and-tile-grid.md)voor meer informatie over Azure Maps tegel systeem.
+Zie [zoom niveaus en tegel raster](zoom-levels-and-tile-grid.md)voor meer informatie over Azure Maps tegel systeem.
 
 ## <a name="next-steps"></a>Volgende stappen
 

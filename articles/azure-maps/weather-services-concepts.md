@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4430737814ef904e83b2bf3ce25edf3d44e2668d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea8698b7bf402850e506ec126cd2a7bb6ce05823
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90972033"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896724"
 ---
 # <a name="weather-services-in-azure-maps"></a>Weer Services in Azure Maps
 
-In dit artikel worden concepten geïntroduceerd die van toepassing zijn op de [Azure Maps weers Services](https://aka.ms/AzureMapsWeatherService). We raden u aan dit artikel uit te voeren voordat u begint met de weers-Api's.
+In dit artikel worden concepten geïntroduceerd die van toepassing zijn op de [Azure Maps weers Services](/rest/api/maps/weather). We raden u aan dit artikel uit te voeren voordat u begint met de weers-Api's.
 
 ## <a name="unit-types"></a>Eenheids typen
 
@@ -100,7 +100,7 @@ Sommige van de weer service Api's retour neren de `iconCode` in het antwoord. De
 
 ## <a name="radar-and-satellite-imagery-color-scale"></a>Kleuren schaal radar-en satelliet afbeelding
 
-Via de [kaart tegel ophalen v2 API](https://aka.ms/AzureMapsWeatherTiles) kunnen gebruikers nieuwste radar-en infra rood satelliet installatie kopieën aanvragen. Zie de onderstaande hand leiding voor het interpreteren van kleuren die worden gebruikt voor radar-en satelliet tegels.
+Via de [kaart tegel ophalen v2 API](/rest/api/maps/renderv2/getmaptilepreview) kunnen gebruikers nieuwste radar-en infra rood satelliet installatie kopieën aanvragen. Zie de onderstaande hand leiding voor het interpreteren van kleuren die worden gebruikt voor radar-en satelliet tegels.
 
 ### <a name="radar-images"></a>Radar afbeeldingen
 
@@ -475,7 +475,7 @@ Het gedetailleerde kleuren palet voor infra rood satelliet tegels wordt hieronde
 
 ## <a name="index-ids-and-index-groups-ids"></a>Index-Id's en index groep-Id's
 
-Met de [dagelijkse indexen API](https://aka.ms/AzureMapsWeatherDailyIndices) kunnen gebruikers geretourneerde resultaten beperken tot specifieke index typen of index groepen.
+Met de [dagelijkse indexen API](/rest/api/maps/weather) kunnen gebruikers geretourneerde resultaten beperken tot specifieke index typen of index groepen.
 
 Hieronder ziet u een tabel met beschik bare index-Id's, hun namen en een koppeling naar de bereik sets. Onder deze tabel ziet u een tabel met een lijst met de verschillende index groepen.
 
@@ -547,7 +547,7 @@ Hieronder ziet u de lijst met beschik bare index groepen (indexGroupId):
 
 ## <a name="daily-index-range-sets"></a>Dagelijkse index bereik sets
 
-[Dagelijkse indexen ophalen API](https://aka.ms/AzureMapsWeatherDailyIndices) retourneert de bereik waarde en de bijbehorende categorie naam voor elke index-id. Bereik sets zijn niet hetzelfde voor alle indexen. In de onderstaande tabellen worden de verschillende bereik sets weer gegeven die worden gebruikt door de ondersteunde indexen in [index-id's en index groep-id's](#index-ids-and-index-groups-ids). Als u wilt weten welke indexen de bereik sets gebruiken, gaat u naar de sectie [index-id's en index groepen-id's](#index-ids-and-index-groups-ids) van dit document.
+[Dagelijkse indexen ophalen API](/rest/api/maps/weather) retourneert de bereik waarde en de bijbehorende categorie naam voor elke index-id. Bereik sets zijn niet hetzelfde voor alle indexen. In de onderstaande tabellen worden de verschillende bereik sets weer gegeven die worden gebruikt door de ondersteunde indexen in [index-id's en index groep-id's](#index-ids-and-index-groups-ids). Als u wilt weten welke indexen de bereik sets gebruiken, gaat u naar de sectie [index-id's en index groepen-id's](#index-ids-and-index-groups-ids) van dit document.
 
 ### <a name="poor-excellent-1"></a>Poor-Excellent 1
 
@@ -565,7 +565,7 @@ Hieronder ziet u de lijst met beschik bare index groepen (indexGroupId):
   ----------------|--------------|------------
   Slecht           |0              |  3
   Redelijk           |3,01           |  6
-  Goed           |6,01           |  7.5
+  Goed           |6,01           |  7,5
   Heel goed      |7,51           |  8,99
   Uitstekend      |9              |  10
 
@@ -624,7 +624,7 @@ Hieronder ziet u de lijst met beschik bare index groepen (indexGroupId):
 | Categorienaam | Begin bereik | Eind bereik |
   ----------------|--------------|------------
   Voorkomende         |  0     |          2,99
-  Bekijken            |  3     |          4,99
+  Watch            |  3     |          4,99
   Advies         |  5     |          6,99
   Waarschuwing          |  7     |          8,99
   Urgentie        |  9     |          10

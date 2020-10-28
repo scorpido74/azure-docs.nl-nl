@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84169daa28fc394254ddce211a96d4a462f78cbd
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 61f82e94f506cc403106912e24532f9d5263a60d
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441858"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896463"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>B2B-gebruikers in azure AD toegang verlenen tot uw on-premises toepassingen
 
@@ -39,8 +39,8 @@ U moet het volgende doen:
 
 Om B2B-gebruikers toegang te bieden tot on-premises toepassingen die zijn beveiligd met geïntegreerde Windows-verificatie en beperkte Kerberos-delegering, hebt u de volgende onderdelen nodig:
 
-- **Verificatie via Azure AD-toepassingsproxy**. B2B-gebruikers moeten zich kunnen aanmelden bij de on-premises toepassing. Hiervoor moet u de on-premises app publiceren via de Azure-AD-toepassingsproxy. Zie [aan de slag met toepassings proxy en de connector installeren](../manage-apps/application-proxy-add-on-premises-application.md) en [toepassingen publiceren met Azure AD-toepassingsproxy](../manage-apps/application-proxy-add-on-premises-application.md)voor meer informatie.
-- **Autorisatie via een B2B-gebruikers object in de on-premises Directory**. De toepassing moet gebruikers toegangs controles kunnen uitvoeren en toegang verlenen tot de juiste resources. IWA en KCD vereisen een gebruikers object in het on-premises Windows Server-Active Directory om deze autorisatie te volt ooien. Zoals beschreven in de werking van [eenmalige aanmelding met KCD](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works), moet dit gebruikers object door de toepassings proxy worden geïmiteerd en moet er een Kerberos-token bij de app worden ontvangen. 
+- **Verificatie via Azure AD-toepassingsproxy** . B2B-gebruikers moeten zich kunnen aanmelden bij de on-premises toepassing. Hiervoor moet u de on-premises app publiceren via de Azure-AD-toepassingsproxy. Zie [zelf studie: een on-premises toepassing toevoegen voor externe toegang via toepassings proxy](../manage-apps/application-proxy-add-on-premises-application.md)voor meer informatie.
+- **Autorisatie via een B2B-gebruikers object in de on-premises Directory** . De toepassing moet gebruikers toegangs controles kunnen uitvoeren en toegang verlenen tot de juiste resources. IWA en KCD vereisen een gebruikers object in het on-premises Windows Server-Active Directory om deze autorisatie te volt ooien. Zoals beschreven in de werking van [eenmalige aanmelding met KCD](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works), moet dit gebruikers object door de toepassings proxy worden geïmiteerd en moet er een Kerberos-token bij de app worden ontvangen. 
 
    > [!NOTE]
    > Wanneer u de Azure AD-toepassingsproxy configureert, moet u ervoor zorgen dat de **gedelegeerde aanmeldings-id** is ingesteld op **User Principal name** (standaard) in de configuratie voor eenmalige aanmelding voor geïntegreerde Windows-verificatie (IWA).
@@ -77,7 +77,7 @@ Voor informatie over het gebruik van MIM 2016 Service Pack 1 en de MIM-beheer ag
 
 Er is een Power shell-voorbeeld script beschikbaar dat u kunt gebruiken als uitgangs punt voor het maken van de gast gebruikers objecten in uw on-premises Active Directory.
 
-U kunt het script en het Leesmij-bestand downloaden uit het [Download centrum](https://www.microsoft.com/download/details.aspx?id=51495). Kies het **script en Leesmij om Azure AD B2B-gebruikers on-prem.zipbestand te halen ** .
+U kunt het script en het Leesmij-bestand downloaden uit het [Download centrum](https://www.microsoft.com/download/details.aspx?id=51495). Kies het **script en Leesmij om Azure AD B2B-gebruikers on-prem.zipbestand te halen** .
 
 Voordat u het script gebruikt, moet u de vereisten en belang rijke overwegingen in het bijbehorende Leesmij-bestand door nemen. Bovendien moet u weten dat het script alleen beschikbaar is gemaakt als voor beeld. Uw ontwikkel team of een partner moet het script aanpassen en controleren voordat u het uitvoert.
 

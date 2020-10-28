@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: b45eea7a6c4bccbdc6669752255469174493ab55
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: ebe633bbfa8ec950e7726c127e38adecf0d1872f
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91938335"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896256"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps community-open-source projecten
 
@@ -24,7 +24,7 @@ Hieronder vindt u enkele van de populairste Azure Maps open source-projecten en 
 
 **Bots**
 
-| Projectnaam | Beschrijving |
+| Projectnaam | Description |
 |-|-|
 | [Bot Framework-positie van belang rijke vaardigheid](https://github.com/microsoft/botframework-solutions/tree/488093ac2fddf16096171f6a926315aa45e199e7/skills/csharp/pointofinterestskill) | Het belangrijkste vaardigheids punt biedt POI-gerelateerde mogelijkheden voor een virtuele assistent met behulp van Azure Maps met Azure Bot Service en bot Framework. |
 | [Locatie van BotBuilder](https://github.com/Microsoft/BotBuilder-Location) | Een open-source locatie kiezer-besturings element voor het micro soft bot Framework dat wordt aangedreven door de REST-services van Bing Maps. |
@@ -35,7 +35,7 @@ Hieronder vindt u enkele van de populairste Azure Maps open source-projecten en 
 
 Hier volgt een lijst van open-source projecten die de mogelijkheden van de Azure Maps Web-SDK uitbreiden.
 
-| Projectnaam | Beschrijving |
+| Projectnaam | Description |
 |-|-|
 | [Module Azure Maps animatie](https://github.com/Azure-Samples/azure-maps-animations) | Een uitgebreide bibliotheek met animaties voor gebruik met de Azure Maps Web-SDK. |
 | [Beheer module voor geolocatie Azure Maps](https://github.com/Azure-Samples/azure-maps-geolocation-control) | Een Azure Maps Web SDK-module die een besturings element biedt dat de geolocatie-API van de browser gebruikt om de gebruiker op de kaart te vinden. |
@@ -48,7 +48,7 @@ Hier volgt een lijst van open-source projecten die de mogelijkheden van de Azure
 
 **Voorbeelden**
 
-| Projectnaam | Beschrijving |
+| Projectnaam | Description |
 |-|-|
 | [Voor beelden van Azure Maps code](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Een verzameling code voorbeelden voor het gebruik van Azure Maps in op het web gebaseerde apps. |
 | [Voor beelden van gov-Cloud code Azure Maps](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Een verzameling code voorbeelden voor het gebruik van Azure Maps via Azure Government Cloud. |
@@ -59,7 +59,7 @@ Hier volgt een lijst van open-source projecten die de mogelijkheden van de Azure
 
 **Hulpprogramma's en informatiebronnen**
 
-| Projectnaam | Beschrijving |
+| Projectnaam | Description |
 |-|-|
 | [Azure Maps docs](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/azure-maps) | Bron voor alle Azure Location Based Services documentatie. |
 | [Azure Maps Creator-Hulpprogram Ma's](https://github.com/Azure-Samples/AzureMapsCreator) | Python-hulpprogram ma's voor Azure Maps Creator-Hulpprogram Ma's. |
@@ -82,4 +82,4 @@ De volgende instructies zijn van toepassing op alle Azure Maps voor het maken en
 Meer open-source Azure Maps-projecten zoeken.
 
 > [!div class="nextstepaction"]
-> [Codevoorbeelden](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Codevoorbeelden](/samples/browse/?products=azure-maps)

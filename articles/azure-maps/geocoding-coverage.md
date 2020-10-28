@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 1f79add26af40abfa320bc23a3287d8246237701
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cf27319fa84ff5d693e74e90664b7a86f4d934a
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88037436"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897208"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Geocoderings dekking Azure Maps
 
-De Azure Maps- [Zoek service](https://docs.microsoft.com/rest/api/maps/search) ondersteunt geocodering, wat betekent dat uw API-aanvraag zoek termen kan hebben, zoals een adres of de naam van een locatie, en het resultaat als coördinaten voor breedte graad en lengte graad. Zo worden met de Azure Maps [Zoek adres-API ophalen](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) query's ontvangen die locatie-informatie bevatten en worden de resultaten weer gegeven als coördinaten voor breedte graad en lengte graad.
+De Azure Maps- [Zoek service](/rest/api/maps/search) ondersteunt geocodering, wat betekent dat uw API-aanvraag zoek termen kan hebben, zoals een adres of de naam van een locatie, en het resultaat als coördinaten voor breedte graad en lengte graad. Zo worden met de Azure Maps [Zoek adres-API ophalen](/rest/api/maps/search/getsearchaddress) query's ontvangen die locatie-informatie bevatten en worden de resultaten weer gegeven als coördinaten voor breedte graad en lengte graad.
 
-De Azure Maps Search- [service](https://docs.microsoft.com/rest/api/maps/search) heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor alle regio's en landen. Gebruik dit artikel om te bepalen met welke typen locaties u in elke regio betrouwbaar kunt zoeken.
+De Azure Maps Search- [service](/rest/api/maps/search) heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor alle regio's en landen. Gebruik dit artikel om te bepalen met welke typen locaties u in elke regio betrouwbaar kunt zoeken.
 
 De mogelijkheid tot Geocode in een land/regio is afhankelijk van de dekking van de weg en de geocoderings nauwkeurigheid van de geocoderings service. De volgende categorisaties worden gebruikt om het niveau van geocoderings ondersteuning in elk land/elke regio op te geven.
 
@@ -301,4 +301,4 @@ De mogelijkheid tot Geocode in een land/regio is afhankelijk van de dekking van 
 
 Meer informatie over Azure Maps geocodering:
 > [!div class="nextstepaction"]
-> [Azure Maps Search-service](https://docs.microsoft.com/rest/api/maps/search)
+> [Azure Maps Search-service](/rest/api/maps/search)

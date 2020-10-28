@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: f0fcdf7aab5f43a0412cd28a1c15188b19770dc6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e75edad9f2e473d27d81c73fc784c568c4e404c
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888105"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896137"
 ---
 # <a name="create-a-data-streaming-job-in-azure-sql-edge"></a>Een taak voor gegevens stromen maken in Azure SQL Edge 
 
@@ -36,7 +36,7 @@ Als Azure SQL Edge, SQL Server of Azure SQL Database als een uitvoer stroom word
 
 Azure SQL Edge ondersteunt momenteel alleen de volgende gegevens bronnen als invoer en uitvoer van streams.
 
-| Gegevens bron type | Invoer | Uitvoer | Beschrijving |
+| Gegevens bron type | Invoer | Uitvoer | Description |
 |------------------|-------|--------|------------------|
 | Azure IoT Edge hub | J | J | Gegevens bron om streaminggegevens te lezen en schrijven naar een Azure IoT Edge hub. Zie [IOT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)voor meer informatie.|
 | SQL Database | N | J | Gegevens bron verbinding om streaminggegevens te schrijven naar SQL Database. De data base kan een lokale Data Base zijn in Azure SQL Edge of een externe data base in SQL Server of Azure SQL Database.|
@@ -103,7 +103,7 @@ In het volgende voor beeld wordt een extern Stream-object gemaakt voor de lokale
 
 3. Een externe gegevens bron maken met externe gegevens bron maken. Het volgende voor beeld:
 
-    * Hiermee maakt u een externe gegevens bron met de naam *LocalSQLOutput*.
+    * Hiermee maakt u een externe gegevens bron met de naam *LocalSQLOutput* .
     * Hiermee wordt de externe gegevens bron geïdentificeerd (locatie = ' <vendor> :// <server> [: <port> ] '). In het voor beeld verwijst deze naar een lokaal exemplaar van de Azure SQL-rand.
     * Maakt gebruik van de referentie die eerder is gemaakt.
 
@@ -117,7 +117,7 @@ In het volgende voor beeld wordt een extern Stream-object gemaakt voor de lokale
     go
     ```
 
-4. Maak het externe Stream-object. In het volgende voor beeld wordt een extern Stream-object gemaakt dat verwijst naar een tabel *dbo. TemperatureMeasurements*, in de Data Base- *MySQLDatabase*.
+4. Maak het externe Stream-object. In het volgende voor beeld wordt een extern Stream-object gemaakt dat verwijst naar een tabel *dbo. TemperatureMeasurements* , in de Data Base- *MySQLDatabase* .
 
     ```sql
     CREATE EXTERNAL STREAM TemperatureMeasurements 
@@ -233,7 +233,8 @@ exec sys.sp_get_streaming_job @name=N'StreamingJob1'
 (
        (
        name nvarchar(256),
-       status nvarchar(256)
+       status nvarchar(256),
+       error nvarchar(256)
        )
 )
 ```

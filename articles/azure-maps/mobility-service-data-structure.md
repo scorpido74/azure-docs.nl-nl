@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 02d89226bd2df4bfe5d11897199c50c702e7bc1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60d45febced2f2d678d41682f7f27bf668943de2
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88033220"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896307"
 ---
 # <a name="data-structures-in-azure-maps-mobility-service"></a>Gegevens structuren in de Azure Maps Mobility-service
 
-In dit artikel wordt het concept van metro gebied in [Azure Maps Mobility-service](https://aka.ms/AzureMapsMobilityService)geïntroduceerd. We bespreken enkele algemene velden die worden geretourneerd wanneer deze service wordt opgevraagd voor open bare doorvoer onderbrekingen en-lijnen. We raden u aan dit artikel te lezen voordat u met de Mobility service-Api's ontwikkelt.
+In dit artikel wordt het concept van metro gebied in [Azure Maps Mobility-service](/rest/api/maps/mobility)geïntroduceerd. We bespreken enkele algemene velden die worden geretourneerd wanneer deze service wordt opgevraagd voor open bare doorvoer onderbrekingen en-lijnen. We raden u aan dit artikel te lezen voordat u met de Mobility service-Api's ontwikkelt.
 
 ## <a name="metro-area"></a>Metro gebied
 
 De gegevens van de Mobility-service worden gegroepeerd op ondersteunde metro gebieden. Metro gebieden volgen niet de grenzen van steden. Een metro gebied kan meerdere steden, gevulde stad en rond steden bevatten. Een land/regio kan eigenlijk een metro gebied zijn. 
 
-De `metroID` is de id van een metro gebied dat kan worden gebruikt voor het aanroepen van de informatie-API voor het ophalen van een [metro gebied](https://aka.ms/AzureMapsMobilityMetroAreaInfo). Gebruik Azure Maps ' "een metro-API verkrijgen" om doorvoer typen, doorvoer instanties, actieve waarschuwingen en aanvullende Details voor de gekozen metro lijn aan te vragen. U kunt ook de ondersteunde metro gebieden en metroIDs aanvragen. De Id's van een metro gebied kunnen worden gewijzigd.
+De `metroID` is de id van een metro gebied dat kan worden gebruikt voor het aanroepen van de informatie-API voor het ophalen van een [metro gebied](/rest/api/maps/mobility/getmetroareainfopreview). Gebruik Azure Maps ' "een metro-API verkrijgen" om doorvoer typen, doorvoer instanties, actieve waarschuwingen en aanvullende Details voor de gekozen metro lijn aan te vragen. U kunt ook de ondersteunde metro gebieden en metroIDs aanvragen. De Id's van een metro gebied kunnen worden gewijzigd.
 
 **metroID:** 522-   **naam:** Seattle-Tacoma-Bellevue
 
@@ -33,7 +33,7 @@ De `metroID` is de id van een metro gebied dat kan worden gebruikt voor het aanr
 
 Er kunnen door doorvoer beëindigingen worden verwezen door twee typen Id's, de GFTS-id [(General Transit feed Specification)](http://gtfs.org/) en de Azure Maps stop-id. De GFTS-ID wordt aangeduid als de stopKey en de Azure Maps stop-ID wordt stopID genoemd. Wanneer vaak door Voer wordt geadviseerd, wordt u aangeraden de Azure Maps stop-ID te gebruiken. stopID is stabieler en waarschijnlijk hetzelfde, zolang de fysieke stop bestaat. De GTFS-stop-ID wordt vaker bijgewerkt. Bijvoorbeeld, GTFS stop-ID kan worden bijgewerkt per GTFS provider aanvraag of wanneer een nieuwe GTFS-versie wordt uitgebracht. Hoewel de fysieke stop geen wijziging heeft, kan de GTFS-stop-ID worden gewijzigd.
 
-Als u wilt beginnen, kunt u stoppen met het verzoek om een transit op te halen met behulp van de [API](https://aka.ms/AzureMapsMobilityNearbyTransit)voor het
+Als u wilt beginnen, kunt u stoppen met het verzoek om een transit op te halen met behulp van de [API](/rest/api/maps/mobility/getnearbytransitpreview)voor het
 
 ## <a name="line-groups-and-lines"></a>Lijn groepen en-regels
 
@@ -49,7 +49,7 @@ Een regel groep is een entiteit waarmee alle regels die logisch deel uitmaken va
 
 Zoals hierboven is beschreven, bestaat elke regel groep uit een set regels. Elke regel groep bestaat uit twee regels en elke regel beschrijft een richting.  Er zijn echter gevallen waarin meer regels een regel groep vormen. Er is bijvoorbeeld een regel die soms een bepaalde groep afrondt en soms niet. In beide gevallen werkt deze onder hetzelfde regel nummer. Een regel groep kan ook bestaan uit één regel. Een ronde lijn met één richting is een groep met één regel.
 
-Als u wilt beginnen, kunt u regel groepen aanvragen met behulp van de [regel-API voor transit ophalen](https://aka.ms/AzureMapsMobilityTransitLine).
+Als u wilt beginnen, kunt u regel groepen aanvragen met behulp van de [regel-API voor transit ophalen](/rest/api/maps/mobility/gettransitlineinfopreview).
 
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -67,4 +67,4 @@ Meer informatie over het aanvragen van real-time gegevens met behulp van Mobilit
 De documentatie voor de Azure Maps Mobility Service API verkennen
 
 > [!div class="nextstepaction"]
-> [API-documentatie voor Mobility service](https://aka.ms/AzureMapsMobilityService)
+> [API-documentatie voor Mobility service](/rest/api/maps/mobility)

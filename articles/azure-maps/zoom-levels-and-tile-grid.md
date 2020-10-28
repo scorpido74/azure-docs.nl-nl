@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 618c8597f7f10ce669bb340b9f5ea4c96f5c1d3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d15f78c19b5f142f8879d54a1ae32e229ce7f50
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825298"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896579"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Zoomniveaus en tegelraster
 
@@ -74,7 +74,7 @@ var mapWidth = tileSize * Math.pow(2, zoom);
 var mapHeight = mapWidth;
 ```
 
-Omdat de breedte en hoogte van de kaart verschillen voor elk zoom niveau, zijn de pixel coördinaten. De pixel in de linkerbovenhoek van de kaart heeft altijd pixel coördinaten (0, 0). De pixel in de rechter benedenhoek van de kaart heeft pixel coördinaten *(breedte-1, hoogte-1)* of verwijst naar de vergelijkingen in de vorige sectie *(tileSize \* 2<sup>Zoom</sup>– 1, tileSize \* 2<sup>Zoom</sup>-1)*. Wanneer u bijvoorbeeld 512 vier Kante tegels op niveau 2 gebruikt, variëren de pixel coördinaten van (0, 0) tot (2047, 2047), als volgt:
+Omdat de breedte en hoogte van de kaart verschillen voor elk zoom niveau, zijn de pixel coördinaten. De pixel in de linkerbovenhoek van de kaart heeft altijd pixel coördinaten (0, 0). De pixel in de rechter benedenhoek van de kaart heeft pixel coördinaten *(breedte-1, hoogte-1)* of verwijst naar de vergelijkingen in de vorige sectie *(tileSize \* 2 <sup>Zoom</sup>– 1, tileSize \* 2 <sup>Zoom</sup>-1)* . Wanneer u bijvoorbeeld 512 vier Kante tegels op niveau 2 gebruikt, variëren de pixel coördinaten van (0, 0) tot (2047, 2047), als volgt:
 
 :::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-width-height.png" alt-text="Tegel voor wereld kaart":::
 
@@ -100,7 +100,7 @@ var numberOfTilesWide = Math.pow(2, zoom);
 var numberOfTilesHigh = numberOfTilesWide;
 ```
 
-Elke tegel krijgt XY-coördinaten, variërend van (0,0) in de linkerbovenhoek tot *(2<sup>Zoom</sup>– 1, 2<sup>Zoom</sup>– 1)* in de rechter benedenhoek. Zo is bij zoom niveau 3 de tegel coördinaten variëren van (0, 0) tot (7, 7) als volgt:
+Elke tegel krijgt XY-coördinaten, variërend van (0,0) in de linkerbovenhoek tot *(2 <sup>Zoom</sup>– 1, 2 <sup>Zoom</sup>– 1)* in de rechter benedenhoek. Zo is bij zoom niveau 3 de tegel coördinaten variëren van (0, 0) tot (7, 7) als volgt:
 
 :::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png" alt-text="Tegel voor wereld kaart":::
 
@@ -933,20 +933,20 @@ module AzureMaps {
 
 > [!NOTE]
 > De besturings elementen voor interactieve kaarten in de Azure Maps SDK hebben hulp functies voor het converteren tussen georuimtelijke posities en View Port pixels. 
-> - [Web-SDK: berekeningen van pixels en posities toewijzen](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
+> - [Web-SDK: berekeningen van pixels en posities toewijzen](/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Rechtstreeks toegang kaart tegels van de Azure Maps REST-services:
 
 > [!div class="nextstepaction"]
-> [Kaart tegels ophalen](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+> [Kaart tegels ophalen](/rest/api/maps/render/getmaptile)
 
 > [!div class="nextstepaction"]
-> [Tegels van verkeers stromen ophalen](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficflowtile)
+> [Tegels van verkeers stromen ophalen](/rest/api/maps/traffic/gettrafficflowtile)
 
 > [!div class="nextstepaction"]
-> [Tegels voor verkeers incidenten ophalen](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidenttile)
+> [Tegels voor verkeers incidenten ophalen](/rest/api/maps/traffic/gettrafficincidenttile)
 
 Meer informatie over georuimtelijke concepten:
 

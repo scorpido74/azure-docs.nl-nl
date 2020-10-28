@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4a50a9d6d4a485f7d8e63adb9ae5032f49edc261
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3404c02dc159309ed1e9fcd6f9f6bb593fc7552
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310353"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896936"
 ---
 # <a name="azure-maps-supported-built-in-map-styles"></a>Azure Maps ondersteunde ingebouwde kaart stijlen
 
@@ -27,8 +27,8 @@ Een **weg** kaart is een standaard kaart met wegen. Het bevat ook natuurlijke en
 
 **Toepasselijke Api's:**
 
-* [Kaart afbeelding](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [Kaart tegel](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* [Kaart afbeelding](/rest/api/maps/render/getmapimage)
+* [Kaart tegel](/rest/api/maps/render/getmaptile)
 * Web SDK-kaart besturings element
 * Besturings element Android-kaart
 * Power BI-visual
@@ -52,7 +52,7 @@ De **satelliet** stijl is een combi natie van satelliet-en lucht foto beelden.
 
 **Toepasselijke Api's:**
 
-* [Satelliet tegel](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
+* [Satelliet tegel](/rest/api/maps/render/getmapimagerytilepreview)
 * Web SDK-kaart besturings element
 * Besturings element Android-kaart
 * Power BI-visual
@@ -77,8 +77,8 @@ het **donkere grijs tinten** is een donkere versie van het kaart type weg.
 
 **Toepasselijke Api's:**
 
-* [Kaart afbeelding](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [Kaart tegel](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* [Kaart afbeelding](/rest/api/maps/render/getmapimage)
+* [Kaart tegel](/rest/api/maps/render/getmaptile)
 * Web SDK-kaart besturings element
 * Besturings element Android-kaart
 * Power BI-visual
@@ -114,7 +114,7 @@ het **donkere grijs tinten** is een donkere versie van het kaart type weg.
 
 **Toepasselijke Api's:**
 
-* [Kaart tegel](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* [Kaart tegel](/rest/api/maps/render/getmaptile)
 * Web SDK-kaart besturings element
 * Besturings element Android-kaart
 * Power BI-visual
@@ -134,4 +134,4 @@ het **donkere grijs tinten** is een donkere versie van het kaart type weg.
 
 Meer informatie over het instellen van een kaart stijl in Azure Maps:
 
-[Een kaartstijl kiezen](https://docs.microsoft.com/azure/azure-maps/choose-map-style)
+[Een kaartstijl kiezen](./choose-map-style.md)

@@ -1,15 +1,16 @@
 ---
 title: Netwerkopties van Azure Functions
 description: Een overzicht van alle beschik bare netwerk opties in Azure Functions.
+author: jeffhollan
 ms.topic: conceptual
-ms.date: 4/11/2019
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 271730e57a2d7ef8324420744b4bcd088b9809cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/27/2020
+ms.author: jehollan
+ms.openlocfilehash: 3a44efac274bf5c5d6cfc6a0f044ee89b479cbe6
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530082"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897072"
 ---
 # <a name="azure-functions-networking-options"></a>Netwerkopties van Azure Functions
 
@@ -66,11 +67,30 @@ Als u een hoger beveiligings niveau wilt bieden, kunt u een aantal Azure-Service
 
 Zie [service-eind punten voor virtueel netwerk](../virtual-network/virtual-network-service-endpoints-overview.md)voor meer informatie.
 
-## <a name="restrict-your-storage-account-to-a-virtual-network"></a>Uw opslag account beperken tot een virtueel netwerk
+## <a name="restrict-your-storage-account-to-a-virtual-network-preview"></a>Uw opslag account beperken tot een virtueel netwerk (preview-versie)
 
-Wanneer u een functie-app maakt, moet u een Azure Storage-account voor algemeen gebruik maken of koppelen dat ondersteuning biedt voor blob-, wachtrij-en tabel opslag. U kunt momenteel geen beperkingen voor virtuele netwerken gebruiken voor dit account. Als u een service-eind punt voor een virtueel netwerk configureert op het opslag account dat u gebruikt voor uw functie-app, wordt de app door die configuratie verbroken.
+Wanneer u een functie-app maakt, moet u een Azure Storage-account voor algemeen gebruik maken of koppelen dat ondersteuning biedt voor blob-, wachtrij-en tabel opslag.  U kunt dit opslag account vervangen door een abonnement dat is beveiligd met Service-eind punten of een persoonlijk eind punt.  Deze preview-functie werkt momenteel alleen met Windows Premium-abonnementen in Europa-west.  Een functie instellen met een opslag account die is beperkt tot een particulier netwerk:
 
-Zie [vereisten voor opslag accounts](./functions-create-function-app-portal.md#storage-account-requirements)voor meer informatie.
+> [!NOTE]
+> Het beperken van het opslag account is momenteel alleen geschikt voor Premium-functies met behulp van Windows in Europa-west
+
+1. Maak een functie met een opslag account waarvoor geen service-eind punten zijn ingeschakeld.
+1. Configureer de functie om verbinding te maken met uw virtuele netwerk.
+1. Een ander opslag account maken of configureren.  Dit is het opslag account dat wordt beveiligd met Service-eind punten en om onze functie te verbinden.
+1. [Maak een bestands share](../storage/files/storage-how-to-create-file-share.md#create-file-share) in het account voor beveiligde opslag.
+1. Schakel de service-eind punten of het persoonlijke eind punt in voor het opslag account.  
+    * Zorg ervoor dat u het subnet dat is toegewezen aan uw functie-apps, inschakelt als u een service-eind punt gebruikt.
+    * Zorg ervoor dat u een DNS-record maakt en uw app zodanig configureert dat deze [werkt met persoonlijke eindpunt](#azure-dns-private-zones) eindpunten als u een privé-eind punt gebruikt.  Het opslag account heeft een persoonlijk eind punt nodig voor de `file` en `blob` subresources.  Als u bepaalde functies gebruikt, zoals Durable Functions hebt u `queue` ook `table` toegang nodig via een verbinding met een privé-eind punt.
+1. Beschrijving Kopieer het bestand en de blob-inhoud van het functie-app-opslag account naar het beveiligde opslag account en de bestands share.
+1. Kopieer de connection string voor dit opslag account.
+1. Werk de **Toepassings instellingen** onder **configuratie** voor de functie-app als volgt bij:
+    - `AzureWebJobsStorage` de connection string voor het account voor beveiligde opslag.
+    - `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` de connection string voor het account voor beveiligde opslag.
+    - `WEBSITE_CONTENTSHARE` de naam van de bestands share die is gemaakt in het account voor beveiligde opslag.
+    - Maak een nieuwe instelling met de naam `WEBSITE_CONTENTOVERVNET` en waarde van `1` .
+1. Sla de toepassings instellingen op.  
+
+De functie-app wordt opnieuw gestart en wordt nu verbonden met een beveiligd opslag account.
 
 ## <a name="use-key-vault-references"></a>Key Vault-referenties gebruiken
 
@@ -87,7 +107,7 @@ Op dit moment kunt u niet-HTTP-trigger functies vanuit een virtueel netwerk op t
 
 ### <a name="premium-plan-with-virtual-network-triggers"></a>Premium-abonnement met virtuele netwerk triggers
 
-Wanneer u een Premium-abonnement uitvoert, kunt u niet-HTTP-trigger functies verbinden met services die binnen een virtueel netwerk worden uitgevoerd. Hiervoor moet u ondersteuning voor virtuele netwerk triggers inschakelen voor uw functie-app. De instelling **runtime schaal bewaking** vindt u in de [Azure Portal](https://portal.azure.com) onder runtime-instellingen voor de **configuratie**-  >  **functie**.
+Wanneer u een Premium-abonnement uitvoert, kunt u niet-HTTP-trigger functies verbinden met services die binnen een virtueel netwerk worden uitgevoerd. Hiervoor moet u ondersteuning voor virtuele netwerk triggers inschakelen voor uw functie-app. De instelling **runtime schaal bewaking** vindt u in de [Azure Portal](https://portal.azure.com) onder runtime-instellingen voor de **configuratie** -  >  **functie** .
 
 :::image type="content" source="media/functions-networking-options/virtual-network-trigger-toggle.png" alt-text="VNETToggle":::
 
@@ -99,7 +119,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 Virtuele netwerk triggers worden ondersteund in versie 2. x en hoger van de functions-runtime. De volgende niet-HTTP-trigger typen worden ondersteund.
 
-| Toestelnummer | Minimale versie |
+| Extensie | Minimale versie |
 |-----------|---------| 
 |[Micro soft. Azure. webjobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/) | 3.0.10 of hoger |
 |[Micro soft. Azure. webjobs. Extensions. Event hubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs)| 4.1.0 of hoger|
@@ -136,8 +156,8 @@ Wanneer u een functie-app integreert in een Premium-abonnement of een App Servic
 ## <a name="automation"></a>Automation
 Met de volgende Api's kunt u via programma code regionale virtuele netwerk integraties beheren:
 
-+ **Azure cli**: gebruik de [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) opdrachten om regionale virtuele netwerk integraties toe te voegen, weer te geven of te verwijderen.  
-+ **Arm-sjablonen**: regionale integratie van virtuele netwerken kan worden ingeschakeld met behulp van een Azure Resource Manager sjabloon. Voor een volledig voor beeld raadpleegt u [de Quick Start-sjabloon van deze functies](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/).
++ **Azure cli** : gebruik de [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) opdrachten om regionale virtuele netwerk integraties toe te voegen, weer te geven of te verwijderen.  
++ **Arm-sjablonen** : regionale integratie van virtuele netwerken kan worden ingeschakeld met behulp van een Azure Resource Manager sjabloon. Voor een volledig voor beeld raadpleegt u [de Quick Start-sjabloon van deze functies](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/).
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 

@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f72c255ddac1889131234fefd7d6b014b453d417
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 4f9cd421224ad134b4df853b06b3bc34333a0613
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441722"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896103"
 ---
 # <a name="self-service-for-azure-ad-b2b-collaboration-sign-up"></a>Self-service voor Azure AD B2B-samenwerkings aanmelding
 
@@ -33,5 +33,5 @@ Organisaties kunnen de [API voor Microsoft Graph uitnodigingen](/graph/api/resou
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Wat is Azure AD B2B-samenwerking?](what-is-b2b.md)
-* [Licentie voor Azure AD B2B-samenwerking](licensing-guidance.md)
+* [Prijzen van externe identiteiten](external-identities-pricing.md)
 * [Veelgestelde vragen over Azure Active Directory B2B-samenwerking](faq.md)

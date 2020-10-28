@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 1dc35b596d73f713aea99ea14ddb0ff8cbc8d203
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b0b2cbf3fc637d7ad53be911c0171f6bb971bc6
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84688617"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896120"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Een virtuele Linux-machine maken met versneld netwerken met behulp van Azure CLI
 
@@ -58,7 +58,7 @@ De volgende distributies worden ondersteund uit het vak van de Azure-galerie:
 ### <a name="supported-vm-instances"></a>Ondersteunde VM-exemplaren
 Versnelde netwerken worden ondersteund in de meeste algemene doel stellingen en met Compute geoptimaliseerde exemplaar grootten met twee of meer Vcpu's.  Deze ondersteunde reeksen zijn: D/DSv2 en F/FS
 
-Op instanties die HyperThreading ondersteunen, wordt versneld netwerken ondersteund op VM-exemplaren met vier of meer Vcpu's. Ondersteunde reeksen zijn: D/Dsv3, D/Dsv4, E/Esv3, EA/Easv4, Fsv2, Lsv2, MS/MMS en MS/Mmsv2.
+Op instanties die HyperThreading ondersteunen, wordt versneld netwerken ondersteund op VM-exemplaren met vier of meer Vcpu's. Ondersteunde reeksen zijn: D/Dsv3, D/Dsv4, DD/Ddv4, da/Dasv4, E/Esv3, E/Esv4, Ed/Edsv4, EA/Easv4, Fsv2, Lsv2, MS/MMS en MS/Mmsv2.
 
 Zie [Linux VM-grootten](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)voor meer informatie over VM-exemplaren.
 
@@ -78,7 +78,7 @@ Virtuele machines (klassiek) kunnen niet worden geïmplementeerd met versneld ne
 
 ## <a name="create-a-linux-vm-with-azure-accelerated-networking"></a>Een virtuele Linux-machine maken met een versneld Azure-netwerk
 ## <a name="portal-creation"></a>Portal maken
-Hoewel dit artikel stappen bevat voor het maken van een virtuele machine met versneld netwerken met behulp van de Azure CLI, kunt u ook [een virtuele machine maken met versneld netwerken met behulp van de Azure Portal](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Wanneer u een virtuele machine in de portal maakt, kiest u op de Blade **een virtuele machine maken** het tabblad **netwerk** .  Op dit tabblad is er een optie voor **versneld netwerken**.  Als u een [ondersteund besturings systeem](#supported-operating-systems) en een [VM-grootte](#supported-vm-instances)hebt gekozen, wordt deze optie automatisch ingevuld op ' aan '.  Als dat niet het geval is, wordt de optie ' uit ' gevuld voor versneld netwerken en krijgt de gebruiker een reden waarom deze niet is ingeschakeld.   
+Hoewel dit artikel stappen bevat voor het maken van een virtuele machine met versneld netwerken met behulp van de Azure CLI, kunt u ook [een virtuele machine maken met versneld netwerken met behulp van de Azure Portal](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Wanneer u een virtuele machine in de portal maakt, kiest u op de Blade **een virtuele machine maken** het tabblad **netwerk** .  Op dit tabblad is er een optie voor **versneld netwerken** .  Als u een [ondersteund besturings systeem](#supported-operating-systems) en een [VM-grootte](#supported-vm-instances)hebt gekozen, wordt deze optie automatisch ingevuld op ' aan '.  Als dat niet het geval is, wordt de optie ' uit ' gevuld voor versneld netwerken en krijgt de gebruiker een reden waarom deze niet is ingeschakeld.   
 
 * *Opmerking:* Alleen ondersteunde besturings systemen kunnen worden ingeschakeld via de portal.  Als u een aangepaste installatie kopie gebruikt en uw installatie kopie versneld netwerken ondersteunt, maakt u uw virtuele machine met CLI of Power shell. 
 
@@ -87,7 +87,7 @@ Nadat de virtuele machine is gemaakt, kunt u de versnelde netwerken bevestigen d
 ## <a name="cli-creation"></a>CLI maken
 ### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 
-Installeer de nieuwste [Azure cli](/cli/azure/install-azure-cli) en meld u aan bij een Azure-account met de opdracht [AZ login](/cli/azure/reference-index). Vervang in de volgende voor beelden voorbeeld parameter namen door uw eigen waarden. Voor beelden van parameter namen zijn *myResourceGroup*, *myNic*en *myVm*.
+Installeer de nieuwste [Azure cli](/cli/azure/install-azure-cli) en meld u aan bij een Azure-account met de opdracht [AZ login](/cli/azure/reference-index). Vervang in de volgende voor beelden voorbeeld parameter namen door uw eigen waarden. Voor beelden van parameter namen zijn *myResourceGroup* , *myNic* en *myVm* .
 
 Maak een resourcegroep maken met [az group create](/cli/azure/group). In het volgende voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt op de locatie *middenus* :
 
@@ -160,7 +160,7 @@ az network nic create \
 ### <a name="create-a-vm-and-attach-the-nic"></a>Een virtuele machine maken en de NIC koppelen
 Wanneer u de virtuele machine maakt, geeft u de NIC op die u hebt gemaakt met `--nics` . Selecteer een grootte en distributie die worden vermeld in [Linux versneld netwerken](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview). 
 
-Maak een VM met [az vm create](/cli/azure/vm). In het volgende voor beeld wordt een VM gemaakt met de naam *myVM* met de UbuntuLTS-installatie kopie en een grootte die ondersteuning biedt voor versneld netwerken (*Standard_DS4_v2*):
+Maak een VM met [az vm create](/cli/azure/vm). In het volgende voor beeld wordt een VM gemaakt met de naam *myVM* met de UbuntuLTS-installatie kopie en een grootte die ondersteuning biedt voor versneld netwerken ( *Standard_DS4_v2* ):
 
 ```azurecli
 az vm create \
@@ -175,7 +175,7 @@ az vm create \
 
 Zie [Linux VM-grootten](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)voor een lijst met alle VM-grootten en-kenmerken.
 
-Zodra de VM is gemaakt, wordt de uitvoer vergelijkbaar met de volgende voorbeeld uitvoer geretourneerd. Let op het **openbare IP-adres**. Dit adres wordt gebruikt voor toegang tot de virtuele machine in volgende stappen.
+Zodra de VM is gemaakt, wordt de uitvoer vergelijkbaar met de volgende voorbeeld uitvoer geretourneerd. Let op het **openbare IP-adres** . Dit adres wordt gebruikt voor toegang tot de virtuele machine in volgende stappen.
 
 ```output
 {
@@ -200,10 +200,10 @@ ssh azureuser@<your-public-ip-address>
 
 Voer vanuit de bash-shell in `uname -r` en bevestig dat de versie van de kernel een van de volgende versies is, of hoger:
 
-* **Ubuntu 16,04**: 4.11.0-1013
-* **SLES SP3**: 4.4.92-6.18
-* **RHEL**: 7.4.2017120423
-* **CentOS**: 7.4.20171206
+* **Ubuntu 16,04** : 4.11.0-1013
+* **SLES SP3** : 4.4.92-6.18
+* **RHEL** : 7.4.2017120423
+* **CentOS** : 7.4.20171206
 
 
 Bevestig dat het Mellanox VF-apparaat wordt blootgesteld aan de virtuele machine met de `lspci` opdracht. De geretourneerde uitvoer is vergelijkbaar met de volgende uitvoer:
@@ -230,7 +230,7 @@ Versneld netwerken zijn nu ingeschakeld voor uw VM.
 
 ## <a name="handle-dynamic-binding-and-revocation-of-virtual-function"></a>Dynamische binding en het intrekken van de virtuele functie verwerken 
 Toepassingen moeten worden uitgevoerd via de synthetische NIC die wordt weer gegeven in de VM. Als de toepassing rechtstreeks wordt uitgevoerd via de VF-NIC, worden niet **alle** pakketten ontvangen die bestemd zijn voor de virtuele machine, omdat sommige pakketten via de synthetische interface worden weer gegeven.
-Als u een toepassing uitvoert via de synthetische NIC, zorgt dit ervoor dat de toepassing **alle** pakketten ontvangt die ernaar zijn bestemd. Het zorgt er ook voor dat de toepassing blijft werken, zelfs als het VF wordt ingetrokken wanneer de host wordt verwerkt. Toepassingen die zijn gebonden aan de synthetische NIC, zijn **verplicht** voor alle toepassingen die gebruikmaken van **versneld netwerken**.
+Als u een toepassing uitvoert via de synthetische NIC, zorgt dit ervoor dat de toepassing **alle** pakketten ontvangt die ernaar zijn bestemd. Het zorgt er ook voor dat de toepassing blijft werken, zelfs als het VF wordt ingetrokken wanneer de host wordt verwerkt. Toepassingen die zijn gebonden aan de synthetische NIC, zijn **verplicht** voor alle toepassingen die gebruikmaken van **versneld netwerken** .
 
 ## <a name="enable-accelerated-networking-on-existing-vms"></a>Versneld netwerken op bestaande Vm's inschakelen
 Als u een VM hebt gemaakt zonder versneld netwerk, is het mogelijk om deze functie in te scha kelen op een bestaande virtuele machine.  De virtuele machine moet versneld netwerken ondersteunen door aan de volgende vereisten te voldoen die ook hierboven worden beschreven:

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 10969e20cd7ae71cade230f6643a27d5d940ceaa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: acd5f06a5383308ce736f2860810ebee7e5bce28
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311271"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897106"
 ---
 # <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>Een symbool laag aan een kaart toevoegen met Azure Maps Android SDK
 
@@ -21,13 +21,13 @@ Dit artikel laat u zien hoe u punt gegevens van een gegevens bron kunt weer geve
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u de stappen in dit artikel volledig wilt volgen, moet u [Azure Maps ANDROID SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) installeren om een kaart te laden.
+Als u de stappen in dit artikel volledig wilt volgen, moet u [Azure Maps ANDROID SDK](./how-to-use-android-map-control-library.md) installeren om een kaart te laden.
 
 ## <a name="add-a-symbol-layer"></a>Een symboollaag toevoegen
 
 Volg de onderstaande stappen om een markering op de kaart toe te voegen met behulp van de Symbol-laag:
 
-1. **res**  >  **layout**  >  U kunt de indeling van de res bewerken**activity_main.xml** zodat deze eruitziet als de volgende XML:
+1. **res**  >  **layout**  >  U kunt de indeling van de res bewerken **activity_main.xml** zodat deze eruitziet als de volgende XML:
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -180,7 +180,7 @@ Als u de toepassing uitvoert, moet u op dit punt een markering op de kaart zien,
 Als u meer dingen wilt toevoegen aan uw kaart, raadpleegt u:
 
 > [!div class="nextstepaction"]
-> [Vormen toevoegen aan een Android-kaart](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)
+> [Vormen toevoegen aan een Android-kaart](./how-to-add-shapes-to-android-map.md)
 
 > [!div class="nextstepaction"]
 > [Functie-informatie weergeven](display-feature-information-android.md)

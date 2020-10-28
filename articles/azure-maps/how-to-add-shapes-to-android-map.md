@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6ff64f975550a0222fd56325115bc98976fb038a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04773ef279717c7728cf1b07761c6e4c0726a877
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311305"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897123"
 ---
 # <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>Een shape aan een kaart toevoegen met Azure Maps Android SDK
 
@@ -21,12 +21,12 @@ Dit artikel laat u zien hoe u met Azure Maps Android-SDK shapes op een kaart kun
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om het proces in dit artikel te volt ooien, moet u [Azure Maps ANDROID SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) installeren om een kaart te laden.
+Om het proces in dit artikel te volt ooien, moet u [Azure Maps ANDROID SDK](./how-to-use-android-map-control-library.md) installeren om een kaart te laden.
 
 
 ## <a name="add-a-line-to-the-map"></a>Een lijn toevoegen aan de kaart
 
-U kunt een lijn toevoegen aan de kaart met behulp van een **laag**. Volg de onderstaande stappen om een regel toe te voegen aan de kaart.
+U kunt een lijn toevoegen aan de kaart met behulp van een **laag** . Volg de onderstaande stappen om een regel toe te voegen aan de kaart.
 
 1. Wijzig de **indeling van res > > activity_main.xml** zodat deze er als volgt uitziet:
 

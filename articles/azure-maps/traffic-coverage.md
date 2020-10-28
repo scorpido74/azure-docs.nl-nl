@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 3b1b86e47164ce4c1a13a3dfe037c0ecc659fbee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11aa0eb07ed9cb3a1a785b3155b832f8b447708f
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310030"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896868"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Dekking van Azure Maps verkeer
 
-Azure Maps biedt uitgebreide verkeers informatie in de vorm van verkeers **stromen** en **incidenten**. Deze gegevens kunnen worden gevisualiseerd op kaarten of worden gebruikt voor het genereren van slimmere routes die in de praktijk omstandigheden in handen zijn.
+Azure Maps biedt uitgebreide verkeers informatie in de vorm van verkeers **stromen** en **incidenten** . Deze gegevens kunnen worden gevisualiseerd op kaarten of worden gebruikt voor het genereren van slimmere routes die in de praktijk omstandigheden in handen zijn.
 
 Kaarten hebben echter niet hetzelfde niveau van informatie en nauw keurigheid voor alle landen of regio's. De volgende tabel bevat informatie over wat voor soort verkeers gegevens u kunt aanvragen vanuit elk land of elke regio: 
 
@@ -135,4 +135,4 @@ Kaarten hebben echter niet hetzelfde niveau van informatie en nauw keurigheid vo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de pagina's met [verkeers](https://docs.microsoft.com/rest/api/maps/traffic) referenties voor meer informatie over Azure Maps verkeers gegevens.
+Zie de pagina's met [verkeers](/rest/api/maps/traffic) referenties voor meer informatie over Azure Maps verkeers gegevens.

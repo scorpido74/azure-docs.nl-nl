@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 ms.custom: references_regions
 manager: philmea
-ms.openlocfilehash: 5383309143302e0f3fb2052b47e4c497d9a21bf8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61e529e44f48343027457f18ba503e4bbb5930f1
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90976887"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896613"
 ---
 # <a name="azure-maps-weather-coverage"></a>Weer dekking Azure Maps
 
-In dit artikel vindt u informatie over de dekking van Azure Maps [weer Services](https://aka.ms/AzureMapsWeatherService). Azure Maps weer gegevens Services retourneert details zoals radar tegels, huidige weers omstandigheden, weers verwachtingen en het weers bericht langs een route.
+In dit artikel vindt u informatie over de dekking van Azure Maps [weer Services](/rest/api/maps/weather). Azure Maps weer gegevens Services retourneert details zoals radar tegels, huidige weers omstandigheden, weers verwachtingen en het weers bericht langs een route.
 
 Azure Maps heeft niet hetzelfde niveau van informatie en nauw keurigheid voor alle landen en regio's.
 
@@ -299,4 +299,4 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Turkije                 | ✓ |   | | ✓| 
 | Oekraïne                | ✓ |   | | ✓| 
 | Verenigd Koninkrijk         | ✓ | ✓ | ✓| ✓| 
-| Vaticaanstad           | ✓ |   |✓ | ✓| 
+| Vaticaanstad           | ✓ |   |✓ | ✓|

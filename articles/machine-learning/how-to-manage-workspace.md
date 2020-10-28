@@ -10,15 +10,14 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 733a5c899e72809d979dfeeb60e4157c0d587bcf
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 9abfbe03a4192411a3790bb6d6e488d674c13109
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92633702"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897157"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Azure Machine Learning-werk ruimten maken en beheren 
-
 
 In dit artikel maakt, bekijkt en verwijdert u [**Azure machine learning-werk ruimten**](concept-workspace.md) voor [Azure machine learning](overview-what-is-azure-ml.md), met behulp van de Azure portal of de [SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true)
 
@@ -33,48 +32,82 @@ Als uw behoeften veranderen of vereisten voor automatisering verhogen, kunt u oo
 
 # <a name="python"></a>[Python](#tab/python)
 
-Voor dit eerste voor beeld is slechts minimale specificatie vereist, en alle afhankelijke resources en de resource groep worden automatisch gemaakt.
+* **Standaard specificatie.** Standaard worden afhankelijke resources en de resource groep automatisch gemaakt. Met deze code wordt een werk ruimte gemaakt met de naam `myworkspace` en een resource groep met de naam `myresourcegroup` in `eastus2` .
+    
+    ```python
+    from azureml.core import Workspace
+    
+    ws = Workspace.create(name='myworkspace',
+                   subscription_id='<azure-subscription-id>',
+                   resource_group='myresourcegroup',
+                   create_resource_group=True,
+                   location='eastus2'
+                   )
+    ```
+    Stel `create_resource_group` deze waarde in op ONWAAR als u een bestaande Azure-resource groep hebt die u wilt gebruiken voor de werk ruimte.
 
-```python
-from azureml.core import Workspace
-   ws = Workspace.create(name='myworkspace',
-               subscription_id='<azure-subscription-id>',
-               resource_group='myresourcegroup',
-               create_resource_group=True,
-               location='eastus2'
-               )
-```
-Stel `create_resource_group` deze waarde in op ONWAAR als u een bestaande Azure-resource groep hebt die u wilt gebruiken voor de werk ruimte.
+* <a name="create-multi-tenant"></a>**Meerdere tenants.**  Als u meerdere accounts hebt, voegt u de Tenant-ID toe van de Azure Active Directory die u wilt gebruiken.  Zoek uw Tenant-ID uit de [Azure Portal](https://portal.azure.com) onder **Azure Active Directory, externe identiteiten** .
 
-U kunt ook een werk ruimte maken die gebruikmaakt van bestaande Azure-resources met de Azure-Resource-ID-indeling. Zoek de specifieke Azure-resource-Id's in de Azure Portal of met de SDK. In dit voor beeld wordt ervan uitgegaan dat de resource groep, het opslag account, de sleutel kluis, app Insights en container Registry al bestaan.
+    ```python
+    from azureml.core.authentication import InteractiveLoginAuthentication
+    from azureml.core import Workspace
+    
+    interactive_auth = InteractiveLoginAuthentication(tenant_id="my-tenant-id")
+    ws = Workspace.create(name='myworkspace',
+                subscription_id='<azure-subscription-id>',
+                resource_group='myresourcegroup',
+                create_resource_group=True,
+                location='eastus2',
+                auth=interactive_auth
+                )
+    ```
 
-```python
-import os
+* **[Soevereine Cloud](reference-machine-learning-cloud-parity.md)** . U hebt extra code nodig om u te verifiëren bij Azure als u in een soevereine Cloud werkt.
+
+    ```python
+    from azureml.core.authentication import InteractiveLoginAuthentication
+    from azureml.core import Workspace
+    
+    interactive_auth = InteractiveLoginAuthentication(cloud="<cloud name>") # for example, cloud="AzureUSGovernment"
+    ws = Workspace.create(name='myworkspace',
+                subscription_id='<azure-subscription-id>',
+                resource_group='myresourcegroup',
+                create_resource_group=True,
+                location='eastus2',
+                auth=interactive_auth
+                )
+    ```
+
+* **Gebruik bestaande Azure-resources** .  U kunt ook een werk ruimte maken die gebruikmaakt van bestaande Azure-resources met de Azure-Resource-ID-indeling. Zoek de specifieke Azure-resource-Id's in de Azure Portal of met de SDK. In dit voor beeld wordt ervan uitgegaan dat de resource groep, het opslag account, de sleutel kluis, app Insights en container Registry al bestaan.
+
+   ```python
+   import os
    from azureml.core import Workspace
    from azureml.core.authentication import ServicePrincipalAuthentication
 
    service_principal_password = os.environ.get("AZUREML_PASSWORD")
 
    service_principal_auth = ServicePrincipalAuthentication(
-       tenant_id="<tenant-id>",
-       username="<application-id>",
-       password=service_principal_password)
+      tenant_id="<tenant-id>",
+      username="<application-id>",
+      password=service_principal_password)
 
-   ws = Workspace.create(name='myworkspace',
-                         auth=service_principal_auth,
-                         subscription_id='<azure-subscription-id>',
-                         resource_group='myresourcegroup',
-                         create_resource_group=False,
-                         location='eastus2',
-                         friendly_name='My workspace',
-                         storage_account='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.storage/storageaccounts/mystorageaccount',
-                         key_vault='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.keyvault/vaults/mykeyvault',
-                         app_insights='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.insights/components/myappinsights',
-                         container_registry='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.containerregistry/registries/mycontainerregistry',
-                         exist_ok=False)
-```
+                        auth=service_principal_auth,
+                             subscription_id='<azure-subscription-id>',
+                             resource_group='myresourcegroup',
+                             create_resource_group=False,
+                             location='eastus2',
+                             friendly_name='My workspace',
+                             storage_account='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.storage/storageaccounts/mystorageaccount',
+                             key_vault='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.keyvault/vaults/mykeyvault',
+                             app_insights='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.insights/components/myappinsights',
+                             container_registry='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.containerregistry/registries/mycontainerregistry',
+                             exist_ok=False)
+   ```
 
-Zie [referentie voor werk ruimte SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true) voor meer informatie
+Zie Naslag informatie over de [werk ruimte-SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true).
+
+Als u problemen ondervindt bij het openen van uw abonnement, raadpleegt u [verificatie instellen voor Azure machine learning resources en werk stromen](how-to-setup-authentication.md), evenals de [verificatie in azure machine learning](https://aka.ms/aml-notebook-auth) notebook.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -237,6 +270,37 @@ Als u van plan bent om code te gebruiken in uw lokale omgeving die verwijst naar
 
 Plaats het bestand in de mapstructuur met uw python-scripts of Jupyter-notebooks. Deze kan zich in dezelfde map bevindt, in een submap met de naam *. azureml* of in een bovenliggende map. Wanneer u een reken instantie maakt, wordt dit bestand voor u toegevoegd aan de juiste map op de virtuele machine.
 
+## <a name="connect-to-a-workspace"></a>Verbinding maken met een werkruimte
+
+In uw Python-code maakt u een werkruimte object om verbinding te maken met uw werk ruimte.  Met deze code wordt de inhoud van het configuratie bestand gelezen om uw werk ruimte te vinden.  U wordt gevraagd om u aan te melden als u nog niet bent geverifieerd.
+
+```python
+from azureml.core import Workspace
+
+ws = Workspace.from_config()
+```
+
+* <a name="connect-multi-tenant"></a>**Meerdere tenants.**  Als u meerdere accounts hebt, voegt u de Tenant-ID toe van de Azure Active Directory die u wilt gebruiken.  Zoek uw Tenant-ID uit de [Azure Portal](https://portal.azure.com) onder **Azure Active Directory, externe identiteiten** .
+
+    ```python
+    from azureml.core.authentication import InteractiveLoginAuthentication
+    from azureml.core import Workspace
+    
+    interactive_auth = InteractiveLoginAuthentication(tenant_id="my-tenant-id")
+    ws = Workspace.from_config(auth=interactive_auth)
+    ```
+
+* **[Soevereine Cloud](reference-machine-learning-cloud-parity.md)** . U hebt extra code nodig om u te verifiëren bij Azure als u in een soevereine Cloud werkt.
+
+    ```python
+    from azureml.core.authentication import InteractiveLoginAuthentication
+    from azureml.core import Workspace
+    
+    interactive_auth = InteractiveLoginAuthentication(cloud="<cloud name>") # for example, cloud="AzureUSGovernment"
+    ws = Workspace.from_config(auth=interactive_auth)
+    ```
+    
+Als u problemen ondervindt bij het openen van uw abonnement, raadpleegt u [verificatie instellen voor Azure machine learning resources en werk stromen](how-to-setup-authentication.md), evenals de [verificatie in azure machine learning](https://aka.ms/aml-notebook-auth) notebook.
 
 ## <a name="find-a-workspace"></a><a name="view"></a>Een werk ruimte zoeken
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 905085d5b0787697d6094bd1337420ee8ae61d90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: faa5e3e3177e18787a73c6b4c43aa04b6bc760b7
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311084"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897089"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Een tegel laag aan een kaart toevoegen met behulp van de Azure Maps Android SDK
 
@@ -39,7 +39,7 @@ De tegel-URL die wordt door gegeven aan een tegel laag moet een HTTP/HTTPS-URL z
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om het proces in dit artikel te volt ooien, moet u [Azure Maps ANDROID SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) installeren om een kaart te laden.
+Om het proces in dit artikel te volt ooien, moet u [Azure Maps ANDROID SDK](./how-to-use-android-map-control-library.md) installeren om een kaart te laden.
 
 
 ## <a name="add-a-tile-layer-to-the-map"></a>Een tegel laag aan de kaart toevoegen
@@ -179,4 +179,4 @@ Als u de toepassing nu uitvoert, ziet u een regel op de kaart zoals hieronder wo
 Raadpleeg het volgende artikel voor meer informatie over manieren om kaart stijlen in te stellen
 
 > [!div class="nextstepaction"]
-> [Kaart stijlen wijzigen in Android-kaarten](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
+> [Kaartstijlen wijzigen in Android-kaarten](./set-android-map-styles.md)

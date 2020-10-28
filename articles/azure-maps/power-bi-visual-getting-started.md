@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: aecda5ed9b87ba2345a52923a574919d6a08594f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c89922aef1ba802ee694aaed9bae2ac2dd273ee
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362668"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896239"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>Aan de slag met de Azure Maps Power BI Visual
 
-<Token>**van toepassing op:** ![ Groen vinkje. ](media/power-bi-visual/yes.png) Power BI-service voor ***klanten*** ![ groen vinkje. ](media/power-bi-visual/yes.png) Power BI-service voor ontwerpers &-ontwikkel aars ![ groen vinkje. ](media/power-bi-visual/yes.png) Power BI Desktop ![ X geeft Nee aan. ](media/power-bi-visual/no.png) Er is een Pro-of Premium-licentie vereist </Token>
+<Token>**van toepassing op:** ![ Groen vinkje. ](media/power-bi-visual/yes.png) Power BI-service voor * *_gebruikers_* met een ![ groen vinkje. ](media/power-bi-visual/yes.png) Power BI-service voor ontwerpers &-ontwikkel aars ![ groen vinkje. ](media/power-bi-visual/yes.png) Power BI Desktop ![ X geeft Nee aan. ](media/power-bi-visual/no.png) Er is een Pro-of Premium-licentie vereist</Token>
 
 In dit artikel wordt beschreven hoe u de Microsoft Azure kaarten Visual voor Power BI kunt gebruiken.
 
@@ -47,9 +47,9 @@ Zie [Microsoft Azure juridische informatie](https://azure.microsoft.com/support/
 
 ## <a name="preview-behavior-and-requirements"></a>Preview-gedrag en -vereisten
 
-Er zijn enkele overwegingen en vereisten voor deze preview-versie van **Azure Maps**:
+Er zijn enkele overwegingen en vereisten voor deze preview-versie van _ * Azure Maps * *:
 
--   De **Azure Maps** Visual is in de preview-versie en moet zijn ingeschakeld in Power bi Desktop. Als u **Azure Maps**wilt inschakelen, selecteert u **Bestands** &gt; **Opties en instellingen** &gt; **Opties** &gt; **Preview-functies**en selecteert u vervolgens het selectie vakje **Azure Maps** . Als de Azure Maps Visual niet beschikbaar is nadat u dit hebt gedaan, moet u waarschijnlijk de schakel optie Tenant beheerder in de beheer Portal inschakelen.
+-   De **Azure Maps** Visual is in de preview-versie en moet zijn ingeschakeld in Power bi Desktop. Als u **Azure Maps** wilt inschakelen, selecteert u **Bestands** &gt; **Opties en instellingen** &gt; **Opties** &gt; **Preview-functies** en selecteert u vervolgens het selectie vakje **Azure Maps** . Als de Azure Maps Visual niet beschikbaar is nadat u dit hebt gedaan, moet u waarschijnlijk de schakel optie Tenant beheerder in de beheer Portal inschakelen.
 -   De gegevensset moet velden bevatten met informatie over **breedte graad** en **lengte graad** . Geocodering van locatie velden wordt toegevoegd in een toekomstige update.
 -   Het ingebouwde besturings element legenda voor Power BI wordt momenteel niet weer gegeven in deze preview. Deze wordt toegevoegd in een toekomstige update.
 
@@ -92,7 +92,7 @@ Voer de volgende stappen uit om de Azure Maps Visual te laden:
 
 De volgende gegevens verzamelingen zijn beschikbaar in het deel venster **velden** van de Azure Maps Visual.
 
-| Veld     | Beschrijving  |
+| Veld     | Description  |
 |-----------|--------------|
 | Breedtegraad  | Het veld dat wordt gebruikt om de waarde voor de breedte van de gegevens punten op te geven. De Latitude-waarden moeten tussen-90 en 90 in de decimale-graden notatie zijn.  |
 | Lengtegraad | Het veld dat wordt gebruikt om de lengte graad van de gegevens punten op te geven. Lengte waarden moeten tussen-180 en 180 in decimale-graden notatie zijn.  |
@@ -173,7 +173,7 @@ Meer informatie over de Azure Maps Power BI Visual:
 De Visual aanpassen:
 
 > [!div class="nextstepaction"]
-> [Tips en trucs voor het gebruik van kleuren in Power BI](https://docs.microsoft.com/power-bi/visuals/service-tips-and-tricks-for-color-formatting)
+> [Tips en trucs voor het gebruik van kleuren in Power BI](/power-bi/visuals/service-tips-and-tricks-for-color-formatting)
 
 > [!div class="nextstepaction"]
-> [Titels, legenda's en achtergronden van visualisaties aanpassen](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-customize-title-background-and-legend)
+> [Titels, legenda's en achtergronden van visualisaties aanpassen](/power-bi/visuals/power-bi-visualization-customize-title-background-and-legend)

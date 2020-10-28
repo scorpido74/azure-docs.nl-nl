@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 3ece62e671caa0838bbf4713c0ad4a74f19fd6cb
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 61b6f4a530ab1861c67b0bd4983167546e268957
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518871"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896324"
 ---
 # <a name="tutorial---migrate-from-google-maps-to-azure-maps"></a>Zelfstudie: Migreren van Google Maps naar Azure Maps
 
@@ -79,7 +79,7 @@ Hier volgen enkele verwante informatiebronnen voor Azure Maps:
 - [Pagina met Azure Maps-prijzen](https://azure.microsoft.com/pricing/details/azure-maps/)
 - [Azure-prijscalculator](https://azure.microsoft.com/pricing/calculator/?service=azure-maps)
 - [Azure Maps-gebruiksvoorwaarden](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46) (opgenomen in de Voorwaarden voor Online Diensten van Microsoft)
-- [De juiste prijscategorie kiezen in Azure Maps](https://docs.microsoft.com/azure/azure-maps/choose-pricing-tier)
+- [De juiste prijscategorie kiezen in Azure Maps](./choose-pricing-tier.md)
 
 ## <a name="suggested-migration-plan"></a>Voorgesteld migratieplan
 
@@ -87,7 +87,7 @@ Het volgende is een algemeen migratieplan.
 
 1. Maak inventarisatie van de Google Maps-SDK's en -services die door uw toepassing worden gebruikt. Controleer of Azure Maps alternatieve SDK's en services biedt.
 2. Maak een Azure-abonnement via [https://azure.com](https://azure.com) indien u nog geen abonnement hebt.
-3. Maak een Azure Maps-account ([documentatie](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys)) en de verificatiesleutel of Azure Active Directory ([documentatie](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)).
+3. Maak een Azure Maps-account ([documentatie](./how-to-manage-account-keys.md)) en de verificatiesleutel of Azure Active Directory ([documentatie](./how-to-manage-authentication.md)).
 4. Migreer uw toepassingscode.
 5. Test uw gemigreerde toepassing.
 6. Implementeer uw gemigreerde toepassing naar productie.
@@ -98,17 +98,17 @@ Ga als volgt te werk om een Azure Maps-account te maken en toegang te krijgen to
 
 1. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 2. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
-3. Maak een [Azure Maps-account](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys). 
-4. [Download uw Azure Maps-abonnementssleutel](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication#view-authentication-details) of configureer Azure Active Directory-verificatie voor verbeterde beveiliging.
+3. Maak een [Azure Maps-account](./how-to-manage-account-keys.md). 
+4. [Download uw Azure Maps-abonnementssleutel](./how-to-manage-authentication.md#view-authentication-details) of configureer Azure Active Directory-verificatie voor verbeterde beveiliging.
 
 ## <a name="azure-maps-technical-resources"></a>Technische informatiebronnen voor Azure Maps
 
 Hier volgt een lijst met nuttige technische informatiebronnen voor Azure Maps.
 
 - Overzicht: [https://azure.com/maps](https://azure.com/maps)
-- Documentatie: [https://aka.ms/AzureMapsDocs](https://aka.ms/AzureMapsDocs)
+- Documentatie: [https://aka.ms/AzureMapsDocs](./index.yml)
 - Voorbeelden van Web-SDK-code: [https://aka.ms/AzureMapsSamples](https://aka.ms/AzureMapsSamples)
-- Ontwikkelaarsforums: [https://aka.ms/AzureMapsForums](https://aka.ms/AzureMapsForums)
+- Ontwikkelaarsforums: [https://aka.ms/AzureMapsForums](/answers/topics/azure-maps.html)
 - Video's: [https://aka.ms/AzureMapsVideos](https://aka.ms/AzureMapsVideos)
 - Blog: [https://aka.ms/AzureMapsBlog](https://aka.ms/AzureMapsBlog)
 - Tech Blog: [https://aka.ms/AzureMapsTechBlog](https://aka.ms/AzureMapsTechBlog)
@@ -117,7 +117,7 @@ Hier volgt een lijst met nuttige technische informatiebronnen voor Azure Maps.
 
 ## <a name="migration-support"></a>Ondersteuning voor migratie
 
-Ontwikkelaars kunnen migratieondersteuning zoeken via de [forums](https://aka.ms/AzureMapsForums) of via een van de vele opties voor ondersteuning voor Azure: [https://azure.microsoft.com/support/options](https://azure.microsoft.com/support/options)
+Ontwikkelaars kunnen migratieondersteuning zoeken via de [forums](/answers/topics/azure-maps.html) of via een van de vele opties voor ondersteuning voor Azure: [https://azure.microsoft.com/support/options](https://azure.microsoft.com/support/options)
 
 ## <a name="next-steps"></a>Volgende stappen
 

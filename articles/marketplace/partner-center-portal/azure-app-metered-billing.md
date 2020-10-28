@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 52ae961a813b6d14592953fdf8662cbaecf662e1
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b82478338603750a76718da956d74e23d242692e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280450"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896531"
 ---
 # <a name="managed-application-metered-billing"></a>Factuur voor beheerde toepassing met data limiet 
 
@@ -56,18 +56,18 @@ Een Azure-klant die zich abonneert op een CoA-service kan rapporten per maand an
 
 Facturerings dimensies worden gebruikt om aan de klant te communiceren over hoe ze worden gefactureerd voor het gebruik van de software.  Deze dimensies worden ook gebruikt om gebruiks gebeurtenissen te communiceren met micro soft. Ze worden als volgt gedefinieerd:
 
-* **Dimensie-id**: de onveranderbare id waarnaar wordt verwezen tijdens het verzenden van gebruiks gebeurtenissen.
-* **Dimensie naam**: de weergave naam die aan de dimensie is gekoppeld, bijvoorbeeld ' verzonden tekst berichten '.
-* **Maat eenheid**: de beschrijving van de facturerings eenheid, bijvoorbeeld ' per SMS-bericht ' of ' per 100 e-mail berichten '.
-* **Prijs per eenheid**: de prijs voor één eenheid van de dimensie.
-* **Inbegrepen hoeveelheid voor maandelijkse periode**: de hoeveelheid dimensie die per maand wordt opgenomen voor klanten die de terugkerende maandelijkse kosten betalen, moet een geheel getal zijn.
+* **Dimensie-id** : de onveranderbare id waarnaar wordt verwezen tijdens het verzenden van gebruiks gebeurtenissen.
+* **Dimensie naam** : de weergave naam die aan de dimensie is gekoppeld, bijvoorbeeld ' verzonden tekst berichten '.
+* **Maat eenheid** : de beschrijving van de facturerings eenheid, bijvoorbeeld ' per SMS-bericht ' of ' per 100 e-mail berichten '.
+* **Prijs per eenheid** : de prijs voor één eenheid van de dimensie.
+* **Inbegrepen hoeveelheid voor maandelijkse periode** : de hoeveelheid dimensie die per maand wordt opgenomen voor klanten die de terugkerende maandelijkse kosten betalen, moet een geheel getal zijn.
 
 Facturerings dimensies worden gedeeld in alle abonnementen voor een aanbieding. Sommige kenmerken zijn van toepassing op de dimensie over alle plannen en andere kenmerken zijn specifiek voor een plan.
 
 De kenmerken die de dimensie zelf definiëren, worden gedeeld met alle plannen voor een aanbieding. Voordat u de aanbieding publiceert, is een wijziging in deze kenmerken van de context van een plan van invloed op de dimensie definitie voor alle plannen. Zodra u de aanbieding hebt gepubliceerd, kunnen deze kenmerken niet meer worden bewerkt. De kenmerken zijn:
 
 * Id
-* Naam
+* Name
 * Meeteenheid
 
 De andere kenmerken van een dimensie zijn specifiek voor elk plan en kunnen verschillende waarden hebben van plan tot plan.  Voordat u het plan publiceert, kunt u deze waarden bewerken en wordt alleen dit abonnement beïnvloed. Zodra u het abonnement hebt gepubliceerd, kunnen deze kenmerken niet meer worden bewerkt. De kenmerken zijn:
@@ -79,7 +79,7 @@ De andere kenmerken van een dimensie zijn specifiek voor elk plan en kunnen vers
 Dimensies hebben ook twee speciale concepten: ' enabled ' en ' infinite '.
 
 * **Ingeschakeld** geeft aan dat dit plan deelneemt aan deze dimensie.  U kunt deze optie uitschakelen als u een nieuw abonnement maakt dat geen gebruiks gebeurtenissen op basis van deze dimensie verzendt. Daarnaast worden nieuwe dimensies die zijn toegevoegd nadat een plan voor het eerst werd gepubliceerd, weer gegeven als ' niet ingeschakeld ' in het al gepubliceerde abonnement.  Een uitgeschakelde dimensie wordt niet weer gegeven in een lijst met dimensies voor een plan dat door klanten wordt gezien.
-* **Oneindig**, vertegenwoordigd door het oneindigheids teken ' ∞ ', geeft aan dat dit plan deelneemt aan deze dimensie, zonder gebruik van een Data limiet voor deze dimensie. Als u aan uw klanten wilt aangeven dat de functionaliteit die wordt vertegenwoordigd door deze dimensie, in het plan is opgenomen, maar zonder limiet voor gebruik.  Een dimensie met oneindig gebruik wordt weer gegeven in een lijst met dimensies voor een plan dat door klanten wordt weer gegeven.  Voor dit abonnement worden nooit kosten in rekening gebracht.
+* **Oneindig** , vertegenwoordigd door het oneindigheids teken ' ∞ ', geeft aan dat dit plan deelneemt aan deze dimensie, zonder gebruik van een Data limiet voor deze dimensie. Als u aan uw klanten wilt aangeven dat de functionaliteit die wordt vertegenwoordigd door deze dimensie, in het plan is opgenomen, maar zonder limiet voor gebruik.  Een dimensie met oneindig gebruik wordt weer gegeven in een lijst met dimensies voor een plan dat door klanten wordt weer gegeven.  Voor dit abonnement worden nooit kosten in rekening gebracht.
 
 >[!Note] 
 >De volgende scenario's worden expliciet ondersteund:  <br> -U kunt een nieuwe dimensie toevoegen aan een nieuw plan.  De nieuwe dimensie wordt niet ingeschakeld voor al gepubliceerde plannen. <br> -U kunt een abonnement publiceren met een vast maand tarief en zonder dimensies, en vervolgens een nieuw plan toevoegen en een nieuwe dimensie voor dat plan configureren. De nieuwe dimensie wordt niet ingeschakeld voor al gepubliceerde plannen.
@@ -93,7 +93,7 @@ Een dimensie die wordt gebruikt met de Marketplace-meet service vertegenwoordigt
 Zodra een aanbieding is gepubliceerd met een dimensie, kunnen de details van het aanbod niveau voor die dimensie niet meer worden gewijzigd:
 
 * Id
-* Naam
+* Name
 * Meeteenheid
 
 Zodra een plan is gepubliceerd, kunnen de details op plan niveau niet meer worden gewijzigd:
@@ -107,7 +107,7 @@ Zodra een plan is gepubliceerd, kunnen de details op plan niveau niet meer worde
 
 ### <a name="upper-limits"></a>Bovengrens
 
-Het maximum aantal dimensies dat kan worden geconfigureerd voor een enkele aanbieding is 18 unieke dimensies.
+Het maximum aantal dimensies dat voor een enkele aanbieding kan worden geconfigureerd, is 30 unieke dimensies.
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 

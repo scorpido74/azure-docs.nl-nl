@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ceb1a299fe09afd0551bdade5526a4aeefebaba
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f92b95e38dea6555ca881d56ccf1cf2d68783e53
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441841"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896086"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Veelgestelde vragen over Azure Active Directory B2B-samen werking
 
@@ -30,7 +30,7 @@ Deze veelgestelde vragen (FAQ) over de samen werking tussen Azure Active Directo
 Rechthebbend! Bekijk onze [blog post over deze functie](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/). Voor meer informatie over het aanpassen van de aanmeldings pagina van uw organisatie, Zie [bedrijfs huisstijl toevoegen om u aan te melden en de pagina's van het toegangs venster](../fundamentals/customize-branding.md).
 
 ### <a name="can-b2b-collaboration-users-access-sharepoint-online-and-onedrive"></a>Kunnen B2B-samenwerkings gebruikers toegang krijgen tot share point online en OneDrive?
-Ja. Het is echter wel mogelijk om te zoeken naar bestaande gast gebruikers in share point online met behulp **van de** kiezer personen. Als u de optie wilt inschakelen om te zoeken naar bestaande gast gebruikers, stelt u **ShowPeoplePickerSuggestionsForGuestUsers** in **op**aan. U kunt deze instelling inschakelen op het niveau van de Tenant of op het niveau van de site verzameling. U kunt deze instelling wijzigen met behulp van de cmdlets Set-SPOTenant en Set-SPOSite. Met deze cmdlets kunnen leden alle bestaande gast gebruikers in de Directory doorzoeken. Wijzigingen in het Tenant bereik hebben geen invloed op share point online-sites die al zijn ingericht.
+Ja. Het is echter wel mogelijk om te zoeken naar bestaande gast gebruikers in share point online met behulp **van de** kiezer personen. Als u de optie wilt inschakelen om te zoeken naar bestaande gast gebruikers, stelt u **ShowPeoplePickerSuggestionsForGuestUsers** in **op** aan. U kunt deze instelling inschakelen op het niveau van de Tenant of op het niveau van de site verzameling. U kunt deze instelling wijzigen met behulp van de cmdlets Set-SPOTenant en Set-SPOSite. Met deze cmdlets kunnen leden alle bestaande gast gebruikers in de Directory doorzoeken. Wijzigingen in het Tenant bereik hebben geen invloed op share point online-sites die al zijn ingericht.
 
 ### <a name="is-the-csv-upload-feature-still-supported"></a>Wordt de functie voor het uploaden van CSV nog steeds ondersteund?
 Ja. Zie [Dit Power shell](code-samples.md)-voor beeld voor meer informatie over het gebruik van de functie voor het uploaden van CSV-bestanden.
@@ -64,17 +64,17 @@ Tenzij aan een gebruiker de rol van beperkte beheerder is toegewezen, is voor B2
 Ja. U kunt een beleid voor voorwaardelijke toegang maken waarmee wordt voor komen dat alle gasten en externe gebruikers toegang krijgen tot de Azure Portal. Wanneer u dit beleid configureert, moet u voorzichtig zijn om te voor komen dat de toegang tot leden en beheerders per ongeluk wordt geblokkeerd.
 
 1. Meld u als beveiligingsbeheerder of beheerder voor voorwaardelijke toegang aan bij [Azure Portal](https://portal.azure.com/).
-2. Selecteer in Azure Portal **Azure Active Directory**. 
-3. Selecteer onder **beheren**de optie **beveiliging**.
-4. Onder **beveiligen**selecteert u **voorwaardelijke toegang**. Selecteer **Nieuw beleid**.
+2. Selecteer in Azure Portal **Azure Active Directory** . 
+3. Selecteer onder **beheren** de optie **beveiliging** .
+4. Onder **beveiligen** selecteert u **voorwaardelijke toegang** . Selecteer **Nieuw beleid** .
 5. Voer op de pagina **Nieuw** in het tekstvak **naam** een naam in voor het beleid (bijvoorbeeld ' gasten blok keren voor toegang tot de portal ').
-6. Onder **Toewijzingen** selecteert u **Gebruikers en groepen**.
-7. Klik op het tabblad **include** op **gebruikers en groepen selecteren**en selecteer vervolgens **alle gast en externe gebruikers (preview-versie)**.
-9. Selecteer **Gereed**.
-10. Selecteer op de pagina **Nieuw** in de sectie **toewijzingen** de optie **Cloud-apps of-acties**.
-11. Kies op de pagina **Cloud-apps of acties** de optie **apps selecteren**en kies vervolgens **selecteren**.
-12. Kies op de pagina **Selecteren** de optie **Microsoft Azure Management** en kies vervolgens **Selecteren**.
-13. Op de pagina **Cloud-apps of acties** , selecteer **gereed**.
+6. Onder **Toewijzingen** selecteert u **Gebruikers en groepen** .
+7. Klik op het tabblad **include** op **gebruikers en groepen selecteren** en selecteer vervolgens **alle gast en externe gebruikers (preview-versie)** .
+9. Selecteer **Gereed** .
+10. Selecteer op de pagina **Nieuw** in de sectie **toewijzingen** de optie **Cloud-apps of-acties** .
+11. Kies op de pagina **Cloud-apps of acties** de optie **apps selecteren** en kies vervolgens **selecteren** .
+12. Kies op de pagina **Selecteren** de optie **Microsoft Azure Management** en kies vervolgens **Selecteren** .
+13. Op de pagina **Cloud-apps of acties** , selecteer **gereed** .
 
 ### <a name="does-azure-ad-b2b-collaboration-support-multi-factor-authentication-and-consumer-email-accounts"></a>Ondersteunt Azure AD B2B-samen werking multi-factor Authentication-en consumenten-e-mail accounts?
 Ja. Multi-factor Authentication-en consumenten-e-mail accounts worden beide ondersteund voor Azure AD B2B-samen werking.
@@ -130,7 +130,7 @@ Ja. Zie [voorwaardelijke toegang voor B2B-samenwerkings gebruikers](conditional-
 Ja. Azure AD B2B-samen werking ondersteunt het toestaan van lijsten en het weigeren van lijsten. 
 
 ### <a name="what-licenses-do-we-need-to-use-azure-ad-b2b"></a>Welke licenties moeten er worden gebruikt voor Azure AD B2B?
-Zie [Azure Active Directory B2B Collaboration guidance](licensing-guidance.md)(Engelstalig) voor meer informatie over de licenties die uw organisatie nodig heeft om Azure AD B2B te gebruiken.
+Zie [prijzen van externe identiteit](external-identities-pricing.md)voor informatie over de licenties die uw organisatie nodig heeft om Azure AD B2B te gebruiken.
 
 ### <a name="next-steps"></a>Volgende stappen
 

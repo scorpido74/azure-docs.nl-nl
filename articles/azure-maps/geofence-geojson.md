@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 27a2fee04afc559a8564aea5e112de07e9c0dcf6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e880710b93a6764df50780e685c89b5f569b4ec0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88037402"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897191"
 ---
 # <a name="geofencing-geojson-data"></a>Geojson-gegevens geoomheining
 
@@ -34,13 +34,13 @@ De gegevens voor geofence of set geofences worden vertegenwoordigd door `Feature
 | :------------ |:------------: |:---------------:| :-----|
 | startTime | Datum/tijd  | true | De begin datum en-tijd van de geldigheids periode. |
 | endTime   | Datum/tijd  | true |  De eind datum van de geldigheids periode. |
-| recurrenceType | tekenreeks | onjuist |   Het terugkeer type van de periode. De waarde kan `Daily` ,, `Weekly` of zijn `Monthly` `Yearly` . De standaardwaarde is `Daily`.|
+| recurrenceType | tekenreeks | false |   Het terugkeer type van de periode. De waarde kan `Daily` ,, `Weekly` of zijn `Monthly` `Yearly` . De standaardwaarde is `Daily`.|
 | businessDayOnly | Boolean-waarde | onjuist |  Geef aan of de gegevens alleen geldig zijn tijdens werk dagen. De standaardwaarde is `false`.|
 
 
 * Alle coördinaat waarden worden weer gegeven als [lengte graad, breedte graad] gedefinieerd in `WGS84` .
 * Voor elke functie, met `MultiPoint` ,, `MultiLineString` `MultiPolygon` , of `GeometryCollection` , worden de eigenschappen toegepast op alle elementen. bijvoorbeeld: alle punten in `MultiPoint` zullen dezelfde RADIUS gebruiken om een geofence van meerdere cirkels te vormen.
-* In het scenario van een punt kan de geometrie van een cirkel worden weer gegeven met behulp van een `Point` Geometry-object met eigenschappen die zijn opgenomen in de [uitbrei ding van geojson-geometrie](https://docs.microsoft.com/azure/azure-maps/extend-geojson).      
+* In het scenario van een punt kan de geometrie van een cirkel worden weer gegeven met behulp van een `Point` Geometry-object met eigenschappen die zijn opgenomen in de [uitbrei ding van geojson-geometrie](./extend-geojson.md).      
 
 Hieronder volgt een voor beeld van een aanvraag tekst voor een geofence die wordt weer gegeven als een cirkel geofence-geometrie in `GeoJSON` met behulp van een middel punt en een RADIUS. De geldigheids periode van de geofence-gegevens begint van 2018-10-22, 9:00 tot tot 17:00 uur, die elke dag wordt herhaald, met uitzonde ring van het weekend. `expiredTime` Hiermee wordt aangegeven dat deze geofence-gegevens als verlopen worden beschouwd als `userTime` de aanvraag later is dan `2019-01-01` .  
 

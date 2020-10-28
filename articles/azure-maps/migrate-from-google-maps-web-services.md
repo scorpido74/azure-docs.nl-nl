@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 3e80ff90e47f45655761abd4c7e8fa9ed04b61ef
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: f97d04ca40e69ba2516744adfc9f1f455cba97c0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518888"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896341"
 ---
 # <a name="tutorial---migrate-web-service-from-google-maps"></a>Zelfstudie: webservices migreren vanuit Google Maps
 
@@ -40,15 +40,15 @@ De tabel bevat de service-API's van Azure Maps, die een vergelijkbare functional
 
 | Service-API van Google Maps | Service-API van Azure Maps                                                                      |
 |-------------------------|---------------------------------------------------------------------------------------------|
-| Aanwijzingen              | [Route](https://docs.microsoft.com/rest/api/maps/route)                                     |
-| Afstandsmatrix         | [Routematrix](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)       |
-| Geocodering               | [Zoeken](https://docs.microsoft.com/rest/api/maps/search)                                   |
-| Locaties zoeken           | [Zoeken](https://docs.microsoft.com/rest/api/maps/search)                                   |
-| Locatie automatisch aanvullen      | [Zoeken](https://docs.microsoft.com/rest/api/maps/search)                                   |
+| Aanwijzingen              | [Route](/rest/api/maps/route)                                     |
+| Afstandsmatrix         | [Routematrix](/rest/api/maps/route/postroutematrixpreview)       |
+| Geocodering               | [Zoeken](/rest/api/maps/search)                                   |
+| Locaties zoeken           | [Zoeken](/rest/api/maps/search)                                   |
+| Locatie automatisch aanvullen      | [Zoeken](/rest/api/maps/search)                                   |
 | Uitlijnen op weg            | Zie de sectie [Routes en routebeschrijvingen berekenen](#calculate-routes-and-directions).            |
 | Snelheidslimieten            | Zie de sectie [Reverse geocodering van een coördinaat](#reverse-geocode-a-coordinate).                  |
-| Statische kaart              | [Weergeven](https://docs.microsoft.com/rest/api/maps/render/getmapimage)                       |
-| Tijdzone               | [Tijdzone](https://docs.microsoft.com/rest/api/maps/timezone)                              |
+| Statische kaart              | [Weergeven](/rest/api/maps/render/getmapimage)                       |
+| Tijdzone               | [Tijdzone](/rest/api/maps/timezone)                              |
 
 De volgende service-API's zijn momenteel niet beschikbaar in Azure Maps:
 
@@ -62,8 +62,8 @@ De volgende service-API's zijn momenteel niet beschikbaar in Azure Maps:
 
 Azure Maps heeft verschillende aanvullende REST-webservices die interessant kunnen zijn:
 
-- [Ruimtelijke bewerkingen](https://docs.microsoft.com/rest/api/maps/spatial): Complexe ruimtelijke berekeningen en bewerkingen, zoals geofencing, offloaden naar een service.
-- [Verkeer](https://docs.microsoft.com/rest/api/maps/traffic): Toegang tot realtime verkeersstromen en incidentgegevens.
+- [Ruimtelijke bewerkingen](/rest/api/maps/spatial): Complexe ruimtelijke berekeningen en bewerkingen, zoals geofencing, offloaden naar een service.
+- [Verkeer](/rest/api/maps/traffic): Toegang tot realtime verkeersstromen en incidentgegevens.
 
 ## <a name="prerequisites"></a>Vereisten 
 
@@ -77,11 +77,11 @@ Geocodering is het proces van het omzetten van een adres in een coördinaat. 1 M
 
 Azure Maps biedt verschillende methoden voor geocodering van adressen:
 
-- [**Vrije adresgeocodering**](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress): Een enkele adrestekenreeks opgeven en de aanvraag direct verwerken. 1 Microsoft way, Redmond, WA is een voorbeeld van een enkele adrestekenreeks. Deze API wordt aanbevolen voor snelle geocodering van afzonderlijke adressen.
-- [**Gestructureerde adresgeocodering**](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressstructured): De onderdelen van een enkel adres opgeven, zoals straatnaam, plaats, land/regio en postcode en de aanvraag direct verwerken. Deze API wordt aanbevolen voor snelle geocodering van afzonderlijke adressen die al zijn geparseerd in afzonderlijke adresonderdelen.
-- [**Batchmatige adresgeocodering**](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressbatchpreview): Een aanvraag met maximaal 10.000 adressen maken en deze in de loop van de tijd laten verwerken. Geocodering van alle adressen vindt parallel plaats op de server en als dit proces is voltooid, kan de volledige resultatenset worden gedownload. Dit wordt aanbevolen voor geocodering van grote gegevenssets.
-- [**Fuzzy zoekopdrachten**](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy): Met deze API wordt adresgeocodering gecombineerd met het zoeken naar nuttige plaatsen. Deze API maakt gebruik van een vrije tekenreeks. Deze tekenreeks kan een adres, plaats, oriëntatiepunt, nuttige plaats of nuttigeplaatscategorie zijn. Met deze API wordt de aanvraag in vrijwel realtime verwerkt. Deze API wordt aanbevolen wanneer gebruikers in hetzelfde tekstvak naar adressen of nuttige plaatsen zoeken.
-- [**Batchmatige fuzzy zoekopdrachten**](https://docs.microsoft.com/rest/api/maps/search/postsearchfuzzybatchpreview): Een aanvraag maken met maximaal 10.000 adressen, plaatsen, oriëntatiepunten of nuttige plaatsen en deze in de loop van de tijd laten verwerken. Alle gegevens worden parallel op de server verwerkt en als dit proces is voltooid, kan de volledige resultatenset worden gedownload.
+- [**Vrije adresgeocodering**](/rest/api/maps/search/getsearchaddress): Een enkele adrestekenreeks opgeven en de aanvraag direct verwerken. 1 Microsoft way, Redmond, WA is een voorbeeld van een enkele adrestekenreeks. Deze API wordt aanbevolen voor snelle geocodering van afzonderlijke adressen.
+- [**Gestructureerde adresgeocodering**](/rest/api/maps/search/getsearchaddressstructured): De onderdelen van een enkel adres opgeven, zoals straatnaam, plaats, land/regio en postcode en de aanvraag direct verwerken. Deze API wordt aanbevolen voor snelle geocodering van afzonderlijke adressen die al zijn geparseerd in afzonderlijke adresonderdelen.
+- [**Batchmatige adresgeocodering**](/rest/api/maps/search/postsearchaddressbatchpreview): Een aanvraag met maximaal 10.000 adressen maken en deze in de loop van de tijd laten verwerken. Geocodering van alle adressen vindt parallel plaats op de server en als dit proces is voltooid, kan de volledige resultatenset worden gedownload. Dit wordt aanbevolen voor geocodering van grote gegevenssets.
+- [**Fuzzy zoekopdrachten**](/rest/api/maps/search/getsearchfuzzy): Met deze API wordt adresgeocodering gecombineerd met het zoeken naar nuttige plaatsen. Deze API maakt gebruik van een vrije tekenreeks. Deze tekenreeks kan een adres, plaats, oriëntatiepunt, nuttige plaats of nuttigeplaatscategorie zijn. Met deze API wordt de aanvraag in vrijwel realtime verwerkt. Deze API wordt aanbevolen wanneer gebruikers in hetzelfde tekstvak naar adressen of nuttige plaatsen zoeken.
+- [**Batchmatige fuzzy zoekopdrachten**](/rest/api/maps/search/postsearchfuzzybatchpreview): Een aanvraag maken met maximaal 10.000 adressen, plaatsen, oriëntatiepunten of nuttige plaatsen en deze in de loop van de tijd laten verwerken. Alle gegevens worden parallel op de server verwerkt en als dit proces is voltooid, kan de volledige resultatenset worden gedownload.
 
 De volgende tabel bevat de API-parameters in Google Maps en de vergelijkbare API-parameters in Azure Maps.
 
@@ -105,9 +105,9 @@ Reverse geocodering is het proces van het converteren van geografische coördina
 
 Azure Maps biedt verschillende methoden voor reverse geocodering:
 
-- [**Reverse geocodering van adressen**](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse): Een enkele geografische coördinaat opgeven om het nabijgelegen adres te verkrijgen dat overeenkomt met deze coördinaat. De aanvraag wordt vrijwel realtime verwerkt.
-- [**Reverse geocodering van zijstraten**](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet): Een enkele geografische coördinaat opgeven om informatie over nabijgelegen zijstraten op te halen en de aanvraag direct verwerken. U kunt bijvoorbeeld de zijstraten 1st Ave en Main St. verkrijgen.
-- [**Batchmatige reverse geocoding van adressen**](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressreversebatchpreview): Een aanvraag met maximaal 10.000 coördinaten maken en deze in de loop van de tijd laten verwerken. Alle gegevens worden parallel verwerkt op de server. Als de aanvraag is voltooid, kunt u de volledige set resultaten downloaden.
+- [**Reverse geocodering van adressen**](/rest/api/maps/search/getsearchaddressreverse): Een enkele geografische coördinaat opgeven om het nabijgelegen adres te verkrijgen dat overeenkomt met deze coördinaat. De aanvraag wordt vrijwel realtime verwerkt.
+- [**Reverse geocodering van zijstraten**](/rest/api/maps/search/getsearchaddressreversecrossstreet): Een enkele geografische coördinaat opgeven om informatie over nabijgelegen zijstraten op te halen en de aanvraag direct verwerken. U kunt bijvoorbeeld de zijstraten 1st Ave en Main St. verkrijgen.
+- [**Batchmatige reverse geocoding van adressen**](/rest/api/maps/search/postsearchaddressreversebatchpreview): Een aanvraag met maximaal 10.000 coördinaten maken en deze in de loop van de tijd laten verwerken. Alle gegevens worden parallel verwerkt op de server. Als de aanvraag is voltooid, kunt u de volledige set resultaten downloaden.
 
 Deze tabel bevat de API-parameters in Google Maps en de vergelijkbare API-parameters in Azure Maps.
 
@@ -137,13 +137,13 @@ In Google Maps kan naar nuttige plaatsen worden gezocht met behulp van de API Lo
 
 Azure Maps biedt verschillende zoek-API's voor nuttige plaatsen:
 
-- [**Nuttige plaatsen zoeken**](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi): Nuttige plaatsen zoeken op naam. Voorbeeld: Starbucks.
-- [**Nuttigeplaatscategorieën zoeken**](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory): Nuttige plaatsen zoeken op categorie. Bijvoorbeeld: restaurant.
-- [**In de buurt zoeken**](https://docs.microsoft.com/rest/api/maps/search/getsearchnearby): Hiermee wordt naar nuttige plaatsen gezocht die zich binnen een bepaalde afstand van een locatie bevinden.
-- [**Fuzzy zoekopdrachten**](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy): Met deze API wordt adresgeocodering gecombineerd met het zoeken naar nuttige plaatsen. Deze API maakt gebruik van een vrije tekenreeks die een adres, plaats, oriëntatiepunt, nuttige plaats of nuttigeplaatscategorie kan zijn. De aanvraag wordt in vrijwel realtime verwerkt. Deze API wordt aanbevolen wanneer gebruikers in hetzelfde tekstvak naar adressen of nuttige plaatsen zoeken.
-- [**Zoeken binnen geometrie**](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry): Zoeken naar nuttige plaatsen die zich binnen een opgegeven geometrie bevinden. Voorbeeld: zoeken naar een nuttige plaats binnen een veelhoek.
-- [**Zoeken langs route**](https://docs.microsoft.com/rest/api/maps/search/postsearchalongroute): Zoeken naar nuttige plaatsen die zich aan een opgegeven routepad bevinden.
-- [**Batchmatige fuzzy zoekopdrachten**](https://docs.microsoft.com/rest/api/maps/search/postsearchfuzzybatchpreview): Een aanvraag maken met maximaal 10.000 adressen, plaatsen, oriëntatiepunten of nuttige plaatsen. De aanvraag wordt in de loop van de tijd verwerkt. Alle gegevens worden parallel verwerkt op de server. Als de aanvraag is verwerkt, kunt u de volledige set resultaten downloaden.
+- [**Nuttige plaatsen zoeken**](/rest/api/maps/search/getsearchpoi): Nuttige plaatsen zoeken op naam. Voorbeeld: Starbucks.
+- [**Nuttigeplaatscategorieën zoeken**](/rest/api/maps/search/getsearchpoicategory): Nuttige plaatsen zoeken op categorie. Bijvoorbeeld: restaurant.
+- [**In de buurt zoeken**](/rest/api/maps/search/getsearchnearby): Hiermee wordt naar nuttige plaatsen gezocht die zich binnen een bepaalde afstand van een locatie bevinden.
+- [**Fuzzy zoekopdrachten**](/rest/api/maps/search/getsearchfuzzy): Met deze API wordt adresgeocodering gecombineerd met het zoeken naar nuttige plaatsen. Deze API maakt gebruik van een vrije tekenreeks die een adres, plaats, oriëntatiepunt, nuttige plaats of nuttigeplaatscategorie kan zijn. De aanvraag wordt in vrijwel realtime verwerkt. Deze API wordt aanbevolen wanneer gebruikers in hetzelfde tekstvak naar adressen of nuttige plaatsen zoeken.
+- [**Zoeken binnen geometrie**](/rest/api/maps/search/postsearchinsidegeometry): Zoeken naar nuttige plaatsen die zich binnen een opgegeven geometrie bevinden. Voorbeeld: zoeken naar een nuttige plaats binnen een veelhoek.
+- [**Zoeken langs route**](/rest/api/maps/search/postsearchalongroute): Zoeken naar nuttige plaatsen die zich aan een opgegeven routepad bevinden.
+- [**Batchmatige fuzzy zoekopdrachten**](/rest/api/maps/search/postsearchfuzzybatchpreview): Een aanvraag maken met maximaal 10.000 adressen, plaatsen, oriëntatiepunten of nuttige plaatsen. De aanvraag wordt in de loop van de tijd verwerkt. Alle gegevens worden parallel verwerkt op de server. Als de aanvraag is verwerkt, kunt u de volledige set resultaten downloaden.
 
 Momenteel heeft Azure Maps geen API die is te vergelijken met de API Zoeken op basis van tekst in Google Maps.
 
@@ -154,7 +154,7 @@ Raadpleeg de documentatie [Aanbevolen procedures voor zoeken](how-to-use-best-pr
 
 ### <a name="find-place-from-text"></a>Locatie zoeken op basis van tekst
 
-Gebruik [Nuttige plaatsen zoeken](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi) en [Fuzzy zoekopdracht](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) van Azure Maps om nuttige plaatsen te zoeken op naam of adres.
+Gebruik [Nuttige plaatsen zoeken](/rest/api/maps/search/getsearchpoi) en [Fuzzy zoekopdracht](/rest/api/maps/search/getsearchfuzzy) van Azure Maps om nuttige plaatsen te zoeken op naam of adres.
 
 De tabel bevat de API-parameters in Google Maps en de vergelijkbare API-parameters in Azure Maps.
 
@@ -169,7 +169,7 @@ De tabel bevat de API-parameters in Google Maps en de vergelijkbare API-paramete
 
 ### <a name="nearby-search"></a>In de buurt zoeken
 
-Gebruik de API voor [in de buurt zoeken](https://docs.microsoft.com/rest/api/maps/search/getsearchnearby) om nuttige plaatsen op te halen in Azure Maps.
+Gebruik de API voor [in de buurt zoeken](/rest/api/maps/search/getsearchnearby) om nuttige plaatsen op te halen in Azure Maps.
 
 De tabel bevat de API-parameters in Google Maps en de vergelijkbare API-parameters in Azure Maps.
 
@@ -201,9 +201,9 @@ Bereken routes en routebeschrijvingen met behulp van Azure Maps. Azure Maps bied
 
 De routeringsservice van Azure Maps biedt de volgende API's voor het berekenen van routes:
 
-- [**Route berekenen**](https://docs.microsoft.com/rest/api/maps/route/getroutedirections): Een route berekenen en de aanvraag direct laten verwerken. Deze API biedt ondersteuning voor zowel GET- als POST-aanvragen. POST-aanvragen worden aanbevolen als er een groot aantal routepunten wordt opgegeven of als er veel routeopties worden gebruikt, om te voorkomen dat de URL-aanvraag te lang wordt en problemen veroorzaakt. De POST-routebeschrijving in Azure Maps bevat een optie waarmee duizenden [ondersteuningspunten](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#supportingpoints) kunnen worden verwerkt en waartussen een logisch routepad wordt gemaakt (uitlijnen op weg). 
-- [**Batchroute**](https://docs.microsoft.com/rest/api/maps/route/postroutedirectionsbatchpreview): Een aanvraag met maximaal 1.000 routeaanvragen maken en deze in de loop van de tijd laten verwerken. Alle gegevens worden parallel op de server verwerkt en als dit proces is voltooid, kan de volledige resultatenset worden gedownload.
-- [**Mobility-services**](https://docs.microsoft.com/rest/api/maps/mobility): Routes en routebeschrijvingen berekenen op basis van het openbaar vervoer.
+- [**Route berekenen**](/rest/api/maps/route/getroutedirections): Een route berekenen en de aanvraag direct laten verwerken. Deze API biedt ondersteuning voor zowel GET- als POST-aanvragen. POST-aanvragen worden aanbevolen als er een groot aantal routepunten wordt opgegeven of als er veel routeopties worden gebruikt, om te voorkomen dat de URL-aanvraag te lang wordt en problemen veroorzaakt. De POST-routebeschrijving in Azure Maps bevat een optie waarmee duizenden [ondersteuningspunten](/rest/api/maps/route/postroutedirections#supportingpoints) kunnen worden verwerkt en waartussen een logisch routepad wordt gemaakt (uitlijnen op weg). 
+- [**Batchroute**](/rest/api/maps/route/postroutedirectionsbatchpreview): Een aanvraag met maximaal 1.000 routeaanvragen maken en deze in de loop van de tijd laten verwerken. Alle gegevens worden parallel op de server verwerkt en als dit proces is voltooid, kan de volledige resultatenset worden gedownload.
+- [**Mobility-services**](/rest/api/maps/mobility): Routes en routebeschrijvingen berekenen op basis van het openbaar vervoer.
 
 De tabel bevat de API-parameters in Google Maps en de vergelijkbare API-parameters in Azure Maps.
 
@@ -221,8 +221,8 @@ De tabel bevat de API-parameters in Google Maps en de vergelijkbare API-paramete
 | `origin`                       | `query`                            |
 | `region`                       | *N.v.t.* - deze functie is gerelateerd aan geocodering. Gebruik de parameter *countrySet* wanneer u de geocoderings-API van Azure Maps gebruikt.  |
 | `traffic_model`               | *N.v.t.* - er kan alleen worden opgegeven of er verkeersgegevens moeten worden gebruikt met de parameter *traffic* . |
-| `transit_mode`                | Zie de [documentatie van Mobility-services](https://docs.microsoft.com/rest/api/maps/mobility) |
-| `transit_routing_preference` | Zie de [documentatie van Mobility-services](https://docs.microsoft.com/rest/api/maps/mobility) |
+| `transit_mode`                | Zie de [documentatie van Mobility-services](/rest/api/maps/mobility) |
+| `transit_routing_preference` | Zie de [documentatie van Mobility-services](/rest/api/maps/mobility) |
 | `units`                        | *N.v.t.* - in Azure Maps wordt alleen het metrische systeem gebruikt.  |
 | `waypoints`                    | `query`                            |
 
@@ -242,13 +242,13 @@ De routerings-API van Azure Maps biedt aanvullende functies die niet beschikbaar
 - Ondersteuning voor routeparameters van commerciële voertuigen, zoals de afmetingen, het gewicht, het aantal assen en het ladingtype van voertuigen.
 - De maximale voertuigsnelheid opgeven.
 
-Daarnaast ondersteunt de Route-service in Azure Maps [het berekenen van routeerbare bereiken](https://docs.microsoft.com/rest/api/maps/route/getrouterange). Berekeningen van routeerbare bereiken worden ook wel isochronen genoemd. Dit omvat het genereren van een veelhoek boven een gebied dat in elke richting vanuit een startpunt kan worden bereisd. En dat binnen een opgegeven tijdsduur of een bepaalde hoeveelheid brandstof of acculading.
+Daarnaast ondersteunt de Route-service in Azure Maps [het berekenen van routeerbare bereiken](/rest/api/maps/route/getrouterange). Berekeningen van routeerbare bereiken worden ook wel isochronen genoemd. Dit omvat het genereren van een veelhoek boven een gebied dat in elke richting vanuit een startpunt kan worden bereisd. En dat binnen een opgegeven tijdsduur of een bepaalde hoeveelheid brandstof of acculading.
 
 Raadpleeg de documentatie [Best practices voor routering](how-to-use-best-practices-for-routing.md).
 
 ## <a name="retrieve-a-map-image"></a>Een kaartafbeelding ophalen
 
-Azure Maps biedt een API voor het weergeven van de statische kaartafbeeldingen waarbij gegevens boven elkaar worden weergegeven. De API [Kaartafbeelding weergeven](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile) in Azure Maps is vergelijkbaar met de API Statische kaart in Google Maps.
+Azure Maps biedt een API voor het weergeven van de statische kaartafbeeldingen waarbij gegevens boven elkaar worden weergegeven. De API [Kaartafbeelding weergeven](/rest/api/maps/render/getmapimagerytile) in Azure Maps is vergelijkbaar met de API Statische kaart in Google Maps.
 
 > [!NOTE]
 > Voor Azure Maps moeten het midden, alle markeringen en de padlocaties coördinaten in de indeling lengtegraad,breedtegraad zijn. In Google Maps wordt daarentegen de indeling breedtegraad,lengtegraad gebruikt. Adressen moeten eerst een geocodering krijgen.
@@ -278,8 +278,8 @@ Zie voor meer informatie de [instructiegids over de API Kaartafbeelding weergeve
 
 Naast de mogelijkheid om een statische kaartafbeelding te genereren biedt de weergaveservice van Azure Maps de mogelijkheid om rechtstreeks toegang te krijgen tot kaarttegels in raster- (PNG) en vectorindeling:
 
-- [**Kaarttegel**](https://docs.microsoft.com/rest/api/maps/render/getmaptile): Raster- (PNG) en vectortegels ophalen voor de basiskaarten (wegen, grenzen, achtergrond).
-- [**Kaartfototegel**](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile): Luchtfoto- en satellietbeeldtegels ophalen.
+- [**Kaarttegel**](/rest/api/maps/render/getmaptile): Raster- (PNG) en vectortegels ophalen voor de basiskaarten (wegen, grenzen, achtergrond).
+- [**Kaartfototegel**](/rest/api/maps/render/getmapimagerytile): Luchtfoto- en satellietbeeldtegels ophalen.
 
 > [!TIP]
 > Veel Google Maps-toepassingen zijn enkele jaren geleden gewijzigd van ervaringen met interactieve kaarten in statische kaartafbeeldingen. Dit is gedaan als kostenbesparingsmethode. In Azure Maps is het doorgaans kosteneffectiever om het interactieve kaartbesturingselement in de Web SDK te gebruiken. Het interactieve kaartbesturingselement wordt in rekening gebracht op basis van het aantal geladen tegels. Kaarttegels in Azure Maps zijn groot. Vaak zijn er slechts enkele tegels nodig om dezelfde kaartweergave opnieuw te maken als een statische kaart. Kaarttegels worden automatisch in de cache opgeslagen door de browser. Als zodanig genereert het interactieve kaartbesturingselement vaak een fractie van een transactie bij het reproduceren van een statische kaartweergave. Bij het pannen en zoomen worden meer tegels geladen. Er zijn echter opties in het kaartbesturingselement om dit gedrag uit te schakelen. Het interactieve kaartbesturingselement biedt ook veel meer visualisatieopties dan de statischekaartservices.
@@ -426,7 +426,7 @@ Voeg tussen de coördinaten een rode lijnmatheid en pixeldikte toe, in de URL-pa
 
 Azure Maps biedt de afstandmatrix-API. Gebruik deze API om de reistijden en afstanden tussen een set locaties te berekenen met een afstandsmatrix. Deze is vergelijkbaar met de afstandsmatrix-API in Google Maps.
 
-- [**Routematrix**](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview): Hiermee worden asynchroon reistijden en afstanden voor een reeks startpunten en bestemmingen berekend. Ondersteunt maximaal 700 cellen per aanvraag. Dat is het aantal startpunten vermenigvuldigd met het aantal bestemmingen. Met die beperking in gedachte zijn dit voorbeelden van mogelijke matrixdimensies: 700x1, 50x10, 10x10, 28x25, 10x70.
+- [**Routematrix**](/rest/api/maps/route/postroutematrixpreview): Hiermee worden asynchroon reistijden en afstanden voor een reeks startpunten en bestemmingen berekend. Ondersteunt maximaal 700 cellen per aanvraag. Dat is het aantal startpunten vermenigvuldigd met het aantal bestemmingen. Met die beperking in gedachte zijn dit voorbeelden van mogelijke matrixdimensies: 700x1, 50x10, 10x10, 28x25, 10x70.
 
 > [!NOTE]
 > Een aanvraag voor de afstandsmatrix-API kan alleen worden gedaan met behulp van een POST-aanvraag waarin de startpunt- en bestemmingsinformatie is opgenomen in de hoofdtekst. Daarnaast moeten in Azure Maps alle startpunten en bestemmingen coördinaten zijn. Adressen moeten eerst een geocodering krijgen.
@@ -458,7 +458,7 @@ Raadpleeg de documentatie [Best practices voor routering](how-to-use-best-practi
 
 Azure Maps biedt een API voor het ophalen van de tijdzone van een coördinaat. De tijdzone-API in Azure Maps is vergelijkbaar met de tijdzone-API in Google Maps:
 
-- [**Tijdzone per coördinaat**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezonebycoordinates): Een coördinaat opgeven en de tijdzonegegevens van de coördinaat ontvangen.
+- [**Tijdzone per coördinaat**](/rest/api/maps/timezone/gettimezonebycoordinates): Een coördinaat opgeven en de tijdzonegegevens van de coördinaat ontvangen.
 
 Deze tabel bevat de API-parameters in Google Maps en de vergelijkbare API-parameters in Azure Maps.
 
@@ -471,11 +471,11 @@ Deze tabel bevat de API-parameters in Google Maps en de vergelijkbare API-parame
 
 Naast deze API biedt Azure Maps een aantal andere tijdzone-API's. Met deze API's wordt de tijd geconverteerd op basis van de namen of de id's van de tijdzone:
 
-- [**Tijdzone op id**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezonebyid): Hiermee worden de huidige, historische en toekomstige tijdzonegegevens voor de opgegeven IANA-tijdzone-id geretourneerd.
-- [**Opsomming IANA-tijdzones**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezoneenumiana): Retourneert een volledige lijst met IANA-tijdzone-id's. Updates in de IANA-service worden binnen één dag in het systeem doorgevoerd.
-- [**Opsomming Windows-tijdzones**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezoneenumwindows): Retourneert een volledige lijst met Windows-tijdzone-id's.
-- [**IANA-tijdzoneversie**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezoneianaversion): Retourneert het huidige IANA-versienummer dat wordt gebruikt door Azure Maps.
-- [**Windows-tijdzone naar IANA**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezonewindowstoiana): Retourneert de overeenkomstige IANA-id van een geldige Windows-tijdzone-id. Er kunnen meerdere IANA-id's voor één Windows-id worden geretourneerd.
+- [**Tijdzone op id**](/rest/api/maps/timezone/gettimezonebyid): Hiermee worden de huidige, historische en toekomstige tijdzonegegevens voor de opgegeven IANA-tijdzone-id geretourneerd.
+- [**Opsomming IANA-tijdzones**](/rest/api/maps/timezone/gettimezoneenumiana): Retourneert een volledige lijst met IANA-tijdzone-id's. Updates in de IANA-service worden binnen één dag in het systeem doorgevoerd.
+- [**Opsomming Windows-tijdzones**](/rest/api/maps/timezone/gettimezoneenumwindows): Retourneert een volledige lijst met Windows-tijdzone-id's.
+- [**IANA-tijdzoneversie**](/rest/api/maps/timezone/gettimezoneianaversion): Retourneert het huidige IANA-versienummer dat wordt gebruikt door Azure Maps.
+- [**Windows-tijdzone naar IANA**](/rest/api/maps/timezone/gettimezonewindowstoiana): Retourneert de overeenkomstige IANA-id van een geldige Windows-tijdzone-id. Er kunnen meerdere IANA-id's voor één Windows-id worden geretourneerd.
 
 ## <a name="client-libraries"></a>Clientbibliotheken
 

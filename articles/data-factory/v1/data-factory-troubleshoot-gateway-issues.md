@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 5d83f05c16004edc3ad4842b7e4e9d4b9babe577
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b12ff431b2d164baf4f70fa5341f538b16bca51
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85319064"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896562"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Problemen oplossen met behulp van Data Management Gateway
 Dit artikel bevat informatie over het oplossen van problemen met het gebruik van Data Management Gateway.
@@ -86,7 +86,7 @@ Mogelijk wordt het volgende fout bericht weer gegeven wanneer u een gateway regi
 
 `Error: The gateway key is invalid or empty. Specify a valid gateway key from the portal.`
 
-![De gateway sleutel is ongeldig of leeg](media/data-factory-troubleshoot-gateway-issues/gateway-key-is-invalid-or-empty.png)
+![Scherm opname van het fout bericht dat aangeeft dat de gateway sleutel ongeldig of leeg is.](media/data-factory-troubleshoot-gateway-issues/gateway-key-is-invalid-or-empty.png)
 
 #### <a name="cause"></a>Oorzaak
 De gateway sleutel is opnieuw gegenereerd of de gateway is verwijderd uit het Azure Portal. Dit kan ook gebeuren als de Data Management Gateway Setup niet het meest recent is.
@@ -107,14 +107,14 @@ Mogelijk wordt het volgende fout bericht weer gegeven wanneer u een gateway regi
 Deze fout kan optreden omdat de gateway is verwijderd of de gekoppelde gateway sleutel opnieuw is gegenereerd.
 
 #### <a name="resolution"></a>Oplossing
-Als de gateway is verwijderd, maakt u de gateway opnieuw vanuit de portal, klikt u op **registreren**, kopieert u de sleutel uit de portal, plakt u deze en probeert u de gateway te registreren.
+Als de gateway is verwijderd, maakt u de gateway opnieuw vanuit de portal, klikt u op **registreren** , kopieert u de sleutel uit de portal, plakt u deze en probeert u de gateway te registreren.
 
 Als de gateway nog bestaat, maar de bijbehorende sleutel opnieuw is gegenereerd, gebruikt u de nieuwe sleutel om de gateway te registreren. Als u de sleutel niet hebt, genereert u de sleutel opnieuw vanuit de portal.
 
 ### <a name="7-problem"></a>7. probleem
 Wanneer u een gateway wilt registreren, moet u mogelijk het pad en het wacht woord voor een certificaat invoeren.
 
-![Certificaat opgeven](media/data-factory-troubleshoot-gateway-issues/specify-certificate.png)
+![Scherm afbeelding die laat zien waar u het pad en het wacht woord voor het certificaat opgeeft.](media/data-factory-troubleshoot-gateway-issues/specify-certificate.png)
 
 #### <a name="cause"></a>Oorzaak
 De gateway is eerder geregistreerd op andere computers. Tijdens de eerste registratie van een gateway is een versleutelings certificaat gekoppeld aan de gateway. Het certificaat kan op zichzelf worden gegenereerd door de gateway of door de gebruiker worden geleverd.  Dit certificaat wordt gebruikt om referenties van het gegevens archief (gekoppelde service) te versleutelen.  
@@ -204,7 +204,7 @@ Het TLS/SSL-certificaat is mogelijk verloren gegaan op de gateway computer. De g
 Volg deze stappen om het probleem op te lossen:
 
 1. Start Data Management Gateway Configuration Manager.
-2. Schakel over naar het tabblad **Instellingen**.  
+2. Schakel over naar het tabblad **Instellingen** .  
 3. Klik op de knop **wijzigen** om het TLS/SSL-certificaat te wijzigen.
 
    ![Knop certificaat wijzigen](media/data-factory-troubleshoot-gateway-issues/change-button-ssl-certificate.png)
@@ -233,7 +233,7 @@ Voer de volgende stappen uit als u verbinding met het gegevens archief of stuur 
 
 1. Start Data Management Gateway Configuration Manager op de gateway computer.
 2. Schakel over naar het tabblad **Diagnostische gegevens** .
-3. Voeg in **verbinding testen**de waarden van de gateway groep toe.
+3. Voeg in **verbinding testen** de waarden van de gateway groep toe.
 4. Klik op **testen** om te zien of u verbinding kunt maken met de on-premises gegevens bron vanaf de gateway computer met behulp van de verbindings gegevens en referenties. Als de testverbinding ook niet lukt nadat u een stuurprogramma hebt geïnstalleerd, start u de gateway opnieuw op om de meest recente wijziging op te halen.
 
 ![Verbinding testen op het tabblad Diagnostische gegevens](media/data-factory-troubleshoot-gateway-issues/test-connection-in-diagnostics-tab.png)
@@ -252,7 +252,7 @@ Wanneer u contact opneemt met Microsoft Ondersteuning om hulp te krijgen bij het
 4. Beschrijving Klik op **Privacy** om de privacyverklaring van micro soft Web Services te bekijken.
 5. Wanneer u tevreden bent met wat u gaat uploaden, klikt u op **Logboeken verzenden** om de logboeken van de afgelopen zeven dagen naar micro soft te verzenden voor het oplossen van problemen. U ziet de status van de bewerking voor het verzenden van Logboeken, zoals wordt weer gegeven in de volgende scherm afbeelding.
 
-    ![Data Management Gateway status logboeken verzenden](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-status.png)
+    ![Scherm opname van de weer gave van de status van de bewerking voor het verzenden van Logboeken.](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-status.png)
 6. Nadat de bewerking is voltooid, ziet u een dialoog venster, zoals wordt weer gegeven in de volgende scherm afbeelding.
 
     ![Data Management Gateway status logboeken verzenden](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-result.png)
@@ -278,7 +278,7 @@ Klik op de koppeling **Archief gateway logboeken** om logboeken te archiveren en
 ### <a name="locate-gateway-logs"></a>Gateway logboeken zoeken
 Gedetailleerde informatie over de gateway Logboeken vindt u in de Windows-gebeurtenis Logboeken.
 
-1. Start Windows **Logboeken**.
+1. Start Windows **Logboeken** .
 2. Zoek Logboeken in de **Logboeken van toepassingen en services**  >  **Data Management Gateway** map.
 
    Wanneer u problemen met de gateway wilt oplossen, zoekt u naar fout niveau gebeurtenissen in de logboeken.
