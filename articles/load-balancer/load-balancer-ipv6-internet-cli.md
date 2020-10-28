@@ -9,17 +9,17 @@ keywords: IPv6, Azure load balancer, dual stack, openbaar IP, systeem eigen IPv6
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: how-to
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-azurecli
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: edc17b9636792ce00458716e3461077fa689b3ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97fdf55032e92585d723b54e21079098cdc19636
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87001570"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735916"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Een open bare load balancer met IPv6 maken met behulp van Azure CLI
 
@@ -48,11 +48,11 @@ De volgende stappen laten zien hoe u een open bare load balancer maakt met behul
 
 Als u een load balancer wilt implementeren, moet u de volgende objecten maken en configureren:
 
-* **Front-end-IP-configuratie**: bevat open bare IP-adressen voor binnenkomend netwerk verkeer.
-* **Back-end-adres groep**: bevat netwerk interfaces (nic's) voor de virtuele machines om netwerk verkeer van de Load Balancer te ontvangen.
-* Taakverdelings **regels**: bevat regels die een open bare poort op de Load Balancer toewijzen aan een poort in de back-end-adres groep.
-* **Binnenkomende NAT-regels**: bevat Network Address Translation (NAT) regels die een open bare poort op de Load Balancer toewijzen aan een poort voor een specifieke virtuele machine in de back-end-adres groep.
-* **Tests**: bevat status tests die worden gebruikt om de beschik baarheid van exemplaren van virtuele machines in de back-end-adres groep te controleren.
+* **Front-end-IP-configuratie** : bevat open bare IP-adressen voor binnenkomend netwerk verkeer.
+* **Back-end-adres groep** : bevat netwerk interfaces (nic's) voor de virtuele machines om netwerk verkeer van de Load Balancer te ontvangen.
+* Taakverdelings **regels** : bevat regels die een open bare poort op de Load Balancer toewijzen aan een poort in de back-end-adres groep.
+* **Binnenkomende NAT-regels** : bevat Network Address Translation (NAT) regels die een open bare poort op de Load Balancer toewijzen aan een poort voor een specifieke virtuele machine in de back-end-adres groep.
+* **Tests** : bevat status tests die worden gebruikt om de beschik baarheid van exemplaren van virtuele machines in de back-end-adres groep te controleren.
 
 ## <a name="set-up-azure-cli"></a>Azure CLI instellen
 
@@ -122,7 +122,7 @@ In dit voor beeld voert u de Azure CLI-hulpprogram ma's uit in een Power shell-o
     > [!IMPORTANT]
     > De load balancer gebruikt het domein label van het open bare IP-adres als Fully Qualified Domain Name (FQDN). Dit is een wijziging ten opzichte van de klassieke implementatie, waarbij de naam van de Cloud service wordt gebruikt als load balancer FQDN.
     >
-    > In dit voor beeld is de FQDN *contoso09152016.southcentralus.cloudapp.Azure.com*.
+    > In dit voor beeld is de FQDN *contoso09152016.southcentralus.cloudapp.Azure.com* .
 
 ## <a name="create-front-end-and-back-end-pools"></a>Front-end-en back-end-Pools maken
 

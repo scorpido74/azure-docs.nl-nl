@@ -6,16 +6,16 @@ author: avanigupta
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.devlang: csharp
-ms.custom: devx-track-dotnet
+ms.custom: devx-track-dotnet, devx-track-azurecli
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: 3c4bdf1268aea06d7b67776a4022c608549994e7
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: b48adfdfda4b3e120b2246e67a70000d25c25f3a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074852"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737093"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>Automatisch back-ups maken van app-configuratie archieven
 
@@ -62,7 +62,7 @@ az group create --name $resourceGroupName --location westus
 ## <a name="create-app-configuration-stores"></a>App-configuratie archieven maken
 
 Maak uw primaire en secundaire app-configuratie archieven in verschillende regio's.
-Vervang  `<primary_appconfig_name>` en `<secondary_appconfig_name>` door unieke namen voor uw configuratie archieven. Elke archief naam moet uniek zijn omdat deze wordt gebruikt als een DNS-naam.
+Vervang `<primary_appconfig_name>` en `<secondary_appconfig_name>` door unieke namen voor uw configuratie archieven. Elke archief naam moet uniek zijn omdat deze wordt gebruikt als een DNS-naam.
 
 ```azurecli-interactive
 primaryAppConfigName="<primary_appconfig_name>"
@@ -213,7 +213,7 @@ Als u wilt testen of alles werkt, kunt u een sleutel waarde uit het primaire arc
 az appconfig kv set --name $primaryAppConfigName --key Foo --value Bar --yes
 ```
 
-U hebt de gebeurtenis geactiveerd. Na enkele ogen blikken wordt de gebeurtenis melding door Event Grid naar uw wachtrij verzonden. *Nadat de volgende geplande uitvoering van de functie is uitgevoerd*, bekijkt u de configuratie-instellingen in het secundaire archief om te zien of deze de bijgewerkte sleutel waarde uit het primaire archief bevat.
+U hebt de gebeurtenis geactiveerd. Na enkele ogen blikken wordt de gebeurtenis melding door Event Grid naar uw wachtrij verzonden. *Nadat de volgende geplande uitvoering van de functie is uitgevoerd* , bekijkt u de configuratie-instellingen in het secundaire archief om te zien of deze de bijgewerkte sleutel waarde uit het primaire archief bevat.
 
 > [!NOTE]
 > U kunt [de functie hand matig activeren](../azure-functions/functions-manually-run-non-http.md) tijdens het testen en oplossen van problemen zonder te wachten op de geplande timer trigger.

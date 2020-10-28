@@ -6,16 +6,16 @@ author: ruixinxu
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
-ms.date: 05/01/2020
+ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: d0063594309dc7a1c12c61b6dd18fec1d93f1082
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 02f304af10ae1907326d3f77f318a058155a4c21
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893081"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738756"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>Synapse Studio-notebooks maken, ontwikkelen en onderhouden in azure Synapse Analytics
 
@@ -32,7 +32,7 @@ In dit artikel wordt beschreven hoe u notitie blokken gebruikt in azure Synapse 
 
 ## <a name="create-a-notebook"></a>Een notebook maken
 
-Er zijn twee manieren om een notitie blok te maken. U kunt een nieuw notitie blok maken of een bestaand notitie blok importeren in een Azure Synapse-werk ruimte vanuit het **objectverkenner**. Azure Synapse Studio-notebooks kunnen standaard Jupyter Notebook IPYNB-bestanden herkennen.
+Er zijn twee manieren om een notitie blok te maken. U kunt een nieuw notitie blok maken of een bestaand notitie blok importeren in een Azure Synapse-werk ruimte vanuit het **objectverkenner** . Azure Synapse Studio-notebooks kunnen standaard Jupyter Notebook IPYNB-bestanden herkennen.
 
 ![import notitieblok maken](./media/apache-spark-development-using-notebooks/synapse-create-import-notebook.png)
 
@@ -44,11 +44,11 @@ Notitie blokken bestaan uit cellen. Dit zijn afzonderlijke blokken code of tekst
 
 Er zijn meerdere manieren om een nieuwe cel aan uw notitie blok toe te voegen.
 
-1. Vouw de knop linksboven **+ cel** uit en selecteer **code-cel toevoegen** of **tekst toevoegen**.
+1. Vouw de knop linksboven **+ cel** uit en selecteer **code-cel toevoegen** of **tekst toevoegen** .
 
     ![add-cel-with-Cell-knop](./media/apache-spark-development-using-notebooks/synapse-add-cell-1.png)
 
-2. Beweeg de muis aanwijzer over de ruimte tussen twee cellen en selecteer **code toevoegen** of **tekst toevoegen**.
+2. Beweeg de muis aanwijzer over de ruimte tussen twee cellen en selecteer **code toevoegen** of **tekst toevoegen** .
 
     ![add-cel: tussen ruimte](./media/apache-spark-development-using-notebooks/synapse-add-cell-2.png)
 
@@ -142,7 +142,7 @@ U kunt ook sneltoetsen gebruiken [onder de opdracht modus](#shortcut-keys-under-
 
 ### <a name="delete-a-cell"></a>Een cel verwijderen
 
-Als u een cel wilt verwijderen, selecteert u de weglatings tekens (...) om het menu met extra celwaarden helemaal rechts te openen en selecteert u vervolgens **cel verwijderen**. 
+Als u een cel wilt verwijderen, selecteert u de weglatings tekens (...) om het menu met extra celwaarden helemaal rechts te openen en selecteert u vervolgens **cel verwijderen** . 
 
 U kunt ook sneltoetsen gebruiken [onder de opdracht modus](#shortcut-keys-under-command-mode). Druk op **d, d** om de huidige cel te verwijderen.
   
@@ -167,12 +167,12 @@ U kunt de code cellen in uw notitie blok afzonderlijk of in één keer uitvoeren
 
 Er zijn verschillende manieren om de code in een cel uit te voeren.
 
-1. Plaats de muis aanwijzer op de cel die u wilt uitvoeren en selecteer de knop **cel uitvoeren** of druk op **CTRL + ENTER**.
+1. Plaats de muis aanwijzer op de cel die u wilt uitvoeren en selecteer de knop **cel uitvoeren** of druk op **CTRL + ENTER** .
 
    ![Run-cel-1](./media/apache-spark-development-using-notebooks/synapse-run-cell.png)
 
 
-2. Selecteer de weglatings tekens (**...**) om het menu met de extra celwaarden helemaal rechts te openen. Selecteer vervolgens **cel uitvoeren**.
+2. Selecteer de weglatings tekens ( **...** ) om het menu met de extra celwaarden helemaal rechts te openen. Selecteer vervolgens **cel uitvoeren** .
 
    ![Run-cel-2](./media/apache-spark-development-using-notebooks/synapse-run-cell-2.png)
    
@@ -186,7 +186,7 @@ Selecteer de knop **alles uitvoeren** om alle cellen in het huidige notitie blok
 
 ### <a name="run-all-cells-above-or-below"></a>Alle cellen boven of onder uitvoeren
 
-Selecteer de weglatings tekens (**...**) om het menu met de extra celwaarden helemaal rechts te openen. Selecteer vervolgens **cellen hierboven uitvoeren** om alle cellen boven de huidige in de reeks uit te voeren. Selecteer **onderstaande cellen uitvoeren** om alle cellen onder de huidige in de reeks uit te voeren.
+Selecteer de weglatings tekens ( **...** ) om het menu met de extra celwaarden helemaal rechts te openen. Selecteer vervolgens **cellen hierboven uitvoeren** om alle cellen boven de huidige in de reeks uit te voeren. Selecteer **onderstaande cellen uitvoeren** om alle cellen onder de huidige in de reeks uit te voeren.
 
    ![Run-cellen-boven-of-onder](./media/apache-spark-development-using-notebooks/synapse-run-cells-above-or-below.png)
 
@@ -211,7 +211,7 @@ Het aantal taken per taak of fase helpt u bij het identificeren van het parallel
 
 ### <a name="spark-session-config"></a>Configuratie van Spark-sessie
 
-U kunt de duur van de time-out, het nummer en de grootte van de uitvoerder opgeven om aan de huidige Spark-sessie te geven in de **sessie configureren**. De Spark-sessie moet opnieuw worden gestart om de configuratie wijzigingen van kracht te laten worden. Alle notebook-variabelen in de cache zijn gewist.
+U kunt de duur van de time-out, het nummer en de grootte van de uitvoerder opgeven om aan de huidige Spark-sessie te geven in de **sessie configureren** . De Spark-sessie moet opnieuw worden gestart om de configuratie wijzigingen van kracht te laten worden. Alle notebook-variabelen in de cache zijn gewist.
 
 [![sessie beheer](./media/apache-spark-development-using-notebooks/synapse-spark-session-management.png)](./media/apache-spark-development-using-notebooks/synapse-spark-session-management.png#lightbox)
 
@@ -275,7 +275,7 @@ U kunt rechtstreeks toegang krijgen tot gegevens in het primaire opslag account.
 
 ### <a name="produce-rendered-table-view"></a>Weer gave van gerenderde tabel genereren
 
-Een weer gave met resultaten in tabel vorm wordt geleverd met de optie voor het maken van een staaf diagram, lijn diagram, cirkel diagram, spreidings diagram en vlak diagram. U kunt uw gegevens visualiseren zonder dat u code hoeft te schrijven. De grafieken kunnen worden aangepast in de **grafiek opties**. 
+Een weer gave met resultaten in tabel vorm wordt geleverd met de optie voor het maken van een staaf diagram, lijn diagram, cirkel diagram, spreidings diagram en vlak diagram. U kunt uw gegevens visualiseren zonder dat u code hoeft te schrijven. De grafieken kunnen worden aangepast in de **grafiek opties** . 
 
 De uitvoer van **%% SQL** Magic-opdrachten wordt standaard weer gegeven in de gerenderde tabel weergave. U kunt aanroepen <code>display(df)</code> op Spark DataFrames, Pandas DataFrames, List of robuuste gedistribueerde gegevens sets (RDD) functie voor het maken van de gerenderde tabel weergave.
 
@@ -294,9 +294,9 @@ U kunt gebruiken <code>display(df, summary = True)</code> om de statistische sam
 
 ### <a name="render-html-or-interactive-libraries"></a>HTML-of interactieve bibliotheken weer geven
 
-U kunt HTML-code, waaronder Java script, CSS, D3 of interactieve Bibliotheken, zoals **bokeh**, weer geven met behulp van **displayHTML ()**.
+U kunt HTML-code, waaronder Java script, CSS, D3 of interactieve Bibliotheken, zoals **bokeh** , weer geven met behulp van **displayHTML ()** .
 
-De volgende afbeelding is een voor beeld van het uitzetten van glyphs over een kaart met behulp van **bokeh**.
+De volgende afbeelding is een voor beeld van het uitzetten van glyphs over een kaart met behulp van **bokeh** .
 
    ![bokeh-voor beeld](./media/apache-spark-development-using-notebooks/synapse-bokeh-image.png)
    
@@ -357,7 +357,7 @@ Beschik bare lijn-magices: [% lsmagic](https://ipython.readthedocs.io/en/stable/
 Beschik bare cel magics: [%% time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [%% timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit), [%% Capture](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture), [%% Write File](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile), [%% SQL](#use-multiple-languages), [%% pyspark](#use-multiple-languages), [%% Spark](#use-multiple-languages), [%% csharp](#use-multiple-languages)
 
 
-## <a name="orchestrate-notebook"></a>Notitie blok indelen
+## <a name="integrate-a-notebook"></a>Een notitie blok integreren
 
 ### <a name="add-a-notebook-to-a-pipeline"></a>Een notitie blok toevoegen aan een pijp lijn
 
@@ -399,7 +399,7 @@ Net als Jupyter-notebooks hebben Azure Synapse Studio-notebooks een modale gebru
 
 Met behulp van de volgende sneltoetsen kunt u eenvoudig navigeren en code uitvoeren in azure Synapse-notebooks.
 
-| Bewerking |Synapse Studio-notebook-snelkoppelingen  |
+| Actie |Synapse Studio-notebook-snelkoppelingen  |
 |--|--|
 |Voer de huidige cel uit en selecteer hieronder | SHIFT + ENTER |
 |De huidige cel uitvoeren en onder invoegen | ALT + ENTER |
@@ -418,7 +418,7 @@ Met behulp van de volgende sneltoetsen kunt u eenvoudig navigeren en code uitvoe
 
 Met de volgende sneltoetsen kunt u gemakkelijker code in azure Synapse-notebooks navigeren en uitvoeren in de bewerkings modus.
 
-| Bewerking |Synapse Studio-notebook-snelkoppelingen  |
+| Actie |Synapse Studio-notebook-snelkoppelingen  |
 |--|--|
 |Cursor omhoog verplaatsen | Omhoog |
 |Cursor omlaag verplaatsen|Omlaag|

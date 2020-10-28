@@ -6,16 +6,16 @@ ms.assetid: 5356a3a5-8dec-44ac-9709-0c2b707f6cb5
 ms.service: dns
 ms.devlang: azurecli
 ms.topic: how-to
-ms.custom: H1Hack27Feb2017
+ms.custom: H1Hack27Feb2017, devx-track-azurecli
 ms.workload: infrastructure-services
 ms.date: 05/15/2018
 ms.author: rohink
-ms.openlocfilehash: 4bf3ee75c9445856fb8a2ce789a3f2f345e720fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d3989b3c477a35d602f1ccf3e45d6f597f5d78d
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84701661"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737393"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>DNS-records en-record sets beheren in Azure DNS met behulp van de Azure CLI
 
@@ -46,7 +46,7 @@ Als de recordset nog niet bestaat, maakt u er met deze opdracht een. Als de reco
 
 Als er een nieuwe recordset wordt gemaakt, wordt een standaard time-to-live (TTL) van 3600 gebruikt. Zie [een DNS-recordset maken](#create-a-dns-record-set)voor instructies over het gebruik van verschillende TTLS.
 
-In het volgende voorbeeld maakt u een A-record met de naam *www* in de zone *contoso.com* in de resourcegroep *MyResourceGroup*. Het IP-adres van de A-record is *1.2.3.4*.
+In het volgende voorbeeld maakt u een A-record met de naam *www* in de zone *contoso.com* in de resourcegroep *MyResourceGroup* . Het IP-adres van de A-record is *1.2.3.4* .
 
 ```azurecli
 az network dns record-set a add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name www --ipv4-address 1.2.3.4
@@ -60,7 +60,7 @@ az network dns record-set a add-record --resource-group myresourcegroup --zone-n
 
 ## <a name="create-a-dns-record-set"></a>Een DNS-recordset maken
 
-In de bovenstaande voor beelden is de DNS-record toegevoegd aan een bestaande recordset of is de Recordset *impliciet*gemaakt. U kunt ook de Recordset *expliciet* maken voordat u records toevoegt. Azure DNS ondersteunt ' empty ' record sets, die als tijdelijke aanduiding kunnen fungeren om een DNS-naam te reserveren voordat u DNS-records maakt. Lege record sets zijn zichtbaar in het Azure DNS besturings vlak, maar worden niet weer gegeven op de Azure DNS naam servers.
+In de bovenstaande voor beelden is de DNS-record toegevoegd aan een bestaande recordset of is de Recordset *impliciet* gemaakt. U kunt ook de Recordset *expliciet* maken voordat u records toevoegt. Azure DNS ondersteunt ' empty ' record sets, die als tijdelijke aanduiding kunnen fungeren om een DNS-naam te reserveren voordat u DNS-records maakt. Lege record sets zijn zichtbaar in het Azure DNS besturings vlak, maar worden niet weer gegeven op de Azure DNS naam servers.
 
 Record sets worden gemaakt met behulp van de `az network dns record-set <record-type> create` opdracht. Zie `az network dns record-set <record-type> create --help` voor help.
 
@@ -137,7 +137,7 @@ az network dns record-set ptr add-record --resource-group myresourcegroup --zone
 
 ### <a name="create-an-srv-record"></a>Een SRV-record maken
 
-Wanneer u een [SRV-recordset](dns-zones-records.md#srv-records)maakt, geeft u de * \_ service* en het * \_ protocol* op in de naam van de recordset. Het is niet nodig om " \@ " in de naam van de recordset op te nemen bij het maken van een SRV-recordset op de zone Apex.
+Wanneer u een [SRV-recordset](dns-zones-records.md#srv-records)maakt, geeft u de *\_ service* en het *\_ protocol* op in de naam van de recordset. Het is niet nodig om " \@ " in de naam van de recordset op te nemen bij het maken van een SRV-recordset op de zone Apex.
 
 ```azurecli
 az network dns record-set srv add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name _sip._tls --priority 10 --weight 5 --port 8080 --target sip.contoso.com
@@ -157,7 +157,7 @@ Als u een bestaande recordset wilt ophalen, gebruikt u `az network dns record-se
 
 Als bij het maken van een record of recordset moet de opgegeven naam van de recordset een *relatieve* naam zijn, wat betekent dat de naam van de zone moet worden uitgesloten. U moet ook het record type opgeven, de zone met de recordset en de resource groep die de zone bevat.
 
-In het volgende voor beeld wordt de record- *www* van het type A uit zone *contoso.com* in de resource groep *MyResourceGroup*opgehaald:
+In het volgende voor beeld wordt de record- *www* van het type A uit zone *contoso.com* in de resource groep *MyResourceGroup* opgehaald:
 
 ```azurecli
 az network dns record-set a show --resource-group myresourcegroup --zone-name contoso.com --name www
@@ -167,7 +167,7 @@ az network dns record-set a show --resource-group myresourcegroup --zone-name co
 
 U kunt alle records in een DNS-zone weer geven met behulp van de `az network dns record-set list` opdracht. Zie `az network dns record-set list --help` voor help.
 
-In dit voor beeld worden alle record sets in de zone *contoso.com*als resultaat gegeven in de *MyResourceGroup*van de resource groep, ongeacht de naam of het record type:
+In dit voor beeld worden alle record sets in de zone *contoso.com* als resultaat gegeven in de *MyResourceGroup* van de resource groep, ongeacht de naam of het record type:
 
 ```azurecli
 az network dns record-set list --resource-group myresourcegroup --zone-name contoso.com
@@ -193,7 +193,7 @@ Met deze opdracht wordt een DNS-record uit een recordset verwijderd. Als de laat
 
 U moet de record opgeven die moet worden verwijderd en de zone waarvan deze moet worden verwijderd, met dezelfde para meters als bij het maken van een record met `az network dns record-set <record-type> add-record` . Deze para meters worden beschreven in [een DNS-record maken](#create-a-dns-record) en [records van andere typen maken](#create-records-of-other-types) .
 
-In het volgende voor beeld wordt de A-record met de waarde 1.2.3.4 verwijderd uit de recordset met de naam ' *www* ' in de zone *contoso.com*in de resource groep *MyResourceGroup*.
+In het volgende voor beeld wordt de A-record met de waarde 1.2.3.4 verwijderd uit de recordset met de naam ' *www* ' in de zone *contoso.com* in de resource groep *MyResourceGroup* .
 
 ```azurecli
 az network dns record-set a remove-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "www" --ipv4-address 1.2.3.4
@@ -222,7 +222,7 @@ In tegens telling tot de meeste andere record types kan een CNAME-recordset alle
 
 In plaats daarvan kunt u een CNAME-record wijzigen met `az network dns record-set cname set-record` . Meer informatie vindt u in `az network dns record-set cname set-record --help`
 
-In het voor beeld wordt de CNAME-recordset set *www* in de zone *contoso.com*in de resource groep *MyResourceGroup*gewijzigd in ' www.fabrikam.net ' in plaats van de bestaande waarde:
+In het voor beeld wordt de CNAME-recordset set *www* in de zone *contoso.com* in de resource groep *MyResourceGroup* gewijzigd in ' www.fabrikam.net ' in plaats van de bestaande waarde:
 
 ```azurecli
 az network dns record-set cname set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-cname --cname www.fabrikam.net
@@ -234,7 +234,7 @@ In tegens telling tot de meeste andere record types kan een CNAME-recordset alle
 
 In plaats daarvan kunt u het SOA-record wijzigen `az network dns record-set soa update` . Zie `az network dns record-set soa update --help` voor help.
 
-In het volgende voor beeld ziet u hoe u de eigenschap Email van de SOA-record voor de zone *contoso.com* in de resource groep *MyResourceGroup*kunt instellen:
+In het volgende voor beeld ziet u hoe u de eigenschap Email van de SOA-record voor de zone *contoso.com* in de resource groep *MyResourceGroup* kunt instellen:
 
 ```azurecli
 az network dns record-set soa update --resource-group myresourcegroup --zone-name contoso.com --email admin.contoso.com
@@ -281,7 +281,7 @@ Record sets kunnen worden verwijderd met behulp van de `az network dns record-se
 > [!NOTE]
 > U kunt de SOA-en NS-record sets niet verwijderen uit de zone Apex ( `--name "@"` ).  Deze worden automatisch gemaakt wanneer de zone werd gemaakt en worden automatisch verwijderd wanneer de zone wordt verwijderd.
 
-In het volgende voor beeld wordt de recordset met de naam *www* van type A uit de zone *contoso.com* in de resource groep *MyResourceGroup*verwijderd:
+In het volgende voor beeld wordt de recordset met de naam *www* van type A uit de zone *contoso.com* in de resource groep *MyResourceGroup* verwijderd:
 
 ```azurecli
 az network dns record-set a delete --resource-group myresourcegroup --zone-name contoso.com --name www

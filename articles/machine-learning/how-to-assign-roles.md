@@ -10,13 +10,13 @@ ms.reviewer: Blackmist
 ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
-ms.custom: how-to, seodec18
-ms.openlocfilehash: e15092ee767e6840f190027b0a35af3ce07e8ba9
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.custom: how-to, seodec18, devx-track-azurecli
+ms.openlocfilehash: cba01684457c8b3a7f6c8c51c7d202bf8963658e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425639"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736605"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>De toegang tot een Azure Machine Learning-werkruimte beheren
 
@@ -45,7 +45,7 @@ Als u eigenaar bent van een werk ruimte, kunt u rollen toevoegen en verwijderen 
 - [PowerShell](/azure/role-based-access-control/role-assignments-powershell)
 - [Azure-CLI](/azure/role-based-access-control/role-assignments-cli)
 - [REST API](/azure/role-based-access-control/role-assignments-rest)
-- [Azure Resource Manager-sjablonen](/azure/role-based-access-control/role-assignments-template)
+- [Azure Resource Manager sjablonen](/azure/role-based-access-control/role-assignments-template)
 
 Als u de [Azure machine learning cli](reference-azure-machine-learning-cli.md)hebt geïnstalleerd, kunt u de CLI-opdrachten gebruiken om rollen toe te wijzen aan gebruikers:
 
@@ -173,7 +173,7 @@ Er worden momenteel geen [ingebouwde rollen van Azure](/azure/role-based-access-
 
 Ja hier volgen enkele algemene scenario's met aangepaste roldefinities die u als basis kunt gebruiken om uw eigen aangepaste rollen te definiëren:
 
-* __Data wetenschapper Custom__: Hiermee staat u toe dat een gegevens wetenschapper alle bewerkingen binnen een werk ruimte kan uitvoeren **, met uitzonde ring**van:
+* __Data wetenschapper Custom__ : Hiermee staat u toe dat een gegevens wetenschapper alle bewerkingen binnen een werk ruimte kan uitvoeren **, met uitzonde ring** van:
 
     * Maken van compute
     * Modellen implementeren in een productie AKS-cluster
@@ -209,7 +209,7 @@ Ja hier volgen enkele algemene scenario's met aangepaste roldefinities die u als
     }
     ```
 
-* __Gegevens wetenschapper beperkt aangepast__: een meer beperkte roldefinitie zonder joker tekens in de toegestane acties. Hiermee kunnen alle bewerkingen binnen een werk ruimte worden uitgevoerd **, met uitzonde ring**van:
+* __Gegevens wetenschapper beperkt aangepast__ : een meer beperkte roldefinitie zonder joker tekens in de toegestane acties. Hiermee kunnen alle bewerkingen binnen een werk ruimte worden uitgevoerd **, met uitzonde ring** van:
 
     * Maken van compute
     * Modellen implementeren in een productie AKS-cluster
@@ -270,7 +270,7 @@ Ja hier volgen enkele algemene scenario's met aangepaste roldefinities die u als
     }
     ```
      
-* __MLflow data wetenschapper Custom__: Hiermee staat u toe dat een gegevens wetenschapper alle ondersteunde MLflow-bewerkingen voor AzureML kan uitvoeren **, met uitzonde ring**van:
+* __MLflow data wetenschapper Custom__ : Hiermee staat u toe dat een gegevens wetenschapper alle ondersteunde MLflow-bewerkingen voor AzureML kan uitvoeren **, met uitzonde ring** van:
 
    * Maken van compute
    * Modellen implementeren in een productie AKS-cluster
@@ -310,7 +310,7 @@ Ja hier volgen enkele algemene scenario's met aangepaste roldefinities die u als
     }
     ```   
 
-* __MLOps aangepast__: Hiermee kunt u een rol aan een Service-Principal toewijzen en gebruiken om uw MLOps-pijp lijnen te automatiseren. Bijvoorbeeld voor het verzenden van uitvoeringen voor een al gepubliceerde pijp lijn:
+* __MLOps aangepast__ : Hiermee kunt u een rol aan een Service-Principal toewijzen en gebruiken om uw MLOps-pijp lijnen te automatiseren. Bijvoorbeeld voor het verzenden van uitvoeringen voor een al gepubliceerde pijp lijn:
 
     `mlops_custom_role.json` :
     ```json
@@ -351,7 +351,7 @@ Ja hier volgen enkele algemene scenario's met aangepaste roldefinities die u als
     }
     ```
 
-* __Werkruimte beheerder__: Hiermee kunt u alle bewerkingen binnen het bereik van een werk ruimte uitvoeren, **met uitzonde ring**van:
+* __Werkruimte beheerder__ : Hiermee kunt u alle bewerkingen binnen het bereik van een werk ruimte uitvoeren, **met uitzonde ring** van:
 
     * Een nieuwe werk ruimte maken
     * Quota voor abonnements-of werkruimte niveau toewijzen
@@ -381,7 +381,7 @@ Ja hier volgen enkele algemene scenario's met aangepaste roldefinities die u als
     ```
 
 <a name="labeler"></a>
-* __Labeler aangepast__: Hiermee kunt u een functie bereik definiëren die alleen is gericht op het labelen van gegevens:
+* __Labeler aangepast__ : Hiermee kunt u een functie bereik definiëren die alleen is gericht op het labelen van gegevens:
 
     `labeler_custom_role.json` :
     ```json

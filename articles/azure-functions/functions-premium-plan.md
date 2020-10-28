@@ -8,12 +8,13 @@ ms.author: jehollan
 ms.custom:
 - references_regions
 - fasttrack-edit
-ms.openlocfilehash: aaf5cb70e3099d84a54a22fa291f8f3ab9e0daa6
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+- devx-track-azurecli
+ms.openlocfilehash: 7efcff5709995898a6ec950dfea6450f7e0dd48d
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490744"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736796"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions Premium-abonnement
 
@@ -47,14 +48,14 @@ In het Premium-abonnement kunt u uw app altijd gereed hebben voor een bepaald aa
 > [!NOTE]
 > Elk Premium-abonnement heeft te allen tijde ten minste één actief (gefactureerd) exemplaar.
 
-U kunt het aantal always ready-instanties in de Azure Portal configureren door uw **functie-app**te selecteren, naar het tabblad **platform functies** te gaan en de opties voor **uitschalen** te selecteren. In het venster functie-app bewerken zijn de altijd gereede exemplaren specifiek voor die app.
+U kunt het aantal always ready-instanties in de Azure Portal configureren door uw **functie-app** te selecteren, naar het tabblad **platform functies** te gaan en de opties voor **uitschalen** te selecteren. In het venster functie-app bewerken zijn de altijd gereede exemplaren specifiek voor die app.
 
 ![Instellingen voor Elastic Scale](./media/functions-premium-plan/scale-out.png)
 
 U kunt ook altijd gereede exemplaren configureren voor een app met de Azure CLI.
 
 ```azurecli-interactive
-az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.minimumElasticInstanceCount=<desired_always_ready_count> --resource-type Microsoft.Web/sites 
+az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.minimumElasticInstanceCount=<desired_always_ready_count> --resource-type Microsoft.Web/sites
 ```
 
 #### <a name="pre-warmed-instances"></a>Vooraf gewarmde instanties
@@ -68,7 +69,7 @@ Zodra de eerste trigger is opgenomen in, worden de vijf altijd bewaarde instanti
 U kunt het aantal vooraf gehetede instanties voor een app wijzigen met behulp van de Azure CLI.
 
 ```azurecli-interactive
-az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites 
+az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites
 ```
 
 #### <a name="maximum-instances-for-an-app"></a>Maximum aantal exemplaren voor een app
@@ -99,7 +100,7 @@ Wanneer u het plan maakt, zijn er twee instellingen voor de plan grootte: het mi
 
 Als uw app exemplaren van de altijd gereede exemplaren vereist, kan deze worden uitgeschaald tot het aantal exemplaren de maximale burst-limiet bereikt.  Er worden alleen exemplaren van uw abonnement in rekening gebracht wanneer ze worden uitgevoerd en aan u worden toegewezen, per seconde.  We maken het beste om uw app te schalen naar de gedefinieerde maximum limiet.
 
-U kunt de plan grootte en maximum waarden in de Azure Portal configureren door de opties voor **Uitschalen** te selecteren in het plan of een functie-app die is geïmplementeerd in dat plan (onder **platform functies**).
+U kunt de plan grootte en maximum waarden in de Azure Portal configureren door de opties voor **Uitschalen** te selecteren in het plan of een functie-app die is geïmplementeerd in dat plan (onder **platform functies** ).
 
 U kunt ook de maximale burst-limiet van de Azure CLI verhogen:
 
@@ -122,9 +123,9 @@ az functionapp plan update -g <resource_group> -n <premium_plan_name> --min-inst
 
 ### <a name="available-instance-skus"></a>Beschik bare exemplaar-Sku's
 
-Bij het maken of schalen van uw plan kunt u kiezen uit drie instantie grootten.  U wordt gefactureerd voor het totale aantal kernen en geheugen dat per seconde aan u wordt toegewezen.  Uw app kan automatisch uitschalen naar meerdere exemplaren als dat nodig is.  
+Bij het maken of schalen van uw plan kunt u kiezen uit drie instantie grootten.  U wordt gefactureerd voor het totale aantal kernen en geheugen dat per seconde aan u wordt toegewezen.  Uw app kan automatisch uitschalen naar meerdere exemplaren als dat nodig is.
 
-|SKU|Kernen|Geheugen|Storage|
+|SKU|Kernen|Geheugen|Opslag|
 |--|--|--|--|
 |EP1|1|3,5 GB|250 GB|
 |EP2|2|7GB|250 GB|
@@ -141,20 +142,20 @@ Hieronder vindt u de momenteel ondersteunde maximum waarden voor scale-out voor 
 
 Bekijk de volledige regionale Beschik baarheid van functies hier: [Azure.com](https://azure.microsoft.com/global-infrastructure/services/?products=functions)
 
-|Regio| Windows | Linux |
+|Region| Windows | Linux |
 |--| -- | -- |
 |Australië - centraal| 100 | Niet beschikbaar |
 |Australië - centraal 2| 100 | Niet beschikbaar |
 |Australië - oost| 100 | 20 |
 |Australië - zuidoost | 100 | 20 |
-|Brazil South| 100 | 20 |
+|Brazilië - zuid| 100 | 20 |
 |Canada - midden| 100 | 20 |
-|Central US| 100 | 20 |
+|VS - centraal| 100 | 20 |
 |China - oost 2| 100 | 20 |
 |China - noord 2| 100 | 20 |
 |Azië - oost| 100 | 20 |
 |VS - oost | 100 | 20 |
-|US - oost 2| 100 | 20 |
+|VS - oost 2| 100 | 20 |
 |Frankrijk - centraal| 100 | 20 |
 |Duitsland - west-centraal| 100 | Niet beschikbaar |
 |Japan - oost| 100 | 20 |
@@ -164,7 +165,7 @@ Bekijk de volledige regionale Beschik baarheid van functies hier: [Azure.com](ht
 |VS - noord-centraal| 100 | 20 |
 |Europa - noord| 100 | 20 |
 |Noorwegen - oost| 100 | 20 |
-|South Central US| 100 | 20 |
+|VS - zuid-centraal| 100 | 20 |
 |India - zuid | 100 | Niet beschikbaar |
 |Azië - zuidoost| 100 | 20 |
 |Zwitserland - noord| 100 | Niet beschikbaar |

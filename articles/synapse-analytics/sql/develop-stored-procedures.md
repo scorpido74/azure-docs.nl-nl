@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 09/23/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 2089a6895a34c74de9d3e14beaa3807bbb1b6e6b
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 1db3b224d23664c83f21e77dcb445b0fb043a4c3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279080"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737845"
 ---
 # <a name="use-stored-procedures-in-synapse-sql"></a>Opgeslagen procedures in Synapse SQL gebruiken
 
@@ -24,6 +24,9 @@ Tips voor het implementeren van opgeslagen procedures in Synapse SQL pool voor h
 ## <a name="what-to-expect"></a>Wat u kunt verwachten
 
 Synapse SQL ondersteunt veel van de T-SQL-functies die worden gebruikt in SQL Server. Belang rijker is dat er specifieke functies zijn die u kunt gebruiken om de prestaties van uw oplossing te optimaliseren.
+
+> [!NOTE]
+> In de hoofd tekst van de procedure kunt u alleen de functies gebruiken die worden ondersteund in Synapse SQL surface area. Lees [dit artikel](overview-features.md) om objecten te identificeren, een instructie die kan worden gebruikt in opgeslagen procedures. In de voor beelden in deze artikelen worden generieke functies gebruikt die zowel in serverloze als ingerichte surface area beschikbaar zijn.
 
 Voor het behoud van de schaal en prestaties van de SQL-groep zijn er ook enkele functies en functionaliteit die gedrags verschillen hebben en andere die niet worden ondersteund.
 

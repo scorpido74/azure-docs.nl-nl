@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.custom: mqtt
-ms.openlocfilehash: 4e380fdcd72ab21f00272536b9f08145dcb09bc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03e05eb2bc56a07c2bda3d3fb224012abb3c9e4a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81728822"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735928"
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Ontwikkelaars handleiding voor Azure IoT Hub
 
@@ -52,7 +52,7 @@ Deze IoT Hub ontwikkelaars handleiding bevat de volgende artikelen:
 
 * [Bestanden uploaden vanaf een apparaat](iot-hub-devguide-file-upload.md) beschrijft hoe u bestanden van een apparaat kunt uploaden. Het artikel bevat ook informatie over onderwerpen, zoals de meldingen die het upload proces kan verzenden.
 
-* [Apparaat-Id's beheren in IOT hub](iot-hub-devguide-identity-registry.md)wordt beschreven welke gegevens elk id-REGI ster van de IOT-hub bevat. In dit artikel wordt ook beschreven hoe u deze kunt openen en wijzigen.
+* [Apparaat-Id's beheren in IOT hub](iot-hub-devguide-identity-registry.md) wordt beschreven welke gegevens elk id-REGI ster van de IOT-hub bevat. In dit artikel wordt ook beschreven hoe u deze kunt openen en wijzigen.
 
 * [Toegang tot IOT hub beheersen](iot-hub-devguide-security.md) het beveiligings model dat wordt gebruikt om toegang te verlenen tot IOT hub functionaliteit voor zowel apparaten als Cloud onderdelen. Het artikel bevat informatie over het gebruik van tokens en X. 509-certificaten en Details van de machtigingen die u kunt verlenen.
 

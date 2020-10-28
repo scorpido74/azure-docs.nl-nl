@@ -9,15 +9,15 @@ ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 01/4/2020
-ms.author: metan
+ms.author: metang
 ms.custom: cog-serv-seo-aug-2020
 keywords: lezers, personen die een taal willen leren, afbeeldingen weergeven, lezen verbeteren, inhoud lezen, vertalen
-ms.openlocfilehash: a537845c0256316f9c47317a8805fa989a624f60
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0661bd5f917a2bf071f11393ad8ac9af53ddfe97
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90985743"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631236"
 ---
 # <a name="what-is-immersive-reader"></a>Wat is Insluitende lezer?
 

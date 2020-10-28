@@ -6,16 +6,16 @@ services: storage
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 10/02/2020
+ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 4b2f819edd875130c57d487536691b4588dcc71f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dfc554a57e99fa4ccd66b1bbeec0be46e463988f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91772665"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738624"
 ---
 # <a name="monitoring-azure-files"></a>Bewakings Azure Files
 
@@ -51,20 +51,9 @@ Metrische gegevens en Logboeken in Azure Monitor ondersteunen alleen Azure Resou
 
 ## <a name="collection-and-routing"></a>Verzameling en route ring
 
-De metrische gegevens van het platform en het activiteiten logboek worden automatisch verzameld, maar kunnen worden doorgestuurd naar andere locaties met behulp van een diagnostische instelling. U moet een diagnostische instelling maken om bron logboeken te verzamelen. 
+De metrische gegevens van het platform en het activiteiten logboek worden automatisch verzameld, maar kunnen worden doorgestuurd naar andere locaties met behulp van een diagnostische instelling. 
 
-> [!NOTE]
-> Azure Storage-Logboeken in Azure Monitor bevinden zich in de open bare preview en is beschikbaar voor preview-tests in alle open bare Cloud regio's. Zie [Deze pagina](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)als u zich wilt inschrijven voor de preview-versie. Met deze preview-versie kunt u logboeken maken voor blobs (waaronder Azure Data Lake Storage Gen2), bestanden, wacht rijen, tabellen, Premium Storage-accounts in versie 1 voor algemeen gebruik en voor algemeen gebruik v2-opslag accounts. Klassieke opslag accounts worden niet ondersteund.
-
-Als u een diagnostische instelling wilt maken met behulp van de Azure Portal, de Azure CLI of Power shell, raadpleegt u [Diagnostische instelling maken voor het verzamelen van platform logboeken en metrische gegevens in azure](../../azure-monitor/platform/diagnostic-settings.md). 
-
-Zie [Diagnostische instelling voor Azure Storage](https://docs.microsoft.com/azure/azure-monitor/samples/resource-manager-diagnostic-settings#diagnostic-setting-for-azure-storage)voor een Azure Resource Manager sjabloon waarmee een diagnostische instelling wordt gemaakt.
-
-Wanneer u een diagnostische instelling maakt, kiest u het type opslag waarvoor u logboeken wilt inschakelen, zoals een blob, wachtrij, tabel of bestand. Kies voor Azure Files de optie **bestand**. 
-
-Als u de diagnostische instelling in de Azure Portal maakt, kunt u de resource uit een lijst selecteren. Als u Power shell of de Azure CLI gebruikt, moet u de resource-ID van het Azure Files-eind punt gebruiken. U kunt de resource-ID vinden in de Azure Portal door de pagina **Eigenschappen** van uw opslag account te openen.
-
-U moet ook een van de volgende categorieën bewerkingen opgeven waarvoor u logboeken wilt verzamelen. 
+Als u bron logboeken wilt verzamelen, moet u een diagnostische instelling maken. Wanneer u de instelling maakt, kiest u **bestand** als het type opslag waarvoor u logboeken wilt inschakelen. Geef vervolgens een van de volgende categorieën bewerkingen op waarvoor u logboeken wilt verzamelen. 
 
 | Categorie | Beschrijving |
 |:---|:---|
@@ -74,13 +63,198 @@ U moet ook een van de volgende categorieën bewerkingen opgeven waarvoor u logbo
 
 Als u de lijst met SMB-en REST-bewerkingen wilt ophalen die worden vastgelegd, raadpleegt u [geregistreerde bewerkingen voor opslag en status berichten](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) en [naslag informatie over Azure files bewakings gegevens](storage-files-monitoring-reference.md).
 
+## <a name="creating-a-diagnostic-setting"></a>Een diagnostische instelling maken
+
+U kunt een diagnostische instelling maken met behulp van de Azure Portal, Power shell, de Azure CLI of een Azure Resource Manager sjabloon. 
+
+Zie voor algemene instructies de [Diagnostische instelling maken voor het verzamelen van platform logboeken en metrische gegevens in azure](../../azure-monitor/platform/diagnostic-settings.md).
+
+### <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
+
+1. Meld u aan bij Azure Portal.
+
+2. Ga naar uw opslagaccount.
+
+3. Klik in de sectie **bewaking** op **Diagnostische instellingen (preview-versie)** .
+
+   > [!div class="mx-imgBorder"]
+   > ![Portal: Diagnostische logboeken](media/storage-files-monitoring/diagnostic-logs-settings-pane.png)   
+
+4. Kies **bestand** als het type opslag waarvoor u logboeken wilt inschakelen.
+
+5. Klik op **Diagnostische instelling toevoegen** .
+
+   > [!div class="mx-imgBorder"]
+   > ![Portal-resource logboeken-diagnostische instelling toevoegen](media/storage-files-monitoring/diagnostic-logs-settings-pane-2.png)
+
+   De pagina **Diagnostische instellingen** wordt weer gegeven.
+
+   > [!div class="mx-imgBorder"]
+   > ![Pagina Resource logboeken](media/storage-files-monitoring/diagnostic-logs-page.png)
+
+6. Voer in het veld **naam** van de pagina een naam in voor deze bron logboek instelling. Selecteer vervolgens welke bewerkingen u wilt registreren (lees-, schrijf-en verwijder bewerkingen) en waar u de logboeken wilt verzenden.
+
+#### <a name="archive-logs-to-a-storage-account"></a>Logboeken archiveren in een opslag account
+
+1. Selecteer het selectie vakje **archiveren naar een opslag account** en klik vervolgens op de knop **configureren** .
+
+   > [!div class="mx-imgBorder"]   
+   > ![Archief opslag voor Diagnostische instellingen](media/storage-files-monitoring/diagnostic-logs-settings-pane-archive-storage.png)
+
+2. Selecteer in de vervolg keuzelijst **opslag account** het opslag account waarnaar u de logboeken wilt archiveren, klik op de knop **OK** en klik vervolgens op de knop **Opslaan** .
+
+   > [!NOTE]
+   > Zie [Azure-resource logboeken archiveren](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage) om te begrijpen wat de vereisten zijn voor het opslag account voordat u een opslag account als export doel kiest.
+
+#### <a name="stream-logs-to-azure-event-hubs"></a>Logboeken streamen naar Azure Event Hubs
+
+1. Selecteer de **Stream naar een event hub** selectie vakje en klik vervolgens op de knop **configureren** .
+
+2. Kies in het deel venster **een event hub selecteren** de naam ruimte, naam en beleids naam van de Event hub waarnaar u de logboeken wilt streamen. 
+
+   > [!div class="mx-imgBorder"]
+   > ![Pagina Diagnostische instellingen Event Hub](media/storage-files-monitoring/diagnostic-logs-settings-pane-event-hub.png)
+
+3. Klik op de knop **OK** en klik vervolgens op de knop **Opslaan** .
+
+#### <a name="send-logs-to-azure-log-analytics"></a>Logboeken naar Azure Log Analytics verzenden
+
+1. Selecteer het selectie vakje **verzenden naar log Analytics** , selecteer een log Analytics-werk ruimte en klik vervolgens op de knop **Opslaan** .
+
+   > [!div class="mx-imgBorder"]   
+   > ![Diagnostische instellingen pagina logboek analyse](media/storage-files-monitoring/diagnostic-logs-settings-pane-log-analytics.png)
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+1. Open een Windows Power shell-opdracht venster en meld u aan bij uw Azure-abonnement met behulp van de `Connect-AzAccount` opdracht. Volg vervolgens de instructies op het scherm.
+
+   ```powershell
+   Connect-AzAccount
+   ```
+
+2. Stel uw actieve abonnement in op het abonnement van het opslag account waarvoor u logboek registratie wilt inschakelen.
+
+   ```powershell
+   Set-AzContext -SubscriptionId <subscription-id>
+   ```
+
+#### <a name="archive-logs-to-a-storage-account"></a>Logboeken archiveren in een opslag account
+
+Schakel Logboeken in met behulp van de Power shell [-cmdlet Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) samen met de `StorageAccountId` para meter.
+
+```powershell
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+```
+
+Vervang de `<storage-service-resource--id>` tijdelijke aanduiding in dit code fragment door de resource-id van de Azure-bestands service. U kunt de resource-ID vinden in de Azure Portal door de pagina **Eigenschappen** van uw opslag account te openen.
+
+U kunt `StorageRead` , `StorageWrite` en gebruiken `StorageDelete` voor de waarde van de **categorie** para meter.
+
+Hier volgt een voorbeeld:
+
+`Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/fileServices/default -StorageAccountId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount -Enabled $true -Category StorageWrite,StorageDelete`
+
+Zie [Azure resource logs archiveren via Azure PowerShell](https://docs.microsoft.com/azure/azure-monitor/platform/archive-diagnostic-logs#archive-diagnostic-logs-via-azure-powershell)voor een beschrijving van elke para meter.
+
+#### <a name="stream-logs-to-an-event-hub"></a>Logboeken streamen naar een Event Hub
+
+Schakel Logboeken in met behulp van de Power shell [-cmdlet Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) met de `EventHubAuthorizationRuleId` para meter.
+
+```powershell
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAuthorizationRuleId <event-hub-namespace-and-key-name> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+```
+
+Hier volgt een voorbeeld:
+
+`Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/fileServices/default -EventHubAuthorizationRuleId /subscriptions/20884142-a14v3-4234-5450-08b10c09f4/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey -Enabled $true -Category StorageDelete`
+
+Zie voor een beschrijving van elke para meter de [Stream-gegevens naar Event hubs via Power shell-cmdlets](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-event-hubs#via-powershell-cmdlets).
+
+#### <a name="send-logs-to-log-analytics"></a>Logboeken naar Log Analytics verzenden
+
+Schakel Logboeken in met behulp van de Power shell [-cmdlet Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) met de `WorkspaceId` para meter.
+
+```powershell
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <log-analytics-workspace-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+```
+
+Hier volgt een voorbeeld:
+
+`Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/fileServices/default -WorkspaceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace -Enabled $true -Category StorageDelete`
+
+Zie [Azure-resource logboeken streamen naar log Analytics werk ruimte in azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store)voor meer informatie.
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. Open eerst de [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview)of als u de Azure cli lokaal hebt [geïnstalleerd](https://docs.microsoft.com/cli/azure/install-azure-cli) , opent u een opdracht console toepassing zoals Windows Power shell.
+
+2. Als uw identiteit is gekoppeld aan meer dan één abonnement, stelt u uw actieve abonnement in op het abonnement van het opslag account waarvoor u logboeken wilt inschakelen.
+
+   ```azurecli-interactive
+   az account set --subscription <subscription-id>
+   ```
+
+   Vervang de `<subscription-id>` waarde van de tijdelijke aanduiding door de id van uw abonnement.
+
+#### <a name="archive-logs-to-a-storage-account"></a>Logboeken archiveren in een opslag account
+
+Schakel Logboeken in met behulp van de opdracht [AZ monitor Diagnostic-settings Create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) .
+
+```azurecli-interactive
+az monitor diagnostic-settings create --name <setting-name> --storage-account <storage-account-name> --resource <storage-service-resource-id> --resource-group <resource-group> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
+```
+
+Vervang de `<storage-service-resource--id>` tijdelijke aanduiding in dit code fragment door de bron-id Blob Storage-service. U kunt de resource-ID vinden in de Azure Portal door de pagina **Eigenschappen** van uw opslag account te openen.
+
+U kunt `StorageRead` , `StorageWrite` en gebruiken `StorageDelete` voor de waarde van de **categorie** para meter.
+
+Hier volgt een voorbeeld:
+
+`az monitor diagnostic-settings create --name setting1 --storage-account mystorageaccount --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/fileServices/default --resource-group myresourcegroup --logs '[{"category": StorageWrite, "enabled": true, "retentionPolicy": {"days": 90, "enabled": true}}]'`
+
+Zie voor een beschrijving van elke para meter de [Archief bron logboeken via de Azure cli](https://docs.microsoft.com/azure/azure-monitor/platform/archive-diagnostic-logs#archive-diagnostic-logs-via-the-azure-cli).
+
+#### <a name="stream-logs-to-an-event-hub"></a>Logboeken streamen naar een Event Hub
+
+Schakel Logboeken in met behulp van de opdracht [AZ monitor Diagnostic-settings Create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) .
+
+```azurecli-interactive
+az monitor diagnostic-settings create --name <setting-name> --event-hub <event-hub-name> --event-hub-rule <event-hub-namespace-and-key-name> --resource <storage-account-resource-id> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
+```
+
+Hier volgt een voorbeeld:
+
+`az monitor diagnostic-settings create --name setting1 --event-hub myeventhub --event-hub-rule /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/fileServices/default --logs '[{"category": StorageDelete, "enabled": true }]'`
+
+Zie voor een beschrijving van elke para meter de [gegevens stroom die u wilt Event hubs via Azure cli](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-event-hubs#via-azure-cli).
+
+#### <a name="send-logs-to-log-analytics"></a>Logboeken naar Log Analytics verzenden
+
+Schakel Logboeken in met behulp van de opdracht [AZ monitor Diagnostic-settings Create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) .
+
+```azurecli-interactive
+az monitor diagnostic-settings create --name <setting-name> --workspace <log-analytics-workspace-resource-id> --resource <storage-account-resource-id> --logs '[{"category": <category name>, "enabled": true "retentionPolicy": {"days": <days>, "enabled": <retention-bool}}]'
+```
+
+Hier volgt een voorbeeld:
+
+`az monitor diagnostic-settings create --name setting1 --workspace /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/fileServices/default --logs '[{"category": StorageDelete, "enabled": true ]'`
+
+ Zie [Azure-resource logboeken streamen naar log Analytics werk ruimte in azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store)voor meer informatie.
+
+### <a name="template"></a>[Sjabloon](#tab/template)
+
+Zie [Diagnostische instelling voor Azure Storage](https://docs.microsoft.com/azure/azure-monitor/samples/resource-manager-diagnostic-settings#diagnostic-setting-for-azure-storage)als u een Azure Resource Manager sjabloon wilt weer geven waarmee een diagnostische instelling wordt gemaakt.
+
+---
+
 ## <a name="analyzing-metrics"></a>Metrische gegevens analyseren
 
 U kunt metrische gegevens analyseren voor Azure Storage met metrische gegevens uit andere Azure-Services met behulp van Metrics Explorer. Open Metrics Explorer door **metrische gegevens** te kiezen in het menu **Azure monitor** . Zie aan de slag [met Azure Metrics Explorer](../../azure-monitor/platform/metrics-getting-started.md)voor meer informatie over het gebruik van dit hulp programma. 
 
 Voor metrische gegevens die dimensies ondersteunen, kunt u de metriek filteren met de gewenste dimensie waarde.  Zie [metrische dimensies](storage-files-monitoring-reference.md#metrics-dimensions)voor een volledige lijst met de dimensies die Azure Storage ondersteunt. De metrische gegevens voor Azure Files bevinden zich in de volgende naam ruimten: 
 
-- Microsoft.Storage/storageAccounts
+- Micro soft. Storage/Storage accounts
 - Micro soft. Storage/Storage accounts/fileServices
 
 Zie [Azure monitor ondersteunde metrische gegevens](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsfileservices)voor een lijst met alle Azure monitor metrische gegevens over ondersteuning, waaronder Azure files.
@@ -112,7 +286,7 @@ U kunt metrische waarden op account niveau van uw opslag account of de Azure Fil
    Get-AzMetric -ResourceId $resourceId -MetricNames "UsedCapacity" -TimeGrain 01:00:00
 ```
 
-### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 #### <a name="list-the-account-level-metric-definition"></a>De metrische definitie op account niveau weer geven
 
@@ -132,7 +306,7 @@ U kunt de metrische waarden van uw opslag account of de Azure Files-service leze
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H
 ```
 
-### <a name="net"></a>[.NET](#tab/dotnet)
+### <a name="net"></a>[.NET](#tab/azure-portal)
 
 Azure Monitor biedt de [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) de definitie en waarden van metrische gegevens te lezen. De [voorbeeld code](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) laat zien hoe u de SDK met verschillende para meters kunt gebruiken. U moet `0.18.0-preview` of een latere versie gebruiken voor metrische opslag gegevens.
  
@@ -272,6 +446,10 @@ In het volgende voor beeld ziet u hoe u metrische gegevens kunt lezen over de me
 
 ```
 
+# <a name="template"></a>[Sjabloon](#tab/template)
+
+N.v.t.
+
 ---
 
 ## <a name="analyzing-logs"></a>Logboeken analyseren
@@ -283,7 +461,7 @@ Als u de lijst met SMB-en REST-bewerkingen wilt ophalen die worden vastgelegd, r
 > [!NOTE]
 > Azure Storage-Logboeken in Azure Monitor bevinden zich in de open bare preview en is beschikbaar voor preview-tests in alle open bare Cloud regio's. Zie [Deze pagina](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)als u zich wilt inschrijven voor de preview-versie. Met deze preview-versie kunt u logboeken maken voor blobs (waaronder Azure Data Lake Storage Gen2), bestanden, wacht rijen, tabellen, Premium Storage-accounts in versie 1 voor algemeen gebruik en voor algemeen gebruik v2-opslag accounts. Klassieke opslag accounts worden niet ondersteund.
 
-Logboek vermeldingen worden alleen gemaakt als er aanvragen worden gedaan voor het service-eind punt. Als een opslag account bijvoorbeeld activiteit heeft in het eind punt van het bestand, maar niet in de tabel-of wachtrij-eind punten, worden alleen logboeken gemaakt die betrekking hebben op de bestands service. Azure Storage logboeken bevatten gedetailleerde informatie over geslaagde en mislukte aanvragen voor een opslag service. Deze informatie kan worden gebruikt voor het bewaken van afzonderlijke aanvragen en voor het vaststellen van problemen met een opslagservice. Aanvragen worden op de beste basis geregistreerd.
+Logboek vermeldingen worden alleen gemaakt als er aanvragen worden gedaan voor het service-eind punt. Als een opslag account bijvoorbeeld activiteit heeft in het eind punt van het bestand, maar niet in de tabel-of wachtrij-eind punten, worden alleen logboeken gemaakt die betrekking hebben op de Azure-bestands service. Azure Storage logboeken bevatten gedetailleerde informatie over geslaagde en mislukte aanvragen voor een opslag service. Deze informatie kan worden gebruikt voor het bewaken van afzonderlijke aanvragen en voor het vaststellen van problemen met een opslagservice. Aanvragen worden op de beste basis geregistreerd.
 
 ### <a name="log-authenticated-requests"></a>Geverifieerde aanvragen registreren
 
@@ -393,11 +571,11 @@ De volgende tabel bevat enkele voor beelden van scenario's om te controleren en 
 
 ### <a name="how-to-create-alerts-for-azure-files"></a>Waarschuwingen voor Azure Files maken
 
-1. Ga naar uw **opslag account** in de **Azure Portal**. 
+1. Ga naar uw **opslag account** in de **Azure Portal** . 
 
-2. Klik op **waarschuwingen** en klik vervolgens op **+ nieuwe waarschuwings regel**.
+2. Klik op **waarschuwingen** en klik vervolgens op **+ nieuwe waarschuwings regel** .
 
-3. Klik op **Resource bewerken**, selecteer het **bron type** voor het bestand en klik vervolgens op **gereed**. 
+3. Klik op **Resource bewerken** , selecteer het **bron type** voor het bestand en klik vervolgens op **gereed** . 
 
 4. Klik op **voor waarde selecteren** en geef de volgende informatie op voor de waarschuwing: 
 
@@ -407,7 +585,7 @@ De volgende tabel bevat enkele voor beelden van scenario's om te controleren en 
 
 5. Klik op **actie groep selecteren** en voeg een actie groep (E-mail, SMS, enzovoort) toe aan de waarschuwing door een bestaande actie groep te selecteren of een nieuwe actie groep te maken.
 
-6. Vul de details van de **waarschuwing** in, zoals de naam, **Beschrijving**en **Ernst**van de **waarschuwings regel**.
+6. Vul de details van de **waarschuwing** in, zoals de naam, **Beschrijving** en **Ernst** van de **waarschuwings regel** .
 
 7. Klik op **waarschuwings regel maken** om de waarschuwing te maken.
 
@@ -416,69 +594,69 @@ De volgende tabel bevat enkele voor beelden van scenario's om te controleren en 
 
 ### <a name="how-to-create-an-alert-if-a-file-share-is-throttled"></a>Een waarschuwing maken als een bestands share wordt beperkt
 
-1. Ga naar uw **opslag account** in de **Azure Portal**.
-2. Klik in de sectie **bewaking** op **waarschuwingen**en klik vervolgens op **+ nieuwe waarschuwings regel**.
-3. Klik op **Resource bewerken**, selecteer het **Bestands bron type** voor het opslag account en klik vervolgens op **gereed**. Als de naam van het opslag account bijvoorbeeld is `contoso` , selecteert u de `contoso/file` resource.
+1. Ga naar uw **opslag account** in de **Azure Portal** .
+2. Klik in de sectie **bewaking** op **waarschuwingen** en klik vervolgens op **+ nieuwe waarschuwings regel** .
+3. Klik op **Resource bewerken** , selecteer het **Bestands bron type** voor het opslag account en klik vervolgens op **gereed** . Als de naam van het opslag account bijvoorbeeld is `contoso` , selecteert u de `contoso/file` resource.
 4. Klik op **voor waarde selecteren** om een voor waarde toe te voegen.
 5. U ziet een lijst met signalen die worden ondersteund voor het opslag account. Selecteer de metrische gegevens van de **trans actie** .
-6. Klik op de Blade **signaal logica configureren** op de vervolg keuzelijst **dimensie naam** en selecteer **antwoord type**.
+6. Klik op de Blade **signaal logica configureren** op de vervolg keuzelijst **dimensie naam** en selecteer **antwoord type** .
 7. Klik op de vervolg keuzelijst **dimensie waarden** en selecteer **SUCCESSWITHTHROTTLING** (voor SMB) of **ClientThrottlingError** (voor rest).
 
    > [!NOTE]
-   > Als de dimensie waarde SuccessWithThrottling of ClientThrottlingError niet wordt weer gegeven, betekent dit dat de resource niet is beperkt. Als u de dimensie waarde wilt toevoegen, klikt u op **aangepaste waarde toevoegen** naast de vervolg keuzelijst **dimensie waarden** , typt u **SuccessWithThrottling** of **ClientThrottlingError**, klikt u op **OK** en herhaalt u stap #7.
+   > Als de dimensie waarde SuccessWithThrottling of ClientThrottlingError niet wordt weer gegeven, betekent dit dat de resource niet is beperkt. Als u de dimensie waarde wilt toevoegen, klikt u op **aangepaste waarde toevoegen** naast de vervolg keuzelijst **dimensie waarden** , typt u **SuccessWithThrottling** of **ClientThrottlingError** , klikt u op **OK** en herhaalt u stap #7.
 
-8. Klik op de vervolg keuzelijst **dimensie naam** en selecteer **Bestands share**.
+8. Klik op de vervolg keuzelijst **dimensie naam** en selecteer **Bestands share** .
 9. Klik op de vervolg keuzelijst **dimensie waarden** en selecteer de bestands share (s) waarop u een waarschuwing wilt ontvangen.
 
    > [!NOTE]
-   > Als de bestands share een standaard bestands share is, selecteert u **alle huidige en toekomstige waarden**. De vervolg keuzelijst met dimensie waarden bevat niet de bestands share (s) omdat metrische gegevens per share niet beschikbaar zijn voor standaard bestands shares. Het beperken van waarschuwingen voor standaard bestands shares wordt geactiveerd als een bestands share binnen het opslag account wordt beperkt en de waarschuwing niet kan bepalen welke bestands share is beperkt. Aangezien metrische gegevens per aandeel niet beschikbaar zijn voor standaard bestands shares, is de aanbeveling één bestands share per opslag account.
+   > Als de bestands share een standaard bestands share is, selecteert u **alle huidige en toekomstige waarden** . De vervolg keuzelijst met dimensie waarden bevat niet de bestands share (s) omdat metrische gegevens per share niet beschikbaar zijn voor standaard bestands shares. Het beperken van waarschuwingen voor standaard bestands shares wordt geactiveerd als een bestands share binnen het opslag account wordt beperkt en de waarschuwing niet kan bepalen welke bestands share is beperkt. Aangezien metrische gegevens per aandeel niet beschikbaar zijn voor standaard bestands shares, is de aanbeveling één bestands share per opslag account.
 
-10. Definieer de **waarschuwings parameters** (drempel waarde, operator, aggregatie granulatie en frequentie van evaluatie) en klik op **gereed**.
+10. Definieer de **waarschuwings parameters** (drempel waarde, operator, aggregatie granulatie en frequentie van evaluatie) en klik op **gereed** .
 
     > [!TIP]
     > Als u een statische drempel waarde gebruikt, kan de metrische grafiek helpen bij het bepalen van een redelijke drempelwaarde als de bestands share momenteel wordt beperkt. Als u een dynamische drempel waarde gebruikt, worden in de metrische grafiek de berekende drempel waarden weer gegeven op basis van recente gegevens.
 
 11. Klik op **actie groep selecteren** om een **actie groep** (e-mail, SMS, enzovoort) toe te voegen aan de waarschuwing door een bestaande actie groep te selecteren of een nieuwe actie groep te maken.
-12. Vul de details van de **waarschuwing** in, zoals de naam van de **waarschuwings regel**, de beschrijving en de **Ernst**.
+12. Vul de details van de **waarschuwing** in, zoals de naam van de **waarschuwings regel** , de beschrijving en de **Ernst** .
 13. Klik op **waarschuwings regel maken** om de waarschuwing te maken.
 
 ### <a name="how-to-create-an-alert-if-the-azure-file-share-size-is-80-of-capacity"></a>Een waarschuwing maken als de grootte van de Azure-bestands share 80% van de capaciteit is
 
-1. Ga naar uw **opslag account** in de **Azure Portal**.
-2. Klik in de sectie **bewaking** op **waarschuwingen** en klik vervolgens op **+ nieuwe waarschuwings regel**.
-3. Klik op **Resource bewerken**, selecteer het **Bestands bron type** voor het opslag account en klik vervolgens op **gereed**. Als de naam van het opslag account bijvoorbeeld is `contoso` , selecteert u de `contoso/file` resource.
+1. Ga naar uw **opslag account** in de **Azure Portal** .
+2. Klik in de sectie **bewaking** op **waarschuwingen** en klik vervolgens op **+ nieuwe waarschuwings regel** .
+3. Klik op **Resource bewerken** , selecteer het **Bestands bron type** voor het opslag account en klik vervolgens op **gereed** . Als de naam van het opslag account bijvoorbeeld is `contoso` , selecteert u de `contoso/file` resource.
 4. Klik op **voor waarde selecteren** om een voor waarde toe te voegen.
 5. U ziet een lijst met signalen die worden ondersteund voor het opslag account. Selecteer de metrische **Bestands capaciteit** .
-6. Klik op de Blade **signaal logica configureren** op de vervolg keuzelijst **dimensie naam** en selecteer **Bestands share**.
+6. Klik op de Blade **signaal logica configureren** op de vervolg keuzelijst **dimensie naam** en selecteer **Bestands share** .
 7. Klik op de vervolg keuzelijst **dimensie waarden** en selecteer de bestands share (s) waarop u een waarschuwing wilt ontvangen.
 
    > [!NOTE]
-   > Als de bestands share een standaard bestands share is, selecteert u **alle huidige en toekomstige waarden**. De vervolg keuzelijst met dimensie waarden bevat niet de bestands share (s) omdat metrische gegevens per share niet beschikbaar zijn voor standaard bestands shares. Waarschuwingen voor standaard bestands shares zijn gebaseerd op alle bestands shares in het opslag account. Aangezien metrische gegevens per aandeel niet beschikbaar zijn voor standaard bestands shares, is de aanbeveling één bestands share per opslag account.
+   > Als de bestands share een standaard bestands share is, selecteert u **alle huidige en toekomstige waarden** . De vervolg keuzelijst met dimensie waarden bevat niet de bestands share (s) omdat metrische gegevens per share niet beschikbaar zijn voor standaard bestands shares. Waarschuwingen voor standaard bestands shares zijn gebaseerd op alle bestands shares in het opslag account. Aangezien metrische gegevens per aandeel niet beschikbaar zijn voor standaard bestands shares, is de aanbeveling één bestands share per opslag account.
 
 8. Voer de **drempel waarde** in bytes in. Als de grootte van de bestands share bijvoorbeeld 100 TiB is en u een waarschuwing wilt ontvangen wanneer de grootte van de bestands share 80% van de capaciteit is, is de drempel waarde in bytes 87960930222080.
-9. Definieer de overige **para meters** voor de waarschuwing (aggregatie granulatie en frequentie van evaluatie) en klik op **gereed**.
+9. Definieer de overige **para meters** voor de waarschuwing (aggregatie granulatie en frequentie van evaluatie) en klik op **gereed** .
 10. Klik op actie groep selecteren om een actie groep (e-mail, SMS, enzovoort) toe te voegen aan de waarschuwing door een bestaande actie groep te selecteren of een nieuwe actie groep te maken.
-11. Vul de details van de **waarschuwing** in, zoals de naam van de **waarschuwings regel**, de beschrijving en de **Ernst**.
+11. Vul de details van de **waarschuwing** in, zoals de naam van de **waarschuwings regel** , de beschrijving en de **Ernst** .
 12. Klik op **waarschuwings regel maken** om de waarschuwing te maken.
 
 ### <a name="how-to-create-an-alert-if-the-azure-file-share-egress-has-exceeded-500-gib-in-a-day"></a>Een waarschuwing maken als het uitkomen van de Azure-bestands share op een dag 500 GiB is overschreden
 
-1. Ga naar uw **opslag account** in de **Azure Portal**.
-2. Klik in de sectie bewaking op **waarschuwingen** en klik vervolgens op **+ nieuwe waarschuwings regel**.
-3. Klik op **Resource bewerken**, selecteer het **Bestands bron type** voor het opslag account en klik vervolgens op **gereed**. Als de naam van het opslag account bijvoorbeeld contoso is, selecteert u de resource contoso/file.
+1. Ga naar uw **opslag account** in de **Azure Portal** .
+2. Klik in de sectie bewaking op **waarschuwingen** en klik vervolgens op **+ nieuwe waarschuwings regel** .
+3. Klik op **Resource bewerken** , selecteer het **Bestands bron type** voor het opslag account en klik vervolgens op **gereed** . Als de naam van het opslag account bijvoorbeeld contoso is, selecteert u de resource contoso/file.
 4. Klik op **voor waarde selecteren** om een voor waarde toe te voegen.
 5. U ziet een lijst met signalen die worden ondersteund voor het opslag account. Selecteer **de waarde** voor uitgaand verkeer.
-6. Klik op de Blade **signaal logica configureren** op de vervolg keuzelijst **dimensie naam** en selecteer **Bestands share**.
+6. Klik op de Blade **signaal logica configureren** op de vervolg keuzelijst **dimensie naam** en selecteer **Bestands share** .
 7. Klik op de vervolg keuzelijst **dimensie waarden** en selecteer de bestands share (s) waarop u een waarschuwing wilt ontvangen.
 
    > [!NOTE]
-   > Als de bestands share een standaard bestands share is, selecteert u **alle huidige en toekomstige waarden**. De vervolg keuzelijst met dimensie waarden bevat niet de bestands share (s) omdat metrische gegevens per share niet beschikbaar zijn voor standaard bestands shares. Waarschuwingen voor standaard bestands shares zijn gebaseerd op alle bestands shares in het opslag account. Aangezien metrische gegevens per aandeel niet beschikbaar zijn voor standaard bestands shares, is de aanbeveling één bestands share per opslag account.
+   > Als de bestands share een standaard bestands share is, selecteert u **alle huidige en toekomstige waarden** . De vervolg keuzelijst met dimensie waarden bevat niet de bestands share (s) omdat metrische gegevens per share niet beschikbaar zijn voor standaard bestands shares. Waarschuwingen voor standaard bestands shares zijn gebaseerd op alle bestands shares in het opslag account. Aangezien metrische gegevens per aandeel niet beschikbaar zijn voor standaard bestands shares, is de aanbeveling één bestands share per opslag account.
 
 8. Voer **536870912000** bytes in voor de drempel waarde. 
-9. Klik op de vervolg keuzelijst **aggregatie granulatie** en selecteer **24 uur**.
-10. Selecteer de **frequentie van de evaluatie** en **Klik op gereed**.
+9. Klik op de vervolg keuzelijst **aggregatie granulatie** en selecteer **24 uur** .
+10. Selecteer de **frequentie van de evaluatie** en **Klik op gereed** .
 11. Klik op **actie groep selecteren** om een **actie groep** (e-mail, SMS, enzovoort) toe te voegen aan de waarschuwing door een bestaande actie groep te selecteren of een nieuwe actie groep te maken.
-12. Vul de details van de **waarschuwing** in, zoals de naam van de **waarschuwings regel**, de beschrijving en de **Ernst**.
+12. Vul de details van de **waarschuwing** in, zoals de naam van de **waarschuwings regel** , de beschrijving en de **Ernst** .
 13. Klik op **waarschuwings regel maken** om de waarschuwing te maken.
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -486,7 +664,7 @@ De volgende tabel bevat enkele voor beelden van scenario's om te controleren en 
 - [Naslag informatie over Azure Files bewakings gegevens](storage-files-monitoring.md)
 - [Azure-resources bewaken met Azure Monitor](../../azure-monitor/insights/monitor-azure-resource.md)
 - [Migratie van Azure Storage metrieken](../common/storage-metrics-migration.md)
-- [Implementatie van Azure Files plannen](https://docs.microsoft.com/azure/storage/files/storage-files-planning)
+- [Een Azure Files-implementatie plannen](https://docs.microsoft.com/azure/storage/files/storage-files-planning)
 - [Azure Files implementeren](https://docs.microsoft.com/azure/storage/files/storage-files-deployment-guide)
 - [Problemen met Azure Files in Windows oplossen](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems)
 - [Problemen met Azure Files in Linux oplossen](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-linux-file-connection-problems)

@@ -9,23 +9,23 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: c5fa326fa05a34ae5b51054b867a766489b85c16
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 2b1af6fa5b0ccb95476c4ae169481e4aaa15f4f9
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670701"
+ms.locfileid: "92737840"
 ---
 # <a name="query-azure-cosmos-db-data-with-serverless-sql-pool-in-azure-synapse-link-preview"></a>Query's uitvoeren op Azure Cosmos DB gegevens met serverloze SQL-groep in azure Synapse-koppeling (preview-versie)
 
-Met een Synapse serverloze SQL-pool (voorheen SQL on-demand) kunt u gegevens in uw Azure Cosmos DB containers [die in bijna](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) realtime zijn ingeschakeld, analyseren zonder dat dit van invloed is op de prestaties van uw transactionele werk belastingen. Het biedt een bekende T-SQL-syntaxis voor het opvragen van gegevens uit de [analytische opslag](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) en de geïntegreerde connectiviteit met een breed scala aan bi-en ad-hoc hulp middelen voor query's via de T-SQL-interface.
+Met een Synapse serverloze SQL-pool kunt u gegevens in uw Azure Cosmos DB containers [die in bijna](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) realtime zijn ingeschakeld, analyseren zonder dat dit van invloed is op de prestaties van uw transactionele werk belastingen. Het biedt een bekende T-SQL-syntaxis voor het opvragen van gegevens uit de [analytische opslag](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) en de geïntegreerde connectiviteit met een breed scala aan bi-en ad-hoc hulp middelen voor query's via de T-SQL-interface.
 
 Voor het uitvoeren van query's in Azure Cosmos DB wordt de volledige [selectie](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15) Surface Area ondersteund via de [OpenRowSet](develop-openrowset.md) -functie, inclusief het meren deel van [SQL-functies en-Opera tors](overview-features.md). U kunt ook resultaten van de query opslaan die gegevens uit Azure Cosmos DB leest, samen met gegevens in Azure Blob Storage of Azure Data Lake Storage met de [optie externe tabel maken als selecteren](develop-tables-cetas.md#cetas-in-sql-on-demand). U kunt momenteel geen serverloze SQL-groeps query resultaten opslaan in Azure Cosmos DB met behulp van [CETAS](develop-tables-cetas.md#cetas-in-sql-on-demand).
 
 In dit artikel leert u hoe u een query kunt schrijven met een serverloze SQL-groep waarmee gegevens worden opgevraagd van Azure Cosmos DB containers die Synapse-koppeling zijn ingeschakeld. In [deze](./tutorial-data-analyst.md) zelf studie vindt u meer informatie over het bouwen van SERVERloze SQL-pool weergaven over Azure Cosmos DB containers en het verbinden ervan met Power bi modellen. 
 
 > [!IMPORTANT]
-> In deze zelf studie wordt een container met [Azure Cosmos DB goed gedefinieerd schema](../../cosmos-db/analytical-store-introduction.md#schema-representation) gebruikt dat query-ervaring biedt die in de toekomst wordt ondersteund. De query-ervaring die serverloze SQL-pool biedt voor [Azure Cosmos DB schema met volledige betrouw baarheid](#full-fidelity-schema) is tijdelijk gedrag dat wordt gewijzigd op basis van de feedback van de preview-versie. Vertrouw niet op het schema dat `OPENROWSET` functie biedt voor full-fidelity containers tijdens de open bare preview, omdat de query experinece kan worden gewijzigd en uitgelijnd met een goed gedefinieerd schema. Neem contact op met het [product team van Synapse link](mailto:cosmosdbsynapselink@microsoft.com) om feedback te geven.
+> In deze zelf studie wordt een container met [Azure Cosmos DB goed gedefinieerd schema](../../cosmos-db/analytical-store-introduction.md#schema-representation)gebruikt. De query-ervaring die serverloze SQL-pool biedt voor [Azure Cosmos DB schema met volledige betrouw baarheid](#full-fidelity-schema) is tijdelijk gedrag dat wordt gewijzigd op basis van de feedback van de preview-versie. Vertrouw niet op het schema van de functie van de resultatenset `OPENROWSET` zonder `WITH` component waarmee gegevens worden gelezen uit een container met een volledig coderings schema, omdat de query-ervaring kan worden gewijzigd en uitgelijnd met een goed gedefinieerd schema. Plaats uw feedback op het [Feedback forum van Azure Synapse Analytics](https://feedback.azure.com/forums/307516-azure-synapse-analytics) of neem contact op met het [product team van Synapse link](mailto:cosmosdbsynapselink@microsoft.com) om feedback te geven.
 
 ## <a name="overview"></a>Overzicht
 
@@ -76,7 +76,15 @@ FROM OPENROWSET(
        'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
        EcdcCases) as documents
 ```
-In het bovenstaande voor beeld geven we een serverloze SQL-groep om verbinding te maken met de `covid` Data base in azure Cosmos DB account dat is `MyCosmosDbAccount` geverifieerd met behulp van de Azure Cosmos DB sleutel (pop in het bovenstaande voor beeld). Vervolgens opent u de `EcdcCases` analytische opslag van de container in de `West US 2` regio. Omdat er geen projectie van specifieke eigenschappen is, `OPENROWSET` retourneert functie alle eigenschappen van de Azure Cosmos DB items.
+In het bovenstaande voor beeld geven we een serverloze SQL-groep om verbinding te maken met de `covid` Data base in azure Cosmos DB account dat is `MyCosmosDbAccount` geverifieerd met behulp van de Azure Cosmos DB sleutel (pop in het bovenstaande voor beeld). Vervolgens opent u de `EcdcCases` analytische opslag van de container in de `West US 2` regio. Omdat er geen projectie van specifieke eigenschappen is, `OPENROWSET` retourneert functie alle eigenschappen van de Azure Cosmos DB items. 
+
+Onder veronderstelling dat de items in Cosmos DB container `date_rep` , `cases` , en `geo_id` Eigenschappen, de resultaten van deze query worden weer gegeven in de volgende tabel:
+
+| date_rep | meldingen | geo_id |
+| --- | --- | --- |
+| 2020-08-13 | 254 | RS |
+| 2020-08-12 | 235 | RS |
+| 2020-08-11 | 163 | RS |
 
 Als u gegevens uit de andere container in dezelfde Azure Cosmos DB-Data Base wilt verkennen, kunt u dezelfde connection string en de vereiste container referentie gebruiken als derde para meter:
 
@@ -180,7 +188,6 @@ Meer informatie over het analyseren van [complexe gegevens typen in Synapse-kopp
 > [!IMPORTANT]
 > Als er onverwachte tekens worden weer geven in uw tekst zoals `MÃƒÂ©lade` in plaats van `Mélade` de database sortering is niet ingesteld op [utf8](https://docs.microsoft.com/sql/relational-databases/collations/collation-and-unicode-support#utf8) -sortering. 
 > [Wijzig de sortering van de data base](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation) in een utf8-sortering met behulp van een SQL-instructie zoals `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8` .
-
 
 ## <a name="flattening-nested-arrays"></a>Geneste matrices afvlakken
 
@@ -286,12 +293,16 @@ Voor elke waarde ziet u het type dat in Cosmos DB container item is geïdentific
 Aantal cases is een informatie die is opgeslagen als `int32` waarde, maar er is één waarde die wordt ingevoerd als decimaal getal. Deze waarde is van het `float64` type. Als er waarden zijn die groter zijn dan het hoogste `int32` aantal, worden deze opgeslagen als `int64` type. Alle `geo_id` waarden in dit voor beeld worden opgeslagen als `string` typen.
 
 > [!IMPORTANT]
-> Met het schema voor volledige betrouw baarheid worden beide waarden met verwachte typen en de waarden met onjuist ingevoerde typen weer gegeven.
+> `OPENROWSET` de functie zonder `WITH` component geeft beide waarden weer met verwachte typen en de waarden met onjuist ingevoerde typen. Deze func is ontworpen voor het verkennen van gegevens en niet voor rapportage. Parse-waarden die zijn geretourneerd door deze functie niet parseren om rapporten te maken en een expliciete [with-component](#querying-items-with-full-fidelity-schema) te gebruiken om uw rapporten te creëren.
 > U moet de waarden opschonen die onjuiste typen hebben in Azure Cosmos DB-container om een corect te kunnen Toep assen in een analytisch archief met volledige kwaliteit. 
 
 Voor het uitvoeren van query's op Azure Cosmos DB accounts van de Mongo DB-API-soort, kunt u meer te weten komen over de schema weergave voor volledige beeld kwaliteit in het analytische archief en de uitgebreide eigenschapnamen die [hier](../../cosmos-db/analytical-store-introduction.md#analytical-schema)worden gebruikt.
 
-Tijdens het uitvoeren van een query op een volledig Fidelity-schema moet u in de component expliciet het SQL-type opgeven en het eigenschaps type Cosmos DB verwacht `WITH` . In het volgende voor beeld wordt ervan uitgegaan dat het `string` juiste type is voor `geo_id` eigenschap en `int32` juist type voor `cases` eigenschap:
+### <a name="querying-items-with-full-fidelity-schema"></a>Query's uitvoeren op items met een volledig beeld schema
+
+Tijdens het uitvoeren van een query op een volledig Fidelity-schema moet u in de component expliciet het SQL-type opgeven en het eigenschaps type Cosmos DB verwacht `WITH` . Gebruik niet `OPENROWSET` zonder- `WITH` component in de rapporten omdat de indeling van de resultatenset kan worden gewijzigd in preview op basis van feedback.
+
+In het volgende voor beeld wordt ervan uitgegaan dat het `string` juiste type is voor `geo_id` eigenschap en `int32` juist type voor `cases` eigenschap:
 
 ```sql
 SELECT geo_id, cases = SUM(cases)
@@ -305,7 +316,9 @@ FROM OPENROWSET(
 GROUP BY geo_id
 ```
 
-Waarden met andere typen worden niet geretourneerd in `geo_id` en `cases` kolommen en de query retourneert een `NULL` waarde in deze cellen. Met deze query wordt alleen verwezen naar het `cases` opgegeven type in de expressie ( `cases.int32` ). Als u waarden met andere typen ( `cases.int64` , `cases.float64` ) hebt die niet kunnen worden gereinigd in Cosmos DB container, moet u deze expliciet verwijzen naar `WITH` de component en de resultaten combi neren. Met de volgende query worden beide `int32` , `int64` en `float64` opgeslagen in de `cases` kolom geaggregeerd:
+Waarden voor `geo_id` en `cases` die andere typen hebben, worden geretourneerd als `NULL` waarden. Met deze query wordt alleen verwezen naar het `cases` opgegeven type in de expressie ( `cases.int32` ).
+
+Als u waarden hebt met andere typen ( `cases.int64` , `cases.float64` ) die niet kunnen worden gereinigd in Cosmos DB container, moet u deze expliciet verwijzen in `WITH` de-component en de resultaten combi neren. Met de volgende query worden beide `int32` , `int64` en `float64` opgeslagen in de `cases` kolom geaggregeerd:
 
 ```sql
 SELECT geo_id, cases = SUM(cases_int) + SUM(cases_bigint) + SUM(cases_float)
@@ -326,7 +339,7 @@ In dit voor beeld wordt het aantal cases opgeslagen als `int32` , `int64` , of `
 ## <a name="known-issues"></a>Bekende problemen
 
 - Alias **moet** worden opgegeven na `OPENROWSET` -functie (bijvoorbeeld `OPENROWSET (...) AS function_alias` ). Het weglaten van een alias kan leiden tot een verbindings probleem en Synapse SQL-eind punt zonder server mogelijk tijdelijk niet beschikbaar. Dit probleem wordt opgelost in november 2020.
-- De query-ervaring die serverloze SQL-pool biedt voor [Azure Cosmos DB volledig beeld schema](#full-fidelity-schema) is tijdelijk gedrag dat wordt gewijzigd op basis van de preview-feedback. Vertrouw niet op het schema dat `OPENROWSET` functie biedt tijdens de open bare preview, omdat de query-ervaring mogelijk is uitgelijnd met een goed gedefinieerd schema. Neem contact op met het [product team van Synapse link](mailto:cosmosdbsynapselink@microsoft.com) om feedback te geven.
+- De query-ervaring die serverloze SQL-pool biedt voor [Azure Cosmos DB volledig beeld schema](#full-fidelity-schema) is tijdelijk gedrag dat wordt gewijzigd op basis van de preview-feedback. Vertrouw niet op het schema dat `OPENROWSET` Function zonder `WITH` component bevat tijdens de open bare preview, omdat de query-ervaring mogelijk kan worden uitgelijnd met een goed gedefinieerd schema op basis van feedback van klanten. Neem contact op met het [product team van Synapse link](mailto:cosmosdbsynapselink@microsoft.com) om feedback te geven.
 
 In de volgende tabel worden mogelijke fouten en acties voor het oplossen van problemen weer gegeven:
 

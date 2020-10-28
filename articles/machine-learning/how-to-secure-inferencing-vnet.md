@@ -10,13 +10,13 @@ ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
-ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: eb7439bc84eaa4bfba58be1059a19ddadfc6a93e
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.custom: contperfq4, tracking-python, contperfq1, devx-track-azurecli
+ms.openlocfilehash: 20f0d6a9d87caa8e95e7f9fa0b29ff45ed1195c2
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496018"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735472"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Een Azure Machine Learning omgeving voor het afwijzen van interferentie beveiligen met virtuele netwerken
 
@@ -68,7 +68,7 @@ Voer de volgende stappen uit om AKS toe te voegen aan uw werk ruimte in een virt
 
 1. Selecteer Afleidings __clusters__ in het midden en selecteer vervolgens __+__ .
 
-1. Selecteer __Geavanceerd__ onder __netwerk configuratie__in het dialoog venster __Nieuw cluster__ voor uitgevallen.
+1. Selecteer __Geavanceerd__ onder __netwerk configuratie__ in het dialoog venster __Nieuw cluster__ voor uitgevallen.
 
 1. Voer de volgende acties uit om deze Compute-resource te configureren voor het gebruik van een virtueel netwerk:
 
@@ -119,8 +119,8 @@ Wanneer het maken van het proces is voltooid, kunt u het decoderen of model lere
 
 Er zijn twee benaderingen voor het isoleren van verkeer van en naar het AKS-cluster naar het virtuele netwerk:
 
-* __Persoonlijk AKS-cluster__: deze benadering maakt gebruik van een persoonlijke Azure-koppeling om de communicatie met het cluster te beveiligen voor implementatie-en beheer bewerkingen.
-* __Interne AKS Load Balancer__: met deze aanpak configureert u het eind punt voor uw implementaties naar AKS voor het gebruik van een privé-IP-adres in het virtuele netwerk.
+* __Persoonlijk AKS-cluster__ : deze benadering maakt gebruik van een persoonlijke Azure-koppeling om de communicatie met het cluster te beveiligen voor implementatie-en beheer bewerkingen.
+* __Interne AKS Load Balancer__ : met deze aanpak configureert u het eind punt voor uw implementaties naar AKS voor het gebruik van een privé-IP-adres in het virtuele netwerk.
 
 > [!WARNING]
 > Interne load balancer werkt niet met een AKS-cluster dat gebruikmaakt van kubenet. Als u een interne load balancer en een persoonlijk AKS-cluster tegelijk wilt gebruiken, configureert u uw particuliere AKS-cluster met Azure container Networking interface (CNI). Zie [Azure cni Networking configureren in de Azure Kubernetes-service](../aks/configure-azure-cni.md)voor meer informatie.
@@ -138,7 +138,7 @@ Nadat u het persoonlijke AKS-cluster hebt gemaakt, [koppelt u het cluster aan he
 
 AKS-implementaties gebruiken standaard een [open bare Load Balancer](../aks/load-balancer-standard.md). In deze sectie leert u hoe u AKS kunt configureren voor het gebruik van een interne load balancer. Een intern (of privé) load balancer wordt gebruikt wanneer alleen privé Ip's zijn toegestaan als frontend. Interne load balancers worden gebruikt voor het verdelen van verkeer binnen een virtueel netwerk
 
-Een persoonlijke load balancer wordt ingeschakeld door AKS te configureren voor het gebruik van een _interne Load Balancer_. 
+Een persoonlijke load balancer wordt ingeschakeld door AKS te configureren voor het gebruik van een _interne Load Balancer_ . 
 
 #### <a name="network-contributor-role"></a>Rol netwerk bijdrager
 
@@ -147,7 +147,7 @@ Een persoonlijke load balancer wordt ingeschakeld door AKS te configureren voor 
 >
 > Gebruik de volgende stappen om de identiteit als netwerkinzender toe te voegen:
 
-1. Gebruik de volgende Azure CLI-opdrachten om de service-principal of de beheerde identiteits-ID voor AKS te vinden. Vervang `<aks-cluster-name>` door de naam van het cluster. Vervang door `<resource-group-name>` de naam van de resource groep die _het AKS-cluster bevat_:
+1. Gebruik de volgende Azure CLI-opdrachten om de service-principal of de beheerde identiteits-ID voor AKS te vinden. Vervang `<aks-cluster-name>` door de naam van het cluster. Vervang door `<resource-group-name>` de naam van de resource groep die _het AKS-cluster bevat_ :
 
     ```azurecli-interactive
     az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query servicePrincipalProfile.clientId
@@ -159,7 +159,7 @@ Een persoonlijke load balancer wordt ingeschakeld door AKS te configureren voor 
     az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query identity.principalId
     ```
 
-1. Gebruik de volgende opdracht om de ID te vinden van de resource groep die het virtuele netwerk bevat. Vervang door `<resource-group-name>` de naam van de resource groep die _het virtuele netwerk bevat_:
+1. Gebruik de volgende opdracht om de ID te vinden van de resource groep die het virtuele netwerk bevat. Vervang door `<resource-group-name>` de naam van de resource groep die _het virtuele netwerk bevat_ :
 
     ```azurecli-interactive
     az group show -n <resource-group-name> --query id

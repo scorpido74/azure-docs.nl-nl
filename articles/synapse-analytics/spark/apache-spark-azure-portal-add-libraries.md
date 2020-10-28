@@ -5,16 +5,16 @@ services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 07/22/2020
+ms.date: 10/16/2020
 ms.author: euang
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 02f627c9f606ced7e1b0d991e5053dab17050292
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31201bb7168910915ee33d4361bf944e7669db66
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826730"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737972"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Bibliotheken voor Apache Spark beheren in azure Synapse Analytics
 
@@ -58,7 +58,7 @@ U kunt als volgt bibliotheken installeren op een Spark-groep (preview) tijdens h
    
 3. Upload het omgevings configuratie bestand met behulp van de bestands kiezer in het gedeelte **pakketten** van de pagina. 
    
-![Python-bibliotheken toevoegen tijdens het maken van een groep](./media/apache-spark-azure-portal-add-libraries/apache-spark-azure-portal-add-library-python.png "Python-bibliotheken toevoegen")
+    ![Python-bibliotheken toevoegen tijdens het maken van een groep](./media/apache-spark-azure-portal-add-libraries/apache-spark-azure-portal-add-library-python.png "Python-bibliotheken toevoegen")
  
 
 #### <a name="install-packages-from-the-synapse-workspace"></a>Pakketten installeren vanuit de Synapse-werk ruimte
@@ -68,11 +68,11 @@ Als u extra bibliotheken wilt bijwerken of toevoegen aan een Spark-groep (previe
    
 2.  Start uw Azure Synapse Analytics-werk ruimte vanuit het Azure Portal.
 
-3.  Selecteer **beheren** in het hoofd paneel navigatie en selecteer vervolgens **Apache Spark groepen**.
+3.  Selecteer **beheren** in het hoofd paneel navigatie en selecteer vervolgens **Apache Spark groepen** .
    
 4. Selecteer één Spark-groep en upload het omgevings configuratie bestand met behulp van de bestands kiezer in het gedeelte  **pakketten** van de pagina.
 
-![Python-bibliotheken toevoegen in Synapse](./media/apache-spark-azure-portal-add-libraries/apache-spark-azure-portal-update.png "Python-bibliotheken toevoegen")
+    ![Python-bibliotheken toevoegen in Synapse](./media/apache-spark-azure-portal-add-libraries/apache-spark-azure-portal-update.png)
    
 #### <a name="install-packages-from-the-azure-portal"></a>Pakketten van de Azure Portal installeren
 Als u een bibliotheek wilt installeren op een Spark-pool (preview), rechtstreeks vanuit de Azure Portal:
@@ -85,7 +85,7 @@ Als u een bibliotheek wilt installeren op een Spark-pool (preview), rechtstreeks
 
  4. Upload het omgevings configuratie bestand met de bestands kiezer.
 
-![Scherm afbeelding van de knop configuratie bestand voor het uploaden van de omgeving.](./media/apache-spark-azure-portal-add-libraries/apache-spark-add-library-azure.png "Python-bibliotheken toevoegen")
+    ![Scherm afbeelding van de knop configuratie bestand voor het uploaden van de omgeving.](./media/apache-spark-azure-portal-add-libraries/apache-spark-add-library-azure.png "Python-bibliotheken toevoegen")
 
 ### <a name="verify-installed-libraries"></a>Geïnstalleerde bibliotheken verifiëren
 
@@ -106,13 +106,13 @@ Een bibliotheek bijwerken of verwijderen:
 
 3. Ga naar de sectie **pakketten** en upload een nieuw configuratie bestand voor de omgeving
    
-4. Zodra u de wijzigingen hebt opgeslagen, moet u actieve sessies beëindigen en de pool opnieuw opstarten. Desgewenst kunt u actieve sessies geforceerd beëindigen door het selectie vakje in te scha kelen om **nieuwe instellingen**af te dwingen.
+4. Zodra u de wijzigingen hebt opgeslagen, moet u actieve sessies beëindigen en de pool opnieuw opstarten. Desgewenst kunt u actieve sessies geforceerd beëindigen door het selectie vakje in te scha kelen om **nieuwe instellingen** af te dwingen.
 
-![Python-bibliotheken toevoegen](./media/apache-spark-azure-portal-add-libraries/update-libraries.png "Python-bibliotheken toevoegen")
+    ![Python-bibliotheken toevoegen](./media/apache-spark-azure-portal-add-libraries/update-libraries.png "Python-bibliotheken toevoegen")
    
 
 > [!IMPORTANT]
-> Als u de optie selecteert om **nieuwe instellingen**af te dwingen, beëindigt u de alle huidige sessies voor de geselecteerde Spark-pool. Zodra de sessies zijn beëindigd, moet u wachten tot de groep opnieuw is opgestart. 
+> Als u de optie selecteert om **nieuwe instellingen** af te dwingen, beëindigt u de alle huidige sessies voor de geselecteerde Spark-pool. Zodra de sessies zijn beëindigd, moet u wachten tot de groep opnieuw is opgestart. 
 >
 > Als deze instelling niet is ingeschakeld, moet u wachten tot de huidige Spark-sessie is beëindigd of het hand matig stoppen. Zodra de sessie is beëindigd, moet u de pool opnieuw opstarten. 
 

@@ -3,13 +3,13 @@ title: Een Linux Service Fabric-cluster maken in azure
 description: Informatie over hoe u een Linux Service Fabric-cluster implementeert in een bestaand virtueel Azure-netwerk met behulp van Azure CLI.
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.custom: mvc
-ms.openlocfilehash: c4b71328ce59284f8870407c9492d24afe9acd8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 52eba2e5780b1a66f3884a764631908335372273
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88586917"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738955"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Een Linux Service Fabric-cluster implementeren in een virtueel Azure-netwerk
 
@@ -75,7 +75,7 @@ In de resource **Microsoft.Network/loadBalancers** wordt een load balancer gecon
 
 ### <a name="virtual-network-and-subnet"></a>Virtueel netwerk en subnet
 
-De namen van het virtuele netwerk en het subnet worden gedeclareerd in de sjabloonparameters.  Adresruimten van het virtuele netwerk en subnet worden ook gedeclareerd in de sjabloonparameters en geconfigureerd in de resource **Microsoft.Network/virtualNetworks**:
+De namen van het virtuele netwerk en het subnet worden gedeclareerd in de sjabloonparameters.  Adresruimten van het virtuele netwerk en subnet worden ook gedeclareerd in de sjabloonparameters en geconfigureerd in de resource **Microsoft.Network/virtualNetworks** :
 
 * virtuele netwerkadresruimte: 10.0.0.0/16
 * Service Fabric-subnetadresruimte: 10.0.2.0/24
@@ -86,7 +86,7 @@ Als er andere toepassingspoorten nodig zijn, moet u de resource Microsoft.Networ
 
 Het bestand **AzureDeploy. para meters** declareert veel waarden die worden gebruikt voor het implementeren van het cluster en de bijbehorende resources. Enkele van de parameters die u mogelijk moet wijzigen voor uw implementatie:
 
-|Parameter|Voorbeeldwaarde|Notities|
+|Parameter|Voorbeeldwaarde|Opmerkingen|
 |---|---||
 |adminUserName|vmadmin| De gebruikersnaam van de beheerder van de cluster-VM's. |
 |adminPassword|Password#1234| Het wachtwoord van de beheerder van de cluster-VM's.|
@@ -152,7 +152,7 @@ az sf cluster create --resource-group $ResourceGroupName --location $Location \
 
 ## <a name="connect-to-the-secure-cluster"></a>Verbinding maken met het beveiligde cluster
 
-Maak verbinding met het cluster met behulp van de Service Fabric CLI-opdracht `sfctl cluster select` en uw sleutel.  Opmerking: gebruik voor een zelfondertekend certificaat alleen de optie **--no-verify**.
+Maak verbinding met het cluster met behulp van de Service Fabric CLI-opdracht `sfctl cluster select` en uw sleutel.  Opmerking: gebruik voor een zelfondertekend certificaat alleen de optie **--no-verify** .
 
 ```console
 sfctl cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.azure.com:19080 \

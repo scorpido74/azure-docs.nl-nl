@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/21/2020
 ms.author: rajosh
-ms.openlocfilehash: ce6f0ff97b1dfa8757b05b13dff653a1d34f4531
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 6629f02178b7c00ccc849e2ccfc3f0a48f419a7f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315293"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735564"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>Migratieplan bouwen met Azure Migrate
 
@@ -20,7 +20,7 @@ In dit artikel vindt u een korte hand leiding voor het bouwen van uw migratie pl
 - [Algemene vragen](resources-faq.md) over Azure migrate
 - Vragen over het [Azure migrate apparaat](common-questions-appliance.md)
 - Vragen over [server migratie](common-questions-server-migration.md)
-- Beantwoorde vragen in het [Azure migrate-forum](https://aka.ms/AzureMigrateForum) ontvangen
+- Beantwoorde vragen in het [Azure migrate-forum](https://docs.microsoft.com/answers/topics/azure-migrate.html) ontvangen
 
 ## <a name="define-the-goals-of-cloud-migration"></a>De doelen van Cloud migratie definiëren
 
@@ -75,13 +75,13 @@ Omdat Azure flexibiliteit biedt om de grootte van uw Cloud capaciteit gedurende 
 ### <a name="readiness-and-suitability-analysis-for-azure"></a>Gereedheids-en geschiktheids analyse voor Azure
 Exporteer het Azure VM-evaluatie rapport en filtreer door de volgende gereedheids categorieën om inzicht te krijgen in de VM-gereedheid voor Azure:
 
-- **Gereed voor Azure**: u kunt deze machines naar Azure migreren zonder dat u wijzigingen hoeft aan te brengen  
+- **Gereed voor Azure** : u kunt deze machines naar Azure migreren zonder dat u wijzigingen hoeft aan te brengen  
 
-- **Voorwaardelijk gereed voor Azure**: u kunt deze machines migreren naar Azure, maar u hebt kleine wijzigingen nodig op deze servers volgens de richt lijnen voor herstel van de evaluatie
+- **Voorwaardelijk gereed voor Azure** : u kunt deze machines migreren naar Azure, maar u hebt kleine wijzigingen nodig op deze servers volgens de richt lijnen voor herstel van de evaluatie
 
-- **Niet gereed voor Azure**: u kunt deze machines niet naar Azure migreren, maar u moet de problemen oplossen volgens de herstel richtlijnen vóór de migratie
+- **Niet gereed voor Azure** : u kunt deze machines niet naar Azure migreren, maar u moet de problemen oplossen volgens de herstel richtlijnen vóór de migratie
 
-- **Gereedheid onbekend**: de Azure migrate kan de gereedheid van de machine niet bepalen vanwege onvoldoende meta gegevens
+- **Gereedheid onbekend** : de Azure migrate kan de gereedheid van de machine niet bepalen vanwege onvoldoende meta gegevens
 
 Met behulp van de evaluatie van de Data Base kunt u de gereedheid voor het migreren van uw SQL Server-Data-to-Azure SQL Database of Azure SQL Managed instances beoordelen. U ziet het percentage migratie gereedheids status voor elk exemplaar van SQL Server. Voor elk van de instanties kunt u ook het aanbevolen doel in azure zien, mogelijke migratie blok keringen, het aantal wijzigingen, de gereedheid voor Azure SQL DB/Azure SQL-VM en het compatibiliteits niveau. U kunt dieper ingrijpen om inzicht te krijgen in de gevolgen van de migratie blokken en aanbevelingen om ze te corrigeren.
 
@@ -95,19 +95,19 @@ Nadat de computer is gemarkeerd als gereed voor Azure, maakt de server evaluatie
 
 Met de optie voor de juiste grootte op *basis van prestaties* in evaluaties kunt u werk belastingen voor Azure optimaliseren. Naast supportte zijn er nog enkele andere mogelijkheden om kosten te besparen:
 
-- **Gereserveerde instanties**: met gereserveerde instanties kunt u de kosten aanzienlijk verlagen vergeleken met betalen per gebruik-tarieven met 1 of 3 jaar voor Windows en Linux (vm's)
+- **Gereserveerde instanties** : met gereserveerde instanties kunt u de kosten aanzienlijk verlagen vergeleken met betalen per gebruik-tarieven met 1 of 3 jaar voor Windows en Linux (vm's)
 
-- **Azure Hybrid bene fits**: u kunt on-premises Windows Server-licenties met Software Assurance naar Azure brengen en deze combi neren met opties voor gereserveerde instanties
+- **Azure Hybrid bene fits** : u kunt on-premises Windows Server-licenties met Software Assurance naar Azure brengen en deze combi neren met opties voor gereserveerde instanties
 
-- **Enterprise Agreement aanbieding (EA)**: de Enterprise Agreement biedt ingebouwde besparingen die van toepassing zijn op uw abonnement
+- **Enterprise Agreement aanbieding (EA)** : de Enterprise Agreement biedt ingebouwde besparingen die van toepassing zijn op uw abonnement
 
-- **Aanbiedingen**: er zijn meerdere Azure-aanbiedingen, bijvoorbeeld Pay-As-You-Go Dev/Test en Enterprise dev/test die lagere tarieven bieden voor ontwikkel-of test-vm's
+- **Aanbiedingen** : er zijn meerdere Azure-aanbiedingen, bijvoorbeeld Pay-As-You-Go Dev/Test en Enterprise dev/test die lagere tarieven bieden voor ontwikkel-of test-vm's
 
-- **VM-uptime**: u kunt de duur in dagen per maand en uur per dag vermelden wanneer de virtuele machines van Azure worden uitgevoerd om uw kosten te verlagen (niet van toepassing op RI)
+- **VM-uptime** : u kunt de duur in dagen per maand en uur per dag vermelden wanneer de virtuele machines van Azure worden uitgevoerd om uw kosten te verlagen (niet van toepassing op RI)
 
-- **Doel regio**: u kunt in verschillende regio's meerdere beoordelingen maken om te vergelijken of de migratie naar een bepaalde regio in een geografie een rendabelere
+- **Doel regio** : u kunt in verschillende regio's meerdere beoordelingen maken om te vergelijken of de migratie naar een bepaalde regio in een geografie een rendabelere
 
-- **Aanbevelingen op basis van prestaties**: als Best Practice, kunt u gebruikmaken van de aanbevolen Azure VM-aanbevelingen die u helpen bij het opslaan van Cloud kosten
+- **Aanbevelingen op basis van prestaties** : als Best Practice, kunt u gebruikmaken van de aanbevolen Azure VM-aanbevelingen die u helpen bij het opslaan van Cloud kosten
 
 ### <a name="visualize-data"></a>Gegevens visualiseren
 
@@ -125,7 +125,7 @@ Nu u alle essentiële informatie hebt om uw migratie beslissing te nemen, moet u
 
 Enkele aanbevolen migratie strategieën zijn:
 
-- Geef **een prioriteit voor uw snelle WINS**: u kunt de evaluatie rapporten gebruiken om te identificeren dat er weinig hangende vruchten zijn, met inbegrip van de servers en data bases die volledig klaar zijn en minimale inspanning vereisen om te migreren naar Azure:
+- Geef **een prioriteit voor uw snelle WINS** : u kunt de evaluatie rapporten gebruiken om te identificeren dat er weinig hangende vruchten zijn, met inbegrip van de servers en data bases die volledig klaar zijn en minimale inspanning vereisen om te migreren naar Azure:
     - Gereed voor Azure: Exporteer uw evaluatie rapport en filter alle computers die ' gereed voor Azure ' zijn. Dit kan uw eerste groep machines zijn die u kunt optillen en SHIFT met de Azure Migrate: hulp programma voor server migratie.
     - Einde van de ondersteuning van het besturings systeem: Exporteer het evaluatie rapport en filter alle computers waarop de Windows Server 2008-en Windows Server 2008 R2-besturings systemen worden uitgevoerd. Deze Sku's zijn einde van ondersteuning en alleen Azure biedt u gratis drie jaar beveiligings updates wanneer u ze naar Azure migreert. Wanneer u gereserveerde instanties combi neren, Azure Hybrid Benefit en gebruiken, kan het opslaan veel hoger zijn.
     - SQL Server migratie: gebruik de aanbevelingen voor de evaluatie van de data base om de data bases die gereed zijn voor Azure SQL-data bases te migreren met behulp van de Azure Migrate: database migratie en de data bases die gereed zijn voor Azure SQL VM met de Azure Migrate: Server
@@ -133,9 +133,9 @@ Enkele aanbevolen migratie strategieën zijn:
     - Over ingerichte Vm's: Exporteer uw evaluatie rapport en filtreer computers met een laag CPU-gebruik (%) en geheugen gebruik (%).  U kunt deze mogelijkheid gebruiken om te migreren naar een gefactureerde VM in Azure en op te slaan wat u hebt betaald voor gefactureerde resources.
     - Capaciteits beperkingen: Exporteer uw evaluatie rapport en filtreer computers met een hoog CPU-gebruik (%) en geheugen gebruik (%).  U kunt voor komen dat de overbelaste Vm's afbreken en de prestaties verbeteren door ze naar Azure te migreren en de mogelijkheden voor automatisch schalen te gebruiken om aan de vraag te voldoen. U kunt ook het beoordelings rapport bekijken om inzicht te krijgen in uw opslag beperkingen door de schijf-IOPS en-door voer te analyseren en het aanbevolen schijf type te vinden dat geschikt is voor uw behoeften.
 
-- **Begin klein en vervolgens groot**: begin met het verplaatsen van toepassingen en werk belastingen die minimale Risico's en minder complex zijn, om het vertrouwen in uw migratie strategie te bouwen. U kunt ook uw Azure Migrate beoordelings aanbevelingen door lopen met de CMDB-opslag plaats van uw organisatie om de werk belasting van ontwikkel-en test omgevingen te vinden en te migreren in uw pilot migraties. De informatie van deze Pilotes kan worden gebruikt bij het migreren van productie werkbelastingen.  
+- **Begin klein en vervolgens groot** : begin met het verplaatsen van toepassingen en werk belastingen die minimale Risico's en minder complex zijn, om het vertrouwen in uw migratie strategie te bouwen. U kunt ook uw Azure Migrate beoordelings aanbevelingen door lopen met de CMDB-opslag plaats van uw organisatie om de werk belasting van ontwikkel-en test omgevingen te vinden en te migreren in uw pilot migraties. De informatie van deze Pilotes kan worden gebruikt bij het migreren van productie werkbelastingen.  
 
-- **Voldoen aan uw vereisten voor reglementaire/branche**: Azure houdt de grootste portefeuille voor naleving in de hele branche, in termen van de breedte en diepte van de aanbiedingen. Gebruik deze mogelijkheid om uw migraties een prioriteit te geven aan Azure en te voldoen aan uw nationale, regionale en branchespecifieke normen en wetten. Dit geldt met name voor organisaties die met bedrijfs kritieke gegevens omgaan of gevoelige informatie bevatten of die zich in zwaar gereglementeerde branches bevinden, waarbij de normen en voor Schriften Abound en in bepaalde gevallen vaak kunnen veranderen, waardoor het lastig is om bij te houden.  
+- **Voldoen aan uw vereisten voor reglementaire/branche** : Azure houdt de grootste portefeuille voor naleving in de hele branche, in termen van de breedte en diepte van de aanbiedingen. Gebruik deze mogelijkheid om uw migraties een prioriteit te geven aan Azure en te voldoen aan uw nationale, regionale en branchespecifieke normen en wetten. Dit geldt met name voor organisaties die met bedrijfs kritieke gegevens omgaan of gevoelige informatie bevatten of die zich in zwaar gereglementeerde branches bevinden, waarbij de normen en voor Schriften Abound en in bepaalde gevallen vaak kunnen veranderen, waardoor het lastig is om bij te houden.  
 
 ## <a name="finalize-the-migration-planandprepare-formigration"></a>Het migratie plan volt ooien en de migratie voorbereiden
 

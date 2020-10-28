@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 08/20/2019
 ms.reviewer: jushiman
-ms.custom: mimckitt
-ms.openlocfilehash: 5521e49c767a2510bf7c8c53cf6ac5e86b73b466
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: 767b5a6be9c9aaff1bfe82ebc46b3b9179e271e4
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87837173"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736980"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Meldingen voor gepland onderhoud voor virtuele-machineschaalsets
 
@@ -44,7 +44,7 @@ De volgende richt lijnen kunnen u helpen beslissen of u het onderhoud op een doo
 > Het onderhoud van self-service is mogelijk niet beschikbaar voor al uw virtuele machines. Als u wilt bepalen of proactieve herimplementatie beschikbaar is voor uw virtuele machine, zoekt u naar **nu starten** in de onderhouds status. Op dit moment is self-service onderhoud niet beschikbaar voor Azure Cloud Services (Web/Worker) en Azure Service Fabric.
 
 
-Self-service onderhoud wordt niet aanbevolen voor implementaties die gebruikmaken van *beschikbaarheids sets*. Beschikbaarheids sets zijn Maxi maal beschik bare instellingen waarin slechts één update domein op elk gewenst moment wordt beïnvloed. Voor beschikbaarheids sets:
+Self-service onderhoud wordt niet aanbevolen voor implementaties die gebruikmaken van *beschikbaarheids sets* . Beschikbaarheids sets zijn Maxi maal beschik bare instellingen waarin slechts één update domein op elk gewenst moment wordt beïnvloed. Voor beschikbaarheids sets:
 
 - Laat Azure het onderhoud activeren. Voor onderhoud waarvoor opnieuw opstarten is vereist, wordt onderhoud uitgevoerd op het update domein. Update domeinen hoeven het onderhoud niet opeenvolgend te ontvangen. Er is een onderbreking van 30 minuten tussen de update domeinen.
 - Als een tijdelijk verlies van een deel van uw capaciteit (1/update domein) een probleem is, kunt u eenvoudig het verlies compenseren door extra instanties toe te wijzen tijdens de onderhouds periode.
@@ -72,12 +72,12 @@ Het is raadzaam selfservice onderhoud in de volgende gevallen te gebruiken:
 
 Wanneer een geplande onderhouds Golf is gepland, kunt u de lijst met virtuele-machine schaal sets weer geven die worden beïnvloed door de aanstaande onderhouds Golf door gebruik te maken van de Azure Portal. 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Selecteer in het menu links **alle services**en selecteer vervolgens virtuele- **machine schaal sets**.
-3. Selecteer onder **schaal sets voor virtuele machines**de optie **kolommen bewerken** om de lijst met beschik bare kolommen te openen.
-4. Selecteer in de sectie **beschik bare kolommen** de optie **self-service onderhoud**en verplaats deze naar de lijst met **geselecteerde kolommen** . Selecteer **Toepassen**.  
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+2. Selecteer in het menu links **alle services** en selecteer vervolgens virtuele- **machine schaal sets** .
+3. Selecteer onder **schaal sets voor virtuele machines** de optie **kolommen bewerken** om de lijst met beschik bare kolommen te openen.
+4. Selecteer in de sectie **beschik bare kolommen** de optie **self-service onderhoud** en verplaats deze naar de lijst met **geselecteerde kolommen** . Selecteer **Toepassen** .  
 
-    Als u het **selfservice-onderhouds** item eenvoudiger wilt kunnen vinden, kunt u de vervolg keuzelijst in de sectie **beschik bare kolommen** wijzigen van **alle** in **Eigenschappen**.
+    Als u het **selfservice-onderhouds** item eenvoudiger wilt kunnen vinden, kunt u de vervolg keuzelijst in de sectie **beschik bare kolommen** wijzigen van **alle** in **Eigenschappen** .
 
 De kolom **self-service onderhoud** wordt nu weer gegeven in de lijst met virtuele-machine schaal sets. Elke schaalset voor virtuele machines kan een van de volgende waarden hebben voor de kolom selfservice onderhoud:
 
@@ -91,13 +91,13 @@ De kolom **self-service onderhoud** wordt nu weer gegeven in de lijst met virtue
 
 Azure communiceert een planning voor gepland onderhoud door een e-mail bericht te verzenden naar de eigenaar van het abonnement en de groep mede-eigen aars. U kunt ontvangers en kanalen aan deze communicatie toevoegen door waarschuwingen voor activiteiten logboeken te maken. Zie [abonnements activiteiten bewaken met het Azure-activiteiten logboek](../azure-monitor/platform/platform-logs-overview.md)voor meer informatie.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Selecteer in het menu links de optie **monitor**. 
-3. Selecteer in het deel venster **monitor-waarschuwingen (klassiek)** **+ waarschuwing voor activiteiten logboek toevoegen**.
-4. Selecteer op de pagina **waarschuwing voor activiteiten logboek toevoegen** de gevraagde informatie of voer deze in. Zorg er in **criteria**voor dat u de volgende waarden instelt:
-   - **Gebeurtenis categorie**: Selecteer **service Health**.
-   - **Services**: Selecteer **Virtual Machine Scale sets en virtual machines**.
-   - **Type**: Selecteer **gepland onderhoud**. 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+2. Selecteer in het menu links de optie **monitor** . 
+3. Selecteer in het deel venster **monitor-waarschuwingen (klassiek)** **+ waarschuwing voor activiteiten logboek toevoegen** .
+4. Selecteer op de pagina **waarschuwing voor activiteiten logboek toevoegen** de gevraagde informatie of voer deze in. Zorg er in **criteria** voor dat u de volgende waarden instelt:
+   - **Gebeurtenis categorie** : Selecteer **service Health** .
+   - **Services** : Selecteer **Virtual Machine Scale sets en virtual machines** .
+   - **Type** : Selecteer **gepland onderhoud** . 
     
 Zie [waarschuwingen voor activiteiten](../azure-monitor/platform/activity-log-alerts.md) logboeken maken voor meer informatie over het configureren van waarschuwingen voor activiteiten Logboeken.
     
@@ -106,7 +106,7 @@ Zie [waarschuwingen voor activiteiten](../azure-monitor/platform/activity-log-al
 
 Meer informatie over onderhoud vindt u in het overzicht van virtuele-machine schaal sets. Als ten minste één virtuele machine in de schaalset voor virtuele machines is opgenomen in de geplande onderhoud Golf, wordt er een nieuw lint aan de bovenkant van de pagina toegevoegd. Selecteer het lint met meldingen om naar de **onderhouds** pagina te gaan. 
 
-Op de pagina **onderhoud** kunt u zien welke VM-instantie wordt beïnvloed door het geplande onderhoud. Als u onderhoud wilt starten, schakelt u het selectie vakje in dat overeenkomt met de betreffende VM. Selecteer vervolgens  **Onderhoud starten**.
+Op de pagina **onderhoud** kunt u zien welke VM-instantie wordt beïnvloed door het geplande onderhoud. Als u onderhoud wilt starten, schakelt u het selectie vakje in dat overeenkomt met de betreffende VM. Selecteer vervolgens  **Onderhoud starten** .
 
 Nadat u het onderhoud hebt gestart, onderneemt de betrokken Vm's in de schaalset voor virtuele machines onderhoud en zijn ze tijdelijk niet beschikbaar. Als u het self-service venster hebt gemist, kunt u nog steeds het tijd venster zien wanneer de schaalset van de virtuele machine wordt onderhouden door Azure.
  
@@ -120,7 +120,7 @@ Onderhouds informatie wordt alleen geretourneerd als het onderhoud is gepland. A
 Get-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -InstanceView
 ```
 
-De volgende eigenschappen worden geretourneerd onder **MaintenanceRedeployStatus**: 
+De volgende eigenschappen worden geretourneerd onder **MaintenanceRedeployStatus** : 
 
 | Waarde | Beschrijving   |
 |-------|---------------|
@@ -135,7 +135,7 @@ De volgende eigenschappen worden geretourneerd onder **MaintenanceRedeployStatus
 
 ### <a name="start-maintenance-on-your-vm-instance-by-using-powershell"></a>Onderhoud starten in uw VM-exemplaar met behulp van Power shell
 
-U kunt onderhoud starten op een VM als **IsCustomerInitiatedMaintenanceAllowed** is ingesteld op **True**. Gebruik de cmdlet [set-AzVmss](/powershell/module/az.compute/set-azvmss) met de `-PerformMaintenance` para meter.
+U kunt onderhoud starten op een VM als **IsCustomerInitiatedMaintenanceAllowed** is ingesteld op **True** . Gebruik de cmdlet [set-AzVmss](/powershell/module/az.compute/set-azvmss) met de `-PerformMaintenance` para meter.
 
 ```powershell
 Set-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -PerformMaintenance 
@@ -165,7 +165,7 @@ De volgende eigenschappen worden geretourneerd onder **MaintenanceRedeployStatus
 
 ### <a name="start-maintenance-on-your-vm-instance-by-using-the-cli"></a>Onderhoud starten op uw VM-exemplaar met behulp van de CLI
 
-De volgende aanroep initieert onderhoud voor een VM-exemplaar als deze `IsCustomerInitiatedMaintenanceAllowed` is ingesteld op **waar**:
+De volgende aanroep initieert onderhoud voor een VM-exemplaar als deze `IsCustomerInitiatedMaintenanceAllowed` is ingesteld op **waar** :
 
 ```azurecli
 az vmss perform-maintenance -g rgName -n vmssName --instance-ids id
@@ -202,7 +202,7 @@ Zie [regio's en beschik baarheid voor virtuele machines in azure](../virtual-mac
 **V: Ik zie geen onderhouds informatie op mijn Vm's. Wat is er verkeerd gegaan?**
 
 **A:** Er zijn verschillende redenen waarom u mogelijk geen onderhouds informatie ziet op uw Vm's:
-   - U gebruikt een abonnement dat is gemarkeerd als *interne micro soft*.
+   - U gebruikt een abonnement dat is gemarkeerd als *interne micro soft* .
    - Uw Vm's zijn niet gepland voor onderhoud. Het kan zijn dat de onderhouds Golf is beëindigd, is geannuleerd of is gewijzigd, zodat de virtuele machines niet meer worden beïnvloed door de toepassing.
    - U beschikt niet over de kolom **onderhoud** die is toegevoegd aan de lijst weergave van de virtuele machine. Hoewel deze kolom aan de standaard weergave is toegevoegd, moet u de kolom **onderhoud** hand matig toevoegen aan de lijst weergave van de virtuele machine als u uw weer gave zo configureert dat niet-standaard kolommen worden weer gegeven.
 

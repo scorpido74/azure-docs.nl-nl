@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/19/2020
 ms.author: keferna
 author: keferna
-ms.openlocfilehash: 92fd4d629585ed465e2891be2dce1c1bdc8c88e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ccc4cb6a6f95cfc51fb7e265e455131bc6393c2
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87287946"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735611"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager test drive
 
@@ -35,6 +35,9 @@ Een implementatie sjabloon bevat alle Azure-resources waaruit uw oplossing besta
   - **Koud** : dit type exemplaar vertegenwoordigt het totale aantal instanties dat mogelijk per regio kan worden geïmplementeerd. Voor koude instanties is het hele test station Resource Manager-sjabloon vereist om te implementeren wanneer een klant de test drive aanvraagt, zodat *koude* instanties veel langzamer worden geladen dan *Hot* instances. Het bedrag dat u alleen hoeft te betalen voor de duur van de test drive, wordt *niet* altijd uitgevoerd op uw Azure-abonnement, net als bij een *Hot* -instance.
 
 - **Azure Resource Manager-sjabloon testen** : Upload de. zip met uw Azure Resource Manager sjabloon. Meer informatie over het maken van een Azure Resource Manager sjabloon in het Quick Start-artikel [Azure Resource Manager sjablonen maken en implementeren met behulp van de Azure Portal](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md).
+
+    > [!note]
+    > Als u wilt publiceren, is het belang rijk om de opmaak van de ARM-sjabloon te valideren. Er zijn twee manieren om dit te doen (1) met behulp van een [online API-hulp programma](https://docs.microsoft.com/rest/api/resources/deployments/validate) of (2) met een [test implementatie](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal).
 
 - **Duur van test drive** (vereist): Voer het aantal uren in dat het test drive actief blijft. De test drive wordt automatisch beëindigd nadat deze periode is verstreken. Gebruik alleen hele getallen (bijvoorbeeld ' 2 ' uur is geldig, ' 1,5 ' is niet).
 
@@ -237,7 +240,7 @@ En gebruik deze locatie voor elke resource voor een specifiek Lab-exemplaar:
 
 Zorg ervoor dat uw abonnement alle gewenste resources in elk van de geselecteerde regio's mag implementeren. Zorg er ook voor dat uw installatie kopieën voor virtuele machines beschikbaar zijn in alle regio's die u gaat inschakelen. anders werkt uw implementatie sjabloon niet voor bepaalde regio's.
 
-### <a name="outputs"></a>Uitvoerwaarden
+### <a name="outputs"></a>Outputs
 
 Normaal gesp roken kunt u met Resource Manager-sjablonen implementeren zonder dat er uitvoer wordt geproduceerd. Dit komt doordat u alle waarden kent die u gebruikt om sjabloon parameters te vullen en u kunt altijd hand matig eigenschappen van een resource controleren.
 
@@ -293,11 +296,11 @@ De laatste sectie die u moet volt ooien, is om automatisch de test stations te k
 
 ![Details van implementatie abonnement testen](media/test-drive/deployment-subscription-details.png)
 
-1. Vraag een **Azure-abonnements-id**aan. Hiermee wordt toegang verleend aan Azure-Services en de Azure Portal. In het abonnement wordt het resource gebruik gerapporteerd en de services worden gefactureerd. Als u nog geen apart Azure-abonnement hebt voor alleen test stations, maakt u er een. U kunt Azure-abonnements-Id's (zoals `1a83645ac-1234-5ab6-6789-1h234g764ghty1` ) vinden door u aan te melden bij Azure Portal en **abonnementen** te selecteren in het menu links in de Navigator.
+1. Vraag een **Azure-abonnements-id** aan. Hiermee wordt toegang verleend aan Azure-Services en de Azure Portal. In het abonnement wordt het resource gebruik gerapporteerd en de services worden gefactureerd. Als u nog geen apart Azure-abonnement hebt voor alleen test stations, maakt u er een. U kunt Azure-abonnements-Id's (zoals `1a83645ac-1234-5ab6-6789-1h234g764ghty1` ) vinden door u aan te melden bij Azure Portal en **abonnementen** te selecteren in het menu links in de Navigator.
 
    ![Azure-abonnementen](media/test-drive/azure-subscriptions.png)
 
-2. Vraag een **Azure AD-Tenant-id**op. Als u al een Tenant-id beschikbaar hebt, kunt u deze vinden in de map met de **Azure Active Directory**  >  **Properties**  >  **-** eigenschappen:
+2. Vraag een **Azure AD-Tenant-id** op. Als u al een Tenant-id beschikbaar hebt, kunt u deze vinden in de map met de **Azure Active Directory**  >  **Properties**  >  **-** eigenschappen:
 
    ![Azure Active Directory eigenschappen](media/test-drive/azure-active-directory-properties.png)
 
@@ -306,14 +309,14 @@ De laatste sectie die u moet volt ooien, is om automatisch de test stations te k
 3. **Azure AD-App-ID** : een nieuwe toepassing maken en registreren. Deze toepassing wordt gebruikt voor het uitvoeren van bewerkingen op uw test drive-exemplaar.
 
    1. Ga naar de zojuist gemaakte map of al een bestaande map en selecteer Azure Active Directory in het deel venster filter.
-   2. Zoek **app-registraties** en selecteer **toevoegen**.
+   2. Zoek **app-registraties** en selecteer **toevoegen** .
    3. Geef een toepassings naam op.
-   4. Selecteer het **type** **Web-app/API**.
+   4. Selecteer het **type** **Web-app/API** .
    5. Geef een wille keurige waarde op in de aanmeldings-URL. dit veld wordt niet gebruikt.
-   6. Selecteer **Maken**.
-   7. Nadat de toepassing is gemaakt, selecteert u **Eigenschappen**  >  **de toepassing instellen als multi tenant** en vervolgens **Opslaan**.
+   6. Selecteer **Maken** .
+   7. Nadat de toepassing is gemaakt, selecteert u **Eigenschappen**  >  **de toepassing instellen als multi tenant** en vervolgens **Opslaan** .
 
-4. Selecteer **Opslaan**.
+4. Selecteer **Opslaan** .
 
 5. Kopieer de toepassings-ID voor deze geregistreerde app en plak deze in het veld test drive.
 
@@ -323,7 +326,7 @@ De laatste sectie die u moet volt ooien, is om automatisch de test stations te k
 
    1. Selecteer het type **abonnement** dat u voor de test drive gebruikt.
    1. Klik op **Toegangsbeheer (IAM)** .
-   1. Selecteer het tabblad **roltoewijzingen** en vervolgens **functie toewijzing toevoegen**.
+   1. Selecteer het tabblad **roltoewijzingen** en vervolgens **functie toewijzing toevoegen** .
 
       ![Een nieuwe Access Control Principal toevoegen](media/test-drive/access-control-principal.jpg)
 
@@ -331,9 +334,9 @@ De laatste sectie die u moet volt ooien, is om automatisch de test stations te k
 
       ![De machtigingen toevoegen](media/test-drive/access-control-permissions.jpg)
 
-   1. Selecteer **Opslaan**.
+   1. Selecteer **Opslaan** .
 
-7. Genereer een **Azure AD-App** verificatie sleutel. Voeg onder **sleutels**een **sleutel beschrijving**toe, stel de duur in op **nooit verlopen** (een verlopen sleutel verbreekt uw test drive in productie) en selecteer vervolgens **Opslaan**. Kopieer en plak deze waarde in uw vereiste test drive veld.
+7. Genereer een **Azure AD-App** verificatie sleutel. Voeg onder **sleutels** een **sleutel beschrijving** toe, stel de duur in op **nooit verlopen** (een verlopen sleutel verbreekt uw test drive in productie) en selecteer vervolgens **Opslaan** . Kopieer en plak deze waarde in uw vereiste test drive veld.
 
 ![Hiermee worden de sleutels voor de Azure AD-toepassing weer gegeven](media/test-drive/azure-ad-app-keys.png)
 
@@ -349,7 +352,7 @@ Nu alle test drive velden zijn voltooid, publiceert u uw aanbieding **opnieuw** 
 
 Verwijder geen test drive exemplaren die zijn ingericht voor uw klanten. de test drive-service zal deze resource groepen automatisch opschonen nadat een klant deze heeft voltooid.
 
-Zodra u vertrouwd bent met uw preview-aanbieding, is het tijd om **Live te gaan**! Er is een laatste controle proces om de volledige end-to-end-ervaring te controleren. Als we het aanbod afwijzen, sturen we een e-mail naar de technische contact persoon voor uw aanbieding waarin wordt uitgelegd wat er moet worden opgelost.
+Zodra u vertrouwd bent met uw preview-aanbieding, is het tijd om **Live te gaan** ! Er is een laatste controle proces om de volledige end-to-end-ervaring te controleren. Als we het aanbod afwijzen, sturen we een e-mail naar de technische contact persoon voor uw aanbieding waarin wordt uitgelegd wat er moet worden opgelost.
 
 ## <a name="next-steps"></a>Volgende stappen
 

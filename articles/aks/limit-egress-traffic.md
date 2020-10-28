@@ -5,14 +5,14 @@ services: container-service
 ms.topic: article
 ms.author: jpalma
 ms.date: 06/29/2020
-ms.custom: fasttrack-edit
+ms.custom: fasttrack-edit, devx-track-azurecli
 author: palma21
-ms.openlocfilehash: 33355251a06ba076be3677b84e383793f9f25193
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe6907ac659b94494472a327ff0b47e630ed89a0
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570370"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735567"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Uitgaand verkeer beheren voor cluster knooppunten in azure Kubernetes service (AKS)
 
@@ -29,17 +29,17 @@ De uitgaande afhankelijkheden voor AKS zijn bijna volledig gedefinieerd met FQDN
 Standaard hebben AKS-clusters onbeperkte uitgaande (uitgaand) Internet toegang. Met dit niveau van netwerk toegang kunnen knoop punten en services die u uitvoert om toegang te krijgen tot externe bronnen als dat nodig is. Als u uitgaand verkeer wilt beperken, moet een beperkt aantal poorten en adressen toegankelijk zijn voor het onderhouden van goede cluster onderhouds taken. De eenvoudigste oplossing voor het beveiligen van uitgaande adressen berust op het gebruik van een firewall apparaat waarmee het uitgaande verkeer op basis van domein namen kan worden beheerd. Azure Firewall kan bijvoorbeeld het uitgaande HTTP-en HTTPS-verkeer beperken op basis van de FQDN van de bestemming. U kunt ook uw voorkeurs firewall en beveiligings regels configureren om deze vereiste poorten en adressen toe te staan.
 
 > [!IMPORTANT]
-> In dit document wordt alleen beschreven hoe u het verkeer vergrendelt dat het AKS-subnet verlaat. AKS heeft standaard geen ingangs vereisten.  Het blok keren van het **verkeer van interne subnetten** met netwerk beveiligings groepen (nsg's) en firewalls wordt niet ondersteund. Gebruik [***netwerk beleid***][network-policy]om het verkeer binnen het cluster te beheren en te blok keren.
+> In dit document wordt alleen beschreven hoe u het verkeer vergrendelt dat het AKS-subnet verlaat. AKS heeft standaard geen ingangs vereisten.  Het blok keren van het **verkeer van interne subnetten** met netwerk beveiligings groepen (nsg's) en firewalls wordt niet ondersteund. Als u het verkeer binnen het cluster wilt beheren en blok keren, gebruikt u [ * *_netwerk beleid_* _][network-policy].
 
 ## <a name="required-outbound-network-rules-and-fqdns-for-aks-clusters"></a>Vereiste uitgaande netwerk regels en FQDN voor AKS-clusters
 
 Het volgende netwerk en de FQDN/toepassings regels zijn vereist voor een AKS-cluster. u kunt deze gebruiken als u een andere oplossing dan Azure Firewall wilt configureren.
 
-* Afhankelijkheden van IP-adressen zijn voor niet-HTTP/S-verkeer (TCP-en UDP-verkeer)
+_ IP-adres afhankelijkheden zijn voor niet-HTTP/S-verkeer (TCP-en UDP-verkeer)
 * FQDN HTTP/HTTPS-eind punten kunnen worden geplaatst op het apparaat van de firewall.
 * Joker tekens voor HTTP/HTTPS-eind punten zijn afhankelijkheden die kunnen variëren met uw AKS-cluster op basis van een aantal kwalificaties.
 * AKS maakt gebruik van een toegangs controller om de FQDN als een omgevings variabele in te voeren voor alle implementaties onder uitvoeren-System en gate keeper-System, waardoor alle systeem communicatie tussen knoop punten en API server de FQDN van de API-server en niet het API-server-IP-adres gebruikt. 
-* Als u een app of oplossing hebt die moet communiceren met de API-server, moet u een **extra** netwerk regel toevoegen om *TCP-communicatie toe te staan aan poort 443 van het IP-adres van uw API-server*.
+* Als u een app of oplossing hebt die moet communiceren met de API-server, moet u een **extra** netwerk regel toevoegen om *TCP-communicatie toe te staan aan poort 443 van het IP-adres van uw API-server* .
 * Als er sprake is van een onderhouds bewerking kan uw API-server-IP in zeldzame gevallen worden gewijzigd. Geplande onderhouds bewerkingen die het API server-IP-adres kunnen wijzigen, worden altijd vooraf gecommuniceerd.
 
 

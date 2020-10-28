@@ -6,13 +6,13 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: cynthn
-ms.custom: legacy
-ms.openlocfilehash: c7d93ee928653cc1656e3e9a7cdb0d2fd6d7094b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: legacy, devx-track-azurecli
+ms.openlocfilehash: f92f286fc9d9438331617cb567272a331834af42
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654409"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735380"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>Een kopie van een virtuele Linux-machine maken met behulp van Azure CLI en Managed Disks
 
@@ -31,7 +31,7 @@ U kunt ook [een virtuele machine uploaden en maken op basis van een VHD](upload-
 ## <a name="stop-the-source-vm"></a>De bron-VM stoppen
 
 Wijs de toewijzing van de bron-VM ongedaan met [AZ VM deallocate](/cli/azure/vm#az-vm-deallocate).
-In het volgende voor beeld wordt de toewijzing van de virtuele machine met de naam *myVM* in de resource groep *myResourceGroup*.
+In het volgende voor beeld wordt de toewijzing van de virtuele machine met de naam *myVM* in de resource groep *myResourceGroup* .
 
 ```azurecli
 az vm deallocate \
@@ -45,7 +45,7 @@ Als u een virtuele machine wilt kopiëren, maakt u een kopie van de onderliggend
 
 Zie [Overzicht van Azure Managed Disks](../managed-disks-overview.md) voor meer informatie over Azure Managed Disks. 
 
-1.  Vermeld elke virtuele machine en de naam van de besturingssysteem schijf met [AZ VM List](/cli/azure/vm#az-vm-list). In het volgende voor beeld worden alle virtuele machines in de resource groep met de naam *myResourceGroup*weer gegeven:
+1.  Vermeld elke virtuele machine en de naam van de besturingssysteem schijf met [AZ VM List](/cli/azure/vm#az-vm-list). In het volgende voor beeld worden alle virtuele machines in de resource groep met de naam *myResourceGroup* weer gegeven:
     
     ```azurecli
     az vm list -g myResourceGroup \
@@ -61,14 +61,14 @@ Zie [Overzicht van Azure Managed Disks](../managed-disks-overview.md) voor meer 
     myVM    myDisk
     ```
 
-1.  Kopieer de schijf door een nieuwe beheerde schijf te maken en door [AZ Disk Create](/cli/azure/disk#az-disk-create)te gebruiken. In het volgende voor beeld wordt een schijf met de naam *myCopiedDisk* gemaakt op basis van de beheerde schijf met de naam *myDisk*:
+1.  Kopieer de schijf door een nieuwe beheerde schijf te maken en door [AZ Disk Create](/cli/azure/disk#az-disk-create)te gebruiken. In het volgende voor beeld wordt een schijf met de naam *myCopiedDisk* gemaakt op basis van de beheerde schijf met de naam *myDisk* :
 
     ```azurecli
     az disk create --resource-group myResourceGroup \
          --name myCopiedDisk --source myDisk
     ``` 
 
-1.  Controleer de beheerde schijven nu in uw resource groep met behulp van [AZ Disk List](/cli/azure/disk#az-disk-list). In het volgende voor beeld ziet u de beheerde schijven in de resource groep met de naam *myResourceGroup*:
+1.  Controleer de beheerde schijven nu in uw resource groep met behulp van [AZ Disk List](/cli/azure/disk#az-disk-list). In het volgende voor beeld ziet u de beheerde schijven in de resource groep met de naam *myResourceGroup* :
 
     ```azurecli
     az disk list --resource-group myResourceGroup --output table
@@ -83,7 +83,7 @@ Als u een virtuele machine kopieert voor het oplossen van problemen of extra imp
 
 Als u een virtuele netwerk infrastructuur voor de gekopieerde Vm's wilt maken, volgt u de volgende stappen. Als u geen virtueel netwerk wilt maken, gaat u door met [het maken van een virtuele machine](#create-a-vm).
 
-1.  Maak het virtuele netwerk met [AZ Network vnet Create](/cli/azure/network/vnet#az-network-vnet-create). In het volgende voor beeld wordt een virtueel netwerk gemaakt met de naam *myVnet* en een subnet met de naam *mySubnet*:
+1.  Maak het virtuele netwerk met [AZ Network vnet Create](/cli/azure/network/vnet#az-network-vnet-create). In het volgende voor beeld wordt een virtueel netwerk gemaakt met de naam *myVnet* en een subnet met de naam *mySubnet* :
 
     ```azurecli
     az network vnet create --resource-group myResourceGroup \
@@ -93,7 +93,7 @@ Als u een virtuele netwerk infrastructuur voor de gekopieerde Vm's wilt maken, v
         --subnet-prefix 192.168.1.0/24
     ```
 
-1.  Maak een openbaar IP-adres met behulp van [AZ Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create). In het volgende voor beeld wordt een openbaar IP-adres met de naam *myPublicIP* gemaakt met de DNS- *mypublicdns*. (Omdat de DNS-naam uniek moet zijn, geeft u een unieke naam op.)
+1.  Maak een openbaar IP-adres met behulp van [AZ Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create). In het volgende voor beeld wordt een openbaar IP-adres met de naam *myPublicIP* gemaakt met de DNS- *mypublicdns* . (Omdat de DNS-naam uniek moet zijn, geeft u een unieke naam op.)
 
     ```azurecli
     az network public-ip create --resource-group myResourceGroup \
