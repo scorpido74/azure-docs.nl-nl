@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: a6faac66edaaf047f5ba025e94a1522c2313f9ed
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c21b4d746d763f41f4360cf93f67939bcd6dc49f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546667"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632682"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Persoonlijke Azure-koppeling voor Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-xxx-md.md)]
 
-Met behulp van een persoonlijke Azure-koppeling kunt u via een persoonlijk eind punt verbinding maken met verschillende PaaS-implementaties (platform as a Service) in Azure. Een persoonlijk eind punt is een privé-IP-adres binnen een specifiek virtueel netwerk en subnet. Zie de documentatie van een [persoonlijke koppeling](https://docs.microsoft.com/azure/private-link/)voor een lijst met PaaS-implementaties die functionaliteit voor persoonlijke koppelingen ondersteunen. 
+Met behulp van een persoonlijke Azure-koppeling kunt u via een persoonlijk eind punt verbinding maken met verschillende PaaS-implementaties (platform as a Service) in Azure. Een persoonlijk eind punt is een privé-IP-adres binnen een specifiek virtueel netwerk en subnet. Zie de documentatie van een [persoonlijke koppeling](../private-link/index.yml)voor een lijst met PaaS-implementaties die functionaliteit voor persoonlijke koppelingen ondersteunen. 
 
 ## <a name="secure-communication-between-customer-networks-and-azure-data-factory"></a>Beveiligde communicatie tussen klanten netwerken en Azure Data Factory 
 U kunt een virtueel Azure-netwerk instellen als een logische weer gave van uw netwerk in de Cloud. Dit biedt de volgende voor delen:
@@ -67,7 +67,7 @@ Het inschakelen van de service voor persoonlijke koppelingen voor elk van de voo
 > Wanneer u een gekoppelde service maakt, moet u ervoor zorgen dat uw referenties zijn opgeslagen in een Azure-sleutel kluis. Anders werken de referenties niet wanneer u een persoonlijke koppeling inschakelt in Azure Data Factory.
 
 ## <a name="set-up-private-link-for-azure-data-factory"></a>Persoonlijke koppeling instellen voor Azure Data Factory
-U kunt persoonlijke eind punten maken met behulp van [de Azure Portal](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal).
+U kunt persoonlijke eind punten maken met behulp van [de Azure Portal](../private-link/create-private-endpoint-portal.md).
 
 U kunt ook naar uw Azure data factory gaan in de Azure Portal en een persoonlijk eind punt maken, zoals hier wordt weer gegeven:
 
@@ -89,4 +89,3 @@ Als u open bare toegang tot de Azure data factory wilt blok keren en alleen toeg
 - [Een data factory maken met behulp van de Azure Data Factory gebruikers interface](quickstart-create-data-factory-portal.md)
 - [Inleiding tot Azure Data Factory](introduction.md)
 - [Visueel ontwerpen in Azure Data Factory](author-visually.md)
-

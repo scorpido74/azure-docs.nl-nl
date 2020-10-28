@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
-ms.openlocfilehash: 7cc8e2e02aef9e323da9859ce6fd0bebea2ce036
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 85dd75b2af5d14d835db8aacc415069a2d67298e
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368907"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631832"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Gegevens transformeren met behulp van Hadoop streaming-activiteit in Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
@@ -72,13 +72,13 @@ Als u geen ervaring hebt met Azure Data Factory, lees dan [Inleiding tot Azure D
 | Eigenschap          | Beschrijving                              | Vereist |
 | ----------------- | ---------------------------------------- | -------- |
 | naam              | Naam van de activiteit                     | Ja      |
-| description       | Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt | Nee       |
+| beschrijving       | Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt | Nee       |
 | type              | Voor Hadoop streaming-activiteit is het type activiteit HDInsightStreaming | Ja      |
 | linkedServiceName | Verwijzing naar het HDInsight-cluster dat is geregistreerd als een gekoppelde service in Data Factory. Zie het artikel [Compute linked Services](compute-linked-services.md) (Engelstalig) voor meer informatie over deze gekoppelde service. | Ja      |
 | toewijzing            | Hiermee geeft u de naam van het uitvoer bare toewijzings programma | Ja      |
 | reductier           | Hiermee geeft u de naam van het uitvoer bare bestand voor verkleining | Ja      |
 | combinatie          | Hiermee geeft u de naam van het uitvoer bare bestand van de combi natie | Nee       |
-| fileLinkedService | Verwijzing naar een Azure Storage gekoppelde service die wordt gebruikt voor het opslaan van de Mapper-, combi natie-en Reduceerere Program ma's die moeten worden uitgevoerd. Hier worden alleen **[Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)** -en **[ADLS Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)** gekoppelde services ondersteund. Als u deze gekoppelde service niet opgeeft, wordt de Azure Storage gekoppelde service gebruikt die is gedefinieerd in de gekoppelde HDInsight-service. | Nee       |
+| fileLinkedService | Verwijzing naar een Azure Storage gekoppelde service die wordt gebruikt voor het opslaan van de Mapper-, combi natie-en Reduceerere Program ma's die moeten worden uitgevoerd. Hier worden alleen **[Azure Blob Storage](./connector-azure-blob-storage.md)** -en **[ADLS Gen2](./connector-azure-data-lake-storage.md)** gekoppelde services ondersteund. Als u deze gekoppelde service niet opgeeft, wordt de Azure Storage gekoppelde service gebruikt die is gedefinieerd in de gekoppelde HDInsight-service. | Nee       |
 | Bestandspad          | Geef een matrix met het pad op naar de toewijzings programma voor Mapper, combi natie en verminderen die zijn opgeslagen in de Azure Storage waarnaar wordt verwezen door fileLinkedService. Het pad is hoofdlettergevoelig. | Ja      |
 | input             | Hiermee geeft u het pad naar het WASB naar het invoer bestand voor de Mapper. | Ja      |
 | output            | Hiermee geeft u het pad naar de WASB naar het uitvoer bestand voor de verminderr. | Ja      |

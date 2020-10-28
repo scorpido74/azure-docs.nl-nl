@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 6f8a4d3de5fc7c0919b54d037de393c07c0a832d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ce3175a015b7a5813f62c639fdadbeea367bbc22
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368839"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631764"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-studio-classic-and-azure-data-factory"></a>Maak voorspellende pijp lijnen met behulp van Azure Machine Learning Studio (klassiek) en Azure Data Factory
 
@@ -26,8 +26,8 @@ ms.locfileid: "92368839"
 > * [MapReduce-activiteit](data-factory-map-reduce.md)
 > * [Hadoop streaming-activiteit](data-factory-hadoop-streaming-activity.md)
 > * [Spark-activiteit](data-factory-spark.md)
-> * [Activiteit voor het uitvoeren van Azure Machine Learning Studio (klassiek)](data-factory-azure-ml-batch-execution-activity.md)
-> * [Resource-activiteit voor het bijwerken van Azure Machine Learning Studio (klassiek)](data-factory-azure-ml-update-resource-activity.md)
+> * [Azure Machine Learning Studio-batchuitvoeringsactiviteit (klassiek)](data-factory-azure-ml-batch-execution-activity.md)
+> * [Resourceactiviteit voor Azure Machine Learning Studio (klassiek)](data-factory-azure-ml-update-resource-activity.md)
 > * [Opgeslagen procedureactiviteit](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL-activiteit](data-factory-usql-activity.md)
 > * [Aangepaste .NET-activiteit](data-factory-use-custom-activities.md)
@@ -40,9 +40,9 @@ ms.locfileid: "92368839"
 ### <a name="azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (klassiek)
 Met [Azure machine learning Studio (klassiek)](https://azure.microsoft.com/documentation/services/machine-learning/) kunt u Predictive Analytics oplossingen bouwen, testen en implementeren. Vanuit een weergave punt op hoog niveau, wordt deze in drie stappen uitgevoerd:
 
-1. **Een trainings experiment maken**. U voert deze stap uit met behulp van Azure Machine Learning Studio (klassiek). Studio (klassiek) is een samen werkende ontwikkel omgeving die u gebruikt om een predictive analytics model te trainen en te testen met behulp van trainings gegevens.
-2. **Converteer deze naar een voorspellend experiment**. Zodra uw model is getraind met bestaande gegevens en u klaar bent om het te gebruiken voor het beoordelen van nieuwe gegevens, kunt u uw experiment voorbereiden en stroom lijnen.
-3. **Implementeer de service als een webservice**. U kunt uw score experiment publiceren als een Azure-webservice. U kunt gegevens naar uw model verzenden via dit eind punt van de webservice en resultaat voorspellingen van het model ontvangen.
+1. **Een trainings experiment maken** . U voert deze stap uit met behulp van Azure Machine Learning Studio (klassiek). Studio (klassiek) is een samen werkende ontwikkel omgeving die u gebruikt om een predictive analytics model te trainen en te testen met behulp van trainings gegevens.
+2. **Converteer deze naar een voorspellend experiment** . Zodra uw model is getraind met bestaande gegevens en u klaar bent om het te gebruiken voor het beoordelen van nieuwe gegevens, kunt u uw experiment voorbereiden en stroom lijnen.
+3. **Implementeer de service als een webservice** . U kunt uw score experiment publiceren als een Azure-webservice. U kunt gegevens naar uw model verzenden via dit eind punt van de webservice en resultaat voorspellingen van het model ontvangen.
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 Data Factory is een op de cloud gebaseerde gegevens integratie service waarmee de **verplaatsing** en **trans formatie** van gegevens wordt beheerd en geautomatiseerd. U kunt oplossingen voor gegevens integratie maken met behulp van Azure Data Factory die gegevens uit verschillende gegevens archieven kan opnemen, de gegevens transformeren en verwerken, en de resulterende gegevens naar de gegevens archieven publiceren.
@@ -59,7 +59,7 @@ In de loop van de tijd moeten de voorspellende modellen in de Studio (klassieke)
 1. Publiceer het trainings experiment (niet voorspellend experiment) als een webservice. U voert deze stap in Studio (klassiek) uit, net zoals u het voorspellende experiment als een webservice in het vorige scenario beschikbaar had.
 2. Gebruik de service Studio (klassiek) voor uitvoering van batch om de webservice aan te roepen voor het trainings experiment. In principe kunt u de activiteit Studio (klassiek) gebruiken voor het aanroepen van zowel de webservice training als de Score-webservice.
 
-Wanneer u klaar bent met het opnieuw trainen, werkt u de Score-webservice (voorspellende experiment die als een webservice wordt weer gegeven) bij met het nieuwe getrainde model met behulp van de activiteit voor het bijwerken van de **resource van Azure machine learning Studio (klassiek)**. Zie [modellen bijwerken met update resource activiteit](data-factory-azure-ml-update-resource-activity.md) artikel voor meer informatie.
+Wanneer u klaar bent met het opnieuw trainen, werkt u de Score-webservice (voorspellende experiment die als een webservice wordt weer gegeven) bij met het nieuwe getrainde model met behulp van de activiteit voor het bijwerken van de **resource van Azure machine learning Studio (klassiek)** . Zie [modellen bijwerken met update resource activiteit](data-factory-azure-ml-update-resource-activity.md) artikel voor meer informatie.
 
 ## <a name="invoking-a-web-service-using-batch-execution-activity"></a>Een webservice aanroepen met de activiteit batch uitvoering
 U gebruikt Azure Data Factory om gegevens verplaatsing en-verwerking te organiseren en vervolgens batch uitvoering uit te voeren met Studio (klassiek). Dit zijn de stappen op het hoogste niveau:
@@ -78,9 +78,9 @@ U gebruikt Azure Data Factory om gegevens verplaatsing en-verwerking te organise
 In dit scenario maakt de Studio-webservice voor Spellings voorspelling met behulp van gegevens uit een bestand in een Azure Blob-opslag en slaat de Voorspellings resultaten op in de Blob-opslag. De volgende JSON definieert een Data Factory pijp lijn met een AzureMLBatchExecution-activiteit. De-activiteit heeft de gegevensset **DecisionTreeInputBlob** als invoer en **DecisionTreeResultBlob** als uitvoer. De **DecisionTreeInputBlob** wordt door gegeven als invoer voor de webservice met behulp van de JSON-eigenschap **webserviceinputactivity** . De **DecisionTreeResultBlob** wordt door gegeven als een uitvoer naar de webservice met behulp van de JSON-eigenschap **webServiceOutputs** .
 
 > [!IMPORTANT]
-> Als de webservice meerdere invoer heeft, gebruikt u de eigenschap **webServiceInputs** in plaats van **webserviceinputactivity**te gebruiken. Zie de sectie [meerdere invoer](#web-service-requires-multiple-inputs) voor een voor beeld van het gebruik van de eigenschap webServiceInputs.
+> Als de webservice meerdere invoer heeft, gebruikt u de eigenschap **webServiceInputs** in plaats van **webserviceinputactivity** te gebruiken. Zie de sectie [meerdere invoer](#web-service-requires-multiple-inputs) voor een voor beeld van het gebruik van de eigenschap webServiceInputs.
 >
-> Gegevens sets waarnaar wordt verwezen door de eigenschappen **webserviceinputactivity** / **webServiceInputs** en **webServiceOutputs** (in **typeProperties**) moeten ook worden opgenomen in de activiteit **invoer** en **uitvoer**.
+> Gegevens sets waarnaar wordt verwezen door de eigenschappen **webserviceinputactivity** / **webServiceInputs** en **webServiceOutputs** (in **typeProperties** ) moeten ook worden opgenomen in de activiteit **invoer** en **uitvoer** .
 >
 > In uw studio (klassiek) experiment hebben de invoer-en uitvoer poorten voor de web-service en de globale para meters standaard namen ("input1", "input2") die u kunt aanpassen. De namen die u gebruikt voor de instellingen webServiceInputs, webServiceOutputs en globalParameters moeten exact overeenkomen met de namen in de experimenten. U kunt de nettolading van de voorbeeld aanvraag bekijken op de Help-pagina voor batch uitvoering voor uw studio-eind punt (klassiek) om de verwachte toewijzing te controleren.
 >
@@ -137,7 +137,7 @@ In dit voor beeld wordt Azure Storage gebruikt om zowel de invoer-als uitvoer ge
 
 We raden u aan om door te gaan [met het bouwen van uw eerste pijp lijn met Data Factory][adf-build-1st-pipeline] zelf studie voordat u dit voor beeld gaat volgen. Gebruik de Data Factory editor om Data Factory artefacten (gekoppelde services, gegevens sets, pijp lijn) in dit voor beeld te maken.
 
-1. Maak een **gekoppelde service** voor uw **Azure Storage**. Als de invoer-en uitvoer bestanden zich in verschillende opslag accounts bevinden, hebt u twee gekoppelde services nodig. Hier volgt een voor beeld van een JSON:
+1. Maak een **gekoppelde service** voor uw **Azure Storage** . Als de invoer-en uitvoer bestanden zich in verschillende opslag accounts bevinden, hebt u twee gekoppelde services nodig. Hier volgt een voor beeld van een JSON:
 
     ```JSON
     {
@@ -150,7 +150,7 @@ We raden u aan om door te gaan [met het bouwen van uw eerste pijp lijn met Data 
       }
     }
     ```
-2. De **invoer** Azure Data Factory **gegevensset**maken. In tegens telling tot andere Data Factory gegevens sets, moeten deze gegevens sets zowel **FolderPath** -als **filename** -waarden bevatten. U kunt partitioneren gebruiken om de uitvoering van elke batch (elk gegevens segment) te laten verwerken of unieke invoer-en uitvoer bestanden te maken. Mogelijk moet u enige upstream-activiteit toevoegen om de invoer te transformeren naar de CSV-bestands indeling en deze in het opslag account voor elk segment te plaatsen. In dat geval neemt u niet de instellingen voor **externe** en **externalData** op die in het volgende voor beeld worden weer gegeven. uw DecisionTreeInputBlob zou de uitvoer gegevensset van een andere activiteit zijn.
+2. De **invoer** Azure Data Factory **gegevensset** maken. In tegens telling tot andere Data Factory gegevens sets, moeten deze gegevens sets zowel **FolderPath** -als **filename** -waarden bevatten. U kunt partitioneren gebruiken om de uitvoering van elke batch (elk gegevens segment) te laten verwerken of unieke invoer-en uitvoer bestanden te maken. Mogelijk moet u enige upstream-activiteit toevoegen om de invoer te transformeren naar de CSV-bestands indeling en deze in het opslag account voor elk segment te plaatsen. In dat geval neemt u niet de instellingen voor **externe** en **externalData** op die in het volgende voor beeld worden weer gegeven. uw DecisionTreeInputBlob zou de uitvoer gegevensset van een andere activiteit zijn.
 
     ```JSON
     {
@@ -182,7 +182,7 @@ We raden u aan om door te gaan [met het bouwen van uw eerste pijp lijn met Data 
     }
     ```
 
-    Het CSV-bestand van de invoer moet de rij met kolom koppen bevatten. Als u de **Kopieer activiteit** gebruikt om het CSV-bestand te maken of te verplaatsen naar de Blob-opslag, moet u de Sink-eigenschap **blobWriterAddHeader** instellen op **True**. Bijvoorbeeld:
+    Het CSV-bestand van de invoer moet de rij met kolom koppen bevatten. Als u de **Kopieer activiteit** gebruikt om het CSV-bestand te maken of te verplaatsen naar de Blob-opslag, moet u de Sink-eigenschap **blobWriterAddHeader** instellen op **True** . Bijvoorbeeld:
 
     ```JSON
     sink:
@@ -192,8 +192,8 @@ We raden u aan om door te gaan [met het bouwen van uw eerste pijp lijn met Data 
     }
     ```
 
-    Als het CSV-bestand niet de veldnamenrij bevat, ziet u mogelijk de volgende fout: **fout in activiteit: fout bij het lezen van de teken reeks. Onverwacht token: start object. Pad, regel 1, positie 1**.
-3. De **uitvoer** Azure Data Factory **gegevensset**maken. In dit voor beeld wordt gepartitioneerd voor het maken van een uniek uitvoerpad voor elke uitvoering van een segment. Zonder partitioneren zou de activiteit het bestand overschrijven.
+    Als het CSV-bestand niet de veldnamenrij bevat, ziet u mogelijk de volgende fout: **fout in activiteit: fout bij het lezen van de teken reeks. Onverwacht token: start object. Pad, regel 1, positie 1** .
+3. De **uitvoer** Azure Data Factory **gegevensset** maken. In dit voor beeld wordt gepartitioneerd voor het maken van een uniek uitvoerpad voor elke uitvoering van een segment. Zonder partitioneren zou de activiteit het bestand overschrijven.
 
     ```JSON
     {
@@ -234,7 +234,7 @@ We raden u aan om door te gaan [met het bouwen van uw eerste pijp lijn met Data 
       }
     }
     ```
-4. Maak een **gekoppelde service** van het type: **AzureMLLinkedService**, die de API-sleutel en de URL voor de model batch uitvoering levert.
+4. Maak een **gekoppelde service** van het type: **AzureMLLinkedService** , die de API-sleutel en de URL voor de model batch uitvoering levert.
 
     ```JSON
     {
@@ -301,7 +301,7 @@ We raden u aan om door te gaan [met het bouwen van uw eerste pijp lijn met Data 
       }
       ```
 
-      De **begin** -en **eind** datum moeten de [ISO-indeling](https://en.wikipedia.org/wiki/ISO_8601)hebben. Bijvoorbeeld: 2014-10-14T16:32:41Z. De **eind** tijd is optioneel. Als u geen waarde opgeeft voor de eigenschap **End** , wordt deze berekend als '**Start + 48 uur '.** Als u de pijplijn voor onbepaalde tijd wilt uitvoeren, geeft u **9999-09-09** op als waarde voor de eigenschap **end**. Zie de [naslaginformatie voor JSON-scriptverwerking](https://msdn.microsoft.com/library/dn835050.aspx) voor meer informatie over de JSON-eigenschappen.
+      De **begin** -en **eind** datum moeten de [ISO-indeling](https://en.wikipedia.org/wiki/ISO_8601)hebben. Bijvoorbeeld: 2014-10-14T16:32:41Z. De **eind** tijd is optioneel. Als u geen waarde opgeeft voor de eigenschap **End** , wordt deze berekend als ' **Start + 48 uur '.** Als u de pijplijn voor onbepaalde tijd wilt uitvoeren, geeft u **9999-09-09** op als waarde voor de eigenschap **end** . Zie de [naslaginformatie voor JSON-scriptverwerking](/previous-versions/azure/dn835050(v=azure.100)) voor meer informatie over de JSON-eigenschappen.
 
       > [!NOTE]
       > Het opgeven van een invoer voor de activiteit AzureMLBatchExecution is optioneel.
@@ -309,7 +309,7 @@ We raden u aan om door te gaan [met het bouwen van uw eerste pijp lijn met Data 
       >
 
 ### <a name="scenario-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>Scenario: experimenten met behulp van Reader/Writer modules om te verwijzen naar gegevens in verschillende opslag ruimten
-Een ander algemeen scenario bij het maken van Studio-experimenten (klassiek) is het gebruik van de modules lezer en Writer. De module lezer wordt gebruikt om gegevens te laden in een experiment en de module schrijver is het opslaan van gegevens van uw experimenten. Zie de onderwerpen over [lezer](https://msdn.microsoft.com/library/azure/dn905997.aspx) en [Writer](https://msdn.microsoft.com/library/azure/dn905984.aspx) in de MSDN-bibliotheek voor meer informatie over de modules lezer en Writer.
+Een ander algemeen scenario bij het maken van Studio-experimenten (klassiek) is het gebruik van de modules lezer en Writer. De module lezer wordt gebruikt om gegevens te laden in een experiment en de module schrijver is het opslaan van gegevens van uw experimenten. Zie de onderwerpen over [lezer](/azure/machine-learning/studio-module-reference/import-data) en [Writer](/azure/machine-learning/studio-module-reference/export-data) in de MSDN-bibliotheek voor meer informatie over de modules lezer en Writer.
 
 Wanneer u de modules lezer en Writer gebruikt, is het verstandig om een para meter voor de webservice te gebruiken voor elke eigenschap van deze modules voor lezer/Writer. Met deze web-para meters kunt u de waarden tijdens runtime configureren. U kunt bijvoorbeeld een experiment maken met een lees module die gebruikmaakt van een Azure SQL Database: XXX.database.windows.net. Nadat de webservice is geïmplementeerd, wilt u de gebruikers van de webservice in staat stellen een andere logische SQL-Server met de naam YYY.database.windows.net op te geven. U kunt een webservice-para meter gebruiken om deze waarde te kunnen configureren.
 
@@ -347,7 +347,7 @@ U kunt ook [Data Factory-functies](data-factory-functions-variables.md) gebruike
 ### <a name="using-a-reader-module-to-read-data-from-multiple-files-in-azure-blob"></a>Een lezers module gebruiken om gegevens te lezen uit meerdere bestanden in Azure Blob
 Big Data-pijp lijnen met activiteiten als varken en Hive kunnen een of meer uitvoer bestanden maken zonder uitbrei dingen. Wanneer u bijvoorbeeld een externe Hive-tabel opgeeft, kunnen de gegevens voor de externe Hive-tabel worden opgeslagen in Azure Blob Storage met de volgende naam 000000_0. U kunt de module lezer in een experiment gebruiken om meerdere bestanden te lezen en ze gebruiken voor voor spellingen.
 
-Wanneer u de module lezer in een studio-experiment (klassiek) gebruikt, kunt u Azure Blob als invoer opgeven. De bestanden in de Azure Blob-opslag kunnen de uitvoer bestanden zijn (bijvoorbeeld: 000000_0) die worden geproduceerd door een Pig-en Hive-script dat wordt uitgevoerd op HDInsight. Met de lezers module kunt u bestanden (zonder extensies) lezen door het **pad naar de container, map/BLOB te**configureren. Het **pad naar de container** verwijst naar de container en de **map/BLOB** wijst naar de map die de bestanden bevat, zoals wordt weer gegeven in de volgende afbeelding. Het sterretje, \* ) **geeft aan dat alle bestanden in de container/map (dat wil zeggen, data-aggregateddata/Year = 2014/maand-6/ \* )** als onderdeel van het experiment worden gelezen.
+Wanneer u de module lezer in een studio-experiment (klassiek) gebruikt, kunt u Azure Blob als invoer opgeven. De bestanden in de Azure Blob-opslag kunnen de uitvoer bestanden zijn (bijvoorbeeld: 000000_0) die worden geproduceerd door een Pig-en Hive-script dat wordt uitgevoerd op HDInsight. Met de lezers module kunt u bestanden (zonder extensies) lezen door het **pad naar de container, map/BLOB te** configureren. Het **pad naar de container** verwijst naar de container en de **map/BLOB** wijst naar de map die de bestanden bevat, zoals wordt weer gegeven in de volgende afbeelding. Het sterretje, \* ) **geeft aan dat alle bestanden in de container/map (dat wil zeggen, data-aggregateddata/Year = 2014/maand-6/ \* )** als onderdeel van het experiment worden gelezen.
 
 ![Eigenschappen van Azure Blob](./media/data-factory-create-predictive-pipelines/azure-blob-properties.png)
 
@@ -405,11 +405,11 @@ Wanneer u de module lezer in een studio-experiment (klassiek) gebruikt, kunt u A
 In het bovenstaande JSON-voor beeld:
 
 * De geïmplementeerde Studio-webservice (Classic) gebruikt een lezer en een schrijver-module voor het lezen/schrijven van gegevens van/naar een Azure SQL Database. Deze webservice bevat de volgende vier para meters: database server naam, database naam, Server gebruikers accountnaam en wacht woord voor Server gebruikers account.
-* De **begin** -en **eind** datum moeten de [ISO-indeling](https://en.wikipedia.org/wiki/ISO_8601)hebben. Bijvoorbeeld: 2014-10-14T16:32:41Z. De **eind** tijd is optioneel. Als u geen waarde opgeeft voor de eigenschap **End** , wordt deze berekend als '**Start + 48 uur '.** Als u de pijplijn voor onbepaalde tijd wilt uitvoeren, geeft u **9999-09-09** op als waarde voor de eigenschap **end**. Zie de [naslaginformatie voor JSON-scriptverwerking](https://msdn.microsoft.com/library/dn835050.aspx) voor meer informatie over de JSON-eigenschappen.
+* De **begin** -en **eind** datum moeten de [ISO-indeling](https://en.wikipedia.org/wiki/ISO_8601)hebben. Bijvoorbeeld: 2014-10-14T16:32:41Z. De **eind** tijd is optioneel. Als u geen waarde opgeeft voor de eigenschap **End** , wordt deze berekend als ' **Start + 48 uur '.** Als u de pijplijn voor onbepaalde tijd wilt uitvoeren, geeft u **9999-09-09** op als waarde voor de eigenschap **end** . Zie de [naslaginformatie voor JSON-scriptverwerking](/previous-versions/azure/dn835050(v=azure.100)) voor meer informatie over de JSON-eigenschappen.
 
 ### <a name="other-scenarios"></a>Andere scenario's
 #### <a name="web-service-requires-multiple-inputs"></a>Voor de webservice zijn meerdere invoer gegevens vereist
-Als de webservice meerdere invoer heeft, gebruikt u de eigenschap **webServiceInputs** in plaats van **webserviceinputactivity**te gebruiken. Gegevens sets waarnaar wordt verwezen door de **webServiceInputs** moeten ook worden opgenomen in de activiteiten **invoer**.
+Als de webservice meerdere invoer heeft, gebruikt u de eigenschap **webServiceInputs** in plaats van **webserviceinputactivity** te gebruiken. Gegevens sets waarnaar wordt verwezen door de **webServiceInputs** moeten ook worden opgenomen in de activiteiten **invoer** .
 
 In uw Azure Machine Learning Studio (klassiek) experiment hebben de invoer-en uitvoer poorten voor de web-service en de algemene para meters een standaard naam ("input1", "input2") die u kunt aanpassen. De namen die u gebruikt voor de instellingen webServiceInputs, webServiceOutputs en globalParameters moeten exact overeenkomen met de namen in de experimenten. U kunt de nettolading van de voorbeeld aanvraag bekijken op de Help-pagina voor batch uitvoering voor uw studio-eind punt (klassiek) om de verwachte toewijzing te controleren.
 
@@ -545,12 +545,12 @@ De **Takeaways** zijn:
 
 
 ## <a name="updating-models-using-update-resource-activity"></a>Modellen bijwerken met de activiteit resource bijwerken
-Wanneer u klaar bent met het opnieuw trainen, werkt u de Score-webservice (voorspellende experiment die als een webservice wordt weer gegeven) bij met het nieuwe getrainde model met behulp van de activiteit voor het bijwerken van de **resource van Azure machine learning Studio (klassiek)**. Zie [modellen bijwerken met update resource activiteit](data-factory-azure-ml-update-resource-activity.md) artikel voor meer informatie.
+Wanneer u klaar bent met het opnieuw trainen, werkt u de Score-webservice (voorspellende experiment die als een webservice wordt weer gegeven) bij met het nieuwe getrainde model met behulp van de activiteit voor het bijwerken van de **resource van Azure machine learning Studio (klassiek)** . Zie [modellen bijwerken met update resource activiteit](data-factory-azure-ml-update-resource-activity.md) artikel voor meer informatie.
 
 ### <a name="reader-and-writer-modules"></a>Reader-en Writer-modules
 Een veelvoorkomend scenario voor het gebruik van web service-para meters is het gebruik van Azure SQL-lezers en schrijvers. De module lezer wordt gebruikt om gegevens te laden in een experiment vanuit Data Management Services buiten Studio (klassiek). De module Writer is het opslaan van gegevens van uw experimenten in Data Management Services buiten Studio (klassiek).
 
-Zie de onderwerpen over [lezer](https://msdn.microsoft.com/library/azure/dn905997.aspx) en [Writer](https://msdn.microsoft.com/library/azure/dn905984.aspx) in de MSDN-bibliotheek voor meer informatie over Azure Blob/Azure SQL Reader/Writer. In het voor beeld in de vorige sectie is de Azure Blob Reader en Azure Blob Writer gebruikt. In deze sectie wordt beschreven hoe u Azure SQL Reader en Azure SQL Writer gebruikt.
+Zie de onderwerpen over [lezer](/azure/machine-learning/studio-module-reference/import-data) en [Writer](/azure/machine-learning/studio-module-reference/export-data) in de MSDN-bibliotheek voor meer informatie over Azure Blob/Azure SQL Reader/Writer. In het voor beeld in de vorige sectie is de Azure Blob Reader en Azure Blob Writer gebruikt. In deze sectie wordt beschreven hoe u Azure SQL Reader en Azure SQL Writer gebruikt.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 **V:** Ik heb meerdere bestanden die worden gegenereerd door mijn big data pijp lijnen. Kan ik de AzureMLBatchExecution-activiteit gebruiken om aan alle bestanden te werken?

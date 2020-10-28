@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: fd1a25e3fae49feb731cd1b472c99da679eee4f4
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 733a5c899e72809d979dfeeb60e4157c0d587bcf
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495683"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92633702"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Azure Machine Learning-werk ruimten maken en beheren 
 
@@ -80,13 +80,13 @@ Zie [referentie voor werk ruimte SDK](https://docs.microsoft.com/python/api/azur
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/) met behulp van de referenties van uw Azure-abonnement. 
 
-1. Selecteer in de linkerbovenhoek van Azure Portal **+ een resource maken**.
+1. Selecteer in de linkerbovenhoek van Azure Portal **+ een resource maken** .
 
       ![Een nieuwe resource maken](./media/how-to-manage-workspace/create-workspace.gif)
 
 1. Gebruik de zoekbalk om **Machine Learning** te vinden.
 
-1. Selecteer **Machine Learning**.
+1. Selecteer **Machine Learning** .
 
 1. Selecteer **Maken** in het deelvenster **Machine Learning** om te beginnen.
 
@@ -94,16 +94,16 @@ Zie [referentie voor werk ruimte SDK](https://docs.microsoft.com/python/api/azur
 
    Veld|Beschrijving 
    ---|---
-   Werkruimtenaam |Voer een unieke naam in die uw werkruimte aanduidt. In dit voorbeeld gebruiken we **docs-ws**. Namen moeten uniek zijn binnen de resourcegroep. Gebruik een naam die gemakkelijk te onthouden is en te onderscheiden is van door anderen gemaakte werkruimten. De naam van de werk ruimte is niet hoofdletter gevoelig.
+   Werkruimtenaam |Voer een unieke naam in die uw werkruimte aanduidt. In dit voorbeeld gebruiken we **docs-ws** . Namen moeten uniek zijn binnen de resourcegroep. Gebruik een naam die gemakkelijk te onthouden is en te onderscheiden is van door anderen gemaakte werkruimten. De naam van de werk ruimte is niet hoofdletter gevoelig.
    Abonnement |Selecteer het Azure-abonnement dat u wilt gebruiken.
-   Resourcegroep | Gebruik een bestaande resourcegroep in uw abonnement of voer een naam in om een nieuwe resourcegroep te maken. Een resourcegroep bevat gerelateerde resources voor een Azure-oplossing. In dit voorbeeld gebruiken we **docs-aml**. U hebt de rol *Inzender* of *eigenaar* nodig voor het gebruik van een bestaande resource groep.  Zie [toegang tot een Azure machine learning-werk ruimte beheren](how-to-assign-roles.md)voor meer informatie over toegang.
-   Regio | Selecteer de Azure-regio die het dichtst bij uw gebruikers ligt en de gegevens bronnen om uw werk ruimte te maken.
+   Resourcegroep | Gebruik een bestaande resourcegroep in uw abonnement of voer een naam in om een nieuwe resourcegroep te maken. Een resourcegroep bevat gerelateerde resources voor een Azure-oplossing. In dit voorbeeld gebruiken we **docs-aml** . U hebt de rol *Inzender* of *eigenaar* nodig voor het gebruik van een bestaande resource groep.  Zie [toegang tot een Azure machine learning-werk ruimte beheren](how-to-assign-roles.md)voor meer informatie over toegang.
+   Region | Selecteer de Azure-regio die het dichtst bij uw gebruikers ligt en de gegevens bronnen om uw werk ruimte te maken.
 
     ![Uw werk ruimte configureren](./media/how-to-manage-workspace/create-workspace-form.png)
 
-1. Wanneer u klaar bent met het configureren van de werk ruimte, selecteert u **controleren + maken**. Gebruik eventueel de secties [netwerken](#networking) en [Geavanceerd](#advanced) om meer instellingen te configureren voor de werk ruimte.
+1. Wanneer u klaar bent met het configureren van de werk ruimte, selecteert u **controleren + maken** . Gebruik eventueel de secties [netwerken](#networking) en [Geavanceerd](#advanced) om meer instellingen te configureren voor de werk ruimte.
 
-1. Controleer de instellingen en breng eventuele aanvullende wijzigingen of correcties aan. Wanneer u tevreden bent met de instellingen, selecteert u **maken**.
+1. Controleer de instellingen en breng eventuele aanvullende wijzigingen of correcties aan. Wanneer u tevreden bent met de instellingen, selecteert u **maken** .
 
    > [!Warning] 
    > Het kan enkele minuten duren om uw werkruimte in de cloud te maken.
@@ -126,7 +126,7 @@ De Azure Machine Learning python SDK biedt de klasse [PrivateEndpointConfig](htt
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. De standaard netwerk configuratie is het gebruik van een __openbaar eind punt__dat toegankelijk is op het open bare Internet. Als u de toegang tot uw werk ruimte wilt beperken tot een Azure-Virtual Network die u hebt gemaakt, kunt u in plaats daarvan __persoonlijk eind punt__ (preview) selecteren als de __verbindings methode__en vervolgens __+ toevoegen__ gebruiken om het eind punt te configureren.   
+1. De standaard netwerk configuratie is het gebruik van een __openbaar eind punt__ dat toegankelijk is op het open bare Internet. Als u de toegang tot uw werk ruimte wilt beperken tot een Azure-Virtual Network die u hebt gemaakt, kunt u in plaats daarvan __persoonlijk eind punt__ (preview) selecteren als de __verbindings methode__ en vervolgens __+ toevoegen__ gebruiken om het eind punt te configureren.   
 
    :::image type="content" source="media/how-to-manage-workspace/select-private-endpoint.png" alt-text="Persoonlijke eindpunt selectie":::  
 
@@ -134,7 +134,7 @@ De Azure Machine Learning python SDK biedt de klasse [PrivateEndpointConfig](htt
 
    :::image type="content" source="media/how-to-manage-workspace/create-private-endpoint.png" alt-text="Persoonlijke eindpunt selectie":::   
 
-1. Wanneer u klaar bent met het configureren van het netwerk, kunt u __controleren + maken__selecteren of door gaan naar de optionele __Geavanceerde__ configuratie.
+1. Wanneer u klaar bent met het configureren van het netwerk, kunt u __controleren + maken__ selecteren of door gaan naar de optionele __Geavanceerde__ configuratie.
 
 ---
 
@@ -147,8 +147,8 @@ De Azure Machine Learning python SDK biedt de klasse [PrivateEndpointConfig](htt
 Wanneer u een persoonlijk eind punt maakt, wordt er een nieuwe Privé-DNS zone gemaakt met de naam __privatelink.API.azureml.MS__ . Dit bevat een koppeling naar het virtuele netwerk. Als u meerdere werk ruimten met persoonlijke eind punten in dezelfde resource groep maakt, kan alleen het virtuele netwerk voor het eerste persoonlijke eind punt worden toegevoegd aan de DNS-zone. Gebruik de volgende stappen om vermeldingen toe te voegen voor de virtuele netwerken die worden gebruikt door de extra werk ruimten/persoonlijke eind punten:
 
 1. Selecteer in de [Azure Portal](https://portal.azure.com)de resource groep die de werk ruimte bevat. Selecteer vervolgens de Privé-DNS zone resource met de naam __privatelink.API.azureml.MS__
-2. Selecteer in de __instellingen__ __virtuele netwerk koppelingen__.
-3. Selecteer __Toevoegen__. Geef op de pagina __virtuele netwerk koppeling toevoegen__ een unieke naam op voor de __koppeling__en selecteer vervolgens het __virtuele netwerk__ dat u wilt toevoegen. Selecteer __OK__ om de netwerk koppeling toe te voegen.
+2. Selecteer in de __instellingen__ __virtuele netwerk koppelingen__ .
+3. Selecteer __Toevoegen__ . Geef op de pagina __virtuele netwerk koppeling toevoegen__ een unieke naam op voor de __koppeling__ en selecteer vervolgens het __virtuele netwerk__ dat u wilt toevoegen. Selecteer __OK__ om de netwerk koppeling toe te voegen.
 
 Zie voor meer informatie [Azure private endpoint DNS-configuratie](/azure/private-link/private-endpoint-dns).
 
@@ -167,7 +167,11 @@ Als u de gegevens wilt beperken die door micro soft worden verzameld op uw werk 
 
 #### <a name="use-your-own-key"></a>Uw eigen sleutel gebruiken
 
-U kunt uw eigen sleutel voor gegevens versleuteling opgeven. Dit maakt het Azure Cosmos DB-exemplaar dat metrische gegevens en meta data opslaat in uw Azure-abonnement. Gebruik de volgende stappen om uw eigen sleutel op te geven:
+U kunt uw eigen sleutel voor gegevens versleuteling opgeven. Dit maakt het Azure Cosmos DB-exemplaar dat metrische gegevens en meta data opslaat in uw Azure-abonnement.
+
+[!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
+
+Gebruik de volgende stappen om uw eigen sleutel op te geven:
 
 > [!IMPORTANT]  
 > Voordat u deze stappen volgt, moet u eerst de volgende acties uitvoeren:   
@@ -201,7 +205,7 @@ from azureml.core import Workspace
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Selecteer door de __klant beheerde sleutels__en selecteer vervolgens __klikken om een sleutel te selecteren__.
+1. Selecteer door de __klant beheerde sleutels__ en selecteer vervolgens __klikken om een sleutel te selecteren__ .
 
     :::image type="content" source="media/how-to-manage-workspace/advanced-workspace.png" alt-text="Persoonlijke eindpunt selectie":::
 
@@ -231,7 +235,7 @@ Als u van plan bent om code te gebruiken in uw lokale omgeving die verwijst naar
 
 ---
 
-Plaats het bestand in de mapstructuur met uw python-scripts of Jupyter-notebooks. Deze kan zich in dezelfde map bevindt, in een submap met de naam *. azureml*of in een bovenliggende map. Wanneer u een reken instantie maakt, wordt dit bestand voor u toegevoegd aan de juiste map op de virtuele machine.
+Plaats het bestand in de mapstructuur met uw python-scripts of Jupyter-notebooks. Deze kan zich in dezelfde map bevindt, in een submap met de naam *. azureml* of in een bovenliggende map. Wanneer u een reken instantie maakt, wordt dit bestand voor u toegevoegd aan de juiste map op de virtuele machine.
 
 
 ## <a name="find-a-workspace"></a><a name="view"></a>Een werk ruimte zoeken
@@ -250,11 +254,11 @@ Workspace.list('<subscription-id>')
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-1. Typ **machine learning**in het bovenste zoek veld.  
+1. Typ **machine learning** in het bovenste zoek veld.  
 
-1. Selecteer **Machine Learning**.
+1. Selecteer **Machine Learning** .
 
    ![Zoeken naar Azure Machine Learning-werk ruimte](./media/how-to-manage-workspace/find-workspaces.png)
 

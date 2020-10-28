@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: d0dd7f71c21e223203fb0e695ba3139eaea0aa81
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c456c7eb31e1e8e66aa3276a0cb5f6f8b39efa9a
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368822"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631747"
 ---
 # <a name="updating-azure-machine-learning-studio-classic-models-using-update-resource-activity"></a>Azure Machine Learning Studio-modellen (klassiek) bijwerken met resource activiteit bijwerken
 
@@ -26,8 +26,8 @@ ms.locfileid: "92368822"
 > * [MapReduce-activiteit](data-factory-map-reduce.md)
 > * [Hadoop streaming-activiteit](data-factory-hadoop-streaming-activity.md)
 > * [Spark-activiteit](data-factory-spark.md)
-> * [Activiteit voor het uitvoeren van Azure Machine Learning Studio (klassiek)](data-factory-azure-ml-batch-execution-activity.md)
-> * [Resource-activiteit voor het bijwerken van Azure Machine Learning Studio (klassiek)](data-factory-azure-ml-update-resource-activity.md)
+> * [Azure Machine Learning Studio-batchuitvoeringsactiviteit (klassiek)](data-factory-azure-ml-batch-execution-activity.md)
+> * [Resourceactiviteit voor Azure Machine Learning Studio (klassiek)](data-factory-azure-ml-update-resource-activity.md)
 > * [Opgeslagen procedureactiviteit](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL-activiteit](data-factory-usql-activity.md)
 > * [Aangepaste .NET-activiteit](data-factory-use-custom-activities.md)
@@ -42,9 +42,9 @@ Dit artikel vormt een aanvulling op het belangrijkste Azure Data Factory-Azure M
 Na verloop van tijd moeten de voorspellende modellen in de Azure Machine Learning Studio (klassieke) Score experimenten opnieuw worden getraind met nieuwe invoer gegevens sets. Wanneer u klaar bent met opnieuw trainen, wilt u de Score-webservice bijwerken met het opnieuw getrainde ML-model. De gebruikelijke stappen voor het inschakelen van training en het bijwerken van Studio-modellen (klassiek) via webservices zijn:
 
 1. Maak een experiment in [Azure machine learning Studio (klassiek)](https://studio.azureml.net).
-2. Wanneer u tevreden bent met het model, gebruikt u Azure Machine Learning Studio (klassiek) voor het publiceren van webservices voor zowel het **trainings experiment** als het scoren/**voorspellende experiment**.
+2. Wanneer u tevreden bent met het model, gebruikt u Azure Machine Learning Studio (klassiek) voor het publiceren van webservices voor zowel het **trainings experiment** als het scoren/ **voorspellende experiment** .
 
-In de volgende tabel worden de webservices beschreven die in dit voor beeld worden gebruikt.  Zie [Software modellen opnieuw trainen Azure machine learning Studio (klassiek)](../../machine-learning/studio/retrain-machine-learning-model.md) voor meer informatie.
+In de volgende tabel worden de webservices beschreven die in dit voor beeld worden gebruikt.  Zie [Software modellen opnieuw trainen Azure machine learning Studio (klassiek)](../../machine-learning/classic/retrain-machine-learning-model.md) voor meer informatie.
 
 - **Training-webservice** : ontvangt trainings gegevens en produceert getrainde modellen. De uitvoer van het opnieuw trainen is een. ilearner-bestand in een Azure Blob-opslag. Het **standaard eindpunt** wordt automatisch voor u gemaakt wanneer u het trainings experiment als een webservice publiceert. U kunt meer eind punten maken, maar in het voor beeld wordt alleen het standaard eindpunt gebruikt.
 - **Scores-webservice** : ontvangt voor beelden zonder gelabeld gegevens en maakt voor spellingen. De uitvoer van voor spellingen kan verschillende vormen hebben, zoals een CSV-bestand of rijen in Azure SQL Database, afhankelijk van de configuratie van het experiment. Het standaard eindpunt wordt automatisch voor u gemaakt wanneer u het voorspellende experiment als een webservice publiceert. 
@@ -53,12 +53,12 @@ In de volgende afbeelding ziet u de relatie tussen training en Score eindpunten 
 
 ![Webservices](./media/data-factory-azure-ml-batch-execution-activity/web-services.png)
 
-U kunt de **training-webservice** aanroepen met behulp van de klassieke activiteit voor het **uitvoeren van Azure machine learning Studio (klassiek)**. Het aanroepen van een training-webservice is hetzelfde als het aanroepen van een Azure Machine Learning Studio (klassieke) webservice (Score Web Service) voor het scoren van gegevens. De voor gaande secties bevatten informatie over het aanroepen van een Azure Machine Learning Studio (klassieke) webservice van een Azure Data Factory pijp lijn. 
+U kunt de **training-webservice** aanroepen met behulp van de klassieke activiteit voor het **uitvoeren van Azure machine learning Studio (klassiek)** . Het aanroepen van een training-webservice is hetzelfde als het aanroepen van een Azure Machine Learning Studio (klassieke) webservice (Score Web Service) voor het scoren van gegevens. De voor gaande secties bevatten informatie over het aanroepen van een Azure Machine Learning Studio (klassieke) webservice van een Azure Data Factory pijp lijn. 
 
 U kunt de **Score-webservice** aanroepen met behulp van de activiteit voor het bijwerken van de **bron van Azure machine learning Studio (klassiek)** om de webservice bij te werken met het nieuwe getrainde model. De volgende voor beelden bieden gekoppelde service definities: 
 
 ## <a name="scoring-web-service-is-a-classic-web-service"></a>Scores-webservice is een klassieke webservice
-Als de Score-webservice een **klassieke webservice**is, maakt u het tweede **niet-standaard en bijwerk bare eind punt** met behulp van de Azure Portal. Zie het artikel [endpoints maken](../../machine-learning/studio/create-endpoint.md) voor de stappen. Nadat u het niet-standaard bijwerk bare eind punt hebt gemaakt, voert u de volgende stappen uit:
+Als de Score-webservice een **klassieke webservice** is, maakt u het tweede **niet-standaard en bijwerk bare eind punt** met behulp van de Azure Portal. Zie het artikel [endpoints maken](../../machine-learning/classic/create-endpoint.md) voor de stappen. Nadat u het niet-standaard bijwerk bare eind punt hebt gemaakt, voert u de volgende stappen uit:
 
 * Klik op **batch-uitvoering** om de URI-waarde voor de JSON-eigenschap **mlEndpoint** op te halen.
 * Klik op **resource koppeling bijwerken** om de URI-waarde voor de JSON-eigenschap **updateResourceEndpoint** op te halen. De API-sleutel bevindt zich op de eindpunt pagina zelf (in de rechter benedenhoek).
@@ -208,7 +208,7 @@ Het volgende JSON-code fragment definieert een gekoppelde Studio-service die ver
 }
 ```
 
-In **Azure machine learning Studio (klassiek)** gaat u als volgt te werk om waarden op te halen voor **mlEndpoint** en **apiKey**:
+In **Azure machine learning Studio (klassiek)** gaat u als volgt te werk om waarden op te halen voor **mlEndpoint** en **apiKey** :
 
 1. Klik op **WEBservices** in het menu links.
 2. Klik op de training-webservice in de lijst met **webservices** .
@@ -260,7 +260,7 @@ Met de activiteit Studio (klassiek) update resource wordt geen uitvoer gegeneree
 ```
 
 ### <a name="pipeline"></a>Pijplijn
-De pijp lijn heeft twee activiteiten: **AzureMLBatchExecution** en **AzureMLUpdateResource**. De activiteit voor het uitvoeren van de batch uitvoering van Azure Machine Learning Studio (klassiek) neemt de trainings gegevens als invoer en produceert een iLearner-bestand als uitvoer. De activiteit roept de training-webservice (trainings experiment beschikbaar als een webservice) aan met de gegevens voor het invoeren van de training en ontvangt het ilearner-bestand van de webservice. De placeholderBlob is slechts een dummy-uitvoer gegevensset die wordt vereist door de Azure Data Factory-service om de pijp lijn uit te voeren.
+De pijp lijn heeft twee activiteiten: **AzureMLBatchExecution** en **AzureMLUpdateResource** . De activiteit voor het uitvoeren van de batch uitvoering van Azure Machine Learning Studio (klassiek) neemt de trainings gegevens als invoer en produceert een iLearner-bestand als uitvoer. De activiteit roept de training-webservice (trainings experiment beschikbaar als een webservice) aan met de gegevens voor het invoeren van de training en ontvangt het ilearner-bestand van de webservice. De placeholderBlob is slechts een dummy-uitvoer gegevensset die wordt vereist door de Azure Data Factory-service om de pijp lijn uit te voeren.
 
 ![pijplijn diagram](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
 

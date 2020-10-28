@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: 0332b9aab0db456ed4517c09e541bee1b9884d04
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e84f7a2ee8c2f7a57ce1734ad3392a217d6de5fe
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368992"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632104"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Use custom activities in an Azure Data Factory pipeline (Aangepaste activiteiten gebruiken in een Azure Data Factory-pijplijn)
 
@@ -36,7 +36,7 @@ Als u gegevens wilt verplaatsen naar/van een gegevens archief dat Data Factory n
 Zie de volgende artikelen als u geen ervaring hebt met Azure Batch-service:
 
 * [Azure batch basis principes](../batch/batch-technical-overview.md) voor een overzicht van de Azure batch-service.
-* De cmdlet [New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) om een Azure batch-account (of) te maken [Azure Portal](../batch/batch-account-create-portal.md) het Azure batch-account te maken met behulp van Azure Portal. Zie het artikel over het [beheren van Azure batch-account met](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) behulp van Power shell voor gedetailleerde instructies voor het gebruik van de cmdlet.
+* De cmdlet [New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) om een Azure batch-account (of) te maken [Azure Portal](../batch/batch-account-create-portal.md) het Azure batch-account te maken met behulp van Azure Portal. Zie het artikel over het [beheren van Azure batch-account met](/archive/blogs/windowshpc/using-azure-powershell-to-manage-azure-batch-account) behulp van Power shell voor gedetailleerde instructies voor het gebruik van de cmdlet.
 * De cmdlet [New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) om een Azure batch groep te maken.
 
 ## <a name="azure-batch-linked-service"></a>Azure Batch gekoppelde service
@@ -103,8 +103,8 @@ In de volgende tabel worden namen en beschrijvingen van eigenschappen beschreven
 | Eigenschap              | Beschrijving                              | Vereist |
 | :-------------------- | :--------------------------------------- | :------- |
 | naam                  | Naam van de activiteit in de pijp lijn     | Ja      |
-| description           | Tekst die beschrijft wat de activiteit doet.  | Nee       |
-| type                  | Voor aangepaste activiteit is het type activiteit **aangepast**. | Ja      |
+| beschrijving           | Tekst die beschrijft wat de activiteit doet.  | Nee       |
+| type                  | Voor aangepaste activiteit is het type activiteit **aangepast** . | Ja      |
 | linkedServiceName     | Gekoppelde service aan Azure Batch. Zie het artikel [Compute linked Services](compute-linked-services.md) (Engelstalig) voor meer informatie over deze gekoppelde service.  | Ja      |
 | command               | Opdracht van de aangepaste toepassing die moet worden uitgevoerd. Als de toepassing al beschikbaar is op het Azure Batch groeps knooppunt, kunnen de resourceLinkedService en folderPath worden overgeslagen. U kunt bijvoorbeeld de opdracht opgeven `cmd /c dir` , die wordt ondersteund door het knoop punt Windows Batch-groep. | Ja      |
 | resourceLinkedService | Azure Storage gekoppelde service naar het opslag account waarin de aangepaste toepassing is opgeslagen | Geen &#42;       |
@@ -310,7 +310,7 @@ U kunt aangepaste waarden van uw code in een aangepaste activiteit naar Azure Da
 
 ## <a name="retrieve-securestring-outputs"></a>SecureString-uitvoer ophalen
 
-Gevoelige eigenschaps waarden die zijn opgegeven als type *SecureString*, zoals wordt weer gegeven in enkele voor beelden in dit artikel, worden gemaskeerd op het tabblad controle in de gebruikers interface van Data Factory.  Bij uitvoering van de werkelijke pijp lijn wordt een *SecureString* -eigenschap echter GESERIALISEERD als JSON in het `activity.json` bestand als tekst zonder opmaak. Bijvoorbeeld:
+Gevoelige eigenschaps waarden die zijn opgegeven als type *SecureString* , zoals wordt weer gegeven in enkele voor beelden in dit artikel, worden gemaskeerd op het tabblad controle in de gebruikers interface van Data Factory.  Bij uitvoering van de werkelijke pijp lijn wordt een *SecureString* -eigenschap echter GESERIALISEERD als JSON in het `activity.json` bestand als tekst zonder opmaak. Bijvoorbeeld:
 
 ```json
 "extendedProperties": {
@@ -356,7 +356,7 @@ Als u bestaande .NET-code hebt geschreven voor een DotNet-activiteit van versie 
   - Het NuGet-pakket micro soft. Azure. Management. DataFactories is niet meer nodig.
   - Compileer uw code, upload het uitvoer bare bestand en de bijbehorende afhankelijkheden naar Azure Storage en definieer het pad in de `folderPath` eigenschap.
 
-Voor een volledig voor beeld van de manier waarop het end-to-end DLL-en pijp lijn-voor beeld dat wordt beschreven in het artikel Data Factory versie 1 [aangepaste activiteiten gebruiken in een Azure Data Factory pijp lijn](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities) kunnen worden herschreven als Data Factory aangepaste activiteit, Zie [Data Factory aangepaste activiteit voor beeld](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFv2CustomActivitySample).
+Voor een volledig voor beeld van de manier waarop het end-to-end DLL-en pijp lijn-voor beeld dat wordt beschreven in het artikel Data Factory versie 1 [aangepaste activiteiten gebruiken in een Azure Data Factory pijp lijn](./v1/data-factory-use-custom-activities.md) kunnen worden herschreven als Data Factory aangepaste activiteit, Zie [Data Factory aangepaste activiteit voor beeld](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFv2CustomActivitySample).
 
 ## <a name="auto-scaling-of-azure-batch"></a>Automatisch schalen van Azure Batch
 
@@ -376,7 +376,7 @@ $TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
 
 Zie [reken knooppunten automatisch schalen in een Azure batch groep](../batch/batch-automatic-scaling.md) voor meer informatie.
 
-Als de groep de standaard [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx)gebruikt, kan de batch-service 15-30 minuten in beslag nemen voordat de aangepaste activiteit wordt uitgevoerd. Als de groep een andere autoScaleEvaluationInterval gebruikt, kan de batch-service autoScaleEvaluationInterval + 10 minuten duren.
+Als de groep de standaard [autoScaleEvaluationInterval](/rest/api/batchservice/pool/enableautoscale)gebruikt, kan de batch-service 15-30 minuten in beslag nemen voordat de aangepaste activiteit wordt uitgevoerd. Als de groep een andere autoScaleEvaluationInterval gebruikt, kan de batch-service autoScaleEvaluationInterval + 10 minuten duren.
 
 ## <a name="next-steps"></a>Volgende stappen
 Raadpleeg de volgende artikelen waarin wordt uitgelegd hoe u gegevens op andere manieren transformeert:

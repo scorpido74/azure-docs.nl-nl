@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/28/2019
-ms.openlocfilehash: c392ad7a098116a8f2224d6844d38dc40e01d753
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f7959b639b75d912d44670c8b00a7327cb7857d6
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545987"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629439"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Ontwikkeling van script acties met HDInsight
 
@@ -235,11 +235,11 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 De volgende helpers die beschikbaar zijn voor gebruik in uw script:
 
-| Help-gebruik | Description |
+| Help-gebruik | Beschrijving |
 | --- | --- |
 | `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |Hiermee wordt een bestand gedownload van de bron-URI naar het opgegeven bestandspad. Standaard wordt een bestaand bestand niet overschreven. |
 | `untar_file TARFILE DESTDIR` |Hiermee wordt een tar-bestand (met) uitgepakt `-xf` naar de doelmap. |
-| `test_is_headnode` |Als deze wordt uitgevoerd op een hoofd knooppunt van het cluster, retour neren 1; in andere gevallen, 0. |
+| `test_is_headnode` |Als het script is uitgevoerd op een hoofd knooppunt van het cluster, retour neren 1; in andere gevallen, 0. |
 | `test_is_datanode` |Als het huidige knoop punt een Data (worker)-knoop punt is, retourneert een 1; in andere gevallen, 0. |
 | `test_is_first_datanode` |Als het huidige knoop punt het eerste gegevens knooppunt (worker) (met de naam workernode0) is, retourneert een 1; in andere gevallen, 0. |
 | `get_headnodes` |Retourneert de Fully Qualified Domain Name van de hoofd knooppunten in het cluster. Namen worden gescheiden door komma's. Een lege teken reeks wordt geretourneerd als fout. |
@@ -268,7 +268,7 @@ Het instellen van een omgevings variabele wordt uitgevoerd met de volgende instr
 VARIABLENAME=value
 ```
 
-Waarbij VARIABLEnaam de naam van de variabele is. Gebruik om toegang te krijgen tot de variabele `$VARIABLENAME` . Als u bijvoorbeeld een waarde wilt toewijzen die wordt opgegeven door een positionele para meter als een omgevings variabele met de naam wacht woord, gebruikt u de volgende instructie:
+In het voor gaande voor beeld `VARIABLENAME` is de naam van de variabele. Gebruik om toegang te krijgen tot de variabele `$VARIABLENAME` . Als u bijvoorbeeld een waarde wilt toewijzen die wordt opgegeven door een positionele para meter als een omgevings variabele met de naam wacht woord, gebruikt u de volgende instructie:
 
 ```bash
 PASSWORD=$1

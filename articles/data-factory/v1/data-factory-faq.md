@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 3ae12355dddbae40eb84730549ccebcd004ff6be
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: de4661bcfd7106d515480e39dc4660f44f469a3d
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371763"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631696"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Veelgestelde vragen over Azure Data Factory
 > [!NOTE]
@@ -26,7 +26,7 @@ ms.locfileid: "92371763"
 
 ## <a name="general-questions"></a>Algemene vragen
 ### <a name="what-is-azure-data-factory"></a>Wat is Azure Data Factory?
-Data Factory is een service voor gegevens integratie **in de Cloud waarmee de verplaatsing en trans formatie van gegevens worden geautomatiseerd**. Net als bij een fabriek die apparatuur uitvoert om grond stoffen te maken en deze te transformeren in voltooide producten, Data Factory worden bestaande services die onbewerkte gegevens verzamelen, omgezet in kant-en-klare informatie.
+Data Factory is een service voor gegevens integratie **in de Cloud waarmee de verplaatsing en trans formatie van gegevens worden geautomatiseerd** . Net als bij een fabriek die apparatuur uitvoert om grond stoffen te maken en deze te transformeren in voltooide producten, Data Factory worden bestaande services die onbewerkte gegevens verzamelen, omgezet in kant-en-klare informatie.
 
 Met Data Factory kunt u gegevensgestuurde werk stromen maken om gegevens te verplaatsen tussen zowel on-premises als in de cloud opgeslagen gegevens, en gegevens verwerken/transformeren met behulp van reken services zoals Azure HDInsight en Azure Data Lake Analytics. Nadat u een pijp lijn hebt gemaakt die de actie uitvoert die u nodig hebt, kunt u deze zo plannen dat deze regel matig wordt uitgevoerd (elk uur, dagelijks, wekelijks, enzovoort).   
 
@@ -41,7 +41,7 @@ Zie de [pagina met prijs informatie voor Data Factory][adf-pricing-details] voor
 * Voor een zelf studie over het **transformeren van gegevens** met HDInsight Hive-activiteit. Bekijk [gegevens verwerken door Hive-script uit te voeren in een Hadoop-cluster](data-factory-build-your-first-pipeline.md)
 
 ### <a name="what-is-the-data-factorys-region-availability"></a>Wat is de beschik baarheid van de beData Factorys regio?
-Data Factory is beschikbaar in **VS West** en **Europa-Noord**. De compute-en opslag services die door de gegevens fabrieken worden gebruikt, kunnen zich in andere regio's bevindt. Zie [ondersteunde regio's](data-factory-introduction.md#supported-regions).
+Data Factory is beschikbaar in **VS West** en **Europa-Noord** . De compute-en opslag services die door de gegevens fabrieken worden gebruikt, kunnen zich in andere regio's bevindt. Zie [ondersteunde regio's](data-factory-introduction.md#supported-regions).
 
 ### <a name="what-are-the-limits-on-number-of-data-factoriespipelinesactivitiesdatasets"></a>Wat zijn de limieten voor het aantal gegevens fabrieken/pijp lijnen/activiteiten/gegevens sets?
 Zie de sectie **Azure Data Factory limieten** van het artikel [Azure-abonnement en service limieten, quota's en beperkingen](../../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits) .
@@ -141,7 +141,7 @@ In het bovenstaande voor beeld vertegenwoordigen otherLinkedServiceName1 en othe
 ### <a name="why-are-my-input-slices-not-in-ready-state"></a>Waarom zijn mijn invoer segmenten niet de status gereed?
 Bij een veelvoorkomende fout wordt er geen **externe** eigenschap ingesteld op **True** in de invoer-gegevensset wanneer de invoer gegevens zich buiten het Data Factory bevinden (niet gemaakt door de Data Factory).
 
-In het volgende voor beeld hoeft u alleen **extern** in te stellen op True in **dataset1**.  
+In het volgende voor beeld hoeft u alleen **extern** in te stellen op True in **dataset1** .  
 
 **DataFactory1** Pijp lijn 1: dataset1-> activiteit1-> dataset2-> activiteit2-> dataset3-pijp lijn 2: dataset3-> activiteit3-> dataset4
 
@@ -205,4 +205,4 @@ Als u de uitvoeringen echt onmiddellijk wilt stoppen, is de enige manier om de p
 [adf-pricing-details]: https://go.microsoft.com/fwlink/?LinkId=517777
 [hdinsight-supported-regions]: https://azure.microsoft.com/pricing/details/hdinsight/
 [hdinsight-alternate-storage]: https://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx
-[hdinsight-alternate-storage-2]: https://docs.microsoft.com/archive/blogs/cindygross/use-additional-storage-accounts-with-hdinsight-hive
+[hdinsight-alternate-storage-2]: /archive/blogs/cindygross/use-additional-storage-accounts-with-hdinsight-hive

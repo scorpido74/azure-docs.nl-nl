@@ -11,12 +11,12 @@ author: nabhishek
 manager: anansub
 ms.custom: seo-lt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 28836d0b1109952d8cf81c66b44b1f98d9b770bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8734247a913bdf6a44a9156f6f87705b618f7228
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88136028"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632886"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Een gedeelde zelf-hostende Integration runtime maken in Azure Data Factory
 
@@ -55,18 +55,18 @@ Als u een gedeelde zelf-hostende IR wilt maken met behulp van Azure PowerShell, 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure-abonnement**. Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint. 
+- **Azure-abonnement** . Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint. 
 
-- **Azure PowerShell**. Volg de instructies in [Install Azure PowerShell in Windows met PowerShellGet](https://docs.microsoft.com/powershell/azure/install-az-ps). U kunt Power shell gebruiken om een script uit te voeren om een zelf-hostende Integration runtime te maken die kan worden gedeeld met andere gegevens fabrieken. 
+- **Azure PowerShell** . Volg de instructies in [Install Azure PowerShell in Windows met PowerShellGet](/powershell/azure/install-az-ps). U kunt Power shell gebruiken om een script uit te voeren om een zelf-hostende Integration runtime te maken die kan worden gedeeld met andere gegevens fabrieken. 
 
 > [!NOTE]  
 > Voor een lijst met Azure-regio's waarin Data Factory op dit moment beschikbaar is, selecteert u de regio's die u interesseren op de  [beschik bare producten per regio](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory).
 
-### <a name="create-a-data-factory"></a>Een data factory maken
+### <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
 1. Start Windows PowerShell ISE (Integrated Scripting Environment).
 
-1. Variabelen maken. Kopieer en plak het volgende script. Vervang de variabelen, zoals **subscriptionname** en **ResourceGroupName**, door de werkelijke waarden: 
+1. Variabelen maken. Kopieer en plak het volgende script. Vervang de variabelen, zoals **subscriptionname** en **ResourceGroupName** , door de werkelijke waarden: 
 
     ```powershell
     # If input contains a PSH special character, e.g. "$", precede it with the escape character "`" like "`$". 
@@ -99,7 +99,7 @@ Als u een gedeelde zelf-hostende IR wilt maken met behulp van Azure PowerShell, 
     > [!NOTE]  
     > Deze stap is optioneel. Als u al een data factory hebt, kunt u deze stap overs Laan. 
 
-    Maak een [Azure-resourcegroep](../azure-resource-manager/management/overview.md) met de opdracht [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en groepsgewijs worden beheerd. In het volgende voor beeld wordt een resource groep gemaakt `myResourceGroup` met de naam op de locatie Europa West: 
+    Maak een [Azure-resourcegroep](../azure-resource-manager/management/overview.md) met de opdracht [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en groepsgewijs worden beheerd. In het volgende voor beeld wordt een resource groep gemaakt `myResourceGroup` met de naam op de locatie Europa West: 
 
     ```powershell
     New-AzResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName
@@ -155,7 +155,7 @@ Het antwoord bevat de verificatie sleutel voor deze zelf-hostende Integration ru
 #### <a name="create-another-data-factory"></a>Nog een data factory maken
 
 > [!NOTE]  
-> Deze stap is optioneel. Als u al de data factory hebt waarmee u wilt delen, slaat u deze stap over. Maar om roltoewijzingen aan andere data factory toe te voegen of te verwijderen, moet u `Microsoft.Authorization/roleAssignments/write` `Microsoft.Authorization/roleAssignments/delete` machtigingen hebben, zoals beheerder of [eigenaar](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)van de [gebruikers toegang](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) .
+> Deze stap is optioneel. Als u al de data factory hebt waarmee u wilt delen, slaat u deze stap over. Maar om roltoewijzingen aan andere data factory toe te voegen of te verwijderen, moet u `Microsoft.Authorization/roleAssignments/write` `Microsoft.Authorization/roleAssignments/delete` machtigingen hebben, zoals beheerder of [eigenaar](../role-based-access-control/built-in-roles.md#owner)van de [gebruikers toegang](../role-based-access-control/built-in-roles.md#user-access-administrator) .
 
 ```powershell
 $factory = Set-AzDataFactoryV2 -ResourceGroupName $ResourceGroupName `
@@ -216,6 +216,6 @@ Remove-AzDataFactoryV2IntegrationRuntime `
 
 ### <a name="next-steps"></a>Volgende stappen
 
-- Bekijk de [concepten van de integratie-runtime in azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime).
+- Bekijk de [concepten van de integratie-runtime in azure Data Factory](./concepts-integration-runtime.md).
 
-- Meer informatie over [het maken van een zelf-hostende Integration runtime in de Azure Portal](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime).
+- Meer informatie over [het maken van een zelf-hostende Integration runtime in de Azure Portal](./create-self-hosted-integration-runtime.md).

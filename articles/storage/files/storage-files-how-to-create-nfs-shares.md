@@ -143,7 +143,7 @@ Nu u een FileStorage-account hebt gemaakt en het netwerk hebt geconfigureerd, ku
    -Context $storageAcct.Context
   ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u een Premium-bestands share wilt maken met de Azure CLI, gebruikt u de opdracht [AZ Storage share Create](/cli/azure/storage/share-rm) .
 

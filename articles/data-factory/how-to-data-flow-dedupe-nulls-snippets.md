@@ -8,12 +8,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: makromer
-ms.openlocfilehash: 1c630cdd66fa4f8e609524feb9c3f0bcad9711a0
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: cdb522cc4be83eadd2c60c91c7fee33e7ccc039b
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458163"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632444"
 ---
 # <a name="dedupe-rows-and-find-nulls-by-using-data-flow-snippets"></a>De duplicaten van rijen opsporen en Null-waarden zoeken met behulp van gegevens stroom fragmenten
 
@@ -25,7 +25,7 @@ Door code fragmenten te gebruiken bij het toewijzen van gegevens stromen, kunt u
 
 ## <a name="create-a-pipeline"></a>Een pijplijn maken
 
-1. Selecteer **nieuwe pijp lijn**.
+1. Selecteer **nieuwe pijp lijn** .
 
 1. Voeg een gegevens stroom activiteit toe.
 
@@ -35,9 +35,9 @@ Door code fragmenten te gebruiken bij het toewijzen van gegevens stromen, kunt u
 
     De controle fragmenten die worden ontdubbeld en NULL gebruiken generieke patronen die gebruikmaken van het gegevens stroom schema drift. De fragmenten werken met elk schema uit uw gegevensset of met gegevens sets die geen vooraf gedefinieerd schema hebben.
 
-1. Kopieer in de sectie ' DISTINCT Row using all columns ' van de [Data flow script (DFS)](https://docs.microsoft.com/azure/data-factory/data-flow-script#distinct-row-using-all-columns)het code fragment voor distinctrows.
+1. Kopieer in de sectie ' DISTINCT Row using all columns ' van de [Data flow script (DFS)](./data-flow-script.md#distinct-row-using-all-columns)het code fragment voor distinctrows.
 
-1. Selecteer in de gebruikers interface van de ontwerp functie voor gegevens stromen de knop **script** in de rechter bovenhoek om de Script Editor achter de gegevens stroom grafiek te openen.
+1. [Ga naar de documentatie pagina voor gegevens stroom scripts en kopieer het code fragment voor afzonderlijke rijen.](./data-flow-script.md#distinct-row-using-all-columns)
 
     ![Scherm opname van een bron fragment.](media/data-flow/snippet-adf-3.png)
 
@@ -55,7 +55,7 @@ Door code fragmenten te gebruiken bij het toewijzen van gegevens stromen, kunt u
     
 1. Voeg een code fragment toe voor het splitsen van uw gegevens in één stream die rijen met Null-waarden en een andere stroom zonder null-waarden bevat. Hiervoor doet u het volgende:
 
-   a. Ga terug naar de [fragment bibliotheek](https://docs.microsoft.com/azure/data-factory/data-flow-script#check-for-nulls-in-all-columns)en kopieer de code voor de null-controles.
+1. [Ga terug naar de fragment bibliotheek en kopieer de code voor de NULL-controles.](./data-flow-script.md#check-for-nulls-in-all-columns)
 
    b. Selecteer in de ontwerp functie voor gegevens stromen opnieuw **script** en plak vervolgens deze nieuwe transformatie code onderaan. Met deze actie verbindt u het script met uw vorige trans formatie door de naam van die trans formatie vóór het geplakte fragment te plaatsen.
 

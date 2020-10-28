@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: 9b331ccee183ec101cf3449f12b4f656a1325819
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c817194bbe0e4cf211992920bad9deb40bf05f4
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84118099"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632206"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Problemen met de uitvoering van pakketten oplossen in SSIS Integration runtime
 
@@ -28,7 +28,7 @@ In dit artikel vindt u de meest voorkomende fouten die u kunt tegen komen wannee
 
 Gebruik de Azure Data Factory Portal om de uitvoer van de SSIS-uitvoering van de pakketten te controleren. De uitvoer bevat het resultaat van de uitvoering, fout berichten en de bewerkings-ID. Zie [de pijp lijn controleren](how-to-invoke-ssis-package-ssis-activity.md#monitor-the-pipeline)voor meer informatie.
 
-Gebruik de SSIS-catalogus (SSISDB) om de detail logboeken voor de uitvoering te controleren. Zie [monitoring Running packages and other Operations](https://docs.microsoft.com/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017)(Engelstalig) voor meer informatie.
+Gebruik de SSIS-catalogus (SSISDB) om de detail logboeken voor de uitvoering te controleren. Zie [monitoring Running packages and other Operations](/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017)(Engelstalig) voor meer informatie.
 
 ## <a name="common-errors-causes-and-solutions"></a>Veelvoorkomende fouten, oorzaken en oplossingen
 
@@ -56,7 +56,7 @@ De mogelijke oorzaak is dat de ADO.NET-Provider die in het pakket wordt gebruikt
 
 ### <a name="error-message-the-connection--is-not-found"></a>Fout bericht: de verbinding... is niet gevonden "
 
-Een bekend probleem in oudere versies van SQL Server Management Studio (SSMS) kan deze fout veroorzaken. Als het pakket een aangepast onderdeel bevat (bijvoorbeeld SSIS Azure Feature Pack of partneronderdelen) dat niet is geïnstalleerd op de computer waarop SSMS wordt gebruikt om de implementatie uit te voeren, wordt het onderdeel door SSMS verwijderd met de fout als gevolg. Upgrade [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) naar de nieuwste versie waarin het probleem is opgelost.
+Een bekend probleem in oudere versies van SQL Server Management Studio (SSMS) kan deze fout veroorzaken. Als het pakket een aangepast onderdeel bevat (bijvoorbeeld SSIS Azure Feature Pack of partneronderdelen) dat niet is geïnstalleerd op de computer waarop SSMS wordt gebruikt om de implementatie uit te voeren, wordt het onderdeel door SSMS verwijderd met de fout als gevolg. Upgrade [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) naar de nieuwste versie waarin het probleem is opgelost.
 
 ### <a name="error-messagessis-executor-exit-code--1073741819"></a>Fout bericht: de afsluit code van de SSIS-uitvoerder:-1073741819.
 
@@ -91,17 +91,17 @@ Deze fout geeft aan dat de lokale schijf wordt gebruikt in het SSIS Integration 
 Deze fout treedt op wanneer de pakket uitvoering geen bestand kan vinden op de lokale schijf in de SSIS Integration runtime. Voer de volgende acties uit:
 * Gebruik niet het absolute pad in het pakket dat wordt uitgevoerd in de SSIS Integration runtime. De huidige uitvoerings werkmap (.) of de map Temp (% TEMP%) gebruiken maar.
 * Als u een aantal bestanden op SSIS Integration runtime-knoop punten wilt behouden, moet u de bestanden voorbereiden zoals beschreven in [Customize Setup](how-to-configure-azure-ssis-ir-custom-setup.md). Alle bestanden in de werkmap worden opgeruimd nadat de uitvoering is voltooid.
-* Gebruik Azure Files in plaats van het bestand op te slaan in het knoop punt SSIS Integration runtime. Zie [Azure-bestands shares gebruiken](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-files-file-shares?view=sql-server-2017#use-azure-file-shares)voor meer informatie.
+* Gebruik Azure Files in plaats van het bestand op te slaan in het knoop punt SSIS Integration runtime. Zie [Azure-bestands shares gebruiken](/sql/integration-services/lift-shift/ssis-azure-files-file-shares?view=sql-server-2017#use-azure-file-shares)voor meer informatie.
 
 ### <a name="error-message-the-database-ssisdb-has-reached-its-size-quota"></a>Fout bericht: de grootte van de data base SSISDB is bereikt
 
 Een mogelijke oorzaak is dat de SSISDB-data base die is gemaakt in Azure SQL Database of in het SQL Managed instance het quotum heeft bereikt. Voer de volgende acties uit:
-* Overweeg de DTU van uw database te vergroten. U vindt meer informatie in [SQL database limieten voor een logische server](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server).
+* Overweeg de DTU van uw database te vergroten. U vindt meer informatie in [SQL database limieten voor een logische server](../azure-sql/database/resource-limits-logical-server.md).
 * Controleer of uw pakket een groot aantal logboeken kan genereren. Als dat het geval is, kunt u een elastische taak configureren om deze logboeken op te schonen. Meer informatie kunt u vinden in [SSISDB-logboeken opschonen met taken voor Azure Elastic Database](how-to-clean-up-ssisdb-logs-with-elastic-jobs.md).
 
 ### <a name="error-message-the-request-limit-for-the-database-is--and-has-been-reached"></a>Fout bericht: de aanvraag limiet voor de data base is... en is bereikt. "
 
-Als er een groot aantal pakketten parallel wordt uitgevoerd in de SSIS Integration runtime, kan deze fout optreden omdat SSISDB de aanvraag limiet heeft bereikt. Overweeg de DTC van SSISDB te verhogen om dit probleem op te lossen. U vindt meer informatie in [SQL database limieten voor een logische server](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server).
+Als er een groot aantal pakketten parallel wordt uitgevoerd in de SSIS Integration runtime, kan deze fout optreden omdat SSISDB de aanvraag limiet heeft bereikt. Overweeg de DTC van SSISDB te verhogen om dit probleem op te lossen. U vindt meer informatie in [SQL database limieten voor een logische server](../azure-sql/database/resource-limits-logical-server.md).
 
 ### <a name="error-message-ssis-operation-failed-with-unexpected-operation-status-"></a>Fout bericht: de SSIS-bewerking is mislukt met een onverwachte bewerkings status:...
 
@@ -113,7 +113,7 @@ De fout wordt meestal veroorzaakt door een tijdelijk probleem, dus probeer de ui
 
 ### <a name="error-message-there-is-no-active-worker"></a>Fout bericht: er is geen actieve werk nemer.
 
-Deze fout betekent meestal dat de SSIS Integration runtime een slechte status heeft. Controleer de Azure Portal voor de status en gedetailleerde fouten. Zie [Azure-SSIS Integration runtime](https://docs.microsoft.com/azure/data-factory/monitor-integration-runtime#azure-ssis-integration-runtime)voor meer informatie.
+Deze fout betekent meestal dat de SSIS Integration runtime een slechte status heeft. Controleer de Azure Portal voor de status en gedetailleerde fouten. Zie [Azure-SSIS Integration runtime](./monitor-integration-runtime.md#azure-ssis-integration-runtime)voor meer informatie.
 
 ### <a name="error-message-your-integration-runtime-cannot-be-upgraded-and-will-eventually-stop-working-since-we-cannot-access-the-azure-blob-container-you-provided-for-custom-setup"></a>Fout bericht: ' uw Integration runtime kan niet worden bijgewerkt en zal uiteindelijk niet meer werken omdat we geen toegang hebben tot de Azure Blob-container die u hebt ingevoerd voor aangepaste installatie. '
 
@@ -123,16 +123,16 @@ Deze fout treedt op wanneer de SSIS Integration runtime geen toegang kan krijgen
 
 Een mogelijke oorzaak is dat de gebruikers naam of het wacht woord waarvoor Azure Multi-Factor Authentication is ingeschakeld, is geconfigureerd voor Azure Analysis Services-verificatie. Deze authenticatie wordt niet ondersteund in de SSIS Integration runtime. Probeer een service-principal te gebruiken voor Azure Analysis Services authenticatie:
 
-1. Bereid een service-principal voor zoals beschreven in [Automation met Service-principals](https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal).
-2. Configureer in verbindings beheer **een specifieke gebruikers naam en wacht woord gebruiken**: Stel **AppID** in als de gebruikers naam en **clientSecret** als wacht woord.
+1. Bereid een service-principal voor zoals beschreven in [Automation met Service-principals](../analysis-services/analysis-services-service-principal.md).
+2. Configureer in verbindings beheer **een specifieke gebruikers naam en wacht woord gebruiken** : Stel **AppID** in als de gebruikers naam en **clientSecret** als wacht woord.
 
 ### <a name="error-message-adonet-source-has-failed-to-acquire-the-connection-guid-with-the-following-error-message-login-failed-for-user-nt-authorityanonymous-logon-when-using-a-managed-identity"></a>Fout bericht: de ADONET-bron kan de verbinding {GUID} niet verkrijgen met het volgende fout bericht: de aanmelding is mislukt voor de gebruiker ' NT AUTHORITY\ANONYMOUS LOGON ' ' bij het gebruik van een beheerde identiteit
 
-Zorg ervoor dat u de verificatie methode van verbindings beheer niet configureert als **Active Directory wachtwoord verificatie** wanneer de para meter *ConnectUsingManagedIdentity* is ingesteld op **True**. U kunt het configureren als **SQL-verificatie** in plaats daarvan, wat wordt genegeerd als *ConnectUsingManagedIdentity* is ingesteld.
+Zorg ervoor dat u de verificatie methode van verbindings beheer niet configureert als **Active Directory wachtwoord verificatie** wanneer de para meter *ConnectUsingManagedIdentity* is ingesteld op **True** . U kunt het configureren als **SQL-verificatie** in plaats daarvan, wat wordt genegeerd als *ConnectUsingManagedIdentity* is ingesteld.
 
 ### <a name="error-message-0xc020801f-at--odata-source--cannot-acquire-a-managed-connection-from-the-run-time-connection-manager"></a>Fout bericht: "0xC020801F at..., OData-bron [...]: kan geen beheerde verbinding verkrijgen vanuit het run-time verbindings beheer"
 
-Een mogelijke oorzaak is dat de Transport Layer Security (TLS) niet is ingeschakeld in SSIS Integration runtime, wat vereist is voor uw OData-bron. U kunt TLS inschakelen in SSIS Integration runtime met behulp van Setup aanpassen. Meer informatie vindt u in [kan geen verbinding maken met project online Odata vanuit SSIS](https://docs.microsoft.com/office365/troubleshoot/cant-connect-project-online-odata-from-ssis) en [Setup aanpassen voor de Azure-SSIS Integration runtime](how-to-configure-azure-ssis-ir-custom-setup.md).
+Een mogelijke oorzaak is dat de Transport Layer Security (TLS) niet is ingeschakeld in SSIS Integration runtime, wat vereist is voor uw OData-bron. U kunt TLS inschakelen in SSIS Integration runtime met behulp van Setup aanpassen. Meer informatie vindt u in [kan geen verbinding maken met project online Odata vanuit SSIS](/office365/troubleshoot/cant-connect-project-online-odata-from-ssis) en [Setup aanpassen voor de Azure-SSIS Integration runtime](how-to-configure-azure-ssis-ir-custom-setup.md).
 
 ### <a name="error-message-request-staging-task-with-operation-guid--fail-since-error-failed-to-dispatch-staging-operation-with-error-message-microsoftsqlserverintegrationservicesaisagentcoreaisagentexception-failed-to-load-data-proxy"></a>Fout bericht: ' een taak voor het klaarzetten aanvragen met de bewerking-GUID... de volgende fout is opgetreden: kan de faserings bewerking niet verzenden met het fout bericht: micro soft. SqlServer. IntegrationServices. AisAgentCore. AisAgentException: kan de gegevens proxy niet laden. "
 
@@ -154,7 +154,7 @@ Een mogelijke oorzaak is dat uw Self-Hosted Integration runtime niet op de juist
 
 * Mogelijke oorzaak en aanbevolen actie:
   * Als er ook een waarschuwings bericht ' het onderdeel biedt geen ondersteuning voor het gebruik van verbindings beheer met de waarde ' ConnectByProxy ' ingesteld op ' True ' in het uitvoerings logboek, betekent dit dat er een verbindings beheer wordt gebruikt voor een onderdeel dat nog geen ConnectByProxy heeft ondersteund. De ondersteunde onderdelen kunt u vinden op [Self-Hosted IR configureren als proxy voor Azure-SSIS IR in ADF](self-hosted-integration-runtime-proxy-ssis.md#enable-ssis-packages-to-connect-by-proxy)
-  * Het uitvoerings logboek vindt u in het [rapport SSMS](https://docs.microsoft.com/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017#reports) of in de logboekmap die u hebt opgegeven in de activiteit SSIS-pakket uitvoering.
+  * Het uitvoerings logboek vindt u in het [rapport SSMS](/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017#reports) of in de logboekmap die u hebt opgegeven in de activiteit SSIS-pakket uitvoering.
   * vNet kan ook worden gebruikt om toegang te krijgen tot on-premises gegevens als alternatief. Meer informatie vindt u in een [Azure-SSIS Integration runtime toevoegen aan een virtueel netwerk](join-azure-ssis-integration-runtime-virtual-network.md)
 
 ### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>Fout bericht: ' status Faserings taak: mislukt. Fout in de staging-taak: error code: 2906, ErrorMessage: de uitvoering van het pakket is mislukt. uitvoer: {"OperationErrorMessages": "de afsluit code van de SSIS-uitvoerder:-1. \ n", "LogLocation": "... \\ SSISTelemetry \\ ExecutionLog \\ ... "," effectiveIntegrationRuntime ":"... "," executionDuration ":...," durationInQueue ": {" integrationRuntimeQueue ":...}}"
@@ -165,7 +165,7 @@ Zorg ervoor dat Visual C++ runtime is geïnstalleerd op Self-Hosted Integration 
 
 * Mogelijke oorzaak en aanbevolen actie:
   * De opgeslagen procedure-activiteit van ADF of de opzoek activiteit wordt gebruikt voor het activeren van de uitvoering van SSIS-pakketten. De t-SQL-opdracht kan leiden tot een tijdelijk probleem en het opnieuw uitvoeren van het programma activeren waardoor meerdere pakket uitvoeringen kunnen worden uitgevoerd.
-  * Gebruik in plaats daarvan ExecuteSSISPackage-activiteit die ervoor zorgt dat de pakket uitvoering niet opnieuw wordt uitgevoerd tenzij gebruikers het aantal pogingen in de activiteit instellen. Meer informatie vindt u op [https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
+  * Gebruik in plaats daarvan ExecuteSSISPackage-activiteit die ervoor zorgt dat de pakket uitvoering niet opnieuw wordt uitgevoerd tenzij gebruikers het aantal pogingen in de activiteit instellen. Meer informatie vindt u op [https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity](./how-to-invoke-ssis-package-ssis-activity.md)
   * Verfijn uw t-SQL-opdracht om opnieuw te kunnen worden uitgevoerd door te controleren of er al een uitvoering is geactiveerd
 
 ### <a name="package-execution-takes-too-long"></a>Het uitvoeren van het pakket duurt te lang
@@ -187,7 +187,7 @@ Voer de volgende acties uit:
 
 * Zorg ervoor dat de SSIS Integration runtime zich in dezelfde regio bevindt als de gegevens bron en het doel.
 
-* Stel het logboek registratie niveau van de uitvoering van het pakket in op **prestaties** om de duur informatie voor elk onderdeel in de uitvoering te verzamelen. Zie voor meer informatie [logboek registratie van Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/performance/integration-services-ssis-logging).
+* Stel het logboek registratie niveau van de uitvoering van het pakket in op **prestaties** om de duur informatie voor elk onderdeel in de uitvoering te verzamelen. Zie voor meer informatie [logboek registratie van Integration Services (SSIS)](/sql/integration-services/performance/integration-services-ssis-logging).
 
 * Controleer de prestaties van het IR-knoop punt in de Azure Portal:
   * Zie [Azure-SSIS Integration runtime](monitor-integration-runtime.md#azure-ssis-integration-runtime)voor meer informatie over het bewaken van de SSIS Integration runtime.

@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: 1978cfe6ea117a0d30df938c9e4ba1aeb48314fc
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 4a80b1f9bfa5d477c47e340f1dec1b37e4c69258
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057838"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631038"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Een Azure Resource Manager sjabloon gebruiken om een werk ruimte te maken voor Azure Machine Learning
 
@@ -28,14 +28,14 @@ Zie [een toepassing implementeren met Azure Resource Manager sjabloon](../azure-
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een **Azure-abonnement**. Als u er nog geen hebt, probeer [dan de gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree).
+* Een **Azure-abonnement** . Als u er nog geen hebt, probeer [dan de gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree).
 
 * Als u een sjabloon van een CLI wilt gebruiken, moet u [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-1.2.0) of de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
 
 * Voor sommige scenario's moet u een ondersteunings ticket openen. Deze scenario's zijn:
 
     * __Werk ruimte met persoonlijke koppeling ingeschakeld met een door de klant beheerde sleutel (CMK)__
-    * __Azure Container Registry voor de werk ruimte achter uw virtuele netwerk__
+    * __Azure Container Registry voor de werkruimte achter uw virtuele netwerk__
 
     Zie [Quota's beheren en verhogen](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)voor meer informatie.
 
@@ -59,7 +59,7 @@ De voorbeeld sjabloon heeft twee **vereiste** para meters:
 
     De sjabloon maakt gebruik van de locatie die u selecteert voor de meeste resources. De uitzonde ring is de Application Insights-service, die niet beschikbaar is op alle locaties die de andere services zijn. Als u een locatie selecteert waar deze niet beschikbaar is, wordt de service gemaakt op de locatie Zuid-Centraal vs.
 
-* De naam van de **werk ruimte**. Dit is de beschrijvende namen van de Azure machine learning-werk ruimte.
+* De naam van de **werk ruimte** . Dit is de beschrijvende namen van de Azure machine learning-werk ruimte.
 
     > [!NOTE]
     > De naam van de werk ruimte is niet hoofdletter gevoelig.
@@ -85,7 +85,7 @@ Als u uw sjabloon wilt implementeren, moet u een resource groep maken.
 
 Zie de sectie [Azure Portal](#use-the-azure-portal) als u de Graphical User Interface wilt gebruiken.
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
 ```azurecli
 az group create --name "examplegroup" --location "eastus"
@@ -101,7 +101,7 @@ New-AzResourceGroup -Name "examplegroup" -Location "eastus"
 
 Zodra de resource groep is gemaakt, implementeert u de sjabloon met de volgende opdracht:
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
 ```azurecli
 az deployment group create \
@@ -129,7 +129,7 @@ Standaard zijn alle resources die zijn gemaakt als onderdeel van de sjabloon nie
 > [!IMPORTANT]
 > Als u een bestaand Azure Storage account wilt gebruiken, kan het geen Premium-account zijn (Premium_LRS en Premium_GRS). Het kan ook geen hiërarchische naam ruimte hebben (gebruikt met Azure Data Lake Storage Gen2). Geen enkele Premium-opslag of hiërarchische naam ruimte wordt ondersteund met het standaard opslag account van de werk ruimte. Geen enkele Premium-opslag of hiërarchische naam ruimten worden ondersteund met het _standaard_ opslag account van de werk ruimte. U kunt Premium-opslag of een hiërarchische naam ruimte gebruiken met _niet-standaard_ opslag accounts.
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
 ```azurecli
 az deployment group create \
@@ -161,9 +161,11 @@ New-AzResourceGroupDeployment `
 
 In de volgende voorbeeld sjabloon ziet u hoe u een werk ruimte met drie instellingen maakt:
 
-* Hoog vertrouwelijkheids instellingen voor de werk ruimte inschakelen
-* Versleuteling inschakelen voor de werk ruimte
-* Maakt gebruik van een bestaande Azure Key Vault voor het ophalen van door de klant beheerde sleutels
+* Sterke vertrouwelijkheids instellingen inschakelen voor de werk ruimte. Hiermee maakt u een nieuw Cosmos DB-exemplaar.
+* Versleuteling inschakelen voor de werk ruimte.
+* Maakt gebruik van een bestaande Azure Key Vault om door de klant beheerde sleutels op te halen. Door de klant beheerde sleutels worden gebruikt om een nieuw Cosmos DB-exemplaar voor de werk ruimte te maken.
+
+    [!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
 
 > [!IMPORTANT]
 > Als een werk ruimte eenmaal is gemaakt, kunt u de instellingen voor vertrouwelijke gegevens, versleuteling, sleutel kluis-ID of sleutel-id's niet wijzigen. Als u deze waarden wilt wijzigen, moet u een nieuwe werk ruimte maken met behulp van de nieuwe waarden.
@@ -180,7 +182,7 @@ __Als u de waarden__ voor de `cmk_keyvault` (ID van de Key Vault) en de `resourc
 
 1. Als u de Key Vault-ID wilt ophalen, gebruikt u de volgende opdracht:  
 
-    # <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)   
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)   
 
     ```azurecli 
     az keyvault show --name <keyvault-name> --query 'id' --output tsv   
@@ -197,7 +199,7 @@ __Als u de waarden__ voor de `cmk_keyvault` (ID van de Key Vault) en de `resourc
 
 1. Als u de waarde voor de URI voor de door de klant beheerde sleutel wilt ophalen, gebruikt u de volgende opdracht:    
 
-    # <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)   
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)   
 
     ```azurecli 
     az keyvault key show --vault-name <keyvault-name> --name <key-name> --query 'key.kid' --output tsv  
@@ -217,11 +219,11 @@ __Als u de waarden__ voor de `cmk_keyvault` (ID van de Key Vault) en de `resourc
 
 Als u het gebruik van door de klant beheerde sleutels wilt inschakelen, stelt u de volgende para meters in bij het implementeren van de sjabloon:
 
-* **Encryption_status** **ingeschakeld**.
+* **Encryption_status** **ingeschakeld** .
 * **cmk_keyvault** de `cmk_keyvault` waarde die in de vorige stappen is verkregen.
 * **resource_cmk_uri** de `resource_cmk_uri` waarde die in de vorige stappen is verkregen.
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
 ```azurecli
 az deployment group create \
@@ -252,7 +254,7 @@ New-AzResourceGroupDeployment `
 
 Wanneer u een door de klant beheerde sleutel gebruikt, maakt Azure Machine Learning een secundaire resource groep die de Cosmos DB instantie bevat. Zie [versleuteling bij rest-Cosmos DB](concept-enterprise-security.md#encryption-at-rest)voor meer informatie.
 
-U kunt voor uw gegevens een extra configuratie opgeven door de para meter **confidential_data** in te stellen op **True**. Dit doet u door de volgende handelingen uit te voeren:
+U kunt voor uw gegevens een extra configuratie opgeven door de para meter **confidential_data** in te stellen op **True** . Dit doet u door de volgende handelingen uit te voeren:
 
 * Hiermee wordt het versleutelen van de lokale werk schijf voor Azure Machine Learning compute-clusters gestart, zodat u geen eerdere clusters in uw abonnement hebt gemaakt. Als u eerder een cluster in het abonnement hebt gemaakt, opent u een ondersteunings ticket om versleuteling te hebben van de Scratch-schijf die is ingeschakeld voor uw reken clusters.
 * Hiermee wordt de lokale Scratch schijf opgeschoond tussen uitvoeringen.
@@ -281,7 +283,7 @@ Als uw gekoppelde resources zich niet achter een virtueel netwerk bevinden, kunt
 > [!IMPORTANT]
 > Het gebruik van een Azure Machine Learning werk ruimte met een persoonlijke koppeling is niet beschikbaar in de regio's Azure Government regio's en Azure China 21Vianet.
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
 ```azurecli
 az deployment group create \
@@ -311,7 +313,7 @@ New-AzResourceGroupDeployment `
 
 Als u een bron achter een nieuw virtueel netwerk wilt implementeren, stelt u de **vnetOption** in op **Nieuw** samen met de instellingen van het virtuele netwerk voor de betreffende resource. In de onderstaande implementatie ziet u hoe u een werk ruimte implementeert met de opslag account bron achter een nieuw virtueel netwerk.
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
 ```azurecli
 az deployment group create \
@@ -345,7 +347,7 @@ New-AzResourceGroupDeployment `
 
 U kunt ook meerdere of alle afhankelijke resources achter een virtueel netwerk implementeren.
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
 ```azurecli
 az deployment group create \
@@ -432,7 +434,7 @@ Als u een werk ruimte wilt implementeren met bestaande gekoppelde resources, moe
 
 1. Schakel service-eind punten in voor de resources.
 
-    # <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
     ```azurecli
     az network vnet subnet update --resource-group "examplegroup" --vnet-name "examplevnet" --name "examplesubnet" --service-endpoints "Microsoft.Storage"
@@ -452,7 +454,7 @@ Als u een werk ruimte wilt implementeren met bestaande gekoppelde resources, moe
 
 1. De werk ruimte implementeren
 
-    # <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
     ```azurecli
     az deployment group create \
@@ -537,7 +539,7 @@ New-AzResourceGroupDeployment `
 
 --- -->
 
-## <a name="use-the-azure-portal"></a>Azure Portal gebruiken
+## <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
 
 1. Volg de stappen in [resources implementeren vanuit aangepaste sjabloon](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template). Wanneer u op het scherm __een sjabloon selecteren__ klikt, kiest u in de vervolg keuzelijst de sjabloon **201-machine learning-Advanced** .
 1. Selecteer __sjabloon selecteren__ om de sjabloon te gebruiken. Geef de volgende vereiste informatie en alle andere para meters op, afhankelijk van uw implementatie scenario.
@@ -547,8 +549,8 @@ New-AzResourceGroupDeployment `
    * Regio: Selecteer de Azure-regio waar de resources worden gemaakt.
    * Werkruimte naam: de naam die moet worden gebruikt voor de Azure Machine Learning werk ruimte die wordt gemaakt. De naam van de werk ruimte moet tussen de 3 en 33 tekens lang zijn. De naam mag alleen alfanumerieke tekens en '-' bevatten.
    * Locatie: Selecteer de locatie waar de resources worden gemaakt.
-1. Selecteer __Controleren + maken__.
-1. Ga in het scherm __bekijken en maken__ naar de vermelde voor waarden en selecteer __maken__.
+1. Selecteer __Controleren + maken__ .
+1. Ga in het scherm __bekijken en maken__ naar de vermelde voor waarden en selecteer __maken__ .
 
 Zie [resources implementeren vanuit een aangepaste sjabloon](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)voor meer informatie.
 
@@ -653,7 +655,7 @@ Om dit probleem te voor komen, raden we u aan een van de volgende benaderingen t
 
 ### <a name="virtual-network-not-linked-to-private-dns-zone"></a>Het virtuele netwerk is niet gekoppeld aan de privé-DNS-zone
 
-Wanneer u een werk ruimte met een persoonlijk eind punt maakt, maakt de sjabloon een Privé-DNS zone met de naam __privatelink.API.azureml.MS__. Een __koppeling naar een virtueel netwerk__ wordt automatisch toegevoegd aan deze privé-DNS-zone. De koppeling wordt alleen toegevoegd voor de eerste werk ruimte en het persoonlijke eind punt dat u in een resource groep maakt. Als u een ander virtueel netwerk en een werk ruimte met een persoonlijk eind punt in dezelfde resource groep maakt, wordt het tweede virtuele netwerk mogelijk niet toegevoegd aan de privé-DNS-zone.
+Wanneer u een werk ruimte met een persoonlijk eind punt maakt, maakt de sjabloon een Privé-DNS zone met de naam __privatelink.API.azureml.MS__ . Een __koppeling naar een virtueel netwerk__ wordt automatisch toegevoegd aan deze privé-DNS-zone. De koppeling wordt alleen toegevoegd voor de eerste werk ruimte en het persoonlijke eind punt dat u in een resource groep maakt. Als u een ander virtueel netwerk en een werk ruimte met een persoonlijk eind punt in dezelfde resource groep maakt, wordt het tweede virtuele netwerk mogelijk niet toegevoegd aan de privé-DNS-zone.
 
 Gebruik de volgende Azure CLI-opdracht om de virtuele netwerk koppelingen weer te geven die al bestaan voor de privé-DNS-zone:
 

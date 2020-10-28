@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e3f158bb4e8208d00fdfbc44b4afaf067183b6d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f22d5ddd35d5d0cba48f0d236b28fabae02a966a
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087313"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631594"
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>Gegevens verplaatsen van on-premises HDFS met Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
@@ -47,9 +47,9 @@ Hoewel u de gateway op dezelfde on-premises computer of de Azure VM kunt install
 ## <a name="getting-started"></a>Aan de slag
 U kunt een pijp lijn maken met een Kopieer activiteit die gegevens verplaatst van een HDFS-bron met behulp van verschillende hulpprogram ma's/Api's.
 
-De eenvoudigste manier om een pijp lijn te maken, is met behulp van de **wizard kopiëren**. Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough over het maken van een pijp lijn met behulp van de wizard gegevens kopiëren.
+De eenvoudigste manier om een pijp lijn te maken, is met behulp van de **wizard kopiëren** . Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough over het maken van een pijp lijn met behulp van de wizard gegevens kopiëren.
 
-U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Azure Portal**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager Temp late**, **.net API**en **rest API**. Zie [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit.
+U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Azure Portal** , **Visual Studio** , **Azure PowerShell** , **Azure Resource Manager Temp late** , **.net API** en **rest API** . Zie [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit.
 
 Ongeacht of u de hulpprogram ma's of Api's gebruikt, voert u de volgende stappen uit om een pijp lijn te maken waarmee gegevens uit een brongegevens archief naar een Sink-gegevens archief worden verplaatst:
 
@@ -72,7 +72,7 @@ Een gekoppelde service koppelt een gegevens archief aan een data factory. U maak
 | userName |Gebruikers naam voor Windows-verificatie. Voor Kerberos-verificatie geeft u op `<username>@<domain>.com` . |Ja (voor Windows-verificatie) |
 | wachtwoord |Wacht woord voor Windows-verificatie. |Ja (voor Windows-verificatie) |
 | gatewayName |De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met de HDFS. |Ja |
-| encryptedCredential |[New-AzDataFactoryEncryptValue-](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) uitvoer van de toegangs referentie. |Nee |
+| encryptedCredential |[New-AzDataFactoryEncryptValue-](/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) uitvoer van de toegangs referentie. |Nee |
 
 ### <a name="using-anonymous-authentication"></a>Anonieme verificatie gebruiken
 
@@ -122,8 +122,8 @@ De sectie **typeProperties** verschilt voor elk type gegevensset en bevat inform
 | folderPath |Pad naar de map. Voorbeeld: `myfolder`<br/><br/>Escape teken ' \ ' gebruiken voor speciale tekens in de teken reeks. Bijvoorbeeld: voor folder\subfolder geeft u een submap op \\ \\ en voor d:\samplefolder, geeft u d: \\ \\ SampleFolder op.<br/><br/>U kunt deze eigenschap combi neren met **partitionBy** om mappaden te laten baseren op de begin-en eind datum van het segment. |Ja |
 | fileName |Geef de naam van het bestand op in de **FolderPath** als u wilt dat de tabel verwijst naar een specifiek bestand in de map. Als u geen waarde voor deze eigenschap opgeeft, wijst de tabel naar alle bestanden in de map.<br/><br/>Als er geen bestands naam is opgegeven voor een uitvoer gegevensset, zou de naam van het gegenereerde bestand de volgende indeling hebben: <br/><br/>`Data.<Guid>.txt` (bijvoorbeeld:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Nee |
 | partitionedBy |partitionedBy kan worden gebruikt om een dynamische folderPath op te geven, filename voor time series-gegevens. Voor beeld: folderPath para meters voor elk uur aan gegevens. |Nee |
-| indeling | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**, **ParquetFormat**. Stel de eigenschap **type** onder indeling in op een van deze waarden. Zie voor meer informatie secties [tekst indeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro](data-factory-supported-file-and-compression-formats.md#avro-format)-indeling, [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format)en Parquet- [indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Als u bestanden wilt **kopiëren als-zich bevindt** tussen archieven op basis van bestanden (binaire kopie), slaat u de sectie indeling in de gegevensset voor invoer en uitvoer over. |Nee |
-| compressie | Geef het type en compressie niveau voor de gegevens op. Ondersteunde typen zijn: **gzip**, **Deflate**, **bzip2**en **ZipDeflate**. Ondersteunde niveaus zijn: **optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |Nee |
+| indeling | De volgende indelings typen worden ondersteund: **TextFormat** , **JsonFormat** , **Avro Format** , **OrcFormat** , **ParquetFormat** . Stel de eigenschap **type** onder indeling in op een van deze waarden. Zie voor meer informatie secties [tekst indeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro](data-factory-supported-file-and-compression-formats.md#avro-format)-indeling, [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format)en Parquet- [indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Als u bestanden wilt **kopiëren als-zich bevindt** tussen archieven op basis van bestanden (binaire kopie), slaat u de sectie indeling in de gegevensset voor invoer en uitvoer over. |Nee |
+| compressie | Geef het type en compressie niveau voor de gegevens op. Ondersteunde typen zijn: **gzip** , **Deflate** , **bzip2** en **ZipDeflate** . Ondersteunde niveaus zijn: **optimaal** en **snelst** . Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |Nee |
 
 > [!NOTE]
 > bestands naam en file filter kunnen niet tegelijkertijd worden gebruikt.
@@ -308,7 +308,7 @@ Gegevens worden elk uur naar een nieuwe BLOB geschreven (frequentie: uur, interv
 
 **Een Kopieer activiteit in een pijp lijn met File System-bron en BLOB-Sink:**
 
-De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik van deze invoer-en uitvoer gegevens sets en die is gepland om elk uur te worden uitgevoerd. In de JSON-definitie van de pijp lijn is het **bron** type ingesteld op **FileSystemSource** en het **sink** -type is ingesteld op **BlobSink**. Met de SQL-query die is opgegeven voor de **query** -eigenschap worden de gegevens in het afgelopen uur geselecteerd om te kopiëren.
+De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik van deze invoer-en uitvoer gegevens sets en die is gepland om elk uur te worden uitgevoerd. In de JSON-definitie van de pijp lijn is het **bron** type ingesteld op **FileSystemSource** en het **sink** -type is ingesteld op **BlobSink** . Met de SQL-query die is opgegeven voor de **query** -eigenschap worden de gegevens in het afgelopen uur geselecteerd om te kopiëren.
 
 ```JSON
 {
@@ -457,7 +457,7 @@ Er zijn twee opties om de on-premises omgeving in te stellen, zodat u Kerberos-v
     C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
     ```
 
-2.  Een vertrouwens relatie tot stand brengen tussen Windows-domein en Kerberos-realm. [wacht woord] is het wacht woord voor de principal **krbtgt/realm. COM- \@ AD.com**.
+2.  Een vertrouwens relatie tot stand brengen tussen Windows-domein en Kerberos-realm. [wacht woord] is het wacht woord voor de principal **krbtgt/realm. COM- \@ AD.com** .
 
     ```cmd
     C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
@@ -467,7 +467,7 @@ Er zijn twee opties om de on-premises omgeving in te stellen, zodat u Kerberos-v
 
     1. Ga naar Serverbeheer > groepsbeleid beheer > domein >-Groepsbeleid objecten > het standaard beleid of het actieve domein en bewerk.
 
-    2. Ga in het pop-upvenster **Groepsbeleidsbeheer-editor** naar Computer configuratie > beleid > Windows-instellingen > beveiligings instellingen > lokale beleids regels > beveiligings opties en configureer **netwerk beveiliging: Configureer versleutelings typen die zijn toegestaan voor Kerberos**.
+    2. Ga in het pop-upvenster **Groepsbeleidsbeheer-editor** naar Computer configuratie > beleid > Windows-instellingen > beveiligings instellingen > lokale beleids regels > beveiligings opties en configureer **netwerk beveiliging: Configureer versleutelings typen die zijn toegestaan voor Kerberos** .
 
     3. Selecteer de versleutelings algoritme die u wilt gebruiken bij het maken van verbinding met KDC. Normaal gesp roken hoeft u alleen maar alle opties te selecteren.
 
@@ -481,9 +481,9 @@ Er zijn twee opties om de on-premises omgeving in te stellen, zodat u Kerberos-v
 
 4.  Maak de toewijzing tussen het domein account en de Kerberos-principal, zodat u Kerberos principal in het Windows-domein kunt gebruiken.
 
-    1. Start de beheer Programma's > **Active Directory gebruikers en computers**.
+    1. Start de beheer Programma's > **Active Directory gebruikers en computers** .
 
-    2. Configureer geavanceerde functies door te **View**klikken op  >  **geavanceerde functies**weer geven.
+    2. Configureer geavanceerde functies door te **View** klikken op  >  **geavanceerde functies** weer geven.
 
     3. Zoek het account waaraan u toewijzingen wilt maken en klik met de rechter muisknop om **naam toewijzingen** weer te geven > op het tabblad **Kerberos-namen** .
 

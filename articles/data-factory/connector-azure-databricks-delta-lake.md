@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/28/2020
-ms.openlocfilehash: 4ff1a793b3e8c4fe642aa304f1aa59bd8edefb8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8937cfa5a48903ab53f3015b056a4915240bc525
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91405616"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92633124"
 ---
 # <a name="copy-data-to-and-from-azure-databricks-delta-lake-by-using-azure-data-factory"></a>Gegevens kopiëren van en naar Azure Databricks Delta Lake met behulp van Azure Data Factory
 
@@ -46,19 +46,19 @@ Als u deze Azure Databricks Delta Lake connector wilt gebruiken, moet u een clus
 
 Het Databricks-cluster moet toegang hebben tot de Azure-Blob of het Azure Data Lake Storage Gen2-account, zowel de opslag container/het bestands systeem die wordt gebruikt voor bron/Sink/staging als het container/bestands systeem waar u de Delta Lake-tabellen wilt schrijven.
 
-- Als u **Azure data Lake Storage Gen2**wilt gebruiken, kunt u een **Service-Principal** of toegangs sleutel voor een **opslag account** configureren op het Databricks-cluster als onderdeel van de Apache Spark configuratie. Volg de stappen in [Access direct met Service-Principal](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-with-service-principal-and-oauth-20) of [toegang rechtstreeks met de toegangs sleutel voor het opslag account](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-using-the-storage-account-access-key).
+- Als u **Azure data Lake Storage Gen2** wilt gebruiken, kunt u een **Service-Principal** of toegangs sleutel voor een **opslag account** configureren op het Databricks-cluster als onderdeel van de Apache Spark configuratie. Volg de stappen in [Access direct met Service-Principal](/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-with-service-principal-and-oauth-20) of [toegang rechtstreeks met de toegangs sleutel voor het opslag account](/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-using-the-storage-account-access-key).
 
-- Als u **Azure Blob Storage**wilt gebruiken, kunt u een **toegangs sleutel voor een opslag account** of een **SAS-token** configureren op het Databricks-cluster als onderdeel van de configuratie van de Apache Spark. Volg de stappen in [toegang tot Azure Blob-opslag met behulp van de RDD-API](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-storage#access-azure-blob-storage-using-the-rdd-api).
+- Als u **Azure Blob Storage** wilt gebruiken, kunt u een **toegangs sleutel voor een opslag account** of een **SAS-token** configureren op het Databricks-cluster als onderdeel van de configuratie van de Apache Spark. Volg de stappen in [toegang tot Azure Blob-opslag met behulp van de RDD-API](/azure/databricks/data/data-sources/azure/azure-storage#access-azure-blob-storage-using-the-rdd-api).
 
 Als het cluster dat u hebt geconfigureerd, tijdens het uitvoeren van de Kopieer activiteit is beëindigd, wordt het door Data Factory automatisch gestart. Als u pijp lijn ontwerpt met Data Factory gebruikers interface voor bewerkingen als voor beeld van gegevens, moet u een live cluster hebben, Data Factory het cluster niet namens u kunt starten.
 
 #### <a name="specify-the-cluster-configuration"></a>De cluster configuratie opgeven
 
-1. Selecteer in de vervolg keuzelijst **cluster modus** de optie **standaard**.
+1. Selecteer in de vervolg keuzelijst **cluster modus** de optie **standaard** .
 
 2. Selecteer in de vervolg keuzelijst **Databricks runtime versie** een Databricks runtime-versie.
 
-3. Schakel [automatisch optimaliseren](https://docs.microsoft.com/azure/databricks/delta/optimizations/auto-optimize) in door de volgende eigenschappen toe te voegen aan uw [Spark-configuratie](https://docs.microsoft.com/azure/databricks/clusters/configure#spark-config):
+3. Schakel [automatisch optimaliseren](/azure/databricks/delta/optimizations/auto-optimize) in door de volgende eigenschappen toe te voegen aan uw [Spark-configuratie](/azure/databricks/clusters/configure#spark-config):
 
    ```
    spark.databricks.delta.optimizeWrite.enabled true
@@ -67,7 +67,7 @@ Als het cluster dat u hebt geconfigureerd, tijdens het uitvoeren van de Kopieer 
 
 4. Configureer uw cluster afhankelijk van de behoeften van uw integratie en schaal.
 
-Zie [clusters configureren](https://docs.microsoft.com/azure/databricks/clusters/configure)voor meer informatie over de cluster configuratie.
+Zie [clusters configureren](/azure/databricks/clusters/configure)voor meer informatie over de cluster configuratie.
 
 ## <a name="get-started"></a>Aan de slag
 
@@ -81,10 +81,10 @@ De volgende eigenschappen worden ondersteund voor een aan Azure Databricks Delta
 
 | Eigenschap    | Beschrijving                                                  | Vereist |
 | :---------- | :----------------------------------------------------------- | :------- |
-| type        | De eigenschap type moet worden ingesteld op **AzureDatabricksDeltaLake**. | Ja      |
+| type        | De eigenschap type moet worden ingesteld op **AzureDatabricksDeltaLake** . | Ja      |
 | domein      | Geef de URL van de Azure Databricks werk ruimte op, bijvoorbeeld `https://adb-xxxxxxxxx.xx.azuredatabricks.net` . |          |
-| clusterId   | Geef de cluster-ID op van een bestaand cluster. Dit moet een al gemaakt interactief cluster zijn. <br>U vindt de cluster-ID van een interactief cluster op Databricks werkruimte-> clusters-> interactieve cluster naam-> configuratie->-Tags. [Meer informatie](https://docs.microsoft.com/azure/databricks/clusters/configure#cluster-tags). |          |
-| accessToken | Er is een toegangs token vereist om Data Factory te verifiëren bij Azure Databricks. Het toegangs token moet worden gegenereerd op basis van de databricks-werk ruimte. Meer gedetailleerde stappen om het toegangs token te vinden, vindt u [hier](https://docs.microsoft.com/azure/databricks/dev-tools/api/latest/authentication#generate-token). |          |
+| clusterId   | Geef de cluster-ID op van een bestaand cluster. Dit moet een al gemaakt interactief cluster zijn. <br>U vindt de cluster-ID van een interactief cluster op Databricks werkruimte-> clusters-> interactieve cluster naam-> configuratie->-Tags. [Meer informatie](/azure/databricks/clusters/configure#cluster-tags). |          |
+| accessToken | Er is een toegangs token vereist om Data Factory te verifiëren bij Azure Databricks. Het toegangs token moet worden gegenereerd op basis van de databricks-werk ruimte. Meer gedetailleerde stappen om het toegangs token te vinden, vindt u [hier](/azure/databricks/dev-tools/api/latest/authentication#generate-token). |          |
 | connectVia  | De [Integration runtime](concepts-integration-runtime.md) die wordt gebruikt om verbinding te maken met het gegevens archief. U kunt de Azure Integration runtime of een zelf-hostende Integration runtime gebruiken (als uw gegevens archief zich in een particulier netwerk bevindt). Als u niets opgeeft, wordt de standaard Azure Integration runtime gebruikt. | Nee       |
 
 **Voorbeeld:**
@@ -114,7 +114,7 @@ De volgende eigenschappen worden ondersteund voor de Azure Databricks Delta Lake
 
 | Eigenschap  | Beschrijving                                                  | Vereist                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
-| type      | De eigenschap type van de DataSet moet worden ingesteld op **AzureDatabricksDeltaLakeDataset**. | Ja                         |
+| type      | De eigenschap type van de DataSet moet worden ingesteld op **AzureDatabricksDeltaLakeDataset** . | Ja                         |
 | database | De naam van de data base. |Nee voor bron, ja voor Sink  |
 | table | De naam van de Delta tabel. |Nee voor bron, ja voor Sink  |
 
@@ -148,11 +148,11 @@ Als u gegevens wilt kopiëren uit Azure Databricks Delta Lake, worden de volgend
 
 | Eigenschap                     | Beschrijving                                                  | Vereist |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
-| type                         | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **AzureDatabricksDeltaLakeSource**. | Ja      |
+| type                         | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **AzureDatabricksDeltaLakeSource** . | Ja      |
 | query          | Geef de SQL-query op om gegevens te lezen. Volg het onderstaande patroon voor het besturings element tijd reizen:<br>- `SELECT * FROM events TIMESTAMP AS OF timestamp_expression`<br>- `SELECT * FROM events VERSION AS OF version` | Nee       |
 | exportSettings | Geavanceerde instellingen voor het ophalen van gegevens uit de Delta tabel. | Nee       |
-| ***Onder `exportSettings` :*** |  |  |
-| type | Het type export opdracht, ingesteld op **AzureDatabricksDeltaLakeExportCommand**. | Ja |
+| ***Onder `exportSettings` :** _ |  |  |
+| type | Het type opdracht voor exporteren, ingesteld op _ * AzureDatabricksDeltaLakeExportCommand * *. | Ja |
 | Notatie | Format teer het datum type in een teken reeks met een datum notatie. Aangepaste datum notaties volgen de notaties op [DateTime-patroon](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Als u niets opgeeft, wordt de standaard waarde gebruikt `yyyy-MM-dd` . | Nee |
 | timestampFormat | Notatie van tijds tempel type op teken reeks met een notatie van een tijds tempel. Aangepaste datum notaties volgen de notaties op [DateTime-patroon](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Als u niets opgeeft, wordt de standaard waarde gebruikt `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` . | Nee |
 
@@ -162,14 +162,14 @@ Als uw Sink-gegevens archief en-indeling voldoen aan de criteria die in deze sec
 
 - De **gekoppelde Sink-service** is [Azure Blob-opslag](connector-azure-blob-storage.md) of [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md). De account referenties moeten vooraf worden geconfigureerd in Azure Databricks cluster configuratie, meer informatie over de [vereisten](#prerequisites).
 
-- De **sink-gegevens indeling** is **Parquet**, **tekst met scheidings tekens**of **Avro** met de volgende configuraties en verwijst naar een map in plaats van naar een bestand.
+- De **sink-gegevens indeling** is **Parquet** , **tekst met scheidings tekens** of **Avro** met de volgende configuraties en verwijst naar een map in plaats van naar een bestand.
 
-    - Voor de indeling **Parquet** is de compressie-codec **geen**, **Snappy**of **gzip**.
+    - Voor de indeling **Parquet** is de compressie-codec **geen** , **Snappy** of **gzip** .
     - Voor **tekst indeling met scheidings tekens** :
         - `rowDelimiter` is een wille keurig teken.
-        - `compression` kan **geen**, **bzip2**, **gzip**zijn.
+        - `compression` kan **geen** , **bzip2** , **gzip** zijn.
         - `encodingName` UTF-7 wordt niet ondersteund.
-    - Voor de indeling **Avro** is de compressie-codec **geen**, **Deflate**of **Snappy**.
+    - Voor de indeling **Avro** is de compressie-codec **geen** , **Deflate** of **Snappy** .
 
 - In de bron van de Kopieer activiteit `additionalColumns` is niet opgegeven.
 - Als u gegevens naar tekst met scheidings tekens kopieert, moet u de Sink voor kopieer activiteiten `fileExtension` ". csv" hebben.
@@ -262,11 +262,11 @@ Als u gegevens wilt kopiëren naar Azure Databricks Delta Lake, worden de volgen
 
 | Eigenschap      | Beschrijving                                                  | Vereist |
 | :------------ | :----------------------------------------------------------- | :------- |
-| type          | De eigenschap type van de Sink van de Kopieer activiteit is ingesteld op **AzureDatabricksDeltaLakeSink**. | Ja      |
+| type          | De eigenschap type van de Sink van de Kopieer activiteit is ingesteld op **AzureDatabricksDeltaLakeSink** . | Ja      |
 | preCopyScript | Geef een SQL-query op voor het uitvoeren van de Kopieer activiteit die moet worden uitgevoerd voordat gegevens worden geschreven in de Databricks-Delta tabel in elke run. U kunt deze eigenschap gebruiken om de vooraf geladen gegevens op te schonen of een afgekapte tabel of vacuüm instructie toe te voegen. | Nee       |
 | importSettings | Geavanceerde instellingen voor het schrijven van gegevens in de Delta tabel. | Nee |
-| ***Onder `importSettings` :*** |                                                              |  |
-| type | Het type van de opdracht importeren, ingesteld op **AzureDatabricksDeltaLakeImportCommand**. | Ja |
+| **_Onder `importSettings` :_* _ |                                                              |  |
+| type | Het type import opdracht, ingesteld op _ * AzureDatabricksDeltaLakeImportCommand * *. | Ja |
 | Notatie | Teken reeks tot datum type opmaken met een datum notatie. Aangepaste datum notaties volgen de notaties op [DateTime-patroon](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Als u niets opgeeft, wordt de standaard waarde gebruikt `yyyy-MM-dd` . | Nee |
 | timestampFormat | Teken reeks opmaken naar tijds tempel type met een notatie van een tijds tempel. Aangepaste datum notaties volgen de notaties op [DateTime-patroon](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Als u niets opgeeft, wordt de standaard waarde gebruikt `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` . | Nee |
 
@@ -276,14 +276,14 @@ Als uw bron gegevens opslag en-indeling voldoen aan de criteria die in deze sect
 
 - De **gekoppelde bron service** is [Azure Blob-opslag](connector-azure-blob-storage.md) of [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md). De account referenties moeten vooraf worden geconfigureerd in Azure Databricks cluster configuratie, meer informatie over de [vereisten](#prerequisites).
 
-- De **indeling van de bron gegevens** is **Parquet**, **tekst met scheidings tekens**of **Avro** met de volgende configuraties en verwijst naar een map in plaats van een bestand.
+- De **indeling van de bron gegevens** is **Parquet** , **tekst met scheidings tekens** of **Avro** met de volgende configuraties en verwijst naar een map in plaats van een bestand.
 
-    - Voor de indeling **Parquet** is de compressie-codec **geen**, **Snappy**of **gzip**.
+    - Voor de indeling **Parquet** is de compressie-codec **geen** , **Snappy** of **gzip** .
     - Voor **tekst indeling met scheidings tekens** :
         - `rowDelimiter` is standaard of één teken.
-        - `compression` kan **geen**, **bzip2**, **gzip**zijn.
+        - `compression` kan **geen** , **bzip2** , **gzip** zijn.
         - `encodingName` UTF-7 wordt niet ondersteund.
-    - Voor de indeling **Avro** is de compressie-codec **geen**, **Deflate**of **Snappy**.
+    - Voor de indeling **Avro** is de compressie-codec **geen** , **Deflate** of **Snappy** .
 
 - In de bron van de Kopieer activiteit: 
 
@@ -374,7 +374,7 @@ Als u deze functie wilt gebruiken, maakt u een [gekoppelde Azure Blob Storage-se
 
 ## <a name="monitoring"></a>Bewaking
 
-Azure Data Factory biedt dezelfde functionaliteit voor het [bewaken van de Kopieer activiteit](copy-activity-monitoring.md) als andere connectors. Omdat het laden van gegevens van/naar Delta Lake wordt uitgevoerd op uw Azure Databricks cluster, kunt u bovendien [gedetailleerde cluster logboeken weer geven](https://docs.microsoft.com/azure/databricks/clusters/clusters-manage#--view-cluster-logs) en de [prestaties bewaken](https://docs.microsoft.com/azure/databricks/clusters/clusters-manage#--monitor-performance).
+Azure Data Factory biedt dezelfde functionaliteit voor het [bewaken van de Kopieer activiteit](copy-activity-monitoring.md) als andere connectors. Omdat het laden van gegevens van/naar Delta Lake wordt uitgevoerd op uw Azure Databricks cluster, kunt u bovendien [gedetailleerde cluster logboeken weer geven](/azure/databricks/clusters/clusters-manage#--view-cluster-logs) en de [prestaties bewaken](/azure/databricks/clusters/clusters-manage#--monitor-performance).
 
 ## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
 

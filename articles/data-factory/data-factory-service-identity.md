@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 6b79b2722438403e29851d3a87929ddc67eef727
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 117b0db4f04c3fd631f6692d288945019507f5c6
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123746"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632801"
 ---
 # <a name="managed-identity-for-data-factory"></a>Beheerde identiteit voor Data Factory
 
@@ -39,9 +39,9 @@ Beheerde identiteit voor Data Factory voor delen de volgende functies:
 
 De beheerde identiteit voor Data Factory wordt als volgt gegenereerd:
 
-- Wanneer u data factory via **Azure portal of Power shell**maakt, wordt er altijd automatisch een beheerde identiteit gemaakt.
-- Wanneer u data factory via **SDK**maakt, wordt er alleen een beheerde identiteit gemaakt als u ' identiteit = New FactoryIdentity () ' opgeeft in het fabrieks object dat u wilt maken. Zie voor beeld in [.net quick start-Data Factory maken](quickstart-create-data-factory-dot-net.md#create-a-data-factory).
-- Wanneer u data factory via **rest API**maakt, wordt er alleen een beheerde identiteit gemaakt als u de sectie ' identiteit ' opgeeft in de hoofd tekst van de aanvraag. Bekijk het voor beeld in [rest Quick Start: create Data Factory](quickstart-create-data-factory-rest-api.md#create-a-data-factory).
+- Wanneer u data factory via **Azure portal of Power shell** maakt, wordt er altijd automatisch een beheerde identiteit gemaakt.
+- Wanneer u data factory via **SDK** maakt, wordt er alleen een beheerde identiteit gemaakt als u ' identiteit = New FactoryIdentity () ' opgeeft in het fabrieks object dat u wilt maken. Zie voor beeld in [.net quick start-Data Factory maken](quickstart-create-data-factory-dot-net.md#create-a-data-factory).
+- Wanneer u data factory via **rest API** maakt, wordt er alleen een beheerde identiteit gemaakt als u de sectie ' identiteit ' opgeeft in de hoofd tekst van de aanvraag. Bekijk het voor beeld in [rest Quick Start: create Data Factory](quickstart-create-data-factory-rest-api.md#create-a-data-factory).
 
 Als uw data factory geen beheerde identiteit heeft die is gekoppeld aan de instructies [Managed Identity ophalen](#retrieve-managed-identity) , kunt u er expliciet een genereren door de Data Factory met de id-initiator programmatisch bij te werken:
 
@@ -79,7 +79,7 @@ Aanroep onder ' identiteit ' in de hoofd tekst van de aanvraag:
 PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<data factory name>?api-version=2018-06-01
 ```
 
-**Hoofd tekst van aanvraag**: add "identiteit": {"type": "SystemAssigned"}.
+**Hoofd tekst van aanvraag** : add "identiteit": {"type": "SystemAssigned"}.
 
 ```json
 {
@@ -92,7 +92,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 }
 ```
 
-**Antwoord**: de beheerde identiteit wordt automatisch gemaakt en de sectie ' identiteit ' is dienovereenkomstig ingevuld.
+**Antwoord** : de beheerde identiteit wordt automatisch gemaakt en de sectie ' identiteit ' is dienovereenkomstig ingevuld.
 
 ```json
 {
@@ -117,7 +117,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 
 ### <a name="generate-managed-identity-using-an-azure-resource-manager-template"></a>Beheerde identiteit genereren met behulp van een Azure Resource Manager sjabloon
 
-**Sjabloon**: Voeg "identiteit": {"type": "SystemAssigned"} toe.
+**Sjabloon** : Voeg "identiteit": {"type": "SystemAssigned"} toe.
 
 ```json
 {
@@ -201,7 +201,7 @@ Bel de volgende API in de aanvraag:
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}?api-version=2018-06-01
 ```
 
-**Antwoord**: er wordt een antwoord weer gegeven zoals in het onderstaande voor beeld. De sectie ' identiteit ' is dienovereenkomstig ingevuld.
+**Antwoord** : er wordt een antwoord weer gegeven zoals in het onderstaande voor beeld. De sectie ' identiteit ' is dienovereenkomstig ingevuld.
 
 ```json
 {
@@ -252,4 +252,4 @@ Zie de volgende onderwerpen voor meer informatie over het gebruik van data facto
 - [Referenties opslaan in Azure Key Vault](store-credentials-in-key-vault.md)
 - [Gegevens kopiëren van/naar Azure Data Lake Store met behulp van beheerde identiteiten voor Azure-bronnen verificatie](connector-azure-data-lake-store.md)
 
-Zie [beheerde identiteiten voor Azure-bronnen overzicht](/azure/active-directory/managed-identities-azure-resources/overview) voor meer achtergrond informatie over beheerde identiteiten voor Azure-resources, waarop Data Factory beheerde identiteit is gebaseerd. 
+Zie [beheerde identiteiten voor Azure-bronnen overzicht](../active-directory/managed-identities-azure-resources/overview.md) voor meer achtergrond informatie over beheerde identiteiten voor Azure-resources, waarop Data Factory beheerde identiteit is gebaseerd.

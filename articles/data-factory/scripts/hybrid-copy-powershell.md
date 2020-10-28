@@ -10,12 +10,12 @@ author: linda33wj
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
-ms.openlocfilehash: 6f0a1509a97d2d860b43146ffaf69bb241105910
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc10017da8561cda09658ec9380cc82095f3ef94
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84194630"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632229"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-sql-server-to-azure"></a>Power shell gebruiken om een data factory pijp lijn te maken voor het kopiëren van gegevens van SQL Server naar Azure
 
@@ -27,9 +27,9 @@ Met dit Power shell-voorbeeld script maakt u een pijp lijn in Azure Data Factory
 
 ## <a name="prerequisites"></a>Vereisten
 
-- **SQL Server**. In dit voor beeld gebruikt u een SQL Server-Data Base als een **brongegevens** opslag.
-- **Een Azure Storage-account**. U gebruikt Azure Blob Storage als een **doel/Sink-** gegevens archief in dit voor beeld. Als u geen Azure Storage-account hebt, raadpleegt u het artikel [een opslag account maken](../../storage/common/storage-account-create.md) voor de stappen om er een te maken.
-- **Zelf-hostende Integration runtime**. Down load het MSI-bestand uit het [Download centrum](https://www.microsoft.com/download/details.aspx?id=39717) en voer het uit om een zelf-hostende Integration runtime op uw computer te installeren.  
+- **SQL Server** . In dit voor beeld gebruikt u een SQL Server-Data Base als een **brongegevens** opslag.
+- **Een Azure Storage-account** . U gebruikt Azure Blob Storage als een **doel/Sink-** gegevens archief in dit voor beeld. Als u geen Azure Storage-account hebt, raadpleegt u het artikel [een opslag account maken](../../storage/common/storage-account-create.md) voor de stappen om er een te maken.
+- **Zelf-hostende Integration runtime** . Down load het MSI-bestand uit het [Download centrum](https://www.microsoft.com/download/details.aspx?id=39717) en voer het uit om een zelf-hostende Integration runtime op uw computer te installeren.  
 
 ### <a name="create-sample-database-in-sql-server"></a>Voorbeeld database maken in SQL Server
 1. Maak in de SQL Server-Data Base een tabel met de naam **EMP** met behulp van het volgende SQL-script:
@@ -92,6 +92,6 @@ In dit script worden de volgende opdrachten gebruikt:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Documentatie over Azure PowerShell](https://docs.microsoft.com/powershell/) voor meer informatie over Azure PowerShell.
+Zie [Documentatie over Azure PowerShell](/powershell/) voor meer informatie over Azure PowerShell.
 
 Aanvullende Azure Data Factory Power shell-voorbeeld scripts vindt u in de [Azure Data Factory Power shell](../samples-powershell.md)-voor beelden.
