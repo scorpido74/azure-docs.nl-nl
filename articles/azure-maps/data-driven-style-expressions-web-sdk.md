@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 539145836849bb66bcf1f12a97ea405fe84c47bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f27f7532d074428fafe74e4a453628f5c61d2b8
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311373"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895967"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Gegevensgestuurde stijl expressies (Web SDK)
 
@@ -41,7 +41,7 @@ Expressies worden weer gegeven als JSON-matrices. Het eerste element van een exp
 
 De Azure Maps Web-SDK ondersteunt veel typen expressies. Expressies kunnen worden gebruikt in hun eigen of in combi natie met andere expressies.
 
-| Type expressies | Beschrijving |
+| Type expressies | Description |
 |---------------------|-------------|
 | [Statistische expressie](#aggregate-expression) | Een expressie die een berekening definieert die wordt verwerkt via een set gegevens en kan worden gebruikt met de `clusterProperties` optie van een `DataSource` . |
 | [Booleaanse expressies](#boolean-expressions) | Boole-expressies bieden een set Booleaanse Opera tors voor het evalueren van Boole-vergelijkingen. |
@@ -475,13 +475,13 @@ Kleur expressies maken het gemakkelijker om kleur waarden te maken en te bewerke
 
 | Expression | Retourtype | Beschrijving |
 |------------|-------------|-------------|
-| `['rgb', number, number, number]` | color | Hiermee maakt u een kleur waarde van de onderdelen *rood*, *groen*en *blauw* die tussen `0` en moeten variëren `255` , en een alpha-onderdeel van `1` . Als een onderdeel zich buiten het bereik bevindt, is er een fout opgetreden in de expressie. |
-| `['rgba', number, number, number, number]` | color | Hiermee maakt u een kleur waarde van *rode*, *groene*en *blauwe* onderdelen die tussen en moeten liggen `0` `255` en een alpha-component binnen een bereik van `0` en `1` . Als een onderdeel zich buiten het bereik bevindt, is er een fout opgetreden in de expressie. |
-| `['to-rgba']` | \[getal, getal, getal, getal\] | Retourneert een matrix met vier elementen met de *rode*, *groene*, *blauwe*en *alpha* -onderdelen van de invoer kleur, in die volg orde. |
+| `['rgb', number, number, number]` | color | Hiermee maakt u een kleur waarde van de onderdelen *rood* , *groen* en *blauw* die tussen `0` en moeten variëren `255` , en een alpha-onderdeel van `1` . Als een onderdeel zich buiten het bereik bevindt, is er een fout opgetreden in de expressie. |
+| `['rgba', number, number, number, number]` | color | Hiermee maakt u een kleur waarde van *rode* , *groene* en *blauwe* onderdelen die tussen en moeten liggen `0` `255` en een alpha-component binnen een bereik van `0` en `1` . Als een onderdeel zich buiten het bereik bevindt, is er een fout opgetreden in de expressie. |
+| `['to-rgba']` | \[getal, getal, getal, getal\] | Retourneert een matrix met vier elementen met de *rode* , *groene* , *blauwe* en *alpha* -onderdelen van de invoer kleur, in die volg orde. |
 
 **Voorbeeld**
 
-In het volgende voor beeld wordt een RGB-kleur waarde gemaakt met een *rode* waarde van `255` en waarden voor *groen* en *blauw* die worden berekend door te vermenigvuldigen `2.5` met de waarde van de `temperature` eigenschap. Wanneer de Tempe ratuur wordt gewijzigd, verandert de kleur in verschillende tinten *rood*.
+In het volgende voor beeld wordt een RGB-kleur waarde gemaakt met een *rode* waarde van `255` en waarden voor *groen* en *blauw* die worden berekend door te vermenigvuldigen `2.5` met de waarde van de `temperature` eigenschap. Wanneer de Tempe ratuur wordt gewijzigd, verandert de kleur in verschillende tinten *rood* .
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -501,7 +501,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 Teken reeks operator expressies voeren conversie bewerkingen uit op teken reeksen, zoals samen voegen en het converteren van de aanvraag. 
 
-| Expression | Retourtype | Beschrijving |
+| Expression | Retourtype | Description |
 |------------|-------------|-------------|
 | `['concat', string, string, …]` | tekenreeks | Meerdere teken reeksen samen voegen. Elke waarde moet een teken reeks zijn. Gebruik de `to-string` type-expressie om andere waardetypen zo nodig te converteren naar een teken reeks. |
 | `['downcase', string]` | tekenreeks | Hiermee wordt de opgegeven teken reeks geconverteerd naar kleine letters. |
@@ -647,7 +647,7 @@ Speciale expressies die alleen van toepassing zijn op specifieke lagen.
 
 ### <a name="heat-map-density-expression"></a>Dichtheids expressie voor heatmap
 
-Met een dichtheids expressie voor heatmap wordt de waarde van de heatmap voor de kaart voor elke pixel in een heatmap van een hitte opgehaald en gedefinieerd als `['heatmap-density']` . Deze waarde is een getal tussen `0` en `1` . Deze wordt gebruikt in combi natie met een `interpolation` or- `step` expressie om de kleur overgang te definiëren die wordt gebruikt voor het inkleuren van de heatmap. Deze expressie kan alleen worden gebruikt in de [kleur optie](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions#color) van de laag van de heatmap.
+Met een dichtheids expressie voor heatmap wordt de waarde van de heatmap voor de kaart voor elke pixel in een heatmap van een hitte opgehaald en gedefinieerd als `['heatmap-density']` . Deze waarde is een getal tussen `0` en `1` . Deze wordt gebruikt in combi natie met een `interpolation` or- `step` expressie om de kleur overgang te definiëren die wordt gebruikt voor het inkleuren van de heatmap. Deze expressie kan alleen worden gebruikt in de [kleur optie](/javascript/api/azure-maps-control/atlas.heatmaplayeroptions#color) van de laag van de heatmap.
 
 > [!TIP]
 > De kleur bij index 0, in een interpolatie-expressie of de standaard kleur van een stap kleur, definieert de kleur van het gebied waar er geen gegevens zijn. De kleur bij index 0 kan worden gebruikt om een achtergrond kleur te definiëren. Veel gewenst om deze waarde in te stellen op transparant of semi-transparant zwart.
@@ -954,16 +954,16 @@ Raadpleeg de volgende artikelen voor meer code voorbeelden voor het implementere
 Meer informatie over de laag opties die expressies ondersteunen:
 
 > [!div class="nextstepaction"] 
-> [BubbleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions)
+> [BubbleLayerOptions](/javascript/api/azure-maps-control/atlas.bubblelayeroptions)
 
 > [!div class="nextstepaction"] 
-> [HeatMapLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
+> [HeatMapLayerOptions](/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
 
 > [!div class="nextstepaction"] 
-> [LineLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions)
+> [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions)
 
 > [!div class="nextstepaction"] 
-> [PolygonLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
+> [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
 
 > [!div class="nextstepaction"] 
-> [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions)
+> [SymbolLayerOptions](/javascript/api/azure-maps-control/atlas.symbollayeroptions)

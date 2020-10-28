@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d2ff176d7569f6f67c8f0dd37e0073314a07289
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e46dabc665d383279a12fc6bd8eb67475d88a2ea
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441620"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896069"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Een aangepaste goedkeurings werk stroom toevoegen aan self-service registratie
 
@@ -32,25 +32,25 @@ Dit artikel bevat een voor beeld van hoe u kunt integreren met een goedkeurings 
 U moet uw goedkeurings systeem registreren als een toepassing in uw Azure AD-Tenant, zodat het kan worden geverifieerd met Azure AD en toestemming heeft om gebruikers te maken. Meer informatie over de [basis principes van verificatie en autorisatie voor Microsoft Graph](/graph/auth/auth-concepts).
 
 1. Meld u als een Azure AD-administrator aan bij de [Azure Portal](https://portal.azure.com).
-2. Onder **Azure-Services**selecteert u **Azure Active Directory**.
-3. Selecteer in het menu links **app-registraties**en selecteer vervolgens **nieuwe registratie**.
-4. Voer een **naam** in voor de toepassing, bijvoorbeeld _goed keuringen voor registratie_.
+2. Onder **Azure-Services** selecteert u **Azure Active Directory** .
+3. Selecteer in het menu links **app-registraties** en selecteer vervolgens **nieuwe registratie** .
+4. Voer een **naam** in voor de toepassing, bijvoorbeeld _goed keuringen voor registratie_ .
 
    <!-- ![Register an application for the approval system](./self-service-sign-up-add-approvals/approvals/register-an-approvals-application.png) -->
 
-5. Selecteer **Registreren**. U kunt de standaard waarden van andere velden laten staan.
+5. Selecteer **Registreren** . U kunt de standaard waarden van andere velden laten staan.
 
-   ![Een toepassings pagina registreren](media/self-service-sign-up-add-approvals/register-approvals-app.png)
+   ![Scherm opname van de knop registreren.](media/self-service-sign-up-add-approvals/register-approvals-app.png)
 
-6. Selecteer onder **beheren** in het menu links de optie **API-machtigingen**en selecteer vervolgens **een machtiging toevoegen**.
-7. Selecteer op de pagina **API-machtigingen voor aanvragen** de optie **Microsoft Graph**en selecteer vervolgens **toepassings machtigingen**.
-8. Onder **machtigingen selecteren**, vouwt u **gebruiker**en vervolgens het selectie vakje **gebruiker. readwrite. all** in. Met deze machtiging kan het goedkeurings systeem de gebruiker maken na goed keuring. Selecteer vervolgens **machtigingen toevoegen**.
+6. Selecteer onder **beheren** in het menu links de optie **API-machtigingen** en selecteer vervolgens **een machtiging toevoegen** .
+7. Selecteer op de pagina **API-machtigingen voor aanvragen** de optie **Microsoft Graph** en selecteer vervolgens **toepassings machtigingen** .
+8. Onder **machtigingen selecteren** , vouwt u **gebruiker** en vervolgens het selectie vakje **gebruiker. readwrite. all** in. Met deze machtiging kan het goedkeurings systeem de gebruiker maken na goed keuring. Selecteer vervolgens **machtigingen toevoegen** .
 
    ![Een toepassings pagina registreren](media/self-service-sign-up-add-approvals/request-api-permissions.png)
 
-9. Selecteer op de pagina **API-machtigingen** de optie **beheerder toestemming geven voor (uw Tenant naam)** en selecteer vervolgens **Ja**.
-10. Selecteer onder **beheren** in het linkermenu **certificaten & geheimen**en selecteer vervolgens **Nieuw client geheim**.
-11. Voer een **Beschrijving** in voor het geheim, bijvoorbeeld _goed keuringen client geheim_, en selecteer de duur voor wanneer het client geheim **verloopt**. Selecteer vervolgens **Toevoegen**.
+9. Selecteer op de pagina **API-machtigingen** de optie **beheerder toestemming geven voor (uw Tenant naam)** en selecteer vervolgens **Ja** .
+10. Selecteer onder **beheren** in het linkermenu **certificaten & geheimen** en selecteer vervolgens **Nieuw client geheim** .
+11. Voer een **Beschrijving** in voor het geheim, bijvoorbeeld _goed keuringen client geheim_ , en selecteer de duur voor wanneer het client geheim **verloopt** . Selecteer vervolgens **Toevoegen** .
 12. Kopieer de waarde van het client geheim.
 
     ![Het client geheim kopiëren voor gebruik in het goedkeurings systeem](media/self-service-sign-up-add-approvals/client-secret-value-copy.png)
@@ -61,7 +61,7 @@ U moet uw goedkeurings systeem registreren als een toepassing in uw Azure AD-Ten
 
 Vervolgens maakt u [de API-connectors](self-service-sign-up-add-api-connector.md#create-an-api-connector) voor uw Self-service voor het registreren van uw gebruikers. Uw goedkeurings systeem-API heeft twee connectors en de bijbehorende eind punten nodig, zoals hieronder wordt weer gegeven. Deze API-connectors doen het volgende:
 
-- **Goedkeurings status controleren**. Een oproep verzenden naar het goedkeurings systeem direct nadat een gebruiker zich heeft aangemeld met een id-provider om te controleren of de gebruiker een bestaande goedkeurings aanvraag heeft of al is geweigerd. Als uw goedkeurings systeem alleen automatische goedkeurings beslissingen heeft, is deze API-connector mogelijk niet nodig. Voor beeld van de API-connector "goedkeurings status controleren".
+- **Goedkeurings status controleren** . Een oproep verzenden naar het goedkeurings systeem direct nadat een gebruiker zich heeft aangemeld met een id-provider om te controleren of de gebruiker een bestaande goedkeurings aanvraag heeft of al is geweigerd. Als uw goedkeurings systeem alleen automatische goedkeurings beslissingen heeft, is deze API-connector mogelijk niet nodig. Voor beeld van de API-connector "goedkeurings status controleren".
 
   ![De configuratie van de goedkeurings status API-connector controleren](./media/self-service-sign-up-add-approvals/check-approval-status-api-connector-config-alt.png)
 
@@ -76,17 +76,17 @@ Als u deze connectors wilt maken, volgt u de stappen in [een API-connector maken
 Nu voegt u de API-Connect oren toe aan een self-service voor het aanmelden van een gebruiker met de volgende stappen:
 
 1. Meld u als een Azure AD-administrator aan bij de [Azure Portal](https://portal.azure.com/).
-2. Onder **Azure-Services**selecteert u **Azure Active Directory**.
-3. Selecteer in het linkermenu **externe identiteiten**.
+2. Onder **Azure-Services** selecteert u **Azure Active Directory** .
+3. Selecteer in het linkermenu **externe identiteiten** .
 4. Selecteer **gebruikers stromen (preview)** en selecteer vervolgens de gebruikers stroom waarvoor u de API-connector wilt inschakelen.
-5. Selecteer **API-connectors**en selecteer vervolgens de API-eind punten die u wilt aanroepen met de volgende stappen in de gebruikers stroom:
+5. Selecteer **API-connectors** en selecteer vervolgens de API-eind punten die u wilt aanroepen met de volgende stappen in de gebruikers stroom:
 
-   - **Nadat u zich hebt aangemeld met een id-provider**: Selecteer uw goedkeurings status API-connector, bijvoorbeeld _goedkeurings status controleren_.
-   - **Voordat u de gebruiker maakt**: Selecteer de API-connector voor de goedkeurings aanvraag, bijvoorbeeld _goed keuring aanvragen_.
+   - **Nadat u zich hebt aangemeld met een id-provider** : Selecteer uw goedkeurings status API-connector, bijvoorbeeld _goedkeurings status controleren_ .
+   - **Voordat u de gebruiker maakt** : Selecteer de API-connector voor de goedkeurings aanvraag, bijvoorbeeld _goed keuring aanvragen_ .
 
    ![Api's toevoegen aan de gebruikers stroom](./media/self-service-sign-up-add-approvals/api-connectors-user-flow-api.png)
 
-6. Selecteer **Opslaan**.
+6. Selecteer **Opslaan** .
 
 ## <a name="control-the-sign-up-flow-with-api-responses"></a>De registratie stroom beheren met API-antwoorden
 
@@ -207,7 +207,7 @@ De exacte claims die worden verzonden naar de API, zijn afhankelijk van welke ge
 
 Het API-eind punt voor het **goed keuren van aanvragen** moet een vervolg reactie retour neren als:
 
-- De gebruiker kan **_automatisch worden goedgekeurd_**.
+- De gebruiker kan **_automatisch worden goedgekeurd_** .
 
 Voor beeld van de vervolg reactie:
 

@@ -9,23 +9,23 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 75d2833a5b270fcfdcffa668ec0e308399edab8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c82b74ffdc8672dc3d84a98a036c6083bc6c309
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311447"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895916"
 ---
 # <a name="create-a-data-source"></a>Een gegevensbron maken
 
 De Azure Maps Web-SDK slaat gegevens op in gegevens bronnen. Het gebruik van gegevens bronnen optimaliseert de gegevens bewerkingen voor het uitvoeren van query's en rendering. Er zijn momenteel twee soorten gegevens bronnen:
 
-- **GEOjson-bron**: Hiermee worden gegevens van onbewerkte locaties lokaal beheerd in geojson-indeling. Geschikt voor kleine tot middel grote gegevens sets (van honderden duizenden vormen).
-- **Vector tegel bron**: laadt gegevens die zijn opgemaakt als vector tegels voor de huidige kaart weergave, op basis van het Maps-systeem. Ideaal voor grote tot enorme gegevens sets (miljoenen of miljarden vormen).
+- **GEOjson-bron** : Hiermee worden gegevens van onbewerkte locaties lokaal beheerd in geojson-indeling. Geschikt voor kleine tot middel grote gegevens sets (van honderden duizenden vormen).
+- **Vector tegel bron** : laadt gegevens die zijn opgemaakt als vector tegels voor de huidige kaart weergave, op basis van het Maps-systeem. Ideaal voor grote tot enorme gegevens sets (miljoenen of miljarden vormen).
 
 ## <a name="geojson-data-source"></a>Geojson-gegevens bron
 
-Met een geojson gebaseerde gegevens bron worden gegevens lokaal geladen en opgeslagen met behulp van de- `DataSource` klasse. Geojson-gegevens kunnen hand matig worden gemaakt of gemaakt met behulp van de Help-klassen in de naam ruimte [Atlas. data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) . De `DataSource` klasse biedt functies voor het importeren van lokale of externe GEOjson-bestanden. Externe geojson-bestanden moeten worden gehost op een eind punt waarvoor CORs is ingeschakeld. De `DataSource` klasse biedt functionaliteit voor cluster-punt gegevens. En kunnen gegevens eenvoudig worden toegevoegd, verwijderd en bijgewerkt met de- `DataSource` klasse. De volgende code laat zien hoe geojson-gegevens kunnen worden gemaakt in Azure Maps.
+Met een geojson gebaseerde gegevens bron worden gegevens lokaal geladen en opgeslagen met behulp van de- `DataSource` klasse. Geojson-gegevens kunnen hand matig worden gemaakt of gemaakt met behulp van de Help-klassen in de naam ruimte [Atlas. data](/javascript/api/azure-maps-control/atlas.data) . De `DataSource` klasse biedt functies voor het importeren van lokale of externe GEOjson-bestanden. Externe geojson-bestanden moeten worden gehost op een eind punt waarvoor CORs is ingeschakeld. De `DataSource` klasse biedt functionaliteit voor cluster-punt gegevens. En kunnen gegevens eenvoudig worden toegevoegd, verwijderd en bijgewerkt met de- `DataSource` klasse. De volgende code laat zien hoe geojson-gegevens kunnen worden gemaakt in Azure Maps.
 
 ```javascript
 //Create raw GeoJSON object.
@@ -46,7 +46,7 @@ var geoJsonClass = new atlas.data.Feature(new atlas.data.Point([-100, 45]), {
 }); 
 ```
 
-Zodra u deze hebt gemaakt, kunt u gegevens bronnen toevoegen aan de kaart via de `map.sources` eigenschap. Dit is een [SourceManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.sourcemanager). De volgende code laat zien hoe u een maakt en hoe u `DataSource` deze toevoegt aan de kaart.
+Zodra u deze hebt gemaakt, kunt u gegevens bronnen toevoegen aan de kaart via de `map.sources` eigenschap. Dit is een [SourceManager](/javascript/api/azure-maps-control/atlas.sourcemanager). De volgende code laat zien hoe u een maakt en hoe u `DataSource` deze toevoegt aan de kaart.
 
 ```javascript
 //Create a data source and add it to the map.
@@ -74,7 +74,7 @@ dataSource.setShapes(geoJsonData);
 
 ## <a name="vector-tile-source"></a>Bron van vector tegel
 
-Een vector tegel bron beschrijft hoe een vector tegel laag kan worden geopend. Gebruik de [VectorTileSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.vectortilesource) -klasse om een vector tegel bron te instantiëren. Vector tegel lagen zijn vergelijkbaar met de tegel lagen, maar ze zijn niet hetzelfde. Een tegel laag is een raster afbeelding. Vector tegel lagen zijn een gecomprimeerd bestand in de **PBF** -indeling. Dit gecomprimeerde bestand bevat gegevens van een vector kaart en een of meer lagen. Het bestand kan worden gerenderd en opgemaakt op de client, op basis van de stijl van elke laag. De gegevens in een vector tegel bevatten geografische functies in de vorm van punten, lijnen en veelhoeken. Er zijn verschillende voor delen van het gebruik van vector tegel lagen in plaats van raster tegel lagen:
+Een vector tegel bron beschrijft hoe een vector tegel laag kan worden geopend. Gebruik de [VectorTileSource](/javascript/api/azure-maps-control/atlas.source.vectortilesource) -klasse om een vector tegel bron te instantiëren. Vector tegel lagen zijn vergelijkbaar met de tegel lagen, maar ze zijn niet hetzelfde. Een tegel laag is een raster afbeelding. Vector tegel lagen zijn een gecomprimeerd bestand in de **PBF** -indeling. Dit gecomprimeerde bestand bevat gegevens van een vector kaart en een of meer lagen. Het bestand kan worden gerenderd en opgemaakt op de client, op basis van de stijl van elke laag. De gegevens in een vector tegel bevatten geografische functies in de vorm van punten, lijnen en veelhoeken. Er zijn verschillende voor delen van het gebruik van vector tegel lagen in plaats van raster tegel lagen:
 
  - Een bestands grootte van een vector tegel is doorgaans veel kleiner dan een gelijkwaardige raster tegel. Als zodanig wordt er minder band breedte gebruikt. Dit betekent een lagere latentie, een snellere kaart en een betere gebruikers ervaring.
  - Omdat vector tegels worden weer gegeven op de client, worden ze aangepast aan de resolutie van het apparaat waarop ze worden weer gegeven. Als gevolg hiervan worden de gerenderde kaarten meer duidelijk gedefinieerd, met kristalheldere labels.
@@ -83,10 +83,10 @@ Een vector tegel bron beschrijft hoe een vector tegel laag kan worden geopend. G
 
 Azure Maps voldoet aan de [tegel specificatie Mapbox vector](https://github.com/mapbox/vector-tile-spec), een open standaard. Azure Maps biedt de volgende vector tegel Services als onderdeel van het platform:
 
-- Details van [documentation](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)de  |  [gegevens indeling](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile) voor wegtegels in de documentatie
-- Details van [documentatie](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidenttile)voor verkeers incidenten  |  [gegevens indeling](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
-- Details van [documentation](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficflowtile)de  |  [gegevens indeling](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles) van de verkeers stroom
-- Azure Maps Maker kunnen ook aangepaste vector tegels maken en openen via de [weer gave tegel ophalen v2](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)
+- Details van [documentation](/rest/api/maps/renderv2/getmaptilepreview)de  |  [gegevens indeling](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile) voor wegtegels in de documentatie
+- Details van [documentatie](/rest/api/maps/traffic/gettrafficincidenttile)voor verkeers incidenten  |  [gegevens indeling](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
+- Details van [documentation](/rest/api/maps/traffic/gettrafficflowtile)de  |  [gegevens indeling](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles) van de verkeers stroom
+- Azure Maps Maker kunnen ook aangepaste vector tegels maken en openen via de [weer gave tegel ophalen v2](/rest/api/maps/renderv2/getmaptilepreview)
 
 > [!TIP]
 > Wanneer u gebruikmaakt van vector-of raster afbeeldings tegels van de Azure Maps render-service met de Web-SDK, kunt u vervangen door `atlas.microsoft.com` de tijdelijke aanduiding `{azMapsDomain}` . Deze tijdelijke aanduiding wordt vervangen door het domein dat wordt gebruikt door de kaart en zal ook automatisch dezelfde verificatie gegevens toevoegen. Dit vereenvoudigt de verificatie met de render-service aanzienlijk wanneer u Azure Active Directory-verificatie gebruikt.
@@ -213,16 +213,16 @@ map.layers.add([polygonLayer, lineLayer, bubbleLayer]);
 Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 
 > [!div class="nextstepaction"]
-> [Bron](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource)
+> [Bron](/javascript/api/azure-maps-control/atlas.source.datasource)
 
 > [!div class="nextstepaction"]
-> [DataSourceOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.datasourceoptions)
+> [DataSourceOptions](/javascript/api/azure-maps-control/atlas.datasourceoptions)
 
 > [!div class="nextstepaction"]
-> [VectorTileSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.vectortilesource)
+> [VectorTileSource](/javascript/api/azure-maps-control/atlas.source.vectortilesource)
 
 > [!div class="nextstepaction"]
-> [VectorTileSourceOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.vectortilesourceoptions)
+> [VectorTileSourceOptions](/javascript/api/azure-maps-control/atlas.vectortilesourceoptions)
 
 Raadpleeg de volgende artikelen voor meer code voorbeelden om toe te voegen aan uw kaarten:
 
@@ -248,4 +248,4 @@ Raadpleeg de volgende artikelen voor meer code voorbeelden om toe te voegen aan 
 > [Een heatmap toevoegen](map-add-heat-map-layer.md)
 
 > [!div class="nextstepaction"]
-> [Codevoorbeelden](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Codevoorbeelden](/samples/browse/?products=azure-maps)

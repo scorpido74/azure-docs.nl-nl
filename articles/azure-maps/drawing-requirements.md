@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 1f25aadf716b7768b6122a4fb165466aef7f8a16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c3e46bf386e70cbe35d96728ede896d6bf0dc7d
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90053389"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895831"
 ---
 # <a name="drawing-package-requirements"></a>Vereisten voor tekenpakketten
 
-U kunt geüploade teken pakketten converteren naar kaart gegevens met behulp van de [Azure Maps conversie service](https://docs.microsoft.com/rest/api/maps/conversion). In dit artikel worden de teken pakket vereisten voor de conversie-API beschreven. Als u een voorbeeld pakket wilt weer geven, kunt u het voorbeeld [teken pakket](https://github.com/Azure-Samples/am-creator-indoor-data-examples)downloaden.
+U kunt geüploade teken pakketten converteren naar kaart gegevens met behulp van de [Azure Maps conversie service](/rest/api/maps/conversion). In dit artikel worden de teken pakket vereisten voor de conversie-API beschreven. Als u een voorbeeld pakket wilt weer geven, kunt u het voorbeeld [teken pakket](https://github.com/Azure-Samples/am-creator-indoor-data-examples)downloaden.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -25,7 +25,7 @@ Het teken pakket bevat tekeningen die zijn opgeslagen in de DWG-indeling. Dit is
 
 U kunt kiezen welke CAD-software de tekeningen in het teken pakket moet produceren.  
 
-De [Azure Maps conversie service](https://docs.microsoft.com/rest/api/maps/conversion) converteert het tekening pakket naar kaart gegevens. De conversie service werkt met de AutoCAD DWG-bestands indeling. `AC1032` is de interne indelings versie voor de DWG-bestanden, en het is een goed idee om te selecteren `AC1032` voor de interne versie van de DWG-bestands indeling.  
+De [Azure Maps conversie service](/rest/api/maps/conversion) converteert het tekening pakket naar kaart gegevens. De conversie service werkt met de AutoCAD DWG-bestands indeling. `AC1032` is de interne indelings versie voor de DWG-bestanden, en het is een goed idee om te selecteren `AC1032` voor de interne versie van de DWG-bestands indeling.  
 
 ## <a name="glossary-of-terms"></a>Verklarende woordenlijst
 
@@ -50,13 +50,13 @@ U kunt de DWG-bestanden op een wille keurige manier in de map indelen, maar het 
 
 ## <a name="dwg-files-requirements"></a>Vereisten voor DWG-bestanden
 
-Er is één DWG-bestand vereist voor elk niveau van de faciliteit. De gegevens van het niveau moeten zich in één DWG-bestand bevinden. Alle externe verwijzingen (_xrefs_) moeten aan de bovenliggende tekening worden gebonden. Daarnaast elk DWG-bestand:
+Er is één DWG-bestand vereist voor elk niveau van de faciliteit. De gegevens van het niveau moeten zich in één DWG-bestand bevinden. Alle externe verwijzingen ( _xrefs_ ) moeten aan de bovenliggende tekening worden gebonden. Daarnaast elk DWG-bestand:
 
-* U moet de _buiten_ -en _eenheids_ lagen definiëren. U kunt eventueel de volgende optionele lagen definiëren: _wand_, _deur_, _UnitLabel_, _zone_en _ZoneLabel_.
+* U moet de _buiten_ -en _eenheids_ lagen definiëren. U kunt eventueel de volgende optionele lagen definiëren: _wand_ , _deur_ , _UnitLabel_ , _zone_ en _ZoneLabel_ .
 * Mag geen functies van meerdere niveaus bevatten.
 * Mag geen functies van meerdere faciliteiten bevatten.
 
-De [Azure Maps-conversie service](https://docs.microsoft.com/rest/api/maps/conversion) kan de volgende functie klassen uit een DWG-bestand extra heren:
+De [Azure Maps-conversie service](/rest/api/maps/conversion) kan de volgende functie klassen uit een DWG-bestand extra heren:
 
 * Niveaus
 * Eenheden
@@ -73,11 +73,11 @@ DWG-lagen moeten ook voldoen aan de volgende criteria:
 
 * De oorsprong van tekeningen voor alle DWG-bestanden moeten worden uitgelijnd op dezelfde breedte graad en lengte graad.
 * Elk niveau moet dezelfde richting hebben als de andere niveaus.
-* Zelf-intersecte veelhoeken worden automatisch gerepareerd en de [Azure Maps conversie service](https://docs.microsoft.com/rest/api/maps/conversion) genereert een waarschuwing. U moet de gerepareerde resultaten hand matig controleren, omdat deze mogelijk niet overeenkomen met de verwachte resultaten.
+* Zelf-intersecte veelhoeken worden automatisch gerepareerd en de [Azure Maps conversie service](/rest/api/maps/conversion) genereert een waarschuwing. U moet de gerepareerde resultaten hand matig controleren, omdat deze mogelijk niet overeenkomen met de verwachte resultaten.
 
 Alle laag entiteiten moeten een van de volgende typen zijn: lijn, poly lijn, veelhoek, cirkel vormige boog, cirkel of tekst (enkele regel). Andere entiteits typen worden genegeerd.
 
-De volgende tabel geeft een overzicht van de ondersteunde entiteits typen en ondersteunde functies voor elke laag. Als een laag entiteits typen bevat die niet worden ondersteund, worden deze entiteiten genegeerd door de [Azure Maps conversie service](https://docs.microsoft.com/rest/api/maps/conversion) .  
+De volgende tabel geeft een overzicht van de ondersteunde entiteits typen en ondersteunde functies voor elke laag. Als een laag entiteits typen bevat die niet worden ondersteund, worden deze entiteiten genegeerd door de [Azure Maps conversie service](/rest/api/maps/conversion) .  
 
 | Laag | Entiteitstypen | Functies |
 | :----- | :-------------------| :-------
@@ -168,11 +168,11 @@ U ziet een voor beeld van de laag ZoneLabel in het [voorbeeld teken pakket](http
 
 ## <a name="manifest-file-requirements"></a>Vereisten voor manifest bestand
 
-De map zip moet een manifest bestand op het hoofd niveau van de map bevatten en het bestand moet de naam **manifest.jsop**hebben. Hierin worden de DWG-bestanden beschreven zodat de [Azure Maps conversie service](https://docs.microsoft.com/rest/api/maps/conversion) de inhoud kan parseren. Alleen de bestanden die door het manifest worden geïdentificeerd, worden opgenomen. Bestanden die zich in de map zip bevinden, maar niet op de juiste manier worden vermeld in het manifest, worden genegeerd.
+De map zip moet een manifest bestand op het hoofd niveau van de map bevatten en het bestand moet de naam **manifest.jsop** hebben. Hierin worden de DWG-bestanden beschreven zodat de [Azure Maps conversie service](/rest/api/maps/conversion) de inhoud kan parseren. Alleen de bestanden die door het manifest worden geïdentificeerd, worden opgenomen. Bestanden die zich in de map zip bevinden, maar niet op de juiste manier worden vermeld in het manifest, worden genegeerd.
 
 De bestands paden in het `buildingLevels` object van het manifest bestand moeten relatief zijn ten opzichte van de hoofdmap van de map zip. De naam van het DWG-bestand moet exact overeenkomen met de naam van het niveau van de faciliteit. Een DWG-bestand voor het niveau ' Basement ' is bijvoorbeeld ' basement. DWG '. Een DWG-bestand voor niveau 2 heeft de naam ' level_2. DWG '. Gebruik een onderstrepings teken als de naam van uw niveau een spatie heeft.
 
-Hoewel er vereisten gelden wanneer u de manifest-objecten gebruikt, zijn niet alle objecten vereist. De volgende tabel bevat de vereiste en optionele objecten voor versie 1,1 van de [Azure Maps conversie service](https://docs.microsoft.com/rest/api/maps/conversion).
+Hoewel er vereisten gelden wanneer u de manifest-objecten gebruikt, zijn niet alle objecten vereist. De volgende tabel bevat de vereiste en optionele objecten voor versie 1,1 van de [Azure Maps conversie service](/rest/api/maps/conversion).
 
 | Object | Vereist | Beschrijving |
 | :----- | :------- | :------- |
@@ -181,40 +181,40 @@ Hoewel er vereisten gelden wanneer u de manifest-objecten gebruikt, zijn niet al
 | `buildingLevels` | true | Hiermee geeft u de niveaus van de gebouwen en de bestanden die het ontwerp van de niveaus bevatten. |
 | `georeference` | true | Bevat numerieke geografische gegevens voor de faciliteit tekening. |
 | `dwgLayers` | true | Een lijst met de namen van de lagen en elke laag bevat de namen van de eigen functies. |
-| `unitProperties` | onjuist | Kan worden gebruikt om aanvullende meta gegevens voor de onderdelen van de eenheid in te voegen. |
-| `zoneProperties` | onjuist | Kan worden gebruikt om aanvullende meta gegevens in te voegen voor de zone-functies. |
+| `unitProperties` | false | Kan worden gebruikt om aanvullende meta gegevens voor de onderdelen van de eenheid in te voegen. |
+| `zoneProperties` | false | Kan worden gebruikt om aanvullende meta gegevens in te voegen voor de zone-functies. |
 
 In de volgende secties worden de vereisten voor elk object gedetailleerd beschreven.
 
 ### `directoryInfo`
 
-| Eigenschap  | Type | Vereist | Beschrijving |
+| Eigenschap  | Type | Vereist | Description |
 |-----------|------|----------|-------------|
 | `name`      | tekenreeks | true   |  De naam van het gebouw. |
-| `streetAddress`|    tekenreeks |    onjuist    | Het adres van het gebouw. |
-|`unit`     | tekenreeks    |  onjuist    |  Eenheid in gebouw. |
-| `locality` |    tekenreeks |    onjuist |    De naam van een gebied, groep of regio. Bijvoorbeeld "overlake" of "Central District". De lokale locatie maakt geen deel uit van het post adres. |
-| `adminDivisions` |    JSON-matrix met teken reeksen |    onjuist     | Een matrix met adres ontwerpen (land, staat, plaats) of (land, prefectuur, stad, stad). Gebruik ISO 3166-land codes en ISO 3166-2 staat/regio codes. |
-| `postalCode` |    tekenreeks    | onjuist    | De e-mail BIC-code. |
-| `hoursOfOperation` |    tekenreeks |     onjuist | Voldoet aan de [OSM Openings uren](https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification) -indeling. |
-| `phone`    | tekenreeks |    onjuist |    Het telefoon nummer dat aan het gebouw is gekoppeld. De land code moet worden meegenomen. |
-| `website`    | tekenreeks |    onjuist    | De website die aan het gebouw is gekoppeld. Moet beginnen met http of https. |
-| `nonPublic` |    booleaans    | onjuist | Vlag waarmee wordt aangegeven of het gebouw open is. |
-| `anchorLatitude` | numeriek |    onjuist | Breedte graad van een faciliteit anker (punaise). |
-| `anchorLongitude` | numeriek |    onjuist | Lengte graad van een faciliteit anker (punaise). |
-| `anchorHeightAboveSeaLevel`  | numeriek | onjuist | Hoogte van de grond vloer van de faciliteit boven Sea-niveau, in meters. |
-| `defaultLevelVerticalExtent` | numeriek | onjuist | De standaard hoogte (breedte) van een niveau van deze faciliteit dat moet worden gebruikt wanneer een niveau `verticalExtent` niet is gedefinieerd. |
+| `streetAddress`|    tekenreeks |    false    | Het adres van het gebouw. |
+|`unit`     | tekenreeks    |  false    |  Eenheid in gebouw. |
+| `locality` |    tekenreeks |    false |    De naam van een gebied, groep of regio. Bijvoorbeeld "overlake" of "Central District". De lokale locatie maakt geen deel uit van het post adres. |
+| `adminDivisions` |    JSON-matrix met teken reeksen |    false     | Een matrix met adres ontwerpen (land, staat, plaats) of (land, prefectuur, stad, stad). Gebruik ISO 3166-land codes en ISO 3166-2 staat/regio codes. |
+| `postalCode` |    tekenreeks    | false    | De e-mail BIC-code. |
+| `hoursOfOperation` |    tekenreeks |     false | Voldoet aan de [OSM Openings uren](https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification) -indeling. |
+| `phone`    | tekenreeks |    false |    Het telefoon nummer dat aan het gebouw is gekoppeld. De land code moet worden meegenomen. |
+| `website`    | tekenreeks |    false    | De website die aan het gebouw is gekoppeld. Moet beginnen met http of https. |
+| `nonPublic` |    booleaans    | false | Vlag waarmee wordt aangegeven of het gebouw open is. |
+| `anchorLatitude` | numeriek |    false | Breedte graad van een faciliteit anker (punaise). |
+| `anchorLongitude` | numeriek |    false | Lengte graad van een faciliteit anker (punaise). |
+| `anchorHeightAboveSeaLevel`  | numeriek | false | Hoogte van de grond vloer van de faciliteit boven Sea-niveau, in meters. |
+| `defaultLevelVerticalExtent` | numeriek | false | De standaard hoogte (breedte) van een niveau van deze faciliteit dat moet worden gebruikt wanneer een niveau `verticalExtent` niet is gedefinieerd. |
 
 ### `buildingLevels`
 
 Het `buildingLevels` object bevat een JSON-matrix met de niveaus van gebouwen.
 
-| Eigenschap  | Type | Vereist | Beschrijving |
+| Eigenschap  | Type | Vereist | Description |
 |-----------|------|----------|-------------|
 |`levelName`    |tekenreeks    |true |    Beschrijvende niveau naam. Bijvoorbeeld: Floor 1, lobby, Blue parkeren of Basement.|
 |`ordinal` | geheel getal |    true | Bepaalt de verticale volg orde van niveaus. Elke faciliteit moet een niveau hebben met een rang telwoord van 0. |
-|`heightAboveFacilityAnchor` | numeriek | onjuist |    Niveau hoogte boven het anker in meters. |
-| `verticalExtent` | numeriek | onjuist | De hoogte (breedte) van het niveau in meters. |
+|`heightAboveFacilityAnchor` | numeriek | false |    Niveau hoogte boven het anker in meters. |
+| `verticalExtent` | numeriek | false | De hoogte (breedte) van het niveau in meters. |
 |`filename` |    tekenreeks |    true |    Bestandssysteempad naar het bestands systeem van de CAD-tekening voor een gebouw niveau. Deze moet relatief zijn ten opzichte van de hoofdmap van het zip-bestand van het gebouw. |
 
 ### `georeference`
@@ -231,31 +231,31 @@ Het `buildingLevels` object bevat een JSON-matrix met de niveaus van gebouwen.
 |-----------|------|----------|-------------|
 |`exterior`    |tekenreeksmatrix|    true|    Namen van lagen die het buitenste bouw profiel definiëren.|
 |`unit`|    tekenreeksmatrix|    true|    Namen van lagen waarmee eenheden worden gedefinieerd.|
-|`wall`|    tekenreeksmatrix    |onjuist|    Namen van lagen waarmee wanden worden gedefinieerd.|
-|`door`    |tekenreeksmatrix|    onjuist   | Namen van lagen waarmee deuren worden gedefinieerd.|
-|`unitLabel`    |tekenreeksmatrix|    onjuist    |Namen van lagen waarmee de namen van eenheden worden gedefinieerd.|
-|`zone` | tekenreeksmatrix    | onjuist    | Namen van lagen waarmee zones worden gedefinieerd.|
-|`zoneLabel` | tekenreeksmatrix |     onjuist |    Namen van lagen waarmee de namen van zones worden gedefinieerd.|
+|`wall`|    tekenreeksmatrix    |false|    Namen van lagen waarmee wanden worden gedefinieerd.|
+|`door`    |tekenreeksmatrix|    false   | Namen van lagen waarmee deuren worden gedefinieerd.|
+|`unitLabel`    |tekenreeksmatrix|    false    |Namen van lagen waarmee de namen van eenheden worden gedefinieerd.|
+|`zone` | tekenreeksmatrix    | false    | Namen van lagen waarmee zones worden gedefinieerd.|
+|`zoneLabel` | tekenreeksmatrix |     false |    Namen van lagen waarmee de namen van zones worden gedefinieerd.|
 
 ### `unitProperties`
 
 Het `unitProperties` object bevat een JSON-matrix met de eigenschappen van de eenheid.
 
-| Eigenschap  | Type | Vereist | Beschrijving |
+| Eigenschap  | Type | Vereist | Description |
 |-----------|------|----------|-------------|
 |`unitName`    |tekenreeks    |true    |De naam van de eenheid die aan deze record moet worden gekoppeld `unitProperty` . Deze record is alleen geldig wanneer er een label overeenkomst `unitName` in de lagen is gevonden `unitLabel` . |
-|`categoryName`|    tekenreeks|    onjuist    |Categorie naam. Raadpleeg de [categorie](https://aka.ms/pa-indoor-spacecategories)voor een volledige lijst met categorieën. |
-|`navigableBy`| tekenreeksmatrix |    onjuist    |Hiermee worden de typen navigatie agenten aangegeven die de eenheid kunnen passeren. Deze eigenschap informeert de wayfinding-mogelijkheden. De toegestane waarden zijn: `pedestrian` , `wheelchair` , `machine` , `bicycle` , `automobile` , `hiredAuto` , `bus` , `railcar` , `emergency` , `ferry` , `boat` en `disallowed` .|
-|`routeThroughBehavior`|    tekenreeks|    onjuist    |Het gedrag van de route voor de eenheid. De toegestane waarden zijn `disallowed` , `allowed` en `preferred` . De standaardwaarde is `allowed`.|
-|`occupants`    |matrix van directoryInfo-objecten |onjuist    |De lijst met inzittenden voor de eenheid. |
-|`nameAlt`|    tekenreeks|    onjuist|    De alternatieve naam van de eenheid. |
-|`nameSubtitle`|    tekenreeks    |onjuist|    Subtitel van de eenheid. |
-|`addressRoomNumber`|    tekenreeks|    onjuist|    Kamer, eenheid, appartement of suite nummer van de eenheid.|
-|`verticalPenetrationCategory`|    tekenreeks|    onjuist| Als deze eigenschap is gedefinieerd, is de resulterende functie een verticale indringing (VRT) in plaats van een eenheid. U kunt VRTs gebruiken om naar andere VRT-functies te gaan in de bovenstaande niveaus. Verticale indringing is een [categorie](https://aka.ms/pa-indoor-spacecategories) naam. Als deze eigenschap is gedefinieerd, `categoryName` wordt de eigenschap overschreven door `verticalPenetrationCategory` . |
-|`verticalPenetrationDirection`|    tekenreeks|    onjuist    |Als `verticalPenetrationCategory` is gedefinieerd, definieert u eventueel de geldige reis richting. De toegestane waarden zijn: `lowToHigh` , `highToLow` , en `both` `closed` . De standaardwaarde is `both`.|
-| `nonPublic` | booleaans | onjuist | Hiermee wordt aangegeven of de eenheid open is voor het publiek. |
-| `isRoutable` | booleaans | onjuist | Als deze eigenschap is ingesteld op `false` , kunt u niet naar of door de eenheid gaan. De standaardwaarde is `true`. |
-| `isOpenArea` | booleaans | onjuist | Hiermee kan de navigatie agent de eenheid invoeren zonder dat er een openings koppeling met de eenheid nodig is. Deze waarde is standaard ingesteld op `true` voor eenheden zonder openingen en `false` voor eenheden met openingen. Hand matig `isOpenArea` instellen `false` op een eenheid zonder openingen resulteert in een waarschuwing. Dit komt doordat de resulterende eenheid niet bereikbaar is voor een navigatie agent.|
+|`categoryName`|    tekenreeks|    false    |Categorie naam. Raadpleeg de [categorie](https://aka.ms/pa-indoor-spacecategories)voor een volledige lijst met categorieën. |
+|`navigableBy`| tekenreeksmatrix |    false    |Hiermee worden de typen navigatie agenten aangegeven die de eenheid kunnen passeren. Deze eigenschap informeert de wayfinding-mogelijkheden. De toegestane waarden zijn: `pedestrian` , `wheelchair` , `machine` , `bicycle` , `automobile` , `hiredAuto` , `bus` , `railcar` , `emergency` , `ferry` , `boat` en `disallowed` .|
+|`routeThroughBehavior`|    tekenreeks|    false    |Het gedrag van de route voor de eenheid. De toegestane waarden zijn `disallowed` , `allowed` en `preferred` . De standaardwaarde is `allowed`.|
+|`occupants`    |matrix van directoryInfo-objecten |false    |De lijst met inzittenden voor de eenheid. |
+|`nameAlt`|    tekenreeks|    false|    De alternatieve naam van de eenheid. |
+|`nameSubtitle`|    tekenreeks    |false|    Subtitel van de eenheid. |
+|`addressRoomNumber`|    tekenreeks|    false|    Kamer, eenheid, appartement of suite nummer van de eenheid.|
+|`verticalPenetrationCategory`|    tekenreeks|    false| Als deze eigenschap is gedefinieerd, is de resulterende functie een verticale indringing (VRT) in plaats van een eenheid. U kunt VRTs gebruiken om naar andere VRT-functies te gaan in de bovenstaande niveaus. Verticale indringing is een [categorie](https://aka.ms/pa-indoor-spacecategories) naam. Als deze eigenschap is gedefinieerd, `categoryName` wordt de eigenschap overschreven door `verticalPenetrationCategory` . |
+|`verticalPenetrationDirection`|    tekenreeks|    false    |Als `verticalPenetrationCategory` is gedefinieerd, definieert u eventueel de geldige reis richting. De toegestane waarden zijn: `lowToHigh` , `highToLow` , en `both` `closed` . De standaardwaarde is `both`.|
+| `nonPublic` | booleaans | false | Hiermee wordt aangegeven of de eenheid open is voor het publiek. |
+| `isRoutable` | booleaans | false | Als deze eigenschap is ingesteld op `false` , kunt u niet naar of door de eenheid gaan. De standaardwaarde is `true`. |
+| `isOpenArea` | booleaans | false | Hiermee kan de navigatie agent de eenheid invoeren zonder dat er een openings koppeling met de eenheid nodig is. Deze waarde is standaard ingesteld op `true` voor eenheden zonder openingen en `false` voor eenheden met openingen. Hand matig `isOpenArea` instellen `false` op een eenheid zonder openingen resulteert in een waarschuwing. Dit komt doordat de resulterende eenheid niet bereikbaar is voor een navigatie agent.|
 
 ### `zoneProperties`
 
@@ -264,10 +264,10 @@ Het `zoneProperties` object bevat een JSON-matrix met zone-eigenschappen.
 | Eigenschap  | Type | Vereist | Beschrijving |
 |-----------|------|----------|-------------|
 |zone naam        |tekenreeks    |true    |De naam van de zone die aan de record moet worden gekoppeld `zoneProperty` . Deze record is alleen geldig wanneer een label overeenkomst `zoneName` wordt gevonden in de `zoneLabel` laag van de zone.  |
-|categoryName|    tekenreeks|    onjuist    |Categorie naam. Raadpleeg de [categorie](https://aka.ms/pa-indoor-spacecategories)voor een volledige lijst met categorieën. |
-|zoneNameAlt|    tekenreeks|    onjuist    |Alternatieve naam van de zone.  |
-|zoneNameSubtitle|    tekenreeks |    onjuist    |Ondertitel van de zone. |
-|zoneSetId|    tekenreeks |    onjuist    | Stel ID in om een relatie tussen meerdere zones tot stand te brengen, zodat deze kunnen worden opgevraagd of als groep kan worden geselecteerd. Bijvoorbeeld zones die meerdere niveaus beslaan. |
+|categoryName|    tekenreeks|    false    |Categorie naam. Raadpleeg de [categorie](https://aka.ms/pa-indoor-spacecategories)voor een volledige lijst met categorieën. |
+|zoneNameAlt|    tekenreeks|    false    |Alternatieve naam van de zone.  |
+|zoneNameSubtitle|    tekenreeks |    false    |Ondertitel van de zone. |
+|zoneSetId|    tekenreeks |    false    | Stel ID in om een relatie tussen meerdere zones tot stand te brengen, zodat deze kunnen worden opgevraagd of als groep kan worden geselecteerd. Bijvoorbeeld zones die meerdere niveaus beslaan. |
 
 ### <a name="sample-drawing-package-manifest"></a>Voor beeld van teken pakket manifest
 
@@ -404,7 +404,7 @@ Hier volgt een voor beeld van een manifest bestand voor het voorbeeld teken pakk
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als uw teken pakket aan de vereisten voldoet, kunt u de [Azure Maps conversie service](https://docs.microsoft.com/rest/api/maps/conversion) gebruiken om het pakket te converteren naar een kaart gegevensset. Vervolgens kunt u de gegevensset gebruiken om een binnenste kaart te genereren met behulp van de module kaarten.
+Als uw teken pakket aan de vereisten voldoet, kunt u de [Azure Maps conversie service](/rest/api/maps/conversion) gebruiken om het pakket te converteren naar een kaart gegevensset. Vervolgens kunt u de gegevensset gebruiken om een binnenste kaart te genereren met behulp van de module kaarten.
 
 > [!div class="nextstepaction"]
 >[Maker voor kaarten in de binnenste](creator-indoor-maps.md)

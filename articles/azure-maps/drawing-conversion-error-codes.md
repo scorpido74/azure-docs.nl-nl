@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 14cf5238d29ede1ea229604316eee875b417e50e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04a43e3e2fa9ad77e11f82ff38a144a1de3add78
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361531"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895933"
 ---
 # <a name="drawing-conversion-errors-and-warnings"></a>Fouten en waarschuwingen over tekenconversies
 
-Met de [Azure Maps conversie service](https://docs.microsoft.com/rest/api/maps/conversion) kunt u geüploade teken pakketten naar kaart gegevens converteren. Teken pakketten moeten voldoen aan de vereisten voor het [teken pakket](drawing-requirements.md). Als er niet aan een of meer vereisten wordt voldaan, worden er fouten of waarschuwingen door de conversie service geretourneerd. In dit artikel vindt u een overzicht van de conversie fout-en waarschuwings codes, met aanbevelingen voor het oplossen ervan. Het bevat ook enkele voor beelden van tekeningen die ertoe kunnen leiden dat de conversie service deze codes retourneert.
+Met de [Azure Maps conversie service](/rest/api/maps/conversion) kunt u geüploade teken pakketten naar kaart gegevens converteren. Teken pakketten moeten voldoen aan de vereisten voor het [teken pakket](drawing-requirements.md). Als er niet aan een of meer vereisten wordt voldaan, worden er fouten of waarschuwingen door de conversie service geretourneerd. In dit artikel vindt u een overzicht van de conversie fout-en waarschuwings codes, met aanbevelingen voor het oplossen ervan. Het bevat ook enkele voor beelden van tekeningen die ertoe kunnen leiden dat de conversie service deze codes retourneert.
 
 De conversie service wordt uitgevoerd als er conversie waarschuwingen zijn. Het is echter raadzaam om alle waarschuwingen te controleren en op te lossen. Er wordt een waarschuwing gegeven dat een deel van de conversie wordt genegeerd of automatisch is opgelost. Als u de waarschuwingen niet oplost, kan dit leiden tot fouten in de laatste processen.
 
@@ -159,7 +159,7 @@ De waarschuwing **redundantAttribution** treedt op wanneer het manifest redundan
 
 #### <a name="how-to-fix-redundantattribution"></a>*RedundantAttribution oplossen*
 
-Verwijder redundante of conflicterende object eigenschappen om een **redundantAttribution* waarschuwing te herstellen.
+Verwijder redundante of conflicterende object eigenschappen om een * *redundantAttribution* waarschuwing te herstellen.
 
 ### <a name="manifestwarning"></a>**manifestWarning**
 
@@ -175,7 +175,7 @@ Een **manifestWarning** treedt op wanneer het manifest unitProperties-of zonePro
 
 #### <a name="how-to-fix-manifestwarning"></a>*ManifestWarning oplossen*
 
-Als u een **manifestWarning**wilt herstellen, verwijdert u het ongebruikte `unitProperties` of `zoneProperties` object uit het manifest of voegt u een eenheid/zone label aan de tekening toe, zodat het object Properties wordt gebruikt tijdens de conversie.
+Als u een **manifestWarning** wilt herstellen, verwijdert u het ongebruikte `unitProperties` of `zoneProperties` object uit het manifest of voegt u een eenheid/zone label aan de tekening toe, zodat het object Properties wordt gebruikt tijdens de conversie.
 
 ## <a name="wall-warnings"></a>Wand waarschuwingen
 
@@ -267,7 +267,7 @@ In de volgende afbeelding ziet u een zone die geen label bevat.
 
 #### <a name="how-to-fix-zonewarning"></a>*ZoneWarning oplossen*
 
-Als u een **zoneWarning**wilt herstellen, controleert u of elke zone één label heeft.
+Als u een **zoneWarning** wilt herstellen, controleert u of elke zone één label heeft.
 
 ## <a name="label-warnings"></a>Label waarschuwingen
 
@@ -291,7 +291,7 @@ In de volgende afbeelding ziet u een label dat binnen twee zones wordt weer gege
 
 #### <a name="how-to-fix-labelwarning"></a>*LabelWarning oplossen*
 
-Als u een **labelWarning**wilt herstellen, moet u het volgende doen:
+Als u een **labelWarning** wilt herstellen, moet u het volgende doen:
 
 * Alle labels voor eenheden bevinden zich binnen eenheden.
 * Alle zone-labels bevinden zich in zones.
@@ -311,7 +311,7 @@ Er wordt ook een **invalidArchiveFormat** -fout gegenereerd als het zip-archief 
 
 Als u een **invalidArchiveFormat** -fout wilt oplossen, controleert u het volgende:
 
-* De naam van het archief bestand eindigt op _. zip_.
+* De naam van het archief bestand eindigt op _. zip_ .
 * Uw ZIP-archief bevat gegevens.
 * U kunt uw ZIP-archief openen.
 
@@ -347,7 +347,7 @@ De **dwgError** treedt op wanneer het teken pakket een DWG-bestand bevat dat nie
 
 #### <a name="how-to-fix-dwgerror"></a>*DwgError oplossen*
 
-Als u een **dwgError**wilt herstellen, controleert u uw _manifest.jsop_ het volgende bestand:
+Als u een **dwgError** wilt herstellen, controleert u uw _manifest.jsop_ het volgende bestand:
 
 * Alle DWG-bestanden in uw ZIP-archief zijn geldige tekeningen van AutoCAD DWG-indeling. open er een in AutoCAD. Alle ongeldige tekeningen verwijderen of herstellen.
 * De lijst met DWG-bestanden in de _manifest.jsop_  komt overeen met de DWG-bestanden in het zip-archief.
@@ -370,7 +370,7 @@ Als u een **invalidJsonFormat** -fout wilt oplossen, gebruikt u een JSON-lint om
 
 #### <a name="description-for-missingrequiredfield"></a>*Beschrijving voor missingRequiredField*
 
-Er treedt een **missingRequiredField** -fout op wanneer de vereiste gegevens _ voor demanifest.jsin_ het bestand ontbreken.
+Er treedt een **missingRequiredField** -fout op wanneer de vereiste gegevens _voor demanifest.jsin_ het bestand ontbreken.
 
 #### <a name="how-to-fix-missingrequiredfield"></a>*MissingRequiredField oplossen*
 

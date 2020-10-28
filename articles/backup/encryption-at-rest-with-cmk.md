@@ -3,12 +3,12 @@ title: Versleuteling van back-upgegevens met door de klant beheerde sleutels
 description: Meer informatie over hoe u met Azure Backup uw back-upgegevens kunt versleutelen met behulp van door de klant beheerde sleutels (CMK).
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 5c0bddc6cdb8ec150a031541ced1abf1ebfb6f0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e3eea4b5f44203b68c1263c0fb3ae843cabbe72
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378284"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895984"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Versleuteling van back-upgegevens met door de klant beheerde sleutels
 
@@ -25,15 +25,15 @@ In dit artikel komen de volgende onderwerpen aan bod:
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-- Met deze functie kunt u **alleen nieuwe Recovery Services kluizen**versleutelen. Kluizen die bestaande items bevatten die zijn geregistreerd of proberen te worden geregistreerd, worden niet ondersteund.
+- Met deze functie kunt u **alleen nieuwe Recovery Services kluizen** versleutelen. Kluizen die bestaande items bevatten die zijn geregistreerd of proberen te worden geregistreerd, worden niet ondersteund.
 
 - Wanneer een Recovery Services kluis is ingeschakeld, kan de versleuteling met door de klant beheerde sleutels niet worden teruggedraaid naar het gebruik van door het platform beheerde sleutels (standaard). U kunt de versleutelings sleutels wijzigen volgens uw vereisten.
 
-- Deze functie **biedt momenteel geen ondersteuning voor het maken van back-ups met Mars agent**en u kunt mogelijk geen met CMK versleutelde kluis gebruiken. De MARS-agent maakt gebruik van een code ring op basis van een wachtwoordzin. Deze functie biedt ook geen ondersteuning voor het maken van back-ups van klassieke virtuele machines.
+- Deze functie **biedt momenteel geen ondersteuning voor het maken van back-ups met Mars agent** en u kunt mogelijk geen met CMK versleutelde kluis gebruiken. De MARS-agent maakt gebruik van een code ring op basis van een wachtwoordzin. Deze functie biedt ook geen ondersteuning voor het maken van back-ups van klassieke virtuele machines.
 
 - Deze functie is niet gerelateerd aan [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md), die gebruikmaakt van versleuteling op basis van een gast van de schijven van een virtuele machine met behulp van BitLocker (voor Windows) en DM-Crypt (voor Linux)
 
-- De Recovery Services kluis kan alleen worden versleuteld met sleutels die zijn opgeslagen in een Azure Key Vault, die zich in **dezelfde regio**bevinden. Daarnaast moeten sleutels alleen **RSA 2048-sleutels** zijn en de status **ingeschakeld** hebben.
+- De Recovery Services kluis kan alleen worden versleuteld met sleutels die zijn opgeslagen in een Azure Key Vault, die zich in **dezelfde regio** bevinden. Daarnaast moeten sleutels alleen **RSA 2048-sleutels** zijn en de status **ingeschakeld** hebben.
 
 - Het verplaatsen van CMK versleutelde Recovery Services kluis over resource groepen en abonnementen wordt momenteel niet ondersteund.
 
@@ -66,7 +66,7 @@ Azure Backup maakt gebruik van door het systeem toegewezen beheerde identiteit o
 
     ![Identiteits instellingen](./media/encryption-at-rest-with-cmk/managed-identity.png)
 
-1. Wijzig de **status** in **op aan** en selecteer **Opslaan**.
+1. Wijzig de **status** in **op aan** en selecteer **Opslaan** .
 
 1. Er wordt een object-ID gegenereerd. Dit is de door het systeem toegewezen beheerde identiteit van de kluis.
 
@@ -74,11 +74,11 @@ Azure Backup maakt gebruik van door het systeem toegewezen beheerde identiteit o
 
 U moet nu toestaan dat de Recovery Services kluis toegang heeft tot de Azure Key Vault die de versleutelings sleutel bevat. Dit wordt gedaan door de beheerde identiteit van de Recovery Services kluis toegang te geven tot de Key Vault.
 
-1. Ga naar uw Azure Key Vault-> **toegangs beleid**. Ga door naar **+ toegangs beleid toevoegen**.
+1. Ga naar uw Azure Key Vault-> **toegangs beleid** . Ga door naar **+ toegangs beleid toevoegen** .
 
     ![Toegangs beleid toevoegen](./media/encryption-at-rest-with-cmk/access-policies.png)
 
-1. Selecteer onder **sleutel machtigingen** **ophalen**, **lijst**, **uitpakken van sleutel** en **ingepakte sleutel** bewerkingen. Hiermee geeft u de acties op de sleutel die wordt toegestaan.
+1. Selecteer onder **sleutel machtigingen** **ophalen** , **lijst** , **uitpakken van sleutel** en **ingepakte sleutel** bewerkingen. Hiermee geeft u de acties op de sleutel die wordt toegestaan.
 
     ![Sleutel machtigingen toewijzen](./media/encryption-at-rest-with-cmk/key-permissions.png)
 
@@ -94,7 +94,7 @@ U moet nu toestaan dat de Recovery Services kluis toegang heeft tot de Azure Key
 
 U moet **voorlopig verwijderen en beveiliging opschonen inschakelen** op uw Azure Key Vault waarin uw versleutelings sleutel wordt opgeslagen. U kunt dit doen vanuit de Azure Key Vault-gebruikers interface, zoals hieronder wordt weer gegeven. (U kunt deze eigenschappen ook instellen tijdens het maken van de Key Vault). Meer informatie over deze Key Vault eigenschappen [vindt u hier](../key-vault/general/soft-delete-overview.md).
 
-![Voorlopig verwijderen en beveiliging opschonen inschakelen](./media/encryption-at-rest-with-cmk/soft-delete-purge-protection.png)
+![Voorlopig verwijderen en opschonen beschermen inschakelen](./media/encryption-at-rest-with-cmk/soft-delete-purge-protection.png)
 
 U kunt met behulp van de volgende stappen ook de beveiliging van zacht verwijderen en leegmaken via Power shell inschakelen:
 
@@ -148,7 +148,7 @@ De sleutel toewijzen:
 
     ![Versleutelingsinstellingen](./media/encryption-at-rest-with-cmk/encryption-settings.png)
 
-1. Selecteer **Update** onder **versleutelings instellingen**.
+1. Selecteer **Update** onder **versleutelings instellingen** .
 
 1. Selecteer in het deel venster versleutelings instellingen de optie **uw eigen sleutel gebruiken** en ga door met het opgeven van de sleutel op een van de volgende manieren. **Zorg ervoor dat de sleutel die u wilt gebruiken een RSA 2048-sleutel is die de status ingeschakeld heeft.**
 
@@ -160,9 +160,9 @@ De sleutel toewijzen:
 
         ![Selecteer een sleutel in de sleutel kluis](./media/encryption-at-rest-with-cmk/key-vault.png)
 
-1. Selecteer **Opslaan**.
+1. Selecteer **Opslaan** .
 
-1. **Voortgang van de update van de versleutelings sleutel bijhouden:** U kunt de voortgang van de sleutel toewijzing volgen met behulp van het **activiteiten logboek** in de Recovery Services kluis. De status moet binnenkort worden gewijzigd in **geslaagd**. In uw kluis worden nu alle gegevens met de opgegeven sleutel als KEK versleuteld.
+1. **Voortgang van de update van de versleutelings sleutel bijhouden:** U kunt de voortgang van de sleutel toewijzing volgen met behulp van het **activiteiten logboek** in de Recovery Services kluis. De status moet binnenkort worden gewijzigd in **geslaagd** . In uw kluis worden nu alle gegevens met de opgegeven sleutel als KEK versleuteld.
 
     ![De voortgang bijhouden met het activiteiten logboek](./media/encryption-at-rest-with-cmk/activity-log.png)
 
@@ -184,7 +184,6 @@ Voordat u kunt door gaan met het configureren van de beveiliging, wordt u aanger
 >[!IMPORTANT]
 > Voordat u kunt door gaan met het configureren van de beveiliging, moet u de volgende **stappen hebben voltooid** :
 >
->1. Uw abonnement is ingeschakeld voor het gebruik van door de klant beheerde sleutels voor uw back-upkluis.
 >1. Uw back-upkluis gemaakt
 >1. De door het systeem toegewezen beheerde identiteit van de back-upkluis is ingeschakeld
 >1. De machtigingen voor de back-upkluis zijn toegewezen voor toegang tot de versleutelings sleutels van uw Key Vault
@@ -193,7 +192,7 @@ Voordat u kunt door gaan met het configureren van de beveiliging, wordt u aanger
 >
 >Als alle bovenstaande stappen zijn bevestigd, gaat u alleen verder met het configureren van back-up.
 
-Het proces voor het configureren en uitvoeren van back-ups op een Recovery Services kluis die is versleuteld met door de klant beheerde sleutels is hetzelfde als voor een kluis die door het platform beheerde sleutels gebruikt, zonder **wijzigingen in de ervaring**. Dit geldt voor [back-ups van virtuele Azure-machines](./quick-backup-vm-portal.md) en voor het maken van een back-up van werk belastingen die worden uitgevoerd in een virtuele machine (bijvoorbeeld [SAP Hana](./tutorial-backup-sap-hana-db.md), [SQL Server](./tutorial-sql-backup.md) data bases).
+Het proces voor het configureren en uitvoeren van back-ups op een Recovery Services kluis die is versleuteld met door de klant beheerde sleutels is hetzelfde als voor een kluis die door het platform beheerde sleutels gebruikt, zonder **wijzigingen in de ervaring** . Dit geldt voor [back-ups van virtuele Azure-machines](./quick-backup-vm-portal.md) en voor het maken van een back-up van werk belastingen die worden uitgevoerd in een virtuele machine (bijvoorbeeld [SAP Hana](./tutorial-backup-sap-hana-db.md), [SQL Server](./tutorial-sql-backup.md) data bases).
 
 ## <a name="restoring-data-from-backup"></a>Gegevens terugzetten vanuit een back-up
 
@@ -215,7 +214,7 @@ U kunt de herstelde schijf/VM versleutelen nadat de herstel bewerking is voltooi
 
 De schijf versleutelings set is opgegeven onder versleutelings instellingen in het deel venster herstellen, zoals hieronder wordt weer gegeven:
 
-1. Selecteer in de **schijf of schijven versleutelen met behulp van de sleutel** **Ja**.
+1. Selecteer in de **schijf of schijven versleutelen met behulp van de sleutel** **Ja** .
 
 1. Selecteer in de vervolg keuzelijst de DES die u wilt gebruiken voor de herstelde schijven. **Zorg ervoor dat u toegang hebt tot de DES.**
 

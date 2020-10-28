@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 360fc4af688e393bb8639ee773f0bf0de603a425
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69c5b9d15c0ba3c7c8b6b01643beac1905c404ad
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83598386"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895865"
 ---
 # <a name="creator-long-running-operation-api"></a>API voor Maker Long-Running-bewerking
 
-Sommige API'S in Azure Maps gebruiken een [asynchroon Request-Reply patroon](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply). Met dit patroon kan Azure Maps Maxi maal beschik bare en responsieve services bieden. In dit artikel wordt uitgelegd hoe u de specifieke implementatie van langlopende asynchrone achtergrond verwerking van Azure-kaarten uitvoert.
+Sommige API'S in Azure Maps gebruiken een [asynchroon Request-Reply patroon](/azure/architecture/patterns/async-request-reply). Met dit patroon kan Azure Maps Maxi maal beschik bare en responsieve services bieden. In dit artikel wordt uitgelegd hoe u de specifieke implementatie van langlopende asynchrone achtergrond verwerking van Azure-kaarten uitvoert.
 
 ## <a name="submitting-a-request"></a>Een aanvraag verzenden
 
