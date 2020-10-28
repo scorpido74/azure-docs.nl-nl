@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/15/2020
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 823f5f90bc1a72b1df87ee21e37cf39fed0b2340
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 452259015cf78234aa6a96194342de20db9a3724
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486154"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740887"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db---sql-api"></a>Automatisch schalen door Voer in te richten op Data Base of container in Azure Cosmos DB-SQL-API
 
@@ -29,11 +29,11 @@ Als u een andere API gebruikt, raadpleegt u [API voor MongoDb](how-to-provision-
 
 1. Navigeer naar uw Azure Cosmos DB-account en open het tabblad **Data Explorer** .
 
-1. Selecteer **nieuwe container.** Voer een naam in voor uw data base, container en partitie sleutel. Selecteer onder **door Voer**de optie voor **automatisch schalen** en stel de [maximale door Voer (ru/s)](provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works) in waarvan u wilt dat de data base of container moet worden geschaald.
+1. Selecteer **nieuwe container.** Voer een naam in voor uw data base, container en partitie sleutel. Selecteer onder **door Voer** de optie voor **automatisch schalen** en stel de [maximale door Voer (ru/s)](provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works) in waarvan u wilt dat de data base of container moet worden geschaald.
 
    :::image type="content" source="./media/how-to-provision-autoscale-throughput/create-new-autoscale-container.png" alt-text="Een container maken en door Voer ingericht voor automatisch schalen configureren":::
 
-1. Selecteer **OK**.
+1. Selecteer **OK** .
 
 Als u automatisch schalen wilt inrichten voor een gedeelde doorvoer database, selecteert u de optie **doorvoer database inrichten** bij het maken van een nieuwe data base. 
 
@@ -48,7 +48,7 @@ Als u automatisch schalen wilt inrichten voor een gedeelde doorvoer database, se
 
 1. Selecteer **schalen en instellingen** voor uw container, of **schaal** voor uw data base.
 
-1. Onder **schalen**selecteert u de optie voor **automatisch schalen** en **slaat**u deze op.
+1. Onder **schalen** selecteert u de optie voor **automatisch schalen** en **slaat** u deze op.
 
    :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="Een container maken en door Voer ingericht voor automatisch schalen configureren":::
 

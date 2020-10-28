@@ -5,13 +5,13 @@ ms.assetid: ac50a623-c4b8-4dfd-96b2-a09420770063
 ms.topic: article
 ms.date: 06/18/2019
 ms.reviewer: dariac
-ms.custom: seodec18
-ms.openlocfilehash: efe4c07a6231e0b2c95b049db056a4e5d055db98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 9650633e1eaffdb588b3a31cd5a2f305c36e7a25
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77152989"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741312"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Lokale Git-implementatie naar Azure App Service
 
@@ -100,26 +100,26 @@ Als uw account over de benodigde machtigingen beschikt, kunt u Azure-pijp lijnen
 
 Lokale Git-implementatie voor uw app inschakelen met Azure-pijp lijnen (preview):
 
-1. Zoek in het [Azure Portal](https://portal.azure.com)naar en selecteer **app Services**. 
+1. Zoek in het [Azure Portal](https://portal.azure.com)naar en selecteer **app Services** . 
 
 1. Selecteer uw Azure App Service-app en selecteer **implementatie centrum** in het menu links.
    
-1. Selecteer **lokale Git**op de pagina **implementatie centrum** en selecteer **door gaan**. 
+1. Selecteer **lokale Git** op de pagina **implementatie centrum** en selecteer **door gaan** . 
    
    ![Selecteer lokale Git en selecteer door gaan](media/app-service-deploy-local-git/portal-enable.png)
    
-1. Selecteer op de pagina **Build** -provider **Azure-pijp lijnen (preview)** en selecteer vervolgens **door gaan**. 
+1. Selecteer op de pagina **Build** -provider **Azure-pijp lijnen (preview)** en selecteer vervolgens **door gaan** . 
    
    ![Selecteer Azure-pijp lijnen (preview) en selecteer vervolgens door gaan.](media/app-service-deploy-local-git/pipeline-builds.png)
 
-1. Configureer op de pagina **configureren** een nieuwe Azure DevOps-organisatie of geef een bestaande organisatie op en selecteer **door gaan**.
+1. Configureer op de pagina **configureren** een nieuwe Azure DevOps-organisatie of geef een bestaande organisatie op en selecteer **door gaan** .
    
    > [!NOTE]
    > Als uw bestaande Azure DevOps-organisatie niet wordt weer gegeven, moet u deze mogelijk koppelen aan uw Azure-abonnement. Zie [uw CD release-pijp lijn definiëren](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps#cd)voor meer informatie.
    
-1. Afhankelijk van de [prijs categorie](https://azure.microsoft.com/pricing/details/app-service/plans/)van uw app service-abonnement, ziet u mogelijk de pagina **implementeren naar staging** . Kies of u [implementatie sleuven wilt inschakelen](deploy-staging-slots.md)en selecteer **door gaan**.
+1. Afhankelijk van de [prijs categorie](https://azure.microsoft.com/pricing/details/app-service/plans/)van uw app service-abonnement, ziet u mogelijk de pagina **implementeren naar staging** . Kies of u [implementatie sleuven wilt inschakelen](deploy-staging-slots.md)en selecteer **door gaan** .
    
-1. Controleer de instellingen op de pagina **samen vatting** en selecteer vervolgens **volt ooien**.
+1. Controleer de instellingen op de pagina **samen vatting** en selecteer vervolgens **volt ooien** .
    
 1. Wanneer de Azure-pijp lijn gereed is, kopieert u de URL van de Git-opslag plaats vanaf de pagina **Deployment Center** , zodat u deze kunt gebruiken in de volgende stap. 
    
@@ -152,7 +152,7 @@ Mogelijk worden de volgende veelvoorkomende fout berichten weer geven wanneer u 
 |`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`|U hebt geen vertakking opgegeven tijdens `git push` of u hebt geen waarde ingesteld `push.default` in `.gitconfig` .|Voer `git push` opnieuw uit en geef de hoofd vertakking op: `git push azure master` .|
 |`src refspec [branchname] does not match any.`|U hebt geprobeerd naar een andere vertakking dan Master te pushen op de externe Azure-server.|Voer `git push` opnieuw uit en geef de hoofd vertakking op: `git push azure master` .|
 |`RPC failed; result=22, HTTP code = 5xx.`|Deze fout kan optreden als u probeert een grote Git-opslag plaats via HTTPS te pushen.|Wijzig de Git-configuratie op de lokale computer zodat deze `postBuffer` groter wordt. Bijvoorbeeld: `git config --global http.postBuffer 524288000`.|
-|`Error - Changes committed to remote repository but your web app not updated.`|U hebt een Node.js-app geïmplementeerd met een _package.jsin_ een bestand dat aanvullende vereiste modules bevat.|Bekijk de `npm ERR!` fout berichten vóór deze fout voor meer context over de fout. Hieronder vindt u de bekende oorzaken van deze fout en de bijbehorende `npm ERR!` berichten:<br /><br />**Onjuist gevormd package.jsbestand**: `npm ERR! Couldn't read dependencies.`<br /><br />**Systeem eigen module heeft geen binaire distributie voor Windows**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />of <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
+|`Error - Changes committed to remote repository but your web app not updated.`|U hebt een Node.js-app geïmplementeerd met een _package.jsin_ een bestand dat aanvullende vereiste modules bevat.|Bekijk de `npm ERR!` fout berichten vóór deze fout voor meer context over de fout. Hieronder vindt u de bekende oorzaken van deze fout en de bijbehorende `npm ERR!` berichten:<br /><br />**Onjuist gevormd package.jsbestand** : `npm ERR! Couldn't read dependencies.`<br /><br />**Systeem eigen module heeft geen binaire distributie voor Windows** :<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />of <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 

@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 08/20/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: a1bd93931f8a94f598952b28fc3db23d33e5783f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 195c334500c8c540d819e949353b34bea65b3d4f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329768"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741908"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Gegevens verplaatsen naar en tussen ML-pijplijnstappen (Python)
 
@@ -101,6 +101,9 @@ train_step = PythonScriptStep(
 )
 ```
 
+> [!NOTE]
+> U moet de waarden voor al deze argumenten (,,, `"train_data"` en) vervangen door `"train.py"` `cluster` `iris_dataset` uw eigen gegevens. Het bovenstaande code fragment toont alleen de vorm van de oproep en maakt geen deel uit van een micro soft-voor beeld. 
+
 U kunt ook methoden als gebruiken `random_split()` `take_sample()` om meerdere invoer te maken of de hoeveelheid gegevens te verminderen die worden door gegeven aan de pijplijn stap:
 
 ```python
@@ -150,6 +153,9 @@ ws = run.experiment.workspace
 ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 ```
 
+> [!NOTE]
+> De voor gaande fragmenten tonen de vorm van de aanroepen en maken geen deel uit van een micro soft-voor beeld. U moet de verschillende argumenten vervangen door waarden uit uw eigen project.
+
 ## <a name="use-pipelinedata-for-intermediate-data"></a>Gebruiken `PipelineData` voor tussenliggende gegevens
 
 Hoewel `Dataset` objecten persistente gegevens vertegenwoordigen, worden [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true) -objecten gebruikt voor tijdelijke gegevens die worden uitgevoerd vanuit pijplijn stappen. Omdat de levens duur van een `PipelineData` object langer is dan één pijplijn stap, definieert u deze in het definitie script van de pijp lijn. Wanneer u een `PipelineData` -object maakt, moet u een naam en een gegevens opslag opgeven waarop de gegevens worden opgeslagen. Geef uw `PipelineData` object (en) aan uw `PythonScriptStep` objecten _door_ met behulp van de `arguments` `outputs` argumenten en:
@@ -175,6 +181,9 @@ U kunt ervoor kiezen om uw `PipelineData` object te maken met behulp van een toe
 ```python
 PipelineData("clean_data", datastore=def_blob_store, output_mode="upload", output_path_on_compute="clean_data_output/")
 ```
+
+> [!NOTE]
+> De voor gaande fragmenten tonen de vorm van de aanroepen en maken geen deel uit van een micro soft-voor beeld. U moet de verschillende argumenten vervangen door waarden uit uw eigen project.
 
 > [!TIP]
 > Een verbeterde ervaring voor het door geven van tussenliggende gegevens tussen pijplijn stappen is beschikbaar in de open bare preview-klasse [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) . `OutputFileDatasetConfig`Zie [een pijp lijn met twee stappen maken](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)voor een code voorbeeld.
@@ -226,6 +235,9 @@ pipeline = Pipeline(workspace=ws, steps=[step1, step2])
 ```
 
 De waarde van een `PipelineData` invoer is het pad naar de vorige uitvoer. 
+
+> [!NOTE]
+> De voor gaande fragmenten tonen de vorm van de aanroepen en maken geen deel uit van een micro soft-voor beeld. U moet de verschillende argumenten vervangen door waarden uit uw eigen project.
 
 > [!TIP]
 > Een verbeterde ervaring voor het door geven van tussenliggende gegevens tussen pijplijn stappen is beschikbaar in de open bare preview-klasse [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) . `OutputFileDatasetConfig`Zie [een pijp lijn met twee stappen maken](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)voor een code voorbeeld.

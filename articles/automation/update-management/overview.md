@@ -5,36 +5,23 @@ services: automation
 ms.subservice: update-management
 ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 217ccbcef28545710ea0875a318bcf5b4b555825
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: d26354d8c247f0839bb96564c4e004158743bd88
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677701"
+ms.locfileid: "92742207"
 ---
 # <a name="update-management-overview"></a>Overzicht van updatebeheer
 
 U kunt Updatebeheer in Azure Automation gebruiken om updates van besturings systemen te beheren voor uw Windows-en Linux-machines in azure, in on-premises omgevingen en in andere Cloud omgevingen. U kunt snel de status van beschik bare updates op alle agent computers beoordelen en het proces voor het installeren van vereiste updates voor servers beheren.
 
-U kunt Updatebeheer voor virtuele machines op de volgende manieren inschakelen:
-
-- Van uw [Azure Automation-account](enable-from-automation-account.md) voor een of meer Azure-en niet-Azure-machines.
-
-- Hand matig voor niet-Azure-machines, waaronder computers of servers die zijn geregistreerd bij [servers met Azure Arc](../../azure-arc/servers/overview.md).
-
-- Voor één Azure-VM vanaf de [pagina virtuele machine](enable-from-vm.md) in het Azure Portal. Dit scenario is beschikbaar voor Linux-en Windows-Vm's.
-
-- Voor [meerdere virtuele Azure-machines](enable-from-portal.md) door ze te selecteren op de pagina virtual machines in de Azure Portal.
-
-> [!NOTE]
-> Updatebeheer moet een Log Analytics-werk ruimte koppelen aan uw Automation-account. Zie [Azure Workspace-toewijzingen](../how-to/region-mappings.md)voor een definitieve lijst met ondersteunde regio's. De regio toewijzingen hebben geen invloed op de mogelijkheid om Vm's te beheren in een andere regio dan uw Automation-account.
-
-Een [Azure Resource Manager sjabloon](enable-from-template.md) is beschikbaar om u te helpen de updatebeheer-functie in te scha kelen in een nieuw of bestaand Automation-account en log Analytics werk ruimte in uw abonnement. Hiermee worden geen Azure-of niet-Azure Vm's met de functie ingeschakeld. deze stap wordt vervolgens uitgevoerd met een van de hierboven vermelde methoden.
-
 > [!NOTE]
 > U kunt een computer die is geconfigureerd met Updatebeheer niet gebruiken om aangepaste scripts uit Azure Automation uit te voeren. Op deze computer kan alleen het door micro soft ondertekende update script worden uitgevoerd.
 
 Als u de beschik bare *essentiële* en *beveiligings* patches automatisch op uw Azure-VM wilt downloaden en installeren, controleert u [automatische VM-gast patches](../../virtual-machines/windows/automatic-vm-guest-patching.md) voor Windows-vm's.
+
+Voordat u Updatebeheer implementeert en uw machines voor beheer inschakelt, moet u de informatie in de volgende secties begrijpen.  
 
 ## <a name="about-update-management"></a>Over Updatebeheer
 
@@ -44,6 +31,7 @@ Computers die worden beheerd door Updatebeheer gebruiken de volgende configurati
 * PowerShell Desired State Configuration (DSC) voor Linux
 * Automation Hybrid Runbook Worker
 * Microsoft Update of Windows Server Update Services (WSUS) voor Windows-computers
+* Een privé-of open bare update opslagplaats voor Linux-machines
 
 In het volgende diagram ziet u hoe Updatebeheer beveiligings updates evalueert en toepast op alle verbonden Windows Server-en Linux-servers in een werk ruimte:
 
@@ -79,7 +67,7 @@ Het is niet mogelijk om een computer te registreren voor Updatebeheer in meer da
 De volgende tabel geeft een lijst van de ondersteunde besturings systemen voor update-evaluaties en patches. Voor patching is een Hybrid Runbook Worker vereist. Zie een [Windows-Hybrid Runbook worker implementeren](../automation-windows-hrw-install.md) en een [Linux-Hybrid Runbook worker implementeren](../automation-linux-hrw-install.md)voor meer informatie over Hybrid Runbook worker vereisten.
 
 > [!NOTE]
-> Update-evaluatie van Linux-machines wordt alleen ondersteund in bepaalde regio's, zoals vermeld in het Automation-account en de tabel Log Analytics werkruimte [toewijzingen](../how-to/region-mappings.md#supported-mappings). 
+> Update-evaluatie van Linux-machines wordt alleen ondersteund in bepaalde regio's, zoals vermeld in het Automation-account en de tabel Log Analytics werkruimte [toewijzingen](../how-to/region-mappings.md#supported-mappings).
 
 |Besturingssysteem  |Opmerkingen  |
 |---------|---------|
@@ -109,7 +97,7 @@ De volgende informatie beschrijft specifieke client vereisten voor het besturing
 
 #### <a name="windows"></a>Windows
 
-Windows-agents moeten worden geconfigureerd om te communiceren met een WSUS-server of moeten toegang hebben tot Microsoft Update. Zie [Windows-computers verbinden met Azure monitor](../../azure-monitor/platform/agent-windows.md)voor meer informatie over het installeren van de log Analytics-agent voor Windows. Voor hybride computers raden wij u aan om de Log Analytics-agent voor Windows te installeren door eerst uw computer te verbinden met [servers met Azure-Arc](../../azure-arc/servers/overview.md)en vervolgens Azure Policy te gebruiken om de implementatie van [log Analytics agent toe te wijzen aan](../../governance/policy/samples/built-in-policies.md#monitoring) het ingebouwde beleid van Windows Azure Arc-machines. Als u ook van plan bent om de machines met Azure Monitor voor VM's te controleren, gebruikt u in plaats daarvan het [Azure monitor voor VM's](../../governance/policy/samples/built-in-initiatives.md#monitoring) -initiatief.
+Windows-agents moeten worden geconfigureerd om te communiceren met een WSUS-server of moeten toegang hebben tot Microsoft Update. Zie [log Analytics agent Overview](../../azure-monitor/platform/log-analytics-agent.md)(Engelstalig) voor meer informatie over de log Analytics-agent. Voor hybride computers raden wij u aan om de Log Analytics-agent voor Windows te installeren door eerst uw computer te verbinden met [servers met Azure-Arc](../../azure-arc/servers/overview.md)en vervolgens Azure Policy te gebruiken om de implementatie van [log Analytics agent toe te wijzen aan](../../governance/policy/samples/built-in-policies.md#monitoring) het ingebouwde beleid van Windows Azure Arc-machines. Als u ook van plan bent om de machines met Azure Monitor voor VM's te controleren, gebruikt u in plaats daarvan het [Azure monitor voor VM's](../../governance/policy/samples/built-in-initiatives.md#monitoring) -initiatief.
 
 U kunt Updatebeheer gebruiken met micro soft endpoint Configuration Manager. Zie [updatebeheer integreren met Windows-eind punt Configuration Manager](mecmintegration.md)voor meer informatie over integratie scenario's. De [log Analytics-agent voor Windows](../../azure-monitor/platform/agent-windows.md) is vereist voor Windows-servers die worden beheerd door sites in uw Configuration Manager omgeving. 
 
@@ -125,7 +113,7 @@ Voor Linux moet de computer toegang hebben tot een update opslagplaats, ofwel pe
 > [!NOTE]
 > Update-evaluatie van Linux-machines wordt alleen ondersteund in bepaalde regio's. Zie het Automation-account en de tabel met Log Analytics werkruimte [toewijzingen](../how-to/region-mappings.md#supported-mappings).
 
-Zie [log Analytics agent voor Linux](../../azure-monitor/platform/agent-linux.md)voor meer informatie over het installeren van de log Analytics-agent voor Linux en het downloaden van de meest recente versie. Voor hybride computers raden wij u aan om de Log Analytics-agent voor Windows te installeren door eerst uw computer te verbinden met [servers met Azure-Arc](../../azure-arc/servers/overview.md)en vervolgens Azure Policy te gebruiken om de implementatie van [log Analytics agent toe te wijzen aan het ingebouwde beleid voor Linux Azure Arc-machines](../../governance/policy/samples/built-in-policies.md#monitoring) . Als u van plan bent om ook de machines met Azure Monitor voor VM's te bewaken, moet u in plaats daarvan het Azure Monitor voor VM's-initiatief [inschakelen](../../governance/policy/samples/built-in-initiatives.md#monitoring) .
+Zie [log Analytics agent Overview](../../azure-monitor/platform/log-analytics-agent.md)(Engelstalig) voor meer informatie over de log Analytics-agent. Voor hybride computers raden we u aan om de Log Analytics-agent voor Linux te installeren door eerst uw computer te verbinden met [servers met Azure-Arc](../../azure-arc/servers/overview.md)en vervolgens Azure Policy te gebruiken om de implementatie van [log Analytics agent toe te wijzen aan het ingebouwde beleid voor Linux Azure Arc-machines](../../governance/policy/samples/built-in-policies.md#monitoring) . Als u van plan bent om ook de machines met Azure Monitor voor VM's te bewaken, moet u in plaats daarvan het Azure Monitor voor VM's-initiatief [inschakelen](../../governance/policy/samples/built-in-initiatives.md#monitoring) .
 
 Vm's die zijn gemaakt op basis van de installatie kopieën op Red Hat Enterprise Linux aanvraag (RHEL) die beschikbaar zijn in azure Marketplace, worden geregistreerd voor toegang tot de [Red Hat Update infrastructure (RHUI)](../../virtual-machines/workloads/redhat/redhat-rhui.md) die is geïmplementeerd in Azure. Elke andere Linux-distributie moet worden bijgewerkt vanuit de online bestands opslagplaats van de distributie met behulp van methoden die worden ondersteund door de distributie.
 
@@ -206,7 +194,7 @@ Als uw IT-beveiligings beleid niet toestaat dat computers in het netwerk verbind
 
 ## <a name="update-classifications"></a>Updateclassificaties
 
-In de volgende tabel worden de classificaties gedefinieerd die Updatebeheer ondersteunt voor Windows-updates. 
+In de volgende tabel worden de classificaties gedefinieerd die Updatebeheer ondersteunt voor Windows-updates.
 
 |Classificatie  |Beschrijving  |
 |---------|---------|
@@ -253,14 +241,18 @@ Updatebeheer is afhankelijk van de lokaal geconfigureerde update opslagplaats om
 
 ## <a name="enable-update-management"></a>Updatebeheer inschakelen
 
-Een Azure [Resource Manager-sjabloon](enable-from-template.md) is beschikbaar om u te helpen bij het implementeren van updatebeheer op een nieuw of bestaand Automation-account en Azure monitor log Analytics werk ruimte in uw abonnement. Hiermee wordt niet het bereik geconfigureerd van machines die moeten worden beheerd. dit wordt uitgevoerd als een afzonderlijke stap na het gebruik van de sjabloon.
-
 Op de volgende manieren kunt u Updatebeheer inschakelen en computers selecteren die moeten worden beheerd:
 
-* [Van een virtuele Azure-machine](enable-from-vm.md)
-* [Van surfen op meerdere virtuele Azure-machines](enable-from-portal.md)
-* [Van een Azure Automation-account](enable-from-automation-account.md)
-* Voor Arc-servers (preview) of niet-Azure-machines installeert u de [log Analytics agent](../../azure-monitor/platform/log-analytics-agent.md) en [schakelt u vervolgens computers in de werk ruimte in](enable-from-automation-account.md#enable-machines-in-the-workspace) op updatebeheer.
+- Een Azure [Resource Manager-sjabloon](enable-from-template.md) gebruiken om updatebeheer te implementeren op een nieuw of bestaand Automation-account en Azure monitor log Analytics-werk ruimte in uw abonnement. Hiermee wordt niet het bereik geconfigureerd van machines die moeten worden beheerd. dit wordt uitgevoerd als een afzonderlijke stap na het gebruik van de sjabloon.
+
+- Van uw [Automation-account](enable-from-automation-account.md) voor een of meer Azure-en niet-Azure-machines, waaronder servers met Arc-functionaliteit.
+
+- Voor een [geselecteerde Azure VM](enable-from-vm.md) op de pagina virtuele machine in het Azure Portal. Dit scenario is beschikbaar voor Linux-en Windows-Vm's.
+
+- Voor [meerdere virtuele Azure-machines](enable-from-portal.md) door ze te selecteren op de pagina virtual machines in de Azure Portal.
+
+> [!NOTE]
+> Updatebeheer moet een Log Analytics-werk ruimte koppelen aan uw Automation-account. Zie [Azure Workspace-toewijzingen](../how-to/region-mappings.md)voor een definitieve lijst met ondersteunde regio's. De regio toewijzingen hebben geen invloed op de mogelijkheid om Vm's te beheren in een andere regio dan uw Automation-account.
 
 ## <a name="next-steps"></a>Volgende stappen
 

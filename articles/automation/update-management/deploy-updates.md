@@ -3,14 +3,14 @@ title: Update-implementaties voor Azure Automation maken Updatebeheer
 description: In dit artikel wordt beschreven hoe u update-implementaties plant en hoe u de status ervan controleert.
 services: automation
 ms.subservice: update-management
-ms.date: 10/26/2020
+ms.date: 10/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: d6594e1cdd7925a4287cf9edbfd5324b427338f4
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 41ccecfb844f11a0d234271bcddc1851d3c02fda
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637595"
+ms.locfileid: "92742284"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Updates implementeren en resultaten bekijken
 
@@ -75,9 +75,6 @@ Als u een nieuwe update-implementatie wilt plannen, voert u de volgende stappen 
 
    > [!NOTE]
    > U kunt geen updates opgeven die in de update-implementatie zijn vervangen.
-
-   > [!IMPORTANT]
-   > Voor Red Hat Enter prise worden kernel-upgrades ook weer gegeven als pakketten in YUM. Als u updates met kernel-upgrades niet uitsluit, worden deze updates door Updatebeheer toegepast.
 
 9. Selecteer **schema-instellingen** . De standaard begintijd is 30 minuten na de huidige tijd. U kunt de starttijd op elke gewenste tijd instellen, maar minstens 10 minuten na de huidige tijd.
 

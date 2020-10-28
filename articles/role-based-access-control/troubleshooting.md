@@ -14,13 +14,13 @@ ms.topic: troubleshooting
 ms.date: 09/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.custom: seohack1
-ms.openlocfilehash: 069c290de0278202b2e20d67f0ce792a0a79c345
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.custom: seohack1, devx-track-azurecli
+ms.openlocfilehash: 325931ea024221bc89df3b2e25f3e7844130f4dc
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368227"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741075"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Problemen met Azure RBAC oplossen
 
@@ -51,7 +51,7 @@ $ras.Count
 
 ## <a name="problems-with-azure-role-assignments"></a>Problemen met Azure-roltoewijzingen
 
-- Als u geen roltoewijzing kunt toevoegen in de Azure Portal op **toegangs beheer (IAM),** **omdat de**  >  optie**toewijzing van roltoewijzing** toevoegen is uitgeschakeld of omdat u de machtigingen fout ' de client met object-id heeft geen toestemming hebt om actie uit te voeren ', Controleer of u momenteel bent aangemeld met een gebruiker aan wie een rol is toegewezen die de machtiging heeft `Microsoft.Authorization/roleAssignments/write` , zoals [eigenaar](built-in-roles.md#owner) of [gebruikers toegangs beheerder](built-in-roles.md#user-access-administrator) in het bereik dat u probeert toe te wijzen aan de rol.
+- Als u geen roltoewijzing kunt toevoegen in de Azure Portal op **toegangs beheer (IAM),** **omdat de**  >  optie **toewijzing van roltoewijzing** toevoegen is uitgeschakeld of omdat u de machtigingen fout ' de client met object-id heeft geen toestemming hebt om actie uit te voeren ', Controleer of u momenteel bent aangemeld met een gebruiker aan wie een rol is toegewezen die de machtiging heeft `Microsoft.Authorization/roleAssignments/write` , zoals [eigenaar](built-in-roles.md#owner) of [gebruikers toegangs beheerder](built-in-roles.md#user-access-administrator) in het bereik dat u probeert toe te wijzen aan de rol.
 - Als u een Service-Principal gebruikt om rollen toe te wijzen, kunt u het volgende fout bericht krijgen: onvoldoende bevoegdheden om de bewerking te volt ooien. Stel bijvoorbeeld dat u een Service-Principal hebt waaraan de rol eigenaar is toegewezen en u probeert de volgende roltoewijzing te maken als service-principal met behulp van Azure CLI:
 
     ```azurecli
@@ -120,7 +120,7 @@ Als u onlangs een gebruiker hebt uitgenodigd bij het maken van een roltoewijzing
 
 Als deze beveiligingsprincipal echter geen recent uitgenodigde gebruiker is, is het mogelijk een verwijderde beveiligingsprincipal. Als u een rol toewijst aan een beveiligingsprincipal en vervolgens die beveiligingsprincipal verwijdert zonder eerst de roltoewijzing te verwijderen, wordt de beveiligingsprincipal vermeld als **identiteit niet gevonden** en een **onbekend** type.
 
-Als u deze roltoewijzing met Azure PowerShell vermeldt, ziet u mogelijk een lege `DisplayName` en een `ObjectType` ingesteld op **onbekend**. [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) retourneert bijvoorbeeld een roltoewijzing die vergelijkbaar is met de volgende uitvoer:
+Als u deze roltoewijzing met Azure PowerShell vermeldt, ziet u mogelijk een lege `DisplayName` en een `ObjectType` ingesteld op **onbekend** . [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) retourneert bijvoorbeeld een roltoewijzing die vergelijkbaar is met de volgende uitvoer:
 
 ```
 RoleAssignmentId   : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleAssignments/22222222-2222-2222-2222-222222222222
@@ -222,14 +222,14 @@ Net als web apps vereist sommige functies op de Blade van de virtuele machine sc
 
 Virtuele machines zijn gerelateerd aan domein namen, virtuele netwerken, opslag accounts en waarschuwings regels.
 
-Voor deze items is **Schrijf** toegang tot de **virtuele machine**vereist:
+Voor deze items is **Schrijf** toegang tot de **virtuele machine** vereist:
 
 * Eindpunten  
 * IP-adressen  
 * Disks  
 * Extensies  
 
-Hiervoor is **Schrijf** toegang vereist voor zowel de **virtuele machine**als de **resource groep** (samen met de domein naam) waarin deze zich bevindt:  
+Hiervoor is **Schrijf** toegang vereist voor zowel de **virtuele machine** als de **resource groep** (samen met de domein naam) waarin deze zich bevindt:  
 
 * Beschikbaarheidsset  
 * Set met gelijke taak verdeling  
@@ -239,7 +239,7 @@ Als u geen toegang hebt tot deze tegels, vraagt u uw beheerder om toegang tot de
 
 ## <a name="azure-functions-and-write-access"></a>Azure Functions en schrijf toegang
 
-Voor sommige functies van [Azure functions](../azure-functions/functions-overview.md) is schrijf toegang vereist. Als een gebruiker bijvoorbeeld de rol [lezer](built-in-roles.md#reader) krijgt toegewezen, kunnen ze de functies in een functie-app niet weer geven. De portal wordt weer gegeven **(geen toegang)**.
+Voor sommige functies van [Azure functions](../azure-functions/functions-overview.md) is schrijf toegang vereist. Als een gebruiker bijvoorbeeld de rol [lezer](built-in-roles.md#reader) krijgt toegewezen, kunnen ze de functies in een functie-app niet weer geven. De portal wordt weer gegeven **(geen toegang)** .
 
 ![Functie-apps zonder toegang](./media/troubleshooting/functionapps-noaccess.png)
 

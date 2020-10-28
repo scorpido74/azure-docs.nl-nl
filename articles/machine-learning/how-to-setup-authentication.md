@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.custom: how-to, has-adal-ref, devx-track-js
-ms.openlocfilehash: a1d89def944529235a0141d7e700049f15d1d0a7
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 8eb042b214ba1e4aea1eda1c65996d55ddde216e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424976"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741876"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Verificatie instellen voor Azure Machine Learning resources en werk stromen
 
@@ -25,8 +25,8 @@ Meer informatie over het verifiëren van uw Azure Machine Learning-werk ruimte e
 
 Over het algemeen zijn er twee soorten verificatie die u kunt gebruiken met Azure Machine Learning:
 
-* __Interactief__: u gebruikt uw account in azure Active Directory om ofwel rechtstreeks te verifiëren, of om een token op te halen dat wordt gebruikt voor verificatie. Interactieve verificatie wordt gebruikt tijdens het experimenteren en iteratieve ontwikkeling. Of waar u de toegang tot resources (zoals een webservice) per gebruiker wilt beheren.
-* __Service-Principal__: u maakt een Service-Principal-account in azure Active Directory en gebruikt dit om een token te verifiëren of op te halen. Een service-principal wordt gebruikt wanneer u een geautomatiseerd proces nodig hebt om te verifiëren bij de service zonder tussen komst van de gebruiker. Een voor beeld: een script voor continue integratie en implementatie waarmee een model wordt getraind en getest wanneer de trainings code verandert. U kunt ook een Service-Principal gebruiken om een token op te halen voor verificatie bij een webservice, als u niet wilt dat de eind gebruiker van de service wordt geverifieerd. Of waar de verificatie van de eind gebruiker niet rechtstreeks wordt uitgevoerd met Azure Active Directory.
+* __Interactief__ : u gebruikt uw account in azure Active Directory om ofwel rechtstreeks te verifiëren, of om een token op te halen dat wordt gebruikt voor verificatie. Interactieve verificatie wordt gebruikt tijdens het experimenteren en iteratieve ontwikkeling. Of waar u de toegang tot resources (zoals een webservice) per gebruiker wilt beheren.
+* __Service-Principal__ : u maakt een Service-Principal-account in azure Active Directory en gebruikt dit om een token te verifiëren of op te halen. Een service-principal wordt gebruikt wanneer u een geautomatiseerd proces nodig hebt om te verifiëren bij de service zonder tussen komst van de gebruiker. Een voor beeld: een script voor continue integratie en implementatie waarmee een model wordt getraind en getest wanneer de trainings code verandert. U kunt ook een Service-Principal gebruiken om een token op te halen voor verificatie bij een webservice, als u niet wilt dat de eind gebruiker van de service wordt geverifieerd. Of waar de verificatie van de eind gebruiker niet rechtstreeks wordt uitgevoerd met Azure Active Directory.
 
 Ongeacht het gebruikte verificatie type wordt Azure RBAC (op rollen gebaseerd toegangs beheer) gebruikt om het niveau van toegang dat is toegestaan voor de resources te bereiken. Een account dat wordt gebruikt om het toegangs token voor een geïmplementeerd model op te halen, heeft bijvoorbeeld alleen lees toegang tot de werk ruimte nodig. Zie [toegang tot Azure machine learning werk ruimte beheren](how-to-assign-roles.md)voor meer informatie over Azure RBAC.
 
@@ -285,8 +285,8 @@ Gebruiken `token_response["accessToken"]` om het verificatie token op te halen. 
 
 De model implementaties die zijn gemaakt door Azure Machine Learning bieden twee verificatie methoden:
 
-* **op basis van sleutels**: een statische sleutel wordt gebruikt om te verifiëren bij de webservice.
-* **op basis**van een token: er moet een tijdelijk token worden opgehaald uit de werk ruimte en worden gebruikt om de webservice te verifiëren. Dit token verloopt na een bepaalde tijd en moet worden vernieuwd om te blijven werken met de webservice.
+* **op basis van sleutels** : een statische sleutel wordt gebruikt om te verifiëren bij de webservice.
+* **op basis** van een token: er moet een tijdelijk token worden opgehaald uit de werk ruimte en worden gebruikt om de webservice te verifiëren. Dit token verloopt na een bepaalde tijd en moet worden vernieuwd om te blijven werken met de webservice.
 
     > [!NOTE]
     > Verificatie op basis van tokens is alleen beschikbaar bij het implementeren naar de Azure Kubernetes-service.
@@ -319,7 +319,7 @@ aci_service = Model.deploy(workspace=ws,
 aci_service.wait_for_deployment(True)
 ```
 
-Gebruik om de verificatie sleutels op te halen `aci_service.get_keys()` . Als u een sleutel opnieuw wilt genereren, gebruikt u de `regen_key()` functie en geeft u **primair** of **secundair**door.
+Gebruik om de verificatie sleutels op te halen `aci_service.get_keys()` . Als u een sleutel opnieuw wilt genereren, gebruikt u de `regen_key()` functie en geeft u **primair** of **secundair** door.
 
 ```python
 aci_service.regen_key("Primary")
@@ -335,7 +335,7 @@ Wanneer u token verificatie inschakelt voor een webservice, moeten gebruikers ee
 
 * Token verificatie is **standaard uitgeschakeld** wanneer u implementeert in azure Kubernetes service.
 * Verificatie van tokens **wordt niet ondersteund** wanneer u implementeert in azure container instances.
-* Token verificatie **kan niet tegelijkertijd worden gebruikt als verificatie op basis van een sleutel**.
+* Token verificatie **kan niet tegelijkertijd worden gebruikt als verificatie op basis van een sleutel** .
 
 Als u de verificatie van tokens wilt beheren, gebruikt `token_auth_enabled` u de para meter bij het maken of bijwerken van een implementatie:
 

@@ -11,12 +11,13 @@ ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: c6452d1c5c9792e8d021838635686e8621629ff2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+- devx-track-azurecli
+ms.openlocfilehash: 35df99d0a30b0952521281fa0d6bb95ce0509695
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146679"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740992"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Real-time sensor gegevens visualiseren vanuit uw Azure IoT hub in een webtoepassing
 
@@ -127,7 +128,7 @@ set IotHubConnectionString=YourIoTHubConnectionString
 set EventHubConsumerGroup=YourConsumerGroupName
 ```
 
-## <a name="run-the-web-app"></a>Voer de web-app uit
+## <a name="run-the-web-app"></a>De web-app uitvoeren
 
 1. Zorg ervoor dat het apparaat wordt uitgevoerd en dat er gegevens worden verzonden.
 
@@ -252,7 +253,7 @@ Als u problemen ondervindt met dit voor beeld, probeert u de stappen in de volge
 
 ### <a name="azure-app-service-issues"></a>Azure App Service problemen
 
-* Ga in Azure Portal naar uw web-app. Selecteer onder **bewaking** in het linkerdeel venster de optie **app service logboeken**. Schakel **toepassings Logboeken (bestands systeem)** in op, stel **niveau** in op fout en selecteer vervolgens **Opslaan**. Open vervolgens **logboek stroom** (onder **bewaking**).
+* Ga in Azure Portal naar uw web-app. Selecteer onder **bewaking** in het linkerdeel venster de optie **app service logboeken** . Schakel **toepassings Logboeken (bestands systeem)** in op, stel **niveau** in op fout en selecteer vervolgens **Opslaan** . Open vervolgens **logboek stroom** (onder **bewaking** ).
 
 * Vanuit uw web-app in Azure Portal selecteert u onder **ontwikkelingsprogram Ma's**  **console** en valideert u node-en NPM-versies met `node -v` en `npm -v` .
 

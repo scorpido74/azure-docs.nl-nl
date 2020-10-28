@@ -556,8 +556,6 @@
               href: platform/alerts-managing-smart-groups.md
             - name: Statussen van waarschuwingen en slimme groepen beheren
               href: platform/alerts-managing-alert-states.md
-            - name: Waarschuwingen van andere bewakingsservices beheren
-              href: platform/alerts-managing-nagios-zabbix-scom.md
         - name: Waarschuwings-API
           href: platform/api-alerts.md
         - name: Waarschuwingsproblemen oplossen
@@ -576,8 +574,6 @@
               href: platform/itsmc-service-manager-script.md
             - name: Synchronisatieproblemen met ServiceNow ITSM oplossen
               href: platform/itsmc-resync-servicenow.md
-        - name: Waarschuwingenbeheeroplossing
-          href: platform/alert-management-solution.md
         - name: Klassieke waarschuwingsregels migreren
           items:
             - name: Over klassieke waarschuwingen
@@ -1138,6 +1134,8 @@
               href: insights/vmware.md
             - name: Oplossing voor bedradingsgegevens
               href: insights/wire-data.md
+            - name: Waarschuwingenbeheeroplossing
+              href: platform/alert-management-solution.md
     - name: Werkmappen
       items:
         - name: Overzicht

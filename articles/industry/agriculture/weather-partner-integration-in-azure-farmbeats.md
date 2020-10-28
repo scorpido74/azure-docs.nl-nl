@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 07/09/2020
 ms.author: sunasing
-ms.openlocfilehash: 661147769d8ae845066e912a84118c9fd3f93486
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: dd5d05ff6ed2368308f90f61ea0a6f107e43acd7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674917"
+ms.locfileid: "92740782"
 ---
 # <a name="weather-partner-integration"></a>Partnerintegratie voor weer
 
@@ -180,7 +180,7 @@ De connector docker moet de mogelijkheid hebben om updates te verzenden voor de 
 
 ## <a name="weather-data-telemetry-specifications"></a>Specificaties voor weer gegevens (telemetrie)
 
-De weer gegevens worden toegewezen aan een canonieke bericht dat naar een Azure Event hub wordt gepusht voor verwerking. Azure EventHub is een service waarmee realtime gegevens (telemetrie) kunnen worden opgenomen vanuit verbonden apparaten en toepassingen. Als u weer gegevens naar FarmBeats wilt verzenden, moet u een client maken waarmee berichten worden verzonden naar een event hub in FarmBeats. Raadpleeg [telemetrie verzenden naar een event hub](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) voor meer informatie over het verzenden van telemetrie
+De weer gegevens worden toegewezen aan een canonieke bericht dat naar een Azure Event hub wordt gepusht voor verwerking. Azure Event Hubs is een service waarmee realtime gegevens (telemetrie) kunnen worden opgenomen vanuit verbonden apparaten en toepassingen. Als u weer gegevens naar FarmBeats wilt verzenden, moet u een client maken waarmee berichten worden verzonden naar een Event Hub in FarmBeats. Raadpleeg [telemetrie verzenden naar een event hub](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) voor meer informatie over het verzenden van telemetrie
 
 Hier volgt een voor beeld van een python-code die telemetrie verzendt als een client naar een opgegeven Event Hub.
 
