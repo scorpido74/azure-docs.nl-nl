@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 8ee440c77ec94a7c3e61c37e589aa5ef23031ca7
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 860fcb2948869d21eb78d0b318074b9a5e2ba0b9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332413"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790318"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-azure-synapse-analytics-data-factory-and-power-bi"></a>SaaS Analytics verkennen met Azure SQL Database, Azure Synapse Analytics, Data Factory en Power BI
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -45,7 +45,7 @@ SaaS-toepassingen bevatten een potentieel grote hoeveelheid tenantgegevens in de
 
 Het is gemakkelijk om toegang te krijgen tot de gegevens voor alle tenants wanneer alle gegevens zich in slechts één database met meerdere tenants bevinden. De toegang is echter ingewikkelder wanneer ze op schaal zijn gedistribueerd in duizenden databases. Eén manier om de complexiteit te beheersen en is door de gegevens te extraheren naar een analysedatabase of een datawarehouse om er query's op uit te voeren.
 
-Deze zelfstudie bevat een end-to-end-analysescenario voor de Wingtip Tickets-toepassing. Eerst wordt [Azure Data Factory (ADF)](../../data-factory/introduction.md) als het indelingshulpprogramma gebruikt om kaartverkoop en gerelateerde gegevens uit elke tenantdatabase te extraheren. Deze gegevens worden in een analysearchief in faseringstabellen geladen. Het analysearchief kan een SQL-database of een SQL-pool zijn. In deze zelfstudie wordt [Azure Synapse Analytics (voorheen SQL Data Warehouse)](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is) als analysearchief gebruikt.
+Deze zelfstudie bevat een end-to-end-analysescenario voor de Wingtip Tickets-toepassing. Eerst wordt [Azure Data Factory (ADF)](../../data-factory/introduction.md) als het indelingshulpprogramma gebruikt om kaartverkoop en gerelateerde gegevens uit elke tenantdatabase te extraheren. Deze gegevens worden in een analysearchief in faseringstabellen geladen. Het analysearchief kan een SQL-database of een SQL-pool zijn. In deze zelfstudie wordt [Azure Synapse Analytics (voorheen SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) als analysearchief gebruikt.
 
 Vervolgens worden de geëxtraheerde gegevens getransformeerd en in een verzameling tabellen in het [stervormige schema](https://www.wikipedia.org/wiki/Star_schema) geladen. De tabellen bestaan uit een centrale feitentabel plus gerelateerde dimensietabellen:
 
@@ -70,10 +70,10 @@ In deze zelfstudie vindt u eenvoudige voorbeelden van inzichten die kunnen worde
 
 Voor het voltooien van deze zelfstudie moet u ervoor zorgen dat aan de volgende vereisten is voldaan:
 
-- De toepassing Wingtip Tickets SaaS Database Per Tenant is geïmplementeerd. Zie [De Wingtip SaaS-app implementeren en verkennen](../../sql-database/saas-dbpertenant-get-started-deploy.md) als u de app in minder dan vijf minuten wilt implementeren.
+- De toepassing Wingtip Tickets SaaS Database Per Tenant is geïmplementeerd. Zie [De Wingtip SaaS-app implementeren en verkennen](./saas-dbpertenant-get-started-deploy.md) als u de app in minder dan vijf minuten wilt implementeren.
 - De [broncode](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/) en de scripts van Wingtip Tickets SaaS Database Per Tenant worden gedownload van GitHub. Zie de downloadinstructies. Vergeet niet *de blokkering van het zip-bestand ongedaan te maken* voordat u de inhoud ervan uitpakt.
 - Power BI Desktop is geïnstalleerd. [Download Power BI Desktop](https://powerbi.microsoft.com/downloads/).
-- De batch met aanvullende tenants is ingericht; zie de [**Zelfstudie voor het inrichten van tenants**](../../sql-database/saas-dbpertenant-provision-and-catalog.md).
+- De batch met aanvullende tenants is ingericht; zie de [**Zelfstudie voor het inrichten van tenants**](./saas-dbpertenant-provision-and-catalog.md).
 
 ### <a name="create-data-for-the-demo"></a>Gegevens maken voor de demo
 
@@ -85,7 +85,7 @@ In deze zelfstudie worden de analyses van de gegevens over de ticketverkoop verk
 
 ### <a name="deploy-azure-synapse-analytics-data-factory-and-blob-storage"></a>Azure Synapse Analytics, Data Factory en Blob Storage implementeren
 
-In de Wingtip Tickets-app worden de transactiegegevens van de tenants over talloze databases gedistribueerd. Azure Data Factory (ADF) wordt gebruikt om het extraheren, laden en transformeren (ELT) van deze gegevens in het datawarehouse in te delen. Voor het zo efficiënt mogelijk laden van gegevens in Azure Synapse Analytics (voorheen SQL Data Warehouse) kunt u gegevens ophalen in tussenliggende blob-bestanden en vervolgens [PolyBase](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading) gebruiken om de gegevens in het datawarehouse te laden.
+In de Wingtip Tickets-app worden de transactiegegevens van de tenants over talloze databases gedistribueerd. Azure Data Factory (ADF) wordt gebruikt om het extraheren, laden en transformeren (ELT) van deze gegevens in het datawarehouse in te delen. Voor het zo efficiënt mogelijk laden van gegevens in Azure Synapse Analytics (voorheen SQL Data Warehouse) kunt u gegevens ophalen in tussenliggende blob-bestanden en vervolgens [PolyBase](../../synapse-analytics/sql-data-warehouse/design-elt-data-loading.md) gebruiken om de gegevens in het datawarehouse te laden.
 
 In deze stap implementeert u de extra resources die in de zelfstudie worden gebruikt: een SQL-pool met de naam _tenantanalytics_ , een Azure Data Factory met de naam _dbtodwload-\<user\>_ en een Azure-opslagaccount met de naam _wingtipstaging\<user\>_ . Het opslagaccount wordt gebruikt voor het tijdelijk bewaren van geëxtraheerde gegevensbestanden in de vorm van blobs voordat ze in het datawarehouse worden geladen. Met deze stap wordt ook het datawarehouse-schema geïmplementeerd en worden de ADF-pijplijnen gedefinieerd waarmee het ELT-proces wordt ingedeeld.
 
@@ -97,7 +97,7 @@ Beoordeel nu de Azure-resources die u hebt geïmplementeerd:
 
 #### <a name="tenant-databases-and-analytics-store"></a>Tenantdatabases en analysearchief
 
-Gebruik [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) om verbinding te maken met **tenants1-dpt-&lt;user&gt;** - en **catalog-dpt-&lt;user&gt;** -servers. Vervang &lt;user&gt; door de waarde die is gebruikt bij het implementeren van de app. Gebruik als gebruikersnaam *developer* en als wachtwoord *P\@ssword1* . Raadpleeg de [inleidende zelfstudie](../../sql-database/saas-dbpertenant-wingtip-app-overview.md) voor meer begeleiding.
+Gebruik [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) om verbinding te maken met **tenants1-dpt-&lt;user&gt;** - en **catalog-dpt-&lt;user&gt;** -servers. Vervang &lt;user&gt; door de waarde die is gebruikt bij het implementeren van de app. Gebruik als gebruikersnaam *developer* en als wachtwoord *P\@ssword1* . Raadpleeg de [inleidende zelfstudie](./saas-dbpertenant-wingtip-app-overview.md) voor meer begeleiding.
 
 ![Verbinding maken met SQL Database vanuit SSMS](./media/saas-tenancy-tenant-analytics-adf/ssmsSignIn.JPG)
 
@@ -148,14 +148,14 @@ In deze sectie wordt de objecten bekeken die in de data factory zijn gemaakt. In
 
 ![adf_overview](./media/saas-tenancy-tenant-analytics-adf/adf-data-factory.PNG)
 
-Ga op de pagina met het overzicht naar het tabblad **Auteur** in het linkerdeelvenster en u ziet dat er drie [pijplijnen](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) en drie [gegevenssets](https://docs.microsoft.com/azure/data-factory/concepts-datasets-linked-services) zijn gemaakt.
+Ga op de pagina met het overzicht naar het tabblad **Auteur** in het linkerdeelvenster en u ziet dat er drie [pijplijnen](../../data-factory/concepts-pipelines-activities.md) en drie [gegevenssets](../../data-factory/concepts-datasets-linked-services.md) zijn gemaakt.
 ![adf_author](./media/saas-tenancy-tenant-analytics-adf/adf_author_tab.JPG)
 
 De drie geneste pijplijnen zijn: SQLDBToDW, DBCopy en TableCopy.
 
 **Pijplijn 1 - SQLDBToDW** zoekt de namen van de tenantdatabases die in de catalogusdatabase zijn opgeslagen (tabelnaam: [__ShardManagement].[ShardsGlobal]) en wordt voor elke tenantdatabase de pijplijn **DBCopy** uitgevoerd. Na voltooiing wordt het meegeleverde schema voor de opgeslagen procedure, **sp_TransformExtractedData** , uitgevoerd. Met deze opgeslagen procedure worden de geladen gegevens in de faseringstabellen getransformeerd en worden de tabellen in het stervormige schema ingevuld.
 
-**Pijplijn 2 - DBCopy** zoekt de namen van de brontabellen en -kolommen in een configuratiebestand dat in Blob Storage is opgeslagen.  De pijplijn **TableCopy** wordt vervolgens voor elk van de vier tabellen uitgevoerd: TicketFacts, CustomerFacts, EventFacts en VenueFacts. De activiteit **[Foreach](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)** wordt parallel uitgevoerd voor alle twintig databases. In ADF kunnen maximaal twintig lus-iteraties parallel worden uitgevoerd. Overweeg meerdere pijplijnen voor meer databases te maken.
+**Pijplijn 2 - DBCopy** zoekt de namen van de brontabellen en -kolommen in een configuratiebestand dat in Blob Storage is opgeslagen.  De pijplijn **TableCopy** wordt vervolgens voor elk van de vier tabellen uitgevoerd: TicketFacts, CustomerFacts, EventFacts en VenueFacts. De activiteit **[Foreach](../../data-factory/control-flow-for-each-activity.md)** wordt parallel uitgevoerd voor alle twintig databases. In ADF kunnen maximaal twintig lus-iteraties parallel worden uitgevoerd. Overweeg meerdere pijplijnen voor meer databases te maken.
 
 **Pijplijn 3 - TableCopy** maakt gebruik van rijversienummers in SQL Database ( _rowversion_ ) om rijen te identificeren die zijn gewijzigd of bijgewerkt. Deze activiteit zoekt naar de begin- en eindversie van de rij voor het extraheren van rijen uit de brontabellen. De tabel **CopyTracker** die in elke tenantdatabase is opgeslagen, houdt de laatste rij bij die uit elke brontabel bij elke uitvoering is geëxtraheerd. Nieuwe of gewijzigde rijen worden in de bijbehorende faseringstabellen in het datawarehouse gekopieerd: **raw_Tickets** , **raw_Customers** , **raw_Venues** en **raw_Events** . Ten slotte wordt de laatste versie van de rij opgeslagen in de tabel **CopyTracker** . Deze moet worden gebruikt als initiële rijversie voor de volgende extractie.
 
@@ -276,4 +276,4 @@ Gefeliciteerd!
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- Aanvullende [zelfstudies waarbij wordt voortgebouwd op de Wingtip-SaaS-toepassing](../../sql-database/saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials).
+- Aanvullende [zelfstudies waarbij wordt voortgebouwd op de Wingtip-SaaS-toepassing](./saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials).

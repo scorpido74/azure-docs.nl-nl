@@ -13,20 +13,20 @@ ms.workload: iaas-sql-server
 ms.date: 08/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 140d95aeb7baf4b342044bc178d108239236229b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: bb80abc35aedcdf0b46cefa279e477739cf1df6b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677679"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789791"
 ---
 # <a name="run-sql-server-vm-on-an-azure-dedicated-host"></a>SQL Server VM uitvoeren op een toegewezen Azure-host 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-In dit artikel vindt u meer informatie over het gebruik van een SQL Server virtuele machine (VM) met een [toegewezen Azure-host](/azure/virtual-machines/windows/dedicated-hosts). Meer informatie over de specifieke Azure-host vindt u in het blog bericht Inleiding tot de [toegewezen Azure-host](https://azure.microsoft.com/blog/introducing-azure-dedicated-host/). 
+In dit artikel vindt u meer informatie over het gebruik van een SQL Server virtuele machine (VM) met een [toegewezen Azure-host](../../../virtual-machines/dedicated-hosts.md). Meer informatie over de specifieke Azure-host vindt u in het blog bericht Inleiding tot de [toegewezen Azure-host](https://azure.microsoft.com/blog/introducing-azure-dedicated-host/). 
 
 ## <a name="overview"></a>Overzicht
-De [toegewezen Azure-host](/azure/virtual-machines/windows/dedicated-hosts) is een service die fysieke servers biedt en een of meer virtuele machines kan hosten die zijn toegewezen aan één Azure-abonnement. Toegewezen hosts zijn dezelfde fysieke servers die worden gebruikt in Data Centers van micro soft, als een resource. U kunt toegewezen hosts inrichten binnen een regio, een beschikbaarheids zone en een fout domein. Vervolgens kunt u Vm's rechtstreeks op uw ingerichte hosts plaatsen, in welke configuratie het beste voldoet aan uw behoeften.
+De [toegewezen Azure-host](../../../virtual-machines/dedicated-hosts.md) is een service die fysieke servers biedt en een of meer virtuele machines kan hosten die zijn toegewezen aan één Azure-abonnement. Toegewezen hosts zijn dezelfde fysieke servers die worden gebruikt in Data Centers van micro soft, als een resource. U kunt toegewezen hosts inrichten binnen een regio, een beschikbaarheids zone en een fout domein. Vervolgens kunt u Vm's rechtstreeks op uw ingerichte hosts plaatsen, in welke configuratie het beste voldoet aan uw behoeften.
 
 ## <a name="limitations"></a>Beperkingen
 
@@ -54,7 +54,7 @@ Opties op hostniveau voor het gebruik van bestaande SQL Server licenties:
 
 
 ## <a name="provisioning"></a>Inrichten  
-Het inrichten van een SQL Server-VM naar de toegewezen host is niet anders dan andere virtuele Azure-machines. U kunt dit doen met behulp van [Azure PowerShell](../../../virtual-machines/windows/dedicated-hosts-powershell.md), de [Azure Portal](../../../virtual-machines/windows/dedicated-hosts-portal.md)en de [Azure cli](../../../virtual-machines/linux/dedicated-hosts-cli.md).
+Het inrichten van een SQL Server-VM naar de toegewezen host is niet anders dan andere virtuele Azure-machines. U kunt dit doen met behulp van [Azure PowerShell](../../../virtual-machines/windows/dedicated-hosts-powershell.md), de [Azure Portal](../../../virtual-machines/dedicated-hosts-portal.md)en de [Azure cli](../../../virtual-machines/linux/dedicated-hosts-cli.md).
 
 Het proces voor het toevoegen van een bestaande SQL Server virtuele machine aan de toegewezen host heeft downtime nodig, maar heeft geen invloed op gegevens en heeft geen gegevens verlies. Voor alle data bases, inclusief systeem databases, moet eerst een back-up worden gemaakt voordat deze kan worden verplaatst.
 
@@ -78,5 +78,3 @@ Raadpleeg voor meer informatie de volgende artikelen:
 * [Veelgestelde vragen over SQL Server op een Windows-VM](frequently-asked-questions-faq.md)
 * [Prijs informatie voor SQL Server op een Windows-VM](pricing-guidance.md)
 * [Release opmerkingen voor SQL Server op een Windows-VM](doc-changes-updates-release-notes.md)
-
-

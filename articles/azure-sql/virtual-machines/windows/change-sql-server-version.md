@@ -14,14 +14,14 @@ ms.date: 06/08/2020
 ms.author: RamaKoni
 ms.reviewer: sqlblt, daleche
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a57a432a5f0f8e5a6bd802ec08b18350da3a77b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ec7ed958ac045c68fd7b616903f401dd07d8166
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293370"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789825"
 ---
-# <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>In-place wijziging van SQL Server-versie op Azure VM
+# <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>In-place wijziging van de SQL Server-versie op de Azure-VM
 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
@@ -32,7 +32,7 @@ In dit artikel wordt beschreven hoe u de versie van Microsoft SQL Server wijzigt
 Voor een in-place upgrade van SQL Server gelden de volgende voor waarden:
 
 - De installatie media van de gewenste versie van SQL Server zijn vereist. Klanten die beschikken over [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) kunnen hun installatiemedia downloaden van het [Volume Licensing Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx). Klanten die geen Software Assurance hebben, kunnen het installatie medium van een Azure Marketplace gebruiken SQL Server VM-installatie kopie met een latere versie van SQL Server (meestal opgeslagen in C:\SQLServerFull).
-- Editie-upgrades moeten de [ondersteunings upgrade paden](https://docs.microsoft.com/sql/database-engine/install-windows/supported-version-and-edition-upgrades-version-15?view=sql-server-ver15)volgen.
+- Editie-upgrades moeten de [ondersteunings upgrade paden](/sql/database-engine/install-windows/supported-version-and-edition-upgrades-version-15?view=sql-server-ver15)volgen.
 
 ## <a name="planning-for-version-change"></a>Planning voor versie wijziging
 
@@ -40,34 +40,34 @@ We raden u aan de volgende items te controleren voordat u de versie wijzigt:
 
 1. Controleer wat er nieuw is in de versie die u wilt upgraden naar:
 
-   - Wat is er nieuw in [SQL 2019](https://docs.microsoft.com/sql/sql-server/what-s-new-in-sql-server-ver15?view=sql-server-ver15)
-   - Wat is er nieuw in [SQL 2017](https://docs.microsoft.com/sql/sql-server/what-s-new-in-sql-server-2017?view=sql-server-ver15)
-   - Wat is er nieuw in [SQL 2016](https://docs.microsoft.com/sql/sql-server/what-s-new-in-sql-server-2016?view=sql-server-ver15)
-   - Wat is er nieuw in [SQL 2014](https://docs.microsoft.com/sql/sql-server/what-s-new-in-sql-server-2016?view=sql-server-2014)
+   - Wat is er nieuw in [SQL 2019](/sql/sql-server/what-s-new-in-sql-server-ver15?view=sql-server-ver15)
+   - Wat is er nieuw in [SQL 2017](/sql/sql-server/what-s-new-in-sql-server-2017?view=sql-server-ver15)
+   - Wat is er nieuw in [SQL 2016](/sql/sql-server/what-s-new-in-sql-server-2016?view=sql-server-ver15)
+   - Wat is er nieuw in [SQL 2014](/sql/sql-server/what-s-new-in-sql-server-2016?view=sql-server-2014)
 
-1. Het is raadzaam om de [compatibiliteits certificering](https://docs.microsoft.com/sql/database-engine/install-windows/compatibility-certification?view=sql-server-ver15) te controleren voor de versie die u gaat wijzigen, zodat u de database compatibiliteits modi kunt gebruiken om het effect van de upgrade te minimaliseren.
+1. Het is raadzaam om de [compatibiliteits certificering](/sql/database-engine/install-windows/compatibility-certification?view=sql-server-ver15) te controleren voor de versie die u gaat wijzigen, zodat u de database compatibiliteits modi kunt gebruiken om het effect van de upgrade te minimaliseren.
 1. U kunt de volgende artikelen raadplegen om te zorgen voor een geslaagd resultaat:
 
    - [Video: modernere SQL Server | Pam Lahoud & Pedro Lopes | 20 jaar na slagen](https://www.youtube.com/watch?v=5RPkuQHcxxs&feature=youtu.be)
-   - [Testen van Database Experimentation Assistant voor AB](https://docs.microsoft.com/sql/dea/database-experimentation-assistant-overview?view=sql-server-ver15)
-   - [Data bases bijwerken met behulp van de opdracht voor het afstemmen van Query's](https://docs.microsoft.com/sql/relational-databases/performance/upgrade-dbcompat-using-qta?view=sql-server-ver15)
-   - [Het database compatibiliteits niveau wijzigen en het query archief gebruiken](https://docs.microsoft.com/sql/database-engine/install-windows/change-the-database-compatibility-mode-and-use-the-query-store?view=sql-server-ver15)
+   - [Testen van Database Experimentation Assistant voor AB](/sql/dea/database-experimentation-assistant-overview?view=sql-server-ver15)
+   - [Data bases bijwerken met behulp van de opdracht voor het afstemmen van Query's](/sql/relational-databases/performance/upgrade-dbcompat-using-qta?view=sql-server-ver15)
+   - [Het database compatibiliteits niveau wijzigen en het query archief gebruiken](/sql/database-engine/install-windows/change-the-database-compatibility-mode-and-use-the-query-store?view=sql-server-ver15)
 
 ## <a name="upgrade-sql-version"></a>Upgrade uitvoeren voor SQL-versie
 
 > [!WARNING]
 > Als u de versie van SQL Server bijwerkt, wordt de service voor SQL Server opnieuw gestart, naast eventuele gekoppelde services, zoals Analysis Services en R-Services.
 
-Als u de versie van SQL Server wilt bijwerken, moet u de SQL Server Setup-media verkrijgen voor de latere versie die [het upgrade traject](https://docs.microsoft.com/sql/database-engine/install-windows/supported-version-and-edition-upgrades-version-15?view=sql-server-ver15) van SQL Server zou ondersteunen. Voer de volgende stappen uit:
+Als u de versie van SQL Server wilt bijwerken, moet u de SQL Server Setup-media verkrijgen voor de latere versie die [het upgrade traject](/sql/database-engine/install-windows/supported-version-and-edition-upgrades-version-15?view=sql-server-ver15) van SQL Server zou ondersteunen. Voer de volgende stappen uit:
 
 1. Maak een back-up van de data bases, inclusief systeem (met uitzonde ring van tempdb) en gebruikers databases voordat u het proces start. U kunt ook een toepassings consistente back-up op VM-niveau maken met behulp van Azure Backup Services.
 1. Start Setup.exe vanaf de SQL Server-installatie media.
-1. De installatie wizard start het SQL Server-installatie centrum. Als u een bestaand exemplaar van SQL Server wilt bijwerken, selecteert u **installatie** in het navigatie venster en selecteert u vervolgens **upgrade van een eerdere versie van SQL Server**.
+1. De installatie wizard start het SQL Server-installatie centrum. Als u een bestaand exemplaar van SQL Server wilt bijwerken, selecteert u **installatie** in het navigatie venster en selecteert u vervolgens **upgrade van een eerdere versie van SQL Server** .
 
    :::image type="content" source="./media/change-sql-server-version/upgrade.png" alt-text="Selectie voor het bijwerken van de versie van SQL Server":::
 
-1. Selecteer op de pagina **product code** een optie om aan te geven of u een upgrade uitvoert naar een gratis versie van SQL Server of dat u een PID-sleutel hebt voor een productie versie van het product. Zie [edities en ondersteunde functies van SQL Server 2019 (15. x)](https://docs.microsoft.com/sql/sql-server/editions-and-components-of-sql-server-version-15?view=sql-server-ver15) en [ondersteunde versie-en editie-Upgrades (SQL Server 2016)](https://docs.microsoft.com/sql/database-engine/install-windows/supported-version-and-edition-upgrades?view=sql-server-ver15)voor meer informatie.
-1. Selecteer **volgende** totdat u de pagina **gereed voor de upgrade** hebt bereikt en selecteer vervolgens **upgrade**. Het installatie venster reageert mogelijk enkele minuten niet meer wanneer de wijziging wordt doorgevoerd. Op een **volledige** pagina wordt bevestigd dat uw upgrade is voltooid. Zie [de volledige procedure](https://docs.microsoft.com/sql/database-engine/install-windows/upgrade-sql-server-using-the-installation-wizard-setup?view=sql-server-ver15#procedure)voor een stapsgewijze procedure voor het uitvoeren van een upgrade.
+1. Selecteer op de pagina **product code** een optie om aan te geven of u een upgrade uitvoert naar een gratis versie van SQL Server of dat u een PID-sleutel hebt voor een productie versie van het product. Zie [edities en ondersteunde functies van SQL Server 2019 (15. x)](/sql/sql-server/editions-and-components-of-sql-server-version-15?view=sql-server-ver15) en [ondersteunde versie-en editie-Upgrades (SQL Server 2016)](/sql/database-engine/install-windows/supported-version-and-edition-upgrades?view=sql-server-ver15)voor meer informatie.
+1. Selecteer **volgende** totdat u de pagina **gereed voor de upgrade** hebt bereikt en selecteer vervolgens **upgrade** . Het installatie venster reageert mogelijk enkele minuten niet meer wanneer de wijziging wordt doorgevoerd. Op een **volledige** pagina wordt bevestigd dat uw upgrade is voltooid. Zie [de volledige procedure](/sql/database-engine/install-windows/upgrade-sql-server-using-the-installation-wizard-setup?view=sql-server-ver15#procedure)voor een stapsgewijze procedure voor het uitvoeren van een upgrade.
 
    :::image type="content" source="./media/change-sql-server-version/complete-page.png" alt-text="Selectie voor het bijwerken van de versie van SQL Server":::
 

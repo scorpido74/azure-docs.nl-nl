@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6f1a94ae070419c38efb481e8f3967aec6a212d0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 61ccc0231989589836e00088b9ca03d0cb49baca
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533951"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790947"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Toegangs beperkingen Azure App Service
 
@@ -24,7 +24,11 @@ Wanneer een aanvraag wordt gedaan voor uw app, wordt het van-adres geëvalueerd 
 
 De functie voor toegangs beperkingen wordt geïmplementeerd in de front-end rollen van App Service, die een upstream zijn van de werk nemers waar de code wordt uitgevoerd. Toegangs beperkingen zijn daarom effectief netwerk-Acl's.
 
-De mogelijkheid om de toegang tot uw web-app vanuit een Azure Virtual Network (VNet) te beperken, wordt [service-eind punten][serviceendpoints]genoemd. Met Service-eind punten kunt u de toegang beperken tot een multi tenant-service van geselecteerde subnetten. Deze moet worden ingeschakeld op zowel de netwerk kant als de service waarmee deze wordt ingeschakeld. Het werkt niet om het verkeer te beperken tot apps die worden gehost in een App Service Environment. Als u een App Service Environment hebt, kunt u de toegang tot uw app beheren met de regels voor IP-adressen.
+De mogelijkheid om de toegang tot uw web-app vanuit een Azure Virtual Network (VNet) te beperken, wordt [service-eind punten][serviceendpoints]genoemd. Met Service-eind punten kunt u de toegang beperken tot een multi tenant-service van geselecteerde subnetten. Het werkt niet om het verkeer te beperken tot apps die worden gehost in een App Service Environment. Als u een App Service Environment hebt, kunt u de toegang tot uw app beheren met de regels voor IP-adressen.
+
+> [!NOTE]
+> Service-eind punten moeten worden ingeschakeld op zowel de netwerk kant als voor de Azure-service waarmee deze wordt ingeschakeld. Zie [Virtual Network Service-eind punten](../virtual-network/virtual-network-service-endpoints-overview.md)voor een lijst met Azure-Services die service-eind punten ondersteunen.
+>
 
 ![toegangs beperkingen stroom](media/app-service-ip-restrictions/access-restrictions-flow.png)
 

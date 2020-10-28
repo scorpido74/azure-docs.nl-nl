@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: 194625ab43dbb161d2b04352d715a44a1328a888
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: fdeddfb0a09151ea010d4e95a2954200dd9371dc
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503331"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791423"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Wat is SQL Data Sync voor Azure?
 
@@ -44,9 +44,9 @@ Bij de gegevens synchronisatie wordt gebruikgemaakt van een hub-en spoke-topolog
 Een synchronisatie groep heeft de volgende eigenschappen:
 
 - In het **synchronisatie schema** wordt beschreven welke gegevens worden gesynchroniseerd.
-- De **synchronisatie richting** kan bidirectionele zijn of kan in slechts één richting stromen. Dat wil zeggen dat de synchronisatie richting van de *hub naar het lid*, of van het lid is van een *hub*of van beide kan zijn.
+- De **synchronisatie richting** kan bidirectionele zijn of kan in slechts één richting stromen. Dat wil zeggen dat de synchronisatie richting van de *hub naar het lid* , of van het lid is van een *hub* of van beide kan zijn.
 - Het **synchronisatie-interval** beschrijft hoe vaak synchronisatie plaatsvindt.
-- Het **beleid** voor het oplossen van conflicten is een beleid op groeps niveau, dat *hub wint* of lid van een *WINS-server*kan zijn.
+- Het **beleid** voor het oplossen van conflicten is een beleid op groeps niveau, dat *hub wint* of lid van een *WINS-server* kan zijn.
 
 ## <a name="when-to-use"></a>Wanneer gebruikt u dit?
 
@@ -62,19 +62,19 @@ Gegevens synchronisatie is niet de aanbevolen oplossing voor de volgende scenari
 |----------|----------------------------|
 | Herstel na noodgevallen | [Azure geo-redundante back-ups](automated-backups-overview.md) |
 | Schaal lezen | [Alleen-lezen replica's gebruiken om taken te verdelen over alleen-lezen query's (preview-versie)](read-scale-out.md) |
-| ETL (OLTP to OLAP) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) of [SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) |
+| ETL (OLTP to OLAP) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) of [SQL Server Integration Services](/sql/integration-services/sql-server-integration-services) |
 | Migratie van SQL Server naar Azure SQL Database | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
 |||
 
 
 
-## <a name="how-it-works"></a>Uitleg
+## <a name="how-it-works"></a>Hoe het werkt
 
 - **Wijzigingen in de gegevens bijhouden:** Gegevens synchronisatie houdt wijzigingen bij met behulp van INSERT-, update-en delete-triggers. De wijzigingen worden vastgelegd in een tabel aan de kant van de gebruikers database. Houd er rekening mee dat BULK INSERT triggers niet standaard wordt geactiveerd. Als FIRE_TRIGGERS niet is opgegeven, worden er geen invoeg triggers uitgevoerd. Voeg de FIRE_TRIGGERS optie toe, zodat gegevens synchronisatie deze toevoegingen kan bijhouden. 
 - **Gegevens synchroniseren:** Gegevens synchronisatie is ontworpen in een hub-en spoke-model. De hub wordt met elk lid afzonderlijk gesynchroniseerd. Wijzigingen van de hub worden gedownload naar het lid en vervolgens worden wijzigingen van het lid geüpload naar de hub.
-- **Conflicten oplossen:** Gegevens synchronisatie biedt twee opties voor het oplossen van conflicten, *hub WINS* of *lid van WINS*.
-  - Als u *hub WINS*selecteert, worden wijzigingen in het lid altijd overschreven door de wijzigingen in de hub.
-  - Als u *lid bent van WINS*, worden wijzigingen in het lid overschreven in de hub. Als er meer dan één lid is, is de uiteindelijke waarde afhankelijk van welk lid het eerst synchroniseert.
+- **Conflicten oplossen:** Gegevens synchronisatie biedt twee opties voor het oplossen van conflicten, *hub WINS* of *lid van WINS* .
+  - Als u *hub WINS* selecteert, worden wijzigingen in het lid altijd overschreven door de wijzigingen in de hub.
+  - Als u *lid bent van WINS* , worden wijzigingen in het lid overschreven in de hub. Als er meer dan één lid is, is de uiteindelijke waarde afhankelijk van welk lid het eerst synchroniseert.
 
 ## <a name="compare-with-transactional-replication"></a>Vergelijken met transactionele replicatie
 
@@ -101,7 +101,7 @@ Gegevens synchronisatie is niet de aanbevolen oplossing voor de volgende scenari
 
 ### <a name="did-something-go-wrong"></a>Er is iets fout gegaan
 
-- [Problemen oplossen met Azure SQL Data Sync](../../sql-database/sql-database-troubleshoot-data-sync.md)
+- [Problemen oplossen met Azure SQL Data Sync](./sql-data-sync-troubleshoot.md)
 
 ## <a name="consistency-and-performance"></a>Consistentie en prestaties
 
@@ -126,7 +126,7 @@ Het inrichten en verwijderen van de inrichting tijdens het maken van een synchro
 > - De gegevens tussen de hub en het lid kunnen verloren gaan, zelfs al wordt er door synchronisatie geen problemen gerapporteerd.
 > - De synchronisatie kan mislukken omdat de tracerings tabel een niet-bestaande rij van de bron bevat, omdat de primaire sleutel is gewijzigd.
 
-- Snap shot-isolatie moet zijn ingeschakeld voor synchronisatie leden en-hub. Voor meer informatie zie [Snapshot-isolatie in SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
+- Snap shot-isolatie moet zijn ingeschakeld voor synchronisatie leden en-hub. Voor meer informatie zie [Snapshot-isolatie in SQL Server](/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
 
 ### <a name="general-limitations"></a>Algemene beperkingen
 
@@ -175,8 +175,8 @@ Met gegevens synchronisatie kunnen alleen-lezen of door het systeem gegenereerde
 
 Wanneer de synchronisatie groep tot stand is gebracht, moet de Data Sync-service verbinding maken met de hub-data base. Op het moment dat u de synchronisatie groep instelt, moet de Azure SQL-Server de volgende configuratie hebben in de `Firewalls and virtual networks` instellingen:
 
- * *Toegang tot open bare netwerk weigeren* moet worden ingesteld op *uit*.
- * *Toestaan dat Azure-Services en-resources toegang hebben tot deze server* moet zijn ingesteld op *Ja*of moet u IP-regels maken voor de [IP-adressen die worden gebruikt door de Data Sync-Service](network-access-controls-overview.md#data-sync).
+ * *Toegang tot open bare netwerk weigeren* moet worden ingesteld op *uit* .
+ * *Toestaan dat Azure-Services en-resources toegang hebben tot deze server* moet zijn ingesteld op *Ja* of moet u IP-regels maken voor de [IP-adressen die worden gebruikt door de Data Sync-Service](network-access-controls-overview.md#data-sync).
 
 Zodra de synchronisatie groep is gemaakt en ingericht, kunt u deze instellingen uitschakelen. De synchronisatie agent maakt rechtstreeks verbinding met de hub-data base en u kunt de [Firewall-IP-regels](firewall-configure.md) of [particuliere eind punten](private-endpoint-overview.md) van de server gebruiken om de agent toegang te geven tot de hub-server.
 
@@ -240,7 +240,7 @@ De Federatie hoofd database kan worden gebruikt in de SQL Data Sync-Service zond
 
 ### <a name="can-i-use-data-sync-to-sync-data-exported-from-dynamics-365-using-bring-your-own-database-byod-feature"></a>Kan ik gegevens synchronisatie gebruiken om gegevens te synchroniseren die zijn geëxporteerd uit Dynamics 365 met de functie uw eigen data base (BYOD) gebruiken?
 
-Met de Dynamics 365-functie van uw eigen data base kunnen beheerders gegevens entiteiten van de toepassing exporteren naar hun eigen Microsoft Azure SQL database. Gegevens synchronisatie kan worden gebruikt om deze gegevens te synchroniseren met andere data bases als gegevens worden geëxporteerd met een **incrementele push** (volledige push wordt niet ondersteund) en **Triggers inschakelen in doel database** is ingesteld op **Ja**.
+Met de Dynamics 365-functie van uw eigen data base kunnen beheerders gegevens entiteiten van de toepassing exporteren naar hun eigen Microsoft Azure SQL database. Gegevens synchronisatie kan worden gebruikt om deze gegevens te synchroniseren met andere data bases als gegevens worden geëxporteerd met een **incrementele push** (volledige push wordt niet ondersteund) en **Triggers inschakelen in doel database** is ingesteld op **Ja** .
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -248,20 +248,19 @@ Met de Dynamics 365-functie van uw eigen data base kunnen beheerders gegevens en
 
 Moet u het schema van een data base in een synchronisatie groep bijwerken? Wijzigingen in het schema worden niet automatisch gerepliceerd. Voor sommige oplossingen raadpleegt u de volgende artikelen:
 
-- [De replicatie van schema wijzigingen automatiseren met SQL Data Sync in azure](../../sql-database/sql-database-update-sync-schema.md)
+- [De replicatie van schema wijzigingen automatiseren met SQL Data Sync in azure](./sql-data-sync-update-sync-schema.md)
 - [PowerShell gebruiken voor het bijwerken van het synchronisatieschema in een bestaande synchronisatiegroep](scripts/update-sync-schema-in-sync-group.md)
 
 ### <a name="monitor-and-troubleshoot"></a>Controleren en problemen oplossen
 
 Wordt SQL Data Sync als verwachting uitgevoerd? Raadpleeg de volgende artikelen voor informatie over het bewaken van activiteiten en het oplossen van problemen:
 
-- [SQL Data Sync bewaken met Azure Monitor-logboeken](../../sql-database/sql-database-sync-monitor-oms.md)
-- [Problemen oplossen met Azure SQL Data Sync](../../sql-database/sql-database-troubleshoot-data-sync.md)
+- [SQL Data Sync bewaken met Azure Monitor-logboeken](./monitor-tune-overview.md)
+- [Problemen oplossen met Azure SQL Data Sync](./sql-data-sync-troubleshoot.md)
 
 ### <a name="learn-more-about-azure-sql-database"></a>Meer informatie over Azure SQL Database
 
 Raadpleeg de volgende artikelen voor meer informatie over Azure SQL Database:
 
 - [Wat is de Azure SQL Database-service?](sql-database-paas-overview.md)
-- [Database Lifecycle Management (DLM)](https://msdn.microsoft.com/library/jj907294.aspx)
- 
+- [Database Lifecycle Management (DLM)](/previous-versions/sql/sql-server-guides/jj907294(v=sql.110))

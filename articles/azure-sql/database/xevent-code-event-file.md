@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 06/06/2020
-ms.openlocfilehash: e9f3f1ca6005ff8c61211263944513d859d6d23e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9674b7188251312056812ac8e1dcae5885579e2a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91620185"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791304"
 ---
 # <a name="event-file-target-code-for-extended-events-in-azure-sql-database"></a>Doelcode voor een gebeurtenisbestand voor uitgebreide gebeurtenissen in Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "91620185"
 
 U wilt een volledig codevoorbeeld voor een robuuste manier om informatie vast te leggen en te rapporteren voor een uitgebreide gebeurtenis.
 
-In Microsoft SQL Server wordt het [doel voor een gebeurtenisbestand](https://msdn.microsoft.com/library/ff878115.aspx) gebruikt om uitvoer van gebeurtenissen op te slaan in een bestand op de lokale harde schijf. Maar dergelijke bestanden zijn niet beschikbaar in Azure SQL Database. In plaats hiervan gebruiken we de Azure Storage-service om ondersteuning te bieden voor het doel voor een gebeurtenisbestand.
+In Microsoft SQL Server wordt het [doel voor een gebeurtenisbestand](/previous-versions/sql/sql-server-2016/ff878115(v=sql.130)) gebruikt om uitvoer van gebeurtenissen op te slaan in een bestand op de lokale harde schijf. Maar dergelijke bestanden zijn niet beschikbaar in Azure SQL Database. In plaats hiervan gebruiken we de Azure Storage-service om ondersteuning te bieden voor het doel voor een gebeurtenisbestand.
 
 In dit onderwerp ziet u een codevoorbeeld in twee fasen:
 
@@ -39,22 +39,22 @@ In dit onderwerp ziet u een codevoorbeeld in twee fasen:
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> De module PowerShell Azure Resource Manager wordt nog steeds ondersteund in Azure SQL Database, maar alle toekomstige ontwikkeling is voor de Az.Sql-module. Zie [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/) voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek.
+> De module PowerShell Azure Resource Manager wordt nog steeds ondersteund in Azure SQL Database, maar alle toekomstige ontwikkeling is voor de Az.Sql-module. Zie [AzureRM.Sql](/powershell/module/AzureRM.Sql/) voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek.
 
 - Een Azure-account en -abonnement. U  kunt zich aanmelden voor een [gratis proefversie](https://azure.microsoft.com/pricing/free-trial/). 
 - Een willekeurige database waarin u een tabel kunt maken.
   
-  - U kunt optioneel in enkele minuten [een **AdventureWorksLT**-demonstratiedatabase maken](single-database-create-quickstart.md).
+  - U kunt optioneel in enkele minuten [een **AdventureWorksLT** -demonstratiedatabase maken](single-database-create-quickstart.md).
 
 - SQL Server Management Studio (ssms.exe), liefst de meest recente versie van de maandelijkse update.
   U kunt de meest recente ssms.exe downloaden op:
   
-  - Onderwerp met de titel [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
+  - Onderwerp met de titel [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms).
   - [Een directe koppeling naar de download.](https://go.microsoft.com/fwlink/?linkid=616025)
 
 - U moet de [Azure PowerShell-modules](https://go.microsoft.com/?linkid=9811175) hebben geïnstalleerd.
 
-  - De modules bieden opdrachten, zoals **New-AzStorageAccount**.
+  - De modules bieden opdrachten, zoals **New-AzStorageAccount** .
 
 ## <a name="phase-1-powershell-code-for-azure-storage-container"></a>Fase 1: PowerShell-code voor Azure Storage-container
 
@@ -62,10 +62,10 @@ Deze PowerShell is fase 1 van het codevoorbeeld in twee fasen.
 
 Het script begint met opdrachten om op te schonen na een mogelijke vorige uitvoering, en kan opnieuw worden uitgevoerd.
 
-1. Plak het PowerShell-script in een eenvoudige teksteditor, zoals Notepad.exe, en sla het script op als een bestand met de extensie **.ps1**.
+1. Plak het PowerShell-script in een eenvoudige teksteditor, zoals Notepad.exe, en sla het script op als een bestand met de extensie **.ps1** .
 2. Start PowerShell ISE als een Beheerder.
 3. Typ bij de prompt<br/>`Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`<br/>en druk vervolgens op Enter.
-4. Open in PowerShell ISE het bestand **.ps1**. Voer het script uit.
+4. Open in PowerShell ISE het bestand **.ps1** . Voer het script uit.
 5. Het script start eerst een nieuw venster waarin u zich aanmeldt bij Azure.
 
    - Als u het script opnieuw uitvoert zonder de sessie te onderbreken, krijgt u de handige optie om de opdracht **Add-AzureAccount** uit te commentariëren.
@@ -258,7 +258,7 @@ Met het PowerShell-script is een aantal benoemde waarden afgedrukt toen het scri
 6. Sla deze op, en voer het script uit.
 
 > [!WARNING]
-> De waarde van de SAS-sleutel die is gegenereerd op basis van het voorafgaande PowerShell-script, kan beginnen met een ? (vraagteken). Wanneer u gebruikmaakt van de SAS-sleutel in het volgende T-SQL-script, moet u *de ? aan het begin verwijderen*. Anders worden uw inspanningen mogelijk geblokkeerd op basis van de beveiliging.
+> De waarde van de SAS-sleutel die is gegenereerd op basis van het voorafgaande PowerShell-script, kan beginnen met een ? (vraagteken). Wanneer u gebruikmaakt van de SAS-sleutel in het volgende T-SQL-script, moet u *de ? aan het begin verwijderen* . Anders worden uw inspanningen mogelijk geblokkeerd op basis van de beveiliging.
 
 ### <a name="transact-sql-code"></a>Transact-SQL-code
 
@@ -451,7 +451,7 @@ GO
 
 ## <a name="output"></a>Uitvoer
 
-Wanneer het Transact-SQL-script wordt voltooid, klikt u op een cel onder de kolomkop **event_data_XML**. Er wordt één **\<event>** -element wordt weergegeven, waarin één UPDATE-element te zien is.
+Wanneer het Transact-SQL-script wordt voltooid, klikt u op een cel onder de kolomkop **event_data_XML** . Er wordt één **\<event>** -element wordt weergegeven, waarin één UPDATE-element te zien is.
 
 Hier is één **\<event>** -element dat is gegenereerd tijdens het testen:
 
@@ -496,19 +496,19 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 In het voorafgaande Transact-SQL-script is de volgende systeemfunctie gebruikt om event_file te lezen:
 
-- [sys.fn_xe_file_target_read_file (Transact-SQL)](https://msdn.microsoft.com/library/cc280743.aspx)
+- [sys.fn_xe_file_target_read_file (Transact-SQL)](/sql/relational-databases/system-functions/sys-fn-xe-file-target-read-file-transact-sql)
 
 Een uitleg van geavanceerde opties voor het weergeven van gegevens uit uitgebreide gebeurtenissen is beschikbaar op:
 
-- [Geavanceerde weergave van doelgegevens uit uitgebreide gebeurtenissen](https://msdn.microsoft.com/library/mt752502.aspx)
+- [Geavanceerde weergave van doelgegevens uit uitgebreide gebeurtenissen](/sql/relational-databases/extended-events/advanced-viewing-of-target-data-from-extended-events-in-sql-server)
 
 ## <a name="converting-the-code-sample-to-run-on-sql-server"></a>Het codevoorbeeld converteren om uit te voeren in SQL Server
 
 Stel dat u het voorafgaande Transact-SQL-voorbeeld wilt uitvoeren in Microsoft SQL Server.
 
-- Voor eenvoud moet u het gebruik van de Azure Storage-container volledig vervangen door een eenvoudig bestand zoals *C:\myeventdata.xel*. Het bestand wordt geschreven naar de lokale harde schijf van de computer waarop SQL Server wordt gehost.
-- U hebt geen Transact-SQL-instructies nodig voor **CREATE MASTER KEY** en **CREATE CREDENTIAL**.
-- In de **CREATE EVENT SESSION**-instructie, in het bijbehorende **ADD TARGET**-component, vervangt u de Http-waarde die is toegewezen aan **filename=** , door de tekenreeks voor het volledige pad, zoals *C:\myfile.xel*.
+- Voor eenvoud moet u het gebruik van de Azure Storage-container volledig vervangen door een eenvoudig bestand zoals *C:\myeventdata.xel* . Het bestand wordt geschreven naar de lokale harde schijf van de computer waarop SQL Server wordt gehost.
+- U hebt geen Transact-SQL-instructies nodig voor **CREATE MASTER KEY** en **CREATE CREDENTIAL** .
+- In de **CREATE EVENT SESSION** -instructie, in het bijbehorende **ADD TARGET** -component, vervangt u de Http-waarde die is toegewezen aan **filename=** , door de tekenreeks voor het volledige pad, zoals *C:\myfile.xel* .
   
   - Er hoeft geen Azure Storage-account te worden gebruikt.
 
@@ -517,8 +517,8 @@ Stel dat u het voorafgaande Transact-SQL-voorbeeld wilt uitvoeren in Microsoft S
 Zie voor meer informatie over accounts en containers in de Azure Storage-service:
 
 - [Blob Storage gebruiken met .NET](../../storage/blobs/storage-quickstart-blobs-dotnet.md)
-- [Naamgeving van en verwijzen naar containers, blobs en metagegevens](https://msdn.microsoft.com/library/azure/dd135715.aspx)
-- [Werken met de hoofdcontainer](https://msdn.microsoft.com/library/azure/ee395424.aspx)
-- [Les 1: Een opgeslagen toegangsbeleid en een SAS (Shared Access Signature) maken voor een Azure-container](https://msdn.microsoft.com/library/dn466430.aspx)
-  - [Les 2: Een SQL Server-referentie maken met behulp van een handtekening voor een SAS (Shared Access Signature)](https://msdn.microsoft.com/library/dn466435.aspx)
-- [Uitgebreide gebeurtenissen voor Microsoft SQL Server](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)
+- [Naamgeving van en verwijzen naar containers, blobs en metagegevens](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)
+- [Werken met de hoofdcontainer](/rest/api/storageservices/Working-with-the-Root-Container)
+- [Les 1: Een opgeslagen toegangsbeleid en een SAS (Shared Access Signature) maken voor een Azure-container](/sql/relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016#1---create-stored-access-policy-and-shared-access-storage)
+  - [Les 2: Een SQL Server-referentie maken met behulp van een handtekening voor een SAS (Shared Access Signature)](/sql/relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016#2---create-a-sql-server-credential-using-a-shared-access-signature)
+- [Uitgebreide gebeurtenissen voor Microsoft SQL Server](/sql/relational-databases/extended-events/extended-events)

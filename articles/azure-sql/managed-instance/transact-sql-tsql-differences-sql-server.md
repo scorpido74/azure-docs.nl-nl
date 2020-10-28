@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 06/02/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 36377d34a03150fefb8332bcfbe7bb6633ccc606
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 1b42e9ea06d13271c277ff254b41f10a1ff07e14
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973305"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790607"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>T-SQL-verschillen tussen SQL Server & Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -114,7 +114,7 @@ SQL Managed instance heeft geen toegang tot bestands shares en Windows-mappen, d
 
 Zie [certificaat](/sql/t-sql/statements/create-certificate-transact-sql) en [back-upcertificaat](/sql/t-sql/statements/backup-certificate-transact-sql)maken. 
  
-**Tijdelijke oplossing**: in plaats van het maken van een back-up van het certificaat en het herstellen van de back-up, [de binaire inhoud en de persoonlijke sleutel van het certificaat op te halen, deze op te slaan als. SQL-bestand en te maken](/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database)
+**Tijdelijke oplossing** : in plaats van het maken van een back-up van het certificaat en het herstellen van de back-up, [de binaire inhoud en de persoonlijke sleutel van het certificaat op te halen, deze op te slaan als. SQL-bestand en te maken](/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database)
 
 ```sql
 CREATE CERTIFICATE  
@@ -153,7 +153,7 @@ SQL Managed instance heeft geen toegang tot bestanden, zodat er geen cryptografi
 - Het instellen van een Azure AD-aanmelding die is toegewezen aan een Azure AD-groep, wordt niet ondersteund voor de eigenaar van de data base.
 - Imitatie van Azure AD-principals op server niveau met behulp van andere Azure AD-principals wordt ondersteund, zoals de component [Execute as](/sql/t-sql/statements/execute-as-transact-sql) . UITVOEREN als beperkingen zijn:
 
-  - UITVOEREN als gebruiker wordt niet ondersteund voor Azure AD-gebruikers wanneer de naam verschilt van de aanmeldings naam. Een voor beeld hiervan is wanneer de gebruiker wordt gemaakt via de syntaxis CREATE USER [myAadUser] van LOGIN [ john@contoso.com ] en imitatie wordt geprobeerd via exec as User = _myAadUser_. Wanneer u een **gebruiker** maakt op basis van een Azure ad server-principal (aanmelden), geeft u de user_name op als dezelfde login_name van de **aanmelding**.
+  - UITVOEREN als gebruiker wordt niet ondersteund voor Azure AD-gebruikers wanneer de naam verschilt van de aanmeldings naam. Een voor beeld hiervan is wanneer de gebruiker wordt gemaakt via de syntaxis CREATE USER [myAadUser] van LOGIN [ john@contoso.com ] en imitatie wordt geprobeerd via exec as User = _myAadUser_ . Wanneer u een **gebruiker** maakt op basis van een Azure ad server-principal (aanmelden), geeft u de user_name op als dezelfde login_name van de **aanmelding** .
   - Alleen de principals op het SQL Server niveau (aanmeldingen) die deel uitmaken van de `sysadmin` rol kunnen de volgende bewerkingen uitvoeren die zijn gericht op Azure AD-principals:
 
     - EXECUTE AS USER
@@ -220,7 +220,7 @@ Zie [ALTER data base set partner en Witness instellen](/sql/t-sql/statements/alt
 
 - Meerdere logboek bestanden worden niet ondersteund.
 - In-Memory-objecten worden niet ondersteund in de servicelaag Algemeen. 
-- Er is een limiet van 280 bestanden per Algemeen-exemplaar, wat een maximum van 280 bestanden per data base impliceert. De gegevens en logboek bestanden in de laag Algemeen worden meegeteld bij deze limiet. [De laag bedrijfskritiek ondersteunt 32.767 bestanden per data base](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
+- Er is een limiet van 280 bestanden per Algemeen-exemplaar, wat een maximum van 280 bestanden per data base impliceert. De gegevens en logboek bestanden in de laag Algemeen worden meegeteld bij deze limiet. [De laag bedrijfskritiek ondersteunt 32.767 bestanden per data base](./resource-limits.md#service-tier-characteristics).
 - De data base mag geen bestands groepen bevatten die FileStream-gegevens bevatten. Herstellen mislukt als. bak `FILESTREAM` gegevens bevat. 
 - Elk bestand wordt in Azure Blob-opslag geplaatst. I/o en door Voer per bestand zijn afhankelijk van de grootte van elk afzonderlijk bestand.
 
@@ -354,17 +354,17 @@ Niet-gedocumenteerde DBCC-instructies die zijn ingeschakeld in SQL Server, worde
 ### <a name="distributed-transactions"></a>Gedistribueerde transacties
 
 Gedeeltelijke ondersteuning voor [gedistribueerde trans acties](../database/elastic-transactions-overview.md) is momenteel beschikbaar als open bare preview. Ondersteunde scenario's zijn:
-* Trans acties waarbij deel nemers alleen Azure SQL Managed instances zijn die deel uitmaken van de [vertrouwens groep](https://aka.ms/mitrusted-groups)van de server.
+* Trans acties waarbij deel nemers alleen Azure SQL Managed instances zijn die deel uitmaken van de [vertrouwens groep](./server-trust-group-overview.md)van de server.
 * Trans acties die worden geïnitieerd vanuit .NET (TransactionScope-klasse) en Transact-SQL.
 
 Azure SQL Managed instance biedt momenteel geen ondersteuning voor andere scenario's die regel matig worden ondersteund door MSDTC on-premises of in azure Virtual Machines.
 
 ### <a name="extended-events"></a>Uitgebreide gebeurtenissen
 
-Sommige Windows-specifieke doelen voor Extended Events (XEvents) worden niet ondersteund:
+Sommige Windows-specifieke doelen voor uitgebreide evenementen (XEvents) worden niet ondersteund:
 
 - Het `etw_classic_sync` doel wordt niet ondersteund. `.xel`Bestanden opslaan in Azure Blob-opslag. Zie [etw_classic_sync doel](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etw_classic_sync_target-target).
-- Het `event_file` doel wordt niet ondersteund. `.xel`Bestanden opslaan in Azure Blob-opslag. Zie [event_file doel](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target).
+- Het `event_file` doel wordt niet ondersteund. `.xel`Bestanden opslaan in Azure Blob-opslag. Zie [Doel van de event_file](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target).
 
 ### <a name="external-libraries"></a>Externe bibliotheken
 
@@ -482,7 +482,7 @@ Service Broker met meerdere exemplaren wordt niet ondersteund:
   - `remote proc trans`
 - `sp_execute_external_scripts` wordt niet ondersteund. Zie [sp_execute_external_scripts](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples).
 - `xp_cmdshell` wordt niet ondersteund. Zie [xp_cmdshell](/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql).
-- `Extended stored procedures`worden niet ondersteund, inclusief `sp_addextendedproc`   en `sp_dropextendedproc` . Zie [uitgebreide opgeslagen procedures](/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql).
+- `Extended stored procedures` worden niet ondersteund, inclusief `sp_addextendedproc` en `sp_dropextendedproc` . Zie [uitgebreide opgeslagen procedures](/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql).
 - `sp_attach_db`, `sp_attach_single_file_db` en `sp_detach_db` worden niet ondersteund. Zie [sp_attach_db](/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql)en [sp_detach_db](/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
 
 ### <a name="system-functions-and-variables"></a>Systeem functies en-variabelen
@@ -527,13 +527,13 @@ De volgende MSDB-schema's in het SQL Managed instance moeten het eigendom zijn v
 
 - Algemene rollen
   - TargetServersRole
-- [Vaste database rollen](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15)
+- [Vaste database rollen](/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15)
   - SQLAgentUserRole
   - SQLAgentReaderRole
   - SQLAgentOperatorRole
-- [DatabaseMail rollen](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15#DBProfile):
+- [DatabaseMail rollen](/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15#DBProfile):
   - DatabaseMailUserRole
-- [Integratie Services-rollen](https://docs.microsoft.com/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15):
+- [Integratie Services-rollen](/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15):
   - db_ssisadmin
   - db_ssisltduser
   - db_ssisoperator
@@ -543,7 +543,7 @@ De volgende MSDB-schema's in het SQL Managed instance moeten het eigendom zijn v
 
 ### <a name="error-logs"></a>Foutenlogboeken
 
-SQL Managed instance plaatst uitgebreide informatie in fouten Logboeken. Er zijn veel interne systeem gebeurtenissen vastgelegd in het fouten logboek. Gebruik een aangepaste procedure om fout logboeken te lezen die een aantal irrelevante vermeldingen filteren. Zie voor meer informatie [SQL Managed instance-sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) of [SQL Managed instance extension (preview)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) voor Azure Data Studio.
+SQL Managed instance plaatst uitgebreide informatie in fouten Logboeken. Er zijn veel interne systeem gebeurtenissen vastgelegd in het fouten logboek. Gebruik een aangepaste procedure om fout logboeken te lezen die een aantal irrelevante vermeldingen filteren. Zie voor meer informatie [SQL Managed instance-sp_readmierrorlog](/archive/blogs/sqlcat/azure-sql-db-managed-instance-sp_readmierrorlog) of [SQL Managed instance extension (preview)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) voor Azure Data Studio.
 
 ## <a name="next-steps"></a>Volgende stappen
 

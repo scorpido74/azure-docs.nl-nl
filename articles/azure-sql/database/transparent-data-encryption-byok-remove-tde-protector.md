@@ -5,19 +5,19 @@ description: Lees hoe u kunt reageren op een mogelijk aangetast TDE-Protector vo
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: seo-lt-2019 sqldbrb=1
+ms.custom: seo-lt-2019 sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/24/2020
-ms.openlocfilehash: 77f2312438f3f9db7aa4e0dc7cc0f672644a87c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 657e3967d9e34147364114cec4d946e900f60032
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617398"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791372"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Een Transparent Data Encryption-Protector (TDE) verwijderen met behulp van Power shell
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -26,16 +26,16 @@ ms.locfileid: "91617398"
 In dit onderwerp wordt beschreven hoe u kunt reageren op een mogelijk aangetast TDE-bescherming voor Azure SQL Database of Azure Synapse Analytics die gebruikmaakt van TDE met door de klant beheerde sleutels in Azure Key Vault-Bring Your Own Key (BYOK)-ondersteuning. Zie de [pagina overzicht](transparent-data-encryption-byok-overview.md)voor meer informatie over BYOK-ondersteuning voor TDe.
 
 > [!CAUTION]
-> De procedures die in dit artikel worden beschreven, mogen alleen in uitzonderlijke gevallen of in test omgevingen worden uitgevoerd. Bekijk de stappen zorgvuldig, omdat het verwijderen van actief gebruikte TDE-Protectors van Azure Key Vault ertoe leidt dat de **Data Base niet meer beschikbaar**is.
+> De procedures die in dit artikel worden beschreven, mogen alleen in uitzonderlijke gevallen of in test omgevingen worden uitgevoerd. Bekijk de stappen zorgvuldig, omdat het verwijderen van actief gebruikte TDE-Protectors van Azure Key Vault ertoe leidt dat de **Data Base niet meer beschikbaar** is.
 
 Als een sleutel wordt vermoed om te worden aangetast, bijvoorbeeld dat een service of gebruiker ongeoorloofde toegang tot de sleutel had, is het raadzaam om de sleutel te verwijderen.
 
-Houd er rekening mee dat wanneer de TDE-Protector wordt verwijderd in Key Vault, in Maxi maal tien minuten, alle versleutelde data bases alle verbindingen met het bijbehorende fout bericht gaan weigeren en de status wijzigen in [ontoegankelijk](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-byok-azure-sql#inaccessible-tde-protector).
+Houd er rekening mee dat wanneer de TDE-Protector wordt verwijderd in Key Vault, in Maxi maal tien minuten, alle versleutelde data bases alle verbindingen met het bijbehorende fout bericht gaan weigeren en de status wijzigen in [ontoegankelijk](./transparent-data-encryption-byok-overview.md#inaccessible-tde-protector).
 
 Deze hand leiding gaat over twee benaderingen, afhankelijk van het gewenste resultaat na een reactie op incidenten:
 
-- De data bases in Azure SQL Database/Azure Synapse Analytics **ontoegankelijk**maken.
-- De data bases in Azure SQL Database/Azure Azure Synapse Analytics (voorheen SQL Data Warehouse) niet **toegankelijk**maken.
+- De data bases in Azure SQL Database/Azure Synapse Analytics **ontoegankelijk** maken.
+- De data bases in Azure SQL Database/Azure Azure Synapse Analytics (voorheen SQL Data Warehouse) niet **toegankelijk** maken.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -45,7 +45,7 @@ Deze hand leiding gaat over twee benaderingen, afhankelijk van het gewenste resu
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
- Raadpleeg [Azure PowerShell installeren](/powershell/azure/install-az-ps) voor instructies over de installatie van de Az-module. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor specifieke cmdlets.
+ Raadpleeg [Azure PowerShell installeren](/powershell/azure/install-az-ps) voor instructies over de installatie van de Az-module. Zie [AzureRM. SQL](/powershell/module/AzureRM.Sql/)voor specifieke cmdlets.
 
 > [!IMPORTANT]
 > De module Power shell Azure Resource Manager (RM) wordt nog steeds ondersteund, maar alle toekomstige ontwikkel aars voor de module AZ. SQL. De AzureRM-module blijft tot ten minste december 2020 bugfixes ontvangen.  De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek. Zie [Introductie van de nieuwe Az-module van Azure PowerShell](/powershell/azure/new-azureps-module-az) voor meer informatie over de compatibiliteit van de argumenten.

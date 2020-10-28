@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/11/2019
-ms.openlocfilehash: 06763624231fde344990da6d0a4639bcccdedf00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41f3505388e72fba15277067a94cf4e473008f20
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448867"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790420"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>SQL Server-databasemigratie naar Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,11 +41,11 @@ De volgende lijst bevat de algemene werk stroom voor een SQL Server database mig
 
   ![Diagram van VSSSDT-migratie](./media/migrate-to-database-from-sql-server/azure-sql-migration-sql-db.png)
 
-1. [Evalueer](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem) de Data Base voor compatibiliteit met behulp van de nieuwste versie van de [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595).
+1. [Evalueer](/sql/dma/dma-assesssqlonprem) de Data Base voor compatibiliteit met behulp van de nieuwste versie van de [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595).
 2. Bereid alle benodigde fixes voor als Transact-SQL-scripts.
-3. Maak een transactioneel consistente kopie van de bron database die wordt gemigreerd of stopt nieuwe trans acties in de bron database terwijl de migratie plaatsvindt. Voor het uitvoeren van deze laatste optie, waaronder het uitschakelen van client connectiviteit of het maken van een [moment opname van een Data Base](https://msdn.microsoft.com/library/ms175876.aspx). Na de migratie kunt u transactionele replicatie gebruiken om de gemigreerde data bases bij te werken met wijzigingen die zich voordoen na het afsluit punt voor de migratie. Zie [migreren met transactionele migratie](migrate-to-database-from-sql-server.md#method-2-use-transactional-replication).  
+3. Maak een transactioneel consistente kopie van de bron database die wordt gemigreerd of stopt nieuwe trans acties in de bron database terwijl de migratie plaatsvindt. Voor het uitvoeren van deze laatste optie, waaronder het uitschakelen van client connectiviteit of het maken van een [moment opname van een Data Base](/sql/relational-databases/databases/create-a-database-snapshot-transact-sql). Na de migratie kunt u transactionele replicatie gebruiken om de gemigreerde data bases bij te werken met wijzigingen die zich voordoen na het afsluit punt voor de migratie. Zie [migreren met transactionele migratie](migrate-to-database-from-sql-server.md#method-2-use-transactional-replication).  
 4. Implementeer de Transact-SQL-scripts om de fixes toe te passen op de databasekopie.
-5. [Migreer](https://docs.microsoft.com/sql/dma/dma-migrateonpremsql) de database kopie naar een nieuwe data base in Azure SQL database met behulp van de Data Migration Assistant.
+5. [Migreer](/sql/dma/dma-migrateonpremsql) de database kopie naar een nieuwe data base in Azure SQL database met behulp van de Data Migration Assistant.
 
 > [!NOTE]
 > In plaats van DMA te gebruiken, kunt u ook een BACPAC-bestand gebruiken. Zie [een BACPAC-bestand importeren in een nieuwe data base in Azure SQL database](database-import.md).
@@ -63,11 +63,11 @@ Hieronder leest u enkele aanbevelingen voor het behalen van optimale prestaties 
 
 ### <a name="optimize-performance-after-the-migration-completes"></a>Prestaties optimaliseren nadat de migratie is voltooid
 
-[Werk uw statistieken bij](https://docs.microsoft.com/sql/t-sql/statements/update-statistics-transact-sql) met een volledige scan nadat de migratie is voltooid.
+[Werk uw statistieken bij](/sql/t-sql/statements/update-statistics-transact-sql) met een volledige scan nadat de migratie is voltooid.
 
 ## <a name="method-2-use-transactional-replication"></a>Methode 2: Transactionele replicatie gebruiken
 
-Wanneer u de SQL Server-Data Base niet uit de productie omgeving kunt verwijderen terwijl de migratie wordt uitgevoerd, gebruikt u SQL Server transactionele replicatie als uw migratie oplossing. Voor het gebruik van deze methode moet de brondatabase voldoen aan de [vereisten voor transactionele replicatie](https://msdn.microsoft.com/library/mt589530.aspx) en compatibel zijn met Azure SQL Database. Zie replicatie configureren voor AlwaysOn- [beschikbaarheids groepen (SQL Server)](/sql/database-engine/availability-groups/windows/configure-replication-for-always-on-availability-groups-sql-server)voor meer informatie over SQL-replicatie met Always on.
+Wanneer u de SQL Server-Data Base niet uit de productie omgeving kunt verwijderen terwijl de migratie wordt uitgevoerd, gebruikt u SQL Server transactionele replicatie als uw migratie oplossing. Voor het gebruik van deze methode moet de brondatabase voldoen aan de [vereisten voor transactionele replicatie](./replication-to-sql-database.md) en compatibel zijn met Azure SQL Database. Zie replicatie configureren voor AlwaysOn- [beschikbaarheids groepen (SQL Server)](/sql/database-engine/availability-groups/windows/configure-replication-for-always-on-availability-groups-sql-server)voor meer informatie over SQL-replicatie met Always on.
 
 Als u deze oplossing wilt gebruiken, configureert u uw data base in Azure SQL Database als een abonnee voor het SQL Server exemplaar dat u wilt migreren. De distributeur voor transactionele replicatie synchroniseert dan de gegevens uit de database die moeten worden gesynchroniseerd (de uitgever) terwijl er nieuwe transacties blijven binnenkomen.
 
@@ -108,22 +108,21 @@ Enkele tips en verschillen met betrekking tot migratie naar SQL Database
 Er zijn een groot aantal compatibiliteits problemen die kunnen optreden, afhankelijk van de versie van SQL Server in de bron database en de complexiteit van de data base die u wilt migreren. Oudere versies van SQL Server hebben vaker te maken met compatibiliteitsproblemen. Gebruik de volgende resources en voer ook op internet een gerichte zoekopdracht uit (met uw zoekmachine):
 
 - [SQL Server-databasefuncties die niet worden ondersteund in Azure SQL Database](transact-sql-tsql-differences-sql-server.md)
-- [Database Engine-functionaliteit in SQL Server 2016 stopgezet](https://msdn.microsoft.com/library/ms144262%28v=sql.130%29)
-- [Database Engine-functionaliteit in SQL Server 2014 stopgezet](https://msdn.microsoft.com/library/ms144262%28v=sql.120%29)
-- [Database Engine-functionaliteit in SQL Server 2012 stopgezet](https://msdn.microsoft.com/library/ms144262%28v=sql.110%29)
-- [Database Engine-functionaliteit in SQL Server 2008 R2 stopgezet](https://msdn.microsoft.com/library/ms144262%28v=sql.105%29)
-- [Database Engine-functionaliteit in SQL Server 2005 stopgezet](https://msdn.microsoft.com/library/ms144262%28v=sql.90%29)
+- [Database Engine-functionaliteit in SQL Server 2016 stopgezet](/sql/database-engine/discontinued-database-engine-functionality-in-sql-server)
+- [Database Engine-functionaliteit in SQL Server 2014 stopgezet](/sql/database-engine/discontinued-database-engine-functionality-in-sql-server?viewFallbackFrom=sql-server-2014)
+- [Database Engine-functionaliteit in SQL Server 2012 stopgezet](/previous-versions/sql/sql-server-2012/ms144262(v=sql.110))
+- [Database Engine-functionaliteit in SQL Server 2008 R2 stopgezet](/previous-versions/sql/sql-server-2008-r2/ms144262(v=sql.105))
+- [Database Engine-functionaliteit in SQL Server 2005 stopgezet](/previous-versions/sql/sql-server-2005/ms144262(v=sql.90))
 
-Naast het zoeken op internet en het gebruik van deze resources, gebruikt u de [pagina micro soft Q&een vraag voor Azure SQL database](https://docs.microsoft.com/answers/topics/azure-sql-database.html) of [stack overflow](https://stackoverflow.com/).
+Naast het zoeken op internet en het gebruik van deze resources, gebruikt u de [pagina micro soft Q&een vraag voor Azure SQL database](/answers/topics/azure-sql-database.html) of [stack overflow](https://stackoverflow.com/).
 
 > [!IMPORTANT]
 > Met Azure SQL Managed Instance kunt u een bestaand SQL Server exemplaar en de bijbehorende data bases migreren met minimale problemen met de compatibiliteit. Zie [Wat is een beheerd exemplaar](../managed-instance/sql-managed-instance-paas-overview.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Gebruik het script dat beschikbaar is op de Azure SQL EMEA Engineers-blog [om het tempdb-gebruik tijdens de migratie te bewaken](https://blogs.msdn.microsoft.com/azuresqlemea/2016/12/28/lesson-learned-10-monitoring-tempdb-usage/).
-- Gebruik het script dat beschikbaar is op de Azure SQL EMEA Engineers-blog [om de transactielogboekruimte van de database te bewaken terwijl de migratie bezig is](https://docs.microsoft.com/archive/blogs/azuresqlemea/lesson-learned-7-monitoring-the-transaction-log-space-of-my-database).
-- Raadpleeg dit blogartikel van het SQL Server-klantadviesteam over migratie met behulp van BACPAC-bestanden: [Migrating from SQL Server to Azure SQL Database using BACPAC Files](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/) (Migreren van SQL Server naar Azure SQL Database met BACPAC-bestanden).
-- Meer informatie over hoe u na de migratie met de UTC-tijd werkt, vindt u in [Modifying the default time zone for your local time zone](https://blogs.msdn.microsoft.com/azuresqlemea/2016/07/27/lesson-learned-4-modifying-the-default-time-zone-for-your-local-time-zone/) (De standaardtijdzone voor uw lokale tijdzone wijzigen).
-- Meer informatie over hoe u na de migratie de standaardtaal van een database wijzigt, vindt u in [How to change the default language of Azure SQL Database](https://blogs.msdn.microsoft.com/azuresqlemea/2017/01/13/lesson-learned-16-how-to-change-the-default-language-of-azure-sql-database/) (De standaardtaal van Azure SQL Database wijzigen).
- 
+- Gebruik het script dat beschikbaar is op de Azure SQL EMEA Engineers-blog [om het tempdb-gebruik tijdens de migratie te bewaken](/archive/blogs/azuresqlemea/lesson-learned-10-monitoring-tempdb-usage).
+- Gebruik het script dat beschikbaar is op de Azure SQL EMEA Engineers-blog [om de transactielogboekruimte van de database te bewaken terwijl de migratie bezig is](/archive/blogs/azuresqlemea/lesson-learned-7-monitoring-the-transaction-log-space-of-my-database).
+- Raadpleeg dit blogartikel van het SQL Server-klantadviesteam over migratie met behulp van BACPAC-bestanden: [Migrating from SQL Server to Azure SQL Database using BACPAC Files](/archive/blogs/sqlcat/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files) (Migreren van SQL Server naar Azure SQL Database met BACPAC-bestanden).
+- Meer informatie over hoe u na de migratie met de UTC-tijd werkt, vindt u in [Modifying the default time zone for your local time zone](/archive/blogs/azuresqlemea/lesson-learned-4-modifying-the-default-time-zone-for-your-local-time-zone) (De standaardtijdzone voor uw lokale tijdzone wijzigen).
+- Meer informatie over hoe u na de migratie de standaardtaal van een database wijzigt, vindt u in [How to change the default language of Azure SQL Database](/archive/blogs/azuresqlemea/lesson-learned-16-how-to-change-the-default-language-of-azure-sql-database) (De standaardtaal van Azure SQL Database wijzigen).

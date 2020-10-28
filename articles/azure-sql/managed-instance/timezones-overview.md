@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 ms.date: 10/12/2020
-ms.openlocfilehash: 7b95ddfdb75dd5e5951a9c95442798692582fe6a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: bf0cfd70c9850cc6a5ff4482b494d68700022ad8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978353"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790624"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Tijd zones in Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -51,7 +51,7 @@ Wanneer u para meters voor een nieuw exemplaar opgeeft, selecteert u een tijd zo
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-sjabloon
 
-Geef de eigenschap timezoneId op in uw [Resource Manager-sjabloon](https://aka.ms/sql-mi-create-arm-posh) om de tijd zone in te stellen tijdens het maken van een exemplaar.
+Geef de eigenschap timezoneId op in uw [Resource Manager-sjabloon](./scripts/create-powershell-azure-resource-manager-template.md) om de tijd zone in te stellen tijdens het maken van een exemplaar.
 
 ```json
 "properties": {
@@ -95,7 +95,7 @@ Het gebruik van dezelfde tijd zone in een primair en secundair exemplaar in een 
 
 ## <a name="limitations"></a>Beperkingen
 
-- De tijd zone van het bestaande beheerde exemplaar kan niet worden gewijzigd. Als tijdelijke oplossing maakt u een nieuw beheerd exemplaar met de juiste tijd zone en voert u vervolgens hand matig een back-up-en herstel bewerking uit. u kunt ook het beste een [herstel punt voor meerdere exemplaren](https://docs.microsoft.com/azure/azure-sql/managed-instance/point-in-time-restore?tabs=azure-portal#restore-an-existing-database)uitvoeren.
+- De tijd zone van het bestaande beheerde exemplaar kan niet worden gewijzigd. Als tijdelijke oplossing maakt u een nieuw beheerd exemplaar met de juiste tijd zone en voert u vervolgens hand matig een back-up-en herstel bewerking uit. u kunt ook het beste een [herstel punt voor meerdere exemplaren](./point-in-time-restore.md?tabs=azure-portal#restore-an-existing-database)uitvoeren.
 - Externe processen die vanuit de SQL Server Agent taken worden gestart, hebben geen tijd zone van het exemplaar.
 
 ## <a name="list-of-supported-time-zones"></a>Lijst met ondersteunde tijd zones
@@ -243,7 +243,7 @@ Het gebruik van dezelfde tijd zone in een primair en secundair exemplaar in een 
 
 ## <a name="see-also"></a>Zie ook 
 
-- [CURRENT_TIMEZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql)
-- [CURRENT_TIMEZONE_ID (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-id-transact-sql)
-- [OP tijd ZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql)
-- [sys.time_zone_info (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql)
+- [CURRENT_TIMEZONE (Transact-SQL)](/sql/t-sql/functions/current-timezone-transact-sql)
+- [CURRENT_TIMEZONE_ID (Transact-SQL)](/sql/t-sql/functions/current-timezone-id-transact-sql)
+- [OP tijd ZONE (Transact-SQL)](/sql/t-sql/queries/at-time-zone-transact-sql)
+- [sys.time_zone_info (Transact-SQL)](/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql)

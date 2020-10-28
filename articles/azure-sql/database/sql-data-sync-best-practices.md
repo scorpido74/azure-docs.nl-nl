@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/20/2018
-ms.openlocfilehash: fd9bc17db3eccc64f35d7295d57dc120364481dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59e28e4a3d630aac0954802e8777058c00261006
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332981"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791440"
 ---
 # <a name="best-practices-for-azure-sql-data-sync"></a>Aanbevolen procedures voor Azure SQL Data Sync 
 
@@ -41,11 +41,11 @@ Zie [Gegevens synchroniseren tussen meerdere cloud- en on-premises databases met
 
 ### <a name="database-accounts-with-least-required-privileges"></a>Database accounts met mini maal vereiste bevoegdheden
 
--   **Voor de synchronisatie-instellingen**. Create/ALTER TABLE; Alter data base; Procedure maken; Schema selecteren/wijzigen; User-Defined type maken.
+-   **Voor de synchronisatie-instellingen** . Create/ALTER TABLE; Alter data base; Procedure maken; Schema selecteren/wijzigen; User-Defined type maken.
 
--   **Voor een voortdurende synchronisatie**. Selecteren/invoegen/bijwerken/verwijderen voor tabellen die zijn geselecteerd voor synchronisatie, en op meta gegevens synchroniseren en tracerings tabellen. Machtiging voor uitvoeren voor opgeslagen procedures die zijn gemaakt door de service; Machtiging voor uitvoeren voor door de gebruiker gedefinieerde tabel typen.
+-   **Voor een voortdurende synchronisatie** . Selecteren/invoegen/bijwerken/verwijderen voor tabellen die zijn geselecteerd voor synchronisatie, en op meta gegevens synchroniseren en tracerings tabellen. Machtiging voor uitvoeren voor opgeslagen procedures die zijn gemaakt door de service; Machtiging voor uitvoeren voor door de gebruiker gedefinieerde tabel typen.
 
--   **Voor**het ongedaan maken van de inrichting. Wijzigen van het gedeelte van de synchronisatie van tabellen. Selecteren/verwijderen bij het synchroniseren van meta gegevens tabellen; Beheer van tabellen voor synchronisatie bijhouden, opgeslagen procedures en door de gebruiker gedefinieerde typen.
+-   **Voor** het ongedaan maken van de inrichting. Wijzigen van het gedeelte van de synchronisatie van tabellen. Selecteren/verwijderen bij het synchroniseren van meta gegevens tabellen; Beheer van tabellen voor synchronisatie bijhouden, opgeslagen procedures en door de gebruiker gedefinieerde typen.
 
 Azure SQL Database ondersteunt slechts één set met referenties. Als u deze taken binnen deze beperking wilt uitvoeren, moet u rekening houden met de volgende opties:
 
@@ -168,7 +168,7 @@ Controleer de synchronisatie groep en de status van de data base regel matig via
 
 ### <a name="avoid-out-of-date-databases-and-sync-groups"></a><a name="avoid-out-of-date-databases-and-sync-groups"></a> Verouderde data bases en synchronisatie groepen voor komen
 
-Een synchronisatie groep of een data base in een synchronisatie groep kan verouderd raken. Wanneer de status van een synchronisatie groep **verouderd**is, werkt deze niet meer. Wanneer de status van een Data Base **verouderd**is, kunnen gegevens verloren gaan. U kunt dit scenario het beste vermijden in plaats van het te herstellen.
+Een synchronisatie groep of een data base in een synchronisatie groep kan verouderd raken. Wanneer de status van een synchronisatie groep **verouderd** is, werkt deze niet meer. Wanneer de status van een Data Base **verouderd** is, kunnen gegevens verloren gaan. U kunt dit scenario het beste vermijden in plaats van het te herstellen.
 
 #### <a name="avoid-out-of-date-databases"></a>Verouderde data bases voor komen
 
@@ -238,7 +238,7 @@ Zie de volgende onderwerpen voor meer informatie over SQL Data Sync:
         -  [Power shell gebruiken om te synchroniseren tussen meerdere data bases in Azure SQL Database](scripts/sql-data-sync-sync-data-between-sql-databases.md)
         -  [Power shell gebruiken om te synchroniseren tussen een data base in SQL Database en een data base in een SQL Server-exemplaar](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
 -   Data Sync-agent: [Data Sync-agent voor Azure SQL Data Sync](sql-data-sync-agent-overview.md)
--   Bewaken: [SQL Data Sync bewaken met Azure Monitor-logboeken](sql-data-sync-monitor-sync.md)
+-   Bewaken: [SQL Data Sync bewaken met Azure Monitor-logboeken](./monitor-tune-overview.md)
 -   Problemen oplossen: [Problemen met Azure SQL Data Sync oplossen](sql-data-sync-troubleshoot.md)
 -   Het synchronisatieschema bijwerken
     -   Met Transact-SQL: [De replicatie van schemawijzigingen in Azure SQL Data Sync automatiseren](sql-data-sync-update-sync-schema.md)
@@ -247,4 +247,4 @@ Zie de volgende onderwerpen voor meer informatie over SQL Data Sync:
 Meer informatie over SQL Database vindt u in:
 
 -   [Overzicht van SQL Database?](sql-database-paas-overview.md)
--   [Levenscyclus beheer van de data base](https://msdn.microsoft.com/library/jj907294.aspx)
+-   [Levenscyclus beheer van de data base](/previous-versions/sql/sql-server-guides/jj907294(v=sql.110))

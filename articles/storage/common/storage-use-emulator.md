@@ -7,12 +7,12 @@ ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: 959a58a38861075c6509fe57136d8991eeb98ce6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b51746326c2df81e2dd2bdc72bf2a9ab72b649b5
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588191"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790556"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>De Azure Storage-emulator gebruiken voor ontwikkelen en testen
 
@@ -95,7 +95,7 @@ Als u de opslag emulator hebt geïnstalleerd en gestart, kunt u de code hierop t
 
 [!INCLUDE [storage-emulator-connection-string-include](../../../includes/storage-emulator-connection-string-include.md)]
 
-Zie [Azure Storage-verbindings reeksen configureren](../storage-configure-connection-string.md)voor meer informatie over verbindings reeksen.
+Zie [Azure Storage-verbindings reeksen configureren](./storage-configure-connection-string.md)voor meer informatie over verbindings reeksen.
 
 ### <a name="authorize-with-a-shared-access-signature"></a>Autoriseren met een hand tekening voor gedeelde toegang
 
@@ -161,7 +161,7 @@ Vanaf versie 3,1 ondersteunt de opslag emulator geo-redundante replicatie met le
 `http://127.0.0.1:10000/myaccount-secondary/mycontainer/myblob.txt`
 
 > [!NOTE]
-> Gebruik de Storage-client bibliotheek voor .NET versie 3,2 of hoger voor programmatische toegang tot de secundaire met de opslag emulator. Raadpleeg de [Microsoft Azure Storage-client bibliotheek voor .net](https://msdn.microsoft.com/library/azure/dn261237.aspx) voor meer informatie.
+> Gebruik de Storage-client bibliotheek voor .NET versie 3,2 of hoger voor programmatische toegang tot de secundaire met de opslag emulator. Raadpleeg de [Microsoft Azure Storage-client bibliotheek voor .net](/previous-versions/azure/dn261237(v=azure.100)) voor meer informatie.
 >
 >
 
@@ -184,11 +184,11 @@ Typ `/help` bij de opdrachtprompt om een lijst met opties te zien.
 
 | Optie | Beschrijving | Opdracht | Argumenten |
 | --- | --- | --- | --- |
-| **Begin** |Hiermee wordt de opslag emulator gestart. |`AzureStorageEmulator.exe start [-inprocess]` |*-Opnieuw verwerken*: Start de emulator in het huidige proces in plaats van een nieuw proces te maken. |
+| **Begin** |Hiermee wordt de opslag emulator gestart. |`AzureStorageEmulator.exe start [-inprocess]` |*-Opnieuw verwerken* : Start de emulator in het huidige proces in plaats van een nieuw proces te maken. |
 | **Stoppen** |Hiermee stopt u de opslag emulator. |`AzureStorageEmulator.exe stop` | |
 | **Status** |Hiermee wordt de status van de opslag emulator afgedrukt. |`AzureStorageEmulator.exe status` | |
-| **Veilig** |Hiermee wist u de gegevens in alle services die zijn opgegeven op de opdracht regel. |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]` |*BLOB*: verwijdert BLOB-gegevens. <br/>*Queue*: Hiermee worden de wachtrij gegevens gewist. <br/>*tabel*: tabel gegevens worden gewist. <br/>*all*: Hiermee worden alle gegevens in alle services gewist. |
-| **Init** |Voert eenmalige initialisatie uit om de emulator in te stellen. |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-Server serverName\instanceName*: Hiermee geeft u de server die als host fungeert voor het SQL-exemplaar. <br/>*-sqlinstance INSTANCENAME*: Hiermee geeft u de naam op van het SQL-exemplaar dat moet worden gebruikt in het standaard Server exemplaar. <br/>*-forcecreate*: Hiermee wordt het maken van de SQL database afgedwongen, zelfs als dit al bestaat. <br/>*-skipcreate*: Hiermee slaat u het maken van de SQL database over. Dit heeft prioriteit boven-forcecreate.<br/>*-reserveports*: probeert de HTTP-poorten te reserveren die aan de services zijn gekoppeld.<br/>*-unreserveports*: probeert reserve ringen te verwijderen voor de HTTP-poorten die zijn gekoppeld aan de services. Dit heeft prioriteit boven-reserveports.<br/>*-inproces*: voert de initialisatie uit in het huidige proces in plaats van een nieuw proces te starten. Het huidige proces moet worden gestart met verhoogde machtigingen als poort reserveringen worden gewijzigd. |
+| **Veilig** |Hiermee wist u de gegevens in alle services die zijn opgegeven op de opdracht regel. |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]` |*BLOB* : verwijdert BLOB-gegevens. <br/>*Queue* : Hiermee worden de wachtrij gegevens gewist. <br/>*tabel* : tabel gegevens worden gewist. <br/>*all* : Hiermee worden alle gegevens in alle services gewist. |
+| **Init** |Voert eenmalige initialisatie uit om de emulator in te stellen. |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-Server serverName\instanceName* : Hiermee geeft u de server die als host fungeert voor het SQL-exemplaar. <br/>*-sqlinstance INSTANCENAME* : Hiermee geeft u de naam op van het SQL-exemplaar dat moet worden gebruikt in het standaard Server exemplaar. <br/>*-forcecreate* : Hiermee wordt het maken van de SQL database afgedwongen, zelfs als dit al bestaat. <br/>*-skipcreate* : Hiermee slaat u het maken van de SQL database over. Dit heeft prioriteit boven-forcecreate.<br/>*-reserveports* : probeert de HTTP-poorten te reserveren die aan de services zijn gekoppeld.<br/>*-unreserveports* : probeert reserve ringen te verwijderen voor de HTTP-poorten die zijn gekoppeld aan de services. Dit heeft prioriteit boven-reserveports.<br/>*-inproces* : voert de initialisatie uit in het huidige proces in plaats van een nieuw proces te starten. Het huidige proces moet worden gestart met verhoogde machtigingen als poort reserveringen worden gewijzigd. |
 
 ## <a name="differences-between-the-storage-emulator-and-azure-storage"></a>Verschillen tussen de opslag emulator en het Azure Storage
 
@@ -310,7 +310,7 @@ Er zijn geen verschillen die specifiek zijn voor de wachtrij opslag in de emulat
 
 ### <a name="version-40"></a>Versie 4,0
 
-* De naam van het uitvoer bare bestand van de opslag-emulator is gewijzigd in *AzureStorageEmulator.exe*.
+* De naam van het uitvoer bare bestand van de opslag-emulator is gewijzigd in *AzureStorageEmulator.exe* .
 
 ### <a name="version-32"></a>Versie 3,2
 
@@ -329,7 +329,7 @@ Er zijn geen verschillen die specifiek zijn voor de wachtrij opslag in de emulat
 ## <a name="next-steps"></a>Volgende stappen
 
 * Evalueer de platformoverschrijdende, door de Community beheerde open-source Storage emulator- [Azurite](https://github.com/azure/azurite). 
-* [Azure Storage-voor beelden met behulp van .net](../storage-samples-dotnet.md) bevatten koppelingen naar verschillende code voorbeelden die u kunt gebruiken bij het ontwikkelen van uw toepassing.
+* [Azure Storage-voor beelden met behulp van .net](./storage-samples-dotnet.md) bevatten koppelingen naar verschillende code voorbeelden die u kunt gebruiken bij het ontwikkelen van uw toepassing.
 * U kunt de [Microsoft Azure Storage Explorer](https://storageexplorer.com) gebruiken om te werken met resources in uw Cloud-opslag account en in de-opslag emulator.
 
 ## <a name="see-also"></a>Zie ook

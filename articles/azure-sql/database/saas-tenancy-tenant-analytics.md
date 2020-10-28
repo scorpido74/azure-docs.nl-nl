@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 8076b417c8043a4f6796ccca0e67db79360ede73
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: dd77305a1b2f7d11a2e371f7682855e15739ee7d
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331665"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790930"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Analyses voor verschillende tenants waarbij geëxtraheerde gegevens worden gebruikt - app voor één tenant
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -69,11 +69,11 @@ Begrijpen hoe elke tenant gebruikmaakt van de service om opties te verkennen om 
 
 Voor het voltooien van deze zelfstudie moet u ervoor zorgen dat aan de volgende vereisten is voldaan:
 
-- De toepassing Wingtip Tickets SaaS Database Per Tenant is geïmplementeerd. Zie [De SaaS-app Wingtip implementeren en verkennen](../../sql-database/saas-dbpertenant-get-started-deploy.md) om de app in minder dan vijf minuten te implementeren
+- De toepassing Wingtip Tickets SaaS Database Per Tenant is geïmplementeerd. Zie [De SaaS-app Wingtip implementeren en verkennen](./saas-dbpertenant-get-started-deploy.md) om de app in minder dan vijf minuten te implementeren
 - De [broncode](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/) en de scripts van Wingtip Tickets SaaS Database Per Tenant worden gedownload van GitHub. Zie de downloadinstructies. Vergeet niet *de blokkering van het zip-bestand ongedaan te maken* voordat u de inhoud ervan uitpakt. Bekijk de [algemene richtlijnen](saas-tenancy-wingtip-app-guidance-tips.md) voor stappen voor het downloaden en het deblokkeren van de Wingtip Tickets-SaaS-scripts.
 - Power BI Desktop is geïnstalleerd. [Power BI Desktop downloaden](https://powerbi.microsoft.com/downloads/)
-- De batch met aanvullende tenants is ingericht; zie de [**Zelfstudie voor het inrichten van tenants**](../../sql-database/saas-dbpertenant-provision-and-catalog.md).
-- Er zijn een taakaccount en taakaccountdatabase aangemaakt. Bekijk de juiste stappen in de zelfstudie [**Schemabeheer**](../../sql-database/saas-tenancy-schema-management.md#create-a-job-agent-database-and-new-job-agent).
+- De batch met aanvullende tenants is ingericht; zie de [**Zelfstudie voor het inrichten van tenants**](./saas-dbpertenant-provision-and-catalog.md).
+- Er zijn een taakaccount en taakaccountdatabase aangemaakt. Bekijk de juiste stappen in de zelfstudie [**Schemabeheer**](./saas-tenancy-schema-management.md#create-a-job-agent-database-and-new-job-agent).
 
 ### <a name="create-data-for-the-demo"></a>Gegevens maken voor de demo
 
@@ -93,7 +93,7 @@ In de volgende stappen implementeert u de analyseopslag, die **tenantanalytics**
     - Als u SQL Database wilt gebruiken met columnstore, stelt u **$DemoScenario** = **3**  
 3. Druk op **F5** om het demoscript uit te voeren (dat het script *Deploy-TenantAnalyticsDB\<XX>.ps1* aanroept) dat de tenant analytics-gegevensopslag aanmaakt. 
 
-Nu dat u de toepassing heeft geïmplementeerd en deze hebt gevuld met interessante tenantgegevens, gebruikt u [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) om de servers **tenants1-dpt-&lt;User&gt;** en **catalog-dpt-&lt;User&gt;** te verbinden met Login = *developer* , Password = *P\@ssword1* . Raadpleeg de [inleidende zelfstudie](../../sql-database/saas-dbpertenant-wingtip-app-overview.md) voor meer begeleiding.
+Nu dat u de toepassing heeft geïmplementeerd en deze hebt gevuld met interessante tenantgegevens, gebruikt u [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) om de servers **tenants1-dpt-&lt;User&gt;** en **catalog-dpt-&lt;User&gt;** te verbinden met Login = *developer* , Password = *P\@ssword1* . Raadpleeg de [inleidende zelfstudie](./saas-dbpertenant-wingtip-app-overview.md) voor meer begeleiding.
 
 ![Schermopname met de benodigde gegevens om verbinding te maken met SQL Server.](./media/saas-tenancy-tenant-analytics/ssmsSignIn.png)
 
@@ -240,6 +240,6 @@ Gefeliciteerd!
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- Aanvullende [zelfstudies waarbij wordt voortgebouwd op de Wingtip-SaaS-toepassing](../../sql-database/saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials).
-- [Elastische taken](../../sql-database/elastic-jobs-overview.md).
-- [Analysequery's voor verschillende tenant waarbij geëxtraheerde gegevens worden gebruikt - app voor meerdere tenants](../../sql-database/saas-multitenantdb-tenant-analytics.md)
+- Aanvullende [zelfstudies waarbij wordt voortgebouwd op de Wingtip-SaaS-toepassing](./saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials).
+- [Elastische taken](./elastic-jobs-overview.md).
+- [Analysequery's voor verschillende tenant waarbij geëxtraheerde gegevens worden gebruikt - app voor meerdere tenants](./saas-multitenantdb-tenant-analytics.md)

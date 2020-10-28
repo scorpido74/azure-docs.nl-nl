@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
-ms.openlocfilehash: f30f92df505abeff108f8d1c503cb33162d2e409
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0eb9afc179f1dd2559f0db7b212f6b3a1da15824
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533543"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790913"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>Het maken van een cluster mislukt met InvalidNetworkConfigurationErrorCode in azure HDInsight
 
@@ -68,6 +68,19 @@ Azure Storage en SQL hebben geen vaste IP-adressen, dus moeten uitgaande verbind
 
     Als er routes zijn gedefinieerd, moet u ervoor zorgen dat er routes zijn voor IP-adressen voor de regio waarin het cluster is geïmplementeerd en dat de **NextHopType** voor elke route **Internet** is. Er moet een route worden gedefinieerd voor elk vereiste IP-adres dat in het voor noemde artikel wordt beschreven.
 
+## <a name="failed-to-establish-an-outbound-connection-from-the-cluster-for-the-communication-with-the-hdinsight-resource-provider-please-ensure-that-outbound-connectivity-is-allowed"></a>"Kan geen uitgaande verbinding van het cluster tot stand brengen voor de communicatie met de HDInsight-resource provider. Controleer of de uitgaande connectiviteit is toegestaan.
+
+### <a name="issue"></a>Probleem
+
+Fout beschrijving bevat ' kan geen uitgaande verbinding met het cluster tot stand brengen voor de communicatie met de HDInsight-resource provider. Controleer of de uitgaande connectiviteit is toegestaan.
+
+### <a name="cause"></a>Oorzaak
+
+Bij het gebruik van persoonlijke gekoppelde HDInsight-clusters moet uitgaande toegang vanuit het cluster worden geconfigureerd zodat verbindingen kunnen worden gemaakt met de HDInsight-resource provider.
+
+### <a name="resolution"></a>Oplossing
+
+* Om dit probleem op te lossen, raadpleegt u de stappen voor het instellen van de HDInsight-persoonlijke koppelingen tijdens de installatie van een [persoonlijke](../hdinsight-private-link.md)
 ---
 
 ## <a name="virtual-network-configuration-is-not-compatible-with-hdinsight-requirement"></a>"De configuratie van het virtuele netwerk is niet compatibel met de HDInsight-vereiste"

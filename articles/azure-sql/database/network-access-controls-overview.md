@@ -12,16 +12,16 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 4afb6844512bd59a5c377d826267a748837ed855
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: be327fabdffc0f98dc0449b51e7e4d73651d80d8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951992"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789485"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>Azure SQL Database-en Azure Synapse Analytics-netwerk toegangs beheer
 
-Wanneer u een logische SQL-Server maakt op basis van de [Azure Portal](single-database-create-quickstart.md) voor Azure SQL database en Azure Synapse Analytics, is het resultaat een openbaar eind punt met de notatie *yourservername.database.Windows.net*.
+Wanneer u een logische SQL-Server maakt op basis van de [Azure Portal](single-database-create-quickstart.md) voor Azure SQL database en Azure Synapse Analytics, is het resultaat een openbaar eind punt met de notatie *yourservername.database.Windows.net* .
 
 U kunt de volgende besturings elementen voor netwerk toegang gebruiken om toegang tot een Data Base selectief toe te staan via het open bare eind punt:
 
@@ -34,7 +34,7 @@ U kunt ook persoonlijke toegang tot de data base via [virtuele netwerken](../../
 - Privé-koppeling: gebruik deze functie om een persoonlijk eind punt te maken voor een [logische SQL-Server](logical-servers.md) binnen een specifiek virtueel netwerk
 
 > [!IMPORTANT]
-> Dit artikel is *niet* van toepassing op een door **SQL beheerd exemplaar**. Zie [verbinding maken met een Azure SQL Managed instance](../managed-instance/connect-application-instance.md) voor meer informatie over de netwerk configuratie.
+> Dit artikel is *niet* van toepassing op een door **SQL beheerd exemplaar** . Zie [verbinding maken met een Azure SQL Managed instance](../managed-instance/connect-application-instance.md) voor meer informatie over de netwerk configuratie.
 
 Zie de onderstaande video voor een gedetailleerde uitleg van deze toegangs controles en wat ze doen:
 
@@ -42,13 +42,13 @@ Zie de onderstaande video voor een gedetailleerde uitleg van deze toegangs contr
 
 ## <a name="allow-azure-services"></a>Azure-Services toestaan
 
-Bij het maken van een nieuwe logische SQL-Server [vanuit het Azure Portal](single-database-create-quickstart.md), is deze instelling standaard ingesteld op **uit**. Deze instelling wordt weer gegeven wanneer connectiviteit is toegestaan met behulp van een openbaar service-eind punt.
+Bij het maken van een nieuwe logische SQL-Server [vanuit het Azure Portal](single-database-create-quickstart.md), is deze instelling standaard ingesteld op **uit** . Deze instelling wordt weer gegeven wanneer connectiviteit is toegestaan met behulp van een openbaar service-eind punt.
 
 U kunt deze instelling ook wijzigen via het deel venster Firewall nadat de logische SQL-Server als volgt is gemaakt.
   
 ![Scherm opname van Server Firewall beheren][2]
 
-Als deze functie is **ingesteld op aan, staat**uw server communicatie toe van alle resources binnen de grens van Azure, die al dan niet deel kan uitmaken van uw abonnement.
+Als deze functie is **ingesteld op aan, staat** uw server communicatie toe van alle resources binnen de grens van Azure, die al dan niet deel kan uitmaken van uw abonnement.
 
 In veel gevallen is de instelling **on** moeilijker dan de meeste klanten. U kunt deze instelling instellen op **uit** en vervangen door meer beperkende IP-firewall regels of firewall regels voor virtuele netwerken. 
 
@@ -56,11 +56,11 @@ Dit heeft echter gevolgen voor de volgende functies die worden uitgevoerd op vir
 
 ### <a name="import-export-service"></a>Import export service
 
-Import export service werkt niet wanneer **toegang tot Azure-Services toestaan** is ingesteld op **uit**. U kunt het probleem echter omzeilen [door sqlpackage.exe hand matig uit te voeren vanaf een Azure VM of door de export](https://docs.microsoft.com/azure/sql-database/import-export-from-vm) rechtstreeks in uw code uit te voeren met behulp van de DACFX-API.
+Import export service werkt niet wanneer **toegang tot Azure-Services toestaan** is ingesteld op **uit** . U kunt het probleem echter omzeilen [door sqlpackage.exe hand matig uit te voeren vanaf een Azure VM of door de export](./database-import-export-azure-services-off.md) rechtstreeks in uw code uit te voeren met behulp van de DACFX-API.
 
 ### <a name="data-sync"></a>Gegevens synchroniseren
 
-Als u de functie gegevens synchronisatie wilt gebruiken om **toegang tot Azure** -Services **in te stellen**, moet u afzonderlijke firewall regel vermeldingen maken [om IP-adressen](firewall-create-server-level-portal-quickstart.md) van de SQL- **service-tag** toe te voegen voor de regio die als host fungeert voor de **hub** -data base.
+Als u de functie gegevens synchronisatie wilt gebruiken om **toegang tot Azure** -Services **in te stellen** , moet u afzonderlijke firewall regel vermeldingen maken [om IP-adressen](firewall-create-server-level-portal-quickstart.md) van de SQL- **service-tag** toe te voegen voor de regio die als host fungeert voor de **hub** -data base.
 Voeg deze firewall regels op server niveau toe aan de servers die fungeren als host voor de data bases van zowel **hubs** als **leden** (die zich in verschillende regio's kunnen bevinden)
 
 Gebruik het volgende Power shell-script om IP-adressen te genereren die overeenkomen met de SQL-service-tag voor de regio vs West
@@ -110,7 +110,7 @@ Op IP gebaseerde firewall is een functie van de logische SQL-Server in azure waa
 
 ## <a name="virtual-network-firewall-rules"></a>Firewallregels voor virtueel netwerk
 
-Naast de IP-regels, kunt u met de server firewall regels voor het *virtuele netwerk*definiëren.  
+Naast de IP-regels, kunt u met de server firewall regels voor het *virtuele netwerk* definiëren.  
 Zie [service-eind punten en-regels voor virtuele netwerken voor Azure SQL database](vnet-service-endpoint-rule-overview.md) of Bekijk deze video:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Data-Exposed--Demo--Vnet-Firewall-Rules-for-SQL-Database/player?WT.mc_id=dataexposed-c9-niner]
@@ -121,9 +121,9 @@ Houd rekening met de volgende Azure-netwerk termen wanneer u de firewall regels 
 
 **Virtueel netwerk:** U kunt virtuele netwerken koppelen aan uw Azure-abonnement
 
-**Subnet:** Een virtueel netwerk bevat **subnetten**. Alle Azure virtual machines (Vm's) die u hebt toegewezen aan subnetten. Eén subnet kan meerdere Vm's of andere reken knooppunten bevatten. Reken knooppunten die zich buiten uw virtuele netwerk bevinden, hebben geen toegang tot het virtuele netwerk tenzij u de beveiliging zo configureert dat toegang wordt toegestaan.
+**Subnet:** Een virtueel netwerk bevat **subnetten** . Alle Azure virtual machines (Vm's) die u hebt toegewezen aan subnetten. Eén subnet kan meerdere Vm's of andere reken knooppunten bevatten. Reken knooppunten die zich buiten uw virtuele netwerk bevinden, hebben geen toegang tot het virtuele netwerk tenzij u de beveiliging zo configureert dat toegang wordt toegestaan.
 
-**Service-eind punt van virtueel netwerk:** Een [service-eind punt van een virtueel netwerk](../../virtual-network/virtual-network-service-endpoints-overview.md) is een subnet waarvan de eigenschaps waarden een of meer formele namen van Azure-service typen bevatten. In dit artikel zijn we geïnteresseerd in de type naam van **micro soft. SQL**, die verwijst naar de Azure-service met de naam SQL database.
+**Service-eind punt van virtueel netwerk:** Een [service-eind punt van een virtueel netwerk](../../virtual-network/virtual-network-service-endpoints-overview.md) is een subnet waarvan de eigenschaps waarden een of meer formele namen van Azure-service typen bevatten. In dit artikel zijn we geïnteresseerd in de type naam van **micro soft. SQL** , die verwijst naar de Azure-service met de naam SQL database.
 
 **Regel voor virtueel netwerk:** Een regel voor het virtuele netwerk voor uw server is een subnet dat wordt vermeld in de toegangs beheer lijst (ACL) van uw server. Het subnet moet de naam van het **micro soft. SQL** -type bevatten in de ACL voor uw data base in SQL database. Een regel voor het virtuele netwerk geeft aan dat uw server communicatie accepteert van elk knoop punt dat zich in het subnet bevindt.
 
@@ -140,7 +140,7 @@ Regels voor virtuele netwerken zijn eenvoudiger om de toegang tot stand te breng
 
 ## <a name="private-link"></a>Private Link
 
-Met persoonlijke koppeling kunt u verbinding maken met een server via een **persoonlijk eind punt**. Een persoonlijk eind punt is een privé-IP-adres binnen een specifiek [virtueel netwerk](../../virtual-network/virtual-networks-overview.md) en subnet.
+Met persoonlijke koppeling kunt u verbinding maken met een server via een **persoonlijk eind punt** . Een persoonlijk eind punt is een privé-IP-adres binnen een specifiek [virtueel netwerk](../../virtual-network/virtual-networks-overview.md) en subnet.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -148,7 +148,7 @@ Met persoonlijke koppeling kunt u verbinding maken met een server via een **pers
 
 - Zie [Virtual Network Service-eind punten en-regels voor Azure SQL database](vnet-service-endpoint-rule-overview.md)voor een Snelstartgids voor het maken van een firewall regel op server niveau.
 
-- Voor hulp bij het maken van verbinding met een data base in SQL Database van open-source-of toepassingen van derden raadpleegt [u Quick Start code samples to SQL database](https://msdn.microsoft.com/library/azure/ee336282.aspx).
+- Voor hulp bij het maken van verbinding met een data base in SQL Database van open-source-of toepassingen van derden raadpleegt [u Quick Start code samples to SQL database](/previous-versions/azure/ee336282(v=azure.100)).
 
 - Voor informatie over aanvullende poorten die u mogelijk moet openen, raadpleegt u de sectie **SQL database: buiten** bevindend in poorten van meer [dan 1433 voor ADO.NET 4,5 en SQL database](adonet-v12-develop-direct-route-ports.md)
 
@@ -159,4 +159,3 @@ Met persoonlijke koppeling kunt u verbinding maken met een server via een **pers
 <!--Image references-->
 [1]: media/quickstart-create-single-database/new-server2.png
 [2]: media/quickstart-create-single-database/manage-server-firewall.png
- 

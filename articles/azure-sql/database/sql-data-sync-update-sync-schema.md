@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 11/14/2018
-ms.openlocfilehash: fb64348e53dc92ef8f5830f2649afdf9eca3a9ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9997ea737b96185b31a7f51996a396fb5fc46c4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616479"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790182"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>De replicatie van schema wijzigingen in Azure SQL Data Sync automatiseren
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -84,7 +84,7 @@ INSERT INTO SchemaChanges (SqlStmt, Description)
     VALUES (EVENTDATA().value('(/EVENT_INSTANCE/TSQLCommand/CommandText)[1]', 'nvarchar(max)'), 'From DDL trigger')
 ```
 
-De trigger voegt een record in de tabel schema wijzigingen bijhouden toe voor elke opdracht ALTER TABLE. In dit voor beeld wordt een filter toegevoegd om te voor komen dat wijzigingen in het schema worden gerepliceerd die zijn gemaakt onder schema **DataSync**, omdat dit het meest waarschijnlijk is gedaan door de Data Sync-Service. Voeg meer filters toe als u alleen bepaalde typen schema wijzigingen wilt repliceren.
+De trigger voegt een record in de tabel schema wijzigingen bijhouden toe voor elke opdracht ALTER TABLE. In dit voor beeld wordt een filter toegevoegd om te voor komen dat wijzigingen in het schema worden gerepliceerd die zijn gemaakt onder schema **DataSync** , omdat dit het meest waarschijnlijk is gedaan door de Data Sync-Service. Voeg meer filters toe als u alleen bepaalde typen schema wijzigingen wilt repliceren.
 
 U kunt ook meer triggers toevoegen om andere typen schema wijzigingen te repliceren. Maak bijvoorbeeld CREATE_PROCEDURE, ALTER_PROCEDURE en DROP_PROCEDURE triggers om wijzigingen in opgeslagen procedures te repliceren.
 
@@ -231,7 +231,7 @@ Zie de volgende onderwerpen voor meer informatie over SQL Data Sync:
         -  [Power shell gebruiken om te synchroniseren tussen een data base in Azure SQL Database en een data base in een SQL Server-exemplaar](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
 -   Data Sync-agent: [Data Sync-agent voor Azure SQL Data Sync](sql-data-sync-agent-overview.md)
 -   Best practices: [Best practices voor Azure SQL Data Sync](sql-data-sync-best-practices.md)
--   Bewaken: [SQL Data Sync bewaken met Azure Monitor-logboeken](sql-data-sync-monitor-sync.md)
+-   Bewaken: [SQL Data Sync bewaken met Azure Monitor-logboeken](./monitor-tune-overview.md)
 -   Problemen oplossen: [Problemen met Azure SQL Data Sync oplossen]()
 -   Het synchronisatieschema bijwerken
     -   Met PowerShell: [PowerShell gebruiken voor het bijwerken van het synchronisatieschema in een bestaande synchronisatiegroep](scripts/update-sync-schema-in-sync-group.md)

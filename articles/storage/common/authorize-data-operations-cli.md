@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 66815dac145c8c30b770e831a002f6a0ee093675
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be5729320f27e38907c4de6844bf3126cf41747b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714574"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789655"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-or-queue-data-with-azure-cli"></a>Kies hoe u de toegang tot BLOB-of wachtrij gegevens wilt autoriseren met Azure CLI
 
@@ -43,7 +43,7 @@ Als u de `--auth-mode` para meter wilt gebruiken, moet u ervoor zorgen dat u Azu
 
 Wanneer u zich aanmeldt bij Azure CLI met Azure AD-referenties, wordt een OAuth 2,0-toegangs token geretourneerd. Dit token wordt automatisch door Azure CLI gebruikt voor het autoriseren van volgende gegevens bewerkingen op BLOB-of wachtrij opslag. Voor ondersteunde bewerkingen hoeft u geen account sleutel of SAS-token meer door te geven met de opdracht.
 
-U kunt machtigingen toewijzen aan Blob-en wachtrij gegevens aan een Azure AD-beveiligings-principal via Azure op rollen gebaseerd toegangs beheer (Azure RBAC). Zie [Manage access rights to Azure Storage Data with Azure RBAC](storage-auth-aad-rbac.md)(Engelstalig) voor meer informatie over Azure-rollen in azure Storage.
+U kunt machtigingen toewijzen aan Blob-en wachtrij gegevens aan een Azure AD-beveiligings-principal via Azure op rollen gebaseerd toegangs beheer (Azure RBAC). Zie [Manage access rights to Azure Storage Data with Azure RBAC](./storage-auth-aad-rbac-portal.md)(Engelstalig) voor meer informatie over Azure-rollen in azure Storage.
 
 ### <a name="permissions-for-calling-data-operations"></a>Machtigingen voor het aanroepen van gegevens bewerkingen
 
@@ -55,7 +55,7 @@ Zie [opslag bewerkingen aanroepen met OAuth-tokens](/rest/api/storageservices/au
 
 In het volgende voor beeld ziet u hoe u een container maakt op basis van Azure CLI met behulp van uw Azure AD-referenties. Als u de container wilt maken, moet u zich aanmelden bij de Azure CLI en hebt u een resource groep en een opslag account nodig. Zie [Quick Start: Create, down loads en List blobs with Azure cli](../blobs/storage-quickstart-blobs-cli.md)(Engelstalig) voor meer informatie over het maken van deze resources.
 
-1. Voordat u de container maakt, moet u de rol [Storage Blob Data Contributor](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) aan uzelf toewijzen. Hoewel u de eigenaar van het account bent, hebt u expliciete machtigingen nodig om gegevens bewerkingen uit te voeren op het opslag account. Zie voor meer informatie over het toewijzen van Azure-functies [de Azure Portal gebruiken om een Azure-rol toe te wijzen voor toegang tot Blob-en wachtrij gegevens](storage-auth-aad-rbac.md).
+1. Voordat u de container maakt, moet u de rol [Storage Blob Data Contributor](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) aan uzelf toewijzen. Hoewel u de eigenaar van het account bent, hebt u expliciete machtigingen nodig om gegevens bewerkingen uit te voeren op het opslag account. Zie voor meer informatie over het toewijzen van Azure-functies [de Azure Portal gebruiken om een Azure-rol toe te wijzen voor toegang tot Blob-en wachtrij gegevens](./storage-auth-aad-rbac-portal.md).
 
     > [!IMPORTANT]
     > Het kan enkele minuten duren voordat Azure-roltoewijzingen worden doorgegeven.

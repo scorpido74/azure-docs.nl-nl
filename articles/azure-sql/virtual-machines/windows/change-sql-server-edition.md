@@ -13,14 +13,14 @@ ms.date: 01/14/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 06587d80851839188f8d8dcfa870d331e8fa96d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 997e867798922975757a588ef50248f0d09a96e0
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293353"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789842"
 ---
-# <a name="in-place-change-of-sql-server-edition-on-azure-vm"></a>In-place wijziging van SQL Server Edition op Azure VM
+# <a name="in-place-change-of-sql-server-edition-on-azure-vm"></a>In-place wijziging van SQL Server-editie op Azure VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 In dit artikel wordt beschreven hoe u de editie van SQL Server kunt wijzigen op een virtuele Windows-machine in Azure. 
@@ -34,7 +34,7 @@ Zodra de versie van SQL Server intern is gewijzigd in de SQL Server VM, moet u d
 Als u een in-place wijziging van de editie van SQL Server wilt uitvoeren, hebt u het volgende nodig: 
 
 - Een [Azure-abonnement](https://azure.microsoft.com/free/).
-- Een [SQL Server VM in Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) die is geregistreerd bij de [resource provider](sql-vm-resource-provider-register.md)van de SQL-VM.
+- Een [SQL Server VM in Windows](./create-sql-vm-portal.md) die is geregistreerd bij de [resource provider](sql-vm-resource-provider-register.md)van de SQL-VM.
 - Stel media in met de **gewenste versie** van SQL Server. Klanten die beschikken over [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) kunnen hun installatiemedia downloaden van het [Volume Licensing Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx). Klanten die geen Software Assurance hebben, kunnen het installatie medium van een Azure Marketplace gebruiken SQL Server VM-installatie kopie met de gewenste versie (meestal zich in `C:\SQLServerFull` ). 
 
 
@@ -50,7 +50,7 @@ Als u de versie van SQL Server wilt bijwerken, moet u de SQL Server Setup-media 
 
    ![Selectie voor het bijwerken van de versie van SQL Server](./media/change-sql-server-edition/edition-upgrade.png)
 
-1. Selecteer **volgende** totdat u de pagina **gereed voor de upgrade-editie** hebt bereikt en selecteer vervolgens **upgrade**. Het installatie venster reageert mogelijk enkele minuten niet meer wanneer de wijziging wordt doorgevoerd. Op een **volledige** pagina wordt bevestigd dat uw editie-upgrade is voltooid. 
+1. Selecteer **volgende** totdat u de pagina **gereed voor de upgrade-editie** hebt bereikt en selecteer vervolgens **upgrade** . Het installatie venster reageert mogelijk enkele minuten niet meer wanneer de wijziging wordt doorgevoerd. Op een **volledige** pagina wordt bevestigd dat uw editie-upgrade is voltooid. 
 
 Nadat de SQL Server-editie is bijgewerkt, wijzigt u de eigenschap Edition van de virtuele machine SQL Server in de Azure Portal. Hiermee worden de meta gegevens en de facturering bijgewerkt die aan deze virtuele machine zijn gekoppeld.
 
@@ -77,9 +77,9 @@ Nadat de SQL Server-editie is gedowngraded, wijzigt u de eigenschap Edition van 
 
 Nadat u de editie van SQL Server hebt gewijzigd met behulp van de installatie media en u uw SQL Server VM hebt geregistreerd bij de [resource provider](sql-vm-resource-provider-register.md)van de SQL-VM, kunt u de Azure Portal vervolgens gebruiken om de eigenschap Edition van de SQL Server virtuele machine te wijzigen voor facturerings doeleinden. Voer hiervoor de volgende stappen uit: 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 1. Ga naar uw SQL Server virtuele machine bron. 
-1. Selecteer **configureren**onder **instellingen**. Selecteer vervolgens de gewenste versie van SQL Server in de vervolg keuzelijst onder **editie**. 
+1. Selecteer **configureren** onder **instellingen** . Selecteer vervolgens de gewenste versie van SQL Server in de vervolg keuzelijst onder **editie** . 
 
    ![Meta gegevens van de editie wijzigen](./media/change-sql-server-edition/edition-change-in-portal.png)
 
@@ -102,5 +102,3 @@ Raadpleeg voor meer informatie de volgende artikelen:
 * [Veelgestelde vragen over SQL Server op een Windows-VM](frequently-asked-questions-faq.md)
 * [Prijs informatie voor SQL Server op een Windows-VM](pricing-guidance.md)
 * [Release opmerkingen voor SQL Server op een Windows-VM](doc-changes-updates-release-notes.md)
-
-

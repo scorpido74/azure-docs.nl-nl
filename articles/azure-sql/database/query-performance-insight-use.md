@@ -11,17 +11,17 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: be7e4a641e5b5ac2ef755037142cfd8063d66b5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c88b777e08bc165caefa14fe28d43c498e3fefcd
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448890"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790369"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Query Performance Insight voor Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Query Performance Insight biedt intelligente query analyses voor afzonderlijke en gepoolde data bases. Het helpt bij het identificeren van de belangrijkste en langlopende query's in uw werk belasting. Zo kunt u de query's die u wilt optimaliseren vinden om de algehele prestaties van de werk belasting te verbeteren en de resource die u betaalt efficiënt te gebruiken. Query Performance Insight helpt u minder tijd te best Eden aan het oplossen van problemen met database prestaties.
+Query Performance Insight biedt intelligente queryanalyses voor enkelvoudige en pooldatabases. Dit helpt bij het identificeren van de belangrijkste en langlopende query's in uw workload. Zo kunt u de query's vinden die u wilt optimaliseren om de algehele prestaties van de workload te verbeteren en de resource waarvoor u betaalt efficiënt te gebruiken. Query Performance Insight helpt u minder tijd te best Eden aan het oplossen van problemen met database prestaties.
 
 * Dieper inzicht in uw data bases resource (DTU)-verbruik
 * Details over de belangrijkste database query's op basis van CPU, duur en aantal uitvoeringen (potentiële afstemmings kandidaten voor prestatie verbeteringen)
@@ -32,7 +32,7 @@ Query Performance Insight biedt intelligente query analyses voor afzonderlijke e
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor Query Performance Insight moet het [query archief](https://msdn.microsoft.com/library/dn817826.aspx) actief zijn in uw data base. De standaard instelling is automatisch ingeschakeld voor alle data bases in Azure SQL Database. Als query Store niet wordt uitgevoerd, wordt u door de Azure Portal gevraagd dit in te scha kelen.
+Voor Query Performance Insight moet het [query archief](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) actief zijn in uw data base. De standaard instelling is automatisch ingeschakeld voor alle data bases in Azure SQL Database. Als query Store niet wordt uitgevoerd, wordt u door de Azure Portal gevraagd dit in te scha kelen.
 
 > [!NOTE]
 > Zie [de configuratie van het query archief optimaliseren](#optimize-the-query-store-configuration)als het bericht ' query archief is niet juist is geconfigureerd voor deze data base ' wordt weer gegeven in de portal.
@@ -41,15 +41,15 @@ Voor Query Performance Insight moet het [query archief](https://msdn.microsoft.c
 
 U hebt de volgende machtigingen voor [Azure op rollen gebaseerde toegangs beheer (Azure RBAC)](../../role-based-access-control/overview.md) nodig voor het gebruik van query Performance Insight:
 
-* De machtigingen **lezer**, **eigenaar**, **Inzender**, **SQL DB-Inzender**of **SQL Server Inzender** zijn vereist voor het weer geven van de meest voorkomende query's en grafieken van de resource.
-* De machtigingen **eigenaar**, **bijdrager**, **SQL DB-Inzender**of **SQL Server Inzender** zijn vereist om query tekst weer te geven.
+* De machtigingen **lezer** , **eigenaar** , **Inzender** , **SQL DB-Inzender** of **SQL Server Inzender** zijn vereist voor het weer geven van de meest voorkomende query's en grafieken van de resource.
+* De machtigingen **eigenaar** , **bijdrager** , **SQL DB-Inzender** of **SQL Server Inzender** zijn vereist om query tekst weer te geven.
 
 ## <a name="use-query-performance-insight"></a>Query Performance Insight gebruiken
 
 Query Performance Insight is gemakkelijk te gebruiken:
 
 1. Open de [Azure Portal](https://portal.azure.com/) en zoek een Data Base die u wilt bekijken.
-2. Open in het menu aan de linkerkant de optie **intelligent prestaties**  >  **query Performance Insight**.
+2. Open in het menu aan de linkerkant de optie **intelligent prestaties**  >  **query Performance Insight** .
   
    ![Query Performance Insight in het menu](./media/query-performance-insight-use/tile.png)
 
@@ -61,7 +61,7 @@ Query Performance Insight is gemakkelijk te gebruiken:
    ![Prestatie dashboard](./media/query-performance-insight-use/performance.png)
 
 > [!NOTE]
-> Als Azure SQL Database de gegevens in Query Performance Insight wilt weer geven, moet u in de query Store enkele uren aan gegevens vastleggen. Als de data base geen activiteit heeft of als de query Store niet actief was tijdens een bepaalde periode, zijn de grafieken leeg wanneer Query Performance Insight dat tijds bereik weergeeft. U kunt het query archief op elk gewenst moment inschakelen als het niet wordt uitgevoerd. Zie [Aanbevolen procedures voor query Store](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store)voor meer informatie.
+> Als Azure SQL Database de gegevens in Query Performance Insight wilt weer geven, moet u in de query Store enkele uren aan gegevens vastleggen. Als de data base geen activiteit heeft of als de query Store niet actief was tijdens een bepaalde periode, zijn de grafieken leeg wanneer Query Performance Insight dat tijds bereik weergeeft. U kunt het query archief op elk gewenst moment inschakelen als het niet wordt uitgevoerd. Zie [Aanbevolen procedures voor query Store](/sql/relational-databases/performance/best-practice-with-the-query-store)voor meer informatie.
 >
 
 Voor aanbevelingen voor database prestaties selecteert u [aanbevelingen](database-advisor-implement-performance-recommendations.md) op de blade query Performance Insight navigatie.
@@ -85,9 +85,9 @@ Query Performance Insight worden standaard de vijf meest voorkomende query's van
    >
    > Voor een nauw keurigere vergelijking (Maxi maal één minuut) kunt u een aangepast DTU-gebruiks diagram maken:
    >
-   > 1. Selecteer **Azure SQL database**  >  **bewaking**in het Azure Portal.
-   > 2. Selecteer **Metrische gegevens**.
-   > 3. Selecteer **+ grafiek toevoegen**.
+   > 1. Selecteer **Azure SQL database**  >  **bewaking** in het Azure Portal.
+   > 2. Selecteer **Metrische gegevens** .
+   > 3. Selecteer **+ grafiek toevoegen** .
    > 4. Selecteer het DTU-percentage in de grafiek.
    > 5. Selecteer bovendien **laatste 24 uur** in het menu linksboven en wijzig deze in één minuut.
    >
@@ -160,7 +160,7 @@ Langlopende query's hebben de grootste mogelijkheid om bronnen langer te vergren
 Langlopende query's identificeren:
 
 1. Open het tabblad **aangepast** in query Performance Insight voor de geselecteerde data base.
-2. Wijzig de metrische gegevens in **duur**.
+2. Wijzig de metrische gegevens in **duur** .
 3. Het aantal query's en het observatie interval selecteren.
 4. Selecteer de aggregatie functie:
 
@@ -177,9 +177,9 @@ Langlopende query's identificeren:
    >
    > Als u meer informatie wilt over het gebruik van data base-DTU met meer details (Maxi maal één minuut), kunt u een aangepaste grafiek maken in de Azure Portal:
    >
-   > 1. Selecteer **Azure SQL database**  >  **bewaking**.
-   > 2. Selecteer **Metrische gegevens**.
-   > 3. Selecteer **+ grafiek toevoegen**.
+   > 1. Selecteer **Azure SQL database**  >  **bewaking** .
+   > 2. Selecteer **Metrische gegevens** .
+   > 3. Selecteer **+ grafiek toevoegen** .
    > 4. Selecteer het DTU-percentage in de grafiek.
    > 5. Selecteer bovendien **laatste 24 uur** in het menu linksboven en wijzig deze in één minuut.
    >
@@ -197,7 +197,7 @@ Veel gegevensgestuurde websites hebben bijvoorbeeld een zeer grote toegang tot d
 Voor het identificeren van regel matig uitgevoerde query's (' intensieve '):
 
 1. Open het tabblad **aangepast** in query Performance Insight voor de geselecteerde data base.
-2. Wijzig de metrische gegevens in het **aantal uitvoeringen**.
+2. Wijzig de metrische gegevens in het **aantal uitvoeringen** .
 3. Het aantal query's en het observatie interval selecteren.
 4. Selecteer de knop **ga >** om de aangepaste weer gave te bekijken.
 
@@ -232,22 +232,22 @@ De eerste geval treedt op wanneer query Store de status alleen-lezen heeft en de
 
    ![Details van query Store](./media/query-performance-insight-use/qds-off.png)
 
-Het tweede geval treedt op wanneer query Store niet is ingeschakeld, of para meters zijn niet optimaal ingesteld. U kunt het retentie-en vastleg beleid wijzigen en ook query Store inschakelen door de volgende opdrachten uit [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) of de Azure Portal uit te voeren.
+Het tweede geval treedt op wanneer query Store niet is ingeschakeld, of para meters zijn niet optimaal ingesteld. U kunt het retentie-en vastleg beleid wijzigen en ook query Store inschakelen door de volgende opdrachten uit [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) of de Azure Portal uit te voeren.
 
 ### <a name="recommended-retention-and-capture-policy"></a>Aanbevolen Bewaar-en vastleg beleid
 
 Er zijn twee typen Bewaar beleid:
 
-* **Op basis van grootte**: als dit beleid is ingesteld op **automatisch**, worden de gegevens automatisch opgeschoond wanneer de maximale grootte wordt bereikt.
-* **Op basis van tijd**: standaard is dit beleid ingesteld op 30 dagen. Als er geen ruimte meer is op de query opslag, worden de query gegevens ouder dan 30 dagen verwijderd.
+* **Op basis van grootte** : als dit beleid is ingesteld op **automatisch** , worden de gegevens automatisch opgeschoond wanneer de maximale grootte wordt bereikt.
+* **Op basis van tijd** : standaard is dit beleid ingesteld op 30 dagen. Als er geen ruimte meer is op de query opslag, worden de query gegevens ouder dan 30 dagen verwijderd.
 
 U kunt het vastleg beleid instellen op:
 
-* **Alle**: in query Store worden alle query's vastgelegd.
-* **Automatisch**: in query Store worden niet-frequente query's en query's met een onbeduidende compilatie-en uitvoerings duur genegeerd. De drempel waarden voor het aantal uitvoeringen, de compilatie duur en de runtime duur worden intern bepaald. Dit is de standaard optie.
-* **Geen**: de query Store stopt met het vastleggen van nieuwe query's, maar er worden nog steeds runtime statistieken voor al vastgelegde query's verzameld.
+* **Alle** : in query Store worden alle query's vastgelegd.
+* **Automatisch** : in query Store worden niet-frequente query's en query's met een onbeduidende compilatie-en uitvoerings duur genegeerd. De drempel waarden voor het aantal uitvoeringen, de compilatie duur en de runtime duur worden intern bepaald. Dit is de standaard optie.
+* **Geen** : de query Store stopt met het vastleggen van nieuwe query's, maar er worden nog steeds runtime statistieken voor al vastgelegde query's verzameld.
 
-U kunt het beste alle beleids regels instellen op **automatisch** en het opschonings beleid tot 30 dagen door de volgende opdrachten uit [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) of de Azure Portal uit te voeren. (Vervang door `YourDB` de naam van de data base.)
+U kunt het beste alle beleids regels instellen op **automatisch** en het opschonings beleid tot 30 dagen door de volgende opdrachten uit [SSMS](/sql/ssms/download-sql-server-management-studio-ssms) of de Azure Portal uit te voeren. (Vervang door `YourDB` de naam van de data base.)
 
 ```sql
     ALTER DATABASE [YourDB]
@@ -260,7 +260,7 @@ U kunt het beste alle beleids regels instellen op **automatisch** en het opschon
     SET QUERY_STORE (QUERY_CAPTURE_MODE = AUTO);
 ```
 
-Verg root de grootte van het query Archief door verbinding te maken met een Data Base via [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) of het Azure Portal en de volgende query uit te voeren. (Vervang door `YourDB` de naam van de data base.)
+Verg root de grootte van het query Archief door verbinding te maken met een Data Base via [SSMS](/sql/ssms/download-sql-server-management-studio-ssms) of het Azure Portal en de volgende query uit te voeren. (Vervang door `YourDB` de naam van de data base.)
 
 ```SQL
     ALTER DATABASE [YourDB]

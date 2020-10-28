@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/28/2020
-ms.openlocfilehash: a5760d3daaa13a5ed16230e1ffb7fe3691455e09
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 8883263d6ddb2fb8ddc809f464288fcd282531bd
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427040"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788822"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>Kiezen tussen de vCore-en DTU-aankoop modellen-Azure SQL Database en SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -34,7 +34,7 @@ Er zijn twee aankoop modellen:
 
 In de volgende tabel en grafiek worden de vCore en de op DTU gebaseerde inkoop modellen vergeleken en tegengesteld:
 
-|**Aankoopmodel**|**Deschription** (Beschrijving)|**Ideaal voor**|
+|**Aankoopmodel**|**Beschrijving**|**Ideaal voor**|
 |---|---|---|
 |Op basis van DTU|Dit model is gebaseerd op een gebundelde meting van compute-, opslag-en I/O-resources. Rekengrootten worden uitgedrukt in DTU's voor afzonderlijke databases, en in EDTU's (Elastische Data Transaction Unit) voor elastische pools. Zie [Wat zijn DTU's en EDTU's](purchasing-models.md#dtu-based-purchasing-model) voor meer informatie over DTU's en EDTU's.|Klanten die eenvoudige, vooraf geconfigureerde resource opties willen|
 |op basis van vCore|Met dit model kunt u afzonderlijke reken-en opslag Resources kiezen. Met het op vCore gebaseerde aankoopmodel kunt u ook [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) gebruiken voor SQL Server, om kosten te besparen.|Klanten die flexibiliteit, controle en transparantie|
@@ -127,7 +127,7 @@ U kunt extra Edtu's toevoegen aan een bestaande pool zonder uitval tijd van de d
 
 ### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>Het aantal Dtu's bepalen dat nodig is voor een workload
 
-Als u een bestaande on-premises of SQL Server werk belasting van virtuele machine naar SQL Database wilt migreren, gebruikt u de [DTU-reken machine](https://dtucalculator.azurewebsites.net/) om het aantal benodigde dtu's te benaderen. Gebruik voor een bestaande SQL Database workload [query-prestatie inzichten](query-performance-insight-use.md) om inzicht te krijgen in uw database verbruik (dtu's) en krijg meer inzicht in het optimaliseren van uw werk belasting. Met de [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dynamische beheer weergave (DMV) kunt u het Resource verbruik voor het afgelopen uur weer geven. In de catalogus weergave van de [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) wordt het Resource verbruik voor de afgelopen 14 dagen weer gegeven, maar een lagere betrouw baarheid van gemiddelden van vijf minuten.
+Als u een bestaande on-premises of SQL Server werk belasting van virtuele machine naar SQL Database wilt migreren, gebruikt u de [DTU-reken machine](https://dtucalculator.azurewebsites.net/) om het aantal benodigde dtu's te benaderen. Gebruik voor een bestaande SQL Database workload [query-prestatie inzichten](query-performance-insight-use.md) om inzicht te krijgen in uw database verbruik (dtu's) en krijg meer inzicht in het optimaliseren van uw werk belasting. Met de [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dynamische beheer weergave (DMV) kunt u het Resource verbruik voor het afgelopen uur weer geven. In de catalogus weergave van de [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) wordt het Resource verbruik voor de afgelopen 14 dagen weer gegeven, maar een lagere betrouw baarheid van gemiddelden van vijf minuten.
 
 ### <a name="determine-dtu-utilization"></a>DTU-gebruik bepalen
 
@@ -135,7 +135,7 @@ Gebruik de volgende formule om het gemiddelde percentage van DTU/eDTU-gebruik te
 
 `avg_dtu_percent = MAX(avg_cpu_percent, avg_data_io_percent, avg_log_write_percent)`
 
-De invoer waarden voor deze formule kunnen worden verkregen uit [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)en [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) dmv's. Met andere woorden, om het percentage van DTU/eDTU-gebruik te bepalen ten opzichte van de DTU/eDTU-limiet van een Data Base of een elastische pool, kiest u de hoogste percentage waarde uit de volgende opties: `avg_cpu_percent` , `avg_data_io_percent` en `avg_log_write_percent` op een bepaald moment.
+De invoer waarden voor deze formule kunnen worden verkregen uit [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)en [sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) dmv's. Met andere woorden, om het percentage van DTU/eDTU-gebruik te bepalen ten opzichte van de DTU/eDTU-limiet van een Data Base of een elastische pool, kiest u de hoogste percentage waarde uit de volgende opties: `avg_cpu_percent` , `avg_data_io_percent` en `avg_log_write_percent` op een bepaald moment.
 
 > [!NOTE]
 > De DTU-limiet van een Data Base wordt bepaald door CPU, lees bewerkingen, schrijf bewerkingen en geheugen dat beschikbaar is voor de data base. Maar omdat de SQL Database-Engine doorgaans al het beschik bare geheugen gebruikt voor de gegevens cache om de prestaties te verbeteren, `avg_memory_usage_percent` wordt de waarde doorgaans bijna 100 procent, ongeacht de huidige laad capaciteit van de data base. Daarom wordt het niet gebruikt in de formule voor het DTU-gebruik, zelfs als het geheugen indirect van invloed is op de DTU-limiet.
@@ -150,13 +150,13 @@ In het op DTU gebaseerde aankoop model kunnen klanten de hardware-generatie kiez
 
 U kunt bijvoorbeeld een Data Base verplaatsen naar een andere hardware-generatie als deze omhoog of omlaag wordt geschaald naar een andere service doelstelling, of als de huidige infra structuur in een Data Center de capaciteits limieten nadert of als de momenteel gebruikte hardware buiten gebruik wordt gesteld vanwege het einde van de levens duur.
 
-Als een Data Base wordt verplaatst naar andere hardware, kunnen de prestaties van de werk belasting veranderen. Het DTU-model garandeert dat de door Voer en respons tijd van de werk belasting van de [DTU-benchmark](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-dtu#dtu-benchmark) periode aanzienlijk hetzelfde blijft als de data base wordt verplaatst naar een andere generatie hardware, mits de service doelstelling (het aantal dtu's) hetzelfde blijft.
+Als een Data Base wordt verplaatst naar andere hardware, kunnen de prestaties van de werk belasting veranderen. Het DTU-model garandeert dat de door Voer en respons tijd van de werk belasting van de [DTU-benchmark](./service-tiers-dtu.md#dtu-benchmark) periode aanzienlijk hetzelfde blijft als de data base wordt verplaatst naar een andere generatie hardware, mits de service doelstelling (het aantal dtu's) hetzelfde blijft.
 
 In het brede spectrum van klant werkbelastingen die worden uitgevoerd in Azure SQL Database, kan de impact van het gebruik van verschillende hardware voor dezelfde service doelstelling echter meer worden uitgesp roken. Verschillende werk belastingen profiteren van verschillende hardwareconfiguraties en functies. Daarom is het mogelijk om voor andere workloads dan de DTU-Bench Mark prestatie verschillen te zien als de data base van de ene hardware-generatie naar de andere wordt verplaatst.
 
 Een toepassing die bijvoorbeeld gevoelig is voor netwerk latentie, kan betere prestaties zien op GEN5-hardware ten opzichte van Gen4 vanwege het gebruik van versneld netwerken in GEN5, maar een toepassing die intensieve Lees-IO gebruikt, kan betere prestaties zien op Gen4-hardware versus GEN5 vanwege een groter geheugen per core-verhouding van Gen4.
 
-Klanten met werk belastingen die gevoelig zijn voor wijzigingen in de hardware of klanten die de keuze van de hardware-generatie voor hun data base willen beheren, kunnen het [vCore](service-tiers-vcore.md) -model gebruiken om hun voorkeurs generatie van hardware te kiezen tijdens het maken en schalen van de data base. In het vCore-model worden resource limieten van elke service doelstelling op elke hardware-generatie gedocumenteerd voor zowel [afzonderlijke data bases](resource-limits-vcore-single-databases.md) als [elastische Pools](resource-limits-vcore-elastic-pools.md). Zie [Hardware-generaties](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore#hardware-generations)voor meer informatie over hardware-generaties in het vCore-model.
+Klanten met werk belastingen die gevoelig zijn voor wijzigingen in de hardware of klanten die de keuze van de hardware-generatie voor hun data base willen beheren, kunnen het [vCore](service-tiers-vcore.md) -model gebruiken om hun voorkeurs generatie van hardware te kiezen tijdens het maken en schalen van de data base. In het vCore-model worden resource limieten van elke service doelstelling op elke hardware-generatie gedocumenteerd voor zowel [afzonderlijke data bases](resource-limits-vcore-single-databases.md) als [elastische Pools](resource-limits-vcore-elastic-pools.md). Zie [Hardware-generaties](./service-tiers-vcore.md#hardware-generations)voor meer informatie over hardware-generaties in het vCore-model.
 
 ## <a name="frequently-asked-questions-faqs"></a>Veelgestelde vragen (FAQ)
 

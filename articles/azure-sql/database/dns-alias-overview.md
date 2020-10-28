@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, jrasnick, vanto
 ms.date: 06/26/2019
-ms.openlocfilehash: d208a9b9f8e1cc16e2c72aa825a2daf88ad00176
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4be3f8c6cd416743c2d1118cf2de01073c3022ff
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86145659"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790488"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>DNS-alias voor Azure SQL Database
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -60,7 +60,7 @@ De volgende eigenschappen zijn van toepassing op elke DNS-alias voor uw server:
 - *Server is vereist:* Er kan geen DNS-alias worden gemaakt tenzij deze verwijst naar exact één server, en de server moet al bestaan. Een bijgewerkte alias moet altijd verwijzen naar precies één bestaande server.
   - Wanneer u een server verwijdert, worden ook alle DNS-aliassen die naar de server verwijzen, door het Azure-systeem verwijderd.
 - *Niet gebonden aan een regio:* DNS-aliassen zijn niet gebonden aan een regio. DNS-aliassen kunnen worden bijgewerkt om te verwijzen naar een server die zich in een geografische regio bevindt.
-  - Wanneer u echter een alias bijwerkt om te verwijzen naar een andere server, moeten beide servers aanwezig zijn in hetzelfde Azure- *abonnement*.
+  - Wanneer u echter een alias bijwerkt om te verwijzen naar een andere server, moeten beide servers aanwezig zijn in hetzelfde Azure- *abonnement* .
 - *Machtigingen:* Voor het beheren van een DNS-alias moet de gebruiker machtigingen voor *Server Inzender* of hoger hebben. Zie [aan de slag met Role-Based Access Control in de Azure Portal](../../role-based-access-control/overview.md)voor meer informatie.
 
 ## <a name="manage-your-dns-aliases"></a>Uw DNS-aliassen beheren
@@ -71,7 +71,7 @@ U kunt ook de REST Api's en Power shell-cmdlets gebruiken om uw DNS-aliassen pro
 
 De documentatie voor de REST-Api's is beschikbaar in de buurt van de volgende weblocatie:
 
-- [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/)
+- [Azure SQL Database REST API](/rest/api/sql/)
 
 Ook kunnen de REST Api's worden weer gegeven in GitHub op:
 
@@ -83,7 +83,7 @@ Ook kunnen de REST Api's worden weer gegeven in GitHub op:
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek.
+> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM.Sql](/powershell/module/AzureRM.Sql/) voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek.
 
 Power shell-cmdlets zijn beschikbaar die de REST-Api's aanroepen.
 
@@ -93,10 +93,10 @@ Een code voorbeeld van Power shell-cmdlets die wordt gebruikt voor het beheren v
 
 De cmdlets die in het code voorbeeld worden gebruikt, zijn de volgende:
 
-- [New-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): maakt een nieuwe DNS-alias in het Azure SQL database-service systeem. De alias verwijst naar server 1.
-- [Get-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias): alle DNS-aliassen ophalen en weer geven die zijn toegewezen aan server 1.
-- [Set-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): wijzigt de server naam waarmee de alias is geconfigureerd, van Server 1 naar Server 2.
-- [Remove-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): Verwijder de DNS-alias van Server 2 door de naam van de alias te gebruiken.
+- [New-AzSqlServerDNSAlias](/powershell/module/az.Sql/New-azSqlServerDnsAlias): maakt een nieuwe DNS-alias in het Azure SQL database-service systeem. De alias verwijst naar server 1.
+- [Get-AzSqlServerDNSAlias](/powershell/module/az.Sql/Get-azSqlServerDnsAlias): alle DNS-aliassen ophalen en weer geven die zijn toegewezen aan server 1.
+- [Set-AzSqlServerDNSAlias](/powershell/module/az.Sql/Set-azSqlServerDnsAlias): wijzigt de server naam waarmee de alias is geconfigureerd, van Server 1 naar Server 2.
+- [Remove-AzSqlServerDNSAlias](/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): Verwijder de DNS-alias van Server 2 door de naam van de alias te gebruiken.
 
 ## <a name="limitations-during-preview"></a>Beperkingen tijdens de preview
 
@@ -104,7 +104,7 @@ Momenteel heeft een DNS-alias de volgende beperkingen:
 
 - *Vertraging van Maxi maal twee minuten:* Het duurt Maxi maal twee minuten voordat een DNS-alias wordt bijgewerkt of verwijderd.
   - Ongeacht de korte vertraging stopt de alias direct met het verwijzen naar client verbindingen met de verouderde server.
-- *DNS-zoek opdracht:* De enige gezaghebbende manier om te controleren naar welke server een gegeven DNS-alias verwijst, is door een [DNS-zoek opdracht](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup)uit te voeren.
+- *DNS-zoek opdracht:* De enige gezaghebbende manier om te controleren naar welke server een gegeven DNS-alias verwijst, is door een [DNS-zoek opdracht](/windows-server/administration/windows-commands/nslookup)uit te voeren.
 - Het _controleren van tabellen wordt niet ondersteund:_ U kunt geen DNS-alias gebruiken op een server waarop *Table auditing* is ingeschakeld voor een Data Base.
   - De tabel controle is afgeschaft.
   - We raden u aan om over te stappen op de [controle van blobs](../../azure-sql/database/auditing-overview.md).
@@ -112,8 +112,8 @@ Momenteel heeft een DNS-alias de volgende beperkingen:
 ## <a name="related-resources"></a>Gerelateerde resources
 
 - [Overzicht van bedrijfs continuïteit met Azure SQL database](business-continuity-high-availability-disaster-recover-hadr-overview.md), met inbegrip van herstel na nood gevallen.
-- [Azure REST API-naslaginformatie](https://docs.microsoft.com/rest/api/azure/)
-- [Server DNS-aliassen API](https://docs.microsoft.com/rest/api/sql/serverdnsaliases)
+- [Azure REST API-naslaginformatie](/rest/api/azure/)
+- [Server DNS-aliassen API](/rest/api/sql/serverdnsaliases)
 
 ## <a name="next-steps"></a>Volgende stappen
 

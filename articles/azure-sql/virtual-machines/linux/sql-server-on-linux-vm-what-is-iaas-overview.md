@@ -11,12 +11,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/10/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f7b1255553334bfaa75c5c0c96ecd36afa2c27f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be063105db2384f566e7c94d9f2e7a2bd808b15f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293761"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790131"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Overzicht van SQL Server op virtuele machines in Azure (Linux)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "91293761"
 
 Met SQL Server op Azure Virtual Machines kunt u volledige versies van SQL Server in de cloud gebruiken zonder dat u on-premises hardware hoeft te beheren. SQL Server-VM's vereenvoudigen ook de licentiekosten als u betaalt naar gebruik.
 
-Virtuele machines van Azure worden uitgevoerd in talloze verschillende [geografische regio's](https://azure.microsoft.com/regions/) ter wereld. Er zijn ook diverse [formaten](../../../virtual-machines/windows/sizes.md). In de galerie met installatiekopieën voor virtuele machines kunt u een SQL Server-VM met de juiste versie, de juiste editie en het juiste besturingssysteem maken. Daarom zijn virtuele machines een goede optie voor diverse verschillende SQL Server-werkbelastingen. 
+Virtuele machines van Azure worden uitgevoerd in talloze verschillende [geografische regio's](https://azure.microsoft.com/regions/) ter wereld. Er zijn ook diverse [formaten](../../../virtual-machines/sizes.md). In de galerie met installatiekopieën voor virtuele machines kunt u een SQL Server-VM met de juiste versie, de juiste editie en het juiste besturingssysteem maken. Daarom zijn virtuele machines een goede optie voor diverse verschillende SQL Server-werkbelastingen. 
 
 Als u geen ervaring hebt met Azure SQL, bekijk dan de video *Overzicht van SQL Server op Azure VM* uit onze diepgaande [Azure SQL-videoserie](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner):
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/SQL-Server-on-Azure-VM-Overview-4-of-61/player]
@@ -55,7 +55,7 @@ Als u aan de slag wilt, kiest u een installatiekopie voor een virtuele machine v
 
 Wanneer u SQL Server op Linux configureert, installeert u het database-engine-pakket en vervolgens verschillende optionele pakketten, afhankelijk van uw vereisten. De installatiekopieën van SQL Server voor de virtuele Linux-machines installeren de meeste pakketten automatisch voor u. De volgende tabel laat zien welke pakketten zijn geïnstalleerd voor elke distributie.
 
-| Distributie | [Database Engine](https://docs.microsoft.com/sql/linux/sql-server-linux-setup) | [Hulpprogramma's](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) | [SQL Server-agent](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-sql-agent) | [Zoekopdracht in volledige tekst](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-full-text-search) | [SSIS](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-ssis) | [HA-invoegtoepassing](https://docs.microsoft.com/sql/linux/sql-server-linux-business-continuity-dr) |
+| Distributie | [Database Engine](/sql/linux/sql-server-linux-setup) | [Hulpprogramma's](/sql/linux/sql-server-linux-setup-tools) | [SQL Server-agent](/sql/linux/sql-server-linux-setup-sql-agent) | [Zoekopdracht in volledige tekst](/sql/linux/sql-server-linux-setup-full-text-search) | [SSIS](/sql/linux/sql-server-linux-setup-ssis) | [HA-invoegtoepassing](/sql/linux/sql-server-linux-business-continuity-dr) |
 |---|---|---|---|---|---|---|
 | RHEL | ![RHEL en database-engine](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL en hulpprogramma's](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL en SQL Server-agent](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL en zoeken in volledige tekst](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL en SSIS](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL en HA-invoegtoepassing](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) |
 | SLES | ![SLES en database-engine](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES en hulpprogramma's](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES en SQL Server-agent](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES en zoeken in volledige tekst](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES en SSIS](./media/sql-server-on-linux-vm-what-is-iaas-overview/no.png) | ![SLES en HA-invoegtoepassing](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png)|
@@ -79,7 +79,7 @@ Wanneer u SQL Server op Linux configureert, installeert u het database-engine-pa
 
 ### <a name="sql"></a>SQL
 
-* [Documentatie voor SQL Server op Linux](https://docs.microsoft.com/sql/linux)
+* [Documentatie voor SQL Server op Linux](/sql/linux)
 * [Vergelijking met Azure SQL Database](../../azure-sql-iaas-vs-paas-what-is-overview.md)
 
 ## <a name="next-steps"></a>Volgende stappen

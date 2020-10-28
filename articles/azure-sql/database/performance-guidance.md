@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: jrasnick
 ms.date: 03/10/2020
-ms.openlocfilehash: 54a6293a29a407a7014aafb66587dcb01fc13337
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 773f011e0c79dc7b246ddc4a737914c15fe0f2f6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89645794"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789536"
 ---
 # <a name="tune-applications-and-databases-for-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>Toepassingen en data bases voor prestaties afstemmen in Azure SQL Database en Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -122,7 +122,7 @@ Nadat de SELECT-instructie is gemaakt, wordt er een ander plan gekozen, waarbij 
 
 ![Een query plan met gecorrigeerde indexen](./media/performance-guidance/query_plan_corrected_indexes.png)
 
-Het belangrijkste inzicht is dat de i/o-capaciteit van een gedeeld, grondstoffen systeem meer beperkt is dan dat van een dedicated server machine. Er is een Premium-fout opgetreden bij het minimaliseren van onnodige IO om Maxi maal te profiteren van het systeem in de resources van elke reken grootte van de service lagen. De juiste mogelijkheden voor het ontwerpen van fysieke data bases kunnen de latentie van afzonderlijke query's aanzienlijk verbeteren, de door Voer van gelijktijdige aanvragen die per schaal eenheid worden verwerkt, verbeteren en de kosten die nodig zijn om aan de query te voldoen, minimaliseren. Zie [sys.dm_db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx)voor meer informatie over de ontbrekende index dmv's.
+Het belangrijkste inzicht is dat de i/o-capaciteit van een gedeeld, grondstoffen systeem meer beperkt is dan dat van een dedicated server machine. Er is een Premium-fout opgetreden bij het minimaliseren van onnodige IO om Maxi maal te profiteren van het systeem in de resources van elke reken grootte van de service lagen. De juiste mogelijkheden voor het ontwerpen van fysieke data bases kunnen de latentie van afzonderlijke query's aanzienlijk verbeteren, de door Voer van gelijktijdige aanvragen die per schaal eenheid worden verwerkt, verbeteren en de kosten die nodig zijn om aan de query te voldoen, minimaliseren. Zie [sys.dm_db_missing_index_details](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-missing-index-details-transact-sql)voor meer informatie over de ontbrekende index dmv's.
 
 ### <a name="query-tuning-and-hinting"></a>Verfijning van query's en hints
 
@@ -232,7 +232,7 @@ ORDER BY start_time DESC
 
 U kunt **sys.resource_stats** onderzoeken om te bepalen of de resource voor een test meer of minder resources gebruikt dan een andere test. Wanneer u gegevens vergelijkt, moet u de timing van tests scheiden, zodat ze zich niet in hetzelfde venster van vijf minuten bevinden in de weer gave **sys.resource_stats** . Het doel van de oefening is het minimaliseren van de totale hoeveelheid gebruikte resources en niet om de piek bronnen te minimaliseren. Over het algemeen is het optimaliseren van een stukje code voor latentie het verbruik van resources verminderd. Zorg ervoor dat de wijzigingen die u aanbrengt in een toepassing nood zakelijk zijn en dat de wijzigingen geen negatieve invloed hebben op de klant ervaring voor iemand die mogelijk query hints in de toepassing gebruikt.
 
-Als een werk belasting een set herhalende query's heeft, is het vaak zinvol om de optimale plannings opties vast te leggen en te valideren, omdat deze de minimale resource grootte-eenheid die is vereist voor het hosten van de data base. Nadat u het hebt gevalideerd, kunt u de plannen opnieuw onderzoeken om u ervan te verzekeren dat ze niet zijn gedegradeerd. U kunt meer te weten komen over [query hints (Transact-SQL)](https://msdn.microsoft.com/library/ms181714.aspx).
+Als een werk belasting een set herhalende query's heeft, is het vaak zinvol om de optimale plannings opties vast te leggen en te valideren, omdat deze de minimale resource grootte-eenheid die is vereist voor het hosten van de data base. Nadat u het hebt gevalideerd, kunt u de plannen opnieuw onderzoeken om u ervan te verzekeren dat ze niet zijn gedegradeerd. U kunt meer te weten komen over [query hints (Transact-SQL)](/sql/t-sql/queries/hints-transact-sql-query).
 
 ### <a name="very-large-database-architectures"></a>Zeer grote database architecturen
 

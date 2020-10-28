@@ -12,13 +12,13 @@ ms.workload: iaas-sql-server
 ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 78414e26836d1547fe195a0a7844b6a98bb0dfc8
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.custom: seo-lt-2019, devx-track-azurecli
+ms.openlocfilehash: a85c1326501a362371d3bc961f5c5ae448e8d22e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168253"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790080"
 ---
 # <a name="use-powershell-or-az-cli-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Power shell of AZ CLI gebruiken voor het configureren van een beschikbaarheids groep voor SQL Server op Azure VM 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,7 +35,7 @@ Als u een always on-beschikbaarheids groep wilt configureren, moet u over de vol
 
 - Een [Azure-abonnement](https://azure.microsoft.com/free/).
 - Een resource groep met een domein controller. 
-- Een of meer virtuele machines die zijn gekoppeld aan een domein [in azure met SQL Server 2016 (of hoger) Enter prise Edition](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) in *dezelfde* beschikbaarheidsset of *verschillende* beschikbaarheids zones die zijn [geregistreerd bij de resource provider van de SQL-VM](sql-vm-resource-provider-register.md).  
+- Een of meer virtuele machines die zijn gekoppeld aan een domein [in azure met SQL Server 2016 (of hoger) Enter prise Edition](./create-sql-vm-portal.md) in *dezelfde* beschikbaarheidsset of *verschillende* beschikbaarheids zones die zijn [geregistreerd bij de resource provider van de SQL-VM](sql-vm-resource-provider-register.md).  
 - De nieuwste versie van [Power shell](/powershell/scripting/install/installing-powershell) of de [Azure cli](/cli/azure/install-azure-cli). 
 - Twee beschik bare (niet gebruikt door een entiteit) IP-adressen. Een voor de interne load balancer. De andere is voor de beschikbaarheids groep-listener binnen hetzelfde subnet als de beschikbaarheids groep. Als u een bestaande load balancer gebruikt, hebt u slechts één beschikbaar IP-adres nodig voor de beschikbaarheids groep-listener. 
 
@@ -46,13 +46,13 @@ U hebt de volgende account machtigingen nodig voor het configureren van de Alway
 - Een bestaand domein gebruikers account met een machtiging voor het **maken van computer objecten** in het domein. Een domein beheerders account heeft bijvoorbeeld doorgaans voldoende machtigingen (bijvoorbeeld: account@domain.com ). _Dit account moet ook lid zijn van de lokale groep Administrators op elke virtuele machine om het cluster te maken._
 - Het domein gebruikers account dat SQL Server beheert. 
  
-## <a name="create-a-storage-account"></a>Create a storage account 
+## <a name="create-a-storage-account"></a>Een opslagaccount maken 
 
 Het cluster heeft een opslag account nodig om te fungeren als de cloudwitness. U kunt elk bestaand opslag account gebruiken of u kunt een nieuw opslag account maken. Als u een bestaand opslag account wilt gebruiken, gaat u verder met de volgende sectie. 
 
 Met het volgende code fragment wordt het opslag account gemaakt: 
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 # Create the storage account
@@ -64,7 +64,7 @@ az storage account create -n <name> -g <resource group name> -l <region> `
 ```
 
 >[!TIP]
-> Mogelijk wordt de fout weer geven `az sql: 'vm' is not in the 'az sql' command group` Als u een verouderde versie van de Azure cli gebruikt. Down load de [nieuwste versie van Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli-windows) om deze fout te verhelpen.
+> Mogelijk wordt de fout weer geven `az sql: 'vm' is not in the 'az sql' command group` Als u een verouderde versie van de Azure cli gebruikt. Down load de [nieuwste versie van Azure cli](/cli/azure/install-azure-cli-windows) om deze fout te verhelpen.
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -84,11 +84,11 @@ New-AzStorageAccount -ResourceGroupName <resource group name> -Name <name> `
 
 ## <a name="define-cluster-metadata"></a>Meta gegevens van het cluster definiëren
 
-De opdracht groep Azure CLI [AZ SQL VM Group](https://docs.microsoft.com/cli/azure/sql/vm/group) beheert de meta gegevens van de WSFC-service (Windows Server failover cluster) die als host fungeert voor de beschikbaarheids groep. De meta gegevens van het cluster omvatten de Active Directory domein, cluster accounts, opslag accounts die moeten worden gebruikt als de cloudwitness en SQL Server versie. Gebruik [AZ SQL VM Group Create](https://docs.microsoft.com/cli/azure/sql/vm/group#az-sql-vm-group-create) om de meta gegevens voor WSFC te definiëren, zodat wanneer de eerste SQL Server virtuele machine wordt toegevoegd, het cluster wordt gemaakt zoals gedefinieerd. 
+De opdracht groep Azure CLI [AZ SQL VM Group](/cli/azure/sql/vm/group) beheert de meta gegevens van de WSFC-service (Windows Server failover cluster) die als host fungeert voor de beschikbaarheids groep. De meta gegevens van het cluster omvatten de Active Directory domein, cluster accounts, opslag accounts die moeten worden gebruikt als de cloudwitness en SQL Server versie. Gebruik [AZ SQL VM Group Create](/cli/azure/sql/vm/group#az-sql-vm-group-create) om de meta gegevens voor WSFC te definiëren, zodat wanneer de eerste SQL Server virtuele machine wordt toegevoegd, het cluster wordt gemaakt zoals gedefinieerd. 
 
 Het volgende code fragment definieert de meta gegevens voor het cluster:
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 # Define the cluster metadata
@@ -129,11 +129,11 @@ $group = New-AzSqlVMGroup -Name <name> -Location <regio>
 
 ## <a name="add-vms-to-the-cluster"></a>Vm's toevoegen aan het cluster
 
-Als u de eerste SQL Server VM toevoegt aan het cluster, wordt het cluster gemaakt. Met de opdracht [AZ SQL VM add-to-Group](https://docs.microsoft.com/cli/azure/sql/vm#az-sql-vm-add-to-group) maakt u het cluster met de naam die u eerder hebt opgegeven, installeert u de cluster functie op de SQL Server-vm's en voegt u deze toe aan het cluster. Met het volgende gebruik van de `az sql vm add-to-group` opdracht voegt u meer SQL Server vm's toe aan het zojuist gemaakte cluster. 
+Als u de eerste SQL Server VM toevoegt aan het cluster, wordt het cluster gemaakt. Met de opdracht [AZ SQL VM add-to-Group](/cli/azure/sql/vm#az-sql-vm-add-to-group) maakt u het cluster met de naam die u eerder hebt opgegeven, installeert u de cluster functie op de SQL Server-vm's en voegt u deze toe aan het cluster. Met het volgende gebruik van de `az sql vm add-to-group` opdracht voegt u meer SQL Server vm's toe aan het zojuist gemaakte cluster. 
 
 Met het volgende code fragment wordt het cluster gemaakt en wordt de eerste SQL Server VM hieraan toegevoegd: 
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 # Add SQL Server VMs to cluster
@@ -215,7 +215,7 @@ Voor de always on-beschikbaarheids groep-listener is een intern exemplaar van Az
 
 Met het volgende code fragment maakt u de interne load balancer:
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 # Create the internal load balancer
@@ -240,7 +240,7 @@ New-AzLoadBalancer -name sqlILB -ResourceGroupName <resource group name> `
 ---
 
 >[!IMPORTANT]
-> De open bare IP-resource voor elke SQL Server virtuele machine moet een standaard-SKU hebben om compatibel te zijn met de standaard load balancer. Als u de SKU van de open bare IP-resource van de virtuele machine wilt bepalen, gaat u naar de **resource groep**, selecteert u de resource voor het **open bare IP-adres** voor de gewenste SQL Server VM en zoekt u de waarde onder **SKU** in het deel venster **overzicht** .  
+> De open bare IP-resource voor elke SQL Server virtuele machine moet een standaard-SKU hebben om compatibel te zijn met de standaard load balancer. Als u de SKU van de open bare IP-resource van de virtuele machine wilt bepalen, gaat u naar de **resource groep** , selecteert u de resource voor het **open bare IP-adres** voor de gewenste SQL Server VM en zoekt u de waarde onder **SKU** in het deel venster **overzicht** .  
 
 ## <a name="create-listener"></a>Listener maken
 
@@ -258,7 +258,7 @@ De *resource-id* van het subnet is de waarde van `/subnets/<subnetname>` toegevo
 
 Met het volgende code fragment wordt de beschikbaarheids groep-listener gemaakt:
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 # Create the availability group listener
@@ -305,7 +305,7 @@ Er is een toegevoegde laag complexiteit wanneer u een beschikbaarheids groep imp
 
 Een nieuwe replica toevoegen aan de beschikbaarheids groep:
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. Voeg de SQL Server virtuele machine toe aan de cluster groep:
    ```azurecli-interactive
@@ -372,7 +372,7 @@ Een nieuwe replica toevoegen aan de beschikbaarheids groep:
 
 Een replica verwijderen uit de beschikbaarheids groep:
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. Verwijder de replica uit de beschikbaarheids groep met behulp van SQL Server Management Studio. 
 1. De meta gegevens van de SQL Server virtuele machine uit de listener verwijderen:
@@ -427,7 +427,7 @@ Als u de beschikbaarheids groep die u later hebt geconfigureerd met de Azure CLI
 
 U kunt de methode het beste verwijderen via de resource provider van de SQL-VM met behulp van het volgende code fragment in de Azure CLI. Hiermee verwijdert u de meta gegevens van de beschikbaarheids groep van de resource provider van de SQL-VM. Ook wordt de listener fysiek uit de beschikbaarheids groep verwijderd. 
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 # Remove the availability group listener
@@ -454,7 +454,7 @@ Remove-AzAvailabilityGroupListener -Name <Listener> `
 Verwijder alle knoop punten uit het cluster om deze te vernietigen en verwijder vervolgens de meta gegevens van het cluster van de resource provider van de SQL-VM. U kunt dit doen met behulp van de Azure CLI of Power shell. 
 
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Verwijder eerst alle SQL Server-Vm's uit het cluster: 
 
@@ -521,4 +521,4 @@ Raadpleeg voor meer informatie de volgende artikelen:
 * [Beheer van een beschikbaarheids groep &#40;SQL Server&#41;](/sql/database-engine/availability-groups/windows/administration-of-an-availability-group-sql-server)   
 * [Bewaking van beschikbaarheids groepen &#40;SQL Server&#41;](/sql/database-engine/availability-groups/windows/monitoring-of-availability-groups-sql-server)
 * [Overzicht van Transact-SQL-instructies voor AlwaysOn-beschikbaarheids groepen &#40;SQL Server&#41;](/sql/database-engine/availability-groups/windows/transact-sql-statements-for-always-on-availability-groups)   
-* [Overzicht van Power shell-cmdlets voor AlwaysOn-beschikbaarheids groepen &#40;SQL Server&#41;](/sql/database-engine/availability-groups/windows/overview-of-powershell-cmdlets-for-always-on-availability-groups-sql-server)  
+* [Overzicht van Power shell-cmdlets voor AlwaysOn-beschikbaarheids groepen &#40;SQL Server&#41;](/sql/database-engine/availability-groups/windows/overview-of-powershell-cmdlets-for-always-on-availability-groups-sql-server)

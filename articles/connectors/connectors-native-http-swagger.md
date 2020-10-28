@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: 7717c02fb460c41543ae810820ba01efb13a1ca7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af98811e158b9613e41389e08e19cb36797aa272
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91271185"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790590"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>REST-eind punten aanroepen met behulp van Azure Logic Apps
 
@@ -27,6 +27,8 @@ Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de ingebouwde ht
   Normaal gesp roken moet het REST-eind punt voldoen aan deze criteria om de connector te laten werken:
 
   * Het Swagger-bestand moet worden gehost op een HTTPS-URL die openbaar toegankelijk is.
+  
+  * Het Swagger-bestand moet een `operationID` voor elke bewerking in de definitie bevatten. Als dat niet het geval is, wordt in de connector alleen de laatste bewerking in het Swagger-bestand weer gegeven. 
 
   * Voor het Swagger-bestand moet [Cross-Origin Resource Sharing (CORS)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) zijn ingeschakeld.
 
@@ -42,13 +44,13 @@ Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de ingebouwde ht
 
 Deze ingebouwde trigger verzendt een HTTP-aanvraag naar een URL voor een Swagger-bestand waarin een REST API wordt beschreven en een antwoord wordt geretourneerd dat de inhoud van het bestand bevat.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Open uw lege logische app in de ontwerp functie voor logische apps.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Open uw lege logische app in de ontwerp functie voor logische apps.
 
 1. Voer op de ontwerp functie in het zoekvak ' Swagger ' in als uw filter. Selecteer in de lijst **Triggers** de **http + Swagger-** trigger.
 
    ![HTTP + Swagger-trigger selecteren](./media/connectors-native-http-swagger/select-http-swagger-trigger.png)
 
-1. Voer in het vak **URL van Swagger-eind punt** de URL voor het SWAGGER-bestand in en selecteer **volgende**.
+1. Voer in het vak **URL van Swagger-eind punt** de URL voor het SWAGGER-bestand in en selecteer **volgende** .
 
    In dit voor beeld wordt de Swagger-URL gebruikt die zich bevindt in de regio vs-West voor het [Cognitive Services Face-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236):
 
@@ -78,17 +80,17 @@ Deze ingebouwde trigger verzendt een HTTP-aanvraag naar een URL voor een Swagger
 
 Deze ingebouwde actie maakt een HTTP-aanvraag voor de URL voor het Swagger-bestand waarin een REST API wordt beschreven en retourneert een antwoord met daarin de inhoud van dat bestand.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Open uw logische app in de ontwerp functie voor logische apps.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Open uw logische app in de ontwerp functie voor logische apps.
 
-1. Selecteer **nieuwe stap**onder de stap waar u de http + Swagger-actie wilt toevoegen.
+1. Selecteer **nieuwe stap** onder de stap waar u de http + Swagger-actie wilt toevoegen.
 
-   Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. Selecteer het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
+   Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. Selecteer het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen** .
 
 1. Voer op de ontwerp functie in het zoekvak ' Swagger ' in als uw filter. Selecteer in de lijst **acties** de actie **http + Swagger** .
 
     ![HTTP + Swagger-actie selecteren](./media/connectors-native-http-swagger/select-http-swagger-action.png)
 
-1. Voer in het vak **URL van Swagger-eind punt** de URL voor het SWAGGER-bestand in en selecteer **volgende**.
+1. Voer in het vak **URL van Swagger-eind punt** de URL voor het SWAGGER-bestand in en selecteer **volgende** .
 
    In dit voor beeld wordt de Swagger-URL gebruikt die zich bevindt in de regio vs-West voor het [Cognitive Services Face-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236):
 
@@ -120,20 +122,20 @@ U kunt verwijzen naar een Swagger-bestand dat niet wordt gehost of niet voldoet 
 
 1. [Maak een Azure Storage-account](../storage/common/storage-account-create.md).
 
-1. Schakel nu CORS in voor de blob. Selecteer **CORS**in het menu van uw opslag account. Geef op het tabblad **BLOB service** deze waarden op en selecteer vervolgens **Opslaan**.
+1. Schakel nu CORS in voor de blob. Selecteer **CORS** in het menu van uw opslag account. Geef op het tabblad **BLOB service** deze waarden op en selecteer vervolgens **Opslaan** .
 
    | Eigenschap | Waarde |
    |----------|-------|
    | **Toegestane oorsprongen** | `*` |
    | **Toegestane methoden** | `GET`, `HEAD`, `PUT` |
    | **Toegestane headers** | `*` |
-   | **Weer gegeven kopteksten** | `*` |
+   | **Weergegeven headers** | `*` |
    | **Max. duur** (in seconden) | `200` |
    |||
 
    Hoewel in dit voor beeld de [Azure Portal](https://portal.azure.com)wordt gebruikt, kunt u een hulp programma zoals [Azure Storage Explorer](https://storageexplorer.com/)gebruiken of deze instelling automatisch configureren met behulp van dit [Power shell](https://github.com/logicappsio/EnableCORSAzureBlob/blob/master/EnableCORSAzureBlob.ps1)-voorbeeld script.
 
-1. [Maak een BLOB-container](../storage/blobs/storage-quickstart-blobs-portal.md). Selecteer **toegangs niveau wijzigen**in het deel venster **overzicht** van de container. Selecteer in de lijst **openbaar toegangs niveau** de optie **BLOB (anonieme lees toegang alleen voor blobs)** en selecteer **OK**.
+1. [Maak een BLOB-container](../storage/blobs/storage-quickstart-blobs-portal.md). Selecteer **toegangs niveau wijzigen** in het deel venster **overzicht** van de container. Selecteer in de lijst **openbaar toegangs niveau** de optie **BLOB (anonieme lees toegang alleen voor blobs)** en selecteer **OK** .
 
 1. [Upload het Swagger-bestand naar de BLOB-container](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), hetzij via de [Azure Portal](https://portal.azure.com) of [Azure Storage Explorer](https://storageexplorer.com/).
 
@@ -166,4 +168,3 @@ Hier vindt u meer informatie over de uitvoer van een HTTP + Swagger-trigger of-a
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)
-

@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 04/20/2020
-ms.openlocfilehash: a335f6ac015397ba2b2634d0d604c194a768260a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76bb4ffb4ebeb01baf8236d6be84c900b23ffbc0
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91283204"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790811"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>Transactionele replicatie met Azure SQL Managed instance (preview-versie)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -35,11 +35,11 @@ U kunt transactionele replicatie gebruiken om wijzigingen die zijn aangebracht i
 - Een exemplaar database in Azure SQL Managed instance
 
   > [!NOTE]
-  > Als u alle functies van Azure SQL Managed instance wilt gebruiken, moet u de nieuwste versies van [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) en [SQL Server Data tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)gebruiken.
+  > Als u alle functies van Azure SQL Managed instance wilt gebruiken, moet u de nieuwste versies van [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) en [SQL Server Data tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt)gebruiken.
 
 ### <a name="components"></a>Onderdelen
 
-De belangrijkste onderdelen in transactionele replicatie zijn de **Uitgever**, **distributeur**en **abonnee**, zoals wordt weer gegeven in de volgende afbeelding:  
+De belangrijkste onderdelen in transactionele replicatie zijn de **Uitgever** , **distributeur** en **abonnee** , zoals wordt weer gegeven in de volgende afbeelding:  
 
 ![replicatie met SQL Database](./media/replication-transactional-overview/replication-to-sql-database.png)
 
@@ -65,21 +65,21 @@ Azure SQL Managed instance kan ondersteuning bieden voor een abonnee uit de volg
 
    > [!NOTE]
    >
-   > - Voor andere versies van SQL Server die het publiceren naar objecten in azure niet ondersteunen, is het mogelijk de methode voor het [opnieuw publiceren van gegevens](https://docs.microsoft.com/sql/relational-databases/replication/republish-data) te gebruiken om gegevens te verplaatsen naar nieuwere versies van SQL Server.
+   > - Voor andere versies van SQL Server die het publiceren naar objecten in azure niet ondersteunen, is het mogelijk de methode voor het [opnieuw publiceren van gegevens](/sql/relational-databases/replication/republish-data) te gebruiken om gegevens te verplaatsen naar nieuwere versies van SQL Server.
    > - Poging tot het configureren van een replicatie met een oudere versie kan leiden tot een fout nummer MSSQL_REPL20084 (het proces kan geen verbinding maken met de abonnee.) en MSSQ_REPL40532 (kan de server \<name> die door de aanmelding is aangevraagd, niet openen. De aanmelding is mislukt.)
 
 ### <a name="types-of-replication"></a>Typen replicatie
 
-Er zijn verschillende [typen replicatie](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication):
+Er zijn verschillende [typen replicatie](/sql/relational-databases/replication/types-of-replication):
 
 | Replicatie | Azure SQL Database | Azure SQL Managed Instance |
 | :----| :------------- | :--------------- |
-| [**Standaard transactionele**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Ja (alleen als abonnee) | Ja |
-| [**Snapshot**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Ja (alleen als abonnee) | Ja|
-| [**Samenvoeg replicatie**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Nee | Nee|
-| [**Peer-to-peer**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nee | Nee|
-| [**Bidirectioneel**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nee | Ja|
-| [**Bij te werken abonnementen**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Nee | Nee|
+| [**Standaard transactionele**](/sql/relational-databases/replication/transactional/transactional-replication) | Ja (alleen als abonnee) | Ja |
+| [**Momentopname**](/sql/relational-databases/replication/snapshot-replication) | Ja (alleen als abonnee) | Ja|
+| [**Samenvoeg replicatie**](/sql/relational-databases/replication/merge/merge-replication) | Nee | Nee|
+| [**Peer-to-peer**](/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nee | Nee|
+| [**Bidirectioneel**](/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nee | Ja|
+| [**Bij te werken abonnementen**](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Nee | Nee|
 | &nbsp; | &nbsp; | &nbsp; |
 
 ### <a name="supportability-matrix"></a>Ondersteunings matrix
@@ -148,7 +148,7 @@ In deze configuratie is een-data base in Azure SQL Database of een door Azure SQ
 - Configureer VPN-peering tussen de virtuele netwerken van replicatie deelnemers als de virtuele netwerken verschillend zijn.
 
 > [!NOTE]
-> Fout 53 kan optreden bij het verbinden met een Azure Storage-bestand als de uitgaande netwerk beveiligings groep (NSG) poort 445 wordt geblokkeerd wanneer de Distributor een Azure SQL Managed instance-data base is en de abonnee on-premises is. [Werk de vNet-NSG](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) bij om dit probleem op te lossen.
+> Fout 53 kan optreden bij het verbinden met een Azure Storage-bestand als de uitgaande netwerk beveiligings groep (NSG) poort 445 wordt geblokkeerd wanneer de Distributor een Azure SQL Managed instance-data base is en de abonnee on-premises is. [Werk de vNet-NSG](../../storage/files/storage-troubleshoot-windows-file-connection-problems.md) bij om dit probleem op te lossen.
 
 ## <a name="with-failover-groups"></a>Met failover-groepen
 
@@ -196,16 +196,16 @@ Zie de volgende zelf studies voor meer informatie over het configureren van tran
 
 - [Replicatie configureren tussen een SQL Managed instance-Uitgever en een abonnee](../managed-instance/replication-between-two-instances-configure-tutorial.md)
 - [Replicatie configureren tussen een SQL Managed instance, distributeur van SQL Managed instance en SQL Server Subscriber](../managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md)
-- [Maak een publicatie](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
-- [Maak een push-abonnement](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) met behulp van de server naam als abonnee (bijvoorbeeld `N'azuresqldbdns.database.windows.net` en de data base in Azure SQL database naam als de doel database (bijvoorbeeld **AdventureWorks**). )
+- [Maak een publicatie](/sql/relational-databases/replication/publish/create-a-publication).
+- [Maak een push-abonnement](/sql/relational-databases/replication/create-a-push-subscription) met behulp van de server naam als abonnee (bijvoorbeeld `N'azuresqldbdns.database.windows.net` en de data base in Azure SQL database naam als de doel database (bijvoorbeeld **AdventureWorks** ). )
 
 ## <a name="see-also"></a>Zie ook  
 
 - [Replicatie met een door SQL beheerd exemplaar en een failovergroep](transact-sql-tsql-differences-sql-server.md#replication)
 - [Replicatie naar SQL Database](../database/replication-to-sql-database.md)
 - [Replicatie naar een beheerd exemplaar](../managed-instance/replication-between-two-instances-configure-tutorial.md)
-- [Een publicatie maken](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [Een push-abonnement maken](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
-- [Typen replicatie](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
-- [Bewaking (replicatie)](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)
-- [Een abonnement initialiseren](https://docs.microsoft.com/sql/relational-databases/replication/initialize-a-subscription)  
+- [Een publicatie maken](/sql/relational-databases/replication/publish/create-a-publication)
+- [Een push-abonnement maken](/sql/relational-databases/replication/create-a-push-subscription/)
+- [Typen replicatie](/sql/relational-databases/replication/types-of-replication)
+- [Bewaking (replicatie)](/sql/relational-databases/replication/monitor/monitoring-replication)
+- [Een abonnement initialiseren](/sql/relational-databases/replication/initialize-a-subscription)

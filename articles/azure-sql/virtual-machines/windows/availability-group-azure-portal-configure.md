@@ -12,13 +12,13 @@ ms.workload: iaas-sql-server
 ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 8634efa1e8e5ab8a3b962b711ec8dfcdac4e6ced
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.custom: seo-lt-2019, devx-track-azurecli
+ms.openlocfilehash: 3a8086c75a7125b744730de83c760db44ce222e9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164564"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790097"
 ---
 # <a name="use-azure-portal-to-configure-an-availability-group-preview-for-sql-server-on-azure-vm"></a>Azure Portal gebruiken om een beschikbaarheids groep te configureren voor SQL Server op een Azure VM 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -38,7 +38,7 @@ Als u een always on-beschikbaarheids groep wilt configureren met behulp van de A
 
 - Een [Azure-abonnement](https://azure.microsoft.com/free/).
 - Een resource groep met een domein controller. 
-- Een of meer aan een domein gekoppelde [vm's in azure met SQL Server 2016 (of hoger) Enter prise Edition](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) in *dezelfde* beschikbaarheidsset of *verschillende* beschikbaarheids zones die zijn [geregistreerd bij de resource provider van de SQL-vm in de volledige beheer modus](sql-vm-resource-provider-register.md) en die hetzelfde domein account gebruiken voor de SQL Server-service op elke virtuele machine.
+- Een of meer aan een domein gekoppelde [vm's in azure met SQL Server 2016 (of hoger) Enter prise Edition](./create-sql-vm-portal.md) in *dezelfde* beschikbaarheidsset of *verschillende* beschikbaarheids zones die zijn [geregistreerd bij de resource provider van de SQL-vm in de volledige beheer modus](sql-vm-resource-provider-register.md) en die hetzelfde domein account gebruiken voor de SQL Server-service op elke virtuele machine.
 - Twee beschik bare (niet gebruikt door een entiteit) IP-adressen. Een voor de interne load balancer. De andere is voor de beschikbaarheids groep-listener binnen hetzelfde subnet als de beschikbaarheids groep. Als u een bestaande load balancer gebruikt, hebt u slechts één beschikbaar IP-adres nodig voor de beschikbaarheids groep-listener. 
 
 ## <a name="permissions"></a>Machtigingen
@@ -61,7 +61,7 @@ Als u nog geen bestaand cluster hebt, maakt u dit met behulp van de Azure Portal
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
 1. Navigeer naar de resource van de [virtuele SQL-machines](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) . 
-1. Selecteer **hoge Beschik baarheid** onder **instellingen**. 
+1. Selecteer **hoge Beschik baarheid** onder **instellingen** . 
 1. Selecteer **+ nieuw Windows Server-failovercluster** om de pagina **Windows-failovercluster configureren** te openen.  
 
    :::image type="content" source="media/availability-group-az-portal-configure/create-new-cluster.png" alt-text="Nieuw cluster maken door het + nieuwe cluster te selecteren in de portal":::
@@ -70,7 +70,7 @@ Als u nog geen bestaand cluster hebt, maakt u dit met behulp van de Azure Portal
 
    :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-1.png" alt-text="Nieuw cluster maken door het + nieuwe cluster te selecteren in de portal":::
 
-1. Vouw de referenties van het **Windows Server-failovercluster** uit om [referenties](https://docs.microsoft.com/rest/api/sqlvm/sqlvirtualmachinegroups/createorupdate#wsfcdomainprofile) op te geven voor het SQL Server-service account, evenals de cluster operator en de Boots trap-accounts als deze verschillen van het account dat wordt gebruikt voor de SQL Server-service. 
+1. Vouw de referenties van het **Windows Server-failovercluster** uit om [referenties](/rest/api/sqlvm/sqlvirtualmachinegroups/createorupdate#wsfcdomainprofile) op te geven voor het SQL Server-service account, evenals de cluster operator en de Boots trap-accounts als deze verschillen van het account dat wordt gebruikt voor de SQL Server-service. 
 
    :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-2.png" alt-text="Nieuw cluster maken door het + nieuwe cluster te selecteren in de portal"
     ```
@@ -85,7 +85,7 @@ Voer hiervoor de volgende stappen uit:
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
 1. Navigeer naar de resource van de [virtuele SQL-machines](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) . 
-1. Selecteer **hoge Beschik baarheid** onder **instellingen**. 
+1. Selecteer **hoge Beschik baarheid** onder **instellingen** . 
 1. Selecteer een **bestaand Windows Server-failovercluster onboarding** om de pagina **onboarding Windows Server failover cluster** te openen. 
 
    :::image type="content" source="media/availability-group-az-portal-configure/onboard-existing-cluster.png" alt-text="Nieuw cluster maken door het + nieuwe cluster te selecteren in de portal":::
@@ -102,7 +102,7 @@ Nadat het cluster is gemaakt of onboarded, maakt u de beschikbaarheids groep met
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
 1. Navigeer naar de resource van de [virtuele SQL-machines](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) . 
-1. Selecteer **hoge Beschik baarheid** onder **instellingen**. 
+1. Selecteer **hoge Beschik baarheid** onder **instellingen** . 
 1. Selecteer **+ nieuwe always on-beschikbaarheids groep** om de pagina **beschikbaarheids groep maken** te openen.
 
    :::image type="content" source="media/availability-group-az-portal-configure/create-new-availability-group.png" alt-text="Nieuw cluster maken door het + nieuwe cluster te selecteren in de portal":::
@@ -138,8 +138,8 @@ Voer de volgende stappen uit om data bases toe te voegen aan uw beschikbaarheids
 1. Maak verbinding met een van uw SQL Server Vm's met behulp van uw voorkeurs methode, zoals Verbinding met extern bureaublad (RDP). 
 1. Open SQL Server Management Studio (SSMS).
 1. Maak verbinding met uw SQL Server-exemplaar. 
-1. Vouw **altijd uit op hoge Beschik baarheid** in **objectverkenner**.
-1. Vouw **beschikbaarheids groepen**uit, klik met de rechter muisknop op uw beschikbaarheids groep en kies **Data Base toevoegen...**.
+1. Vouw **altijd uit op hoge Beschik baarheid** in **objectverkenner** .
+1. Vouw **beschikbaarheids groepen** uit, klik met de rechter muisknop op uw beschikbaarheids groep en kies **Data Base toevoegen...** .
 
    :::image type="content" source="media/availability-group-az-portal-configure/add-database.png" alt-text="Nieuw cluster maken door het + nieuwe cluster te selecteren in de portal":::
 
@@ -157,14 +157,14 @@ Voer de volgende stappen uit om meer SQL Server Vm's toe te voegen aan het clust
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
 1. Navigeer naar de resource van de [virtuele SQL-machines](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) . 
-1. Selecteer **hoge Beschik baarheid** onder **instellingen**. 
+1. Selecteer **hoge Beschik baarheid** onder **instellingen** . 
 1. Selecteer **Windows Server-failovercluster configureren** om de pagina **Windows Server-failovercluster configureren** te openen. 
 
    :::image type="content" source="media/availability-group-az-portal-configure/configure-existing-cluster.png" alt-text="Nieuw cluster maken door het + nieuwe cluster te selecteren in de portal":::
 
 1. Vouw de referenties voor het **Windows Server-failovercluster** uit en voer in de accounts die worden gebruikt voor de SQL Server service, cluster operator en de Boots trap-accounts van het cluster. 
 1. Selecteer de SQL Server Vm's die u aan het cluster wilt toevoegen. 
-1. Selecteer **Toepassen**. 
+1. Selecteer **Toepassen** . 
 
 U kunt de status van uw implementatie controleren in het **activiteiten logboek** dat toegankelijk is via het klok pictogram in de bovenste navigatie balk. 
 
@@ -172,7 +172,7 @@ U kunt de status van uw implementatie controleren in het **activiteiten logboek*
 ## <a name="modify-availability-group"></a>Beschikbaarheids groep wijzigen 
 
 
-U kunt **meer Replica's toevoegen** aan de beschikbaarheids groep, **de listener configureren**of **de listener verwijderen** van de pagina **hoge Beschik baarheid** in het Azure portal door de beletsel tekens (...) naast uw beschikbaarheids groep te selecteren: 
+U kunt **meer Replica's toevoegen** aan de beschikbaarheids groep, **de listener configureren** of **de listener verwijderen** van de pagina **hoge Beschik baarheid** in het Azure portal door de beletsel tekens (...) naast uw beschikbaarheids groep te selecteren: 
 
 :::image type="content" source="media/availability-group-az-portal-configure/configure-listener.png" alt-text="Nieuw cluster maken door het + nieuwe cluster te selecteren in de portal":::
 
@@ -180,7 +180,7 @@ U kunt **meer Replica's toevoegen** aan de beschikbaarheids groep, **de listener
 
 Verwijder alle SQL Server-Vm's uit het cluster om deze te vernietigen en verwijder vervolgens de meta gegevens van het cluster van de resource provider van de SQL-VM. U kunt dit doen met behulp van de nieuwste versie van de [Azure cli](/cli/azure/install-azure-cli) of Power shell. 
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Verwijder eerst alle SQL Server-Vm's uit het cluster. Hiermee verwijdert u de knoop punten van het cluster fysiek en vernietigt u het cluster:  
 
@@ -245,7 +245,7 @@ Voer de volgende stappen uit om de logboeken voor de implementatie weer te geven
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Navigeer naar uw resource groep.
-1. Selecteer **implementaties** onder **instellingen**.
+1. Selecteer **implementaties** onder **instellingen** .
 1. Selecteer de implementatie van belang voor meer informatie over de implementatie. 
 
 

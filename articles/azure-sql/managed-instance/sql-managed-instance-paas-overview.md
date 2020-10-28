@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: e515df0ff8c7cd3794efb4db567ef7146ccb7a03
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 211ce85fdbf918171ecfc7964bbcdfa2ef245990
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424227"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790709"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Wat is Azure SQL Managed Instance?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -44,12 +44,12 @@ SQL Managed Instance combineert de beste functies die beschikbaar zijn in Azure 
 
 | **Voordelen van PaaS** | **Bedrijfscontinuïteit** |
 | --- | --- |
-|Geen hardware aankopen of beheren <br>Geen overhead voor het beheren van de onderliggende infrastructuur <br>Snelle inrichting en opschaling van services <br>Automatische patching en versie-upgrade <br>Integratie met andere PaaS-gegevensservices |SLA van 99,99% uptime  <br>Ingebouwde [hoge beschikbaarheid](../database/high-availability-sla.md) <br>Gegevens beveiligd met [automatische back-ups](../database/automated-backups-overview.md) <br>Door de klant configureerbare bewaarperiode voor back-ups <br>Door de gebruiker geïnitieerde [back-ups](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current&preserve-view=true) <br>Mogelijkheid om [een database te herstellen naar een bepaald tijdstip](../database/recovery-using-backups.md#point-in-time-restore) |
+|Geen hardware aankopen of beheren <br>Geen overhead voor het beheren van de onderliggende infrastructuur <br>Snelle inrichting en opschaling van services <br>Automatische patching en versie-upgrade <br>Integratie met andere PaaS-gegevensservices |SLA van 99,99% uptime  <br>Ingebouwde [hoge beschikbaarheid](../database/high-availability-sla.md) <br>Gegevens beveiligd met [automatische back-ups](../database/automated-backups-overview.md) <br>Door de klant configureerbare bewaarperiode voor back-ups <br>Door de gebruiker geïnitieerde [back-ups](/sql/t-sql/statements/backup-transact-sql?preserve-view=true&view=azuresqldb-mi-current) <br>Mogelijkheid om [een database te herstellen naar een bepaald tijdstip](../database/recovery-using-backups.md#point-in-time-restore) |
 |**Beveiliging en naleving** | **Beheer**|
-|Geïsoleerde omgeving ([VNet-integratie](connectivity-architecture-overview.md), single tenant service, toegewijde rekenkracht en opslag) <br>[TDE (Transparent Data Encryption)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure Active Directory (Azure AD)-verificatie](../database/authentication-aad-overview.md), ondersteuning voor eenmalige aanmelding <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD-server-principals (aanmeldingen)</a>  <br>Voldoet aan dezelfde nalevingsnormen als Azure SQL Database <br>[SQL-controle](auditing-configure.md) <br>[Advanced Threat Protection](threat-detection-configure.md) |Azure Resource Manager-API voor het automatiseren van het inrichten en schalen van services <br>Azure-portaalfunctionaliteit om handmatig services in te richten en te schalen <br>Data Migration Service
+|Geïsoleerde omgeving ([VNet-integratie](connectivity-architecture-overview.md), single tenant service, toegewijde rekenkracht en opslag) <br>[TDE (Transparent Data Encryption)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure Active Directory (Azure AD)-verificatie](../database/authentication-aad-overview.md), ondersteuning voor eenmalige aanmelding <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD-server-principals (aanmeldingen)</a>  <br>Voldoet aan dezelfde nalevingsnormen als Azure SQL Database <br>[SQL-controle](auditing-configure.md) <br>[Advanced Threat Protection](threat-detection-configure.md) |Azure Resource Manager-API voor het automatiseren van het inrichten en schalen van services <br>Azure-portaalfunctionaliteit om handmatig services in te richten en te schalen <br>Data Migration Service
 
 > [!IMPORTANT]
-> Azure SQL Managed Instanced is gecertificeerd volgens een aantal nalevingsnormen. Raadpleeg voor meer informatie [Microsoft Azure Compliance-aanbiedingen](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuideV3?command=Download&downloadType=Document&downloadId=44bbae63-bf4d-4e3b-9d3d-c96fb25ec363&tab=7027ead0-3d6b-11e9-b9e1-290b1eb4cdeb&docTab=7027ead0-3d6b-11e9-b9e1-290b1eb4cdeb_FAQ_and_White_Papers), waar u de meest recente lijst met nalevingscertificeringen voor SQL Managed Instance vindt onder **SQL Database**.
+> Azure SQL Managed Instanced is gecertificeerd volgens een aantal nalevingsnormen. Raadpleeg voor meer informatie [Microsoft Azure Compliance-aanbiedingen](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuideV3?command=Download&downloadType=Document&downloadId=44bbae63-bf4d-4e3b-9d3d-c96fb25ec363&tab=7027ead0-3d6b-11e9-b9e1-290b1eb4cdeb&docTab=7027ead0-3d6b-11e9-b9e1-290b1eb4cdeb_FAQ_and_White_Papers), waar u de meest recente lijst met nalevingscertificeringen voor SQL Managed Instance vindt onder **SQL Database** .
 
 In de volgende tabel worden de belangrijkste functies van SQL Managed Instance beschreven:
 
@@ -65,9 +65,9 @@ In de volgende tabel worden de belangrijkste functies van SQL Managed Instance b
 | VNet - Implementatie van Azure Resource Manager | Ja |
 | VNet - Klassiek implementatiemodel | Nee |
 | Ondersteuning van portaal | Ja|
-| Ingebouwde integratieservice (SSIS) | No - SSIS maakt deel uit van [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) |
-| Ingebouwde analyseservice (SSAS) | Nee - SSAS is een aparte [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
-| Ingebouwde rapportageservice (SSRS) | Nee - gebruik in de plaats [Gepagineerde rapporten van Power BI](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) of host SSRS op een Azure VM. SQL Managed Instance kan SSRS niet als service uitvoeren, maar kan [SSRS-catalogusdatabases](https://docs.microsoft.com/sql/reporting-services/install-windows/ssrs-report-server-create-a-report-server-database#database-server-version-requirements) hosten voor een rapportserver die is geïnstalleerd op een virtuele Azure-machine met behulp van SQL Server-verificatie. |
+| Ingebouwde integratieservice (SSIS) | No - SSIS maakt deel uit van [Azure Data Factory PaaS](../../data-factory/tutorial-deploy-ssis-packages-azure.md) |
+| Ingebouwde analyseservice (SSAS) | Nee - SSAS is een aparte [PaaS](../../analysis-services/analysis-services-overview.md) |
+| Ingebouwde rapportageservice (SSRS) | Nee - gebruik in de plaats [Gepagineerde rapporten van Power BI](/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) of host SSRS op een Azure VM. SQL Managed Instance kan SSRS niet als service uitvoeren, maar kan [SSRS-catalogusdatabases](/sql/reporting-services/install-windows/ssrs-report-server-create-a-report-server-database#database-server-version-requirements) hosten voor een rapportserver die is geïnstalleerd op een virtuele Azure-machine met behulp van SQL Server-verificatie. |
 |||
 
 ## <a name="vcore-based-purchasing-model"></a>Aankoopmodel op basis van vCore
@@ -76,8 +76,8 @@ Het op [vCore gebaseerde aankoopmodel](../database/service-tiers-vcore.md) voor 
 
 In het vCore-model kunt u kiezen tussen generaties van hardware.
 
-- Logische **Gen4**-CPU's zijn gebaseerd op Intel® E5-2673 v3 (Haswell) 2,4 GHz-processors, gekoppelde SSD, fysieke kernen, 7 GB RAM per kern en rekengrootten tussen 8 en 24 vCores.
-- Logische **GEN5**-CPU's zijn gebaseerd op Intel® E5-2673 v4 (Broadwell) 2,3 GHz, Intel® SP-8160 (Skylake) en Intel® 8272CL (Cascade Lake) 2,5 GHz-processors, snelle NVMe SSD, hyper-threaded logische kern en rekengrootten tussen 4 en 80 kernen.
+- Logische **Gen4** -CPU's zijn gebaseerd op Intel® E5-2673 v3 (Haswell) 2,4 GHz-processors, gekoppelde SSD, fysieke kernen, 7 GB RAM per kern en rekengrootten tussen 8 en 24 vCores.
+- Logische **GEN5** -CPU's zijn gebaseerd op Intel® E5-2673 v4 (Broadwell) 2,3 GHz, Intel® SP-8160 (Skylake) en Intel® 8272CL (Cascade Lake) 2,5 GHz-processors, snelle NVMe SSD, hyper-threaded logische kern en rekengrootten tussen 4 en 80 kernen.
 
 Meer informatie over het verschil tussen hardwaregeneraties in [SQL Managed Instance-resourcelimieten](resource-limits.md#hardware-generation-characteristics).
 
@@ -85,8 +85,8 @@ Meer informatie over het verschil tussen hardwaregeneraties in [SQL Managed Inst
 
 SQL Managed Instance is beschikbaar in twee servicelagen:
 
-- **Algemeen doel**: Ontworpen voor toepassingen met typische prestatie- en I/O-latentievereisten.
-- **Bedrijfskritiek**: Ontworpen voor toepassingen met lage I/O-latentievereisten en minimale gevolgen van onderliggende onderhoudsbewerkingen op de werkbelasting.
+- **Algemeen doel** : Ontworpen voor toepassingen met typische prestatie- en I/O-latentievereisten.
+- **Bedrijfskritiek** : Ontworpen voor toepassingen met lage I/O-latentievereisten en minimale gevolgen van onderliggende onderhoudsbewerkingen op de werkbelasting.
 
 Beide servicelagen garanderen een beschikbaarheid van 99,99% en bieden u de mogelijkheid om de opslaggrootte en de rekencapaciteit onafhankelijk te selecteren. Zie [Hoge beschikbaarheid en Azure SQL Managed Instance](../database/high-availability-sla.md)voor meer informatie over de architectuur voor hoge beschikbaarheid van Azure SQL Managed Instance.
 
@@ -98,7 +98,7 @@ In de volgende lijst worden de belangrijkste kenmerken van de servicelaag voor A
 - Azure Blob-opslag met hoge prestaties (8 TB)
 - Ingebouwde [hoge beschikbaarheid](../database/high-availability-sla.md#basic-standard-and-general-purpose-service-tier-locally-redundant-availability) op basis van betrouwbare Azure Blob-opslag en [Azure Service Fabric](../../service-fabric/service-fabric-overview.md)
 
-Zie voor meer informatie [Opslaglaag in de laag voor Algemeen gebruik](https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c) en [Best practices en overwegingen over opslagprestaties voor SQL Managed Instance (Algemeen gebruik)](https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose/).
+Zie voor meer informatie [Opslaglaag in de laag voor Algemeen gebruik](https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c) en [Best practices en overwegingen over opslagprestaties voor SQL Managed Instance (Algemeen gebruik)](/archive/blogs/sqlcat/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose).
 
 Meer informatie over het verschil tussen servicelagen in [SQL Managed Instance-resourcelimieten](resource-limits.md#service-tier-characteristics).
 
@@ -110,7 +110,7 @@ De volgende lijst geeft een overzicht van de belangrijkste kenmerken van de serv
 
 - Ontworpen voor zakelijke toepassingen met de hoogste  prestatie- en HA-vereisten
 - Wordt geleverd met supersnelle lokale SSD-opslag (tot 1 TB op Gen4 en tot 4 TB op GEN5)
-- Ingebouwde [hoge beschikbaarheid](../database/high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability) op basis van [Always On-beschikbaarheidsgroepen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) en [Azure Service Fabric](../../service-fabric/service-fabric-overview.md)
+- Ingebouwde [hoge beschikbaarheid](../database/high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability) op basis van [Always On-beschikbaarheidsgroepen](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) en [Azure Service Fabric](../../service-fabric/service-fabric-overview.md)
 - Ingebouwde aanvullende [alleen-lezen databasereplica](../database/read-scale-out.md) die kunnen worden gebruikt voor rapportage en andere alleen-lezen workloads
 - [In-Memory OLTP](../in-memory-oltp-overview.md) dat kan worden gebruikt voor de workloads met hoge prestatievereisten  
 
@@ -156,9 +156,9 @@ Migratie van een versleutelde database naar SQL Managed Instance wordt ondersteu
 
 ## <a name="azure-active-directory-integration"></a>Integratie van Azure Active Directory
 
-SQL Managed Instance ondersteunt traditionele aanmeldingen met SQL Server-database-engine en aanmeldingen die zijn geïntegreerd met Azure AD. Azure AD server-principals (aanmeldingen) (**openbare preview**) zijn een Azure-cloudversie van on-premises database-aanmeldingen die u in uw on-premises omgeving gebruikt. Met Azure AD-server-principals (aanmeldingen) kunt u gebruikers en groepen van uw Azure AD-tenant opgeven als echte instantie-principals, waardoor elke bewerking op instantieniveau kan worden uitgevoerd, inclusief query's tussen databases binnen hetzelfde beheerde exemplaar.
+SQL Managed Instance ondersteunt traditionele aanmeldingen met SQL Server-database-engine en aanmeldingen die zijn geïntegreerd met Azure AD. Azure AD server-principals (aanmeldingen) ( **openbare preview** ) zijn een Azure-cloudversie van on-premises database-aanmeldingen die u in uw on-premises omgeving gebruikt. Met Azure AD-server-principals (aanmeldingen) kunt u gebruikers en groepen van uw Azure AD-tenant opgeven als echte instantie-principals, waardoor elke bewerking op instantieniveau kan worden uitgevoerd, inclusief query's tussen databases binnen hetzelfde beheerde exemplaar.
 
-Er bestaat een nieuwe syntaxis voor het maken van Azure AD-server-principals (aanmeldingen) **VANUIT EXTERNE PROVIDER**. Voor meer informatie over de syntaxis raadpleegt u <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">AANMELDING MAKEN</a> en leest u het artikel [Een Azure Active Directory-beheerder inrichten voor SQL Managed Instance](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance).
+Er bestaat een nieuwe syntaxis voor het maken van Azure AD-server-principals (aanmeldingen) **VANUIT EXTERNE PROVIDER** . Voor meer informatie over de syntaxis raadpleegt u <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">AANMELDING MAKEN</a> en leest u het artikel [Een Azure Active Directory-beheerder inrichten voor SQL Managed Instance](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance).
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory-integratie en meervoudige verificatie
 
@@ -168,12 +168,12 @@ Dankzij [Azure Active Directory-integratie](../database/authentication-aad-overv
 
 Verificatie van SQL Managed Instance verwijst naar hoe gebruikers hun identiteit bewijzen wanneer ze verbinding maken met de database. SQL Managed Instance ondersteunt twee typen verificatie:  
 
-- **SQL-verificatie**:
+- **SQL-verificatie** :
 
   Bij deze verificatiemethode wordt een combinatie van gebruikersnaam en wachtwoord gebruikt.
-- **Azure Active Directory-verificatie**:
+- **Azure Active Directory-verificatie** :
 
-  Deze verificatiemethode gebruikt identiteiten die worden beheerd in Azure Active Directory. Deze methode wordt ondersteund voor beheerde en geïntegreerde domeinen. Gebruik [waar mogelijk](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode) Active Directory-verificatie (geïntegreerde beveiliging).
+  Deze verificatiemethode gebruikt identiteiten die worden beheerd in Azure Active Directory. Deze methode wordt ondersteund voor beheerde en geïntegreerde domeinen. Gebruik [waar mogelijk](/sql/relational-databases/security/choose-an-authentication-mode) Active Directory-verificatie (geïntegreerde beveiliging).
 
 ### <a name="authorization"></a>Autorisatie
 
@@ -185,7 +185,7 @@ SQL Managed Instance streeft naar gebruikersscenario's met massale databasemigra
 
 ### <a name="backup-and-restore"></a>Back-ups en herstellen  
 
-De benadering voor de migratie maakt gebruik van SQL-back-ups naar Azure Blob-opslag. Back-ups die zijn opgeslagen in een Azure Storage-blob, kunnen rechtstreeks worden hersteld in een beheerde instantie met behulp van de [T-SQL RESTORE-opdracht](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current&preserve-view=true).
+De benadering voor de migratie maakt gebruik van SQL-back-ups naar Azure Blob-opslag. Back-ups die zijn opgeslagen in een Azure Storage-blob, kunnen rechtstreeks worden hersteld in een beheerde instantie met behulp van de [T-SQL RESTORE-opdracht](/sql/t-sql/statements/restore-statements-transact-sql?preserve-view=true&view=azuresqldb-mi-current).
 
 - Zie [Een back-upbestand herstellen naar een beheerde instantie](restore-sample-database-quickstart.md)voor een snelstartgids waarin wordt getoond hoe u de Wide World Importers herstelt, het standaard back-upbestand van de database. In deze snelstartgids ziet u dat u een back-upbestand moet uploaden naar Azure Blob-opslag en het kunt beveiligen met behulp van een sleutel voor Shared Access Signature (SAS).
 - Zie [Systeemeigen HERSTEL vanaf URL](migrate-to-instance-from-sql-server.md#native-restore-from-url) voor meer informatie over herstel vanaf een URL.
@@ -195,7 +195,7 @@ De benadering voor de migratie maakt gebruik van SQL-back-ups naar Azure Blob-op
 
 ### <a name="database-migration-service"></a>Database Migration Service
 
-Azure Database Migration Service is een volledig beheerde service die is ontworpen voor naadloze migratie van meerdere databasebronnen naar Azure-gegevensplatforms met slechts minimale downtime. Deze service stroomlijnt de taken die nodig zijn voor het verplaatsen van bestaande databases van derden en SQL Server naar Azure SQL Database, Azure SQL Managed instance en SQL Server op Azure VM. Zie [Migreren van uw on-premises database naar een SQL Managed Instance met behulp van Database Migration Service](https://aka.ms/migratetoMIusingDMS).
+Azure Database Migration Service is een volledig beheerde service die is ontworpen voor naadloze migratie van meerdere databasebronnen naar Azure-gegevensplatforms met slechts minimale downtime. Deze service stroomlijnt de taken die nodig zijn voor het verplaatsen van bestaande databases van derden en SQL Server naar Azure SQL Database, Azure SQL Managed instance en SQL Server op Azure VM. Zie [Migreren van uw on-premises database naar een SQL Managed Instance met behulp van Database Migration Service](../../dms/tutorial-sql-server-to-managed-instance.md).
 
 ## <a name="sql-features-supported"></a>Ondersteunde SQL-functies
 
@@ -213,12 +213,12 @@ SQL Managed Instance heeft als voordeel dat het altijd up-to-date is in de cloud
 
 Enkele belangrijke verschillen:
 
-- Hoge beschikbaarheid is ingebouwd en vooraf geconfigureerd met technologie die vergelijkbaar is met [Always On-beschikbaarheidsgroepen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server).
+- Hoge beschikbaarheid is ingebouwd en vooraf geconfigureerd met technologie die vergelijkbaar is met [Always On-beschikbaarheidsgroepen](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server).
 - Er zijn geautomatiseerde back-ups en herstel naar een eerder tijdstip. Klanten kunnen `copy-only`-back-ups initiëren waarvoor geen conflicten met de automatische back-upketen hebben.
 - Het opgeven van volledige fysieke paden wordt niet ondersteund, dus alle bijbehorende scenario's moeten anders worden ondersteund: RESTORE DB biedt geen ondersteuning voor WITH MOVE. CREATE DB staat geen fysieke paden toe, BULK INSERT werkt alleen met Azure-blobs, enzovoort.
 - SQL Managed Instance ondersteunt [Azure AD-verificatie](../database/authentication-aad-overview.md) als een alternatief in de cloud voor Windows-verificatie.
 - SQL Managed Instance beheert automatisch XTP-bestandsgroepen en -bestanden voor databases die OLTP-objecten in het geheugen bevatten.
-- SQL Managed Instance ondersteunt SQL Server Integration Services (SSIS) en kan een SSIS-catalogus (SSISDB) hosten waarmee SSIS-pakketten worden opgeslagen, maar ze worden uitgevoerd op een beheerde Azure-SSIS Integration Runtime (IR) in Azure Data Factory. Zie [Azure-SSIS IR maken in Data Factory](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). Zie [SQL Database vergelijken met SQL Managed Instance](../../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance) als u de SSIS-functies wilt vergelijken.
+- SQL Managed Instance ondersteunt SQL Server Integration Services (SSIS) en kan een SSIS-catalogus (SSISDB) hosten waarmee SSIS-pakketten worden opgeslagen, maar ze worden uitgevoerd op een beheerde Azure-SSIS Integration Runtime (IR) in Azure Data Factory. Zie [Azure-SSIS IR maken in Data Factory](../../data-factory/create-azure-ssis-integration-runtime.md). Zie [SQL Database vergelijken met SQL Managed Instance](../../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance) als u de SSIS-functies wilt vergelijken.
 
 ### <a name="administration-features"></a>Beheerfuncties
 

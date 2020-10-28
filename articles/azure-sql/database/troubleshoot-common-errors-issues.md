@@ -10,12 +10,12 @@ author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: sstein,vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: aa4bcee7a2eaf5e6ec11b9066ed6eca6b33bdba1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bcf11ef9b64a02383aad5175c19c5db58c3c39cf
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91284119"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791338"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>Verbindings problemen en andere fouten oplossen met Azure SQL Database en Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -24,19 +24,19 @@ Er worden fout berichten weer gegeven wanneer de verbinding met Azure SQL Databa
 
 ## <a name="transient-fault-error-messages-40197-40613-and-others"></a>Tijdelijke fout berichten voor fouten (40197, 40613 en andere)
 
-De Azure-infrastructuur biedt de mogelijkheid om servers dynamisch opnieuw te configureren wanneer zware workloads optreden in de SQL Database-service.  Dit dynamische gedrag kan ertoe leiden dat de verbinding van het client programma met de data base of het exemplaar verloren gaat. Dit type fout wordt een *tijdelijke fout*genoemd. Gebeurtenissen voor het opnieuw configureren van de data base vinden plaats vanwege een geplande gebeurtenis (bijvoorbeeld een software-upgrade) of een niet-geplande gebeurtenis (bijvoorbeeld een proces storing of taak verdeling). De meeste opnieuw geconfigureerde gebeurtenissen zijn meestal korte tijd en moeten binnen Maxi maal 60 seconden worden voltooid. Het volt ooien van deze gebeurtenissen kan echter af en toe langer duren, bijvoorbeeld wanneer een grote trans actie een langlopend herstel veroorzaakt. De volgende tabel bevat een lijst met verschillende tijdelijke fouten die toepassingen kunnen ontvangen bij het maken van verbinding met SQL Database
+De Azure-infrastructuur biedt de mogelijkheid om servers dynamisch opnieuw te configureren wanneer zware workloads optreden in de SQL Database-service.  Dit dynamische gedrag kan ertoe leiden dat de verbinding van het client programma met de data base of het exemplaar verloren gaat. Dit type fout wordt een *tijdelijke fout* genoemd. Gebeurtenissen voor het opnieuw configureren van de data base vinden plaats vanwege een geplande gebeurtenis (bijvoorbeeld een software-upgrade) of een niet-geplande gebeurtenis (bijvoorbeeld een proces storing of taak verdeling). De meeste opnieuw geconfigureerde gebeurtenissen zijn meestal korte tijd en moeten binnen Maxi maal 60 seconden worden voltooid. Het volt ooien van deze gebeurtenissen kan echter af en toe langer duren, bijvoorbeeld wanneer een grote trans actie een langlopend herstel veroorzaakt. De volgende tabel bevat een lijst met verschillende tijdelijke fouten die toepassingen kunnen ontvangen bij het maken van verbinding met SQL Database
 
 ### <a name="list-of-transient-fault-error-codes"></a>Lijst met tijdelijke fout codes
 
 | Foutcode | Ernst | Beschrijving |
 | ---:| ---:|:--- |
-| 4060 |16 |Kan de data base%. &#x2a;ls niet openen die door de aanmelding is aangevraagd. De aanmelding is mislukt. Zie [fouten 4000 tot 4999](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999) voor meer informatie.|
+| 4060 |16 |Kan de data base%. &#x2a;ls niet openen die door de aanmelding is aangevraagd. De aanmelding is mislukt. Zie [fouten 4000 tot 4999](/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999) voor meer informatie.|
 | 40197 |17 |De service heeft een fout aangetroffen bij het verwerken van uw aanvraag. Probeer het opnieuw. Fout code% d.<br/><br/>U ontvangt deze fout melding wanneer de service niet beschikbaar is vanwege software-of hardware-upgrades, hardwarefouten of andere failover-problemen. De fout code (% d) Inge sloten in het bericht van fout 40197 bevat aanvullende informatie over het soort fout of failover dat heeft plaatsgevonden. Enkele voor beelden van de fout codes zijn Inge sloten in het bericht met de fout 40197 zijn 40020, 40143, 40166 en 40540.<br/><br/>Als u opnieuw verbinding maakt, wordt u automatisch verbonden met een gezonde kopie van uw data base. Uw toepassing moet fout 40197 opvangen, de Inge sloten fout code (% d) in het bericht voor het oplossen van problemen registreren en opnieuw proberen verbinding te maken met SQL Database totdat de resources beschikbaar zijn en uw verbinding opnieuw tot stand is gebracht. Zie [tijdelijke fouten](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults)voor meer informatie.|
 | 40501 |20 |De service is momenteel te druk. Voer de aanvraag na 10 seconden opnieuw uit. Incident-ID:% ls. Code:% d. Zie voor meer informatie: <br/>&bull;&nbsp; [Logische SQL Server-Resource limieten](resource-limits-logical-server.md)<br/>&bull;&nbsp; [Op DTU gebaseerde limieten voor afzonderlijke data bases](service-tiers-dtu.md)<br/>&bull;&nbsp; [Op DTU gebaseerde limieten voor elastische Pools](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [limieten op basis van vCore voor afzonderlijke data bases](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [limieten op basis van vCore voor elastische Pools](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Resource limieten voor Azure SQL Managed instance](../managed-instance/resource-limits.md).|
 | 40613 |17 |Data Base%. &#x2a;ls op server%. &#x2a;LS is momenteel niet beschikbaar. Probeer de verbinding later opnieuw. Als het probleem zich blijft voordoen, neemt u contact op met de klant ondersteuning en geeft u de sessie tracering-ID%. &#x2a;ls.<br/><br/> Deze fout kan optreden als er al een DAC (dedicated Administrator Connection) is ingesteld op de data base. Zie [tijdelijke fouten](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults)voor meer informatie.|
 | 49918 |16 |Kan aanvraag niet verwerken. Er zijn onvoldoende bronnen om de aanvraag te verwerken.<br/><br/>De service is momenteel te druk. Voer de aanvraag later opnieuw uit. Zie voor meer informatie: <br/>&bull;&nbsp; [Logische SQL Server-Resource limieten](resource-limits-logical-server.md)<br/>&bull;&nbsp; [Op DTU gebaseerde limieten voor afzonderlijke data bases](service-tiers-dtu.md)<br/>&bull;&nbsp; [Op DTU gebaseerde limieten voor elastische Pools](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [limieten op basis van vCore voor afzonderlijke data bases](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [limieten op basis van vCore voor elastische Pools](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Resource limieten voor Azure SQL Managed instance](../managed-instance/resource-limits.md). |
-| 49919 |16 |Kan de aanvraag voor maken of bijwerken niet verwerken. Er zijn te veel bewerkingen voor het maken of bijwerken van het abonnement% ld.<br/><br/>De service is bezig met het verwerken van meerdere aanvragen voor maken of bijwerken voor uw abonnement of server. Aanvragen zijn momenteel geblokkeerd voor het optimaliseren van resources. Query [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) voor bewerkingen die in behandeling zijn. Wacht tot er aanvragen voor maken of bijwerken zijn voltooid of verwijder een van de in behandeling zijnde aanvragen en voer de aanvraag later opnieuw uit. Zie voor meer informatie: <br/>&bull;&nbsp; [Logische SQL Server-Resource limieten](resource-limits-logical-server.md)<br/>&bull;&nbsp; [Op DTU gebaseerde limieten voor afzonderlijke data bases](service-tiers-dtu.md)<br/>&bull;&nbsp; [Op DTU gebaseerde limieten voor elastische Pools](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [limieten op basis van vCore voor afzonderlijke data bases](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [limieten op basis van vCore voor elastische Pools](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Resource limieten voor Azure SQL Managed instance](../managed-instance/resource-limits.md). |
-| 49920 |16 |Kan aanvraag niet verwerken. Er worden te veel bewerkingen uitgevoerd voor het abonnement% ld.<br/><br/>De service is bezig met het verwerken van meerdere aanvragen voor dit abonnement. Aanvragen zijn momenteel geblokkeerd voor het optimaliseren van resources. Query [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) voor bewerkings status. Wacht totdat aanvragen in behandeling zijn voltooid of verwijder een van de in behandeling zijnde aanvragen en voer de aanvraag later opnieuw uit. Zie voor meer informatie: <br/>&bull;&nbsp; [Logische SQL Server-Resource limieten](resource-limits-logical-server.md)<br/>&bull;&nbsp; [Op DTU gebaseerde limieten voor afzonderlijke data bases](service-tiers-dtu.md)<br/>&bull;&nbsp; [Op DTU gebaseerde limieten voor elastische Pools](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [limieten op basis van vCore voor afzonderlijke data bases](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [limieten op basis van vCore voor elastische Pools](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Resource limieten voor Azure SQL Managed instance](../managed-instance/resource-limits.md). |
+| 49919 |16 |Kan de aanvraag voor maken of bijwerken niet verwerken. Er zijn te veel bewerkingen voor het maken of bijwerken van het abonnement% ld.<br/><br/>De service is bezig met het verwerken van meerdere aanvragen voor maken of bijwerken voor uw abonnement of server. Aanvragen zijn momenteel geblokkeerd voor het optimaliseren van resources. Query [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) voor bewerkingen die in behandeling zijn. Wacht tot er aanvragen voor maken of bijwerken zijn voltooid of verwijder een van de in behandeling zijnde aanvragen en voer de aanvraag later opnieuw uit. Zie voor meer informatie: <br/>&bull;&nbsp; [Logische SQL Server-Resource limieten](resource-limits-logical-server.md)<br/>&bull;&nbsp; [Op DTU gebaseerde limieten voor afzonderlijke data bases](service-tiers-dtu.md)<br/>&bull;&nbsp; [Op DTU gebaseerde limieten voor elastische Pools](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [limieten op basis van vCore voor afzonderlijke data bases](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [limieten op basis van vCore voor elastische Pools](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Resource limieten voor Azure SQL Managed instance](../managed-instance/resource-limits.md). |
+| 49920 |16 |Kan aanvraag niet verwerken. Er worden te veel bewerkingen uitgevoerd voor het abonnement% ld.<br/><br/>De service is bezig met het verwerken van meerdere aanvragen voor dit abonnement. Aanvragen zijn momenteel geblokkeerd voor het optimaliseren van resources. Query [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) voor bewerkings status. Wacht totdat aanvragen in behandeling zijn voltooid of verwijder een van de in behandeling zijnde aanvragen en voer de aanvraag later opnieuw uit. Zie voor meer informatie: <br/>&bull;&nbsp; [Logische SQL Server-Resource limieten](resource-limits-logical-server.md)<br/>&bull;&nbsp; [Op DTU gebaseerde limieten voor afzonderlijke data bases](service-tiers-dtu.md)<br/>&bull;&nbsp; [Op DTU gebaseerde limieten voor elastische Pools](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [limieten op basis van vCore voor afzonderlijke data bases](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [limieten op basis van vCore voor elastische Pools](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Resource limieten voor Azure SQL Managed instance](../managed-instance/resource-limits.md). |
 | 4221 |16 |Aanmelden bij lezen-secundair is mislukt omdat er een lange wacht tijd op HADR_DATABASE_WAIT_FOR_TRANSITION_TO_VERSIONING is. De replica is niet beschikbaar voor aanmelding omdat er geen rijkoppen ontbreken voor trans acties die in de vlucht waren toen de replica werd gerecycled. Het probleem kan worden opgelost door de actieve trans acties op de primaire replica te herstellen of door te voeren. Exemplaren van deze voor waarde kunnen worden geminimaliseerd door lange schrijf transacties op de primaire te vermijden. |
 
 ### <a name="steps-to-resolve-transient-connectivity-issues"></a>Stappen voor het oplossen van problemen met de tijdelijke verbinding
@@ -52,12 +52,12 @@ Het wordt ten zeerste aangeraden dat uw client programma logica voor nieuwe pogi
 
 Zie voor code voorbeelden van de logica voor opnieuw proberen:
 
-- [Flexibel verbinding maken met SQL via ADO.NET](https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net)
-- [Flexibel verbinding maken met SQL via PHP](https://docs.microsoft.com/sql/connect/php/step-4-connect-resiliently-to-sql-with-php)
+- [Flexibel verbinding maken met SQL via ADO.NET](/sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net)
+- [Flexibel verbinding maken met SQL via PHP](/sql/connect/php/step-4-connect-resiliently-to-sql-with-php)
 
 Voor meer informatie over het afhandelen van tijdelijke fouten in uw toepassing raadpleegt [u problemen met tijdelijke verbindings fouten oplossen SQL database](troubleshoot-common-connectivity-issues.md)
 
-Een bespreking van de *blokkerings periode* voor clients die gebruikmaken van ADO.net is beschikbaar in [Connection pooling (ADO.net)](https://msdn.microsoft.com/library/8xx3tyca.aspx).
+Een bespreking van de *blokkerings periode* voor clients die gebruikmaken van ADO.net is beschikbaar in [Connection pooling (ADO.net)](/dotnet/framework/data/adonet/sql-server-connection-pooling).
 
 ## <a name="a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-your-server"></a>Er is een netwerkgerelateerde of exemplaar fout opgetreden tijdens het maken van een verbinding met uw server
 
@@ -119,7 +119,7 @@ De service beheerder kan doorgaans de volgende stappen gebruiken om de aanmeldin
 4. Als de gebruikers naam voor SQL-aanmelding niet bestaat, maakt u deze door de volgende stappen uit te voeren:
 
    1. In SSMS dubbelklikt u op **beveiliging** om het uit te vouwen.
-   2. Klik met de rechter muisknop op **aanmeldingen**en selecteer vervolgens **nieuwe aanmelding**.
+   2. Klik met de rechter muisknop op **aanmeldingen** en selecteer vervolgens **nieuwe aanmelding** .
    3. Bewerk en voer de volgende SQL-query uit in het gegenereerde script met tijdelijke aanduidingen:
 
    ```sql
@@ -128,10 +128,10 @@ De service beheerder kan doorgaans de volgende stappen gebruiken om de aanmeldin
    GO
    ```
 
-5. Dubbel klik op **Data Base**.
+5. Dubbel klik op **Data Base** .
 6. Selecteer de data base waaraan u de gebruiker toestemming wilt verlenen.
-7. Dubbel klik op **beveiliging**.
-8. Klik met de rechter muisknop op **gebruikers**en selecteer vervolgens **nieuwe gebruiker**.
+7. Dubbel klik op **beveiliging** .
+8. Klik met de rechter muisknop op **gebruikers** en selecteer vervolgens **nieuwe gebruiker** .
 9. Bewerk en voer de volgende SQL-query uit in het gegenereerde script met tijdelijke aanduidingen:
 
    ```sql
@@ -148,7 +148,7 @@ De service beheerder kan doorgaans de volgende stappen gebruiken om de aanmeldin
    > [!NOTE]
    > U kunt ook gebruiken `sp_addrolemember` om specifieke gebruikers toe te wijzen aan specifieke database rollen.
 
-Zie [data bases en aanmeldingen beheren in Azure SQL database](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins)voor meer informatie.
+Zie [data bases en aanmeldingen beheren in Azure SQL database](./logins-create-manage.md)voor meer informatie.
 
 ## <a name="connection-timeout-expired-errors"></a>Time-out tijdens verbindingstime-out
 
@@ -185,7 +185,7 @@ Ga op een van de volgende manieren te werk om dit probleem op te lossen:
   > [!NOTE]
   > Dit is een minimale aanpak waarmee het probleem mogelijk niet kan worden opgelost.
 
-1. Voer de volgende SQL-query uit om de weer gave [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) te controleren om blokkerings aanvragen weer te geven:
+1. Voer de volgende SQL-query uit om de weer gave [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) te controleren om blokkerings aanvragen weer te geven:
 
    ```sql
    SELECT * FROM dm_exec_requests
@@ -194,13 +194,13 @@ Ga op een van de volgende manieren te werk om dit probleem op te lossen:
 2. Bepaal de **invoer buffer** voor de hoofd blok kering.
 3. Stem de hoofd blok-query af.
 
-   Voor een uitgebreide probleemoplossings procedure, Zie [is mijn query wordt in de Cloud verfijnd?](https://docs.microsoft.com/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
+   Voor een uitgebreide probleemoplossings procedure, Zie [is mijn query wordt in de Cloud verfijnd?](/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
 
 Als de data base consequent de limiet heeft bereikt ondanks het blok keren van blokkerende en langlopende query's, kunt u overwegen om een upgrade uit te voeren naar een editie met meer bronnen- [edities](https://azure.microsoft.com/pricing/details/sql-database/).
 
-Zie [dynamische systeem beheer weergaven](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)voor meer informatie over dynamische beheer weergaven.
+Zie [dynamische systeem beheer weergaven](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)voor meer informatie over dynamische beheer weergaven.
 
-Zie  [SQL database resource limieten voor servers](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-database-server)voor meer informatie over database limieten.
+Zie  [SQL database resource limieten voor servers](./resource-limits-logical-server.md)voor meer informatie over database limieten.
 
 ### <a name="error-10929-resource-id-1"></a>Fout 10929: Resource-ID: 1
 
@@ -212,7 +212,7 @@ Zie  [SQL database resource limieten voor servers](https://docs.microsoft.com/az
 
 Dit is een beperkings fout van de engine, een indicatie dat de resource limieten worden overschreden.
 
-Zie [logische SQL Server-Resource limieten](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-database-server)voor meer informatie over resource limieten.
+Zie [logische SQL Server-Resource limieten](./resource-limits-logical-server.md)voor meer informatie over resource limieten.
 
 ### <a name="error-40544-the-database-has-reached-its-size-quota"></a>Fout 40544: de grootte van de data base is bereikt
 
@@ -242,7 +242,7 @@ U kunt de volgende stappen gebruiken om het probleem op te lossen of om extra op
 
    - Normale activiteiten voor het opschonen van data bases uitvoeren. U kunt bijvoorbeeld de ongewenste gegevens opschonen met behulp van afkap ping/verwijderen of gegevens verplaatsen met behulp van SQL Server Integration Services (SSIS) of het hulp programma voor het bulksgewijs kopiëren van Program ma's (BCP).
    - Partitioneer of verwijder gegevens, verwijder indexen of Raadpleeg de documentatie voor mogelijke oplossingen.
-   - Zie voor het schalen van de Data Base [afzonderlijke database resources schalen](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-scale) en [bronnen voor elastische Pools schalen](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool-scale).
+   - Zie voor het schalen van de Data Base [afzonderlijke database resources schalen](./single-database-scale.md) en [bronnen voor elastische Pools schalen](./elastic-pool-scale.md).
 
 ### <a name="error-40549-session-is-terminated-because-you-have-a-long-running-transaction"></a>Fout 40549: de sessie is beëindigd omdat u een langlopende trans actie hebt
 
@@ -259,9 +259,9 @@ Als u deze fout herhaaldelijk ondervindt, kunt u proberen om het probleem op te 
 2. Bepaal de invoer buffer voor de langlopende query.
 3. De query afstemmen.
 
-U kunt ook uw query's batcheren. Zie voor meer informatie over batch verwerking [batch verwerking gebruiken om de prestaties van SQL database-toepassingen te verbeteren](https://docs.microsoft.com/azure/sql-database/sql-database-use-batching-to-improve-performance).
+U kunt ook uw query's batcheren. Zie voor meer informatie over batch verwerking [batch verwerking gebruiken om de prestaties van SQL database-toepassingen te verbeteren](../performance-improve-use-batching.md).
 
-Voor een uitgebreide probleemoplossings procedure, Zie [is mijn query wordt in de Cloud verfijnd?](https://docs.microsoft.com/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
+Voor een uitgebreide probleemoplossings procedure, Zie [is mijn query wordt in de Cloud verfijnd?](/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
 
 ### <a name="error-40551-the-session-has-been-terminated-because-of-excessive-tempdb-usage"></a>Fout 40551: de sessie is beëindigd vanwege het overmatige gebruik van TEMPDB
 
@@ -292,7 +292,7 @@ Probeer het aantal rijen dat onmiddellijk wordt geëxploiteerd, te verminderen d
 
 U kunt dit probleem omzeilen door de query te optimaliseren.
 
-Voor een uitgebreide probleemoplossings procedure, Zie [is mijn query wordt in de Cloud verfijnd?](https://docs.microsoft.com/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
+Voor een uitgebreide probleemoplossings procedure, Zie [is mijn query wordt in de Cloud verfijnd?](/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
 
 ### <a name="table-of-additional-resource-governance-error-messages"></a>Tabel met aanvullende resource governance-fout berichten
 
@@ -303,7 +303,7 @@ Voor een uitgebreide probleemoplossings procedure, Zie [is mijn query wordt in d
 | 40544 |20 |De data base heeft het quotum voor de grootte bereikt. Partitioneer of verwijder gegevens, verwijder indexen of Raadpleeg de documentatie voor mogelijke oplossingen. Zie voor het schalen van de Data Base [afzonderlijke database resources schalen](single-database-scale.md) en [bronnen voor elastische Pools schalen](elastic-pool-scale.md).|
 | 40549 |16 |De sessie is beëindigd omdat u een langlopende trans actie hebt. Probeer uw trans actie te verkorten. Zie voor meer informatie over batch verwerking [batch verwerking gebruiken om de prestaties van SQL database-toepassingen te verbeteren](../performance-improve-use-batching.md).|
 | 40550 |16 |De sessie is beëindigd omdat er te veel vergren delingen zijn verkregen. Probeer minder rijen in één trans actie te lezen of te wijzigen. Zie voor meer informatie over batch verwerking [batch verwerking gebruiken om de prestaties van SQL database-toepassingen te verbeteren](../performance-improve-use-batching.md).|
-| 40551 |16 |De sessie is beëindigd vanwege overmatig `TEMPDB` gebruik. Wijzig uw query om het gebruik van de tijdelijke tabel ruimte te verminderen.<br/><br/>Als u tijdelijke objecten gebruikt, bespaart u ruimte in de `TEMPDB` Data Base door tijdelijke objecten te verwijderen nadat deze niet langer nodig zijn voor de sessie. Zie [tempdb-data base in SQL database](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database)voor meer informatie over het gebruik van tempdb in SQL database.|
+| 40551 |16 |De sessie is beëindigd vanwege overmatig `TEMPDB` gebruik. Wijzig uw query om het gebruik van de tijdelijke tabel ruimte te verminderen.<br/><br/>Als u tijdelijke objecten gebruikt, bespaart u ruimte in de `TEMPDB` Data Base door tijdelijke objecten te verwijderen nadat deze niet langer nodig zijn voor de sessie. Zie [tempdb-data base in SQL database](/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database)voor meer informatie over het gebruik van tempdb in SQL database.|
 | 40552 |16 |De sessie is beëindigd vanwege het overmatige gebruik van het transactie logboek. Probeer minder rijen in één trans actie te wijzigen. Zie voor meer informatie over batch verwerking [batch verwerking gebruiken om de prestaties van SQL database-toepassingen te verbeteren](../performance-improve-use-batching.md).<br/><br/>Als u bulksgewijs invoegen uitvoert met het `bcp.exe` hulp programma of de `System.Data.SqlClient.SqlBulkCopy` klasse, kunt u de `-b batchsize` Opties of gebruiken `BatchSize` om het aantal rijen te beperken dat in elke trans actie naar de server is gekopieerd. Als u een index opnieuw wilt samen stellen met de `ALTER INDEX` -instructie, gebruikt u de `REBUILD WITH ONLINE = ON` optie. Voor informatie over de grootte van het transactie logboek voor het vCore-aankoop model raadpleegt u: <br/>&bull;&nbsp; [limieten op basis van vCore voor afzonderlijke data bases](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [limieten op basis van vCore voor elastische Pools](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Resource limieten voor Azure SQL Managed instance](../managed-instance/resource-limits.md).|
 | 40553 |16 |De sessie is beëindigd vanwege het overmatige geheugen gebruik. Wijzig uw query om minder rijen te verwerken.<br/><br/>Het verminderen van het aantal `ORDER BY` en de `GROUP BY` bewerkingen in uw Transact-SQL-code vermindert de geheugen vereisten van uw query. Zie voor het schalen van de Data Base [afzonderlijke database resources schalen](single-database-scale.md) en [bronnen voor elastische Pools schalen](elastic-pool-scale.md).|
 
@@ -340,8 +340,8 @@ Dit probleem treedt op omdat het account geen machtiging heeft voor toegang tot 
 
 Volg deze stappen om dit probleem op te lossen:
 
-1. Selecteer **Opties**in het aanmeldings scherm van SSMS en selecteer vervolgens **verbindings eigenschappen**.
-2. Voer in het veld **verbinding maken met data base** de naam van de standaard database van de gebruiker in als de standaard aanmeldings database en selecteer vervolgens **verbinding maken**.
+1. Selecteer **Opties** in het aanmeldings scherm van SSMS en selecteer vervolgens **verbindings eigenschappen** .
+2. Voer in het veld **verbinding maken met data base** de naam van de standaard database van de gebruiker in als de standaard aanmeldings database en selecteer vervolgens **verbinding maken** .
 
    ![Verbindingseigenschappen](./media/troubleshoot-common-errors-issues/cannot-open-database-master.png)
 
@@ -356,7 +356,7 @@ System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
 ClientConnectionId:<Client connection ID>
 ```
 
-Wanneer de uitzonde ring wordt geactiveerd door query problemen, ziet u een aanroep stack die er ongeveer als volgt uitzien (Let op de verwijzing naar de klasse **SqlCommand** ). In dit geval kunt [u uw query's afstemmen](https://docs.microsoft.com/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
+Wanneer de uitzonde ring wordt geactiveerd door query problemen, ziet u een aanroep stack die er ongeveer als volgt uitzien (Let op de verwijzing naar de klasse **SqlCommand** ). In dit geval kunt [u uw query's afstemmen](/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
 
 ```
   at System.Data.SqlClient.SqlCommand.ExecuteReader()
@@ -367,28 +367,28 @@ Wanneer de uitzonde ring wordt geactiveerd door query problemen, ziet u een aanr
 Raadpleeg de volgende bronnen voor meer informatie over de prestaties van fijnafstelling:
 
 - [Azure SQL-indexen en-statistieken onderhouden](https://techcommunity.microsoft.com/t5/Azure-Database-Support-Blog/How-to-maintain-Azure-SQL-Indexes-and-Statistics/ba-p/368787)
-- [De prestaties van de query in Azure SQL Database hand matig afstemmen](https://docs.microsoft.com/azure/sql-database/sql-database-performance-guidance)
-- [Prestaties bewaken Azure SQL Database door dynamische beheer weergaven te gebruiken](https://docs.microsoft.com/azure/sql-database/sql-database-monitoring-with-dmvs)
-- [Het query archief in Azure SQL Database gebruiken](https://docs.microsoft.com/azure/sql-database/sql-database-operate-query-store)
+- [De prestaties van de query in Azure SQL Database hand matig afstemmen](./performance-guidance.md)
+- [Prestaties bewaken Azure SQL Database door dynamische beheer weergaven te gebruiken](./monitoring-with-dmvs.md)
+- [Het query archief in Azure SQL Database gebruiken](/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
 
 ## <a name="steps-to-fix-common-connection-issues"></a>Stappen voor het oplossen van algemene verbindingsproblemen
 
-1. Zorg ervoor dat TCP/IP is ingeschakeld als een client protocol op de toepassings server. Zie [client protocollen configureren](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-client-protocols)voor meer informatie. Op toepassings servers waarop geen SQL-hulpprogram ma's zijn geïnstalleerd, controleert u of TCP/IP is ingeschakeld door **cliconfg.exe** (SQL Server Client Network Utility) uit te voeren.
+1. Zorg ervoor dat TCP/IP is ingeschakeld als een client protocol op de toepassings server. Zie [client protocollen configureren](/sql/database-engine/configure-windows/configure-client-protocols)voor meer informatie. Op toepassings servers waarop geen SQL-hulpprogram ma's zijn geïnstalleerd, controleert u of TCP/IP is ingeschakeld door **cliconfg.exe** (SQL Server Client Network Utility) uit te voeren.
 2. Controleer de connection string van de toepassing om te controleren of deze correct is geconfigureerd. Zorg er bijvoorbeeld voor dat de connection string de juiste poort (1433) en de volledig gekwalificeerde server naam opgeeft.
-Zie [verbindings gegevens ophalen](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms#get-sql-server-connection-information).
+Zie [verbindings gegevens ophalen](./connect-query-ssms.md#get-server-connection-information).
 3. Probeer de time-outwaarde voor de verbinding te verhogen. Het is raadzaam om een time-out voor de verbinding van ten minste 30 seconden te gebruiken.
-4. Test de connectiviteit tussen de toepassings server en de Azure SQL Database met behulp van [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms), een udl-bestand, ping of Telnet. Zie [verbindings problemen](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server) en [diagnoses voor verbindings problemen](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-issues#diagnostics)oplossen voor meer informatie.
+4. Test de connectiviteit tussen de toepassings server en de Azure SQL Database met behulp van [SQL Server Management Studio (SSMS)](./connect-query-ssms.md), een udl-bestand, ping of Telnet. Zie [verbindings problemen](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server) en [diagnoses voor verbindings problemen](./troubleshoot-common-connectivity-issues.md#diagnostics)oplossen voor meer informatie.
 
    > [!NOTE]
    > Als stap voor het oplossen van problemen kunt u ook de connectiviteit op een andere client computer testen.
 
-5. Zorg ervoor dat de logica voor opnieuw proberen is ingesteld als best practice. Zie [problemen met tijdelijke fouten en verbindings SQL database fouten oplossen](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-issues)voor meer informatie over logica voor opnieuw proberen.
+5. Zorg ervoor dat de logica voor opnieuw proberen is ingesteld als best practice. Zie [problemen met tijdelijke fouten en verbindings SQL database fouten oplossen](./troubleshoot-common-connectivity-issues.md)voor meer informatie over logica voor opnieuw proberen.
 
 Als u met deze stappen het probleem niet kunt oplossen, kunt u proberen om meer gegevens te verzamelen en vervolgens contact op te nemen met de ondersteuning. Als uw toepassing een Cloud service is, schakelt u logboek registratie in. Deze stap retourneert een UTC-tijds tempel van de fout. Daarnaast retourneert SQL Database de tracerings-ID. [Micro soft Customer Support Services](https://azure.microsoft.com/support/options/) kan deze informatie gebruiken.
 
-Zie [logboek registratie van diagnostische gegevens inschakelen voor apps in azure app service](https://azure.microsoft.com/documentation/articles/web-sites-enable-diagnostic-log/)voor meer informatie over het inschakelen van logboek registratie.
+Zie [logboek registratie van diagnostische gegevens inschakelen voor apps in azure app service](../../app-service/troubleshoot-diagnostic-logs.md)voor meer informatie over het inschakelen van logboek registratie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure SQL Database connectiviteits architectuur](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture)
-- [Azure SQL Database-en Azure Synapse Analytics-netwerk toegangs beheer](https://docs.microsoft.com/azure/sql-database/sql-database-networkaccess-overview)
+- [Azure SQL Database connectiviteits architectuur](./connectivity-architecture.md)
+- [Azure SQL Database-en Azure Synapse Analytics-netwerk toegangs beheer](./network-access-controls-overview.md)

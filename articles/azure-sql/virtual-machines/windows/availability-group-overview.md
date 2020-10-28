@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: 26d4080e20fb8d00ec4d276e56e09170001d2b8e
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 4919abd29ecf10c9116257750374ef53b4bd9d16
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166536"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789910"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>AlwaysOn-beschikbaarheidsgroep op SQL Server op Azure-VM's
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,7 +37,7 @@ In het volgende diagram ziet u een beschikbaarheidsgroep voor SQL Server op Azur
 
 ## <a name="vm-redundancy"></a>VM-redundantie 
 
-Om redundantie en de maximale beschikbaarheid te vergroten, moeten de SQL Server-VM's zich in dezelfde [beschikbaarheidsset](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview) bevinden of in verschillende [beschikbaarheidszones](/azure/availability-zones/az-overview).
+Om redundantie en de maximale beschikbaarheid te vergroten, moeten de SQL Server-VM's zich in dezelfde [beschikbaarheidsset](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview) bevinden of in verschillende [beschikbaarheidszones](../../../availability-zones/az-overview.md).
 
 Een beschikbaarheidsset is een groep resources die zodanig zijn geconfigureerd dat er nooit twee resources in dezelfde beschikbaarheidszone belanden. Dit voorkomt dat er tijdens implementatielanceringen meerdere resources in de groep worden beïnvloed. 
 
@@ -74,7 +74,7 @@ Er zijn meerdere opties voor het implementeren van een beschikbaarheidsgroep voo
 
 De volgende tabel bevat een vergelijking van de beschikbare opties: 
 
-| |**[Azure Portal](availability-group-azure-portal-configure.md)**|**[Azure CLI / PowerShell](availability-group-az-cli-configure.md)**|**[Quickstartsjablonen](availability-group-quickstart-template-configure.md)**|**[Handmatig](availability-group-manually-configure-prerequisites-tutorial.md)** | 
+| |**[Azure Portal](availability-group-azure-portal-configure.md)**|**[Azure CLI / PowerShell](./availability-group-az-commandline-configure.md)**|**[Quickstartsjablonen](availability-group-quickstart-template-configure.md)**|**[Handmatig](availability-group-manually-configure-prerequisites-tutorial.md)** | 
 |---------|---------|---------|--------- |---------|
 |**SQL Server-versie** |2016 + |2016 +|2016 +|2012 +|
 |**SQL Server-editie** |Enterprise |Enterprise |Enterprise |Enterprise, Standard|
@@ -100,6 +100,6 @@ Bij een failover-gastcluster voor een Azure IaaS-VM adviseren we één NIC per s
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [best practices voor HADR](hadr-cluster-best-practices.md) en ga vervolgens aan de slag met het implementeren van uw beschikbaarheidsgroep met behulp van de [Azure Portal](availability-group-azure-portal-configure.md), [Azure CLI/PowerShell](availability-group-az-cli-configure.md), [quickstart-sjablonen](availability-group-quickstart-template-configure.md) of [handmatig](availability-group-manually-configure-prerequisites-tutorial.md).
+Bekijk de [best practices voor HADR](hadr-cluster-best-practices.md) en ga vervolgens aan de slag met het implementeren van uw beschikbaarheidsgroep met behulp van de [Azure Portal](availability-group-azure-portal-configure.md), [Azure CLI/PowerShell](./availability-group-az-commandline-configure.md), [quickstart-sjablonen](availability-group-quickstart-template-configure.md) of [handmatig](availability-group-manually-configure-prerequisites-tutorial.md).
 
-U kunt ook een [clusterloze beschikbaarheidsgroep](availability-group-clusterless-workgroup-configure.md) implementeren of een beschikbaarheidsgroep in [meerdere regio's](availability-group-manually-configure-multiple-regions.md) implementeren. 
+U kunt ook een [clusterloze beschikbaarheidsgroep](availability-group-clusterless-workgroup-configure.md) implementeren of een beschikbaarheidsgroep in [meerdere regio's](availability-group-manually-configure-multiple-regions.md) implementeren.

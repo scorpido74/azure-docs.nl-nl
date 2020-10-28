@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 3a715538afba181a067e4cecd8c1941a76ae36d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb55274800b239cf0e1e942647ae0c65b321b862
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91298833"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790046"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Een of meer listeners voor Always on-beschikbaarheids groep configureren-Resource Manager
 
@@ -30,7 +30,7 @@ In dit document wordt beschreven hoe u Power shell gebruikt om een van de volgen
 
 Een beschikbaarheids groep-listener is een virtuele netwerk naam waarmee clients verbinding maken voor database toegang. In azure Virtual Machines bevat een load balancer het IP-adres voor de listener. Het load balancer stuurt verkeer naar het exemplaar van SQL Server dat luistert op de test poort. Normaal gesp roken gebruikt een beschikbaarheids groep een interne load balancer. Een interne load balancer van Azure kan een of meer IP-adressen hosten. Elk IP-adres gebruikt een specifieke test poort. 
 
-De mogelijkheid om meerdere IP-adressen toe te wijzen aan een interne load balancer is nieuw in Azure en is alleen beschikbaar in het Resource Manager-model. Als u deze taak wilt volt ooien, moet u beschikken over een SQL Server-beschikbaarheids groep die is geïmplementeerd in azure Virtual Machines in het Resource Manager-model. Beide SQL Server virtuele machines moeten deel uitmaken van dezelfde beschikbaarheidsset. U kunt de [micro soft-sjabloon](availability-group-azure-marketplace-template-configure.md) gebruiken om automatisch de beschikbaarheids groep te maken in azure Resource Manager. Met deze sjabloon wordt automatisch de beschikbaarheids groep gemaakt, met inbegrip van de interne load balancer voor u. Als u wilt, kunt u [hand matig een always on-beschikbaarheids groep configureren](availability-group-manually-configure-tutorial.md).
+De mogelijkheid om meerdere IP-adressen toe te wijzen aan een interne load balancer is nieuw in Azure en is alleen beschikbaar in het Resource Manager-model. Als u deze taak wilt volt ooien, moet u beschikken over een SQL Server-beschikbaarheids groep die is geïmplementeerd in azure Virtual Machines in het Resource Manager-model. Beide SQL Server virtuele machines moeten deel uitmaken van dezelfde beschikbaarheidsset. U kunt de [micro soft-sjabloon](./availability-group-quickstart-template-configure.md) gebruiken om automatisch de beschikbaarheids groep te maken in azure Resource Manager. Met deze sjabloon wordt automatisch de beschikbaarheids groep gemaakt, met inbegrip van de interne load balancer voor u. Als u wilt, kunt u [hand matig een always on-beschikbaarheids groep configureren](availability-group-manually-configure-tutorial.md).
 
 Om de stappen in dit artikel te volt ooien, moeten uw beschikbaarheids groepen al zijn geconfigureerd.  
 
@@ -49,11 +49,11 @@ De voor beelden in dit artikel worden getest met Azure PowerShell module versie 
 
 Controleer of de Power shell-module 5.4.1 of hoger is.
 
-Zie [de Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Zie [de Azure PowerShell-module installeren](/powershell/azure/install-az-ps).
 
 ## <a name="configure-the-windows-firewall"></a>De Windows Firewall configureren
 
-Configureer de Windows Firewall om SQL Server toegang toe te staan. Met de firewall regels kunnen TCP-verbindingen met de poorten worden gebruikt door het SQL Server-exemplaar en de listener-test. Zie [Configure a Windows Firewall for data base engine Access](https://msdn.microsoft.com/library/ms175043.aspx#Anchor_1)(Engelstalig) voor gedetailleerde instructies. Maak een regel voor binnenkomende verbindingen voor de SQL Server poort en voor de test poort.
+Configureer de Windows Firewall om SQL Server toegang toe te staan. Met de firewall regels kunnen TCP-verbindingen met de poorten worden gebruikt door het SQL Server-exemplaar en de listener-test. Zie [Configure a Windows Firewall for data base engine Access](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access#Anchor_1)(Engelstalig) voor gedetailleerde instructies. Maak een regel voor binnenkomende verbindingen voor de SQL Server poort en voor de test poort.
 
 Als u de toegang met een Azure-netwerk beveiligings groep wilt beperken, moet u ervoor zorgen dat de regels voor toestaan de back-end-SQL Server VM-IP-adressen bevatten en de load balancer zwevende IP-adressen voor de AG-listener en het IP-adres van het cluster basis, indien van toepassing.
 
@@ -61,10 +61,10 @@ Als u de toegang met een Azure-netwerk beveiligings groep wilt beperken, moet u 
 
 [Azure Load Balancer](../../../load-balancer/load-balancer-overview.md) is beschikbaar in twee Sku's: Basic & Standard. De standaard load balancer wordt aanbevolen. Als de virtuele machines zich in een beschikbaarheidsset bevinden, is basis load balancer toegestaan. Als de virtuele machines zich in een beschikbaarheids zone bevinden, is een standaard load balancer vereist. Standaard load balancer vereist dat alle IP-adressen van de virtuele machine standaard IP-adressen gebruiken.
 
-De huidige [micro soft-sjabloon](availability-group-azure-marketplace-template-configure.md) voor een beschikbaarheids groep maakt gebruik van een basis Load Balancer met basis-IP-adressen.
+De huidige [micro soft-sjabloon](./availability-group-quickstart-template-configure.md) voor een beschikbaarheids groep maakt gebruik van een basis Load Balancer met basis-IP-adressen.
 
    > [!NOTE]
-   > U moet een [service-eind punt](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network) configureren als u een standaard load balancer en Azure Storage voor de cloudwitness gebruikt. 
+   > U moet een [service-eind punt](../../../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#grant-access-from-a-virtual-network) configureren als u een standaard load balancer en Azure Storage voor de cloudwitness gebruikt. 
    > 
 
 In de voor beelden in dit artikel wordt een standaard load balancer opgegeven. In de voor beelden bevat het script `-sku Standard` .
@@ -82,7 +82,7 @@ $ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $
 ## <a name="example-script-create-an-internal-load-balancer-with-powershell"></a>Voorbeeld script: een interne load balancer maken met Power shell
 
 > [!NOTE]
-> Als u uw beschikbaarheids groep hebt gemaakt met de [micro soft-sjabloon](availability-group-azure-marketplace-template-configure.md), is de interne Load Balancer al gemaakt.
+> Als u uw beschikbaarheids groep hebt gemaakt met de [micro soft-sjabloon](./availability-group-quickstart-template-configure.md), is de interne Load Balancer al gemaakt.
 
 Met het volgende Power shell-script maakt u een interne load balancer, configureert u de regels voor taak verdeling en stelt u een IP-adres voor de load balancer. Als u het script wilt uitvoeren, opent u Windows PowerShell ISE en plakt u het script in het Script venster. Gebruik `Connect-AzAccount` om u aan te melden bij Power shell. Als u meerdere Azure-abonnementen hebt, gebruikt u `Select-AzSubscription` om het abonnement in te stellen. 
 
@@ -144,7 +144,7 @@ De front-end-poort is de poort die door toepassingen wordt gebruikt om verbindin
 > Voor SQL Server-beschikbaarheids groepen is voor elk IP-adres een specifieke test poort vereist. Als bijvoorbeeld één IP-adres op een load balancer test poort 59999 gebruikt, kunnen er geen andere IP-adressen op die load balancer de test poort 59999 gebruiken.
 
 * Zie voor meer informatie over load balancer limieten **persoonlijke front-end-IP per Load Balancer** onder [netwerk limieten-Azure Resource Manager](../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits).
-* Zie voor meer informatie over limieten van de beschikbaarheids groep [beperkingen (beschikbaarheids groepen)](https://msdn.microsoft.com/library/ff878487.aspx#RestrictionsAG).
+* Zie voor meer informatie over limieten van de beschikbaarheids groep [beperkingen (beschikbaarheids groepen)](/sql/database-engine/availability-groups/windows/prereqs-restrictions-recommendations-always-on-availability#RestrictionsAG).
 
 Met het volgende script wordt een nieuw IP-adres toegevoegd aan een bestaand load balancer. De ILB maakt gebruik van de listener-poort voor de front-end-taakverdelings poort. Deze poort kan de poort zijn waarop SQL Server luistert. Voor de standaard exemplaren van SQL Server is de poort 1433. Voor de taakverdelings regel voor een beschikbaarheids groep is een zwevend IP-adres (Direct Server Return) vereist, zodat de back-end-poort hetzelfde is als de front-end-poort. Werk de variabelen voor uw omgeving bij. 
 
@@ -195,11 +195,11 @@ $ILB | Add-AzLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfigura
 
 1. Start SQL Server Management Studio en maak verbinding met de primaire replica.
 
-1. Ga naar **Hoge beschikbaarheid met AlwaysOn** > **Beschikbaarheidsgroepen** > **Listeners voor beschikbaarheidsgroep**. 
+1. Ga naar **Hoge beschikbaarheid met AlwaysOn** > **Beschikbaarheidsgroepen** > **Listeners voor beschikbaarheidsgroep** . 
 
-1. U ziet nu de naam van de listener die u hebt gemaakt in Failoverclusterbeheer. Klik met de rechtermuisknop op de naam en selecteer **Eigenschappen**.
+1. U ziet nu de naam van de listener die u hebt gemaakt in Failoverclusterbeheer. Klik met de rechtermuisknop op de naam en selecteer **Eigenschappen** .
 
-1. Geef in het vak **poort** het poort nummer voor de beschikbaarheids groep-listener op met behulp van de $EndpointPort die u eerder hebt gebruikt (1433 was de standaard instelling) en selecteer **OK**.
+1. Geef in het vak **poort** het poort nummer voor de beschikbaarheids groep-listener op met behulp van de $EndpointPort die u eerder hebt gebruikt (1433 was de standaard instelling) en selecteer **OK** .
 
 ## <a name="test-the-connection-to-the-listener"></a>De verbinding met de listener testen
 
@@ -207,7 +207,7 @@ Test als volgt de verbinding:
 
 1. Gebruik Remote Desktop Protocol (RDP) om verbinding te maken met een SQL Server die zich in hetzelfde virtuele netwerk bevindt, maar geen eigenaar is van de replica. Dit kan de andere SQL Server in het cluster zijn.
 
-1. Gebruik het **Sqlcmd** -hulp programma om de verbinding te testen. Met het volgende script wordt bijvoorbeeld met Windows-verificatie een **sqlcmd**-verbinding met de primaire replica tot stand gebracht via de listener:
+1. Gebruik het **Sqlcmd** -hulp programma om de verbinding te testen. Met het volgende script wordt bijvoorbeeld met Windows-verificatie een **sqlcmd** -verbinding met de primaire replica tot stand gebracht via de listener:
    
     ```
     sqlcmd -S <listenerName> -E
@@ -222,7 +222,7 @@ Test als volgt de verbinding:
 De SQLCMD-verbinding maakt automatisch verbinding met het exemplaar van SQL Server dat als host voor de primaire replica fungeert. 
 
 > [!NOTE]
-> Zorg ervoor dat de poort die u opgeeft, geopend is op de firewall van beide SQL-servers. Voor beide servers is een regel voor binnenkomende verbindingen vereist voor de TCP-poort die u gebruikt. Zie [Add or Edit Firewall Rule](https://technet.microsoft.com/library/cc753558.aspx) (Firewallregel toevoegen of bewerken) voor meer informatie. 
+> Zorg ervoor dat de poort die u opgeeft, geopend is op de firewall van beide SQL-servers. Voor beide servers is een regel voor binnenkomende verbindingen vereist voor de TCP-poort die u gebruikt. Zie [Add or Edit Firewall Rule](/previous-versions/orphan-topics/ws.11/cc753558(v=ws.11)) (Firewallregel toevoegen of bewerken) voor meer informatie. 
 > 
 
 ## <a name="guidelines-and-limitations"></a>Richt lijnen en beperkingen
@@ -236,7 +236,7 @@ Houd rekening met de volgende richt lijnen voor de beschikbaarheids groep-listen
   - Het load balancer zwevende IP-adressen voor de AG-listener
   - Het basis-IP-adres van het cluster, indien van toepassing.
 
-* Maak een service-eind punt wanneer u een standaard load balancer met Azure Storage voor de cloudwitness gebruikt. Zie [toegang verlenen vanuit een virtueel netwerk](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)voor meer informatie.
+* Maak een service-eind punt wanneer u een standaard load balancer met Azure Storage voor de cloudwitness gebruikt. Zie [toegang verlenen vanuit een virtueel netwerk](../../../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#grant-access-from-a-virtual-network)voor meer informatie.
 
 ## <a name="for-more-information"></a>Voor meer informatie
 
@@ -246,9 +246,9 @@ Zie AlwaysOn AlwaysOn- [beschikbaarheids groep in azure VM hand matig configurer
 
 Gebruik de volgende Power shell-cmdlets om een interne load balancer voor Azure Virtual Machines te maken.
 
-* [New-AzLoadBalancer](https://msdn.microsoft.com/library/mt619450.aspx) maakt een Load Balancer. 
-* [New-AzLoadBalancerFrontendIpConfig](https://msdn.microsoft.com/library/mt603510.aspx) maakt een front-end-IP-configuratie voor een Load Balancer. 
-* [New-AzLoadBalancerRuleConfig](https://msdn.microsoft.com/library/mt619391.aspx) maakt een regel configuratie voor een Load Balancer. 
-* [New-AzLoadBalancerBackendAddressPoolConfig](https://msdn.microsoft.com/library/mt603791.aspx) maakt een back-end-adres groep configuratie voor een Load Balancer. 
-* [New-AzLoadBalancerProbeConfig](https://msdn.microsoft.com/library/mt603847.aspx) maakt een test configuratie voor een Load Balancer.
-* [Remove-AzLoadBalancer](https://msdn.microsoft.com/library/mt603862.aspx) verwijdert een Load Balancer uit een Azure-resource groep.
+* [New-AzLoadBalancer](/powershell/module/Azurerm.Network/New-AzureRmLoadBalancer) maakt een Load Balancer. 
+* [New-AzLoadBalancerFrontendIpConfig](/powershell/module/Azurerm.Network/New-AzureRmLoadBalancerFrontendIpConfig) maakt een front-end-IP-configuratie voor een Load Balancer. 
+* [New-AzLoadBalancerRuleConfig](/powershell/module/Azurerm.Network/New-AzureRmLoadBalancerRuleConfig) maakt een regel configuratie voor een Load Balancer. 
+* [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/Azurerm.Network/New-AzureRmLoadBalancerBackendAddressPoolConfig) maakt een back-end-adres groep configuratie voor een Load Balancer. 
+* [New-AzLoadBalancerProbeConfig](/powershell/module/Azurerm.Network/New-AzureRmLoadBalancerProbeConfig) maakt een test configuratie voor een Load Balancer.
+* [Remove-AzLoadBalancer](/powershell/module/Azurerm.Network/Remove-AzureRmLoadBalancer) verwijdert een Load Balancer uit een Azure-resource groep.

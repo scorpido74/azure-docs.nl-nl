@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 8049df552c9754a1674c9e38e6d9b9b2cea3bd85
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 5948f7adedfa430d7d0dac570910f662846464c6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058213"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790862"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>Zelfstudie: Replicatie tussen twee beheerde instanties configureren
 
@@ -68,7 +68,7 @@ U moet ook [een Azure-VM configureren om verbinding te maken](connect-vm-instanc
 
 ## <a name="3---create-an-azure-storage-account"></a>3: een Azure-opslagaccount maken
 
-[Maak een Azure-opslagaccount](/azure/storage/common/storage-create-storage-account#create-a-storage-account) voor de werkmap en maak vervolgens een [bestandsshare](../../storage/files/storage-how-to-create-file-share.md) in het opslagaccount. 
+[Maak een Azure-opslagaccount](../../storage/common/storage-account-create.md#create-a-storage-account) voor de werkmap en maak vervolgens een [bestandsshare](../../storage/files/storage-how-to-create-file-share.md) in het opslagaccount. 
 
 Kopieer het pad naar de bestandsshare in de volgende notatie: `\\storage-account-name.file.core.windows.net\file-share-name`
 
@@ -326,4 +326,4 @@ U kunt uw Azure-resources opschonen door [de SQL Managed Instance-resources uit 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt meer informatie vinden over [transactionele replicatie met Azure SQL Managed Instance](replication-transactional-overview.md) of leren hoe u replicatie tussen een [uitgever/distributor van SQL Managed Instance/Distributor en een SQL op een Azure VM-abonnee](replication-two-instances-and-sql-server-configure-tutorial.md) kunt configureren. 
+U kunt meer informatie vinden over [transactionele replicatie met Azure SQL Managed Instance](replication-transactional-overview.md) of leren hoe u replicatie tussen een [uitgever/distributor van SQL Managed Instance/Distributor en een SQL op een Azure VM-abonnee](replication-two-instances-and-sql-server-configure-tutorial.md) kunt configureren.

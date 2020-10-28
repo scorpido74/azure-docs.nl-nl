@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d1f758390a270f072bc08e13d1d542e08e4df553
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: e558b8ca6498b8419ce6d7ce5ff1b161c05ef3c6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425533"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791134"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Azure Queue Storage-bewerkingen uitvoeren met Azure PowerShell
 
@@ -45,7 +45,7 @@ Connect-AzAccount
 
 ## <a name="retrieve-list-of-locations"></a>Lijst met locaties ophalen
 
-Als u niet weet welke locatie u kunt gebruiken, kunt u een lijst met de beschikbare locaties weergeven. Selecteer de gewenste locatie in de lijst. In deze oefening wordt gebruikgemaakt van **oostus**. Sla dit op in de **locatie** van de variabele voor toekomstig gebruik.
+Als u niet weet welke locatie u kunt gebruiken, kunt u een lijst met de beschikbare locaties weergeven. Selecteer de gewenste locatie in de lijst. In deze oefening wordt gebruikgemaakt van **oostus** . Sla dit op in de **locatie** van de variabele voor toekomstig gebruik.
 
 ```powershell
 Get-AzLocation | Select-Object Location
@@ -86,7 +86,7 @@ $queueName = "howtoqueue"
 $queue = New-AzStorageQueue –Name $queueName -Context $ctx
 ```
 
-Zie de [naamgeving van wacht rijen en meta gegevens](https://msdn.microsoft.com/library/azure/dd179349.aspx)voor meer informatie over naam conventies voor Azure Queue service.
+Zie de [naamgeving van wacht rijen en meta gegevens](/rest/api/storageservices/Naming-Queues-and-Metadata)voor meer informatie over naam conventies voor Azure Queue service.
 
 ## <a name="retrieve-a-queue"></a>Een wachtrij ophalen
 
@@ -131,9 +131,9 @@ Berichten worden in de best mogelijke eerst-try-volg orde gelezen. Dit is niet g
 
 Deze **time-out voor onzichtbaarheid** bepaalt hoe lang het bericht onzichtbaar blijft voordat het weer beschikbaar is voor verwerking. De standaardwaarde is 30 seconden.
 
-Uw code leest een bericht uit de wachtrij in twee stappen. Wanneer u de methode [micro soft. Azure. storage. Queue. CloudQueue. GetMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage) aanroept, wordt het volgende bericht in de wachtrij weer gegeven. Een bericht dat wordt geretourneerd door **GetMessage**, wordt onzichtbaar voor andere codes die berichten lezen uit deze wachtrij. Als u het bericht uit de wachtrij wilt verwijderen, roept u de methode [micro soft. Azure. storage. Queue. CloudQueue. DeleteMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage) aan.
+Uw code leest een bericht uit de wachtrij in twee stappen. Wanneer u de methode [micro soft. Azure. storage. Queue. CloudQueue. GetMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage) aanroept, wordt het volgende bericht in de wachtrij weer gegeven. Een bericht dat wordt geretourneerd door **GetMessage** , wordt onzichtbaar voor andere codes die berichten lezen uit deze wachtrij. Als u het bericht uit de wachtrij wilt verwijderen, roept u de methode [micro soft. Azure. storage. Queue. CloudQueue. DeleteMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage) aan.
 
-In het volgende voor beeld leest u de drie wachtrij berichten en wacht u 10 seconden (de time-out voor onzichtbaarheid). Vervolgens leest u de drie berichten opnieuw, verwijdert u de berichten nadat u ze hebt gelezen door **DeleteMessage**aan te roepen. Als u de wachtrij probeert te lezen nadat de berichten zijn verwijderd, wordt $queueMessage geretourneerd als NULL.
+In het volgende voor beeld leest u de drie wachtrij berichten en wacht u 10 seconden (de time-out voor onzichtbaarheid). Vervolgens leest u de drie berichten opnieuw, verwijdert u de berichten nadat u ze hebt gelezen door **DeleteMessage** aan te roepen. Als u de wachtrij probeert te lezen nadat de berichten zijn verwijderd, wordt $queueMessage geretourneerd als NULL.
 
 ```powershell
 # Set the amount of time you want to entry to be invisible after read from the queue

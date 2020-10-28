@@ -11,21 +11,21 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 01126a1ca8590d02d0cd0aa1c8554b34161dbac5
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 4fbd410a7d2a7374303e637ca81c34dbea90fcb7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426279"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791032"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Wat is er nieuw in Azure SQL Database & SQL Managed instance?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Dit artikel bevat een overzicht van Azure SQL Database en Azure SQL Managed instance-functies die momenteel beschikbaar zijn in de open bare preview. Zie [SQL Database & SQL Managed instance service updates](https://azure.microsoft.com/updates/?product=sql-database)voor SQL database en de updates en verbeteringen van SQL Managed instance. Zie [service-updates](https://azure.microsoft.com/updates)voor updates en verbeteringen voor andere Azure-Services.
 
-## <a name="whats-new"></a>Wat is er nieuw?
+## <a name="whats-new"></a>Wat is nieuw?
 
-Documentatie voor Azure SQL Database en Azure SQL Managed instance is in afzonderlijke secties gesplitst. We hebben ook bijgewerkt hoe we verwijzen naar een beheerd exemplaar van *Azure SQL database beheerde* instantie naar *Azure SQL Managed*instance.
+Documentatie voor Azure SQL Database en Azure SQL Managed instance is in afzonderlijke secties gesplitst. We hebben ook bijgewerkt hoe we verwijzen naar een beheerd exemplaar van *Azure SQL database beheerde* instantie naar *Azure SQL Managed* instance.
 
 We hebben dit gedaan omdat sommige functies en functionaliteit aanzienlijk verschillen tussen één data base en een beheerd exemplaar, en het is steeds lastiger om complexe nuances tussen Azure SQL Database en Azure SQL Managed instance in afzonderlijke gedeelde artikelen uit te leggen.
 
@@ -56,7 +56,7 @@ Deze tabel bevat een snelle vergelijking voor de wijziging in de terminologie:
 | Elastische query’s | Zie [overzicht van elastische query's](elastic-query-overview.md)voor meer informatie. |
 | Elastische transacties | [Gedistribueerde trans acties over Cloud databases](elastic-transactions-overview.md). |
 | Query-Editor in het Azure Portal |Zie [de SQL-query editor van het Azure Portal gebruiken om verbinding te maken en gegevens op te vragen](connect-query-portal.md)voor meer informatie.|
-| R Services/machine learning met afzonderlijke data bases en elastische Pools |Zie [Machine Learning Services in Azure SQL database](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database)voor meer informatie.|
+| R Services/machine learning met afzonderlijke data bases en elastische Pools |Zie [Machine Learning Services in Azure SQL database](/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database)voor meer informatie.|
 |SQL Analytics|Zie [Azure SQL-analyse](../../azure-monitor/insights/azure-sql.md)voor meer informatie.|
 | &nbsp; |
 
@@ -66,7 +66,7 @@ Deze tabel bevat een snelle vergelijking voor de wijziging in de terminologie:
 | ---| --- |
 | <a href="/azure/azure-sql/database/elastic-transactions-overview">Gedistribueerde transacties</a> | Gedistribueerde trans acties over beheerde exemplaren. |
 | <a href="/azure/sql-database/sql-database-instance-pools">Exemplaargroepen</a> | Een handige en rendabele manier om kleinere SQL-instanties naar de cloud te migreren. |
-| <a href="https://aka.ms/managed-instance-aadlogins">Azure AD server-principals op exemplaar niveau (aanmeldingen)</a> | Aanmeldingen op exemplaar niveau maken met behulp van de instructie een <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">aanmelding maken vanuit een externe provider</a> . |
+| <a href="/en-gb/sql/t-sql/statements/create-login-transact-sql">Azure AD server-principals op exemplaar niveau (aanmeldingen)</a> | Aanmeldingen op exemplaar niveau maken met behulp van de instructie een <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">aanmelding maken vanuit een externe provider</a> . |
 | [Transactionele replicatie](../managed-instance/replication-transactional-overview.md) | Repliceer de wijzigingen van uw tabellen in andere data bases in een SQL Managed instance, SQL Database of SQL Server. Of werk uw tabellen bij wanneer sommige rijen worden gewijzigd in andere exemplaren van SQL Managed instance of SQL Server. Zie [replicatie configureren in Azure SQL Managed instance](../managed-instance/replication-between-two-instances-configure-tutorial.md)voor meer informatie. |
 | Detectie van bedreigingen |Zie [detectie van dreigingen configureren in Azure SQL Managed instance](../managed-instance/threat-detection-configure.md)voor meer informatie.|
 | Langetermijnretentie van back-ups | Zie voor meer informatie [lange termijn back-up van Bewaar periode configureren in Azure SQL Managed instance](../managed-instance/long-term-backup-retention-configure.md), dat momenteel een beperkte open bare preview is. | 
@@ -85,13 +85,13 @@ Deze tabel bevat een snelle vergelijking voor de wijziging in de terminologie:
 ### <a name="sql-managed-instance-h1-2019-updates"></a>SQL Managed instance H1 2019-updates
 
 De volgende functies zijn ingeschakeld in het implementatie model voor SQL-beheerde exemplaren in H1 2019:
-  - Ondersteuning voor abonnementen met een <a href="https://aka.ms/sql-mi-visual-studio-subscribers"> maandelijks Azure-tegoed voor Visual Studio-abonnees </a> en verhoogde [regionale limieten](../managed-instance/resource-limits.md#regional-resource-limitations).
-  - Ondersteuning voor <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> share point 2016 en share point 2019 </a> en <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance"> Dynamics 365 Business Central. </a>
-  - Maak een beheerd exemplaar met <a href="https://aka.ms/managed-instance-collation">sortering op exemplaar niveau</a> en een <a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">tijd zone</a> van uw keuze.
+  - Ondersteuning voor abonnementen met een <a href="/azure/azure-sql/managed-instance/resource-limits"> maandelijks Azure-tegoed voor Visual Studio-abonnees </a> en verhoogde [regionale limieten](../managed-instance/resource-limits.md#regional-resource-limitations).
+  - Ondersteuning voor <a href="/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> share point 2016 en share point 2019 </a> en <a href="/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance"> Dynamics 365 Business Central. </a>
+  - Maak een beheerd exemplaar met <a href="/azure/azure-sql/managed-instance/scripts/create-powershell-azure-resource-manager-template">sortering op exemplaar niveau</a> en een <a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">tijd zone</a> van uw keuze.
   - Beheerde exemplaren zijn nu beveiligd met [ingebouwde firewall](../managed-instance/management-endpoint-verify-built-in-firewall.md).
-  - Configureer SQL Managed instance voor het gebruik van [open bare eind punten](../managed-instance/public-endpoint-configure.md), een [proxy onderdrukkings](connectivity-architecture.md#connection-policy) verbinding voor betere netwerk prestaties, <a href="https://aka.ms/four-cores-sql-mi-update"> 4 VCores op het genereren van GEN5-hardware</a> of <a href="https://aka.ms/managed-instance-configurable-backup-retention">het configureren van back-ups tot 35 dagen</a> voor tijdstippen herstellen. [Lange termijn retentie van back-ups](long-term-retention-overview.md#sql-managed-instance-support) (Maxi maal 10 jaar) is momenteel een beperkte open bare preview.  
+  - Configureer SQL Managed instance voor het gebruik van [open bare eind punten](../managed-instance/public-endpoint-configure.md), een [proxy onderdrukkings](connectivity-architecture.md#connection-policy) verbinding voor betere netwerk prestaties, <a href="https://aka.ms/four-cores-sql-mi-update"> 4 VCores op het genereren van GEN5-hardware</a> of <a href="/azure/azure-sql/database/automated-backups-overview">het configureren van back-ups tot 35 dagen</a> voor tijdstippen herstellen. [Lange termijn retentie van back-ups](long-term-retention-overview.md#sql-managed-instance-support) (Maxi maal 10 jaar) is momenteel een beperkte open bare preview.  
   - Dankzij nieuwe functies kunt u <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">uw data base met behulp van Power shell naar een ander Data Center herstellen, de</a> [naam van de data base wijzigen](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/), het [virtuele cluster verwijderen](../managed-instance/virtual-cluster-delete.md).
-  - Met de nieuwe [rol Inzender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor) voor ingebouwde instanties kunt u SoD-naleving met beveiligings principes en naleving van de bedrijfs normen.
+  - Met de nieuwe [rol Inzender](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor) voor ingebouwde instanties kunt u SoD-naleving met beveiligings principes en naleving van de bedrijfs normen.
   - SQL Managed instance is beschikbaar in de volgende Azure Government regio's voor GA (US Gov-Texas, US Gov-Arizona) en in China-noord 2 en China-oost 2. Het is ook beschikbaar in de volgende open bare regio's: Australië-centraal, Australië-centraal 2, Brazilië-zuid, Frankrijk-zuid, UAE-centraal, UAE-noord, Zuid-Afrika-noord, Zuid-Afrika-west.
 
 ## <a name="known-issues"></a>Bekende problemen
@@ -100,7 +100,7 @@ De volgende functies zijn ingeschakeld in het implementatie model voor SQL-behee
 |---------|---------|---------|---------|
 |[Gedistribueerde trans acties kunnen worden uitgevoerd nadat het beheerde exemplaar is verwijderd uit de vertrouwens groep van de server](#distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group)|Okt 2020|Heeft tijdelijke oplossing||
 |[Gedistribueerde trans acties kunnen niet worden uitgevoerd nadat de bewerking voor het schalen van het beheerde exemplaar](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|Okt 2020|Heeft tijdelijke oplossing||
-|[Bulk Insert](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql) / De [OpenRowSet](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15) in Azure SQL en de `BACKUP` / `RESTORE` instructie in het beheerde exemplaar kunnen de Azure AD-identiteit voor het beheren van de verificatie bij Azure Storage niet gebruiken|Sep 2020|Heeft tijdelijke oplossing||
+|[Bulk Insert](/sql/t-sql/statements/bulk-insert-transact-sql) / De [OpenRowSet](/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15) in Azure SQL en de `BACKUP` / `RESTORE` instructie in het beheerde exemplaar kunnen de Azure AD-identiteit voor het beheren van de verificatie bij Azure Storage niet gebruiken|Sep 2020|Heeft tijdelijke oplossing||
 |[Service-Principal heeft geen toegang tot Azure AD en Azure](#service-principal-cannot-access-azure-ad-and-akv)|Aug 2020|Heeft tijdelijke oplossing||
 |[Hand matige back-up herstellen zonder CONTROLESOM kan mislukken](#restoring-manual-backup-without-checksum-might-fail)|Mei 2020|Opgelost|Juni 2020|
 |[Agent reageert niet meer wanneer u bestaande taken wijzigt, uitschakelt of inschakelt](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|Mei 2020|Opgelost|Juni 2020|
@@ -131,11 +131,11 @@ De volgende functies zijn ingeschakeld in het implementatie model voor SQL-behee
 
 ### <a name="distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group"></a>Gedistribueerde trans acties kunnen worden uitgevoerd nadat het beheerde exemplaar is verwijderd uit de vertrouwens groep van de server
 
-[Server vertrouwens groepen](https://docs.microsoft.com/azure/azure-sql/managed-instance/server-trust-group-overview) worden gebruikt om een vertrouwens relatie tot stand te brengen tussen beheerde exemplaren die vereisten zijn voor het uitvoeren van [gedistribueerde trans acties](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview). Nadat u het beheerde exemplaar uit de vertrouwens groep van de server hebt verwijderd of de groep hebt verwijderd, kunt u nog steeds gedistribueerde trans acties uitvoeren. Er is een tijdelijke oplossing die u kunt Toep assen om ervoor te zorgen dat gedistribueerde trans acties worden uitgeschakeld en dat door de [gebruiker geïnitieerde hand matige failover](https://docs.microsoft.com/azure/azure-sql/managed-instance/user-initiated-failover) wordt uitgevoerd op een beheerd exemplaar.
+[Server vertrouwens groepen](../managed-instance/server-trust-group-overview.md) worden gebruikt om een vertrouwens relatie tot stand te brengen tussen beheerde exemplaren die vereisten zijn voor het uitvoeren van [gedistribueerde trans acties](./elastic-transactions-overview.md). Nadat u het beheerde exemplaar uit de vertrouwens groep van de server hebt verwijderd of de groep hebt verwijderd, kunt u nog steeds gedistribueerde trans acties uitvoeren. Er is een tijdelijke oplossing die u kunt Toep assen om ervoor te zorgen dat gedistribueerde trans acties worden uitgeschakeld en dat door de [gebruiker geïnitieerde hand matige failover](../managed-instance/user-initiated-failover.md) wordt uitgevoerd op een beheerd exemplaar.
 
 ### <a name="distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation"></a>Gedistribueerde trans acties kunnen niet worden uitgevoerd nadat de bewerking voor het schalen van het beheerde exemplaar
 
-Door bewerkingen voor het schalen van beheerde instanties die de service tier of het aantal vCores omvatten, worden de instellingen voor de vertrouwens groep van de server op de back-end opnieuw ingesteld en worden [gedistribueerde trans acties](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview)uitgeschakeld Als tijdelijke oplossing verwijdert en maakt u een nieuwe [vertrouwens groep voor servers](https://docs.microsoft.com/azure/azure-sql/managed-instance/server-trust-group-overview) op Azure Portal.
+Door bewerkingen voor het schalen van beheerde instanties die de service tier of het aantal vCores omvatten, worden de instellingen voor de vertrouwens groep van de server op de back-end opnieuw ingesteld en worden [gedistribueerde trans acties](./elastic-transactions-overview.md)uitgeschakeld Als tijdelijke oplossing verwijdert en maakt u een nieuwe [vertrouwens groep voor servers](../managed-instance/server-trust-group-overview.md) op Azure Portal.
 
 ### <a name="bulk-insert-and-backuprestore-statements-cannot-use-managed-identity-to-access-azure-storage"></a>Met de instructies voor BULK INSERT en BACKUP/Restore kan geen beheerde identiteit worden gebruikt voor toegang tot Azure Storage
 
@@ -150,19 +150,19 @@ GO
 BULK INSERT Sales.Invoices FROM 'inv-2017-12-08.csv' WITH (DATA_SOURCE = 'MyAzureBlobStorage');
 ```
 
-**Tijdelijke oplossing**: gebruik [Shared Access Signature om te verifiëren bij de opslag](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver15#f-importing-data-from-a-file-in-azure-blob-storage).
+**Tijdelijke oplossing** : gebruik [Shared Access Signature om te verifiëren bij de opslag](/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver15#f-importing-data-from-a-file-in-azure-blob-storage).
 
 ### <a name="service-principal-cannot-access-azure-ad-and-akv"></a>Service-Principal heeft geen toegang tot Azure AD en Azure
 
 In sommige gevallen kan er sprake zijn van een probleem met een service-principal die wordt gebruikt voor toegang tot Azure AD en Azure Key Vault-Services (Azure). Als gevolg hiervan heeft dit probleem gevolgen voor het gebruik van Azure AD-verificatie en transparante database versleuteling (TDE) met SQL Managed instance. Dit kan worden veroorzaakt als een probleem met een onregelmatige verbinding of dat er geen instructies kunnen worden uitgevoerd, zoals aanmelden/gebruiker maken van externe PROVIDER of uitvoeren als aanmelding/gebruiker. Het instellen van TDE met door de klant beheerde sleutel op een nieuw exemplaar van Azure SQL Managed kan in sommige gevallen ook niet worden gebruikt.
 
-**Tijdelijke oplossing**: als u wilt voor komen dat dit probleem zich voordoet in uw SQL Managed instance voordat u update-opdrachten uitvoert, of als u dit probleem al hebt ondervonden nadat u de opdrachten hebt bijgewerkt, gaat u naar Azure Portal en opent u de [Blade beheerder](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#azure-portal)SQL Managed instance Active Directory. Controleer of het fout bericht ' beheerde exemplaar moet een Service-Principal hebben om toegang te krijgen tot Azure Active Directory. Klik hier om een service-principal te maken. Als dit fout bericht wordt weer gegeven, klikt u erop en volgt u de instructies voor stap voor stap, totdat deze fout is opgelost.
+**Tijdelijke oplossing** : als u wilt voor komen dat dit probleem zich voordoet in uw SQL Managed instance voordat u update-opdrachten uitvoert, of als u dit probleem al hebt ondervonden nadat u de opdrachten hebt bijgewerkt, gaat u naar Azure Portal en opent u de [Blade beheerder](./authentication-aad-configure.md?tabs=azure-powershell#azure-portal)SQL Managed instance Active Directory. Controleer of het fout bericht ' beheerde exemplaar moet een Service-Principal hebben om toegang te krijgen tot Azure Active Directory. Klik hier om een service-principal te maken. Als dit fout bericht wordt weer gegeven, klikt u erop en volgt u de instructies voor stap voor stap, totdat deze fout is opgelost.
 
 ### <a name="restoring-manual-backup-without-checksum-might-fail"></a>Hand matige back-up herstellen zonder CONTROLESOM kan mislukken
 
 In bepaalde omstandigheden kan hand matige back-up van data bases die zijn gemaakt op een beheerd exemplaar zonder CONTROLESOM, mogelijk niet worden hersteld. In dat geval moet u de back-up opnieuw proberen te herstellen totdat u bent geslaagd.
 
-**Tijdelijke oplossing**: Maak hand matige back-ups van data bases op beheerde instanties waarvoor checksum is ingeschakeld.
+**Tijdelijke oplossing** : Maak hand matige back-ups van data bases op beheerde instanties waarvoor checksum is ingeschakeld.
 
 ### <a name="agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs"></a>Agent reageert niet meer wanneer u bestaande taken wijzigt, uitschakelt of inschakelt
 
@@ -172,19 +172,19 @@ In bepaalde omstandigheden kan het wijzigen, uitschakelen of inschakelen van een
 
 Wanneer de rol Inzender voor SQL Managed instance wordt toegepast op een resource groep (RG), wordt deze niet toegepast op het beheerde exemplaar van SQL en heeft dit geen effect.
 
-**Tijdelijke oplossing**: Stel een rol van SQL Managed instance in voor gebruikers op abonnements niveau.
+**Tijdelijke oplossing** : Stel een rol van SQL Managed instance in voor gebruikers op abonnements niveau.
 
 ### <a name="limitation-of-manual-failover-via-portal-for-failover-groups"></a>Beperking van hand matige failover via de portal voor failover-groepen
 
 Als een failovergroep meerdere exemplaren in verschillende Azure-abonnementen of resource groepen omvat, kan hand matige failover niet worden gestart vanuit het primaire exemplaar in de failovergroep.
 
-**Tijdelijke oplossing**: Initieer failover via de portal vanuit het geo-Secondary-exemplaar.
+**Tijdelijke oplossing** : Initieer failover via de portal vanuit het geo-Secondary-exemplaar.
 
 ### <a name="sql-agent-roles-need-explicit-execute-permissions-for-non-sysadmin-logins"></a>SQL Agent-rollen hebben expliciete EXECUTE-machtigingen nodig voor niet-sysadmin-aanmeldingen
 
-Als niet-sysadmin-aanmeldingen worden toegevoegd aan de [vaste database rollen van SQL-Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles), bestaat er een probleem waarbij expliciete uitvoer machtigingen moeten worden verleend aan de opgeslagen hoofd procedures voor deze aanmeldingen. Als dit probleem wordt aangetroffen, wordt het fout bericht ' de machtiging voor uitvoeren is geweigerd op het object <object_name> (Microsoft SQL Server, fout: 229) ' weer gegeven.
+Als niet-sysadmin-aanmeldingen worden toegevoegd aan de [vaste database rollen van SQL-Agent](/sql/ssms/agent/sql-server-agent-fixed-database-roles), bestaat er een probleem waarbij expliciete uitvoer machtigingen moeten worden verleend aan de opgeslagen hoofd procedures voor deze aanmeldingen. Als dit probleem wordt aangetroffen, wordt het fout bericht ' de machtiging voor uitvoeren is geweigerd op het object <object_name> (Microsoft SQL Server, fout: 229) ' weer gegeven.
 
-**Tijdelijke oplossing**: Zodra u aanmeldingen aan een vaste DATABASEROL van SQL-Agent (SQLAgentUserRole, SQLAgentReaderRole of SQLAgentOperatorRole) hebt toegevoegd, voert u voor elk van de aanmeldingen die aan deze rollen zijn toegevoegd, het onderstaande T-SQL-script uit om machtigingen voor uitvoeren expliciet toe te kennen aan de vermelde opgeslagen procedures.
+**Tijdelijke oplossing** : Zodra u aanmeldingen aan een vaste DATABASEROL van SQL-Agent (SQLAgentUserRole, SQLAgentReaderRole of SQLAgentOperatorRole) hebt toegevoegd, voert u voor elk van de aanmeldingen die aan deze rollen zijn toegevoegd, het onderstaande T-SQL-script uit om machtigingen voor uitvoeren expliciet toe te kennen aan de vermelde opgeslagen procedures.
 
 ```tsql
 USE [master]
@@ -204,13 +204,13 @@ GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
 
 In sommige gevallen past de servicelaag van Bedrijfskritiek niet op de juiste manier het [maximale geheugen limieten voor objecten geoptimaliseerd](../managed-instance/resource-limits.md#in-memory-oltp-available-space) toe. Met SQL Managed instance kan workload mogelijk meer geheugen gebruiken voor in-memory OLTP bewerkingen, wat van invloed kan zijn op de beschik baarheid en stabiliteit van het exemplaar. In-Memory OLTP-query's die de limieten bereiken, mislukken mogelijk niet onmiddellijk. Dit probleem wordt binnenkort opgelost. De query's die meer in-memory OLTP geheugen gebruiken, zullen eerder mislukken als ze de [limieten](../managed-instance/resource-limits.md#in-memory-oltp-available-space)bereiken.
 
-**Tijdelijke oplossing**: [Bewaak in-Memory OLTP opslag gebruik](https://docs.microsoft.com/azure/azure-sql/in-memory-oltp-monitor-space) met [SQL Server Management Studio](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring) om ervoor te zorgen dat de werk belasting niet meer dan het beschik bare geheugen gebruikt. Verhoog de geheugen limieten die afhankelijk zijn van het aantal vCores of Optimaliseer uw werk belasting zodat er minder geheugen wordt gebruikt.
+**Tijdelijke oplossing** : [Bewaak in-Memory OLTP opslag gebruik](../in-memory-oltp-monitor-space.md) met [SQL Server Management Studio](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring) om ervoor te zorgen dat de werk belasting niet meer dan het beschik bare geheugen gebruikt. Verhoog de geheugen limieten die afhankelijk zijn van het aantal vCores of Optimaliseer uw werk belasting zodat er minder geheugen wordt gebruikt.
  
 ### <a name="wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty"></a>Verkeerde fout geretourneerd tijdens het verwijderen van een bestand dat niet leeg is
 
 SQL Server en SQL Managed instance [mogen een bestand niet verwijderen dat niet leeg is](/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites). Als u een niet-leeg gegevens bestand probeert te verwijderen met behulp van een `ALTER DATABASE REMOVE FILE` -instructie, wordt de fout `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` niet onmiddellijk geretourneerd. SQL Managed instance zal blijven proberen het bestand te verwijderen en de bewerking zal na 30 minuten mislukken met `Internal server error` .
 
-**Tijdelijke oplossing**: Verwijder de inhoud van het bestand met behulp van de `DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)` opdracht. Als dit het enige bestand in de bestands groep is, moet u gegevens verwijderen uit de tabel of partitie die aan deze bestands groep is gekoppeld voordat u het bestand verkleint en deze gegevens optioneel laadt in een andere tabel/partitie.
+**Tijdelijke oplossing** : Verwijder de inhoud van het bestand met behulp van de `DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)` opdracht. Als dit het enige bestand in de bestands groep is, moet u gegevens verwijderen uit de tabel of partitie die aan deze bestands groep is gekoppeld voordat u het bestand verkleint en deze gegevens optioneel laadt in een andere tabel/partitie.
 
 ### <a name="change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore"></a>Het wijzigen van de servicelaag en het maken van exemplaar bewerkingen worden geblokkeerd door de huidige Data Base te herstellen
 
@@ -218,19 +218,19 @@ Door de doorlopende `RESTORE` instructie, het migratie proces van de gegevens mi
 
 Met het herstel proces worden deze bewerkingen geblokkeerd voor de beheerde instanties en exemplaar groepen in hetzelfde subnet waar het herstel proces wordt uitgevoerd. De exemplaren in exemplaar groepen worden niet beïnvloed. Het maken of wijzigen van bewerkingen in de service tier mislukt of time-out. Ze worden voortgezet zodra het herstel proces is voltooid of geannuleerd.
 
-**Tijdelijke oplossing**: wacht tot het herstel proces is voltooid of Annuleer het herstel proces als de bewerking voor het maken of bijwerken van de service tier een hogere prioriteit heeft.
+**Tijdelijke oplossing** : wacht tot het herstel proces is voltooid of Annuleer het herstel proces als de bewerking voor het maken of bijwerken van de service tier een hogere prioriteit heeft.
 
 ### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>Resource Governor op Bedrijfskritiek servicelaag moet mogelijk opnieuw worden geconfigureerd na een failover
 
 Met de functie [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) waarmee u de resources die aan de werk belasting van de gebruiker zijn toegewezen, kunt beperken, kan de werk belasting van een bepaalde gebruiker onjuist worden geclassificeerd na een failover of een door de gebruiker geïnitieerde wijziging van de servicelaag (bijvoorbeeld de wijziging van de maximale vCore of de maximale exemplaar opslag grootte).
 
-**Tijdelijke oplossing**: Voer `ALTER RESOURCE GOVERNOR RECONFIGURE` regel matig of als onderdeel van een SQL-Agent taak uit die de SQL-taak uitvoert wanneer het exemplaar wordt gestart als u [Resource Governor](/sql/relational-databases/resource-governor/resource-governor)gebruikt.
+**Tijdelijke oplossing** : Voer `ALTER RESOURCE GOVERNOR RECONFIGURE` regel matig of als onderdeel van een SQL-Agent taak uit die de SQL-taak uitvoert wanneer het exemplaar wordt gestart als u [Resource Governor](/sql/relational-databases/resource-governor/resource-governor)gebruikt.
 
 ### <a name="cross-database-service-broker-dialogs-must-be-reinitialized-after-service-tier-upgrade"></a>Meerdere data base-Service Broker dialoog vensters moeten opnieuw worden geïnitialiseerd na een upgrade naar de servicelaag
 
-Service Broker dialoog vensters voor meerdere data bases worden gestopt met het leveren van berichten aan de services in andere data bases nadat de bewerking van de service tier is gewijzigd. De berichten zijn *niet verloren gegaan*en ze zijn te vinden in de wachtrij van de afzender. Elke wijziging van de vCores of de opslag grootte van exemplaren in een SQL Managed instance zorgt ervoor dat een `service_broke_guid` waarde in [sys. data bases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) wordt gewijzigd voor alle data bases. Elke `DIALOG` gemaakt met behulp van de instructie [begin dialog](/sql/t-sql/statements/begin-dialog-conversation-transact-sql) , die verwijst naar service-Brokers in een andere data base, stopt met het leveren van berichten aan de doel service.
+Service Broker dialoog vensters voor meerdere data bases worden gestopt met het leveren van berichten aan de services in andere data bases nadat de bewerking van de service tier is gewijzigd. De berichten zijn *niet verloren gegaan* en ze zijn te vinden in de wachtrij van de afzender. Elke wijziging van de vCores of de opslag grootte van exemplaren in een SQL Managed instance zorgt ervoor dat een `service_broke_guid` waarde in [sys. data bases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) wordt gewijzigd voor alle data bases. Elke `DIALOG` gemaakt met behulp van de instructie [begin dialog](/sql/t-sql/statements/begin-dialog-conversation-transact-sql) , die verwijst naar service-Brokers in een andere data base, stopt met het leveren van berichten aan de doel service.
 
-**Tijdelijke oplossing**: Stop alle activiteiten die gebruikmaken van cross-data base Service Broker dialoog venster gesprekken voordat u een servicelaag bijwerkt en deze later opnieuw initialiseren. Als er nog andere berichten zijn die niet worden bezorgd na een wijziging in de servicelaag, leest u de berichten van de bron wachtrij en verzendt u deze opnieuw naar de doel wachtrij.
+**Tijdelijke oplossing** : Stop alle activiteiten die gebruikmaken van cross-data base Service Broker dialoog venster gesprekken voordat u een servicelaag bijwerkt en deze later opnieuw initialiseren. Als er nog andere berichten zijn die niet worden bezorgd na een wijziging in de servicelaag, leest u de berichten van de bron wachtrij en verzendt u deze opnieuw naar de doel wachtrij.
 
 ### <a name="impersonation-of-azure-ad-login-types-is-not-supported"></a>Imitatie van Azure AD-aanmeldings typen wordt niet ondersteund
 
@@ -258,7 +258,7 @@ De data base die zich in de *herstel* status bevindt, heeft tijdelijk een wille 
 
 In de eerste fase heeft een gebruiker toegang tot de lege data base en kan zelfs tabellen worden gemaakt of gegevens worden geladen in deze data base. Deze tijdelijke data base wordt verwijderd wanneer de Restore-service de tweede fase start.
 
-**Tijdelijke oplossing**: Maak geen toegang tot de data base die u wilt herstellen, totdat u ziet dat de herstel bewerking is voltooid.
+**Tijdelijke oplossing** : Maak geen toegang tot de data base die u wilt herstellen, totdat u ziet dat de herstel bewerking is voltooid.
 
 ### <a name="tempdb-structure-and-content-is-re-created"></a>TEMPDB-structuur en-inhoud worden opnieuw gemaakt
 
@@ -279,13 +279,13 @@ In dit voor beeld ziet u dat in bepaalde omstandigheden, vanwege een specifieke 
 
 In dit voor beeld blijven bestaande data bases werken en kunnen ze zonder enig probleem groeien zolang er geen nieuwe bestanden worden toegevoegd. Nieuwe data bases kunnen niet worden gemaakt of hersteld omdat er onvoldoende ruimte is voor nieuwe schijf stations, zelfs als de totale grootte van alle data bases niet de limiet voor de exemplaar grootte bereikt. De fout die in dat geval wordt geretourneerd, is niet duidelijk.
 
-U kunt [het aantal resterende bestanden identificeren](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1) met behulp van systeem weergaven. Als u deze limiet bereikt, kunt u [een aantal kleinere bestanden leegmaken en verwijderen met behulp van de DBCC SHRINKFILE-instructie](/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file) of overschakelen naar de [bedrijfskritiek-laag, die deze limiet niet overschrijdt](/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
+U kunt [het aantal resterende bestanden identificeren](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1) met behulp van systeem weergaven. Als u deze limiet bereikt, kunt u [een aantal kleinere bestanden leegmaken en verwijderen met behulp van de DBCC SHRINKFILE-instructie](/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file) of overschakelen naar de [bedrijfskritiek-laag, die deze limiet niet overschrijdt](../managed-instance/resource-limits.md#service-tier-characteristics).
 
 ### <a name="guid-values-shown-instead-of-database-names"></a>GUID-waarden die worden weer gegeven in plaats van database namen
 
 In verschillende systeem weergaven, prestatie meter items, fout berichten, XEvents en fouten logboek vermeldingen worden GUID-database-id's weer gegeven in plaats van de werkelijke database namen. Vertrouw niet op deze GUID-id's, omdat deze in de toekomst worden vervangen door feitelijke database namen.
 
-**Tijdelijke oplossing**: gebruik de sys. data bases-weer gave om de werkelijke database naam op te lossen op basis van de naam van de fysieke data base, opgegeven in de vorm van GUID data base-id's:
+**Tijdelijke oplossing** : gebruik de sys. data bases-weer gave om de werkelijke database naam op te lossen op basis van de naam van de fysieke data base, opgegeven in de vorm van GUID data base-id's:
 
 ```tsql
 SELECT name as ActualDatabaseName, physical_database_name as GUIDDatabaseIdentifier 
@@ -324,13 +324,13 @@ using (var scope = new TransactionScope())
 
 ```
 
-**Tijdelijke oplossing (niet vereist sinds maart 2020)**: gebruik [SqlConnection. ChangeDatabase (teken reeks)](/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) om een andere data base in een verbindings context te gebruiken in plaats van twee verbindingen te gebruiken.
+**Tijdelijke oplossing (niet vereist sinds maart 2020)** : gebruik [SqlConnection. ChangeDatabase (teken reeks)](/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) om een andere data base in een verbindings context te gebruiken in plaats van twee verbindingen te gebruiken.
 
 ### <a name="clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address"></a>CLR-modules en gekoppelde servers kunnen soms niet verwijzen naar een lokaal IP-adres
 
 CLR-modules in SQL Managed instance en gekoppelde servers of gedistribueerde query's die verwijzen naar een huidige instantie, kunnen het IP-adres van een lokaal exemplaar soms niet omzetten. Deze fout is een tijdelijk probleem.
 
-**Tijdelijke oplossing**: gebruik indien mogelijk context verbindingen in een CLR-module.
+**Tijdelijke oplossing** : gebruik indien mogelijk context verbindingen in een CLR-module.
 
 ## <a name="updates"></a>Updates
 
@@ -340,4 +340,4 @@ Zie [service-updates](https://azure.microsoft.com/updates)voor updates en verbet
 
 ## <a name="contribute-to-content"></a>Bijdragen aan inhoud
 
-Raadpleeg de [hand leiding voor docs-inzenders](https://docs.microsoft.com/contribute/)om een bijdrage te leveren aan de Azure SQL-documentatie.
+Raadpleeg de [hand leiding voor docs-inzenders](/contribute/)om een bijdrage te leveren aan de Azure SQL-documentatie.

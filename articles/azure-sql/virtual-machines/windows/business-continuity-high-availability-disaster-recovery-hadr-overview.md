@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: 8459ab364fc0af15dd1a1b0035e4ce27d192f7a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cfc3abd30fad3e86544430e5a4ecb8510e77c9e5
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293455"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789927"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Bedrijfs continuïteit en HADR voor SQL Server op Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -54,8 +54,8 @@ U kunt een oplossing met hoge Beschik baarheid hebben voor SQL Server op databas
 
 | Technologie | Voorbeeld architecturen |
 | --- | --- |
-| **Beschikbaarheidsgroepen** |Beschikbaarheids replica's die worden uitgevoerd in virtuele Azure-machines in dezelfde regio bieden een hoge Beschik baarheid. U moet een VM van een domein controller configureren, omdat Windows Failover Clustering een Active Directory domein vereist.<br/><br/> Voor hogere redundantie en beschik baarheid, kunnen de virtuele Azure-machines in verschillende [beschikbaarheids zones](../../../availability-zones/az-overview.md) worden geïmplementeerd, zoals wordt beschreven in het overzicht van de [beschikbaarheids groep](availability-group-overview.md). Als de SQL Server Vm's in een beschikbaarheids groep in beschikbaarheids zones worden geïmplementeerd, gebruikt u [Azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) voor de listener, zoals beschreven in de artikelen [Azure SQL VM cli](availability-group-az-cli-configure.md) en [Azure Quick](availability-group-quickstart-template-configure.md) start-sjablonen.<br/> ![Beschikbaarheidsgroepen](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/azure-only-ha-always-on.png)<br/>Zie [Availability groups configureren in azure (GUI)](availability-group-azure-marketplace-template-configure.md)voor meer informatie. |
-| **Failover-cluster exemplaren** |Failover-cluster exemplaren worden ondersteund op SQL Server Vm's. Omdat voor de functie FCI gedeelde opslag is vereist, zijn er vijf oplossingen mogelijk met SQL Server op Azure-Vm's: <br/><br/> - [Azure gedeelde schijven](failover-cluster-instance-azure-shared-disks-manually-configure.md) gebruiken voor Windows Server 2019. Gedeelde beheerde schijven zijn een Azure-product waarmee u een beheerde schijf gelijktijdig kunt koppelen aan meerdere virtuele machines. Vm's in het cluster kunnen lezen van of schrijven naar uw gekoppelde schijf op basis van de reserve ring die door de geclusterde toepassing is gekozen met behulp van SCSI-permanente reserve ringen (SCSI-PR). SCSI PR is een industrie-standaard oplossing voor opslag die wordt gebruikt door toepassingen die worden uitgevoerd op een on-premises Storage Area Network (SAN). Door SCSI-PR op een beheerde schijf in te scha kelen, kunt u deze toepassingen naar Azure migreren. <br/><br/>-Met behulp van [opslagruimten direct \( S2D \) ](failover-cluster-instance-storage-spaces-direct-manually-configure.md) kunt u een virtueel San op basis van software bieden voor Windows Server 2016 en hoger.<br/><br/>-Gebruik een [Premium-bestands share](failover-cluster-instance-premium-file-share-manually-configure.md) voor Windows Server 2012 en hoger. Premium-bestands shares zijn een SSD-back-up, hebben een consistente lage latentie en worden volledig ondersteund voor gebruik met FCI.<br/><br/>-Opslag gebruiken die wordt ondersteund door een partner oplossing voor clustering. Zie het blog bericht [failover clustering en SIOS data keeper](https://azure.microsoft.com/blog/high-availability-for-a-file-share-using-wsfc-ilb-and-3rd-party-software-sios-datakeeper/)voor een specifiek voor beeld dat gebruikmaakt van Sios data keeper.<br/><br/>-Gedeelde blok opslag gebruiken voor een extern iSCSI-doel via Azure ExpressRoute. NetApp Private Storage (NPS) biedt bijvoorbeeld een iSCSI-doel via ExpressRoute met Equinix voor Azure-Vm's.<br/><br/>Neem contact op met de leverancier voor de oplossingen met betrekking tot gedeelde opslag en gegevens replicatie van micro soft-partners voor problemen met de toegang tot gegevens in de failover.<br/><br/>||
+| **Beschikbaarheidsgroepen** |Beschikbaarheids replica's die worden uitgevoerd in virtuele Azure-machines in dezelfde regio bieden een hoge Beschik baarheid. U moet een VM van een domein controller configureren, omdat Windows Failover Clustering een Active Directory domein vereist.<br/><br/> Voor hogere redundantie en beschik baarheid, kunnen de virtuele Azure-machines in verschillende [beschikbaarheids zones](../../../availability-zones/az-overview.md) worden geïmplementeerd, zoals wordt beschreven in het overzicht van de [beschikbaarheids groep](availability-group-overview.md). Als de SQL Server Vm's in een beschikbaarheids groep in beschikbaarheids zones worden geïmplementeerd, gebruikt u [Azure Standard Load Balancer](../../../load-balancer/load-balancer-overview.md) voor de listener, zoals beschreven in de artikelen [Azure SQL VM cli](./availability-group-az-commandline-configure.md) en [Azure Quick](availability-group-quickstart-template-configure.md) start-sjablonen.<br/> ![Beschikbaarheidsgroepen](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/azure-only-ha-always-on.png)<br/>Zie [Availability groups configureren in azure (GUI)](./availability-group-quickstart-template-configure.md)voor meer informatie. |
+| **Exemplaren van failoverclusters** |Failover-cluster exemplaren worden ondersteund op SQL Server Vm's. Omdat voor de functie FCI gedeelde opslag is vereist, zijn er vijf oplossingen mogelijk met SQL Server op Azure-Vm's: <br/><br/> - [Azure gedeelde schijven](failover-cluster-instance-azure-shared-disks-manually-configure.md) gebruiken voor Windows Server 2019. Gedeelde beheerde schijven zijn een Azure-product waarmee u een beheerde schijf gelijktijdig kunt koppelen aan meerdere virtuele machines. Vm's in het cluster kunnen lezen van of schrijven naar uw gekoppelde schijf op basis van de reserve ring die door de geclusterde toepassing is gekozen met behulp van SCSI-permanente reserve ringen (SCSI-PR). SCSI PR is een industrie-standaard oplossing voor opslag die wordt gebruikt door toepassingen die worden uitgevoerd op een on-premises Storage Area Network (SAN). Door SCSI-PR op een beheerde schijf in te scha kelen, kunt u deze toepassingen naar Azure migreren. <br/><br/>-Met behulp van [opslagruimten direct \( S2D \) ](failover-cluster-instance-storage-spaces-direct-manually-configure.md) kunt u een virtueel San op basis van software bieden voor Windows Server 2016 en hoger.<br/><br/>-Gebruik een [Premium-bestands share](failover-cluster-instance-premium-file-share-manually-configure.md) voor Windows Server 2012 en hoger. Premium-bestands shares zijn een SSD-back-up, hebben een consistente lage latentie en worden volledig ondersteund voor gebruik met FCI.<br/><br/>-Opslag gebruiken die wordt ondersteund door een partner oplossing voor clustering. Zie het blog bericht [failover clustering en SIOS data keeper](https://azure.microsoft.com/blog/high-availability-for-a-file-share-using-wsfc-ilb-and-3rd-party-software-sios-datakeeper/)voor een specifiek voor beeld dat gebruikmaakt van Sios data keeper.<br/><br/>-Gedeelde blok opslag gebruiken voor een extern iSCSI-doel via Azure ExpressRoute. NetApp Private Storage (NPS) biedt bijvoorbeeld een iSCSI-doel aan voor Azure-VM's via ExpressRoute met Equinix.<br/><br/>In het geval van oplossingen van Microsoft-partners voor gedeelde opslag en gegevensreplicatie neemt u contact op met de leverancier als er problemen zijn met de toegang tot gegevens bij failover.<br/><br/>||
 
 ## <a name="azure-only-disaster-recovery-solutions"></a>Alleen Azure: oplossingen voor nood herstel
 U kunt een oplossing voor herstel na nood geval hebben voor uw SQL Server-data bases in azure met behulp van beschikbaarheids groepen, database spiegeling of back-up en herstel met opslag-blobs.
@@ -90,7 +90,7 @@ In de volgende afbeelding gebruikt de installatie SQL Server uitgevoerd op een v
 
 Zie [Licentievoorwaarden voor het product](https://www.microsoft.com/licensing/product-licensing/products) voor meer informatie. 
 
-Als u dit voor deel wilt inschakelen, gaat u naar de resource van uw [SQL Server virtuele machine](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource). Selecteer **configureren** onder **instellingen**en kies vervolgens de optie voor **nood herstel** onder **SQL Server-licentie**. Schakel het selectie vakje in om te bevestigen dat deze SQL Server virtuele machine wordt gebruikt als passieve replica en selecteer vervolgens **Toep assen** om uw instellingen op te slaan. 
+Als u dit voor deel wilt inschakelen, gaat u naar de resource van uw [SQL Server virtuele machine](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource). Selecteer **configureren** onder **instellingen** en kies vervolgens de optie voor **nood herstel** onder **SQL Server-licentie** . Schakel het selectie vakje in om te bevestigen dat deze SQL Server virtuele machine wordt gebruikt als passieve replica en selecteer vervolgens **Toep assen** om uw instellingen op te slaan. 
 
 ![Een herstel replica voor nood gevallen in azure configureren](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/dr-replica-in-portal.png)
 
@@ -101,12 +101,12 @@ Azure-Vm's,-opslag en-netwerken hebben verschillende operationele kenmerken dan 
 ### <a name="high-availability-nodes-in-an-availability-set"></a>Knoop punten met hoge Beschik baarheid in een beschikbaarheidsset
 Met beschikbaarheids sets in azure kunt u de knoop punten met hoge Beschik baarheid plaatsen in afzonderlijke fout domeinen en update domeinen. Het Azure-platform wijst een update domein en een fout domein toe aan elke virtuele machine in uw beschikbaarheidsset. Deze configuratie binnen een Data Center zorgt ervoor dat tijdens een geplande of ongeplande onderhouds gebeurtenis ten minste één virtuele machine beschikbaar is en voldoet aan de Azure-SLA van 99,95 procent. 
 
-Als u een instelling voor maximale Beschik baarheid wilt configureren, plaatst u alle deelnemende SQL Server virtuele machines in dezelfde beschikbaarheidsset om te voor komen dat toepassingen of gegevens verloren gaan tijdens een onderhouds gebeurtenis. Alleen knoop punten in dezelfde Cloud service kunnen deel nemen aan dezelfde beschikbaarheidsset. Zie voor meer informatie [De beschikbaarheid van virtuele machines beheren](../../../virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Als u een instelling voor maximale Beschik baarheid wilt configureren, plaatst u alle deelnemende SQL Server virtuele machines in dezelfde beschikbaarheidsset om te voor komen dat toepassingen of gegevens verloren gaan tijdens een onderhouds gebeurtenis. Alleen knoop punten in dezelfde Cloud service kunnen deel nemen aan dezelfde beschikbaarheidsset. Zie voor meer informatie [De beschikbaarheid van virtuele machines beheren](../../../virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json).
 
 ### <a name="high-availability-nodes-in-an-availability-zone"></a>Knoop punten met hoge Beschik baarheid in een beschikbaarheids zone
-Beschikbaarheids zones zijn unieke fysieke locaties binnen een Azure-regio. Elke zone bestaat uit een of meer data centers die zijn uitgerust met onafhankelijke voeding, koeling en netwerken. De fysieke schei ding van beschikbaarheids zones binnen een regio helpt bij het beveiligen van toepassingen en gegevens van datacenter fouten door ervoor te zorgen dat er ten minste één virtuele machine beschikbaar is en voldoet aan de Azure-SLA van 99,99 procent. 
+Beschikbaarheidszones zijn unieke, fysieke locaties binnen een Azure-regio. Elke zone bestaat uit een of meer data centers die zijn uitgerust met onafhankelijke voeding, koeling en netwerken. De fysieke schei ding van beschikbaarheids zones binnen een regio helpt bij het beveiligen van toepassingen en gegevens van datacenter fouten door ervoor te zorgen dat er ten minste één virtuele machine beschikbaar is en voldoet aan de Azure-SLA van 99,99 procent. 
 
-Als u maximale Beschik baarheid wilt configureren, plaatst u deelnemende SQL Server virtuele machines over de verschillende beschikbaarheids zones in de regio. Er worden extra kosten in rekening gebracht voor netwerk-naar-netwerk overdrachten tussen beschikbaarheids zones. Zie [beschikbaarheids zones](/azure/availability-zones/az-overview)voor meer informatie. 
+Als u maximale Beschik baarheid wilt configureren, plaatst u deelnemende SQL Server virtuele machines over de verschillende beschikbaarheids zones in de regio. Er worden extra kosten in rekening gebracht voor netwerk-naar-netwerk overdrachten tussen beschikbaarheids zones. Zie [beschikbaarheids zones](../../../availability-zones/az-overview.md)voor meer informatie. 
 
 
 ### <a name="failover-cluster-behavior-in-azure-networking"></a>Gedrag van failover-clusters in azure-netwerken
@@ -123,7 +123,7 @@ Denk na over het scenario wanneer een cluster met twee knoop punten wordt gemaak
 
 U kunt dit scenario voor komen door een niet-gebruikt statisch IP-adres toe te wijzen aan de naam van het cluster netwerk om de cluster netwerk naam online te brengen. U kunt bijvoorbeeld een link-local IP-adres gebruiken, zoals 169.254.1.1. Zie [Windows-failovercluster configureren in azure voor beschikbaarheids groepen](https://social.technet.microsoft.com/wiki/contents/articles/14776.configuring-windows-failover-cluster-in-windows-azure-for-alwayson-availability-groups.aspx)om dit proces te vereenvoudigen.
 
-Zie [Availability groups configureren in azure (GUI)](availability-group-azure-marketplace-template-configure.md)voor meer informatie.
+Zie [Availability groups configureren in azure (GUI)](./availability-group-quickstart-template-configure.md)voor meer informatie.
 
 ### <a name="support-for-availability-group-listeners"></a>Ondersteuning voor listeners voor beschikbaarheids groep
 Listeners voor beschikbaarheids groep worden ondersteund op virtuele Azure-machines met Windows Server 2012 en hoger. Deze ondersteuning wordt mogelijk gemaakt door het gebruik van eind punten met taak verdeling die zijn ingeschakeld op de virtuele Azure-machines die de knoop punten van de beschikbaarheids groep zijn. U moet speciale configuratie stappen uitvoeren om de listeners te laten werken voor beide client toepassingen die worden uitgevoerd in Azure en die on-premises worden uitgevoerd.
@@ -136,7 +136,7 @@ Als de beschikbaarheids groep meerdere Azure-subnetten omvat (zoals een implemen
 U kunt nog steeds afzonderlijk verbinding maken met elke beschikbaarheids replica door rechtstreeks verbinding te maken met het service-exemplaar. Omdat beschikbaarheids groepen achterwaarts compatibel zijn met data base mirroring-clients, kunt u ook verbinding maken met de beschikbaarheids replica's als database spiegeling, zolang de replica's zo zijn geconfigureerd dat ze op een vergelijk bare manier worden gespiegeld:
 
 * Er is één primaire replica en één secundaire replica.
-* De secundaire replica is geconfigureerd als niet-lees bare,**secundaire** optie ingesteld op **Nee**.
+* De secundaire replica is geconfigureerd als niet-lees bare, **secundaire** optie ingesteld op **Nee** .
 
 Hier volgt een voor beeld-Client connection string die overeenkomt met deze gespiegelde configuratie van de data base met behulp van ADO.NET of SQL Server Native Client:
 
@@ -146,11 +146,11 @@ Data Source=ReplicaServer1;Failover Partner=ReplicaServer2;Initial Catalog=Avail
 
 Zie voor meer informatie over client connectiviteit:
 
-* [Tref woorden voor de verbindings reeks gebruiken met SQL Server Native Client](https://msdn.microsoft.com/library/ms130822.aspx)
-* [Clients verbinden met een sessie voor het spie gelen van data bases (SQL Server)](https://technet.microsoft.com/library/ms175484.aspx)
-* [Verbinding maken met de beschikbaarheids groep-listener in hybride IT](https://docs.microsoft.com/archive/blogs/sqlalwayson/connecting-to-availability-group-listener-in-hybrid-it)
-* [Listeners voor beschikbaarheids groep, client connectiviteit en failover van toepassing (SQL Server)](https://technet.microsoft.com/library/hh213417.aspx)
-* [Database-Mirroring verbindings reeksen gebruiken met beschikbaarheids groepen](https://technet.microsoft.com/library/hh213417.aspx)
+* [Tref woorden voor de verbindings reeks gebruiken met SQL Server Native Client](/sql/relational-databases/native-client/applications/using-connection-string-keywords-with-sql-server-native-client)
+* [Clients verbinden met een sessie voor het spie gelen van data bases (SQL Server)](/sql/database-engine/database-mirroring/connect-clients-to-a-database-mirroring-session-sql-server)
+* [Verbinding maken met de beschikbaarheids groep-listener in hybride IT](/archive/blogs/sqlalwayson/connecting-to-availability-group-listener-in-hybrid-it)
+* [Listeners voor beschikbaarheids groep, client connectiviteit en failover van toepassing (SQL Server)](/sql/database-engine/availability-groups/windows/listeners-client-connectivity-application-failover)
+* [Database-Mirroring verbindings reeksen gebruiken met beschikbaarheids groepen](/sql/database-engine/availability-groups/windows/listeners-client-connectivity-application-failover)
 
 ### <a name="network-latency-in-hybrid-it"></a>Netwerk latentie in hybride IT
 Implementeer uw HADR-oplossing met de veronderstelling dat er Peri Oden met een hoge netwerk latentie tussen uw on-premises netwerk en Azure mogelijk zijn. Wanneer u replica's naar Azure implementeert, gebruikt u asynchrone door Voer in plaats van synchrone door Voer voor de synchronisatie modus. Wanneer u data base mirroring servers zowel on-premises als in azure implementeert, moet u de modus voor hoge prestaties gebruiken in plaats van de modus met hoge beveiliging.
@@ -162,8 +162,4 @@ Als u niet de mogelijkheid hebt om geo-replicatie uit te scha kelen op het opsla
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bepaal of een [beschikbaarheids groep](availability-group-overview.md) of een [failover-cluster exemplaar](failover-cluster-instance-overview.md) de beste oplossing voor bedrijfs continuïteit is voor uw bedrijf. Bekijk vervolgens de [Aanbevolen procedures](hadr-cluster-best-practices.md) voor het configureren van uw omgeving voor hoge Beschik baarheid en herstel na nood gevallen. 
-
-
-
-
+Bepaal of een [beschikbaarheids groep](availability-group-overview.md) of een [failover-cluster exemplaar](failover-cluster-instance-overview.md) de beste oplossing voor bedrijfs continuïteit is voor uw bedrijf. Bekijk vervolgens de [Aanbevolen procedures](hadr-cluster-best-practices.md) voor het configureren van uw omgeving voor hoge Beschik baarheid en herstel na nood gevallen.

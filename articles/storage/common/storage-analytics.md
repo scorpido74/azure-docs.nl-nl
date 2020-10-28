@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: fe1b685a0209643332d798b875b9e62b02aa02da
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 5465fa63a3dff71de2e370281df9351e2bac76c7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488772"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790522"
 ---
 # <a name="storage-analytics"></a>Storage Analytics
 
@@ -37,7 +37,7 @@ De volgende acties die door Opslaganalyse worden uitgevoerd, zijn Factureerbaar:
 * Aanvragen voor het maken van blobs voor logboek registratie.
 * Aanvragen voor het maken van tabel entiteiten voor metrische gegevens.
 
-Als u een Bewaar beleid voor gegevens hebt geconfigureerd, worden er geen kosten in rekening gebracht voor verwijderings transacties wanneer Opslaganalyse oude logboeken en metrische gegevens verwijdert. Het verwijderen van trans acties van een client is echter Factureerbaar. Zie [een Opslaganalyse Bewaar beleid voor gegevens instellen](https://msdn.microsoft.com/library/azure/hh343263.aspx)voor meer informatie over het Bewaar beleid.
+Als u een Bewaar beleid voor gegevens hebt geconfigureerd, worden er geen kosten in rekening gebracht voor verwijderings transacties wanneer Opslaganalyse oude logboeken en metrische gegevens verwijdert. Het verwijderen van trans acties van een client is echter Factureerbaar. Zie [een Opslaganalyse Bewaar beleid voor gegevens instellen](/rest/api/storageservices/Setting-a-Storage-Analytics-Data-Retention-Policy)voor meer informatie over het Bewaar beleid.
 
 ### <a name="understanding-billable-requests"></a>Informatie over factureer bare aanvragen
 

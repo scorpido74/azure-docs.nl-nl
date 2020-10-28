@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: fbde77de0ad8698ff82b80b440ae1d4bdcae1f36
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 9c09a54daa482d738ded9f7aca1c95c2b640617e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427003"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790267"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>Alleen-lezen replica's gebruiken om werk belastingen met alleen-lezen query's te offloaden
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -36,7 +36,7 @@ De functie voor het *lezen van scale-out* is standaard ingeschakeld voor nieuwe 
 > [!NOTE]
 > Uitschalen voor lezen is altijd ingeschakeld in de service tier Bedrijfskritiek van het beheerde exemplaar.
 
-Als uw SQL connection string is geconfigureerd met `ApplicationIntent=ReadOnly` , wordt de toepassing omgeleid naar een alleen-lezen replica van die data base of een beheerd exemplaar. Zie voor meer informatie over het gebruik van de `ApplicationIntent` eigenschap [toepassings intentie opgeven](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent).
+Als uw SQL connection string is geconfigureerd met `ApplicationIntent=ReadOnly` , wordt de toepassing omgeleid naar een alleen-lezen replica van die data base of een beheerd exemplaar. Zie voor meer informatie over het gebruik van de `ApplicationIntent` eigenschap [toepassings intentie opgeven](/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent).
 
 Als u er zeker van wilt zijn dat de toepassing verbinding maakt met de primaire replica, ongeacht de `ApplicationIntent` instelling in de SQL-Connection String, moet u het lezen van uitschalen expliciet uitschakelen bij het maken van de data base of bij het wijzigen van de configuratie. Als u bijvoorbeeld een upgrade uitvoert van uw data base van Standard of Algemeen laag naar Premium, Bedrijfskritiek of grootschalige en wilt ervoor zorgen dat al uw verbindingen naar de primaire replica gaan, schakelt u lezen uitschalen uit. Zie voor meer informatie over het uitschakelen van de functie [uitschalen voor lezen in-en uitschakelen](#enable-and-disable-read-scale-out).
 
@@ -87,16 +87,16 @@ Veelgebruikte weer gaven zijn:
 
 | Naam | Doel |
 |:---|:---|
-|[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Voorziet in de metrische gegevens van het resource gebruik voor het afgelopen uur, inclusief CPU, data IO en logboek schrijf gebruik in verhouding tot service doelstelling limieten.|
-|[sys.dm_os_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| Biedt geaggregeerde wacht statistieken voor het exemplaar van de data base-engine. |
-|[sys.dm_database_replica_states](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database)| Biedt status-en synchronisatie statistieken voor de replica. De grootte van de wachtrij opnieuw uitvoeren en het aantal opnieuw uitvoeren fungeert als indicator van de gegevens latentie op de alleen-lezen replica. |
-|[sys.dm_os_performance_counters](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-performance-counters-transact-sql)| Biedt prestatie meter items voor de data base-engine.|
-|[sys.dm_exec_query_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql)| Biedt uitvoerings statistieken per query, zoals het aantal uitvoeringen, de gebruikte CPU-tijd, enzovoort.|
-|[sys.dm_exec_query_plan ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-transact-sql)| Biedt query abonnementen in de cache. |
-|[sys.dm_exec_sql_text ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql)| Geeft query tekst voor een query plan in de cache.|
-|[sys.dm_exec_query_profiles](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| Biedt real-time query voortgang terwijl query's worden uitgevoerd.|
-|[sys.dm_exec_query_plan_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| Voorziet in het laatste bekende werkelijke uitvoerings plan, inclusief runtime statistieken voor een query.|
-|[sys.dm_io_virtual_file_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)| Biedt gegevens over de opslag-IOPS, door Voer en latentie voor alle database bestanden. |
+|[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Voorziet in de metrische gegevens van het resource gebruik voor het afgelopen uur, inclusief CPU, data IO en logboek schrijf gebruik in verhouding tot service doelstelling limieten.|
+|[sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| Biedt geaggregeerde wacht statistieken voor het exemplaar van de data base-engine. |
+|[sys.dm_database_replica_states](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database)| Biedt status-en synchronisatie statistieken voor de replica. De grootte van de wachtrij opnieuw uitvoeren en het aantal opnieuw uitvoeren fungeert als indicator van de gegevens latentie op de alleen-lezen replica. |
+|[sys.dm_os_performance_counters](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-performance-counters-transact-sql)| Biedt prestatie meter items voor de data base-engine.|
+|[sys.dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql)| Biedt uitvoerings statistieken per query, zoals het aantal uitvoeringen, de gebruikte CPU-tijd, enzovoort.|
+|[sys.dm_exec_query_plan ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-transact-sql)| Biedt query abonnementen in de cache. |
+|[sys.dm_exec_sql_text ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql)| Geeft query tekst voor een query plan in de cache.|
+|[sys.dm_exec_query_profiles](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| Biedt real-time query voortgang terwijl query's worden uitgevoerd.|
+|[sys.dm_exec_query_plan_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| Voorziet in het laatste bekende werkelijke uitvoerings plan, inclusief runtime statistieken voor een query.|
+|[sys.dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)| Biedt gegevens over de opslag-IOPS, door Voer en latentie voor alle database bestanden. |
 
 > [!NOTE]
 > De `sys.resource_stats` en `sys.elastic_pool_resource_stats` dmv's in de logische hoofd database retour neren gegevens over het resource gebruik van de primaire replica.
@@ -109,13 +109,13 @@ Een Extended Event-sessie op een alleen-lezen replica die is gebaseerd op een se
 
 ### <a name="transaction-isolation-level-on-read-only-replicas"></a>Transactie isolatie niveau voor alleen-lezen replica's
 
-Query's die worden uitgevoerd op alleen-lezen replica's, worden altijd toegewezen aan het isolatie niveau van [snap shot](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server) -trans acties. Snap shot-isolatie maakt gebruik van rij-versie beheer om te voor komen dat de blok keringen van lezers worden geblokkeerd.
+Query's die worden uitgevoerd op alleen-lezen replica's, worden altijd toegewezen aan het isolatie niveau van [snap shot](/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server) -trans acties. Snap shot-isolatie maakt gebruik van rij-versie beheer om te voor komen dat de blok keringen van lezers worden geblokkeerd.
 
-In zeldzame gevallen kan het gebeuren dat als een snap shot-isolatie transactie object meta gegevens opent die in een andere gelijktijdige trans actie zijn gewijzigd, fout [3961](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-3961-database-engine-error)wordt weer gegeven, de snap shot-isolatie transactie is mislukt in Data Base %1! omdat het object dat door de instructie wordt gebruikt, is gewijzigd door een DDL-instructie in een andere gelijktijdige trans actie sinds het begin van deze trans actie. Dit is niet toegestaan omdat versiebeheer niet is ingeschakeld voor de metagegevens. Een gelijktijdige update van meta gegevens kan leiden tot inconsistenties bij het combi natie met snap shot-isolatie.
+In zeldzame gevallen kan het gebeuren dat als een snap shot-isolatie transactie object meta gegevens opent die in een andere gelijktijdige trans actie zijn gewijzigd, fout [3961](/sql/relational-databases/errors-events/mssqlserver-3961-database-engine-error)wordt weer gegeven, de snap shot-isolatie transactie is mislukt in Data Base %1! omdat het object dat door de instructie wordt gebruikt, is gewijzigd door een DDL-instructie in een andere gelijktijdige trans actie sinds het begin van deze trans actie. Dit is niet toegestaan omdat versiebeheer niet is ingeschakeld voor de metagegevens. Een gelijktijdige update van meta gegevens kan leiden tot inconsistenties bij het combi natie met snap shot-isolatie.
 
 ### <a name="long-running-queries-on-read-only-replicas"></a>Langlopende query's voor alleen-lezen replica's
 
-Query's die worden uitgevoerd op alleen-lezen replica's, moeten toegang hebben tot meta gegevens voor de objecten waarnaar wordt verwezen in de query (tabellen, indexen, statistieken, enzovoort). In zeldzame gevallen, als een meta gegevens object op de primaire replica is gewijzigd terwijl een query een vergren deling op hetzelfde object op de alleen-lezen replica bevat, kan de query het proces dat wijzigingen van de primaire replica op de alleen-lezen replica toepast, [blok keren](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary#BKMK_REDOBLOCK) . Als een dergelijke query al lange tijd zou worden uitgevoerd, zou de alleen-lezen replica aanzienlijk niet synchroon zijn met de primaire replica. 
+Query's die worden uitgevoerd op alleen-lezen replica's, moeten toegang hebben tot meta gegevens voor de objecten waarnaar wordt verwezen in de query (tabellen, indexen, statistieken, enzovoort). In zeldzame gevallen, als een meta gegevens object op de primaire replica is gewijzigd terwijl een query een vergren deling op hetzelfde object op de alleen-lezen replica bevat, kan de query het proces dat wijzigingen van de primaire replica op de alleen-lezen replica toepast, [blok keren](/sql/database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary#BKMK_REDOBLOCK) . Als een dergelijke query al lange tijd zou worden uitgevoerd, zou de alleen-lezen replica aanzienlijk niet synchroon zijn met de primaire replica. 
 
 Als een langlopende query op een alleen-lezen replica dit soort blok kering veroorzaakt, wordt deze automatisch beëindigd en ontvangt de sessie fout 1219, ' uw sessie is beëindigd vanwege een DDL-bewerking met hoge prioriteit '.
 
@@ -123,7 +123,7 @@ Als een langlopende query op een alleen-lezen replica dit soort blok kering vero
 > Als fout 3961 of fout 1219 wordt weer gegeven bij het uitvoeren van query's op een alleen-lezen replica, voert u de query opnieuw uit.
 
 > [!TIP]
-> In Premium-en Bedrijfskritiek-service lagen, wanneer verbinding wordt gemaakt met een alleen-lezen replica, `redo_queue_size` `redo_rate` kunnen de kolommen en in de [sys.dm_database_replica_states](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database) dmv worden gebruikt voor het bewaken van het gegevens synchronisatie proces, met als indica toren van gegevens latentie op de alleen-lezen replica.
+> In Premium-en Bedrijfskritiek-service lagen, wanneer verbinding wordt gemaakt met een alleen-lezen replica, `redo_queue_size` `redo_rate` kunnen de kolommen en in de [sys.dm_database_replica_states](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database) dmv worden gebruikt voor het bewaken van het gegevens synchronisatie proces, met als indica toren van gegevens latentie op de alleen-lezen replica.
 > 
 
 ## <a name="enable-and-disable-read-scale-out"></a>Uitschalen voor lezen in-en uitschakelen
@@ -144,7 +144,7 @@ U kunt de instelling Lees scale-out beheren op de Blade Data Base **configureren
 > [!IMPORTANT]
 > De Power shell-Azure Resource Manager module wordt nog steeds ondersteund, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. De Azure Resource Manager-module blijft oplossingen voor problemen ontvangen tot ten minste december 2020.  De argumenten voor de opdrachten in de module AZ en in de Azure Resource Manager-modules zijn in wezen identiek. Zie [Inleiding tot de nieuwe Azure PowerShell AZ-module](/powershell/azure/new-azureps-module-az)voor meer informatie over de compatibiliteit.
 
-Voor het beheren van Read scale-out in Azure PowerShell is de Azure PowerShell release van december 2016 of hoger vereist. Zie [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)voor de nieuwste Power shell-versie.
+Voor het beheren van Read scale-out in Azure PowerShell is de Azure PowerShell release van december 2016 of hoger vereist. Zie [Azure PowerShell](/powershell/azure/install-az-ps)voor de nieuwste Power shell-versie.
 
 U kunt het lezen van uitschalen in Azure PowerShell uitschakelen of opnieuw inschakelen door de cmdlet [set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) aan te roepen en de gewenste waarde ( `Enabled` of `Disabled` ) voor de para meter door te geven `-ReadScale` .
 
@@ -166,7 +166,7 @@ Als u het lezen van uitschalen voor een bestaande data base opnieuw wilt inschak
 Set-AzSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName <serverName> -DatabaseName <databaseName> -ReadScale Enabled
 ```
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>REST-API
 
 Als u een Data Base met lees uitschalen wilt maken of de instelling voor een bestaande Data Base wilt wijzigen, gebruikt u de volgende methode waarbij de `readScale` eigenschap is ingesteld op `Enabled` of `Disabled` , zoals in de volgende voorbeeld aanvraag.
 
@@ -180,7 +180,7 @@ Body: {
 }
 ```
 
-Zie [data bases-maken of bijwerken](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)voor meer informatie.
+Zie [data bases-maken of bijwerken](/rest/api/sql/databases/createorupdate)voor meer informatie.
 
 ## <a name="using-the-tempdb-database-on-a-read-only-replica"></a>De `tempdb` Data Base op een alleen-lezen replica gebruiken
 

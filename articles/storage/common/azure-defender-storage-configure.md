@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: eb71c5eda66d3d11385577da7142970f4fbcbad2
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 0bda32aaab301fe9ed685f0bfd6d4596fab4e5db
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92474849"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789009"
 ---
 # <a name="configure-azure-defender-for-storage"></a>Azure Defender voor opslag configureren
 
@@ -37,7 +37,7 @@ De volgende lijst bevat een overzicht van de beschik baarheid van Azure Defender
 
 - Releasestatus:
   - [Blob Storage](https://azure.microsoft.com/services/storage/blobs/) (algemene Beschik baarheid)
-  - [Azure files](/azure/storage/files/storage-files-introduction) (algemene Beschik baarheid)
+  - [Azure files](../files/storage-files-introduction.md) (algemene Beschik baarheid)
   - Azure Data Lake Storage Gen2 (algemene Beschik baarheid)
 - Clouds:<br>
     ✔ Commerciële Clouds<br>
@@ -53,10 +53,10 @@ U kunt Azure Defender voor opslag op verschillende manieren configureren, zoals 
 Wanneer u zich abonneert op de Standard-laag in Azure Security Center, wordt Azure Defender automatisch ingesteld op al uw opslag accounts. U kunt Azure Defender voor uw opslag accounts onder een specifiek abonnement als volgt in-of uitschakelen:
 
 1. Start **Azure Security Center** in het [Azure Portal](https://portal.azure.com).
-1. Selecteer in het hoofd menu onder **beheer**de optie **prijzen & instellingen**.
+1. Selecteer in het hoofd menu onder **beheer** de optie **prijzen & instellingen** .
 1. Selecteer het abonnement waarvoor u Azure Defender wilt in-of uitschakelen.
 1. Selecteer **Azure Defender op** om Azure Defender in te scha kelen voor het abonnement.
-1. Ga naar het **resource type Azure Defender-plan selecteren**, zoek de rij **Storage** en selecteer **ingeschakeld** in de kolom **plan** .
+1. Ga naar het **resource type Azure Defender-plan selecteren** , zoek de rij **Storage** en selecteer **ingeschakeld** in de kolom **plan** .
 1. Sla uw wijzigingen op.
 
     :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-security-center.png" alt-text="Scherm afbeelding die laat zien hoe u Azure Defender inschakelt voor opslag in Security Center":::
@@ -66,8 +66,8 @@ Azure Defender is nu ingeschakeld voor alle opslag accounts in dit abonnement.
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Start de [Azure Portal](https://portal.azure.com/).
-1. Ga naar uw opslagaccount. Selecteer onder **instellingen**de optie **geavanceerde beveiliging**.
-1. Selecteer **Azure Defender inschakelen voor opslag**.
+1. Ga naar uw opslagaccount. Selecteer onder **instellingen** de optie **geavanceerde beveiliging** .
+1. Selecteer **Azure Defender inschakelen voor opslag** .
 
     :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-portal.png" alt-text="Scherm afbeelding die laat zien hoe u Azure Defender inschakelt voor opslag in Security Center":::
 
@@ -138,4 +138,4 @@ Waarschuwingen worden gegenereerd door ongebruikelijke en mogelijk schadelijke p
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over [Logboeken in azure Storage-accounts](/rest/api/storageservices/About-Storage-Analytics-Logging)
-- Meer informatie over [Azure Security Center](../../security-center/security-center-intro.md)
+- Meer informatie over [Azure Security Center](../../security-center/security-center-introduction.md)

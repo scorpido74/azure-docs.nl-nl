@@ -2,13 +2,13 @@
 title: Veelgestelde vragen-Azure Event Hubs | Microsoft Docs
 description: In dit artikel vindt u een lijst met veelgestelde vragen over Azure Event Hubs en de antwoorden hiervan.
 ms.topic: article
-ms.date: 10/23/2020
-ms.openlocfilehash: c95016064ecc9bbfc091138863c8215feeec50b4
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.date: 10/27/2020
+ms.openlocfilehash: 051122c2030683eb2f3c57191dbbfa3bfd2bf6b7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518021"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789366"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Veelgestelde vragen over Event Hubs
 
@@ -184,8 +184,19 @@ Als de totale **uitgangs** doorvoer of het totale percentage voor het oplopen va
 
 Ingangs-en uitgangs quota worden afzonderlijk afgedwongen, zodat de afzender geen gebeurtenis verbruik kan veroorzaken om te vertragen, en kan een ontvanger voor komen dat gebeurtenissen worden verzonden naar een Event Hub.
 
-### <a name="is-there-a-limit-on-the-number-of-throughput-units-tus-that-can-be-reservedselected"></a>Is er een limiet voor het aantal doorvoer eenheden (TUs) dat kan worden gereserveerd of geselecteerd?
-Bij een multi tenant-aanbieding kunnen doorvoer eenheden Maxi maal 40 TUs (u kunt Maxi maal 20 TUs selecteren in de portal en een ondersteunings ticket verhogen om dit te doen tot 40 TUs op dezelfde naam ruimte). Meer dan 40 TUs biedt Event Hubs het model op basis van resource/capaciteit dat de **Event hubs dedicated clusters**wordt genoemd. Toegewezen clusters worden verkocht in capaciteits eenheden (CUs).
+### <a name="is-there-a-limit-on-the-number-of-throughput-units-that-can-be-reservedselected"></a>Geldt er een limiet voor het aantal doorvoer eenheden dat kan worden gereserveerd of geselecteerd?
+
+Bij het maken van een basis naam ruimte of een Standard-laag in de Azure Portal, kunt u Maxi maal 20 TUs voor de naam ruimte selecteren. Dien een [ondersteunings aanvraag](../azure-portal/supportability/how-to-create-azure-support-request.md)in om het te verheffen naar **precies** 40 TUs.  
+
+1. Selecteer op de pagina **Event Bus-naam ruimte** de optie **nieuwe ondersteunings aanvraag** in het menu links. 
+1. Voer op de pagina **nieuwe ondersteunings aanvraag** de volgende stappen uit:
+    1. Beschrijf het probleem in enkele woorden voor een **samen vatting** . 
+    1. Bij **Probleemtype** selecteert u **Quota** . 
+    1. Selecteer bij **probleem subtype** **aanvraag voor toename of afname van doorvoer eenheid** . 
+    
+        :::image type="content" source="./media/event-hubs-faq/support-request-throughput-units.png" alt-text="Ondersteuningsaanvraag pagina":::
+
+Meer dan 40 TUs biedt Event Hubs het model op basis van resource/capaciteit dat de Event Hubs Dedicated clusters wordt genoemd. Toegewezen clusters worden verkocht in capaciteits eenheden (CUs). Zie [Event hubs dedicated-Overview](event-hubs-dedicated-overview.md)voor meer informatie.
 
 ## <a name="dedicated-clusters"></a>Toegewezen clusters
 
@@ -199,7 +210,7 @@ Voor stapsgewijze instructies en meer informatie over het instellen van een Even
 [!INCLUDE [event-hubs-dedicated-clusters-faq](../../includes/event-hubs-dedicated-clusters-faq.md)]
 
 
-## <a name="best-practices"></a>Aanbevolen procedures
+## <a name="partitions"></a>Partities
 
 ### <a name="how-many-partitions-do-i-need"></a>Hoeveel partities heb ik nodig?
 Het aantal partities wordt opgegeven bij het maken en moet tussen 1 en 32. Het aantal partities kan niet worden gewijzigd. Houd daarom rekening met de lange termijn bij het instellen van het aantal partities. Partities zijn een mechanisme voor gegevensordening. Ze hebben betrekking op de mate van downstreamparallelheid die is vereist bij het gebruik van toepassingen. Het aantal partities in een Event Hub houdt rechtstreeks verband met het aantal verwachte gelijktijdige lezers. Zie [partities](event-hubs-features.md#partitions)voor meer informatie over partities.
@@ -209,6 +220,21 @@ Het is raadzaam deze op het moment van maken in te stellen op de hoogste waarde:
 Event Hubs is ontworpen om één partitie lezer per Consumer groep toe te staan. In de meeste gevallen is de standaard instelling van vier partities voldoende. Als u van plan bent uw gebeurtenis verwerking te schalen, kunt u overwegen extra partities toe te voegen. Er is geen specifieke doorvoer limiet voor een partitie, maar de geaggregeerde door Voer in uw naam ruimte wordt beperkt door het aantal doorvoer eenheden. Als u het aantal doorvoer eenheden in uw naam ruimte verhoogt, wilt u mogelijk extra partities toestaan dat gelijktijdige lezers hun eigen maximale door Voer kunnen verzorgen.
 
 Als u echter een model hebt waarin uw toepassing een affiniteit met een bepaalde partitie heeft, is het mogelijk dat het aantal partities niet van nut is voor u. Zie [Beschik baarheid en consistentie](event-hubs-availability-and-consistency.md)voor meer informatie.
+
+### <a name="increase-partitions"></a>Partities verhogen
+Als u een ondersteunings aanvraag wilt indienen, kunt u aanvragen voor het aantal partities verhogen tot 40 (exact). 
+
+1. Selecteer op de pagina **Event Bus-naam ruimte** de optie **nieuwe ondersteunings aanvraag** in het menu links. 
+1. Voer op de pagina **nieuwe ondersteunings aanvraag** de volgende stappen uit:
+    1. Beschrijf het probleem in enkele woorden voor een **samen vatting** . 
+    1. Bij **Probleemtype** selecteert u **Quota** . 
+    1. Selecteer voor het **subtype** van het probleem **aanvraag voor partitie wijziging** . 
+    
+        :::image type="content" source="./media/event-hubs-faq/support-request-increase-partitions.png" alt-text="Ondersteuningsaanvraag pagina":::
+
+Het aantal partities kan worden verhoogd tot precies 40. In dit geval moet het aantal TUs ook worden verhoogd tot 40. Als u later besluit om de di-limiet terug te brengen naar <= 20, wordt de limiet voor het maximum aantal partities ook verlaagd naar 32. 
+
+De afname in partities heeft geen invloed op bestaande Event hubs omdat partities worden toegepast op het Event Hub niveau en ze onveranderbaar zijn nadat de hub is gemaakt. 
 
 ## <a name="pricing"></a>Prijzen
 

@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: b89b8cc58cb48770b9b42036f8b834cc1bf11b8b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 5cfd76d6b2f6bb9429a7605ac05adb23d87a80d3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441127"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790879"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL Transparent Data Encryption met door de klant beheerde sleutels
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -32,7 +32,7 @@ Voor Azure SQL Database en Azure Synapse Analytics wordt de TDE-Protector ingest
 > Voor degenen die gebruikmaken van service-beheerde TDE die willen beginnen met door de klant beheerde TDE, blijft de gegevens versleuteld tijdens het proces van overschakeling en wordt er geen downtime of hercodering van de database bestanden weer gegeven. Wanneer u overschakelt van een door een service beheerde sleutel naar een door de klant beheerde sleutel, hoeft u de DEK alleen opnieuw te versleutelen, wat een snelle en online bewerking is.
 
 > [!NOTE]
-> Om Azure SQL-klanten te voorzien van twee lagen versleuteling van gegevens in rust, wordt infrastructuur versleuteling (met AES-256-versleutelings algoritme) met door het platform beheerde sleutels geïmplementeerd. Dit biedt een toevoeging van de versleutelings laag en de TDE met door de klant beheerde sleutels, die al beschikbaar zijn. Voor Azure SQL Database en het beheerde exemplaar worden alle data bases, met inbegrip van de hoofd database en andere systeem databases, versleuteld wanneer infrastructuur versleuteling is ingeschakeld. Klanten moeten op dit moment toegang vragen tot deze mogelijkheid. Als u geïnteresseerd bent in deze mogelijkheid, neemt u contact op met AzureSQLDoubleEncryptionAtRest@service.microsoft.com .
+> <a id="doubleencryption"></a> Om Azure SQL-klanten te voorzien van twee lagen versleuteling van gegevens in rust, wordt infrastructuur versleuteling (met AES-256-versleutelings algoritme) met door het platform beheerde sleutels geïmplementeerd. Dit biedt een toevoeging van de versleutelings laag en de TDE met door de klant beheerde sleutels, die al beschikbaar zijn. Voor Azure SQL Database en het beheerde exemplaar worden alle data bases, met inbegrip van de hoofd database en andere systeem databases, versleuteld wanneer infrastructuur versleuteling is ingeschakeld. Klanten moeten op dit moment toegang vragen tot deze mogelijkheid. Als u geïnteresseerd bent in deze mogelijkheid, neemt u contact op met AzureSQLDoubleEncryptionAtRest@service.microsoft.com .
 
 ## <a name="benefits-of-the-customer-managed-tde"></a>Voor delen van de door de klant beheerde TDE
 
@@ -82,7 +82,7 @@ Audi tors kunnen Azure Monitor gebruiken om de sleutel kluis audit event-logboek
 
 - Verleen de server of het beheerde exemplaar toegang tot de sleutel kluis (Get, wrapKey, sleutel uitpakken) met behulp van de Azure Active Directory identiteit. Wanneer u de Azure Portal gebruikt, wordt de Azure AD-identiteit automatisch gemaakt. Wanneer u Power shell of de CLI gebruikt, moet de Azure AD-identiteit expliciet worden gemaakt en moet de voltooiing worden gecontroleerd. Zie [Configure TDe with BYOK](transparent-data-encryption-byok-configure.md) en [Configure TDe with BYOK for SQL Managed instance](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md) voor gedetailleerde stapsgewijze instructies voor het gebruik van Power shell.
 
-- Wanneer u Firewall met Azure gebruikt, moet u *de optie vertrouwde micro soft-Services toestaan om de firewall te omzeilen*, in te scha kelen.
+- Wanneer u Firewall met Azure gebruikt, moet u *de optie vertrouwde micro soft-Services toestaan om de firewall te omzeilen* , in te scha kelen.
 
 ### <a name="requirements-for-configuring-tde-protector"></a>Vereisten voor het configureren van TDE-beveiliging
 
@@ -95,7 +95,7 @@ Audi tors kunnen Azure Monitor gebruiken om de sleutel kluis audit event-logboek
 - Als u een bestaande sleutel in de sleutel kluis importeert, moet u deze opgeven in de ondersteunde bestands indelingen (. pfx,. byok of. back-up).
 
 > [!NOTE]
-> Azure SQL ondersteunt nu het gebruik van een RSA-sleutel die is opgeslagen in een beheerde HSM als TDE-Protector. Deze functie is beschikbaar als **open bare preview**. Azure Key Vault Managed HSM is een volledig beheerde, Maxi maal beschik bare, door standaarden compatibele Cloud service met één Tenant waarmee u cryptografische sleutels voor uw Cloud toepassingen kunt beveiligen met behulp van FIPS 140-2 level 3 gevalideerd Hsm's. Meer informatie over [beheerde hsm's](https://aka.ms/mhsm).
+> Azure SQL ondersteunt nu het gebruik van een RSA-sleutel die is opgeslagen in een beheerde HSM als TDE-Protector. Deze functie is beschikbaar als **open bare preview** . Azure Key Vault Managed HSM is een volledig beheerde, Maxi maal beschik bare, door standaarden compatibele Cloud service met één Tenant waarmee u cryptografische sleutels voor uw Cloud toepassingen kunt beveiligen met behulp van FIPS 140-2 level 3 gevalideerd Hsm's. Meer informatie over [beheerde hsm's](../../key-vault/managed-hsm/index.yml).
 
 
 ## <a name="recommendations-when-configuring-customer-managed-tde"></a>Aanbevelingen voor het configureren van door de klant beheerde TDE
@@ -106,7 +106,7 @@ Audi tors kunnen Azure Monitor gebruiken om de sleutel kluis audit event-logboek
 
 - Stel een resource vergrendeling in voor de sleutel kluis om te bepalen wie deze kritieke resource kan verwijderen en om onbedoelde of ongeoorloofde verwijdering te voor komen. Meer informatie over [resource vergrendelingen](../../azure-resource-manager/management/lock-resources.md).
 
-- Controle en rapportage inschakelen voor alle versleutelings sleutels: sleutel kluis biedt logboeken die eenvoudig kunnen worden geïnjecteerd in andere hulpprogram ma's voor beveiligings informatie en beheer van gebeurtenissen. Operations Management Suite [log Analytics](../../azure-monitor/insights/azure-key-vault.md) is een voor beeld van een service die al is geïntegreerd.
+- Controle en rapportage inschakelen voor alle versleutelings sleutels: sleutel kluis biedt logboeken die eenvoudig kunnen worden geïnjecteerd in andere hulpprogram ma's voor beveiligings informatie en beheer van gebeurtenissen. Operations Management Suite [log Analytics](../../azure-monitor/insights/key-vault-insights-overview.md) is een voor beeld van een service die al is geïntegreerd.
 
 - Koppel elke server aan twee sleutel kluizen die zich in verschillende regio's bevinden, en bewaar hetzelfde sleutel materiaal om hoge Beschik baarheid van versleutelde data bases te garanderen. Markeer alleen de sleutel van de sleutel kluis in dezelfde regio als een TDE-Protector. Het systeem wordt automatisch overgeschakeld naar de sleutel kluis in de externe regio als er een storing optreedt in de sleutel kluis in dezelfde regio.
 
@@ -126,7 +126,7 @@ Audi tors kunnen Azure Monitor gebruiken om de sleutel kluis audit event-logboek
 
 ## <a name="inaccessible-tde-protector"></a>Ontoegankelijke TDE-beveiliging
 
-Wanneer transparante gegevens versleuteling is geconfigureerd voor het gebruik van een door de klant beheerde sleutel, is voortdurende toegang tot de TDE-Protector vereist voor de data base om online te blijven. Als de server geen toegang meer heeft tot de door de klant beheerde TDE-Protector in azure, wordt in Maxi maal tien minuten een Data Base gestart met het weigeren van alle verbindingen met het bijbehorende fout bericht en wordt de status gewijzigd in niet *toegankelijk*. De enige actie die is toegestaan voor een Data Base met de status unaccessible, wordt deze verwijderd.
+Wanneer transparante gegevens versleuteling is geconfigureerd voor het gebruik van een door de klant beheerde sleutel, is voortdurende toegang tot de TDE-Protector vereist voor de data base om online te blijven. Als de server geen toegang meer heeft tot de door de klant beheerde TDE-Protector in azure, wordt in Maxi maal tien minuten een Data Base gestart met het weigeren van alle verbindingen met het bijbehorende fout bericht en wordt de status gewijzigd in niet *toegankelijk* . De enige actie die is toegestaan voor een Data Base met de status unaccessible, wordt deze verwijderd.
 
 > [!NOTE]
 > Als de data base niet toegankelijk is vanwege een onregelmatige netwerk storing, is er geen actie vereist en worden de data bases automatisch weer online gezet.
@@ -135,7 +135,7 @@ Nadat de toegang tot de sleutel is hersteld, is voor de Data Base weer online ex
 
 - Als de sleutel toegang binnen acht uur wordt hersteld, wordt de data base binnen het volgende uur automatisch opnieuw geactiveerd.
 
-- Als de sleuteltoegang na meer dan acht uur is hersteld, is automatisch herstellen niet mogelijk en zijn er voor aanvullende stappen in de portal nodig om de database weer actief te krijgen. Dit kan afhankelijk van de grootte van de database vrij lang duren. Zodra de Data Base weer online is, eerder geconfigureerde instellingen op server niveau, zoals [failover-groeps](auto-failover-group-overview.md) configuratie, punt-in-time-herstel geschiedenis en tags **gaan verloren**. Daarom is het raadzaam om een meldings systeem te implementeren waarmee u de onderliggende sleutel toegangs problemen binnen acht uur kunt identificeren en oplossen.
+- Als de sleuteltoegang na meer dan acht uur is hersteld, is automatisch herstellen niet mogelijk en zijn er voor aanvullende stappen in de portal nodig om de database weer actief te krijgen. Dit kan afhankelijk van de grootte van de database vrij lang duren. Zodra de Data Base weer online is, eerder geconfigureerde instellingen op server niveau, zoals [failover-groeps](auto-failover-group-overview.md) configuratie, punt-in-time-herstel geschiedenis en tags **gaan verloren** . Daarom is het raadzaam om een meldings systeem te implementeren waarmee u de onderliggende sleutel toegangs problemen binnen acht uur kunt identificeren en oplossen.
 
 Hieronder ziet u een overzicht van de extra stappen die vereist zijn op de portal om een ontoegankelijke Data Base weer online te zetten.
 
@@ -146,7 +146,7 @@ Hieronder ziet u een overzicht van de extra stappen die vereist zijn op de porta
 
 Het kan gebeuren dat iemand met voldoende toegangs rechten voor de sleutel kluis per ongeluk server toegang tot de sleutel uitschakelt door:
 
-- de *Get*-, *wrapKey*-, *sleutel uitpakken* -machtigingen van de sleutel kluis intrekken van de server
+- de *Get* -, *wrapKey* -, *sleutel uitpakken* -machtigingen van de sleutel kluis intrekken van de server
 
 - de sleutel verwijderen
 
@@ -163,7 +163,7 @@ Meer informatie over [de algemene oorzaken voor het ontoegankelijk maken van de 
 Als u de status van de Data Base wilt bewaken en waarschuwingen wilt inschakelen voor het verlies van toegang tot TDE-Protector, configureert u de volgende Azure-functies:
 
 - [Azure resource Health](../../service-health/resource-health-overview.md). Een ontoegankelijke data base die de toegang tot de TDE-Protector heeft verloren, wordt weer gegeven als ' niet beschikbaar ' nadat de eerste verbinding met de data base is geweigerd.
-- [Activiteiten logboek](../../service-health/alerts-activity-log-service-notifications.md) wanneer toegang tot de TDe-Protector in de door de klant beheerde sleutel kluis mislukt, worden de vermeldingen toegevoegd aan het activiteiten logboek.  Als u waarschuwingen voor deze gebeurtenissen maakt, kunt u zo snel mogelijk toegang herstellen.
+- [Activiteiten logboek](../../service-health/alerts-activity-log-service-notifications-portal.md) wanneer toegang tot de TDe-Protector in de door de klant beheerde sleutel kluis mislukt, worden de vermeldingen toegevoegd aan het activiteiten logboek.  Als u waarschuwingen voor deze gebeurtenissen maakt, kunt u zo snel mogelijk toegang herstellen.
 - [Actie groepen](../../azure-monitor/platform/action-groups.md) kunnen worden gedefinieerd om u meldingen en waarschuwingen te sturen op basis van uw voor keuren, bijvoorbeeld E-mail/SMS/push/Voice, Logic app, webhook, ITSM of Automation Runbook.
 
 ## <a name="database-backup-and-restore-with-customer-managed-tde"></a>Back-up en herstel van de data base met door de klant beheerde TDE

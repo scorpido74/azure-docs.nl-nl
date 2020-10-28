@@ -18,6 +18,7 @@
         - name: Een openbare zone maken - CLI
           href: dns-getstarted-cli.md
         - name: Een openbare zone maken - ARM-sjabloon
+          displayName: Resource Manager
           href: dns-get-started-template.md
     - name: Privé-DNS
       items:

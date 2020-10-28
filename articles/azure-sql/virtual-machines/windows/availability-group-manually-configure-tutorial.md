@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: ee249a33187c3f8776cfc8fc750590c58f74579e
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 81a5b5d8b9cb56b41d051de52f1496e30fb4900f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168150"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790063"
 ---
 # <a name="tutorial-manually-configure-an-availability-group-sql-server-on-azure-vms"></a>Zelfstudie: Een beschikbaarheidsgroep handmatig configureren (SQL Server op Azure-VM's)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,7 +34,7 @@ Hoewel in dit artikel handmatig de omgeving van de beschikbaarheidsgroep wordt g
 
 ## <a name="prerequisites"></a>Vereisten
 
-In de zelfstudie wordt ervan uitgegaan dat u enige basiskennis hebt van SQL Server AlwaysOn-beschikbaarheidsgroepen. Zie [Overview of Always On Availability Groups (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx) (Overzicht van AlwaysOn-beschikbaarheidsgroepen (SQL Server)) als u meer informatie nodig hebt.
+In de zelfstudie wordt ervan uitgegaan dat u enige basiskennis hebt van SQL Server AlwaysOn-beschikbaarheidsgroepen. Zie [Overview of Always On Availability Groups (SQL Server)](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) (Overzicht van AlwaysOn-beschikbaarheidsgroepen (SQL Server)) als u meer informatie nodig hebt.
 
 Voordat u met de zelfstudie begint, moet u [de vereisten voor het maken van AlwaysOn-beschikbaarheidsgroepen in Azure Virtual Machines voltooien](availability-group-manually-configure-prerequisites-tutorial.md). Als deze vereisten al zijn voltooid, kunt u doorgaan naar [Cluster maken](#CreateCluster).
 
@@ -51,7 +51,7 @@ De volgende tabel bevat de vereisten die u moet voltooien voordat u met deze zel
 |:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **Account van installatiedomein** | - Lokale beheerder op elke SQL-server <br/> - Lid van de vaste SQL Server-serverrol 'sysadmin' voor elk exemplaar van SQL Server  |
 
 >[!NOTE]
-> Een groot aantal stappen in deze zelfstudie kunnen nu worden geautomatiseerd met de [Azure Portal](availability-group-azure-portal-configure.md), [PowerShell en de Azure CLI](availability-group-az-cli-configure.md) en [Azure-quickstart-sjablonen](availability-group-quickstart-template-configure.md).
+> Een groot aantal stappen in deze zelfstudie kunnen nu worden geautomatiseerd met de [Azure Portal](availability-group-azure-portal-configure.md), [PowerShell en de Azure CLI](./availability-group-az-commandline-configure.md) en [Azure-quickstart-sjablonen](availability-group-quickstart-template-configure.md).
 
 
 <!--**Procedure**: *This is the first "step". Make titles H2's and short and clear – H2's appear in the right pane on the web page and are important for navigation.*-->
@@ -114,7 +114,7 @@ Voeg de andere SQL-server aan het cluster toe.
    ![Bevestiging van knooppunt toevoegen](./media/availability-group-manually-configure-tutorial/46-addnodeconfirmation.png)
 
    >[!WARNING]
-   >Als u opslagruimten gebruikt en het selectievakje **Voeg alle in aanmerking komende opslag aan het cluster toe** niet uitschakelt, worden de virtuele schijven tijdens het clusterproces ontkoppelt. Als gevolg hiervan worden ze niet weergegeven in schijfbeheer of de verkenner totdat de opslagruimten met behulp van PowerShell uit het cluster worden verwijderd en opnieuw worden gekoppeld. Er worden meerdere schijven in opslaggroepen gegroepeerd. Zie [Opslagruimten](https://technet.microsoft.com/library/hh831739) voor meer informatie.
+   >Als u opslagruimten gebruikt en het selectievakje **Voeg alle in aanmerking komende opslag aan het cluster toe** niet uitschakelt, worden de virtuele schijven tijdens het clusterproces ontkoppelt. Als gevolg hiervan worden ze niet weergegeven in schijfbeheer of de verkenner totdat de opslagruimten met behulp van PowerShell uit het cluster worden verwijderd en opnieuw worden gekoppeld. Er worden meerdere schijven in opslaggroepen gegroepeerd. Zie [Opslagruimten](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831739(v=ws.11)) voor meer informatie.
    >
 
 1. Selecteer **Next** .
@@ -127,7 +127,7 @@ Voeg de andere SQL-server aan het cluster toe.
 
 ### <a name="add-a-cluster-quorum-file-share"></a>Een bestandsshare voor een clusterquorum toevoegen
 
-In dit voorbeeld gebruikt het Windows-cluster een bestandsshare om een clusterquorum te maken. In deze zelfstudie wordt gebruikgemaakt van Quorum van het type Knooppunt- en bestandssharemeerderheid. Raadpleeg [Understanding Quorum Configurations in a Failover Cluster](https://technet.microsoft.com/library/cc731739.aspx) (Inzicht in quorumconfiguraties in een failovercluster) voor meer informatie.
+In dit voorbeeld gebruikt het Windows-cluster een bestandsshare om een clusterquorum te maken. In deze zelfstudie wordt gebruikgemaakt van Quorum van het type Knooppunt- en bestandssharemeerderheid. Raadpleeg [Understanding Quorum Configurations in a Failover Cluster](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731739(v=ws.11)) (Inzicht in quorumconfiguraties in een failovercluster) voor meer informatie.
 
 1. Maak in een sessie voor Extern bureaublad verbinding met de lidserver van de bestandssharewitness.
 
@@ -176,7 +176,7 @@ Stel vervolgens het clusterquorum in.
 1. Selecteer in **De quorumwitness selecteren** de optie **Bestandssharewitness configureren** .
 
    >[!TIP]
-   >Windows Server 2016 ondersteunt een cloudwitness. Als u dit type witness kiest, hebt u geen bestandssharewitness nodig. Zie [Deploy a cloud witness for a Failover Cluster](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness) (Een cloudwitness voor een failovercluster implementeren) voor meer informatie. In deze zelfstudie wordt een bestandssharewitness gebruikt die wordt ondersteund door eerdere besturingssystemen.
+   >Windows Server 2016 ondersteunt een cloudwitness. Als u dit type witness kiest, hebt u geen bestandssharewitness nodig. Zie [Deploy a cloud witness for a Failover Cluster](/windows-server/failover-clustering/deploy-cloud-witness) (Een cloudwitness voor een failovercluster implementeren) voor meer informatie. In deze zelfstudie wordt een bestandssharewitness gebruikt die wordt ondersteund door eerdere besturingssystemen.
    >
 
 1. Typ in **Bestandssharewitness configureren** het pad voor de share die u hebt gemaakt. Selecteer **Next** .
@@ -347,7 +347,7 @@ U bent nu klaar om een beschikbaarheidsgroep te configureren met de volgende sta
    ![Beschikbaarheidsgroep in Failoverclusterbeheer](./media/availability-group-manually-configure-tutorial/80-clustermanager.png)
 
    > [!WARNING]
-   > Voer geen failover uit voor de beschikbaarheidsgroep vanuit Failoverclusterbeheer. Alle failoverbewerkingen moeten vanuit het **AlwaysOn-dashboard** in SSMS worden uitgevoerd. Zie [Restrictions on Using The Failover Cluster Manager with Availability Groups](https://msdn.microsoft.com/library/ff929171.aspx) (Beperkingen voor het gebruik van Failoverclusterbeheer met beschikbaarheidsgroepen) voor meer informatie.
+   > Voer geen failover uit voor de beschikbaarheidsgroep vanuit Failoverclusterbeheer. Alle failoverbewerkingen moeten vanuit het **AlwaysOn-dashboard** in SSMS worden uitgevoerd. Zie [Restrictions on Using The Failover Cluster Manager with Availability Groups](/sql/database-engine/availability-groups/windows/failover-clustering-and-always-on-availability-groups-sql-server) (Beperkingen voor het gebruik van Failoverclusterbeheer met beschikbaarheidsgroepen) voor meer informatie.
     >
 
 Op dit moment hebt u een beschikbaarheidsgroep met replica's op twee exemplaren van SQL Server. U kunt de beschikbaarheidsgroep tussen exemplaren verplaatsen. U kunt nog geen verbinding maken met de beschikbaarheidsgroep omdat u geen listener hebt. In virtuele machines van Azure is een load balancer vereist voor de listener. In de volgende stap gaat u de load balancer in Azure maken.
@@ -535,7 +535,7 @@ Test als volgt de verbinding:
 De SQLCMD-verbinding maakt automatisch verbinding met het exemplaar van SQL Server dat als host voor de primaire replica fungeert.
 
 > [!TIP]
-> Zorg ervoor dat de poort die u opgeeft, geopend is op de firewall van beide SQL-servers. Voor beide servers is een regel voor binnenkomende verbindingen vereist voor de TCP-poort die u gebruikt. Zie [Add or Edit Firewall Rule](https://technet.microsoft.com/library/cc753558.aspx) (Firewallregel toevoegen of bewerken) voor meer informatie.
+> Zorg ervoor dat de poort die u opgeeft, geopend is op de firewall van beide SQL-servers. Voor beide servers is een regel voor binnenkomende verbindingen vereist voor de TCP-poort die u gebruikt. Zie [Add or Edit Firewall Rule](/previous-versions/orphan-topics/ws.11/cc753558(v=ws.11)) (Firewallregel toevoegen of bewerken) voor meer informatie.
 >
 
 ## <a name="next-steps"></a>Volgende stappen

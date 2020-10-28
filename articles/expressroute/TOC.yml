@@ -4,7 +4,7 @@
   items:
     - name: Wat is ExpressRoute?
       href: expressroute-introduction.md
-- name: Snelstartgidsen
+- name: Quickstarts
   items:
     - name: Een ExpressRoute-circuit maken - Portal
       href: expressroute-howto-circuit-portal-resource-manager.md
@@ -13,6 +13,7 @@
     - name: Een ExpressRoute-circuit maken - CLI
       href: howto-circuit-cli.md
     - name: Een ExpressRoute-circuit maken - ARM-sjabloon
+      displayName: Resource Manager
       href: quickstart-create-expressroute-vnet-template.md
   expanded: true
 - name: Zelfstudies

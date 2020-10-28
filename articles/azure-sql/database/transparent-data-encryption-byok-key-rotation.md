@@ -5,19 +5,19 @@ description: Meer informatie over het roteren van de Transparent Data Encryption
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: seo-lt-2019 sqldbrb=1
+ms.custom: seo-lt-2019 sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 699434e89872b9525ea99883bc4fcbc86757ab8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c24c82e6e013734798b75d7c2cfa5ca126e32bc4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619845"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788601"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector"></a>De Transparent Data Encryption-Protector (TDE) draaien
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -37,11 +37,11 @@ In deze hand leiding worden twee opties besproken voor het draaien van de TDE-pr
 
 - In deze hand leiding wordt ervan uitgegaan dat u al een sleutel gebruikt uit Azure Key Vault als de TDE-Protector voor Azure SQL Database of Azure Synapse Analytics. Zie [transparent Data Encryption met BYOK-ondersteuning](transparent-data-encryption-byok-overview.md).
 - Azure PowerShell moet zijn geïnstalleerd en worden uitgevoerd.
-- [Aanbevolen, maar optioneel] Maak eerst het sleutel materiaal voor de TDE-Protector in een HSM (Hardware Security module) of een lokaal sleutel archief en importeer het sleutel materiaal in Azure Key Vault. Volg de [instructies voor het gebruik van een Hardware Security module (hsm) en Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started) voor meer informatie.
+- [Aanbevolen, maar optioneel] Maak eerst het sleutel materiaal voor de TDE-Protector in een HSM (Hardware Security module) of een lokaal sleutel archief en importeer het sleutel materiaal in Azure Key Vault. Volg de [instructies voor het gebruik van een Hardware Security module (hsm) en Key Vault](../../key-vault/general/overview.md) voor meer informatie.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Raadpleeg [Azure PowerShell installeren](/powershell/azure/install-az-ps) voor instructies over de installatie van de Az-module. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor specifieke cmdlets.
+Raadpleeg [Azure PowerShell installeren](/powershell/azure/install-az-ps) voor instructies over de installatie van de Az-module. Zie [AzureRM. SQL](/powershell/module/AzureRM.Sql/)voor specifieke cmdlets.
 
 > [!IMPORTANT]
 > De module PowerShell Azure Resource Manager (RM) wordt nog steeds ondersteund, maar alle toekomstige ontwikkeling is voor de Az.Sql-module. De AzureRM-module blijft tot ten minste december 2020 bugfixes ontvangen.  De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek. Zie [Introductie van de nieuwe Az-module van Azure PowerShell](/powershell/azure/new-azureps-module-az) voor meer informatie over de compatibiliteit van de argumenten.

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 082f246437cdd99b844d1ed8010d8dc846fc4d47
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: f9b3be69ab57c0abf7523169303def899f325229
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341937"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789213"
 ---
 # <a name="security-alerts-schemas"></a>Schema's voor beveiligings waarschuwingen
 
@@ -25,7 +25,7 @@ Als Azure Defender is ingeschakeld voor uw abonnement, ontvangt u beveiligings w
 U kunt deze beveiligings waarschuwingen bekijken op de pagina's van Azure Security Center **Threat Protection** of via externe hulpprogram ma's, zoals:
 
 - [Azure Sentinel](../sentinel/index.yml) : de Cloud-native Siem van micro soft. De Sentinel-connector ontvangt waarschuwingen van Azure Security Center en verzendt deze naar de [log Analytics-werk ruimte](../azure-monitor/learn/quick-create-workspace.md) voor Azure Sentinel.
-- Siem's van derden: gebruik de [continue export](continuous-export.md) hulpprogramma's van Security Center om gegevens te verzenden naar [Azure Event hubs](../event-hubs/index.yml). Integreer vervolgens uw event hub-gegevens met een SIEM van derden.
+- Siem's van derden: gegevens verzenden naar [Azure Event hubs](../event-hubs/index.yml). Integreer vervolgens uw event hub-gegevens met een SIEM van derden. Meer informatie in [streaming-waarschuwingen naar een Siem-, via-of IT-Service beheer oplossing](export-to-siem.md).
 - [De rest API](/rest/api/securitycenter/) : als u de rest API gebruikt voor toegang tot waarschuwingen, raadpleegt u de [online Alerts API-documentatie](/rest/api/securitycenter/alerts).
 
 Als u een programmatische methode gebruikt om de waarschuwingen te verbruiken, hebt u het juiste schema nodig om de velden te vinden die relevant zijn voor u. Als u exporteert naar een event hub of als u werk stroom automatisering wilt activeren met algemene HTTP-connectors, gebruikt u de schema's om de JSON-objecten correct te parseren.
@@ -46,8 +46,9 @@ Hieronder vindt u het schema van de waarschuwings gebeurtenissen die worden door
 - Azure Logic app-exemplaren die in de werk stroom automatisering van Security Center zijn geconfigureerd
 - Azure Event hub met behulp van de continue export functie van Security Center
 
-Zie [reacties op waarschuwingen en aanbevelingen automatiseren](workflow-automation.md)voor meer informatie over de functie voor het automatiseren van werk stromen.
-Zie [waarschuwingen en aanbevelingen exporteren](continuous-export.md)voor meer informatie over continue export.
+Zie voor meer informatie over de functie werk stroom automatisering de optie [reacties automatiseren op Security Center triggers](workflow-automation.md).
+
+Zie [continu exporteren Security Center gegevens](continuous-export.md)voor meer informatie over doorlopend exporteren.
 
 [!INCLUDE [Workflow schema](../../includes/security-center-alerts-schema-workflow-automation.md)]
 
@@ -149,7 +150,7 @@ U kunt de gebeurtenissen voor beveiligings waarschuwingen in het activiteiten lo
 |**category**|De subvelden value en localizedValue zijn constant-' Security '|
 |**eventTimestamp**|UTC-tijds tempel voor het moment waarop de waarschuwing is gegenereerd|
 |**id**|De volledig gekwalificeerde waarschuwings-ID|
-|**niveau**|Constante, ' informatief '|
+|**afvlakking**|Constante, ' informatief '|
 |**operationId**|Zie correlationId|
 |**operationName**|Het veld waarde is constant: ' micro soft. Security/locations/Alerts/Activate/Action ' en de gelokaliseerde waarde is ' waarschuwing activeren ' (de gebruiker kan mogelijk worden gelokaliseerd pari)|
 |**resourceGroupName**|Bevat de naam van de resource groep|
@@ -185,5 +186,5 @@ Zie de volgende pagina's voor meer informatie over de manieren om toegang te kri
 
 - [Azure-Sentinel](../sentinel/index.yml) : de Cloud-native Siem van micro soft
 - [Azure-Event hubs](../event-hubs/index.yml) -de volledig beheerde, realtime Service voor gegevens opname van micro soft
-- De [functie continue export](continuous-export.md) van Security Center
+- [Security Center gegevens doorlopend exporteren](continuous-export.md)
 - [Log Analytics werk ruimten](../azure-monitor/learn/quick-create-workspace.md) : Azure monitor slaat logboek gegevens op in een log Analytics-werk ruimte, een container die gegevens en configuratie gegevens bevat

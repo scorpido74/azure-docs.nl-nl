@@ -4,24 +4,24 @@ description: Een certificaat voor het beveiligen van de database versleutelings 
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: security
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein, jovanpop
 ms.date: 07/21/2020
-ms.openlocfilehash: 08adfd7b69d580f6a231f13f9fb2793d828e16a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80ff16156348db9c3a209757b48b7d54615d9104
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618137"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790692"
 ---
 # <a name="migrate-a-certificate-of-a-tde-protected-database-to-azure-sql-managed-instance"></a>Een certificaat van een met TDE beveiligde data base migreren naar een met Azure SQL beheerd exemplaar
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Wanneer u een Data Base die wordt beveiligd door [transparent Data Encryption (TDE),](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) migreert naar een door Azure SQL beheerd exemplaar met behulp van de systeem eigen herstel optie, moet het bijbehorende certificaat uit het SQL Server exemplaar worden gemigreerd voordat de data base wordt hersteld. Dit artikel begeleidt u bij het hand matig migreren van het certificaat naar Azure SQL Managed instance:
+Wanneer u een Data Base die wordt beveiligd door [transparent Data Encryption (TDE),](/sql/relational-databases/security/encryption/transparent-data-encryption) migreert naar een door Azure SQL beheerd exemplaar met behulp van de systeem eigen herstel optie, moet het bijbehorende certificaat uit het SQL Server exemplaar worden gemigreerd voordat de data base wordt hersteld. Dit artikel begeleidt u bij het hand matig migreren van het certificaat naar Azure SQL Managed instance:
 
 > [!div class="checklist"]
 >
@@ -38,20 +38,20 @@ Zie [How to migrate your on-premises data base to Azure SQL Managed instance](..
 
 U moet de volgende vereiste zaken hebben om de stappen in dit artikel uit te voeren:
 
-* Het [Pvk2Pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx)-opdrachtregelprogramma is geïnstalleerd op de on-premises server of een andere computer met toegang tot het certificaat dat als een bestand wordt geëxporteerd. Het Pvk2Pfx-hulp programma maakt deel uit van de [Enter prise Windows Driver Kit](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk), een zelf opgenomen opdracht regel omgeving.
+* Het [Pvk2Pfx](/windows-hardware/drivers/devtest/pvk2pfx)-opdrachtregelprogramma is geïnstalleerd op de on-premises server of een andere computer met toegang tot het certificaat dat als een bestand wordt geëxporteerd. Het Pvk2Pfx-hulp programma maakt deel uit van de [Enter prise Windows Driver Kit](/windows-hardware/drivers/download-the-wdk), een zelf opgenomen opdracht regel omgeving.
 * [Windows PowerShell](/powershell/scripting/install/installing-windows-powershell) versie 5.0 of hoger is geïnstalleerd.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Zorg ervoor dat u over de volgende zaken beschikt:
 
-* De module Azure PowerShell [geïnstalleerd en bijgewerkt](https://docs.microsoft.com/powershell/azure/install-az-ps).
+* De module Azure PowerShell [geïnstalleerd en bijgewerkt](/powershell/azure/install-az-ps).
 * [AZ. SQL-module](https://www.powershellgallery.com/packages/Az.Sql).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund door Azure SQL Managed instance, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de module AZ en in de AzureRM-modules zijn aanzienlijk identiek.
+> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund door Azure SQL Managed instance, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM.Sql](/powershell/module/AzureRM.Sql/) voor deze cmdlets. De argumenten voor de opdrachten in de module AZ en in de AzureRM-modules zijn aanzienlijk identiek.
 
 Voer de volgende opdrachten in Power shell uit om de module te installeren of bij te werken:
 
@@ -60,7 +60,7 @@ Install-Module -Name Az.Sql
 Update-Module -Name Az.Sql
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
 
@@ -125,7 +125,7 @@ Als het certificaat in het certificaat archief van de SQL Server lokale machine 
 
 2. Vouw in de MMC-module Certificaten het pad persoonlijk > certificaten uit om de lijst met certificaten weer te geven.
 
-3. Klik met de rechter muisknop op het certificaat en klik op **exporteren**.
+3. Klik met de rechter muisknop op het certificaat en klik op **exporteren** .
 
 4. Volg de wizard om het certificaat en de persoonlijke sleutel naar een. pfx-indeling te exporteren.
 
@@ -158,9 +158,9 @@ Als het certificaat in het certificaat archief van de SQL Server lokale machine 
        -ManagedInstanceName "<managedInstanceName>" -PrivateBlob $securePrivateBlob -Password $securePassword
    ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-U moet eerst [een Azure-sleutel kluis instellen](/azure/key-vault/key-vault-manage-with-cli2) met uw *PFX* -bestand.
+U moet eerst [een Azure-sleutel kluis instellen](../../key-vault/general/manage-with-cli2.md) met uw *PFX* -bestand.
 
 1. Begin met de voorbereidingsstappen in PowerShell:
 

@@ -12,17 +12,17 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
 ms.date: 09/21/2020
-ms.openlocfilehash: d2ea14356bf85c795769f1d406f1571f36adaa38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31a47b9032ac014fa4eedde343d03d4fd343ff02
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617911"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790658"
 ---
 # <a name="configure-advanced-threat-protection-in-azure-sql-managed-instance"></a>Geavanceerde bedreigingen beveiliging configureren in Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-[Advanced Threat Protection](../database/threat-detection-overview.md) voor een [Azure SQL Managed instance](sql-managed-instance-paas-overview.md) detecteert afwijkende activiteiten die duiden op ongebruikelijke en potentieel schadelijke pogingen om toegang te krijgen tot data bases of deze te exploiteren Geavanceerde beveiliging tegen bedreigingen kan leiden tot **mogelijke SQL-injecties**, **toegang vanaf ongebruikelijke locatie of Data Center**, **toegang tot een onbekende principal of mogelijk schadelijke toepassing**en **SQL-referenties** voor de beveiligings aanval: Bekijk meer informatie in de [waarschuwingen voor geavanceerde bedreigingen](../database/threat-detection-overview.md#alerts).
+[Advanced Threat Protection](../database/threat-detection-overview.md) voor een [Azure SQL Managed instance](sql-managed-instance-paas-overview.md) detecteert afwijkende activiteiten die duiden op ongebruikelijke en potentieel schadelijke pogingen om toegang te krijgen tot data bases of deze te exploiteren Geavanceerde beveiliging tegen bedreigingen kan leiden tot **mogelijke SQL-injecties** , **toegang vanaf ongebruikelijke locatie of Data Center** , **toegang tot een onbekende principal of mogelijk schadelijke toepassing** en **SQL-referenties** voor de beveiligings aanval: Bekijk meer informatie in de [waarschuwingen voor geavanceerde bedreigingen](../database/threat-detection-overview.md#alerts).
 
 U kunt meldingen over de gedetecteerde bedreigingen ontvangen via [e-mail meldingen](../database/threat-detection-overview.md#explore-detection-of-a-suspicious-event) of [Azure Portal](../database/threat-detection-overview.md#explore-alerts-in-the-azure-portal)
 
@@ -31,7 +31,7 @@ U kunt meldingen over de gedetecteerde bedreigingen ontvangen via [e-mail meldin
 ##  <a name="azure-portal"></a>Azure Portal
 
 1. Meld u aan bij de  [Azure Portal](https://portal.azure.com). 
-2. Ga naar de configuratie pagina van het exemplaar van het SQL-beheerde exemplaar dat u wilt beveiligen. Selecteer **Security Center**onder **beveiliging**.
+2. Ga naar de configuratie pagina van het exemplaar van het SQL-beheerde exemplaar dat u wilt beveiligen. Selecteer **Security Center** onder **beveiliging** .
 3. Op de pagina Azure Defender voor SQL-configuratie
    - Schakel Azure Defender voor SQL **in** .
    - De **lijst met e-mail** berichten configureren voor het ontvangen van beveiligings waarschuwingen bij het detecteren van afwijkende database activiteiten.
@@ -44,5 +44,5 @@ U kunt meldingen over de gedetecteerde bedreigingen ontvangen via [e-mail meldin
 - Meer informatie over [geavanceerde beveiliging tegen bedreigingen](../database/threat-detection-overview.md).
 - Zie [Wat is een Azure SQL Managed instance](sql-managed-instance-paas-overview.md)(Engelstalig) voor meer informatie over beheerde exemplaren.
 - Meer informatie over [geavanceerde beveiliging tegen bedreigingen voor Azure SQL database](../database/threat-detection-configure.md).
-- Meer informatie over [SQL Managed instance auditing](https://go.microsoft.com/fwlink/?linkid=869430).
-- Meer informatie over [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro).
+- Meer informatie over [SQL Managed instance auditing](./auditing-configure.md).
+- Meer informatie over [Azure Security Center](../../security-center/security-center-introduction.md).

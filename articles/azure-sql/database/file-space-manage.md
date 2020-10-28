@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: 2e751a77d40403c7bdd4644e8e6fb03ff89063e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a46e47d6e12d52113bf63342c84a58ca98743d0
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335065"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789604"
 ---
 # <a name="manage-file-space-for-databases-in-azure-sql-database"></a>Bestands ruimte voor data bases in Azure SQL Database beheren
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,13 +40,13 @@ Mogelijk moet u in de volgende scenario's het gebruik van bestandsruimte bewaken
 
 De meeste metrische gegevens over opslag ruimte worden weer gegeven in het Azure Portal en de volgende Api's meten alleen de grootte van de gebruikte data pagina's:
 
-- Api's met metrische gegevens op basis van Azure Resource Manager, waaronder Power shell [Get-Metrics](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetric)
-- T-SQL: [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
+- Api's met metrische gegevens op basis van Azure Resource Manager, waaronder Power shell [Get-Metrics](/powershell/module/az.monitor/get-azmetric)
+- T-SQL: [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 
 De volgende Api's meten echter ook de grootte van de ruimte die is toegewezen voor data bases en elastische Pools:
 
-- T-SQL:  [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
-- T-SQL: [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
+- T-SQL:  [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
+- T-SQL: [sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
 ### <a name="shrinking-data-files"></a>Gegevens bestanden verkleinen
 
@@ -146,9 +146,9 @@ Wijzig de volgende voor beelden om een tabel te retour neren met een lijst met d
 De query resultaten voor het bepalen van de toegewezen ruimte voor elke data base in de pool kunnen samen worden toegevoegd om de totale toegewezen ruimte voor de elastische pool te bepalen. De toegewezen elastische groeps ruimte mag niet groter zijn dan de maximale grootte van de elastische pool.  
 
 > [!IMPORTANT]
-> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. De AzureRM-module blijft tot ten minste december 2020 bugfixes ontvangen. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek. Zie [Introductie van de nieuwe Az-module van Azure PowerShell](/powershell/azure/new-azureps-module-az) voor meer informatie over de compatibiliteit van de argumenten.
+> De module PowerShell Azure Resource Manager wordt nog steeds ondersteund in Azure SQL Database, maar alle toekomstige ontwikkeling is voor de Az.Sql-module. De AzureRM-module blijft tot ten minste december 2020 bugfixes ontvangen. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek. Zie [Introductie van de nieuwe Az-module van Azure PowerShell](/powershell/azure/new-azureps-module-az) voor meer informatie over de compatibiliteit van de argumenten.
 
-Voor het Power shell-script is SQL Server Power shell-module vereist. Zie [Power shell-module downloaden](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module) om te installeren.
+Voor het Power shell-script is SQL Server Power shell-module vereist. Zie [Power shell-module downloaden](/sql/powershell/download-sql-server-ps-module) om te installeren.
 
 ```powershell
 $resourceGroupName = "<resourceGroupName>"
@@ -214,7 +214,7 @@ DBCC SHRINKDATABASE (N'db1')
 
 Deze opdracht kan de prestaties van de data base beïnvloeden terwijl deze wordt uitgevoerd, en indien mogelijk moet worden uitgevoerd tijdens peri Oden van weinig gebruik.  
 
-Zie [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql)voor meer informatie over deze opdracht.
+Zie [SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql)voor meer informatie over deze opdracht.
 
 ### <a name="auto-shrink"></a>Automatisch verkleinen
 
@@ -226,11 +226,11 @@ Als u automatisch verkleinen wilt inschakelen, wijzigt u de naam van de data bas
 ALTER DATABASE [db1] SET AUTO_SHRINK ON
 ```
 
-Zie [Data Base set](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) Options (Engelstalig) voor meer informatie over deze opdracht.
+Zie [Data Base set](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) Options (Engelstalig) voor meer informatie over deze opdracht.
 
 ### <a name="rebuild-indexes"></a>Indexen opnieuw samen stellen
 
-Nadat database gegevensbestanden zijn verkleind, kunnen de indexen gefragmenteerd raken en de effectiviteit van de prestatie optimalisatie verliezen. Als er sprake is van verminderde prestaties, kunt u database indexen opnieuw samen stellen. Zie [indexen opnieuw indelen en opnieuw samen stellen](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)voor meer informatie over fragmentatie en het opnieuw opbouwen van indexen.
+Nadat database gegevensbestanden zijn verkleind, kunnen de indexen gefragmenteerd raken en de effectiviteit van de prestatie optimalisatie verliezen. Als er sprake is van verminderde prestaties, kunt u database indexen opnieuw samen stellen. Zie [indexen opnieuw indelen en opnieuw samen stellen](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)voor meer informatie over fragmentatie en het opnieuw opbouwen van indexen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

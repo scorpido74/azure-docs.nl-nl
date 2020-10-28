@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: a59e498435aab7b3e3e2ecf2e6096c044550a1b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd5c6527cd6a0beea291dce94ff0e5949ba00671
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91628363"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791253"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Uw toepassing verbinden met het beheerde Azure SQL-exemplaar
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -48,7 +48,7 @@ Er zijn twee opties voor het verbinden van virtuele netwerken:
 Peering is de voor keur omdat deze gebruikmaakt van het micro soft backbone-netwerk, dus in het oogpunt van connectiviteit is er geen merkbaar verschil in latentie tussen virtuele machines in een gekoppeld virtueel netwerk en in hetzelfde virtuele netwerk. De peering van het virtuele netwerk moet worden ondersteund tussen de netwerken in dezelfde regio. Globale Virtual Network-peering wordt ook ondersteund met de beperking die wordt beschreven in de onderstaande opmerking.  
 
 > [!IMPORTANT]
-> [Op 9/22/2020 zijn wereld wijde virtuele netwerk peering aangekondigd voor nieuwe virtuele clusters](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Dit betekent dat de peering van globale virtuele netwerken wordt ondersteund voor SQL-beheerde instanties die zijn gemaakt in lege subnetten na de aankondigings datum, en ook voor alle daaropvolgende beheerde exemplaren die in deze subnetten zijn gemaakt. Voor alle andere SQL Managed instances-ondersteuning voor peering is beperkt tot de netwerken in dezelfde regio vanwege de [beperkingen van globale virtuele netwerk peering](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Zie ook de relevante sectie van het artikel Veelgestelde [vragen over virtuele netwerken van Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) voor meer informatie. 
+> [Op 9/22/2020 zijn wereld wijde virtuele netwerk peering aangekondigd voor nieuwe virtuele clusters](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Dit betekent dat de peering van globale virtuele netwerken wordt ondersteund voor SQL-beheerde instanties die zijn gemaakt in lege subnetten na de aankondigings datum, en ook voor alle daaropvolgende beheerde exemplaren die in deze subnetten zijn gemaakt. Voor alle andere SQL Managed instances-ondersteuning voor peering is beperkt tot de netwerken in dezelfde regio vanwege de [beperkingen van globale virtuele netwerk peering](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Zie ook de relevante sectie van het artikel Veelgestelde [vragen over virtuele netwerken van Azure](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) voor meer informatie. 
 
 ## <a name="connect-from-on-premises"></a>Verbinding maken vanaf on-premises 
 
@@ -71,10 +71,10 @@ Een ander scenario dat door klanten wordt geïmplementeerd, is de plek waar een 
 
 ![Peering op virtueel netwerk](./media/connect-application-instance/vnet-peering.png)
 
-Zodra u de basis infrastructuur hebt ingesteld, moet u enkele instellingen wijzigen zodat de VPN-gateway de IP-adressen in het virtuele netwerk kan zien die als host fungeert voor SQL Managed instance. Hiervoor moet u de volgende zeer specifieke wijzigingen aanbrengen in de **instellingen voor peering**.
+Zodra u de basis infrastructuur hebt ingesteld, moet u enkele instellingen wijzigen zodat de VPN-gateway de IP-adressen in het virtuele netwerk kan zien die als host fungeert voor SQL Managed instance. Hiervoor moet u de volgende zeer specifieke wijzigingen aanbrengen in de **instellingen voor peering** .
 
-1. Ga in het virtuele netwerk dat als host fungeert voor de VPN-gateway naar **peerings**, ga naar de gekoppelde virtuele netwerk verbinding voor SQL Managed instance en klik vervolgens op **Gateway doorvoer toestaan**.
-2. Ga in het virtuele netwerk dat als host fungeert voor SQL Managed instance naar **peerings**, ga naar de gekoppelde virtuele netwerk verbinding voor de VPN-gateway en klik vervolgens op **externe gateways gebruiken**.
+1. Ga in het virtuele netwerk dat als host fungeert voor de VPN-gateway naar **peerings** , ga naar de gekoppelde virtuele netwerk verbinding voor SQL Managed instance en klik vervolgens op **Gateway doorvoer toestaan** .
+2. Ga in het virtuele netwerk dat als host fungeert voor SQL Managed instance naar **peerings** , ga naar de gekoppelde virtuele netwerk verbinding voor de VPN-gateway en klik vervolgens op **externe gateways gebruiken** .
 
 ## <a name="connect-azure-app-service"></a>Azure App Service verbinden 
 
@@ -151,8 +151,8 @@ De volgende minimale versies van de hulpprogram ma's en stuur Programma's worden
 |JDBC-stuurprogramma| 6.4.0 |
 |Node.js-stuurprogramma| 2.1.1 |
 |OLEDB-stuurprogramma| 18.0.2.0 |
-|SSMS| 18,0 of [hoger](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
-|[SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) of hoger |
+|SSMS| 18,0 of [hoger](/sql/ssms/download-sql-server-management-studio-ssms) |
+|[SMO](/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) of hoger |
 
 ## <a name="next-steps"></a>Volgende stappen
 

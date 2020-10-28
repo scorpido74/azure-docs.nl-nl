@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 1e8810e8b0c02aec33f55fb8f0689eec3c5bad8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efea5d6548814dc0f165bab9281e5234f3eae925
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616700"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791321"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Virtuele netwerk service-eind punten en-regels gebruiken voor servers in Azure SQL Database
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -89,7 +89,7 @@ Voor Azure SQL Database heeft de functie regels voor virtuele netwerken de volge
 
 Wanneer u service-eind punten voor Azure SQL Database gebruikt, raadpleegt u de volgende overwegingen:
 
-- **Uitgaand naar Azure SQL database open bare ip's is vereist**: netwerk beveiligings groepen (nsg's) moeten zijn geopend voor het Azure SQL database van IP-adressen om verbinding te kunnen maken. U kunt dit doen met behulp van NSG- [service Tags](../../virtual-network/security-overview.md#service-tags) voor Azure SQL database.
+- **Uitgaand naar Azure SQL database open bare ip's is vereist** : netwerk beveiligings groepen (nsg's) moeten zijn geopend voor het Azure SQL database van IP-adressen om verbinding te kunnen maken. U kunt dit doen met behulp van NSG- [service Tags](../../virtual-network/network-security-groups-overview.md#service-tags) voor Azure SQL database.
 
 ### <a name="expressroute"></a>ExpressRoute
 
@@ -112,12 +112,12 @@ Poly base en de instructie COPY worden meestal gebruikt voor het laden van gegev
 
 #### <a name="prerequisites"></a>Vereisten
 
-- Installeer Azure PowerShell met behulp van deze [gids](https://docs.microsoft.com/powershell/azure/install-az-ps).
-- Als u een v1-of blob-opslagaccount voor algemeen gebruik hebt, moet u eerst een upgrade uitvoeren naar de v2 voor algemeen gebruik met behulp van deze [gids](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
-- U moet **vertrouwde Microsoft-services toegang geven tot dit opslagaccount** ingeschakeld onder het instellingenmenu van uw Azure Storage-account **Firewalls en virtuele netwerken**. Als u deze configuratie inschakelt, kan poly base en de instructie COPY verbinding maken met het opslag account met behulp van sterke verificatie waarbij netwerk verkeer op de Azure-backbone blijft. Raadpleeg deze [gids](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) voor meer informatie.
+- Installeer Azure PowerShell met behulp van deze [gids](/powershell/azure/install-az-ps).
+- Als u een v1-of blob-opslagaccount voor algemeen gebruik hebt, moet u eerst een upgrade uitvoeren naar de v2 voor algemeen gebruik met behulp van deze [gids](../../storage/common/storage-account-upgrade.md).
+- U moet **vertrouwde Microsoft-services toegang geven tot dit opslagaccount** ingeschakeld onder het instellingenmenu van uw Azure Storage-account **Firewalls en virtuele netwerken** . Als u deze configuratie inschakelt, kan poly base en de instructie COPY verbinding maken met het opslag account met behulp van sterke verificatie waarbij netwerk verkeer op de Azure-backbone blijft. Raadpleeg deze [gids](../../storage/common/storage-network-security.md#exceptions) voor meer informatie.
 
 > [!IMPORTANT]
-> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. De AzureRM-module blijft tot ten minste december 2020 bugfixes ontvangen.  De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek. Zie [Introductie van de nieuwe Az-module van Azure PowerShell](/powershell/azure/new-azureps-module-az) voor meer informatie over de compatibiliteit van de argumenten.
+> De module PowerShell Azure Resource Manager wordt nog steeds ondersteund in Azure SQL Database, maar alle toekomstige ontwikkeling is voor de Az.Sql-module. De AzureRM-module blijft tot ten minste december 2020 bugfixes ontvangen.  De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek. Zie [Introductie van de nieuwe Az-module van Azure PowerShell](/powershell/azure/new-azureps-module-az) voor meer informatie over de compatibiliteit van de argumenten.
 
 #### <a name="steps"></a>Stappen
 
@@ -129,27 +129,27 @@ Poly base en de instructie COPY worden meestal gebruikt voor het laden van gegev
    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
 
-1. **Een opslagaccount voor algemeen gebruik v2 maken** met deze [gids](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
+1. **Een opslagaccount voor algemeen gebruik v2 maken** met deze [gids](../../storage/common/storage-account-create.md).
 
    > [!NOTE]
    >
-   > - Als u een v1-of blob-opslagaccount voor algemeen gebruik hebt, moet u **eerst een upgrade uitvoeren naar de v2** voor algemeen gebruik met behulp van deze [gids](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
-   > - Raadpleeg deze [hand leiding](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)voor bekende problemen met Azure data Lake Storage Gen2.
+   > - Als u een v1-of blob-opslagaccount voor algemeen gebruik hebt, moet u **eerst een upgrade uitvoeren naar de v2** voor algemeen gebruik met behulp van deze [gids](../../storage/common/storage-account-upgrade.md).
+   > - Raadpleeg deze [hand leiding](../../storage/blobs/data-lake-storage-known-issues.md)voor bekende problemen met Azure data Lake Storage Gen2.
 
-1. Navigeer onder uw opslagaccount naar **Access Control (IAM)** en selecteer **Roltoewijzing toevoegen**. Wijs de Azure-rol **Storage BLOB data Inzender** toe aan de server die als host fungeert voor uw Azure Synapse Analytics, die u bij Azure Active Directory (Aad) hebt geregistreerd, zoals in stap #1.
+1. Navigeer onder uw opslagaccount naar **Access Control (IAM)** en selecteer **Roltoewijzing toevoegen** . Wijs de Azure-rol **Storage BLOB data Inzender** toe aan de server die als host fungeert voor uw Azure Synapse Analytics, die u bij Azure Active Directory (Aad) hebt geregistreerd, zoals in stap #1.
 
    > [!NOTE]
-   > Deze stap kan alleen worden uitgevoerd door leden met de bevoegdheid eigenaar van het opslag account. Raadpleeg deze [gids](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) voor verschillende ingebouwde Azure-rollen.
+   > Deze stap kan alleen worden uitgevoerd door leden met de bevoegdheid eigenaar van het opslag account. Raadpleeg deze [gids](../../role-based-access-control/built-in-roles.md) voor verschillende ingebouwde Azure-rollen.
   
 1. **Poly base-verbinding met het Azure Storage-account:**
 
-   1. Maak een database **[hoofd sleutel](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql)** als u deze nog niet eerder hebt gemaakt:
+   1. Maak een database **[hoofd sleutel](/sql/t-sql/statements/create-master-key-transact-sql)** als u deze nog niet eerder hebt gemaakt:
 
        ```sql
        CREATE MASTER KEY [ENCRYPTION BY PASSWORD = 'somepassword'];
        ```
 
-   1. Create Data Base scoped Credential met **Identity = ' managed service Identity '**:
+   1. Create Data Base scoped Credential met **Identity = ' managed service Identity '** :
 
        ```sql
        CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
@@ -157,7 +157,7 @@ Poly base en de instructie COPY worden meestal gebruikt voor het laden van gegev
 
        > [!NOTE]
        >
-       > - U hoeft geen geheim op te geven met Azure Storage toegangs sleutel, omdat dit mechanisme gebruikmaakt van [beheerde identiteiten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) onder de voor vallen.
+       > - U hoeft geen geheim op te geven met Azure Storage toegangs sleutel, omdat dit mechanisme gebruikmaakt van [beheerde identiteiten](../../active-directory/managed-identities-azure-resources/overview.md) onder de voor vallen.
        > - De IDENTITEITs naam moet **Managed Service Identity** voor poly base-connectiviteit zijn om te werken met Azure Storage account dat is beveiligd met VNet.
 
    1. Maak een externe gegevens bron met een `abfss://` schema om verbinding te maken met uw v2-opslag account voor algemeen gebruik met poly Base:
@@ -168,11 +168,11 @@ Poly base en de instructie COPY worden meestal gebruikt voor het laden van gegev
 
        > [!NOTE]
        >
-       > - Als u al externe tabellen hebt gekoppeld aan het algemeen-en Blob Storage-account, moet u deze externe tabellen eerst neerzetten en vervolgens de bijbehorende externe gegevens bron verwijderen. Maak vervolgens een externe gegevens bron met `abfss://` een schema dat verbinding maakt met het v2-opslag account voor algemeen gebruik en maak alle externe tabellen opnieuw met behulp van deze nieuwe externe gegevens bron. U kunt de [wizard scripts genereren en publiceren](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard) gebruiken om voor het gemak create-scripts te genereren voor alle externe tabellen.
-       > - `abfss://`Raadpleeg deze [hand leiding](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri)voor meer informatie over het schema.
-       > - Raadpleeg deze [hand leiding](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql)voor meer informatie over het maken van een externe gegevens bron.
+       > - Als u al externe tabellen hebt gekoppeld aan het algemeen-en Blob Storage-account, moet u deze externe tabellen eerst neerzetten en vervolgens de bijbehorende externe gegevens bron verwijderen. Maak vervolgens een externe gegevens bron met `abfss://` een schema dat verbinding maakt met het v2-opslag account voor algemeen gebruik en maak alle externe tabellen opnieuw met behulp van deze nieuwe externe gegevens bron. U kunt de [wizard scripts genereren en publiceren](/sql/ssms/scripting/generate-and-publish-scripts-wizard) gebruiken om voor het gemak create-scripts te genereren voor alle externe tabellen.
+       > - `abfss://`Raadpleeg deze [hand leiding](../../storage/blobs/data-lake-storage-introduction-abfs-uri.md)voor meer informatie over het schema.
+       > - Raadpleeg deze [hand leiding](/sql/t-sql/statements/create-external-data-source-transact-sql)voor meer informatie over het maken van een externe gegevens bron.
 
-   1. Query's uitvoeren als normaal met [externe tabellen](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql).
+   1. Query's uitvoeren als normaal met [externe tabellen](/sql/t-sql/statements/create-external-table-transact-sql).
 
 ### <a name="azure-sql-database-blob-auditing"></a>Azure SQL Database BLOB-controle
 
@@ -188,7 +188,7 @@ U kunt de vlag **IgnoreMissingVNetServiceEndpoint** instellen met behulp van Pow
 
 ## <a name="errors-40914-and-40615"></a>Fouten 40914 en 40615
 
-Verbindings fout 40914 is gekoppeld aan *regels voor virtuele netwerken*, zoals opgegeven in het deel venster Firewall in de Azure Portal. Fout 40615 is vergelijkbaar, maar heeft betrekking op *IP-adres regels* op de firewall.
+Verbindings fout 40914 is gekoppeld aan *regels voor virtuele netwerken* , zoals opgegeven in het deel venster Firewall in de Azure Portal. Fout 40615 is vergelijkbaar, maar heeft betrekking op *IP-adres regels* op de firewall.
 
 ### <a name="error-40914"></a>Fout 40914
 
@@ -210,7 +210,7 @@ Verbindings fout 40914 is gekoppeld aan *regels voor virtuele netwerken*, zoals 
 
 ## <a name="portal-can-create-a-virtual-network-rule"></a>De portal kan een regel voor een virtueel netwerk maken
 
-In deze sectie ziet u hoe u de [Azure Portal][http-azure-portal-link-ref-477t] kunt gebruiken om een *regel voor een virtueel netwerk* te maken in uw data base in Azure SQL database. De regel vertelt uw data base om communicatie te accepteren van een bepaald subnet dat is gelabeld als een *Virtual Network Service-eind punt*.
+In deze sectie ziet u hoe u de [Azure Portal][http-azure-portal-link-ref-477t] kunt gebruiken om een *regel voor een virtueel netwerk* te maken in uw data base in Azure SQL database. De regel vertelt uw data base om communicatie te accepteren van een bepaald subnet dat is gelabeld als een *Virtual Network Service-eind punt* .
 
 > [!NOTE]
 > Als u van plan bent een service-eind punt toe te voegen aan de VNet-firewall regels van uw server, moet u eerst controleren of service-eind punten zijn ingeschakeld voor het subnet.
@@ -231,16 +231,16 @@ Intern, de Power shell-cmdlets voor SQL VNet-acties roepen REST-Api's. U kunt de
 
 U moet al een subnet hebben dat is gelabeld met de specifieke naam van het Virtual Network service-eindpunt *type* dat relevant is voor Azure SQL database.
 
-- De relevante naam van het eindpunt type is **micro soft. SQL**.
+- De relevante naam van het eindpunt type is **micro soft. SQL** .
 - Zie [controleren of uw subnet een eind punt is][sql-db-vnet-service-endpoint-rule-powershell-md-a-verify-subnet-is-endpoint-ps-100]als uw subnet mogelijk niet is gelabeld met de type naam.
 
 <a name="a-portal-steps-for-vnet-rule-200"></a>
 
 ## <a name="azure-portal-steps"></a>Azure Portal stappen
 
-1. Meld u aan bij [Azure Portal][http-azure-portal-link-ref-477t].
+1. Meld u aan bij de [Azure-portal][http-azure-portal-link-ref-477t].
 
-2. Zoek en selecteer **SQL-servers**en selecteer vervolgens uw server. Onder **beveiliging**selecteert u **firewalls en virtuele netwerken**.
+2. Zoek en selecteer **SQL-servers** en selecteer vervolgens uw server. Onder **beveiliging** selecteert u **firewalls en virtuele netwerken** .
 
 3. Stel het besturings element **toegang tot Azure-Services toestaan** in op uit.
 
@@ -255,7 +255,7 @@ U moet al een subnet hebben dat is gelabeld met de specifieke naam van het Virtu
 
     > [!TIP]
     > U moet het juiste **adres voorvoegsel** voor uw subnet toevoegen. U kunt de waarde vinden in de portal.
-    > Ga naar alle **resources** &gt; **alle typen** &gt; **virtuele netwerken**. Met het filter worden uw virtuele netwerken weer gegeven. Klik op uw virtuele netwerk en klik vervolgens op **subnetten**. De kolom **adres bereik** bevat het adres voorvoegsel dat u nodig hebt.
+    > Ga naar alle **resources** &gt; **alle typen** &gt; **virtuele netwerken** . Met het filter worden uw virtuele netwerken weer gegeven. Klik op uw virtuele netwerk en klik vervolgens op **subnetten** . De kolom **adres bereik** bevat het adres voorvoegsel dat u nodig hebt.
 
     ![Vul velden in voor nieuwe regel.][image-portal-firewall-create-update-vnet-rule-20-png]
 
@@ -298,12 +298,12 @@ U moet al een subnet hebben dat is gelabeld met de specifieke naam van het Virtu
 [sql-db-vnet-service-endpoint-rule-powershell-md-52d]:scripts/vnet-service-endpoint-rule-powershell-create.md
 [sql-db-vnet-service-endpoint-rule-powershell-md-a-verify-subnet-is-endpoint-ps-100]:scripts/vnet-service-endpoint-rule-powershell-create.md#a-verify-subnet-is-endpoint-ps-100
 [vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]: ../virtual-network/virtual-networks-static-private-ip-arm-pportal.md
-[vm-virtual-network-service-endpoints-overview-649d]: https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview
+[vm-virtual-network-service-endpoints-overview-649d]: ../../virtual-network/virtual-network-service-endpoints-overview.md
 [vpn-gateway-indexmd-608y]: ../../vpn-gateway/index.yml
 
 <!-- Link references, to text, Outside this GitHub repo (HTTP). -->
 [http-azure-portal-link-ref-477t]: https://portal.azure.com/
-[rest-api-virtual-network-rules-operations-862r]: https://docs.microsoft.com/rest/api/sql/virtualnetworkrules
+[rest-api-virtual-network-rules-operations-862r]: /rest/api/sql/virtualnetworkrules
 
 <!-- ??2
 #### Syntax related articles

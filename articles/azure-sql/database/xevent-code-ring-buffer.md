@@ -11,27 +11,27 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: 57449b0bbd39b6ea04ecae5a3ad766ae5687ca0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d73efd7a64d0118cea11ca9b0a35f659ce7fee6a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619828"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791287"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-azure-sql-database"></a>Ringbuffer-doelcode voor uitgebreide gebeurtenissen in Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../../includes/sql-database-xevents-selectors-1-include.md)]
 
-U wilt een volledig codevoorbeeld voor de eenvoudigste snelle manier om informatie vast te leggen en te rapporteren voor een uitgebreide gebeurtenis tijdens een test. Het eenvoudigste doel voor uitgebreide gebeurtenisgegevens is het [Ringbuffer-doel](https://msdn.microsoft.com/library/ff878182.aspx).
+U wilt een volledig codevoorbeeld voor de eenvoudigste snelle manier om informatie vast te leggen en te rapporteren voor een uitgebreide gebeurtenis tijdens een test. Het eenvoudigste doel voor uitgebreide gebeurtenisgegevens is het [Ringbuffer-doel](/previous-versions/sql/sql-server-2016/bb630339(v=sql.130)).
 
 Dit onderwerp bevat een voorbeeld van Transact-SQL-code waarmee de volgende acties worden uitgevoerd:
 
 1. Maken van een tabel met gegevens voor een demonstratie.
-2. Maken van een sessie voor een bestaande uitgebreide gebeurtenis, namelijk **sqlserver.sql_statement_starting**.
+2. Maken van een sessie voor een bestaande uitgebreide gebeurtenis, namelijk **sqlserver.sql_statement_starting** .
 
    * De gebeurtenis is beperkt tot SQL-instructies die een bepaalde UPDATE-tekenreeks bevatten: **instructies ZOALS: %UPDATE tabEmployee%** .
-   * Kiezen voor het verzenden van de gebeurtenisuitvoer naar een Ringbuffer-doel of -type, namelijk **package0.ring_buffer**.
+   * Kiezen voor het verzenden van de gebeurtenisuitvoer naar een Ringbuffer-doel of -type, namelijk **package0.ring_buffer** .
 3. Starten van de gebeurtenissessie.
 4. Uitgeven van een aantal eenvoudige SQL UPDATE-instructies.
 5. Uitgeven van een SQL SELECT-instructie om gebeurtenisuitvoer op te halen uit de Ringbuffer.
@@ -46,11 +46,11 @@ Dit onderwerp bevat een voorbeeld van Transact-SQL-code waarmee de volgende acti
 * Een Azure-account en -abonnement. U  kunt zich aanmelden voor een [gratis proefversie](https://azure.microsoft.com/pricing/free-trial/). 
 * Een willekeurige database waarin u een tabel kunt maken.
   
-  * U kunt optioneel in enkele minuten [een **AdventureWorksLT**-demonstratiedatabase maken](single-database-create-quickstart.md).
+  * U kunt optioneel in enkele minuten [een **AdventureWorksLT** -demonstratiedatabase maken](single-database-create-quickstart.md).
 * SQL Server Management Studio (ssms.exe), liefst de meest recente versie van de maandelijkse update.
   U kunt de meest recente ssms.exe downloaden op:
   
-  * Onderwerp met de titel [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
+  * Onderwerp met de titel [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms).
   * [Een directe koppeling naar de download.](https://go.microsoft.com/fwlink/?linkid=616025)
 
 ## <a name="code-sample"></a>Codevoorbeeld
@@ -218,9 +218,9 @@ GO
 
 We hebben `ssms.exe` gebruikt om het codevoorbeeld uit te voeren.
 
-Om de resultaten te bekijken hebben we op de cel geklikt onder de kolomkop **target_data_XML**.
+Om de resultaten te bekijken hebben we op de cel geklikt onder de kolomkop **target_data_XML** .
 
-Vervolgens hebben we in het resultatendeelvenster op de cel geklikt onder de kolomkop **target_data_XML**. Met deze klik is nog een tabblad Bestand gemaakt in ssms.exe waarop de inhoud van de resultaatcel wordt weergegeven, als XML.
+Vervolgens hebben we in het resultatendeelvenster op de cel geklikt onder de kolomkop **target_data_XML** . Met deze klik is nog een tabblad Bestand gemaakt in ssms.exe waarop de inhoud van de resultaatcel wordt weergegeven, als XML.
 
 De uitvoer wordt weergegeven in het volgende blok. Het lijkt lang, maar het zijn slechts twee **\<event>** -elementen.
 
@@ -349,6 +349,6 @@ Andere onderwerpen over codevoorbeelden zijn beschikbaar via de volgende koppeli
 <!--
 ('lock_acquired' event.)
 
-- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](https://msdn.microsoft.com/library/bb677357.aspx)
-- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](https://msdn.microsoft.com/library/bb630355.aspx)
+- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](/sql/relational-databases/extended-events/determine-which-queries-are-holding-locks)
+- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](/sql/relational-databases/extended-events/find-the-objects-that-have-the-most-locks-taken-on-them)
 -->

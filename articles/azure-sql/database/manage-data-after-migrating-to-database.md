@@ -12,12 +12,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 016bb1e4a0844be2a137108d673159bd041cd351
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0f9d2affe39eaf74d4c0a537658d655a0c150d7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89439772"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789570"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Nieuwe DBA in de Cloud: Azure SQL Database na migratie beheren
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -49,7 +49,7 @@ Zodra u deze metrische gegevens hebt toegevoegd, kunt u ze in het **bewakings** 
 
 ![Servicelaagbewaking van databaseprestaties.](./media/manage-data-after-migrating-to-database/sqldb_service_tier_monitoring.png)
 
-U kunt ook meldingen configureren voor prestatiewaarden. Klik op de knop **Melding toevoegen** in het venster **Metrische gegevens**. Volg de wizard om de melding te configureren. U hebt de keuze om een melding weer te geven als de metrische gegevens een bepaalde drempelwaarde overschrijden of als het meetpunt onder een bepaalde drempelwaarde komt.
+U kunt ook meldingen configureren voor prestatiewaarden. Klik op de knop **Melding toevoegen** in het venster **Metrische gegevens** . Volg de wizard om de melding te configureren. U hebt de keuze om een melding weer te geven als de metrische gegevens een bepaalde drempelwaarde overschrijden of als het meetpunt onder een bepaalde drempelwaarde komt.
 
 Als u bijvoorbeeld verwacht dat de workload van de database zal toenemen, kunt u configureren dat er een e-mailmelding wordt verstuurd wanneer de database 80% van een van de prestatiewaarden heeft bereikt. U kunt dit als een vroege waarschuwing gebruiken om te bepalen wanneer u mogelijk moet overschakelen naar de volgende hoogste reken grootte.
 
@@ -102,7 +102,7 @@ SQL Database is zeer serieus beveiligd en privacy. Beveiliging binnen SQL Databa
 Er zijn twee verificatie methoden beschikbaar in SQL Database:
 
 - [Azure Active Directory-verificatie](authentication-aad-overview.md)
-- [SQL-verificatie](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
+- [SQL-verificatie](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
 De traditionele Windows-verificatie wordt niet ondersteund. Azure Active Directory (Azure AD) is een gecentraliseerde service voor identiteits-en toegangs beheer. Zo kunt u eenvoudig een eenmalige aanmelding (SSO) voor alle mede werkers in uw organisatie bieden. Dit betekent dat de referenties worden gedeeld in alle Azure-Services voor een eenvoudigere verificatie. 
 
@@ -113,7 +113,7 @@ Azure AD biedt ondersteuning voor [azure multi-factor Authentication](authentica
 |Geen gebruik van Azure Active Directory (Azure AD) in azure|[SQL-verificatie](security-overview.md) gebruiken|
 |On-premises AD gebruiken op SQL Server|Vervoer [AD met Azure AD](../../active-directory/hybrid/whatis-hybrid-identity.md)en gebruik Azure AD-verificatie. Met deze kunt u eenmalige aanmelding gebruiken.|
 |Multi-Factor Authentication moet worden afgedwongen|Multi-Factor Authentication als beleid vereisen via [voorwaardelijke toegang van micro soft](conditional-access-configure.md)en [Azure AD Universal-verificatie gebruiken met multi-factor Authentication ondersteuning](authentication-mfa-ssms-overview.md).|
-|Gast accounts van micro soft-accounts (live.com, outlook.com) of andere domeinen (gmail.com) hebben|Gebruik [Azure AD Universal-verificatie](authentication-mfa-ssms-overview.md) in SQL database/Data Warehouse, dat gebruikmaakt van [Azure AD B2B-samen werking](../../active-directory/b2b/what-is-b2b.md).|
+|Gast accounts van micro soft-accounts (live.com, outlook.com) of andere domeinen (gmail.com) hebben|Gebruik [Azure AD Universal-verificatie](authentication-mfa-ssms-overview.md) in SQL database/Data Warehouse, dat gebruikmaakt van [Azure AD B2B-samen werking](../../active-directory/external-identities/what-is-b2b.md).|
 |Worden aangemeld bij Windows met uw Azure AD-referenties van een federatief domein|[Geïntegreerde Azure AD-verificatie](authentication-aad-configure.md)gebruiken.|
 |Worden aangemeld bij Windows met behulp van referenties van een domein dat niet federatief is met Azure|[Geïntegreerde Azure AD-verificatie](authentication-aad-configure.md)gebruiken.|
 |Services van de middelste laag die verbinding moeten maken met SQL Database of Azure Synapse Analytics|[Geïntegreerde Azure AD-verificatie](authentication-aad-configure.md)gebruiken.|
@@ -304,8 +304,8 @@ SQL Database biedt diverse service lagen Basic, Standard en Premium. Elke servic
 |**Servicelaag**|**Algemene use-case Scenario's**|
 |---|---|
 |**Basic**|Toepassingen met een gekente gebruiker en een Data Base die geen hoge gelijktijdigheids-, schaal-en prestatie vereisten hebben. |
-|**Standaard**|Toepassingen met een aanzienlijke gelijktijdigheids-, schaal-en prestatie vereisten in combi natie met lage tot gemiddelde i/o-aanvragen. |
-|**Premium**|Toepassingen met veel gelijktijdige gebruikers, hoge CPU/geheugen en hoge IO-vereisten. Met hoge gelijktijdigheid, hoge door Voer en latentie gevoelige apps kunt u gebruikmaken van het Premium-niveau. |
+|**Standard**|Toepassingen met een aanzienlijke gelijktijdigheids-, schaal-en prestatie vereisten in combi natie met lage tot gemiddelde i/o-aanvragen. |
+|**Ultieme**|Toepassingen met veel gelijktijdige gebruikers, hoge CPU/geheugen en hoge IO-vereisten. Met hoge gelijktijdigheid, hoge door Voer en latentie gevoelige apps kunt u gebruikmaken van het Premium-niveau. |
 |||
 
 Om ervoor te zorgen dat u zich op de juiste reken grootte bevindt, kunt u uw query-en database Resource verbruik bewaken via een van de hierboven genoemde manieren in Hoe kan ik de prestaties en het resource gebruik in SQL Database bewaken. Als u merkt dat uw query's/data bases op consistente wijze worden uitgevoerd op CPU/geheugen, enzovoort, kunt u overwegen om omhoog te schalen naar een hogere reken grootte. Op dezelfde manier kunt u, als u weet dat zelfs tijdens uw piek uren, de resources niet zo veel gebruiken. u kunt overwegen om van de huidige reken grootte omlaag te schalen.
@@ -320,11 +320,11 @@ SQL Database maakt gebruik van een aantal slimme technieken waarmee de IT-server
 
 ### <a name="how-do-i-export-and-import-data-as-bacpac-files-from-sql-database-using-the-azure-portal"></a>Hoe kan ik gegevens exporteren en importeren als BACPAC-bestanden vanuit SQL Database met behulp van de Azure Portal
 
-- **Exporteren**: u kunt uw data base in Azure SQL database exporteren als een BACPAC-bestand van de Azure Portal
+- **Exporteren** : u kunt uw data base in Azure SQL database exporteren als een BACPAC-bestand van de Azure Portal
 
    ![data base exporteren](./media/manage-data-after-migrating-to-database/database-export1.png)
 
-- **Importeren**: u kunt gegevens ook importeren als een BACPAC-bestand in uw data base in Azure SQL database met behulp van de Azure Portal.
+- **Importeren** : u kunt gegevens ook importeren als een BACPAC-bestand in uw data base in Azure SQL database met behulp van de Azure Portal.
 
    ![data base importeren](./media/manage-data-after-migrating-to-database/import1.png)
 

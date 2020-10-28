@@ -14,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: bf5c3f7d854081c7306a038cc452b620d1af00d0
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 204c7d756a13ed0427f06abfb56e3f1256df48bc
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167985"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789944"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Gebruik sjablonen van Azure Quick Start om een beschikbaarheids groep te configureren voor SQL Server op Azure VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,7 +41,7 @@ Hoewel in dit artikel de Azure Quick Start-sjablonen worden gebruikt om de omgev
 Als u de installatie van een AlwaysOn-beschikbaarheids groep wilt automatiseren met behulp van Quick Start-sjablonen, moet u beschikken over de volgende vereisten: 
 - Een [Azure-abonnement](https://azure.microsoft.com/free/).
 - Een resource groep met een domein controller. 
-- Een of meer aan een domein gekoppelde [virtuele machines in azure met SQL Server 2016 (of hoger) Enter prise Edition](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) die zich in dezelfde beschikbaarheidsset of beschikbaarheids zone bevinden en die zijn [geregistreerd bij de resource provider van de SQL-VM](sql-vm-resource-provider-register.md).  
+- Een of meer aan een domein gekoppelde [virtuele machines in azure met SQL Server 2016 (of hoger) Enter prise Edition](./create-sql-vm-portal.md) die zich in dezelfde beschikbaarheidsset of beschikbaarheids zone bevinden en die zijn [geregistreerd bij de resource provider van de SQL-VM](sql-vm-resource-provider-register.md).  
 - Twee beschik bare (niet gebruikt door een entiteit) IP-adressen: een voor de interne load balancer en één voor de beschikbaarheids groep-listener binnen hetzelfde subnet als de beschikbaarheids groep. Als een bestaande load balancer wordt gebruikt, hebt u slechts één beschikbaar IP-adres nodig.  
 
 ## <a name="permissions"></a>Machtigingen
@@ -52,7 +52,7 @@ De volgende machtigingen zijn nodig voor het configureren van de always on-besch
 
 
 ## <a name="create-cluster"></a>Cluster maken
-Nadat uw SQL Server Vm's zijn geregistreerd bij de resource provider van de SQL-VM, kunt u uw SQL Server-Vm's toevoegen aan *SqlVirtualMachineGroups*. Met deze bron worden de meta gegevens van het Windows-failovercluster gedefinieerd. Meta gegevens bevatten de versie, editie, Fully Qualified Domain Name, Active Directory accounts voor het beheren van zowel het cluster als SQL Server en het opslag account als de cloudwitness. 
+Nadat uw SQL Server Vm's zijn geregistreerd bij de resource provider van de SQL-VM, kunt u uw SQL Server-Vm's toevoegen aan *SqlVirtualMachineGroups* . Met deze bron worden de meta gegevens van het Windows-failovercluster gedefinieerd. Meta gegevens bevatten de versie, editie, Fully Qualified Domain Name, Active Directory accounts voor het beheren van zowel het cluster als SQL Server en het opslag account als de cloudwitness. 
 
 Het toevoegen van SQL Server Vm's aan de resource groep *SqlVirtualMachineGroups* Boots trapt de Windows failover cluster-service om het cluster te maken en voegt vervolgens deze SQL Server vm's toe aan dat cluster. Deze stap is geautomatiseerd met de sjabloon **101-SQL-VM-AG-Setup** Quick Start. U kunt het implementeren met behulp van de volgende stappen:
 
@@ -66,8 +66,8 @@ Het toevoegen van SQL Server Vm's aan de resource groep *SqlVirtualMachineGroups
    | **Abonnement** |  Het abonnement waar uw SQL Server Vm's bestaan. |
    |**Resourcegroep** | De resource groep waar uw SQL Server Vm's zich bevinden. | 
    |**Naam van failovercluster** | De naam die u wilt voor uw nieuwe Windows-failovercluster. |
-   | **Bestaande VM-lijst** | De SQL Server Vm's die u wilt deel nemen aan de beschikbaarheids groep en deel uitmaken van dit nieuwe cluster. Scheid deze waarden met een komma en een spatie (bijvoorbeeld: *SQLVM1, SQLVM2*). |
-   | **Versie van SQL Server** | De SQL Server versie van uw SQL Server Vm's. Selecteer deze in de vervolg keuzelijst. Momenteel worden alleen SQL Server 2016-en SQL Server 2017-installatie kopieën ondersteund. |
+   | **Bestaande VM-lijst** | De SQL Server Vm's die u wilt deel nemen aan de beschikbaarheids groep en deel uitmaken van dit nieuwe cluster. Scheid deze waarden met een komma en een spatie (bijvoorbeeld: *SQLVM1, SQLVM2* ). |
+   | **SQL Server versie** | De SQL Server versie van uw SQL Server Vm's. Selecteer deze in de vervolg keuzelijst. Momenteel worden alleen SQL Server 2016-en SQL Server 2017-installatie kopieën ondersteund. |
    | **Bestaande volledig gekwalificeerde domein naam** | De bestaande FQDN voor het domein waarin uw SQL Server Vm's zich bevinden. |
    | **Bestaand domein account** | Een bestaand domein gebruikers account met een machtiging voor het **maken van computer objecten** in het domein als de [CNO](/windows-server/failover-clustering/prestage-cluster-adds) wordt gemaakt tijdens de implementatie van de sjabloon. Een domein beheerders account heeft bijvoorbeeld doorgaans voldoende machtigingen (bijvoorbeeld: account@domain.com ). *Dit account moet ook lid zijn van de lokale groep Administrators op elke virtuele machine om het cluster te maken.*| 
    | **Domein account wachtwoord** | Het wacht woord voor het eerder genoemde domein gebruikers account. | 
@@ -79,7 +79,7 @@ Het toevoegen van SQL Server Vm's aan de resource groep *SqlVirtualMachineGroups
    | &nbsp; | &nbsp; |
 
 1. Als u akkoord gaat met de voor waarden, schakelt u het selectie vakje **Ik ga akkoord met de voor waarden die hierboven zijn vermeld** in. Selecteer vervolgens **aankoop** om de implementatie van de Quick Start-sjabloon te volt ooien. 
-1. Als u uw implementatie wilt bewaken, selecteert u de implementatie in het pictogram **meldingen** Bell in het bovenste navigatie vaandel of gaat u naar de **resource groep** in de Azure Portal. Selecteer **implementaties** onder **instellingen**en kies de implementatie van **micro soft. Temp late** . 
+1. Als u uw implementatie wilt bewaken, selecteert u de implementatie in het pictogram **meldingen** Bell in het bovenste navigatie vaandel of gaat u naar de **resource groep** in de Azure Portal. Selecteer **implementaties** onder **instellingen** en kies de implementatie van **micro soft. Temp late** . 
 
 >[!NOTE]
 > De referenties die tijdens de sjabloon implementatie worden gegeven, worden alleen opgeslagen voor de duur van de implementatie. Nadat de implementatie is voltooid, worden deze wacht woorden verwijderd. U wordt gevraagd deze weer te geven als u meer SQL Server Vm's aan het cluster toevoegt. 
@@ -115,15 +115,15 @@ Voor de always on-beschikbaarheids groep-listener is een intern exemplaar van Az
 U hoeft alleen de interne load balancer te maken. In stap 4 wordt de rest van de configuratie (zoals de back-end-pool, de status test en de regels voor taak verdeling) verwerkt met de Snelstartgids **101-SQL-VM-aglistener-Setup** . 
 
 1. Open in Azure-portal de resourcegroep die de virtuele SQL Server-machines omvat. 
-2. Selecteer in de resource groep de optie **toevoegen**.
-3. Zoeken naar **Load Balancer**. Selecteer in de zoek resultaten **Load Balancer**, die is gepubliceerd door **micro soft**.
-4. Selecteer op **Load Balancer** de blade Load Balancer **maken**.
+2. Selecteer in de resource groep de optie **toevoegen** .
+3. Zoeken naar **Load Balancer** . Selecteer in de zoek resultaten **Load Balancer** , die is gepubliceerd door **micro soft** .
+4. Selecteer op **Load Balancer** de blade Load Balancer **maken** .
 5. Configureer de taakverdeler in het dialoogvenster **Taakverdeler maken** als volgt:
 
    | Instelling | Waarde |
    | --- | --- |
-   | **Naam** |Voer een tekst naam in die de load balancer vertegenwoordigt. Voer bijvoorbeeld **sqlLB**. |
-   | **Type** |**Intern**: de meeste implementaties gebruiken een interne Load Balancer, waarmee toepassingen binnen hetzelfde virtuele netwerk verbinding kunnen maken met de beschikbaarheids groep.  </br> **Extern**: Hiermee kunnen toepassingen verbinding maken met de beschikbaarheids groep via een open bare Internet verbinding. |
+   | **Naam** |Voer een tekst naam in die de load balancer vertegenwoordigt. Voer bijvoorbeeld **sqlLB** . |
+   | **Type** |**Intern** : de meeste implementaties gebruiken een interne Load Balancer, waarmee toepassingen binnen hetzelfde virtuele netwerk verbinding kunnen maken met de beschikbaarheids groep.  </br> **Extern** : Hiermee kunnen toepassingen verbinding maken met de beschikbaarheids groep via een open bare Internet verbinding. |
    | **Virtueel netwerk** | Selecteer het virtuele netwerk waarin de SQL Server exemplaren zich bevinden. |
    | **Subnet** | Selecteer het subnet waarin de SQL Server-exemplaren zich bevinden. |
    | **IP-adrestoewijzing** |**Statisch** |
@@ -133,11 +133,11 @@ U hoeft alleen de interne load balancer te maken. In stap 4 wordt de rest van de
    | **Locatie** |Selecteer de Azure-locatie waar de SQL Server-exemplaren zich bevinden. |
    | &nbsp; | &nbsp; |
 
-6. Selecteer **Maken**. 
+6. Selecteer **Maken** . 
 
 
 >[!IMPORTANT]
-> De open bare IP-resource voor elke SQL Server virtuele machine moet een standaard-SKU hebben om compatibel te zijn met de standaard load balancer. Als u de SKU van de open bare IP-resource van de virtuele machine wilt bepalen, gaat u naar de **resource groep**, selecteert u de resource voor het **open bare IP-adres** voor de SQL Server virtuele machine en zoekt u de waarde onder **SKU** in het deel venster **overzicht** . 
+> De open bare IP-resource voor elke SQL Server virtuele machine moet een standaard-SKU hebben om compatibel te zijn met de standaard load balancer. Als u de SKU van de open bare IP-resource van de virtuele machine wilt bepalen, gaat u naar de **resource groep** , selecteert u de resource voor het **open bare IP-adres** voor de SQL Server virtuele machine en zoekt u de waarde onder **SKU** in het deel venster **overzicht** . 
 
 ## <a name="create-listener"></a>Listener maken 
 
@@ -163,17 +163,17 @@ Ga als volgt te werk om de interne load balancer te configureren en de beschikba
    |**Resourcegroep** | De resource groep waar uw SQL Server Vm's en beschikbaarheids groep bestaan. | 
    |**Bestaande naam van het failovercluster** | De naam van het cluster waaraan uw SQL Server-Vm's zijn gekoppeld. |
    | **Bestaande SQL-beschikbaarheids groep**| De naam van de beschikbaarheids groep waarvan uw SQL Server Vm's deel uitmaken. |
-   | **Bestaande VM-lijst** | De namen van de SQL Server Vm's die deel uitmaken van de eerder genoemde beschikbaarheids groep. Scheid de namen met een komma en een spatie (bijvoorbeeld: *SQLVM1, SQLVM2*). |
+   | **Bestaande VM-lijst** | De namen van de SQL Server Vm's die deel uitmaken van de eerder genoemde beschikbaarheids groep. Scheid de namen met een komma en een spatie (bijvoorbeeld: *SQLVM1, SQLVM2* ). |
    | **Listener** | De DNS-naam die u wilt toewijzen aan de listener. Met deze sjabloon wordt standaard de naam ' aglistener ' opgegeven, maar u kunt deze wijzigen. De naam mag niet langer zijn dan 15 tekens. |
    | **Listener-poort** | De poort die u door de listener wilt laten gebruiken. Normaal gesp roken moet deze poort de standaard waarde van 1433 zijn. Dit is het poort nummer dat door de sjabloon wordt opgegeven. Maar als uw standaard poort is gewijzigd, moet de listener-poort deze waarde gebruiken in plaats daarvan. | 
    | **Listener-IP** | Het IP-adres dat u wilt gebruiken voor de listener. Dit adres wordt gemaakt tijdens de implementatie van de sjabloon. Geef dus een naam op die nog niet in gebruik is.  |
-   | **Bestaand subnet** | De naam van het interne subnet van uw SQL Server Vm's (bijvoorbeeld: *standaard*). U kunt deze waarde bepalen door te gaan naar de **resource groep**, het virtuele netwerk te selecteren, **subnetten** te selecteren in het deel venster **instellingen** en de waarde onder **naam**te kopiëren. |
+   | **Bestaand subnet** | De naam van het interne subnet van uw SQL Server Vm's (bijvoorbeeld: *standaard* ). U kunt deze waarde bepalen door te gaan naar de **resource groep** , het virtuele netwerk te selecteren, **subnetten** te selecteren in het deel venster **instellingen** en de waarde onder **naam** te kopiëren. |
    | **Bestaande interne Load Balancer** | De naam van de interne load balancer die u hebt gemaakt in stap 3. |
    | **Test poort** | De test poort waarvoor u de interne load balancer wilt gebruiken. De sjabloon maakt standaard gebruik van 59999, maar u kunt deze waarde wijzigen. |
    | &nbsp; | &nbsp; |
 
 1. Als u akkoord gaat met de voor waarden, schakelt u het selectie vakje **Ik ga akkoord met de voor waarden die hierboven zijn vermeld** in. Selecteer **aankoop** om de implementatie van de Quick Start-sjabloon te volt ooien. 
-1. Als u uw implementatie wilt bewaken, selecteert u de implementatie in het pictogram **meldingen** Bell in het bovenste navigatie vaandel of gaat u naar de **resource groep** in de Azure Portal. Selecteer **implementaties** onder **instellingen**en kies de implementatie van **micro soft. Temp late** . 
+1. Als u uw implementatie wilt bewaken, selecteert u de implementatie in het pictogram **meldingen** Bell in het bovenste navigatie vaandel of gaat u naar de **resource groep** in de Azure Portal. Selecteer **implementaties** onder **instellingen** en kies de implementatie van **micro soft. Temp late** . 
 
 >[!NOTE]
 >Als uw implementatie halverwege kan worden uitgevoerd, moet u [de zojuist gemaakte listener](#remove-listener) hand matig verwijderen met behulp van Power shell voordat u de **101-SQL-VM-aglistener-Setup** Quick Start-sjabloon opnieuw implementeert. 
@@ -204,15 +204,15 @@ Het **domein account bestaat niet** Deze fout kan twee oorzaken hebben. Ofwel he
 
 Controleer of het account bestaat. Als dat het geval is, wordt u mogelijk in de tweede situatie uitgevoerd. Ga als volgt te werk om het probleem op te lossen:
 
-1. Open op de domein controller het venster **Active Directory gebruikers en computers** met de optie **extra** in **Serverbeheer**. 
+1. Open op de domein controller het venster **Active Directory gebruikers en computers** met de optie **extra** in **Serverbeheer** . 
 2. Ga naar het account door **gebruikers** te selecteren in het linkerdeel venster.
-3. Klik met de rechter muisknop op het account en selecteer **Eigenschappen**.
+3. Klik met de rechter muisknop op het account en selecteer **Eigenschappen** .
 4. Selecteer het tabblad **account** . Als het vak **aanmeldings naam van gebruiker** leeg is, is dit de oorzaak van de fout. 
 
     ![Lege gebruikers account geeft ontbrekende UPN aan](./media/availability-group-quickstart-template-configure/account-missing-upn.png)
 
 5. Vul het vak **aanmeldings naam** van de gebruiker in om de naam van de gebruiker te zoeken en selecteer het juiste domein in de vervolg keuzelijst. 
-6. Selecteer **Toep assen** om uw wijzigingen op te slaan en sluit het dialoog venster door **OK**te selecteren. 
+6. Selecteer **Toep assen** om uw wijzigingen op te slaan en sluit het dialoog venster door **OK** te selecteren. 
 
 Nadat u deze wijzigingen hebt aangebracht, kunt u de Azure Quick Start-sjabloon nog één keer implementeren. 
 
@@ -226,6 +226,3 @@ Raadpleeg voor meer informatie de volgende artikelen:
 * [Prijs informatie voor SQL Server Vm's](pricing-guidance.md)
 * [Release opmerkingen voor SQL Server Vm's](../../database/doc-changes-updates-release-notes.md)
 * [Licentie modellen voor een SQL Server VM overschakelen](licensing-model-azure-hybrid-benefit-ahb-change.md)
-
-
-

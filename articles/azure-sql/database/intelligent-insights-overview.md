@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 06/12/2020
-ms.openlocfilehash: 4f6bbbdbbee6cf83a6bea463cf200be0cf671897
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6133d838fa31919a37ddd633193e5559c50de9b6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317052"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790437"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>Intelligent Insights met AI gebruiken om database prestaties te controleren en op te lossen (preview-versie)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -85,7 +85,7 @@ Intelligent Insights beschik bare opties zijn:
 
 De uitvoer van de Intelligent Insights kan worden gestreamd naar een van de volgende bestemmingen voor analyse:
 
-- Uitvoer die naar een Log Analytics-werk ruimte is gestreamd, kan worden gebruikt met [Azure SQL-analyse](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) om inzichten weer te geven via de gebruikers interface van de Azure Portal. Dit is de geïntegreerde Azure-oplossing en de meest gang bare manier om inzichten weer te geven.
+- Uitvoer die naar een Log Analytics-werk ruimte is gestreamd, kan worden gebruikt met [Azure SQL-analyse](../../azure-monitor/insights/azure-sql.md) om inzichten weer te geven via de gebruikers interface van de Azure Portal. Dit is de geïntegreerde Azure-oplossing en de meest gang bare manier om inzichten weer te geven.
 - Uitvoer die naar Azure Event Hubs is gestreamd, kan worden gebruikt voor de ontwikkeling van aangepaste bewakings-en waarschuwings scenario's
 - Uitvoer die naar Azure Storage is gestreamd, kan worden gebruikt voor aangepaste toepassings ontwikkeling, zoals aangepaste rapportage, gegevens archivering op lange termijn, enzovoort.
 
@@ -107,7 +107,7 @@ In het volgende voor beeld ziet u een Intelligent Insights die wordt weer gegeve
 
 ### <a name="set-up-with-event-hubs"></a>Instellen met Event Hubs
 
-Als u Intelligent Insights met Event Hubs wilt gebruiken, configureert u Intelligent Insights logboek gegevens die moeten worden gestreamd naar Event Hubs, raadpleegt u de [logboek registratie voor metrieke en diagnostische](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) informatie en [registreert u logboeken van Azure diagnostics naar Event hubs](../../azure-monitor/platform/resource-logs-stream-event-hubs.md).
+Als u Intelligent Insights met Event Hubs wilt gebruiken, configureert u Intelligent Insights logboek gegevens die moeten worden gestreamd naar Event Hubs, raadpleegt u de [logboek registratie voor metrieke en diagnostische](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) informatie en [registreert u logboeken van Azure diagnostics naar Event hubs](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs).
 
 Zie [wat u kunt doen met metrische gegevens en Diagnostische logboeken in Event hubs](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#what-to-do-with-metrics-and-resource-logs-in-event-hubs)voor informatie over het gebruik van Event hubs om aangepaste bewaking en waarschuwingen in te stellen.
 

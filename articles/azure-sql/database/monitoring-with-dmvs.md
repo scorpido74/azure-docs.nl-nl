@@ -12,12 +12,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: sstein
 ms.date: 04/19/2020
-ms.openlocfilehash: 61160943fc5762fd492f61a75a44159f2ef9cab2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b76390efaed94003a792b04836d6850e6b7a7ead
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448777"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789553"
 ---
 # <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>Prestaties van Microsoft Azure SQL Database en Azure SQL Managed Instance bewaken met dynamische beheerweergaven
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -30,7 +30,7 @@ Microsoft Azure SQL Database en Azure SQL Managed instance ondersteunen gedeelte
 - Aan uitvoering gerelateerde dynamische beheer weergaven.
 - Dynamische beheer weergaven die betrekking hebben op trans acties.
 
-Zie [dynamische beheer weergaven en-functies (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)voor gedetailleerde informatie over dynamische beheer weergaven.
+Zie [dynamische beheer weergaven en-functies (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)voor gedetailleerde informatie over dynamische beheer weergaven.
 
 ## <a name="permissions"></a>Machtigingen
 
@@ -94,7 +94,7 @@ GO
 
 ### <a name="the-cpu-issue-occurred-in-the-past"></a>Het CPU-probleem is opgetreden in het verleden
 
-Als het probleem zich in het verleden heeft voorgedaan en u de analyse van de hoofd oorzaak wilt uitvoeren, gebruikt u [query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store). Gebruikers met database toegang kunnen T-SQL gebruiken om query's in query Store-gegevens op te vragen. De standaard configuraties van de query-Store gebruiken een granulatie van 1 uur. Gebruik de volgende query om activiteiten te bekijken voor hoge CPU-verbruiks query's. Met deze query worden de top 15 van de CPU-verbruikte query's geretourneerd. Vergeet niet om te wijzigen `rsi.start_time >= DATEADD(hour, -2, GETUTCDATE()` :
+Als het probleem zich in het verleden heeft voorgedaan en u de analyse van de hoofd oorzaak wilt uitvoeren, gebruikt u [query Store](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store). Gebruikers met database toegang kunnen T-SQL gebruiken om query's in query Store-gegevens op te vragen. De standaard configuraties van de query-Store gebruiken een granulatie van 1 uur. Gebruik de volgende query om activiteiten te bekijken voor hoge CPU-verbruiks query's. Met deze query worden de top 15 van de CPU-verbruikte query's geretourneerd. Vergeet niet om te wijzigen `rsi.start_time >= DATEADD(hour, -2, GETUTCDATE()` :
 
 ```sql
 -- Top 15 CPU consuming queries by query hash
@@ -119,7 +119,7 @@ Zodra u de problematische query's hebt geïdentificeerd, is het tijd om deze que
 
 ## <a name="identify-io-performance-issues"></a>Problemen met IO-prestaties identificeren
 
-Bij het identificeren van i/o-prestatie problemen zijn de meest voorkomende wacht typen die zijn gekoppeld aan IO-problemen:
+Bij het identificeren van IO-prestatieproblemen zijn de belangrijkste wachttypen die verband houden met IO-problemen:
 
 - `PAGEIOLATCH_*`
 
@@ -131,7 +131,7 @@ Bij het identificeren van i/o-prestatie problemen zijn de meest voorkomende wach
 
 ### <a name="if-the-io-issue-is-occurring-right-now"></a>Als het IO-probleem nu optreedt
 
-Gebruik de [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) of [sys.dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) om de en weer te geven `wait_type` `wait_time` .
+Gebruik de [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) of [sys.dm_os_waiting_tasks](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) om de en weer te geven `wait_type` `wait_time` .
 
 #### <a name="identify-data-and-log-io-usage"></a>Gegevens identificeren en i/o-logboek gebruiken
 
@@ -145,7 +145,7 @@ ORDER BY end_time DESC;
 
 Als de i/o-limiet is bereikt, hebt u twee opties:
 
-- Optie 1: de reken grootte of de servicelaag upgraden
+- Optie 1: De rekengrootte of servicelaag upgraden
 - Optie 2: de query's identificeren en afstemmen die de meeste IO gebruiken.
 
 #### <a name="view-buffer-related-io-using-the-query-store"></a>Aan de buffer gerelateerde IO weer geven met behulp van de query Store
@@ -252,15 +252,15 @@ GO
 
 ## <a name="identify-tempdb-performance-issues"></a>`tempdb`Prestatie problemen identificeren
 
-Bij het identificeren van i/o-prestatie problemen, zijn de meest voorkomende wacht typen die zijn gekoppeld aan `tempdb` problemen `PAGELATCH_*` (niet `PAGEIOLATCH_*` ). `PAGELATCH_*`Wacht tijden zijn echter niet altijd de bedoeling dat u `tempdb` conflicten hebt.  Dit kan ook betekenen dat u een gegevens pagina-inhoud voor gebruikers objecten hebt vanwege gelijktijdige aanvragen die zijn gericht op dezelfde gegevens pagina. `tempdb`Gebruik [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) om te bevestigen dat de wait_resource-waarde begint met 2 als de `2:x:y` `tempdb` Data Base-ID, `x` de bestands-id en de `y` pagina-id is om de conflicten verder te bevestigen.  
+Bij het identificeren van i/o-prestatie problemen, zijn de meest voorkomende wacht typen die zijn gekoppeld aan `tempdb` problemen `PAGELATCH_*` (niet `PAGEIOLATCH_*` ). `PAGELATCH_*`Wacht tijden zijn echter niet altijd de bedoeling dat u `tempdb` conflicten hebt.  Dit wachten kan ook betekenen dat er een conflict voor een gegevenspagina voor gebruikersobjecten is opgetreden vanwege gelijktijdige aanvragen voor dezelfde gegevenspagina. `tempdb`Gebruik [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) om te bevestigen dat de wait_resource-waarde begint met 2 als de `2:x:y` `tempdb` Data Base-ID, `x` de bestands-id en de `y` pagina-id is om de conflicten verder te bevestigen.  
 
 Voor TempDB-conflicten is een gemeen schappelijke methode het verminderen of herschrijven van toepassings code die afhankelijk is van `tempdb` .  Algemene `tempdb` gebruiks gebieden zijn:
 
 - Tijdelijke tabellen
 - Tabelvariabelen
-- Tabelwaardeparameter
-- Gebruik van versie opslag (specifiek gekoppeld aan langlopende trans acties)
-- Query's met query plannen die gebruikmaken van sorteringen, hash-samen voegingen en spools
+- Tabelwaardeparameters
+- Gebruik van versieopslag (specifiek gekoppeld aan langlopende transacties)
+- Query's met queryplannen die gebruikmaken van sorteringen, hash joins en spools
 
 ### <a name="top-queries-that-use-table-variables-and-temporary-tables"></a>Meest voorkomende query's die tabel variabelen en tijdelijke tabellen gebruiken
 
@@ -474,9 +474,9 @@ FROM sys.dm_exec_requests AS r
 ORDER BY mg.granted_memory_kb DESC;
 ```
 
-## <a name="calculating-database-and-objects-sizes"></a>Grootte van de data base en objecten berekenen
+## <a name="calculating-database-and-objects-sizes"></a>De grootte van de database en objecten berekenen
 
-De volgende query retourneert de grootte van de data base (in mega bytes):
+Met de volgende query wordt de grootte van uw database geretourneerd (in megabytes):
 
 ```sql
 -- Calculates the size of the database.
@@ -486,7 +486,7 @@ WHERE type_desc = 'ROWS';
 GO
 ```
 
-Met de volgende query wordt de grootte van afzonderlijke objecten (in mega bytes) in uw data base geretourneerd:
+Met de volgende query wordt de grootte van afzonderlijke objecten geretourneerd (in megabytes):
 
 ```sql
 -- Calculates the size of individual database objects.
@@ -517,21 +517,21 @@ WHERE c.session_id = @@SPID;
 ```
 
 > [!NOTE]
-> Als u de **sys.dm_exec_requests** en **sys.dm_exec_sessions weer gaven**uitvoert en u de machtiging **database status weer geven** voor de Data Base hebt, ziet u alle sessies die worden uitgevoerd op de data base. anders ziet u alleen de huidige sessie.
+> Als u de **sys.dm_exec_requests** en **sys.dm_exec_sessions weer gaven** uitvoert en u de machtiging **database status weer geven** voor de Data Base hebt, ziet u alle sessies die worden uitgevoerd op de data base. anders ziet u alleen de huidige sessie.
 
 ## <a name="monitor-resource-use"></a>Resource gebruik bewaken
 
-U kunt Azure SQL Database Resource gebruik bewaken met behulp van [SQL Database query Performance Insight](query-performance-insight-use.md). Voor Azure SQL Database en Azure SQL Managed Instance kunt u bewaken met behulp van [query Store](https://msdn.microsoft.com/library/dn817826.aspx).
+U kunt Azure SQL Database Resource gebruik bewaken met behulp van [SQL Database query Performance Insight](query-performance-insight-use.md). Voor Azure SQL Database en Azure SQL Managed Instance kunt u bewaken met behulp van [query Store](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store).
 
 U kunt het gebruik ook controleren met behulp van de volgende weer gaven:
 
 - Azure SQL Database: [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 - Azure SQL Managed instance: [sys.server_resource_stats](/sql/relational-databases/system-catalog-views/sys-server-resource-stats-azure-sql-database)
-- Zowel Azure SQL Database als Azure SQL Managed instance: [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)
+- Zowel Azure SQL Database als Azure SQL Managed instance: [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
 
 ### <a name="sysdm_db_resource_stats"></a>sys.dm_db_resource_stats
 
-U kunt de weer gave [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) in elke Data Base gebruiken. In de weer gave **sys.dm_db_resource_stats** worden recent gebruikte resource gegevens weer gegeven ten opzichte van de servicelaag. Gemiddeld percentages voor CPU, gegevens-IO, logboek schrijf bewerkingen en geheugen worden elke 15 seconden geregistreerd en worden gedurende één uur bewaard.
+U kunt de weer gave [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) in elke Data Base gebruiken. In de weer gave **sys.dm_db_resource_stats** worden recent gebruikte resource gegevens weer gegeven ten opzichte van de servicelaag. Gemiddeld percentages voor CPU, gegevens-IO, logboek schrijf bewerkingen en geheugen worden elke 15 seconden geregistreerd en worden gedurende één uur bewaard.
 
 Omdat deze weer gave een gedetailleerdere vormgeving biedt in het resource gebruik, gebruikt u **sys.dm_db_resource_stats** eerst voor een analyse van de huidige status of het oplossen van problemen. Met deze query wordt bijvoorbeeld het gemiddelde en maximum resource gebruik voor de huidige data base in het afgelopen uur weer gegeven:
 
@@ -548,7 +548,7 @@ SELECT
 FROM sys.dm_db_resource_stats;  
 ```
 
-Zie de voor beelden in [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx)voor andere query's.
+Zie de voor beelden in [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)voor andere query's.
 
 ### <a name="sysserver_resource_stats"></a>sys.server_resource_stats
 
@@ -568,7 +568,7 @@ HAVING AVG(avg_cpu_percent) >= 80
 
 ### <a name="sysresource_stats"></a>sys.resource_stats
 
-De [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) weer gave in de **hoofd** database bevat aanvullende informatie die u kan helpen bij het bewaken van de prestaties van uw data base in de specifieke servicelaag en de berekenings grootte. De gegevens worden elke vijf minuten verzameld en worden ongeveer 14 dagen bewaard. Deze weer gave is handig voor een historisch historische analyse van hoe uw data base resources gebruikt.
+De [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) weer gave in de **hoofd** database bevat aanvullende informatie die u kan helpen bij het bewaken van de prestaties van uw data base in de specifieke servicelaag en de berekenings grootte. De gegevens worden elke vijf minuten verzameld en worden ongeveer 14 dagen bewaard. Deze weer gave is handig voor een historisch historische analyse van hoe uw data base resources gebruikt.
 
 In de volgende grafiek ziet u het gebruik van de CPU-resource voor een Premium-data base met de P2-reken grootte voor elk uur in een week. Deze grafiek begint op een maandag, toont vijf werk dagen en toont vervolgens een weekend, wanneer er veel minder gebeurt met de toepassing.
 
@@ -743,11 +743,11 @@ ORDER BY 2 DESC;
 
 ### <a name="monitoring-blocked-queries"></a>Geblokkeerde query's bewaken
 
-Trage of langlopende query's kunnen bijdragen aan overmatig bronnen gebruik en zijn het gevolg van geblokkeerde query's. De oorzaak van de blok kering kan zijn dat het toepassings ontwerp, ongeldige query plannen, het gebrek aan handige indexen, enzovoort. U kunt de weer gave sys.dm_tran_locks gebruiken om informatie over de huidige vergrendelings activiteit in de Data Base op te halen. Zie [sys.dm_tran_locks (Transact-SQL)](https://msdn.microsoft.com/library/ms190345.aspx)voor voorbeeld code.
+Trage of langlopende query's kunnen bijdragen aan overmatig bronnen gebruik en zijn het gevolg van geblokkeerde query's. De oorzaak van de blok kering kan zijn dat het toepassings ontwerp, ongeldige query plannen, het gebrek aan handige indexen, enzovoort. U kunt de weer gave sys.dm_tran_locks gebruiken om informatie over de huidige vergrendelings activiteit in de Data Base op te halen. Zie [sys.dm_tran_locks (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql)voor voorbeeld code.
 
 ### <a name="monitoring-query-plans"></a>Query plannen bewaken
 
-Een inefficiënt query plan kan ook het CPU-verbruik verhogen. In het volgende voor beeld wordt de weer gave [sys.dm_exec_query_stats](https://msdn.microsoft.com/library/ms189741.aspx) gebruikt om te bepalen welke query de meest cumulatieve CPU gebruikt.
+Een inefficiënt query plan kan ook het CPU-verbruik verhogen. In het volgende voor beeld wordt de weer gave [sys.dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql) gebruikt om te bepalen welke query de meest cumulatieve CPU gebruikt.
 
 ```sql
 SELECT

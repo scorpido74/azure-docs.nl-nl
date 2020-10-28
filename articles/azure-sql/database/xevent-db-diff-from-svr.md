@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: c8f73c0789cd0211deeb66af5c7300a81d7b1be0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c89dc28a330e319e18a6289e5f6759c56e46ae8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619811"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791270"
 ---
 # <a name="extended-events-in-azure-sql-database"></a>Uitgebreide gebeurtenissen in Azure SQL Database 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -56,7 +56,7 @@ Verwante onderwerpen bieden twee voor beelden van code:
   - Kort eenvoudig Transact-SQL-script.
   - We benadrukken in het onderwerp code voorbeeld. Als u klaar bent met een ring buffer doel, moet u de resources vrijgeven door een instructie ALTER-drop uit te voeren `ALTER EVENT SESSION ... ON DATABASE DROP TARGET ...;` . Later kunt u een andere instantie van ring buffer toevoegen door `ALTER EVENT SESSION ... ON DATABASE ADD TARGET ...` .
 
-- [Doel code van gebeurtenis bestand voor uitgebreide gebeurtenissen in Azure SQL Database](xevent-code-event-file.md)
+- [Doelcode voor een gebeurtenisbestand voor uitgebreide gebeurtenissen in Azure SQL Database](xevent-code-event-file.md)
 
   - Fase 1 is Power shell om een Azure Storage-container te maken.
   - Fase 2 is Transact-SQL die gebruikmaakt van de Azure Storage-container.
@@ -71,7 +71,7 @@ Verwante onderwerpen bieden twee voor beelden van code:
 
 ## <a name="new-catalog-views"></a>Nieuwe catalogus weergaven
 
-De functie Extended Events wordt ondersteund door verschillende [catalogus weergaven](https://msdn.microsoft.com/library/ms174365.aspx). Catalogus weergaven geven informatie over *meta gegevens of definities* van door gebruikers gemaakte gebeurtenis sessies in de huidige data base. De weer gaven retour neren geen informatie over exemplaren van actieve gebeurtenis sessies.
+De functie Extended Events wordt ondersteund door verschillende [catalogus weergaven](/sql/relational-databases/system-catalog-views/catalog-views-transact-sql). Catalogus weergaven geven informatie over *meta gegevens of definities* van door gebruikers gemaakte gebeurtenis sessies in de huidige data base. De weer gaven retour neren geen informatie over exemplaren van actieve gebeurtenis sessies.
 
 | Naam van<br/>Catalogus weergave | Beschrijving |
 |:--- |:--- |
@@ -81,11 +81,11 @@ De functie Extended Events wordt ondersteund door verschillende [catalogus weerg
 | **sys.database_event_session_targets** |Retourneert een rij voor elk gebeurtenis doel voor een gebeurtenis sessie. |
 | **sys.database_event_sessions** |Retourneert een rij voor elke gebeurtenis sessie in de data base. |
 
-In Microsoft SQL Server hebben vergelijk bare catalogus weergaven namen die *. server \_ * bevatten in plaats van *. \_ Data Base*. Het naam patroon is net als **sys.server_event_%**.
+In Microsoft SQL Server hebben vergelijk bare catalogus weergaven namen die *. server \_* bevatten in plaats van *. \_ Data Base* . Het naam patroon is net als **sys.server_event_%** .
 
-## <a name="new-dynamic-management-views-dmvs"></a>Nieuwe dynamische beheer weergaven [(dmv's)](https://msdn.microsoft.com/library/ms188754.aspx)
+## <a name="new-dynamic-management-views-dmvs"></a>Nieuwe dynamische beheer weergaven [(dmv's)](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)
 
-Azure SQL Database heeft [dynamische beheer weergaven (dmv's)](https://msdn.microsoft.com/library/bb677293.aspx) die ondersteuning bieden voor uitgebreide gebeurtenissen. Dmv's vertelt u over *actieve* gebeurtenis sessies.
+Azure SQL Database heeft [dynamische beheer weergaven (dmv's)](/sql/relational-databases/system-dynamic-management-views/extended-events-dynamic-management-views) die ondersteuning bieden voor uitgebreide gebeurtenissen. Dmv's vertelt u over *actieve* gebeurtenis sessies.
 
 | Naam van DMV | Beschrijving |
 |:--- |:--- |
@@ -95,9 +95,9 @@ Azure SQL Database heeft [dynamische beheer weergaven (dmv's)](https://msdn.micr
 | **sys.dm_xe_database_session_targets** |Retourneert informatie over sessie doelen. |
 | **sys.dm_xe_database_sessions** |Retourneert een rij voor elke gebeurtenis sessie die binnen het bereik van de huidige data base valt. |
 
-In Microsoft SQL Server worden vergelijk bare catalogus weergaven benoemd zonder het * \_ Data Base* -gedeelte van de naam, zoals:
+In Microsoft SQL Server worden vergelijk bare catalogus weergaven benoemd zonder het *\_ Data Base* -gedeelte van de naam, zoals:
 
-- **sys.dm_xe_sessions**in plaats van naam<br/>**sys.dm_xe_database_sessions**.
+- **sys.dm_xe_sessions** in plaats van naam<br/>**sys.dm_xe_database_sessions** .
 
 ### <a name="dmvs-common-to-both"></a>Gemeen schappelijk Dmv's voor beide
 
@@ -140,11 +140,11 @@ SELECT
 
 Hier vindt u doelen die resultaten kunnen vastleggen vanuit uw gebeurtenis sessies op Azure SQL Database:
 
-- [Ring buffer doel](https://msdn.microsoft.com/library/ff878182.aspx) -bevat kort gebeurtenis gegevens in het geheugen.
-- [Doel van gebeurtenis teller](https://msdn.microsoft.com/library/ff878025.aspx) : telt alle gebeurtenissen die optreden tijdens een Extended Events-sessie.
-- [Gebeurtenis bestand doel](https://msdn.microsoft.com/library/ff878115.aspx) : Hiermee worden volledige buffers geschreven naar een Azure storage-container.
+- [Ring buffer doel](/previous-versions/sql/sql-server-2016/bb630339(v=sql.130)) -bevat kort gebeurtenis gegevens in het geheugen.
+- [Doel van gebeurtenis teller](/previous-versions/sql/sql-server-2016/ff878025(v=sql.130)) : telt alle gebeurtenissen die optreden tijdens een Extended Events-sessie.
+- [Gebeurtenis bestand doel](/previous-versions/sql/sql-server-2016/ff878115(v=sql.130)) : Hiermee worden volledige buffers geschreven naar een Azure storage-container.
 
-De API voor [Event Tracing for Windows (etw)](https://msdn.microsoft.com/library/ms751538.aspx) is niet beschikbaar voor uitgebreide gebeurtenissen op Azure SQL database.
+De API voor [Event Tracing for Windows (etw)](/dotnet/framework/wcf/samples/etw-tracing) is niet beschikbaar voor uitgebreide gebeurtenissen op Azure SQL database.
 
 ## <a name="restrictions"></a>Beperkingen
 
@@ -183,11 +183,11 @@ Het **gebeurtenis bestand** doel kan netwerk latentie of storingen ondervinden t
 ## <a name="related-links"></a>Verwante koppelingen
 
 - [Azure PowerShell gebruiken met Azure Storage](/powershell/module/az.storage/).
-- [Azure Storage-cmdlets](https://docs.microsoft.com/powershell/module/Azure.Storage)
+- [Azure Storage-cmdlets](/powershell/module/Azure.Storage)
 - [Azure PowerShell gebruiken met Azure Storage](/powershell/module/az.storage/)
-- [Blob-opslag gebruiken met .NET](../../storage/blobs/storage-quickstart-blobs-dotnet.md)
-- [CREATE CREDENTIAL (Transact-SQL)](https://msdn.microsoft.com/library/ms189522.aspx)
-- [GEBEURTENIS sessie maken (Transact-SQL)](https://msdn.microsoft.com/library/bb677289.aspx)
+- [Blob Storage gebruiken met .NET](../../storage/blobs/storage-quickstart-blobs-dotnet.md)
+- [CREATE CREDENTIAL (Transact-SQL)](/sql/t-sql/statements/create-credential-transact-sql)
+- [GEBEURTENIS sessie maken (Transact-SQL)](/sql/t-sql/statements/create-event-session-transact-sql)
 - [Blog berichten van Jonathan Kehayias over Extended Events in Microsoft SQL Server](https://www.sqlskills.com/blogs/jonathan/category/extended-events/)
 - De webpagina Azure- *service-updates* , beperkt door de para meter voor Azure SQL database:
   - [https://azure.microsoft.com/updates/?service=sql-database](https://azure.microsoft.com/updates/?service=sql-database)
@@ -195,6 +195,6 @@ Het **gebeurtenis bestand** doel kan netwerk latentie of storingen ondervinden t
 <!--
 ('lock_acquired' event.)
 
-- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](https://msdn.microsoft.com/library/bb677357.aspx)
-- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](https://msdn.microsoft.com/library/bb630355.aspx)
+- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](/sql/relational-databases/extended-events/determine-which-queries-are-holding-locks)
+- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](/sql/relational-databases/extended-events/find-the-objects-that-have-the-most-locks-taken-on-them)
 -->

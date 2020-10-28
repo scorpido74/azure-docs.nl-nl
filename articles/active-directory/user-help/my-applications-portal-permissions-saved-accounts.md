@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 02/03/2020
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 993e75f6a5a39e076a9e7161b62abba85d9b0eab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb162231c8cf2bf733c992de0c4aa56bf1fd1be2
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90031089"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791083"
 ---
 # <a name="edit-or-revoke-application-permissions-in-the-my-apps-portal"></a>App-toestemmingen bewerken of intrekken in de portal Mijn apps
 
@@ -30,9 +30,9 @@ Wanneer u toepassingen van de organisatie in de portal **Mijn apps** gebruikt, v
 
 ## <a name="manage-app-accounts"></a>App-accounts beheren
 
-Als u de apps wilt weer geven die door u of uw beheerder zijn verzonden, selecteert u **...** wanneer u de muis aanwijzer over een app in de portal **mijn apps** houdt, selecteert u vervolgens **uw toepassing beheren**:
+Als u de apps wilt weer geven die door u of uw beheerder zijn verzonden, selecteert u **...** wanneer u de muis aanwijzer over een app in de portal **mijn apps** houdt, selecteert u vervolgens **uw toepassing beheren** :
 
-![Een toepassing beheren in de portal Mijn apps](media/my-applications-portal-permissions-saved-accounts/manage-your-application.png)
+![Een toepassing beheren in de portal Mijn apps](media/my-applications-portal-permissions-saved-accounts/my-apps-home-woodgrove.png)
 
 In het bovenste gedeelte van het machtigingenvenster ziet u waar u persoonlijk toestemming voor hebt gegeven. Voorbeelden van app-toestemmingen zijn de mogelijkheid om toegang te krijgen tot uw agenda, contactpersonen of de camera.
 
@@ -50,8 +50,8 @@ Nadat u app-toestemmingen en opgeslagen accounts in de portal **Mijn apps** hebt
 
 ## <a name="related-articles"></a>Verwante artikelen:
 
-- [Uw profiel- en accountgegevens bijwerken](my-account-portal-overview.md). Instructies voor het bijwerken van uw persoonlijke gegevens die worden weergegeven in de portal **Mijn profiel**.
+- [Uw profiel- en accountgegevens bijwerken](my-account-portal-overview.md). Instructies voor het bijwerken van uw persoonlijke gegevens die worden weergegeven in de portal **Mijn profiel** .
 
-- [Uw organisaties beheren](my-account-portal-organizations-page.md). Instructies voor het weergeven en beheren van gegevens met betrekking tot uw organisatie op de pagina **Organisaties** in de portal **Mijn profiel**.
+- [Uw organisaties beheren](my-account-portal-organizations-page.md). Instructies voor het weergeven en beheren van gegevens met betrekking tot uw organisatie op de pagina **Organisaties** in de portal **Mijn profiel** .
 
-- [Uw verbonden apparaten beheren](my-account-portal-devices-page.md). Instructies voor het beheren van de apparaten waarmee u verbinding hebt om uw werk- of schoolaccount te gebruiken op de pagina **Apparaten** in de portal **Mijn profiel**.
+- [Uw verbonden apparaten beheren](my-account-portal-devices-page.md). Instructies voor het beheren van de apparaten waarmee u verbinding hebt om uw werk- of schoolaccount te gebruiken op de pagina **Apparaten** in de portal **Mijn profiel** .
