@@ -8,13 +8,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/15/2020
-ms.openlocfilehash: 5845ab6419d6914b9221df1ae1280d31aba0ae7a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.date: 10/27/2020
+ms.openlocfilehash: 6354b0a1df9d8c331de0731b230d628ac4e435df
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737522"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891348"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Trans formatie sinken bij toewijzing van gegevens stroom
 
@@ -68,6 +68,10 @@ In de volgende video wordt een aantal verschillende Sink-opties voor door tekst 
 **Schema-drift** : [schema-drift](concepts-data-flow-schema-drift.md) is de mogelijkheid van Data Factory om flexibele schema's in uw gegevens stromen systeem eigen te verwerken zonder dat er expliciet kolom wijzigingen hoeven te worden gedefinieerd. Schakel **schema-drift toestaan** in voor het schrijven van aanvullende kolommen boven op wat is gedefinieerd in het sink data-schema.
 
 **Schema valideren** : als validate schema is geselecteerd, mislukt de gegevens stroom als een van de kolommen van het binnenkomende bron schema niet wordt gevonden in de bron projectie of als de gegevens typen niet overeenkomen. Gebruik deze instelling om af te dwingen dat de bron gegevens voldoen aan het contract van uw gedefinieerde projectie. Het is handig in database bron scenario's om te signaleren dat kolom namen of typen zijn gewijzigd.
+
+**Tempdb gebruiken:** Data Factory maakt standaard gebruik van een globale tijdelijke tabel om gegevens op te slaan als onderdeel van het laad proces. U kunt ook de optie ' TempDB gebruiken ' uitschakelen en in plaats daarvan vragen om Data Factory de tijdelijke Holding tabel op te slaan in een gebruikers database die zich in de Data Base bevindt die wordt gebruikt voor deze sink.
+
+![TempDB](media/data-flow/tempdb.png "TempDB")
 
 ## <a name="field-mapping"></a>Veldtoewijzing
 

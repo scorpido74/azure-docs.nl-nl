@@ -32,8 +32,8 @@
       href: search-get-started-dotnet.md
     - name: Java
       href: search-get-started-java.md
-    - name: Node.js
-      href: search-get-started-nodejs.md
+    - name: Javascript
+      href: search-get-started-javascript.md
     - name: Postman
       href: search-get-started-postman.md
     - name: PowerShell
@@ -320,9 +320,11 @@
           href: search-api-preview.md
         - name: Ontwikkelen in .NET
           items:
-            - name: Microsoft.Azure.Search (v10) gebruiken
+            - name: Azure.Search.Documents gebruiken
               href: search-howto-dotnet-sdk.md
-            - name: Aan de slag (v10)
+            - name: Microsoft.Azure.Search gebruiken
+              href: search-howto-dotnet-sdk-v10.md
+            - name: Verouderde quickstart (Microsoft.Azure.Search)
               href: search-get-started-dotnet-v10.md
         - name: Upgrade uitvoeren voor de SDK
           items:

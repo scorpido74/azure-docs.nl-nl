@@ -6,12 +6,12 @@ author: harelbr
 ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: aa8529abf3d7eea7d413c59ce62c93c7eb6c76d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 169ad40e32f688ae20a9d02f61db161844b1254a
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87309338"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890510"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Application Insights Slimme detectie regels beheren met Azure Resource Manager sjablonen
 
@@ -21,12 +21,12 @@ Deze methode kan worden gebruikt bij het implementeren van nieuwe Application In
 ## <a name="smart-detection-rule-configuration"></a>Configuratie van de detectie regel voor Smart
 
 U kunt de volgende instellingen configureren voor een regel voor Slimme detectie:
-- Als de regel is ingeschakeld (de standaard waarde is **waar**.)
-- Als er e-mail berichten moeten worden verzonden naar gebruikers die zijn gekoppeld aan de [bewakings lezer](../../role-based-access-control/built-in-roles.md#monitoring-reader) van het abonnement en bij het [bewaken van Inzender](../../role-based-access-control/built-in-roles.md#monitoring-contributor) rollen wanneer een detectie wordt gevonden (de standaard waarde is **waar**.)
+- Als de regel is ingeschakeld (de standaard waarde is **waar** .)
+- Als er e-mail berichten moeten worden verzonden naar gebruikers die zijn gekoppeld aan de [bewakings lezer](../../role-based-access-control/built-in-roles.md#monitoring-reader) van het abonnement en bij het [bewaken van Inzender](../../role-based-access-control/built-in-roles.md#monitoring-contributor) rollen wanneer een detectie wordt gevonden (de standaard waarde is **waar** .)
 - Aanvullende e-mail ontvangers die een melding moeten ontvangen wanneer een detectie wordt gevonden.
-    -  De e-mail configuratie is niet beschikbaar voor slimme detectie regels die als _Preview_zijn gemarkeerd.
+    -  De e-mail configuratie is niet beschikbaar voor slimme detectie regels die als _Preview_ zijn gemarkeerd.
 
-Om het configureren van de regel instellingen via Azure Resource Manager toe te staan, is de configuratie van de detectie regel nu beschikbaar als binnenste resource binnen de Application Insights resource met de naam **ProactiveDetectionConfigs**.
+Om het configureren van de regel instellingen via Azure Resource Manager toe te staan, is de configuratie van de detectie regel nu beschikbaar als binnenste resource binnen de Application Insights resource met de naam **ProactiveDetectionConfigs** .
 Voor een maximale flexibiliteit kan elke Slimme detectie regel worden geconfigureerd met unieke meldings instellingen.
 
 ## <a name="examples"></a>Voorbeelden
@@ -44,7 +44,7 @@ Zorg ervoor dat u de naam van de Application Insights resource vervangt en de re
       "type": "Microsoft.Insights/components",
       "location": "[resourceGroup().location]",
       "properties": {
-        "ApplicationId": "myApplication"
+        "Application_Type": "web"
       },
       "resources": [
         {
@@ -75,7 +75,7 @@ Zorg ervoor dat u de naam van de Application Insights resource vervangt en de re
       "type": "Microsoft.Insights/components",
       "location": "[resourceGroup().location]",
       "properties": {
-        "ApplicationId": "myApplication"
+        "Application_Type": "web"
       },
       "resources": [
         {
@@ -106,7 +106,7 @@ Zorg ervoor dat u de naam van de Application Insights resource vervangt en de re
       "type": "Microsoft.Insights/components",
       "location": "[resourceGroup().location]",
       "properties": {
-        "ApplicationId": "myApplication"
+        "Application_Type": "web"
       },
       "resources": [
         {
@@ -120,7 +120,7 @@ Zorg ervoor dat u de naam van de Application Insights resource vervangt en de re
           "properties": {
             "name": "longdependencyduration",
             "sendEmailsToSubscriptionOwners": true,
-            "customEmails": ['alice@contoso.com', 'bob@contoso.com'],
+            "customEmails": ["alice@contoso.com", "bob@contoso.com"],
             "enabled": true
           }
         }

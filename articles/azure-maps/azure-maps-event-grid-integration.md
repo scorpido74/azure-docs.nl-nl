@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 701c94237ef5348e11b5d7fbc85d4da1f20136ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44b2cab814d4e51c4eb0c3ce3322b898f5b26414
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88036807"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92889763"
 ---
 # <a name="react-to-azure-maps-events-by-using-event-grid"></a>Reageren op Azure Maps gebeurtenissen met behulp van Event Grid
 
 Azure Maps integreert met Azure Event Grid, zodat gebruikers gebeurtenis meldingen kunnen verzenden naar andere services en downstream-processen activeren. Het doel van dit artikel is om u te helpen uw zakelijke toepassingen te configureren om te Luis teren naar Azure Maps-gebeurtenissen. Hierdoor kunnen gebruikers reageren op kritieke gebeurtenissen op een betrouw bare, schaal bare en veilige manier. Gebruikers kunnen bijvoorbeeld een toepassing bouwen om een Data Base bij te werken, een ticket te maken en een e-mail melding te leveren, telkens wanneer een apparaat een geofence binnenkomt.
 
-Azure Event Grid is een volledig beheerde service voor gebeurtenisrouting, die gebruikmaakt van een publicatie/abonnementmodel. Event Grid heeft ingebouwde ondersteuning voor Azure-Services, zoals [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) en [Azure Logic-apps](https://docs.microsoft.com/azure/azure-functions/functions-overview). Het kan gebeurteniswaarschuwingen leveren aan niet-Azure-Services met behulp van webhooks. Zie [Een inleiding tot Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) voor een volledige lijst met gebeurtenisverwerkers die Event Grid ondersteunt.
+Azure Event Grid is een volledig beheerde service voor gebeurtenisrouting, die gebruikmaakt van een publicatie/abonnementmodel. Event Grid heeft ingebouwde ondersteuning voor Azure-Services, zoals [Azure Functions](../azure-functions/functions-overview.md) en [Azure Logic-apps](../azure-functions/functions-overview.md). Het kan gebeurteniswaarschuwingen leveren aan niet-Azure-Services met behulp van webhooks. Zie [Een inleiding tot Azure Event Grid](../event-grid/overview.md) voor een volledige lijst met gebeurtenisverwerkers die Event Grid ondersteunt.
 
 
 ![Azure Event Grid functionele model](./media/azure-maps-event-grid-integration/azure-event-grid-functional-model.png)
@@ -28,7 +28,7 @@ Azure Event Grid is een volledig beheerde service voor gebeurtenisrouting, die g
 
 ## <a name="azure-maps-events-types"></a>Azure Maps typen gebeurtenissen
 
-Gebeurtenisraster maakt gebruik van [gebeurtenisabonnementen](https://docs.microsoft.com/azure/event-grid/concepts#event-subscriptions) om gebeurtenisberichten te routen naar abonnees. Een Azure Maps account verzendt de volgende gebeurtenis typen: 
+Gebeurtenisraster maakt gebruik van [gebeurtenisabonnementen](../event-grid/concepts.md#event-subscriptions) om gebeurtenisberichten te routen naar abonnees. Een Azure Maps account verzendt de volgende gebeurtenis typen: 
 
 | Gebeurtenistype | Beschrijving |
 | ---------- | ----------- |

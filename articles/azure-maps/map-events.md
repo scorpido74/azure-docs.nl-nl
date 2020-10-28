@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 0621e0ecfbb91d151e3cc78d3b345ab92133695c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8121ceb68bdea9332316a9508bf6f4731e05b0ba
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310370"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890782"
 ---
 # <a name="interact-with-the-map"></a>Interactie met de kaart
 
-Dit artikel laat u zien hoe u de [klasse map-gebeurtenissen](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?#events)kunt gebruiken. De eigenschap markeringen gebeurtenissen op de kaart en op verschillende lagen van de kaart. U kunt ook gebeurtenissen markeren wanneer u communiceert met een HTML-markering.
+Dit artikel laat u zien hoe u de [klasse map-gebeurtenissen](/javascript/api/azure-maps-control/atlas.map#events)kunt gebruiken. De eigenschap markeringen gebeurtenissen op de kaart en op verschillende lagen van de kaart. U kunt ook gebeurtenissen markeren wanneer u communiceert met een HTML-markering.
 
 ## <a name="interact-with-the-map"></a>Interactie met de kaart
 
@@ -49,7 +49,7 @@ Met de volgende code worden java script-toewijzings gebeurtenissen toegevoegd aa
 
 De volgende tabel geeft een overzicht van alle ondersteunde gebeurtenissen van de kaart klasse.
 
-| Gebeurtenis               | Beschrijving |
+| Gebeurtenis               | Description |
 |---------------------|-------------|
 | `boxzoomend`        | Deze gebeurtenis wordt geactiveerd wanneer een ' zoom functie ' in vak wordt beëindigd.|
 | `boxzoomstart`      | Deze gebeurtenis wordt geactiveerd wanneer een ' zoom functie ' in vak wordt gestart.|
@@ -117,4 +117,4 @@ Raadpleeg de volgende artikelen voor voor beelden van volledige code:
 > [De Azure Maps Services-module gebruiken](./how-to-use-services-module.md)
 
 > [!div class="nextstepaction"]
-> [Codevoorbeelden](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Codevoorbeelden](/samples/browse/?products=azure-maps)

@@ -1,21 +1,21 @@
 ---
 title: Poorten naar een virtuele machine openen met Azure PowerShell
-description: Meer informatie over het openen van een poort/het maken van een eind punt voor uw Windows-VM met behulp van de Azure Resource Manager-implementatie modus en Azure PowerShell
+description: Meer informatie over het openen van een poort/het maken van een eind punt voor uw VM met behulp van Azure PowerShell
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a417c271c16aabe91836f425f26c0a55e7103557
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a432ce978f6fa9e3a472cb15e9ef9241bc41004d
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973934"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891751"
 ---
-# <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>Poorten en eind punten openen voor een virtuele machine in azure met behulp van Power shell
+# <a name="how-to-open-ports-and-endpoints-to-a-vm-using-powershell"></a>Poorten en eind punten openen voor een virtuele machine met behulp van Power shell
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 ## <a name="quick-commands"></a>Snelle opdrachten
@@ -27,9 +27,9 @@ Meld u aan bij uw Azure-account:
 Connect-AzAccount
 ```
 
-Vervang in de volgende voor beelden parameter namen door uw eigen waarden. Voor beelden van parameter namen zijn *myResourceGroup*, *myNetworkSecurityGroup*en *myVnet*.
+Vervang in de volgende voor beelden parameter namen door uw eigen waarden. Voor beelden van parameter namen zijn *myResourceGroup* , *myNetworkSecurityGroup* en *myVnet* .
 
-Maak een regel met [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig). In het volgende voor beeld wordt een regel gemaakt met de naam *myNetworkSecurityGroupRule* om *TCP* -verkeer toe te staan op poort *80*:
+Maak een regel met [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig). In het volgende voor beeld wordt een regel gemaakt met de naam *myNetworkSecurityGroupRule* om *TCP* -verkeer toe te staan op poort *80* :
 
 ```powershell
 $httprule = New-AzNetworkSecurityRuleConfig `
@@ -45,7 +45,7 @@ $httprule = New-AzNetworkSecurityRuleConfig `
     -DestinationPortRange 80
 ```
 
-Vervolgens maakt u de netwerk beveiligings groep met [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) en wijst u de http-regel die u zojuist hebt gemaakt als volgt toe. In het volgende voor beeld wordt een netwerk beveiligings groep gemaakt met de naam *myNetworkSecurityGroup*:
+Vervolgens maakt u de netwerk beveiligings groep met [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) en wijst u de http-regel die u zojuist hebt gemaakt als volgt toe. In het volgende voor beeld wordt een netwerk beveiligings groep gemaakt met de naam *myNetworkSecurityGroup* :
 
 ```powershell
 $nsg = New-AzNetworkSecurityGroup `

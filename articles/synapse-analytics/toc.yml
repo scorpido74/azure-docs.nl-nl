@@ -20,7 +20,7 @@
           href: get-started-analyze-sql-on-demand.md
         - name: 5 Gegevens analyseren in een opslagaccount
           href: get-started-analyze-storage.md
-        - name: 6 Organiseren met pijplijnen
+        - name: 6 Integreren met pijplijnen
           href: get-started-pipelines.md
         - name: 7 Visualiseren met Power BI
           href: get-started-visualize-power-bi.md
@@ -42,7 +42,8 @@
       href: quickstart-create-workspace-cli.md
     - name: Een Synapse-werkruimte maken met Azure PowerShell
       href: quickstart-create-workspace-powershell.md
-    - name: Implementeren met een sjabloon
+    - name: Implementeren met een ARM-sjabloon
+      displayName: Resource Manager
       href: quickstart-deployment-template-workspaces.md
     - name: Een Power BI-werkruimte koppelen
       href: quickstart-power-bi.md
@@ -168,7 +169,7 @@
               href: ../sql-database/transparent-data-encryption-azure-sql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: TDE met BYOK (Bring Your Own Key)
               href: ../sql-database/transparent-data-encryption-byok-azure-sql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-    - name: Integratie en indeling
+    - name: Integratie
       items:
         - name: Pijplijn en activiteit
           href: ../data-factory/concepts-pipelines-activities.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -558,7 +559,7 @@
               href: ../data-factory/data-flow-unpivot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Venster
               href: ../data-factory/data-flow-window.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-    - name: Integreren en indelen
+    - name: Integreren
       items:
         - name: Auteur
           items:
@@ -893,8 +894,6 @@
               href: ../data-factory/data-factory-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Problemen met connector oplossen
               href: ../data-factory/connector-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Problemen oplossen met het hulpprogramma Gegevens kopiëren
-              href: ../data-factory/copy-data-tool-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Problemen met zelf-hostende Integration Runtimes oplossen
               href: ../data-factory/self-hosted-integration-runtime-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: Hulpprogramma's verbinden met Synapse-werkruimtes

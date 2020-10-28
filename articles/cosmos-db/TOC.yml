@@ -59,13 +59,13 @@
         - name: Op rollen gebaseerd toegangsbeheer
           displayName: rbac
           href: role-based-access-control.md
+        - name: Ondersteuning voor Azure Policy
+          href: policy.md
         - name: Besturingselementen voor beveiliging van Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: Beveiligingsbasislijn
           href: security-baseline.md
-        - name: Ondersteuning voor Azure Policy
-          href: policy.md
     - name: Analyses met Azure Synapse Link
       items:
         - name: Azure Synapse Link voor Cosmos DB
@@ -202,11 +202,14 @@
           href: templates-samples-sql.md
     - name: Concepten
       items:
-        - name: Documentgegevens modelleren
-          displayName: document
-          href: modeling-data.md
-        - name: Partitionering
+        - name: Modelleren en partitioneren
           items:
+            - name: Documentgegevens modelleren
+              displayName: document
+              href: modeling-data.md
+            - name: Modelleren en partitioneren - een voorbeeld uit het dagelijks leven
+              displayName: 'model, partition, example'
+              href: how-to-model-partition-example.md
             - name: Synthetische partitiesleutel
               href: synthetic-partition-keys.md
         - name: SQL-query
@@ -631,10 +634,10 @@
           items:
             - name: Ingerichte doorvoer
               items:
-                - name: Standaard (handmatige) doorvoer voor een container inrichten
+                - name: Standaard doorvoer (handmatig) inrichten - container
                   displayName: 'request units, RUs, RU, collection level'
                   href: how-to-provision-container-throughput.md
-                - name: Standaard (handmatige) doorvoer voor een database inrichten
+                - name: Standaard doorvoer (handmatig) inrichten - database
                   displayName: 'request units, RUs, RU, shared throughput, database level'
                   href: how-to-provision-database-throughput.md
                 - name: Automatische schaalaanpassing voor doorvoer inrichten voor een database of een container
@@ -657,9 +660,6 @@
               href: large-partition-keys.md
             - name: Een query uitvoeren op een container
               href: how-to-query-container.md
-            - name: Gegevensmodellering en -partitionering - een voorbeeld uit het dagelijks leven
-              displayName: 'model, partition, example'
-              href: how-to-model-partition-example.md
             - name: Migreren naar gepartitioneerde containers
               href: migrate-containers-partitioned-to-nonpartitioned.md
             - name: Time to Live configureren
@@ -1179,8 +1179,6 @@
       items:
         - name: Antwoordheaders
           href: gremlin-headers.md
-        - name: Limieten
-          href: gremlin-limits.md
         - name: REST-resourceprovider
           href: /rest/api/cosmos-db-resource-provider/2020-04-01/gremlinresources
         - name: Resource Manager-sjabloon

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 3f6786ad8b7a9a635770be378e3efd0716be2428
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a51a4a95d3580912d9b727d1580e6f278831f677
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519653"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891499"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure automanage voor virtuele machines
 
@@ -44,11 +44,13 @@ Er zijn verschillende vereisten die u moet overwegen voordat u Azure automanage 
 - Alleen Windows Server Vm's
 - Vm's moeten worden uitgevoerd
 - Vm's moeten zich in een ondersteunde regio bevinden
-- De gebruiker moet over de juiste machtigingen beschikken
-- Vm's mogen niet worden gekoppeld aan een log Analytics-werk ruimte in een ander abonnement
+- De gebruiker moet over de juiste machtigingen beschikken (Zie de onderstaande alinea)
 - Automanage biedt momenteel geen ondersteuning voor sandbox-abonnementen
 
-U moet de rol **Inzender** hebben om Automatisch beheer in te schakelen met een bestaand account voor Automatisch beheer. Als u Automatisch beheer inschakelt met een nieuw account voor Automatisch beheer, hebt u de volgende machtigingen nodig: De rol van **Eigenaar** of **Inzender** en de rollen **Beheerders voor gebruikerstoegang**.
+U moet de rol **Inzender** hebben voor de resource groep die uw vm's bevat om het gebruik van een bestaande automanage-account in te scha kelen op vm's. Als u automanage inschakelt met een nieuw automanage-account, hebt u de volgende machtigingen nodig voor uw abonnement: rol van **eigenaar** of **Inzender** samen met beheerders rollen van **gebruikers toegang** . 
+
+> [!NOTE]
+> Als u automanage wilt gebruiken op een virtuele machine die is verbonden met een werk ruimte in een ander abonnement, moet u de hiervoor vermelde machtigingen hebben voor elk abonnement.
 
 Het is ook belang rijk te weten dat automanage alleen virtuele Windows-machines ondersteunt die zich in de volgende regio's bevinden: Europa-west, VS-Oost, VS-West 2, Canada-centraal, West-Centraal vs.
 
@@ -67,7 +69,7 @@ Voor al deze services worden automatisch de voor-en onderhouds-en berekenings-en
 
 In de Azure Portal kunt u automatisch beheer inschakelen op een bestaande virtuele machine of wanneer u een nieuwe virtuele machine maakt. Bekijk de Snelstartgids voor het [autobeheren van virtuele machines](quick-create-virtual-machines-portal.md)voor beknopte stappen voor dit proces.
 
-Als dit de eerste keer is dat u automatisch beheer voor uw virtuele machine inschakelt, kunt u zoeken in de Azure Portal voor de aanbevolen procedures voor het automatisch **beheren van virtuele Azure-machines**. Klik op **inschakelen op bestaande virtuele machine**, selecteer de virtuele machines die u wilt vrijmaken, klik op **selecteren**, klik op **inschakelen**en u bent klaar.
+Als dit de eerste keer is dat u automatisch beheer voor uw virtuele machine inschakelt, kunt u zoeken in de Azure Portal voor de aanbevolen procedures voor het automatisch **beheren van virtuele Azure-machines** . Klik op **inschakelen op bestaande virtuele machine** , selecteer de virtuele machines die u wilt vrijmaken, klik op **selecteren** , klik op **inschakelen** en u bent klaar.
 
 De enige keer dat u moet kunnen communiceren met deze virtuele machine om deze services te beheren, is in het geval dat u de virtuele machine hebt geprobeerd te herstellen, maar dit is niet gelukt. Als uw virtuele machine is hersteld, wordt deze weer in overeenstemming gebracht zonder dat u wordt gewaarschuwd.
 
@@ -105,7 +107,7 @@ Het account voor automatisch beheer is de beveiligings context of de identiteit 
 Wanneer u automatisch beheer op uw virtuele machines inschakelt, is er een geavanceerde vervolg keuzelijst op de Blade **Azure VM-best practice inschakelen** waarmee u het automatisch beheer account kunt toewijzen of hand matig maken. Azure Portal
 
 > [!NOTE]
-> U moet de rol **Inzender** hebben om Automatisch beheer in te schakelen met een bestaand account voor Automatisch beheer. Als u Automatisch beheer inschakelt met een nieuw account voor Automatisch beheer, hebt u de volgende machtigingen nodig: De rol van **Eigenaar** of **Inzender** en de rollen **Beheerders voor gebruikerstoegang**.
+> U moet de rol **Inzender** hebben voor de resource groep die uw virtuele machines bevat voor het inschakelen van automanage op vm's met behulp van een bestaand automanage-account. Als u automanage inschakelt met een nieuw automanage-account, hebt u de volgende machtigingen nodig voor uw abonnement: rol van **eigenaar** of **Inzender** samen met beheerders rollen van **gebruikers toegang** .
 
 
 ## <a name="status-of-vms"></a>Status van virtuele machines
@@ -121,7 +123,7 @@ In de kolom **status** kunnen de volgende statussen worden weer gegeven:
 - *Geconfigureerd* : de virtuele machine is geconfigureerd en er is geen drift gedetecteerd
 - *Mislukt* : de VM is gedrift en kan niet worden hersteld
 
-Als u de **status** als *mislukt*ziet, kunt u problemen met de implementatie oplossen via de resource groep waar uw VM zich bevindt. Ga naar **resource groepen**, selecteer uw resource groep, klik op **implementaties** en Bekijk de status *mislukt* samen met de fout Details.
+Als u de **status** als *mislukt* ziet, kunt u problemen met de implementatie oplossen via de resource groep waar uw VM zich bevindt. Ga naar **resource groepen** , selecteer uw resource groep, klik op **implementaties** en Bekijk de status *mislukt* samen met de fout Details.
 
 
 ## <a name="disabling-automanage-for-vms"></a>Automanage voor Vm's uitschakelen
@@ -132,7 +134,7 @@ Ga hiervoor in het Azure Portal naar de pagina aanbevolen procedures voor het au
 
 :::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="Services op intelligente wijze voorbereiden.":::
 
-Lees aandachtig door de berichten in het pop-upvenster voordat u akkoord gaat met het **uitschakelen**.
+Lees aandachtig door de berichten in het pop-upvenster voordat u akkoord gaat met het **uitschakelen** .
 
 > [!NOTE]
 > Het uitschakelen van het automanagement in een VM resulteert in het volgende gedrag:

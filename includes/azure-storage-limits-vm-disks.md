@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 03/18/2019
 ms.author: rogarana
-ms.openlocfilehash: e89676505bc211d01a4327f8816a048218e579fe
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 10599b47d55a0b4ea1eb79cda3c31a2479efb7c0
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91829078"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92756008"
 ---
 U kunt een aantal gegevensschijven koppelen aan een virtuele Azure-machine. Op basis van schaalbaarheid- en prestatiedoelen voor de gegevensschijven van een VM kunt u het aantal en type schijven bepalen dat u nodig hebt om aan uw prestatie- en capaciteitsvereisten te voldoen.
 
@@ -18,7 +18,7 @@ U kunt een aantal gegevensschijven koppelen aan een virtuele Azure-machine. Op b
 
 **Voor beheerde Azure-schijven:**
 
-In de volgende tabel ziet u de standaard- en maximumlimieten van het aantal resources per regio per abonnement. Er is geen limiet voor het aantal beheerde schijven, momentopnamen en afbeelding per resourcegroep.  
+In de volgende tabel ziet u de standaard- en maximumlimieten van het aantal resources per regio per abonnement. De limieten blijven dezelfde, ongeacht of schijven zijn versleuteld met door platform beheerde sleutels of door klant beheerde sleutels. Er is geen limiet voor het aantal beheerde schijven, momentopnamen en afbeelding per resourcegroep.  
 
 > | Resource | Limiet |
 > | --- | --- |

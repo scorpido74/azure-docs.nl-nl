@@ -79,6 +79,8 @@
           href: configure-cross-origin-resource-sharing.md
         - name: Export configureren
           href: configure-export-data.md
+        - name: Private Link configureren
+          href: configure-private-link.md
     - name: Gegevens exporteren
       expanded: false
       items:

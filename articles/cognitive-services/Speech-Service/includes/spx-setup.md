@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 203ba2988d817e3e396fd8aec3db00eba9832041
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 4b04558077f6b59d0fef613308a6ab96680d7ff8
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320908"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92470735"
 ---
 ## <a name="download-and-install"></a>Downloaden en installeren
 
@@ -107,7 +107,8 @@ In Windows wordt bijvoorbeeld met deze opdracht de sleutel ingesteld:
 
 ## <a name="create-subscription-config"></a>Abonnementsconfiguratie maken
 
-Als u de Speech CLI wilt gaan gebruiken, moet u eerst de sleutel voor het spraakabonnement en de regiogegevens invoeren. Zie de pagina [regio-ondersteuning](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) om uw regio-id te vinden. Zodra u uw abonnementssleutel en regio-id hebt (bijvoorbeeld `eastus`, `westus`), voert u de volgende opdrachten uit.
+Als u de Speech CLI wilt gaan gebruiken, moet u de sleutel voor het spraakabonnement en de regio-id invoeren. U kunt deze referenties ophalen door de stappen te volgen in [De Speech-service gratis uitproberen](../overview.md#try-the-speech-service-for-free).
+Zodra u uw abonnementssleutel en regio-id hebt (bijvoorbeeld `eastus`, `westus`), voert u de volgende opdrachten uit.
 
 ```shell
 spx config @key --set SUBSCRIPTION-KEY

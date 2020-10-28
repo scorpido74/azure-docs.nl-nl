@@ -3,12 +3,12 @@ title: Problemen met Azure Monitor voor containers oplossen | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u problemen met Azure Monitor voor containers kunt oplossen en oplossen.
 ms.topic: conceptual
 ms.date: 07/21/2020
-ms.openlocfilehash: fcd799c63e4afb68d96f67d1c03016a4d3b10f34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5727702ff973523ce7ab6400c1c7748e0584acbf
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87092827"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890357"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>Problemen met Azure Monitor voor containers oplossen
 
@@ -22,10 +22,10 @@ Tijdens het voorbereidings-of bijwerk proces wordt het verlenen van de roltoewij
 
 U kunt deze rol ook hand matig verlenen via de Azure Portal door de volgende stappen uit te voeren:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Klik in Azure Portal in de linkerbovenhoek op **Alle services**. Typ **Kubernetes**in de lijst met resources. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **Azure Kubernetes**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+2. Klik in Azure Portal in de linkerbovenhoek op **Alle services** . Typ **Kubernetes** in de lijst met resources. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **Azure Kubernetes** .
 3. Selecteer in de lijst met Kubernetes-clusters een in de lijst.
-2. Klik in het linkermenu op **toegangs beheer (IAM)**.
+2. Klik in het linkermenu op **toegangs beheer (IAM)** .
 3. Selecteer **+ toevoegen** om een roltoewijzing toe te voegen en selecteer de Publisher-rol **bewaking metrieken** en klik onder het **selectie** vakje **AKS** om de resultaten te filteren op alleen de service-principals van de clusters die in het abonnement zijn gedefinieerd. Selecteer de optie in de lijst die specifiek is voor dat cluster.
 4. Selecteer **Opslaan** om de rol toe te wijzen.
 
@@ -86,13 +86,13 @@ Als Azure Monitor voor containers is ingeschakeld en geconfigureerd, maar u geen
 
 De volgende tabel bevat een overzicht van bekende fouten die kunnen optreden bij het gebruik van Azure Monitor voor containers.
 
-| Foutberichten  | Bewerking |
+| Foutberichten  | Actie |
 | ---- | --- |
 | Fout bericht `No data for selected filters`  | Het kan enige tijd duren voordat de bewakingsgegevensstroom voor nieuwe clusters tot stand is gebracht. Sta ten minste 10 tot 15 minuten toe dat er gegevens voor uw cluster worden weer gegeven. |
 | Fout bericht `Error retrieving data` | Terwijl Azure Kubernetes service-cluster wordt ingesteld voor de status-en prestatie bewaking, wordt er een verbinding tot stand gebracht tussen het cluster en de Azure Log Analytics-werk ruimte. Een Log Analytics-werk ruimte wordt gebruikt om alle bewakings gegevens voor uw cluster op te slaan. Deze fout kan optreden als uw Log Analytics-werk ruimte is verwijderd. Controleer of de werk ruimte is verwijderd. als dat het geval is, moet u de bewaking van het cluster opnieuw inschakelen met Azure Monitor voor containers en een bestaande of een nieuwe werk ruimte maken. Als u het opnieuw wilt inschakelen, moet u de bewaking voor het cluster [uitschakelen](container-insights-optout.md) en de Azure monitor voor containers weer [inschakelen](container-insights-enable-new-cluster.md) . |
 | `Error retrieving data` na het toevoegen van Azure Monitor voor containers via AZ AKS cli | Als u controle inschakelt met `az aks cli` , worden Azure monitor voor containers mogelijk niet op de juiste wijze geïmplementeerd. Controleer of de oplossing is geïmplementeerd. Als u wilt controleren, gaat u naar uw Log Analytics-werk ruimte en controleert u of de oplossing beschikbaar is door **oplossingen** te selecteren in het deel venster aan de linkerkant. Als u dit probleem wilt oplossen, moet u de oplossing opnieuw implementeren door de instructies te volgen voor [het implementeren van Azure monitor voor containers](container-insights-onboard.md) |
 
-Om het probleem op te lossen, is er [hier](https://raw.githubusercontent.com/microsoft/Docker-Provider/ci_dev/scripts/troubleshoot/TroubleshootError_nonAzureK8s.ps1)een script voor het oplossen van problemen beschikbaar.
+Om het probleem te kunnen vaststellen, hebben we een script voor het [oplossen van problemen](https://aka.ms/troubleshooting-script)opgesteld.
 
 ## <a name="azure-monitor-for-containers-agent-replicaset-pods-are-not-scheduled-on-non-azure-kubernetes-cluster"></a>Azure Monitor voor containers van de container-agent in een cluster zijn niet gepland voor niet-Azure Kubernetes-clusters
 
@@ -112,7 +112,7 @@ Azure Monitor voor containers agent peulen maakt gebruik van het cAdvisor-eind p
 
 ## <a name="non-azure-kubernetes-cluster-are-not-showing-in-azure-monitor-for-containers"></a>Niet-Azure Kubernetes-cluster wordt niet weer gegeven in Azure Monitor voor containers
 
-Als u het niet-Azure Kubernetes-cluster in Azure Monitor voor containers wilt weer geven, moet u lees toegang hebben op de Log Analytics-werk ruimte die dit inzicht ondersteunt en op de **ContainerInsights (*werk ruimte*)** van de container Insights-oplossing.
+Als u het niet-Azure Kubernetes-cluster in Azure Monitor voor containers wilt weer geven, moet u lees toegang hebben op de Log Analytics-werk ruimte die dit inzicht ondersteunt en op de **ContainerInsights ( *werk ruimte* )** van de container Insights-oplossing.
 
 ## <a name="next-steps"></a>Volgende stappen
 

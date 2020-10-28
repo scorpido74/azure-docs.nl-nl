@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: ecefac68a4348eeae23860d542f949b1c7ff23a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddb8009e544ede82d1c56d112950ff247a87380c
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310201"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890697"
 ---
 # <a name="get-shape-data"></a>Vormgegevens ophalen
 
-Dit artikel laat u zien hoe u gegevens kunt ophalen van shapes die op de kaart worden getekend. We gebruiken de functie **drawingManager. getSource ()** in [Draw Manager](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#getsource--). Er zijn verschillende scenario's waarin u de geojson-gegevens van een getekende vorm wilt extra heren en deze elders kunt gebruiken.  
+Dit artikel laat u zien hoe u gegevens kunt ophalen van shapes die op de kaart worden getekend. We gebruiken de functie **drawingManager. getSource ()** in [Draw Manager](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#getsource--). Er zijn verschillende scenario's waarin u de geojson-gegevens van een getekende vorm wilt extra heren en deze elders kunt gebruiken.  
 
 
 ## <a name="get-data-from-drawn-shape"></a>Gegevens ophalen van een teken vorm
@@ -54,10 +54,10 @@ Meer informatie over het gebruik van aanvullende functies van de module teken hu
 Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 
 > [!div class="nextstepaction"]
-> [Diagram](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Kaart](/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [Drawing Manager](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager)
+> [Drawing Manager](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager)
 
 > [!div class="nextstepaction"]
-> [Werk balk tekenen](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)
+> [Werk balk tekenen](/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)

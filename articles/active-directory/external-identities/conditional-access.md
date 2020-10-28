@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b47ec082daa6eee4ab593fdb5523087f9eb5b038
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eccbbb22814788aaf06fa6fd10d8c376203c1d49
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274143"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892448"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>Voorwaardelijke toegang voor B2B-samenwerkings gebruikers
 
@@ -110,5 +110,5 @@ Op dit moment kunnen aanmeldings beleid op basis van Risico's niet worden toegep
 Raadpleeg de volgende artikelen over Azure AD B2B-samen werking:
 
 * [Wat is Azure AD B2B-samenwerking?](what-is-b2b.md)
-* [Licentie voor Azure AD B2B-samenwerking](licensing-guidance.md)
+* [Prijzen van externe identiteiten](external-identities-pricing.md)
 * [Veelgestelde vragen over Azure Active Directory B2B-samenwerking](faq.md)

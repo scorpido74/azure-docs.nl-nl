@@ -110,7 +110,7 @@
         - name: Azure Resource Manager-sjabloon
           href: 'https://docs.microsoft.com/azure/virtual-network/ipv6-configure-standard-load-balancer-template-json'
           displayName: ARM
-    - name: Time-out voor TCP-inactiviteit configureren voor load balancer
+    - name: TCP-reset en inactiviteit configureren
       href: load-balancer-tcp-idle-timeout.md
     - name: Distributiemodus configureren voor load balancer
       href: load-balancer-distribution-mode.md

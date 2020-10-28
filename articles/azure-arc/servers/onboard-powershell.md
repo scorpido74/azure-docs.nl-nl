@@ -1,24 +1,20 @@
 ---
 title: Hybride computers verbinden met Azure met behulp van Power shell
 description: In dit artikel leert u hoe u de Agent installeert en een machine verbindt met Azure met behulp van Azure Arc-servers met behulp van Power shell.
-ms.date: 10/21/2020
+ms.date: 10/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: d36fd174606b49b28b1d8343bff6ccc1f62e5194
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: bb114ec3e279a7ea696d834af8eb7240cb892dc1
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375271"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891938"
 ---
 # <a name="connect-hybrid-machines-to-azure-using-powershell"></a>Hybride computers verbinden met Azure met behulp van Power shell
 
-U kunt servers voor Azure-Arc inschakelen voor een of meer Windows-of Linux-computers in uw omgeving door een reeks stappen hand matig uit te voeren. U kunt ook gebruikmaken van de Power shell-cmdlet [Connect-AzConnectedMachine](/powershell/module/az.connectedmachine/remove-azconnectedmachine). Met deze cmdlet worden de volgende acties uitgevoerd:
+U kunt servers met Azure-ondersteuning inschakelen voor een of meer Windows-of Linux-computers in uw omgeving door een aantal hand matige stappen uit te voeren. U kunt ook de Power shell-cmdlet [Connect-AzConnectedMachine](/powershell/module/az.connectedmachine/remove-azconnectedmachine) gebruiken om de verbonden machine agent te downloaden, de agent te installeren en de machine te registreren bij Azure Arc. Met de cmdlet wordt het Windows agent-Windows Installer-pakket gedownload van het micro soft Download centrum en het Linux-agent pakket van de micro soft-pakket opslagplaats.
 
-- Hiermee configureert u de hostcomputer voor het downloaden van de Windows-agent vanuit het micro soft Download centrum en het Linux-agent pakket van packages.microsoft.com.
-- Hiermee wordt de verbonden machine agent geïnstalleerd.
-- Registreert de machine met Azure Arc
-
-Voor deze methode moet u beheerders rechten op de computer hebben om de agent te installeren en configureren. Op Linux, met behulp van het hoofd account en in Windows, bent u lid van de lokale groep Administrators.
+Voor deze methode moet u beheerders rechten op de computer hebben om de agent te installeren en configureren. Op Linux, met behulp van het hoofd account en in Windows, bent u lid van de lokale groep Administrators. U kunt dit proces interactief of extern uitvoeren op een Windows-Server met behulp van [externe communicatie met Power shell](/powershell/scripting/learn/ps101/08-powershell-remoting).
 
 Voordat u aan de slag gaat, moet u de [vereisten](agent-overview.md#prerequisites) controleren en controleren of uw abonnement en resources voldoen aan de vereisten. Zie [ondersteunde Azure-regio's](overview.md#supported-regions)voor meer informatie over ondersteunde regio's en andere gerelateerde overwegingen.
 
@@ -38,7 +34,31 @@ Wanneer de installatie is voltooid, wordt het volgende bericht weer gegeven:
 
 `The installed extension ``Az.ConnectedMachine`` is experimental and not covered by customer support. Please use with discretion.`
 
-## <a name="install-and-validate-the-agent-on-windows"></a>De agent in Windows installeren en valideren
+## <a name="install-the-agent-and-connect-to-azure"></a>De agent installeren en verbinding maken met Azure
+
+1. Open een Power shell-console met verhoogde bevoegdheden.
+
+2. Meld u aan bij Azure door de opdracht uit te voeren `Connect-AzAccount` .
+
+3. Als u de verbonden machine-agent wilt installeren, gebruikt u `Connect-AzConnectedMachine` met de `-Name` `-ResourceGroupName` `-Location` para meters, en. Gebruik de `-SubscriptionId` para meter om het standaard abonnement te negeren als gevolg van de Azure-context die is gemaakt na het aanmelden. Voer een van de volgende opdrachten uit:
+
+    * Als u de verbonden machine-agent op de doel computer wilt installeren die rechtstreeks kan communiceren met Azure, voert u de volgende handelingen uit:
+
+    ```azurepowershell
+    Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -SubscriptionId 978ab182-6cf0-4de3-a58b-53c8d0a3235e
+    ```
+    
+    * Voer de volgende stappen uit om de verbonden machine agent te installeren op de doel computer die communiceert via een proxy server:
+    
+    ```azurepowershell
+    Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -SubscriptionId 978ab182-6cf0-4de3-a58b-53c8d0a3235e -proxy http://<proxyURL>:<proxyport>
+    ```
+
+Als de agent niet kan worden gestart nadat de installatie is voltooid, raadpleegt u de logboeken voor gedetailleerde informatie over de fout. Op Windows op *%ProgramData%\AzureConnectedMachineAgent\Log\himds.log* en op Linux op */var/opt/azcmagent/log/himds.log* .
+
+## <a name="install-and-connect-using-powershell-remoting"></a>Installeren en verbinding maken met behulp van externe communicatie met Power shell
+
+Voer de volgende stappen uit om de doel-Windows-Server of-computer te configureren met Azure Arc-servers. Externe toegang via Power shell moet zijn ingeschakeld op de externe computer. Gebruik de `Enable-PSRemoting` cmdlet om externe communicatie van Power shell in te scha kelen.
 
 1. Open een Power shell-console als beheerder.
 
@@ -46,19 +66,25 @@ Wanneer de installatie is voltooid, wordt het volgende bericht weer gegeven:
 
 3. Als u de verbonden machine-agent wilt installeren, gebruikt u `Connect-AzConnectedMachine` met de `-Name` `-ResourceGroupName` `-Location` para meters, en. Gebruik de `-SubscriptionId` para meter om het standaard abonnement te negeren als gevolg van de Azure-context die is gemaakt na het aanmelden.
 
-    Voer de volgende opdracht uit om de verbonden machine agent te installeren op de doel computer die rechtstreeks kan communiceren met Azure::
+Voer de volgende opdracht uit om de verbonden machine agent te installeren op de doel computer die rechtstreeks kan communiceren met Azure:
 
-    ```azurepowershell
-    Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -SubscriptionId 978ab182-6cf0-4de3-a58b-53c8d0a3235e
-    ```
-    
-    Als de doelmachine communiceert via een proxyserver, voert u de volgende opdracht uit:
-    
-    ```azurepowershell
-    Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -SubscriptionId 978ab182-6cf0-4de3-a58b-53c8d0a3235e -proxy http://<proxyURL>:<proxyport>
-    ```
+```azurepowershell
+$session = Connect-PSSession -ComputerName myMachineName
+Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -PSSession $session
+```
 
-    Als de agent niet kan worden gestart nadat de installatie is voltooid, raadpleegt u de logboeken voor gedetailleerde informatie over de fout. Op Windows op *%ProgramData%\AzureConnectedMachineAgent\Log\himds.log*en op Linux op */var/opt/azcmagent/log/himds.log*.
+Het volgende voor beeld is de resultaten van de opdracht:
+
+```azurepowershell
+time="2020-08-07T13:13:25-07:00" level=info msg="Onboarding Machine. It usually takes a few minutes to complete. Sometimes it may take longer depending on network and server load status."
+time="2020-08-07T13:13:25-07:00" level=info msg="Check network connectivity to all endpoints..."
+time="2020-08-07T13:13:29-07:00" level=info msg="All endpoints are available... continue onboarding"
+time="2020-08-07T13:13:50-07:00" level=info msg="Successfully Onboarded Resource to Azure" VM Id=f65bffc7-4734-483e-b3ca-3164bfa42941
+
+Name           Location OSName   Status     ProvisioningState
+----           -------- ------   ------     -----------------
+myMachineName  eastus   windows  Connected  Succeeded
+```
 
 ## <a name="verify-the-connection-with-azure-arc"></a>De verbinding met Azure Arc controleren
 

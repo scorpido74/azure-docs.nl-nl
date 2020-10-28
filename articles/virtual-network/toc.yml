@@ -4,7 +4,7 @@
   items:
     - name: Over Virtual Network
       href: virtual-networks-overview.md
-- name: Snelstartgidsen
+- name: Quickstarts
   items:
     - name: Een virtueel netwerk maken - Portal
       href: quick-create-portal.md
@@ -240,6 +240,8 @@
               href: virtual-network-public-ip-address.md
             - name: Voorvoegsel van openbaar IP-adres beheren
               href: manage-public-ip-address-prefix.md
+            - name: Openbaar IP-adres upgraden
+              href: virtual-network-public-ip-address-upgrade.md
             - name: IP-adres van NIC's toevoegen of verwijderen
               href: virtual-network-network-interface-addresses.md
             - name: Routeringsvoorkeur

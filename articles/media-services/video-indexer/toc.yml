@@ -4,7 +4,7 @@
   items:
     - name: Wat is Video Indexer?
       href: video-indexer-overview.md
-- name: Snelstartgidsen
+- name: Quickstarts
   expanded: true
   items:
     - name: Aan de slag
@@ -13,7 +13,7 @@
       href: invite-users.md
 - name: Zelfstudies
   items:
-    - name: Verbinding maken met Azure
+    - name: Een nieuw account maken dat is verbonden met Azure
       href: connect-to-azure.md
     - name: Video Indexer-API gebruiken
       href: video-indexer-use-apis.md

@@ -5,16 +5,16 @@ author: batrived
 ms.topic: article
 ms.date: 06/21/2020
 ms.author: batrived
-ms.openlocfilehash: 5eb40d464fb718f0bd6dffe0d00f6420f4ea4995
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b93d7a110889192bb5be6fffa56a73758d6faa2
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119001"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892312"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-grid"></a>Verbindings problemen oplossen-Azure Event Grid
 
-Er zijn verschillende redenen waarom client toepassingen geen verbinding kunnen maken met een Event Grid onderwerp/domein. De verbindings problemen die u ondervindt, kunnen permanent of tijdelijk zijn. Als het probleem de gehele tijd voor komt, kunt u de firewall-instellingen van uw organisatie, de IP-Firewall-instellingen, service tags, persoonlijke eind punten en meer controleren. Voor tijdelijke problemen kan het uitvoeren van opdrachten voor het controleren van verwijderde pakketten en het verkrijgen van netwerk traceringen helpen bij het oplossen van de problemen.
+Er zijn verschillende redenen waarom client toepassingen geen verbinding kunnen maken met een Event Grid onderwerp/domein. De verbindings problemen die u ondervindt, kunnen permanent of tijdelijk zijn. Als het probleem voortdurend optreedt (permanent), wilt u mogelijk de firewall instellingen van uw organisatie controleren, de IP-Firewall instellingen, service tags, persoonlijke eind punten en meer. Voor tijdelijke problemen kan het uitvoeren van opdrachten voor het controleren van verwijderde pakketten en het verkrijgen van netwerk traceringen helpen bij het oplossen van de problemen.
 
 In dit artikel vindt u tips voor het oplossen van verbindings problemen met Azure Event Grid.
 
@@ -22,7 +22,7 @@ In dit artikel vindt u tips voor het oplossen van verbindings problemen met Azur
 
 Als de toepassing helemaal geen verbinding kan maken met het event grid, volgt u de stappen in deze sectie om het probleem op te lossen.
 
-### <a name="check-if-there-is-a-service-outage"></a>Controleren of er sprake is van een service storing
+### <a name="check-if-theres-a-service-outage"></a>Controleren of er sprake is van een service storing
 
 Controleer op de site van de Azure- [service status](https://azure.microsoft.com/status/)de Azure Event grid service-onderbreking.
 
@@ -50,12 +50,14 @@ telnet {sampletopicname}.{region}-{suffix}.eventgrid.azure.net 443
 
 Wanneer u met Azure werkt, moet u soms specifieke IP-adresbereiken of Url's in uw bedrijfs firewall of-proxy toestaan om toegang te krijgen tot alle Azure-Services die u gebruikt of probeert te gebruiken. Controleer of het verkeer is toegestaan op IP-adressen die worden gebruikt door Event Grid. Voor IP-adressen die worden gebruikt door Azure Event Grid: Zie [Azure IP-adresbereiken en service Tags-Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519) en [service tag-AzureEventGrid](network-security.md#service-tags).
 
+In het [Azure IP-bereik en de service Tags-open bare Cloud](https://www.microsoft.com/download/details.aspx?id=56519) document worden ook IP-adressen **per regio** vermeld. U kunt adresbereiken voor de **regio van het onderwerp** en de **gekoppelde regio** in uw bedrijfs firewall of proxy toestaan. Zie [bedrijfs continuïteit en herstel na nood gevallen (BCDR): Azure-gekoppelde regio's](/azure/best-practices-availability-paired-regions)voor een gepaarde regio voor een regio. 
+
 > [!NOTE]
 > Er kunnen nieuwe IP-adressen worden toegevoegd aan de AzureEventGrid-servicetag, maar dit is niet gebruikelijk. Daarom is het een goed idee om de service Tags per week te controleren.
 
 ### <a name="verify-that-azureeventgrid-service-tag-is-allowed-in-your-network-security-groups"></a>Controleer of het AzureEventGrid-service label is toegestaan in uw netwerk beveiligings groepen
 
-Als uw toepassing binnen een subnet wordt uitgevoerd en als er een gekoppelde netwerk beveiligings groep is, controleert u of Internet-uitgaand is toegestaan of dat de AzureEventGrid-service label is toegestaan. Zie [service Tags](../virtual-network/service-tags-overview.md)
+Als uw toepassing binnen een subnet wordt uitgevoerd en als er een netwerk beveiligings groep is gekoppeld, moet u controleren of Internet-uitgaand is toegestaan of dat het AzureEventGrid-service label is toegestaan. Zie [service Tags](../virtual-network/service-tags-overview.md)
 
 ### <a name="check-the-ip-firewall-settings-for-your-topicdomain"></a>Controleer de IP-Firewall instellingen voor uw onderwerp/domein
 
@@ -63,7 +65,7 @@ Controleer of het open bare IP-adres van de computer waarop de toepassing wordt 
 
 Event Grid onderwerpen/-domeinen zijn standaard toegankelijk vanuit Internet zolang de aanvraag een geldige verificatie en autorisatie heeft. Met IP-firewall kunt u dit nog verder beperken tot een aantal IPv4-adressen of IPv4-adresbereiken in CIDR-notatie [(klasseloze Inter-Domain route ring)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
 
-De IP-firewall regels worden toegepast op het Event Grid onderwerp/domein niveau. Daarom gelden de regels voor alle verbindingen van clients die gebruikmaken van elk ondersteund protocol. Een verbindings poging van een IP-adres dat niet overeenkomt met een toegestane IP-regel op het Event Grid onderwerp of het domein, wordt geweigerd als verboden. De IP-regel wordt niet vermeld in het antwoord.
+De IP-firewall regels worden toegepast op het Event Grid onderwerp/domein niveau. Daarom gelden de regels voor alle verbindingen van clients die gebruikmaken van elk ondersteund protocol. Een verbindings poging van een IP-adres dat niet overeenkomt met een toegestane IP-regel op het Event Grid onderwerp/het domein, wordt geweigerd als verboden. In het antwoord wordt de IP-regel niet vermeld.
 
 Zie [IP-firewall regels configureren voor een Azure Event grid onderwerp/domein](configure-firewall.md)voor meer informatie.
 
@@ -91,7 +93,7 @@ Zie [Private-eind punten configureren](configure-private-endpoints.md)voor meer 
 
 ## <a name="troubleshoot-transient-connectivity-issues"></a>Problemen met de tijdelijke verbinding oplossen
 
-Als u problemen ondervindt met de verbinding, gaat u naar de volgende secties voor tips voor probleem oplossing.
+Als u problemen ondervindt met de connectiviteit, raadpleegt u de volgende secties voor probleemoplossings tips.
 
 ### <a name="run-the-command-to-check-dropped-packets"></a>Voer de opdracht uit om verwijderde pakketten te controleren
 

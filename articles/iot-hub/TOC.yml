@@ -4,7 +4,7 @@
   items:
     - name: Wat is Azure IoT Hub?
       href: about-iot-hub.md
-- name: Snelstartgidsen
+- name: Quickstarts
   expanded: true
   items:
     - name: Telemetrie verzenden
@@ -317,16 +317,10 @@
               href: iot-hub-configure-file-upload-powershell.md
             - name: Azure CLI gebruiken
               href: iot-hub-configure-file-upload-cli.md
-        - name: Metrische gegevens in Azure Monitor
-          href: iot-hub-metrics.md
-        - name: Diagnostische logboeken instellen
-          href: iot-hub-monitor-resource-health.md
         - name: Uw hub beveiligen met een X.509-certificaat
           href: iot-hub-security-x509-get-started.md
         - name: Een IoT-hub upgraden
           href: iot-hub-upgrade.md
-        - name: Berichttracering inschakelen
-          href: iot-hub-distributed-tracing.md
         - name: IP-filtering configureren
           href: iot-hub-ip-filtering.md
         - name: Openbare netwerktoegang beheren
@@ -339,6 +333,16 @@
               href: iot-hub-automatic-device-management-cli.md
         - name: Bulkimport en -export van IoT-apparaten
           href: iot-hub-bulk-identity-mgmt.md
+    - name: Controleren
+      items:
+        - name: IoT Hub bewaken
+          href: monitor-iot-hub.md
+        - name: Referentiegegevens voor bewaking
+          href: monitor-iot-hub-reference.md
+        - name: Berichttracering inschakelen
+          href: iot-hub-distributed-tracing.md
+        - name: IoT Hub-service en resourcestatus
+          href: iot-hub-azure-service-health-integration.md
     - name: Een echt apparaat gebruiken
       items:
         - name: Een online simulator gebruiken

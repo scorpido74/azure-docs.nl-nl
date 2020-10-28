@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: e993e3086ac63a6e9d5b8372327e35016b36239f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2d7c9e39cb3eb14a2c2c6a7b13e37f3a526184b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285159"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92889796"
 ---
 # <a name="change-the-style-of-the-map"></a>Stijl van de kaart wijzigen
 
-Het kaart besturings element ondersteunt meerdere verschillende [Opties](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions) voor kaart stijlen en [basis kaart stijlen](supported-map-styles.md). Alle stijlen kunnen worden ingesteld wanneer het kaart besturings element wordt geïnitialiseerd. Of u kunt stijlen instellen met behulp van de functie van het kaart besturings element `setStyle` . Dit artikel laat u zien hoe u deze stijl opties kunt gebruiken om de weer gave van de kaart aan te passen. U leert ook hoe u het besturings element stijl kiezer implementeert in uw kaart. Met het besturings element stijl kiezer kan de gebruiker scha kelen tussen verschillende basis stijlen.
+Het kaart besturings element ondersteunt meerdere verschillende [Opties](/javascript/api/azure-maps-control/atlas.styleoptions) voor kaart stijlen en [basis kaart stijlen](supported-map-styles.md). Alle stijlen kunnen worden ingesteld wanneer het kaart besturings element wordt geïnitialiseerd. Of u kunt stijlen instellen met behulp van de functie van het kaart besturings element `setStyle` . Dit artikel laat u zien hoe u deze stijl opties kunt gebruiken om de weer gave van de kaart aan te passen. U leert ook hoe u het besturings element stijl kiezer implementeert in uw kaart. Met het besturings element stijl kiezer kan de gebruiker scha kelen tussen verschillende basis stijlen.
 
 ## <a name="set-map-style-options"></a>Opties voor kaart stijl instellen
 
-Stijl opties kunnen worden ingesteld tijdens de initialisatie van Webbe sturings elementen. U kunt ook stijl opties bijwerken door de functie kaart besturings element aan te roepen `setStyle` . Zie [stijl opties](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions)voor een overzicht van alle beschik bare stijl opties.
+Stijl opties kunnen worden ingesteld tijdens de initialisatie van Webbe sturings elementen. U kunt ook stijl opties bijwerken door de functie kaart besturings element aan te roepen `setStyle` . Zie [stijl opties](/javascript/api/azure-maps-control/atlas.styleoptions)voor een overzicht van alle beschik bare stijl opties.
 
 ```javascript
 //Set the style options when creating the map.
@@ -82,7 +82,7 @@ De basiskaart stijl kan worden bijgewerkt met behulp van de `setStyle` functie e
 map.setStyle({ style: 'satellite' });
 ```
 
-In de volgende code, nadat een kaart exemplaar is geladen, wordt de kaart stijl bijgewerkt van `grayscale_dark` naar `satellite` met behulp van de functie [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#setstyle-styleoptions-) .
+In de volgende code, nadat een kaart exemplaar is geladen, wordt de kaart stijl bijgewerkt van `grayscale_dark` naar `satellite` met behulp van de functie [setStyle](/javascript/api/azure-maps-control/atlas.map#setstyle-styleoptions-) .
 
 <br/>
 
@@ -93,7 +93,7 @@ In de volgende code, nadat een kaart exemplaar is geladen, wordt de kaart stijl 
 
 Het besturings element stijl kiezer biedt een gebruiks vriendelijke knop met het deel venster flyout dat kan worden gebruikt door de eind gebruiker om te scha kelen tussen basis stijlen.
 
-De stijl kiezer heeft twee verschillende indelings opties: `icon` en `list` . Daarnaast kunt u met de stijl kiezer twee verschillende opties voor stijl kiezer kiezen `style` : `light` en `dark` . In dit voor beeld gebruikt de stijl kiezer de `icon` indeling en wordt een selectie lijst met basis stijlen weer gegeven in de vorm van pictogrammen. De kiezer voor stijl besturings elementen bevat de volgende basisset stijlen: `["road", "grayscale_light", "grayscale_dark", "night", "road_shaded_relief"]` . Zie [Opties voor stijl besturings](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.stylecontroloptions)elementen voor meer informatie over de opties voor stijl kiezer.
+De stijl kiezer heeft twee verschillende indelings opties: `icon` en `list` . Daarnaast kunt u met de stijl kiezer twee verschillende opties voor stijl kiezer kiezen `style` : `light` en `dark` . In dit voor beeld gebruikt de stijl kiezer de `icon` indeling en wordt een selectie lijst met basis stijlen weer gegeven in de vorm van pictogrammen. De kiezer voor stijl besturings elementen bevat de volgende basisset stijlen: `["road", "grayscale_light", "grayscale_dark", "night", "road_shaded_relief"]` . Zie [Opties voor stijl besturings](/javascript/api/azure-maps-control/atlas.stylecontroloptions)elementen voor meer informatie over de opties voor stijl kiezer.
 
 In de onderstaande afbeelding ziet u het besturings element stijl kiezer dat wordt weer gegeven in de `icon` indeling.
 
@@ -118,16 +118,16 @@ De volgende code laat zien hoe u de standaard `mapStyles` basisstijl lijst overs
 Voor meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 
 > [!div class="nextstepaction"]
-> [Diagram](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Kaart](/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [StyleOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions)
+> [StyleOptions](/javascript/api/azure-maps-control/atlas.styleoptions)
 
 > [!div class="nextstepaction"]
-> [StyleControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.stylecontrol)
+> [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol)
 
 > [!div class="nextstepaction"]
-> [StyleControlOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.stylecontroloptions)
+> [StyleControlOptions](/javascript/api/azure-maps-control/atlas.stylecontroloptions)
 
 Besturings elementen toevoegen aan uw kaarten:
 

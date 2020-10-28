@@ -9,26 +9,26 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 25ed41be53c114c258e5c63437ff2b5df875af75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c4367e2a649f4e239e2dab374afc4fb867e517b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310727"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891190"
 ---
 # <a name="add-html-markers-to-the-map"></a>HTML-markeringen toevoegen aan de kaart
 
 Dit artikel laat u zien hoe u een aangepaste HTML, zoals een afbeeldings bestand, aan de kaart kunt toevoegen als een HTML-markering.
 
 > [!NOTE]
-> HTML-markeringen maken geen verbinding met gegevens bronnen. Plaatsings gegevens worden direct toegevoegd aan de markering en de markering wordt toegevoegd aan de eigenschap Maps van `markers` een [HtmlMarkerManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkermanager).
+> HTML-markeringen maken geen verbinding met gegevens bronnen. Plaatsings gegevens worden direct toegevoegd aan de markering en de markering wordt toegevoegd aan de eigenschap Maps van `markers` een [HtmlMarkerManager](/javascript/api/azure-maps-control/atlas.htmlmarkermanager).
 
 > [!IMPORTANT]
 > In tegens telling tot de meeste lagen in de Azure Maps web control die WebGL gebruiken voor rendering, gebruiken HTML-markeringen traditionele DOM-elementen voor rendering. Hoe meer HTML-markeringen worden toegevoegd aan een pagina, hoe meer DOM-elementen er zijn. Prestaties kunnen afnemen nadat u een paar honderd HTML-markeringen hebt toegevoegd. Voor grotere gegevens sets kunt u het clusteren van uw gegevens of het gebruik van een symbool of een Bubble laag.
 
 ## <a name="add-an-html-marker"></a>Een HTML-markering toevoegen
 
-De [HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker) -klasse heeft een standaard stijl. U kunt de markering aanpassen door de kleur-en tekst opties van de markering in te stellen. De standaard stijl van de klasse HTML-markering is een SVG-sjabloon met een `{color}` en een `{text}` tijdelijke aanduiding. Stel de kleur-en tekst eigenschappen in de HTML-markerings opties in voor een snelle aanpassing. 
+De [HtmlMarker](/javascript/api/azure-maps-control/atlas.htmlmarker) -klasse heeft een standaard stijl. U kunt de markering aanpassen door de kleur-en tekst opties van de markering in te stellen. De standaard stijl van de klasse HTML-markering is een SVG-sjabloon met een `{color}` en een `{text}` tijdelijke aanduiding. Stel de kleur-en tekst eigenschappen in de HTML-markerings opties in voor een snelle aanpassing. 
 
 Met de volgende code wordt een HTML-markering gemaakt en wordt de eigenschap Color ingesteld op ' DodgerBlue ' en de eigenschap Text op ' 10 '. Er wordt een pop-upvenster gekoppeld aan de markering en de `click` gebeurtenis wordt gebruikt om de zicht baarheid van de pop-up te scha kelen.
 
@@ -103,13 +103,13 @@ In deze voor beelden ziet u hoe u muis toevoegen en gebeurtenissen sleept naar e
 Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 
 > [!div class="nextstepaction"]
-> [HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker)
+> [HtmlMarker](/javascript/api/azure-maps-control/atlas.htmlmarker)
 
 > [!div class="nextstepaction"]
-> [HtmlMarkerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
+> [HtmlMarkerOptions](/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
 
 > [!div class="nextstepaction"]
-> [HtmlMarkerManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkermanager)
+> [HtmlMarkerManager](/javascript/api/azure-maps-control/atlas.htmlmarkermanager)
 
 Raadpleeg de volgende artikelen voor meer code voorbeelden om toe te voegen aan uw Maps:
 

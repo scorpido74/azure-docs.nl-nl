@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: dd4a02ffdc062ed1940d35ca64e02a5e0a88a248
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 133674e6764e12742f5b238946e943d9b5011cd2
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333321"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891326"
 ---
 # <a name="read-and-write-spatial-data"></a>Ruimtelijke gegevens lezen en schrijven
 
@@ -41,7 +41,7 @@ Bij het lezen van een gecomprimeerd bestand, als een zip-of KMZ, wordt het uitge
 
 Het resultaat van de Lees functie is een `SpatialDataSet` object. Dit object breidt de geojson FeatureCollection-klasse uit. Het kan eenvoudig worden door gegeven `DataSource` aan een as-is om de functies ervan weer te geven op een kaart. Het `SpatialDataSet` bevat niet alleen informatie over de functies, maar kan ook KML-bedekkingen, verwerkings metrieken en andere details bevatten, zoals beschreven in de volgende tabel.
 
-| Naam van eigenschap | Type | Beschrijving | 
+| Naam van eigenschap | Type | Description | 
 |---------------|------|-------------|
 | `bbox` | `BoundingBox` | Selectie kader van alle gegevens in de gegevensset. |
 | `features` | `Feature[]` | Geojson-functies in de gegevensset. |
@@ -164,17 +164,17 @@ De verdeelt `GmlReader` coördinaten met een van de volgende srid's:
 
 Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 
-[statische functies van atlas.io](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io)
+[statische functies van atlas.io](/javascript/api/azure-maps-spatial-io/atlas.io)
 
-[SpatialDataSet](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.spatialdataset)
+[SpatialDataSet](/javascript/api/azure-maps-spatial-io/atlas.spatialdataset)
 
-[SpatialDataSetStats](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.spatialdatasetstats)
+[SpatialDataSetStats](/javascript/api/azure-maps-spatial-io/atlas.spatialdatasetstats)
 
-[GmlReader](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.gmlreader)
+[GmlReader](/javascript/api/azure-maps-spatial-io/atlas.io.core.gmlreader)
 
-[GmlWriter](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.gmlwriter)
+[GmlWriter](/javascript/api/azure-maps-spatial-io/atlas.io.core.gmlwriter)
 
-[de functies Atlas. io. OGC. WKT](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.ogc.wkt)
+[de functies Atlas. io. OGC. WKT](/javascript/api/azure-maps-spatial-io/atlas.io.ogc.wkt)
 
 [Verbinding maken met een WFS-service](spatial-io-connect-wfs-service.md)
 

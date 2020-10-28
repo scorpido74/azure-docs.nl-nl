@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 74c8ba4ed1f228b9b3ba90b46c47f538d71ff409
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96553e75d4b982cfe67d03961d4356a3844f253c
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310455"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890994"
 ---
 # <a name="add-a-polygon-layer-to-the-map"></a>Een polygoon laag toevoegen aan de kaart
 
-In dit artikel leest u hoe u de gebieden van `Polygon` en `MultiPolygon` functie geometrie op de kaart kunt weer geven met behulp van een polygoon laag. De websdk van Azure Maps biedt ook ondersteuning voor het maken van cirkel geometrie zoals gedefinieerd in het [uitgebreide GEOjson-schema](extend-geojson.md#circle). Deze cirkels worden omgezet in veelhoeken wanneer ze op de kaart worden weer gegeven. Alle functie-geometrieën kunnen eenvoudig worden bijgewerkt wanneer deze met de [Atlas wordt verpakt. ](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) Klasse van vorm.
+In dit artikel leest u hoe u de gebieden van `Polygon` en `MultiPolygon` functie geometrie op de kaart kunt weer geven met behulp van een polygoon laag. De websdk van Azure Maps biedt ook ondersteuning voor het maken van cirkel geometrie zoals gedefinieerd in het [uitgebreide GEOjson-schema](extend-geojson.md#circle). Deze cirkels worden omgezet in veelhoeken wanneer ze op de kaart worden weer gegeven. Alle functie-geometrieën kunnen eenvoudig worden bijgewerkt wanneer deze met de [Atlas wordt verpakt. ](/javascript/api/azure-maps-control/atlas.shape) Klasse van vorm.
 
 ## <a name="use-a-polygon-layer"></a>Een polygoon laag gebruiken 
 
-Wanneer een polygoon laag is verbonden met een gegevens bron en op de kaart is geladen, wordt het gebied met en-functies weer gegeven `Polygon` `MultiPolygon` . Als u een veelhoek wilt maken, voegt u deze toe aan een gegevens bron en rendert u deze met een polygoon laag met behulp van de [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer) -klasse.
+Wanneer een polygoon laag is verbonden met een gegevens bron en op de kaart is geladen, wordt het gebied met en-functies weer gegeven `Polygon` `MultiPolygon` . Als u een veelhoek wilt maken, voegt u deze toe aan een gegevens bron en rendert u deze met een polygoon laag met behulp van de [PolygonLayer](/javascript/api/azure-maps-control/atlas.layer.polygonlayer) -klasse.
 
 ```javascript
 //Create a data source and add it to the map.
@@ -115,7 +115,7 @@ Met de Azure Maps Web-SDK worden deze `Point` functies geconverteerd naar `Polyg
 
 ## <a name="make-a-geometry-easy-to-update"></a>Een geometrie gemakkelijk te updaten maken
 
-Een `Shape` klasse verpakt een [geometrie](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry) of [functie](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature) en maakt het eenvoudig om deze functies bij te werken en te onderhouden. Als u een vorm variabele wilt instantiëren, geeft u een geometrie of een set eigenschappen door aan de vorm-constructor.
+Een `Shape` klasse verpakt een [geometrie](/javascript/api/azure-maps-control/atlas.data.geometry) of [functie](/javascript/api/azure-maps-control/atlas.data.feature) en maakt het eenvoudig om deze functies bij te werken en te onderhouden. Als u een vorm variabele wilt instantiëren, geeft u een geometrie of een set eigenschappen door aan de vorm-constructor.
 
 ```javascript
 //Creating a shape by passing in a geometry and a object containing properties.
@@ -137,10 +137,10 @@ In het volgende code voorbeeld ziet u hoe u een geojson-object in cirkel met een
 Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 
 > [!div class="nextstepaction"]
-> [Polygoon](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon)
+> [Polygoon](/javascript/api/azure-maps-control/atlas.data.polygon)
 
 > [!div class="nextstepaction"]
-> [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer)
+> [PolygonLayer](/javascript/api/azure-maps-control/atlas.layer.polygonlayer)
 
 > [!div class="nextstepaction"]
 > [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions)

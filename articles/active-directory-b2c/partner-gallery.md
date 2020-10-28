@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9e83fcd6a8e6a7b0c81f47cc3ad97b7f55da1b3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c67ff71ccc7690fbf3362b423ba4b6a56091684
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91713174"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891241"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C ISV-partners
 
@@ -29,19 +29,19 @@ Het ISV-partner netwerk breidt onze oplossings mogelijkheden uit om u te helpen 
 
 | ISV-partner | Beschrijving en integratie scenario's  |
 | :--- | :--- |
-| ![logo](./media/partner-gallery/arkose-logo.png) | [Arkose Labs](./partner-arkose-labs.md) is een oplossings provider voor het voor komen van fraude die organisaties helpt bij het beveiligen tegen bot-aanvallen, inbreuk op account overname en frauduleuze account openingen.
-| ![logo](./media/partner-gallery/experian-logo.png) | [Experian](./partner-experian.md) is een identiteits controle-provider waarmee risico beoordelingen worden uitgevoerd op basis van gebruikers kenmerken om fraude te voor komen.|
-| ![logo](./media/partner-gallery/hypr-logo.png) | [HYPR](./partner-hypr.md) is een echte verificatie provider met een wacht woord, waarmee wacht woorden met een open bare sleutel versleuteling worden vervangen door fraude, phishing en hergebruik van referenties.|
-| ![logo](./media/partner-gallery/idology-logo.png) | [IDology](./partner-idology.md) is een identiteits verificatie en controle provider met id-verificatie oplossingen, fraude preventie oplossingen, compatibiliteits oplossingen en anderen.|
-| ![logo](./media/partner-gallery/itsme-logo.png) | [Itsme](./partner-itsme.md) is een digitale id-oplossing voor identificatie, authenticatie en Trust Services (eiDAS) waarmee gebruikers veilig kunnen worden aangemeld zonder kaart lezers, wacht woorden, twee ledige verificatie en meerdere pincodes. |
-| ![logo](./media/partner-gallery/jumio-logo.png) | [Jumio](./partner-jumio.md) is een id-verificatie service waarmee realtime-verificatie via een geautomatiseerde id wordt ingeschakeld, waarbij klant gegevens worden beschermd. |
-| ![logo](./media/partner-gallery/lexisnexis-logo.png) | [LexisNexis](./partner-lexisnexis.md) is een profilerings-en identiteits validatie provider die gebruikers identificatie verifieert en uitgebreide risico analyse biedt op basis van het apparaat van de gebruiker. |
-| ![logo](./media/partner-gallery/onfido-logo.png) | [Onfido](./partner-onfido.md) is een verificatie oplossing met een document-id en gelaats biometrie waarmee bedrijven voldoen aan de vereisten van *uw klant* en identiteit in real-time.  |
-| ![logo](./media/partner-gallery/saviynt-logo.png) | [Saviynt](./partner-saviynt.md) Cloud-native-platform maakt gebruik van intelligente analyses en biedt integratie van meerdere toepassingen om IT-modernisatie te stroom lijnen en betere beveiliging, governance en naleving te bevorderen. Zakelijke modernisering verandert de manier waarop bedrijven toegangs aanvragen controleren, toegangs beoordelingen, rapport analyse en stroom lijnen van certificerings campagnes.  |
-| ![logo](./media/partner-gallery/trusona-logo.png) | Met [Trusona](./partner-trusona.md) -integratie kunt u zich veilig aanmelden en wacht woordloze verificatie, multi-factor Authentication en digitale licentie controle inschakelen.|
-| ![logo](./media/partner-gallery/twilio-logo.png) | [Twilio verify app](./partner-twilio.md) biedt meerdere oplossingen om multi-factor Authentication (MFA) in te scha kelen via een SMS One-Time Password (OTP), op tijd gebaseerd wacht woord (mobiele totp) en push meldingen, en om te voldoen aan de voor waarden van de SCA voor betalings Services-instructie 2 (PSD2).|
-| ![logo](./media/partner-gallery/typingdna-logo.png) | [TypingDNA](./partner-typingdna.md) is een identiteits verificatie-en controle provider op basis van het door de gebruiker getypte patroon, en biedt id-verificatie oplossingen waarbij multi-factor Authentication wordt afgedwongen en waarmee wordt voldaan aan de algemene vereisten voor de betalings Services-instructie 2 (PSD2). |
-| ![logo](./media/partner-gallery/whoiam-logo.png) | [WhoIAM](./partner-whoiam.md) is een BRIMS-toepassing (merk bare identiteits beheersysteem) waarmee organisaties hun gebruikers basis kunnen verifiëren door middel van spraak, SMS en e-mail. 
+| ![Scherm afbeelding van een Arkos Labs-logo.](./media/partner-gallery/arkose-logo.png) | [Arkose Labs](./partner-arkose-labs.md) is een oplossings provider voor het voor komen van fraude die organisaties helpt bij het beveiligen tegen bot-aanvallen, inbreuk op account overname en frauduleuze account openingen.
+| ![Scherm opname van een Experian-logo.](./media/partner-gallery/experian-logo.png) | [Experian](./partner-experian.md) is een identiteits controle-provider waarmee risico beoordelingen worden uitgevoerd op basis van gebruikers kenmerken om fraude te voor komen.|
+| ![Scherm opname van een HYPR-logo.](./media/partner-gallery/hypr-logo.png) | [HYPR](./partner-hypr.md) is een echte verificatie provider met een wacht woord, waarmee wacht woorden met een open bare sleutel versleuteling worden vervangen door fraude, phishing en hergebruik van referenties.|
+| ![Scherm opname van een IDology-logo.](./media/partner-gallery/idology-logo.png) | [IDology](./partner-idology.md) is een identiteits verificatie en controle provider met id-verificatie oplossingen, fraude preventie oplossingen, compatibiliteits oplossingen en anderen.|
+| ![Scherm opname van een Itsme-logo.](./media/partner-gallery/itsme-logo.png) | [Itsme](./partner-itsme.md) is een digitale id-oplossing voor identificatie, authenticatie en Trust Services (eiDAS) waarmee gebruikers veilig kunnen worden aangemeld zonder kaart lezers, wacht woorden, twee ledige verificatie en meerdere pincodes. |
+| ![Scherm opname van een Jumio-logo.](./media/partner-gallery/jumio-logo.png) | [Jumio](./partner-jumio.md) is een id-verificatie service waarmee realtime-verificatie via een geautomatiseerde id wordt ingeschakeld, waarbij klant gegevens worden beschermd. |
+| ![Scherm opname van een LexisNexis-logo.](./media/partner-gallery/lexisnexis-logo.png) | [LexisNexis](./partner-lexisnexis.md) is een profilerings-en identiteits validatie provider die gebruikers identificatie verifieert en uitgebreide risico analyse biedt op basis van het apparaat van de gebruiker. |
+| ![Scherm opname van een Onfido-logo.](./media/partner-gallery/onfido-logo.png) | [Onfido](./partner-onfido.md) is een verificatie oplossing met een document-id en gelaats biometrie waarmee bedrijven voldoen aan de vereisten van *uw klant* en identiteit in real-time.  |
+| ![Scherm opname van een Saviynt-logo.](./media/partner-gallery/saviynt-logo.png) | [Saviynt](./partner-saviynt.md) Cloud-native-platform maakt gebruik van intelligente analyses en biedt integratie van meerdere toepassingen om IT-modernisatie te stroom lijnen en betere beveiliging, governance en naleving te bevorderen. Zakelijke modernisering verandert de manier waarop bedrijven toegangs aanvragen controleren, toegangs beoordelingen, rapport analyse en stroom lijnen van certificerings campagnes.  |
+| ![Scherm opname van een Trusona-logo.](./media/partner-gallery/trusona-logo.png) | Met [Trusona](./partner-trusona.md) -integratie kunt u zich veilig aanmelden en wacht woordloze verificatie, multi-factor Authentication en digitale licentie controle inschakelen.|
+| ![Scherm afbeelding van een Twilio-app-logo controleren.](./media/partner-gallery/twilio-logo.png) | [Twilio verify app](./partner-twilio.md) biedt meerdere oplossingen om multi-factor Authentication (MFA) in te scha kelen via een SMS One-Time Password (OTP), op tijd gebaseerd wacht woord (mobiele totp) en push meldingen, en om te voldoen aan de voor waarden van de SCA voor betalings Services-instructie 2 (PSD2).|
+| ![Scherm afbeelding met een TypingDNA-logo.](./media/partner-gallery/typingdna-logo.png) | [TypingDNA](./partner-typingdna.md) is een identiteits verificatie-en controle provider op basis van het door de gebruiker getypte patroon, en biedt id-verificatie oplossingen waarbij multi-factor Authentication wordt afgedwongen en waarmee wordt voldaan aan de algemene vereisten voor de betalings Services-instructie 2 (PSD2). |
+| ![Scherm afbeelding met een WhoIAM-logo.](./media/partner-gallery/whoiam-logo.png) | [WhoIAM](./partner-whoiam.md) is een BRIMS-toepassing (merk bare identiteits beheersysteem) waarmee organisaties hun gebruikers basis kunnen verifiëren door middel van spraak, SMS en e-mail. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

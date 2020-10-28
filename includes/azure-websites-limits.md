@@ -4,12 +4,12 @@ ms.service: app-service
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: jroth
-ms.openlocfilehash: 557e20dcafabb2db0bc66c9dfda4977aca50de50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 800dc50f82fa47228f1a88a143c5b515168812a6
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91745582"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755377"
 ---
 | Resource | Gratis | Gedeeld | Basic | Standard | Premium (v3) | Geïsoleerd </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -32,6 +32,7 @@ ms.locfileid: "91745582"
 | Hybride verbindingen | | | 5 per abonnement | 25 per abonnement | 200 per app | 200 per app |
 | [Integratie van virtueel netwerk](../articles/app-service/web-sites-integrate-with-vnet.md) | | |   |  X |  X  |  X  |
 | Geïntegreerde load balancer | |X |X |X |X |X<sup>10</sup> |
+| [Toegangsbeperkingen](../articles/app-service/networking-features.md#access-restrictions) | 512 regels per app | 512 regels per app | 512 regels per app | 512 regels per app | 512 regels per app | 512 regels per app |
 | [Altijd aan](../articles/app-service/configure-common.md) | | |X |X |X |X |
 | [Geplande back-ups](../articles/app-service/manage-backup.md) | | | | Geplande back-ups om de 2 uur, een maximum van 12 back-ups per dag (handmatig + gepland) | Geplande back-ups elk uur, een maximum van 50 back-ups per dag (handmatig + gepland) | Geplande back-ups elk uur, een maximum van 50 back-ups per dag (handmatig + gepland) |
 | [Automatisch schalen](../articles/app-service/manage-scale-up.md) | | | |X |X |X |

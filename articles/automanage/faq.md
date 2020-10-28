@@ -8,18 +8,18 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: 003f97c99de7dd4be79e820e822b6071f45ed146
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89ad5c2b973a74bc9fa0f6ca2f59f92a26b666e7
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714974"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891457"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Veelgestelde vragen over Azure automanage voor Vm's
 
 In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over [Azure automanage voor virtuele machines](automanage-virtual-machines.md).
 
-Als uw Azure-probleem niet in dit artikel wordt behandeld, gaat u naar de Azure-forums op [MSDN en stack overflow](https://azure.microsoft.com/support/forums/). U kunt uw probleem in deze forums plaatsen of een bericht plaatsen [ @AzureSupport op Twitter](https://twitter.com/AzureSupport). U kunt ook een ondersteunings aanvraag voor Azure indienen. Als u een ondersteunings aanvraag wilt indienen, selecteert u op de [pagina ondersteuning voor Azure](https://azure.microsoft.com/support/options/)de optie **ondersteuning ophalen**.
+Als uw Azure-probleem niet in dit artikel wordt behandeld, gaat u naar de Azure-forums op [MSDN en Stack Overflow](https://azure.microsoft.com/support/forums/). U kunt uw probleem in deze forums plaatsen of een bericht sturen naar [@AzureSupport op Twitter](https://twitter.com/AzureSupport). U kunt ook een ondersteunings aanvraag voor Azure indienen. Als u een ondersteunings aanvraag wilt indienen, selecteert u op de [pagina ondersteuning voor Azure](https://azure.microsoft.com/support/options/)de optie **ondersteuning ophalen** .
 
 
 ## <a name="azure-automanage-for-virtual-machines"></a>Azure automanage voor virtuele machines
@@ -32,7 +32,6 @@ Hier volgen de vereisten voor het inschakelen van Azure automanage:
 - Vm's moeten zich in een ondersteunde regio bevinden
 - De gebruiker moet over de juiste machtigingen beschikken
 - Alleen virtuele machines die geen schaal zijn ingesteld
-- Vm's mogen niet worden gekoppeld aan een log Analytics-werk ruimte in een ander abonnement
 - Automanage biedt momenteel geen ondersteuning voor sandbox-abonnementen
 
 **Wat is Azure RBAC-machtiging nodig om automanage in te scha kelen?**
@@ -106,7 +105,7 @@ Nee, automatisch beheer wordt niet opnieuw geconfigureerd. We beginnen met het b
 
 **Waarom heeft mijn VM de status mislukt in de portal voor zelf beheer?**
 
-Als u de status als *mislukt*ziet, kunt u problemen met de implementatie oplossen via de resource groep waar uw VM zich bevindt. Ga naar **resource groepen**, selecteer uw resource groep, klik op **implementaties** en Bekijk de status *mislukt* samen met de fout Details.
+Als u de status als *mislukt* ziet, kunt u problemen met de implementatie oplossen via de resource groep waar uw VM zich bevindt. Ga naar **resource groepen** , selecteer uw resource groep, klik op **implementaties** en Bekijk de status *mislukt* samen met de fout Details.
 
 **Hoe kan ik probleemoplossings ondersteuning voor automanage krijgen?**
 

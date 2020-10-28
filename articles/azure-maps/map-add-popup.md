@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: a67fad5d0980730eb73f4219f12eaf3a7b9ec7dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 903574a8c8696f10d9903a685bab8d12b3e6395f
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310472"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891033"
 ---
 # <a name="add-a-popup-to-the-map"></a>Een pop-upvenster toevoegen aan de kaart
 
@@ -22,7 +22,7 @@ In dit artikel wordt uitgelegd hoe u een pop-upvenster kunt toevoegen aan een pu
 
 ## <a name="understand-the-code"></a>De code begrijpen
 
-Met de volgende code wordt een punt functie met `name` en `description` Eigenschappen aan de kaart toegevoegd met behulp van een Symbol-laag. Er wordt een exemplaar van de [pop-upklasse](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup) gemaakt, maar dit wordt niet weer gegeven. Muis gebeurtenissen worden toegevoegd aan de Symbol-laag om het openen en sluiten van de pop-up te activeren. Wanneer het markerings symbool wordt aangevallen, wordt de eigenschap van het pop-upvenster `position` bijgewerkt met de positie van de markering en de `content` optie wordt bijgewerkt met een aantal HTML-code die de  `name` `description` Eigenschappen van de punt en de plaats van de functie in de stand zet. De pop-up wordt vervolgens met behulp van de functie weer gegeven op de kaart `open` .
+Met de volgende code wordt een punt functie met `name` en `description` Eigenschappen aan de kaart toegevoegd met behulp van een Symbol-laag. Er wordt een exemplaar van de [pop-upklasse](/javascript/api/azure-maps-control/atlas.popup) gemaakt, maar dit wordt niet weer gegeven. Muis gebeurtenissen worden toegevoegd aan de Symbol-laag om het openen en sluiten van de pop-up te activeren. Wanneer het markerings symbool wordt aangevallen, wordt de eigenschap van het pop-upvenster `position` bijgewerkt met de positie van de markering en de `content` optie wordt bijgewerkt met een aantal HTML-code die de  `name` `description` Eigenschappen van de punt en de plaats van de functie in de stand zet. De pop-up wordt vervolgens met behulp van de functie weer gegeven op de kaart `open` .
 
 ```javascript
 //Define an HTML template for a custom popup content laypout.
@@ -279,13 +279,13 @@ Zie de <a href='https://codepen.io/azuremaps/pen/BXrpvB/'>pop-up gebeurtenissen<
 Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 
 > [!div class="nextstepaction"]
-> [Popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup)
+> [Popup](/javascript/api/azure-maps-control/atlas.popup)
 
 > [!div class="nextstepaction"]
-> [PopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions)
+> [PopupOptions](/javascript/api/azure-maps-control/atlas.popupoptions)
 
 > [!div class="nextstepaction"]
-> [PopupTemplate](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popuptemplate)
+> [PopupTemplate](/javascript/api/azure-maps-control/atlas.popuptemplate)
 
 Raadpleeg de volgende fantastische artikelen voor voor beelden van volledige code:
 

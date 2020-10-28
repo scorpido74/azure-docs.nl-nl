@@ -3,12 +3,12 @@ title: Hybride Kubernetes-clusters met Azure Monitor voor containers configurere
 description: In dit artikel wordt beschreven hoe u Azure Monitor voor containers kunt configureren voor het bewaken van Kubernetes-clusters die worden gehost op Azure Stack of een andere omgeving.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 2d2522118fddcebcb2ca922ed455011e394fac45
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: d481af07013c0a5b4c5a381527c6f555400a2559
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994445"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890459"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Hybride Kubernetes-clusters met Azure Monitor voor containers configureren
 
@@ -16,14 +16,12 @@ Azure Monitor voor containers biedt uitgebreide bewakings ervaring voor de Azure
 
 ## <a name="supported-configurations"></a>Ondersteunde configuraties
 
-De volgende configuraties worden officieel ondersteund met Azure Monitor voor containers.
+De volgende configuraties worden officieel ondersteund met Azure Monitor voor containers. Als u een andere versie van Kubernetes-en besturingssysteem versies hebt, kunt u een e-mail sturen naar askcoin@microsoft.com .
 
 - Verschillend
 
     - On-premises Kubernetes
-    
-    - AKS-engine op Azure en Azure Stack. Zie de [AKS-engine op Azure stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908) voor meer informatie
-    
+    - AKS-engine op Azure en Azure Stack. Zie de [AKS-engine op Azure stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908&preserve-view=true) voor meer informatie
     - Open [SHIFT](https://docs.openshift.com/container-platform/4.3/welcome/index.html) versie 4 en hoger, on-premises of andere Cloud omgevingen.
 
 - De versies van Kubernetes en het ondersteunings beleid zijn hetzelfde als de versies van AKS die worden [ondersteund](../../aks/supported-kubernetes-versions.md).
@@ -110,7 +108,7 @@ Deze methode bevat twee JSON-sjablonen. Met één sjabloon geeft u de configurat
     Microsoft Azure                       AzureCloud   0fb60ef2-03cc-4290-b595-e71108e8f4ce  Enabled  True
     ```
 
-    Kopieer de waarde voor **SubscriptionId**.
+    Kopieer de waarde voor **SubscriptionId** .
 
 2. Schakel over naar het abonnement dat als host fungeert voor de Log Analytics-werk ruimte met behulp van de volgende opdracht:
 
@@ -124,7 +122,7 @@ Deze methode bevat twee JSON-sjablonen. Met één sjabloon geeft u de configurat
     az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
     ```
 
-    Zoek in de uitvoer de naam van de werk ruimte en kopieer de volledige Resource-ID van die Log Analytics werk ruimte onder de veld **-id**.
+    Zoek in de uitvoer de naam van de werk ruimte en kopieer de volledige Resource-ID van die Log Analytics werk ruimte onder de veld **-id** .
 
 4. Kopieer en plak de volgende JSON-syntaxis in het bestand:
 
@@ -204,7 +202,7 @@ Deze methode bevat twee JSON-sjablonen. Met één sjabloon geeft u de configurat
     }
     ```
 
-7. Bewerk de waarden voor **workspaceResourceId** met de waarde die u in stap 3 hebt gekopieerd en voor **WorkspaceRegion** Kopieer de **regio** waarde na het uitvoeren van de Azure cli-opdracht [AZ monitor log-Analytics werk ruimte show](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest#az-monitor-log-analytics-workspace-list).
+7. Bewerk de waarden voor **workspaceResourceId** met de waarde die u in stap 3 hebt gekopieerd en voor **WorkspaceRegion** Kopieer de **regio** waarde na het uitvoeren van de Azure cli-opdracht [AZ monitor log-Analytics werk ruimte show](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest#az-monitor-log-analytics-workspace-list&preserve-view=true).
 
 8. Sla dit bestand als containerSolutionParams.jsop in een lokale map.
 
@@ -260,13 +258,13 @@ In deze sectie installeert u de container agent voor Azure Monitor voor containe
 
     `az monitor log-analytics workspace list --resource-group <resourceGroupName>`
 
-    In de uitvoer vindt u de naam van de werk ruimte onder de veld **naam**en kopieert u de werk ruimte-id van die log Analytics werk ruimte onder het veld **customerID**.
+    In de uitvoer vindt u de naam van de werk ruimte onder de veld **naam** en kopieert u de werk ruimte-id van die log Analytics werk ruimte onder het veld **customerID** .
 
 2. Voer de volgende opdracht uit om de primaire sleutel voor de werk ruimte te identificeren:
 
     `az monitor log-analytics workspace get-shared-keys --resource-group <resourceGroupName> --workspace-name <logAnalyticsWorkspaceName>`
 
-    In de uitvoer vindt u de primaire sleutel onder het veld **primarySharedKey**en kopieert u de waarde.
+    In de uitvoer vindt u de primaire sleutel onder het veld **primarySharedKey** en kopieert u de waarde.
 
 >[!NOTE]
 >De volgende opdrachten zijn alleen van toepassing op helm versie 2. Het gebruik van de `--name` para meter is niet van toepassing op helm versie 3. 
@@ -277,14 +275,14 @@ In deze sectie installeert u de container agent voor Azure Monitor voor containe
 3. Voeg de opslag plaats van Azure Charts toe aan uw lokale lijst door de volgende opdracht uit te voeren:
 
     ```
-    helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/
+    helm repo add microsoft https://microsoft.github.io/charts/repo
     ````
 
 4. Installeer de grafiek door de volgende opdracht uit te voeren:
 
     ```
     $ helm install --name myrelease-1 \
-    --set omsagent.secret.wsid=<logAnalyticsWorkspaceId>,omsagent.secret.key=<logAnalyticsWorkspaceKey>,omsagent.env.clusterName=<my_prod_cluster> incubator/azuremonitor-containers
+    --set omsagent.secret.wsid=<logAnalyticsWorkspaceId>,omsagent.secret.key=<logAnalyticsWorkspaceKey>,omsagent.env.clusterName=<my_prod_cluster> microsoft/azuremonitor-containers
     ```
 
     Als de Log Analytics-werk ruimte zich in azure China 21Vianet bevindt, voert u de volgende opdracht uit:
@@ -305,7 +303,7 @@ In deze sectie installeert u de container agent voor Azure Monitor voor containe
 
 U kunt een invoeg toepassing opgeven in het JSON-bestand AKS engine cluster Specification, ook wel het API-model genoemd. Geef in deze invoeg toepassing de base64-gecodeerde versie van `WorkspaceGUID` en `WorkspaceKey` de log Analytics-werk ruimte op waar de verzamelde bewakings gegevens worden opgeslagen. U kunt de `WorkspaceGUID` en de `WorkspaceKey` stappen 1 en 2 in de vorige sectie vinden.
 
-Ondersteunde API-definities voor het Azure Stack hub-cluster vindt u in dit voor beeld- [kubernetes-container-monitoring_existing_workspace_id_and_key.jsop](https://github.com/Azure/aks-engine/blob/master/examples/addons/container-monitoring/kubernetes-container-monitoring_existing_workspace_id_and_key.json). Zoek in het bijzonder de eigenschap **Addons** in **kubernetesConfig**:
+Ondersteunde API-definities voor het Azure Stack hub-cluster vindt u in dit voor beeld- [kubernetes-container-monitoring_existing_workspace_id_and_key.jsop](https://github.com/Azure/aks-engine/blob/master/examples/addons/container-monitoring/kubernetes-container-monitoring_existing_workspace_id_and_key.json). Zoek in het bijzonder de eigenschap **Addons** in **kubernetesConfig** :
 
 ```json
 "orchestratorType": "Kubernetes",
@@ -351,11 +349,11 @@ De waarde van de proxy configuratie heeft de volgende syntaxis: `[protocol://][u
 
 Bijvoorbeeld: `omsagent.proxy=http://user01:password@proxy01.contoso.com:8080`
 
-Als u het protocol als **http**opgeeft, worden de HTTP-aanvragen gemaakt met behulp van een beveiligde SSL/TLS-verbinding. Uw proxy server moet SSL/TLS-protocollen ondersteunen.
+Als u het protocol als **http** opgeeft, worden de HTTP-aanvragen gemaakt met behulp van een beveiligde SSL/TLS-verbinding. Uw proxy server moet SSL/TLS-protocollen ondersteunen.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Als er een fout optreedt bij het inschakelen van bewaking voor uw hybride Kubernetes-cluster, kopieert u het Power shell-script [TroubleshootError_nonAzureK8s.ps1](https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/Troubleshoot/TroubleshootError_nonAzureK8s.ps1) en slaat u het op in een map op uw computer. Dit script wordt verstrekt om te helpen bij het detecteren en oplossen van de gevonden problemen. De problemen waarmee het volgende kan worden opgelost:
+Als er een fout optreedt bij het inschakelen van bewaking voor uw hybride Kubernetes-cluster, kopieert u het Power shell-script [TroubleshootError_nonAzureK8s.ps1](https://aka.ms/troubleshoot-non-azure-k8s) en slaat u het op in een map op uw computer. Dit script wordt verstrekt om te helpen bij het detecteren en oplossen van de gevonden problemen. De problemen waarmee het volgende kan worden opgelost:
 
 - De opgegeven Log Analytics werk ruimte is geldig
 - De Log Analytics-werk ruimte is geconfigureerd met de Azure Monitor voor containers. Als dat niet het geval is, configureert u de werk ruimte.

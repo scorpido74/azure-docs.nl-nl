@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: eedbbc0126adacc2a9bdc151aa6dbc27c7ba0750
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 211bcbf27f3a9e885a4bc2c4e5edd27db7907edf
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310251"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890765"
 ---
 # <a name="add-a-polygon-extrusion-layer-to-the-map"></a>Een laag met een polygoon effect toevoegen aan de kaart
 
-In dit artikel leest u hoe u de laag voor het 3D-effect kunt gebruiken om gebieden en functie-geometrie weer te geven `Polygon` `MultiPolygon` als geëxtrudeerde vormen. De Azure Maps Web-SDK ondersteunt rendering van cirkel geometrie zoals gedefinieerd in het [uitgebreide GEOjson-schema](extend-geojson.md#circle). Deze cirkels kunnen worden omgezet in veelhoeken wanneer ze op de kaart worden weer gegeven. Alle functie-geometrieën kunnen eenvoudig worden bijgewerkt wanneer deze met de [Atlas wordt verpakt. ](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) Klasse van vorm.
+In dit artikel leest u hoe u de laag voor het 3D-effect kunt gebruiken om gebieden en functie-geometrie weer te geven `Polygon` `MultiPolygon` als geëxtrudeerde vormen. De Azure Maps Web-SDK ondersteunt rendering van cirkel geometrie zoals gedefinieerd in het [uitgebreide GEOjson-schema](extend-geojson.md#circle). Deze cirkels kunnen worden omgezet in veelhoeken wanneer ze op de kaart worden weer gegeven. Alle functie-geometrieën kunnen eenvoudig worden bijgewerkt wanneer deze met de [Atlas wordt verpakt. ](/javascript/api/azure-maps-control/atlas.shape) Klasse van vorm.
 
 ## <a name="use-a-polygon-extrusion-layer"></a>Een laag met een polygoon effect gebruiken
 
-Verbind de laag met de [polygoon extrusie](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer) met een gegevens bron. Vervolgens wordt deze op de kaart geladen. De laag met het polygoon reliëf geeft de gebieden van een `Polygon` en- `MultiPolygon` functies weer als geëxtrudeerde vormen. De  `height` `base` Eigenschappen en van de Layer extrusie-laag definiëren de basis afstand van de grond en hoogte van de geëxtrudeerde vorm in **meters**. De volgende code laat zien hoe u een veelhoek maakt, voegt deze toe aan een gegevens bron en geeft deze weer met behulp van de klasse van de polygoon laag.
+Verbind de laag met de [polygoon extrusie](/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer) met een gegevens bron. Vervolgens wordt deze op de kaart geladen. De laag met het polygoon reliëf geeft de gebieden van een `Polygon` en- `MultiPolygon` functies weer als geëxtrudeerde vormen. De  `height` `base` Eigenschappen en van de Layer extrusie-laag definiëren de basis afstand van de grond en hoogte van de geëxtrudeerde vorm in **meters** . De volgende code laat zien hoe u een veelhoek maakt, voegt deze toe aan een gegevens bron en geeft deze weer met behulp van de klasse van de polygoon laag.
 
 > [!Note]
 > De `base` waarde die is gedefinieerd in de Layer extrusie laag moet kleiner zijn dan of gelijk zijn aan die van de `height` .
@@ -45,7 +45,7 @@ Zie de <a href='https://codepen.io/azuremaps/pen/eYYYNox'>geëxtrudeerde choropl
 
 ## <a name="add-a-circle-to-the-map"></a>Een cirkel toevoegen aan de kaart
 
-Azure Maps maakt gebruik van een uitgebreide versie van het geojson-schema met een definitie voor cirkels zoals [hier](https://docs.microsoft.com/azure/azure-maps/extend-geojson#circle)wordt beschreven. Een 3D-cirkel kan worden weer gegeven op de kaart door een functie te maken `point` met een `subType` eigenschap van `Circle` en een genummerde `Radius` eigenschap die de RADIUS in **meters**vertegenwoordigt. Bijvoorbeeld:
+Azure Maps maakt gebruik van een uitgebreide versie van het geojson-schema met een definitie voor cirkels zoals [hier](./extend-geojson.md#circle)wordt beschreven. Een 3D-cirkel kan worden weer gegeven op de kaart door een functie te maken `point` met een `subType` eigenschap van `Circle` en een genummerde `Radius` eigenschap die de RADIUS in **meters** vertegenwoordigt. Bijvoorbeeld:
 
 ```javascript
 {
@@ -83,10 +83,10 @@ De laag met polygoon extrusie heeft verschillende opties voor opmaak. Hier volgt
 Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 
 > [!div class="nextstepaction"]
-> [Polygoon](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon)
+> [Polygoon](/javascript/api/azure-maps-control/atlas.data.polygon)
 
 > [!div class="nextstepaction"]
-> [polygoon-3D-laag](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer)
+> [polygoon-3D-laag](/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer)
 
 Aanvullende bronnen:
 

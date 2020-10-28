@@ -6,18 +6,18 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: d2a936a6acb6491c57cb1460c83ec0253561b102
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae2bc6e87f0b694e949057280233c19e0b98132c
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85445658"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892227"
 ---
 # <a name="connect-to-a-vm-using-remote-desktop-protocol-on-a-chromebook"></a>Verbinding maken met een virtuele machine met behulp van Remote Desktop Protocol op een Chromebook
 In deze sectie wordt uitgelegd hoe een student met behulp van RDP verbinding kan maken met een leslokaal-VM op basis van een Chromebook.
 
 ## <a name="install-microsoft-remote-desktop-on-a-chromebook"></a>Microsoft Extern bureaublad installeren op een Chromebook
-1. Open de App Store op uw Chromebook en zoek naar **Microsoft extern bureaublad**.
+1. Open de App Store op uw Chromebook en zoek naar **Microsoft extern bureaublad** .
 
     ![Microsoft Extern bureaublad](./media/how-to-use-classroom-lab/install-ms-remote-desktop-chromebook.png)
 1. Installeer de meest recente versie van Microsoft Extern bureaublad. 
@@ -28,7 +28,7 @@ In deze sectie wordt uitgelegd hoe een student met behulp van RDP verbinding kan
     ![Verbinding maken met de virtuele machine](./media/how-to-use-classroom-lab/connect-vm-chromebook.png)
 
 1. Voer uw wacht woord in als u hierom wordt gevraagd.
-    ![Verbinding maken met de VM](./media/how-to-use-classroom-lab/password-chromebook.png)
+    ![Scherm opname van het aanmeldings scherm waarin u uw gebruikers naam en wacht woord opgeeft.](./media/how-to-use-classroom-lab/password-chromebook.png)
 
 
 1. Selecteer **door gaan** als u de volgende waarschuwing ontvangt. 

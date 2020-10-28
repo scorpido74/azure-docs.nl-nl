@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 9b40dbd91357038d1e98b04628bd866ebb336381
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95a04d763fa5982181cc1c797bce969d9857ae4b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328884"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890629"
 ---
 # <a name="use-the-drawing-tools-module"></a>De module voor tekenprogramma's gebruiken
 
-De Azure Maps Web-SDK bevat een *module voor teken hulpprogramma's*. Met deze module kunt u gemakkelijk shapes op de kaart tekenen en bewerken met behulp van een invoer apparaat, zoals een muis of aanraak scherm. De kern klasse van deze module is het [teken beheer](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-). De teken beheerder biedt alle mogelijkheden die nodig zijn om shapes op de kaart te tekenen en te bewerken. Het kan rechtstreeks worden gebruikt en is geïntegreerd met een aangepaste werk balk GEBRUIKERSINTERFACE. U kunt ook de ingebouwde [werk balk voor tekenen](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar) gebruiken. 
+De Azure Maps Web-SDK bevat een *module voor teken hulpprogramma's* . Met deze module kunt u gemakkelijk shapes op de kaart tekenen en bewerken met behulp van een invoer apparaat, zoals een muis of aanraak scherm. De kern klasse van deze module is het [teken beheer](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-). De teken beheerder biedt alle mogelijkheden die nodig zijn om shapes op de kaart te tekenen en te bewerken. Het kan rechtstreeks worden gebruikt en is geïntegreerd met een aangepaste werk balk GEBRUIKERSINTERFACE. U kunt ook de ingebouwde [werk balk voor tekenen](/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar) gebruiken. 
 
 ## <a name="loading-the-drawing-tools-module-in-a-webpage"></a>De module teken hulpprogramma's laden op een webpagina
 
-1. Maak een nieuw HTML-bestand en [Implementeer de kaart zoals gebruikelijk](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control).
+1. Maak een nieuw HTML-bestand en [Implementeer de kaart zoals gebruikelijk](./how-to-use-map-control.md).
 2. Laad de module Azure Maps drawing tools. U kunt deze op twee manieren laden:
     - Gebruik de wereld wijd gehoste Azure Content Delivery Network-versie van de module Azure Maps Services. Voeg verwijzing naar het opmaak model java script en CSS toe aan het `<head>` element van het bestand:
 
@@ -44,7 +44,7 @@ De Azure Maps Web-SDK bevat een *module voor teken hulpprogramma's*. Met deze mo
 
 ## <a name="use-the-drawing-manager-directly"></a>De tekening Manager rechtstreeks gebruiken
 
-Zodra de module voor teken hulpprogramma's in uw toepassing is geladen, kunt u teken-en bewerk mogelijkheden inschakelen met behulp van de [tekening beheerder](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-). U kunt opties voor de tekening beheerder opgeven tijdens het instantiëren of de functie gebruiken `drawingManager.setOptions()` .
+Zodra de module voor teken hulpprogramma's in uw toepassing is geladen, kunt u teken-en bewerk mogelijkheden inschakelen met behulp van de [tekening beheerder](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-). U kunt opties voor de tekening beheerder opgeven tijdens het instantiëren of de functie gebruiken `drawingManager.setOptions()` .
 
 ### <a name="set-the-drawing-mode"></a>De teken modus instellen
 
@@ -122,10 +122,10 @@ Meer informatie over het gebruik van aanvullende functies van de module teken hu
 Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 
 > [!div class="nextstepaction"]
-> [Diagram](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Kaart](/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [Drawing Manager](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager)
+> [Drawing Manager](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager)
 
 > [!div class="nextstepaction"]
-> [Werk balk tekenen](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)
+> [Werk balk tekenen](/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)

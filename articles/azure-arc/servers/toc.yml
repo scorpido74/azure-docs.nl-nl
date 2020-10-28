@@ -61,7 +61,7 @@
           href: troubleshoot-agent-onboard.md
         - name: Problemen met VM-extensies
           href: troubleshoot-vm-extensions.md
-- name: Verwijzing
+- name: Naslaginformatie
   items:
     - name: Gegevenslocatie
       href: data-residency.md
@@ -84,3 +84,7 @@
     - name: Ingebouwde modules voor Azure Policy
       displayName: 'samples, policies, definitions'
       href: policy-reference.md
+- name: Resources
+  items:
+    - name: Azure Arc-snelstart
+      href: 'https://github.com/microsoft/azure_arc'

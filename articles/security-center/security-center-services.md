@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 59a87e7c91266dd1ec2d7263df7149d07f6e7ce8
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 67c52728b72f0941ae3c9b39552ca398c12c67a2
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342294"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425153"
 ---
 # <a name="feature-coverage-for-machines"></a>Functiedekking voor machines
 
@@ -30,7 +30,7 @@ De twee tabbladen hieronder tonen de functies van Azure Security Center die besc
 
 |**Functie**|**Azure Virtual Machines**|**Virtuele Azure-machineschaalsets**|**Machines met Azure Arc**|**Azure Defender vereist**
 |----|:----:|:----:|:----:|:----:|
-|[Microsoft Defender ATP-integratie](security-center-wdatp.md)|✔</br>(in ondersteunde versies)|✔</br>(in ondersteunde versies)|✔|Ja|
+|[Microsoft Defender for Endpoint-integratie](security-center-wdatp.md)|✔</br>(in ondersteunde versies)|✔</br>(in ondersteunde versies)|✔|Ja|
 |[Gedragsanalyse van virtuele machine (en beveiligingswaarschuwingen)](alerts-reference.md)|✔|✔|✔|Ja|
 |[Bestandsloze beveiligingswaarschuwingen](alerts-reference.md#alerts-windows)|✔|✔|✔|Ja|
 |[Op netwerk gebaseerde beveiligingswaarschuwingen](other-threat-protections.md#network-layer)|✔|✔|-|Ja|
@@ -54,7 +54,7 @@ De twee tabbladen hieronder tonen de functies van Azure Security Center die besc
 
 |**Functie**|**Azure Virtual Machines**|**Virtuele Azure-machineschaalsets**|**Machines met Azure Arc**|**Azure Defender vereist**
 |----|:----:|:----:|:----:|:----:|
-|[Microsoft Defender ATP-integratie](security-center-wdatp.md)|-|-|-|Ja|
+|[Microsoft Defender for Endpoint-integratie](security-center-wdatp.md)|-|-|-|Ja|
 |[Gedragsanalyse van virtuele machine (en beveiligingswaarschuwingen)](./azure-defender.md)|✔</br>(in ondersteunde versies)|✔</br>(in ondersteunde versies)|✔|Ja|
 |[Bestandsloze beveiligingswaarschuwingen](alerts-reference.md#alerts-windows)|-|-|-|Ja|
 |[Op netwerk gebaseerde beveiligingswaarschuwingen](other-threat-protections.md#network-layer)|✔|✔|-|Ja|

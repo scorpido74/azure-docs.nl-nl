@@ -9,25 +9,25 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 8450fbd5287c88431f21753a9c88e8603455f844
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3619995739c51d68b00f37ebea3a38680a6b6e7
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310421"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890974"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>Een titellaag toevoegen aan een kaart
 
 In dit artikel wordt beschreven hoe u een tegel laag kunt bedekken op de kaart. Met tegel lagen kunt u afbeeldingen boven op Azure Maps basis kaart tegels plaatsen. Zie [zoom niveaus en tegel raster](zoom-levels-and-tile-grid.md)voor meer informatie over Azure Maps tegel systeem.
 
-Een tegel laag wordt in tegels van een server geladen. Deze installatie kopieën kunnen vooraf worden weer gegeven of dynamisch worden weer gegeven. Vooraf gerenderde installatie kopieën worden op dezelfde manier opgeslagen als andere installatie kopieën op een server met behulp van een naamgevings Conventie die de laag van de tegel begrijpt. Dynamisch gerenderde afbeeldingen gebruiken een service om de afbeeldingen in realtime te laden. Er worden drie verschillende naamgevings conventies voor tegel Services ondersteund door Azure Maps klasse [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer) : 
+Een tegel laag wordt in tegels van een server geladen. Deze installatie kopieën kunnen vooraf worden weer gegeven of dynamisch worden weer gegeven. Vooraf gerenderde installatie kopieën worden op dezelfde manier opgeslagen als andere installatie kopieën op een server met behulp van een naamgevings Conventie die de laag van de tegel begrijpt. Dynamisch gerenderde afbeeldingen gebruiken een service om de afbeeldingen in realtime te laden. Er worden drie verschillende naamgevings conventies voor tegel Services ondersteund door Azure Maps klasse [TileLayer](/javascript/api/azure-maps-control/atlas.layer.tilelayer) : 
 
 * X, Y, zoom notatie-X is de kolom, Y is de rijpositie van de tegel in het tegel raster en de zoom notatie een waarde op basis van het zoom niveau.
 * Quadkey notatie: Hiermee wordt de x-, y-en zoom informatie gecombineerd tot één teken reeks waarde. Deze teken reeks waarde wordt een unieke id voor één tegel.
 * Begrenzingsvak: Geef een afbeelding op in de coördinaten notatie van het begrenzingsvak `{west},{south},{east},{north}` . Deze indeling wordt vaak gebruikt door [Web Mapping Services (WMS)](https://www.opengeospatial.org/standards/wms).
 
 > [!TIP]
-> Een [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer) is een uitstekende manier om grote gegevens sets op de kaart te visualiseren. U kunt niet alleen een tegel laag genereren op basis van een afbeelding, maar u kunt ook vector gegevens weer geven als een tegel laag. Door vector gegevens als een tegel laag te renderen, hoeft u alleen de tegels te laden die kleiner zijn dan de vector gegevens die ze vertegenwoordigen. Deze techniek wordt vaak gebruikt om miljoenen rijen met gegevens op de kaart weer te geven.
+> Een [TileLayer](/javascript/api/azure-maps-control/atlas.layer.tilelayer) is een uitstekende manier om grote gegevens sets op de kaart te visualiseren. U kunt niet alleen een tegel laag genereren op basis van een afbeelding, maar u kunt ook vector gegevens weer geven als een tegel laag. Door vector gegevens als een tegel laag te renderen, hoeft u alleen de tegels te laden die kleiner zijn dan de vector gegevens die ze vertegenwoordigen. Deze techniek wordt vaak gebruikt om miljoenen rijen met gegevens op de kaart weer te geven.
 
 De tegel-URL die wordt door gegeven aan een tegel laag moet een HTTP-of HTTPS-URL zijn naar een TileJSON-resource of een tegel-URL-sjabloon die gebruikmaakt van de volgende para meters: 
 
@@ -74,10 +74,10 @@ De klasse van de tegel laag heeft veel stijl opties. Hier volgt een hulp program
 Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 
 > [!div class="nextstepaction"]
-> [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer)
+> [TileLayer](/javascript/api/azure-maps-control/atlas.layer.tilelayer)
 
 > [!div class="nextstepaction"]
-> [TileLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.tilelayeroptions)
+> [TileLayerOptions](/javascript/api/azure-maps-control/atlas.tilelayeroptions)
 
 Raadpleeg de volgende artikelen voor meer code voorbeelden om toe te voegen aan uw kaarten:
 

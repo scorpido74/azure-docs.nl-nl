@@ -33,3 +33,7 @@
     - name: Ingebouwde modules voor Azure Policy
       displayName: 'samples, policies, definitions'
       href: policy-reference.md
+- name: Resources
+  items:
+    - name: Azure Arc-snelstart
+      href: 'https://github.com/microsoft/azure_arc'
