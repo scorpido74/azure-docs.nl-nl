@@ -1,7 +1,6 @@
 ---
-title: Naslag informatie over bewakings gegevens | Microsoft Docs
-titleSuffix: Azure Machine Learning
-description: Meer informatie over de gegevens en resources die worden verzameld voor Azure Machine Learning en die beschikbaar zijn in Azure Monitor. Azure Monitor verzamelt en bewaart gegevens over uw Azure Machine Learning-werk ruimte en biedt u de mogelijkheid om meet waarden weer te geven, waarschuwingen in te stellen en geregistreerde gegevens te analyseren.
+title: Azure Machine Learning gegevens referentie bewaken | Microsoft Docs
+description: Belang rijk referentie materiaal dat nodig is wanneer u Azure Machine Learning bewaakt. Meer informatie over de gegevens en resources die worden verzameld voor Azure Machine Learning en die beschikbaar zijn in Azure Monitor. Azure Monitor verzamelt en bewaart gegevens over uw Azure Machine Learning-werk ruimte en biedt u de mogelijkheid om meet waarden weer te geven, waarschuwingen in te stellen en geregistreerde gegevens te analyseren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,21 +8,127 @@ ms.topic: reference
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 04/27/2020
-ms.openlocfilehash: 405b0aa051d0d1142d7dd4ccbf2bca4ef9cc3545
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/02/2020
+ms.openlocfilehash: edd2b3e02c1a768b1f18a62faaf9b59539b92774
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89650589"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739144"
 ---
-# <a name="azure-machine-learning-monitoring-data-reference"></a>Naslag informatie voor Azure machine learning monitoring-gegevens
+# <a name="monitoring-azure-machine-learning-data-reference"></a>Naslag informatie over Azure machine learning-gegevens bewaken
 
 Meer informatie over de gegevens en resources die worden verzameld door Azure Monitor van uw Azure Machine Learning-werk ruimte. Zie [bewaking Azure machine learning](monitor-azure-machine-learning.md) voor meer informatie over het verzamelen en analyseren van bewakings gegevens.
 
+## <a name="metrics"></a>Metrische gegevens
+
+In deze sectie vindt u alle automatisch verzamelde platform gegevens die zijn verzameld voor Azure Machine Learning. De resource provider voor deze metrische gegevens is [micro soft. MachineLearningServices/Workspaces](/azure/azure-monitor/platform/metrics-supported#microsoftmachinelearningservicesworkspaces).
+
+**Model**
+
+| Gegevens | Eenheid | Beschrijving |
+| ----- | ----- | ----- |
+| Model implementeren is mislukt | Aantal | Het aantal model implementaties dat is mislukt. |
+| Model implementeren gestart | Aantal | Het aantal model implementaties is gestart. |
+| Model implementeren is voltooid | Aantal | Het aantal model implementaties dat is geslaagd. |
+| Model register mislukt | Aantal | Het aantal model registraties dat is mislukt. |
+| Model registratie is voltooid | Aantal | Het aantal model registraties dat is geslaagd. |
+
+**Quota**
+
+Quota gegevens zijn alleen voor het berekenen van Azure Machine Learning.
+
+| Gegevens | Eenheid | Beschrijving |
+| ----- | ----- | ----- |
+| Actieve kernen | Aantal | Het aantal actieve reken kernen. |
+| Actieve knoop punten | Aantal | Het aantal actieve knoop punten. |
+| Niet-actieve kernen | Aantal | Het aantal niet-actieve Compute-kernen. |
+| Niet-actieve knoop punten | Aantal | Het aantal niet-actieve reken knooppunten. |
+| Kernen verlaten | Aantal | Het aantal Leave-kernen. |
+| Knoop punten verlaten | Aantal | Het aantal knoop punten dat de poort verlaat. |
+| Afgebroken kernen | Aantal | Het aantal afgebroken kernen. |
+| Knoop punten die zijn afgebroken | Aantal | Het aantal knoop punten dat is afgebroken. |
+| Percentage quotum gebruik | Percentage | Het percentage van de gebruikte quota. |
+| Totaal aantal cores | Aantal | Het totale aantal kernen. |
+| Totaal aantal knoop punten | Aantal | Het totale aantal knoop punten. |
+| Onbruikbaar aantal kern geheugens | Aantal | Het aantal onbruikbaar kern geheugens. |
+| Niet-bruikbare knoop punten | Aantal | Het aantal niet-bruikbare knoop punten. |
+
+**Resource**
+
+| Gegevens | Eenheid | Beschrijving |
+| ----- | ----- | ----- |
+| CpuUtilization | Percentage | Hoeveel procent van de CPU voor een bepaald knoop punt is gebruikt tijdens een uitvoering/taak. Deze metrische gegevens worden alleen gepubliceerd wanneer een taak wordt uitgevoerd op een knoop punt. Eén taak kan gebruikmaken van een of meer knoop punten. Deze metriek wordt per knoop punt gepubliceerd. |
+| GpuUtilization | Percentage | Hoeveel percentage van de GPU voor een bepaald knoop punt is gebruikt tijdens een uitvoering/taak. Eén knoop punt kan een of meer Gpu's hebben. Deze metrische gegevens worden per GPU per knoop punt gepubliceerd. |
+
+**Uitvoeringsrun**
+
+Informatie over trainings uitvoeringen.
+
+| Gegevens | Eenheid | Beschrijving |
+| ----- | ----- | ----- |
+| Voltooide uitvoeringen | Aantal | Het aantal voltooide uitvoeringen. |
+| Mislukte uitvoeringen | Aantal | Het aantal mislukte uitvoeringen. |
+| Gestart uitvoeringen | Aantal | Het aantal gestarte uitvoeringen. |
+
+## <a name="metric-dimensions"></a>Metrische dimensies
+
+Zie [multidimensionale metrische](/azure/azure-monitor/platform/data-platform-metrics#multi-dimensional-metrics)gegevens voor meer informatie over de metrieke dimensies.
+
+Azure Machine Learning heeft de volgende dimensies die zijn gekoppeld aan de metrische gegevens.
+
+| Dimensie | Beschrijving |
+| ---- | ---- |
+| Clusternaam | De naam van het reken exemplaar. Beschikbaar voor alle quota-metrische gegevens. |
+| Naam van VM-familie | De naam van de VM-familie die door het cluster wordt gebruikt. Beschikbaar voor percentage quotum gebruik. |
+| VM-prioriteit | De prioriteit van de virtuele machine. Beschikbaar voor percentage quotum gebruik.
+| CreatedTime | Alleen beschikbaar voor CpuUtilization en GpuUtilization. |
+| DeviceId | ID van het apparaat (GPU). Alleen beschikbaar voor GpuUtilization. |
+| NodeId | De ID van het knoop punt dat is gemaakt waarbij de taak wordt uitgevoerd. Alleen beschikbaar voor CpuUtilization en GpuUtilization. |
+| RunId | ID van de uitvoeringsrun/taak. Alleen beschikbaar voor CpuUtilization en GpuUtilization. |
+| ComputeType | Het reken type dat wordt gebruikt voor de uitvoering. Alleen beschikbaar voor voltooide uitvoeringen, mislukte uitvoeringen en gestarte uitvoeringen. |
+| PipelineStepType | Het type [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?view=azure-ml-py&preserve-view=true) dat wordt gebruikt in de uitvoering. Alleen beschikbaar voor voltooide uitvoeringen, mislukte uitvoeringen en gestarte uitvoeringen. |
+| PublishedPipelineId | De ID van de gepubliceerde pijp lijn die wordt gebruikt in de uitvoering. Alleen beschikbaar voor voltooide uitvoeringen, mislukte uitvoeringen en gestarte uitvoeringen. |
+| RunType | Het type uitvoering. Alleen beschikbaar voor voltooide uitvoeringen, mislukte uitvoeringen en gestarte uitvoeringen. |
+
+De geldige waarden voor de dimensie RunType zijn:
+
+| Waarde | Beschrijving |
+| ----- | ----- |
+| Experiment | Niet-pijplijn uitvoeringen. |
+| PipelineRun | Een pijplijn uitvoering, het bovenliggende element van een StepRun. |
+| StepRun | Een uitvoering voor een pijplijn stap. |
+| ReusedStepRun | Een uitvoering van een pijplijn stap die een eerdere uitvoering opnieuw gebruikt. |
+
+## <a name="activity-log"></a>Activiteitenlogboek
+
+De volgende tabel geeft een lijst van de bewerkingen met betrekking tot Azure Machine Learning die in het activiteiten logboek kunnen worden gemaakt.
+
+| Bewerking | Beschrijving |
+|:---|:---|
+| Hiermee wordt een Machine Learning werkruimte gemaakt of bijgewerkt | Er is een werk ruimte gemaakt of bijgewerkt |
+| CheckComputeNameAvailability | Controleren of een berekenings naam al wordt gebruikt |
+| Hiermee worden de reken resources gemaakt of bijgewerkt | Er is een compute-resource gemaakt of bijgewerkt |
+| Hiermee worden de reken resources verwijderd | Er is een compute-resource verwijderd |
+| Geheimen vermelden | Voor een in de bewerking vermelde geheimen voor een Machine Learning-werk ruimte |
+
 ## <a name="resource-logs"></a>Resourcelogboeken
 
-De volgende tabel geeft een lijst van de eigenschappen voor Azure Machine Learning bron Logboeken wanneer ze worden verzameld in Azure Monitor Logboeken of Azure Storage.
+In deze sectie vindt u de typen bron logboeken die u kunt verzamelen voor Azure Machine Learning-werk ruimte.
+
+Resource provider en type: [micro soft. MachineLearningServices/Workspace](/azure/azure-monitor/platform/resource-logs-categories#microsoftmachinelearningservicesworkspaces).
+
+| Categorie | Weergavenaam |
+| ----- | ----- |
+| AmlComputeClusterEvent | AmlComputeClusterEvent |
+| AmlComputeClusterNodeEvent | AmlComputeClusterNodeEvent |
+| AmlComputeCpuGpuUtilization | AmlComputeCpuGpuUtilization |
+| AmlComputeJobEvent | AmlComputeJobEvent |
+| AmlRunStatusChangedEvent | AmlRunStatusChangedEvent |
+
+## <a name="schemas"></a>Schema 's
+
+De volgende schema's zijn in gebruik door Azure Machine Learning
 
 ### <a name="amlcomputejobevents-table"></a>AmlComputeJobEvents-tabel
 
@@ -42,8 +147,8 @@ De volgende tabel geeft een lijst van de eigenschappen voor Azure Machine Learni
 | ResourceGroupName | Naam van de resource groep |
 | JobName | De naam van de taak |
 | ClusterId | ID van het cluster |
-| EventType | Type taak gebeurtenis, bijvoorbeeld JobSubmitted, JobRunning, JobFailed, JobSucceeded, enzovoort. |
-| ExecutionState | De status van de taak (de uitvoering), bijvoorbeeld in de wachtrij, actief, geslaagd, mislukt |
+| EventType | Het type taak gebeurtenis. Bijvoorbeeld, JobSubmitted, JobRunning, JobFailed, JobSucceeded. |
+| ExecutionState | De status van de taak (de uitvoering). Bijvoorbeeld in de wachtrij, actief, geslaagd, mislukt |
 | ErrorDetails | Details van taak fout |
 | CreationApiVersion | API-versie die wordt gebruikt om de taak te maken |
 | ClusterResourceGroupName | De naam van de resource groep van het cluster |
@@ -109,7 +214,7 @@ De volgende tabel geeft een lijst van de eigenschappen voor Azure Machine Learni
 | VmSize | VM-grootte van het knoop punt |
 | VmFamilyName | De VM-familie waartoe het knoop punt behoort |
 | VmPriority | Prioriteit van het knoop punt dat speciaal is gemaakt/LowPriority |
-| Publisher | Uitgever van de VM-installatie kopie, bijvoorbeeld micro soft-dsvm |
+| Publisher | Uitgever van de VM-installatie kopie. Bijvoorbeeld micro soft-dsvm |
 | Aanbieding | Aanbieding gekoppeld aan het maken van een virtuele machine |
 | Sku | SKU van het knoop punt/VM gemaakt |
 | Versie | Versie van de installatie kopie die wordt gebruikt tijdens het maken van het knoop punt/VM |
@@ -122,91 +227,6 @@ De volgende tabel geeft een lijst van de eigenschappen voor Azure Machine Learni
 | StartTaskEndTime | Tijd waarop de taak die aan een knoop punt is toegewezen, is beëindigd |
 | TotalE2ETimeInSeconds | Het totale tijds knooppunt is actief |
 
-### <a name="metrics"></a>Metrische gegevens
-
-In de volgende tabellen worden de platform gegevens weer gegeven die zijn verzameld voor Azure Machine Learning alle metrische gegevens worden opgeslagen in de naam ruimte **Azure machine learning-werkruimte**.
-
-**Modelleren**
-
-| Gegevens | Eenheid | Beschrijving |
-| ----- | ----- | ----- |
-| Model implementeren is mislukt | Aantal | Het aantal model implementaties dat is mislukt. |
-| Model implementeren gestart | Aantal | Het aantal model implementaties is gestart. |
-| Model implementeren is voltooid | Aantal | Het aantal model implementaties dat is geslaagd. |
-| Model register mislukt | Aantal | Het aantal model registraties dat is mislukt. |
-| Model registratie is voltooid | Aantal | Het aantal model registraties dat is geslaagd. |
-
-**Quota**
-
-Quota gegevens zijn alleen voor het berekenen van Azure Machine Learning.
-
-| Gegevens | Eenheid | Beschrijving |
-| ----- | ----- | ----- |
-| Actieve kernen | Aantal | Het aantal actieve reken kernen. |
-| Actieve knoop punten | Aantal | Het aantal actieve knoop punten. |
-| Niet-actieve kernen | Aantal | Het aantal niet-actieve Compute-kernen. |
-| Niet-actieve knoop punten | Aantal | Het aantal niet-actieve reken knooppunten. |
-| Kernen verlaten | Aantal | Het aantal Leave-kernen. |
-| Knoop punten verlaten | Aantal | Het aantal knoop punten dat de poort verlaat. |
-| Afgebroken kernen | Aantal | Het aantal afgebroken kernen. |
-| Knoop punten die zijn afgebroken | Aantal | Het aantal knoop punten dat is afgebroken. |
-| Percentage quotum gebruik | Percentage | Het percentage van de gebruikte quota. |
-| Totaal aantal cores | Aantal | Het totale aantal kernen. |
-| Totaal aantal knoop punten | Aantal | Het totale aantal knoop punten. |
-| Onbruikbaar aantal kern geheugens | Aantal | Het aantal onbruikbaar kern geheugens. |
-| Niet-bruikbare knoop punten | Aantal | Het aantal niet-bruikbare knoop punten. |
-
-Hieronder ziet u dimensies die kunnen worden gebruikt voor het filteren van quotum metrieken:
-
-| Dimensie | Metriek (en) beschikbaar met | Beschrijving |
-| ---- | ---- | ---- |
-| Clusternaam | Alle quota gegevens | De naam van het reken exemplaar. |
-| Naam van VM-familie | Percentage quotum gebruik | De naam van de VM-familie die door het cluster wordt gebruikt. |
-| VM-prioriteit | Percentage quotum gebruik | De prioriteit van de virtuele machine.
-
-**Resource**
-
-| Gegevens | Eenheid | Beschrijving |
-| ----- | ----- | ----- |
-| CpuUtilization | Percentage | Hoeveel procent van de CPU voor een bepaald knoop punt is gebruikt tijdens een uitvoering/taak. Deze metrische gegevens worden alleen gepubliceerd wanneer een taak wordt uitgevoerd op een knoop punt. Eén taak kan gebruikmaken van een of meer knoop punten. Deze metriek wordt per knoop punt gepubliceerd. |
-| GpuUtilization | Percentage | Hoeveel percentage van de GPU voor een bepaald knoop punt is gebruikt tijdens een uitvoering/taak. Eén knoop punt kan een of meer Gpu's hebben. Deze metrische gegevens worden per GPU per knoop punt gepubliceerd. |
-
-Hieronder ziet u dimensies die kunnen worden gebruikt voor het filteren van metrische gegevens voor resources:
-
-| Dimensie | Beschrijving |
-| ----- | ----- |
-| CreatedTime | |
-| DeviceId | ID van het apparaat (GPU). Alleen beschikbaar voor GpuUtilization. |
-| NodeId | De ID van het knoop punt dat is gemaakt waarbij de taak wordt uitgevoerd. |
-| RunId | ID van de uitvoeringsrun/taak. |
-
-**Uitvoeren**
-
-Informatie over trainings uitvoeringen.
-
-| Gegevens | Eenheid | Beschrijving |
-| ----- | ----- | ----- |
-| Voltooide uitvoeringen | Aantal | Het aantal voltooide uitvoeringen. |
-| Mislukte uitvoeringen | Aantal | Het aantal mislukte uitvoeringen. |
-| Gestart uitvoeringen | Aantal | Het aantal gestarte uitvoeringen. |
-
-Hieronder ziet u dimensies die kunnen worden gebruikt voor het filteren van metrische gegevens voor uitvoering:
-
-| Dimensie | Beschrijving |
-| ---- | ---- |
-| ComputeType | Het reken type dat wordt gebruikt voor de uitvoering. |
-| PipelineStepType | Het type [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?view=azure-ml-py&preserve-view=true) dat wordt gebruikt in de uitvoering. |
-| PublishedPipelineId | De ID van de gepubliceerde pijp lijn die wordt gebruikt in de uitvoering. |
-| RunType | Het type uitvoering. |
-
-De geldige waarden voor de dimensie RunType zijn:
-
-| Waarde | Beschrijving |
-| ----- | ----- |
-| Experiment | Niet-pijplijn uitvoeringen. |
-| PipelineRun | Een pijplijn uitvoering, het bovenliggende element van een StepRun. |
-| StepRun | Een uitvoering voor een pijplijn stap. |
-| ReusedStepRun | Een uitvoering van een pijplijn stap die een eerdere uitvoering opnieuw gebruikt. |
 
 ## <a name="see-also"></a>Zie ook
 

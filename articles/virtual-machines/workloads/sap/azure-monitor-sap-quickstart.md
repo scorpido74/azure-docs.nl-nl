@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.date: 08/17/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: dc8aa50c5c4ecb5e4b56a7e49453c266dad28818
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 4b0e54c434f68a8a26f49b6ba0c1010e93d36ad6
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678098"
+ms.locfileid: "92739889"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>Azure Monitor implementeren voor SAP-oplossingen met Azure Portal
 
@@ -54,7 +54,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com
 
 4. Voer de naam in van de data base-Tenant die u wilt gebruiken. U kunt een wille keurige Tenant kiezen. Wij raden u echter aan **SYSTEMDB** te gebruiken, omdat hiermee een bredere matrix van bewakings gebieden mogelijk is. 
 
-5. Voer het SQL-poort nummer in dat is gekoppeld aan uw HANA-data base. Het poort nummer moet de indeling **[3]**  +  **[exemplaar #]**  +  **[13]** of **[3]**  +  **[exemplaar #]**  +  **[15]** hebben. Bijvoorbeeld 30013 of 30015. 
+5. Voer het SQL-poort nummer in dat is gekoppeld aan uw HANA-data base. Het poort nummer moet de indeling **[3]**  +  **[exemplaar #]**  +  **[13]** hebben. Bijvoorbeeld 30013. 
 
 6. Geef de data base-gebruikers naam op die u wilt gebruiken. Zorg ervoor dat aan de database gebruiker de rollen **bewaking** en **catalogus lezen** zijn toegewezen. 
 

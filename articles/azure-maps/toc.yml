@@ -4,7 +4,7 @@
   items:
     - name: Wat is Azure Maps?
       href: about-azure-maps.md
-- name: Snelstartgidsen
+- name: Quickstarts
   expanded: true
   items:
     - name: Een webtoepassing maken
@@ -359,9 +359,9 @@
     - name: SDK's voor Azure IoT
       items:
         - name: IoT Service-SDK's
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks
         - name: IoT Device-SDK's
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-device-sdks
     - name: Azure Maps-gebruiksvoorwaarden
       href: 'https://azure.microsoft.com/support/legal/'
     - name: Azure Maps-prijzen

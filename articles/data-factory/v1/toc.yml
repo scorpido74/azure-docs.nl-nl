@@ -200,7 +200,7 @@
     - name: Casestudy's
       href: data-factory-customer-case-studies.md
     - name: Microsoft Q&A-vragenpagina
-      href: 'https://docs.microsoft.com/answers/topics/azure-data-factory.html'
+      href: /answers/topics/azure-data-factory.html
     - name: Prijzen
       href: 'https://azure.microsoft.com/pricing/details/data-factory/'
     - name: Prijscalculator

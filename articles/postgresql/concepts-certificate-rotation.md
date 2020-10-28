@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 65357642d940453b5bbfabf2fbb726ca909ce6f5
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 0eec1538814b93c024fe6a5aa34ee73c4c09184c
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173126"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740419"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-postgresql-single-server"></a>Informatie over de wijzigingen in de basis-CA-wijziging voor Azure Database for PostgreSQL één server
 
@@ -52,11 +52,11 @@ Volg de onderstaande stappen om te voor komen dat de beschik baarheid van uw toe
 *   Genereer een gecombineerd CA-certificaat archief met zowel **BaltimoreCyberTrustRoot** als **DigiCertGlobalRootG2** -certificaten.
     *   Voor Java-gebruikers (PostgreSQL JDBC) die gebruikmaken van DefaultJavaSSLFactory, voert u de volgende handelingen uit:
 
-          ```azurecli-interactive
+          ```console
           keytool -importcert -alias PostgreSQLServerCACert  -file D:\BaltimoreCyberTrustRoot.crt.pem  -keystore truststore -storepass password -noprompt
           ```
 
-          ```azurecli-interactive
+          ```console
           keytool -importcert -alias PostgreSQLServerCACert2  -file D:\DigiCertGlobalRootG2.crt.pem -keystore truststore -storepass password  -noprompt
           ```
 
@@ -133,7 +133,7 @@ Omdat deze update een wijziging aan de client zijde is, moet u de wijzigingen vo
 Raadpleeg [SSL-verificatie](concepts-ssl-connection-security.md#applications-that-require-certificate-verification-for-tls-connectivity)om te controleren of u SSL-verbinding gebruikt om verbinding te maken met de server.
 
 ### <a name="13-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>13. is er een actie vereist als ik DigiCertGlobalRootG2 al in mijn certificaat bestand heb?
-Nee. Er is geen actie vereist als uw certificaat bestand al het **DigiCertGlobalRootG2**heeft.
+Nee. Er is geen actie vereist als uw certificaat bestand al het **DigiCertGlobalRootG2** heeft.
 
 ### <a name="14-what-is-you-are-using-docker-image-of-pgbouncer-sidecar-provided-by-microsoft"></a>14. u gebruikt nu docker-installatie kopie van PgBouncer-zijspaners van micro soft?
 [Hieronder vindt](https://hub.docker.com/_/microsoft-azure-oss-db-tools-pgbouncer-sidecar) u een nieuwe docker-installatie kopie die zowel [**Baltimore**](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) als [**DigiCert**](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) ondersteunt. U kunt deze nieuwe installatie kopie ophalen om onderbrekingen te voor komen in connectiviteit vanaf 15 februari 2021. 

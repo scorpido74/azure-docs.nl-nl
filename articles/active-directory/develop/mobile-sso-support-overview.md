@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: 27a58fc66de31fef272ab2f2c2bfaa9896a07d4b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: a3899d9fbf04f9629885ec38f6b0b2bde728561b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209763"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740152"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>Ondersteuning voor eenmalige aanmelding en app-beveiligings beleid in mobiele apps die u ontwikkelt
 
@@ -47,7 +47,7 @@ Als u momenteel de ADAL- [bibliotheek](../azuread-dev/active-directory-authentic
 
 Voor iOS-toepassingen hebben we een [Snelstartgids](quickstart-v2-ios.md) waarin u kunt zien hoe u aanmeldingen kunt instellen met behulp van MSAL, evenals [richt lijnen voor het configureren van MSAL voor verschillende SSO-scenario's](single-sign-on-macos-ios.md).
 
-Voor Android-toepassingen hebben we een [Snelstartgids](quickstart-v2-android.md) waarin u kunt zien hoe u aanmeldingen kunt instellen met behulp van MSAL en richt lijnen voor het gebruik van [brokered authenticatie](brokered-auth.md) of [autorisatie agenten](authorization-agents.md).
+Voor Android-toepassingen hebben we een [Snelstartgids](quickstart-v2-android.md) waarin u kunt zien hoe u aanmeldingen kunt instellen met behulp van MSAL en richt lijnen voor [het inschakelen van SSO voor meerdere apps op Android met behulp van MSAL](msal-android-single-sign-on.md).
 
 ### <a name="use-the-system-web-browser"></a>De systeem webbrowser gebruiken
 
@@ -68,7 +68,7 @@ Daarnaast moet u een Broker-app gebruiken voor verificatie. De Broker vereist da
 
 Voeg tot slot [de intune-SDK](/mem/intune/developer/app-sdk-get-started) toe aan uw app om beveiligings beleid voor apps in te scha kelen. De SDK voor het meest deel maakt gebruik van een interceptie model en past automatisch beleids regels voor app-beveiliging toe om te bepalen of acties die door de app worden uitgevoerd, zijn toegestaan. Er zijn ook Api's die u hand matig kunt aanroepen om de app te laten weten of er beperkingen gelden voor bepaalde acties.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Een Azure Active Directory implementatie van eenmalige aanmelding plannen](../manage-apps/plan-sso-deployment.md)
 - [Procedure: SSO configureren in macOS en iOS](single-sign-on-macos-ios.md)

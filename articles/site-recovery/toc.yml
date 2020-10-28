@@ -48,22 +48,6 @@
           href: tutorial-dr-drill-azure.md
         - name: Failover naar Azure
           href: vmware-azure-tutorial-failover-failback.md
-    - name: Herstel na noodgeval van Azure VMware Solution naar Azure
-      items:
-        - name: Azure voorbereiden
-          href: avs-tutorial-prepare-azure.md
-        - name: Azure VMware Solution voorbereiden
-          href: avs-tutorial-prepare-avs.md
-        - name: Replicatie instellen
-          href: avs-tutorial-replication.md
-        - name: Noodherstelanalyse uitvoeren
-          href: avs-tutorial-dr-drill-azure.md
-        - name: Failover naar Azure
-          href: avs-tutorial-failover.md
-        - name: VM's opnieuw beschermen
-          href: avs-tutorial-reprotect.md
-        - name: Failback vanaf Azure
-          href: avs-tutorial-failback.md
     - name: Herstel na noodgevallen van virtuele Hyper-V-machines naar Azure
       items:
         - name: Azure voorbereiden
@@ -164,7 +148,7 @@
       href: recovery-plan-overview.md
     - name: Over migratie naar Azure
       href: migrate-overview.md
-    - name: Over op rollen gebaseerd toegangsbeheer van Azure met Site Recovery
+    - name: Over op rollen gebaseerd toegangsbeheer met Site Recovery
       href: site-recovery-role-based-linked-access-control.md
     - name: Over herstel na noodgevallen instellen naar een secundaire on-premises site
       items:
@@ -176,6 +160,10 @@
           href: hyper-v-vmm-secondary-support-matrix.md
         - name: Architectuur voor virtuele Hyper-V-machine naar een secundaire site
           href: hyper-v-vmm-architecture.md
+    - name: Beveiliging
+      items:
+        - name: Beveiligingsbasislijn
+          href: security-baseline.md
 - name: Handleidingen
   items:
     - name: Azure naar herstel na noodgevallen van Azure

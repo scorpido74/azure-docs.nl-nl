@@ -8,19 +8,19 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 06/05/2020
-ms.openlocfilehash: 7573abbbee479bfb0d1710beba3b95d084a5e657
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/26/2020
+ms.openlocfilehash: a5db3935ae445ee7dcf8129eb1d4c75fcb64302f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898881"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739202"
 ---
 # <a name="apply-transformation-module"></a>Transformatie module Toep assen
 
 In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
 
-Gebruik deze module om een invoer gegevensset te wijzigen op basis van een eerder berekende trans formatie.
+Gebruik deze module om een invoer gegevensset te wijzigen op basis van een eerder berekende trans formatie. Deze module is nodig in als u trans formaties wilt bijwerken in ingrijpende pijp lijnen.
 
 Als u bijvoorbeeld z-scores hebt gebruikt voor het normaliseren van uw trainings gegevens met behulp van de module **normaliseren gegevens** , zou u ook de z-Score waarde willen gebruiken die tijdens de Score fase is berekend voor training. In Azure Machine Learning kunt u de normalisatie methode opslaan als een trans formatie en vervolgens **trans formatie Toep assen** gebruiken om de z-Score toe te passen op de invoer gegevens vóór de score.
 
@@ -46,7 +46,14 @@ Met de ontwerp functie kunt u gegevens transformaties opslaan als gegevens **set
   
 1. Verbind de gegevensset-uitvoer van de gewenste module met de juiste invoer poort van de module **Apply trans formatie** .
   
-1. Als u een trans formatie wilt Toep assen op de nieuwe gegevensset, voert u de pijp lijn uit.  
+1. Als u een trans formatie wilt Toep assen op de nieuwe gegevensset, verzendt u de pijp lijn.  
+
+> [!IMPORTANT]
+> Om ervoor te zorgen dat de bijgewerkte trans formatie in trainings pijplijnen ook kan worden uitgevoerd bij het afleiden van pijp lijnen, moet u de onderstaande stappen volgen wanneer er bijgewerkte trans formatie is in de trainings pijplijn:
+> 1. Registreer in de trainings pijplijn de uitvoer van de [trans formatie select columns](select-columns-transform.md) als een gegevensset.
+> ![Gegevensset van module-uitvoer registreren](media/module/select-columns-transform-register-dataset.png)
+> 1. Verwijder in de pijp lijn voor de deinterferentie de **TD-** module en vervang deze door de geregistreerde gegevensset in de vorige stap.
+> ![TD-module vervangen](media/module/replace-tranformation-directory.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
