@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.author: apimpm
-ms.openlocfilehash: 04fcfa4712ec0b558140e942997060234b33f53e
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 979bdaa1e0dac4f45a321abda2a208f46983f9cd
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91627726"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108130"
 ---
 # <a name="tutorial-transform-and-protect-your-api"></a>Zelfstudie: Uw API transformeren en beveiligen
 
@@ -53,24 +53,24 @@ Het oorspronkelijke antwoord zien:
 
 1. Selecteer **API’s** in uw service-exemplaar van API Management.
 1. Selecteer **Demo Conference-API** in de API-lijst.
-1. Selecteer bovenaan het scherm het tabblad **Testen**.
-1. Selecteer de bewerking **GetSpeakers** en selecteer **Verzenden**.
+1. Selecteer bovenaan het scherm het tabblad **Testen** .
+1. Selecteer de bewerking **GetSpeakers** en selecteer **Verzenden** .
 
 Het oorspronkelijke antwoord moet er ongeveer uitzien als op deze afbeelding:
 
 :::image type="content" source="media/transform-api/original-response.png" alt-text="Beleidsregels in de portal":::
 
-Zoals u ziet, bevat het antwoord de headers **X-AspNet-Version** en **X-Powered-By**.
+Zoals u ziet, bevat het antwoord de headers **X-AspNet-Version** en **X-Powered-By** .
 
 ### <a name="set-the-transformation-policy"></a>Transformatiebeleid instellen
 
-1. Selecteer **Demo Conference-API** > **Ontwerpen** > **Alle bewerkingen**.
+1. Selecteer **Demo Conference-API** > **Ontwerpen** > **Alle bewerkingen** .
 4. Selecteer in de sectie **Uitgaande verwerking** het pictogram code-editor ( **</>** ).
 
    :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Outbound.png" alt-text="Beleidsregels in de portal" border="false":::
 
 1. Plaats de cursor in het **&lt;uitgaande&gt;** element en selecteer **Fragmenten weergeven** in de rechterbovenhoek.
-1. Selecteer in het rechtervenster onder **Transformatiebeleid** twee keer ** HTTP-header instellen** (om twee beleidsfragmenten in te voegen).
+1. Selecteer in het rechtervenster onder **Transformatiebeleid** twee keer **HTTP-header instellen** (om twee beleidsfragmenten in te voegen).
 
    :::image type="content" source="media/transform-api/transform-api.png" alt-text="Beleidsregels in de portal":::
 
@@ -83,7 +83,7 @@ Zoals u ziet, bevat het antwoord de headers **X-AspNet-Version** en **X-Powered-
 
    :::image type="content" source="media/transform-api/set-policy.png" alt-text="Beleidsregels in de portal":::
 
-1. Selecteer **Opslaan**.
+1. Selecteer **Opslaan** .
 
 ## <a name="replace-original-urls-in-the-body-of-the-api-response-with-apim-gateway-urls"></a>Oorspronkelijke URL's in de hoofdtekst van het API-antwoord vervangen door APIM-gateway-URL's
 
@@ -93,8 +93,8 @@ In deze sectie ziet u hoe u de oorspronkelijke URL's kunt verbergen die worden w
 
 Het oorspronkelijke antwoord zien:
 
-1. Selecteer **Demo Conference-API** > **Testen**.
-1. Selecteer de bewerking **GetSpeakers** en selecteer **Verzenden**.
+1. Selecteer **Demo Conference-API** > **Testen** .
+1. Selecteer de bewerking **GetSpeakers** en selecteer **Verzenden** .
 
     Zoals u ziet, bevat het antwoord de oorspronkelijke back-end-URL's:
 
@@ -103,23 +103,23 @@ Het oorspronkelijke antwoord zien:
 
 ### <a name="set-the-transformation-policy"></a>Transformatiebeleid instellen
 
-1.  Selecteer **Demo Conference-API** > **Alle bewerkingen** > **Ontwerpen**.
+1.  Selecteer **Demo Conference-API** > **Alle bewerkingen** > **Ontwerpen** .
 1.  Selecteer in de sectie **Uitgaande verwerking** het pictogram code-editor ( **</>** ).
 1.  Plaats de cursor in het **&lt;uitgaande&gt;** element en selecteer **Fragmenten weergeven** in de rechterbovenhoek.
-1.  Selecteer in het rechtervenster onder **Transformatiebeleid** de optie **URL’s in inhoud verbergen**. 
-1.  Selecteer **Opslaan**.
+1.  Selecteer in het rechtervenster onder **Transformatiebeleid** de optie **URL’s in inhoud verbergen** . 
+1.  Selecteer **Opslaan** .
 
 ## <a name="protect-an-api-by-adding-rate-limit-policy-throttling"></a>Een API beveiligen door beleid voor frequentielimieten toe te voegen
 
 In deze sectie wordt beschreven hoe u beveiliging voor uw back-end-API kunt toevoegen door frequentielimieten te configureren. U kunt bijvoorbeeld de frequentie van API-aanroepen beperken zodat de API niet te veel wordt gebruikt door ontwikkelaars. In dit voorbeeld is de limiet ingesteld op 3 aanroepen per 15 seconden voor elke abonnements-id. Na 15 seconden kan een ontwikkelaar de API opnieuw proberen aan te roepen.
 
-1.  Selecteer **Demo Conference-API** > **Alle bewerkingen** > **Ontwerpen**.
+1.  Selecteer **Demo Conference-API** > **Alle bewerkingen** > **Ontwerpen** .
 1.  Selecteer in de sectie **Inkomende verwerking** het pictogram code-editor ( **</>** ).
-1.  Plaats de cursor in het **&lt;binnenkomende&gt;** element.
+1.  Plaats de cursor in het **&lt;inkomende&gt;** element en selecteer **Fragmenten weergeven** in de rechterbovenhoek.
 
     :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png" alt-text="Beleidsregels in de portal" border="false":::
 
-1.  Selecteer in het rechtervenster onder **Toegang tot beperkingsbeleid** de optie **+ Aantal oproepen per sleutel beperken**.
+1.  Selecteer in het rechtervenster onder **Toegang tot beperkingsbeleid** de optie **+ Aantal oproepen per sleutel beperken** .
 1.  Wijzig de code **rate-limit-by-key** (in het element **\<inbound\>** ) in de volgende code:
 
     ```
@@ -155,8 +155,8 @@ In de rest van deze sectie worden de beleidstransformaties getest die u in dit a
 
 ### <a name="test-the-stripped-response-headers"></a>De verwijderde anwoordheaders testen
 
-1. Selecteer **Demo Conference-API** > **Testen**.
-1. Selecteer de bewerking **GetSpeakers** en selecteer **Verzenden**.
+1. Selecteer **Demo Conference-API** > **Testen** .
+1. Selecteer de bewerking **GetSpeakers** en selecteer **Verzenden** .
 
     Zoals u ziet, zijn de headers verwijderd:
 
@@ -164,8 +164,8 @@ In de rest van deze sectie worden de beleidstransformaties getest die u in dit a
 
 ### <a name="test-the-replaced-url"></a>De vervangen URL testen
 
-1. Selecteer **Demo Conference-API** > **Testen**.
-1. Selecteer de bewerking **GetSpeakers** en selecteer **Verzenden**.
+1. Selecteer **Demo Conference-API** > **Testen** .
+1. Selecteer de bewerking **GetSpeakers** en selecteer **Verzenden** .
 
     Zoals u ziet, is de URL vervangen.
 
@@ -173,14 +173,14 @@ In de rest van deze sectie worden de beleidstransformaties getest die u in dit a
 
 ### <a name="test-the-rate-limit-throttling"></a>De frequentielimiet testen
 
-1. Selecteer **Demo Conference-API** > **Testen**.
-1. Selecteer de bewerking **GetSpeakers**. Selecteer drie keer achter elkaar de optie **Verzenden**.
+1. Selecteer **Demo Conference-API** > **Testen** .
+1. Selecteer de bewerking **GetSpeakers** . Selecteer drie keer achter elkaar de optie **Verzenden** .
 
-    Nadat de aanvraag 3 keer is verzonden, ontvangt u het antwoord **429 Te veel aanvragen**.
+    Nadat de aanvraag 3 keer is verzonden, ontvangt u het antwoord **429 Te veel aanvragen** .
 
     :::image type="content" source="media/transform-api/test-throttling.png" alt-text="Beleidsregels in de portal":::
 
-1. Wacht ongeveer 15 seconden en selecteer opnieuw **Verzenden**. Deze keer ontvangt u, als het goed is, het antwoord **200 OK**.
+1. Wacht ongeveer 15 seconden en selecteer opnieuw **Verzenden** . Deze keer ontvangt u, als het goed is, het antwoord **200 OK** .
 
 ## <a name="next-steps"></a>Volgende stappen
 

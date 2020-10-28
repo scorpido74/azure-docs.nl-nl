@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.author: nitinme
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 08996d7343ccab4c5d6e688b580a8e6e1ca5bceb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1c7587a4434a84c6934179393baa5ae684f9b1fd
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91376507"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92116791"
 ---
 [Insluitende lezer](https://www.onenote.com/learningtools) is een inclusief ontworpen hulpprogramma dat bewezen technieken implementeert om begrijpend lezen te verbeteren voor beginnende lezers, mensen die een taal willen leren en mensen met leerproblemen, zoals dyslexie. U kunt de Insluitende lezer in uw toepassingen gebruiken om tekst te isoleren voor het verbeteren van de focus, het weergeven van afbeeldingen voor veelgebruikte woorden, het markeren van bepaalde secties, het hardop voorlezen van geselecteerde tekst, het vertalen van woorden en zinsdelen in realtime en meer.
 
@@ -42,7 +42,7 @@ Maak een nieuw project in Visual Studio met behulp van de sjabloon voor ASP.NET 
 
 ### <a name="configure-authentication-values"></a>Verificatietypewaarden configureren
 
-Klik met de rechtermuisknop op het project in de _Solution Explorer_ en kies **Gebruikersgeheimen beheren**. Hiermee opent u een bestand met de naam _Secrets.json_. Dit bestand is niet ingecheckt in broncodebeheer. Klik [hier](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows&preserve-view=true) voor meer informatie. Vervang de inhoud van _secrets.json_ met het volgende, waarbij u de waarden opgeeft die zijn verstrekt bij het maken van uw Insluitende lezer-resource.
+Klik met de rechtermuisknop op het project in de _Solution Explorer_ en kies **Gebruikersgeheimen beheren** . Hiermee opent u een bestand met de naam _Secrets.json_ . Dit bestand is niet ingecheckt in broncodebeheer. Klik [hier](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows&preserve-view=true) voor meer informatie. Vervang de inhoud van _secrets.json_ met het volgende, waarbij u de waarden opgeeft die zijn verstrekt bij het maken van uw Insluitende lezer-resource.
 
 ```json
 {
@@ -53,9 +53,9 @@ Klik met de rechtermuisknop op het project in de _Solution Explorer_ en kies **G
 }
 ```
 
-### <a name="install-active-directory"></a>Active Directory installeren
+### <a name="install-active-directory-nuget-package"></a>Active Directory NuGet-pakket installeren
 
-De volgende code gebruikt objecten uit het **Microsoft.IdentityModel.Clients.ActiveDirectory**-NuGet-pakket, zodat u een verwijzing naar dat pakket in uw project moet toevoegen.
+De volgende code gebruikt objecten uit het **Microsoft.IdentityModel.Clients.ActiveDirectory** -NuGet-pakket, zodat u een verwijzing naar dat pakket in uw project moet toevoegen.
 
 Open de NuGet Package Manager Console vanuit **Tools -> NuGet Package Manager -> Package Manager Console** en voer de volgende opdracht uit:
 
@@ -65,13 +65,13 @@ Open de NuGet Package Manager Console vanuit **Tools -> NuGet Package Manager ->
 
 ### <a name="update-the-controller-to-acquire-the-token"></a>Werk de controller bij om het token te verkrijgen 
 
-Open _Controllers\HomeController.cs_ en voeg de volgende code toe na de _met behulp van_-instructies boven aan het bestand.
+Open _Controllers\HomeController.cs_ en voeg de volgende code toe na de _met behulp van_ -instructies boven aan het bestand.
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 ```
 
-Nu gaan we de controller configureren voor het verkrijgen van de Azure AD-waarden van _secrets.json_. Voeg de volgende code toe aan de bovenkant van de klasse _HomeController_ na ```public class HomeController : Controller {```.
+Nu gaan we de controller configureren voor het verkrijgen van de Azure AD-waarden van _secrets.json_ . Voeg de volgende code toe aan de bovenkant van de klasse _HomeController_ na ```public class HomeController : Controller {```.
 
 ```csharp
 private readonly string TenantId;     // Azure subscription TenantId
@@ -142,7 +142,7 @@ public async Task<JsonResult> GetTokenAndSubdomain()
 ```
 
 ## <a name="add-sample-content"></a>Voorbeeldinhoud toevoegen
-Open eerst _Views\Shared\Layout.cshtml_. Voeg voor de regel in ```</head>``` de volgende code toe:
+Open eerst _Views\Shared\Layout.cshtml_ . Voeg voor de regel in ```</head>``` de volgende code toe:
 
 ```html
 @RenderSection("Styles", required: false)
@@ -214,7 +214,7 @@ Nu gaan we voorbeeldinhoud toevoegen aan deze web-app. Open _Views\Home\Index.cs
 </div>
 ```
 
-U ziet dat alle tekst een **taal**-kenmerk bevat waarmee de talen van de tekst worden beschreven. Dit kenmerk helpt de Insluitende lezer de relevante taal-en grammaticafuncties te bieden.
+U ziet dat alle tekst een **taal** -kenmerk bevat waarmee de talen van de tekst worden beschreven. Dit kenmerk helpt de Insluitende lezer de relevante taal-en grammaticafuncties te bieden.
 
 ## <a name="add-javascript-to-handle-launching-immersive-reader"></a>Javascript toevoegen aan de ingang voor het starten van Insluitende lezer
 

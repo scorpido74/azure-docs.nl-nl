@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/09/2020
-ms.openlocfilehash: e1b70e0e3eb54253972afded1bd37363d1a868e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 761841c1f2146a33b35cdddc4adc4d3eb1a4b139
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84195714"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635283"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-sql-database-geo-replication-and-failover"></a>De Azure SSIS Integration runtime configureren met SQL Database geo-replicatie en failover
 
@@ -25,7 +25,7 @@ ms.locfileid: "84195714"
 
 In dit artikel wordt beschreven hoe u de Azure SSIS Integration runtime (IR) configureert met Azure SQL Database geo-replicatie voor de SSISDB-data base. Wanneer een failover optreedt, kunt u ervoor zorgen dat de Azure-SSIS IR met de secundaire data base werkt.
 
-Zie [overzicht: actieve geo-replicatie en groepen voor automatische failover](../sql-database/sql-database-geo-replication-overview.md)voor meer informatie over geo-replicatie en failover voor SQL database.
+Zie [overzicht: actieve geo-replicatie en groepen voor automatische failover](../azure-sql/database/auto-failover-group-overview.md)voor meer informatie over geo-replicatie en failover voor SQL database.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -33,7 +33,7 @@ Zie [overzicht: actieve geo-replicatie en groepen voor automatische failover](..
 
 ### <a name="prerequisites"></a>Vereisten
 
-Een door Azure SQL beheerd exemplaar maakt gebruik van een *database hoofd sleutel (DMK)* om gegevens, referenties en verbindings gegevens die zijn opgeslagen in een Data Base te beveiligen. Als u de automatische ontsleuteling van DMK wilt inschakelen, wordt een kopie van de sleutel versleuteld via de *Server hoofd sleutel (SMK)*. 
+Een door Azure SQL beheerd exemplaar maakt gebruik van een *database hoofd sleutel (DMK)* om gegevens, referenties en verbindings gegevens die zijn opgeslagen in een Data Base te beveiligen. Als u de automatische ontsleuteling van DMK wilt inschakelen, wordt een kopie van de sleutel versleuteld via de *Server hoofd sleutel (SMK)* . 
 
 De SMK wordt niet gerepliceerd in een failover-groep. U moet een wacht woord toevoegen aan de primaire en secundaire instanties voor DMK-ontsleuteling na een failover.
 

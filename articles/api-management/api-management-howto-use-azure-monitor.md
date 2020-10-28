@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 7f6c7a651e133122dab86d6ed81572f239718b43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7080bd98bda5c4280ff7b06b235458bea0e9103c
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86243236"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093579"
 ---
 # <a name="monitor-published-apis"></a>Gepubliceerde API's bewaken
 
@@ -59,9 +59,9 @@ Metrische gegevens openen:
 
     ![metrics](./media/api-management-azure-monitor/api-management-metrics-blade.png)
 
-2. Selecteer in de vervolgkeuzelijst de gewenste metrische gegevens. Bijvoorbeeld **Aanvragen**. 
+2. Selecteer in de vervolgkeuzelijst de gewenste metrische gegevens. Bijvoorbeeld **Aanvragen** . 
 3. De grafiek toont het totale aantal API-aanroepen.
-4. De grafiek kan worden gefilterd met behulp van de dimensies van de meetwaarde **Aanvragen**. Klik bijvoorbeeld op **Filter toevoegen**, kies **Back-endresponscode**, voer 500 in als waarde. De grafiek toont nu het aantal aanvragen dat is mislukt in de API-back-end.   
+4. De grafiek kan worden gefilterd met behulp van de dimensies van de meetwaarde **Aanvragen** . Klik bijvoorbeeld op **Filter toevoegen** , kies **Back-endresponscode** , voer 500 in als waarde. De grafiek toont nu het aantal aanvragen dat is mislukt in de API-back-end.   
 
 ## <a name="set-up-an-alert-rule-for-unauthorized-request"></a>Een waarschuwingsregel instellen voor een niet-gemachtigde aanvraag
 
@@ -75,25 +75,25 @@ Waarschuwingen configureren:
 
 1. Selecteer **Waarschuwingen** in de menubalk onderaan de pagina.
 
-    ![waarschuwingen](./media/api-management-azure-monitor/alert-menu-item.png)
+    ![Schermopname van Waarschuwingen in het menu onderaan de pagina.](./media/api-management-azure-monitor/alert-menu-item.png)
 
 2. Klik op **Nieuwe waarschuwingsregel** voor deze waarschuwing.
-3. Klik op **Voorwaarde toevoegen**.
+3. Klik op **Voorwaarde toevoegen** .
 4. Selecteer **Metrische gegevens** in het vervolgkeuzelijst Signaaltype.
 5. Selecteer **Niet-gemachtigde gateway-aanvragen** als het te controleren signaal.
 
-    ![waarschuwingen](./media/api-management-azure-monitor/signal-type.png)
+    ![Schermopname met het veld Signaaltype en het signaal met de naam Niet-gemachtigde gateway-aanvragen gemarkeerd.](./media/api-management-azure-monitor/signal-type.png)
 
-6. Geef in de weergave **Signaallogica configureren** een drempelwaarde op waarna de waarschuwing moet worden geactiveerd en klik op **Gereed**.
+6. Geef in de weergave **Signaallogica configureren** een drempelwaarde op waarna de waarschuwing moet worden geactiveerd en klik op **Gereed** .
 
-    ![waarschuwingen](./media/api-management-azure-monitor/threshold.png)
+    ![Schermopname van de weergave Signaallogica configureren.](./media/api-management-azure-monitor/threshold.png)
 
 7. Selecteer een bestaande actiegroep of maak een nieuwe groep. In het onderstaande voorbeeld wordt een e-mailbericht verzonden naar de beheerders. 
 
     ![waarschuwingen](./media/api-management-azure-monitor/action-details.png)
 
 8. Geef een naam en beschrijving van de waarschuwingsregel op en kies het ernstniveau. 
-9. Druk op **Waarschuwingsregel maken**.
+9. Druk op **Waarschuwingsregel maken** .
 10. Probeer nu de conferentie-API aan te roepen zonder API-sleutel. De waarschuwing wordt geactiveerd en er wordt een e-mailbericht naar de beheerders verzonden. 
 
 ## <a name="activity-logs"></a>Activiteitenlogboeken
@@ -110,11 +110,11 @@ U kunt activiteitenlogboeken in uw API Management-service openen. U kunt alle lo
 Activiteitenlogboeken weergeven:
 
 1. Selecteer uw exemplaar van de APIM-service.
-2. Klik op **Activiteitenlogboek**.
+2. Klik op **Activiteitenlogboek** .
 
     ![activiteitenlogboek](./media/api-management-azure-monitor/api-management-activity-logs-blade.png)
 
-3. Selecteer het gewenste filterbereik en klik op **Toepassen**.
+3. Selecteer het gewenste filterbereik en klik op **Toepassen** .
 
 ## <a name="resource-logs"></a>Resourcelogboeken
 
@@ -123,11 +123,11 @@ Resourcelogboeken bieden uitgebreide informatie over bewerkingen en fouten die b
 Ga als volgt te werk om resourcelogboeken te configureren:
 
 1. Selecteer uw exemplaar van de APIM-service.
-2. Klik op **Diagnostische instellingen**.
+2. Klik op **Diagnostische instellingen** .
 
     ![resourcelogboeken](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
 
-3. Klik op **Diagnostische gegevens inschakelen**. U kunt resourcelogboeken samen met metrische gegevens naar een opslagaccount archiveren, ze naar een Event Hub streamen of ze naar Azure Monitor-logboeken verzenden. 
+3. Klik op **Diagnostische gegevens inschakelen** . U kunt resourcelogboeken samen met metrische gegevens naar een opslagaccount archiveren, ze naar een Event Hub streamen of ze naar Azure Monitor-logboeken verzenden. 
 
 API Management biedt momenteel resourcelogboeken (ingedeeld in batches per uur) over afzonderlijke API-aanvragen waarbij elk item het volgende schema heeft:
 

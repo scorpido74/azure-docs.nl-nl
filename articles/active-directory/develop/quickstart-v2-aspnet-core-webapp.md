@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: bf80a15131a8808359d21d5a9655ef04db236178
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 80b0c357bbad79a31d8b7153248b73c1231629c8
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91613489"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145042"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Quickstart: aanmelding met Microsoft toevoegen aan een ASP.NET Core-web-app
 
@@ -37,7 +37,7 @@ In deze quickstart gebruikt u een codevoorbeeld om te leren hoe een ASP.NET Core
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Optie 1: registreer de toepassing en laat deze automatisch configureren. Download vervolgens het codevoorbeeld
 >
 > 1. Ga naar de [Azure-portal - App-registraties](https://aka.ms/aspnetcore2-1-aad-quickstart-v2).
-> 1. Voer een naam in voor de toepassing en selecteer **Registreren**.
+> 1. Voer een naam in voor de toepassing en selecteer **Registreren** .
 > 1. Volg de instructies om de nieuwe toepassing met slechts één klik te downloaden en automatisch te configureren.
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Optie 2: registreer de toepassing en configureer handmatig de toepassing en het codevoorbeeld
@@ -47,16 +47,16 @@ In deze quickstart gebruikt u een codevoorbeeld om te leren hoe een ASP.NET Core
 >
 > 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 > 1. Als u toegang hebt tot meerdere tenants, gebruikt u het filter **Directory + abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: in het bovenste menu om de tenant te selecteren waarin u een toepassing wilt registreren.
-> 1. Zoek en selecteer de optie **Azure Active Directory**.
-> 1. Selecteer onder **Beheren** de optie **App-registraties** en vervolgens **Nieuwe registratie**.
+> 1. Zoek en selecteer de optie **Azure Active Directory** .
+> 1. Selecteer onder **Beheren** de optie **App-registraties** en vervolgens **Nieuwe registratie** .
 > 1. Voer een **Naam** in voor de toepassing. Gebruikers van uw app kunnen de naam zien. U kunt deze later wijzigen.
 > 1. Voer een **Omleidings-URI** van `https://localhost:44321/` in
-> 1. Selecteer **Registreren**.
-> 1. Selecteer **Verificatie** onder **Beheren**.
+> 1. Selecteer **Registreren** .
+> 1. Selecteer **Verificatie** onder **Beheren** .
 > 1. Selecteer onder **Omleidings-URI's** **Toevoegen URI** en voer vervolgens `https://localhost:44321/signin-oidc` in
 > 1. Voer een **Logout-URL** van `https://localhost:44321/signout-oidc` in
-> 1. Selecteer **id-tokens** onder **Impliciete toekenning**.
-> 1. Selecteer **Opslaan**.
+> 1. Selecteer **id-tokens** onder **Impliciete toekenning** .
+> 1. Selecteer **Opslaan** .
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Stap 1: uw toepassing configureren in Azure Portal
@@ -86,7 +86,7 @@ In deze quickstart gebruikt u een codevoorbeeld om te leren hoe een ASP.NET Core
 > > `Enter_the_Supported_Account_Info_Here`
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-aspnet-core-project"></a>Stap 3: uw ASP.NET Core-project configureren
-> 1. Pak het zip-archief uit in een lokale map in de buurt van de hoofdmap van uw station. Bijvoorbeeld in *C:\Azure-Samples*.
+> 1. Pak het zip-archief uit in een lokale map in de buurt van de hoofdmap van uw station. Bijvoorbeeld in *C:\Azure-Samples* .
 > 1. Open de oplossing in Visual Studio.
 > 1. Open het bestand *appSettings.json* en wijzig het volgende:
 >
@@ -97,11 +97,11 @@ In deze quickstart gebruikt u een codevoorbeeld om te leren hoe een ASP.NET Core
 >
 >    - Vervang `Enter_the_Application_Id_here`met de **Toepassings(client)-ID** voor de toepassing die is geregistreerd in de Azure-portal. U vindt de **toepassings-id (client-id)** op de pagina **Overzicht** van de app.
 >    - Vervang `common` door een van de volgende opties:
->       - Als uw toepassing **Accounts alleen in deze organisatiemap** ondersteunt, vervangt u deze waarde door de **Map (tenant)-ID**  (een GUID) of  **tenantnaam** (bijvoorbeeld, `contoso.onmicrosoft.com`). U vindt de **Directory (Tenant)-ID** op de pagina **Overzicht**van de apps.
+>       - Als uw toepassing **Accounts alleen in deze organisatiemap** ondersteunt, vervangt u deze waarde door de **Map (tenant)-ID**  (een GUID) of  **tenantnaam** (bijvoorbeeld, `contoso.onmicrosoft.com`). U vindt de **Directory (Tenant)-ID** op de pagina **Overzicht** van de apps.
 >       - Als uw toepassing **Accounts in elke organisatiemap** ondersteunt, vervang deze waarde dan door `organizations`
 >       - Als uw toepassing **Alle Microsoft-accountgebruikers** ondersteunt, vervang deze waarde dan door `common`
 >
-> Wijzig voor deze Snelstart geen andere waarden in het bestand  *appSettings.json*.
+> Wijzig voor deze Snelstart geen andere waarden in het bestand  *appSettings.json* .
 >
 > #### <a name="step-4-build-and-run-the-application"></a>Stap 4: de toepassing bouwen en uitvoeren
 >
@@ -124,7 +124,7 @@ Deze sectie bevat een overzicht van de code die vereist is voor het aanmelden va
 
 ### <a name="startup-class"></a>Opstartklasse
 
-De *Microsoft.AspNetCore.Authentication*-middleware maakt gebruik van een `Startup` klasse die wordt uitgevoerd wanneer in het hostingproces het volgende wordt geïnitialiseerd:
+De *Microsoft.AspNetCore.Authentication* -middleware maakt gebruik van een `Startup` klasse die wordt uitgevoerd wanneer in het hostingproces het volgende wordt geïnitialiseerd:
 
 ```csharp
   public void ConfigureServices(IServiceCollection services)
@@ -154,17 +154,22 @@ Met de regel die `.AddMicrosoftIdentityWebApp` bevat, wordt het Microsoft-identi
 | `Instance`             | STS-eindpunt (Security Token Service) voor de gebruiker te verifiëren. Deze waarde is doorgaans `https://login.microsoftonline.com/`, wat de openbare Azure-cloud aangeeft. |
 | `TenantId`             | De naam van uw tenant of de tenant-ID (een GUID) of *algemene* om gebruikers met werk- of schoolaccounts of persoonlijke Microsoft-accounts aan te melden.                             |
 
-De methode `Configure()` bevat twee belangrijke methoden, `app.UseCookiePolicy()` en `app.UseAuthentication()`, waarmee de benoemde functionaliteit kan worden ingeschakeld.
+De methode `Configure()` bevat twee belangrijke methoden, `app.UseAuthentication()` en `app.UseAuthorization()`, waarmee de benoemde functionaliteit kan worden ingeschakeld. In de `Configure()`-methode moet u ook de routes van Microsoft Identity Web registreren met ten minste één aanroep naar `endpoints.MapControllerRoute()` of `endpoints.MapControllers()`.
 
 ```csharp
-// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.UseEndpoints(endpoints =>
 {
-    // more code
-    app.UseAuthentication();
-    app.UseAuthorization();
-    // more code
-}
+
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+    endpoints.MapRazorPages();
+});
+
+// endpoints.MapControllers(); // REQUIRED if MapControllerRoute() isn't called.
 ```
 
 ### <a name="protect-a-controller-or-a-controllers-method"></a>Een controller of de methode van een controller beveiligen

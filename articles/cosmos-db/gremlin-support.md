@@ -1,23 +1,24 @@
 ---
-title: Ondersteuning voor Gremlin in Azure Cosmos DB
-description: Meer informatie over de Gremlin-taal van Apache TinkerPop. Leer welke functies en stappen beschikbaar zijn in Azure Cosmos DB
-author: jasonwhowell
+title: Gremlin-ondersteuning voor Azure Cosmos DB en compatibiliteit met TinkerPop-functies
+description: Meer informatie over de Gremlin-taal van Apache TinkerPop. Meer informatie over de functies en stappen die beschikbaar zijn in Azure Cosmos DB en de compatibiliteitsverschillen van de TinkerPop Graph-engine.
+author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 04/23/2020
-ms.author: jasonh
-ms.openlocfilehash: 2629cfc40a9f3c0745df78d9a22883be8476beb9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/13/2020
+ms.author: sngun
+ms.openlocfilehash: f435185d0f00d8f64425e3f2b7081e0ee9a393ce
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91409741"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276216"
 ---
-# <a name="azure-cosmos-db-gremlin-graph-support"></a>Ondersteuning voor Gremlin-grafieken in Azure Cosmos DB
-Azure Cosmos DB ondersteunt de taal voor grafiekdoorkruising van [Apache Tinkerpop](https://tinkerpop.apache.org), ook wel [Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps) genoemd. U kunt de Gremlin-taal gebruiken om grafiekentiteiten (hoekpunten en randen) te maken, eigenschappen binnen deze entiteiten te wijzigen, query’s en traversals uit te voeren, en entiteiten te verwijderen. 
+# <a name="azure-cosmos-db-gremlin-graph-support-and-compatibility-with-tinkerpop-features"></a>Gremlin-graafondersteuning voor Azure Cosmos DB en compatibiliteit met TinkerPop-functies
 
-In dit artikel bieden we een beknopt overzicht van Gremlin en worden de functies in Gremlin beschreven die worden ondersteund door de Gremlin-API.
+Azure Cosmos DB ondersteunt de taal voor grafiekdoorkruising van [Apache Tinkerpop](https://tinkerpop.apache.org), ook wel [Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps) genoemd. U kunt de Gremlin-taal gebruiken om grafiekentiteiten (hoekpunten en randen) te maken, eigenschappen binnen deze entiteiten te wijzigen, query’s en traversals uit te voeren, en entiteiten te verwijderen.
+
+De Azure Cosmos DB Graph-engine volgt de specificatie voor [Apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps)-doorkruisingstappen nauwkeurig, maar er zijn verschillen in de implementatie die specifiek zijn voor Azure Cosmos DB. In dit artikel bieden we een beknopt overzicht van Gremlin en worden de functies in Gremlin beschreven die worden ondersteund door de Gremlin-API.
 
 ## <a name="compatible-client-libraries"></a>Compatibele clientbibliotheken
 
@@ -33,6 +34,7 @@ In de volgende tabel ziet u populaire Gremlin-stuurprogramma’s die u kunt gebr
 | [Gremlin-console](https://tinkerpop.apache.org/downloads.html) | [TinkerPop-documenten](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [Grafiek maken met behulp van de Gremlin-console](create-graph-gremlin-console.md) | 3.2.0 + |
 
 ## <a name="supported-graph-objects"></a>Ondersteunde grafiekobjecten
+
 TinkerPop is een standaard die een breed bereik aan grafiektechnologieën beslaat. Daarom beschikt TinkerPop over een standaardterminologie om te beschrijven welke functies worden aangeboden door een grafiekprovider. Azure Cosmos DB biedt een permanente, beschrijfbare grafiekdatabase met een hoge gelijktijdigheid, die kan worden gepartitioneerd op meerdere servers of clusters. 
 
 In de volgende tabel worden de TinkerPop-functies vermeld die zijn geïmplementeerd met Azure Cosmos DB: 
@@ -114,6 +116,7 @@ Met elke eigenschap kunnen meerdere waarden worden opgeslagen binnen een matrix.
 | `value` | De waarde van de eigenschap
 
 ## <a name="gremlin-steps"></a>Gremlin-stappen
+
 We gaan nu de Gremlin-stappen bekijken die worden ondersteund in Azure Cosmos DB. Zie [TinkerPop-naslagwerken](https://tinkerpop.apache.org/docs/3.3.2/reference) voor een compleet overzicht van Gremlin.
 
 | stap | Beschrijving | TinkerPop 3.2-documentatie |
@@ -162,6 +165,61 @@ We gaan nu de Gremlin-stappen bekijken die worden ondersteund in Azure Cosmos DB
 
 De voor schrijven geoptimaliseerde engine van Azure Cosmos DB biedt standaard ondersteuning voor het automatisch indexeren van alle eigenschappen binnen hoekpunten en randen. Daarom worden query’s met filters, bereikquery’s, sorteringen of combinaties van elke willekeurige eigenschap verwerkt vanaf de index en efficiënt geleverd. Bekijk onze paper over [schema-agnostisch indexeren](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) voor meer informatie over hoe indexeren werkt in Azure Cosmos DB.
 
-## <a name="next-steps"></a>Volgende stappen
-* Aan de slag met het bouwen van een grafiektoepassing [met behulp van onze SDK’s](create-graph-dotnet.md) 
-* Meer informatie over [ondersteuning voor grafieken](graph-introduction.md) in Azure Cosmos DB
+## <a name="behavior-differences"></a>Gedragsverschillen
+
+* De Azure Cosmos DB Graph-engine voert ***breedte-eerst*** -doorkruising uit, terwijl TinkerPop Gremlin diepte-eerst is. Dit gedrag behaalt betere prestaties in horizontaal schaalbare systemen zoals Cosmos DB.
+
+## <a name="unsupported-features"></a>Niet-ondersteunde functies
+
+***[Gremlin Bytecode](https://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)*** is een programmeertaal-agnostische specificatie voor het doorkruisen van grafieken. Cosmos DB Graph ondersteunt dit nog niet. Gebruik `GremlinClient.SubmitAsync()` en geef doorkruising door als een tekenreeks.
+
+Instellen van kardinaliteit met ***`property(set, 'xyz', 1)`*** wordt momenteel niet ondersteund. Gebruik in plaats daarvan `property(list, 'xyz', 1)`. Zie [Vertex properties with TinkerPop](http://tinkerpop.apache.org/docs/current/reference/#vertex-properties) voor meer informatie.
+
+De ***stap `match()`*** is momenteel niet beschikbaar. Deze stap biedt declaratieve querymogelijkheden.
+
+***Objecten als eigenschappen*** op hoekpunten of randen worden niet ondersteund. Eigenschappen kunnen alleen primitieve typen of matrices zijn.
+
+***Sorteren op matrixeigenschappen*** `order().by(<array property>)` wordt niet ondersteund. Alleen sorteren op primitieve typen wordt ondersteund.
+
+***Niet-primitieve JSON-typen*** worden niet ondersteund. Gebruik de typen `string`, `number` of `true`/`false`. `null`-waarden worden niet ondersteund. 
+
+***GraphSONv3*** -serialisatiefunctie wordt momenteel niet ondersteund. Gebruik `GraphSONv2` Serializer-, Reader- en Writer-klassen in de configuratie van de verbinding. De resultaten die door de Azure Cosmos DB Gremlin API worden geretourneerd, hebben niet dezelfde indeling als de GraphSON-indeling. 
+
+**Lambda-expressies en functies** worden momenteel niet ondersteund. Dit geldt ook voor de functies `.map{<expression>}`, `.by{<expression>}`en `.filter{<expression>}`. Zie [A Note on Lambdas](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas) voor meer informatie en om te leren hoe u deze functies kunt herschrijven met behulp van Gremlin-stappen.
+
+* ***Transacties*** worden niet ondersteund vanwege de gedistribueerde aard van het systeem.  Configureer het juiste consistentie model op het Gremlin-account om uw eigen schrijfbewerkingen te lezen en gebruik optimistische gelijktijdigheid om conflicterende schrijfbewerkingen op te lossen.
+
+## <a name="known-limitations"></a>Bekende beperkingen
+
+**Indexgebruik voor Gremlin-query's met `.V()`-stappen binnen doorkruising** : Momenteel gebruikt alleen de eerste aanroep van `.V()` in een doorkruising gebruik van de index om gekoppelde filters of predicaten op te lossen. Bij volgende aanroepen wordt de index niet geraadpleegd, wat de latentie en de kosten van de query zou kunnen verhogen.
+    
+    Assuming default indexing, a typical read Gremlin query that starts with the `.V()` step would use parameters in its attached filtering steps, such as `.has()` or `.where()` to optimize the cost and performance of the query. For example:
+
+    ```java
+    g.V().has('category', 'A')
+    ```
+
+    However, when more than one `.V()` step is included in the Gremlin query, the resolution of the data for the query might not be optimal. Take the following query as an example:
+
+    ```java
+    g.V().has('category', 'A').as('a').V().has('category', 'B').as('b').select('a', 'b')
+    ```
+
+    This query will return two groups of vertices based on their property called `category`. In this case, only the first call, `g.V().has('category', 'A')` will make use of the index to resolve the vertices based on the values of their properties.
+
+    A workaround for this query is to use subtraversal steps such as `.map()` and `union()`. This is exemplified below:
+
+    ```java
+    // Query workaround using .map()
+    g.V().has('category', 'A').as('a').map(__.V().has('category', 'B')).as('b').select('a','b')
+
+    // Query workaround using .union()
+    g.V().has('category', 'A').fold().union(unfold(), __.V().has('category', 'B'))
+    ```
+
+    You can review the performance of the queries by using the [Gremlin `executionProfile()` step](graph-execution-profile.md).
+
+## <a name="next-steps"></a>Uitgaande van standaardindexering, zou een typische Gremlin-query die begint met de stap `.V()` in de gekoppelde filterstappen parameters zoals `.has()` of `.where()` gebruiken om de kosten en de prestaties van de query te optimaliseren.
+
+* Bijvoorbeeld: 
+* Als er echter meer dan één `.V()`-stap is opgenomen in de Gremlin-query, is de resolutie van de gegevens voor de query mogelijk niet optimaal.

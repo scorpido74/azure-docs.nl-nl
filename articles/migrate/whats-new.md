@@ -4,12 +4,12 @@ description: Meer informatie over nieuwe en recente updates in de Azure Migrate-
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 0552402661397a2a8aa09f989189cc08b46e638e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b03f3a7e10aa42f3393ecc22cb74f4e565587032
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91667075"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314581"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Nieuwe functies in Azure Migrate
 
@@ -17,7 +17,7 @@ ms.locfileid: "91667075"
 
 ## <a name="update-september-2020"></a>Update (september 2020)
 - Servers migreren naar Beschikbaarheidszones wordt nu ondersteund.
-- Op UEFI gebaseerde VM's en fysieke servers migreren naar Azure-VM's van Generatie 2 wordt nu ondersteund
+- Op UEFI gebaseerde VM's en fysieke servers migreren naar Azure-VM's van generatie 2 wordt nu ondersteund. Met deze release voert het hulpprogramma Azure Migrate: Server Migration de conversie van generatie 2 VM naar generatie 1 VM niet uit tijdens de migratie.
 - Er is een nieuw Power BI-evaluatiedashboard voor Azure Migrate beschikbaar om u te helpen bij het vergelijken van de kosten bij verschillende evaluatie-instellingen. Het dashboard bevat een PowerShell-hulpprogramma dat automatisch de evaluaties maakt die worden ingevoegd in het Power BI-dashboard. [Meer informatie.](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/assessment-utility)
 - Afhankelijkheidsanalyse (zonder agent) kan nu gelijktijdig worden uitgevoerd op 1000 VM's.
 - Afhankelijkheidsanalyse (zonder agent) kan nu worden ingeschakeld of uitgeschakeld op schaal met behulp van PowerShell-scripts. [Meer informatie.](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
@@ -36,7 +36,7 @@ ms.locfileid: "91667075"
 
 ## <a name="update-june-2020"></a>Update (juni 2020)
 
-- Evaluaties voor het migreren van on-premises VMware VM's naar [Azure VMware Solution (AVS)](https://go.microsoft.com/fwlink/?linkid=2132637) wordt nu ondersteund. [Meer informatie](how-to-create-azure-vmware-solution-assessment.md)
+- Evaluaties voor het migreren van on-premises VMware VM's naar [Azure VMware Solution (AVS)](./concepts-azure-vmware-solution-assessment-calculation.md) wordt nu ondersteund. [Meer informatie](how-to-create-azure-vmware-solution-assessment.md)
 - Ondersteuning voor meerdere referenties op een apparaat voor detectie van fysieke servers.
 - Ondersteuning voor het toestaan van Azure-aanmelding vanaf een apparaat voor tenants, waarbij een tenantbeperking is geconfigureerd.
 
@@ -64,17 +64,17 @@ Er is nu installatie op basis van een script beschikbaar voor het instellen van 
 
 Er zijn een aantal nieuwe functies toegevoegd aan Azure Migrate:
 
-- **Evaluatie van fysieke servers**. Evaluatie van on-premises fysieke servers wordt nu ondersteund, naast de fysieke servermigratie die al wordt ondersteund.
-- **Evaluatie op basis van import**. Evaluatie van computers die gebruikmaken van metagegevens en prestatiegegevens die worden geleverd in een CSV-bestand, wordt nu ondersteund.
-- **Toepassingsdetectie**: Azure Migrate ondersteunt nu de detectie op toepassingsniveau van apps, rollen en functies met behulp van het Azure Migrate-apparaat. Dit wordt momenteel alleen ondersteund voor VMware-VM's en is beperkt tot detectie (evaluatie wordt momenteel niet ondersteund). [Meer informatie](how-to-discover-applications.md)
-- **Visualisatie van afhankelijkheden zonder agent**: U hoeft niet meer expliciet agents te installeren voor visualisatie van afhankelijkheden. Zowel zonder agent als met agent wordt nu ondersteund.
-- **Virtueel bureaublad**: Gebruik ISV-hulpprogramma's om on-premises VDI (Virtual Desktop Infrastructure) te evalueren en te migreren naar Windows Virtual Desktop in Azure.
-- **Web-app**: De Azure App Service Migration Assistant, die wordt gebruikt voor het evalueren en migreren van web-apps, is nu geïntegreerd in Azure Migrate.
+- **Evaluatie van fysieke servers** . Evaluatie van on-premises fysieke servers wordt nu ondersteund, naast de fysieke servermigratie die al wordt ondersteund.
+- **Evaluatie op basis van import** . Evaluatie van computers die gebruikmaken van metagegevens en prestatiegegevens die worden geleverd in een CSV-bestand, wordt nu ondersteund.
+- **Toepassingsdetectie** : Azure Migrate ondersteunt nu de detectie op toepassingsniveau van apps, rollen en functies met behulp van het Azure Migrate-apparaat. Dit wordt momenteel alleen ondersteund voor VMware-VM's en is beperkt tot detectie (evaluatie wordt momenteel niet ondersteund). [Meer informatie](how-to-discover-applications.md)
+- **Visualisatie van afhankelijkheden zonder agent** : U hoeft niet meer expliciet agents te installeren voor visualisatie van afhankelijkheden. Zowel zonder agent als met agent wordt nu ondersteund.
+- **Virtueel bureaublad** : Gebruik ISV-hulpprogramma's om on-premises VDI (Virtual Desktop Infrastructure) te evalueren en te migreren naar Windows Virtual Desktop in Azure.
+- **Web-app** : De Azure App Service Migration Assistant, die wordt gebruikt voor het evalueren en migreren van web-apps, is nu geïntegreerd in Azure Migrate.
 
 Er zijn nieuwe hulpprogramma's voor evaluatie en migratie toegevoegd aan Azure Migrate:
 
-- **Rackware**: biedt cloudmigratie.
-- **Movere**: biedt evaluatie.
+- **Rackware** : biedt cloudmigratie.
+- **Movere** : biedt evaluatie.
 
 [Meer informatie](migrate-services-overview.md) over het gebruik van hulpprogramma's en ISV-aanbiedingen voor evaluatie en migratie in Azure Migrate.
 
@@ -82,21 +82,21 @@ Er zijn nieuwe hulpprogramma's voor evaluatie en migratie toegevoegd aan Azure M
 
 De huidige versie van Azure Migrate (uitgebracht in juli 2019) biedt een aantal nieuwe functies:
 
-- **Geïntegreerd migratieplatform**: Azure Migrate biedt nu één portal om de beleving van uw migratie naar Azure te centraliseren, te beheren en bij te houden, met een verbeterde implementatiestroom en portalervaring.
-- **Hulpprogramma's voor evaluatie en migratie**: Azure Migrate biedt systeemeigen hulpprogramma's en is te integreren met andere Azure-services, evenals met hulpprogramma's van onafhankelijke softwareleveranciers (ISV's). [Meer informatie](migrate-services-overview.md#isv-integration) over ISV-integratie.
-- **Azure Migrate-evaluatie**: Met het hulpprogramma Azure Migrate Server Assessment kunt u VMware-VM's en Hyper-V-VM's evalueren voor migratie naar Azure. U kunt ook evalueren voor migratie met behulp van andere Azure-services en met ISV-hulpprogramma's.
-- **Azure Migrate-migratie**: Met behulp van het hulpprogramma Azure Migrate Server Migration kunt u on-premises VMware-VM's en Hyper-V-VM's migreren naar Azure, evenals fysieke servers, andere gevirtualiseerde servers en VM's in een privécloud/openbare cloud. Daarnaast kunt u migreren naar Azure met behulp van ISV-hulpprogramma's.
-- **Azure Migrate-apparaat**: Azure Migrate implementeert een licht apparaat voor detectie en evaluatie van on-premises VMware-VM's en Hyper-V-VM's.
+- **Geïntegreerd migratieplatform** : Azure Migrate biedt nu één portal om de beleving van uw migratie naar Azure te centraliseren, te beheren en bij te houden, met een verbeterde implementatiestroom en portalervaring.
+- **Hulpprogramma's voor evaluatie en migratie** : Azure Migrate biedt systeemeigen hulpprogramma's en is te integreren met andere Azure-services, evenals met hulpprogramma's van onafhankelijke softwareleveranciers (ISV's). [Meer informatie](migrate-services-overview.md#isv-integration) over ISV-integratie.
+- **Azure Migrate-evaluatie** : Met het hulpprogramma Azure Migrate Server Assessment kunt u VMware-VM's en Hyper-V-VM's evalueren voor migratie naar Azure. U kunt ook evalueren voor migratie met behulp van andere Azure-services en met ISV-hulpprogramma's.
+- **Azure Migrate-migratie** : Met behulp van het hulpprogramma Azure Migrate Server Migration kunt u on-premises VMware-VM's en Hyper-V-VM's migreren naar Azure, evenals fysieke servers, andere gevirtualiseerde servers en VM's in een privécloud/openbare cloud. Daarnaast kunt u migreren naar Azure met behulp van ISV-hulpprogramma's.
+- **Azure Migrate-apparaat** : Azure Migrate implementeert een licht apparaat voor detectie en evaluatie van on-premises VMware-VM's en Hyper-V-VM's.
     - Dit apparaat wordt gebruikt door Azure Migrate Server Assessment en Azure Migrate Server Migration voor migratie zonder agent.
     - Het apparaat detecteert voortdurend metagegevens en prestatiegegevens van de server ten behoeve van evaluatie en migratie.  
-- **Migratie van VMware-VM's**:  Azure Migrate Server Migration biedt een aantal methoden voor het migreren van on-premises VMware-VM's naar Azure.  Een migratie zonder agent met behulp van het Azure Migrate-apparaat en een migratie op basis van een agent die gebruikmaakt van een replicatieapparaat en een agent implementeert op elke VM die u wilt migreren. [Meer informatie](server-migrate-overview.md)
- - **Database-evaluatie en -migratie**: Vanuit Azure Migrate kunt u on-premises databases evalueren voor migratie naar Azure met behulp van de Azure Database Migration Assistant. U kunt databases migreren met behulp van de Azure Database Migration Service.
-- **Migratie van web-apps**: U kunt web-apps evalueren met behulp van een openbare eindpunt-URL met de Azure App Service. Voor de migratie van interne NET-apps kunt u de App Service Migration Assistant downloaden en uitvoeren.
-- **Data Box**: Importeer grote hoeveelheden offlinegegevens in Azure met behulp van Azure Data Box in Azure Migrate.
+- **Migratie van VMware-VM's** :  Azure Migrate Server Migration biedt een aantal methoden voor het migreren van on-premises VMware-VM's naar Azure.  Een migratie zonder agent met behulp van het Azure Migrate-apparaat en een migratie op basis van een agent die gebruikmaakt van een replicatieapparaat en een agent implementeert op elke VM die u wilt migreren. [Meer informatie](server-migrate-overview.md)
+ - **Database-evaluatie en -migratie** : Vanuit Azure Migrate kunt u on-premises databases evalueren voor migratie naar Azure met behulp van de Azure Database Migration Assistant. U kunt databases migreren met behulp van de Azure Database Migration Service.
+- **Migratie van web-apps** : U kunt web-apps evalueren met behulp van een openbare eindpunt-URL met de Azure App Service. Voor de migratie van interne NET-apps kunt u de App Service Migration Assistant downloaden en uitvoeren.
+- **Data Box** : Importeer grote hoeveelheden offlinegegevens in Azure met behulp van Azure Data Box in Azure Migrate.
 
 ## <a name="azure-migrate-previous-version"></a>Vorige versie van Azure Migrate
 
-Als u de vorige versie van Azure Migrate gebruikt (alleen evaluatie van on-premises VMware-VM's werd ondersteund), kunt u nu beter de huidige versie gaan gebruiken. In de vorige versie kunt u geen nieuwe Azure Migrate-projecten meer maken of nieuwe detecties uitvoeren. U houdt toegang tot bestaande projecten. Ga hiertoe in Azure Portal naar **Alle services** en zoek naar **Azure Migrate**. De Azure Migrate-meldingen bevatten een koppeling voor toegang tot oude Azure Migrate-projecten.
+Als u de vorige versie van Azure Migrate gebruikt (alleen evaluatie van on-premises VMware-VM's werd ondersteund), kunt u nu beter de huidige versie gaan gebruiken. In de vorige versie kunt u geen nieuwe Azure Migrate-projecten meer maken of nieuwe detecties uitvoeren. U houdt toegang tot bestaande projecten. Ga hiertoe in Azure Portal naar **Alle services** en zoek naar **Azure Migrate** . De Azure Migrate-meldingen bevatten een koppeling voor toegang tot oude Azure Migrate-projecten.
 
 
 
@@ -104,4 +104,4 @@ Als u de vorige versie van Azure Migrate gebruikt (alleen evaluatie van on-premi
 
 - Meer informatie over prijzen voor Azure Migrate vindt u [hier](https://azure.microsoft.com/pricing/details/azure-migrate/).
 - [Bekijk de veelgestelde vragen](resources-faq.md) over Azure Migrate.
-- Probeer onze zelfstudies om [VMware-VM's](tutorial-assess-vmware.md) en [Hyper-V-VM's](tutorial-assess-hyper-v.md) te evalueren.
+- Probeer onze zelfstudies om [VMware-VM's](./tutorial-assess-vmware-azure-vm.md) en [Hyper-V-VM's](tutorial-assess-hyper-v.md) te evalueren.

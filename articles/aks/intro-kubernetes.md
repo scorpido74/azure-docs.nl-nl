@@ -5,12 +5,12 @@ services: container-service
 ms.topic: overview
 ms.date: 05/06/2019
 ms.custom: mvc
-ms.openlocfilehash: f4c1e96a0603caa8e026f1968299fa24b8755a42
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ee709868cd7e78afbcc480913c4e4c8fd2acf832
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88003210"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167182"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
@@ -63,6 +63,12 @@ Zie [Ondersteunde Kubernetes-versies in AKS][aks-supported versions] voor meer i
 AKS ondersteunt het maken van GPU-knooppuntpools. Azure biedt momenteel VM’s met een of meerdere GPU’s. GPU-VM's zijn ontworpen voor rekenintensieve, grafisch-intensieve en visualisatiewerkbelastingen.
 
 Zie [GPU's gebruiken op AKS][aks-gpu] voor meer informatie.
+
+### <a name="confidential-computing-nodes-public-preview"></a>Confidential Computing-knooppunten (openbare preview)
+
+AKS biedt ondersteuning voor het maken van op Intel SGX gebaseerde, vertrouwelijke computing-knooppuntpools (DCSv2-VM's). Met vertrouwelijke computingknooppunten kunnen containers worden uitgevoerd in een op hardware gebaseerde vertrouwde en geïsoleerde uitvoeringsomgeving (enclaves). De isolatie tussen containers in combinatie met code-integriteit via attestation kan helpen bij uw diepgaande beveiligingsstrategie voor containers. Vertrouwelijke computingknooppunten ondersteunen zowel vertrouwelijke containers (bestaande docker-apps) als enclave-compatibele containers.
+
+Zie [Vertrouwelijke computing-knooppunten op AKS][conf-com-node] voor meer informatie
 
 ### <a name="storage-volume-support"></a>Opslagvolumeondersteuning
 
@@ -143,3 +149,4 @@ Meer informatie over het implementeren en beheren van AKS vindt u in de snelstar
 [kubernetes-rbac]: concepts-identity.md#kubernetes-role-based-access-control-rbac
 [concepts-identity]: concepts-identity.md
 [concepts-storage]: concepts-storage.md
+[conf-com-node]: ../confidential-computing/confidential-nodes-aks-overview.md

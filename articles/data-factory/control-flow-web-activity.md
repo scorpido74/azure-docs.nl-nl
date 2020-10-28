@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 95cbb509beba82a14b9f8f8a11c603a6d7b8689d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e74361d6fb3eb1f9708f39f198506d16c7c046c4
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87280797"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635096"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Webactiviteit in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -73,7 +73,7 @@ De WebActivity kan worden gebruikt om een aangepast REST-eindpunt aan te roepen 
 Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | --------
 naam | De naam van de Web-activiteit | Tekenreeks | Ja
-type | Moet worden ingesteld op **webactiviteit**. | Tekenreeks | Ja
+type | Moet worden ingesteld op **webactiviteit** . | Tekenreeks | Ja
 method | Rest API-methode voor het doel eindpunt. | Tekenreeks. <br/><br/>Ondersteunde typen: ' GET ', ' POST ', ' PUT ' | Ja
 url | Doel eindpunt en-pad | Teken reeks (of expressie met het resultType van de teken reeks). Voor de activiteit wordt een time-out van één minuut met een fout weergegeven als er geen respons van het eindpunt wordt ontvangen. | Ja
 koppen | Kopteksten die naar de aanvraag worden verzonden. U kunt bijvoorbeeld de taal en het type van een aanvraag instellen: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` . | Teken reeks (of expressie met het resultType van de teken reeks) | Ja, content-type-header is vereist. `"headers":{ "Content-Type":"application/json"}`
@@ -81,7 +81,7 @@ body | Vertegenwoordigt de nettolading die naar het eind punt wordt verzonden.  
 verificatie | De verificatie methode die wordt gebruikt voor het aanroepen van het eind punt. De ondersteunde typen zijn Basic of ClientCertificate. Zie de sectie [verificatie](#authentication) voor meer informatie. Als verificatie niet is vereist, sluit u deze eigenschap. | Teken reeks (of expressie met het resultType van de teken reeks) | Nee
 gegevenssets | Lijst met gegevens sets die zijn door gegeven aan het eind punt. | Matrix van gegevensset-verwijzingen. Dit kan een lege matrix zijn. | Ja
 linkedServices | Lijst met gekoppelde services die zijn door gegeven aan het eind punt. | Matrix van gekoppelde service verwijzingen. Dit kan een lege matrix zijn. | Ja
-connectVia | De [Integration runtime](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime) die moet worden gebruikt om verbinding te maken met het gegevens archief. U kunt de Azure Integration runtime of de zelf-hostende Integration runtime gebruiken (als uw gegevens archief zich in een particulier netwerk bevindt). Als deze eigenschap niet is opgegeven, gebruikt de service de standaard Azure Integration runtime. | De naslag informatie voor Integration runtime. | Nee 
+connectVia | De [Integration runtime](./concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevens archief. U kunt de Azure Integration runtime of de zelf-hostende Integration runtime gebruiken (als uw gegevens archief zich in een particulier netwerk bevindt). Als deze eigenschap niet is opgegeven, gebruikt de service de standaard Azure Integration runtime. | De naslag informatie voor Integration runtime. | Nee 
 
 > [!NOTE]
 > REST-eindpunten die door de webactiviteit worden aangeroepen, moeten een respons van het type JSON retourneren. Voor de activiteit wordt een time-out van één minuut met een fout weergegeven als er geen respons van het eindpunt wordt ontvangen.
@@ -130,7 +130,7 @@ Met base64 gecodeerde inhoud van een PFX-bestand en het wacht woord opgeven.
 
 ### <a name="managed-identity"></a>Beheerde identiteit
 
-Geef de bron-URI op waarvoor het toegangs token wordt aangevraagd met behulp van de beheerde identiteit voor de data factory. Gebruik om de Azure Resource Management-API aan te roepen `https://management.azure.com/` . Zie de [pagina beheerde identiteiten voor Azure-resources Overview](/azure/active-directory/managed-identities-azure-resources/overview)voor meer informatie over hoe beheerde identiteiten werken.
+Geef de bron-URI op waarvoor het toegangs token wordt aangevraagd met behulp van de beheerde identiteit voor de data factory. Gebruik om de Azure Resource Management-API aan te roepen `https://management.azure.com/` . Zie de [pagina beheerde identiteiten voor Azure-resources Overview](../active-directory/managed-identities-azure-resources/overview.md)voor meer informatie over hoe beheerde identiteiten werken.
 
 ```json
 "authentication": {

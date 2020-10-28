@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 081c07be49178be2415edccbfc2026336eb8a8a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0f30edeb24f3c4abed6f144f3fb7f755cc08a72
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604407"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629456"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>De werk ruimte achter een firewall gebruiken voor Azure Machine Learning
 
@@ -63,6 +63,8 @@ De hosts in deze sectie zijn eigendom van micro soft en bieden services die nodi
 | **mcr.microsoft.com** | Micro soft Container Registry voor base docker-installatie kopieën |
 | **your-acr-server-name.azurecr.io** | Alleen nodig als uw Azure Container Registry zich achter het virtuele netwerk bevindt. In deze configuratie wordt een persoonlijke koppeling vanuit de micro soft-omgeving gemaakt naar het ACR-exemplaar in uw abonnement. Gebruik de ACR-server naam voor uw Azure Machine Learning-werk ruimte. |
 | **\*. notebooks.azure.net** | Vereist door de notitie blokken in Azure Machine Learning Studio. |
+| **\*. file.core.windows.net** | Dit is nodig voor de bestanden Verkenner in Azure Machine Learning Studio. |
+| **\*. dfs.core.windows.net** | Dit is nodig voor de bestanden Verkenner in Azure Machine Learning Studio. |
 | **graph.windows.net** | Vereist voor notebooks |
 
 > [!TIP]
@@ -76,7 +78,7 @@ De hosts in deze sectie worden gebruikt voor het installeren van Python-pakkette
 | ---- | ---- |
 | **anaconda.com**</br>**\*. anaconda.com** | Wordt gebruikt om standaard pakketten te installeren. |
 | **\*. anaconda.org** | Wordt gebruikt om opslag plaats-gegevens op te halen. |
-| **pypi.org** | Wordt gebruikt voor het weer geven van afhankelijkheden uit de standaard index, indien aanwezig, en de index wordt niet overschreven door gebruikers instellingen. Als de index wordt overschreven, moet u ook ** \* . pythonhosted.org**toestaan. |
+| **pypi.org** | Wordt gebruikt voor het weer geven van afhankelijkheden uit de standaard index, indien aanwezig, en de index wordt niet overschreven door gebruikers instellingen. Als de index wordt overschreven, moet u ook **\* . pythonhosted.org** toestaan. |
 
 ## <a name="r-hosts"></a>R-hosts
 

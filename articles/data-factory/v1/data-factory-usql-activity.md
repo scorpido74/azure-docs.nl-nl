@@ -13,12 +13,12 @@ ms.author: abnarain
 ms.custom: devx-track-csharp
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 17e5b5eaea90b5f67ad91f0b09a51b2f1aeffd68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5e53cab30f1adca05652a3b3b7541e12ebebbdb
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322612"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631458"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Gegevens transformeren door U-SQL-scripts uit te voeren in Azure Data Lake Analytics 
 > [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
@@ -48,14 +48,14 @@ De volgende tabel bevat beschrijvingen van de algemene eigenschappen die in de J
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| **type** |De eigenschap type moet worden ingesteld op: **AzureDataLakeAnalytics**. |Ja |
+| **type** |De eigenschap type moet worden ingesteld op: **AzureDataLakeAnalytics** . |Ja |
 | **accountName** |Azure Data Lake Analytics account naam. |Ja |
 | **dataLakeAnalyticsUri** |Azure Data Lake Analytics-URI. |Nee |
 | **Abonnements** |Azure-abonnements-id |Nee (als dit niet wordt opgegeven, wordt het abonnement van de data factory gebruikt). |
 | **resourceGroupName** |Naam van Azure-resourcegroep |Nee (als dit niet is opgegeven, wordt de resource groep van de data factory gebruikt). |
 
 ### <a name="service-principal-authentication-recommended"></a>Service-Principal-verificatie (aanbevolen)
-Als u Service-Principal-verificatie wilt gebruiken, registreert u een toepassings entiteit in Azure Active Directory (Azure AD) en verleent u deze toegang tot Data Lake Store. Zie [service-to-service-verificatie](../../data-lake-store/data-lake-store-authenticate-using-active-directory.md)voor gedetailleerde stappen. Noteer de volgende waarden, die u gebruikt om de gekoppelde service te definiëren:
+Als u Service-Principal-verificatie wilt gebruiken, registreert u een toepassings entiteit in Azure Active Directory (Azure AD) en verleent u deze toegang tot Data Lake Store. Zie [service-to-service-verificatie](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md)voor gedetailleerde stappen. Noteer de volgende waarden, die u gebruikt om de gekoppelde service te definiëren:
 * Toepassings-id
 * Toepassings sleutel 
 * Tenant-id
@@ -114,7 +114,7 @@ U kunt ook verificatie van de gebruikers referenties voor Data Lake Analytics ge
 ```
 
 #### <a name="token-expiration"></a>Token verloop tijd
-De autorisatie code die u hebt gegenereerd met behulp van de knop **autorisatie** verloopt na enige tijd. Raadpleeg de volgende tabel voor de verloop tijden voor verschillende soorten gebruikers accounts. Mogelijk wordt het volgende fout bericht weer gegeven wanneer het verificatie **token verloopt**: referentie bewerkings fout: INVALID_GRANT-AADSTS70002: fout bij het valideren van referenties. AADSTS70008: de verleende toegangs toekenning is verlopen of ingetrokken. Tracerings-ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 correlatie-ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7-tijds tempel: 2015-12-15 21:09:31Z
+De autorisatie code die u hebt gegenereerd met behulp van de knop **autorisatie** verloopt na enige tijd. Raadpleeg de volgende tabel voor de verloop tijden voor verschillende soorten gebruikers accounts. Mogelijk wordt het volgende fout bericht weer gegeven wanneer het verificatie **token verloopt** : referentie bewerkings fout: INVALID_GRANT-AADSTS70002: fout bij het valideren van referenties. AADSTS70008: de verleende toegangs toekenning is verlopen of ingetrokken. Tracerings-ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 correlatie-ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7-tijds tempel: 2015-12-15 21:09:31Z
 
 | Gebruikers type | Verloopt na |
 |:--- |:--- |
@@ -148,7 +148,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 }
 ```
 
-Zie de onderwerpen [AzureDataLakeStoreLinkedService class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)en [AuthorizationSessionGetResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) voor meer informatie over de Data Factory klassen die in de code worden gebruikt. Voeg een verwijzing toe naar: Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll voor de klasse WindowsFormsWebAuthenticationDialog. 
+Zie de onderwerpen [AzureDataLakeStoreLinkedService class](/dotnet/api/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice), [AzureDataLakeAnalyticsLinkedService class](/dotnet/api/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice)en [AuthorizationSessionGetResponse](/dotnet/api/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse) voor meer informatie over de Data Factory klassen die in de code worden gebruikt. Voeg een verwijzing toe naar: Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll voor de klasse WindowsFormsWebAuthenticationDialog. 
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL-activiteit
 Het volgende JSON-code fragment definieert een pijp lijn met een Data Lake Analytics U-SQL-activiteit. De definitie van de activiteit bevat een verwijzing naar de Azure Data Lake Analytics gekoppelde service die u eerder hebt gemaakt.   
@@ -208,7 +208,7 @@ In de volgende tabel worden namen en beschrijvingen van eigenschappen beschreven
 
 | Eigenschap            | Beschrijving                              | Vereist                                 |
 | :------------------ | :--------------------------------------- | :--------------------------------------- |
-| type                | De eigenschap type moet worden ingesteld op **DataLakeAnalyticsU-SQL**. | Ja                                      |
+| type                | De eigenschap type moet worden ingesteld op **DataLakeAnalyticsU-SQL** . | Ja                                      |
 | linkedServiceName   | Verwijzing naar de Azure Data Lake Analytics geregistreerd als een gekoppelde service in Data Factory | Ja                                      |
 | scriptPath          | Pad naar de map die het U-SQL-script bevat. De naam van het bestand is hoofdletter gevoelig. | Nee (als u script gebruikt)                   |
 | scriptLinkedService | Gekoppelde service die de opslag met het script koppelt aan de data factory | Nee (als u script gebruikt)                   |
@@ -317,7 +317,7 @@ OUTPUT @rs1
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-De waarden voor de para meters ** \@ in** en ** \@ uit** in het U-SQL-script worden dynamisch door ADF door gegeven met behulp van de sectie para meters. Zie de sectie ' para meters ' in de definitie van de pijp lijn.
+De waarden voor de para meters **\@ in** en **\@ uit** in het U-SQL-script worden dynamisch door ADF door gegeven met behulp van de sectie para meters. Zie de sectie ' para meters ' in de definitie van de pijp lijn.
 
 U kunt ook andere eigenschappen, zoals degreeOfParallelism en prioriteit, opgeven in de pijplijn definitie voor de taken die worden uitgevoerd op de Azure Data Lake Analytics-service.
 
@@ -340,6 +340,4 @@ U kunt in plaats daarvan dynamische para meters gebruiken. Bijvoorbeeld:
 }
 ```
 
-In dit geval worden er nog steeds invoer bestanden uit de map/datalake/input verzameld en worden er uitvoer bestanden gegenereerd in de map/datalake/output. De bestands namen zijn dynamisch op basis van de begin tijd van het segment.  
-
-
+In dit geval worden er nog steeds invoer bestanden uit de map/datalake/input verzameld en worden er uitvoer bestanden gegenereerd in de map/datalake/output. De bestands namen zijn dynamisch op basis van de begin tijd van het segment.

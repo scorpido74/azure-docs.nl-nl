@@ -2,19 +2,20 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 31d6c091e07d2f35d8856dce3adab04997b012b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e83e5fdd0d8797377407e27614e98c348b008164
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91820909"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311885"
 ---
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[De Azure Policy-invoegtoepassing voor Kubernetes (AKS) moet worden geïnstalleerd en ingeschakeld op uw clusters](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0a15ec92-a229-4763-bb14-0ea34a568f8d) |De invoegtoepassing voor beheerbeleid van Azure Kubernetes (AKS) voorziet in uitbreiding van Gatekeeper v3, een webhook voor de toegangscontroller voor Open Policy Agent (OPA) waarmee afdwinging en beveiliging op schaal en via gecentraliseerde, consistente manier worden toegepast op uw clusters. |Controle, uitgeschakeld |[1.0.1-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Audit.json) |
+|[Azure Policy-invoegtoepassing implementeren op Azure Kubernetes Service-clusters](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa8eff44f-8c92-45c3-a3fb-9880802d67a7) |Gebruik een Azure Policy-invoegtoepassing voor het beheren en rapporteren van de compatibiliteitsstatus van uw AKS-clusters (Azure Kubernetes Service). Zie [https://aka.ms/akspolicydoc](https://aka.ms/akspolicydoc) voor meer informatie. |deployIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Deploy.json) |
 |[GitOps implementeren in Kubernetes-cluster](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d61c4d2-aef2-432b-87fc-7f96b019b7e1) |Met dit beleid wordt er een 'sourceControlConfiguration' geïmplementeerd in Kubernetes-clusters om te verzekeren dat de clusters hun bron van waarheid ophalen uit de gedefinieerde Git-opslagplaats. Ga voor instructies voor de toepassing van dit beleid naar [https://aka.ms/K8sGitOpsPolicy](https://aka.ms/K8sGitOpsPolicy). |DeployIfNotExists |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/Deploy-GitOps-to-Kubernetes-cluster_DINE.json) |
 |[Geen containers met machtigingen toestaan in een Kubernetes-cluster](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F95edb821-ddaf-4404-9732-666045e056b4) |Met dit beleid is het niet toegestaan containers met machtigingen te maken in een Kubernetes-cluster. Dit beleid is algemeen beschikbaar voor Kubernetes Service (AKS), en als preview voor AKS Engine en Kubernetes met Azure Arc. Ga voor instructies voor de toepassing van dit beleid naar [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc). |controleren, weigeren, uitgeschakeld |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerNoPrivilege.json) |
 |[Inkomend HTTPS-verkeer afdwingen in Kubernetes-cluster](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1a5b4dca-0b6f-4cf5-907c-56316bc1bf3d) |Met dit beleid wordt inkomend HTTPS-verkeer afgedwongen in een Kubernetes-cluster. Dit beleid is algemeen beschikbaar voor Kubernetes Service (AKS), en als preview voor AKS Engine en Kubernetes met Azure Arc. Ga voor instructies voor de toepassing van dit beleid naar [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc). |controleren, weigeren, uitgeschakeld |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/IngressHttpsOnly.json) |

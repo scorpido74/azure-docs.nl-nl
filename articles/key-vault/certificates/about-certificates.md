@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e7bae2ad19aaf4f1c93d8d2bdefa7fa9f0414860
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3e5476b01ac78af992f548efbeb87de5104dead0
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88923684"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126770"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Informatie over Azure Key Vault-certificaten
 
@@ -57,14 +57,14 @@ De certificaatkenmerken worden gespiegeld met kenmerken van de adresseerbare sle
 
 Een Key Vault-certificaat heeft de volgende kenmerken:  
 
--   *enabled*: boolean, optioneel; standaardwaarde is **true**. Kan worden opgegeven om aan te geven of de certificaatgegevens kunnen worden opgehaald als geheim of bruikbaar als sleutel. Wordt tevens gebruikt in combinatie met *nbf* en *exp* wanneer er een bewerking plaatsvindt tussen *nbf* en *exp*, en wordt alleen toegestaan als enabled is ingesteld op true. Bewerkingen buiten het venster van *nbf* en *exp* worden automatisch niet toegestaan.  
+-   *enabled* : boolean, optioneel; standaardwaarde is **true** . Kan worden opgegeven om aan te geven of de certificaatgegevens kunnen worden opgehaald als geheim of bruikbaar als sleutel. Wordt tevens gebruikt in combinatie met *nbf* en *exp* wanneer er een bewerking plaatsvindt tussen *nbf* en *exp* , en wordt alleen toegestaan als enabled is ingesteld op true. Bewerkingen buiten het venster van *nbf* en *exp* worden automatisch niet toegestaan.  
 
 Er zijn aanvullende alleen-lezen kenmerken die zijn opgenomen in de volgende antwoorden:
 
--   *created*: IntDate - geeft aan wanneer deze versie van het certificaat is gemaakt.  
--   *updated*: IntDate - geeft aan wanneer deze versie van het certificaat is bijgewerkt.  
--   *exp*: IntDate - bevat de waarde van de vervaldatum van het x509-certificaat.  
--   *nbf*: IntDate - bevat de waarde van de datum van het x509-certificaat.  
+-   *created* : IntDate - geeft aan wanneer deze versie van het certificaat is gemaakt.  
+-   *updated* : IntDate - geeft aan wanneer deze versie van het certificaat is bijgewerkt.  
+-   *exp* : IntDate - bevat de waarde van de vervaldatum van het x509-certificaat.  
+-   *nbf* : IntDate - bevat de waarde van de datum van het x509-certificaat.  
 
 > [!Note] 
 > Als een certificaat van Key Vault verloopt, werken de adresseerbare sleutel en het geheim van het certificaat niet meer.  
@@ -141,42 +141,11 @@ Verlenerobjecten worden in de kluis gemaakt en kunnen alleen worden gebruikt bij
 
 ## <a name="certificate-contacts"></a>Certificaatcontactpersonen
 
-Certificaatcontactpersonen bevatten contactgegevens om meldingen te verzenden die worden geactiveerd door de levensduurgebeurtenissen van het certificaat. De contactpersoongegevens worden gedeeld door alle certificaten in de sleutelkluis. Alle opgegeven contactpersonen krijgen een melding bij een gebeurtenis met betrekking tot een certificaat in de sleutelkluis.  
-
-Als het beleid van een certificaat is ingesteld op automatisch verlengen, wordt er een melding verzonden bij de volgende gebeurtenissen.  
-
-- Vóór verlenging van het certificaat
-- Na verlenging van het certificaat, met de mededeling dat het certificaat is verlengd of dat er een fout is opgetreden, waarna het certificaat handmatig moet worden vernieuwd.  
-
-  Wanneer een certificaatbeleid dat is ingesteld om handmatig te worden verlengd (alleen e-mail), wordt er een melding verzonden van het tijdstip waarop het certificaat moet worden verlengd.  
+Certificaatcontactpersonen bevatten contactgegevens om meldingen te verzenden die worden geactiveerd door de levensduurgebeurtenissen van het certificaat. De contactpersoongegevens worden gedeeld door alle certificaten in de sleutelkluis. Alle opgegeven contactpersonen krijgen een melding bij een gebeurtenis met betrekking tot een certificaat in de sleutelkluis. Kijk [hier](overview-renew-certificate.md#steps-to-set-certificate-notifications) voor meer informatie over het instellen van een certificaatcontactpersoon  
 
 ## <a name="certificate-access-control"></a>Toegangsbeheer voor certificaten
 
- Toegangsbeheer voor certificaten wordt beheerd door Key Vault en wordt gegeven door de Key Vault die deze certificaten bevat. Het beleid voor toegangsbeheer voor certificaten verschilt van het beleid voor sleutels en geheimen in dezelfde sleutelkluis. Gebruikers kunnen een of meer kluizen maken waarin zij certificaten kunnen bewaren en de segmentatie en het beheer van hun scenario naar behoren kunnen bijhouden.  
-
- De volgende machtigingen kunnen per principal worden gebruikt in de toegangsbeheervermelding voor geheimen van een sleutelkluis en komt nauw overeen met de bewerkingen die zijn toegestaan voor een geheimobject:  
-
-- Machtigingen voor certificaatbeheerbewerkingen
-  - *get*: De huidige certificaatversie of ongeacht welke certificaatversie ophalen 
-  - *list*: De huidige certificaten of versies van een certificaat weergeven  
-  - *update*: Een certificaat bijwerken
-  - *create*: Key Vault-certificaat maken
-  - *import*: Certificaatmateriaal importeren in een Key Vault certificaat
-  - *delete*: Een certificaat, het bijbehorende beleid en alle versies ervan verwijderen  
-  - *recover*: Een verwijderd certificaat herstellen
-  - *backup*: Een back-up van een certificaat maken in een sleutelkluis
-  - *restore*: Een back-up van een certificaat herstellen in een sleutelkluis
-  - *managecontacts*: Key Vault-certificaatcontactpersonen beheren  
-  - *manageissuers*: Key Vault certificeringsinstanties/-verleners beheren
-  - *getissuers*: De instanties/verleners van een certificaat ophalen
-  - *listissuers*: De instanties/verleners van een certificaat weergeven  
-  - *setissuers*: De instanties/verleners van een Key Vault-certificaat maken of bijwerken  
-  - *deleteissuers*: De instanties/verleners van een Key Vault-certificaat verwijderen  
- 
-- Machtigingen voor bevoorrechte bewerkingen
-  - *purge*: Een verwijderd certificaat opschonen (permanent verwijderen)
-
-Raadpleeg de [Certificaatbewerkingen in de Key Vault REST API-referentie](/rest/api/keyvault) voor meer informatie. Raadpleeg [Kluizen: maken of bijwerken](/rest/api/keyvault/vaults/createorupdate) en [Kluizen: toegangsbeleid bijwerken](/rest/api/keyvault/vaults/updateaccesspolicy) voor meer informatie over het instellen van machtigingen.
+ Toegangsbeheer voor certificaten wordt beheerd door Key Vault en wordt gegeven door de Key Vault die deze certificaten bevat. Het beleid voor toegangsbeheer voor certificaten verschilt van het beleid voor sleutels en geheimen in dezelfde sleutelkluis. Gebruikers kunnen een of meer kluizen maken waarin zij certificaten kunnen bewaren en de segmentatie en het beheer van hun scenario naar behoren kunnen bijhouden.  Kijk [hier](certificate-access-control.md) voor meer informatie over toegangsbeheer voor certificaten
 
 ## <a name="next-steps"></a>Volgende stappen
 

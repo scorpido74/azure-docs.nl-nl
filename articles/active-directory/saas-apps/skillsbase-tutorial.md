@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 1c8135f39517a5983f700c35f08a5c0749113450
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e93827278fb501bc6d857d3cb39f9e0ba24d5d0a
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552234"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125078"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skills-base"></a>Zelfstudie: Azure Active Directory-integratie met Skills Base
 
@@ -53,11 +53,11 @@ Voor het configureren van de integratie van Skills Base in Azure AD moet u Skill
 
 **Voer de volgende stappen uit om Skills Base toe te voegen vanuit de galerie:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen**.
+2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -71,7 +71,7 @@ Voor het configureren van de integratie van Skills Base in Azure AD moet u Skill
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie gaat u eenmalige aanmelding bij Azure AD met Skills Base configureren en testen op basis van een testgebruiker met de naam **Britta Simon**.
+In deze sectie gaat u eenmalige aanmelding bij Azure AD met Skills Base configureren en testen op basis van een testgebruiker met de naam **Britta Simon** .
 Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in Skills Base tot stand is gebracht.
 
 Om eenmalige aanmelding bij Azure AD met Skills Base te configureren en te testen, moet u de volgende bouwstenen uitvoeren:
@@ -89,7 +89,7 @@ In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakel
 
 Voer de volgende stappen uit om eenmalige aanmelding bij Azure AD met Skills Base te configureren:
 
-1. In de [Azure-portal](https://portal.azure.com/) selecteert u op de toepassingsintegratiepagina van **Skills Base** de optie **Eenmalige aanmelding**.
+1. In de [Azure-portal](https://portal.azure.com/) selecteert u op de toepassingsintegratiepagina van **Skills Base** de optie **Eenmalige aanmelding** .
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -128,30 +128,30 @@ Voer de volgende stappen uit om eenmalige aanmelding bij Azure AD met Skills Bas
 
 1. Meld u in een ander browservenster als beveiligingsbeheerder aan bij Skills Base.
 
-2. Klik aan de linkerkant van het menu onder **BEHEERDER** op **Verificatie**.
+2. Klik aan de linkerkant van het menu onder **BEHEERDER** op **Verificatie** .
 
     ![De beheerder](./media/skillsbase-tutorial/tutorial_skillsbase_auth.png)
 
 3. Selecteer op de pagina **Verificatie** de optie **SAML 2** voor eenmalige aanmelding.
 
-    ![Eenmalig](./media/skillsbase-tutorial/tutorial_skillsbase_single.png)
+    ![Schermopname van de verificatiepagina met SAML 2 geselecteerd voor eenmalige aanmelding.](./media/skillsbase-tutorial/tutorial_skillsbase_single.png)
 
-4. Voer de volgende stappen uit op de pagina **Verificatie**:
+4. Voer de volgende stappen uit op de pagina **Verificatie** :
 
-    ![Eenmalig](./media/skillsbase-tutorial/tutorial_skillsbase_save.png)
+    ![Schermopname van de verificatiepagina waarin u de beschreven waarden kunt invoeren.](./media/skillsbase-tutorial/tutorial_skillsbase_save.png)
 
     a. Klik op de knop **IdP-metagegevens bijwerken** naast de optie **Status** en plak de inhoud van de XML met metagegevens die u in de Azure-portal hebt gedownload, in het opgegeven tekstvak.
 
     > [!Note]
-    > U kunt IdP-metagegevens ook valideren via het hulpprogramma **Metagegevensvalidatie**, zoals gemarkeerd in de bovenstaande schermopname.
+    > U kunt IdP-metagegevens ook valideren via het hulpprogramma **Metagegevensvalidatie** , zoals gemarkeerd in de bovenstaande schermopname.
 
-    b. Klik op **Opslaan**.
+    b. Klik op **Opslaan** .
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -163,20 +163,20 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u **brittasimon@yourcompanydomain.extension** .  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Create** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie geeft u Britta Simon toestemming om eenmalige aanmelding met Azure te gebruiken door toegang te verlenen tot Skills Base.
 
-1. Selecteer in de Azure-portal achtereenvolgens **Bedrijfstoepassingen**, **Alle toepassingen** en **Skills Base**.
+1. Selecteer in de Azure-portal achtereenvolgens **Bedrijfstoepassingen** , **Alle toepassingen** en **Skills Base** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -184,11 +184,11 @@ In deze sectie geeft u Britta Simon toestemming om eenmalige aanmelding met Azur
 
     ![De Skills Base-koppeling in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen** .
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -196,7 +196,7 @@ In deze sectie geeft u Britta Simon toestemming om eenmalige aanmelding met Azur
 
 6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
-7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen** .
 
 ### <a name="create-skills-base-test-user"></a>Skills Base-testgebruiker maken
 

@@ -9,24 +9,19 @@ ms.author: mikben
 ms.date: 09/29/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 4eec258cf642688c87b363ff467f1f368727a013
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 779fa577b25bd4f2aa92aa8b8cc1244a58bdf1ae
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761223"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126187"
 ---
 # <a name="pricing-scenarios"></a>Prijsscenario's
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
-<!--
-> [!WARNING]
-> This document is under construction and needs the following items to be addressed:
-> - Looks like other resources point to a /pricing page that is managed by Commerce or Marketing? https://azure.microsoft.com/pricing/details/functions/ Should we? FOLLOWING UP WITH KRISTIN TO FIND THE RIGHT ACS PAGE
--->
 
-Prijzen voor Azure Communication Services zijn gebaseerd op een model voor betalen per gebruik zonder kosten vooraf. Er worden alleen kosten in rekening gebracht voor uw verbruik en het gebruik van de services.
+Prijzen voor Azure Communication Services zijn doorgaans gebaseerd op een model voor betalen per gebruik.
 
 ## <a name="voicevideo-calling-and-screen-sharing"></a>Spraak-/video-oproepen en scherm delen
 
@@ -51,7 +46,7 @@ Alice heeft een groepsoproep gemaakt met haar collega's, Bob en Charlie. Alice e
 - 2 deelnemers x 60 minuten x $0,004 per deelnemer per minuut = $0,48 [voor video en audio geldt hetzelfde tarief]
 - 1 deelnemers x 43 minuten x $0,004 per deelnemer per minuut = $0,172 [voor video en audio geldt hetzelfde tarief]
 
-**Totale kosten voor de groepsoproep**: $0,48 + $0,172 = $0,652
+**Totale kosten voor de groepsoproep** : $0,48 + $0,172 = $0,652
 
 ## <a name="chat"></a>Chat
 
@@ -84,6 +79,16 @@ Rose ziet de berichten en mengt zich in de chat. Casey ontvangt ondertussen een 
 ## <a name="price"></a>Prijs 
 
 Telefoonservices worden per minuut berekend, en sms-berichten worden per bericht berekend. De prijzen zijn afhankelijk van het type en de locatie van het nummer dat u gebruikt, evenals de bestemming van uw oproepen en sms-berichten.
+
+### <a name="telephone-number-leasing"></a>Een telefoonnummer leasen
+
+Kosten voor het leasen van een telefoonnummer worden vooraf in rekening gebracht en vervolgens herhaald op maandbasis:
+
+|Type getal   |Maandelijkse kosten   |
+|--------------|-----------|
+|Lokaal (Verenigde Staten)     |$1/maand        |
+|Gratis (Verenigde Staten) |$2/maand |
+
 
 ### <a name="telephone-calling"></a>Telefoonoproepen
 

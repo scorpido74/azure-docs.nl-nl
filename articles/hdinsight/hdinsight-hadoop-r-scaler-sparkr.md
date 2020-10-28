@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/26/2019
-ms.openlocfilehash: 5864a5de8ddec60f2072a28827a870c83ece8b9d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c12398ceacf8495a05037422a6501dc8138abc10
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546038"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628691"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>Schaalr en Spark in HDInsight combi neren
 
@@ -506,7 +506,7 @@ plot(logitRoc)
 
 ## <a name="scoring-elsewhere"></a>Score elders
 
-We kunnen het model ook gebruiken voor het scoren van gegevens op een ander platform. Door de app op te slaan in een RDS-bestand en deze vervolgens te verplaatsen en te importeren in een doel Score omgeving zoals micro soft SQL Server R Services. Het is belang rijk om ervoor te zorgen dat de factor niveaus van de gegevens die moeten worden beoordeeld overeenkomen met die op basis waarvan het model is gebouwd. Dit kan worden bereikt door de kolom informatie die is gekoppeld aan de model gegevens te extra heren en op te slaan met behulp van de functie van de `rxCreateColInfo()` gegevens bron voor voor spellingen. In de volgende stappen slaan we een paar rijen van de test gegevensset op en halen en gebruiken we de kolom informatie uit dit voor beeld in het Voorspellings script:
+We kunnen het model ook gebruiken voor het scoren van gegevens op een ander platform. Door de app op te slaan in een RDS-bestand en deze vervolgens te verplaatsen en te importeren in een doel Score omgeving zoals Microsoft SQL Server R-Services. Het is belang rijk om ervoor te zorgen dat de factor niveaus van de gegevens die moeten worden beoordeeld overeenkomen met die op basis waarvan het model is gebouwd. Dit kan worden bereikt door de kolom informatie die is gekoppeld aan de model gegevens te extra heren en op te slaan met behulp van de functie van de `rxCreateColInfo()` gegevens bron voor voor spellingen. In het volgende code voorbeeld slaan we een paar rijen van de test gegevensset op en halen en gebruiken de kolom gegevens uit dit voor beeld in het Voorspellings script:
 
 ```
 # save the model and a sample of the test dataset 

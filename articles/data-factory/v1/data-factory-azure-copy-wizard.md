@@ -10,17 +10,18 @@ ms.assetid: 0974eb40-db98-4149-a50d-48db46817076
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/22/2018
+ms.date: 10/26/2020
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2dfb5876922fd53c372afe82ecdfa843179fb135
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf8d847bd4e950ab17cc1f04b52be2589607f99c
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89439007"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629490"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Wizard Azure Data Factory kopiëren
+
 > [!NOTE]
 > Dit artikel is van toepassing op versie 1 van Data Factory. 
 
@@ -35,8 +36,6 @@ Met deze wizard kunt u eenvoudig gegevens van een groot aantal bronnen naar best
 
 > [!NOTE]
 > Voor stapsgewijze instructies voor het maken van een voorbeeld pijplijn voor het kopiëren van gegevens van een Azure-Blob naar een Azure SQL Database tabel, raadpleegt u de [zelf studie](data-factory-copy-data-wizard-tutorial.md)over het kopiëren van de wizard.
->
->
 
 De wizard is ontworpen met big data van het begin, met ondersteuning voor diverse gegevens en object typen. U kunt Data Factory pijp lijnen ontwerpen waarmee honderden mappen, bestanden of tabellen worden verplaatst. De wizard ondersteunt automatische gegevens weergave, schema-opname en-toewijzing en gegevens filtering.
 
@@ -50,7 +49,6 @@ Het schema van invoer gegevens komt mogelijk niet overeen met het schema van de 
 
 > [!TIP]
 > Bij het kopiëren van gegevens uit SQL Server of Azure SQL Database naar Azure Synapse Analytics (voorheen SQL Data Warehouse), als de tabel niet bestaat in het doel archief, Data Factory ondersteuning voor het automatisch maken van tabellen met het schema van de bron. Meer informatie over [het verplaatsen van gegevens van en naar Azure Synapse Analytics met behulp van Azure Data Factory](./data-factory-azure-sql-data-warehouse-connector.md).
->
 
 Gebruik een vervolg keuzelijst om een kolom uit het bron schema te selecteren die u wilt toewijzen aan een kolom in het doel schema. De wizard kopiëren probeert het patroon voor de kolom toewijzing te begrijpen. Hiermee wordt hetzelfde patroon op de rest van de kolommen toegepast, zodat u niet elke kolom afzonderlijk hoeft te selecteren om de schema toewijzing te volt ooien. Als u wilt, kunt u deze toewijzingen negeren door de kolommen één voor één toe te wijzen met behulp van de vervolg keuzelijsten. Het patroon wordt nauw keuriger naarmate u meer kolommen toewijst. Met de wizard kopiëren wordt het patroon continu bijgewerkt en uiteindelijk het juiste patroon bereikt voor de kolom toewijzing die u wilt bereiken.     
 
@@ -65,7 +63,7 @@ De volgende scherm afbeelding toont een SQL-query met behulp van de `Text.Format
 ![Expressies valideren](./media/data-factory-copy-wizard/validate-expressions.png)
 
 ### <a name="filtering-of-data-in-an-azure-blob-folder"></a>Filteren van gegevens in een Azure Blob-map
-U kunt variabelen in het mappad gebruiken om gegevens te kopiëren uit een map die wordt bepaald tijdens runtime op basis van [systeem variabelen](data-factory-functions-variables.md#data-factory-system-variables). De ondersteunde variabelen zijn: **{Year}**, **{Month}**, **{Day}**, **{Hour}**, **{Minute}** en **{Custom}**. Bijvoorbeeld: inputfolder/{year}/{month}/{Day}.
+U kunt variabelen in het mappad gebruiken om gegevens te kopiëren uit een map die wordt bepaald tijdens runtime op basis van [systeem variabelen](data-factory-functions-variables.md#data-factory-system-variables). De ondersteunde variabelen zijn: **{Year}** , **{Month}** , **{Day}** , **{Hour}** , **{Minute}** en **{Custom}** . Bijvoorbeeld: inputfolder/{year}/{month}/{Day}.
 
 Stel dat u een invoer mappen hebt met de volgende indeling:
 
@@ -76,7 +74,7 @@ Stel dat u een invoer mappen hebt met de volgende indeling:
 ...
 ```
 
-Klik op de knop **Bladeren** voor **bestand of map**, blader naar een van deze mappen (bijvoorbeeld 2016->03->01->02) en klik op **kiezen**. U ziet `2016/03/01/02` in het tekstvak. Vervang nu **2016** door **{Year}**, **03** met **{Month}**, **01** met **{Day}** en **02** met **{Hour}** en druk op de **Tab** -toets. Er moeten vervolg keuzelijsten worden weer gegeven om de indeling voor deze vier variabelen te selecteren:
+Klik op de knop **Bladeren** voor **bestand of map** , blader naar een van deze mappen (bijvoorbeeld 2016->03->01->02) en klik op **kiezen** . U ziet `2016/03/01/02` in het tekstvak. Vervang nu **2016** door **{Year}** , **03** met **{Month}** , **01** met **{Day}** en **02** met **{Hour}** en druk op de **Tab** -toets. Er moeten vervolg keuzelijsten worden weer gegeven om de indeling voor deze vier variabelen te selecteren:
 
 ![Systeem variabelen gebruiken](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 
@@ -90,6 +88,49 @@ U kunt de Kopieer bewerking eenmaal of volgens een schema uitvoeren (elk uur, da
 Een eenmalige Kopieer bewerking maakt het verplaatsen van gegevens van een bron naar een bestemming slechts één keer mogelijk. Dit is van toepassing op gegevens van elke grootte en een ondersteunde indeling. Met de geplande kopie kunt u gegevens kopiëren naar een voorgeschreven terugkeer patroon. U kunt uitgebreide instellingen (zoals nieuwe poging, time-out en waarschuwingen) gebruiken om de geplande kopie te configureren.
 
 ![Plannings eigenschappen](./media/data-factory-copy-wizard/scheduling-properties.png)
+
+## <a name="troubleshooting"></a>Problemen oplossen
+
+In deze sectie worden algemene probleemoplossings methoden voor de wizard kopiëren in Azure Data Factory besproken.
+
+> [!NOTE] 
+> Deze tips voor probleem oplossing zijn van toepassing op de wizard kopiëren in versie 1 van Data Factory. Zie voor Data Factory v2 probleemoplossings gids bij het [oplossen van problemen Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-ux-troubleshoot-guide).
+
+### <a name="error-code-unable-to-validate-in-copy-wizard"></a>Fout code: kan niet valideren in wizard kopiëren
+
+- **Symptomen** : in de eerste stap van de wizard kopiëren wordt het volgende waarschuwings bericht over ' kan niet valideren ' aangetroffen.
+- **Oorzaken** : dit kan gebeuren wanneer alle cookies van derden zijn uitgeschakeld.
+- **Oplossing** : 
+    - Gebruik Internet Explorer of micro soft Edge-browser.
+    - Als u Chrome browser gebruikt, volgt u de onderstaande instructies om een uitzonde ring voor cookies voor *microsoftonline.com* en *Windows.net* toe te voegen.
+        1.  Open de Chrome-browser.
+        2.  Klik op de moersleutel of drie regels aan de rechter kant (Google Chrome aanpassen en beheren).
+        3.  Klik op **Instellingen** .
+        4.  Zoek **cookies** of ga naar **Privacy** onder Geavanceerde instellingen.
+        5.  Selecteer **inhouds instellingen** .    
+        6.  Cookies moeten worden ingesteld zodat **lokale gegevens kunnen worden ingesteld (aanbevolen)** .
+        7.  Klik op **uitzonde ringen beheren** . Onder het- **hostname-patroon** voert u het volgende in en zorgt u ervoor dat het gedrag is ingesteld op **toestaan** .
+            - login.microsoftonline.com
+            - login.windows.net
+        8.  Sluit de browser en start opnieuw.
+    - Als u de Firefox-browser gebruikt, volgt u de onderstaande instructies om een uitzonde ring voor cookies toe te voegen.
+        1. Ga in het menu van Firefox naar **extra**  >  **Opties** .
+        2. Onder **Privacy**  >  **geschiedenis** van privacy ziet u mogelijk dat de huidige instelling **aangepaste instellingen voor geschiedenis gebruikt** .
+        3. In **cookies** van derden accepteren is uw huidige instelling mogelijk **nooit** . Klik vervolgens op **uitzonde ringen** aan de rechter kant om de volgende sites toe te voegen.
+            - https://login.microsoftonline.com
+            - https://login.windows.net
+        4.  Sluit de browser en start opnieuw. 
+
+
+### <a name="error-code-unable-to-open-login-page-and-enter-password"></a>Fout code: kan aanmeldings pagina niet openen en wacht woord invoeren
+
+- **Symptomen** : door de wizard kopiëren wordt u omgeleid naar de aanmeldings pagina, maar de aanmeldings pagina wordt niet correct weer gegeven.
+- **Oorzaken** : dit probleem kan zich voordoen als u de netwerk omgeving van het bedrijfs netwerk hebt gewijzigd in het thuis netwerk. Browsers bevatten enkele caches. 
+- **Oplossing** : 
+    1.  Sluit de browser en probeer het opnieuw. Ga naar de volgende stap als het probleem zich nog steeds voordoet.   
+    2.  Als u Internet Explorer browser gebruikt, probeert u het te openen in de privé modus (druk op CTRL + SHIFT + P). Als u Chrome browser gebruikt, probeert u het te openen in de Incognito-modus (druk op CTRL + SHIFT + N). Ga naar de volgende stap als het probleem zich nog steeds voordoet. 
+    3.  Probeer een andere browser te gebruiken. 
+
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md)voor een snelle beschrijving van het gebruik van de wizard voor het kopiëren van Data Factory om een pijp lijn te maken met de Kopieer activiteit.

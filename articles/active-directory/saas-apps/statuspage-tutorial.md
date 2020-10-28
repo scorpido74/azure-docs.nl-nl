@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 2ee2eb7586489527272d92dd1eaef6976bc41f94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 532983f2df6689f840b71673ede3fd86842c1d22
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88524752"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122889"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-statuspage"></a>Zelfstudie: Azure Active Directory-integratie met StatusPage
 
@@ -49,11 +49,11 @@ Voor het configureren van de integratie van StatusPage in Azure AD moet u Status
 
 **Als u StatusPage vanuit de galerie wilt toevoegen, voert u de volgende stappen uit:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen**.
+2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -61,13 +61,13 @@ Voor het configureren van de integratie van StatusPage in Azure AD moet u Status
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **StatusPage**, selecteer **StatusPage** in het resultaatvenster en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak **StatusPage** , selecteer **StatusPage** in het resultaatvenster en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
 
     ![StatusPage in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie gaat u Azure AD-eenmalige aanmelding met StatusPage configureren en testen met behulp van een testgebruiker met de naam **Britta Simon**.
+In deze sectie gaat u Azure AD-eenmalige aanmelding met StatusPage configureren en testen met behulp van een testgebruiker met de naam **Britta Simon** .
 Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in StatusPage tot stand is gebracht.
 
 Als u Azure AD-eenmalige aanmelding met StatusPage wilt configureren en testen, moet u de volgende bouwstenen voltooien:
@@ -85,7 +85,7 @@ In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakel
 
 Voor het configureren van Azure AD-eenmalige aanmelding met StatusPage moet u de volgende stappen uitvoeren:
 
-1. In de [Azure-portal](https://portal.azure.com/) selecteert u **Eenmalige aanmelding** op de integratiepagina van de toepassing **StatusPage**.
+1. In de [Azure-portal](https://portal.azure.com/) selecteert u **Eenmalige aanmelding** op de integratiepagina van de toepassing **StatusPage** .
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -114,9 +114,9 @@ Voor het configureren van Azure AD-eenmalige aanmelding met StatusPage moet u de
     > [!NOTE]
     > Neem contact op met het ondersteunings team van StatusPage op [SupportTeam@statuspage.io](mailto:SupportTeam@statuspage.io)om metagegevens aan te vragen die nodig zijn om eenmalige aanmelding te configureren. 
     >
-    > a. Kopieer de waarde van Verlener vanuit de metagegevens en plak deze in het tekstvak **Id**.
+    > a. Kopieer de waarde van Verlener vanuit de metagegevens en plak deze in het tekstvak **Id** .
     >
-    > b. Kopieer de antwoord-URL van de metagegevens en plak deze in het tekstvak **Antwoord-URL**.
+    > b. Kopieer de antwoord-URL van de metagegevens en plak deze in het tekstvak **Antwoord-URL** .
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
@@ -136,31 +136,31 @@ Voor het configureren van Azure AD-eenmalige aanmelding met StatusPage moet u de
 
 1. Meld u in een andere browser als beheerder aan bij de bedrijfssite van StatusPage.
 
-1. Klik in de hoofdwerkbalk op **Account beheren**.
+1. Klik in de hoofdwerkbalk op **Manage Account** (Account beheren).
 
-    ![Eenmalige aanmelding configureren](./media/statuspage-tutorial/tutorial_statuspage_06.png)
+    ![Schermopname van Manage Account geselecteerd in de bedrijfssite van StatusPage.](./media/statuspage-tutorial/tutorial_statuspage_06.png)
 
-1. Klik op het tabblad **Eenmalige aanmelding**.
+1. Klik op het tabblad **Single Sign-on** (Eenmalige aanmelding).
 
-    ![Eenmalige aanmelding configureren](./media/statuspage-tutorial/tutorial_statuspage_07.png)
+    ![Schermopname van het tabblad Single Sign-on.](./media/statuspage-tutorial/tutorial_statuspage_07.png)
 
-1. Voer op de pagina Eenmalige aanmelding instellen de volgende stappen uit:
+1. Voer op de pagina SSO Setup (Eenmalige aanmelding instellen) de volgende stappen uit:
 
-    ![Eenmalige aanmelding configureren](./media/statuspage-tutorial/tutorial_statuspage_08.png)
+    ![Schermopname van de pagina S S O Setup, waarin u de beschreven waarden kunt invoeren.](./media/statuspage-tutorial/tutorial_statuspage_08.png)
 
-    ![Eenmalige aanmelding configureren](./media/statuspage-tutorial/tutorial_statuspage_09.png)
+    ![Schermopname toont de knop Save Configuration (Configuratie opslaan).](./media/statuspage-tutorial/tutorial_statuspage_09.png)
 
     a. Plak in het tekstvak **Doel-URL voor eenmalige aanmelding** de waarde van **Aanmeldings-URL** die u hebt gekopieerd uit de Azure-portal.
 
-    b. Open het gedownloade certificaat in Kladblok, kopieer de inhoud en plak deze in het tekstvak **Certificaat**.
+    b. Open het gedownloade certificaat in Kladblok, kopieer de inhoud en plak deze in het tekstvak **Certificaat** .
 
-    c. Klik op **CONFIGURATIE OPSLAAN**.
+    c. Klik op **CONFIGURATIE OPSLAAN** .
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -172,32 +172,32 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u `brittasimon@yourcompanydomain.extension`  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Create** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige aanmelding met Azure door haar toegang te geven tot StatusPage.
 
-1. Selecteer **Bedrijfstoepassingen** in de Azure-portal, selecteer **Alle toepassingen** en selecteer vervolgens **StatusPage**.
+1. Selecteer **Bedrijfstoepassingen** in de Azure-portal, selecteer **Alle toepassingen** en selecteer vervolgens **StatusPage** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen **StatusPage**.
+2. Selecteer in de lijst met toepassingen **StatusPage** .
 
     ![De koppeling StatusPage in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen** .
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -205,7 +205,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
 6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
-7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen** .
 
 ### <a name="create-statuspage-test-user"></a>StatusPage-testgebruiker maken
 
@@ -217,25 +217,25 @@ StatusPage biedt ondersteuning voor het Just-In-Time inrichten. U hebt deze al i
 
 1. Meld u als beheerder aan bij de bedrijfssite van StatusPage.
 
-1. Klik in het menu bovenaan op **Account beheren**.
+1. Klik in het menu bovenaan op **Account beheren** .
 
-    ![Eenmalige aanmelding configureren](./media/statuspage-tutorial/tutorial_statuspage_06.png)
+    ![Schermopname van Manage Account geselecteerd in de bedrijfssite van StatusPage.](./media/statuspage-tutorial/tutorial_statuspage_06.png)
 
-1. Klik op het tabblad **Teamleden**.
+1. Klik op het tabblad **Team Members** (Teamleden).
   
-    ![Een Azure AD-testgebruiker maken](./media/statuspage-tutorial/tutorial_statuspage_10.png) 
+    ![Schermopname van het tabblad Team Members.](./media/statuspage-tutorial/tutorial_statuspage_10.png) 
 
-1. Klik op **TEAMLID TOEVOEGEN**.
+1. Klik op **ADD TEAM MEMBER** (Teamlid toevoegen).
   
-    ![Een Azure AD-testgebruiker maken](./media/statuspage-tutorial/tutorial_statuspage_11.png) 
+    ![Schermopname van de knop Add Team Member.](./media/statuspage-tutorial/tutorial_statuspage_11.png) 
 
-1. Typ in de betreffende tekstvakken het **e-mailadres**, de **voornaam** en **achternaam** van een geldige gebruiker dat u wilt inrichten. 
+1. Typ in de betreffende tekstvakken het **Email Address** (E-mailadres), de **First Name** (Voornaam) en **Last Name** (Achternaam) van een geldige gebruiker die u wilt inrichten. 
 
-    ![Een Azure AD-testgebruiker maken](./media/statuspage-tutorial/tutorial_statuspage_12.png) 
+    ![Schermopname van het dialoogvenster Add a User, waar u de beschreven waarden kunt invoeren.](./media/statuspage-tutorial/tutorial_statuspage_12.png) 
 
-1. Kies **Clientbeheerder**als **Rol**.
+1. Kies **Client Administrator** (Clientbeheerder) als **Role** (Rol).
 
-1. Klik op **ACCOUNT MAKEN**.
+1. Klik op **CREATE ACCOUNT** (Account maken).
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 

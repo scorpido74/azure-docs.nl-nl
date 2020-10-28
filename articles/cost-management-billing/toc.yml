@@ -4,7 +4,7 @@
   items:
     - name: Wat is Kostenbeheer en facturering?
       href: cost-management-billing-overview.md
-- name: Snelstartgidsen
+- name: Quickstarts
   expanded: true
   items:
     - name: Beginnen met analyseren van kosten
@@ -48,8 +48,6 @@
           href: costs/manage-automation.md
         - name: Cost Management voor partners
           href: costs/get-started-partners.md
-        - name: Kiezen tussen Cost Management en Cloudyn
-          href: costs/choose-between-azure-cost-management-cloudyn.md
     - name: Reservations
       items:
         - name: Wat zijn Azure-reserveringen?
@@ -440,10 +438,6 @@
           href: cloudyn/overview.md
     - name: Snelstartgidsen
       items:
-        - name: Kostengegevens weergeven
-          href: cloudyn/quick-register-azure-sub.md
-        - name: Kostengegevens weergeven - EA
-          href: cloudyn/quick-register-ea.md
         - name: Kostengegevens weergeven - CSP
           href: cloudyn/quick-register-csp.md
     - name: Zelfstudies
@@ -468,8 +462,6 @@
           href: cloudyn/activate-subs-accounts.md
         - name: Uitgebreide metrische gegevens voor virtuele machines toevoegen
           href: cloudyn/azure-vm-extended-metrics.md
-        - name: Verbinding maken met een Google-account
-          href: cloudyn/connect-google-account.md
         - name: Verbinding maken met een AWS-account
           href: cloudyn/connect-aws-account.md
         - name: Opslagaccounts configureren

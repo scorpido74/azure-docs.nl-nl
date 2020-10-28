@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: 602ed2cca725814e4f150bc684036d166b8ff45a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 620a5dad7966347667e0a0a50eb30d562ab700b2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618996"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330101"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Geo-herstel gebruiken om een multitenant-SaaS-toepassing te herstellen vanuit databaseback-ups
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -184,7 +184,7 @@ Stel dat er een storing optreedt in de regio waarin de toepassing is geïmplemen
 
 3. Bewaak de status van het herstelproces in het PowerShell-venster.
 
-    ![Herstelproces](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress.png)
+    ![Schermopname van het PowerShell-venster waar u de status van het herstelproces kunt bewaken.](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress.png)
 
 > [!NOTE]
 > Als u de code voor de hersteltaken wilt verkennen, bekijkt u de PowerShell-scripts in de map ...\Learning Modules\Business Continuity and Disaster Recovery\DR-RestoreFromBackup\RecoveryJobs.
@@ -202,7 +202,7 @@ Wanneer het toepassingseindpunt is uitgeschakeld in Traffic Manager, is de toepa
 
   * Als u de gebeurtenissenpagina van een tenant rechtstreeks opent terwijl de tenant offline is, wordt op de pagina gemeld dat de tenant offline is. Als bijvoorbeeld Contoso Concert Hall offline is, probeert u http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall te openen.
 
-    ![Herstelproces](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
+    ![Schermopname met een offlinegebeurtenissenpagina.](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
 
 ## <a name="provision-a-new-tenant-in-the-recovery-region"></a>Een nieuwe tenant in de herstelregio inrichten
 Zelfs voordat tenantdatabases zijn hersteld, kunt u in de herstelregio nieuwe tenants inrichten. Nieuwe tenantdatabases die in de herstelregio worden ingericht, worden later gerepatrieerd met de herstelde databases.   

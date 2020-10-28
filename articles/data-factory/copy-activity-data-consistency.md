@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
-ms.openlocfilehash: d52d172fa4cc435235079cd88999766df93bfdf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55db5cf62e2e4ba2844a47ad405afa88349dc8fd
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86522904"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634909"
 ---
 #  <a name="data-consistency-verification-in-copy-activity-preview"></a>Verificatie van de gegevens consistentie in de Kopieer activiteit (preview-versie)
 
@@ -72,14 +72,14 @@ In het volgende voor beeld wordt een JSON-definitie geboden om de verificatie va
 
 Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | -------- 
-validateDataConsistency | Als u waar voor deze eigenschap instelt, worden bij het kopiëren van binaire bestanden de bestands grootte, de lastModifiedDate en de MD5-controlesom van de bron naar het doel archief gecontroleerd om de gegevens consistentie tussen het bron-en doel archief te controleren. Bij het kopiëren van tabellaire gegevens wordt het totale aantal rijen gecontroleerd nadat de taak is voltooid om ervoor te zorgen dat het totale aantal van de bron opgehaalde rij gelijk is aan het aantal rijen dat is gekopieerd naar de bestemming plus het aantal incompatibele rijen dat is overgeslagen. Houd er rekening mee dat de Kopieer prestaties worden beïnvloed door deze optie in te scha kelen.  | True<br/>False (standaard) | Nee
-dataInconsistency | Een van de sleutel-waardeparen in de skipErrorFile-eigenschappen verzameling om te bepalen of u de inconsistente bestanden wilt overs Laan. <br/> -True: u wilt de rest kopiëren door inconsistente bestanden over te slaan.<br/> -False: u wilt de Kopieer activiteit afbreken nadat het inconsistente bestand is gevonden.<br/>Houd er rekening mee dat deze eigenschap alleen geldig is wanneer u binaire bestanden kopieert en stel validateDataConsistency in op True.  | True<br/>False (standaard) | Nee
+validateDataConsistency | Als u waar voor deze eigenschap instelt, worden bij het kopiëren van binaire bestanden de bestands grootte, de lastModifiedDate en de MD5-controlesom van de bron naar het doel archief gecontroleerd om de gegevens consistentie tussen het bron-en doel archief te controleren. Bij het kopiëren van tabellaire gegevens wordt het totale aantal rijen gecontroleerd nadat de taak is voltooid om ervoor te zorgen dat het totale aantal van de bron opgehaalde rij gelijk is aan het aantal rijen dat is gekopieerd naar de bestemming plus het aantal incompatibele rijen dat is overgeslagen. Houd er rekening mee dat de Kopieer prestaties worden beïnvloed door deze optie in te scha kelen.  | Waar<br/>False (standaard) | Nee
+dataInconsistency | Een van de sleutel-waardeparen in de skipErrorFile-eigenschappen verzameling om te bepalen of u de inconsistente bestanden wilt overs Laan. <br/> -True: u wilt de rest kopiëren door inconsistente bestanden over te slaan.<br/> -False: u wilt de Kopieer activiteit afbreken nadat het inconsistente bestand is gevonden.<br/>Houd er rekening mee dat deze eigenschap alleen geldig is wanneer u binaire bestanden kopieert en stel validateDataConsistency in op True.  | Waar<br/>False (standaard) | Nee
 logStorageSettings | Een groep eigenschappen die kan worden opgegeven om het sessie logboek in te scha kelen voor het registreren van bestanden die zijn overgeslagen. | | Nee
 linkedServiceName | De gekoppelde service van [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) of [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) voor het opslaan van de sessie logboek bestanden. | De namen van een `AzureBlobStorage` of meer `AzureBlobFS` gekoppelde service, die verwijst naar het exemplaar dat u gebruikt om de logboek bestanden op te slaan. | Nee
 leertraject | Het pad van de logboek bestanden. | Geef het pad op waarin u de logboek bestanden wilt opslaan. Als u geen pad opgeeft, maakt de service een container voor u. | Nee
 
 >[!NOTE]
->- Bij het kopiëren van binaire bestanden vanuit of naar Azure Blob of Azure Data Lake Storage Gen2, heeft ADF de MD5-controlesom verificatie op blok niveau met behulp van de [Azure Blob API](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy) en de [Azure data Lake Storage Gen2-API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update#request-headers). Als ContentMD5 op bestanden bestaan in Azure Blob of als gegevens bronnen worden Azure Data Lake Storage Gen2, heeft ADF de MD5-controlesom controle op bestands niveau na het lezen van de bestanden. Na het kopiëren van bestanden naar Azure Blob of Azure Data Lake Storage Gen2 als gegevens doel, schrijft ADF ContentMD5 naar Azure Blob of Azure Data Lake Storage Gen2 die verder kan worden gebruikt door downstream-toepassingen voor de verificatie van gegevens consistentie.
+>- Bij het kopiëren van binaire bestanden vanuit of naar Azure Blob of Azure Data Lake Storage Gen2, heeft ADF de MD5-controlesom verificatie op blok niveau met behulp van de [Azure Blob API](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy) en de [Azure data Lake Storage Gen2-API](/rest/api/storageservices/datalakestoragegen2/path/update#request-headers). Als ContentMD5 op bestanden bestaan in Azure Blob of als gegevens bronnen worden Azure Data Lake Storage Gen2, heeft ADF de MD5-controlesom controle op bestands niveau na het lezen van de bestanden. Na het kopiëren van bestanden naar Azure Blob of Azure Data Lake Storage Gen2 als gegevens doel, schrijft ADF ContentMD5 naar Azure Blob of Azure Data Lake Storage Gen2 die verder kan worden gebruikt door downstream-toepassingen voor de verificatie van gegevens consistentie.
 >- ADF heeft bestands grootte verificatie bij het kopiëren van binaire bestanden tussen opslag archieven.
 
 ## <a name="monitoring"></a>Bewaking
@@ -106,15 +106,15 @@ Nadat de Kopieer activiteit volledig is uitgevoerd, kunt u het resultaat van de 
 ```
 U kunt de details van de verificatie van gegevens consistentie van de eigenschap dataConsistencyVerification bekijken.
 
-Waarde van **VerificationResult**: 
--   **Gecontroleerd**: de gekopieerde gegevens zijn geverifieerd om consistent te zijn tussen het bron-en doel archief. 
--   **NotVerified**: de gekopieerde gegevens zijn niet geverifieerd om consistent te zijn omdat u de validateDataConsistency niet hebt ingeschakeld in de Kopieer activiteit. 
--   Niet **ondersteund**: de gekopieerde gegevens zijn niet gecontroleerd om consistent te zijn omdat de gegevens consistentie verificatie niet wordt ondersteund voor dit specifieke Kopieer paar. 
+Waarde van **VerificationResult** : 
+-   **Gecontroleerd** : de gekopieerde gegevens zijn geverifieerd om consistent te zijn tussen het bron-en doel archief. 
+-   **NotVerified** : de gekopieerde gegevens zijn niet geverifieerd om consistent te zijn omdat u de validateDataConsistency niet hebt ingeschakeld in de Kopieer activiteit. 
+-   Niet **ondersteund** : de gekopieerde gegevens zijn niet gecontroleerd om consistent te zijn omdat de gegevens consistentie verificatie niet wordt ondersteund voor dit specifieke Kopieer paar. 
 
-Waarde van **InconsistentData**: 
--   **Found**: de activiteit ADF Copy heeft inconsistente gegevens gevonden. 
--   **Overgeslagen**: de activiteit voor het kopiëren van ADF heeft inconsistente gegevens gevonden en overgeslagen. 
--   **Geen**: er zijn geen inconsistente gegevens gevonden met de ADF Copy-activiteit. Dit kan zijn omdat uw gegevens zijn geverifieerd om consistent te zijn tussen de bron-en doel opslag of omdat u validateDataConsistency hebt uitgeschakeld in de Kopieer activiteit. 
+Waarde van **InconsistentData** : 
+-   **Found** : de activiteit ADF Copy heeft inconsistente gegevens gevonden. 
+-   **Overgeslagen** : de activiteit voor het kopiëren van ADF heeft inconsistente gegevens gevonden en overgeslagen. 
+-   **Geen** : er zijn geen inconsistente gegevens gevonden met de ADF Copy-activiteit. Dit kan zijn omdat uw gegevens zijn geverifieerd om consistent te zijn tussen de bron-en doel opslag of omdat u validateDataConsistency hebt uitgeschakeld in de Kopieer activiteit. 
 
 ### <a name="session-log-from-copy-activity"></a>Sessie logboek van Kopieer activiteit
 
@@ -142,7 +142,5 @@ In het bovenstaande logboek bestand ziet u dat sample1.csv is overgeslagen, omda
 ## <a name="next-steps"></a>Volgende stappen
 Zie de andere artikelen over Kopieer activiteiten:
 
-- [Overzicht van kopieeractiviteiten](copy-activity-overview.md)
+- [Overzicht van de Kopieer activiteit](copy-activity-overview.md)
 - [Fout tolerantie van Kopieer activiteit](copy-activity-fault-tolerance.md)
-
-

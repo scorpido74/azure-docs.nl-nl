@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: e08150f5998b71523a986eac1f8a9be993125f5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc2047832f8cfbf31c04c84eb7a70fee6631fa4b
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619148"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330118"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Herstel na noodgeval voor een multitenant-SaaS-toepassing met geo-replicatie van databases
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -111,10 +111,10 @@ In deze taak start u een proces voor het synchroniseren van de configuratie van 
 1. Open in _PowerShell ISE_ het bestand ...\Learning Modules\UserConfig.psm1. Vervang `<resourcegroup>` en `<user>` op de regels 10 en 11 door de waarde die is gebruikt bij het implementeren van de app.  Sla het bestand op.
 
 2. Open in *PowerShell ISE* het script ...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 en stel het volgende in:
-    * **$DemoScenario = 1**: start een achtergrondtaak waarmee de tenantserver- en poolconfiguratiegegevens met de catalogus worden gesynchroniseerd
+    * **$DemoScenario = 1** : start een achtergrondtaak waarmee de tenantserver- en poolconfiguratiegegevens met de catalogus worden gesynchroniseerd
 
 3. Druk op **F5** om het synchronisatiescript uit te voeren. Er wordt een nieuwe PowerShell-sessie geopend voor het synchroniseren van de configuratie van tenantresources.
-![Synchronisatieproces](./media/saas-dbpertenant-dr-geo-replication/sync-process.png)
+![Schermopname met de nieuwe PowerShell-sessie, geopend voor het synchroniseren van de configuratie van tenantresources.](./media/saas-dbpertenant-dr-geo-replication/sync-process.png)
 
 Laat het PowerShell-venster actief op de achtergrond en ga verder met de rest van de zelfstudie. 
 
@@ -129,7 +129,7 @@ In deze taak start u een proces dat een duplicaat van een app-instantie implemen
 > In deze zelfstudie wordt beveiligde geo-replicatie toegevoegd aan de voorbeeldtoepassing Wingtip Tickets. In een productieomgeving zou voor een toepassing die gebruikmaakt van geo-replicatie, elke tenant vanaf het begin worden ingericht met een database met geo-replicatie. Zie [Services met hoge beschikbaarheid ontwerpen met behulp van Azure SQL Database](designing-cloud-solutions-for-disaster-recovery.md#scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime)
 
 1. Open in *PowerShell ISE* het script ...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 en stel de volgende waarden in:
-    * **$DemoScenario = 2**: de herstelomgeving voor gespiegelde installatiekopieën maken en de catalogus en tenantdatabases repliceren
+    * **$DemoScenario = 2** : de herstelomgeving voor gespiegelde installatiekopieën maken en de catalogus en tenantdatabases repliceren
 
 2. Druk op **F5** om het script uit te voeren. Er wordt een nieuwe PowerShell-sessie geopend om de replica's te maken.
 ![Synchronisatieproces](./media/saas-dbpertenant-dr-geo-replication/replication-process.png)  
@@ -142,7 +142,7 @@ De toepassing wordt op dit moment normaal uitgevoerd in de oorspronkelijke regio
 
 2. Verken de resources in de herstelresourcegroep.  
 
-3. Klik op de database Contoso Concert Hall op de server _tenants1-dpt-&lt;gebruiker&gt;-recovery_.  Klik op geo-replicatie aan de linkerkant. 
+3. Klik op de database Contoso Concert Hall op de server _tenants1-dpt-&lt;gebruiker&gt;-recovery_ .  Klik op geo-replicatie aan de linkerkant. 
 
     ![Geo-replicatiekoppeling voor Contoso Concert](./media/saas-dbpertenant-dr-geo-replication/contoso-geo-replication.png) 
 
@@ -182,7 +182,7 @@ Met het herstelscript worden de volgende taken uitgevoerd:
 Stel nu dat er een storing optreedt in de regio waarin de toepassing is geïmplementeerd en voer het herstelscript uit:
 
 1. Open in *PowerShell ISE* het script ...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 en stel de volgende waarden in:
-    * **$DemoScenario = 3**: de app herstellen in een herstelregio door failover naar replica's uit te voeren
+    * **$DemoScenario = 3** : de app herstellen in een herstelregio door failover naar replica's uit te voeren
 
 2. Druk op **F5** om het script uit te voeren.  
     * Het script wordt geopend in een nieuw PowerShell-venster en vervolgens wordt een reeks PowerShell-taken gestart die parallel worden uitgevoerd. Met deze taken wordt failover van tenantdatabases naar de herstelregio uitgevoerd.
@@ -213,7 +213,7 @@ Wanneer het toepassingseindpunt is uitgeschakeld in Traffic Manager, is de toepa
 Zelfs voordat failover van alle bestaande tenantdatabases is uitgevoerd, kunt u nieuwe tenants in de herstelregio inrichten.  
 
 1. Open in *PowerShell ISE* het script ...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 en stel de volgende eigenschap in:
-    * **$DemoScenario = 4**: een nieuwe tenant in de herstelregio inrichten
+    * **$DemoScenario = 4** : een nieuwe tenant in de herstelregio inrichten
 
 2. Druk op **F5** om het script uit te voeren en de nieuwe tenant in te richten. 
 
@@ -233,19 +233,19 @@ Wanneer het herstelproces is voltooid, zijn de toepassing en alle tenants volled
     ![herstelde en nieuwe tenants in de events hub](./media/saas-dbpertenant-dr-geo-replication/events-hub-with-hawthorn-hall.png)
 
 2. Open in [Azure Portal](https://portal.azure.com) de lijst met resourcegroepen.  
-    * U ziet de resourcegroep die u hebt geïmplementeerd, plus de herstelresourcegroep, met het achtervoegsel _-recovery_.  De herstelresourcegroep bevat alle resources die zijn gemaakt tijdens het herstelproces, plus nieuwe resources die zijn gemaakt tijdens de storing.  
+    * U ziet de resourcegroep die u hebt geïmplementeerd, plus de herstelresourcegroep, met het achtervoegsel _-recovery_ .  De herstelresourcegroep bevat alle resources die zijn gemaakt tijdens het herstelproces, plus nieuwe resources die zijn gemaakt tijdens de storing.  
 
 3. Als u de herstelresourcegroep opent, ziet u de volgende items:
-   * De herstelversies van de catalogus- en tenants1-servers met het achtervoegsel _-recovery_.  De herstelde catalogus- en tenantdatabases op deze servers hebben allemaal de namen die in de oorspronkelijke regio worden gebruikt.
+   * De herstelversies van de catalogus- en tenants1-servers met het achtervoegsel _-recovery_ .  De herstelde catalogus- en tenantdatabases op deze servers hebben allemaal de namen die in de oorspronkelijke regio worden gebruikt.
 
-   * De SQL-server _tenants2-dpt-&lt;user&gt;-recovery_.  Deze server wordt gebruikt voor het inrichten van nieuwe tenants tijdens de storing.
-   * De app-service met de naam _events-wingtip-dpt-&lt;recoveryregion&gt;-&lt;user&gt_;, het herstelexemplaar van de gebeurtenissen-app. 
+   * De SQL-server _tenants2-dpt-&lt;user&gt;-recovery_ .  Deze server wordt gebruikt voor het inrichten van nieuwe tenants tijdens de storing.
+   * De app-service met de naam _events-wingtip-dpt-&lt;recoveryregion&gt;-&lt;user&gt_ ;, het herstelexemplaar van de gebeurtenissen-app. 
 
      ![Azure Recovery-resources](./media/saas-dbpertenant-dr-geo-replication/resources-in-recovery-region.png) 
     
-4. Open de SQL-server _tenants2-dpt-&lt;user&gt;-recovery_.  U ziet dat deze de database _hawthornhall_ en de elastische pool _pool1_ bevat.  De database _hawthornhall_ is geconfigureerd als een elastische database in de elastische pool _Pool1_.
+4. Open de SQL-server _tenants2-dpt-&lt;user&gt;-recovery_ .  U ziet dat deze de database _hawthornhall_ en de elastische pool _pool1_ bevat.  De database _hawthornhall_ is geconfigureerd als een elastische database in de elastische pool _Pool1_ .
 
-5. Ga terug naar de resourcegroep en klik op de database Contoso Concert Hall op de server _tenants1-dpt-&lt;user&gt;-recovery_. Klik op geo-replicatie aan de linkerkant.
+5. Ga terug naar de resourcegroep en klik op de database Contoso Concert Hall op de server _tenants1-dpt-&lt;user&gt;-recovery_ . Klik op geo-replicatie aan de linkerkant.
     
     ![Contoso-database na failover](./media/saas-dbpertenant-dr-geo-replication/contoso-geo-replication-after-failover.png)
 
@@ -254,7 +254,7 @@ In deze taak werkt u een van de tenantdatabases bij.
 
 1. Ga in uw browser naar de lijst met gebeurtenissen voor Contoso Concert Hall en noteer de naam van de laatste gebeurtenis.
 2. Open in *PowerShell ISE* het script ...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 en stel de volgende waarde in:
-    * **$DemoScenario = 5**: een gebeurtenis uit een tenant in de herstelregio verwijderen
+    * **$DemoScenario = 5** : een gebeurtenis uit een tenant in de herstelregio verwijderen
 3. Druk op **F5** om het script uit te voeren
 4. Vernieuw de pagina met gebeurtenissen voor Contoso Concert Hall (http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall - vervang &lt; user&gt; door de gebruikerswaarde van uw implementatie) en u ziet dat de laatste gebeurtenis is verwijderd.
 
@@ -281,11 +281,11 @@ Stel nu dat de storing is verholpen. U voert dan vervolgens het repatriëringssc
 1. Open in *PowerShell ISE* het script ...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1.
 
 2. Controleer of het catalogussynchronisatieproces nog steeds wordt uitgevoerd in het PowerShell-exemplaar.  Start het zo nodig opnieuw door het volgende in te stellen:
-    * **$DemoScenario = 1**: beginnen met het synchroniseren van de server-, pool- en databaseconfiguratiegegevens van de tenant in de catalogus
+    * **$DemoScenario = 1** : beginnen met het synchroniseren van de server-, pool- en databaseconfiguratiegegevens van de tenant in de catalogus
     * Druk op **F5** om het script uit te voeren.
 
 3.  Start vervolgens het repatriëringsproces door het volgende in te stellen:
-    * **$DemoScenario = 6**: de app repatriëren naar de oorspronkelijke regio
+    * **$DemoScenario = 6** : de app repatriëren naar de oorspronkelijke regio
     * Druk op **F5** om het herstelscript in een nieuw PowerShell-venster uit te voeren.  De repatriëring duurt enkele minuten en kan worden gevolgd in het PowerShell-venster.
     ![Repatriëringsproces](./media/saas-dbpertenant-dr-geo-replication/repatriation-process.png)
 

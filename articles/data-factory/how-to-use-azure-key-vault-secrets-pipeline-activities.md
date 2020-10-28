@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
-ms.openlocfilehash: 5a662119d9ccf95eac23785c5fe9a787da882531
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1766705e73afab5d15cdb5aa2c5bb1487ad3d7c5
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537392"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634280"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>Azure Key Vault-geheimen gebruiken in pijplijnactiviteiten
 
@@ -25,7 +25,7 @@ U kunt referenties of geheime waarden opslaan in een Azure Key Vault en deze geb
 
 ## <a name="prerequisites"></a>Vereisten
 
-Deze functie is afhankelijk van de data factory beheerde identiteit.  Meer informatie over hoe het werkt met [beheerde identiteit voor Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) en om ervoor te zorgen dat uw Data Factory een koppeling heeft.
+Deze functie is afhankelijk van de data factory beheerde identiteit.  Meer informatie over hoe het werkt met [beheerde identiteit voor Data Factory](./data-factory-service-identity.md) en om ervoor te zorgen dat uw Data Factory een koppeling heeft.
 
 ## <a name="steps"></a>Stappen
 
@@ -39,7 +39,7 @@ Deze functie is afhankelijk van de data factory beheerde identiteit.  Meer infor
 
     ![Toegangs beleid Key Vault](media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies-2.png)
 
-    Klik op **toevoegen**en vervolgens op **Opslaan**.
+    Klik op **toevoegen** en vervolgens op **Opslaan** .
 
 3. Navigeer naar uw Key Vault Secret en kopieer de geheime id.
 
@@ -51,7 +51,7 @@ Deze functie is afhankelijk van de data factory beheerde identiteit.  Meer infor
 
     |Eigenschap  |Waarde  |
     |---------|---------|
-    |Beveiligde uitvoer     |True         |
+    |Beveiligde uitvoer     |Waar         |
     |URL     |[Uw geheime URI-waarde]? API-Version = 7.0         |
     |Methode     |GET         |
     |Verificatie     |MSI         |
@@ -65,10 +65,10 @@ Deze functie is afhankelijk van de data factory beheerde identiteit.  Meer infor
     > [!CAUTION]
     > Stel de optie voor beveiligde uitvoer in op True om te voor komen dat de geheime waarde wordt geregistreerd als tekst zonder opmaak.  Voor verdere activiteiten waarvoor deze waarde wordt gebruikt, moet de optie voor beveiligde invoer zijn ingesteld op waar.
 
-5. Als u de waarde in een andere activiteit wilt gebruiken, gebruikt u de volgende code-expressie ** @activity (' web1 '). output. Value**.
+5. Als u de waarde in een andere activiteit wilt gebruiken, gebruikt u de volgende code-expressie **@activity (' web1 '). output. Value** .
 
     ![Code-expressie](media/how-to-use-azure-key-vault-secrets-pipeline-activities/usewebactivity.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [referenties opslaan in azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) voor meer informatie over het gebruik van Azure Key Vault voor het opslaan van referenties voor gegevens archieven en-berekeningen.
+Zie [referenties opslaan in azure Key Vault](./store-credentials-in-key-vault.md) voor meer informatie over het gebruik van Azure Key Vault voor het opslaan van referenties voor gegevens archieven en-berekeningen.

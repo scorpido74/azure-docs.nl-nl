@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.openlocfilehash: e0a8e6786dbce1015d587cf8015e3624c97a5817
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea69f1e634c66bff98462d41f3eeef19f8e15eb0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553611"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105240"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Zelfstudie: Azure Active Directory-integratie met Procore SSO
 
@@ -49,11 +49,11 @@ Voor de configuratie van de integratie van Procore SSO in Azure AD, moet u Proco
 
 **Voer de volgende stappen uit om Procore SSO toe te voegen vanuit de galerie:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen**.
+2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -67,7 +67,7 @@ Voor de configuratie van de integratie van Procore SSO in Azure AD, moet u Proco
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie gaat u eenmalige aanmelding van Azure AD met Procore SSO configureren en testen met behulp van een testgebruiker met de naam **Britta Simon**.
+In deze sectie gaat u eenmalige aanmelding van Azure AD met Procore SSO configureren en testen met behulp van een testgebruiker met de naam **Britta Simon** .
 Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in Procore SSO tot stand is gebracht.
 
 Als u eenmalige aanmelding met Azure AD bij Procore SSO wilt configureren en testen, voert u de volgende stappen uit:
@@ -85,7 +85,7 @@ In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakel
 
 Voor de configuratie van eenmalige aanmelding bij Azure AD met Procore SSO moet u de volgende stappen uitvoeren:
 
-1. In [Azure Portal](https://portal.azure.com/) selecteert u **Eenmalige aanmelding** op de integratiepagina van de toepassing **Procore SSO**.
+1. In [Azure Portal](https://portal.azure.com/) selecteert u **Eenmalige aanmelding** op de integratiepagina van de toepassing **Procore SSO** .
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -121,27 +121,27 @@ Voor de configuratie van eenmalige aanmelding bij Azure AD met Procore SSO moet 
 
 2. Klik in de vervolgkeuzelijst in de werkset op **Admin** om de pagina met SSO-instellingen te openen.
 
-    ![Eenmalige aanmelding configureren](./media/procoresso-tutorial/procore_tool_admin.png)
+    ![Schermopname van de bedrijfssite van Procore met Directory geselecteerd.](./media/procoresso-tutorial/procore_tool_admin.png)
 
 3. Plak de waarden in de vakken zoals hieronder beschreven.
 
-    ![Eenmalige aanmelding configureren](./media/procoresso-tutorial/procore_setting_admin.png)  
+    ![Schermopname van het dialoogvenster voor het toevoegen van een persoon.](./media/procoresso-tutorial/procore_setting_admin.png) 
 
-    a. Plak in het tekstvak **URL voor verlener van eenmalige aanmelding** de waarde van **Azure AD-id**, die u hebt gekopieerd uit Azure Portal.
+    a. Plak in het tekstvak **URL voor verlener van eenmalige aanmelding** de waarde van **Azure AD-id** , die u hebt gekopieerd uit Azure Portal.
 
     b. Plak in het tekstvak **Doel-URL voor SAML-aanmelding** de waarde van **Aanmeldings-URL** die u hebt gekopieerd uit Azure Portal.
 
-    c. Open nu het **XML-bestand met federatieve metagegevens** dat u in Azure Portal hebt gedownload en kopieer het certificaat in het label met de naam **X509Certificate**. Plak de gekopieerde waarde in het vak **x509-certificaat voor eenmalige aanmelding**.
+    c. Open nu het **XML-bestand met federatieve metagegevens** dat u in Azure Portal hebt gedownload en kopieer het certificaat in het label met de naam **X509Certificate** . Plak de gekopieerde waarde in het vak **x509-certificaat voor eenmalige aanmelding** .
 
 4. Klik op **Save Changes** (Wijzigingen opslaan).
 
-5. Na deze instellingen moet u de **Domeinnaam** (bijvoorbeeld **contoso.com**) van waaruit u zich aanmeldt bij Procore verzenden naar het [Procore-ondersteuningsteam](https://support.procore.com/). Zij activeren dan federatieve eenmalige aanmelding voor dat domein.
+5. Na deze instellingen moet u de **Domeinnaam** (bijvoorbeeld **contoso.com** ) van waaruit u zich aanmeldt bij Procore verzenden naar het [Procore-ondersteuningsteam](https://support.procore.com/). Zij activeren dan federatieve eenmalige aanmelding voor dat domein.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -153,19 +153,19 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u `brittasimon@yourcompanydomain.extension`. Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Create** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie gaat u Britta Simon toestemming geven voor gebruik van eenmalige aanmelding van Azure door haar toegang te geven tot Procore SSO.
 
-1. Selecteer **Bedrijfstoepassingen** in Azure Portal, selecteer **Alle toepassingen** en selecteer vervolgens **Procore SSO**.
+1. Selecteer **Bedrijfstoepassingen** in Azure Portal, selecteer **Alle toepassingen** en selecteer vervolgens **Procore SSO** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -173,11 +173,11 @@ In deze sectie gaat u Britta Simon toestemming geven voor gebruik van eenmalige 
 
     ![De Procore SSO-koppeling in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen** .
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -185,7 +185,7 @@ In deze sectie gaat u Britta Simon toestemming geven voor gebruik van eenmalige 
 
 6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
-7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen** .
 
 ### <a name="create-procore-sso-test-user"></a>Een Procore SSO-testgebruiker maken
 
@@ -195,29 +195,29 @@ Volg de onderstaande stappen om een Procore-testgebruiker aan de kant van Procor
 
 2. Klik in de vervolgkeuzelijst naast de werkset op **Directory** om de pagina met de bedrijfsdirectory te openen.
 
-    ![Eenmalige aanmelding configureren](./media/procoresso-tutorial/Procore_sso_directory.png)
+    ![Schermopname van de bedrijfssite van Procore met Directory geselecteerd onder Toolbox.](./media/procoresso-tutorial/Procore_sso_directory.png)
 
 3. Klik op de optie **Een persoon toevoegen** om het formulier te openen en de volgende opties uit te voeren:
 
-    ![Eenmalige aanmelding configureren](./media/procoresso-tutorial/Procore_user_add.png)
+    ![Schermopname van Add a person to Boylan Construction, waar u gebruikersgegevens kunt invoeren.](./media/procoresso-tutorial/Procore_user_add.png)
 
-    a. Typ in het tekstvak **Voornaam** de voornaam van de gebruiker, bijvoorbeeld **Britta**.
+    a. Typ in het tekstvak **Voornaam** de voornaam van de gebruiker, bijvoorbeeld **Britta** .
 
-    b. Typ in het tekstvak **Achternaam** de achternaam van de gebruiker, bijvoorbeeld **Simon**.
+    b. Typ in het tekstvak **Achternaam** de achternaam van de gebruiker, bijvoorbeeld **Simon** .
 
     c. Typ in het tekstvak **E-mailadres** het e-mailadres van de gebruiker, bijvoorbeeld BrittaSimon@contoso.com.
 
-    d. Selecteer **Machtigingssjabloon** als **Machtigingssjabloon later toepassen**.
+    d. Selecteer **Machtigingssjabloon** als **Machtigingssjabloon later toepassen** .
 
-    e. Klik op **Create**.
+    e. Klik op **Create** .
 
 4. Controleer en werk de details voor de zojuist toegevoegde contactpersoon bij.
 
-    ![Eenmalige aanmelding configureren](./media/procoresso-tutorial/Procore_user_check.png)
+    ![Schermopname van een bewerkingspagina waar u de gebruikersinstellingen kunt controleren.](./media/procoresso-tutorial/Procore_user_check.png)
 
 5. Klik op **Opslaan en uitnodiging verzenden** (als een uitnodiging via e-mail is vereist) of klik op **Opslaan** (direct opslaan) om de registratie van de gebruiker te voltooien.
     
-    ![Eenmalige aanmelding configureren](./media/procoresso-tutorial/Procore_user_save.png)
+    ![Schermopname van de huidige projectinstellingen, waar u de gegevens kunt opslaan en een uitnodiging verzenden.](./media/procoresso-tutorial/Procore_user_save.png)
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 

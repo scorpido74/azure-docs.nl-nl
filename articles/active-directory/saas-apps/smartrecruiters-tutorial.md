@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: c960a7b509f365ad7fd6b04267cfec6bf41c4e42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fddf5cb77cbcb1fb061ffd958fba4bf4ab2c9e7
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88542561"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127468"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartrecruiters"></a>Zelfstudie: Integratie van Azure Active Directory met SmartRecruiters
 
@@ -49,11 +49,11 @@ Om de integratie van SmartRecruiters te configureren in Azure AD, moet u SmartRe
 
 **Voer de volgende stappen uit om SmartRecruiters toe te voegen vanuit de galerie:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen**.
+2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -61,13 +61,13 @@ Om de integratie van SmartRecruiters te configureren in Azure AD, moet u SmartRe
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **SmartRecruiters**, selecteer **SmartRecruiters** in het resultatenvenster en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak **SmartRecruiters** , selecteer **SmartRecruiters** in het resultatenvenster en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
 
      ![SmartRecruiters in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie gaat u Azure AD-eenmalige aanmelding met SmartRecruiters configureren en testen met behulp van een testgebruiker met de naam **Britta Simon**.
+In deze sectie gaat u Azure AD-eenmalige aanmelding met SmartRecruiters configureren en testen met behulp van een testgebruiker met de naam **Britta Simon** .
 Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in SmartRecruiters tot stand is gebracht.
 
 Als u Azure AD-eenmalige aanmelding met SmartRecruiters wilt configureren en testen, moet u de volgende stappen uitvoeren:
@@ -85,7 +85,7 @@ In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakel
 
 Voer de volgende stappen uit om Azure AD-eenmalige aanmelding te configureren voor SmartRecruiters:
 
-1. Ga in [Azure Portal](https://portal.azure.com/) naar de pagina voor integratie van de toepassing **SmartRecruiters** en selecteer **Eenmalige aanmelding**.
+1. Ga in [Azure Portal](https://portal.azure.com/) naar de pagina voor integratie van de toepassing **SmartRecruiters** en selecteer **Eenmalige aanmelding** .
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -99,7 +99,7 @@ Voer de volgende stappen uit om Azure AD-eenmalige aanmelding te configureren vo
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij SmartRecruiters](common/idp-intiated.png)
+    ![Schermopname die de Standaard SAML-configuratie toont, waar u de id en URL kunt invoeren en vervolgens Opslaan selecteert.](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://www.smartrecruiters.com/web-sso/saml/<companyname>`
 
@@ -107,7 +107,7 @@ Voer de volgende stappen uit om Azure AD-eenmalige aanmelding te configureren vo
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij SmartRecruiters](common/metadata-upload-additional-signon.png)
+    ![Schermopname die Extra URL's instellen toont, waar u een aanmeldings-URL kunt invoeren.](common/metadata-upload-additional-signon.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://www.smartrecruiters.com/web-sso/saml/<companyname>/login`
 
@@ -132,33 +132,33 @@ Voer de volgende stappen uit om Azure AD-eenmalige aanmelding te configureren vo
 
 1. Meld u in een ander browservenster als beheerder aan bij uw SmartRecruiters-bedrijfssite.
 
-1. Ga naar **Settings / Admin**.
+1. Ga naar **Settings / Admin** .
 
-    ![Configuratie van SmartRecruiters](./media/smartrecruiters-tutorial/configure.png)
+    ![Schermopname met Settings / Admin geselecteerd in een menu.](./media/smartrecruiters-tutorial/configure.png)
 
-1. Klik in de sectie **Configuration** op **Web SSO**.
+1. Klik in de sectie **Configuration** op **Web SSO** .
 
-    ![Configuratie van SmartRecruiters](./media/smartrecruiters-tutorial/configure1.png)
+    ![Schermopname met Web S S O geselecteerd in Configuratie.](./media/smartrecruiters-tutorial/configure1.png)
 
 1. Schakel **Enable Web SSO** in of uit.
 
-    ![Configuratie van SmartRecruiters](./media/smartrecruiters-tutorial/configure2.png)
+    ![Schermopname van het besturingselement Enable Web S S O.](./media/smartrecruiters-tutorial/configure2.png)
 
 1. Voer in **Identity Provider Configuration** de volgende stappen uit:
 
-    ![Configuratie van SmartRecruiters](./media/smartrecruiters-tutorial/configure4.png)
+    ![Schermopname van Identity Provider Configuration, waar u de beschreven waarden kunt invoeren.](./media/smartrecruiters-tutorial/configure4.png)
 
     a. Plak in het tekstvak voor de **URL van de identiteitsprovider** de waarde van de **aanmeldings-URL** die u hebt gekopieerd uit Azure Portal.
 
-    b. Open het **certificaat (Base64)** dat u hebt gedownload vanuit Azure Portal in Kladblok, kopieer de inhoud ervan en plak deze in het tekstvak **Identity Provider certificate**.
+    b. Open het **certificaat (Base64)** dat u hebt gedownload vanuit Azure Portal in Kladblok, kopieer de inhoud ervan en plak deze in het tekstvak **Identity Provider certificate** .
 
-1. Klik op **Save Web SSO configuration**.
+1. Klik op **Save Web SSO configuration** .
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -170,20 +170,20 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u **brittasimon@yourcompanydomain.extension** .  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Create** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie geeft u Britta Simon toestemming om eenmalige aanmelding van Azure te gebruiken door haar toegang te verlenen tot SmartRecruiters.
 
-1. Selecteer in Azure Portal achtereenvolgens **Bedrijfstoepassingen**, **Alle toepassingen** en **SmartRecruiters**.
+1. Selecteer in Azure Portal achtereenvolgens **Bedrijfstoepassingen** , **Alle toepassingen** en **SmartRecruiters** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -191,11 +191,11 @@ In deze sectie geeft u Britta Simon toestemming om eenmalige aanmelding van Azur
 
     ![De SmartRecruiters-link in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen** .
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -203,7 +203,7 @@ In deze sectie geeft u Britta Simon toestemming om eenmalige aanmelding van Azur
 
 6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
-7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen** .
 
 ### <a name="create-smartrecruiters-test-user"></a>Testgebruiker voor SmartRecruiters maken
 

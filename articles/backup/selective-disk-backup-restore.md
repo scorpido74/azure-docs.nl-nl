@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over selectieve back-ups en herst
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: 21e4ead8b3302ceef4cc53c126b9eab5784544b4
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 1052e7e531f6762de660ba89e22c7fbb0d01f808
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92174113"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628759"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Back-up en herstel van selectieve schijven voor virtuele Azure-machines
 
@@ -192,7 +192,11 @@ Zorg ervoor dat u Azure PowerShell versie 3.7.0 of hoger gebruikt.
 ### <a name="enable-backup-with-powershell"></a>Back-up inschakelen met Power shell
 
 ```azurepowershell
-Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"  -DiskListSetting "Include"/"Exclude" -DisksList[Strings] -VaultId $targetVault.ID
+Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"  -InclusionDisksList[Strings] -VaultId $targetVault.ID
+```
+
+```azurepowershell
+Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"  -ExclusionDisksList[Strings] -VaultId $targetVault.ID
 ```
 
 ### <a name="backup-only-os-disk-during-configure-backup-with-powershell"></a>Alleen back-ups van besturingssysteem schijf tijdens configureren van back-up met Power shell
@@ -212,7 +216,11 @@ U moet het hierboven verkregen **$item** -object door geven aan de para meter **
 ### <a name="modify-protection-for-already-backed-up-vms-with-powershell"></a>Beveiliging wijzigen voor al back-ups van Vm's met Power shell
 
 ```azurepowershell
-Enable-AzRecoveryServicesBackupProtection -Item $item -DiskListSetting "Include"/"Exclude" -DisksList[Strings]   -VaultId $targetVault.ID
+Enable-AzRecoveryServicesBackupProtection -Item $item -InclusionDisksList[Strings] -VaultId $targetVault.ID
+```
+
+```azurepowershell
+Enable-AzRecoveryServicesBackupProtection -Item $item -ExclusionDisksList[Strings] -VaultId $targetVault.ID
 ```
 
 ### <a name="backup-only-os-disk-during-modify-protection-with-powershell"></a>Alleen back-ups van de besturingssysteem schijf tijdens het wijzigen van de beveiliging met Power shell
@@ -224,7 +232,7 @@ Enable-AzRecoveryServicesBackupProtection -Item $item  -ExcludeAllDataDisks -Vau
 ### <a name="reset-disk-exclusion-setting-with-powershell"></a>Instelling voor schijf uitsluiting opnieuw instellen met Power shell
 
 ```azurepowershell
-Enable-AzRecoveryServicesBackupProtection -Item $item -DiskListSetting "Reset" -VaultId $targetVault.ID
+Enable-AzRecoveryServicesBackupProtection -Item $item -ResetExclusionSettings -VaultId $targetVault.ID
 ```
 
 ### <a name="restore-selective-disks-with-powershell"></a>Selectieve schijven herstellen met Power shell

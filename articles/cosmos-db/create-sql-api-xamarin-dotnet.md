@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 09/22/2020
+ms.date: 10/09/2020
 ms.author: anfeldma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7d8f51b12c16afbb8a0cf71e99b9b357719db4be
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 74ff6983b08b6f19a94384be7c4361d4266d6a20
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319041"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108759"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Quickstart: een taken-app maken met Xamarin met behulp van een SQL API-account van Azure Cosmos DB
 
@@ -38,7 +38,7 @@ Deze snelstart laat zien hoe u een SQL API-account van Azure Cosmos DB, een docu
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Windows gebruikt en Visual Studio 2019 nog niet hebt geïnstalleerd, kunt u het downloaden en de **gratis** [Community Edition van Visual Studio 2019](https://www.visualstudio.com/downloads/) gebruiken. Zorg ervoor dat u **Azure-ontwikkeling** en **Mobile Development met .NET**-workloads inschakelt tijdens de installatie van Visual Studio.
+Als u Windows gebruikt en Visual Studio 2019 nog niet hebt geïnstalleerd, kunt u het downloaden en de **gratis** [Community Edition van Visual Studio 2019](https://www.visualstudio.com/downloads/) gebruiken. Zorg ervoor dat u **Azure-ontwikkeling** en **Mobile Development met .NET** -workloads inschakelt tijdens de installatie van Visual Studio.
 
 Als u een Mac gebruikt, kunt u **gratis** [Visual Studio voor Mac](https://www.visualstudio.com/vs/mac/) downloaden.
 
@@ -68,7 +68,7 @@ Nu gaat u de SQL API-app voor Xamarin klonen vanuit GitHub, de code controleren,
 1. Open een opdrachtprompt, maak een nieuwe map met de naam git-samples en sluit vervolgens de opdrachtprompt.
 
     ```bash
-    md "C:\git-samples"
+    mkdir "C:\git-samples"
     ```
 
 2. Open een git-terminalvenster, bijvoorbeeld git bash, en gebruik de `cd`-opdracht om naar de nieuwe map te gaan voor het installeren van de voorbeeld-app.
@@ -83,25 +83,31 @@ Nu gaat u de SQL API-app voor Xamarin klonen vanuit GitHub, de code controleren,
     git clone https://github.com/Azure-Samples/azure-cosmos-db-sql-xamarin-getting-started.git
     ```
 
-4. Open vervolgens vanuit de map samples/xamarin/ToDoItems in Visual Studio het bestand ToDoItems.sln.
+4. Open in Visual Studio **C:\git-samples\azure-cosmos-db-sql-xamarin-getting-started\src\ToDoItems.sln** 
 
 ## <a name="obtain-your-api-keys"></a>Uw API-sleutels ophalen
 
 Ga terug naar Azure Portal om de API-sleutelgegevens op te halen en deze in de app te kopiëren.
 
-1. Klik in [Azure Portal](https://portal.azure.com/), in uw SQL API-account voor Azure Cosmos DB, in het linker navigatiegedeelte op **Sleutels** en klik vervolgens op **Sleutels voor lezen/schrijven**. In de volgende stap gebruikt u de kopieerknoppen aan de rechterkant van het scherm om de URI en Primaire sleutel in het bestand APIKeys.cs te kopiëren.
+1. Klik in [Azure Portal](https://portal.azure.com/), in uw SQL API-account voor Azure Cosmos DB, in het linker navigatiegedeelte op **Sleutels** en klik vervolgens op **Sleutels voor lezen/schrijven** . In de volgende stap gebruikt u de kopieerknoppen aan de rechterkant van het scherm om de URI en Primaire sleutel in het bestand APIKeys.cs te kopiëren.
 
     :::image type="content" source="./media/create-sql-api-xamarin-dotnet/keys.png" alt-text="Taken-app in Xamarin uitgevoerd op iOS":::
 
-2. Open het bestand APIKeys.cs vanuit de map azure-cosmos-db-sql-xamarin-getting-started/src/ToDoItems.Core/Helpers in Visual Studio 2019 of Visual Studio voor Mac.
+2. Open in Visual Studio **ToDoItems.Core/Helpers/APIKeys.cs** .
 
-3. Kopieer uw URI-waarde vanuit de portal (met de kopieerknop) en geef deze op als waarde voor de variabele `CosmosEndpointUrl` in APIKeys.cs.
+3. Gebruik in Azure Portal de kopieerknop om de **URI** -waarde te kopiëren, en maak deze de waarde van de variabele `CosmosEndpointUrl` in APIKeys.cs.
 
-    `public static readonly string CosmosEndpointUrl = "";`
+    ```csharp
+    //#error Enter the URL of your Azure Cosmos DB endpoint here
+            public static readonly string CosmosEndpointUrl = "[URI Copied from Azure Portal]";
+    ```
 
-4. Kopieer vervolgens de waarde van uw PRIMAIRE SLEUTEL vanuit de portal en geef deze op als waarde van `Cosmos Auth Key` in APIKeys.cs.
+4. Gebruik in Azure Portal de kopieerknop om de waarde van **PRIMAIRE SLEUTEL** te kopiëren, en maak deze de waarde van de `Cosmos Auth Key` in APIKeys.cs.
 
-    `public static readonly string CosmosAuthKey = "";`
+    ```csharp
+    //#error Enter the read/write authentication key of your Azure Cosmos DB endpoint here
+            public static readonly string CosmosAuthKey = "[PRIMARY KEY copied from Azure Portal";
+    ```
 
 [!INCLUDE [cosmos-db-auth-key-info](../../includes/cosmos-db-auth-key-info.md)]
 
@@ -113,15 +119,18 @@ Deze oplossing laat zien hoe u een taken-app kunt maken met behulp van de SQL AP
 
 De code in de takenoplossing bevat:
 
-* ToDoItems.Core: Dit is een standaard .NET-project met een Xamarin.Forms-project en een logische code voor gedeelde toepassingen die taken in Azure Cosmos DB bijhoudt.
-* ToDoItems.Android: Dit project bevat de Android-app.
-* ToDoItems.iOS: Dit project bevat de iOS-app.
+* **ToDoItems.Core**
+   * Dit is een standaard .NET-project met een Xamarin.Forms-project en een logische code voor gedeelde toepassingen die taken in Azure Cosmos DB bijhoudt.
+* **ToDoItems.Android**
+  * Dit project bevat de Android-app.
+* **ToDoItems.iOS**
+  * Dit project bevat de iOS-app.
 
 Laten we nog eens kort bekijken hoe de app met Azure Cosmos DB communiceert.
 
 * Het NuGet-pakket [Microsoft.Azure.DocumentDb.Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/) moet aan alle projecten worden toegevoegd.
-* De klasse `ToDoItem` in de map azure-documentdb-dotnet/samples/xamarin/ToDoItems/ToDoItems.Core/Models staat model voor de documenten in de container **Items** die hierboven is gemaakt. Houd er rekening mee dat de namen van eigenschappen hoofdlettergevoelig zijn.
-* De klasse `CosmosDBService` in de map azure-documentdb-dotnet/samples/xamarin/ToDoItems/ToDoItems.Core/Services bevat de communicatie met Azure Cosmos DB.
+* De klasse `ToDoItem` in de map **ToDoItems.Core/Models** modelleert de documenten in de hierboven gemaakte container **Items** . Houd er rekening mee dat de namen van eigenschappen hoofdlettergevoelig zijn.
+* De klasse `CosmosDBService` in de map **ToDoItems.Core/Services** kapselt de communicatie met Azure Cosmos DB in.
 * Binnen de klasse `CosmosDBService` bevindt zich een variabele van het type `DocumentClient`. De `DocumentClient` wordt gebruikt om aanvragen te configureren en uit te voeren op het Azure Cosmos DB-account en wordt geïnstantieerd:
 
     ```csharp
@@ -182,7 +191,7 @@ Met de volgende stappen wordt gedemonstreerd hoe u de app uitvoert met behulp va
 
     :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ios-droid-started.png" alt-text="Taken-app in Xamarin uitgevoerd op iOS":::
 
-4. Als u een taak op iOS wilt voltooien, schuift u deze naar links en tikt u op de knop **Voltooien**. Als u een taak op Android wilt voltooien, houdt u het item lang ingedrukt en tikt u op de knop Voltooien.
+4. Als u een taak op iOS wilt voltooien, schuift u deze naar links en tikt u op de knop **Voltooien** . Als u een taak op Android wilt voltooien, houdt u het item lang ingedrukt en tikt u op de knop Voltooien.
 
     :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-complete.png" alt-text="Taken-app in Xamarin uitgevoerd op iOS":::
 
@@ -190,7 +199,7 @@ Met de volgende stappen wordt gedemonstreerd hoe u de app uitvoert met behulp va
 
     :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-edit.png" alt-text="Taken-app in Xamarin uitgevoerd op iOS":::
 
-6. Als u een taak wilt toevoegen, tikt u in de rechterbovenhoek van het startscherm op de knop **Toevoegen**. Er wordt een nieuwe, lege pagina voor bewerken weergegeven.
+6. Als u een taak wilt toevoegen, tikt u in de rechterbovenhoek van het startscherm op de knop **Toevoegen** . Er wordt een nieuwe, lege pagina voor bewerken weergegeven.
 
     :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-add.png" alt-text="Taken-app in Xamarin uitgevoerd op iOS":::
 

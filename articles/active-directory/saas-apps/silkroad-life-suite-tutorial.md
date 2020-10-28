@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 49dd333454f0eb92f5fb0dddc40390ec1baa91c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a40d4c82391f8f8cb55374c8c2d02bee5bf24ae4
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88525442"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126906"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silkroad-life-suite"></a>Zelfstudie: Azure Active Directory-integratie met SilkRoad Life Suite
 
@@ -49,11 +49,11 @@ Als u de integratie van SilkRoad Life Suite in Azure AD wilt configureren, moet 
 
 **Voer de volgende stappen uit om SilkRoad Life Suite toe te voegen vanuit de galerie:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen**.
+2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -67,7 +67,7 @@ Als u de integratie van SilkRoad Life Suite in Azure AD wilt configureren, moet 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u Azure AD-eenmalige aanmelding met SilkRoad Life Suite op basis van een testgebruiker met de naam **Britta Simon**.
+In deze sectie configureert en test u Azure AD-eenmalige aanmelding met SilkRoad Life Suite op basis van een testgebruiker met de naam **Britta Simon** .
 Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tot stand is gebracht tussen een Azure AD-gebruiker en de gerelateerde gebruiker in SilkRoad Life Suite.
 
 Als u Azure AD-eenmalige aanmelding met SilkRoad Life Suite wilt configureren en testen, moet u de volgende bouwstenen voltooien:
@@ -85,7 +85,7 @@ In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakel
 
 Als u Azure AD-eenmalige aanmelding met SilkRoad Life Suite wilt configureren, voert u de volgende stappen uit:
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com/) op de integratiepagina van de **SilkRoad Life Suite**-toepassing, de optie **Eenmalige aanmelding**.
+1. Selecteer in de [Azure-portal](https://portal.azure.com/) op de integratiepagina van de **SilkRoad Life Suite** -toepassing, de optie **Eenmalige aanmelding** .
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -97,29 +97,29 @@ Als u Azure AD-eenmalige aanmelding met SilkRoad Life Suite wilt configureren, v
 
     ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-4. Voer in de sectie **Standaard SAML-configuratie** de volgende stappen uit als u beschikt over een **bestand met metagegevens van de serviceprovider**:
+4. Voer in de sectie **Standaard SAML-configuratie** de volgende stappen uit als u beschikt over een **bestand met metagegevens van de serviceprovider** :
 
     > [!NOTE]
     > Het **bestand met metagegevensbestand van de serviceprovider** wordt verderop in deze zelfstudie uitgelegd.
 
-    a. Klik op **Metagegevensbestand uploaden**.
+    a. Klik op **Metagegevensbestand uploaden** .
 
-    ![image](common/upload-metadata.png)
+    ![Schermopnamen met Standaard SAML-configuratie, met de koppeling voor het uploaden van een bestand met metagegevens.](common/upload-metadata.png)
 
-    b. Klik op het **mappictogram** om het metagegevensbestand te selecteren en klik op **Uploaden**.
+    b. Klik op het **mappictogram** om het metagegevensbestand te selecteren en klik op **Uploaden** .
 
-    ![image](common/browse-upload-metadata.png)
+    ![Schermopname van een dialoogvenster, waar u een bestand kunt selecteren en uploaden.](common/browse-upload-metadata.png)
 
     c. Zodra het bestand met metagegevens is geüpload, worden de waarden voor **Id** en **Antwoord-URL** automatisch ingevuld in de sectie Standaard SAML-configuratie:
 
-    ![image](common/sp-identifier-reply.png)
+    ![Schermopname die de Standaard SAML-configuratie toont, waar u de id en URL kunt invoeren en vervolgens Opslaan selecteert.](common/sp-identifier-reply.png)
 
     > [!Note]
     > Als de waarden voor **Id** en **Antwoord-URL** niet automatisch worden ingevuld, kunt u de waarden zelf invullen afhankelijk van uw behoeften.
 
     d. In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<subdomain>.silkroad-eng.com/Authentication/`
 
-5. Voer in de sectie **Standaard SAML-configuratie** de volgende stappen uit als u niet beschikt over een **bestand met metagegevens van de serviceprovider**:
+5. Voer in de sectie **Standaard SAML-configuratie** de volgende stappen uit als u niet beschikt over een **bestand met metagegevens van de serviceprovider** :
 
     ![Informatie over het SilkRoad Life Suite-domein en URL's voor eenmalige aanmelding](common/sp-identifier-reply.png)
 
@@ -159,63 +159,63 @@ Als u Azure AD-eenmalige aanmelding met SilkRoad Life Suite wilt configureren, v
     > [!NOTE]
     > Neem contact op met SilkRoad-ondersteuning of uw SilkRoad Services-vertegenwoordiger om toegang te krijgen tot de SilkRoad Life Suite-verificatietoepassing voor het configureren van federatie met Microsoft Azure AD.
 
-1. Ga naar **Serviceprovider** en klik vervolgens op **Federatieve gegevens**.
+1. Ga naar **Serviceprovider** en klik vervolgens op **Federatieve gegevens** .
 
-    ![Eenmalige aanmelding van Azure AD](./media/silkroad-life-suite-tutorial/tutorial_silkroad_06.png)
+    ![Schermopname met Federatieve gegevens geselecteerd in Serviceprovider.](./media/silkroad-life-suite-tutorial/tutorial_silkroad_06.png)
 
 1. Klik op **Federatieve metagegevens downloaden** en sla vervolgens het metagegevensbestand op uw computer op. Gebruik Gedownloade federatieve metagegevens als een **gegevensbestand met metagegevens van de serviceprovider** in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-    ![Eenmalige aanmelding van Azure AD](./media/silkroad-life-suite-tutorial/tutorial_silkroad_07.png)
+    ![Schermopname van de link Federatieve metagegevens downloaden.](./media/silkroad-life-suite-tutorial/tutorial_silkroad_07.png)
 
-1. Klik in de toepassing **SilkRoad**  op **Verificatiebronnen**.
+1. Klik in de toepassing **SilkRoad**  op **Verificatiebronnen** .
 
-    ![Eenmalige aanmelding van Azure AD](./media/silkroad-life-suite-tutorial/tutorial_silkroad_08.png) 
+    ![Schermopname waarin Verificatiebronnen is geselecteerd.](./media/silkroad-life-suite-tutorial/tutorial_silkroad_08.png) 
 
-1. Klik op **Verificatiebron toevoegen**.
+1. Klik op **Verificatiebron toevoegen** .
 
-    ![Eenmalige aanmelding van Azure AD](./media/silkroad-life-suite-tutorial/tutorial_silkroad_09.png)
+    ![Schermopname toont de link Verificatiebron toevoegen.](./media/silkroad-life-suite-tutorial/tutorial_silkroad_09.png)
 
 1. Voer in de sectie **Verificatiebron toevoegen** de volgende stappen uit:
 
-    ![Eenmalige aanmelding van Azure AD](./media/silkroad-life-suite-tutorial/tutorial_silkroad_10.png)
+    ![Schermopname toont Verificatiebron toevoegen met de knop Id-provider maken met behulp van bestandsgegevens geselecteerd.](./media/silkroad-life-suite-tutorial/tutorial_silkroad_10.png)
   
     a. Klik onder **Optie 2: metagegevensbestand** op **Bladeren** om het gedownloade metagegevensbestand te uploaden vanuit de Azure-portal.
   
-    b. Klik op **Id-provider maken met behulp van bestandsgegevens**.
+    b. Klik op **Id-provider maken met behulp van bestandsgegevens** .
 
-1. Klik in de sectie **Verificatiebronnen** op **Bewerken**.
+1. Klik in de sectie **Verificatiebronnen** op **Bewerken** .
 
-    ![Eenmalige aanmelding van Azure AD](./media/silkroad-life-suite-tutorial/tutorial_silkroad_11.png)
+    ![Schermopname toont Verificatiebronnen met de optie Bewerken geselecteerd.](./media/silkroad-life-suite-tutorial/tutorial_silkroad_11.png)
 
 1. Voer in het dialoogvenster **Verificatiebron bewerken** de volgende stappen uit:
 
-    ![Eenmalige aanmelding van Azure AD](./media/silkroad-life-suite-tutorial/tutorial_silkroad_12.png)
+    ![Schermopname van het dialoogvenster Verificatiebron bewerken waarin u de beschreven waarden kunt invoeren.](./media/silkroad-life-suite-tutorial/tutorial_silkroad_12.png)
 
-    a. Selecteer **Ja** bij **Ingeschakeld**.
+    a. Selecteer **Ja** bij **Ingeschakeld** .
 
     b. Plak in het tekstvak **EntityId** de waarde van **Azure AD-id** die u hebt gekopieerd uit de Azure-portal.
 
-    c. Typ in het tekstvak **Beschrijving IdP** een beschrijving voor uw configuratie (bijvoorbeeld: *Azure AD-eenmalige aanmelding*).
+    c. Typ in het tekstvak **Beschrijving IdP** een beschrijving voor uw configuratie (bijvoorbeeld: *Azure AD-eenmalige aanmelding* ).
 
     d. Upload vanuit het tekstvak **Metagegevensbestand** het **metagegevensbestand** dat u vanuit de Azure-portal hebt gedownload.
   
-    e. Typ in het tekstvak **Naam IdP** een naam die specifiek is voor uw configuratie (bijvoorbeeld: *Azure SP*).
+    e. Typ in het tekstvak **Naam IdP** een naam die specifiek is voor uw configuratie (bijvoorbeeld: *Azure SP* ).
   
     f. Plak in het tekstvak **URL van afmeldservice** de waarde van **Afmeldings-URL** die u hebt gekopieerd vanuit de Azure-portal.
 
     g. Plak in het tekstvak **URL van aanmeldservice** de waarde van **Aanmeldings-URL** die u hebt gekopieerd vanuit de Azure-portal.
 
-    h. Klik op **Opslaan**.
+    h. Klik op **Opslaan** .
 
 1. Schakel alle andere verificatiebronnen uit.
 
-    ![Eenmalige aanmelding van Azure AD](./media/silkroad-life-suite-tutorial/tutorial_silkroad_13.png)
+    ![Schermopname van Verificatiebronnen, waar u andere bronnen kunt uitschakelen. ](./media/silkroad-life-suite-tutorial/tutorial_silkroad_13.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -227,20 +227,20 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u `brittasimon@yourcompanydomain.extension`  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Create** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie geeft u Britta Simon toestemming voor gebruik van eenmalige aanmelding met Azure door haar toegang te geven tot SilkRoad Life Suite.
 
-1. Selecteer **Bedrijfstoepassingen** in de Azure-portal, selecteer **Alle toepassingen** en selecteer vervolgens **SilkRoad Life Suite**.
+1. Selecteer **Bedrijfstoepassingen** in de Azure-portal, selecteer **Alle toepassingen** en selecteer vervolgens **SilkRoad Life Suite** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -248,11 +248,11 @@ In deze sectie geeft u Britta Simon toestemming voor gebruik van eenmalige aanme
 
     ![De koppeling SilkRoad Life Suite in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen** .
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -260,7 +260,7 @@ In deze sectie geeft u Britta Simon toestemming voor gebruik van eenmalige aanme
 
 6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
-7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen** .
 
 ### <a name="create-silkroad-life-suite-test-user"></a>Testgebruiker voor SilkRoad Life Suite maken
 

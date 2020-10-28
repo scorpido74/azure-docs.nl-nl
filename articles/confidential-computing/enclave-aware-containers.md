@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: b388b8efb7d993baa243975dbf499576246f3185
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 01f10d3ba83d23478a7113cf4935181ee34959e3
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90998355"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125283"
 ---
 # <a name="enclave-aware-containers"></a>Enclave-compatibele containers
 
@@ -51,14 +51,19 @@ Met deze oplossing kunt u gebruikmaken van bestaande, met Machine Learning (ML) 
 
 Ga [hier](https://aka.ms/confidentialinference) aan de slag met ML-model lift-and-shift naar ONNX Runtime
 
-## <a name="container-samples-implementations"></a>Implementaties van containersamples
+### <a name="edgeless-rt"></a>Edgeless RT
 
-[Azure-samples voor enclave-compatibele containers in AKS](https://github.com/Azure-Samples/enclave-aware-container-samples)
+Edgeless RT is een opensource-project dat is gebaseerd op de Open Enclave-SDK. Hiermee wordt ondersteuning toegevoegd voor Go en aanvullende C++ functies. Ga [hier](https://github.com/edgelesssys/edgelessrt) aan de slag met een eenvoudige vertrouwelijke Go-toepassing met behulp van uw vertrouwde VS code-omgeving. Volg [hier](https://github.com/edgelesssys/edgelessrt/blob/master/docs/ERTAzureAKSDeployment.md) de instructies voor Edgeless-toepassingen op AKS
+
+
+## <a name="container-based-sample-implementations"></a>Implementaties van samples op basis van containers
+
+[Azure-samples voor enclave-compatibele containers in AKS](https://github.com/Azure-Samples/confidential-computing/tree/main/containersamples)
 
 <!-- LINKS - external -->
-[Azure Attestation]: https://docs.microsoft.com/en-us/azure/attestation/
+[Azure Attestation](../attestation/overview.md)
 
 
 <!-- LINKS - internal -->
-[DC Virtual Machine]: /confidential-computing/virtual-machine-solutions
-[Confidential Containers]: /confidential-computing/containercompute/confidential-containers
+[Virtuele DC-machine ](/confidential-computing/virtual-machine-solutions)
+[Vertrouwelijke containers](/confidential-computing/containercompute/confidential-containers)

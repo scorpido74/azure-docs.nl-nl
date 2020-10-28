@@ -3,17 +3,17 @@ title: Gereserveerde exemplaren Azure EA-VM
 description: In dit artikel wordt samengevat hoe u met Azure-reserveringen voor gereserveerde VM-instanties geld kunt besparen met uw Enterprise Enrollment.
 author: bandersmsft
 ms.author: banders
-ms.date: 09/03/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 4970852634039bddfb14be579db5dd355fff9740
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 16e325f029fc4c317a61db62df97ded5c213e0e5
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442442"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132530"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Gereserveerde exemplaren Azure EA-VM
 
@@ -22,6 +22,12 @@ In dit artikel wordt samengevat hoe u met Azure-reserveringen voor gereserveerde
 ## <a name="reservation-exchanges-and-refunds"></a>Omruilen en restituties bij reserveringen
 
 U kunt een reservering inwisselen voor een andere reservering van hetzelfde type. Het is ook mogelijk om een restitutie (tot USD 50.000 per jaar) voor een reservering aan te vragen als u deze niet meer nodig hebt. De Azure-portal kan worden gebruikt voor omruiling of terugbetaling van een reservering. Zie [Selfserviceopties voor inwisselen en retourneren van Azure-reserveringen](../reservations/exchange-and-refund-azure-reservations.md) voor meer informatie.
+
+### <a name="partial-refunds"></a>Gedeeltelijke restitutie
+
+Er wordt een gedeeltelijke restitutie gegeven wanneer EA-klanten reserveringen retourneren die zijn gekocht met overschrijding en geen financiële toezegging.
+
+De restitutie wordt in de EA-portal weer gegeven als een negatieve correctie in de vorige maand en een positieve correctie in de huidige maand. Het wordt op dezelfde manier weergegeven als bij een reserveringsuitwisseling. De creditnota verwijst naar het oorspronkelijke factuurnummer. Verwijs dus naar het oorspronkelijke factuurnummer bij het afstemmen van de aanvankelijke aankoop met de creditnota.
 
 ## <a name="reservation-costs-and-usage"></a>Reserveringskosten en gebruik
 
@@ -59,11 +65,11 @@ Gereserveerde instanties kunnen de kosten voor uw virtuele machine tot 72 procen
 
 Om een ​​gereserveerde instantie van virtuele machine van Azure te kopen, moet een Enterprise Azure-registratiebeheerder de aankoopoptie _Instantie reserveren_ inschakelen. Deze optie bevindt zich in het gedeelte _Inschrijvingsdetails_ van het tabblad _Inschrijving_ in de [Microsoft Azure Enterprise Portal](https://ea.azure.com/).
 
-Nadat de EA-inschrijving zo is ingesteld dat gereserveerde instanties kunnen worden toegevoegd, kan een accounteigenaar met een actief abonnement dat bij de EA-inschrijving hoort, een gereserveerde VM-instantie aanschaffen in de [Azure-portal](https://aka.ms/reservations). Raadpleeg [Vooruitbetalen voor virtuele machines en geld besparen met gereserveerde VM-instanties](https://go.microsoft.com/fwlink/?linkid=861721) voor meer informatie.
+Nadat de EA-inschrijving zo is ingesteld dat gereserveerde instanties kunnen worden toegevoegd, kan een accounteigenaar met een actief abonnement dat bij de EA-inschrijving hoort, een gereserveerde VM-instantie aanschaffen in de [Azure-portal](https://aka.ms/reservations). Raadpleeg [Vooruitbetalen voor virtuele machines en geld besparen met gereserveerde VM-instanties](../../virtual-machines/windows/prepay-reserved-vm-instances.md) voor meer informatie.
 
 ### <a name="how-to-view-reserved-instance-purchase-details"></a>Aankoopgegevens bekijken van gereserveerde instanties
 
-U kunt de aankoopgegevens van uw gereserveerde instantie bekijken via het menu _Reservering_ aan de linkerzijde van de [Azure-portal](https://aka.ms/reservations) of via de [Azure EA-portal](https://ea.azure.com/). Selecteer **Rapporten** in het menu aan de linkerzijde en scrol naar beneden naar het gedeelte _Kosten per services_ in het tabblad _Gebruiksoverzicht_. Scrol naar de onderkant van het gedeelte en uw aankopen en gebruik van gereserveerde instanties worden aan het einde weergegeven, zoals aangegeven door de aanduiding `1 year` of `3 years` naast de servicenaam, bijvoorbeeld: `Standard_DS1_v2 eastus 1 year` or `Standard_D2s_v3 eastus2 3 years`.
+U kunt de aankoopgegevens van uw gereserveerde instantie bekijken via het menu _Reservering_ aan de linkerzijde van de [Azure-portal](https://aka.ms/reservations) of via de [Azure EA-portal](https://ea.azure.com/). Selecteer **Rapporten** in het menu aan de linkerzijde en scrol naar beneden naar het gedeelte _Kosten per services_ in het tabblad _Gebruiksoverzicht_ . Scrol naar de onderkant van het gedeelte en uw aankopen en gebruik van gereserveerde instanties worden aan het einde weergegeven, zoals aangegeven door de aanduiding `1 year` of `3 years` naast de servicenaam, bijvoorbeeld: `Standard_DS1_v2 eastus 1 year` or `Standard_D2s_v3 eastus2 3 years`.
 
 ### <a name="how-can-i-change-the-subscription-associated-with-reserved-instance-or-transfer-my-reserved-instance-benefits-to-a-subscription-under-the-same-account"></a>Hoe verander ik het abonnement dat bij de gereserveerde instantie hoort of hoe draag ik de voordelen van mijn gereserveerde instantie over aan een abonnement in hetzelfde account?
 
@@ -76,7 +82,7 @@ Zie [Het reserveringsbereik wijzigen](../reservations/manage-reserved-vm-instanc
 
 ### <a name="how-to-view-reserved-instance-usage-details"></a>Gebruiksgegevens van gereserveerde instanties bekijken
 
-U kunt de gebruiksgegevens van uw gereserveerde instanties bekijken in de [Azure-portal](https://aka.ms/reservations) of in de [Azure EA-portal](https://ea.azure.com/) (voor EA-klanten met toegang tot factureringsgegevens) in het gedeelte _Rapporten_ > _Gebruiksoverzicht_ > _Kosten per services_. Uw gereserveerde instanties kunnen worden geïdentificeerd als servicenamen die het woord 'Reservering' bevatten, bijvoorbeeld: `Reservation-Base VM or Virtual Machines Reservation-Windows Svr (1 Core)`.
+U kunt de gebruiksgegevens van uw gereserveerde instanties bekijken in de [Azure-portal](https://aka.ms/reservations) of in de [Azure EA-portal](https://ea.azure.com/) (voor EA-klanten met toegang tot factureringsgegevens) in het gedeelte _Rapporten_ > _Gebruiksoverzicht_ > _Kosten per services_ . Uw gereserveerde instanties kunnen worden geïdentificeerd als servicenamen die het woord 'Reservering' bevatten, bijvoorbeeld: `Reservation-Base VM or Virtual Machines Reservation-Windows Svr (1 Core)`.
 
 Uw gebruiksgegevens en een geavanceerde download van een CSV-rapport bevatten aanvullende gebruiksinformatie van de gereserveerde instantie. Het veld _Aanvullende informatie_ helpt u bij het identificeren van het gebruik van de gereserveerde instantie.
 

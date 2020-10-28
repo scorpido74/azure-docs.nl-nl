@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 07/30/2020
 ms.author: mjbrown
-ms.openlocfilehash: b6df0a428fce88556ec4d6bd7616736cc1a67f30
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ac3279b7447a1cd1559588d5d4131e65b914d59
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87760699"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282038"
 ---
 # <a name="create-a-keyspace-and-table-with-autoscale-for-azure-cosmos-db---cassandra-api"></a>Een keyspace en tabel met automatische schaalaanpassing maken voor Azure Cosmos DB - Cassandra-API
 
@@ -51,6 +51,4 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Documentatie over Azure PowerShell](/powershell/) voor meer informatie over Azure PowerShell.
-
-Meer Azure Cosmos DB PowerShell-voorbeeldscripts vindt u in [Azure Cosmos DB PowerShell-scripts](../../../powershell-samples.md).
+Zie [Documentatie over Azure PowerShell](/powershell/) voor meer informatie over Azure PowerShell

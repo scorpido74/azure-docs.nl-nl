@@ -7,13 +7,13 @@ ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mbaldwin
-ms.date: 08/31/2020
-ms.openlocfilehash: a73294e41f27a15d70ab95b3aa7b100cab5320b4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/16/2020
+ms.openlocfilehash: 8c56a37ebcc799b0170785666212eb4e3b00a5f0
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89236976"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144979"
 ---
 # <a name="quickstart-create-an-azure-attestation-provider-with-an-arm-template"></a>Quickstart: Een Azure Attestation-provider maken met een ARM-sjabloon
 
@@ -21,60 +21,22 @@ ms.locfileid: "89236976"
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure** . De sjabloon wordt in Azure Portal geopend.
 
 [![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-attestation-provider-create%2Fazuredeploy.json)
 
+## <a name="prerequisites"></a>Vereisten
+
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="review-the-template"></a>De sjabloon controleren
 
 De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-snelstartsjablonen](https://azure.microsoft.com/resources/templates/101-attestation-provider-create).
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "name": {
-      "type": "string"
-    },
-    "location": {
-      "type": "string"
-    },
-    "tags": {
-      "type": "Object"
-    },
-    "policySigningCertificates": {
-      "type": "string"
-    }
-  },
-  "variables": {
-    "PolicySigningCertificates": {
-      "PolicySigningCertificates": {
-        "keys": [
-          {
-            "kty": "RSA",
-            "use": "sig",
-            "x5c": [ "[parameters('policySigningCertificates')]" ]
-          }
-        ]
-      }
-    }
-  },
-  "resources": [
-    {
-      "apiVersion": "2018-09-01-preview",
-      "name": "[parameters('name')]",
-      "location": "[parameters('location')]",
-      "type": "Microsoft.Attestation/attestationProviders",
-      "tags": "[parameters('tags')]",
-      "Properties": "[if(empty(parameters('policySigningCertificates')), json('{}'), variables('PolicySigningCertificates'))]"
-    }
-  ]
-}
-```
+:::code language="json" source="~/quickstart-templates/101-attestation-provider-create/azuredeploy.json":::
 
 Azure-resources die in de sjabloon zijn gedefinieerd:
+
 - Microsoft.Attestation/attestationProviders
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
@@ -83,15 +45,15 @@ Azure-resources die in de sjabloon zijn gedefinieerd:
 
     [![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-attestation-provider-create%2Fazuredeploy.json)
 
-2. Typ of selecteer de volgende waarden.
+1. Typ of selecteer de volgende waarden.
 
     Gebruik de standaardwaarde om de attestation-provider te maken, tenzij er iets anders is aangegeven.
 
-    * **name**: Selecteer een naam voor uw Azure Attestation-provider.
-    * **location**: Selecteer een locatie. Bijvoorbeeld **VS - centraal**.
-    * **tags**: selecteer een locatie. Bijvoorbeeld **VS - centraal**.
+    - **Naam attestation-provider** : Selecteer een naam voor uw Azure Attestation-provider.
+    - **Locatie** : Selecteer een locatie. Bijvoorbeeld **VS - centraal** .
+    - **Tags** : Selecteer een locatie. Bijvoorbeeld **VS - centraal** .
 
-3. Selecteer **Aankoop**. Nadat de attestation-resource is geïmplementeerd, ontvangt u een melding:
+1. Selecteer **Aankoop** . Nadat de attestation-resource is geïmplementeerd, ontvangt u een melding.
 
 Voor het implementeren van de sjabloon wordt de Azure-portal gebruikt. Naast Azure Portal kunt u ook de Azure PowerShell, Azure CLI en REST API gebruiken. Zie [Sjablonen implementeren](../azure-resource-manager/templates/deploy-powershell.md) voor meer informatie over andere implementatiemethoden.
 

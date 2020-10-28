@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 75c0542764e94ae57379fa225b4e064a58da3af1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f071a66fef632afe9e54fecfa253e4604679baa2
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553370"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105580"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightscale"></a>Zelfstudie: Azure Active Directory-integratie met Rightscale
 
@@ -49,11 +49,11 @@ Voor het configureren van de integratie van Rightscale in Azure AD moet u Rights
 
 **Voer de volgende stappen uit om Rightscale vanuit de galerie toe te voegen:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen**.
+2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -61,13 +61,13 @@ Voor het configureren van de integratie van Rightscale in Azure AD moet u Rights
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **Rightscale**, selecteer **Rightscale** in het deelvenster met resultaten en klik vervolgens op **Toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak **Rightscale** , selecteer **Rightscale** in het deelvenster met resultaten en klik vervolgens op **Toevoegen** om de toepassing toe te voegen.
 
      ![Rightscale in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u Azure AD-eenmalige aanmelding met Rightscale op basis van een testgebruiker met de naam **Britta Simon**.
+In deze sectie configureert en test u Azure AD-eenmalige aanmelding met Rightscale op basis van een testgebruiker met de naam **Britta Simon** .
 Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in Rightscale tot stand is gebracht.
 
 U hebt de volgende bouwstenen nodig om eenmalige aanmelding van Azure AD met Rightscale te configureren en testen:
@@ -85,7 +85,7 @@ In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakel
 
 Voer de volgende stappen uit om eenmalige aanmelding in Azure AD te configureren voor Rightscale:
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Rightscale** de optie **Eenmalige aanmelding**.
+1. Selecteer in de [Azure-portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Rightscale** de optie **Eenmalige aanmelding** .
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -99,11 +99,11 @@ Voer de volgende stappen uit om eenmalige aanmelding in Azure AD te configureren
 
 4. In de sectie **SAML-basisconfiguratie** hoeft de gebruiker geen enkele stap uit te voeren omdat de app al vooraf is geïntegreerd met Azure.
 
-    ![Informatie over eenmalige aanmelding voor Rightscale-domein en -URL's](common/preintegrated.png)
+    ![Schermopname van de pagina SAML-basisconfiguratie.](common/preintegrated.png)
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Informatie over eenmalige aanmelding voor Rightscale-domein en -URL's](common/metadata-upload-additional-signon.png)
+    ![Schermopname die Extra URL's instellen toont, waar u een aanmeldings-URL kunt invoeren.](common/metadata-upload-additional-signon.png)
 
     In het tekstvak **Aanmeldings-URL** typt u de URL: `https://login.rightscale.com/`
 
@@ -127,40 +127,39 @@ Voer de volgende stappen uit om eenmalige aanmelding in Azure AD te configureren
 
 2. Klik in het menu aan de bovenkant op het tabblad **Settings** (Instellingen) en selecteer **Single Sign-On** (Eenmalige aanmelding).
 
-    ![Eenmalige aanmelding configureren](./media/rightscale-tutorial/tutorial_rightscale_001.png)
+    ![Schermopname van Eenmalige aanmelding geselecteerd vanuit Instellingen.](./media/rightscale-tutorial/tutorial_rightscale_001.png)
 
 3. Klik op de knop **new** (nieuw) om **uw SAML-id-providers** toe te voegen.
 
-    ![Eenmalige aanmelding configureren](./media/rightscale-tutorial/tutorial_rightscale_002.png)
+    ![Schermopname van de nieuwe knoppen die zijn geselecteerd om een SAML-ID-provider toe te voegen.](./media/rightscale-tutorial/tutorial_rightscale_002.png)
 
 4. Voer in het tekstvak **Display Name** (Weergavenaam) de naam van uw bedrijf in.
 
-    ![Eenmalige aanmelding configureren](./media/rightscale-tutorial/tutorial_rightscale_003.png)
+    ![Schermopname die laat zien waar u een weergavenaam kunt invoeren.](./media/rightscale-tutorial/tutorial_rightscale_003.png)
 
 5. Selecteer **Allow RightScale-initiated SSO using a discovery hint** (Door Rightscale geïnitieerde eenmalige aanmelding toestaan met een detectiehint) en voer uw **domeinnaam** in het onderstaande tekstvak in.
 
-    ![Eenmalige aanmelding configureren](./media/rightscale-tutorial/tutorial_rightscale_004.png)
+    ![Schermopname die laat zien waar u een aanmeldingsmethode kunt opgeven.](./media/rightscale-tutorial/tutorial_rightscale_004.png)
 
 6. Plak de waarde van de **afmeldings-URL** die u uit de Azure-portal hebt gekopieerd, in **SAML SSO Endpoint** in RightScale.
 
-    ![Eenmalige aanmelding configureren](./media/rightscale-tutorial/tutorial_rightscale_006.png)
+    ![Schermopname die laat zien waar u een SAML S S O-eindpunt kunt invoeren.](./media/rightscale-tutorial/tutorial_rightscale_006.png)
 
 7. Plak de waarde van de **Azure AD-id** die u uit de Azure-portal hebt gekopieerd, in **SAML EntityID** in RightScale.
 
-    ![Eenmalige aanmelding configureren](./media/rightscale-tutorial/tutorial_rightscale_008.png)
+    ![Schermopname die laat zien waar u een SAML-entiteits-id kunt invoeren.](./media/rightscale-tutorial/tutorial_rightscale_008.png)
 
 8. Klik op **Browser** om het certificaat te uploaden dat u uit de Azure-portal hebt gedownload.
 
+    ![Schermopname die laat zien waar u uw SAML-handtekeningcertificaat kunt opgeven.](./media/rightscale-tutorial/tutorial_rightscale_009.png)
 
-    ![Eenmalige aanmelding configureren](./media/rightscale-tutorial/tutorial_rightscale_009.png)
-
-9. Klik op **Opslaan**.
+9. Klik op **Opslaan** .
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -172,20 +171,20 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u `brittasimon@yourcompanydomain.extension`  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Create** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie stelt u Britta Simon in staat gebruik te maken van eenmalige aanmelding via Azure door haar toegang te geven tot Rightscale.
 
-1. Selecteer in de Azure-portal achtereenvolgens **Bedrijfstoepassingen**, **Alle toepassingen** en **Rightscale**.
+1. Selecteer in de Azure-portal achtereenvolgens **Bedrijfstoepassingen** , **Alle toepassingen** en **Rightscale** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -193,11 +192,11 @@ In deze sectie stelt u Britta Simon in staat gebruik te maken van eenmalige aanm
 
     ![De koppeling naar Rightscale in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen** .
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -205,7 +204,7 @@ In deze sectie stelt u Britta Simon in staat gebruik te maken van eenmalige aanm
 
 6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
-7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen** .
 
 ### <a name="create-rightscale-test-user"></a>Testgebruiker voor Rightscale maken
 

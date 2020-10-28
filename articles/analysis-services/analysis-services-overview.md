@@ -4,16 +4,16 @@ description: Meer informatie over Azure Analysis Services, een volledig beheerd 
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 09/08/2020
+ms.date: 10/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 11ab4e0404b7ebc8620cd1eb54edae9bb861e46b
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: a05da5fae748e799d7965c51415956c2e2a524b1
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018794"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201508"
 ---
 # <a name="what-is-azure-analysis-services"></a>Wat is Azure Analysis Services?
 
@@ -35,7 +35,7 @@ Azure Analysis Services kan worden geïntegreerd met veel Azure-services, zodat 
 
 ## <a name="the-right-tier-when-you-need-it"></a>Altijd de juiste laag
 
-Azure Analysis Services is beschikbaar in de servicelagen **Developer**, **Basic** en **Standard**. Binnen elke servicelaag variëren de abonnementskosten afhankelijk van verwerkingskracht, QPU's (Query Processing Units) en geheugen. Wanneer u een server maakt, selecteert u binnen een servicelaag een abonnement. U kunt een abonnement binnen dezelfde servicelaag omhoog of omlaag bijstellen en ook upgraden naar een hogere servicelaag. U kunt echter niet downgraden naar een lagere servicelaag.
+Azure Analysis Services is beschikbaar in de servicelagen **Developer** , **Basic** en **Standard** . Binnen elke servicelaag variëren de abonnementskosten afhankelijk van verwerkingskracht, QPU's (Query Processing Units) en geheugen. Wanneer u een server maakt, selecteert u binnen een servicelaag een abonnement. U kunt een abonnement binnen dezelfde servicelaag omhoog of omlaag bijstellen en ook upgraden naar een hogere servicelaag. U kunt echter niet downgraden naar een lagere servicelaag.
 
 ### <a name="developer-tier"></a>Developer-laag
 
@@ -71,7 +71,7 @@ Deze laag is de meest geschikte voor essentiële productietoepassingen waarvoor 
 |S9v2 <sup>[1](#naar)</sup>    |    1280    |    400     |
 
 <a name="naar">1</a>: niet beschikbaar in alle regio’s.   
-<a name="rec">2</a> - v2 wordt aanbevolen.
+<a name="rec">2</a> - S8 en S9 worden [afgeschaft](https://azure.microsoft.com/updates/azure-s8-and-s9-analysis-services-skus-retiring-on-31-august-2023/). v2 wordt aanbevolen. 
 
 ## <a name="availability-by-region"></a>Beschikbaarheid per regio
 
@@ -85,7 +85,7 @@ Azure Analysis Services wordt ondersteund in regio's in de hele wereld. Onderste
 |Canada - midden    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
 |VS - oost     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
 |VS - oost 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
-|VS - oost 2     |     S8, S9, S8v2, S9v2   |    1    |
+|VS - oost 2     |     S8v2, S9v2   |    1    |
 |VS - noord-centraal     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
 |VS - noord-centraal     |     S8v2, S9v2    |    1     |
 |VS - centraal     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
@@ -93,9 +93,9 @@ Azure Analysis Services wordt ondersteund in regio's in de hele wereld. Onderste
 |VS - zuid-centraal     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |VS - west-centraal   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |VS - west     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
-|VS - west     |    S8, S9, S8v2, S9v2   |    2  |
+|VS - west     |    S8v2, S9v2   |    2  |
 |VS - west 2    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
-|VS - west 2    |    S8, S9, S8v2, S9v2  |    1     |
+|VS - west 2    |    S8v2, S9v2  |    1     |
 
 ### <a name="europe"></a>Europa
 
@@ -105,17 +105,18 @@ Azure Analysis Services wordt ondersteund in regio's in de hele wereld. Onderste
 |Europa - noord     |    S8v2, S9v2      |    3     |
 |Verenigd Koninkrijk Zuid     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
 |Europa -west     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
-|Europa -west    |   S8, S9, S8v2, S9v2  |  1  |
+|Europa -west    |   S8v2, S9v2  |  1  |
 
 ### <a name="asia-pacific"></a>Azië en Stille Oceaan 
 
 |Regio  | Ondersteunde abonnementen | Queryreplica's (alleen Standard-abonnementen) |
 |---------|---------|:---------:|
 |Australië - oost     |    B1, B2, S0, S1, S2, S4     |    3     |
-|Australië - oost     |    S8, S9, S8v2, S9v2    |    1     |
+|Australië - oost     |    S8v2, S9v2    |    1     |
 |Australië - zuidoost     | B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Japan - oost     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
-|Azië - zuidoost     |     B1, B2, S0, S1, S2, S4, S8, S9, S8v2, S9v2, D1     |   1      |
+|Azië - zuidoost     |     B1, B2, S0, S1, S2, S4, D1     |   1      |
+|Azië - zuidoost     |     S8v2, S9v2     |   1      |
 |India - west     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 
 ## <a name="scale-to-your-needs"></a>Schalen naar uw behoeften

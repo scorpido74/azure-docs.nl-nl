@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2020
 ms.author: allensu
-ms.openlocfilehash: 5c12b7d0bf9bed551e54ccb2e54a4674a8323a9c
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 28c3e4ade2c78a1a77ef7263463803e40727ba8f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930914"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315312"
 ---
 # <a name="azure-load-balancer-algorithm"></a>Algoritme voor Azure Load Balancer
 
@@ -57,6 +57,7 @@ Load Balancer communiceert niet rechtstreeks met TCP of UDP of met de toepassing
 
 ## <a name="next-steps"></a>Volgende stappen
 
+- Meer informatie over de [onderdelen](components.md) waaruit Azure Load Balancer is opgebouwd.
 - Zie [Een openbare Standard Load Balancer maken](quickstart-load-balancer-standard-public-portal.md) om een Load balancer te gaan gebruiken: maak eerst een, maak VM's met daarop een aangepaste IIS-extensie geïnstalleerd en pas taakverdeling toe op de web-app tussen de VM's.
 - Meer informatie over [Uitgaande verbindingen voor Azure Load Balancer](load-balancer-outbound-connections.md).
 - Meer informatie over [Azure Load Balancer](load-balancer-overview.md).

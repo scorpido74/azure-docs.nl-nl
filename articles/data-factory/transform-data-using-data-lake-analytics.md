@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2018
-ms.openlocfilehash: ab5a76a9734ca879e468a1921554f91680be8339
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d890f73ea8b2294755b14055cb11904d50160cc4
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370658"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632121"
 ---
 # <a name="process-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Gegevens verwerken door U-SQL-scripts uit te voeren op Azure Data Lake Analytics 
 > [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
@@ -38,14 +38,14 @@ De volgende tabel bevat beschrijvingen van de algemene eigenschappen die in de J
 
 | Eigenschap                 | Beschrijving                              | Vereist                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
-| **type**                 | De eigenschap type moet worden ingesteld op: **AzureDataLakeAnalytics**. | Ja                                      |
+| **type**                 | De eigenschap type moet worden ingesteld op: **AzureDataLakeAnalytics** . | Ja                                      |
 | **accountName**          | Azure Data Lake Analytics account naam.  | Ja                                      |
 | **dataLakeAnalyticsUri** | Azure Data Lake Analytics-URI.           | Nee                                       |
 | **Abonnements**       | Azure-abonnements-ID                    | Nee                                       |
 | **resourceGroupName**    | Naam van Azure-resourcegroep                | Nee                                       |
 
 ### <a name="service-principal-authentication"></a>Verificatie van service-principal
-Voor de Azure Data Lake Analytics gekoppelde service is een Service-Principal-verificatie vereist om verbinding te maken met de Azure Data Lake Analytics-service. Als u Service-Principal-verificatie wilt gebruiken, registreert u een toepassings entiteit in Azure Active Directory (Azure AD) en verleent u deze toegang tot zowel de Data Lake Analytics als de Data Lake Store die wordt gebruikt. Zie [service-to-service-verificatie](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)voor gedetailleerde stappen. Noteer de volgende waarden, die u gebruikt om de gekoppelde service te definiëren:
+Voor de Azure Data Lake Analytics gekoppelde service is een Service-Principal-verificatie vereist om verbinding te maken met de Azure Data Lake Analytics-service. Als u Service-Principal-verificatie wilt gebruiken, registreert u een toepassings entiteit in Azure Active Directory (Azure AD) en verleent u deze toegang tot zowel de Data Lake Analytics als de Data Lake Store die wordt gebruikt. Zie [service-to-service-verificatie](../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md)voor gedetailleerde stappen. Noteer de volgende waarden, die u gebruikt om de gekoppelde service te definiëren:
 
 * Toepassings-id
 * Toepassings sleutel 
@@ -122,8 +122,8 @@ In de volgende tabel worden namen en beschrijvingen van eigenschappen beschreven
 | Eigenschap            | Beschrijving                              | Vereist |
 | :------------------ | :--------------------------------------- | :------- |
 | naam                | Naam van de activiteit in de pijp lijn     | Ja      |
-| description         | Tekst die beschrijft wat de activiteit doet.  | Nee       |
-| type                | Voor Data Lake Analytics U-SQL-activiteit is het type activiteit  **DataLakeAnalyticsU-SQL**. | Ja      |
+| beschrijving         | Tekst die beschrijft wat de activiteit doet.  | Nee       |
+| type                | Voor Data Lake Analytics U-SQL-activiteit is het type activiteit  **DataLakeAnalyticsU-SQL** . | Ja      |
 | linkedServiceName   | Gekoppelde service aan Azure Data Lake Analytics. Zie het artikel [Compute linked Services](compute-linked-services.md) (Engelstalig) voor meer informatie over deze gekoppelde service.  |Ja       |
 | scriptPath          | Pad naar de map die het U-SQL-script bevat. De naam van het bestand is hoofdletter gevoelig. | Ja      |
 | scriptLinkedService | Gekoppelde service waarmee de **Azure data Lake Store** of **Azure Storage** die het script bevat, wordt gekoppeld aan de Data Factory | Ja      |
@@ -164,7 +164,7 @@ OUTPUT @rs1
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-In het voor beeld van een script wordt de invoer en uitvoer naar het script gedefinieerd in de para meters ** \@ in** en ** \@ uit** . De waarden voor de para meters ** \@ in** en ** \@ uit** in het U-SQL-script worden dynamisch door gegeven door Data Factory met behulp van de sectie para meters. 
+In het voor beeld van een script wordt de invoer en uitvoer naar het script gedefinieerd in de para meters **\@ in** en **\@ uit** . De waarden voor de para meters **\@ in** en **\@ uit** in het U-SQL-script worden dynamisch door gegeven door Data Factory met behulp van de sectie para meters. 
 
 U kunt ook andere eigenschappen, zoals degreeOfParallelism en prioriteit, opgeven in de pijplijn definitie voor de taken die worden uitgevoerd op de Azure Data Lake Analytics-service.
 

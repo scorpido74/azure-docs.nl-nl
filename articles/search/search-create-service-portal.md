@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 10/05/2020
-ms.openlocfilehash: 3ccc5ab07416f65270a7bd720f1e0884027b1fe7
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.date: 10/14/2020
+ms.openlocfilehash: 1b3804029a4174698ed1e4e4f8d75fbed4fba981
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057719"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102809"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Quickstart: Een Azure Cognitive Search-service maken in de portal
 
@@ -45,7 +45,7 @@ U kunt ook [voordelen voor MSDN-abonnees activeren](https://azure.microsoft.com/
 
 1. Klik op het plusteken (+ Resource maken) in de linkerbovenhoek.
 
-1. Gebruik de zoekbalk om te zoeken naar 'Azure Cognitive Search' of ga naar de resource via **Web** > **Azure Cognitive Search**.
+1. Gebruik de zoekbalk om te zoeken naar 'Azure Cognitive Search' of ga naar de resource via **Web** > **Azure Cognitive Search** .
 
 :::image type="content" source="media/search-create-service-portal/find-search3.png" alt-text="Een resource maken in de portal" border="false":::
 
@@ -70,7 +70,7 @@ U kunt in de loop van de tijd huidige en geschatte ‘all-up’ kosten bijhouden
 
 ## <a name="name-the-service"></a>De service een naam geven
 
-Geef bij Exemplaardetails een servicenaam op in het veld **URL**. De naam is onderdeel van het URL-eindpunt waaraan API-aanroepen worden geadresseerd: `https://your-service-name.search.windows.net`. Als u bijvoorbeeld wilt dat het eindpunt `https://myservice.search.windows.net` wordt, voert u `myservice` in.
+Geef bij Exemplaardetails een servicenaam op in het veld **URL** . De naam is onderdeel van het URL-eindpunt waaraan API-aanroepen worden geadresseerd: `https://your-service-name.search.windows.net`. Als u bijvoorbeeld wilt dat het eindpunt `https://myservice.search.windows.net` wordt, voert u `myservice` in.
 
 Vereisten voor servicenaam:
 
@@ -94,7 +94,7 @@ Azure Cognitive Search is beschikbaar in de meeste regio’s. De lijst met onder
 
 ### <a name="requirements"></a>Vereisten
 
- Als u AI-verrijking gebruikt, maakt u uw zoekservice in dezelfde regio als Cognitive Services. *Co-locatie van Azure Cognitive Search en Cognitive Services in dezelfde regio is een vereiste voor AI-verrijking*.
+ Als u AI-verrijking gebruikt, maakt u uw zoekservice in dezelfde regio als Cognitive Services. *Co-locatie van Azure Cognitive Search en Cognitive Services in dezelfde regio is een vereiste voor AI-verrijking* .
 
  Klanten met BCDR-vereisten (bedrijfscontinuïteit en herstel na noodgevallen) moeten hun services in [regioparen](../best-practices-availability-paired-regions.md#azure-regional-pairs) maken. Als u bijvoorbeeld werkzaam bent in Noord-Amerika, kiest u wellicht VS - oost en VS - west, of VS - noord-centraal en VS - zuid-centraal, voor elke service.
 
@@ -102,9 +102,9 @@ Azure Cognitive Search is beschikbaar in de meeste regio’s. De lijst met onder
 
 Als u meerdere Azure-services gebruikt, kiest u een regio die ook uw gegevens- of toepassingsservice host. Zo minimaliseert of vermijdt u bandbreedtekosten voor uitgaande gegevens (er zijn geen kosten voor uitgaande gegevens wanneer services zich in dezelfde regio bevinden).
 
-## <a name="choose-a-pricing-tier-sku"></a>Kies een prijscategorie (SKU)
+## <a name="choose-a-pricing-tier"></a>Kies een prijscategorie
 
-[Azure Cognitive Search wordt momenteel aangeboden in verschillende prijscategorieën](https://azure.microsoft.com/pricing/details/search/): Gratis, Basic of Standard. Elke categorie heeft eigen [capaciteiten en limieten](search-limits-quotas-capacity.md). Raadpleeg [Choose a pricing tier or SKU](search-sku-tier.md) (Een prijscategorie of SKU kiezen) voor hulp.
+Azure Cognitive Search wordt momenteel aangeboden in [verschillende prijscategorieën](https://azure.microsoft.com/pricing/details/search/): Gratis, Basic, Standard of Geoptimaliseerd voor opslag. Elke categorie heeft eigen [capaciteiten en limieten](search-limits-quotas-capacity.md). Raadpleeg [Een prijscategorie kiezen](search-sku-tier.md) voor richtlijnen.
 
 Basic en Standard zijn de gebruikelijkste keuzes voor productieworkloads, maar de meeste klanten beginnen met de gratis service. De belangrijkste verschillen tussen de categorieën zijn partitiegrootte en snelheid, en limieten voor het aantal objecten dat u kunt maken.
 
@@ -146,7 +146,7 @@ Als u resources toevoegt, wordt uw maandfactuur hoger. Met de [prijscalculator](
 > Een service moet [twee replica's hebben voor een alleen-lezen-SLA en drie replica's voor een lezen/schrijven-SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
 1. Ga naar de pagina van uw zoekservice in Azure Portal.
-2. Selecteer in het navigatiedeelvenster aan de linkerkant **Instellingen** > **Schalen**.
+2. Selecteer in het navigatiedeelvenster aan de linkerkant **Instellingen** > **Schalen** .
 3. Gebruik de schuifbalk om resources van een bepaald type toe te voegen.
 
 :::image type="content" source="media/search-create-service-portal/settings-scale.png" alt-text="Een resource maken in de portal" border="false":::

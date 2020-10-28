@@ -4,12 +4,12 @@ description: In dit artikel wordt een overzicht gegeven van de ondersteuning voo
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 30ef2f102a4b8d9f9908ba915f179889710bafd0
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: a876651b76aa259754623854b8fc4a7c6c8a939e
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91938794"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330492"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>Azure Schema Registry in Event Hubs (preview)
 In veel scenario's voor het streamen van gebeurtenissen en voor het verzenden van berichten bevat de gebeurtenis of het bericht een nettolading d die gestructureerde gegevens bevat die worden geserialiseerd of gedeserialiseerd met behulp van een indeling die is gebaseerd op een schema, zoals Apache Avro. Zowel afzenders als ontvangers willen mogelijk de integriteit van de gegevens valideren met een schemadocument, zoals bij het JSON-schema. Voor indelingen die zijn gebaseerd op een schema is het een vereiste dat het schema voor de gebruiker van berichten beschikbaar wordt gemaakt zodat deze de gegevens kan deserialiseren. 
@@ -17,8 +17,8 @@ In veel scenario's voor het streamen van gebeurtenissen en voor het verzenden va
 Het **Azure-schemaregister** is een functie van Event Hubs die een centrale opslagplaats biedt voor schemadocumenten voor apps die op gebeurtenissen zijn gebaseerd en op berichten zijn toegespitst. Het biedt de flexibiliteit voor uw producenten- en consumenten-apps om gegevens uit te wisselen zonder dat het schema onderling hoeft te worden beheerd en gedeeld. Daarnaast kunnen ze zich ook op verschillende snelheden ontwikkelen. Het schemaregister biedt ook een eenvoudig beheerframework voor herbruikbare schema's en definieert de relatie tussen schema's via een groeperingsconstructie (schemagroepen).
 
 > [!NOTE]
-> - De **schemaregister**functie is momenteel beschikbaar in een **preview-versie** en wordt niet aanbevolen voor productieworkloads.
-> - De functie is alleen beschikbaar in de lagen **Standard** en **Dedicated**, maar niet in de laag **Basic**.
+> - De **schemaregister** functie is momenteel beschikbaar in een **preview-versie** en wordt niet aanbevolen voor productieworkloads.
+> - De functie is alleen beschikbaar in de lagen **Standard** en **Dedicated** , maar niet in de laag **Basic** .
 
 Met serialisatieframeworks die zijn gebaseerd op een schema, zoals Apache AVRO, kan het externaliseren van serialisatiemetagegevens in gedeelde schema's ook helpen bij het aanzienlijk reduceren van de overhead per bericht van typegegevens en veldnamen die zijn opgenomen in elke gegevensset, zoals het geval is met indelingen met tags zoals JSON. Als u schema's opslaat naast de gebeurtenissen en in de infrastructuur voor gebeurtenissen, zorgt u ervoor dat de metagegevens die nodig zijn voor serialisatie/deserialisatie altijd binnen bereik zijn en de schema's niet verkeerd kunnen worden geplaatst. 
 
@@ -50,8 +50,8 @@ In de volgende afbeelding ziet u de informatiestroom van het schemaregister bij 
 ## <a name="standard-vs-dedicated-limits"></a>Limieten voor de Standard- en Dedicated-laag
 Raadpleeg [Limieten voor het schemaregister](../azure-resource-manager/management/azure-subscription-service-limits.md#schema-registry-limitations) voor limieten (bijvoorbeeld het aantal schemagroepen in een naamruimte) die hetzelfde zijn of verschillen voor de Standard- en Dedicated-laag van Event Hubs
 
-## <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
-Wanneer u via programmacode toegang wilt verkrijgen tot het schemaregister, moet u een app registreren in Microsoft Azure Active Directory (Azure AD) en de beveiligingsprincipal van de app toevoegen aan een van de RBAC-rollen (op rollen gebaseerd toegangsbeheer):
+## <a name="azure-role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer voor Azure
+Wanneer u via programmacode toegang wilt verkrijgen tot het schemaregister, moet u een app registreren in Microsoft Azure Active Directory (Azure AD) en de beveiligingsprincipal van de app toevoegen aan een van de op rollen gebaseerde Azure-rollen (Azure RBAC):
 
 | Rol | Beschrijving | 
 | ---- | ----------- | 
@@ -65,7 +65,7 @@ Zie [Een app registreren bij Microsoft Azure Active Directory](../active-directo
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie [Een Event Hubs-schemaregister maken met behulp van Azure Portal](create-schema-registry.md) voor meer informatie over het maken van een schemaregister met behulp van Azure Portal.
-- Zie de volgende voorbeelden van de **Avro-clientbibliotheek voor schemaregisters**.
+- Zie de volgende voorbeelden van de **Avro-clientbibliotheek voor schemaregisters** .
     - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/schemaregistry/Microsoft.Azure.Data.SchemaRegistry.ApacheAvro/tests/Samples)
     - [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/schemaregistry/azure-data-schemaregistry-avro/src/samples)
     - [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/schemaregistry/schema-registry-avro/samples )

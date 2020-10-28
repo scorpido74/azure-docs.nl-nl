@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: d5b394833dbc920612f521b01f4da88af6c3e015
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 293fc1bca47f7c58f89a8dac50cc636be8231d4f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220744"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92633498"
 ---
 # <a name="how-to-create-an-nfs-share"></a>Een NFS-share maken
 
@@ -86,17 +86,17 @@ az feature show --name AllowNfsFileShares --namespace Microsoft.Storage --subscr
 
 Nu u een FileStorage-account hebt gemaakt en het netwerk hebt geconfigureerd, kunt u een NFS-bestands share maken. Het proces is vergelijkbaar met het maken van een SMB-share. in plaats van **SMB** selecteert u **NFS** bij het maken van de share.
 
-1. Navigeer naar uw opslag account en selecteer **Bestands shares**.
+1. Navigeer naar uw opslag account en selecteer **Bestands shares** .
 1. Selecteer **+ Bestands share** om een nieuwe bestands share te maken.
 1. Geef de bestands share een naam en selecteer een ingerichte capaciteit.
-1. Voor **protocol** Select **NFS (preview-versie)**.
+1. Voor **protocol** Select **NFS (preview-versie)** .
 1. Voor **root Squash** maakt u een selectie.
 
     - Hoofdmap-Squash (standaard): toegang voor de externe super gebruiker (root) wordt toegewezen aan de UID (65534) en GID (65534).
     - Geen hoofd-Squash: externe super gebruiker (root) ontvangt toegang als basis.
     - Alle Squash: alle gebruikers toegang is toegewezen aan UID (65534) en GID (65534).
     
-1. Selecteer **Maken**.
+1. Selecteer **Maken** .
 
     :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/create-nfs-file-share.png" alt-text="Scherm opname van de Blade voor het maken van een bestands share":::
 
@@ -120,7 +120,7 @@ Nu u een FileStorage-account hebt gemaakt en het netwerk hebt geconfigureerd, ku
 
 1. Sluit de Power shell-console en open deze opnieuw.
 
-1. Installeer de module **AZ. Storage** preview versie **2.5.2-Preview**.
+1. Installeer de module **AZ. Storage** preview versie **2.5.2-Preview** .
 
    ```powershell
    Install-Module Az.Storage -Repository PsGallery -RequiredVersion 2.5.2-preview -AllowClobber -AllowPrerelease -Force  
@@ -152,10 +152,9 @@ Als u een Premium-bestands share wilt maken met de Azure CLI, gebruikt u de opdr
 
 ```azurecli-interactive
 az storage share-rm create \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
+    --storage-account $STORAGEACCT \
     --enabled-protocol NFS \
-    --root-access RootSquash \
+    --root-squash RootSquash \
     --name "myshare" 
 ```
 ---

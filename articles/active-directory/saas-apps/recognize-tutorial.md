@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 86c2c7383f3850b0c51831f94e673c3941894a08
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66e415cbec3b2e8c834ee02630d7f849ccf3e1e2
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548869"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105920"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-recognize"></a>Zelfstudie: Azure Active Directory-integratie met Recognize
 
@@ -49,11 +49,11 @@ Voor het configureren van de integratie van Recognize met Azure AD moet u Recogn
 
 **Voer de volgende stappen uit om Recognize vanuit de galerie toe te voegen:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen**.
+2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -61,13 +61,13 @@ Voor het configureren van de integratie van Recognize met Azure AD moet u Recogn
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **Recognize**, selecteer **Recognize** in het resultatenvenster en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak **Recognize** , selecteer **Recognize** in het resultatenvenster en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
 
      ![Recognize in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u eenmalige aanmelding van Azure AD bij Recognize op basis van een testgebruiker met de naam **Britta Simon**.
+In deze sectie configureert en test u eenmalige aanmelding van Azure AD bij Recognize op basis van een testgebruiker met de naam **Britta Simon** .
 Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tot stand is gebracht tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in Recognize.
 
 Als u eenmalige aanmelding van Azure AD bij Recognize wilt configureren en testen, voert u de volgende stappen uit:
@@ -85,7 +85,7 @@ In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakel
 
 Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD bij Recognize wilt configureren:
 
-1. Selecteer in [Azure Portal](https://portal.azure.com/) op de pagina voor toepassingsintegratie van **Recognize** de optie **Eenmalige aanmelding**.
+1. Selecteer in [Azure Portal](https://portal.azure.com/) op de pagina voor toepassingsintegratie van **Recognize** de optie **Eenmalige aanmelding** .
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -97,16 +97,16 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD bij Recogni
 
     ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-4. Voer in de sectie **Standaard SAML-configuratie** de volgende stappen uit als u beschikt over een **bestand met metagegevens van de serviceprovider**:
+4. Voer in de sectie **Standaard SAML-configuratie** de volgende stappen uit als u beschikt over een **bestand met metagegevens van de serviceprovider** :
 
     >[!NOTE]
     >U krijgt het **metagegevensbestand van de serviceprovider** via de sectie **Eenmalige aanmelding voor Recognize configureren** van de zelfstudie.
 
-    a. Klik op **Metagegevensbestand uploaden**.
+    a. Klik op **Metagegevensbestand uploaden** .
 
     ![Metagegevensbestand uploaden](common/upload-metadata.png)
 
-    b. Klik op het **mappictogram** om het metagegevensbestand te selecteren en klik op **Uploaden**.
+    b. Klik op het **mappictogram** om het metagegevensbestand te selecteren en klik op **Uploaden** .
 
     ![Metagegevensbestand kiezen](common/browse-upload-metadata.png)
 
@@ -137,19 +137,19 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD bij Recogni
 
 1. Meld u in een ander browservenster als beheerder aan bij de Recognize-tenant.
 
-2. Klik in de rechterbovenhoek op **Menu**. Ga naar **Bedrijfsbeheerder**.
+2. Klik in de rechterbovenhoek op **Menu** . Ga naar **Company Admin** (Bedrijfsbeheer).
    
-    ![Eenmalige aanmelding in de app configureren](./media/recognize-tutorial/tutorial_recognize_000.png)
+    ![Schermopname met Company Admin geselecteerd in het instellingenmenu.](./media/recognize-tutorial/tutorial_recognize_000.png)
 
-3. Klik in het linkernavigatiedeelvenster op **Instellingen**.
+3. Klik in het linkernavigatiedeelvenster op **Settings** (Instellingen).
    
-    ![Eenmalige aanmelding in de app configureren](./media/recognize-tutorial/tutorial_recognize_001.png)
+    ![Schermopname met Settings geselecteerd op de navigatiepagina.](./media/recognize-tutorial/tutorial_recognize_001.png)
 
 4. Voer in de sectie **Instellingen voor eenmalige aanmelding** de volgende stappen uit.
    
-    ![Eenmalige aanmelding in de app configureren](./media/recognize-tutorial/tutorial_recognize_002.png)
+    ![Schermopname van S S O Settings, waarin u de beschreven waarden kunt invoeren.](./media/recognize-tutorial/tutorial_recognize_002.png)
     
-    a. Selecteer **AAN** voor **Eenmalige aanmelding inschakelen**.
+    a. Selecteer **AAN** voor **Eenmalige aanmelding inschakelen** .
 
     b. Plak in het tekstvak **IDP-entiteits-id** de waarde van **Azure AD-id** die u hebt gekopieerd uit Azure Portal.
     
@@ -157,23 +157,23 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD bij Recogni
     
     d. Plak in het tekstvak **Doel-URL voor eenmalige aanmelding** de waarde van **Afmeldings-URL** die u hebt gekopieerd uit Azure Portal. 
     
-    e. Open het gedownloade bestand **Certificate(Base64)** in Kladblok, kopieer de inhoud ervan naar het klembord en plak deze vervolgens in het tekstvak **Certificaat**.
+    e. Open het gedownloade bestand **Certificate(Base64)** in Kladblok, kopieer de inhoud ervan naar het klembord en plak deze vervolgens in het tekstvak **Certificaat** .
     
-    f. Klik op de knop **Instellingen opslaan**. 
+    f. Klik op de knop **Instellingen opslaan** . 
 
-5. Kopieer naast de sectie **Instellingen voor eenmalige aanmelding** de URL onder **URL voor de metagegevens van de serviceprovider**.
+5. Kopieer naast de sectie **Instellingen voor eenmalige aanmelding** de URL onder **URL voor de metagegevens van de serviceprovider** .
    
-    ![Eenmalige aanmelding in de app configureren](./media/recognize-tutorial/tutorial_recognize_003.png)
+    ![Schermopname van Notes (Notities), waar u de metagegevens voor de serviceprovider kunt kopiëren.](./media/recognize-tutorial/tutorial_recognize_003.png)
 
 6. Open de **koppeling met de metagegevens-URL** in een lege browser om het document met metagegevens te downloaden. Kopieer vervolgens de EntityDescriptor-waarde (entityID) uit het bestand en plak deze in het tekstvak **Id** in **Standaard SAML-configuratie** in Azure Portal.
     
-    ![Eenmalige aanmelding in de app configureren](./media/recognize-tutorial/tutorial_recognize_004.png)
+    ![Schermopname van een tekstvak met X M L in tekst zonder opmaak, waar u de entiteit-id kunt ophalen.](./media/recognize-tutorial/tutorial_recognize_004.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -185,19 +185,19 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u brittasimon@yourcompanydomain.extension. Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Create** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In dit gedeelte stelt u Britta Simon in staat om eenmalige aanmelding van Azure te gebruiken door haar toegang te verlenen tot Recognize.
 
-1. Selecteer in Azure Portal achtereenvolgens **Bedrijfstoepassingen**, **Alle toepassingen** en **Recognize**.
+1. Selecteer in Azure Portal achtereenvolgens **Bedrijfstoepassingen** , **Alle toepassingen** en **Recognize** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -205,11 +205,11 @@ In dit gedeelte stelt u Britta Simon in staat om eenmalige aanmelding van Azure 
 
     ![De Recognize-koppeling in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen** .
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -217,7 +217,7 @@ In dit gedeelte stelt u Britta Simon in staat om eenmalige aanmelding van Azure 
 
 6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
-7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen** .
 
 ### <a name="create-recognize-test-user"></a>Een Recognize-testgebruiker maken
 
@@ -229,19 +229,19 @@ Deze app biedt geen ondersteuning voor SCIM-inrichting, maar beschikt over een a
 
 1. Meld u als beheerder aan bij de Recognize-bedrijfssite.
 
-2. Klik in de rechterbovenhoek op **Menu**. Ga naar **Bedrijfsbeheerder**.
+2. Klik in de rechterbovenhoek op **Menu** . Ga naar **Bedrijfsbeheerder** .
 
-3. Klik in het linkernavigatiedeelvenster op **Instellingen**.
+3. Klik in het linkernavigatiedeelvenster op **Instellingen** .
 
 4. Voer in de sectie **Gebruikerssynchronisatie** de volgende stappen uit.
    
     ![Nieuwe gebruiker](./media/recognize-tutorial/tutorial_recognize_005.png "Nieuwe gebruiker")
    
-    a. Selecteer **AAN** voor **Synchronisatie ingeschakeld**.
+    a. Selecteer **AAN** voor **Synchronisatie ingeschakeld** .
    
-    b. Selecteer **Microsoft/Office 365** voor **Een synchronisatieprovider kiezen**.
+    b. Selecteer **Microsoft/Office 365** voor **Een synchronisatieprovider kiezen** .
    
-    c. Klik op **Gebruikerssynchronisatie uitvoeren**.
+    c. Klik op **Gebruikerssynchronisatie uitvoeren** .
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
