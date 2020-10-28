@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: 0b7aab13871f1450a3c6907b30b446869b2fefa7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ad8f3e146c13e7b88752b8ef6d514346542ce26
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443896"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672266"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Aanbevelingen voor prestaties zoeken en Toep assen
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,12 +25,12 @@ U kunt de Azure Portal gebruiken om prestatie aanbevelingen te vinden die de pre
 
 ## <a name="viewing-recommendations"></a>Aanbevelingen weer geven
 
-Als u aanbevelingen voor prestaties wilt weer geven en Toep assen, hebt u de juiste machtigingen voor Azure [op rollen gebaseerde toegangs beheer (Azure RBAC)](../../role-based-access-control/overview.md) nodig in Azure. **Reader**Voor het weer geven van de aanbevelingen en de **eigenaar**van de **SQL DB-Inzender** **zijn machtigingen vereist** voor het uitvoeren van acties. indexen maken of verwijderen en het maken van de index annuleren.
+Als u aanbevelingen voor prestaties wilt weer geven en Toep assen, hebt u de juiste machtigingen voor Azure [op rollen gebaseerde toegangs beheer (Azure RBAC)](../../role-based-access-control/overview.md) nodig in Azure. **Reader** Voor het weer geven van de aanbevelingen en de **eigenaar** van de **SQL DB-Inzender** **zijn machtigingen vereist** voor het uitvoeren van acties. indexen maken of verwijderen en het maken van de index annuleren.
 
 Gebruik de volgende stappen om aanbevelingen voor prestaties te vinden op het Azure Portal:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-2. Ga naar **alle services**  >  **SQL-data bases**en selecteer uw data base.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+2. Ga naar **alle services**  >  **SQL-data bases** en selecteer uw data base.
 3. Navigeer naar **Aanbevolen prestaties** om de beschik bare aanbevelingen voor de geselecteerde Data Base weer te geven.
 
 Aanbevelingen voor prestaties worden weer gegeven in de tabel zoals die wordt weer gegeven op de volgende afbeelding:
@@ -86,9 +86,9 @@ Als uw lijst met aanbevelingen items bevat die u uit de lijst wilt verwijderen, 
 
 Desgewenst kunt u verwijderde items weer toevoegen aan de lijst met **aanbevelingen** :
 
-1. Klik op de pagina **aanbevelingen** op **Genegeerde weer gave**.
+1. Klik op de pagina **aanbevelingen** op **Genegeerde weer gave** .
 2. Selecteer een verwijderd item uit de lijst om de details ervan weer te geven.
-3. Klik eventueel op **ongedaan maken verwijderen** om de index weer toe te voegen aan de hoofd lijst met **aanbevelingen**.
+3. Klik eventueel op **ongedaan maken verwijderen** om de index weer toe te voegen aan de hoofd lijst met **aanbevelingen** .
 
 > [!NOTE]
 > Als SQL Database [automatisch afstemmen](automatic-tuning-overview.md) is ingeschakeld en u hand matig een aanbeveling uit de lijst hebt verwijderd, wordt deze aanbeveling nooit automatisch toegepast. Het verwijderen van een aanbeveling is een handige manier voor gebruikers om automatisch afstemmen in te scha kelen wanneer is vereist dat een specifieke aanbeveling niet moet worden toegepast.
@@ -98,7 +98,7 @@ Desgewenst kunt u verwijderde items weer toevoegen aan de lijst met **aanbevelin
 
 U kunt uw data base zo instellen dat aanbevelingen automatisch worden geïmplementeerd. Wanneer er aanbevelingen beschikbaar komen, worden ze automatisch toegepast. Net als bij alle aanbevelingen die worden beheerd door de service, wordt de aanbeveling teruggedraaid als de invloed van de prestaties negatief is.
 
-1. Klik op de pagina **aanbevelingen** op **automatiseren**:
+1. Klik op de pagina **aanbevelingen** op **automatiseren** :
 
    ![Advisor-instellingen](./media/database-advisor-find-recommendations-portal/settings.png)
 2. Selecteer de acties die moeten worden geautomatiseerd:
@@ -112,13 +112,13 @@ Wanneer u de gewenste configuratie hebt geselecteerd, klikt u op Toep assen.
 
 ### <a name="manually-apply-recommendations-through-t-sql"></a>Aanbevelingen hand matig Toep assen via T-SQL
 
-Selecteer een aanbeveling en klik vervolgens op **script weer geven**. Voer dit script uit op uw data base om de aanbeveling hand matig toe te passen.
+Selecteer een aanbeveling en klik vervolgens op **script weer geven** . Voer dit script uit op uw data base om de aanbeveling hand matig toe te passen.
 
-*Indexen die hand matig worden uitgevoerd, worden niet bewaakt en gevalideerd voor de prestaties van de service* , zodat u deze indexen na het maken kunt bewaken om te controleren of ze zo nodig prestatie voordelen bieden en aanpassen of verwijderen. Zie [Create Index (Transact-SQL) (Engelstalig)](https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql)voor meer informatie over het maken van indexen. Daarnaast blijven hand matig toegepaste aanbevelingen actief en worden deze weer gegeven in de lijst met aanbevelingen voor 24-48 uur. voordat het systeem ze automatisch intrekt. Als u een aanbeveling eerder wilt verwijderen, kunt u deze hand matig negeren.
+*Indexen die hand matig worden uitgevoerd, worden niet bewaakt en gevalideerd voor de prestaties van de service* , zodat u deze indexen na het maken kunt bewaken om te controleren of ze zo nodig prestatie voordelen bieden en aanpassen of verwijderen. Zie [Create Index (Transact-SQL) (Engelstalig)](/sql/t-sql/statements/create-index-transact-sql)voor meer informatie over het maken van indexen. Daarnaast blijven hand matig toegepaste aanbevelingen actief en worden deze weer gegeven in de lijst met aanbevelingen voor 24-48 uur. voordat het systeem ze automatisch intrekt. Als u een aanbeveling eerder wilt verwijderen, kunt u deze hand matig negeren.
 
 ### <a name="canceling-recommendations"></a>Aanbevelingen annuleren
 
-Aanbevelingen met de status in **behandeling**, **valideren**of **geslaagd** kunnen worden geannuleerd. Aanbevelingen met de status **bezig met uitvoeren** kunnen niet worden geannuleerd.
+Aanbevelingen met de status in **behandeling** , **valideren** of **geslaagd** kunnen worden geannuleerd. Aanbevelingen met de status **bezig met uitvoeren** kunnen niet worden geannuleerd.
 
 1. Selecteer een aanbeveling in het gebied **afstemmings geschiedenis** om de pagina met **Details over aanbevelingen** te openen.
 2. Klik op **Annuleren** om het proces van het Toep assen van de aanbeveling af te breken.
@@ -170,6 +170,6 @@ Controleer uw aanbevelingen en pas deze toe om de prestaties te verfijnen. Data 
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-* [Query Store](https://msdn.microsoft.com/library/dn817826.aspx)
-* [CREATE INDEX](https://msdn.microsoft.com/library/ms188783.aspx)
+* [Query Store](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)
+* [CREATE INDEX](/sql/t-sql/statements/create-index-transact-sql)
 * [Azure RBAC (op rollen gebaseerd toegangsbeheer van Azure)](../../role-based-access-control/overview.md)

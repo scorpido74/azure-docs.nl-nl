@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: b5170f1c2e6c72c684cb1afcf1bf9bf8d3ef6fff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1ef29eb71ccd945552550f64e5ae95bc85be44d
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91284357"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672116"
 ---
 # <a name="database-advisor-performance-recommendations-for-azure-sql-database"></a>Aanbevelingen voor Database Advisor prestaties voor Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,10 +29,10 @@ Overzicht van prestaties biedt een samen vatting van de prestaties van uw data b
 
 ![Overzicht van prestaties voor Azure SQL Database](./media/database-advisor-implement-performance-recommendations/performance-overview-annotated.png)
 
-- De tegel **aanbevelingen** biedt een overzicht van de aanbevelingen voor het afstemmen van uw data base (de eerste drie aanbevelingen worden weer gegeven als er meer zijn). Als u op deze tegel klikt, gaat u naar **[Opties voor prestatie aanbeveling](database-advisor-find-recommendations-portal.md#viewing-recommendations)**.
+- De tegel **aanbevelingen** biedt een overzicht van de aanbevelingen voor het afstemmen van uw data base (de eerste drie aanbevelingen worden weer gegeven als er meer zijn). Als u op deze tegel klikt, gaat u naar **[Opties voor prestatie aanbeveling](database-advisor-find-recommendations-portal.md#viewing-recommendations)** .
 - De tegel **activiteit afstemmen** biedt een samen vatting van de lopende en voltooide afstemmings acties voor uw data base, waarmee u een kort overzicht krijgt van de geschiedenis van de afstemmings activiteit. Als u op deze tegel klikt, gaat u naar de weer gave volledige afstemmings geschiedenis voor uw data base.
 - De tegel **automatisch afstemmen** toont de **[configuratie voor automatisch afstemmen](automatic-tuning-enable.md)** van uw data base (afstemmings opties die automatisch worden toegepast op uw data base). Als u op deze tegel klikt, wordt het dialoog venster automatiserings configuratie geopend.
-- De tegel **database query's** bevat een samen vatting van de query prestaties voor uw data base (algemeen DTU-gebruik en meest voorkomende query's in de resource). Als u op deze tegel klikt, gaat u **[query Performance Insight](query-performance-insight-use.md)**.
+- De tegel **database query's** bevat een samen vatting van de query prestaties voor uw data base (algemeen DTU-gebruik en meest voorkomende query's in de resource). Als u op deze tegel klikt, gaat u **[query Performance Insight](query-performance-insight-use.md)** .
 
 ## <a name="performance-recommendation-options"></a>Opties voor prestatie aanbeveling
 
@@ -55,9 +55,9 @@ U kunt ook de volledige geschiedenis van afstemmings acties vinden die in het ve
 
 Azure SQL Database bewaakt voortdurend de query's die worden uitgevoerd en identificeert de indexen waarmee de prestaties kunnen worden verbeterd. Wanneer er voldoende betrouw baarheid is dat een bepaalde index ontbreekt, wordt een nieuwe aanbeveling voor **Create Index** gemaakt.
 
-Azure SQL Database bouwt de betrouw baarheid door de prestaties van de index in de loop van de tijd te schatten. Afhankelijk van de geschatte prestatie verbetering worden aanbevelingen gecategoriseerd als hoog, gemiddeld of laag.
+Azure SQL Database bouwt de betrouw baarheid door de prestaties van de index in de loop van de tijd te schatten. Afhankelijk van de geschatte prestatieverbetering worden aanbevelingen gecategoriseerd als hoog, gemiddeld of laag.
 
-Indexen die worden gemaakt met behulp van aanbevelingen, worden altijd gemarkeerd als indexen die automatisch worden gemaakt. U kunt zien welke indexen automatisch worden gemaakt door te kijken naar de [weer gave sys. Indexes](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql). Automatisch gemaakte indexen blok keren/wijzigen niet.
+Indexen die worden gemaakt met behulp van aanbevelingen, worden altijd gemarkeerd als indexen die automatisch worden gemaakt. U kunt zien welke indexen automatisch worden gemaakt door te kijken naar de [weer gave sys. Indexes](/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql). Automatisch gemaakte indexen blok keren/wijzigen niet.
 
 Als u probeert de kolom met een automatisch gemaakte index te verwijderen, wordt de opdracht door gegeven. De automatisch gemaakte index wordt ook met de opdracht verwijderd. Met reguliere indexen wordt de opdracht ALTER/RENAME voor geïndexeerde kolommen geblokkeerd.
 
@@ -105,7 +105,7 @@ De aanbeveling schema probleem oplossen wordt weer gegeven wanneer Azure SQL Dat
 
 | SQL-fout code | Bericht |
 | --- | --- |
-| 201 |De procedure of functie*verwacht para meter*, maar deze is niet opgegeven. |
+| 201 |De procedure of functie *verwacht para meter* , maar deze is niet opgegeven. |
 | 207 |Ongeldige kolom naam *. |
 | 208 |Ongeldige object naam ' * '. |
 | 213 |Kolom naam of-nummer van opgegeven waarden komt niet overeen met tabel definitie. |
@@ -114,7 +114,7 @@ De aanbeveling schema probleem oplossen wordt weer gegeven wanneer Azure SQL Dat
 
 ## <a name="custom-applications"></a>Aangepaste toepassingen
 
-Ontwikkel aars kunnen overwegen aangepaste toepassingen te ontwikkelen met behulp van prestatie aanbevelingen voor Azure SQL Database. Alle aanbevelingen die in de portal voor een Data Base worden vermeld, zijn toegankelijk via de [Get-AzSqlDatabaseRecommendedAction-](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction) API.
+Ontwikkel aars kunnen overwegen aangepaste toepassingen te ontwikkelen met behulp van prestatie aanbevelingen voor Azure SQL Database. Alle aanbevelingen die in de portal voor een Data Base worden vermeld, zijn toegankelijk via de [Get-AzSqlDatabaseRecommendedAction-](/powershell/module/az.sql/get-azsqldatabaserecommendedaction) API.
 
 ## <a name="next-steps"></a>Volgende stappen
 

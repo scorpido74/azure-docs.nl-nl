@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 052a28dc69bf5c758133ca98366efc63105f4a56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2359c762c9ad653ee2eed294709ad7bf6b2a31c0
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289868"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92671117"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Een statische website hosten in Azure Storage
 
@@ -38,19 +38,19 @@ Het hosten van statische websites is een functie die u moet inschakelen op het o
 
 4. Selecteer **Ingeschakeld** om het hosten van statische websites in te schakelen voor het opslagaccount.
 
-5. Geef in het veld **naam van index document** een standaard index pagina op (bijvoorbeeld: *index.html*). 
+5. Geef in het veld **naam van index document** een standaard index pagina op (bijvoorbeeld: *index.html* ). 
 
    De standaardindexpagina wordt weergegeven wanneer een gebruiker naar de hoofdmap van uw statische website navigeert.  
 
-6. Geef in het veld **pad naar fout document** een standaardfouten pagina op (bijvoorbeeld: *404.html*). 
+6. Geef in het veld **pad naar fout document** een standaardfouten pagina op (bijvoorbeeld: *404.html* ). 
 
    De standaardfoutpagina wordt weergegeven wanneer een gebruiker probeert te navigeren naar een pagina die niet in uw statische website bestaat.
 
-7. Klik op **Opslaan**. Het eindpunt voor uw statische website wordt nu weergegeven in de Azure-portal. 
+7. Klik op **Opslaan** . Het eindpunt voor uw statische website wordt nu weergegeven in de Azure-portal. 
 
     ![Het hosten van een statische website inschakelen voor een opslagaccount](media/storage-blob-static-website-host/enable-static-website-hosting.png)
 
-### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 <a id="cli"></a>
 
@@ -138,7 +138,7 @@ U kunt statisch website hosting inschakelen met behulp van de module Azure Power
 
 In deze instructies wordt uitgelegd hoe u bestanden kunt uploaden met behulp van de versie van Storage Explorer die wordt weer gegeven in de Azure Portal. U kunt echter ook de versie van [Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) gebruiken die buiten de Azure portal wordt uitgevoerd. U kunt [AzCopy](../common/storage-use-azcopy-v10.md), Power shell, CLI of een aangepaste toepassing gebruiken die bestanden kan uploaden naar de **$Web** container van uw account. Zie [zelf studie: een statische website op Blob Storage hosten](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host)voor een stapsgewijze zelf studie die bestanden uploadt met Visual Studio code.
 
-1. Selecteer **Storage Explorer (preview)**.
+1. Selecteer **Storage Explorer (preview)** .
 
 2. Vouw het knoop punt **BLOB containers** uit en selecteer vervolgens de container **$Web** .
 
@@ -151,9 +151,9 @@ In deze instructies wordt uitgelegd hoe u bestanden kunt uploaden met behulp van
    ![Inhouds typen controleren](media/storage-blob-static-website/storage-blob-static-website-content-type.png)
 
    >[!NOTE]
-   > Storage Explorer wordt deze eigenschap automatisch ingesteld op `text/html` voor gebruikelijke, herkende extensies zoals `.html` . In sommige gevallen moet u dit echter zelf instellen. Als u deze eigenschap niet instelt op `text/html` , wordt gebruikers door de browser gevraagd het bestand te downloaden in plaats van de inhoud te renderen. Als u deze eigenschap wilt instellen, klikt u met de rechter muisknop op het bestand en klikt u vervolgens op **Eigenschappen**.
+   > Storage Explorer wordt deze eigenschap automatisch ingesteld op `text/html` voor gebruikelijke, herkende extensies zoals `.html` . In sommige gevallen moet u dit echter zelf instellen. Als u deze eigenschap niet instelt op `text/html` , wordt gebruikers door de browser gevraagd het bestand te downloaden in plaats van de inhoud te renderen. Als u deze eigenschap wilt instellen, klikt u met de rechter muisknop op het bestand en klikt u vervolgens op **Eigenschappen** .
 
-### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Objecten uploaden naar de *$Web* container vanuit een bronmap.
 
@@ -204,11 +204,11 @@ U kunt de pagina's van uw site vanuit een browser weer geven met behulp van de o
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-In het deel venster dat wordt weer gegeven naast de pagina account overzicht van uw opslag account, selecteert u **statische website**. De URL van uw site wordt weer gegeven in het veld voor het **primaire eind punt** .
+In het deel venster dat wordt weer gegeven naast de pagina account overzicht van uw opslag account, selecteert u **statische website** . De URL van uw site wordt weer gegeven in het veld voor het **primaire eind punt** .
 
 ![Metrische gegevens voor metrische gegevens van statische websites Azure Storage](./media/storage-blob-static-website/storage-blob-static-website-url.png)
 
-### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Zoek de open bare URL van uw statische website met behulp van de volgende opdracht:
 
@@ -249,7 +249,7 @@ Wanneer u metrische gegevens hebt ingeschakeld, worden verkeers statistieken voo
    > [!NOTE]
    > Metrische gegevens worden gegenereerd door te hooken in verschillende metrische Api's. In de portal worden alleen de API-leden weer gegeven die binnen een bepaalde periode zijn gebruikt, zodat ze alleen kunnen worden gericht op leden die gegevens retour neren. Om ervoor te zorgen dat u het benodigde API-lid kunt selecteren, is de eerste stap om het tijds bestek uit te breiden.
 
-2. Klik op de knop tijds bestek, kies een tijds bestek en klik vervolgens op **Toep assen**.
+2. Klik op de knop tijds bestek, kies een tijds bestek en klik vervolgens op **Toep assen** .
 
    ![Tijds bereik voor metrische gegevens van statische websites Azure Storage](./media/storage-blob-static-website/storage-blob-static-website-metrics-time-range.png)
 
@@ -259,7 +259,7 @@ Wanneer u metrische gegevens hebt ingeschakeld, worden verkeers statistieken voo
 
 4. Selecteer **vervolgens de waarde** voor uitgaand verkeer.
 
-   ![Metrische gegevens voor metrische gegevens van statische websites Azure Storage](./media/storage-blob-static-website/storage-blob-static-website-metrics-metric.png)
+   ![Scherm opname van de Azure Storage voor de uitgevende gegevens van statische websites.](./media/storage-blob-static-website/storage-blob-static-website-metrics-metric.png)
 
 5. Selecteer **som** uit de *aggregatie* kiezer.
 

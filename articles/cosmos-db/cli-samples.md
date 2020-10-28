@@ -1,25 +1,27 @@
 ---
-title: Voorbeelden van Azure CLI voor Azure Cosmos DB
-description: Voorbeelden van Azure CLI voor Azure Cosmos DB
+title: Azure CLI-voorbeelden voor Azure Cosmos DB Core (SQL) API
+description: Azure CLI-voorbeelden voor Azure Cosmos DB Core (SQL) API
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 10/07/2020
+ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 58460dffad3d44090644a544f4082b7727ece3f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5ed9af0c133f746f5761d6c41a5fdb9f25589ac
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840333"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276370"
 ---
-# <a name="azure-cli-samples-for-azure-cosmos-db"></a>Voorbeelden van Azure CLI voor Azure Cosmos DB
+# <a name="azure-cli-samples-for-azure-cosmos-db-core-sql-api"></a>Azure CLI-voorbeelden voor Azure Cosmos DB Core (SQL) API
 
 De volgende tabel bevat koppelingen naar Azure CLI-voorbeeldscripts voor Azure Cosmos DB. Gebruik de links aan de rechterkant om te navigeren naar voorbeelden voor specifieke API's. Algemene voorbeelden zijn hetzelfde voor alle API's. Referentiepagina's voor alle Azure Cosmos DB CLI-opdrachten zijn beschikbaar in de [naslaginformatie voor Azure CLI](/cli/azure/cosmosdb). CLI-voorbeeldscripts voor Azure Cosmos DB kunt u ook vinden in de [opslagplaats van Azure Cosmos DB CLI in GitHub](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb).
 
-Voor deze voorbeelden hebt u Azure CLI versie 2.9.1 of hoger nodig. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI wilt installeren of upgraden, raadpleegt u [Azure CLI installeren](/cli/azure/install-azure-cli).
+Voor deze voorbeelden hebt u Azure CLI versie 2.12.1 of hoger nodig. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI wilt installeren of upgraden, raadpleegt u [Azure CLI installeren](/cli/azure/install-azure-cli).
+
+Zie voor Azure CLI-voorbeelden voor andere API's [CLI-voorbeelden voor Cassandra](cli-samples-cassandra.md), [CLI-voorbeelden voor MongoDB API](cli-samples-mongodb.md), [CLI-voorbeelden voor Gremlin](cli-samples-gremlin.md), [CLI-voorbeelden voor Table](cli-samples-table.md)
 
 ## <a name="common-samples"></a>Algemene voorbeelden
 
@@ -28,7 +30,7 @@ Deze voorbeelden zijn van toepassing op alle API's van Azure Cosmos DB.
 |Taak | Beschrijving |
 |---|---|
 | [Regio's toevoegen of er een failover voor uitvoeren](scripts/cli/common/regions.md?toc=%2fcli%2fazure%2ftoc.json) | Een regio toevoegen, de failoverprioriteit wijzigen, een handmatige failover activeren.|
-| [Accountsleutels en verbindingsreeksen](scripts/cli/common/keys.md?toc=%2fcli%2fazure%2ftoc.json) | Accountsleutels en alleen-lezensleutels weergeven, sleutels opnieuw genereren en verbindingsreeksen weergeven.|
+| [Accountsleutels en verbindingsreeksen](scripts/cli/common/keys.md?toc=%2fcli%2fazure%2ftoc.json)  | Accountsleutels en alleen-lezensleutels weergeven, sleutels opnieuw genereren en verbindingsreeksen weergeven.|
 | [Beveiligen met IP-firewall](scripts/cli/common/ipfirewall.md?toc=%2fcli%2fazure%2ftoc.json)| Een Cosmos-account maken met een geconfigureerde IP-firewall.|
 | [Nieuw account beveiligen met service-eindpunten](scripts/cli/common/service-endpoints.md?toc=%2fcli%2fazure%2ftoc.json)| Een Cosmos-account maken en beveiligen met service-eindpunten.|
 | [Bestaand account beveiligen met service-eind punten](scripts/cli/common/service-endpoints-ignore-missing-vnet.md?toc=%2fcli%2fazure%2ftoc.json)| Een Cosmos-account bijwerken om het te beveiligen met service-eindpunten wanneer het subnet uiteindelijk is geconfigureerd.|
@@ -42,44 +44,4 @@ Deze voorbeelden zijn van toepassing op alle API's van Azure Cosmos DB.
 | [Een Azure Cosmos DB-account, -database en -container maken met automatische schaalaanpassing](scripts/cli/sql/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Hiermee maakt u een Azure Cosmos DB-account, -database en -container met automatische schaalaanpassing voor de Core (SQL) API. |
 | [Doorvoerbewerkingen](scripts/cli/sql/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Lezen, bijwerken en migreren tussen doorvoer met automatische schaalaanpassing en standaarddoorvoer voor een database en container.|
 | [Resources vergrendelen tegen verwijdering](scripts/cli/sql/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Voorkomen dat resources worden verwijderd met een resourcevergrendeling.|
-|||
-
-## <a name="mongodb-api-samples"></a>Voorbeelden van MongoDB-API
-
-|Taak | Beschrijving |
-|---|---|
-| [Een Azure Cosmos-account, -database en -verzameling maken](scripts/cli/mongodb/create.md?toc=%2fcli%2fazure%2ftoc.json)| Hiermee maakt u een Azure Cosmos DB MongoDB-API-account, -database en -verzameling voor MongoDB-API. |
-| [Een Azure Cosmos-account, -database met automatische schaalaanpassing en twee verzamelingen maken met gedeelde doorvoer maken](scripts/cli/mongodb/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Hiermee maakt u een Azure Cosmos-account, -database met automatische schaalaanpassing en twee verzamelingen met gedeelde doorvoer voor de MongoDB-API. |
-| [Doorvoerbewerkingen](scripts/cli/mongodb/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Lezen, bijwerken en migreren tussen doorvoer met automatische schaalaanpassing en standaarddoorvoer voor een database en verzameling.|
-| [Resources vergrendelen tegen verwijdering](scripts/cli/mongodb/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Voorkomen dat resources worden verwijderd met een resourcevergrendeling.|
-|||
-
-## <a name="cassandra-api-samples"></a>Voorbeelden van Cassandra-API
-
-|Taak | Beschrijving |
-|---|---|
-| [Een Azure Cosmos-account, -keyspace en -tabel maken](scripts/cli/cassandra/create.md?toc=%2fcli%2fazure%2ftoc.json)| Hiermee wordt een Azure Cosmos-account, -keyspace en -tabel voor Cassandra API gemaakt. |
-| [Een account, keyspace en tabel van Azure Cosmos met automatische schaalaanpassing maken](scripts/cli/cassandra/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Hiermee wordt een Azure Cosmos-account, -keyspace en -tabel met automatische schaalaanpassing voor de Cassandra-API gemaakt. |
-| [Doorvoerbewerkingen](scripts/cli/cassandra/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Lezen, bijwerken en migreren tussen doorvoer met automatische schaalaanpassing en standaarddoorvoer voor een keyspace en tabel.|
-| [Resources vergrendelen tegen verwijdering](scripts/cli/cassandra/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Voorkomen dat resources worden verwijderd met een resourcevergrendeling.|
-|||
-
-## <a name="gremlin-api-samples"></a>Voorbeelden van Gremlin-API
-
-|Taak | Beschrijving |
-|---|---|
-| [Een Azure Cosmos-account, -database en -grafiek maken](scripts/cli/gremlin/create.md?toc=%2fcli%2fazure%2ftoc.json)| Hiermee maakt u een Azure Cosmos DB-account, -database en -grafiek voor de Gremlin-API. |
-| [Een Azure Cosmos DB-account, -database en -grafiek maken met automatische schaalaanpassing](scripts/cli/gremlin/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Hiermee maakt u een Azure Cosmos DB-account, -database en -grafiek met automatische schaalaanpassing voor de Gremlin-API. |
-| [Doorvoerbewerkingen](scripts/cli/gremlin/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Lezen, bijwerken en migreren tussen doorvoer met automatische schaalaanpassing en standaarddoorvoer voor een database en grafiek.|
-| [Resources vergrendelen tegen verwijdering](scripts/cli/gremlin/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Voorkomen dat resources worden verwijderd met een resourcevergrendeling.|
-|||
-
-## <a name="table-api-samples"></a>Voorbeelden van Table-API
-
-|Taak | Beschrijving |
-|---|---|
-| [Een Azure Cosmos-account en -tabel maken](scripts/cli/table/create.md?toc=%2fcli%2fazure%2ftoc.json)| Hiermee worden een Azure Cosmos-account en -tabel gemaakt voor Table-API. |
-| [Een account en tabel van Azure Cosmos met automatische schaalaanpassing maken](scripts/cli/table/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Hiermee maakt u een Azure Cosmos-account en -tabel met automatische schaalaanpassing voor de Table-API. |
-| [Doorvoerbewerkingen](scripts/cli/table/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Lezen, bijwerken en migreren tussen doorvoer met automatische schaalaanpassing en standaarddoorvoer voor een tabel.|
-| [Resources vergrendelen tegen verwijdering](scripts/cli/table/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Voorkomen dat resources worden verwijderd met een resourcevergrendeling.|
 |||

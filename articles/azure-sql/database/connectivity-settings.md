@@ -9,12 +9,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 07/06/2020
-ms.openlocfilehash: a3ceb78a85546e5e75c4c484f131b67ff7fc9249
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eecd4220cdda471807e4b84261d7f76c31b9ba70
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91824153"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672338"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL-connectiviteitsinstellingen
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "91824153"
 Dit artikel bevat een inleiding tot de instellingen die de verbinding met de server voor Azure SQL Database en Azure Synapse Analytics regelen. Deze instellingen zijn van toepassing op **alle** SQL database-en Azure Synapse-data bases die zijn gekoppeld aan de server.
 
 > [!IMPORTANT]
-> Dit artikel is *niet* van toepassing op **Azure SQL Managed Instance**.
+> Dit artikel is *niet* van toepassing op **Azure SQL Managed Instance** .
 
 De connectiviteits instellingen zijn toegankelijk via het scherm **firewalls en virtuele netwerken** , zoals wordt weer gegeven in de volgende scherm afbeelding:
 
@@ -33,14 +33,14 @@ De connectiviteits instellingen zijn toegankelijk via het scherm **firewalls en 
 
 ## <a name="deny-public-network-access"></a>Openbare netwerktoegang weigeren
 
-Wanneer de instelling **open bare netwerk toegang weigeren** is ingesteld op **Ja**, zijn alleen verbindingen via persoonlijke eind punten toegestaan. Als deze instelling is ingesteld op **Nee** (standaard), kunnen clients verbinding maken met behulp van open bare eind punten (op IP gebaseerde firewall regels, op VNET gebaseerde firewall regels) of privé-eind punten (met behulp van een persoonlijke koppeling), zoals beschreven in het [overzicht van netwerk toegang](network-access-controls-overview.md). 
+Wanneer de instelling **open bare netwerk toegang weigeren** is ingesteld op **Ja** , zijn alleen verbindingen via persoonlijke eind punten toegestaan. Als deze instelling is ingesteld op **Nee** (standaard), kunnen clients verbinding maken met behulp van open bare eind punten (op IP gebaseerde firewall regels, op VNET gebaseerde firewall regels) of privé-eind punten (met behulp van een persoonlijke koppeling), zoals beschreven in het [overzicht van netwerk toegang](network-access-controls-overview.md). 
 
  ![Scherm opname van connectiviteit met open bare toegang tot het netwerk weigeren][2]
 
 Alle pogingen om de instelling **open bare netwerk toegang weigeren** in te stellen op **Ja** zonder dat er bestaande persoonlijke eind punten op de logische server worden uitgevoerd, mislukken met een fout bericht dat lijkt op:  
 
 > [!NOTE]
-> Als u firewall regels voor virtuele netwerken wilt definiëren op een logische server die al is geconfigureerd met persoonlijke eind punten, stelt u **toegang tot open bare netwerk weigeren** in op **Nee**.
+> Als u firewall regels voor virtuele netwerken wilt definiëren op een logische server die al is geconfigureerd met persoonlijke eind punten, stelt u **toegang tot open bare netwerk weigeren** in op **Nee** .
 
 ```output
 Error 42102
@@ -48,7 +48,7 @@ Unable to set Deny Public Network Access to Yes since there is no private endpoi
 Please set up private endpoints and retry the operation. 
 ```
 
-Wanneer de instelling **open bare netwerk toegang weigeren** is ingesteld op **Ja**, worden alleen verbindingen via persoonlijke eind punten toegestaan en worden alle verbindingen via open bare eind punten geweigerd met een fout bericht dat lijkt op het volgende:  
+Wanneer de instelling **open bare netwerk toegang weigeren** is ingesteld op **Ja** , worden alleen verbindingen via persoonlijke eind punten toegestaan en worden alle verbindingen via open bare eind punten geweigerd met een fout bericht dat lijkt op het volgende:  
 
 ```output
 Error 47073
@@ -57,7 +57,7 @@ The public network interface on this server is not accessible.
 To connect to this server, use the Private Endpoint from inside your virtual network.
 ```
 
-Wanneer de instelling **open bare netwerk toegang weigeren** is ingesteld op **Ja**, worden pogingen om firewall regels toe te voegen of bij te werken, geweigerd met een fout bericht dat vergelijkbaar is met:
+Wanneer de instelling **open bare netwerk toegang weigeren** is ingesteld op **Ja** , worden pogingen om firewall regels toe te voegen of bij te werken, geweigerd met een fout bericht dat vergelijkbaar is met:
 
 ```output
 Error 42101
@@ -68,7 +68,7 @@ To manage server or database level firewall rules, please enable the public netw
 ## <a name="change-public-network-access-via-powershell"></a>Open bare netwerk toegang wijzigen via Power shell
 
 > [!IMPORTANT]
-> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek. Voor het volgende script is de [Azure PowerShell-module](/powershell/azure/install-az-ps)vereist.
+> De module PowerShell Azure Resource Manager wordt nog steeds ondersteund in Azure SQL Database, maar alle toekomstige ontwikkeling is voor de Az.Sql-module. Zie [AzureRM.Sql](/powershell/module/AzureRM.Sql/) voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek. Voor het volgende script is de [Azure PowerShell-module](/powershell/azure/install-az-ps)vereist.
 
 In het volgende Power shell-script ziet u hoe `Get` en `Set` de eigenschap **open bare netwerk toegang** op server niveau:
 
@@ -85,7 +85,7 @@ Set-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group 
 ## <a name="change-public-network-access-via-cli"></a>Open bare netwerk toegang via CLI wijzigen
 
 > [!IMPORTANT]
-> Alle scripts in deze sectie vereisen [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli).
+> Alle scripts in deze sectie vereisen [Azure cli](/cli/azure/install-azure-cli).
 
 ### <a name="azure-cli-in-a-bash-shell"></a>Azure CLI in een bash-shell
 
@@ -124,7 +124,7 @@ Login failed with invalid TLS version
 ## <a name="set-minimal-tls-version-via-powershell"></a>Minimale TLS-versie instellen via Power shell
 
 > [!IMPORTANT]
-> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek. Voor het volgende script is de [Azure PowerShell-module](/powershell/azure/install-az-ps)vereist.
+> De module PowerShell Azure Resource Manager wordt nog steeds ondersteund in Azure SQL Database, maar alle toekomstige ontwikkeling is voor de Az.Sql-module. Zie [AzureRM.Sql](/powershell/module/AzureRM.Sql/) voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek. Voor het volgende script is de [Azure PowerShell-module](/powershell/azure/install-az-ps)vereist.
 
 Het volgende Power shell-script laat zien hoe `Get` en hoe `Set` de eigenschap van de **minimale TLS-versie** op het niveau van de logische server:
 
@@ -141,7 +141,7 @@ Set-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group 
 ## <a name="set-minimal-tls-version-via-azure-cli"></a>Minimale TLS-versie instellen via Azure CLI
 
 > [!IMPORTANT]
-> Alle scripts in deze sectie vereisen [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli).
+> Alle scripts in deze sectie vereisen [Azure cli](/cli/azure/install-azure-cli).
 
 ### <a name="azure-cli-in-a-bash-shell"></a>Azure CLI in een bash-shell
 
@@ -164,7 +164,7 @@ Het [verbindings beleid](connectivity-architecture.md#connection-policy) bepaalt
 ## <a name="change-connection-policy-via-powershell"></a>Verbindings beleid wijzigen via Power shell
 
 > [!IMPORTANT]
-> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek. Voor het volgende script is de [Azure PowerShell-module](/powershell/azure/install-az-ps)vereist.
+> De module PowerShell Azure Resource Manager wordt nog steeds ondersteund in Azure SQL Database, maar alle toekomstige ontwikkeling is voor de Az.Sql-module. Zie [AzureRM.Sql](/powershell/module/AzureRM.Sql/) voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek. Voor het volgende script is de [Azure PowerShell-module](/powershell/azure/install-az-ps)vereist.
 
 Het volgende Power shell-script laat zien hoe u het verbindings beleid kunt wijzigen met behulp van Power shell:
 
@@ -185,7 +185,7 @@ Set-AzResource -ResourceId $id -Properties @{"connectionType" = "Proxy"} -f
 ## <a name="change-connection-policy-via-azure-cli"></a>Verbindings beleid wijzigen via Azure CLI
 
 > [!IMPORTANT]
-> Alle scripts in deze sectie vereisen [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli).
+> Alle scripts in deze sectie vereisen [Azure cli](/cli/azure/install-azure-cli).
 
 ### <a name="azure-cli-in-a-bash-shell"></a>Azure CLI in een bash-shell
 
@@ -223,7 +223,7 @@ az resource update --ids %sqlserverid% --set properties.connectionType=Proxy
 ## <a name="next-steps"></a>Volgende stappen
 
 - Raadpleeg [connectiviteits architectuur](connectivity-architecture.md) voor een overzicht van de werking van connectiviteit in Azure SQL database.
-- Zie voor meer informatie over het wijzigen van het verbindings beleid voor een-server verbinding [-beleid](https://docs.microsoft.com/cli/azure/sql/server/conn-policy).
+- Zie voor meer informatie over het wijzigen van het verbindings beleid voor een-server verbinding [-beleid](/cli/azure/sql/server/conn-policy).
 
 <!--Image references-->
 [1]: media/single-database-create-quickstart/manage-connectivity-settings.png

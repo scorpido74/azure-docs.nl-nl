@@ -11,23 +11,23 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/20/2019
-ms.openlocfilehash: ec3da815a9ca3e55fd65f1f0a64a81b74c6d2979
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 08aaec23b0edc0e797d26d4b51081f6daa5b5c19
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613744"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92671225"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Quickstart: Een BACPAC-bestand importeren in een database in Azure SQL Database of Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-U kunt een SQL Server-database importeren in Azure SQL Database of SQL Managed Instance met behulp van een [BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac)-bestand. U kunt de gegevens importeren uit een BACPAC-bestand dat is opgeslagen in Azure Blob-opslag (alleen standaardopslag), of vanuit een lokale opslag op een on-premises locatie. Als u de snelheid van het importeren wilt maximaliseren door meer en snellere resources te bieden, schaalt u de database tijdens het importproces naar een hogere servicelaag en een grotere rekenkracht. U kunt vervolgens omlaag schalen nadat het importeren is voltooid.
+U kunt een SQL Server-database importeren in Azure SQL Database of SQL Managed Instance met behulp van een [BACPAC](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac)-bestand. U kunt de gegevens importeren uit een BACPAC-bestand dat is opgeslagen in Azure Blob-opslag (alleen standaardopslag), of vanuit een lokale opslag op een on-premises locatie. Als u de snelheid van het importeren wilt maximaliseren door meer en snellere resources te bieden, schaalt u de database tijdens het importproces naar een hogere servicelaag en een grotere rekenkracht. U kunt vervolgens omlaag schalen nadat het importeren is voltooid.
 
 > [!NOTE]
 > Het compatibiliteitsniveau van de geïmporteerde database is gebaseerd op het compatibiliteitsniveau van de brondatabase.
 
 > [!IMPORTANT]
-> Nadat u de database hebt geïmporteerd, kunt u ervoor kiezen om de database te gebruiken op het huidige compatibiliteitsniveau (niveau 100 voor de AdventureWorks2008R2-database) of op een hoger niveau. Zie [ALTER DATABASE Compatibility Level](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level) (Compatibiliteitsniveau ALTER DATABASE) voor meer informatie over de implicaties en opties bij het hanteren van een database op een bepaald compatibiliteitsniveau. Zie ook [ALTER DATABASE SCOPED CONFIGURATION](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql) voor informatie over aanvullende instellingen op databaseniveau in verband met compatibiliteitsniveaus.
+> Nadat u de database hebt geïmporteerd, kunt u ervoor kiezen om de database te gebruiken op het huidige compatibiliteitsniveau (niveau 100 voor de AdventureWorks2008R2-database) of op een hoger niveau. Zie [ALTER DATABASE Compatibility Level](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level) (Compatibiliteitsniveau ALTER DATABASE) voor meer informatie over de implicaties en opties bij het hanteren van een database op een bepaald compatibiliteitsniveau. Zie ook [ALTER DATABASE SCOPED CONFIGURATION](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql) voor informatie over aanvullende instellingen op databaseniveau in verband met compatibiliteitsniveaus.
 
 ## <a name="using-azure-portal"></a>Azure Portal gebruiken
 
@@ -42,19 +42,19 @@ Als u een database wilt migreren naar een [Azure SQL Managed Instance](../manage
 > [!NOTE]
 > Op machines waarmee import-/exportaanvragen worden verwerkt die zijn verzonden via Azure Portal of PowerShell, moet het BACPAC-bestand worden opgeslagen, evenals tijdelijke bestanden die worden gegenereerd door Data-Tier Application Framework (DacFX). De benodigde schijfruimte varieert aanzienlijk tussen databases met dezelfde grootte. Er kan tot drie keer zoveel schijfruimte nodig zijn als de grootte van de database. Machines waarmee de import-/exportaanvraag wordt uitgevoerd, hebben slechts 450 GB lokale schijfruimte. Als gevolg hiervan kunnen sommige aanvragen mislukken met de fout `There is not enough space on the disk`. Dit kan worden opgelost door sqlpackage.exe uit te voeren op een machine met voldoende lokale schijfruimte. Om dit probleem te voorkomen wordt u aangeraden SqlPackage te gebruiken om databases te importeren/exporteren die groter zijn dan 150 GB.
 
-1. Als u vanuit een BACPAC-bestand wilt importeren in één nieuwe database met behulp van Azure Portal, opent u de juiste serverpagina en selecteert u vervolgens op de werkbalk **Database importeren**.  
+1. Als u vanuit een BACPAC-bestand wilt importeren in één nieuwe database met behulp van Azure Portal, opent u de juiste serverpagina en selecteert u vervolgens op de werkbalk **Database importeren** .  
 
    ![Database-import1](./media/database-import/sql-server-import-database.png)
 
 1. Selecteer het opslagaccount en de container voor het BACPAC-bestand en selecteer vervolgens het BACPAC-bestand waaruit u wilt importeren.
 
-1. Geef de grootte van de nieuwe database op (meestal hetzelfde als die van de oorspronkelijke) en geef de doel-SQL Server-referenties op. Zie [Database maken](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current) voor een lijst met mogelijke waarden voor een nieuwe database in Azure SQL Database.
+1. Geef de grootte van de nieuwe database op (meestal hetzelfde als die van de oorspronkelijke) en geef de doel-SQL Server-referenties op. Zie [Database maken](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current) voor een lijst met mogelijke waarden voor een nieuwe database in Azure SQL Database.
 
    ![Database-import2](./media/database-import/sql-server-import-database-settings.png)
 
-1. Klik op **OK**.
+1. Klik op **OK** .
 
-1. Als u de voortgang van het importeren wilt volgen, opent u de serverpagina van de database en selecteert u bij **Instellingen** de optie **Geschiedenis van importeren/exporteren**. Wanneer het importeren is gelukt, wordt de status **Voltooid** weergegeven.
+1. Als u de voortgang van het importeren wilt volgen, opent u de serverpagina van de database en selecteert u bij **Instellingen** de optie **Geschiedenis van importeren/exporteren** . Wanneer het importeren is gelukt, wordt de status **Voltooid** weergegeven.
 
    ![Status van database importeren](./media/database-import/sql-server-import-database-history.png)
 
@@ -62,11 +62,11 @@ Als u een database wilt migreren naar een [Azure SQL Managed Instance](../manage
 
 ## <a name="using-sqlpackage"></a>SqlPackage gebruiken
 
-Voor het importeren van een SQL Server-database met behulp van het opdrachtregelprogramma [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) raadpleegt u [importparameters en -eigenschappen](https://docs.microsoft.com/sql/tools/sqlpackage#import-parameters-and-properties). [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) en [SQL Server Data Tools voor Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx) bevatten SqlPackage. U kunt de nieuwste [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876) ook downloaden uit het Microsoft Downloadcentrum.
+Voor het importeren van een SQL Server-database met behulp van het opdrachtregelprogramma [SqlPackage](/sql/tools/sqlpackage) raadpleegt u [importparameters en -eigenschappen](/sql/tools/sqlpackage#import-parameters-and-properties). [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) en [SQL Server Data Tools voor Visual Studio](/sql/ssdt/download-sql-server-data-tools-ssdt) bevatten SqlPackage. U kunt de nieuwste [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876) ook downloaden uit het Microsoft Downloadcentrum.
 
-Voor schaalbaarheid en prestaties wordt u aangeraden in de meeste productieomgevingen SqlPackage te gebruiken in plaats van Azure Portal. Ga voor een blogartikel van het SQL Server-klantadviesteam over migratie met behulp van `BACPAC`-bestanden naar [migreren van SQL Server naar Azure SQL Database met BACPAC-bestanden](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
+Voor schaalbaarheid en prestaties wordt u aangeraden in de meeste productieomgevingen SqlPackage te gebruiken in plaats van Azure Portal. Ga voor een blogartikel van het SQL Server-klantadviesteam over migratie met behulp van `BACPAC`-bestanden naar [migreren van SQL Server naar Azure SQL Database met BACPAC-bestanden](/archive/blogs/sqlcat/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files).
 
-Met de volgende SqlPackage-opdracht wordt de **AdventureWorks2008R2**-database uit de lokale opslag in een logische SQL-server met de naam **mynewserver20170403** geïmporteerd. Er wordt een nieuwe database gemaakt met de naam **myMigratedDatabase** met een **Premium**-servicelaag en een **P6** Service Objective. Wijzig deze waarden in waarden die geschikt zijn voor uw omgeving.
+Met de volgende SqlPackage-opdracht wordt de **AdventureWorks2008R2** -database uit de lokale opslag in een logische SQL-server met de naam **mynewserver20170403** geïmporteerd. Er wordt een nieuwe database gemaakt met de naam **myMigratedDatabase** met een **Premium** -servicelaag en een **P6** Service Objective. Wijzig deze waarden in waarden die geschikt zijn voor uw omgeving.
 
 ```cmd
 sqlpackage.exe /a:import /tcs:"Data Source=<serverName>.database.windows.net;Initial Catalog=<migratedDatabase>;User Id=<userId>;Password=<password>" /sf:AdventureWorks2008R2.bacpac /p:DatabaseEdition=Premium /p:DatabaseServiceObjective=P6
@@ -156,12 +156,12 @@ az sql db import --resource-group "<resourceGroup>" --server "<server>" --name "
 
 U kunt ook gebruikmaken van deze wizards.
 
-- [Wizard DAC importeren in SQL Server Management Studio](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database#using-the-import-data-tier-application-wizard).
-- [SQL Server-wizard voor importeren en exporteren](https://docs.microsoft.com/sql/integration-services/import-export-data/start-the-sql-server-import-and-export-wizard).
+- [Wizard DAC importeren in SQL Server Management Studio](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database#using-the-import-data-tier-application-wizard).
+- [SQL Server-wizard voor importeren en exporteren](/sql/integration-services/import-export-data/start-the-sql-server-import-and-export-wizard).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Ontdek hoe u verbinding maakt met een Azure SQL-database en vervolgens een query uitvoert in [Quickstart: Azure SQL Database: SQL Server Management Studio gebruiken om verbinding te maken en query's uit te voeren voor gegevens](connect-query-ssms.md).
 - Raadpleeg dit blogartikel van het SQL Server-klantadviesteam over migratie met behulp van BACPAC-bestanden: [Migrating from SQL Server to Azure SQL Database using BACPAC Files](https://techcommunity.microsoft.com/t5/DataCAT/Migrating-from-SQL-Server-to-Azure-SQL-Database-using-Bacpac/ba-p/305407) (Migreren van SQL Server naar Azure SQL Database met BACPAC-bestanden).
 - Zie [Migratie van de SQL Server-database naar Azure SQL Database](migrate-to-database-from-sql-server.md) voor een bespreking van het volledige migratieproces van SQL Server-databases, inclusief aanbevelingen voor prestaties.
-- Zie de [Azure Storage-beveiligingshandleiding](https://docs.microsoft.com/azure/storage/common/storage-security-guide) voor meer informatie over het veilig beheren en delen van opslagsleutels en handtekeningen voor gedeelde toegang.
+- Zie de [Azure Storage-beveiligingshandleiding](../../storage/blobs/security-recommendations.md) voor meer informatie over het veilig beheren en delen van opslagsleutels en handtekeningen voor gedeelde toegang.

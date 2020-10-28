@@ -10,12 +10,12 @@ author: v-miegge
 ms.author: ramakoni
 ms.reviewer: ''
 ms.date: 09/27/2019
-ms.openlocfilehash: f98cfcd49806061a969a9227f9ade05f70ce79ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e69bba858ccf62f1b3a3b45b08771ddba71f11cf
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85982307"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92671398"
 ---
 # <a name="azure-sql-database-and-managed-instance-importexport-service-takes-a-long-time-to-import-or-export-a-database"></a>Het importeren of exporteren van een Data Base duurt lang Azure SQL Database en Managed instance import/export-service
 
@@ -25,7 +25,7 @@ Wanneer u de import/export-service gebruikt, kan het proces langer duren dan ver
 
 ## <a name="azure-sql-database-importexport-service"></a>Azure SQL Database import/export-service
 
-De Azure SQL Database import/export-service is een op REST gebaseerde webservice die in elk Azure-Data Center wordt uitgevoerd. Deze service wordt aangeroepen wanneer u de optie [Data Base importeren](database-import.md#using-azure-portal) of [exporteren](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-the-azure-portal) gebruikt om uw data base te verplaatsen in de Azure Portal. De service biedt gratis aanvraag wachtrijen en Compute-Services voor het importeren en exporteren tussen Azure SQL Database en Azure Blob-opslag.
+De Azure SQL Database import/export-service is een op REST gebaseerde webservice die in elk Azure-Data Center wordt uitgevoerd. Deze service wordt aangeroepen wanneer u de optie [Data Base importeren](database-import.md#using-azure-portal) of [exporteren](./database-import.md#using-azure-portal) gebruikt om uw data base te verplaatsen in de Azure Portal. De service biedt gratis aanvraag wachtrijen en Compute-Services voor het importeren en exporteren tussen Azure SQL Database en Azure Blob-opslag.
 
 De import-en export bewerkingen vertegenwoordigen geen traditionele back-up van de fysieke data base, maar in plaats daarvan een logische back-up van de data base die gebruikmaakt van een speciale BACPAC-indeling. Met de BACPAC-indeling kunt u voor komen dat u een fysieke indeling moet gebruiken die kan verschillen tussen versies van Microsoft SQL Server, Azure SQL Database en Azure SQL Managed instance.
 
@@ -40,20 +40,20 @@ De Azure SQL Database import/export-service biedt een beperkt aantal Compute-Vm'
 
 Als uw data base-exports alleen worden gebruikt voor herstel na onbedoeld verwijderen van gegevens, bieden alle Azure SQL Database-edities selfservice herstel mogelijkheid voor door het systeem gegenereerde back-ups. Maar als u deze exports om andere redenen nodig hebt, en als u consistent snellere of meer voorspel bare prestaties voor importeren/exporteren nodig hebt, moet u rekening houden met de volgende opties:
 
-* [Exporteren naar een BACPAC-bestand met behulp van het SQLPackage-hulp programma](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-the-sqlpackage-utility).
-* [Exporteren naar een BACPAC-bestand met behulp van SQL Server Management Studio (SSMS)](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-sql-server-management-studio-ssms).
+* [Exporteren naar een BACPAC-bestand met behulp van het SQLPackage-hulp programma](./database-export.md#sqlpackage-utility).
+* [Exporteren naar een BACPAC-bestand met behulp van SQL Server Management Studio (SSMS)](./database-export.md#sql-server-management-studio-ssms).
 * Voer de BACPAC-import-of export bewerking rechtstreeks uit in uw code met behulp van de API voor Microsoft SQL Server Data-Tier Application Framework (DacFx). Zie voor meer informatie:
-  * [Een gegevenslaag toepassing exporteren](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
-  * [Micro soft. SqlServer. DAC-naam ruimte](https://docs.microsoft.com/dotnet/api/microsoft.sqlserver.dac)
+  * [Een gegevenslaag toepassing exporteren](/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
+  * [Micro soft. SqlServer. DAC-naam ruimte](/dotnet/api/microsoft.sqlserver.dac)
   * [DACFx downloaden](https://www.microsoft.com/download/details.aspx?id=55713)
 
 ## <a name="things-to-consider-when-you-export-or-import-a-database"></a>Aandachtspunten bij het exporteren of importeren van een Data Base
 
-* Alle methoden die in dit artikel worden besproken, maken gebruik van het DTU-quotum (data base Trans Action Unit) dat de Azure SQL Database-Service beperkt. U kunt [de DTU-statistieken voor de Data Base weer geven op de Azure Portal](https://docs.microsoft.com/azure/sql-database/sql-database-monitor-tune-overview#sql-database-resource-monitoring). Als de bron limiet van de data base is bereikt, moet u [een upgrade uitvoeren voor de](https://docs.microsoft.com/azure/sql-database/sql-database-scale-resources) servicelaag om meer resources toe te voegen.
+* Alle methoden die in dit artikel worden besproken, maken gebruik van het DTU-quotum (data base Trans Action Unit) dat de Azure SQL Database-Service beperkt. U kunt [de DTU-statistieken voor de Data Base weer geven op de Azure Portal](./monitor-tune-overview.md#azure-sql-database-and-azure-sql-managed-instance-resource-monitoring). Als de bron limiet van de data base is bereikt, moet u [een upgrade uitvoeren voor de](./scale-resources.md) servicelaag om meer resources toe te voegen.
 * In het ideale geval moet u client toepassingen (zoals het sqlpackage-hulp programma of uw aangepaste DAC-toepassing) uitvoeren vanaf een virtuele machine in dezelfde regio als uw data base. Anders kunt u prestatie problemen ondervinden met betrekking tot netwerk latentie.
 * Het exporteren van grote tabellen zonder geclusterde indexen kan erg traag of zelfs een fout veroorzaken. Dit probleem treedt op omdat de tabel niet parallel kan worden opgesplitst en geëxporteerd. In plaats daarvan moet het worden geëxporteerd in één trans actie en dat trage prestaties en mogelijke fouten tijdens het exporteren veroorzaakt, met name voor grote tabellen.
 
 
 ## <a name="related-documents"></a>Gerelateerde documenten
 
-[Overwegingen bij het exporteren van een Data Base](https://docs.microsoft.com/azure/sql-database/sql-database-export#considerations-when-exporting-an-azure-sql-database)
+[Overwegingen bij het exporteren van een Data Base](./database-export.md#considerations)

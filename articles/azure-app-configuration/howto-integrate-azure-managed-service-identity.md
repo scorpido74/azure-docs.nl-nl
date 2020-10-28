@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: d71f0396f453ceb7113d724b113fe5aacdc60e21
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: f2d8c6e94638c01fb21e070a756c0c97c330fb26
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078167"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92671602"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>Beheerde identiteiten gebruiken om App Configuration te openen
 
@@ -49,9 +49,9 @@ Als u een beheerde identiteit in de portal wilt instellen, maakt u eerst een toe
 
 1. Maak een App Services-exemplaar in het [Azure Portal](https://portal.azure.com) zoals u dat gewend bent. Ga naar de portal.
 
-1. Schuif omlaag naar de **instellingen** groep in het linkerdeel venster en selecteer **identiteit**.
+1. Schuif omlaag naar de **instellingen** groep in het linkerdeel venster en selecteer **identiteit** .
 
-1. Schakel op het tabblad **toegewezen systeem** de optie **status** in **op** aan en selecteer **Opslaan**.
+1. Schakel op het tabblad **toegewezen systeem** de optie **status** in **op** aan en selecteer **Opslaan** .
 
 1. Antwoord **Ja** wanneer u wordt gevraagd door het systeem toegewezen beheerde identiteit in te scha kelen.
 
@@ -65,11 +65,11 @@ Als u een beheerde identiteit in de portal wilt instellen, maakt u eerst een toe
 
 1. Klik op het tabblad **toegang controleren** op **toevoegen** in de gebruikers interface van de **roltoewijzing toevoegen** .
 
-1. Onder **rol**selecteert u **app Configuration Data Reader**. Onder **toegang toewijzen aan**selecteert u **app service** onder door het **systeem toegewezen beheerde identiteit**.
+1. Onder **rol** selecteert u **app Configuration Data Reader** . Onder **toegang toewijzen aan** selecteert u **app service** onder door het **systeem toegewezen beheerde identiteit** .
 
-1. Selecteer uw Azure-abonnement onder **abonnement**. Selecteer de App Service Resource voor uw app.
+1. Selecteer uw Azure-abonnement onder **abonnement** . Selecteer de App Service Resource voor uw app.
 
-1. Selecteer **Opslaan**.
+1. Selecteer **Opslaan** .
 
     ![Een beheerde identiteit toevoegen](./media/add-managed-identity.png)
 
@@ -85,7 +85,7 @@ Als u een beheerde identiteit in de portal wilt instellen, maakt u eerst een toe
 
 1. Zoek het eind punt naar het configuratie archief van uw app. Deze URL wordt weer gegeven op het tabblad **toegangs sleutels** voor de Store in de Azure Portal.
 
-1. Open *appsettings.jsop*en voeg het volgende script toe. Vervang *\<service_endpoint>* , inclusief de haakjes, door de URL naar de app-configuratie opslag.
+1. Open *appsettings.jsop* en voeg het volgende script toe. Vervang *\<service_endpoint>* , inclusief de haakjes, door de URL naar de app-configuratie opslag.
 
     ```json
     "AppConfig": {
@@ -93,7 +93,7 @@ Als u een beheerde identiteit in de portal wilt instellen, maakt u eerst een toe
     }
     ```
 
-1. Open *Program.cs*en voeg een verwijzing naar de `Azure.Identity` `Microsoft.Azure.Services.AppAuthentication` naam ruimten en toe:
+1. Open *Program.cs* en voeg een verwijzing naar de `Azure.Identity` `Microsoft.Azure.Services.AppAuthentication` naam ruimten en toe:
 
     ```csharp-interactive
     using Azure.Identity;
@@ -107,30 +107,32 @@ Als u een beheerde identiteit in de portal wilt instellen, maakt u eerst een toe
     ### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .ConfigureAppConfiguration((hostingContext, config) =>
-                {
-                    var settings = config.Build();
-                    config.AddAzureAppConfiguration(options =>
-                        options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential()));
-                })
-                .UseStartup<Startup>();
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+               .ConfigureAppConfiguration((hostingContext, config) =>
+               {
+                   var settings = config.Build();
+                   config.AddAzureAppConfiguration(options =>
+                       options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential()));
+               })
+               .UseStartup<Startup>();
     ```
 
     ### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
     ```csharp
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
             .ConfigureWebHostDefaults(webBuilder =>
-            webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
             {
-                var settings = config.Build();
+                webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    var settings = config.Build();
                     config.AddAzureAppConfiguration(options =>
                         options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential()));
-                })
-                .UseStartup<Startup>());
+                });
+            })
+            .UseStartup<Startup>());
     ```
     ---
 
@@ -139,46 +141,48 @@ Als u een beheerde identiteit in de portal wilt instellen, maakt u eerst een toe
     ### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
-            public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-                WebHost.CreateDefaultBuilder(args)
-                    .ConfigureAppConfiguration((hostingContext, config) =>
-                    {
-                        var settings = config.Build();
-                        var credentials = new ManagedIdentityCredential();
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+               .ConfigureAppConfiguration((hostingContext, config) =>
+               {
+                   var settings = config.Build();
+                   var credentials = new ManagedIdentityCredential();
 
-                        config.AddAzureAppConfiguration(options =>
-                        {
-                            options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
-                                    .ConfigureKeyVault(kv =>
-                                    {
-                                        kv.SetCredential(credentials);
-                                    });
-                        });
-                    })
-                    .UseStartup<Startup>();
+                   config.AddAzureAppConfiguration(options =>
+                   {
+                       options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
+                           .ConfigureKeyVault(kv =>
+                           {
+                              kv.SetCredential(credentials);
+                           });
+                   });
+               })
+               .UseStartup<Startup>();
     ```
 
     ### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
     ```csharp
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
             .ConfigureWebHostDefaults(webBuilder =>
-            webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
-                    {
-                        var settings = config.Build();
-                        var credentials = new ManagedIdentityCredential();
+            {
+                webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    var settings = config.Build();
+                    var credentials = new ManagedIdentityCredential();
 
-                        config.AddAzureAppConfiguration(options =>
-                        {
-                            options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
-                                    .ConfigureKeyVault(kv =>
-                                    {
-                                        kv.SetCredential(credentials);
-                                    });
-                        });
-                    })
-                    .UseStartup<Startup>());
+                    config.AddAzureAppConfiguration(options =>
+                    {
+                        options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
+                            .ConfigureKeyVault(kv =>
+                            {
+                                kv.SetCredential(credentials);
+                            });
+                    });
+                });
+            })
+            .UseStartup<Startup>());
     ```
     ---
 
@@ -222,7 +226,7 @@ Met deze opdracht krijgt u iets te zien dat vergelijkbaar is met de volgende uit
 
 ### <a name="deploy-your-project"></a>Uw project implementeren
 
-Voeg in het _lokale terminal venster_een externe Azure-Data Bank toe aan uw lokale Git-opslag plaats. Vervang door _\<url>_ de URL van de externe Git die u hebt ontvangen van [lokale Git inschakelen met kudu](#enable-local-git-with-kudu).
+Voeg in het _lokale terminal venster_ een externe Azure-Data Bank toe aan uw lokale Git-opslag plaats. Vervang door _\<url>_ de URL van de externe Git die u hebt ontvangen van [lokale Git inschakelen met kudu](#enable-local-git-with-kudu).
 
 ```bash
 git remote add azure <url>

@@ -8,13 +8,13 @@ ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
-ms.author: metan
-ms.openlocfilehash: 968f3c9fbfea1e2f04fb029605173087f6f311c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: metang
+ms.openlocfilehash: 73084f5116083b190b6fa31e504ffc5e8f6f39f6
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88516500"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636490"
 ---
 # <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>Zelfstudie: Een iOS-app maken die de Insluitende lezer start met inhoud van een foto (Swift)
 
@@ -38,7 +38,7 @@ Maak een nieuw project in Xcode.
 
 ![Nieuw project](./media/ios/xcode-create-project.png)
 
-Kies **Single View App**.
+Kies **Single View App** .
 
 ![Nieuwe app voor één weergave](./media/ios/xcode-single-view-app.png)
 

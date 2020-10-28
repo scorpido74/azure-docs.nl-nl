@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 871a764c549de75d5a9e1449ba2e0737d38a4094
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69541ec652188bc3826b7829fbc5c182193d6ba9
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83799945"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670944"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Intelligente route ring en Canarische releases gebruiken met Istio in azure Kubernetes service (AKS)
 
@@ -39,7 +39,7 @@ Als u hulp nodig hebt bij een van deze items, raadpleegt u de [AKS Quick][aks-qu
 
 ## <a name="about-this-application-scenario"></a>Over dit toepassings scenario
 
-De voor beeld-AKS stem-app biedt twee stem opties (**katten** of **honden**) aan gebruikers. Er is een opslag onderdeel waarmee het aantal stemmen voor elke optie wordt gehandhaafd. Daarnaast bevat een analyse component waarmee details over de stemmen voor elke optie worden verstrekt.
+De voor beeld-AKS stem-app biedt twee stem opties ( **katten** of **honden** ) aan gebruikers. Er is een opslag onderdeel waarmee het aantal stemmen voor elke optie wordt gehandhaafd. Daarnaast bevat een analyse component waarmee details over de stemmen voor elke optie worden verstrekt.
 
 In dit toepassings scenario begint u met `1.0` het implementeren van de versie van de stem-app en versie `1.0` van het onderdeel analyse. De analyse component biedt eenvoudige tellingen voor het aantal stemmen. De stem-app en het analyse onderdeel communiceren met `1.0` de versie van het opslag onderdeel, dat wordt ondersteund door redis.
 
@@ -53,7 +53,7 @@ Wanneer u zeker weet dat `2.0` de versie werkt zoals verwacht op uw subset van g
 
 Laten we beginnen met het implementeren van de toepassing in uw Azure Kubernetes service (AKS)-cluster. In het volgende diagram ziet u wat er wordt uitgevoerd aan het einde van deze sectie-versie `1.0` van alle onderdelen met inkomende aanvragen die worden verwerkt via de Istio ingress-gateway:
 
-![De onderdelen en route ring van de AKS stem-app.](media/servicemesh/istio/scenario-routing-components-01.png)
+![Diagram waarin versie 1,0 van alle onderdelen met binnenkomende aanvragen worden verwerkt via de Istio ingress-gateway.](media/servicemesh/istio/scenario-routing-components-01.png)
 
 De artefacten die u moet volgen in dit artikel, zijn beschikbaar in de [Azure-samples/AKS-stem-app][github-azure-sample] github opslag plaats. U kunt de artefacten downloaden of de opslag plaats als volgt klonen:
 
@@ -180,7 +180,7 @@ We gaan een nieuwe versie van het onderdeel analyse implementeren. In deze nieuw
 
 In het volgende diagram ziet u wat er aan het einde van deze sectie wordt uitgevoerd-alleen de versie `1.1` van `voting-analytics` het onderdeel verkeer wordt gerouteerd van het `voting-app` onderdeel. Hoewel de versie `1.0` van `voting-analytics` het onderdeel blijft werken en er door de service naar wordt verwezen `voting-analytics` , worden de Istio-proxy's niet toegestaan.
 
-![De onderdelen en route ring van de AKS stem-app.](media/servicemesh/istio/scenario-routing-components-02.png)
+![Diagram waarin alleen versie 1,1 van het onderdeel stem analyse wordt weer gegeven, heeft verkeer gerouteerd vanuit het onderdeel stem-app.](media/servicemesh/istio/scenario-routing-components-02.png)
 
 We gaan de versie `1.1` van het `voting-analytics` onderdeel implementeren. Dit onderdeel maken in de `voting` naam ruimte:
 
@@ -361,7 +361,7 @@ In het volgende diagram ziet u wat u aan het einde van deze sectie kunt uitvoere
 * `2.0`De versie van het onderdeel `voting-app` , `2.0` de versie van het `voting-analytics` onderdeel en de versie `2.0` van het `voting-storage` onderdeel kan met elkaar communiceren.
 * `2.0`De versie van het `voting-app` onderdeel is alleen toegankelijk voor gebruikers waarvoor een specifieke functie vlag is ingesteld. Deze wijziging wordt beheerd met behulp van een functie vlag via een cookie.
 
-![De onderdelen en route ring van de AKS stem-app.](media/servicemesh/istio/scenario-routing-components-03.png)
+![Diagram waarin wordt weer gegeven wat u aan het einde van deze sectie kunt uitvoeren.](media/servicemesh/istio/scenario-routing-components-03.png)
 
 Werk eerst de Istio-doel regels en virtuele Services bij om deze nieuwe onderdelen in te stellen. Deze updates zorgen ervoor dat u geen verkeer stuurt naar de nieuwe onderdelen en gebruikers geen onverwachte toegang krijgen:
 
@@ -415,7 +415,7 @@ De stem aantallen verschillen van de versies van de app. Dit verschil markeert d
 
 Wanneer u de Canarische versie hebt getest, werkt u de `voting-app` virtuele service bij om alle verkeer naar `2.0` de versie van het onderdeel te routeren `voting-app` . Alle gebruikers zien vervolgens de versie `2.0` van de toepassing, ongeacht of de functie vlag is ingesteld of niet:
 
-![De onderdelen en route ring van de AKS stem-app.](media/servicemesh/istio/scenario-routing-components-04.png)
+![Diagram waarin wordt weer gegeven dat gebruikers versie 2,0 van de toepassing zien, ongeacht of de functie vlag is ingesteld of niet.](media/servicemesh/istio/scenario-routing-components-04.png)
 
 Werk alle doel regels bij om de versies te verwijderen van de onderdelen die u niet meer wilt laten actief. Werk vervolgens alle virtuele Services bij om te stoppen met het verwijzen naar die versies.
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/15/2020
+ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 817267414555ea0641e8fb8a8392976a4789c780
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: a4e76e3924b1b14660dce8a3b58f7dd5b2715eec
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096212"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670117"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een zelf-bevestigd technisch profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -53,7 +53,7 @@ In een zelf-bevestigd technisch profiel kunt u de **InputClaims** -en **InputCla
 
 ## <a name="display-claims"></a>Claims weer geven
 
-De functie voor het weer geven van claims is momenteel beschikbaar als **Preview-versie**.
+De functie voor het weer geven van claims is momenteel beschikbaar als **Preview-versie** .
 
 Het **DisplayClaims** -element bevat een lijst met claims die op het scherm moeten worden weer gegeven voor het verzamelen van gegevens van de gebruiker. Als u de waarden van weer gave claims vooraf wilt invullen, gebruikt u de invoer claims die eerder zijn beschreven. Het element kan ook een standaard waarde bevatten.
 
@@ -114,7 +114,7 @@ Als een blad beleid dat die basis overneemt, wordt opgegeven `officeNumber` als 
 </TechnicalProfile>
 ```
 
-De `age` claim in het basis beleid wordt niet meer op het scherm weer gegeven voor de gebruiker. Dit is het effectief ' verborgen '. Als u de claim wilt weer geven `age` en de leeftijds waarde van de gebruiker wilt verzamelen, moet u een `age` **DisplayClaim**toevoegen.
+De `age` claim in het basis beleid wordt niet meer op het scherm weer gegeven voor de gebruiker. Dit is het effectief ' verborgen '. Als u de claim wilt weer geven `age` en de leeftijds waarde van de gebruiker wilt verzamelen, moet u een `age` **DisplayClaim** toevoegen.
 
 ## <a name="output-claims"></a>Uitvoer claims
 
@@ -133,10 +133,10 @@ In een niet-bevestigd technisch profiel retourneert de claim verzameling output 
 
 Uitvoer claims gebruiken wanneer:
 
-- **Claims worden uitgevoerd door trans formatie van uitvoer claims**.
+- **Claims worden uitgevoerd door trans formatie van uitvoer claims** .
 - Het **instellen van een standaard waarde in een uitvoer claim** zonder het verzamelen van gegevens van de gebruiker of het retour neren van de gegevens uit het technische profiel voor validatie. Het `LocalAccountSignUpWithLogonEmail` zelfondertekende technische profiel stelt de **uitgevoerde-SelfAsserted-invoer** claim in op `true` .
 - **Een technisch profiel voor validatie retourneert de uitvoer claims** -uw technische profiel kan een validatie technische profiel aanroepen dat enkele claims retourneert. U kunt de claims inbellen en terugsturen naar de volgende indelings stappen in de gebruikers reis. Als u zich bijvoorbeeld aanmeldt met een lokaal account, roept het zelfondertekende technische profiel met de naam het technische profiel voor validatie op met de naam `SelfAsserted-LocalAccountSignin-Email` `login-NonInteractive` . Dit technische profiel valideert de gebruikers referenties en retourneert ook het gebruikers profiel. Zoals ' userPrincipalName ', ' displayName ', ' naam ' en ' Achternaam '.
-- **Een besturings element voor weer gave retourneert de uitvoer claims** -uw technische profiel bevat mogelijk een verwijzing naar een [besturings element voor weer gave](display-controls.md). Het besturings element weer gave retourneert enkele claims, zoals het geverifieerde e-mail adres. U kunt de claims inbellen en terugsturen naar de volgende indelings stappen in de gebruikers reis. De functie voor het weer geven van besturings elementen is momenteel beschikbaar als **Preview-versie**.
+- **Een besturings element voor weer gave retourneert de uitvoer claims** -uw technische profiel bevat mogelijk een verwijzing naar een [besturings element voor weer gave](display-controls.md). Het besturings element weer gave retourneert enkele claims, zoals het geverifieerde e-mail adres. U kunt de claims inbellen en terugsturen naar de volgende indelings stappen in de gebruikers reis. De functie voor het weer geven van besturings elementen is momenteel beschikbaar als **Preview-versie** .
 
 In het volgende voor beeld wordt het gebruik van een zelf-bevestigd technisch profiel gedemonstreerd dat zowel claims als uitvoer claims gebruikt.
 
@@ -175,6 +175,14 @@ In het volgende voor beeld wordt het gebruik van een zelf-bevestigd technisch pr
 </TechnicalProfile>
 ```
 
+### <a name="output-claims-sign-up-or-sign-in-page"></a>Registratie van uitvoer claims of aanmeldings pagina
+
+Houd bij een gecombineerde registratie en aanmeldings pagina rekening met het volgende wanneer u een [DataUri](contentdefinitions.md#datauri) element van een inhouds definitie gebruikt. Hiermee geeft u een `unifiedssp` of `unifiedssd` pagina Type op:
+
+- Alleen de claims voor gebruikers naam en wacht woord worden weer gegeven.
+- De eerste twee uitvoer claims moeten de gebruikers naam en het wacht woord zijn (in deze volg orde). 
+- Andere claims worden niet weer gegeven. voor deze claims moet u het `defaultValue` technische profiel voor validatie van claim formulieren instellen of aanroepen. 
+
 ## <a name="persist-claims"></a>Claims persistent maken
 
 Het element PersistedClaims wordt niet gebruikt. Het zelfondertekende technische profiel bevat niet de gegevens die naar Azure AD B2C worden bewaard. In plaats daarvan wordt een aanroep uitgevoerd naar een technische profiel voor validatie dat verantwoordelijk is voor het persistent maken van de gegevens. Het aanmeldings beleid maakt bijvoorbeeld gebruik van het `LocalAccountSignUpWithLogonEmail` zelfondertekende technische profiel om het nieuwe gebruikers profiel te verzamelen. `LocalAccountSignUpWithLogonEmail`Met het technische profiel wordt het technische profiel voor validatie aangeroepen om het account te maken in azure AD B2C.
@@ -191,19 +199,19 @@ U kunt ook een REST API technisch profiel aanroepen met uw bedrijfs logica, invo
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| setting. operatingMode <sup>1</sup>| No | Voor een aanmeldings pagina bepaalt deze eigenschap het gedrag van het veld gebruikers naam, zoals invoer validatie en fout berichten. Verwachte waarden: `Username` of `Email` .  |
-| AllowGenerationOfClaimsWithNullValues| No| Er kan een claim met een null-waarde worden gegenereerd. Zo wordt in een case-gebruiker geen selectie vakje geselecteerd.|
-| ContentDefinitionReferenceId | Yes | De id van de [inhouds definitie](contentdefinitions.md) die aan dit technische profiel is gekoppeld. |
-| EnforceEmailVerification | No | Voor de registratie of het profiel bewerken, wordt een e-mail verificatie afgedwongen. Mogelijke waarden: `true` (standaard) of `false` . |
-| setting. retryLimit | No | Hiermee bepaalt u het aantal keren dat een gebruiker de gegevens kan opgeven die worden gecontroleerd op basis van het technische profiel voor validatie. Bijvoorbeeld: een gebruiker probeert zich aan te melden met een account dat al bestaat en het probeert tot de limiet is bereikt.
-| SignUpTarget <sup>1</sup>| No | De Exchange-doel-id voor de aanmelding. Wanneer de gebruiker op de knop registratie klikt, wordt Azure AD B2C de opgegeven Exchange-id uitgevoerd. |
-| setting. showCancelButton | No | Hiermee wordt de knop Annuleren weer gegeven. Mogelijke waarden: `true` (standaard) of `false` |
-| setting. showContinueButton | No | Hiermee wordt de knop door gaan weer gegeven. Mogelijke waarden: `true` (standaard) of `false` |
-| setting. showSignupLink <sup>2</sup>| No | Hiermee wordt de knop registratie weer gegeven. Mogelijke waarden: `true` (standaard) of `false` |
-| setting. forgotPasswordLinkLocation <sup>2</sup>| No| Hiermee wordt de verg eten wachtwoord koppeling weer gegeven. Mogelijke waarden: `AfterInput` (standaard) de koppeling wordt weer gegeven aan de onderkant van de pagina of `None` de koppeling met verg eten wacht woord wordt verwijderd.|
-| setting. enableRememberMe <sup>2</sup>| No| Hiermee wordt het selectie vakje [aangemeld blijven](custom-policy-keep-me-signed-in.md) weer gegeven. Mogelijke waarden: `true` , of `false` (standaard). |
-| setting. inputVerificationDelayTimeInMilliseconds <sup>3</sup>| No| Verbetert de gebruikers ervaring door te wachten tot de gebruiker stopt met typen en vervolgens de waarde te valideren. Standaard waarde 2000 milliseconden. |
-| IncludeClaimResolvingInClaimsHandling  | No | Voor invoer-en uitvoer claims geeft u op of [claim omzetting](claim-resolver-overview.md) in het technische profiel is opgenomen. Mogelijke waarden: `true` , of `false`   (standaard). Als u een claim conflict Oplosser wilt gebruiken in het technische profiel, stelt u dit in op `true` . |
+| setting. operatingMode <sup>1</sup>| Nee | Voor een aanmeldings pagina bepaalt deze eigenschap het gedrag van het veld gebruikers naam, zoals invoer validatie en fout berichten. Verwachte waarden: `Username` of `Email` .  |
+| AllowGenerationOfClaimsWithNullValues| Nee| Er kan een claim met een null-waarde worden gegenereerd. Zo wordt in een case-gebruiker geen selectie vakje geselecteerd.|
+| ContentDefinitionReferenceId | Ja | De id van de [inhouds definitie](contentdefinitions.md) die aan dit technische profiel is gekoppeld. |
+| EnforceEmailVerification | Nee | Voor de registratie of het profiel bewerken, wordt een e-mail verificatie afgedwongen. Mogelijke waarden: `true` (standaard) of `false` . |
+| setting. retryLimit | Nee | Hiermee bepaalt u het aantal keren dat een gebruiker de gegevens kan opgeven die worden gecontroleerd op basis van het technische profiel voor validatie. Bijvoorbeeld: een gebruiker probeert zich aan te melden met een account dat al bestaat en het probeert tot de limiet is bereikt.
+| SignUpTarget <sup>1</sup>| Nee | De Exchange-doel-id voor de aanmelding. Wanneer de gebruiker op de knop registratie klikt, wordt Azure AD B2C de opgegeven Exchange-id uitgevoerd. |
+| setting. showCancelButton | Nee | Hiermee wordt de knop Annuleren weer gegeven. Mogelijke waarden: `true` (standaard) of `false` |
+| setting. showContinueButton | Nee | Hiermee wordt de knop door gaan weer gegeven. Mogelijke waarden: `true` (standaard) of `false` |
+| setting. showSignupLink <sup>2</sup>| Nee | Hiermee wordt de knop registratie weer gegeven. Mogelijke waarden: `true` (standaard) of `false` |
+| setting. forgotPasswordLinkLocation <sup>2</sup>| Nee| Hiermee wordt de verg eten wachtwoord koppeling weer gegeven. Mogelijke waarden: `AfterInput` (standaard) de koppeling wordt weer gegeven aan de onderkant van de pagina of `None` de koppeling met verg eten wacht woord wordt verwijderd.|
+| setting. enableRememberMe <sup>2</sup>| Nee| Hiermee wordt het selectie vakje [aangemeld blijven](custom-policy-keep-me-signed-in.md) weer gegeven. Mogelijke waarden: `true` , of `false` (standaard). |
+| setting. inputVerificationDelayTimeInMilliseconds <sup>3</sup>| Nee| Verbetert de gebruikers ervaring door te wachten tot de gebruiker stopt met typen en vervolgens de waarde te valideren. Standaard waarde 2000 milliseconden. |
+| IncludeClaimResolvingInClaimsHandling  | Nee | Voor invoer-en uitvoer claims geeft u op of [claim omzetting](claim-resolver-overview.md) in het technische profiel is opgenomen. Mogelijke waarden: `true` , of `false` (standaard). Als u een claim conflict Oplosser wilt gebruiken in het technische profiel, stelt u dit in op `true` . |
 
 Opmerkingen:
 1. Beschikbaar voor inhouds definitie [DataUri](contentdefinitions.md#datauri) type van `unifiedssp` of `unifiedssd` .

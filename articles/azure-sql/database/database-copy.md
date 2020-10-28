@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: ''
 ms.date: 07/29/2020
-ms.openlocfilehash: 3aaa666ac6b7ddffcf5e0d2f5b62d26bd0f96004
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 99eea73add47b6498833de7bfd7728feb4c5c4ab
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516202"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92671564"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Een transactioneel consistente kopie van een data base in Azure SQL Database kopiëren
 
@@ -43,7 +43,7 @@ Als u aanmeldingen op serverniveau gebruikt voor gegevenstoegang en de database 
 
 ## <a name="copy-using-the-azure-portal"></a>Kopiëren met Azure Portal
 
-Als u een Data Base wilt kopiëren met behulp van de Azure Portal, opent u de pagina voor uw data base en klikt u vervolgens op **kopiëren**.
+Als u een Data Base wilt kopiëren met behulp van de Azure Portal, opent u de pagina voor uw data base en klikt u vervolgens op **kopiëren** .
 
    ![Database-kopie](./media/database-copy/database-copy.png)
 
@@ -82,7 +82,7 @@ Het kopiëren van de data base is een asynchrone bewerking, maar de doel databas
 
 Meld u aan bij de hoofd database met de aanmelding van de server beheerder of de aanmelding die de data base heeft gemaakt die u wilt kopiëren. Het kopiëren van de data base slaagt alleen als de server beheerder lid is van de `dbmanager` rol. Zie [aanmeldingen beheren](logins-create-manage.md)voor meer informatie over aanmeldingen en het maken van een verbinding met de server.
 
-Kopiëren van de bron database starten met de [Data Base maken... ALS kopie van](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true#copy-a-database) de instructie. De T-SQL-instructie blijft actief totdat de Kopieer bewerking van de data base is voltooid.
+Kopiëren van de bron database starten met de [Data Base maken... ALS kopie van](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true#copy-a-database) de instructie. De T-SQL-instructie blijft actief totdat de Kopieer bewerking van de data base is voltooid.
 
 > [!NOTE]
 > Als u de T-SQL-instructie beëindigt, wordt de Kopieer bewerking van de data base niet beëindigd. Als u de bewerking wilt beëindigen, verwijdert u de doel database.
@@ -143,13 +143,13 @@ U kunt de stappen in de sectie [een SQL database kopiëren naar een andere serve
 
 ## <a name="monitor-the-progress-of-the-copying-operation"></a>De voortgang van de Kopieer bewerking bewaken
 
-Bewaak het kopieer proces door een query uit te geven op de weer gaven [sys. data bases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql), [sys.dm_database_copies](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database)en [sys.dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) . Terwijl het kopiëren wordt uitgevoerd, wordt de kolom **state_desc** van de weer gave sys. data bases voor de nieuwe data base ingesteld op **kopiëren**.
+Bewaak het kopieer proces door een query uit te geven op de weer gaven [sys. data bases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql), [sys.dm_database_copies](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database)en [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) . Terwijl het kopiëren wordt uitgevoerd, wordt de kolom **state_desc** van de weer gave sys. data bases voor de nieuwe data base ingesteld op **kopiëren** .
 
-* Als het kopiëren mislukt, wordt de kolom **state_desc** van de weer gave sys. data bases voor de nieuwe data base ingesteld op **verdacht**. Voer de instructie DROP uit op de nieuwe data base en probeer het later opnieuw.
-* Als het kopiëren is voltooid, wordt de kolom **state_desc** van de weer gave sys. data bases voor de nieuwe data base ingesteld op **online**. Het kopiëren is voltooid en de nieuwe Data Base is een reguliere data base die onafhankelijk van de bron database kan worden gewijzigd.
+* Als het kopiëren mislukt, wordt de kolom **state_desc** van de weer gave sys. data bases voor de nieuwe data base ingesteld op **verdacht** . Voer de instructie DROP uit op de nieuwe data base en probeer het later opnieuw.
+* Als het kopiëren is voltooid, wordt de kolom **state_desc** van de weer gave sys. data bases voor de nieuwe data base ingesteld op **online** . Het kopiëren is voltooid en de nieuwe Data Base is een reguliere data base die onafhankelijk van de bron database kan worden gewijzigd.
 
 > [!NOTE]
-> Als u besluit het kopiëren te annuleren terwijl deze wordt uitgevoerd, voert u de instructie [Drop data base](https://docs.microsoft.com/sql/t-sql/statements/drop-database-transact-sql) uit op de nieuwe data base.
+> Als u besluit het kopiëren te annuleren terwijl deze wordt uitgevoerd, voert u de instructie [Drop data base](/sql/t-sql/statements/drop-database-transact-sql) uit op de nieuwe data base.
 
 > [!IMPORTANT]
 > Als u een kopie moet maken met een aanzienlijk kleinere service doelstelling dan de bron, is het mogelijk dat de doel database onvoldoende resources heeft om het seeding proces te volt ooien. Dit kan ertoe leiden dat de Kopieer bewerking mislukt. In dit scenario gebruikt u een geo-Restore-aanvraag om een kopie te maken op een andere server en/of een andere regio. Zie [een Azure SQL database herstellen met behulp van database back-ups](recovery-using-backups.md#geo-restore) voor meer informatie.
@@ -182,7 +182,7 @@ Als u de bewerkingen wilt zien onder implementaties in de resource groep op de p
 
 ## <a name="resolve-logins"></a>Aanmeldingen oplossen
 
-Nadat de nieuwe Data Base online is op de doel server, gebruikt u de instructie [Alter User](https://docs.microsoft.com/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-current&preserve-view=true) om de gebruikers van de nieuwe data base toe te wijzen aan aanmeldingen op de doel server. Zie [problemen met zwevende gebruikers oplossen](https://docs.microsoft.com/sql/sql-server/failover-clusters/troubleshoot-orphaned-users-sql-server)voor informatie over het oplossen van zwevende gebruikers. Zie ook [hoe u Azure SQL database beveiliging beheert na nood herstel](active-geo-replication-security-configure.md).
+Nadat de nieuwe Data Base online is op de doel server, gebruikt u de instructie [Alter User](/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-current&preserve-view=true) om de gebruikers van de nieuwe data base toe te wijzen aan aanmeldingen op de doel server. Zie [problemen met zwevende gebruikers oplossen](/sql/sql-server/failover-clusters/troubleshoot-orphaned-users-sql-server)voor informatie over het oplossen van zwevende gebruikers. Zie ook [hoe u Azure SQL database beveiliging beheert na nood herstel](active-geo-replication-security-configure.md).
 
 Alle gebruikers in de nieuwe data base behouden de machtigingen die ze in de bron database hadden. De gebruiker die de database kopie heeft gestart, wordt de data base-eigenaar van de nieuwe data base. Nadat het kopiëren is voltooid en voordat andere gebruikers opnieuw zijn toegewezen, kan alleen de eigenaar van de data base zich aanmelden bij de nieuwe data base.
 

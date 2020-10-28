@@ -7,21 +7,20 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: 2aa30f86b32005b9c85664b5bb2d0772a6e5f443
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: a009cd7763b4a4dc0c502d4c47a20d6fdffe61d7
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940766"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125438"
 ---
 # <a name="confidential-computing-nodes-on-azure-kubernetes-service-public-preview"></a>Confidential Computing-knooppunten in Azure Kubernetes Service (openbare preview)
 
-Met [Azure Confidential Computing](overview.md) kunt u uw gevoelige gegevens tijdens het gebruik beschermen. De onderliggende infrastructuren beveiligen deze gegevens van andere toepassingen, beheerders en cloudproviders. 
+Met [Azure Confidential Computing](overview.md) kunt u uw gevoelige gegevens tijdens het gebruik beschermen. De onderliggende infrastructuren beveiligen deze gegevens van andere toepassingen, beheerders en cloudproviders met een hardwarematige, vertrouwde uitvoeringsomgeving.
 
 ## <a name="overview"></a>Overzicht
 
-Azure Kubernetes Service (AKS) biedt ondersteuning voor het toevoegen van [DCsv2 Confidential Computing-knooppunten](confidential-computing-enclaves.md) voor Intel SGX. Op deze knooppunten worden gevoelige workloads uitgevoerd binnen een hardwarematige, vertrouwde uitvoeringsomgeving door code op gebruikersniveau toe te staan persoonlijke gebieden van het geheugen toe te wijzen. Deze persoonlijke geheugengebieden worden enclaves genoemd. Enclaves zijn ontworpen voor het beveiligen van code en gegevens van processen die met hogere bevoegdheid worden uitgevoerd. Het SGX-uitvoeringsmodel haalt de tussenliggende lagen van het gastbesturingssysteem en Hypervisor weg. Hierdoor kunt u containertoepassingen rechtstreeks op de CPU uitvoeren, terwijl het speciale geheugenblok versleuteld blijft. 
-
+Azure Kubernetes Service (AKS) biedt ondersteuning voor het toevoegen van [DCsv2 Confidential Computing-knooppunten](confidential-computing-enclaves.md) mogelijk gemaakt door Intel SGX. Op deze knooppunten kunnen gevoelige workloads worden uitgevoerd binnen een hardwarematige, vertrouwde uitvoeringsomgeving door code op gebruikersniveau toe te staan persoonlijke gebieden van het geheugen toe te wijzen. Deze persoonlijke geheugengebieden worden enclaves genoemd. Enclaves zijn ontworpen voor het beveiligen van code en gegevens van processen die met hogere bevoegdheid worden uitgevoerd. Het SGX-uitvoeringsmodel haalt de tussenliggende lagen van Hypervisor en het besturingssysteem van de gast en de host. Met het *hardwarematige, per container geïsoleerde uitvoeringsmodel* kunnen toepassingen rechtstreeks worden uitgevoerd met de CPU, terwijl het speciale blok geheugen versleuteld blijft. Vertrouwelijke rekenknooppunten helpen bij de algemene beveiligingspostuur van containertoepassingen op AKS en zijn een uitstekende toevoeging voor een containerstrategie die voorzien is van krachtige beveiliging. 
 
 ![overzicht van sgx-knoop punt](./media/confidential-nodes-aks-overview/sgxaksnode.jpg)
 
@@ -36,7 +35,7 @@ Azure Kubernetes Service (AKS) biedt ondersteuning voor het toevoegen van [DCsv2
 - Helper voor bevestiging van out-of-process via AKS-daemonset
 - Linux-containers biden ondersteuning via Ubuntu 18.04 Gen 2 VM-werkknooppunten
 
-## <a name="aks-provided-daemon-sets"></a>Door AKS geleverde daemonsets
+## <a name="aks-provided-daemon-sets-addon"></a>Door AKS geleverde daemonsets (invoegtoepassing)
 
 #### <a name="sgx-device-plugin"></a>SGX Device Plugin <a id="sgx-plugin"></a>
 

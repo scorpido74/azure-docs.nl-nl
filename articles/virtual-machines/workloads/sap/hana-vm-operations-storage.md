@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/28/2020
+ms.date: 10/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9194b461cdceab889e1dfd20e3e70f3f69cb4369
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0861d1fd3ab2a378f0b9afc4e8b35b32badfc3db
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978251"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670666"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Configuraties van SAP HANA in virtuele Azure-machineopslag
 
@@ -44,9 +44,9 @@ De minimale SAP HANA gecertificeerde voor waarden voor de verschillende opslag t
 
 - Azure Premium Storage- **/Hana/log** moet worden ondersteund door Azure [Write Accelerator](../../how-to-enable-write-accelerator.md). Het **/Hana/data** -volume kan in Premium Storage worden geplaatst zonder Azure write Accelerator of op een ultra schijf
 - Azure Ultra Disk ten minste voor het **/Hana/log** -volume. Het **/Hana/data** -volume kan worden geplaatst in Premium Storage zonder Azure write Accelerator of om sneller opnieuw opstarten te krijgen met een hoge schijf
-- **NFS v 4.1** -volumes boven op Azure NetApp files voor **/Hana/log en/Hana/data**. Het volume van/Hana/Shared kan NFS v3 of NFS v 4.1-protocol gebruiken
+- **NFS v 4.1** -volumes boven op Azure NetApp files voor **/Hana/log en/Hana/data** . Het volume van/Hana/Shared kan NFS v3 of NFS v 4.1-protocol gebruiken
 
-Sommige opslag typen kunnen worden gecombineerd. Het is bijvoorbeeld mogelijk om **/Hana/data** in te stellen op Premium Storage en **/Hana/log** kunnen op ultra Disk Storage worden geplaatst om de vereiste lage latentie te verkrijgen. Als u een volume gebruikt op basis van ANF voor **/Hana/data**, moet  **/Hana/log** -volume ook worden gebaseerd op NFS op ANF. Het gebruik van NFS op ANF voor een van de volumes (zoals/Hana/data) en Azure Premium Storage of Ultra disk voor het andere volume (zoals **/Hana/log**) wordt **niet ondersteund**.
+Sommige opslag typen kunnen worden gecombineerd. Het is bijvoorbeeld mogelijk om **/Hana/data** in te stellen op Premium Storage en **/Hana/log** kunnen op ultra Disk Storage worden geplaatst om de vereiste lage latentie te verkrijgen. Als u een volume gebruikt op basis van ANF voor **/Hana/data** , moet  **/Hana/log** -volume ook worden gebaseerd op NFS op ANF. Het gebruik van NFS op ANF voor een van de volumes (zoals/Hana/data) en Azure Premium Storage of Ultra disk voor het andere volume (zoals **/Hana/log** ) wordt **niet ondersteund** .
 
 In de on-premises wereld moest u zelden aandacht houden met de I/O-subsystemen en de mogelijkheden ervan. Daarom moest de leverancier van het apparaat controleren of aan de minimale opslag vereisten wordt voldaan voor de SAP HANA. Wanneer u zelf de Azure-infra structuur bouwt, moet u rekening houden met een aantal van deze SAP-vereisten. Enkele van de minimale doorvoer kenmerken die door SAP worden aanbevolen, zijn:
 
@@ -93,7 +93,7 @@ In de onderstaande cache aanbevelingen voor Azure Premium-schijven worden de I/O
 - **Besturingssysteem schijf** -de standaard cache die door Azure is ingesteld tijdens het maken van de VM, niet wijzigen
 
 
-Als u LVM of mdadm gebruikt om stripesets te maken op verschillende Azure Premium-schijven, moet u Stripe-grootten definiëren. Deze grootten verschillen tussen **/Hana/data** en **/Hana/log**. **Aanbeveling: als het formaat van de Stripe moet worden gebruikt:**
+Als u LVM of mdadm gebruikt om stripesets te maken op verschillende Azure Premium-schijven, moet u Stripe-grootten definiëren. Deze grootten verschillen tussen **/Hana/data** en **/Hana/log** . **Aanbeveling: als het formaat van de Stripe moet worden gebruikt:**
 
 - 256 KB voor **/Hana/data**
 - 64 KB voor **/Hana/log**
@@ -143,36 +143,36 @@ Met name op kleinere DBMS-systemen waarbij uw werk belasting enkele honderden tr
 
 Configuratie voor het SAP **/Hana/data** -volume:
 
-| VM-SKU | RAM | Met maximaal VM-I/O<br /> Doorvoer | /hana/data | Maximale burst-door Voer | IOPS | Burst IOPS |
+| VM-SKU | RAM | Met maximaal VM-I/O<br /> Doorvoer | /hana/data | Ingerichte doorvoer | Maximale burst-door Voer | IOPS | Burst IOPS |
 | --- | --- | --- | --- | --- | --- | --- | 
-| M32ts | 192 GiB | 500 MBps | 4 x P6 | 680 MBps | 960 | 14.000 |
-| M32ls | 256 GiB | 500 MBps | 4 x P6 | 680 MBps | 960 | 14.000 |
-| M64ls | 512 GiB | 1.000 MBps | 4 x P10 |  680 MBps | 2.000 | 14.000 |
-| M64s | 1.000 GiB | 1.000 MBps | 4 x P15 | 680 MBps | 4.400 | 14.000 |
-| M64ms | 1.750 GiB | 1.000 MBps | 4 x P20 | 680 MBps | 9.200 | 14.000 |  
-| M128s | 2.000 GiB | 2.000 MBps | 4 x P20 | 680 MBps | 9.200| 14.000 | 
-| M128ms | 3.800 GiB | 2.000 MBps | 4 x P30 | 800 MBps (ingericht) | 20.000 | geen burst | 
-| M208s_v2 | 2.850 GiB | 1.000 MBps | 4 x P30 | 800 MBps (ingericht) | 20.000| geen burst | 
-| M208ms_v2 | 5.700 GiB | 1.000 MBps | 4 x P40 | 1.000 MBps (ingericht) | 25,000 | geen burst |
-| M416s_v2 | 5.700 GiB | 2.000 MBps | 4 x P40 | 1.000 MBps (ingericht) | 25,000 | geen burst |
-| M416ms_v2 | 11.400 GiB | 2.000 MBps | 4 x P50 | 2.000 MBps (ingericht) | 25,000 | geen burst |
+| M32ts | 192 GiB | 500 MBps | 4 x P6 | 200 MBps | 680 MBps | 960 | 14.000 |
+| M32ls | 256 GiB | 500 MBps | 4 x P6 | 200 MBps | 680 MBps | 960 | 14.000 |
+| M64ls | 512 GiB | 1.000 MBps | 4 x P10 | 400 MBps | 680 MBps | 2.000 | 14.000 |
+| M64s | 1.000 GiB | 1.000 MBps | 4 x P15 | 500 MBps | 680 MBps | 4.400 | 14.000 |
+| M64ms | 1.750 GiB | 1.000 MBps | 4 x P20 | 600 MBps | 680 MBps | 9.200 | 14.000 |  
+| M128s | 2.000 GiB | 2.000 MBps | 4 x P20 | 600 MBps | 680 MBps | 9.200| 14.000 | 
+| M128ms | 3.800 GiB | 2.000 MBps | 4 x P30 | 800 MBps | geen bursting | 20.000 | geen bursting | 
+| M208s_v2 | 2.850 GiB | 1.000 MBps | 4 x P30 | 800 MBps | geen bursting | 20.000| geen bursting | 
+| M208ms_v2 | 5.700 GiB | 1.000 MBps | 4 x P40 | 1.000 MBps | geen bursting | 30.000 | geen bursting |
+| M416s_v2 | 5.700 GiB | 2.000 MBps | 4 x P40 | 1.000 MBps | geen bursting | 30.000 | geen bursting |
+| M416ms_v2 | 11.400 GiB | 2.000 MBps | 4 x P50 | 2.000 MBps | geen bursting | 30.000 | geen bursting |
 
 
 Voor het **/Hana/log** -volume. de configuratie zou er als volgt uitzien:
 
-| VM-SKU | RAM | Met maximaal VM-I/O<br /> Doorvoer | **/Hana/log** volume | Maximale burst-door Voer | IOPS | Burst IOPS |
+| VM-SKU | RAM | Met maximaal VM-I/O<br /> Doorvoer | **/Hana/log** volume | Ingerichte doorvoer | Maximale burst-door Voer | IOPS | Burst IOPS |
 | --- | --- | --- | --- | --- | --- | --- | 
-| M32ts | 192 GiB | 500 MBps | 3 x P10 | 510 MBps | 1500 | 10.500 | 
-| M32ls | 256 GiB | 500 MBps | 3 x P10 | 510 MBps | 1500 | 10.500 | 
-| M64ls | 512 GiB | 1.000 MBps | 3 x P10 | 510 MBps | 1500 | 10.500 | 
-| M64s | 1.000 GiB | 1.000 MBps | 3 x P15 | 510 MBps | 3.300 | 10.500 | 
-| M64ms | 1.750 GiB | 1.000 MBps | 3 x P15 | 510 MBps | 3.300 | 10.500 |  
-| M128s | 2.000 GiB | 2.000 MBps | 3 x P15 | 510 MBps | 3.300 | 10.500|  
-| M128ms | 3.800 GiB | 2.000 MBps | 3 x P15 | 510 MBps | 3.300 | 10.500 | 
-| M208s_v2 | 2.850 GiB | 1.000 MBps | 3 x P15 | 510 MBps | 3.300 | 10.500 |  
-| M208ms_v2 | 5.700 GiB | 1.000 MBps | 3 x P15 | 510 MBps | 3.300 | 10.500 |  
-| M416s_v2 | 5.700 GiB | 2.000 MBps | 3 x P15 | 510 MBps | 3.300 | 10.500 |  
-| M416ms_v2 | 11.400 GiB | 2.000 MBps | 3 x P15 | 510 MBps | 3.300 | 10.500 | 
+| M32ts | 192 GiB | 500 MBps | 3 x P10 | 300 MBps | 510 MBps | 1500 | 10.500 | 
+| M32ls | 256 GiB | 500 MBps | 3 x P10 | 300 MBps | 510 MBps | 1500 | 10.500 | 
+| M64ls | 512 GiB | 1.000 MBps | 3 x P10 | 300 MBps | 510 MBps | 1500 | 10.500 | 
+| M64s | 1.000 GiB | 1.000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3.300 | 10.500 | 
+| M64ms | 1.750 GiB | 1.000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3.300 | 10.500 |  
+| M128s | 2.000 GiB | 2.000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3.300 | 10.500|  
+| M128ms | 3.800 GiB | 2.000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3.300 | 10.500 | 
+| M208s_v2 | 2.850 GiB | 1.000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3.300 | 10.500 |  
+| M208ms_v2 | 5.700 GiB | 1.000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3.300 | 10.500 |  
+| M416s_v2 | 5.700 GiB | 2.000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3.300 | 10.500 |  
+| M416ms_v2 | 11.400 GiB | 2.000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3.300 | 10.500 | 
 
 
 Voor de andere volumes ziet de configuratie er als volgt uit:
@@ -192,19 +192,19 @@ Voor de andere volumes ziet de configuratie er als volgt uit:
 | M416ms_v2 | 11.400 GiB | 2.000 MBps | 1 x P30 | 1 x P10 | 1 x P6 | 
 
 
-Controleer of de opslag doorvoer voor de verschillende voorgestelde volumes voldoet aan de werk belasting die u wilt uitvoeren. Als voor de werk belasting hogere volumes zijn vereist voor **/Hana/data** en **/Hana/log**, moet u het aantal Azure Premium-opslag-vhd's verhogen. Het formaat van een volume met meer Vhd's dan wordt weer gegeven, verhoogt de IOPS en I/O-door Voer binnen de limieten van het type virtuele machine van Azure.
+Controleer of de opslag doorvoer voor de verschillende voorgestelde volumes voldoet aan de werk belasting die u wilt uitvoeren. Als voor de werk belasting hogere volumes zijn vereist voor **/Hana/data** en **/Hana/log** , moet u het aantal Azure Premium-opslag-vhd's verhogen. Het formaat van een volume met meer Vhd's dan wordt weer gegeven, verhoogt de IOPS en I/O-door Voer binnen de limieten van het type virtuele machine van Azure.
 
 Azure Write Accelerator werkt alleen in combi natie met [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/). Ten minste de Azure Premium-opslag schijven die het **/Hana/log** -volume vormen, moeten worden geïmplementeerd als managed disks. Meer gedetailleerde instructies en beperkingen van Azure Write Accelerator vindt u in het artikel [Write Accelerator](../../how-to-enable-write-accelerator.md).
 
 Voor de HANA-gecertificeerde Vm's van de Azure [Esv3](../../ev3-esv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#esv3-series) -familie en de [EDSV4](../../edv4-edsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#edsv4-series)moet u ANF voor het **/Hana/data** -en **/Hana/log** -volume. U moet ook gebruikmaken van de ultra schijf opslag van Azure in plaats van Azure Premium Storage voor het **/Hana/log** -volume. Als gevolg hiervan kunnen de configuraties voor het **/Hana/data** -volume in azure Premium Storage er als volgt uitzien:
 
-| VM-SKU | RAM | Met maximaal VM-I/O<br /> Doorvoer | /hana/data | Maximale burst-door Voer | IOPS | Burst IOPS |
+| VM-SKU | RAM | Met maximaal VM-I/O<br /> Doorvoer | /hana/data | Ingerichte doorvoer | Maximale burst-door Voer | IOPS | Burst IOPS |
 | --- | --- | --- | --- | --- | --- | --- |
-| E20ds_v4 | 160 GiB | 480 MBps | 3 x P10 | 510 MBps | 1500 | 10.500 |
-| E32ds_v4 | 256 GiB | 768 MBps | 3 x P10 |  510 MBps | 1500 | 10.500|
-| E48ds_v4 | 384 GiB | 1.152 MBps | 3 x P15 |  510 MBps | 3.300  | 10.500 | 
-| E64ds_v4 | 504 GiB | 1.200 MBps | 3 x P15 |  510 MBps | 3.300 | 10.500 | 
-| E64s_v3 | 432 GiB | 1.200 MB/s | 3 x P15 |  510 MBps | 3.300 | 10.500 | 
+| E20ds_v4 | 160 GiB | 480 MBps | 3 x P10 | 300 MBps | 510 MBps | 1500 | 10.500 |
+| E32ds_v4 | 256 GiB | 768 MBps | 3 x P10 |  300 MBps | 510 MBps | 1500 | 10.500|
+| E48ds_v4 | 384 GiB | 1.152 MBps | 3 x P15 |  375 MBps |510 MBps | 3.300  | 10.500 | 
+| E64ds_v4 | 504 GiB | 1.200 MBps | 3 x P15 |  375 MBps | 510 MBps | 3.300 | 10.500 | 
+| E64s_v3 | 432 GiB | 1.200 MB/s | 3 x P15 |  375 MBps | 510 MBps | 3.300 | 10.500 | 
 
 Voor de andere volumes, met inbegrip van **/Hana/log** op ultra disk, kan de configuratie er als volgt uitzien:
 

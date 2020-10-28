@@ -2,19 +2,19 @@
 title: Azure Automation Updatebeheer inschakelen vanuit het Automation-account
 description: In dit artikel leest u hoe u Updatebeheer kunt inschakelen vanuit een Automation-account.
 services: automation
-ms.date: 10/15/2020
+ms.date: 10/26/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 1c28d73cac142e85cc9faf36d5e875d684094724
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 9630b29def0c450ef907219895d1488d72fd78d1
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222324"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669908"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>Updatebeheer inschakelen vanaf een Automation-account
 
-In dit artikel wordt beschreven hoe u uw Automation-account kunt gebruiken om de [updatebeheer](overview.md) -functie voor vm's in uw omgeving in te scha kelen, inclusief computers of servers die zijn geregistreerd met [servers met Azure Arc-functionaliteit](../../azure-arc/servers/overview.md) (preview). Als u Azure-Vm's op schaal wilt inschakelen, moet u een bestaande Azure VM inschakelen met behulp van Updatebeheer.
+In dit artikel wordt beschreven hoe u uw Automation-account kunt gebruiken om de [updatebeheer](overview.md) -functie in te scha kelen voor virtuele machines in uw omgeving, met inbegrip van computers of servers die zijn geregistreerd bij [servers met Azure Arc-functionaliteit](../../azure-arc/servers/overview.md). Als u Azure-Vm's op schaal wilt inschakelen, moet u een bestaande Azure VM inschakelen met behulp van Updatebeheer.
 
 > [!NOTE]
 > Bij het inschakelen van Updatebeheer worden slechts bepaalde regio's ondersteund voor het koppelen van een Log Analytics-werkruimte aan een Automation-account. Zie [Regio's toewijzen voor Automation-account en Log Analytics-werkruimte](../how-to/region-mappings.md) voor een lijst van alle ondersteunde toewijzingsparen.
@@ -23,7 +23,7 @@ In dit artikel wordt beschreven hoe u uw Automation-account kunt gebruiken om de
 
 * Azure-abonnement. Als u nog geen abonnement hebt, kunt u [uw voordelen als MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of u aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Automation-account](../index.yml) voor het beheren van computers.
-* Een [virtuele machine van Azure](../../virtual-machines/windows/quick-create-portal.md)of een VM of server die is geregistreerd bij servers met Arc-functionaliteit (preview). Voor niet-Azure-Vm's of-servers moet de [log Analytics-agent](../../azure-monitor/platform/log-analytics-agent.md) voor Windows of Linux geïnstalleerd zijn en worden gerapporteerd aan de werk ruimte die is gekoppeld aan het Automation-account updatebeheer is ingeschakeld in. De agent kan worden geïnstalleerd op servers met Arc-functionaliteit door de [azure log Analytics VM-extensie](../../azure-arc/servers/manage-vm-extensions.md) te implementeren met Azure Arc.
+* Een [virtuele machine van Azure](../../virtual-machines/windows/quick-create-portal.md)of een VM of server die is geregistreerd bij servers met Arc-functionaliteit (preview). Voor niet-Azure-Vm's of-servers moet de [log Analytics-agent](../../azure-monitor/platform/log-analytics-agent.md) voor Windows of Linux geïnstalleerd zijn en worden gerapporteerd aan de werk ruimte die is gekoppeld aan het Automation-account updatebeheer is ingeschakeld in. Het is raadzaam om de Log Analytics-agent voor Windows of Linux te installeren door eerst uw computer te verbinden met [servers met Azure-Arc](../../azure-arc/servers/overview.md)en vervolgens Azure Policy te gebruiken om de implementatie van [log Analytics agent toe te wijzen aan het ingebouwde beleid voor *Linux* of *Windows* Azure Arc-machines](../../governance/policy/samples/built-in-policies.md#monitoring) . Als u van plan bent om ook de machines met Azure Monitor voor VM's te bewaken, moet u in plaats daarvan het Azure Monitor voor VM's-initiatief [inschakelen](../../governance/policy/samples/built-in-initiatives.md#monitoring) .
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -31,7 +31,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 ## <a name="enable-update-management"></a>Updatebeheer inschakelen
 
-1. Selecteer in uw Automation-account **Update beheer** onder **Update beheer**.
+1. Selecteer in uw Automation-account **Update beheer** onder **Update beheer** .
 
 2. Kies de Log Analytics werk ruimte en het Automation-account en selecteer **inschakelen** om updatebeheer in te scha kelen. Het volt ooien van de installatie duurt Maxi maal 15 minuten.
 
@@ -39,7 +39,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 ## <a name="enable-azure-vms"></a>Virtuele Azure-machines inschakelen
 
-1. Selecteer in uw Automation-account **Update beheer** onder **Update beheer**.
+1. Selecteer in uw Automation-account **Update beheer** onder **Update beheer** .
 
 2. Selecteer **+ virtuele machines van Azure toevoegen** en selecteer een of meer virtuele machines in de lijst. Virtuele machines die niet kunnen worden ingeschakeld, worden grijs weer gegeven en kunnen niet worden geselecteerd. Azure-Vm's kunnen in elke regio bestaan, ongeacht de locatie van uw Automation-account.
 
@@ -53,7 +53,7 @@ Machines die niet in azure zijn, moeten hand matig worden toegevoegd.
 
 1. Selecteer **Updatebeheer** onder **Updatebeheer** in uw Automation-account.
 
-2. Selecteer **niet-Azure-machine toevoegen**. Met deze actie wordt een nieuw browser venster geopend met [instructies voor het installeren en configureren van de log Analytics-agent voor Windows](../../azure-monitor/platform/log-analytics-agent.md) , zodat de computer kan beginnen met het rapporteren van updatebeheer. Als u een machine inschakelt die momenteel wordt beheerd door Operations Manager, is een nieuwe agent niet vereist. De werkruimte gegevens worden toegevoegd aan de agent configuratie.
+2. Selecteer **niet-Azure-machine toevoegen** . Met deze actie wordt een nieuw browser venster geopend met [instructies voor het installeren en configureren van de log Analytics-agent voor Windows](../../azure-monitor/platform/log-analytics-agent.md) , zodat de computer kan beginnen met het rapporteren van updatebeheer. Als u een machine inschakelt die momenteel wordt beheerd door Operations Manager, is een nieuwe agent niet vereist. De werkruimte gegevens worden toegevoegd aan de agent configuratie.
 
 ## <a name="enable-machines-in-the-workspace"></a>Computers in de werk ruimte inschakelen
 
@@ -61,13 +61,13 @@ Hand matig geïnstalleerde computers of machines die al aan uw werk ruimte rappo
 
 1. Selecteer **Updatebeheer** onder **Updatebeheer** in uw Automation-account.
 
-2. Selecteer **machines beheren**. De knop **machines beheren** kan grijs worden weer gegeven als u eerder de optie **inschakelen op alle beschik bare en toekomstige computers** hebt gekozen
+2. Selecteer **machines beheren** . De knop **machines beheren** kan grijs worden weer gegeven als u eerder de optie **inschakelen op alle beschik bare en toekomstige computers** hebt gekozen
 
     ![Opgeslagen Zoek opdrachten](media/enable-from-automation-account/managemachines.png)
 
 3. Als u Updatebeheer wilt inschakelen voor alle beschik bare computers die rapporteren aan de werk ruimte, selecteert u **inschakelen op alle beschik bare computers** op de pagina machines beheren. Met deze actie wordt het besturings element uitgeschakeld om computers afzonderlijk toe te voegen en worden alle machines die aan de werk ruimte rapporteren worden toegevoegd aan de computer groep opgeslagen Zoek query `MicrosoftDefaultComputerGroup` . Wanneer dit selectie vakje is ingeschakeld, wordt de optie **machines beheren** door deze actie uitgeschakeld.
 
-4. Als u de functie wilt inschakelen voor alle beschik bare machines en toekomstige computers, selecteert u **inschakelen op alle beschik bare en toekomstige computers**. Met deze optie wordt de opgeslagen Zoek-en Scope configuratie verwijderd uit de werk ruimte en kan de functie alle Azure-en niet-Azure-machines die momenteel of in de toekomst zijn opgenomen, rapporteren aan de werk ruimte. Wanneer dit selectie vakje is ingeschakeld, wordt de optie voor het **beheren van computers** permanent uitgeschakeld, omdat er geen scope configuratie beschikbaar is.
+4. Als u de functie wilt inschakelen voor alle beschik bare machines en toekomstige computers, selecteert u **inschakelen op alle beschik bare en toekomstige computers** . Met deze optie wordt de opgeslagen Zoek-en Scope configuratie verwijderd uit de werk ruimte en kan de functie alle Azure-en niet-Azure-machines die momenteel of in de toekomst zijn opgenomen, rapporteren aan de werk ruimte. Wanneer dit selectie vakje is ingeschakeld, wordt de optie voor het **beheren van computers** permanent uitgeschakeld, omdat er geen scope configuratie beschikbaar is.
 
     > [!NOTE]
     > Omdat met deze optie de opgeslagen Zoek-en Scope configuratie in Log Analytics wordt verwijderd, is het belang rijk dat u verwijderings vergrendelingen verwijdert uit de werk ruimte Log Analytics voordat u deze optie selecteert. Als dat niet het geval is, kan de optie de configuraties niet verwijderen en moet u ze hand matig verwijderen.

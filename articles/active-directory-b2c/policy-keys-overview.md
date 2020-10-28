@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8019c049d830df0c2f3301a450eed60145c8eab3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02294d4832224f1c94a4c586f3dcc455255bfbbf
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89570446"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670108"
 ---
 # <a name="overview-of-policy-keys-in-azure-active-directory-b2c"></a>Overzicht van beleids sleutels in Azure Active Directory B2C
 
@@ -34,7 +34,7 @@ U kunt geheimen en certificaten configureren voor het tot stand brengen van een 
 
 ## <a name="policy-keyset-and-keys"></a>Sleutel sets en sleutels voor beleid
 
-De resource op het hoogste niveau voor beleids sleutels in Azure AD B2C is de container voor **sleutel sets** . Elke sleutelset bevat ten minste één **sleutel**. Een sleutel heeft de volgende kenmerken:
+De resource op het hoogste niveau voor beleids sleutels in Azure AD B2C is de container voor **sleutel sets** . Elke sleutelset bevat ten minste één **sleutel** . Een sleutel heeft de volgende kenmerken:
 
 | Kenmerk |  Vereist | Opmerkingen |
 | --- | --- |--- |
@@ -58,7 +58,7 @@ Uit veiligheids overwegingen kan Azure AD B2C regel matig of onmiddellijk in het
 
 Als een Azure AD B2C sleutelset meerdere sleutels heeft, is slechts één van de sleutels tegelijk actief, op basis van de volgende criteria:
 
-- De sleutel activering is gebaseerd op de **activerings datum**.
+- De sleutel activering is gebaseerd op de **activerings datum** .
   - De sleutels worden gesorteerd op de activerings datum in oplopende volg orde. Sleutels met een meer activerings datum in de toekomst worden lager in de lijst weer gegeven. Sleutels zonder een activerings datum bevinden zich onder aan de lijst.
   - Wanneer de huidige datum en tijd groter is dan de activerings datum van een sleutel, wordt de sleutel door Azure AD B2C geactiveerd en wordt de vorige actieve sleutel niet meer gebruikt.
 - Wanneer de verval tijd van de huidige sleutel is verstreken en de sleutel container een nieuwe sleutel bevat met de tijden geldig en *niet vóór* en *verloop* tijd, wordt de nieuwe sleutel automatisch actief.
@@ -74,10 +74,17 @@ Voor het toevoegen of verwijderen van ondertekenings-en versleutelings sleutels:
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het pictogram **Map + Abonnement** in de werkbalk van de portal en selecteer vervolgens de map die uw Azure AD B2C-tenant bevat.
 1. Zoek en selecteer **Azure AD B2C** in de Azure-portal.
-1. Selecteer op de pagina overzicht onder **beleids regels**het **Framework identiteits ervaring**.
+1. Selecteer op de pagina overzicht onder **beleids regels** het **Framework identiteits ervaring** .
 1. **Beleids sleutels** selecteren 
-    1. Selecteer **toevoegen**om een nieuwe sleutel toe te voegen.
-    1. Als u een nieuwe sleutel wilt verwijderen, selecteert u de sleutel en selecteert u vervolgens **verwijderen**. Als u de sleutel wilt verwijderen, typt u de naam van de sleutel container die u wilt verwijderen. De sleutel wordt door Azure AD B2C verwijderd en er wordt een kopie van de sleutel gemaakt met het achtervoegsel. bak.
+    1. Selecteer **toevoegen** om een nieuwe sleutel toe te voegen.
+    1. Als u een nieuwe sleutel wilt verwijderen, selecteert u de sleutel en selecteert u vervolgens **verwijderen** . Als u de sleutel wilt verwijderen, typt u de naam van de sleutel container die u wilt verwijderen. De sleutel wordt door Azure AD B2C verwijderd en er wordt een kopie van de sleutel gemaakt met het achtervoegsel. bak.
+
+### <a name="replace-a-key"></a>Een sleutel vervangen
+
+De sleutels in een sleutelset zijn niet vervangbaar of verwisselbaar. Als u een bestaande sleutel wilt wijzigen:
+
+- U kunt het beste een nieuwe sleutel toevoegen waarbij de **activerings datum** is ingesteld op de huidige datum en tijd. Azure AD B2C wordt de nieuwe sleutel geactiveerd en stopt met het gebruik van de vorige actieve sleutel.
+- U kunt ook een nieuwe sleutelset maken met de juiste sleutels. Werk uw beleid bij voor het gebruik van de nieuwe sleutelset en verwijder vervolgens de oude sleutelset. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c17750fbe016e8bfa86569f34f9af26b1c6de3bd
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: cb8cc98a020cb382a6941c1e410eab4543594629
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055848"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279004"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell-voorbeeldscripts
 
@@ -22,18 +22,21 @@ Azure Remote Rendering bevat de volgende twee REST API's:
 
 De [ARR-opslagplaats](https://github.com/Azure/azure-remote-rendering) bevat voorbeeldscripts in de map *Scripts* voor het werken met de REST API's van de service. In dit artikel wordt het gebruik hiervan beschreven.
 
+> [!TIP]
+> Er is ook een [op de gebruikersinterface gebaseerd hulpprogramma met de naam ARRT](azure-remote-rendering-asset-tool.md) om met de service te communiceren. Dit is een handig alternatief in plaats van scripts. ![ARRT](./media/azure-remote-rendering-asset-tool.png "Schermopname van ARRT")
+
 > [!CAUTION]
 > Als REST API-functies te vaak worden aangeroepen, wordt de server trager en wordt er uiteindelijk een fout geretourneerd. De HTTP-foutcode-id is in dit geval 429 ('Te veel aanvragen'). Als vuistregel moet er een vertraging van **5-10 seconden tussen opeenvolgende aanroepen** in acht worden genomen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u de voorbeeldscripts wilt uitvoeren, hebt u een functionele installatie van [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) nodig.
+Als u de voorbeeldscripts wilt uitvoeren, hebt u een functionele installatie van [Azure PowerShell](/powershell/azure/) nodig.
 
 1. Installeer Azure PowerShell:
     1. Open een PowerShell-venster met beheerdersrechten.
     1. Voer dit uit: `Install-Module -Name Az -AllowClobber`
 
-1. Als er fouten optreden bij het uitvoeren van scripts, controleert u of het [uitvoeringsbeleid](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) op de juiste wijze is ingesteld:
+1. Als er fouten optreden bij het uitvoeren van scripts, controleert u of het [uitvoeringsbeleid](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) op de juiste wijze is ingesteld:
     1. Open een PowerShell-venster met beheerdersrechten.
     1. Voer dit uit: `Set-ExecutionPolicy -ExecutionPolicy Unrestricted`
 
@@ -44,9 +47,9 @@ Als u de voorbeeldscripts wilt uitvoeren, hebt u een functionele installatie van
     1. Voer `Connect-AzAccount` uit en volg de aanwijzingen op het scherm.
 
     > [!NOTE]
-    > Als uw organisatie meerdere abonnementen heeft, moet u mogelijk de argumenten SubscriptionId en Tenant opgeven. Meer informatie vindt u in de [documentatie bij Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount).
+    > Als uw organisatie meerdere abonnementen heeft, moet u mogelijk de argumenten SubscriptionId en Tenant opgeven. Meer informatie vindt u in de [documentatie bij Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount).
 
-1. Download de map *Scripts* uit de [Azure Remote Rendering GithHub-opslagplaats](https://github.com/Azure/azure-remote-rendering).
+1. Download de map *Scripts* in de [Azure Remote Rendering GitHub-opslagplaats](https://github.com/Azure/azure-remote-rendering).
 
 ## <a name="configuration-file"></a>Configuratiebestand
 
@@ -124,13 +127,13 @@ Een **alternatief configuratiebestand** gebruiken:
 .\RenderingSession.ps1 -ConfigFile D:\arr\myotherconfigFile.json
 ```
 
-U kunt de **afzonderlijke instellingen van het configuratiebestand overschrijven**:
+U kunt de **afzonderlijke instellingen van het configuratiebestand overschrijven** :
 
 ```PowerShell
 .\RenderingSession.ps1 -Region <region> -VmSize <vmsize> -MaxLeaseTime <hh:mm:ss>
 ```
 
-Als u alleen **een sessie wilt starten zonder polling**, kunt u het volgende gebruiken:
+Als u alleen **een sessie wilt starten zonder polling** , kunt u het volgende gebruiken:
 
 ```PowerShell
 .\RenderingSession.ps1 -CreateSession
@@ -222,13 +225,13 @@ Een **alternatief configuratiebestand** gebruiken:
 .\Conversion.ps1 -ConfigFile D:\arr\myotherconfigFile.json
 ```
 
-Als u alleen **een modelconversie wilt starten zonder polling**, kunt u het volgende gebruiken:
+Als u alleen **een modelconversie wilt starten zonder polling** , kunt u het volgende gebruiken:
 
 ```PowerShell
 .\Conversion.ps1 -ConvertAsset
 ```
 
-Met de volgende opdrachtregelopties kunt u de **afzonderlijke instellingen uit het configuratiebestand overschrijven**:
+Met de volgende opdrachtregelopties kunt u de **afzonderlijke instellingen uit het configuratiebestand overschrijven** :
 
 * **Id:** ConversionId gebruikt met GetConversionStatus
 * **ArrAccountId:** arrAccountId van accountSettings
@@ -259,7 +262,7 @@ Alleen gegevens uit het opgegeven LocalAssetDirectoryPath uploaden.
 .\Conversion.ps1 -Upload
 ```
 
-Het conversieproces van een model dat al is geüpload naar blobopslag alleen starten (niet Upload uitvoeren, niet de conversiestatus pollen). Het script retourneert een *conversionId*.
+Het conversieproces van een model dat al is geüpload naar blobopslag alleen starten (niet Upload uitvoeren, niet de conversiestatus pollen). Het script retourneert een *conversionId* .
 
 ```PowerShell
 .\Conversion.ps1 -ConvertAsset

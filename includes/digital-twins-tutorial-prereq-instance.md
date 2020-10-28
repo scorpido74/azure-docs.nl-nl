@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 302a478dd32c93a555bb17e9d7d0f60bd7859a50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39a4c7b8afab1a9f102bc0bc24b40a7525d93d83
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91292669"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201343"
 ---
 ### <a name="prepare-an-azure-digital-twins-instance"></a>Een Azure Digital Twins-exemplaar voorbereiden
 
@@ -18,8 +18,4 @@ U hebt voor het uitvoeren van deze zelfstudie een **Azure Digital Twins-exemplaa
 
 * Als u dit niet doet, moet u **een exemplaar en verificatie instellen** met behulp van de instructies in [*Instructies: een exemplaar en verificatie instellen*](../articles/digital-twins/how-to-set-up-instance-portal.md). De instructies bevatten ook stappen om te controleren of u elke stap hebt voltooid en gereed bent om door te gaan met het nieuwe exemplaar.
 
-In deze zelfstudie hebt u de volgende waarden nodig, van toen u het exemplaar hebt ingesteld. Als u deze waarden opnieuw wilt opzoeken, gebruikt u de koppelingen naar de bijbehorende secties in het artikel over installeren om ze te vinden in de [Azure-portal](https://portal.azure.com).
-* Azure Digital Twins-exemplaar **_naam_** ([beschikbaar in de portal](../articles/digital-twins/how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
-* Azure Digital Twins-exemplaar **_hostnaam_** ([beschikbaar in de portal](../articles/digital-twins/how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
-* Azure AD-app-registratie **_Toepassings-id (client)_** ([beschikbaar in de portal](../articles/digital-twins/how-to-set-up-instance-portal.md#collect-important-values))
-* Azure AD-app-registratie **_Map-id (tenant)_** ([beschikbaar in de portal](../articles/digital-twins/how-to-set-up-instance-portal.md#collect-important-values))
+Zodra u een Azure Digital Twins-exemplaar hebt waarmee u in de zelfstudie kunt werken, hebt u de **_hostnaam_** van de instantie nodig ([zoek in de portal](../articles/digital-twins/how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)).

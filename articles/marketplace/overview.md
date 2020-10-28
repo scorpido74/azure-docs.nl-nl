@@ -3,16 +3,16 @@ title: Wat is de commerciële marketplace van Microsoft?
 description: Een overzicht van de voordelen en opties voor Microsoft-partners die oplossingen aanbieden in de commerciële marketplace van Microsoft.
 author: mingshen-ms
 ms.author: mingshen
-ms.reviewer: dannyevers
+ms.reviewer: dsindona
 ms.service: marketplace
 ms.topic: overview
-ms.date: 10/01/2020
-ms.openlocfilehash: 91ae1ce8cb61a0bbc4907c21f0e5e6b869cedb85
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/15/2020
+ms.openlocfilehash: 0b0f290a5f560fa8f6db109422c8790ecef9698e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91654266"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107042"
 ---
 # <a name="what-is-the-microsoft-commercial-marketplace"></a>Wat is de commerciële marketplace van Microsoft?
 
@@ -26,21 +26,41 @@ De commerciële marketplace van Microsoft heeft twee online winkels: [Microsoft 
 
 Wanneer u een commerciële-marketplace-aanbieding maakt in Partner Center, kan deze worden vermeld in een of beide online winkels, op basis van het type aanbieding en de categorieën en andere opties die u selecteert. In het zeldzame geval dat de aanbieding relevant is voor de gebruikers van beide online winkels, kan deze in beide worden weergegeven. Ga voor meer informatie naar [Een online winkel selecteren](determine-your-listing-type.md#selecting-an-online-store) en [A Buyer’s Guide to Microsoft AppSource and Azure Marketplace](https://aka.ms/MarketplaceBuyerGuide) (Kopershandleiding voor Microsoft AppSource en Azure Marketplace).
 
-**Microsoft AppSource** is voor zakelijke oplossingen, zoals SaaS-toepassingen (software als een service), en ook apps die rechtstreeks worden geïntegreerd met Dynamics 365, Microsoft 365 en Microsoft Power Platform. AppSource-adviesdiensten zijn professionele serviceaanbiedingen die klanten helpen aan de slag te gaan of verder te komen met het gebruiken van Dynamics 365 en Power BI.
+### <a name="microsoft-appsource"></a>Microsoft AppSource
+
+[Microsoft AppSource](https://appsource.microsoft.com/) is voor zakelijke oplossingen, zoals SaaS-toepassingen (software als een service), en ook apps die rechtstreeks worden geïntegreerd met Dynamics 365, Microsoft 365 en Microsoft Power Platform. AppSource-adviesdiensten zijn professionele serviceaanbiedingen die klanten helpen aan de slag te gaan of verder te komen met het gebruiken van Dynamics 365 en Power BI.
 
 Dit is een voorbeeld van een pagina met aanbiedingen in AppSource:
 
 :::image type="content" source="media/overview/example-appsource.png" alt-text="Illustreert een pagina met aanbiedingen in Microsoft AppSource.":::
 
-**Azure Marketplace** is voor oplossingen die op of voor Azure zijn gebouwd en bedoeld zijn voor IT-professionals en ontwikkelaars. Dit omvat vermeldingen voor consulting en beheerde services. Azure Marketplace-adviesdiensten zijn professionele serviceaanbiedingen die klanten helpen aan de slag te gaan of verder te komen met het gebruiken van Azure.
+####  <a name="appsource-in-product-experience"></a>AppSource opgenomen in producten
+
+Klanten hebben ook toegang tot uw AppSource-aanbiedingen via Microsoft 365, Dynamics 365, het Power Platform en Azure. In het volgende voorbeeld ziet u hoe u AppSource-invoegtoepassingen opent vanuit het Power BI-menu **Bestand** .
+
+:::image type="content" source="media/overview/power-bi.png" alt-text="Illustreert een pagina met aanbiedingen in Microsoft AppSource."::: 
+
+Met deze optie wordt een venster geopend waarin de klant naar Power BI-invoegtoepassingen kan zoeken op naam of categorie. 
+
+:::image type="content" source="media/overview/power-bi-apps.png" alt-text="Illustreert een pagina met aanbiedingen in Microsoft AppSource."::: 
+
+### <a name="azure-marketplace"></a>Azure Marketplace
+
+[Azure Marketplace](https://azuremarketplace.microsoft.com/) is voor oplossingen die op of voor Azure zijn gebouwd en bedoeld zijn voor IT-professionals en ontwikkelaars. Dit omvat vermeldingen voor consulting en beheerde services. Azure Marketplace-adviesdiensten zijn professionele serviceaanbiedingen die klanten helpen aan de slag te gaan of verder te komen met het gebruiken van Azure.
 
 Dit is een voorbeeld van een pagina met aanbiedingen in Azure Marketplace:
 
 :::image type="content" source="media/overview/example-marketplace.png" alt-text="Illustreert een pagina met aanbiedingen in Microsoft AppSource."::: 
 
-Omdat Azure Marketplace op Azure is gebouwd, hebben klanten toegang tot oplossingen via de optie **Een resource maken** in de [Azure-portal](https://portal.azure.com/).
+#### <a name="azure-marketplace-in-the-azure-portal"></a>Azure Marketplace in de Azure-portal
+
+Azure-klanten hebben toegang tot Azure Marketplace-oplossingen via de optie **Een resource maken** in de [Azure-portal](https://portal.azure.com/).
 
 :::image type="content" source="media/overview/create-resource.png" alt-text="Illustreert een pagina met aanbiedingen in Microsoft AppSource."::: 
+
+Met deze optie wordt de Azure Marketplace op de Azure-portal geopend, waar gezocht kan worden naar oplossingen op naam of categorie.
+
+:::image type="content" source="media/overview/search-portal.png" alt-text="Illustreert een pagina met aanbiedingen in Microsoft AppSource."::: 
 
 ## <a name="benefits-of-selling-with-microsoft"></a>Voordelen van verkopen met Microsoft
 

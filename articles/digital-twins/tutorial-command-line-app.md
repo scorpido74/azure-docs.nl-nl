@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 8ffdcac61a3ab0d27fec7602e8625c0367f6c33b
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: d7c95317667999ac17803f08575e68641100b967
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048488"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460781"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Zelfstudie: Azure Digital Twins verkennen met een voorbeeldclient-app
 
@@ -24,7 +24,7 @@ In deze zelfstudie gaat u...
 > [!div class="checklist"]
 > * Een Azure Digital Twins-instantie instellen
 > * De voorbeeldopdrachtregel-app configureren om te interageren met de instantie
-> * De opdrachtregel-app gebruiken om Azure Digital Twins te verkennen, inclusief **modellen**, **digitale tweelingen**, **relaties** en **query's**
+> * De opdrachtregel-app gebruiken om Azure Digital Twins te verkennen, inclusief **modellen** , **digitale tweelingen** , **relaties** en **query's**
 
 [!INCLUDE [Azure Digital Twins tutorial: sample prerequisites](../../includes/digital-twins-tutorial-sample-prereqs.md)]
 
@@ -32,13 +32,13 @@ In deze zelfstudie gaat u...
 
 ## <a name="explore-with-the-sample-solution"></a>Verkennen met de voorbeeldoplossing
 
-Nu de instantie en de voorbeeld-app zijn geconfigureerd, gaat u het voorbeeldproject en wat vooraf geschreven voorbeeldcode gebruiken om een eenvoudige Azure Digital Twins-oplossing uit te bouwen en te verkennen. De hoofdcomponenten van de oplossing zijn **modellen**, **digitale tweelingen** en **relaties**, resulterend in een **tweelinggrafiek** van een omgeving waarop query's kunnen worden uitgevoerd.
+Nu de instantie en de voorbeeld-app zijn geconfigureerd, gaat u het voorbeeldproject en wat vooraf geschreven voorbeeldcode gebruiken om een eenvoudige Azure Digital Twins-oplossing uit te bouwen en te verkennen. De hoofdcomponenten van de oplossing zijn **modellen** , **digitale tweelingen** en **relaties** , resulterend in een **tweelinggrafiek** van een omgeving waarop query's kunnen worden uitgevoerd.
 
 ### <a name="model-a-physical-environment-with-dtdl"></a>Een fysieke omgeving modelleren met DTDL
 
-De eerste stap bij het maken van een Azure Digital Twins-oplossing is het definiëren van tweeling[**modellen**](concepts-models.md) voor uw omgeving. 
+De eerste stap bij het maken van een Azure Digital Twins-oplossing is het definiëren van tweeling [**modellen**](concepts-models.md) voor uw omgeving. 
 
-Modellen lijken op klassen in objectgeoriënteerde programmeertalen. Ze bieden door de gebruiker gedefinieerde sjablonen die [digitale tweelingen](concepts-twins-graph.md) later kunnen volgen en instantiëren. Ze zijn geschreven in een JSON-achtige taal, **Digital Twins Definition Language (DTDL)** genaamd, en kunnen de *eigenschappen*, *telemetrie*, *relaties* en *componenten* van een tweeling definiëren.
+Modellen lijken op klassen in objectgeoriënteerde programmeertalen. Ze bieden door de gebruiker gedefinieerde sjablonen die [digitale tweelingen](concepts-twins-graph.md) later kunnen volgen en instantiëren. Ze zijn geschreven in een JSON-achtige taal, **Digital Twins Definition Language (DTDL)** genaamd, en kunnen de *eigenschappen* , *telemetrie* , *relaties* en *componenten* van een tweeling definiëren.
 
 > [!NOTE]
 > Met DTDL kunnen ook *opdrachten* op digitale tweelingen worden gedefinieerd. Opdrachten worden momenteel echter niet ondersteund in de Azure Digital Twins-service.
@@ -47,9 +47,9 @@ Gebruik in het Visual Studio-venster waar het project _**AdtE2ESample**_ open is
 
 Selecteer *Room.json* om het in het bewerkingsvenster te openen, en pas het als volgt aan:
 
-* **Werk het versienummer bij** om aan te geven dat u een meer up-to-date versie van dit model maakt. U doet dit door de *1* aan het einde van de `@id`-waarde rte veranderen in een *2*. Elk nummer dat hoger is dan het huidige versienummer werkt ook.
-* **Wijzig een eigenschap**. Wijzig de naam van eigenschap `Humidity` in *HumidityLevel* (of iets anders als u dat wilt. Als u iets anders gebruikt dan *HumidityLevel*, onthoud dan wat u hebt gebruikt en gebruik het overal in de zelfstudie in plaats van *HumidityLevel*).
-* **Voeg een eigenschap toe**. Plak onder de eigenschap `HumidityLevel` die eindigt op regel 15 de volgende code om de eigenschap `RoomName` toe te voegen aan de ruimte:
+* **Werk het versienummer bij** om aan te geven dat u een meer up-to-date versie van dit model maakt. U doet dit door de *1* aan het einde van de `@id`-waarde rte veranderen in een *2* . Elk nummer dat hoger is dan het huidige versienummer werkt ook.
+* **Wijzig een eigenschap** . Wijzig de naam van eigenschap `Humidity` in *HumidityLevel* (of iets anders als u dat wilt. Als u iets anders gebruikt dan *HumidityLevel* , onthoud dan wat u hebt gebruikt en gebruik het overal in de zelfstudie in plaats van *HumidityLevel* ).
+* **Voeg een eigenschap toe** . Plak onder de eigenschap `HumidityLevel` die eindigt op regel 15 de volgende code om de eigenschap `RoomName` toe te voegen aan de ruimte:
 
     ```json
     ,
@@ -59,7 +59,7 @@ Selecteer *Room.json* om het in het bewerkingsvenster te openen, en pas het als 
       "schema": "string"
     }
     ```
-* **Voeg een relatie toe**. Plak onder de eigenschap `RoomName` die u zojuist hebt toegevoegd de volgende code om de mogelijkheid toe te voegen dat deze tweeling *contains*-relaties kan maken met andere tweelingen:
+* **Voeg een relatie toe** . Plak onder de eigenschap `RoomName` die u zojuist hebt toegevoegd de volgende code om de mogelijkheid toe te voegen dat deze tweeling *contains* -relaties kan maken met andere tweelingen:
 
     ```json
     ,
@@ -76,7 +76,7 @@ Wanneer u klaar bent, zou het bijgewerkte model er als volgt uit moeten zien:
 Vergeet niet het bestand op te slaan voordat u verdergaat.
 
 > [!TIP]
-> Als u wilt proberen een eigen model te maken, kunt u de code van het *Room*-model in een nieuw bestand plakken dat u met de extensie *.json* opslaat in de map *AdtSampleApp\SampleClientApp\Models*. Vervolgens kunt u ermee spelen en eigenschappen en relaties toevoegen om alles te vertegenwoordigen wat u wilt. U kunt ook naar de andere voorbeeldmodellen in deze map kijken voor ideeën.
+> Als u wilt proberen een eigen model te maken, kunt u de code van het *Room* -model in een nieuw bestand plakken dat u met de extensie *.json* opslaat in de map *AdtSampleApp\SampleClientApp\Models* . Vervolgens kunt u ermee spelen en eigenschappen en relaties toevoegen om alles te vertegenwoordigen wat u wilt. U kunt ook naar de andere voorbeeldmodellen in deze map kijken voor ideeën.
 
 > [!TIP] 
 > Er is een taalagnostisch [DTDL-validatorvoorbeeld](/samples/azure-samples/dtdl-validator/dtdl-validator) dat u kunt gebruiken om modeldocumenten te controleren en u ervan te verzekeren dat de DTDL geldig is. Het voorbeeld is gemaakt op basis van de DTDL-parserbibliotheek, waarover u meer kunt lezen in [*Instructies: Modellen parseren en valideren*](how-to-parse-models.md).
@@ -104,7 +104,7 @@ Laat de projectconsole aan staan voor de rest van de stappen in deze zelfstudie.
 
 Na het ontwerpen van modellen moet u deze uploaden naar uw Azure Digital Twins-instantie. Hierdoor wordt uw Azure Digital Twins-service-instantie geconfigureerd met de woordenlijst van uw eigen aangepaste domein. Nadat u de modellen hebt geüpload, kunt u tweelinginstanties maken die ze gebruiken.
 
-Voer in het projectconsolevenster de volgende opdracht uit om uw bijgewerkte *Room*-model te uploaden, evenals een *Floor*-model dat u ook in de volgende sectie gebruikt om verschillende soorten tweelingen te maken.
+Voer in het projectconsolevenster de volgende opdracht uit om uw bijgewerkte *Room* -model te uploaden, evenals een *Floor* -model dat u ook in de volgende sectie gebruikt om verschillende soorten tweelingen te maken.
 
 ```cmd/sh
 CreateModels Room Floor
@@ -115,7 +115,7 @@ De uitvoer zou moeten aangeven dat de modellen met succes zijn gemaakt.
 > [!TIP]
 > Als u eerder uw eigen model hebt gemaakt, kunt u dit hier ook uploaden, door de bestandsnaam (u kunt de extensie weglaten) toe te voegen aan de lijst `Room Floor` in de opdracht hierboven.
 
-Controleer of de modellen zijn gemaakt door de opdracht `GetModels true` uit te voeren. Hierdoor wordt een query uitgevoerd op de Azure Digital Twins-instanties naar alle modellen die zijn geüpload, en worden alle gegevens ervan afgedrukt. Bekijk het bewerkte *Room*-model in de resultaten:
+Controleer of de modellen zijn gemaakt door de opdracht `GetModels true` uit te voeren. Hierdoor wordt een query uitgevoerd op de Azure Digital Twins-instanties naar alle modellen die zijn geüpload, en worden alle gegevens ervan afgedrukt. Bekijk het bewerkte *Room* -model in de resultaten:
 
 :::image type="content" source="media/tutorial-command-line-app/output-get-models.png" alt-text="Bewerkte Room.json met bijgewerkte eigenschappen HumidityLevel en RoomName en de relatie 'contains'":::
 
@@ -151,7 +151,7 @@ Nu er een paar modellen zijn geüpload naar uw instantie van Azure Digital Twins
 
 U gebruikt de opdracht `CreateDigitalTwin` om een digitale tweeling te maken. U moet verwijzen naar het model waarop de tweeling is gebaseerd, en kunt desgewenst aanvangswaarden definiëren voor alle eigenschappen in het model. U hoeft in dit stadium geen relatiegegevens door de geven.
 
-Voer deze code uit in de actieve projectconsole om een aantal tweelingen te maken op basis van het *Room*-model dat u eerder hebt bijgewerkt en een ander model, *Floor*. Zoals u weet heeft *Room* drie eigenschappen, zodat u argumenten kunt opgeven met de aanvangswaarden daarvan.
+Voer deze code uit in de actieve projectconsole om een aantal tweelingen te maken op basis van het *Room* -model dat u eerder hebt bijgewerkt en een ander model, *Floor* . Zoals u weet heeft *Room* drie eigenschappen, zodat u argumenten kunt opgeven met de aanvangswaarden daarvan.
 
 ```cmd/sh
 CreateDigitalTwin dtmi:example:Room;2 room0 RoomName string Room0 Temperature double 70 HumidityLevel double 30
@@ -167,11 +167,11 @@ De uitvoer van deze opdrachten zou moeten aangeven dat de tweelingen met succes 
 
 :::image type="content" source="media/tutorial-command-line-app/output-create-digital-twin.png" alt-text="Bewerkte Room.json met bijgewerkte eigenschappen HumidityLevel en RoomName en de relatie 'contains'":::
 
-U kunt ook de opdracht `Query` uitvoeren om te verifiëren dat de tweelingen zijn gemaakt. Deze opdracht voert een query uit op uw Azure Digital Twins-instantie naar alle digitale tweelingen die deze bevat. Kijk in de resultaten naar de tweelingen *floor0*, *floor1*, *room0* en *room1*.
+U kunt ook de opdracht `Query` uitvoeren om te verifiëren dat de tweelingen zijn gemaakt. Deze opdracht voert een query uit op uw Azure Digital Twins-instantie naar alle digitale tweelingen die deze bevat. Kijk in de resultaten naar de tweelingen *floor0* , *floor1* , *room0* en *room1* .
 
 #### <a name="modify-a-digital-twin"></a>Een digitale dubbel wijzigen
 
-U kunt de eigenschappen van een digitale dubbel die u hebt gemaakt, ook wijzigen. Probeer deze opdracht uit te voeren om de RoomName van *room0* te wijzigen van *room0* in *PresidentialSuite*:
+U kunt de eigenschappen van een digitale dubbel die u hebt gemaakt, ook wijzigen. Probeer deze opdracht uit te voeren om de RoomName van *room0* te wijzigen van *room0* in *PresidentialSuite* :
 
 ```cmd/sh
 UpdateDigitalTwin room0 add /RoomName string PresidentialSuite
@@ -196,7 +196,7 @@ Vervolgens kunt u **relaties** maken tussen deze tweelingen, om ze te verbinden 
 
 Gebruik de opdracht `CreateRelationship` om een relatie toe te voegen. Geef de tweeling op waarvan de relatie afkomstig is, het type toe te voegen relatie en de tweeling waarmee de relatie verbinding maakt. Geef ten slotte een naam (id) op voor de relatie.
 
-Voer de volgende code uit om een 'contains'-relatie toe te voegen van elk van de *Floor*-tweelingen die u eerder hebt gemaakt naar een overeenkomende *Room*-tweeling. Er moet een *contains*-relatie zijn gedefinieerd in het *Floor*-model om dit mogelijk te maken.
+Voer de volgende code uit om een 'contains'-relatie toe te voegen van elk van de *Floor* -tweelingen die u eerder hebt gemaakt naar een overeenkomende *Room* -tweeling. Er moet een *contains* -relatie zijn gedefinieerd in het *Floor* -model om dit mogelijk te maken.
 
 ```cmd/sh
 CreateRelationship floor0 contains room0 relationship0
@@ -242,7 +242,7 @@ Een hoofdfunctie van Azure Digital Twins is de mogelijkheid om gemakkelijk en ef
     :::image type="content" source="media/tutorial-command-line-app/output-query-all.png" alt-text="Bewerkte Room.json met bijgewerkte eigenschappen HumidityLevel en RoomName en de relatie 'contains'":::
 
     >[!NOTE]
-    >In het voorbeeldproject is de opdracht `Query` zonder aanvullende argumenten het equivalent van `Query SELECT * FROM DIGITALTWINS`. Gebruik de langere (volledige) query om alle apparaatdubbels in uw exemplaar op te vragen met behulp van de [query-API's](how-to-use-apis-sdks.md) of de [CLI-opdrachten](how-to-use-cli.md).
+    >In het voorbeeldproject is de opdracht `Query` zonder aanvullende argumenten het equivalent van `Query SELECT * FROM DIGITALTWINS`. Gebruik de langere (volledige) query om alle apparaatdubbels in uw exemplaar op te vragen met behulp van de [query-API's](/rest/api/digital-twins/dataplane/query) of de [CLI-opdrachten](how-to-use-cli.md).
 
 * **Wat zijn alle ruimten in mijn omgeving?** (query op model)
 
@@ -254,13 +254,13 @@ Een hoofdfunctie van Azure Digital Twins is de mogelijkheid om gemakkelijk en ef
     
     :::image type="content" source="media/tutorial-command-line-app/output-query-model.png" alt-text="Bewerkte Room.json met bijgewerkte eigenschappen HumidityLevel en RoomName en de relatie 'contains'":::
 
-* **Wat zijn alle ruimten op *floor0*?** (query op relatie)
+* **Wat zijn alle ruimten op *floor0* ?** (query op relatie)
 
     ```cmd/sh
     Query SELECT room FROM DIGITALTWINS floor JOIN room RELATED floor.contains where floor.$dtId = 'floor0'
     ```
 
-    U kunt query's uitvoeren op basis van relaties in uw grafiek, om informatie te krijgen over de manier waarop tweelingen zijn verbonden of om uw query te beperken tot een bepaald gebied. Alleen *room0* bevindt zich op *floor0*, dus is dit de enige ruimte in het resultaat.
+    U kunt query's uitvoeren op basis van relaties in uw grafiek, om informatie te krijgen over de manier waarop tweelingen zijn verbonden of om uw query te beperken tot een bepaald gebied. Alleen *room0* bevindt zich op *floor0* , dus is dit de enige ruimte in het resultaat.
 
     :::image type="content" source="media/tutorial-command-line-app/output-query-relationship.png" alt-text="Bewerkte Room.json met bijgewerkte eigenschappen HumidityLevel en RoomName en de relatie 'contains'":::
 
@@ -280,7 +280,7 @@ Een hoofdfunctie van Azure Digital Twins is de mogelijkheid om gemakkelijk en ef
     Query SELECT room FROM DIGITALTWINS floor JOIN room RELATED floor.contains where floor.$dtId = 'floor0' AND IS_OF_MODEL(room, 'dtmi:example:Room;2') AND room.Temperature > 75
     ```
 
-    U kunt de eerdere query's ook combineren zoals u dat in SQL zou doen, met behulp van combinatie-operatoren zoals `AND`, `OR`, `NOT`. Deze query maakt gebruik van `AND` om de vorige query over tweelingtemperaturen specifieker te maken. Het resultaat bevat nu alleen ruimten met een temperatuur van meer dan 75 °F op *floor0*; in dit geval geen. De resultatenset is leeg.
+    U kunt de eerdere query's ook combineren zoals u dat in SQL zou doen, met behulp van combinatie-operatoren zoals `AND`, `OR`, `NOT`. Deze query maakt gebruik van `AND` om de vorige query over tweelingtemperaturen specifieker te maken. Het resultaat bevat nu alleen ruimten met een temperatuur van meer dan 75 °F op *floor0* ; in dit geval geen. De resultatenset is leeg.
 
     :::image type="content" source="media/tutorial-command-line-app/output-query-compound.png" alt-text="Bewerkte Room.json met bijgewerkte eigenschappen HumidityLevel en RoomName en de relatie 'contains'":::
 

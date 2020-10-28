@@ -3,14 +3,14 @@ title: Overzicht van Azure Automation Wijzigingen bijhouden en inventaris
 description: In dit artikel wordt de functie Wijzigingen bijhouden en inventaris beschreven, waarmee u de wijzigingen in de software en micro soft-Services in uw omgeving kunt identificeren.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 10/14/2020
+ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9654529723b5b69c15358be9e06db4f8cbed35e3
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: f4fc464da08128b7f2ecd0a037213d5f40aa65e0
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209823"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670743"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Overzicht Wijzigingen bijhouden en Inventaris
 
@@ -48,7 +48,7 @@ Wijzigingen bijhouden en inventarisatie biedt geen ondersteuning voor of heeft d
 - Recursie voor het bijhouden van Windows-REGI ster
 - Netwerk bestands systemen
 - Verschillende installatie methoden
-- ***exe** -bestanden die zijn opgeslagen in Windows
+- **_exe_* -bestanden die zijn opgeslagen in Windows
 - De kolom en waarden voor de **maximale bestands grootte** worden niet gebruikt in de huidige implementatie.
 - Als u probeert meer dan 2500 bestanden te verzamelen in een verzamelings cyclus van 30 minuten, kunnen de prestaties van Wijzigingen bijhouden en de inventaris worden verslechterd.
 - Als het netwerk verkeer hoog is, kan het tot zes uur duren voordat wijzigings records worden weer gegeven.
@@ -73,17 +73,19 @@ De volgende adressen zijn specifiek vereist voor de Wijzigingen bijhouden en de 
 |*.blob.core.windows.net | *. blob.core.usgovcloudapi.net|
 |*.azure-automation.net | *. azure-automation.us|
 
-Wanneer u beveiligings regels voor een netwerk groep maakt of Azure Firewall configureert om verkeer toe te staan voor de Automation-Service en de Log Analytics-werk ruimte, gebruikt u de [service label](../../virtual-network/service-tags-overview.md#available-service-tags) **GuestAndHybridManagement** en **AzureMonitor**. Dit vereenvoudigt het voortdurend beheer van uw netwerk beveiligings regels. Als u verbinding wilt maken met de Automation-Service van uw Azure-Vm's veilig en privé, raadpleegt u [Azure private link gebruiken](../how-to/private-link-security.md). Zie [Download bare json-bestanden](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)voor informatie over het verkrijgen van de huidige servicetag en bereik gegevens die u wilt opnemen als onderdeel van uw on-premises firewall configuraties.
+Wanneer u beveiligings regels voor een netwerk groep maakt of Azure Firewall configureert om verkeer toe te staan voor de Automation-Service en de Log Analytics-werk ruimte, gebruikt u de [service label](../../virtual-network/service-tags-overview.md#available-service-tags) **GuestAndHybridManagement** en **AzureMonitor** . Dit vereenvoudigt het voortdurend beheer van uw netwerk beveiligings regels. Als u verbinding wilt maken met de Automation-Service van uw Azure-Vm's veilig en privé, raadpleegt u [Azure private link gebruiken](../how-to/private-link-security.md). Zie [Download bare json-bestanden](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)voor informatie over het verkrijgen van de huidige servicetag en bereik gegevens die u wilt opnemen als onderdeel van uw on-premises firewall configuraties.
 
 ## <a name="enable-change-tracking-and-inventory"></a>Wijzigingen bijhouden en Inventaris inschakelen
 
-Op de volgende manieren kunt u Wijzigingen bijhouden en inventaris inschakelen en computers selecteren die moeten worden beheerd:
+U kunt Wijzigingen bijhouden en inventaris op de volgende manieren inschakelen:
 
-* [Vanaf een virtuele machine van Azure](enable-from-vm.md).
-* [Van surfen op meerdere virtuele Azure-machines](enable-from-portal.md).
-* [Van een Azure Automation-account](enable-from-automation-account.md).
-* Voor Arc-servers of niet-Azure-machines installeert u de Log Analytics agent van Azure Arc-servers met behulp van de [VM-extensie](../../azure-arc/servers/manage-vm-extensions.md) en schakelt u vervolgens [computers in de werk ruimte in](enable-from-automation-account.md#enable-machines-in-the-workspace) op wijzigingen bijhouden en inventaris.
-* [Een Automation-Runbook gebruiken](enable-from-runbook.md).
+- Van uw [Automation-account](enable-from-automation-account.md) voor een of meer Azure-en niet-Azure-machines.
+
+- Hand matig voor niet-Azure-machines, waaronder computers of servers die zijn geregistreerd bij [servers met Azure Arc](../../azure-arc/servers/overview.md). Voor hybride computers raden wij u aan om de Log Analytics-agent voor Windows te installeren door eerst uw computer te verbinden met [servers met Azure-Arc](../../azure-arc/servers/overview.md)en vervolgens Azure Policy te gebruiken om de implementatie van [log Analytics agent toe te wijzen aan het ingebouwde beleid voor *Linux* of *Windows* Azure Arc-machines](../../governance/policy/samples/built-in-policies.md#monitoring) . Als u van plan bent om ook de machines met Azure Monitor voor VM's te bewaken, moet u in plaats daarvan het Azure Monitor voor VM's-initiatief [inschakelen](../../governance/policy/samples/built-in-initiatives.md#monitoring) .
+
+- Voor één Azure-VM vanaf de [pagina virtuele machine](enable-from-vm.md) in het Azure Portal. Dit scenario is beschikbaar voor Linux-en Windows-Vm's.
+
+- Voor [meerdere virtuele Azure-machines](enable-from-portal.md) door ze te selecteren op de pagina virtual machines in de Azure Portal.
 
 ## <a name="tracking-file-changes"></a>Bestands wijzigingen bijhouden
 
@@ -106,8 +108,8 @@ Met Wijzigingen bijhouden en inventaris kunt u wijzigingen in Windows-register s
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown` | Bewaakt de scripts die worden uitgevoerd bij het afsluiten.
 > |`HKEY\LOCAL\MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run` | Bewaakt sleutels die worden geladen voordat de gebruiker zich aanmeldt bij het Windows-account. De sleutel wordt gebruikt voor 32-bits toepassingen die worden uitgevoerd op 64-bits computers.
 > |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components` | Hiermee worden wijzigingen in toepassings instellingen gecontroleerd.
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Bewaakt context menu-handlers die rechtstreeks in Windows Verkenner zijn aangesloten en die gewoonlijk in-process worden uitgevoerd met **explorer.exe**.
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers` | Hiermee worden Kopieer Hook-handlers gecontroleerd die rechtstreeks in Windows Verkenner zijn aangesloten en normaal gesp roken met **explorer.exe**worden uitgevoerd.
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Bewaakt context menu-handlers die rechtstreeks in Windows Verkenner zijn aangesloten en die gewoonlijk in-process worden uitgevoerd met **explorer.exe** .
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers` | Hiermee worden Kopieer Hook-handlers gecontroleerd die rechtstreeks in Windows Verkenner zijn aangesloten en normaal gesp roken met **explorer.exe** worden uitgevoerd.
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | Monitor voor de registratie van het pictogram-overlay-handler.
 > |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | Monitors voor de registratie van pictogram-overlaysoftware-handler voor 32-bits toepassingen die worden uitgevoerd op 64-bits computers.
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects` | Monitors voor nieuwe browserhelperobjecten voor Internet Explorer. Wordt gebruikt om toegang te krijgen tot de Document Object Model (DOM) van de huidige pagina en om de navigatie te beheren.
@@ -117,7 +119,7 @@ Met Wijzigingen bijhouden en inventaris kunt u wijzigingen in Windows-register s
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Drivers32` | Bewaakt 32-bits Stuur Programma's die zijn gekoppeld aan wavemapper, wave1 en wave2, Msacm. imaadpcm,. msadpcm,. msgsm610 en vidc. Vergelijkbaar met de sectie [drivers] in het **system.ini** -bestand.
 > |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32` | Bewaakt 32-bits Stuur Programma's die zijn gekoppeld aan wavemapper, wave1 en wave2, Msacm. imaadpcm,. msadpcm,. msgsm610 en vidc voor 32-bits-toepassingen die worden uitgevoerd op 64-bits computers. Vergelijkbaar met de sectie [drivers] in het **system.ini** -bestand.
 > |`HKEY\LOCAL\MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls` | Hiermee wordt de lijst met bekende of veelgebruikte systeem-Dll's gecontroleerd. Door te controleren wordt voor komen dat gebruikers zwakke machtigingen voor toepassings mappen kunnen exploiteren door de Trojaanse paarden-versies van systeem-Dll's te verwijderen.
-> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify` | Bewaakt de lijst met pakketten die gebeurtenis meldingen kunnen ontvangen van **winlogon.exe**, het model voor ondersteuning van interactieve aanmelding voor Windows.
+> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify` | Bewaakt de lijst met pakketten die gebeurtenis meldingen kunnen ontvangen van **winlogon.exe** , het model voor ondersteuning van interactieve aanmelding voor Windows.
 
 ## <a name="recursion-support"></a>Ondersteuning voor recursie
 
@@ -125,7 +127,7 @@ Wijzigingen bijhouden en inventarisatie ondersteunt recursie, waarmee u Joker te
 
 - Joker tekens zijn vereist voor het bijhouden van meerdere bestanden.
 
-- U kunt alleen joker tekens gebruiken in het laatste segment van een bestandspad, bijvoorbeeld **c:\folder \\ File*** of **/etc/*. conf**.
+- U kunt alleen joker tekens gebruiken in het laatste segment van een bestandspad, bijvoorbeeld **c:\folder \\ File** _ of _ */etc/* . conf * *.
 
 - Als een omgevings variabele een ongeldig pad heeft, wordt de validatie uitgevoerd, maar het pad mislukt tijdens de uitvoering.
 
@@ -160,7 +162,7 @@ Het gemiddelde Log Analytics gegevens gebruik voor een machine met Wijzigingen b
 
 ### <a name="microsoft-service-data"></a>Micro soft-service gegevens
 
-De standaard frequentie voor het verzamelen van micro soft-Services is 30 minuten. U kunt de frequentie configureren met behulp van een schuif regelaar op het tabblad **micro soft-Services** onder **Instellingen bewerken**.
+De standaard frequentie voor het verzamelen van micro soft-Services is 30 minuten. U kunt de frequentie configureren met behulp van een schuif regelaar op het tabblad **micro soft-Services** onder **Instellingen bewerken** .
 
 ![Micro soft Services-schuif regelaar](./media/overview/windowservices.png)
 

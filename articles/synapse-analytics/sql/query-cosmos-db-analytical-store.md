@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 99fcdd0232e2991acaceb6838bff0b00c6824dfb
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c5fa326fa05a34ae5b51054b867a766489b85c16
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92474900"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670701"
 ---
 # <a name="query-azure-cosmos-db-data-with-serverless-sql-pool-in-azure-synapse-link-preview"></a>Query's uitvoeren op Azure Cosmos DB gegevens met serverloze SQL-groep in azure Synapse-koppeling (preview-versie)
 
@@ -23,6 +23,9 @@ Met een Synapse serverloze SQL-pool (voorheen SQL on-demand) kunt u gegevens in 
 Voor het uitvoeren van query's in Azure Cosmos DB wordt de volledige [selectie](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15) Surface Area ondersteund via de [OpenRowSet](develop-openrowset.md) -functie, inclusief het meren deel van [SQL-functies en-Opera tors](overview-features.md). U kunt ook resultaten van de query opslaan die gegevens uit Azure Cosmos DB leest, samen met gegevens in Azure Blob Storage of Azure Data Lake Storage met de [optie externe tabel maken als selecteren](develop-tables-cetas.md#cetas-in-sql-on-demand). U kunt momenteel geen serverloze SQL-groeps query resultaten opslaan in Azure Cosmos DB met behulp van [CETAS](develop-tables-cetas.md#cetas-in-sql-on-demand).
 
 In dit artikel leert u hoe u een query kunt schrijven met een serverloze SQL-groep waarmee gegevens worden opgevraagd van Azure Cosmos DB containers die Synapse-koppeling zijn ingeschakeld. In [deze](./tutorial-data-analyst.md) zelf studie vindt u meer informatie over het bouwen van SERVERloze SQL-pool weergaven over Azure Cosmos DB containers en het verbinden ervan met Power bi modellen. 
+
+> [!IMPORTANT]
+> In deze zelf studie wordt een container met [Azure Cosmos DB goed gedefinieerd schema](../../cosmos-db/analytical-store-introduction.md#schema-representation) gebruikt dat query-ervaring biedt die in de toekomst wordt ondersteund. De query-ervaring die serverloze SQL-pool biedt voor [Azure Cosmos DB schema met volledige betrouw baarheid](#full-fidelity-schema) is tijdelijk gedrag dat wordt gewijzigd op basis van de feedback van de preview-versie. Vertrouw niet op het schema dat `OPENROWSET` functie biedt voor full-fidelity containers tijdens de open bare preview, omdat de query experinece kan worden gewijzigd en uitgelijnd met een goed gedefinieerd schema. Neem contact op met het [product team van Synapse link](mailto:cosmosdbsynapselink@microsoft.com) om feedback te geven.
 
 ## <a name="overview"></a>Overzicht
 
@@ -253,12 +256,77 @@ Azure Cosmos DB-accounts van de SQL-API (core) ondersteunen JSON-eigenschaps typ
 | Null | `any SQL type` 
 | Genest object of matrix | varchar (max) (UTF8-database sortering), geserialiseerd als JSON-tekst |
 
+## <a name="full-fidelity-schema"></a>Schema voor volledige beeld kwaliteit
+
+Azure Cosmos DB volledige-coderings schema worden zowel waarden als het beste overeenkomende type voor elke eigenschap in een container vastgelegd.
+`OPENROWSET` de functie voor een container met een volledig betrouwbaar schema bevat zowel het type als de werkelijke waarde in elke cel. Stel dat met de volgende query de items worden gelezen uit een container met een schema met volledige kwaliteit:
+
+```sql
+SELECT *
+FROM OPENROWSET(
+      'CosmosDB',
+      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
+       EcdcCases
+    ) as rows
+```
+
+Het resultaat van deze query retourneert typen en waarden die zijn opgemaakt als JSON-tekst: 
+
+| date_rep | meldingen | geo_id |
+| --- | --- | --- |
+| {"datum": "2020-08-13"} | {"Int32": "254"} | {"teken reeks": "RS"} |
+| {"datum": "2020-08-12"} | {"Int32": "235"}| {"teken reeks": "RS"} |
+| {"datum": "2020-08-11"} | {"Int32": "316"} | {"teken reeks": "RS"} |
+| {"datum": "2020-08-10"} | {"Int32": "281"} | {"teken reeks": "RS"} |
+| {"datum": "2020-08-09"} | {"Int32": "295"} | {"teken reeks": "RS"} |
+| {"teken reeks": "2020/08/08"} | {"Int32": "312"} | {"teken reeks": "RS"} |
+| {"datum": "2020-08-07"} | {"float64":"339.0"} | {"teken reeks": "RS"} |
+
+Voor elke waarde ziet u het type dat in Cosmos DB container item is geïdentificeerd. De meeste waarden voor de `date_rep` eigenschap bevatten `date` waarden, maar sommige worden onjuist opgeslagen als teken reeksen in Cosmos db. Met het schema full fidelity worden zowel waarden die juist zijn getypt als `date` onjuiste opgemaakte `string` waarden geretourneerd.
+Aantal cases is een informatie die is opgeslagen als `int32` waarde, maar er is één waarde die wordt ingevoerd als decimaal getal. Deze waarde is van het `float64` type. Als er waarden zijn die groter zijn dan het hoogste `int32` aantal, worden deze opgeslagen als `int64` type. Alle `geo_id` waarden in dit voor beeld worden opgeslagen als `string` typen.
+
+> [!IMPORTANT]
+> Met het schema voor volledige betrouw baarheid worden beide waarden met verwachte typen en de waarden met onjuist ingevoerde typen weer gegeven.
+> U moet de waarden opschonen die onjuiste typen hebben in Azure Cosmos DB-container om een corect te kunnen Toep assen in een analytisch archief met volledige kwaliteit. 
+
 Voor het uitvoeren van query's op Azure Cosmos DB accounts van de Mongo DB-API-soort, kunt u meer te weten komen over de schema weergave voor volledige beeld kwaliteit in het analytische archief en de uitgebreide eigenschapnamen die [hier](../../cosmos-db/analytical-store-introduction.md#analytical-schema)worden gebruikt.
+
+Tijdens het uitvoeren van een query op een volledig Fidelity-schema moet u in de component expliciet het SQL-type opgeven en het eigenschaps type Cosmos DB verwacht `WITH` . In het volgende voor beeld wordt ervan uitgegaan dat het `string` juiste type is voor `geo_id` eigenschap en `int32` juist type voor `cases` eigenschap:
+
+```sql
+SELECT geo_id, cases = SUM(cases)
+FROM OPENROWSET(
+      'CosmosDB'
+      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
+       EcdcCases
+    ) WITH ( geo_id VARCHAR(50) '$.geo_id.string',
+             cases INT '$.cases.int32'
+    ) as rows
+GROUP BY geo_id
+```
+
+Waarden met andere typen worden niet geretourneerd in `geo_id` en `cases` kolommen en de query retourneert een `NULL` waarde in deze cellen. Met deze query wordt alleen verwezen naar het `cases` opgegeven type in de expressie ( `cases.int32` ). Als u waarden met andere typen ( `cases.int64` , `cases.float64` ) hebt die niet kunnen worden gereinigd in Cosmos DB container, moet u deze expliciet verwijzen naar `WITH` de component en de resultaten combi neren. Met de volgende query worden beide `int32` , `int64` en `float64` opgeslagen in de `cases` kolom geaggregeerd:
+
+```sql
+SELECT geo_id, cases = SUM(cases_int) + SUM(cases_bigint) + SUM(cases_float)
+FROM OPENROWSET(
+      'CosmosDB',
+      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
+       EcdcCases
+    ) WITH ( geo_id VARCHAR(50) '$.geo_id.string', 
+             cases_int INT '$.cases.int32',
+             cases_bigint BIGINT '$.cases.int64',
+             cases_float FLOAT '$.cases.float64'
+    ) as rows
+GROUP BY geo_id
+```
+
+In dit voor beeld wordt het aantal cases opgeslagen als `int32` , `int64` , of `float64` waarden en alle waarden moeten worden geëxtraheerd om het aantal cases per land te berekenen. 
 
 ## <a name="known-issues"></a>Bekende problemen
 
 - Alias **moet** worden opgegeven na `OPENROWSET` -functie (bijvoorbeeld `OPENROWSET (...) AS function_alias` ). Het weglaten van een alias kan leiden tot een verbindings probleem en Synapse SQL-eind punt zonder server mogelijk tijdelijk niet beschikbaar. Dit probleem wordt opgelost in november 2020.
-- Een serverloze SQL-pool biedt momenteel geen ondersteuning voor [Azure Cosmos DB schema met volledige betrouw baarheid](../../cosmos-db/analytical-store-introduction.md#schema-representation). Gebruik serverloze SQL-pool alleen voor toegang tot Cosmos DB goed gedefinieerd schema.
+- De query-ervaring die serverloze SQL-pool biedt voor [Azure Cosmos DB volledig beeld schema](#full-fidelity-schema) is tijdelijk gedrag dat wordt gewijzigd op basis van de preview-feedback. Vertrouw niet op het schema dat `OPENROWSET` functie biedt tijdens de open bare preview, omdat de query-ervaring mogelijk is uitgelijnd met een goed gedefinieerd schema. Neem contact op met het [product team van Synapse link](mailto:cosmosdbsynapselink@microsoft.com) om feedback te geven.
 
 In de volgende tabel worden mogelijke fouten en acties voor het oplossen van problemen weer gegeven:
 
