@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: best-practice
 ms.date: 07/30/2020
 ms.author: cralvord
-ms.openlocfilehash: b403a960016be3795857ddd5645eb73e53e83bd6
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 283ec9999f9b4362035b6770383984efb0879d49
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488602"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783756"
 ---
 # <a name="azure-storage-explorer-security-guide"></a>Azure Storage Explorer-beveiligings handleiding
 
@@ -44,13 +44,13 @@ In deze sectie worden de twee op Azure AD gebaseerde technologieën beschreven d
 
 #### <a name="azure-role-based-access-control-azure-rbac"></a>Azure RBAC (op rollen gebaseerd toegangsbeheer van Azure)
 
-[Met Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](/azure/role-based-access-control/overview) beschikt u over een nauw keurig toegangs beheer voor uw Azure-resources. Azure-rollen en-machtigingen kunnen worden beheerd vanuit de Azure Portal.
+[Met Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../../role-based-access-control/overview.md) beschikt u over een nauw keurig toegangs beheer voor uw Azure-resources. Azure-rollen en-machtigingen kunnen worden beheerd vanuit de Azure Portal.
 
 Storage Explorer biedt ondersteuning voor Azure RBAC-toegang tot opslag accounts, blobs en wacht rijen. Als u toegang tot bestands shares of tabellen nodig hebt, moet u Azure-rollen toewijzen die toestemming geven om de sleutels van een opslag account weer te geven.
 
 #### <a name="access-control-lists-acls"></a>ACL’s (toegangsbeheerlijsten)
 
-Met [toegangs beheer lijsten (acl's)](/azure/storage/blobs/data-lake-storage-access-control) kunt u toegang tot bestanden en mappen op het niveau van ADLS Gen2 BLOB-containers beheren. U kunt uw Acl's beheren met Storage Explorer.
+Met [toegangs beheer lijsten (acl's)](../blobs/data-lake-storage-access-control.md) kunt u toegang tot bestanden en mappen op het niveau van ADLS Gen2 BLOB-containers beheren. U kunt uw Acl's beheren met Storage Explorer.
 
 ### <a name="shared-access-signatures-sas"></a>Shared Access Signatures (SAS)
 
@@ -81,7 +81,7 @@ Met sleutels voor het opslag account wordt onbeperkte toegang tot de services en
 
 Sommige Azure-rollen verlenen machtigingen voor het ophalen van sleutels voor het opslag account. Personen met deze rollen kunnen de machtigingen die worden verleend of geweigerd door Azure RBAC, omzeilen. We raden aan deze machtiging niet toe te kennen, tenzij dit nodig is.
 
-Storage Explorer probeert de sleutel van het opslag account, indien beschikbaar, te gebruiken om aanvragen te verifiëren. U kunt deze functie uitschakelen in instellingen (**Services > opslag Accounts > gebruik van sleutels uitschakelen**). Sommige functies bieden geen ondersteuning voor Azure RBAC, zoals werken met klassieke opslag accounts. Dergelijke functies vereisen nog steeds sleutels en worden niet beïnvloed door deze instelling.
+Storage Explorer probeert de sleutel van het opslag account, indien beschikbaar, te gebruiken om aanvragen te verifiëren. U kunt deze functie uitschakelen in instellingen ( **Services > opslag Accounts > gebruik van sleutels uitschakelen** ). Sommige functies bieden geen ondersteuning voor Azure RBAC, zoals werken met klassieke opslag accounts. Dergelijke functies vereisen nog steeds sleutels en worden niet beïnvloed door deze instelling.
 
 Als u sleutels moet gebruiken voor toegang tot uw opslag resources, raden we de volgende richt lijnen aan:
 
@@ -102,4 +102,4 @@ Als u open bare toegang inschakelt voor een BLOB-container, raden we u aan de vo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Aanbevelingen voor beveiliging](/azure/storage/blobs/security-recommendations)
+- [Aanbevelingen voor beveiliging](../blobs/security-recommendations.md)

@@ -7,22 +7,22 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: chuye
-ms.openlocfilehash: 55fff7e4e36f066ba8ae5734e483df393fbd72cd
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: e20733cb4b93fcfac7606895746645727f12d6c8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488653"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783824"
 ---
 # <a name="azure-storage-explorer-blob-versioning-guide"></a>Hand leiding voor versie beheer van Azure Storage Explorer
 
-Microsoft Azure Storage Explorer biedt eenvoudige toegang tot en beheer van BLOB-versies. Deze hand leiding helpt u te begrijpen hoe BLOB-versie beheer werkt in Storage Explorer. Voordat u doorgaat, wordt u aangeraden meer te lezen over [BLOB-versie beheer](/azure/storage/blobs/versioning-overview).
+Microsoft Azure Storage Explorer biedt eenvoudige toegang tot en beheer van BLOB-versies. Deze hand leiding helpt u te begrijpen hoe BLOB-versie beheer werkt in Storage Explorer. Voordat u doorgaat, wordt u aangeraden meer te lezen over [BLOB-versie beheer](../blobs/versioning-overview.md).
 
 ## <a name="terminology"></a>Terminologie
 
 Deze sectie bevat enkele definities waarmee u het gebruik in dit artikel kunt begrijpen.
 
-- Zacht verwijderen: een alternatieve functie voor het automatisch beveiligen van gegevens. Meer informatie over voorlopig verwijderen vindt u [hier](/azure/storage/blobs/soft-delete-blob-overview).
+- Zacht verwijderen: een alternatieve functie voor het automatisch beveiligen van gegevens. Meer informatie over voorlopig verwijderen vindt u [hier](../blobs/soft-delete-blob-overview.md).
 - Actieve blob: er is een BLOB-of BLOB-versie gemaakt in de actieve status. U kunt alleen op blobs of BLOB-versies in de actieve status worden uitgevoerd.
 - Zacht verwijderde blob: een BLOB-of BLOB-versie die is gemarkeerd als zacht-verwijderd. Voorlopig verwijderde blobs worden alleen bewaard voor de Bewaar periode.
 - BLOB-versie: een blob die is gemaakt met Blob-versie beheer is ingeschakeld. Elke BLOB-versie is gekoppeld aan een versie-ID.
@@ -117,5 +117,5 @@ Elke BLOB-versie heeft een eigen toegangs laag. Als u de toegangs laag van BLOB-
 
 ## <a name="see-also"></a>Zie ook
 
-* [BLOB-versie beheer](/azure/storage/blobs/versioning-overview)
-* [Blobs voorlopig verwijderen](/azure/storage/blobs/soft-delete-blob-overview)
+* [BLOB-versie beheer](../blobs/versioning-overview.md)
+* [Blobs voorlopig verwijderen](../blobs/soft-delete-blob-overview.md)

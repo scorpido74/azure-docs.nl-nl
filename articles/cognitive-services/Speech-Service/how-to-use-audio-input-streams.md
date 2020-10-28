@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: fmegen
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3c8d3162e13c31204ed317edc653756b04ef8dd4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3baedd49843c7721b6dba464054d5535b4c4f1cd
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934120"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785337"
 ---
 # <a name="about-the-speech-sdk-audio-input-stream-api"></a>Over de Speech SDK audio input stream API
 
@@ -26,7 +26,7 @@ De volgende stappen zijn vereist voor het gebruik van audio-invoer stromen:
 
 - De indeling van de audio stroom identificeren. De indeling moet worden ondersteund door de Speech SDK en de speech-service. Op dit moment wordt alleen de volgende configuratie ondersteund:
 
-  Audio samples in PCM-indeling, één kanaal, 16 bits per sample, 8000 of 16000 samples per seconde (16000 of 32000 bytes per seconde), twee blok align (16 bits inclusief opvulling voor een voor beeld).
+  Audio voorbeelden hebben de PCM-indeling, een kanaal, 16 bits per sample, 8000 of 16000 samples per seconde (16000 of 32000 bytes per seconde), twee blok align (16 bits inclusief opvulling voor een voor beeld).
 
   De bijbehorende code in de SDK voor het maken van de audio-indeling ziet er als volgt uit:
 
@@ -37,7 +37,7 @@ De volgende stappen zijn vereist voor het gebruik van audio-invoer stromen:
   var audioFormat = AudioStreamFormat.GetWaveFormatPCM(samplesPerSecond, bitsPerSample, channels);
   ```
 
-- Zorg ervoor dat uw code de onbewerkte audio gegevens kan leveren aan de hand van deze specificaties. Als uw audio bron gegevens niet overeenkomen met de ondersteunde indelingen, moet de audio worden omgezet in de vereiste indeling.
+- Zorg ervoor dat uw code de onbewerkte audio gegevens aan de hand van deze specificaties verstrekt. U kunt er ook voor zorgen dat 16-bits voor beelden in de indeling little endian arriveren. Ondertekende voor beelden worden ook ondersteund. Als uw audio bron gegevens niet overeenkomen met de ondersteunde indelingen, moet de audio worden omgezet in de vereiste indeling.
 
 - Maak uw eigen audio-invoer stroom klasse die is afgeleid van `PullAudioInputStreamCallback` . Implementeer de `Read()` `Close()` leden en. De exacte functie handtekening is taal afhankelijk, maar de code ziet er ongeveer als volgt uit:
 

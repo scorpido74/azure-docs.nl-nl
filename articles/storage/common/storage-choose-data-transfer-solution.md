@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 08f677c23cce6eb840a1caee15dcddf6c8311517
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 11ea9c759bdb4bb2b837028407ce6e83f6e25a8c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488687"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784045"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>Een Azure-oplossing voor gegevensoverdracht kiezen
 
@@ -71,14 +71,14 @@ U kunt ook naar uw Azure Storage-account gaan in Azure Portal en de functie voor
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Krijg een inleiding tot Azure Storage Explorer](https://azure.microsoft.com/resources/videos/introduction-to-microsoft-azure-storage-explorer/).
-- [Lees een overzicht van AzCopy](/azure/storage/common/storage-use-azcopy-v10).
+- [Lees een overzicht van AzCopy](./storage-use-azcopy-v10.md).
 - [Quickstart: Blobs uploaden, downloaden en vermelden met PowerShell](../blobs/storage-quickstart-blobs-powershell.md)
 - [Quickstart: Blobs maken, downloaden, uploaden en weergeven met Azure CLI](../blobs/storage-quickstart-blobs-cli.md)
 - Meer informatie over:
 
-    - [Azure data box, Azure data Box disk en Azure data Box Heavy voor offline overdrachten](/azure/databox/).
-    - [Azure data Box gateway en Azure stack Edge voor online overdrachten](/azure/databox-online/).
-- [Meer informatie over Azure Data Factory](/azure/data-factory/copy-activity-overview).
+    - [Azure data box, Azure data Box disk en Azure data Box Heavy voor offline overdrachten](../../databox/index.yml).
+    - [Azure data Box gateway en Azure stack Edge voor online overdrachten](../../databox-online/index.yml).
+- [Meer informatie over Azure Data Factory](../../data-factory/copy-activity-overview.md).
 - De REST-Api's gebruiken om gegevens over te dragen
 
     - [In .NET](/dotnet/api/overview/azure/storage)

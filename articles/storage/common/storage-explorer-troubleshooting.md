@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 83b71d46c3d6b1612728b2bd81c6acede6d0559b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 8bffe0c3871eae12f3b875a96301136d11dfc516
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488619"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783790"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Gids voor probleemoplossing voor Azure Storage Explorer
 
@@ -23,7 +23,7 @@ In deze hand leiding vindt u een overzicht van oplossingen voor problemen die va
 
 ## <a name="azure-rbac-permissions-issues"></a>Problemen met Azure RBAC-machtigingen
 
-Azure [RBAC](/azure/role-based-access-control/overview) -toegangs beheer op basis van rollen maakt zeer nauw keuriger toegang tot Azure-resources door sets machtigingen te combi neren in _rollen_. Hier volgen enkele strategieën om optimaal gebruik te maken van Azure RBAC in Storage Explorer.
+Azure [RBAC](../../role-based-access-control/overview.md) -toegangs beheer op basis van rollen maakt zeer nauw keuriger toegang tot Azure-resources door sets machtigingen te combi neren in _rollen_ . Hier volgen enkele strategieën om optimaal gebruik te maken van Azure RBAC in Storage Explorer.
 
 ### <a name="how-do-i-access-my-resources-in-storage-explorer"></a>Heb ik toegang tot mijn resources in Storage Explorer Hoe kan ik?
 
@@ -46,7 +46,7 @@ U moet ten minste één rol toewijzen die toegang verleent tot het lezen van geg
 
 ### <a name="why-do-i-need-a-management-layer-role-to-see-my-resources-in-storage-explorer"></a>Waarom heb ik een rol van beheer laag nodig om mijn resources in Storage Explorer te zien?
 
-Azure Storage heeft twee toegangs niveaus: _beheer_ en _gegevens_. Abonnementen en opslag accounts zijn toegankelijk via de Management-laag. Containers, blobs en andere gegevens bronnen worden geopend via de gegevenslaag. Als u bijvoorbeeld een lijst wilt ophalen van uw opslag accounts van Azure, verzendt u een aanvraag naar het beheer eindpunt. Als u een lijst met Blob-containers in een account wilt, verzendt u een aanvraag naar het juiste service-eind punt.
+Azure Storage heeft twee toegangs niveaus: _beheer_ en _gegevens_ . Abonnementen en opslag accounts zijn toegankelijk via de Management-laag. Containers, blobs en andere gegevens bronnen worden geopend via de gegevenslaag. Als u bijvoorbeeld een lijst wilt ophalen van uw opslag accounts van Azure, verzendt u een aanvraag naar het beheer eindpunt. Als u een lijst met Blob-containers in een account wilt, verzendt u een aanvraag naar het juiste service-eind punt.
 
 Azure-rollen kunnen u machtigingen verlenen voor toegang tot beheer of gegevenslaag. De rol van lezer geeft bijvoorbeeld alleen-lezen toegang tot management Layer-resources.
 
@@ -65,30 +65,30 @@ Als u toegang wilt krijgen tot BLOB-containers of-wacht rijen, kunt u deze resou
 3. Selecteer het gebruikers account en de Tenant die zijn gekoppeld aan de resource waaraan u wilt koppelen. Klik op Volgende.
 4. Selecteer het resource type, voer de URL in voor de resource en voer een unieke weergave naam in voor de verbinding. Klik op Volgende. Klik op Verbinding maken.
 
-Voor andere resource typen hebben we momenteel geen oplossing met betrekking tot Azure RBAC. Als tijdelijke oplossing kunt u een SAS-URI aanvragen om [aan uw resource te koppelen](/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri).
+Voor andere resource typen hebben we momenteel geen oplossing met betrekking tot Azure RBAC. Als tijdelijke oplossing kunt u een SAS-URI aanvragen om [aan uw resource te koppelen](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux#use-a-shared-access-signature-uri).
 
 ### <a name="recommended-azure-built-in-roles"></a>Aanbevolen ingebouwde rollen van Azure
 
 Er zijn verschillende ingebouwde rollen van Azure die de machtigingen kunnen bieden die nodig zijn om Storage Explorer te gebruiken. Enkele van deze rollen zijn:
-- [Eigenaar](/azure/role-based-access-control/built-in-roles#owner): alles beheren, inclusief toegang tot resources. **Opmerking**: met deze rol krijgt u toegang tot sleutels.
-- [Inzender](/azure/role-based-access-control/built-in-roles#contributor): alles beheren, met uitzonde ring van toegang tot resources. **Opmerking**: met deze rol krijgt u toegang tot sleutels.
-- [Lezer](/azure/role-based-access-control/built-in-roles#reader): bronnen lezen en weer geven.
-- [Inzender voor het opslag account](/azure/role-based-access-control/built-in-roles#storage-account-contributor): volledig beheer van opslag accounts. **Opmerking**: met deze rol krijgt u toegang tot sleutels.
-- [Eigenaar](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)van de opslag-BLOB-gegevens: volledige toegang tot Azure Storage BLOB-containers en-gegevens.
-- [Inzender voor gegevens](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)van de opslag-blob: Lees-, schrijf-en verwijder Azure Storage containers en blobs.
-- [Gegevens lezer](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)van de opslag-Blob: Azure Storage containers en blobs voor lezen en weer geven.
+- [Eigenaar](../../role-based-access-control/built-in-roles.md#owner): alles beheren, inclusief toegang tot resources. **Opmerking** : met deze rol krijgt u toegang tot sleutels.
+- [Inzender](../../role-based-access-control/built-in-roles.md#contributor): alles beheren, met uitzonde ring van toegang tot resources. **Opmerking** : met deze rol krijgt u toegang tot sleutels.
+- [Lezer](../../role-based-access-control/built-in-roles.md#reader): bronnen lezen en weer geven.
+- [Inzender voor het opslag account](../../role-based-access-control/built-in-roles.md#storage-account-contributor): volledig beheer van opslag accounts. **Opmerking** : met deze rol krijgt u toegang tot sleutels.
+- [Eigenaar](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)van de opslag-BLOB-gegevens: volledige toegang tot Azure Storage BLOB-containers en-gegevens.
+- [Inzender voor gegevens](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)van de opslag-blob: Lees-, schrijf-en verwijder Azure Storage containers en blobs.
+- [Gegevens lezer](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader)van de opslag-Blob: Azure Storage containers en blobs voor lezen en weer geven.
 
 ## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>Fout: zelfondertekend certificaat in certificaat keten (en vergelijk bare fouten)
 
 Certificaat fouten treden doorgaans op in een van de volgende situaties:
 
-- De app is verbonden via een _transparante proxy_. Dit betekent dat een server (zoals uw bedrijfs server) het HTTPS-verkeer onderschept, ontsleutelt en vervolgens versleutelt met behulp van een zelfondertekend certificaat.
+- De app is verbonden via een _transparante proxy_ . Dit betekent dat een server (zoals uw bedrijfs server) het HTTPS-verkeer onderschept, ontsleutelt en vervolgens versleutelt met behulp van een zelfondertekend certificaat.
 - U voert een toepassing uit die een zelfondertekend TLS/SSL-certificaat injecteert in de HTTPS-berichten die u ontvangt. Voor beelden van toepassingen die certificaten injecteren, zijn onder andere software voor de inspectie van virussen en netwerk verkeer.
 
 Wanneer Storage Explorer een zelfondertekend of niet-vertrouwd certificaat ziet, weet het niet meer of het ontvangen HTTPS-bericht is gewijzigd. Als u een exemplaar van het zelfondertekende certificaat hebt, kunt u Storage Explorer om dit te vertrouwen door de volgende stappen uit te voeren:
 
 1. Een met base 64 gecodeerde X. 509 (. CER)-kopie van het certificaat verkrijgen.
-2. Ga naar **bewerken**  >  **SSL-certificaten**  >  **certificaten importeren**, en gebruik vervolgens de bestands kiezer om het. cer-bestand te zoeken, te selecteren en te openen.
+2. Ga naar **bewerken**  >  **SSL-certificaten**  >  **certificaten importeren** , en gebruik vervolgens de bestands kiezer om het. cer-bestand te zoeken, te selecteren en te openen.
 
 Dit probleem kan ook optreden als er meerdere certificaten (root en tussenliggend) zijn. Om deze fout op te lossen, moeten beide certificaten worden toegevoegd.
 
@@ -98,12 +98,12 @@ Als u niet zeker weet waar het certificaat vandaan komt, volgt u deze stappen om
     * [Windows](https://slproweb.com/products/Win32OpenSSL.html): een van de lichte versies moet voldoende zijn.
     * Mac en Linux: moeten zijn opgenomen in uw besturings systeem.
 2. Voer OpenSSL uit.
-    * Windows: Open de installatiemap, selecteer **/bin/** en dubbel klik vervolgens op **openssl.exe**.
+    * Windows: Open de installatiemap, selecteer **/bin/** en dubbel klik vervolgens op **openssl.exe** .
     * Mac en Linux: uitvoeren `openssl` vanaf een Terminal.
 3. Voer `s_client -showcerts -connect microsoft.com:443` uit.
 4. Zoek naar zelfondertekende certificaten. Als u niet zeker weet welke certificaten u zelf hebt ondertekend, noteert u de locatie van het onderwerp `("s:")` en de uitgever `("i:")` .
 5. Wanneer u zelfondertekende certificaten vindt, kopieert en plakt u alles uit (en inclusief) `-----BEGIN CERTIFICATE-----` `-----END CERTIFICATE-----` in een nieuw CER-bestand.
-6. Open Storage Explorer en ga naar **Edit**  >  **SSL Certificates**  >  **import certificaten**voor SSL-certificaten bewerken. Gebruik vervolgens de bestands kiezer om de CER-bestanden die u hebt gemaakt, te zoeken, te selecteren en te openen.
+6. Open Storage Explorer en ga naar **Edit**  >  **SSL Certificates**  >  **import certificaten** voor SSL-certificaten bewerken. Gebruik vervolgens de bestands kiezer om de CER-bestanden die u hebt gemaakt, te zoeken, te selecteren en te openen.
 
 Als u geen zelfondertekende certificaten kunt vinden door deze stappen te volgen, neemt u contact met ons op via het feedback programma. U kunt Storage Explorer ook openen vanaf de opdracht regel met behulp van de `--ignore-certificate-errors` vlag. Wanneer deze vlag wordt geopend, worden certificaat fouten Storage Explorer genegeerd.
 
@@ -113,7 +113,7 @@ Als u geen zelfondertekende certificaten kunt vinden door deze stappen te volgen
 
 De dialoog vensters met een leeg aanmeld probleem worden meestal beschreven wanneer Active Directory Federation Services (AD FS) Storage Explorer om een omleiding uit te voeren, wat niet wordt ondersteund door elektron. U kunt dit probleem omzeilen door de apparaatcode stroom te gebruiken om u aan te melden. Voer hiervoor de volgende stappen uit:
 
-1. Open op de werk balk links verticaal de knop **instellingen**. Ga in het deel venster instellingen naar **toepassing**  >  **Aanmelden**. Schakel **Aanmelden met apparaatcode stroom in**.
+1. Open op de werk balk links verticaal de knop **instellingen** . Ga in het deel venster instellingen naar **toepassing**  >  **Aanmelden** . Schakel **Aanmelden met apparaatcode stroom in** .
 2. Open het dialoog venster **verbinding maken** (via het pictogram met de plug-in de verticale balk aan de linkerkant of selecteer **account toevoegen** in het deel venster account).
 3. Kies de omgeving waarin u zich wilt aanmelden.
 4. Selecteer **Aanmelden.**
@@ -130,7 +130,7 @@ Voer de volgende stappen uit als u een lus voor opnieuw verifiëren hebt of als 
 
 1. Verwijder alle accounts en sluit Storage Explorer.
 2. Verwijder de. De map IdentityService van uw computer. In Windows bevindt de map zich op `C:\users\<username>\AppData\Local` . Voor Mac en Linux vindt u de map in de hoofdmap van de gebruikers lijst.
-3. Als u Mac of Linux uitvoert, moet u ook de vermelding micro soft. developer. IdentityService verwijderen uit de opslag van uw besturings systeem. Op de Mac is het sleutel archief de *gnome-keten* toepassing. In Linux wordt de toepassing meestal _sleutel hanger_genoemd, maar de naam kan variëren, afhankelijk van uw distributie.
+3. Als u Mac of Linux uitvoert, moet u ook de vermelding micro soft. developer. IdentityService verwijderen uit de opslag van uw besturings systeem. Op de Mac is het sleutel archief de *gnome-keten* toepassing. In Linux wordt de toepassing meestal _sleutel hanger_ genoemd, maar de naam kan variëren, afhankelijk van uw distributie.
 
 ### <a name="conditional-access"></a>Voorwaardelijke toegang
 
@@ -141,7 +141,7 @@ Vanwege een beperking in de Azure AD-bibliotheek die wordt gebruikt door Storage
 De macOS-sleutel hanger kan soms een status invoeren die problemen veroorzaakt voor de Storage Explorer-verificatie bibliotheek. Voer de volgende stappen uit om de sleutel hanger uit deze staat te halen:
 
 1. Storage Explorer sluiten.
-2. Open sleutel hanger (druk op Command + spatie balk, typ **sleutel keten**en druk op ENTER).
+2. Open sleutel hanger (druk op Command + spatie balk, typ **sleutel keten** en druk op ENTER).
 3. Selecteer de sleutel hanger aanmelden.
 4. Selecteer het hang slot pictogram om de sleutel hanger te vergren delen. (Het hang slot wordt vergrendeld weer gegeven wanneer het proces is voltooid. Het kan een paar seconden duren, afhankelijk van de apps die u hebt geopend.
 
@@ -230,7 +230,7 @@ Als u met Azure bent verbonden via een proxy, controleert u of de proxy-instelli
 
 ## <a name="connection-string-doesnt-have-complete-configuration-settings"></a>De verbindings reeks heeft geen volledige configuratie-instellingen
 
-Als dit fout bericht wordt weer gegeven, is het mogelijk dat u niet over de benodigde machtigingen beschikt om de sleutels voor uw opslag account te verkrijgen. Om te bevestigen dat dit het geval is, gaat u naar de portal en zoekt u naar uw opslag account. U kunt dit doen door met de rechter muisknop op het knoop punt voor uw opslag account te klikken en **openen in portal**te selecteren. Ga vervolgens naar de Blade **toegangs sleutels** . Als u geen machtigingen hebt om sleutels weer te geven, ziet u het bericht ' u hebt geen toegang '. U kunt dit probleem omzeilen door de account sleutel van iemand anders te verkrijgen en de naam en sleutel te koppelen, of u kunt iemand voor een SAS vragen aan het opslag account en deze gebruiken om het opslag account te koppelen.
+Als dit fout bericht wordt weer gegeven, is het mogelijk dat u niet over de benodigde machtigingen beschikt om de sleutels voor uw opslag account te verkrijgen. Om te bevestigen dat dit het geval is, gaat u naar de portal en zoekt u naar uw opslag account. U kunt dit doen door met de rechter muisknop op het knoop punt voor uw opslag account te klikken en **openen in portal** te selecteren. Ga vervolgens naar de Blade **toegangs sleutels** . Als u geen machtigingen hebt om sleutels weer te geven, ziet u het bericht ' u hebt geen toegang '. U kunt dit probleem omzeilen door de account sleutel van iemand anders te verkrijgen en de naam en sleutel te koppelen, of u kunt iemand voor een SAS vragen aan het opslag account en deze gebruiken om het opslag account te koppelen.
 
 Als u de account sleutels ziet, moet u een probleem in GitHub oplossen zodat we u kunnen helpen het probleem op te lossen.
 
@@ -238,8 +238,8 @@ Als u de account sleutels ziet, moet u een probleem in GitHub oplossen zodat we 
 
 Als dit fout bericht wordt weer gegeven wanneer u een aangepaste verbinding probeert toe te voegen, zijn de verbindings gegevens die zijn opgeslagen in de lokale referentie beheerder mogelijk beschadigd. U kunt dit probleem omzeilen door de beschadigde lokale verbindingen te verwijderen en vervolgens opnieuw toe te voegen:
 
-1. Start Storage Explorer. Ga in het menu naar **Help**  >  **in-/uitschakelen Ontwikkelhulpprogramma's**.
-2. Ga in het geopende venster op het tabblad **toepassing** naar **lokale opslag** (links) > **File://**.
+1. Start Storage Explorer. Ga in het menu naar **Help**  >  **in-/uitschakelen Ontwikkelhulpprogramma's** .
+2. Ga in het geopende venster op het tabblad **toepassing** naar **lokale opslag** (links) > **File://** .
 3. Afhankelijk van het type verbinding waarmee u een probleem ondervindt, zoekt u de sleutel en kopieert u de waarde ervan naar een tekst editor. De waarde is een matrix met uw aangepaste verbindings namen, zoals de volgende:
     * Opslagaccounts
         * `StorageExplorer_CustomConnections_Accounts_v1`
@@ -265,13 +265,13 @@ Nadat u alle verbindingen hebt door lopen, moet u voor alle verbindings namen di
 # <a name="windows"></a>[Windows](#tab/Windows)
 
 1. Zoek in het menu **Start** naar **referentie beheer** en open het.
-2. Ga naar **Windows-referenties**.
-3. Onder **algemene referenties**zoekt u naar vermeldingen die de `<connection_type_key>/<corrupted_connection_name>` sleutel hebben (bijvoorbeeld `StorageExplorer_CustomConnections_Accounts_v1/account1` ).
+2. Ga naar **Windows-referenties** .
+3. Onder **algemene referenties** zoekt u naar vermeldingen die de `<connection_type_key>/<corrupted_connection_name>` sleutel hebben (bijvoorbeeld `StorageExplorer_CustomConnections_Accounts_v1/account1` ).
 4. Verwijder deze vermeldingen en voeg de verbindingen opnieuw toe.
 
 # <a name="macos"></a>[MacOS](#tab/macOS)
 
-1. Open Spotlight (Command + spatie balk) en zoek naar **sleutel hanger toegang**.
+1. Open Spotlight (Command + spatie balk) en zoek naar **sleutel hanger toegang** .
 2. Zoek naar vermeldingen die de `<connection_type_key>/<corrupted_connection_name>` sleutel hebben (bijvoorbeeld `StorageExplorer_CustomConnections_Accounts_v1/account1` ).
 3. Verwijder deze vermeldingen en voeg de verbindingen opnieuw toe.
 

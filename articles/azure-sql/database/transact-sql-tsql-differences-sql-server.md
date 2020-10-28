@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/03/2018
-ms.openlocfilehash: 02b589eebb716f5a69b4db9f00faf12401b8de7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4fdbf3bf1d9f740654fa694de03315b876116429
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619002"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784878"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>Verschillen in Transact-SQL oplossen tijdens de migratie naar SQL Database
 
@@ -28,21 +28,21 @@ De meeste Transact-SQL-functies die toepassingen gebruiken, worden volledig onde
 
 Daarnaast zijn er een aantal functies en syntaxis die helemaal niet worden ondersteund omdat Azure SQL Database is ontworpen om functies te isoleren op basis van afhankelijkheden van de hoofd database en het besturings systeem. Daarom zijn de meeste activiteiten op server niveau niet geschikt voor SQL Database. T-SQL-instructies en-opties zijn niet beschikbaar als ze opties op server niveau, onderdelen van het besturings systeem of de configuratie van het bestands systeem opgeven. Wanneer dergelijke mogelijkheden vereist zijn, is een geschikt alternatief op een andere manier vaak beschikbaar vanaf SQL Database of vanuit een andere Azure-functie of-service.
 
-Zo is hoge Beschik baarheid ingebouwd in Azure SQL Database met behulp van technologie die vergelijkbaar is met AlwaysOn- [beschikbaarheids groepen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server). T-SQL-instructies die zijn gerelateerd aan beschikbaarheids groepen worden niet ondersteund door SQL Database en de dynamische beheer weergaven die betrekking hebben op AlwaysOn-beschikbaarheids groepen, worden ook niet ondersteund.
+Zo is hoge Beschik baarheid ingebouwd in Azure SQL Database met behulp van technologie die vergelijkbaar is met AlwaysOn- [beschikbaarheids groepen](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server). T-SQL-instructies die zijn gerelateerd aan beschikbaarheids groepen worden niet ondersteund door SQL Database en de dynamische beheer weergaven die betrekking hebben op AlwaysOn-beschikbaarheids groepen, worden ook niet ondersteund.
 
-Zie [Azure SQL database functie vergelijking](features-comparison.md)voor een lijst met de functies die worden ondersteund en niet worden ondersteund door SQL database. De lijst op deze pagina vormt een aanvulling op het artikel richt lijnen en functies en richt zich op Transact-SQL-instructies.
+Zie [Azure SQL database functie vergelijking](features-comparison.md)voor een lijst met de functies die worden ondersteund en niet worden ondersteund door SQL database. De lijst op deze pagina vormt een aanvulling op het artikel richt lijnen en functies en richt zich op Transact-SQL-instructies.
 
 ## <a name="transact-sql-syntax-statements-with-partial-differences"></a>Transact-SQL-syntaxis instructies met gedeeltelijke verschillen
 
 De belangrijkste DDL-instructies (Data Definition Language) zijn beschikbaar, maar sommige DDL-instructies hebben uitbrei dingen met betrekking tot de plaatsing van schijven en niet-ondersteunde functies.
 
-- CREATE and ALTER data base-instructies hebben meer dan drie dozijn opties. De instructies omvatten opties voor plaatsing, FILESTREAM en Service Broker die alleen van toepassing zijn op SQL Server. Dit is mogelijk niet van belang als u data bases maakt voordat u migreert, maar als u T-SQL-code migreert die data bases maakt, moet u [Create Data Base (Azure SQL database)](https://msdn.microsoft.com/library/dn268335.aspx) vergelijken met de SQL Server-syntaxis bij [Create data base (SQL Server Transact-SQL)](https://msdn.microsoft.com/library/ms176061.aspx) om ervoor te zorgen dat alle opties die u gebruikt, worden ondersteund. CREATE data base for Azure SQL Database heeft ook service doelstelling-en elastische schaal opties die alleen van toepassing zijn op SQL Database.
+- CREATE and ALTER data base-instructies hebben meer dan drie dozijn opties. De instructies omvatten opties voor plaatsing, FILESTREAM en Service Broker die alleen van toepassing zijn op SQL Server. Dit is mogelijk niet van belang als u data bases maakt voordat u migreert, maar als u T-SQL-code migreert die data bases maakt, moet u [Create Data Base (Azure SQL database)](/sql/t-sql/statements/create-database-transact-sql) vergelijken met de SQL Server-syntaxis bij [Create data base (SQL Server Transact-SQL)](/sql/t-sql/statements/create-database-transact-sql) om ervoor te zorgen dat alle opties die u gebruikt, worden ondersteund. CREATE data base for Azure SQL Database heeft ook service doelstelling-en elastische schaal opties die alleen van toepassing zijn op SQL Database.
 - De instructie CREATE en ALTER TABLE heeft bestands tabel opties die niet kunnen worden gebruikt op SQL Database omdat FILESTREAM niet wordt ondersteund.
-- Aanmeldings instructies CREATE en ALTER worden ondersteund, maar SQL Database biedt niet alle opties. Om uw data base draagbaarer te maken, wordt SQL Database aanbevolen data base-gebruikers in plaats van aanmeldingen te gebruiken wanneer dat mogelijk is. Zie voor meer informatie [login maken/wijzigen](https://docs.microsoft.com/sql/t-sql/statements/alter-login-transact-sql) en [aanmeldingen en gebruikers beheren](logins-create-manage.md).
+- Aanmeldings instructies CREATE en ALTER worden ondersteund, maar SQL Database biedt niet alle opties. Om uw data base draagbaarer te maken, wordt SQL Database aanbevolen data base-gebruikers in plaats van aanmeldingen te gebruiken wanneer dat mogelijk is. Zie voor meer informatie [login maken/wijzigen](/sql/t-sql/statements/alter-login-transact-sql) en [aanmeldingen en gebruikers beheren](logins-create-manage.md).
 
 ## <a name="transact-sql-syntax-not-supported-in-azure-sql-database"></a>Transact-SQL-syntaxis wordt niet ondersteund in Azure SQL Database
 
-Naast Transact-SQL-instructies die betrekking hebben op de niet-ondersteunde functies die worden beschreven in [Azure SQL database functie vergelijking](features-comparison.md), worden de volgende instructies en groepen instructies niet ondersteund. Als dat het geval is, moet u, als uw data base wordt gemigreerd, gebruikmaken van een van de volgende functies, uw T-SQL opnieuw bezorgen om deze T-SQL-functies en-instructies te elimineren.
+Naast Transact-SQL-instructies die betrekking hebben op de niet-ondersteunde functies die worden beschreven in [Azure SQL database functie vergelijking](features-comparison.md), worden de volgende instructies en groepen instructies niet ondersteund. Als dat het geval is, moet u, als uw data base wordt gemigreerd, gebruikmaken van een van de volgende functies, uw T-SQL opnieuw bezorgen om deze T-SQL-functies en-instructies te elimineren.
 
 - Systeemobjecten sorteren
 - Gerelateerde verbinding: endpoint-instructies. SQL Database biedt geen ondersteuning voor Windows-verificatie, maar biedt wel ondersteuning voor vergelijk bare Azure Active Directory-verificatie. Voor sommige verificatietypen is de nieuwste versie van SSMS vereist. Zie [verbinding maken met SQL database of Azure Azure Synapse Analytics (voorheen SQL Data Warehouse) met behulp van Azure Active Directory-verificatie](authentication-aad-overview.md)voor meer informatie.
@@ -60,12 +60,12 @@ Naast Transact-SQL-instructies die betrekking hebben op de niet-ondersteunde fun
 - `OPENQUERY`, `OPENROWSET` , en `OPENDATASOURCE` vier delen van namen
 - .NET Framework: CLR-integratie met SQL Server
 - Semantische zoekopdrachten
-- Server referenties: gebruik in plaats daarvan [Data Base-bereik referenties](https://msdn.microsoft.com/library/mt270260.aspx) .
+- Server referenties: gebruik in plaats daarvan [Data Base-bereik referenties](/sql/t-sql/statements/create-database-scoped-credential-transact-sql) .
 - Items op server niveau: Server functies, `sys.login_token` . `GRANT`, `REVOKE` en `DENY` van machtigingen op server niveau zijn niet beschikbaar, maar sommige worden vervangen door machtigingen op database niveau. Sommige handige DMV’s op serverniveau hebben vergelijkbare DMV’s op databaseniveau.
 - `SET REMOTE_PROC_TRANSACTIONS`
 - `SHUTDOWN`
 - `sp_addmessage`
-- `sp_configure`-opties en `RECONFIGURE`. Sommige opties zijn beschikbaar met [ALTER DATABASE SCOPED CONFIGURATION](https://msdn.microsoft.com/library/mt629158.aspx).
+- `sp_configure`-opties en `RECONFIGURE`. Sommige opties zijn beschikbaar met [ALTER DATABASE SCOPED CONFIGURATION](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql).
 - `sp_helpuser`
 - `sp_migrate_user_to_contained`
 - SQL Server Agent: syntaxis die afhankelijk is van de SQL Server Agent of de MSDB-Data Base: waarschuwingen, Opera Tors, centrale beheerser vers. Gebruik in plaats daarvan opties voor scripts, zoals Azure PowerShell.
@@ -78,14 +78,14 @@ Naast Transact-SQL-instructies die betrekking hebben op de niet-ondersteunde fun
 
 ## <a name="full-transact-sql-reference"></a>Volledige naslaginformatie voor Transact-SQL
 
-Zie [Transact-SQL-Referentie (data base-engine)](https://msdn.microsoft.com/library/bb510741.aspx)   in SQL Server Books Online voor meer informatie over de grammatica, het gebruik en de voor beelden van Transact-SQL.
+Zie [Naslaginformatie voor Transact-SQL (database-engine)](/sql/t-sql/language-reference) in SQL Server Books Online voor meer informatie over Transact-SQL-grammatica, -gebruik en -voorbeelden.
 
 ### <a name="about-the-applies-to-tags"></a>Over het label 'Van toepassing op'
 
-De Transact-SQL-Naslag informatie bevat artikelen die betrekking hebben op SQL Server versies 2008 van de huidige versie. Onder de titel van het artikel ziet u een pictogram balk met de vier SQL Server-platformen en de betreffende toepas baarheid. Beschikbaarheidsgroepen zijn bijvoorbeeld geïntroduceerd in SQL Server 2012. In het artikel [beschikbaarheids groep maken](https://msdn.microsoft.com/library/ff878399.aspx)   wordt aangegeven dat de instructie van toepassing is op **SQL Server (te beginnen met 2012)**. De instructie is niet van toepassing op SQL Server 2008, SQL Server 2008 R2, Azure SQL Database, Azure Azure Synapse Analytics (voorheen SQL Data Warehouse) of parallel data warehouse.
+De Transact-SQL-Naslag informatie bevat artikelen die betrekking hebben op SQL Server versies 2008 van de huidige versie. Onder de titel van het artikel ziet u een pictogram balk met de vier SQL Server-platformen en de betreffende toepas baarheid. Beschikbaarheidsgroepen zijn bijvoorbeeld geïntroduceerd in SQL Server 2012. In het artikel [beschikbaarheids groep maken](/sql/t-sql/statements/create-availability-group-transact-sql) wordt aangegeven dat de instructie van toepassing is op **SQL Server (te beginnen met 2012)** . De instructie is niet van toepassing op SQL Server 2008, SQL Server 2008 R2, Azure SQL Database, Azure Azure Synapse Analytics (voorheen SQL Data Warehouse) of parallel data warehouse.
 
 In sommige gevallen kan het algemene onderwerp van een artikel in een product worden gebruikt, maar er zijn kleine verschillen tussen producten. De verschillen worden als toepasselijk aangegeven op middel punt in het artikel. In sommige gevallen kan het algemene onderwerp van een artikel in een product worden gebruikt, maar er zijn kleine verschillen tussen producten. De verschillen worden als toepasselijk aangegeven op middel punt in het artikel. Het artikel TRIGGER maken is bijvoorbeeld beschikbaar in SQL Database. Maar de optie **alle server** voor triggers op server niveau geeft aan dat triggers op server niveau niet kunnen worden gebruikt in SQL database. Gebruik in plaats daarvan triggers op database niveau.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure SQL database functie vergelijking](features-comparison.md)voor een lijst met de functies die worden ondersteund en niet worden ondersteund door SQL database. De lijst op deze pagina vormt een aanvulling op het artikel richt lijnen en functies en richt zich op Transact-SQL-instructies.
+Zie [Azure SQL database functie vergelijking](features-comparison.md)voor een lijst met de functies die worden ondersteund en niet worden ondersteund door SQL database. De lijst op deze pagina vormt een aanvulling op het artikel richt lijnen en functies en richt zich op Transact-SQL-instructies.

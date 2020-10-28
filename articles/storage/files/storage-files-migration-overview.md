@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 4223e3bc572a689472dce136b60599034566b274
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3ecf29be94074f51ead3173f997154df6dfa88f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654256"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785609"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migreren naar Azure-bestandsshares
 
@@ -34,11 +34,11 @@ De sleutel in een migratie is het vastleggen van alle toepasselijke bestands kwa
 
 Dit zijn de twee basis onderdelen van een bestand:
 
-- **Gegevens stroom**: de gegevens stroom van een bestand slaat de bestands inhoud op.
-- **Meta gegevens van bestand**: de meta gegevens van het bestand hebben de volgende subonderdelen:
+- **Gegevens stroom** : de gegevens stroom van een bestand slaat de bestands inhoud op.
+- **Meta gegevens van bestand** : de meta gegevens van het bestand hebben de volgende subonderdelen:
    * Bestands kenmerken zoals alleen-lezen
    * Bestands machtigingen, waarnaar kan worden verwezen als *NTFS-machtigingen* of *acl's voor bestanden en mappen*
-   * Tijds tempels, met name de tijds tempels maken en laatst gewijzigd
+   * Tijds tempels, met name het maken en de laatste gewijzigde tijds tempels
    * Een alternatieve gegevens stroom, een ruimte voor het opslaan van grotere hoeveel heden niet-standaard eigenschappen
 
 Bestands kwaliteit in een migratie kan worden gedefinieerd als de mogelijkheid om:
@@ -111,7 +111,7 @@ Er zijn verschillende hulpprogram ma's voor het kopiëren van bestanden beschikb
 
     De eerste keer dat u het hulp programma uitvoert, wordt het meren deel van de gegevens gekopieerd. Deze eerste uitvoering kan enige tijd duren. Het duurt vaak langer dan u wilt voor het offline halen van de gegevens bron voor uw bedrijfs processen.
 
-    Door een bron te spie gelen naar een doel (net als bij **Robocopy/Mir**), kunt u het hulp programma opnieuw uitvoeren op dezelfde bron en hetzelfde doel. De uitvoering is veel sneller omdat er alleen bron wijzigingen moeten worden getransporteerd die optreden na de vorige uitvoering. Het opnieuw uitvoeren van een kopieer programma op deze manier kan uitval tijd aanzienlijk verminderen.
+    Door een bron te spie gelen naar een doel (net als bij **Robocopy/Mir** ), kunt u het hulp programma opnieuw uitvoeren op dezelfde bron en hetzelfde doel. De uitvoering is veel sneller omdat er alleen bron wijzigingen moeten worden getransporteerd die optreden na de vorige uitvoering. Het opnieuw uitvoeren van een kopieer programma op deze manier kan uitval tijd aanzienlijk verminderen.
 
 De volgende tabel classificeert micro soft-hulpprogram ma's en hun huidige geschiktheid voor Azure-bestands shares:
 
@@ -121,7 +121,7 @@ De volgende tabel classificeert micro soft-hulpprogram ma's en hun huidige gesch
 |![Ja, aanbevolen](media/storage-files-migration-overview/circle-green-checkmark.png)| Azure File Sync | Systeem eigen geïntegreerd in azure-bestands shares. | Volledige kwaliteit. * |
 |![Ja, aanbevolen](media/storage-files-migration-overview/circle-green-checkmark.png)| Opslag migratie service | Indirect ondersteund. Azure-bestands shares kunnen worden gekoppeld als netwerk stations op SMS-doel servers. | Volledige kwaliteit. * |
 |![Ja, aanbevolen](media/storage-files-migration-overview/circle-green-checkmark.png)| AzCopy, versie 10,4 of hoger| Ondersteund. | Volledige kwaliteit. * |
-|![Niet volledig aanbevolen](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Data Box | Ondersteund. | Meta gegevens worden niet gekopieerd. [Data box kan worden gebruikt met Azure file sync](storage-sync-offline-data-transfer.md). |
+|![Ja, aanbevolen](media/storage-files-migration-overview/circle-green-checkmark.png)| Data Box | Ondersteund. | DataBox biedt nu volledige ondersteuning voor meta gegevens. [Data box kan ook worden gebruikt in combi natie met Azure file sync](storage-sync-offline-data-transfer.md). |
 |![Niet volledig aanbevolen](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure Storage Explorer, versie 1,14 | Ondersteund. | Er worden geen Acl's gekopieerd. Ondersteunt tijds tempels.  |
 |![Niet aanbevolen](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | Ondersteund. | Meta gegevens worden niet gekopieerd. |
 |||||

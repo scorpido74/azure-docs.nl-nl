@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 345fd486788cfbb69454be488d771d9b4ea394ab
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 4362b579b7f01570a2b5fd072bf53ad495797cd8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488636"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783773"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Door de klant beheerde sleutels gebruiken in Azure Key Vault voor de import/export-service
 
@@ -37,9 +37,9 @@ Zorg voordat u begint voor het volgende:
 
     - **Voorlopig verwijderen** en **niet wissen** worden ingesteld op uw bestaande Key Vault. Deze eigenschappen zijn niet standaard ingeschakeld. Als u deze eigenschappen wilt inschakelen, raadpleegt u de secties het **inschakelen van zacht verwijderen** en het inschakelen van de **beveiliging opschonen** in een van de volgende artikelen:
 
-        - [Voorlopig verwijderen gebruiken met Power shell](../../key-vault/general/soft-delete-powershell.md).
-        - [Voorlopig verwijderen gebruiken met CLI](../../key-vault/general/soft-delete-cli.md).
-    - De bestaande sleutel kluis moet een RSA-sleutel hebben van 2048-grootte of meer. Zie **Key Vault sleutels** in [over Azure Key Vault sleutels, geheimen en certificaten](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)voor meer informatie over sleutels.
+        - [Voorlopig verwijderen gebruiken met Power shell](../../key-vault/general/key-vault-recovery.md).
+        - [Voorlopig verwijderen gebruiken met CLI](../../key-vault/general/key-vault-recovery.md).
+    - De bestaande sleutel kluis moet een RSA-sleutel hebben van 2048-grootte of meer. Zie [about Keys](../../key-vault/keys/about-keys.md)(Engelstalig) voor meer informatie over sleutels.
     - De sleutel kluis moet zich in dezelfde regio bevinden als het opslag account voor uw gegevens.  
     - Als u geen bestaande Azure Key Vault hebt, kunt u deze inline ook maken zoals beschreven in de volgende sectie.
 
@@ -48,31 +48,31 @@ Zorg voordat u begint voor het volgende:
 Het configureren van door de klant beheerde sleutel voor uw import/export-service is optioneel. De import/export-service maakt standaard gebruik van een door micro soft beheerde sleutel voor het beveiligen van uw BitLocker-sleutel. Voer de volgende stappen uit om door de klant beheerde sleutels in te scha kelen in de Azure Portal:
 
 1. Ga naar de Blade **overzicht** voor uw import taak.
-2. Selecteer in het rechterdeel venster **kiezen hoe uw BitLocker-sleutels moeten worden versleuteld**.
+2. Selecteer in het rechterdeel venster **kiezen hoe uw BitLocker-sleutels moeten worden versleuteld** .
 
     ![Versleutelings optie kiezen](./media/storage-import-export-encryption-key-portal/encryption-key-1.png)
 
-3. Op de Blade **versleuteling** kunt u de BitLocker-sleutel van het apparaat weer geven en kopiëren. Onder **versleutelings type**kunt u kiezen hoe u uw BitLocker-sleutel wilt beveiligen. Standaard wordt een door micro soft beheerde sleutel gebruikt.
+3. Op de Blade **versleuteling** kunt u de BitLocker-sleutel van het apparaat weer geven en kopiëren. Onder **versleutelings type** kunt u kiezen hoe u uw BitLocker-sleutel wilt beveiligen. Standaard wordt een door micro soft beheerde sleutel gebruikt.
 
     ![BitLocker-sleutel weer geven](./media/storage-import-export-encryption-key-portal/encryption-key-2.png)
 
-4. U hebt de optie om een door de klant beheerde sleutel op te geven. Nadat u de door de klant beheerde sleutel hebt geselecteerd, **selecteert u sleutel kluis en een sleutel**.
+4. U hebt de optie om een door de klant beheerde sleutel op te geven. Nadat u de door de klant beheerde sleutel hebt geselecteerd, **selecteert u sleutel kluis en een sleutel** .
 
     ![Door de klant beheerde sleutel selecteren](./media/storage-import-export-encryption-key-portal/encryption-key-3.png)
 
-5. In de Blade **sleutel selecteren op basis van Azure Key Vault** wordt het abonnement automatisch ingevuld. Voor **sleutel kluis**kunt u een bestaande sleutel kluis selecteren in de vervolg keuzelijst.
+5. In de Blade **sleutel selecteren op basis van Azure Key Vault** wordt het abonnement automatisch ingevuld. Voor **sleutel kluis** kunt u een bestaande sleutel kluis selecteren in de vervolg keuzelijst.
 
     ![Azure Key Vault selecteren of maken](./media/storage-import-export-encryption-key-portal/encryption-key-4.png)
 
-6. U kunt ook **nieuwe maken** selecteren om een nieuwe sleutel kluis te maken. Voer op de **Blade sleutel kluis maken**de resource groep en de naam van de sleutel kluis in. Accepteer alle overige standaard waarden. Selecteer **Controleren + maken**.
+6. U kunt ook **nieuwe maken** selecteren om een nieuwe sleutel kluis te maken. Voer op de **Blade sleutel kluis maken** de resource groep en de naam van de sleutel kluis in. Accepteer alle overige standaard waarden. Selecteer **Controleren + maken** .
 
     ![Nieuwe Azure Key Vault maken](./media/storage-import-export-encryption-key-portal/encryption-key-5.png)
 
-7. Controleer de informatie die is gekoppeld aan uw sleutel kluis en selecteer **maken**. Wacht enkele minuten totdat de sleutel kluis is gemaakt.
+7. Controleer de informatie die is gekoppeld aan uw sleutel kluis en selecteer **maken** . Wacht enkele minuten totdat de sleutel kluis is gemaakt.
 
     ![Azure Key Vault maken](./media/storage-import-export-encryption-key-portal/encryption-key-6.png)
 
-8. U kunt in de **sleutel Select from Azure Key Vault**een sleutel selecteren in de bestaande sleutel kluis.
+8. U kunt in de **sleutel Select from Azure Key Vault** een sleutel selecteren in de bestaande sleutel kluis.
 
 9. Als u een nieuwe sleutel kluis hebt gemaakt, selecteert u **nieuwe maken** om een sleutel te maken. RSA-sleutel grootte kan 2048 of hoger zijn.
 
@@ -80,11 +80,11 @@ Het configureren van door de klant beheerde sleutel voor uw import/export-servic
 
     Als de beveiliging voor voorlopig verwijderen en leegmaken niet is ingeschakeld wanneer u de sleutel kluis maakt, wordt de sleutel kluis bijgewerkt zodat de beveiliging van de functie voor verwijderen en leegmaken is ingeschakeld.
 
-10. Geef de naam voor de sleutel op, accepteer de andere standaard waarden en selecteer **maken**.
+10. Geef de naam voor de sleutel op, accepteer de andere standaard waarden en selecteer **maken** .
 
     ![Nieuwe sleutel maken](./media/storage-import-export-encryption-key-portal/encryption-key-8.png)
 
-11. Selecteer de **versie** en kies vervolgens **selecteren**. U wordt gewaarschuwd dat er een sleutel in uw sleutel kluis is gemaakt.
+11. Selecteer de **versie** en kies vervolgens **selecteren** . U wordt gewaarschuwd dat er een sleutel in uw sleutel kluis is gemaakt.
 
     ![Nieuwe sleutel gemaakt in sleutel kluis](./media/storage-import-export-encryption-key-portal/encryption-key-9.png)
 
@@ -102,8 +102,8 @@ Als u fouten met betrekking tot de door de klant beheerde sleutel ontvangt, gebr
 | CmkErrorAccessRevoked | De toegang tot de door de klant beheerde sleutel is ingetrokken.                                                       | Ja, controleren of: <ol><li>Sleutel kluis heeft nog steeds de MSI in het toegangs beleid.</li><li>Voor het toegangs beleid zijn de machtigingen ophalen, verpakken en uitpakken ingeschakeld.</li><li>Als de sleutel kluis zich in een VNet achter de firewall bevindt, controleert u of **micro soft Trusted Services toestaan** is ingeschakeld.</li><li>Controleer of de MSI van de taak resource is ingesteld op het `None` gebruik van api's.<br>Zo ja, dan stelt u de waarde weer in op `Identity = SystemAssigned` . Hiermee wordt de identiteit voor de taak resource opnieuw gemaakt.<br>Nadat de nieuwe identiteit is gemaakt, ingeschakeld `Get` , `Wrap` en `Unwrap` machtigingen voor de nieuwe identiteit in het toegangs beleid van de sleutel kluis</li></ol>                                                                                            |
 | CmkErrorKeyDisabled      | De door de klant beheerde sleutel is uitgeschakeld.                                         | Ja, door de sleutel versie in te scha kelen     |
 | CmkErrorKeyNotFound      | De door de klant beheerde sleutel is niet gevonden. | Ja, als de sleutel is verwijderd, maar deze nog steeds binnen de duur van het opschonen valt, met behulp van [sleutel kluis ongedaan maken verwijderen](/powershell/module/az.keyvault/undo-azkeyvaultkeyremoval).<br>Hierin <ol><li>Ja, als de klant een back-up van de sleutel heeft gemaakt en deze herstelt.</li><li>Nee, anders.</li></ol>
-| CmkErrorVaultNotFound |Kan de sleutel kluis van de door de klant beheerde sleutel niet vinden. |   Als de sleutel kluis is verwijderd:<ol><li>Ja, als het zich in de duur van de schone beveiliging bevindt, gebruikt u de stappen in [een sleutel kluis herstellen](/azure/key-vault/general/soft-delete-powershell#recovering-a-key-vault).</li><li>Nee, als het na de duur van de schone beveiliging valt.</li></ol><br>Als de sleutel kluis is gemigreerd naar een andere Tenant, ja, kan deze worden hersteld met behulp van een van de volgende stappen:<ol><li>Herstel de sleutel kluis terug naar de oude Tenant.</li><li>Stel `Identity = None` in en stel vervolgens de waarde weer in op `Identity = SystemAssigned` . Hiermee wordt de identiteit verwijderd en opnieuw gemaakt zodra de nieuwe identiteit is gemaakt. Inschakelen `Get` , `Wrap` , en `Unwrap` machtigingen voor de nieuwe identiteit in het toegangs beleid van de sleutel kluis.</li></ol>|
+| CmkErrorVaultNotFound |Kan de sleutel kluis van de door de klant beheerde sleutel niet vinden. |   Als de sleutel kluis is verwijderd:<ol><li>Ja, als het zich in de duur van de schone beveiliging bevindt, gebruikt u de stappen in [een sleutel kluis herstellen](../../key-vault/general/soft-delete-overview.md#key-vault-recovery).</li><li>Nee, als het na de duur van de schone beveiliging valt.</li></ol><br>Als de sleutel kluis is gemigreerd naar een andere Tenant, ja, kan deze worden hersteld met behulp van een van de volgende stappen:<ol><li>Herstel de sleutel kluis terug naar de oude Tenant.</li><li>Stel `Identity = None` in en stel vervolgens de waarde weer in op `Identity = SystemAssigned` . Hiermee wordt de identiteit verwijderd en opnieuw gemaakt zodra de nieuwe identiteit is gemaakt. Inschakelen `Get` , `Wrap` , en `Unwrap` machtigingen voor de nieuwe identiteit in het toegangs beleid van de sleutel kluis.</li></ol>|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Wat is Azure Key Vault](/azure/key-vault/key-vault-overview)?
+- [Wat is Azure Key Vault](../../key-vault/general/overview.md)?

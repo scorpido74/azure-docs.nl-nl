@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: common
 services: storage
 tags: ''
-ms.openlocfilehash: 6c29fd00a19c930995d748027b2ec04eaa12a5ec
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 5f04a20b347e2672d9699551885f5dd16ceaa99c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480646"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785592"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Problemen met latentie oplossen met behulp van logboeken voor Opslaganalyse
 
@@ -27,7 +27,7 @@ De volgende stappen laten zien hoe u latentie problemen kunt identificeren en op
 
 ## <a name="recommended-steps"></a>Aanbevolen stappen
 
-1. Down load de [Opslaganalyse-logboeken](/azure/storage/common/storage-analytics-logging#download-storage-logging-log-data).
+1. Down load de [Opslaganalyse-logboeken](./storage-analytics-logging.md#download-storage-logging-log-data).
 
 2. Gebruik het volgende Power shell-script om de RAW-indelings logboeken te converteren naar tabellaire indeling:
 
@@ -114,7 +114,7 @@ Controleer de volgende waarden zoals vermeld in stap 5 van de sectie ' aanbevole
 * Server-Latency
 * Client-Latency
 
-In een **GetBlob-bewerking** met **RequestStatus = geslaagd**, **wordt met** deze waarde aangegeven **Client-Latency**dat Azure Storage een grote hoeveelheid tijd besteedt aan het schrijven van gegevens naar de client. Deze vertraging duidt op een Client-Side probleem.
+In een **GetBlob-bewerking** met **RequestStatus = geslaagd** , **wordt met** deze waarde aangegeven **Client-Latency** dat Azure Storage een grote hoeveelheid tijd besteedt aan het schrijven van gegevens naar de client. Deze vertraging duidt op een Client-Side probleem.
 
 **Advies**
 
@@ -129,7 +129,7 @@ Controleer de volgende waarden zoals vermeld in stap 5 van de sectie ' aanbevole
 * Server-Latency
 * Client-Latency
 
-In een **GetBlob-bewerking** met **REQUESTSTATUS = (SAS) NetworkError**, als de **maximale tijd** wordt besteed aan **client latentie**, is het meest voorkomende probleem dat de client de verbinding verbreekt voordat een time-out in de opslag service verloopt.
+In een **GetBlob-bewerking** met **REQUESTSTATUS = (SAS) NetworkError** , als de **maximale tijd** wordt besteed aan **client latentie** , is het meest voorkomende probleem dat de client de verbinding verbreekt voordat een time-out in de opslag service verloopt.
 
 **Advies**
 
@@ -144,7 +144,7 @@ Controleer de volgende waarden zoals vermeld in stap 5 van de sectie ' aanbevole
 * Server-Latency
 * Client-Latency
 
-In een **put-bewerking** met **RequestStatus = geslaagd**, als de **maximale tijd** wordt besteed aan de **client latentie**, geeft dit aan dat de client meer tijd neemt om gegevens te verzenden naar de Azure Storage. Deze vertraging duidt op een Client-Side probleem.
+In een **put-bewerking** met **RequestStatus = geslaagd** , als de **maximale tijd** wordt besteed aan de **client latentie** , geeft dit aan dat de client meer tijd neemt om gegevens te verzenden naar de Azure Storage. Deze vertraging duidt op een Client-Side probleem.
 
 **Advies**
 
@@ -159,10 +159,9 @@ Controleer de volgende waarden zoals vermeld in stap 5 van de sectie ' aanbevole
 * Server-Latency
 * Client-Latency
 
-In een **PutBlob-bewerking** met **REQUESTSTATUS = (SAS) NetworkError**, als de **maximale tijd** wordt besteed aan **client latentie**, is het meest voorkomende probleem dat de client de verbinding verbreekt voordat een time-out in de opslag service verloopt.
+In een **PutBlob-bewerking** met **REQUESTSTATUS = (SAS) NetworkError** , als de **maximale tijd** wordt besteed aan **client latentie** , is het meest voorkomende probleem dat de client de verbinding verbreekt voordat een time-out in de opslag service verloopt.
 
 **Advies**
 
 * Onderzoek de code in uw client om te begrijpen waarom en wanneer de client de verbinding met de opslag service verbreekt.
 * Gebruik wireshark, micro soft Message Analyzer of Tcping voor het onderzoeken van problemen met de netwerk verbinding van de client.
-

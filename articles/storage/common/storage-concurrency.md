@@ -11,12 +11,12 @@ ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ac54282135759f14f17ed16b9779013f849bd8d7
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b83a8bfbc79af344c4d158ee65134034db714e9c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488670"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783960"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Gelijktijdigheid beheren in Microsoft Azure Storage
 
@@ -85,7 +85,7 @@ catch (StorageException ex)
 }
 ```
 
-Azure Storage biedt ook ondersteuning voor voorwaardelijke kopteksten, zoals **If-Modified-sinds**, **als-ongewijzigd-sinds**, **If-None-Match**en combi Naties van deze headers. Zie [voorwaardelijke headers opgeven voor BLOB-service bewerkingen](https://msdn.microsoft.com/library/azure/dd179371.aspx)voor meer informatie.
+Azure Storage biedt ook ondersteuning voor voorwaardelijke kopteksten, zoals **If-Modified-sinds** , **als-ongewijzigd-sinds** , **If-None-Match** en combi Naties van deze headers. Zie [voorwaardelijke headers opgeven voor BLOB-service bewerkingen](/rest/api/storageservices/Specifying-Conditional-Headers-for-Blob-Service-Operations)voor meer informatie.
 
 De volgende tabel bevat een overzicht van de container bewerkingen die voorwaardelijke kopteksten accepteren, zoals **if-match** in de aanvraag en die een ETag-waarde Retour neren in het antwoord.
 
@@ -109,7 +109,7 @@ De volgende tabel bevat een overzicht van de BLOB-bewerkingen die voorwaardelijk
 |:--- |:--- |:--- |
 | BLOB plaatsen |Ja |Ja |
 | BLOB ophalen |Ja |Ja |
-| Get Blob Properties (Blob-eigenschappen ophalen) |Ja |Ja |
+| BLOB-eigenschappen ophalen |Ja |Ja |
 | BLOB-eigenschappen instellen |Ja |Ja |
 | BLOB-meta gegevens ophalen |Ja |Ja |
 | BLOB-meta gegevens instellen |Ja |Ja |
@@ -128,9 +128,9 @@ De volgende tabel bevat een overzicht van de BLOB-bewerkingen die voorwaardelijk
 
 ### <a name="pessimistic-concurrency-for-blobs"></a>Pessimistische gelijktijdigheid voor blobs
 
-Als u een BLOB wilt vergren delen voor exclusief gebruik, schaft u een [lease](https://msdn.microsoft.com/library/azure/ee691972.aspx) aan. Wanneer u een lease aanschaft, geeft u een tijds periode op voor de lease. De tijds periode varieert van 15 tot 60 seconden of oneindig, waarbij de hoeveelheid een exclusieve vergren deling is. Vernieuw een beperkte lease om deze uit te breiden. Release een lease wanneer u klaar bent. Blob Storage beperkte leases worden automatisch vrijgegeven wanneer deze verlopen.
+Als u een BLOB wilt vergren delen voor exclusief gebruik, schaft u een [lease](/rest/api/storageservices/Lease-Blob) aan. Wanneer u een lease aanschaft, geeft u een tijds periode op voor de lease. De tijds periode varieert van 15 tot 60 seconden of oneindig, waarbij de hoeveelheid een exclusieve vergren deling is. Vernieuw een beperkte lease om deze uit te breiden. Release een lease wanneer u klaar bent. Blob Storage beperkte leases worden automatisch vrijgegeven wanneer deze verlopen.
 
-Met leases kunnen verschillende synchronisatie strategieën worden ondersteund. De strategieën omvatten *exclusieve schrijf/gedeelde Lees*-, *exclusieve schrijf-en exclusieve Lees*-en *gedeelde write/exclusieve Lees*bewerking. Als er een lease bestaat, dwingt de Azure Storage exclusieve schrijf bewerkingen (put, set en Delete) af, maar moet de ontwikkelaar er zeker van zijn dat alle client toepassingen een lease-ID gebruiken en dat slechts één client tegelijk een geldige lease-ID heeft. Lees bewerkingen die geen lease-ID bevatten, hebben betrekking op gedeelde Lees bewerkingen.
+Met leases kunnen verschillende synchronisatie strategieën worden ondersteund. De strategieën omvatten *exclusieve schrijf/gedeelde Lees* -, *exclusieve schrijf-en exclusieve Lees* -en *gedeelde write/exclusieve Lees* bewerking. Als er een lease bestaat, dwingt de Azure Storage exclusieve schrijf bewerkingen (put, set en Delete) af, maar moet de ontwikkelaar er zeker van zijn dat alle client toepassingen een lease-ID gebruiken en dat slechts één client tegelijk een geldige lease-ID heeft. Lees bewerkingen die geen lease-ID bevatten, hebben betrekking op gedeelde Lees bewerkingen.
 
 In het volgende C#-fragment ziet u een voor beeld van het ophalen van een exclusieve lease gedurende 30 seconden op een blob, het bijwerken van de inhoud van de BLOB en het vrijgeven van de lease. Als er al een geldige lease is op de BLOB wanneer u een nieuwe lease wilt verkrijgen, retourneert de Blob service het status resultaat ' HTTP (409) '. In het volgende code fragment wordt een **AccessCondition** -object gebruikt om de lease gegevens op te slaan wanneer er een aanvraag wordt gemaakt om de BLOB in de opslag service bij te werken.  U kunt het volledige voor beeld hier downloaden: [gelijktijdigheid beheren met behulp van Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
 
@@ -161,13 +161,13 @@ catch (StorageException ex)
 }
 ```
 
-Als u een schrijf bewerking probeert uit te voeren op een geleasde BLOB zonder de lease-ID door te geven, mislukt de aanvraag met een 412-fout. Als de lease verloopt voordat de **UploadText** -methode wordt aangeroepen, maar u nog steeds de lease-id doorgeeft, mislukt de aanvraag ook met een **412** -fout. Voor meer informatie over het beheren van lease verloop tijden en lease-Id's raadpleegt u de informatie over de [lease-BLOB](https://msdn.microsoft.com/library/azure/ee691972.aspx) rest.
+Als u een schrijf bewerking probeert uit te voeren op een geleasde BLOB zonder de lease-ID door te geven, mislukt de aanvraag met een 412-fout. Als de lease verloopt voordat de **UploadText** -methode wordt aangeroepen, maar u nog steeds de lease-id doorgeeft, mislukt de aanvraag ook met een **412** -fout. Voor meer informatie over het beheren van lease verloop tijden en lease-Id's raadpleegt u de informatie over de [lease-BLOB](/rest/api/storageservices/Lease-Blob) rest.
 
 De volgende BLOB-bewerkingen kunnen leases gebruiken voor het beheren van pessimistische gelijktijdigheid:
 
 * BLOB plaatsen
 * BLOB ophalen
-* Get Blob Properties (Blob-eigenschappen ophalen)
+* BLOB-eigenschappen ophalen
 * BLOB-eigenschappen instellen
 * BLOB-meta gegevens ophalen
 * BLOB-meta gegevens instellen
@@ -184,7 +184,7 @@ De volgende BLOB-bewerkingen kunnen leases gebruiken voor het beheren van pessim
 
 ### <a name="pessimistic-concurrency-for-containers"></a>Pessimistische gelijktijdigheid voor containers
 
-Met leases in containers kunnen dezelfde synchronisatie strategieën worden ondersteund als op blobs (*exclusief schrijven/gedeeld lezen*, exclusieve schrijven/ *exclusief lezen*en *gedeeld schrijven/exclusief lezen*). in tegens telling tot blobs wordt de opslag service alleen gebruikt voor het verwijderen van een bewerking. Als u een container met een actieve lease wilt verwijderen, moet een client de actieve lease-ID met de aanvraag verwijderen bevatten. Alle andere container bewerkingen slagen op een geleasde container zonder de lease-ID op te nemen, in welk geval ze gedeelde bewerkingen zijn. Als de meeste updates (put of set) of lees bewerkingen zijn vereist, moeten ontwikkel aars ervoor zorgen dat alle clients een lease-ID gebruiken en dat slechts één client tegelijk een geldige lease-ID heeft.
+Met leases in containers kunnen dezelfde synchronisatie strategieën worden ondersteund als op blobs ( *exclusief schrijven/gedeeld lezen* , exclusieve schrijven/ *exclusief lezen* en *gedeeld schrijven/exclusief lezen* ). in tegens telling tot blobs wordt de opslag service alleen gebruikt voor het verwijderen van een bewerking. Als u een container met een actieve lease wilt verwijderen, moet een client de actieve lease-ID met de aanvraag verwijderen bevatten. Alle andere container bewerkingen slagen op een geleasde container zonder de lease-ID op te nemen, in welk geval ze gedeelde bewerkingen zijn. Als de meeste updates (put of set) of lees bewerkingen zijn vereist, moeten ontwikkel aars ervoor zorgen dat alle clients een lease-ID gebruiken en dat slechts één client tegelijk een geldige lease-ID heeft.
 
 De volgende container bewerkingen kunnen leases gebruiken voor het beheren van pessimistische gelijktijdigheid:
 
@@ -198,9 +198,9 @@ De volgende container bewerkingen kunnen leases gebruiken voor het beheren van p
 
 Zie voor meer informatie:
 
-* [Voorwaardelijke headers opgeven voor bewerkingen van de blob-service](https://msdn.microsoft.com/library/azure/dd179371.aspx)
-* [Lease-container](https://msdn.microsoft.com/library/azure/jj159103.aspx)
-* [Lease-blob](https://msdn.microsoft.com/library/azure/ee691972.aspx)
+* [Voorwaardelijke headers opgeven voor bewerkingen van de blob-service](/rest/api/storageservices/Specifying-Conditional-Headers-for-Blob-Service-Operations)
+* [Lease-container](/rest/api/storageservices/Lease-Container)
+* [Lease-blob](/rest/api/storageservices/Lease-Blob)
 
 ## <a name="managing-concurrency-in-table-storage"></a>Gelijktijdigheid beheren in tabel opslag
 
@@ -259,7 +259,7 @@ Over het algemeen moeten ontwikkel aars die gebruikmaken van tabellen, gebruikma
 
 Zie voor meer informatie:
 
-* [Bewerkingen op entiteiten](https://msdn.microsoft.com/library/azure/dd179375.aspx)
+* [Bewerkingen op entiteiten](/rest/api/storageservices/Operations-on-Entities)
 
 ## <a name="managing-concurrency-in-the-queue-service"></a>Gelijktijdigheid beheren in de Queue-service
 
@@ -269,8 +269,8 @@ De Queue-service biedt geen ondersteuning voor optimistische of pessimistische g
 
 Zie voor meer informatie:
 
-* [Wachtrijservice REST API](https://msdn.microsoft.com/library/azure/dd179363.aspx)
-* [Berichten ophalen](https://msdn.microsoft.com/library/azure/dd179474.aspx)
+* [Wachtrijservice REST API](/rest/api/storageservices/Queue-Service-REST-API)
+* [Berichten ophalen](/rest/api/storageservices/Get-Messages)
 
 ## <a name="managing-concurrency-in-azure-files"></a>Gelijktijdigheid beheren in Azure Files
 
@@ -280,7 +280,7 @@ Wanneer een SMB-client een bestand opent om te verwijderen, wordt het bestand ge
 
 Zie voor meer informatie:
 
-* [Bestands vergrendelingen beheren](https://msdn.microsoft.com/library/azure/dn194265.aspx)
+* [Bestands vergrendelingen beheren](/rest/api/storageservices/Managing-File-Locks)
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -292,5 +292,5 @@ Zie voor meer informatie over Azure Storage:
 
 * [Start pagina van Microsoft Azure Storage](https://azure.microsoft.com/services/storage/)
 * [Kennismaking met Azure Storage](storage-introduction.md)
-* Opslag aan de slag voor [BLOB](../blobs/storage-dotnet-how-to-use-blobs.md), [Table](../../cosmos-db/table-storage-how-to-use-dotnet.md),  [Queues](../storage-dotnet-how-to-use-queues.md)en [files](../storage-dotnet-how-to-use-files.md)
+* Opslag aan de slag voor [BLOB](../blobs/storage-quickstart-blobs-dotnet.md), [Table](../../cosmos-db/tutorial-develop-table-dotnet.md),  [Queues](../queues/storage-dotnet-how-to-use-queues.md)en [files](../files/storage-dotnet-how-to-use-files.md)
 * Opslag architectuur – [Azure Storage: een Maxi maal beschik bare Cloud opslag service met sterke consistentie](/archive/blogs/windowsazurestorage/sosp-paper-windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency)

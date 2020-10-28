@@ -7,12 +7,12 @@ ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python, github-actions-azure
-ms.openlocfilehash: bdc236c3ba4c70ba44e61457e2bade7df65f3153
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 638dfc63b6a37bae3905703bbd5ecabaa94d2020
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108045"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783076"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Implementeren naar App Service met behulp van GitHub-acties
 
@@ -29,16 +29,16 @@ Aan de slag met [github-acties](https://help.github.com/en/articles/about-github
     - Java: [een Java-app maken op Azure app service](quickstart-java.md)
     - Python: [een python-app maken in azure app service](quickstart-python.md)
 
-## <a name="workflow-file-overview"></a>Overzicht van werk stroom bestand
+## <a name="workflow-file-overview"></a>Overzicht van werkstroom bestand
 
-Een werk stroom wordt gedefinieerd door een YAML-bestand (. yml) in het `/.github/workflows/` pad in uw opslag plaats. Deze definitie bevat de verschillende stappen en para meters die deel uitmaken van de werk stroom.
+Een werk stroom wordt gedefinieerd door een YAML-bestand (. yml) in het `/.github/workflows/` pad in uw opslag plaats. Deze definitie bevat de verschillende stappen en parameters die deel uitmaken van de werkstroom.
 
 Het bestand heeft drie secties:
 
 |Sectie  |Taken  |
 |---------|---------|
-|**Verificatie** | 1. Definieer een service-principal of publicatie profiel. <br /> 2. Maak een GitHub-geheim. |
-|**PE** | 1. Stel de omgeving in. <br /> 2. bouw de web-app. |
+|**Verificatie** | 1. Definieer een service-principal of publicatie profiel. <br /> 2. Maak een GitHub-opslagplaats. |
+|**Ontwikkelen** | 1. Stel de omgeving in. <br /> 2. bouw de web-app. |
 |**Implementeren** | 1. Implementeer de web-app. |
 
 ## <a name="use-the-deployment-center"></a>Het implementatie centrum gebruiken
@@ -59,7 +59,7 @@ Hiermee wordt het werk stroom bestand door doorgevoerd naar de opslag plaats. De
 
 U kunt ook een werk stroom implementeren zonder het implementatie centrum te gebruiken. Hiervoor moet u eerst implementatie referenties genereren. 
 
-## <a name="generate-deployment-credentials"></a>Implementatie referenties genereren
+## <a name="generate-deployment-credentials"></a>Genereer implementatiereferenties
 
 De aanbevolen manier om te verifiëren met Azure-app Services voor GitHub-acties is met een publicatie profiel. U kunt ook verifiëren met een Service-Principal, maar voor het proces zijn meer stappen vereist. 
 
@@ -71,13 +71,13 @@ Een publicatie profiel is een referentie op app-niveau. Stel uw publicatie profi
 
 1. Ga naar de app-service in de Azure Portal. 
 
-1. Selecteer op de pagina **overzicht** de optie **publicatie profiel ophalen**.
+1. Selecteer op de pagina **overzicht** de optie **publicatie profiel ophalen** .
 
 1. Sla het gedownloade bestand op. U gebruikt de inhoud van het bestand om een GitHub-geheim te maken.
 
-# <a name="service-principal"></a>[Service-Principal](#tab/userlevel)
+# <a name="service-principal"></a>[Service-principal](#tab/userlevel)
 
-U kunt een [Service-Principal](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) maken met de opdracht [AZ AD SP create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) in de [Azure cli](/cli/azure/). Voer deze opdracht uit met [Azure Cloud shell](https://shell.azure.com/) in het Azure portal of door de knop **try it** te selecteren.
+U kunt een [service-principal](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) maken met de opdracht [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) in de [Azure CLI](/cli/azure/). Voer deze opdracht uit met [Azure Cloud Shell](https://shell.azure.com/) in de Azure Portal of door de knop **Uitproberen** te selecteren.
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor \
@@ -107,7 +107,7 @@ In het bovenstaande voor beeld vervangt u de tijdelijke aanduidingen door de abo
 
 # <a name="publish-profile"></a>[Profiel publiceren](#tab/applevel)
 
-In [github](https://github.com/)gaat u naar uw opslag plaats, selecteert u **instellingen > geheimen > een nieuw geheim toe te voegen**.
+In [github](https://github.com/)gaat u naar uw opslag plaats, selecteert u **instellingen > geheimen > een nieuw geheim toe te voegen** .
 
 Als u [referenties op app-niveau](#generate-deployment-credentials)wilt gebruiken, plakt u de inhoud van het gedownloade bestand met het publicatie profiel in het veld waarde van het geheim. Geef het geheim een naam `AZURE_WEBAPP_PUBLISH_PROFILE` .
 
@@ -119,13 +119,13 @@ Wanneer u uw GitHub-werk stroom configureert, gebruikt u de `AZURE_WEBAPP_PUBLIS
     publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
 ```
 
-# <a name="service-principal"></a>[Service-Principal](#tab/userlevel)
+# <a name="service-principal"></a>[Service-principal](#tab/userlevel)
 
-In [github](https://github.com/)gaat u naar uw opslag plaats, selecteert u **instellingen > geheimen > een nieuw geheim toe te voegen**.
+In [github](https://github.com/)gaat u naar uw opslag plaats, selecteert u **instellingen > geheimen > een nieuw geheim toe te voegen** .
 
-Als u [referenties op gebruikers niveau](#generate-deployment-credentials)wilt gebruiken, plakt u de volledige JSON-uitvoer van de Azure cli-opdracht in het veld waarde van het geheim. Geef het geheim de naam zoals `AZURE_CREDENTIALS` .
+Als u [referenties op gebruikers niveau](#generate-deployment-credentials)wilt gebruiken, plakt u de volledige JSON-uitvoer van de Azure cli-opdracht in het veld waarde van het geheim. Geef het geheim de naam `AZURE_CREDENTIALS`.
 
-Wanneer u het werk stroom bestand later configureert, gebruikt u het geheim voor de invoer `creds` van de Azure-aanmeldings actie. Bijvoorbeeld:
+Wanneer u het werkstroombestand later configureert, gebruikt u het geheim voor de invoer `creds` van de Azure-aanmeldingsactie. Bijvoorbeeld:
 
 ```yaml
 - uses: azure/login@v1
@@ -490,7 +490,7 @@ jobs:
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 ```
 
-# <a name="service-principal"></a>[Service-Principal](#tab/userlevel)
+# <a name="service-principal"></a>[Service-principal](#tab/userlevel)
 
 ### <a name="net-core"></a>.NET Core 
 

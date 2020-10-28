@@ -9,14 +9,14 @@ ms.date: 10/08/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 96e06e31ae3c963459a0f6b4772147197913b52a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2eed5a8ad783d325ef040b3a358e80a6517f08e8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488585"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783637"
 ---
-# <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage-firewalls en virtuele netwerken configureren
+# <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Firewalls en virtuele netwerken voor Azure Storage configureren
 
 Azure Storage biedt een gelaagd beveiligingsmodel. Met dit model kunt u het niveau van toegang tot uw opslagaccounts beveiligen en beheren die uw toepassingen en bedrijfsomgevingen vereisen, op basis van het type en de subset van netwerken die worden gebruikt. Wanneer netwerk regels zijn geconfigureerd, hebben alleen toepassingen die gegevens aanvragen via de opgegeven set netwerken toegang tot een opslag account. U kunt de toegang tot uw opslag account beperken tot aanvragen die afkomstig zijn van opgegeven IP-adressen, IP-adresbereiken of uit een lijst met subnetten in een Azure Virtual Network (VNet).
 
@@ -64,9 +64,9 @@ U kunt de standaard regels voor netwerk toegang voor opslag accounts beheren via
 
 1. Ga naar het opslagaccount dat u wilt beveiligen.
 
-1. Klik op het menu instellingen met de naam **firewalls en virtuele netwerken**.
+1. Klik op het menu instellingen met de naam **firewalls en virtuele netwerken** .
 
-1. Als u de toegang standaard wilt weigeren, kiest u toegang vanaf **geselecteerde netwerken**toestaan. Als u verkeer van alle netwerken wilt toestaan, verleent u toegang vanaf **Alle netwerken**.
+1. Als u de toegang standaard wilt weigeren, kiest u toegang vanaf **geselecteerde netwerken** toestaan. Als u verkeer van alle netwerken wilt toestaan, verleent u toegang vanaf **Alle netwerken** .
 
 1. Klik op **Opslaan** om uw wijzigingen toe te passen.
 
@@ -118,13 +118,13 @@ U kunt de standaard regels voor netwerk toegang voor opslag accounts beheren via
 
 U kunt opslag accounts configureren om alleen toegang toe te staan vanaf specifieke subnetten. De toegestane subnetten kunnen deel uitmaken van een VNet in hetzelfde abonnement of in een ander abonnement, met inbegrip van abonnementen die horen bij een andere Azure Active Directory Tenant.
 
-Schakel een [service-eind punt](/azure/virtual-network/virtual-network-service-endpoints-overview) in voor Azure Storage binnen het VNet. Het service-eind punt routeert verkeer van het VNet via een optimaal pad naar de Azure Storage-service. De identiteiten van het subnet en het virtuele netwerk worden ook met elke aanvraag verzonden. Beheerders kunnen vervolgens netwerk regels configureren voor het opslag account waarmee aanvragen kunnen worden ontvangen van specifieke subnetten in een VNet. Clients die toegang hebben verleend via deze netwerk regels, moeten blijven voldoen aan de autorisatie vereisten van het opslag account om toegang te krijgen tot de gegevens.
+Schakel een [service-eind punt](../../virtual-network/virtual-network-service-endpoints-overview.md) in voor Azure Storage binnen het VNet. Het service-eind punt routeert verkeer van het VNet via een optimaal pad naar de Azure Storage-service. De identiteiten van het subnet en het virtuele netwerk worden ook met elke aanvraag verzonden. Beheerders kunnen vervolgens netwerk regels configureren voor het opslag account waarmee aanvragen kunnen worden ontvangen van specifieke subnetten in een VNet. Clients die toegang hebben verleend via deze netwerk regels, moeten blijven voldoen aan de autorisatie vereisten van het opslag account om toegang te krijgen tot de gegevens.
 
 Elk opslag account ondersteunt Maxi maal 200 regels voor virtuele netwerken, die kunnen worden gecombineerd met [IP-netwerk regels](#grant-access-from-an-internet-ip-range).
 
 ### <a name="available-virtual-network-regions"></a>Beschik bare virtuele netwerk regio's
 
-Over het algemeen werken service-eind punten tussen virtuele netwerken en service-exemplaren in dezelfde Azure-regio. Wanneer u service-eind punten met Azure Storage gebruikt, neemt deze scope toe met de [gekoppelde regio](/azure/best-practices-availability-paired-regions). Service-eind punten bieden continuïteit toe tijdens een regionale failover en toegang tot alleen-lezen GRS-exemplaren (geo-redundante opslag). Netwerk regels waarmee toegang vanuit een virtueel netwerk wordt verleend aan een opslag account, hebben ook toegang tot een RA-GRS-exemplaar.
+Over het algemeen werken service-eind punten tussen virtuele netwerken en service-exemplaren in dezelfde Azure-regio. Wanneer u service-eind punten met Azure Storage gebruikt, neemt deze scope toe met de [gekoppelde regio](../../best-practices-availability-paired-regions.md). Service-eind punten bieden continuïteit toe tijdens een regionale failover en toegang tot alleen-lezen GRS-exemplaren (geo-redundante opslag). Netwerk regels waarmee toegang vanuit een virtueel netwerk wordt verleend aan een opslag account, hebben ook toegang tot een RA-GRS-exemplaar.
 
 Wanneer u na een regionale onderbreking een herstel na nood geval wilt plannen, moet u de VNets in de gepaarde regio vooraf maken. Schakel service-eind punten in voor Azure Storage, met netwerk regels die toegang tot deze alternatieve virtuele netwerken verlenen. Pas deze regels vervolgens toe op uw Geo-redundante opslag accounts.
 
@@ -148,18 +148,18 @@ U kunt regels voor virtuele netwerken voor opslag accounts beheren via de Azure 
 
 1. Ga naar het opslagaccount dat u wilt beveiligen.
 
-1. Klik op het menu instellingen met de naam **firewalls en virtuele netwerken**.
+1. Klik op het menu instellingen met de naam **firewalls en virtuele netwerken** .
 
-1. Controleer of u hebt geselecteerd voor toegang tot **geselecteerde netwerken**.
+1. Controleer of u hebt geselecteerd voor toegang tot **geselecteerde netwerken** .
 
-1. Als u toegang wilt verlenen tot een virtueel netwerk met een nieuwe netwerk regel, klikt u onder **virtuele netwerken**op **bestaand virtueel netwerk toevoegen**, selecteert u **virtuele netwerken** en **subnetten** opties en klikt u vervolgens op **toevoegen**. Als u een nieuw virtueel netwerk wilt maken en toegang wilt verlenen, klikt u op **nieuw virtueel netwerk toevoegen**. Geef de benodigde informatie op voor het maken van het nieuwe virtuele netwerk en klik vervolgens op **maken**.
+1. Als u toegang wilt verlenen tot een virtueel netwerk met een nieuwe netwerk regel, klikt u onder **virtuele netwerken** op **bestaand virtueel netwerk toevoegen** , selecteert u **virtuele netwerken** en **subnetten** opties en klikt u vervolgens op **toevoegen** . Als u een nieuw virtueel netwerk wilt maken en toegang wilt verlenen, klikt u op **nieuw virtueel netwerk toevoegen** . Geef de benodigde informatie op voor het maken van het nieuwe virtuele netwerk en klik vervolgens op **maken** .
 
     > [!NOTE]
     > Als een service-eind punt voor Azure Storage niet eerder is geconfigureerd voor het geselecteerde virtuele netwerk en subnetten, kunt u deze configureren als onderdeel van deze bewerking.
     >
     > Momenteel worden alleen virtuele netwerken die deel uitmaken van dezelfde Azure Active Directory Tenant weer gegeven voor selectie tijdens het maken van de regel. Als u toegang wilt verlenen tot een subnet in een virtueel netwerk dat deel uitmaakt van een andere Tenant, gebruikt u Power shell, CLI of REST Api's.
 
-1. Als u een virtuele netwerk-of subnet-regel wilt verwijderen, klikt u op **...** om het context menu voor het virtuele netwerk of subnet te openen en klik op **verwijderen**.
+1. Als u een virtuele netwerk-of subnet-regel wilt verwijderen, klikt u op **...** om het context menu voor het virtuele netwerk of subnet te openen en klik op **verwijderen** .
 
 1. Klik op **Opslaan** om uw wijzigingen toe te passen.
 
@@ -197,7 +197,7 @@ U kunt regels voor virtuele netwerken voor opslag accounts beheren via de Azure 
     ```
 
 > [!IMPORTANT]
-> Zorg ervoor dat u [de standaard regel instelt](#change-the-default-network-access-rule) op **weigeren**of dat netwerk regels geen effect hebben.
+> Zorg ervoor dat u [de standaard regel instelt](#change-the-default-network-access-rule) op **weigeren** of dat netwerk regels geen effect hebben.
 
 #### <a name="cliv2"></a>CLIv2
 
@@ -235,18 +235,18 @@ U kunt regels voor virtuele netwerken voor opslag accounts beheren via de Azure 
     ```
 
 > [!IMPORTANT]
-> Zorg ervoor dat u [de standaard regel instelt](#change-the-default-network-access-rule) op **weigeren**of dat netwerk regels geen effect hebben.
+> Zorg ervoor dat u [de standaard regel instelt](#change-the-default-network-access-rule) op **weigeren** of dat netwerk regels geen effect hebben.
 
 ## <a name="grant-access-from-an-internet-ip-range"></a>Toegang verlenen vanuit een IP-bereik
 
 U kunt opslag accounts configureren om toegang toe te staan vanaf specifieke IP-adresbereiken voor het open bare Internet. Deze configuratie verleent toegang tot specifieke op internet gebaseerde services en on-premises netwerken en blokkeert algemeen Internet verkeer.
 
-Geef toegestane Internet adresbereiken op met behulp van [CIDR-notatie](https://tools.ietf.org/html/rfc4632) in de vorm *16.17.18.0/24* of als afzonderlijke IP-adressen, zoals *16.17.18.19*.
+Geef toegestane Internet adresbereiken op met behulp van [CIDR-notatie](https://tools.ietf.org/html/rfc4632) in de vorm *16.17.18.0/24* of als afzonderlijke IP-adressen, zoals *16.17.18.19* .
 
    > [!NOTE]
    > Kleine adresbereiken die gebruikmaken van de grootte van het voor voegsel/31 of/32, worden niet ondersteund. Deze bereiken moeten worden geconfigureerd met behulp van afzonderlijke IP-adres regels.
 
-IP-netwerk regels zijn alleen toegestaan voor **open bare Internet** -IP-adressen. IP-adresbereiken die zijn gereserveerd voor particuliere netwerken (zoals gedefinieerd in [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) zijn niet toegestaan in IP-regels. Particuliere netwerken bevatten adressen die beginnen met _10. *_, _172,16. *_  -  _172,31. *_ en _192,168. *_.
+IP-netwerk regels zijn alleen toegestaan voor **open bare Internet** -IP-adressen. IP-adresbereiken die zijn gereserveerd voor particuliere netwerken (zoals gedefinieerd in [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) zijn niet toegestaan in IP-regels. Particuliere netwerken bevatten adressen die beginnen met _10. *_ , _172,16. *_  -  _172,31. *_ en _192,168. *_ .
 
    > [!NOTE]
    > IP-netwerk regels hebben geen invloed op aanvragen die afkomstig zijn uit dezelfde Azure-regio als het opslag account. Gebruik [regels voor virtuele netwerken](#grant-access-from-a-virtual-network) om aanvragen van dezelfde regio toe te staan.
@@ -262,7 +262,7 @@ Elk opslag account ondersteunt Maxi maal 200 IP-netwerk regels.
 
 Als u toegang wilt verlenen vanaf uw on-premises netwerken naar uw opslag account met een IP-netwerk regel, moet u de Internet gerichte IP-adressen identificeren die door uw netwerk worden gebruikt. Neem contact op met uw netwerk beheerder voor hulp.
 
-Als u [ExpressRoute](/azure/expressroute/expressroute-introduction) gebruikt vanuit uw on-premises netwerk voor openbare peering of Microsoft-peering, moet u de NAT IP-adressen opgeven die worden gebruikt. Voor openbare peering gebruikt elk ExpressRoute-circuit standaard twee NAT IP-adressen. Deze worden toegepast op Azure-serviceverkeer wanneer het verkeer het Microsoft Azure-backbone-netwerk binnenkomt. Voor micro soft-peering worden de IP-adressen van NAT die worden gebruikt door de klant of door de service provider verschaft. Voor toegang tot uw serviceresources moet u deze openbare IP-adressen toestaan in de instelling voor IP-firewall voor de resource. Wanneer u op zoek bent naar de IP-adressen van uw ExpressRoute-circuit voor openbare peering, opent u [een ondersteuningsticket met ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) via de Azure-portal. Meer informatie over [NAT voor openbare peering en Microsoft-peering met ExpressRoute.](/azure/expressroute/expressroute-nat#nat-requirements-for-azure-public-peering)
+Als u [ExpressRoute](../../expressroute/expressroute-introduction.md) gebruikt vanuit uw on-premises netwerk voor openbare peering of Microsoft-peering, moet u de NAT IP-adressen opgeven die worden gebruikt. Voor openbare peering gebruikt elk ExpressRoute-circuit standaard twee NAT IP-adressen. Deze worden toegepast op Azure-serviceverkeer wanneer het verkeer het Microsoft Azure-backbone-netwerk binnenkomt. Voor micro soft-peering worden de IP-adressen van NAT die worden gebruikt door de klant of door de service provider verschaft. Voor toegang tot uw serviceresources moet u deze openbare IP-adressen toestaan in de instelling voor IP-firewall voor de resource. Wanneer u op zoek bent naar de IP-adressen van uw ExpressRoute-circuit voor openbare peering, opent u [een ondersteuningsticket met ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) via de Azure-portal. Meer informatie over [NAT voor openbare peering en Microsoft-peering met ExpressRoute.](../../expressroute/expressroute-nat.md#nat-requirements-for-azure-public-peering)
 
 ### <a name="managing-ip-network-rules"></a>IP-netwerk regels beheren
 
@@ -272,11 +272,11 @@ U kunt IP-netwerk regels voor opslag accounts beheren via de Azure Portal, Power
 
 1. Ga naar het opslagaccount dat u wilt beveiligen.
 
-1. Klik op het menu instellingen met de naam **firewalls en virtuele netwerken**.
+1. Klik op het menu instellingen met de naam **firewalls en virtuele netwerken** .
 
-1. Controleer of u hebt geselecteerd voor toegang tot **geselecteerde netwerken**.
+1. Controleer of u hebt geselecteerd voor toegang tot **geselecteerde netwerken** .
 
-1. Als u toegang tot een IP-adres bereik voor Internet wilt verlenen, voert u het adres bereik of het adres bereik (in CIDR-indeling) in onder **firewall**  >  **adressen**.
+1. Als u toegang tot een IP-adres bereik voor Internet wilt verlenen, voert u het adres bereik of het adres bereik (in CIDR-indeling) in onder **firewall**  >  **adressen** .
 
 1. Als u een IP-netwerk regel wilt verwijderen, klikt u op het prullenbak pictogram naast het adres bereik.
 
@@ -317,7 +317,7 @@ U kunt IP-netwerk regels voor opslag accounts beheren via de Azure Portal, Power
     ```
 
 > [!IMPORTANT]
-> Zorg ervoor dat u [de standaard regel instelt](#change-the-default-network-access-rule) op **weigeren**of dat netwerk regels geen effect hebben.
+> Zorg ervoor dat u [de standaard regel instelt](#change-the-default-network-access-rule) op **weigeren** of dat netwerk regels geen effect hebben.
 
 #### <a name="cliv2"></a>CLIv2
 
@@ -354,11 +354,11 @@ U kunt IP-netwerk regels voor opslag accounts beheren via de Azure Portal, Power
     ```
 
 > [!IMPORTANT]
-> Zorg ervoor dat u [de standaard regel instelt](#change-the-default-network-access-rule) op **weigeren**of dat netwerk regels geen effect hebben.
+> Zorg ervoor dat u [de standaard regel instelt](#change-the-default-network-access-rule) op **weigeren** of dat netwerk regels geen effect hebben.
 
 ## <a name="exceptions"></a>Uitzonderingen
 
-Met netwerk regels kunt u een beveiligde omgeving maken voor verbindingen tussen uw toepassingen en uw gegevens voor de meeste scenario's. Sommige toepassingen zijn echter afhankelijk van Azure-Services die niet uniek kunnen worden geïsoleerd met de regels voor het virtuele netwerk of IP-adres. Maar dergelijke services moeten aan de opslag worden verleend om de functionaliteit van de volledige toepassing mogelijk te maken. In dergelijke situaties kunt u gebruikmaken van de **_vertrouwde micro soft-Services toestaan..._* _ instelling om dergelijke services toegang te bieden tot uw gegevens, Logboeken of analyses.
+Met netwerk regels kunt u een beveiligde omgeving maken voor verbindingen tussen uw toepassingen en uw gegevens voor de meeste scenario's. Sommige toepassingen zijn echter afhankelijk van Azure-Services die niet uniek kunnen worden geïsoleerd met de regels voor het virtuele netwerk of IP-adres. Maar dergelijke services moeten aan de opslag worden verleend om de functionaliteit van de volledige toepassing mogelijk te maken. In dergelijke situaties kunt u gebruikmaken van de * *_vertrouwde micro soft-Services toestaan..._* _ instelling om dergelijke services toegang te bieden tot uw gegevens, Logboeken of analyses.
 
 ### <a name="trusted-microsoft-services"></a>Vertrouwde micro soft-Services
 
@@ -372,39 +372,39 @@ Wanneer u de instelling **vertrouwde micro soft-Services toestaan...** inschakel
 
 | Service                  | Naam van resource provider     | Toegestane bewerkingen                 |
 |:------------------------ |:-------------------------- |:---------------------------------- |
-| Azure Backup             | Microsoft.RecoveryServices | Voer back-ups en herstel bewerkingen uit van niet-beheerde schijven in virtuele IAAS-machines. (niet vereist voor beheerde schijven). [Meer informatie](/azure/backup/backup-introduction-to-azure-backup). |
-| Azure Data Box           | Micro soft. DataBox          | Hiermee kunt u gegevens importeren naar Azure met behulp van Data Box. [Meer informatie](/azure/databox/data-box-overview). |
+| Azure Backup             | Microsoft.RecoveryServices | Voer back-ups en herstel bewerkingen uit van niet-beheerde schijven in virtuele IAAS-machines. (niet vereist voor beheerde schijven). [Meer informatie](../../backup/backup-overview.md). |
+| Azure Data Box           | Micro soft. DataBox          | Hiermee kunt u gegevens importeren naar Azure met behulp van Data Box. [Meer informatie](../../databox/data-box-overview.md). |
 | Azure DevTest Labs       | Microsoft.DevTestLab       | Het maken van aangepaste installatie kopieën en artefact installatie. [Meer informatie](../../devtest-labs/devtest-lab-overview.md). |
-| Azure Event Grid         | Micro soft. EventGrid        | Schakel Blob Storage gebeurtenis publicatie in en sta Event Grid toe om naar opslag wachtrijen te publiceren. Meer informatie over [Blob Storage-gebeurtenissen](/azure/event-grid/event-sources) en [het publiceren naar wacht rijen](/azure/event-grid/event-handlers). |
-| Azure Event Hubs         | Microsoft.EventHub         | Gegevens archiveren met Event Hubs Capture. [Meer informatie](/azure/event-hubs/event-hubs-capture-overview). |
+| Azure Event Grid         | Micro soft. EventGrid        | Schakel Blob Storage gebeurtenis publicatie in en sta Event Grid toe om naar opslag wachtrijen te publiceren. Meer informatie over [Blob Storage-gebeurtenissen](../../event-grid/overview.md#event-sources) en [het publiceren naar wacht rijen](../../event-grid/event-handlers.md). |
+| Azure Event Hubs         | Microsoft.EventHub         | Gegevens archiveren met Event Hubs Capture. [Meer informatie](../../event-hubs/event-hubs-capture-overview.md). |
 | Azure File Sync          | Micro soft. StorageSync      | Hiermee kunt u uw on-premises Bestands server transformeren naar een cache voor Azure-bestands shares. Het toestaan van synchronisatie op meerdere locaties, snelle herstel na nood gevallen en back-ups aan de Cloud zijde. [Meer informatie](../files/storage-sync-files-planning.md) |
-| Azure HDInsight          | Microsoft.HDInsight        | Richt de oorspronkelijke inhoud in van het standaard bestandssysteem voor een nieuw HDInsight-cluster. [Meer informatie](/azure/hdinsight/hdinsight-hadoop-use-blob-storage). |
-| Azure import-export      | Microsoft.ImportExport     | Hiermee kunt u gegevens importeren voor het Azure Storage of exporteren van gegevens uit Azure Storage met behulp van de Azure Storage import/export-service. [Meer informatie](/azure/storage/common/storage-import-export-service).  |
-| Azure Monitor            | Microsoft.Insights         | Hiermee staat u het schrijven van bewakings gegevens naar een beveiligd opslag account, inclusief bron logboeken, Azure Active Directory aanmeld-en audit logboeken en Microsoft Intune-Logboeken toe. [Meer informatie](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security). |
-| Azure-netwerken         | Microsoft.Network          | U kunt Logboeken voor netwerk verkeer opslaan en analyseren, met inbegrip van de Network Watcher-en Traffic Analytics-Services. [Meer informatie](/azure/network-watcher/network-watcher-nsg-flow-logging-overview). |
-| Azure Site Recovery      | Micro soft. SiteRecovery     | Schakel replicatie in voor herstel na nood gevallen van virtuele Azure IaaS-machines wanneer u gebruikmaakt van cache-, bron-of doel opslag accounts die gebruikmaken van een firewall.  [Meer informatie](/azure/site-recovery/azure-to-azure-tutorial-enable-replication). |
+| Azure HDInsight          | Microsoft.HDInsight        | Richt de oorspronkelijke inhoud in van het standaard bestandssysteem voor een nieuw HDInsight-cluster. [Meer informatie](../../hdinsight/hdinsight-hadoop-use-blob-storage.md). |
+| Azure import-export      | Microsoft.ImportExport     | Hiermee kunt u gegevens importeren voor het Azure Storage of exporteren van gegevens uit Azure Storage met behulp van de Azure Storage import/export-service. [Meer informatie](./storage-import-export-service.md).  |
+| Azure Monitor            | Microsoft.Insights         | Hiermee staat u het schrijven van bewakings gegevens naar een beveiligd opslag account, inclusief bron logboeken, Azure Active Directory aanmeld-en audit logboeken en Microsoft Intune-Logboeken toe. [Meer informatie](../../azure-monitor/platform/roles-permissions-security.md). |
+| Azure-netwerken         | Microsoft.Network          | U kunt Logboeken voor netwerk verkeer opslaan en analyseren, met inbegrip van de Network Watcher-en Traffic Analytics-Services. [Meer informatie](../../network-watcher/network-watcher-nsg-flow-logging-overview.md). |
+| Azure Site Recovery      | Micro soft. SiteRecovery     | Schakel replicatie in voor herstel na nood gevallen van virtuele Azure IaaS-machines wanneer u gebruikmaakt van cache-, bron-of doel opslag accounts die gebruikmaken van een firewall.  [Meer informatie](../../site-recovery/azure-to-azure-tutorial-enable-replication.md). |
 
 Met de instelling **vertrouwde micro soft-Services toestaan...** kunt u ook een bepaald exemplaar van de onderstaande services gebruiken om toegang te krijgen tot het opslag account, als u [een Azure-rol expliciet toewijst](storage-auth-aad.md#assign-azure-roles-for-access-rights) aan de door het [systeem toegewezen beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md) voor het bron exemplaar. In dit geval komt het toegangsbereik voor het exemplaar overeen met de Azure-rol die aan de beheerde identiteit is toegewezen.
 
 | Service                        | Naam van resource provider                 | Doel            |
 | :----------------------------- | :------------------------------------- | :----------------- |
-| Azure API Management           | Microsoft.ApiManagement/service        | Hiermee wordt de API Management-service toegang tot opslag accounts achter firewall ingeschakeld met behulp van beleid. [Meer informatie](/azure/api-management/api-management-authentication-policies#use-managed-identity-in-send-request-policy). |
+| Azure API Management           | Microsoft.ApiManagement/service        | Hiermee wordt de API Management-service toegang tot opslag accounts achter firewall ingeschakeld met behulp van beleid. [Meer informatie](../../api-management/api-management-authentication-policies.md#use-managed-identity-in-send-request-policy). |
 | Azure Cognitive Search         | Micro soft. Search/searchServices        | Hiermee kunnen Cognitive Search Services toegang krijgen tot opslag accounts voor indexering, verwerking en query's. |
 | Azure Container Registry Tasks | Micro soft. ContainerRegistry/registers | ACR-taken hebben toegang tot opslag accounts tijdens het maken van container installatie kopieën. |
 | Azure Data Factory             | Micro soft. DataFactory/fabrieken        | Hiermee hebt u toegang tot opslag accounts via de ADF-runtime. |
 | Azure Data Share               | Microsoft.DataShare/accounts           | Hiermee wordt toegang tot opslag accounts via een gegevens share toegestaan. |
 | Azure IoT Hub                  | Micro soft. devices/IotHubs              | Hiermee kunnen gegevens van een IoT-hub worden geschreven naar de Blob-opslag. [Meer informatie](../../iot-hub/virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) |
-| Azure Logic Apps               | Microsoft.Logic/workflows              | Hiermee kunnen logische apps toegang krijgen tot opslag accounts. [Meer informatie](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity). |
-| Azure Machine Learning-service | Microsoft.MachineLearningServices      | Geautoriseerde Azure Machine Learning-werk ruimten schrijven experiment-uitvoer, modellen en logboeken naar Blob Storage en lezen de gegevens. [Meer informatie](/azure/machine-learning/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). | 
-| Azure Synapse Analytics (voorheen Azure SQL Data Warehouse)       | Microsoft.Sql                          | Staat het importeren en exporteren van gegevens uit specifieke SQL-data bases toe met behulp van de instructie COPY of poly base. [Meer informatie](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview). |
-| Azure SQL Database       | Microsoft.Sql                          | Staat het [importeren](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) van gegevens uit opslag accounts toe en het [schrijven](/azure/azure-sql/database/audit-write-storage-account-behind-vnet-firewall) van controle gegevens naar opslag accounts achter de firewall. |
-| Azure Stream Analytics         | Microsoft.StreamAnalytics             | Hiermee staat u toe dat gegevens van een streaming-taak naar de Blob-opslag worden geschreven. [Meer informatie](/azure/stream-analytics/blob-output-managed-identity). |
+| Azure Logic Apps               | Microsoft.Logic/workflows              | Hiermee kunnen logische apps toegang krijgen tot opslag accounts. [Meer informatie](../../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity). |
+| Azure Machine Learning-service | Microsoft.MachineLearningServices      | Geautoriseerde Azure Machine Learning-werk ruimten schrijven experiment-uitvoer, modellen en logboeken naar Blob Storage en lezen de gegevens. [Meer informatie](../../machine-learning/how-to-network-security-overview.md#secure-the-workspace-and-associated-resources). | 
+| Azure Synapse Analytics (voorheen Azure SQL Data Warehouse)       | Microsoft.Sql                          | Staat het importeren en exporteren van gegevens uit specifieke SQL-data bases toe met behulp van de instructie COPY of poly base. [Meer informatie](../../azure-sql/database/vnet-service-endpoint-rule-overview.md). |
+| Azure SQL Database       | Microsoft.Sql                          | Staat het [importeren](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) van gegevens uit opslag accounts toe en het [schrijven](../../azure-sql/database/audit-write-storage-account-behind-vnet-firewall.md) van controle gegevens naar opslag accounts achter de firewall. |
+| Azure Stream Analytics         | Microsoft.StreamAnalytics             | Hiermee staat u toe dat gegevens van een streaming-taak naar de Blob-opslag worden geschreven. [Meer informatie](../../stream-analytics/blob-output-managed-identity.md). |
 | Azure Synapse Analytics        | Micro soft. Synapse/werk ruimten          | Hiermee schakelt u toegang tot gegevens in Azure Storage van Synapse Analytics. |
 
 
 ### <a name="storage-analytics-data-access"></a>Opslag Analytics-gegevens toegang
 
-In sommige gevallen is de toegang tot bron logboeken en-metrische gegevens vereist van buiten de grens van het netwerk. Wanneer u vertrouwde services toegang tot het opslag account configureert, kunt u lees toegang toestaan voor de logboek bestanden, metrische tabellen of beide. [Meer informatie over het werken met Storage Analytics.](/azure/storage/storage-analytics)
+In sommige gevallen is de toegang tot bron logboeken en-metrische gegevens vereist van buiten de grens van het netwerk. Wanneer u vertrouwde services toegang tot het opslag account configureert, kunt u lees toegang toestaan voor de logboek bestanden, metrische tabellen of beide. [Meer informatie over het werken met Storage Analytics.](./storage-analytics.md)
 
 ### <a name="managing-exceptions"></a>Uitzonde ringen beheren
 
@@ -414,11 +414,11 @@ U kunt netwerk regel uitzonderingen beheren via de Azure Portal, Power shell of 
 
 1. Ga naar het opslagaccount dat u wilt beveiligen.
 
-1. Klik op het menu instellingen met de naam **firewalls en virtuele netwerken**.
+1. Klik op het menu instellingen met de naam **firewalls en virtuele netwerken** .
 
-1. Controleer of u hebt geselecteerd voor toegang tot **geselecteerde netwerken**.
+1. Controleer of u hebt geselecteerd voor toegang tot **geselecteerde netwerken** .
 
-1. Selecteer onder **uitzonde ringen**de uitzonde ringen die u wilt verlenen.
+1. Selecteer onder **uitzonde ringen** de uitzonde ringen die u wilt verlenen.
 
 1. Klik op **Opslaan** om uw wijzigingen toe te passen.
 
@@ -445,7 +445,7 @@ U kunt netwerk regel uitzonderingen beheren via de Azure Portal, Power shell of 
     ```
 
 > [!IMPORTANT]
-> Zorg ervoor dat u [de standaard regel instelt](#change-the-default-network-access-rule) op **weigeren**of dat het verwijderen van uitzonde ringen geen effect heeft.
+> Zorg ervoor dat u [de standaard regel instelt](#change-the-default-network-access-rule) op **weigeren** of dat het verwijderen van uitzonde ringen geen effect heeft.
 
 #### <a name="cliv2"></a>CLIv2
 
@@ -470,10 +470,10 @@ U kunt netwerk regel uitzonderingen beheren via de Azure Portal, Power shell of 
     ```
 
 > [!IMPORTANT]
-> Zorg ervoor dat u [de standaard regel instelt](#change-the-default-network-access-rule) op **weigeren**of dat het verwijderen van uitzonde ringen geen effect heeft.
+> Zorg ervoor dat u [de standaard regel instelt](#change-the-default-network-access-rule) op **weigeren** of dat het verwijderen van uitzonde ringen geen effect heeft.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over Azure Network Service-eind punten in [service-eind punten](/azure/virtual-network/virtual-network-service-endpoints-overview).
+Meer informatie over Azure Network Service-eind punten in [service-eind punten](../../virtual-network/virtual-network-service-endpoints-overview.md).
 
 Dieper in de Azure Storage beveiliging in [Azure Storage beveiligings handleiding](../blobs/security-recommendations.md).

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 7b7915e1b7779c4d0359b9ac190574c43a624cbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d17b9cdebf06e7d754a23a7224bbe3dba1a2832c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87276394"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783603"
 ---
 # <a name="azure-importexport-system-requirements"></a>Systeemvereisten voor Azure Import/Export
 
@@ -50,7 +50,7 @@ Zie [overzicht van Azure Storage-accounts](storage-account-overview.md)voor meer
 Elke taak kan worden gebruikt om gegevens over te dragen van slechts één opslag account. Met andere woorden, één import/export-taak kan niet over meerdere opslag accounts worden verdeeld. Zie [een opslag account maken](storage-account-create.md)voor meer informatie over het maken van een nieuw opslag account.
 
 > [!IMPORTANT]
-> Voor opslag accounts waarop de functie [service-eind punten van Virtual Network](../../virtual-network/virtual-network-service-endpoints-overview.md)   is ingeschakeld, gebruikt u de instelling **vertrouwde micro soft-Services toestaan...** om de [import/export](/azure/storage/common/storage-network-security) -service in te scha kelen voor het uitvoeren van import/export van gegevens van/naar Azure.
+> Voor opslag accounts waarop de functie [service-eind punten van Virtual Network](../../virtual-network/virtual-network-service-endpoints-overview.md) is ingeschakeld, gebruikt u de instelling **vertrouwde micro soft-Services toestaan...** om de [import/export](./storage-network-security.md) -service in te scha kelen voor het uitvoeren van import/export van gegevens van/naar Azure.
 
 ## <a name="supported-storage-types"></a>Ondersteunde opslagtypen
 
@@ -94,4 +94,4 @@ Bij het voorbereiden van harde schijven en het kopiëren van de gegevens met het
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Gegevensoverdracht met het AzCopy-opdrachtregelprogramma](storage-use-azcopy.md)
+* [Gegevensoverdracht met het AzCopy-opdrachtregelprogramma](./storage-use-azcopy-v10.md)

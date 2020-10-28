@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b610a5537d110a4046bd42ac86f5c938aeafe953
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e924a5f6c765b5b964fe3b1492393b063d9d23b4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89072946"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783569"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Opslag beheren in de onafhankelijke Azure-Clouds met behulp van Power shell
 
@@ -51,7 +51,7 @@ Meld u aan bij uw account dat toegang heeft tot de Cloud waarmee u verbinding wi
 Connect-AzAccount –Environment AzureUSGovernment
 ```
 
-Gebruik de omgeving **AzureChinaCloud**om toegang te krijgen tot de cloud van China. Gebruik **AzureGermanCloud**om toegang te krijgen tot de Duitse Cloud.
+Gebruik de omgeving **AzureChinaCloud** om toegang te krijgen tot de cloud van China. Gebruik **AzureGermanCloud** om toegang te krijgen tot de Duitse Cloud.
 
 Als u op dit punt de lijst met locaties nodig hebt om een opslag account of een andere resource te maken, kunt u een query uitvoeren op de locaties die beschikbaar zijn voor de geselecteerde Cloud met behulp van [Get-AzLocation](/powershell/module/az.resources/get-azlocation).
 
@@ -69,7 +69,7 @@ De volgende tabel bevat de locaties die voor de Duitse Cloud zijn geretourneerd.
 
 ## <a name="endpoint-suffix"></a>Eind punt achtervoegsel
 
-Het achtervoegsel van het eind punt voor elk van deze omgevingen wijkt af van het open bare Azure-eind punt. Het achtervoegsel van het BLOB-eind punt voor Azure Public is bijvoorbeeld **blob.core.Windows.net**. Voor de overheids-Cloud is het achtervoegsel van het BLOB-eind punt **blob.core.usgovcloudapi.net**.
+Het achtervoegsel van het eind punt voor elk van deze omgevingen wijkt af van het open bare Azure-eind punt. Het achtervoegsel van het BLOB-eind punt voor Azure Public is bijvoorbeeld **blob.core.Windows.net** . Voor de overheids-Cloud is het achtervoegsel van het BLOB-eind punt **blob.core.usgovcloudapi.net** .
 
 ### <a name="get-endpoint-using-get-azenvironment"></a>Eind punt ophalen met Get-AzEnvironment
 
@@ -167,7 +167,7 @@ Remove-AzResourceGroup -Name $resourceGroup
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Gebruikersaanmeldingen behouden tussen PowerShell-sessies](/powershell/azure/context-persistence)
-* [Opslag Azure Government](../../azure-government/documentation-government-services-storage.md)
+* [Opslag Azure Government](../../azure-government/compare-azure-government-global-azure.md)
 * [Ontwikkelaars handleiding Microsoft Azure Government](../../azure-government/documentation-government-developer-guide.md)
 * [Opmerkingen voor ontwikkel aars voor Azure China 21Vianet-toepassingen](https://msdn.microsoft.com/library/azure/dn578439.aspx)
 * [Documentatie voor Azure Duitsland](../../germany/germany-welcome.md)

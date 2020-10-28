@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e9bd2db8bcc427118a76f87e49ade422a74a11c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7d7bff1bc85e0dec78a69422d126b86f61b7704
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87276921"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783977"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Herstel na noodgeval en failover van opslagaccount
 
@@ -54,9 +54,9 @@ Het is belang rijk om uw toepassing te ontwerpen voor hoge Beschik baarheid vana
 Houd bovendien de volgende aanbevolen procedures voor het onderhouden van hoge Beschik baarheid voor uw Azure Storage gegevens:
 
 - **Schijven:** Gebruik [Azure backup](https://azure.microsoft.com/services/backup/) om een back-up te maken van de VM-schijven die worden gebruikt door uw virtuele Azure-machines. U kunt ook [Azure site Recovery](https://azure.microsoft.com/services/site-recovery/) gebruiken om uw vm's te beschermen in het geval van een regionale nood situatie.
-- **Blok-blobs:** Schakel [zacht verwijderen](../blobs/storage-blob-soft-delete.md) in om te beschermen tegen verwijderingen op object niveau en overschrijvingen, of kopieer blok-blobs naar een ander opslag account in een andere regio met behulp van [AzCopy](storage-use-azcopy.md), [Azure PowerShell](/powershell/module/az.storage/)of de [Azure data verplaatsings bibliotheek](storage-use-data-movement-library.md).
-- **Bestanden:** Gebruik [AzCopy](storage-use-azcopy.md) of [Azure PowerShell](/powershell/module/az.storage/) om uw bestanden te kopiëren naar een ander opslag account in een andere regio.
-- **Tabellen:** gebruik [AzCopy](storage-use-azcopy.md) om tabel gegevens te exporteren naar een ander opslag account in een andere regio.
+- **Blok-blobs:** Schakel [zacht verwijderen](../blobs/soft-delete-blob-overview.md) in om te beschermen tegen verwijderingen op object niveau en overschrijvingen, of kopieer blok-blobs naar een ander opslag account in een andere regio met behulp van [AzCopy](./storage-use-azcopy-v10.md), [Azure PowerShell](/powershell/module/az.storage/)of de [Azure data verplaatsings bibliotheek](storage-use-data-movement-library.md).
+- **Bestanden:** Gebruik [AzCopy](./storage-use-azcopy-v10.md) of [Azure PowerShell](/powershell/module/az.storage/) om uw bestanden te kopiëren naar een ander opslag account in een andere regio.
+- **Tabellen:** gebruik [AzCopy](./storage-use-azcopy-v10.md) om tabel gegevens te exporteren naar een ander opslag account in een andere regio.
 
 ## <a name="track-outages"></a>Uitval bijhouden
 
@@ -132,7 +132,7 @@ Omdat er geen failover wordt uitgevoerd voor de resource provider van Azure Stor
 
 ### <a name="azure-virtual-machines"></a>Azure-VM's
 
-Virtuele Azure-machines (Vm's) mislukken niet als onderdeel van een account-failover. Als de primaire regio niet beschikbaar is en u een failover naar de secundaire regio wilt uitvoeren, moet u de virtuele machines na de failover opnieuw maken. Het is ook mogelijk dat er gegevens verloren gaan bij de failover van het account. Micro soft raadt de volgende [hoge Beschik baarheid](../../virtual-machines/windows/manage-availability.md) en richt lijnen voor [herstel na nood gevallen](../../virtual-machines/windows/backup-recovery.md) aan die specifiek zijn voor virtuele machines in Azure.
+Virtuele Azure-machines (Vm's) mislukken niet als onderdeel van een account-failover. Als de primaire regio niet beschikbaar is en u een failover naar de secundaire regio wilt uitvoeren, moet u de virtuele machines na de failover opnieuw maken. Het is ook mogelijk dat er gegevens verloren gaan bij de failover van het account. Micro soft raadt de volgende [hoge Beschik baarheid](../../virtual-machines/manage-availability.md) en richt lijnen voor [herstel na nood gevallen](../../virtual-machines/backup-recovery.md) aan die specifiek zijn voor virtuele machines in Azure.
 
 ### <a name="azure-unmanaged-disks"></a>Niet-beheerde Azure-schijven
 
@@ -162,7 +162,7 @@ De volgende functies en services worden niet ondersteund voor account-failover:
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>Gegevens kopiëren als alternatief voor failover
 
-Als uw opslag account is geconfigureerd voor lees toegang tot de secundaire, kunt u uw toepassing ontwerpen om te lezen van het secundaire eind punt. Als u de voor keur geeft aan een failover in het geval van een storing in de primaire regio, kunt u hulpprogram ma's zoals [AzCopy](storage-use-azcopy.md), [Azure PowerShell](/powershell/module/az.storage/)of de [Azure-bibliotheek voor gegevens verplaatsing](../common/storage-use-data-movement-library.md) gebruiken om gegevens van uw opslag account in de secundaire regio te kopiëren naar een ander opslag account in een andere regio. U kunt vervolgens uw toepassingen naar dat opslag account laten wijzen voor zowel lees-als schrijf Beschik baarheid.
+Als uw opslag account is geconfigureerd voor lees toegang tot de secundaire, kunt u uw toepassing ontwerpen om te lezen van het secundaire eind punt. Als u de voor keur geeft aan een failover in het geval van een storing in de primaire regio, kunt u hulpprogram ma's zoals [AzCopy](./storage-use-azcopy-v10.md), [Azure PowerShell](/powershell/module/az.storage/)of de [Azure-bibliotheek voor gegevens verplaatsing](../common/storage-use-data-movement-library.md) gebruiken om gegevens van uw opslag account in de secundaire regio te kopiëren naar een ander opslag account in een andere regio. U kunt vervolgens uw toepassingen naar dat opslag account laten wijzen voor zowel lees-als schrijf Beschik baarheid.
 
 > [!CAUTION]
 > Een account-failover mag niet worden gebruikt als onderdeel van de strategie voor gegevens migratie.

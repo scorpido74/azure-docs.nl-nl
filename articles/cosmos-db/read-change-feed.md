@@ -5,18 +5,18 @@ author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 10/27/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 399f81a5246633912d1e17a13492e404119e362f
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 0252af90a6afb5b2a59620afaa61702f208991e7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282060"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785252"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Wijzigingenfeed in Azure Cosmos DB lezen
 
-U kunt met de Azure Cosmos DB wijzigings feed werken met een push model of een pull-model. Met een push model werkt een server (de processor voor wijzigings invoer) samen met een client met bedrijfs logica voor de verwerking van dit werk. De complexiteit van het controleren op werk en het opslaan van de status voor het laatst verwerkte werk wordt echter verwerkt op de server.
+U kunt met de Azure Cosmos DB wijzigings feed werken met een push model of een pull-model. Met een push-model werkt de wijzigings processor pushes naar een client met bedrijfs logica voor de verwerking van dit werk. De complexiteit van het controleren op werk en het opslaan van de status voor het laatst verwerkte werk wordt echter verwerkt in de processor voor wijzigings invoer.
 
 Met een pull-model moet de client het werk ophalen van de-server. De client heeft in dit geval niet alleen bedrijfs logica voor de verwerking van werk, maar ook de status voor het laatst verwerkte werk, verwerking van de taak verdeling over meerdere verwerkte clients parallel en het afhandelen van fouten.
 
@@ -68,7 +68,7 @@ U kunt de verwerking van wijzigingen op meerdere clients parallelliseren, net zo
 Er is geen ingebouwde leverings garantie van ' mini maal één keer ' met het pull-model. Het pull-model biedt u de controle op laag niveau om te bepalen hoe u fouten wilt afhandelen.
 
 > [!NOTE]
-> Het pull-model voor de wijzigings feed is momenteel in [de preview-versie van de Azure Cosmos db .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.13.0-preview) . De preview-versie is nog niet beschikbaar voor andere SDK-versies.
+> Het pull-model voor de wijzigings feed is momenteel in [de preview-versie van de Azure Cosmos db .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.15.0-preview) . De preview-versie is nog niet beschikbaar voor andere SDK-versies.
 
 ## <a name="change-feed-in-apis-for-cassandra-and-mongodb"></a>Feed wijzigen in Api's voor Cassandra en MongoDB
 

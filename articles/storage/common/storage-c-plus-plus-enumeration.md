@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 008991a6eda8a2eac9e7a39074c9e0bddb0c51b5
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 8c8e2d2ddf6899e62bc95bc1e52c84eccdc3a91e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488704"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784095"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Azure Storage-resources in C++ weergeven
 
@@ -59,8 +59,8 @@ Daarom is het niet praktisch om alle objecten in één antwoord weer te geven. I
 
 De reactie voor een gesegmenteerde vermelding omvat het volgende:
 
-* *_segment*, dat de set resultaten bevat die voor één aanroep naar de listing-API wordt geretourneerd.
-* *continuation_token*, dat wordt door gegeven aan de volgende aanroep om de volgende pagina met resultaten op te halen. Wanneer er geen resultaten meer zijn om te retour neren, is het vervolg token null.
+* *_segment* , dat de set resultaten bevat die voor één aanroep naar de listing-API wordt geretourneerd.
+* *continuation_token* , dat wordt door gegeven aan de volgende aanroep om de volgende pagina met resultaten op te halen. Wanneer er geen resultaten meer zijn om te retour neren, is het vervolg token null.
 
 Zo kan een typische aanroep voor het weer geven van een lijst met alle blobs in een container eruitzien zoals in het volgende code fragment. De code is beschikbaar in onze voor [beelden](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted.cpp):
 
@@ -198,7 +198,7 @@ Zie de volgende bronnen voor meer informatie over Azure Storage en de client bib
 
 * [Blob Storage gebruiken vanuit C++](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
 * [Table Storage gebruiken vanuit C++](../../cosmos-db/table-storage-how-to-use-c-plus.md)
-* [Queue Storage gebruiken met C++](../storage-c-plus-plus-how-to-use-queues.md)
+* [Queue Storage gebruiken met C++](../queues/storage-c-plus-plus-how-to-use-queues.md)
 * [Azure Storage-client bibliotheek voor C++ API-documentatie.](https://azure.github.io/azure-storage-cpp/)
 * [Blog van het Azure Storage-team](/archive/blogs/windowsazurestorage/)
 * [Documentatie over Azure Storage](https://azure.microsoft.com/documentation/services/storage/)

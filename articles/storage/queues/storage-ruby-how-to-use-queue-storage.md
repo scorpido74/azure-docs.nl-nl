@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: bb7619500cc142eca52ca0a1a6e0b670e6b8f51a
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7270ea589d82c09081aec5d81d1cd0b50b1b8a9f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425480"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785575"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>Queue Storage gebruiken met Ruby
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -22,14 +22,14 @@ ms.locfileid: "92425480"
 
 ## <a name="overview"></a>Overzicht
 In deze hand leiding wordt beschreven hoe u algemene scenario's uitvoert met behulp van de Microsoft Azure Queue Storage-service. De voor beelden zijn geschreven met behulp van de ruby Azure API.
-De gedekte scenario's zijn het **Invoegen**, **inspecteren**, **ophalen**en **verwijderen** van wachtrij berichten, en het **maken en verwijderen van wacht rijen**.
+De gedekte scenario's zijn het **Invoegen** , **inspecteren** , **ophalen** en **verwijderen** van wachtrij berichten, en het **maken en verwijderen van wacht rijen** .
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-ruby-application"></a>Een ruby-toepassing maken
-Maak een ruby-toepassing. Zie [een ruby-app maken in app service in Linux](/azure/app-service/quickstart-ruby)voor instructies.
+Maak een ruby-toepassing. Zie [een ruby-app maken in app service in Linux](../../app-service/quickstart-ruby.md)voor instructies.
 
 ## <a name="configure-your-application-to-access-storage"></a>Uw toepassing configureren voor toegang tot opslag
 Als u Azure Storage wilt gebruiken, moet u het ruby Azure-pakket downloaden en gebruiken. Dit omvat een aantal gebruiks vriendelijke bibliotheken die communiceren met de opslag REST-services.
@@ -57,7 +57,7 @@ U verkrijgt deze waarden als volgt van een klassiek of Resource Manager-opslagac
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Navigeer naar het opslag account dat u wilt gebruiken.
-3. Klik in de blade Instellingen aan de rechterkant op **Toegangssleutels**.
+3. Klik in de blade Instellingen aan de rechterkant op **Toegangssleutels** .
 4. In de blade Toegang die wordt weergegeven, ziet u toegangssleutel 1 en toegangssleutel 2. U kunt een van beide gebruiken. 
 5. Klik op het kopieerpictogram om de sleutel naar het klembord kopiëren. 
 
@@ -86,7 +86,7 @@ azure_queue_service.create_message("test-queue", "test message")
 ```
 
 ## <a name="how-to-peek-at-the-next-message"></a>Procedure: het volgende bericht bekijken
-U kunt het bericht aan de voor kant van een wachtrij bekijken zonder het uit de wachtrij te verwijderen door de **methode \_ berichten bekijken ()** aan te roepen. ** \_ Berichten bekijken ()** worden standaard weer gegeven in één bericht. U kunt ook opgeven hoeveel berichten u wilt bekijken.
+U kunt het bericht aan de voor kant van een wachtrij bekijken zonder het uit de wachtrij te verwijderen door de **methode \_ berichten bekijken ()** aan te roepen. **\_ Berichten bekijken ()** worden standaard weer gegeven in één bericht. U kunt ook opgeven hoeveel berichten u wilt bekijken.
 
 ```ruby
 result = azure_queue_service.peek_messages("test-queue",
@@ -99,7 +99,7 @@ U kunt in twee stappen een bericht verwijderen uit een wachtrij.
 1. Wanneer u **List \_ Messages ()** aanroept, wordt standaard het volgende bericht in een wachtrij weer gegeven. U kunt ook opgeven hoeveel berichten u wilt ophalen. De berichten die worden geretourneerd door de **lijst \_ berichten ()** worden onzichtbaar voor andere code die berichten uit deze wachtrij leest. U geeft de time-out voor de zicht baarheid in seconden op als para meter.
 2. Als u het verwijderen van het bericht uit de wachtrij wilt volt ooien, moet u ook **delete_message ()** aanroepen.
 
-Dit proces met twee stappen voor het verwijderen van een bericht zorgt ervoor dat wanneer uw code een bericht niet kan verwerken als gevolg van een hardware-of software fout, een ander exemplaar van uw code hetzelfde bericht kan ophalen en het opnieuw proberen. De code roept ** \_ bericht verwijderen ()** aan nadat het bericht is verwerkt.
+Dit proces met twee stappen voor het verwijderen van een bericht zorgt ervoor dat wanneer uw code een bericht niet kan verwerken als gevolg van een hardware-of software fout, een ander exemplaar van uw code hetzelfde bericht kan ophalen en het opnieuw proberen. De code roept **\_ bericht verwijderen ()** aan nadat het bericht is verwerkt.
 
 ```ruby
 messages = azure_queue_service.list_messages("test-queue", 30)
@@ -123,7 +123,7 @@ Er zijn twee manieren waarop u het ophalen van berichten uit een wachtrij kunt a
 1. U kunt een batch bericht ontvangen.
 2. U kunt een langere of korte time-out voor onzichtbaarheid instellen, waardoor uw code meer of minder tijd nodig is om elk bericht volledig te verwerken.
 
-In het volgende code voorbeeld wordt de methode ** \_ berichten lijst ()** gebruikt om 15 berichten in één aanroep op te halen. Vervolgens wordt elk bericht afgedrukt en verwijderd. De time-out voor onzichtbaarheid wordt ingesteld op vijf minuten voor elk bericht.
+In het volgende code voorbeeld wordt de methode **\_ berichten lijst ()** gebruikt om 15 berichten in één aanroep op te halen. Vervolgens wordt elk bericht afgedrukt en verwijderd. De time-out voor onzichtbaarheid wordt ingesteld op vijf minuten voor elk bericht.
 
 ```ruby
 azure_queue_service.list_messages("test-queue", 300

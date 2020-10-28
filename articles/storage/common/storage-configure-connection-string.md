@@ -10,12 +10,12 @@ ms.date: 10/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 3f2fa6cffd63811df596c8fca80afdc888a0eea9
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: d7ca1707c89f03683960822591065143d3f8aa4f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091607"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783875"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Azure Storage-verbindingsreeksen configureren
 
@@ -34,8 +34,8 @@ Zie [toegangs sleutels voor opslag accounts beheren](storage-account-keys-manage
 Uw toepassing moet tijdens runtime toegang hebben tot de connection string om aanvragen voor Azure Storage te autoriseren. U hebt verschillende mogelijkheden om uw verbindingsreeks op te slaan:
 
 * U kunt uw connection string opslaan in een omgevings variabele.
-* Een toepassing die wordt uitgevoerd op het bureaublad of op een apparaat kan de verbindingsreeks opslaan in een bestand **app.config** of **web.config**. Voeg de verbindingsreeks toe aan de sectie **AppSettings** in deze bestanden.
-* Een toepassing die wordt uitgevoerd in een Azure-Cloud service kan de connection string opslaan in het [Azure service configuration schema-bestand (. cscfg)](https://msdn.microsoft.com/library/ee758710.aspx). Voeg de connection string toe aan de sectie **ConfigurationSettings** van het service configuratie bestand.
+* Een toepassing die wordt uitgevoerd op het bureaublad of op een apparaat kan de verbindingsreeks opslaan in een bestand **app.config** of **web.config** . Voeg de verbindingsreeks toe aan de sectie **AppSettings** in deze bestanden.
+* Een toepassing die wordt uitgevoerd in een Azure-Cloud service kan de connection string opslaan in het [Azure service configuration schema-bestand (. cscfg)](/previous-versions/azure/reference/ee758710(v=azure.100)). Voeg de connection string toe aan de sectie **ConfigurationSettings** van het service configuratie bestand.
 
 Het opslaan van uw connection string in een configuratie bestand maakt het eenvoudig om de connection string bij te werken om te scha kelen tussen de [Azurite-opslag emulator](../common/storage-use-azurite.md) en een Azure-opslag account in de Cloud. U hoeft alleen de connection string te bewerken om naar uw doel omgeving te verwijzen.
 
@@ -57,7 +57,7 @@ Uw connection string kan er bijvoorbeeld ongeveer als volgt uitzien:
 
 `DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=<account-key>`
 
-Hoewel Azure Storage zowel HTTP als HTTPS in een connection string ondersteunt, *wordt https ten zeerste aanbevolen*.
+Hoewel Azure Storage zowel HTTP als HTTPS in een connection string ondersteunt, *wordt https ten zeerste aanbevolen* .
 
 > [!TIP]
 > U kunt de verbindings reeksen van uw opslag account vinden in de [Azure Portal](https://portal.azure.com). Navigeer naar **instellingen**  >  **toegangs sleutels** in de menu Blade van uw opslag account om verbindings reeksen voor de primaire en secundaire toegangs sleutel weer te geven.

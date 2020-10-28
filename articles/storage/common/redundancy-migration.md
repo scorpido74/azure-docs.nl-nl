@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a16199891c00e2b8133aebebd1eaa6488423896c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 286a4f47d542a500fb49f022f3c647088ebad637
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487888"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784215"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Wijzigen hoe een opslagaccount wordt gerepliceerd
 
@@ -123,30 +123,30 @@ U moet een hand matige migratie uitvoeren als:
 
 U kunt Live migratie aanvragen via de [ondersteunings portal van Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). Selecteer in de portal het opslag account dat u wilt converteren naar ZRS.
 
-1. Selecteer een **nieuwe ondersteunings aanvraag**.
+1. Selecteer een **nieuwe ondersteunings aanvraag** .
 2. Voltooi de **basis beginselen** op basis van uw account gegevens: 
-    - **Probleem type**: Selecteer **Technical**.
-    - **Service**: Selecteer **Mijn services** en **beheer van opslag accounts**.
-    - **Resource**: Selecteer de resource die u wilt converteren naar ZRS.
-3. Selecteer **Next**.
+    - **Probleem type** : Selecteer **Technical** .
+    - **Service** : Selecteer **Mijn services** en **beheer van opslag accounts** .
+    - **Resource** : Selecteer de resource die u wilt converteren naar ZRS.
+3. Selecteer **Next** .
 4. Geef de volgende waarden op voor het **probleem** gedeelte:
-    - **Ernst**: behoud de standaard waarde in.
-    - **Probleem type**: **gegevens migratie**selecteren.
-    - **Categorie**: Selecteer **migreren naar ZRS**.
-    - **Titel**: Typ een beschrijvende titel, bijvoorbeeld ZRS- **account migratie**.
-    - **Details**: Typ meer details in het vak **Details** , bijvoorbeeld ik wil migreren naar ZRS vanuit [LRS, GRS] in de \_ \_ regio.
-5. Selecteer **Next**.
+    - **Ernst** : behoud de standaard waarde in.
+    - **Probleem type** : **gegevens migratie** selecteren.
+    - **Categorie** : Selecteer **migreren naar ZRS** .
+    - **Titel** : Typ een beschrijvende titel, bijvoorbeeld ZRS- **account migratie** .
+    - **Details** : Typ meer details in het vak **Details** , bijvoorbeeld ik wil migreren naar ZRS vanuit [LRS, GRS] in de \_ \_ regio.
+5. Selecteer **Next** .
 6. Controleer of de contact gegevens juist zijn op de Blade **contact gegevens** .
-7. Selecteer **Maken**.
+7. Selecteer **Maken** .
 
 Een ondersteunings medewerker neemt contact met u op en geeft u hulp die u nodig hebt.
 
 > [!NOTE]
 > Livemigratie wordt momenteel niet ondersteund voor Premium-bestands shares. Op dit moment worden alleen hand matig gekopieerde of verplaatsen van gegevens ondersteund.
 >
-> GZRS-opslag accounts bieden momenteel geen ondersteuning voor de archief laag. Zie [Azure Blob-opslag: dynamische, koele en archief toegangs lagen](/azure/storage/blobs/storage-blob-storage-tiers) voor meer informatie.
+> GZRS-opslag accounts bieden momenteel geen ondersteuning voor de archief laag. Zie [Azure Blob-opslag: dynamische, koele en archief toegangs lagen](../blobs/storage-blob-storage-tiers.md) voor meer informatie.
 >
-> Managed disks zijn alleen beschikbaar voor LRS en kunnen niet worden gemigreerd naar ZRS. U kunt moment opnamen en installatie kopieën opslaan voor Standard SSD Managed disks op standaard HDD-opslag en [kiezen tussen opties voor LRS en ZRS](https://azure.microsoft.com/pricing/details/managed-disks/). Zie [Introduction to Azure Managed disks](/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets)(Engelstalig) voor meer informatie over de integratie met beschikbaarheids sets.
+> Managed disks zijn alleen beschikbaar voor LRS en kunnen niet worden gemigreerd naar ZRS. U kunt moment opnamen en installatie kopieën opslaan voor Standard SSD Managed disks op standaard HDD-opslag en [kiezen tussen opties voor LRS en ZRS](https://azure.microsoft.com/pricing/details/managed-disks/). Zie [Introduction to Azure Managed disks](../../virtual-machines/managed-disks-overview.md#integration-with-availability-sets)(Engelstalig) voor meer informatie over de integratie met beschikbaarheids sets.
 
 ## <a name="switch-from-zrs-classic"></a>Overschakelen van klassieke ZRS
 
@@ -165,9 +165,9 @@ U kunt ook uw klassieke ZRS-opslag account upgraden naar ZRS met behulp van de A
 
 # <a name="portal"></a>[Portal](#tab/portal)
 
-Als u een upgrade wilt uitvoeren naar ZRS in de Azure Portal, gaat u naar de **configuratie** -instellingen van het account en kiest u **upgrade**:
+Als u een upgrade wilt uitvoeren naar ZRS in de Azure Portal, gaat u naar de **configuratie** -instellingen van het account en kiest u **upgrade** :
 
-![Upgrade ZRS Classic naar ZRS in de portal](media/redundancy-migration/portal-zrs-classic-upgrade.png)
+![ZRS Classic upgraden naar ZRS in de portal](media/redundancy-migration/portal-zrs-classic-upgrade.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

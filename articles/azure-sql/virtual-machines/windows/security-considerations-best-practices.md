@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 04634a6efb6c17a823532a29ec273b088a4ad843
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6f6d1960c07dc23c584dec5bb424f91630fc1bb
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272392"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785065"
 ---
 # <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Veiligheidsoverwegingen voor SQL Server in virtuele Azure-machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,13 +41,13 @@ In de volgende secties vindt u suggesties voor het door lopen van deze punten.
 
 ## <a name="secure-connections"></a>Beveiligde verbindingen
 
-Wanneer u een SQL Server virtuele machine maakt met een galerie-afbeelding, biedt de **SQL Server connectiviteits** optie u de keuze van **lokale (binnen VM)**, **privé (binnen Virtual Network)** of **openbaar (Internet)**.
+Wanneer u een SQL Server virtuele machine maakt met een galerie-afbeelding, biedt de **SQL Server connectiviteits** optie u de keuze van **lokale (binnen VM)** , **privé (binnen Virtual Network)** of **openbaar (Internet)** .
 
 ![SQL Server connectiviteit](./media/security-considerations-best-practices/sql-vm-connectivity-option.png)
 
 Voor de beste beveiliging kiest u de meest beperkende optie voor uw scenario. Als u bijvoorbeeld een toepassing uitvoert die toegang heeft tot SQL Server op dezelfde VM, is **lokaal** de veiligste keuze. Als u een Azure-toepassing uitvoert waarvoor toegang tot de SQL Server vereist is, wordt de communicatie met **privé** alleen SQL Server binnen het opgegeven [virtuele Azure-netwerk](../../../virtual-network/virtual-networks-overview.md). Als u **open bare** (Internet) toegang tot de SQL Server virtuele machine nodig hebt, moet u ervoor zorgen dat u andere aanbevolen procedures in dit onderwerp volgt om uw aanval Surface Area te verminderen.
 
-De geselecteerde opties in de portal gebruiken binnenkomende beveiligings regels op de [netwerk beveiligings groep](../../../active-directory/identity-protection/security-overview.md) van de VM (NSG) om netwerk verkeer naar uw virtuele machine toe te staan of te weigeren. U kunt nieuwe regels voor binnenkomende NSG wijzigen of maken om verkeer toe te staan voor de SQL Server poort (standaard 1433). U kunt ook specifieke IP-adressen opgeven die via deze poort mogen communiceren.
+De geselecteerde opties in de portal gebruiken binnenkomende beveiligings regels op de [netwerk beveiligings groep](../../../active-directory/identity-protection/concept-identity-protection-security-overview.md) van de VM (NSG) om netwerk verkeer naar uw virtuele machine toe te staan of te weigeren. U kunt nieuwe regels voor binnenkomende NSG wijzigen of maken om verkeer toe te staan voor de SQL Server poort (standaard 1433). U kunt ook specifieke IP-adressen opgeven die via deze poort mogen communiceren.
 
 ![Regels voor netwerkbeveiligingsgroepen](./media/security-considerations-best-practices/sql-vm-network-security-group-rules.png)
 
@@ -55,11 +55,11 @@ Naast NSG-regels om netwerk verkeer te beperken, kunt u ook de Windows Firewall 
 
 Als u eind punten met het klassieke implementatie model gebruikt, verwijdert u alle eind punten op de virtuele machine als u deze niet gebruikt. Zie [de ACL voor een eind punt beheren](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint)voor instructies over het gebruik van acl's met eind punten. Dit is niet nodig voor Vm's die gebruikmaken van de Azure Resource Manager.
 
-Ten slotte kunt u versleutelde verbindingen inschakelen voor het exemplaar van de SQL Server data base-engine in uw virtuele Azure-machine. Configureer het SQL Server-exemplaar met een ondertekend certificaat. Zie [versleutelde verbindingen met de data base-engine](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine) en de [syntaxis van de verbindings reeks](https://msdn.microsoft.com/library/ms254500.aspx)inschakelen voor meer informatie.
+Ten slotte kunt u versleutelde verbindingen inschakelen voor het exemplaar van de SQL Server data base-engine in uw virtuele Azure-machine. Configureer het SQL Server-exemplaar met een ondertekend certificaat. Zie [versleutelde verbindingen met de data base-engine](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine) en de [syntaxis van de verbindings reeks](/dotnet/framework/data/adonet/connection-string-syntax)inschakelen voor meer informatie.
 
 ## <a name="encryption"></a>Versleuteling
 
-Managed disks biedt Server-Side versleuteling en Azure Disk Encryption. [Versleuteling aan de server zijde](/azure/virtual-machines/windows/disk-encryption) biedt versleuteling-at-rest en beveiligt uw gegevens om te voldoen aan de verplichtingen van de beveiliging en naleving van uw organisatie. [Azure Disk Encryption](/azure/security/fundamentals/azure-disk-encryption-vms-vmss) gebruikt BitLocker-of DM-Crypt-technologie en integreert met Azure Key Vault om zowel het besturings systeem als de gegevens schijven te versleutelen. 
+Managed disks biedt Server-Side versleuteling en Azure Disk Encryption. [Versleuteling aan de server zijde](../../../virtual-machines/windows/disk-encryption.md) biedt versleuteling-at-rest en beveiligt uw gegevens om te voldoen aan de verplichtingen van de beveiliging en naleving van uw organisatie. [Azure Disk Encryption](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md) gebruikt BitLocker-of DM-Crypt-technologie en integreert met Azure Key Vault om zowel het besturings systeem als de gegevens schijven te versleutelen. 
 
 ## <a name="use-a-non-default-port"></a>Een niet-standaard poort gebruiken
 
@@ -73,7 +73,7 @@ Als u dit na de inrichting wilt configureren, hebt u twee opties:
 
   ![TCP-poort wijziging in Portal](./media/security-considerations-best-practices/sql-vm-change-tcp-port.png)
 
-- Voor klassieke Vm's of voor SQL Server Vm's die niet zijn ingericht met de portal, kunt u de poort hand matig configureren door extern verbinding te maken met de virtuele machine. Zie [een server configureren om te Luis teren naar een specifieke TCP-poort](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-server-to-listen-on-a-specific-tcp-port)voor de configuratie stappen. Als u deze hand matige techniek gebruikt, moet u ook een Windows Firewall regel toevoegen om binnenkomend verkeer op die TCP-poort toe te staan.
+- Voor klassieke Vm's of voor SQL Server Vm's die niet zijn ingericht met de portal, kunt u de poort hand matig configureren door extern verbinding te maken met de virtuele machine. Zie [een server configureren om te Luis teren naar een specifieke TCP-poort](/sql/database-engine/configure-windows/configure-a-server-to-listen-on-a-specific-tcp-port)voor de configuratie stappen. Als u deze hand matige techniek gebruikt, moet u ook een Windows Firewall regel toevoegen om binnenkomend verkeer op die TCP-poort toe te staan.
 
 > [!IMPORTANT]
 > Het is een goed idee om een niet-standaard poort op te geven als uw SQL Server poort is geopend voor open bare Internet verbindingen.
@@ -84,7 +84,7 @@ Wanneer SQL Server op een niet-standaard poort luistert, moet u de poort opgeven
 
 U wilt niet dat aanvallers eenvoudig account namen of wacht woorden raden. Gebruik de volgende tips om te helpen:
 
-- Maak een uniek lokaal Administrator-account dat niet de naam **Administrator**heeft.
+- Maak een uniek lokaal Administrator-account dat niet de naam **Administrator** heeft.
 
 - Gebruik complexe sterke wacht woorden voor al uw accounts. Zie een artikel met [een sterk wacht woord maken](https://support.microsoft.com/instantanswers/9bd5223b-efbe-aa95-b15a-2fb37bef637d/create-a-strong-password) voor meer informatie over het maken van een sterk wacht woord.
 
@@ -93,7 +93,7 @@ U wilt niet dat aanvallers eenvoudig account namen of wacht woorden raden. Gebru
   - Maak een SQL-account met een unieke naam die het lidmaatschap van de **sysadmin** heeft. U kunt dit doen vanuit de portal door **SQL-verificatie** in te scha kelen tijdens het inrichten.
 
     > [!TIP] 
-    > Als u geen SQL-verificatie inschakelt tijdens het inrichten, moet u de verificatie modus hand matig wijzigen in **SQL Server en Windows-verificatie modus**. Zie voor meer informatie [Server verificatie modus wijzigen](https://docs.microsoft.com/sql/database-engine/configure-windows/change-server-authentication-mode).
+    > Als u geen SQL-verificatie inschakelt tijdens het inrichten, moet u de verificatie modus hand matig wijzigen in **SQL Server en Windows-verificatie modus** . Zie voor meer informatie [Server verificatie modus wijzigen](/sql/database-engine/configure-windows/change-server-authentication-mode).
 
   - Als u de **sa** -aanmelding moet gebruiken, schakelt u de aanmelding na het inrichten in en wijst u een nieuw sterk wacht woord toe.
 
@@ -103,7 +103,7 @@ Naast de procedures die in dit onderwerp worden beschreven, raden we u aan om de
 
 Zie [beveiligings overwegingen voor een SQL Server-installatie](/sql/sql-server/install/security-considerations-for-a-sql-server-installation) en het [Security Center](/sql/relational-databases/security/security-center-for-sql-server-database-engine-and-azure-sql-database)voor meer informatie over on-premises beveiligings procedures. 
 
-Voor meer informatie over beveiliging van de virtuele machine raadpleegt u het [overzicht van beveiliging van virtuele machines](/azure/security/fundamentals/virtual-machines-overview).
+Voor meer informatie over beveiliging van de virtuele machine raadpleegt u het [overzicht van beveiliging van virtuele machines](../../../security/fundamentals/virtual-machines-overview.md).
 
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -111,4 +111,3 @@ Voor meer informatie over beveiliging van de virtuele machine raadpleegt u het [
 Zie [Aanbevolen procedures voor de prestaties van SQL Server op Azure virtual machines](performance-guidelines-best-practices.md)als u ook geïnteresseerd bent in Aanbevolen procedures voor de prestaties.
 
 Zie [SQL Server op azure virtual machines Overview](sql-server-on-azure-vm-iaas-what-is-overview.md)voor andere onderwerpen met betrekking tot het uitvoeren van SQL Server in azure vm's. Als u vragen hebt over virtuele machines met SQL Server, raadpleegt u [Veelgestelde vragen](frequently-asked-questions-faq.md).
-

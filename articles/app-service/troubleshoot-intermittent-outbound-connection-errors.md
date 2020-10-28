@@ -7,16 +7,16 @@ ms.topic: troubleshooting
 ms.date: 07/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations,fasttrack-edit
-ms.openlocfilehash: ee1b4da6f02623346d078b9812c99e5093dc2691
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76b4408b2f8c631453281ecf6f214d49318252a3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91408212"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785048"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Problemen met terugkerende uitgaande verbindings fouten in Azure App Service oplossen
 
-Dit artikel helpt u bij het oplossen van onregelmatige verbindings fouten en gerelateerde prestatie problemen in [Azure app service](./overview.md). In dit onderwerp vindt u meer informatie over het oplossen van problemen met methoden voor het afronden van de bron adres netwerk omzetting (SNAT)-poorten. Als u op elk gewenst moment meer hulp nodig hebt, neemt u contact op met de Azure-experts op [MSDN Azure en de stack overflow forums](https://azure.microsoft.com/support/forums/). U kunt ook een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.
+Dit artikel helpt u bij het oplossen van onregelmatige verbindings fouten en gerelateerde prestatie problemen in [Azure app service](./overview.md). In dit onderwerp vindt u meer informatie over het oplossen van problemen met methoden voor het afronden van de bron adres netwerk omzetting (SNAT)-poorten. Als u op elk gewenst moment meer hulp nodig hebt, neemt u contact op met de Azure-experts op [MSDN Azure en de stack overflow forums](https://azure.microsoft.com/support/forums/). U kunt ook een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen** .
 
 ## <a name="symptoms"></a>Symptomen
 
@@ -32,7 +32,7 @@ Toepassingen en functies die worden gehost op Azure-app service, kunnen een of m
 Een grote oorzaak van deze symptomen is dat het toepassings exemplaar geen nieuwe verbinding met het externe eind punt kan openen omdat een van de volgende limieten is bereikt:
 
 * TCP-verbindingen: er is een limiet voor het aantal uitgaande verbindingen dat kan worden gemaakt. Dit is gekoppeld aan de grootte van de gebruikte werk nemer.
-* SNAT-poorten: zoals beschreven in [uitgaande verbindingen in azure](../load-balancer/load-balancer-outbound-connections.md), gebruikt azure bron Network Address Translation (SNAT) en een Load Balancer (niet zichtbaar voor klanten) om te communiceren met eind punten buiten Azure in de open bare IP-adres ruimte, evenals de interne eind punten in azure die niet profiteren van de service-eind punten. Elk exemplaar van Azure-app service krijgt in eerste instantie een vooraf toegewezen aantal SNAT-poorten van **128** . Deze limiet is van invloed op het openen van verbindingen met dezelfde combi natie van host en poort. Als uw app verbinding maakt met een combi natie van combi Naties van adressen en poorten, gebruikt u geen SNAT-poorten. De SNAT-poorten worden gebruikt wanneer u herhaaldelijk aanroepen naar dezelfde combi natie van adres en poort hebt. Zodra een poort is vrijgegeven, kan de poort zo nodig opnieuw worden gebruikt. Het Azure-netwerk load balancer de SNAT-poort alleen vrijmaken van gesloten verbindingen na een wacht tijd van 4 minuten.
+* SNAT-poorten: zoals beschreven in [uitgaande verbindingen in azure](../load-balancer/load-balancer-outbound-connections.md), maakt Azure gebruik van bron Network Address Translation (SNAT) en een Load Balancer (niet zichtbaar voor klanten) om te communiceren met eind punten buiten Azure in de open bare IP-adres ruimte, evenals voor interne eind punten in azure die niet profiteren van de service/privé-eind punten. Elk exemplaar van Azure-app service krijgt in eerste instantie een vooraf toegewezen aantal SNAT-poorten van **128** . Deze limiet is van invloed op het openen van verbindingen met dezelfde combi natie van host en poort. Als uw app verbinding maakt met een combi natie van combi Naties van adressen en poorten, gebruikt u geen SNAT-poorten. De SNAT-poorten worden gebruikt wanneer u herhaaldelijk aanroepen naar dezelfde combi natie van adres en poort hebt. Zodra een poort is vrijgegeven, kan de poort zo nodig opnieuw worden gebruikt. Het Azure-netwerk load balancer de SNAT-poort alleen vrijmaken van gesloten verbindingen na een wacht tijd van 4 minuten.
 
 Wanneer toepassingen of functies snel een nieuwe verbinding openen, kunnen ze snel hun vooraf toegewezen quotum van de 128 poorten. Ze worden vervolgens geblokkeerd totdat een nieuwe SNAT-poort beschikbaar komt, hetzij via dynamische toewijzing van extra SNAT-poorten, hetzij via hergebruik van een vrijgemaakte SNAT-poort. Toepassingen of functies die worden geblokkeerd vanwege het feit dat er geen nieuwe verbindingen kunnen worden gemaakt, zullen beginnen met een of meer van de problemen die worden beschreven in de sectie **symptomen** van dit artikel.
 
@@ -130,7 +130,7 @@ Als u het gedrag van de toepassing niet kent om de oorzaak snel te bepalen, zijn
 
 U kunt [app service diagnostische](./overview-diagnostics.md) gegevens gebruiken om informatie over de SNAT-poort toewijzing te vinden en de toewijzings metriek voor de SNAT-poorten van een app service site te bekijken. Voer de volgende stappen uit om informatie over de SNAT-poort toewijzing te vinden:
 
-1. Om toegang te krijgen tot App Service diagnostische gegevens, gaat u naar uw App Service web-app of App Service Environment in de [Azure Portal](https://portal.azure.com/). Selecteer in het linkernavigatievenster **problemen vaststellen en oplossen**.
+1. Om toegang te krijgen tot App Service diagnostische gegevens, gaat u naar uw App Service web-app of App Service Environment in de [Azure Portal](https://portal.azure.com/). Selecteer in het linkernavigatievenster **problemen vaststellen en oplossen** .
 2. De categorie Beschik baarheid en prestaties selecteren
 3. Selecteer de tegel SNAT-poort uitputting in de lijst met beschik bare tegels onder de categorie. De praktijk is het volgende te bedenken onder 128.
 Als u dit nodig hebt, kunt u nog steeds een ondersteunings ticket openen. de ondersteunings technicus krijgt de metric van back-end voor u.

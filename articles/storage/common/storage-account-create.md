@@ -10,12 +10,12 @@ ms.date: 09/24/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: f1cdd04be4b5774944f70e551221a08261aef22d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b7faec5023abe37802d8b08980f216934d70a6ac
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488891"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784351"
 ---
 # <a name="create-a-storage-account"></a>Een opslagaccount maken
 
@@ -76,7 +76,7 @@ Geen.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Meld u aan bij [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -223,7 +223,7 @@ az group deployment create --resource-group $resourceGroupName --template-file "
 
 Zie voor meer informatie over het wijzigen van deze sjabloon of het maken van nieuwe sjablonen:
 
-- [Azure Resource Manager documentatie](/azure/azure-resource-manager/).
+- [Azure Resource Manager documentatie](../../azure-resource-manager/index.yml).
 - [Verwijzing naar opslag account sjabloon](/azure/templates/microsoft.storage/allversions).
 - [Extra opslag account sjabloon voorbeelden](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Storage).
 
@@ -236,7 +236,7 @@ Als u een opslag account verwijdert, wordt het hele account verwijderd, inclusie
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Navigeer naar het opslag account in de [Azure Portal](https://portal.azure.com).
-1. Klik op **Verwijderen**.
+1. Klik op **Verwijderen** .
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -279,7 +279,7 @@ U kunt ook de resource groep verwijderen, waardoor het opslag account en eventue
 > [!WARNING]
 > Het is niet mogelijk om een verwijderd opslagaccount te herstellen of om inhoud terug te halen die het account vóór verwijdering bevatte. Zorg ervoor dat u een back-up maakt van alles dat u wilt opslaan, voordat u het account verwijdert. Dit geldt ook voor alle resources in het account: als u blobs, tabellen, wachtrijen of bestanden verwijdert, worden deze permanent verwijderd.
 >
-> Als u probeert een opslagaccount te verwijderen dat is gekoppeld aan een virtuele machine van Azure, ziet u mogelijk een foutbericht dat het account nog in gebruik is. Zie [problemen oplossen bij het verwijderen van opslag accounts](../common/storage-resource-manager-cannot-delete-storage-account-container-vhd.md)voor hulp bij het oplossen van deze fout.
+> Als u probeert een opslagaccount te verwijderen dat is gekoppeld aan een virtuele machine van Azure, ziet u mogelijk een foutbericht dat het account nog in gebruik is. Zie [problemen oplossen bij het verwijderen van opslag accounts](../../virtual-machines/troubleshooting/index.yml)voor hulp bij het oplossen van deze fout.
 
 ## <a name="next-steps"></a>Volgende stappen
 

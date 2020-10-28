@@ -13,12 +13,12 @@ ms.author: ronmat
 ms.reviewer: vanto, sstein
 ms.date: 09/21/2020
 tags: azure-synapse
-ms.openlocfilehash: bf228d31180f5c2223fde7433d2d9b335e2b8853
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f83b9515e16fcf2c2158586297545206d57e1a6e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91284156"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785116"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Geavanceerde bedreigings beveiliging voor Azure SQL Database, SQL Managed instance en Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -35,7 +35,7 @@ Voor een volledige onderzoek is het raadzaam om controle in te scha kelen, waarm
 
 ## <a name="alerts"></a>Waarschuwingen
 
-Advanced Threat Protection voor Azure SQL Database detecteert afwijkende activiteiten die een ongebruikelijke en potentieel schadelijke pogingen om toegang te krijgen tot of misbruik te maken van data bases. Zie de [waarschuwingen voor SQL database en Azure Synapse Analytics (voorheen SQL Data Warehouse) in azure Security Center](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-sql-db-and-warehouse)voor een lijst met waarschuwingen voor Azure SQL database.
+Advanced Threat Protection voor Azure SQL Database detecteert afwijkende activiteiten die een ongebruikelijke en potentieel schadelijke pogingen om toegang te krijgen tot of misbruik te maken van data bases. Zie de [waarschuwingen voor SQL database en Azure Synapse Analytics (voorheen SQL Data Warehouse) in azure Security Center](../../security-center/alerts-reference.md#alerts-sql-db-and-warehouse)voor een lijst met waarschuwingen voor Azure SQL database.
 
 ## <a name="explore-detection-of-a-suspicious-event"></a>Detectie van een verdachte gebeurtenis verkennen
 
@@ -65,5 +65,5 @@ Klik op **Geavanceerde bedreigings beveiliging waarschuwing** om de pagina Azure
 - Meer informatie over [geavanceerde bedreigingen beveiliging in Azure SQL Managed instance](../managed-instance/threat-detection-configure.md).
 - Meer informatie over [Azure Defender voor SQL](azure-defender-for-sql.md).
 - Meer informatie over het [controleren van Azure SQL database](../../azure-sql/database/auditing-overview.md)
-- Meer informatie over [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
-- Zie de [pagina met prijzen voor Azure SQL database](https://azure.microsoft.com/pricing/details/sql-database/) voor meer informatie over prijzen.  
+- Meer informatie over [Azure Security Center](../../security-center/security-center-introduction.md)
+- Zie de [pagina met prijzen voor Azure SQL database](https://azure.microsoft.com/pricing/details/sql-database/) voor meer informatie over prijzen.
