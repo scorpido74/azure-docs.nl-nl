@@ -7,12 +7,12 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.topic: overview
 ms.date: 06/30/2020
-ms.openlocfilehash: d52dd19667da005de54bbf9b4d30207976511c7d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: cb283380487310165c646c8615d10a545d1a923b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89567806"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675696"
 ---
 # <a name="frequently-asked-questions-about-the-education-hub"></a>Veelgestelde vragen over de Education Hub
 
@@ -46,7 +46,7 @@ Uw Azure for Students-abonnement biedt u toegang tot bepaalde hulpprogramma's vo
 
 ### <a name="what-is-microsoft-learn"></a>Wat is Microsoft Learn?
 
-[Microsoft Learn](https://docs.microsoft.com/learn/) is een gratis, online leerplatform dat u in staat stelt om in uw eigen tempo te leren werken met Azure-technologieën. Leertrajecten combineren modules zodat u kunt beginnen met de basisprincipes en vervolgens kunt afsluiten met geavanceerde methoden voor het oplossen van praktijkproblemen.
+[Microsoft Learn](/learn/) is een gratis, online leerplatform dat u in staat stelt om in uw eigen tempo te leren werken met Azure-technologieën. Leertrajecten combineren modules zodat u kunt beginnen met de basisprincipes en vervolgens kunt afsluiten met geavanceerde methoden voor het oplossen van praktijkproblemen.
 
 ### <a name="can-azure-for-students-be-used-for-production-or-only-for-development"></a>Kan Azure for Students worden gebruikt voor productie of alleen voor ontwikkeling?
 
@@ -97,7 +97,7 @@ U kunt deze software downloaden in de [Education Hub](https://ms.portal.azure.co
 
 ### <a name="what-is-microsoft-learn"></a>Wat is Microsoft Learn?
 
-[Microsoft Learn](https://docs.microsoft.com/learn/) is een gratis, online leerplatform dat u in staat stelt om in uw eigen tempo te leren werken met Azure-technologieën. Leertrajecten combineren modules zodat u kunt beginnen met de basisprincipes en vervolgens kunt afsluiten met geavanceerde methoden voor het oplossen van praktijkproblemen.
+[Microsoft Learn](/learn/) is een gratis, online leerplatform dat u in staat stelt om in uw eigen tempo te leren werken met Azure-technologieën. Leertrajecten combineren modules zodat u kunt beginnen met de basisprincipes en vervolgens kunt afsluiten met geavanceerde methoden voor het oplossen van praktijkproblemen.
 
 ## <a name="azure-academic-grant"></a>Azure Academic Grant
 
@@ -252,10 +252,10 @@ Als u zich nog steeds niet kunt aanmelden, neemt u contact op met de beheerder v
 
 ### <a name="how-do-i-find-my-subscriber-id"></a>Hoe kan ik mijn abonnee-id vinden?
 
-- **Wanneer u zich voor het eerst inschrijft bij het programma**: Uw abonnement-id staat in de welkomstmail die u voor het abonnement hebt ontvangen.
-- **Als u uw abonnement hebt vernieuwd**: Uw abonnement-id staat in de e-mail met de bevestiging die de abonnementsbeheerder heeft ontvangen.
+- **Wanneer u zich voor het eerst inschrijft bij het programma** : Uw abonnement-id staat in de welkomstmail die u voor het abonnement hebt ontvangen.
+- **Als u uw abonnement hebt vernieuwd** : Uw abonnement-id staat in de e-mail met de bevestiging die de abonnementsbeheerder heeft ontvangen.
 
-Uw abonnement-id kunt u ook vinden in de Visual Studio Subscription-portal. Nadat u zich hebt aangemeld, kijkt u onder **Mijn abonnement** op de pagina **Mijn account**.
+Uw abonnement-id kunt u ook vinden in de Visual Studio Subscription-portal. Nadat u zich hebt aangemeld, kijkt u onder **Mijn abonnement** op de pagina **Mijn account** .
 
 [Neem contact met ons op](https://azureforeducation.microsoft.com/institutions/Contact) als u hulp nodig hebt bij het vinden van uw abonnee-id.
 
@@ -282,7 +282,7 @@ Als u deze e-mails niet krijgt en u bang bent dat uw abonnement binnenkort afloo
 
 U kunt ook naar de [pagina van Azure Dev Tools for Teaching gaan waar u het abonnement kunt verlengen](https://portal.azureforeducation.microsoft.com/) en de benodigde stappen doorlopen.
 
-Als u de vervaldatum van uw abonnement wilt controleren, gaat u naar de [beheerportal van Azure Dev Tools for Teaching](https://azureforeducation.microsoft.com/account/Subscriptions) en kijkt u onder **Abonnementen**.
+Als u de vervaldatum van uw abonnement wilt controleren, gaat u naar de [beheerportal van Azure Dev Tools for Teaching](https://azureforeducation.microsoft.com/account/Subscriptions) en kijkt u onder **Abonnementen** .
 
 ### <a name="what-if-i-need-more-help"></a>Wat moet ik doen als ik meer hulp nodig heb?
 

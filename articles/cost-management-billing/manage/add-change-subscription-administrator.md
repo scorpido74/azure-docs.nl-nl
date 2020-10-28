@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 273f12765f60eb1a0d65037e30e33e58b16463bf
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 10956953f9ab3a9e32b9da4ab8a3501d38b0e2c3
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372303"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369655"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Azure-abonnementsbeheerders toevoegen of wijzigen
 
@@ -39,8 +39,8 @@ Als u een gebruiker beheerder van een Azure-abonnement wilt maken, wijst een bes
 Als u niet zeker weet wie de accountbeheerder is voor een abonnement, gebruikt u de volgende stappen om erachter te komen.
 
 1. Open de [pagina Abonnementen in de Azure-portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
-1. Selecteer het abonnement dat u wilt controleren en kijk vervolgens bij **Instellingen**.
-1. Selecteer **Eigenschappen**. De accountbeheerder van het abonnement wordt weergegeven in het vak **Accountbeheerder**.
+1. Selecteer het abonnement dat u wilt controleren en kijk vervolgens bij **Instellingen** .
+1. Selecteer **Eigenschappen** . De accountbeheerder van het abonnement wordt weergegeven in het vak **Accountbeheerder** .
 
 ### <a name="to-assign-a-user-as-an-administrator"></a>Gebruiker toewijzen als beheerder
 
@@ -58,9 +58,9 @@ Als u niet zeker weet wie de accountbeheerder is voor een abonnement, gebruikt u
 
     Als u niet bent gemachtigd voor het toewijzen van rollen, is de optie uitgeschakeld.
 
-1. Selecteer in de vervolgkeuzelijst **Rol** de rol **Eigenaar**.
+1. Selecteer in de vervolgkeuzelijst **Rol** de rol **Eigenaar** .
 
-1. Selecteer een gebruiker in de lijst **Selecteren**. Als u de gebruiker niet in de lijst ziet staan, kunt u tekst typen in het vak **Selecteren** om in de map te zoeken naar weergavenamen en e-mailadressen.
+1. Selecteer een gebruiker in de lijst **Selecteren** . Als u de gebruiker niet in de lijst ziet staan, kunt u tekst typen in het vak **Selecteren** om in de map te zoeken naar weergavenamen en e-mailadressen.
 
     ![Schermopname met de rol Eigenaar geselecteerd](./media/add-change-subscription-administrator/add-role.png)
 
@@ -73,7 +73,7 @@ Als u niet zeker weet wie de accountbeheerder is voor een abonnement, gebruikt u
 * [Wat is Azure RBAC (toegangsbeheer op basis van rollen)?](../../role-based-access-control/overview.md)
 * [Inzicht in de verschillende rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * [Een Azure-abonnement aan uw Azure Active Directory-tenant toevoegen of koppelen](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
-* [Machtigingen voor beheerrol in Azure Active Directory](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)
+* [Machtigingen voor beheerrol in Azure Active Directory](../../active-directory/roles/permissions-reference.md)
 
 ## <a name="need-help-contact-support"></a>Hebt u hulp nodig? Contact opnemen met ondersteuning
 

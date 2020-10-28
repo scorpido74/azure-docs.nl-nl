@@ -4,17 +4,17 @@ description: U gebruikt functies van Azure Kostenbeheer en facturering voor het 
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 08/20/2020
+ms.date: 10/26/2020
 ms.topic: overview
 ms.service: cost-management-billing
 ms.subservice: common
-ms.custom: ''
-ms.openlocfilehash: 1e5f49fb48cfc9be9cfb6970641ad7b4b3c06fb5
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.custom: contentperfq2
+ms.openlocfilehash: 2c533ea08534444e5bf8d8d57d585e2bf975a93b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131051"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677380"
 ---
 # <a name="what-is-azure-cost-management--billing"></a>Wat is Azure Kostenbeheer en facturering?
 
@@ -43,11 +43,11 @@ Er wordt een factureringsaccount gemaakt wanneer u zich aanmeldt om Azure te geb
 
 De Azure-portal ondersteunt momenteel de volgende typen factureringsaccounts:
 
-- **Microsoft Online Services-programma**: Er wordt een individueel factureringsaccount voor een Microsoft Online Services-programma gemaakt wanneer u zich bij de Azure-website aanmeldt om Azure te gebruiken. Bijvoorbeeld als u zich aanmeldt voor een [gratis Azure-account](https://azure.microsoft.com/offers/ms-azr-0044p/), een [account met tarieven op gebruiksbasis](https://azure.microsoft.com/offers/ms-azr-0003p/) of een [Visual Studio-abonnement](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/).
+- **Microsoft Online Services-programma** : Er wordt een individueel factureringsaccount voor een Microsoft Online Services-programma gemaakt wanneer u zich bij de Azure-website aanmeldt om Azure te gebruiken. Bijvoorbeeld als u zich aanmeldt voor een gratis Azure-account, een account met tarieven op gebruiksbasis of een Visual Studio-abonnement.
 
-- **Enterprise Overeenkomst**: Er wordt een factureringsaccount voor een Enterprise-overeenkomst gemaakt wanneer uw organisatie een [Enterprise-overeenkomst (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) ondertekent om Azure te gebruiken.
+- **Enterprise Overeenkomst** : Er wordt een factureringsaccount voor een Enterprise-overeenkomst gemaakt wanneer uw organisatie een Enterprise-overeenkomst (EA) ondertekent om Azure te gebruiken.
 
-- **Microsoft-klantovereenkomst**: Er wordt een factureringsaccount voor een Microsoft-klantovereenkomst aangemaakt, wanneer uw organisatie samenwerkt met een Microsoft-vertegenwoordiger om een Microsoft-klantovereenkomst te ondertekenen. Sommige klanten in bepaalde regio's, die zich via de Azure-website aanmelden voor een [account met tarieven op gebruiksbasis](https://azure.microsoft.com/offers/ms-azr-0003p/) of die hun [gratis Azure-account](https://azure.microsoft.com/offers/ms-azr-0044p/) upgraden, hebben mogelijk ook een factureringsaccount voor een Microsoft-klantovereenkomst. Voor meer informatie, zie [Aan de slag met uw factureringsaccount voor een Microsoft-klantovereenkomst](./understand/mca-overview.md).
+- **Microsoft-klantovereenkomst** : Er wordt een factureringsaccount voor een Microsoft-klantovereenkomst aangemaakt, wanneer uw organisatie samenwerkt met een Microsoft-vertegenwoordiger om een Microsoft-klantovereenkomst te ondertekenen. Sommige klanten in bepaalde regio's, die zich via de Azure-website aanmelden voor een account met tarieven op gebruiksbasis of die hun gratis Azure-account upgraden, hebben mogelijk ook een factureringsaccount voor een Microsoft-klantovereenkomst.
 
 ### <a name="scopes-for-billing-accounts"></a>Bereiken voor factureringsaccounts
 Een bereik is een knooppunt in een factureringsaccount waar u facturen kunt weergeven en beheren. Dit is de plek waar u factureringsgegevens, betalingen en facturen beheert en algemeen accountbeheer uitvoert.
@@ -83,7 +83,7 @@ Cost Management toont organisatorische kosten en gebruikspatronen aan met geavan
 
 U kunt de Azure Portal of verschillende API’s gebruiken voor geautomatiseerde export om kostengegevens te integreren met externe systemen en processen. Geautomatiseerde factureringsgegevensexport en geplande rapporten zijn ook beschikbaar.
 
-Bekijk de video [met een overzicht van Azure Cost Management](https://www.youtube.com/watch?v=el4yN5cHsJ0) voor een beknopt overzicht van hoe Azure Cost Management u kan helpen geld te besparen in Azure. Als u andere video’s wilt bekijken, gaat u naar het [YouTube-kanaal voor Cost Management](https://www.youtube.com/c/AzureCostManagement).
+Bekijk de video met een overzicht van Azure Cost Management voor een beknopt overzicht van hoe Azure Cost Management u kan helpen geld te besparen in Azure. Als u andere video’s wilt bekijken, gaat u naar het [YouTube-kanaal voor Cost Management](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/el4yN5cHsJ0]
 
@@ -101,18 +101,14 @@ Als u externe systemen gebruikt om kostenbeheergegevens te zien of te controlere
 
 ### <a name="cloudyn-deprecation"></a>Afschaffing van Cloudyn
 
-[Cloudyn](./cloudyn/overview.md) is een Azure-service met betrekking tot Cost Management, die eind 2020 wordt afgeschaft. Waar mogelijk worden bestaande Cloudyn-functies rechtstreeks geïntegreerd in de Azure-portal. Er wordt op dit moment geen onboarding uitgevoerd voor nieuwe klanten, maar de ondersteuning voor het product blijft bestaan totdat dit volledig is afgeschaft.
+Cloudyn is een Azure-service met betrekking tot Cost Management, die eind 2020 wordt afgeschaft. Waar mogelijk worden bestaande Cloudyn-functies rechtstreeks geïntegreerd in de Azure-portal. Er wordt op dit moment geen onboarding uitgevoerd voor nieuwe klanten, maar de ondersteuning voor het product blijft bestaan totdat dit volledig is afgeschaft.
  
-Bekijk de [video over Azure Cost Management en Cloudyn](https://www.youtube.com/watch?v=15DzKPMBRxM) voor meer informatie over het gebruik van Azure Cost Management of Cloudyn, op basis van uw bedrijfsbehoeften. Als u andere video’s wilt bekijken, gaat u naar het [YouTube-kanaal voor Cost Management](https://www.youtube.com/c/AzureCostManagement).
- 
->[!VIDEO https://www.youtube.com/embed/15DzKPMBRxM]
-
 ### <a name="additional-azure-tools"></a>Aanvullende Azure-hulpprogramma’s
 
 Azure heeft andere hulpprogramma’s die geen onderdeel uitmaken van de functieset van Azure Kostenbeheer en facturering. Ze spelen echter een belangrijke rol in het kostenbeheerproces. Zie de volgende koppelingen voor meer informatie over deze hulpprogramma’s.
 
 - [Azure Prijscalculator](https://azure.microsoft.com/pricing/calculator/), gebruik dit hulpprogramma om de initiële cloudkosten in te schatten.
-- [Azure Migrate](/azure/cost-management-billing/migrate-services-overview), beoordeel de werkbelasting van uw huidige gegevenscentrum voor inzicht in wat er nodig is van een Azure-vervangingsoplossing.
+- [Azure Migrate](/azure/migrate/migrate-services-overview), beoordeel de werkbelasting van uw huidige gegevenscentrum voor inzicht in wat er nodig is van een Azure-vervangingsoplossing.
 - [Azure Advisor](../advisor/advisor-overview.md), identificeer ongebruikte VM’s en ontvang aanbevelingen over aankopen van Azure gereserveerde instanties.
 - [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/), gebruik uw huidige on-premises Windows Server- of SQL Server-licenties voor VM’s in Azure om te besparen.
 

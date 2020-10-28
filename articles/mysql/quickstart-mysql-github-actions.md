@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: 7b4620c739b2f94cb6b96743280cd1decbbb746e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: ce045da7d21c2af0dfde5ee896b4f7f343ce6545
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92326111"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541261"
 ---
 # <a name="use-github-actions-to-connect-to-azure-mysql"></a>GitHub Actions gebruiken om verbinding te maken met Azure MySQL
 
@@ -39,7 +39,7 @@ Het bestand heeft twee secties:
 
 ## <a name="generate-deployment-credentials"></a>Genereer implementatiereferenties
 
-U kunt een [service-principal](../active-directory/develop/app-objects-and-service-principals.md) maken met de opdracht [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) in de [Azure CLI](/cli/azure/). Voer deze opdracht uit met [Azure Cloud Shell](https://shell.azure.com/) in de Azure Portal of door de knop **Uitproberen** te selecteren.
+U kunt een [service-principal](../active-directory/develop/app-objects-and-service-principals.md) maken met de opdracht [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac&preserve-view=true) in de [Azure CLI](/cli/azure/). Voer deze opdracht uit met [Azure Cloud Shell](https://shell.azure.com/) in de Azure Portal of door de knop **Uitproberen** te selecteren.
 
 Vervang de tijdelijke aanduidingen `server-name` door de naam van uw MySQL-server die wordt gehost op Azure. Vervang de `subscription-id` en `resource-group` door de abonnements-ID en de resourcegroep die zijn verbonden met uw MySQL-server.  
 
@@ -191,4 +191,4 @@ Wanneer uw Azure MySQL-database en -opslagplaats niet meer nodig zijn, moet u de
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over Azure en GitHub-integratie](https://docs.microsoft.com/azure/developer/github/)
+> [Meer informatie over Azure en GitHub-integratie](/azure/developer/github/)

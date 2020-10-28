@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: quickstart
 ms.date: 04/10/2020
 ms.author: jingwang
-ms.openlocfilehash: ebcab92c40705bf108d5839a7e67aee345c1bbc7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1377743fbaefdb812f18768307421fdae637ed54
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91292384"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637578"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Snelstart: Een data factory in Azure maken met behulp van PowerShell
 
@@ -105,9 +105,9 @@ Houd rekening met de volgende punten:
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
     ```
 
-* Als u Data Factory-exemplaren wilt maken, moet het gebruikersaccount waarmee u zich bij Azure aanmeldt, lid zijn van de rollen **Inzender** of **Eigenaar**, of moet dit een **beheerder** van het Azure-abonnement zijn.
+* Als u Data Factory-exemplaren wilt maken, moet het gebruikersaccount waarmee u zich bij Azure aanmeldt, lid zijn van de rollen **Inzender** of **Eigenaar** , of moet dit een **beheerder** van het Azure-abonnement zijn.
 
-* Voor een lijst met Azure-regio's waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio's waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich in andere regio's bevinden.
+* Voor een lijst met Azure-regio's waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio's waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory** : [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich in andere regio's bevinden.
 
 
 ## <a name="create-a-linked-service"></a>Een gekoppelde service maken
@@ -115,8 +115,8 @@ Houd rekening met de volgende punten:
 Maak gekoppelde services in een data factory om uw gegevensarchieven en compute-services aan de gegevensfactory te koppelen. In deze QuickStart gaat u een gekoppelde Azure Storage-service maken die als bron- en als sinkopslag wordt gebruikt. De gekoppelde service beschikt over de verbindingsgegevens die de Data Factory-service tijdens runtime gebruikt om er een verbinding mee tot stand te brengen.
 
 >[!TIP]
->In deze quickstart gebruikt u *Accountsleutel* als verificatietype voor uw gegevensarchief, maar u kunt zo nodig ook andere ondersteunde verificatiemethoden kiezen: *SAS URI*,*Service-principal* en *Beheerde identiteit*. Raadpleeg de bijbehorende secties in [dit artikel](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#linked-service-properties) voor meer informatie.
->Het ook raadzaam om een Azure Key Vault te gebruiken om geheimen voor gegevensarchieven veilig op te slaan. Raadpleeg [dit artikel](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) voor gedetailleerde illustraties.
+>In deze quickstart gebruikt u *Accountsleutel* als verificatietype voor uw gegevensarchief, maar u kunt zo nodig ook andere ondersteunde verificatiemethoden kiezen: *SAS URI* , *Service-principal* en *Beheerde identiteit* . Raadpleeg de bijbehorende secties in [dit artikel](./connector-azure-blob-storage.md#linked-service-properties) voor meer informatie.
+>Het ook raadzaam om een Azure Key Vault te gebruiken om geheimen voor gegevensarchieven veilig op te slaan. Raadpleeg [dit artikel](./store-credentials-in-key-vault.md) voor gedetailleerde illustraties.
 
 1. Maak een JSON-bestand met de naam **AzureStorageLinkedService.json** in de map **C:\ADFv2QuickStartPSH** met de volgende inhoud (maak de map ADFv2QuickStartPSH als deze nog niet bestaat):
 
@@ -136,15 +136,15 @@ Maak gekoppelde services in een data factory om uw gegevensarchieven en compute-
     }
     ```
 
-    Als u Kladblok gebruikt, selecteert u **Alle bestanden** voor het veld **Opslaan als** in het dialoogvenster **Opslaan als**. Als u dat niet doet, wordt mogelijk de extensie `.txt` toegevoegd aan het bestand. Bijvoorbeeld `AzureStorageLinkedService.json.txt`. Als u het bestand in Verkenner maakt voordat u het opent in Kladblok, ziet u de extensie `.txt` mogelijk niet omdat de optie **Extensies voor bekende bestandstypen verbergen** standaard is ingeschakeld. Verwijder de extensie `.txt` voordat u doorgaat met de volgende stap.
+    Als u Kladblok gebruikt, selecteert u **Alle bestanden** voor het veld **Opslaan als** in het dialoogvenster **Opslaan als** . Als u dat niet doet, wordt mogelijk de extensie `.txt` toegevoegd aan het bestand. Bijvoorbeeld `AzureStorageLinkedService.json.txt`. Als u het bestand in Verkenner maakt voordat u het opent in Kladblok, ziet u de extensie `.txt` mogelijk niet omdat de optie **Extensies voor bekende bestandstypen verbergen** standaard is ingeschakeld. Verwijder de extensie `.txt` voordat u doorgaat met de volgende stap.
 
-2. Schakel in **PowerShell** over naar de map **ADFv2QuickStartPSH**.
+2. Schakel in **PowerShell** over naar de map **ADFv2QuickStartPSH** .
 
     ```powershell
     Set-Location 'C:\ADFv2QuickStartPSH'
     ```
 
-3. Voer de cmdlet **Set-AzDataFactoryV2LinkedService** uit om de gekoppelde service te maken: **AzureStorageLinkedService**.
+3. Voer de cmdlet **Set-AzDataFactoryV2LinkedService** uit om de gekoppelde service te maken: **AzureStorageLinkedService** .
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $DataFactory.DataFactoryName `
@@ -163,10 +163,10 @@ Maak gekoppelde services in een data factory om uw gegevensarchieven en compute-
 
 ## <a name="create-datasets"></a>Gegevenssets maken
 
-In deze procedure maakt u twee gegevenssets: **InputDataset** en **OutputDataset**. Deze gegevenssets zijn van het type **Binair**. Ze verwijzen naar de gekoppelde Azure Storage-service die u in de vorige sectie hebt gemaakt.
-De invoergegevensset vertegenwoordigt de brongegevens in de invoermap. In de definitie van de invoergegevensset geeft u de blob-container (**adftutorial**) en de map (**invoer**) op, en het bestand (**emp.txt**) dat de brongegevens bevat.
-De uitvoergegevensset vertegenwoordigt de gegevens die worden gekopieerd naar de bestemming. In de definitie van de uitvoergegevensset geeft u de blob-container (**adftutorial**) en de map (**uitvoer**) op, en het bestand waarin de brongegevens zijn gekopieerd. 
-1. Maak een JSON-bestand met de naam **InputDataset.json** in de map **C:\ADFv2QuickStartPSH**. Geef dit bestand de volgende inhoud:
+In deze procedure maakt u twee gegevenssets: **InputDataset** en **OutputDataset** . Deze gegevenssets zijn van het type **Binair** . Ze verwijzen naar de gekoppelde Azure Storage-service die u in de vorige sectie hebt gemaakt.
+De invoergegevensset vertegenwoordigt de brongegevens in de invoermap. In de definitie van de invoergegevensset geeft u de blob-container ( **adftutorial** ) en de map ( **invoer** ) op, en het bestand ( **emp.txt** ) dat de brongegevens bevat.
+De uitvoergegevensset vertegenwoordigt de gegevens die worden gekopieerd naar de bestemming. In de definitie van de uitvoergegevensset geeft u de blob-container ( **adftutorial** ) en de map ( **uitvoer** ) op, en het bestand waarin de brongegevens zijn gekopieerd. 
+1. Maak een JSON-bestand met de naam **InputDataset.json** in de map **C:\ADFv2QuickStartPSH** . Geef dit bestand de volgende inhoud:
 
     ```json
     {
@@ -190,7 +190,7 @@ De uitvoergegevensset vertegenwoordigt de gegevens die worden gekopieerd naar de
     }
     ```
 
-2. De gegevensset maken: **InputDataset**, voert u de cmdlet **Set-AzDataFactoryV2Dataset** uit.
+2. De gegevensset maken: **InputDataset** , voert u de cmdlet **Set-AzDataFactoryV2Dataset** uit.
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $DataFactory.DataFactoryName `
@@ -208,7 +208,7 @@ De uitvoergegevensset vertegenwoordigt de gegevens die worden gekopieerd naar de
     Properties        : Microsoft.Azure.Management.DataFactory.Models.BinaryDataset
     ```
 
-3. Herhaal de stappen om de uitvoergegevensset te maken. Maak een JSON-bestand met de naam **OutputDataset.json** in de map **C:\ADFv2QuickStartPSH**. Geef dit bestand de volgende inhoud:
+3. Herhaal de stappen om de uitvoergegevensset te maken. Maak een JSON-bestand met de naam **OutputDataset.json** in de map **C:\ADFv2QuickStartPSH** . Geef dit bestand de volgende inhoud:
 
     ```json
     {
@@ -252,7 +252,7 @@ De uitvoergegevensset vertegenwoordigt de gegevens die worden gekopieerd naar de
 
 In deze procedure maakt en valideert u een pijplijn via een kopieeractiviteit die gebruikmaakt van de invoer- en uitvoergegevenssets. Met de kopieeractiviteit worden gegevens uit het bestand dat is opgegeven bij de instellingen voor de invoergegevensset gekopieerd naar het bestand dat is opgegeven in de instellingen voor de uitvoergegevensset.  
 
-1. Maak een JSON-bestand met de naam **Adfv2QuickStartPipeline.json** in de map **C:\ADFv2QuickStartPSH**. Geef dit bestand de volgende inhoud:
+1. Maak een JSON-bestand met de naam **Adfv2QuickStartPipeline.json** in de map **C:\ADFv2QuickStartPSH** . Geef dit bestand de volgende inhoud:
 
     ```json
     {
@@ -306,7 +306,7 @@ In deze procedure maakt en valideert u een pijplijn via een kopieeractiviteit di
     }
     ```
 
-2. De pijplijn maken: **Adfv2QuickStartPipeline**, voer de cmdlet **Set-AzDataFactoryV2Pipeline** uit.
+2. De pijplijn maken: **Adfv2QuickStartPipeline** , voer de cmdlet **Set-AzDataFactoryV2Pipeline** uit.
 
     ```powershell
     $DFPipeLine = Set-AzDataFactoryV2Pipeline `

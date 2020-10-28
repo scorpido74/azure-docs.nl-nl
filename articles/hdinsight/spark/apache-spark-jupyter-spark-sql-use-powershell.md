@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 47450b85412e75cf632d9c2873289e9a0820beb0
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: fd7300fd21d20476305dc5404158f255d533ffed
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91537766"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539323"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-powershell"></a>Quickstart: Een Apache Spark-cluster maken in Azure HDInsight met Azure PowerShell
 
@@ -26,7 +26,7 @@ Als u meerdere clusters tegelijk gebruikt, wilt u een virtueel netwerk maken. Al
 ## <a name="prerequisite"></a>Vereiste
 
 - Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- De [Az-module van PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+- De [Az-module van PowerShell](/powershell/azure/install-az-ps).
 
 ## <a name="create-an-apache-spark-cluster-in-hdinsight"></a>Een Apache Spark-cluster maken in Azure HDInsight
 
@@ -36,7 +36,7 @@ Als u meerdere clusters tegelijk gebruikt, wilt u een virtueel netwerk maken. Al
 Het maken van een HDInsight-cluster omvat het maken van de volgende Azure objecten en -resources:
 
 - Een Azure-resourcegroep. Een Azure-resourcegroep is een container voor Azure-resources.
-- Een Azure-opslagaccount of Azure Data Lake Storage.  Elk HDInsight-cluster vereist een eigen gegevensopslag. In deze quickstart maakt u een cluster dat Azure Storage-blobs als clusteropslag gebruikt. Zie [Snelstart: Clusters instellen in HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) voor meer informatie over het gebruik van Data Lake Storage Gen2.
+- Een Azure-opslagaccount of Azure Data Lake Storage.  Elk HDInsight-cluster vereist een eigen gegevensopslag. In deze quickstart maakt u een cluster dat Azure Storage-blobs als clusteropslag gebruikt. Zie [Snelstart: Clusters instellen in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) voor meer informatie over het gebruik van Data Lake Storage Gen2.
 - Een cluster met verschillende clustertypen in HDInsight.  In deze snelstartgids maakt u een cluster van Spark 2.3.
 
 U gebruikt een PowerShell-script om de resources te maken. 
@@ -148,7 +148,7 @@ Als u een probleem ondervindt met het maken van HDInsight-clusters, beschikt u m
    
    ![Schermopname toont H D Insight-clusters met het cluster dat u hebt gemaakt.](./media/apache-spark-jupyter-spark-sql-use-powershell/azure-portal-open-hdinsight-cluster.png)
    
-1. Selecteer op de pagina **Overzicht** voor de cluster de optie **Clusterdashboards** en vervolgens **Jupyter Notebook**. Voer de aanmeldingsreferenties voor het cluster in als u daarom wordt gevraagd.
+1. Selecteer op de pagina **Overzicht** voor de cluster de optie **Clusterdashboards** en vervolgens **Jupyter Notebook** . Voer de aanmeldingsreferenties voor het cluster in als u daarom wordt gevraagd.
 
    ![Open Jupyter Notebook om de interactieve Spark SQL-query uit te voeren](./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Open Jupyter Notebook om de interactieve Spark SQL-query uit te voeren")
 
@@ -174,11 +174,11 @@ SQL (Structured Query Language) is de meest voorkomende en gebruikte taal voor h
     SHOW TABLES
     ```
 
-    Als u een Jupyter Notebook gebruikt met uw Spark-cluster in HDInsight, krijgt u een vooraf ingestelde `sqlContext` waarmee u Hive-query's kunt uitvoeren met behulp van Apache Spark SQL. `%%sql` instrueert Jupyter Notebook gebruik te maken van de vooraf ingestelde `sqlContext` om de Hive-query uit te voeren. De query haalt de bovenste tien rijen op uit een Hive-tabel (**hivesampletable**) die standaard worden meegeleverd met alle HDInsight-clusters. Het duurt ongeveer 30 seconden om de resultaten op te halen. De uitvoer ziet er als volgt uit:
+    Als u een Jupyter Notebook gebruikt met uw Spark-cluster in HDInsight, krijgt u een vooraf ingestelde `sqlContext` waarmee u Hive-query's kunt uitvoeren met behulp van Apache Spark SQL. `%%sql` instrueert Jupyter Notebook gebruik te maken van de vooraf ingestelde `sqlContext` om de Hive-query uit te voeren. De query haalt de bovenste tien rijen op uit een Hive-tabel ( **hivesampletable** ) die standaard worden meegeleverd met alle HDInsight-clusters. Het duurt ongeveer 30 seconden om de resultaten op te halen. De uitvoer ziet er als volgt uit:
 
     ![Apache Hive-query in Apache Spark in HDInsight](./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-get-started-hive-query.png "Hive-query in HDInsight Spark")
 
-    Telkens wanneer u in Jupyter een query uitvoert, toont de venstertitel van uw webbrowser de status **(Bezet)** en de notebooktitel. Ook ziet u een gevulde cirkel naast de **PySpark**-tekst in de rechterbovenhoek.
+    Telkens wanneer u in Jupyter een query uitvoert, toont de venstertitel van uw webbrowser de status **(Bezet)** en de notebooktitel. Ook ziet u een gevulde cirkel naast de **PySpark** -tekst in de rechterbovenhoek.
 
 1. Voer een andere query uit om de gegevens in `hivesampletable` te zien.
 
@@ -191,13 +191,13 @@ SQL (Structured Query Language) is de meest voorkomende en gebruikte taal voor h
 
     ![Uitvoer van Hive-query in HDInsight](./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-get-started-hive-query-output.png "Uitvoer van Hive-query in HDInsight")
 
-1. Klik in het menu **File** van het notebook op **Close and Halt**. Als de notebook wordt afgesloten, komen de clusterbronnen vrij.
+1. Klik in het menu **File** van het notebook op **Close and Halt** . Als de notebook wordt afgesloten, komen de clusterbronnen vrij.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 Met HDInsight worden uw gegevens opgeslagen in Azure Storage of Azure Data Lake Storage, zodat u een cluster veilig kunt verwijderen wanneer dit niet wordt gebruikt. Voor een HDInsight-cluster worden ook kosten in rekening gebracht, zelfs wanneer het niet wordt gebruikt. Aangezien de kosten voor het cluster vaak zoveel hoger zijn dan de kosten voor opslag, is het financieel gezien logischer clusters te verwijderen wanneer ze niet worden gebruikt. Als u direct verder wilt met de zelfstudie die wordt vermeld bij [Volgende stappen](#next-steps), is het beter om het cluster te behouden.
 
-Ga terug naar Azure Portal en selecteer **Verwijderen**.
+Ga terug naar Azure Portal en selecteer **Verwijderen** .
 
 ![De Azure-portal verwijdert een HDInsight-cluster](./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-azure-portal-delete-cluster.png "HDInsight-cluster verwijderen")
 

@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: b33fab7657827733b2c5e7724666a3800686c8d9
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: b0f8c5806ba22708db6dc537d391c1f1b1a183ec
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91564779"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543811"
 ---
 # <a name="azure-database-for-mysql-single-server"></a>Azure Database for MySQL Single Server
 
@@ -55,7 +55,7 @@ Met de service voor één server worden automatisch serverback-ups gemaakt en op
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Binnen een paar seconden prestaties en schaal aanpassen
 
-De service voor één server is beschikbaar in drie SKU-lagen: Basic, Algemeen gebruik en Geoptimaliseerd voor geheugen. De Basis-laag is het meest geschikt voor low-budget ontwikkeling en workloads met weinig gelijktijdigheid. Algemeen gebruik en Geoptimaliseerd voor geheugen zijn beter geschikt voor productieworkloads waarvoor hoge gelijktijdigheid, schaalbaarheid en voorspelbare prestaties nodig zijn. U kunt uw eerste app op een kleine database bouwen voor een paar euro met maand en vervolgens de schaal ervan aanpassen om aan de vereisten van uw oplossing te voldoen. De opslagschaal is online en ondersteunt automatische groei van opslag. Doordat de schaalbaarheid dynamisch is, kan uw database op een transparante manier reageren op snel veranderende resourcevereisten. U betaalt alleen voor de resources die u gebruikt. Zie  [Prijscategorieën](concepts-service-tiers.md) voor meer informatie.
+De service voor één server is beschikbaar in drie SKU-lagen: Basic, Algemeen gebruik en Geoptimaliseerd voor geheugen. De Basis-laag is het meest geschikt voor low-budget ontwikkeling en workloads met weinig gelijktijdigheid. Algemeen gebruik en Geoptimaliseerd voor geheugen zijn beter geschikt voor productieworkloads waarvoor hoge gelijktijdigheid, schaalbaarheid en voorspelbare prestaties nodig zijn. U kunt uw eerste app op een kleine database bouwen voor een paar euro met maand en vervolgens de schaal ervan aanpassen om aan de vereisten van uw oplossing te voldoen. De opslagschaal is online en ondersteunt automatische groei van opslag. Doordat de schaalbaarheid dynamisch is, kan uw database op een transparante manier reageren op snel veranderende resourcevereisten. U betaalt alleen voor de resources die u gebruikt. Zie [Prijscategorieën](./concepts-pricing-tiers.md) voor meer details.
 
 ## <a name="enterprise-grade-security-compliance-and-governance"></a>Beveiliging, naleving en beheer van bedrijfskwaliteit
 
@@ -63,7 +63,7 @@ De service voor één server maakt gebruik van de door FIPS 140-2 gevalideerde c
 
 De service staat persoonlijke toegang tot de servers toe met behulp van [persoonlijke koppeling](concepts-data-access-security-private-link.md) en biedt een functie voor [Geavanceerde beveiliging tegen bedreigingen](concepts-data-access-and-security-threat-protection.md). Geavanceerde beveiliging tegen bedreigingen detecteert vreemde activiteiten die duiden op ongebruikelijke en mogelijk schadelijke pogingen om toegang te verkrijgen tot of aanvallen op databases.
 
-Naast systeemeigen verificatie ondersteunt de service voor één server [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)-verificatie. Azure AD-verificatie is een mechanisme voor het maken van verbinding met de MySQL-servers met behulp van id's die worden gedefinieerd en beheerd in Azure AD. Met Azure AD-verificatie kunt u de gebruikers-id's van databases en andere Azure-services beheren op een centrale locatie, waardoor toegangsbeheer wordt vereenvoudigd en gecentraliseerd.
+Naast systeemeigen verificatie ondersteunt de service voor één server [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)-verificatie. Azure AD-verificatie is een mechanisme voor het maken van verbinding met de MySQL-servers met behulp van id's die worden gedefinieerd en beheerd in Azure AD. Met Azure AD-verificatie kunt u de gebruikers-id's van databases en andere Azure-services beheren op een centrale locatie, waardoor toegangsbeheer wordt vereenvoudigd en gecentraliseerd.
 
 [Controlelogboekregistratie](concepts-audit-logs.md) is beschikbaar om alle activiteiten op databaseniveau bij te houden. 
 
@@ -79,9 +79,9 @@ De service voor één server is uitgerust met ingebouwde functies voor prestatie
 
 De service voert de communityversie van MySQL uit. Dit biedt volledige toepassingscompatibiliteit en vereist minimale herstructureringskosten voor het migreren van bestaande toepassingen die zijn ontwikkeld op de MySQL-engine naar een service met één server. De migratie naar de enkele server kan worden uitgevoerd met behulp van een van de volgende opties:
 
-- **Dumpen en herstellen**: voor offline migraties, waarbij gebruikers zich enige downtime kunnen veroorloven, kan dumpen en herstellen met behulp van communityhulpprogramma's, zoals mysqldump/mydumper, de snelste manier zijn voor migratie. Zie [Migreren met behulp van dumpen en herstellen](concepts-migrate-dump-restore.md) voor meer informatie. 
-- **Azure Database Migration Service**: voor naadloze en vereenvoudigde migraties naar één server met minimale downtime kan [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online) worden gebruikt. 
-- **Replicatie van binnenkomende gegevens**: voor minimale downtime-migraties kan ook de replicatie van binnenkomende gegevens, die afhankelijk is van replicatie op basis van binlog, worden gebruikt. Replicatie van binnenkomende gegevens heeft de voorkeur voor minimale downtime-migraties van praktijkgerichte experts die meer controle over de migratie willen. Zie [replicatie van binnenkomende gegevens](concepts-data-in-replication.md) voor meer informatie.
+- **Dumpen en herstellen** : voor offline migraties, waarbij gebruikers zich enige downtime kunnen veroorloven, kan dumpen en herstellen met behulp van communityhulpprogramma's, zoals mysqldump/mydumper, de snelste manier zijn voor migratie. Zie [Migreren met behulp van dumpen en herstellen](concepts-migrate-dump-restore.md) voor meer informatie. 
+- **Azure Database Migration Service** : voor naadloze en vereenvoudigde migraties naar één server met minimale downtime kan [Azure Database Migration Service](../dms/tutorial-mysql-azure-mysql-online.md) worden gebruikt. 
+- **Replicatie van binnenkomende gegevens** : voor minimale downtime-migraties kan ook de replicatie van binnenkomende gegevens, die afhankelijk is van replicatie op basis van binlog, worden gebruikt. Replicatie van binnenkomende gegevens heeft de voorkeur voor minimale downtime-migraties van praktijkgerichte experts die meer controle over de migratie willen. Zie [replicatie van binnenkomende gegevens](concepts-data-in-replication.md) voor meer informatie.
 
 ## <a name="contacts"></a>Contactpersonen
 Voor eventuele vragen of suggesties over het werken met Azure Database for MySQL stuurt u een e-mailbericht naar het Azure Database for MySQL-team ([@AskAzure DB for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com)). Dit e-mailadres is geen alias voor technische ondersteuning.
@@ -108,4 +108,3 @@ Nu u een inleiding tot de implementatiemodus voor één server van Azure Databas
   - [PHP](./connect-php.md)
   - [.NET (C#)](./connect-csharp.md)
   - [Go](./connect-go.md)
-  

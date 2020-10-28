@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: a84308ba06a38cea475fcb1bae022da16424a731
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 2ee906b406f5fd09fc870626f1905541a4270c66
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032993"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670531"
 ---
 # <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure Attestation (preview)
 
@@ -73,7 +73,7 @@ Azure Attestation is de voorkeurskeuze voor het afleveren van TEEs omdat het de 
 
 ## <a name="business-continuity-and-disaster-recovery-bcdr-support"></a>Ondersteuning voor bedrijfscontinuïteit en herstel na noodgevallen (BCDR)
 
-[Bedrijfscontinuïteit en herstel na noodgevallen](/azure/best-practices-availability-paired-regions) (BCDR) voor Azure Attestation maakt het mogelijk om service-onderbrekingen te beperken die voortkomen uit aanzienlijke beschikbaarheidsproblemen of noodgebeurtenissen in een regio.
+[Bedrijfscontinuïteit en herstel na noodgevallen](../best-practices-availability-paired-regions.md) (BCDR) voor Azure Attestation maakt het mogelijk om service-onderbrekingen te beperken die voortkomen uit aanzienlijke beschikbaarheidsproblemen of noodgebeurtenissen in een regio.
 
 Hieronder ziet u de regio's die momenteel worden ondersteund door BCDR
 - VS-Oost 2 = > gekoppeld aan VS-Centraal.
@@ -91,4 +91,3 @@ Clusters die in twee regio's zijn geïmplementeerd, werken onder normale omstand
 - Meer informatie over [Azure Attestation-basisconcepten](basic-concepts.md)
 - [Een Attestation-beleid ontwerpen en ondertekenen](author-sign-policy.md)
 - [Azure Attestation instellen met behulp van PowerShell](quickstart-powershell.md)
-

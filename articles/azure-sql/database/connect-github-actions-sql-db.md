@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: cd08b02cb3b67ce615ffa1003ee1e4441a281c17
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 9203cebbd721b918f2514f7615712c035a0460ed
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92285060"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669750"
 ---
 # <a name="use-github-actions-to-connect-to-azure-sql-database"></a>GitHub Actions gebruiken om verbinding te maken met Azure SQL Database
 
@@ -26,7 +26,7 @@ U hebt het volgende nodig:
 - Een GitHub-opslagplaats met een dacpac-pakket (`Database.dacpac`). Als u geen GitHub-account hebt, [kunt u zich gratis registreren](https://github.com/join).  
 - Een Azure SQL Database.
     - [Quickstart: Een individuele database maken in Azure SQL Database](single-database-create-quickstart.md)
-    - [Een dacpac-pakket maken op basis van uw bestaande SQL Server-database](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
+    - [Een dacpac-pakket maken op basis van uw bestaande SQL Server-database](/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
 
 ## <a name="workflow-file-overview"></a>Overzicht van werkstroom bestand
 
@@ -194,4 +194,4 @@ Wanneer uw Azure SQL-database en -opslagplaats niet meer nodig zijn, moet u de r
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over Azure en GitHub-integratie](https://docs.microsoft.com/azure/developer/github/)
+> [Meer informatie over Azure en GitHub-integratie](/azure/developer/github/)

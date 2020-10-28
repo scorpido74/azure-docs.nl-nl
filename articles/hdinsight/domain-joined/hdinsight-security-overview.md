@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 08/24/2020
-ms.openlocfilehash: ea61ca42c345fe9df0436a193fb2adcb00ce6195
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7f450d54a0039f591178ae839fbb404f31d80671
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150798"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537266"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Overzicht van bedrijfsbeveiliging in Azure HDInsight
 
@@ -78,10 +78,10 @@ De volgende tabel bevat koppelingen naar resources voor elk type beveiligingsopl
 | Beveiliging van gegevenstoegang | [Toegangsbeheerlijsten (ACL's)](../../storage/blobs/data-lake-storage-access-control.md) voor Data Lake Storage Gen1 en Gen2 configureren  | Klant |
 |  | De eigenschap [Beveiligde overdracht vereist](../../storage/common/storage-require-secure-transfer.md) bij opslagaccounts inschakelen. | Klant |
 |  | [Firewalls en virtuele netwerken voor Azure Storage](../../storage/common/storage-network-security.md) configureren | Klant |
-|  | [Service-eindpunten voor virtueel netwerk van Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) configureren voor Cosmos DB en [Azure SQL-database](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) | Klant |
+|  | [Service-eindpunten voor virtueel netwerk van Azure](../../virtual-network/virtual-network-service-endpoints-overview.md) configureren voor Cosmos DB en [Azure SQL-database](../../azure-sql/database/vnet-service-endpoint-rule-overview.md) | Klant |
 |  | Controleer of de functie voor [Versleuteling-in-transit](./encryption-in-transit.md) is ingeschakeld om TLS en IPSec te gebruiken voor communicatie binnen het cluster. | Klant |
-|  | [Door de klant beheerde sleutels](../../storage/common/storage-encryption-keys-portal.md) configureren voor Azure Storage-versleuteling | Klant |
-|  | Toegang tot uw gegevens beheren via Azure-ondersteuning met behulp van [Klanten-lockbox](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview) | Klant |
+|  | [Door de klant beheerde sleutels](../../storage/common/customer-managed-keys-configure-key-vault.md) configureren voor Azure Storage-versleuteling | Klant |
+|  | Toegang tot uw gegevens beheren via Azure-ondersteuning met behulp van [Klanten-lockbox](../../security/fundamentals/customer-lockbox-overview.md) | Klant |
 | Beveiliging van toepassingen en middleware | Integreren met AAD-DS en [ESP configureren](apache-domain-joined-configure-using-azure-adds.md) of [HIB for OAuth Authentication](identity-broker.md) gebruiken| Klant |
 |  | Beleid voor [Apache Ranger-autorisatie](apache-domain-joined-run-hive.md) configureren | Klant |
 |  | [Azure Monitor-logboeken](../hdinsight-hadoop-oms-log-analytics-tutorial.md) gebruiken | Klant |
@@ -98,5 +98,5 @@ De volgende tabel bevat koppelingen naar resources voor elk type beveiligingsopl
 ## <a name="next-steps"></a>Volgende stappen
 
 * [HDInsight-clusters plannen met ESP](apache-domain-joined-architecture.md)
-* [HDInsight-clusters configureren met ESP](apache-domain-joined-configure.md)
+* [HDInsight-clusters configureren met ESP](./apache-domain-joined-configure-using-azure-adds.md)
 * [HDInsight-clusters beheren met ESP](apache-domain-joined-manage.md)

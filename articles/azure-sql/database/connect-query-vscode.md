@@ -13,12 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 7a096e355e140b18bd7df010c379e31d21f90634
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f823b6d04a217328fe2e825e64906460cd9cbae9
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86515050"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672480"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query"></a>Quickstart: Visual Studio Code gebruiken om verbinding te maken en query's uit te voeren 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -45,7 +45,7 @@ ms.locfileid: "86515050"
 
 ## <a name="install-visual-studio-code"></a>Visual Studio Code installeren
 
-Zorg ervoor dat u de nieuwste versie van [Visual Studio Code](https://code.visualstudio.com/Download) hebt geïnstalleerd en de [mssql-extensie](https://aka.ms/mssql-marketplace) hebt geladen. Zie [Visual Studio Code installeren](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-and-start-visual-studio-code) en [mssql voor Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) voor hulp bij het installeren van de mssql-extensie.
+Zorg ervoor dat u de nieuwste versie van [Visual Studio Code](https://code.visualstudio.com/Download) hebt geïnstalleerd en de [mssql-extensie](https://aka.ms/mssql-marketplace) hebt geladen. Zie [Visual Studio Code installeren](/sql/linux/sql-server-linux-develop-use-vscode#install-and-start-visual-studio-code) en [mssql voor Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) voor hulp bij het installeren van de mssql-extensie.
 
 ## <a name="configure-visual-studio-code"></a>Visual Studio Code configureren
 
@@ -76,9 +76,9 @@ Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de Az
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-2. Navigeer naar de pagina **SQL-databases** of **Met SQL beheerde exemplaren**.
+2. Navigeer naar de pagina **SQL-databases** of **Met SQL beheerde exemplaren** .
 
-3. Bekijk op de pagina **Overzicht** de volledig gekwalificeerde servernaam naast **Servernaam** voor SQL Database, of de volledig gekwalificeerde servernaam naast **Host** voor een met SQL beheerd exemplaar. Als u de servernaam of hostnaam wilt kopiëren, plaatst u de muisaanwijzer erboven en selecteert u het pictogram **Kopiëren**.
+3. Bekijk op de pagina **Overzicht** de volledig gekwalificeerde servernaam naast **Servernaam** voor SQL Database, of de volledig gekwalificeerde servernaam naast **Host** voor een met SQL beheerd exemplaar. Als u de servernaam of hostnaam wilt kopiëren, plaatst u de muisaanwijzer erboven en selecteert u het pictogram **Kopiëren** .
 
 ## <a name="set-language-mode-to-sql"></a>Taalmodus instellen op SQL
 
@@ -86,11 +86,11 @@ Stel de taalmodus in Visual Studio Code in op **SQL** om mssql-opdrachten en T-S
 
 1. Open een nieuw Visual Studio Code venster.
 
-2. Druk op **Ctrl**+**N**. Hiermee wordt een nieuw bestand met tekst zonder opmaak geopend.
+2. Druk op **Ctrl**+**N** . Hiermee wordt een nieuw bestand met tekst zonder opmaak geopend.
 
 3. Selecteer **Tekst zonder opmaak** in de rechterbenedenhoek van de statusbalk.
 
-4. Selecteer in de vervolgkeuzelijst **Taalmodus selecteren** die wordt geopend de optie **SQL**.
+4. Selecteer in de vervolgkeuzelijst **Taalmodus selecteren** die wordt geopend de optie **SQL** .
 
 ## <a name="connect-to-your-database"></a>Verbinding maken met uw database
 
@@ -99,17 +99,17 @@ Gebruik Visual Studio Code om verbinding te maken met uw server.
 > [!IMPORTANT]
 > Zorg ervoor dat u de server- en aanmeldingsgegevens bij de hand hebt, voordat u verdergaat. Wanneer u de verbindingsprofielgegevens gaat invoeren, moet u ervoor zorgen dat de focus op Visual Studio Code blijft, omdat u anders opnieuw moet beginnen met het maken van het verbindingsprofiel.
 
-1. Druk in Visual Studio Code op **Ctrl+Shift+P** (of **F1**) om het opdrachtenpalet te openen.
+1. Druk in Visual Studio Code op **Ctrl+Shift+P** (of **F1** ) om het opdrachtenpalet te openen.
 
-2. Selecteer **MS SQL:Connect** en kies **Enter**.
+2. Selecteer **MS SQL:Connect** en kies **Enter** .
 
-3. Selecteer **Verbindingsprofiel maken**.
+3. Selecteer **Verbindingsprofiel maken** .
 
 4. Volg de aanwijzingen op om de verbindingseigenschappen voor het nieuwe profiel op te geven. Wanneer u een waarde hebt opgegeven, kiest u **Enter** om door te gaan.
 
    | Eigenschap       | Voorgestelde waarde | Beschrijving |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Servernaam** | De volledig gekwalificeerde servernaam | Dit moet er ongeveer als volgt uitzien: **mijnnieuweserver20170313.database.windows.net**. |
+   | **Servernaam** | De volledig gekwalificeerde servernaam | Dit moet er ongeveer als volgt uitzien: **mijnnieuweserver20170313.database.windows.net** . |
    | **Databasenaam** | mySampleDatabase | De database waarmee verbinding moet worden gemaakt. |
    | **Verificatie** | SQL-aanmelding| In deze zelfstudie wordt gebruik gemaakt van SQL-verificatie. |
    | **Gebruikersnaam** | Gebruikersnaam | De gebruikersnaam van het serverbeheerdersaccount dat wordt gebruikt voor het maken van de server. |
@@ -121,7 +121,7 @@ Gebruik Visual Studio Code om verbinding te maken met uw server.
 
 ## <a name="query-data"></a>Querygegevens
 
-Voer de volgende Transact-SQL-[SELECT](https://msdn.microsoft.com/library/ms189499.aspx)-instructie uit om op categorie een query uit te voeren voor de 20 populairste producten.
+Voer de volgende Transact-SQL-[SELECT](/sql/t-sql/queries/select-transact-sql)-instructie uit om op categorie een query uit te voeren voor de 20 populairste producten.
 
 1. Plak in het editorvenster de volgende SQL-query.
 
@@ -138,7 +138,7 @@ Voer de volgende Transact-SQL-[SELECT](https://msdn.microsoft.com/library/ms1894
 
 ## <a name="insert-data"></a>Gegevens invoegen
 
-Voer de volgende Transact-SQL-[INSERT](https://msdn.microsoft.com/library/ms174335.aspx)-instructie uit om een nieuw product toe te voegen aan de tabel `SalesLT.Product`.
+Voer de volgende Transact-SQL-[INSERT](/sql/t-sql/statements/insert-transact-sql)-instructie uit om een nieuw product toe te voegen aan de tabel `SalesLT.Product`.
 
 1. Vervang de vorige query door deze.
 
@@ -166,7 +166,7 @@ Voer de volgende Transact-SQL-[INSERT](https://msdn.microsoft.com/library/ms1743
 
 ## <a name="update-data"></a>Gegevens bijwerken
 
-Voer de volgende Transact-SQL-[UPDATE](https://msdn.microsoft.com/library/ms177523.aspx)-instructie uit om het toegevoegde product bij te werken.
+Voer de volgende Transact-SQL-[UPDATE](/sql/t-sql/queries/update-transact-sql)-instructie uit om het toegevoegde product bij te werken.
 
 1. Vervang de vorige query door deze:
 
@@ -180,7 +180,7 @@ Voer de volgende Transact-SQL-[UPDATE](https://msdn.microsoft.com/library/ms1775
 
 ## <a name="delete-data"></a>Gegevens verwijderen
 
-Voer de volgende Transact-SQL-[DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql)-instructie uit om het nieuwe product te verwijderen.
+Voer de volgende Transact-SQL-[DELETE](/sql/t-sql/statements/delete-transact-sql)-instructie uit om het nieuwe product te verwijderen.
 
 1. Vervang de vorige query door deze:
 
@@ -195,4 +195,4 @@ Voer de volgende Transact-SQL-[DELETE](https://docs.microsoft.com/sql/t-sql/stat
 
 - Als u verbinding wilt maken en query's wilt uitvoeren met SQL Server Management Studio, gaat u naar [Snelstartgids: SQL Server Management Studio gebruiken om verbinding te maken met een database in Azure SQL Database en query's uit te voeren voor gegevens](connect-query-ssms.md).
 - Als u verbinding wilt maken en query's wilt uitvoeren met Azure Portal, gaat u naar [Snelstartgids: De SQL-queryeditor in Azure Portal gebruiken om verbinding te maken en query's op gegevens uit te voeren](connect-query-portal.md).
-- Zie het blogbericht [Create a database IDE with MSSQL extension](https://msdn.microsoft.com/magazine/mt809115) voor een MSDN-artikel over het gebruik van Visual Studio Code.
+- Zie het blogbericht [Create a database IDE with MSSQL extension](/archive/msdn-magazine/2017/june/data-points-visual-studio-code-create-a-database-ide-with-mssql-extension) voor een MSDN-artikel over het gebruik van Visual Studio Code.

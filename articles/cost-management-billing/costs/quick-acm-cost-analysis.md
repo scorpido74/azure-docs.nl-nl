@@ -3,18 +3,18 @@ title: 'Quickstart: Azure-kosten verkennen met kostenanalyse'
 description: Deze snelstart helpt u kostenanalyse te gebruiken om de kosten van Azure voor uw bedrijf te verkennen en te analyseren.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/20/2020
+ms.date: 10/26/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
-ms.custom: seodec18
-ms.openlocfilehash: 62651f611654fa601752308ac2fa7f4c388297d6
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.custom: contentperfq2
+ms.openlocfilehash: 31a95d8c02ee540fe6b52088159f04535c39ea93
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132836"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676833"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Quickstart: Kosten verkennen en analyseren met kostenanalyse
 
@@ -42,7 +42,7 @@ Als u een nieuw abonnement hebt, kunt u de Cost Management-functies niet meteen 
 
 ## <a name="review-costs-in-cost-analysis"></a>Kosten in kostenanalyse beoordelen
 
-Als u de kosten in kostenanalyse wilt controleren, opent u het bereik in de Azure-portal en selecteert u **Kostenanalyse** in het menu. Ga bijvoorbeeld naar **Abonnementen**, selecteer een abonnement in de lijst en selecteer vervolgens **Kostenanalyse** in het menu. Gebruik **Bereik** om over te schakelen naar een ander bereik in kostenanalyse. Zie [Understand and work with scopes](understand-work-scopes.md) (Engelstalig) voor meer informatie over bereiken.
+Als u de kosten in kostenanalyse wilt controleren, opent u het bereik in de Azure-portal en selecteert u **Kostenanalyse** in het menu. Ga bijvoorbeeld naar **Abonnementen** , selecteer een abonnement in de lijst en selecteer vervolgens **Kostenanalyse** in het menu. Gebruik **Bereik** om over te schakelen naar een ander bereik in kostenanalyse.
 
 Het bereik dat u selecteert wordt door Cost Management gebruikt om gegevens te bundelen en toegang tot de kostengegevens te beheren. Wanneer u gebruikmaakt van bereiken, moet u geen meervoudige selectie maken. In plaats daarvan selecteert u een groter bereik dat de andere bereiken omvat en filtert u vervolgens zodat alleen de geneste bereiken die u nodig hebt, overblijven. Het is belangrijk dat u deze aanpak begrijpt omdat mogelijk niet iedereen toegang heeft tot één enkel bovenliggend bereik, waarin meerdere bereiken zijn genest.
 
@@ -52,15 +52,15 @@ Bekijk de video [Cost Management gebruiken in de Azure-portal](https://www.youtu
 
 De initiële kostenanalyseweergave omvat de volgende gebieden.
 
-**De weergave Samengevoegde kosten**: hiermee wordt de configuratie van de vooraf gedefinieerde kostenanalyse weergegeven. Elke weergave bevat datumbereik, granulariteit, groeperen op en filterinstellingen. In de standaardweergave worden samengevoegde kosten weergegeven voor de huidige factureringsperiode, maar u kunt deze wijzigen in andere ingebouwde weergaven. Zie [Kostenweergaven aanpassen](#customize-cost-views) voor meer informatie.
+**De weergave Samengevoegde kosten** : hiermee wordt de configuratie van de vooraf gedefinieerde kostenanalyse weergegeven. Elke weergave bevat datumbereik, granulariteit, groeperen op en filterinstellingen. In de standaardweergave worden geaccumuleerde kosten weergegeven voor de huidige factureringsperiode, maar u kunt ook andere ingebouwde weergaven gebruiken.
 
-**Werkelijke kosten**: hiermee worden de totale verbruiks- en aankoopkosten voor de huidige maand aangeduid. Deze worden samengevoegd en op uw factuur vermeld.
+**Werkelijke kosten** : hiermee worden de totale verbruiks- en aankoopkosten voor de huidige maand aangeduid. Deze worden samengevoegd en op uw factuur vermeld.
 
-**Prognose**: toont de totale geraamde kosten voor de periode die u kiest.
+**Prognose** : toont de totale geraamde kosten voor de periode die u kiest.
 
-**Budget**: toont de geplande uitgavenlimiet voor het geselecteerde bereik, indien beschikbaar.
+**Budget** : toont de geplande uitgavenlimiet voor het geselecteerde bereik, indien beschikbaar.
 
-**Geaccumuleerde granulariteit**: toont de totale samengevoegde kosten per dag, vanaf het begin van de factureringsperiode. Nadat u een [budget hebt gemaakt](tutorial-acm-create-budgets.md) voor uw factureringsrekening of abonnement, kunt u snel uw uitgaventrend ten opzichte van het budget bekijken. Beweeg de muisaanwijzer over een datum om de opgebouwde kosten voor die dag te zien.
+**Geaccumuleerde granulariteit** : toont de totale samengevoegde kosten per dag, vanaf het begin van de factureringsperiode. Nadat u een budget hebt gemaakt voor uw factureringsrekening of abonnement, kunt u snel uw uitgaventrend ten opzichte van het budget bekijken. Beweeg de muisaanwijzer over een datum om de opgebouwde kosten voor die dag te zien.
 
 **Draaigrafieken (ringdiagrammen)** : bieden dynamische draaigrafieken en specificeren de totale kosten, gedetailleerd per algemene standaardeigenschappen. Ze tonen de grootste tot de kleinste kostenposten voor de huidige maand. U kunt draaigrafieken op elk moment wijzigen door een andere pivot te selecteren. Kosten worden standaard weergegeven op: service (metercategorie), locatie (regio) en onderliggend bereik. Inschrijvingsaccounts bevinden zich bijvoorbeeld onder factureringsaccounts, resourcegroepen onder abonnementen en resources onder resourcegroepen.
 
@@ -70,7 +70,7 @@ De initiële kostenanalyseweergave omvat de volgende gebieden.
 
 In de kostenprognose wordt een schatting van de kosten voor de geselecteerde periode weergegeven. Het model is gebaseerd op een regressiemodel met tijdreeksen. Er zijn ten minste tien dagen van recente kosten- en gebruiksgegevens nodig om kosten nauwkeurig te kunnen schatten. Voor een bepaalde periode vereist het prognosemodel gelijke delen van trainingsgegevens voor de prognoseperiode. Voor een prognose van drie maanden bijvoorbeeld zijn ten minste drie maanden aan recente kosten- en gebruiksgegevens vereist.
 
-Het model gebruikt een maximum van zes maanden aan trainingsgegevens om kosten voor een heel jaar te schatten. Er zijn minimaal zeven dagen aan trainingsgegevens nodig om de voorspelling te wijzigen. De voorspelling is gebaseerd op opvallende wijzigingen, zoals pieken en dalen, in kosten- en gebruikspatronen. De prognose genereert geen afzonderlijke schattingen voor elk item in **Groeperen op**-eigenschappen. Er wordt alleen een schatting gegeven van het totaal aan samengevoegde kosten. Als u meerdere valuta's gebruikt, geeft het model prognoses voor de kosten alleen in Amerikaanse dollars.
+Het model gebruikt een maximum van zes maanden aan trainingsgegevens om kosten voor een heel jaar te schatten. Er zijn minimaal zeven dagen aan trainingsgegevens nodig om de voorspelling te wijzigen. De voorspelling is gebaseerd op opvallende wijzigingen, zoals pieken en dalen, in kosten- en gebruikspatronen. De prognose genereert geen afzonderlijke schattingen voor elk item in **Groeperen op** -eigenschappen. Er wordt alleen een schatting gegeven van het totaal aan samengevoegde kosten. Als u meerdere valuta's gebruikt, geeft het model prognoses voor de kosten alleen in Amerikaanse dollars.
 
 ## <a name="customize-cost-views"></a>Kostenweergaven aanpassen
 
@@ -87,7 +87,7 @@ Kosten per resource | Welke resources hebben tot dusverre het meest gekost deze 
 
 Er zijn echter veel gevallen waar u een meer gedetailleerde analyse nodig hebt. Het aanpassen begint bovenaan de pagina, met de selectie van de datum.
 
-Kostenanalyse toont standaard de gegevens voor de huidige maand. Gebruik de datumselector om snel naar veelgebruikte datumbereiken over te schakelen. Voorbeelden hiervan zijn de laatste zeven dagen, de afgelopen maand, het huidige jaar of een aangepast datumbereik. Betalen per gebruik-abonnementen omvatten ook datumbereiken op basis van uw factureringsperiode, die niet is gekoppeld aan de kalendermaand, zoals de huidige factureringsperiode of de laatste factuur. Gebruik de koppelingen **< VORIGE** en **VOLGENDE >** boven aan het menu om naar respectievelijk de vorige of volgende periode te gaan. Met **< VORIGE** gaat u bijvoorbeeld van de **Afgelopen 7 dagen** naar **8-14 dagen geleden** of **15-21 dagen geleden**.
+Kostenanalyse toont standaard de gegevens voor de huidige maand. Gebruik de datumselector om snel naar veelgebruikte datumbereiken over te schakelen. Voorbeelden hiervan zijn de laatste zeven dagen, de afgelopen maand, het huidige jaar of een aangepast datumbereik. Betalen per gebruik-abonnementen omvatten ook datumbereiken op basis van uw factureringsperiode, die niet is gekoppeld aan de kalendermaand, zoals de huidige factureringsperiode of de laatste factuur. Gebruik de koppelingen **< VORIGE** en **VOLGENDE >** boven aan het menu om naar respectievelijk de vorige of volgende periode te gaan. Met **< VORIGE** gaat u bijvoorbeeld van de **Afgelopen 7 dagen** naar **8-14 dagen geleden** of **15-21 dagen geleden** .
 
 ![Datumselector met een voorbeeldselectie voor deze maand](./media/quick-acm-cost-analysis/date-selector.png)
 
@@ -108,9 +108,9 @@ Als u bestedingsprognose uitschakelt, ziet u geen geschatte uitgaven voor datums
 
 Over het algemeen zijn binnen acht tot twaalf uur gegevens of meldingen te zien over de verbruikte resources.
 
-**Groeperen op** algemene eigenschappen om de kosten te specificeren en de belangrijkste kostenfactoren te identificeren. Als u bijvoorbeeld op resourcetag wilt groeperen, selecteert u de tagcode waarop u wilt groeperen. De kosten worden per tagwaarde weergegeven, met een extra segment voor resources waarop die tag niet is toegepast.  Zie [Groeps- en filteropties](./group-filter.md) voor meer informatie over opties voor groeperen en filteren.
+**Groeperen op** algemene eigenschappen om de kosten te specificeren en de belangrijkste kostenfactoren te identificeren. Als u bijvoorbeeld op resourcetag wilt groeperen, selecteert u de tagcode waarop u wilt groeperen. De kosten worden per tagwaarde weergegeven, met een extra segment voor resources waarop die tag niet is toegepast.
 
-De meeste [Azure-resources bieden ondersteuning voor het gebruik van tags](../../azure-resource-manager/management/tag-support.md). Maar sommige tags zijn niet beschikbaar in Cost Management en facturering. Bovendien worden resourcegroeptags niet ondersteund. Ondersteuning voor labels is van toepassing op het gebruik dat is gerapporteerd *nadat* de tag is toegepast op de resource. Tags worden niet met terugwerkende kracht toegepast voor samengetelde kosten.
+De meeste Azure-resources bieden ondersteuning voor het gebruik van tags. Maar sommige tags zijn niet beschikbaar in Cost Management en facturering. Bovendien worden resourcegroeptags niet ondersteund. Ondersteuning voor labels is van toepassing op het gebruik dat is gerapporteerd *nadat* de tag is toegepast op de resource. Tags worden niet met terugwerkende kracht toegepast voor samengetelde kosten.
 
 Bekijk de video [How to review tag policies with Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw) (Engelstalig) voor meer informatie over het gebruik van tagbeleid in Azure om de zichtbaarheid van kostengegevens te verbeteren.
 
@@ -118,7 +118,7 @@ Dit is een weergave van Azure-servicekosten voor de afgelopen maand.
 
 ![Gegroepeerde, dagelijks samengevoegde weergave met een voorbeeld van Azure-servicekosten van de afgelopen maand](./media/quick-acm-cost-analysis/grouped-daily-accum-view.png)
 
-Standaard worden in een kostenanalyse alle gebruiks- en aankoopkosten weergegeven, terwijl ze worden samengevoegd. Deze worden weergegeven op uw factuur en worden ook wel **werkelijke kosten** genoemd. De mogelijkheid om de werkelijke kosten weer te geven, is ideaal als u uw factuur wilt afstemmen. Pieken in aankoopkosten kunnen alarmerend zijn als u afwijkingen in uitgaven en andere kostenfluctuaties onder controle wilt houden. Als u pieken wilt afvlakken die worden veroorzaakt door de aankoopkosten van een reservering, schakelt u over naar **Afgeschreven kosten**.
+Standaard worden in een kostenanalyse alle gebruiks- en aankoopkosten weergegeven, terwijl ze worden samengevoegd. Deze worden weergegeven op uw factuur en worden ook wel **werkelijke kosten** genoemd. De mogelijkheid om de werkelijke kosten weer te geven, is ideaal als u uw factuur wilt afstemmen. Pieken in aankoopkosten kunnen alarmerend zijn als u afwijkingen in uitgaven en andere kostenfluctuaties onder controle wilt houden. Als u pieken wilt afvlakken die worden veroorzaakt door de aankoopkosten van een reservering, schakelt u over naar **Afgeschreven kosten** .
 
 ![Schakel van de werkelijke kosten over naar de afgeschreven kosten als u de reserveringsaankopen die zijn toegewezen aan de resources die van de reservering gebruik hebben gemaakt, verspreid over de hele periode wilt bekijken.](./media/quick-acm-cost-analysis/metric-picker.png)
 
@@ -130,7 +130,7 @@ De volgende afbeelding toont de resourcegroepnamen. U kunt op tag groeperen om d
 
 ![Volledige gegevens van de huidige weergave, waarbij de resourcegroepnamen worden weergegeven](./media/quick-acm-cost-analysis/full-data-set.png)
 
-Als u kosten groepeert op een specifiek kenmerk, worden de bovenste tien kostenposten van hoog naar laag weergegeven. Als er meer dan tien groepen zijn, worden de negen grootste kostenposten weergegeven, evenals een groep **Overige**, die alle overige groepen omvat. Wanneer u op tags groepeert, wordt een groep **Zonder tag** weergegeven voor kosten waarop de tagcode niet is toegepast. **Zonder tag** staat altijd onderaan, zelfs als de kosten zonder tag hoger zijn dan die met tag. Kosten zonder tags maken deel uit van **Overige** als er 10 of meer tagwaarden zijn. Schakel over naar de tabelweergave en wijzig de granulariteit in **Geen** om alle waarden gerangschikt van hoogste naar de laagste kosten weer te geven.
+Als u kosten groepeert op een specifiek kenmerk, worden de bovenste tien kostenposten van hoog naar laag weergegeven. Als er meer dan tien groepen zijn, worden de negen grootste kostenposten weergegeven, evenals een groep **Overige** , die alle overige groepen omvat. Wanneer u op tags groepeert, wordt een groep **Zonder tag** weergegeven voor kosten waarop de tagcode niet is toegepast. **Zonder tag** staat altijd onderaan, zelfs als de kosten zonder tag hoger zijn dan die met tag. Kosten zonder tags maken deel uit van **Overige** als er 10 of meer tagwaarden zijn. Schakel over naar de tabelweergave en wijzig de granulariteit in **Geen** om alle waarden gerangschikt van hoogste naar de laagste kosten weer te geven.
 
 Klassieke virtuele machines, netwerken en opslagresources delen geen gedetailleerde factureringsgegevens. Ze worden samengevoegd als **Klassieke services** wanneer kosten worden gegroepeerd.
 
@@ -138,7 +138,7 @@ Draaigrafieken onder de hoofdgrafiek tonen verschillende groeperingen om u een b
 
 ![Voorbeeld van draaigrafieken](./media/quick-acm-cost-analysis/pivot-charts.png)
 
-U kunt de volledige gegevensset voor elke weergave bekijken. Selecties of filters die u toepast, zijn van invloed op de getoonde gegevens. Als u de volledige gegevensset wilt zien, selecteert u de lijst **grafiektype** en selecteert u vervolgens de **tabel**weergave.
+U kunt de volledige gegevensset voor elke weergave bekijken. Selecties of filters die u toepast, zijn van invloed op de getoonde gegevens. Als u de volledige gegevensset wilt zien, selecteert u de lijst **grafiektype** en selecteert u vervolgens de **tabel** weergave.
 
 ![Gegevens voor de huidige weergave in tabelvorm](./media/quick-acm-cost-analysis/chart-type-table-view.png)
 
@@ -154,13 +154,11 @@ Als u de kostenanalyse wilt vastmaken, selecteert u de speld in de rechterbovenh
 
 Als u een koppeling naar de kostenanalyse wilt delen, selecteert u **Delen** boven aan de blade. Er wordt een aangepaste URL weergegeven, waarmee deze specifieke weergave voor dit specifieke bereik kan worden geopend. Als u geen toegang tot de kosten hebt en deze URL ontvangt, wordt er een bericht weergegeven dat aangeeft dat toegang is geweigerd.
 
-Als u meer wilt weten over het verlenen van toegang tot kosten voor elk ondersteund bereik, raadpleegt u [Understand and work with scopes](understand-work-scopes.md) (Engelstalig).
-
 ## <a name="download-usage-data"></a>Gebruiksgegevens downloaden
 
 Er zijn momenten waarop u de gegevens wilt downloaden voor verdere analyse, deze wilt samenvoegen met uw eigen gegevens of deze integreert in uw eigen systemen. Cost Management biedt een aantal verschillende opties. Als u behoefte hebt aan een tijdelijk kostenoverzicht dat de grote lijnen bevat, zoals het overzicht dat in een kostenanalyse beschikbaar is, moet u om te beginnen de weergave bouwen die u nodig hebt. Download deze vervolgens door **Exporteren** en **Gegevens naar CSV downloaden** of **Gegevens naar Excel downloaden** te selecteren. Het gedownloade Excel-bestand biedt aanvullende context voor de weergave die u hebt gebruikt om de download te genereren, zoals het bereik, de configuratie van de query, de totalen en de datum waarop de download is gegenereerd.
 
-Als u de volledige, niet-geaggregeerde gegevensset nodig hebt, kunt u deze downloaden vanuit het factureringsaccount. Ga vervolgens in de lijst met services in het linkerdeelvenster in de portal naar **Kostenbeheer en facturering**. Selecteer uw factureringsaccount, indien van toepassing. Ga naar **Gebruik + kosten** en selecteer vervolgens het pictogram **Downloaden** voor de gewenste factureringsperiode.
+Als u de volledige, niet-geaggregeerde gegevensset nodig hebt, kunt u deze downloaden vanuit het factureringsaccount. Ga vervolgens in de lijst met services in het linkerdeelvenster in de portal naar **Kostenbeheer en facturering** . Selecteer uw factureringsaccount, indien van toepassing. Ga naar **Gebruik + kosten** en selecteer vervolgens het pictogram **Downloaden** voor de gewenste factureringsperiode.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

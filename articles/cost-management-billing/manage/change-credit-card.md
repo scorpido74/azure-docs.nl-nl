@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: banders
 ms.openlocfilehash: f773c964d900c45a51eac433c3616a6e4b8978ae
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 10/22/2020
 ms.locfileid: "92131136"
 ---
 # <a name="add-or-update-a-credit-card-for-azure"></a>Een creditcard toevoegen of bijwerken voor Azure
@@ -41,29 +41,29 @@ U kunt het standaardtegoed van uw Azure-abonnement wijzigen in een nieuwe credit
 U kunt de standaardcreditcard van uw abonnement als volgt vervangen door een andere:
 
 1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com).
-1. Zoek naar **Kostenbeheer en facturering**.  
+1. Zoek naar **Kostenbeheer en facturering** .  
     ![Schermopname van de zoekopdracht](./media/change-credit-card/search.png)
 1. Selecteer het abonnement waar u de creditcard aan wilt toevoegen.
-1. Selecteer **Betalingswijzen**.  
+1. Selecteer **Betalingswijzen** .  
     ](./media/change-credit-card/payment-methods-blade-x.png)Schermopname waarin de optie voor 'Betalingswijzen beheren' geselecteerd is![
 1. Selecteer '+' In de linkerbovenhoek om een kaart toe te voegen Een creditcardformulier wordt aan de rechterkant weergegeven.
 1. Voer de creditcardgegevens in.  
     ![Schermopname van het toevoegen van een nieuwe creditcard](./media/change-credit-card/sub-add-new-x.png)
 1. Schakel het selectievakje naast **Instellen als mijn actieve betalingswijze** boven het formulier in zodat deze creditcard de actieve betalingswijze wordt. Deze kaart wordt de actieve betalingswijze voor alle abonnementen waarvoor dezelfde kaart wordt gebruikt als voor het geselecteerde abonnement.
-1. Selecteer **Next**.
+1. Selecteer **Next** .
 
 ### <a name="change-credit-card-for-a-subscription-to-a-previously-saved-credit-card"></a>Creditcard voor een abonnement wijzigen in een eerder opgeslagen creditcard
 
 U kunt ook de standaardcreditcard van uw abonnement wijzigen in een creditcard die al in uw account is opgeslagen door de volgende stappen uit te voeren:
 
 1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com).
-1. Zoek naar **Kostenbeheer en facturering**.  
+1. Zoek naar **Kostenbeheer en facturering** .  
     ![Schermopname van de zoekopdracht](./media/change-credit-card/search.png)
 1. Selecteer het abonnement waar u de creditcard aan wilt toevoegen.
-1. Selecteer **Betalingswijzen**.
+1. Selecteer **Betalingswijzen** .
     ](./media/change-credit-card/payment-methods-blade-x.png)Schermopname waarin de optie voor 'Betalingswijzen beheren' geselecteerd is![
 1. Selecteer het vakje naast de creditcard waarvan u de actieve betalingswijze wilt maken.
-1. Klik op **Als actief instellen**.
+1. Klik op **Als actief instellen** .
     ![Schermopname van een geselecteerde creditcard die is ingesteld als actief](./media/change-credit-card/sub-change-active-x.png)
 
 ### <a name="edit-credit-card-details"></a>Creditcardgegevens bewerken
@@ -71,14 +71,14 @@ U kunt ook de standaardcreditcard van uw abonnement wijzigen in een creditcard d
 Als uw creditcard wordt vernieuwd en het nummer blijft hetzelfde, werkt u de bestaande creditcardgegevens bij , zoals de verloopdatum. Als uw creditcardnummer is gewijzigd, omdat de creditcard is verloren, gestolen of verlopen, volgt u de stappen in de sectie [Een creditcard toevoegen als betalingswijze](#addcard). U hoeft de CVV niet bij te werken.
 
 1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com).
-1. Zoek naar **Kostenbeheer en facturering**.
+1. Zoek naar **Kostenbeheer en facturering** .
     ![Schermopname van de zoekopdracht](./media/change-credit-card/search.png)
-1. Selecteer **Betalingswijzen**.
+1. Selecteer **Betalingswijzen** .
     ](./media/change-credit-card/payment-methods-blade-x.png)Schermopname waarin de optie voor 'Betalingswijzen beheren' geselecteerd is![
 1. Klik op de creditcard die u wilt bewerken. Een creditcardformulier wordt aan de rechterkant weergegeven.
     ![Schermopname waarin een creditcard is geselecteerd](./media/change-credit-card/edit-card-x.png)
 1. Werk de creditcardgegevens bij.
-1. Selecteer **Opslaan**.
+1. Selecteer **Opslaan** .
 
 ## <a name="manage-credit-cards-for-a-microsoft-customer-agreement"></a>Creditcards voor een Microsoft-klantovereenkomst beheren
 
@@ -93,12 +93,12 @@ Zie [Azure-abonnementen betalen per factuur](pay-by-invoice.md) als u de standaa
 Voer de volgende stappen uit om uw creditcard te wijzigen:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Zoek naar **kostenbeheer en facturering**.
-1. Klik in het menu aan de linkerkant op **Factureringsprofielen**.
+1. Zoek naar **kostenbeheer en facturering** .
+1. Klik in het menu aan de linkerkant op **Factureringsprofielen** .
 1. Selecteer een factureringsprofiel.
-1. Selecteer in het menu aan de linkerkant de optie **Betalingsmethoden**.  
+1. Selecteer in het menu aan de linkerkant de optie **Betalingsmethoden** .  
    ![Schermopname van de betalingsmethoden in het menu](./media/change-credit-card/payment-methods-tab-mca.png)
-1. Klik in de sectie **Standaard betalingswijze** op **Vervangen**.  
+1. Klik in de sectie **Standaard betalingswijze** op **Vervangen** .  
     :::image type="content" source="./media/change-credit-card/change-payment-method-mca.png" alt-text="Schermopname met de optie Vervangen" :::
 1. In het nieuwe gebied aan de rechterkant selecteert u een bestaande creditcard in de vervolgkeuzelijst of voegt u een nieuwe creditcard toe door op de blauwe link **Nieuwe betalingswijze toevoegen** te klikken.
 
@@ -109,10 +109,10 @@ U kunt creditcardgegevens bewerken (zoals het bijwerken van de vervaldatum) in d
 Volg de volgende stappen om een creditcard te bewerken:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Zoek naar **kostenbeheer en facturering**.
-1. Klik in het menu aan de linkerkant op **Factureringsprofielen**.
+1. Zoek naar **kostenbeheer en facturering** .
+1. Klik in het menu aan de linkerkant op **Factureringsprofielen** .
 1. Selecteer een factureringsprofiel.
-1. Selecteer in het menu aan de linkerkant de optie **Betalingsmethoden**.  
+1. Selecteer in het menu aan de linkerkant de optie **Betalingsmethoden** .  
    ![Schermopname van de betalingsmethoden in het menu](./media/change-credit-card/payment-methods-tab-mca.png)
 1. Ga in de sectie **Uw creditcards** naar de creditcard die u wilt bewerken.
 1. Selecteer het beletselteken (`...`) aan het einde van de rij.  
@@ -143,7 +143,7 @@ Als u [betaalt via een factuur](pay-by-invoice.md), maakt u het verschuldigde be
 
 ### <a name="how-do-i-change-the-tax-id"></a>Hoe kan ik het btw-nummer wijzigen?
 
-Als u een btw-nummer wilt toevoegen of bijwerken, werkt u uw profiel bij in de [Azure-portal](https://portal.azure.com) en selecteert u vervolgens **Btw-registratie**. Dit btw-nummer wordt gebruikt voor de berekening van btw-vrijstelling en wordt vermeld op uw factuur.
+Als u een btw-nummer wilt toevoegen of bijwerken, werkt u uw profiel bij in de [Azure-portal](https://portal.azure.com) en selecteert u vervolgens **Btw-registratie** . Dit btw-nummer wordt gebruikt voor de berekening van btw-vrijstelling en wordt vermeld op uw factuur.
 
 ## <a name="check-the-type-of-your-account"></a>Controleer uw accounttype
 

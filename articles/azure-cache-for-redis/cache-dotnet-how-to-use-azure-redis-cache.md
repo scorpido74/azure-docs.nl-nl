@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: devx-track-csharp, mvc
 ms.date: 06/18/2020
-ms.openlocfilehash: b64fd82ab6050d6f4a9f0f91c2b8336ce03ab1d3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b3c18fcc0f4ff21eaaea2cbaf664e87d0ff33d60
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88211357"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537062"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>Quickstart: Azure Cache voor Redis met een .NET Framework-toepassing gebruiken
 
@@ -30,7 +30,7 @@ In deze quickstart neemt u Azure Cache voor Redis op in een .NET Framework-app v
 
 [!INCLUDE [redis-cache-access-keys](../../includes/redis-cache-access-keys.md)]
 
-Maak op uw computer een bestand met de naam *CacheSecrets.config*. Sla het op een locatie op waar het niet wordt ingecheckt met de broncode van uw voorbeeldtoepassing. Voor deze snelstart bevindt het bestand *CacheSecrets.config* zich hier: *C:\AppSecrets\CacheSecrets.config*.
+Maak op uw computer een bestand met de naam *CacheSecrets.config* . Sla het op een locatie op waar het niet wordt ingecheckt met de broncode van uw voorbeeldtoepassing. Voor deze snelstart bevindt het bestand *CacheSecrets.config* zich hier: *C:\AppSecrets\CacheSecrets.config* .
 
 Bewerk het bestand *CacheSecrets.config* en voeg de volgende inhoud toe:
 
@@ -47,7 +47,7 @@ Vervang `<access-key>` door de primaire sleutel voor uw cache.
 
 ## <a name="create-a-console-app"></a>Een console-app maken
 
-Klik in Visual Studio op **File** > **New** > **Project**.
+Klik in Visual Studio op **File** > **New** > **Project** .
 
 Selecteer **Console-app (.NET Framework)** en **Volgende** om uw app te configureren. Typ een **projectnaam** en klik op **Maken** om een nieuwe consoletoepassing te maken.
 
@@ -63,12 +63,12 @@ Klik in Visual Studio op **Tools** > **NuGet Package Manager** > **Package Manag
 Install-Package StackExchange.Redis
 ```
 
-Zodra de installatie is voltooid, kan de *StackExchange.Redis*-cacheclient met uw project worden gebruikt.
+Zodra de installatie is voltooid, kan de *StackExchange.Redis* -cacheclient met uw project worden gebruikt.
 
 
 ## <a name="connect-to-the-cache"></a>Verbinding maken met de cache
 
-Open in Visual Studio het bestand *App.config* en voeg een kenmerk `appSettings` `file` toe dat verwijst naar het bestand *CacheSecrets.config*.
+Open in Visual Studio het bestand *App.config* en voeg een kenmerk `appSettings` `file` toe dat verwijst naar het bestand *CacheSecrets.config* .
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -81,9 +81,9 @@ Open in Visual Studio het bestand *App.config* en voeg een kenmerk `appSettings`
 </configuration>
 ```
 
-Klik in Solution Explorer met de rechtermuisknop op **References** en klik op **Add a reference**. Voeg een verwijzing naar de assembly **System.Configuration** toe.
+Klik in Solution Explorer met de rechtermuisknop op **References** en klik op **Add a reference** . Voeg een verwijzing naar de assembly **System.Configuration** toe.
 
-Voeg de volgende `using`-instructies toe aan *Program.cs*:
+Voeg de volgende `using`-instructies toe aan *Program.cs* :
 
 ```csharp
 using StackExchange.Redis;
@@ -92,7 +92,7 @@ using System.Configuration;
 
 De verbinding met de Azure Redis-cache wordt beheerd door de klasse `ConnectionMultiplexer`. Deze klasse moet worden gedeeld en hergebruikt in uw clienttoepassing. Maak geen nieuwe verbinding voor elke bewerking. 
 
-Sla referenties nooit op in broncode. Om dit voorbeeld overzichtelijk te houden, gebruik ik alleen een extern configuratiebestand met geheimen. Een betere benadering is om [Azure Key Vault met certificaten](https://docs.microsoft.com/rest/api/keyvault/certificate-scenarios) te gebruiken.
+Sla referenties nooit op in broncode. Om dit voorbeeld overzichtelijk te houden, gebruik ik alleen een extern configuratiebestand met geheimen. Een betere benadering is om [Azure Key Vault met certificaten](/rest/api/keyvault/certificate-scenarios) te gebruiken.
 
 Voeg in *Program.cs* de volgende leden toe aan de klasse `Program` van uw consoletoepassing:
 
@@ -192,13 +192,13 @@ Klik in Visual Studio op **Tools** > **NuGet Package Manager** > **Package Manag
 Install-Package Newtonsoft.Json
 ```
 
-Voeg de volgende `using`-instructie toe aan *Program.cs*:
+Voeg de volgende `using`-instructie toe aan *Program.cs* :
 
 ```csharp
 using Newtonsoft.Json;
 ```
 
-Voeg de volgende `Employee`-klassedefinitie toe aan *Program.cs*:
+Voeg de volgende `Employee`-klassedefinitie toe aan *Program.cs* :
 
 ```csharp
 class Employee
@@ -247,13 +247,13 @@ Als u niet verder wilt met de voorbeeldtoepassing uit de snelstart, kunt u de Az
 > Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt. De resourcegroep en alle bijbehorende resources worden permanent verwijderd. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. Als u de resources voor het hosten van dit voorbeeld in een bestaande resourcegroep hebt gemaakt en deze groep ook resources bevat die u wilt behouden, kunt u elke resource afzonderlijk verwijderen via hun respectievelijke blade.
 >
 
-Meld u aan bij [Azure Portal](https://portal.azure.com) en klik op **Resourcegroepen**.
+Meld u aan bij [Azure Portal](https://portal.azure.com) en klik op **Resourcegroepen** .
 
-Typ de naam van de resourcegroep in het tekstvak **Filteren op naam...** . In de instructies voor dit artikel is een resourcegroep met de naam *TestResources* gebruikt. Klik in de resourcegroep in de lijst met resultaten op **...** en vervolgens op **Resourcegroep verwijderen**.
+Typ de naam van de resourcegroep in het tekstvak **Filteren op naam...** . In de instructies voor dit artikel is een resourcegroep met de naam *TestResources* gebruikt. Klik in de resourcegroep in de lijst met resultaten op **...** en vervolgens op **Resourcegroep verwijderen** .
 
 ![Verwijderen](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-delete-resource-group.png)
 
-U wordt gevraagd om het verwijderen van de resourcegroep te bevestigen. Typ de naam van de resourcegroep om te bevestigen en klik op **Verwijderen**.
+U wordt gevraagd om het verwijderen van de resourcegroep te bevestigen. Typ de naam van de resourcegroep om te bevestigen en klik op **Verwijderen** .
 
 Na enkele ogenblikken worden de resourcegroep en alle resources in de groep verwijderd.
 
@@ -268,7 +268,7 @@ In deze snelstartgids hebt u geleerd hoe u Azure Cache voor Redis gebruikt vanui
 > [!div class="nextstepaction"]
 > [Maak een ASP.NET-web-app die gebruikmaakt van Azure Cache voor Redis.](./cache-web-app-howto.md)
 
-Wilt u optimaliseren en op uw cloudverbruik besparen?
+Wilt u uw clouduitgaven optimaliseren en geld besparen?
 
 > [!div class="nextstepaction"]
-> [Analyseer kosten met Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [Analyseer kosten met Cost Management](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

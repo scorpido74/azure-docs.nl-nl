@@ -6,14 +6,14 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 09/08/2020
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a248699b47cf99980c9490bf16c10e7196ee6ecf
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 22abdb64a2349045923e148db57f683b4be87636
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091080"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742697"
 ---
 # <a name="quickstart-provision-azure-spring-cloud-service"></a>Quickstart: Azure Spring Cloud-service inrichten
 
@@ -103,7 +103,7 @@ Met de volgende procedure maakt u een exemplaar van Azure Spring Cloud met behul
 
 1. Open [Azure Portal](https://ms.portal.azure.com/) op een nieuw tabblad. 
 
-2. Zoek in het bovenste zoekvak naar **Azure Spring Cloud**.
+2. Zoek in het bovenste zoekvak naar **Azure Spring Cloud** .
 
 3. Selecteer **Azure Spring Cloud** in de resultaten.
 
@@ -113,15 +113,15 @@ Met de volgende procedure maakt u een exemplaar van Azure Spring Cloud met behul
 
     ![ASC-pictogram: toevoegen](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
 
-5. Vul het formulier in op de Azure Spring Cloud-pagina **Maken**.  Houd rekening met de volgende richtlijnen:
-    - **Abonnement**: Selecteer het abonnement waarvoor u voor deze resource gefactureerd wilt worden.
-    - **Resourcegroep**: Het is een best practice om nieuwe resourcegroepen te maken voor nieuwe resources. Dit wordt in latere stappen gebruikt als **\<resource group name\>** .
-    - **Servicedetails/naam**: Geef de **\<service instance name\>** op.  De naam moet tussen de 4 en 32 tekens lang zijn en mag alleen kleine letters, cijfers en afbreekstreepjes bevatten.  Het eerste teken van de servicenaam moet een letter zijn en het laatste teken moet een letter of een cijfer zijn.
-    - **Locatie**: Selecteer de locatie voor uw service-exemplaar.
+5. Vul het formulier in op de Azure Spring Cloud-pagina **Maken** .  Houd rekening met de volgende richtlijnen:
+    - **Abonnement** : Selecteer het abonnement waarvoor u voor deze resource gefactureerd wilt worden.
+    - **Resourcegroep** : Het is een best practice om nieuwe resourcegroepen te maken voor nieuwe resources. Dit wordt in latere stappen gebruikt als **\<resource group name\>** .
+    - **Servicedetails/naam** : Geef de **\<service instance name\>** op.  De naam moet tussen de 4 en 32 tekens lang zijn en mag alleen kleine letters, cijfers en afbreekstreepjes bevatten.  Het eerste teken van de servicenaam moet een letter zijn en het laatste teken moet een letter of een cijfer zijn.
+    - **Locatie** : Selecteer de locatie voor uw service-exemplaar.
 
     ![ASC-portal starten](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
 
-6. Klik op **Controleren en maken**.
+6. Klik op **Controleren en maken** .
 
 > [!div class="nextstepaction"]
 > [Er is een fout opgetreden](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=public-endpoint)

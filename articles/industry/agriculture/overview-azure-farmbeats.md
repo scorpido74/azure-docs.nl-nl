@@ -5,19 +5,19 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: d9882f23096e19435566323de4d0ebaf7c0af3ef
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: b08013e9d015d3c987c0032761bebccd4b57ec72
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331920"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678021"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Overzicht van Azure Notebooks (preview)
 
 Azure FarmBeats is een Business-to-business-aanbieding die beschikbaar is in Azure Marketplace. Hiermee kunnen agrarische gegevenssets vanuit verschillende providers worden verzameld. Met Azure FarmBeats kunt u AI-modellen (AI: kunstmatige intelligentie) of ML-modellen (ML: machine learning) maken op basis van samengevoegde gegevenssets. Door gebruik te maken van Azure FarmBeats kunnen de landbouwbedrijven zich richten op de kernzaken die van toegevoegde waarde zijn in plaats van de niet-gedifferentieerde zware inzet op data engineering.
 
 > [!NOTE]
-> Azure FarmBeats is momenteel beschikbaar als openbare preview-versie. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. Azure FarmBeats wordt geleverd zonder Service Level Agreement. Gebruik het [ondersteuningsforum voor Azure FarmBeats](https://aka.ms/farmbeatssupport) voor ondersteuning.
+> Azure FarmBeats is momenteel beschikbaar als openbare preview-versie. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. Azure FarmBeats wordt geleverd zonder Service Level Agreement. Gebruik het [ondersteuningsforum voor Azure FarmBeats](/answers/topics/azure-farmbeats.html) voor ondersteuning.
 
 ![Een Farm Beats-project](./media/architecture-for-farmbeats/farmbeats-architecture-1.png)
 
@@ -66,7 +66,7 @@ Een beheerder kan meerdere partners als gegevensprovider aan Azure FarmBeats toe
 Azure FarmBeats wordt zonder extra kosten aangeboden. U betaalt alleen voor de Azure-resources die u gebruikt. U kunt de onderstaande resources gebruiken voor meer informatie over de aanbieding:
 
 - Blijf op de hoogte van het laatste nieuws over Azure FarmBeats door onze [Azure FarmBeats-blog](https://aka.ms/farmbeatsblog) te bezoeken.
-- U kunt om assistentie vragen door een vraag te plaatsen op het [ondersteuningsforum voor Azure FarmBeats](https://aka.ms/farmbeatssupport).
+- U kunt om assistentie vragen door een vraag te plaatsen op het [ondersteuningsforum voor Azure FarmBeats](/answers/topics/azure-farmbeats.html).
 - U kunt feedback geven door een bericht te plaatsen over of te stemmen op een idee voor een functie op het [Azure FarmBeats-feedbackforum](https://aka.ms/farmbeatsfeedback).
 
 ## <a name="next-steps"></a>Volgende stappen

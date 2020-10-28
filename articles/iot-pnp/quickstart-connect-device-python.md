@@ -7,13 +7,13 @@ ms.date: 7/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: mvc
-ms.openlocfilehash: 187a0598dfc26394d1fd48e67d83ef7e98ef6226
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 065e65c0c8ccf61dd67da19fd5a94d4506db73ff
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91574014"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737306"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-to-iot-hub-python"></a>Quickstart: Een voorbeeld van een IoT Plug and Play-apparaattoepassing verbinden met IoT Hub (Python)
 
@@ -37,7 +37,7 @@ Installeer het pakket in uw lokale Python-omgeving als volgt:
 pip install azure-iot-device
 ```
 
-Kloon de IoT-opslagplaats van de Python-SDK en bekijk **master**:
+Kloon de IoT-opslagplaats van de Python-SDK en bekijk **master** :
 
 ```cmd/sh
 git clone https://github.com/Azure/azure-iot-sdk-python
@@ -57,13 +57,13 @@ Open het bestand **simple_thermostat.py** in een teksteditor. U ziet het volgend
 
 1. Hiermee wordt een functie voor het invoeren van toetsenbordaanslagen gedefinieerd, waarmee u de toepassing kunt afsluiten.
 
-1. Heeft een **hoofdfunctie**. De **hoofdfunctie**:
+1. Heeft een **hoofdfunctie** . De **hoofdfunctie** :
 
     1. De apparaat-SDK gebruikt om een apparaatclient te maken en verbinding te maken met uw IoT-hub.
 
-    1. Werkt de eigenschappen bij. Het model dat we gebruiken, **Thermostaat**, definieert `targetTemperature` en `maxTempSinceLastReboot` als de twee eigenschappen voor onze Thermostaat en zullen dus worden gebruikt. Eigenschappen worden bijgewerkt met behulp van de methode `patch_twin_reported_properties` die wordt gedefinieerd op `device_client`.
+    1. Werkt de eigenschappen bij. Het model dat we gebruiken, **Thermostaat** , definieert `targetTemperature` en `maxTempSinceLastReboot` als de twee eigenschappen voor onze Thermostaat en zullen dus worden gebruikt. Eigenschappen worden bijgewerkt met behulp van de methode `patch_twin_reported_properties` die wordt gedefinieerd op `device_client`.
 
-    1. Begint te luisteren naar opdrachtaanvrage. Hiervoor wordt gebruikgemaakt van de functie **execute_command_listener**. De functie stelt een listener in om naar opdrachtverzoeken te luisteren die afkomstig zijn van de service. Wanneer u de listener instelt, geeft u een `method_name`, `user_command_handler` en `create_user_response_handler` op.
+    1. Begint te luisteren naar opdrachtaanvrage. Hiervoor wordt gebruikgemaakt van de functie **execute_command_listener** . De functie stelt een listener in om naar opdrachtverzoeken te luisteren die afkomstig zijn van de service. Wanneer u de listener instelt, geeft u een `method_name`, `user_command_handler` en `create_user_response_handler` op.
         - De functie `user_command_handler` definieert wat het apparaat moet doen wanneer het een opdracht ontvangt. Als uw wekker bijvoorbeeld afgaat, is het effect van deze opdracht dat u wakker wordt. Dit kunt u zien als het effect van de opdracht die wordt aangeroepen.
         - De functie `create_user_response_handler` maakt een antwoord aan dat naar uw IoT-hub verzonden kan worden wanneer een opdracht met succes wordt uitgevoerd. Als uw wekker bijvoorbeeld afgaat, reageert u door op Snooze te drukken, wat feedback is voor de service. U kunt dit zien als het antwoord dat u de service geeft. U kunt dit antwoord bekijken in de portal.
 

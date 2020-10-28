@@ -8,14 +8,14 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.workload: big-data
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 07/01/2020
-ms.openlocfilehash: 1613486880885a3b7838b1bf806c17f88e3be06d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6ef4d63e30aeceec9cba3ae97f69afa1c299ec65
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86231259"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742729"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>Quickstart: een Azure Stream Analytics-taak maken via de Azure CLI
 
@@ -83,7 +83,7 @@ Het volgende codeblok van de Azure CLI bestaat uit opdrachten waarmee de invoerg
     az iot hub show-connection-string --hub-name "MyASAIoTHub"
     ```
 
-2. Voeg een apparaat toe aan IoT Hub met behulp van de opdracht [az iothub-device identity create](../iot-hub/quickstart-send-telemetry-c.md#register-a-device). In dit voorbeeld maakt u een apparaat met de naam **MyASAIoTDevice**.
+2. Voeg een apparaat toe aan IoT Hub met behulp van de opdracht [az iothub-device identity create](../iot-hub/quickstart-send-telemetry-c.md#register-a-device). In dit voorbeeld maakt u een apparaat met de naam **MyASAIoTDevice** .
 
     ```azurecli
     az iot hub device-identity create --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice"
@@ -249,7 +249,7 @@ az stream-analytics transformation create
 
 2. Vervang de tijdelijke aanduiding op regel 15 door de verbindingsreeks van het Azure IoT Hub-apparaat die u hebt opgeslagen in een eerdere sectie.
 
-3. Klik op **Run**. De uitvoer geeft de sensorgegevens en berichten weer die worden verzonden naar de IoT-hub.
+3. Klik op **Run** . De uitvoer geeft de sensorgegevens en berichten weer die worden verzonden naar de IoT-hub.
 
     ![Raspberry Pi Azure IoT Online Simulator](./media/stream-analytics-quick-create-powershell/ras-pi-connection-string.png)
 

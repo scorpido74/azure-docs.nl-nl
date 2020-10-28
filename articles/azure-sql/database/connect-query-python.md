@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 5257e8730830c6b51808d5d014bc3bdec6036bfe
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b3cbda70fd836482448aa381f6e781ed15666f2c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87843960"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675174"
 ---
 # <a name="quickstart-use-python-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Quickstart: Python gebruiken om een query uit te voeren op een database in Azure SQL Database of Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -45,7 +45,7 @@ U hebt het volgende nodig om deze quickstart te voltooien:
 
   # <a name="macos"></a>[MacOS](#tab/macos)
 
-  Als u Homebrew en Python, het ODBC-stuurprogramma en SQLCMD, en het Python-stuurprogramma voor SQL Server wilt installeren, gebruikt u de stappen **1.2**, **1.3** en **2.1** in [Python-apps maken met SQL Server op macOS](https://www.microsoft.com/sql-server/developer-get-started/python/mac/).
+  Als u Homebrew en Python, het ODBC-stuurprogramma en SQLCMD, en het Python-stuurprogramma voor SQL Server wilt installeren, gebruikt u de stappen **1.2** , **1.3** en **2.1** in [Python-apps maken met SQL Server op macOS](https://www.microsoft.com/sql-server/developer-get-started/python/mac/).
 
   Zie [ODBC-stuurprogramma van Microsoft op macOS](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server) voor meer informatie.
 
@@ -66,7 +66,7 @@ U hebt het volgende nodig om deze quickstart te voltooien:
 ---
 
 > [!IMPORTANT]
-> De scripts in dit artikel zijn geschreven voor gebruik met de **Adventure Works**-database.
+> De scripts in dit artikel zijn geschreven voor gebruik met de **Adventure Works** -database.
 
 > [!NOTE]
 > U kunt desgewenst kiezen voor het gebruik van een met Azure SQL beheerd exemplaar.
@@ -83,16 +83,16 @@ Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de da
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-2. Ga naar de pagina **SQL-databases** of **Met SQL beheerde exemplaren**.
+2. Ga naar de pagina **SQL-databases** of **Met SQL beheerde exemplaren** .
 
-3. Bekijk op de pagina **Overzicht** de volledig gekwalificeerde servernaam naast **Servernaam** voor de database in Azure SQL Database, of de volledig gekwalificeerde servernaam (of het IP-adres) naast **Host** voor een met Azure SQL beheerd exemplaar of SQL Server op virtuele Azure-machine. Als u de servernaam of hostnaam wilt kopiëren, plaatst u de muisaanwijzer erboven en selecteert u het pictogram **Kopiëren**.
+3. Bekijk op de pagina **Overzicht** de volledig gekwalificeerde servernaam naast **Servernaam** voor de database in Azure SQL Database, of de volledig gekwalificeerde servernaam (of het IP-adres) naast **Host** voor een met Azure SQL beheerd exemplaar of SQL Server op virtuele Azure-machine. Als u de servernaam of hostnaam wilt kopiëren, plaatst u de muisaanwijzer erboven en selecteert u het pictogram **Kopiëren** .
 
 > [!NOTE]
 > Zie [Verbinding met een SQL Server-exemplaar](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server) op Azure VM voor meer informatie over de verbinding van SQL Server op virtuele Azure-machine.
 
 ## <a name="create-code-to-query-your-database"></a>Code maken om query's uit te voeren op uw database 
 
-1. Maak in een teksteditor een nieuw bestand met de naam *sqltest.py*.  
+1. Maak in een teksteditor een nieuw bestand met de naam *sqltest.py* .  
    
 1. Voeg de volgende code toe. Vervang \<server>, \<database>, \<username> en \<password> door uw eigen waarden.
    
@@ -130,6 +130,5 @@ Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de da
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Uw eerste database ontwerpen in Azure SQL Database](design-first-database-tutorial.md)
-- [Microsoft Python-stuurprogramma's voor SQL Server](https://docs.microsoft.com/sql/connect/python/python-driver-for-sql-server/)
+- [Microsoft Python-stuurprogramma's voor SQL Server](/sql/connect/python/python-driver-for-sql-server/)
 - [Python-ontwikkelaarscentrum](https://azure.microsoft.com/develop/python/?v=17.23h)
-

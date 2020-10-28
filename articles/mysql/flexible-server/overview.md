@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 951de77f2ef10a06ff03801872cebcef088172b7
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 200f74ee8d99c80956f1d27599769401d30c3f95
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167046"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537946"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL Flexible Server (preview-versie)
 
@@ -99,7 +99,7 @@ De service versleutelt actieve gegevens met TLS (Transport Layer Security) dat s
 
 Zie [Versleutelde verbindingen gebruiken met flexibele servers](https://docs.mongodb.com/manual/tutorial/configure-ssl) voor meer informatie.
 
-Flexibele servers bieden volledige privétoegang tot de servers met behulp van [VNet-integratie (Virtual Network) van Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview). Servers in een virtueel netwerk van Azure kunnen alleen worden bereikt en verbonden via privé-IP-adressen. Met VNet-integratie wordt openbare toegang geweigerd en kunnen er geen servers worden bereikt via openbare eindpunten. 
+Flexibele servers bieden volledige privétoegang tot de servers met behulp van [VNet-integratie (Virtual Network) van Azure](../../virtual-network/virtual-networks-overview.md). Servers in een virtueel netwerk van Azure kunnen alleen worden bereikt en verbonden via privé-IP-adressen. Met VNet-integratie wordt openbare toegang geweigerd en kunnen er geen servers worden bereikt via openbare eindpunten. 
 
 Zie [Netwerkconcepten](concepts-networking.md) voor meer informatie.
 
@@ -114,8 +114,8 @@ Zie [Bewakingsconcepten](concepts-monitoring.md) voor meer informatie.
 
 De service voert de communityversie van MySQL uit. Dit biedt volledige toepassingscompatibiliteit en vereist minimale herstructureringskosten voor het migreren van bestaande toepassingen die zijn ontwikkeld op MySQL-engine naar een service met één server. De migratie naar de enkele server kan worden uitgevoerd met behulp van een van de volgende opties:
 
-- **Dumpen en herstellen**: voor offline migraties, waarbij gebruikers zich enige downtime kunnen veroorloven, kunnen dumpen en herstellen met behulp van communityhulpprogramma's, zoals mysqldump/mydumper, de snelste manier zijn voor migratie. Zie Migreren met behulp van dump en herstel voor meer informatie. 
-- **Azure Database Migration Service**: voor naadloze en vereenvoudigde migraties naar één server met minimale downtime kan [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online) worden gebruikt. 
+- **Dumpen en herstellen** : voor offline migraties, waarbij gebruikers zich enige downtime kunnen veroorloven, kunnen dumpen en herstellen met behulp van communityhulpprogramma's, zoals mysqldump/mydumper, de snelste manier zijn voor migratie. Zie Migreren met behulp van dump en herstel voor meer informatie. 
+- **Azure Database Migration Service** : voor naadloze en vereenvoudigde migraties naar één server met minimale downtime kan [Azure Database Migration Service](../../dms/tutorial-mysql-azure-mysql-online.md) worden gebruikt. 
 
 ## <a name="azure-regions"></a>Azure-regio's
 
@@ -126,12 +126,12 @@ Een van de voor delen van het uitvoeren van uw werkbelasting in Azure, is het we
 - Verenigd Koninkrijk Zuid
 - US - oost 2
 - US - west 2
-- Central US
+- VS - centraal
 - VS - oost
 - Canada - midden
 - Azië - zuidoost
 - Korea - centraal
-- Japan East
+- Japan - oost
 - Australië - oost
 
 Er wordt aan gewerkt om binnenkort meer servers toe te voegen.

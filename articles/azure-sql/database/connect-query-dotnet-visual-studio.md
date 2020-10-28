@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/10/2020
-ms.openlocfilehash: 30cf90f6020ecd4eb560ac0fe2886ff03c552d13
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: a864b2b3e0379a8b0a1d67c97a63b3d5c52f9e58
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825573"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669723"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Quickstart: .NET (C#) en C# in Visual Studio gebruiken om verbinding te maken met en query's uit te voeren op een database in Azure SQL Database of Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -53,9 +53,9 @@ Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de da
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-2. Navigeer naar de pagina **SQL-databases** of **Met SQL beheerde exemplaren**.
+2. Navigeer naar de pagina **SQL-databases** of **Met SQL beheerde exemplaren** .
 
-3. Bekijk op de pagina **Overzicht** de volledig gekwalificeerde servernaam naast **Servernaam** voor een database in Azure SQL Database, of de volledig gekwalificeerde servernaam (of het IP-adres) naast **Host** voor een met Azure SQL beheerd exemplaar of SQL Server op virtuele Azure-machine. Als u de servernaam of hostnaam wilt kopiëren, plaatst u de muisaanwijzer erboven en selecteert u het pictogram **Kopiëren**.
+3. Bekijk op de pagina **Overzicht** de volledig gekwalificeerde servernaam naast **Servernaam** voor een database in Azure SQL Database, of de volledig gekwalificeerde servernaam (of het IP-adres) naast **Host** voor een met Azure SQL beheerd exemplaar of SQL Server op virtuele Azure-machine. Als u de servernaam of hostnaam wilt kopiëren, plaatst u de muisaanwijzer erboven en selecteert u het pictogram **Kopiëren** .
 
 > [!NOTE]
 > Zie [Verbinding met een SQL Server-exemplaar](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server) op Azure VM voor meer informatie over de verbinding van SQL Server op virtuele Azure-machine.
@@ -66,15 +66,15 @@ Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de da
    
 1. Selecteer in het dialoogvenster **Nieuw project** **Visual C#** en vervolgens **Consoletoepassing (.NET Framework)** .
    
-1. Voer *sqltest* in voor de projectnaam en selecteer vervolgens **OK**. Het nieuwe project wordt gemaakt. 
+1. Voer *sqltest* in voor de projectnaam en selecteer vervolgens **OK** . Het nieuwe project wordt gemaakt. 
    
-1. Selecteer **Project** > **NuGet-pakketten beheren**. 
+1. Selecteer **Project** > **NuGet-pakketten beheren** . 
    
-1. Selecteer in **NuGet Package Manager** het tabblad **Bladeren** en zoek en selecteer **Microsoft.Data.SqlClient**.
+1. Selecteer in **NuGet Package Manager** het tabblad **Bladeren** en zoek en selecteer **Microsoft.Data.SqlClient** .
    
-1. Selecteer op de pagina **Microsoft.Data.SqlClient** de optie **Installeren**. 
+1. Selecteer op de pagina **Microsoft.Data.SqlClient** de optie **Installeren** . 
    - Selecteer **OK** om door te gaan met de installatie. 
-   - Als een venster voor **akkoord gaan met de licentie** wordt weergegeven, selecteert u **Ik ga akkoord**.
+   - Als een venster voor **akkoord gaan met de licentie** wordt weergegeven, selecteert u **Ik ga akkoord** .
    
 1. Wanneer de installatie is voltooid, kunt u **NuGet Package Manager** sluiten. 
    
@@ -139,7 +139,7 @@ Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de da
 
 ## <a name="run-the-code"></a>De code uitvoeren
 
-1. Om de app uit te voeren, selecteert u **Fouten opsporen** > **Foutopsporing starten** of selecteert u **Start** op de werkbalk of drukt u op **F5**.
+1. Om de app uit te voeren, selecteert u **Fouten opsporen** > **Foutopsporing starten** of selecteert u **Start** op de werkbalk of drukt u op **F5** .
 1. Controleer of de bovenste twintig rijen Categorie/Product in uw database worden geretourneerd en sluit vervolgens het appvenster.
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -147,11 +147,10 @@ Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de da
 - Meer informatie over [verbinding maken met en een query uitvoeren op een database in Azure SQL Database met behulp van .NET Core](connect-query-dotnet-core.md) in Windows/Linux/macOS.  
 - Meer informatie over [Aan de slag met .NET Core in Windows/Linux/macOS met behulp van de opdrachtregel](/dotnet/core/tutorials/using-with-xplat-cli).
 - Meer informatie over [Uw eerste database in Azure SQL Database ontwerpen met behulp van SSMS](design-first-database-tutorial.md) of [Uw eerste database in Azure SQL Database ontwerpen met behulp van .NET](design-first-database-csharp-tutorial.md).
-- Raadpleeg de [.NET-documentatie](https://docs.microsoft.com/dotnet/) voor meer informatie over .NET.
+- Raadpleeg de [.NET-documentatie](/dotnet/) voor meer informatie over .NET.
 - Voorbeeld van pogingslogica: [Flexibel verbinding maken met Azure SQL via ADO.NET][step-4-connect-resiliently-to-sql-with-ado-net-a78n].
 
 
 <!-- Link references. -->
 
-[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net
-
+[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: /sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net

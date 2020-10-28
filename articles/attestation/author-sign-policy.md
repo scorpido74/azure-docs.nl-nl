@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a3afb12ac831d87b03d0bb16d1b7ef553f1bb906
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c8ffdcd0615913649e80b20f6873d005f4ad4410
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90006816"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675983"
 ---
 # <a name="how-to-author-and-sign-an-attestation-policy"></a>Een Attestation-beleid ontwerpen en ondertekenen
 
@@ -44,7 +44,7 @@ Een beleidsbestand heeft drie segmenten, zoals hierboven te zien is:
 
     Momenteel wordt alleen versie 1.0 ondersteund.
 
-- **authorizationrules** (autorisatieregels): Een verzameling claimregels die eerst worden gecontroleerd, om te bepalen of Azure Attestation door moet gaan naar **issuancerules**. De claimregels worden toegepast in de volgorde waarin ze zijn gedefinieerd.
+- **authorizationrules** (autorisatieregels): Een verzameling claimregels die eerst worden gecontroleerd, om te bepalen of Azure Attestation door moet gaan naar **issuancerules** . De claimregels worden toegepast in de volgorde waarin ze zijn gedefinieerd.
 
 - **issuancerules** (uitgifteregels): Een verzameling claimregels die wordt geëvalueerd om aanvullende informatie toe te voegen aan het Attestation-resultaat zoals gedefinieerd in het beleid. De claimregels worden toegepast in de volgorde waarin ze zijn gedefinieerd en zijn ook optioneel.
 
@@ -54,7 +54,7 @@ Zie [claim en claimregels](claim-rule-grammar.md) voor meer informatie.
 
 1. Maak een nieuw bestand.
 1. Voeg de versie toe aan het bestand.
-1. Voeg secties toe voor **authorizationrules** en **issuancerules**.
+1. Voeg secties toe voor **authorizationrules** en **issuancerules** .
 
   ```
   version=1.0;
@@ -86,7 +86,7 @@ Zie [claim en claimregels](claim-rule-grammar.md) voor meer informatie.
 
   Als de binnenkomende claimset een claim bevat die overeenkomt met het type, de waarde en de verlener, geeft de actie permit() aan dat de beleidsengine de **issuancerules** moet verwerken.
   
-5. Voeg claimregels toe aan **issuancerules**.
+5. Voeg claimregels toe aan **issuancerules** .
 
   ```
   version=1.0;
@@ -128,8 +128,8 @@ Nadat u een beleidsbestand hebt gemaakt, volgt u de onderstaande stappen om een 
      ```
 
 2. (Optioneel) Onderteken het beleid. Azure Attestation ondersteunt de volgende algoritmen:
-     - **Geen**: De payload van het beleid niet ondertekenen.
-     - **RS256**: Ondersteund algoritme voor het ondertekenen van de payload van het beleid
+     - **Geen** : De payload van het beleid niet ondertekenen.
+     - **RS256** : Ondersteund algoritme voor het ondertekenen van de payload van het beleid
 
 3. Upload de JWS en valideer het beleid.
      - Als het beleidsbestand geen syntaxisfouten bevat, wordt het geaccepteerd door de service.
@@ -172,4 +172,4 @@ print(encoded.decode('utf-8'))
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Azure Attestation instellen met behulp van PowerShell](quickstart-powershell.md)
-- [Een SGX-enclave-attest verklaren met codevoorbeelden](https://docs.microsoft.com/samples/browse/?expanded=azure&terms=attestation)
+- [Een SGX-enclave-attest verklaren met codevoorbeelden](/samples/browse/?expanded=azure&terms=attestation)

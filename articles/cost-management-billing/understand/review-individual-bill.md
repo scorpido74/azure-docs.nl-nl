@@ -7,14 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: tutorial
-ms.date: 10/01/2020
+ms.date: 10/26/2020
 ms.author: banders
-ms.openlocfilehash: 95af762e0ff1986f9d1395e787c73b3a886a7a2e
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.custom: contentperfq2
+ms.openlocfilehash: c4a9a981017becd0d9343d9c287a4fe9341d7c43
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653278"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678126"
 ---
 # <a name="tutorial-review-your-individual-azure-subscription-bill"></a>Zelfstudie: De factuur van uw individuele Azure-abonnement controleren
 
@@ -32,9 +33,9 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet een betaalde factureringsaccount voor het *Microsoft Online Services-programma* hebben. Het account wordt gemaakt wanneer u zich aanmeldt voor Azure via de Azure-website, bijvoorbeeld als u een [account hebt met betalen naar gebruik-tarieven](https://azure.microsoft.com/offers/ms-azr-0003p/) of als u een [Visual Studio-abonnee](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/) bent.
+U moet een betaalde factureringsaccount voor het *Microsoft Online Services-programma* hebben. Het account wordt gemaakt wanneer u zich aanmeldt voor Azure via de Azure-website, bijvoorbeeld als u een account hebt met betalen naar gebruik-tarieven of als u een Visual Studio-abonnee bent.
 
-Facturen voor [gratis Azure-accounts](https://azure.microsoft.com/offers/ms-azr-0044p/) worden alleen gemaakt wanneer het maandelijkse tegoed is overschreden.
+Facturen voor gratis Azure-accounts worden alleen gemaakt wanneer het maandelijkse tegoed is overschreden.
 
 Het moet meer dan 30 dagen geleden zijn dat u zich geabonneerd hebt op Azure. Azure factureert u aan het einde van uw factureringsperiode.
 
@@ -48,19 +49,19 @@ Het moet meer dan 30 dagen geleden zijn dat u zich geabonneerd hebt op Azure. Az
 
 De eerste stap voor het vergelijken van gebruik en kosten is het downloaden van uw factuur- en gebruiksbestanden. In het uitgebreide CSV-gebruiksbestand worden uw kosten weergegeven per factureringsperiode en dagelijks gebruik. Het bevat geen belastinginformatie. Als u de bestanden wilt downloaden, moet u een accountbeheerder zijn of de rol van eigenaar hebben.
 
-Typ in de Azure-portal *abonnementen* in het zoekvak en klik vervolgens op [Abonnementen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
+Typ in de Azure-portal *abonnementen* in het zoekvak en klik vervolgens op **Abonnementen** .
 
 [![Ga naar Abonnementen](./media/review-individual-bill/navigate-subscriptions.png)](./media/review-individual-bill/navigate-subscriptions.png#lightbox)
 
 Klik in de lijst met abonnementen op het abonnement.
 
-Klik onder **Facturering** op **Facturen**.
+Klik onder **Facturering** op **Facturen** .
 
 Zoek in de lijst met facturen naar de factuur die u wilt downloaden en klik vervolgens op het downloadsymbool. Mogelijk moet u de periode wijzigen om oudere facturen weer te geven. Het kan enkele minuten duren voordat het bestand met gebruiksgegevens en de factuur zijn gegenereerd.
 
 ![Schermopname van de factureringsperioden, de downloadoptie en de totale kosten voor elke factureringsperiode](./media/review-individual-bill/download-invoice.png)
 
-Klik in het venster Gebruik + kosten downloaden op **CSV-bestand downloaden** en **Factuur downloaden**.
+Klik in het venster Gebruik + kosten downloaden op **CSV-bestand downloaden** en **Factuur downloaden** .
 
 ![Schermopname met de pagina voor factuur en gebruik downloaden](./media/review-individual-bill/usageandinvoice.png)
 
@@ -69,14 +70,14 @@ Als de melding **Niet beschikbaar** verschijnt, zijn er verschillende redenen wa
 - Het is minder dan 30 dagen geleden dat u zich geabonneerd hebt op Azure.
 - Er is geen gebruik voor de factureringsperiode.
 - Er is nog geen factuur gegenereerd. Wacht tot het einde van de factureringsperiode.
-- U bent niet gemachtigd om facturen te bekijken. U ziet mogelijk geen oude facturen tenzij u de accountbeheerder bent. Zie [Toegang tot factureringsgegevens voor Azure beheren](../manage/manage-billing-access.md) voor meer informatie over het verkrijgen van toegang tot factureringsgegevens.
+- U bent niet gemachtigd om facturen te bekijken. U ziet mogelijk geen oude facturen tenzij u de accountbeheerder bent.
 - Als u een gratis proefversie gebruikt of een maandelijks tegoed met uw abonnement dat u niet overschrijdt, ontvangt u geen factuur tenzij u een Microsoft-klantovereenkomst hebt.
 
 Vervolgens controleert u de kosten. De factuur bevat waarden voor belastingen en uw gebruikskosten.
 
 ![Voorbeeld van Azure-factuur](./media/review-individual-bill/invoice-usage-charge.png)
 
-Open het CSV-bestand met gebruiksgegevens dat u hebt gedownload. Tel aan het einde van het bestand de waarde op voor alle items in de kolom *Cost*.
+Open het CSV-bestand met gebruiksgegevens dat u hebt gedownload. Tel aan het einde van het bestand de waarde op voor alle items in de kolom *Cost* .
 
 ![Voorbeeld van gebruiksbestand met opgetelde kosten](./media/review-individual-bill/usage-file-usage-charges.png)
 
@@ -97,7 +98,7 @@ Uw gebruikskosten worden weergegeven op meterniveau. De volgende termen betekene
 |Tarief | EffectivePrice|
 | Waarde | Kosten |
 
-In het gedeelte **Gebruikskosten** van uw factuur ziet u de totale waarde (kosten) voor elke meter die tijdens uw factureringsperiode is verbruikt. In de volgende afbeelding ziet u bijvoorbeeld gebruikskosten voor de Azure Storage-service voor de resource *P10 Disks*.
+In het gedeelte **Gebruikskosten** van uw factuur ziet u de totale waarde (kosten) voor elke meter die tijdens uw factureringsperiode is verbruikt. In de volgende afbeelding ziet u bijvoorbeeld gebruikskosten voor de Azure Storage-service voor de resource *P10 Disks* .
 
 ![Factuur gebruikskosten](./media/review-individual-bill/invoice-usage-charges.png)
 
@@ -107,11 +108,9 @@ Filter in uw CSV-gebruiksbestand op *MeterName* voor de bijbehorende resource di
 
 De opgetelde waarde voor *Cost* moet exact overeenkomen met het bedrag bij *Gebruikskosten* voor de betreffende resource op uw factuur.
 
-Zie [De voorwaarden op uw Microsoft Azure-factuur begrijpen](understand-invoice.md) en [Meer informatie over de gebruiksvoorwaarden in uw bestand voor Azure-gebruik en -kosten](understand-usage.md) voor meer informatie.
-
 ## <a name="compare-billed-charges-and-usage-in-cost-analysis"></a>Gefactureerde kosten en gebruik vergelijken in kostenanalyse
 
-Een kostenanalyse in de Azure-portal kan ook helpen om uw kosten te controleren. Als u een beknopt overzicht wilt van het gefactureerde gebruik en de bijbehorende kosten, selecteert u uw abonnement op de pagina [Abonnementen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) in de Azure-portal. Klik vervolgens op **Kostenanalyse** en klik daarna in de lijst met weergaven op **Factuurgegevens**.
+Een kostenanalyse in de Azure-portal kan ook helpen om uw kosten te controleren. Als u een beknopt overzicht wilt van het gefactureerde gebruik en de bijbehorende kosten, selecteert u uw abonnement op de pagina Abonnementen in de Azure-portal. Klik vervolgens op **Kostenanalyse** en klik daarna in de lijst met weergaven op **Factuurgegevens** .
 
 ![Voorbeeld met selectie van Factuurgegevens](./media/review-individual-bill/cost-analysis-select-invoice-details.png)
 
@@ -129,7 +128,7 @@ De kosten die worden weergegeven in Kostenanalyse moeten exact overeenkomen met 
 
 Externe services of Marketplace-kosten zijn voor resources die zijn gemaakt door externe softwareleveranciers. Deze resources zijn beschikbaar voor gebruik via Azure Marketplace. Een Barracuda-firewall is bijvoorbeeld een Azure Marketplace-resource die wordt aangeboden door een externe partij. Alle kosten voor de firewall en de bijbehorende meters worden als externe servicekosten weergegeven.
 
-Externe servicekosten worden afzonderlijk in rekening gebracht. Deze kosten worden niet weergegeven op uw Azure-factuur. Raadpleeg voor meer informatie [Inzicht in Azure-facturering voor externe servicekosten](understand-azure-marketplace-charges.md).
+Externe servicekosten worden afzonderlijk in rekening gebracht. Deze kosten worden niet weergegeven op uw Azure-factuur.
 
 ### <a name="resources-are-billed-by-usage-meters"></a>Resources worden gefactureerd op basis van gebruiksmeters
 
@@ -158,13 +157,9 @@ In het CSV-gebruiksbestand kunt u de meters zien die zijn gebruikt voor het bere
 
 <a name="payment"></a>
 
-Als u een creditcard hebt ingesteld als uw betalingswijze, wordt het bedrag automatisch binnen 10 dagen na het einde van de factureringsperiode in rekening gebracht. Op uw creditcardoverzicht wordt het regelitem weergegeven als **MSFT Azure**.
+Als u een creditcard hebt ingesteld als uw betalingswijze, wordt het bedrag automatisch binnen 10 dagen na het einde van de factureringsperiode in rekening gebracht. Op uw creditcardoverzicht wordt het regelitem weergegeven als **MSFT Azure** .
 
 Zie [Een creditcard toevoegen, bijwerken of verwijderen voor Azure](../manage/change-credit-card.md) als u de creditcard die wordt gebruikt, wilt wijzigen.
-
-Als u [betaalt per factuur](../manage/pay-by-invoice.md), verstuurt u uw betaling met de gegevens die onder aan uw factuur worden weergegeven.
-
-Als u de status van uw betaling wilt controleren, [maakt u een ondersteuningsticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ## <a name="next-steps"></a>Volgende stappen
 

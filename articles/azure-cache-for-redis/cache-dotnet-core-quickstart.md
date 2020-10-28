@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.custom: devx-track-csharp, mvc
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 1cb35ce995a27030612499cc3147943112e1c50e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 12466f64daa699925e4e184536b2d50c5fb89847
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89662363"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547721"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Quickstart: Azure Cache voor Redis gebruiken met een .NET Core-app
 
@@ -29,7 +29,7 @@ In deze quickstart neemt u Azure Cache voor Redis op in een .NET Core-app voor t
 
 [!INCLUDE [redis-cache-access-keys](../../includes/redis-cache-access-keys.md)]
 
-Noteer de **hostnaam** en de **primaire** toegangssleutel. U hebt deze waarden later nodig om het *CacheConnection*-geheim samen te stellen.
+Noteer de **hostnaam** en de **primaire** toegangssleutel. U hebt deze waarden later nodig om het *CacheConnection* -geheim samen te stellen.
 
 
 
@@ -41,15 +41,15 @@ Open een nieuw opdrachtvenster en voer de volgende opdracht uit om een nieuwe .N
 dotnet new console -o Redistest
 ```
 
-Ga in het opdrachtvenster naar de nieuwe projectmap *Redistest*.
+Ga in het opdrachtvenster naar de nieuwe projectmap *Redistest* .
 
 
 
 ## <a name="add-secret-manager-to-the-project"></a>Secret Manager toevoegen aan het project
 
-In dit gedeelte voegt u het [hulpprogramma Secret Manager](https://docs.microsoft.com/aspnet/core/security/app-secrets) toe aan uw project. Dit hulpprogramma slaat gevoelige gegevens voor ontwikkeltaken op buiten de projectstructuur. Deze aanpak voorkomt dat er per ongeluk appgeheimen worden gedeeld in de broncode.
+In dit gedeelte voegt u het [hulpprogramma Secret Manager](/aspnet/core/security/app-secrets) toe aan uw project. Dit hulpprogramma slaat gevoelige gegevens voor ontwikkeltaken op buiten de projectstructuur. Deze aanpak voorkomt dat er per ongeluk appgeheimen worden gedeeld in de broncode.
 
-Open het bestand *Redistest.csproj*. Voeg een element `DotNetCliToolReference` toe voor *Microsoft.Extensions.SecretManager.Tools*. Voeg ook een element `UserSecretsId` toe zoals hieronder wordt weergegeven en sla het bestand daarna op.
+Open het bestand *Redistest.csproj* . Voeg een element `DotNetCliToolReference` toe voor *Microsoft.Extensions.SecretManager.Tools* . Voeg ook een element `UserSecretsId` toe zoals hieronder wordt weergegeven en sla het bestand daarna op.
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -82,13 +82,13 @@ Voer in het opdrachtvenster de volgende opdracht uit om een nieuw geheim met de 
 dotnet user-secrets set CacheConnection "<cache name>.redis.cache.windows.net,abortConnect=false,ssl=true,password=<primary-access-key>"
 ```
 
-Voeg de volgende `using`-instructie toe aan *Program.cs*:
+Voeg de volgende `using`-instructie toe aan *Program.cs* :
 
 ```csharp
 using Microsoft.Extensions.Configuration;
 ```
 
-Voeg de volgende leden toe aan de `Program`-klasse in *Program.cs*. Met deze code initialiseert u een configuratie voor toegang tot het geheim van de gebruiker voor de verbindingsreeks van Azure Cache voor Redis.
+Voeg de volgende leden toe aan de `Program`-klasse in *Program.cs* . Met deze code initialiseert u een configuratie voor toegang tot het geheim van de gebruiker voor de verbindingsreeks van Azure Cache voor Redis.
 
 ```csharp
 private static IConfigurationRoot Configuration { get; set; }
@@ -107,18 +107,18 @@ private static void InitializeConfiguration()
 
 In deze sectie configureert u de consoletoepassing voor het gebruik van de client [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) voor .NET.
 
-Voer in het opdrachtvenster de volgende opdracht uit in de projectmap *Redistest*:
+Voer in het opdrachtvenster de volgende opdracht uit in de projectmap *Redistest* :
 
 ```
 dotnet add package StackExchange.Redis
 ```
 
-Zodra de installatie is voltooid, kan de *StackExchange.Redis*-cacheclient met uw project worden gebruikt.
+Zodra de installatie is voltooid, kan de *StackExchange.Redis* -cacheclient met uw project worden gebruikt.
 
 
 ## <a name="connect-to-the-cache"></a>Verbinding maken met de cache
 
-Voeg de volgende `using`-instructie toe aan *Program.cs*:
+Voeg de volgende `using`-instructie toe aan *Program.cs* :
 
 ```csharp
 using StackExchange.Redis;
@@ -146,7 +146,7 @@ public static ConnectionMultiplexer Connection
 
 Deze benadering om een exemplaar van `ConnectionMultiplexer` in uw toepassing te delen, gebruikt een statische eigenschap die een verbonden exemplaar retourneert. De code biedt een thread-veilige manier om slechts één verbonden exemplaar van `ConnectionMultiplexer` te initialiseren. `abortConnect` is ingesteld op false. Dat betekent dat de aanroep slaagt, zelfs als er geen verbinding is gemaakt met de Azure Cache voor Redis. Een belangrijke functie van `ConnectionMultiplexer` is dat deze de verbinding met de cache automatisch herstelt als het netwerkprobleem of de andere oorzaken zijn opgelost.
 
-De waarde van het *CacheConnection*-geheim kan worden geopend met behulp van de configuratieprovider van Secret Manager geheim en kan worden gebruikt als wachtwoordparameter.
+De waarde van het *CacheConnection* -geheim kan worden geopend met behulp van de configuratieprovider van Secret Manager geheim en kan worden gebruikt als wachtwoordparameter.
 
 ## <a name="executing-cache-commands"></a>Cache-opdrachten uitvoeren
 
@@ -228,13 +228,13 @@ Voer de volgende opdracht uit om het pakket *Newtonsoft.json* toe te voegen aan 
 dotnet add package Newtonsoft.json
 ```
 
-Voeg de volgende `using`-instructie toe aan *Program.cs*:
+Voeg de volgende `using`-instructie toe aan *Program.cs* :
 
 ```csharp
 using Newtonsoft.Json;
 ```
 
-Voeg de volgende `Employee`-klassedefinitie toe aan *Program.cs*:
+Voeg de volgende `Employee`-klassedefinitie toe aan *Program.cs* :
 
 ```csharp
 class Employee
@@ -293,13 +293,13 @@ Als u niet verder wilt met de voorbeeldtoepassing uit de snelstart, kunt u de Az
 > Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt. De resourcegroep en alle bijbehorende resources worden permanent verwijderd. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. Als u de resources voor het hosten van dit voorbeeld in een bestaande resourcegroep hebt gemaakt en deze groep ook resources bevat die u wilt behouden, kunt u elke resource afzonderlijk verwijderen via hun respectievelijke blade.
 >
 
-Meld u aan bij [Azure Portal](https://portal.azure.com) en klik op **Resourcegroepen**.
+Meld u aan bij [Azure Portal](https://portal.azure.com) en klik op **Resourcegroepen** .
 
-Typ de naam van de resourcegroep in het tekstvak **Filteren op naam...** . In de instructies voor dit artikel is een resourcegroep met de naam *TestResources* gebruikt. Klik in de resourcegroep in de lijst met resultaten op **...** en vervolgens op **Resourcegroep verwijderen**.
+Typ de naam van de resourcegroep in het tekstvak **Filteren op naam...** . In de instructies voor dit artikel is een resourcegroep met de naam *TestResources* gebruikt. Klik in de resourcegroep in de lijst met resultaten op **...** en vervolgens op **Resourcegroep verwijderen** .
 
 ![Verwijderen](./media/cache-dotnet-core-quickstart/cache-delete-resource-group.png)
 
-U wordt gevraagd om het verwijderen van de resourcegroep te bevestigen. Typ de naam van de resourcegroep om te bevestigen en klik op **Verwijderen**.
+U wordt gevraagd om het verwijderen van de resourcegroep te bevestigen. Typ de naam van de resourcegroep om te bevestigen en klik op **Verwijderen** .
 
 Na enkele ogenblikken worden de resourcegroep en alle resources in de groep verwijderd.
 
@@ -314,7 +314,7 @@ In deze snelstartgids hebt u geleerd hoe u Azure Cache voor Redis gebruikt vanui
 > [!div class="nextstepaction"]
 > [Maak een ASP.NET-web-app die gebruikmaakt van Azure Cache voor Redis.](./cache-web-app-howto.md)
 
-Wilt u optimaliseren en op uw cloudverbruik besparen?
+Wilt u uw clouduitgaven optimaliseren en geld besparen?
 
 > [!div class="nextstepaction"]
-> [Analyseer kosten met Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [Analyseer kosten met Cost Management](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

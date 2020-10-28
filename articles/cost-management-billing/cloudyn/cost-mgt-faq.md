@@ -3,19 +3,19 @@ title: Veelgestelde vragen over Cloudyn in Azure
 description: Ontdek hoe u de Cloudyn-portal kunt gebruiken om algemene indirecte ondernemingsinstallatieproblemen op te lossen en antwoord te krijgen op andere veelgestelde vragen.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/12/2020
+ms.date: 10/23/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cloudyn
 ms.reviewer: benshy
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7b78d9d7bf725e3d82c88360c822455de1301ef6
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 92a62de4223d2ec6d0441840b90fdce20c656d02
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688025"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546225"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Veelgestelde vragen over Cloudyn
 
@@ -27,7 +27,7 @@ In dit artikel worden enkele veelgestelde vragen over Cloudyn behandeld. Als u v
 
 Wanneer u de beheerportal van Cloudyn voor het eerst gebruikt, ziet u mogelijk de volgende berichten als u een Enterprise Agreement- of Cloud Solution Provider-gebruiker (CSP) bent:
 
-- De opgegeven API-sleutel is geen inschrijvingssleutel van het hoogste niveau weergegeven in de wizard voor het **instellen van Cloudyn**.
+- De opgegeven API-sleutel is geen inschrijvingssleutel van het hoogste niveau weergegeven in de wizard voor het **instellen van Cloudyn** .
 - Directe inschrijving – Nee weergegeven in de Enterprise Agreement-portal.
 - Er zijn geen gebruiksgegevens gevonden voor de afgelopen 30 dagen. Neem contact op met uw leverancier om te controleren of de markering is ingeschakeld voor uw Azure-account weergegeven in de Cloudyn-portal.
 
@@ -37,7 +37,7 @@ Los de problemen als volgt op:
 
 1. Uw wederverkoper moet _markeren_ voor uw account inschakelen. Raadpleeg de [Onboarding-handleiding voor indirecte klanten](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide) voor meer instructies.
 
-2. U genereert de Azure Enterprise Overeenkomst-sleutel om Cloudyn te gebruiken. Zie [Uw Azure EA toevoegen](quick-register-ea.md#register-with-cloudyn) of [How to Find Your EA Enrollment ID and API Key](https://youtu.be/u_phLs_udig) voor instructies (Engelstalig).
+2. U genereert de Azure Enterprise Overeenkomst-sleutel om Cloudyn te gebruiken.
 
 Alleen een Azure-servicebeheerder kan Cloudyn inschakelen. U hebt onvoldoende co-beheerdersmachtigingen.
 
@@ -51,7 +51,7 @@ U moet wellicht ook afdelingsbeheerders, accounteigenaars en enterprise-administ
 
 ## <a name="why-dont-i-see-optimizer-recommendations"></a>Waarom zie ik geen Optimizer-aanbevelingen?
 
-Aanbevelingsinformatie is alleen beschikbaar voor accounts die zijn geactiveerd. U ziet geen aanbevelingsinformatie in **Optimizer**-rapportcategorieën voor accounts die *niet geactiveerd* zijn, waaronder:
+Aanbevelingsinformatie is alleen beschikbaar voor accounts die zijn geactiveerd. U ziet geen aanbevelingsinformatie in **Optimizer** -rapportcategorieën voor accounts die *niet geactiveerd* zijn, waaronder:
 
 - Optimalisatiebeheer
 - Grootte van optimalisatie aanpassen
@@ -61,12 +61,12 @@ Als u geen Optimizer-aanbevelingsgegevens kunt weergeven, hebt u waarschijnlijk 
 
 Een account activeren:
 
-1.    Klik in de rechterbovenhoek van de portal van Cloudyn op **Settings** en selecteer **Cloud Accounts**.
+1.    Klik in de rechterbovenhoek van de portal van Cloudyn op **Settings** en selecteer **Cloud Accounts** .
 2.    Zoek op het tabblad Microsoft Azure-accounts naar accounts met een **niet-geactiveerd** abonnement.
-3.    Klik rechts van een niet-geactiveerd account op het symbool **bewerken**, dat lijkt op een potlood.
-4.    Uw tenant-id en tarief-id worden automatisch gedetecteerd. Klik op **Volgende**.
+3.    Klik rechts van een niet-geactiveerd account op het symbool **bewerken** , dat lijkt op een potlood.
+4.    Uw tenant-id en tarief-id worden automatisch gedetecteerd. Klik op **Volgende** .
 5.    U wordt omgeleid naar de Azure-portal. Meld u aan bij de portal en autoriseer Cloudyn Collector voor toegang tot uw Azure-gegevens.
-6.    U wordt omgeleid naar de pagina voor het beheren van Cloudyn-accounts, en uw abonnement wordt bijgewerkt naar de accountstatus **Actief**. Er wordt een groen vinkje weergegeven.
+6.    U wordt omgeleid naar de pagina voor het beheren van Cloudyn-accounts, en uw abonnement wordt bijgewerkt naar de accountstatus **Actief** . Er wordt een groen vinkje weergegeven.
 7.    Als u geen groen vinkje ziet voor een of meer van de abonnementen, betekent dit dat u niet bent gemachtigd om een lezer-app (CloudynCollector) te maken voor het abonnement. Een gebruiker met hogere machtigingen voor het abonnement moet stap 3 en 4 herhalen.  
 
 Nadat u de voorgaande stappen hebt voltooid, kunt u Optimizer-aanbevelingen binnen een tot twee dagen weergeven. Het kan echter tot wel vijf dagen duren voordat alle optimalisatiegegevens beschikbaar zijn.
@@ -76,7 +76,7 @@ Nadat u de voorgaande stappen hebt voltooid, kunt u Optimizer-aanbevelingen binn
 
 Eerst kijken we naar de meestvoorkomende oorzaak voor gebruikersaccounts met de status *initiallySuspended* (tijdelijk vergrendeld).
 
-> Admin1 kan bijvoorbeeld een Microsoft Cloud Solution Provider- of Enterprise Agreement-gebruiker zijn. Zijn organisatie is klaar om Cloudyn te gaan gebruiken.  Hij registreert de Azure-portal en meldt zich aan bij de Cloudyn-portal. Omdat hij de Cloudyn-service registreert en zich aanmeldt bij de Cloudyn-portal, wordt Admin1 de *primaire beheerder*. Admin1 maakt geen gebruikersaccounts. Met de Cloudyn-portal maken ze echter Azure-accounts en stellen ze een entiteitshiërarchie in. Admin1 informeert Admin2, een tenantbeheerder, dat ze zich moeten registreren bij Cloudyn en zich moeten aanmelden bij de Cloudyn-portal.
+> Admin1 kan bijvoorbeeld een Microsoft Cloud Solution Provider- of Enterprise Agreement-gebruiker zijn. Zijn organisatie is klaar om Cloudyn te gaan gebruiken.  Hij registreert de Azure-portal en meldt zich aan bij de Cloudyn-portal. Omdat hij de Cloudyn-service registreert en zich aanmeldt bij de Cloudyn-portal, wordt Admin1 de *primaire beheerder* . Admin1 maakt geen gebruikersaccounts. Met de Cloudyn-portal maken ze echter Azure-accounts en stellen ze een entiteitshiërarchie in. Admin1 informeert Admin2, een tenantbeheerder, dat ze zich moeten registreren bij Cloudyn en zich moeten aanmelden bij de Cloudyn-portal.
 >
 > Admin2 registreert zich via de Azure-portal. Wanneer ze zich echter proberen aan te melden bij de Cloudyn-portal, wordt er een foutbericht weergegeven dat het account **vergrendeld** is. De primaire beheerder, Admin1, wordt op de hoogte gesteld van de blokkering. Admin1 moet het account van Admin2 activeren en *beheerdersentiteitstoegang* verlenen voor de juiste entiteiten. Hiermee wordt gebruikersbeheertoegang toegestaan en het gebruikersaccount geactiveerd.
 
@@ -106,7 +106,7 @@ Zodra uw Azure-accounts worden gedetecteerd door Cloudyn, worden er direct koste
 
 Als u Azure-referenties voor een account wilt toevoegen, selecteert u in de Cloudyn-portal het symbool voor bewerken, rechts van de accountnaam, niet het abonnement.
 
-Pas als uw Azure-referenties zijn toegevoegd aan Cloudyn, wordt het account weergegeven als _niet-geactiveerd_.
+Pas als uw Azure-referenties zijn toegevoegd aan Cloudyn, wordt het account weergegeven als _niet-geactiveerd_ .
 
 ## <a name="how-do-i-add-multiple-accounts-and-entities-to-an-existing-subscription"></a>Hoe kan ik meerdere accounts en entiteiten toevoegen aan een bestaand abonnement?
 
@@ -114,7 +114,7 @@ U kunt aanvullende Enterprise-overeenkomsten aan een Cloudyn-abonnement toevoege
 
 Voor CSP's:
 
-Als u extra CSP-accounts wilt toevoegen aan een entiteit, selecteert u **MSP-toegang** in plaats van **Enterprise** wanneer u de nieuwe entiteit maakt. Als uw account is geregistreerd als Enterprise Agreement-account en u CSP-referenties wilt toevoegen, moet het Cloudyn-ondersteuningspersoneel mogelijk uw accountinstellingen wijzigen. Als u een betalende Azure-abonnee bent, kunt u in de Azure-portal een nieuwe ondersteuningsaanvraag maken. Selecteer **Help + ondersteuning** en vervolgens **Nieuwe ondersteuningsaanvraag**.
+Als u extra CSP-accounts wilt toevoegen aan een entiteit, selecteert u **MSP-toegang** in plaats van **Enterprise** wanneer u de nieuwe entiteit maakt. Als uw account is geregistreerd als Enterprise Agreement-account en u CSP-referenties wilt toevoegen, moet het Cloudyn-ondersteuningspersoneel mogelijk uw accountinstellingen wijzigen. Als u een betalende Azure-abonnee bent, kunt u in de Azure-portal een nieuwe ondersteuningsaanvraag maken. Selecteer **Help + ondersteuning** en vervolgens **Nieuwe ondersteuningsaanvraag** .
 
 ## <a name="currency-symbols-in-cloudyn-reports"></a>Valutasymbolen in Cloudyn-rapporten
 
@@ -128,9 +128,9 @@ De valuta van uw Enterprise Agreement-abonnement wordt in Cloudyn automatisch ge
 
 Cloudyn heeft de volgende tijdlijnen voor het vernieuwen van gegevens:
 
-- **Oorspronkelijk**: Na het instellen kan het tot 24 uur duren voordat u kostengegevens kunt bekijken in Cloudyn. Het kan ook tot 10 dagen duren voordat in Cloudyn voldoende gegevens zijn verzameld om grootte-aanbevelingen weer te geven.
-- **Dagelijks**: Vanaf de tiende dag tot het einde van elke maand zouden uw gegevens bij weergave in Cloudyn up-to-date moeten zijn vanaf de vorige dag na ongeveer UTC+3 de volgende dag.
-- **Maandelijks**: Vanaf de eerste tot de tiende dag van elke maand ziet u in Cloudyn mogelijk alleen uw gegevens tot en met het einde van de vorige maand.
+- **Oorspronkelijk** : Na het instellen kan het tot 24 uur duren voordat u kostengegevens kunt bekijken in Cloudyn. Het kan ook tot 10 dagen duren voordat in Cloudyn voldoende gegevens zijn verzameld om grootte-aanbevelingen weer te geven.
+- **Dagelijks** : Vanaf de tiende dag tot het einde van elke maand zouden uw gegevens bij weergave in Cloudyn up-to-date moeten zijn vanaf de vorige dag na ongeveer UTC+3 de volgende dag.
+- **Maandelijks** : Vanaf de eerste tot de tiende dag van elke maand ziet u in Cloudyn mogelijk alleen uw gegevens tot en met het einde van de vorige maand.
 
 In Cloudyn worden gegevens voor de vorige dag verwerkt zodra alle gegevens van de vorige dag beschikbaar zijn. De gegevens van de vorige dag zijn doorgaans dagelijks beschikbaar in Cloudyn om ongeveer UTC+3. Het kan nog eens 24 uur duren om bepaalde gegevens, zoals tags, te verwerken.
 
@@ -152,7 +152,7 @@ Zie [Indirecte CSP-toegang in Cloudyn configureren](quick-register-csp.md#config
 
 ## <a name="what-causes-the-optimizer-menu-item-to-appear"></a>Waarom wordt de menuopdracht Optimizer weergegeven?
 
-Nadat u Azure Resource Manager-toegang hebt toegevoegd en er gegevens zijn verzameld, ziet u de optie **Optimizer**. Zie [Hoe kan ik niet-geactiveerde accounts activeren met Azure-referenties?](#how-do-i-activate-unactivated-accounts-with-azure-credentials) als u Azure Resource Manager-toegang wilt activeren.
+Nadat u Azure Resource Manager-toegang hebt toegevoegd en er gegevens zijn verzameld, ziet u de optie **Optimizer** . Zie [Hoe kan ik niet-geactiveerde accounts activeren met Azure-referenties?](#how-do-i-activate-unactivated-accounts-with-azure-credentials) als u Azure Resource Manager-toegang wilt activeren.
 
 ## <a name="is-cloudyn-agent-based"></a>Is Cloudyn gebaseerd op een agent?
 

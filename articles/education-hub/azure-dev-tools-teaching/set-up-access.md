@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
-ms.openlocfilehash: 83ae2fdea2ffe586a626f8a45cba74a22c07ae7b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3151da4375c440bec44523711448149f51440d5c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87100741"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676526"
 ---
 # <a name="setting-up-access-for-azure-dev-tools"></a>Toegang instellen voor Azure Dev Tools
 
@@ -30,7 +30,7 @@ Als u toegang tot uw Visual Studio Subscription wilt aanvragen, kunt u dit doen 
 ## <a name="for-students-faculty-and-administrators"></a>Voor studenten, faculteitsleden en beheerders
 Studenten hebben toegang tot Azure Dev Tools via de [Education Hub](https://aka.ms/devtoolsforteaching).
 
-Studenten en faculteitsleden hebben toegang tot alle voordelen van softwaredownloads via de Education Hub. De Education Hub is onderdeel van de Azure-portal en biedt uw studenten eenvoudig toegang tot de volledige softwarecatalogus, evenals toegang tot de complete [Microsoft Learn](https://docs.microsoft.com/learn/)-catalogus.
+Studenten en faculteitsleden hebben toegang tot alle voordelen van softwaredownloads via de Education Hub. De Education Hub is onderdeel van de Azure-portal en biedt uw studenten eenvoudig toegang tot de volledige softwarecatalogus, evenals toegang tot de complete [Microsoft Learn](/learn/)-catalogus.
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Studentenaccounts beheren](manage-students.md)

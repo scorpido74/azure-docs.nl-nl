@@ -3,14 +3,14 @@ title: 'Quickstart: Een Python-app maken'
 description: Ga aan de slag met Azure App Service door uw eerste Python-app te implementeren in een Linux-container in App Service.
 ms.topic: quickstart
 ms.date: 09/22/2020
-ms.custom: seo-python-october2019, cli-validate, devx-track-python
+ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
-ms.openlocfilehash: 8a0cce6dd68513380759319c378d15aeb0e029c3
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 8f48f31cdaaa555e0a8f6f0fd4756bb61a9f417d
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91813182"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741099"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Quickstart: Een Python-app maken in Azure App Service op Linux
 
@@ -114,7 +114,7 @@ Het voorbeeld bevat framework-specifieke code die door Azure App Service wordt h
     flask run
     ```
     
-    De server gaat er standaard vanuit dat de invoermodule van de app zich in *app.py*bevindt, zoals in het voorbeeld wordt gebruikt. (Als u een andere modulenaam gebruikt, stelt u omgevingsvariabele `FLASK_APP` in op die naam.)
+    De server gaat er standaard vanuit dat de invoermodule van de app zich in *app.py* bevindt, zoals in het voorbeeld wordt gebruikt. (Als u een andere modulenaam gebruikt, stelt u omgevingsvariabele `FLASK_APP` in op die naam.)
 
 1. Open een webbrowser en ga naar de voorbeeld-app op `http://localhost:5000/`. In de app wordt het bericht **Hallo wereld** weergegeven.
 
@@ -149,7 +149,7 @@ Het voorbeeld bevat framework-specifieke code die door Azure App Service wordt h
 
 ## <a name="deploy-the-sample"></a>Het voorbeeld implementeren
 
-Implementeer de code in uw lokale map (*python-docs-hello-world*) met behulp van de `az webapp up`-opdracht:
+Implementeer de code in uw lokale map ( *python-docs-hello-world* ) met behulp van de `az webapp up`-opdracht:
 
 ```azurecli
 az webapp up --sku F1 --name <app-name>
@@ -157,7 +157,7 @@ az webapp up --sku F1 --name <app-name>
 
 - Als de `az`-opdracht niet wordt herkend, controleert u of de Azure CLI is geïnstalleerd volgens de beschrijving in [Uw initiële omgeving instellen](#set-up-your-initial-environment).
 - Als de `webapp`-opdracht niet wordt herkend, komt dat omdat uw Azure CLI-versie 2.0.80 of hoger is. Als dat niet zo is, [installeert u de nieuwste versie](/cli/azure/install-azure-cli).
-- Vervang `<app_name>` door een naam die in de volledige Azure-omgeving uniek is (*geldige tekens zijn `a-z`, `0-9` en `-`* ). Het is handig om een combinatie van uw bedrijfsnaam en een app-id te gebruiken.
+- Vervang `<app_name>` door een naam die in de volledige Azure-omgeving uniek is ( *geldige tekens zijn `a-z`, `0-9` en `-`* ). Het is handig om een combinatie van uw bedrijfsnaam en een app-id te gebruiken.
 - Met het argument `--sku F1` maakt u de web-app in de prijscategorie Gratis. Laat dit argument weg om een snellere Premium-laag te gebruiken, waarmee u kosten per uur in rekening worden gebracht.
 - U kunt eventueel het argument `--location <location-name>` toevoegen, waarbij `<location_name>` een beschikbare Azure-regio is. U kunt een lijst met toegestane regio's voor uw Azure-account ophalen door de [`az account list-locations`](/cli/azure/appservice#az-appservice-list-locations)-opdracht uit te voeren.
 - Als de fout 'Kan de runtimestack van uw app niet automatisch detecteren' wordt weergegeven, moet u controleren of u de opdracht uitvoert in de map *python-docs-hello-world* (Flask) of de map *python-docs-hello-django* (Django), die het bestand *requirements.txt* bevat. (Zie [Problemen met automatische detectie oplossen met az webapp up](https://github.com/Azure/app-service-linux-docs/blob/master/AzWebAppUP/runtime_detection.md) (GitHub) voor meer informatie.)
@@ -211,7 +211,7 @@ Sla de wijzigingen op en implementeer de app opnieuw met de opdracht `az webapp 
 az webapp up
 ```
 
-Met deze opdracht worden waarden gebruikt die lokaal in de cache worden opgeslagen in het bestand *.azure/config*, met inbegrip van de app-naam, de resourcegroep en het App Service-plan.
+Met deze opdracht worden waarden gebruikt die lokaal in de cache worden opgeslagen in het bestand *.azure/config* , met inbegrip van de app-naam, de resourcegroep en het App Service-plan.
 
 Zodra de implementatie is voltooid, schakelt u terug naar het browservenster om `http://<app-name>.azurewebsites.net` te openen. Vernieuw de pagina. Als het goed is, wordt hier het volgende aangepast bericht weergegeven:
 
@@ -238,13 +238,13 @@ Vernieuw de app in de browser om consolelogboeken te genereren. Deze omvatten be
 
 U kunt ook de logboekbestanden van de browser inspecteren op `https://<app-name>.scm.azurewebsites.net/api/logs/docker`.
 
-Als u het streamen van logboeken op een bepaald moment wilt stoppen, drukt u in de terminal op **Ctrl**+**C**.
+Als u het streamen van logboeken op een bepaald moment wilt stoppen, drukt u in de terminal op **Ctrl**+**C** .
 
 [Ondervindt u problemen? Laat het ons weten.](https://aka.ms/FlaskCLIQuickstartHelp)
 
 ## <a name="manage-the-azure-app"></a>De Azure-app beheren
 
-Ga naar <a href="https://portal.azure.com" target="_blank">Azure Portal</a> om de app te beheren die u hebt gemaakt. Zoek en selecteer **App Services**.
+Ga naar <a href="https://portal.azure.com" target="_blank">Azure Portal</a> om de app te beheren die u hebt gemaakt. Zoek en selecteer **App Services** .
 
 ![Naar App Services navigeren in Azure Portal](./media/quickstart-python/navigate-to-app-services-in-the-azure-portal.png)
 

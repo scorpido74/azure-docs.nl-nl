@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: f1908e243b7cb1def2eac8a1d46d5f087a25f8c6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 32ea1dd2141a8df1fb495af64848f87e9f152328
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88936398"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669726"
 ---
 # <a name="quickstart-use-net-core-c-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Quickstart: .NET Core (C#) gebruiken om een query uit te voeren op een database in Azure SQL Database of Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "88936398"
 In deze quickstart gebruikt u [.NET Core](https://www.microsoft.com/net/) en C#-code om verbinding te maken met een database. Vervolgens moet u een Transact-SQL-instructie uitvoeren om een query op gegevens uit te voeren.
 
 > [!TIP]
-> In de volgende Microsoft-leermodule leert u gratis [Een ASP.NET-toepassing ontwikkelen en configureren die een query uitvoert op een Azure SQL Database](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
+> In de volgende Microsoft-leermodule leert u gratis [Een ASP.NET-toepassing ontwikkelen en configureren die een query uitvoert op een Azure SQL Database](/learn/modules/develop-app-that-queries-azure-sql/)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -51,7 +51,7 @@ U hebt het volgende nodig om deze quickstart te voltooien:
 - [.NET Core voor uw besturingssysteem](https://www.microsoft.com/net/core) moet zijn geïnstalleerd.
 
 > [!NOTE]
-> In deze snelstartgids wordt gebruik gemaakt van de *mySampleDatabase*-database. Als u een andere database wilt gebruiken, moet u de databaseverwijzingen wijzigen en de `SELECT`-query aanpassen in de C#-code.
+> In deze snelstartgids wordt gebruik gemaakt van de *mySampleDatabase* -database. Als u een andere database wilt gebruiken, moet u de databaseverwijzingen wijzigen en de `SELECT`-query aanpassen in de C#-code.
 
 ## <a name="get-server-connection-information"></a>Serververbindingsgegevens ophalen
 
@@ -59,32 +59,32 @@ Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de da
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-2. Navigeer naar de pagina **SQL Databases** of **SQL Managed Instances**.
+2. Navigeer naar de pagina **SQL Databases** of **SQL Managed Instances** .
 
-3. Bekijk op de pagina **Overzicht** de volledig gekwalificeerde servernaam naast **Servernaam** voor de database in Azure SQL Database, of de volledig gekwalificeerde servernaam (of het IP-adres) naast **Host** voor een met Azure SQL beheerd exemplaar of SQL Server op een Azure-VM. Als u de servernaam of hostnaam wilt kopiëren, plaatst u de muisaanwijzer erboven en selecteert u het pictogram **Kopiëren**.
+3. Bekijk op de pagina **Overzicht** de volledig gekwalificeerde servernaam naast **Servernaam** voor de database in Azure SQL Database, of de volledig gekwalificeerde servernaam (of het IP-adres) naast **Host** voor een met Azure SQL beheerd exemplaar of SQL Server op een Azure-VM. Als u de servernaam of hostnaam wilt kopiëren, plaatst u de muisaanwijzer erboven en selecteert u het pictogram **Kopiëren** .
 
 > [!NOTE]
 > Zie [Verbinding met een SQL Server-exemplaar](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server) voor meer informatie over de verbinding van SQL Server op een Azure-VM.
 
 ## <a name="get-adonet-connection-information-optional---sql-database-only"></a>ADO.NET-verbindingsgegevens ophalen (optioneel - alleen SQL Database)
 
-1. Navigeer naar de pagina **mySampleDatabase** en selecteer vervolgens onder **Instellingen** de optie **Verbindingsreeksen**.
+1. Navigeer naar de pagina **mySampleDatabase** en selecteer vervolgens onder **Instellingen** de optie **Verbindingsreeksen** .
 
-2. Bekijk de volledige **ADO.NET**-verbindingsreeks.
+2. Bekijk de volledige **ADO.NET** -verbindingsreeks.
 
     ![ADO.NET-verbindingsreeks](./media/connect-query-dotnet-core/adonet-connection-string2.png)
 
-3. Kopieer de **ADO.NET**-verbindingsreeks als u van plan bent om deze te gebruiken.
+3. Kopieer de **ADO.NET** -verbindingsreeks als u van plan bent om deze te gebruiken.
   
 ## <a name="create-a-new-net-core-project"></a>Een nieuw .NET Core-project maken
 
-1. Open een opdrachtprompt en maak een map met de naam **sqltest**. Navigeer naar deze map en voer deze opdracht uit.
+1. Open een opdrachtprompt en maak een map met de naam **sqltest** . Navigeer naar deze map en voer deze opdracht uit.
 
     ```cmd
     dotnet new console
     ```
 
-    Met deze opdracht maakt u nieuwe app-projectbestanden, waaronder een eerste C#-codebestand (**Program.cs**), een XML-configuratiebestand (**sqltest.csproj**) en de benodigde binaire bestanden.
+    Met deze opdracht maakt u nieuwe app-projectbestanden, waaronder een eerste C#-codebestand ( **Program.cs** ), een XML-configuratiebestand ( **sqltest.csproj** ) en de benodigde binaire bestanden.
 
 2. Open **sqltest.csproj** in een teksteditor en plak de volgende XML-code tussen de `<Project>`-tags. Met deze XML-code voegt u `System.Data.SqlClient` toe als een afhankelijkheid.
 
@@ -207,4 +207,4 @@ namespace sqltest
 - [Aan de slag met .NET Core in Windows/Linux/macOS met behulp van de opdrachtregel ](/dotnet/core/tutorials/using-with-xplat-cli).
 - Meer informatie over [verbinding maken met en een query uitvoeren in Azure SQL Database of Azure SQL Managed Instance, met behulp van .NET Framework en Visual Studio](connect-query-dotnet-visual-studio.md).  
 - Meer informatie over [Uw eerste database ontwerpen met behulp van SSMS](design-first-database-tutorial.md) of [Een database ontwerpen en hiermee verbinding maken met behulp van C# en ADO.NET](design-first-database-csharp-tutorial.md).
-- Raadpleeg de [.NET-documentatie](https://docs.microsoft.com/dotnet/) voor meer informatie over .NET.
+- Raadpleeg de [.NET-documentatie](/dotnet/) voor meer informatie over .NET.
