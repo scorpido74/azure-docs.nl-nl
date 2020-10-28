@@ -4,28 +4,28 @@ description: Ontdek hoe u Java en JDBC gebruikt met een Azure Database for MySQL
 author: jdubois
 ms.author: judubois
 ms.service: mysql
-ms.custom: mvc, devcenter
+ms.custom: mvc, devcenter, devx-track-azurecli
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/17/2020
-ms.openlocfilehash: a54e950286a37c207d902090f015b3732e0ff10b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b7db124f8f5ba56f760dc054491990889e4e738f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88517579"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745272"
 ---
 # <a name="use-java-and-jdbc-with-azure-database-for-mysql"></a>Java en JDBC gebruiken met Azure Database for MySQL
 
-In dit onderwerp wordt uitgelegd hoe u een voorbeeldtoepassing maakt die gebruikmaakt van Java en [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) om gegevens op te slaan en op te halen in [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/).
+In dit onderwerp wordt uitgelegd hoe u een voorbeeldtoepassing maakt die gebruikmaakt van Java en [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) om gegevens op te slaan en op te halen in [Azure Database for MySQL](./index.yml).
 
 JDBC is de standaard Java-API voor het maken van verbinding met traditionele relationele databases.
 
 ## <a name="prerequisites"></a>Vereisten
 
 - Een Azure-account. Als u geen account hebt, kunt u [een gratis proefversie krijgen](https://azure.microsoft.com/free/).
-- [Azure Cloud Shell](/azure/cloud-shell/quickstart) of [Azure CLI](/cli/azure/install-azure-cli). We raden Azure Cloud Shell aan zodat u automatisch wordt aangemeld en toegang hebt tot alle hulpprogramma's die u nodig hebt.
-- Een ondersteunde [Java Development Kit](https://aka.ms/azure-jdks)versie 8 (opgenomen in Azure Cloud Shell).
+- [Azure Cloud Shell](../cloud-shell/quickstart.md) of [Azure CLI](/cli/azure/install-azure-cli). We raden Azure Cloud Shell aan zodat u automatisch wordt aangemeld en toegang hebt tot alle hulpprogramma's die u nodig hebt.
+- Een ondersteunde [Java Development Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support)versie 8 (opgenomen in Azure Cloud Shell).
 - De compilatietool [Apache Maven](https://maven.apache.org/).
 
 ## <a name="prepare-the-working-environment"></a>De werkomgeving voorbereiden
@@ -68,7 +68,7 @@ az group create \
 We maken eerst een beheerde MySQL-server.
 
 > [!NOTE]
-> Meer gedetailleerde informatie over het maken van MySQL-servers vindt u in [Een Azure Database for MySQL-server maken met Azure Portal](/azure/mysql/quickstart-create-mysql-server-database-using-azure-portal).
+> Meer gedetailleerde informatie over het maken van MySQL-servers vindt u in [Een Azure Database for MySQL-server maken met Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md).
 
 Voer in [Azure Cloud Shell](https://shell.azure.com/) het volgende script uit:
 
@@ -237,7 +237,7 @@ Deze Java-code maakt gebruik van de bestanden *application.properties* en *schem
 In dit bestand kunt u zien dat we commentaar hebben gemaakt van methoden voor het invoegen, lezen, bijwerken en verwijderen van gegevens. We gaan deze methoden coderen in de rest van dit artikel en u kunt dan de commentaartekens /* en */ per methode verwijderen.
 
 > [!NOTE]
-> De databasereferenties worden opgeslagen in de eigenschappen *users* en *password* van het bestand *application.properties*. Deze referenties worden gebruikt bij het uitvoeren van `DriverManager.getConnection(properties.getProperty("url"), properties);`, omdat het eigenschappenbestand als argument wordt doorgegeven.
+> De databasereferenties worden opgeslagen in de eigenschappen *users* en *password* van het bestand *application.properties* . Deze referenties worden gebruikt bij het uitvoeren van `DriverManager.getConnection(properties.getProperty("url"), properties);`, omdat het eigenschappenbestand als argument wordt doorgegeven.
 
 > [!NOTE]
 > De regel `AbandonedConnectionCleanupThread.uncheckedShutdown();` aan het einde is een opdracht voor MySQL-stuurprogramma's voor het vernietigen van een interne thread bij het afsluiten van de app.
@@ -326,7 +326,7 @@ public class Todo {
 }
 ```
 
-Deze klasse is een domeinmodel dat is toegewezen aan de tabel `todo` die u eerder hebt gemaakt tijdens het uitvoeren van het script *schema.sql*.
+Deze klasse is een domeinmodel dat is toegewezen aan de tabel `todo` die u eerder hebt gemaakt tijdens het uitvoeren van het script *schema.sql* .
 
 ### <a name="insert-data-into-azure-database-for-mysql"></a>Gegevens invoegen in Azure Database for MySQL
 
@@ -368,7 +368,7 @@ Als u nu de main-klasse uitvoert, zou dit de volgende uitvoer moeten opleveren:
 
 Laten we de gegevens lezen die u eerder hebt ingevoegd om te controleren of onze code goed werkt.
 
-Voeg in het bestand *src/main/java/DemoApplication.java*, na de methode `insertData`, de volgende methode toe om gegevens te lezen uit de database:
+Voeg in het bestand *src/main/java/DemoApplication.java* , na de methode `insertData`, de volgende methode toe om gegevens te lezen uit de database:
 
 ```java
 private static Todo readData(Connection connection) throws SQLException {
@@ -412,7 +412,7 @@ Als u nu de main-klasse uitvoert, zou dit de volgende uitvoer moeten opleveren:
 
 Laten we de gegevens bijwerken die we eerder hebben ingevoegd.
 
-Voeg in het bestand *src/main/java/DemoApplication.java*, na de methode `readData`, de volgende methode toe om gegevens bij te werken in de database:
+Voeg in het bestand *src/main/java/DemoApplication.java* , na de methode `readData`, de volgende methode toe om gegevens bij te werken in de database:
 
 ```java
 private static void updateData(Todo todo, Connection connection) throws SQLException {
@@ -456,7 +456,7 @@ Als u nu de main-klasse uitvoert, zou dit de volgende uitvoer moeten opleveren:
 
 Laten we ten slotte de gegevens verwijderen die we eerder hebben ingevoegd.
 
-Voeg in het bestand *src/main/java/DemoApplication.java*, na de methode `updateData`, de volgende methode toe om gegevens te verwijderen uit de database:
+Voeg in het bestand *src/main/java/DemoApplication.java* , na de methode `updateData`, de volgende methode toe om gegevens te verwijderen uit de database:
 
 ```java
 private static void deleteData(Todo todo, Connection connection) throws SQLException {

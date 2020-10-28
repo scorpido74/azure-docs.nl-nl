@@ -8,13 +8,13 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.topic: quickstart
 ms.date: 07/28/2020
-ms.custom: subject-armqs
-ms.openlocfilehash: 3b21353c7e5338c78b9d56e79ac5da3fa7e9af84
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: subject-armqs, devx-track-azurecli
+ms.openlocfilehash: 7d93bd757a39247302a6bc09009a1a814425c32f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687583"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745367"
 ---
 # <a name="quickstart-create-a-budget-with-an-arm-template"></a>Quickstart: Een budget opstellen met een ARM-sjabloon
 
@@ -22,7 +22,7 @@ Met budgetten in Cost Management kunt u de verantwoordelijkheid in de organisati
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure** . De sjabloon wordt in Azure Portal geopend.
 
 [![Implementeren in Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fcreate-budget%2Fazuredeploy.json)
 
@@ -84,27 +84,27 @@ Er is één Azure-resource gedefinieerd in de sjabloon:
 
    :::image type="content" source="./media/quick-create-budget-template/create-budget-using-template-portal.png" alt-text="Resource Manager-sjabloon, budget maken, portal implementeren]" lightbox="./media/quick-create-budget-template/create-budget-using-template-portal.png" :::
    
-    * **Abonnement**: selecteer een Azure-abonnement.
-    * **Resourcegroep**: selecteer indien mogelijk een bestaande resourcegroep of **maak een nieuwe resourcegroep**.
-    * **Regio**: selecteer een Azure-regio. Bijvoorbeeld **VS - centraal**.
-    * **Budgetnaam**: voer een naam in voor het budget. Deze moet uniek zijn binnen de resourcegroep. Alleen alfanumerieke tekens, onderstrepingstekens en streepjes zijn toegestaan.
-    * **Hoeveelheid**: voer de totale kosten in die met behulp van het budget moet worden bijgehouden.
-    * **Tijdsinterval**: voer de periode in die het budget dekt. Toegestane waarden zijn maandelijks, per kwartaal of per jaar. Het budget wordt aan het einde van de tijdsinterval opnieuw ingesteld.
-    * **Begindatum**: voer de begindatum in, uitgaande van de eerste dag van de maand, in de notatie JJJJ-MM-DD. Een toekomstige begindatum mag niet meer dan drie maanden in de toekomstig liggen vanaf vandaag. U kunt een eerdere begindatum opgeven met de periode van de tijdsinterval.
-    * **Einddatum**: Geef de einddatum voor het budget op in de notatie JJJJ-MM-DD. 
-    * **Eerste drempelwaarde**: voer een drempelwaarde in voor de eerste melding. Er wordt een melding verzonden wanneer de kosten de drempelwaarde overschrijden. Dit is altijd een percentage van 0 tot en met 1000.
-    * **Tweede drempelwaarde**: voer een drempelwaarde in voor de tweede melding. Er wordt een melding verzonden wanneer de kosten de drempelwaarde overschrijden. Dit is altijd een percentage van 0 tot en met 1000.
-    * **Contactrollen**: voer een lijst met contactrollen in waarnaar de budgetmelding moet worden verzonden wanneer de drempelwaarde wordt overschreden. Standaardwaarden zijn Eigenaar, Inzender en Lezer. De verwachte indeling is `["Owner","Contributor","Reader"]`.
+    * **Abonnement** : selecteer een Azure-abonnement.
+    * **Resourcegroep** : selecteer indien mogelijk een bestaande resourcegroep of **maak een nieuwe resourcegroep** .
+    * **Regio** : selecteer een Azure-regio. Bijvoorbeeld **VS - centraal** .
+    * **Budgetnaam** : voer een naam in voor het budget. Deze moet uniek zijn binnen de resourcegroep. Alleen alfanumerieke tekens, onderstrepingstekens en streepjes zijn toegestaan.
+    * **Hoeveelheid** : voer de totale kosten in die met behulp van het budget moet worden bijgehouden.
+    * **Tijdsinterval** : voer de periode in die het budget dekt. Toegestane waarden zijn maandelijks, per kwartaal of per jaar. Het budget wordt aan het einde van de tijdsinterval opnieuw ingesteld.
+    * **Begindatum** : voer de begindatum in, uitgaande van de eerste dag van de maand, in de notatie JJJJ-MM-DD. Een toekomstige begindatum mag niet meer dan drie maanden in de toekomstig liggen vanaf vandaag. U kunt een eerdere begindatum opgeven met de periode van de tijdsinterval.
+    * **Einddatum** : Geef de einddatum voor het budget op in de notatie JJJJ-MM-DD. 
+    * **Eerste drempelwaarde** : voer een drempelwaarde in voor de eerste melding. Er wordt een melding verzonden wanneer de kosten de drempelwaarde overschrijden. Dit is altijd een percentage van 0 tot en met 1000.
+    * **Tweede drempelwaarde** : voer een drempelwaarde in voor de tweede melding. Er wordt een melding verzonden wanneer de kosten de drempelwaarde overschrijden. Dit is altijd een percentage van 0 tot en met 1000.
+    * **Contactrollen** : voer een lijst met contactrollen in waarnaar de budgetmelding moet worden verzonden wanneer de drempelwaarde wordt overschreden. Standaardwaarden zijn Eigenaar, Inzender en Lezer. De verwachte indeling is `["Owner","Contributor","Reader"]`.
     * **Contact-e-mails** voer een lijst met e-mailadressen in waarnaar de budgetmelding moet worden verzonden wanneer een drempelwaarde wordt overschreden. De verwachte indeling is `["user1@domain.com","user2@domain.com"]`.
-    * **Contactgroepen**: voer een lijst met resource-id's van actiegroepen in als volledige resource-URI's waarnaar de budgetmelding moet worden verzonden wanneer de drempelwaarde wordt overschreden. Dit veld accepteert een matrix van tekenreeksen. De verwachte indeling is `["action group resource ID1","action group resource ID2"]`. Als u geen actiegroepen wilt gebruiken, voert u `[]` in.
+    * **Contactgroepen** : voer een lijst met resource-id's van actiegroepen in als volledige resource-URI's waarnaar de budgetmelding moet worden verzonden wanneer de drempelwaarde wordt overschreden. Dit veld accepteert een matrix van tekenreeksen. De verwachte indeling is `["action group resource ID1","action group resource ID2"]`. Als u geen actiegroepen wilt gebruiken, voert u `[]` in.
     * **Filterwaarden van resourcegroep:** voer een lijst met namen van resourcegroepen in om te filteren. De verwachte indeling is `["Resource Group Name1","Resource Group Name2"]`. Als u geen filter wilt toepassen, voert u `[]` in. 
     * **De waarden van de metercategoriefilter:** voer een lijst met Azure-servicemetercategorieën in. De verwachte indeling is `["Meter Category1","Meter Category2"]`. Als u geen filter wilt toepassen, voert u `[]` in.
    
 3. Voer een van de volgende acties uit, afhankelijk van het type Azure-abonnement:
-   - Selecteer **Controleren + maken**.
-   - Controleer de voorwaarden en schakel het selectievakje **Ik ga akkoord met de bovenstaande voorwaarden** in en selecteer **Aankoop**.
+   - Selecteer **Controleren + maken** .
+   - Controleer de voorwaarden en schakel het selectievakje **Ik ga akkoord met de bovenstaande voorwaarden** in en selecteer **Aankoop** .
 
-4. Als u **Beoordelen en maken** hebt geselecteerd, wordt uw sjabloon gevalideerd. Selecteer **Maken**.  
+4. Als u **Beoordelen en maken** hebt geselecteerd, wordt uw sjabloon gevalideerd. Selecteer **Maken** .  
 
    ![Resource Manager-sjabloon, budget, portalmelding implementeren](./media/quick-create-budget-template/resource-manager-template-portal-deployment-notification.png)
 
@@ -112,7 +112,7 @@ Voor het implementeren van de sjabloon wordt de Azure-portal gebruikt. Naast de 
 
 ## <a name="validate-the-deployment"></a>De implementatie valideren
 
-U kunt de Azure-portal gebruiken om te controleren of het budget is gemaakt door te navigeren naar **Cost Management + facturering** > een bereik selecteren > **Budgetten**. U kunt ook de volgende Azure CLI- of Azure PowerShell-scripts gebruiken om het budget weer te geven.
+U kunt de Azure-portal gebruiken om te controleren of het budget is gemaakt door te navigeren naar **Cost Management + facturering** > een bereik selecteren > **Budgetten** . U kunt ook de volgende Azure CLI- of Azure PowerShell-scripts gebruiken om het budget weer te geven.
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -134,7 +134,7 @@ Wanneer u een budget niet meer nodig hebt, verwijdert u het met behulp van een v
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Ga naar **Kostenbeheer en facturering** > selecteer een factureringsbereik > **Budgetten** > selecteer een budget > selecteer vervolgens **Budget verwijderen**.
+Ga naar **Kostenbeheer en facturering** > selecteer een factureringsbereik > **Budgetten** > selecteer een budget > selecteer vervolgens **Budget verwijderen** .
 
 ### <a name="command-line"></a>Opdrachtregel
 

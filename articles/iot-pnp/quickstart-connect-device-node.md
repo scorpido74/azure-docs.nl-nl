@@ -7,13 +7,13 @@ ms.date: 07/10/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: mvc, devx-track-js
-ms.openlocfilehash: e9ab4f2639569537b7c5967235a926c567aca0d5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: mvc, devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 2342577fdd7e42f4b21d1f47348c39e3ed4a46e3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91576129"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747239"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-to-iot-hub-nodejs"></a>Quickstart: Een voorbeeld van een IoT Plug and Play-apparaattoepassing verbinden met IoT Hub (Node.js)
 
@@ -47,7 +47,7 @@ git clone https://github.com/Azure/azure-iot-sdk-node
 
 U gebruikt de SDK van het apparaat om de opgenomen voorbeeldcode te maken. De toepassing die u bouwt, simuleert een apparaat dat is verbonden met een IoT-hub. De toepassing verzendt telemetrie en eigenschappen en ontvangt opdrachten.
 
-1. Ga in een lokaal terminalvenster naar de map van de gekloonde opslagplaats en ga naar de map */azure-iot-sdk-node/device/samples/pnp*. Voer vervolgens de volgende opdracht uit om de vereiste bibliotheken te installeren:
+1. Ga in een lokaal terminalvenster naar de map van de gekloonde opslagplaats en ga naar de map */azure-iot-sdk-node/device/samples/pnp* . Voer vervolgens de volgende opdracht uit om de vereiste bibliotheken te installeren:
 
     ```cmd/sh
     npm install
@@ -63,7 +63,7 @@ U gebruikt de SDK van het apparaat om de opgenomen voorbeeldcode te maken. De to
 
 Met dit voorbeeld wordt een eenvoudig IoT Plug and Play-thermostaatapparaat geïmplementeerd. Het model dat met dit voorbeeld wordt geïmplementeerd, maakt geen gebruik van IoT Plug and Play-[onderdelen](concepts-components.md). Het [DTDL-modelbestand voor het thermostaatapparaat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) definieert de telemetrie, eigenschappen en opdrachten die het apparaat implementeert.
 
-Open het bestand _simple_thermostat.js_. In dit bestand ziet u hoe u het volgende kunt doen:
+Open het bestand _simple_thermostat.js_ . In dit bestand ziet u hoe u het volgende kunt doen:
 
 1. De vereiste interfaces importeren.
 1. Een handler voor updates en een handler voor opdrachten schrijven.

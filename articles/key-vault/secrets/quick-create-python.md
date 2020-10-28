@@ -7,13 +7,13 @@ ms.date: 09/03/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.custom: devx-track-python
-ms.openlocfilehash: 751e4dbace2b61f53ef9b8d9bef45aa6ce17f9ca
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.custom: devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 7fe5b8da0b6dfa69d04a5ad152aa34a8686d854f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047868"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786102"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-python"></a>Quickstart: Azure Key Vault-clientbibliotheek voor geheimen voor Python
 
@@ -24,14 +24,14 @@ Ga aan de slag met de Azure Key Vault-clientbibliotheek voor geheimen voor Pytho
 ## <a name="prerequisites"></a>Vereisten
 
 - Een Azure-abonnement (u kunt [een gratis abonnement maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)).
-- [Python 2.7+ of 3.5.3+](https://docs.microsoft.com/azure/developer/python/configure-local-development-environment)
+- [Python 2.7+ of 3.5.3+](/azure/developer/python/configure-local-development-environment)
 - [Azure-CLI](/cli/azure/install-azure-cli)
 
 In deze quickstart wordt ervan uitgegaan dat u [Azure CLI](/cli/azure/install-azure-cli) uitvoert in een Linux-terminalvenster.
 
 
 ## <a name="set-up-your-local-environment"></a>Uw lokale omgeving instellen
-Deze quickstart maakt gebruik van de Azure Identity-bibliotheek met Azure CLI om de gebruiker te verifiëren bij Azure-services. Ontwikkelaars kunnen ook Visual Studio of Visual Studio Code gebruiken om hun oproepen te verifiëren: zie [De client verifiëren met de Azure Identity-clientbibliotheek](https://docs.microsoft.com/java/api/overview/azure/identity-readme) (Engelstalig) voor meer informatie.
+Deze quickstart maakt gebruik van de Azure Identity-bibliotheek met Azure CLI om de gebruiker te verifiëren bij Azure-services. Ontwikkelaars kunnen ook Visual Studio of Visual Studio Code gebruiken om hun oproepen te verifiëren: zie [De client verifiëren met de Azure Identity-clientbibliotheek](/java/api/overview/azure/identity-readme) (Engelstalig) voor meer informatie.
 
 ### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 

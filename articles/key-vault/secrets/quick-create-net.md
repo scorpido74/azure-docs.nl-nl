@@ -7,13 +7,13 @@ ms.date: 09/23/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 8d60c604ecde8607c0da8a125108e13683bdf6c8
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 20974367b9d4b75bb9746cd065bc7490011f37ad
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058536"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786153"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-net-sdk-v4"></a>Quickstart: Azure Key Vault-clientbibliotheek voor geheimen voor .NET (SDK v4)
 
@@ -31,7 +31,7 @@ Deze quickstart maakt gebruik van `dotnet` en Azure CLI
 
 ## <a name="setup"></a>Instellen
 
-Deze quickstart maakt gebruik van de Azure Identity-bibliotheek met Azure CLI om de gebruiker te verifiëren bij Azure-services. Ontwikkelaars kunnen ook Visual Studio of Visual Studio Code gebruiken om hun oproepen te verifiëren: zie [De client verifiëren met de Azure Identity-clientbibliotheek](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme?#authenticate-the-client&preserve-view=true) (Engelstalig) voor meer informatie.
+Deze quickstart maakt gebruik van de Azure Identity-bibliotheek met Azure CLI om de gebruiker te verifiëren bij Azure-services. Ontwikkelaars kunnen ook Visual Studio of Visual Studio Code gebruiken om hun oproepen te verifiëren: zie [De client verifiëren met de Azure Identity-clientbibliotheek](/dotnet/api/overview/azure/identity-readme#authenticate-the-client&preserve-view=true) (Engelstalig) voor meer informatie.
 
 ### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -122,7 +122,7 @@ Met de Azure Key Vault-clientbibliotheek voor geheimen voor .NET kunt u geheimen
 
 ### <a name="add-directives"></a>Instructies toevoegen
 
-Voeg de volgende instructies toe aan het begin van *Program.cs*:
+Voeg de volgende instructies toe aan het begin van *Program.cs* :
 
 [!code-csharp[](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=directives)]
 
@@ -149,7 +149,7 @@ az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
 ```azurepowershell
-(Get-AzKeyVaultSecret -VaultName <your-unique-keyvault-name> -Name mySecret).SecretValueText
+(Get-AzKeyVaultSecret -VaultName <your-unique-keyvault-name> -Name mySecret).SecretValue | ConvertFrom-SecureString -AsPlainText
 ```
 
 ### <a name="retrieve-a-secret"></a>Een geheim ophalen
@@ -177,7 +177,7 @@ az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
 ```azurepowershell
-(Get-AzKeyVaultSecret -VaultName <your-unique-keyvault-name> -Name mySecret).SecretValueText
+(Get-AzKeyVaultSecret -VaultName <your-unique-keyvault-name> -Name mySecret).SecretValue | ConvertFrom-SecureString -AsPlainText
 ```
 
 ## <a name="clean-up-resources"></a>Resources opschonen

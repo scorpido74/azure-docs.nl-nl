@@ -11,12 +11,12 @@ author: mumian
 ms.author: jgao
 ms.reviewer: sstein
 ms.date: 06/24/2020
-ms.openlocfilehash: d53f854bc3513a97398a92ee16c34a0a74650687
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6e56d6558b3a80707a9f845740980f8ebbc87e35
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91614050"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791491"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-an-arm-template"></a>Quickstart: Een individuele database maken in Azure SQL Database via een ARM-sjabloon
 
@@ -24,7 +24,7 @@ Het maken van een [individuele database](single-database-overview.md) is de snel
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure** . De sjabloon wordt in Azure Portal geopend.
 
 [![Implementeren in Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sql-database%2Fazuredeploy.json)
 
@@ -85,7 +85,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 - Maak een firewallregel op serverniveau om via on-premises of externe hulpprogramma's verbinding met de individuele database te maken. Zie [Een serverfirewallregel maken](firewall-create-server-level-portal-quickstart.md) voor meer informatie.
 - Nadat u een serverfirewallregel hebt gemaakt, kunt u met verschillende hulpprogramma's en programmeertalen [verbinding maken met uw database en query's uitvoeren](connect-query-content-reference-guide.md) op uw database.
   - [Verbinding maken en query's uitvoeren met behulp van SQL Server Management Studio](connect-query-ssms.md)
-  - [Verbinding maken en query's uitvoeren met behulp van Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
+  - [Verbinding maken en query's uitvoeren met behulp van Azure Data Studio](/sql/azure-data-studio/quickstart-sql-database?toc=%252fazure%252fsql-database%252ftoc.json)
 - Zie [Azure CLI-voorbeelden](az-cli-script-samples-content-guide.md) voor het maken van een individuele database met behulp van de Azure CLI.
 - Zie [Azure PowerShell-voorbeelden](powershell-script-content-guide.md) voor het maken van een individuele database met behulp van Azure PowerShell.
 - Zie [Uw eerste sjabloon maken](../../azure-resource-manager/templates/template-tutorial-create-first-template.md) voor meer informatie over het maken van ARM-sjablonen.

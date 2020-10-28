@@ -7,13 +7,13 @@ ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-ms.custom: mvc
-ms.openlocfilehash: e1ca3d7270fb0858bb2512e5b9e285eb8d4555c6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 91e4e7de73d820c345b2973896d07d3479e49f9e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91297144"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748082"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Quickstart: IoT Hub Device Provisioning-service instellen met een Azure Resource Manager-sjabloon
 
@@ -113,7 +113,7 @@ Gebruik een JSON-sjabloon voor het maken van een inrichtingsservice en een gekop
 
    ```
 
-4. Als u een IoT-hub wilt maken, voegt u de volgende regels toe aan de verzameling **resources**. De JSON bevat de minimale vereiste eigenschappen voor het maken van een IoT-hub. De waarden **naam** en **locatie** worden doorgegeven als parameters uit een ander bestand. Zie [Sjabloonverwijzing Microsoft.Devices/IotHubs](https://docs.microsoft.com/azure/templates/microsoft.devices/iothubs) voor meer informatie over de eigenschappen die u voor een IoT-hub kunt opgeven in een sjabloon.
+4. Als u een IoT-hub wilt maken, voegt u de volgende regels toe aan de verzameling **resources** . De JSON bevat de minimale vereiste eigenschappen voor het maken van een IoT-hub. De waarden **naam** en **locatie** worden doorgegeven als parameters uit een ander bestand. Zie [Sjabloonverwijzing Microsoft.Devices/IotHubs](https://docs.microsoft.com/azure/templates/microsoft.devices/iothubs) voor meer informatie over de eigenschappen die u voor een IoT-hub kunt opgeven in een sjabloon.
 
    ```json
         {
@@ -133,7 +133,7 @@ Gebruik een JSON-sjabloon voor het maken van een inrichtingsservice en een gekop
 
    ``` 
 
-5. Voor het maken van de inrichtingsservice voegt u de volgende regels toe na de specificatie van de IoT-hub in de verzameling **resources**. De **naam** en **locatie** van de inrichtingsservice worden doorgegeven in parameters. De verzameling **iotHubs** geeft aan welke IoT-hubs aan de inrichtingsservice gekoppeld kunnen worden. U moet ten minste de eigenschappen **connectionString** en **location** opgeven voor elke gekoppelde IoT-hub. U kunt ook eigenschappen zoals **allocationWeight** en **applyAllocationPolicy** instellen voor elke IoT-hub, evenals de eigenschappen **allocationPolicy** en ** authorizationPolicies** voor de inrichtingsservice zelf. Zie [Microsoft.Devices/provisioningServices template reference](https://docs.microsoft.com/azure/templates/microsoft.devices/provisioningservices) voor meer informatie.
+5. Voor het maken van de inrichtingsservice voegt u de volgende regels toe na de specificatie van de IoT-hub in de verzameling **resources** . De **naam** en **locatie** van de inrichtingsservice worden doorgegeven in parameters. De verzameling **iotHubs** geeft aan welke IoT-hubs aan de inrichtingsservice gekoppeld kunnen worden. U moet ten minste de eigenschappen **connectionString** en **location** opgeven voor elke gekoppelde IoT-hub. U kunt ook eigenschappen zoals **allocationWeight** en **applyAllocationPolicy** instellen voor elke IoT-hub, evenals de eigenschappen **allocationPolicy** en **authorizationPolicies** voor de inrichtingsservice zelf. Zie [Microsoft.Devices/provisioningServices template reference](https://docs.microsoft.com/azure/templates/microsoft.devices/provisioningservices) voor meer informatie.
 
    De eigenschap **dependsOn** wordt gebruikt om ervoor te zorgen dat Resource Manager de IoT-hub vóór de inrichtingsservice maakt. Voor de sjabloon is de verbindingsreeks van de IoT-hub vereist voordat de koppeling met de inrichtingsservice kan worden opgegeven, zodat de hub en de sleutels eerst moeten worden gemaakt. De sjabloon maakt gebruik van functies zoals **concat** en **listKeys** voor het maken van de verbindingsreeks op basis van geparametriseerde variabelen. Zie [Functies van Azure Resource Manager-sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions) voor meer informatie.
 

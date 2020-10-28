@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfce0031d912b1611b6810310e56241857821579
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d10eb3334154f4915aa0bddd488ddc78bde06805
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87926719"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897259"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Wat is gastgebruikerstoegang in Azure Active Directory B2B?
 
@@ -74,8 +74,8 @@ U kunt beheer van gastgebruikers overdragen aan toepassingseigenaars zodat ze ga
 
 Breng uw externe partners aan boord op manieren die zijn aangepast aan de behoeften van uw organisatie.
 
-- Gebruik [Azure AD-rechtenbeheer](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview) om beleidsregels te configureren die [de toegang voor externe gebruikers beheren](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users#how-access-works-for-external-users).
-- Gebruik de [B2B-samenwerkingsuitnodiging API's](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) voor het aanpassen van uw onboarding-ervaringen.
+- Gebruik [Azure AD-rechtenbeheer](../governance/entitlement-management-overview.md) om beleidsregels te configureren die [de toegang voor externe gebruikers beheren](../governance/entitlement-management-external-users.md#how-access-works-for-external-users).
+- Gebruik de [B2B-samenwerkingsuitnodiging API's](/graph/api/resources/invitation) voor het aanpassen van uw onboarding-ervaringen.
 
 ## <a name="integrate-with-identity-providers"></a>Integreren met id-providers
 
@@ -95,6 +95,6 @@ U kunt ook [API-connectors](api-connectors-overview.md) gebruiken om uw gebruike
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Licentierichtlijnen voor Azure AD B2B-samenwerking](licensing-guidance.md)
+- [Prijzen van externe identiteiten](external-identities-pricing.md)
 - [Gastgebruikers voor B2B-samenwerking toevoegen in de portal](add-users-administrator.md)
 - [Het inwisselproces van de uitnodiging begrijpen](redemption-experience.md)

@@ -6,15 +6,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 57baa06803e9d8c23c04170626b38c47542a4c2f
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: ad31eb04f53197c4c3ccdd173cd57564c65d5a35
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150677"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747456"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Quickstart: communiceren met een apparaattoepassing in C via IoT Hub-apparaatstreams (preview)
 
@@ -82,7 +82,7 @@ Voor deze quickstart gebruikt u de [Azure IoT device-SDK voor C](iot-hub-device-
 
     Deze bewerking duurt enkele minuten.
 
-1. Maak de submap *cmake* in de hoofdmap van de Git-opslagplaats en navigeer naar die map. Voer de volgende opdrachten uit vanuit de map *azure-iot-sdk-c*:
+1. Maak de submap *cmake* in de hoofdmap van de Git-opslagplaats en navigeer naar die map. Voer de volgende opdrachten uit vanuit de map *azure-iot-sdk-c* :
 
     ```cmd/sh
     mkdir cmake
@@ -98,7 +98,7 @@ Voor deze quickstart gebruikt u de [Azure IoT device-SDK voor C](iot-hub-device-
       make -j
       ```
 
-   * Open een [Opdrachtprompt voor ontwikkelaars voor Visual Studio](/dotnet/framework/tools/developer-command-prompt-for-vs) in Windows. Voer de opdracht uit voor uw versie van Visual Studio. Deze quickstart gebruikt Visual Studio 2019. Deze opdrachten maken een Visual Studio-oplossing voor het gesimuleerde apparaat in de map *cmake*.
+   * Open een [Opdrachtprompt voor ontwikkelaars voor Visual Studio](/dotnet/framework/tools/developer-command-prompt-for-vs) in Windows. Voer de opdracht uit voor uw versie van Visual Studio. Deze quickstart gebruikt Visual Studio 2019. Deze opdrachten maken een Visual Studio-oplossing voor het gesimuleerde apparaat in de map *cmake* .
 
       ```cmd
       rem For VS2015

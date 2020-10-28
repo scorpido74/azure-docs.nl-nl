@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 10/12/2020
 ms.reviewer: andalmia
 ms.author: banders
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 28397d36a611f26544fefb9f4fa7593a0fdf3f73
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 59d3a44b1eff544f7214014f2dd31edc92bfc6bc
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014525"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748166"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-the-latest-apis"></a>Programmatisch Azure-abonnementen maken met de nieuwste API's
 
@@ -119,7 +119,7 @@ we're still working on enabling CLI SDK for billing APIs. Check back soon.
 
 ### <a name="create-subscriptions-under-a-specific-enrollment-account"></a>Abonnementen maken onder een specifiek inschrijvingsaccount
 
-In het volgende voorbeeld wordt in het inschrijvingsaccount dat u in de vorige stap hebt geselecteerd, een abonnement gemaakt met de naam *Dev Team Subscription*. 
+In het volgende voorbeeld wordt in het inschrijvingsaccount dat u in de vorige stap hebt geselecteerd, een abonnement gemaakt met de naam *Dev Team Subscription* . 
 
 ### <a name="rest"></a>[REST](#tab/rest-EA)
 
@@ -183,7 +183,7 @@ Een 'in voortgang'-status wordt geretourneerd als een `Accepted`-status onder `p
 
 Als u de meest recente versie van de module met de cmdlet `New-AzSubscriptionAlias` wilt installeren, voert u `Install-Module Az.Subscription` uit. Zie [PowerShellGet-module ophalen](/powershell/scripting/gallery/installing-psget) om een recente versie van PowerShellGet te installeren.
 
-Voer de volgende [New-AzSubscriptionAlias](/powershell/module/az.subscription/New-AzSubscriptionAlias)-opdracht uit met het factureringsbereik `"/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321"`. 
+Voer de volgende [New-AzSubscriptionAlias](/powershell/module/az.subscription/new-azsubscription)-opdracht uit met het factureringsbereik `"/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321"`. 
 
 ```azurepowershell-interactive
 New-AzSubscriptionAlias -AliasName "sampleAlias" -SubscriptionName "Dev Team Subscription" -BillingScope "/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321" -Workload 'Production"
@@ -281,7 +281,7 @@ De API-respons vermeldt alle factureringsrekeningen waartoe u toegang hebt.
 }
 ```
 
-Gebruik de eigenschap `displayName` om de factureringsrekening te identificeren waarvoor u abonnementen wilt maken. Zorg ervoor dat agreementType van het account gelijk is aan *MicrosoftCustomerAgreement*. Kopieer de `name` van het account.  Kopieer bijvoorbeeld `5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx` om een abonnement te maken voor het factureringsaccount `Contoso`. Plak de waarde ergens, zodat u deze in de volgende stap kunt gebruiken.
+Gebruik de eigenschap `displayName` om de factureringsrekening te identificeren waarvoor u abonnementen wilt maken. Zorg ervoor dat agreementType van het account gelijk is aan *MicrosoftCustomerAgreement* . Kopieer de `name` van het account.  Kopieer bijvoorbeeld `5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx` om een abonnement te maken voor het factureringsaccount `Contoso`. Plak de waarde ergens, zodat u deze in de volgende stap kunt gebruiken.
 
 <!--
 ### [PowerShell](#tab/azure-powershell-getBillingAccounts)
@@ -400,7 +400,7 @@ we're still working on enabling CLI SDK for billing APIs. Check back soon.
 
 ### <a name="create-a-subscription-for-an-invoice-section"></a>Een abonnement voor een factuursectie maken
 
-In het volgende voorbeeld wordt een abonnement met de naam *Dev Team subscription* gemaakt voor de factuursectie *Development*. Het abonnement wordt gefactureerd voor het factureringsprofiel van *Contoso Billing Profile* en wordt weergegeven in de sectie *Development* van de factuur. U gebruikt het gekopieerde factureringsbereik uit de vorige stap: `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx`. 
+In het volgende voorbeeld wordt een abonnement met de naam *Dev Team subscription* gemaakt voor de factuursectie *Development* . Het abonnement wordt gefactureerd voor het factureringsprofiel van *Contoso Billing Profile* en wordt weergegeven in de sectie *Development* van de factuur. U gebruikt het gekopieerde factureringsbereik uit de vorige stap: `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx`. 
 
 ### <a name="rest"></a>[REST](#tab/rest-MCA)
 
@@ -463,7 +463,7 @@ Een 'in voortgang'-status wordt geretourneerd als een `Accepted`-status onder `p
 
 Als u de meest recente versie van de module met de cmdlet `New-AzSubscriptionAlias` wilt installeren, voert u `Install-Module Az.Subscription` uit. Zie [PowerShellGet-module ophalen](/powershell/scripting/gallery/installing-psget) om een recente versie van PowerShellGet te installeren.
 
-Voer de volgende [New-AzSubscriptionAlias](/powershell/module/az.subscription/New-AzSubscriptionAlias)-opdracht uit met het factureringsbereik `"/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx"`. 
+Voer de volgende [New-AzSubscriptionAlias](/powershell/module/az.subscription/new-azsubscription)-opdracht uit met het factureringsbereik `"/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx"`. 
 
 ```azurepowershell-interactive
 New-AzSubscriptionAlias -AliasName "sampleAlias" -SubscriptionName "Dev Team Subscription" -BillingScope "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx" -Workload 'Production"
@@ -553,7 +553,7 @@ In de API-respons worden de factureringsrekeningen vermeld.
 }
 ```
 
-Gebruik de eigenschap `displayName` om de factureringsrekening te identificeren waarvoor u abonnementen wilt maken. Zorg ervoor dat agreementType van het account gelijk is aan *MicrosoftPartnerAgreement*. Kopieer de `name` voor het account. Kopieer bijvoorbeeld `99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx` om een abonnement te maken voor het factureringsaccount `Contoso`. Plak de waarde ergens, zodat u deze in de volgende stap kunt gebruiken.
+Gebruik de eigenschap `displayName` om de factureringsrekening te identificeren waarvoor u abonnementen wilt maken. Zorg ervoor dat agreementType van het account gelijk is aan *MicrosoftPartnerAgreement* . Kopieer de `name` voor het account. Kopieer bijvoorbeeld `99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx` om een abonnement te maken voor het factureringsaccount `Contoso`. Plak de waarde ergens, zodat u deze in de volgende stap kunt gebruiken.
 
 <!--
 ### [PowerShell](#tab/azure-powershell-getBillingAccounts-MPA)
@@ -736,13 +736,13 @@ GET https://management.azure.com/providers/Microsoft.Subscription/aliases/sample
 
 Een 'in voortgang'-status wordt geretourneerd als een `Accepted`-status onder `provisioningState`. 
 
-Geef de optionele *resellerId*, die in de tweede stap is gekopieerd, door in de aanvraagbody van de API.
+Geef de optionele *resellerId* , die in de tweede stap is gekopieerd, door in de aanvraagbody van de API.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell-MPA)
 
 Als u de meest recente versie van de module met de cmdlet `New-AzSubscriptionAlias` wilt installeren, voert u `Install-Module Az.Subscription` uit. Zie [PowerShellGet-module ophalen](/powershell/scripting/gallery/installing-psget) om een recente versie van PowerShellGet te installeren.
 
-Voer de volgende [New-AzSubscriptionAlias](/powershell/module/az.subscription/New-AzSubscriptionAlias)-opdracht uit met het factureringsbereik `"/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx"`. 
+Voer de volgende [New-AzSubscriptionAlias](/powershell/module/az.subscription/new-azsubscription)-opdracht uit met het factureringsbereik `"/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx"`. 
 
 ```azurepowershell-interactive
 New-AzSubscriptionAlias -AliasName "sampleAlias" -SubscriptionName "Dev Team Subscription" -BillingScope "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -Workload 'Production"
@@ -838,7 +838,7 @@ De API-respons vermeldt alle factureringsrekeningen waartoe u toegang hebt.
 }
 ```
 
-Gebruik de eigenschap `displayName` om de factureringsrekening te identificeren waarvoor u abonnementen wilt maken. Zorg ervoor dat agreementType van het account gelijk is aan *MicrosoftCustomerAgreement*. Kopieer de `name` van het account. Kopieer bijvoorbeeld `5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx` om een abonnement te maken voor het factureringsaccount `Contoso`. Plak de waarde ergens, zodat u deze in de volgende stap kunt gebruiken.
+Gebruik de eigenschap `displayName` om de factureringsrekening te identificeren waarvoor u abonnementen wilt maken. Zorg ervoor dat agreementType van het account gelijk is aan *MicrosoftCustomerAgreement* . Kopieer de `name` van het account. Kopieer bijvoorbeeld `5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx` om een abonnement te maken voor het factureringsaccount `Contoso`. Plak de waarde ergens, zodat u deze in de volgende stap kunt gebruiken.
 
 <!--
 ### [PowerShell](#tab/azure-powershell-getBillingAccounts)
@@ -958,7 +958,7 @@ we're still working on enabling CLI SDK for billing APIs. Check back soon.
 
 ### <a name="create-a-subscription-and-resource-group-with-a-template"></a>Een abonnement en resourcegroep maken met een sjabloon
 
-Met de volgende ARM-sjabloon wordt een abonnement met de naam *Dev Team subscription* gemaakt voor de factuursectie *Development*. Het abonnement wordt gefactureerd voor het factureringsprofiel van *Contoso Billing Profile* en wordt weergegeven in de sectie *Development* van de factuur. U gebruikt het gekopieerde factureringsbereik uit de vorige stap: `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx`. 
+Met de volgende ARM-sjabloon wordt een abonnement met de naam *Dev Team subscription* gemaakt voor de factuursectie *Development* . Het abonnement wordt gefactureerd voor het factureringsprofiel van *Contoso Billing Profile* en wordt weergegeven in de sectie *Development* van de factuur. U gebruikt het gekopieerde factureringsbereik uit de vorige stap: `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx`. 
 
 #### <a name="request"></a>Aanvraag
 

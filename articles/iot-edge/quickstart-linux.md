@@ -8,13 +8,13 @@ ms.date: 06/30/2020
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: ee267bda44cde77cf5d3434cd75eecaf34bd5264
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 3328fa7d71138ba75fac0c2aed11d7a85081d03a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978846"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748718"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Quickstart: Uw eerste IoT Edge-module implementeren op een virtueel Linux-apparaat
 
@@ -63,13 +63,13 @@ Begin met de snelstart door een IoT Hub met Azure CLI te maken.
 
 Het gratis niveau van IoT Hub werkt voor deze snelstart. Als u in het verleden IoT Hub hebt gebruikt en al een hub hebt gemaakt, kunt u die IoT-hub gebruiken.
 
-Met de volgende code wordt een gratis **F1**-hub gemaakt in de resourcegroep **IoTEdgeResources**. Vervang `{hub_name}` door een unieke naam voor uw IoT-hub. Het kan enkele minuten duren voordat een IoT-hub is gemaakt.
+Met de volgende code wordt een gratis **F1** -hub gemaakt in de resourcegroep **IoTEdgeResources** . Vervang `{hub_name}` door een unieke naam voor uw IoT-hub. Het kan enkele minuten duren voordat een IoT-hub is gemaakt.
 
    ```azurecli-interactive
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 --partition-count 2
    ```
 
-   Als er een fout optreedt omdat er al één gratis hub in uw abonnement is, wijzigt u de SKU in **S1**. Elk abonnement biedt toegang tot slechts één gratis IoT-hub. Als u het foutbericht ontvangt dat de naam van de IoT Hub niet beschikbaar is, betekent dit dat iemand anders al een hub met die naam heeft. Probeer een andere naam.
+   Als er een fout optreedt omdat er al één gratis hub in uw abonnement is, wijzigt u de SKU in **S1** . Elk abonnement biedt toegang tot slechts één gratis IoT-hub. Als u het foutbericht ontvangt dat de naam van de IoT Hub niet beschikbaar is, betekent dit dat iemand anders al een hub met die naam heeft. Probeer een andere naam.
 
 ## <a name="register-an-iot-edge-device"></a>Een IoT Edge-apparaat registreren
 
@@ -141,10 +141,10 @@ Voor deze sjabloon worden de volgende parameters gebruikt:
 | **dnsLabelPrefix** | Een tekenreeks die wordt gebruikt om de hostnaam van de virtuele machine te maken. Gebruik het voorbeeld **my-edge-vm** of geef een nieuwe tekenreeks op. |
 | **adminUsername** | Een gebruikersnaam voor het beheerdersaccount van de virtuele machine. Gebruik het voorbeeld **azureUser** of geef een nieuwe gebruikersnaam op. |
 | **deviceConnectionString** | De verbindingsreeks van de apparaat-id in IoT Hub, die wordt gebruikt om de IoT Edge-runtime op de virtuele machine te configureren. De CLI-opdracht in deze parameter haalt de verbindingsreeks voor u op. Vervang de tekst van de tijdelijke aanduiding door de naam van uw IoT-hub. |
-| **authenticationType** | De verificatiemethode voor het beheerdersaccount. Deze quickstart maakt gebruik van **wachtwoordverificatie**, maar u kunt deze parameter ook instellen op **sshPublicKey**. |
+| **authenticationType** | De verificatiemethode voor het beheerdersaccount. Deze quickstart maakt gebruik van **wachtwoordverificatie** , maar u kunt deze parameter ook instellen op **sshPublicKey** . |
 | **adminPasswordOrKey** | Het wachtwoord of de waarde voor de SSH-sleutel voor het beheerdersaccount. Vervang de tekst van de tijdelijke aanduiding door een veilig wachtwoord. Uw wachtwoord moet ten minste 12 tekens lang zijn en drie van de volgende vier typen tekens bevatten: kleine letters, hoofdletters, cijfers en speciale tekens. |
 
-Zodra de implementatie is voltooid, ontvangt u de uitvoer met JSON-indeling in de CLI die de SSH-gegevens bevat om verbinding te maken met de virtuele machine. Kopieer de waarde van de **openbare SSH-vermelding** in het gedeelte met **uitvoer**:
+Zodra de implementatie is voltooid, ontvangt u de uitvoer met JSON-indeling in de CLI die de SSH-gegevens bevat om verbinding te maken met de virtuele machine. Kopieer de waarde van de **openbare SSH-vermelding** in het gedeelte met **uitvoer** :
 
    ![De openbare SSH-waarde ophalen uit de uitvoer](./media/quickstart-linux/outputs-public-ssh.png)
 
@@ -175,7 +175,7 @@ Zodra er verbinding met uw virtuele machine is gemaakt, controleert u of de runt
    journalctl -u iotedge
    ```
 
-3. Bekijk alle modules die op uw IoT Edge-apparaat worden uitgevoerd. Aangezien de service net voor het eerst is gestart, zou u moeten zien dat alleen de **edgeAgent**-module actief is. De edgeAgent-module wordt standaard uitgevoerd en helpt bij het installeren en starten van aanvullende modules die u op uw apparaat implementeert.
+3. Bekijk alle modules die op uw IoT Edge-apparaat worden uitgevoerd. Aangezien de service net voor het eerst is gestart, zou u moeten zien dat alleen de **edgeAgent** -module actief is. De edgeAgent-module wordt standaard uitgevoerd en helpt bij het installeren en starten van aanvullende modules die u op uw apparaat implementeert.
 
    ```bash
    sudo iotedge list
@@ -229,7 +229,7 @@ Als u uw virtuele machine en IoT-hub in een nieuwe resourcegroep hebt gemaakt, k
 > [!IMPORTANT]
 > Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt.
 
-Verwijder de groep **IoTEdgeResources**. Het kan enkele minuten duren voordat een resourcegroep is verwijderd.
+Verwijder de groep **IoTEdgeResources** . Het kan enkele minuten duren voordat een resourcegroep is verwijderd.
 
 ```azurecli-interactive
 az group delete --name IoTEdgeResources

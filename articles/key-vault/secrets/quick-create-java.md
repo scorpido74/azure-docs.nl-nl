@@ -2,18 +2,18 @@
 title: 'Quickstart: Azure Key Vault-clientbibliotheek voor Java'
 description: Biedt indelings- en inhoudscriteria voor het schrijven van quickstarts voor Azure SDK-clientbibliotheken.
 author: msmbaldwin
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 87d7bbaa40226e02726b92cf7f7705c8028149f7
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: f4008b43c487f9dd1c8cfe5e5b67a250ff849daf
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019627"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786204"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-java"></a>Quickstart: Azure Key Vault-clientbibliotheek voor geheimen voor Java
 
@@ -37,7 +37,7 @@ In deze quickstart wordt ervan uitgegaan dat u [Azure CLI](/cli/azure/install-az
 
 ## <a name="setting-up"></a>Instellen
 
-Deze quickstart maakt gebruik van de Azure Identity-bibliotheek met Azure CLI om de gebruiker te verifiëren bij Azure-services. Ontwikkelaars kunnen ook Visual Studio of Visual Studio Code gebruiken om hun oproepen te verifiëren: zie [De client verifiëren met de Azure Identity-clientbibliotheek](https://docs.microsoft.com/java/api/overview/azure/identity-readme) (Engelstalig) voor meer informatie
+Deze quickstart maakt gebruik van de Azure Identity-bibliotheek met Azure CLI om de gebruiker te verifiëren bij Azure-services. Ontwikkelaars kunnen ook Visual Studio of Visual Studio Code gebruiken om hun oproepen te verifiëren: zie [De client verifiëren met de Azure Identity-clientbibliotheek](/java/api/overview/azure/identity-readme) (Engelstalig) voor meer informatie
 
 ### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 

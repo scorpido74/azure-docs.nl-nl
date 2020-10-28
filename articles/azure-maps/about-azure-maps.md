@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 11a0ddc5c7b297d0700e6fd07d60f8efe0e55a8f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 082695069a66efb3919be0667407ba73d963c572
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91285329"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92889949"
 ---
 # <a name="what-is-azure-maps"></a>Wat is Azure Maps?
 
@@ -60,29 +60,29 @@ Azure Maps bestaat uit de volgende services die uw Azure-toepassingen van geogra
 
 ### <a name="data-service"></a>Gegevensservice
 
-Gegevens zijn van cruciaal belang voor kaarten. Gebruik de gegevensservice om georuimtelijke gegevens te uploaden en op te slaan voor gebruik met ruimtelijke bewerkingen of om installatiekopieën samen te stellen.  Door klantgegevens dichter bij de Azure Maps-service te brengen, wordt de latentie verminderd, de productiviteit verhoogd en nieuwe scenario's gemaakt in uw toepassingen. Zie de [documentatie van de gegevensservice](https://docs.microsoft.com/rest/api/maps/data) voor meer informatie over deze service.
+Gegevens zijn van cruciaal belang voor kaarten. Gebruik de gegevensservice om georuimtelijke gegevens te uploaden en op te slaan voor gebruik met ruimtelijke bewerkingen of om installatiekopieën samen te stellen.  Door klantgegevens dichter bij de Azure Maps-service te brengen, wordt de latentie verminderd, de productiviteit verhoogd en nieuwe scenario's gemaakt in uw toepassingen. Zie de [documentatie van de gegevensservice](/rest/api/maps/data) voor meer informatie over deze service.
 
 ### <a name="geolocation-service"></a>Geolocatie-service
 
 Gebruik de IP van de Geolocatie-service om een voorbeeld te zien van het opgehaalde tweeletterige land-/regionummer voor een IP-adres. Deze service kan u helpen om de gebruikerservaring te verbeteren door een aangepaste toepassingsinhoud op basis van geografische locatie te bieden.
 
-Lees voor meer informatie de [documentatie over de geolocatie-service](https://docs.microsoft.com/rest/api/maps/geolocation).
+Lees voor meer informatie de [documentatie over de geolocatie-service](/rest/api/maps/geolocation).
 
 ### <a name="mobility-service"></a>Mobility-service
 
 De Azure Maps Mobility-service verbetert de ontwikkelingstijd voor toepassingen voor het openbaar vervoer, zoals transitroutering en zoeken naar OV-stops in de buurt. Gebruikers kunnen gedetailleerde informatie ophalen over OV-haltes, -lijnen en -schema's. De Mobility-service biedt gebruikers ook de mogelijkheid om halte- en lijngeometrieën, waarschuwingen voor haltes, lijnen en servicegebieden, en realtime aankomsttijden van openbaar vervoer en servicewaarschuwingen. Daarnaast biedt de Mobility-service mogelijkheden voor routering met multimodale opties voor reisplanning. Met multimodale reisplanning worden de opties voor lopen, fietsen en openbaar vervoer in één reis opgenomen. Gebruikers hebben ook toegang tot gedetailleerde multimodale stapsgewijze routes.
 
-Zie de [Mobility-documentatie](https://docs.microsoft.com/rest/api/maps/mobility) voor meer informatie over de service.
+Zie de [Mobility-documentatie](/rest/api/maps/mobility) voor meer informatie over de service.
 
 ### <a name="render-service"></a>Service voor rendering
 
-De [Render-Service v2](https://docs.microsoft.com/rest/api/maps/renderv2) waarvan nu een preview-versie beschikbaar is, introduceert een nieuwe versie van de [Get Map Tile V2-API](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview). Met de Get Map Tile V2-API kunnen klanten nu Azure Maps wegtegels, weertegels of kaarttegels aanvragen die zijn gemaakt met behulp van Azure Maps Maker. Het is raadzaam om de nieuwe Get Map Tile V2-API te gebruiken.  
+De [Render-Service v2](/rest/api/maps/renderv2) waarvan nu een preview-versie beschikbaar is, introduceert een nieuwe versie van de [Get Map Tile V2-API](/rest/api/maps/renderv2/getmaptilepreview). Met de Get Map Tile V2-API kunnen klanten nu Azure Maps wegtegels, weertegels of kaarttegels aanvragen die zijn gemaakt met behulp van Azure Maps Maker. Het is raadzaam om de nieuwe Get Map Tile V2-API te gebruiken.  
 
 :::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="Voorbeeld van een toewijzing van een gewijzigde populatie die is gemaakt met Azure Maps Web SDK":::
 
-Lees de pagina [Render service V2-documentatie](https://docs.microsoft.com/rest/api/maps/renderv2) voor meer informatie.
+Lees de pagina [Render service V2-documentatie](/rest/api/maps/renderv2) voor meer informatie.
 
-Voor meer informatie over de Render service v1 die algemeen beschikbaar is, raadpleegt u de [Render service v1-documentatie](https://docs.microsoft.com/rest/api/maps/render).  
+Voor meer informatie over de Render service v1 die algemeen beschikbaar is, raadpleegt u de [Render service v1-documentatie](/rest/api/maps/render).  
 
 ### <a name="route-service"></a>Routeservice
 
@@ -96,7 +96,7 @@ De routeservice biedt geavanceerde instelfuncties, zoals:
 * De matrices van reistijd en afstand tussen een reeks aanvangspunten en bestemmingen.
 * Routes of afstanden zoeken die gebruikers kunnen reizen op basis van tijd- of brandstofvereisten.
 
-Lees de pagina [Routeservice-documentatie](https://docs.microsoft.com/rest/api/maps/route) voor meer informatie over de routeringsmogelijkheden.
+Lees de pagina [Routeservice-documentatie](/rest/api/maps/route) voor meer informatie over de routeringsmogelijkheden.
 
 ### <a name="search-service"></a>Zoekservice
 
@@ -111,13 +111,13 @@ De Search-service biedt ook geavanceerde functies zoals:
 * Batch een groep met zoekopdrachten.
 * Zoek oplaadstations en POI-gegevens op merknaam.
 
-Lees de pagina [Zoekservice-documentatie](https://docs.microsoft.com/rest/api/maps/search) voor meer informatie over zoekmogelijkheden.
+Lees de pagina [Zoekservice-documentatie](/rest/api/maps/search) voor meer informatie over zoekmogelijkheden.
 
 ### <a name="spatial-service"></a>Ruimtelijke service
 
 De locatiegegevens worden snel geanalyseerd door de ruimtelijke service om klanten te informeren over lopende gebeurtenissen die in de tijd en ruimte plaatsvinden. De service maakt bijna realtime analyse en voorspellende modellering van gebeurtenissen mogelijk.
 
-Met de service kunnen klanten hun locatiegegevens verbeteren met een bibliotheek met algemene georuimtelijke wiskundige berekeningen. Veelvoorkomende berekeningen zijn onder andere het dichtstbijzijnde punt, orthodromische afstand en buffers. Lees voor meer informatie over de service en de verschillende functies de [Ruimtelijke service-documentatie](https://docs.microsoft.com/rest/api/maps/spatial).
+Met de service kunnen klanten hun locatiegegevens verbeteren met een bibliotheek met algemene georuimtelijke wiskundige berekeningen. Veelvoorkomende berekeningen zijn onder andere het dichtstbijzijnde punt, orthodromische afstand en buffers. Lees voor meer informatie over de service en de verschillende functies de [Ruimtelijke service-documentatie](/rest/api/maps/spatial).
 
 ### <a name="timezone-service"></a>Tijdzone-service
 
@@ -155,7 +155,7 @@ Een typisch JSON-antwoord voor een query in de Time zone-service ziet er als vol
 }
 ```
 
-Lees de [Tijdzone-documentatie](https://docs.microsoft.com/rest/api/maps/timezone) voor meer informatie over deze service.
+Lees de [Tijdzone-documentatie](/rest/api/maps/timezone) voor meer informatie over deze service.
 
 ### <a name="traffic-service"></a>Verkeersservice
 
@@ -166,15 +166,15 @@ De Traffic-service is een suite van webservices die ontwikkelaars kunnen gebruik
 
 ![Voorbeeld van een kaart met verkeersgegevens](media/about-azure-maps/intro_traffic.png)
 
-Zie de [documentatie van de verkeersservice](https://docs.microsoft.com/rest/api/maps/traffic) voor meer informatie.
+Zie de [documentatie van de verkeersservice](/rest/api/maps/traffic) voor meer informatie.
 
 ### <a name="weather-service"></a>Weerservices
 
 De weerservice biedt API’s die ontwikkel aars kunnen gebruiken om weergegevens voor een bepaalde locatie op te halen. De informatie bevat details, zoals de datum en tijd van observatie, een korte beschrijving van de weersomstandigheden, het weerpictogram, de vlagmarkeringen, de temperatuur en de windsnelheid. Er worden ook extra gegevens weergegeven, zoals de RealFeel™-temperatuur en UV-index.
 
-Ontwikkelaars kunnen de [Get Weather along route-API](https://docs.microsoft.com/rest/api/maps/weather/getweatheralongroutepreview) gebruiken om weerinformatie te verkrijgen voor een bepaalde route. De service biedt ook ondersteuning voor het genereren van weermeldingen voor waypoints die worden beïnvloed door weerrisico's, zoals overstromingen of zware regenbuien.
+Ontwikkelaars kunnen de [Get Weather along route-API](/rest/api/maps/weather/getweatheralongroutepreview) gebruiken om weerinformatie te verkrijgen voor een bepaalde route. De service biedt ook ondersteuning voor het genereren van weermeldingen voor waypoints die worden beïnvloed door weerrisico's, zoals overstromingen of zware regenbuien.
 
-Met de [Get Map Tile V2-API](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) kunt u de tegels voor vroegere, huidige en toekomstige radar- en satellietgegevens opvragen.
+Met de [Get Map Tile V2-API](/rest/api/maps/renderv2/getmaptilepreview) kunt u de tegels voor vroegere, huidige en toekomstige radar- en satellietgegevens opvragen.
 
 ![Voorbeeld van een kaart met realtime weergave van radargegeven](media/about-azure-maps/intro_weather.png)
 
@@ -184,21 +184,21 @@ Maps Creator-service is een suite van webservices die ontwikkelaars kunnen gebru
 
 Maps Creator biedt drie basisservices:
 
-* [Gegevenssetservice](https://docs.microsoft.com/rest/api/maps/dataset). De DataSet-service gebruiken om een gegevensset te maken op basis van geconverteerde gegevens voor tekenpakketen. Zie Vereisten tekenpakket voor meer informatie over vereisten voor tekenpakketten.
+* [Gegevenssetservice](/rest/api/maps/dataset). De DataSet-service gebruiken om een gegevensset te maken op basis van geconverteerde gegevens voor tekenpakketen. Zie Vereisten tekenpakket voor meer informatie over vereisten voor tekenpakketten.
 
-* [Conversieservice](https://docs.microsoft.com/rest/api/maps/dataset). Gebruik de conversieservice om een DWG-ontwerp bestand te converteren naar gegevens voor tekenpakketten voor indoor kaarten.
+* [Conversieservice](/rest/api/maps/dataset). Gebruik de conversieservice om een DWG-ontwerp bestand te converteren naar gegevens voor tekenpakketten voor indoor kaarten.
 
-* [Tegelsetservice](https://docs.microsoft.com/rest/api/maps/tileset). Gebruik de Tegelset-service om een op vector gebaseerde weergave van een gegevensset te maken. Toepassingen kunnen een tegelset gebruiken om een weergave op basis van een visuele tegel van de gegevensset te presenteren.
+* [Tegelsetservice](/rest/api/maps/tileset). Gebruik de Tegelset-service om een op vector gebaseerde weergave van een gegevensset te maken. Toepassingen kunnen een tegelset gebruiken om een weergave op basis van een visuele tegel van de gegevensset te presenteren.
 
-* [Functiestatusservice](https://docs.microsoft.com/rest/api/maps/featurestate). Gebruik de functie Statusservice om dynamische kaartstijlen te ondersteunen. Met dynamische kaartstijlen kunnen toepassingen realtime gebeurtenissen weergeven in ruimten van IoT-systemen.
+* [Functiestatusservice](/rest/api/maps/featurestate). Gebruik de functie Statusservice om dynamische kaartstijlen te ondersteunen. Met dynamische kaartstijlen kunnen toepassingen realtime gebeurtenissen weergeven in ruimten van IoT-systemen.
 
-* [WFS-service](https://docs.microsoft.com/rest/api/maps/featurestate). Gebruik de WFS-service om een query uit te voeren op uw indoor kaartgegevens. De WFS-service volgt de [Open Geospatial Consortium-API](http://docs.opengeospatial.org/is/17-069r3/17-069r3.html) standaarden voor het uitvoeren van query's op één gegevensset.
+* [WFS-service](/rest/api/maps/featurestate). Gebruik de WFS-service om een query uit te voeren op uw indoor kaartgegevens. De WFS-service volgt de [Open Geospatial Consortium-API](http://docs.opengeospatial.org/is/17-069r3/17-069r3.html) standaarden voor het uitvoeren van query's op één gegevensset.
 
 ## <a name="programming-model"></a>Programmeermodel
 
-Azure Maps is gebouwd voor mobiliteit en kan u helpen platformoverschrijdende toepassingen te ontwikkelen. Het maakt gebruik van een programmeermodel dat taalonafhankelijk is en dat JSON-uitvoer ondersteunt door middel van [REST API's](https://docs.microsoft.com/rest/api/maps/).
+Azure Maps is gebouwd voor mobiliteit en kan u helpen platformoverschrijdende toepassingen te ontwikkelen. Het maakt gebruik van een programmeermodel dat taalonafhankelijk is en dat JSON-uitvoer ondersteunt door middel van [REST API's](/rest/api/maps/).
 
-Azure Maps biedt ook een handig [kaartbesturingselement van JavaScript](https://docs.microsoft.com/javascript/api/azure-maps-control) met een eenvoudig programmeermodel. De ontwikkeling is snel en eenvoudig voor zowel web- als mobiele toepassingen.
+Azure Maps biedt ook een handig [kaartbesturingselement van JavaScript](/javascript/api/azure-maps-control) met een eenvoudig programmeermodel. De ontwikkeling is snel en eenvoudig voor zowel web- als mobiele toepassingen.
 
 ## <a name="power-bi-visual"></a>Power BI-visual
 

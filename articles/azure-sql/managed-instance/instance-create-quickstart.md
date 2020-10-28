@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein
 ms.date: 09/26/2019
-ms.openlocfilehash: 2f2e8c6be128e5004769dca2f42a6c8013510cde
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bf606af0425c04873dadcf47932c806a1099942a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91325229"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788703"
 ---
 # <a name="quickstart-create-a-managed-instance-of-sql-managed-instance"></a>Quickstart: Een beheerd exemplaar van SQL Managed Instance maken
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -36,8 +36,8 @@ Als u nog geen abonnement op Azure hebt, [maak dan een gratis account](https://a
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Selecteer **Azure SQL** in het linkermenu van de Microsoft Azure-portal. Als **Azure SQL** niet in de lijst staat, selecteert u **Alle services** en voert u vervolgens **Azure SQL** in het zoekvak in.
-1. Selecteer **+ Toevoegen** om de pagina **SQL-implementatieoptie selecteren** te openen. U kunt aanvullende informatie over een met Azure SQL beheerd exemplaar bekijken door **Details weergeven** te selecteren op de tegel **SQL Managed Instance**.
-1. Selecteer **Maken**.
+1. Selecteer **+ Toevoegen** om de pagina **SQL-implementatieoptie selecteren** te openen. U kunt aanvullende informatie over een met Azure SQL beheerd exemplaar bekijken door **Details weergeven** te selecteren op de tegel **SQL Managed Instance** .
+1. Selecteer **Maken** .
 
    ![Een beheerd exemplaar maken](./media/instance-create-quickstart/create-managed-instance.png)
 
@@ -45,7 +45,7 @@ Als u nog geen abonnement op Azure hebt, [maak dan een gratis account](https://a
 
 ### <a name="basics-tab"></a>Tabblad Basisbeginselen
 
-- Vul verplichte gegevens in die vereist zijn op het tabblad **Basisbeginselen**. Dit is een set informatie die minimaal vereist is voor het inrichten van een beheerd exemplaar.
+- Vul verplichte gegevens in die vereist zijn op het tabblad **Basisbeginselen** . Dit is een set informatie die minimaal vereist is voor het inrichten van een beheerd exemplaar.
 
    ![Tabblad 'Basis' voor het maken van een beheerd exemplaar](./media/instance-create-quickstart/mi-create-tab-basics.png)
 
@@ -64,11 +64,11 @@ Als u nog geen abonnement op Azure hebt, [maak dan een gratis account](https://a
 
    ![Formulier voor beheerd exemplaar](./media/instance-create-quickstart/mi-create-tab-configure-performance.png)
 
-- Als u uw keuzes wilt bekijken voordat u een met SQL beheerd exemplaar maakt, selecteert u **Controleren en maken**. U kunt ook de netwerkopties configureren door te selecteren **Volgende: Netwerken**.
+- Als u uw keuzes wilt bekijken voordat u een met SQL beheerd exemplaar maakt, selecteert u **Controleren en maken** . U kunt ook de netwerkopties configureren door te selecteren **Volgende: Netwerken** .
 
 ### <a name="networking-tab"></a>Tabblad Netwerken
 
-- Vul optionele informatie in op het tabblad **Netwerken**. Als u deze informatie weglaat, worden de standaardinstellingen toegepast door de portal.
+- Vul optionele informatie in op het tabblad **Netwerken** . Als u deze informatie weglaat, worden de standaardinstellingen toegepast door de portal.
 
    ![Tabblad 'Netwerken' voor het maken van een beheerd exemplaar](./media/instance-create-quickstart/mi-create-tab-networking.png)
 
@@ -78,14 +78,14 @@ Als u nog geen abonnement op Azure hebt, [maak dan een gratis account](https://a
    | ------ | --------------- | ----------- |
    | **Virtueel netwerk** | Selecteer **Nieuw virtueel netwerk maken** of een geldig virtueel netwerk en subnet.| Als een netwerk/subnet niet beschikbaar is, moet het worden [gewijzigd om te voldoen aan de netwerkvereisten](vnet-existing-add-subnet.md) voordat u het als doel voor het nieuwe beheerde exemplaar kunt selecteren. Zie [Een virtueel netwerk configureren voor een met SQL beheerd exemplaar](connectivity-architecture-overview.md) voor informatie over de vereisten voor het configureren van de netwerkomgeving voor een met SQL beheerd exemplaar. |
    | **Verbindingstype** | Kies tussen het verbindingstype Proxy of Omleiding.|Zie [Verbindingstype voor Azure SQL Managed Instance](../database/connectivity-architecture.md#connection-policy) voor meer informatie over verbindingstypen.|
-   | **Openbaar eindpunt**  | Selecteer **Inschakelen**. | Als u wilt dat een beheerd exemplaar toegankelijk is via het eindpunt voor openbare gegevens, moet u deze optie inschakelen. | 
-   | **Toegang toestaan vanaf** (als **Openbaar eindpunt** is ingeschakeld) | Selecteer een van de opties.   |In de portal kunt u een beveiligingsgroep configureren met een openbaar eindpunt. </br> </br> Selecteer op basis van uw scenario een van de volgende opties: </br> <ul> <li>**Azure-services**: We raden deze optie aan wanneer u verbinding maakt vanuit Power BI of een andere service voor meerdere tenants. </li> <li> **Internet**: Gebruik dit om te testen wanneer u snel een beheerd exemplaar wilt maken. Deze optie wordt niet aanbevolen in productieomgevingen. </li> <li> **Geen toegang**: Met deze optie maakt u de beveiligingsregel **Weigeren**. Wijzig deze regel om een beheerd exemplaar toegankelijk te maken via een openbaar eindpunt. </li> </ul> </br> Zie [Een met Azure SQL beheerd exemplaar veilig gebruiken met een openbaar eindpunt](public-endpoint-overview.md) voor meer informatie over de beveiliging van een openbaar eindpunt.|
+   | **Openbaar eindpunt**  | Selecteer **Inschakelen** . | Als u wilt dat een beheerd exemplaar toegankelijk is via het eindpunt voor openbare gegevens, moet u deze optie inschakelen. | 
+   | **Toegang toestaan vanaf** (als **Openbaar eindpunt** is ingeschakeld) | Selecteer een van de opties.   |In de portal kunt u een beveiligingsgroep configureren met een openbaar eindpunt. </br> </br> Selecteer op basis van uw scenario een van de volgende opties: </br> <ul> <li>**Azure-services** : We raden deze optie aan wanneer u verbinding maakt vanuit Power BI of een andere service voor meerdere tenants. </li> <li> **Internet** : Gebruik dit om te testen wanneer u snel een beheerd exemplaar wilt maken. Deze optie wordt niet aanbevolen in productieomgevingen. </li> <li> **Geen toegang** : Met deze optie maakt u de beveiligingsregel **Weigeren** . Wijzig deze regel om een beheerd exemplaar toegankelijk te maken via een openbaar eindpunt. </li> </ul> </br> Zie [Een met Azure SQL beheerd exemplaar veilig gebruiken met een openbaar eindpunt](public-endpoint-overview.md) voor meer informatie over de beveiliging van een openbaar eindpunt.|
 
-- Als u uw keuzes wilt bekijken voordat u een beheerd exemplaar maakt, kunt u **Bekijken en maken** selecteren. U kunt ook meer aangepaste instellingen configureren door  **te selecteren. We gaan nu verder met: Aanvullende instellingen**.
+- Als u uw keuzes wilt bekijken voordat u een beheerd exemplaar maakt, kunt u **Bekijken en maken** selecteren. U kunt ook meer aangepaste instellingen configureren door  **te selecteren. We gaan nu verder met: Aanvullende instellingen** .
 
 ### <a name="additional-settings"></a>Aanvullende instellingen
 
-- Vul optionele informatie in op het tabblad **Aanvullende instellingen**. Als u deze informatie weglaat, worden de standaardinstellingen toegepast door de portal.
+- Vul optionele informatie in op het tabblad **Aanvullende instellingen** . Als u deze informatie weglaat, worden de standaardinstellingen toegepast door de portal.
 
    ![Tabblad 'Aanvullende instellingen' voor het maken van een beheerd exemplaar](./media/instance-create-quickstart/mi-create-tab-additional-settings.png)
 
@@ -93,10 +93,10 @@ Als u nog geen abonnement op Azure hebt, [maak dan een gratis account](https://a
 
    | Instelling| Voorgestelde waarde | Beschrijving |
    | ------ | --------------- | ----------- |
-   | **Sortering** | Kies de sortering die u wilt gebruiken voor uw beheerde exemplaar. Als u SQL Server-databases wilt migreren, moet u de bronsortering controleren met `SELECT SERVERPROPERTY(N'Collation')` en die waarde gebruiken.| Raadpleeg [De serversortering instellen of wijzigen](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation) voor informatie over sorteringen.|   
+   | **Sortering** | Kies de sortering die u wilt gebruiken voor uw beheerde exemplaar. Als u SQL Server-databases wilt migreren, moet u de bronsortering controleren met `SELECT SERVERPROPERTY(N'Collation')` en die waarde gebruiken.| Raadpleeg [De serversortering instellen of wijzigen](/sql/relational-databases/collations/set-or-change-the-server-collation) voor informatie over sorteringen.|   
    | **Tijdzone** | Selecteer de tijdzone die het beheerde exemplaar moet gebruiken.|Zie [Tijdzones](timezones-overview.md) voor meer informatie.|
-   | **Gebruiken als secundaire failover** | Selecteer **Ja**. | Schakel deze optie in als u het beheerde exemplaar wilt gebruiken als een secundaire failovergroep.|
-   | **Primair met SQL beheerd exemplaar** (als **Gebruiken als secundaire failover** is ingesteld op **Ja**) | Kies een bestaand primair beheerd exemplaar dat wordt toegevoegd aan dezelfde DNS-zone met het beheerde exemplaar dat u nu maakt. | Met deze stap wordt de configuratie van de failovergroep na het maken ingeschakeld. Zie [Zelfstudie: een beheerd exemplaar aan een failovergroep toevoegen](failover-group-add-instance-tutorial.md).|
+   | **Gebruiken als secundaire failover** | Selecteer **Ja** . | Schakel deze optie in als u het beheerde exemplaar wilt gebruiken als een secundaire failovergroep.|
+   | **Primair met SQL beheerd exemplaar** (als **Gebruiken als secundaire failover** is ingesteld op **Ja** ) | Kies een bestaand primair beheerd exemplaar dat wordt toegevoegd aan dezelfde DNS-zone met het beheerde exemplaar dat u nu maakt. | Met deze stap wordt de configuratie van de failovergroep na het maken ingeschakeld. Zie [Zelfstudie: een beheerd exemplaar aan een failovergroep toevoegen](failover-group-add-instance-tutorial.md).|
 
 ## <a name="review--create"></a>Beoordelen en maken
 
@@ -119,8 +119,8 @@ Als u nog geen abonnement op Azure hebt, [maak dan een gratis account](https://a
 
 > [!TIP]
 > Als u de webbrowser of het scherm met de implementatievoortgang hebt afgesloten, volgt u deze stappen om dit scherm weer te vinden:
-> 1. Open in de Microsoft Azure-portal de resourcegroep (op het tabblad **Basisbeginselen**) waarin u een met SQL beheerd exemplaar gaat implementeren.
-> 2. Selecteer **Implementaties**.
+> 1. Open in de Microsoft Azure-portal de resourcegroep (op het tabblad **Basisbeginselen** ) waarin u een met SQL beheerd exemplaar gaat implementeren.
+> 2. Selecteer **Implementaties** .
 > 3. Selecteer de SQL Managed Instance-implementatie die wordt uitgevoerd.
 
 > [!IMPORTANT]
@@ -169,11 +169,11 @@ Als u verbinding wilt maken met SQL Managed Instance, voert u de volgende stappe
 
    ![Beheerd exemplaar in de resourcegroep](./media/instance-create-quickstart/managed-instance.png)
 
-2. Ga naar het tabblad **Overzicht** en zoek de eigenschap **Host**. Kopieer de hostnaam voor het beheerde exemplaar voor gebruik in de volgende quickstart.
+2. Ga naar het tabblad **Overzicht** en zoek de eigenschap **Host** . Kopieer de hostnaam voor het beheerde exemplaar voor gebruik in de volgende quickstart.
 
    ![Hostnaam](./media/instance-create-quickstart/host-name.png)
 
-   De gekopieerde waarde vertegenwoordigt een FQDN die kan worden gebruikt om verbinding te maken met SQL Managed Instance. Deze is vergelijkbaar met het volgende voorbeeld: *uw_hostnaam.a1b2c3d4e5f6.database.windows.net*.
+   De gekopieerde waarde vertegenwoordigt een FQDN die kan worden gebruikt om verbinding te maken met SQL Managed Instance. Deze is vergelijkbaar met het volgende voorbeeld: *uw_hostnaam.a1b2c3d4e5f6.database.windows.net* .
 
 ## <a name="next-steps"></a>Volgende stappen
 

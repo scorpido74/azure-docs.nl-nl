@@ -9,12 +9,12 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: queues
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3b9aadf7d9cd27763cafb878d0b35d13a140a304
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3f6e10d3e5b33a07c223a3913bba0b220df2ff64
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89008400"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787377"
 ---
 # <a name="performance-and-scalability-checklist-for-queue-storage"></a>Controlelijst voor prestaties en schaalbaarheid van Queue Storage
 
@@ -52,7 +52,7 @@ In dit artikel worden bewezen procedures voor prestaties georganiseerd in een co
 
 Als uw toepassing een van de schaalbaarheidsdoelen benadert of overschrijdt, kunnen er meer latenties in of beperkingen voor transacties optreden. Wanneer Azure Storage uw toepassing beperkt, begint de service met het retourneren van de foutcodes 503 (server bezet) of 500 (time-out voor bewerking). Het vermijden van deze fouten door binnen de grenzen van de schaalbaarheidsdoelen te blijven vormt een belangrijk onderdeel van het verbeteren van de prestaties van uw toepassing.
 
-Zie [Schaalbaarheids- en prestatiedoelen voor Azure Storage](/azure/storage/queues/scalability-targets#scale-targets-for-queue-storage) voor meer informatie over de schaalbaarheidsdoelen voor de Queue-service.
+Zie [Schaalbaarheids- en prestatiedoelen voor Azure Storage](./scalability-targets.md#scale-targets-for-queue-storage) voor meer informatie over de schaalbaarheidsdoelen voor de Queue-service.
 
 ### <a name="maximum-number-of-storage-accounts"></a>Maximumaantal opslagaccounts
 
@@ -128,7 +128,7 @@ Stel de verbindingslimiet in voordat u verbindingen opent.
 
 Raadpleeg voor andere programmeertalen de documentatie van die taal om te bepalen hoe de verbindingslimiet moet worden ingesteld.  
 
-Zie voor meer informatie het blogbericht [Webservices: Gelijktijdige verbindingen](https://blogs.msdn.microsoft.com/darrenj/2005/03/07/web-services-concurrent-connections/).  
+Zie voor meer informatie het blogbericht [Webservices: Gelijktijdige verbindingen](/archive/blogs/darrenj/web-services-concurrent-connections).  
 
 ### <a name="increase-minimum-number-of-threads"></a>Minimumaantal threads verhogen
 
@@ -146,7 +146,7 @@ Parallelle uitvoering kan ideaal zijn voor de prestaties, maar wees voorzichtig 
 
 ## <a name="client-libraries-and-tools"></a>Clientbibliotheken en hulpprogramma's
 
-Gebruik altijd de nieuwste clientbibliotheken en hulpprogramma's van Microsoft voor de beste prestaties. Azure Storage-clientbibliotheken zijn beschikbaar in diverse talen. Azure Storage biedt ook ondersteuning voor PowerShell en Azure CLI. Microsoft ontwikkelt deze clientbibliotheken en hulpprogramma's actief met het oog op de prestaties, houdt ze up-to-date met de nieuwste serviceversies en zorgt ervoor dat ze een groot aantal van de bewezen uitvoeringspraktijken intern verwerken. Zie de referentiedocumentatie bij [Azure Storage](/azure/storage/#reference) voor meer informatie.
+Gebruik altijd de nieuwste clientbibliotheken en hulpprogramma's van Microsoft voor de beste prestaties. Azure Storage-clientbibliotheken zijn beschikbaar in diverse talen. Azure Storage biedt ook ondersteuning voor PowerShell en Azure CLI. Microsoft ontwikkelt deze clientbibliotheken en hulpprogramma's actief met het oog op de prestaties, houdt ze up-to-date met de nieuwste serviceversies en zorgt ervoor dat ze een groot aantal van de bewezen uitvoeringspraktijken intern verwerken. Zie de referentiedocumentatie bij [Azure Storage](./reference.md) voor meer informatie.
 
 ## <a name="handle-service-errors"></a>Servicefouten afhandelen
 

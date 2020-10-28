@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 997d74b1afc59e72b2c3fe7a7d47166d5efb8715
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: mvc, devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 69571afceddab61c2a6134516e237facfb7a5073
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89072975"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746885"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Quickstart: Een Stream Analytics-taak maken met behulp van Azure PowerShell
 
@@ -90,7 +90,7 @@ In het volgende codeblok van de Azure CLI worden meerdere opdrachten uitgevoerd 
     az iot hub show-connection-string --hub-name "MyASAIoTHub"
     ```
 
-3. Voeg een apparaat toe aan IoT Hub met behulp van de opdracht [az iothub-device identity create](../iot-hub/quickstart-send-telemetry-c.md#register-a-device). In dit voorbeeld maakt u een apparaat met de naam **MyASAIoTDevice**.
+3. Voeg een apparaat toe aan IoT Hub met behulp van de opdracht [az iothub-device identity create](../iot-hub/quickstart-send-telemetry-c.md#register-a-device). In dit voorbeeld maakt u een apparaat met de naam **MyASAIoTDevice** .
 
     ```azurecli
     az iot hub device-identity create --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice"
@@ -304,7 +304,7 @@ New-AzStreamAnalyticsTransformation `
 
 2. Vervang de tijdelijke aanduiding op regel 15 door de verbindingsreeks van het Azure IoT Hub-apparaat die u hebt opgeslagen in een eerdere sectie.
 
-3. Klik op **Run**. De uitvoer geeft de sensorgegevens en berichten weer die worden verzonden naar de IoT-hub.
+3. Klik op **Run** . De uitvoer geeft de sensorgegevens en berichten weer die worden verzonden naar de IoT-hub.
 
     ![Raspberry Pi Azure IoT Online Simulator](./media/stream-analytics-quick-create-powershell/ras-pi-connection-string.png)
 

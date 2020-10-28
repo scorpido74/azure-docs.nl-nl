@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 18f717ca05e93c9a8f06ac8868e9a6e5ff80eadb
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 413786cf8946c1ffbb76bd0e18eae7c7ba16a9c1
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91355530"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790743"
 ---
 # <a name="quickstart-restore-a-database-to-azure-sql-managed-instance-with-ssms"></a>Quickstart: Een database terugzetten in Azure SQL Managed Instance met SQL Server Management Studio
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -35,14 +35,14 @@ In deze quickstart gebruikt u SQL Server Management Studio (SSMS) om een databas
 Voor deze snelstartgids geldt het volgende:
 
 - Maakt gebruik van resources uit de quickstart [Een beheerd exemplaar maken](instance-create-quickstart.md).
-- De nieuwste versie van [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) moet zijn geïnstalleerd.
+- De nieuwste versie van [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) moet zijn geïnstalleerd.
 - Er moet gebruik worden gemaakt van SQL Server Management Studio voor verbinding met SQL Managed Instance. Raadpleeg de volgende snelstart voor het maken van verbinding:
   - [Een openbaar eindpunt inschakelen](public-endpoint-configure.md) in SQL Managed Instance. Dit is de aanbevolen methode voor deze zelfstudie.
   - [Verbinding maken met SQL Managed Instance vanaf een Azure-VM](connect-vm-instance-configure.md).
   - [Vanuit on-premises een punt-naar-site-verbinding configureren naar SQL Managed Instance](point-to-site-p2s-configure.md).
 
 > [!NOTE]
-> Zie [Back-up van SQL Server naar URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017) voor meer informatie over het maken van een back-up van een SQL Server-database met behulp van Azure Blob Storage en een [SAS-sleutel (Shared Access Signature)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) en het herstellen van de back-up.
+> Zie [Back-up van SQL Server naar URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017) voor meer informatie over het maken van een back-up van een SQL Server-database met behulp van Azure Blob Storage en een [SAS-sleutel (Shared Access Signature)](../../storage/common/storage-sas-overview.md) en het herstellen van de back-up.
 
 ## <a name="restore-from-a-backup-file"></a>Herstellen vanuit een back-upbestand
 
@@ -50,7 +50,7 @@ Volg in SQL Server Management Studio deze stappen om de Wide World Importers-dat
 
 1. Open SQL Server Management Studio en maak verbinding met uw beheerde exemplaar.
 2. Klik in **Objectverkenner** met de rechtermuisknop op uw beheerde exemplaar en selecteer **Nieuwe query** om een nieuw queryvenster te openen.
-3. Voer het volgende SQL-script uit. Dit maakt gebruik van een vooraf geconfigureerd opslagaccount en SAS-sleutel om [een referentie te maken](https://docs.microsoft.com/sql/t-sql/statements/create-credential-transact-sql) in uw beheerde exemplaar.
+3. Voer het volgende SQL-script uit. Dit maakt gebruik van een vooraf geconfigureerd opslagaccount en SAS-sleutel om [een referentie te maken](/sql/t-sql/statements/create-credential-transact-sql) in uw beheerde exemplaar.
 
    ```sql
    CREATE CREDENTIAL [https://mitutorials.blob.core.windows.net/databases]
@@ -88,15 +88,15 @@ Volg in SQL Server Management Studio deze stappen om de Wide World Importers-dat
    WHERE r.command in ('BACKUP DATABASE','RESTORE DATABASE')
    ```
 
-7. Wanneer het herstellen is voltooid, bekijkt u de database in Objectverkenner. U kunt controleren of het terugzetten van de database is voltooid met behulp van de weergave [sys.dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database).
+7. Wanneer het herstellen is voltooid, bekijkt u de database in Objectverkenner. U kunt controleren of het terugzetten van de database is voltooid met behulp van de weergave [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database).
 
 > [!NOTE]
-> Een terugzetbewerking voor de database is asynchroon en kan opnieuw worden uitgevoerd. Mogelijk wordt er een fout weergegeven in SQL Server Management Studio als de verbinding wordt verbroken of als er een time-out optreedt. Op de achtergrond wordt blijvend geprobeerd om de database terug te zetten. U kunt de voortgang hiervan volgen in de weergaven [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) en [sys.dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database).
-> In sommige fasen van het terugzetproces ziet u een unieke id in plaats van de werkelijke databasenaam in de systeemweergaven. U kunt [hier](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-transact-sql-information#restore-statement) meer lezen over de verschillen in gedrag van de `RESTORE`-instructie.
+> Een terugzetbewerking voor de database is asynchroon en kan opnieuw worden uitgevoerd. Mogelijk wordt er een fout weergegeven in SQL Server Management Studio als de verbinding wordt verbroken of als er een time-out optreedt. Op de achtergrond wordt blijvend geprobeerd om de database terug te zetten. U kunt de voortgang hiervan volgen in de weergaven [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) en [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database).
+> In sommige fasen van het terugzetproces ziet u een unieke id in plaats van de werkelijke databasenaam in de systeemweergaven. U kunt [hier](./transact-sql-tsql-differences-sql-server.md#restore-statement) meer lezen over de verschillen in gedrag van de `RESTORE`-instructie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Als in stap 5 het terugzetten van een database wordt beëindigd met het bericht met id 22003, maakt u een nieuw back-upbestand met back-upcontrolesommen en voert u het herstellen opnieuw uit. Zie [Enable or disable backup checksums during backup or restore](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server) (back-upcontrolesommen in- of uitschakelen tijdens back-up of terugzetten).
-- Zie [Aanbevolen procedures en probleemoplossing voor back-up van SQL Server naar URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url-best-practices-and-troubleshooting) voor het oplossen van problemen met een back-up naar een URL.
+- Als in stap 5 het terugzetten van een database wordt beëindigd met het bericht met id 22003, maakt u een nieuw back-upbestand met back-upcontrolesommen en voert u het herstellen opnieuw uit. Zie [Enable or disable backup checksums during backup or restore](/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server) (back-upcontrolesommen in- of uitschakelen tijdens back-up of terugzetten).
+- Zie [Aanbevolen procedures en probleemoplossing voor back-up van SQL Server naar URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url-best-practices-and-troubleshooting) voor het oplossen van problemen met een back-up naar een URL.
 - Zie [Uw toepassingen verbinding laten maken met SQL Managed Instance](connect-application-instance.md) voor een overzicht van de verbindingsopties voor toepassingen.
 - Voor informatie over het uitvoeren van een query met een van uw favoriete hulpprogramma's of talen, raadpleegt u [Snelstarts: Verbinding maken met Microsoft Azure SQL Database en hierop query's uitvoeren](../database/connect-query-content-reference-guide.md).

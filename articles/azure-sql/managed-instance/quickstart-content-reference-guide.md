@@ -12,12 +12,12 @@ author: davidtrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 07/11/2019
-ms.openlocfilehash: 7c7268aa361c77f1d466ab7a58b74aa91090dc4b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ae2f2b8b9b6f3bc934321b13dcefeff46e43b089
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84708566"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788159"
 ---
 # <a name="getting-started-with-azure-sql-managed-instance"></a>Aan de slag met Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -35,7 +35,7 @@ Met de volgende quickstarts kunt u snel een SQL Managed Instance maken, een virt
 Als eerste stap moet u uw eerste SQL Managed Instance maken met de netwerkomgeving waarin het wordt geplaatst en verbinding inschakelen vanaf de computer of virtuele machine waarop u query's voor SQL Managed Instance uitvoert. U kunt de volgende handleidingen gebruiken:
 
 - [Create a SQL Managed Instance using the Azure portal](instance-create-quickstart.md) (een SQL Managed Instance maken met behulp van de Azure-portal). In de Azure-portal configureert u de noodzakelijke parameters (gebruikersnaam/wachtwoord, aantal kernen en maximale hoeveelheid opslagruimte), en maakt u automatisch een Azure-netwerkomgeving zonder de netwerkdetails en infrastructuurvereisten te hoeven kennen. Zorg ervoor dat u een [abonnementstype](resource-limits.md#supported-subscription-types) hebt waarmee momenteel een SQL Managed Instance mag worden gemaakt. Als u uw eigen netwerk wilt gebruiken of het netwerk wilt aanpassen, raadpleegt u [configure an existing virtual network for Azure SQL Managed Instance](vnet-existing-add-subnet.md) (Een bestaand virtueel netwerk voor Azure SQL Managed Instance configureren) of [create a virtual network for Azure SQL Database Managed Instance](virtual-network-subnet-create-arm-template.md) (Een virtueel netwerk voor Azure SQL Managed Instance maken).
-- Een SQL Managed Instance wordt gemaakt in een eigen VNet zonder openbaar eindpunt. Voor toegang tot clienttoepassingen kunt u met behulp van een van deze quickstarts **een VM maken in hetzelfde VNet (ander subnet)** of **vanaf uw clientcomputer een punt-naar-site-VPN-verbinding maken naar het VNET**:
+- Een SQL Managed Instance wordt gemaakt in een eigen VNet zonder openbaar eindpunt. Voor toegang tot clienttoepassingen kunt u met behulp van een van deze quickstarts **een VM maken in hetzelfde VNet (ander subnet)** of **vanaf uw clientcomputer een punt-naar-site-VPN-verbinding maken naar het VNET** :
   - Schakel [openbaar eindpunt](public-endpoint-configure.md) in voor uw SQL Managed Instance, zodat u vanuit uw omgeving direct toegang hebt tot uw gegevens.
   - Maak een [Azure Virtual Machine in het VNet van SQL Managed Instance](connect-vm-instance-configure.md) voor connectiviteit van de clienttoepassing, waaronder SQL Server Management Studio.
   - Stel [punt-naar-site-VPN-verbinding voor uw SQL Managed Instance](point-to-site-p2s-configure.md) in vanaf uw clientcomputer met SQL Server Management Studio en andere clienttoepassingen voor connectiviteit. Dit is de andere van twee opties voor connectiviteit met uw SQL Managed Instance en het VNet ervan.
@@ -44,16 +44,16 @@ Als eerste stap moet u uw eerste SQL Managed Instance maken met de netwerkomgevi
   > - U kunt ook een ExpressRoute- of site-naar-site-verbinding van uw lokale netwerk gebruiken. Deze methoden worden echter niet besproken in deze quickstarts.
   > - Als u de retentieperiode van 0 (onbeperkte retentie) wijzigt in een andere waarde, moet u er rekening mee houden dat retentie alleen van toepassing is op logboeken die zijn geschreven nadat de waarde is gewijzigd, (logboeken die zijn geschreven tijdens de periode waarin de retentie was ingesteld op onbeperkt, blijven behouden, zelfs nadat retentie is ingeschakeld).
 
-Als alternatief voor het handmatig maken van SQL Managed Instance kunt u [PowerShell](scripts/create-configure-managed-instance-powershell.md), [PowerShell met een Resource Manager-sjabloon](scripts/create-powershell-azure-resource-manager-template.md) of [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create) gebruiken om dit proces te scripten en automatiseren.
+Als alternatief voor het handmatig maken van SQL Managed Instance kunt u [PowerShell](scripts/create-configure-managed-instance-powershell.md), [PowerShell met een Resource Manager-sjabloon](scripts/create-powershell-azure-resource-manager-template.md) of [Azure CLI](/cli/azure/sql/mi#az-sql-mi-create) gebruiken om dit proces te scripten en automatiseren.
 
 ### <a name="migrate-your-databases"></a>Uw databases migreren
 
-Nadat u een SQL Managed Instance hebt gemaakt en toegang hebt geconfigureerd, kunt u uw SQL Server-databases gaan migreren. De migratie kan mislukken als de brondatabase die u wilt migreren niet-ondersteunde functies bevat. Om fouten te voorkomen en de compatibiliteit te controleren, kunt u [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) gebruiken om uw. databases op SQL Server te analyseren op eventuele problemen die de migratie naar een SQL Managed Instance zouden kunnen blokkeren, zoals de aanwezigheid van [FileStream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server)-bestanden of meerdere logboekbestanden. Als u deze problemen oplost, zijn uw databases klaar om naar SQL Managed Instance te worden gemigreerd. [Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview) is een ander handig hulpmiddel dat uw werkbelasting op SQL Server kan vastleggen en deze opnieuw kan afspelen op een SQL Managed Instance, zodat u kunt bepalen of er zich prestatieproblemen zullen voordoen als u migreert naar een SQL Managed Instance.
+Nadat u een SQL Managed Instance hebt gemaakt en toegang hebt geconfigureerd, kunt u uw SQL Server-databases gaan migreren. De migratie kan mislukken als de brondatabase die u wilt migreren niet-ondersteunde functies bevat. Om fouten te voorkomen en de compatibiliteit te controleren, kunt u [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) gebruiken om uw. databases op SQL Server te analyseren op eventuele problemen die de migratie naar een SQL Managed Instance zouden kunnen blokkeren, zoals de aanwezigheid van [FileStream](/sql/relational-databases/blob/filestream-sql-server)-bestanden of meerdere logboekbestanden. Als u deze problemen oplost, zijn uw databases klaar om naar SQL Managed Instance te worden gemigreerd. [Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview) is een ander handig hulpmiddel dat uw werkbelasting op SQL Server kan vastleggen en deze opnieuw kan afspelen op een SQL Managed Instance, zodat u kunt bepalen of er zich prestatieproblemen zullen voordoen als u migreert naar een SQL Managed Instance.
 
 Als u zeker bent dat u uw database naar een SQL Managed Instance kunt migreren, kunt u de systeemeigen opslagmogelijkheden van SQL Server gebruiken om vanuit een `.bak`-bestand een database terug te zetten in een SQL Managed Instance. U kunt deze methode gebruiken voor het migreren van databases vanuit een SQL Server-database-engine die on-premises of op virtuele machines in Azure is geïnstalleerd. Zie [Een database terugzetten naar een SQL Managed Instance](restore-sample-database-quickstart.md) voor een quickstart. In deze quickstart voert u met de Transact-SQL-opdracht `RESTORE` een terugzetting uit vanuit een `.bak`-bestand dat is opgeslagen in Azure Blob-opslag.
 
 > [!TIP]
-> Zie [Back-up van SQL Server naar URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url) als u de Transact-SQL-opdracht `BACKUP` wilt gebruiken om een back-up te maken van uw database in Azure Blob-opslag.
+> Zie [Back-up van SQL Server naar URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url) als u de Transact-SQL-opdracht `BACKUP` wilt gebruiken om een back-up te maken van uw database in Azure Blob-opslag.
 
 Met deze quickstarts kunt u snel back-ups van databases configureren, maken en op een SQL Managed Instance terugzetten. In sommige scenario's moet u de implementatie van SQL Managed Instance en de vereiste netwerkomgeving aanpassen of automatiseren. Deze scenario's worden hieronder beschreven.
 
@@ -72,7 +72,7 @@ Met de eerder genoemde quickstarts kunt u snel een SQL Managed Instance instelle
 Als u echter uw productiedatabase of zelfs databases voor ontwikkelen/testen wilt migreren die u wilt gebruiken voor een prestatietest, moet u overwegen om extra technieken te gebruiken, zoals:
 
 - Prestatietest: meet de metrische gegevens van de basisprestaties van uw SQL Server-broninstantie en vergelijk deze met de prestatiegegevens van de SQL Managed Instance waar u de database naartoe hebt gemigreerd. Lees meer over de [aanbevolen procedures voor het vergelijken van prestaties](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-best-practices-for-performance-comparison-between-Azure-SQL/ba-p/683210).
-- Onlinemigratie: bij de systeemeigen `RESTORE` (beschreven in dit artikel) moet u echter wachten totdat de databases zijn hersteld (en gekopieerd naar Azure Blob-opslag als dat nog niet is gebeurd). Dit heeft downtime voor uw toepassing ten gevolge, met name voor grote databases. Als u de productiedatabase wilt verplaatsen, gebruikt u de [Database Migration Service (DMS)](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance?toc=/azure/sql-database/toc.json) om uw database met minimale downtime te migreren. Dit wordt bereikt doordat DMS de aan de brondatabase aangebrachte wijzigingen stapsgewijs pusht naar de SQL Managed Instance-database die wordt teruggezet. Op deze manier kunt u snel uw toepassing van de bron- naar de doeldatabase overzetten met minimale downtime.
+- Onlinemigratie: bij de systeemeigen `RESTORE` (beschreven in dit artikel) moet u echter wachten totdat de databases zijn hersteld (en gekopieerd naar Azure Blob-opslag als dat nog niet is gebeurd). Dit heeft downtime voor uw toepassing ten gevolge, met name voor grote databases. Als u de productiedatabase wilt verplaatsen, gebruikt u de [Database Migration Service (DMS)](../../dms/tutorial-sql-server-to-managed-instance.md?toc=%252fazure%252fsql-database%252ftoc.json) om uw database met minimale downtime te migreren. Dit wordt bereikt doordat DMS de aan de brondatabase aangebrachte wijzigingen stapsgewijs pusht naar de SQL Managed Instance-database die wordt teruggezet. Op deze manier kunt u snel uw toepassing van de bron- naar de doeldatabase overzetten met minimale downtime.
 
 Meer informatie over het [aanbevolen migratieproces](migrate-to-instance-from-sql-server.md).
 

@@ -9,15 +9,15 @@ ms.service: azure-cdn
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 06/25/2020
 ms.author: allensu
-ms.openlocfilehash: aca3c9c52260d3ea2ab8def37566377fa67e712d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0612445d0a1bfa10182eb8ce827001d0856f4d9b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88705925"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92777919"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint---arm-template"></a>Quickstart: Een Azure CDN-profiel en -eindpunt maken - ARM-sjabloon
 
@@ -25,7 +25,7 @@ Ga aan de slag met Azure Content Delivery Network (CDN) door een Azure Resource 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure** . De sjabloon wordt in Azure Portal geopend.
 
 [![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cdn-with-custom-origin%2Fazuredeploy.json)
 
@@ -46,7 +46,7 @@ Deze sjabloon is geconfigureerd voor het maken van een:
 
 Er is één Azure-resource gedefinieerd in de sjabloon:
 
-* **[Microsoft.Cdn/profiles](https://docs.microsoft.com/azure/templates/microsoft.cdn/profiles)**
+* **[Microsoft.Cdn/profiles](/azure/templates/microsoft.cdn/profiles)**
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
 
@@ -107,7 +107,7 @@ U kunt de opdracht [az group delete](/cli/azure/group#az-group-delete) gebruiken
 
 ### <a name="powershell"></a>PowerShell
 
-U kunt de opdracht [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=latest) gebruiken om de resourcegroep en alle gerelateerde resources daarin te verwijderen wanneer u ze niet meer nodig hebt.
+U kunt de opdracht [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=latest) gebruiken om de resourcegroep en alle gerelateerde resources daarin te verwijderen wanneer u ze niet meer nodig hebt.
 
 ```azurepowershell-interactive 
 Remove-AzResourceGroup -Name myResourceGroupCDN
@@ -115,7 +115,7 @@ Remove-AzResourceGroup -Name myResourceGroupCDN
 
 ### <a name="portal"></a>Portal
 
-U kunt de resourcegroep, het CDN-profiel en alle gerelateerde resources verwijderen wanneer u ze niet meer nodig hebt. Selecteer de resourcegroep **myResourceGroupCDN** die het CDN-profiel en het eindpunt bevat en selecteer **Verwijderen**.
+U kunt de resourcegroep, het CDN-profiel en alle gerelateerde resources verwijderen wanneer u ze niet meer nodig hebt. Selecteer de resourcegroep **myResourceGroupCDN** die het CDN-profiel en het eindpunt bevat en selecteer **Verwijderen** .
 
 ## <a name="next-steps"></a>Volgende stappen
 

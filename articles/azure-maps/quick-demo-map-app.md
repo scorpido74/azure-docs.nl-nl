@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 99257b7bef83d0acef484118c7d53aea8eda168c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c017ae8044c14a579190f5f1e76cfb1a73e3ce66
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264283"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896188"
 ---
 # <a name="quickstart-create-an-interactive-search-map-with-azure-maps"></a>Quickstart: Een interactief doorzoekbare kaart maken met Azure Maps
 
@@ -36,16 +36,16 @@ In dit artikel leert u hoe u een kaart maakt met Azure Maps om gebruikers een in
 
 Voer de volgende stappen uit om een nieuw Azure Maps-account te maken:
 
-1. Klik in de linkerbovenhoek van [Azure Portal](https://portal.azure.com) op **Een resource maken**.
-2. Typ **Azure Maps** in het vak *Marketplace doorzoeken*.
-3. Selecteer **Azure Maps** in de *Resultaten*. Klik op de knop **Maken** die onder de kaart wordt weergegeven.
-4. Voer de volgende waarden in op de pagina **Azure Kaarten-account maken**:
+1. Klik in de linkerbovenhoek van [Azure Portal](https://portal.azure.com) op **Een resource maken** .
+2. Typ **Azure Maps** in het vak *Marketplace doorzoeken* .
+3. Selecteer **Azure Maps** in de *Resultaten* . Klik op de knop **Maken** die onder de kaart wordt weergegeven.
+4. Voer de volgende waarden in op de pagina **Azure Kaarten-account maken** :
     * Het *Abonnement* dat u wilt gebruiken voor dit account.
     * De naam van de *Resourcegroep* voor dit account. U kunt kiezen om een *Nieuwe* of *Bestaande* resourcegroep te gebruiken.
     * De *Naam* van uw nieuwe account.
     * De *Prijscategorie* voor dit account.
-    * Lees de *licentie* en de *privacyverklaring*, en schakel het selectievakje in om de voorwaarden te accepteren.
-    * Klik op de knop **Maken**.
+    * Lees de *licentie* en de *privacyverklaring* , en schakel het selectievakje in om de voorwaarden te accepteren.
+    * Klik op de knop **Maken** .
 
     :::image type="content" source="./media/quick-demo-map-app/create-account.png" alt-text="Maps-account maken in de portal":::
 
@@ -60,22 +60,22 @@ Als het Azure Kaarten-account is gemaakt, haalt u de primaire sleutel op waarmee
 3. Kopieer de **Primaire Sleutel** naar het Klembord. Sla de sleutel lokaal op voor gebruik verderop in deze zelfstudie.
 
 >[!NOTE]
-> Als u de abonnementssleutel gebruikt in plaats van de primaire sleutel, wordt uw kaart niet juist weergegeven. Bovendien wordt om veiligheidsredenen aanbevolen dat u roteert tussen de primaire en secundaire sleutel. Als u sleutels wilt roteren, werkt u de app bij om de secundaire sleutel te gebruiken. Vervolgens implementeert u en drukt u op de knop voor cyclus/vernieuwen naast de primaire sleutel om een nieuwe primaire sleutel te genereren. De oude primaire sleutel wordt uitgeschakeld. Zie [Azure Key Vault instellen met wisselen en controleren van sleutels](https://docs.microsoft.com/azure/key-vault/secrets/key-rotation-log-monitoring) voor meer informatie over het roteren van sleutels
+> Als u de abonnementssleutel gebruikt in plaats van de primaire sleutel, wordt uw kaart niet juist weergegeven. Bovendien wordt om veiligheidsredenen aanbevolen dat u roteert tussen de primaire en secundaire sleutel. Als u sleutels wilt roteren, werkt u de app bij om de secundaire sleutel te gebruiken. Vervolgens implementeert u en drukt u op de knop voor cyclus/vernieuwen naast de primaire sleutel om een nieuwe primaire sleutel te genereren. De oude primaire sleutel wordt uitgeschakeld. Zie [Azure Key Vault instellen met wisselen en controleren van sleutels](../key-vault/secrets/tutorial-rotation-dual.md) voor meer informatie over het roteren van sleutels
 
 :::image type="content" source="./media/quick-demo-map-app/get-key.png" alt-text="Maps-account maken in de portal":::
 
 ## <a name="download-the-demo-application"></a>Download de demo-toepassing
 
 1. Ga naar [interactiveSearch.html](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/interactiveSearch.html). Kopieer de inhoud van het bestand.
-2. Sla de inhoud van dit bestand lokaal op als **AzureMapDemo.html**. Open het in een teksteditor.
+2. Sla de inhoud van dit bestand lokaal op als **AzureMapDemo.html** . Open het in een teksteditor.
 3. Zoek naar de tekenreeks `<Your Azure Maps Key>`. Vervang deze door de waarde van de **primaire sleutel** uit de voorgaande sectie.
 
 ## <a name="open-the-demo-application"></a>De demo-toepassing openen
 
 1. Open het bestand **AzureMapDemo.html** in een browser naar keuze.
 2. Bekijk de kaart van Los Angeles. Zoom in en uit om te zien hoe de kaart automatisch met meer of minder informatie wordt weergegeven, afhankelijk van het zoomniveau.
-3. Wijzig de standaardinstelling voor het midden van de kaart. Zoek in het bestand **AzureMapDemo.html** naar de variabele **center**. Vervang de lengte- en breedtegraad voor deze variabele door deze nieuwe waarden: **[-74.0060, 40.7128]** . Sla het bestand op en vernieuw de browser.
-4. Probeer de interactieve zoekervaring uit. Zoek in het zoekvak linksboven in de demo-webtoepassing naar **restaurants**.
+3. Wijzig de standaardinstelling voor het midden van de kaart. Zoek in het bestand **AzureMapDemo.html** naar de variabele **center** . Vervang de lengte- en breedtegraad voor deze variabele door deze nieuwe waarden: **[-74.0060, 40.7128]** . Sla het bestand op en vernieuw de browser.
+4. Probeer de interactieve zoekervaring uit. Zoek in het zoekvak linksboven in de demo-webtoepassing naar **restaurants** .
 5. Beweeg de muis over de lijst met adressen en locaties die worden weergegeven onder het zoekvak. U ziet hoe bij de bijbehorende speld op de kaart een pop-upvenster met informatie over die locatie wordt weergegeven. Ten behoeve van de privacy van particuliere bedrijven worden er fictieve namen en adressen weergegeven.
 
     :::image type="content" source="./media/quick-demo-map-app/interactive-search.png" alt-text="Maps-account maken in de portal":::
@@ -88,9 +88,9 @@ Als het Azure Kaarten-account is gemaakt, haalt u de primaire sleutel op waarmee
 
 Als u niet van plan bent om door te gaan naar de zelfstudies, voert u deze stappen uit voor het opschonen van de resources:
 
-1. Sluit de browser waarin de **AzureMapDemo.html**-webtoepassing wordt uitgevoerd.
-2. Navigeer naar de Azure-portalpagina. Selecteer **Alle resources** op de hoofdpagina van de portal. Of klik op het menupictogram in de linkerbovenhoek. Selecteer **Alle resources**.
-3. Klik op uw Azure Maps-account. Klik bovenaan de pagina op **Verwijderen**.
+1. Sluit de browser waarin de **AzureMapDemo.html** -webtoepassing wordt uitgevoerd.
+2. Navigeer naar de Azure-portalpagina. Selecteer **Alle resources** op de hoofdpagina van de portal. Of klik op het menupictogram in de linkerbovenhoek. Selecteer **Alle resources** .
+3. Klik op uw Azure Maps-account. Klik bovenaan de pagina op **Verwijderen** .
 
 Bekijk de volgende handleidingen voor meer codevoorbeelden en een interactieve coderingservaring:
 

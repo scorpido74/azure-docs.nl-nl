@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: overview
 ms.date: 09/14/2020
 ms.author: mbullwin
-ms.openlocfilehash: 858bf042593045059c988ae1b2796b063b33bb6e
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 1a57660733b7257b224c38a55059f1bf069495a0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047570"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890239"
 ---
 # <a name="what-is-metrics-advisor-preview"></a>Wat is Metrics Advisor (preview)? 
 
@@ -53,16 +53,14 @@ Analyseer anomalieën die zijn gedetecteerd in multidimensionale metrische gegev
 De werkstroom is eenvoudig: na onboarding van de gegevens kunt u de anomaliedetectie afstemmen en configuraties maken die passen bij uw scenario.
 
 1. [Maak een Azure-resource](../cognitive-services-apis-create-account.md) voor Metrics Advisor. 
-2. Probeer de demosite om een voorbeeld van een Metrics Advisor-instantie te bekijken met vooraf geconfigureerde voorbeeldgegevens. 
-3. Bouw uw eerste gegevensset met behulp van de webportal.
+2. Bouw uw eerste gegevensset met behulp van de webportal.
     1. Onboarding van uw gegevens
     2. Anomaliedetectie afstemmen
     3. Abonneren op waarschuwingen
     4. Diagnostische inzichten weergeven
-1. Gebruik de REST API om uw exemplaar aan te passen.
+3. Gebruik de REST API om uw exemplaar aan te passen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* De [demosite](quickstarts/explore-demo.md) proberen.
 * Een quickstart verkennen: [Uw eerste metriek op het web controleren](quickstarts/web-portal.md).
 * Een quickstart verkennen: [De REST API's gebruiken om uw oplossing aan te passen](quickstarts/rest-api.md).

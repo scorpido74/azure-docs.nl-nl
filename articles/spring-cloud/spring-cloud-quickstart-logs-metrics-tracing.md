@@ -6,14 +6,14 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 08/04/2020
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: c879b890f9527ea0eee3d702db6f04a38432aa00
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 2af9608006eac37ccdfe76d66e619d5a64cad9f1
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093052"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746649"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>Quickstart: Azure Spring Cloud-apps bewaken met logboeken, metrische gegevens en tracering
 
@@ -63,7 +63,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 
 ### <a name="log-analytics"></a>Log Analytics
 
-1. Ga in de Azure-portal naar de pagina **service | Overzicht** en selecteer **Logboeken** in de sectie **Bewaking**. Selecteer **Uitvoeren** op een van de voorbeeldquery's voor Azure Spring Cloud.
+1. Ga in de Azure-portal naar de pagina **service | Overzicht** en selecteer **Logboeken** in de sectie **Bewaking** . Selecteer **Uitvoeren** op een van de voorbeeldquery's voor Azure Spring Cloud.
 
    [ ![Logs Analytics-vermelding](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png#lightbox)
     
@@ -75,7 +75,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 
 ## <a name="metrics"></a>Metrische gegevens
 
-1. Ga in Azure Portal naar de pagina **service | Overzicht** en selecteer **Metrische gegevens** in de sectie **Bewaking**. Voeg uw eerste metrische gegevens toe door een van de metrische .NET-gegevens onder **Performance (.NET)** of **Request (.NET)** te selecteren in de vervolgkeuzelijst **Metrisch** en `Avg` voor **Aggregatie** om de tijdlijn voor deze metrische gegevens te bekijken.
+1. Ga in Azure Portal naar de pagina **service | Overzicht** en selecteer **Metrische gegevens** in de sectie **Bewaking** . Voeg uw eerste metrische gegevens toe door een van de metrische .NET-gegevens onder **Performance (.NET)** of **Request (.NET)** te selecteren in de vervolgkeuzelijst **Metrisch** en `Avg` voor **Aggregatie** om de tijdlijn voor deze metrische gegevens te bekijken.
 
    [ ![Invoer van metrische gegevens - Steeltoe](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu-steeltoe.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu-steeltoe.png#lightbox)
     
@@ -89,7 +89,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 
 ## <a name="distributed-tracing"></a>Gedistribueerde tracering
 
-1. Ga in Azure Portal naar de pagina **service | Overzicht** en selecteer **Gedistribueerde tracering** in de sectie **Bewaking**. Selecteer vervolgens aan de rechterkant het tabblad **Toepassingsoverzicht weergeven**.
+1. Ga in Azure Portal naar de pagina **service | Overzicht** en selecteer **Gedistribueerde tracering** in de sectie **Bewaking** . Selecteer vervolgens aan de rechterkant het tabblad **Toepassingsoverzicht weergeven** .
 
    [ ![Vermelding van gedistribueerde tracering - Steeltoe](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-entry.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-entry.png#lightbox)
 
@@ -142,7 +142,7 @@ U ziet logboeken zoals het volgende:
 
 De logboeken ophalen met behulp van Azure-toolkit voor IntelliJ:
 
-1. Selecteer **Azure Explorer**  en **Spring Cloud**.
+1. Selecteer **Azure Explorer**  en **Spring Cloud** .
 
 1. Klik met de rechtermuisknop op de app die wordt uitgevoerd.
 
@@ -150,7 +150,7 @@ De logboeken ophalen met behulp van Azure-toolkit voor IntelliJ:
 
    ![Streaminglogboeken selecteren](media/spring-cloud-intellij-howto/streaming-logs.png)
     
-1. Selecteer **Exemplaar**.
+1. Selecteer **Exemplaar** .
 
    ![Exemplaar selecteren](media/spring-cloud-intellij-howto/select-instance.png)
     
@@ -161,7 +161,7 @@ De logboeken ophalen met behulp van Azure-toolkit voor IntelliJ:
 ---
 ### <a name="log-analytics"></a>Log Analytics
 
-1. Ga naar de pagina **service | Overzicht** en selecteer **Logboeken** in de sectie **Bewaking**. Klik op een van de voorbeeldquery's voor Azure Spring Cloud op **Uitvoeren**. 
+1. Ga naar de pagina **service | Overzicht** en selecteer **Logboeken** in de sectie **Bewaking** . Klik op een van de voorbeeldquery's voor Azure Spring Cloud op **Uitvoeren** . 
 
    [ ![Logs Analytics-vermelding](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png#lightbox)
     
@@ -171,11 +171,11 @@ De logboeken ophalen met behulp van Azure-toolkit voor IntelliJ:
 
 ## <a name="metrics"></a>Metrische gegevens
 
-1. Ga naar de pagina **service | Overzicht** en selecteer **Metrische gegevens** in de sectie **Bewaking**. Voeg uw eerste meetwaarde toe door `system.cpu.usage` voor **Meetwaarde** en `Avg` voor **Aggregatie** te selecteren om de tijdlijn voor het totale CPU-gebruik te bekijken.
+1. Ga naar de pagina **service | Overzicht** en selecteer **Metrische gegevens** in de sectie **Bewaking** . Voeg uw eerste meetwaarde toe door `system.cpu.usage` voor **Meetwaarde** en `Avg` voor **Aggregatie** te selecteren om de tijdlijn voor het totale CPU-gebruik te bekijken.
 
    [ ![Vermelding van meetwaarde](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu.png#lightbox)
     
-1. Klik in de werkbalk hierboven op **Filter toevoegen**, selecteer `App=Gateway` om het CPU-gebruik voor alleen de **gateway**-app te bekijken.
+1. Klik in de werkbalk hierboven op **Filter toevoegen** , selecteer `App=Gateway` om het CPU-gebruik voor alleen de **gateway** -app te bekijken.
 
    [ ![Filter gebruiken in metrische gegevens](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-filter.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-filter.png#lightbox)
 
@@ -185,7 +185,7 @@ De logboeken ophalen met behulp van Azure-toolkit voor IntelliJ:
 
 ## <a name="distributed-tracing"></a>Gedistribueerde tracering
 
-1. Ga naar de pagina **service | Overzicht** en selecteer **Gedistribueerde tracering** in de sectie **Bewaking**. Klik vervolgens op het tabblad **Toepassingsoverzicht weergeven** aan de rechterkant.
+1. Ga naar de pagina **service | Overzicht** en selecteer **Gedistribueerde tracering** in de sectie **Bewaking** . Klik vervolgens op het tabblad **Toepassingsoverzicht weergeven** aan de rechterkant.
 
    [ ![Vermelding van gedistribueerde tracering](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-entry.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-entry.png#lightbox)
 

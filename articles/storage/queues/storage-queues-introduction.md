@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: overview
 ms.reviewer: dineshm
-ms.openlocfilehash: c16f02922b2e815ddd4986ab07bf260b20d871ee
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d1ec251edf384e8032a67dc66982787d17c75dbd
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87826497"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781461"
 ---
 # <a name="what-are-azure-queues"></a>Wat zijn Azure-wachtrijen?
 
@@ -35,11 +35,11 @@ De Queue-service bevat de volgende onderdelen:
 
 * **Opslagaccount:** Alle toegang tot Azure Storage vindt plaats via een opslagaccount. Zie [Schaalbaarheids- en prestatiedoelen voor standaard opslagaccounts](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) voor meer informatie over opslagaccountcapaciteit.
 
-* **Wachtrij:** Een wachtrij bevat een set berichten. De naam van een wachtrij **mag alleen** kleine letters bevatten. Zie [Naming Queues and Metadata](https://msdn.microsoft.com/library/azure/dd179349.aspx) (Wachtrijen en metagegevens een naam geven) voor informatie over de naamgeving van wachtrijen.
+* **Wachtrij:** Een wachtrij bevat een set berichten. De naam van een wachtrij **mag alleen** kleine letters bevatten. Zie [Naming Queues and Metadata](/rest/api/storageservices/Naming-Queues-and-Metadata) (Wachtrijen en metagegevens een naam geven) voor informatie over de naamgeving van wachtrijen.
 
 * **Bericht:** Een bericht in een willekeurige indeling, van maximaal 64 KB. Vóór versie 29-07-2017 is de maximale toegestane time-to-live zeven dagen. Voor versie 29-07-2017 of hoger mag de maximale time-to-live elk positief getal zijn. Of -1 om aan te geven dat het bericht niet verloopt. Als deze parameter wordt weggelaten, is de standaard time-to-live zeven dagen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Een opslagaccount maken](../storage-create-storage-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
+* [Een opslagaccount maken](../common/storage-account-create.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json)
 * [Aan de slag met Queues met behulp van .NET](storage-dotnet-how-to-use-queues.md)

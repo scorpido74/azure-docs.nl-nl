@@ -7,19 +7,19 @@ ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.custom: devx-track-js
-ms.openlocfilehash: 045589d3b1f0e376eaf854562d271a4483702997
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 35713a2e854cf65054d162ce0191bf2dfde4e90b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047893"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786136"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-javascript-v4"></a>Quickstart: Azure Key Vault-clientbibliotheek voor JavaScript (v4)
 
 Ga aan de slag met de Azure Key Vault-clientbibliotheek voor geheimen voor JavaScript. Volg de onderstaande stappen om het pakket te installeren en voorbeeldcode voor basistaken uit te proberen.
 
-[API-referentiedocumentatie](https://docs.microsoft.com/javascript/api/overview/azure/key-vault-index) | [Bibliotheekbroncode](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault) | [Package (npm)](https://www.npmjs.com/package/@azure/keyvault-secrets)
+[API-referentiedocumentatie](/javascript/api/overview/azure/key-vault-index) | [Bibliotheekbroncode](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault) | [Package (npm)](https://www.npmjs.com/package/@azure/keyvault-secrets)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -30,7 +30,7 @@ Ga aan de slag met de Azure Key Vault-clientbibliotheek voor geheimen voor JavaS
 In deze quickstart wordt ervan uitgegaan dat u [Azure CLI](/cli/azure/install-azure-cli) uitvoert in een Linux-terminalvenster.
 
 ## <a name="setting-up"></a>Instellen
-Deze quickstart maakt gebruik van de Azure Identity-bibliotheek met Azure CLI om de gebruiker te verifiëren bij Azure-services. Ontwikkelaars kunnen ook Visual Studio of Visual Studio Code gebruiken om hun oproepen te verifiëren: zie [De client verifiëren met de Azure Identity-clientbibliotheek](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme) (Engelstalig) voor meer informatie.
+Deze quickstart maakt gebruik van de Azure Identity-bibliotheek met Azure CLI om de gebruiker te verifiëren bij Azure-services. Ontwikkelaars kunnen ook Visual Studio of Visual Studio Code gebruiken om hun oproepen te verifiëren: zie [De client verifiëren met de Azure Identity-clientbibliotheek](/javascript/api/overview/azure/identity-readme) (Engelstalig) voor meer informatie.
 
 ### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 

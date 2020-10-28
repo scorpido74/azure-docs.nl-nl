@@ -6,15 +6,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 9e2182ee67683c4dfb963aeb320984a82d78b26c
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 35c120b6d7715ac6fefe0e8712040108568ee8de
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148857"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747423"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Quickstart: Schakel SSH en RDP in via een IoT Hub-apparaatstroom in met behulp van een C-proxy-toepassing (preview)
 
@@ -88,7 +88,7 @@ Voor deze quickstart gebruikt u de [Azure IoT device-SDK voor C](iot-hub-device-
 
     Deze bewerking duurt enkele minuten.
 
-1. Maak de submap *cmake* in de hoofdmap van de Git-opslagplaats en navigeer naar die map. Voer de volgende opdrachten uit vanuit de map *azure-iot-sdk-c*:
+1. Maak de submap *cmake* in de hoofdmap van de Git-opslagplaats en navigeer naar die map. Voer de volgende opdrachten uit vanuit de map *azure-iot-sdk-c* :
 
     ```cmd/sh
     mkdir cmake
@@ -104,7 +104,7 @@ Voor deze quickstart gebruikt u de [Azure IoT device-SDK voor C](iot-hub-device-
       make -j
       ```
 
-   * Voer in Windows de volgende opdrachten uit in Developer Command Prompt voor Visual Studio 2015- of 2017. Er wordt een Visual Studio-oplossing voor het gesimuleerde apparaat gegenereerd in de map *cmake*.
+   * Voer in Windows de volgende opdrachten uit in Developer Command Prompt voor Visual Studio 2015- of 2017. Er wordt een Visual Studio-oplossing voor het gesimuleerde apparaat gegenereerd in de map *cmake* .
 
       ```cmd
       rem For VS2015

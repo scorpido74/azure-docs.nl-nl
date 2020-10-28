@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f23512bfd85c520c36cd98843db37371b84af293
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: ca3b218da7835ee9f3e9e8653f4829767a1ffb07
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939199"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783467"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>Quickstart: Azure Queue Storage-clientbibliotheek v12 voor .NET
 
@@ -34,12 +34,12 @@ Aanvullende bronnen:
 * [API-referentiedocumentatie](/dotnet/api/azure.storage.queues)
 * [Broncode van bibliotheek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues)
 * [Pakket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0)
-* [Voorbeelden](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+* [Voorbeelden](../common/storage-samples-dotnet.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Azure-abonnement: [u kunt een gratis abonnement nemen](https://azure.microsoft.com/free/)
-* Azure Storage-account: [maak een opslagaccount](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Azure Storage-account: [maak een opslagaccount](../common/storage-account-create.md)
 * De huidige versie van de [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) voor uw besturingssysteem. Zorg ervoor dat u de SDK en niet de runtime ophaalt.
 
 ## <a name="setting-up"></a>Instellen
@@ -48,15 +48,15 @@ In dit gedeelte wordt uitgelegd hoe u een project voorbereidt voor gebruik met d
 
 ### <a name="create-the-project"></a>Het project maken
 
-Maak een .NET Core-toepassing met de naam *QueuesQuickstartV12*.
+Maak een .NET Core-toepassing met de naam *QueuesQuickstartV12* .
 
-1. Gebruik in een consolevenster (zoals cmd, PowerShell of Bash) de opdracht `dotnet new` om een nieuwe console-app te maken met de naam *QueuesQuickstartV12*. Met deze opdracht maakt u een eenvoudig Hallo wereld-C#-project met één bronbestand: *Program.cs*.
+1. Gebruik in een consolevenster (zoals cmd, PowerShell of Bash) de opdracht `dotnet new` om een nieuwe console-app te maken met de naam *QueuesQuickstartV12* . Met deze opdracht maakt u een eenvoudig Hallo wereld-C#-project met één bronbestand: *Program.cs* .
 
    ```console
    dotnet new console -n QueuesQuickstartV12
    ```
 
-1. Schakel over naar de zojuist gemaakte map *QueuesQuickstartV12*.
+1. Schakel over naar de zojuist gemaakte map *QueuesQuickstartV12* .
 
    ```console
    cd QueuesQuickstartV12
@@ -77,7 +77,7 @@ Ga als volgt te werk vanuit de projectmap:
 1. Open het bestand *Program.cs* in uw editor
 1. Verwijder de instructie `Console.WriteLine("Hello World!");`
 1. Voeg `using`-instructies toe
-1. De declaratie van de `Main`-methode bijwerken [ter ondersteuning van async-code](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#async-main)
+1. De declaratie van de `Main`-methode bijwerken [ter ondersteuning van async-code](/dotnet/csharp/whats-new/csharp-7#async-main)
 
 
 
@@ -325,7 +325,7 @@ Done
 
 Wanneer de app pauzeert voordat deze berichten ontvangt, controleert u uw opslagaccount in de [Azure-portal](https://portal.azure.com). Verifieer dat de berichten in de wachtrij staan.
 
-Druk op de **Enter**-toets om de berichten te ontvangen en verwijderen. Druk nogmaals op de **Enter**-toets wanneer u daarom wordt gevraagd, om de wachtrij te verwijderen en de demo te voltooien.
+Druk op de **Enter** -toets om de berichten te ontvangen en verwijderen. Druk nogmaals op de **Enter** -toets wanneer u daarom wordt gevraagd, om de wachtrij te verwijderen en de demo te voltooien.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -334,7 +334,7 @@ In deze quickstart hebt u geleerd hoe u een wachtrij maakt en berichten eraan to
 Voor zelfstudies, voorbeelden, quickstarts en andere documentatie gaat u naar:
 
 > [!div class="nextstepaction"]
-> [Azure voor ontwikkelaars van .NET en .NET Core](https://docs.microsoft.com/dotnet/azure/)
+> [Azure voor ontwikkelaars van .NET en .NET Core](/dotnet/azure/)
 
 * Zie de [Azure Storage-bibliotheken voor .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage) voor meer informatie.
 * Ga door naar [Voorbeelden van Azure Queue Storage v12 .NET-clientbibliotheken](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples) om meer Azure Queue Storage-voorbeeld-apps te zien.

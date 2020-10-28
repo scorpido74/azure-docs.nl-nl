@@ -15,13 +15,14 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - devx-track-js
+- devx-track-azurecli
 ms.date: 06/21/2019
-ms.openlocfilehash: 13baface2bce9e98f08e37b8a16ba1e2b435205a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 52b4ec2ed7b05dfb905d490cf1bf11aed25ea562
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91281572"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747515"
 ---
 # <a name="quickstart-use-nodejs-to-control-a-device-connected-to-an-azure-iot-hub"></a>Quickstart: Node.js gebruiken om een apparaat te beheren dat is verbonden met Azure IoT Hub
 
@@ -71,9 +72,9 @@ Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan m
 
 1. Voer de volgende opdrachten uit in Azure Cloud Shell om de apparaat-id te maken.
 
-   **YourIoTHubName**: vervang deze tijdelijke aanduiding door een door u gekozen naam voor de IoT-hub.
+   **YourIoTHubName** : vervang deze tijdelijke aanduiding door een door u gekozen naam voor de IoT-hub.
 
-   **MyNodeDevice**: dit is de naam van het apparaat dat u gaat registreren. Het is raadzaam om **MyNodeDevice** te gebruiken zoals wordt weergegeven. Als u een andere naam voor het apparaat kiest, moet u deze naam mogelijk ook in de rest van dit artikel gebruiken, en moet u de apparaatnaam bijwerken in de voorbeeldtoepassingen voordat u ze uitvoert.
+   **MyNodeDevice** : dit is de naam van het apparaat dat u gaat registreren. Het is raadzaam om **MyNodeDevice** te gebruiken zoals wordt weergegeven. Als u een andere naam voor het apparaat kiest, moet u deze naam mogelijk ook in de rest van dit artikel gebruiken, en moet u de apparaatnaam bijwerken in de voorbeeldtoepassingen voordat u ze uitvoert.
 
     ```azurecli-interactive
     az iot hub device-identity create \
@@ -82,7 +83,7 @@ Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan m
 
 2. Voer de volgende opdrachten uit in Azure Cloud Shell om de _apparaatverbindingsreeks_ op te halen voor het apparaat dat u zojuist hebt geregistreerd:
 
-    **YourIoTHubName**: vervang deze tijdelijke aanduiding door een door u gekozen naam voor de IoT-hub.
+    **YourIoTHubName** : vervang deze tijdelijke aanduiding door een door u gekozen naam voor de IoT-hub.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string \
@@ -99,7 +100,7 @@ Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan m
 
 3. U hebt ook een _service-verbindingsreeks_ nodig, zodat de back-end-toepassing verbinding kan maken met de IoT-hub en de berichten kan ophalen. Met de volgende opdracht haalt u de serviceverbindingsreeks voor uw IoT-hub op:
 
-    **YourIoTHubName**: vervang deze tijdelijke aanduiding door een door u gekozen naam voor de IoT-hub.
+    **YourIoTHubName** : vervang deze tijdelijke aanduiding door een door u gekozen naam voor de IoT-hub.
 
     ```azurecli-interactive
     az iot hub show-connection-string \
@@ -117,11 +118,11 @@ Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan m
 
 De toepassing voor het gesimuleerde apparaat maakt verbinding met een apparaatspecifiek eindpunt op uw IoT-hub, verstuurt gesimuleerde telemetrie en luistert naar aanroepen van directe methoden vanuit de hub. In deze snelstartgids geeft de aanroep van de directe methode vanuit de hub het apparaat opdracht om het interval voor het verzenden van telemetrie te wijzigen. Het gesimuleerde apparaat stuurt een bevestiging terug naar de hub nadat de directe methode is uitgevoerd.
 
-1. Navigeer in een lokaal terminalvenster naar de hoofdmap van het voorbeeldproject in Node.js. Navigeer vervolgens naar de map **iot-hub\Quickstarts\simulated-device-2**.
+1. Navigeer in een lokaal terminalvenster naar de hoofdmap van het voorbeeldproject in Node.js. Navigeer vervolgens naar de map **iot-hub\Quickstarts\simulated-device-2** .
 
 2. Open het bestand **SimulatedDevice.js** in een teksteditor van uw keuze.
 
-    Vervang de waarde van de variabele `connectionString` door de apparaatverbindingsreeks die u eerder hebt genoteerd. Sla de wijzigingen vervolgens op in **SimulatedDevice.js**.
+    Vervang de waarde van de variabele `connectionString` door de apparaatverbindingsreeks die u eerder hebt genoteerd. Sla de wijzigingen vervolgens op in **SimulatedDevice.js** .
 
 3. Voer in het lokale terminalvenster de volgende opdrachten uit om de vereiste bibliotheken te installeren en de toepassing voor het gesimuleerde apparaat uit te voeren:
 
@@ -138,11 +139,11 @@ De toepassing voor het gesimuleerde apparaat maakt verbinding met een apparaatsp
 
 De back-endtoepassing maakt verbinding met een eindpunt aan de servicezijde van uw IoT-hub. De toepassing verzendt via uw IoT-hub aanroepen naar directe methoden op een apparaat en luistert naar bevestigingen. Een back-endtoepassing van IoT Hub wordt meestal in de cloud uitgevoerd.
 
-1. Navigeer in een ander lokaal terminalvenster naar de hoofdmap van het voorbeeldproject in Node.js. Navigeer vervolgens naar de map **iot-hub\Quickstarts\back-end-application**.
+1. Navigeer in een ander lokaal terminalvenster naar de hoofdmap van het voorbeeldproject in Node.js. Navigeer vervolgens naar de map **iot-hub\Quickstarts\back-end-application** .
 
 2. Open het bestand **BackEndApplication.js** in een teksteditor van uw keuze.
 
-    Vervang de waarde van de variabele `connectionString` door de serviceverbindingsreeks die u eerder hebt genoteerd. Sla de wijzigingen vervolgens op in **BackEndApplication.js**.
+    Vervang de waarde van de variabele `connectionString` door de serviceverbindingsreeks die u eerder hebt genoteerd. Sla de wijzigingen vervolgens op in **BackEndApplication.js** .
 
 3. Voer in het lokale terminalvenster de volgende opdrachten uit om de vereiste bibliotheken te installeren en de back-endtoepassing uit te voeren:
 

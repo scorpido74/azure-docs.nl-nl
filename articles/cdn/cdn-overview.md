@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 05/09/2018
 ms.author: duau
 ms.custom: mvc
-ms.openlocfilehash: 44ab6822039ef2a26ffafc2824bed249825e2daa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b0c8170947b59b3d40a388642dac3df772238197
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88783805"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778341"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Wat is een netwerk voor contentlevering in Azure?
 Een netwerk voor contentlevering (CDN) is een gedistribueerd netwerk van servers dat webinhoud efficiënt aan gebruikers kan leveren. In CDN's wordt in de cache opgeslagen inhoud opgeslagen op randservers in aanwezigheidspunt (POP)-locaties in de buurt van eindgebruikers om de latentie zo klein mogelijk te maken. 
@@ -59,7 +59,7 @@ Elk Azure-abonnement kent standaardlimieten voor de volgende resources:
  - Het aantal eindpunten dat kan worden gemaakt in een CDN-profiel. 
  - Het aantal aangepaste domeinen dat kan worden toegewezen aan een eindpunt.
 
-Zie [CDN-limieten](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) voor meer informatie over limieten van CDN-abonnementen.
+Zie [CDN-limieten](../azure-resource-manager/management/azure-subscription-service-limits.md) voor meer informatie over limieten van CDN-abonnementen.
     
 ## <a name="azure-cdn-features"></a>Functies van Azure CDN
 Azure CDN biedt de volgende belangrijke functies:

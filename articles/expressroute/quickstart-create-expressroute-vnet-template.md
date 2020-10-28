@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 10/12/2020
 ms.author: duau
-ms.openlocfilehash: 37f0b890cd4942e5dcb47b496d661eb7c54db94d
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 7521344a2bb6aae67724c8bfbb9131e2ff1e6b94
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093511"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789723"
 ---
 # <a name="quickstart-create-an-expressroute-circuit-with-private-peering-using-an-arm-template"></a>Quickstart: Een ExpressRoute-circuit met persoonlijke peering maken met behulp van een ARM-sjabloon
 
@@ -22,7 +22,7 @@ In deze quickstart wordt beschreven hoe u een Azure Resource Manager-sjabloon (A
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure** . De sjabloon wordt in Azure Portal geopend.
 
 [![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-expressroute-private-peering-vnet%2Fazuredeploy.json)
 
@@ -34,16 +34,16 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/101-expressroute-private-peering-vnet).
 
-In deze quickstart maakt u een ExpressRoute-circuit met *Equinix* als serviceprovider. Het circuit maakt gebruik van een *Premium SKU*, met een bandbreedte van *50 Mbps* en de peeringlocatie *Washington DC-* . Persoonlijke peering wordt ingeschakeld met een primair en secundair subnet van *192.168.10.16/30* en *192.168.10.20/30*. Er wordt ook een virtueel netwerk gemaakt met een *High Performance ExpressRoute-gateway*.
+In deze quickstart maakt u een ExpressRoute-circuit met *Equinix* als serviceprovider. Het circuit maakt gebruik van een *Premium SKU* , met een bandbreedte van *50 Mbps* en de peeringlocatie *Washington DC-* . Persoonlijke peering wordt ingeschakeld met een primair en secundair subnet van *192.168.10.16/30* en *192.168.10.20/30* . Er wordt ook een virtueel netwerk gemaakt met een *High Performance ExpressRoute-gateway* .
 
-:::code language="json" source="~/quickstart-templates/101-expressroute-private-peering-vnet/azuredeploy.json" range="001-351" highlight="183-219":::
+:::code language="json" source="~/quickstart-templates/101-expressroute-private-peering-vnet/azuredeploy.json":::
 
 Er zijn meerdere Azure-resources gedefinieerd in de sjabloon:
 
 * [**Microsoft.Network/expressRouteCircuits**](/azure/templates/microsoft.network/expressRouteCircuits)
 * [**Microsoft.Network/expressRouteCircuits/peerings**](/azure/templates/microsoft.network/expressRouteCircuits/peerings) (wordt gebruikt voor het inschakelen van persoonlijke peering voor het circuit)
 * [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networkSecurityGroups) (netwerkbeveiligingsgroep wordt toegepast op de subnetten in het virtuele netwerk)
-* [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualNetworks) 
+* [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualNetworks)
 * [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicIPAddresses) (het openbare IP-adres wordt gebruikt door de ExpressRoute-gateway)
 * [**Microsoft.Network/virtualNetworkGateways**](/azure/templates/microsoft.network/virtualNetworkGateways) (ExpressRoute-gateway wordt gebruikt om VNet aan het circuit te koppelen)
 
@@ -51,7 +51,7 @@ Zie [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
 
-1. Selecteer **Proberen** in het volgende codeblok om Azure Cloud Shell te openen en volg de instructies om u aan te melden bij Azure. 
+1. Selecteer **Proberen** in het volgende codeblok om Azure Cloud Shell te openen en volg de instructies om u aan te melden bij Azure.
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -70,7 +70,7 @@ Zie [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/
 
 1. Selecteer **Kopiëren** in het vorige codeblok om het PowerShell-script te kopiëren.
 
-1. Klik met de rechtermuisknop op het shell-consoledeelvenster en selecteer **Plakken**.
+1. Klik met de rechtermuisknop op het shell-consoledeelvenster en selecteer **Plakken** .
 
 1. Voer de waarden in.
 
@@ -114,6 +114,7 @@ Remove-AzResourceGroup -Name <your resource group name>
 ## <a name="next-steps"></a>Volgende stappen
 
 In deze quickstart hebt u het volgende gemaakt:
+
 * ExpressRoute-circuit
 * Virtual Network
 * VPN Gateway

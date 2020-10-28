@@ -3,13 +3,13 @@ title: 'Quickstart: Register maken in de portal'
 description: Leer snel een persoonlijk Azure-containerregister maken met de Azure-portal.
 ms.topic: quickstart
 ms.date: 08/04/2020
-ms.custom: seodec18, mvc
-ms.openlocfilehash: ace1030923ea226376369941badafafa662d25ce
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: seodec18, mvc, devx-track-azurecli
+ms.openlocfilehash: f4f16506a36acfe8845e85caf2d337f992f0f332
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88031780"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746679"
 ---
 # <a name="quickstart-create-an-azure-container-registry-using-the-azure-portal"></a>Quickstart: Een Azure-containerregister maken met de Azure-portal
 
@@ -25,23 +25,23 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 ## <a name="create-a-container-registry"></a>Een containerregister maken
 
-Selecteer **Een resource maken** > **Containers** > **Container Registry**.
+Selecteer **Een resource maken** > **Containers** > **Container Registry** .
 
 :::image type="content" source="media/container-registry-get-started-portal/qs-portal-01.png" alt-text="Navigeren naar containerregister in portal":::
 
-Voer op het tabblad **Basisbeginselen** de waarden in voor **Resourcegroep** en **Registernaam**. De registernaam moet uniek zijn binnen Azure en mag 5 tot 50 alfanumerieke tekens bevatten. Maak voor deze snelstart een nieuwe resourcegroep met de naam `myResourceGroup` in locatie `West US`. Kies voor **SKU** de optie Basic.
+Voer op het tabblad **Basisbeginselen** de waarden in voor **Resourcegroep** en **Registernaam** . De registernaam moet uniek zijn binnen Azure en mag 5 tot 50 alfanumerieke tekens bevatten. Maak voor deze snelstart een nieuwe resourcegroep met de naam `myResourceGroup` in locatie `West US`. Kies voor **SKU** de optie Basic.
 
 :::image type="content" source="media/container-registry-get-started-portal/qs-portal-03.png" alt-text="Navigeren naar containerregister in portal":::
 
-Accepteer de standaardwaarden voor de overige instellingen. Selecteer vervolgens **Controleren en maken**. Nadat u de instellingen hebt bekeken, selecteert u **Maken**.
+Accepteer de standaardwaarden voor de overige instellingen. Selecteer vervolgens **Controleren en maken** . Nadat u de instellingen hebt bekeken, selecteert u **Maken** .
 
-In deze quickstart maakt u een *Basic*-register. Dit is een voor kosten geoptimaliseerde optie voor ontwikkelaars die meer willen leren over Azure Container Registry. Zie [Servicelagen voor containerregister][container-registry-skus] voor meer informatie over de beschikbare servicelagen (SKU's).
+In deze quickstart maakt u een *Basic* -register. Dit is een voor kosten geoptimaliseerde optie voor ontwikkelaars die meer willen leren over Azure Container Registry. Zie [Servicelagen voor containerregister][container-registry-skus] voor meer informatie over de beschikbare servicelagen (SKU's).
 
 Als het bericht **Implementatie voltooid** wordt weergegeven, selecteert u het containerregister in de portal. 
 
 :::image type="content" source="media/container-registry-get-started-portal/qs-portal-05.png" alt-text="Navigeren naar containerregister in portal":::
 
-Noteer de registernaam en de waarde van de **aanmeldingsserver**. U gebruikt deze waarden in de volgende stappen wanneer u installatiekopieën pusht en pullt met Docker.
+Noteer de registernaam en de waarde van de **aanmeldingsserver** . U gebruikt deze waarden in de volgende stappen wanneer u installatiekopieën pusht en pullt met Docker.
 
 ## <a name="log-in-to-registry"></a>Aanmelden bij register
 
@@ -63,11 +63,11 @@ De opdracht retourneert `Login Succeeded` nadat deze is voltooid.
 
 ## <a name="list-container-images"></a>Containerinstallatiekopieën opvragen
 
-Als u de installatiekopieën in uw register wilt weergeven, gaat u naar het register in de portal en selecteert u **Opslagplaatsen**. Selecteer vervolgens de opslagplaats **hello-world** die u met `docker push` hebt gemaakt.
+Als u de installatiekopieën in uw register wilt weergeven, gaat u naar het register in de portal en selecteert u **Opslagplaatsen** . Selecteer vervolgens de opslagplaats **hello-world** die u met `docker push` hebt gemaakt.
 
 :::image type="content" source="media/container-registry-get-started-portal/qs-portal-09.png" alt-text="Navigeren naar containerregister in portal":::
 
-Wanneer u de opslagplaats **hello-world** selecteert, ziet u de met `v1` getagde installatiekopie bij **Tags**.
+Wanneer u de opslagplaats **hello-world** selecteert, ziet u de met `v1` getagde installatiekopie bij **Tags** .
 
 [!INCLUDE [container-registry-quickstart-docker-pull](../../includes/container-registry-quickstart-docker-pull.md)]
 

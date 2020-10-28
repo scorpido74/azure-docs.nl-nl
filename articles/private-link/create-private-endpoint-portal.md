@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 10/20/2020
 ms.author: allensu
-ms.openlocfilehash: 3deeca4635f33b63a6e0bcecc0c829d3df88e352
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 395912ae70c5a01bd7de9a80cf8a507dd516028e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327497"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895198"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-the-azure-portal"></a>Quickstart: Een privé-eindpunt maken met behulp van Azure Portal
 
@@ -50,7 +50,7 @@ De Bastion-host wordt gebruikt om veilig verbinding te maken met de virtuele mac
     | Resourcegroep   | Selecteer **CreatePrivateEndpointQS-rg** |
     | **Exemplaardetails** |                                                                 |
     | Naam             | Voer **myVNet** in                                    |
-    | Regio           | Selecteer **\<your-web-app-region>** . </br> Selecteer de regio waar uw web-app wordt geïmplementeerd.|
+    | Regio           | Selecteer **Europa - west** .|
 
 3. Selecteer het tabblad **IP-adressen** of klik op de knop **Volgende: IP-adressen** onderaan de pagina.
 
@@ -101,7 +101,7 @@ In deze sectie maakt u een virtuele machine die wordt gebruikt om het persoonlij
     | Resourcegroep | Selecteer **CreatePrivateEndpointQS-rg** |
     | **Exemplaardetails** |  |
     | Naam van de virtuele machine | Open **myVM** |
-    | Region | Selecteer **\<your-web-app-region>** . </br> Selecteer de regio waar uw web-app wordt geïmplementeerd. |
+    | Region | Selecteer **Europa - west** . |
     | Beschikbaarheidsopties | Selecteer **Geen infrastructuurredundantie vereist** |
     | Installatiekopie | Selecteer **Windows Server 2019 Datacenter - Gen1** |
     | Azure Spot-exemplaar | Selecteer **Nee** |
@@ -149,7 +149,7 @@ In deze sectie maakt u een privé-eindpunt voor de web-app die u in de sectie me
     | Resourcegroep | Selecteer **CreatePrivateEndpointQS-rg** . U hebt deze resourcegroep in de vorige sectie gemaakt.|
     | **Exemplaardetails** |  |
     | Naam  | Voer **myPrivateEndpoint** in. |
-    | Regio | Selecteer **\<your-web-app-region>** . </br> Selecteer de regio waar uw web-app wordt geïmplementeerd. |
+    | Regio | Selecteer **Europa - west** . |
 
 6. Selecteer het tabblad **Resource** of de knop **Volgende: resource** onderaan de pagina.
     

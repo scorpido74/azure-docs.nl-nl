@@ -11,13 +11,14 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/05/2020
 ms.author: jmprieur
+ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: e1df230a49ca5483d0ab091da11530786c829ca8
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: b6b02348f9d77348976f6b814c982c5250dab7aa
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042640"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896511"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>Quickstart: Verkrijg een token en roep Microsoft Graph-API aan met behulp van de id van de console-app
 
@@ -37,7 +38,7 @@ Voor deze quickstart is [.NET Core 3.1](https://www.microsoft.com/net/download/d
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Optie 1: registreer de toepassing en laat deze automatisch configureren. Download vervolgens het codevoorbeeld
 >
 > 1. Ga naar het nieuwe deelvenster [Azure-portal, App-registraties](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/DotNetCoreDaemonQuickstartPage/sourceType/docs).
-> 1. Voer een naam in voor de toepassing en selecteer **Registreren**.
+> 1. Voer een naam in voor de toepassing en selecteer **Registreren** .
 > 1. Volg de instructies om de nieuwe toepassing met slechts één klik te downloaden en automatisch te configureren.
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Optie 2: registreer de toepassing en configureer handmatig de toepassing en het codevoorbeeld
@@ -49,13 +50,13 @@ Voor deze quickstart is [.NET Core 3.1](https://www.microsoft.com/net/download/d
 > 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
 > 1. Als u via uw account toegang hebt tot meer dan één tenant, selecteert u uw account in de rechterbovenhoek en stelt u de portalsessie in op de gewenste Azure Active Directory-tenant.
 > 1. Ga in het Microsoft-identiteitsplatform naar de pagina [App-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) voor ontwikkelaars door te zoeken naar **App-registraties** in de Azure Portal-zoekbalk.
-> 1. Selecteer **Nieuwe registratie**.
+> 1. Selecteer **Nieuwe registratie** .
 > 1. Wanneer de pagina **Een toepassing registreren** verschijnt, voert u de registratiegegevens van de toepassing in.
 > 1. Voer in de sectie **Naam** een beschrijvende toepassingsnaam in die wordt weergegeven voor gebruikers van de app, zoals `Daemon-console`. Selecteer vervolgens **Registreren** om de toepassing te maken.
-> 1. Na het registreren opent u het menu **Certificaten en geheimen**.
-> 1. Onder **Clientgeheimen** selecteert u **+ Nieuw clientgeheim**. Geef het clientgeheim een naam en selecteer **Toevoegen**. Kopieer het geheim naar een veilige locatie. Die moet u gebruiken in uw code en wordt niet weergegeven in de portal.
-> 1. Open nu het menu **API-machtigingen**, selecteer de knop **+ Een geheim toevoegen** en selecteer **Microsoft Graph**.
-> 1. Selecteer **Toepassingsmachtigingen**.
+> 1. Na het registreren opent u het menu **Certificaten en geheimen** .
+> 1. Onder **Clientgeheimen** selecteert u **+ Nieuw clientgeheim** . Geef het clientgeheim een naam en selecteer **Toevoegen** . Kopieer het geheim naar een veilige locatie. Die moet u gebruiken in uw code en wordt niet weergegeven in de portal.
+> 1. Open nu het menu **API-machtigingen** , selecteer de knop **+ Een geheim toevoegen** en selecteer **Microsoft Graph** .
+> 1. Selecteer **Toepassingsmachtigingen** .
 > 1. Selecteer onder het knooppunt **Gebruiker** de optie **User.Read.All** en selecteer vervolgens **Machtigingen toevoegen**
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -89,7 +90,7 @@ Voor deze quickstart is [.NET Core 3.1](https://www.microsoft.com/net/download/d
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-visual-studio-project"></a>Stap 3: uw Visual Studio-project configureren
 >
-> 1. Pak het zip-bestand uit in een lokale map dicht bij de hoofdmap van de schijf, bijvoorbeeld **C:\Azure-Samples**.
+> 1. Pak het zip-bestand uit in een lokale map dicht bij de hoofdmap van de schijf, bijvoorbeeld **C:\Azure-Samples** .
 > 1. Open de oplossing in Visual Studio - **1-Call-MSGraph\daemon-console.sln** (optioneel).
 > 1. Bewerk **appsettings.json** en vervang de waarden van de velden `ClientId`, `Tenant` en `ClientSecret` door het volgende:
 >
@@ -105,7 +106,7 @@ Voor deze quickstart is [.NET Core 3.1](https://www.microsoft.com/net/download/d
 
 > [!div renderon="docs"]
 > > [!TIP]
-> > Om de waarden van **Toepassings-id (client-id)** en **Map-id (tenant-id)** te achterhalen, gaat u naar de **Overzichtspagina** van de app in de Azure-portal. Voor het genereren van een nieuwe sleutel gaat u naar de pagina **Certificaten en geheimen**.
+> > Om de waarden van **Toepassings-id (client-id)** en **Map-id (tenant-id)** te achterhalen, gaat u naar de **Overzichtspagina** van de app in de Azure-portal. Voor het genereren van een nieuwe sleutel gaat u naar de pagina **Certificaten en geheimen** .
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-admin-consent"></a>Stap 3: toestemming van de beheerder
@@ -113,7 +114,7 @@ Voor deze quickstart is [.NET Core 3.1](https://www.microsoft.com/net/download/d
 > [!div renderon="docs"]
 > #### <a name="step-4-admin-consent"></a>Stap 4: toestemming van de beheerder
 
-Als u op dit moment probeert de toepassing uit te voeren, krijgt u de foutmelding *HTTP 403: verboden*: `Insufficient privileges to complete the operation`. Dit komt doordat voor elke *alleen-app-toestemming* beheerderstoestemming nodig is, wat betekent dat een globale beheerder van uw map toestemming moet geven aan uw toepassing. Selecteer een van de opties hieronder, afhankelijk van uw rol:
+Als u op dit moment probeert de toepassing uit te voeren, krijgt u de foutmelding *HTTP 403: verboden* : `Insufficient privileges to complete the operation`. Dit komt doordat voor elke *alleen-app-toestemming* beheerderstoestemming nodig is, wat betekent dat een globale beheerder van uw map toestemming moet geven aan uw toepassing. Selecteer een van de opties hieronder, afhankelijk van uw rol:
 
 ##### <a name="global-tenant-administrator"></a>Globale tenantbeheerder
 
@@ -149,7 +150,7 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 
 Als u Visual Studio of Visual Studio voor Mac gebruikt, drukt u op **F5** om de toepassing uit te voeren. Voer anders de toepassing uit via de opdrachtprompt, console of terminal:
 
-```console
+```dotnetcli
 cd {ProjectFolder}\1-Call-MSGraph\daemon-console
 dotnet run
 ```
@@ -173,8 +174,7 @@ MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Ident
 
  U kunt MSAL.NET installeren door de volgende opdracht uit te voeren in **Package Manager Console** van Visual Studio:
 
-```powershell twhitney
-```console
+```dotnetcli
 dotnet add package Microsoft.Identity.Client
 ```
 

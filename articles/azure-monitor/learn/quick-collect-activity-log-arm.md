@@ -3,16 +3,16 @@ title: Azure-activiteitenlogboek verzenden naar Log Analytics-werkruimte met beh
 description: Gebruik ARM-sjablonen om een Log Analytics-werkruimte te maken en een diagnostische instelling om het activiteitenlogboek naar Azure Monitor-logboeken te verzenden.
 ms.subservice: logs
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 552df72901b9fde7acedd554b429f3a2ce0f671b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: abcaee8cffd36e22c918b9d82f37370df1d61c26
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91631848"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747040"
 ---
 # <a name="quickstart-send-azure-activity-log-to-log-analytics-workspace-using-an-arm-template"></a>Quickstart: Azure-activiteitenlogboek verzenden naar Log Analytics-werkruimte met behulp van een ARM-sjabloon
 
@@ -29,7 +29,7 @@ Het activiteitenlogboek is een platformlogboek in Azure dat inzicht biedt in geb
 
 ### <a name="review-the-template"></a>De sjabloon controleren
 
-Met de volgende sjabloon wordt een nieuwe lege Log Analytics-werkruimte gemaakt. Sla deze sjabloon op als *CreateWorkspace.json*.
+Met de volgende sjabloon wordt een nieuwe lege Log Analytics-werkruimte gemaakt. Sla deze sjabloon op als *CreateWorkspace.json* .
 
 ```json
 {
@@ -134,7 +134,7 @@ Met de sjabloon wordt één resource gedefinieerd:
 
 ### <a name="deploy-the-template"></a>De sjabloon implementeren
 
-Implementeer de sjabloon met een standaardmethode voor [het implementeren van een ARM-sjabloon](../../azure-resource-manager/templates/deploy-portal.md), zoals in de volgende voorbeelden waarin CLI en PowerShell wordt gebruikt. Vervang de voorbeeldwaarden voor **Resourcegroep**, **Werkruimte**en **Locatie** door de juiste waarden voor uw omgeving. De naam van de werkruimte moet uniek zijn voor alle Azure-abonnementen.
+Implementeer de sjabloon met een standaardmethode voor [het implementeren van een ARM-sjabloon](../../azure-resource-manager/templates/deploy-portal.md), zoals in de volgende voorbeelden waarin CLI en PowerShell wordt gebruikt. Vervang de voorbeeldwaarden voor **Resourcegroep** , **Werkruimte** en **Locatie** door de juiste waarden voor uw omgeving. De naam van de werkruimte moet uniek zijn voor alle Azure-abonnementen.
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -180,7 +180,7 @@ Get-AzOperationalInsightsWorkspace -Name my-workspace-01 -ResourceGroupName my-r
 
 ### <a name="review-the-template"></a>De sjabloon controleren
 
-Met de volgende sjabloon maakt u een diagnostische instelling die het activiteitenlogboek naar een Log Analytics-werkruimte verzendt. Sla deze sjabloon op als *CreateDiagnosticSetting.json*.
+Met de volgende sjabloon maakt u een diagnostische instelling die het activiteitenlogboek naar een Log Analytics-werkruimte verzendt. Sla deze sjabloon op als *CreateDiagnosticSetting.json* .
 
 ```json
 {
@@ -248,7 +248,7 @@ Met de sjabloon wordt één resource gedefinieerd:
 
 ### <a name="deploy-the-template"></a>De sjabloon implementeren
 
-Implementeer de sjabloon met een standaardmethode voor [het implementeren van een ARM-sjabloon](../../azure-resource-manager/templates/deploy-portal.md), zoals in de volgende voorbeelden waarin CLI en PowerShell wordt gebruikt. Vervang de voorbeeldwaarden voor **Resourcegroep**, **Werkruimte**en **Locatie** door de juiste waarden voor uw omgeving. De naam van de werkruimte moet uniek zijn voor alle Azure-abonnementen.
+Implementeer de sjabloon met een standaardmethode voor [het implementeren van een ARM-sjabloon](../../azure-resource-manager/templates/deploy-portal.md), zoals in de volgende voorbeelden waarin CLI en PowerShell wordt gebruikt. Vervang de voorbeeldwaarden voor **Resourcegroep** , **Werkruimte** en **Locatie** door de juiste waarden voor uw omgeving. De naam van de werkruimte moet uniek zijn voor alle Azure-abonnementen.
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -285,11 +285,11 @@ Gebruik de Azure-portal om Log Analytics te gebruiken om gegevens op te halen ui
 
 ![Azure Portal](media/quick-collect-activity-log/azure-portal-monitor.png)
 
-Selecteer **Logboeken** in het menu **Azure Monitor**. Sluit de pagina **Voorbeeldquery's**. Als het bereik niet is ingesteld op de werkruimte die u hebt gemaakt, klikt u op **Bereik selecteren** en zoekt u de werkruimte op.
+Selecteer **Logboeken** in het menu **Azure Monitor** . Sluit de pagina **Voorbeeldquery's** . Als het bereik niet is ingesteld op de werkruimte die u hebt gemaakt, klikt u op **Bereik selecteren** en zoekt u de werkruimte op.
 
 ![Log Analytics-bereik](media/quick-collect-activity-log/log-analytics-scope.png)
 
-Typ `AzureActivity` in het queryvenster en klik op **Uitvoeren**. Dit is een eenvoudige query waarmee alle records in de tabel *AzureActivity* worden geretourneerd. Deze tabel bevat alle records die vanuit het activiteitenlogboek zijn verzonden.
+Typ `AzureActivity` in het queryvenster en klik op **Uitvoeren** . Dit is een eenvoudige query waarmee alle records in de tabel *AzureActivity* worden geretourneerd. Deze tabel bevat alle records die vanuit het activiteitenlogboek zijn verzonden.
 
 ![Eenvoudige query](media/quick-collect-activity-log/query-01.png)
 

@@ -3,19 +3,19 @@ title: Azure-abonnementen en -accounts activeren
 description: Toegang met Azure Resource Manager-API's mogelijk maken voor nieuwe en bestaande accounts en oplossen van algemene accountproblemen.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/12/2020
+ms.date: 10/23/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cloudyn
 ms.reviewer: vitavor
 ms.custom: secdec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 52ac239369f2998a3a8eac9c400512ac845a0c49
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: b1b7ea7467be107bd1af9daf0869c77ff0b94c70
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131425"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537339"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Azure-abonnementen en -accounts activeren met Cloudyn
 
@@ -34,17 +34,17 @@ Er zijn specifieke machtigingen nodig om de procedures in dit artikel te voltooi
 
 Uw Azure-abonnementen moeten uw accounts `Microsoft.Authorization/*/Write` toegang hebben om de toepassing CloudynCollector toe te wijzen. Deze toegang wordt verleend via de rol [Eigenaar](../../role-based-access-control/built-in-roles.md#owner) of [Administrator voor gebruikerstoegang](../../role-based-access-control/built-in-roles.md#user-access-administrator).
 
-Als uw account is toegewezen aan de rol **Inzender**, hebt u niet voldoende machtiging voor het toewijzen van de toepassing. U ontvangt een fout bij een poging de CloudynCollector-toepassing toe te wijzen aan uw Azure-abonnement.
+Als uw account is toegewezen aan de rol **Inzender** , hebt u niet voldoende machtiging voor het toewijzen van de toepassing. U ontvangt een fout bij een poging de CloudynCollector-toepassing toe te wijzen aan uw Azure-abonnement.
 
 ### <a name="check-azure-active-directory-permissions"></a>Machtigingen voor Azure Active Directory controleren
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-2. Selecteer in de Azure-portal **Azure Active Directory**.
-3. Selecteer in Azure Active Directory, **Gebruikersinstellingen**.
-4. Controleer de optie **App-registraties**.
-    - Als deze is ingesteld op **Ja**, kunnen de niet-beheerders AD-apps registreren. Deze instelling betekent dat elke gebruiker in de Azure AD-tenant een app kan registreren.  
+2. Selecteer in de Azure-portal **Azure Active Directory** .
+3. Selecteer in Azure Active Directory, **Gebruikersinstellingen** .
+4. Controleer de optie **App-registraties** .
+    - Als deze is ingesteld op **Ja** , kunnen de niet-beheerders AD-apps registreren. Deze instelling betekent dat elke gebruiker in de Azure AD-tenant een app kan registreren.  
     ![App-registraties selecteren in de gebruikersinstellingen](./media/activate-subs-accounts/app-register.png)
-    - Als de optie **App-registraties** is ingesteld op **Nee**, kunnen alleen tenantbeheerders apps in Azure Active Directory registreren. Uw tenantbeheerder moet de toepassing CloudynCollector registreren.
+    - Als de optie **App-registraties** is ingesteld op **Nee** , kunnen alleen tenantbeheerders apps in Azure Active Directory registreren. Uw tenantbeheerder moet de toepassing CloudynCollector registreren.
 
 
 ## <a name="add-an-account-or-update-a-subscription"></a>Een account toevoegen of een abonnement bijwerken
@@ -59,20 +59,20 @@ Wanneer u een account updatet een abonnement toevoegt, verleent u Cloudyn toegan
 
 ### <a name="update-a-subscription"></a>Een abonnement bijwerken
 
-1. Als u een _niet-geactiveerd_ abonnement wilt bijwerken dat al voorkomt in Cloudyn in Account-beheer, klikt u op het potloodsymbool bewerken rechts van de bovenliggende _tenant-GUID_. Abonnementen zijn gegroepeerd onder een bovenliggende tenant, dus vermijd het afzonderlijk activeren van abonnementen.
+1. Als u een _niet-geactiveerd_ abonnement wilt bijwerken dat al voorkomt in Cloudyn in Account-beheer, klikt u op het potloodsymbool bewerken rechts van de bovenliggende _tenant-GUID_ . Abonnementen zijn gegroepeerd onder een bovenliggende tenant, dus vermijd het afzonderlijk activeren van abonnementen.
     ![uw tenant-id selecteren in het vak Abonnementen opnieuw detecteren](./media/activate-subs-accounts/existing-sub.png)
 2. Voer, indien nodig, de Tenant-ID in. Als u uw Tenant-ID niet weet, gebruikt u de volgende stappen om die te vinden:
     1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-    2. Selecteer in de Azure-portal **Azure Active Directory**.
+    2. Selecteer in de Azure-portal **Azure Active Directory** .
     3. Haal de tenant-id op door **Eigenschappen** voor uw Azure AD-tenant te selecteren.
     4. Kopieer de map-id-GUID. Deze waarde is uw tenant-id.
     Zie [Tenant-id ophalen](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) voor meer informatie.
 3. Selecteer, indien nodig, uw Tarief-id. Als u uw Tenant-id niet weet, gebruikt u de volgende stappen om die te vinden.
-    1. Klik in de rechterbovenhoek van de Azure-portal op uw gebruikersgegevens en klik vervolgens op **Mijn factuur weergeven**.
-    2. Onder **Factureringsaccount**, klikt u op **Abonnementen**.
-    3. Onder **Mijn abonnementen**, selecteert u het abonnement.
-    4. De Tarief-id wordt weergegeven onder **Aanbiedings-id**. Kopieer de aanbiedings-id voor het abonnement.
-4. Klik in het vak Nieuw account toevoegen (of Abonnement bewerken) op **Opslaan** (of **Volgende**). U wordt omgeleid naar de Azure-portal.
+    1. Klik in de rechterbovenhoek van de Azure-portal op uw gebruikersgegevens en klik vervolgens op **Mijn factuur weergeven** .
+    2. Onder **Factureringsaccount** , klikt u op **Abonnementen** .
+    3. Onder **Mijn abonnementen** , selecteert u het abonnement.
+    4. De Tarief-id wordt weergegeven onder **Aanbiedings-id** . Kopieer de aanbiedings-id voor het abonnement.
+4. Klik in het vak Nieuw account toevoegen (of Abonnement bewerken) op **Opslaan** (of **Volgende** ). U wordt omgeleid naar de Azure-portal.
 5. Meld u aan bij de portal. Klik op **Accepteren** om Cloudyn Collector toegang te geven tot uw Azure-account.
 
     U bent omgeleid naar de Cloudyn-pagina Accounts beheren en uw abonnement wordt bijgewerkt met **actieve** accountstatus. Er moet een groen vinkje worden weergegeven onder de kolom Resource Manager.
@@ -87,7 +87,7 @@ Bekijk de video [Verbinding maken in Azure Resource Manager met Cloudyn](https:/
 
 Wanneer u de beheerportal van Cloudyn voor het eerst gebruikt, ziet u mogelijk de volgende berichten als u een Enterprise Agreement- of Cloud Solution Provider-gebruiker (CSP) bent:
 
-- *De opgegeven API-sleutel is geen inschrijvingssleutel van het hoogste niveau* weergegeven in de wizard **Instellen van Cloudyn**.
+- *De opgegeven API-sleutel is geen inschrijvingssleutel van het hoogste niveau* weergegeven in de wizard **Instellen van Cloudyn** .
 - *Directe inschrijving – Nee* weergegeven in de Enterprise Agreement-portal.
 - *Er zijn geen gebruiksgegevens gevonden voor de afgelopen 30 dagen. Neem contact op met uw leverancier om te controleren of de markering is ingeschakeld voor uw Azure-account* weergegeven in de Cloudyn-portal.
 
@@ -96,7 +96,7 @@ De voorgaande berichten geven aan dat u een Azure Enterprise Agreement via een w
 Los de problemen als volgt op:
 
 1. Uw wederverkoper moet _markeren_ voor uw account inschakelen. Raadpleeg de [Onboarding-handleiding voor indirecte klanten](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide) voor meer instructies.
-2. U genereert de Azure Enterprise Overeenkomst-sleutel om Cloudyn te gebruiken. Raadpleeg [Een Azure Enterprise Overeenkomst-sleutel registreren en kostengegevens weergeven](./quick-register-ea.md) voor meer instructies.
+2. U genereert de Azure Enterprise Overeenkomst-sleutel om Cloudyn te gebruiken.
 
 Voordat u de Azure Enterprise Agreement API-sleutel voor het instellen van Cloudyn kunt genereren, moet u de Azure-facturerings-API inschakelen door de instructies te volgen op:
 
@@ -105,7 +105,7 @@ Voordat u de Azure Enterprise Agreement API-sleutel voor het instellen van Cloud
 
 U moet wellicht ook afdelingsbeheerders, accounteigenaars en enterprise-administrators machtigingen geven voor _Kosten weergeven_ met de facturerings-API.
 
-Alleen een Azure-servicebeheerder kan Cloudyn inschakelen. U hebt onvoldoende co-beheerdersmachtigingen. U kunt echter de vereiste voor beheerders omzeilen. U kunt uw Azure Active Directory-beheerder vragen u toestemming te geven om de **CloudynAzureCollector** te autoriseren met een PowerShell-script. Het volgende script geeft toestemming om de Azure Active Directory-service-principal **​​CloudynAzureCollector**te registreren.
+Alleen een Azure-servicebeheerder kan Cloudyn inschakelen. U hebt onvoldoende co-beheerdersmachtigingen. U kunt echter de vereiste voor beheerders omzeilen. U kunt uw Azure Active Directory-beheerder vragen u toestemming te geven om de **CloudynAzureCollector** te autoriseren met een PowerShell-script. Het volgende script geeft toestemming om de Azure Active Directory-service-principal **​​CloudynAzureCollector** te registreren.
 
 
 ```powershell

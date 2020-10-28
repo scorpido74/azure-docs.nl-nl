@@ -5,21 +5,21 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 07/30/2020
-ms.openlocfilehash: e492a5f0afdfc2087e5719df65221d08db0a2e77
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e6e53755d9231008d0f48c755ff9da297d7305d7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87499548"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747166"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>Quickstart: Logische apps maken en beheren met behulp van Azure CLI
 
 Deze quickstart laat zien hoe u logische apps maakt en beheert door de [Azure CLI Logic Apps-extensie](/cli/azure/ext/logic/logic?view=azure-cli-latest) (`az logic`) te gebruiken. Vanaf de opdrachtregel kunt u een logische app maken door het JSON-bestand te gebruiken voor een werkstroomdefinitie van een logische app. Vervolgens kunt u uw logische app beheren door bewerkingen zoals `list`, `show` (`get`), `update` en `delete` uit te voeren vanaf de opdrachtregel.
 
 > [!WARNING]
-> De Azure CLI Logic Apps-extensie is momenteel *experimenteel* en *niet gedekt door klantenondersteuning*. Wees voorzichtig wanneer u deze CLI-extensie gebruikt, vooral als u ervoor kiest de extensie in productieomgevingen te gebruiken.
+> De Azure CLI Logic Apps-extensie is momenteel *experimenteel* en *niet gedekt door klantenondersteuning* . Wees voorzichtig wanneer u deze CLI-extensie gebruikt, vooral als u ervoor kiest de extensie in productieomgevingen te gebruiken.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -61,7 +61,7 @@ De uitvoer toont de `provisioningState` als `Succeeded` wanneer uw resourcegroep
 
 ## <a name="workflow-definition"></a>Werkstroomdefinitie
 
-Voordat u [een nieuwe logische app maakt](#create-logic-apps-from-cli) of [een bestaande logische app bijwerkt](#update-logic-apps-from-cli) door Azure CLI te gebruiken, hebt u een werkstroomdefinitie voor uw logische app nodig. In de Azure-portal kunt u de onderliggende werkstroomdefinitie van uw logische app in JSON-indeling bekijken door over te schakelen van de **ontwerpfunctieweergave** naar de **codeweergave**.
+Voordat u [een nieuwe logische app maakt](#create-logic-apps-from-cli) of [een bestaande logische app bijwerkt](#update-logic-apps-from-cli) door Azure CLI te gebruiken, hebt u een werkstroomdefinitie voor uw logische app nodig. In de Azure-portal kunt u de onderliggende werkstroomdefinitie van uw logische app in JSON-indeling bekijken door over te schakelen van de **ontwerpfunctieweergave** naar de **codeweergave** .
 
 Wanneer u de opdrachten uitvoert om uw logische app te maken of bij te werken, wordt uw werkstroomdefinitie geüpload als een vereiste parameter (`--definition`). U moet uw werkstroomdefinitie maken als een JSON-bestand dat het [taalschema voor werkstroomdefinities](./logic-apps-workflow-definition-language.md) volgt.
 
