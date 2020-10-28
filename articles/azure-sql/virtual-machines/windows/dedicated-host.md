@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 40c851e5ff5fc83ccf6b6d67e319bb97bd860bd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 140d95aeb7baf4b342044bc178d108239236229b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84669100"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677679"
 ---
 # <a name="run-sql-server-vm-on-an-azure-dedicated-host"></a>SQL Server VM uitvoeren op een toegewezen Azure-host 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,15 +30,14 @@ De [toegewezen Azure-host](/azure/virtual-machines/windows/dedicated-hosts) is e
 
 ## <a name="limitations"></a>Beperkingen
 
-- Virtuele-machine schaal sets worden momenteel niet ondersteund op toegewezen hosts.
-- De volgende VM-serie worden ondersteund: DSv3 en ESv3. 
+- Niet alle VM-reeksen worden ondersteund op toegewezen hosts en de beschik baarheid van de VM-reeks varieert per regio. Zie [overzicht van met Azure toegewezen hosts](../../../virtual-machines/dedicated-hosts.md)voor meer informatie.
 
 ## <a name="licensing"></a>Licentieverlening
 
 U kunt kiezen tussen twee verschillende licentie opties wanneer u uw SQL Server virtuele machine in een door Azure toegewezen host plaatst. 
 
-  - **SQL VM-licentie verlening**: dit is de bestaande licentie optie, waar u voor elke SQL Server VM-licentie afzonderlijk betaalt. 
-  - **Dedicated host Licensing**: het nieuwe licentie model dat beschikbaar is voor de toegewezen Azure-host, waarbij SQL Server licenties worden gebundeld en betaald op hostniveau. 
+  - **SQL VM-licentie verlening** : dit is de bestaande licentie optie, waar u voor elke SQL Server VM-licentie afzonderlijk betaalt. 
+  - **Dedicated host Licensing** : het nieuwe licentie model dat beschikbaar is voor de toegewezen Azure-host, waarbij SQL Server licenties worden gebundeld en betaald op hostniveau. 
 
 
 Opties op hostniveau voor het gebruik van bestaande SQL Server licenties: 

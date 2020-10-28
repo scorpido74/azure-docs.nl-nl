@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 4394cc4cb21b288215c75e484cb6446f0321158b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: d34748a2b9f46bde187b4f003e210ffdaecd93e2
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079068"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675684"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modellen trainen met Azure Machine Learning
 
@@ -26,14 +26,14 @@ Azure Machine Learning biedt verschillende manieren om uw modellen te trainen, v
     | Trainings methode | Beschrijving |
     | ----- | ----- |
     | [Configuratie uitvoeren](#run-configuration) | Een **typische manier om modellen te trainen** is door een trainings script te gebruiken en de configuratie uit te voeren. De uitvoerings configuratie bevat de informatie die nodig is voor het configureren van de trainings omgeving die wordt gebruikt voor het trainen van uw model. U kunt uw trainings script, reken doel en Azure ML-omgeving opgeven in uw uitvoerings configuratie en een trainings taak uitvoeren. |
-    | [Geautomatiseerde Machine Learning](#automated-machine-learning) | Met geautomatiseerde machine learning kunt u **modellen trainen zonder uitgebreide data Wetenschappen of programmeer kennis**. Voor mensen met een gegevens wetenschap en-programmeer achtergrond biedt het een manier om tijd en resources te besparen door het automatiseren van algoritme selectie en afstemming-afstemming. U hoeft zich geen zorgen te maken over het definiëren van een configuratie voor het uitvoeren van automatische machine learning. |
-    | [Machine learning-pijp lijn](#machine-learning-pipeline) | Pijp lijnen zijn geen andere Trainings methode, maar een **manier om een werk stroom te definiëren met behulp van modulaire, herbruikbare stappen**die training kunnen bevatten als onderdeel van de werk stroom. Machine learning-pijp lijnen ondersteunen het gebruik van geautomatiseerde machine learning en het uitvoeren van configuratie voor het trainen van modellen. Omdat pijp lijnen niet specifiek zijn gericht op training, zijn de redenen voor het gebruik van een pijp lijn meer gevarieerder dan de andere trainings methoden. Over het algemeen kunt u gebruikmaken van een pijp lijn wanneer:<br>* U wilt **processen zonder toezicht plannen** , zoals langlopende trainings taken of gegevens voorbereiding.<br>* Gebruik **meerdere stappen** die worden gecoördineerd over heterogene reken resources en opslag locaties.<br>* Gebruik de pijp lijn als een **herbruikbare sjabloon** voor specifieke scenario's, zoals retraining of batch scores.<br>* **Gegevens bronnen, invoer en uitvoer** voor uw werk stroom bijhouden en controleren.<br>* Uw werk stroom wordt **geïmplementeerd door verschillende teams die onafhankelijk werken met specifieke stappen**. Stappen kunnen vervolgens aan elkaar worden gekoppeld in een pijp lijn om de werk stroom te implementeren. |
+    | [Geautomatiseerde Machine Learning](#automated-machine-learning) | Met geautomatiseerde machine learning kunt u **modellen trainen zonder uitgebreide data Wetenschappen of programmeer kennis** . Voor mensen met een gegevens wetenschap en-programmeer achtergrond biedt het een manier om tijd en resources te besparen door het automatiseren van algoritme selectie en afstemming-afstemming. U hoeft zich geen zorgen te maken over het definiëren van een configuratie voor het uitvoeren van automatische machine learning. |
+    | [Machine learning-pijp lijn](#machine-learning-pipeline) | Pijp lijnen zijn geen andere Trainings methode, maar een **manier om een werk stroom te definiëren met behulp van modulaire, herbruikbare stappen** die training kunnen bevatten als onderdeel van de werk stroom. Machine learning-pijp lijnen ondersteunen het gebruik van geautomatiseerde machine learning en het uitvoeren van configuratie voor het trainen van modellen. Omdat pijp lijnen niet specifiek zijn gericht op training, zijn de redenen voor het gebruik van een pijp lijn meer gevarieerder dan de andere trainings methoden. Over het algemeen kunt u gebruikmaken van een pijp lijn wanneer:<br>* U wilt **processen zonder toezicht plannen** , zoals langlopende trainings taken of gegevens voorbereiding.<br>* Gebruik **meerdere stappen** die worden gecoördineerd over heterogene reken resources en opslag locaties.<br>* Gebruik de pijp lijn als een **herbruikbare sjabloon** voor specifieke scenario's, zoals retraining of batch scores.<br>* **Gegevens bronnen, invoer en uitvoer** voor uw werk stroom bijhouden en controleren.<br>* Uw werk stroom wordt **geïmplementeerd door verschillende teams die onafhankelijk werken met specifieke stappen** . Stappen kunnen vervolgens aan elkaar worden gekoppeld in een pijp lijn om de werk stroom te implementeren. |
 
 + [Azure machine learning SDK voor r (preview)](#r-sdk-preview): de SDK voor r maakt gebruik van het Reticulate-pakket om een binding te maken met de PYTHON-sdk van Azure machine learning. Hiermee hebt u toegang tot de kern objecten en-methoden die zijn geïmplementeerd in de python-SDK vanuit elke R-omgeving.
 
-+ **Designer**: Azure machine learning Designer biedt een eenvoudig ingangs punt in machine learning voor het bouwen van een proef versie van concepten of voor gebruikers met weinig code ring. Het biedt u de mogelijkheid om modellen te trainen met behulp van een slepen-en-neerzetten op het web. U kunt python-code gebruiken als onderdeel van het ontwerp of modellen trainen zonder code te schrijven.
++ **Designer** : Azure machine learning Designer biedt een eenvoudig ingangs punt in machine learning voor het bouwen van een proef versie van concepten of voor gebruikers met weinig code ring. Het biedt u de mogelijkheid om modellen te trainen met behulp van een slepen-en-neerzetten op het web. U kunt python-code gebruiken als onderdeel van het ontwerp of modellen trainen zonder code te schrijven.
 
-+ **Cli**: de machine learning cli bevat opdrachten voor algemene taken met Azure machine learning en wordt vaak gebruikt voor het **uitvoeren van scripts en het automatiseren van taken**. Als u bijvoorbeeld een trainings script of pijp lijn hebt gemaakt, kunt u de CLI gebruiken om een training te starten volgens een planning of wanneer de gegevens bestanden die worden gebruikt voor de training, worden bijgewerkt. Voor trainings modellen bevat deze opdrachten voor het verzenden van trainings taken. Het kan taken verzenden met behulp van run-configuraties of-pijp lijnen.
++ **Cli** : de machine learning cli bevat opdrachten voor algemene taken met Azure machine learning en wordt vaak gebruikt voor het **uitvoeren van scripts en het automatiseren van taken** . Als u bijvoorbeeld een trainings script of pijp lijn hebt gemaakt, kunt u de CLI gebruiken om een training te starten volgens een planning of wanneer de gegevens bestanden die worden gebruikt voor de training, worden bijgewerkt. Voor trainings modellen bevat deze opdrachten voor het verzenden van trainings taken. Het kan taken verzenden met behulp van run-configuraties of-pijp lijnen.
 
 Elk van deze trainings methoden kan gebruikmaken van verschillende soorten reken resources voor training. Deze resources worden gezamenlijk aangeduid als [__Compute-doelen__](concept-azure-machine-learning-architecture.md#compute-targets). Een compute-doel kan een lokale machine of een Cloud resource zijn, zoals een Azure Machine Learning compute, Azure HDInsight of een externe virtuele machine.
 
@@ -53,7 +53,7 @@ U kunt beginnen met het uitvoeren van een configuratie voor uw lokale computer e
 
 * [Wat is een uitvoerings configuratie?](concept-azure-machine-learning-architecture.md#run-configurations)
 * [Zelfstudie: Uw eerste ML-model trainen](tutorial-1st-experiment-sdk-train.md)
-* [Voor beelden: Jupyter Notebook voor beelden van trainings modellen](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks)
+* [Voor beelden: Jupyter Notebook-en python-voor beelden van trainings modellen](https://github.com/Azure/azureml-examples)
 * [Procedure: een trainings uitvoering configureren](how-to-set-up-training-targets.md)
 
 ### <a name="automated-machine-learning"></a>Geautomatiseerde machine learning
@@ -64,7 +64,7 @@ Definieer de herhalingen, afstemming-instellingen, parametrisatie en andere inst
 > Naast de python-SDK kunt u ook gebruikmaken van automatische ML tot en met [Azure machine learning Studio](https://ml.azure.com).
 
 * [Wat is geautomatiseerde machine learning?](concept-automated-ml.md)
-* [Zelf studie: uw eerste classificatie model maken met geautomatiseerde machine learning](tutorial-first-experiment-automated-ml.md)
+* [Zelfstudie: Uw eerste classificatiemodel maken met geautomatiseerde machine learning](tutorial-first-experiment-automated-ml.md)
 * [Zelfstudie: Geautomatiseerde machine learning gebruiken om taxitarieven te voorspellen](tutorial-auto-train-models.md)
 * [Voor beelden: Jupyter Notebook voor beelden voor automatische machine learning](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)
 * [Procedure: geautomatiseerde ML experimenten configureren in python](how-to-configure-auto-train.md)

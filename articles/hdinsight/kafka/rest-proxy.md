@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: has-adal-ref, devx-track-python
 ms.date: 04/03/2020
-ms.openlocfilehash: a99c6412650cac565414817c91752ae85b8ad37d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8447eae4ea7234a7f47219cc81441650121b84ae
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539595"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676177"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>Interactie met Apache Kafka clusters in azure HDInsight met behulp van een REST-proxy
 
-Met de Kafka REST-proxy kunt u met uw Kafka-cluster communiceren via een REST API over HTTP. Deze actie houdt in dat uw Kafka-clients zich buiten uw virtuele netwerk kunnen bevinden. Clients kunnen eenvoudige HTTP-aanroepen naar het Kafka-cluster maken, in plaats van te vertrouwen op Kafka-bibliotheken. In dit artikel wordt uitgelegd hoe u een Kafka-cluster maakt waarop een REST-proxy is ingeschakeld. Bevat ook een voorbeeld code die laat zien hoe u aanroepen naar REST proxy.
+Met Kafka REST proxy kunt u met uw Kafka-cluster communiceren via een REST API via HTTPS. Deze actie houdt in dat uw Kafka-clients zich buiten uw virtuele netwerk kunnen bevinden. Clients kunnen eenvoudige, beveiligde HTTPS-aanroepen naar het Kafka-cluster maken, in plaats van te vertrouwen op Kafka-bibliotheken. In dit artikel wordt uitgelegd hoe u een Kafka-cluster maakt waarop een REST-proxy is ingeschakeld. Bevat ook een voorbeeld code die laat zien hoe u aanroepen naar REST proxy.
 
 ## <a name="rest-api-reference"></a>Naslaginformatie over REST-API
 
@@ -37,7 +37,7 @@ Het maken van een HDInsight Kafka-cluster met REST proxy maakt een nieuw openbaa
 
 De toegang tot de Kafka REST-proxy wordt beheerd met Azure Active Directory-beveiligings groepen. Wanneer u het Kafka-cluster maakt, geeft u de Azure AD-beveiligings groep op met REST endpoint Access. Kafka-clients die toegang nodig hebben tot de REST proxy moeten door de groeps eigenaar bij deze groep worden geregistreerd. De groeps eigenaar kan zich registreren via de portal of via Power shell.
 
-Voor REST proxy-eindpunt aanvragen moet client toepassingen een OAuth-Token ophalen. Het token wordt gebruikt om het lidmaatschap van een beveiligings groep te controleren. Hieronder vindt u een voor beeld van een [client toepassing](#client-application-sample) waarin wordt uitgelegd hoe u een OAuth-token ophaalt. De client toepassing geeft het OAuth-token in de HTTP-aanvraag door aan de REST-proxy.
+Voor REST proxy-eindpunt aanvragen moet client toepassingen een OAuth-Token ophalen. Het token wordt gebruikt om het lidmaatschap van een beveiligings groep te controleren. Hieronder vindt u een voor beeld van een [client toepassing](#client-application-sample) waarin wordt uitgelegd hoe u een OAuth-token ophaalt. De client toepassing geeft het OAuth-token in de HTTPS-aanvraag door aan de REST-proxy.
 
 > [!NOTE]
 > Zie [toegang tot apps en bronnen beheren met Azure Active Directory groepen](../../active-directory/fundamentals/active-directory-manage-groups.md)voor meer informatie over Aad-beveiligings groepen. Zie [toegang tot Azure Active Directory webtoepassingen toestaan met de OAuth 2,0 code subsidie flow](../../active-directory/azuread-dev/v1-protocols-oauth-code.md)voor meer informatie over de werking van OAuth-tokens.

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: a3382f93990612b0ab34eb0848cbf3d6577c44ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a9a8f3fe7422468ff2c8886dff7415322cf70f0
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87087931"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676869"
 ---
 # <a name="how-to-manually-fix-servicenow-sync-problems"></a>Problemen met ServiceNow-synchronisatie hand matig oplossen
 
@@ -23,16 +23,16 @@ Gebruik het volgende synchronisatie proces om de verbinding opnieuw te activeren
 
 1. Zoek naar de oplossing in de bovenste Zoek banner en selecteer vervolgens de relevante oplossingen
 
-    ![Nieuwe verbinding](media/itsmc-resync-servicenow/solution-search-8bit.png)
+    ![Scherm afbeelding met de bovenste Zoek banner en waar u de relevante oplossingen kunt selecteren.](media/itsmc-resync-servicenow/solution-search-8bit.png)
 
 1. Kies in het scherm oplossing de optie Alles selecteren in het abonnements filter en filter vervolgens op ' Service Desk '
 
-    ![Nieuwe verbinding](media/itsmc-resync-servicenow/solutions-list-8bit.png)
+    ![Scherm afbeelding die laat zien waar u selecteert selecteren en waar u wilt filteren op Service Desk.](media/itsmc-resync-servicenow/solutions-list-8bit.png)
 
 1. Selecteer de oplossing van uw ITSM-verbinding.
 1. Selecteer ITSM-verbinding in het linkerdeel blad.
 
-    ![Nieuwe verbinding](media/itsmc-resync-servicenow/itsm-connector-8bit.png)
+    ![Scherm afbeelding die laat zien waar u ITSM-verbindingen selecteert.](media/itsmc-resync-servicenow/itsm-connector-8bit.png)
 
 1. Selecteer elke connector in de lijst. 
     1. Klik op de naam van de connector om deze te configureren
@@ -42,7 +42,7 @@ Gebruik het volgende synchronisatie proces om de verbinding opnieuw te activeren
 
     1. Klik op synchroniseren
 
-       ![Nieuwe verbinding](media/itsmc-resync-servicenow/resync-8bit2.png)
+       ![Scherm opname van de knop synchroniseren.](media/itsmc-resync-servicenow/resync-8bit2.png)
 
     1. Klik op opslaan
 

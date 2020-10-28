@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: a1ae0971b016ed226351167cfabfca7d3cafd19f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82220a63cfe470344951e4276bc9eaccd9600428
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87905402"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677341"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>Azure Data Lake Storage Gen2 optimaliseren voor prestaties
 
@@ -27,7 +27,7 @@ Data Lake Storage Gen2 kan worden geschaald om de benodigde door Voer voor alle 
 
 Bij het opnemen van gegevens van een bron systeem naar Data Lake Storage Gen2, is het belang rijk om te overwegen dat de bron-hardware, de bron netwerkhardware en de netwerk verbinding met Data Lake Storage Gen2 de knel punt kunnen zijn.  
 
-![Prestaties Data Lake Storage Gen2](./media/data-lake-storage-performance-tuning-guidance/bottleneck.png)
+![Diagram met de factoren waarmee rekening moet worden gehouden bij het opnemen van gegevens van een bron systeem naar Data Lake Storage Gen2.](./media/data-lake-storage-performance-tuning-guidance/bottleneck.png)
 
 Het is belang rijk om ervoor te zorgen dat de verplaatsing van gegevens niet wordt beïnvloed door deze factoren.
 
@@ -107,7 +107,7 @@ Er zijn drie lagen in een HDInsight-cluster die kunnen worden afgestemd om het a
 
 **Voer het cluster uit met meer knoop punten en/of grotere Vm's.**  Een groter cluster biedt u de mogelijkheid om meer GARENs-containers uit te voeren, zoals wordt weer gegeven in de onderstaande afbeelding.
 
-![Prestaties Data Lake Storage Gen2](./media/data-lake-storage-performance-tuning-guidance/VM.png)
+![Diagram dat laat zien hoe een groter cluster u in staat stelt om meer GARENs uit te voeren.](./media/data-lake-storage-performance-tuning-guidance/VM.png)
 
 **Gebruik Vm's met meer netwerk bandbreedte.**  De hoeveelheid netwerk bandbreedte kan een knel punt zijn als er minder netwerk bandbreedte is dan Data Lake Storage Gen2 door voer.  Verschillende Vm's hebben een verschillende grootte voor de netwerk bandbreedte.  Kies een VM-type met de grootst mogelijke netwerk bandbreedte.
 
@@ -115,7 +115,7 @@ Er zijn drie lagen in een HDInsight-cluster die kunnen worden afgestemd om het a
 
 **Gebruik kleinere garen-containers.**  Verklein de grootte van elke garen container om meer containers te maken met dezelfde hoeveelheid resources.
 
-![Prestaties Data Lake Storage Gen2](./media/data-lake-storage-performance-tuning-guidance/small-containers.png)
+![Diagram waarin het resultaat wordt weer gegeven wanneer u de grootte van elke garen container reduceert om meer containers te maken.](./media/data-lake-storage-performance-tuning-guidance/small-containers.png)
 
 Afhankelijk van uw werk belasting, wordt er altijd een minimale grootte van een garen container vereist. Als u te klein een container kiest, worden uw taken uitgevoerd in plaats van geheugen. Een garen mag doorgaans niet kleiner zijn dan 1 GB. Het is gebruikelijk om 3 GB-GARENs te zien. Voor sommige workloads hebt u mogelijk grotere GARENs nodig.  
 
@@ -125,7 +125,7 @@ Afhankelijk van uw werk belasting, wordt er altijd een minimale grootte van een 
 
 **Alle beschik bare containers gebruiken.**  Stel in hoeveel taken gelijk of groter dan het aantal beschik bare containers moeten zijn, zodat alle resources worden gebruikt.
 
-![Prestaties Data Lake Storage Gen2](./media/data-lake-storage-performance-tuning-guidance/use-containers.png)
+![Diagram waarin het gebruik van alle containers wordt weer gegeven.](./media/data-lake-storage-performance-tuning-guidance/use-containers.png)
 
 **Mislukte taken zijn kostbaar.** Als elke taak een grote hoeveelheid gegevens kan verwerken, resulteert het mislukken van een taak in een dure nieuwe poging.  Daarom is het beter om meer taken te maken, die elk een kleine hoeveelheid gegevens verwerken.
 

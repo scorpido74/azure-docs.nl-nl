@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
-ms.openlocfilehash: 430907f43fb40f0ee24505bdc366a98a49f23b47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40e17a9f73d98f24c6c7fbb55ef38cc2bc088861
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82613282"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675930"
 ---
 # <a name="imagery-partner-integration"></a>Partnerintegratie voor afbeeldingen
 
@@ -43,9 +43,9 @@ De Api's bevatten technische documentatie voor Swagger. Zie [Swagger](https://ak
 
 ## <a name="authentication"></a>Verificatie
 
-FarmBeats maakt gebruik van Microsoft Azure [Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) (Azure AD). Azure App Service biedt ingebouwde ondersteuning voor verificatie en autorisatie. 
+FarmBeats maakt gebruik van Microsoft Azure [Active Directory](../../app-service/overview-authentication-authorization.md) (Azure AD). Azure App Service biedt ingebouwde ondersteuning voor verificatie en autorisatie. 
 
-Zie [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)voor meer informatie over Azure AD.   
+Zie [Azure Active Directory](../../app-service/overview-authentication-authorization.md)voor meer informatie over Azure AD.   
 
 FarmBeats Datahub maakt gebruik van Bearer-verificatie, die de volgende referenties nodig heeft:
 
@@ -138,10 +138,10 @@ Nadat de partner referenties heeft om verbinding te maken met FarmBeats Datahub,
 
 1.  Maak een nieuw uitgebreid type voor de volgende velden, in overeenstemming met het type afbeelding dat moet worden geüpload:
 
-    - **Scène bron**: bijvoorbeeld drone_partner_name
-    - **Type scène**: bijvoorbeeld Drone
-    - **Type scène bestand**: bijvoorbeeld Chlorophyll index
-    - **Type inhoud van scène bestand**: bijvoorbeeld afbeelding/TIFF
+    - **Scène bron** : bijvoorbeeld drone_partner_name
+    - **Type scène** : bijvoorbeeld Drone
+    - **Type scène bestand** : bijvoorbeeld Chlorophyll index
+    - **Type inhoud van scène bestand** : bijvoorbeeld afbeelding/TIFF
 
 2.  Roep de/Farms-API aan om de lijst met Farms op te halen in het Azure FarmBeats-systeem.
 3.  Geef de klant de mogelijkheid om één farm te kiezen uit de lijst met farms.

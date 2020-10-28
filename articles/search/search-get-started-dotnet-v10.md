@@ -8,24 +8,25 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 08/05/2020
+ms.date: 10/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ce676c8966f67aeb233b2b9daf3f8f1c57327e6a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6dd64ae8b7b7307d7dcd510d1fdb877365c6f36
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462085"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675959"
 ---
-# <a name="quickstart-create-a-search-index-using-the-microsoftazuresearch-v10-client-library"></a>Snelstartgids: een zoek index maken met behulp van de client bibliotheek micro soft. Azure. Search V10 toevoegen
+# <a name="quickstart-create-a-search-index-using-the-legacy-microsoftazuresearch-v10-client-library"></a>Snelstartgids: een zoek index maken met behulp van de verouderde client bibliotheek van micro soft. Azure. Search V10 toevoegen
 
-Dit artikel is de C#-Snelstartgids voor de verouderde client bibliotheek van micro soft. Azure. Search (versie 10), die nu wordt vervangen door de uments-client bibliotheek (versie 11) van Azure.Search.Doc. Als u bestaande Zoek oplossingen hebt die gebruikmaken van de micro soft. Azure. Search-Bibliotheken, kunt u deze Snelstartgids gebruiken om meer te weten te komen over die Api's. 
+Dit artikel is de C#-Snelstartgids voor de verouderde client bibliotheek van [**micro soft. Azure. Search**](/dotnet/api/overview/azure/search/client10) (versie 10), die nu wordt vervangen door de uments-client bibliotheek (versie 11) van [**Azure.Search.Doc**](/dotnet/api/overview/azure/search.documents-readme) .
 
-Voor nieuwe oplossingen raden wij u aan de nieuwe Azure.Search.Documents-bibliotheek. Voor een inleiding raadpleegt [u Quick Start: een zoek index maken met behulp van Azure.Search.Documents-bibliotheek](search-get-started-dotnet.md).
+> [!NOTE]
+> Als u bestaande of Inflight-ontwikkel projecten hebt, kunt u versie 10 blijven gebruiken. Voor nieuwe projecten of voor het gebruik van nieuwe functies, moet u echter overstappen naar de [nieuwe bibliotheek](/dotnet/api/overview/azure/search.documents-readme).
 
 ## <a name="about-this-quickstart"></a>Over deze Snelstartgids
 
-Maak een .NET core-console toepassing in C# die een Azure Cognitive Search-index maakt, laadt en opvraagt met behulp van Visual Studio en de [micro soft. Azure. Search-client bibliotheken](/dotnet/api/overview/azure/search/client10?view=azure-dotnet). 
+Maak een .NET core-console toepassing in C# die een Azure Cognitive Search-index maakt, laadt en opvraagt met behulp van Visual Studio en de [micro soft. Azure. Search-client bibliotheken](/dotnet/api/overview/azure/search/client10). 
 
 In dit artikel wordt uitgelegd hoe u de toepassing maakt. U kunt ook [de volledige toepassing downloaden en uitvoeren](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v10).
 
@@ -70,7 +71,7 @@ Voor dit project gebruikt u versie 10 van het `Microsoft.Azure.Search` NuGet-pak
 
 1. Selecteer onder **Hulpprogramma's** > **NuGet-pakketbeheer** de optie **NuGet-pakketten voor oplossing beheren...** . 
 
-1. Klik op **Bladeren**.
+1. Klik op **Bladeren** .
 
 1. Zoek `Microsoft.Azure.Search` en selecteer versie 10.
 
@@ -85,9 +86,9 @@ Voor dit project gebruikt u versie 10 van het `Microsoft.Azure.Search` NuGet-pak
 
 1. Zoek bij Nieuw item toevoegen naar 'JSON' om een JSON-lijst met itemtypen te retourneren.
 
-1. Kies **JSON-bestand**, geef het bestand de naam 'appsettings.json' en klik op **Toevoegen**. 
+1. Kies **JSON-bestand** , geef het bestand de naam 'appsettings.json' en klik op **Toevoegen** . 
 
-1. Voeg het bestand toe aan uw uitvoermap. Klik met de rechtermuisknop op appsettings.json en selecteer **Eigenschappen**. Selecteer bij **Naar uitvoermap kopiëren** de optie **Kopiëren indien nieuwer**.
+1. Voeg het bestand toe aan uw uitvoermap. Klik met de rechtermuisknop op appsettings.json en selecteer **Eigenschappen** . Selecteer bij **Naar uitvoermap kopiëren** de optie **Kopiëren indien nieuwer** .
 
 1. Kopieer de volgende JSON in uw nieuwe JSON-bestand. 
 
@@ -103,7 +104,7 @@ Voor dit project gebruikt u versie 10 van het `Microsoft.Azure.Search` NuGet-pak
 
 ### <a name="add-class-method-files-to-your-project"></a>'.Method'-klassebestanden toevoegen aan uw project
 
-Deze stap is vereist om zinvolle uitvoer te maken in de console. Wanneer u de resultaten naar het consolevenster afdrukt, moeten afzonderlijke velden van het object Hotel worden geretourneerd als tekenreeksen. Met deze stap wordt [ToString()](/dotnet/api/system.object.tostring?view=netframework-4.8) geïmplementeerd om deze taak uit te voeren. U doet dit door de benodigde code naar twee nieuwe bestanden te kopiëren.
+Deze stap is vereist om zinvolle uitvoer te maken in de console. Wanneer u de resultaten naar het consolevenster afdrukt, moeten afzonderlijke velden van het object Hotel worden geretourneerd als tekenreeksen. Met deze stap wordt [ToString()](/dotnet/api/system.object.tostring) geïmplementeerd om deze taak uit te voeren. U doet dit door de benodigde code naar twee nieuwe bestanden te kopiëren.
 
 1. Voeg twee lege klassedefinities toe aan uw project: Address.Methods.cs, Hotel.Methods.cs
 
@@ -198,15 +199,15 @@ De Hotels-index bestaat uit eenvoudige en complexe velden. Een eenvoudig veld is
     Door kenmerken in het veld wordt bepaald hoe het veld wordt gebruikt in een toepassing. Het kenmerk `IsSearchable` moet bijvoorbeeld worden toegewezen aan elk veld dat moet worden opgenomen in een zoekopdracht naar volledige tekst. 
     
     > [!NOTE]
-    > In de .NET SDK moeten velden expliciet worden aangeduid als [`IsSearchable`](/dotnet/api/microsoft.azure.search.models.field.issearchable?view=azure-dotnet), [`IsFilterable`](/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet), [`IsSortable`](/dotnet/api/microsoft.azure.search.models.field.issortable?view=azure-dotnet) en [`IsFacetable`](/dotnet/api/microsoft.azure.search.models.field.isfacetable?view=azure-dotnet). Dit gedrag is het tegengestelde van de REST API, waarmee kenmerken op basis van gegevenstype impliciet worden ingeschakeld (eenvoudige tekenreeksvelden zijn bijvoorbeeld automatisch doorzoekbaar).
+    > In de .NET SDK moeten velden expliciet worden aangeduid als [`IsSearchable`](/dotnet/api/microsoft.azure.search.models.field.issearchable), [`IsFilterable`](/dotnet/api/microsoft.azure.search.models.field.isfilterable), [`IsSortable`](/dotnet/api/microsoft.azure.search.models.field.issortable) en [`IsFacetable`](/dotnet/api/microsoft.azure.search.models.field.isfacetable). Dit gedrag is het tegengestelde van de REST API, waarmee kenmerken op basis van gegevenstype impliciet worden ingeschakeld (eenvoudige tekenreeksvelden zijn bijvoorbeeld automatisch doorzoekbaar).
 
-    In uw index van het type `string` moet exact één veld worden aangewezen als het *sleutelveld*; hierdoor wordt elk document uniek geïdentificeerd. In dit schema is de sleutel `HotelId`.
+    In uw index van het type `string` moet exact één veld worden aangewezen als het *sleutelveld* ; hierdoor wordt elk document uniek geïdentificeerd. In dit schema is de sleutel `HotelId`.
 
-    In deze index wordt voor de beschrijvingsvelden het optionele kenmerk [`analyzer`](/dotnet/api/microsoft.azure.search.models.field.analyzer?view=azure-dotnet) gebruikt. Dit wordt opgegeven wanneer u de Lucene-standaardanalyse wilt overschrijven. Voor het veld `description_fr` wordt de Franse Lucene-analyse ([FrLucene](/dotnet/api/microsoft.azure.search.models.analyzername.frlucene?view=azure-dotnet)) gebruikt, omdat hierin Franse tekst wordt opgeslagen. Voor `description` wordt de optionele Microsoft-taalanalyse ([EnMicrosoft](/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft?view=azure-dotnet)) gebruikt.
+    In deze index wordt voor de beschrijvingsvelden het optionele kenmerk [`analyzer`](/dotnet/api/microsoft.azure.search.models.field.analyzer) gebruikt. Dit wordt opgegeven wanneer u de Lucene-standaardanalyse wilt overschrijven. Voor het veld `description_fr` wordt de Franse Lucene-analyse ([FrLucene](/dotnet/api/microsoft.azure.search.models.analyzername.frlucene)) gebruikt, omdat hierin Franse tekst wordt opgeslagen. Voor `description` wordt de optionele Microsoft-taalanalyse ([EnMicrosoft](/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft)) gebruikt.
 
-1. In Program.cs maakt u een exemplaar van de klasse [`SearchServiceClient`](/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) om verbinding te maken met de service, met behulp van waarden die zijn opgeslagen in het configuratiebestand van de toepassing (appsettings.json). 
+1. In Program.cs maakt u een exemplaar van de klasse [`SearchServiceClient`](/dotnet/api/microsoft.azure.search.searchserviceclient) om verbinding te maken met de service, met behulp van waarden die zijn opgeslagen in het configuratiebestand van de toepassing (appsettings.json). 
 
-   `SearchServiceClient` beschikt over de eigenschap [`Indexes`](/dotnet/api/microsoft.azure.search.searchserviceclient.indexes?view=azure-dotnet). Deze eigenschap bevat alle methoden die u nodig hebt om een index voor Azure Cognitive Search te maken, weergeven, bijwerken of verwijderen. 
+   `SearchServiceClient` beschikt over de eigenschap [`Indexes`](/dotnet/api/microsoft.azure.search.searchserviceclient.indexes). Deze eigenschap bevat alle methoden die u nodig hebt om een index voor Azure Cognitive Search te maken, weergeven, bijwerken of verwijderen. 
 
     ```csharp
     using System;
@@ -306,7 +307,7 @@ De Hotels-index bestaat uit eenvoudige en complexe velden. Een eenvoudig veld is
 
 In Azure Cognitive Search zijn documenten gegevensstructuren die zowel de invoer van indexeringen als de uitvoer van query's zijn. Als u de documenten hebt verkregen via een externe gegevensbron, bestaat de documentinvoer mogelijk uit rijen in een database, blobs in Blob Storage of JSON-documenten op een schijf. In dit voorbeeld nemen we de korte route en gaan we JSON-documenten voor vier hotels in de code zelf insluiten. 
 
-Wanneer u documenten uploadt, moet u een [`IndexBatch`](/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet)-object gebruiken. Een `IndexBatch` bevat een verzameling [`IndexAction`](/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet)-objecten, die elk een document en een eigenschap bevat waarmee Azure Cognitive Search wordt aangestuurd om een actie uit te voeren ([uploaden, samenvoegen, verwijderen en mergeOrUpload](search-what-is-data-import.md#indexing-actions)).
+Wanneer u documenten uploadt, moet u een [`IndexBatch`](/dotnet/api/microsoft.azure.search.models.indexbatch)-object gebruiken. Een `IndexBatch` bevat een verzameling [`IndexAction`](/dotnet/api/microsoft.azure.search.models.indexaction)-objecten, die elk een document en een eigenschap bevat waarmee Azure Cognitive Search wordt aangestuurd om een actie uit te voeren ([uploaden, samenvoegen, verwijderen en mergeOrUpload](search-what-is-data-import.md#indexing-actions)).
 
 1. In Program.cs maakt u een matrix met documenten en indexacties en vervolgens geeft u de matrix door aan `IndexBatch`. De documenten hieronder voldoen aan de index hotel-quickstart, zoals gedefinieerd door de hotel- en adresklassen.
 
@@ -428,7 +429,7 @@ Wanneer u documenten uploadt, moet u een [`IndexBatch`](/dotnet/api/microsoft.az
     }
     ```
 
-    Zodra u het `IndexBatch`-object hebt geïnitialiseerd, kunt u het object naar de index sturen door [`Documents.Index`](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) aan te roepen op uw [`SearchIndexClient`](/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet)-object. `Documents` is een eigenschap van `SearchIndexClient` die methoden biedt voor het toevoegen, aanpassen of verwijderen van documenten in uw index of voor het uitvoeren van query's op die documenten.
+    Zodra u het `IndexBatch`-object hebt geïnitialiseerd, kunt u het object naar de index sturen door [`Documents.Index`](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index) aan te roepen op uw [`SearchIndexClient`](/dotnet/api/microsoft.azure.search.searchindexclient)-object. `Documents` is een eigenschap van `SearchIndexClient` die methoden biedt voor het toevoegen, aanpassen of verwijderen van documenten in uw index of voor het uitvoeren van query's op die documenten.
 
     De `try`/`catch` rondom de aanroep voor de `Index`-methode vangt indexfouten op. Dit kan zich voordoen bij een zware belasting van uw service. In productiecode kunt u indexering van documenten vertragen en vervolgens proberen de documenten die niet zijn geïndexeerd opnieuw te indexeren, maar u kunt ook een logboek maken en doorgaan zoals in het voorbeeld. U kunt de indexering ook op een andere manier verwerken die aan de vereisten omtrent de gegevensconsistentie van uw toepassing voldoet.
 
@@ -446,16 +447,15 @@ Wanneer u documenten uploadt, moet u een [`IndexBatch`](/dotnet/api/microsoft.az
 
     Als het project is gebouwd, wordt een consolevenster geopend en worden statusbericht geschreven, dit keer met een bericht over het uploaden van documenten. In Azure Portal, op de pagina **Overzicht** van de zoekservice, bevat de index hotels-quickstart nu als het goed is 4 documenten.
 
-Zie [Verwerking van documenten door de .NET SDK](search-howto-dotnet-sdk.md#how-dotnet-handles-documents) voor meer informatie over de verwerking van documenten.
+Zie [Verwerking van documenten door de .NET SDK](search-howto-dotnet-sdk-v10.md#how-dotnet-handles-documents) voor meer informatie over de verwerking van documenten.
 
 ## <a name="3---search-an-index"></a>3 - Een index doorzoeken
 
 U kunt queryresultaten ophalen zodra het eerste document wordt geïndexeerd, maar wacht met het daadwerkelijk testen van uw index totdat alle documenten zijn geïndexeerd. 
 
-In deze sectie worden twee functies toegevoegd: querylogica en resultaten. Voor query's gebruikt u de methode [`Search`](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.search?view=azure-dotnet
-). Bij deze methode worden zowel zoektekst als andere [parameters](/dotnet/api/microsoft.azure.search.models.searchparameters?view=azure-dotnet) gebruikt. 
+In deze sectie worden twee functies toegevoegd: querylogica en resultaten. Voor query's gebruikt u de methode [`Search`](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.search). Bij deze methode worden zowel zoektekst als andere [parameters](/dotnet/api/microsoft.azure.search.models.searchparameters) gebruikt. 
 
-De klasse [`DocumentsSearchResult`](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1?view=azure-dotnet) vertegenwoordigt de resultaten.
+De klasse [`DocumentsSearchResult`](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1) vertegenwoordigt de resultaten.
 
 
 1. In Program.cs maakt u een WriteDocuments-methode waarmee zoekresultaten op de console worden afgedrukt.

@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/28/2020
-ms.openlocfilehash: 2035fa811ed6bb5760f2527f66e0f2ca48ccb2c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c64112e30bdaf0da2218177bd2737c3ebe688b0c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627222"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675299"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Gebruik groepen voor automatische failover om transparante en gecoördineerde failover van meerdere data bases mogelijk te maken
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ Daarnaast bieden automatische-failover-groepen alleen-lezen-en alleen-lezen list
 
 Wanneer u groepen voor automatische failover gebruikt met automatische failoverbeleid, wordt elke storing die invloed heeft op data bases op een server of een beheerd exemplaar, automatisch failover. U kunt de groep voor automatische failover beheren met:
 
-- [Azure-portal](geo-distributed-application-configure-tutorial.md)
+- [Azure Portal](geo-distributed-application-configure-tutorial.md)
 - [Azure CLI: failover-groep](scripts/add-database-to-failover-group-cli.md)
 - [Power shell: failover-groep](scripts/add-database-to-failover-group-powershell.md)
 - [Rest API: failovergroep](/rest/api/sql/failovergroups).
@@ -243,7 +243,7 @@ Omdat elk exemplaar is geïsoleerd in een eigen VNet, moet twee richtings verkee
 
 ### <a name="creating-a-failover-group-between-managed-instances-in-different-subscriptions"></a>Een failovergroep maken tussen beheerde exemplaren in verschillende abonnementen
 
-U kunt een failovergroep tussen SQL Managed instances maken in twee verschillende abonnementen, zolang abonnementen zijn gekoppeld aan dezelfde [Azure Active Directory Tenant](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology). Wanneer u Power shell API gebruikt, kunt u dit doen door de `PartnerSubscriptionId` para meter op te geven voor het secundaire SQL-beheerde exemplaar. Wanneer u REST API gebruikt, kan elke exemplaar-ID die is opgenomen in de `properties.managedInstancePairs` para meter een eigen subscriptionID hebben.
+U kunt een failovergroep tussen SQL Managed instances maken in twee verschillende abonnementen, zolang abonnementen zijn gekoppeld aan dezelfde [Azure Active Directory Tenant](../../active-directory/fundamentals/active-directory-whatis.md#terminology). Wanneer u Power shell API gebruikt, kunt u dit doen door de `PartnerSubscriptionId` para meter op te geven voor het secundaire SQL-beheerde exemplaar. Wanneer u REST API gebruikt, kan elke exemplaar-ID die is opgenomen in de `properties.managedInstancePairs` para meter een eigen subscriptionID hebben.
   
 > [!IMPORTANT]
 > Azure Portal biedt geen ondersteuning voor het maken van failover-groepen voor verschillende abonnementen. Voor de bestaande failover-groepen voor verschillende abonnementen en/of resource groepen kan failover ook niet hand matig worden gestart via de portal van het primaire SQL-beheerde exemplaar. Start deze vanuit het geo-secundaire exemplaar.
@@ -341,8 +341,8 @@ Als failover is vereist voor uw bedrijfs continuïteits plan met behulp van groe
 1. [Een openbaar IP-adres maken](../../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
 2. [Maak een open bare Load Balancer](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) en wijs hieraan het open bare IP-adres toe.
 3. [Een virtueel netwerk en de virtuele machines](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) voor uw front-end-onderdelen maken
-4. [Netwerk beveiligings groep maken](../../virtual-network/security-overview.md) en binnenkomende verbindingen configureren.
-5. Zorg ervoor dat de uitgaande verbindingen zijn geopend om Azure SQL Database met behulp van de SQL- [service-tag](../../virtual-network/security-overview.md#service-tags).
+4. [Netwerk beveiligings groep maken](../../virtual-network/network-security-groups-overview.md) en binnenkomende verbindingen configureren.
+5. Zorg ervoor dat de uitgaande verbindingen zijn geopend om Azure SQL Database met behulp van de SQL- [service-tag](../../virtual-network/network-security-groups-overview.md#service-tags).
 6. Maak een [SQL database firewall regel](firewall-configure.md) om binnenkomend verkeer toe te staan van het open bare IP-adres dat u in stap 1 hebt gemaakt.
 
 Zie [uitgaande verbindingen van load balancers](../../load-balancer/load-balancer-outbound-connections.md)voor meer informatie over het configureren van uitgaande toegang en welk IP-adres moet worden gebruikt in de firewall regels.
@@ -362,7 +362,7 @@ Wanneer u een failovergroep tussen de primaire en secundaire SQL Managed instanc
 - De virtuele netwerken die worden gebruikt door de instanties van SQL Managed instance moeten worden verbonden via een [VPN gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) of [Express route](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md). Wanneer twee virtuele netwerken verbinding maken via een on-premises netwerk, zorg er dan voor dat er geen firewallregel is die poorten 5022 en 11000-11999 blokkeert. Wereld wijde VNet-peering wordt ondersteund door de beperking die wordt beschreven in de onderstaande opmerking.
 
    > [!IMPORTANT]
-   > [Op 9/22/2020 zijn wereld wijde virtuele netwerk peering aangekondigd voor nieuwe virtuele clusters](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Dit betekent dat de peering van globale virtuele netwerken wordt ondersteund voor SQL-beheerde instanties die zijn gemaakt in lege subnetten na de aankondigings datum, en ook voor alle daaropvolgende beheerde exemplaren die in deze subnetten zijn gemaakt. Voor alle andere SQL Managed instances-ondersteuning voor peering is beperkt tot de netwerken in dezelfde regio vanwege de [beperkingen van globale virtuele netwerk peering](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Zie ook de relevante sectie van het artikel Veelgestelde [vragen over virtuele netwerken van Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) voor meer informatie. 
+   > [Op 9/22/2020 zijn wereld wijde virtuele netwerk peering aangekondigd voor nieuwe virtuele clusters](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Dit betekent dat de peering van globale virtuele netwerken wordt ondersteund voor SQL-beheerde instanties die zijn gemaakt in lege subnetten na de aankondigings datum, en ook voor alle daaropvolgende beheerde exemplaren die in deze subnetten zijn gemaakt. Voor alle andere SQL Managed instances-ondersteuning voor peering is beperkt tot de netwerken in dezelfde regio vanwege de [beperkingen van globale virtuele netwerk peering](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Zie ook de relevante sectie van het artikel Veelgestelde [vragen over virtuele netwerken van Azure](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) voor meer informatie. 
 
 - De twee SQL Managed instance VNets kunnen geen overlappende IP-adressen hebben.
 - U moet uw netwerkbeveiligingsgroepen (NSG) zodanig instellen dat poort 5022 en het bereik 11000–12000 zijn geopend voor inkomende en uitgaande verbindingen van het subnet van het andere beheerde exemplaar. Dit is om replicatieverkeer tussen de exemplaren mogelijk te maken.
@@ -406,7 +406,7 @@ Houd rekening met de volgende beperkingen:
 
 ## <a name="programmatically-managing-failover-groups"></a>Programmatisch beheer van failover-groepen
 
-Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-replicatie ook programmatisch worden beheerd met behulp van Azure PowerShell en de REST API. De volgende tabellen bevatten een beschrijving van de beschik bare opdrachten. Actieve geo-replicatie bevat een set Azure Resource Manager Api's voor beheer, met inbegrip van de [Azure SQL database-rest API](https://docs.microsoft.com/rest/api/sql/) en [Azure PowerShell-cmdlets](https://docs.microsoft.com/powershell/azure/). Deze Api's vereisen het gebruik van resource groepen en bieden beveiliging op basis van rollen (RBAC). Zie voor meer informatie over het implementeren van toegangs rollen [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../../role-based-access-control/overview.md).
+Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-replicatie ook programmatisch worden beheerd met behulp van Azure PowerShell en de REST API. De volgende tabellen bevatten een beschrijving van de beschik bare opdrachten. Actieve geo-replicatie bevat een set Azure Resource Manager Api's voor beheer, met inbegrip van de [Azure SQL database-rest API](/rest/api/sql/) en [Azure PowerShell-cmdlets](/powershell/azure/). Deze Api's vereisen het gebruik van resource groepen en bieden beveiliging op basis van rollen (RBAC). Zie voor meer informatie over het implementeren van toegangs rollen [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../../role-based-access-control/overview.md).
 
 ### <a name="manage-sql-database-failover"></a>SQL Database failover beheren
 
@@ -421,7 +421,7 @@ Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-repl
 | [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) | Hiermee wordt een failover van een failovergroep naar de secundaire server geactiveerd |
 | [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup)|Voegt een of meer data bases toe aan een failovergroep|
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 | Opdracht | Beschrijving |
 | --- | --- |
@@ -435,13 +435,13 @@ Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-repl
 
 | API | Beschrijving |
 | --- | --- |
-| [Failovergroep maken of bijwerken](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Hiermee wordt een failovergroep gemaakt of bijgewerkt |
-| [Failovergroep verwijderen](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Hiermee wordt een failovergroep van de server verwijderd |
-| [Failover (gepland)](https://docs.microsoft.com/rest/api/sql/failovergroups/failover) | De failover van de huidige primaire server naar de secundaire server met volledige gegevens synchronisatie wordt geactiveerd.|
-| [Forceren van gegevens verlies door failover toestaan](https://docs.microsoft.com/rest/api/sql/failovergroups/forcefailoverallowdataloss) | Hiermee wordt een failover van de huidige primaire server naar de secundaire server geactiveerd zonder dat er gegevens worden gesynchroniseerd. Deze bewerking kan leiden tot verlies van gegevens. |
-| [Failovergroep ophalen](https://docs.microsoft.com/rest/api/sql/failovergroups/get) | Hiermee wordt de configuratie van een failover-groep opgehaald. |
-| [Failover-groepen weer geven per server](https://docs.microsoft.com/rest/api/sql/failovergroups/listbyserver) | Geeft een lijst van de failover-groepen op een server. |
-| [Failovergroep bijwerken](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | Hiermee wordt de configuratie van een failovergroep bijgewerkt. |
+| [Failovergroep maken of bijwerken](/rest/api/sql/failovergroups/createorupdate) | Hiermee wordt een failovergroep gemaakt of bijgewerkt |
+| [Failovergroep verwijderen](/rest/api/sql/failovergroups/delete) | Hiermee wordt een failovergroep van de server verwijderd |
+| [Failover (gepland)](/rest/api/sql/failovergroups/failover) | De failover van de huidige primaire server naar de secundaire server met volledige gegevens synchronisatie wordt geactiveerd.|
+| [Forceren van gegevens verlies door failover toestaan](/rest/api/sql/failovergroups/forcefailoverallowdataloss) | Hiermee wordt een failover van de huidige primaire server naar de secundaire server geactiveerd zonder dat er gegevens worden gesynchroniseerd. Deze bewerking kan leiden tot verlies van gegevens. |
+| [Failovergroep ophalen](/rest/api/sql/failovergroups/get) | Hiermee wordt de configuratie van een failover-groep opgehaald. |
+| [Failover-groepen weer geven per server](/rest/api/sql/failovergroups/listbyserver) | Geeft een lijst van de failover-groepen op een server. |
+| [Failovergroep bijwerken](/rest/api/sql/failovergroups/update) | Hiermee wordt de configuratie van een failovergroep bijgewerkt. |
 
 ---
 
@@ -459,7 +459,7 @@ Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-repl
 | [Remove-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/remove-azsqldatabaseinstancefailovergroup) | Hiermee verwijdert u een failovergroep|
 
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 | Opdracht | Beschrijving |
 | --- | --- |
@@ -473,12 +473,12 @@ Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-repl
 
 | API | Beschrijving |
 | --- | --- |
-| [Failovergroep maken of bijwerken](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Hiermee wordt de configuratie van een failovergroep gemaakt of bijgewerkt |
-| [Failovergroep verwijderen](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Hiermee verwijdert u een failover-groep uit het exemplaar |
-| [Failover (gepland)](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/failover) | Hiermee wordt een failover van het huidige primaire exemplaar naar dit exemplaar geactiveerd met volledige gegevens synchronisatie. |
-| [Forceren van gegevens verlies door failover toestaan](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) | Hiermee wordt een failover van het huidige primaire exemplaar naar het secundaire exemplaar geactiveerd zonder dat de gegevens worden gesynchroniseerd. Deze bewerking kan leiden tot verlies van gegevens. |
-| [Failovergroep ophalen](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | Hiermee wordt de configuratie van een failover-groep opgehaald. |
-| [Failover-groepen weer geven-lijst per locatie](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/listbylocation) | Hiermee worden de failover-groepen op een locatie weer gegeven. |
+| [Failovergroep maken of bijwerken](/rest/api/sql/instancefailovergroups/createorupdate) | Hiermee wordt de configuratie van een failovergroep gemaakt of bijgewerkt |
+| [Failovergroep verwijderen](/rest/api/sql/instancefailovergroups/delete) | Hiermee verwijdert u een failover-groep uit het exemplaar |
+| [Failover (gepland)](/rest/api/sql/instancefailovergroups/failover) | Hiermee wordt een failover van het huidige primaire exemplaar naar dit exemplaar geactiveerd met volledige gegevens synchronisatie. |
+| [Forceren van gegevens verlies door failover toestaan](/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) | Hiermee wordt een failover van het huidige primaire exemplaar naar het secundaire exemplaar geactiveerd zonder dat de gegevens worden gesynchroniseerd. Deze bewerking kan leiden tot verlies van gegevens. |
+| [Failovergroep ophalen](/rest/api/sql/instancefailovergroups/get) | Hiermee wordt de configuratie van een failover-groep opgehaald. |
+| [Failover-groepen weer geven-lijst per locatie](/rest/api/sql/instancefailovergroups/listbylocation) | Hiermee worden de failover-groepen op een locatie weer gegeven. |
 
 ---
 

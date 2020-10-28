@@ -2,17 +2,24 @@
 title: De knop Implementeren in Azure
 description: Gebruik de knop om Azure Resource Manager sjablonen te implementeren vanuit een GitHub-opslag plaats.
 ms.topic: conceptual
-ms.date: 07/20/2020
-ms.openlocfilehash: 9fe69eba2a91bf19e0662ae071c222905c348666
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/22/2020
+ms.openlocfilehash: 62a0a8b0336d9a7fcf00efb172775b9606bcef98
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87079444"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675394"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>Een implementatie knop gebruiken voor het implementeren van sjablonen uit de GitHub-opslag plaats
 
-In dit artikel wordt beschreven hoe u de knop **implementeren in azure** gebruikt om sjablonen te implementeren vanuit een github-opslag plaats. U kunt de knop rechtstreeks toevoegen aan het README.md-bestand in uw GitHub-opslag plaats of op een webpagina die verwijst naar de opslag plaats. Deze methode ondersteunt alleen implementatie van resource groeps niveau.
+In dit artikel wordt beschreven hoe u de knop **implementeren in azure** gebruikt om sjablonen te implementeren vanuit een github-opslag plaats. U kunt de knop rechtstreeks toevoegen aan het README.md-bestand in de GitHub-opslag plaats. U kunt ook de knop toevoegen aan een webpagina die verwijst naar de opslag plaats.
+
+Het implementatie bereik wordt bepaald door het sjabloon schema. Zie voor meer informatie:
+
+* [resource groepen](deploy-to-resource-group.md)
+* [geabonneerd](deploy-to-subscription.md)
+* [beheer groepen](deploy-to-management-group.md)
+* [tenants](deploy-to-tenant.md).
 
 ## <a name="use-common-image"></a>Algemene installatie kopie gebruiken
 
@@ -28,7 +35,7 @@ De afbeelding wordt weer gegeven als:
 
 ## <a name="create-url-for-deploying-template"></a>URL maken voor het implementeren van de sjabloon
 
-Als u de URL voor uw sjabloon wilt maken, begint u met de onbewerkte URL naar de sjabloon in uw opslag plaats. Als u de onbewerkte URL wilt zien, selecteert u **RAW**.
+Als u de URL voor uw sjabloon wilt maken, begint u met de onbewerkte URL naar de sjabloon in uw opslag plaats. Als u de onbewerkte URL wilt zien, selecteert u **RAW** .
 
 :::image type="content" source="./media/deploy-to-azure-button/select-raw.png" alt-text="RAW selecteren":::
 
@@ -38,7 +45,7 @@ De indeling van de URL is:
 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-Vervolgens wordt de URL gecodeerd. U kunt een online coderings programma gebruiken of een opdracht uitvoeren. Het volgende Power shell-voor beeld laat zien hoe een URL een waarde codeert.
+Converteer vervolgens de URL naar een URL-gecodeerde waarde. U kunt een online coderings programma gebruiken of een opdracht uitvoeren. Het volgende Power shell-voor beeld laat zien hoe een URL een waarde codeert.
 
 ```powershell
 [uri]::EscapeDataString($url)

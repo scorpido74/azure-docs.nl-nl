@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 09/06/2020
 ms.author: barclayn
-ms.openlocfilehash: 64ff2a2a7ad6f07aac959422eadec7f24b210d88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19f88da6a678221cde66bf61668d16ba9ab998a4
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89505839"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677316"
 ---
 # <a name="use-azure-active-directory-azure-ad-identity-governance-to-review-and-remove-external-users-who-no-longer-have-resource-access"></a>Gebruik Azure Active Directory (Azure AD) Identity governance om externe gebruikers te controleren en te verwijderen die geen toegang tot de resource hebben
 
@@ -67,11 +67,11 @@ Wanneer de controle is voltooid, wordt in de **resultaten** pagina een overzicht
 
 ## <a name="disable-and-delete-external-identities-with-azure-ad-access-reviews-preview"></a>Externe identiteiten uitschakelen en verwijderen met Azure AD-toegangs beoordelingen (preview)
 
-Naast de mogelijkheid om ongewenste externe identiteiten te verwijderen uit resources zoals groepen of toepassingen, kunnen met Azure AD-toegangs beoordelingen externe identiteiten worden geblokkeerd voor aanmelding bij uw Tenant en de externe identiteiten uit uw Tenant na 30 dagen worden verwijderd.
+Naast de mogelijkheid om ongewenste externe identiteiten te verwijderen uit resources zoals groepen of toepassingen, kunnen met Azure AD-toegangs beoordelingen externe identiteiten worden geblokkeerd voor aanmelding bij uw Tenant en de externe identiteiten uit uw Tenant na 30 dagen worden verwijderd. Zodra u de optie **gebruiker blok keren van aanmelden gedurende 30 dagen hebt geselecteerd en vervolgens gebruiker verwijdert uit de Tenant** , blijft de controle binnen 30 dagen in de status van ' applying '. Tijdens deze periode kunnen instellingen, resultaten, revisoren of audit Logboeken in de huidige beoordeling niet worden weer gegeven of worden geconfigureerd. 
 
 ![bij voltooiings instellingen](media/access-reviews-external-users/upon-completion-settings.png)
 
-Bij het maken van een nieuwe toegangs beoordeling, in de sectie ' op voltooiings instellingen ', voor het **Toep assen van een actie die wordt toegepast op geweigerde gebruikers** , kunt u **blok keren dat gebruikers zich 30 dagen kunnen aanmelden en vervolgens de gebruiker uit de Tenant verwijderen**.
+Bij het maken van een nieuwe toegangs beoordeling, in de sectie ' op voltooiings instellingen ', voor het **Toep assen van een actie die wordt toegepast op geweigerde gebruikers** , kunt u **blok keren dat gebruikers zich 30 dagen kunnen aanmelden en vervolgens de gebruiker uit de Tenant verwijderen** .
 Met deze instelling, die momenteel als preview-versie beschikbaar is, kunt u externe identiteiten identificeren, blok keren en verwijderen uit uw Azure AD-Tenant. Externe identiteiten die permanente toegang door de revisor worden gecontroleerd en geweigerd, worden geblokkeerd en verwijderd, onafhankelijk van de resource toegang of het groepslid maatschap die ze hebben. Deze instelling wordt het meest gebruikt als een laatste stap nadat u hebt gecontroleerd dat de externe gebruikers in-Review geen toegang meer hebben tot de resource, en veilig kunnen worden verwijderd uit uw Tenant of als u ervoor wilt zorgen dat ze worden verwijderd, ongeacht hun permanente toegang. Met de functie voor uitschakelen en verwijderen blokkeert u eerst de externe gebruiker, waardoor u de mogelijkheid hebt om zich aan te melden bij uw Tenant en om toegang te krijgen tot resources. Toegang tot bronnen wordt niet ingetrokken in deze fase en als u de externe gebruiker opnieuw wilt instantiëren, kan de mogelijkheid om zich aan te melden, opnieuw worden geconfigureerd. Als er geen actie wordt ondernomen, wordt een geblokkeerde externe identiteit na 30 dagen verwijderd uit de Directory, en wordt het account verwijderd en de toegang.
 
 ## <a name="next-steps"></a>Volgende stappen

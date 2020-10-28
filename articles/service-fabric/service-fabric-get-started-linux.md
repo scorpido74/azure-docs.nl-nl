@@ -4,12 +4,12 @@ description: Installeer de runtime en SDK en maak een lokaal ontwikkelcluster in
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: f8639287ea65347319cb438a5ff6e8c96c8279e1
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 39ed4a394a54112c03145c0d481e5459ecbf6d8b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168406"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675278"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Uw ontwikkelomgeving voorbereiden in Linux
 > [!div class="op_single_selector"]
@@ -17,9 +17,9 @@ ms.locfileid: "92168406"
 > * [Linux](service-fabric-get-started-linux.md)
 > * [Mac OS X](service-fabric-get-started-mac.md)
 
-Als u Azure Service Fabric-toepassingen (Service-Fabric-Application-model.md] op uw Linux-ontwikkel machine wilt implementeren en uitvoeren, installeert u de runtime en de gemeen schappelijke SDK. U kunt ook optionele SDK's voor Java en .NET Core-ontwikkeling installeren. 
+Als u [Azure Service Fabric-toepassingen](service-fabric-application-model.md) op uw Linux-ontwikkelmachine wilt implementeren en uitvoeren, moet u de runtime en algemene SDK installeren. U kunt ook optionele SDK's voor Java en .NET Core-ontwikkeling installeren. 
 
-Bij de stappen in dit artikel wordt ervan uitgegaan dat u systeem eigen op Linux installeert of dat u de (Service Fabric OneBox-container installatie kopie) gebruikt [ https://hub.docker.com/_/microsoft-service-fabric-onebox ], dat wil zeggen `mcr.microsoft.com/service-fabric/onebox:u18` .
+Bij de stappen in dit artikel wordt ervan uitgegaan dat u systeem eigen op Linux installeert of dat u de [service Fabric Onebox-container installatie kopie](https://hub.docker.com/_/microsoft-service-fabric-onebox)gebruikt, dat wil zeggen `mcr.microsoft.com/service-fabric/onebox:u18` .
 
 U kunt Service Fabric entiteiten die worden gehost in de Cloud of on-premises beheren met de Azure Service Fabric opdracht regel interface (CLI). Zie [De Service Fabric-CLI instellen](./service-fabric-cli.md) voor meer informatie over het installeren van de CLI.
 
@@ -298,21 +298,21 @@ U kunt de Eclipse-invoegtoepassing voor Service Fabric installeren vanuit de Ecl
 > 
 > Voor Ubuntu wordt u aangeraden de installatie rechtstreeks vanaf de site van Eclipse uit te voeren en niet door middel van een installatieprogramma voor pakketten (`apt` of `apt-get`). Daardoor weet u zeker dat u de meest recente versie van Eclipse hebt. U kunt de Eclipse IDE installeren voor Java-ontwikkelaars of voor Java EE-ontwikkelaars.
 
-1. Controleer in Eclipse of u Eclipse Neon of later en Buildship versie 2.2.1 of later hebt geïnstalleerd. Controleer de versies van geïnstalleerde onderdelen door **Help**  >  **over**de  >  **installatie Details**van de eclips te selecteren. U kunt Buildship bijwerken met behulp van de instructies in [Eclipse Buildship: Eclipse-invoegtoepassingen voor Gradle][buildship-update].
+1. Controleer in Eclipse of u Eclipse Neon of later en Buildship versie 2.2.1 of later hebt geïnstalleerd. Controleer de versies van geïnstalleerde onderdelen door **Help**  >  **over** de  >  **installatie Details** van de eclips te selecteren. U kunt Buildship bijwerken met behulp van de instructies in [Eclipse Buildship: Eclipse-invoegtoepassingen voor Gradle][buildship-update].
 
-2. Als u de service Fabric-invoeg toepassing wilt installeren, selecteert u **Help**  >  **nieuwe software installeren**.
+2. Als u de service Fabric-invoeg toepassing wilt installeren, selecteert u **Help**  >  **nieuwe software installeren** .
 
-3. Voer in het vak **werken met** **https: \/ /DL.Microsoft.com/Eclipse**in.
+3. Voer in het vak **werken met** **https: \/ /DL.Microsoft.com/Eclipse** in.
 
-4. Selecteer **Toevoegen**.
+4. Selecteer **Toevoegen** .
 
     ![Pagina met beschikbare software][sf-eclipse-plugin]
 
-5. Selecteer de **Service Fabric**-invoegtoepassing en klik op **Next**.
+5. Selecteer de **Service Fabric** -invoegtoepassing en klik op **Next** .
 
 6. Voer de installatiestappen uit. Ga vervolgens akkoord met de gebruiksrechtovereenkomst.
 
-Als u de Eclipse-invoegtoepassing voor Service Fabric al hebt geïnstalleerd, controleert u of u de meest recente versie gebruikt. Controleer door **Help**  >  **over**de  >  **installatie Details**van de eclips te selecteren. Zoek vervolgens naar Service Fabric in de lijst met geïnstalleerde invoeg toepassingen. Selecteer **bijwerken** als er een nieuwere versie beschikbaar is.
+Als u de Eclipse-invoegtoepassing voor Service Fabric al hebt geïnstalleerd, controleert u of u de meest recente versie gebruikt. Controleer door **Help**  >  **over** de  >  **installatie Details** van de eclips te selecteren. Zoek vervolgens naar Service Fabric in de lijst met geïnstalleerde invoeg toepassingen. Selecteer **bijwerken** als er een nieuwere versie beschikbaar is.
 
 Zie [Service Fabric-invoegtoepassing voor de ontwikkeling van Eclipse Java-toepassingen](service-fabric-get-started-eclipse.md) voor meer informatie.
 

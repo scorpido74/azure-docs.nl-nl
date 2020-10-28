@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 38fac23b3fdc5820a7a407a4a7d89d0064cf8e93
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: cc094376ed6d5a183b65a598ca9d0a55670be70e
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101780"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676717"
 ---
 # <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>Zelf studie: Sales Force sandbox configureren voor het automatisch inrichten van gebruikers
 
@@ -33,7 +33,7 @@ In het scenario dat in deze zelfstudie wordt beschreven, wordt ervan uitgegaan d
 
 Azure Active Directory gebruikt een concept met de naam 'toewijzingen' om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers accounts, worden alleen de gebruikers en groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
 
-Voordat u de inrichtings service configureert en inschakelt, moet u bepalen welke gebruikers of groepen in azure AD toegang nodig hebben tot uw Sales Force-sandbox-app. Nadat u deze beslissing hebt genomen, kunt u deze gebruikers toewijzen aan uw Sales Force-sandbox-app door de instructies in [een gebruiker of groep toewijzen aan een bedrijfs-app te](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) volgen
+Voordat u de inrichtings service configureert en inschakelt, moet u bepalen welke gebruikers of groepen in azure AD toegang nodig hebben tot uw Sales Force-sandbox-app. Nadat u deze beslissing hebt genomen, kunt u deze gebruikers toewijzen aan uw Sales Force-sandbox-app door de instructies in [een gebruiker of groep toewijzen aan een bedrijfs-app te](../manage-apps/assign-user-or-group-access-portal.md) volgen
 
 ### <a name="important-tips-for-assigning-users-to-salesforce-sandbox"></a>Belang rijke tips voor het toewijzen van gebruikers aan Sales Force sandbox
 
@@ -61,7 +61,7 @@ Het doel van deze sectie is het maken van een overzicht van het inschakelen van 
 
 1. Selecteer uw exemplaar van Sales Force sandbox en selecteer vervolgens het tabblad **inrichten** .
 
-1. Stel de **Inrichtingsmodus** in op **Automatisch**.
+1. Stel de **Inrichtingsmodus** in op **Automatisch** .
 
     ![In de scherm afbeelding wordt de Sales Force-inrichtings pagina weer gegeven, waarbij de inrichtings modus is ingesteld op automatisch en andere waarden die u kunt instellen.](./media/salesforce-sandbox-provisioning-tutorial/provisioning.png)
 
@@ -71,11 +71,11 @@ Het doel van deze sectie is het maken van een overzicht van het inschakelen van 
    
     b. Typ in het tekstvak **beheerders wachtwoord** het wacht woord voor dit account.
 
-1. Als u een beveiligings token voor de Sales Force-sandbox wilt ophalen, opent u een nieuw tabblad en meldt u zich aan met hetzelfde account voor de sandbox-beheerder. Klik in de rechter bovenhoek van de pagina op uw naam en klik vervolgens op **instellingen**.
+1. Als u een beveiligings token voor de Sales Force-sandbox wilt ophalen, opent u een nieuw tabblad en meldt u zich aan met hetzelfde account voor de sandbox-beheerder. Klik in de rechter bovenhoek van de pagina op uw naam en klik vervolgens op **instellingen** .
 
      ![Scherm afbeelding toont de geselecteerde koppeling van de instellingen.](./media/salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "Automatische gebruikers inrichting inschakelen")
 
-1. Klik in het navigatie deel venster aan de linkerkant op **persoonlijke gegevens** om de gerelateerde sectie uit te vouwen en klik vervolgens op **mijn beveiligings token opnieuw instellen**.
+1. Klik in het navigatie deel venster aan de linkerkant op **persoonlijke gegevens** om de gerelateerde sectie uit te vouwen en klik vervolgens op **mijn beveiligings token opnieuw instellen** .
   
     ![Scherm afbeelding toont het opnieuw instellen van mijn beveiligings token dat is geselecteerd op basis van mijn persoonlijke gegevens.](./media/salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "Automatische gebruikers inrichting inschakelen")
 
@@ -109,4 +109,4 @@ Zie [Rapportage over automatische inrichting van gebruikersaccounts](../app-prov
 
 * [Gebruikersaccountinrichting voor zakelijke apps beheren](tutorial-list.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
-* [Eenmalige aanmelding configureren](https://docs.microsoft.com/azure/active-directory/active-directory-saas-salesforce-sandbox-tutorial)
+* [Eenmalige aanmelding configureren](./salesforce-sandbox-tutorial.md)

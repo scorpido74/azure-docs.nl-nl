@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: f47a23a3b95975d98d3825bc5b14ed0522102a0c
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 344e15d3c15474fc8959b120f86bb86f22217ef6
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547636"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676972"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Verbinding maken tussen Azure en ITSM-hulpprogramma's met behulp van IT Service Management-connector
 
@@ -65,7 +65,7 @@ Voordat u een verbinding kunt maken, moet u de ITSM-connector-oplossing toevoege
    >[!NOTE]
    >Als onderdeel van de doorlopende overgang van Microsoft Operations Management Suite (OMS) naar Azure Monitor worden OMS-werk ruimten nu aangeduid als Log Analytics.
 
-5. Klik op **Maken** .
+5. Klik op **OK** .
 
 Wanneer de oplossings resource is geïmplementeerd, verschijnt er een melding in de rechter bovenhoek van het venster.
 
@@ -122,28 +122,29 @@ Actie groepen bieden een modulaire en herbruikbare manier om acties voor uw Azur
 
 Gebruik de volgende procedure:
 
-1. Klik in Azure Portal op  **monitor** .
-2. Klik in het linkerdeel venster op  **actie groepen** . Het venster **actie groep toevoegen** wordt weer gegeven.
+1. Klik in Azure Portal op  **waarschuwingen** .
+2. Klik in het bovenste deel venster op  **acties beheren** . Het venster **actie groep toevoegen** wordt weer gegeven.
 
     ![Actiegroepen](media/itsmc-overview/action-groups.png)
 
-3. Geef de **naam** en **kortheid** voor uw actie groep op. Selecteer de **resource groep** en het **abonnement** waar u uw actie groep wilt maken.
+3. Selecteer het **abonnement** en de **resource groep** waar u uw actie groep wilt maken. Geef de naam van de **actie groep** en de **weergave naam** voor uw actie groep op. Klik op **volgende: meldingen** .
 
     ![Details van actie groepen](media/itsmc-overview/action-groups-details.png)
 
-4. Selecteer in de lijst acties de optie **ITSM** in de vervolg keuzelijst voor het **actie type** . Geef een **naam** op voor de actie en klik op **Details bewerken** .
-5. Selecteer het **abonnement** waarin uw log Analytics-werk ruimte zich bevindt. Selecteer de naam van de **verbinding** (uw ITSM-connector naam), gevolgd door de naam van uw werk ruimte. Bijvoorbeeld ' MyITSMMConnector (MyWorkspace) '.
+4. Klik in de lijst met meldingen op **nesten: acties** .
+5. Selecteer in de lijst acties de optie **ITSM** in de vervolg keuzelijst voor het **actie type** . Geef een **naam** op voor de actie en klik op de pen met de details van de **bewerking** .
+6. Selecteer het **abonnement** waarin uw log Analytics-werk ruimte zich bevindt. Selecteer de naam van de **verbinding** (uw ITSM-connector naam), gevolgd door de naam van uw werk ruimte. Bijvoorbeeld ' MyITSMMConnector (MyWorkspace) '.
 
     ![Details van ITSM-actie](media/itsmc-overview/itsm-action-details.png)
 
-6. Selecteer type **werk item** in de vervolg keuzelijst.
+7. Selecteer type **werk item** in de vervolg keuzelijst.
 
-7. Als u de veld velden met vaste waarden wilt invullen, moet u het selectie vakje ' aangepaste sjabloon gebruiken ' selecteren, anders kiest u een bestaande [sjabloon](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions) uit de vervolg keuzelijst en vult u de sjabloon velden met vaste waarden in.
+8. Als u de veld velden met vaste waarden wilt invullen, moet u het selectie vakje ' aangepaste sjabloon gebruiken ' selecteren, anders kiest u een bestaande [sjabloon](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions) uit de vervolg keuzelijst en vult u de sjabloon velden met vaste waarden in.
 
-8. Als u het selectie vakje **voor elk configuratie-item afzonderlijke werk items maken** selecteert, heeft elk configuratie-item een eigen werk item. Dit betekent dat er één werk item per configuratie-item is en het wordt bijgewerkt op basis van de waarschuwingen die worden gemaakt.
+9. Als u het selectie vakje **voor elk configuratie-item afzonderlijke werk items maken** selecteert, heeft elk configuratie-item een eigen werk item. Dit betekent dat er één werk item per configuratie-item is en het wordt bijgewerkt op basis van de waarschuwingen die worden gemaakt.
 Als u het selectie vakje **voor afzonderlijke werk items maken voor elk configuratie-item** uitschakelt, wordt er voor elke waarschuwing een nieuw werk item gemaakt, wat betekent dat er meer dan één waarschuwing per configuratie-item kan zijn.
 
-9. Klik op **OK** .
+10. Klik op **OK** .
 
 Wanneer u een Azure-waarschuwings regel maakt/bewerkt, gebruikt u een actie groep met een ITSM-actie. Wanneer de waarschuwing wordt geactiveerd, wordt werk item gemaakt/bijgewerkt in het ITSM-hulp programma.
 
@@ -162,7 +163,7 @@ Op basis van uw configuratie bij het instellen van een verbinding, kan ITSM-conn
 
 De incident-en wijzigings aanvraag gegevens kunnen worden gevisualiseerd met behulp van het ITSM-connector dash board in de oplossing.
 
-![Log Analytics scherm](media/itsmc-overview/itsmc-overview-sample-log-analytics.png)
+![Scherm opname van het ITSM-connector dash board.](media/itsmc-overview/itsmc-overview-sample-log-analytics.png)
 
 Het dash board bevat ook informatie over connector status die kan worden gebruikt als uitgangs punt voor het analyseren van problemen met de verbindingen.
 
@@ -245,7 +246,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 - Geplande eind datum
 - Begin datum van werk
 - Eind datum van werk
-- Description
+- Beschrijving
 - Computer
 
 ## <a name="output-data-for-a-servicenow-incident"></a>Uitvoer gegevens voor een ServiceNow-incident
@@ -264,7 +265,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 | AssignedTo_s | Toegewezen aan  |
 | Category_s | Categorie |
 | Title_s|  Korte beschrijving |
-| Description_s|  Notities |
+| Description_s|  Opmerkingen |
 | CreatedDate_t|  Had |
 | ClosedDate_t| gesloten|
 | ResolvedDate_t|Opgelost|
@@ -292,7 +293,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 | PlannedEndDate_t  |   Geplande eind datum |
 | WorkStartDate_t  | Werkelijke begin datum |
 | WorkEndDate_t | Werkelijke eind datum|
-| Description_s | Description |
+| Description_s | Beschrijving |
 | Computer  | Configuratie-item |
 
 

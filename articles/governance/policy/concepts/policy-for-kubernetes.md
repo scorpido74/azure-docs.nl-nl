@@ -3,12 +3,12 @@ title: Azure Policy leren voor Kubernetes
 description: Lees hoe Azure Policy Rego gebruikt en beleids agent opent voor het beheren van clusters met Kubernetes in azure of on-premises.
 ms.date: 09/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1747e770da420a3448e97628806733459fe07a49
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: bd0dc08583b126b6260999ace14d8fc13c52c1f7
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366986"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676705"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Azure Policy voor Kubernetes-clusters
 
@@ -25,7 +25,7 @@ Azure Policy voor Kubernetes ondersteunt de volgende cluster omgevingen:
 - [AKS-engine](https://github.com/Azure/aks-engine/blob/master/docs/README.md)
 
 > [!IMPORTANT]
-> De **Preview-versie**van de AKS-engine en de Arc ingeschakelde Kubernetes zijn beschikbaar. Azure Policy voor Kubernetes biedt alleen ondersteuning voor Linux-knooppunt Pools en ingebouwde beleids definities. Ingebouwde beleids definities bevinden zich in de categorie **Kubernetes** . De beperkte preview-beleids definities met **EnforceOPAConstraint** -en **EnforceRegoPolicy** -effect en de gerelateerde **service categorie Kubernetes** zijn _afgeschaft_. Gebruik in plaats daarvan de effecten _controleren_ en _weigeren_ met de resource provider modus `Microsoft.Kubernetes.Data` .
+> De **Preview-versie** van de AKS-engine en de Arc ingeschakelde Kubernetes zijn beschikbaar. Azure Policy voor Kubernetes biedt alleen ondersteuning voor Linux-knooppunt Pools en ingebouwde beleids definities. Ingebouwde beleids definities bevinden zich in de categorie **Kubernetes** . De beperkte preview-beleids definities met **EnforceOPAConstraint** -en **EnforceRegoPolicy** -effect en de gerelateerde **service categorie Kubernetes** zijn _afgeschaft_ . Gebruik in plaats daarvan de effecten _controleren_ en _weigeren_ met de resource provider modus `Microsoft.Kubernetes.Data` .
 
 ## <a name="overview"></a>Overzicht
 
@@ -62,7 +62,7 @@ De volgende algemene beperkingen zijn van toepassing op de Azure Policy-invoeg t
 De volgende beperkingen gelden alleen voor de Azure Policy-invoeg toepassing voor AKS:
 
 - [AKS pod-beveiligings beleid](../../../aks/use-pod-security-policies.md) en de Azure Policy-invoeg toepassing voor AKS kunnen niet beide worden ingeschakeld. Zie [AKS pod Security beperking](../../../aks/use-pod-security-on-azure-policy.md#limitations)(Engelstalig) voor meer informatie.
-- Naam ruimten automatisch uitgesloten door Azure Policy invoeg toepassing voor evaluatie: _uitvoeren-System_, _gate keeper-System_en _AKS-Peri Scope_.
+- Naam ruimten automatisch uitgesloten door Azure Policy invoeg toepassing voor evaluatie: _uitvoeren-System_ , _gate keeper-System_ en _AKS-Peri Scope_ .
 
 ## <a name="recommendations"></a>Aanbevelingen
 
@@ -124,7 +124,7 @@ Zodra de bovenstaande vereiste stappen zijn voltooid, installeert u de Azure Pol
 
 - Azure Portal
 
-  1. Start de AKS-service in de Azure Portal door **alle services**te selecteren en vervolgens op **Kubernetes-Services**te zoeken en te selecteren.
+  1. Start de AKS-service in de Azure Portal door **alle services** te selecteren en vervolgens op **Kubernetes-Services** te zoeken en te selecteren.
 
   1. Selecteer een van uw AKS-clusters.
 
@@ -160,7 +160,7 @@ kubectl get pods -n kube-system
 kubectl get pods -n gatekeeper-system
 ```
 
-Controleer ten slotte of de meest recente invoeg toepassing is geïnstalleerd door deze Azure CLI-opdracht uit te voeren, vervangen door `<rg>` de naam van de resource groep en `<cluster-name>` de naam van uw AKS-cluster: `az aks show -g <rg> -n <cluster-name>` . Het resultaat moet er ongeveer uitzien als de volgende uitvoer en **configuratie. versie** moet zijn `v2` :
+Controleer ten slotte of de meest recente invoeg toepassing is geïnstalleerd door deze Azure CLI-opdracht uit te voeren, vervangen door `<rg>` de naam van de resource groep en `<cluster-name>` de naam van uw AKS-cluster: `az aks show --query addonProfiles.azurepolicy -g <rg> -n <cluster-name>` . Het resultaat moet er ongeveer uitzien als de volgende uitvoer en **configuratie. versie** moet zijn `v2` :
 
 ```output
 "addonProfiles": {
@@ -217,7 +217,7 @@ Voordat u de Azure Policy invoeg toepassing installeert of een van de service fu
    |`login.windows.net` |`443` |
    |`dc.services.visualstudio.com` |`443` |
 
-1. Wijs de roltoewijzing ' policy Insights Data Writer (preview) ' toe aan het Azure Arc enabled Kubernetes-cluster. Vervang door `<subscriptionId>` uw abonnements-id, `<rg>` met de resource groep Azure Arc enabled Kubernetes-cluster en `<clusterName>` met de naam van het Azure-Arc-Kubernetes-cluster. Houd bij de installatie stappen de geretourneerde waarden bij voor _AppID_, _wacht woord_en _Tenant_ .
+1. Wijs de roltoewijzing ' policy Insights Data Writer (preview) ' toe aan het Azure Arc enabled Kubernetes-cluster. Vervang door `<subscriptionId>` uw abonnements-id, `<rg>` met de resource groep Azure Arc enabled Kubernetes-cluster en `<clusterName>` met de naam van het Azure-Arc-Kubernetes-cluster. Houd bij de installatie stappen de geretourneerde waarden bij voor _AppID_ , _wacht woord_ en _Tenant_ .
 
    - Azure CLI
 
@@ -384,11 +384,11 @@ Als u een beleids definitie wilt toewijzen aan uw Kubernetes-cluster, moet u de 
 
 Zoek de ingebouwde beleids definities voor het beheren van uw cluster met behulp van de Azure Portal door de volgende stappen uit te voeren:
 
-1. Start de Azure Policy-service in de Azure Portal. Selecteer **alle services** in het linkerdeel venster en zoek en selecteer vervolgens **beleid**.
+1. Start de Azure Policy-service in de Azure Portal. Selecteer **alle services** in het linkerdeel venster en zoek en selecteer vervolgens **beleid** .
 
-1. Selecteer in het linkerdeel venster van de pagina Azure Policy **definities**.
+1. Selecteer in het linkerdeel venster van de pagina Azure Policy **definities** .
 
-1. Gebruik in de vervolg keuzelijst Categorie de **optie Alles selecteren** om het filter te wissen en selecteer vervolgens **Kubernetes**.
+1. Gebruik in de vervolg keuzelijst Categorie de **optie Alles selecteren** om het filter te wissen en selecteer vervolgens **Kubernetes** .
 
 1. Selecteer de beleids definitie en selecteer vervolgens de knop **toewijzen** .
 
@@ -405,18 +405,18 @@ Zoek de ingebouwde beleids definities voor het beheren van uw cluster met behulp
 
    - **Uitgeschakeld** : dwing het beleid niet af op het cluster. Kubernetes-toegangs aanvragen met schendingen worden niet geweigerd. De resultaten van de nalevings beoordeling zijn nog steeds beschikbaar. Bij het implementeren van nieuwe beleids definities voor het uitvoeren van clusters, is de optie _uitgeschakeld_ handig voor het testen van de beleids definitie als toegangs aanvragen met schendingen niet worden geweigerd.
 
-1. Selecteer **Next**.
+1. Selecteer **Next** .
 
 1. **Parameter waarden** instellen
 
-   - Als u Kubernetes-naam ruimten van beleids evaluatie wilt uitsluiten, geeft u de lijst met naam ruimten in de para meters van de **naam ruimte**op. Het wordt aanbevolen om: _uitvoeren-System_, _gate keeper-System_en _Azure-Arc_uit te sluiten.
+   - Als u Kubernetes-naam ruimten van beleids evaluatie wilt uitsluiten, geeft u de lijst met naam ruimten in de para meters van de **naam ruimte** op. Het wordt aanbevolen om: _uitvoeren-System_ , _gate keeper-System_ en _Azure-Arc_ uit te sluiten.
 
-1. Selecteer **Controleren + maken**.
+1. Selecteer **Controleren + maken** .
 
 U kunt ook de Snelstartgids [een beleid toewijzen-Portal](../assign-policy-portal.md) gebruiken om een Kubernetes-beleid te zoeken en toe te wijzen. Zoek in plaats van het voor beeld ' vm's controleren ' naar een Kubernetes-beleids definitie.
 
 > [!IMPORTANT]
-> Ingebouwde beleids definities zijn beschikbaar voor Kubernetes-clusters in categorie **Kubernetes**. Zie Kubernetes-voor [beelden](../samples/built-in-policies.md#kubernetes)voor een lijst met ingebouwde beleids definities.
+> Ingebouwde beleids definities zijn beschikbaar voor Kubernetes-clusters in categorie **Kubernetes** . Zie Kubernetes-voor [beelden](../samples/built-in-policies.md#kubernetes)voor een lijst met ingebouwde beleids definities.
 
 ## <a name="policy-evaluation"></a>Beleids evaluatie
 
@@ -461,7 +461,7 @@ Als u de invoeg toepassing Azure Policy wilt verwijderen uit uw AKS-cluster, geb
 
 - Azure Portal
 
-  1. Start de AKS-service in de Azure Portal door **alle services**te selecteren en vervolgens op **Kubernetes-Services**te zoeken en te selecteren.
+  1. Start de AKS-service in de Azure Portal door **alle services** te selecteren en vervolgens op **Kubernetes-Services** te zoeken en te selecteren.
 
   1. Selecteer uw AKS-cluster waarvoor u de invoeg toepassing Azure Policy wilt uitschakelen.
 

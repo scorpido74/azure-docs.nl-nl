@@ -3,15 +3,15 @@ title: Azure Functions testen
 description: Automatische tests voor een C#-functie in Visual Studio en Java script-functie in VS code maken
 author: craigshoemaker
 ms.topic: conceptual
-ms.custom: devx-track-csharp
+ms.custom: devx-track-csharp, devx-track-js
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: e0abfc9be0031f899071d6e5e22274481ba76e10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ff70c14310dd81a051ac27c1d6d59bb3d1deb7b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212890"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677607"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategieën voor het testen van uw code in Azure Functions
 
@@ -37,9 +37,9 @@ In het volgende voor beeld wordt beschreven hoe u een C#-functie-app maakt in Vi
 Als u uw omgeving wilt instellen, maakt u een functie-en test-app. De volgende stappen helpen u bij het maken van de apps en functies die nodig zijn voor de ondersteuning van de tests:
 
 1. [Een nieuwe functions-app maken](./functions-create-first-azure-function.md) en **hieraan** een naam toe te voegen
-2. [Maak een HTTP-functie op basis van de sjabloon](./functions-create-first-azure-function.md) en geef deze de naam **MyHttpTrigger**.
-3. [Maak een timer functie op basis van de sjabloon](./functions-create-scheduled-function.md) en noem deze **MyTimerTrigger**.
-4. [Maak een xUnit-test-app](https://xunit.github.io/docs/getting-started-dotnet-core) in de oplossing en geef deze de naam **Function. tests**.
+2. [Maak een HTTP-functie op basis van de sjabloon](./functions-create-first-azure-function.md) en geef deze de naam **MyHttpTrigger** .
+3. [Maak een timer functie op basis van de sjabloon](./functions-create-scheduled-function.md) en noem deze **MyTimerTrigger** .
+4. [Maak een xUnit-test-app](https://xunit.github.io/docs/getting-started-dotnet-core) in de oplossing en geef deze de naam **Function. tests** .
 5. Gebruik NuGet om een verwijzing toe te voegen vanuit de test-app naar [micro soft. AspNetCore. MVC](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
 6. [Raadpleeg de *functions* -app](/visualstudio/ide/managing-references-in-a-project?view=vs-2017) vanuit *functions. app tests* .
 
@@ -107,11 +107,11 @@ namespace Functions.Tests
 
 De `ListLogger` klasse implementeert de volgende leden als een contract van de `ILogger` Interface:
 
-- **BeginScope**: bereiken voegen context toe aan uw logboek registratie. In dit geval wijst de test alleen naar het statische exemplaar op de `NullScope` klasse om de test te laten functioneren.
+- **BeginScope** : bereiken voegen context toe aan uw logboek registratie. In dit geval wijst de test alleen naar het statische exemplaar op de `NullScope` klasse om de test te laten functioneren.
 
-- **IsEnabled**: er wordt een standaard waarde van `false` gegeven.
+- **IsEnabled** : er wordt een standaard waarde van `false` gegeven.
 
-- **Log**: deze methode gebruikt de geleverde `formatter` functie om het bericht op te maken en vervolgens de resulterende tekst aan de verzameling toe te voegen `Logs` .
+- **Log** : deze methode gebruikt de geleverde `formatter` functie om het bericht op te maken en vervolgens de resulterende tekst aan de verzameling toe te voegen `Logs` .
 
 De `Logs` verzameling is een exemplaar van `List<string>` en wordt geïnitialiseerd in de constructor.
 
@@ -193,13 +193,13 @@ namespace Functions.Tests
 
 De `TestFactory` klasse implementeert de volgende leden:
 
-- **Gegevens**: deze eigenschap retourneert een [IEnumerable](/dotnet/api/system.collections.ienumerable) -verzameling van voorbeeld gegevens. De sleutel-waardeparen vertegenwoordigen waarden die worden door gegeven aan een query reeks.
+- **Gegevens** : deze eigenschap retourneert een [IEnumerable](/dotnet/api/system.collections.ienumerable) -verzameling van voorbeeld gegevens. De sleutel-waardeparen vertegenwoordigen waarden die worden door gegeven aan een query reeks.
 
-- **CreateDictionary**: deze methode accepteert een sleutel/waarde-paar als argumenten en retourneert een nieuwe `Dictionary` die wordt gebruikt om `QueryCollection` query teken reeks waarden weer te geven.
+- **CreateDictionary** : deze methode accepteert een sleutel/waarde-paar als argumenten en retourneert een nieuwe `Dictionary` die wordt gebruikt om `QueryCollection` query teken reeks waarden weer te geven.
 
-- **CreateHttpRequest**: met deze methode maakt u een HTTP-aanvraag die is geïnitialiseerd met de opgegeven query reeks parameters.
+- **CreateHttpRequest** : met deze methode maakt u een HTTP-aanvraag die is geïnitialiseerd met de opgegeven query reeks parameters.
 
-- **CreateLogger**: op basis van het logboek type retourneert deze methode een logger klasse die wordt gebruikt voor het testen. Hiermee worden `ListLogger` vastgelegde berichten bijgehouden die beschikbaar zijn voor evaluatie in tests.
+- **CreateLogger** : op basis van het logboek type retourneert deze methode een logger klasse die wordt gebruikt voor het testen. Hiermee worden `ListLogger` vastgelegde berichten bijgehouden die beschikbaar zijn voor evaluatie in tests.
 
 Maak ten slotte een nieuwe klasse in *functions. test* project met de naam **FunctionsTests.cs** en voer de volgende code in:
 
@@ -245,23 +245,23 @@ namespace Functions.Tests
 
 De leden die in deze klasse worden geïmplementeerd zijn:
 
-- **Http_trigger_should_return_known_string**: met deze test wordt een aanvraag met de query teken reeks waarden van `name=Bill` naar een http-functie gemaakt en wordt gecontroleerd of de verwachte reactie wordt geretourneerd.
+- **Http_trigger_should_return_known_string** : met deze test wordt een aanvraag met de query teken reeks waarden van `name=Bill` naar een http-functie gemaakt en wordt gecontroleerd of de verwachte reactie wordt geretourneerd.
 
-- **Http_trigger_should_return_string_from_member_data**: deze test maakt gebruik van xUnit-kenmerken om voorbeeld gegevens aan de http-functie toe te voegen.
+- **Http_trigger_should_return_string_from_member_data** : deze test maakt gebruik van xUnit-kenmerken om voorbeeld gegevens aan de http-functie toe te voegen.
 
-- **Timer_should_log_message**: met deze test wordt een exemplaar van gemaakt `ListLogger` en door gegeven aan een timer-functie. Zodra de functie is uitgevoerd, wordt het logboek gecontroleerd om te controleren of het verwachte bericht aanwezig is.
+- **Timer_should_log_message** : met deze test wordt een exemplaar van gemaakt `ListLogger` en door gegeven aan een timer-functie. Zodra de functie is uitgevoerd, wordt het logboek gecontroleerd om te controleren of het verwachte bericht aanwezig is.
 
 Als u toegang wilt krijgen tot toepassings instellingen in uw tests, kunt u [System. Environment. GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables)gebruiken.
 
 ### <a name="run-tests"></a>Tests uitvoeren
 
-Als u de tests wilt uitvoeren, gaat u naar de **test Verkenner** en klikt u op **alles uitvoeren**.
+Als u de tests wilt uitvoeren, gaat u naar de **test Verkenner** en klikt u op **alles uitvoeren** .
 
 ![Azure Functions testen met C# in Visual Studio](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
 ### <a name="debug-tests"></a>Debug-tests
 
-Als u fouten wilt opsporen in de tests, stelt u een onderbrekings punt in op een test, gaat u naar de **test Verkenner** en klikt u op **uitvoeren > fout opsporing laatst uitgevoerd**.
+Als u fouten wilt opsporen in de tests, stelt u een onderbrekings punt in op een test, gaat u naar de **test Verkenner** en klikt u op **uitvoeren > fout opsporing laatst uitgevoerd** .
 
 ## <a name="javascript-in-vs-code"></a>Java script in VS code
 
@@ -295,7 +295,7 @@ Werk _package.js_ nu bij om de bestaande test opdracht te vervangen door de volg
 
 Wanneer het project is geïnitialiseerd, kunt u de modules maken die worden gebruikt om de geautomatiseerde tests uit te voeren. Maak eerst een nieuwe map met de naam *tests* om de ondersteunings modules op te slaan.
 
-Voeg in de map *testen* een nieuw bestand toe, geef het de naam **defaultContext.js**en voeg de volgende code toe:
+Voeg in de map *testen* een nieuw bestand toe, geef het de naam **defaultContext.js** en voeg de volgende code toe:
 
 ```javascript
 module.exports = {
@@ -305,7 +305,7 @@ module.exports = {
 
 In deze module wordt de *logboek* functie voor de standaard uitvoerings context weer gegeven.
 
-Voeg vervolgens een nieuw bestand toe, geef het de naam **defaultTimer.js**en voeg de volgende code toe:
+Voeg vervolgens een nieuw bestand toe, geef het de naam **defaultTimer.js** en voeg de volgende code toe:
 
 ```javascript
 module.exports = {
@@ -315,7 +315,7 @@ module.exports = {
 
 Deze module implementeert de `IsPastDue` eigenschap op standaard als een valse Timer-instantie. Timer configuraties zoals NCRONTAB-expressies zijn hier niet vereist omdat de test harnas de functie rechtstreeks aanroept om het resultaat te testen.
 
-Gebruik vervolgens de extensie VS code functions om [een nieuwe Java script HTTP-functie te maken](/azure/developer/javascript/tutorial-vscode-serverless-node-01) en deze *http trigger*te noemen. Nadat de functie is gemaakt, voegt u een nieuw bestand toe aan dezelfde map met de naam **index.test.js**en voegt u de volgende code toe:
+Gebruik vervolgens de extensie VS code functions om [een nieuwe Java script HTTP-functie te maken](/azure/developer/javascript/tutorial-vscode-serverless-node-01) en deze *http trigger* te noemen. Nadat de functie is gemaakt, voegt u een nieuw bestand toe aan dezelfde map met de naam **index.test.js** en voegt u de volgende code toe:
 
 ```javascript
 const httpFunction = require('./index');
@@ -336,7 +336,7 @@ test('Http trigger should return known text', async () => {
 
 De HTTP-functie van de sjabloon retourneert een teken reeks ' Hello ' die is samengevoegd met de naam die is opgenomen in de query reeks. Met deze test wordt een vervalst exemplaar van een aanvraag gemaakt en door gegeven aan de HTTP-functie. De test controleert of de *logboek* methode eenmaal wordt aangeroepen en de geretourneerde tekst is gelijk aan "Hello Bill".
 
-Gebruik vervolgens de extensie VS code functions om een nieuwe Java Script-timer functie te maken en geef deze de naam *Timer trigger*. Nadat de functie is gemaakt, voegt u een nieuw bestand toe aan dezelfde map met de naam **index.test.js**en voegt u de volgende code toe:
+Gebruik vervolgens de extensie VS code functions om een nieuwe Java Script-timer functie te maken en geef deze de naam *Timer trigger* . Nadat de functie is gemaakt, voegt u een nieuw bestand toe aan dezelfde map met de naam **index.test.js** en voegt u de volgende code toe:
 
 ```javascript
 const timerFunction = require('./index');
@@ -379,7 +379,7 @@ Als u fouten wilt opsporen in uw tests, voegt u de volgende configuratie toe aan
 }
 ```
 
-Stel vervolgens een onderbrekings punt in uw test in en druk op **F5**.
+Stel vervolgens een onderbrekings punt in uw test in en druk op **F5** .
 
 ## <a name="next-steps"></a>Volgende stappen
 

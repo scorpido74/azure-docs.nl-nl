@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: eb3acc9b30b9016ae33f223911cc01cbf8daea47
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 6aa08f91a9289984d15beac5fb215d112a5558da
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999117"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676046"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Een model implementeren met behulp van een aangepaste docker-basis installatie kopie
 
@@ -41,7 +41,7 @@ Dit document is onderverdeeld in twee secties:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure Machine Learning werk groep. Zie het artikel [een werk ruimte maken](how-to-manage-workspace.md) voor meer informatie.
+* Een Azure Machine Learning-werkruimte. Zie het artikel [een werk ruimte maken](how-to-manage-workspace.md) voor meer informatie.
 * De [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true). 
 * De [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
 * De [cli-extensie voor Azure machine learning](reference-azure-machine-learning-cli.md).
@@ -54,12 +54,12 @@ In de informatie in deze sectie wordt ervan uitgegaan dat u een Azure Container 
 
 * Gebruikt u de Azure Container Registry die is gemaakt voor de Azure Machine Learning-werk ruimte of een zelfstandige Azure Container Registry?
 
-    Wanneer u installatie kopieën gebruikt die zijn opgeslagen in het __container register voor de werk ruimte__, hoeft u zich niet te verifiëren bij het REGI ster. Verificatie wordt verwerkt door de werk ruimte.
+    Wanneer u installatie kopieën gebruikt die zijn opgeslagen in het __container register voor de werk ruimte__ , hoeft u zich niet te verifiëren bij het REGI ster. Verificatie wordt verwerkt door de werk ruimte.
 
     > [!WARNING]
     > De Azure Container Registry voor uw werk ruimte wordt __gemaakt wanneer u voor het eerst een model traint of implementeert__ met behulp van de werk ruimte. Als u een nieuwe werk ruimte hebt gemaakt, maar niet hebt getraind of een model hebt gemaakt, bestaat er geen Azure Container Registry voor de werk ruimte.
 
-    Wanneer u installatie kopieën gebruikt die zijn opgeslagen in een __zelfstandig container register__, moet u een Service-Principal configureren die ten minste lees toegang heeft. Vervolgens geeft u de Service-Principal-ID (gebruikers naam) en het wacht woord op voor iedereen die gebruikmaakt van installatie kopieën uit het REGI ster. De uitzonde ring hierop is als u het container register openbaar toegankelijk maakt.
+    Wanneer u installatie kopieën gebruikt die zijn opgeslagen in een __zelfstandig container register__ , moet u een Service-Principal configureren die ten minste lees toegang heeft. Vervolgens geeft u de Service-Principal-ID (gebruikers naam) en het wacht woord op voor iedereen die gebruikmaakt van installatie kopieën uit het REGI ster. De uitzonde ring hierop is als u het container register openbaar toegankelijk maakt.
 
     Zie [een persoonlijk container register maken](/azure/container-registry/container-registry-get-started-azure-cli)voor meer informatie over het maken van een persoonlijke Azure container Registry.
 
@@ -197,14 +197,14 @@ Zie [uw eerste installatie kopie naar een privé-docker-container register pushe
 
 Als u een aangepaste installatie kopie wilt gebruiken, hebt u de volgende informatie nodig:
 
-* De __naam van de installatie kopie__. `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda:latest`Is bijvoorbeeld het pad naar een eenvoudige docker-installatie kopie van micro soft.
+* De __naam van de installatie kopie__ . `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda:latest`Is bijvoorbeeld het pad naar een eenvoudige docker-installatie kopie van micro soft.
 
     > [!IMPORTANT]
     > Voor aangepaste installatie kopieën die u hebt gemaakt, moet u ervoor zorgen dat alle labels worden opgenomen die met de afbeelding zijn gebruikt. Als uw installatie kopie bijvoorbeeld is gemaakt met een specifieke tag, zoals `:v1` . Als u geen specifieke tag hebt gebruikt bij het maken van de installatie kopie, is een tag van `:latest` toegepast.
 
-* Als de installatie kopie zich in een __privé opslagplaats__bevindt, hebt u de volgende informatie nodig:
+* Als de installatie kopie zich in een __privé opslagplaats__ bevindt, hebt u de volgende informatie nodig:
 
-    * Het register __adres__. Bijvoorbeeld `myregistry.azureecr.io`.
+    * Het register __adres__ . Bijvoorbeeld `myregistry.azureecr.io`.
     * Een __gebruikers naam__ en- __wacht woord__ voor de service-principal met lees toegang tot het REGI ster.
 
     Als u deze informatie niet hebt, neemt u contact op met de beheerder voor de Azure Container Registry die uw installatie kopie bevat.
@@ -231,7 +231,7 @@ Zie [Azure machine learning containers](https://github.com/Azure/AzureML-Contain
 
 ### <a name="use-an-image-with-the-azure-machine-learning-sdk"></a>Een installatie kopie gebruiken met de Azure Machine Learning SDK
 
-Als u een installatie kopie wilt gebruiken die is opgeslagen in de **Azure container Registry voor uw werk ruimte**of een **container register dat openbaar toegankelijk is**, stelt u de volgende [omgevings](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true) kenmerken in:
+Als u een installatie kopie wilt gebruiken die is opgeslagen in de **Azure container Registry voor uw werk ruimte** of een **container register dat openbaar toegankelijk is** , stelt u de volgende [omgevings](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true) kenmerken in:
 
 + `docker.enabled=True`
 + `docker.base_image`: Ingesteld op het REGI ster en pad naar de installatie kopie.

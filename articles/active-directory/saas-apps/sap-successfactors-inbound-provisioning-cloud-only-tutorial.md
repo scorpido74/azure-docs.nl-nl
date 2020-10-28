@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: b7571b0a064e10faf5f002c9487ecc804ac78665
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 317fef0381222cc7bd9f86fce13a809aa3c787ea
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90017894"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676588"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning"></a>Zelf studie: SAP SuccessFactors configureren voor Azure AD-gebruikers inrichten
 Het doel van deze zelf studie is het weer geven van de stappen die u moet uitvoeren om werk nemers in te richten op SuccessFactors-werk nemers centraal in Azure Active Directory, met een optionele write-back van e-mail adres naar SuccessFactors. 
@@ -92,28 +92,28 @@ Werk samen met uw SuccessFactors-beheer team of implementatie partner om een geb
 ### <a name="create-an-api-permissions-role"></a>Een functie voor API-machtigingen maken
 
 * Meld u aan bij SAP SuccessFactors met een gebruikers account dat toegang heeft tot het beheer centrum.
-* Zoek naar *machtigings rollen beheren*en selecteer vervolgens **machtigings rollen beheren** in de zoek resultaten.
+* Zoek naar *machtigings rollen beheren* en selecteer vervolgens **machtigings rollen beheren** in de zoek resultaten.
   ![Machtigings rollen beheren](./media/sap-successfactors-inbound-provisioning/manage-permission-roles.png)
-* Klik in de lijst machtigings rollen op **nieuwe maken**.
+* Klik in de lijst machtigings rollen op **nieuwe maken** .
   > [!div class="mx-imgBorder"]
   > ![Nieuwe machtigings functie maken](./media/sap-successfactors-inbound-provisioning/create-new-permission-role-1.png)
 * Voeg een **rolnaam** en een **Beschrijving** voor de nieuwe machtigings functie toe. De naam en beschrijving moeten aangeven dat de rol is voor API-gebruiks machtigingen.
   > [!div class="mx-imgBorder"]
   > ![Details van machtigings rol](./media/sap-successfactors-inbound-provisioning/permission-role-detail.png)
-* Klik onder machtigings instellingen op **machtiging...**, Schuif omlaag in de lijst met machtigingen en klik op **integratie hulpprogramma's beheren**. Schakel het selectie vakje in om de beheerder toe te **staan om toegang te krijgen tot ODATA API via basis verificatie**.
+* Klik onder machtigings instellingen op **machtiging...** , Schuif omlaag in de lijst met machtigingen en klik op **integratie hulpprogramma's beheren** . Schakel het selectie vakje in om de beheerder toe te **staan om toegang te krijgen tot ODATA API via basis verificatie** .
   > [!div class="mx-imgBorder"]
   > ![Integratie hulpprogramma's beheren](./media/sap-successfactors-inbound-provisioning/manage-integration-tools.png)
-* Schuif omlaag in hetzelfde vak en selecteer de **centrale API voor werk nemers**. Voeg machtigingen toe, zoals hieronder wordt weer gegeven, voor meer informatie over het gebruik van ODATA API en Edit met de ODATA-API. Selecteer de optie bewerken als u van plan bent hetzelfde account te gebruiken voor het terugschrijven naar het SuccessFactors-scenario. 
+* Schuif omlaag in hetzelfde vak en selecteer de **centrale API voor werk nemers** . Voeg machtigingen toe, zoals hieronder wordt weer gegeven, voor meer informatie over het gebruik van ODATA API en Edit met de ODATA-API. Selecteer de optie bewerken als u van plan bent hetzelfde account te gebruiken voor het terugschrijven naar het SuccessFactors-scenario. 
   > [!div class="mx-imgBorder"]
   > ![Lees machtigingen voor schrijven](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
-* Klik op **gereed**. Klik op **Wijzigingen opslaan**.
+* Klik op **gereed** . Klik op **Wijzigingen opslaan** .
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>Een machtigings groep maken voor de API-gebruiker
 
-* Zoek in het SuccessFactors-beheer centrum naar *machtigings groepen beheren*en selecteer vervolgens **machtigings groepen beheren** in de zoek resultaten.
+* Zoek in het SuccessFactors-beheer centrum naar *machtigings groepen beheren* en selecteer vervolgens **machtigings groepen beheren** in de zoek resultaten.
   > [!div class="mx-imgBorder"]
   > ![Machtigings groepen beheren](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
-* Klik in het venster machtigings groepen beheren op **nieuwe maken**.
+* Klik in het venster machtigings groepen beheren op **nieuwe maken** .
   > [!div class="mx-imgBorder"]
   > ![Nieuwe groep toevoegen](./media/sap-successfactors-inbound-provisioning/create-new-group.png)
 * Voeg een groeps naam voor de nieuwe groep toe. De groeps naam moet aangeven dat de groep voor API-gebruikers is.
@@ -126,16 +126,16 @@ Werk samen met uw SuccessFactors-beheer team of implementatie partner om een geb
 
 ### <a name="grant-permission-role-to-the-permission-group"></a>Machtigings functie verlenen aan de machtigings groep
 
-* Zoek in SuccessFactors-beheer centrum naar *machtigings rollen beheren*en selecteer vervolgens **machtigings rollen beheren** in de zoek resultaten.
-* Selecteer in de **lijst machtigings rollen**de rol die u hebt gemaakt voor de machtigingen voor API-gebruik.
-* Onder **deze rol toekennen aan..**. klikt u op de knop **toevoegen..** ..
+* Zoek in SuccessFactors-beheer centrum naar *machtigings rollen beheren* en selecteer vervolgens **machtigings rollen beheren** in de zoek resultaten.
+* Selecteer in de **lijst machtigings rollen** de rol die u hebt gemaakt voor de machtigingen voor API-gebruik.
+* Onder **deze rol toekennen aan..** . klikt u op de knop **toevoegen..** ..
 * Selecteer de **machtigings groep..** . in de vervolg keuzelijst en klik vervolgens op **selecteren...** om het venster groepen te openen, te zoeken en de eerder gemaakte groep te selecteren. 
   > [!div class="mx-imgBorder"]
   > ![Machtigings groep toevoegen](./media/sap-successfactors-inbound-provisioning/add-permission-group.png)
 * Controleer de machtigings rol verlenen aan de machtigings groep. 
   > [!div class="mx-imgBorder"]
   > ![Rol en groeps Details van machtiging](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
-* Klik op **Wijzigingen opslaan**.
+* Klik op **Wijzigingen opslaan** .
 
 ## <a name="configuring-user-provisioning-from-successfactors-to-azure-ad"></a>Gebruikers inrichten van SuccessFactors naar Azure AD configureren
 
@@ -153,11 +153,11 @@ In deze sectie vindt u de stappen voor het inrichten van gebruikers accounts van
 
 2. Selecteer in de linker navigatie balk de optie **Azure Active Directory**
 
-3. Selecteer **bedrijfs toepassingen**en vervolgens **alle toepassingen**.
+3. Selecteer **bedrijfs toepassingen** en vervolgens **alle toepassingen** .
 
-4. Selecteer **een toepassing toevoegen**en selecteer de categorie **alle** .
+4. Selecteer **een toepassing toevoegen** en selecteer de categorie **alle** .
 
-5. Zoek **SuccessFactors naar Azure Active Directory gebruikers inrichten**en voeg die app toe vanuit de galerie.
+5. Zoek **SuccessFactors naar Azure Active Directory gebruikers inrichten** en voeg die app toe vanuit de galerie.
 
 6. Nadat de app is toegevoegd en het scherm met details van de app wordt weer gegeven, selecteert u **inrichting** maken
 
@@ -169,11 +169,11 @@ In deze sectie vindt u de stappen voor het inrichten van gebruikers accounts van
 
    * **Beheerders wachtwoord –** Voer het wacht woord van het gebruikers account van de SuccessFactors-API in. 
 
-   * **Tenant-URL:** Voer de naam van het SuccessFactors OData API services-eind punt in. Voer alleen de hostnaam van de server in zonder http of https. Deze waarde moet er als volgt uitzien: **API-server-name.successfactors.com**.
+   * **Tenant-URL:** Voer de naam van het SuccessFactors OData API services-eind punt in. Voer alleen de hostnaam van de server in zonder http of https. Deze waarde moet er als volgt uitzien: **API-server-name.successfactors.com** .
 
    * **E-mail melding-** Voer uw e-mail adres in en schakel het selectie vakje e-mail verzenden als er een fout is opgetreden in.
     > [!NOTE]
-    > De Azure AD-inrichtings service verzendt een e-mail melding als de inrichtings taak een [quarantaine](/azure/active-directory/manage-apps/application-provisioning-quarantine-status) status heeft.
+    > De Azure AD-inrichtings service verzendt een e-mail melding als de inrichtings taak een [quarantaine](../app-provisioning/application-provisioning-quarantine-status.md) status heeft.
 
    * Klik op de knop **verbinding testen** . Als de verbindings test is geslaagd, klikt u bovenaan op de knop **Opslaan** . Als dit mislukt, controleert u of de SuccessFactors-referenties en-URL geldig zijn.
     >[!div class="mx-imgBorder"]
@@ -185,7 +185,7 @@ In deze sectie vindt u de stappen voor het inrichten van gebruikers accounts van
 
 In deze sectie configureert u hoe gebruikers gegevens stromen van SuccessFactors naar Active Directory.
 
-1. Klik op het tabblad inrichting onder **toewijzingen**op **SuccessFactors gebruikers synchroniseren om Azure Active Directory**.
+1. Klik op het tabblad inrichting onder **toewijzingen** op **SuccessFactors gebruikers synchroniseren om Azure Active Directory** .
 
 1. In het veld **bereik van bron object** kunt u selecteren welke groepen gebruikers in SuccessFactors het bereik moeten hebben voor het inrichten van Azure AD door een set op kenmerken gebaseerde filters te definiëren. Het standaard bereik is alle gebruikers in SuccessFactors. Voorbeeld filters:
 
@@ -255,9 +255,9 @@ Zodra de configuratie van de SuccessFactors-inrichting is voltooid, kunt u de in
 > [!TIP]
 > Wanneer u de inrichtings service inschakelt, worden er standaard inrichtings bewerkingen gestart voor alle gebruikers binnen het bereik. Als er fouten optreden in de toewijzings-of workday-gegevens problemen, kan de inrichtings taak mislukken en gaat u naar de quarantaine status. Om dit te voor komen best practice, raden we u aan om het bereik filter voor **bron objecten** te configureren en uw kenmerk toewijzingen te testen met enkele test gebruikers voordat u de volledige synchronisatie voor alle gebruikers start. Wanneer u hebt gecontroleerd of de toewijzingen werken en u de gewenste resultaten krijgt, kunt u het filter verwijderen of het bestand geleidelijk uitbreiden om meer gebruikers op te geven.
 
-1. Stel op het tabblad **inrichten** de **inrichtings status** in **op aan**.
+1. Stel op het tabblad **inrichten** de **inrichtings status** in **op aan** .
 
-2. Klik op **Opslaan**.
+2. Klik op **Opslaan** .
 
 3. Met deze bewerking wordt de eerste synchronisatie gestart, wat een variabel aantal uur kan duren, afhankelijk van het aantal gebruikers in de SuccessFactors-Tenant. U kunt de voortgangs balk controleren om de voortgang van de synchronisatie cyclus bij te houden. 
 
@@ -276,5 +276,3 @@ Zodra de configuratie van de SuccessFactors-inrichting is voltooid, kunt u de in
 * [Meer informatie over het configureren van eenmalige aanmelding tussen SuccessFactors en Azure Active Directory](successfactors-tutorial.md)
 * [Meer informatie over het integreren van andere SaaS-toepassingen met Azure Active Directory](tutorial-list.md)
 * [Meer informatie over het exporteren en importeren van uw inrichtings configuraties](../app-provisioning/export-import-provisioning-configuration.md)
-
-

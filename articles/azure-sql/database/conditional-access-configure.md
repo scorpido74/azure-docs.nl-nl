@@ -12,12 +12,12 @@ ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 04/28/2020
 tag: azure-synpase
-ms.openlocfilehash: ad80f68c1ab3b3583c5a22de49b77211571f345e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ba0c53b9d0b9791364f532d999d86c74fa21177
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443982"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678057"
 ---
 # <a name="conditional-access-with-azure-sql-database-and-azure-synapse-analytics"></a>Voorwaardelijke toegang met Azure SQL Database en Azure Synapse Analytics
 
@@ -37,21 +37,21 @@ De volgende stappen laten zien hoe u Azure SQL Database, SQL Managed instance of
 > [!NOTE]
 > In het onderstaande voor beeld wordt Azure SQL Database gebruikt, maar u moet het juiste product selecteren dat u wilt gebruiken voor het configureren van voorwaardelijke toegang.
 
-1. Meld u aan bij de Azure Portal, selecteer **Azure Active Directory**en selecteer vervolgens **voorwaardelijke toegang**. Zie [Azure Active Directory technische Naslag informatie voor voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference).  
+1. Meld u aan bij de Azure Portal, selecteer **Azure Active Directory** en selecteer vervolgens **voorwaardelijke toegang** . Zie [Azure Active Directory technische Naslag informatie voor voorwaardelijke toegang](../../active-directory/conditional-access/concept-conditional-access-conditions.md).  
    ![Blade voorwaardelijke toegang](./media/conditional-access-configure/conditional-access-blade.png)
 
-2. Klik op de Blade **voorwaardelijke toegang-beleids regels** op **Nieuw beleid**, geef een naam op en klik vervolgens op **regels configureren**.  
-3. Onder **toewijzingen**selecteert u **gebruikers en groepen**, **selecteert u gebruikers en groepen selecteren**en selecteert u vervolgens de gebruiker of groep voor voorwaardelijke toegang. Klik op **selecteren**en klik vervolgens op **gereed** om uw selectie te accepteren.  
+2. Klik op de Blade **voorwaardelijke toegang-beleids regels** op **Nieuw beleid** , geef een naam op en klik vervolgens op **regels configureren** .  
+3. Onder **toewijzingen** selecteert u **gebruikers en groepen** , **selecteert u gebruikers en groepen selecteren** en selecteert u vervolgens de gebruiker of groep voor voorwaardelijke toegang. Klik op **selecteren** en klik vervolgens op **gereed** om uw selectie te accepteren.  
    ![gebruikers en groepen selecteren](./media/conditional-access-configure/select-users-and-groups.png)  
 
-4. Selecteer **Cloud-apps**, klik op **apps selecteren**. U ziet alle apps die beschikbaar zijn voor voorwaardelijke toegang. Selecteer **Azure SQL database**, klik onderaan op **selecteren**en klik vervolgens op **gereed**.  
+4. Selecteer **Cloud-apps** , klik op **apps selecteren** . U ziet alle apps die beschikbaar zijn voor voorwaardelijke toegang. Selecteer **Azure SQL database** , klik onderaan op **selecteren** en klik vervolgens op **gereed** .  
    ![SQL Database selecteren](./media/conditional-access-configure/select-sql-database.png)  
    Als **Azure SQL database** niet wordt weer gegeven in de volgende derde scherm afbeelding, voert u de volgende stappen uit:
    - Maak verbinding met uw data base in Azure SQL Database door SSMS te gebruiken met een Azure AD-beheerders account.  
    - Uitvoeren `CREATE USER [user@yourtenant.com] FROM EXTERNAL PROVIDER` .  
    - Meld u aan bij Azure AD en controleer of Azure SQL Database, SQL Managed instance of Azure Synapse worden weer gegeven in de toepassingen in uw Azure AD-exemplaar.  
 
-5. Selecteer **toegangs beheer**, selecteer **toekennen**en controleer vervolgens het beleid dat u wilt Toep assen. Voor dit voor beeld selecteren we **multi-factor Authentication vereisen**.  
+5. Selecteer **toegangs beheer** , selecteer **toekennen** en controleer vervolgens het beleid dat u wilt Toep assen. Voor dit voor beeld selecteren we **multi-factor Authentication vereisen** .  
    ![Selecteer toegang verlenen](./media/conditional-access-configure/grant-access.png)  
 
 ## <a name="summary"></a>Samenvatting

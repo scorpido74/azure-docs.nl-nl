@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
-ms.openlocfilehash: e22511717b6a86f9e0cf53986152c4d6bab68780
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: a18984c441f5fe47f6ffd54cccff8c37cb57a038
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101763"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676730"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Zelf studie: Sales Force configureren voor het automatisch inrichten van gebruikers
 
@@ -31,13 +31,13 @@ In het scenario dat in deze zelfstudie wordt beschreven, wordt ervan uitgegaan d
 > [!IMPORTANT]
 > Als u een Salesforce.com-proef account gebruikt, kunt u het automatisch inrichten van gebruikers niet configureren. Voor proef accounts is de benodigde API-toegang niet ingeschakeld tot ze zijn gekocht. U kunt deze beperking omzeilen door een gratis [ontwikkelaars account](https://developer.salesforce.com/signup) te gebruiken om deze zelf studie te volt ooien.
 
-Als u een Sales Force-sandbox-omgeving gebruikt, raadpleegt u de zelf studie voor de integratie van de [Sales Force-sandbox](https://go.microsoft.com/fwLink/?LinkID=521879).
+Als u een Sales Force-sandbox-omgeving gebruikt, raadpleegt u de zelf studie voor de integratie van de [Sales Force-sandbox](./salesforce-sandbox-tutorial.md).
 
 ## <a name="assigning-users-to-salesforce"></a>Gebruikers toewijzen aan Sales Force
 
 Azure Active Directory gebruikt een concept met de naam 'toewijzingen' om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers accounts worden alleen de gebruikers en groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
 
-Voordat u de inrichtings service configureert en inschakelt, moet u bepalen welke gebruikers of groepen in azure AD toegang nodig hebben tot uw Sales Force-app. Nadat u deze beslissing hebt genomen, kunt u deze gebruikers toewijzen aan uw Sales Force-app door de instructies in [een gebruiker of groep toewijzen aan een bedrijfs-app te](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) volgen
+Voordat u de inrichtings service configureert en inschakelt, moet u bepalen welke gebruikers of groepen in azure AD toegang nodig hebben tot uw Sales Force-app. Nadat u deze beslissing hebt genomen, kunt u deze gebruikers toewijzen aan uw Sales Force-app door de instructies in [een gebruiker of groep toewijzen aan een bedrijfs-app te](../manage-apps/assign-user-or-group-access-portal.md) volgen
 
 ### <a name="important-tips-for-assigning-users-to-salesforce"></a>Belang rijke tips voor het toewijzen van gebruikers aan Sales Force
 
@@ -65,7 +65,7 @@ Het doel van deze sectie is het maken van een overzicht van het inschakelen van 
 
 3. Selecteer uw exemplaar van Sales Force en selecteer vervolgens het tabblad **inrichten** .
 
-4. Stel de **Inrichtingsmodus** in op **Automatisch**.
+4. Stel de **Inrichtingsmodus** in op **Automatisch** .
 
     ![Scherm afbeelding toont de Sales Force-inrichtings pagina, waarbij de inrichtings modus is ingesteld op automatisch en andere waarden die u kunt instellen.](./media/salesforce-provisioning-tutorial/provisioning.png)
 
@@ -75,11 +75,11 @@ Het doel van deze sectie is het maken van een overzicht van het inschakelen van 
 
     b. Typ in het tekstvak **beheerders wachtwoord** het wacht woord voor dit account.
 
-6. Als u uw Sales Force-beveiligings token wilt ophalen, opent u een nieuw tabblad en meldt u zich aan bij hetzelfde Sales Force-beheerders account. Klik in de rechter bovenhoek van de pagina op uw naam en klik vervolgens op **instellingen**.
+6. Als u uw Sales Force-beveiligings token wilt ophalen, opent u een nieuw tabblad en meldt u zich aan bij hetzelfde Sales Force-beheerders account. Klik in de rechter bovenhoek van de pagina op uw naam en klik vervolgens op **instellingen** .
 
     ![Scherm afbeelding toont de geselecteerde koppeling van de instellingen.](./media/salesforce-provisioning-tutorial/sf-my-settings.png "Automatische gebruikers inrichting inschakelen")
 
-7. Klik in het navigatie deel venster aan de linkerkant op **persoonlijke gegevens** om de gerelateerde sectie uit te vouwen en klik vervolgens op **mijn beveiligings token opnieuw instellen**.
+7. Klik in het navigatie deel venster aan de linkerkant op **persoonlijke gegevens** om de gerelateerde sectie uit te vouwen en klik vervolgens op **mijn beveiligings token opnieuw instellen** .
   
     ![Scherm afbeelding toont het opnieuw instellen van mijn beveiligings token dat is geselecteerd op basis van mijn persoonlijke gegevens.](./media/salesforce-provisioning-tutorial/sf-personal-reset.png "Automatische gebruikers inrichting inschakelen")
 
@@ -122,7 +122,7 @@ Zie [Rapportage over automatische inrichting van gebruikersaccounts](../app-prov
 * De Azure AD-inrichtings service biedt ondersteuning voor het inrichten van taal, land instelling en tijd zone voor een gebruiker. Deze kenmerken bevinden zich in de standaard kenmerk toewijzingen, maar hebben geen standaard bron kenmerk. Zorg ervoor dat u het standaard bron kenmerk selecteert en dat het bron kenmerk in de indeling werd verwacht door Sales Force. Zo is localeSidKey voor Engels (Verenigde Staten) en_US. Bekijk de richt lijnen die [hier](https://help.salesforce.com/articleView?id=setting_your_language.htm&type=5) worden weer gegeven om de juiste localeSidKey-indeling te bepalen. De languageLocaleKey-indelingen kunt u [hier](https://help.salesforce.com/articleView?id=faq_getstart_what_languages_does.htm&type=5)vinden. U kunt er niet alleen voor zorgen dat de indeling juist is, maar u moet er ook voor zorgen dat de taal voor uw gebruikers is ingeschakeld, zoals [hier](https://help.salesforce.com/articleView?id=setting_your_language.htm&type=5)wordt beschreven. 
 * **SalesforceLicenseLimitExceeded:** De gebruiker kan niet worden gemaakt in de doel toepassing omdat er geen beschik bare licenties voor deze gebruiker zijn. U kunt aanvullende licenties voor de doel toepassing aanschaffen of uw gebruikers toewijzingen en configuratie van kenmerk toewijzing controleren om ervoor te zorgen dat de juiste gebruikers zijn toegewezen met de juiste kenmerken.
 * **SalesforceDuplicateUserName:** De gebruiker kan niet worden ingericht omdat deze een Salesforce.com-gebruikers naam heeft die is gedupliceerd in een andere Salesforce.com-Tenant.In Salesforce.com moet de waarde voor het kenmerk ' username ' uniek zijn in alle Salesforce.com-tenants.Standaard wordt de userPrincipalName van een gebruiker in Azure Active Directory de gebruikers naam in Salesforce.com.U hebt twee opties.U kunt ook de gebruiker met de dubbele gebruikers naam in de andere Salesforce.com-Tenant vinden en de naam ervan wijzigen als u de andere Tenant beheert.De andere optie is om de toegang van de Azure Active Directory gebruiker te verwijderen tot de Salesforce.com-Tenant waarmee uw directory is geïntegreerd. Deze bewerking wordt opnieuw geprobeerd tijdens de volgende synchronisatie poging. 
-* **SalesforceRequiredFieldMissing:** Voor Sales Force moeten bepaalde kenmerken aanwezig zijn op de gebruiker om de gebruiker te kunnen maken of bij te werken. Er ontbreekt een van de vereiste kenmerken voor deze gebruiker. Zorg ervoor dat kenmerken zoals e-mail en alias worden ingevuld voor alle gebruikers die u wilt inrichten voor Sales Force. U kunt gebruikers die deze kenmerken niet hebben, bereiken met behulp [van filtering op basis van kenmerken](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
+* **SalesforceRequiredFieldMissing:** Voor Sales Force moeten bepaalde kenmerken aanwezig zijn op de gebruiker om de gebruiker te kunnen maken of bij te werken. Er ontbreekt een van de vereiste kenmerken voor deze gebruiker. Zorg ervoor dat kenmerken zoals e-mail en alias worden ingevuld voor alle gebruikers die u wilt inrichten voor Sales Force. U kunt gebruikers die deze kenmerken niet hebben, bereiken met behulp [van filtering op basis van kenmerken](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
 * De standaard kenmerk toewijzing voor het inrichten van Sales Force bevat de SingleAppRoleAssignments-expressie voor het toewijzen van appRoleAssignments in azure AD aan profilenaam in Sales Force. Zorg ervoor dat de gebruikers niet meerdere app-roltoewijzingen in azure AD hebben omdat de kenmerk toewijzing alleen ondersteuning biedt voor het inrichten van één rol. 
 * Voor Sales Force moeten e-mail updates hand matig worden goedgekeurd voordat ze worden gewijzigd. Als gevolg hiervan ziet u mogelijk meerdere vermeldingen in de inrichtings Logboeken om het e-mail bericht van de gebruiker bij te werken (totdat de wijziging in het e-mail bericht is goedgekeurd).
 
@@ -131,4 +131,4 @@ Zie [Rapportage over automatische inrichting van gebruikersaccounts](../app-prov
 
 * [Gebruikersaccountinrichting voor zakelijke apps beheren](tutorial-list.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
-* [Eenmalige aanmelding configureren](https://docs.microsoft.com/azure/active-directory/active-directory-saas-salesforce-tutorial)
+* [Eenmalige aanmelding configureren](./salesforce-tutorial.md)

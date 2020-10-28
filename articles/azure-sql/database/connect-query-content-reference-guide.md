@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 4d0be745ef076ececbc5719a221f49b69d46c2ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cc345eda8a8d51fb61cbbbd5cf0bf84633ccf0b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443918"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676086"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Verbinding maken met Azure SQL Database en Azure SQL Managed Instance en query's uitvoeren voor artikelen
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -29,7 +29,7 @@ Het volgende document bevat koppelingen naar voorbeelden van Azure die laten zie
 | Snelstartgids | Beschrijving |
 |---|---|
 |[SQL Server Management Studio](connect-query-ssms.md)|In deze quickstart wordt uitgelegd hoe u SSMS gebruikt om verbinding te maken met een database en vervolgens Transact-SQL-instructies gebruikt om gegevens in de database te zoeken, in te voegen, bij te werken en te verwijderen.|
-|[Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)|In deze quickstart wordt uitgelegd hoe u Azure Data Studio gebruikt om verbinding te maken met een database, waarna u met behulp van Transact-SQL-instructies (T-SQL) de TutorialDB maakt die wordt gebruikt in de zelfstudies voor Azure Data Studio.|
+|[Azure Data Studio](/sql/azure-data-studio/quickstart-sql-database?toc=%252fazure%252fsql-database%252ftoc.json)|In deze quickstart wordt uitgelegd hoe u Azure Data Studio gebruikt om verbinding te maken met een database, waarna u met behulp van Transact-SQL-instructies (T-SQL) de TutorialDB maakt die wordt gebruikt in de zelfstudies voor Azure Data Studio.|
 |[Azure-portal](connect-query-portal.md)|In deze quickstart ziet u hoe u de queryeditor gebruikt om verbinding te maken met een database (alleen Azure SQL Database) en vervolgens Transact-SQL-instructies gebruikt om gegevens in de database te zoeken, in te voegen, bij te werken en te verwijderen.|
 |[Visual Studio Code](connect-query-vscode.md)|In deze quickstart ziet u hoe u Visual Studio Code gebruikt om verbinding te maken met een database en vervolgens Transact-SQL-instructies gebruikt om gegevens in de database te zoeken, in te voegen, bij te werken en te verwijderen.|
 |[.NET met Visual Studio](connect-query-dotnet-visual-studio.md)|In deze quickstart wordt uitgelegd hoe u .NET Framework gebruikt om een C#-programma te maken met Visual Studio dat verbinding maakt met een database en hoe u Transact-SQL-instructies gebruikt om gegevens te doorzoeken.|
@@ -64,9 +64,9 @@ De volgende tabel bevat connectiviteitsbibliotheken of *stuurprogramma's* die cl
 
 | Taal | Platform | Aanvullende bronnen | Downloaden | Aan de slag |
 | :-- | :-- | :-- | :-- | :-- |
-| C# | Windows, Linux, macOS | [Microsoft ADO.NET voor SQL Server](https://docs.microsoft.com/sql/connect/ado-net/microsoft-ado-net-sql-server) | [Downloaden](https://www.microsoft.com/net/download/) | [Aan de slag](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
+| C# | Windows, Linux, macOS | [Microsoft ADO.NET voor SQL Server](/sql/connect/ado-net/microsoft-ado-net-sql-server) | [Downloaden](https://www.microsoft.com/net/download/) | [Aan de slag](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
 | Java | Windows, Linux, macOS | [Microsoft JDBC-stuurprogramma voor SQL Server](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server/) | [Downloaden](https://go.microsoft.com/fwlink/?linkid=852460) |  [Aan de slag](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
-| PHP | Windows, Linux, macOS| [PHP SQL-stuurprogramma voor SQL Server](https://docs.microsoft.com/sql/connect/php/microsoft-php-driver-for-sql-server) | [Downloaden](https://docs.microsoft.com/sql/connect/php/download-drivers-php-sql-server) | [Aan de slag](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/)
+| PHP | Windows, Linux, macOS| [PHP SQL-stuurprogramma voor SQL Server](/sql/connect/php/microsoft-php-driver-for-sql-server) | [Downloaden](/sql/connect/php/download-drivers-php-sql-server) | [Aan de slag](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/)
 | Node.js | Windows, Linux, macOS | [Node.js-stuurprogramma voor SQL Server](/sql/connect/node-js/node-js-driver-for-sql-server/) | [Installeren](/sql/connect/node-js/step-1-configure-development-environment-for-node-js-development/) |  [Aan de slag](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu)
 | Python | Windows, Linux, macOS | [Python SQL-stuurprogramma](/sql/connect/python/python-driver-for-sql-server/) | Installatieopties: <br/> \* [pymssql](/sql/connect/python/pymssql/step-1-configure-development-environment-for-pymssql-python-development/) <br/> \* [pyodbc](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development/) |  [Aan de slag](https://www.microsoft.com/sql-server/developer-get-started/python/ubuntu)
 | Ruby | Windows, Linux, macOS | [Ruby-stuurprogramma voor SQL Server](/sql/connect/ruby/ruby-driver-for-sql-server/) | [Installeren](/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development/) | [Aan de slag](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu)
@@ -76,7 +76,7 @@ De volgende tabel bevat voorbeelden van ORM-frameworks (Object-Relational Mappin
 
 | Taal | Platform | ORM('s) |
 | :-- | :-- | :-- |
-| C# | Windows, Linux, macOS | [Entity Framework](https://docs.microsoft.com/ef)<br>[Entity Framework Core](https://docs.microsoft.com/ef/core/index) |
+| C# | Windows, Linux, macOS | [Entity Framework](/ef)<br>[Entity Framework Core](/ef/core/index) |
 | Java | Windows, Linux, macOS |[Hibernate ORM](https://hibernate.org/orm)|
 | PHP | Windows, Linux, macOS | [Laravel (Eloquent)](https://laravel.com/docs/eloquent)<br>[Doctrine](https://www.doctrine-project.org/projects/orm.html) |
 | Node.js | Windows, Linux, macOS | [Sequelize ORM](https://sequelize.org/) |
@@ -101,6 +101,6 @@ De volgende tabel bevat voorbeelden van ORM-frameworks (Object-Relational Mappin
 
 <!-- Link references. -->
 
-[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net
+[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: /sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net
 
-[step-4-connect-resiliently-to-sql-with-php-p42h]: https://docs.microsoft.com/sql/connect/php/step-4-connect-resiliently-to-sql-with-php
+[step-4-connect-resiliently-to-sql-with-php-p42h]: /sql/connect/php/step-4-connect-resiliently-to-sql-with-php

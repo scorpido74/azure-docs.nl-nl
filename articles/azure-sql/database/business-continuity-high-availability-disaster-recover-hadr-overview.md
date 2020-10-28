@@ -13,12 +13,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: a69332f1534e32a85ce084289dd00533612cc282
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eedc3dc1422d4eb6dcce80766077e8056f8509cf
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327558"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678043"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Overzicht van bedrijfscontinuïteit met Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -48,7 +48,7 @@ SQL Database en SQL Managed instance bieden ook verschillende functies voor bedr
 
 - [Tijdelijke tabellen](../temporal-tables.md) maken het mogelijk rijversies te herstellen naar ieder gewenst tijdstip.
 - Met [ingebouwde automatische back-ups](automated-backups-overview.md) en [herstel](recovery-using-backups.md#point-in-time-restore) naar een tijdstip kunt u de volledige data base op een bepaald moment binnen de geconfigureerde Bewaar periode tot 35 dagen herstellen.
-- U kunt [een verwijderde data base herstellen](recovery-using-backups.md#deleted-database-restore) naar het punt waarop deze is verwijderd als de **server niet is verwijderd**.
+- U kunt [een verwijderde data base herstellen](recovery-using-backups.md#deleted-database-restore) naar het punt waarop deze is verwijderd als de **server niet is verwijderd** .
 - Met de [lange termijn retentie van back-ups](long-term-retention-overview.md) kunt u de back-ups tot wel tien jaar bewaren. Dit is een beperkte open bare Preview voor SQL Managed instance
 - Met [actieve geo-replicatie](active-geo-replication-overview.md) kunt u lees bare replica's maken en hand matig failover naar een replica in het geval van een storing in een Data Center of een toepassings upgrade.
 - Met de [groep automatische failover](auto-failover-group-overview.md#terminology-and-capabilities) kan de toepassing automatisch worden hersteld in het geval van een storing in het Data Center.
@@ -141,7 +141,7 @@ Na herstel via een van beide herstelmechanismen moet u de volgende aanvullende t
 
 - Clients en client toepassingen omleiden naar de nieuwe server en de data base herstellen.
 - Zorg ervoor dat de juiste IP-firewall regels op server niveau zijn ingesteld voor gebruikers om verbinding te maken met [firewalls op database niveau](firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) om de juiste regels in te scha kelen.
-- Zorg ervoor dat de juiste aanmeldingen en machtigingen op hoofd database niveau aanwezig zijn (of gebruik [Inge sloten gebruikers](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)).
+- Zorg ervoor dat de juiste aanmeldingen en machtigingen op hoofd database niveau aanwezig zijn (of gebruik [Inge sloten gebruikers](/sql/relational-databases/security/contained-database-users-making-your-database-portable)).
 - Configureer de controle, indien van toepassing.
 - Waarschuwingen configureren, indien van toepassing.
 

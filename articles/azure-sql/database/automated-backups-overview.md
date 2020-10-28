@@ -11,12 +11,12 @@ author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
 ms.date: 10/05/2020
-ms.openlocfilehash: be40cd4a0bef43d81c792fd10508014f5b886fba
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: dc6d083efd1d39d96f9df995fe5e7e4bcc95abff
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124183"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675303"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatische back-ups-Azure SQL Database & SQL Managed instance
 
@@ -30,7 +30,7 @@ Database back-ups zijn een essentieel onderdeel van een strategie voor bedrijfs 
 
 ### <a name="backup-frequency"></a>Back-upfrequentie
 
-Zowel SQL Database als SQL Managed instance gebruiken SQL Server technologie om elke week [volledige back-ups](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server) te maken, [differentiële back](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server) -ups elke 12-24 uur en [back-ups van transactie logboeken](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server) om de vijf tot tien minuten. De frequentie van back-ups van transactie Logboeken is gebaseerd op de berekenings grootte en de hoeveelheid database activiteit.
+Zowel SQL Database als SQL Managed instance gebruiken SQL Server technologie om elke week [volledige back-ups](/sql/relational-databases/backup-restore/full-database-backups-sql-server) te maken, [differentiële back](/sql/relational-databases/backup-restore/differential-backups-sql-server) -ups elke 12-24 uur en [back-ups van transactie logboeken](/sql/relational-databases/backup-restore/transaction-log-backups-sql-server) om de vijf tot tien minuten. De frequentie van back-ups van transactie Logboeken is gebaseerd op de berekenings grootte en de hoeveelheid database activiteit.
 
 Wanneer u een Data Base herstelt, bepaalt de service welke volledige, differentiële en transactie logboek back-ups moeten worden hersteld.
 
@@ -56,7 +56,7 @@ Voor een SQL Database kan de redundantie van de back-upopslag worden geconfigure
 
 U kunt deze back-ups gebruiken om:
 
-- **Herstel naar een bepaald tijdstip van een bestaande data base**  -  [Een bestaande data base herstellen naar een bepaald tijdstip in het verleden](recovery-using-backups.md#point-in-time-restore) binnen de retentie periode met behulp van Azure Portal, Azure PowerShell, Azure CLI of rest API. Voor SQL Database maakt deze bewerking een nieuwe Data Base op dezelfde server als de oorspronkelijke Data Base, maar gebruikt een andere naam om te voor komen dat de oorspronkelijke Data Base wordt overschreven. Nadat het herstellen is voltooid, kunt u de oorspronkelijke data base verwijderen. U kunt ook de naam [van](https://docs.microsoft.com/sql/relational-databases/databases/rename-a-database) de oorspronkelijke data base wijzigen en vervolgens de naam van de herstelde data base wijzigen in de oorspronkelijke data base. Op dezelfde manier maakt deze bewerking voor een SQL Managed instance een kopie van de Data Base op hetzelfde of een ander beheerd exemplaar in hetzelfde abonnement en dezelfde regio.
+- **Herstel naar een bepaald tijdstip van een bestaande data base**  -  [Een bestaande data base herstellen naar een bepaald tijdstip in het verleden](recovery-using-backups.md#point-in-time-restore) binnen de retentie periode met behulp van Azure Portal, Azure PowerShell, Azure CLI of rest API. Voor SQL Database maakt deze bewerking een nieuwe Data Base op dezelfde server als de oorspronkelijke Data Base, maar gebruikt een andere naam om te voor komen dat de oorspronkelijke Data Base wordt overschreven. Nadat het herstellen is voltooid, kunt u de oorspronkelijke data base verwijderen. U kunt ook de naam [van](/sql/relational-databases/databases/rename-a-database) de oorspronkelijke data base wijzigen en vervolgens de naam van de herstelde data base wijzigen in de oorspronkelijke data base. Op dezelfde manier maakt deze bewerking voor een SQL Managed instance een kopie van de Data Base op hetzelfde of een ander beheerd exemplaar in hetzelfde abonnement en dezelfde regio.
 - **Herstel naar een bepaald tijdstip van een verwijderde data base**  -  [Een verwijderde data base herstellen naar het tijdstip van de verwijdering](recovery-using-backups.md#deleted-database-restore) of naar een bepaald tijdstip binnen de Bewaar periode. De verwijderde data base kan alleen worden teruggezet op een server of een beheerd exemplaar waarop de oorspronkelijke Data Base is gemaakt. Bij het verwijderen van een Data Base neemt de service een definitieve back-up van transactie logboeken voordat deze wordt verwijderd, om verlies van gegevens te voor komen.
 - **Geo-herstel**  -  [Een Data Base herstellen naar een andere geografische regio](recovery-using-backups.md#geo-restore). Met geo-Restore kunt u een geografische nood situatie herstellen wanneer u geen toegang hebt tot uw data base of back-ups in de primaire regio. Er wordt in elke Azure-regio een nieuwe data base gemaakt op een bestaande server of een beheerd exemplaar.
    > [!IMPORTANT]
@@ -72,11 +72,11 @@ U kunt back-ups van de configuratie-en herstel bewerkingen proberen met de volge
 
 | Bewerking | Azure Portal | Azure PowerShell |
 |---|---|---|
-| **Retentie van back-ups wijzigen** | [SQL Database](automated-backups-overview.md?tabs=single-database#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [SQL Managed Instance](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [SQL Database](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[SQL Managed Instance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
+| **Retentie van back-ups wijzigen** | [SQL Database](automated-backups-overview.md?tabs=single-database#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [SQL Managed Instance](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [SQL Database](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[SQL Managed Instance](/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
 | **Lange termijn retentie van back-ups wijzigen** | [SQL Database](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Door SQL beheerd exemplaar-N.v.t.  | [SQL Database](long-term-backup-retention-configure.md)<br/>[SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md)  |
-| **Een Data Base vanaf een bepaald moment herstellen** | [SQL Database](recovery-using-backups.md#point-in-time-restore)<br>[SQL Managed Instance](../managed-instance/point-in-time-restore.md) | [SQL Database](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [SQL Managed Instance](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
-| **Een verwijderde database herstellen** | [SQL Database](recovery-using-backups.md)<br>[SQL Managed Instance](../managed-instance/point-in-time-restore.md#restore-a-deleted-database) | [SQL Database](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [SQL Managed Instance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
-| **Een Data Base herstellen vanuit Azure Blob-opslag** | SQL Database-N.v.t. <br/>Door SQL beheerd exemplaar-N.v.t.  | SQL Database-N.v.t. <br/>[SQL Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
+| **Een Data Base vanaf een bepaald moment herstellen** | [SQL Database](recovery-using-backups.md#point-in-time-restore)<br>[SQL Managed Instance](../managed-instance/point-in-time-restore.md) | [SQL Database](/powershell/module/az.sql/restore-azsqldatabase) <br/> [SQL Managed Instance](/powershell/module/az.sql/restore-azsqlinstancedatabase) |
+| **Een verwijderde database herstellen** | [SQL Database](recovery-using-backups.md)<br>[SQL Managed Instance](../managed-instance/point-in-time-restore.md#restore-a-deleted-database) | [SQL Database](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [SQL Managed Instance](/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
+| **Een Data Base herstellen vanuit Azure Blob-opslag** | SQL Database-N.v.t. <br/>Door SQL beheerd exemplaar-N.v.t.  | SQL Database-N.v.t. <br/>[SQL Managed Instance](../managed-instance/restore-sample-database-quickstart.md) |
 
 ## <a name="backup-scheduling"></a>Back-upplanning
 
@@ -115,7 +115,7 @@ Voor het verbruik van back-upopslag tot de maximale gegevens grootte voor een Da
 
 - Verminder de [Bewaar periode voor back-ups](#change-the-pitr-backup-retention-period-by-using-the-azure-portal) naar de minimale vereisten voor uw behoeften.
 - Vermijd grote schrijf bewerkingen, zoals het opnieuw opbouwen van indexen, vaker dan u nodig hebt.
-- Overweeg het gebruik van [geclusterde column Store-indexen](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) en de volgende gerelateerde [Aanbevolen procedures](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance), en/of verklein het aantal niet-geclusterde indexen voor bewerkingen voor grote gegevens belasting.
+- Overweeg het gebruik van [geclusterde column Store-indexen](/sql/relational-databases/indexes/columnstore-indexes-overview) en de volgende gerelateerde [Aanbevolen procedures](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance), en/of verklein het aantal niet-geclusterde indexen voor bewerkingen voor grote gegevens belasting.
 - In de servicelaag Algemeen is de ingerichte gegevens opslag minder duur dan de prijs van de back-upopslag. Als u voortdurend veel overtollige back-upopslagkosten hebt, kunt u overwegen gegevens opslag te verg Roten om op te slaan in de back-upopslag.
 - Gebruik TempDB in plaats van permanente tabellen in uw toepassings logica om tijdelijke resultaten en/of tijdelijke gegevens op te slaan.
 - Gebruik waar mogelijk lokaal redundante back-upopslag (bijvoorbeeld ontwikkel-en test omgevingen)
@@ -190,9 +190,9 @@ Ga voor meer informatie over prijzen voor back-upopslag naar [Azure SQL database
 
 ### <a name="monitor-costs"></a>Kosten bewaken
 
-Als u meer wilt weten over de kosten voor back-upopslag, gaat u naar **Cost Management + facturering** in de Azure Portal, selecteert u **Cost Management**en selecteert u vervolgens **kosten analyse**. Selecteer het gewenste abonnement als **bereik**en filter vervolgens op de periode en service waarop u bent geïnteresseerd.
+Als u meer wilt weten over de kosten voor back-upopslag, gaat u naar **Cost Management + facturering** in de Azure Portal, selecteert u **Cost Management** en selecteert u vervolgens **kosten analyse** . Selecteer het gewenste abonnement als **bereik** en filter vervolgens op de periode en service waarop u bent geïnteresseerd.
 
-Voeg een filter toe voor **service naam**en selecteer vervolgens **SQL data base** in de vervolg keuzelijst. Gebruik het filter **meter subcategorie** om de facturerings teller voor uw service te kiezen. Selecteer voor één data base of een pool voor elastische Data Base **één/elastische pool PITR back-upopslag**. Voor een beheerd exemplaar selecteert u **mi PITR Backup Storage**. De subcategorieën voor **opslag** en **berekening** kunnen u ook interesseren, maar ze zijn niet gekoppeld aan back-upopslagkosten.
+Voeg een filter toe voor **service naam** en selecteer vervolgens **SQL data base** in de vervolg keuzelijst. Gebruik het filter **meter subcategorie** om de facturerings teller voor uw service te kiezen. Selecteer voor één data base of een pool voor elastische Data Base **één/elastische pool PITR back-upopslag** . Voor een beheerd exemplaar selecteert u **mi PITR Backup Storage** . De subcategorieën voor **opslag** en **berekening** kunnen u ook interesseren, maar ze zijn niet gekoppeld aan back-upopslagkosten.
 
 ![Kosten analyse back-upopslag](./media/automated-backups-overview/check-backup-storage-cost-sql-mi.png)
 
@@ -249,7 +249,7 @@ Wijzigingen in de retentie van PITR voor een SQL Managed instance worden uitgevo
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> De Power shell AzureRM-module wordt nog steeds ondersteund door SQL Database en SQL Managed instance, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor meer informatie. De argumenten voor de opdrachten in de module AZ zijn vrijwel identiek aan die in de AzureRm-modules.
+> De Power shell AzureRM-module wordt nog steeds ondersteund door SQL Database en SQL Managed instance, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](/powershell/module/AzureRM.Sql/)voor meer informatie. De argumenten voor de opdrachten in de module AZ zijn vrijwel identiek aan die in de AzureRm-modules.
 
 #### <a name="sql-database"></a>[SQL Database](#tab/single-database)
 
@@ -333,7 +333,7 @@ Status code: 200
 }
 ```
 
-Zie [retentie van back-ups rest API](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies)voor meer informatie.
+Zie [retentie van back-ups rest API](/rest/api/sql/backupshorttermretentionpolicies)voor meer informatie.
 
 #### <a name="sample-request"></a>Voorbeeld aanvraag
 
@@ -366,7 +366,7 @@ Status code: 200
 }
 ```
 
-Zie [retentie van back-ups rest API](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies)voor meer informatie.
+Zie [retentie van back-ups rest API](/rest/api/sql/backupshorttermretentionpolicies)voor meer informatie.
 
 ## <a name="configure-backup-storage-redundancy"></a>Opslag redundantie voor back-ups configureren
 
@@ -403,7 +403,7 @@ Als u de redundantie van back-upopslag wilt configureren bij het maken van een n
 New-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database03" -Edition "GeneralPurpose" -Vcore 2 -ComputeGeneration "Gen5" -BackupStorageRedundancy Geo
 ```
 
-Ga voor meer informatie naar [New-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase).
+Ga voor meer informatie naar [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase).
 
 Als u de redundantie van back-upopslag van een bestaande Data Base wilt bijwerken, kunt u de para meter-BackupStorageRedundancy gebruiken. Mogelijke waarden zijn geo, zone en local.
 Houd er rekening mee dat het tot 48 uur kan duren voordat de wijzigingen op de Data Base worden toegepast. Als u overschakelt van geografisch redundante back-upopslag naar lokale of zone redundante opslag, wordt geo Restore uitgeschakeld. 
@@ -413,7 +413,7 @@ Houd er rekening mee dat het tot 48 uur kan duren voordat de wijzigingen op de D
 Set-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -DatabaseName "Database01" -ServerName "Server01" -BackupStorageRedundancy Zone
 ```
 
-Ga voor meer informatie naar [set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)
+Ga voor meer informatie naar [set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase)
 
 > [!NOTE]
 > Als u de para meter-BackupStorageRedundancy wilt gebruiken bij het herstellen van de data base, het kopiëren van de data base of het maken van secundaire bewerkingen, gebruikt u Azure PowerShell versie AZ. SQL 
@@ -427,13 +427,13 @@ Voor het configureren van redundantie van back-upopslag tijdens het maken van ee
 New-AzSqlInstance -Name managedInstance2 -ResourceGroupName ResourceGroup01 -Location westcentralus -AdministratorCredential (Get-Credential) -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name" -LicenseType LicenseIncluded -StorageSizeInGB 1024 -VCore 16 -Edition "GeneralPurpose" -ComputeGeneration Gen4 -BackupStorageRedundancy Geo
 ```
 
-Ga voor meer informatie naar [New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance).
+Ga voor meer informatie naar [New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance).
 
 ---
 
 ## <a name="use-azure-policy-to-enforce-backup-storage-redundancy"></a>Azure Policy gebruiken om redundantie van back-upopslag af te dwingen
 
-Als u gegevens locatie vereisten hebt waarbij u al uw gegevens in één Azure-regio moet houden, wilt u mogelijk zone redundante of lokaal redundante back-ups voor uw SQL Database of beheerde instantie afdwingen met behulp van Azure Policy. Azure Policy is een service die u kunt gebruiken om beleid te maken, toe te wijzen en te beheren waarmee regels worden toegepast op Azure-resources. Azure Policy helpt u bij het houden van deze resources die voldoen aan uw bedrijfs normen en service overeenkomsten. Zie [Overzicht van Azure Policy](https://docs.microsoft.com/azure/governance/policy/overview) voor meer informatie. 
+Als u gegevens locatie vereisten hebt waarbij u al uw gegevens in één Azure-regio moet houden, wilt u mogelijk zone redundante of lokaal redundante back-ups voor uw SQL Database of beheerde instantie afdwingen met behulp van Azure Policy. Azure Policy is een service die u kunt gebruiken om beleid te maken, toe te wijzen en te beheren waarmee regels worden toegepast op Azure-resources. Azure Policy helpt u bij het houden van deze resources die voldoen aan uw bedrijfs normen en service overeenkomsten. Zie [Overzicht van Azure Policy](../../governance/policy/overview.md) voor meer informatie. 
 
 ### <a name="built-in-backup-storage-redundancy-policies"></a>Ingebouwde beleids regels voor back-upopslag 
 
@@ -443,14 +443,14 @@ Volgende nieuwe ingebouwde beleids regels worden toegevoegd, die kunnen worden t
 
 [Door SQL beheerde instanties moeten het gebruik van GRS-back-up-redundantie voorkomen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa9934fd7-29f2-4e6d-ab3d-607ea38e9079)
 
-[Hier](https://docs.microsoft.com/azure/azure-sql/database/policy-reference)vindt u een volledige lijst met ingebouwde beleids definities voor de SQL database en het beheerde exemplaar.
+[Hier](./policy-reference.md)vindt u een volledige lijst met ingebouwde beleids definities voor de SQL database en het beheerde exemplaar.
 
 Voor het afdwingen van vereisten voor gegevens locatie op een organisatie niveau, kunnen deze beleids regels worden toegewezen aan een abonnement. Nadat deze zijn toegewezen op abonnements niveau, kunnen gebruikers in het gegeven abonnement geen data base of een beheerd exemplaar maken met geografisch redundante back-upopslag via Azure Portal of Azure PowerShell. 
 
 > [!IMPORTANT]
-> Azure-beleid wordt niet afgedwongen bij het maken van een Data Base via T-SQL. Als u gegevens locatie wilt afdwingen bij het maken van een Data Base met behulp van T-SQL, [gebruikt u ' local ' of ' zone ' als invoer voor BACKUP_STORAGE_REDUNDANCY para meter in de instructie Create Data Base](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current#create-database-using-zone-redundancy-for-backups).
+> Azure-beleid wordt niet afgedwongen bij het maken van een Data Base via T-SQL. Als u gegevens locatie wilt afdwingen bij het maken van een Data Base met behulp van T-SQL, [gebruikt u ' local ' of ' zone ' als invoer voor BACKUP_STORAGE_REDUNDANCY para meter in de instructie Create Data Base](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current#create-database-using-zone-redundancy-for-backups).
 
-Meer informatie over het toewijzen van beleid met behulp van de [Azure Portal](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal) of [Azure PowerShell](https://docs.microsoft.com/azure/governance/policy/assign-policy-powershell)
+Meer informatie over het toewijzen van beleid met behulp van de [Azure Portal](../../governance/policy/assign-policy-portal.md) of [Azure PowerShell](../../governance/policy/assign-policy-powershell.md)
 
 
 ## <a name="next-steps"></a>Volgende stappen

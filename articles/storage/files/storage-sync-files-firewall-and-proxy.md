@@ -4,15 +4,15 @@ description: Meer informatie over Azure File Sync on-premises proxy-en Firewall 
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/24/2019
+ms.date: 09/30/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e4f011d9286a0685f1b091b930155db969407423
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69fdfea6768a895db1f85df4c2936936a2ffd3f5
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87903711"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675781"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Proxy- en firewallinstellingen van Azure File Sync
 Azure File Sync maakt verbinding met uw on-premises servers met Azure Files, waarbij functies voor multi-site synchronisatie en Cloud lagen worden ingeschakeld. Als zodanig moet een on-premises server zijn verbonden met internet. Een IT-beheerder moet het beste pad bepalen dat de server kan bereiken in azure Cloud Services.
@@ -109,26 +109,28 @@ Als &ast; . AFS.Azure.net of &ast; . One.Microsoft.com te breed is, kunt u de co
 
 Voor bedrijfs continuïteit en herstel na nood gevallen (BCDR) kunt u uw Azure-bestands shares opgeven in een globaal redundante (GRS)-opslag account. Als dat het geval is, zal de Azure-bestands shares een failover uitvoeren naar de gekoppelde regio in het geval van een blijvende regionale storing. Azure File Sync gebruikt dezelfde regionale koppeling als opslag. Als u dus GRS-opslag accounts gebruikt, moet u extra Url's inschakelen zodat uw server kan communiceren met de gekoppelde regio voor Azure File Sync. In de volgende tabel wordt deze ' gekoppelde regio ' aangeroepen. Daarnaast is er een Traffic Manager-profiel-URL die ook moet worden ingeschakeld. Zo zorgt u ervoor dat netwerk verkeer naadloos opnieuw kan worden gerouteerd naar de gekoppelde regio in het geval van een failover en wordt "detectie-URL" genoemd in de onderstaande tabel.
 
-| Cloud  | Regio | URL van het primaire eind punt | Gekoppelde regio | Detectie-URL |
+| Cloud  | Region | URL van het primaire eind punt | Gekoppelde regio | Detectie-URL |
 |--------|--------|----------------------|---------------|---------------|
-| Openbaar |Australië - oost | https: \/ /australiaeast01.AFS.Azure.net<br>https: \/ /kailani-Aue.One.Microsoft.com | Australia Southeast | https: \/ /TM-australiaeast01.AFS.Azure.net<br>https: \/ /TM-kailani-Aue.One.Microsoft.com |
-| Openbaar |Australia Southeast | https: \/ /australiasoutheast01.AFS.Azure.net<br>https: \/ /kailani-aus.One.Microsoft.com | Australië - oost | https: \/ /TM-australiasoutheast01.AFS.Azure.net<br>https: \/ /TM-kailani-aus.One.Microsoft.com |
-| Openbaar | Brazil South | https: \/ /brazilsouth01.AFS.Azure.net | South Central US | https: \/ /TM-brazilsouth01.AFS.Azure.net |
+| Openbaar |Australië - oost | https: \/ /australiaeast01.AFS.Azure.net<br>https: \/ /kailani-Aue.One.Microsoft.com | Australië - zuidoost | https: \/ /TM-australiaeast01.AFS.Azure.net<br>https: \/ /TM-kailani-Aue.One.Microsoft.com |
+| Openbaar |Australië - zuidoost | https: \/ /australiasoutheast01.AFS.Azure.net<br>https: \/ /kailani-aus.One.Microsoft.com | Australië - oost | https: \/ /TM-australiasoutheast01.AFS.Azure.net<br>https: \/ /TM-kailani-aus.One.Microsoft.com |
+| Openbaar | Brazilië - zuid | https: \/ /brazilsouth01.AFS.Azure.net | VS - zuid-centraal | https: \/ /TM-brazilsouth01.AFS.Azure.net |
 | Openbaar | Canada - midden | https: \/ /canadacentral01.AFS.Azure.net<br>https: \/ /kailani-CAC.One.Microsoft.com | Canada - oost | https: \/ /TM-canadacentral01.AFS.Azure.net<br>https: \/ /TM-kailani-CAC.One.Microsoft.com |
 | Openbaar | Canada - oost | https: \/ /canadaeast01.AFS.Azure.net<br>https: \/ /kailani-CAE.One.Microsoft.com | Canada - midden | https: \/ /TM-canadaeast01.AFS.Azure.net<br>https: \/ /TM-kailani.CAE.One.Microsoft.com |
-| Openbaar | India - centraal | https: \/ /centralindia01.AFS.Azure.net<br>https: \/ /kailani-cin.One.Microsoft.com | India - zuid | https: \/ /TM-centralindia01.AFS.Azure.net<br>https: \/ /TM-kailani-cin.One.Microsoft.com |
-| Openbaar | Central US | https: \/ /centralus01.AFS.Azure.net<br>https: \/ /kailani-cus.One.Microsoft.com | VS - oost 2 | https: \/ /TM-centralus01.AFS.Azure.net<br>https: \/ /TM-kailani-cus.One.Microsoft.com |
+| Openbaar | Central India | https: \/ /centralindia01.AFS.Azure.net<br>https: \/ /kailani-cin.One.Microsoft.com | India - zuid | https: \/ /TM-centralindia01.AFS.Azure.net<br>https: \/ /TM-kailani-cin.One.Microsoft.com |
+| Openbaar | VS - centraal | https: \/ /centralus01.AFS.Azure.net<br>https: \/ /kailani-cus.One.Microsoft.com | VS - oost 2 | https: \/ /TM-centralus01.AFS.Azure.net<br>https: \/ /TM-kailani-cus.One.Microsoft.com |
 | Openbaar | Azië - oost | https: \/ /eastasia01.AFS.Azure.net<br>https: \/ /kailani11.One.Microsoft.com | Azië - zuidoost | https: \/ /TM-eastasia01.AFS.Azure.net<br>https: \/ /TM-kailani11.One.Microsoft.com |
 | Openbaar | VS - oost | https: \/ /eastus01.AFS.Azure.net<br>https: \/ /kailani1.One.Microsoft.com | VS - west | https: \/ /TM-eastus01.AFS.Azure.net<br>https: \/ /TM-kailani1.One.Microsoft.com |
-| Openbaar | VS - oost 2 | https: \/ /eastus201.AFS.Azure.net<br>https: \/ /kailani-ESS.One.Microsoft.com | Central US | https: \/ /TM-eastus201.AFS.Azure.net<br>https: \/ /TM-kailani-ESS.One.Microsoft.com |
-| Openbaar | Japan East | https: \/ /japaneast01.AFS.Azure.net | Japan - west | https: \/ /TM-japaneast01.AFS.Azure.net |
-| Openbaar | Japan - west | https: \/ /japanwest01.AFS.Azure.net | Japan East | https: \/ /TM-japanwest01.AFS.Azure.net |
+| Openbaar | VS - oost 2 | https: \/ /eastus201.AFS.Azure.net<br>https: \/ /kailani-ESS.One.Microsoft.com | VS - centraal | https: \/ /TM-eastus201.AFS.Azure.net<br>https: \/ /TM-kailani-ESS.One.Microsoft.com |
+| Openbaar | Duitsland - noord | https: \/ /germanynorth01.AFS.Azure.net | Duitsland - west-centraal | https: \/ /TM-germanywestcentral01.AFS.Azure.net |
+| Openbaar | Duitsland - west-centraal | https: \/ /germanywestcentral01.AFS.Azure.net | Duitsland - noord | https: \/ /TM-germanynorth01.AFS.Azure.net |
+| Openbaar | Japan - oost | https: \/ /japaneast01.AFS.Azure.net | Japan - west | https: \/ /TM-japaneast01.AFS.Azure.net |
+| Openbaar | Japan - west | https: \/ /japanwest01.AFS.Azure.net | Japan - oost | https: \/ /TM-japanwest01.AFS.Azure.net |
 | Openbaar | Korea - centraal | https: \/ /koreacentral01.AFS.Azure.net/ | Korea - zuid | https: \/ /TM-koreacentral01.AFS.Azure.net/ |
 | Openbaar | Korea - zuid | https: \/ /koreasouth01.AFS.Azure.net/ | Korea - centraal | https: \/ /TM-koreasouth01.AFS.Azure.net/ |
-| Openbaar | VS - noord-centraal | https: \/ /northcentralus01.AFS.Azure.net | South Central US | https: \/ /TM-northcentralus01.AFS.Azure.net |
+| Openbaar | VS - noord-centraal | https: \/ /northcentralus01.AFS.Azure.net | VS - zuid-centraal | https: \/ /TM-northcentralus01.AFS.Azure.net |
 | Openbaar | Europa - noord | https: \/ /northeurope01.AFS.Azure.net<br>https: \/ /kailani7.One.Microsoft.com | Europa -west | https: \/ /TM-northeurope01.AFS.Azure.net<br>https: \/ /TM-kailani7.One.Microsoft.com |
-| Openbaar | South Central US | https: \/ /southcentralus01.AFS.Azure.net | VS - noord-centraal | https: \/ /TM-southcentralus01.AFS.Azure.net |
-| Openbaar | India - zuid | https: \/ /southindia01.AFS.Azure.net<br>https: \/ /kailani-Sin.One.Microsoft.com | India - centraal | https: \/ /TM-southindia01.AFS.Azure.net<br>https: \/ /TM-kailani-Sin.One.Microsoft.com |
+| Openbaar | VS - zuid-centraal | https: \/ /southcentralus01.AFS.Azure.net | VS - noord-centraal | https: \/ /TM-southcentralus01.AFS.Azure.net |
+| Openbaar | India - zuid | https: \/ /southindia01.AFS.Azure.net<br>https: \/ /kailani-Sin.One.Microsoft.com | Central India | https: \/ /TM-southindia01.AFS.Azure.net<br>https: \/ /TM-kailani-Sin.One.Microsoft.com |
 | Openbaar | Azië - zuidoost | https: \/ /southeastasia01.AFS.Azure.net<br>https: \/ /kailani10.One.Microsoft.com | Azië - oost | https: \/ /TM-southeastasia01.AFS.Azure.net<br>https: \/ /TM-kailani10.One.Microsoft.com |
 | Openbaar | Verenigd Koninkrijk Zuid | https: \/ /uksouth01.AFS.Azure.net<br>https: \/ /kailani-UKs.One.Microsoft.com | Verenigd Koninkrijk West | https: \/ /TM-uksouth01.AFS.Azure.net<br>https: \/ /TM-kailani-UKs.One.Microsoft.com |
 | Openbaar | Verenigd Koninkrijk West | https: \/ /ukwest01.AFS.Azure.net<br>https: \/ /kailani-UKW.One.Microsoft.com | Verenigd Koninkrijk Zuid | https: \/ /TM-ukwest01.AFS.Azure.net<br>https: \/ /TM-kailani-UKW.One.Microsoft.com |
@@ -281,5 +283,5 @@ Het instellen van domein beperking van firewall regels kan een maat eenheid zijn
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Planning voor een Azure Files Sync-implementatie](storage-sync-files-planning.md)
-- [Azure Files SYNC implementeren](storage-sync-files-deployment-guide.md)
+- [Azure File Sync implementeren](storage-sync-files-deployment-guide.md)
 - [Azure File Sync bewaken](storage-sync-files-monitoring.md)

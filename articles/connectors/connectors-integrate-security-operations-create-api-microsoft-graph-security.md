@@ -9,12 +9,12 @@ ms.reviewer: v-ching, estfan, logicappspm
 ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: a5842c5f3130b39f75b5339274b84feb2e0f283f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0f121caddc6b629920479a34bef7b284dea117a4
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547092"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677509"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>Verbeter de beveiliging tegen bedreigingen door beveiligings bewerkingen te integreren met Microsoft Graph Security-& Azure Logic Apps
 
@@ -30,13 +30,13 @@ Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de [Microsoft Gr
 
 De werk stroom van uw logische app kan acties gebruiken die reacties ontvangen van de Microsoft Graph beveiligings connector en die uitvoer beschikbaar maken voor andere acties in uw werk stroom. U kunt ook andere acties in uw werk stroom gebruiken om de uitvoer van de Microsoft Graph Security connector-acties uit te voeren. Als u bijvoorbeeld waarschuwingen met hoge urgentie wilt ontvangen via de beveiligings connector van Microsoft Graph, kunt u deze waarschuwingen in een e-mail bericht verzenden met behulp van de Outlook-Connector. 
 
-Zie [Microsoft Graph Security API overview](https://aka.ms/graphsecuritydocs)(Engelstalig) voor meer informatie over Microsoft Graph beveiliging. Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?](../logic-apps/logic-apps-overview.md). Als u op zoek bent naar Microsoft Flow of PowerApps, raadpleegt u [Wat is flow?](https://flow.microsoft.com/) of [Wat is PowerApps?](https://powerapps.microsoft.com/)
+Zie [Microsoft Graph Security API overview](/graph/security-concept-overview)(Engelstalig) voor meer informatie over Microsoft Graph beveiliging. Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?](../logic-apps/logic-apps-overview.md). Als u op zoek bent naar Microsoft Flow of PowerApps, raadpleegt u [Wat is flow?](https://flow.microsoft.com/) of [Wat is PowerApps?](https://powerapps.microsoft.com/)
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/). 
 
-* Als u de Microsoft Graph Security-connector wilt gebruiken, moet u de Azure Active Directory (AD) *expliciet tenantbeheerderstoestemming hebben gegeven* , als onderdeel van de [Microsoft Graph Security-verificatievereisten](https://aka.ms/graphsecurityauth). Deze toestemming vereist de toepassings-ID en naam van de Microsoft Graph Security connector, die u ook in de [Azure Portal](https://portal.azure.com)kunt vinden:
+* Als u de Microsoft Graph Security-connector wilt gebruiken, moet u de Azure Active Directory (AD) *expliciet tenantbeheerderstoestemming hebben gegeven* , als onderdeel van de [Microsoft Graph Security-verificatievereisten](/graph/security-authorization). Deze toestemming vereist de toepassings-ID en naam van de Microsoft Graph Security connector, die u ook in de [Azure Portal](https://portal.azure.com)kunt vinden:
 
   | Eigenschap | Waarde |
   |----------|-------|
@@ -159,9 +159,8 @@ Voor meer informatie over de query's die u met deze connector kunt gebruiken, ra
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Raadpleeg de [referentie pagina](https://aka.ms/graphsecurityconnectorreference)van de connector voor technische informatie over triggers, acties en limieten die worden beschreven in de beschrijving van de OpenAPI (voorheen Swagger) van de connector.
+Raadpleeg de [referentie pagina](/connectors/microsoftgraphsecurity/)van de connector voor technische informatie over triggers, acties en limieten die worden beschreven in de beschrijving van de OpenAPI (voorheen Swagger) van de connector.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)
-

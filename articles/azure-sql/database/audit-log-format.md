@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 06/03/2020
-ms.openlocfilehash: 49e885862a49bb3bbea718566ee5389e6b08e860
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4da14c1fbdaf71018e62b0f97e288a66edef5c8
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444597"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677283"
 ---
 # <a name="sql-database-audit-log-format"></a>Indeling van SQL Database audit logboek
 
@@ -89,8 +89,8 @@ Controle gebeurtenissen worden geschreven naar Log Analytics werk ruimte die tij
 | target_server_principal_name | target_server_principal_name_s | Aanmeldingen bij doel van actie. NULL indien niet van toepassing | sysname | tekenreeks |
 | target_server_principal_sid | target_server_principal_sid_s | SID van de doel aanmelding. NULL indien niet van toepassing | varbinary | tekenreeks |
 | transaction_id | transaction_id_d | Alleen SQL Server (vanaf 2016)-0 voor Azure SQL Database | bigint | int |
-| user_defined_event_id | user_defined_event_id_d | Door de gebruiker gedefinieerde gebeurtenis-ID door gegeven als argument voor sp_audit_write. NULL voor systeem gebeurtenissen (standaard) en niet-nul voor door de gebruiker gedefinieerde gebeurtenis. Zie [sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) voor meer informatie. | smallint | int |
-| user_defined_information | user_defined_information_s | Door de gebruiker gedefinieerde gegevens die als argument aan sp_audit_write worden door gegeven. NULL voor systeem gebeurtenissen (standaard) en niet-nul voor door de gebruiker gedefinieerde gebeurtenis. Zie [sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) voor meer informatie. | nvarchar (4000) | tekenreeks |
+| user_defined_event_id | user_defined_event_id_d | Door de gebruiker gedefinieerde gebeurtenis-ID door gegeven als argument voor sp_audit_write. NULL voor systeem gebeurtenissen (standaard) en niet-nul voor door de gebruiker gedefinieerde gebeurtenis. Zie [sp_audit_write (Transact-SQL)](/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) voor meer informatie. | smallint | int |
+| user_defined_information | user_defined_information_s | Door de gebruiker gedefinieerde gegevens die als argument aan sp_audit_write worden door gegeven. NULL voor systeem gebeurtenissen (standaard) en niet-nul voor door de gebruiker gedefinieerde gebeurtenis. Zie [sp_audit_write (Transact-SQL)](/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) voor meer informatie. | nvarchar (4000) | tekenreeks |
 
 ## <a name="next-steps"></a>Volgende stappen
 

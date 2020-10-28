@@ -1,0 +1,213 @@
+---
+title: Resources implementeren in resource groepen
+description: Hierin wordt beschreven hoe u resources in een Azure Resource Manager sjabloon implementeert. U ziet hoe u meer dan één resource groep kunt bereiken.
+ms.topic: conceptual
+ms.date: 10/26/2020
+ms.openlocfilehash: fd211641d7fcc02a1db154053597497583b21ae5
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92681542"
+---
+# <a name="resource-group-deployments-with-arm-templates"></a>Implementaties van resource groepen met ARM-sjablonen
+
+In dit artikel wordt beschreven hoe u uw implementatie kunt beperken tot een resource groep. U gebruikt een Azure Resource Manager sjabloon (ARM-sjabloon) voor de implementatie. In dit artikel ziet u ook hoe u het bereik uitbreidt buiten de resource groep in de implementatie bewerking.
+
+## <a name="supported-resources"></a>Ondersteunde resources
+
+De meeste resources kunnen worden geïmplementeerd in een resource groep. Zie [arm-sjabloon referentie](/azure/templates)voor een lijst met beschik bare resources.
+
+## <a name="schema"></a>Schema
+
+Gebruik voor sjablonen het volgende schema:
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    ...
+}
+```
+
+Gebruik voor parameter bestanden:
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    ...
+}
+```
+
+## <a name="deployment-commands"></a>Implementatie opdrachten
+
+Als u wilt implementeren in een resource groep, gebruikt u de implementatie opdrachten voor de resource groep.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Gebruik [AZ Deployment Group Create](/cli/azure/deployment/group#az_deployment_group_create)voor Azure cli. In het volgende voor beeld wordt een sjabloon geïmplementeerd voor het maken van een resource groep:
+
+```azurecli-interactive
+az deployment group create \
+  --name demoRGDeployment \
+  --resource-group ExampleGroup \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json" \
+  --parameters storageAccountType=Standard_GRS
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Gebruik voor de Power shell-implementatie opdracht [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment). In het volgende voor beeld wordt een sjabloon geïmplementeerd voor het maken van een resource groep:
+
+```azurepowershell-interactive
+New-AzResourceGroupDeployment `
+  -Name demoRGDeployment `
+  -ResourceGroupName ExampleGroup `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json `
+  -storageAccountType Standard_GRS `
+```
+
+---
+
+Zie voor meer gedetailleerde informatie over implementatie opdrachten en opties voor het implementeren van ARM-sjablonen:
+
+* [Resources implementeren met ARM-sjablonen en Azure Portal](deploy-portal.md)
+* [Resources implementeren met ARM-sjablonen en Azure CLI](deploy-cli.md)
+* [Resources implementeren met ARM-sjablonen en Azure PowerShell](deploy-powershell.md)
+* [Resources implementeren met ARM-sjablonen en Azure Resource Manager REST API](deploy-rest.md)
+* [Een implementatie knop gebruiken voor het implementeren van sjablonen uit de GitHub-opslag plaats](deploy-to-azure-button.md)
+* [ARM-sjablonen implementeren vanuit Cloud Shell](deploy-cloud-shell.md)
+
+## <a name="deployment-scopes"></a>Implementatie bereiken
+
+Wanneer u naar een resource groep implementeert, kunt u resources implementeren voor het volgende:
+
+* de doel resource groep van de bewerking
+* andere resource groepen in hetzelfde abonnement of andere abonnementen
+* [uitbreidings bronnen](scope-extension-resources.md) kunnen worden toegepast op resources
+
+De gebruiker die de sjabloon implementeert, moet toegang hebben tot het opgegeven bereik.
+
+In deze sectie wordt beschreven hoe u verschillende bereiken kunt opgeven. U kunt deze verschillende bereiken combi neren in één sjabloon.
+
+### <a name="scope-to-target-resource-group"></a>Bereik naar doel resource groep
+
+Als u resources wilt implementeren voor de doel resource, voegt u deze resources toe aan de sectie resources van de sjabloon.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-rg.json" highlight="5":::
+
+### <a name="scope-to-resource-group-in-same-subscription"></a>Bereik tot resource groep in hetzelfde abonnement
+
+Als u resources wilt implementeren in een andere resource groep in hetzelfde abonnement, voegt u een geneste implementatie toe en neemt u de `resourceGroup` eigenschap op. Als u de abonnements-ID of de resource groep niet opgeeft, worden het abonnement en de resource groep van de bovenliggende sjabloon gebruikt. Alle resource groepen moeten bestaan voordat u de implementatie uitvoert.
+
+In het volgende voor beeld streeft de geneste implementatie naar een resource groep met de naam `demoResourceGroup` .
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/same-sub-to-resource-group.json" highlight="9,13":::
+
+### <a name="scope-to-resource-group-in-different-subscription"></a>Het bereik van de resource groep in een ander abonnement
+
+Als u resources wilt implementeren voor een resource groep in een ander abonnement, voegt u een geneste implementatie toe en neemt u de `subscriptionId` Eigenschappen en op `resourceGroup` . In het volgende voor beeld streeft de geneste implementatie naar een resource groep met de naam `demoResourceGroup` .
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/different-sub-to-resource-group.json" highlight="9,10,14":::
+
+## <a name="cross-resource-groups"></a>Meerdere resource groepen
+
+U kunt in één ARM-sjabloon implementeren voor meer dan één resource groep. Gebruik een [geneste of gekoppelde sjabloon](linked-templates.md)om een resource groep te richten die afwijkt van die van de bovenliggende sjabloon. Geef binnen het type implementatie resource waarden op voor de abonnements-ID en de resource groep waarop u wilt dat de geneste sjabloon wordt geïmplementeerd. De resource groepen kunnen bestaan in verschillende abonnementen.
+
+> [!NOTE]
+> U kunt implementeren naar **800-resource groepen** in één implementatie. Deze beperking betekent meestal dat u kunt implementeren in één resource groep die is opgegeven voor de bovenliggende sjabloon en Maxi maal 799 resource groepen in geneste of gekoppelde implementaties. Als uw bovenliggende sjabloon alleen geneste of gekoppelde sjablonen bevat en zelf geen resources implementeert, kunt u Maxi maal 800 resource groepen toevoegen in geneste of gekoppelde implementaties.
+
+In het volgende voor beeld worden twee opslag accounts geïmplementeerd. Het eerste opslag account wordt geïmplementeerd in de resource groep die is opgegeven in de implementatie bewerking. Het tweede opslag account wordt geïmplementeerd naar de resource groep die is opgegeven in de `secondResourceGroup` `secondSubscriptionID` para meters en:
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/crosssubscription.json":::
+
+Als u `resourceGroup` de naam instelt van een resource groep die niet bestaat, mislukt de implementatie.
+
+Als u de voor gaande sjabloon wilt testen en de resultaten wilt weer geven, gebruikt u Power shell of Azure CLI.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Als u twee opslag accounts wilt implementeren voor twee resource groepen in **hetzelfde abonnement** , gebruikt u:
+
+```azurepowershell-interactive
+$firstRG = "primarygroup"
+$secondRG = "secondarygroup"
+
+New-AzResourceGroup -Name $firstRG -Location southcentralus
+New-AzResourceGroup -Name $secondRG -Location eastus
+
+New-AzResourceGroupDeployment `
+  -ResourceGroupName $firstRG `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json `
+  -storagePrefix storage `
+  -secondResourceGroup $secondRG `
+  -secondStorageLocation eastus
+```
+
+Als u twee opslag accounts wilt implementeren op **twee abonnementen** , gebruikt u:
+
+```azurepowershell-interactive
+$firstRG = "primarygroup"
+$secondRG = "secondarygroup"
+
+$firstSub = "<first-subscription-id>"
+$secondSub = "<second-subscription-id>"
+
+Select-AzSubscription -Subscription $secondSub
+New-AzResourceGroup -Name $secondRG -Location eastus
+
+Select-AzSubscription -Subscription $firstSub
+New-AzResourceGroup -Name $firstRG -Location southcentralus
+
+New-AzResourceGroupDeployment `
+  -ResourceGroupName $firstRG `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json `
+  -storagePrefix storage `
+  -secondResourceGroup $secondRG `
+  -secondStorageLocation eastus `
+  -secondSubscriptionID $secondSub
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Als u twee opslag accounts wilt implementeren voor twee resource groepen in **hetzelfde abonnement** , gebruikt u:
+
+```azurecli-interactive
+firstRG="primarygroup"
+secondRG="secondarygroup"
+
+az group create --name $firstRG --location southcentralus
+az group create --name $secondRG --location eastus
+az deployment group create \
+  --name ExampleDeployment \
+  --resource-group $firstRG \
+  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json \
+  --parameters storagePrefix=tfstorage secondResourceGroup=$secondRG secondStorageLocation=eastus
+```
+
+Als u twee opslag accounts wilt implementeren op **twee abonnementen** , gebruikt u:
+
+```azurecli-interactive
+firstRG="primarygroup"
+secondRG="secondarygroup"
+
+firstSub="<first-subscription-id>"
+secondSub="<second-subscription-id>"
+
+az account set --subscription $secondSub
+az group create --name $secondRG --location eastus
+
+az account set --subscription $firstSub
+az group create --name $firstRG --location southcentralus
+
+az deployment group create \
+  --name ExampleDeployment \
+  --resource-group $firstRG \
+  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json \
+  --parameters storagePrefix=storage secondResourceGroup=$secondRG secondStorageLocation=eastus secondSubscriptionID=$secondSub
+```
+
+---
+
+## <a name="next-steps"></a>Volgende stappen
+
+* Zie [deployASCwithWorkspaceSettings.js](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json)voor een voor beeld van de implementatie van werk ruimte-instellingen voor Azure Security Center.

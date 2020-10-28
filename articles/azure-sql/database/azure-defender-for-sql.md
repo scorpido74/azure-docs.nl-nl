@@ -12,18 +12,18 @@ manager: rkarlin
 author: memildin
 ms.reviewer: vanto
 ms.date: 09/21/2020
-ms.openlocfilehash: d567876e0210c025fa34c5b82791eafe4cdff561
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d147303df43c4f86843df518c71316e6a97b6671
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372150"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678088"
 ---
 # <a name="azure-defender-for-sql"></a>Azure Defender voor SQL
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 
-Azure Defender voor SQL is een uniform pakket voor geavanceerde SQL-beveiligings mogelijkheden. Azure Defender is beschikbaar voor Azure SQL Database, Azure SQL Managed instance en Azure Synapse Analytics. Het bevat functionaliteit voor het detecteren en classificeren van gevoelige gegevens, het zichtbaar maken en inperken van potentiële beveiligingsproblemen in uw database, en het detecteren van afwijkende activiteiten die kunnen duiden op een bedreiging van de database. Het is tevens een centraal punt voor het inschakelen en beheren van deze mogelijkheden.
+Azure Defender for SQL is een geïntegreerd pakket voor geavanceerde SQL-beveiligingsmogelijkheden. Azure Defender is beschikbaar voor Azure SQL Database, Azure SQL Managed instance en Azure Synapse Analytics. Het bevat functionaliteit voor het detecteren en classificeren van gevoelige gegevens, het zichtbaar maken en inperken van potentiële beveiligingsproblemen in uw database, en het detecteren van afwijkende activiteiten die kunnen duiden op een bedreiging van de database. Het is tevens een centraal punt voor het inschakelen en beheren van deze mogelijkheden.
 
 ## <a name="overview"></a>Overzicht
 
@@ -31,7 +31,7 @@ Azure Defender biedt een aantal geavanceerde SQL-beveiligings mogelijkheden, waa
 - De [evaluatie van beveiligings problemen](sql-vulnerability-assessment.md) is een eenvoudig te configureren service die u kunt gebruiken om potentiële database problemen op te lossen, op te sporen en te verhelpen. Het biedt inzicht in uw beveiligings status en bevat stappen die kunnen worden uitgevoerd om beveiligings problemen op te lossen en uw data base-Fortifications te verbeteren.
 - [Advanced Threat Protection](threat-detection-overview.md) detecteert vreemde activiteiten die duiden op ongebruikelijke en mogelijk schadelijke pogingen om toegang te verkrijgen tot of op aanvallen op uw databases. Het controleert uw data base voortdurend op verdachte activiteiten en biedt onmiddellijke beveiligings waarschuwingen voor mogelijke beveiligings problemen, Azure SQL-injectie aanvallen en afwijkende database toegangs patronen. Meldingen van Advanced Threat Protection bevatten detailinformatie over verdachte activiteiten en aanbevelingen voor het onderzoeken en tegenhouden ervan.
 
-Schakel Azure Defender voor SQL één keer in om al deze opgenomen functies in te scha kelen. Met één klik kunt u Azure Defender inschakelen voor alle data bases op uw [Server](logical-servers.md) in azure of in uw door SQL beheerde exemplaar. Het inschakelen of beheren van Azure Defender-instellingen vereist deel uitmaken van de rol [SQL Security Manager](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) of een van de data base-of Server beheerders rollen.
+Schakel Azure Defender voor SQL in om al deze opgenomen functies in te schakelen. Met één klik kunt u Azure Defender inschakelen voor alle data bases op uw [Server](logical-servers.md) in azure of in uw door SQL beheerde exemplaar. Het inschakelen of beheren van Azure Defender-instellingen vereist deel uitmaken van de rol [SQL Security Manager](../../role-based-access-control/built-in-roles.md#sql-security-manager) of een van de data base-of Server beheerders rollen.
 
 Zie de [pagina met prijzen voor Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/)voor meer informatie over de prijzen van Azure Defender voor SQL.
 
@@ -62,10 +62,10 @@ Als u de Azure Defender-instellingen voor een bepaalde Data Base wilt onderdrukk
 
 Zodra het selectie vakje is ingeschakeld, kunt u de relevante instellingen voor deze data base configureren.
 
-Azure Defender voor SQL-instellingen voor uw server of het beheerde exemplaar kan ook worden bereikt via het deel venster Azure Defender data base. Klik op **instellingen** in het hoofd venster van Azure Defender en klik vervolgens op **Azure Defender voor SQL Server-instellingen weer geven**.
+Azure Defender voor SQL-instellingen voor uw server of het beheerde exemplaar kan ook worden bereikt via het deel venster Azure Defender data base. Klik op **instellingen** in het hoofd venster van Azure Defender en klik vervolgens op **Azure Defender voor SQL Server-instellingen weer geven** .
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over de [evaluatie van beveiligings problemen](sql-vulnerability-assessment.md)
 - Meer informatie over [geavanceerde bedreigingen beveiliging](threat-detection-configure.md)
-- Meer informatie over [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+- Meer informatie over [Azure Security Center](../../security-center/security-center-introduction.md)

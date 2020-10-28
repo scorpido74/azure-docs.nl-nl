@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 3ad4724280039f2820611a621186d8174e9af986
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: ecbbb9580a9a79ae52320ea53a4831ac8ef57f8b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091403"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678185"
 ---
 # <a name="authentication-with-azure-maps"></a>Verificatie met Azure Maps
 
@@ -104,7 +104,7 @@ Voor sommige Azure Maps Services zijn mogelijk verhoogde bevoegdheden vereist vo
 | Creator            | Inzender voor Azure Maps gegevens |
 | Ruimtelijk            | Inzender voor Azure Maps gegevens |
 
-Zie [Azure RBAC configureren voor Azure Maps](https://aka.ms/amrbac)voor meer informatie over het weer geven van uw Azure RBAC-instellingen.
+Zie [Azure RBAC configureren voor Azure Maps](./how-to-manage-authentication.md)voor meer informatie over het weer geven van uw Azure RBAC-instellingen.
 
 #### <a name="custom-role-definitions"></a>Definities voor aangepaste rollen
 

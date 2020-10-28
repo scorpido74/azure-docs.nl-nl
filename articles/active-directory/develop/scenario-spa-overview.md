@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: dc0aee2e6c1b06850ffd0385626955a9798e7aeb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: aaddev, identityplatformtop40, devx-track-js
+ms.openlocfilehash: 658e7f206f892c9dc241aab228aa933884f95b94
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91257313"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675637"
 ---
-# <a name="scenario-single-page-application"></a>Scenario: toepassing met één pagina
+# <a name="scenario-single-page-application"></a>Scenario: Toepassing met één pagina
 
 Meer informatie over wat u nodig hebt om een toepassing met één pagina (SPA) te maken.
 
@@ -30,19 +30,19 @@ Als u dat nog niet hebt gedaan, maakt u uw eerste app door de Java script-SPA Sn
 
 ## <a name="overview"></a>Overzicht
 
-Veel moderne webtoepassingen zijn gebouwd als toepassingen met één pagina aan de client zijde. Ontwikkel aars schrijven ze met Java script of een beveiligd-wachtwoord verificatie-Framework zoals hoek, vue en reageren. Deze toepassingen worden uitgevoerd in een webbrowser en hebben verschillende verificatie kenmerken dan traditionele webtoepassingen aan de server zijde.
+Veel moderne webtoepassingen zijn gebouwd als toepassingen met één pagina aan de client zijde. Ontwikkelaars schrijven deze met JavaScript of een SPA-framework, zoals Angular, Vue en React. Deze toepassingen worden uitgevoerd in een webbrowser en hebben andere verificatiekenmerken dan traditionele webtoepassingen aan de serverzijde.
 
 Het micro soft Identity-platform biedt **twee** opties voor het inschakelen van toepassingen met één pagina voor het aanmelden van gebruikers en het ophalen van tokens voor toegang tot back-end-services of Web-api's:
 
-- [OAuth 2,0-autorisatie code stroom (met PKCE)](./v2-oauth2-auth-code-flow.md). Met de autorisatie code stroom kan de toepassing een autorisatie code voor **id-** tokens uitwisselen die de geverifieerde gebruikers-en **toegangs** tokens vertegenwoordigen die nodig zijn om beveiligde api's aan te roepen. Daarnaast worden **vernieuwings** tokens geretourneerd die lange termijn toegang bieden tot bronnen namens gebruikers zonder dat hiervoor interactie met die gebruikers nodig is. Dit is de **Aanbevolen** methode.
+- [OAuth 2.0-autorisatiecodestroom (met PKCE)](./v2-oauth2-auth-code-flow.md). De autorisatiecodestroom stelt de toepassing in staat een autorisatiecode uit te wisselen voor **id-tokens** , om de geverifieerde gebruiker te vertegenwoordigen, en de benodigde **toegangstokens** om beveiligde API’s aan te roepen. Daarnaast worden met deze stroom **vernieuwingstokens** geretourneerd, die namens gebruikers langetermijntoegang bieden tot resources, zonder dat interactie met deze gebruikers is vereist. Dit is de **aanbevolen** methode.
 
-![Toepassingen met één pagina-auth](./media/scenarios/spa-app-auth.svg)
+![Toepassingen met één pagina - verificatie](./media/scenarios/spa-app-auth.svg)
 
-- [OAuth 2,0-impliciete stroom](./v2-oauth2-implicit-grant-flow.md). Met de impliciete toekennings stroom kan de toepassing **id-** en **toegangs** tokens ophalen. In tegens telling tot de autorisatie code stroom retourneert impliciete toekennings stroom geen **vernieuwings token**.
+- [Impliciete OAuth 2.0-stroom](./v2-oauth2-implicit-grant-flow.md). De impliciete toekenningsstroom stelt de toepassing in staat om **id-tokens** en **toegangstokens** op te halen. In tegenstelling tot de autorisatiecodestroom retourneert de impliciete toekenningsstroom geen **vernieuwingstoken** .
 
-![Toepassingen met één pagina-impliciet](./media/scenarios/spa-app.svg)
+![Toepassingen met één pagina - impliciet](./media/scenarios/spa-app.svg)
 
-In deze verificatie stroom zijn geen toepassings scenario's opgenomen die gebruikmaken van platformoverschrijdende java script frameworks zoals elektroden en reageren op systeem eigen. Ze vereisen verdere mogelijkheden voor interactie met de systeem eigen platformen.
+In deze verificatiestroom zijn geen toepassingsscenario's opgenomen waarin wordt gebruikgemaakt van platformoverschrijdende JavaScript-frameworks, zoals Electron en React-Native. Ze vereisen verdere mogelijkheden voor interactie met de systeem eigen platformen.
 
 ## <a name="specifics"></a>Opsporingsgegevens
 

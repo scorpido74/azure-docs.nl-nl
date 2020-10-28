@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/04/2019
-ms.openlocfilehash: 48a2c00f7ff487def13e9872c4f43a3ca36809ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5202145af6f60f34bdce57aa94f4fec92a8b227f
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444640"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677266"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database--sql-managed-instance"></a>Azure Resource Manager-sjablonen voor Azure SQL Database en een met Azure SQL beheerd exemplaar
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -39,7 +39,7 @@ De volgende tabel bevat koppelingen naar Azure Resource Manager-sjablonen voor A
 | [Azure-web-app met SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database) | Hiermee kunt u een gratis Azure-web-app en een database in Azure SQL Database maken op het serviceniveau Basic.|
 | [Azure-web-app en Redis Cache met SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-redis-cache-sql-database) | Met deze sjabloon maakt u een web-app, Redis-cache en database in dezelfde resourcegroep, en maakt u twee verbindingsreeksen in de web-app voor de database en Redis-cache.|
 | [Gegevens importeren uit blob-opslag met ADF V2](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-v2-blob-to-sql-copy) | Met deze Azure Resource Manager-sjabloon maakt u een exemplaar van Azure Data Factory V2 waarmee gegevens uit Azure Blob Storage naar SQL Database worden gekopieerd.|
-| [HDInsight-cluster met een database](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | Met deze sjabloon kunt u een HDInsight-cluster, een logische SQL-server, een database en twee tabellen maken. Deze sjabloon wordt gebruikt in het [artikel over het gebruik van Sqoop met Hadoop in HDInsight](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-use-sqoop). |
+| [HDInsight-cluster met een database](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | Met deze sjabloon kunt u een HDInsight-cluster, een logische SQL-server, een database en twee tabellen maken. Deze sjabloon wordt gebruikt in het [artikel over het gebruik van Sqoop met Hadoop in HDInsight](../../hdinsight/hadoop/hdinsight-use-sqoop.md). |
 | [Logische Azure-app die een in SQL opgeslagen procedure volgens een schema uitvoert](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sql-proc) | Met deze sjabloon kunt u een logische app maken die een in SQL opgeslagen procedure volgens een schema uitvoert. Eventuele argumenten voor de procedure kunnen in de hoofdsectie van de sjabloon worden geplaatst.|
 
 ## <a name="azure-sql-managed-instance"></a>[Azure SQL Managed Instance](#tab/managed-instance)
@@ -54,4 +54,3 @@ De volgende tabel bevat koppelingen naar Azure Resource Manager-sjablonen voor e
 | [Met SQL beheerd exemplaar met virtuele machine](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-jumpbox) | Met deze implementatie maakt u een virtueel Azure-netwerk met twee subnetten: `ManagedInstance` en `Management`. Het met SQL beheerde exemplaar wordt geïmplementeerd in het subnet `ManagedInstance`. Een virtuele machine met de meest recente versie van SQL Server Management Studio (SSMS) wordt geïmplementeerd in het subnet `Management`. |
 
 ---
-

@@ -8,12 +8,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: bd5b20d8e713e07b52eb1d6cbc57f01b9e5c1a95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9189be5f2f513cd27fe8783d6a1825aac016522c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987484"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677742"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>TmaxSoft open frame installeren op Azure
 
@@ -118,15 +118,15 @@ U kunt de OpenFrame-omgeving instellen met behulp van verschillende implementati
 
 1. Ga naar de Azure Portal op <https://portal.azure.com> en meld u aan bij uw account.
 
-2. Klik op **Virtuele machines**.
+2. Klik op **Virtuele machines** .
 
     ![Resource lijst in Azure Portal](media/vm-01.png)
 
-3. Klik op **Add**.
+3. Klik op **Add** .
 
     ![Optie toevoegen in Azure Portal](media/vm-02.png)
 
-4. Klik rechts van **besturings systemen**op **meer**.
+4. Klik rechts van **besturings systemen** op **meer** .
 
      ![Meer optie in Azure Portal](media/vm-03.png)
 
@@ -134,12 +134,12 @@ U kunt de OpenFrame-omgeving instellen met behulp van verschillende implementati
 
      ![Opties voor het besturings systeem in Azure Portal](media/vm-04.png)
 
-6. Voer in de **basis** instellingen de **naam**, **de gebruikers naam**, het **verificatie type**, het **abonnement** (betalen per gebruik is de AWS-stijl van betaling) en de **resource groep** (gebruik een bestaande of een TmaxSoft-groep) in.
+6. Voer in de **basis** instellingen de **naam** , **de gebruikers naam** , het **verificatie type** , het **abonnement** (betalen per gebruik is de AWS-stijl van betaling) en de **resource groep** (gebruik een bestaande of een TmaxSoft-groep) in.
 
-7. Wanneer dit is voltooid (inclusief het open bare/persoonlijke sleutel paar voor **verificatie type**), klikt u op **verzenden**.
+7. Wanneer dit is voltooid (inclusief het open bare/persoonlijke sleutel paar voor **verificatie type** ), klikt u op **verzenden** .
 
 > [!NOTE]
-> Als u een open bare SSH-sleutel gebruikt voor **verificatie type**, raadpleegt u de stappen in de volgende sectie om het paar open bare/persoonlijke sleutels te genereren en hervat u vervolgens de stappen hier.
+> Als u een open bare SSH-sleutel gebruikt voor **verificatie type** , raadpleegt u de stappen in de volgende sectie om het paar open bare/persoonlijke sleutels te genereren en hervat u vervolgens de stappen hier.
 
 ### <a name="generate-a-publicprivate-key-pair"></a>Een openbaar/persoonlijk sleutel paar genereren
 
@@ -162,11 +162,11 @@ Bij het verlenen van nieuwe personen toegang tot de virtuele machine:
 
     ![PuTTy-interface](media/puttygen-01.png)
 
-3.  Klik op **Genereren**.
+3.  Klik op **Genereren** .
 
-    ![Het dialoog venster PuTTy-sleutel generator](media/puttygen-02.png)
+    ![Scherm opname van het dialoog venster PuTTy-sleutel generator en de knop genereren gemarkeerd.](media/puttygen-02.png)
 
-4.  Sla na het genereren zowel de open bare sleutel als de persoonlijke sleutel op. Plak de inhoud van de open bare sleutel in de sectie **open bare SSH-sleutel** van het deel venster ** \> basis principes voor virtuele machines maken** (zie stap 6 en 7 in de vorige sectie).
+4.  Sla na het genereren zowel de open bare sleutel als de persoonlijke sleutel op. Plak de inhoud van de open bare sleutel in de sectie **open bare SSH-sleutel** van het deel venster **\> basis principes voor virtuele machines maken** (zie stap 6 en 7 in de vorige sectie).
 
     ![Het dialoog venster PuTTy-sleutel generator](media/puttygen-03.png)
 
@@ -183,23 +183,23 @@ Bij het verlenen van nieuwe personen toegang tot de virtuele machine:
 
 4. Verzend uw selecties. Azure begint met het implementeren van de virtuele machine. Dit proces duurt doorgaans enkele minuten.
 
-5. Wanneer de virtuele machine wordt geïmplementeerd, wordt het dash board weer gegeven met alle instellingen die zijn geselecteerd tijdens de configuratie. Noteer het **open bare IP-adres**.
+5. Wanneer de virtuele machine wordt geïmplementeerd, wordt het dash board weer gegeven met alle instellingen die zijn geselecteerd tijdens de configuratie. Noteer het **open bare IP-adres** .
 
     ![tmax op Azure-dash board](media/create-vm-03.png)
 
 6. Open PuTTY.
 
-7. Typ voor **hostnaam**de gebruikers naam en het open bare IP-adres dat u hebt gekopieerd. Bijvoorbeeld publicip voor **gebruikers \@ naam**.
+7. Typ voor **hostnaam** de gebruikers naam en het open bare IP-adres dat u hebt gekopieerd. Bijvoorbeeld publicip voor **gebruikers \@ naam** .
 
-    ![Dialoog venster PuTTy-configuratie](media/putty-01.png)
+    ![Scherm opname van het dialoog venster PuTTy-configuratie en markeert het veld hostnaam (of IP-adres).](media/putty-01.png)
 
-8. Klik in het vak **categorie** op **verbinding \> SSH \> auth**. Geef het pad op naar uw **persoonlijke sleutel** bestand.
+8. Klik in het vak **categorie** op **verbinding \> SSH \> auth** . Geef het pad op naar uw **persoonlijke sleutel** bestand.
 
     ![Dialoog venster PuTTy-configuratie](media/putty-02.png)
 
 9. Klik op **openen** om het venster putty te starten. Als dat lukt, bent u verbonden met uw nieuwe CentOS-VM die wordt uitgevoerd op Azure.
 
-10. Als u zich wilt aanmelden als hoofd gebruiker, typt u **sudo bash**.
+10. Als u zich wilt aanmelden als hoofd gebruiker, typt u **sudo bash** .
 
     ![Aanmelding hoofd gebruiker in opdracht venster](media/putty-03.png)
 
@@ -1359,7 +1359,7 @@ Voordat u JEUS installeert, installeert u het Apache Ant-pakket, dat de biblioth
      [oframe7@ofdemo setup]$ . .bash_profile
      ```
 
-11. *Optioneel*. Een alias maken voor het eenvoudig afsluiten en opstarten van JEUS-onderdelen:
+11. *Optioneel* . Een alias maken voor het eenvoudig afsluiten en opstarten van JEUS-onderdelen:
 
      ```     
      # JEUS alias
@@ -1389,11 +1389,11 @@ Voordat u JEUS installeert, installeert u het Apache Ant-pakket, dat de biblioth
      > [!NOTE]
      > Als u problemen ondervindt met poort beveiliging, opent u poort 9736 of schakelt u de firewall ( `systemctl stop firewall` ) uit.
 
-14. Als u de hostnaam voor Server1 wilt wijzigen, klikt u op **vergren delen & bewerken**en klikt u vervolgens op **Server1**. Wijzig de hostnaam in het server venster als volgt:
+14. Als u de hostnaam voor Server1 wilt wijzigen, klikt u op **vergren delen & bewerken** en klikt u vervolgens op **Server1** . Wijzig de hostnaam in het server venster als volgt:
 
-    1.  Wijzig de **nodenaam** in **ofdemo**.
+    1.  Wijzig de **nodenaam** in **ofdemo** .
     2.  Klik op **OK** aan de rechter kant van het venster.
-    3.  Klik op **wijzigingen Toep assen** linksonder in het venster en typ bij Beschrijving de *hostnaam wijzigen*.
+    3.  Klik op **wijzigingen Toep assen** linksonder in het venster en typ bij Beschrijving de *hostnaam wijzigen* .
 
     ![JEUS-webbeheer scherm](media/jeus-02.png)
 

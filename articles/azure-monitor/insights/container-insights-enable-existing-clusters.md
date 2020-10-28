@@ -3,13 +3,13 @@ title: Een AKS-cluster (Azure Kubernetes service) bewaken dat is geïmplementeer
 description: Meer informatie over het inschakelen van bewaking van een Azure Kubernetes service-cluster (AKS) met Azure Monitor voor containers die al zijn geïmplementeerd in uw abonnement.
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.custom: devx-track-terraform
-ms.openlocfilehash: b5f1a4880bba099b00a4f3af87649f3eaa9cb884
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.custom: devx-track-terraform, devx-track-azurecli
+ms.openlocfilehash: 9f3b9240bc10f4eaa4c9967d8c7bbb956eeab4e1
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165397"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735135"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Bewaking van het cluster van Azure Kubernetes service (AKS) inschakelen dat al is geïmplementeerd
 
@@ -28,7 +28,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 ## <a name="enable-using-azure-cli"></a>Inschakelen met behulp van Azure CLI
 
-Met de volgende stap wordt het controleren van uw AKS-cluster ingeschakeld met behulp van Azure CLI. In dit voor beeld bent u niet verplicht een bestaande werk ruimte vooraf te maken of op te geven. Met deze opdracht wordt het proces voor u vereenvoudigd door een standaard werk ruimte te maken in de standaard resource groep van het AKS-cluster abonnement als er nog geen bestaat in de regio.  De standaardwerk ruimte die wordt gemaakt, lijkt op de indeling van *DefaultWorkspace- \<GUID> - \<Region> *.
+Met de volgende stap wordt het controleren van uw AKS-cluster ingeschakeld met behulp van Azure CLI. In dit voor beeld bent u niet verplicht een bestaande werk ruimte vooraf te maken of op te geven. Met deze opdracht wordt het proces voor u vereenvoudigd door een standaard werk ruimte te maken in de standaard resource groep van het AKS-cluster abonnement als er nog geen bestaat in de regio.  De standaardwerk ruimte die wordt gemaakt, lijkt op de indeling van *DefaultWorkspace- \<GUID> - \<Region>* .
 
 ```azurecli
 az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG
@@ -58,7 +58,7 @@ Als u liever met een bestaande werk ruimte integreert, voert u de volgende stapp
     Microsoft Azure                       AzureCloud   68627f8c-91fO-4905-z48q-b032a81f8vy0  Enabled  True
     ```
 
-    Kopieer de waarde voor **SubscriptionId**.
+    Kopieer de waarde voor **SubscriptionId** .
 
 2. Schakel over naar het abonnement dat als host fungeert voor de Log Analytics-werk ruimte met behulp van de volgende opdracht:
 
@@ -72,7 +72,7 @@ Als u liever met een bestaande werk ruimte integreert, voert u de volgende stapp
     az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
     ```
 
-    Zoek in de uitvoer de naam van de werk ruimte en kopieer de volledige Resource-ID van die Log Analytics werk ruimte onder de veld **-id**.
+    Zoek in de uitvoer de naam van de werk ruimte en kopieer de volledige Resource-ID van die Log Analytics werk ruimte onder de veld **-id** .
 
 4. Voer de volgende opdracht uit om de invoeg toepassing bewaking in te scha kelen, waarbij u de waarde voor de `--workspace-resource-id` para meter vervangt. De teken reeks waarde moet binnen de dubbele aanhalings tekens staan:
 
@@ -105,13 +105,13 @@ Als u liever met een bestaande werk ruimte integreert, voert u de volgende stapp
 
 Ga als volgt te werk om de bewaking van uw AKS-cluster in de Azure Portal van Azure Monitor in te scha kelen:
 
-1. Selecteer in de Azure Portal **monitor**.
+1. Selecteer in de Azure Portal **monitor** .
 
 2. Selecteer **containers** in de lijst.
 
-3. Selecteer op de pagina **monitor-containers** de optie niet- **bewaakte clusters**.
+3. Selecteer op de pagina **monitor-containers** de optie niet- **bewaakte clusters** .
 
-4. Zoek in de lijst met niet-bewaakte clusters de container in de lijst en klik op **inschakelen**.
+4. Zoek in de lijst met niet-bewaakte clusters de container in de lijst en klik op **inschakelen** .
 
 5. Als u een bestaande Log Analytics-werk ruimte hebt in hetzelfde abonnement als het cluster, selecteert u in de vervolg keuzelijst de pagina **onboarding to Azure monitor voor containers** .
     De lijst preselecteert de standaard werkruimte en de locatie waar de AKS-container in het abonnement is geïmplementeerd.
@@ -127,15 +127,15 @@ Nadat u bewaking hebt ingeschakeld, kan het ongeveer 15 minuten duren voordat u 
 
 Ga als volgt te werk om bewaking rechtstreeks vanuit een van uw AKS-clusters in de Azure Portal in te scha kelen:
 
-1. Selecteer in de Azure-portal de optie **Alle services**.
+1. Selecteer in de Azure-portal de optie **Alle services** .
 
-2. Begin met het typen van **containers**in de lijst met resources.  De lijst filters op basis van uw invoer.
+2. Begin met het typen van **containers** in de lijst met resources.  De lijst filters op basis van uw invoer.
 
-3. Selecteer **Kubernetes Services**.
+3. Selecteer **Kubernetes Services** .
     
 4. Selecteer in de lijst met Kubernetes Services een service.
 
-5. Selecteer op de pagina overzicht van Kubernetes-service de optie **bewaking-Insights**.
+5. Selecteer op de pagina overzicht van Kubernetes-service de optie **bewaking-Insights** .
 
 6. Als u een bestaande Log Analytics-werk ruimte hebt in hetzelfde abonnement als het cluster, selecteert u in de vervolg keuzelijst de pagina **onboarding to Azure monitor voor containers** .
     De lijst preselecteert de standaard werkruimte en de locatie waar de AKS-container in het abonnement is geïmplementeerd.

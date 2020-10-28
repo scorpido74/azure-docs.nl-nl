@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cynthn
-ms.openlocfilehash: 11444fc599b46ceff90eda562d2fd557bcaf53b2
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 9d9a9c878c96c7f5a38466c494e4b90287c984da
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961337"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92734940"
 ---
 # <a name="manage-the-availability-of-linux-virtual-machines"></a>De beschikbaarheid van virtuele Linux-machines beheren
 
@@ -34,7 +34,7 @@ Er zijn drie scenario's die ertoe kunnen leiden dat een virtuele machine in Azur
 
 Om de gevolgen van downtime vanwege een of meer van deze gebeurtenissen te beperken, raden we aan voor uw virtuele machines de volgende aanbevolen procedures voor hoge beschikbaarheid te volgen:
 
-* Availabiilty-zones gebruiken om te beschermen tegen datacenter fouten
+* Beschikbaarheidszones gebruiken om problemen met data centers te beveiligen
 * Configureer meerdere virtuele machines in een beschikbaarheidsset voor redundantie
 * Beheerde schijven voor VM's in een beschikbaarheidsset gebruiken
 * Geplande gebeurtenissen gebruiken om proactief te reageren op gebeurtenissen die invloed hebben op VM's
@@ -46,7 +46,7 @@ Om de gevolgen van downtime vanwege een of meer van deze gebeurtenissen te beper
 
 [Beschikbaarheidszones](../availability-zones/az-overview.md) vergroten de controle die u nodig hebt om de beschikbaarheid van de toepassingen en gegevens op uw VM's te behouden. Beschikbaarheidszones zijn unieke, fysieke locaties binnen een Azure-regio. Elke zone bestaat uit een of meer datacenters die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerken. Tolerantie wordt gegarandeerd door aanwezigheid van minimaal drie afzonderlijke zones in alle actieve regio's. De fysieke scheiding tussen beschikbaarheidszones binnen een Azure-regio beschermt toepassingen en gegevens tegen storingen op zoneniveau. Zone-redundante services repliceren uw toepassingen en gegevens in meerdere beschikbaarheidszones om bescherming te bieden tegen Single Points of Failure.
 
-Een beschikbaarheidszone in een Azure-regio is een combinatie van een **foutdomein** en een **updatedomein**. Als u bijvoorbeeld drie of meer virtuele machines in drie zones in een Azure-regio maakt, worden uw virtuele machines effectief over drie foutdomeinen en drie updatedomeinen verdeeld. Het Azure-platform herkent deze verdeling over updatedomeinen om ervoor te zorgen dat virtuele machines in verschillende zones niet op hetzelfde moment worden bijgewerkt.
+Een beschikbaarheidszone in een Azure-regio is een combinatie van een **foutdomein** en een **updatedomein** . Als u bijvoorbeeld drie of meer virtuele machines in drie zones in een Azure-regio maakt, worden uw virtuele machines effectief over drie foutdomeinen en drie updatedomeinen verdeeld. Het Azure-platform herkent deze verdeling over updatedomeinen om ervoor te zorgen dat virtuele machines in verschillende zones niet op hetzelfde moment worden bijgewerkt.
 
 Met beschikbaarheidszones biedt Azure de beste uptime SLA voor VM’s van de branche, van 99,99%. Door uw oplossingen te ontwikkelen voor het gebruik van gerepliceerde VM's in zones, kunt u uw toepassingen en gegevens beveiligen tegen verlies van een datacenter. Als er een zone wordt aangetast, zijn de gerepliceerde apps en gegevens direct beschikbaar in een andere zone.
 

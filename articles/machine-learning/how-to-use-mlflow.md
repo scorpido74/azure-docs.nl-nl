@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 09/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 3fb177afa804788632f22d24bbd376d64cbe1c9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a81e60e3bb7a1b0f34a29ccd9cebf3d82279027e
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250688"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676647"
 ---
 # <a name="track-experiment-runs-and-deploy-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>Spoor experiment en implementeer ML-modellen met MLflow en Azure Machine Learning (preview-versie)
 
@@ -353,13 +353,16 @@ Als u niet van plan bent om de vastgelegde metrische gegevens en artefacten in u
 
 1. Selecteer de resourcegroep die u eerder hebt gemaakt uit de lijst.
 
-1. Selecteer **Resourcegroep verwijderen**.
+1. Selecteer **Resourcegroep verwijderen** .
 
-1. Voer de naam van de resourcegroup in. Selecteer vervolgens **Verwijderen**.
+1. Voer de naam van de resourcegroup in. Selecteer vervolgens **Verwijderen** .
 
 ## <a name="example-notebooks"></a>Voorbeeldnotebooks
 
 De [MLflow met Azure ml-notebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/track-and-monitor-experiments/using-mlflow) demonstreren en uitvouwen op concepten die in dit artikel worden gepresenteerd.
+
+> [!NOTE]
+> Een door de Community aangedreven opslag plaats van voor beelden met behulp van mlflow vindt u op https://github.com/Azure/azureml-examples .
 
 ## <a name="next-steps"></a>Volgende stappen
 

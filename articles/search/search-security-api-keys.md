@@ -7,17 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/05/2020
-ms.openlocfilehash: 918ba128eca8ebf8b452c0f1126e4b7e611542d8
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.date: 10/22/2020
+ms.openlocfilehash: 5935bc3f59585b19fc3b45bdfd567bb1f9404234
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514466"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675577"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>API-sleutels voor een Azure Cognitive Search-service maken en beheren
 
-Alle aanvragen voor een zoek service hebben een alleen-lezen API-sleutel nodig die specifiek voor uw service is gegenereerd. De API-sleutel is het enige mechanisme voor het verifiëren van toegang tot het eind punt van de zoek service en moet op elke aanvraag worden opgenomen. In [rest oplossingen](search-get-started-postman.md)wordt de API-sleutel doorgaans opgegeven in een aanvraag header. In [.net-oplossingen](search-howto-dotnet-sdk.md#core-scenarios)wordt een sleutel vaak opgegeven als een configuratie-instelling en vervolgens door gegeven als [referenties](/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) (beheer sleutel) of [SearchCredentials](/dotnet/api/microsoft.azure.search.searchserviceclient.searchcredentials) (query sleutel) op [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient).
+Alle aanvragen voor een zoek service moeten een alleen-lezen-aanvraag hebben `api-key` die specifiek voor uw service is gegenereerd. Het `api-key` is het enige mechanisme voor het verifiëren van toegang tot het eind punt van de zoek service en moet worden opgenomen in elke aanvraag. 
+
++ In [rest oplossingen](search-get-started-postman.md)wordt de API-sleutel doorgaans opgegeven in een aanvraag header
+
++ In [.net-oplossingen](search-howto-dotnet-sdk.md)wordt een sleutel vaak opgegeven als een configuratie-instelling en vervolgens door gegeven als een [AzureKeyCredential](/dotnet/api/azure.azurekeycredential)
 
 Sleutels worden tijdens het inrichten van de service gemaakt met uw zoek service. U kunt sleutel waarden weer geven en verkrijgen in de [Azure Portal](https://portal.azure.com).
 
@@ -43,7 +47,7 @@ Er worden twee soorten sleutels gebruikt om toegang te krijgen tot uw zoek servi
 
 U kunt toegangs sleutels verkrijgen in de portal of via de [beheer rest API](/rest/api/searchmanagement/). Zie [beheer-en query-API-sleutels beheren](search-security-api-keys.md)voor meer informatie.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Vermeld de [Zoek Services](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)  voor uw abonnement.
 3. Selecteer de service en klik op de pagina overzicht op **instellingen**  > **sleutels** om de beheer-en query sleutels weer te geven.
 
@@ -55,10 +59,10 @@ Query sleutels worden gebruikt voor alleen-lezen toegang tot documenten in een i
 
 Het beperken van toegang en bewerkingen in client-apps is essentieel voor het beveiligen van de zoek assets op uw service. Gebruik altijd een query sleutel in plaats van een beheerders sleutel voor query's die afkomstig zijn uit een client-app.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Vermeld de [Zoek Services](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)  voor uw abonnement.
-3. Selecteer de service en klik op de pagina overzicht op **instellingen**  > **sleutels**.
-4. Klik op **query sleutels beheren**.
+3. Selecteer de service en klik op de pagina overzicht op **instellingen**  > **sleutels** .
+4. Klik op **query sleutels beheren** .
 5. Gebruik de query sleutel die al is gegenereerd voor uw service of maak 50 nieuwe query sleutels. De standaard query sleutel heeft geen naam, maar aanvullende query sleutels kunnen worden benoemd voor beheer baarheid.
 
    :::image type="content" source="media/search-security-overview/create-query-key.png" alt-text="Portal-pagina, instellingen ophalen, sectie sleutels" border="false":::

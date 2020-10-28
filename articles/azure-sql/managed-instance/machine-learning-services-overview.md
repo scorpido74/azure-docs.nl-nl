@@ -12,12 +12,12 @@ ms.author: garye
 ms.reviewer: sstein, davidph
 manager: cgronlun
 ms.date: 06/03/2020
-ms.openlocfilehash: d7a3c86f3d9cf083a8746f753b8c5287c774a93e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fb584d999d48c7d29420db26daebf592790af2b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263264"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676825"
 ---
 # <a name="machine-learning-services-in-azure-sql-managed-instance-preview"></a>Machine Learning Services in Azure SQL Managed instance (preview-versie)
 
@@ -54,21 +54,29 @@ Deze beperkte open bare preview is onderhevig aan de voor [waarden van Azure pre
 
 Als u geïnteresseerd bent in het toevoegen van het preview-programma en deze voor waarden accepteert, kunt u de inschrijving aanvragen door een ondersteunings ticket voor Azure te maken op [**https://azure.microsoft.com/support/create-ticket/**](https://azure.microsoft.com/support/create-ticket/) . 
 
+1. Klik op de pagina **een ondersteunings ticket maken** op **een incident maken** .
+
+1. Klik op de pagina **Help en ondersteuning** op **nieuwe ondersteunings aanvraag** om een nieuw ticket te maken.
+
 1. Selecteer de volgende opties:
    - Probleem type- **technisch**
    - Abonnement: *Selecteer uw abonnement*
-   - **Beheerd exemplaar** van Service-SQL database
+   - Door service- **SQL beheerd exemplaar**
+   - Resource: *Selecteer uw beheerde exemplaar*
    - Samen vatting: *Voer een korte beschrijving van uw aanvraag in*
    - Probleem type- **Machine Learning Services voor een SQL-beheerd exemplaar (preview-versie)**
    - Subtype van probleem: **ander probleem of ' How to '-vragen**
 
-1. Klik op **volgende: oplossingen**.
+1. Klik op **volgende: oplossingen** .
 
-1. Lees de informatie over de preview-versie en klik vervolgens op **Details**.
+1. Lees de informatie over de preview en klik vervolgens op **volgende: Details** .
 
-1. In **Beschrijving**voert u de specifieke kenmerken van uw aanvraag in, waaronder de naam van de logische server, de regio en de abonnements-id die u wilt inschrijven in de preview-versie. Voer indien nodig nog meer details in.
+1. Op deze pagina:
+   - Voor de vraag wilt **u zich aanmelden voor de preview-versie** . Selecteer **Ja** . 
+   - Voer bij **Beschrijving** de specifieke kenmerken van uw aanvraag in, met inbegrip van de naam van de logische server, de regio en de abonnements-id die u in de preview wilt registreren. Voer indien nodig nog meer details in.
+   - Selecteer uw voorkeurs methode voor contact. 
 
-1. Wanneer u klaar bent, klikt u op **volgende: bekijken en maken**en klikt u vervolgens op **maken**.
+1. Wanneer u klaar bent, klikt u op **volgende: bekijken en maken** en klikt u vervolgens op **maken** .
 
 Zodra u voor het programma staat ingeschreven, vindt onboarding plaats voor de openbare preview en wordt Machine Learning Services voor uw bestaande of nieuwe database ingeschakeld.
 

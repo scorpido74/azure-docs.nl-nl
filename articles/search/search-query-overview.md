@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/22/2020
-ms.openlocfilehash: bae4cb72201bbc1653db5bb549d67531bda71d50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/22/2020
+ms.openlocfilehash: 0c05db39e02a6bc2a7fa5d62b8b891626eb0d241
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537715"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675798"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Query typen en samen stelling in azure Cognitive Search
 
@@ -59,9 +59,9 @@ Als u deze Quick Start hebt uitgevoerd [om de hotels-demo-index te maken](search
 
 ## <a name="how-query-operations-are-enabled-by-the-index"></a>Hoe query bewerkingen worden ingeschakeld door de index
 
-Het ontwerp van de index en het query ontwerp zijn nauw verbonden met Azure Cognitive Search. Een essentieel feit dat u vooraf moet weten, is dat het *index schema*, met kenmerken voor elk veld, bepaalt welk soort query u kunt maken. 
+Het ontwerp van de index en het query ontwerp zijn nauw verbonden met Azure Cognitive Search. Een essentieel feit dat u vooraf moet weten, is dat het *index schema* , met kenmerken voor elk veld, bepaalt welk soort query u kunt maken. 
 
-Index kenmerken voor een veld stel de toegestane bewerkingen in: Hiermee stelt u in dat een veld in de index kan worden *doorzocht* en kan worden *opgehaald* , *gesorteerd*, *gefilterd*, enzovoort. In de voorbeeld query teken reeks `"$orderby": "Rating"` werkt alleen omdat het classificatie veld is gemarkeerd als *sorteerbaar* in het index schema. 
+Index kenmerken voor een veld stel de toegestane bewerkingen in: Hiermee stelt u in dat een veld in de index kan worden *doorzocht* en kan worden *opgehaald* , *gesorteerd* , *gefilterd* , enzovoort. In de voorbeeld query teken reeks `"$orderby": "Rating"` werkt alleen omdat het classificatie veld is gemarkeerd als *sorteerbaar* in het index schema. 
 
 ![Index definitie voor het voor beeld van een hotel](./media/search-query-overview/hotel-sample-index-definition.png "Index definitie voor het voor beeld van een hotel")
 
@@ -78,8 +78,8 @@ Vereiste elementen voor een query aanvraag zijn onder andere de volgende onderde
 
 + Verzameling service-eind punten en index documenten, uitgedrukt als een URL met vaste en door de gebruiker gedefinieerde onderdelen: **`https://<your-service-name>.search.windows.net/indexes/<your-index-name>/docs`**
 + **`api-version`** (Alleen REST) is vereist omdat meer dan één versie van de API te allen tijde beschikbaar is. 
-+ **`api-key`**, ofwel een query of beheerder-API-sleutel, verifieert de aanvraag bij uw service.
-+ **`queryType`**, eenvoudig of volledig, wat kan worden wegge laten als u de ingebouwde standaard eenvoudige syntaxis gebruikt.
++ **`api-key`** , ofwel een query of beheerder-API-sleutel, verifieert de aanvraag bij uw service.
++ **`queryType`** , eenvoudig of volledig, wat kan worden wegge laten als u de ingebouwde standaard eenvoudige syntaxis gebruikt.
 + **`search`** of **`filter`** biedt de overeenkomende criteria, die niet kunnen worden opgegeven als u een lege zoek opdracht wilt uitvoeren. Beide query typen worden besproken in termen van de eenvoudige parser, maar zelfs geavanceerde query's vereisen de zoek parameter voor het door geven van complexe query expressies.
 
 Alle andere zoek parameters zijn optioneel. Zie [Create Index (rest) (Engelstalig)](/rest/api/searchservice/create-index)voor een volledige lijst met kenmerken. Zie [Hoe zoeken in volledige tekst werkt in Azure Cognitive Search](search-lucene-query-architecture.md)voor meer informatie over hoe para meters worden gebruikt tijdens de verwerking.
@@ -92,7 +92,7 @@ De volgende tabel geeft een lijst van de Api's en hulp op basis van gereedschapp
 |-------------|-------------|
 | [Search Explorer (portal)](search-explorer.md) | Voorziet in een zoek balk en opties voor selecties van index en API-versie. Resultaten worden geretourneerd als JSON-documenten. Aanbevolen voor verkennen, testen en valideren. <br/>[Meer informatie.](search-get-started-portal.md#query-index) | 
 | [Postman of andere REST-hulp middelen](search-get-started-postman.md) | Webtest-hulpprogram ma's zijn een uitstekende keuze voor het formuleren van REST-aanroepen. De REST API ondersteunt elke mogelijke bewerking in azure Cognitive Search. In dit artikel vindt u informatie over het instellen van een HTTP-aanvraag header en hoofd tekst voor het verzenden van aanvragen naar Azure Cognitive Search.  |
-| [SearchIndexClient (.NET)](/dotnet/api/microsoft.azure.search.searchindexclient) | Client die kan worden gebruikt om een query uit te zoeken op een Azure Cognitive Search-index.  <br/>[Meer informatie.](search-howto-dotnet-sdk.md#core-scenarios)  |
+| [SearchClient (.NET)](/dotnet/api/azure.search.documents.searchclient) | Client die kan worden gebruikt om een query uit te zoeken op een Azure Cognitive Search-index.  <br/>[Meer informatie.](search-howto-dotnet-sdk.md)  |
 | [Documenten zoeken (REST API)](/rest/api/searchservice/search-documents) | GET-of POST-methoden voor een index met behulp van query parameters voor aanvullende invoer.  |
 
 ## <a name="choose-a-parser-simple--full"></a>Kies een parser: eenvoudig | waard
@@ -159,7 +159,7 @@ Meer informatie over het pagineren van zoek resultaten vindt u in het artikel de
 ### <a name="ordering-results"></a>Resultaten ordenen
 Wanneer er resultaten voor een zoek query worden ontvangen, kunt u aanvragen dat Azure Cognitive Search de resultaten bedient die zijn gesorteerd op waarden in een specifiek veld. Standaard worden de zoek resultaten door Azure Cognitive Search gesorteerd op basis van de positie van de zoek Score van elk document, die is afgeleid van [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf).
 
-Als u wilt dat Azure Cognitive Search uw resultaten retourneert die zijn besteld met een andere waarde dan de zoek Score, kunt u de **`orderby`** Zoek parameter gebruiken. U kunt de waarde van de para meter opgeven voor het **`orderby`** toevoegen van veld namen en aanroepen naar de [** `geo.distance()` functie**](query-odata-filter-orderby-syntax.md) voor georuimtelijke waarden. Elke expressie kan worden gevolgd door `asc` om aan te geven dat de resultaten in oplopende volg orde worden aangevraagd en **`desc`** om aan te geven dat de resultaten in aflopende volg orde worden aangevraagd. De standaard oplopende volgorde.
+Als u wilt dat Azure Cognitive Search uw resultaten retourneert die zijn besteld met een andere waarde dan de zoek Score, kunt u de **`orderby`** Zoek parameter gebruiken. U kunt de waarde van de para meter opgeven voor het **`orderby`** toevoegen van veld namen en aanroepen naar de [**`geo.distance()` functie**](query-odata-filter-orderby-syntax.md) voor georuimtelijke waarden. Elke expressie kan worden gevolgd door `asc` om aan te geven dat de resultaten in oplopende volg orde worden aangevraagd en **`desc`** om aan te geven dat de resultaten in aflopende volg orde worden aangevraagd. De standaard oplopende volgorde.
 
 
 ### <a name="hit-highlighting"></a>Markeren

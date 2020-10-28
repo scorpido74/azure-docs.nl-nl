@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 14360ab7668248f39c8ad0916eb964ffe11f7959
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 25eaca08202bd01ad4777fdb73eb75abff458c29
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331291"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677905"
 ---
 # <a name="vm-certification-troubleshooting"></a>Problemen oplossen met VM-certificering
 
@@ -37,6 +37,9 @@ U kunt dit probleem oplossen door de installatie kopie op te halen uit Azure Mar
 > [!Note]
 > Als u een Linux-basis installatie kopie gebruikt die niet afkomstig is van Azure Marketplace, kunt u de eerste partitie met 2048 KB verrekenen. Hierdoor kan de niet-opgemaakte ruimte worden gebruikt voor het toevoegen van nieuwe facturerings gegevens. Hierdoor kan Azure verdergaan met het publiceren van uw VM naar Azure Marketplace.  
 
+> [!Note]
+> Als u een Linux-basis installatie kopie gebruikt die niet is gemaakt op Marketplace, kunt u de eerste partitie met 2048 KB verrekenen. Op deze manier kan de niet-opgemaakte ruimte worden gebruikt voor het toevoegen van nieuwe facturerings gegevens en kan Azure door gaan met het publiceren van uw VM naar Marketplace.  
+
 ## <a name="vm-extension-failure"></a>VM-extensie fout
 
 Controleer of de installatie kopie VM-extensies ondersteunt.
@@ -44,18 +47,18 @@ Controleer of de installatie kopie VM-extensies ondersteunt.
 Ga als volgt te werk om VM-extensies in te scha kelen:
 
 1. Selecteer uw virtuele Linux-machine.
-1. Ga naar **instellingen voor diagnostische gegevens**.
-1. Schakel basis matrices in door het **opslag account**bij te werken.
-1. Selecteer **Opslaan**.
+1. Ga naar **instellingen voor diagnostische gegevens** .
+1. Schakel basis matrices in door het **opslag account** bij te werken.
+1. Selecteer **Opslaan** .
 
    ![Bewaking op gastniveau inschakelen](./media/create-vm/vm-certification-issues-solutions-1.png)
 
 Ga als volgt te werk om te controleren of de VM-extensies correct zijn geactiveerd:
 
-1. Selecteer op de VM het tabblad **VM-extensies** en controleer de status van de **Linux Diagnostics-extensie**.
+1. Selecteer op de VM het tabblad **VM-extensies** en controleer de status van de **Linux Diagnostics-extensie** .
 1. 
-    * Als de status is *ingericht*, wordt de test case door gegeven.  
-    * Als de status van de *inrichting mislukt*is, is het mogelijk dat de uitbrei dingen van de aanvraag zijn mislukt en dat u de gereduceerde vlag moet instellen.
+    * Als de status is *ingericht* , wordt de test case door gegeven.  
+    * Als de status van de *inrichting mislukt* is, is het mogelijk dat de uitbrei dingen van de aanvraag zijn mislukt en dat u de gereduceerde vlag moet instellen.
 
       ![Scherm opname die laat zien dat het inrichten is geslaagd](./media/create-vm/vm-certification-issues-solutions-2.png)
 
@@ -120,8 +123,8 @@ De volgende tabel bevat algemene fouten die zijn gevonden tijdens het uitvoeren 
 |---|---|---|---|
 |1|Test case voor Linux-agent versie|De minimale versie van de Linux-agent is 2.2.41 of hoger. Deze vereiste is verplicht sinds 1 mei 2020.|Werk de versie van de Linux-agent bij en deze moet 2,241 of hoger zijn. Ga voor meer informatie naar de [Update pagina van de Linux-agent versie](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).|
 |2|Test case voor bash geschiedenis|U ziet een fout als de grootte van de bash-geschiedenis in uw verzonden afbeelding meer dan 1 kilo byte (KB) is. De grootte is beperkt tot 1 KB om ervoor te zorgen dat mogelijk gevoelige gegevens niet worden vastgelegd in uw bash-geschiedenis bestand.|Om dit probleem op te lossen, koppelt u de VHD aan een andere werkende VM en brengt u de gewenste wijzigingen aan (u kunt bijvoorbeeld de *bash* -geschiedenis bestanden verwijderen) om de grootte te verkleinen tot minder dan of gelijk aan 1 KB.|
-|3|Vereiste test case voor de kernel-para meter|U ontvangt deze fout melding wanneer de waarde voor de **console** niet is ingesteld op **ttyS0**. Controleer door de volgende opdracht uit te voeren:<br>`cat /proc/cmdline`|Stel de waarde voor de **console** in op **ttyS0**en verzend de aanvraag opnieuw.|
-|4|Test case ClientAlive-interval|Als het resultaat van de Toolkit een mislukt resultaat voor deze test case geeft, is er een onjuiste waarde voor **' ClientAliveInterval**.|Stel de waarde voor **' ClientAliveInterval** in op kleiner dan of gelijk aan 235 en verzend de aanvraag vervolgens opnieuw.|
+|3|Vereiste test case voor de kernel-para meter|U ontvangt deze fout melding wanneer de waarde voor de **console** niet is ingesteld op **ttyS0** . Controleer door de volgende opdracht uit te voeren:<br>`cat /proc/cmdline`|Stel de waarde voor de **console** in op **ttyS0** en verzend de aanvraag opnieuw.|
+|4|Test case ClientAlive-interval|Als het resultaat van de Toolkit een mislukt resultaat voor deze test case geeft, is er een onjuiste waarde voor **' ClientAliveInterval** .|Stel de waarde voor **' ClientAliveInterval** in op kleiner dan of gelijk aan 235 en verzend de aanvraag vervolgens opnieuw.|
 
 ### <a name="windows-test-cases"></a>Test cases van Windows
 
@@ -148,7 +151,7 @@ De volgende tabel geeft een lijst van de Windows-test cases die de Toolkit moet 
 |17|WLAN-service (Wireless LAN)|Draadloze LAN-service. Deze server functie wordt nog niet ondersteund. De toepassing mag niet afhankelijk zijn van deze functie.|
 |
 
-Als u problemen ondervindt met de voor gaande test cases, raadpleegt u de kolom **Beschrijving** in de tabel voor de oplossing. Als u meer informatie nodig hebt, neemt u contact op met het ondersteunings team.
+Als u problemen ondervindt met de voor gaande test cases, raadpleegt u de kolom **Beschrijving** in de tabel voor de oplossing. Als u meer informatie nodig hebt, neemt u contact op met het ondersteunings team. 
 
 ## <a name="data-disk-size-verification"></a>Verificatie van de grootte van de gegevens schijf
 
@@ -181,7 +184,7 @@ Als Vm's toegang bieden tot het onderliggende besturings systeem, moet u ervoor 
 
 Als u een mogelijke aanval met betrekking tot het WannaCry-virus wilt voor komen, moet u ervoor zorgen dat alle Windows-installatie kopie aanvragen worden bijgewerkt met de nieuwste patch.
 
-Raadpleeg de volgende tabel om de patch versie van Windows Server te controleren voor de details van het besturings systeem en de minimale versie die wordt ondersteund:
+Raadpleeg de volgende tabel om de patch versie van Windows Server te controleren voor de details van het besturings systeem en de minimale versie die wordt ondersteund: 
 
 De versie van het installatie kopie bestand kan worden gecontroleerd vanuit `C:\windows\system32\drivers\srv.sys` of `srv2.sys` .
 
@@ -205,13 +208,13 @@ Werk de kernel bij met een goedgekeurde versie en verzend de aanvraag opnieuw. U
 
 Als uw installatie kopie niet is geïnstalleerd met een van de volgende kernel-versies, werkt u deze bij met de juiste patches. De benodigde goed keuring van het ondersteunings team aanvragen nadat de installatie kopie is bijgewerkt met de volgende vereiste patches:
 
-- CVE-2019-11477
-- CVE-2019-11478
+- CVE-2019-11477 
+- CVE-2019-11478 
 - CVE-2019-11479
 
 |BESTURINGSSYSTEEM familie|Versie|Kernel|
 |---|---|---|
-|Ubuntu|14,04 LTS|4.4.0-151|
+|Ubuntu|14,04 LTS|4.4.0-151| 
 ||14,04 LTS|4.15.0-1049-*-Azure|
 ||16,04 LTS|4.15.0-1049|
 ||18,04 LTS|4.18.0-1023|
@@ -223,7 +226,7 @@ Als uw installatie kopie niet is geïnstalleerd met een van de volgende kernel-v
 ||7.2|3.10.0-327.79.2|
 ||7.3|3.10.0-514.66.2|
 ||7.4|3.10.0-693.50.3|
-||7.5|3.10.0-862.34.2|
+||7,5|3.10.0-862.34.2|
 ||7.6|3.10.0-957.21.3|
 ||7,7|3.10.0-1062.1.1|
 ||8.0|4.18.0-80.4.2|
@@ -242,7 +245,7 @@ Als uw installatie kopie niet is geïnstalleerd met een van de volgende kernel-v
 ||SLES15|4.12.14-5.30.1 (kernel-Azure)|
 ||SLES15 voor SAP|4.12.14-5.30.1 (kernel-Azure)|
 ||SLES15SP1|4.12.14-5.30.1 (kernel-Azure)|
-|Oracle|6.10|UEK2 2.6.39-400.312.2<br>UEK3 3.8.13-118.35.2<br>RHCK 2.6.32-754.15.3
+|Oracle|6.10|UEK2 2.6.39-400.312.2<br>UEK3 3.8.13-118.35.2<br>RHCK 2.6.32-754.15.3 
 ||7.0-7.5|UEK3 3.8.13-118.35.2<br>UEK4 4.1.12-124.28.3<br>RHCK volgt RHEL hierboven|
 ||7.6|RHCK 3.10.0-957.21.3<br>UEK5 4.14.35-1902.2.0|
 |CoreOS stabiele 2079.6.0|4.19.43*|
@@ -267,13 +270,22 @@ Als u tijdens het uitvoeren van de test cases op de VM problemen ondervindt bij 
 
 Controleer of de juiste toegang is ingeschakeld voor het account waarop de self-test cases worden uitgevoerd. Als de toegang niet is ingeschakeld, schakelt u deze in om de test cases uit te voeren. Als u geen toegang wilt inschakelen, kunt u de test resultaten met het ondersteunings team delen.
 
-## <a name="download-failure"></a>Fout bij het downloaden
+Als u uw aanvraag met SSH-uitgeschakelde installatie kopie wilt verzenden voor het certificerings proces, volgt u de onderstaande stappen
 
+1. Voer de Azure-Toolkit uit op uw installatie kopie. (Down load de [nieuwste Toolkit](https://aka.ms/AzureCertificationTestTool)
+
+2. Verhoog een [ondersteunings ticket](https://aka.ms/marketplacepublishersupport), voeg het Toolkit rapport toe en geef de details van de aanbieding, naam van de uitgever, plan-id/SKU en versie op.
+
+3. Verzend uw certificerings aanvraag opnieuw.
+
+
+## <a name="download-failure"></a>Fout bij het downloaden
+    
 Raadpleeg de volgende tabel voor eventuele problemen bij het downloaden van de VM-installatie kopie met behulp van een SAS-URL (Shared Access Signature).
 
 |Scenario|Fout|Reden|Oplossing|
 |---|---|---|---|
-|1|De blob is niet gevonden|De VHD kan worden verwijderd of verplaatst van de opgegeven locatie.||
+|1|De blob is niet gevonden|De VHD kan worden verwijderd of verplaatst van de opgegeven locatie.|| 
 |2|BLOB in gebruik|De VHD wordt gebruikt door een ander intern proces.|De VHD moet een gebruikte status hebben wanneer u deze downloadt met behulp van een SAS-URL.|
 |3|Ongeldige SAS-URL|De bijbehorende SAS-URL voor de VHD is onjuist.|Haal de juiste SAS-URL op.|
 |4|Ongeldige hand tekening|De bijbehorende SAS-URL voor de VHD is onjuist.|Haal de juiste SAS-URL op.|
@@ -288,13 +300,98 @@ Wanneer u de VHD verzendt, moet u ervoor zorgen dat de eerste 2048 KB van de VHD
 >[!NOTE]
 >* Voor bepaalde speciale installatie kopieën, zoals die zijn gebouwd op basis van Azure Windows Base-installatie kopieën die zijn gemaakt met Azure Marketplace, wordt gecontroleerd op een facturerings code en wordt de MB-partitie genegeerd als de facturerings code aanwezig is en overeenkomt met onze interne beschik bare waarden.
 
+
+## <a name="steps-for-creating-first-mb-2048-kb-partition-only-for-linux-on-an-empty-vhd"></a>Stappen voor het maken van de eerste MB (2048 KB)-partitie (alleen voor Linux) op een lege VHD
+
+Stap 1: Maak een wille keurig type VM (bijvoorbeeld: Ubuntu, Cent OS, enzovoort). Vul de vereiste velden in en klik op volgende: schijven> \
+![Volgende: schijven, opdracht](./media/create-vm/vm-certification-issues-solutions-15.png)
+
+Stap 2: Maak een niet-beheerde schijf voor de bovenstaande VM.
+![Een niet-beheerde schijf maken](./media/create-vm/vm-certification-issues-solutions-16.png)
+
+Houd er rekening mee dat u met standaard waarden kunt gaan of een wille keurige waarde voor velden als NIC, NSG en openbaar IP-adres op te geven.
+
+Stap 3: nadat u de virtuele machine hebt gemaakt, klikt u op schijven aan de linkerkant, zoals hieronder wordt weer gegeven, klikt u op ![ schijven](./media/create-vm/vm-certification-issues-solutions-17.png)
+
+Stap 4: koppel uw VHD als gegevens schijf aan de bovenstaande VM voor het maken van een partitie tabel zoals hieronder.
+![Uw VHD koppelen](./media/create-vm/vm-certification-issues-solutions-18.png)
+
+Klik op DataDisk toevoegen-> bestaande BLOB-> Blader door uw VHD Storage-account-> container-> Selecteer VHD-> Klik op OK als hieronder \
+![VHD selecteren](./media/create-vm/vm-certification-issues-solutions-19.png)
+
+Uw VHD wordt toegevoegd als Data Disk LUN 0 en start de virtuele machine opnieuw op nadat u de schijf hebt toegevoegd.
+
+Stap 5: Meld u na het opnieuw starten van de virtuele machine aan bij de VM met behulp van putty (of een andere client) en voer de opdracht ' sudo-i ' uit om toegang tot het hoofd te krijgen.
+
+![Aanmelden bij de virtuele machine](./media/create-vm/vm-certification-issues-solutions-20.png)
+
+Stap 6: Volg de onderstaande stappen om een partitie te maken op uw VHD.
+
+a) type fdisk/dev/sdb-opdracht
+
+b) voor het weer geven van de bestaande partitie lijst van uw VHD, typt u p
+
+c) type d voor het verwijderen van alle bestaande partities die beschikbaar zijn op uw VHD (u kunt deze stap overs Laan als dit niet vereist is) ![ Verwijder alle bestaande partitie](./media/create-vm/vm-certification-issues-solutions-21.png)
+
+d) Typ n als u een nieuwe partitie wilt maken en selecteer p voor (primaire partitie).
+
+e) Geef 2048 op als de waarde ' First sector ' en u kunt ' laatste sector ' verlaten, omdat de standaard waarde wordt genoteerd. Houd er rekening mee dat alle gegevens worden gewist tot 2048 KB.
+           
+>[!NOTE]
+>* Houd er rekening mee dat door het maken van de partitie, net als bij alle bestaande gegevens, de data base van 2048 KB wordt gewist. Daarom wordt het aanbevolen om een back-up van de VHD te maken voordat u de bovenstaande opdracht uitvoert.
+
+Ga naar de onderstaande scherm afbeelding voor uw referentie.
+![Gegevens gewist](./media/create-vm/vm-certification-issues-solutions-22.png)
+
+f) Typ w om te bevestigen dat de partitie is gemaakt. 
+
+![Partitie maken](./media/create-vm/vm-certification-issues-solutions-23.png)
+
+g) u kunt de partitie tabel controleren door de opdracht n fdisk/dev/sdb uit te voeren en p te typen. vervolgens ziet u dat de partitie wordt gemaakt met een offset waarde van 2048. 
+
+ ![2048 offset](./media/create-vm/vm-certification-issues-solutions-24.png)
+
+Stap 7: Maak de VHD los van de virtuele machine en verwijder de virtuele machine.
+
+         
+## <a name="steps-for-creating-first-mb-2048-kb-partition-only-for-linux-by-moving-the-existing-data-on-vhd"></a>Stappen voor het maken van de eerste MB (2048 KB)-partitie (alleen voor Linux) door de bestaande gegevens op de VHD te verplaatsen
+
+Stap 1: Maak een wille keurig type VM (bijvoorbeeld: Ubuntu, Cent OS, enzovoort). Vul de vereiste velden in en klik op volgende: schijven> \
+![Klik op volgende: schijven>](./media/create-vm/vm-certification-issues-solutions-15.png)
+
+Stap 2: Maak een niet-beheerde schijf voor de bovenstaande VM.
+![Een niet-beheerde schijf maken](./media/create-vm/vm-certification-issues-solutions-16.png)
+
+Houd er rekening mee dat u met standaard waarden kunt gaan of een wille keurige waarde voor velden als NIC, NSG en openbaar IP-adres op te geven.
+
+Stap 3: nadat u de virtuele machine hebt gemaakt, klikt u op schijven aan de linkerkant, zoals hieronder wordt weer gegeven, klikt u op ![ schijven](./media/create-vm/vm-certification-issues-solutions-17.png)
+
+Stap 4: koppel uw VHD als gegevens schijf aan de bovenstaande VM voor het maken van een partitie tabel zoals hieronder.
+![Partitie tabel](./media/create-vm/vm-certification-issues-solutions-18.png)
+
+Klik op DataDisk toevoegen-> bestaande BLOB-> Blader door uw VHD Storage-account-> container-> Selecteer VHD-> Klik op OK als hieronder \
+![VHD selecteren](./media/create-vm/vm-certification-issues-solutions-19.png)
+
+Uw VHD wordt toegevoegd als Data Disk LUN 0 en start de virtuele machine opnieuw op nadat u de schijf hebt toegevoegd.
+
+Stap 5: Meld u na het opnieuw starten van de virtuele machine aan bij de VM met behulp van putty en voer de opdracht ' sudo-i ' uit om toegang tot het hoofd te krijgen. \
+![Aanmelden na opnieuw opstarten](./media/create-vm/vm-certification-issues-solutions-20.png)
+
+Stap 6: excute de opdracht echo ' + 1M ' | sfdisk--move-data/dev/SDC-N 1 ![ opdracht uitvoeren](./media/create-vm/vm-certification-issues-solutions-25.png)
+
+>[!NOTE]
+>* De bovenstaande opdracht kan meer tijd in beslag nemen, omdat deze afhankelijk is van de grootte van de schijf
+
+Stap 7: Maak de VHD los van de virtuele machine en verwijder de virtuele machine.
+
+
 ## <a name="default-credentials"></a>Standaard referenties
 
 Zorg er altijd voor dat er geen standaard referenties worden verzonden met de verzonden VHD. Het toevoegen van standaard referenties maakt de VHD kwetsbaarder voor beveiligings Risico's. Maak in plaats daarvan uw eigen referenties wanneer u de VHD verzendt.
   
 ## <a name="datadisk-mapped-incorrectly"></a>DataDisk onjuist toegewezen
 
-Wanneer een aanvraag wordt ingediend met meerdere gegevens schijven, maar de volg orde ervan niet bestaat, wordt dit beschouwd als een toewijzings probleem. Als er bijvoorbeeld drie gegevens schijven zijn, moet de Nummerings volgorde *0, 1, 2*zijn. Alle andere orders worden behandeld als een toewijzings probleem.
+Wanneer een aanvraag wordt ingediend met meerdere gegevens schijven, maar de volg orde ervan niet bestaat, wordt dit beschouwd als een toewijzings probleem. Als er bijvoorbeeld drie gegevens schijven zijn, moet de Nummerings volgorde *0, 1, 2* zijn. Alle andere orders worden behandeld als een toewijzings probleem.
 
 Verzend de aanvraag opnieuw met de juiste volg orde van de gegevens schijven.
 
@@ -306,11 +403,11 @@ Wanneer een installatie kopie wordt gemaakt, kan deze worden toegewezen aan of w
 
 Als alle installatie kopieën die vanuit Azure Marketplace worden gemaakt, opnieuw moeten worden gebruikt, moet de virtuele harde schijf van het besturings systeem worden gegeneraliseerd.
 
-* Voor **Linux**wordt met het volgende proces een virtuele Linux-machine gegeneraliseerd en opnieuw geïmplementeerd als een afzonderlijke VM.
+* Voor **Linux** wordt met het volgende proces een virtuele Linux-machine gegeneraliseerd en opnieuw geïmplementeerd als een afzonderlijke VM.
 
   Voer in het SSH-venster de volgende opdracht in: `sudo waagent -deprovision+user`
 
-* Voor **Windows**kunt u Windows-installatie kopieën generaliseren met behulp van `sysreptool` .
+* Voor **Windows** kunt u Windows-installatie kopieën generaliseren met behulp van `sysreptool` .
 
 Zie [overzicht van systeem voorbereiding (Sysprep)]( https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)voor meer informatie over dit hulp programma.
 
@@ -326,7 +423,7 @@ Gebruik de volgende tabel voor oplossingen voor fouten die betrekking hebben op 
 
 ## <a name="remote-access-issue"></a>Probleem met externe toegang
 
-Als de optie Remote Desktop Protocol (RDP) niet is ingeschakeld voor de Windows-installatie kopie, wordt deze fout weer gegeven.
+Als de optie Remote Desktop Protocol (RDP) niet is ingeschakeld voor de Windows-installatie kopie, wordt deze fout weer gegeven. 
 
 Schakel RDP-toegang voor Windows-installatie kopieën in voordat u deze verzendt.
 
@@ -404,36 +501,36 @@ Ga als volgt te werk om een installatie kopie van een virtuele machine te vervan
 Als u deze stappen wilt uitvoeren, moet u de technische assets voorbereiden voor de VM-installatie kopie die u wilt toevoegen. Zie [een virtuele machine maken met behulp van een goedgekeurde basis](azure-vm-create-using-approved-base.md) of [een virtuele machine maken met uw eigen installatie kopie](azure-vm-create-using-own-image.md)en [een SAS-URI voor uw VM-installatie kopie genereren](azure-vm-get-sas-uri.md)voor meer informatie.
 
 1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home).
-2. Selecteer in het navigatie menu de optie **commerciële Marketplace**-  >  **overzicht**.
+2. Selecteer in het navigatie menu de optie **commerciële Marketplace** -  >  **overzicht** .
 3. Selecteer de aanbieding in de kolom **aanbiedings alias** .
 4. Selecteer op het tabblad **plan overzicht** , in de kolom **naam** , het plan waaraan u de virtuele machine wilt toevoegen.
-5. Selecteer op het tabblad **technische configuratie** onder **VM-installatie kopieën** **+ installatie kopie van virtuele machine toevoegen**.
+5. Selecteer op het tabblad **technische configuratie** onder **VM-installatie kopieën** **+ installatie kopie van virtuele machine toevoegen** .
 
 > [!NOTE]
 > U kunt slechts één VM-installatie kopie toevoegen aan één abonnement per keer. Als u meerdere VM-installatie kopieën wilt toevoegen, publiceert u de eerste Live voordat u de volgende VM-installatie kopie toevoegt.
 
 6. Geef in de weer gegeven vakken een nieuwe schijf versie en de installatie kopie van de virtuele machine op.
-7. Selecteer **Concept opslaan**.
+7. Selecteer **Concept opslaan** .
 
 Ga verder met de volgende sectie hieronder om de VM-installatie kopie te verwijderen met het beveiligings probleem.
 
 #### <a name="remove-the-vm-image-with-the-security-vulnerability-or-exploit"></a>De VM-installatie kopie verwijderen met het beveiligings probleem of de misbruik
 
 1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home).
-2. Selecteer in het navigatie menu de optie **commerciële Marketplace**-  >  **overzicht**.
+2. Selecteer in het navigatie menu de optie **commerciële Marketplace** -  >  **overzicht** .
 3. Selecteer de aanbieding in de kolom **aanbiedings alias** .
 4. Selecteer op het tabblad **plan overzicht** , in de kolom **naam** , het plan met de virtuele machine die u wilt verwijderen.
-5. Op het tabblad **technische configuratie** onder **VM-installatie kopieën** naast de VM-installatie kopie die u wilt verwijderen, selecteert u VM- **installatie kopie verwijderen**.
-6. Selecteer **door gaan**in het dialoog venster dat wordt weer gegeven.
-7. Selecteer **Concept opslaan**.
+5. Op het tabblad **technische configuratie** onder **VM-installatie kopieën** naast de VM-installatie kopie die u wilt verwijderen, selecteert u VM- **installatie kopie verwijderen** .
+6. Selecteer **door gaan** in het dialoog venster dat wordt weer gegeven.
+7. Selecteer **Concept opslaan** .
 
 Ga verder met de volgende sectie hieronder om de aanbieding opnieuw te publiceren.
 
 #### <a name="republish-the-offer"></a>De aanbieding opnieuw publiceren
 
-1. Selecteer **controleren en publiceren**.
+1. Selecteer **controleren en publiceren** .
 2. Als u informatie moet verstrekken aan het certificerings team, voegt u deze toe aan het vak **notities voor certificering** .
-3. Selecteer **Publiceren**.
+3. Selecteer **Publiceren** .
 
 Zie [aanbiedingen bekijken en publiceren](review-publish-offer.md)om het publicatie proces te volt ooien.
 

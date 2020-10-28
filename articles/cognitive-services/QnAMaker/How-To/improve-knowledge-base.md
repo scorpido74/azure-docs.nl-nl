@@ -6,12 +6,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 7d7dc8564ee35bcd8bfd92d996d07e1d0c365806
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dcf912f431d578a6e678801d3dc8f4e11484ea78
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776490"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678367"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Voorgestelde vragen over actieve trainingen in de Knowledge Base accepteren
 
@@ -22,15 +22,15 @@ Met actief onderwijs wijzigt u de Knowledge Base of Search Service na het goed k
 
 ## <a name="turn-on-active-learning"></a>Actief leren inschakelen
 
-Als u voorgestelde vragen wilt weer geven, moet u [actief leren inschakelen](use-active-learning.md) voor uw QnA Maker-resource.
+Als u voorgestelde vragen wilt weer geven, moet u [actief leren inschakelen](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/active-learning-suggestions) voor uw QnA Maker-resource.
 
 ## <a name="view-suggested-questions"></a>Voorgestelde vragen weer geven
 
-1. Als u de voorgestelde vragen wilt bekijken, selecteert u op de pagina Knowledge Base **bewerken** de optie **weergave opties**en selecteert u **actieve Learning suggesties weer geven**.
+1. Als u de voorgestelde vragen wilt bekijken, selecteert u op de pagina Knowledge Base **bewerken** de optie **weergave opties** en selecteert u **actieve Learning suggesties weer geven** .
 
     [![Selecteer in het gedeelte bewerken van de Portal de optie suggesties weer geven om de nieuwe vragen van het actieve leer proces te bekijken.](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 
-1. Filter de Knowledge Base met vraag-en antwoord paren om alleen suggesties weer te geven door **filteren op suggesties**te selecteren.
+1. Filter de Knowledge Base met vraag-en antwoord paren om alleen suggesties weer te geven door **filteren op suggesties** te selecteren.
 
     [![Gebruik de wissel knop filteren op suggesties om alleen de voorgestelde suggesties van het actieve leer proces weer te geven.](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
 

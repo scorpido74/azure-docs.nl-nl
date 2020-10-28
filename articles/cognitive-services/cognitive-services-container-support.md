@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 09/28/2020
+ms.date: 10/22/2020
 ms.author: aahi
 keywords: on-premises, docker, container, Kubernetes
-ms.openlocfilehash: cf0ea6339de1ba6aca93a1a71990515d296f2e3a
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: e6a01192068617dcdb52e6160ffcf633d099bdf1
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999687"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677430"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure Cognitive Services-containers
 
@@ -45,12 +45,12 @@ Cognitive Services resources zijn beschikbaar op [Microsoft Azure](https://azure
 
 ## <a name="features-and-benefits"></a>Functies en -voordelen
 
-- **Onveranderbare infra structuur**: DevOps-teams inschakelen om gebruik te maken van een consistente en betrouw bare set bekende systeem parameters, terwijl u kunt aanpassen aan de wijzigingen. Containers bieden de flexibiliteit om te draaien in een voorspelbaar ecosysteem en configuratie drift te voor komen.
-- **Controle over gegevens**: Kies waar uw gegevens worden verwerkt door Cognitive Services. Dit kan essentieel zijn als u geen gegevens naar de cloud kunt verzenden, maar wel toegang nodig hebt tot Cognitive Services-API's. Ondersteunings consistentie in hybride omgevingen: voor gegevens, beheer, identiteit en beveiliging.
-- **Controle over model updates**: flexibiliteit bij het versie beheer en het bijwerken van modellen die in hun oplossingen zijn geïmplementeerd.
-- **Draag bare architectuur**: maakt het mogelijk een draag bare toepassings architectuur te maken die kan worden geïmplementeerd op Azure, on-premises en aan de rand. Containers kunnen rechtstreeks worden geïmplementeerd in [Azure Kubernetes service](../aks/index.yml), [Azure container instances](../container-instances/index.yml)of op een [Kubernetes](https://kubernetes.io/) -cluster dat is geïmplementeerd op [Azure stack](/azure-stack/operator). Zie [Deploy Kubernetes to Azure stack](/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)voor meer informatie.
-- **Hoge door Voer/lage latentie**: bieden klanten de mogelijkheid om te schalen voor vereisten voor hoge door Voer en lage latentie door Cognitive Services in te scha kelen om fysiek te sluiten op hun toepassings logica en-gegevens. Containers hebben geen Cap-trans acties per seconde (TPS) en kunnen worden gemaakt om te schalen om de vraag te verwerken als u de benodigde hardwarebronnen opgeeft.
-- **Schaal baarheid**: met de steeds groeiende populariteit van container opslag-en container Orchestration-software, zoals Kubernetes; schaal baarheid bevindt zich in de Forefront van technologische voor uitgangen. Voortbouwend op een schaal bare cluster-Foundation, waarbij toepassingen kunnen worden ontwikkeld tot hoge Beschik baarheid.
+- **Onveranderbare infra structuur** : DevOps-teams inschakelen om gebruik te maken van een consistente en betrouw bare set bekende systeem parameters, terwijl u kunt aanpassen aan de wijzigingen. Containers bieden de flexibiliteit om te draaien in een voorspelbaar ecosysteem en configuratie drift te voor komen.
+- **Controle over gegevens** : Kies waar uw gegevens worden verwerkt door Cognitive Services. Dit kan essentieel zijn als u geen gegevens naar de cloud kunt verzenden, maar wel toegang nodig hebt tot Cognitive Services-API's. Ondersteunings consistentie in hybride omgevingen: voor gegevens, beheer, identiteit en beveiliging.
+- **Controle over model updates** : flexibiliteit bij het versie beheer en het bijwerken van modellen die in hun oplossingen zijn geïmplementeerd.
+- **Draag bare architectuur** : maakt het mogelijk een draag bare toepassings architectuur te maken die kan worden geïmplementeerd op Azure, on-premises en aan de rand. Containers kunnen rechtstreeks worden geïmplementeerd in [Azure Kubernetes service](../aks/index.yml), [Azure container instances](../container-instances/index.yml)of op een [Kubernetes](https://kubernetes.io/) -cluster dat is geïmplementeerd op [Azure stack](/azure-stack/operator). Zie [Deploy Kubernetes to Azure stack](/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)voor meer informatie.
+- **Hoge door Voer/lage latentie** : bieden klanten de mogelijkheid om te schalen voor vereisten voor hoge door Voer en lage latentie door Cognitive Services in te scha kelen om fysiek te sluiten op hun toepassings logica en-gegevens. Containers hebben geen Cap-trans acties per seconde (TPS) en kunnen worden gemaakt om te schalen om de vraag te verwerken als u de benodigde hardwarebronnen opgeeft.
+- **Schaal baarheid** : met de steeds groeiende populariteit van container opslag-en container Orchestration-software, zoals Kubernetes; schaal baarheid bevindt zich in de Forefront van technologische voor uitgangen. Voortbouwend op een schaal bare cluster-Foundation, waarbij toepassingen kunnen worden ontwikkeld tot hoge Beschik baarheid.
 
 ## <a name="containers-in-azure-cognitive-services"></a>Containers in azure Cognitive Services
 
@@ -58,19 +58,19 @@ Azure Cognitive Services-containers bieden de volgende set docker-containers, di
 
 | Service | Ondersteunde prijs categorie | Container | Beschrijving |
 |--|--|--|--|
-| [Anomalie detectie][ad-containers] | F0, S0 | **Anomaliey-detector** ([installatie kopie](https://hub.docker.com/_/azure-cognitive-services-decision-anomaly-detector))  | Met de Anomaly Detector-API kunt u anomalieën in uw tijdreeksgegevens controleren en detecteren met behulp van machine learning.<br>[Toegang aanvragen][request-access] |
-| [Computer Vision][cv-containers] | F0, S1 | **Lezen** OCR ([afbeelding](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) | Met de container OCR lezen kunt u gedrukte en handgeschreven tekst uit afbeeldingen en documenten extra heren met ondersteuning voor JPEG-, PNG-, BMP-, PDF-en TIFF-bestands indelingen. Zie de [Lees API-documentatie](./computer-vision/concept-recognizing-text.md)voor meer informatie.<br>[Toegang aanvragen][request-access] |
+| [Anomalie detectie][ad-containers] | F0, S0 | **Anomaliey-detector** ( [installatie kopie](https://hub.docker.com/_/azure-cognitive-services-decision-anomaly-detector))  | Met de Anomaly Detector-API kunt u anomalieën in uw tijdreeksgegevens controleren en detecteren met behulp van machine learning.<br>[Toegang aanvragen][request-access] |
+| [Computer Vision][cv-containers] | F0, S1 | **Lezen** OCR ( [afbeelding](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) | Met de container OCR lezen kunt u gedrukte en handgeschreven tekst uit afbeeldingen en documenten extra heren met ondersteuning voor JPEG-, PNG-, BMP-, PDF-en TIFF-bestands indelingen. Zie de [Lees API-documentatie](./computer-vision/concept-recognizing-text.md)voor meer informatie.<br>[Toegang aanvragen][request-access] |
 | [Face][fa-containers] | F0, S0 | **Face** | Detecteert menselijke gezichten in afbeeldingen en identificeert kenmerken, met inbegrip van gezichts bezienswaardigheden (zoals neus en ogen), geslacht, leeftijd en andere computer-voorspelde gezichts functies. Naast detectie kan het gezicht controleren of twee gezichten in dezelfde afbeelding of verschillende afbeeldingen hetzelfde zijn door gebruik te maken van een betrouwbaarheids Score, of de gezichten vergelijken met een Data Base om te zien of er al een vergelijkbaar of identiek gezicht bestaat. Het kan ook gelijksoortige gezichten in groepen indelen met behulp van gedeelde visuele elementen. |
 | [Formulier herkenning][fr-containers] | F0, S0 | **Form Recognizer** | Formulier uitleg is van toepassing machine learning technologie om sleutel-waardeparen en tabellen uit formulieren te identificeren en uit te pakken. |
-| [LUIS][lu-containers] | F0, S0 | **Luis** ([afbeelding](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)) | Laadt een getraind of gepubliceerd Language Understanding model, ook wel een LUIS-app genoemd, op in een docker-container en biedt toegang tot de query voorspellingen vanuit de API-eind punten van de container. U kunt query logboeken van de container verzamelen en deze weer uploaden naar de [Luis-Portal](https://www.luis.ai) om de nauw keurigheid van de app te verbeteren. |
-| [Speech Service-API][sp-containers-stt] | F0, S0 | **Spraak naar tekst** ([afbeelding](https://hub.docker.com/_/azure-cognitive-services-speechservices-speech-to-text)) | Transcribeert continue realtime spraak naar tekst. |
-| [Speech Service-API][sp-containers-cstt] | F0, S0 | **Custom speech-naar-tekst** ([afbeelding](https://hub.docker.com/_/azure-cognitive-services-speechservices-custom-speech-to-text)) | Transcribeert doorlopend realtime spraak naar tekst met behulp van een aangepast model. |
-| [Speech Service-API][sp-containers-tts] | F0, S0 | **Tekst-naar-spraak** ([afbeelding](https://hub.docker.com/_/azure-cognitive-services-speechservices-text-to-speech)) | Converteert tekst naar natuurlijk klinkende spraak. |
-| [Speech Service-API][sp-containers-ctts] | F0, S0 | **Aangepaste tekst-naar-spraak** ([afbeelding](https://hub.docker.com/_/azure-cognitive-services-speechservices-custom-text-to-speech)) | Hiermee wordt tekst geconverteerd naar een natuurlijk geluids fragment met behulp van een aangepast model. |
-| [Speech Service-API][sp-containers-ntts] | F0, S0 | **Tekst-naar-spraak** ([afbeelding](https://hub.docker.com/_/azure-cognitive-services-speechservices-neural-text-to-speech)) Neural | Hiermee wordt tekst geconverteerd naar spraak herkenning met behulp van diepe Neural-netwerk technologie, waardoor natuurlijk gesynthesizerde spraak kan worden gebruikt. |
-| [Tekstanalyse][ta-containers-keyphrase] | F0, S | **Sleuteltermextractie** ([afbeelding](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) | Extraheert sleutel zinnen om de belangrijkste punten te identificeren. Bijvoorbeeld, voor de invoertekst 'het eten was heerlijk en de bediening fantastisch' retourneert de API de belangrijkste gespreksonderwerpen: 'eten' en 'bediening fantastisch'. |
-| [Tekstanalyse][ta-containers-language] | F0, S | **Taaldetectie** ([afbeelding](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | Voor Maxi maal 120 talen detecteert u in welke taal de invoer tekst wordt geschreven en rapporteert u één taal code voor elk document dat voor de aanvraag wordt verzonden. De taalcode is gekoppeld aan een score die de sterkte van de score aangeeft. |
-| [Tekstanalyse][ta-containers-sentiment] | F0, S | **Sentimentanalyse v3** ([installatie kopie](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) | Analyseer onbewerkte tekst voor aanwijzingen over positieve of negatieve sentiment. Deze versie van sentiment analyse retourneert sentiment-labels (bijvoorbeeld *positief* of *negatief*) voor elk document en elke zin daarin. |
+| [LUIS][lu-containers] | F0, S0 | **Luis** ( [afbeelding](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)) | Laadt een getraind of gepubliceerd Language Understanding model, ook wel een LUIS-app genoemd, op in een docker-container en biedt toegang tot de query voorspellingen vanuit de API-eind punten van de container. U kunt query logboeken van de container verzamelen en deze weer uploaden naar de [Luis-Portal](https://www.luis.ai) om de nauw keurigheid van de app te verbeteren. |
+| [Speech Service-API][sp-containers-stt] | F0, S0 | **Spraak naar tekst** ( [afbeelding](https://hub.docker.com/_/azure-cognitive-services-speechservices-speech-to-text)) | Transcribeert continue realtime spraak naar tekst. |
+| [Speech Service-API][sp-containers-cstt] | F0, S0 | **Custom speech-naar-tekst** ( [afbeelding](https://hub.docker.com/_/azure-cognitive-services-speechservices-custom-speech-to-text)) | Transcribeert doorlopend realtime spraak naar tekst met behulp van een aangepast model. |
+| [Speech Service-API][sp-containers-tts] | F0, S0 | **Tekst-naar-spraak** ( [afbeelding](https://hub.docker.com/_/azure-cognitive-services-speechservices-text-to-speech)) | Converteert tekst naar natuurlijk klinkende spraak. |
+| [Speech Service-API][sp-containers-ctts] | F0, S0 | **Aangepaste tekst-naar-spraak** ( [afbeelding](https://hub.docker.com/_/azure-cognitive-services-speechservices-custom-text-to-speech)) | Hiermee wordt tekst geconverteerd naar een natuurlijk geluids fragment met behulp van een aangepast model. |
+| [Speech Service-API][sp-containers-ntts] | F0, S0 | **Tekst-naar-spraak** ( [afbeelding](https://hub.docker.com/_/azure-cognitive-services-speechservices-neural-text-to-speech)) Neural | Hiermee wordt tekst geconverteerd naar spraak herkenning met behulp van diepe Neural-netwerk technologie, waardoor natuurlijk gesynthesizerde spraak kan worden gebruikt. |
+| [Tekstanalyse][ta-containers-keyphrase] | F0, S | **Sleuteltermextractie** ( [afbeelding](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) | Extraheert sleutel zinnen om de belangrijkste punten te identificeren. Bijvoorbeeld, voor de invoertekst 'het eten was heerlijk en de bediening fantastisch' retourneert de API de belangrijkste gespreksonderwerpen: 'eten' en 'bediening fantastisch'. |
+| [Tekstanalyse][ta-containers-language] | F0, S | **Taaldetectie** ( [afbeelding](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | Voor Maxi maal 120 talen detecteert u in welke taal de invoer tekst wordt geschreven en rapporteert u één taal code voor elk document dat voor de aanvraag wordt verzonden. De taalcode is gekoppeld aan een score die de sterkte van de score aangeeft. |
+| [Tekstanalyse][ta-containers-sentiment] | F0, S | **Sentimentanalyse v3** ( [installatie kopie](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) | Analyseer onbewerkte tekst voor aanwijzingen over positieve of negatieve sentiment. Deze versie van sentiment analyse retourneert sentiment-labels (bijvoorbeeld *positief* of *negatief* ) voor elk document en elke zin daarin. |
 | [Tekstanalyse][ta-containers-health] | F0, S | **Text Analytics voor de status** | Medische gegevens uit ongestructureerde klinische tekst extra heren en labelen. |
 | [Ruimtelijke analyse][spa-containers] | S0 | **Ruimtelijke analyse** | Analyseer realtime streaming video om ruimtelijke relaties tussen personen, hun beweging en interacties met objecten in fysieke omgevingen te begrijpen. |
 
@@ -95,11 +95,11 @@ Azure Cognitive Services-containers zijn openbaar beschikbaar via uw Azure-abonn
 
 U moet voldoen aan de volgende vereisten voordat u Azure Cognitive Services-containers kunt gebruiken:
 
-**Docker-engine**: u moet de docker-Engine lokaal geïnstalleerd hebben. Docker biedt pakketten voor het configureren van de docker-omgeving op [macOS](https://docs.docker.com/docker-for-mac/), [Linux](https://docs.docker.com/engine/installation/#supported-platforms)en [Windows](https://docs.docker.com/docker-for-windows/). In Windows moet docker worden geconfigureerd voor de ondersteuning van Linux-containers. Docker-containers kunnen ook rechtstreeks worden geïmplementeerd in [Azure Kubernetes service](../aks/index.yml) of [Azure container instances](../container-instances/index.yml).
+**Docker-engine** : u moet de docker-Engine lokaal geïnstalleerd hebben. Docker biedt pakketten voor het configureren van de docker-omgeving op [macOS](https://docs.docker.com/docker-for-mac/), [Linux](https://docs.docker.com/engine/installation/#supported-platforms)en [Windows](https://docs.docker.com/docker-for-windows/). In Windows moet docker worden geconfigureerd voor de ondersteuning van Linux-containers. Docker-containers kunnen ook rechtstreeks worden geïmplementeerd in [Azure Kubernetes service](../aks/index.yml) of [Azure container instances](../container-instances/index.yml).
 
 Docker moet worden geconfigureerd zodat de containers verbinding kunnen maken met en facturerings gegevens kunnen verzenden naar Azure.
 
-**Vertrouwd met micro soft container Registry en docker**: u moet een basis kennis hebben van zowel micro soft container Registry als docker-concepten, zoals registers, opslag plaatsen, containers en container installatie kopieën, evenals kennis van basis `docker` opdrachten.
+**Vertrouwd met micro soft container Registry en docker** : u moet een basis kennis hebben van zowel micro soft container Registry als docker-concepten, zoals registers, opslag plaatsen, containers en container installatie kopieën, evenals kennis van basis `docker` opdrachten.
 
 Zie het [Docker-overzicht](https://docs.docker.com/engine/docker-overview/) voor een inleiding tot de basisprincipes van Docker en containers.
 

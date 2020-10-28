@@ -11,19 +11,19 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 03/30/2020
-ms.openlocfilehash: 4c2faa6f015a8c1ce8f360155abdc14367d3057b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 180f6e8902dc881c99a74a6491eeb3012bc03d0f
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330737"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675222"
 ---
 # <a name="automatic-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Automatische afstemming in Azure SQL Database en Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 De automatische afstemming van Azure SQL Managed instance biedt piek prestaties en stabiele workloads door continue prestatie afstemming op basis van AI en machine learning. Azure SQL Database
 
-Automatisch afstemmen is een volledig beheerde intelligente prestatie service die gebruikmaakt van ingebouwde intelligentie om continu query's te controleren die worden uitgevoerd op een Data Base, en de prestaties worden automatisch verbeterd. Dit wordt bereikt door de data base dynamisch aan te passen aan de veranderende werk belastingen en de aanbevelingen voor het afstemmen toe te passen. Automatische afstemming leert horizon taal van alle data bases op Azure tot en met AI, waardoor de afstemmings acties dynamisch worden verbeterd. Hoe meer data bases worden uitgevoerd met automatisch afstemmen op, hoe beter het werkt.
+Automatisch afstemmen is een volledig beheerde intelligente prestatieservice die gebruikmaakt van ingebouwde intelligentie om continu query's te controleren die worden uitgevoerd voor een database en die automatisch de prestaties van deze query's verbetert. Dit wordt bereikt door de data base dynamisch aan te passen aan de veranderende werk belastingen en de aanbevelingen voor het afstemmen toe te passen. Automatische afstemming leert horizon taal van alle data bases op Azure tot en met AI, waardoor de afstemmings acties dynamisch worden verbeterd. Hoe meer data bases worden uitgevoerd met automatisch afstemmen op, hoe beter het werkt.
 
 Azure SQL Database en het automatisch afstemmen van Azure SQL Managed instance kunnen een van de belangrijkste functies zijn die u kunt inschakelen om stabiele en piek uren voor de data base uit te voeren.
 
@@ -46,7 +46,7 @@ Automatische afstemmings mechanismen zijn verouderd en zijn perfect in verschill
 
 ![Hoe werkt automatisch afstemmen?](./media/automatic-tuning-overview/how-does-automatic-tuning-work.png)
 
-Azure SQL Database automatisch afstemmen deelt de kern logica met de SQL Server functie voor automatisch afstemmen in de data base-engine. Zie [SQL Server Automatic tuning](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)(Engelstalig) voor aanvullende technische informatie over het ingebouwde intelligentie-mechanisme.
+Azure SQL Database automatisch afstemmen deelt de kern logica met de SQL Server functie voor automatisch afstemmen in de data base-engine. Zie [SQL Server Automatic tuning](/sql/relational-databases/automatic-tuning/automatic-tuning)(Engelstalig) voor aanvullende technische informatie over het ingebouwde intelligentie-mechanisme.
 
 Voor een overzicht van de werking van automatisch afstemmen en voor typische gebruiks scenario's raadpleegt u de Inge sloten video:
 
@@ -54,8 +54,8 @@ Voor een overzicht van de werking van automatisch afstemmen en voor typische geb
 
 ## <a name="enable-automatic-tuning"></a>Automatisch instellen inschakelen
 
-- U [schakelt automatisch afstemmen in voor Azure SQL database in het Azure Portal](automatic-tuning-enable.md) of met behulp van de T-SQL-instructie [ALTER data base](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) .
-- U schakelt automatisch afstemmen in voor Azure SQL Managed instance met behulp van de T-SQL-instructie [ALTER data base](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-mi-current) .
+- U [schakelt automatisch afstemmen in voor Azure SQL database in het Azure Portal](automatic-tuning-enable.md) of met behulp van de T-SQL-instructie [ALTER data base](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) .
+- U schakelt automatisch afstemmen in voor Azure SQL Managed instance met behulp van de T-SQL-instructie [ALTER data base](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-mi-current) .
 
 ## <a name="automatic-tuning-options"></a>Opties voor automatisch afstemmen
 
@@ -69,7 +69,7 @@ De opties voor automatisch afstemmen die beschikbaar zijn in Azure SQL Database 
 
 ### <a name="automatic-tuning-for-sql-database"></a>SQL Database automatisch afstemmen
 
-Automatisch afstemmen voor Azure SQL Database maakt gebruik van de **Create Index**, **Drop Index**en het **afdwingen van de laatste goede plan** database Advisor-aanbevelingen om uw database prestaties te optimaliseren. Zie [aanbevelingen voor data base Advisor in de Azure Portal](database-advisor-find-recommendations-portal.md), in [Power shell](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction)en in de [rest API](https://docs.microsoft.com/rest/api/sql/serverautomatictuning)voor meer informatie.
+Automatisch afstemmen voor Azure SQL Database maakt gebruik van de **Create Index** , **Drop Index** en het **afdwingen van de laatste goede plan** database Advisor-aanbevelingen om uw database prestaties te optimaliseren. Zie [aanbevelingen voor data base Advisor in de Azure Portal](database-advisor-find-recommendations-portal.md), in [Power shell](/powershell/module/az.sql/get-azsqldatabaserecommendedaction)en in de [rest API](/rest/api/sql/serverautomatictuning)voor meer informatie.
 
 U kunt de aanbevelingen voor het afstemmen hand matig Toep assen met behulp van de Azure Portal of u kunt automatisch afstemmen op zichzelf laten afstemmen voor u. De voor delen van het autonoom Toep assen van het systeem om automatisch afstemmings aanbevelingen voor u toe te passen, is dat er een positieve toename van de prestaties van de werk belasting bestaat en als er geen aanzienlijke verbetering van de prestaties wordt gedetecteerd, wordt de aanbeveling voor het afstemmen automatisch hersteld. In het geval van query's die worden beïnvloed door het afstemmen van aanbevelingen die niet vaak worden uitgevoerd, kan de validatie fase tot 72 uur duren.
 
@@ -90,7 +90,7 @@ Zie [e-mail meldingen voor automatisch afstemmen](automatic-tuning-email-notific
 
 ### <a name="automatic-tuning-for-azure-sql-managed-instance"></a>Automatisch afstemmen voor Azure SQL Managed instance
 
-Automatisch afstemmen voor SQL Managed instance ondersteunt alleen **GEFORCEERD plan forceren**. Zie voor meer informatie over het configureren van opties voor automatisch afstemmen via T-SQL [automatisch afstemmen introduceert automatisch corrigeren van plannen](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) en [automatische correctie van plannen](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning?view=sql-server-ver15#automatic-plan-correction).
+Automatisch afstemmen voor SQL Managed instance ondersteunt alleen **GEFORCEERD plan forceren** . Zie voor meer informatie over het configureren van opties voor automatisch afstemmen via T-SQL [automatisch afstemmen introduceert automatisch corrigeren van plannen](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) en [automatische correctie van plannen](/sql/relational-databases/automatic-tuning/automatic-tuning?view=sql-server-ver15#automatic-plan-correction).
 
 ## <a name="next-steps"></a>Volgende stappen
 

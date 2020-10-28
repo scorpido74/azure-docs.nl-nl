@@ -3,13 +3,13 @@ title: Een nieuw Azure Kubernetes service-cluster (AKS) bewaken | Microsoft Docs
 description: Meer informatie over het inschakelen van bewaking voor een nieuw Azure Kubernetes service-cluster (AKS) met Azure Monitor voor containers-abonnement.
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.custom: devx-track-terraform
-ms.openlocfilehash: 7706df4f457167f5bb4d17f1d506594615364380
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-terraform, devx-track-azurecli
+ms.openlocfilehash: 19c4a88cee8776136593b041e94dd14c7c9c28d6
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87320320"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735086"
 ---
 # <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>Bewaking van een nieuw Azure Kubernetes service (AKS)-cluster inschakelen
 
@@ -34,12 +34,12 @@ Als u [een nieuw AKS-cluster implementeert met behulp van terraform](/azure/deve
 >[!NOTE]
 >Als u ervoor kiest om terraform te gebruiken, moet u de terraform Azure RM-provider versie 1.17.0 of hoger uitvoeren.
 
-Als u Azure Monitor voor containers wilt toevoegen aan de werk ruimte, raadpleegt u [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) en voltooit u het profiel door de [**addon_profile**](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) op te nemen en **oms_agent**op te geven. 
+Als u Azure Monitor voor containers wilt toevoegen aan de werk ruimte, raadpleegt u [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) en voltooit u het profiel door de [**addon_profile**](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) op te nemen en **oms_agent** op te geven. 
 
 Nadat u bewaking hebt ingeschakeld en alle configuratie taken zijn voltooid, kunt u de prestaties van uw cluster op twee manieren controleren:
 
 * Rechtstreeks in het AKS-cluster door de **status** te selecteren in het linkerdeel venster.
-* Door de tegel **container Insights bewaken** in de AKS-cluster pagina voor het geselecteerde cluster te selecteren. Selecteer in Azure Monitor in het linkerdeel venster **status**. 
+* Door de tegel **container Insights bewaken** in de AKS-cluster pagina voor het geselecteerde cluster te selecteren. Selecteer in Azure Monitor in het linkerdeel venster **status** . 
 
   ![Opties voor het selecteren van Azure Monitor voor containers in AKS](./media/container-insights-onboard/kubernetes-select-monitoring-01.png)
 

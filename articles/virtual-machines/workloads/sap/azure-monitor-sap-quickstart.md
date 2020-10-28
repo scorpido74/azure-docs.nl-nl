@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.date: 08/17/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: 6deb7b535c3876ae8a8e83174b97a75582e82e58
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: dc8aa50c5c4ecb5e4b56a7e49453c266dad28818
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996438"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678098"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>Azure Monitor implementeren voor SAP-oplossingen met Azure Portal
 
@@ -24,7 +24,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com
 
 ## <a name="create-monitoring-resource"></a>Bewakings bron maken
 
-1. Selecteer **Azure monitor voor SAP-oplossingen** van **Azure Marketplace**.
+1. Selecteer **Azure monitor voor SAP-oplossingen** van **Azure Marketplace** .
 
    :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-1.png" alt-text="Afbeelding toont het selecteren van de Azure Monitor voor SAP-oplossingen aanbod vanuit Azure Marketplace." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-1.png":::
 
@@ -47,6 +47,9 @@ Meld u aan bij Azure Portal op https://portal.azure.com
 
 2. Selecteer **provider toevoegen** en kies **SAP Hana** in de vervolg keuzelijst. 
 
+   > [!IMPORTANT]
+   > Zorg ervoor dat SAP HANA provider is geconfigureerd voor het knoop punt Master van SAP HANA.
+
 3. Voer het privé-IP-adres voor de HANA-server in.
 
 4. Voer de naam in van de data base-Tenant die u wilt gebruiken. U kunt een wille keurige Tenant kiezen. Wij raden u echter aan **SYSTEMDB** te gebruiken, omdat hiermee een bredere matrix van bewakings gebieden mogelijk is. 
@@ -55,7 +58,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com
 
 6. Geef de data base-gebruikers naam op die u wilt gebruiken. Zorg ervoor dat aan de database gebruiker de rollen **bewaking** en **catalogus lezen** zijn toegewezen. 
 
-7. Wanneer u klaar bent, selecteert u **provider toevoegen**. Ga verder met het toevoegen van extra providers of selecteer **controleren + maken** om de implementatie te volt ooien.
+7. Wanneer u klaar bent, selecteert u **provider toevoegen** . Ga verder met het toevoegen van extra providers of selecteer **controleren + maken** om de implementatie te volt ooien.
 
    :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-4.png" alt-text="Afbeelding toont het selecteren van de Azure Monitor voor SAP-oplossingen aanbod vanuit Azure Marketplace." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-4.png":::
 
@@ -70,7 +73,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com
  
 3. Voer de systeem-ID (SID), de hostnaam en de cluster naam in.
 
-4. Wanneer u klaar bent, selecteert u **provider toevoegen**. Ga verder met het toevoegen van extra providers of selecteer **controleren + maken** om de implementatie te volt ooien.
+4. Wanneer u klaar bent, selecteert u **provider toevoegen** . Ga verder met het toevoegen van extra providers of selecteer **controleren + maken** om de implementatie te volt ooien.
 
    :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-5.png" alt-text="Afbeelding toont het selecteren van de Azure Monitor voor SAP-oplossingen aanbod vanuit Azure Marketplace." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-5.png":::
 
@@ -108,7 +111,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com
 
 3. Vul de velden in met behulp van de informatie die is gekoppeld aan uw Microsoft SQL Server. 
 
-4. Wanneer u klaar bent, selecteert u **provider toevoegen**. Ga verder met het toevoegen van extra providers of selecteer **controleren + maken** om de implementatie te volt ooien.
+4. Wanneer u klaar bent, selecteert u **provider toevoegen** . Ga verder met het toevoegen van extra providers of selecteer **controleren + maken** om de implementatie te volt ooien.
 
      :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-6.png" alt-text="Afbeelding toont het selecteren van de Azure Monitor voor SAP-oplossingen aanbod vanuit Azure Marketplace." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-6.png":::
 

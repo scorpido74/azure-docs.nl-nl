@@ -2,13 +2,13 @@
 title: Resources implementeren met Azure CLI en sjabloon
 description: Gebruik Azure Resource Manager en Azure CLI om resources te implementeren in Azure. De resources zijn gedefinieerd in een Resource Manager-sjabloon.
 ms.topic: conceptual
-ms.date: 09/08/2020
-ms.openlocfilehash: 8d033bb9ad1c841614ee1e48aa7edc6b8fe18550
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/22/2020
+ms.openlocfilehash: 7b1639f31b696f300177d05107a98effc3f3ae23
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372167"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676197"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>Resources implementeren met ARM-sjablonen en Azure CLI
 
@@ -18,21 +18,19 @@ De implementatie-opdrachten zijn gewijzigd in azure CLI-versie 2.2.0. Voor de vo
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
-Als Azure CLI niet is geïnstalleerd, kunt u de [Cloud shell](#deploy-template-from-cloud-shell)gebruiken.
+Als Azure CLI niet is geïnstalleerd, kunt u de Cloud Shell gebruiken. Zie [arm-sjablonen implementeren vanaf Cloud shell](deploy-cloud-shell.md)voor meer informatie.
 
 ## <a name="deployment-scope"></a>Implementatie bereik
 
-U kunt uw implementatie richten op een resource groep, een abonnement, een beheer groep of een Tenant. In de meeste gevallen moet u de implementatie richten op een resource groep. Als u beleids regels en roltoewijzingen wilt Toep assen in een groter bereik, gebruikt u abonnement, beheer groep of Tenant implementaties. Wanneer u naar een abonnement implementeert, kunt u een resource groep maken en er resources op implementeren.
+U kunt uw implementatie richten op een resource groep, een abonnement, een beheer groep of een Tenant. Afhankelijk van het bereik van de implementatie, gebruikt u verschillende opdrachten.
 
-Afhankelijk van het bereik van de implementatie, gebruikt u verschillende opdrachten.
-
-* Gebruik [AZ Deployment Group Create](/cli/azure/deployment/group#az-deployment-group-create)om te implementeren in een **resource groep**:
+* Gebruik [AZ Deployment Group Create](/cli/azure/deployment/group#az-deployment-group-create)om te implementeren in een **resource groep** :
 
   ```azurecli-interactive
   az deployment group create --resource-group <resource-group-name> --template-file <path-to-template>
   ```
 
-* Gebruik [AZ Deployment sub Create](/cli/azure/deployment/sub#az-deployment-sub-create)om te implementeren in een **abonnement**:
+* Gebruik [AZ Deployment sub Create](/cli/azure/deployment/sub#az-deployment-sub-create)om te implementeren in een **abonnement** :
 
   ```azurecli-interactive
   az deployment sub create --location <location> --template-file <path-to-template>
@@ -40,7 +38,7 @@ Afhankelijk van het bereik van de implementatie, gebruikt u verschillende opdrac
 
   Zie [resource groepen en-resources op abonnements niveau maken](deploy-to-subscription.md)voor meer informatie over implementaties op abonnements niveau.
 
-* Gebruik [AZ Deployment mg Create](/cli/azure/deployment/mg#az-deployment-mg-create)om te implementeren in een **beheer groep**:
+* Gebruik [AZ Deployment mg Create](/cli/azure/deployment/mg#az-deployment-mg-create)om te implementeren in een **beheer groep** :
 
   ```azurecli-interactive
   az deployment mg create --location <location> --template-file <path-to-template>
@@ -48,7 +46,7 @@ Afhankelijk van het bereik van de implementatie, gebruikt u verschillende opdrac
 
   Zie [resources maken op het niveau van de beheer groep](deploy-to-management-group.md)voor meer informatie over implementaties op het niveau van beheer groepen.
 
-* Gebruik [AZ Deployment Tenant Create](/cli/azure/deployment/tenant#az-deployment-tenant-create)om te implementeren naar een **Tenant**:
+* Gebruik [AZ Deployment Tenant Create](/cli/azure/deployment/tenant#az-deployment-tenant-create)om te implementeren naar een **Tenant** :
 
   ```azurecli-interactive
   az deployment tenant create --location <location> --template-file <path-to-template>
@@ -56,26 +54,25 @@ Afhankelijk van het bereik van de implementatie, gebruikt u verschillende opdrac
 
   Zie [resources maken op Tenant niveau](deploy-to-tenant.md)voor meer informatie over implementaties op Tenant niveau.
 
-In de voor beelden in dit artikel worden de implementaties van resource groepen gebruikt.
+Voor elk bereik moet de gebruiker die de sjabloon implementeert, over de vereiste machtigingen beschikken om resources te maken.
 
-## <a name="deploy-local-template"></a>Lokale sjabloon implementeren
+## <a name="deploy-local-template"></a>Een lokale sjabloon implementeren
 
-Wanneer u resources implementeert in azure, doet u het volgende:
+U kunt een sjabloon implementeren vanaf uw lokale computer of een die extern is opgeslagen. In deze sectie wordt het implementeren van een lokale sjabloon beschreven.
 
-1. Aanmelden bij uw Azure-account
-2. Maak een resource groep die fungeert als de container voor de geïmplementeerde resources. De naam van de resource groep mag alleen alfanumerieke tekens, punten, onderstrepings teken, afbreek streepjes en haakjes bevatten. Het kan Maxi maal 90 tekens lang zijn. Deze kan niet eindigen op een punt.
-3. Implementeer in de resource groep de sjabloon waarmee de te maken resources worden gedefinieerd.
-
-Een sjabloon kan para meters bevatten waarmee u de implementatie kunt aanpassen. U kunt bijvoorbeeld waarden opgeven die zijn afgestemd op een bepaalde omgeving (zoals dev, test en productie). De voorbeeld sjabloon definieert een para meter voor de SKU van het opslag account.
-
-In het volgende voor beeld wordt een resource groep gemaakt en een sjabloon van uw lokale computer geïmplementeerd:
+Als u implementeert in een resource groep die niet bestaat, maakt u de resource groep. De naam van de resource groep mag alleen alfanumerieke tekens, punten, onderstrepings teken, afbreek streepjes en haakjes bevatten. Het kan Maxi maal 90 tekens lang zijn. De naam kan niet eindigen met een punt.
 
 ```azurecli-interactive
 az group create --name ExampleGroup --location "Central US"
+```
+
+Als u een lokale sjabloon wilt implementeren, gebruikt u de `--template-file` para meter in de implementatie opdracht. In het volgende voor beeld ziet u ook hoe u een parameter waarde instelt die afkomstig is uit de sjabloon.
+
+```azurecli-interactive
 az deployment group create \
   --name ExampleDeployment \
   --resource-group ExampleGroup \
-  --template-file storage.json \
+  --template-file azuredeploy.json \
   --parameters storageAccountType=Standard_GRS
 ```
 
@@ -85,9 +82,31 @@ De implementatie kan enkele minuten duren. Wanneer het is voltooid, ziet u een b
 "provisioningState": "Succeeded",
 ```
 
+## <a name="deploy-remote-template"></a>Externe sjabloon implementeren
+
+In plaats van ARM-sjablonen op uw lokale computer op te slaan, kunt u ze beter opslaan op een externe locatie. U kunt sjablonen opslaan in een opslagplaats voor broncodebeheer (zoals GitHub). U kunt de sjablonen ook opslaan in een Azure-opslagaccount voor gedeelde toegang in uw organisatie.
+
+Als u implementeert in een resource groep die niet bestaat, maakt u de resource groep. De naam van de resource groep mag alleen alfanumerieke tekens, punten, onderstrepings teken, afbreek streepjes en haakjes bevatten. Het kan Maxi maal 90 tekens lang zijn. De naam kan niet eindigen met een punt.
+
+```azurecli-interactive
+az group create --name ExampleGroup --location "Central US"
+```
+
+Als u een externe sjabloon wilt implementeren, gebruikt u de `template-uri`-parameter.
+
+```azurecli-interactive
+az deployment group create \
+  --name ExampleDeployment \
+  --resource-group ExampleGroup \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json" \
+  --parameters storageAccountType=Standard_GRS
+```
+
+In het voor gaande voor beeld is een openbaar toegankelijke URI vereist voor de sjabloon, die voor de meeste scenario's werkt, omdat uw sjabloon geen gevoelige gegevens mag bevatten. Als u gevoelige gegevens (zoals een beheerders wachtwoord) moet opgeven, geeft u die waarde als een beveiligde para meter door. Als u echter de toegang tot de sjabloon wilt beheren, kunt u de [sjabloon specificaties](#deploy-template-spec)gebruiken.
+
 ## <a name="deployment-name"></a>Naam van implementatie
 
-In het voor gaande voor beeld heet u de implementatie `ExampleDeployment` . Als u geen naam opgeeft voor de implementatie, wordt de naam van het sjabloon bestand gebruikt. Als u bijvoorbeeld een sjabloon implementeert `azuredeploy.json` met de naam en u geen implementatie naam opgeeft, wordt de implementatie een naam genoemd `azuredeploy` .
+Bij het implementeren van een ARM-sjabloon kunt u een naam opgeven voor de implementatie. Deze naam kan u helpen de implementatie op te halen uit de implementatie geschiedenis. Als u geen naam opgeeft voor de implementatie, wordt de naam van het sjabloon bestand gebruikt. Als u bijvoorbeeld een sjabloon implementeert `azuredeploy.json` met de naam en u geen implementatie naam opgeeft, wordt de implementatie een naam genoemd `azuredeploy` .
 
 Telkens wanneer u een implementatie uitvoert, wordt een item toegevoegd aan de implementatie geschiedenis van de resource groep met de naam van de implementatie. Als u een andere implementatie uitvoert en deze dezelfde naam geeft, wordt de vorige vermelding vervangen door de huidige implementatie. Als u de unieke vermeldingen in de implementatie geschiedenis wilt behouden, geeft u elke implementatie een unieke naam.
 
@@ -111,30 +130,13 @@ Wanneer u een unieke naam voor elke implementatie opgeeft, kunt u deze gelijktij
 
 Geef elke implementatie een unieke naam om conflicten met gelijktijdige implementaties te voor komen en te zorgen voor unieke vermeldingen in de implementatie geschiedenis.
 
-## <a name="deploy-remote-template"></a>Externe sjabloon implementeren
-
-In plaats van ARM-sjablonen op uw lokale computer op te slaan, kunt u ze beter opslaan op een externe locatie. U kunt sjablonen opslaan in een broncode beheer bibliotheek (zoals GitHub). U kunt ze ook opslaan in een Azure-opslag account voor gedeelde toegang in uw organisatie.
-
-Als u een externe sjabloon wilt implementeren, gebruikt u de **sjabloon-URI-** para meter. Gebruik de URI in het voor beeld om de voorbeeld sjabloon te implementeren vanuit GitHub.
-
-```azurecli-interactive
-az group create --name ExampleGroup --location "Central US"
-az deployment group create \
-  --name ExampleDeployment \
-  --resource-group ExampleGroup \
-  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json" \
-  --parameters storageAccountType=Standard_GRS
-```
-
-In het voor gaande voor beeld is een openbaar toegankelijke URI vereist voor de sjabloon, die voor de meeste scenario's werkt, omdat uw sjabloon geen gevoelige gegevens mag bevatten. Als u gevoelige gegevens (zoals een beheerders wachtwoord) moet opgeven, geeft u die waarde als een beveiligde para meter door. Als u niet wilt dat uw sjabloon openbaar toegankelijk is, kunt u deze beveiligen door deze op te slaan in een persoonlijke opslag container. Zie voor meer informatie over het implementeren van een sjabloon waarvoor een SAS-token (Shared Access Signature) is vereist een [persoonlijke sjabloon implementeren met SAS-token](secure-template-with-sas-token.md).
-
 ## <a name="deploy-template-spec"></a>Sjabloonspecificatie implementeren
 
 In plaats van een lokale of externe sjabloon te implementeren, kunt u een [sjabloon specificatie](template-specs.md)maken. De sjabloon specificatie is een resource in uw Azure-abonnement die een ARM-sjabloon bevat. Het is eenvoudig om de sjabloon veilig te delen met gebruikers in uw organisatie. U gebruikt op rollen gebaseerd toegangs beheer van Azure (Azure RBAC) om toegang te verlenen tot de sjabloon specificatie. Deze functie is momenteel beschikbaar als preview-versie.
 
 In de volgende voor beelden ziet u hoe u een sjabloon specificatie maakt en implementeert. Deze opdrachten zijn alleen beschikbaar als u zich hebt [geregistreerd voor de preview-versie](https://aka.ms/templateSpecOnboarding).
 
-Eerst maakt u de sjabloon specificatie door de ARM-sjabloon op te geven.
+Maak eerst de sjabloon specificatie door de ARM-sjabloon op te geven.
 
 ```azurecli
 az ts create \
@@ -145,7 +147,7 @@ az ts create \
   --template-file "./mainTemplate.json"
 ```
 
-Vervolgens krijgt u de ID voor sjabloon specificatie en implementeert u deze.
+Vervolgens haalt u de ID op voor de sjabloon specificatie en implementeert u deze.
 
 ```azurecli
 id = $(az ts show --name storageSpec --resource-group templateSpecRG --version "1.0" --query "id")
@@ -160,17 +162,6 @@ Zie [Azure Resource Manager-sjabloon specificaties (preview-versie)](template-sp
 ## <a name="preview-changes"></a>Preview-wijzigingen
 
 Voordat u uw sjabloon implementeert, kunt u een voor beeld bekijken van de wijzigingen die door de sjabloon in uw omgeving worden aangebracht. Gebruik de [bewerking What-if](template-deploy-what-if.md) om te controleren of de sjabloon de wijzigingen aanbrengt die u verwacht. Wat-als ook de sjabloon voor fouten valideert.
-
-[!INCLUDE [resource-manager-cloud-shell-deploy.md](../../../includes/resource-manager-cloud-shell-deploy.md)]
-
-Gebruik de volgende opdrachten in de Cloud Shell:
-
-```azurecli-interactive
-az group create --name examplegroup --location "South Central US"
-az deployment group create --resource-group examplegroup \
-  --template-uri <copied URL> \
-  --parameters storageAccountType=Standard_GRS
-```
 
 ## <a name="parameters"></a>Parameters
 
@@ -233,9 +224,9 @@ Gebruik dubbele aanhalings tekens rond de JSON die u wilt door geven aan het obj
 
 ### <a name="parameter-files"></a>Parameter bestanden
 
-In plaats van para meters als inline waarden door te geven in uw script, is het wellicht eenvoudiger een JSON-bestand te gebruiken dat de parameter waarden bevat. Het parameter bestand moet een lokaal bestand zijn. Externe parameter bestanden worden niet ondersteund met Azure CLI.
+In plaats van parameters als inline waarden door te geven in uw script, is het wellicht eenvoudiger een JSON-bestand te gebruiken dat de parameterwaarden bevat. Het parameter bestand moet een lokaal bestand zijn. Externe parameter bestanden worden niet ondersteund met Azure CLI.
 
-Zie voor meer informatie over het parameter bestand [Resource Manager-parameter bestand maken](parameter-files.md).
+Zie [Een Resource Manager-parameterbestand maken](parameter-files.md) voor meer informatie over het parameterbestand.
 
 Als u een lokaal parameter bestand wilt door geven, gebruikt `@` u om een lokaal bestand met de naam storage.parameters.jsop te geven.
 
@@ -275,4 +266,3 @@ Als u een sjabloon wilt implementeren met reeksen met meerdere regels of opmerki
 - Zie [Azure Resource Manager implementatie modi](deployment-modes.md)om op te geven hoe u resources wilt afhandelen die in de resource groep aanwezig zijn, maar die niet zijn gedefinieerd in de sjabloon.
 - Zie [inzicht in de structuur en syntaxis van arm-sjablonen](template-syntax.md)voor informatie over het definiëren van para meters in uw sjabloon.
 - Zie [problemen met algemene Azure-implementatie fouten oplossen met Azure Resource Manager](common-deployment-errors.md)voor tips over het oplossen van veelvoorkomende implementatie fouten.
-- Zie voor meer informatie over het implementeren van een sjabloon waarvoor een SAS-token is vereist een [persoonlijke sjabloon implementeren met SAS-token](secure-template-with-sas-token.md).

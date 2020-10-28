@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
-ms.openlocfilehash: 271d3c0ca44c500a6fd8ee50ed5f1698e46cd511
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af1bee00261cd96f61a39389f31a52109f4e64b5
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510263"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675812"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Historische telemetriegegevens opnemen
 
@@ -46,13 +46,13 @@ Volg deze stappen:
 
       b. Selecteer de **app-registratie** die is gemaakt als onderdeel van uw FarmBeats-implementatie. Deze heeft dezelfde naam als uw FarmBeats-datahub.
 
-      c. Selecteer **een API beschikbaar** maken > Selecteer **een client toepassing toevoegen** en voer **04B07795-8ddb-461A-bbee-02f9e1bf7b46** in en controleer de **Scope voor autoriseren**. Hiermee krijgt u toegang tot de Azure CLI (Cloud Shell) om de onderstaande stappen uit te voeren:
+      c. Selecteer **een API beschikbaar** maken > Selecteer **een client toepassing toevoegen** en voer **04B07795-8ddb-461A-bbee-02f9e1bf7b46** in en controleer de **Scope voor autoriseren** . Hiermee krijgt u toegang tot de Azure CLI (Cloud Shell) om de onderstaande stappen uit te voeren:
 
 3. Open Cloud Shell. Deze optie is beschikbaar op de werk balk in de rechter bovenhoek van de Azure Portal.
 
     ![Azure Portal werk balk](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-4. Zorg ervoor dat de omgeving is ingesteld op **Power shell**. Standaard is deze ingesteld op bash.
+4. Zorg ervoor dat de omgeving is ingesteld op **Power shell** . Standaard is deze ingesteld op bash.
 
     ![Power shell-werkbalk instelling](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
@@ -70,7 +70,7 @@ Volg deze stappen:
 
 7. Voer de volgende opdracht uit. Hiermee wordt een script gedownload naar uw basismap.
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive 
 
     wget –q https://aka.ms/farmbeatspartnerscriptv3 -O ./generatePartnerCredentials.ps1
 
@@ -84,7 +84,7 @@ Volg deze stappen:
 
     ```
 
-9. Volg de instructies op het scherm voor het vastleggen van de waarden voor het **API-eind punt**, **Tenant-ID**, **client-id**, **client geheim**en **EventHub-verbindings reeks**.
+9. Volg de instructies op het scherm voor het vastleggen van de waarden voor het **API-eind punt** , **Tenant-ID** , **client-id** , **client geheim** en **EventHub-verbindings reeks** .
 
 
 ## <a name="create-device-or-sensor-metadata"></a>Meta gegevens van het apparaat of de sensor maken
@@ -96,10 +96,10 @@ Volg deze stappen:
  > [!NOTE]
  > Als partner hebt u alleen toegang om de meta gegevens te lezen, te maken en bij te werken. **de optie voor verwijderen is beperkt tot de partner.**
 
-- /**DeviceModel**: DeviceModel komt overeen met de meta gegevens van het apparaat, zoals de fabrikant en het type apparaat, ofwel een gateway of een knoop punt.
-- /**Apparaat**: het apparaat komt overeen met een fysiek apparaat dat aanwezig is op de farm.
-- /**SensorModel**: SensorModel komt overeen met de meta gegevens van de sensor, zoals de fabrikant, het type sensor dat analoog of digitaal is en de sensor meting, zoals omgevings temperatuur en druk.
-- /**Sensor**: sensor komt overeen met een fysieke sensor waarmee waarden worden vastgelegd. Een sensor is doorgaans verbonden met een apparaat met een apparaat-ID.
+- /**DeviceModel** : DeviceModel komt overeen met de meta gegevens van het apparaat, zoals de fabrikant en het type apparaat, ofwel een gateway of een knoop punt.
+- /**Apparaat** : het apparaat komt overeen met een fysiek apparaat dat aanwezig is op de farm.
+- /**SensorModel** : SensorModel komt overeen met de meta gegevens van de sensor, zoals de fabrikant, het type sensor dat analoog of digitaal is en de sensor meting, zoals omgevings temperatuur en druk.
+- /**Sensor** : sensor komt overeen met een fysieke sensor waarmee waarden worden vastgelegd. Een sensor is doorgaans verbonden met een apparaat met een apparaat-ID.
 
 
 |        DeviceModel   |  Suggesties   |
@@ -192,9 +192,9 @@ access_token = token_response.get('access_token')
 
 Hier volgen de meest voorkomende aanvraag headers die moeten worden opgegeven wanneer u een API-aanroep maakt naar FarmBeats Datahub:
 
-- **Content-type**: Application/JSON
-- **Autorisatie**: bearer <Access-Token>
-- **Accepteren**: toepassing/JSON
+- **Content-type** : Application/JSON
+- **Autorisatie** : bearer <Access-Token>
+- **Accepteren** : toepassing/JSON
 
 ### <a name="input-payload-to-create-metadata"></a>Invoer lading voor het maken van meta gegevens
 
@@ -336,7 +336,7 @@ Nu u de apparaten en Sens oren in FarmBeats hebt gemaakt, kunt u de bijbehorende
 
 ### <a name="create-a-telemetry-client"></a>Een telemetrie-client maken
 
-U moet de telemetrie naar Azure Event Hubs verzenden voor verwerking. Azure Event Hubs is een service waarmee realtime gegevens (telemetrie) kunnen worden opgenomen vanuit verbonden apparaten en toepassingen. Als u telemetriegegevens wilt verzenden naar FarmBeats, maakt u een client die berichten verzendt naar een Event Hub in FarmBeats. Zie [Azure Event hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send)voor meer informatie over het verzenden van telemetrie.
+U moet de telemetrie naar Azure Event Hubs verzenden voor verwerking. Azure Event Hubs is een service waarmee realtime gegevens (telemetrie) kunnen worden opgenomen vanuit verbonden apparaten en toepassingen. Als u telemetriegegevens wilt verzenden naar FarmBeats, maakt u een client die berichten verzendt naar een Event Hub in FarmBeats. Zie [Azure Event hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)voor meer informatie over het verzenden van telemetrie.
 
 ### <a name="send-a-telemetry-message-as-the-client"></a>Een telemetrie-bericht verzenden als de client
 
@@ -431,9 +431,9 @@ Hier volgt een voor beeld van een telemetrie-bericht:
 
 ### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>Er kunnen geen telemetriegegevens worden weer gegeven na het opnemen van historische/streaming-gegevens van uw Sens oren
 
-**Symptoom**: er zijn apparaten of Sens oren geïmplementeerd en u hebt de apparaten/Sens oren op FarmBeats en opgenomen telemetrie naar de EventHub gemaakt, maar u kunt geen telemetriegegevens ophalen of weer geven op FarmBeats.
+**Symptoom** : er zijn apparaten of Sens oren geïmplementeerd en u hebt de apparaten/Sens oren op FarmBeats en opgenomen telemetrie naar de EventHub gemaakt, maar u kunt geen telemetriegegevens ophalen of weer geven op FarmBeats.
 
-**Corrigerende actie**:
+**Corrigerende actie** :
 
 1. Zorg ervoor dat u de juiste partner registratie hebt uitgevoerd. u kunt dit controleren door naar de datahub Swagger te gaan, naar/partner API te gaan en te controleren of de partner is geregistreerd. Als dat niet het geval is, volgt u de [stappen hier](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) om een partner toe te voegen.
 

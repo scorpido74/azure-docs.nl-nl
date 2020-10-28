@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 6f7af74cce6bbafea7924d505f768503c7b1f108
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3c941139b12fdf19bf1080b4dddecb8ab761568
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89457988"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676128"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Release opmerkingen bij Azure Synapse Analytics
 
@@ -39,6 +39,13 @@ Zorg ervoor dat de juiste versie is geïnstalleerd in de opmerking bij de releas
 >
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
+
+## <a name="oct-2020"></a>Okt 2020
+
+| Service verbeteringen | Details |
+| --- | --- |
+|**T-SQL inline-Table-Valued functies (preview-versie)**|Met deze versie kunt u nu functies voor in line tabel waarden maken met Transact-SQL en de resultaten opvragen zoals u zou doen met een tabel. Deze functie is momenteel beschikbaar als preview-versie en wordt ondersteund in hulp bij GA. Zie [Create function (Azure Synapse Analytics)](https://docs.microsoft.com/sql/t-sql/statements/create-function-sql-data-warehouse?view=azure-sqldw-latest)voor meer informatie.|
+|**Opdracht samen VOEGen (preview-versie)**|U kunt nu insert-, update-of Delete-bewerkingen uitvoeren op een doel tabel van de resultaten van een samen voeging met een bron tabel. U kunt bijvoorbeeld twee tabellen synchroniseren door rijen in een tabel in te voegen, bij te werken of te verwijderen op basis van verschillen die in de andere tabel zijn gevonden.  Controleer de [samen voeging](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current) voor meer informatie.|
 
 ## <a name="aug-2020"></a>Aug 2020
 

@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 74926411b659cf5973b03b2caca58d7666803f9c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f916fdcf632cc369d1fb7e2faefad6dddafd1e15
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444526"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677246"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>Schrijf audit naar een opslag account achter VNet en firewall
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -41,16 +41,16 @@ De volgende vereisten zijn vereist om te schrijven naar een opslag account achte
 >
 > * Een v2-opslag account voor algemeen gebruik. Als u een v1-of Blob-opslag account voor algemeen gebruik hebt, [moet u een upgrade uitvoeren naar een v2-opslag account voor algemeen gebruik](../../storage/common/storage-account-upgrade.md). Zie [typen opslag accounts](../../storage/common/storage-account-overview.md#types-of-storage-accounts)voor meer informatie.
 > * Het opslag account moet zich op hetzelfde abonnement en op dezelfde locatie als de [logische SQL-Server](logical-servers.md).
-> * Het Azure Storage-account vereist `Allow trusted Microsoft services to access this storage account` . Stel dit in op het opslag account **firewalls en virtuele netwerken**.
+> * Het Azure Storage-account vereist `Allow trusted Microsoft services to access this storage account` . Stel dit in op het opslag account **firewalls en virtuele netwerken** .
 > * U moet `Microsoft.Authorization/roleAssignments/write` een machtiging hebben voor het geselecteerde opslag account. Zie [Ingebouwde rollen in Azure](../../role-based-access-control/built-in-roles.md) voor meer informatie.
 
 ## <a name="configure-in-azure-portal"></a>Configureren in Azure Portal
 
 Maak verbinding met [Azure Portal](https://portal.azure.com) met uw abonnement. Navigeer naar de resource groep en server.
 
-1. Klik op **controleren** onder de kop beveiliging. Selecteer **aan**.
+1. Klik op **controleren** onder de kop beveiliging. Selecteer **aan** .
 
-2. Selecteer **opslag**. Selecteer het opslag account waarin de logboeken worden opgeslagen. Het opslag account moet voldoen aan de vereisten die worden vermeld in [vereiste onderdelen](#prerequisites).
+2. Selecteer **Opslag** . Selecteer het opslag account waarin de logboeken worden opgeslagen. Het opslag account moet voldoen aan de vereisten die worden vermeld in [vereiste onderdelen](#prerequisites).
 
 3. **Opslag Details** openen
 
@@ -61,7 +61,7 @@ Maak verbinding met [Azure Portal](https://portal.azure.com) met uw abonnement. 
   >
   >Als u dit bericht niet ziet, bevindt het opslag account zich niet achter een VNet.
 
-4. Selecteer het aantal dagen voor de Bewaar periode. Klik vervolgens op **OK**. Logboeken die ouder zijn dan de Bewaar periode, worden verwijderd.
+4. Selecteer het aantal dagen voor de Bewaar periode. Klik vervolgens op **OK** . Logboeken die ouder zijn dan de Bewaar periode, worden verwijderd.
 
 5. Selecteer **Opslaan** in de controle-instellingen.
 
@@ -93,7 +93,7 @@ SQL-controle configureren om gebeurtenissen te schrijven naar een opslag account
    Set-AzSqlServer -ResourceGroupName <your resource group> -ServerName <azure server name> -AssignIdentity
    ```
 
-   [**rest API**](https://docs.microsoft.com/rest/api/sql/servers/createorupdate):
+   [**rest API**](/rest/api/sql/servers/createorupdate):
 
    Voorbeeld aanvraag
 
@@ -117,12 +117,12 @@ SQL-controle configureren om gebeurtenissen te schrijven naar een opslag account
    }
    ```
 
-2. Open [Azure Portal](https://portal.azure.com). Ga naar uw opslagaccount. Zoek **Access Control (IAM)** en klik op **roltoewijzing toevoegen**. Wijs de Azure-rol **Storage BLOB data Inzender** toe aan de server die als host fungeert voor de data base die u hebt geregistreerd bij Azure Active Directory (Azure AD), zoals in de vorige stap.
+2. Open [Azure Portal](https://portal.azure.com). Ga naar uw opslagaccount. Zoek **Access Control (IAM)** en klik op **roltoewijzing toevoegen** . Wijs de Azure-rol **Storage BLOB data Inzender** toe aan de server die als host fungeert voor de data base die u hebt geregistreerd bij Azure Active Directory (Azure AD), zoals in de vorige stap.
 
    > [!NOTE]
    > Alleen leden met de bevoegdheid Eigenaar kunnen deze stap uitvoeren. Raadpleeg de [ingebouwde rollen van Azure](../../role-based-access-control/built-in-roles.md)voor verschillende ingebouwde rollen van Azure.
 
-3. Het [controle beleid van de server-BLOB](/rest/api/sql/server%20auditing%20settings/createorupdate)configureren zonder een *storageAccountAccessKey*op te geven:
+3. Het [controle beleid van de server-BLOB](/rest/api/sql/server%20auditing%20settings/createorupdate)configureren zonder een *storageAccountAccessKey* op te geven:
 
    Voorbeeld aanvraag
 

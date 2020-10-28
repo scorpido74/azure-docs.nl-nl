@@ -1,23 +1,23 @@
 ---
 title: Lees de OCR docker-containers van Computer Vision installeren
 titleSuffix: Azure Cognitive Services
-description: Gebruik de lezen van de OCR docker-containers van Computer Vision om tekst uit afbeeldingen en douments on-premises op te halen.
+description: Gebruik de lezen van de OCR docker-containers van Computer Vision om tekst te extra heren uit afbeeldingen en documenten, on-premises.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 10/22/2020
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: on-premises, OCR, docker, container
-ms.openlocfilehash: acf6a391965dcba20a2dabc18648076b88c5e7c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07440b99d887ee6cb4b6d505ed7fb79f4c12c784
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536372"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677208"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>Lees de OCR docker-containers (preview) installeren 
 
@@ -27,10 +27,12 @@ Met containers kunt u de Computer Vision-API's uitvoeren in uw eigen omgeving. C
 
 Met de container OCR *lezen* kunt u gedrukte en handgeschreven tekst uit afbeeldingen en documenten extra heren met ondersteuning voor JPEG-, PNG-, BMP-, PDF-en TIFF-bestands indelingen. Zie de [Lees API-documentatie](concept-recognizing-text.md#read-api)voor meer informatie.
 
-## <a name="read-3x-containers"></a>3. x-containers lezen
-Er zijn twee versies van de 3. x-containers die beschikbaar zijn in de preview-versie. Beide versies bieden extra nauw keurigheid en functies ten opzichte van de vorige container.
+## <a name="read-31-container"></a>3,1-container lezen
 
-De container Lees 3,0-Preview biedt het volgende:
+> [!NOTE]
+> De container Read 3,0-Preview is afgeschaft. 
+
+De container Lees 3,1-Preview biedt het volgende:
 * Nieuwe modellen voor verbeterde nauw keurigheid.
 * Ondersteuning voor meerdere talen in hetzelfde document
 * Ondersteuning voor: Nederlands, Engels, Frans, Duits, Italiaans, Portugees en Spaans.
@@ -38,14 +40,11 @@ De container Lees 3,0-Preview biedt het volgende:
 * Ondersteuning voor grotere documenten en installatie kopieën.
 * Betrouwbaarheids scores van 0 tot 1.
 * Ondersteuning voor documenten met zowel gedrukte als handgeschreven tekst
-
-De container Lees 3,1-Preview biedt dezelfde voor delen als v 3.0-Preview, met aanvullende functies:
-
 * Ondersteuning voor vereenvoudigd Chinees en Japans.
 * betrouw bare scores en labels voor gedrukte en handgeschreven tekst. 
 * De mogelijkheid om alleen tekst uit geselecteerde pagina ('s) in een document op te halen.
 
-Houd er rekening mee dat v 3.1-Preview een eerdere status van preview heeft wanneer u overweegt welke container versie u moet gebruiken. Raadpleeg de [migratie handleiding](read-container-migration-guide.md) voor meer informatie over wijzigingen in de nieuwe versies als u vandaag nog Lees 2,0-containers gebruikt.
+Raadpleeg de [migratie handleiding](read-container-migration-guide.md) voor meer informatie over wijzigingen in de nieuwe versies als u vandaag nog Lees 2,0-containers gebruikt.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -53,9 +52,9 @@ U moet voldoen aan de volgende vereisten voordat u de containers gebruikt:
 
 |Vereist|Doel|
 |--|--|
-|Docker-engine| De docker-engine moet zijn geïnstalleerd op een [hostcomputer](#the-host-computer). Docker biedt pakketten waarmee de Docker-omgeving op [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) en [Linux](https://docs.docker.com/engine/installation/#supported-platforms) kan worden geconfigureerd. Zie het [Docker-overzicht](https://docs.docker.com/engine/docker-overview/) voor een inleiding tot de basisprincipes van Docker en containers.<br><br> Docker moet worden geconfigureerd zodat de containers verbinding kunnen maken met en facturerings gegevens kunnen verzenden naar Azure. <br><br> **In Windows**moet docker ook worden geconfigureerd voor de ondersteuning van Linux-containers.<br><br>|
+|Docker-engine| De docker-engine moet zijn geïnstalleerd op een [hostcomputer](#the-host-computer). Docker biedt pakketten waarmee de Docker-omgeving op [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) en [Linux](https://docs.docker.com/engine/installation/#supported-platforms) kan worden geconfigureerd. Zie het [Docker-overzicht](https://docs.docker.com/engine/docker-overview/) voor een inleiding tot de basisprincipes van Docker en containers.<br><br> Docker moet worden geconfigureerd zodat de containers verbinding kunnen maken met en facturerings gegevens kunnen verzenden naar Azure. <br><br> **In Windows** moet docker ook worden geconfigureerd voor de ondersteuning van Linux-containers.<br><br>|
 |Vertrouwd met docker | U moet een basis kennis hebben van docker-concepten, zoals registers, opslag plaatsen, containers en container installatie kopieën, en kennis van basis `docker` opdrachten.| 
-|Computer Vision resource |Als u de container wilt gebruiken, hebt u het volgende nodig:<br><br>Een Azure **Computer Vision** -resource en de bijbehorende API-sleutel de EINDPUNT-URI. Beide waarden zijn beschikbaar op de pagina overzicht en sleutels voor de resource en zijn vereist om de container te starten.<br><br>**{API_KEY}**: een van de twee beschik bare bron sleutels op de pagina **sleutels**<br><br>**{ENDPOINT_URI}**: het eind punt op de pagina **overzicht**|
+|Computer Vision resource |Als u de container wilt gebruiken, hebt u het volgende nodig:<br><br>Een Azure **Computer Vision** -resource en de bijbehorende API-sleutel de EINDPUNT-URI. Beide waarden zijn beschikbaar op de pagina overzicht en sleutels voor de resource en zijn vereist om de container te starten.<br><br>**{API_KEY}** : een van de twee beschik bare bron sleutels op de pagina **sleutels**<br><br>**{ENDPOINT_URI}** : het eind punt op de pagina **overzicht**|
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/cognitive-services/) aan voordat u begint.
 
@@ -93,7 +92,6 @@ Er zijn container installatie kopieën voor lezen beschikbaar.
 | Container | Container Registry/opslagplaats/naam van installatie kopie |
 |-----------|------------|
 | Lees 2,0-Preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
-| Read 3.0-preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview` |
 | Read 3.1-preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview` |
 
 Gebruik de [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) opdracht om een container installatie kopie te downloaden.
@@ -104,12 +102,6 @@ Gebruik de [`docker pull`](https://docs.docker.com/engine/reference/commandline/
 
 ```bash
 docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview
-```
-
-# <a name="version-30-preview"></a>[Versie 3.0-preview](#tab/version-3)
-
-```bash
-docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview
 ```
 
 # <a name="version-20-preview"></a>[Versie 2,0-Preview](#tab/version-2)
@@ -152,24 +144,6 @@ Met deze opdracht gebeurt het volgende:
 * Beschrijft TCP-poort 5000 en wijst een pseudo-TTY voor de container toe.
 * Verwijdert de container automatisch nadat deze is afgesloten. De container installatie kopie is nog steeds beschikbaar op de hostcomputer.
 
-# <a name="version-30-preview"></a>[Versie 3.0-preview](#tab/version-3)
-
-```bash
-docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview \
-Eula=accept \
-Billing={ENDPOINT_URI} \
-ApiKey={API_KEY}
-
-```
-
-Met deze opdracht gebeurt het volgende:
-
-* Voert de Lees container uit van de container installatie kopie.
-* Wijst 8 CPU-kernen en 18 GB aan geheugen toe.
-* Beschrijft TCP-poort 5000 en wijst een pseudo-TTY voor de container toe.
-* Verwijdert de container automatisch nadat deze is afgesloten. De container installatie kopie is nog steeds beschikbaar op de hostcomputer.
-
 # <a name="version-20-preview"></a>[Versie 2,0-Preview](#tab/version-2)
 
 ```bash
@@ -195,7 +169,7 @@ Er zijn meer [voor beelden](./computer-vision-resource-container-config.md#examp
 > [!IMPORTANT]
 > De `Eula` `Billing` Opties, en `ApiKey` moeten worden opgegeven om de container uit te voeren. anders wordt de container niet gestart.  Zie [facturering](#billing)voor meer informatie.
 
-Als u een hogere door Voer (bijvoorbeeld bij het verwerken van bestanden met meerdere pagina's) nodig hebt, kunt u overwegen om meerdere v 3.0-of v 3.1-containers [in een Kubernetes-cluster](deploy-computer-vision-on-premises.md)te implementeren met behulp van [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-create) en [Azure-wachtrij](https://docs.microsoft.com/azure/storage/queues/storage-queues-introduction).
+Als u een hogere door Voer (bijvoorbeeld bij het verwerken van bestanden met meerdere pagina's) nodig hebt, kunt u overwegen om meerdere containers [in een Kubernetes-cluster](deploy-computer-vision-on-premises.md)te implementeren met behulp van [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-create) en [Azure-wachtrij](https://docs.microsoft.com/azure/storage/queues/storage-queues-introduction).
 
 Als u Azure Storage gebruikt om installatie kopieën op te slaan voor de verwerking, kunt u een [Connection String](https://docs.microsoft.com/azure/storage/common/storage-configure-connection-string) maken om te gebruiken bij het aanroepen van de container.
 
@@ -219,10 +193,6 @@ De container bevat op REST gebaseerde eindpunt-API's voor queryvoorspelling.
 
 Gebruik de host, `http://localhost:5000`, voor container-API's. U kunt het Swagger-pad weer geven op: `http://localhost:5000/swagger/vision-v3.1-preview-read/swagger.json` .
 
-# <a name="version-30-preview"></a>[Versie 3.0-preview](#tab/version-3)
-
-Gebruik de host, `http://localhost:5000`, voor container-API's. U kunt het Swagger-pad weer geven op: `http://localhost:5000/swagger/vision-v3.0-preview-read/swagger.json` .
-
 # <a name="version-20-preview"></a>[Versie 2,0-Preview](#tab/version-2)
 
 Gebruik de host, `http://localhost:5000`, voor container-API's. U kunt het Swagger-pad weer geven op: `http://localhost:5000/swagger/vision-v2.0-preview-read/swagger.json` .
@@ -237,7 +207,7 @@ Gebruik de host, `http://localhost:5000`, voor container-API's. U kunt het Swagg
 U kunt de- `POST /vision/v3.1/read/analyze` en- `GET /vision/v3.1/read/operations/{operationId}` bewerkingen in concert gebruiken om asynchroon een installatie kopie te lezen, vergelijkbaar met de manier waarop de computer vision-service die bijbehorende rest-bewerkingen gebruikt. De asynchrone POST-methode retourneert een `operationId` die wordt gebruikt als id voor de HTTP GET-aanvraag.
 
 
-Selecteer in de Swagger-gebruikers interface de `asyncBatchAnalyze` om deze uit te vouwen in de browser. Selecteer vervolgens **Try it out**  >  **bestand**uitproberen. In dit voor beeld gebruiken we de volgende afbeelding:
+Selecteer in de Swagger-gebruikers interface de `asyncBatchAnalyze` om deze uit te vouwen in de browser. Selecteer vervolgens **Try it out**  >  **bestand** uitproberen. In dit voor beeld gebruiken we de volgende afbeelding:
 
 ![tabbladen versus spaties](media/tabs-vs-spaces.png)
 
@@ -310,80 +280,11 @@ De `operation-location` is de volledig gekwalificeerde URL en is toegankelijk vi
 }
 ```
 
-# <a name="version-30-preview"></a>[Versie 3.0-preview](#tab/version-3)
-
-U kunt de- `POST /vision/v3.0/read/analyze` en- `GET /vision/v3.0/read/operations/{operationId}` bewerkingen in concert gebruiken om asynchroon een installatie kopie te lezen, vergelijkbaar met de manier waarop de computer vision-service die bijbehorende rest-bewerkingen gebruikt. De asynchrone POST-methode retourneert een `operationId` die wordt gebruikt als id voor de HTTP GET-aanvraag.
-
-Selecteer in de Swagger-gebruikers interface de `asyncBatchAnalyze` om deze uit te vouwen in de browser. Selecteer vervolgens **Try it out**  >  **bestand**uitproberen. In dit voor beeld gebruiken we de volgende afbeelding:
-
-![tabbladen versus spaties](media/tabs-vs-spaces.png)
-
-Wanneer de asynchrone POST met succes is uitgevoerd, wordt een **HTTP 202-** status code geretourneerd. Als onderdeel van de reactie bevindt zich een `operation-location` kop die het eind punt voor de aanvraag bevat.
-
-```http
- content-length: 0
- date: Fri, 04 Sep 2020 16:23:01 GMT
- operation-location: http://localhost:5000/vision/v3.0/read/operations/a527d445-8a74-4482-8cb3-c98a65ec7ef9
- server: Kestrel
-```
-
-De `operation-location` is de volledig gekwalificeerde URL en is toegankelijk via een HTTP Get. Dit is het JSON-antwoord van het uitvoeren van de `operation-location` URL van de vorige installatie kopie:
-
-```json
-{
-  "status": "succeeded",
-  "createdDateTime": "2020-09-02T10:24:49Z",
-  "lastUpdatedDateTime": "2020-09-02T10:24:50Z",
-  "analyzeResult": {
-    "version": "3.0.0",
-    "readResults": [
-      {
-        "page": 1,
-        "angle": 2.12,
-        "width": 502,
-        "height": 252,
-        "unit": "pixel",
-        "language": "",
-        "lines": [
-          {
-            "boundingBox": [58, 42, 314, 59, 311, 123, 56, 121],
-            "text": "Tabs vs",
-            "words": [
-              {
-                "boundingBox": [85, 45, 242, 62, 241, 122, 83, 123],
-                "text": "Tabs",
-                "confidence": 0.981
-              },
-              {
-                "boundingBox": [258, 64, 314, 72, 314, 123, 256, 123],
-                "text": "vs",
-                "confidence": 0.958
-              }
-            ]
-          },
-          {
-            "boundingBox": [286, 171, 415, 165, 417, 197, 287, 201],
-            "text": "paces",
-            "words": [
-              {
-                "boundingBox": [303, 175, 415, 167, 415, 198, 306, 199],
-                "text": "paces",
-                "confidence": 0.918
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
-}
-```
-
 # <a name="version-20-preview"></a>[Versie 2,0-Preview](#tab/version-2)
 
 U kunt de- `POST /vision/v2.0/read/core/asyncBatchAnalyze` en- `GET /vision/v2.0/read/operations/{operationId}` bewerkingen in concert gebruiken om asynchroon een installatie kopie te lezen, vergelijkbaar met de manier waarop de computer vision-service die bijbehorende rest-bewerkingen gebruikt. De asynchrone POST-methode retourneert een `operationId` die wordt gebruikt als id voor de HTTP GET-aanvraag.
 
-Selecteer in de Swagger-gebruikers interface de `asyncBatchAnalyze` om deze uit te vouwen in de browser. Selecteer vervolgens **Try it out**  >  **bestand**uitproberen. In dit voor beeld gebruiken we de volgende afbeelding:
+Selecteer in de Swagger-gebruikers interface de `asyncBatchAnalyze` om deze uit te vouwen in de browser. Selecteer vervolgens **Try it out**  >  **bestand** uitproberen. In dit voor beeld gebruiken we de volgende afbeelding:
 
 ![tabbladen versus spaties](media/tabs-vs-spaces.png)
 
@@ -453,10 +354,6 @@ U kunt de volgende bewerking gebruiken om een installatie kopie synchroon te lez
 
 `POST /vision/v3.1/read/syncAnalyze` 
 
-# <a name="version-30-preview"></a>[Versie 3.0-preview](#tab/version-3)
-
-`POST /vision/v3.0/read/syncAnalyze`
-
 # <a name="version-20-preview"></a>[Versie 2,0-Preview](#tab/version-2)
 
 `POST /vision/v2.0/read/core/Analyze`
@@ -473,7 +370,7 @@ Wanneer de afbeelding volledig is gelezen en vervolgens alleen de API retourneer
 
 Het JSON-antwoord object heeft dezelfde object grafiek als de asynchrone versie. Als u een Java script-gebruiker bent en type veiligheid wilt, kunt u type script gebruiken om de JSON-reactie te casten.
 
-Voor een voor beeld van een use-case raadpleegt u de <a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer">type script sandbox hier <span class="docon docon-navigate-external x-hidden-focus"></span> </a> en selecteert u **uitvoeren** om het gebruiks gemak te visualiseren.
+Voor een voor beeld van een use-case raadpleegt u de <a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer">type script sandbox hier <span class="docon docon-navigate-external x-hidden-focus"></span></a> en selecteert u **uitvoeren** om het gebruiks gemak te visualiseren.
 
 ## <a name="stop-the-container"></a>De container stoppen
 

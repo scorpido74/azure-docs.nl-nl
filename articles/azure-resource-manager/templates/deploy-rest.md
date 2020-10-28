@@ -2,50 +2,50 @@
 title: Resources implementeren met REST API en sjabloon
 description: Gebruik Azure Resource Manager en Resource Manager-REST API om resources te implementeren in Azure. De resources zijn gedefinieerd in een Resource Manager-sjabloon.
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: 17ea7da3e0b581ed60d2db97d350a70d5250ef28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/22/2020
+ms.openlocfilehash: d1c8a365153007d3337d922bc163ba3767eeddc9
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87079480"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675412"
 ---
-# <a name="deploy-resources-with-arm-templates-and-resource-manager-rest-api"></a>Resources implementeren met ARM-sjablonen en REST API voor Resource Manager
+# <a name="deploy-resources-with-arm-templates-and-azure-resource-manager-rest-api"></a>Resources implementeren met ARM-sjablonen en Azure Resource Manager REST API
 
-In dit artikel wordt uitgelegd hoe u de sjablonen van Resource Manager REST API met Azure Resource Manager (ARM) kunt gebruiken om uw resources te implementeren in Azure.
+In dit artikel wordt uitgelegd hoe u de Azure Resource Manager REST API met Azure Resource Manager sjablonen (ARM-sjablonen) kunt gebruiken om uw resources te implementeren in Azure.
 
 U kunt uw sjabloon insluiten in de hoofd tekst van de aanvraag of een koppeling naar een bestand. Wanneer u een bestand gebruikt, kan dit een lokaal bestand zijn of een extern bestand dat beschikbaar is via een URI. Als uw sjabloon zich in een opslag account bevindt, kunt u de toegang tot de sjabloon beperken en een SAS-token (Shared Access Signature) opgeven tijdens de implementatie.
 
 ## <a name="deployment-scope"></a>Implementatie bereik
 
-U kunt uw implementatie richten op een beheer groep, een Azure-abonnement of een resource groep. In de meeste gevallen streeft u implementaties naar een resource groep. Beheer groep-of abonnements implementaties gebruiken om beleid en roltoewijzingen toe te passen binnen het opgegeven bereik. U kunt ook abonnements implementaties gebruiken voor het maken van een resource groep en het implementeren van resources. Afhankelijk van het bereik van de implementatie, gebruikt u verschillende opdrachten.
+U kunt uw implementatie richten op een resource groep, een Azure-abonnement, een beheer groep of een Tenant. Afhankelijk van het bereik van de implementatie, gebruikt u verschillende opdrachten.
 
-* Gebruik [implementaties-maken](/rest/api/resources/deployments/createorupdate)om te implementeren in een **resource groep**. De aanvraag wordt verzonden naar:
+* Gebruik [implementaties-maken](/rest/api/resources/deployments/createorupdate)om te implementeren in een **resource groep** . De aanvraag wordt verzonden naar:
 
   ```HTTP
-  PUT https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
+  PUT https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
   ```
 
-* Als u wilt implementeren in een **abonnement**, gebruikt u [implementaties-maken bij abonnements bereik](/rest/api/resources/deployments/createorupdateatsubscriptionscope). De aanvraag wordt verzonden naar:
+* Als u wilt implementeren in een **abonnement** , gebruikt u [implementaties-maken bij abonnements bereik](/rest/api/resources/deployments/createorupdateatsubscriptionscope). De aanvraag wordt verzonden naar:
 
   ```HTTP
-  PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
+  PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
   ```
 
   Zie [resource groepen en-resources op abonnements niveau maken](deploy-to-subscription.md)voor meer informatie over implementaties op abonnements niveau.
 
-* Als u wilt implementeren in een **beheer groep**, gebruikt u [implementaties-maken voor het bereik van de beheer groep](/rest/api/resources/deployments/createorupdateatmanagementgroupscope). De aanvraag wordt verzonden naar:
+* Als u wilt implementeren in een **beheer groep** , gebruikt u [implementaties-maken voor het bereik van de beheer groep](/rest/api/resources/deployments/createorupdateatmanagementgroupscope). De aanvraag wordt verzonden naar:
 
   ```HTTP
-  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
+  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
   ```
 
   Zie [resources maken op het niveau van de beheer groep](deploy-to-management-group.md)voor meer informatie over implementaties op het niveau van beheer groepen.
 
-* Als u wilt implementeren in een **Tenant**, gebruikt u [implementaties-maken of bijwerken in het Tenant bereik](/rest/api/resources/deployments/createorupdateattenantscope). De aanvraag wordt verzonden naar:
+* Als u wilt implementeren in een **Tenant** , gebruikt u [implementaties-maken of bijwerken in het Tenant bereik](/rest/api/resources/deployments/createorupdateattenantscope). De aanvraag wordt verzonden naar:
 
   ```HTTP
-  PUT https://management.azure.com/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
+  PUT https://management.azure.com/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
   ```
 
   Zie [resources maken op Tenant niveau](deploy-to-tenant.md)voor meer informatie over implementaties op Tenant niveau.
@@ -56,10 +56,10 @@ In de voor beelden in dit artikel worden de implementaties van resource groepen 
 
 1. [Algemene para meters en kopteksten](/rest/api/azure/)instellen, inclusief verificatie tokens.
 
-1. Als u geen bestaande resource groep hebt, maakt u een resource groep. Geef uw abonnements-ID, de naam van de nieuwe resource groep en de locatie op die u nodig hebt voor uw oplossing. Zie [een resource groep maken](/rest/api/resources/resourcegroups/createorupdate)voor meer informatie.
+1. Als u implementeert in een resource groep die niet bestaat, maakt u de resource groep. Geef uw abonnements-ID, de naam van de nieuwe resource groep en de locatie op die u nodig hebt voor uw oplossing. Zie [een resource groep maken](/rest/api/resources/resourcegroups/createorupdate)voor meer informatie.
 
    ```HTTP
-   PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2019-10-01
+   PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2020-06-01
    ```
 
    Met een aanvraag tekst zoals:
@@ -81,9 +81,9 @@ In de voor beelden in dit artikel worden de implementaties van resource groepen 
    PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2019-10-01
    ```
 
-   Geef in de hoofd tekst van de aanvraag een koppeling op naar uw sjabloon en parameter bestand. Zie voor meer informatie over het parameter bestand [Resource Manager-parameter bestand maken](parameter-files.md).
+   Geef in de hoofd tekst van de aanvraag een koppeling op naar uw sjabloon en parameter bestand. Zie [Een Resource Manager-parameterbestand maken](parameter-files.md) voor meer informatie over het parameterbestand.
 
-   U ziet dat de **modus** is ingesteld op **Incrementeel**. Stel de **modus** in op **voltooid**als u een volledige implementatie wilt uitvoeren. Wees voorzichtig met het gebruik van de volledige modus, omdat u per ongeluk resources kunt verwijderen die zich niet in uw sjabloon bevinden.
+   U ziet dat de **modus** is ingesteld op **Incrementeel** . Stel de **modus** in op **voltooid** als u een volledige implementatie wilt uitvoeren. Wees voorzichtig met het gebruik van de volledige modus, omdat u per ongeluk resources kunt verwijderen die zich niet in uw sjabloon bevinden.
 
    ```json
    {

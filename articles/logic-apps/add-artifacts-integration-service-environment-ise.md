@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: dc4798df05b760074ff06d95d9712204a3cf3e5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 147247c663311cfb3e05a986c6fb2bffbb41158b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269740"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675202"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Resources toevoegen aan uw integratie service omgeving (ISE) in Azure Logic Apps
 
@@ -34,7 +34,7 @@ Nadat u een [ISE (Integration service Environment)](../logic-apps/connect-virtua
 
 Voer de volgende stappen uit om Logic apps te bouwen die worden uitgevoerd in uw integratie service omgeving (ISE):
 
-1. Zoek en open uw ISE als deze nog niet is geopend. Selecteer in het menu ISE onder **instellingen**de optie **Logic apps**  >  **toevoegen**.
+1. Zoek en open uw ISE als deze nog niet is geopend. Selecteer in het menu ISE onder **instellingen** de optie **Logic apps**  >  **toevoegen** .
 
    ![Nieuwe logische app toevoegen aan ISE](./media/add-artifacts-integration-service-environment-ise/add-logic-app-to-ise.png)
 
@@ -47,10 +47,10 @@ Voer de volgende stappen uit om Logic apps te bouwen die worden uitgevoerd in uw
    | **Naam** | Ja | De naam van de logische app die moet worden gemaakt |
    | **Abonnement** | Ja | De naam voor het te gebruiken Azure-abonnement |
    | **Resourcegroep** | Ja | De naam voor de Azure-resource groep (nieuw of bestaand) die moet worden gebruikt |
-   | **Locatie** | Ja | Onder **integratie service omgevingen**selecteert u het te gebruiken ISE, als dit nog niet is geselecteerd. <p><p> **Belang rijk**: als u uw Logic Apps wilt gebruiken met een integratie account, moeten beide dezelfde ISE gebruiken. |
+   | **Locatie** | Ja | Onder **integratie service omgevingen** selecteert u het te gebruiken ISE, als dit nog niet is geselecteerd. <p><p> **Belang rijk** : als u uw Logic Apps wilt gebruiken met een integratie account, moeten beide dezelfde ISE gebruiken. |
    ||||
 
-1. Als u gereed bent, selecteert u **Maken**.
+1. Als u gereed bent, selecteert u **Maken** .
 
 1. Blijf [op de gebruikelijke manier door gaan met het maken van uw logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -66,7 +66,7 @@ Op basis van de [ISE-SKU](../logic-apps/connect-virtual-network-vnet-isolated-en
 
 Voer de volgende stappen uit om een integratie account te maken dat gebruikmaakt van een ISE:
 
-1. Zoek en open uw ISE als deze nog niet is geopend. Selecteer in het menu ISE onder **instellingen**de optie **integratie accounts**  >  **toevoegen**.
+1. Zoek en open uw ISE als deze nog niet is geopend. Selecteer in het menu ISE onder **instellingen** de optie **integratie accounts**  >  **toevoegen** .
 
    ![Nieuw integratie account toevoegen aan ISE](./media/add-artifacts-integration-service-environment-ise/add-integration-account-to-ise.png)
 
@@ -80,10 +80,10 @@ Voer de volgende stappen uit om een integratie account te maken dat gebruikmaakt
    | **Abonnement** | Ja | De naam voor het Azure-abonnement dat u wilt gebruiken |
    | **Resourcegroep** | Ja | De naam voor de Azure-resource groep (nieuw of bestaand) die moet worden gebruikt |
    | **Prijscategorie** | Ja | De prijs categorie die moet worden gebruikt voor het integratie account |
-   | **Locatie** | Ja | Onder **integratie service omgevingen**selecteert u dezelfde ISE als uw Logic apps, als deze nog niet is geselecteerd. <p><p> **Belang rijk**: als u uw integratie account wilt gebruiken met Logic apps, moeten beide dezelfde ISE gebruiken. |
+   | **Locatie** | Ja | Onder **integratie service omgevingen** selecteert u dezelfde ISE als uw Logic apps, als deze nog niet is geselecteerd. <p><p> **Belang rijk** : als u uw integratie account wilt gebruiken met Logic apps, moeten beide dezelfde ISE gebruiken. |
    ||||
 
-1. Als u gereed bent, selecteert u **Maken**.
+1. Als u gereed bent, selecteert u **Maken** .
 
 1. [Koppel uw logische app op de gebruikelijke manier aan uw integratie account](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account).
 
@@ -95,13 +95,27 @@ Voer de volgende stappen uit om een integratie account te maken dat gebruikmaakt
 
 ## <a name="add-ise-connectors"></a>ISE-connectors toevoegen
 
-Door micro soft beheerde connectors die beschikbaar worden nadat u uw ISE hebt gemaakt, worden niet automatisch weer gegeven in de connector kiezer van de ontwerp functie voor logische apps. Voordat u deze ISE-connectors kunt gebruiken, moet u deze connectors hand matig toevoegen en implementeren voor uw ISE, zodat ze in de ontwerp functie voor logische apps worden weer gegeven.
+Nadat u uw ISE hebt gemaakt, worden beheerde ISE-connectors niet automatisch weer gegeven in de connector kiezer van de Logic app Designer. Voordat u deze ISE-connectors kunt gebruiken, moet u deze connectors hand matig toevoegen en implementeren voor uw ISE, zodat ze in de ontwerp functie voor logische apps worden weer gegeven.
 
-1. Selecteer in het menu ISE, onder **instellingen**, **beheerde connectors**. Selecteer **toevoegen**op de werk balk.
+> [!IMPORTANT]
+> Beheerde ISE-connectors ondersteunen momenteel geen [Tags](../azure-resource-manager/management/tag-support.md). Als u een beleid instelt dat labels afdwingt, kan het toevoegen van ISE-connectors mislukken met een fout die vergelijkbaar is met dit voor beeld:
+> 
+> ```json
+> {
+>    "error": { 
+>       "code": "IntergrationServiceEnvironmentManagedApiDefinitionTagsNotSupported", 
+>       "message": "The tags are not supported in the managed API 'azureblob'."
+>    }
+> }
+> ```
+> 
+> Als u ISE-connectors wilt toevoegen, moet u het beleid uitschakelen of verwijderen. 
+
+1. Selecteer in het menu ISE, onder **instellingen** , **beheerde connectors** . Selecteer **toevoegen** op de werk balk.
 
    ![Beheerde connectors weer geven](./media/add-artifacts-integration-service-environment-ise/ise-view-managed-connectors.png)
 
-1. Open in het deel venster **een nieuwe beheerde connector toevoegen** de lijst **connector zoeken** . Selecteer de ISE-connector die u wilt gebruiken, maar die nog niet is geïmplementeerd in uw ISE. Selecteer **Maken**.
+1. Open in het deel venster **een nieuwe beheerde connector toevoegen** de lijst **connector zoeken** . Selecteer de ISE-connector die u wilt gebruiken, maar die nog niet is geïmplementeerd in uw ISE. Selecteer **Maken** .
 
    ![Selecteer de ISE-connector die u wilt implementeren in uw ISE](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
 
@@ -113,17 +127,17 @@ Door micro soft beheerde connectors die beschikbaar worden nadat u uw ISE hebt g
 
 Als u aangepaste connectors in uw ISE wilt gebruiken, maakt u die aangepaste connectors rechtstreeks in uw ISE.
 
-1. Zoek en open uw ISE als deze nog niet is geopend. Selecteer in het menu ISE onder **instellingen**de optie **aangepaste connectors**  >  **toevoegen**.
+1. Zoek en open uw ISE als deze nog niet is geopend. Selecteer in het menu ISE onder **instellingen** de optie **aangepaste connectors**  >  **toevoegen** .
 
    ![Een aangepaste connector maken](./media/add-artifacts-integration-service-environment-ise/add-custom-connector-to-ise.png)
 
 1. Geef de naam, het Azure-abonnement en de Azure-resource groep (nieuw of bestaand) op die u voor uw aangepaste connector wilt gebruiken.
 
-1. Selecteer in de lijst **locatie** , onder de sectie **integratie service omgevingen** , dezelfde ISE die uw Logic apps gebruiken en selecteer **maken**, bijvoorbeeld:
+1. Selecteer in de lijst **locatie** , onder de sectie **integratie service omgevingen** , dezelfde ISE die uw Logic apps gebruiken en selecteer **maken** , bijvoorbeeld:
 
    ![Scherm opname van het venster ' maken Logic Apps aangepaste connector ' met voorbeeld informatie geselecteerd.](./media/add-artifacts-integration-service-environment-ise/create-custom-connector-integration-service-environment.png)
 
-1. Selecteer de nieuwe aangepaste connector en selecteer vervolgens **bewerken**, bijvoorbeeld:
+1. Selecteer de nieuwe aangepaste connector en selecteer vervolgens **bewerken** , bijvoorbeeld:
 
    ![Aangepaste connector selecteren en bewerken](./media/add-artifacts-integration-service-environment-ise/edit-custom-connectors.png)
 

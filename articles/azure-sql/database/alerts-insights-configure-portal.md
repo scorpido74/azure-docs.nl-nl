@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: 2fdaaf153f242a25e1ad9d8f926d6ac77d285df2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64bef8a1cd4353ed9602c36cf728a0d727458251
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444900"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675137"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-using-the-azure-portal"></a>Waarschuwingen maken voor Azure SQL Database en Azure Synapse Analytics met behulp van de Azure Portal
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -45,7 +45,7 @@ U kunt informatie over waarschuwings regels configureren en ophalen met behulp v
 * [Azure Portal](../../azure-monitor/platform/alerts-classic-portal.md)
 * [PowerShell](../../azure-monitor/platform/alerts-classic-portal.md)
 * [Een opdracht regel interface (CLI)](../../azure-monitor/platform/alerts-classic-portal.md)
-* [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* [Azure Monitor REST API](/rest/api/monitor/alertrules)
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Een waarschuwings regel maken op basis van een metriek met de Azure Portal
 
@@ -57,14 +57,14 @@ U kunt informatie over waarschuwings regels configureren en ophalen met behulp v
 3. Selecteer de knop **nieuwe waarschuwings regel** om de pagina **regel maken** te openen.
   ![Regel maken](./media/alerts-insights-configure-portal/create-rule.png)
 
-4. Klik in de sectie **voor waarde** op **toevoegen**.
+4. Klik in de sectie **voor waarde** op **toevoegen** .
   ![Voor waarde definiëren](./media/alerts-insights-configure-portal/create-rule.png)
 5. Selecteer een signaal op de pagina **signaal logica configureren** .
   ![Signaal selecteren](./media/alerts-insights-configure-portal/select-signal.png)
-6. Na het selecteren van een signaal, zoals **CPU-percentage**, wordt de pagina **signaal logica configureren** weer gegeven.
+6. Na het selecteren van een signaal, zoals **CPU-percentage** , wordt de pagina **signaal logica configureren** weer gegeven.
   ![Signaallogica configureren](./media/alerts-insights-configure-portal/configure-signal-logic.png)
-7. Op deze pagina configureert u dat drempel type, operator, aggregatie type, drempel waarde, aggregatie granulatie en frequentie van de evaluatie. Klik vervolgens op **Gereed**.
-8. Selecteer op de **regel maken**een bestaande **actie groep** of maak een nieuwe groep. Met een actie groep kunt u de actie definiëren die moet worden uitgevoerd wanneer er een waarschuwings voorwaarde optreedt.
+7. Op deze pagina configureert u dat drempel type, operator, aggregatie type, drempel waarde, aggregatie granulatie en frequentie van de evaluatie. Klik vervolgens op **Gereed** .
+8. Selecteer op de **regel maken** een bestaande **actie groep** of maak een nieuwe groep. Met een actie groep kunt u de actie definiëren die moet worden uitgevoerd wanneer er een waarschuwings voorwaarde optreedt.
   ![Actie groep definiëren](./media/alerts-insights-configure-portal/action-group.png)
 
 9. Definieer een naam voor de regel, geef een optionele beschrijving op, kies een Ernst niveau voor de regel, kies of u de regel wilt inschakelen bij het maken van de regel en klik vervolgens op **regel waarschuwing maken** om de waarschuwing voor de metrische regel te maken.

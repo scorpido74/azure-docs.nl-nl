@@ -5,18 +5,18 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, rohitha, vikanand, hongzili, sopai, absaafan, logicappspm
 ms.topic: conceptual
-ms.date: 09/26/2020
-ms.openlocfilehash: cc52358af203bafc87c5f9ac3ae1f237c0c7ae6c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/16/2020
+ms.openlocfilehash: 3b8bf89bc43781fdf6c1a640992f15e21691cd63
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597789"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676271"
 ---
-# <a name="create-stateful-or-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Stateful of stateless werk stromen maken in Visual Studio code met de extensie Azure Logic Apps (preview)
+# <a name="create-stateful-or-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Stateful of stateless werkstromen maken in Visual Studio code met de Azure Logic Apps-extensie (preview)
 
 > [!IMPORTANT]
-> Deze mogelijkheid is beschikbaar als open bare preview, wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+> Deze functie is in openbare preview en wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 Als u logische app-werk stromen wilt maken die kunnen worden geïntegreerd in apps, gegevens, Cloud Services en systemen, kunt u Visual Studio code en de uitbrei ding Azure Logic Apps (preview) gebruiken voor het maken en uitvoeren van [ *stateful* en *stateless* logische app-werk stromen](#stateful-stateless) in uw ontwikkel omgeving.
 
@@ -74,7 +74,7 @@ De uitbrei ding Azure Logic Apps (preview) biedt veel actuele en aanvullende Log
 
   Maak stateless Logic apps wanneer u geen gegevens hoeft op te slaan, te controleren of ernaar te verwijzen vanuit eerdere gebeurtenissen in de externe opslag om deze later te controleren. Deze Logic apps bewaren de invoer en uitvoer voor elke actie en hun werk stroom statussen worden alleen in het geheugen opgeslagen, in plaats van deze gegevens over te dragen naar externe opslag. Als gevolg hiervan hebben stateless Logic apps kortere uitvoeringen die doorgaans niet langer zijn dan vijf minuten, snellere prestaties met snellere reactie tijden, een hogere door Voer en lagere uitvoerings kosten, omdat de details van de uitvoering en de geschiedenis niet in de externe opslag worden bewaard. Als er echter storingen optreden, worden onderbroken uitvoeringen niet automatisch hersteld. de oproepende functie moet de onderbroken uitvoeringen hand matig opnieuw verzenden. Deze Logic apps kunnen alleen synchroon worden uitgevoerd en voor eenvoudiger fout opsporing kunt u de [uitvoerings geschiedenis inschakelen](#run-history), wat invloed heeft op de prestaties.
 
-  Stateless werk stromen ondersteunen momenteel alleen acties voor [beheerde connectors](../connectors/apis-list.md#managed-api-connectors), niet voor triggers. Als u uw werk stroom wilt starten, selecteert u de [ingebouwde aanvraag, Event hubs of service bus trigger](../connectors/apis-list.md#built-ins). Zie [niet-ondersteunde mogelijkheden](#unsupported)voor meer informatie over niet-ondersteunde triggers, acties en connectors.
+  Stateless werk stromen ondersteunen momenteel alleen *acties* voor [beheerde connectors](../connectors/apis-list.md#managed-api-connectors), die worden geïmplementeerd in azure, en niet voor triggers. Als u uw werk stroom wilt starten, selecteert u de [ingebouwde aanvraag, Event hubs of service bus trigger](../connectors/apis-list.md#built-ins), die systeem eigen met de Logic apps runtime uitvoert. Zie niet-ondersteunde [of niet-beschik bare mogelijkheden](#unsupported)voor meer informatie over niet-ondersteunde triggers, acties en connectors.
 
 Zie [genest gedrag verschillen tussen stateful en stateless Logic](#nested-behavior)apps voor meer informatie over de werking van geneste logische apps tussen stateful en stateless Logic apps.
 
@@ -104,9 +104,9 @@ Deze mogelijkheden zijn niet beschikbaar of worden niet ondersteund voor deze op
 
 * Niet alle Azure-regio's worden nog ondersteund. Controleer de [lijst met regio's](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md#available-regions)voor momenteel beschik bare regio's.
 
-* Als u uw werk stroom wilt starten, gebruikt u de [trigger aanvraag, http, Event hubs of service bus](../connectors/apis-list.md). Op dit moment worden [bedrijfs connectors](../connectors/apis-list.md#enterprise-connectors), [on-premises gegevens gateway triggers](../connectors/apis-list.md#on-premises-connectors), webhook-triggers, schuivende venster trigger, [aangepaste connectors](../connectors/apis-list.md#custom-apis-and-connectors), integratie accounts, hun artefacten en [hun connectors](../connectors/apis-list.md#integration-account-connectors) niet ondersteund in deze preview-versie. De mogelijkheid om een Azure-functie aan te roepen, is niet beschikbaar, dus gebruik de HTTP- *actie* om de aanvraag-URL voor de Azure-functie aan te roepen.
+* Als u uw werk stroom wilt starten, gebruikt u de [trigger voor ingebouwde aanvragen, http, Event hubs of service bus](../connectors/apis-list.md), die systeem eigen met de Logic apps runtime uitvoert. Op dit moment worden [bedrijfs connectors](../connectors/apis-list.md#enterprise-connectors), [on-premises gegevens gateway triggers](../connectors/apis-list.md#on-premises-connectors), webhook-triggers, schuivende venster trigger, [aangepaste connectors](../connectors/apis-list.md#custom-apis-and-connectors), integratie accounts, hun artefacten en [hun connectors](../connectors/apis-list.md#integration-account-connectors) niet ondersteund in deze preview-versie. De mogelijkheid om een Azure-functie aan te roepen, is niet beschikbaar, dus gebruik de HTTP- *actie* om de aanvraag-URL voor de Azure-functie aan te roepen.
 
-  De werk stromen voor stateless logische apps kunnen alleen acties voor [beheerde connectors](../connectors/apis-list.md#managed-api-connectors)gebruiken, niet voor triggers. Met uitzonde ring van de eerder opgegeven triggers kunnen stateful werk stromen zowel triggers als acties voor beheerde connectors gebruiken.
+  Met uitzonde ring van de eerder opgegeven triggers kunnen *stateful* werk stromen zowel triggers als acties voor [beheerde connectors](../connectors/apis-list.md#managed-api-connectors)gebruiken, die in Azure worden geïmplementeerd. *Stateless* werk stromen ondersteunen momenteel echter alleen *acties* voor beheerde connectors, niet voor triggers. Hoewel u de mogelijkheid hebt om connectors in Azure in te scha kelen voor uw stateless werk stroom, worden in de ontwerp functie geen beheerde connector triggers weer gegeven die u kunt selecteren.
 
 * U kunt het resource type nieuwe **logische app (preview-versie)** alleen implementeren op een [Premium-of app service hosting plan in azure](#publish-azure) of op een [docker-container](#deploy-docker), en niet de [integratie service omgevingen (ISEs)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). **Verbruiks** hosting plannen worden niet ondersteund of zijn niet beschikbaar voor de implementatie van dit resource type.
 
@@ -152,7 +152,7 @@ Deze mogelijkheden zijn niet beschikbaar of worden niet ondersteund voor deze op
 
   * [Azure Logic apps (preview)-extensie voor Visual Studio code](https://go.microsoft.com/fwlink/p/?linkid=2143167). Deze uitbrei ding voor open bare preview biedt u de mogelijkheid om stateful en stateless Logic apps te maken en ze lokaal uit te voeren in Visual Studio code.
 
-    Op dit moment kunt u zowel de oorspronkelijke **Azure Logic apps** extensie als de nieuwe uitbrei ding **voor de Azure Logic apps (preview)** tegelijk in Visual Studio code installeren. Als u het pictogram van Azure selecteert op de Visual Studio code-werk balk, kunt u alle Logic apps weer geven die zijn geïmplementeerd in azure, maar elk resource type wordt weer gegeven in hun eigen uitbreidings secties, **Logic apps** en **Azure Logic apps (preview)**.
+    Op dit moment kunt u zowel de oorspronkelijke **Azure Logic apps** extensie als de nieuwe uitbrei ding **voor de Azure Logic apps (preview)** tegelijk in Visual Studio code installeren. Als u het pictogram van Azure selecteert op de Visual Studio code-werk balk, kunt u alle Logic apps weer geven die zijn geïmplementeerd in azure, maar elk resource type wordt weer gegeven in hun eigen uitbreidings secties, **Logic apps** en **Azure Logic apps (preview)** .
 
     > [!IMPORTANT]
     > Als u logische apps hebt gemaakt met behulp van de extensie **Azure Logic apps (private preview)** , werken deze Logic apps niet met de open bare preview-extensie. U kunt deze logische apps echter migreren door de uitbrei ding van de persoonlijke preview-versie te verwijderen, de vereiste opschoning uit te voeren en de uitbrei ding voor open bare preview te installeren. U kunt vervolgens een nieuw project maken in Visual Studio code en het **werk stroom. definitie** bestand van uw eerder gemaakte logische app kopiëren naar het nieuwe project.
@@ -171,9 +171,9 @@ Deze mogelijkheden zijn niet beschikbaar of worden niet ondersteund voor deze op
 
     Voer de volgende stappen uit om de extensie **Azure Logic apps (preview)** te installeren:
 
-    1. Selecteer in Visual Studio code op de werk balk links de optie **uitbrei dingen**.
+    1. Selecteer in Visual Studio code op de werk balk links de optie **uitbrei dingen** .
 
-    1. Typ in het zoekvak voor extensies `azure logic apps preview` . Selecteer **Azure Logic apps (preview)** installeren in de lijst met resultaten **>** **Install**.
+    1. Typ in het zoekvak voor extensies `azure logic apps preview` . Selecteer **Azure Logic apps (preview)** installeren in de lijst met resultaten **>** **Install** .
 
        Nadat de installatie is voltooid, wordt de uitbrei ding van de open bare preview weer gegeven in de lijst **extensies: installed** .
 
@@ -193,9 +193,9 @@ Deze mogelijkheden zijn niet beschikbaar of worden niet ondersteund voor deze op
 
    Voer de volgende stappen uit om deze instelling te controleren:
 
-   1. Ga in het menu **bestand** naar **voor keur** **>** **instellingen**.
+   1. Ga in het menu **bestand** naar **voor keur** **>** **instellingen** .
 
-   1. Ga op het tabblad **gebruiker** naar **onderdelen** **>** **extensies**.
+   1. Ga op het tabblad **gebruiker** naar **onderdelen** **>** **extensies** .
 
    1. Controleer of **automatisch controleren van updates** en **automatisch bijwerken** is geselecteerd.
 
@@ -204,11 +204,11 @@ Deze mogelijkheden zijn niet beschikbaar of worden niet ondersteund voor deze op
    * **Azure Logic Apps v2: paneel modus**
    * **Azure Logic Apps v2: Project runtime**
 
-   1. Ga in het menu **bestand** naar **voor keur** **>** **instellingen**.
+   1. Ga in het menu **bestand** naar **voor keur** **>** **instellingen** .
 
-   1. Ga op het tabblad **gebruiker** naar **>** **extensies** **>** **Azure Logic apps (preview)**.
+   1. Ga op het tabblad **gebruiker** naar **>** **extensies** **>** **Azure Logic apps (preview)** .
 
-   1. Controleer onder **Azure Logic apps v2: deel venster modus**, of **modus inschakelen** is geselecteerd. Stel onder **Azure Logic apps v2: Project runtime**de versie in op **~ 3** of **~ 2**, op basis van de [Azure functions core tools versie](#prerequisites) die u eerder hebt geïnstalleerd.
+   1. Controleer onder **Azure Logic apps v2: deel venster modus** , of **modus inschakelen** is geselecteerd. Stel onder **Azure Logic apps v2: Project runtime** de versie in op **~ 3** of **~ 2** , op basis van de [Azure functions core tools versie](#prerequisites) die u eerder hebt geïnstalleerd.
 
       > [!IMPORTANT]
       > Als u de [ **inline code** actie](../logic-apps/logic-apps-add-run-inline-code.md) voor het uitvoeren van Java script-code wilt gebruiken, moet u ervoor zorgen dat u Project runtime versie 3 gebruikt, omdat de actie geen ondersteuning biedt voor versie 2. Deze actie wordt momenteel niet ondersteund in Linux-besturings systemen.
@@ -223,11 +223,11 @@ Deze mogelijkheden zijn niet beschikbaar of worden niet ondersteund voor deze op
 
    ![Scherm afbeelding van de werk balk Visual Studio code en het geselecteerde Azure-pictogram.](./media/create-stateful-stateless-workflows-visual-studio-code/visual-studio-code-azure-icon.png)
 
-1. In het deel venster Azure, onder **Azure: Logic apps (preview)**, selecteert **u aanmelden bij Azure**. Wanneer de pagina Visual Studio-code verificatie wordt weer gegeven, meldt u zich aan met uw Azure-account.
+1. In het deel venster Azure, onder **Azure: Logic apps (preview)** , selecteert **u aanmelden bij Azure** . Wanneer de pagina Visual Studio-code verificatie wordt weer gegeven, meldt u zich aan met uw Azure-account.
 
    ![Scherm opname van het Azure-venster en de geselecteerde koppeling voor Azure-aanmelding.](./media/create-stateful-stateless-workflows-visual-studio-code/sign-in-azure-subscription.png)
 
-   Nadat u zich hebt aangemeld, worden in het deel venster Azure de abonnementen in uw Azure-account weer gegeven. Als u de openbaar uitgebrachte Logic Apps extensie hebt, kunt u alle oorspronkelijke Logic Apps resources vinden die u hebt gemaakt met behulp van de oorspronkelijke uitbrei ding in de sectie **Logic apps** van de uitbrei ding, niet op de voorbeeld sectie **Logic apps (preview-** versie).
+   Nadat u zich hebt aangemeld, worden in het deel venster Azure de abonnementen in uw Azure-account weer gegeven. Als u de openbaar uitgebrachte Logic Apps extensie hebt, kunt u alle oorspronkelijke Logic Apps resources vinden die u hebt gemaakt met behulp van de oorspronkelijke uitbrei ding in de sectie **Logic apps** van de uitbrei ding, niet in de sectie Logic apps van de preview-extensie **(preview)** .
    
    Als de verwachte abonnementen niet worden weer gegeven of als u wilt dat in het deel venster alleen specifieke abonnementen worden weer gegeven, volgt u deze stappen:
 
@@ -237,7 +237,7 @@ Deze mogelijkheden zijn niet beschikbaar of worden niet ondersteund voor deze op
 
       Of Selecteer uw Azure-account in de status balk van Visual Studio code. 
 
-   1. Wanneer er een andere abonnementen lijst wordt weer gegeven, selecteert u de gewenste abonnementen en selecteert u **OK**.
+   1. Wanneer er een andere abonnementen lijst wordt weer gegeven, selecteert u de gewenste abonnementen en selecteert u **OK** .
 
 <a name="create-project"></a>
 
@@ -253,13 +253,13 @@ Voordat u uw logische app kunt maken, moet u een lokaal project maken, zodat u u
 
    ![Scherm opname van de Azure-venster werkbalk met ' nieuw project maken ' geselecteerd.](./media/create-stateful-stateless-workflows-visual-studio-code/create-new-project-folder.png)
 
-1. Als Windows Defender firewall u vraagt om netwerk toegang te verlenen voor `Code.exe` , dat wil zeggen Visual Studio code, en voor `func.exe` , de Azure functions core tools, selecteert u **particuliere netwerken, zoals mijn thuis-of bedrijfs netwerk,** **>** **toegang toestaan**.
+1. Als Windows Defender firewall u vraagt om netwerk toegang te verlenen voor `Code.exe` , dat wil zeggen Visual Studio code, en voor `func.exe` , de Azure functions core tools, selecteert u **particuliere netwerken, zoals mijn thuis-of bedrijfs netwerk,** **>** **toegang toestaan** .
 
 1. Blader naar de locatie waar u de projectmap hebt gemaakt, Selecteer deze map en ga door.
 
    ![Scherm opname van het dialoog venster ' map selecteren ' met een nieuw gemaakte projectmap en de knop selecteren geselecteerd.](./media/create-stateful-stateless-workflows-visual-studio-code/select-project-folder.png)
 
-1. Selecteer in de lijst met sjablonen die wordt weer gegeven, een **stateful werk stroom** of **stateless werk stroom**. In dit voor beeld wordt een **stateful werk stroom**geselecteerd.
+1. Selecteer in de lijst met sjablonen die wordt weer gegeven, een **stateful werk stroom** of **stateless werk stroom** . In dit voor beeld wordt een **stateful werk stroom** geselecteerd.
 
    ![Scherm opname van de lijst met werk stroom sjablonen waarvoor een stateful werk stroom is geselecteerd.](./media/create-stateful-stateless-workflows-visual-studio-code/select-stateful-stateless-workflow.png)
 
@@ -267,7 +267,7 @@ Voordat u uw logische app kunt maken, moet u een lokaal project maken, zodat u u
 
    ![Scherm opname van het vak ' een nieuwe stateful werk stroom maken (3/4) ' en ' voor beeld-werk stroom ' als werk stroom naam.](./media/create-stateful-stateless-workflows-visual-studio-code/name-your-workflow.png)
 
-1. Selecteer in de volgende lijst die wordt weer gegeven, de optie **openen in huidig venster**.
+1. Selecteer in de volgende lijst die wordt weer gegeven, de optie **openen in huidig venster** .
 
    ![Scherm opname van de lijst met ' openen in het huidige venster ' geselecteerd.](./media/create-stateful-stateless-workflows-visual-studio-code/select-project-location.png)
 
@@ -294,11 +294,11 @@ Voordat u uw logische app kunt maken, moet u een lokaal project maken, zodat u u
    }
    ```
 
-   Zorg ervoor dat u expliclitly **global.js** toevoegt aan uw project op de hoofd locatie vanuit Visual Studio code. Anders wordt de ontwerp functie niet geopend.
+   Zorg ervoor dat u die **global.js** expliciet toevoegt aan het bestand in het project op de hoofd locatie in Visual Studio code. Anders wordt de ontwerp functie niet geopend.
 
 1. Als Visual Studio code wordt uitgevoerd op Windows of Linux, moet u ervoor zorgen dat de Azure Storage emulator wordt uitgevoerd. Raadpleeg de [vereisten](#prerequisites)voor meer informatie.
 
-1. Vouw de projectmap voor uw werk stroom uit. Open de **workflow.jsin** het snelmenu van het bestand en selecteer **openen in Designer**.
+1. Vouw de projectmap voor uw werk stroom uit. Open de **workflow.jsin** het snelmenu van het bestand en selecteer **openen in Designer** .
 
    ![Scherm opname van het deel venster Verkenner en het snelkoppelings venster voor de workflow.jsin het bestand ' openen in Designer ' is geselecteerd.](./media/create-stateful-stateless-workflows-visual-studio-code/open-definition-file-in-designer.png)
 
@@ -306,7 +306,7 @@ Voordat u uw logische app kunt maken, moet u een lokaal project maken, zodat u u
 
    Controleer in Visual Studio code de uitvoer van de preview-uitbrei ding.
 
-   1. Selecteer in het menu **weer gave** de optie **uitvoer**.
+   1. Selecteer in het menu **weer gave** de optie **uitvoer** .
 
    1. Selecteer in de lijst op de titel balk van de **uitvoer** **Azure Logic apps** zodat u de uitvoer voor de preview-uitbrei ding kunt bekijken, bijvoorbeeld:
 
@@ -326,13 +326,16 @@ Voordat u uw logische app kunt maken, moet u een lokaal project maken, zodat u u
       Host shutdown completed.
       ```
 
-      Deze fout kan optreden als u eerder hebt geprobeerd om de ontwerp functie te openen en vervolgens het project uit te zetten of te verwijderen. Om deze fout op te lossen, verwijdert u de map **ExtensionBundles** op deze locatie **. ..\Users \\ {uw-username} \AppData\Local\Temp\Functions\ExtensionBundles**en probeer het **workflow.js** opnieuw te openen in het bestand in de ontwerp functie.
+      Deze fout kan optreden als u eerder hebt geprobeerd om de ontwerp functie te openen en vervolgens het project uit te zetten of te verwijderen. Om deze fout op te lossen, verwijdert u de map **ExtensionBundles** op deze locatie **. ..\Users \\ {uw-username} \AppData\Local\Temp\Functions\ExtensionBundles** en probeer het **workflow.js** opnieuw te openen in het bestand in de ontwerp functie.
 
-1. Selecteer in de lijst **connectors in azure inschakelen** de optie **connectors van Azure gebruiken**. Dit is van toepassing op alle beheerde connectors die beschikbaar zijn in de Azure Portal, niet alleen voor connectors voor Azure-Services.
+1. Selecteer in de lijst **connectors in azure inschakelen** de optie **connectors van Azure gebruiken** . Dit is van toepassing op alle beheerde connectors die beschikbaar zijn en worden geïmplementeerd in azure, niet alleen voor connectors voor Azure-Services.
 
    ![Scherm opname van het Verkenner-deel venster met de lijst ' connectors in azure inschakelen ' open en connectors van Azure gebruiken geselecteerd.](./media/create-stateful-stateless-workflows-visual-studio-code/use-connectors-from-azure.png)
 
-1. Selecteer in de lijst resource groepen de optie **nieuwe resource groep maken**.
+   > [!NOTE]
+   > Stateless werk stromen ondersteunen momenteel alleen *acties* voor [beheerde connectors](../connectors/apis-list.md#managed-api-connectors), die worden geïmplementeerd in azure, en niet voor triggers. Hoewel u de mogelijkheid hebt om connectors in Azure in te scha kelen voor uw stateless werk stroom, worden in de ontwerp functie geen beheerde connector triggers weer gegeven die u kunt selecteren.
+
+1. Selecteer in de lijst resource groepen de optie **nieuwe resource groep maken** .
 
    ![Scherm opname van het Verkenner-deel venster met de lijst resource groepen en ' nieuwe resource groep maken ' geselecteerd](./media/create-stateful-stateless-workflows-visual-studio-code/create-select-resource-group.png)
 
@@ -340,7 +343,7 @@ Voordat u uw logische app kunt maken, moet u een lokaal project maken, zodat u u
 
    ![Scherm opname van het deel venster Verkenner en de naam van de resource groep.](./media/create-stateful-stateless-workflows-visual-studio-code/enter-name-for-resource-group.png)
 
-1. Zoek en selecteer in de lijst locaties een [ondersteunde Azure-regio](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md#available-regions) die u kunt gebruiken voor het maken van uw resource groep en-resources. In dit voor beeld wordt **West-Centraal VS**gebruikt.
+1. Zoek en selecteer in de lijst locaties een [ondersteunde Azure-regio](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md#available-regions) die u kunt gebruiken voor het maken van uw resource groep en-resources. In dit voor beeld wordt **West-Centraal VS** gebruikt.
 
    > [!IMPORTANT]
    > Niet alle regio's worden momenteel ondersteund, maar updates voor het toevoegen van meer regio's worden uitgevoerd. Als u een niet-ondersteunde regio selecteert, kan dit leiden tot problemen, zoals het maken van verbindingen. Bekijk de [pagina bekende problemen](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md#available-regions)met de uitbrei ding github voor de regio's die momenteel worden ondersteund.
@@ -350,7 +353,7 @@ Voordat u uw logische app kunt maken, moet u een lokaal project maken, zodat u u
    Nadat u deze stap hebt uitgevoerd, opent Visual Studio code de ontwerp functie voor logische apps.
 
    > [!NOTE]
-   > Wanneer Visual Studio code de ontwerp tijd API van de werk stroom start, wordt er een bericht weer gegeven dat het opstarten enkele seconden kan duren. U kunt dit bericht negeren of **OK**selecteren.
+   > Wanneer Visual Studio code de ontwerp tijd API van de werk stroom start, wordt er een bericht weer gegeven dat het opstarten enkele seconden kan duren. U kunt dit bericht negeren of **OK** selecteren.
 
    Nadat de ontwerp functie voor logische apps wordt weer gegeven, wordt de prompt **een bewerking kiezen** wordt weer gegeven in de ontwerp functie en wordt standaard geselecteerd, waarin het deel venster **actie toevoegen** wordt weer gegeven.
 
@@ -366,9 +369,9 @@ Nadat u de ontwerp functie voor logische apps hebt geopend vanuit uw **workflow.
 
 De werk stroom van de logische app in dit voor beeld maakt gebruik van deze trigger en deze acties:
 
-* De ingebouwde [aanvraag trigger](../connectors/connectors-native-reqres.md), **wanneer er een HTTP-aanvraag wordt ontvangen**, die inkomende aanroepen of aanvragen ontvangt en een eind punt maakt dat andere services of logische apps kan aanroepen.
+* De ingebouwde [aanvraag trigger](../connectors/connectors-native-reqres.md), **wanneer er een HTTP-aanvraag wordt ontvangen** , die inkomende aanroepen of aanvragen ontvangt en een eind punt maakt dat andere services of logische apps kan aanroepen.
 
-* De [Office 365 Outlook-actie](../connectors/connectors-create-api-office365-outlook.md), **een e-mail verzenden**.
+* De [Office 365 Outlook-actie](../connectors/connectors-create-api-office365-outlook.md), **een e-mail verzenden** .
 
 * De ingebouwde [reactie actie](../connectors/connectors-native-reqres.md)die u gebruikt om een antwoord te verzenden en gegevens terug te sturen naar de aanroeper.
 
@@ -376,7 +379,7 @@ De werk stroom van de logische app in dit voor beeld maakt gebruik van deze trig
 
 1. Zorg ervoor dat naast de ontwerp functie in het deel venster **een trigger toevoegen** onder het zoekvak **een bewerking kiezen de optie** **ingebouwd** is geselecteerd, zodat u een trigger kunt selecteren die systeem eigen wordt uitgevoerd.
 
-1. Voer in het zoekvak **een bewerking kiezen** het selectie vakje in `when a http request` en selecteer de ingebouwde aanvraag trigger die **wordt genoemd wanneer een HTTP-aanvraag wordt ontvangen**.
+1. Voer in het zoekvak **een bewerking kiezen** het selectie vakje in `when a http request` en selecteer de ingebouwde aanvraag trigger die **wordt genoemd wanneer een HTTP-aanvraag wordt ontvangen** .
 
    ![Scherm opname van Logic app Designer en * * een trigger toevoegen * * deel venster met de trigger wanneer een HTTP-aanvraag is ontvangen geselecteerd.](./media/create-stateful-stateless-workflows-visual-studio-code/add-request-trigger.png)
 
@@ -391,21 +394,21 @@ De werk stroom van de logische app in dit voor beeld maakt gebruik van deze trig
 
    1. Selecteer op de Designer het item, waarmee het detail venster van het item aan de rechter kant wordt geopend.
 
-   1. Vouw het Visual Studio-code venster breed genoeg uit zodat naast de trigger of actie naam de knop met de weglatings tekens (**...**) in de rechter bovenhoek wordt weer gegeven. 
+   1. Vouw het Visual Studio-code venster breed genoeg uit zodat naast de trigger of actie naam de knop met de weglatings tekens ( **...** ) in de rechter bovenhoek wordt weer gegeven. 
 
-   1. Open het menu met weglatings tekens (**...**) en selecteer **verwijderen**. Selecteer **OK**om de verwijdering te bevestigen.
+   1. Open het menu met weglatings tekens ( **...** ) en selecteer **verwijderen** . Selecteer **OK** om de verwijdering te bevestigen.
 
       ![Scherm opname van het geselecteerde item in de ontwerp functie met het deel venster Details openen en met de optie voor het selecteren van de knop verwijderen.](./media/create-stateful-stateless-workflows-visual-studio-code/delete-item-from-designer.png)
 
 ### <a name="add-the-office-365-outlook-action"></a>De Office 365 Outlook-actie toevoegen
 
-1. Selecteer in de ontwerp functie, onder de trigger die u hebt toegevoegd, de optie **nieuwe stap**.
+1. Selecteer in de ontwerp functie, onder de trigger die u hebt toegevoegd, de optie **nieuwe stap** .
 
    De prompt **een bewerking kiezen** wordt weer gegeven in de ontwerp functie en het **deel venster actie toevoegen** wordt opnieuw geopend, zodat u de volgende actie kunt selecteren.
 
 1. Selecteer in het deel venster **actie toevoegen** onder het zoekvak **een bewerking kiezen** de optie **Azure** zodat u een actie kunt vinden en selecteren voor een beheerde connector die in Azure is geïmplementeerd.
 
-   In dit voor beeld wordt de Office 365 Outlook-actie geselecteerd en gebruikt, **een e-mail (v2) verzenden**.
+   In dit voor beeld wordt de Office 365 Outlook-actie geselecteerd en gebruikt, **een e-mail (v2) verzenden** .
 
    ![Scherm opname van Logic app Designer en * * een actie toevoegen * * deel venster met Office 365 Outlook de actie een e-mail verzenden is geselecteerd.](./media/create-stateful-stateless-workflows-visual-studio-code/add-send-email-action.png)
 
@@ -416,7 +419,7 @@ De werk stroom van de logische app in dit voor beeld maakt gebruik van deze trig
    > [!NOTE]
    > Als u de fout melding krijgt, `Failed to create connection...` hebt u mogelijk een regio gekozen die momenteel niet wordt ondersteund voor uw logische app. Er worden updates uitgevoerd om meer regio's toe te voegen. Ondertussen bekijkt u de [pagina bekende problemen](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md#available-regions)met de uitbrei ding github voor de regio's die momenteel worden ondersteund.
 
-1. Wanneer Visual Studio code u vraagt om toestemming voor toegang tot uw e-mail account, selecteert u **openen**.
+1. Wanneer Visual Studio code u vraagt om toestemming voor toegang tot uw e-mail account, selecteert u **openen** .
 
    ![Scherm opname van de Visual Studio-code prompt om toegang toe te staan.](./media/create-stateful-stateless-workflows-visual-studio-code/visual-studio-code-open-external-website.png)
 
@@ -428,12 +431,12 @@ De werk stroom van de logische app in dit voor beeld maakt gebruik van deze trig
    > [!NOTE]
    > Als er te veel tijd wordt door gegeven voordat u de prompts voltooit, wordt het verificatie proces geduurd en mislukt. In dit geval gaat u terug naar de Designer en probeert u opnieuw aan te melden om de verbinding te maken.
 
-1. Wanneer de uitbrei ding Azure Logic Apps Preview u vraagt om toestemming voor toegang tot uw e-mail account, selecteert u **openen**. Volg de volgende prompt om toegang toe te staan.
+1. Wanneer de uitbrei ding Azure Logic Apps Preview u vraagt om toestemming voor toegang tot uw e-mail account, selecteert u **openen** . Volg de volgende prompt om toegang toe te staan.
 
    ![Scherm opname van de prompt van de voorbeeld uitbreiding om toegang toe te staan.](./media/create-stateful-stateless-workflows-visual-studio-code/allow-preview-extension-open-uri.png)
 
    > [!TIP]
-   > Selecteer **niet opnieuw vragen voor deze extensie**om toekomstige prompts te voor komen.
+   > Selecteer **niet opnieuw vragen voor deze extensie** om toekomstige prompts te voor komen.
 
    Wanneer Visual Studio code de verbinding maakt, wordt in sommige connectors het bericht weer gegeven dat `The connection will be valid for {n} days only.` deze tijds limiet alleen van toepassing is op de duur terwijl u uw logische app in Visual Studio code ontwerpt. Na de implementatie is deze limiet niet langer van toepassing omdat uw logische app kan verifiëren tijdens runtime door gebruik te maken van de automatisch ingeschakelde door het [systeem toegewezen beheerde identiteit](../logic-apps/create-managed-service-identity.md). Deze beheerde identiteit wijkt af van de verificatie referenties of connection string die u gebruikt bij het maken van een verbinding. Als u deze door het systeem toegewezen beheerde identiteit uitschakelt, werken de verbindingen niet tijdens runtime.
 
@@ -451,9 +454,9 @@ De werk stroom van de logische app in dit voor beeld maakt gebruik van deze trig
    ||||
 
    > [!NOTE]
-   > Als u wijzigingen wilt aanbrengen in het detail venster op het tabblad **instellingen**, **uitvoeren na**of **statisch resultaat** , moet u ervoor zorgen dat u **klaar bent** om deze wijzigingen door te voeren voordat u de tabbladen verwisselt of de focus naar de ontwerper wijzigt. Als dat niet het geval is, blijven de wijzigingen niet behouden in Visual Studio code. Raadpleeg de [pagina met bekende problemen](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)met de extensie github voor meer informatie.
+   > Als u wijzigingen wilt aanbrengen in het detail venster op het tabblad **instellingen** , **uitvoeren na** of **statisch resultaat** , moet u ervoor zorgen dat u **klaar bent** om deze wijzigingen door te voeren voordat u de tabbladen verwisselt of de focus naar de ontwerper wijzigt. Als dat niet het geval is, blijven de wijzigingen niet behouden in Visual Studio code. Raadpleeg de [pagina met bekende problemen](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)met de extensie github voor meer informatie.
 
-1. Selecteer in de ontwerp functie **Opslaan**.
+1. Selecteer in de ontwerp functie **Opslaan** .
 
 Voer vervolgens uw werk stroom lokaal uit en fout opsporing in Visual Studio code.
 
@@ -473,7 +476,7 @@ Als u uw logische app wilt testen, volgt u deze stappen om een foutopsporingsses
 
    1. Open het deel venster Verkenner opnieuw zodat u het project kunt weer geven.
 
-   1. Selecteer **overzicht**in het snelmenu **workflow.js** van het bestand.
+   1. Selecteer **overzicht** in het snelmenu **workflow.js** van het bestand.
 
       ![Scherm opname van het deel venster Verkenner en het snelkoppelings venster voor de workflow.jsin het bestand ' overzicht ' is geselecteerd.](./media/create-stateful-stateless-workflows-visual-studio-code/open-workflow-overview.png)
 
@@ -487,17 +490,17 @@ Als u uw logische app wilt testen, volgt u deze stappen om een foutopsporingsses
 
    In dit voor beeld wordt het gebruik van Postman voortgezet. Zie voor meer informatie [verzen ding aan de slag](https://learning.postman.com/docs/getting-started/introduction/).
 
-   1. Selecteer op de werk balk van Postman de optie **Nieuw**.
+   1. Selecteer op de werk balk van Postman de optie **Nieuw** .
 
       ![Scherm afbeelding met de knop Nieuw is geselecteerd](./media/create-stateful-stateless-workflows-visual-studio-code/postman-create-request.png)
 
-   1. Selecteer in het deel venster **Nieuw** , onder **bouw stenen**, **aanvraag**.
+   1. Selecteer in het deel venster **Nieuw** , onder **bouw stenen** , **aanvraag** .
 
-   1. Geef in het venster **aanvraag opslaan** onder **naam van aanvraag**een naam op voor de aanvraag, bijvoorbeeld `Test workflow trigger` .
+   1. Geef in het venster **aanvraag opslaan** onder **naam van aanvraag** een naam op voor de aanvraag, bijvoorbeeld `Test workflow trigger` .
 
-   1. Onder **Selecteer een verzameling of map om op te slaan**, selecteert u **verzameling maken**.
+   1. Onder **Selecteer een verzameling of map om op te slaan** , selecteert u **verzameling maken** .
 
-   1. Geef onder **alle verzamelingen**een naam op voor de verzameling die u wilt maken voor het organiseren van uw aanvragen, druk op ENTER en selecteer **opslaan in <*verzameling-naam* > **. In dit voor beeld wordt `Logic Apps requests` de naam van de verzameling gebruikt.
+   1. Geef onder **alle verzamelingen** een naam op voor de verzameling die u wilt maken voor het organiseren van uw aanvragen, druk op ENTER en selecteer **opslaan in < *verzameling-naam* >** . In dit voor beeld wordt `Logic Apps requests` de naam van de verzameling gebruikt.
 
       Het aanvraag venster van Postman wordt geopend, zodat u een aanvraag kunt verzenden naar de call back-URL voor de aanvraag trigger.
 
@@ -505,7 +508,7 @@ Als u uw logische app wilt testen, volgt u deze stappen om een foutopsporingsses
 
    1. Ga terug naar Visual Studio code. Kopieer op de pagina overzicht van de werk stroom de eigenschaps waarde van de **call back-URL** .
 
-   1. Ga terug naar de Postman. In het deel venster aanvraag, in de lijst met methoden, die momenteel de methode **Get** als standaard aanvraag bevat, plakt u de call back-URL die u eerder hebt gekopieerd in het vak Adres en selecteert u **verzenden**.
+   1. Ga terug naar de Postman. In het deel venster aanvraag, in de lijst met methoden, die momenteel de methode **Get** als standaard aanvraag bevat, plakt u de call back-URL die u eerder hebt gekopieerd in het vak Adres en selecteert u **verzenden** .
 
       ![Scherm afbeelding waarin de URL van de Postman en de retour aanroep wordt weer gegeven in het adresvak met de knop verzenden geselecteerd](./media/create-stateful-stateless-workflows-visual-studio-code/postman-test-call-back-url.png)
 
@@ -515,22 +518,62 @@ Als u uw logische app wilt testen, volgt u deze stappen om een foutopsporingsses
 
 1. Ga in Visual Studio code terug naar de overzichts pagina van uw werk stroom.
 
-   Als u een stateful werk stroom hebt gemaakt, worden op de pagina overzicht de status en geschiedenis van de werk stroom weer gegeven nadat de aanvraag die u hebt verzonden, de werk stroom heeft geactiveerd. Zie voor meer informatie over uitvoerings statussen de [geschiedenis van uitvoeringen controleren](../logic-apps/monitor-logic-apps.md#review-runs-history).
-
-   ![Scherm opname van de overzichts pagina van uw werk stroom met de status en geschiedenis van de uitvoering](./media/create-stateful-stateless-workflows-visual-studio-code/post-trigger-call.png)
+   Als u een stateful werk stroom hebt gemaakt, worden op de pagina overzicht de status en geschiedenis van de werk stroom weer gegeven nadat de aanvraag die u hebt verzonden, de werk stroom heeft geactiveerd.
 
    > [!TIP]
-   > Als de uitvoerings status niet wordt weer gegeven, kunt u de pagina overzicht vernieuwen door **vernieuwen**te selecteren.
+   > Als de uitvoerings status niet wordt weer gegeven, kunt u de pagina overzicht vernieuwen door **vernieuwen** te selecteren. Er vindt geen uitvoering plaats voor een trigger die wordt overgeslagen vanwege unmet criteria of het vinden van geen gegevens.
 
-1. Als u de statussen voor elke stap in een specifieke uitvoering en de invoer en uitvoer van de stap wilt bekijken, selecteert u de knop met weglatings tekens (**...**) voor die uitvoering en selecteert u vervolgens **uitvoeren weer geven**.
+   ![Scherm afbeelding van de overzichts pagina van de werk stroom met de status en geschiedenis van de uitvoering](./media/create-stateful-stateless-workflows-visual-studio-code/post-trigger-call.png)
+
+   | Uitvoerings status | Beschrijving |
+   |------------|-------------|
+   | **Aborted** | De uitvoering is gestopt of niet voltooid vanwege externe problemen, bijvoorbeeld een systeem storing of een vervallen Azure-abonnement. |
+   | **Gevraagd** | De uitvoering is geactiveerd en gestart, maar er is een annulerings aanvraag ontvangen. |
+   | **Mislukt** | Ten minste één bewerking in de uitvoering is mislukt. Er zijn geen verdere acties in de werk stroom ingesteld voor het afhandelen van de fout. |
+   | **Wordt uitgevoerd** | De uitvoering is geactiveerd en wordt uitgevoerd, maar deze status kan ook worden weer gegeven voor een uitvoering die wordt beperkt als gevolg van [actie limieten](logic-apps-limits-and-config.md) of het [huidige prijs plan](https://azure.microsoft.com/pricing/details/logic-apps/). <p><p>**Tip** : als u [logboek registratie van diagnostische gegevens](monitor-logic-apps-log-analytics.md)instelt, kunt u informatie ophalen over eventuele vertragings gebeurtenissen die plaatsvinden. |
+   | **Geslaagd** | De uitvoering is voltooid. Als een actie is mislukt, wordt die fout door een volgende actie in de werk stroom verwerkt. |
+   | **Time-out opgetreden** | Er is een time-out opgetreden tijdens het uitvoeren omdat de huidige duur de limiet voor de uitvoerings duur heeft overschreden, die wordt bepaald door de [ **Bewaar periode voor het bewaren van uitvoerings geschiedenis in dagen**](logic-apps-limits-and-config.md#run-duration-retention-limits). De duur van een uitvoering wordt berekend met behulp van de begin tijd van de uitvoering en de duur limiet voor uitvoering op die begin tijd. <p><p>**Opmerking** : als de duur van de uitvoering ook de huidige *Bewaar limiet voor de uitvoerings geschiedenis* overschrijdt, die ook wordt bepaald door de Bewaar periode voor het bewaren van de [ **uitvoerings geschiedenis in dagen**](logic-apps-limits-and-config.md#run-duration-retention-limits), wordt de uitvoering uit de geschiedenis van uitvoeringen door een dagelijkse opschoon taak gewist. Of de uitvoerings tijd wordt uitgecheckt of voltooid, de Bewaar periode wordt altijd berekend met behulp van de begin tijd en de *huidige* Bewaar limiet van de uitvoering. Als u de limiet voor de duur van een in-Flight-uitvoering verkort, wordt er dus een time-out uitgevoerd. De uitvoering blijft echter behouden of wordt gewist uit de geschiedenis van de uitvoering, op basis van het feit of de duur van de uitvoering de Bewaar limiet heeft overschreden. |
+   | **Wachten** | De uitvoering is niet gestart of wordt onderbroken, bijvoorbeeld door een eerder werk stroom exemplaar dat nog steeds actief is. |
+   |||
+
+1. Als u de statussen voor elke stap in een specifieke uitvoering en de invoer en uitvoer van de stap wilt bekijken, selecteert u de knop met weglatings tekens ( **...** ) voor die uitvoering en selecteert u vervolgens **uitvoeren weer geven** .
 
    ![Scherm afbeelding van de rij met de uitvoerings geschiedenis van de werk stroom met de knop met weglatings tekens en ' show run ' geselecteerd](./media/create-stateful-stateless-workflows-visual-studio-code/show-run-history.png)
 
-   Visual Studio code toont de uitvoerings statussen voor elke actie.
+   Visual Studio code opent de weer gave bewaking en toont de status van elke stap in de uitvoering.
 
-1. Als u de invoer en uitvoer voor elke stap wilt bekijken, vouwt u de stap uit die u wilt inspecteren. Selecteer onbewerkte **invoer weer geven** of **onbewerkte uitvoer weer geven**om de onbewerkte invoer en uitvoer voor die stap verder te bekijken.
+   ![Scherm opname van elke stap in de uitvoering van de werk stroom en hun status](./media/create-stateful-stateless-workflows-visual-studio-code/run-history-action-status.png)
+
+   Hier volgen de mogelijke statussen die elke stap in de werk stroom kan hebben:
+
+   | Actie status | Pictogram | Beschrijving |
+   |---------------|------|-------------|
+   | Aborted | ![Pictogram voor de actie status ' afgebroken '][aborted-icon] | De actie is gestopt of niet voltooid vanwege externe problemen, bijvoorbeeld een systeem storing of een vervallen Azure-abonnement. |
+   | Geannuleerd | ![Pictogram voor de actie status geannuleerd][cancelled-icon] | De actie is uitgevoerd, maar er is een annulerings aanvraag ontvangen. |
+   | Mislukt | ![Pictogram voor de actie status ' mislukt '][failed-icon] | De actie is mislukt. |
+   | Wordt uitgevoerd | ![Pictogram voor de actie status ' actief '][running-icon] | De actie wordt momenteel uitgevoerd. |
+   | Overgeslagen | ![Pictogram voor de actie status "overgeslagen"][skipped-icon] | De actie is overgeslagen omdat de onmiddellijk voorafgaande actie is mislukt. Een actie heeft een `runAfter` voor waarde die vereist dat de voorafgaande actie is voltooid voordat de huidige actie kan worden uitgevoerd. |
+   | Geslaagd | ![Pictogram voor de actie status geslaagd][succeeded-icon] | De actie is geslaagd. |
+   | Geslaagd met nieuwe pogingen | ![Pictogram voor de actie status geslaagd met nieuwe pogingen][succeeded-with-retries-icon] | De actie is voltooid, maar alleen na een of meer pogingen. Als u de geschiedenis van de nieuwe poging wilt bekijken, selecteert u in de detail weergave uitvoerings geschiedenis die actie zodat u de invoer en uitvoer kunt bekijken. |
+   | Time-out opgetreden | ![Pictogram voor de actie status time-out][timed-out-icon] | De actie is gestopt vanwege de time-outlimiet die is opgegeven door de instellingen van die actie. |
+   | Wachten | ![Pictogram voor de actie status ' wachten '][waiting-icon] | Is van toepassing op een webhook-actie die wordt gewacht op een inkomende aanvraag van een aanroeper. |
+   ||||
+
+   [aborted-icon]: ./media/create-stateful-stateless-workflows-visual-studio-code/aborted.png
+   [cancelled-icon]: ./media/create-stateful-stateless-workflows-visual-studio-code/cancelled.png
+   [failed-icon]: ./media/create-stateful-stateless-workflows-visual-studio-code/failed.png
+   [running-icon]: ./media/create-stateful-stateless-workflows-visual-studio-code/running.png
+   [skipped-icon]: ./media/create-stateful-stateless-workflows-visual-studio-code/skipped.png
+   [succeeded-icon]: ./media/create-stateful-stateless-workflows-visual-studio-code/succeeded.png
+   [succeeded-with-retries-icon]: ./media/create-stateful-stateless-workflows-visual-studio-code/succeeded-with-retries.png
+   [timed-out-icon]: ./media/create-stateful-stateless-workflows-visual-studio-code/timed-out.png
+   [waiting-icon]: ./media/create-stateful-stateless-workflows-visual-studio-code/waiting.png
+
+1. Als u de invoer en uitvoer voor elke stap wilt bekijken, selecteert u de stap die u wilt inspecteren.
 
    ![Scherm opname van de status van elke stap in de werk stroom plus de invoer en uitvoer in de uitgevouwen actie ' een e-mail verzenden '](./media/create-stateful-stateless-workflows-visual-studio-code/run-history-details.png)
+
+1. Selecteer onbewerkte **invoer weer geven** of **onbewerkte uitvoer weer geven** om de onbewerkte invoer en uitvoer voor die stap verder te bekijken.
 
 1. Als u de foutopsporingssessie wilt stoppen, selecteert u in het menu **uitvoeren** de optie **fout opsporing stoppen** (SHIFT + F5).
 
@@ -540,7 +583,7 @@ Als u uw logische app wilt testen, volgt u deze stappen om een foutopsporingsses
 
 Als u een antwoord wilt terugsturen naar de aanroeper die een aanvraag naar uw logische app heeft verzonden, kunt u de ingebouwde [reactie actie](../connectors/connectors-native-reqres.md) gebruiken voor een werk stroom die begint met de trigger voor aanvragen.
 
-1. Selecteer op de Logic app Designer onder de actie **een E-mail verzenden** de optie **nieuwe stap**.
+1. Selecteer op de Logic app Designer onder de actie **een E-mail verzenden** de optie **nieuwe stap** .
 
    De prompt **een bewerking kiezen** wordt weer gegeven in de ontwerp functie en het **deel venster actie toevoegen** wordt opnieuw geopend, zodat u de volgende actie kunt selecteren.
 
@@ -560,7 +603,7 @@ Als u een antwoord wilt terugsturen naar de aanroeper die een aanvraag naar uw l
 
       ![Scherm opname van het detail venster van de actie ' respons ' met de muis aanwijzer binnen de eigenschap ' Body ' zodat de lijst met dynamische inhoud wordt weer gegeven.](./media/create-stateful-stateless-workflows-visual-studio-code/open-dynamic-content-list.png)
 
-   1. Selecteer **hoofd tekst**in de lijst met dynamische inhoud onder **een e-mail verzenden**.
+   1. Selecteer **hoofd tekst** in de lijst met dynamische inhoud onder **een e-mail verzenden** .
 
       ![Scherm opname van de lijst met open dynamische inhoud. In de lijst, onder de kop ' e-mail verzenden ', is de uitvoer waarde ' Body ' geselecteerd.](./media/create-stateful-stateless-workflows-visual-studio-code/select-send-email-action-body-output-value.png)
 
@@ -568,7 +611,7 @@ Als u een antwoord wilt terugsturen naar de aanroeper die een aanvraag naar uw l
 
       ![Scherm opname van de status van elke stap in de werk stroom plus de invoer en uitvoer in de uitgevouwen reactie actie.](./media/create-stateful-stateless-workflows-visual-studio-code/response-action-details-body-property.png)
 
-1. Selecteer in de ontwerp functie **Opslaan**.
+1. Selecteer in de ontwerp functie **Opslaan** .
 
 <a name="retest-workflow"></a>
 
@@ -580,7 +623,7 @@ Nadat u updates hebt gemaakt voor uw logische app, kunt u een andere test uitvoe
 
 1. Stuur in postman of uw hulp programma voor het maken en verzenden van aanvragen een andere aanvraag om uw werk stroom te activeren.
 
-1. Als u een stateful werk stroom hebt gemaakt, controleert u de status van de meest recente uitvoering op de pagina overzicht van de werk stroom. Als u de status, invoer en uitvoer voor elke stap in die uitvoering wilt weer geven, selecteert u de knop met weglatings tekens (**...**) voor die uitvoering en selecteert u vervolgens **uitvoeren weer geven**.
+1. Als u een stateful werk stroom hebt gemaakt, controleert u de status van de meest recente uitvoering op de pagina overzicht van de werk stroom. Als u de status, invoer en uitvoer voor elke stap in die uitvoering wilt weer geven, selecteert u de knop met weglatings tekens ( **...** ) voor die uitvoering en selecteert u vervolgens **uitvoeren weer geven** .
 
    Hier volgt een voor beeld van de stap-voor-stap-status voor een uitvoering nadat de voorbeeld werk stroom is bijgewerkt met de reactie actie.
 
@@ -603,7 +646,7 @@ U kunt uw logische app als een nieuwe resource publiceren, waarmee automatisch e
 
 1. Selecteer het Azure-pictogram op de werkbalk van Visual Studio Code.
 
-1. Selecteer op de werk balk van het deel venster **Azure: Logic apps (preview)** de optie **implementeren naar logische app**.
+1. Selecteer op de werk balk van het deel venster **Azure: Logic apps (preview)** de optie **implementeren naar logische app** .
 
    ![Scherm opname van het deel venster Azure: Logic Apps (preview) en de werk balk van het deel venster met ' implementeren op logische app ' geselecteerd.](./media/create-stateful-stateless-workflows-visual-studio-code/deploy-to-logic-app.png)
 
@@ -613,7 +656,7 @@ U kunt uw logische app als een nieuwe resource publiceren, waarmee automatisch e
    * **Een nieuwe logische app maken (preview) in azure Advanced**
    * Een eerder geïmplementeerde **logische app (preview)** -resource, indien aanwezig
 
-   Dit voor beeld gaat verder met het **maken van een nieuwe logische app (preview) in azure Advanced**.
+   Dit voor beeld gaat verder met het **maken van een nieuwe logische app (preview) in azure Advanced** .
 
    ![Scherm opname van het deel venster ' Azure: Logic Apps (preview) ' met een lijst waarin ' nieuwe logische app maken (preview) in azure ' is geselecteerd.](./media/create-stateful-stateless-workflows-visual-studio-code/select-create-logic-app-options.png)
 
@@ -623,11 +666,11 @@ U kunt uw logische app als een nieuwe resource publiceren, waarmee automatisch e
 
       ![Scherm opname van het deel venster ' Azure: Logic Apps (preview) ' en een prompt om een naam op te geven voor de nieuwe logische app die u wilt maken.](./media/create-stateful-stateless-workflows-visual-studio-code/enter-logic-app-name.png)
 
-   1. Selecteer een hosting abonnement voor uw nieuwe logische app, een [**app service plan**](../azure-functions/functions-scale.md#app-service-plan) of [**Premium**](../azure-functions/functions-scale.md#premium-plan). In dit voor beeld wordt **app service plan**geselecteerd.
+   1. Selecteer een hosting abonnement voor uw nieuwe logische app, een [**app service plan**](../azure-functions/functions-scale.md#app-service-plan) of [**Premium**](../azure-functions/functions-scale.md#premium-plan). In dit voor beeld wordt **app service plan** geselecteerd.
 
       ![Scherm opname van het deel venster "Azure: Logic Apps (preview)" en een prompt om "App Service plan" of "Premium" te selecteren.](./media/create-stateful-stateless-workflows-visual-studio-code/select-hosting-plan.png)
 
-   1. Maak een nieuw App Service plan of selecteer een bestaand abonnement. In dit voor beeld wordt **nieuw app service plan maken**geselecteerd.
+   1. Maak een nieuw App Service plan of selecteer een bestaand abonnement. In dit voor beeld wordt **nieuw app service plan maken** geselecteerd.
 
       ![Scherm opname van het deel venster ' Azure: Logic Apps (preview) ' en een prompt om een nieuw App Service plan te maken of een bestaand App Service plan te selecteren.](./media/create-stateful-stateless-workflows-visual-studio-code/create-app-service-plan.png)
 
@@ -644,7 +687,7 @@ U kunt uw logische app als een nieuwe resource publiceren, waarmee automatisch e
 
       ![Scherm opname van het deel venster ' Azure: Logic Apps (preview) ' en een prompt voor het maken of selecteren van een opslag account.](./media/create-stateful-stateless-workflows-visual-studio-code/create-storage-account.png)
 
-   1. Voor eenvoudiger diagnostische logboek registratie en tracerings functie kunt u een bestaande Application Insights resource selecteren. Anders kunt u **nieuwe Application Insights resource maken**selecteren of Application Insights in de Azure Portal instellen nadat u uw app hebt geïmplementeerd.
+   1. Voor eenvoudiger diagnostische logboek registratie en tracerings functie kunt u een bestaande Application Insights resource selecteren. Anders kunt u **nieuwe Application Insights resource maken** selecteren of Application Insights in de Azure Portal instellen nadat u uw app hebt geïmplementeerd.
 
       Voordat u implementeert, moet u ervoor zorgen dat u het `logLevel` object toevoegt aan het `logging` object in de **host.jsvoor** het bestand dat bestaat op het hoofd niveau van het project en de `Host.Triggers.Workflow` in te stellen op `Information` , bijvoorbeeld:
 
@@ -675,7 +718,7 @@ U kunt uw logische app als een nieuwe resource publiceren, waarmee automatisch e
 
    Wanneer u klaar bent, begint Visual Studio code het maken en implementeren van de resources die nodig zijn voor het publiceren van uw logische app.
 
-1. Als u het implementatie proces wilt controleren en controleren, selecteert u in het menu **weer gave** de optie **uitvoer**. Selecteer in de lijst werk balk van uitvoer venster **Azure Logic apps**.
+1. Als u het implementatie proces wilt controleren en controleren, selecteert u in het menu **weer gave** de optie **uitvoer** . Selecteer in de lijst werk balk van uitvoer venster **Azure Logic apps** .
 
    ![Scherm opname van het uitvoer venster met de Azure Logic Apps geselecteerd in de lijst met werk balken, samen met de voortgang en statussen van de implementatie.](./media/create-stateful-stateless-workflows-visual-studio-code/logic-app-deployment-output-window.png)
 
@@ -691,7 +734,7 @@ Vervolgens kunt u leren hoe u deze taken uitvoert:
 
 * [Schakel de uitvoerings geschiedenis in op stateless logische app-werk stromen](#run-history).
 
-* [Schakel bewaking in op een resource met geïmplementeerde **logische apps (preview-versie)** ](#enable-monitoring).
+* [Schakel bewaking in op een resource met geïmplementeerde **logische apps (preview-versie)**](#enable-monitoring).
 
 <a name="find-manage-deployed-workflows-vs-code"></a>
 
@@ -709,15 +752,15 @@ In Visual Studio code kunt u alle geïmplementeerde Logic apps in uw Azure-abonn
 
 1. Als u alle werk stromen in de logische app wilt weer geven, vouwt u uw logische app uit en vouwt u vervolgens het knoop punt **werk stromen** uit.
 
-1. Als u een specifieke werk stroom wilt weer geven, opent u het snelmenu van de werk stroom en selecteert u **openen in Designer**, waarmee de werk stroom wordt geopend in de modus alleen-lezen.
+1. Als u een specifieke werk stroom wilt weer geven, opent u het snelmenu van de werk stroom en selecteert u **openen in Designer** , waarmee de werk stroom wordt geopend in de modus alleen-lezen.
 
    Als u de werk stroom wilt bewerken, hebt u de volgende opties:
 
-   * In Visual Studio code opent u deworkflow.jsvan uw project in het bestand in de ontwerp functie ** voor** logische apps, maakt u uw bewerkingen en implementeert u uw logische app in Azure.
+   * In Visual Studio code opent u deworkflow.jsvan uw project in het bestand in de ontwerp functie **voor** logische apps, maakt u uw bewerkingen en implementeert u uw logische app in Azure.
 
    * [Zoek en open uw logische app](#find-manage-deployed-workflows-portal)In de Azure Portal. Zoek, bewerk en sla de werk stroom op.
 
-1. Als u de geïmplementeerde logische app wilt openen in de Azure Portal, opent u het snelmenu van de logische app en selecteert u **openen in portal**.
+1. Als u de geïmplementeerde logische app wilt openen in de Azure Portal, opent u het snelmenu van de logische app en selecteert u **openen in portal** .
 
    De Azure Portal in uw browser wordt geopend, meldt u automatisch aan bij de portal als u bent aangemeld bij Visual Studio code en toont uw logische app.
 
@@ -738,7 +781,7 @@ In de Azure Portal kunt u alle geïmplementeerde Logic apps bekijken die zich in
 
 Voer de volgende stappen uit om logische apps te vinden die het resource type **logische app (preview)** hebben:
 
-1. Voer in het zoekvak van Azure Portal in `logic app preview` . Wanneer de lijst met resultaten wordt weer gegeven, selecteert u onder **Services**de optie **logische app (preview)**.
+1. Voer in het zoekvak van Azure Portal in `logic app preview` . Wanneer de lijst met resultaten wordt weer gegeven, selecteert u onder **Services** de optie **logische app (preview)** .
 
    ![Scherm opname van het zoekvak van Azure Portal met de Zoek tekst ' Logic app preview '.](./media/create-stateful-stateless-workflows-visual-studio-code/portal-find-logic-app-preview-resource.png)
 
@@ -750,7 +793,7 @@ Voer de volgende stappen uit om logische apps te vinden die het resource type **
 
    ![Scherm opname van de resource pagina van de werk stroom van uw logische app in de Azure Portal.](./media/create-stateful-stateless-workflows-visual-studio-code/deployed-workflow-azure-portal.png)
 
-1. Als u de werk stromen in deze logische app wilt weer geven, selecteert u **werk stromen**in het menu van de logische app.
+1. Als u de werk stromen in deze logische app wilt weer geven, selecteert u **werk stromen** in het menu van de logische app.
 
    In het deel venster **werk stromen** worden alle werk stromen weer gegeven in de huidige logische app. In dit voor beeld ziet u de werk stroom die u hebt gemaakt in Visual Studio code.
 
@@ -760,7 +803,7 @@ Voer de volgende stappen uit om logische apps te vinden die het resource type **
 
    Het werk stroom venster wordt geopend en toont meer informatie en taken die u kunt uitvoeren op die werk stroom.
 
-   Als u bijvoorbeeld de stappen in de werk stroom wilt weer geven, selecteert u **Designer**.
+   Als u bijvoorbeeld de stappen in de werk stroom wilt weer geven, selecteert u **Designer** .
 
    ![Scherm opname van het geselecteerde werk stroom venster Overzicht, terwijl in het werk stroom menu de geselecteerde opdracht "Designer" wordt weer gegeven.](./media/create-stateful-stateless-workflows-visual-studio-code/workflow-overview-pane-select-designer.png)
 
@@ -776,11 +819,11 @@ Via de Azure Portal kunt u lege werk stromen toevoegen aan een **logische app (p
 
 1. Zoek in het [Azure Portal](https://portal.azure.com)naar de resource van de geïmplementeerde **logische app (preview)** en selecteer deze.
 
-1. Selecteer **werk stromen**in het menu van de logische app. Selecteer **toevoegen**in het deel venster **werk stromen** .
+1. Selecteer **werk stromen** in het menu van de logische app. Selecteer **toevoegen** in het deel venster **werk stromen** .
 
    ![Scherm opname van het deel venster werk stromen en de werk balk van de geselecteerde logische app met de opdracht toevoegen is geselecteerd.](./media/create-stateful-stateless-workflows-visual-studio-code/add-new-workflow.png)
 
-1. Geef in het deel venster **nieuwe werk stroom** naam op voor de werk stroom. Selecteer **stateful** of **stateless** **>** **Create**.
+1. Geef in het deel venster **nieuwe werk stroom** naam op voor de werk stroom. Selecteer **stateful** of **stateless** **>** **Create** .
 
    Nadat Azure uw nieuwe werk stroom heeft geïmplementeerd, die wordt weer gegeven in het deel venster **werk stromen** , selecteert u die werk stroom om beheer en andere taken uit te voeren, zoals het openen van de ontwerp functie voor logische apps of de code weergave.
 
@@ -823,9 +866,9 @@ Als u uw project al hebt geïmplementeerd op de Azure Portal, voert u de volgend
 
 1. Zoek en open de resource van de **logische app (preview)** In de [Azure Portal](https://portal.azure.com).
 
-1. Selecteer in het menu van de logische app onder **instellingen**de optie **configuratie**.
+1. Selecteer in het menu van de logische app onder **instellingen** de optie **configuratie** .
 
-1. Op het tabblad **Toepassings instellingen** selecteert u **nieuwe toepassings instelling**.
+1. Op het tabblad **Toepassings instellingen** selecteert u **nieuwe toepassings instelling** .
 
 1. Voer in het deel venster **toepassings instelling toevoegen/bewerken** in het vak **naam** de naam in van de bewerkings optie: 
 
@@ -837,7 +880,7 @@ Als u uw project al hebt geïmplementeerd op de Azure Portal, voert u de volgend
 
    ![Scherm opname van de Azure Portal-en Logic app-resource (preview) met de ' configuratie ' > ' nieuwe toepassings instelling ' < ' deel venster toepassings instelling toevoegen/bewerken ' van het open en de werk stromen. {yourWorkflowName}. OperationOptions ' is ingesteld op ' WithStatelessRunHistory '.](./media/create-stateful-stateless-workflows-visual-studio-code/stateless-operation-options-run-history.png)
 
-1. Wanneer u gereed bent, selecteert u **OK**. Selecteer in het deel venster **configuratie** de optie **Opslaan**.
+1. Wanneer u gereed bent, selecteert u **OK** . Selecteer in het deel venster **configuratie** de optie **Opslaan** .
 
 Als u bewaking wilt inschakelen voor de resource van de geïmplementeerde logische app (preview), gaat u verder met de volgende sectie.
 
@@ -849,11 +892,11 @@ Voer de volgende stappen uit om bewaking in te scha kelen voor een resource met 
 
 1. Zoek en selecteer in de [Azure Portal](https://portal.azure.com)de geïmplementeerde **logische app (preview)** -resource.
 
-1. Selecteer **CORS**in het menu van de resource onder **API**.
+1. Selecteer **CORS** in het menu van de resource onder **API** .
 
-1. Voeg het Joker teken (*) toe in het deel venster **CORS** onder **toegestane oorsprongen**.
+1. Voeg het Joker teken (*) toe in het deel venster **CORS** onder **toegestane oorsprongen** .
 
-1. Wanneer u klaar bent, selecteert u op de **CORS** -werk balk de optie **Opslaan**.
+1. Wanneer u klaar bent, selecteert u op de **CORS** -werk balk de optie **Opslaan** .
 
    ![Scherm opname van de Azure Portal met een geïmplementeerde Logic Apps (preview)-resource. In het menu resource is ' CORS ' geselecteerd met een nieuwe vermelding voor ' toegestane oorsprongen ' ingesteld op het Joker teken ' * '.](./media/create-stateful-stateless-workflows-visual-studio-code/enable-run-history-deployed-logic-app.png)
 
@@ -921,7 +964,7 @@ Met behulp van de [opdracht regel interface (CLI) van .net core](/dotnet/core/to
 
    `POST /runtime/webhooks/workflow/api/management/workflows/{workflow-name}/triggers/{trigger-name}/listCallbackUrl?api-version=2019-10-01-edge-preview&code={master-key}`
 
-   De <*hoofd sleutel*> waarde wordt gedefinieerd in het Azure Storage-account dat u hebt ingesteld voor `AzureWebJobsStorage` in het bestand **Azure-webjobs-geheimen/{Deployment-name}/host.jsop**, waar u de waarde in deze sectie kunt vinden:
+   De < *hoofd sleutel* > waarde wordt gedefinieerd in het Azure Storage-account dat u hebt ingesteld voor `AzureWebJobsStorage` in het bestand **Azure-webjobs-geheimen/{Deployment-name}/host.jsop** , waar u de waarde in deze sectie kunt vinden:
 
    ```json
    {

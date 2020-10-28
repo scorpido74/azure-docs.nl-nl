@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: wieastbu
-ms.custom: fasttrack-new
-ms.openlocfilehash: 60177dd00dc6326aae4cfdc0b658c85f2635f8c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: fasttrack-new, devx-track-js
+ms.openlocfilehash: aa3bce73d2a91538dff0fdeb9e0eb814d878459a
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86253691"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676019"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>Beveiligd-wachtwoord verificatie beveiligen met OAuth 2,0, Azure Active Directory B2C en Azure API Management
 
@@ -180,7 +180,7 @@ U moet de met CIDR opgemaakte blokken met adressen toevoegen aan het paneel IP-b
    > De functie-API kan nu niet worden aangeroepen vanaf elke andere locatie dan via API Management of uw adres.
    
 ## <a name="import-the-function-app-definition"></a>De definitie van de functie-app importeren
-1. Open de *blade API Management*en open vervolgens *uw exemplaar*.
+1. Open de *blade API Management* en open vervolgens *uw exemplaar* .
 1. Selecteer de Blade Api's in het gedeelte API Management van uw exemplaar.
 1. Kies in het deel venster een nieuwe API toevoegen de optie functie-app en selecteer vervolgens ' volledig ' boven aan de pop-up.
 1. Klik op Bladeren, kies de functie-app die u als host voor de API in en klik op selecteren.
