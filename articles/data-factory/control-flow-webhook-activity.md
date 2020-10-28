@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 4056550ae0a71138d136878fc7e3aa5f6f8f4180
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ce41a5928d5b8a7c7df439ce5321cd15f0cc1d5
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417875"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634977"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Webhook-activiteit in Azure Data Factory
 
@@ -24,7 +24,7 @@ ms.locfileid: "81417875"
 
 Met een webhook-activiteit kan de uitvoering van pijp lijnen via uw aangepaste code worden beheerd. Met de webhook-activiteit kan de code van klanten een eind punt aanroepen en een URL voor terugbellen door geven. De pijplijn uitvoering wacht op het aanroepen van de retour aanroep voordat de volgende activiteit wordt uitgevoerd.
 
-## <a name="syntax"></a>Syntaxis
+## <a name="syntax"></a>Syntax
 
 ```json
 
@@ -57,13 +57,13 @@ Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | --------
 **name** | De naam van de webhook-activiteit. | Tekenreeks | Ja |
 **type** | Moet worden ingesteld op webhook. | Tekenreeks | Ja |
-**methode** | De REST API methode voor het doel eindpunt. | Tekenreeks. Het ondersteunde type is ' POST '. | Ja |
-**URL** | Het doel eindpunt en-pad. | Een teken reeks of expressie met de waarde van het **resultType** van een teken reeks. | Ja |
+**method** | De REST API methode voor het doel eindpunt. | Tekenreeks. Het ondersteunde type is ' POST '. | Ja |
+**url** | Het doel eindpunt en-pad. | Een teken reeks of expressie met de waarde van het **resultType** van een teken reeks. | Ja |
 **koppen** | Kopteksten die naar de aanvraag worden verzonden. Hier volgt een voor beeld waarin de taal en het type van een aanvraag worden ingesteld: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` . | Een teken reeks of expressie met de waarde van het **resultType** van een teken reeks. | Ja. Een `Content-Type` koptekst zoals `"headers":{ "Content-Type":"application/json"}` is vereist. |
-**organen** | Vertegenwoordigt de nettolading die naar het eind punt wordt verzonden. | Een geldige JSON of een expressie met de waarde van het **resultType** van JSON. Zie [Payload-schema aanvragen](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#request-payload-schema) voor het schema van de aanvraag lading. | Ja |
-**verificatie** | De verificatie methode die wordt gebruikt om het eind punt aan te roepen. De ondersteunde typen zijn "Basic" en "ClientCertificate". Zie [Verificatie](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#authentication) voor meer informatie. Als verificatie niet is vereist, sluit u deze eigenschap. | Een teken reeks of expressie met de waarde van het **resultType** van een teken reeks. | Nee |
-**out** | Hoe lang de activiteit wacht op de call back die is opgegeven door **callBackUri** , om te worden aangeroepen. De standaard waarde is 10 minuten ("00:10:00"). De waarden hebben de time span-indeling *d*. *uu*:*mm*:*SS*. | Tekenreeks | Nee |
-**Rapport status bij terugbellen** | Hiermee kan een gebruiker de mislukte status van een webhook-activiteit rapporteren. | Booleaans | Nee |
+**organen** | Vertegenwoordigt de nettolading die naar het eind punt wordt verzonden. | Een geldige JSON of een expressie met de waarde van het **resultType** van JSON. Zie [Payload-schema aanvragen](./control-flow-web-activity.md#request-payload-schema) voor het schema van de aanvraag lading. | Ja |
+**verificatie** | De verificatie methode die wordt gebruikt om het eind punt aan te roepen. De ondersteunde typen zijn "Basic" en "ClientCertificate". Zie [Verificatie](./control-flow-web-activity.md#authentication) voor meer informatie. Als verificatie niet is vereist, sluit u deze eigenschap. | Een teken reeks of expressie met de waarde van het **resultType** van een teken reeks. | Nee |
+**out** | Hoe lang de activiteit wacht op de call back die is opgegeven door **callBackUri** , om te worden aangeroepen. De standaard waarde is 10 minuten ("00:10:00"). De waarden hebben de time span-indeling *d* . *uu* : *mm* : *SS* . | Tekenreeks | Nee |
+**Rapport status bij terugbellen** | Hiermee kan een gebruiker de mislukte status van een webhook-activiteit rapporteren. | Boolean-waarde | Nee |
 
 ## <a name="authentication"></a>Verificatie
 
@@ -99,7 +99,7 @@ Geef de met base64 gecodeerde inhoud van een PFX-bestand en een wacht woord op.
 
 ### <a name="managed-identity"></a>Beheerde identiteit
 
-Gebruik de beheerde identiteit van de data factory om de bron-URI op te geven waarvoor het toegangs token is aangevraagd. Gebruik om de Azure Resource Management-API aan te roepen `https://management.azure.com/` . Zie voor meer informatie over de werking van beheerde identiteiten het [overzicht beheerde identiteiten voor Azure-resources](/azure/active-directory/managed-identities-azure-resources/overview).
+Gebruik de beheerde identiteit van de data factory om de bron-URI op te geven waarvoor het toegangs token is aangevraagd. Gebruik om de Azure Resource Management-API aan te roepen `https://management.azure.com/` . Zie voor meer informatie over de werking van beheerde identiteiten het [overzicht beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md).
 
 ```json
 "authentication": {
@@ -119,7 +119,7 @@ De webhook-activiteit mislukt wanneer de aanroep van het aangepaste eind punt mi
 
 Voor elke REST API-aanroep wordt een time-out van de client uitgevoerd als het eind punt niet binnen één minuut reageert. Dit gedrag is standaard HTTP best practice. Om dit probleem op te lossen, implementeert u een 202-patroon. In het huidige geval retourneert het eind punt 202 (geaccepteerd) en de client polls.
 
-De time-out van één minuut op de aanvraag heeft niets te maken met de time-out van de activiteit. De laatste wordt gebruikt om te wachten op de call back die is opgegeven door **callbackUri**.
+De time-out van één minuut op de aanvraag heeft niets te maken met de time-out van de activiteit. De laatste wordt gebruikt om te wachten op de call back die is opgegeven door **callbackUri** .
 
 De hoofd tekst die is door gegeven aan de call back-URI moet een geldige JSON zijn. Stel de `Content-Type` koptekst in op `application/json` .
 

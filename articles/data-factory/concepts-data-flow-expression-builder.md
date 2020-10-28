@@ -7,18 +7,18 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.openlocfilehash: 4297cc83ab3fa280e15480aefcd5aef8734c65ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee82d3f35b6b2b50b001e065eb81447738526b1c
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531024"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635368"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>Expressies bouwen in gegevens stroom toewijzen
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Bij het toewijzen van gegevens stroom worden veel trans formatie-eigenschappen ingevoerd als expressies. Deze expressies bestaan uit kolom waarden, para meters, functies, Opera tors en letterlijke tekens die tijdens de uitvoering resulteren in een Spark-gegevens type. Het toewijzen van gegevens stromen heeft een eigen ervaring om u te helpen bij het bouwen van deze expressies die de **opbouw functie voor expressies**worden genoemd. Het gebruik van de voltooiing van  [IntelliSense](https://docs.microsoft.com/visualstudio/ide/using-intellisense) -code voor markeren, syntaxis controle en automatisch aanvullen is ontworpen om het maken van gegevens stromen eenvoudig uit te voeren. In dit artikel wordt uitgelegd hoe u de opbouw functie voor expressies gebruikt om uw bedrijfs logica effectief te bouwen.
+Bij het toewijzen van gegevens stroom worden veel trans formatie-eigenschappen ingevoerd als expressies. Deze expressies bestaan uit kolom waarden, para meters, functies, Opera tors en letterlijke tekens die tijdens de uitvoering resulteren in een Spark-gegevens type. Het toewijzen van gegevens stromen heeft een eigen ervaring om u te helpen bij het bouwen van deze expressies die de **opbouw functie voor expressies** worden genoemd. Het gebruik van de voltooiing van  [IntelliSense](/visualstudio/ide/using-intellisense) -code voor markeren, syntaxis controle en automatisch aanvullen is ontworpen om het maken van gegevens stromen eenvoudig uit te voeren. In dit artikel wordt uitgelegd hoe u de opbouw functie voor expressies gebruikt om uw bedrijfs logica effectief te bouwen.
 
 ![Opbouw functie voor expressies](media/data-flow/expresion-builder.png "Opbouwfunctie voor expressies")
 
@@ -32,7 +32,7 @@ In sommige trans formaties als [filter](data-flow-filter.md)klikt u op een blauw
 
 ![Vak met blauwe expressie](media/data-flow/expressionbox.png "Opbouwfunctie voor expressies")
 
-Wanneer u verwijst naar kolommen in een matching-of Group-by-voor waarde, kan een expressie waarden uit kolommen ophalen. Selecteer **berekende kolom**om een expressie te maken.
+Wanneer u verwijst naar kolommen in een matching-of Group-by-voor waarde, kan een expressie waarden uit kolommen ophalen. Selecteer **berekende kolom** om een expressie te maken.
 
 ![Optie berekende kolom](media/data-flow/computedcolumn.png "Opbouwfunctie voor expressies")
 
@@ -46,7 +46,7 @@ In het toewijzen van gegevens stromen kunnen expressies bestaan uit kolom waarde
 
 ![Expressie-elementen](media/data-flow/expression-elements.png "Expressie-elementen")
 
-### <a name="functions"></a>Functies
+### <a name="functions"></a>Functions
 
 Het toewijzen van gegevens stromen heeft ingebouwde functies en Opera tors die kunnen worden gebruikt in expressies. Voor een lijst met beschik bare functies raadpleegt u de [referentie gegevens stroom taal toewijzen](data-flow-expression-functions.md).
 

@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: fd6fc3ee88d63c1d933d3405437ec1bf49e0432e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 45f9f61712903436d63f483673705650f5470b3f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426358"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635946"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Een werk ruimte maken voor Azure Machine Learning met Azure CLI
 
@@ -24,9 +24,9 @@ In dit artikel leert u hoe u een Azure Machine Learning-werk ruimte maakt met be
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een **Azure-abonnement**. Als u er nog geen hebt, probeer [dan de gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree).
+* Een **Azure-abonnement** . Als u er nog geen hebt, probeer [dan de gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree).
 
-* Als u de CLI-opdrachten in dit document wilt gebruiken vanuit uw **lokale omgeving**, hebt u de [Azure CLI nodig](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
+* Als u de CLI-opdrachten in dit document wilt gebruiken vanuit uw **lokale omgeving** , hebt u de [Azure CLI nodig](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
 
     Als u [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/) gebruikt, opent u de CLI via de browser en bevindt deze zich in de cloud.
 
@@ -78,7 +78,7 @@ De Azure Machine Learning-werk ruimte is afhankelijk van de volgende Azure-Servi
 
 ### <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-De Azure Machine Learning-werk ruimte moet binnen een resource groep worden gemaakt. U kunt een bestaande resource groep gebruiken of een nieuwe maken. Met de volgende opdracht kunt u __een nieuwe resourcegroep maken__. Vervang `<resource-group-name>` door de naam die u voor deze resourcegroep wilt gebruiken. Vervang `<location>` door de Azure-regio die u voor deze resourcegroep wilt gebruiken:
+De Azure Machine Learning-werk ruimte moet binnen een resource groep worden gemaakt. U kunt een bestaande resource groep gebruiken of een nieuwe maken. Met de volgende opdracht kunt u __een nieuwe resourcegroep maken__ . Vervang `<resource-group-name>` door de naam die u voor deze resourcegroep wilt gebruiken. Vervang `<location>` door de Azure-regio die u voor deze resourcegroep wilt gebruiken:
 
 > [!TIP]
 > U moet een regio selecteren waar Azure Machine Learning beschikbaar is. Zie [Producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service) voor informatie.
@@ -107,7 +107,7 @@ Zie [az group](https://docs.microsoft.com//cli/azure/group?view=azure-cli-latest
 
 ### <a name="automatically-create-required-resources"></a>Automatisch vereiste resources maken
 
-Als u een nieuwe werk ruimte wilt maken waar de __Services automatisch worden gemaakt__, gebruikt u de volgende opdracht:
+Als u een nieuwe werk ruimte wilt maken waar de __Services automatisch worden gemaakt__ , gebruikt u de volgende opdracht:
 
 ```azurecli-interactive
 az ml workspace create -w <workspace-name> -g <resource-group-name>
@@ -160,18 +160,17 @@ Standaard worden metrische gegevens en meta data voor de werk ruimte opgeslagen 
 
 In plaats van de door micro soft beheerde sleutel te gebruiken, kunt u de zelf-sleutel opgeven. Dit maakt het Azure Cosmos DB-exemplaar dat metrische gegevens en meta data opslaat in uw Azure-abonnement. Gebruik de `--cmk-keyvault` para meter om de Azure Key Vault op te geven die de sleutel bevat en `--resource-cmk-uri` om de URL op te geven van de sleutel in de kluis.
 
-> [!IMPORTANT]
-> Voordat u de `--cmk-keyvault` `--resource-cmk-uri` para meters en gebruikt, moet u eerst de volgende acties uitvoeren:
->
-> 1. Machtig de __machine learning-app__ (in identiteits-en toegangs beheer) met Inzender machtigingen voor uw abonnement.
-> 1. Volg de stappen in door de [klant beheerde sleutels configureren](/azure/cosmos-db/how-to-setup-cmk) voor:
->     * De Azure Cosmos DB provider registreren
->     * Een Azure Key Vault maken en configureren
->     * Een sleutel genereren
->
->     U hoeft het Azure Cosmos DB exemplaar niet hand matig te maken, er wordt een voor u gemaakt tijdens het maken van de werk ruimte. Dit Azure Cosmos DB exemplaar wordt in een afzonderlijke resource groep gemaakt met behulp van een naam op basis van dit patroon: `<your-resource-group-name>_<GUID>` .
->
-> U kunt deze instelling niet wijzigen nadat de werk ruimte is gemaakt. Als u de Azure Cosmos DB die door uw werk ruimte worden gebruikt, verwijdert, moet u ook de werk ruimte verwijderen die er gebruik van maakt.
+Voordat u de `--cmk-keyvault` `--resource-cmk-uri` para meters en gebruikt, moet u eerst de volgende acties uitvoeren:
+
+1. Machtig de __machine learning-app__ (in identiteits-en toegangs beheer) met Inzender machtigingen voor uw abonnement.
+1. Volg de stappen in door de [klant beheerde sleutels configureren](/azure/cosmos-db/how-to-setup-cmk) voor:
+    * De Azure Cosmos DB provider registreren
+    * Een Azure Key Vault maken en configureren
+    * Een sleutel genereren
+
+U hoeft het Azure Cosmos DB exemplaar niet hand matig te maken, er wordt een voor u gemaakt tijdens het maken van de werk ruimte. Dit Azure Cosmos DB exemplaar wordt in een afzonderlijke resource groep gemaakt met behulp van een naam op basis van dit patroon: `<your-resource-group-name>_<GUID>` .
+
+[!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
 
 Gebruik de para meter om de gegevens te beperken die door micro soft worden verzameld op uw werk ruimte `--hbi-workspace` . 
 
@@ -187,7 +186,7 @@ Als u een werk ruimte wilt maken waarin bestaande resources worden gebruikt, moe
 > [!IMPORTANT]
 > U hoeft niet alle bestaande resources op te geven. U kunt een of meer opgeven. U kunt bijvoorbeeld een bestaand opslag account opgeven en de andere resources worden gemaakt door de werk ruimte.
 
-+ **Azure Storage account**: `az storage account show --name <storage-account-name> --query "id"`
++ **Azure Storage account** : `az storage account show --name <storage-account-name> --query "id"`
 
     Het antwoord van deze opdracht is vergelijkbaar met de volgende tekst en is de ID voor uw opslag account:
 
@@ -196,7 +195,7 @@ Als u een werk ruimte wilt maken waarin bestaande resources worden gebruikt, moe
     > [!IMPORTANT]
     > Als u een bestaand Azure Storage account wilt gebruiken, kan het geen Premium-account zijn (Premium_LRS en Premium_GRS). Het kan ook geen hiërarchische naam ruimte hebben (gebruikt met Azure Data Lake Storage Gen2). Geen enkele Premium-opslag of hiërarchische naam ruimte wordt ondersteund met het _standaard_ opslag account van de werk ruimte. U kunt Premium-opslag of een hiërarchische naam ruimte gebruiken met _niet-standaard_ opslag accounts.
 
-+ **Azure-toepassing Insights**:
++ **Azure-toepassing Insights** :
 
     1. Installeer de Application Insights-extensie:
 
@@ -214,13 +213,13 @@ Als u een werk ruimte wilt maken waarin bestaande resources worden gebruikt, moe
 
         `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/microsoft.insights/components/<application-insight-name>"`
 
-+ **Azure Key Vault**: `az keyvault show --name <key-vault-name> --query "ID"`
++ **Azure Key Vault** : `az keyvault show --name <key-vault-name> --query "ID"`
 
     Het antwoord van deze opdracht is vergelijkbaar met de volgende tekst en is de ID voor uw sleutel kluis:
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<key-vault-name>"`
 
-+ **Azure container Registry**: `az acr show --name <acr-name> -g <resource-group-name> --query "id"`
++ **Azure container Registry** : `az acr show --name <acr-name> -g <resource-group-name> --query "id"`
 
     Het antwoord van deze opdracht is vergelijkbaar met de volgende tekst en is de ID voor het container register:
 
@@ -394,7 +393,7 @@ az group delete -g <resource-group-name>
 
 Zie voor meer informatie de documentatie voor het verwijderen van de [werk ruimte AZ ml](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-delete) .
 
-## <a name="troubleshooting"></a>Probleemoplossing
+## <a name="troubleshooting"></a>Problemen oplossen
 
 ### <a name="resource-provider-errors"></a>Fouten van de resource provider
 

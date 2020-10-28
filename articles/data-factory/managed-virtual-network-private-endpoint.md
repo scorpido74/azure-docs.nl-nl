@@ -13,12 +13,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: 31d0d7f3ecb9ddb8a52c8ddda8a076e32283ae16
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 7a0d3c60841cb12f2999a929eb4af351716abda7
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545715"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635776"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Beheerde Virtual Network Azure Data Factory (preview-versie)
 
@@ -55,7 +55,7 @@ Azure Data Factory ondersteunt persoonlijke koppelingen. Met persoonlijke koppel
 
 Wanneer u een persoonlijke koppeling gebruikt, loopt het verkeer tussen uw gegevens archieven en beheerde Virtual Network volledig over het micro soft backbone-netwerk. Private Link beschermt tegen exfiltratie van gegevens. U kunt een privé-koppeling naar een resource tot stand brengen door een privé-eindpunt te maken.
 
-Persoonlijk eind punt maakt gebruik van een privé-IP-adres in de beheerde Virtual Network om de service effectief in te zetten. Privé-eindpunten worden toegewezen aan een specifieke resource in Azure, en niet de volledige service. Klanten kunnen de connectiviteit beperken tot een specifieke resource die is goedgekeurd door hun organisatie. Meer informatie over [privé-koppelingen en privé-eindpunten](https://docs.microsoft.com/azure/private-link/).
+Persoonlijk eind punt maakt gebruik van een privé-IP-adres in de beheerde Virtual Network om de service effectief in te zetten. Privé-eindpunten worden toegewezen aan een specifieke resource in Azure, en niet de volledige service. Klanten kunnen de connectiviteit beperken tot een specifieke resource die is goedgekeurd door hun organisatie. Meer informatie over [privé-koppelingen en privé-eindpunten](../private-link/index.yml).
 
 > [!NOTE]
 > Het wordt aanbevolen dat u beheerde persoonlijke eind punten maakt om verbinding te maken met al uw Azure-gegevens bronnen. 

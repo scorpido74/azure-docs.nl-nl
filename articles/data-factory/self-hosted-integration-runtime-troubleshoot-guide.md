@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 10/26/2020
 ms.author: lle
-ms.openlocfilehash: c85e27cedfbcebe7060dfed2f96fc53aea9838c9
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 3598db409e5493737753a8a1b03de168af5c664b
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629366"
+ms.locfileid: "92637187"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Problemen met zelf-hostende Integration runtime oplossen
 
@@ -183,7 +183,7 @@ In de onderstaande fout ziet u duidelijk het assemblage *systeem. ValueTuple* is
  
 `<LogProperties><ErrorInfo>[{"Code":0,"Message":"The type initializer for 'Npgsql.PoolManager' threw an exception.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.TypeInitializationException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[{"Code":0,"Message":"Could not load file or assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.IO.FileNotFoundException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[]}]}]</ErrorInfo></LogProperties>`
  
-Zie [dit artikel](https://docs.microsoft.com/dotnet/framework/app-domains/gac)voor meer informatie over GAC.
+Zie [dit artikel](/dotnet/framework/app-domains/gac)voor meer informatie over GAC.
 
 
 ### <a name="how-to-audit-self-hosted-ir-key-missing"></a>Controleren op ontbrekende sleutels voor zelf-hostende IR
@@ -468,7 +468,7 @@ Hier volgt de verwachte reactie:
 
 > [!NOTE] 
 > Overwegingen voor de proxy:
-> *    Controleer of de proxy server moet worden geplaatst in de lijst met veilige geadresseerden. Als dit het geval is, moet u ervoor zorgen dat [deze domeinen](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations#firewall-requirements-for-on-premisesprivate-network) zich in de lijst met veilige ontvangers bevinden.
+> *    Controleer of de proxy server moet worden geplaatst in de lijst met veilige geadresseerden. Als dit het geval is, moet u ervoor zorgen dat [deze domeinen](./data-movement-security-considerations.md#firewall-requirements-for-on-premisesprivate-network) zich in de lijst met veilige ontvangers bevinden.
 > *    Controleer of het TLS/SSL-certificaat "wu2.frontend.clouddatahub.net/" wordt vertrouwd op de proxy server.
 > *    Als u Active Directory verificatie gebruikt op de proxy, wijzigt u het service account in het gebruikers account dat toegang heeft tot de proxy als ' Integration Runtime-service.
 
@@ -632,7 +632,7 @@ Bepalen of u de gevolgen hebt:
 - U hebt geen invloed op de manier waarop u firewall regels definieert op basis van FQDN-namen met behulp van de methode die in dit document wordt beschreven: [firewall configuratie en lijst met toegestane instellingen voor IP-adres](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway).
 - U hebt echter wel last van dit probleem als u de acceptatie lijst expliciet inschakelt voor uitgaande Ip's op uw bedrijfs firewall.
 
-Te ondernemen actie als dit van invloed is: Waarschuw uw netwerk infrastructuur team om uw netwerk configuratie bij te werken om de nieuwste Data Factory IP-adressen te gebruiken voor 8 november 2020.  Als u de meest recente IP-adressen wilt downloaden, gaat u naar de [Download koppeling service Tags IP-adres bereik](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files).
+Te ondernemen actie als dit van invloed is: Waarschuw uw netwerk infrastructuur team om uw netwerk configuratie bij te werken om de nieuwste Data Factory IP-adressen te gebruiken voor 8 november 2020.  Als u de meest recente IP-adressen wilt downloaden, gaat u naar de [Download koppeling service Tags IP-adres bereik](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files).
 
 ##### <a name="scenario-2-outbound-communication-from-self-hosted-integration-runtime-running-on-an-azure-vm-inside-customer-managed-azure-virtual-network"></a>Scenario 2: uitgaande communicatie van zelf-hostende Integration Runtime die wordt uitgevoerd op een Azure-VM binnen een door de klant beheerd Azure Virtual Network
 Bepalen of u de gevolgen hebt:
@@ -641,14 +641,14 @@ Bepalen of u de gevolgen hebt:
  ![Doel controle](media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png)
 - U hebt echter last van dit probleem als u expliciet de acceptatie lijst voor uitgaande IP-adressen in uw NSG-instellingen in het virtuele Azure-netwerk inschakelt.
 
-Te ondernemen actie als dit van invloed is: Waarschuw uw netwerk infrastructuur team om de NSG-regels in de configuratie van uw virtuele Azure-netwerk bij te werken om de nieuwste Data Factory IP-adressen te gebruiken voor 8 november 2020.  Als u de meest recente IP-adressen wilt downloaden, gaat u naar de [Download koppeling service Tags IP-adres bereik](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files).
+Te ondernemen actie als dit van invloed is: Waarschuw uw netwerk infrastructuur team om de NSG-regels in de configuratie van uw virtuele Azure-netwerk bij te werken om de nieuwste Data Factory IP-adressen te gebruiken voor 8 november 2020.  Als u de meest recente IP-adressen wilt downloaden, gaat u naar de [Download koppeling service Tags IP-adres bereik](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files).
 
 ##### <a name="scenario-3-outbound-communication-from-ssis-integration-runtime-in-customer-managed-azure-virtual-network"></a>Scenario 3: uitgaande communicatie van SSIS-Integration Runtime in door klanten beheerd virtueel netwerk van Azure
 - Controleer of u uitgaande NSG-regels hebt in uw particuliere netwerk dat SSIS Integration Runtime bevat. Als er geen uitgaande beperkingen zijn, heeft dit geen invloed.
 - Als u uitgaande regel beperkingen hebt, controleert u of u een service label gebruikt of niet. Als u service tags gebruikt, hoeft u niets te wijzigen of toe te voegen omdat de nieuwe IP-bereiken onder bestaande service tags vallen.
 - U hebt echter wel last van het inschakelen van de acceptatie lijst voor uitgaand IP-adres in uw NSG-instellingen in het virtuele Azure-netwerk.
 
-Te ondernemen actie als dit van invloed is: Waarschuw uw netwerk infrastructuur team om de NSG-regels in de configuratie van uw virtuele Azure-netwerk bij te werken om de nieuwste Data Factory IP-adressen te gebruiken voor 8 november 2020.  Als u de meest recente IP-adressen wilt downloaden, gaat u naar de [Download koppeling service Tags IP-adres bereik](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files).
+Te ondernemen actie als dit van invloed is: Waarschuw uw netwerk infrastructuur team om de NSG-regels in de configuratie van uw virtuele Azure-netwerk bij te werken om de nieuwste Data Factory IP-adressen te gebruiken voor 8 november 2020.  Als u de meest recente IP-adressen wilt downloaden, gaat u naar de [Download koppeling service Tags IP-adres bereik](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files).
 
 ### <a name="could-not-establish-trust-relationship-for-the-ssltls-secure-channel"></a>Kan geen vertrouwens relatie tot stand brengen voor het beveiligde kanaal SSLTLS 
 
@@ -709,7 +709,7 @@ Voor meer informatie over het oplossen van problemen kunt u de volgende bronnen 
 *  [Data Factory Blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Data Factory functie aanvragen](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure-Video's](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
-*  [Microsoft Q&A-vragenpagina](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
+*  [Microsoft Q&A-vragenpagina](/answers/topics/azure-data-factory.html)
 *  [Stack overflow-forum voor Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Twitter-informatie over Data Factory](https://twitter.com/hashtag/DataFactory)
 *  [Prestatie gids gegevens stromen toewijzen](concepts-data-flow-performance.md)

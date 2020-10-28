@@ -11,12 +11,12 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2c308bd038f273a7cec0442e42f8a749bc4bb8fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3539b867d8f03d11e7799498d0207a65ac9db7d8
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89073553"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636626"
 ---
 # <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>SSISDB-logboeken opschonen met Azure Elastic Database-taken
 
@@ -160,7 +160,7 @@ $Job | Set-AzureRmSqlElasticJob -IntervalType $IntervalType -IntervalCount $Inte
 
 ## <a name="clean-up-logs-with-transact-sql"></a>Logboeken opschonen met Transact-SQL
 
-De volgende Transact-SQL-voorbeeld scripts maken een nieuwe elastische taak om de opgeslagen procedure voor het opschonen van SSISDB-logboeken te activeren. Zie [Transact-SQL (T-SQL) gebruiken om Elastic database taken te maken en te beheren](../sql-database/elastic-jobs-tsql.md)voor meer informatie.
+De volgende Transact-SQL-voorbeeld scripts maken een nieuwe elastische taak om de opgeslagen procedure voor het opschonen van SSISDB-logboeken te activeren. Zie [Transact-SQL (T-SQL) gebruiken om Elastic database taken te maken en te beheren](../azure-sql/database/elastic-jobs-tsql-create-manage.md)voor meer informatie.
 
 1. Een lege S0 of een hogere Azure SQL Database maken of identificeren als de SSISDBCleanup-taak database. Maak vervolgens een elastische taak agent in het [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.SQLElasticJobAgent).
 

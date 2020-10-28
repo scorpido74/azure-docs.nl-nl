@@ -10,12 +10,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 07/31/2018
-ms.openlocfilehash: 039afdafdccbefe03b5b366a89256409fda482e9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 37eac4acab7232e44f94e852b1c04c5549447b09
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368856"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637680"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Gegevens transformeren in Azure Data Factory
 
@@ -49,7 +49,7 @@ Het toewijzen van gegevens stromen zijn visueel ontworpen gegevens transformatie
 
 ### <a name="wrangling-data-flows"></a>Wrangling-gegevens stromen
 
-Met Wrangling-gegevens stromen in Azure Data Factory kunt u de gegevens voorbereiding voor code gratis uitvoeren op de Cloud schaal. Wrangling-gegevens stromen kunnen worden geïntegreerd met [Power query online](https://docs.microsoft.com/power-query/) en maken Power query M-functies beschikbaar voor gegevens Wrangling op Cloud schaal via Spark-uitvoering. Zie [wrangling Data Flows](wrangling-data-flow-overview.md)(Engelstalig) voor meer informatie.
+Met Wrangling-gegevens stromen in Azure Data Factory kunt u de gegevens voorbereiding voor code gratis uitvoeren op de Cloud schaal. Wrangling-gegevens stromen kunnen worden geïntegreerd met [Power query online](/power-query/) en maken Power query M-functies beschikbaar voor gegevens Wrangling op Cloud schaal via Spark-uitvoering. Zie [wrangling Data Flows](wrangling-data-flow-overview.md)(Engelstalig) voor meer informatie.
 
 ## <a name="external-transformations"></a>Externe transformaties
 
@@ -103,8 +103,8 @@ U kunt een aangepaste activiteit maken om R-scripts uit te voeren op uw HDInsigh
 ### <a name="compute-environments"></a>Reken omgevingen
 U maakt een gekoppelde service voor de compute-omgeving en gebruikt vervolgens de gekoppelde service wanneer u een trans formatie-activiteit definieert. Er zijn twee soorten reken omgevingen die door Data Factory worden ondersteund. 
 
-- **Op aanvraag**: in dit geval wordt de computer omgeving volledig beheerd door Data Factory. Het wordt automatisch gemaakt door de Data Factory-service voordat een taak wordt verzonden om gegevens te verwerken en te worden verwijderd wanneer de taak is voltooid. U kunt gedetailleerde instellingen van de compute-omgeving op aanvraag voor taak uitvoering, Cluster beheer en acties voor Boots traping configureren en beheren. 
-- **Neem uw eigen**werk: in dit geval kunt u uw eigen computer omgeving (bijvoorbeeld HDInsight-cluster) registreren als een gekoppelde service in Data Factory. De computer omgeving wordt beheerd door u en de Data Factory-service gebruikt deze om de activiteiten uit te voeren. 
+- **Op aanvraag** : in dit geval wordt de computer omgeving volledig beheerd door Data Factory. Het wordt automatisch gemaakt door de Data Factory-service voordat een taak wordt verzonden om gegevens te verwerken en te worden verwijderd wanneer de taak is voltooid. U kunt gedetailleerde instellingen van de compute-omgeving op aanvraag voor taak uitvoering, Cluster beheer en acties voor Boots traping configureren en beheren. 
+- **Neem uw eigen** werk: in dit geval kunt u uw eigen computer omgeving (bijvoorbeeld HDInsight-cluster) registreren als een gekoppelde service in Data Factory. De computer omgeving wordt beheerd door u en de Data Factory-service gebruikt deze om de activiteiten uit te voeren. 
 
 Zie het artikel [Compute linked Services](compute-linked-services.md) voor meer informatie over Compute-services die door Data Factory worden ondersteund. 
 

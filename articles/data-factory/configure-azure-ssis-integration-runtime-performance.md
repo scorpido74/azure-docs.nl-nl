@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
-ms.openlocfilehash: db50049675766d9fd8a018c8730f48ac34e23bfc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0fcd61230d68d7b26017237e2b7e0465fcb1f07
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91276659"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635317"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>De Azure-SSIS Integration Runtime configureren voor hoge prestaties
 
@@ -118,11 +118,11 @@ De y-as is het aantal pakketten dat in één uur wordt uitgevoerd. Houd er reken
 
 ## <a name="azuressisnodenumber"></a>AzureSSISNodeNumber
 
-**AzureSSISNodeNumber** past de schaal baarheid van de Integration runtime aan. De door Voer van de Integration runtime is evenredig met de **AzureSSISNodeNumber**. Stel eerst de **AzureSSISNodeNumber** in op een kleine waarde, Controleer de door Voer van de Integration runtime en pas vervolgens de waarde voor uw scenario aan. Als u het aantal worker-knoop punten opnieuw wilt configureren, raadpleegt u [een Azure SSIS Integration runtime beheren](manage-azure-ssis-integration-runtime.md).
+**AzureSSISNodeNumber** past de schaal baarheid van de Integration runtime aan. De door Voer van de Integration runtime is evenredig met de **AzureSSISNodeNumber** . Stel eerst de **AzureSSISNodeNumber** in op een kleine waarde, Controleer de door Voer van de Integration runtime en pas vervolgens de waarde voor uw scenario aan. Als u het aantal worker-knoop punten opnieuw wilt configureren, raadpleegt u [een Azure SSIS Integration runtime beheren](manage-azure-ssis-integration-runtime.md).
 
 ## <a name="azuressismaxparallelexecutionspernode"></a>AzureSSISMaxParallelExecutionsPerNode
 
-Wanneer u al een krachtig worker-knoop punt gebruikt voor het uitvoeren van pakketten, kan het toenemende aantal **AzureSSISMaxParallelExecutionsPerNode** de algemene door Voer van de Integration runtime verhogen. Als u de maximum waarde wilt verhogen, moet u Azure PowerShell gebruiken om **AzureSSISMaxParallelExecutionsPerNode**bij te werken. U kunt een schatting maken van de juiste waarde op basis van de kosten van uw pakket en de volgende configuraties voor de worker-knoop punten. Zie voor meer informatie de grootten van [virtuele machines voor algemene doel einden](../virtual-machines/windows/sizes-general.md).
+Wanneer u al een krachtig worker-knoop punt gebruikt voor het uitvoeren van pakketten, kan het toenemende aantal **AzureSSISMaxParallelExecutionsPerNode** de algemene door Voer van de Integration runtime verhogen. Als u de maximum waarde wilt verhogen, moet u Azure PowerShell gebruiken om **AzureSSISMaxParallelExecutionsPerNode** bij te werken. U kunt een schatting maken van de juiste waarde op basis van de kosten van uw pakket en de volgende configuraties voor de worker-knoop punten. Zie voor meer informatie de grootten van [virtuele machines voor algemene doel einden](../virtual-machines/sizes-general.md).
 
 | Grootte             | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Maximale tijdelijke opslagdoorvoer: IOPS / MBps lezen / MBps schrijven | Maximumaantal gegevensschijven / doorvoer: IOPS | Maximum aantal NIC's/verwachte netwerkprestaties (Mbps) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|
@@ -161,7 +161,7 @@ Hier volgen de richt lijnen voor het instellen van de juiste waarde voor de eige
 
 -   Kies een krachtigere data base, zoals S3 als het logboek registratie niveau is ingesteld op uitgebreid. Volgens onze onofficieel testen kan de prijs categorie S3 de uitvoering van SSIS-pakketten ondersteunen met 2 knoop punten, 128 parallelle aantallen en het niveau van uitgebreide logboek registratie.
 
-U kunt ook de prijs categorie van de data base aanpassen op basis van de gebruiks gegevens van de [Data Base Trans Action unit](../sql-database/sql-database-what-is-a-dtu.md) (DTU) die beschikbaar zijn op de Azure Portal.
+U kunt ook de prijs categorie van de data base aanpassen op basis van de gebruiks gegevens van de [Data Base Trans Action unit](../azure-sql/database/service-tiers-dtu.md) (DTU) die beschikbaar zijn op de Azure Portal.
 
 ## <a name="design-for-high-performance"></a>Ontwerp voor hoge prestaties
 Het ontwerpen van een SSIS-pakket om uit te voeren op Azure wijkt af van het ontwerpen van een pakket voor on-premises uitvoering. In plaats van het combi neren van meerdere onafhankelijke taken in hetzelfde pakket, kunt u ze in meerdere pakketten scheiden voor een efficiëntere uitvoering in de Azure-SSIS IR. Maak een pakket uitvoering voor elk pakket, zodat ze niet hoeven te wachten tot elkaar zijn voltooid. Deze aanpak heeft voor delen ten opzichte van de schaal baarheid van de Azure-SSIS Integration runtime en verbetert de algehele door voer.

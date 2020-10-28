@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 09/22/2020
+ms.date: 10/23/2020
 ms.custom: generated
-ms.openlocfilehash: 8db16ba415e609827f6b775840f153489702ecca
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 28de993f51b13e973edb0e42f138217cd35ab8dd
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370556"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636694"
 ---
 # <a name="azure-built-in-roles"></a>Ingebouwde Azure-rollen
 
@@ -91,8 +91,8 @@ De volgende tabel bevat een korte beschrijving en de unieke ID van elke ingebouw
 > | [Rol van de Azure Kubernetes service-bijdrager](#azure-kubernetes-service-contributor-role) | Hiermee wordt toegang verleend voor het lezen en schrijven van Azure Kubernetes Service-clusters | ed7f3fbd-7b88-4dd4-9017-9adb7ce333f8 |
 > | [RBAC-beheerder voor Azure Kubernetes service](#azure-kubernetes-service-rbac-admin) | Hiermee kunt u alle resources beheren onder cluster/naam ruimte, behalve voor het bijwerken of verwijderen van resource quota's en naam ruimten. | 3498e952-d568-435e-9b2c-8d77e338d7f7 |
 > | [De Azure Kubernetes service RBAC-cluster beheerder](#azure-kubernetes-service-rbac-cluster-admin) | Hiermee kunt u alle resources in het cluster beheren. | b1ff04bb-8a4e-4dc4-8eb5-8693973ce19b |
-> | [RBAC-lezer van de Azure Kubernetes service](#azure-kubernetes-service-rbac-reader) | Hiermee kunt u alle resources in het cluster of de naam ruimte weer geven, behalve geheimen. | 7f6c6a51-bcf8-42ba-9220-52d62157d7db |
-> | [RBAC-schrijver van Azure Kubernetes service](#azure-kubernetes-service-rbac-writer) | Hiermee kunt u alles in cluster/naam ruimte bijwerken, met uitzonde ring van resource quota's, naam ruimten, Pod-beveiligings beleid, aanvragen voor certificaat ondertekening, (cluster) rollen en (cluster) rollen bindingen. | a7ffa36f-339b-4b5c-8bdf-e2c188b2c0eb |
+> | [RBAC-lezer van de Azure Kubernetes service](#azure-kubernetes-service-rbac-reader) | Hiermee staat u alleen-lezen toegang toe om de meeste objecten in een naam ruimte weer te geven. Het is niet toegestaan om weergave rollen of functie bindingen te bekijken. Deze rol staat geen weergave geheimen toe, omdat het lezen van de inhoud van geheimen toegang biedt tot ServiceAccount-referenties in de naam ruimte, waardoor API-toegang zou worden toegestaan als ServiceAccount in de naam ruimte (een vorm van bevoegdheden escalation). Als deze rol op het cluster bereik wordt toegepast, krijgt u toegang tot alle naam ruimten. | 7f6c6a51-bcf8-42ba-9220-52d62157d7db |
+> | [RBAC-schrijver van Azure Kubernetes service](#azure-kubernetes-service-rbac-writer) | Hiermee wordt lees-/schrijftoegang tot de meeste objecten in een naam ruimte toegestaan. Deze rol staat het weer geven of wijzigen van rollen of rollen bindingen niet toe. Met deze rol kunt u echter wel toegang krijgen tot geheimen en een ServiceAccount uitvoeren in de naam ruimte, zodat het kan worden gebruikt om de API-toegangs niveaus van een wille keurige ServiceAccount in de naam ruimte te verkrijgen. Als deze rol op het cluster bereik wordt toegepast, krijgt u toegang tot alle naam ruimten. | a7ffa36f-339b-4b5c-8bdf-e2c188b2c0eb |
 > | **Databases** |  |  |
 > | [Rol van Cosmos DB-account lezer](#cosmos-db-account-reader-role) | Kan gegevens van Azure Cosmos DB-account lezen. Zie [DocumentDB account Inzender](#documentdb-account-contributor) voor het beheren van Azure Cosmos DB accounts. | fbdf93bf-df7d-467e-a4d2-9458aa1360c8 |
 > | [Cosmos DB-operator](#cosmos-db-operator) | Hiermee kunt u Azure Cosmos DB accounts beheren, maar geen toegang tot gegevens. Hiermee voor komt u toegang tot account sleutels en verbindings reeksen. | 230815da-be43-4aae-9cb4-875f7bd000aa |
@@ -121,7 +121,7 @@ De volgende tabel bevat een korte beschrijving en de unieke ID van elke ingebouw
 > | [Inzender Cognitive Services](#cognitive-services-contributor) | Hiermee kunt u sleutels van Cognitive Services maken, lezen, bijwerken, verwijderen en beheren. | 25fbc0a9-bd7c-42a3-aa1a-3b75d497ee68 |
 > | [Cognitive Services gegevens lezer (preview-versie)](#cognitive-services-data-reader-preview) | Hiermee kunt u Cognitive Services gegevens lezen. | b59867f0-fa02-499b-be73-45a86b5b3e1c |
 > | [Cognitive Services gebruiker](#cognitive-services-user) | Hiermee kunt u de sleutels van Cognitive Services lezen en weer geven. | a97b65f3-24c7-4388-baec-2e87135dc908 |
-> | **Mixed reality** |  |  |
+> | **Gemengde realiteit** |  |  |
 > | [Externe rendering-beheerder](#remote-rendering-administrator) | Biedt gebruikers de mogelijkheid om de mogelijkheden voor het omzetten van sessies, rendering en diagnose te beheren voor externe rendering in azure | 3df8b902-2a6f-47c7-8cc5-360e9b272a7e |
 > | [Client voor externe Rendering](#remote-rendering-client) | Biedt gebruikers de mogelijkheid om sessie, rendering en diagnose te beheren voor de externe rendering van Azure. | d39065c4-c120-43c9-ab0a-63eed9795f0a |
 > | [Inzender voor ruimtelijke ankers](#spatial-anchors-account-contributor) | Hiermee kunt u ruimtelijke ankers in uw account beheren, maar niet verwijderen | 8bbe83f1-e2a6-4df7-8cb4-4e04d4e5c827 |
@@ -1154,7 +1154,7 @@ Hiermee beheert u Traffic Manager profielen, maar kunt u niet bepalen wie er toe
 }
 ```
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Opslag
 
 
 ### <a name="avere-contributor"></a>AVERE-bijdrager
@@ -3274,7 +3274,7 @@ Hiermee kunt u alle resources in het cluster beheren. [Meer informatie](../aks/m
 
 ### <a name="azure-kubernetes-service-rbac-reader"></a>RBAC-lezer van de Azure Kubernetes service
 
-Hiermee kunt u alle resources in het cluster of de naam ruimte weer geven, behalve geheimen. [Meer informatie](../aks/manage-azure-rbac.md)
+Hiermee staat u alleen-lezen toegang toe om de meeste objecten in een naam ruimte weer te geven. Het is niet toegestaan om weergave rollen of functie bindingen te bekijken. Deze rol staat geen weergave geheimen toe, omdat het lezen van de inhoud van geheimen toegang biedt tot ServiceAccount-referenties in de naam ruimte, waardoor API-toegang zou worden toegestaan als ServiceAccount in de naam ruimte (een vorm van bevoegdheden escalation). Als deze rol op het cluster bereik wordt toegepast, krijgt u toegang tot alle naam ruimten. [Meer informatie](../aks/manage-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Acties | Beschrijving |
@@ -3286,22 +3286,47 @@ Hiermee kunt u alle resources in het cluster of de naam ruimte weer geven, behal
 > | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/Read | Hiermee wordt de lijst met abonnementen opgehaald. |
 > | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Hiermee worden resource groepen opgehaald of weer gegeven. |
 > | [Micro soft. ondersteuning](resource-provider-operations.md#microsoftsupport)/* | Een ondersteunings ticket maken en bijwerken |
-> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/Action | De clusterUser-referentie van een beheerd cluster weer geven |
 > | **NotActions** |  |
 > | *geen* |  |
 > | **DataActions** |  |
-> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/*/Read |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/apps/controllerrevisions/Read | Controllerrevisions lezen |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/apps/daemonsets/Read | Daemonsets lezen |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/apps/Deployments/Read | Leest implementaties |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/apps/replicasets/Read | Replicasets lezen |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/apps/statefulsets/Read | Statefulsets lezen |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/AutoScaling/horizontalpodautoscalers/Read | Horizontalpodautoscalers lezen |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/batch/cronjobs/Read | Cronjobs lezen |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/batch/jobs/Read | Hiermee worden taken gelezen |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/configmaps/Read | Configmaps lezen |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/endpoints/Read | Hiermee worden eind punten gelezen |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Events.K8S.io/Events/Read | Gebeurtenissen lezen |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Events/Read | Gebeurtenissen lezen |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Extensions/daemonsets/Read | Daemonsets lezen |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Extensions/Deployments/Read | Leest implementaties |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Extensions/ingresses/Read | Ingresses lezen |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Extensions/networkpolicies/Read | Networkpolicies lezen |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Extensions/replicasets/Read | Replicasets lezen |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/limitranges/Read | Limitranges lezen |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/namespaces/Read | Naam ruimten lezen |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Networking.K8S.io/ingresses/Read | Ingresses lezen |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Networking.K8S.io/networkpolicies/Read | Networkpolicies lezen |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/persistentvolumeclaims/Read | Persistentvolumeclaims lezen |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/pods/Read | Hiermee worden de peulen gelezen |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Policy/poddisruptionbudgets/Read | Poddisruptionbudgets lezen |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/replicationcontrollers/Read | Replicationcontrollers lezen |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/replicationcontrollers/Read | Replicationcontrollers lezen |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/resourcequotas/Read | Resourcequotas lezen |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/serviceaccounts/Read | Serviceaccounts lezen |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Services/Read | Services lezen |
 > | **NotDataActions** |  |
-> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/RBAC.Authorization.K8S.io/*/Read |  |
-> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/RBAC.Authorization.K8S.io/*/write |  |
-> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Secrets/* |  |
+> | *geen* |  |
 
 ```json
 {
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you view all resources in cluster/namespace, except secrets.",
+  "description": "Allows read-only access to see most objects in a namespace. It does not allow viewing roles or role bindings. This role does not allow viewing Secrets, since reading the contents of Secrets enables access to ServiceAccount credentials in the namespace, which would allow API access as any ServiceAccount in the namespace (a form of privilege escalation). Applying this role at cluster scope will give access across all namespaces.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/7f6c6a51-bcf8-42ba-9220-52d62157d7db",
   "name": "7f6c6a51-bcf8-42ba-9220-52d62157d7db",
   "permissions": [
@@ -3313,18 +3338,41 @@ Hiermee kunt u alle resources in het cluster of de naam ruimte weer geven, behal
         "Microsoft.Resources/subscriptions/operationresults/read",
         "Microsoft.Resources/subscriptions/read",
         "Microsoft.Resources/subscriptions/resourceGroups/read",
-        "Microsoft.Support/*",
-        "Microsoft.ContainerService/managedClusters/listClusterUserCredential/action"
+        "Microsoft.Support/*"
       ],
       "notActions": [],
       "dataActions": [
-        "Microsoft.ContainerService/managedClusters/*/read"
+        "Microsoft.ContainerService/managedClusters/apps/controllerrevisions/read",
+        "Microsoft.ContainerService/managedClusters/apps/daemonsets/read",
+        "Microsoft.ContainerService/managedClusters/apps/deployments/read",
+        "Microsoft.ContainerService/managedClusters/apps/replicasets/read",
+        "Microsoft.ContainerService/managedClusters/apps/statefulsets/read",
+        "Microsoft.ContainerService/managedClusters/autoscaling/horizontalpodautoscalers/read",
+        "Microsoft.ContainerService/managedClusters/batch/cronjobs/read",
+        "Microsoft.ContainerService/managedClusters/batch/jobs/read",
+        "Microsoft.ContainerService/managedClusters/configmaps/read",
+        "Microsoft.ContainerService/managedClusters/endpoints/read",
+        "Microsoft.ContainerService/managedClusters/events.k8s.io/events/read",
+        "Microsoft.ContainerService/managedClusters/events/read",
+        "Microsoft.ContainerService/managedClusters/extensions/daemonsets/read",
+        "Microsoft.ContainerService/managedClusters/extensions/deployments/read",
+        "Microsoft.ContainerService/managedClusters/extensions/ingresses/read",
+        "Microsoft.ContainerService/managedClusters/extensions/networkpolicies/read",
+        "Microsoft.ContainerService/managedClusters/extensions/replicasets/read",
+        "Microsoft.ContainerService/managedClusters/limitranges/read",
+        "Microsoft.ContainerService/managedClusters/namespaces/read",
+        "Microsoft.ContainerService/managedClusters/networking.k8s.io/ingresses/read",
+        "Microsoft.ContainerService/managedClusters/networking.k8s.io/networkpolicies/read",
+        "Microsoft.ContainerService/managedClusters/persistentvolumeclaims/read",
+        "Microsoft.ContainerService/managedClusters/pods/read",
+        "Microsoft.ContainerService/managedClusters/policy/poddisruptionbudgets/read",
+        "Microsoft.ContainerService/managedClusters/replicationcontrollers/read",
+        "Microsoft.ContainerService/managedClusters/replicationcontrollers/read",
+        "Microsoft.ContainerService/managedClusters/resourcequotas/read",
+        "Microsoft.ContainerService/managedClusters/serviceaccounts/read",
+        "Microsoft.ContainerService/managedClusters/services/read"
       ],
-      "notDataActions": [
-        "Microsoft.ContainerService/managedClusters/rbac.authorization.k8s.io/*/read",
-        "Microsoft.ContainerService/managedClusters/rbac.authorization.k8s.io/*/write",
-        "Microsoft.ContainerService/managedClusters/secrets/*"
-      ]
+      "notDataActions": []
     }
   ],
   "roleName": "Azure Kubernetes Service RBAC Reader",
@@ -3335,7 +3383,7 @@ Hiermee kunt u alle resources in het cluster of de naam ruimte weer geven, behal
 
 ### <a name="azure-kubernetes-service-rbac-writer"></a>RBAC-schrijver van Azure Kubernetes service
 
-Hiermee kunt u alles in cluster/naam ruimte bijwerken, met uitzonde ring van resource quota's, naam ruimten, Pod-beveiligings beleid, aanvragen voor certificaat ondertekening, (cluster) rollen en (cluster) rollen bindingen. [Meer informatie](../aks/manage-azure-rbac.md)
+Hiermee wordt lees-/schrijftoegang tot de meeste objecten in een naam ruimte toegestaan. Deze rol staat het weer geven of wijzigen van rollen of rollen bindingen niet toe. Met deze rol kunt u echter wel toegang krijgen tot geheimen en een ServiceAccount uitvoeren in de naam ruimte, zodat het kan worden gebruikt om de API-toegangs niveaus van een wille keurige ServiceAccount in de naam ruimte te verkrijgen. Als deze rol op het cluster bereik wordt toegepast, krijgt u toegang tot alle naam ruimten. [Meer informatie](../aks/manage-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Acties | Beschrijving |
@@ -3347,26 +3395,48 @@ Hiermee kunt u alles in cluster/naam ruimte bijwerken, met uitzonde ring van res
 > | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/Read | Hiermee wordt de lijst met abonnementen opgehaald. |
 > | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Hiermee worden resource groepen opgehaald of weer gegeven. |
 > | [Micro soft. ondersteuning](resource-provider-operations.md#microsoftsupport)/* | Een ondersteunings ticket maken en bijwerken |
-> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/Action | De clusterUser-referentie van een beheerd cluster weer geven |
 > | **NotActions** |  |
 > | *geen* |  |
 > | **DataActions** |  |
-> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/*/Read |  |
-> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/*/write |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/apps/controllerrevisions/Read | Controllerrevisions lezen |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/apps/daemonsets/* |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/apps/Deployments/* |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/apps/replicasets/* |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/apps/statefulsets/* |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/AutoScaling/horizontalpodautoscalers/* |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/batch/cronjobs/* |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/batch/jobs/* |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/configmaps/* |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/endpoints/* |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Events.K8S.io/Events/Read | Gebeurtenissen lezen |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Events/Read | Gebeurtenissen lezen |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Extensions/daemonsets/* |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Extensions/Deployments/* |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Extensions/ingresses/* |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Extensions/networkpolicies/* |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Extensions/replicasets/* |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/limitranges/Read | Limitranges lezen |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/namespaces/Read | Naam ruimten lezen |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Networking.K8S.io/ingresses/* |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Networking.K8S.io/networkpolicies/* |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/persistentvolumeclaims/* |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/pods/* |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Policy/poddisruptionbudgets/* |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/replicationcontrollers/* |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/replicationcontrollers/* |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/resourcequotas/Read | Resourcequotas lezen |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Secrets/* |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/serviceaccounts/* |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Services/* |  |
 > | **NotDataActions** |  |
-> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/RBAC.Authorization.K8S.io/*/Read |  |
-> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/RBAC.Authorization.K8S.io/*/write |  |
-> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/namespaces/write | Schrijft naam ruimten |
-> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/resourcequotas/write | Schrijft resourcequotas |
-> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/certificates.K8S.io/certificatesigningrequests/write | Schrijft certificatesigningrequests |
-> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Policy/podsecuritypolicies/write | Schrijft podsecuritypolicies |
+> | *geen* |  |
 
 ```json
 {
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you update everything in cluster/namespace, except resource quotas, namespaces, pod security policies, certificate signing requests, (cluster)roles and (cluster)role bindings.",
+  "description": "Allows read/write access to most objects in a namespace.This role does not allow viewing or modifying roles or role bindings. However, this role allows accessing Secrets and running Pods as any ServiceAccount in the namespace, so it can be used to gain the API access levels of any ServiceAccount in the namespace. Applying this role at cluster scope will give access across all namespaces.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/a7ffa36f-339b-4b5c-8bdf-e2c188b2c0eb",
   "name": "a7ffa36f-339b-4b5c-8bdf-e2c188b2c0eb",
   "permissions": [
@@ -3378,22 +3448,42 @@ Hiermee kunt u alles in cluster/naam ruimte bijwerken, met uitzonde ring van res
         "Microsoft.Resources/subscriptions/operationresults/read",
         "Microsoft.Resources/subscriptions/read",
         "Microsoft.Resources/subscriptions/resourceGroups/read",
-        "Microsoft.Support/*",
-        "Microsoft.ContainerService/managedClusters/listClusterUserCredential/action"
+        "Microsoft.Support/*"
       ],
       "notActions": [],
       "dataActions": [
-        "Microsoft.ContainerService/managedClusters/*/read",
-        "Microsoft.ContainerService/managedClusters/*/write"
+        "Microsoft.ContainerService/managedClusters/apps/controllerrevisions/read",
+        "Microsoft.ContainerService/managedClusters/apps/daemonsets/*",
+        "Microsoft.ContainerService/managedClusters/apps/deployments/*",
+        "Microsoft.ContainerService/managedClusters/apps/replicasets/*",
+        "Microsoft.ContainerService/managedClusters/apps/statefulsets/*",
+        "Microsoft.ContainerService/managedClusters/autoscaling/horizontalpodautoscalers/*",
+        "Microsoft.ContainerService/managedClusters/batch/cronjobs/*",
+        "Microsoft.ContainerService/managedClusters/batch/jobs/*",
+        "Microsoft.ContainerService/managedClusters/configmaps/*",
+        "Microsoft.ContainerService/managedClusters/endpoints/*",
+        "Microsoft.ContainerService/managedClusters/events.k8s.io/events/read",
+        "Microsoft.ContainerService/managedClusters/events/read",
+        "Microsoft.ContainerService/managedClusters/extensions/daemonsets/*",
+        "Microsoft.ContainerService/managedClusters/extensions/deployments/*",
+        "Microsoft.ContainerService/managedClusters/extensions/ingresses/*",
+        "Microsoft.ContainerService/managedClusters/extensions/networkpolicies/*",
+        "Microsoft.ContainerService/managedClusters/extensions/replicasets/*",
+        "Microsoft.ContainerService/managedClusters/limitranges/read",
+        "Microsoft.ContainerService/managedClusters/namespaces/read",
+        "Microsoft.ContainerService/managedClusters/networking.k8s.io/ingresses/*",
+        "Microsoft.ContainerService/managedClusters/networking.k8s.io/networkpolicies/*",
+        "Microsoft.ContainerService/managedClusters/persistentvolumeclaims/*",
+        "Microsoft.ContainerService/managedClusters/pods/*",
+        "Microsoft.ContainerService/managedClusters/policy/poddisruptionbudgets/*",
+        "Microsoft.ContainerService/managedClusters/replicationcontrollers/*",
+        "Microsoft.ContainerService/managedClusters/replicationcontrollers/*",
+        "Microsoft.ContainerService/managedClusters/resourcequotas/read",
+        "Microsoft.ContainerService/managedClusters/secrets/*",
+        "Microsoft.ContainerService/managedClusters/serviceaccounts/*",
+        "Microsoft.ContainerService/managedClusters/services/*"
       ],
-      "notDataActions": [
-        "Microsoft.ContainerService/managedClusters/rbac.authorization.k8s.io/*/read",
-        "Microsoft.ContainerService/managedClusters/rbac.authorization.k8s.io/*/write",
-        "Microsoft.ContainerService/managedClusters/namespaces/write",
-        "Microsoft.ContainerService/managedClusters/resourcequotas/write",
-        "Microsoft.ContainerService/managedClusters/certificates.k8s.io/certificatesigningrequests/write",
-        "Microsoft.ContainerService/managedClusters/policy/podsecuritypolicies/write"
-      ]
+      "notDataActions": []
     }
   ],
   "roleName": "Azure Kubernetes Service RBAC Writer",
@@ -3691,10 +3781,8 @@ Hiermee kunt u SQL-data bases beheren, maar niet de toegang tot ze. U kunt ook h
 > | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/databases/vulnerabilityAssessments/* |  |
 > | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/securityAlertPolicies/* |  |
 > | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/vulnerabilityAssessments/* |  |
-> | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/servers/databases/auditingPolicies/* | Controle beleid bewerken |
 > | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/servers/databases/auditingSettings/* | Controle-instellingen bewerken |
 > | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/servers/databases/auditRecords/Read | De data base-BLOB-controle records ophalen |
-> | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/servers/databases/connectionPolicies/* | Verbindings beleid bewerken |
 > | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/servers/databases/currentSensitivityLabels/* |  |
 > | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/servers/databases/dataMaskingPolicies/* | Beleids regels voor gegevens maskering bewerken |
 > | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/servers/databases/extendedAuditingSettings/* |  |
@@ -3744,10 +3832,8 @@ Hiermee kunt u SQL-data bases beheren, maar niet de toegang tot ze. U kunt ook h
         "Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/*",
         "Microsoft.Sql/managedInstances/securityAlertPolicies/*",
         "Microsoft.Sql/managedInstances/vulnerabilityAssessments/*",
-        "Microsoft.Sql/servers/databases/auditingPolicies/*",
         "Microsoft.Sql/servers/databases/auditingSettings/*",
         "Microsoft.Sql/servers/databases/auditRecords/read",
-        "Microsoft.Sql/servers/databases/connectionPolicies/*",
         "Microsoft.Sql/servers/databases/currentSensitivityLabels/*",
         "Microsoft.Sql/servers/databases/dataMaskingPolicies/*",
         "Microsoft.Sql/servers/databases/extendedAuditingSettings/*",
@@ -3794,7 +3880,8 @@ Hiermee beheert u beheerde SQL-instanties en de vereiste netwerk configuratie, m
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/Metrics/Read | Metrische gegevens lezen |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/metricDefinitions/Read | Metrische definities lezen |
 > | **NotActions** |  |
-> | *geen* |  |
+> | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/azureADOnlyAuthentications/Delete | Hiermee verwijdert u een specifieke beheerde server Azure Active Directory alleen een verificatie object |
+> | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/azureADOnlyAuthentications/write | Hiermee wordt een specifieke beheerde server toegevoegd of bijgewerkt Azure Active Directory alleen een verificatie object |
 > | **DataActions** |  |
 > | *geen* |  |
 > | **NotDataActions** |  |
@@ -3827,7 +3914,10 @@ Hiermee beheert u beheerde SQL-instanties en de vereiste netwerk configuratie, m
         "Microsoft.Insights/metrics/read",
         "Microsoft.Insights/metricDefinitions/read"
       ],
-      "notActions": [],
+      "notActions": [
+        "Microsoft.Sql/managedInstances/azureADOnlyAuthentications/delete",
+        "Microsoft.Sql/managedInstances/azureADOnlyAuthentications/write"
+      ],
       "dataActions": [],
       "notDataActions": []
     }
@@ -3861,13 +3951,10 @@ Hiermee kunt u het beveiligings beleid van SQL-servers en-data bases beheren, ma
 > | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/securityAlertPolicies/* |  |
 > | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/databases/transparentDataEncryption/* |  |
 > | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/vulnerabilityAssessments/* |  |
-> | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/servers/auditingPolicies/* | SQL Server-controle beleid maken en beheren |
 > | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/servers/auditingSettings/* | SQL Server-controle-instelling maken en beheren |
 > | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/servers/extendedAuditingSettings/Read | Details ophalen van het uitgebreide-server-BLOB-controle beleid dat op een bepaalde server is geconfigureerd |
-> | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/servers/databases/auditingPolicies/* | Controle beleid voor SQL server-data bases maken en beheren |
 > | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/servers/databases/auditingSettings/* | Controle-instellingen voor SQL Server-Data Base maken en beheren |
 > | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/servers/databases/auditRecords/Read | De data base-BLOB-controle records ophalen |
-> | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/servers/databases/connectionPolicies/* | SQL Server-database verbindings beleid maken en beheren |
 > | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/servers/databases/currentSensitivityLabels/* |  |
 > | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/servers/databases/dataMaskingPolicies/* | Gegevens maskerings beleid voor SQL server-data bases maken en beheren |
 > | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/servers/databases/extendedAuditingSettings/Read | Details ophalen van het uitgebreide BLOB-controle beleid dat is geconfigureerd voor een bepaalde data base |
@@ -3889,8 +3976,9 @@ Hiermee kunt u het beveiligings beleid van SQL-servers en-data bases beheren, ma
 > | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/servers/securityAlertPolicies/* | Beveiligings waarschuwingen voor SQL Server maken en beheren |
 > | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/servers/vulnerabilityAssessments/* |  |
 > | [Micro soft. ondersteuning](resource-provider-operations.md#microsoftsupport)/* | Een ondersteunings ticket maken en bijwerken |
-> | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/servers/Administrators/Read | Hiermee wordt een specifiek Azure Active Directory-beheer object opgehaald |
 > | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/servers/azureADOnlyAuthentications/* |  |
+> | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/Read | De lijst met beheerde exemplaren retour neren of de eigenschappen van het opgegeven beheerde exemplaar ophalen. |
+> | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/azureADOnlyAuthentications/* |  |
 > | **NotActions** |  |
 > | *geen* |  |
 > | **DataActions** |  |
@@ -3925,13 +4013,10 @@ Hiermee kunt u het beveiligings beleid van SQL-servers en-data bases beheren, ma
         "Microsoft.Sql/managedInstances/securityAlertPolicies/*",
         "Microsoft.Sql/managedInstances/databases/transparentDataEncryption/*",
         "Microsoft.Sql/managedInstances/vulnerabilityAssessments/*",
-        "Microsoft.Sql/servers/auditingPolicies/*",
         "Microsoft.Sql/servers/auditingSettings/*",
         "Microsoft.Sql/servers/extendedAuditingSettings/read",
-        "Microsoft.Sql/servers/databases/auditingPolicies/*",
         "Microsoft.Sql/servers/databases/auditingSettings/*",
         "Microsoft.Sql/servers/databases/auditRecords/read",
-        "Microsoft.Sql/servers/databases/connectionPolicies/*",
         "Microsoft.Sql/servers/databases/currentSensitivityLabels/*",
         "Microsoft.Sql/servers/databases/dataMaskingPolicies/*",
         "Microsoft.Sql/servers/databases/extendedAuditingSettings/read",
@@ -3953,8 +4038,9 @@ Hiermee kunt u het beveiligings beleid van SQL-servers en-data bases beheren, ma
         "Microsoft.Sql/servers/securityAlertPolicies/*",
         "Microsoft.Sql/servers/vulnerabilityAssessments/*",
         "Microsoft.Support/*",
-        "Microsoft.Sql/servers/administrators/read",
-        "Microsoft.Sql/servers/azureADOnlyAuthentications/*"
+        "Microsoft.Sql/servers/azureADOnlyAuthentications/*",
+        "Microsoft.Sql/managedInstances/read",
+        "Microsoft.Sql/managedInstances/azureADOnlyAuthentications/*"
       ],
       "notActions": [],
       "dataActions": [],
@@ -3993,12 +4079,9 @@ Hiermee kunt u SQL-servers en-data bases beheren, maar niet de toegang tot ze en
 > | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/databases/vulnerabilityAssessments/* |  |
 > | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/securityAlertPolicies/* |  |
 > | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/vulnerabilityAssessments/* |  |
-> | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/servers/auditingPolicies/* | Controle beleid voor SQL server bewerken |
 > | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/servers/auditingSettings/* | SQL Server-controle-instellingen bewerken |
-> | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/servers/databases/auditingPolicies/* | Controle beleid voor SQL Server-Data Base bewerken |
 > | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/servers/databases/auditingSettings/* | Controle-instellingen voor SQL Server-Data Base bewerken |
 > | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/servers/databases/auditRecords/Read | De data base-BLOB-controle records ophalen |
-> | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/servers/databases/connectionPolicies/* | SQL Server-database verbindings beleid bewerken |
 > | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/servers/databases/currentSensitivityLabels/* |  |
 > | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/servers/databases/dataMaskingPolicies/* | Beleids regels voor gegevens maskering van SQL Server-Data Base bewerken |
 > | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/servers/databases/extendedAuditingSettings/* |  |
@@ -4051,12 +4134,9 @@ Hiermee kunt u SQL-servers en-data bases beheren, maar niet de toegang tot ze en
         "Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/*",
         "Microsoft.Sql/managedInstances/securityAlertPolicies/*",
         "Microsoft.Sql/managedInstances/vulnerabilityAssessments/*",
-        "Microsoft.Sql/servers/auditingPolicies/*",
         "Microsoft.Sql/servers/auditingSettings/*",
-        "Microsoft.Sql/servers/databases/auditingPolicies/*",
         "Microsoft.Sql/servers/databases/auditingSettings/*",
         "Microsoft.Sql/servers/databases/auditRecords/read",
-        "Microsoft.Sql/servers/databases/connectionPolicies/*",
         "Microsoft.Sql/servers/databases/currentSensitivityLabels/*",
         "Microsoft.Sql/servers/databases/dataMaskingPolicies/*",
         "Microsoft.Sql/servers/databases/extendedAuditingSettings/*",
@@ -5470,7 +5550,7 @@ Hiermee kunt u Azure Stack registraties beheren.
 > [!div class="mx-tableFixed"]
 > | Acties | Beschrijving |
 > | --- | --- |
-> | [Micro soft. AzureStack](resource-provider-operations.md#microsoftazurestack)/edgeSubscriptions/Read |  |
+> | [Micro soft. AzureStack](resource-provider-operations.md#microsoftazurestack)/edgeSubscriptions/Read | De eigenschappen van een Azure Stack Edge-abonnement ophalen |
 > | [Micro soft. AzureStack](resource-provider-operations.md#microsoftazurestack)/Registrations/Products/*/Action |  |
 > | [Micro soft. AzureStack](resource-provider-operations.md#microsoftazurestack)/Registrations/Products/Read | Hiermee worden de eigenschappen van een Azure Stack Marketplace-product opgehaald |
 > | [Micro soft. AzureStack](resource-provider-operations.md#microsoftazurestack)/Registrations/Read | Hiermee worden de eigenschappen van een Azure Stack registratie opgehaald |
@@ -6246,6 +6326,7 @@ Azure Sentinel Reader [meer informatie](../sentinel/roles.md)
 > | [Micro soft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/*/Read |  |
 > | [Micro soft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/dataConnectorsCheckRequirements/Action | Gebruikers autorisatie en licentie controleren |
 > | [Micro soft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/indicators/query/Action | Query-Indica tors van Threat Intelligence |
+> | [Micro soft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/queryIndicators/Action | Query-Indica tors van Threat Intelligence |
 > | [Micro soft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Analytics/query/Action | Zoek met een nieuwe engine. |
 > | [Micro soft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/*/Read | Log Analytics-gegevens weer geven |
 > | [Micro soft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/LinkedServices/Read | Gekoppelde services onder de opgegeven werk ruimte ophalen. |
@@ -6281,6 +6362,7 @@ Azure Sentinel Reader [meer informatie](../sentinel/roles.md)
         "Microsoft.SecurityInsights/*/read",
         "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
         "Microsoft.SecurityInsights/threatIntelligence/indicators/query/action",
+        "Microsoft.SecurityInsights/threatIntelligence/queryIndicators/action",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
         "Microsoft.OperationalInsights/workspaces/*/read",
         "Microsoft.OperationalInsights/workspaces/LinkedServices/read",
@@ -7879,7 +7961,7 @@ Kan met Azure verbonden computers lezen, schrijven, verwijderen en onboarden.
 > | [Micro soft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/Read | Alle Azure-Arc-machines lezen |
 > | [Micro soft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/write | Schrijft een Azure-Arc-machine |
 > | [Micro soft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/Delete | Hiermee wordt een Azure-Arc-machine verwijderd |
-> | [Micro soft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/reconnect/Action | Opnieuw verbinding maken met een Azure-Arc-computer |
+> | [Micro soft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/reconnect/Action |  |
 > | [Micro soft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/Extensions/write | Hiermee wordt een Azure-Arc-extensie geïnstalleerd of bijgewerkt |
 > | [Micro soft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/*/Read |  |
 > | **NotActions** |  |
@@ -9127,7 +9209,7 @@ Hiermee kunt u tags op entiteiten beheren zonder dat u toegang hebt tot de entit
 }
 ```
 
-## <a name="other"></a>Anders
+## <a name="other"></a>Overige
 
 
 ### <a name="biztalk-contributor"></a>BizTalk-bijdrager

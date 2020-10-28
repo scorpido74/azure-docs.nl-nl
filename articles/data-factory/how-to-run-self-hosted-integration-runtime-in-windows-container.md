@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/05/2020
-ms.openlocfilehash: d6f292ff89a70de90e6b86f19f73de26963d997f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7035da173102e59aec9c643381bad701d6facf38
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87927562"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634535"
 ---
 # <a name="how-to-run-self-hosted-integration-runtime-in-windows-container"></a>Self-Hosted Integration Runtime uitvoeren in Windows-container
 
@@ -26,7 +26,7 @@ In dit artikel wordt uitgelegd hoe u Self-Hosted Integration Runtime uitvoert in
 Azure Data Factory leveren de officiële Windows-container ondersteuning van Self-Hosted Integration Runtime. U kunt de docker build-bron code downloaden en het bouwen en uitvoeren van het proces combi neren in uw eigen continue leverings pijplijn. 
 
 ## <a name="prerequisites"></a>Vereisten 
-- [Windows-container vereisten](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/system-requirements)
+- [Windows-container vereisten](/virtualization/windowscontainers/deploy-containers/system-requirements)
 - Docker-versie 2,3 en hoger 
 - Self-Hosted Integration Runtime versie 4.11.7512.1 en hoger 
 ## <a name="get-started"></a>Aan de slag 
@@ -61,7 +61,5 @@ De onderstaande functies worden momenteel niet ondersteund voor het uitvoeren va
 - Automatisch bijwerken 
 
 ### <a name="next-steps"></a>Volgende stappen
-- Bekijk de [concepten van de integratie-runtime in azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime).
-- Meer informatie over [het maken van een zelf-hostende Integration runtime in de Azure Portal](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime).
-
-
+- Bekijk de [concepten van de integratie-runtime in azure Data Factory](./concepts-integration-runtime.md).
+- Meer informatie over [het maken van een zelf-hostende Integration runtime in de Azure Portal](./create-self-hosted-integration-runtime.md).

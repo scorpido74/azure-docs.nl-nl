@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 2d2c4145ab0a070e4cb20d89b8a0d3973b23d9ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba3cc376edef1e6dc8fbf859e456219a1fd3ca60
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440504"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635759"
 ---
 # <a name="azure-data-factory-faq"></a>Veelgestelde vragen over Azure Data Factory
 
@@ -67,10 +67,10 @@ Gebruikers kunnen ook de gedocumenteerde REST-Api's gebruiken voor de interface 
 ### <a name="iterative-development-and-debugging-by-using-visual-tools"></a>Iteratieve ontwikkeling en fout opsporing met behulp van visuele hulp middelen
 Azure Data Factory visuele hulp middelen kunnen iteratieve ontwikkeling en fout opsporing. U kunt uw pijp lijnen maken en test uitvoeringen uitvoeren met behulp van de functie voor **fout opsporing** in het pijplijn doek zonder dat u maar één regel code hoeft te schrijven. U kunt de resultaten van uw test uitvoeringen weer geven in het **uitvoer** venster van uw pijplijn doek. Nadat de test uitvoering is voltooid, kunt u meer activiteiten aan uw pijp lijn toevoegen en de fout opsporing op een iteratieve manier voortzetten. U kunt uw test uitvoeringen ook annuleren nadat deze worden uitgevoerd. 
 
-U bent niet verplicht uw wijzigingen te publiceren naar de data factory-service voordat u **debug**selecteert. Dit is handig in scenario's waarin u er zeker van wilt zijn dat de nieuwe toevoegingen of wijzigingen werken zoals verwacht voordat u uw data factory-werk stromen bijwerkt in ontwikkel-, test-of productie omgevingen. 
+U bent niet verplicht uw wijzigingen te publiceren naar de data factory-service voordat u **debug** selecteert. Dit is handig in scenario's waarin u er zeker van wilt zijn dat de nieuwe toevoegingen of wijzigingen werken zoals verwacht voordat u uw data factory-werk stromen bijwerkt in ontwikkel-, test-of productie omgevingen. 
 
 ### <a name="ability-to-deploy-ssis-packages-to-azure"></a>Mogelijkheid om SSIS-pakketten te implementeren in azure 
-Als u uw SSIS-workloads wilt verplaatsen, kunt u een Data Factory maken en een Azure SSIS Integration runtime inrichten. Een Azure SSIS Integration runtime is een volledig beheerd cluster met virtuele Azure-machines (knoop punten) die zijn toegewezen om uw SSIS-pakketten uit te voeren in de Cloud. Zie voor stapsgewijze instructies de zelf studie [SSIS-pakketten implementeren in azure](tutorial-create-azure-ssis-runtime-portal.md) . 
+Als u uw SSIS-workloads wilt verplaatsen, kunt u een Data Factory maken en een Azure SSIS Integration runtime inrichten. Een Azure SSIS Integration runtime is een volledig beheerd cluster met virtuele Azure-machines (knoop punten) die zijn toegewezen om uw SSIS-pakketten uit te voeren in de Cloud. Zie voor stapsgewijze instructies de zelf studie [SSIS-pakketten implementeren in azure](./tutorial-deploy-ssis-packages-azure.md) . 
  
 ### <a name="sdks"></a>SDK's
 Als u een ervaren gebruiker bent en op zoek bent naar een programmatische interface, biedt Data Factory een uitgebreide set Sdk's die u kunt gebruiken om pijp lijnen te ontwerpen, beheren of bewaken met behulp van uw favoriete IDE. Taal ondersteuning omvat .NET, Power shell, python en REST.
@@ -95,9 +95,9 @@ Sinds de eerste open bare preview-versie in 2017, heeft Data Factory de volgende
 ## <a name="what-is-the-integration-runtime"></a>Wat is de Integration runtime?
 Integration runtime is de reken infrastructuur die Azure Data Factory gebruikt om de volgende mogelijkheden voor gegevens integratie in verschillende netwerk omgevingen te bieden:
 
-- **Gegevens verplaatsing**: voor gegevens verplaatsing verplaatst de Integration runtime de gegevens tussen de bron-en doel gegevens archieven, terwijl er ondersteuning wordt geboden voor ingebouwde connectors, indelings conversie, kolom toewijzing en uitvoering van en schaal bare gegevens overdracht.
-- **Verzend activiteiten**: voor trans formatie biedt Integration runtime de mogelijkheid om systeem eigen SSIS-pakketten uit te voeren.
-- **SSIS-pakketten uitvoeren**: de Integration runtime voert de systeem eigen SSIS-pakketten uit in een beheerde Azure Compute-omgeving. De Integration runtime biedt ook ondersteuning voor het verzenden en bewaken van transformatie activiteiten die worden uitgevoerd op diverse Compute-Services, zoals Azure HDInsight, Azure Machine Learning, SQL Database en SQL Server.
+- **Gegevens verplaatsing** : voor gegevens verplaatsing verplaatst de Integration runtime de gegevens tussen de bron-en doel gegevens archieven, terwijl er ondersteuning wordt geboden voor ingebouwde connectors, indelings conversie, kolom toewijzing en uitvoering van en schaal bare gegevens overdracht.
+- **Verzend activiteiten** : voor trans formatie biedt Integration runtime de mogelijkheid om systeem eigen SSIS-pakketten uit te voeren.
+- **SSIS-pakketten uitvoeren** : de Integration runtime voert de systeem eigen SSIS-pakketten uit in een beheerde Azure Compute-omgeving. De Integration runtime biedt ook ondersteuning voor het verzenden en bewaken van transformatie activiteiten die worden uitgevoerd op diverse Compute-Services, zoals Azure HDInsight, Azure Machine Learning, SQL Database en SQL Server.
 
 U kunt een of meer exemplaren van de Integration runtime zo nodig implementeren om gegevens te verplaatsen en te transformeren. De Integration runtime kan worden uitgevoerd op een openbaar netwerk van Azure of op een particulier netwerk (on-premises, Azure Virtual Network, of Amazon Web Services Virtual Private Cloud [VPC]). 
 
@@ -159,7 +159,7 @@ Zie [Data Factory prijs informatie](https://azure.microsoft.com/pricing/details/
 Ga voor de meest recente informatie over Azure Data Factory naar de volgende sites:
 
 - [Blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-- [Start pagina van de documentatie](/azure/data-factory)
+- [Start pagina van de documentatie](./index.yml)
 - [Start pagina van het product](https://azure.microsoft.com/services/data-factory/)
 
 ## <a name="technical-deep-dive"></a>Technisch diep gaande 
@@ -209,10 +209,10 @@ Wrangling-gegevens stroom wordt momenteel ondersteund in gegevens fabrieken die 
 
 * Australië - oost
 * Canada - midden
-* India - centraal
+* Central India
 * VS - oost
 * VS - oost 2
-* Japan East
+* Japan - oost
 * Europa - noord
 * Azië - zuidoost
 * VS - zuid-centraal
@@ -266,7 +266,7 @@ Wrangling-gegevens stroom ondersteunt de volgende gegevens typen in SQL. U krijg
 * bigint
 * long
 * tekst
-* datum
+* date
 * datum/tijd
 * datetime2
 * smalldatetime

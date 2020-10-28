@@ -7,18 +7,18 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: e63c3f329cb9c1fd5ca91274540f5145c3ad098a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ee7761d43710e0833eb8002851e286ce5449983
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85921550"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636116"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>Transformatie functies in wrangling-gegevens stroom
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Met Wrangling data flow in Azure Data Factory kunt u met code gratis flexibele gegevens voorbereiding en Wrangling op Cloud schaal uitvoeren. De Wrangling-gegevens stroom is geïntegreerd met [Power query online](https://docs.microsoft.com/powerquery-m/power-query-m-reference) en maakt Power query M-functies beschikbaar voor gegevens Wrangling via Spark-uitvoering. 
+Met Wrangling data flow in Azure Data Factory kunt u met code gratis flexibele gegevens voorbereiding en Wrangling op Cloud schaal uitvoeren. De Wrangling-gegevens stroom is geïntegreerd met [Power query online](/powerquery-m/power-query-m-reference) en maakt Power query M-functies beschikbaar voor gegevens Wrangling via Spark-uitvoering. 
 
 > [!NOTE]
 > Wrangling-gegevens stroom is momenteel beschik bare in open bare preview
@@ -31,60 +31,60 @@ Hieronder vindt u een lijst met ondersteunde functies van Power Query M.
 
 ## <a name="column-management"></a>Kolom beheer
 
-* Selectie: [Table. select columns](https://docs.microsoft.com/powerquery-m/table-selectcolumns)
-* Verwijderen: [Table. RemoveColumns](https://docs.microsoft.com/powerquery-m/table-removecolumns)
-* Naam wijzigen: [Table. RenameColumns](https://docs.microsoft.com/powerquery-m/table-renamecolumns), [Table. PrefixColumns](https://docs.microsoft.com/powerquery-m/table-prefixcolumns), [Table. TransformColumnNames](https://docs.microsoft.com/powerquery-m/table-transformcolumnnames)
-* Volg orde wijzigen: [Table. ReorderColumns](https://docs.microsoft.com/powerquery-m/table-reordercolumns)
+* Selectie: [Table. select columns](/powerquery-m/table-selectcolumns)
+* Verwijderen: [Table. RemoveColumns](/powerquery-m/table-removecolumns)
+* Naam wijzigen: [Table. RenameColumns](/powerquery-m/table-renamecolumns), [Table. PrefixColumns](/powerquery-m/table-prefixcolumns), [Table. TransformColumnNames](/powerquery-m/table-transformcolumnnames)
+* Volg orde wijzigen: [Table. ReorderColumns](/powerquery-m/table-reordercolumns)
 
 ## <a name="row-filtering"></a>Rijen filteren
 
-Gebruik M Function [Table. SelectRows](https://docs.microsoft.com/powerquery-m/table-selectrows) om te filteren op de volgende voor waarden:
+Gebruik M Function [Table. SelectRows](/powerquery-m/table-selectrows) om te filteren op de volgende voor waarden:
 
 * Gelijkheid en ongelijkheid
 * Cijfers, tekst en datum vergelijkingen (maar geen DateTime)
-* Numerieke gegevens, zoals [Number. isEven](https://docs.microsoft.com/powerquery-m/number-iseven) / [oneven](https://docs.microsoft.com/powerquery-m/number-iseven)
-* Tekst insluiting met behulp van [tekst. contains](https://docs.microsoft.com/powerquery-m/text-contains), [Text. StartsWith](https://docs.microsoft.com/powerquery-m/text-startswith)of [Text. EndsWith](https://docs.microsoft.com/powerquery-m/text-endswith)
-* Datumbereiken, inclusief alle ' IsIn' [date-functies](https://docs.microsoft.com/powerquery-m/date-functions)) 
+* Numerieke gegevens, zoals [Number. isEven](/powerquery-m/number-iseven) / [oneven](/powerquery-m/number-iseven)
+* Tekst insluiting met behulp van [tekst. contains](/powerquery-m/text-contains), [Text. StartsWith](/powerquery-m/text-startswith)of [Text. EndsWith](/powerquery-m/text-endswith)
+* Datumbereiken, inclusief alle ' IsIn' [date-functies](/powerquery-m/date-functions)) 
 * Combi Naties van deze met en, of of geen voor waarden
 
 ## <a name="adding-and-transforming-columns"></a>Kolommen toevoegen en transformeren
 
-Met de volgende functies worden kolommen toegevoegd of omgezet: [Table. AddColumn](https://docs.microsoft.com/powerquery-m/table-addcolumn), [Table. TransformColumns](https://docs.microsoft.com/powerquery-m/table-transformcolumns), [Table. ReplaceValue](https://docs.microsoft.com/powerquery-m/table-replacevalue), [Table. DuplicateColumn](https://docs.microsoft.com/powerquery-m/table-duplicatecolumn). Hieronder vindt u de ondersteunde transformatie functies.
+Met de volgende functies worden kolommen toegevoegd of omgezet: [Table. AddColumn](/powerquery-m/table-addcolumn), [Table. TransformColumns](/powerquery-m/table-transformcolumns), [Table. ReplaceValue](/powerquery-m/table-replacevalue), [Table. DuplicateColumn](/powerquery-m/table-duplicatecolumn). Hieronder vindt u de ondersteunde transformatie functies.
 
 * Numeriek reken kundig
 * Tekst samenvoeging
-* Date andTime aritmetische (reken kundige operators, [datum. addDays](https://docs.microsoft.com/powerquery-m/date-adddays), [date. AddMonths](https://docs.microsoft.com/powerquery-m/date-addmonths), [date. AddQuarters](https://docs.microsoft.com/powerquery-m/date-addquarters), [date. AddWeeks](https://docs.microsoft.com/powerquery-m/date-addweeks), [date. AddYears](https://docs.microsoft.com/powerquery-m/date-addyears))
-* De duur kan worden gebruikt voor de reken kundige datum en tijd, maar moet worden omgezet in een ander type voordat deze naar een Sink (reken kundige Opera Tors, [#duration](https://docs.microsoft.com/powerquery-m/sharpduration), [duur. dagen](https://docs.microsoft.com/powerquery-m/duration-days), [duur. uren](https://docs.microsoft.com/powerquery-m/duration-hours), [duur. minuten](https://docs.microsoft.com/powerquery-m/duration-minutes), [duur. seconden](https://docs.microsoft.com/powerquery-m/duration-seconds), duur. [TotalDays](https://docs.microsoft.com/powerquery-m/duration-totaldays), [duration. TotalHours](https://docs.microsoft.com/powerquery-m/duration-totalhours), duration. [TotalMinutes](https://docs.microsoft.com/powerquery-m/duration-totalminutes), [duration. TotalSeconds](https://docs.microsoft.com/powerquery-m/duration-totalseconds)) worden getransformeerd.    
-* De meeste standaard-, weten schappelijke en trigonometrische numerieke functies (alle functies onder [bewerkingen](https://docs.microsoft.com/powerquery-m/number-functions#operations), [afronding](https://docs.microsoft.com/powerquery-m/number-functions#rounding)en [trigonometrie](https://docs.microsoft.com/powerquery-m/number-functions#trigonometry) , *behalve* aantal. faculteit, aantal permutaties en aantal combi Naties)
-* Vervangen (vervanging[. ReplaceText](https://docs.microsoft.com/powerquery-m/replacer-replacetext), vervanging [. ReplaceValue](https://docs.microsoft.com/powerquery-m/replacer-replacevalue), [Text. Replace](https://docs.microsoft.com/powerquery-m/text-replace), [Text. Remove](https://docs.microsoft.com/powerquery-m/text-remove))
-* Positie tekst extractie ([tekst. PositionOf](https://docs.microsoft.com/powerquery-m/text-positionof), [tekst. lengte](https://docs.microsoft.com/powerquery-m/text-length), [tekst. begin](https://docs.microsoft.com/powerquery-m/text-start), [tekst. End](https://docs.microsoft.com/powerquery-m/text-end), [tekst. Midden](https://docs.microsoft.com/powerquery-m/text-middle), [tekst. ReplaceRange](https://docs.microsoft.com/powerquery-m/text-replacerange), [Text. RemoveRange](https://docs.microsoft.com/powerquery-m/text-removerange))
-* Basic-tekst opmaak ([tekst. Lower](https://docs.microsoft.com/powerquery-m/text-lower), [tekst. Upper](https://docs.microsoft.com/powerquery-m/text-upper), [tekst. begin datum bijsnijden](https://docs.microsoft.com/powerquery-m/text-trim) / [Start](https://docs.microsoft.com/powerquery-m/text-trimstart) / [End](https://docs.microsoft.com/powerquery-m/text-trimend), [tekst. PadStart](https://docs.microsoft.com/powerquery-m/text-padstart) / [einde](https://docs.microsoft.com/powerquery-m/text-padend), [tekst. omgekeerde](https://docs.microsoft.com/powerquery-m/text-reverse))
-* Datum-en tijd functies ([datum. dag](https://docs.microsoft.com/powerquery-m/date-day), [datum. maand](https://docs.microsoft.com/powerquery-m/date-month), [datum. jaar](https://docs.microsoft.com/powerquery-m/date-year) [. uur](https://docs.microsoft.com/powerquery-m/time-hour), [tijd. minuut](https://docs.microsoft.com/powerquery-m/time-minute), [tijd. seconde](https://docs.microsoft.com/powerquery-m/time-second), [datum. DayOfWeek](https://docs.microsoft.com/powerquery-m/date-dayofweek), [datum. DayOfYear](https://docs.microsoft.com/powerquery-m/date-dayofyear), [date. DaysInMonth](https://docs.microsoft.com/powerquery-m/date-daysinmonth))
+* Date andTime aritmetische (reken kundige operators, [datum. addDays](/powerquery-m/date-adddays), [date. AddMonths](/powerquery-m/date-addmonths), [date. AddQuarters](/powerquery-m/date-addquarters), [date. AddWeeks](/powerquery-m/date-addweeks), [date. AddYears](/powerquery-m/date-addyears))
+* De duur kan worden gebruikt voor de reken kundige datum en tijd, maar moet worden omgezet in een ander type voordat deze naar een Sink (reken kundige Opera Tors, [#duration](/powerquery-m/sharpduration), [duur. dagen](/powerquery-m/duration-days), [duur. uren](/powerquery-m/duration-hours), [duur. minuten](/powerquery-m/duration-minutes), [duur. seconden](/powerquery-m/duration-seconds), duur. [TotalDays](/powerquery-m/duration-totaldays), [duration. TotalHours](/powerquery-m/duration-totalhours), duration. [TotalMinutes](/powerquery-m/duration-totalminutes), [duration. TotalSeconds](/powerquery-m/duration-totalseconds)) worden getransformeerd.    
+* De meeste standaard-, weten schappelijke en trigonometrische numerieke functies (alle functies onder [bewerkingen](/powerquery-m/number-functions#operations), [afronding](/powerquery-m/number-functions#rounding)en [trigonometrie](/powerquery-m/number-functions#trigonometry) , *behalve* aantal. faculteit, aantal permutaties en aantal combi Naties)
+* Vervangen (vervanging[. ReplaceText](/powerquery-m/replacer-replacetext), vervanging [. ReplaceValue](/powerquery-m/replacer-replacevalue), [Text. Replace](/powerquery-m/text-replace), [Text. Remove](/powerquery-m/text-remove))
+* Positie tekst extractie ([tekst. PositionOf](/powerquery-m/text-positionof), [tekst. lengte](/powerquery-m/text-length), [tekst. begin](/powerquery-m/text-start), [tekst. End](/powerquery-m/text-end), [tekst. Midden](/powerquery-m/text-middle), [tekst. ReplaceRange](/powerquery-m/text-replacerange), [Text. RemoveRange](/powerquery-m/text-removerange))
+* Basic-tekst opmaak ([tekst. Lower](/powerquery-m/text-lower), [tekst. Upper](/powerquery-m/text-upper), [tekst. begin datum bijsnijden](/powerquery-m/text-trim) / [Start](/powerquery-m/text-trimstart) / [End](/powerquery-m/text-trimend), [tekst. PadStart](/powerquery-m/text-padstart) / [einde](/powerquery-m/text-padend), [tekst. omgekeerde](/powerquery-m/text-reverse))
+* Datum-en tijd functies ([datum. dag](/powerquery-m/date-day), [datum. maand](/powerquery-m/date-month), [datum. jaar](/powerquery-m/date-year) [. uur](/powerquery-m/time-hour), [tijd. minuut](/powerquery-m/time-minute), [tijd. seconde](/powerquery-m/time-second), [datum. DayOfWeek](/powerquery-m/date-dayofweek), [datum. DayOfYear](/powerquery-m/date-dayofyear), [date. DaysInMonth](/powerquery-m/date-daysinmonth))
 * Als-expressies (maar vertakkingen moeten overeenkomende typen hebben)
 * Rij filters als logische kolom
 * De constanten getal, tekst, logische, datum en datum/tijd
 
 <a name="mergingjoining-tables"></a>Tabellen samen voegen/koppelen
 ----------------------
-* Power Query wordt een geneste koppeling gegenereerd (Table. NestedJoin; gebruikers kunnen ook hand matig [Table. AddJoinColumn](https://docs.microsoft.com/powerquery-m/table-addjoincolumn)) schrijven.
+* Power Query wordt een geneste koppeling gegenereerd (Table. NestedJoin; gebruikers kunnen ook hand matig [Table. AddJoinColumn](/powerquery-m/table-addjoincolumn)) schrijven.
     Gebruikers moeten vervolgens de geneste samenvoegings kolom uitvouwen tot een niet-geneste koppeling (Table. ExpandTableColumn, die niet wordt ondersteund in een andere context).
-* De functie   [Table. join](https://docs.microsoft.com/powerquery-m/table-join) kan rechtstreeks worden geschreven om te voor komen dat er een extra uitbreidings stap nodig is, maar de gebruiker moet er zeker van zijn dat er geen dubbele kolom namen zijn in de gekoppelde tabellen
-* Ondersteunde typen joins:   [inner](https://docs.microsoft.com/powerquery-m/joinkind-inner),   [LeftOuter](https://docs.microsoft.com/powerquery-m/joinkind-leftouter),   [RightOuter](https://docs.microsoft.com/powerquery-m/joinkind-rightouter),   [FullOuter](https://docs.microsoft.com/powerquery-m/joinkind-fullouter)
-* Beide   [waarden. equals](https://docs.microsoft.com/powerquery-m/value-equals) en   [Value. NullableEquals](https://docs.microsoft.com/powerquery-m/value-nullableequals) worden ondersteund als Key gelijkheids vergelijkingen
+* De functie   [Table. join](/powerquery-m/table-join) kan rechtstreeks worden geschreven om te voor komen dat er een extra uitbreidings stap nodig is, maar de gebruiker moet er zeker van zijn dat er geen dubbele kolom namen zijn in de gekoppelde tabellen
+* Ondersteunde typen joins:   [inner](/powerquery-m/joinkind-inner),   [LeftOuter](/powerquery-m/joinkind-leftouter),   [RightOuter](/powerquery-m/joinkind-rightouter),   [FullOuter](/powerquery-m/joinkind-fullouter)
+* Beide   [waarden. equals](/powerquery-m/value-equals) en   [Value. NullableEquals](/powerquery-m/value-nullableequals) worden ondersteund als Key gelijkheids vergelijkingen
 
 ## <a name="group-by"></a>Groeperen op
 
-Gebruik [Table. Group](https://docs.microsoft.com/powerquery-m/table-group) om waarden samen te voegen.
+Gebruik [Table. Group](/powerquery-m/table-group) om waarden samen te voegen.
 * Moet worden gebruikt met een statistische functie
-* Ondersteunde aggregatie functies:   [tabel. RowCount](https://docs.microsoft.com/powerquery-m/table-rowcount),   [lijst. Sum](https://docs.microsoft.com/powerquery-m/list-sum),   [lijst. Count](https://docs.microsoft.com/powerquery-m/list-count),   [List. Average](https://docs.microsoft.com/powerquery-m/list-average),   [List. min](https://docs.microsoft.com/powerquery-m/list-min),   [List. Max](https://docs.microsoft.com/powerquery-m/list-max),   [List. StandardDeviation](https://docs.microsoft.com/powerquery-m/list-standarddeviation),   [List. First](https://docs.microsoft.com/powerquery-m/list-first),   [List. last](https://docs.microsoft.com/powerquery-m/list-last)
+* Ondersteunde aggregatie functies:   [tabel. RowCount](/powerquery-m/table-rowcount),   [lijst. Sum](/powerquery-m/list-sum),   [lijst. Count](/powerquery-m/list-count),   [List. Average](/powerquery-m/list-average),   [List. min](/powerquery-m/list-min),   [List. Max](/powerquery-m/list-max),   [List. StandardDeviation](/powerquery-m/list-standarddeviation),   [List. First](/powerquery-m/list-first),   [List. last](/powerquery-m/list-last)
 
 ## <a name="sorting"></a>Sorteren
 
-Gebruik [Table. sort](https://docs.microsoft.com/powerquery-m/table-sort) om waarden te sorteren.
+Gebruik [Table. sort](/powerquery-m/table-sort) om waarden te sorteren.
 
 ## <a name="reducing-rows"></a>Rijen beperken
 
-Hoog behoud en verwijderen, bereik (overeenkomende M-functies, alleen ondersteunings tellingen, niet-voor waarden): [tabel. voors](https://docs.microsoft.com/powerquery-m/table-firstn)telling, tabel. [overs Laan](https://docs.microsoft.com/powerquery-m/table-skip), [tabel.](https://docs.microsoft.com/powerquery-m/table-removefirstn)reMinNe, [tabel. bereik](https://docs.microsoft.com/powerquery-m/table-range), [tabel.](https://docs.microsoft.com/powerquery-m/table-minn), [tabel. MaxN](https://docs.microsoft.com/powerquery-m/table-maxn))
+Hoog behoud en verwijderen, bereik (overeenkomende M-functies, alleen ondersteunings tellingen, niet-voor waarden): [tabel. voors](/powerquery-m/table-firstn)telling, tabel. [overs Laan](/powerquery-m/table-skip), [tabel.](/powerquery-m/table-removefirstn)reMinNe, [tabel. bereik](/powerquery-m/table-range), [tabel.](/powerquery-m/table-minn), [tabel. MaxN](/powerquery-m/table-maxn))
 
 ## <a name="known-unsupported-functions"></a>Bekende niet-ondersteunde functies
 

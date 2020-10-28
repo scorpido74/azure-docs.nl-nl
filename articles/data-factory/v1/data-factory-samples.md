@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: e2b7e96934c96dd944e17a1ef1ffb51a6ee89bf4
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ed63d148afa6f5674d36cc50c18351b2a06966eb
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359999"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636830"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory-voor beelden
 > [!NOTE]
@@ -33,7 +33,7 @@ De [github-opslag plaats van Azure-DataFactory](https://github.com/azure/azure-d
 | [Voor beeld van http-gegevens-Downloader](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample) |In dit voor beeld wordt het downloaden van gegevens van een HTTP-eind punt naar Azure Blob Storage met aangepaste .NET-activiteit gedemonstreerd. |
 | [Voor beeld van meerdere AppDomain dot-activiteit](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |Met dit voor beeld kunt u een aangepaste .NET-activiteit ontwerpen die niet is beperkt tot assembly-versies die worden gebruikt door de ADF Launcher (bijvoorbeeld WindowsAzure. Storage v 4.3.0, Newtonsoft.Jsop v 6.0. x, enzovoort). |
 | [R-script uitvoeren](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample) |Dit voor beeld bevat de Data Factory aangepaste activiteit die kan worden gebruikt om RScript.exe aan te roepen. Dit voor beeld werkt alleen met uw eigen (niet op aanvraag) HDInsight-cluster waarop R al is geïnstalleerd. |
-| [Spark-taken aanroepen in HDInsight Hadoop-cluster](https://docs.microsoft.com/azure/data-factory/tutorial-transform-data-spark-portal) |In dit voor beeld ziet u hoe u MapReduce-activiteit kunt gebruiken om een Spark-programma aan te roepen. Het Spark-programma kopieert alleen gegevens van de ene Azure Blob-container naar een andere. |
+| [Spark-taken aanroepen in HDInsight Hadoop-cluster](../tutorial-transform-data-spark-portal.md) |In dit voor beeld ziet u hoe u MapReduce-activiteit kunt gebruiken om een Spark-programma aan te roepen. Het Spark-programma kopieert alleen gegevens van de ene Azure Blob-container naar een andere. |
 | [Twitter-analyse met behulp van Azure Machine Learning Studio (klassieke) batch Score activiteit](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-AzureMLBatchScoringActivity) |Dit voor beeld laat zien hoe u AzureMLBatchScoringActivity kunt gebruiken om een Azure Machine Learning model aan te roepen waarmee Twitter-sentiment analyse, Score ring, voor spelling, enzovoort worden uitgevoerd. |
 | [Twitter-analyse met aangepaste activiteit](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |In dit voor beeld ziet u hoe u een aangepaste .NET-activiteit gebruikt om een Azure Machine Learning model aan te roepen waarmee Twitter-sentiment analyse, Score ring, voor spelling, enzovoort worden uitgevoerd. |
 | [Pijp lijnen met para meters voor Azure Machine Learning](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ParameterizedPipelinesForAzureML) |Het voor beeld biedt een end-to-end C#-code voor het implementeren van N pijp lijnen voor het scoren en opnieuw trainen van elk met een andere regio parameter, waarbij de lijst met regio's afkomstig is uit een parameters.txt bestand, dat deel uitmaakt van dit voor beeld. |
@@ -79,37 +79,37 @@ U kunt de tegel **voorbeeld pijplijnen** gebruiken op de start pagina van uw Dat
 De volgende zaken moeten op uw computer zijn geïnstalleerd:
 
 * Visual Studio 2013 of Visual Studio 2015
-* Download de Azure SDK voor Visual Studio 2013 of Visual Studio 2015. Ga naar de [Azure-downloadpagina](https://azure.microsoft.com/downloads/) en klik in het gedeelte **.NET** op **VS 2013** of **VS 2015**.
-* Download de nieuwste Azure Data Factory-invoegtoepassing voor Visual Studio: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) of [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Als u Visual Studio 2013 gebruikt, kunt u de invoeg toepassing ook bijwerken door de volgende stappen uit te voeren: Klik in het menu op **extra**  ->  **extensies en updates**  ->  **online**  ->  **Visual Studio-galerie**  ->  **Microsoft Azure Data Factory Tools for Visual Studio**  ->  **Update**.
+* Download de Azure SDK voor Visual Studio 2013 of Visual Studio 2015. Ga naar de [Azure-downloadpagina](https://azure.microsoft.com/downloads/) en klik in het gedeelte **.NET** op **VS 2013** of **VS 2015** .
+* Download de nieuwste Azure Data Factory-invoegtoepassing voor Visual Studio: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) of [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Als u Visual Studio 2013 gebruikt, kunt u de invoeg toepassing ook bijwerken door de volgende stappen uit te voeren: Klik in het menu op **extra**  ->  **extensies en updates**  ->  **online**  ->  **Visual Studio-galerie**  ->  **Microsoft Azure Data Factory Tools for Visual Studio**  ->  **Update** .
 
 ### <a name="use-data-factory-templates"></a>Data Factory sjablonen gebruiken
-1. Klik op **bestand** in het menu, wijs **Nieuw**aan en klik op **project**.
+1. Klik op **bestand** in het menu, wijs **Nieuw** aan en klik op **project** .
 2. Voer in het dialoogvenster **Nieuw project** de volgende stappen uit:
 
-   1. Selecteer **DataFactory** onder **Templates**.
+   1. Selecteer **DataFactory** onder **Templates** .
    2. Selecteer **Data Factory sjablonen** in het rechterdeel venster.
    3. Voer een **naam** in voor het project.
    4. Selecteer een **locatie** voor het project.
-   5. Klik op **OK**.
+   5. Klik op **OK** .
 
       ![Het dialoogvenster New Project](./media/data-factory-samples/vs-new-project-adf-templates.png)
-3. Selecteer in het dialoog venster **Data Factory sjablonen** de voorbeeld sjabloon in de sectie **use-case-sjablonen** en klik op **volgende**. De volgende stappen begeleiden u bij het gebruik van de sjabloon voor **klant profilering** . De stappen zijn vergelijkbaar voor de andere voor beelden.
+3. Selecteer in het dialoog venster **Data Factory sjablonen** de voorbeeld sjabloon in de sectie **use-case-sjablonen** en klik op **volgende** . De volgende stappen begeleiden u bij het gebruik van de sjabloon voor **klant profilering** . De stappen zijn vergelijkbaar voor de andere voor beelden.
 
     ![Het dialoog venster Data Factory sjablonen](./media/data-factory-samples/vs-data-factory-templates-dialog.png)
 4. Klik in het dialoog venster **Data Factory configuratie** op **volgende** op de pagina **Data Factory Basics** .
 5. Voer de volgende stappen uit op de pagina **Data Factory configureren** :
-   1. Selecteer **nieuwe Data Factory maken**. U kunt ook **bestaande Data Factory gebruiken**selecteren.
+   1. Selecteer **nieuwe Data Factory maken** . U kunt ook **bestaande Data Factory gebruiken** selecteren.
    2. Voer een **naam** in voor de Data Factory.
    3. Selecteer het **Azure-abonnement** waarin u de Data Factory wilt maken.
    4. Selecteer de **resource groep** voor de Data Factory.
-   5. Selecteer **VS-West**, **VS-Oost**of **Europa-Noord** voor de **regio**.
-   6. Klik op **Volgende**.
+   5. Selecteer **VS-West** , **VS-Oost** of **Europa-Noord** voor de **regio** .
+   6. Klik op **Volgende** .
 6. Geef op de pagina **gegevens archieven configureren** een bestaande **Data base op in Azure SQL database** en **Azure Storage-account** (of) data base/opslag maken en klik op volgende.
-7. Selecteer op de pagina **Compute configureren** de optie standaard instellingen en klik op **volgende**.
-8. Controleer op de pagina **samen vatting** alle instellingen en klik op **volgende**.
-9. Wacht tot de implementatie is voltooid op de pagina **Implementatie status** en klik op **volt ooien**.
-10. Klik met de rechtermuisknop op het project in Solution Explorer. Klik vervolgens op **Publish**.
-11. Als u het dialoogvenster **Sign in to your Microsoft account** ziet, voert u uw referenties in voor het account met het Azure-abonnement en klikt u op **Sign in**.
+7. Selecteer op de pagina **Compute configureren** de optie standaard instellingen en klik op **volgende** .
+8. Controleer op de pagina **samen vatting** alle instellingen en klik op **volgende** .
+9. Wacht tot de implementatie is voltooid op de pagina **Implementatie status** en klik op **volt ooien** .
+10. Klik met de rechtermuisknop op het project in Solution Explorer. Klik vervolgens op **Publish** .
+11. Als u het dialoogvenster **Sign in to your Microsoft account** ziet, voert u uw referenties in voor het account met het Azure-abonnement en klikt u op **Sign in** .
 12. Het volgende dialoogvenster wordt weergegeven:
 
     ![Het dialoogvenster Publish](./media/data-factory-build-your-first-pipeline-using-vs/publish.png)
@@ -117,9 +117,9 @@ De volgende zaken moeten op uw computer zijn geïnstalleerd:
 
     1. Controleer of de optie **bestaande Data Factory gebruiken** .
     2. Selecteer de **Data Factory** die u hebt geselecteerd bij het gebruik van de sjabloon.
-    3. Klik op **Next** om over te schakelen naar de pagina **Publish Items**. (Druk op **TAB** als u het veld Naam wilt verlaten, maar de knop **Next** is uitgeschakeld.)
-14. Op de pagina **Publish Items** controleert u of alle Data Factory-entiteiten zijn geselecteerd en klikt u op **Next** om over te schakelen naar de pagina **Summary**.     
+    3. Klik op **Next** om over te schakelen naar de pagina **Publish Items** . (Druk op **TAB** als u het veld Naam wilt verlaten, maar de knop **Next** is uitgeschakeld.)
+14. Op de pagina **Publish Items** controleert u of alle Data Factory-entiteiten zijn geselecteerd en klikt u op **Next** om over te schakelen naar de pagina **Summary** .     
 15. Controleer de samenvatting en klik op **Next** om te beginnen met het implementatieproces en om de **implementatiestatus** te bekijken.
 16. Op de pagina **Deployment Status** ziet u de status van het implementatieproces. Klik op Finish wanneer de implementatie is uitgevoerd.
 
-Zie [uw eerste Data Factory bouwen (Visual Studio)](data-factory-build-your-first-pipeline-using-vs.md) voor meer informatie over het gebruik van Visual studio om Data Factory entiteiten te maken en te publiceren naar Azure.          
+Zie [uw eerste Data Factory bouwen (Visual Studio)](data-factory-build-your-first-pipeline-using-vs.md) voor meer informatie over het gebruik van Visual studio om Data Factory entiteiten te maken en te publiceren naar Azure.

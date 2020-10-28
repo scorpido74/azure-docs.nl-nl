@@ -11,19 +11,19 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 05/09/2020
-ms.openlocfilehash: 068586a96ad3655cb70171266bd58f56ed320fc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36414c975e97dbaa7d8747da98c31eeb12fbc206
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83664380"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636966"
 ---
 # <a name="automating-self-hosted-integration-runtime-installation-using-local-powershell-scripts"></a>Zelf-hostende Integration runtime-installatie automatiseren met lokale Power shell-scripts
 Als u de installatie van zelf-hostende Integration Runtime op lokale computers (met uitzonde ring van virtuele Azure-machines waar we in plaats daarvan gebruikmaken van het Resource Manager-sjabloon) wilt automatiseren, kunt u lokale Power shell-scripts gebruiken. In dit artikel vindt u een inleiding tot twee scripts die u kunt gebruiken.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Start Power shell op uw lokale machine. Als u de scripts wilt uitvoeren, moet u **uitvoeren als Administrator**kiezen.
+* Start Power shell op uw lokale machine. Als u de scripts wilt uitvoeren, moet u **uitvoeren als Administrator** kiezen.
 * [Down load](https://www.microsoft.com/download/details.aspx?id=39717) de zelf-hostende Integration runtime-software. Kopieer het pad naar het gedownloade bestand. 
 * U hebt ook een **verificatie sleutel** nodig om de zelf-hostende Integration runtime te registreren.
 * Voor het automatiseren van hand matige updates moet u een vooraf geconfigureerde, zelf-hostende Integration runtime hebben.
@@ -31,20 +31,20 @@ Als u de installatie van zelf-hostende Integration Runtime op lokale computers (
 ## <a name="scripts-introduction"></a>Scripts Inleiding 
 
 > [!NOTE]
-> Deze scripts worden gemaakt met behulp van het [gedocumenteerde opdracht regel programma](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#set-up-an-existing-self-hosted-ir-via-local-powershell) in de zelf-hostende Integration runtime. Zo nodig kan een van deze scripts worden aangepast aan de behoeften van hun automatisering.
+> Deze scripts worden gemaakt met behulp van het [gedocumenteerde opdracht regel programma](./create-self-hosted-integration-runtime.md#set-up-an-existing-self-hosted-ir-via-local-powershell) in de zelf-hostende Integration runtime. Zo nodig kan een van deze scripts worden aangepast aan de behoeften van hun automatisering.
 > De scripts moeten worden toegepast per knoop punt. Zorg er dus voor dat u deze uitvoert op alle knoop punten in het geval van een hoge Beschik baarheid instellen (2 of meer knoop punten).
 
 * Voor het automatiseren van Setup: Installeer en Registreer een nieuwe zelf-hostende Integration runtime-knoop punt met **[InstallGatewayOnLocalMachine.ps1](https://github.com/nabhishek/SelfHosted-IntegrationRuntime_AutomationScripts/blob/master/InstallGatewayOnLocalMachine.ps1)** -het script kan worden gebruikt om het zelf-hostende Integration runtime-knoop punt te installeren en te registreren met een verificatie sleutel. Het script accepteert twee argumenten, waarbij u **eerst** de locatie opgeeft van de [zelf-hostende Integration runtime](https://www.microsoft.com/download/details.aspx?id=39717) op een lokale **schijf, waarbij** u de **verificatie sleutel** opgeeft (voor het registreren van zelf-hostende IR-knoop punten).
 
 * Voor het automatiseren van hand matige updates: werk het zelf-hostende IR-knoop punt bij met een specifieke versie of naar de meest recente versie **[script-update-gateway.ps1](https://github.com/nabhishek/SelfHosted-IntegrationRuntime_AutomationScripts/blob/master/script-update-gateway.ps1)** . dit wordt ook ondersteund als u de automatische update hebt uitgeschakeld of als u meer controle wilt hebben over updates. Het script kan worden gebruikt om het zelf-hostende Integration runtime-knoop punt bij te werken naar de meest recente versie of naar een opgegeven hogere versie (downgrade werkt niet). Er wordt een argument geaccepteerd voor het opgeven van het versie nummer (voor beeld:-versie 3.13.6942.1). Als er geen versie is opgegeven, wordt de zelf-hostende IR altijd bijgewerkt naar de meest recente versie die in de [down loads](https://www.microsoft.com/download/details.aspx?id=39717)is gevonden.
     > [!NOTE]
-    > Alleen de laatste 3 versies kunnen worden opgegeven. In het ideale geval wordt dit gebruikt om een bestaand knoop punt bij te werken naar de meest recente versie. **hierbij wordt ervan uitgegaan dat u een geregistreerde zelf-hosted IR hebt**. 
+    > Alleen de laatste 3 versies kunnen worden opgegeven. In het ideale geval wordt dit gebruikt om een bestaand knoop punt bij te werken naar de meest recente versie. **hierbij wordt ervan uitgegaan dat u een geregistreerde zelf-hosted IR hebt** . 
 
 ## <a name="usage-examples"></a>Gebruiksvoorbeelden
 
 ### <a name="for-automating-setup"></a>Voor het automatiseren van Setup
 1. Down load [hier](https://www.microsoft.com/download/details.aspx?id=39717)de zelf-hostende IR. 
-1. Geef het pad op waar de hierboven gedownloade SHIR MSI (installatie bestand) is. Als het pad bijvoorbeeld *C:\Users\username\Downloads\IntegrationRuntime_4.7.7368.1.msi*is, kunt u het onderstaande voor beeld van een Power shell-opdracht regel gebruiken voor deze taak:
+1. Geef het pad op waar de hierboven gedownloade SHIR MSI (installatie bestand) is. Als het pad bijvoorbeeld *C:\Users\username\Downloads\IntegrationRuntime_4.7.7368.1.msi* is, kunt u het onderstaande voor beeld van een Power shell-opdracht regel gebruiken voor deze taak:
 
    ```powershell
    PS C:\windows\system32> C:\Users\username\Desktop\InstallGatewayOnLocalMachine.ps1 -path "C:\Users\username\Downloads\IntegrationRuntime_4.7.7368.1.msi" -authKey "[key]"

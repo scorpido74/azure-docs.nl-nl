@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 55a49ac13cdfd3f6157ae7495403f76056e734ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be49d56d301c23791777f4d89e8c6c6fd35d7035
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86184092"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636303"
 ---
 # <a name="provision-enterprise-edition-for-the-azure-ssis-integration-runtime"></a>De Enter prise-editie voor de Azure-SSIS Integration Runtime inrichten
 
@@ -38,7 +38,7 @@ Voor sommige van deze functies moet u extra onderdelen installeren om de Azure-S
 | Oracle-connectors | De Oracle-verbindings beheer,-bron en-bestemming zijn vooraf geïnstalleerd op de Azure-SSIS IR Enter prise-editie. U moet ook het OCI-stuur programma (Oracle Call Interface) installeren en zo nodig het Oracle-transport netwerk (TNS) configureren op de Azure-SSIS IR. Zie [Aangepaste instelling voor de Azure-SSIS-integratieruntime](how-to-configure-azure-ssis-ir-custom-setup.md) voor meer informatie. |
 | Teradata-connectors | U moet de Teradata-verbindings beheer, de bron en de bestemming installeren, evenals de TPT-API (parallel trans Porter) en het Teradata-ODBC-stuur programma in de Azure-SSIS IR Enter prise-editie. Zie [Aangepaste instelling voor de Azure-SSIS-integratieruntime](how-to-configure-azure-ssis-ir-custom-setup.md) voor meer informatie. |
 | SAP BW-connectors | De SAP BW verbindings beheer, bron en bestemming zijn vooraf geïnstalleerd op de Azure-SSIS IR Enter prise-editie. U moet ook het SAP BW-stuur programma installeren op de Azure-SSIS IR. Deze connectors ondersteunen SAP BW 7,0 of eerdere versies. Als u verbinding wilt maken met latere versies van SAP BW of andere SAP-producten, kunt u SAP-connectors aanschaffen en installeren vanuit Isv's van derden op de Azure-SSIS IR. Zie [aangepaste installatie voor de Azure-SSIS Integration runtime](how-to-configure-azure-ssis-ir-custom-setup.md)voor meer informatie over het installeren van extra onderdelen. |
-| Analysis Services onderdelen               | De trainings doel locatie voor gegevens analyse modellen, de doel dimensie verwerking en de bestemming van de partitie verwerking, evenals de gegevens analyse query transformatie, worden vooraf geïnstalleerd op de Azure-SSIS IR Enter prise-editie. Al deze onderdelen ondersteunen SQL Server Analysis Services (SSAS), maar alleen de partitie verwerkings bestemming ondersteunt Azure Analysis Services (AAS). Als u verbinding wilt maken met SSAS, moet u ook [Windows-verificatie referenties configureren in SSISDB](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth). Naast deze onderdelen worden de Analysis Services uitvoeren van DDL-taak, de verwerkings taak Analysis Services en de taak gegevens analyse query ook vooraf geïnstalleerd op de Azure-SSIS IR Standard/Enter prise-editie. |
+| Analysis Services onderdelen               | De trainings doel locatie voor gegevens analyse modellen, de doel dimensie verwerking en de bestemming van de partitie verwerking, evenals de gegevens analyse query transformatie, worden vooraf geïnstalleerd op de Azure-SSIS IR Enter prise-editie. Al deze onderdelen ondersteunen SQL Server Analysis Services (SSAS), maar alleen de partitie verwerkings bestemming ondersteunt Azure Analysis Services (AAS). Als u verbinding wilt maken met SSAS, moet u ook [Windows-verificatie referenties configureren in SSISDB](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth). Naast deze onderdelen worden de Analysis Services uitvoeren van DDL-taak, de verwerkings taak Analysis Services en de taak gegevens analyse query ook vooraf geïnstalleerd op de Azure-SSIS IR Standard/Enter prise-editie. |
 | Fuzzy groepering en fuzzy lookup-trans formaties  | De onduidelijke groepering en fuzzy lookup-trans formaties worden vooraf geïnstalleerd op de Azure-SSIS IR Enter prise-editie. Deze onderdelen ondersteunen zowel SQL Server als Azure SQL Database om referentie gegevens op te slaan. |
 | Voor waarden voor het ophalen en opzoeken van termen | De termen voor het oppakken en het opzoeken van termen worden vooraf geïnstalleerd op de Azure-SSIS IR Enter prise-editie. Deze onderdelen ondersteunen zowel SQL Server als Azure SQL Database om referentie gegevens op te slaan. |
 

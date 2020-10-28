@@ -10,12 +10,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
-ms.openlocfilehash: c4a7eabe35e501aa840693f6fad3803b73160a25
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d8cc934ebe8b465bc43e37d0d3a3fc58feda8c0a
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368890"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637714"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Gegevens transformeren met behulp van Spark-activiteit in Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
@@ -62,10 +62,10 @@ In de volgende tabel worden de JSON-eigenschappen beschreven die in de JSON-defi
 | Eigenschap              | Beschrijving                              | Vereist |
 | --------------------- | ---------------------------------------- | -------- |
 | naam                  | De naam van de activiteit in de pijp lijn.    | Ja      |
-| description           | Tekst die beschrijft wat de activiteit doet.  | Nee       |
+| beschrijving           | Tekst die beschrijft wat de activiteit doet.  | Nee       |
 | type                  | Voor Spark-activiteiten is het type activiteit HDInsightSpark. | Ja      |
 | linkedServiceName     | De naam van de gekoppelde HDInsight Spark-service waarop het Spark-programma wordt uitgevoerd. Zie het artikel [Compute linked Services](compute-linked-services.md) (Engelstalig) voor meer informatie over deze gekoppelde service. | Ja      |
-| SparkJobLinkedService | De Azure Storage gekoppelde service die het Spark-taak bestand, de afhankelijkheden en de logboeken bevat. Hier worden alleen **[Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)** -en **[ADLS Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)** gekoppelde services ondersteund. Als u geen waarde voor deze eigenschap opgeeft, wordt de opslag gebruikt die aan het HDInsight-cluster is gekoppeld. De waarde van deze eigenschap kan alleen een Azure Storage gekoppelde service zijn. | Nee       |
+| SparkJobLinkedService | De Azure Storage gekoppelde service die het Spark-taak bestand, de afhankelijkheden en de logboeken bevat. Hier worden alleen **[Azure Blob Storage](./connector-azure-blob-storage.md)** -en **[ADLS Gen2](./connector-azure-data-lake-storage.md)** gekoppelde services ondersteund. Als u geen waarde voor deze eigenschap opgeeft, wordt de opslag gebruikt die aan het HDInsight-cluster is gekoppeld. De waarde van deze eigenschap kan alleen een Azure Storage gekoppelde service zijn. | Nee       |
 | rootPath              | De Azure Blob-container en de map waarin het Spark-bestand zich bevindt. De bestands naam is hoofdletter gevoelig. Raadpleeg de sectie mappen structuur (volgende sectie) voor meer informatie over de structuur van deze map. | Ja      |
 | entryFilePath         | Relatief pad naar de hoofdmap van de Spark-code/-pakket. Het invoer bestand moet een python-bestand of een jar-bestand zijn. | Ja      |
 | className             | Hoofd klasse java/Spark van de toepassing      | Nee       |
@@ -77,12 +77,12 @@ In de volgende tabel worden de JSON-eigenschappen beschreven die in de JSON-defi
 ## <a name="folder-structure"></a>Mapstructuur
 Spark-taken zijn meer uitbreidbaar dan Pig/Hive-taken. U kunt voor Spark-taken meerdere afhankelijkheden opgeven, zoals jar-pakketten (die in het Java-KLASSENPAD zijn geplaatst), python-bestanden (die zijn geplaatst op de PYTHONPATH) en andere bestanden.
 
-Maak de volgende mapstructuur in de Azure Blob-opslag waarnaar wordt verwezen door de gekoppelde HDInsight-service. Upload vervolgens afhankelijke bestanden naar de juiste submappen in de hoofdmap die wordt vertegenwoordigd door **entryFilePath**. Upload bijvoorbeeld python-bestanden naar de pyFiles-submap en JAR-bestanden naar de submap potten van de hoofdmap. Tijdens runtime verwacht Data Factory service de volgende mapstructuur in de Azure Blob-opslag:     
+Maak de volgende mapstructuur in de Azure Blob-opslag waarnaar wordt verwezen door de gekoppelde HDInsight-service. Upload vervolgens afhankelijke bestanden naar de juiste submappen in de hoofdmap die wordt vertegenwoordigd door **entryFilePath** . Upload bijvoorbeeld python-bestanden naar de pyFiles-submap en JAR-bestanden naar de submap potten van de hoofdmap. Tijdens runtime verwacht Data Factory service de volgende mapstructuur in de Azure Blob-opslag:     
 
 | Pad                  | Beschrijving                              | Vereist | Type   |
 | --------------------- | ---------------------------------------- | -------- | ------ |
 | `.` basis            | Het pad naar de hoofdmap van de Spark-taak in de gekoppelde opslag service | Ja      | Map |
-| &lt;door de gebruiker gedefinieerd &gt; | Het pad naar het invoer bestand van de Spark-taak | Ja      | Bestand   |
+| &lt;door de gebruiker gedefinieerd &gt; | Het pad naar het invoer bestand van de Spark-taak | Ja      | File   |
 | ./jars                | Alle bestanden in deze map worden geüpload en geplaatst in het Java-klassenpad van het cluster | Nee       | Map |
 | ./pyFiles             | Alle bestanden in deze map worden geüpload en op de PYTHONPATH van het cluster geplaatst | Nee       | Map |
 | ./files               | Alle bestanden in deze map worden geüpload en op de werk directory van de uitvoerder geplaatst | Nee       | Map |

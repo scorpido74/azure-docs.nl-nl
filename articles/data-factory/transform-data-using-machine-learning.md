@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/16/2020
-ms.openlocfilehash: dabb7b8cd8023fe88a8c8d6dc507a09623bd11dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50ef97bca0a5359c49ba2f18b1ec789ab076350a
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86537677"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637731"
 ---
 # <a name="create-a-predictive-pipeline-using-azure-machine-learning-studio-classic-and-azure-data-factory"></a>Maak een voorspellende pijp lijn met behulp van Azure Machine Learning Studio (klassiek) en Azure Data Factory
 
@@ -27,9 +27,9 @@ ms.locfileid: "86537677"
 
 Met [Azure machine learning Studio (klassiek)](https://azure.microsoft.com/documentation/services/machine-learning/) kunt u Predictive Analytics oplossingen bouwen, testen en implementeren. Vanuit een weergave punt op hoog niveau, wordt deze in drie stappen uitgevoerd:
 
-1. **Een trainings experiment maken**. U voert deze stap uit met behulp van de Azure Machine Learning Studio (klassiek). Azure Machine Learning Studio (klassiek) is een samen werkende ontwikkel omgeving die u gebruikt om een predictive analytics model te trainen en te testen met behulp van trainings gegevens.
-2. **Converteer deze naar een voorspellend experiment**. Zodra uw model is getraind met bestaande gegevens en u klaar bent om het te gebruiken voor het beoordelen van nieuwe gegevens, kunt u uw experiment voorbereiden en stroom lijnen.
-3. **Implementeer de service als een webservice**. U kunt uw score experiment publiceren als een Azure-webservice. U kunt gegevens naar uw model verzenden via dit eind punt van de webservice en resultaat voorspellingen van het model ontvangen.
+1. **Een trainings experiment maken** . U voert deze stap uit met behulp van de Azure Machine Learning Studio (klassiek). Azure Machine Learning Studio (klassiek) is een samen werkende ontwikkel omgeving die u gebruikt om een predictive analytics model te trainen en te testen met behulp van trainings gegevens.
+2. **Converteer deze naar een voorspellend experiment** . Zodra uw model is getraind met bestaande gegevens en u klaar bent om het te gebruiken voor het beoordelen van nieuwe gegevens, kunt u uw experiment voorbereiden en stroom lijnen.
+3. **Implementeer de service als een webservice** . U kunt uw score experiment publiceren als een Azure-webservice. U kunt gegevens naar uw model verzenden via dit eind punt van de webservice en resultaat voorspellingen van het model ontvangen.
 
 ### <a name="data-factory-and-azure-machine-learning-studio-classic-together"></a>Data Factory en Azure Machine Learning Studio (klassiek) samen
 Met Azure Data Factory kunt u eenvoudig pijp lijnen maken die gebruikmaken van een gepubliceerde [Azure machine learning Studio (klassieke)](https://azure.microsoft.com/documentation/services/machine-learning) webservice voor Predictive Analytics. Met de **activiteit voor batch uitvoering** in een Azure Data Factory-pijp lijn kunt u een Azure machine learning Studio (klassieke) webservice aanroepen om voor spellingen te maken voor de gegevens in batch.
@@ -39,7 +39,7 @@ Na verloop van tijd moeten de voorspellende modellen in de Azure Machine Learnin
 1. Publiceer het trainings experiment (niet voorspellend experiment) als een webservice. U voert deze stap uit in de Azure Machine Learning Studio (klassiek), net zoals u het voorspellende experiment als een webservice in het vorige scenario beschikbaar had kunnen maken.
 2. Gebruik de batch uitvoerings activiteit Azure Machine Learning Studio (klassiek) om de webservice voor het trainings experiment aan te roepen. In principe kunt u de activiteit voor het uitvoeren van Azure Machine Learning Studio (klassiek) gebruiken voor het aanroepen van zowel de webservice voor training als de Score van het web service.
 
-Wanneer u klaar bent met het opnieuw trainen, werkt u de Score-webservice (voorspellende experiment die als een webservice wordt weer gegeven) bij met het nieuwe getrainde model met behulp van de activiteit voor het bijwerken van de **resource van Azure machine learning Studio (klassiek)**. Zie [modellen bijwerken met update resource activiteit](update-machine-learning-models.md) artikel voor meer informatie.
+Wanneer u klaar bent met het opnieuw trainen, werkt u de Score-webservice (voorspellende experiment die als een webservice wordt weer gegeven) bij met het nieuwe getrainde model met behulp van de activiteit voor het bijwerken van de **resource van Azure machine learning Studio (klassiek)** . Zie [modellen bijwerken met update resource activiteit](update-machine-learning-models.md) artikel voor meer informatie.
 
 ## <a name="azure-machine-learning-studio-classic-linked-service"></a>Gekoppelde service Azure Machine Learning Studio (klassiek)
 
@@ -129,8 +129,8 @@ In het volgende JSON-code fragment wordt een Azure Machine Learning Studio (klas
 | Eigenschap          | Beschrijving                              | Vereist |
 | :---------------- | :--------------------------------------- | :------- |
 | naam              | Naam van de activiteit in de pijp lijn     | Ja      |
-| description       | Tekst die beschrijft wat de activiteit doet.  | Nee       |
-| type              | Voor Data Lake Analytics U-SQL-activiteit is het type activiteit **AzureMLBatchExecution**. | Ja      |
+| beschrijving       | Tekst die beschrijft wat de activiteit doet.  | Nee       |
+| type              | Voor Data Lake Analytics U-SQL-activiteit is het type activiteit **AzureMLBatchExecution** . | Ja      |
 | linkedServiceName | Gekoppelde services aan de gekoppelde Azure Machine Learning Studio-Service (klassiek). Zie het artikel [Compute linked Services](compute-linked-services.md) (Engelstalig) voor meer informatie over deze gekoppelde service. | Ja      |
 | webServiceInputs  | Sleutel-, waardeparen, de namen van de webservices voor Azure Machine Learning Studio (klassiek) toewijzen. De sleutel moet overeenkomen met de invoer parameters die zijn gedefinieerd in de gepubliceerde Azure Machine Learning Studio (klassieke) webservice. Waarde is een Azure Storage gekoppelde services en eigenschappen paar voor het opgeven van de invoer-BLOB-locaties. | Nee       |
 | webServiceOutputs | Sleutel-, waardeparen, de namen van de uitvoer van de webservice van Azure Machine Learning Studio (klassiek) toewijzen. De sleutel moet overeenkomen met de uitvoer parameters die zijn gedefinieerd in de gepubliceerde Azure Machine Learning Studio (klassieke) webservice. Waarde is een Azure Storage gekoppelde services en eigenschappen paar van het bestandspad die de uitvoer BLOB-locaties opgeven. | Nee       |
@@ -190,7 +190,7 @@ In dit scenario maakt de Azure Machine Learning Studio (klassieke) webservice vo
 }
 ```
 ### <a name="scenario-2-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>Scenario 2: experimenten met behulp van Reader/Writer-modules om te verwijzen naar gegevens in verschillende opslag ruimten
-Een ander algemeen scenario bij het maken van Azure Machine Learning Studio (klassieke) experimenten is het gebruik van import gegevens-en uitvoer gegevens modules. De module gegevens importeren wordt gebruikt om gegevens te laden in een experiment en de module output data is om gegevens van uw experimenten op te slaan. Zie voor meer informatie over het importeren van gegevens en uitvoer gegevens modules de onderwerpen [gegevens importeren](https://msdn.microsoft.com/library/azure/dn905997.aspx) en [uitvoer gegevens](https://msdn.microsoft.com/library/azure/dn905984.aspx) in de MSDN-bibliotheek.
+Een ander algemeen scenario bij het maken van Azure Machine Learning Studio (klassieke) experimenten is het gebruik van import gegevens-en uitvoer gegevens modules. De module gegevens importeren wordt gebruikt om gegevens te laden in een experiment en de module output data is om gegevens van uw experimenten op te slaan. Zie voor meer informatie over het importeren van gegevens en uitvoer gegevens modules de onderwerpen [gegevens importeren](/azure/machine-learning/studio-module-reference/import-data) en [uitvoer gegevens](/azure/machine-learning/studio-module-reference/export-data) in de MSDN-bibliotheek.
 
 Wanneer u de modules gegevens importeren en uitvoer gegevens gebruikt, is het verstandig om een para meter voor de webservice te gebruiken voor elke eigenschap van deze modules. Met deze web-para meters kunt u de waarden tijdens runtime configureren. U kunt bijvoorbeeld een experiment maken met een module voor gegevens import die gebruikmaakt van een Azure SQL Database: XXX.database.windows.net. Nadat de webservice is geïmplementeerd, wilt u de gebruikers van de webservice in staat stellen een andere logische SQL-Server op te geven `YYY.database.windows.net` . U kunt een webservice-para meter gebruiken om deze waarde te kunnen configureren.
 
@@ -213,7 +213,7 @@ Laten we eens kijken naar een scenario voor het gebruik van web service-para met
 > [!NOTE]
 > De para meters van de webservice zijn hoofdletter gevoelig, dus zorg ervoor dat de namen die u opgeeft in de JSON van de activiteit overeenkomen met die van de webservice.
 
-Wanneer u klaar bent met het opnieuw trainen, werkt u de Score-webservice (voorspellende experiment die als een webservice wordt weer gegeven) bij met het nieuwe getrainde model met behulp van de activiteit voor het bijwerken van de **resource van Azure machine learning Studio (klassiek)**. Zie [modellen bijwerken met update resource activiteit](update-machine-learning-models.md) artikel voor meer informatie.
+Wanneer u klaar bent met het opnieuw trainen, werkt u de Score-webservice (voorspellende experiment die als een webservice wordt weer gegeven) bij met het nieuwe getrainde model met behulp van de activiteit voor het bijwerken van de **resource van Azure machine learning Studio (klassiek)** . Zie [modellen bijwerken met update resource activiteit](update-machine-learning-models.md) artikel voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 Raadpleeg de volgende artikelen waarin wordt uitgelegd hoe u gegevens op andere manieren transformeert:

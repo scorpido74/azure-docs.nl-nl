@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: 3f3dd5898518a9788a7079ab903b6f88b9f82989
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d5e20b1fc0ce32eae8dc2888fdda982f0de95d90
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371202"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636643"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integration Runtime in Azure Data Factory 
 
@@ -24,10 +24,10 @@ ms.locfileid: "92371202"
 
 De Integratie Runtime (IR) is de rekeninfrastructuur die Azure Data Factory gebruikt om de volgende mogelijkheden voor gegevensintegratie in verschillende netwerkomgevingen te bieden:
 
-- **Gegevens stroom**: een [gegevens stroom](concepts-data-flow-overview.md) uitvoeren in een beheerde Azure Compute-omgeving.  
-- **Gegevens verplaatsing**: gegevens kopiëren tussen gegevens archieven in openbaar netwerk en gegevens archieven in een particulier netwerk (on-premises of een virtueel particulier netwerk). Deze optie biedt ondersteuning voor ingebouwde connectors, indelingsconversie, kolomtoewijzing en hoogwaardige en schaalbare gegevensoverdracht.
-- **Activiteit verzending**: trans formatie-activiteiten voor verzen ding verzenden en bewaken die worden uitgevoerd op diverse reken Services, zoals Azure Databricks, Azure HDInsight, Azure Machine Learning, Azure SQL Database, SQL Server en meer.
-- **SSIS-pakketuitvoering**: systeemeigen SSIS-pakketten (SQL Server Integration Services) uitvoeren in een beheerde Azure-rekenomgeving.
+- **Gegevens stroom** : een [gegevens stroom](concepts-data-flow-overview.md) uitvoeren in een beheerde Azure Compute-omgeving.  
+- **Gegevens verplaatsing** : gegevens kopiëren tussen gegevens archieven in openbaar netwerk en gegevens archieven in een particulier netwerk (on-premises of een virtueel particulier netwerk). Deze optie biedt ondersteuning voor ingebouwde connectors, indelingsconversie, kolomtoewijzing en hoogwaardige en schaalbare gegevensoverdracht.
+- **Activiteit verzending** : trans formatie-activiteiten voor verzen ding verzenden en bewaken die worden uitgevoerd op diverse reken Services, zoals Azure Databricks, Azure HDInsight, Azure Machine Learning, Azure SQL Database, SQL Server en meer.
+- **SSIS-pakketuitvoering** : systeemeigen SSIS-pakketten (SQL Server Integration Services) uitvoeren in een beheerde Azure-rekenomgeving.
 
 In de Data Factory definieert een activiteit de actie die moet worden uitgevoerd. Een gekoppelde service definieert een doelgegevensarchief of een rekenservice. Een Integration Runtime vormt de brug tussen de activiteit en de gekoppelde services.  Er wordt naar verwezen door de gekoppelde service of activiteit, en biedt de reken omgeving waar de activiteit wordt uitgevoerd of verzonden. Op deze manier kan de activiteit optimaal worden uitgevoerd in de regio die het dichtst mogelijk bij het doelgegevensarchief of de rekenservice ligt, terwijl wordt voldaan aan vereisten rondom beveiliging en naleving.
 
@@ -113,7 +113,7 @@ Zie voor meer informatie het artikel 'Azure-SSIS IR maken en configureren' bij d
 
 Zie de volgende artikelen voor meer informatie over Azure-SSIS Runtime: 
 
-- [Zelfstudie: SSIS-pakketten implementeren in Azure](tutorial-create-azure-ssis-runtime-portal.md). In dit artikel vindt u stapsgewijze instructies voor het maken van een Azure-SSIS IR en het gebruik van een Azure SQL Database voor het hosten van de SSIS-catalogus. 
+- [Zelfstudie: SSIS-pakketten implementeren in Azure](./tutorial-deploy-ssis-packages-azure.md). In dit artikel vindt u stapsgewijze instructies voor het maken van een Azure-SSIS IR en het gebruik van een Azure SQL Database voor het hosten van de SSIS-catalogus. 
 - [Procedure: Een Azure SSIS Integration Runtime maken](create-azure-ssis-integration-runtime.md). In dit artikel wordt de zelf studie uitgebreid en vindt u instructies voor het gebruik van SQL Managed instance en het toevoegen van de IR aan een virtueel netwerk. 
 - [Een Azure-SSIS IR controleren](monitor-integration-runtime.md#azure-ssis-integration-runtime). In dit artikel leest u hoe u informatie over een Azure-SSIS IR ophaalt. Daarnaast bevat het artikel beschrijvingen van statuswaarden die worden gebruikt in de geretourneerde informatie. 
 - [Een Azure-SSIS IR beheren](manage-azure-ssis-integration-runtime.md). In dit artikel leest u hoe u een Azure-SSIS IR stopt, start of verwijdert. Er wordt ook uitgelegd hoe u een Azure-SSIS IR kunt uitschalen door meer knooppunten toe te voegen aan de IR. 
@@ -180,9 +180,9 @@ Het volgende diagram toont de locatie-instellingen van Data Factory en het aanta
 
 Voor de kopieeractiviteit, zijn de gekoppelde bron- en sinkservices vereist voor het definiëren van de richting van de gegevensstroom. De volgende logica wordt gebruikt om te bepalen welk exemplaar van Integration Runtime wordt gebruikt voor het uitvoeren van de kopieeractiviteit: 
 
-- **Kopiëren tussen twee gegevens bronnen**in de Cloud: wanneer de gekoppelde services van de bron-en Sink-service gebruikmaken van Azure IR, gebruikt ADF de regionale Azure IR als u hebt opgegeven, of automatisch een locatie van Azure IR bepalen als u de optie IR (standaard) voor de [locatie van Integration runtime](#integration-runtime-location) kiest.
-- **Kopiëren tussen een gegevensbron in de cloud en een gegevensbron in een privénetwerk**: als de gekoppelde bron- of sinkservice verwijst naar een zelf-hostende IR, wordt de kopieerbewerking uitgevoerd op die zelf-hostende Integration Runtime.
-- **Kopiëren tussen twee gegevens bronnen in een particulier netwerk**: zowel de gekoppelde bron-als Sink-service moeten verwijzen naar hetzelfde exemplaar van Integration runtime en die Integration runtime wordt gebruikt om de Kopieer activiteit uit te voeren.
+- **Kopiëren tussen twee gegevens bronnen** in de Cloud: wanneer de gekoppelde services van de bron-en Sink-service gebruikmaken van Azure IR, gebruikt ADF de regionale Azure IR als u hebt opgegeven, of automatisch een locatie van Azure IR bepalen als u de optie IR (standaard) voor de [locatie van Integration runtime](#integration-runtime-location) kiest.
+- **Kopiëren tussen een gegevensbron in de cloud en een gegevensbron in een privénetwerk** : als de gekoppelde bron- of sinkservice verwijst naar een zelf-hostende IR, wordt de kopieerbewerking uitgevoerd op die zelf-hostende Integration Runtime.
+- **Kopiëren tussen twee gegevens bronnen in een particulier netwerk** : zowel de gekoppelde bron-als Sink-service moeten verwijzen naar hetzelfde exemplaar van Integration runtime en die Integration runtime wordt gebruikt om de Kopieer activiteit uit te voeren.
 
 ### <a name="lookup-and-getmetadata-activity"></a>Activiteit Lookup en GetMetadata
 
@@ -202,4 +202,4 @@ Zie de volgende artikelen:
 
 - [Azure Integration runtime maken](create-azure-integration-runtime.md)
 - [Zelf-hostende Integration runtime maken](create-self-hosted-integration-runtime.md)
-- [Maak een Azure SSIS Integration runtime](create-azure-ssis-integration-runtime.md). In dit artikel wordt de zelf studie uitgebreid en vindt u instructies voor het gebruik van SQL Managed instance en het toevoegen van de IR aan een virtueel netwerk. 
+- [Maak een Azure SSIS Integration runtime](create-azure-ssis-integration-runtime.md). In dit artikel wordt de zelf studie uitgebreid en vindt u instructies voor het gebruik van SQL Managed instance en het toevoegen van de IR aan een virtueel netwerk.

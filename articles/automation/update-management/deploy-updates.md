@@ -3,14 +3,14 @@ title: Update-implementaties voor Azure Automation maken Updatebeheer
 description: In dit artikel wordt beschreven hoe u update-implementaties plant en hoe u de status ervan controleert.
 services: automation
 ms.subservice: update-management
-ms.date: 10/21/2020
+ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: d1f4c04bf4a26e67a905679db23e303c2762d90c
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: d6594e1cdd7925a4287cf9edbfd5324b427338f4
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426415"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637595"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Updates implementeren en resultaten bekijken
 
@@ -20,7 +20,7 @@ In elk scenario kunt u een of meer computers richten op de implementatie die u m
 
 * Het besturings systeem wordt automatisch vooraf geselecteerd op basis van het OS van de computer
 * De doel computer die moet worden bijgewerkt, is ingesteld op automatisch als doel zelf instellen
-* Wanneer u de planning configureert, kunt u **update nu**en één keer opgeven, of een terugkerend schema gebruiken.
+* Wanneer u de planning configureert, kunt u **update nu** en één keer opgeven, of een terugkerend schema gebruiken.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
@@ -43,11 +43,11 @@ Als u een nieuwe update-implementatie wilt plannen, voert u de volgende stappen 
 
 2. Afhankelijk van de resource die u hebt geselecteerd, gaat u naar Updatebeheer:
 
-   * Als u uw Automation-account hebt geselecteerd, gaat u naar **Update beheer** onder **Update beheer**en selecteert u **Update-implementatie plannen**.
-   * Als u een virtuele machine van Azure hebt geselecteerd, gaat u naar **gast en host-updates**en selecteert u vervolgens **Ga naar updatebeheer**.
-   * Als u een server met Arc-functionaliteit hebt geselecteerd, gaat u naar **updatebeheer**en selecteert u **Update-implementatie plannen**.
+   * Als u uw Automation-account hebt geselecteerd, gaat u naar **Update beheer** onder **Update beheer** en selecteert u **Update-implementatie plannen** .
+   * Als u een virtuele machine van Azure hebt geselecteerd, gaat u naar **gast en host-updates** en selecteert u vervolgens **Ga naar updatebeheer** .
+   * Als u een server met Arc-functionaliteit hebt geselecteerd, gaat u naar **updatebeheer** en selecteert u **Update-implementatie plannen** .
 
-3. Voer onder **nieuwe update-implementatie**in het veld **naam** een unieke naam in voor uw implementatie.
+3. Voer onder **nieuwe update-implementatie** in het veld **naam** een unieke naam in voor uw implementatie.
 
 4. Selecteer het besturings systeem dat u wilt instellen als doel voor de update-implementatie.
 
@@ -68,7 +68,7 @@ Als u een nieuwe update-implementatie wilt plannen, voert u de volgende stappen 
 
     Als uw implementatie alleen van toepassing is op een bepaalde set updates, is het nood zakelijk om alle vooraf geselecteerde update classificaties te deselecteren bij het configureren van de optie voor het **opnemen/uitsluiten van updates** , zoals wordt beschreven in de volgende stap. Dit zorgt ervoor dat alleen de *updates die u hebt opgegeven in deze* implementatie zijn geïnstalleerd op de doel computers.
 
-8. Gebruik de regio **updates opnemen/uitsluiten** om geselecteerde updates van de implementatie toe te voegen of uit te sluiten. Op de pagina **opnemen/uitsluiten** voert u KB-artikel-id-nummers in om op te nemen of uit te sluiten.
+8. Gebruik de regio **updates opnemen/uitsluiten** om geselecteerde updates van de implementatie toe te voegen of uit te sluiten. Op de pagina **opnemen/uitsluiten** voert u KB-artikel-id-nummers in om op te nemen of uit te sluiten voor Windows-updates. Voor ondersteunde Linux-distributies geeft u de naam van het pakket op.
 
    > [!IMPORTANT]
    > Houd er rekening mee dat uitsluitingen insluitingen opheffen. Als u bijvoorbeeld een uitsluitings regel van opgeeft `*` , updatebeheer sluit alle patches of pakketten van de installatie uit. Uitgesloten patches worden nog steeds weer gegeven als ontbrekend op de computers. Als u op Linux-computers een pakket opneemt dat een afhankelijk pakket bevat dat is uitgesloten, installeert Updatebeheer het hoofdpakket niet.
@@ -76,12 +76,15 @@ Als u een nieuwe update-implementatie wilt plannen, voert u de volgende stappen 
    > [!NOTE]
    > U kunt geen updates opgeven die in de update-implementatie zijn vervangen.
 
-9. Selecteer **schema-instellingen**. De standaard begintijd is 30 minuten na de huidige tijd. U kunt de starttijd op elke gewenste tijd instellen, maar minstens 10 minuten na de huidige tijd.
+   > [!IMPORTANT]
+   > Voor Red Hat Enter prise worden kernel-upgrades ook weer gegeven als pakketten in YUM. Als u updates met kernel-upgrades niet uitsluit, worden deze updates door Updatebeheer toegepast.
+
+9. Selecteer **schema-instellingen** . De standaard begintijd is 30 minuten na de huidige tijd. U kunt de starttijd op elke gewenste tijd instellen, maar minstens 10 minuten na de huidige tijd.
 
     > [!NOTE]
     > Deze optie is anders als u een met Arc ingeschakelde server hebt geselecteerd. U kunt **nu een update** of een begin tijd van 20 minuten in de toekomst selecteren.
 
-10. Gebruik het **terugkeer patroon** om op te geven of de implementatie één keer wordt uitgevoerd of een terugkerend schema gebruikt en selecteer **OK**.
+10. Gebruik het **terugkeer patroon** om op te geven of de implementatie één keer wordt uitgevoerd of een terugkerend schema gebruikt en selecteer **OK** .
 
 11. Selecteer in de regio **pre-scripts + post-scripts** de scripts die moeten worden uitgevoerd vóór en na de implementatie. Zie [pre-scripts en post scripts beheren](pre-post-scripts.md)voor meer informatie.
 
@@ -102,14 +105,14 @@ Als u een nieuwe update-implementatie wilt plannen, voert u de volgende stappen 
     * Alleen opnieuw opstarten; met deze optie worden geen updates geïnstalleerd
 
     > [!NOTE]
-    > De registersleutels onder [Registry keys used to manage restart](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) (registersleutels voor het beheren van opnieuw opstarten) kunnen een gebeurtenis voor opnieuw opstarten veroorzaken als **Opties voor opnieuw opstarten** is ingesteld op **Nooit opnieuw opstarten**.
+    > De registersleutels onder [Registry keys used to manage restart](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) (registersleutels voor het beheren van opnieuw opstarten) kunnen een gebeurtenis voor opnieuw opstarten veroorzaken als **Opties voor opnieuw opstarten** is ingesteld op **Nooit opnieuw opstarten** .
 
-14. Wanneer u klaar bent met het configureren van de implementatie planning, selecteert u **maken**.
+14. Wanneer u klaar bent met het configureren van de implementatie planning, selecteert u **maken** .
 
     ![Deelvenster Planningsinstellingen bijwerken](./media/deploy-updates/manageupdates-schedule-win.png)
 
     > [!NOTE]
-    > Wanneer u klaar bent met het configureren van het implementatie schema voor een geselecteerde server die is ingeschakeld voor de Arc, selecteert u **controleren + maken**.
+    > Wanneer u klaar bent met het configureren van het implementatie schema voor een geselecteerde server die is ingeschakeld voor de Arc, selecteert u **controleren + maken** .
 
 15. U keert nu terug naar het statusdashboard. Selecteer **implementatie planningen** om de implementatie planning weer te geven die u hebt gemaakt. Er worden Maxi maal 500 schema's weer gegeven. Als u meer dan 500 planningen hebt en u de volledige lijst wilt bekijken, raadpleegt u de REST API methode [Software-update configuraties-lijst](/rest/api/automation/softwareupdateconfigurations/list) . Geef API-versie 2019-06-01 of hoger op.
 
@@ -121,7 +124,7 @@ U kunt een voor beeld-runbook gebruiken om een wekelijkse update-implementatie t
 
 ## <a name="check-deployment-status"></a>Implementatie status controleren
 
-Nadat de geplande implementatie is gestart, ziet u de status ervan op het tabblad **geschiedenis** onder **Update beheer**. Als de implementatie momenteel wordt uitgevoerd, is de status **Wordt uitgevoerd**. Wanneer de implementatie is voltooid, verandert de status in **geslaagd**. Als er fouten zijn met een of meer updates in de implementatie, is de status **mislukt**.
+Nadat de geplande implementatie is gestart, ziet u de status ervan op het tabblad **geschiedenis** onder **Update beheer** . Als de implementatie momenteel wordt uitgevoerd, is de status **Wordt uitgevoerd** . Wanneer de implementatie is voltooid, verandert de status in **geslaagd** . Als er fouten zijn met een of meer updates in de implementatie, is de status **mislukt** .
 
 ## <a name="view-results-of-a-completed-update-deployment"></a>Resultaten van een voltooide update-implementatie weer geven
 
@@ -129,7 +132,7 @@ Wanneer de implementatie is voltooid, kunt u deze selecteren om de resultaten we
 
 [![Het dash board voor de implementatie status bijwerken voor een specifieke implementatie](./media/deploy-updates/manageupdates-view-results.png)](./media/deploy-updates/manageupdates-view-results-expanded.png#lightbox)
 
-Onder **Update resultaten**bevat een samen vatting het totale aantal updates en de implementatie resultaten op de doel-vm's. In de tabel aan de rechter kant ziet u een gedetailleerde uitsplitsing van de updates en de installatie resultaten voor elke.
+Onder **Update resultaten** bevat een samen vatting het totale aantal updates en de implementatie resultaten op de doel-vm's. In de tabel aan de rechter kant ziet u een gedetailleerde uitsplitsing van de updates en de installatie resultaten voor elke.
 
 De beschikbare waarden zijn:
 

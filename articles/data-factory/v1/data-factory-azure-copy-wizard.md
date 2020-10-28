@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cf8d847bd4e950ab17cc1f04b52be2589607f99c
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 55a27dbb6c2ec3569bae9d6fb96fcd8087f08daf
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629490"
+ms.locfileid: "92637663"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Wizard Azure Data Factory kopiëren
 
@@ -78,7 +78,7 @@ Klik op de knop **Bladeren** voor **bestand of map** , blader naar een van deze 
 
 ![Systeem variabelen gebruiken](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 
-Zoals in de volgende scherm afbeelding wordt weer gegeven, kunt u ook een **aangepaste** variabele en [ondersteunde opmaak teken reeksen](https://msdn.microsoft.com/library/8kb3ddd4.aspx)gebruiken. Als u een map met die structuur wilt selecteren, gebruikt u eerst de knop **Bladeren** . Vervang vervolgens een waarde door **{Custom}** en druk op de **Tab** -toets om het tekstvak weer te geven waarin u de notatie teken reeks kunt invoeren.     
+Zoals in de volgende scherm afbeelding wordt weer gegeven, kunt u ook een **aangepaste** variabele en [ondersteunde opmaak teken reeksen](/dotnet/standard/base-types/custom-date-and-time-format-strings)gebruiken. Als u een map met die structuur wilt selecteren, gebruikt u eerst de knop **Bladeren** . Vervang vervolgens een waarde door **{Custom}** en druk op de **Tab** -toets om het tekstvak weer te geven waarin u de notatie teken reeks kunt invoeren.     
 
 ![Aangepaste variabele gebruiken](./media/data-factory-copy-wizard/blob-custom-variables-in-folder-path.png)
 

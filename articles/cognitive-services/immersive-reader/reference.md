@@ -9,19 +9,19 @@ ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
-ms.author: metan
-ms.openlocfilehash: dbd5724797fdaf44d147d2f29362b1e5092728dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: metang
+ms.openlocfilehash: f2f5c8193454a3b7fa6be1cea7a1236b613d6c8f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761546"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636524"
 ---
 # <a name="immersive-reader-javascript-sdk-reference-v11"></a>Naslag informatie voor de Inge sloten Reader java script SDK (v 1.1)
 
 De insluitende lezer-SDK bevat een Java script-bibliotheek waarmee u de insluitende lezer kunt integreren in uw toepassing.
 
-## <a name="functions"></a>Functies
+## <a name="functions"></a>Functions
 
 De SDK biedt de volgende functies beschikbaar:
 
@@ -310,12 +310,12 @@ Bevat eigenschappen die bepaald gedrag van de insluitende lezer configureren.
 | uiLang | Tekenreeks | Taal van de gebruikers interface, de waarde is in de indeling van de code van het IETF BCP 47-taal label, bijvoorbeeld en, es-ES. De standaard instelling is browser taal als deze niet is opgegeven. |
 | timeout | Getal | De duur (in milliseconden) voordat [launchAsync](#launchasync) mislukt met een time-outfout (de standaard waarde is 15000 MS). Deze time-out is alleen van toepassing op de eerste keer dat de lees pagina wordt gestart, waar succes wordt waargenomen wanneer de lees pagina wordt geopend en het kring veld wordt gestart. De aanpassing van de time-out moet niet nodig zijn. |
 | uiZIndex | Getal | Z-index van het iframe dat wordt gemaakt (de standaard waarde is 1000). |
-| useWebview | Booleaans| Gebruik een webweergave-tag in plaats van een IFRAME voor compatibiliteit met Chrome-apps (de standaard waarde is False). |
+| useWebview | Boolean-waarde| Gebruik een webweergave-tag in plaats van een IFRAME voor compatibiliteit met Chrome-apps (de standaard waarde is False). |
 | Verlaten | Functie | Wordt uitgevoerd wanneer de insluitende lezer wordt afgesloten. |
-| allowFullscreen | Booleaans | De mogelijkheid om fullscreen te wisselen (standaard waarde is True). |
-| hideExitButton | Booleaans | Hiermee wordt aangegeven of de pijl voor de afsluit knop van de insluitende lezer moet worden verborgen (de standaard waarde is False). Dit moet alleen waar zijn als er een alternatief mechanisme beschikbaar is voor het afsluiten van de insluitende lezer (bijvoorbeeld de pijl van een mobiele werk balk). |
-| cookiePolicy | [CookiePolicy](#cookiepolicy-options) | Instelling voor het cookie gebruik van de insluitende lezer (de standaard waarde is *CookiePolicy. Disable*). Het is de verantwoordelijkheid van de hosttoepassing om elke vereiste toestemming van de gebruiker te verkrijgen in overeenstemming met het nalevings beleid van de EU-cookie. Zie [cookie-beleids opties](#cookiepolicy-options). |
-| disableFirstRun | Booleaans | Schakel de eerste sessie uit. |
+| allowFullscreen | Boolean-waarde | De mogelijkheid om fullscreen te wisselen (standaard waarde is True). |
+| hideExitButton | Boolean-waarde | Hiermee wordt aangegeven of de pijl voor de afsluit knop van de insluitende lezer moet worden verborgen (de standaard waarde is False). Dit moet alleen waar zijn als er een alternatief mechanisme beschikbaar is voor het afsluiten van de insluitende lezer (bijvoorbeeld de pijl van een mobiele werk balk). |
+| cookiePolicy | [CookiePolicy](#cookiepolicy-options) | Instelling voor het cookie gebruik van de insluitende lezer (de standaard waarde is *CookiePolicy. Disable* ). Het is de verantwoordelijkheid van de hosttoepassing om elke vereiste toestemming van de gebruiker te verkrijgen in overeenstemming met het nalevings beleid van de EU-cookie. Zie [cookie-beleids opties](#cookiepolicy-options). |
+| disableFirstRun | Boolean-waarde | Schakel de eerste sessie uit. |
 | readAloudOptions | [ReadAloudOptions](#readaloudoptions) | Opties voor het configureren van hardop voor lezen. |
 | translationOptions | [TranslationOptions](#translationoptions) | Opties voor het configureren van de vertaling. |
 | displayOptions | [DisplayOptions](#displayoptions) | Opties voor het configureren van tekst grootte, letter type, enzovoort. |
@@ -394,7 +394,7 @@ type ReadAloudOptions = {
 | ---- | ---- |------------ |
 | stem | Tekenreeks | Stem, "vrouwelijk" of "mannelijk". Houd er rekening mee dat niet alle talen zowel geslachten ondersteunen. |
 | snelheid | Getal | De afspeel snelheid moet liggen tussen 0,5 en 2,5. |
-| Zorgen | Booleaans | Automatisch hardop lezen starten wanneer de insluitende lezer wordt geladen. |
+| Zorgen | Boolean-waarde | Automatisch hardop lezen starten wanneer de insluitende lezer wordt geladen. |
 
 ##### `voice`
 ```Parameters
@@ -432,8 +432,8 @@ type TranslationOptions = {
 | Naam | Type | Beschrijving |
 | ---- | ---- |------------ |
 | language | Tekenreeks | Hiermee stelt u de taal van de vertaling in, de waarde is in de indeling van de taal code van de IETF BCP 47, bijvoorbeeld fr-FR, es-MX, zh-Hans-CN. Vereist om automatische vertaling van woorden of documenten in te scha kelen. |
-| autoEnableDocumentTranslation | Booleaans | Het hele document automatisch vertalen. |
-| autoEnableWordTranslation | Booleaans | Automatische vertaling van woorden inschakelen. |
+| autoEnableDocumentTranslation | Boolean-waarde | Het hele document automatisch vertalen. |
+| autoEnableWordTranslation | Boolean-waarde | Automatische vertaling van woorden inschakelen. |
 
 ##### `language`
 ```Parameters
@@ -460,7 +460,7 @@ type DisplayOptions = {
 | Naam | Type | Beschrijving |
 | ---- | ---- |------------ |
 | textSize | Getal | Hiermee stelt u de gekozen tekst grootte. |
-| increaseSpacing | Booleaans | Hiermee wordt ingesteld of tekst afstand wordt in-of uitgeschakeld. |
+| increaseSpacing | Boolean-waarde | Hiermee wordt ingesteld of tekst afstand wordt in-of uitgeschakeld. |
 | fontFamily | Tekenreeks | Hiermee stelt u het gekozen letter type (' Calibri ', ' ComicSans ' of ' Sitka '). |
 
 ##### `textSize`
@@ -487,7 +487,7 @@ Values available: "Calibri", "Sitka", "ComicSans"
 enum CookiePolicy { Disable, Enable }
 ```
 
-**De onderstaande instellingen zijn alleen ter informatie bedoeld**. De insluitende lezer slaat de instellingen, of gebruikers voorkeuren, op in cookies. Met deze *cookiePolicy* -optie wordt het gebruik van cookies standaard **uitgeschakeld** om te voldoen aan de nalevings wetgeving van de EU. Als u cookies opnieuw wilt inschakelen en de standaard functionaliteit voor insluitende lezers gebruikers voorkeuren wilt herstellen, moet u ervoor zorgen dat uw website of toepassing de juiste toestemming van de gebruiker krijgt om cookies in te scha kelen. Als u cookies in de insluitende lezer opnieuw wilt inschakelen, moet u de optie *cookiePolicy* expliciet instellen op *cookiePolicy. enable* bij het starten van de insluitende lezer. In de volgende tabel wordt beschreven welke instellingen de insluitende lezer opslaat in de cookie wanneer de optie *cookiePolicy* is ingeschakeld.
+**De onderstaande instellingen zijn alleen ter informatie bedoeld** . De insluitende lezer slaat de instellingen, of gebruikers voorkeuren, op in cookies. Met deze *cookiePolicy* -optie wordt het gebruik van cookies standaard **uitgeschakeld** om te voldoen aan de nalevings wetgeving van de EU. Als u cookies opnieuw wilt inschakelen en de standaard functionaliteit voor insluitende lezers gebruikers voorkeuren wilt herstellen, moet u ervoor zorgen dat uw website of toepassing de juiste toestemming van de gebruiker krijgt om cookies in te scha kelen. Als u cookies in de insluitende lezer opnieuw wilt inschakelen, moet u de optie *cookiePolicy* expliciet instellen op *cookiePolicy. enable* bij het starten van de insluitende lezer. In de volgende tabel wordt beschreven welke instellingen de insluitende lezer opslaat in de cookie wanneer de optie *cookiePolicy* is ingeschakeld.
 
 #### <a name="settings-parameters"></a>Instellingen parameters
 
@@ -496,19 +496,19 @@ enum CookiePolicy { Disable, Enable }
 | textSize | Getal | Hiermee stelt u de gekozen tekst grootte. |
 | fontFamily | Tekenreeks | Hiermee stelt u het gekozen letter type (' Calibri ', ' ComicSans ' of ' Sitka '). |
 | textSpacing | Getal | Hiermee wordt ingesteld of tekst afstand wordt in-of uitgeschakeld. |
-| formattingEnabled | Booleaans | Hiermee wordt ingesteld of HTML-opmaak wordt in-of uitgeschakeld. |
+| formattingEnabled | Boolean-waarde | Hiermee wordt ingesteld of HTML-opmaak wordt in-of uitgeschakeld. |
 | ThemeName | Tekenreeks | Hiermee stelt u het gekozen thema (bijvoorbeeld ' licht ', ' donker '...). |
-| syllabificationEnabled | Booleaans | Hiermee wordt ingesteld of syllabification is in-of uitgeschakeld. |
-| nounHighlightingEnabled | Booleaans | Hiermee stelt u in of het markeren van zelfstandig naam woord wordt in-of uitgeschakeld. |
+| syllabificationEnabled | Boolean-waarde | Hiermee wordt ingesteld of syllabification is in-of uitgeschakeld. |
+| nounHighlightingEnabled | Boolean-waarde | Hiermee stelt u in of het markeren van zelfstandig naam woord wordt in-of uitgeschakeld. |
 | nounHighlightingColor | Tekenreeks | Hiermee stelt u de gekozen kleur voor de uitnaam van de uitwoording. |
-| verbHighlightingEnabled | Booleaans | Hiermee wordt ingesteld of het markeren van woorden wordt in-of uitgeschakeld. |
+| verbHighlightingEnabled | Boolean-waarde | Hiermee wordt ingesteld of het markeren van woorden wordt in-of uitgeschakeld. |
 | verbHighlightingColor | Tekenreeks | Hiermee stelt u de markerings kleur van de gekozen term in. |
-| adjectiveHighlightingEnabled | Booleaans | Hiermee wordt ingesteld of het markeren van de samenvoegings functie is in-of uitgeschakeld. |
+| adjectiveHighlightingEnabled | Boolean-waarde | Hiermee wordt ingesteld of het markeren van de samenvoegings functie is in-of uitgeschakeld. |
 | adjectiveHighlightingColor | Tekenreeks | Hiermee stelt u de gekozen kleur voor de markering van de bijnaam. |
-| adverbHighlightingEnabled | Booleaans | Hiermee wordt ingesteld of het markeren van de belichtingen moet worden in-of uitgeschakeld. |
+| adverbHighlightingEnabled | Boolean-waarde | Hiermee wordt ingesteld of het markeren van de belichtingen moet worden in-of uitgeschakeld. |
 | adverbHighlightingColor | Tekenreeks | Hiermee stelt u de geselecteerde belichtings kleur voor de markering in. |
-| pictureDictionaryEnabled | Booleaans | Hiermee stelt u in of afbeeldings woordenlijst moet worden in-of uitgeschakeld. |
-| posLabelsEnabled | Booleaans | Hiermee wordt ingesteld of het tekst label Super script van elk gemarkeerd deel van de spraak wordt in-of uitgeschakeld.  |
+| pictureDictionaryEnabled | Boolean-waarde | Hiermee stelt u in of afbeeldings woordenlijst moet worden in-of uitgeschakeld. |
+| posLabelsEnabled | Boolean-waarde | Hiermee wordt ingesteld of het tekst label Super script van elk gemarkeerd deel van de spraak wordt in-of uitgeschakeld.  |
 
 <br>
 

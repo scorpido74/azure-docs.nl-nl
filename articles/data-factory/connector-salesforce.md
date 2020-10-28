@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/13/2020
-ms.openlocfilehash: 292d80f7fad796b2ee4f80478c55099148d7f855
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a82606be62007816d545942161774e776c38a4e3
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87086690"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637289"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Gegevens kopiëren van en naar Sales Force met behulp van Azure Data Factory
 
@@ -69,7 +69,7 @@ De volgende eigenschappen worden ondersteund voor de gekoppelde service Sales Fo
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type |De eigenschap type moet worden ingesteld op **Sales Force**. |Ja |
+| type |De eigenschap type moet worden ingesteld op **Sales Force** . |Ja |
 | environmentUrl | Geef de URL van het Sales Force-exemplaar op. <br> -Standaard is `"https://login.salesforce.com"` . <br> -Als u gegevens wilt kopiëren uit de sandbox, geeft u op `"https://test.salesforce.com"` . <br> -Als u gegevens wilt kopiëren uit een aangepast domein, geeft u bijvoorbeeld op `"https://[domain].my.salesforce.com"` . |Nee |
 | gebruikersnaam |Geef een gebruikers naam op voor het gebruikers account. |Ja |
 | wachtwoord |Geef een wacht woord op voor het gebruikers account.<br/><br/>Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). |Ja |
@@ -144,11 +144,11 @@ De volgende eigenschappen worden ondersteund voor de gekoppelde service Sales Fo
 
 Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de Sales Force-gegevensset.
 
-Als u gegevens wilt kopiëren van en naar Sales Force, stelt u de eigenschap type van de gegevensset in op **SalesforceObject**. De volgende eigenschappen worden ondersteund.
+Als u gegevens wilt kopiëren van en naar Sales Force, stelt u de eigenschap type van de gegevensset in op **SalesforceObject** . De volgende eigenschappen worden ondersteund.
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op **SalesforceObject**.  | Ja |
+| type | De eigenschap type moet worden ingesteld op **SalesforceObject** .  | Ja |
 | objectApiName | De naam van het Sales Force-object waaruit gegevens worden opgehaald. | Nee voor bron, ja voor Sink |
 
 > [!IMPORTANT]
@@ -180,7 +180,7 @@ Als u gegevens wilt kopiëren van en naar Sales Force, stelt u de eigenschap typ
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de DataSet moet worden ingesteld op **RelationalTable**. | Ja |
+| type | De eigenschap type van de DataSet moet worden ingesteld op **RelationalTable** . | Ja |
 | tableName | De naam van de tabel in Sales Force. | Nee (als ' query ' in de activiteit bron is opgegeven) |
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
@@ -189,13 +189,13 @@ Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledi
 
 ### <a name="salesforce-as-a-source-type"></a>Sales Force als bron type
 
-Als u gegevens wilt kopiëren uit Sales Force, stelt u het bron type in de Kopieer activiteit in op **SalesforceSource**. De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopieer activiteit.
+Als u gegevens wilt kopiëren uit Sales Force, stelt u het bron type in de Kopieer activiteit in op **SalesforceSource** . De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopieer activiteit.
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **SalesforceSource**. | Ja |
+| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **SalesforceSource** . | Ja |
 | query |Gebruik de aangepaste query om gegevens te lezen. U kunt de [Sales Force object query language-query (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) of SQL-92-query gebruiken. Meer tips vindt u in de sectie [query tips](#query-tips) . Als er geen query is opgegeven, worden alle gegevens van het Sales Force-object opgegeven in ' objectApiName ' in dataset opgehaald. | Nee (als "objectApiName" in de gegevensset is opgegeven) |
-| readBehavior | Hiermee wordt aangegeven of een query moet worden doorzocht op de bestaande records, of dat alle records moeten worden opgevraagd met een query. Als deze niet wordt opgegeven, is het standaard gedrag het voormalige. <br>Toegestane waarden: **query** (standaard), **queryAll**.  | Nee |
+| readBehavior | Hiermee wordt aangegeven of een query moet worden doorzocht op de bestaande records, of dat alle records moeten worden opgevraagd met een query. Als deze niet wordt opgegeven, is het standaard gedrag het voormalige. <br>Toegestane waarden: **query** (standaard), **queryAll** .  | Nee |
 
 > [!IMPORTANT]
 > Het deel ' __c ' van de **API-naam** is vereist voor een aangepast object.
@@ -239,15 +239,15 @@ Als u gegevens wilt kopiëren uit Sales Force, stelt u het bron type in de Kopie
 
 ### <a name="salesforce-as-a-sink-type"></a>Sales Force als Sink-type
 
-Als u gegevens wilt kopiëren naar Sales Force, stelt u het sink-type in de Kopieer activiteit in op **SalesforceSink**. De volgende eigenschappen worden ondersteund in het gedeelte **sink** van de Kopieer activiteit.
+Als u gegevens wilt kopiëren naar Sales Force, stelt u het sink-type in de Kopieer activiteit in op **SalesforceSink** . De volgende eigenschappen worden ondersteund in het gedeelte **sink** van de Kopieer activiteit.
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de Sink voor kopieer activiteiten moet worden ingesteld op **SalesforceSink**. | Ja |
-| writeBehavior | Het schrijf gedrag voor de bewerking.<br/>Toegestane waarden zijn **Insert** en **Upsert**. | Nee (standaard waarde is invoegen) |
+| type | De eigenschap type van de Sink voor kopieer activiteiten moet worden ingesteld op **SalesforceSink** . | Ja |
+| writeBehavior | Het schrijf gedrag voor de bewerking.<br/>Toegestane waarden zijn **Insert** en **Upsert** . | Nee (standaard waarde is invoegen) |
 | externalIdFieldName | De naam van het veld externe ID voor de bewerking upsert. Het opgegeven veld moet worden gedefinieerd als externe ID-veld in het Sales Force-object. De waarde mag geen NULL-waarden bevatten in de bijbehorende invoer gegevens. | Ja voor ' Upsert ' |
 | writeBatchSize | Het aantal rijen van gegevens dat in elke batch naar Sales Force wordt geschreven. | Nee (de standaard waarde is 5.000) |
-| ignoreNullValues | Hiermee wordt aangegeven of NULL-waarden moeten worden genegeerd uit de invoer gegevens tijdens een schrijf bewerking.<br/>Toegestane waarden zijn **waar** en **Onwaar**.<br>- **Waar**: laat de gegevens in het doel object ongewijzigd wanneer u een upsert of update-bewerking doet. Voeg een gedefinieerde standaard waarde in wanneer u een INSERT-bewerking wilt uitvoeren.<br/>- **Onwaar**: werk de gegevens in het doel object bij naar NULL wanneer u een upsert of update-bewerking uitgevoerd. Voeg een NULL-waarde toe wanneer u een INSERT-bewerking uitgevoerd. | Nee (standaard waarde is False) |
+| ignoreNullValues | Hiermee wordt aangegeven of NULL-waarden moeten worden genegeerd uit de invoer gegevens tijdens een schrijf bewerking.<br/>Toegestane waarden zijn **waar** en **Onwaar** .<br>- **Waar** : laat de gegevens in het doel object ongewijzigd wanneer u een upsert of update-bewerking doet. Voeg een gedefinieerde standaard waarde in wanneer u een INSERT-bewerking wilt uitvoeren.<br/>- **Onwaar** : werk de gegevens in het doel object bij naar NULL wanneer u een upsert of update-bewerking uitgevoerd. Voeg een NULL-waarde toe wanneer u een INSERT-bewerking uitgevoerd. | Nee (standaard waarde is False) |
 
 **Voor beeld: Sales Force-sink in een Kopieer activiteit**
 
@@ -302,7 +302,7 @@ Bij het kopiëren van gegevens uit Sales Force kunt u de SOQL-query of SQL-query
 |:--- |:--- |:--- |
 | Kolom selectie | U moet de velden opsommen die moeten worden gekopieerd in de query, bijvoorbeeld `SELECT field1, filed2 FROM objectname` | `SELECT *` wordt ondersteund naast kolom selectie. |
 | Aanhalings tekens | Gearchiveerde/object namen kunnen niet worden opgenomen in een aanhalings teken. | De namen van velden/objecten kunnen worden opgenomen in een aanhalings teken, bijvoorbeeld `SELECT "id" FROM "Account"` |
-| Datum notatie |  Raadpleeg [hier](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm) de details en voor beelden in de volgende sectie. | Raadpleeg [hier](https://docs.microsoft.com/sql/odbc/reference/develop-app/date-time-and-timestamp-literals?view=sql-server-2017) de details en voor beelden in de volgende sectie. |
+| Datum notatie |  Raadpleeg [hier](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm) de details en voor beelden in de volgende sectie. | Raadpleeg [hier](/sql/odbc/reference/develop-app/date-time-and-timestamp-literals?view=sql-server-2017) de details en voor beelden in de volgende sectie. |
 | Booleaanse waarden | Wordt weer gegeven als `False` en `True` , bijvoorbeeld `SELECT … WHERE IsDeleted=True` | Wordt weer gegeven als 0 of 1, bijvoorbeeld `SELECT … WHERE IsDeleted=1` . |
 | Kolom naam wijzigen | Niet ondersteund. | Ondersteund, bijvoorbeeld: `SELECT a AS b FROM …` . |
 | Relatie | Ondersteund, bijvoorbeeld `Account_vod__r.nvs_Country__c` . | Niet ondersteund. |
@@ -311,8 +311,8 @@ Bij het kopiëren van gegevens uit Sales Force kunt u de SOQL-query of SQL-query
 
 Wanneer u de SOQL of SQL-query opgeeft, moet u rekening best Eden aan het verschil in datum-en tijd notatie. Bijvoorbeeld:
 
-* Voor **beeld van SOQL**:`SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
-* **SQL**-voor beeld: `SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}`
+* Voor **beeld van SOQL** :`SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
+* **SQL** -voor beeld: `SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}`
 
 ### <a name="error-of-malformed_query-truncated"></a>Fout van MALFORMED_QUERY: afgekapt
 
@@ -325,11 +325,11 @@ Wanneer u gegevens uit Sales Force kopieert, worden de volgende toewijzingen geb
 | Sales Force-gegevens type | Data Factory tussentijds gegevens type |
 |:--- |:--- |
 | Automatisch nummer |Tekenreeks |
-| Checkbox |Booleaans |
+| Checkbox |Boolean-waarde |
 | Valuta |Decimaal |
 | Date |DateTime |
-| Datum en tijd |DateTime |
-| E-mail |Tekenreeks |
+| Datum/tijd |DateTime |
+| Email |Tekenreeks |
 | Id |Tekenreeks |
 | Opzoek relatie |Tekenreeks |
 | Meervoudige selectie lijst |Tekenreeks |

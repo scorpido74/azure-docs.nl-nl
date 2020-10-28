@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e1735c2d2ed107f7ec65d68a6826267ee83a93f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c68b1f4d76a1899ce473c57f3a6d5de1eab71c6
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84707375"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636864"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Gegevens van ODBC-gegevens archieven verplaatsen met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
@@ -47,9 +47,9 @@ Naast het Data Management Gateway moet u ook het ODBC-stuur programma voor het g
 ## <a name="getting-started"></a>Aan de slag
 U kunt een pijp lijn maken met een Kopieer activiteit die gegevens verplaatst van een ODBC-gegevens archief met behulp van verschillende hulpprogram ma's/Api's.
 
-De eenvoudigste manier om een pijp lijn te maken, is met behulp van de **wizard kopiëren**. Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough over het maken van een pijp lijn met behulp van de wizard gegevens kopiëren.
+De eenvoudigste manier om een pijp lijn te maken, is met behulp van de **wizard kopiëren** . Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough over het maken van een pijp lijn met behulp van de wizard gegevens kopiëren.
 
-U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit.
+U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio** , **Azure PowerShell** , **Azure Resource Manager sjabloon** , **.net API** en **rest API** . Zie [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit.
 
 Ongeacht of u de hulpprogram ma's of Api's gebruikt, voert u de volgende stappen uit om een pijp lijn te maken waarmee gegevens uit een brongegevens archief naar een Sink-gegevens archief worden verplaatst:
 
@@ -94,7 +94,7 @@ In de volgende tabel vindt u een beschrijving van de JSON-elementen die specifie
 }
 ```
 ### <a name="using-basic-authentication-with-encrypted-credentials"></a>Basis verificatie met versleutelde referenties gebruiken
-U kunt de referenties versleutelen met de cmdlet [New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) (1,0 versie van Azure PowerShell) of [New-AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/dn834940.aspx) (0,9 of een eerdere versie van de Azure PowerShell).
+U kunt de referenties versleutelen met de cmdlet [New-AzDataFactoryEncryptValue](/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) (1,0 versie van Azure PowerShell) of [New-AzureDataFactoryEncryptValue](/previous-versions/azure/dn834940(v=azure.100)) (0,9 of een eerdere versie van de Azure PowerShell).
 
 ```json
 {
@@ -293,7 +293,7 @@ Gegevens worden elk uur naar een nieuwe BLOB geschreven (frequentie: uur, interv
 
 **Kopieer activiteit in een pijp lijn met een ODBC-bron (RelationalSource) en BLOB-Sink (BlobSink)**
 
-De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik van deze invoer-en uitvoer gegevens sets en die is gepland om elk uur te worden uitgevoerd. In de JSON-definitie van de pijp lijn is het **bron** type ingesteld op **RelationalSource** en het **sink** -type is ingesteld op **BlobSink**. Met de SQL-query die is opgegeven voor de **query** -eigenschap worden de gegevens in het afgelopen uur geselecteerd om te kopiëren.
+De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik van deze invoer-en uitvoer gegevens sets en die is gepland om elk uur te worden uitgevoerd. In de JSON-definitie van de pijp lijn is het **bron** type ingesteld op **RelationalSource** en het **sink** -type is ingesteld op **BlobSink** . Met de SQL-query die is opgegeven voor de **query** -eigenschap worden de gegevens in het afgelopen uur geselecteerd om te kopiëren.
 
 ```json
 {
@@ -346,7 +346,7 @@ Zoals vermeld in het artikel [activiteiten voor gegevens verplaatsing](data-fact
 1. Converteren van systeem eigen bron typen naar .NET-type
 2. Converteren van .NET-type naar systeem eigen Sink-type
 
-Bij het verplaatsen van gegevens uit ODBC-gegevens archieven worden ODBC-gegevens typen toegewezen aan .NET-typen zoals vermeld in het onderwerp [ODBC-gegevens type toewijzingen](https://msdn.microsoft.com/library/cc668763.aspx) .
+Bij het verplaatsen van gegevens uit ODBC-gegevens archieven worden ODBC-gegevens typen toegewezen aan .NET-typen zoals vermeld in het onderwerp [ODBC-gegevens type toewijzingen](/dotnet/framework/data/adonet/odbc-data-type-mappings) .
 
 ## <a name="map-source-to-sink-columns"></a>Bron toewijzen aan Sink-kolommen
 Zie [DataSet-kolommen toewijzen in azure Data Factory](data-factory-map-columns.md)voor meer informatie over het toewijzen van kolommen in de bron-gegevensset aan kolommen in Sink-gegevensset.
@@ -355,9 +355,9 @@ Zie [DataSet-kolommen toewijzen in azure Data Factory](data-factory-map-columns.
 Houd bij het kopiëren van gegevens uit relationele gegevens archieven de Herhaal baarheid in de hand om onbedoelde resultaten te voor komen. In Azure Data Factory kunt u een segment hand matig opnieuw uitvoeren. U kunt ook beleid voor opnieuw proberen voor een gegevensset configureren zodat een segment opnieuw wordt uitgevoerd wanneer er een fout optreedt. Wanneer een segment op een van beide manieren opnieuw wordt uitgevoerd, moet u ervoor zorgen dat dezelfde gegevens worden gelezen, ongeacht het aantal keren dat een segment wordt gestart. Zie [Herhaal bare Lees bewerking van relationele bronnen](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
 ## <a name="troubleshoot-connectivity-issues"></a>Verbindingsproblemen oplossen
-Gebruik het tabblad **Diagnostische gegevens** van **Data Management Gateway Configuration Manager**om verbindings problemen op te lossen.
+Gebruik het tabblad **Diagnostische gegevens** van **Data Management Gateway Configuration Manager** om verbindings problemen op te lossen.
 
-1. Start **Data Management Gateway Configuration Manager**. U kunt ' C:\Program Files\Microsoft Gegevensbeheer Gateway\1.0\Shared\ConfigManager.exe direct (of) zoeken naar de **Gateway** om een koppeling naar een **micro soft data management gateway** -toepassing te zoeken, zoals wordt weer gegeven in de volgende afbeelding.
+1. Start **Data Management Gateway Configuration Manager** . U kunt ' C:\Program Files\Microsoft Gegevensbeheer Gateway\1.0\Shared\ConfigManager.exe direct (of) zoeken naar de **Gateway** om een koppeling naar een **micro soft data management gateway** -toepassing te zoeken, zoals wordt weer gegeven in de volgende afbeelding.
 
     ![Gateway zoeken](./media/data-factory-odbc-connector/search-gateway.png)
 2. Schakel over naar het tabblad **Diagnostische gegevens** .

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 462d54a9d89d6f03aed5e221fa02609da786c8c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d7802a3fe4fb904aad7fd9257edbf8b10efe127
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84702308"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637425"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Gegevens verplaatsen van en naar een Azure-tabel met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
@@ -36,9 +36,9 @@ U kunt gegevens van elk ondersteund bron gegevens archief kopiëren naar Azure T
 ## <a name="getting-started"></a>Aan de slag
 U kunt een pijp lijn maken met een Kopieer activiteit die gegevens verplaatst van/naar een Azure-Table Storage met behulp van verschillende hulpprogram ma's/Api's.
 
-De eenvoudigste manier om een pijp lijn te maken, is met behulp van de **wizard kopiëren**. Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough over het maken van een pijp lijn met behulp van de wizard gegevens kopiëren.
+De eenvoudigste manier om een pijp lijn te maken, is met behulp van de **wizard kopiëren** . Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough over het maken van een pijp lijn met behulp van de wizard gegevens kopiëren.
 
-U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit. 
+U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio** , **Azure PowerShell** , **Azure Resource Manager sjabloon** , **.net API** en **rest API** . Zie [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit. 
 
 Ongeacht of u de hulpprogram ma's of Api's gebruikt, voert u de volgende stappen uit om een pijp lijn te maken waarmee gegevens uit een brongegevens archief naar een Sink-gegevens archief worden verplaatst: 
 
@@ -104,7 +104,7 @@ Als de Azure-tabel kolom van het type datetime is:
 | azureTableDefaultPartitionKeyValue |Standaard waarde voor de partitie sleutel die door de Sink kan worden gebruikt. |Een teken reeks waarde. |Nee |
 | azureTablePartitionKeyName |Geef de naam op van de kolom waarvan de waarden worden gebruikt als partitie sleutels. Als u niets opgeeft, wordt AzureTableDefaultPartitionKeyValue gebruikt als partitie sleutel. |Een kolom naam. |Nee |
 | azureTableRowKeyName |Geef de naam van de kolom op waarvan de kolom waarden worden gebruikt als rijdefinitie. Als u deze niet opgeeft, gebruikt u een GUID voor elke rij. |Een kolom naam. |Nee |
-| azureTableInsertType |De modus om gegevens in de Azure-tabel in te voegen.<br/><br/>Met deze eigenschap bepaalt u of bestaande rijen in de uitvoer tabel met overeenkomende partitie-en rijlabels hun waarden vervangen of samengevoegd hebben. <br/><br/>Zie entiteit [invoegen of samen voegen](https://msdn.microsoft.com/library/azure/hh452241.aspx) en onderwerpen over [entiteiten invoegen of vervangen](https://msdn.microsoft.com/library/azure/hh452242.aspx) voor meer informatie over hoe deze instellingen (samen voegen en vervangen) werken. <br/><br> Deze instelling is van toepassing op het niveau van de rij, niet op het tabel niveau, en geen van beide opties verwijdert rijen in de uitvoer tabel die niet voor komen in de invoer. |samen voegen (standaard)<br/>vervangen |Nee |
+| azureTableInsertType |De modus om gegevens in de Azure-tabel in te voegen.<br/><br/>Met deze eigenschap bepaalt u of bestaande rijen in de uitvoer tabel met overeenkomende partitie-en rijlabels hun waarden vervangen of samengevoegd hebben. <br/><br/>Zie entiteit [invoegen of samen voegen](/rest/api/storageservices/Insert-Or-Merge-Entity) en onderwerpen over [entiteiten invoegen of vervangen](/rest/api/storageservices/Insert-Or-Replace-Entity) voor meer informatie over hoe deze instellingen (samen voegen en vervangen) werken. <br/><br> Deze instelling is van toepassing op het niveau van de rij, niet op het tabel niveau, en geen van beide opties verwijdert rijen in de uitvoer tabel die niet voor komen in de invoer. |samen voegen (standaard)<br/>vervangen |Nee |
 | writeBatchSize |Hiermee worden gegevens in de Azure-tabel ingevoegd wanneer de writeBatchSize of writeBatchTimeout wordt bereikt. |Geheel getal (aantal rijen) |Nee (standaard: 10000) |
 | writeBatchTimeout |Hiermee worden gegevens in de Azure-tabel ingevoegd wanneer de writeBatchSize of writeBatchTimeout wordt bereikt |tijdsbestek<br/><br/>Voor beeld: "00:20:00" (20 minuten) |Nee (standaard waarde voor standaard time-outwaarde voor Storage-client 90 sec) |
 
@@ -155,7 +155,7 @@ In het voor beeld worden elk uur gegevens gekopieerd die deel uitmaken van de st
   }
 }
 ```
-Azure Data Factory ondersteunt twee typen Azure Storage gekoppelde services: **opslag** en **azurestoragesas zijn**. Voor de eerste geeft u de connection string op die de account sleutel bevat en voor de latere versie, geeft u de Shared Access Signature (SAS)-URI op. Zie de sectie [gekoppelde services](#linked-service-properties) voor meer informatie.  
+Azure Data Factory ondersteunt twee typen Azure Storage gekoppelde services: **opslag** en **azurestoragesas zijn** . Voor de eerste geeft u de connection string op die de account sleutel bevat en voor de latere versie, geeft u de Shared Access Signature (SAS)-URI op. Zie de sectie [gekoppelde services](#linked-service-properties) voor meer informatie.  
 
 **Invoer gegevensset voor Azure-tabel:**
 
@@ -250,7 +250,7 @@ Gegevens worden elk uur naar een nieuwe BLOB geschreven (frequentie: uur, interv
 
 **Kopieer activiteit in een pijp lijn met AzureTableSource en BlobSink:**
 
-De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik van de invoer-en uitvoer gegevens sets en die is gepland om elk uur te worden uitgevoerd. In de JSON-definitie van de pijp lijn is het **bron** type ingesteld op **AzureTableSource** en het **sink** -type is ingesteld op **BlobSink**. De SQL-query die is opgegeven met de eigenschap **AzureTableSourceQuery** selecteert de gegevens van de standaard partitie elk uur om te kopiëren.
+De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik van de invoer-en uitvoer gegevens sets en die is gepland om elk uur te worden uitgevoerd. In de JSON-definitie van de pijp lijn is het **bron** type ingesteld op **AzureTableSource** en het **sink** -type is ingesteld op **BlobSink** . De SQL-query die is opgegeven met de eigenschap **AzureTableSourceQuery** selecteert de gegevens van de standaard partitie elk uur om te kopiëren.
 
 ```JSON
 {
@@ -323,7 +323,7 @@ In het voor beeld worden gegevens van een tijd reeks gekopieerd van een Azure-Bl
 }
 ```
 
-Azure Data Factory ondersteunt twee typen Azure Storage gekoppelde services: **opslag** en **azurestoragesas zijn**. Voor de eerste geeft u de connection string op die de account sleutel bevat en voor de latere versie, geeft u de Shared Access Signature (SAS)-URI op. Zie de sectie [gekoppelde services](#linked-service-properties) voor meer informatie.
+Azure Data Factory ondersteunt twee typen Azure Storage gekoppelde services: **opslag** en **azurestoragesas zijn** . Voor de eerste geeft u de connection string op die de account sleutel bevat en voor de latere versie, geeft u de Shared Access Signature (SAS)-URI op. Zie de sectie [gekoppelde services](#linked-service-properties) voor meer informatie.
 
 **Invoer gegevensset voor Azure Blob:**
 
@@ -417,7 +417,7 @@ In het voor beeld worden gegevens gekopieerd naar een tabel met de naam ' MyTabl
 
 **Kopieer activiteit in een pijp lijn met BlobSource en AzureTableSink:**
 
-De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik van de invoer-en uitvoer gegevens sets en die is gepland om elk uur te worden uitgevoerd. In de JSON-definitie van de pijp lijn is het **bron** type ingesteld op **BlobSource** en het **sink** -type is ingesteld op **AzureTableSink**.
+De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik van de invoer-en uitvoer gegevens sets en die is gepland om elk uur te worden uitgevoerd. In de JSON-definitie van de pijp lijn is het **bron** type ingesteld op **BlobSource** en het **sink** -type is ingesteld op **AzureTableSink** .
 
 ```JSON
 {
@@ -472,7 +472,7 @@ Zoals vermeld in het artikel [activiteiten voor gegevens verplaatsing](data-fact
 1. Converteren van systeem eigen bron typen naar .NET-type
 2. Converteren van .NET-type naar systeem eigen Sink-type
 
-Bij het verplaatsen van gegevens naar & vanuit een Azure-tabel, worden de volgende toewijzingen die zijn [gedefinieerd door azure Table service](https://msdn.microsoft.com/library/azure/dd179338.aspx) vanuit Azure Table OData-typen gebruikt tot .net-type en vice versa.
+Bij het verplaatsen van gegevens naar & vanuit een Azure-tabel, worden de volgende toewijzingen die zijn [gedefinieerd door azure Table service](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model) vanuit Azure Table OData-typen gebruikt tot .net-type en vice versa.
 
 | OData-gegevenstype | .NET-type | Details |
 | --- | --- | --- |

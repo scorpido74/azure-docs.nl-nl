@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/26/2020
-ms.openlocfilehash: 458336f27f01cfb0d127b96cd3df6aa40f8db0b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7669b49735843bf941c52aee5cc3b71d1644c01a
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440555"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635810"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Beveiligings overwegingen voor het verplaatsen van gegevens in Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
@@ -51,8 +51,8 @@ Ga naar het [vertrouwens centrum van micro soft](https://microsoft.com/en-us/tru
 
 In dit artikel worden beveiligings overwegingen in de volgende twee scenario's voor het verplaatsen van gegevens besproken: 
 
-- **Cloud scenario**: in dit scenario zijn zowel uw bron als uw bestemming openbaar toegankelijk via internet. Dit zijn onder andere beheerde services voor Cloud opslag, zoals Azure Storage, Azure Synapse Analytics (voorheen SQL Data Warehouse), Azure SQL Database, Azure Data Lake Store, Amazon S3, Amazon Redshift, SaaS-services zoals Sales Force, en webprotocols zoals FTP en OData. Een volledige lijst met ondersteunde gegevens bronnen vindt u in  [ondersteunde gegevens archieven en-indelingen](copy-activity-overview.md#supported-data-stores-and-formats).
-- **Hybride scenario**: in dit scenario bevindt uw bron of uw bestemming zich achter een firewall of binnen een on-premises bedrijfs netwerk. Of het gegevens archief bevindt zich in een particulier netwerk of virtueel netwerk (meestal de bron) en is niet openbaar toegankelijk. Database servers die worden gehost op virtuele machines vallen ook onder dit scenario.
+- **Cloud scenario** : in dit scenario zijn zowel uw bron als uw bestemming openbaar toegankelijk via internet. Dit zijn onder andere beheerde services voor Cloud opslag, zoals Azure Storage, Azure Synapse Analytics (voorheen SQL Data Warehouse), Azure SQL Database, Azure Data Lake Store, Amazon S3, Amazon Redshift, SaaS-services zoals Sales Force, en webprotocols zoals FTP en OData. Een volledige lijst met ondersteunde gegevens bronnen vindt u in  [ondersteunde gegevens archieven en-indelingen](copy-activity-overview.md#supported-data-stores-and-formats).
+- **Hybride scenario** : in dit scenario bevindt uw bron of uw bestemming zich achter een firewall of binnen een on-premises bedrijfs netwerk. Of het gegevens archief bevindt zich in een particulier netwerk of virtueel netwerk (meestal de bron) en is niet openbaar toegankelijk. Database servers die worden gehost op virtuele machines vallen ook onder dit scenario.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -60,8 +60,8 @@ In dit artikel worden beveiligings overwegingen in de volgende twee scenario's v
 
 ### <a name="securing-data-store-credentials"></a>Referenties voor gegevens opslag beveiligen
 
-- **Versleutelde referenties opslaan in een door Azure Data Factory beheerde opslag**. Data Factory helpt u bij het beveiligen van uw referenties voor gegevens archieven door ze te versleutelen met certificaten die worden beheerd door micro soft. Deze certificaten worden elke twee jaar geroteerd (inclusief het vernieuwen van certificaten en de migratie van referenties). Zie [Azure Storage Security Overview](../security/fundamentals/storage-overview.md)(Engelstalig) voor meer informatie over Azure Storage beveiliging.
-- **Referenties opslaan in azure Key Vault**. U kunt de referentie van het gegevens archief ook opslaan in [Azure Key Vault](https://azure.microsoft.com/services/key-vault/). Data Factory haalt de referentie op tijdens het uitvoeren van een activiteit. Zie [referentie opslaan in azure Key Vault](store-credentials-in-key-vault.md)voor meer informatie.
+- **Versleutelde referenties opslaan in een door Azure Data Factory beheerde opslag** . Data Factory helpt u bij het beveiligen van uw referenties voor gegevens archieven door ze te versleutelen met certificaten die worden beheerd door micro soft. Deze certificaten worden elke twee jaar geroteerd (inclusief het vernieuwen van certificaten en de migratie van referenties). Zie [Azure Storage Security Overview](../storage/blobs/security-recommendations.md)(Engelstalig) voor meer informatie over Azure Storage beveiliging.
+- **Referenties opslaan in azure Key Vault** . U kunt de referentie van het gegevens archief ook opslaan in [Azure Key Vault](https://azure.microsoft.com/services/key-vault/). Data Factory haalt de referentie op tijdens het uitvoeren van een activiteit. Zie [referentie opslaan in azure Key Vault](store-credentials-in-key-vault.md)voor meer informatie.
 
 ### <a name="data-encryption-in-transit"></a>Gegevens versleuteling tijdens overdracht
 Als de gegevens opslag in de Cloud HTTPS of TLS ondersteunt, worden alle gegevens overdrachten tussen services voor gegevens verplaatsing in Data Factory en een gegevens archief in de Cloud via Secure Channel HTTPS of TLS.
@@ -84,13 +84,13 @@ Sommige gegevens archieven ondersteunen de versleuteling van gegevens in rust. H
 Met Transparent Data Encryption (TDE) in azure Synapse Analytics kunt u zich beschermen tegen de dreiging van schadelijke activiteiten door real-time versleuteling en ontsleuteling van uw gegevens op rest uit te voeren. Dit gedrag is transparant voor de client. Zie [een Data Base beveiligen in azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)voor meer informatie.
 
 #### <a name="azure-sql-database"></a>Azure SQL Database
-Azure SQL Database biedt ook ondersteuning voor transparent Data Encryption (TDE), dat bescherming biedt tegen de dreiging van schadelijke activiteiten door real-time versleuteling en ontsleuteling van de gegevens uit te voeren, zonder dat de toepassing hoeft te worden gewijzigd. Dit gedrag is transparant voor de client. Zie [transparent Data Encryption for SQL database en Data Warehouse](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)voor meer informatie.
+Azure SQL Database biedt ook ondersteuning voor transparent Data Encryption (TDE), dat bescherming biedt tegen de dreiging van schadelijke activiteiten door real-time versleuteling en ontsleuteling van de gegevens uit te voeren, zonder dat de toepassing hoeft te worden gewijzigd. Dit gedrag is transparant voor de client. Zie [transparent Data Encryption for SQL database en Data Warehouse](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)voor meer informatie.
 
 #### <a name="azure-data-lake-store"></a>Azure Data Lake Store
 Azure Data Lake Store biedt ook versleuteling voor gegevens die zijn opgeslagen in het account. Als deze functie Data Lake Store is ingeschakeld, worden gegevens automatisch versleuteld voordat ze worden opgehaald en ontsleuteld voordat ze worden opgezocht, waardoor deze transparant worden voor de client die toegang heeft tot de gegevens. Zie [beveiliging in azure data Lake Store](../data-lake-store/data-lake-store-security-overview.md)voor meer informatie. 
 
 #### <a name="azure-blob-storage-and-azure-table-storage"></a>Azure Blob-opslag en Azure-tabel opslag
-Azure Blob-opslag en Azure Table Storage ondersteunen Storage Service Encryption (SSE), waarmee uw gegevens automatisch worden versleuteld voordat ze worden opgeslagen en ontsleuteld voordat ze worden opgehaald. Zie [Azure Storage-service versleuteling voor Data-at-rest](../storage/common/storage-service-encryption.md)voor meer informatie.
+Azure Blob-opslag en Azure Table Storage ondersteunen Storage Service Encryption (SSE), waarmee uw gegevens automatisch worden versleuteld voordat ze worden opgeslagen en ontsleuteld voordat ze worden opgehaald. Zie [Azure Storage Service Encryption voor data-at-rest](../storage/common/storage-service-encryption.md).
 
 #### <a name="amazon-s3"></a>Amazon S3
 Amazon S3 ondersteunt zowel client-als server versleuteling van gegevens in rust. Zie [gegevens beveiligen met versleuteling](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html)voor meer informatie.
@@ -102,7 +102,7 @@ Amazon Redshift ondersteunt cluster versleuteling voor Data-at-rest. Zie [Amazon
 Sales Force ondersteunt afschermings platform versleuteling waarmee alle bestanden, bijlagen en aangepaste velden kunnen worden versleuteld. Zie [Wat is de web server OAuth-verificatie stroom](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm)? voor meer informatie.  
 
 ## <a name="hybrid-scenarios"></a>Hybride scenario's
-Hybride scenario's vereisen een zelf-hostende Integration runtime voor installatie in een on-premises netwerk, binnen een virtueel netwerk (Azure) of binnen een virtuele privécloud (Amazon). De zelf-hostende Integration runtime moet toegang hebben tot de lokale gegevens archieven. Zie [zelf-hostende Integration runtime maken en configureren](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)voor meer informatie over zelf-hostende Integration runtime. 
+Hybride scenario's vereisen een zelf-hostende Integration runtime voor installatie in een on-premises netwerk, binnen een virtueel netwerk (Azure) of binnen een virtuele privécloud (Amazon). De zelf-hostende Integration runtime moet toegang hebben tot de lokale gegevens archieven. Zie [zelf-hostende Integration runtime maken en configureren](./create-self-hosted-integration-runtime.md)voor meer informatie over zelf-hostende Integration runtime. 
 
 ![zelf-hostende Integration runtime-kanalen](media/data-movement-security-considerations/data-management-gateway-channels.png)
 
@@ -111,11 +111,11 @@ Het opdracht kanaal staat communicatie toe tussen services voor gegevens verplaa
 ### <a name="on-premises-data-store-credentials"></a>Referenties voor het on-premises gegevens archief
 De referenties kunnen worden opgeslagen in data factory of worden [verwezen door Data Factory](store-credentials-in-key-vault.md) tijdens de runtime van Azure Key Vault. Als referenties worden opgeslagen in data factory, wordt deze altijd versleuteld opgeslagen op de zelf-hostende Integration runtime. 
  
-- **Referenties lokaal opslaan**. Als u de cmdlet **set-AzDataFactoryV2LinkedService** rechtstreeks gebruikt met de verbindings reeksen en de inline referenties in de JSON, wordt de gekoppelde service versleuteld en opgeslagen in de zelf-hostende Integration runtime.  In dit geval worden de referenties via de Azure-back-end-service, die zeer veilig is, verzonden naar de zelf-hostende integratie computer waar deze uiteindelijk wordt versleuteld en opgeslagen. De zelf-hostende Integration runtime gebruikt Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) om de gevoelige gegevens en referentie gegevens te versleutelen.
+- **Referenties lokaal opslaan** . Als u de cmdlet **set-AzDataFactoryV2LinkedService** rechtstreeks gebruikt met de verbindings reeksen en de inline referenties in de JSON, wordt de gekoppelde service versleuteld en opgeslagen in de zelf-hostende Integration runtime.  In dit geval worden de referenties via de Azure-back-end-service, die zeer veilig is, verzonden naar de zelf-hostende integratie computer waar deze uiteindelijk wordt versleuteld en opgeslagen. De zelf-hostende Integration runtime gebruikt Windows [DPAPI](/previous-versions/ms995355(v=msdn.10)) om de gevoelige gegevens en referentie gegevens te versleutelen.
 
-- **Referenties opslaan in azure Key Vault**. U kunt de referentie van het gegevens archief ook opslaan in [Azure Key Vault](https://azure.microsoft.com/services/key-vault/). Data Factory haalt de referentie op tijdens het uitvoeren van een activiteit. Zie [referentie opslaan in azure Key Vault](store-credentials-in-key-vault.md)voor meer informatie.
+- **Referenties opslaan in azure Key Vault** . U kunt de referentie van het gegevens archief ook opslaan in [Azure Key Vault](https://azure.microsoft.com/services/key-vault/). Data Factory haalt de referentie op tijdens het uitvoeren van een activiteit. Zie [referentie opslaan in azure Key Vault](store-credentials-in-key-vault.md)voor meer informatie.
 
-- **Sla lokaal referenties op zonder de referenties via de Azure-back-end over te brengen naar de zelf-hostende Integration runtime**. Als u lokaal referenties wilt versleutelen en opslaan op de zelf-hostende Integration runtime zonder de referenties via data factory back-end te hoeven door lopen, volgt u de stappen in [referenties versleutelen voor on-premises gegevens archieven in azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md). Alle connectors ondersteunen deze optie. De zelf-hostende Integration runtime gebruikt Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) om de gevoelige gegevens en referentie gegevens te versleutelen. 
+- **Sla lokaal referenties op zonder de referenties via de Azure-back-end over te brengen naar de zelf-hostende Integration runtime** . Als u lokaal referenties wilt versleutelen en opslaan op de zelf-hostende Integration runtime zonder de referenties via data factory back-end te hoeven door lopen, volgt u de stappen in [referenties versleutelen voor on-premises gegevens archieven in azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md). Alle connectors ondersteunen deze optie. De zelf-hostende Integration runtime gebruikt Windows [DPAPI](/previous-versions/ms995355(v=msdn.10)) om de gevoelige gegevens en referentie gegevens te versleutelen. 
 
    Gebruik de cmdlet **New-AzDataFactoryV2LinkedServiceEncryptedCredential** om de gekoppelde service referenties en gevoelige gegevens in de gekoppelde service te versleutelen. U kunt vervolgens de JSON die wordt geretourneerd (met het element **EncryptedCredential** in de Connection String) gebruiken om een gekoppelde service te maken met behulp van de cmdlet **set-AzDataFactoryV2LinkedService** .  
 
@@ -128,7 +128,7 @@ Power Shell maakt standaard gebruik van poort 8060 op de computer met zelf-hoste
  
 
 
-### <a name="encryption-in-transit"></a>Versleuteling 'in transit'
+### <a name="encryption-in-transit"></a>Versleuteling tijdens overdracht
 Alle gegevens overdrachten zijn via Secure Channel HTTPS en TLS via TCP om te voor komen dat man-in-the-middle-aanvallen optreden tijdens de communicatie met Azure-Services.
 
 U kunt ook [IPSec VPN](../vpn-gateway/vpn-gateway-about-vpn-devices.md) of [Azure ExpressRoute](../expressroute/expressroute-introduction.md) gebruiken om het communicatie kanaal te beveiligen tussen uw on-premises netwerk en Azure.
@@ -159,7 +159,7 @@ De volgende installatie kopieën tonen het gebruik van zelf-hostende Integration
 > Mogelijk moet u poorten beheren of lijst met toegestane apps instellen voor domeinen op het niveau van de bedrijfs firewall, zoals vereist is door de respectieve gegevens bronnen. In deze tabel worden alleen Azure SQL Database, Azure Synapse Analytics en Azure Data Lake Store als voor beeld gebruikt.
 
 > [!NOTE] 
-> Zie [dit artikel](https://docs.microsoft.com/azure/data-factory/data-access-strategies#data-access-strategies-through-azure-data-factory)voor meer informatie over strategieën voor gegevens toegang via Azure Data Factory.
+> Zie [dit artikel](./data-access-strategies.md#data-access-strategies-through-azure-data-factory)voor meer informatie over strategieën voor gegevens toegang via Azure Data Factory.
 
 #### <a name="firewall-requirements-for-on-premisesprivate-network"></a>Firewall vereisten voor on-premises/particulier netwerk    
 In een onderneming wordt een bedrijfs firewall uitgevoerd op de centrale router van de organisatie. Windows Firewall wordt uitgevoerd als een daemon op de lokale computer waarop de zelf-hostende Integration runtime is geïnstalleerd. 
@@ -185,9 +185,9 @@ Voor sommige gegevens archieven in de Cloud moet u ook het IP-adres van de compu
 Voor de volgende gegevens archieven in de Cloud moet u het IP-adres van de zelf-hostende Integration runtime-computer toestaan. Sommige van deze gegevens archieven hebben standaard mogelijk geen Allow-lijst. 
 
 - [Azure SQL Database](../azure-sql/database/firewall-configure.md) 
-- [Azure Synapse Analytics](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
+- [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
-- [Azure Cosmos DB](../cosmos-db/firewall-support.md)
+- [Azure Cosmos DB](../cosmos-db/how-to-configure-firewall.md)
 - [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
@@ -204,4 +204,3 @@ De zelf-hostende Integration runtime maakt op HTTP gebaseerde verbindingen voor 
 ## <a name="next-steps"></a>Volgende stappen
 Zie voor meer informatie over het Azure Data Factory de prestaties van de Kopieer activiteit [Kopieer activiteit prestaties en afstemmings handleiding](copy-activity-performance.md).
 
- 

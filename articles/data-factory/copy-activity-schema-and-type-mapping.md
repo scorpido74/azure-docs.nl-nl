@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
-ms.openlocfilehash: b48fb28a56cdc1c836233cd2bd03a1f9e750a0a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96667dcdd43eb801542a4be8fa4f21ff8d1317b7
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85249649"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637255"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>Schema en gegevens type toewijzing in Kopieer activiteit
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -54,7 +54,7 @@ U kunt de toewijzing configureren voor Data Factory gebruikers interface-> Kopie
 | leertraject     | De expressie JSON-pad voor elk veld dat moet worden uitgepakt of toegewezen. Toep assen op hiërarchische bron en Sink, bijvoorbeeld Cosmos DB, MongoDB of REST-connectors.<br>Voor velden onder het hoofd object begint het JSON-pad met root `$` . voor velden in de door eigenschap gekozen matrix wordt het `collectionReference` JSON-pad gestart vanuit het matrix element zonder `$` . | Nee       |
 | type     | Data Factory tussentijds gegevens type van de kolom Source of sink. Over het algemeen hoeft u deze eigenschap niet op te geven of te wijzigen. Meer informatie over [gegevens type toewijzing](#data-type-mapping). | Nee       |
 | culturele  | Cultuur van de kolom Source of sink. Toep assen wanneer type `Datetime` of is `Datetimeoffset` . De standaardwaarde is `en-us`.<br>Over het algemeen hoeft u deze eigenschap niet op te geven of te wijzigen. Meer informatie over [gegevens type toewijzing](#data-type-mapping). | Nee       |
-| indeling   | Indelings teken reeks die moet worden gebruikt wanneer type `Datetime` of is `Datetimeoffset` . Raadpleeg de [aangepaste datum-en tijd notatie teken reeksen](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) voor het opmaken van DateTime. Over het algemeen hoeft u deze eigenschap niet op te geven of te wijzigen. Meer informatie over [gegevens type toewijzing](#data-type-mapping). | Nee       |
+| indeling   | Indelings teken reeks die moet worden gebruikt wanneer type `Datetime` of is `Datetimeoffset` . Raadpleeg de [aangepaste datum-en tijd notatie teken reeksen](/dotnet/standard/base-types/custom-date-and-time-format-strings) voor het opmaken van DateTime. Over het algemeen hoeft u deze eigenschap niet op te geven of te wijzigen. Meer informatie over [gegevens type toewijzing](#data-type-mapping). | Nee       |
 
 De volgende eigenschappen worden ondersteund onder `translator` naast `mappings` :
 
@@ -170,7 +170,7 @@ Als u bijvoorbeeld een bron MongoDB-document hebt met de volgende inhoud:
 }
 ```
 
-En u wilt het kopiëren naar een tekst bestand in de volgende indeling met de header regel door de gegevens in de matrix *(order_pd en order_price)* samen te voegen en cross samen te voegen met de gemeen schappelijke basis informatie *(getal, datum en plaats)*:
+En u wilt het kopiëren naar een tekst bestand in de volgende indeling met de header regel door de gegevens in de matrix *(order_pd en order_price)* samen te voegen en cross samen te voegen met de gemeen schappelijke basis informatie *(getal, datum en plaats)* :
 
 | orderNumber | Order | order_pd | order_price | city    |
 | ----------- | --------- | -------- | ----------- | ------- |
@@ -182,13 +182,13 @@ U kunt een dergelijke toewijzing definiëren op Data Factory gebruikers interfac
 
 1. Klik op het tabblad Kopieer activiteit-> toewijzing op **schema importeren** om zowel de bron-als Sink-schema's te importeren. Als Data Factory een voor beelden van de bovenste objecten bij het importeren van het schema, als een veld niet wordt weer gegeven, kunt u het toevoegen aan de juiste laag in de hiërarchie door een bestaande veld naam in te stellen en ervoor kiezen om een knoop punt, een object of een matrix toe te voegen.
 
-2. Selecteer de matrix waarvan u de gegevens wilt herhalen en ophalen. Deze wordt automatisch ingevuld als een **verzamelings verwijzing**. Opmerking: er wordt slechts één matrix ondersteund voor deze bewerking.
+2. Selecteer de matrix waarvan u de gegevens wilt herhalen en ophalen. Deze wordt automatisch ingevuld als een **verzamelings verwijzing** . Opmerking: er wordt slechts één matrix ondersteund voor deze bewerking.
 
 3. Wijs de vereiste velden toe aan de sink. Data Factory bepaalt automatisch de bijbehorende JSON-paden voor de hiërarchische zijde.
 
 ![Hiërarchisch toewijzen aan tabel vorm met behulp van gebruikers interface](media/copy-activity-schema-and-type-mapping/map-hierarchical-to-tabular-ui.png)
 
-U kunt ook overschakelen naar **Geavanceerde editor**, in welk geval u de velden van JSON-paden rechtstreeks kunt zien en bewerken. Als u ervoor kiest om nieuwe toewijzing toe te voegen aan deze weer gave, geeft u het JSON-pad op.
+U kunt ook overschakelen naar **Geavanceerde editor** , in welk geval u de velden van JSON-paden rechtstreeks kunt zien en bewerken. Als u ervoor kiest om nieuwe toewijzing toe te voegen aan deze weer gave, geeft u het JSON-pad op.
 
 ![Hiërarchisch toewijzen aan tabel vorm met geavanceerde editor](media/copy-activity-schema-and-type-mapping/map-hierarchical-to-tabular-advanced-editor.png)
 
@@ -283,11 +283,11 @@ De Kopieer activiteit ondersteunt momenteel de volgende tussenliggende gegevens 
 
 De volgende gegevens type conversies worden ondersteund tussen de tussenliggende typen van bron naar sink.
 
-| Source\Sink | Booleaans | Byte matrix | Decimaal | Datum/tijd <small>(1)</small> | Vlotter punt <small>(2)</small> | GUID | Geheel getal <small>(3)</small> | Tekenreeks | TimeSpan |
+| Source\Sink | Boolean-waarde | Byte matrix | Decimaal | Datum/tijd <small>(1)</small> | Vlotter punt <small>(2)</small> | GUID | Geheel getal <small>(3)</small> | Tekenreeks | TimeSpan |
 | ----------- | ------- | ---------- | ------- | ---------------------------- | ------------------------------ | ---- | -------------------------- | ------ | -------- |
-| Booleaans     | ✓       |            | ✓       |                              | ✓                              |      | ✓                          | ✓      |          |
+| Boolean-waarde     | ✓       |            | ✓       |                              | ✓                              |      | ✓                          | ✓      |          |
 | Byte matrix  |         | ✓          |         |                              |                                |      |                            | ✓      |          |
-| Datum en tijd   |         |            |         | ✓                            |                                |      |                            | ✓      |          |
+| Datum/tijd   |         |            |         | ✓                            |                                |      |                            | ✓      |          |
 | Decimaal     | ✓       |            | ✓       |                              | ✓                              |      | ✓                          | ✓      |          |
 | Drijvende komma | ✓       |            | ✓       |                              | ✓                              |      | ✓                          | ✓      |          |
 | GUID        |         |            |         |                              |                                | ✓    |                            | ✓      |          |
@@ -314,9 +314,9 @@ De volgende eigenschappen worden ondersteund in de Kopieer activiteit voor gegev
 | *Onder `typeConversionSettings`* |                                                              |          |
 | allowDataTruncation              | Afgekapte gegevens toestaan bij het converteren van bron gegevens naar Sink met een ander type tijdens kopiëren, bijvoorbeeld van decimaal naar geheel getal, van date time offset tot datum tijd. <br>De standaardwaarde is Waar. | Nee       |
 | treatBooleanAsNumber             | Behandel Boole-waarden als getallen, bijvoorbeeld waar als 1.<br>De standaard waarde is False. | Nee       |
-| Date time format                   | Indelings teken reeks bij het converteren van datums zonder tijd zone-offset en teken reeksen, bijvoorbeeld `yyyy-MM-dd HH:mm:ss.fff` .  Raadpleeg [teken reeksen voor aangepaste datum-en tijd notatie](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) voor gedetailleerde informatie. | Nee       |
-| dateTimeOffsetFormat             | Teken reeks voor opmaak bij het converteren van datums met tijd zone-offset en teken reeksen, bijvoorbeeld `yyyy-MM-dd HH:mm:ss.fff zzz` .  Raadpleeg [teken reeksen voor aangepaste datum-en tijd notatie](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) voor gedetailleerde informatie. | Nee       |
-| timeSpanFormat                   | Indelings teken reeks bij het converteren van tijd perioden en teken reeksen, bijvoorbeeld `dd\.hh\:mm` . Raadpleeg [teken reeksen voor aangepaste time span-notaties](https://docs.microsoft.com/dotnet/standard/base-types/custom-timespan-format-strings) voor gedetailleerde informatie. | Nee       |
+| Date time format                   | Indelings teken reeks bij het converteren van datums zonder tijd zone-offset en teken reeksen, bijvoorbeeld `yyyy-MM-dd HH:mm:ss.fff` .  Raadpleeg [teken reeksen voor aangepaste datum-en tijd notatie](/dotnet/standard/base-types/custom-date-and-time-format-strings) voor gedetailleerde informatie. | Nee       |
+| dateTimeOffsetFormat             | Teken reeks voor opmaak bij het converteren van datums met tijd zone-offset en teken reeksen, bijvoorbeeld `yyyy-MM-dd HH:mm:ss.fff zzz` .  Raadpleeg [teken reeksen voor aangepaste datum-en tijd notatie](/dotnet/standard/base-types/custom-date-and-time-format-strings) voor gedetailleerde informatie. | Nee       |
+| timeSpanFormat                   | Indelings teken reeks bij het converteren van tijd perioden en teken reeksen, bijvoorbeeld `dd\.hh\:mm` . Raadpleeg [teken reeksen voor aangepaste time span-notaties](/dotnet/standard/base-types/custom-timespan-format-strings) voor gedetailleerde informatie. | Nee       |
 | culturele                          | Cultuur gegevens die moeten worden gebruikt bij het converteren van typen, bijvoorbeeld `en-us` of `fr-fr` . | Nee       |
 
 **Voorbeeld:**
@@ -356,7 +356,7 @@ De volgende eigenschappen worden ondersteund in de Kopieer activiteit voor gegev
 
 ### <a name="alternative-column-mapping-legacy-model"></a>Alternatieve kolom toewijzing (verouderd model)
 
-U kunt de > van de Kopieer activiteit opgeven `translator`  ->  `columnMappings` om toe te wijzen tussen gegevens in tabel vorm. In dit geval is de sectie ' Structure ' vereist voor de invoer-en uitvoer gegevens sets. Kolom toewijzing ondersteunt het **toewijzen van alle of subset kolommen in de bron gegevensset ' structuur ' op alle kolommen in de Sink-gegevensset ' Structure**'. Hieronder vindt u fout voorwaarden die resulteren in een uitzonde ring:
+U kunt de > van de Kopieer activiteit opgeven `translator`  ->  `columnMappings` om toe te wijzen tussen gegevens in tabel vorm. In dit geval is de sectie ' Structure ' vereist voor de invoer-en uitvoer gegevens sets. Kolom toewijzing ondersteunt het **toewijzen van alle of subset kolommen in de bron gegevensset ' structuur ' op alle kolommen in de Sink-gegevensset ' Structure** '. Hieronder vindt u fout voorwaarden die resulteren in een uitzonde ring:
 
 - Het query resultaat van de brongegevens opslag heeft geen kolom naam die is opgegeven in de sectie structuur van de invoer gegevensset.
 - Het sink-gegevens archief (als met een vooraf gedefinieerd schema) heeft geen kolom naam die is opgegeven in de sectie ' Structure ' van de uitvoer gegevensset.
@@ -455,7 +455,7 @@ U kunt een Kopieer activiteit-> opgeven `translator`  ->  `schemaMapping` om toe
 | Eigenschap            | Beschrijving                                                  | Vereist |
 | :------------------ | :----------------------------------------------------------- | :------- |
 | type                | De eigenschap type van het conversie programma Copy activity moet worden ingesteld op: **TabularTranslator** | Ja      |
-| schemaMapping       | Een verzameling sleutel-waardeparen, die de toewijzings relatie vertegenwoordigt **van de bron aan de Sink-zijde**.<br/>- **Sleutel:** geeft bron aan. Voor **tabel bron**geeft u de naam van de kolom op zoals gedefinieerd in de structuur van de gegevensset. voor een **hiërarchische bron**geeft u de JSON-padexpressie op voor elk veld dat u wilt uitpakken en toewijzen.<br>- **Waarde:** vertegenwoordigt sink. Voor de **tabellaire Sink**geeft u de naam van de kolom op zoals gedefinieerd in de structuur van de gegevensset. voor **hiërarchische Sink**geeft u de JSON-padexpressie op voor elk veld dat u wilt uitpakken en toewijzen. <br>In het geval van hiërarchische gegevens, voor velden onder hoofd object, begint JSON-pad met root $; voor velden binnen de door eigenschap gekozen matrix wordt `collectionReference` het JSON-pad gestart vanuit het matrix element. | Ja      |
+| schemaMapping       | Een verzameling sleutel-waardeparen, die de toewijzings relatie vertegenwoordigt **van de bron aan de Sink-zijde** .<br/>- **Sleutel:** geeft bron aan. Voor **tabel bron** geeft u de naam van de kolom op zoals gedefinieerd in de structuur van de gegevensset. voor een **hiërarchische bron** geeft u de JSON-padexpressie op voor elk veld dat u wilt uitpakken en toewijzen.<br>- **Waarde:** vertegenwoordigt sink. Voor de **tabellaire Sink** geeft u de naam van de kolom op zoals gedefinieerd in de structuur van de gegevensset. voor **hiërarchische Sink** geeft u de JSON-padexpressie op voor elk veld dat u wilt uitpakken en toewijzen. <br>In het geval van hiërarchische gegevens, voor velden onder hoofd object, begint JSON-pad met root $; voor velden binnen de door eigenschap gekozen matrix wordt `collectionReference` het JSON-pad gestart vanuit het matrix element. | Ja      |
 | collectionReference | Als u gegevens wilt sequentieel en wilt ophalen uit de objecten **in een matrix veld** met hetzelfde patroon en converteren naar per rij per object, geeft u het JSON-pad van die matrix op om meerdere aanvragen uit te voeren. Deze eigenschap wordt alleen ondersteund wanneer hiërarchische gegevens bron is. | Nee       |
 
 **Voor beeld: kopiëren van MongoDB naar Oracle:**
@@ -487,7 +487,7 @@ Als u bijvoorbeeld een MongoDB-document hebt met de volgende inhoud:
 }
 ```
 
-en u wilt het kopiëren naar een Azure SQL-tabel in de volgende indeling door de gegevens in de matrix *(order_pd en order_price)* samen te voegen en cross samen te voegen met de gemeen schappelijke basis informatie *(getal, datum en plaats)*:
+en u wilt het kopiëren naar een Azure SQL-tabel in de volgende indeling door de gegevens in de matrix *(order_pd en order_price)* samen te voegen en cross samen te voegen met de gemeen schappelijke basis informatie *(getal, datum en plaats)* :
 
 | orderNumber | Order | order_pd | order_price | city    |
 | ----------- | --------- | -------- | ----------- | ------- |
@@ -526,4 +526,4 @@ Configureer de schema toewijzings regel als de volgende JSON-voor beeld van een 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de andere artikelen over Kopieer activiteiten:
 
-- [Overzicht van kopieeractiviteiten](copy-activity-overview.md)
+- [Overzicht van de Kopieer activiteit](copy-activity-overview.md)

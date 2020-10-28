@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: article
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: 1919f89d2e39981effe14c1203446f8f9d930f41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2024fc6c4640f79e5001472f29803c6cef1c07a1
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79462486"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636609"
 ---
 # <a name="powershell-script---incrementally-load-data-by-using-azure-data-factory"></a>Power shell-script: gegevens stapsgewijs laden met behulp van Azure Data Factory
 
@@ -65,6 +65,6 @@ In dit script worden de volgende opdrachten gebruikt:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Documentatie over Azure PowerShell](https://docs.microsoft.com/powershell/) voor meer informatie over Azure PowerShell.
+Zie [Documentatie over Azure PowerShell](/powershell/) voor meer informatie over Azure PowerShell.
 
 Aanvullende Azure Data Factory Power shell-script voorbeelden vindt u in de [Azure Data Factory Power shell-scripts](../samples-powershell.md).

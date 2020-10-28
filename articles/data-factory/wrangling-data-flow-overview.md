@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 5d0393ab5f2582efa2a4b727543bc799cdb1143e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe3fd25753344c5ccfd21310ae01fca9962e3971
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87082848"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636065"
 ---
 # <a name="what-are-wrangling-data-flows"></a>Wat zijn wrangling-gegevens stromen?
 
@@ -21,7 +21,7 @@ ms.locfileid: "87082848"
 
 Organisaties moeten gegevens voorbereiding en wrangling voor nauw keurige analyse van complexe gegevens die steeds elke dag blijven groeien. Het voorbereiden van gegevens is vereist zodat organisaties de gegevens in verschillende bedrijfs processen kunnen gebruiken en de tijd tot waarde kan verlagen.
 
-Met Wrangling-gegevens stromen in Azure Data Factory kunt u de gegevens voorbereiding voor code gratis uitvoeren op de Cloud schaal. Wrangling-gegevens stromen kunnen worden geïntegreerd met [Power query online](https://docs.microsoft.com/power-query/) en er zijn Power query M-functies beschikbaar voor Data Factory gebruikers.
+Met Wrangling-gegevens stromen in Azure Data Factory kunt u de gegevens voorbereiding voor code gratis uitvoeren op de Cloud schaal. Wrangling-gegevens stromen kunnen worden geïntegreerd met [Power query online](/power-query/) en er zijn Power query M-functies beschikbaar voor Data Factory gebruikers.
 
 Wrangling-gegevens stroom vertaalt M die is gegenereerd door Power Query online Mashup-Editor in Spark-code voor het uitvoeren van Cloud schalen.
 

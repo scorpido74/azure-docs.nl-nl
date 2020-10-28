@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4ce40d1a46a6448e678a8a86812d08e9013310d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28169e43d0e6949a16cc56c7e7d5d91d6db1ef57
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086905"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636915"
 ---
 # <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>Gegevens eenvoudig kopiëren of verplaatsen met Azure Data Factory wizard kopiëren
 > [!NOTE]
@@ -62,7 +62,7 @@ In het voor beeld gebruikt de SQL-query de `Text.Format` functie en de `WindowSt
 ![Expressies valideren](./media/data-factory-copy-wizard/validate-expressions.png)
 
 ### <a name="filtering-of-data-in-an-azure-blob-folder"></a>Filteren van gegevens in een Azure Blob-map
-U kunt variabelen in het mappad gebruiken om gegevens te kopiëren uit een map die wordt bepaald tijdens runtime op basis van [systeem variabelen](data-factory-functions-variables.md#data-factory-system-variables). De ondersteunde variabelen zijn: **{Year}**, **{Month}**, **{Day}**, **{Hour}**, **{Minute}** en **{Custom}**. Voor beeld: inputfolder/{year}/{month}/{Day}.
+U kunt variabelen in het mappad gebruiken om gegevens te kopiëren uit een map die wordt bepaald tijdens runtime op basis van [systeem variabelen](data-factory-functions-variables.md#data-factory-system-variables). De ondersteunde variabelen zijn: **{Year}** , **{Month}** , **{Day}** , **{Hour}** , **{Minute}** en **{Custom}** . Voor beeld: inputfolder/{year}/{month}/{Day}.
 
 Stel dat u een invoer mappen hebt met de volgende indeling:
 
@@ -73,11 +73,11 @@ Stel dat u een invoer mappen hebt met de volgende indeling:
 ...
 ```
 
-Klik op de knop **Bladeren** voor **bestand of map**, blader naar een van deze mappen (bijvoorbeeld 2016->03->01->02) en klik op **kiezen**. U ziet `2016/03/01/02` in het tekstvak. Vervang nu **2016** door **{Year}**, **03** met **{Month}**, **01** met **{Day}** en **02** met **{Hour}** en druk op tab. Er moeten vervolg keuzelijsten worden weer gegeven om de indeling voor deze vier variabelen te selecteren:
+Klik op de knop **Bladeren** voor **bestand of map** , blader naar een van deze mappen (bijvoorbeeld 2016->03->01->02) en klik op **kiezen** . U ziet `2016/03/01/02` in het tekstvak. Vervang nu **2016** door **{Year}** , **03** met **{Month}** , **01** met **{Day}** en **02** met **{Hour}** en druk op tab. Er moeten vervolg keuzelijsten worden weer gegeven om de indeling voor deze vier variabelen te selecteren:
 
 ![Systeem variabelen gebruiken](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 
-Zoals in de volgende scherm afbeelding wordt weer gegeven, kunt u ook een **aangepaste** variabele en [ondersteunde opmaak teken reeksen](https://msdn.microsoft.com/library/8kb3ddd4.aspx)gebruiken. Als u een map met die structuur wilt selecteren, gebruikt u eerst de knop **Bladeren** . Vervang vervolgens een waarde door **{Custom}** en druk op TAB om het tekstvak weer te geven waarin u de notatie teken reeks kunt invoeren.     
+Zoals in de volgende scherm afbeelding wordt weer gegeven, kunt u ook een **aangepaste** variabele en [ondersteunde opmaak teken reeksen](/dotnet/standard/base-types/custom-date-and-time-format-strings)gebruiken. Als u een map met die structuur wilt selecteren, gebruikt u eerst de knop **Bladeren** . Vervang vervolgens een waarde door **{Custom}** en druk op TAB om het tekstvak weer te geven waarin u de notatie teken reeks kunt invoeren.     
 
 ![Aangepaste variabele gebruiken](./media/data-factory-copy-wizard/blob-custom-variables-in-folder-path.png)
 
@@ -95,4 +95,3 @@ Een eenmalige Kopieer bewerking maakt het verplaatsen van gegevens van een bron 
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md)voor een snelle beschrijving van het gebruik van de wizard voor het kopiëren van Data Factory om een pijp lijn te maken met de Kopieer activiteit.
-

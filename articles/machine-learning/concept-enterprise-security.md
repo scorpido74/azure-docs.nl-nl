@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: fef41a177f653dc67835897a48d734400a37a0d0
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 60a18591687eb7953063e16397719191eece7844
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496001"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637085"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Enter prise Security voor Azure Machine Learning
 
@@ -111,7 +111,7 @@ U kunt ook een persoonlijke Azure-koppeling inschakelen voor uw werk ruimte. Met
 ## <a name="data-encryption"></a>Gegevensversleuteling
 
 > [!IMPORTANT]
-> Voor productie kwaliteit versleuteling tijdens de __training__raadt micro soft aan om Azure machine learning Compute-cluster te gebruiken. Voor de versleuteling van de productie __kwaliteit tijdens de__degradatie raadt micro soft de Azure Kubernetes-service te gebruiken.
+> Voor productie kwaliteit versleuteling tijdens de __training__ raadt micro soft aan om Azure machine learning Compute-cluster te gebruiken. Voor de versleuteling van de productie __kwaliteit tijdens de__ degradatie raadt micro soft de Azure Kubernetes-service te gebruiken.
 >
 > Azure Machine Learning Compute-instantie is een ontwikkel-en test omgeving. Wanneer u deze gebruikt, raden we u aan om uw bestanden, zoals notebooks en scripts, op te slaan in een bestands share. Uw gegevens moeten worden opgeslagen in een gegevens opslag.
 
@@ -158,12 +158,7 @@ Voer de volgende acties uit om het inrichten van een Cosmos DB-exemplaar in uw a
         > [!NOTE]
         > Dit sleutel kluis exemplaar kan afwijken van de sleutel kluis die door Azure Machine Learning wordt gemaakt wanneer u de werk ruimte inricht. Als u hetzelfde sleutel kluis exemplaar voor de werk ruimte wilt gebruiken, moet u dezelfde sleutel kluis door geven tijdens het inrichten van de werk ruimte met behulp van de [para meter key_vault](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-). 
 
-Dit Cosmos DB exemplaar wordt gemaakt in een door micro soft beheerde resource groep in uw abonnement, samen met alle benodigde resources. De beheerde resource groep krijgt de naam in de indeling `<AML Workspace Resource Group Name><GUID>` . Als uw Azure Machine Learning-werk ruimte een persoonlijk eind punt gebruikt, wordt er ook een virtueel netwerk voor het Cosmos DB exemplaar gemaakt. Dit VNet wordt gebruikt voor het beveiligen van de communicatie tussen Cosmos DB en Azure Machine Learning.
-
-> [!IMPORTANT]
-> * Verwijder niet de resource groep die dit Cosmos DB exemplaar bevat of een van de resources die automatisch in deze groep zijn gemaakt. Als u de resource groep, Cosmos DB-exemplaar, etc. wilt verwijderen, moet u de Azure Machine Learning-werk ruimte die deze gebruikt, verwijderen. De resource groep, Cosmos DB instantie en andere automatisch gemaakte resources worden verwijderd wanneer de bijbehorende werk ruimte wordt verwijderd.
-> * De standaard [__aanvraag eenheden__](../cosmos-db/request-units.md) voor dit Cosmos DB account is ingesteld op __8000__. Het wijzigen van deze waarde wordt niet ondersteund.
-> * U kunt uw eigen VNet niet opgeven voor gebruik met de Cosmos DB instantie die is gemaakt. U kunt het virtuele netwerk ook niet wijzigen. U kunt bijvoorbeeld het IP-adres bereik dat wordt gebruikt, niet wijzigen.
+[!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
 
 Als u de sleutel wilt __draaien of intrekken__ , kunt u dit op elk gewenst moment doen. Bij het draaien van een sleutel begint Cosmos DB met het gebruik van de nieuwe sleutel (meest recente versie) om gegevens in rust te versleutelen. Wanneer u een sleutel intrekt (uitschakelt), wordt Cosmos DB het uitvoeren van mislukte aanvragen uitgevoerd. Het duurt doorgaans een uur voordat de draaiing of intrekken effectief is.
 
@@ -261,7 +256,7 @@ U kunt ook [Diagnostische gegevens die vanuit uw geïmplementeerde eind punt zij
 
 ### <a name="metrics"></a>Metrische gegevens
 
-U kunt Azure Monitor metrische gegevens gebruiken om metrische gegevens voor uw Azure Machine Learning-werk ruimte weer te geven en te controleren. Selecteer in de [Azure Portal](https://portal.azure.com)uw werk ruimte en selecteer vervolgens **metrische gegevens**:
+U kunt Azure Monitor metrische gegevens gebruiken om metrische gegevens voor uw Azure Machine Learning-werk ruimte weer te geven en te controleren. Selecteer in de [Azure Portal](https://portal.azure.com)uw werk ruimte en selecteer vervolgens **metrische gegevens** :
 
 [![Scherm opname van voor beelden van metrische gegevens voor een werk ruimte](media/concept-enterprise-security/workspace-metrics.png)](media/concept-enterprise-security/workspace-metrics-expanded.png#lightbox)
 
@@ -371,8 +366,8 @@ Dit zijn de details:
 
 [Azure Policy](/azure/governance/policy) is een beheer programma waarmee u ervoor kunt zorgen dat Azure-resources voldoen aan uw beleid. Met Azure Machine Learning kunt u de volgende beleids regels toewijzen:
 
-* Door de **klant beheerde sleutel**: controleren of afdwingen of werk ruimten een door de klant beheerde sleutel moeten gebruiken.
-* **Privé-koppeling**: controleren of werk ruimten een persoonlijk eind punt gebruiken om te communiceren met een virtueel netwerk.
+* Door de **klant beheerde sleutel** : controleren of afdwingen of werk ruimten een door de klant beheerde sleutel moeten gebruiken.
+* **Privé-koppeling** : controleren of werk ruimten een persoonlijk eind punt gebruiken om te communiceren met een virtueel netwerk.
 
 Raadpleeg de [Azure Policy documentatie](/azure/governance/policy/overview)voor meer informatie over Azure Policy.
 

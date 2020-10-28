@@ -8,12 +8,12 @@ ms.technology: integration-services
 author: swinarko
 ms.author: sawinark
 ms.reviewer: maghan
-ms.openlocfilehash: 36660854b9a7ae13431545392ef551694b48e97c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a2b95e0de642dc17865643ec569e7220fe5581b2
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82628909"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637493"
 ---
 # <a name="open-and-save-files-on-premises-and-in-azure-with-ssis-packages-deployed-in-azure"></a>Bestanden openen en opslaan op locatie en in azure met SSIS-pakketten die zijn geïmplementeerd in azure
 
@@ -33,7 +33,7 @@ Ga als volgt te werk om **on-premises bestands shares** te blijven gebruiken wan
 
 2. De on-premises bestands shares koppelen aan een virtueel Azure-netwerk.
 
-3. Voeg uw Azure-SSIS IR toe aan hetzelfde virtuele netwerk. Zie [een Azure-SSIS-integratie-runtime toevoegen aan een virtueel netwerk](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)voor meer informatie.
+3. Voeg uw Azure-SSIS IR toe aan hetzelfde virtuele netwerk. Zie [een Azure-SSIS-integratie-runtime toevoegen aan een virtueel netwerk](./join-azure-ssis-integration-runtime-virtual-network.md)voor meer informatie.
 
 4. Verbind uw Azure-SSIS IR met de on-premises bestands shares in hetzelfde virtuele netwerk door toegangs referenties in te stellen die gebruikmaken van Windows-verificatie. Zie [verbinding maken met gegevens en bestands shares met Windows-verificatie](ssis-azure-connect-with-windows-auth.md)voor meer informatie.
 
@@ -51,6 +51,6 @@ Ga als volgt te werk om **Azure files** te gebruiken wanneer u pakketten die geb
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Implementeer uw pakketten. Zie [een SSIS-project implementeren in azure met SSMS](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-deploy-ssms)voor meer informatie.
-- Voer uw pakketten uit. Zie [SSIS-pakketten uitvoeren in azure met SSMS](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-run-ssms)voor meer informatie.
-- Plan uw pakketten. Zie [SSIS-pakketten plannen in azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15)voor meer informatie.
+- Implementeer uw pakketten. Zie [een SSIS-project implementeren in azure met SSMS](/sql/integration-services/ssis-quickstart-deploy-ssms)voor meer informatie.
+- Voer uw pakketten uit. Zie [SSIS-pakketten uitvoeren in azure met SSMS](/sql/integration-services/ssis-quickstart-run-ssms)voor meer informatie.
+- Plan uw pakketten. Zie [SSIS-pakketten plannen in azure](/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15)voor meer informatie.

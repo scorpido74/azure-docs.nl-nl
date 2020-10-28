@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1d524e34623d5fde3d6f22afbdd63ce95699fe6f
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 52ecc1f7de2afb83d3f37ddae6b1b618a8a8e34d
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494479"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636014"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>De Azure Digital Twins-API's en -SDK's gebruiken
 
@@ -26,16 +26,16 @@ Dit artikel geeft een overzicht van de beschik bare Api's en de methoden om erme
 
 De besturings vlak-Api's zijn [arm](../azure-resource-manager/management/overview.md) -api's die worden gebruikt voor het beheren van uw Azure Digital apparaatdubbels-exemplaar als geheel, zodat deze bewerkingen kunnen uitvoeren zoals het maken of verwijderen van uw hele exemplaar. U kunt deze ook gebruiken om eind punten te maken en te verwijderen.
 
-De meest recente versie van de Control vlak-API voor open bare preview is _**2020-10-31**_.
+De meest recente versie van de Control vlak-API voor open bare preview is _**2020-10-31**_ .
 
 De Control-Api's gebruiken:
 * U kunt de Api's rechtstreeks aanroepen door te verwijzen naar de laatste Swagger in de map van het [besturings vlak Swagger](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins). Deze opslag plaats bevat ook een map met voor beelden waarin het gebruik wordt weer gegeven.
 * U kunt momenteel toegang krijgen tot Sdk's voor besturings-Api's in...
   - [.Net (C#)](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([bron](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins)) ([verwijzing [automatisch gegenereerd]](/dotnet/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-dotnet-preview))
-  - [Java](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([bron](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins)) ([verwijzing [automatisch gegenereerd]](/java/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-java-preview))
+  - [Java](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([bron](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31)) ([verwijzing [automatisch gegenereerd]](/java/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-java-preview))
   - [Java script](https://www.npmjs.com/package/@azure/arm-digitaltwins) ([bron](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins))
-  - [Python](https://pypi.org/project/azure-mgmt-digitaltwins/) ([bron](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-mgmt-digitaltwins))
-  - [Go](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins)
+  - [Python](https://pypi.org/project/azure-mgmt-digitaltwins/) ([bron](https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins))
+  - [Go](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins) ([bron](https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins))
 
 U kunt ook beheer vlak-Api's uitoefenen door interactie met Azure Digital Apparaatdubbels via de [Azure Portal](https://portal.azure.com) en [cli](how-to-use-cli.md).
 
@@ -47,7 +47,7 @@ De data vlak-Api's zijn de Azure Digital Apparaatdubbels-Api's die worden gebrui
 * **Query** : de query categorie stelt ontwikkel aars in staat om [sets van digitale apparaatdubbels te vinden in de dubbele grafiek over de](how-to-query-graph.md) relaties.
 * **Gebeurtenis routes** : de categorie gebeurtenis routes bevat api's voor het door [sturen van gegevens](concepts-route-events.md), via het systeem en naar downstream-Services.
 
-De meest recente versie van de data vlak-API voor open bare preview is _**2020-10-31**_.
+De meest recente versie van de data vlak-API voor open bare preview is _**2020-10-31**_ .
 
 De data-vlak-Api's gebruiken:
 * U kunt de Api's rechtstreeks aanroepen, door...
@@ -80,7 +80,7 @@ De Azure Digital Apparaatdubbels .NET (C#) SDK maakt deel uit van de Azure SDK v
 
 Als u de SDK wilt gebruiken, voegt u het NuGet-pakket **Azure. DigitalTwins. core** toe aan uw project. U hebt ook de nieuwste versie van het **Azure. Identity** -pakket nodig.
 
-* In Visual Studio kunt u pakketten toevoegen met NuGet Package Manager (toegankelijk via *Hulpprogram ma's > NuGet package manager > NuGet-pakketten beheren voor oplossing*). 
+* In Visual Studio kunt u pakketten toevoegen met NuGet Package Manager (toegankelijk via *Hulpprogram ma's > NuGet package manager > NuGet-pakketten beheren voor oplossing* ). 
 * Met het opdracht regel programma .NET kunt u het volgende uitvoeren:
 
     ```cmd/sh
@@ -275,7 +275,7 @@ client.UpdateDigitalTwin("myTwin", uou.Serialize());
 ## <a name="general-apisdk-usage-notes"></a>Algemene opmerkingen over API/SDK-gebruik
 
 > [!NOTE]
-> Azure Digital Apparaatdubbels ondersteunt momenteel geen **CORS (cross-Origin Resource Sharing)**. Zie de sectie [*Cross-Origin Resource Sharing (CORS)*](concepts-security.md#cross-origin-resource-sharing-cors) van *concepten: beveiliging voor Azure Digital apparaatdubbels-oplossingen*voor meer informatie over de impact-en oplossings strategieën.
+> Azure Digital Apparaatdubbels ondersteunt momenteel geen **CORS (cross-Origin Resource Sharing)** . Zie de sectie [*Cross-Origin Resource Sharing (CORS)*](concepts-security.md#cross-origin-resource-sharing-cors) van *concepten: beveiliging voor Azure Digital apparaatdubbels-oplossingen* voor meer informatie over de impact-en oplossings strategieën.
 
 De volgende lijst bevat aanvullende details en algemene richt lijnen voor het gebruik van de Api's en Sdk's.
 
