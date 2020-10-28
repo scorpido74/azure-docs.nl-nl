@@ -10,14 +10,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/09/2020
+ms.date: 10/21/2020
 ms.author: duau
-ms.openlocfilehash: bac1d1e41cab4aa3be10fb226df57277db20c78e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c6d33a36c4a0b71932e8c19c8f6dd105c33817c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90030273"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368329"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Zelfstudie: HTTPS configureren in een aangepast Front Door-domein
 
@@ -59,7 +59,7 @@ Wanneer u een certificaat gebruikt dat wordt beheerd door Azure Front Door, kan 
 
 Volg deze stappen om HTTPS in te schakelen in een aangepast domein:
 
-1. Blader in de [Azure-portal](https://portal.azure.com) naar uw profiel van **Front Door**.
+1. Blader in de [Azure-portal](https://portal.azure.com) naar uw profiel van **Front Door** .
 
 2. Selecteer in de lijst met front-endhosts de host met het aangepaste domein waarvoor u HTTPS wilt inschakelen.
 
@@ -84,7 +84,7 @@ U kunt uw eigen certificaat gebruiken voor het inschakelen van de HTTPS-functie.
 > [!WARNING]
 > Azure Front Door ondersteunt momenteel alleen Key Vault-accounts in hetzelfde abonnement als de Front Door-configuratie. Als u een sleutelkluis kiest van een ander abonnement dan de Front Door, treedt er een fout op.
 
-2. Azure Key Vault-certificaten: als u al in het bezit bent van een certificaat, kunt u dit rechtstreeks uploaden naar uw Azure Key Vault-account of u kunt via Azure Key Vault direct een certificaat maken bij een van de partnercertificeringsinstanties waarmee Azure Key Vault is geïntegreerd. Upload uw certificaat als een **certificaat**-object in plaats van een **geheim**.
+2. Azure Key Vault-certificaten: als u al in het bezit bent van een certificaat, kunt u dit rechtstreeks uploaden naar uw Azure Key Vault-account of u kunt via Azure Key Vault direct een certificaat maken bij een van de partnercertificeringsinstanties waarmee Azure Key Vault is geïntegreerd. Upload uw certificaat als een **certificaat** -object in plaats van een **geheim** .
 
 > [!NOTE]
 > Voor uw eigen TLS/SSL-certificaat biedt Front Door geen ondersteuning voor certificaten met EC-cryptografie-algoritmen.
@@ -106,15 +106,15 @@ Registreer de service-principal voor Azure Front Door als een app in uw Azure Ac
  
 Geef Azure Front Door toegang tot de certificaten in uw Azure Key Vault-account.
 
-1. Selecteer in uw Key Vault-account onder instellingen **Toegangsbeleid**, selecteer daarna **Nieuwe toevoegen** om een nieuw beleid te maken.
+1. Selecteer in uw Key Vault-account onder instellingen **Toegangsbeleid** , selecteer daarna **Nieuwe toevoegen** om een nieuw beleid te maken.
 
-2. Zoek bij **Principal selecteren** naar **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037** en kies **Microsoft.Azure.Frontdoor**. Klik op **Selecteren**.
+2. Zoek bij **Principal selecteren** naar **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037** en kies **Microsoft.Azure.Frontdoor** . Klik op **Selecteren** .
 
-3. Selecteer in **Geheime machtigingen**de optie **Ophalen** om Front Door het certificaat te laten ophalen.
+3. Selecteer in **Geheime machtigingen** de optie **Ophalen** om Front Door het certificaat te laten ophalen.
 
-4. Selecteer in **Certificaatmachtigingen**de optie **Ophalen** om Front Door het certificaat te laten ophalen.
+4. Selecteer in **Certificaatmachtigingen** de optie **Ophalen** om Front Door het certificaat te laten ophalen.
 
-5. Selecteer **OK**. 
+5. Selecteer **OK** . 
 
     Azure Front Door heeft nu toegang tot deze sleutelkluis en de certificaten die in deze sleutelkluis zijn opgeslagen.
  
@@ -126,7 +126,7 @@ Geef Azure Front Door toegang tot de certificaten in uw Azure Key Vault-account.
 
     De pagina **Aangepast domein** wordt weergegeven.
 
-3. Kies onder Certificaatbeheertype **Mijn eigen certificaat gebruiken**. 
+3. Kies onder Certificaatbeheertype **Mijn eigen certificaat gebruiken** . 
 
 4. Azure Front Door vereist dat het abonnement van het Key Vault-account hetzelfde is als dat van uw Front Door. Selecteer een sleutelkluis, certificaat (geheim) en certificaatversie.
 
@@ -134,6 +134,11 @@ Geef Azure Front Door toegang tot de certificaten in uw Azure Key Vault-account.
     - De sleutelkluis-accounts voor uw abonnement-ID. 
     - De certificaten (geheimen) onder de geselecteerde sleutelkluis. 
     - De beschikbare certificaatversies. 
+
+> [!NOTE]
+> Als u de certificaatversie leeg laat, zou dit ertoe leiden dat:
+> - De meest recente versie van het certificaat wordt geselecteerd.
+> - Certificaten automatisch worden geroteerd naar de nieuwste versie wanneer er een nieuwere versie van het certificaat beschikbaar is in uw Key Vault.
  
 5. Wanneer u uw eigen certificaat gebruikt, is domeinvalidatie niet nodig. Ga verder met [Wachten op doorgifte](#wait-for-propagation).
 
@@ -154,7 +159,7 @@ Uw CNAME-record moet de volgende indeling hebben, waarbij *Naam* de naam van het
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azurefd.net |
 
-Zie [Create the CNAME DNS record](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain) (De CNAME DNS-record maken) voor meer informatie over CNAME-records.
+Zie [Create the CNAME DNS record](../cdn/cdn-map-content-to-custom-domain.md) (De CNAME DNS-record maken) voor meer informatie over CNAME-records.
 
 Als de CNAME-record de juiste indeling heeft, wordt de naam van het aangepaste domein automatisch geverifieerd met DigiCert en wordt er een toegewezen certificaat voor uw domeinnaam gemaakt. U ontvangt via DigiCert geen verificatie-e-mail en u hoeft uw aanvraag niet goed te keuren. Het certificaat is één jaar geldig en wordt, vóórdat het verloopt, automatisch vernieuwd. Ga verder met [Wachten op doorgifte](#wait-for-propagation). 
 
@@ -247,11 +252,11 @@ In de voorgaande stappen hebt u het HTTPS-protocol in uw aangepaste domein inges
 
 ### <a name="disable-the-https-feature"></a>De HTTPS-functie uitschakelen 
 
-1. Blader in [Azure Portal](https://portal.azure.com) naar de configuratie van **Azure Front Door**.
+1. Blader in [Azure Portal](https://portal.azure.com) naar de configuratie van **Azure Front Door** .
 
 2. Klik in de lijst met front-endhosts op het aangepaste domein waarvoor u HTTPS wilt uitschakelen.
 
-3. Klik op **Uitgeschakeld** om HTTPS uit te schakelen. Klik vervolgens op **Opslaan**.
+3. Klik op **Uitgeschakeld** om HTTPS uit te schakelen. Klik vervolgens op **Opslaan** .
 
 ### <a name="wait-for-propagation"></a>Wachten op doorgifte
 

@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/30/2020
 ms.author: memildin
-ms.openlocfilehash: a04f94f5ebc7c1fdaf7b95e71dc8549e19863b39
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 02b0ee4d572290436cc45bab73921ae1298bc72f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91614138"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92358995"
 ---
 # <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>Zelfstudie: Beveiligingswaarschuwingen sorteren, onderzoeken en erop reageren
-Security Center analyseert voortdurend de werkbelasting van uw hybride cloud met behulp van geavanceerde analysen en bedreigingsinformatie, om u te waarschuwen voor schadelijke activiteiten. U kunt ook waarschuwingen van andere beveiligingsproducten en -services integreren in Security Center en aangepaste waarschuwingen maken op basis van uw eigen indicatoren of informatiebronnen. Wanneer een waarschuwing is gegenereerd, moet onmiddellijk actie worden ondernomen om het probleem te onderzoeken en te herstellen. 
+Security Center analyseert voortdurend de werkbelasting van uw hybride cloud met behulp van geavanceerde analysen en bedreigingsinformatie, om u te waarschuwen voor mogelijk schadelijke activiteiten in uw cloudresources. U kunt ook waarschuwingen van andere beveiligingsproducten en -services integreren in Security Center. Wanneer een waarschuwing wordt gegeven, moet snel actie worden ondernomen om het mogelijke beveiligingsprobleem te onderzoeken en tegen te gaan. 
 
 In deze zelfstudie leert u het volgende:
 
@@ -85,16 +85,16 @@ Nadat u een waarschuwing hebt onderzocht en de omvang ervan hebt begrepen, kunt 
 1.  Raadpleeg de sectie **De bedreiging oplossen** voor de handmatige onderzoeksstappen die nodig zijn om het probleem te verhelpen.
 1.  Om uw resources te beveiligen en toekomstige aanvallen van dit type te voorkomen, moet u de beveiligingsaanbevelingen in de sectie **Toekomstige aanvallen voorkomen** volgen.
 1.  Gebruik de sectie **Geautomatiseerd antwoord activeren** als u een logische app met automatische reactie stappen wilt activeren.
-1.  Als de gedetecteerde activiteit *niet* schadelijk is, kunt u toekomstige waarschuwingen van dit type onderdrukken met behulp van de sectie **Vergelijkbare waarschuwingen onderdrukken**.
+1.  Als de gedetecteerde activiteit *niet* schadelijk is, kunt u toekomstige waarschuwingen van dit type onderdrukken met behulp van de sectie **Vergelijkbare waarschuwingen onderdrukken** .
 
-1.  Als u het onderzoek in de waarschuwing hebt voltooid en op de juiste manier hebt gereageerd, wijzigt u de status in **Genegeerd**.
+1.  Als u het onderzoek in de waarschuwing hebt voltooid en op de juiste manier hebt gereageerd, wijzigt u de status in **Genegeerd** .
 
     :::image type="content" source="./media/tutorial-security-incident/set-status-dismissed.png" alt-text="Overzichtspagina voor beveiligingswaarschuwingen":::
 
     Hiermee verwijdert u de waarschuwing uit de hoofdlijst met waarschuwingen. U kunt het filter op de pagina met waarschuwingen gebruiken om alle waarschuwingen met de status **Genegeerd** weer te geven.
 
-1.  Geef eventueel feedback over een waarschuwing aan Microsoft:
-    1. De waarschuwing markeren als **Nuttig** of **Niet nuttig** en een
+1.  Stuur vooral feedback over de waarschuwing naar Microsoft:
+    1. De waarschuwing markeren als **Nuttig** of **Niet nuttig** .
     1. Selecteer een reden en voeg een opmerking toe.
 
         :::image type="content" source="./media/tutorial-security-incident/alert-feedback.png" alt-text="Overzichtspagina voor beveiligingswaarschuwingen":::
@@ -108,11 +108,11 @@ Andere snelstartgidsen en zelfstudies in deze verzameling zijn gebaseerd op deze
 
 Als u niet van plan bent om door te gaan of als u een van deze functies wilt uitschakelen:
 
-1. Ga terug naar het hoofdmenu van Security Center en selecteer **Prijzen en instellingen**.
+1. Ga terug naar het hoofdmenu van Security Center en selecteer **Prijzen en instellingen** .
 1. Selecteer het betreffende abonnement.
 1. Selecteer **Azure Defender uit** om te downgraden.
-1. Als u automatische inrichting wilt uitschakelen, opent u de pagina **Gegevensverzameling** en stelt u **Automatische inrichting** in op **Uit**.
-4. Selecteer **Opslaan**.
+1. Als u automatische inrichting wilt uitschakelen, opent u de pagina **Gegevensverzameling** en stelt u **Automatische inrichting** in op **Uit** .
+4. Selecteer **Opslaan** .
 
 >[!NOTE]
 > Wanneer u automatische inrichting uitschakelt, wordt de Log Analytics-agent niet verwijderd van virtuele Azure-machines waarop de agent al staat. Door automatische inrichting uit te schakelen, wordt de beveiligingsbewaking voor uw resources beperkt.

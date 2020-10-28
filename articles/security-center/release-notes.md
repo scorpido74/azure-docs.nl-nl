@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: eb5e5cc97b13d8eb8e671501e9b16479ba59642a
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: ed4bd97dfe64a85785cf7805da2cf7f942baecd4
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999304"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367535"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Wat is er nieuw in Azure Security Center?
 
@@ -28,6 +28,120 @@ Deze pagina wordt regelmatig bijgewerkt. Kom hier daarom regelmatig terug.
 > [!TIP]
 > Als u op zoek bent naar items die ouder zijn dan zes maanden, vindt u deze in het [Archief voor nieuwe functies in Azure AD in Azure Security Center](release-notes-archive.md).
 
+
+## <a name="october-2020"></a>Oktober 2020
+
+- [Evaluatie van beveiligingsproblemen voor on-premises en multi-cloudmachines (preview)](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview)
+- [Azure Firewall-aanbeveling toegevoegd (preview)](#azure-firewall-recommendation-added-preview)
+- [Aanbeveling Geautoriseerde IP-bereiken moeten worden gedefinieerd voor Kubernetes Services is bijgewerkt met een snelle oplossing](#authorized-ip-ranges-should-be-defined-on-kubernetes-services-recommendation-updated-with-quick-fix)
+- [Tabel Microsoft.Security/securityStatuses is verwijderd uit Azure Resource Graph (ARG)](#microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg)
+
+### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview"></a>Evaluatie van beveiligingsproblemen voor on-premises en multi-cloudmachines (preview)
+
+Met [Azure Defender voor servers](defender-for-servers-introduction.md) geïntegreerde evaluatie van beveiligingsproblemen (mogelijk gemaakt door Qualys) worden nu servers met Azure Arc gescand.
+
+Wanneer u Azure Arc op uw niet-Azure-machines hebt ingeschakeld, kan de geïntegreerde scanner voor beveiligingsproblemen handmatig en op schaal worden geïmplementeerd.
+
+Met deze update kunt u de mogelijkheden van **Azure Defender voor servers** gebruiken om uw beheerprogramma voor beveiligingsproblemen te consolideren voor al uw Azure- en niet-Azure-assets.
+
+Belangrijkste functies:
+
+- Bewaken van de inrichtingsstatus van de scanner voor de evaluatie van beveiligingsproblemen van Azure Arc-machines
+- Inrichten van de geïntegreerde agent voor de evaluatie van beveiligingsproblemen op niet-beveiligde Azure Arc-machines onder Windows en Linux (handmatig en op schaal)
+- Ontvangen en analyseren van gedetecteerde beveiligingsproblemen afkomstig van geïmplementeerde agents (handmatig en op schaal)
+- Geïntegreerde ervaring voor Azure-VM's en Azure Arc-machines
+
+[Meer informatie over het implementeren van de geïntegreerde scanner voor beveiligings problemen op uw hybride machines](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-scanner-to-your-azure-and-hybrid-machines).
+
+[Meer informatie over servers met Azure Arc](https://docs.microsoft.com/azure/azure-arc/servers/).
+
+
+### <a name="azure-firewall-recommendation-added-preview"></a>Azure Firewall-aanbeveling toegevoegd (preview)
+
+Er is een nieuwe aanbeveling toegevoegd om al uw virtuele netwerken met Azure Firewall te beveiligen.
+
+De aanbeveling, **Virtuele netwerken moeten worden beveiligd met Azure Firewall** , adviseert u om de toegang tot uw virtuele netwerken te beperken en mogelijke dreigingen te voorkomen door gebruik te maken van Azure Firewall.
+
+Meer informatie over [Azure Firewall](https://azure.microsoft.com/services/azure-firewall/).
+
+
+### <a name="authorized-ip-ranges-should-be-defined-on-kubernetes-services-recommendation-updated-with-quick-fix"></a>De aanbeveling Geautoriseerde IP-bereiken moeten worden gedefinieerd voor Kubernetes Services is bijgewerkt met een snelle oplossing
+
+De aanbeveling **Geautoriseerde IP-bereiken moeten worden gedefinieerd voor Kubernetes Services** bevat nu een snelle oplossing.
+
+Zie [Aanbevelingen voor beveiliging: een naslaggids](recommendations-reference.md) voor meer informatie over deze aanbeveling en alle andere aanbevelingen van Security Center.
+
+:::image type="content" source="./media/release-notes/authorized-ip-ranges-recommendation.png" alt-text="Aanbeveling Geautoriseerde IP-bereiken moeten worden gedefinieerd voor Kubernetes Services met de snelle oplossing":::
+
+
+### <a name="microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg"></a>Tabel Microsoft.Security/securityStatuses is verwijderd uit Azure Resource Graph (ARG)
+
+Azure Resource Graph is een service in Azure. Het is ontworpen voor een efficiënte resourceverkenning en biedt de mogelijkheid query's op schaal uit te voeren binnen een bepaalde groep abonnementen, zodat u uw omgeving effectief kunt beheren. 
+
+Voor Azure Security Center kunt u gebruikmaken van ARG en de [Kusto Query Language (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/) om query's uit te voeren op een breed scala aan postuurgegevens. Bijvoorbeeld:
+
+- De assetvoorraad maakt gebruik van ARG
+- Er is een voorbeeld van een ARG-query gedocumenteerd voor het [identificeren van accounts zonder dat MFA (meervoudige verificatie) is ingeschakeld](security-center-identity-access.md#identify-accounts-without-multi-factor-authentication-mfa-enabled)
+
+ARG bevat tabellen met gegevens die u in uw query's kunt gebruiken.
+
+:::image type="content" source="./media/release-notes/azure-resource-graph-tables.png" alt-text="Aanbeveling Geautoriseerde IP-bereiken moeten worden gedefinieerd voor Kubernetes Services met de snelle oplossing"
+}
+```
+Microsoft.Security/Assessments daarentegen bevat een record voor elk van een dergelijke beleidsevaluatie. Dit werkt als volgt:
+
+```
+{
+type: "Microsoft.Security/assessments",
+id:  "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourceGroups/mico-rg/providers/Microsoft. Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/assessments/e3delcce-f4dd-3b34-e496-8b5381ba2d70",
+name: "e3deicce-f4dd-3b34-e496-8b5381ba2d70",
+properties:  {
+    resourceDetails: {Source: "Azure", Id: "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet"...},
+    displayName: "Azure DDOS Protection Standard should be enabled",
+    status: (code: "NotApplicable", cause: "VnetHasNOAppGateways", description: "There are no Application Gateway resources attached to this Virtual Network"...}
+}
+
+{
+type: "Microsoft.Security/assessments",
+id:  "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourcegroups/mico-rg/providers/microsoft.network/virtualnetworks/mico-rg-vnet/providers/Microsoft.Security/assessments/80fac66a-1ec5-be63-a824-eb28671dc527",
+name: "8efac66a-1ec5-be63-a824-eb28671dc527",
+properties: {
+    resourceDetails: (Source: "Azure", Id: "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourcegroups/mico-rg/providers/microsoft.network/virtualnetworks/mico-rg-vnet"...),
+    displayName: "Audit diagnostic setting",
+    status:  {code: "Unhealthy"}
+}
+```
+
+**Voorbeeld van het converteren van een bestaande ARG-query met behulp van securityStatuses om nu de tabel met evaluaties te kunnen gebruiken:**
+
+Query die verwijst naar SecurityStatuses:
+
+```kusto
+SecurityResources 
+| where type == 'microsoft.security/securitystatuses' and properties.type == 'virtualMachine'
+| where name in ({vmnames}) 
+| project name, resourceGroup, policyAssesments = properties.policyAssessments, resourceRegion = location, id, resourceDetails = properties.resourceDetails
+```
+
+Vervangingsquery voor de tabel met evaluaties:
+
+```kusto
+securityresources
+| where type == "microsoft.security/assessments" and id contains "virtualMachine"
+| extend resourceName = extract(@"(?i)/([^/]*)/providers/Microsoft.Security/assessments", 1, id)
+| extend source = tostring(properties.resourceDetails.Source)
+| extend resourceId = trim(" ", tolower(tostring(case(source =~ "azure", properties.resourceDetails.Id,
+source =~ "aws", properties.additionalData.AzureResourceId,
+source =~ "gcp", properties.additionalData.AzureResourceId,
+extract("^(.+)/providers/Microsoft.Security/assessments/.+$",1,id)))))
+| extend resourceGroup = tolower(tostring(split(resourceId, "/")[4]))
+| where resourceName in ({vmnames}) 
+| project resourceName, resourceGroup, resourceRegion = location, id, resourceDetails = properties.additionalData
+```
+
+Meer informatie vindt u via de volgende koppelingen:
+- [Query's maken met Azure Resource Graph Explorer](../governance/resource-graph/first-query-portal.md)
+- [Kusto-querytaal (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/)
 
 
 ## <a name="september-2020"></a>September 2020
@@ -42,7 +156,6 @@ De updates in september zijn onder meer:
 - [Een resource uitsluiten van een aanbeveling](#exempt-a-resource-from-a-recommendation)
 - [AWS- en GCP-connectors in Security Center bieden een multi-cloudervaring](#aws-and-gcp-connectors-in-security-center-bring-a-multi-cloud-experience)
 - [Bundel met aanbevelingen voor Kubernetes-workloadbeveiliging](#kubernetes-workload-protection-recommendation-bundle)
-- [Verbeteringen van bescherming tegen bedreigingen voor IoT in Azure Defender voor IoT](#iot-threat-protection-enhancements-in-azure-defender-for-iot)
 - [Resultaten van evaluatie van beveiligingsproblemen zijn nu beschikbaar in continue export](#vulnerability-assessment-findings-are-now-available-in-continuous-export)
 - [Onjuiste beveiligingsconfiguraties voorkomen door aanbevelingen af te dwingen bij het maken van nieuwe resources](#prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources)
 - [Aanbevelingen voor netwerkbeveiligingsgroep verbeterd](#network-security-group-recommendations-improved)
@@ -71,7 +184,6 @@ Als u Azure Defender inschakelt in het gedeelte **Prijzen en instellingen** van 
 - [Azure Defender voor App Service](defender-for-app-service-introduction.md)
 - [Azure Defender voor Storage](defender-for-storage-introduction.md)
 - [Azure Defender voor SQL](defender-for-sql-introduction.md)
-- [Azure Defender voor IoT](defender-for-iot-introduction.md)
 - [Azure Defender voor Key Vault](defender-for-key-vault-introduction.md)
 - [Azure Defender voor Kubernetes](defender-for-kubernetes-introduction.md)
 - [Azure Defender voor containerregisters](defender-for-container-registries-introduction.md)
@@ -90,7 +202,7 @@ Azure Key Vault is een cloudservice die versleutelingssleutels en geheimen, zoal
 
 Het optionele abonnement is nu algemeen beschikbaar. Deze functie was in preview als 'geavanceerde beveiliging tegen bedreigingen voor Azure Key Vault'.
 
-Daarnaast bevatten de Key Vault-pagina's in Azure Portal nu een speciale pagina **Beveiliging** voor aanbevelingen en waarschuwingen van **Security Center**.
+Daarnaast bevatten de Key Vault-pagina's in Azure Portal nu een speciale pagina **Beveiliging** voor aanbevelingen en waarschuwingen van **Security Center** .
 
 Meer informatie vindt u in [Azure Defender voor Key Vault](defender-for-key-vault-introduction.md).
 
@@ -99,7 +211,7 @@ Meer informatie vindt u in [Azure Defender voor Key Vault](defender-for-key-vaul
 
 **Azure Defender for Storage** detecteert potentieel schadelijke activiteiten in uw Azure Storage-accounts. Uw gegevens kunnen worden beschermd, ongeacht of deze zijn opgeslagen als blobcontainers, bestandsshares of data lakes.
 
-Ondersteuning voor [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) en [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) is nu algemeen beschikbaar.
+Ondersteuning voor [Azure Files](../storage/files/storage-files-introduction.md) en [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) is nu algemeen beschikbaar.
 
 Vanaf 1 oktober 2020 gaan we kosten in rekening brengen voor de beveiliging van resources in deze services.
 
@@ -165,13 +277,6 @@ U kunt er bijvoorbeeld voor zorgen dat containers met machtigingen niet moeten w
 Meer informatie vindt u in [Aanbevolen procedures voor workloadbeveiliging met behulp van Kubernetes Admission Control](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control).
 
 
-### <a name="iot-threat-protection-enhancements-in-azure-defender-for-iot"></a>Verbeteringen van bescherming tegen bedreigingen voor IoT in Azure Defender voor IoT
-
-Azure Defender voor IoT biedt meer mogelijkheden voor bescherming tegen bedreigingen dankzij de toevoeging van CyberX-technologie zonder agent. Dit biedt beveiliging voor niet-beheerde verouderde apparaten die worden gebruikt in omgevingen met operationele technologie (OT) zoals productie, BMS (Building Management Systems), life sciences, nutsbedrijven, olie- en gaswinning en logistiek.
-
-Meer informatie vindt u in [Inleiding tot Azure Defender voor IoT](defender-for-iot-introduction.md).
-
-
 ### <a name="vulnerability-assessment-findings-are-now-available-in-continuous-export"></a>Resultaten van evaluatie van beveiligingsproblemen zijn nu beschikbaar in continue export
 
 Maak gebruik van continue export om uw waarschuwingen en aanbevelingen in realtime te streamen naar Azure Event Hubs, Log Analytics-werkruimten of Azure Monitor. Daar kunt u deze gegevens integreren met SIEM's (zoals Azure Sentinel, Power BI, Azure Data Explorer en meer).
@@ -180,7 +285,7 @@ De hulpprogramma's voor evaluatie van beveiligingsproblemen van Security Center 
 
 De beveiligingsresultaten zijn nu beschikbaar voor export door middel van continue export wanneer u aanbevelingen selecteert en de optie **Beveiligingsresultaten insluiten** in te schakelen.
 
-:::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="De schakeloptie Beveiligingsresultaten insluiten in de configuratie voor continue export" :::
+:::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="Aanbeveling Geautoriseerde IP-bereiken moeten worden gedefinieerd voor Kubernetes Services met de snelle oplossing" :::
 
 Gerelateerde pagina's:
 
@@ -190,7 +295,7 @@ Gerelateerde pagina's:
 
 ### <a name="prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources"></a>Onjuiste beveiligingsconfiguraties voorkomen door aanbevelingen af te dwingen bij het maken van nieuwe resources
 
-Onjuiste beveiligingsconfiguraties zijn een belangrijke oorzaak van beveiligingsincidenten. Security Center biedt nu de mogelijkheid om onjuiste configuratie van nieuwe resources met betrekking tot specifieke aanbevelingen te helpen *voorkomen*. 
+Onjuiste beveiligingsconfiguraties zijn een belangrijke oorzaak van beveiligingsincidenten. Security Center biedt nu de mogelijkheid om onjuiste configuratie van nieuwe resources met betrekking tot specifieke aanbevelingen te helpen *voorkomen* . 
 
 Deze functie kan u helpen uw workloads veilig te houden en uw beveiligingsscore stabiel te houden.
 
@@ -216,7 +321,7 @@ De volgende beveiligingsaanbevelingen met betrekking tot netwerkbeveiligingsgroe
 
 ### <a name="deprecated-preview-aks-recommendation-pod-security-policies-should-be-defined-on-kubernetes-services"></a>Aanbeveling AKS-preview 'Beveiligingsbeleid voor pods moet worden gedefinieerd voor Kubernetes Services' afgeschaft
 
-De preview-aanbeveling 'Beveiligingsbeleid voor pods moet worden gedefinieerd voor Kubernetes Services' wordt afgeschaft zoals beschreven in de documentatie van [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/use-pod-security-policies).
+De preview-aanbeveling 'Beveiligingsbeleid voor pods moet worden gedefinieerd voor Kubernetes Services' wordt afgeschaft zoals beschreven in de documentatie van [Azure Kubernetes Service](../aks/use-pod-security-policies.md).
 
 De functie voor beveiligingsbeleid voor pods (preview) wordt afgeschaft en is na 15 oktober 2020 niet langer beschikbaar in Azure Policy voor AKS.
 
@@ -241,11 +346,11 @@ Security Center controleert uw resources, abonnementen en organisatie doorlopend
 
 Als er nieuwe bedreigingen worden gedetecteerd, wordt nieuw beveiligingsadvies beschikbaar gesteld in Security Center via nieuwe aanbevelingen. Om te voorkomen dat uw beveiligingsscore plotseling verandert, en om een respijtperiode te bieden waarin u nieuwe aanbevelingen kunt verkennen voordat ze van invloed zijn op uw scores, worden de aanbevelingen die zijn gemarkeerd als **Preview** niet meer opgenomen in de berekeningen van uw beveiligingsscore. Ze moeten, waar mogelijk, nog steeds worden hersteld. Wanneer de preview-periode is afgelopen, worden ze dus meegerekend in uw score.
 
-Daarnaast worden in **Preview**-aanbevelingen resources niet als 'Niet in orde' weergegeven.
+Daarnaast worden in **Preview** -aanbevelingen resources niet als 'Niet in orde' weergegeven.
 
 Een voorbeeld van een preview-aanbeveling:
 
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="De schakeloptie Beveiligingsresultaten insluiten in de configuratie voor continue export":::
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Aanbeveling Geautoriseerde IP-bereiken moeten worden gedefinieerd voor Kubernetes Services met de snelle oplossing":::
 
 [Meer informatie over de beveiligingsscore](secure-score-security-controls.md).
 
@@ -254,7 +359,7 @@ Een voorbeeld van een preview-aanbeveling:
 
 De detailpagina voor aanbevelingen bevat nu een indicator voor het vernieuwingsinterval (indien relevant) en een duidelijke weergave van de ernst van de aanbeveling.
 
-:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="De schakeloptie Beveiligingsresultaten insluiten in de configuratie voor continue export":::
+:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="Aanbeveling Geautoriseerde IP-bereiken moeten worden gedefinieerd voor Kubernetes Services met de snelle oplossing":::
 
 
 
@@ -282,7 +387,7 @@ Meer informatie over [assetinventarisatie](asset-inventory.md).
 
 ### <a name="added-support-for-azure-active-directory-security-defaults-for-multi-factor-authentication"></a>Ondersteuning toegevoegd voor standaardinstellingen voor beveiliging van Azure Active Directory (voor meervoudige verificatie)
 
-Security Center heeft volledige ondersteuning toegevoegd voor [standaardinstellingen voor de beveiliging](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults), de gratis identiteitsbeveiliging van Microsoft.
+Security Center heeft volledige ondersteuning toegevoegd voor [standaardinstellingen voor de beveiliging](../active-directory/fundamentals/concept-fundamentals-security-defaults.md), de gratis identiteitsbeveiliging van Microsoft.
 
 Standaardwaarden voor beveiliging bieden vooraf geconfigureerde instellingen voor identiteitsbeveiliging om uw organisatie te beschermen tegen algemene identiteitsgerelateerde aanvallen. Standaardinstellingen voor beveiliging beschermen al meer dan 5 miljoen tenants in totaal; 50.000-tenants worden ook beveiligd door Security Center.
 
@@ -290,16 +395,16 @@ Security Center biedt nu een beveiligingsaanbeveling wanneer een Azure-abonnemen
 
 Ons doel is om meer klanten te stimuleren om hun cloudomgevingen met meervoudige verificatie te beveiligen en een van de grootste risico's te beperken die ook het meest van invloed zijn op uw [beveiligingsscore](secure-score-security-controls.md).
 
-Meer informatie over [standaardinstellingen voor beveiliging](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults).
+Meer informatie over [standaardinstellingen voor beveiliging](../active-directory/fundamentals/concept-fundamentals-security-defaults.md).
 
 
 ### <a name="service-principals-recommendation-added"></a>Aanbeveling voor service-principals toegevoegd
 
 Er is een nieuwe aanbeveling toegevoegd die Security Center-klanten die beheercertificaten gebruiken om hun abonnementen te beheren, aanraadt om over te schakelen naar service-principals.
 
-De aanbeveling, **Gebruik service-principals om uw abonnementen te beschermen, geen beheercertificaten**, adviseert u service-principals of Azure Resource Manager te gebruiken om uw abonnementen veiliger te beheren. 
+De aanbeveling, **Gebruik service-principals om uw abonnementen te beschermen, geen beheercertificaten** , adviseert u service-principals of Azure Resource Manager te gebruiken om uw abonnementen veiliger te beheren. 
 
-Meer informatie vindt u in [Toepassings- en service-principal-objecten in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object).
+Meer informatie vindt u in [Toepassings- en service-principal-objecten in Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object).
 
 
 ### <a name="vulnerability-assessment-on-vms---recommendations-and-policies-consolidated"></a>Evaluatie van beveiligingsproblemen op VM's - aanbevelingen en beleidsregels geconsolideerd
@@ -365,7 +470,7 @@ De vroege fase van dit project bevat een beperkte preview en het toevoegen van n
 U kunt dit beleid veilig negeren en dit heeft geen invloed op uw omgeving. Als u het wilt inschakelen, meldt u zich voor de preview-versie aan op https://aka.ms/SecurityPrP en selecteert u een van de volgende opties:
 
 1. **Enkele preview-** : alleen deelnemen aan deze beperkte preview. Vermeld expliciet 'ASC doorlopend scannen' als de preview waaraan u wilt deelnemen.
-1. **Doorlopend programma**: om deel te nemen aan deze en toekomstige beperkte previews. U moet een profiel en een privacyverklaring invullen.
+1. **Doorlopend programma** : om deel te nemen aan deze en toekomstige beperkte previews. U moet een profiel en een privacyverklaring invullen.
 
 
 ## <a name="july-2020"></a>Juli 2020
@@ -418,7 +523,7 @@ De nieuwe aanbevelingen zijn:
 - **Advanced Threat Protection moet zijn ingeschakeld voor Azure Storage-accounts**
 - **Advanced Thread Protection moet zijn ingeschakeld op virtuele machines**
 
-Deze nieuwe aanbevelingen maken deel uit van het beveiligingsbeheer **Geavanceerde beveiliging tegen bedreigingen inschakelen**.
+Deze nieuwe aanbevelingen maken deel uit van het beveiligingsbeheer **Geavanceerde beveiliging tegen bedreigingen inschakelen** .
 
 De aanbevelingen bevatten ook de mogelijkheid voor snelle oplossingen. 
 
@@ -456,7 +561,7 @@ Zie de volgende artikelen voor meer informatie over containerbeveiliging van Sec
 
 De functie voor adaptieve toepassingsregelaars heeft twee belangrijke updates ontvangen:
 
-* Een nieuwe aanbeveling duidt mogelijk legitiem gedrag aan dat nog niet is toegestaan. De nieuwe aanbeveling, **De Allowlist-regels in uw beleid voor adaptief toepassingsbeheer moeten worden bijgewerkt**, vraagt u om nieuwe regels aan het bestaande beleid toe te voegen om het aantal fout-positieven in adaptieve toepassingsregelaars te verminderen.
+* Een nieuwe aanbeveling duidt mogelijk legitiem gedrag aan dat nog niet is toegestaan. De nieuwe aanbeveling, **De Allowlist-regels in uw beleid voor adaptief toepassingsbeheer moeten worden bijgewerkt** , vraagt u om nieuwe regels aan het bestaande beleid toe te voegen om het aantal fout-positieven in adaptieve toepassingsregelaars te verminderen.
 
 * Padregels ondersteunen nu jokertekens. Vanaf deze update kunt u regels voor toegestane paden configureren met behulp van jokertekens. Er zijn twee ondersteunde scenario's:
 
@@ -480,7 +585,7 @@ Er worden zes beleidsregels met betrekking tot geavanceerde gegevensbeveiliging 
 - E-mailmeldingen aan beheerders en abonnementseigenaren moeten zijn ingeschakeld in de Advanced Data Security-instellingen voor het beheerde SQL-exemplaar
 - E-mailmeldingen aan beheerders en abonnementseigenaren moeten zijn ingeschakeld in de Advanced Data Security-instellingen van de SQL-server
 
-Meer informatie over [ingebouwd beleid](security-center-policy-definitions.md).
+Meer informatie over [ingebouwd beleid](./policy-reference.md).
 
 
 
@@ -500,7 +605,7 @@ De updates in juni zijn onder meer:
 
 ### <a name="secure-score-api-preview"></a>Beveiligingsscore-API (preview)
 
-U hebt nu toegang tot uw score via de [Beveiligingsscore-API](https://docs.microsoft.com/rest/api/securitycenter/securescores/) (momenteel als preview). De API-methoden bieden de flexibiliteit om query's uit te voeren op de gegevens en uw eigen rapportagemechanisme te bouwen van uw beveiligingsscores in de loop van de tijd. U kunt bijvoorbeeld de **Beveiligingsscore**-API gebruiken om de score voor een specifiek abonnement op te halen. Daarnaast kunt u de API voor **besturingselementen van de beveiligingsscore** gebruiken om de besturingselementen voor beveiliging en de huidige score van uw abonnementen weer te geven.
+U hebt nu toegang tot uw score via de [Beveiligingsscore-API](/rest/api/securitycenter/securescores/) (momenteel als preview). De API-methoden bieden de flexibiliteit om query's uit te voeren op de gegevens en uw eigen rapportagemechanisme te bouwen van uw beveiligingsscores in de loop van de tijd. U kunt bijvoorbeeld de **Beveiligingsscore** -API gebruiken om de score voor een specifiek abonnement op te halen. Daarnaast kunt u de API voor **besturingselementen van de beveiligingsscore** gebruiken om de besturingselementen voor beveiliging en de huidige score van uw abonnementen weer te geven.
 
 Zie [het gebied voor beveiligingsscores van onze GitHub-community](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score) voor voorbeelden van externe hulpprogramma's die mogelijk zijn gemaakt met de Beveiligingsscore-API.
 
@@ -526,12 +631,12 @@ Meer informatie over [geavanceerde gegevensbeveiliging voor SQL-machines](defend
 
 ### <a name="two-new-recommendations-to-deploy-the-log-analytics-agent-to-azure-arc-machines-preview"></a>Twee nieuwe aanbevelingen voor het implementeren van de Log Analytics-agent op Azure Arc-machines (preview)
 
-Er zijn twee nieuwe aanbevelingen toegevoegd om de [Log Analytics-agent](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent) te implementeren op uw Azure Arc-machines en ervoor te zorgen dat ze worden beveiligd door Azure Security Center:
+Er zijn twee nieuwe aanbevelingen toegevoegd om de [Log Analytics-agent](../azure-monitor/platform/log-analytics-agent.md) te implementeren op uw Azure Arc-machines en ervoor te zorgen dat ze worden beveiligd door Azure Security Center:
 
 - **De Log Analytics-agent moet zijn geïnstalleerd op uw Windows Azure Arc-machines (preview)**
 - **De Log Analytics-agent moet zijn geïnstalleerd op uw Linux Azure Arc-machines (preview)**
 
-Deze nieuwe aanbevelingen worden weergegeven in dezelfde vier besturingselementen voor beveiliging als de bestaande (gerelateerde) aanbeveling, **De bewakingsagent moet op uw computers worden geïnstalleerd**: beveiligingsconfiguraties herstellen, adaptieve toepassingsregelaars toepassen, systeemupdates toepassen en eindpuntbeveiliging inschakelen.
+Deze nieuwe aanbevelingen worden weergegeven in dezelfde vier besturingselementen voor beveiliging als de bestaande (gerelateerde) aanbeveling, **De bewakingsagent moet op uw computers worden geïnstalleerd** : beveiligingsconfiguraties herstellen, adaptieve toepassingsregelaars toepassen, systeemupdates toepassen en eindpuntbeveiliging inschakelen.
 
 De aanbevelingen omvatten ook de mogelijkheid voor snelle oplossingen om het implementatieproces te versnellen. 
 
@@ -570,7 +675,7 @@ Het besturingselement voor beveiliging 'aanbevolen procedures voor beveiliging i
 
 - **Niet-internetgerichte virtuele machines moeten worden beveiligd met netwerkbeveiligingsgroepen**
 
-In een bestaande aanbeveling, **Op internet gerichte virtuele machines moeten worden beveiligd met netwerkbeveiligingsgroepen**, werd geen onderscheid gemaakt tussen op internet gerichte en niet op internet gerichte virtuele machines. Voor beide werd een aanbeveling met een hoge urgentie gegenereerd als een virtuele machine niet aan een netwerkbeveiligingsgroep was toegewezen. In deze nieuwe aanbeveling wordt een onderscheid gemaakt met niet op internet gerichte machines om de fout-positieven te verminderen en onnodige waarschuwingen met hoge urgentie te voorkomen.
+In een bestaande aanbeveling, **Op internet gerichte virtuele machines moeten worden beveiligd met netwerkbeveiligingsgroepen** , werd geen onderscheid gemaakt tussen op internet gerichte en niet op internet gerichte virtuele machines. Voor beide werd een aanbeveling met een hoge urgentie gegenereerd als een virtuele machine niet aan een netwerkbeveiligingsgroep was toegewezen. In deze nieuwe aanbeveling wordt een onderscheid gemaakt met niet op internet gerichte machines om de fout-positieven te verminderen en onnodige waarschuwingen met hoge urgentie te voorkomen.
 
 Meer informatie vindt u in de tabel [Aanbevelingen voor netwerken](recommendations-reference.md#recs-network).
 
@@ -678,7 +783,7 @@ De besturingselementen voor beveiliging - en deze schakeloptie - maken deel uit 
 
 Meer informatie over besturingselementen voor beveiliging vindt u in [Verbeterde beveiligingsscore (preview) in Azure Security Center](secure-score-security-controls.md).
 
-:::image type="content" source="./media/secure-score-security-controls/recommendations-group-by-toggle.gif" alt-text="De schakeloptie Beveiligingsresultaten insluiten in de configuratie voor continue export":::
+:::image type="content" source="./media/secure-score-security-controls/recommendations-group-by-toggle.gif" alt-text="Aanbeveling Geautoriseerde IP-bereiken moeten worden gedefinieerd voor Kubernetes Services met de snelle oplossing":::
 
 ### <a name="expanded-security-control-implement-security-best-practices"></a>Besturingselement voor beveiliging 'Aanbevolen procedures voor beveiliging implementeren' uitgebreid 
 
@@ -696,11 +801,11 @@ De drie aanbevelingen die zijn verplaatst, zijn:
 
 De twee nieuwe aanbevelingen die aan het besturingselement zijn toegevoegd, zijn:
 
-- **De Gastconfiguratie-extensie moet op virtuele Windows-machines zijn geïnstalleerd (preview)** : het gebruik van [Azure Policy-gastconfiguratie](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration) biedt inzicht in de instellingen van de virtuele machines op de server en toepassing (alleen Windows).
+- **De Gastconfiguratie-extensie moet op virtuele Windows-machines zijn geïnstalleerd (preview)** : het gebruik van [Azure Policy-gastconfiguratie](../governance/policy/concepts/guest-configuration.md) biedt inzicht in de instellingen van de virtuele machines op de server en toepassing (alleen Windows).
 
 - **Windows Defender Exploit Guard moet zijn ingeschakeld op uw computers (preview)** : Windows Defender Exploit Guard maakt gebruik van de Azure Policy-gastconfiguratieagent. Exploit Guard bestaat uit vier onderdelen die zijn ontworpen om apparaten te vergrendelen tegen diverse aanvalsvectoren en blokkeergedrag die in malware-aanvallen worden gebruikt en die bedrijven de mogelijkheid bieden om een goede balans te vinden tussen hun vereisten op het gebied van beveiligingsrisico's en productiviteit (alleen Windows).
 
-Meer informatie over Windows Defender Exploit Guard vindt u in [Een Exploit Guard-beleid maken en implementeren](https://docs.microsoft.com/mem/configmgr/protect/deploy-use/create-deploy-exploit-guard-policy).
+Meer informatie over Windows Defender Exploit Guard vindt u in [Een Exploit Guard-beleid maken en implementeren](/mem/configmgr/protect/deploy-use/create-deploy-exploit-guard-policy).
 
 Meer informatie over besturingselementen voor beveiliging vindt u in [Verbeterde beveiligingsscore (preview)](secure-score-security-controls.md).
 
@@ -724,54 +829,10 @@ De detectiemogelijkheden van Windows Crash Dump Analysis (CDA) worden geïntegre
 
 Enkele voordelen hiervan:
 
-- **Proactieve en tijdige detectie van malware**: bij de CDA-benadering werd gewacht op een crash, en werden vervolgens analyses uitgevoerd om schadelijke artefacten te vinden. Bij het gebruik van detectie van bestandsloze aanvallen worden bedreigingen in het geheugen proactief geïdentificeerd terwijl ze worden uitgevoerd. 
+- **Proactieve en tijdige detectie van malware** : bij de CDA-benadering werd gewacht op een crash, en werden vervolgens analyses uitgevoerd om schadelijke artefacten te vinden. Bij het gebruik van detectie van bestandsloze aanvallen worden bedreigingen in het geheugen proactief geïdentificeerd terwijl ze worden uitgevoerd. 
 
-- **Verrijkte waarschuwingen**: de beveiligingswaarschuwingen van detectie van bestandsloze aanvallen bevatten verrijkingen die niet beschikbaar zijn via CDA, zoals informatie over actieve netwerkverbindingen. 
+- **Verrijkte waarschuwingen** : de beveiligingswaarschuwingen van detectie van bestandsloze aanvallen bevatten verrijkingen die niet beschikbaar zijn via CDA, zoals informatie over actieve netwerkverbindingen. 
 
-- **Waarschuwingsaggregatie**: wanneer CDA meerdere aanvalspatronen in één crashdump heeft gedetecteerd, worden er meerdere beveiligingswaarschuwingen geactiveerd. Bij detectie van bestandsloze aanvallen worden alle geïdentificeerde aanvalspatronen uit hetzelfde proces gecombineerd tot één waarschuwing, waardoor de noodzaak om meerdere waarschuwingen met elkaar in verband te brengen, wordt weggenomen.
+- **Waarschuwingsaggregatie** : wanneer CDA meerdere aanvalspatronen in één crashdump heeft gedetecteerd, worden er meerdere beveiligingswaarschuwingen geactiveerd. Bij detectie van bestandsloze aanvallen worden alle geïdentificeerde aanvalspatronen uit hetzelfde proces gecombineerd tot één waarschuwing, waardoor de noodzaak om meerdere waarschuwingen met elkaar in verband te brengen, wordt weggenomen.
 
-- **Minder vereisten voor uw Log Analytics-werkruimte**: crashdumps met mogelijk gevoelige gegevens worden niet meer geüpload naar uw Log Analytics-werkruimte.
-
-
-
-## <a name="april-2020"></a>April 2020
-
-De updates in april zijn onder meer:
-- [Dynamische nalevingspakketten zijn nu algemeen beschikbaar](#dynamic-compliance-packages-are-now-generally-available)
-- [Identiteitsaanbevelingen nu opgenomen in de gratis laag van Azure Security Center](#identity-recommendations-now-included-in-azure-security-center-free-tier)
-
-
-### <a name="dynamic-compliance-packages-are-now-generally-available"></a>Dynamische nalevingspakketten zijn nu algemeen beschikbaar
-
-Het dashboard voor naleving van regelgeving van Azure Security Center bevat nu **dynamische nalevingspakketten** (nu algemeen beschikbaar) om aanvullende regelgevende en bedrijfstakstandaarden bij te houden.
-
-Dynamische nalevingspakketten kunnen worden toegevoegd aan uw abonnement of beheergroep via de pagina met beveiligingsbeleid van Security Center. Wanneer u een standaard of benchmark hebt geïntroduceerd, wordt de standaard weergegeven in het dashboard voor naleving van regelgeving met alle gekoppelde nalevingsgegevens die zijn gekoppeld als evaluaties. Er kan een overzichtsrapport voor alle geïntroduceerde standaarden worden gedownload.
-
-U kunt nu standaarden toevoegen zoals:
-
-- **NIST SP 800-53 R4**
-- **SWIFT CSP CSCF-v2020**
-- **UK OFFICIAL en UK NHS**
-- **Canada Federal PBMM**
-- **Azure CIS 1.1.0 (nieuw)** (een meer volledige weergave van Azure CIS 1.1.0)
-
-Daarnaast hebben we onlangs de **Azure Security-benchmark** toegevoegd, de door Microsoft ontworpen, voor Azure specifieke richtlijnen voor aanbevolen procedures voor beveiliging en naleving op basis van algemene nalevingskaders. Er worden extra standaarden ondersteund in het dashboard zodra deze beschikbaar komen.  
- 
-Meer informatie over het [aanpassen van de set standaarden in uw dashboard voor naleving van regelgeving](update-regulatory-compliance-packages.md).
-
-
-### <a name="identity-recommendations-now-included-in-azure-security-center-free-tier"></a>Identiteitsaanbevelingen nu opgenomen in de gratis laag van Azure Security Center
-
-Beveiligingsaanbevelingen voor identiteit en toegang in de gratis laag van Azure Security Center zijn nu algemeen beschikbaar. Dit maakt deel uit van de inspanningen om de CSPM-functies (Cloud Security Posture Management) gratis te maken. Tot nu toe zijn deze aanbevelingen alleen beschikbaar in de prijscategorie Standaard.
-
-Voorbeelden van aanbevelingen voor identiteit en toegang zijn onder meer:
-
-- 'Meervoudige verificatie moet zijn ingeschakeld voor accounts met eigenaarsmachtigingen voor uw abonnement.'
-- 'Er moeten maximaal drie eigenaren worden aangewezen voor uw abonnement.'
-- 'Afgeschafte accounts moeten worden verwijderd uit uw abonnement.'
-
-Als u abonnementen hebt in de gratis laag, worden de beveiligingsscores ervan beïnvloed door deze wijziging omdat ze nooit zijn geëvalueerd op hun identiteits- en toegangsbeveiliging.
-
-Meer informatie over [aanbevelingen voor identiteit en toegang](recommendations-reference.md#recs-identity).
-
-Meer informatie over [bewaking van identiteit en toegang](security-center-identity-access.md).
+- **Minder vereisten voor uw Log Analytics-werkruimte** : crashdumps met mogelijk gevoelige gegevens worden niet meer geüpload naar uw Log Analytics-werkruimte.

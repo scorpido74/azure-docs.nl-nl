@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/12/2020
+ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 18afa6b2e974c605b18d4e38b82061234619e9ff
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: c59a104796e11b15af805e34f9cd14b2ce8bd075
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998118"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628844"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Een SAML-toepassing registreren in Azure AD B2C
 
@@ -51,7 +51,7 @@ Samen vatting van de twee niet-exclusieve kern scenario's met SAML:
 
 Er zijn drie belang rijke onderdelen vereist voor dit scenario:
 
-* SAML- **service provider** met de mogelijkheid om SAML-aanvragen te verzenden en te ontvangen, te decoderen en te reageren op SAML-bevestigingen van Azure AD B2C. Dit wordt ook wel de Relying Party genoemd.
+* SAML- **service provider** met de mogelijkheid om SAML-aanvragen te verzenden en te ontvangen, te decoderen en te reageren op SAML-bevestigingen van Azure AD B2C. Service provider wordt ook wel de Relying Party toepassing genoemd.
 * Openbaar beschikbaar SAML- **eind punt voor meta gegevens** voor uw service provider.
 * [Azure AD B2C-tenant](tutorial-create-tenant.md)
 
@@ -89,7 +89,7 @@ Als u nog geen certificaat hebt, kunt u een zelfondertekend certificaat gebruike
     ```
 
 1. Open **gebruikers certificaten beheren**  >  **huidige gebruiker**  >  **persoonlijke**  >  **certificaten**  >  *yourappname.yourtenant.onmicrosoft.com*
-1. Selecteer de **actie**certificaat >  >  **alle taken**  >  **exporteren**
+1. Selecteer de **actie** certificaat >  >  **alle taken**  >  **exporteren**
 1. Selecteer **Ja**  >  **volgende**  >  **Ja, de persoonlijke sleutel exporteren**  >  **volgende**
 1. De standaard instellingen voor de **export bestands indeling** accepteren
 1. Geef een wacht woord op voor het certificaat
@@ -99,13 +99,13 @@ Als u nog geen certificaat hebt, kunt u een zelfondertekend certificaat gebruike
 Upload vervolgens de SAML-verklaring en het handtekening certificaat voor antwoorden naar Azure AD B2C.
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en blader naar uw Azure AD B2C-Tenant.
-1. Onder **beleids regels**selecteert u **identiteits ervaring-Framework** en vervolgens **beleids sleutels**.
-1. Selecteer **toevoegen**en selecteer vervolgens **Opties**  >  **uploaden**.
-1. Voer een **naam**in, bijvoorbeeld *SamlIdpCert*. De prefix *B2C_1A_* wordt automatisch toegevoegd aan de naam van uw sleutel.
+1. Onder **beleids regels** selecteert u **identiteits ervaring-Framework** en vervolgens **beleids sleutels** .
+1. Selecteer **toevoegen** en selecteer vervolgens **Opties**  >  **uploaden** .
+1. Voer een **naam** in, bijvoorbeeld *SamlIdpCert* . De prefix *B2C_1A_* wordt automatisch toegevoegd aan de naam van uw sleutel.
 1. Upload uw certificaat met het besturings element voor het uploaden van bestanden.
 1. Voer het wacht woord voor het certificaat in.
-1. Selecteer **Maken**.
-1. Controleer of de sleutel wordt weer gegeven zoals verwacht. Bijvoorbeeld *B2C_1A_SamlIdpCert*.
+1. Selecteer **Maken** .
+1. Controleer of de sleutel wordt weer gegeven zoals verwacht. Bijvoorbeeld *B2C_1A_SamlIdpCert* .
 
 ## <a name="2-prepare-your-policy"></a>2. het beleid voorbereiden
 
@@ -159,7 +159,7 @@ Nu uw Tenant SAML-bevestigingen kan uitgeven, moet u het SAML-Relying Party bele
 
 ### <a name="31-create-sign-up-or-sign-in-policy"></a>3,1 aanmelden of aanmeldings beleid maken
 
-1. Maak een kopie van het *SignUpOrSignin.xml* -bestand in de werkmap van uw starter pakket en sla het op met een nieuwe naam. Bijvoorbeeld *SignUpOrSigninSAML.xml*. Dit is uw Relying Party-beleids bestand.
+1. Maak een kopie van het *SignUpOrSignin.xml* -bestand in de werkmap van uw starter pakket en sla het op met een nieuwe naam. Bijvoorbeeld *SignUpOrSigninSAML.xml* . Dit is uw Relying Party-beleids bestand.
 
 1. Open het *SignUpOrSigninSAML.xml* -bestand in de editor van uw voor keur.
 
@@ -272,23 +272,23 @@ Uw aangepaste beleid en Azure AD B2C Tenant zijn nu gereed. Maak vervolgens een 
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het filter **Map + Abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure AD B2C-tenant bevat.
-1. Selecteer **Azure AD B2C** in het linkermenu. Of selecteer **Alle services** en zoek naar en selecteer **Azure AD B2C**.
-1. Selecteer **App-registraties** en selecteer vervolgens **Nieuwe registratie**.
-1. Voer een **naam** in voor de toepassing. Bijvoorbeeld *SAMLApp1*.
-1. Onder **ondersteunde account typen**selecteert u **alleen accounts in deze organisatie Directory**
-1. Onder **omleidings-URI**selecteert u **Web**en voert u in `https://localhost` . U wijzigt deze waarde later in het manifest van de toepassings registratie.
-1. Selecteer **Registreren**.
+1. Selecteer **Azure AD B2C** in het linkermenu. Of selecteer **Alle services** en zoek naar en selecteer **Azure AD B2C** .
+1. Selecteer **App-registraties** en selecteer vervolgens **Nieuwe registratie** .
+1. Voer een **naam** in voor de toepassing. Bijvoorbeeld *SAMLApp1* .
+1. Onder **ondersteunde account typen** selecteert u **alleen accounts in deze organisatie Directory**
+1. Onder **omleidings-URI** selecteert u **Web** en voert u in `https://localhost` . U wijzigt deze waarde later in het manifest van de toepassings registratie.
+1. Selecteer **Registreren** .
 
 ### <a name="42-update-the-app-manifest"></a>4,2 het app-manifest bijwerken
 
 Voor SAML-apps zijn er verschillende eigenschappen die u moet configureren in het manifest van de toepassings registratie.
 
 1. Ga in het [Azure Portal](https://portal.azure.com)naar de registratie van de toepassing die u in de vorige sectie hebt gemaakt.
-1. Onder **beheren**selecteert u **manifest** om de manifest editor te openen. U kunt verschillende eigenschappen in de volgende secties wijzigen.
+1. Onder **beheren** selecteert u **manifest** om de manifest editor te openen. U kunt verschillende eigenschappen in de volgende secties wijzigen.
 
 #### <a name="identifieruris"></a>identifierUris
 
-De `identifierUris` is een teken reeks verzameling met door de gebruiker gedefinieerde URI (s) die een web-app in een eigen Azure AD B2C Tenant identificeren. Uw service provider moet deze waarde instellen in het- `Issuer` element van een SAML-aanvraag.
+De `identifierUris` is een teken reeks verzameling met door de gebruiker gedefinieerde URI (s) die een web-app in een eigen Azure AD B2C Tenant identificeren. De URI moet overeenkomen met de naam van de SAML-aanvraag `Issuer` . De door de gebruiker gedefinieerde URI is doorgaans dezelfde waarde als de meta gegevens van de service provider `entityID` .
 
 #### <a name="samlmetadataurl"></a>samlMetadataUrl
 
@@ -296,7 +296,7 @@ Deze eigenschap vertegenwoordigt de openbaar beschik bare meta gegevens-URL van 
 
 De meta gegevens worden in het SAML-protocol gebruikt om de configuratie van een SAML-partij, zoals een service provider, beschikbaar te stellen. Meta gegevens definiëren de locatie van de services, zoals aanmelden en afmelden, certificaten, aanmeldings methode en meer. Azure AD B2C leest de meta gegevens van de service provider en reageert dienovereenkomstig. De meta gegevens zijn niet vereist. U kunt ook een aantal kenmerken opgeven, zoals de antwoord-URI en de afmeldings-URI rechtstreeks in het app-manifest.
 
-Als er eigenschappen zijn opgegeven in *zowel* de URL voor SAML-meta gegevens en in het manifest van de toepassings registratie, worden deze **samengevoegd**. De eigenschappen die zijn opgegeven in de meta gegevens-URL worden eerst verwerkt en hebben voor rang.
+Als er eigenschappen zijn opgegeven in *zowel* de URL voor SAML-meta gegevens en in het manifest van de toepassings registratie, worden deze **samengevoegd** . De eigenschappen die zijn opgegeven in de meta gegevens-URL worden eerst verwerkt en hebben voor rang.
 
 Voor deze zelf studie, die gebruikmaakt van de SAML-test toepassing, gebruikt u de volgende waarde voor `samlMetadataUrl` :
 
@@ -335,12 +335,14 @@ Voor deze zelf studie, waarin de SAML-test toepassing wordt gebruikt, moet `logo
 
 De laatste stap is het inschakelen van Azure AD B2C als een SAML-IdP in uw SAML-Relying Party toepassing. Elke toepassing wijkt af en de stappen die u kunt uitvoeren, zijn afhankelijk van elkaar. Raadpleeg de documentatie van uw app voor meer informatie.
 
+De meta gegevens kunnen als "statische meta gegevens" of "dynamische meta gegevens" worden geconfigureerd in uw service provider. In statische modus kopieert u alle of een deel van de meta gegevens uit de meta gegevens van het Azure AD B2C beleid. In de dynamische modus stelt u de URL naar de meta gegevens in en laat u de meta gegevens dynamisch door de toepassing worden gelezen.
+
 Enkele of alle volgende zijn doorgaans vereist:
 
-* **Meta gegevens**: `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
-* **Verlener**: gebruik de entityID in het meta gegevensbestand
-* **Aanmeldings-URL/SAML-eind punt/SAML-URL**: Controleer de waarde in het bestand met meta gegevens
-* **Certificaat**: dit is *B2C_1A_SamlIdpCert*, maar zonder de persoonlijke sleutel. De open bare sleutel van het certificaat ophalen:
+* **Meta gegevens** : `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
+* **Verlener** : de SAML-aanvraag `issuer` waarde moet overeenkomen met een van de uri's die zijn geconfigureerd in het- `identifierUris` element van het toepassings registratie manifest. Als de SAML `issuer` -aanvraag naam niet aanwezig is in het `identifierUris` element, [voegt u deze toe aan het manifest voor toepassings registratie](#identifieruris). Bijvoorbeeld `https://contoso.onmicrosoft.com/app-name`. 
+* **Aanmeldings-URL/SAML-eind punt/SAML-URL** : Controleer de waarde in het meta gegevensbestand Azure AD B2C-SAML-beleid voor het `<SingleSignOnService>` XML-element
+* **Certificaat** : dit is *B2C_1A_SamlIdpCert* , maar zonder de persoonlijke sleutel. De open bare sleutel van het certificaat ophalen:
 
     1. Ga naar de meta gegevens-URL die hierboven is opgegeven.
     1. Kopieer de waarde in het `<X509Certificate>` element.
@@ -353,7 +355,7 @@ Als u deze zelf studie wilt volt ooien, gebruikt u de [SAML-test toepassing][sam
 
 * De Tenant naam bijwerken
 * Update de naam van het beleid, bijvoorbeeld *B2C_1A_signup_signin_saml*
-* Geef de URI voor de verlener op: `https://contoso.onmicrosoft.com/app-name`
+* Geef de URI voor de uitgever op. Gebruik een van de Uri's in het `identifierUris` -element in het manifest voor toepassings registratie `https://contoso.onmicrosoft.com/app-name` .
 
 Selecteer **Aanmelden** en u moet een aanmeldings scherm van de gebruiker weer gegeven. Bij het aanmelden wordt een SAML-bevestiging weer gegeven aan de voorbeeld toepassing.
 
@@ -361,7 +363,7 @@ Selecteer **Aanmelden** en u moet een aanmeldings scherm van de gebruiker weer g
 
 Voor het versleutelen van de SAML-bevestigingen die worden teruggestuurd naar de service provider, gebruikt Azure AD B2C het open bare-sleutel certificaat van de service providers. De open bare sleutel moet bestaan in de SAML-meta gegevens die in de bovenstaande ["samlMetadataUrl"](#samlmetadataurl) als sleutel descriptor met het gebruik van ' Encryption ' zijn beschreven.
 
-Hier volgt een voor beeld van de SAML-meta gegevenssleutel descriptor waarvoor een gebruik is ingesteld op versleuteling:
+De volgende XML-code is een voor beeld van de SAML-meta gegevens sleutel descriptor waarvoor een gebruik is ingesteld op versleuteling:
 
 ```xml
 <KeyDescriptor use="encryption">
@@ -391,7 +393,9 @@ Als u wilt dat Azure AD B2C versleutelde beweringen verzendt, stelt u het **Want
 
 ## <a name="enable-identity-provider-initiated-flow-optional"></a>Door ID-provider geïnitieerde stroom inschakelen (optioneel)
 
-In de door de provider geïnitieerde stroom wordt het aanmeldings proces geïnitieerd door de ID-provider (Azure AD B2C), die een ongevraagd SAML-antwoord naar de service provider (uw Relying Party toepassing) verzendt. Als u de door de provider geïnitieerde stroom wilt inschakelen, stelt u het **IdpInitiatedProfileEnabled** -meta gegevens item `true` in op het [technische profiel](relyingparty.md#technicalprofile)van de Relying Party.
+In de door de provider geïnitieerde stroom wordt het aanmeldings proces geïnitieerd door de ID-provider (Azure AD B2C), die een ongevraagd SAML-antwoord naar de service provider (uw Relying Party toepassing) verzendt. Er worden momenteel geen scenario's ondersteund waarbij de initiator-ID-provider een externe ID-provider is, bijvoorbeeld [AD-FS](identity-provider-adfs2016-custom.md)of [Sales Force](identity-provider-salesforce-custom.md).
+
+Als u de stroom voor de ID-provider (Azure AD B2C) wilt inschakelen, stelt u het **IdpInitiatedProfileEnabled** -meta gegevens item `true` in op in het [technische profiel van Relying Party](relyingparty.md#technicalprofile).
 
 ```xml
 <RelyingParty>
@@ -410,14 +414,14 @@ In de door de provider geïnitieerde stroom wordt het aanmeldings proces geïnit
 Als u een gebruiker wilt aanmelden of zich wilt registreren via de door de provider geïnitieerde stroom, gebruikt u de volgende URL:
 
 ```
-https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/generic/login
+https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/generic/login?EntityId=app-identifier-uri 
 ```
 
 Vervang de volgende waarden:
 
 * **Tenant naam** met de naam van uw Tenant
 * **beleids naam** met uw SAML-Relying Party-beleids naam
-
+* **App-ID-URI** met de `identifierUris` in het meta gegevensbestand, zoals `https://contoso.onmicrosoft.com/app-name`
 ## <a name="sample-policy"></a>Voorbeeldbeleid
 
 We bieden een volledig voor beeld van een beleid dat u kunt gebruiken voor het testen met de app voor SAML-tests.
@@ -435,22 +439,19 @@ De volgende opties voor SAML-Relying Party (RP) worden ondersteund via uw eigen 
 * Geef een token versleutelings sleutel op in het object Application/Service Principal.
 * De ID-provider heeft zich aangemeld, waarbij de ID-provider is Azure AD B2C.
 
-De volgende opties voor SAML-Relying Party (RP) worden momenteel niet ondersteund:
-* De ID-provider heeft zich aangemeld, waarbij de ID-provider een externe ID-provider is, bijvoorbeeld ADFS.
-
 ## <a name="saml-token"></a>SAML-token
 
 Een SAML-token is een beveiligings token dat is uitgegeven door Azure AD B2C nadat het aanmelden is geslaagd. Het bevat informatie over de gebruiker, de service provider waarvoor het token is bedoeld, de hand tekening en de geldigheids duur. De volgende tabel geeft een lijst van de claims en eigenschappen die u kunt verwachten in een SAML-token dat is uitgegeven door Azure AD B2C.
 
-|Element  |Eigenschap  |Opmerkingen  |
+|Element  |Eigenschap  |Opmerkingen  |
 |---------|---------|---------|
 |`<Response>`| `ID` | Een automatisch gegenereerde unieke id van het antwoord. | 
 |`<Response>`| `InResponseTo` | De ID van de SAML-aanvraag waarnaar dit bericht wordt gestuurd. | 
-|`<Response>` | `IssueInstant` | Het tijdstip waarop het antwoord zich niet meer heeft voordoen. De tijd waarde wordt gecodeerd in UTC.Als u de instellingen voor de levens duur van uw tokens wilt wijzigen, stelt u de `TokenNotBeforeSkewInSeconds` [meta gegevens](saml-issuer-technical-profile.md#metadata) van het SAML-token voor de uitgever van het technische profiel in. | 
+|`<Response>` | `IssueInstant` | Het tijdstip waarop het antwoord zich niet meer heeft voordoen. De tijd waarde wordt gecodeerd in UTC.  Als u de instellingen voor de levens duur van uw tokens wilt wijzigen, stelt u de `TokenNotBeforeSkewInSeconds` [meta gegevens](saml-issuer-technical-profile.md#metadata) van het SAML-token voor de uitgever van het technische profiel in. | 
 |`<Response>` | `Destination`| Een URI-verwijzing die het adres aangeeft waarnaar deze reactie is verzonden. De waarde is gelijk aan de SAML-aanvraag `AssertionConsumerServiceURL` . | 
-|`<Response>` `<Issuer>` | |Identificeert de uitgever van het token. Dit is een wille keurige URI die is gedefinieerd door de `IssuerUri` [meta gegevens](saml-issuer-technical-profile.md#metadata) van het SAML-token probleem     |
-|`<Response>` `<Assertion>` `<Subject>` `<NameID>`     |         |De principal over welke het token informatie bedient, zoals de gebruikers object-ID. Deze waarde is onveranderbaar en kan niet opnieuw worden toegewezen of opnieuw worden gebruikt. Het kan worden gebruikt om autorisatie controles veilig uit te voeren, zoals wanneer het token wordt gebruikt voor toegang tot een bron. Standaard wordt de subject claim gevuld met de object-ID van de gebruiker in de Directory.|
-|`<Response>` `<Assertion>` `<Subject>` `<NameID>`     | `Format` | Een URI-verwijzing voor de classificatie van gegevens op basis van teken reeks-id's. Deze eigenschap wordt standaard wegge laten. U kunt de Relying Party [SubjectNamingInfo](relyingparty.md#subjectnaminginfo) instellen om de indeling op te geven `NameID` , zoals `urn:oasis:names:tc:SAML:2.0:nameid-format:transient` . |
+|`<Response>` `<Issuer>` | |Identificeert de uitgever van het token. Dit is een wille keurige URI die is gedefinieerd door de `IssuerUri` [meta gegevens](saml-issuer-technical-profile.md#metadata) van het SAML-token probleem     |
+|`<Response>` `<Assertion>` `<Subject>` `<NameID>`     |         |De principal over welke het token informatie bedient, zoals de gebruikers object-ID. Deze waarde is onveranderbaar en kan niet opnieuw worden toegewezen of opnieuw worden gebruikt. Het kan worden gebruikt om autorisatie controles veilig uit te voeren, zoals wanneer het token wordt gebruikt voor toegang tot een bron. Standaard wordt de subject claim gevuld met de object-ID van de gebruiker in de Directory.|
+|`<Response>` `<Assertion>` `<Subject>` `<NameID>`     | `Format` | Een URI-verwijzing voor de classificatie van gegevens op basis van teken reeks-id's. Deze eigenschap wordt standaard wegge laten. U kunt de Relying Party [SubjectNamingInfo](relyingparty.md#subjectnaminginfo) instellen om de indeling op te geven `NameID` , zoals `urn:oasis:names:tc:SAML:2.0:nameid-format:transient` . |
 |`<Response>` `<Assertion>` `<Subject>` `<Conditions>` |`NotBefore` |Het tijdstip waarop het token geldig wordt. De tijd waarde wordt gecodeerd in UTC. Uw toepassing moet deze claim gebruiken om de geldigheid van de levens duur van het token te controleren. Als u de instellingen voor de levens duur van uw tokens wilt wijzigen, stelt u de `TokenNotBeforeSkewInSeconds` [meta gegevens](saml-issuer-technical-profile.md#metadata) van het SAML-token probleem technisch profiel in. |
 |`<Response>` `<Assertion>` `<Subject>` `<Conditions>` | `NotOnOrAfter` | Het tijdstip waarop het token ongeldig wordt. Uw toepassing moet deze claim gebruiken om de geldigheid van de levens duur van het token te controleren. De waarde is 15 minuten na de `NotBefore` en kan niet worden gewijzigd.|
 |`<Response>` `<Assertion>` `<Conditions>` `<AudienceRestriction>` `<Audience>` | |Een URI-verwijzing waarmee een beoogde doel groep wordt geïdentificeerd. Hiermee wordt de beoogde ontvanger van het token geïdentificeerd. De waarde is gelijk aan de SAML-aanvraag `AssertionConsumerServiceURL` .|

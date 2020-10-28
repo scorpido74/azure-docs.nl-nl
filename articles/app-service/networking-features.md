@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/18/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 860b1ac1713ac7afb7db2643d68974b399b5236b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 9b75df9df2e81f01543b407b019c752c77ee6807
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207041"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628827"
 ---
 # <a name="app-service-networking-features"></a>App Service-netwerk functies
 
@@ -29,6 +29,7 @@ Het Azure App Service is een gedistribueerd systeem. De rollen die binnenkomende
 | Toegewezen adres van de app | Hybride verbindingen |
 | Toegangs beperkingen | Vereiste VNet-integratie voor gateway |
 | Service-eindpunten | VNet-integratie |
+| Privé-eindpunten ||
 
 Tenzij anders vermeld, kunnen alle functies tegelijk worden gebruikt. U kunt de functies combi neren om uw verschillende problemen op te lossen.
 
@@ -42,8 +43,8 @@ U kunt het probleem op een aantal manieren oplossen voor een gegeven use-case.  
 | Niet gedeeld, toegewezen inkomend adres voor uw app | toegewezen adres van de app |
 | De toegang tot uw app beperken vanuit een reeks goed gedefinieerde adressen | Toegangs beperkingen |
 | Toegang tot mijn app beperken van resources in een VNet | Service-eindpunten </br> ILB ASE </br> Privé-eindpunten |
-| Mijn app beschikbaar maken op een privé-IP in mijn VNet | ILB ASE </br> Privé-eindpunten </br> persoonlijk IP-adres voor inkomend verkeer op een Application Gateway met Service-eind punten |
-| Mijn app beveiligen met een Web Application firewall (WAF) | Application Gateway + ILB ASE </br> Application Gateway met persoonlijke eind punten </br> Application Gateway met Service-eind punten </br> Azure front deur met toegangs beperkingen |
+| Mijn app beschikbaar maken op een privé-IP in mijn VNet | ILB ASE </br> Privé-eindpunten </br> Persoonlijk IP-adres voor inkomend verkeer op een Application Gateway met Service-eind punten |
+| Mijn app beveiligen met een Web Application firewall (WAF) | Application Gateway + ILB ASE </br> Application Gateway met persoonlijke eind punten </br> Application Gateway met service-eindpunten </br> Azure front deur met toegangs beperkingen |
 | Taak verdeling van verkeer naar mijn apps in verschillende regio's | Azure front deur met toegangs beperkingen | 
 | Taak verdeling van verkeer in dezelfde regio | [Application Gateway met service-eindpunten][appgwserviceendpoints] | 
 
@@ -89,20 +90,23 @@ U kunt meer informatie over het instellen van een adres in uw app met behulp van
 
 ### <a name="access-restrictions"></a>Toegangs beperkingen 
 
-Met de mogelijkheid tot toegangs beperkingen kunt u **inkomende** aanvragen filteren op basis van het oorspronkelijke IP-adres. De filter actie vindt plaats op de front-end-rollen die upstream zijn van de werk rollen waar uw apps worden uitgevoerd. Aangezien de front-end-rollen upstream van de werk nemers zijn, kan de mogelijkheid tot toegangs beperkingen worden beschouwd als beveiliging op netwerk niveau voor uw apps. Met deze functie kunt u een lijst met adressen blokken voor toestaan en weigeren maken die in volg orde van prioriteit worden geëvalueerd. Het is vergelijkbaar met de functie voor netwerk beveiligings groepen (NSG) die zich in azure-netwerken bevindt.  U kunt deze functie gebruiken in een ASE of in de multi tenant-service. Wanneer u gebruikt met een ILB-ASE, kunt u de toegang beperken tot persoonlijke adres blokken.
+Met de mogelijkheid tot toegangs beperkingen kunt u **inkomende** aanvragen filteren. De filter actie vindt plaats op de front-end-rollen die upstream zijn van de werk rollen waar uw apps worden uitgevoerd. Aangezien de front-end-rollen upstream van de werk nemers zijn, kan de mogelijkheid tot toegangs beperkingen worden beschouwd als beveiliging op netwerk niveau voor uw apps. Met deze functie kunt u een lijst met regels voor toestaan en weigeren maken die in volg orde van prioriteit worden geëvalueerd. Het is vergelijkbaar met de functie voor netwerk beveiligings groepen (NSG) die zich in azure-netwerken bevindt.  U kunt deze functie gebruiken in een ASE of in de multi tenant-service. Wanneer u gebruikt met een ILB-ASE of een persoonlijk eind punt, kunt u de toegang beperken tot de blokken van een persoonlijk adres.
+> [!NOTE]
+> Maxi maal 512 toegangs beperkings regels kunnen per app worden geconfigureerd. 
 
 ![Toegangs beperkingen](media/networking-features/access-restrictions.png)
+#### <a name="ip-based-access-restriction-rules"></a>Regels voor toegangs beperking op basis van IP
 
-De functie toegangs beperkingen helpt bij scenario's waarin u de IP-adressen wilt beperken die kunnen worden gebruikt om uw app te bereiken. De gebruiks voorbeelden voor deze functie zijn:
+De functie voor toegangs beperkingen op basis van IP helpt in scenario's waarin u de IP-adressen wilt beperken die kunnen worden gebruikt om uw app te bereiken. Zowel IPv4 als IPv6 worden ondersteund. De gebruiks voorbeelden voor deze functie zijn:
 
 * De toegang tot uw app beperken vanuit een reeks goed gedefinieerde adressen 
-* Beperk de toegang tot een service voor taak verdeling, zoals Azure front deur. Als u uw inkomende verkeer naar Azure front-deur wilt vergren delen, maakt u regels om verkeer toe te staan van 147.243.0.0/16 en 2a01:111:2050::/44. 
+* Beperk de toegang tot een service voor taak verdeling, zoals Azure front deur
 
 ![Toegangs beperkingen met de voor deur](media/networking-features/access-restrictions-afd.png)
 
-Als u de toegang tot uw app wilt vergren delen zodat deze alleen kan worden bereikt vanuit resources in uw Azure Virtual Network (VNet), hebt u een statisch openbaar adres nodig, ongeacht uw bron in uw VNet. Als de resources geen openbaar adres hebben, moet u in plaats daarvan de functie Service-eind punten gebruiken. Meer informatie over het inschakelen van deze functie met de zelf studie over het [configureren van toegangs beperkingen][iprestrictions].
+Meer informatie over het inschakelen van deze functie met de zelf studie over het [configureren van toegangs beperkingen][iprestrictions].
 
-### <a name="service-endpoints"></a>Service-eindpunten
+#### <a name="service-endpoint-based-access-restriction-rules"></a>Regels voor toegangs beperking op basis van service-eind punten
 
 Met Service-eind punten kunt u **inkomende** toegang tot uw app vergren delen, zodat het bron adres moet afkomstig zijn van een reeks subnetten die u selecteert. Deze functie werkt in combi natie met de beperkingen voor de IP-toegang. Service-eind punten zijn niet compatibel met externe fout opsporing. Als u fout opsporing op afstand wilt gebruiken met uw app, mag uw client zich niet in een subnet bevinden waarop Service-eind punten zijn ingeschakeld. Service-eind punten worden ingesteld in dezelfde gebruikers ervaring als de IP-toegangs beperkingen. U kunt een lijst met toegestane/geweigerde toegangs regels maken die open bare adressen en subnetten in uw VNets bevatten. Deze functie biedt ondersteuning voor scenario's zoals:
 

@@ -1,37 +1,39 @@
 ---
-title: 'Quickstart: een privé-eindpunt maken met behulp van Azure Portal'
-description: Gebruik deze quickstart om te leren hoe u een privé-eindpunt kunt maken met behulp van Azure Portal.
+title: 'Zelfstudie: Verbinding maken met een Azure SQL-server met behulp van een privé-eindpunt in Azure'
+description: Gebruik deze zelfstudie om te leren hoe u een Azure SQL-server maakt met een privé-eindpunt.
 services: private-link
 author: asudbring
 ms.service: private-link
-ms.topic: quickstart
+ms.topic: tutorial
 ms.date: 10/20/2020
 ms.author: allensu
-ms.openlocfilehash: 3deeca4635f33b63a6e0bcecc0c829d3df88e352
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: d12b377d053ac546efef05d5594568c1c1dbcd0e
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327497"
+ms.locfileid: "92344753"
 ---
-# <a name="quickstart-create-a-private-endpoint-using-the-azure-portal"></a>Quickstart: Een privé-eindpunt maken met behulp van Azure Portal
+# <a name="tutorial---connect-to-an-azure-sql-server-using-an-azure-private-endpoint"></a>Zelfstudie: Verbinding maken met een Azure SQL-server met behulp van een privé-eindpunt in Azure
 
-Ga aan de slag met Azure Private Link door een privé-eindpunt te gebruiken om veilig verbinding te maken met een Azure-web-app.
+Een privé-eindpunt in Azure is de fundamentele bouwsteen voor een Private Link in Azure. Het biedt Azure-resources, zoals virtuele machines, de mogelijkheid om Private Link-resources te gebruiken om privé met elkaar communiceren.
 
-In deze quickstart maakt u een privé-eindpunt voor een Azure-web-app en implementeert u een virtuele machine om de privé-verbinding te testen.  
+In deze zelfstudie leert u het volgende:
 
-Er kunnen privé-eindpunten worden gemaakt voor verschillende soorten Azure-services, zoals Azure SQL en Azure Storage.
+> [!div class="checklist"]
+> * Een virtueel netwerk en een Bastion-host maken
+> * Hiermee maakt u een virtuele machine.
+> * Maak een Azure SQL-server en een privé-eindpunt.
+> * Connectiviteit met het privé-eindpunt van SQL-server testen.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* Een Azure-web-app met een **PremiumV2** - of hoger app-serviceplan geïmplementeerd in uw Azure-abonnement.  
-    * Zie voor meer informatie en een voorbeeld [Quickstart: Een ASP.NET Core-web-app maken in Azure](../app-service/quickstart-dotnetcore.md). 
-    * Zie voor een gedetailleerde zelfstudie over het maken van een web-app en een eindpunt [Zelfstudie: Verbinding maken met een web-app met behulp van een privé-eindpunt in Azure](tutorial-private-endpoint-webapp-portal.md).
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
 Meld u aan bij Azure Portal op https://portal.azure.com.
+
 
 ## <a name="create-a-virtual-network-and-bastion-host"></a>Een virtueel netwerk en Bastion-host maken
 
@@ -47,10 +49,10 @@ De Bastion-host wordt gebruikt om veilig verbinding te maken met de virtuele mac
     |------------------|-----------------------------------------------------------------|
     | **Projectgegevens**  |                                                                 |
     | Abonnement     | Selecteer uw Azure-abonnement                                  |
-    | Resourcegroep   | Selecteer **CreatePrivateEndpointQS-rg** |
+    | Resourcegroep   | Selecteer **CreateSQLEndpointTutorial-rg** |
     | **Exemplaardetails** |                                                                 |
     | Naam             | Voer **myVNet** in                                    |
-    | Regio           | Selecteer **\<your-web-app-region>** . </br> Selecteer de regio waar uw web-app wordt geïmplementeerd.|
+    | Regio           | Selecteer **VS - oost** |
 
 3. Selecteer het tabblad **IP-adressen** of klik op de knop **Volgende: IP-adressen** onderaan de pagina.
 
@@ -98,10 +100,10 @@ In deze sectie maakt u een virtuele machine die wordt gebruikt om het persoonlij
     |-----------------------|----------------------------------|
     | **Projectgegevens** |  |
     | Abonnement | Selecteer uw Azure-abonnement |
-    | Resourcegroep | Selecteer **CreatePrivateEndpointQS-rg** |
+    | Resourcegroep | Selecteer **CreateSQLEndpointTutorial** |
     | **Exemplaardetails** |  |
     | Naam van de virtuele machine | Open **myVM** |
-    | Region | Selecteer **\<your-web-app-region>** . </br> Selecteer de regio waar uw web-app wordt geïmplementeerd. |
+    | Region | Selecteer **VS - oost** |
     | Beschikbaarheidsopties | Selecteer **Geen infrastructuurredundantie vereist** |
     | Installatiekopie | Selecteer **Windows Server 2019 Datacenter - Gen1** |
     | Azure Spot-exemplaar | Selecteer **Nee** |
@@ -128,55 +130,62 @@ In deze sectie maakt u een virtuele machine die wordt gebruikt om het persoonlij
   
 6. Controleer de instellingen en selecteer vervolgens **Maken** .
 
-## <a name="create-a-private-endpoint"></a>Een privé-eindpunt maken
+## <a name="create-an-azure-sql-server-and-private-endpoint"></a><a name ="create-a-private-endpoint"></a>Een Azure SQL-server en een privé-eindpunt maken
 
-In deze sectie maakt u een privé-eindpunt voor de web-app die u in de sectie met vereisten hebt gemaakt.
+In deze sectie maakt u een SQL-server in Azure. 
 
-1. Selecteer in de linkerbovenhoek van het scherm in de portal **Een resource maken** > **Netwerken** > **Private Link** , of typ **Private Link** in het zoekvak.
+1. Selecteer in de linkerbovenhoek van het scherm in de Azure Portal de optie **Een resource maken** > **Databases** > **SQL-database** .
 
-2. Selecteer **Maken** .
-
-3. Selecteer in **Private link Center** **Privé-eindpunt** in het menu aan de linkerkant.
-
-4. Selecteer **+ Toevoegen** onder **Privé-eindpunten** .
-
-5. Typ of selecteer op het tabblad **Basisgegevens** van **Een privé-eindpunt maken** de volgende gegevens:
+1. Typ of selecteer op het tabblad **Basisprincipes** van **SQL-database maken** deze informatie:
 
     | Instelling | Waarde |
     | ------- | ----- |
     | **Projectgegevens** | |
     | Abonnement | Selecteer uw abonnement. |
-    | Resourcegroep | Selecteer **CreatePrivateEndpointQS-rg** . U hebt deze resourcegroep in de vorige sectie gemaakt.|
-    | **Exemplaardetails** |  |
-    | Naam  | Voer **myPrivateEndpoint** in. |
-    | Regio | Selecteer **\<your-web-app-region>** . </br> Selecteer de regio waar uw web-app wordt geïmplementeerd. |
+    | Resourcegroep | Selecteer **CreateSQLEndpointTutorial** . U hebt deze resourcegroep in de vorige sectie gemaakt.|
+    | **Databasedetails** |  |
+    | Databasenaam  | Voer **mysqldatabase** in. Als deze naam al wordt gebruikt, maakt u een unieke naam. |
+    | Server | Selecteer **Nieuw maken** . |
 
-6. Selecteer het tabblad **Resource** of de knop **Volgende: resource** onderaan de pagina.
+6. Typ of selecteer in **Nieuwe server** de volgende gegevens:
+
+    | Instelling | Waarde |
+    | ------- | ----- |
+    | Servernaam  | Voer **mysqlserver** in. Als deze naam al wordt gebruikt, maakt u een unieke naam.|
+    | Aanmeldgegevens van serverbeheerder | Voer de naam van de beheerder van uw keuze in. |
+    | Wachtwoord | Voer een wachtwoord naar keuze in. Het wachtwoord moet minstens 8 tekens lang zijn en moet voldoen aan de vooraf gedefinieerde vereisten. |
+    | Locatie | Selecteer **VS - oost** |
     
-7. Typ of selecteer in **Resource** de volgende gegevens:
+7. Selecteer **OK** .
+
+8. Selecteer het tabblad **Netwerken** of selecteer de **Volgende: Knop Netwerken** .
+
+9. Typ of selecteer op het tabblad **Netwerken** deze informatie:
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | Verbindingsmethode | Selecteer **Verbinding maken met een Azure-resource in mijn directory** . |
+    | **Netwerkverbinding** | |
+    | Verbindingsmethode | Selecteer **Privé-eindpunt** . |
+   
+10. Selecteer **+ Privé-eindpunt toevoegen** in **Privé-eindpunten** .
+
+11. Typ of selecteer in **Privé-eindpunt maken** deze informatie:
+
+    | Instelling | Waarde |
+    | ------- | ----- |
     | Abonnement | Selecteer uw abonnement. |
-    | Resourcetype | Selecteer **Microsoft.Web/sites** . |
-    | Resource | Selecteer **\<your-web-app-name>** . </br> Selecteer de naam van de web-app die u bij de vereisten hebt gemaakt. |
-    | Stel subresource in | Selecteer **sites** . |
-
-8. Selecteer het tabblad **Configuratie** of de knop **Volgende: configuratie** onderaan het scherm.
-
-9. Typ of selecteer in **Configuratie** de volgende gegevens:
-
-    | Instelling | Waarde |
-    | ------- | ----- |
+    | Resourcegroep | Selecteer **CreateSQLEndpointTutorial** . |
+    | Locatie | Selecteer **VS - oost** . |
+    | Name | Voer **myPrivateSQLendpoint** in. |
+    | Stel subresource in | Selecteer **SQLServer** . |
     | **Netwerken** |  |
     | Virtueel netwerk | Selecteer **myVNet** . |
     | Subnet | Selecteer **mySubnet** . |
-    | **Privé-DNS-integratie** |  |
+    | **Privé-DNS-integratie** | |
     | Integreren met privé-DNS-zone | Laat de standaardwaarde **Ja** staan. |
-    | Abonnement | Selecteer uw abonnement. |
-    | Privé-DNS-zones | Laat de standaardwaarde **(New) privatelink.azurewebsites.net** staan.
-    
+    | Privé-DNS-zone | Laat de standaardwaarde **(Nieuwe) privatelink.blob.core.windows.net** staan. |
+
+12. Selecteer **OK** . 
 
 13. Selecteer **Controleren + maken** .
 
@@ -184,11 +193,11 @@ In deze sectie maakt u een privé-eindpunt voor de web-app die u in de sectie me
 
 ## <a name="test-connectivity-to-private-endpoint"></a>Privé-eindpuntconnectiviteit testen
 
-In deze sectie gebruikt u de virtuele machine die u in de vorige stap hebt gemaakt, om verbinding te maken met de web-app via het privé-eindpunt.
+In deze sectie gebruikt u de virtuele machine die u in de vorige stap hebt gemaakt, om verbinding te maken met de SQL-server via het privé-eindpunt.
 
 1. Selecteer **Resourcegroepen** in het linkernavigatievenster.
 
-2. Selecteer **CreatePrivateEndpointQS-rg** .
+2. Selecteer **CreateSQLEndpointTutorial** .
 
 3. Selecteer **myVM** .
 
@@ -200,57 +209,57 @@ In deze sectie gebruikt u de virtuele machine die u in de vorige stap hebt gemaa
 
 7. Open Windows PowerShell op de server nadat u verbinding hebt gemaakt.
 
-8. Voer `nslookup <your-webapp-name>.azurewebsites.net` in. Vervang **\<your-webapp-name>** door de naam van de web-app die u in de voorgaande stappen hebt gemaakt.  U ontvangt een bericht dat er ongeveer als volgt uitziet:
+8. Voer `nslookup <sqlserver-name>.database.windows.net` in. Vervang **\<sqlserver-name>** door de naam van de SQL-server die u hebt gemaakt in de vorige stappen.  U ontvangt een bericht dat er ongeveer als volgt uitziet:
 
     ```powershell
     Server:  UnKnown
     Address:  168.63.129.16
 
     Non-authoritative answer:
-    Name:    mywebapp8675.privatelink.azurewebsites.net
+    Name:    mysqlserver8675.privatelink.database.windows.net
     Address:  10.1.0.5
-    Aliases:  mywebapp8675.azurewebsites.net
+    Aliases:  mysqlserver8675.database.windows.net
     ```
 
-    Het privé-IP-adres **10.1.0.5** geretourneerd voor de naam van de web-app.  Dit adres bevindt zich in het subnet van het virtuele netwerk dat u eerder hebt gemaakt.
+    Er wordt een privé-IP-adres **10.1.0.5** geretourneerd voor de naam van de SQL-server.  Dit adres bevindt zich in het subnet van het virtuele netwerk dat u eerder hebt gemaakt.
 
-11. Open Internet Explorer in de bastionverbinding met **myVM** .
 
-12. Voer de URL van de web-app in: **https://\<your-webapp-name>.azurewebsites.net** .
+9. Installeer [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017&preserve-view=true) op **myVM** .
 
-13. U ziet de standaardpagina voor web-apps als uw toepassing niet is geïmplementeerd:
+10. Open **SQL Server Management Studio** .
 
-    :::image type="content" source="./media/create-private-endpoint-portal/web-app-default-page.png" alt-text="Standaardpagina van web-app." border="true":::
+4. Typ of selecteer in **Verbinding maken met server** de volgende gegevens:
 
-18. Verbreek de verbinding met **myVM** .
+    | Instelling | Waarde |
+    | ------- | ----- |
+    | Servertype | Selecteer **Database Engine** .|
+    | Servernaam | Voer **\<sqlserver-name>.database.windows.net** in |
+    | Verificatie | Selecteer **SQL Server-verificatie** . |
+    | Gebruikersnaam | Voer de gebruikersnaam in die u hebt opgegeven tijdens het maken van de server |
+    | Wachtwoord | Voer het wachtwoord in dat u hebt opgegeven tijdens het maken van de server |
+    | Wachtwoord onthouden | Selecteer **Ja** . |
 
-## <a name="clean-up-resources"></a>Resources opschonen
+1. Selecteer **Verbinden** .
+2. Blader in het menu aan de linkerkant door databases.
+3. (Optioneel) U kunt **mysqldatabase** maken of er een query op uitvoeren.
+4. Sluit de externe bureaubladverbinding met **myVM** . 
 
-Als u deze toepassing verder niet gaat gebruiken, verwijder dan het virtueel netwerk, de virtuele machine en de web-app met de volgende stappen:
-
-1. Selecteer **Resourcegroepen** in het linkermenu.
-
-2. Selecteer **CreatePrivateEndpointQS-rg** .
-
-3. Selecteer **Resourcegroep verwijderen** .
-
-4. Voer **CreatePrivateEndpointQS-rg** in bij **TYP DE NAAM VAN DE RESOURCEGROEP** .
-
-5. Selecteer **Verwijderen** .
-
+## <a name="clean-up-resources"></a>Resources opschonen 
+Wanneer u klaar bent met het privé-eindpunt, de SQL-server en de VM, verwijdert u de resourcegroep en alle resources die deze bevat: 
+1. Typ **CreateSQLEndpointTutorial** in het **Zoekvak** bovenaan de portal, en selecteer **CreateSQLEndpointTutorial** in de zoekresultaten. 
+2. Selecteer **Resourcegroep verwijderen** . 
+3. Type CreateSQLEndpointTutorial bij **NAAM VAN RESOURCEGROEP TYPEN** en selecteer **Verwijderen** .
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u het volgende gemaakt:
+In deze zelfstudie hebt u het volgende gemaakt:
 
 * Een virtueel netwerk en Bastion-host.
 * Een virtuele machine.
-* Een privé-eindpunt voor een Azure-web-app.
+* Een Azure SQL-server met een privé-eindpunt.
 
-U hebt de virtuele machine gebruikt voor het veilig testen van de connectiviteit van de web-app via het privé-eindpunt.
+U hebt de virtuele machine gebruikt om de connectiviteit met de SQL-server via het privé-eindpunt veilig te testen.
 
-
-
-Zie voor meer informatie over de services die een privé-eindpunt ondersteunen:
+Een Private Link-service maken:
 > [!div class="nextstepaction"]
-> [Beschikbaarheid van Private Link](private-link-overview.md#availability)
+> [Een Private Link-service maken](create-private-link-service-portal.md)

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/20/2020
+ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bd5ae5c60530890f65f8cc9a98171c29820a7762
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd2f7d46df09085d19b19709c7f45cd3d6566988
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85202854"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628657"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -24,7 +24,7 @@ ms.locfileid: "85202854"
 
 U kunt het uiterlijk van elk [zelf bevestigd technisch profiel](self-asserted-technical-profile.md)aanpassen. Azure Active Directory B2C (Azure AD B2C) voert code uit in de browser van uw klant en maakt gebruik van een moderne benadering genoemd cross-Origin Resource Sharing (CORS).
 
-Als u de gebruikers interface wilt aanpassen, geeft u een URL op in het **ContentDefinition** -element met aangepaste HTML-inhoud. In het zelfondertekende technische profiel of **OrchestrationStep**, wijst u naar die inhouds definitie-id. De inhouds definitie kan een **LocalizedResourcesReferences** -element bevatten dat een lijst bevat met gelokaliseerde resources die moeten worden geladen. Azure AD B2C combineert elementen van de gebruikersinterface met de HTML-inhoud die vanaf de URL wordt geladen en presenteert vervolgens de pagina aan de gebruiker.
+Als u de gebruikers interface wilt aanpassen, geeft u een URL op in het **ContentDefinition** -element met aangepaste HTML-inhoud. In het zelfondertekende technische profiel of **OrchestrationStep** , wijst u naar die inhouds definitie-id. De inhouds definitie kan een **LocalizedResourcesReferences** -element bevatten dat een lijst bevat met gelokaliseerde resources die moeten worden geladen. Azure AD B2C combineert elementen van de gebruikersinterface met de HTML-inhoud die vanaf de URL wordt geladen en presenteert vervolgens de pagina aan de gebruiker.
 
 Het **ContentDefinitions** -element bevat URL'S naar HTML5-sjablonen die kunnen worden gebruikt in de reis van een gebruiker. De HTML5-pagina-URI wordt gebruikt voor een opgegeven gebruikers interface stap. Bijvoorbeeld het aanmelden of aanmelden, het opnieuw instellen van het wacht woord of de fout pagina's. U kunt het uiterlijk wijzigen door de LoadUri voor het HTML5-bestand te overschrijven. U kunt nieuwe inhouds definities maken op basis van uw behoeften. Dit element kan een gelokaliseerde bronnen verwijzing bevatten naar de lokalisatie-id die is opgegeven in het [lokalisatie](localization.md) -element.
 
@@ -111,7 +111,7 @@ In het volgende voor beeld ziet u de **DataUri** - `selfasserted` versie `1.2.0`
 
 #### <a name="migrating-to-page-layout"></a>Migreren naar pagina-indeling
 
-De notatie van de waarde moet het woord `contract` : _urn: com: micro soft: AAD: B2C: elementen:**contract**:p Age-name: Version_bevatten. Als u een pagina-indeling wilt opgeven in uw aangepaste beleids regels die gebruikmaken van een oude **DataUri** -waarde, gebruikt u de volgende tabel om te migreren naar de nieuwe indeling.
+De notatie van de waarde moet het woord `contract` : _urn: com: micro soft: AAD: B2C: elementen: **contract** :p Age-name: Version_ bevatten. Als u een pagina-indeling wilt opgeven in uw aangepaste beleids regels die gebruikmaken van een oude **DataUri** -waarde, gebruikt u de volgende tabel om te migreren naar de nieuwe indeling.
 
 | Oude DataUri-waarde | Nieuwe DataUri-waarde |
 | ----------------- | ----------------- |
@@ -126,6 +126,39 @@ De notatie van de waarde moet het woord `contract` : _urn: com: micro soft: AAD:
 | `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 | `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 
+In het volgende voor beeld ziet u de inhouds definitie-id's en de bijbehorende **DataUri** met het pagina contract: 
+
+```xml
+<ContentDefinitions>
+  <ContentDefinition Id="api.error">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.idpselections">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.idpselections.signup">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.signuporsignin">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.selfasserted">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.selfasserted.profileupdate">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.localaccountsignup">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.localaccountpasswordreset">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.phonefactor">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.0</DataUri>
+  </ContentDefinition>
+</ContentDefinitions>
+```
 
 ### <a name="metadata"></a>Metagegevens
 

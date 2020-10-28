@@ -1,16 +1,16 @@
 ---
 author: baanders
-description: bestand opnemen voor het opschonen van een eenvoudig Azure Digital Twins-exemplaar en app-registratie
+description: bestand opnemen voor het opschonen van een eenvoudig Azure Digital Twins-exemplaar
 ms.service: digital-twins
 ms.topic: include
 ms.date: 8/13/2020
 ms.author: baanders
-ms.openlocfilehash: e8f167555434338416381aaf8978a3d551686fb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e095a7b286a8860535d6b58fa93098735b30c87
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90606578"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372311"
 ---
 Als u de resources die u in deze zelfstudie hebt gemaakt niet meer nodig hebt, kunt u ze verwijderen met de volgende stappen.
 
@@ -23,10 +23,4 @@ Open een Azure Cloud Shell en voer de volgende opdracht uit om de resourcegroep 
 
 ```azurecli
 az group delete --name <your-resource-group>
-```
-
-Verwijder vervolgens de Azure Active Directory-app-registratie die u voor uw client-app hebt gemaakt met deze opdracht:
-
-```azurecli
-az ad app delete --id <your-application-ID>
 ```

@@ -62,6 +62,8 @@
         - name: Besturingselementen voor beveiliging van Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: ../security-controls-policy.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
+    - name: Logboekregistratie voor Azure Key Vault
+      href: logging.md
     - name: Meldingen
       items:
         - name: Bewaken met Azure Event Grid
@@ -122,8 +124,6 @@
           href: alert.md
         - name: Azure Key Vault integreren met Azure Policy
           href: azure-policy.md
-        - name: Logboekregistratie voor Azure Key Vault
-          href: logging.md
         - name: Meldingen ontvangen via Azure Event Grid en Logic Apps
           href: event-grid-logicapps.md
         - name: Meldingen ontvangen via Azure Event Grid en Azure Automation

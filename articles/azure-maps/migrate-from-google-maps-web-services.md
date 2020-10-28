@@ -9,16 +9,32 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 5da42ebd31e4b09eb8bc223560aec976584c47e9
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 3e80ff90e47f45655761abd4c7e8fa9ed04b61ef
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874455"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518888"
 ---
 # <a name="tutorial---migrate-web-service-from-google-maps"></a>Zelfstudie: webservices migreren vanuit Google Maps
 
 Zowel Azure Maps als Google Maps biedt toegang tot ruimtelijke API's via REST-webservices. Met de API-interfaces van deze platforms worden vergelijkbare functies uitgevoerd. Er worden echter verschillende naamconventies en antwoordobjecten voor gebruikt.
+
+In deze zelfstudie leert u het volgende:
+
+> * Voorwaartse en achterwaartse geocodering
+> * Zoeken naar nuttige plaatsen
+> * Routes en routebeschrijvingen berekenen
+> * Een kaartafbeelding ophalen
+> * Een afstandsmatrix berekenen
+> * Tijdzone-informatie ophalen
+
+U leert ook het volgende: 
+
+> [!div class="checklist"]
+> * Welk Azure Maps REST-service wanneer u van een Google Maps-webservice migreert
+> * Tips om het meeste uit Azure Maps-services te halen
+> * Inzicht in andere gerelateerde Azure Maps-services
 
 De tabel bevat de service-API's van Azure Maps, die een vergelijkbare functionaliteit hebben als de vermelde service-API's van Google Maps.
 
@@ -48,6 +64,12 @@ Azure Maps heeft verschillende aanvullende REST-webservices die interessant kunn
 
 - [Ruimtelijke bewerkingen](https://docs.microsoft.com/rest/api/maps/spatial): Complexe ruimtelijke berekeningen en bewerkingen, zoals geofencing, offloaden naar een service.
 - [Verkeer](https://docs.microsoft.com/rest/api/maps/traffic): Toegang tot realtime verkeersstromen en incidentgegevens.
+
+## <a name="prerequisites"></a>Vereisten 
+
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+2. [Een Azure Maps-account maken](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [Een primaire sleutel voor een abonnement verkrijgen](quick-demo-map-app.md#get-the-primary-key-for-your-account), ook wel bekend als de primaire sleutel of de abonnementssleutel. Zie [Verificatie beheren in Azure Maps](how-to-manage-authentication.md) voor meer informatie over verificatie in Azure Maps.
 
 ## <a name="geocoding-addresses"></a>Geocodering van adressen
 
@@ -110,7 +132,7 @@ De API voor reverse geocodering van Azure Maps biedt enkele aanvullende functies
 In Google Maps kan naar nuttige plaatsen worden gezocht met behulp van de API Locaties zoeken. Deze API biedt drie verschillende manieren om te zoeken naar nuttige plaatsen:
 
 - **Locatie zoeken op basis van tekst:** Hiermee wordt gezocht naar een nuttige plaats op basis van de naam, het adres of het telefoonnummer ervan.
-- **In de buurt zoeken**: Hiermee wordt naar nuttige plaatsen gezocht die zich binnen een bepaalde afstand van een locatie bevinden.
+- **In de buurt zoeken** : Hiermee wordt naar nuttige plaatsen gezocht die zich binnen een bepaalde afstand van een locatie bevinden.
 - **Zoeken op basis van tekst:** Hiermee wordt naar plaatsen gezocht met behulp van een vrije tekst, die een nuttige plaats en een locatie bevat. Bijvoorbeeld pizza in New York of restaurants in de buurt van Main St.
 
 Azure Maps biedt verschillende zoek-API's voor nuttige plaatsen:
@@ -198,7 +220,7 @@ De tabel bevat de API-parameters in Google Maps en de vergelijkbare API-paramete
 | `optimize`                     | `computeBestOrder`                 |
 | `origin`                       | `query`                            |
 | `region`                       | *N.v.t.* - deze functie is gerelateerd aan geocodering. Gebruik de parameter *countrySet* wanneer u de geocoderings-API van Azure Maps gebruikt.  |
-| `traffic_model`               | *N.v.t.* - er kan alleen worden opgegeven of er verkeersgegevens moeten worden gebruikt met de parameter *traffic*. |
+| `traffic_model`               | *N.v.t.* - er kan alleen worden opgegeven of er verkeersgegevens moeten worden gebruikt met de parameter *traffic* . |
 | `transit_mode`                | Zie de [documentatie van Mobility-services](https://docs.microsoft.com/rest/api/maps/mobility) |
 | `transit_routing_preference` | Zie de [documentatie van Mobility-services](https://docs.microsoft.com/rest/api/maps/mobility) |
 | `units`                        | *N.v.t.* - in Azure Maps wordt alleen het metrische systeem gebruikt.  |
@@ -334,7 +356,6 @@ Laten we een rood (`FF0000`) standaardpictogram toevoegen met daaronder (15 50) 
 &pins=default|coFF0000|la15 50||'Space Needle' -122.349300 47.620180
 ```
 
-
 ![Markering in Azure Maps](media/migrate-google-maps-web-services/azure-maps-marker.png)
 
 Voeg drie spelden toe met de labelwaarden 1, 2 en 3:
@@ -342,8 +363,6 @@ Voeg drie spelden toe met de labelwaarden 1, 2 en 3:
 ```
 &pins=default||'1'-122 45|'2'-119.5 43.2|'3'-121.67 47.12
 ```
-
-
 
 ![Meerdere markeringen in Azure Maps](media/migrate-google-maps-web-services/azure-maps-multiple-markers.png)
 
@@ -468,13 +487,24 @@ Deze bibliotheken voor opensource-clients zijn voor andere computertalen:
 
 - .NET Standard 2.0 – [GitHub-project](https://github.com/perfahlen/AzureMapsRestServices) \| [NuGet-pakket](https://www.nuget.org/packages/AzureMapsRestToolkit/)
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="next-steps"></a>Volgende stappen
 
-Hieronder vindt u aanvullende documentatie en resources voor de REST-services van Azure Maps.
+Meer informatie over Azure Maps REST-services:
 
-- [Aanbevolen procedures voor zoeken](how-to-use-best-practices-for-search.md)
-- [Zoeken naar een adres](how-to-search-for-address.md)
-- [Best practices voor routering](how-to-use-best-practices-for-routing.md)
-- [Naslagdocumentatie over de REST-service-API van Azure Maps](https://docs.microsoft.com/rest/api/maps/)
-- [Codevoorbeelden](https://docs.microsoft.com/samples/browse/?products=azure-maps)
-- [De services-module gebruiken (Web SDK)](how-to-use-best-practices-for-routing.md)
+> [!div class="nextstepaction"]
+> [Aanbevolen procedures voor zoeken](how-to-use-best-practices-for-search.md)
+
+> [!div class="nextstepaction"]
+> [Zoeken naar een adres](how-to-search-for-address.md)
+
+> [!div class="nextstepaction"]
+> [Best practices voor routering](how-to-use-best-practices-for-routing.md)
+
+> [!div class="nextstepaction"]
+> [Naslagdocumentatie over de REST-service-API van Azure Maps](https://docs.microsoft.com/rest/api/maps/)
+
+> [!div class="nextstepaction"]
+> [Codevoorbeelden](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+
+> [!div class="nextstepaction"]
+> [De services-module gebruiken (Web SDK)](how-to-use-best-practices-for-routing.md)

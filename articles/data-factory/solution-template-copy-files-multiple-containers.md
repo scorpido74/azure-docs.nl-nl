@@ -11,36 +11,38 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/1/2018
-ms.openlocfilehash: 73560c49e10ab96c934d4dd3cea9395093a26420
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f78d0b02c9790234a63ef64200dcab72bc64c033
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82629045"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629422"
 ---
-# <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>Bestanden van meerdere containers met Azure Data Factory kopiëren
+# <a name="copy-multiple-folders-with-azure-data-factory"></a>Meerdere mappen kopiëren met Azure Data Factory
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-In dit artikel wordt een oplossings sjabloon beschreven die u kunt gebruiken om bestanden te kopiëren uit meerdere containers tussen bestands archieven. U kunt dit bijvoorbeeld gebruiken om uw data Lake te migreren van AWS S3 naar Azure Data Lake Store. Of u kunt de sjabloon gebruiken om alles te repliceren van een Azure Blob-opslag account naar een ander.
+In dit artikel wordt een oplossings sjabloon beschreven waarmee u meerdere Kopieer activiteiten kunt gebruiken om containers of mappen te kopiëren tussen op bestanden gebaseerde winkels, waarbij elke Kopieer activiteit één container of map moet kopiëren. 
 
 > [!NOTE]
 > Als u bestanden wilt kopiëren uit één container, is het efficiënter om met het [hulp programma gegevens kopiëren](copy-data-tool.md) een pijp lijn te maken met één Kopieer activiteit. De sjabloon in dit artikel is meer dan u nodig hebt voor dat eenvoudige scenario.
 
 ## <a name="about-this-solution-template"></a>Over deze oplossings sjabloon
 
-Met deze sjabloon worden de containers uit uw bron opslag archief opgesomd. Vervolgens worden deze containers naar het doel archief gekopieerd.
+Met deze sjabloon worden de mappen opgesomd van een bepaalde bovenliggende map in uw bron opslag archief. Vervolgens worden alle mappen naar het doel archief gekopieerd.
 
 De sjabloon bevat drie activiteiten:
-- **GetMetadata** scant uw opslag opslag en haalt de lijst met containers op.
-- **Foreach** haalt de container lijst op uit de **GetMetadata** -activiteit en herhaalt vervolgens de lijst en geeft elke container door aan de Kopieer activiteit.
-- **Copy** kopieert elke container uit het opslag archief van de bron naar het doel archief.
+- **GetMetadata** scant uw opslag opslag en haalt de lijst met submappen op uit een bepaalde bovenliggende map.
+- **Foreach** haalt de lijst met submappen op uit de **GetMetadata** -activiteit en herhaalt vervolgens de lijst en geeft elke map door aan de Kopieer activiteit.
+- **Copy** kopieert elke map uit het opslag archief van de bron naar het doel archief.
 
 Met de sjabloon worden de volgende parameters gedefinieerd:
-- *SourceFileFolder* is het mappad van de gegevens bron opslag, waar u een lijst van de containers kunt ophalen. Het pad is de hoofdmap die meerdere container mappen bevat. De standaard waarde van deze para meter is `sourcefolder` .
-- *SourceFileDirectory* is het pad naar de submap onder de hoofdmap van uw gegevens bron archief. De standaard waarde van deze para meter is `subfolder` .
-- *DestinationFileFolder* is het mappad waarnaar de bestanden worden gekopieerd in uw doel archief. De standaard waarde van deze para meter is `destinationfolder` .
-- *DestinationFileDirectory* is het pad naar de submap waarnaar de bestanden worden gekopieerd in uw doel archief. De standaard waarde van deze para meter is `subfolder` .
+- *SourceFileFolder* maakt deel uit van het pad naar de bovenliggende map van uw gegevens bron archief: *SourceFileFolder/SourceFileDirectory* , waar u een lijst van de submappen kunt ophalen. 
+- *SourceFileDirectory* maakt deel uit van het pad naar de bovenliggende map van uw gegevens bron archief: *SourceFileFolder/SourceFileDirectory* , waar u een lijst van de submappen kunt ophalen. 
+- *DestinationFileFolder* maakt deel uit van het pad naar de bovenliggende map: *DestinationFileFolder/DestinationFileDirectory* waar de bestanden worden gekopieerd naar uw doel archief. 
+- *DestinationFileDirectory* maakt deel uit van het pad naar de bovenliggende map: *DestinationFileFolder/DestinationFileDirectory* waar de bestanden worden gekopieerd naar uw doel archief. 
+
+Als u meerdere containers wilt kopiëren onder hoofd mappen tussen opslag archieven, kunt u alle vier de para meters invoeren als */* . Hierdoor repliceert u alles tussen opslag archieven.
 
 ## <a name="how-to-use-this-solution-template"></a>Deze oplossings sjabloon gebruiken
 
@@ -52,7 +54,7 @@ Met de sjabloon worden de volgende parameters gedefinieerd:
 
     ![Een nieuwe verbinding maken met de bestemming](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image2.png)
 
-3. Selecteer **deze sjabloon gebruiken**.
+3. Selecteer **deze sjabloon gebruiken** .
 
     ![Deze sjabloon gebruiken](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image3.png)
     
@@ -60,7 +62,7 @@ Met de sjabloon worden de volgende parameters gedefinieerd:
 
     ![De pijp lijn weer geven](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image4.png)
 
-5. Selecteer **debug**, voer de **para meters**in en selecteer **volt ooien**.
+5. Selecteer **debug** , voer de **para meters** in en selecteer **volt ooien** .
 
     ![De pijplijn uitvoeren](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image5.png)
 

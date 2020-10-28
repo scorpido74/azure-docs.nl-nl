@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 6d1786766fc61ed0edfdc53295a50ba212818fc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d964312ea283fee4bb71e9a41b31f6b32de346be
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89181422"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327791"
 ---
 # <a name="what-is-the-new-azure-digital-twins-how-is-it-different-from-the-previous-version-2018"></a>Wat is het nieuwe Azure Digital Twins? Wat is het verschil met de vorige versie (2018)?
 
@@ -33,7 +33,7 @@ In de onderstaande grafiek ziet u een weergave van concepten naast elkaar die zi
 | **Topologie**<br>*Flexibeler*| In de vorige versie werd een gegevensstructuur ondersteund die is afgestemd op slimme ruimten. Digitale apparaatdubbels werden verbonden met hiërarchische relaties. | In de nieuwe versie kunnen uw digitale apparaatdubbels worden verbonden met willekeurige grafiektopologieën die u naar wens kunt inrichten. Zo beschikt u over meer flexibiliteit voor het uitdrukken van de complexe relaties uit de echte wereld.<br><br>Meer informatie in [*Concepten: Digitale apparaatdubbels en de dubbele grafiek*](concepts-twins-graph.md). |
 | **Compute**<br>*Rijker, flexibeler* | In de vorige versie werd logica voor het verwerken van gebeurtenissen en telemetrie gedefinieerd in JavaScript-UDF's (door de gebruiker gedefinieerde functies). Foutopsporing met UDF's was beperkt. | De nieuwe release heeft een open rekenmodel: u kunt aangepaste logica opgeven door externe rekenresources te koppelen, zoals [Azure Functions](../azure-functions/functions-overview.md). Op die manier kunt u een programmeertaal naar keuze gebruiken, zonder beperkingen aangepaste codebibliotheken openen en profiteren van de ontwikkeling en foutopsporing van resources die de externe service mogelijk heeft.<br><br>Meer informatie in [*Instructies: Een Azure-functie instellen voor gegevensverwerking*](how-to-create-azure-function.md). |
 | **Apparaatbeheer met IoT Hub**<br>*Toegankelijker* | De vorige versie beheerde apparaten met een instantie van [IoT Hub](../iot-hub/about-iot-hub.md) die intern was voor de Azure Digital Twins-service. Deze geïntegreerde hub was niet volledig toegankelijk voor ontwikkelaars. | In de nieuwe versie moet u uw eigen IoT-hub meenemen door een afzonderlijk gemaakte IoT Hub-instantie (samen met de apparaten die al worden beheerd) te koppelen. Hiermee hebt u volledige toegang tot de mogelijkheden van IoT Hub en hebt u controle over het beheer van apparaten.<br><br>Meer informatie in [*Instructies: Telemetrie opnemen vanuit IoT Hub*](how-to-ingest-iot-hub-data.md). |
-| **Beveiliging**<br>*Meer standaard* | De vorige versie bevatte vooraf gedefinieerde rollen die u kon gebruiken om de toegang tot uw instantie te beheren. | De nieuwe versie integreert met dezelfde [Azure RBAC (op rollen gebaseerd toegangsbeheer)](../role-based-access-control/overview.md) back-endservice die door andere Azure-services wordt gebruikt. Hierdoor is het gemakkelijker om te verifiëren tussen andere Azure-Services in uw oplossing, zoals IoT Hub, Azure Functions, Event Grid en meer.<br>Met RBAC kunt u nog steeds vooraf gedefinieerde rollen gebruiken, maar u kunt ook aangepaste rollen maken en configureren.<br><br>Meer informatie in [*Concepten: Beveiliging voor Azure Digital Twins-oplossingen*](concepts-security.md). |
+| **Beveiliging**<br>*Meer standaard* | De vorige versie bevatte vooraf gedefinieerde rollen die u kon gebruiken om de toegang tot uw instantie te beheren. | De nieuwe versie integreert met dezelfde [Azure RBAC (op rollen gebaseerd toegangsbeheer)](../role-based-access-control/overview.md) back-endservice die door andere Azure-services wordt gebruikt. Hierdoor is het gemakkelijker om te verifiëren tussen andere Azure-Services in uw oplossing, zoals IoT Hub, Azure Functions, Event Grid en meer.<br>Met Azure RBAC kunt u nog steeds vooraf gedefinieerde rollen gebruiken, maar u kunt ook aangepaste rollen maken en configureren.<br><br>Meer informatie in [*Concepten: Beveiliging voor Azure Digital Twins-oplossingen*](concepts-security.md). |
 | **Schaalbaarheid**<br>*Groter* | De vorige versie had schaalbeperkingen voor apparaten, berichten, grafieken en schaaleenheden. Er werd slechts één instantie van Azure Digital Twins ondersteund per abonnement.  | De nieuwe versie is gebaseerd op een nieuwe architectuur met verbeterde schaalbaarheid en heeft meer rekenkracht. Bovendien worden 10 instanties per regio, per abonnement ondersteund.<br><br>Zie [*Referentie: Servicebeperkingen van de openbare preview*](reference-service-limits.md) voor meer informatie over de huidige limieten in de openbare preview. |
 
 ## <a name="service-limits-in-public-preview"></a>Servicebeperkingen van de openbare preview

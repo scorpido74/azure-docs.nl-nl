@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 0023308c74d58b1c94bf13fcb47ffb8aa7ade1d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6cf47c3b6af89ff3ff431d18d0bda2144427ec34
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85557616"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329403"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Gegevens migreren naar een Azure Cosmos DB Table-API-account
 
@@ -68,11 +68,11 @@ Gebruik de volgende bronopties bij het definiëren van Azure Table Storage of Ta
 
 Als u de verbindingsreeks voor de bron wilt ophalen bij het importeren uit Azure Table Storage, opent u Azure Portal, klikt u op **Storage-accounts** > **Account** > **Toegangssleutels** en kopieert u vervolgens de **verbindingsreeks** met de knop Kopiëren.
 
-:::image type="content" source="./media/table-import/storage-table-access-key.png" alt-text="Schermopname van HBase-bronopties":::
+:::image type="content" source="./media/table-import/storage-table-access-key.png" alt-text="Schermopname van de opties Opslagaccounts > Account > Toegangssleutels met de knop Kopiëren gemarkeerd.":::
 
 Als u de verbindingsreeks voor de bron wilt ophalen bij het importeren uit een Azure Cosmos DB Table-API-account (preview), opent u Azure Portal, klikt u op **Azure Cosmos DB** > **Account** > **Verbindingsreeks** en kopieert u vervolgens de **verbindingsreeks** met de knop Kopiëren.
 
-:::image type="content" source="./media/table-import/cosmos-connection-string.png" alt-text="Schermopname van HBase-bronopties":::
+:::image type="content" source="./media/table-import/cosmos-connection-string.png" alt-text="Schermopname van de opties Opslagaccounts > Account > Toegangssleutels met de knop Kopiëren gemarkeerd.":::
 
 [Voorbeeld van Azure Table Storage-opdracht](#azure-table-storage)
 

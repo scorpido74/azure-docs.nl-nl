@@ -3,16 +3,16 @@ title: Azure Storage-voorbeelden met behulp van .NET | Microsoft Docs
 description: Lees hier hoe u voorbeeldcode en -toepassingen voor Azure Storage kunt weergeven, downloaden en uitvoeren. Ga aan de slag met voorbeelden voor blobs, wachtrijen, tabellen en bestanden, met behulp van de clientbibliotheken van Storage voor .NET.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 02/13/2020
+ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: f02c08e752575dd1f57ce91dfc3145b69e3a2fd2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 760fedd94ef682b183eede1215186de973e9a216
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81010491"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359778"
 ---
 # <a name="azure-storage-samples-using-v12-net-client-libraries"></a>Azure Storage-voorbeelden met behulp van .NET-clientbibliotheken type v12
 
@@ -336,4 +336,5 @@ Voor informatie over voorbeelden voor andere talen:
 * Java: [Azure Storage-voorbeelden met behulp van Java](storage-samples-java.md)
 * Python: [Azure Storage-voorbeelden met behulp van Python](storage-samples-python.md)
 * JavaScript/Node.js: [Azure Storage-voorbeelden met behulp van JavaScript](storage-samples-javascript.md)
+* C++: [Azure Storage-voorbeelden met behulp van C++](storage-samples-c-plus-plus.md)
 * Alle andere talen: [Voorbeelden van Azure Storage](storage-samples.md)

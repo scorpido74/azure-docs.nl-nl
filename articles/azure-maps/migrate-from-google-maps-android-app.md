@@ -9,22 +9,35 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: b493b78971b7e802d82e8f61203abdaaca527016
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: d7ec1edb779ddaf53cef02dd6e83bb3e719d0b4e
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873872"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503552"
 ---
 # <a name="tutorial---migrate-an-android-app-from-google-maps"></a>Zelfstudie: Een Android-app migreren vanuit Google Maps
 
-De Azure Maps Android SDK bevat een API-interface die vergelijkbaar is met de Web SDK. Als u met een van deze SDK's hebt ontwikkeld, zijn veel van dezelfde concepten, best practices en architecturen van toepassing.
+De Azure Maps Android SDK bevat een API-interface die vergelijkbaar is met de Web SDK. Als u met een van deze SDK's hebt ontwikkeld, zijn veel van dezelfde concepten, best practices en architecturen van toepassing. In deze zelfstudie leert u het volgende:
+
+> [!div class="checklist"]
+> * Een kaart laden
+> * Een kaar lokaliseren
+> * Markeringen polylijnen en polygonen toevoegen.
+> * Een tegellaag als overlay gebruiken
+> * Verkeergegevens weergeven
 
 De Azure Maps Android SDK ondersteunt een minimale Android-versie van API 21: Android 5.0.0 (Lollipop).
 
 Alle voorbeelden zijn in Java. U kunt echter Kotlin gebruiken bij de Azure Maps Android SDK.
 
 Voor meer informatie over ontwikkelen met de Android SDK van Azure Maps raadpleegt u de [Instructiegidsen voor de Azure Maps Android SDK](how-to-use-android-map-control-library.md).
+
+## <a name="prerequisites"></a>Vereisten 
+
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+2. [Een Azure Maps-account maken](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [Een primaire sleutel voor een abonnement verkrijgen](quick-demo-map-app.md#get-the-primary-key-for-your-account), ook wel bekend als de primaire sleutel of de abonnementssleutel. Zie [Verificatie beheren in Azure Maps](how-to-manage-authentication.md) voor meer informatie over verificatie in Azure Maps.
 
 ## <a name="load-a-map"></a>Een kaart laden
 
@@ -52,7 +65,7 @@ Als u een kaart wilt weergeven met behulp van de Google Maps SDK voor Android, k
 
     `implementation 'com.google.android.gms:play-services-maps:17.0.0'`
 
-3. Voeg een Google Maps API-sleutel toe in de toepassingssectie van het bestand **google\_maps\_api.xml**:
+3. Voeg een Google Maps API-sleutel toe in de toepassingssectie van het bestand **google\_maps\_api.xml** :
 
     ```xml
     <meta-data android:name="com.google.android.geo.API_KEY" android:value="YOUR_GOOGLE_MAPS_KEY"/>
@@ -150,7 +163,7 @@ Wanneer u een toepassing uitvoert, wordt het kaartbesturingselement geladen zoal
 
 Als u een kaart wilt weergeven met behulp van de Azure Maps SDK voor Android, moet u de volgende stappen uitvoeren:
 
-1. Open het bestand **build.gradle** op het hoogste niveau en voeg de volgende code toe aan de bloksectie **alle projecten**:
+1. Open het bestand **build.gradle** op het hoogste niveau en voeg de volgende code toe aan de bloksectie **alle projecten** :
 
     ```JAVA
     maven {
@@ -180,7 +193,7 @@ Als u een kaart wilt weergeven met behulp van de Azure Maps SDK voor Android, mo
         > [!Note]
         > De Azure Maps Android SDK wordt regelmatig geüpgraded en uitgebreid. Raadpleeg [Aan de slag gaan met Android-kaartbesturingselementen](how-to-use-android-map-control-library.md) voor het nieuwste versienummer van Azure Maps. U kunt ook het versienummer wijzigen van 0.2 in 0+ zodat uw code altijd naar de nieuwste versie verwijst.
 
-    4. Ga op de werkbalk naar **Bestand** en klik vervolgens op **Project met Gradle-bestanden synchroniseren**.
+    4. Ga op de werkbalk naar **Bestand** en klik vervolgens op **Project met Gradle-bestanden synchroniseren** .
 
 3. Voeg een kaartfragment toe aan de hoofdactiviteit (resources pwd\> indeling \> activity\_main.xml):
 
@@ -309,7 +322,7 @@ Als u uw toepassing uitvoert, wordt het kaartbesturingselement geladen zoals in 
 Het Azure Maps-besturingselement ondersteunt verder uitzoomen en biedt een ruimere weergave van de wereld.
 
 > [!TIP]
-> Als u een Android-emulator op een Windows-computer gebruikt, wordt de kaart mogelijk niet weergegeven vanwege conflicten met OpenGL en door software versnelde weergave van afbeeldingen. Sommige mensen hebben het probleem als volgt opgelost. Open AVD Manager en selecteer het virtuele apparaat dat u wilt bewerken. Schuif omlaag in het deelvenster **Configuratie verifiëren**. Stel in de sectie **Geëmuleerde prestaties** de optie **Afbeeldingen** in op **Hardware**.
+> Als u een Android-emulator op een Windows-computer gebruikt, wordt de kaart mogelijk niet weergegeven vanwege conflicten met OpenGL en door software versnelde weergave van afbeeldingen. Sommige mensen hebben het probleem als volgt opgelost. Open AVD Manager en selecteer het virtuele apparaat dat u wilt bewerken. Schuif omlaag in het deelvenster **Configuratie verifiëren** . Stel in de sectie **Geëmuleerde prestaties** de optie **Afbeeldingen** in op **Hardware** .
 
 ## <a name="localizing-the-map"></a>De kaart lokaliseren
 
@@ -745,6 +758,18 @@ mapControl.onReady(map -> {
 
 ![Verkeer in Azure Maps](media/migrate-google-maps-android-app/azure-maps-traffic.png)
 
-Meer informatie over de Azure Maps Android SDK.
+## <a name="next-steps"></a>Volgende stappen
 
-[Een Android-kaartbesturingselement gebruiken](how-to-use-android-map-control-library.md)
+Meer informatie over Azure Maps Android-SDK:
+
+> [!div class="nextstepaction"]
+> [Een Android-kaartbesturingselement gebruiken](how-to-use-android-map-control-library.md)
+
+> [!div class="nextstepaction"]
+> [Een symboollaag toevoegen aan een Android-kaart](how-to-add-symbol-to-android-map.md)
+
+> [!div class="nextstepaction"]
+> [Vormen toevoegen aan een Android-kaart](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)
+
+> [!div class="nextstepaction"]
+> [Kaartstijlen wijzigen in Android-kaarten](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)

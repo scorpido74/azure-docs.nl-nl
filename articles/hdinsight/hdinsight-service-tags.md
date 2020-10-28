@@ -67,10 +67,10 @@ Als uw cluster zich bevindt in een regio die in deze tabel wordt vermeld, hoeft 
 | &nbsp; | West US 2 | HDInsight. WestUS2 |
 | &nbsp; | VS - west-centraal | HDInsight. WestCentralUS |
 | Canada | Canada - oost | HDInsight. CanadaEast |
-| Brazilië | Brazil South | HDInsight. BrazilSouth |
+| Brazilië | Brazilië - zuid | HDInsight. BrazilSouth |
 | Korea | Korea - centraal | HDInsight. KoreaCentral |
 | &nbsp; | Korea - zuid | HDInsight. KoreaSouth |
-| India | India - centraal | HDInsight. CentralIndia |
+| India | Central India | HDInsight. CentralIndia |
 | &nbsp; | India - zuid | HDInsight. SouthIndia |
 | Japan | Japan - west | HDInsight. JapanWest |
 | Frankrijk | Frankrijk - centraal| HDInsight. FranceCentral |
@@ -98,10 +98,10 @@ Als uw cluster bijvoorbeeld in de regio wordt gemaakt `East US 2` , moet u de vo
 
 | Land | Regio | Servicetag |
 | ---- | ---- | ---- |
-| Verenigde Staten | US - oost 2 | HDInsight. EastUS2 |
-| &nbsp; | Central US | HDInsight. Centraalus |
+| Verenigde Staten | VS - oost 2 | HDInsight. EastUS2 |
+| &nbsp; | VS - centraal | HDInsight. Centraalus |
 | &nbsp; | NorthCentral | HDInsight. NorthCentralUS |
-| &nbsp; | South Central US | HDInsight. SouthCentralUS |
+| &nbsp; | VS - zuid-centraal | HDInsight. SouthCentralUS |
 | &nbsp; | VS - oost | HDInsight. Oostelijkeus |
 | &nbsp; | VS - west | HDInsight. Westelijkeus |
 | Japan | Japan - oost | HDInsight. JapanEast |

@@ -104,7 +104,7 @@ In de laatste sectie maakt de sjabloon een virtuele Ubuntu-machine in elk van de
 
 Voor het installeren van een BIND moet yon het open bare IP-adres van de twee virtuele DNS-machines vinden.
 
-1. Open de [Azure Portal](https://portal.azure.com).
+1. Open [Azure Portal](https://portal.azure.com).
 2. Open de virtuele DNS-machine door **resource groepen te selecteren > [naam resource groep] > [vnet1DNS]** .  De naam van de resource groep is het account dat u in de laatste procedure maakt. De standaard namen van de virtuele DNS-machines zijn *vnet1DNS* en *vnet2NDS* .
 3. Selecteer **Eigenschappen** om de pagina eigenschappen van het virtuele netwerk te openen.
 4. Noteer het **open bare IP-adres** en Controleer ook het **privé-IP-adres** .  Het privé-IP-adres is **10.1.0.4** voor vnet1DNS en **10.2.0.4** voor vnet2DNS.  
@@ -287,7 +287,7 @@ In de volgende stappen wordt beschreven hoe u de script actie script aanroept va
 
 **HBase-replicatie inschakelen vanuit de Azure Portal**
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Open het bron HBase-cluster.
 3. Selecteer **script acties** in het menu cluster.
 4. Selecteer aan de bovenkant van de pagina de optie **Nieuw verzenden** .

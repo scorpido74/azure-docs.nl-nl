@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/14/2020
-ms.openlocfilehash: a19e2c6647f1ff072c61044e8e5777d5d3f8d2db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ce183595ed8e20c4b5cf4afe9ac1174882dc392
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85958358"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370318"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Zelfstudie: Apache HBase gebruiken in Azure HDInsight
 
@@ -50,14 +50,14 @@ Voor de volgende procedure wordt een Azure Resource Manager-sjabloon gebruikt om
     |Resourcegroep|Maak een Azure-resourcebeheergroep of gebruik een bestaande.|
     |Locatie|Geef de locatie van de resourcegroep op. |
     |Clusternaam|Voer een naam in voor het HBase-cluster.|
-    |Gebruikersnaam en wachtwoord voor aanmelding bij cluster|De standaardaanmeldingsnaam is **admin**.|
-    |SSH-gebruikersnaam en SSH-wachtwoord|De standaardgebruikersnaam is **sshuser**.|
+    |Gebruikersnaam en wachtwoord voor aanmelding bij cluster|De standaardaanmeldingsnaam is **admin** .|
+    |SSH-gebruikersnaam en SSH-wachtwoord|De standaardgebruikersnaam is **sshuser** .|
 
     Andere parameters zijn optioneel.  
 
     Elk cluster is afhankelijk van een Azure Storage-account. Nadat u een cluster hebt verwijderd, blijven de gegevens in het opslagaccount. De naam van het standaardopslagaccount voor het cluster is de naam waaraan 'store' is toegevoegd. Deze is vastgelegd in de sectie met sjabloonvariabelen.
 
-3. Selecteer **Ik ga akkoord met de bovenstaande voorwaarden** en selecteer vervolgens **Kopen**. Het duurt ongeveer 20 minuten om een cluster te maken.
+3. Selecteer **Ik ga akkoord met de bovenstaande voorwaarden** en selecteer vervolgens **Kopen** . Het duurt ongeveer 20 minuten om een cluster te maken.
 
 Nadat een HBase-cluster is verwijderd, kunt u een ander HBase-cluster maken met de dezelfde standaard blob-container. Het nieuwe cluster haalt de HBase-tabellen op die u hebt gemaakt in het oorspronkelijke cluster. Om inconsistenties te voorkomen, wordt u aangeraden de HBase-tabellen uit te schakelen voordat u het cluster verwijdert.
 
@@ -207,9 +207,51 @@ Met [Apache Hive](https://hive.apache.org/) kunt u een query uitvoeren op de geg
 
 1. Gebruik `exit` om uw SSH-verbinding af te sluiten.
 
+### <a name="separate-hive-and-hbase-clusters"></a>Afzonderlijke Hive- en Hbase-clusters
+
+De Hive-query voor toegang tot HBase-gegevens hoeft niet te worden uitgevoerd vanuit het HBase-cluster. Elk cluster dat deel uitmaakt van Hive (inclusief Spark, Hadoop, HBase of Interactive Query) kan worden gebruikt voor het opvragen van HBase-gegevens, mits de volgende stappen worden uitgevoerd:
+
+1. Beide clusters moeten aan hetzelfde virtuele netwerk en subnet zijn gekoppeld
+2. `/usr/hdp/$(hdp-select --version)/hbase/conf/hbase-site.xml` kopiëren van de HBase-clusterhoofdknooppunten naar de Hive-clusterhoofdknooppunten
+
+### <a name="secure-clusters"></a>Beveiligde clusters
+
+HBase-gegevens kunnen ook worden opgevraagd uit Hive met behulp van HBase met ESP: 
+
+1. Bij het volgen van een patroon met meerdere clusters moet op beide clusters ESP zijn ingeschakeld. 
+2. Als u wilt dat Hive query's kan uitvoeren op HBase-gegevens, moet u ervoor zorgen dat de `hive`-gebruiker machtigingen krijgt voor toegang tot de HBase-gegevens via de Hbase Apache Ranger-invoeg toepassing
+3. Bij het gebruik van afzonderlijke ESP-clusters moet de inhoud van `/etc/hosts` van de HBase-cluster hoofdknooppunten worden toegevoegd aan `/etc/hosts` van de Hive-clusterhoofd knooppunten. 
+> [!NOTE]
+> Nadat u clusters hebt geschaald, moet `/etc/hosts` opnieuw worden toegevoegd
+
 ## <a name="use-hbase-rest-apis-using-curl"></a>HBase REST API's gebruiken met Curl
 
 De REST API is beveiligd via [basisverificatie](https://en.wikipedia.org/wiki/Basic_access_authentication). U moet aanvragen altijd uitvoeren via een beveiligde HTTP-verbinding (HTTPS). Zo zorgt u ervoor dat uw referenties veilig worden verzonden naar de server.
+
+1. Voeg het volgende aangepaste opstartscript tot aan de sectie **Script Action** om HBase REST-API’s in te schakelen in het HDInsight-cluster. U kunt het opstartscript toevoegen tijdens het maken van het cluster of nadat het cluster is gemaakt. Selecteer **Regioservers** bij **Knooppunttype** om ervoor te zorgen dat het script alleen op HBase-regioservers wordt uitgevoerd.
+
+
+    ```bash
+    #! /bin/bash
+
+    THIS_MACHINE=`hostname`
+
+    if [[ $THIS_MACHINE != wn* ]]
+    then
+        printf 'Script to be executed only on worker nodes'
+        exit 0
+    fi
+
+    RESULT=`pgrep -f RESTServer`
+    if [[ -z $RESULT ]]
+    then
+        echo "Applying mitigation; starting REST Server"
+        sudo python /usr/lib/python2.7/dist-packages/hdinsight_hbrest/HbaseRestAgent.py
+    else
+        echo "Rest server already running"
+        exit 0
+    fi
+    ```
 
 1. Stel voor het gemak de omgevingsvariabele in. Bewerk de onderstaande opdrachten door `MYPASSWORD` te vervangen door het wachtwoord voor aanmelding bij het cluster. Vervang `MYCLUSTERNAME` door de naam van uw HBase-cluster. Voer daarna de opdrachten in.
 
@@ -290,7 +332,7 @@ HBase in HDInsight wordt geleverd met een webgebruikersinterface voor het bewake
 
 1. Selecteer **HBase** in het menu links.
 
-1. Selecteer **Snelkoppelingen** boven aan de pagina, wijs de actieve Zookeeper-knooppuntkoppeling aan en selecteer vervolgens **HBase Master UI**.  De interface wordt in een nieuw browsertabblad geopend:
+1. Selecteer **Snelkoppelingen** boven aan de pagina, wijs de actieve Zookeeper-knooppuntkoppeling aan en selecteer vervolgens **HBase Master UI** .  De interface wordt in een nieuw browsertabblad geopend:
 
    ![HDInsight Apache HBase HMaster-interface](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
 
@@ -308,9 +350,9 @@ Om inconsistenties te voorkomen, wordt u aangeraden de HBase-tabellen uit te sch
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Typ **HDInsight** in het **Zoekvak** bovenaan.
-1. Selecteer onder **Services** de optie **HDInsight-clusters**.
+1. Selecteer onder **Services** de optie **HDInsight-clusters** .
 1. Klik in de lijst met HDInsight-clusters die wordt weergegeven, op de **...** naast het cluster dat u voor deze zelfstudie hebt gemaakt.
-1. Klik op **Verwijderen**. Klik op **Ja**.
+1. Klik op **Verwijderen** . Klik op **Ja** .
 
 ## <a name="next-steps"></a>Volgende stappen
 

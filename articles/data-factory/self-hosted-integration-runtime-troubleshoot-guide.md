@@ -5,14 +5,14 @@ services: data-factory
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 10/22/2020
+ms.date: 10/26/2020
 ms.author: lle
-ms.openlocfilehash: d35dd94c8aa264c9b4dd679d3b50f3783acb2fde
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c85e27cedfbcebe7060dfed2f96fc53aea9838c9
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427242"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629366"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Problemen met zelf-hostende Integration runtime oplossen
 
@@ -34,7 +34,7 @@ Azure Data Factory ondersteunt het weer geven en uploaden van fouten logboeken v
 
     ![Logboeken verzenden](media/self-hosted-integration-runtime-troubleshoot-guide/send-logs.png)
 
-1. U kunt Logboeken kiezen die u wilt verzenden. Voor *zelf-hostende IR*kunt u Logboeken uploaden die betrekking hebben op mislukte activiteiten of voor alle logboeken op zelf-hostend IR-knoop punt. Voor *gedeelde IR*kunt u alleen logboeken uploaden die betrekking hebben op mislukte activiteiten.
+1. U kunt Logboeken kiezen die u wilt verzenden. Voor *zelf-hostende IR* kunt u Logboeken uploaden die betrekking hebben op mislukte activiteiten of voor alle logboeken op zelf-hostend IR-knoop punt. Voor *gedeelde IR* kunt u alleen logboeken uploaden die betrekking hebben op mislukte activiteiten.
 
     ![Logboeken kiezen](media/self-hosted-integration-runtime-troubleshoot-guide/choose-logs.png)
 
@@ -52,7 +52,7 @@ Azure Data Factory ondersteunt het weer geven en uploaden van fouten logboeken v
 
 #### <a name="symptoms"></a>Symptomen
 
-Wanneer u TLS/SSL-certificaat probeert in te schakelen (geavanceerd) vanuit **de Configuration Manager van de zelf-hostende IR** -> **Externe toegang via een intranet**, wordt de volgende fout weergegeven nadat u TLS/SSL-certificaat hebt geselecteerd:
+Wanneer u TLS/SSL-certificaat probeert in te schakelen (geavanceerd) vanuit **de Configuration Manager van de zelf-hostende IR** -> **Externe toegang via een intranet** , wordt de volgende fout weergegeven nadat u TLS/SSL-certificaat hebt geselecteerd:
 
 `Remote access settings are invalid. Identity check failed for outgoing message. The expected DNS identity of the remote endpoint was ‘abc.microsoft.com’ but the remote endpoint provided DNS claim ‘microsoft.com’. If this is a legitimate remote endpoint, you can fix the problem by explicitly specifying DNS identity ‘microsoft.com’ as the Identity property of EndpointAddress when creating channel proxy.`
 
@@ -65,14 +65,14 @@ Dit is een bekend probleem in WCF: Met WCF TLS/SSL-validatie wordt alleen de laa
 #### <a name="resolution"></a>Oplossing
 
 Een certificaat met jokertekens wordt ondersteund in zelf-hostende IR van Azure Data Factory v2. Dit probleem treedt normaal op omdat het SSL-certificaat niet correct is. De laatste DNSName in SAN moet geldig zijn. Volg de onderstaande stappen om dit te controleren. 
-1.  Open de beheer console, dubbel Controleer of het *onderwerp* en de *alternatieve naam* van het onderwerp in de certificaat gegevens. In het bovenstaande geval is het laatste item in *alternatieve naam voor onderwerp*, dat ' DNS-naam = Microsoft.com.com ' is, niet legitiem.
+1.  Open de beheer console, dubbel Controleer of het *onderwerp* en de *alternatieve naam* van het onderwerp in de certificaat gegevens. In het bovenstaande geval is het laatste item in *alternatieve naam voor onderwerp* , dat ' DNS-naam = Microsoft.com.com ' is, niet legitiem.
 2.  Neem contact op met het certificaat van het probleem met het bedrijf om de onjuiste DNS-naam te verwijderen.
 
 ### <a name="concurrent-jobs-limit-issue"></a>Probleem met limiet voor gelijktijdige taken
 
 #### <a name="symptoms"></a>Symptomen
 
-Wanneer u probeert de limiet voor gelijktijdige taken probeert te verhogen vanuit de interface van Azure Data Factory, blijft deze hangen in de fase *bijwerken*.
+Wanneer u probeert de limiet voor gelijktijdige taken probeert te verhogen vanuit de interface van Azure Data Factory, blijft deze hangen in de fase *bijwerken* .
 Het maximum aantal gelijktijdige taken was ingesteld op 24 en u wilt het aantal verhogen zodat taken sneller kunnen worden uitgevoerd. De minimumwaarde die u kunt invoeren is 3 en de maximumwaarde is 32. U hebt de waarde van 24 tot en met 32 verhoogd en op de knop *bijwerken* geklikt, in de gebruikers interface die de update heeft *ontvangen zoals hieronder* wordt weer gegeven. Na het vernieuwen bleef de klant de waarde 24 zien; deze werd nooit bijgewerkt naar 32.
 
 ![Status bijwerken](media/self-hosted-integration-runtime-troubleshoot-guide/updating-status.png)
@@ -102,7 +102,7 @@ Bij de afhandeling van problemen met de SSL/TLS-handshake kunnen er problemen op
 
 - Hier volgt een snelle en intuïtieve manier om problemen met de X. 509-certificaat keten op te lossen.
  
-    1. Exporteer het certificaat dat moet worden geverifieerd. Ga naar Computercertificaat beheren en zoek het certificaat dat u wilt controleren. Klik met de rechtermuisknop op **Alle taken** -> **Exporteren**.
+    1. Exporteer het certificaat dat moet worden geverifieerd. Ga naar Computercertificaat beheren en zoek het certificaat dat u wilt controleren. Klik met de rechtermuisknop op **Alle taken** -> **Exporteren** .
     
         ![Taken exporteren](media/self-hosted-integration-runtime-troubleshoot-guide/export-tasks.png)
 
@@ -138,7 +138,7 @@ Bij de afhandeling van problemen met de SSL/TLS-handshake kunnen er problemen op
         ```
           Certutil   -URL    <certificate path> 
         ```
-    1. Vervolgens wordt het hulpprogramma **voor het ophalen van de URL** geopend. U kunt certificaten van AIA, CDP en OCSP controleren door te klikken op de knop **Ophalen**.
+    1. Vervolgens wordt het hulpprogramma **voor het ophalen van de URL** geopend. U kunt certificaten van AIA, CDP en OCSP controleren door te klikken op de knop **Ophalen** .
 
         ![Ophaal knop](media/self-hosted-integration-runtime-troubleshoot-guide/retrieval-button.png)
  
@@ -164,8 +164,8 @@ Als u proces monitor neemt, ziet u het volgende resultaat:
 
 > [!TIP] 
 > U kunt het filter instellen, zoals in de onderstaande scherm afbeelding wordt weer gegeven.
-> Hiermee wordt aangegeven dat het dll **System. ValueTuple** zich niet bevindt in de map die is gerelateerd aan de GAC of in *C:\Program Files\Microsoft Integration Runtime\4.0\Gateway*, of in de map *c:\Program Files\Microsoft Integration Runtime\4.0\Shared* .
-> In principe wordt eerst geprobeerd om het dll-bestand te laden uit de map *GAC* en vervolgens uit *Shared* en ten slotte uit de map *Gateway*. Daarom kunt u het dll-bestand in een willekeurig pad plaatsen, wat het handigst is.
+> Hiermee wordt aangegeven dat het dll **System. ValueTuple** zich niet bevindt in de map die is gerelateerd aan de GAC of in *C:\Program Files\Microsoft Integration Runtime\4.0\Gateway* , of in de map *c:\Program Files\Microsoft Integration Runtime\4.0\Shared* .
+> In principe wordt eerst geprobeerd om het dll-bestand te laden uit de map *GAC* en vervolgens uit *Shared* en ten slotte uit de map *Gateway* . Daarom kunt u het dll-bestand in een willekeurig pad plaatsen, wat het handigst is.
 
 ![Filters instellen](media/self-hosted-integration-runtime-troubleshoot-guide/set-filters.png)
 
@@ -179,7 +179,7 @@ U kunt dezelfde methode gebruiken om problemen met andere ontbrekende bestanden 
 
 De reden waarom u de System.ValueTuple.dll onder *%windir%\Microsoft.NET\assembly* en *%windir%\assembly* ziet, is dat het een .net-gedrag is. 
 
-In de onderstaande fout ziet u duidelijk het assemblage *systeem. ValueTuple* is niet aanwezig. Dit probleem treedt dus op wanneer de toepassing probeert de assembly *System.ValueTuple.dll*te controleren.
+In de onderstaande fout ziet u duidelijk het assemblage *systeem. ValueTuple* is niet aanwezig. Dit probleem treedt dus op wanneer de toepassing probeert de assembly *System.ValueTuple.dll* te controleren.
  
 `<LogProperties><ErrorInfo>[{"Code":0,"Message":"The type initializer for 'Npgsql.PoolManager' threw an exception.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.TypeInitializationException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[{"Code":0,"Message":"Could not load file or assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.IO.FileNotFoundException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[]}]}]</ErrorInfo></LogProperties>`
  
@@ -201,7 +201,7 @@ De zelf-hostende integratieruntime gaat plotseling offline zonder sleutel, en on
 
 #### <a name="resolution"></a>Oplossing
 
-Als geen van de bovenstaande oorzaken van toepassing is, kunt u naar de map gaan: *%ProgramData%\Microsoft\Data Transfer\DataManagementGateway*en controleren of het bestand met de naam **configuraties** is verwijderd. Als deze is verwijderd, volgt u [deze instructies](https://www.netwrix.com/how_to_detect_who_deleted_file.html) om te controleren wie het bestand heeft verwijderd.
+Als geen van de bovenstaande oorzaken van toepassing is, kunt u naar de map gaan: *%ProgramData%\Microsoft\Data Transfer\DataManagementGateway* en controleren of het bestand met de naam **configuraties** is verwijderd. Als deze is verwijderd, volgt u [deze instructies](https://www.netwrix.com/how_to_detect_who_deleted_file.html) om te controleren wie het bestand heeft verwijderd.
 
 ![Controleer het configuratie bestand](media/self-hosted-integration-runtime-troubleshoot-guide/configurations-file.png)
 
@@ -210,7 +210,7 @@ Als geen van de bovenstaande oorzaken van toepassing is, kunt u naar de map gaan
 
 #### <a name="symptoms"></a>Symptomen
 
-Na het maken van zelf-hostende IR's voor zowel bron- als doelgegevensarchieven, wilt u de twee IR's verbinden om een kopie te verkrijgen. Als de gegevens archieven zijn geconfigureerd in verschillende VNETs of als ze het gateway mechanisme niet begrijpen, raakt u fouten als: *het stuur programma van de bron is niet gevonden in de doel-IR*. *de bron is niet toegankelijk voor de doel-IR*.
+Na het maken van zelf-hostende IR's voor zowel bron- als doelgegevensarchieven, wilt u de twee IR's verbinden om een kopie te verkrijgen. Als de gegevens archieven zijn geconfigureerd in verschillende VNETs of als ze het gateway mechanisme niet begrijpen, raakt u fouten als: *het stuur programma van de bron is niet gevonden in de doel-IR* . *de bron is niet toegankelijk voor de doel-IR* .
  
 #### <a name="cause"></a>Oorzaak
 
@@ -288,14 +288,14 @@ Ga naar het gebeurtenis logboek van Integration Runtime om de fout te controlere
 
 ![IR-gebeurtenis logboek](media/self-hosted-integration-runtime-troubleshoot-guide/ir-event-log.png)
 
-Als de fout wordt weer gegeven zoals boven *UnauthorizedAccessException*, volgt u de onderstaande instructies:
+Als de fout wordt weer gegeven zoals boven *UnauthorizedAccessException* , volgt u de onderstaande instructies:
 
 
 1. Controleer *DIAHostService* Logon service-account in het venster van de Windows-service.
 
     ![Aanmeldings service account](media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png)
 
-2. Controleer of het aanmeldings service account de machtiging R/W heeft via de map: *%ProgramData%\Microsoft\DataTransfer\DataManagementGateway*.
+2. Controleer of het aanmeldings service account de machtiging R/W heeft via de map: *%ProgramData%\Microsoft\DataTransfer\DataManagementGateway* .
 
     - Als het account voor de service aanmelding niet is gewijzigd, moet dit standaard de machtiging R/W hebben.
 
@@ -305,7 +305,7 @@ Als de fout wordt weer gegeven zoals boven *UnauthorizedAccessException*, volgt 
         1. Verwijder de huidige zelf-hostende IR.
         1. Installeer de zelf-hostende IR-bits.
         1. Volg de onderstaande instructies om het service account te wijzigen: 
-            1. Ga naar de installatiemap van selfhosted IR, ga naar de map: *micro soft Integration Runtime\4.0\Shared*.
+            1. Ga naar de installatiemap van selfhosted IR, ga naar de map: *micro soft Integration Runtime\4.0\Shared* .
             1. Start een opdracht regel met verhoogde bevoegdheden. Vervang *\<user>* en *\<password>* door uw eigen gebruikers naam en wacht woord en voer de volgende opdracht uit:
                        
                 ```
@@ -325,7 +325,7 @@ Als de fout wordt weer gegeven zoals boven *UnauthorizedAccessException*, volgt 
             1. U kunt de lokale/domein-gebruiker voor het aanmeldings account van de IR-service gebruiken.            
         1. Registreer de Integration Runtime.
 
-Als de fout er als volgt uitziet: de *service ' Integration runtime service ' (DIAHostService) is niet gestart. Controleer of u voldoende rechten hebt om systeem services te starten*. Volg de onderstaande instructies:
+Als de fout er als volgt uitziet: de *service ' Integration runtime service ' (DIAHostService) is niet gestart. Controleer of u voldoende rechten hebt om systeem services te starten* . Volg de onderstaande instructies:
 
 1. Controleer *DIAHostService* Logon service-account in het venster van de Windows-service.
    
@@ -351,7 +351,7 @@ De **registratie** knop is niet gevonden in de Configuration Manager gebruikers 
 
 #### <a name="cause"></a>Oorzaak
 
-Sinds de release van de *Integration Runtime 3,0*is de knop **registreren** op een bestaand Integration runtime knooppunt verwijderd om een schone en veiligere omgeving mogelijk te maken. Als er een knooppunt is geregistreerd voor een exemplaar van Integration Runtime (of dit nu online is of niet), moet u het vorige knoop punt verwijderen en vervolgens het knooppunt installeren en registreren om het opnieuw te registreren bij een ander exemplaar van Integration Runtime.
+Sinds de release van de *Integration Runtime 3,0* is de knop **registreren** op een bestaand Integration runtime knooppunt verwijderd om een schone en veiligere omgeving mogelijk te maken. Als er een knooppunt is geregistreerd voor een exemplaar van Integration Runtime (of dit nu online is of niet), moet u het vorige knoop punt verwijderen en vervolgens het knooppunt installeren en registreren om het opnieuw te registreren bij een ander exemplaar van Integration Runtime.
 
 #### <a name="resolution"></a>Oplossing
 
@@ -431,7 +431,7 @@ De zelf-hostende Integration runtime kan geen verbinding maken met de Data Facto
     ```
         
    > [!NOTE]     
-   > De service-URL kan variëren, afhankelijk van de locatie van uw Data Factory. U kunt de service-URL vinden onder **ADF UI**  >  **Connections**  >  **Integration Runtimes**  >  **bewerken zelf-hostende IR**-  >  **knoop punten**  >  **bekijken service-url's**.
+   > De service-URL kan variëren, afhankelijk van de locatie van uw Data Factory. U kunt de service-URL vinden onder **ADF UI**  >  **Connections**  >  **Integration Runtimes**  >  **bewerken zelf-hostende IR** -  >  **knoop punten**  >  **bekijken service-url's** .
             
     Hier volgt de verwachte reactie:
             
@@ -441,7 +441,7 @@ De zelf-hostende Integration runtime kan geen verbinding maken met de Data Facto
             
     * Als er een bericht wordt weer gegeven dat de externe naam niet kan worden omgezet, is er een probleem met de Domain Name System (DNS). Neem contact op met uw netwerk team om dit probleem op te lossen.
     * Als er een bericht wordt weer gegeven dat het SSL/TLS-certificaat niet wordt vertrouwd, controleert u of het certificaat voor https://wu2.frontend.clouddatahub.net/ wordt vertrouwd op de computer en installeert u vervolgens het open bare certificaat met behulp van certificaat beheer. Deze actie moet het probleem verminderen.
-    * Ga naar **Windows**logboeken  >  toepassingen en services van Windows **(Logboeken)**  >  **Applications and Services Logs**  >  **Integration runtime** en controleer op fouten die worden veroorzaakt door DNS, een firewall regel of instellingen van het bedrijfs netwerk. (Als u een dergelijke fout vindt, sluit u de verbinding af.) Omdat elk bedrijf aangepaste netwerk instellingen heeft, neemt u contact op met uw netwerk team om deze problemen op te lossen.
+    * Ga naar **Windows** logboeken  >  toepassingen en services van Windows **(Logboeken)**  >  **Applications and Services Logs**  >  **Integration runtime** en controleer op fouten die worden veroorzaakt door DNS, een firewall regel of instellingen van het bedrijfs netwerk. (Als u een dergelijke fout vindt, sluit u de verbinding af.) Omdat elk bedrijf aangepaste netwerk instellingen heeft, neemt u contact op met uw netwerk team om deze problemen op te lossen.
 
 1. Als "proxy" is geconfigureerd op de zelf-hostende Integration runtime, controleert u of de proxy server toegang heeft tot het service-eind punt. Zie [Power shell, webaanvragen en proxy's](https://stackoverflow.com/questions/571429/powershell-web-requests-and-proxies)voor een voor beeld van een opdracht.    
                 
@@ -484,7 +484,7 @@ Dit gedrag treedt op wanneer knoop punten niet met elkaar kunnen communiceren.
 
 #### <a name="resolution"></a>Oplossing
 
-1. Meld u aan bij de door het knoop punt gehoste VM. Open in de **Logboeken toepassingen en services**  >  **Integration runtime**logboeken en filter alle fouten Logboeken.
+1. Meld u aan bij de door het knoop punt gehoste VM. Open in de **Logboeken toepassingen en services**  >  **Integration runtime** logboeken en filter alle fouten Logboeken.
 
 1. Controleer of een fouten logboek de volgende fout bevat: 
     
@@ -569,7 +569,7 @@ Neem de netmon-tracering en analyseer verder.
  
     *Netwerk pakket van Linux-systeem A met TTL 64-> B TTL 64 min 1 = 63-> C TTL 63 min 1 = 62-> TTL 62 min 1 = 61 zelf-hostende IR*
 
-- In ideale situatie is de TTL 128, wat betekent dat Windows System de Data Factory uitvoert. Zoals u in het onderstaande voor beeld ziet, *128 – 107 = 21 hops*, wat betekent dat er 21 hops voor het pakket zijn verzonden van Data Factory naar een zelf-hostende IR tijdens de TCP 3-handshake.
+- In ideale situatie is de TTL 128, wat betekent dat Windows System de Data Factory uitvoert. Zoals u in het onderstaande voor beeld ziet, *128 – 107 = 21 hops* , wat betekent dat er 21 hops voor het pakket zijn verzonden van Data Factory naar een zelf-hostende IR tijdens de TCP 3-handshake.
  
     ![TTL 107](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-107.png)
 
@@ -587,11 +587,11 @@ Wanneer u probeert te Telnet **8.8.8.8 888** met netmon-tracering, moet u de ond
 ![netmon-tracering 2](media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-2.png)
  
 
-Dit betekent dat u geen TCP-verbinding met de **8.8.8.8** -server kunt maken op basis van de poort **888**, zodat u daar twee extra pakketten van **SynReTransmit** ziet. Omdat de **Self-HOST2** van de bron geen verbinding kan maken met **8.8.8.8** bij het eerste pakket, blijft deze verbinding maken.
+Dit betekent dat u geen TCP-verbinding met de **8.8.8.8** -server kunt maken op basis van de poort **888** , zodat u daar twee extra pakketten van **SynReTransmit** ziet. Omdat de **Self-HOST2** van de bron geen verbinding kan maken met **8.8.8.8** bij het eerste pakket, blijft deze verbinding maken.
 
 > [!TIP]
-> - U kunt klikken op standaard filter voor **Load filter**  ->  **Standard Filter**  ->  **adressen**  ->  **IPv4-adressen**.
-> - Voer **IPv4. Address = = 8.8.8.8** in als filter en klik op **Toep assen**. Daarna ziet u alleen de communicatie van de lokale computer naar de doel- **8.8.8.8**.
+> - U kunt klikken op standaard filter voor **Load filter**  ->  **Standard Filter**  ->  **adressen**  ->  **IPv4-adressen** .
+> - Voer **IPv4. Address = = 8.8.8.8** in als filter en klik op **Toep assen** . Daarna ziet u alleen de communicatie van de lokale computer naar de doel- **8.8.8.8** .
 
 ![filter adressen 1](media/self-hosted-integration-runtime-troubleshoot-guide/filter-addresses-1.png)
         
@@ -630,7 +630,7 @@ Deze melding is van invloed op de volgende scenario's:
 ##### <a name="scenario-1-outbound-communication-from-self-hosted-integration-runtime-running-on-premises-behind-the-corporate-firewall"></a>Scenario 1: uitgaande communicatie van zelf-hostende Integration Runtime op locatie achter de bedrijfs firewall uitgevoerd
 Bepalen of u de gevolgen hebt:
 - U hebt geen invloed op de manier waarop u firewall regels definieert op basis van FQDN-namen met behulp van de methode die in dit document wordt beschreven: [firewall configuratie en lijst met toegestane instellingen voor IP-adres](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway).
-- U hebt echter last van dit probleem als u expliciet white list IP-adressen op de firewall van uw bedrijf hebt.
+- U hebt echter wel last van dit probleem als u de acceptatie lijst expliciet inschakelt voor uitgaande Ip's op uw bedrijfs firewall.
 
 Te ondernemen actie als dit van invloed is: Waarschuw uw netwerk infrastructuur team om uw netwerk configuratie bij te werken om de nieuwste Data Factory IP-adressen te gebruiken voor 8 november 2020.  Als u de meest recente IP-adressen wilt downloaden, gaat u naar de [Download koppeling service Tags IP-adres bereik](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files).
 
@@ -639,16 +639,55 @@ Bepalen of u de gevolgen hebt:
 - Controleer of er regels voor uitgaande NSG aanwezig zijn in uw particuliere netwerk dat zelf-hostende Integration Runtime bevat. Als er geen uitgaande beperkingen zijn, heeft dit geen invloed.
 - Als u uitgaande regel beperkingen hebt, controleert u of u een service label gebruikt of niet. Als u service tags gebruikt, hoeft u niets te wijzigen of toe te voegen omdat de nieuwe IP-bereiken onder bestaande service tags vallen. 
  ![Doel controle](media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png)
-- U hebt echter last van dit probleem als u white list uitgaande IP-adressen op uw NSG-regel instellingen in het virtuele Azure-netwerk expliciet bewaart.
+- U hebt echter last van dit probleem als u expliciet de acceptatie lijst voor uitgaande IP-adressen in uw NSG-instellingen in het virtuele Azure-netwerk inschakelt.
 
 Te ondernemen actie als dit van invloed is: Waarschuw uw netwerk infrastructuur team om de NSG-regels in de configuratie van uw virtuele Azure-netwerk bij te werken om de nieuwste Data Factory IP-adressen te gebruiken voor 8 november 2020.  Als u de meest recente IP-adressen wilt downloaden, gaat u naar de [Download koppeling service Tags IP-adres bereik](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files).
 
 ##### <a name="scenario-3-outbound-communication-from-ssis-integration-runtime-in-customer-managed-azure-virtual-network"></a>Scenario 3: uitgaande communicatie van SSIS-Integration Runtime in door klanten beheerd virtueel netwerk van Azure
 - Controleer of u uitgaande NSG-regels hebt in uw particuliere netwerk dat SSIS Integration Runtime bevat. Als er geen uitgaande beperkingen zijn, heeft dit geen invloed.
 - Als u uitgaande regel beperkingen hebt, controleert u of u een service label gebruikt of niet. Als u service tags gebruikt, hoeft u niets te wijzigen of toe te voegen omdat de nieuwe IP-bereiken onder bestaande service tags vallen.
-- U hebt echter wel last van white list als u een uitgaand IP-adres op uw NSG-regel instellingen in het virtuele Azure-netwerk expliciet wilt instellen.
+- U hebt echter wel last van het inschakelen van de acceptatie lijst voor uitgaand IP-adres in uw NSG-instellingen in het virtuele Azure-netwerk.
 
 Te ondernemen actie als dit van invloed is: Waarschuw uw netwerk infrastructuur team om de NSG-regels in de configuratie van uw virtuele Azure-netwerk bij te werken om de nieuwste Data Factory IP-adressen te gebruiken voor 8 november 2020.  Als u de meest recente IP-adressen wilt downloaden, gaat u naar de [Download koppeling service Tags IP-adres bereik](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files).
+
+### <a name="could-not-establish-trust-relationship-for-the-ssltls-secure-channel"></a>Kan geen vertrouwens relatie tot stand brengen voor het beveiligde kanaal SSLTLS 
+
+#### <a name="symptoms"></a>Symptomen
+
+De zelf-hostende IR kan geen verbinding maken met de ADF-service.
+
+Als u SHIR-gebeurtenis logboek of client meldings Logboeken in CustomLogEvent-tabel controleert, wordt het volgende fout bericht weer gegeven:
+
+`The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.The remote certificate is invalid according to the validation procedure.`
+
+Controleren van het server certificaat van de ADF-service:
+
+De eenvoudigste manier is om de URL van de ADF-service in de browser te openen, bijvoorbeeld open https://eu.frontend.clouddatahub.net/ op de computer waarop SHIR is geïnstalleerd, en vervolgens de gegevens van het server certificaat te bekijken:
+
+  ![Het server certificaat van de ADF-service controleren](media/self-hosted-integration-runtime-troubleshoot-guide/server-certificate.png)
+
+  ![Het pad van het server certificaat controleren](media/self-hosted-integration-runtime-troubleshoot-guide/certificate-path.png)
+
+#### <a name="cause"></a>Oorzaak
+
+Twee mogelijke redenen voor dit probleem:
+
+- De basis-CA van het ADF-service Server certificaat wordt niet vertrouwd op de computer waarop de SHIR is geïnstalleerd. 
+- U gebruikt proxy in uw-omgeving en het server certificaat van de ADF-service wordt vervangen door de proxy, terwijl het vervangen server certificaat niet wordt vertrouwd door de computer waarop de SHIR is geïnstalleerd.
+
+#### <a name="solution"></a>Oplossing
+
+- Zorg er daarom voor dat het ADF-server certificaat en de bijbehorende certificaat keten worden vertrouwd door de computer waarop de SHIR is geïnstalleerd.
+- Voor de reden 2 vertrouwt u de vervangen basis-CA op de SHIR-machine of configureert u de proxy niet om het ADF server-certificaat te vervangen.
+
+Raadpleeg [dit artikel](https://docs.microsoft.com/skype-sdk/sdn/articles/installing-the-trusted-root-certificate) voor meer informatie over het vertrouwen van een certificaat in Windows.
+
+#### <a name="additional-info"></a>Aanvullende informatie
+We implementeren een nieuw SSL-certificaat dat is ondertekend vanuit DigiCert. Controleer of de globale hoofdmap G2 van DigiCert zich in de vertrouwde basis certificerings instantie bevindt.
+
+  ![DigiCert Global Root G2](media/self-hosted-integration-runtime-troubleshoot-guide/trusted-root-ca-check.png)
+
+Als dat niet het geval is, kunt u dit [hier](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt )downloaden. 
 
 ## <a name="self-hosted-ir-sharing"></a>Zelf-hostende IR-deling
 

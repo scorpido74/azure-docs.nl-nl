@@ -9,16 +9,28 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: ee7eda58c211ca570b052d55c813999e62b95fde
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 3ece62e671caa0838bbf4713c0ad4a74f19fd6cb
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876308"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518871"
 ---
 # <a name="tutorial---migrate-from-google-maps-to-azure-maps"></a>Zelfstudie: Migreren van Google Maps naar Azure Maps
 
-In dit artikel vindt u informatie over het migreren van web-, mobiele en servertoepassingen van Google Maps naar het Microsoft Azure Maps-platform. Deze zelfstudie bevat vergelijkende codevoorbeelden, suggesties voor migratie en best practices voor migratie naar Azure Maps.
+In dit artikel vindt u informatie over het migreren van web-, mobiele en servertoepassingen van Google Maps naar het Microsoft Azure Maps-platform. Deze zelfstudie bevat vergelijkende codevoorbeelden, suggesties voor migratie en best practices voor migratie naar Azure Maps. In deze zelfstudie leert u het volgende:
+
+> [!div class="checklist"]
+> * Vergelijking op hoog niveau voor equivalente Google Maps-functies die beschikbaar zijn in Azure Maps
+> * Met welke licentieverschillen u rekening moet houden
+> * Uw migratie plannen
+> * Waar u technische resources en ondersteuning vindt.
+
+## <a name="prerequisites"></a>Vereisten 
+
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+2. [Een Azure Maps-account maken](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [Een primaire sleutel voor een abonnement verkrijgen](quick-demo-map-app.md#get-the-primary-key-for-your-account), ook wel bekend als de primaire sleutel of de abonnementssleutel. Zie [Verificatie beheren in Azure Maps](how-to-manage-authentication.md) voor meer informatie over verificatie in Azure Maps.
 
 ## <a name="azure-maps-platform-overview"></a>Overzicht van het Azure Maps-platform
 
@@ -107,10 +119,15 @@ Hier volgt een lijst met nuttige technische informatiebronnen voor Azure Maps.
 
 Ontwikkelaars kunnen migratieondersteuning zoeken via de [forums](https://aka.ms/AzureMapsForums) of via een van de vele opties voor ondersteuning voor Azure: [https://azure.microsoft.com/support/options](https://azure.microsoft.com/support/options)
 
-U leert hoe u uw Google Maps-toepassing kunt migreren met behulp van deze artikelen: 
+## <a name="next-steps"></a>Volgende stappen
 
-[Een Android-app migreren](migrate-from-google-maps-android-app.md) 
+In de volgende artikelen vindt u meer informatie over het migreren van uw Google Maps-toepassing:
 
-[Een webservice migreren](migrate-from-google-maps-web-services.md) 
+> [!div class="nextstepaction"]
+> [Een web-app migreren](migrate-from-google-maps-web-app.md)
 
-[Een web-app migreren](migrate-from-google-maps-web-app.md)
+> [!div class="nextstepaction"]
+> [Een webservice migreren](migrate-from-google-maps-web-services.md) 
+
+> [!div class="nextstepaction"]
+> [Een Android-app migreren](migrate-from-google-maps-android-app.md) 

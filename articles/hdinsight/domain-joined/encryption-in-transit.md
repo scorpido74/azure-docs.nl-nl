@@ -7,27 +7,27 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.openlocfilehash: 85382ecd627ec8afc63a85de0debd98f94a89849
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6f043a1cb870d003e371d2f20d0e1f6614c9201e
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544882"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628980"
 ---
 # <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>IPSec-versleuteling in transit voor Azure HDInsight
 
 In dit artikel wordt de implementatie van versleuteling in transit beschreven voor communicatie tussen Azure HDInsight-cluster knooppunten.
 
 > [!Note]
-> Versleuteling in transit is momenteel ingeschakeld voor de volgende regio's: VS-Oost, Zuid-Centraal VS, West-VS2. 
+> Versleuteling in transit is momenteel ingeschakeld voor de volgende regio's: VS-Oost, Zuid-Centraal VS, West-VS2.
 
 ## <a name="background"></a>Achtergrond
 
-Azure HDInsight biedt diverse beveiligings functies voor het beveiligen van uw bedrijfs gegevens. Deze oplossingen worden gegroepeerd op de pijlers van de beveiliging, verificatie, autorisatie, controle, versleuteling en naleving. Versleuteling kan worden toegepast op gegevens, zowel op rest als tijdens de overdracht.
+Azure HDInsight biedt diverse beveiligings functies voor het beveiligen van uw bedrijfs gegevens. Deze oplossingen worden gegroepeerd op de pijlers van de beveiliging, verificatie, autorisatie, controle, versleuteling en naleving van de rand. Versleuteling kan worden toegepast op gegevens, zowel op rest als tijdens de overdracht.
 
 Versleuteling op rest wordt gedekt door versleuteling aan de server zijde van Azure Storage-accounts, evenals schijf versleuteling op de Azure-Vm's die deel uitmaken van uw HDInsight-cluster.
 
-Versleuteling van gegevens in transit op HDInsight wordt bereikt met [Transport Layer Security (TLS)](../transport-layer-security.md) voor het accssing van de cluster gateways en [Internet Protocol Security (IPSec)](https://en.wikipedia.org/wiki/IPsec) tussen cluster knooppunten. IPSec kan eventueel worden ingeschakeld tussen alle hoofd knooppunten, Worker-knoop punten, Edge-knoop punten en Zookeeper-knoop punten. Het is niet ingeschakeld voor verkeer tussen gateway [-of id Broker-](./identity-broker.md) knoop punten die op Windows gebaseerde virtuele machines zijn en andere op Linux gebaseerde knoop punten in het cluster.
+Versleuteling van gegevens in transit op HDInsight wordt bereikt met [Transport Layer Security (TLS)](../transport-layer-security.md) voor toegang tot de cluster gateways en [Internet Protocol Security (IPSec)](https://wikipedia.org/wiki/IPsec) tussen cluster knooppunten. IPSec kan eventueel worden ingeschakeld tussen alle hoofd knooppunten, Worker-knoop punten, Edge-knoop punten en Zookeeper-knoop punten. Het is niet ingeschakeld voor verkeer tussen gateway [-of id Broker-](./identity-broker.md) knoop punten die op Windows gebaseerde virtuele machines zijn en andere op Linux gebaseerde knoop punten in het cluster.
 
 ## <a name="enable-encryption-in-transit"></a>Versleuteling in transit inschakelen
 
@@ -40,7 +40,7 @@ Voer de volgende stappen uit om een nieuw cluster te maken met versleuteling in 
 
     :::image type="content" source="media/encryption-in-transit/create-cluster-security-networking-tab.png" alt-text="Het tabblad Beveiliging en netwerk voor het cluster maken.":::
 
-1. Klik op het tabblad **beveiliging en netwerk** op het selectie vakje **versleuteling in transit inschakelen** .
+1. Schakel op het tabblad **beveiliging en netwerk** het selectie vakje **versleuteling in transit inschakelen in** .
 
     :::image type="content" source="media/encryption-in-transit/enable-encryption-in-transit.png" alt-text="Het tabblad Beveiliging en netwerk voor het cluster maken.":::
 
@@ -50,7 +50,7 @@ Versleuteling in transit is ingeschakeld met behulp van de `isEncryptionInTransi
 
 U kunt [een voorbeeld sjabloon en een parameter bestand downloaden](https://github.com/Azure-Samples/hdinsight-enterprise-security). Voordat u de sjabloon en het Azure CLI-code fragment hieronder gebruikt, vervangt u de volgende tijdelijke aanduidingen door de juiste waarden:
 
-| Tijdelijke aanduiding | Description |
+| Tijdelijke aanduiding | Beschrijving |
 |---|---|
 | `<SUBSCRIPTION_ID>` | De ID van uw Azure-abonnement |
 | `<RESOURCE_GROUP>` | De resource groep waar u het nieuwe cluster en opslag account wilt maken. |

@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 3308a72421b851402642f12daf56359c7e3c9216
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd92e1529b889671bc29939f7e9611eceac7ee20
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449073"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370505"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>Inleiding tot Azure Defender for Kubernetes
 
@@ -72,7 +72,7 @@ In de door Security Center ontvangen en geanalyseerde items ziet u:
 - auditlogboeken van de API-server
 - onbewerkte beveiligingsgebeurtenissen van de Log Analytics-agent
 - clusterconfiguratiegegevens van het AKS-cluster
-- werkbelastingconfiguratie van Azure Policy (via de **Azure Policy-invoegtoepassing voor Kubernetes**). [Lees meer over aanbevolen procedures voor workloadbeveiliging met behulp van Kubernetes Admission Control](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control)
+- werkbelastingconfiguratie van Azure Policy (via de **Azure Policy-invoegtoepassing voor Kubernetes** ). [Lees meer over aanbevolen procedures voor workloadbeveiliging met behulp van Kubernetes Admission Control](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control)
 
 :::image type="content" source="./media/defender-for-kubernetes-intro/kubernetes-service-security-center-integration-detailed.png" alt-text="Architectuur op hoog niveau van de interactie tussen Azure Security Center, Azure Kubernetes Service en Azure Policy" lightbox="./media/defender-for-kubernetes-intro/kubernetes-service-security-center-integration-detailed.png":::
 
@@ -83,11 +83,28 @@ In de door Security Center ontvangen en geanalyseerde items ziet u:
 
 ### <a name="can-i-still-get-aks-protections-without-the-log-analytics-agent"></a>Kan ik nog wel AKS-beveiligingen krijgen zonder de Log Analytics-agent?
 
-Zoals hierboven vermeld, biedt het optionele **Azure Defender for Kubernetes**-abonnement beveiliging op clusterniveau. De Log Analytics-agent van **Azure Defender voor servers** beveiligt uw knooppunten. 
+Zoals hierboven vermeld, biedt het optionele **Azure Defender for Kubernetes** -abonnement beveiliging op clusterniveau. De Log Analytics-agent van **Azure Defender voor servers** beveiligt uw knooppunten. 
 
 We raden u aan beide te implementeren voor de meest volledige beveiliging.
 
 Als u ervoor kiest om de agent niet op uw hosts te installeren, krijgt u maar een subset van de voordelen van bedreigingsbeveiliging en beveiligingswaarschuwingen. U ontvangt nog steeds waarschuwingen met betrekking tot netwerkanalyse en communicatie met schadelijke servers.
+
+
+### <a name="does-aks-allow-me-to-install-custom-vm-extensions-on-my-aks-nodes"></a>Kan ik met AKS aangepaste VM-extensies installeren op mijn AKS-knooppunten?
+
+Als Azure Defender uw AKS-knooppunten moet bewaken, moet de Log Analytics-agent erop worden uitgevoerd. 
+
+AKS is een beheerde service en aangezien de Log Analytics-agent een door Microsoft beheerde uitbreiding is, wordt deze ook ondersteund op AKS-clusters.
+
+
+
+### <a name="if-my-cluster-is-already-running-an-azure-monitor-for-containers-agent-do-i-need-the-log-analytics-agent-too"></a>Als op mijn cluster al een Azure Monitor voor containers-agent wordt uitgevoerd, heb ik dan ook de Log Analytics-agent nodig?
+
+Als Azure Defender uw AKS-knooppunten moet bewaken, moet de Log Analytics-agent erop worden uitgevoerd.
+
+Als op uw clusters al de Azure Monitor voor containers-agent wordt uitgevoerd, kunt u de Log Analytics-agent ook installeren en kunnen de twee agents zonder problemen naast elkaar worden gebruikt.
+
+[Meer informatie over de Azure Monitor voor containers-agent](../azure-monitor/insights/container-insights-manage-agent.md).
 
 
 ## <a name="next-steps"></a>Volgende stappen

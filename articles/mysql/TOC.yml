@@ -102,10 +102,10 @@
         - name: Een PHP-web-app bouwen met MySQL
           items:
             - name: WordPress in containers met MySQL
-              href: ../app-service/containers/tutorial-multi-container-app.md
+              href: ../app-service/tutorial-multi-container-app.md
               maintainContext: true
             - name: PHP met MySQL
-              href: ../app-service/app-service-web-tutorial-php-mysql.md
+              href: ../app-service/tutorial-php-mysql-app.md
               maintainContext: true
     - name: Voorbeelden
       items:
@@ -114,7 +114,7 @@
         - name: Groepsgewijze Java-verbinding
           href: sample-scripts-java-connection-pooling.md
         - name: Ingebouwde modules voor Azure Policy
-          href: ./policy-samples.md
+          href: ./policy-reference.md
     - name: Concepten
       items:
         - name: Servers
@@ -427,6 +427,7 @@
             - name: Azure CLI
               href: flexible-server/quickstart-create-server-cli.md
             - name: ARM-sjabloon
+              displayName: Resource Manager
               href: flexible-server/quickstart-create-arm-template.md
         - name: Verbinding maken en query's uitvoeren
           items:
@@ -558,7 +559,7 @@
     - name: Prijzen
       href: 'https://azure.microsoft.com/pricing/details/mysql/'
     - name: Microsoft Q&A-vragenpagina
-      href: 'https://docs.microsoft.com/answers/topics/azure-database-mysql.html'
+      href: /answers/topics/azure-database-mysql.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-database-mysql'
     - name: Video's

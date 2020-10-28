@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: 1bcaaed394d8e802a9660e2fdf0e37994ee795a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d04d29b82ecf09d1ee52986fc40687e5511573da
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617686"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331903"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-azure-sql-managed-instance-from-on-premises"></a>Quickstart: Een punt-naar-site-verbinding naar Azure SQL Managed Instance configureren vanuit on-premises
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -67,12 +67,12 @@ Voor deze snelstartgids geldt het volgende:
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Open de resourcegroep waarin u de virtuele netwerkgateway hebt gemaakt, en open de virtuele netwerkgateway.
-3. Selecteer **Punt-naar-site-configuratie** en selecteer vervolgens **VPN-client downloaden**.
+3. Selecteer **Punt-naar-site-configuratie** en selecteer vervolgens **VPN-client downloaden** .
 
     ![VPN-client downloaden](./media/point-to-site-p2s-configure/download-vpn-client.png)  
 4. Pak de bestanden uit het ZIP-bestand uit op de on-premises clientcomputer, en open de map met de uitgepakte bestanden.
-5. Open de map **WindowsAmd64** en open het bestand **VpnClientSetupAmd64.exe**.
-6. Als u het bericht **Uw pc wordt beschermd** ontvangt, klikt u op **Meer info** en klikt u vervolgens op **Toch uitvoeren**.
+5. Open de map **WindowsAmd64** en open het bestand **VpnClientSetupAmd64.exe** .
+6. Als u het bericht **Uw pc wordt beschermd** ontvangt, klikt u op **Meer info** en klikt u vervolgens op **Toch uitvoeren** .
 
     ![VPN-client installeren](./media/point-to-site-p2s-configure/vpn-client-defender.png)
 7. Klik in het dialoogvenster Gebruikersaccountbeheer op **Ja** om door te gaan.
@@ -83,22 +83,22 @@ Voor deze snelstartgids geldt het volgende:
 1. Ga naar **VPN** in **Netwerk en internet** op uw on-premises clientcomputer, en selecteer uw virtuele netwerk van SQL Managed Instance om een verbinding tot stand te brengen met dit VNet. In de volgende afbeelding is **MyNewVNet** de naam van het VNet.
 
     ![VPN-verbinding](./media/point-to-site-p2s-configure/vpn-connection.png)  
-2. Selecteer **Verbinding maken**.
+2. Selecteer **Verbinding maken** .
 3. Selecteer **Verbinding maken** in het dialoogvenster.
 
-    ![VPN-verbinding](./media/point-to-site-p2s-configure/vpn-connection2.png)  
-4. Als u een melding ontvangt dat Verbindingsbeheer verhoogde bevoegdheden nodig heeft om de routeringstabel bij te werken, kiest u **Doorgaan**.
+    ![Schermopname met de knop Verbinding maken gemarkeerd.](./media/point-to-site-p2s-configure/vpn-connection2.png)  
+4. Als u een melding ontvangt dat Verbindingsbeheer verhoogde bevoegdheden nodig heeft om de routeringstabel bij te werken, kiest u **Doorgaan** .
 5. Selecteer **Ja** in het dialoogvenster Gebruikersaccountbeheer om door te gaan.
 
    U hebt een VPN-verbinding met uw VNet van SQL Managed Instance tot stand gebracht.
 
-    ![VPN-verbinding](./media/point-to-site-p2s-configure/vpn-connection-succeeded.png)  
+    ![Schermopname die het verbonden bericht markeert wanneer u de verbinding tot stand hebt gebracht.](./media/point-to-site-p2s-configure/vpn-connection-succeeded.png)  
 
 ## <a name="connect-with-ssms"></a>Verbinden met SSMS
 
 1. Open SQL Server Management Studio op de on-premises clientcomputer.
 2. Voer in het dialoogvenster **Verbinding maken met de server** in het vak **Servernaam** de volledig gekwalificeerde **hostnaam** in voor uw beheerde instantie.
-3. Selecteer **SQL Server-verificatie**, geef uw gebruikersnaam en wachtwoord op, en selecteer vervolgens **Verbinding maken**.
+3. Selecteer **SQL Server-verificatie** , geef uw gebruikersnaam en wachtwoord op, en selecteer vervolgens **Verbinding maken** .
 
     ![SSMS verbinden](./media/point-to-site-p2s-configure/ssms-connect.png)  
 

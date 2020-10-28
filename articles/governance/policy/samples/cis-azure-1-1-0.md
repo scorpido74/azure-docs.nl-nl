@@ -1,23 +1,23 @@
 ---
 title: Nalevingsdetails van de regelgeving voor CIS Microsoft Azure Foundations Benchmark
 description: Informatie over het ingebouwde initiatief voor naleving van regelgeving in CIS Microsoft Azure Foundations Benchmark. Elke beheeroptie wordt toegewezen aan een of meer Azure Policy-definities die helpen bij de evaluatie.
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 5da46631d0b6cfcd142ab32172de306115a080bd
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 06b74daff584c9df35d4c762c3115b95e4ed3179
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932155"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320593"
 ---
 # <a name="details-of-the-cis-microsoft-azure-foundations-benchmark-regulatory-compliance-built-in-initiative"></a>Informatie over het ingebouwde initiatief voor naleving van regelgeving in CIS Microsoft Azure Foundations Benchmark
 
 Het volgende artikel beschrijft hoe de definitie van het ingebouwde initiatief voor naleving van regelgeving in Azure Policy wordt toegewezen aan **nalevingsdomeinen** en **beheeropties** in CIS Microsoft Foundations Benchmark.
 Zie [CIS Microsoft Azure Foundations Benchmark](https://www.cisecurity.org/benchmark/azure/)voor meer informatie over deze nalevingsstandaard. Zie [Azure Policy-beleidsdefinitie](../concepts/definition-structure.md#type) en [Gedeelde verantwoordelijkheid in de Cloud](../../../security/fundamentals/shared-responsibility.md) om _Eigendom_ te begrijpen.
 
-De volgende toewijzingen bevinden zich in het besturingselement **CIS Microsoft Azure Foundations Benchmark**. Gebruik de navigatie aan de rechterkant om rechtstreeks naar een toewijzing van een specifiek **nalevingsdomein** te gaan. Veel van de beheeropties worden geïmplementeerd met een [Azure Policy](../overview.md)-initiatiefdefinitie. Als u de complete initiatiefdefinitie wilt bekijken, opent u **Beleid** in de Azure-portal en selecteert u de pagina **Definities**.
-Zoek en selecteer vervolgens de ingebouwde definitie van het initiatief voor naleving van regelgeving in **CIS Microsoft Azure Benchmark 1.1.0**.
+De volgende toewijzingen bevinden zich in het besturingselement **CIS Microsoft Azure Foundations Benchmark** . Gebruik de navigatie aan de rechterkant om rechtstreeks naar een toewijzing van een specifiek **nalevingsdomein** te gaan. Veel van de beheeropties worden geïmplementeerd met een [Azure Policy](../overview.md)-initiatiefdefinitie. Als u de complete initiatiefdefinitie wilt bekijken, opent u **Beleid** in de Azure-portal en selecteert u de pagina **Definities** .
+Zoek en selecteer vervolgens de ingebouwde definitie van het initiatief voor naleving van regelgeving in **CIS Microsoft Azure Benchmark 1.1.0** .
 
 Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdrukvoorbeeld van CIS Microsoft Azure Foundations Benchmark](../../blueprints/samples/cis-azure-1-1-0.md).
 
@@ -29,7 +29,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-multi-factor-authentication-is-enabled-for-all-privileged-users"></a>Controleren of meervoudige verificatie is ingeschakeld voor alle bevoegde gebruikers
 
-**Id**: **Eigendom** van CIS Azure 1.1: Klant
+**Id** : **Eigendom** van CIS Azure 1.1: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -38,7 +38,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-multi-factor-authentication-is-enabled-for-all-non-privileged-users"></a>Controleren of meervoudige verificatie is ingeschakeld voor alle onbevoegde gebruikers
 
-**Id**: **Eigendom** van CIS Azure 1.2: Klant
+**Id** : **Eigendom** van CIS Azure 1.2: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -46,7 +46,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-there-are-no-guest-users"></a>Zorg ervoor dat er geen gastgebruikers zijn
 
-**Id**: **Eigendom** van CIS Azure 1.3: Klant
+**Id** : **Eigendom** van CIS Azure 1.3: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -56,7 +56,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-no-custom-subscription-owner-roles-are-created"></a>Controleren of er geen aangepaste rollen voor abonnementseigenaren zijn gemaakt
 
-**Id**: **Eigendom** van CIS Azure 1.23: Klant
+**Id** : **Eigendom** van CIS Azure 1.23: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -66,7 +66,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-automatic-provisioning-of-monitoring-agent-is-set-to-on"></a>Zorg dat 'Automatische inrichting van bewakingsagent' is ingesteld op 'ingeschakeld'
 
-**Id**: **Eigendom** van CIS Azure 2.2: Klant
+**Id** : **Eigendom** van CIS Azure 2.2: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -74,7 +74,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-asc-default-policy-setting-monitor-system-updates-is-not-disabled"></a>Controleren of de standaardbeleidsinstelling voor "Systeemupdates bewaken" van de ASC niet is "uitgeschakeld"
 
-**Id**: **Eigendom** van CIS Azure 2.3: Klant
+**Id** : **Eigendom** van CIS Azure 2.3: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -82,7 +82,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-asc-default-policy-setting-monitor-os-vulnerabilities-is-not-disabled"></a>Controleren of de standaardbeleidsinstelling voor "Beveiligingsproblemen van besturingssystemen bewaken" van de ASC niet is "uitgeschakeld"
 
-**Id**: **Eigendom** van CIS Azure 2.4: Klant
+**Id** : **Eigendom** van CIS Azure 2.4: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -90,7 +90,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-asc-default-policy-setting-monitor-endpoint-protection-is-not-disabled"></a>Zorg ervoor dat de standaardbeleidsinstelling voor "Endpoint Protection" van de ASC niet is "uitgeschakeld"
 
-**Id**: **Eigendom** van CIS Azure 2.5: Klant
+**Id** : **Eigendom** van CIS Azure 2.5: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -98,7 +98,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-asc-default-policy-setting-monitor-disk-encryption-is-not-disabled"></a>Controleren of de standaardbeleidsinstelling voor "Schijfversleuteling" van de ASC niet is "uitgeschakeld"
 
-**Id**: **Eigendom** van CIS Azure 2.6: Klant
+**Id** : **Eigendom** van CIS Azure 2.6: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -106,7 +106,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-asc-default-policy-setting-monitor-network-security-groups-is-not-disabled"></a>Zorg ervoor dat de standaardbeleidsinstelling voor "Netwerkbeveiligingsgroepen bewaken" van de ASC niet is "uitgeschakeld"
 
-**Id**: **Eigendom** van CIS Azure 2.7: Klant
+**Id** : **Eigendom** van CIS Azure 2.7: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -114,7 +114,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-asc-default-policy-setting-enable-next-generation-firewallngfw-monitoring-is-not-disabled"></a>Controleren of de standaardbeleidsinstelling voor "NGFW-bewaking inschakelen" van de ASC is niet is "uitgeschakeld"
 
-**Id**: **Eigendom** van CIS Azure 2.9: Klant
+**Id** : **Eigendom** van CIS Azure 2.9: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -123,7 +123,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-asc-default-policy-setting-monitor-vulnerability-assessment-is-not-disabled"></a>Controleren of de standaardbeleidsinstelling voor "Beoordeling van beveiligingsproblemen" van de ASC niet is "uitgeschakeld"
 
-**Id**: **Eigendom** van CIS Azure 2.10: Klant
+**Id** : **Eigendom** van CIS Azure 2.10: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -131,7 +131,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-asc-default-policy-setting-monitor-jit-network-access-is-not-disabled"></a>Zorg ervoor dat de standaardbeleidsinstelling voor "JIT-netwerktoegang bewaken" van de ASC niet is "uitgeschakeld"
 
-**Id**: **Eigendom** van CIS Azure 2.12: Klant
+**Id** : **Eigendom** van CIS Azure 2.12: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -139,7 +139,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-asc-default-policy-setting-monitor-adaptive-application-whitelisting-is-not-disabled"></a>Controleren of de standaardbeleidsinstelling voor "Adaptieve whitelisting van toepassingen" van de ASC niet is "uitgeschakeld"
 
-**Id**: **Eigendom** van CIS Azure 2.13: Klant
+**Id** : **Eigendom** van CIS Azure 2.13: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -147,7 +147,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-asc-default-policy-setting-monitor-sql-auditing-is-not-disabled"></a>Controleren of de standaardbeleidsinstelling voor "Controleren voor SQL" van de ASC niet is "uitgeschakeld"
 
-**Id**: **Eigendom** van CIS Azure 2.14: Klant
+**Id** : **Eigendom** van CIS Azure 2.14: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -155,7 +155,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-asc-default-policy-setting-monitor-sql-encryption-is-not-disabled"></a>Controleren of de standaardbeleidsinstelling voor "SQL-versleuteling bewaken" van de ASC niet is "uitgeschakeld"
 
-**Id**: **Eigendom** van CIS Azure 2.15: Klant
+**Id** : **Eigendom** van CIS Azure 2.15: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -163,7 +163,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-security-contact-emails-is-set"></a>Controleer of het ‘E-mailadres van de contactpersoon voor beveiliging’ is ingesteld
 
-**Id**: **Eigendom** van CIS Azure 2.16: Klant
+**Id** : **Eigendom** van CIS Azure 2.16: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -171,7 +171,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-security-contact-phone-number-is-set"></a>Controleer of het ‘telefoonnummer’ van de contactpersoon voor beveiliging is ingesteld
 
-**Id**: **Eigendom** van CIS Azure 2.17: Klant
+**Id** : **Eigendom** van CIS Azure 2.17: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -179,7 +179,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-send-email-notification-for-high-severity-alerts-is-set-to-on"></a>Zorg dat 'E-mailmelding voor waarschuwingen met hoge urgentie verzenden' is ingesteld op 'ingeschakeld'
 
-**Id**: **Eigendom** van CIS Azure 2.18: Klant
+**Id** : **Eigendom** van CIS Azure 2.18: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -187,7 +187,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-send-email-also-to-subscription-owners-is-set-to-on"></a>Controleren of 'E-mail ook verzenden naar eigenaars van het abonnement' is ingesteld op 'ingeschakeld'
 
-**Id**: **Eigendom** van CIS Azure 2.19: Klant
+**Id** : **Eigendom** van CIS Azure 2.19: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -197,7 +197,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-secure-transfer-required-is-set-to-enabled"></a>Controleren of 'beveiligde overdracht vereist' is ingesteld op 'ingeschakeld'
 
-**Id**: **Eigendom** van CIS Azure 3.1: Klant
+**Id** : **Eigendom** van CIS Azure 3.1: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -205,7 +205,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-default-network-access-rule-for-storage-accounts-is-set-to-deny"></a>Controleren of de standaardregel voor netwerktoegang voor opslagaccounts is ingesteld op weigeren
 
-**Id**: **Eigendom** van CIS Azure 3.7: Klant
+**Id** : **Eigendom** van CIS Azure 3.7: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -213,7 +213,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-trusted-microsoft-services-is-enabled-for-storage-account-access"></a>Controleren of vertrouwde Microsoft-services zijn ingeschakeld voor toegang tot het opslagaccount
 
-**Id**: **Eigendom** van CIS Azure 3.8: Klant
+**Id** : **Eigendom** van CIS Azure 3.8: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -223,7 +223,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-auditing-is-set-to-on"></a>Controleren of 'Controle' is ingesteld op 'Aan'
 
-**Id**: **Eigendom** van CIS Azure 4.1: Klant
+**Id** : **Eigendom** van CIS Azure 4.1: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -231,7 +231,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-auditactiongroups-in-auditing-policy-for-a-sql-server-is-set-properly"></a>Controleren of het beleid 'AuditActionGroups ' in 'Controle' voor een SQL-server correct is ingesteld
 
-**Id**: **Eigendom** van CIS Azure 4.2: Klant
+**Id** : **Eigendom** van CIS Azure 4.2: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -239,7 +239,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-auditing-retention-is-greater-than-90-days"></a>Controleren of de bewaarperiode van de 'Controle' 'groter is dan 90 dagen'
 
-**Id**: **Eigendom** van CIS Azure 4.3: Klant
+**Id** : **Eigendom** van CIS Azure 4.3: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -247,7 +247,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-advanced-data-security-on-a-sql-server-is-set-to-on"></a>Controleren of 'Advanced Data Security' op een SQL-server is ingesteld op 'Aan'
 
-**Id**: **Eigendom** van CIS Azure 4.4: Klant
+**Id** : **Eigendom** van CIS Azure 4.4: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -256,7 +256,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-azure-active-directory-admin-is-configured"></a>Controleren of Azure Active Directory-beheerder is geconfigureerd
 
-**Id**: **Eigendom** van CIS Azure 4.8: Klant
+**Id** : **Eigendom** van CIS Azure 4.8: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -264,7 +264,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-data-encryption-is-set-to-on-on-a-sql-database"></a>Controleren of 'gegevensversleuteling' is ingesteld op 'ingeschakeld' op een SQL Database
 
-**Id**: **Eigendom** van CIS Azure 4.9: Klant
+**Id** : **Eigendom** van CIS Azure 4.9: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -272,7 +272,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-sql-servers-tde-protector-is-encrypted-with-byok-use-your-own-key"></a>Controleren of de TDE-beveiliging van SQL-server is versleuteld met BYOK (Uw eigen sleutel gebruiken)
 
-**Id**: **Eigendom** van CIS Azure 4.10: Klant
+**Id** : **Eigendom** van CIS Azure 4.10: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -281,7 +281,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-enforce-ssl-connection-is-set-to-enabled-for-mysql-database-server"></a>Controleren of ‘SSL-verbinding afdwingen’ is ingesteld op "INGESCHAKELD" voor MySQL-databaseserver
 
-**Id**: **Eigendom** van CIS Azure 4.11: Klant
+**Id** : **Eigendom** van CIS Azure 4.11: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -289,7 +289,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-server-parameter-log_checkpoints-is-set-to-on-for-postgresql-database-server"></a>Controleren of de serverparameter ‘log_checkpoints’ is ingesteld op AAN voor PostgreSQL-databaseserver
 
-**Id**: **Eigendom** van CIS Azure 4.12: Klant
+**Id** : **Eigendom** van CIS Azure 4.12: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -297,7 +297,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-enforce-ssl-connection-is-set-to-enabled-for-postgresql-database-server"></a>Controleren of ‘SSL-verbinding afdwingen’ is ingesteld op ‘INGESCHAKELD’ voor PostgreSQL-databaseservers
 
-**Id**: **Eigendom** van CIS Azure 4.13: Klant
+**Id** : **Eigendom** van CIS Azure 4.13: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -305,7 +305,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-server-parameter-log_connections-is-set-to-on-for-postgresql-database-server"></a>Controleren of de serverparameter ‘log_connections’ is ingesteld op ‘AAN’ voor PostgreSQL-databaseserver
 
-**Id**: **Eigendom** van CIS Azure 4.14: Klant
+**Id** : **Eigendom** van CIS Azure 4.14: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -313,7 +313,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-server-parameter-log_disconnections-is-set-to-on-for-postgresql-database-server"></a>Controleren of dat de serverparameter ‘log_disconnections’ is ingesteld op ‘AAN’ voor PostgreSQL-databaseserver
 
-**Id**: **Eigendom** van CIS Azure 4.15: Klant
+**Id** : **Eigendom** van CIS Azure 4.15: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -321,7 +321,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-server-parameter-connection_throttling-is-set-to-on-for-postgresql-database-server"></a>Controleren of de serverparameter ‘connection_throttling’ is ingesteld op ‘AAN" voor PostgreSQL-databaseserver
 
-**Id**: **Eigendom** van CIS Azure 4.17: Klant
+**Id** : **Eigendom** van CIS Azure 4.17: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -331,7 +331,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-a-log-profile-exists"></a>Controleren of er een logboekprofiel bestaat
 
-**Id**: **Eigendom** van CIS Azure 5.1.1: Klant
+**Id** : **Eigendom** van CIS Azure 5.1.1: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -339,7 +339,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-activity-log-retention-is-set-365-days-or-greater"></a>Controleren of de bewaarperiode van het activiteitenlogboek op 365 dagen of groter is ingesteld
 
-**Id**: **Eigendom** van CIS Azure 5.1.2: Klant
+**Id** : **Eigendom** van CIS Azure 5.1.2: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -347,7 +347,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-audit-profile-captures-all-the-activities"></a>Controleren of het controleprofiel alle activiteiten vastlegt
 
-**Id**: **Eigendom** van CIS Azure 5.1.3: Klant
+**Id** : **Eigendom** van CIS Azure 5.1.3: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -355,7 +355,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-the-log-profile-captures-activity-logs-for-all-regions-including-global"></a>Zorg ervoor dat het logboekprofiel activiteitenlogboeken vastlegt voor alle regio's, waaronder globaal
 
-**Id**: **Eigendom** van CIS Azure 5.1.4: Klant
+**Id** : **Eigendom** van CIS Azure 5.1.4: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -363,7 +363,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-the-storage-account-containing-the-container-with-activity-logs-is-encrypted-with-byok-use-your-own-key"></a>Controleren of het opslagaccount met de container met activiteitenlogboeken is versleuteld met BYOK (Uw eigen sleutel gebruiken)
 
-**Id**: **Eigendom** van CIS Azure 5.1.6: Klant
+**Id** : **Eigendom** van CIS Azure 5.1.6: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -371,7 +371,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-logging-for-azure-keyvault-is-enabled"></a>Controleren of logboekregistratie van Azure-sleutelkluis is 'ingeschakeld'
 
-**Id**: **Eigendom** van CIS Azure 5.1.7: Klant
+**Id** : **Eigendom** van CIS Azure 5.1.7: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -379,7 +379,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-activity-log-alert-exists-for-create-policy-assignment"></a>Controleren of er een waarschuwing voor een activiteitenlogboek bestaat voor het maken van beleidstoewijzing
 
-**Id**: **Eigendom** van CIS Azure 5.2.1: Klant
+**Id** : **Eigendom** van CIS Azure 5.2.1: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -387,7 +387,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-activity-log-alert-exists-for-create-or-update-network-security-group"></a>Controleren of er een waarschuwing voor activiteitenlogboek bestaat voor het maken of bijwerken van een netwerkbeveiligingsgroep
 
-**Id**: **Eigendom** van CIS Azure 5.2.2: Klant
+**Id** : **Eigendom** van CIS Azure 5.2.2: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -395,7 +395,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-activity-log-alert-exists-for-delete-network-security-group"></a>Controleren of er een waarschuwing voor activiteitenlogboek bestaat voor het verwijderen van een netwerkbeveiligingsgroep
 
-**Id**: **Eigendom** van CIS Azure 5.2.3: Klant
+**Id** : **Eigendom** van CIS Azure 5.2.3: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -403,7 +403,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-activity-log-alert-exists-for-create-or-update-network-security-group-rule"></a>Controleren of er een waarschuwing voor activiteitenlogboek bestaat voor het maken of bijwerken van een regel voor netwerkbeveiligingsgroep
 
-**Id**: **Eigendom** van CIS Azure 5.2.4: Klant
+**Id** : **Eigendom** van CIS Azure 5.2.4: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -411,7 +411,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-activity-log-alert-exists-for-the-delete-network-security-group-rule"></a>Controleren of er een waarschuwing voor activiteitenlogboek bestaat voor het verwijderen van de regel voor de netwerkbeveiligingsgroep
 
-**Id**: **Eigendom** van CIS Azure 5.2.5: Klant
+**Id** : **Eigendom** van CIS Azure 5.2.5: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -419,7 +419,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-activity-log-alert-exists-for-create-or-update-security-solution"></a>Controleren of er een waarschuwing voor activiteitenlogboek bestaat voor het maken of bijwerken van een beveiligingsoplossing
 
-**Id**: **Eigendom** van CIS Azure 5.2.6: Klant
+**Id** : **Eigendom** van CIS Azure 5.2.6: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -427,7 +427,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-activity-log-alert-exists-for-delete-security-solution"></a>Controleren of er een waarschuwing voor activiteitenlogboek bestaat voor het verwijderen van de beveiligingsoplossing
 
-**Id**: **Eigendom** van CIS Azure 5.2.7: Klant
+**Id** : **Eigendom** van CIS Azure 5.2.7: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -435,7 +435,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-activity-log-alert-exists-for-create-or-update-or-delete-sql-server-firewall-rule"></a>Controleren of er een waarschuwing voor activiteitenlogboek bestaat voor het maken of bijwerken van Firewallregels voor SQL-server
 
-**Id**: **Eigendom** van CIS Azure 5.2.8: Klant
+**Id** : **Eigendom** van CIS Azure 5.2.8: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -443,7 +443,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-activity-log-alert-exists-for-update-security-policy"></a>Controleren of er een waarschuwing voor activiteitenlogboek bestaat voor het bijwerken van het beveiligingsbeleid
 
-**Id**: **Eigendom** van CIS Azure 5.2.9: Klant
+**Id** : **Eigendom** van CIS Azure 5.2.9: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -453,7 +453,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-rdp-access-is-restricted-from-the-internet"></a>Controleren of de RDP-toegang is afgescheiden van het internet
 
-**Id**: **Eigendom** van CIS Azure 6.1: Klant
+**Id** : **Eigendom** van CIS Azure 6.1: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -461,7 +461,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-ssh-access-is-restricted-from-the-internet"></a>Controleren of SSH-toegang is afgescheiden van het internet
 
-**Id**: **Eigendom** van CIS Azure 6.2: Klant
+**Id** : **Eigendom** van CIS Azure 6.2: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -469,7 +469,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-network-watcher-is-enabled"></a>Controleren of Network Watcher is 'ingeschakeld'
 
-**Id**: **Eigendom** van CIS Azure 6.5: Klant
+**Id** : **Eigendom** van CIS Azure 6.5: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -479,7 +479,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-os-disk-are-encrypted"></a>Controleren of de ‘besturingssysteemschijf’ is versleuteld
 
-**Id**: **Eigendom** van CIS Azure 7.1: Klant
+**Id** : **Eigendom** van CIS Azure 7.1: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -487,7 +487,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-data-disks-are-encrypted"></a>Controleer of 'gegevensschijven' zijn versleuteld
 
-**Id**: **Eigendom**van CIS Azure 7.2: Klant
+**Id** : **Eigendom** van CIS Azure 7.2: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -495,7 +495,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-unattached-disks-are-encrypted"></a>Controleer of 'niet-gekoppelde schijven' zijn versleuteld
 
-**Id**: **Eigendom** van CIS Azure 7.3: Klant
+**Id** : **Eigendom** van CIS Azure 7.3: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -503,7 +503,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-only-approved-extensions-are-installed"></a>Controleren of alleen goedgekeurde extensies zijn geïnstalleerd
 
-**Id**: **Eigendom** van CIS Azure 7.4: Klant
+**Id** : **Eigendom** van CIS Azure 7.4: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -511,7 +511,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-the-latest-os-patches-for-all-virtual-machines-are-applied"></a>Controleren of de meest recente besturingssysteempatches voor alle virtuele machines zijn toegepast
 
-**Id**: **Eigendom** van CIS Azure 7.5: Klant
+**Id** : **Eigendom** van CIS Azure 7.5: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -519,7 +519,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-the-endpoint-protection-for-all-virtual-machines-is-installed"></a>Controleer of Endpoint Protection voor alle virtuele machines is geïnstalleerd
 
-**Id**: **Eigendom** van CIS Azure 7.6: Klant
+**Id** : **Eigendom** van CIS Azure 7.6: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -529,7 +529,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-the-key-vault-is-recoverable"></a>Zorg ervoor dat de sleutelkluis kan worden hersteld
 
-**Id**: **Eigendom** van CIS Azure 8.4: Klant
+**Id** : **Eigendom** van CIS Azure 8.4: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -537,7 +537,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="enable-role-based-access-control-rbac-within-azure-kubernetes-services"></a>Op rollen gebaseerd toegangsbeheer (RBAC) inschakelen in Azure Kubernetes Services
 
-**Id**: **Eigendom** van CIS Azure 8.5: Klant
+**Id** : **Eigendom** van CIS Azure 8.5: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -547,7 +547,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-app-service-authentication-is-set-on-azure-app-service"></a>Controleren of App Service-verificatie is ingesteld op Azure App Service
 
-**Id**: **Eigendom** van CIS Azure 9.1: Klant
+**Id** : **Eigendom** van CIS Azure 9.1: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -557,7 +557,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-web-app-redirects-all-http-traffic-to-https-in-azure-app-service"></a>Controleren of de web-apps alle HTTP-verkeer omleidt naar HTTPS in Azure App Service
 
-**Id**: **Eigendom** van CIS Azure 9.2: Klant
+**Id** : **Eigendom** van CIS Azure 9.2: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -565,7 +565,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-web-app-is-using-the-latest-version-of-tls-encryption"></a>Controleren of voor de web-app de nieuwste versie van TLS-versleuteling wordt gebruikt
 
-**Id**: **Eigendom** van CIS Azure 9.3: Klant
+**Id** : **Eigendom** van CIS Azure 9.3: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -575,7 +575,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-the-web-app-has-client-certificates-incoming-client-certificates-set-to-on"></a>Controleren of de web-app 'Clientcertificaten' (inkomende clientcertificaten) heeft ingesteld op 'Aan'
 
-**Id**: **Eigendom** van CIS Azure 9.4: Klant
+**Id** : **Eigendom** van CIS Azure 9.4: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -585,7 +585,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-register-with-azure-active-directory-is-enabled-on-app-service"></a>Controleren of registratie in Azure Active Directory is ingeschakeld voor de App Service
 
-**Id**: **Eigendom** van CIS Azure 9.5: Klant
+**Id** : **Eigendom** van CIS Azure 9.5: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -595,42 +595,42 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 ### <a name="ensure-that-php-version-is-the-latest-if-used-to-run-the-web-app"></a>Controleren of de ‘PHP-versie’ de meest recente is, als deze wordt gebruikt om de web-app te openen
 
-**Id**: **Eigendom** van CIS Azure 9.7: Klant
+**Id** : **Eigendom** van CIS Azure 9.7: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Controleren of de PHP-versie de meest recente is, als deze wordt gebruikt als onderdeel van de API-app](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1bc1795e-d44a-4d48-9b3b-6fff0fd5f9ba) |Er worden regelmatig nieuwere versies uitgebracht voor PHP-software, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste PHP-versie voor API-apps wordt aanbevolen om te profiteren van beveiligingsoplossingen, indien van toepassing, en/of nieuwe functies van de nieuwste versie. |AuditIfNotExists, uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_PHP_Latest.json) |
-|[Controleren of de PHP-versie de meest recente is, als deze wordt gebruikt als onderdeel van de web-app](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7261b898-8a84-4db8-9e04-18527132abb3) |Er worden regelmatig nieuwere versies uitgebracht voor PHP-software, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste PHP-versie voor web-apps wordt aanbevolen om te profiteren van beveiligingsoplossingen, indien van toepassing, en/of nieuwe functies van de nieuwste versie. |AuditIfNotExists, uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_Webapp_Audit_PHP_Latest.json) |
+|[Controleren of de PHP-versie de meest recente is als deze wordt gebruikt als onderdeel van de API-app](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1bc1795e-d44a-4d48-9b3b-6fff0fd5f9ba) |Er worden regelmatig nieuwere versies uitgebracht voor PHP-software, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste PHP-versie voor API-apps wordt aanbevolen om te profiteren van beveiligingsoplossingen, indien van toepassing, en/of nieuwe functies van de nieuwste versie. Dit beleid is momenteel alleen van toepassing op Linux-web-apps. |AuditIfNotExists, uitgeschakeld |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_PHP_Latest.json) |
+|[Controleren of de PHP-versie de meest recente is, als deze wordt gebruikt als onderdeel van de web-app](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7261b898-8a84-4db8-9e04-18527132abb3) |Er worden regelmatig nieuwere versies uitgebracht voor PHP-software, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste PHP-versie voor web-apps wordt aanbevolen om te profiteren van beveiligingsoplossingen, indien van toepassing, en/of nieuwe functies van de nieuwste versie. Dit beleid is momenteel alleen van toepassing op Linux-web-apps. |AuditIfNotExists, uitgeschakeld |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_Webapp_Audit_PHP_Latest.json) |
 
 ### <a name="ensure-that-python-version-is-the-latest-if-used-to-run-the-web-app"></a>Controleren of de ‘Python-versie’ de meest recente is, als deze wordt gebruikt om de web-app te openen
 
-**Id**: **Eigendom** van CIS Azure 9.8: Klant
+**Id** : **Eigendom** van CIS Azure 9.8: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Controleren of de Python-versie de meest recente is, als deze wordt gebruikt als onderdeel van de API-app](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F74c3584d-afae-46f7-a20a-6f8adba71a16) |Er worden regelmatig nieuwere versies uitgebracht voor Python-software, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste Python-versie voor API-apps wordt aanbevolen om te profiteren van beveiligingsoplossingen, indien van toepassing, en/of nieuwe functies van de nieuwste versie. |AuditIfNotExists, uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_python_Latest.json) |
-|[Controleren of de Python-versie de meest recente is, als deze wordt gebruikt als onderdeel van de Function-app](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7238174a-fd10-4ef0-817e-fc820a951d73) |Er worden regelmatig nieuwere versies uitgebracht voor Python-software, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste Python-versie voor Function-apps wordt aanbevolen om te profiteren van beveiligingsoplossingen, indien van toepassing, en/of nieuwe functies van de nieuwste versie. |AuditIfNotExists, uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_python_Latest.json) |
-|[Controleren of de Python-versie de meest recente is, als deze wordt gebruikt als onderdeel van de web-app](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7008174a-fd10-4ef0-817e-fc820a951d73) |Er worden regelmatig nieuwere versies uitgebracht voor Python-software, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste Python-versie voor web-apps wordt aanbevolen om te profiteren van beveiligingsoplossingen, indien van toepassing, en/of nieuwe functies van de nieuwste versie. |AuditIfNotExists, uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_python_Latest.json) |
+|[Controleren of de Python-versie de meest recente is als deze wordt gebruikt als onderdeel van de API-app](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F74c3584d-afae-46f7-a20a-6f8adba71a16) |Er worden regelmatig nieuwere versies uitgebracht voor Python-software, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste Python-versie voor API-apps wordt aanbevolen om te kunnen profiteren van beveiligingsoplossingen (indien van toepassing) en/of nieuwe functies van de nieuwste versie. Dit beleid is momenteel alleen van toepassing op Linux-web-apps. |AuditIfNotExists, uitgeschakeld |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_python_Latest.json) |
+|[Controleren of de Python-versie de meest recente is, als deze wordt gebruikt als onderdeel van de Function-app](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7238174a-fd10-4ef0-817e-fc820a951d73) |Er worden regelmatig nieuwere versies uitgebracht voor Python-software, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste Python-versie voor Function-apps wordt aanbevolen om te profiteren van beveiligingsoplossingen, indien van toepassing, en/of nieuwe functies van de nieuwste versie. Dit beleid is momenteel alleen van toepassing op Linux-web-apps. |AuditIfNotExists, uitgeschakeld |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_python_Latest.json) |
+|[Controleren of de Python-versie de meest recente is, als deze wordt gebruikt als onderdeel van de web-app](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7008174a-fd10-4ef0-817e-fc820a951d73) |Er worden regelmatig nieuwere versies uitgebracht voor Python-software, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste Python-versie voor web-apps wordt aanbevolen om te profiteren van beveiligingsoplossingen, indien van toepassing, en/of nieuwe functies van de nieuwste versie. Dit beleid is momenteel alleen van toepassing op Linux-web-apps. |AuditIfNotExists, uitgeschakeld |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_python_Latest.json) |
 
 ### <a name="ensure-that-java-version-is-the-latest-if-used-to-run-the-web-app"></a>Controleren of de ‘Java-versie’ de meest recente is, als deze wordt gebruikt om de web-app te openen
 
-**Id**: **Eigendom** van CIS Azure 9.9: Klant
+**Id** : **Eigendom** van CIS Azure 9.9: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Controleren of de Java-versie de meest recente is, als deze wordt gebruikt als onderdeel van de API-app](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F88999f4c-376a-45c8-bcb3-4058f713cf39) |Er worden regelmatig nieuwere versies uitgebracht voor Java, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste Python-versie voor API-apps wordt aanbevolen om te profiteren van beveiligingsoplossingen, indien van toepassing, en/of nieuwe functies van de nieuwste versie. |AuditIfNotExists, uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_java_Latest.json) |
-|[Controleren of de nieuwste versie van Java wordt gebruikt als onderdeel van de Function-app](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9d0b6ea4-93e2-4578-bf2f-6bb17d22b4bc) |Er worden regelmatig nieuwere versies uitgebracht voor Java-software, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste Java-versie voor Function-apps wordt aanbevolen om te profiteren van beveiligingsfixes, indien van toepassing, en/of nieuwe functies van de nieuwste versie. |AuditIfNotExists, uitgeschakeld |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_java_Latest.json) |
-|[Controleren of de Java-versie de meest recente is, als deze wordt gebruikt als onderdeel van de web-app](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F496223c3-ad65-4ecd-878a-bae78737e9ed) |Er worden regelmatig nieuwere versies uitgebracht voor Java-software, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste Java-versie voor web-apps wordt aanbevolen om te profiteren van beveiligingsfixes, indien van toepassing, en/of nieuwe functies van de nieuwste versie. |AuditIfNotExists, uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_java_Latest.json) |
+|[Controleren of de Java-versie de meest recente is als deze wordt gebruikt als onderdeel van de API-app](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F88999f4c-376a-45c8-bcb3-4058f713cf39) |Er worden regelmatig nieuwere versies uitgebracht voor Java, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste Python-versie voor API-apps wordt aanbevolen om te kunnen profiteren van beveiligingsoplossingen (indien van toepassing) en/of nieuwe functies van de nieuwste versie. Dit beleid is momenteel alleen van toepassing op Linux-web-apps. |AuditIfNotExists, uitgeschakeld |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_java_Latest.json) |
+|[Controleren of de nieuwste versie van Java wordt gebruikt als onderdeel van de Function-app](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9d0b6ea4-93e2-4578-bf2f-6bb17d22b4bc) |Er worden regelmatig nieuwere versies uitgebracht voor Java-software, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste Java-versie voor Function-apps wordt aanbevolen om te profiteren van beveiligingsfixes, indien van toepassing, en/of nieuwe functies van de nieuwste versie. Dit beleid is momenteel alleen van toepassing op Linux-web-apps. |AuditIfNotExists, uitgeschakeld |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_java_Latest.json) |
+|[Controleren of de Java-versie de meest recente is, als deze wordt gebruikt als onderdeel van de web-app](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F496223c3-ad65-4ecd-878a-bae78737e9ed) |Er worden regelmatig nieuwere versies uitgebracht voor Java-software, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste Java-versie voor web-apps wordt aanbevolen om te profiteren van beveiligingsfixes, indien van toepassing, en/of nieuwe functies van de nieuwste versie. Dit beleid is momenteel alleen van toepassing op Linux-web-apps. |AuditIfNotExists, uitgeschakeld |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_java_Latest.json) |
 
 ### <a name="ensure-that-http-version-is-the-latest-if-used-to-run-the-web-app"></a>Controleren of de HTTP-versie de meest recente is als deze wordt gebruikt om de web-app te openen
 
-**Id**: **Eigendom** van CIS Azure 9.10: Klant
+**Id** : **Eigendom** van CIS Azure 9.10: Klant
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Controleren of de HTTP-versie de meest recente is, als deze wordt gebruikt om de API-app uit te voeren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F991310cd-e9f3-47bc-b7b6-f57b557d07db) |Er worden regelmatig nieuwere versies uitgebracht voor HTTP, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste HTTP-versie voor web-apps wordt aanbevolen om te profiteren van beveiligingsfixes, indien van toepassing, en/of nieuwe functies van de nieuwste versie. |AuditIfNotExists, uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_HTTP_Latest.json) |
-|[Controleren of de HTTP-versie de meest recente is, als deze wordt gebruikt om de Function-app uit te voeren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe2c1c086-2d84-4019-bff3-c44ccd95113c) |Er worden regelmatig nieuwere versies uitgebracht voor HTTP, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste HTTP-versie voor web-apps wordt aanbevolen om te profiteren van beveiligingsfixes, indien van toepassing, en/of nieuwe functies van de nieuwste versie. |AuditIfNotExists, uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_HTTP_Latest.json) |
-|[Controleren of de HTTP-versie de meest recente is, als deze wordt gebruikt om de web-app te openen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8c122334-9d20-4eb8-89ea-ac9a705b74ae) |Er worden regelmatig nieuwere versies uitgebracht voor HTTP, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste HTTP-versie voor web-apps wordt aanbevolen om te profiteren van beveiligingsfixes, indien van toepassing, en/of nieuwe functies van de nieuwste versie. |AuditIfNotExists, uitgeschakeld |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_HTTP_Latest.json) |
+|[Controleren of de HTTP-versie de meest recente is als deze wordt gebruikt om de API-app te openen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F991310cd-e9f3-47bc-b7b6-f57b557d07db) |Er worden regelmatig nieuwere versies uitgebracht voor HTTP, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste HTTP-versie voor web-apps wordt aanbevolen om te profiteren van beveiligingsfixes, indien van toepassing, en/of nieuwe functies van de nieuwste versie. Dit beleid is momenteel alleen van toepassing op Linux-web-apps. |AuditIfNotExists, uitgeschakeld |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_HTTP_Latest.json) |
+|[Controleren of de HTTP-versie de meest recente is, als deze wordt gebruikt om de Function-app uit te voeren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe2c1c086-2d84-4019-bff3-c44ccd95113c) |Er worden regelmatig nieuwere versies uitgebracht voor HTTP, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste HTTP-versie voor web-apps wordt aanbevolen om te profiteren van beveiligingsfixes, indien van toepassing, en/of nieuwe functies van de nieuwste versie. Dit beleid is momenteel alleen van toepassing op Linux-web-apps. |AuditIfNotExists, uitgeschakeld |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_HTTP_Latest.json) |
+|[Controleren of de HTTP-versie de meest recente is, als deze wordt gebruikt om de web-app te openen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8c122334-9d20-4eb8-89ea-ac9a705b74ae) |Er worden regelmatig nieuwere versies uitgebracht voor HTTP, ofwel vanwege de beveiligingsfouten ofwel om extra functionaliteit toe te voegen. Het gebruik van de nieuwste HTTP-versie voor web-apps wordt aanbevolen om te profiteren van beveiligingsfixes, indien van toepassing, en/of nieuwe functies van de nieuwste versie. Dit beleid is momenteel alleen van toepassing op Linux-web-apps. |AuditIfNotExists, uitgeschakeld |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_HTTP_Latest.json) |
 
 > [!NOTE]
 > De beschikbaarheid van specifieke Azure Policy-definities kan verschillen in Azure Government en andere nationale clouds.

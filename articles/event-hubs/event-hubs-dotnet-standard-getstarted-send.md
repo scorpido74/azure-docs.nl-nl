@@ -4,18 +4,18 @@ description: Dit artikel bevat een overzicht van het maken van een .NET Core-toe
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 170484b5a24367eb19e69f0a72918d99b6595fca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4949d68750e95e5b62b8387f03c77c082fbaf7f4
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91728502"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329318"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>Gebeurtenissen verzenden naar en ontvangen van Azure Event Hubs - .NET (Azure.Messaging.EventHubs) 
-In deze quickstart ziet u hoe u gebeurtenissen kunt verzenden naar en ontvangen van een Event Hub met behulp van de .NET-bibliotheek **Azure.Messaging.EventHubs**. 
+In deze quickstart ziet u hoe u gebeurtenissen kunt verzenden naar en ontvangen van een Event Hub met behulp van de .NET-bibliotheek **Azure.Messaging.EventHubs** . 
 
 > [!IMPORTANT]
-> In deze snelstartgids wordt gebruik gemaakt van de nieuwe **Azure.Messaging.EventHubs**-bibliotheek. Zie [Event Hubs verzenden en ontvangen met de Microsoft.Azure.EventHubs-bibliotheek](event-hubs-dotnet-standard-get-started-send-legacy.md) voor een quickstart die gebruikmaakt van de oude **Microsoft.Azure.EventHubs**-bibliotheek. 
+> In deze snelstartgids wordt gebruik gemaakt van de nieuwe **Azure.Messaging.EventHubs** -bibliotheek. Zie [Event Hubs verzenden en ontvangen met de Microsoft.Azure.EventHubs-bibliotheek](event-hubs-dotnet-standard-get-started-send-legacy.md) voor een quickstart die gebruikmaakt van de oude **Microsoft.Azure.EventHubs** -bibliotheek. 
 
 
 
@@ -24,9 +24,9 @@ Als u nog geen ervaring hebt met Azure Event Hubs, raadpleegt u het [Event Hubs-
 
 Voor het voltooien van deze snelstart moet aan de volgende vereisten worden voldaan:
 
-- **Microsoft Azure-abonnement**. Als u Azure-services wilt gebruiken, met inbegrip van Azure Event Hubs, hebt u een abonnement nodig.  Als u nog geen Azure-account hebt, kunt u zich aanmelden voor een [gratis proefversie](https://azure.microsoft.com/free/) of uw voordelen als MSDN-abonnee gebruiken wanneer u [een account maakt](https://azure.microsoft.com).
-- **Microsoft Visual Studio 2019**. De Azure Event Hubs-clientbibliotheek maakt gebruik van nieuwe functies die in C# 8.0 zijn geïntroduceerd.  U kunt de bibliotheek nog steeds gebruiken met eerdere versies van C#, maar de nieuwe syntaxis is dan niet beschikbaar. Als u gebruik wilt maken van de volledige syntaxis, is het raadzaam om te compileren met [.NET Core SDK](https://dotnet.microsoft.com/download) 3.0 of hoger en de [taalversie](/dotnet/csharp/language-reference/configure-language-version#override-a-default) ingesteld op `latest`. Als u Visual Studio gebruikt, weet dan dat de versies vóór Visual Studio 2019 niet compatibel met de hulpprogramma's die nodig zijn om C# 8.0 projecten te bouwen. Visual Studio 2019, met inbegrip van de gratis Community-editie, [hier](https://visualstudio.microsoft.com/vs/) worden gedownload.
-- **Een Event Hubs-naamruimte en een Event Hub maken**. In de eerste stap gebruikt u [Azure Portal](https://portal.azure.com) om een naamruimte van het type Event Hubs te maken en de beheerreferenties te verkrijgen die de toepassing nodig heeft om met de Event Hub te communiceren. Volg de procedure in [dit artikel](event-hubs-create.md) om een naamruimte en een Event Hub te maken. Haal vervolgens de **verbindingsreeks voor de Event Hubs-naamruimte** op door de instructies in het artikel te volgen: [Verbindingstekenreeks ophalen](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). U gebruikt de verbindingsreeks later in deze quickstart.
+- **Microsoft Azure-abonnement** . Als u Azure-services wilt gebruiken, met inbegrip van Azure Event Hubs, hebt u een abonnement nodig.  Als u nog geen Azure-account hebt, kunt u zich aanmelden voor een [gratis proefversie](https://azure.microsoft.com/free/) of uw voordelen als MSDN-abonnee gebruiken wanneer u [een account maakt](https://azure.microsoft.com).
+- **Microsoft Visual Studio 2019** . De Azure Event Hubs-clientbibliotheek maakt gebruik van nieuwe functies die in C# 8.0 zijn geïntroduceerd.  U kunt de bibliotheek nog steeds gebruiken met eerdere versies van C#, maar de nieuwe syntaxis is dan niet beschikbaar. Als u gebruik wilt maken van de volledige syntaxis, is het raadzaam om te compileren met [.NET Core SDK](https://dotnet.microsoft.com/download) 3.0 of hoger en de [taalversie](/dotnet/csharp/language-reference/configure-language-version#override-a-default) ingesteld op `latest`. Als u Visual Studio gebruikt, weet dan dat de versies vóór Visual Studio 2019 niet compatibel met de hulpprogramma's die nodig zijn om C# 8.0 projecten te bouwen. Visual Studio 2019, met inbegrip van de gratis Community-editie, [hier](https://visualstudio.microsoft.com/vs/) worden gedownload.
+- **Een Event Hubs-naamruimte en een Event Hub maken** . In de eerste stap gebruikt u [Azure Portal](https://portal.azure.com) om een naamruimte van het type Event Hubs te maken en de beheerreferenties te verkrijgen die de toepassing nodig heeft om met de Event Hub te communiceren. Volg de procedure in [dit artikel](event-hubs-create.md) om een naamruimte en een Event Hub te maken. Haal vervolgens de **verbindingsreeks voor de Event Hubs-naamruimte** op door de instructies in het artikel te volgen: [Verbindingstekenreeks ophalen](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). U gebruikt de verbindingsreeks later in deze quickstart.
 
 ## <a name="send-events"></a>Gebeurtenissen verzenden 
 In deze sectie wordt beschreven hoe u een .NET Core-consoletoepassing maakt voor het verzenden van gebeurtenissen naar een Event Hub. 
@@ -34,12 +34,12 @@ In deze sectie wordt beschreven hoe u een .NET Core-consoletoepassing maakt voor
 ### <a name="create-a-console-application"></a>Een consoletoepassing maken
 
 1. Start Visual Studio 2019. 
-1. Selecteer **Een nieuw project maken**. 
-1. Voer in het dialoogvenster **Een nieuw project maken** de volgende stappen uit: Als dit dialoogvenster niet wordt weergegeven, selecteert u in het menu **Bestand**, **Nieuw** en vervolgens **Project**. 
+1. Selecteer **Een nieuw project maken** . 
+1. Voer in het dialoogvenster **Een nieuw project maken** de volgende stappen uit: Als dit dialoogvenster niet wordt weergegeven, selecteert u in het menu **Bestand** , **Nieuw** en vervolgens **Project** . 
     1. Selecteer de programmeertaal **C#** .
     1. Selecteer **Console** als het type toepassing. 
     1. Selecteer **Console-app (.NET Core)** in de lijst met resultaten. 
-    1. Selecteer vervolgens **Volgende**. 
+    1. Selecteer vervolgens **Volgende** . 
 
         ![Het dialoogvenster New Project](./media/getstarted-dotnet-standard-send-v2/new-send-project.png)    
 1. Voer **EventHubsSender** in als projectnaam, **EventHubsQuickStart** als naam van de oplossing en selecteer **OK** om het project te maken. 
@@ -58,9 +58,10 @@ In deze sectie wordt beschreven hoe u een .NET Core-consoletoepassing maakt voor
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>Code schrijven om berichten te verzenden naar de event hub
 
-1. Voeg aan het begin van het bestand `using`Program.cs**de volgende**-instructies toe:
+1. Voeg aan het begin van het bestand `using`Program.cs **de volgende** -instructies toe:
 
     ```csharp
+    using System;
     using System.Text;
     using System.Threading.Tasks;
     using Azure.Messaging.EventHubs;
@@ -98,7 +99,7 @@ In deze sectie wordt beschreven hoe u een .NET Core-consoletoepassing maakt voor
     ```
 5. Bouw het project en controleer of er geen fouten zijn.
 6. Voer het programma uit en wacht op het bevestigingsbericht. 
-7. In de Azure-portal kunt u controleren of de Event Hub de berichten heeft ontvangen. Schakel over naar de weergave **Berichten** in de sectie **Metrische gegevens**. U moet de pagina vernieuwen om de grafiek bij te werken. Het kan een paar seconden duren voordat wordt weergegeven dat de berichten zijn ontvangen. 
+7. In de Azure-portal kunt u controleren of de Event Hub de berichten heeft ontvangen. Schakel over naar de weergave **Berichten** in de sectie **Metrische gegevens** . U moet de pagina vernieuwen om de grafiek bij te werken. Het kan een paar seconden duren voordat wordt weergegeven dat de berichten zijn ontvangen. 
 
     [![Controleren of de Event Hub de berichten heeft ontvangen](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png)](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png#lightbox)
 
@@ -127,9 +128,9 @@ In deze quickstart gebruikt u Azure Storage als controlepuntopslag. Volg deze st
 
 ### <a name="create-a-project-for-the-receiver"></a>Een project maken voor de ontvanger
 
-1. Klik in het Solution Explorer-venster met de rechtermuisknop op de oplossing **EventHubQuickStart**, wijs naar **Toevoegen** en selecteer **Nieuw project**. 
-1. Selecteer **Consoletoepassing (.NET Core)** en selecteer **Volgende**. 
-1. Voer **EventHubsReceiver** in als **Projectnaam** en selecteer **Maken**. 
+1. Klik in het Solution Explorer-venster met de rechtermuisknop op de oplossing **EventHubQuickStart** , wijs naar **Toevoegen** en selecteer **Nieuw project** . 
+1. Selecteer **Consoletoepassing (.NET Core)** en selecteer **Volgende** . 
+1. Voer **EventHubsReceiver** in als **Projectnaam** en selecteer **Maken** . 
 
 ### <a name="add-the-event-hubs-nuget-package"></a>Het Event Hubs NuGet-pakket toevoegen
 
@@ -147,9 +148,10 @@ In deze quickstart gebruikt u Azure Storage als controlepuntopslag. Volg deze st
 
 ### <a name="update-the-main-method"></a>De main-methode bijwerken 
 
-1. Voeg aan het begin van het bestand `using`Program.cs**de volgende**-instructies toe.
+1. Voeg aan het begin van het bestand `using`Program.cs **de volgende** -instructies toe.
 
     ```csharp
+    using System;
     using System.Text;
     using System.Threading.Tasks;
     using Azure.Storage.Blobs;
@@ -230,4 +232,4 @@ Bekijk de voorbeelden op GitHub.
 
 - [Event Hubs-voorbeelden op Github](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)
 - [Voorbeelden van gebeurtenisprocessor op GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples)
-- [Op rollen gebaseerd toegangsbeheer (RBAC)](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
+- [Azure RBAC-voorbeeld (op rollen gebaseerd toegangsbeheer)](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)

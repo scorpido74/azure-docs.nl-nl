@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 17ec3c6d3b9b19b7bc6edcb82cef438e27189c33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9ad0f443b1647499f7085693f34f4da9ec85398
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020093"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331988"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>Zelfstudie: Een Service Fabric-cluster bewaken in Azure
 
@@ -55,9 +55,9 @@ Als u toegang wilt krijgen tot de Service Fabric Analytics-oplossing, gaat u naa
 
 Selecteer de resource **ServiceFabric(mysfomsworkspace)** .
 
-In **Overzicht** worden de tegels weergegeven in de vorm van een grafiek voor elk van de ingeschakelde oplossingen, inclusief een voor Service Fabric. Klik op de **Service Fabric**-grafiek om door te gaan naar de oplossing Service Fabric-analyse.
+In **Overzicht** worden de tegels weergegeven in de vorm van een grafiek voor elk van de ingeschakelde oplossingen, inclusief een voor Service Fabric. Klik op de **Service Fabric** -grafiek om door te gaan naar de oplossing Service Fabric-analyse.
 
-![Service Fabric-oplossing](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-summary.png)
+![Schermopname van de Service Fabric-graaf.](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-summary.png)
 
 De volgende afbeelding toont de startpagina van de oplossing Service Fabric-analyse. Deze startpagina bevat een momentopname van wat er in uw cluster gebeurt.
 
@@ -74,7 +74,7 @@ De volgende afbeelding toont de startpagina van de oplossing Service Fabric-anal
 
 ### <a name="view-service-fabric-events-including-actions-on-nodes"></a>Service Fabric-gebeurtenissen weergeven, met inbegrip van acties op knooppunten
 
-Klik op de pagina Service Fabric-analyse op de grafiek voor **Clustergebeurtenissen**.  De logboeken voor alle verzamelde systeemgebeurtenissen worden weergegeven. Ter referentie: deze komen van de **WADServiceFabricSystemEventsTable** in het Azure Storage-account. De Reliable Services- en Actors-gebeurtenissen die u hierna ziet, komen ook uit de bijbehorende tabellen.
+Klik op de pagina Service Fabric-analyse op de grafiek voor **Clustergebeurtenissen** .  De logboeken voor alle verzamelde systeemgebeurtenissen worden weergegeven. Ter referentie: deze komen van de **WADServiceFabricSystemEventsTable** in het Azure Storage-account. De Reliable Services- en Actors-gebeurtenissen die u hierna ziet, komen ook uit de bijbehorende tabellen.
     
 ![Query's uitvoeren op het operationele kanaal](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-events.png)
 
@@ -87,7 +87,7 @@ ServiceFabricOperationalEvent
 
 Kusto is een krachtige querytaal. Hier volgen enkele andere nuttige query's.
 
-Maak een *ServiceFabricEvent*-opzoektabel als een door de gebruiker gedefinieerde functie door de query op te slaan als een functie met de alias ServiceFabricEvent:
+Maak een *ServiceFabricEvent* -opzoektabel als een door de gebruiker gedefinieerde functie door de query op te slaan als een functie met de alias ServiceFabricEvent:
 
 ```kusto
 let ServiceFabricEvent = datatable(EventId: int, EventName: string)
@@ -183,7 +183,7 @@ app('PlunkoServiceFabricCluster').traces
 
 ### <a name="view-service-fabric-application-events"></a>Service Fabric-toepassingsgebeurtenissen weergeven
 
-U kunt gebeurtenissen weergeven voor de toepassingen Reliable Services en Reliable Actors die op het cluster zijn geïmplementeerd.  Klik op de pagina Service Fabric-analyse op de grafiek voor **Toepassingsgebeurtenissen**.
+U kunt gebeurtenissen weergeven voor de toepassingen Reliable Services en Reliable Actors die op het cluster zijn geïmplementeerd.  Klik op de pagina Service Fabric-analyse op de grafiek voor **Toepassingsgebeurtenissen** .
 
 Voer de volgende query uit om gebeurtenissen van uw Reliable Services-toepassingen weer te geven:
 ```kusto
@@ -227,13 +227,13 @@ Als u gedetailleerdere gebeurtenissen voor Reliable Actors wilt configureren, ku
 ## <a name="view-performance-counters-with-azure-monitor-logs"></a>Prestatiemeteritems weergeven met Azure Monitor-logboeken
 Als u prestatiemeteritems wilt weergeven, gaat u naar de [Azure-portal](https://portal.azure.com) en de resourcegroep waarin u de oplossing Service Fabric-analyse hebt gemaakt. 
 
-Selecteer de resource **ServiceFabric(mysfomsworkspace)** en selecteer vervolgens **Log Analytics-werkruimte** en **Geavanceerde instellingen**.
+Selecteer de resource **ServiceFabric(mysfomsworkspace)** en selecteer vervolgens **Log Analytics-werkruimte** en **Geavanceerde instellingen** .
 
-Klik op **Data**en klik vervolgens op **Windows-prestatiemeteritems**. Er is een lijst met standaard meteritems die u kunt inschakelen en u kunt ook het interval voor verzameling instellen. U kunt ook [aanvullende prestatiemeteritems toevoegen](service-fabric-diagnostics-event-generation-perf.md) om te verzamelen. In dit [artikel](/windows/desktop/PerfCtrs/specifying-a-counter-path) wordt verwezen naar de juiste indeling. Klik op **Opslaan** en klik vervolgens op **OK**.
+Klik op **Data** en klik vervolgens op **Windows-prestatiemeteritems** . Er is een lijst met standaard meteritems die u kunt inschakelen en u kunt ook het interval voor verzameling instellen. U kunt ook [aanvullende prestatiemeteritems toevoegen](service-fabric-diagnostics-event-generation-perf.md) om te verzamelen. In dit [artikel](/windows/desktop/PerfCtrs/specifying-a-counter-path) wordt verwezen naar de juiste indeling. Klik op **Opslaan** en klik vervolgens op **OK** .
 
-Sluit de blade Geavanceerde instellingen en selecteer **Samenvatting van werkruimten** onder de kop **Algemeen**. Voor elk van de oplossingen die zijn ingeschakeld, is er een grafische tegel, met inbegrip van Service Fabric. Klik op de **Service Fabric**-grafiek om door te gaan naar de oplossing Service Fabric-analyse.
+Sluit de blade Geavanceerde instellingen en selecteer **Samenvatting van werkruimten** onder de kop **Algemeen** . Voor elk van de oplossingen die zijn ingeschakeld, is er een grafische tegel, met inbegrip van Service Fabric. Klik op de **Service Fabric** -grafiek om door te gaan naar de oplossing Service Fabric-analyse.
 
-Er zijn grafische tegels voor operationeel-kanaalgebeurtenissen en Reliable Services-gebeurtenissen. De grafische weergave van de inkomende gegevens voor de meteritems die u hebt geselecteerd, wordt weergegeven onder **Metrische knooppuntgegevens**. 
+Er zijn grafische tegels voor operationeel-kanaalgebeurtenissen en Reliable Services-gebeurtenissen. De grafische weergave van de inkomende gegevens voor de meteritems die u hebt geselecteerd, wordt weergegeven onder **Metrische knooppuntgegevens** . 
 
 Selecteer de grafiek **Metrische gegevens voor containers** om meer details weer te geven. U kunt ook query's uitvoeren op gegevens van prestatiemeteritems, net als bij clustergebeurtenissen, en filteren op de knooppunten, de naam van het prestatiemeteritem en waarden met behulp van de Kusto-querytaal.
 

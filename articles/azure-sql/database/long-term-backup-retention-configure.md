@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 04/14/2020
-ms.openlocfilehash: a9ff0219a9b811cae15f9b34ec85240d303ab841
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7c66c37be1d200a73aa04854f946946b69c6b76
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450273"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629133"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Azure SQL Database lange termijn retentie van back-ups beheren
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -31,7 +31,7 @@ In de volgende secties ziet u hoe u de Azure Portal kunt gebruiken voor het conf
 
 U kunt SQL Database configureren om [automatische back-ups te bewaren](long-term-retention-overview.md) gedurende een periode die langer is dan de retentie periode voor uw servicelaag.
 
-1. Selecteer in de Azure Portal uw SQL Server-exemplaar en klik vervolgens op **back-ups beheren**. Schakel op het tabblad **beleid configureren** het selectie vakje in voor de data base waarvoor u het Bewaar beleid voor back-ups op lange termijn wilt instellen of wijzigen. Als het selectie vakje naast de data base niet is ingeschakeld, zijn de wijzigingen voor het beleid niet van toepassing op die data base.  
+1. Selecteer in de Azure Portal uw SQL Server-exemplaar en klik vervolgens op **back-ups beheren** . Schakel op het tabblad **beleid configureren** het selectie vakje in voor de data base waarvoor u het Bewaar beleid voor back-ups op lange termijn wilt instellen of wijzigen. Als het selectie vakje naast de data base niet is ingeschakeld, zijn de wijzigingen voor het beleid niet van toepassing op die data base.  
 
    ![koppeling back-ups beheren](./media/long-term-backup-retention-configure/ltr-configure-ltr.png)
 
@@ -39,7 +39,7 @@ U kunt SQL Database configureren om [automatische back-ups te bewaren](long-term
 
    ![beleid configureren](./media/long-term-backup-retention-configure/ltr-configure-policies.png)
 
-3. Wanneer u klaar bent, klikt u op **Toep assen**.
+3. Wanneer u klaar bent, klikt u op **Toep assen** .
 
 > [!IMPORTANT]
 > Wanneer u een lange termijn beleid voor het bewaren van back-ups inschakelt, kan het tot zeven dagen duren voordat de eerste back-up zichtbaar is en beschikbaar is voor herstel. Zie [lange termijn retentie van back-ups](long-term-retention-overview.md)voor meer informatie over de CADANCE voor LTR-back-ups.
@@ -48,7 +48,7 @@ U kunt SQL Database configureren om [automatische back-ups te bewaren](long-term
 
 Bekijk de back-ups die worden bewaard voor een specifieke data base met een LTR-beleid en herstel van deze back-ups.
 
-1. Selecteer uw server in de Azure Portal en klik vervolgens op **back-ups beheren**. Selecteer de data base waarvoor u beschik bare back-ups wilt weer geven op het tabblad **beschik bare back-ups** .
+1. Selecteer uw server in de Azure Portal en klik vervolgens op **back-ups beheren** . Selecteer de data base waarvoor u beschik bare back-ups wilt weer geven op het tabblad **beschik bare back-ups** .
 
    ![data base selecteren](./media/long-term-backup-retention-configure/ltr-available-backups-select-database.png)
 
@@ -76,13 +76,13 @@ Bekijk de back-ups die worden bewaard voor een specifieke data base met een LTR-
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek.
+> De module PowerShell Azure Resource Manager wordt nog steeds ondersteund in Azure SQL Database, maar alle toekomstige ontwikkeling is voor de Az.Sql-module. Zie [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/) voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek.
 
 In de volgende secties ziet u hoe u Power shell kunt gebruiken voor het configureren van de lange termijn retentie van back-ups, het weer geven van back-ups in azure Storage en het terugzetten van een back-up in azure Storage.
 
 ### <a name="azure-roles-to-manage-long-term-retention"></a>Azure-functies voor het beheren van lange termijn retentie
 
-Voor **Get-AzSqlDatabaseLongTermRetentionBackup** en **Restore-AzSqlDatabase**moet u een van de volgende rollen hebben:
+Voor **Get-AzSqlDatabaseLongTermRetentionBackup** en **Restore-AzSqlDatabase** moet u een van de volgende rollen hebben:
 
 - Rol van abonnements eigenaar of
 - SQL Server rol Inzender of
@@ -90,7 +90,7 @@ Voor **Get-AzSqlDatabaseLongTermRetentionBackup** en **Restore-AzSqlDatabase**mo
 
    Micro soft. SQL/locations/longTermRetentionBackups/Read micro soft. SQL/locations/longTermRetentionServers/longTermRetentionBackups/Read micro soft. SQL/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/lezen
 
-Voor **Remove-AzSqlDatabaseLongTermRetentionBackup**moet u een van de volgende rollen hebben:
+Voor **Remove-AzSqlDatabaseLongTermRetentionBackup** moet u een van de volgende rollen hebben:
 
 - Rol van abonnements eigenaar of
 - Aangepaste rol met de volgende machtiging:
@@ -200,6 +200,9 @@ Restore-AzSqlDatabase -FromLongTermRetentionBackup -ResourceId $ltrBackup.Resour
 
 > [!NOTE]
 > Hier kunt u verbinding maken met de herstelde database met behulp van SQL Server Management Studio om noodzakelijke taken uit te voeren, zoals een deel van de gegevens uit de herstelde database extraheren om naar de bestaande database te kopiëren, of de bestaande database verwijderen en de naam van de herstelde database wijzigen in de naam van de bestaande database. Zie [herstel punt in tijd](recovery-using-backups.md#point-in-time-restore).
+
+## <a name="limitations"></a>Beperkingen
+- Bij het herstellen van een LTR-back-up is de eigenschap Lees schaal uitgeschakeld. Als u de herstelde data base wilt inschakelen, moet u deze bijwerken door de data base bij te werken nadat deze is gemaakt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: a311439e8efc5481fbfd7431c1514ba6be576e39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59a87e7c91266dd1ec2d7263df7149d07f6e7ce8
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91858010"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342294"
 ---
 # <a name="feature-coverage-for-machines"></a>Functiedekking voor machines
 
@@ -28,7 +28,7 @@ De twee tabbladen hieronder tonen de functies van Azure Security Center die besc
 
 ### <a name="windows-machines"></a>[**Windows-machines**](#tab/features-windows)
 
-|**Functie**|**Azure Virtual Machines**|**Virtuele Azure-machineschaalsets**|**Niet-Azure-machines**|**Azure Defender vereist**
+|**Functie**|**Azure Virtual Machines**|**Virtuele Azure-machineschaalsets**|**Machines met Azure Arc**|**Azure Defender vereist**
 |----|:----:|:----:|:----:|:----:|
 |[Microsoft Defender ATP-integratie](security-center-wdatp.md)|✔</br>(in ondersteunde versies)|✔</br>(in ondersteunde versies)|✔|Ja|
 |[Gedragsanalyse van virtuele machine (en beveiligingswaarschuwingen)](alerts-reference.md)|✔|✔|✔|Ja|
@@ -42,9 +42,9 @@ De twee tabbladen hieronder tonen de functies van Azure Security Center die besc
 |[Adaptieve netwerkbeveiliging](security-center-adaptive-network-hardening.md)|✔|-|-|Ja|
 |[Dashboard en rapporten voor naleving van regelgeving](security-center-compliance-dashboard.md)|✔|✔|✔|Ja|
 |Aanbevelingen en bedreigingsbeveiliging in door Docker gehoste IaaS-containers|-|-|-|Ja|
-|Evaluatie van ontbrekende OS-patches|✔|✔|✔|Azure: Nee<br><br>Niet-Azure: Ja|
-|Evaluatie van onjuiste beveiligingsconfiguratie|✔|✔|✔|Azure: Nee<br><br>Niet-Azure: Ja|
-|[Evaluatie van eindpuntbeveiliging](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: Nee<br><br>Niet-Azure: Ja|
+|Evaluatie van ontbrekende OS-patches|✔|✔|✔|Azure: Nee<br><br>Met Arc: Ja|
+|Evaluatie van onjuiste beveiligingsconfiguratie|✔|✔|✔|Azure: Nee<br><br>Met Arc: Ja|
+|[Evaluatie van eindpuntbeveiliging](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: Nee<br><br>Met Arc: Ja|
 |Evaluatie van schijfversleuteling|✔</br>(voor [ondersteunde scenario's](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|Nee|
 |Evaluatie van beveiligingsproblemen van derden|✔|-|-|Nee|
 |[Evaluatie van netwerkbeveiliging](security-center-network-recommendations.md)|✔|✔|-|Nee|
@@ -52,10 +52,10 @@ De twee tabbladen hieronder tonen de functies van Azure Security Center die besc
 
 ### <a name="linux-machines"></a>[**Linux-machines**](#tab/features-linux)
 
-|**Functie**|**Azure Virtual Machines**|**Virtuele Azure-machineschaalsets**|**Niet-Azure-machines**|**Azure Defender vereist**
+|**Functie**|**Azure Virtual Machines**|**Virtuele Azure-machineschaalsets**|**Machines met Azure Arc**|**Azure Defender vereist**
 |----|:----:|:----:|:----:|:----:|
 |[Microsoft Defender ATP-integratie](security-center-wdatp.md)|-|-|-|Ja|
-|[Gedragsanalyse van virtuele machine (en beveiligingswaarschuwingen)](security-center-alerts-iaas.md)|✔</br>(in ondersteunde versies)|✔</br>(in ondersteunde versies)|✔|Ja|
+|[Gedragsanalyse van virtuele machine (en beveiligingswaarschuwingen)](./azure-defender.md)|✔</br>(in ondersteunde versies)|✔</br>(in ondersteunde versies)|✔|Ja|
 |[Bestandsloze beveiligingswaarschuwingen](alerts-reference.md#alerts-windows)|-|-|-|Ja|
 |[Op netwerk gebaseerde beveiligingswaarschuwingen](other-threat-protections.md#network-layer)|✔|✔|-|Ja|
 |[Just-in-time-toegang voor virtuele machines](security-center-just-in-time.md)|✔|-|-|Ja|
@@ -66,8 +66,8 @@ De twee tabbladen hieronder tonen de functies van Azure Security Center die besc
 |[Adaptieve netwerkbeveiliging](security-center-adaptive-network-hardening.md)|✔|-|-|Ja|
 |[Dashboard en rapporten voor naleving van regelgeving](security-center-compliance-dashboard.md)|✔|✔|✔|Ja|
 |Aanbevelingen en bedreigingsbeveiliging in door Docker gehoste IaaS-containers|✔|✔|✔|Ja|
-|Evaluatie van ontbrekende OS-patches|✔|✔|✔|Azure: Nee<br><br>Niet-Azure: Ja|
-|Evaluatie van onjuiste beveiligingsconfiguratie|✔|✔|✔|Azure: Nee<br><br>Niet-Azure: Ja|
+|Evaluatie van ontbrekende OS-patches|✔|✔|✔|Azure: Nee<br><br>Met Arc: Ja|
+|Evaluatie van onjuiste beveiligingsconfiguratie|✔|✔|✔|Azure: Nee<br><br>Met Arc: Ja|
 |[Evaluatie van eindpuntbeveiliging](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Nee|
 |Evaluatie van schijfversleuteling|✔</br>(voor [ondersteunde scenario's](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|Nee|
 |Evaluatie van beveiligingsproblemen van derden|✔|-|-|Nee|
@@ -96,10 +96,10 @@ Zie [Evaluatie van eindpuntbeveiliging en aanbevelingen](security-center-endpoin
 | Trend Micro - Deep Security | Windows Server-familie  | Nee | Ja |
 | Symantec v12.1.1100+| Windows Server-familie  | Nee | Ja |
 | McAfee v10+ | Windows Server-familie  | Nee | Ja |
-| McAfee v10+ | Linux Server-familie  | Nee | Ja **\*** |
-| Sophos V9+| Linux Server-familie  | Nee | Ja  **\***  |
+| McAfee v10+ | Linux Server-familie  | Nee | Ja * *\** _ |
+| Sophos V9+| Linux Server-familie  | Nee | Ja _*\**_  |
 
- **\*** De status van de dekking en de ondersteunende gegevens zijn momenteel alleen beschikbaar in de Log Analytics-werkruimte die aan uw beveiligde abonnementen is gekoppeld. Deze wordt niet weergegeven in de Azure Security Center-portal.
+ _ *\** * De status van de dekking en de ondersteunende gegevens zijn momenteel alleen beschikbaar in de Log Analytics-werkruimte die aan uw beveiligde abonnementen is gekoppeld. Deze wordt niet weergegeven in de Azure Security Center-portal.
 
 > [!NOTE]
 > Voor de detectie van System Center Endpoint Protection (SCEP) op een virtuele machine met Windows Server 2008 R2 moet SCEP worden geïnstalleerd na PowerShell (v 3.0 of nieuwer).

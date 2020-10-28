@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: 01383acad9f221e376f814ecf99794eb0431d0cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5370343ac83d75df94e7291d26c87ce0c419d0e
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588922"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327413"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>Key Vault integreren met DigiCert-certificeringsinstantie
 
@@ -51,17 +51,17 @@ Nadat u de bovenstaande gegevens van het DigiCert CertCentral-account hebt verza
 ### <a name="azure-portal"></a>Azure Portal
 
 1.  Als u de DigiCert-certificeringsinstantie wilt toevoegen, gaat u naar de sleutelkluis waaraan u DigiCert wilt toevoegen. 
-2.  Selecteer op de eigenschappenpagina's van de sleutelkluis **Certificaten**.
-3.  Selecteer het tabblad **Certificeringsinstanties**. ![Certificaateigenschappen](../media/certificates/how-to-integrate-certificate-authority/select-certificate-authorities.png)
-4.  Selecteer de optie **Toevoegen**.
- ![Certificaateigenschappen](../media/certificates/how-to-integrate-certificate-authority/add-certificate-authority.png)
+2.  Selecteer op de eigenschappenpagina's van de sleutelkluis **Certificaten** .
+3.  Selecteer het tabblad **Certificerings instanties** . ![certificeringsinstanties selecteren](../media/certificates/how-to-integrate-certificate-authority/select-certificate-authorities.png)
+4.  Selecteer de optie **Toevoegen** .
+ ![certificeringsinstanties toevoegen](../media/certificates/how-to-integrate-certificate-authority/add-certificate-authority.png)
 5.  Kies in het scherm **Een certificeringsinstantie maken** de volgende waarden:
-    -   **Naam**: Voeg een herkenbare naam van een certificaatverlener toe. Voorbeeld van DigicertCA
-    -   **Provider**: Selecteer DigiCert in het menu.
-    -   **Account-id**: Voer de id van uw DigiCert CertCentral-account in
-    -   **Accountwachtwoord**: Voer de API-sleutel in die u hebt gegenereerd in uw DigiCert CertCentral-account
-    -   **Organisatie-id**: Voer OrgID in, opgehaald uit het DigiCert CertCentral-account 
-    -   Klik op **Create**.
+    -   **Naam** : Voeg een herkenbare naam van een certificaatverlener toe. Voorbeeld van DigicertCA
+    -   **Provider** : Selecteer DigiCert in het menu.
+    -   **Account-id** : Voer de id van uw DigiCert CertCentral-account in
+    -   **Accountwachtwoord** : Voer de API-sleutel in die u hebt gegenereerd in uw DigiCert CertCentral-account
+    -   **Organisatie-id** : Voer OrgID in, opgehaald uit het DigiCert CertCentral-account 
+    -   Klik op **Create** .
    
 6.  U ziet dat DigicertCA nu is toegevoegd in de lijst met certificeringsinstanties.
 
@@ -101,24 +101,22 @@ New-AzKeyVault -Name 'Contoso-Vaultname' -ResourceGroupName 'ContosoResourceGrou
 - Definieer de variabele **Account-id**
 - Definieer de variabele **Organisatie-id**
 - Definieer de variabele **API-sleutel**
-- Definieer de variabele **Naam certificaatverlener**
 
 ```azurepowershell-interactive
 $accountId = "myDigiCertCertCentralAccountID"
-$org = New-AzKeyVaultCertificateOrganizationDetails -Id OrganizationIDfromDigiCertAccount
+$org = New-AzKeyVaultCertificateOrganizationDetail -Id OrganizationIDfromDigiCertAccount
 $secureApiKey = ConvertTo-SecureString DigiCertCertCentralAPIKey -AsPlainText –Force
-$issuerName = "DigiCertCA"
 ```
 
-4. Stel **Certificaatverlener** in. Hiermee wordt Digicert toegevoegd als een certificeringsinstantie in de sleutelkluis.
+4. Stel **Certificaatverlener** in. Hiermee wordt Digicert toegevoegd als een certificeringsinstantie in de sleutelkluis. Meer informatie over de parameters [vindt u hier](https://docs.microsoft.com/powershell/module/az.keyvault/Set-AzKeyVaultCertificateIssuer)
 ```azurepowershell-interactive
-Set-AzureKeyVaultCertificateIssuer -VaultName $vaultName -IssuerName $issuerName -IssuerProvider DigiCert -AccountId $accountId -ApiKey $secureApiKey -OrganizationDetails $org
+Set-AzKeyVaultCertificateIssuer -VaultName "Contoso-Vaultname" -Name "TestIssuer01" -IssuerProvider DigiCert -AccountId $accountId -ApiKey $secureApiKey -OrganizationDetails $org -PassThru
 ```
 
 5. **Beleid instellen voor het certificaat en het certificaat verlenen** vanuit DigiCert rechtstreeks in Key Vault.
 
 ```azurepowershell-interactive
-$Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName DigiCertCA -ValidityInMonths 12 -RenewAtNumberOfDaysBeforeExpiry 60
+$Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "TestIssuer01" -ValidityInMonths 12 -RenewAtNumberOfDaysBeforeExpiry 60
 Add-AzKeyVaultCertificate -VaultName "Contoso-Vaultname" -Name "ExampleCertificate" -CertificatePolicy $Policy
 ```
 
@@ -128,7 +126,7 @@ Het certificaat is nu verleend door de Digicert-certificeringsinstantie in de op
 
 Als het certificaat is uitgegeven in de status 'uitgeschakeld' in de Azure-portal, gaat u door met het weergeven van de **Certificaatbewerking** om het DigiCert-foutbericht voor dat certificaat te bekijken.
 
- ![Certificaateigenschappen](../media/certificates/how-to-integrate-certificate-authority/certificate-operation-select.png)
+ ![Certificaatbewerking](../media/certificates/how-to-integrate-certificate-authority/certificate-operation-select.png)
 
 Raadpleeg de [Certificaatbewerkingen in de REST API-naslag voor Key Vault](/rest/api/keyvault) voor meer informatie. Raadpleeg [Kluizen: maken of bijwerken](/rest/api/keyvault/vaults/createorupdate) en [Kluizen: toegangsbeleid bijwerken](/rest/api/keyvault/vaults/updateaccesspolicy) voor meer informatie over het instellen van machtigingen.
 
@@ -136,8 +134,15 @@ Raadpleeg de [Certificaatbewerkingen in de REST API-naslag voor Key Vault](/rest
 
 - Kan ik een Digicert-certificaat met jokerteken genereren met behulp van KeyVault? 
    Ja. Dit is afhankelijk van hoe u uw Digicert-account hebt geconfigureerd.
-- Als we een EV-certificaat willen maken, hoe geven we dat op? 
-   Wanneer u een certificaat maakt, klikt u op Geavanceerde beleidsconfiguratie en geeft u vervolgens het certificaattype op. Ondersteunde waarden zijn: OV-SSL, EV-SSL
+- Hoe kan ik een **OV-SSL- of EV-SSL-** certificaat maken met DigiCert? 
+   Key Vault biedt ondersteuning voor het maken van OV- en EV SSL-certificaten. Wanneer u een certificaat maakt, klikt u op Geavanceerde beleidsconfiguratie en geeft u vervolgens het certificaattype op. Ondersteunde waarden zijn: OV-SSL, EV-SSL
+   
+   U kunt dit type certificaat in Key Vault maken als uw Digicert-account dit toestaat. Voor dit type certificaat wordt de validatie uitgevoerd door DigiCert. Als de validatie mislukt, kan het ondersteuningsteam van DigiCert u het beste helpen bij dit probleem. Wanneer u een certificaat maakt, kunt u aanvullende informatie toevoegen door deze in subjectName te definiëren.
+
+Voorbeeld
+    ```SubjectName="CN = docs.microsoft.com, OU = Microsoft Corporation, O = Microsoft Corporation, L = Redmond, S = WA, C = US"
+    ```
+   
 - Zit er een vertraging in het maken van het Digicert-certificaat via integratie versus het rechtstreeks verkrijgen van het certificaat via Digicert?
    Nee. Als er een certificaat wordt gemaakt, kan het verificatieproces tijd kosten. Deze verificatie is afhankelijk van het proces dat door DigiCert wordt gevolgd.
 
