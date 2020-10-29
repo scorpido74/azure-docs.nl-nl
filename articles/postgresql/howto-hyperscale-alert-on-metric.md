@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 3/16/2020
-ms.openlocfilehash: 8b59bcf3f25921a348e9c5f25e83619d8596ebd5
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7e455565a0cd5e1fc96a6fe7d9e0502da3214fcf
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489860"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92909910"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>Gebruik de Azure Portal om waarschuwingen in te stellen voor de Azure Database for PostgreSQL-grootschalige (Citus)
 
@@ -43,7 +43,7 @@ U kunt informatie over waarschuwings regels configureren en ophalen met behulp v
 
    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/4-add-rule-form.png" alt-text="Waarschuwings regels selecteren":::
 
-5. Selecteer in de sectie **voor waarde** de optie **toevoegen**.
+5. Selecteer in de sectie **voor waarde** de optie **toevoegen** .
 
 6. Selecteer een waarde in de lijst met signalen waarop u wilt worden gewaarschuwd. In dit voor beeld selecteert u ' opslag percentage '.
    
