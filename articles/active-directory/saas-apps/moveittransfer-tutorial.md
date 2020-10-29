@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 4ec0a3082b5978e0c540a2e0a70843081201a29b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c79596747be655e372958e06021c50f23ff0fe03
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544125"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92508210"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moveit-transfer---azure-ad-integration"></a>Zelfstudie: Azure Active Directory-integratie met MOVEit Transfer - Azure AD-integratie
 
@@ -27,7 +27,7 @@ De integratie van MOVEit Transfer - Azure AD-integratie met Azure AD biedt de vo
 * U kunt inschakelen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij MOVEit Transfer - Azure AD-integratie (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
+Zie [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -49,11 +49,11 @@ Als u de integratie van MOVEit Transfer - Azure AD-integratie in Azure AD wilt c
 
 **Voer de volgende stappen uit om MOVEit Transfer - Azure AD-integratie toe te voegen vanuit de galerie:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen**.
+2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -67,7 +67,7 @@ Als u de integratie van MOVEit Transfer - Azure AD-integratie in Azure AD wilt c
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u eenmalige aanmelding van Azure AD met MOVEit Transfer - Azure AD-integratie op basis van een testgebruiker met de naam **Britta Simon**.
+In deze sectie configureert en test u eenmalige aanmelding van Azure AD met MOVEit Transfer - Azure AD-integratie op basis van een testgebruiker met de naam **Britta Simon** .
 Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in MOVEit Transfer - Azure AD-integratie tot stand is gebracht.
 
 Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met MOVEit Transfer - Azure AD-integratie te configureren en te testen:
@@ -85,7 +85,7 @@ In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakel
 
 Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configureren met MOVEit Transfer - Azure AD-integratie:
 
-1. Ga in [Azure Portal](https://portal.azure.com/) naar de pagina voor integratie van de toepassing **MOVEit Transfer - Azure AD-integratie** en selecteer **Eenmalige aanmelding**.
+1. Ga in [Azure Portal](https://portal.azure.com/) naar de pagina voor integratie van de toepassing **MOVEit Transfer - Azure AD-integratie** en selecteer **Eenmalige aanmelding** .
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -97,24 +97,24 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
 
     ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-4. Voer in de sectie **Standaard SAML-configuratie** de volgende stappen uit als u beschikt over een **bestand met metagegevens van de serviceprovider**:
+4. Voer in de sectie **Standaard SAML-configuratie** de volgende stappen uit als u beschikt over een **bestand met metagegevens van de serviceprovider** :
 
-    a. Klik op **Metagegevensbestand uploaden**.
+    a. Klik op **Metagegevensbestand uploaden** .
 
     ![Metagegevensbestand uploaden](common/upload-metadata.png)
 
-    b. Klik op het **mappictogram** om het metagegevensbestand te selecteren en klik op **Uploaden**.
+    b. Klik op het **mappictogram** om het metagegevensbestand te selecteren en klik op **Uploaden** .
 
     ![Metagegevensbestand kiezen](common/browse-upload-metadata.png)
 
-    c. Nadat het bestand met metagegevens is geüpload, worden de waarden voor **Id** en **Antwoord-URL** automatisch ingevuld in de sectie **Standaard SAML-configuratie**:
+    c. Nadat het bestand met metagegevens is geüpload, worden de waarden voor **Id** en **Antwoord-URL** automatisch ingevuld in de sectie **Standaard SAML-configuratie** :
 
     ![Domein- en URL-gegevens voor eenmalige aanmelding voor MOVEit Transfer - Azure AD-integratie](common/sp-identifier-reply.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://contoso.com`
 
     > [!NOTE]
-    > De waarde voor de **aanmeldings-URL** is geen reële waarde. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [ondersteuningsteam voor klanten van MOVEit Transfer - Azure AD-integratie](https://community.ipswitch.com/s/support) om de waarde op te halen. U kunt het **metagegevensbestand van de serviceprovider** downloaden met de **metagegevens-URL van de serviceprovider**. Dit wordt later uitgelegd in de sectie **Eenmalige aanmelding voor MOVEit Transfer - Azure AD-integratie configureren** van de zelfstudie. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > De waarde voor de **aanmeldings-URL** is geen reële waarde. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [ondersteuningsteam voor klanten van MOVEit Transfer - Azure AD-integratie](https://community.ipswitch.com/s/support) om de waarde op te halen. U kunt het **metagegevensbestand van de serviceprovider** downloaden met de **metagegevens-URL van de serviceprovider** . Dit wordt later uitgelegd in de sectie **Eenmalige aanmelding voor MOVEit Transfer - Azure AD-integratie configureren** van de zelfstudie. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 4. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
@@ -134,11 +134,11 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
 
 1. Meld u als beheerder aan bij uw tenant voor MOVEit Transfer - Azure AD-integratie.
 
-2. Klik in het linkernavigatiedeelvenster op **Instellingen**.
+2. Klik in het linkernavigatiedeelvenster op **Instellingen** .
 
     ![De sectie Instellingen aan de app-zijde](./media/moveittransfer-tutorial/tutorial_moveittransfer_000.png)
 
-3. Klik op de koppeling **Eenmalige aanmelding** (onder **Beveiligingsbeleid -> Gebruikersverificatie**).
+3. Klik op de koppeling **Eenmalige aanmelding** (onder **Beveiligingsbeleid -> Gebruikersverificatie** ).
 
     ![Beveiligingsbeleid aan de app-zijde](./media/moveittransfer-tutorial/tutorial_moveittransfer_001.png)
 
@@ -146,8 +146,8 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
 
     ![Metagegevens-URL van serviceprovider](./media/moveittransfer-tutorial/tutorial_moveittransfer_002.png)
     
-   * Controleer of **entityID** overeenkomt met **Id** in het gedeelte **Standaard SAML-configuratie**.
-   * Controleer of de **AssertionConsumerService**-locatie-URL overeenkomt met **ANTWOORD-URL**  in het gedeelte **Standaard SAML-configuratie**.
+   * Controleer of **entityID** overeenkomt met **Id** in het gedeelte **Standaard SAML-configuratie** .
+   * Controleer of de **AssertionConsumerService** -locatie-URL overeenkomt met **ANTWOORD-URL**  in het gedeelte **Standaard SAML-configuratie** .
     
      ![Eenmalige aanmelding in de app configureren](./media/moveittransfer-tutorial/tutorial_moveittransfer_007.png)
 
@@ -159,7 +159,7 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
 
     ![SAML-id-provider](./media/moveittransfer-tutorial/tutorial_moveittransfer_004.png)
 
-7. Selecteer **Yes** als **Enabled** op de pagina **Edit Federated Identity Provider Settings...** en klik op **Save**.
+7. Selecteer **Yes** als **Enabled** op de pagina **Edit Federated Identity Provider Settings...** en klik op **Save** .
 
     ![Instellingen voor gefedereerde id-provider](./media/moveittransfer-tutorial/tutorial_moveittransfer_005.png)
 
@@ -167,21 +167,21 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
     
     ![Instellingen voor gefedereerde id-provider bewerken](./media/moveittransfer-tutorial/tutorial_moveittransfer_006.png)
     
-    a. Selecteer **SAML NameID** als **Login name**.
+    a. Selecteer **SAML NameID** als **Login name** .
     
     b. Selecteer **Other** als **Full name** en voer in het tekstvak **Attribute name** de volgende waarde in: `http://schemas.microsoft.com/identity/claims/displayname`.
     
     c. Selecteer **Other** als **Email** en voer in het tekstvak **Attribute name** de volgende waarde in: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
     
-    d. Selecteer **Yes** als **Auto-create account on signon**.
+    d. Selecteer **Yes** als **Auto-create account on signon** .
     
-    e. Klik op de knop **Save**.
+    e. Klik op de knop **Save** .
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -193,32 +193,32 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u **brittasimon\@yourcompanydomain.extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Create** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie gaat u Britta Simon toestemming geven voor gebruik van eenmalige aanmelding met Azure door haar toegang te geven tot MOVEit Transfer - Azure AD-integratie.
 
-1. Selecteer in Azure Portal achtereenvolgens **Bedrijfstoepassingen**, **Alle toepassingen** en **MOVEit Transfer - Azure AD-integratie**.
+1. Selecteer in Azure Portal achtereenvolgens **Bedrijfstoepassingen** , **Alle toepassingen** en **MOVEit Transfer - Azure AD-integratie** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen de optie **MOVEit Transfer - Azure AD-integratie**.
+2. Selecteer in de lijst met toepassingen de optie **MOVEit Transfer - Azure AD-integratie** .
 
     ![De koppeling MOVEit Transfer - Azure AD-integratie in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen** .
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -226,7 +226,7 @@ In deze sectie gaat u Britta Simon toestemming geven voor gebruik van eenmalige 
 
 6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
-7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen** .
 
 ### <a name="create-moveit-transfer---azure-ad-integration-test-user"></a>Een testgebruiker maken voor MOVEit Transfer - Azure AD-integratie
 
@@ -239,13 +239,12 @@ Het doel van deze sectie is het maken van een gebruiker met de naam Britta Simon
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u in het toegangsvenster op de tegel MOVEit Transfer - Azure AD-integratie klikt, moet u automatisch worden aangemeld bij de instantie van MOVEit Transfer - Azure AD-integratie waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel MOVEit Transfer - Azure AD-integratie klikt, moet u automatisch worden aangemeld bij de instantie van MOVEit Transfer - Azure AD-integratie waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
-ms.openlocfilehash: ab63e54589f68516b0106a1c96edced38539d252
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: d7aa43a94c7b49eef5b3273617ad9038fd1202e4
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108538"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92505694"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purecloud-by-genesys"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met PureCloud van Genesys
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u PureCloud van Genesys kunt integreren met Azure
 * Instellen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij PureCloud van Genesys.
 * Uw accounts op één centrale locatie beheren: de Azure-portal.
 
-Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -215,14 +215,14 @@ Als u wilt dat Azure AD-gebruikers zich aanmelden bij PureCloud van Genesys, moe
 
 In dit gedeelte test u de configuratie voor eenmalige aanmelding van Azure AD met behulp van het toegangsvenster.
 
-Wanneer u in het toegangsvenster op de tegel **PureCloud van Genesys** klikt, wordt u automatisch aangemeld bij het account van PureCloud van Genesys waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel **PureCloud van Genesys** klikt, wordt u automatisch aangemeld bij het account van PureCloud van Genesys waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure AD](./tutorial-list.md)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Wat is voorwaardelijke toegang in Azure AD?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure AD?](../conditional-access/overview.md)
 
 - [PureCloud van Genesys gebruiken met Azure AD](https://aad.portal.azure.com/)
