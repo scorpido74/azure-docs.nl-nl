@@ -1,15 +1,15 @@
 ---
 title: Ondersteunde Azure Resource Manager resource typen
 description: Geef een lijst op met de Azure Resource Manager resource typen die worden ondersteund door de Azure-resource grafiek en de wijzigings geschiedenis.
-ms.date: 09/30/2020
+ms.date: 10/28/2020
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 385ee96fa821b8d90ff529fecb52dbec9803dea2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e604fe7c5e3a7f40e31f43db64bcd59ae0545ac0
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91740000"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927563"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Naslag informatie over de tabel en het resource type van Azure resource Graph
 
@@ -30,14 +30,14 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 
 - micro soft. guestconfiguration/guestconfigurationassignments
 
-## <a name="healthresources"></a>healthresources
-
-- micro soft. resourcehealth/Events
-
 ## <a name="maintenanceresources"></a>maintenanceresources
 
 - micro soft. Maintenance/configurationassignments
 - micro soft. onderhoud/updates
+
+## <a name="policyresources"></a>policyresources
+
+- micro soft. policyinsights/policystates
 
 ## <a name="resourcecontainers"></a>resourcecontainers
 
@@ -71,6 +71,7 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. alertsmanagement/smartdetectoralertrules
 - micro soft. analysisservices/servers
 - micro soft. apimanagement/service
+- micro soft. appassessment/migrateprojects
 - micro soft. appconfiguration/configurationstores
 - micro soft. appplatform/lente
 - micro soft. Archive/Collections
@@ -107,6 +108,7 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - microsoft.batChai/fileservers
 - microsoft.batChai/Jobs
 - microsoft.batChai/werk ruimten
+- micro soft. Bing/accounts
 - micro soft. bingmaps/mapapis
 - micro soft. biztalkservices/BizTalk
 - micro soft. Block Chain/blockchainmembers
@@ -135,6 +137,7 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. cognition/syntheticsaccounts
 - micro soft. cognitiveservices/accounts
 - micro soft. Compute/Availability sets
+- micro soft. Compute/cloudservices
 - micro soft. Compute/diskaccesses
 - micro soft. Compute/diskencryptionsets
 - micro soft. Compute/schijven
@@ -202,6 +205,8 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. dbforpostgresql/servers
 - micro soft. dbforpostgresql/serversv2
 - micro soft. dbforpostgresql/singleservers
+- micro soft. delegatednetwork/delegatedsubnets
+- micro soft. delegatednetwork/orchestratorinstances
 - micro soft. deploymentmanager/artifactsources
 - micro soft. deploymentmanager/-implementaties
 - micro soft. deploymentmanager/servicetopologies
@@ -251,8 +256,10 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. healthcareapis/Services/privateendpointconnections
 - micro soft. hybridcompute/machines
 - micro soft. hybridcompute/machines/uitbrei dingen
+- micro soft. hybridcompute/privatelinkscopes
 - micro soft. hybriddata/datamanagers
 - micro soft. hybridnetwork/apparaten
+- micro soft. hybridnetwork/networkfunctions
 - micro soft. hybridnetwork/virtualnetworkfunctions
 - micro soft. importexport/Jobs
 - micro soft. industrydatalifecycle/basemodels
@@ -297,6 +304,8 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. machinelearningservices/werk ruimten
 - micro soft. machinelearningservices/werk ruimten/inferenceendpoints
 - micro soft. machinelearningservices/werk ruimten/inferenceendpoints/implementaties
+- micro soft. machinelearningservices/werk ruimten/onlineendpoints
+- micro soft. machinelearningservices/werk ruimten/onlineendpoints/implementaties
 - micro soft. Maintenance/maintenanceconfigurations
 - micro soft. Maintenance/maintenancepolicies
 - micro soft. managedidentity/groepen
@@ -395,9 +404,12 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. objectstore/osnamespaces
 - micro soft. offazure/hypervsites
 - micro soft. offazure/importsites
+- micro soft. offazure/mastersites
 - micro soft. offazure/serversites
 - micro soft. offazure/vmwaresites
+- micro soft. openlogisticsplatform/werk ruimten
 - micro soft. operationalinsights/clusters
+- micro soft. operationalinsights/querypacks
 - micro soft. operationalinsights/werk ruimten
 - micro soft. operationsmanagement/oplossingen
 - micro soft. operationsmanagement/views
@@ -417,6 +429,7 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. redhatopenshift/openshiftclusters
 - micro soft. relay/naam ruimten
 - micro soft. RemoteApp/verzamelingen
+- micro soft. tolerantie/chaosexperiments
 - micro soft. resourcegraph/query's
 - micro soft. resources/deploymentscripts
 - micro soft. resources/templatespecs
@@ -471,6 +484,7 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. streamanalytics/clusters
 - micro soft. streamanalytics/streamingjobs
 - micro soft. swiftlet/informatie
+- micro soft. swiftlet/virtualmachinesnapshots
 - micro soft. Synapse/privatelinkhubs
 - micro soft. Synapse/werk ruimten
 - micro soft. Synapse/werk ruimten/bigdatapools
@@ -554,8 +568,12 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. Security/securescores
 - micro soft. Security/securescores/securescorecontrols
 
+## <a name="servicehealthresources"></a>servicehealthresources
+
+- micro soft. resourcehealth/Events
+
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over de [querytaal](../concepts/query-language.md).
-- Meer informatie over het [verkennen van resources](../concepts/explore-resources.md).
+- Lees meer over het [verkennen van resources](../concepts/explore-resources.md).
 - Bekijk voorbeelden uit [Starter-query's](../samples/starter.md).

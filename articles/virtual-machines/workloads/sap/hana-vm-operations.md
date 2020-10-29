@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 602e3f58ac5f8f194ad4704a4e792d4f0aec3a3e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 19abb3f12dc1a0fd2a3dff548ecdc9e7fff47659
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978778"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927665"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Configuraties en bewerkingen van SAP HANA-infrastructuur in Azure
 Dit document bevat richt lijnen voor het configureren van Azure-infra structuur en-besturings SAP HANA systemen die zijn geïmplementeerd op Azure native virtual machines (Vm's). Het document bevat ook configuratie-informatie voor SAP HANA scale-out voor de M128s VM-SKU. Dit document is niet bedoeld als vervanging van de Standard SAP-documentatie, die de volgende inhoud bevat:
@@ -135,11 +135,11 @@ Voor/Hana/Shared wordt ook het gebruik van [Azure NetApp files](https://azure.mi
 
 Een typisch basis ontwerp voor één knoop punt in een scale-out configuratie gaat er als volgt uit:
 
-![Basis beginselen van één knoop punt uitschalen](media/hana-vm-operations/scale-out-basics-anf-shared.PNG)
+![Diagram waarin een typisch basis ontwerp wordt weer gegeven voor één knoop punt in een scale-out configuratie.](media/hana-vm-operations/scale-out-basics-anf-shared.PNG)
 
 De basis configuratie van een VM-knoop punt voor SAP HANA uitschalen ziet er als volgt uit:
 
-- Voor **/Hana/Shared**gebruikt u de systeem eigen NFS-service die via Azure NetApp files wordt meegeleverd. 
+- Voor **/Hana/Shared** gebruikt u de systeem eigen NFS-service die via Azure NetApp files wordt meegeleverd. 
 - Alle andere schijf volumes worden niet gedeeld tussen de verschillende knoop punten en zijn niet gebaseerd op NFS. Installatie configuraties en-stappen voor het uitschalen van HANA-installaties met niet-gedeelde **/Hana/data** en **/Hana/log** worden verderop in dit document nader beschreven. Voor HANA-gecertificeerde opslag die kan worden gebruikt, raadpleegt u het artikel [SAP Hana opslag configuraties voor virtuele Azure-machines](./hana-vm-operations-storage.md).
 
 

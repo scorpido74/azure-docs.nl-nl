@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: keli19
 author: likebupt
 ms.reviewer: peterlu
-ms.date: 10/12/2020
+ms.date: 10/29/2020
 ms.topic: conceptual
 ms.custom: how-to, deploy, studio
-ms.openlocfilehash: e2f3e0b596847000af62aa6e23da5b137ee9de33
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 0d98d5103e26eb0b4ee0d31b95f1d07cdaa396ae
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999001"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927580"
 ---
 # <a name="use-the-studio-to-deploy-models-trained-in-the-designer"></a>De Studio gebruiken voor het implementeren van modellen die zijn getraind in de ontwerp functie
 
@@ -56,7 +56,7 @@ Nadat de trainings pijplijn is voltooid, registreert u het getrainde model voor 
 
     ![Scherm afbeelding van het rechterdeel venster van Train model module](./media/how-to-deploy-model-designer/train-model-right-pane.png)
 
-1. Voer een naam in voor uw model en selecteer vervolgens **Opslaan**.
+1. Voer een naam in voor uw model en selecteer vervolgens **Opslaan** .
 
 Nadat u het model hebt geregistreerd, kunt u het vinden op de Asset-pagina voor **modellen** in de Studio.
     
@@ -73,7 +73,7 @@ U hebt de volgende bestanden nodig voor het implementeren van een model in Azure
 
 U kunt deze twee bestanden downloaden in het rechterdeel venster van de module **Train model** :
 
-1. Selecteer de module **Train Model**.
+1. Selecteer de module **Train Model** .
 1. Selecteer de map op het tabblad **uitvoer en logboeken** `trained_model_outputs` .
 1. Down load het `conda_env.yaml` bestand en `score.py` bestand.
 
@@ -104,8 +104,8 @@ Nadat u de benodigde bestanden hebt gedownload, bent u klaar om het model te imp
 
     - Voer een naam in voor het eind punt.
     - Selecteer deze optie om het model te implementeren in [Azure Kubernetes service](how-to-deploy-azure-kubernetes-service.md) of [Azure container instance](how-to-deploy-azure-container-instance.md).
-    - Upload het `score.py` voor het **vermelding script bestand**.
-    - Upload het `conda_env.yml` bestand voor **Conda-afhankelijkheden**. 
+    - Upload het `score.py` voor het **vermelding script bestand** .
+    - Upload het `conda_env.yml` bestand voor **Conda-afhankelijkheden** . 
 
     >[!TIP]
     > In **Geavanceerde** instelling kunt u de CPU/geheugen capaciteit en andere para meters voor implementatie instellen. Deze instellingen zijn belang rijk voor bepaalde modellen, zoals PyTorch-modellen, die een aanzienlijke hoeveelheid memery verbruiken (ongeveer 4 GB).
@@ -299,6 +299,7 @@ score_params = dict(
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Een model trainen in de ontwerp functie](tutorial-designer-automobile-price-train-score.md)
+* [Modellen implementeren met Azure Machine Learning SDK](how-to-deploy-and-where.md)
 * [Problemen met een mislukte implementatie oplossen](how-to-troubleshoot-deployment.md)
 * [Implementeren naar Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md)
 * [Client toepassingen maken voor het gebruik van webservices](how-to-consume-web-service.md)

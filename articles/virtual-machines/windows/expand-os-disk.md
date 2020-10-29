@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: b739bb94911e24002b359aabfa23583ecfc9de85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3908e5f4b7b246fe1c74e5ac4d20053242ece9f6
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336000"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927682"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>De besturingssysteemschijf van een virtuele machine uitbreiden
 
@@ -32,22 +32,23 @@ Wanneer u een nieuwe virtuele machine (VM) maakt in een resource groep door een 
 > [!IMPORTANT]
 > Voor het wijzigen van het formaat van een besturings systeem of gegevens schijf van een virtuele Azure-machine moet de toewijzing van de virtuele machine ongedaan worden gemaakt.
 >
-> Nadat u de schijven hebt uitgebreid, moet u [het volume in het besturings systeem uitbreiden](#expand-the-volume-within-the-os) om te kunnen profiteren van de grotere schijf.
+> Het verkleinen van een bestaande schijf wordt niet ondersteund en kan mogelijk leiden tot verlies van gegevens.
 > 
+> Nadat u de schijven hebt uitgebreid, moet u [het volume in het besturings systeem uitbreiden](#expand-the-volume-within-the-os) om te kunnen profiteren van de grotere schijf.
 
 ## <a name="resize-a-managed-disk-in-the-azure-portal"></a>Het formaat van een beheerde schijf in het Azure Portal wijzigen
 
 1. Ga in het [Azure Portal](https://portal.azure.com)naar de virtuele machine waarin u de schijf wilt uitbreiden. Selecteer **stoppen** om de toewijzing van de virtuele machine ongedaan te maken.
-2. Wanneer de virtuele machine is gestopt, selecteert u in het menu links onder **instellingen**de optie **schijven**.
+2. Wanneer de virtuele machine is gestopt, selecteert u in het menu links onder **instellingen** de optie **schijven** .
 
     :::image type="content" source="./media/expand-os-disk/select-disks.png" alt-text="Scherm afbeelding met de optie schijven die is geselecteerd in de sectie instellingen van het menu.":::
 
  
-3. Selecteer bij **schijf naam**de schijf waarvan u de grootte wilt wijzigen.
+3. Selecteer bij **schijf naam** de schijf waarvan u de grootte wilt wijzigen.
 
     :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="Scherm afbeelding met de optie schijven die is geselecteerd in de sectie instellingen van het menu.":::
 
-4. Selecteer in het linkermenu onder **instellingen**de optie **configuratie**.
+4. Selecteer in het linkermenu onder **instellingen** de optie **configuratie** .
 
     :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="Scherm afbeelding met de optie schijven die is geselecteerd in de sectie instellingen van het menu.":::
 
@@ -59,7 +60,7 @@ Wanneer u een nieuwe virtuele machine (VM) maakt in een resource groep door een 
 
     :::image type="content" source="./media/expand-os-disk/size.png" alt-text="Scherm afbeelding met de optie schijven die is geselecteerd in de sectie instellingen van het menu.":::
 
-6. Selecteer **Opslaan**.
+6. Selecteer **Opslaan** .
 
     :::image type="content" source="./media/expand-os-disk/save.png" alt-text="Scherm afbeelding met de optie schijven die is geselecteerd in de sectie instellingen van het menu.":::
 
@@ -230,11 +231,11 @@ Op dezelfde manier kunt u verwijzen naar andere gegevens schijven die zijn gekop
 
 ## <a name="expand-the-volume-within-the-os"></a>Het volume binnen het besturings systeem uitbreiden
 
-Wanneer u de schijf voor de virtuele machine hebt uitgebreid, moet u naar het besturings systeem gaan en het volume uitbreiden om de nieuwe ruimte te maken. Er zijn verschillende methoden voor het uitbreiden van een partitie. In deze sectie wordt beschreven hoe u de virtuele machine verbindt met een RDP-verbinding om de partitie uit te breiden met **Disk Part**.
+Wanneer u de schijf voor de virtuele machine hebt uitgebreid, moet u naar het besturings systeem gaan en het volume uitbreiden om de nieuwe ruimte te maken. Er zijn verschillende methoden voor het uitbreiden van een partitie. In deze sectie wordt beschreven hoe u de virtuele machine verbindt met een RDP-verbinding om de partitie uit te breiden met **Disk Part** .
 
 1. Open een RDP-verbinding met uw VM.
 
-2. Open een opdracht prompt en typ **Disk Part**.
+2. Open een opdracht prompt en typ **Disk Part** .
 
 3. Typ bij de **Disk Part** -prompt `list volume` . Noteer het volume dat u wilt uitbreiden.
 

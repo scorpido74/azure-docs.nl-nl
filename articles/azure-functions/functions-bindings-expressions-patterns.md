@@ -6,16 +6,16 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: b4e2b5afd7742791218394422d00ee8ee46cb23a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 161e3e7fbc5b343ee73142f0e968367c3cbfaa6b
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212605"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927410"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Expressie patronen voor de binding Azure Functions
 
-Een van de krach tigste functies van [Triggers en bindingen](./functions-triggers-bindings.md) is *binding expressies*. In de *function.jsop* bestand en in functie parameters en code kunt u expressies gebruiken die worden omgezet in waarden van verschillende bronnen.
+Een van de krach tigste functies van [Triggers en bindingen](./functions-triggers-bindings.md) is *binding expressies* . In de *function.jsop* bestand en in functie parameters en code kunt u expressies gebruiken die worden omgezet in waarden van verschillende bronnen.
 
 De meeste expressies worden geïdentificeerd door ze tussen accolades te plaatsen. Bijvoorbeeld, in een functie voor wachtrij activering, wordt `{queueTrigger}` omgezet in de tekst van de wachtrij berichten. Als de `path` eigenschap voor een BLOB-uitvoer binding is `container/{queueTrigger}` en de functie wordt geactiveerd door een wachtrij bericht `HelloWorld` , wordt een BLOB gemaakt met de naam `HelloWorld` .
 
@@ -41,7 +41,7 @@ Wanneer een functie lokaal wordt uitgevoerd, zijn de waarden van de app-instelli
 > [!NOTE]
 > De `connection` eigenschap van triggers en bindingen is een speciaal geval en automatisch waarden worden omgezet als app-instellingen, zonder procent tekens. 
 
-Het volgende voor beeld is een Azure Queue Storage-trigger die gebruikmaakt van een app-instelling `%input-queue-name%` voor het definiëren van de wachtrij waarmee wordt geactiveerd.
+Het volgende voor beeld is een Azure Queue Storage-trigger die gebruikmaakt van een app-instelling `%input_queue_name%` voor het definiëren van de wachtrij waarmee wordt geactiveerd.
 
 ```json
 {
@@ -50,7 +50,7 @@ Het volgende voor beeld is een Azure Queue Storage-trigger die gebruikmaakt van 
       "name": "order",
       "type": "queueTrigger",
       "direction": "in",
-      "queueName": "%input-queue-name%",
+      "queueName": "%input_queue_name%",
       "connection": "MY_STORAGE_ACCT_APP_SETTING"
     }
   ]
@@ -62,7 +62,7 @@ U kunt dezelfde benadering gebruiken in klassen bibliotheken:
 ```csharp
 [FunctionName("QueueTrigger")]
 public static void Run(
-    [QueueTrigger("%input-queue-name%")]string myQueueItem, 
+    [QueueTrigger("%input_queue_name%")]string myQueueItem, 
     ILogger log)
 {
     log.LogInformation($"C# Queue trigger function processed: {myQueueItem}");
@@ -292,7 +292,7 @@ public class BlobName
 
 ## <a name="create-guids"></a>GUID'S maken
 
-Met de `{rand-guid}` bindings expressie maakt u een GUID. Met het volgende BLOB-pad in een `function.json` bestand maakt u een blob met een naam als *50710cb5-84b9-4d87-9d83-a03d6976a682.txt*.
+Met de `{rand-guid}` bindings expressie maakt u een GUID. Met het volgende BLOB-pad in een `function.json` bestand maakt u een blob met een naam als *50710cb5-84b9-4d87-9d83-a03d6976a682.txt* .
 
 ```json
 {
@@ -305,7 +305,7 @@ Met de `{rand-guid}` bindings expressie maakt u een GUID. Met het volgende BLOB-
 
 ## <a name="current-time"></a>Huidige tijd
 
-De bindings expressie wordt `DateTime` omgezet in `DateTime.UtcNow` . Met het volgende BLOB-pad in een `function.json` bestand maakt u een blob met een naam als *2018-02-16T17-59-55Z.txt*.
+De bindings expressie wordt `DateTime` omgezet in `DateTime.UtcNow` . Met het volgende BLOB-pad in een `function.json` bestand maakt u een blob met een naam als *2018-02-16T17-59-55Z.txt* .
 
 ```json
 {

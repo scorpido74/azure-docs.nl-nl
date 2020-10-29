@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 574592d4434b9d8c49086b82bab0b8775fb67e03
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0a68c2b9c857205dda7f5da846085f9f3823da20
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371729"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927631"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Beveiligde toegang tot gegevens in Azure Cosmos DB
 
@@ -119,6 +119,12 @@ Een machtigings resource is gekoppeld aan een gebruiker en toegewezen aan de con
 > [!NOTE]
 > Voor het uitvoeren van opgeslagen procedures moet de gebruiker beschikken over de machtiging all voor de container waarin de opgeslagen procedure wordt uitgevoerd.
 
+Als u de [Diagnostische logboeken op gegevens vlak-aanvragen](cosmosdb-monitor-resource-logs.md)inschakelt, worden de volgende twee eigenschappen die overeenkomen met de machtiging, vastgelegd:
+
+* **resourceTokenPermissionId** : met deze eigenschap geeft u de machtigings-id op die u hebt opgegeven. 
+
+* **resourceTokenPermissionMode** : deze eigenschap geeft de machtigings modus aan die u hebt ingesteld bij het maken van het bron token. De machtigings modus kan waarden bevatten zoals "all" of "Read".
+
 ### <a name="code-sample-to-create-permission"></a>Code voorbeeld voor het maken van machtigingen
 
 In het volgende code voorbeeld ziet u hoe u een machtigings bron maakt, het bron token van de machtigings resource leest en de machtigingen koppelt aan de [gebruiker](#users) die hierboven is gemaakt.
@@ -150,12 +156,12 @@ CosmosClient client = new CosmosClient(accountEndpoint: "MyEndpoint", authKeyOrR
 Als u Azure Cosmos DB account lezer-toegang wilt toevoegen aan uw gebruikers account, moet u de eigenaar van een abonnement hebben om de volgende stappen uit te voeren in de Azure Portal.
 
 1. Open de Azure Portal en selecteer uw Azure Cosmos DB-account.
-2. Klik op het tabblad **toegangs beheer (IAM)** en klik vervolgens op  **+ roltoewijzing toevoegen**.
-3. In het deel venster **toewijzing van rol toevoegen** selecteert u **Cosmos DB rol van account lezer**in het vak **rol** .
-4. Selecteer in het **vak toegang toewijzen aan**de optie **Azure AD-gebruiker,-groep of-toepassing**.
+2. Klik op het tabblad **toegangs beheer (IAM)** en klik vervolgens op  **+ roltoewijzing toevoegen** .
+3. In het deel venster **toewijzing van rol toevoegen** selecteert u **Cosmos DB rol van account lezer** in het vak **rol** .
+4. Selecteer in het **vak toegang toewijzen aan** de optie **Azure AD-gebruiker,-groep of-toepassing** .
 5. Selecteer de gebruiker, groep of toepassing in de map waaraan u toegang wilt verlenen.  U kunt in de map zoeken op de weergave naam, het e-mail adres of de object-id's.
     De geselecteerde gebruiker, groep of toepassing wordt weer gegeven in de lijst geselecteerde leden.
-6. Klik op **Opslaan**.
+6. Klik op **Opslaan** .
 
 De entiteit kan nu Azure Cosmos DB resources lezen.
 
