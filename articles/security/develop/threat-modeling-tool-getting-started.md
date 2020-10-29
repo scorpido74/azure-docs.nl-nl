@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
-ms.openlocfilehash: 6ddb2ecef3a70ed6a56b404e64cef5b78b7abd13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb0aff6692a12ca7fb00090c0585e46f37c84ace
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90980471"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913021"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Aan de slag met de Threat Modeling Tool
 
-De Microsoft Threat Modeling Tool 2018 is uitgebracht als GA in september 2018 als gratis **[Klik-en-down load](https://aka.ms/threatmodelingtool)**. Met de wijziging in het leverings mechanisme kunnen wij de nieuwste verbeteringen en oplossingen voor fouten naar klanten pushen telkens wanneer ze het hulp programma openen, waardoor het eenvoudiger te onderhouden en te gebruiken is.
+De Microsoft Threat Modeling Tool 2018 is uitgebracht als GA in september 2018 als gratis **[Klik-en-down load](https://aka.ms/threatmodelingtool)** . Met de wijziging in het leverings mechanisme kunnen wij de nieuwste verbeteringen en oplossingen voor fouten naar klanten pushen telkens wanneer ze het hulp programma openen, waardoor het eenvoudiger te onderhouden en te gebruiken is.
 In dit artikel wordt stapsgewijs beschreven hoe u aan de slag gaat met de micro soft SDL Threat Modeling-benadering en ziet u hoe u het hulp programma kunt gebruiken om fantastische bedreigings modellen te ontwikkelen als een backbone van uw beveiligings proces.
 
 Dit artikel is gebaseerd op de bestaande kennis van de SDL Threat Modeling-aanpak. Raadpleeg voor een snelle beoordeling de **[webtoepassingen voor bedreigings modellen](https://msdn.microsoft.com/library/ms978516.aspx)** en een gearchiveerde versie van **[beveiligings fouten tegen komen met behulp van het MSDN-artikel STRIDEe benadering](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** dat is gepubliceerd in 2006.
@@ -80,14 +80,14 @@ Ze maken gebruik van het proces voor het ontwikkelen van het eerste bedreigings 
 > - Ze verzenden opdrachten naar onze webserver: de cirkel
 > - De webserver is een Consulting van een Data Base (twee parallelle lijnen)
 
-Wat Ricardo laat zien Cristina is een GSD-, kortere voor **[Data flow-diagram](https://en.wikipedia.org/wiki/Data_flow_diagram)**. Met de Threat Modeling Tool kunnen gebruikers vertrouwens grenzen opgeven, aangegeven door de rode stippel lijnen, om aan te geven waar verschillende entiteiten in het besturings element staan. IT-beheerders hebben bijvoorbeeld een Active Directory systeem voor verificatie doeleinden nodig, dus de Active Directory bevindt zich buiten het besturings element.
+Wat Ricardo laat zien Cristina is een GSD-, kortere voor **[Data flow-diagram](https://en.wikipedia.org/wiki/Data_flow_diagram)** . Met de Threat Modeling Tool kunnen gebruikers vertrouwens grenzen opgeven, aangegeven door de rode stippel lijnen, om aan te geven waar verschillende entiteiten in het besturings element staan. IT-beheerders hebben bijvoorbeeld een Active Directory systeem voor verificatie doeleinden nodig, dus de Active Directory bevindt zich buiten het besturings element.
 
 > Cristina: zoekt direct naar mij. Hoe zit het met de bedreigingen?
 > Ricardo: laat mij u zien.
 
 ## <a name="analyzing-threats"></a>Bedreigingen analyseren
 
-Zodra hij op de analyse weergave klikt vanuit de selectie van het pictogram menu (bestand met vergroot glas), wordt er een lijst met gegenereerde Threat Modeling Tool bedreigingen gemaakt die op basis van de standaard sjabloon is gevonden, die gebruikmaakt van de SDL-aanpak **[STRIDE (spoofing, knoeien, informatie vrijgeven, afwijzing, denial of service en uitbrei ding van bevoegdheden)](https://en.wikipedia.org/wiki/STRIDE_(security))**. Het idee is dat software onder een voorspel bare set bedreigingen komt, die u kunt vinden met behulp van deze 6 categorieën.
+Zodra hij op de analyse weergave klikt vanuit de selectie van het pictogram menu (bestand met vergroot glas), wordt er een lijst met gegenereerde Threat Modeling Tool bedreigingen gemaakt die op basis van de standaard sjabloon is gevonden, die gebruikmaakt van de SDL-aanpak **[STRIDE (spoofing, knoeien, informatie vrijgeven, afwijzing, denial of service en uitbrei ding van bevoegdheden)](https://en.wikipedia.org/wiki/STRIDE_(security))** . Het idee is dat software onder een voorspel bare set bedreigingen komt, die u kunt vinden met behulp van deze 6 categorieën.
 
 Deze methode is vergelijkbaar met het beveiligen van uw huis door ervoor te zorgen dat elke deur en elk venster een vergrendelings mechanisme heeft voordat een alarm systeem of Chasing wordt toegevoegd na de dief.
 
@@ -101,7 +101,7 @@ Ten eerste is de interactie tussen de twee stencils verbeterd
 
 Ten tweede wordt er meer informatie over de bedreiging weer gegeven in de dreiging venster Eigenschappen
 
-![Interactie-informatie](./media/threat-modeling-tool-getting-started/interactioninfo.png)
+![Scherm afbeelding toont de bedreigings venster Eigenschappen, die titel, categorie, beschrijving, interactie en prioriteit bevat.](./media/threat-modeling-tool-getting-started/interactioninfo.png)
 
 De gegenereerde bedreiging helpt hem potentiële ontwerp fouten te begrijpen. De STRIDE-categorisatie geeft u een idee over mogelijke aanvals vectoren, terwijl de extra beschrijving er precies op kan wijzen wat er mis is, samen met mogelijke manieren om het probleem te verhelpen. Hij kan Bewerk bare velden gebruiken om notities te schrijven in de details van de motivering of om prioriteits niveaus te wijzigen, afhankelijk van de fout balk van de organisatie.
 
@@ -118,7 +118,7 @@ Bedreigingen die niet van toepassing zijn op het ontwerp door bestaande oplossin
 
 Nadat Ricardo de lijst met Cristina heeft door lopen en belang rijke opmerkingen, verkleiningen/motieven, prioriteit en status wijzigingen toevoegt, selecteert hij Reports-> volledig rapport maken-> rapport opslaan, waarin u een goed rapport kunt afdrukken.
 
-![Interactie-informatie](./media/threat-modeling-tool-feature-overview/report.png)
+![Scherm afbeelding toont een representatief bedreigings model rapport.](./media/threat-modeling-tool-feature-overview/report.png)
 
 Als Ricardo het bestand wil delen, kan hij dit eenvoudig doen door het OneDrive-account van de organisatie op te slaan. Zodra hij dat doet, kan hij de document koppeling kopiëren en delen met zijn collega's. 
 

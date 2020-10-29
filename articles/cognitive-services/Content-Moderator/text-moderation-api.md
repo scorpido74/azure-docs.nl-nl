@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: fa292f0441369ed13f3f85035a2ec8cc3f5c6723
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae49a8738ba711ac6c77f2e299852ad61f70be56
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85800088"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912902"
 ---
 # <a name="learn-text-moderation-concepts"></a>Concepten van tekst toezicht leren
 
@@ -34,7 +34,7 @@ Het antwoord van de service bevat de volgende informatie:
 
 ## <a name="profanity"></a>Aanstootgevend taalgebruik
 
-Als de API in een van de [ondersteunde talen](Text-Moderation-API-Languages.md)ongepaste termen detecteert, worden deze termen opgenomen in het antwoord. Het antwoord bevat ook hun locatie ( `Index` ) in de oorspronkelijke tekst. De `ListId` in de volgende voor beeld-JSON verwijst naar termen die zijn gevonden in de [lijst met aangepaste termen](try-terms-list-api.md) , indien beschikbaar.
+Als de API in een van de [ondersteunde talen](./language-support.md)ongepaste termen detecteert, worden deze termen opgenomen in het antwoord. Het antwoord bevat ook hun locatie ( `Index` ) in de oorspronkelijke tekst. De `ListId` in de volgende voor beeld-JSON verwijst naar termen die zijn gevonden in de [lijst met aangepaste termen](try-terms-list-api.md) , indien beschikbaar.
 
 ```json
 "Terms": [
@@ -47,13 +47,13 @@ Als de API in een van de [ondersteunde talen](Text-Moderation-API-Languages.md)o
 ```
 
 > [!NOTE]
-> Voor de para meter **taal** wijst `eng` of laat u het leeg om de door de machine ondersteunde **classificatie** te zien (preview-functie). **Deze functie ondersteunt alleen Engels**.
+> Voor de para meter **taal** wijst `eng` of laat u het leeg om de door de machine ondersteunde **classificatie** te zien (preview-functie). **Deze functie ondersteunt alleen Engels** .
 >
 > Gebruik de [ISO 639-3-code](http://www-01.sil.org/iso639-3/codes.asp) **van de** ondersteunde talen die in dit artikel worden vermeld, of laat het leeg.
 
 ## <a name="classification"></a>Classificatie
 
-De **functie voor tekst classificatie** met automatische ondersteuning van content moderator ondersteunt **alleen Engels**en helpt mogelijk ongewenste inhoud te detecteren. De gemarkeerde inhoud kan worden beoordeeld als ongepast, afhankelijk van de context. Het brengt de kans op elke categorie over en kan een menselijke beoordeling aanbevelen. De functie maakt gebruik van een getraind model om mogelijke beledigende, negatieve of discriminerende taal te identificeren. Dit omvat slang, kortere woorden, aanstootgevende woorden en opzettelijk verkeerd gespelde termen voor beoordeling. 
+De **functie voor tekst classificatie** met automatische ondersteuning van content moderator ondersteunt **alleen Engels** en helpt mogelijk ongewenste inhoud te detecteren. De gemarkeerde inhoud kan worden beoordeeld als ongepast, afhankelijk van de context. Het brengt de kans op elke categorie over en kan een menselijke beoordeling aanbevelen. De functie maakt gebruik van een getraind model om mogelijke beledigende, negatieve of discriminerende taal te identificeren. Dit omvat slang, kortere woorden, aanstootgevende woorden en opzettelijk verkeerd gespelde termen voor beoordeling. 
 
 In de volgende extractie in de JSON-analyse wordt een voorbeeld uitvoer weer gegeven:
 
@@ -142,7 +142,7 @@ Als u voor de automatische correctie vraagt, bevat het antwoord de gecorrigeerde
 De standaard instelling is dat de algemene lijst met termen prima werkt in de meeste gevallen. u kunt het beste een scherm maken met de termen die specifiek zijn voor uw bedrijfs behoeften. U kunt bijvoorbeeld de naam van een concurrerend merk uit berichten van gebruikers filteren.
 
 > [!NOTE]
-> Er is een maximumlimiet van **5 terminologielijsten** waarbij elke lijst **niet meer dan 10.000 termen mag bevatten**.
+> Er is een maximumlimiet van **5 terminologielijsten** waarbij elke lijst **niet meer dan 10.000 termen mag bevatten** .
 >
 
 In het volgende voor beeld ziet u de overeenkomende lijst-ID:

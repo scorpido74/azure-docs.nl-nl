@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 1aba86efb9ea76fbf060e80b47f9f2f6cdf8ee71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69a66c49d64ab9ba589050e1f20399f7f193b76e
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91872048"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912953"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>Beoordelingen, werk stromen en taken voor content toezicht
 
@@ -35,7 +35,7 @@ Een werk stroom is een op de cloud gebaseerd gepersonaliseerd filter voor inhoud
 
 ### <a name="view-workflows"></a>Werk stromen weer geven
 
-Als u uw bestaande werk stromen wilt weer geven, gaat u naar het [hulp programma controleren](https://contentmoderator.cognitive.microsoft.com/) en selecteert u **instellingen**  >  **werk stromen**.
+Als u uw bestaande werk stromen wilt weer geven, gaat u naar het [hulp programma controleren](https://contentmoderator.cognitive.microsoft.com/) en selecteert u **instellingen**  >  **werk stromen** .
 
 ![Standaardwerk stroom](images/default-workflow-listed.PNG)
 
@@ -75,5 +75,5 @@ Raadpleeg de [rest API-hand leiding](./try-review-api-job.md) om aan de slag te 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Test de [taak-API-console](try-review-api-job.md)en gebruik de rest API code voorbeelden. Als u bekend bent met Visual Studio en C#, raadpleegt u ook de [taken .net Quick](moderation-jobs-quickstart-dotnet.md)start. 
-* Ga voor recensies naar aan de slag met de [API-console voor controle](try-review-api-review.md)en gebruik de rest API code voorbeelden. Zie de sectie Recensies van [.net Quick](dotnet-sdk-quickstart.md)start.
+* Ga voor recensies naar aan de slag met de [API-console voor controle](try-review-api-review.md)en gebruik de rest API code voorbeelden. Zie de sectie Recensies van [.net Quick](./client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)start.
 * Gebruik voor video revisies de [Snelstartgids voor video revisie](video-reviews-quickstart-dotnet.md)en leer hoe u [Transcripten kunt toevoegen aan de video beoordeling](video-transcript-reviews-quickstart-dotnet.md).

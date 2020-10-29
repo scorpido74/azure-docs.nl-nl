@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1f5a68bcf0069663d8ef1101407bea7ee26e9e8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1648bd9a073bca696299e9ed703536db745e7edb
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88919285"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912834"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Zelfstudie: Video's en transcripties beoordelen
 
@@ -35,7 +35,7 @@ In deze zelfstudie ontdekt u hoe u:
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Registreer u voor de website [Content Moderator-beoordelingsprogramma](https://contentmoderator.cognitive.microsoft.com/) en maak aangepaste tags. Zie [Tags gebruiken](Review-Tool-User-Guide/tags.md) als u hulp nodig hebt met deze stap.
+- Registreer u voor de website [Content Moderator-beoordelingsprogramma](https://contentmoderator.cognitive.microsoft.com/) en maak aangepaste tags. Zie [Tags gebruiken](./review-tool-user-guide/configure.md#tags) als u hulp nodig hebt met deze stap.
 
     ![Schermopname van Aangepaste tags voor beoordelen van video's](images/video-tutorial-custom-tags.png)
 - Om de voorbeeldtoepassing uit te voeren, hebt u een Azure-account, een Azure Media Services-resource, een Azure Content Moderator-resource en Azure Active Directory-referenties nodig. Voor instructies over het verkrijgen van deze resources raadpleegt u de handleiding [API voor videobeoordeling](video-moderation-api.md).
@@ -83,7 +83,7 @@ De uitvoering begint bij `Main()`, dus is dit het punt vanaf waar het belangrijk
 Als er geen opdrachtregelargumenten zijn opgegeven, wordt `GetUserInputs()` aangeroepen met `Main()`. Deze methode vraagt de gebruiker om het pad naar één videobestand in te voeren en om aan te geven of er een transcriptie moet worden gegenereerd.
 
 > [!NOTE]
-> De consoletoepassing maakt gebruik van de [API van Azure Media Indexer](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) om transcripties te genereren van de audiotrack van de geüploade video. De resultaten worden aangeboden in de indeling WebVTT. Zie de Engelstalige site [Web Video Text Tracks Format (WebVTT)](https://developer.mozilla.org/docs/Web/API/WebVTT_API) voor meer informatie over deze indeling.
+> De consoletoepassing maakt gebruik van de [API van Azure Media Indexer](../../media-services/previous/legacy-components.md) om transcripties te genereren van de audiotrack van de geüploade video. De resultaten worden aangeboden in de indeling WebVTT. Zie de Engelstalige site [Web Video Text Tracks Format (WebVTT)](https://developer.mozilla.org/docs/Web/API/WebVTT_API) voor meer informatie over deze indeling.
 
 ### <a name="initialize-and-processvideo-methods"></a>De methoden Initialize en ProcessVideo
 
@@ -224,7 +224,7 @@ Het resultaat van de videobeoordelingstaak (zie de [snelstartgids over videobeoo
 Er wordt ook een transcriptie van de audio van de video gemaakt wanneer de vlag `GenerateVTT` is ingesteld.
 
 > [!NOTE]
-> De consoletoepassing maakt gebruik van de [API van Azure Media Indexer](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) om transcripties te genereren van de audiotrack van de geüploade video. De resultaten worden aangeboden in de indeling WebVTT. Zie de Engelstalige site [Web Video Text Tracks Format (WebVTT)](https://developer.mozilla.org/docs/Web/API/WebVTT_API) voor meer informatie over deze indeling.
+> De consoletoepassing maakt gebruik van de [API van Azure Media Indexer](../../media-services/previous/legacy-components.md) om transcripties te genereren van de audiotrack van de geüploade video. De resultaten worden aangeboden in de indeling WebVTT. Zie de Engelstalige site [Web Video Text Tracks Format (WebVTT)](https://developer.mozilla.org/docs/Web/API/WebVTT_API) voor meer informatie over deze indeling.
 
 ## <a name="create-a-human-review"></a>Een menselijke beoordeling maken
 
@@ -249,7 +249,7 @@ In het volgende scherm ziet u de resultaten van de vorige stappen.
 
 ## <a name="process-the-transcript"></a>De transcriptie verwerken
 
-De code in deze zelfstudie is tot nu toe gericht op de visuele inhoud. Beoordeling van gesproken inhoud is een afzonderlijk en optioneel proces dat, zoals gezegd, gebruikmaakt van een transcriptie die wordt gegenereerd van de audio. Het is nu tijd om te kijken hoe transcripties worden gemaakt en gebruikt in het beoordelingsproces. Het genereren van transcripties wordt uitgevoerd door de [Azure Media Indexer](https://docs.microsoft.com/azure/media-services/media-services-index-content)-service.
+De code in deze zelfstudie is tot nu toe gericht op de visuele inhoud. Beoordeling van gesproken inhoud is een afzonderlijk en optioneel proces dat, zoals gezegd, gebruikmaakt van een transcriptie die wordt gegenereerd van de audio. Het is nu tijd om te kijken hoe transcripties worden gemaakt en gebruikt in het beoordelingsproces. Het genereren van transcripties wordt uitgevoerd door de [Azure Media Indexer](../../media-services/previous/media-services-index-content.md)-service.
 
 De toepassing voert de volgende taken uit:
 

@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: ad365c2d4c171105d8dec89d818ef481361d1ff8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 664c4289cbfa1f6ce2fce9f9f83b0240bd2d592c
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81272590"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912868"
 ---
 # <a name="moderate-text-from-the-api-console"></a>Tekst met gemiddelde van de API-console
 
@@ -33,7 +33,7 @@ Ga naar de [tekst toezicht API-verwijzing](https://westus.dev.cognitive.microsof
 
 ## <a name="open-the-api-console"></a>Open de API-console
 
-Voor **open API-test console**selecteert u de regio die uw locatie het meest beschrijft. 
+Voor **open API-test console** selecteert u de regio die uw locatie het meest beschrijft. 
 
   ![Pagina regio tekst scherm selecteren](images/test-drive-region.png)
 
@@ -43,20 +43,20 @@ Voor **open API-test console**selecteert u de regio die uw locatie het meest bes
 
 ### <a name="parameters"></a>Parameters
 
-Selecteer de query parameters die u wilt gebruiken in het tekst scherm. Voor dit voor beeld gebruikt u de standaard waarde voor **taal**. U kunt deze waarde ook leeg laten, omdat de waarschijnlijke taal door de bewerking automatisch wordt gedetecteerd als onderdeel van de uitvoering.
+Selecteer de query parameters die u wilt gebruiken in het tekst scherm. Voor dit voor beeld gebruikt u de standaard waarde voor **taal** . U kunt deze waarde ook leeg laten, omdat de waarschijnlijke taal door de bewerking automatisch wordt gedetecteerd als onderdeel van de uitvoering.
 
 > [!NOTE]
-> Voor de para meter **taal** wijst `eng` of laat u het leeg om de door de machine ondersteunde **classificatie** te zien (preview-functie). **Deze functie ondersteunt alleen Engels**.
+> Voor de para meter **taal** wijst `eng` of laat u het leeg om de door de machine ondersteunde **classificatie** te zien (preview-functie). **Deze functie ondersteunt alleen Engels** .
 >
 > Gebruik de [ISO 639-3-code](http://www-01.sil.org/iso639-3/codes.asp) **van de** ondersteunde talen die in dit artikel worden vermeld, of laat het leeg.
 
-Selecteer **waar**voor **auto correctie**, **PII**en **classificeren (preview)**. Laat het veld **ListID** leeg.
+Selecteer **waar** voor **auto correctie** , **PII** en **classificeren (preview)** . Laat het veld **ListID** leeg.
 
   ![Query parameters voor de console tekst scherm](images/text-api-console-inputs.PNG)
 
 ### <a name="content-type"></a>Inhoudstype
 
-Selecteer bij **inhouds type**het type inhoud dat u wilt scherm. Voor dit voor beeld gebruikt u het standaard type **tekst/onbewerkte** inhoud. Voer in het vak **OCP-APIM-Subscription-Key** uw abonnements sleutel in.
+Selecteer bij **inhouds type** het type inhoud dat u wilt scherm. Voor dit voor beeld gebruikt u het standaard type **tekst/onbewerkte** inhoud. Voer in het vak **OCP-APIM-Subscription-Key** uw abonnements sleutel in.
 
 ### <a name="sample-text-to-scan"></a>Te scannen voorbeeld tekst
 
@@ -137,4 +137,4 @@ Raadpleeg de conceptuele hand leiding voor [tekst toezicht](text-moderation-api.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Gebruik de REST API in uw code of volg de [.NET SDK Quick](dotnet-sdk-quickstart.md) start om te integreren met uw toepassing.
+Gebruik de REST API in uw code of volg de [.NET SDK Quick](./client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp) start om te integreren met uw toepassing.

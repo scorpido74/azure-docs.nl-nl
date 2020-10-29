@@ -1,23 +1,25 @@
 ---
-title: De open bare IP-functionaliteit gebruiken in virtuele WAN
+title: De functionaliteit van het open bare IP-adres in azure VMware gebruiken
 description: In dit artikel wordt uitgelegd hoe u de open bare IP-functionaliteit in azure Virtual WAN kunt gebruiken.
 ms.topic: how-to
-ms.date: 10/30/2020
-ms.openlocfilehash: 61ed6487bc000a35fd25cabde2b562b6eb08da46
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.date: 10/28/2020
+ms.openlocfilehash: f51f00a9adc1fd122e723909ecaa6193c152d496
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048301"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912664"
 ---
-# <a name="how-to-use-the-public-ip-functionality-in-azure-virtual-wan"></a>De open bare IP-functionaliteit gebruiken in azure Virtual WAN
+# <a name="how-to-use-the-public-ip-functionality-in-azure-vmware-solution"></a>De functionaliteit van het open bare IP-adres in azure VMware gebruiken
 
-Open bare IP is een nieuwe functie in azure VMware-oplossings connectiviteit en klanten kunnen op twee manieren open bare Internet toegang inschakelen. 
+Open bare IP is een nieuwe functie in de connectiviteit van Azure VMware-oplossingen. Het maakt resources, zoals webservers, virtuele machines (Vm's), en hosts die toegankelijk zijn via een openbaar netwerk. 
+
+U kunt open bare Internet toegang op twee manieren inschakelen. 
 
 - Toepassingen kunnen worden gehost en gepubliceerd onder het Application Gateway load balancer voor HTTP/HTTPS-verkeer.
 - Gepubliceerd via open bare IP-functies in azure Virtual WAN.
 
-Als onderdeel van de implementatie van een privécloud in azure VMware, kunt u, als u open bare IP-functionaliteit inschakelt, de vereiste onderdelen met automatisering automatisch maken en inschakelen:
+Als onderdeel van de implementatie van een privécloud in azure VMware, kunt u bij het inschakelen van de functionaliteit van open bare IP de vereiste onderdelen met Automation Get maken en inschakelen:
 
 -  Virtual WAN
 
@@ -25,7 +27,7 @@ Als onderdeel van de implementatie van een privécloud in azure VMware, kunt u, 
 
 -  Azure Firewall Services met een openbaar IP-adres
 
-In dit artikel wordt beschreven hoe u de open bare IP-functionaliteit in virtuele WAN kunt gebruiken om resources, zoals webservers, virtuele machines (Vm's) en hosts, toegankelijk te maken via een openbaar netwerk.
+In dit artikel wordt beschreven hoe u de open bare IP-functionaliteit in virtuele WAN kunt gebruiken.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -48,21 +50,21 @@ In dit scenario moet u de IIS-webserver publiceren op internet. Gebruik de open 
 
 ## <a name="deploy-virtual-wan"></a>Virtual WAN implementeren
 
-1. Meld u aan bij de Azure Portal en zoek naar en selecteer de **Azure VMware-oplossing**.
+1. Meld u aan bij de Azure Portal en zoek naar en selecteer de **Azure VMware-oplossing** .
 
 1. Selecteer de privécloud van de Azure VMware-oplossing.
 
    :::image type="content" source="media/public-ip-usage/avs-private-cloud-resource.png" alt-text="Diagram van open bare IP-architectuur" border="true" lightbox="media/public-ip-usage/avs-private-cloud-resource.png":::
 
-1. Selecteer onder **beheren**de optie **connectiviteit**.
+1. Selecteer onder **beheren** de optie **connectiviteit** .
 
    :::image type="content" source="media/public-ip-usage/avs-private-cloud-manage-menu.png" alt-text="Diagram van open bare IP-architectuur" border="true" lightbox="media/public-ip-usage/avs-private-cloud-manage-menu.png":::
 
-1. Selecteer het tabblad **openbaar IP-adres** en selecteer vervolgens **configureren**.
+1. Selecteer het tabblad **openbaar IP-adres** en selecteer vervolgens **configureren** .
 
    :::image type="content" source="media/public-ip-usage/connectivity-public-ip-tab.png" alt-text="Diagram van open bare IP-architectuur" border="true" lightbox="media/public-ip-usage/connectivity-public-ip-tab.png":::
 
-1. Accepteer de standaard waarden of wijzig deze en selecteer **maken**.
+1. Accepteer de standaard waarden of wijzig deze en selecteer **maken** .
 
    - Resource groep voor virtueel Wide Area Network
 
@@ -81,9 +83,9 @@ Het duurt ongeveer een uur voordat de implementatie van alle onderdelen is volto
 
 U kunt de onderstaande stappen volgen om meer open bare IP-adressen te controleren en toe te voegen.
 
-1. Zoek in het Azure Portal naar en selecteer de **firewall**.
+1. Zoek in het Azure Portal naar en selecteer de **firewall** .
 
-1. Selecteer een geïmplementeerde firewall en selecteer vervolgens **Ga naar Azure firewall Manager om deze firewall te configureren en te beheren**.
+1. Selecteer een geïmplementeerde firewall en selecteer vervolgens **Ga naar Azure firewall Manager om deze firewall te configureren en te beheren** .
 
    :::image type="content" source="media/public-ip-usage/configure-manage-deployed-firewall.png" alt-text="Diagram van open bare IP-architectuur" border="true" lightbox="media/public-ip-usage/configure-manage-deployed-firewall.png":::
 
@@ -91,11 +93,11 @@ U kunt de onderstaande stappen volgen om meer open bare IP-adressen te controler
 
    :::image type="content" source="media/public-ip-usage/select-virtual-hub.png" alt-text="Diagram van open bare IP-architectuur" lightbox="media/public-ip-usage/select-virtual-hub.png":::
 
-1. Selecteer op de pagina virtuele hub de optie **open bare IP-configuratie**en klik vervolgens op **toevoegen**om meer open bare IP-adressen toe te voegen. 
+1. Selecteer op de pagina virtuele hub de optie **open bare IP-configuratie** en klik vervolgens op **toevoegen** om meer open bare IP-adressen toe te voegen. 
 
    :::image type="content" source="media/public-ip-usage/virtual-hub-page-public-ip-configuration.png" alt-text="Diagram van open bare IP-architectuur" border="true" lightbox="media/public-ip-usage/virtual-hub-page-public-ip-configuration.png":::
 
-1. Geef het aantal Ip's op dat is vereist en selecteer **toevoegen**.
+1. Geef het aantal Ip's op dat is vereist en selecteer **toevoegen** .
 
    :::image type="content" source="media/public-ip-usage/add-number-of-ip-addresses-required.png" alt-text="Diagram van open bare IP-architectuur" border="true":::
 
@@ -104,51 +106,51 @@ U kunt de onderstaande stappen volgen om meer open bare IP-adressen te controler
 
 Zodra alle onderdelen zijn geïmplementeerd, kunt u ze weer geven in de toegevoegde resource groep. De volgende stap is het toevoegen van een firewall beleid.
 
-1. Zoek in het Azure Portal naar en selecteer de **firewall**.
+1. Zoek in het Azure Portal naar en selecteer de **firewall** .
 
-1. Selecteer een geïmplementeerde firewall en selecteer vervolgens **Ga naar Azure firewall Manager om deze firewall te configureren en te beheren**.
+1. Selecteer een geïmplementeerde firewall en selecteer vervolgens **Ga naar Azure firewall Manager om deze firewall te configureren en te beheren** .
 
    :::image type="content" source="media/public-ip-usage/configure-manage-deployed-firewall.png" alt-text="Diagram van open bare IP-architectuur" border="true" lightbox="media/public-ip-usage/configure-manage-deployed-firewall.png":::
 
-1. Selecteer **Azure firewall-beleid** en selecteer vervolgens **Azure firewall beleid maken**.
+1. Selecteer **Azure firewall-beleid** en selecteer vervolgens **Azure firewall beleid maken** .
 
    :::image type="content" source="media/public-ip-usage/create-firewall-policy.png" alt-text="Diagram van open bare IP-architectuur" border="true" lightbox="media/public-ip-usage/create-firewall-policy.png":::
 
-1. Geef op het tabblad **basis beginselen** de vereiste gegevens op en selecteer **volgende: DNS-instellingen**. 
+1. Geef op het tabblad **basis beginselen** de vereiste gegevens op en selecteer **volgende: DNS-instellingen** . 
 
-1. Selecteer op het tabblad **DNS** de optie **uitschakelen**en selecteer vervolgens **volgende: regels**.
+1. Selecteer op het tabblad **DNS** de optie **uitschakelen** en selecteer vervolgens **volgende: regels** .
 
-1. Selecteer **een regel verzameling toevoegen**, geef de onderstaande gegevens op en selecteer **toevoegen** en selecteer vervolgens **volgende: bedreigings informatie**.
+1. Selecteer **een regel verzameling toevoegen** , geef de onderstaande gegevens op en selecteer **toevoegen** en selecteer vervolgens **volgende: bedreigings informatie** .
 
-   -  Naam
+   -  Name
    -  Type regel verzameling-DNAT
    -  Prioriteit
    -  Actie verzameling van regel: toestaan
    -  Naam van regel
    -  Bron type- **IP-adres**
-   -  Bron **\***
-   -  Protocol: **TCP**
+   -  Bron-* *\** _
+   -  Protocol – _ *TCP**
    -  Doel poort: **80**
    -  Doel type: **IP-adres**
    -  Doel- **openbaar IP-adres**
    -  Vertaald adres: **Azure VMware Solution webserver privé IP-adres**
    -  Vertaalde poort: **Azure VMware Solution web server-poort**
 
-1. Wijzig de standaard waarde en selecteer vervolgens **volgende: hubs**.
+1. Wijzig de standaard waarde en selecteer vervolgens **volgende: hubs** .
 
-1. Selecteer **virtuele hub koppelen**.
+1. Selecteer **virtuele hub koppelen** .
 
    :::image type="content" source="media/public-ip-usage/associate-virtual-hubs-azure-firewall-policy.png" alt-text="Diagram van open bare IP-architectuur" border="true" lightbox="media/public-ip-usage/associate-virtual-hubs-azure-firewall-policy.png":::
 
-1. Selecteer een hub in de lijst en selecteer **toevoegen**.
+1. Selecteer een hub in de lijst en selecteer **toevoegen** .
 
    :::image type="content" source="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png" alt-text="Diagram van open bare IP-architectuur" border="true" lightbox="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png":::
 
-1. Selecteer **Volgende: Labels**. 
+1. Selecteer **Volgende: Labels** . 
 
 1. Beschrijving Maak naam/waarde-paren om uw resources te categoriseren. 
 
-1. Selecteer **volgende: controleren + maken** en selecteer vervolgens **maken**.
+1. Selecteer **volgende: controleren + maken** en selecteer vervolgens **maken** .
 
 ## <a name="limitations"></a>Beperkingen
 
